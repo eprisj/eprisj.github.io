@@ -17,6 +17,23 @@ function getTranslation(lang: string, key: string) {
   return translations[lang]?.[key] || translations[DEFAULT_LANGUAGE]?.[key] || key;
 }
 
+function isCustomMediaReference(value: string): boolean {
+  return /^(https?:)?\/\//i.test(value) || value.startsWith('/') || value.startsWith('./') || value.startsWith('../') || value.startsWith('data:') || value.startsWith('blob:');
+}
+
+function resolveMediaSource(value: string | undefined, width: number, height: number): string {
+  const normalized = (value || '').trim();
+  if (!normalized) {
+    return '';
+  }
+
+  if (isCustomMediaReference(normalized)) {
+    return normalized;
+  }
+
+  return `https://picsum.photos/seed/${encodeURIComponent(normalized)}/${width}/${height}?grayscale`;
+}
+
 function Reveal({ children, delay = 0 }: { children: ReactNode; delay?: number }) {
   return (
     <motion.div
@@ -349,7 +366,7 @@ function GallerySection({ items }: { items: Item[] }) {
                 <motion.img
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
-                  src={`https://picsum.photos/seed/${item.imageSeed}/800/1000?grayscale`}
+                  src={resolveMediaSource(item.imageUrl || item.imageSeed, 800, 1000)}
                   alt={item.title}
                   className="w-full h-auto object-cover grayscale contrast-[1.1] group-hover:grayscale-0 transition-all duration-700"
                   referrerPolicy="no-referrer"
@@ -516,7 +533,7 @@ function ArticleView({ article, onClose, t }: { article: Article; onClose: () =>
             </div>
             <div className="aspect-[21/9] w-full overflow-hidden bg-[#E8DED5]">
               <img 
-                src={`https://picsum.photos/seed/${article.imageSeed}/1200/600?grayscale`} 
+                src={resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 600)} 
                 alt={article.title}
                 className="w-full h-full object-cover grayscale"
                 referrerPolicy="no-referrer"
@@ -540,11 +557,14 @@ function ArticleView({ article, onClose, t }: { article: Article; onClose: () =>
                     </blockquote>
                   );
                 }
-                case 'image':
+                case 'image': {
+                  if (typeof block.content !== 'string') return null;
+                  const imageSource = resolveMediaSource(block.content, 800, 500);
+                  if (!imageSource) return null;
                   return (
                     <figure key={index} className="my-12">
                       <img 
-                        src={`https://picsum.photos/seed/${block.content}/800/500?grayscale`} 
+                        src={imageSource} 
                         alt={block.caption || "Article image"} 
                         className="w-full h-auto grayscale"
                         referrerPolicy="no-referrer"
@@ -556,6 +576,7 @@ function ArticleView({ article, onClose, t }: { article: Article; onClose: () =>
                       )}
                     </figure>
                   );
+                }
                 case 'map': {
                   if (typeof block.content !== 'string') return null;
                   return (
@@ -632,16 +653,23 @@ function ArticleView({ article, onClose, t }: { article: Article; onClose: () =>
                   return (
                     <figure key={index} className="my-12">
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        {Array.isArray(block.content) && block.content.map((img, i) => (
-                          <div key={i} className="aspect-square bg-[#E8DED5] overflow-hidden">
-                            <img 
-                              src={`https://picsum.photos/seed/${img}/400/400?grayscale`} 
-                              alt={`Gallery image ${i + 1}`}
-                              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                              referrerPolicy="no-referrer"
-                            />
-                          </div>
-                        ))}
+                        {Array.isArray(block.content) &&
+                          block.content.map((img, i) => {
+                            if (typeof img !== 'string') return null;
+                            const gallerySource = resolveMediaSource(img, 400, 400);
+                            if (!gallerySource) return null;
+
+                            return (
+                              <div key={i} className="aspect-square bg-[#E8DED5] overflow-hidden">
+                                <img 
+                                  src={gallerySource} 
+                                  alt={`Gallery image ${i + 1}`}
+                                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                                  referrerPolicy="no-referrer"
+                                />
+                              </div>
+                            );
+                          })}
                       </div>
                       {block.caption && (
                         <figcaption className="text-center font-mono text-xs text-[#501a2c]/60 mt-4 uppercase tracking-widest">
@@ -729,7 +757,7 @@ function ArticlesSection({
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                  <div className="md:col-span-1 aspect-[4/3] overflow-hidden bg-[#E8DED5]">
                     <img 
-                      src={`https://picsum.photos/seed/${article.imageSeed}/400/300?grayscale`} 
+                      src={resolveMediaSource(article.imageUrl || article.imageSeed, 400, 300)} 
                       alt={article.title}
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                       referrerPolicy="no-referrer"

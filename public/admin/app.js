@@ -3,6 +3,7 @@ const DEFAULTS = Object.freeze({
   repo: 'eprisj.github.io',
   branch: 'main',
   path: 'src/content/site-content.json',
+  uploadDir: 'public/uploads',
   message: 'chore(content): обновление контента через админку',
   rememberToken: false,
   token: '',
@@ -24,6 +25,7 @@ const ownerInput = byId('owner');
 const repoInput = byId('repo');
 const branchInput = byId('branch');
 const pathInput = byId('path');
+const uploadDirInput = byId('uploadDir');
 const tokenInput = byId('token');
 const rememberTokenInput = byId('rememberToken');
 const autoLoadOnStartInput = byId('autoLoadOnStart');
@@ -55,6 +57,13 @@ const copyFromEnBtn = byId('copyFromEnBtn');
 const applyEntryBtn = byId('applyEntryBtn');
 const visualFormEl = byId('visualForm');
 const visualNoticeEl = byId('visualNotice');
+const uploadDropZone = byId('uploadDropZone');
+const imageFileInput = byId('imageFileInput');
+const pickImageBtn = byId('pickImageBtn');
+const uploadedImageUrlInput = byId('uploadedImageUrl');
+const useUploadedUrlBtn = byId('useUploadedUrlBtn');
+const copyUploadedUrlBtn = byId('copyUploadedUrlBtn');
+const uploadHintEl = byId('uploadHint');
 
 const interactiveButtons = [
   loadBtn,
@@ -69,7 +78,10 @@ const interactiveButtons = [
   duplicateEntryBtn,
   deleteEntryBtn,
   copyFromEnBtn,
-  applyEntryBtn
+  applyEntryBtn,
+  pickImageBtn,
+  useUploadedUrlBtn,
+  copyUploadedUrlBtn
 ];
 
 let currentSha = '';
@@ -92,6 +104,7 @@ function init() {
   hydrateSettings();
   bindEvents();
   syncRepoSummary();
+  syncUploadHint();
   updateStatsFromEditor();
   refreshVisualEditor();
   updateEditorState();
@@ -140,12 +153,33 @@ function bindEvents() {
   deleteEntryBtn.addEventListener('click', deleteVisualEntry);
   copyFromEnBtn.addEventListener('click', copyFromEnglishEntry);
   applyEntryBtn.addEventListener('click', applyVisualChanges);
+  pickImageBtn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    pickImageFile();
+  });
+  useUploadedUrlBtn.addEventListener('click', useUploadedUrlInCurrentEntry);
+  copyUploadedUrlBtn.addEventListener('click', copyUploadedUrl);
+  imageFileInput.addEventListener('change', onImageFileChange);
+
+  uploadDropZone.addEventListener('click', pickImageFile);
+  uploadDropZone.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' && event.key !== ' ') {
+      return;
+    }
+    event.preventDefault();
+    pickImageFile();
+  });
+  uploadDropZone.addEventListener('dragenter', onUploadDragEnter);
+  uploadDropZone.addEventListener('dragover', onUploadDragEnter);
+  uploadDropZone.addEventListener('dragleave', onUploadDragLeave);
+  uploadDropZone.addEventListener('drop', onUploadDrop);
 
   const inputs = [
     ownerInput,
     repoInput,
     branchInput,
     pathInput,
+    uploadDirInput,
     tokenInput,
     rememberTokenInput,
     autoLoadOnStartInput,
@@ -156,10 +190,12 @@ function bindEvents() {
     input.addEventListener('change', () => {
       saveSettings();
       syncRepoSummary();
+      syncUploadHint();
     });
     input.addEventListener('input', () => {
       saveSettings();
       syncRepoSummary();
+      syncUploadHint();
     });
   }
 
@@ -302,6 +338,7 @@ function applyConfig(config) {
   repoInput.value = config.repo ?? DEFAULTS.repo;
   branchInput.value = config.branch ?? DEFAULTS.branch;
   pathInput.value = config.path ?? DEFAULTS.path;
+  uploadDirInput.value = normalizeUploadDir(config.uploadDir ?? DEFAULTS.uploadDir);
   messageInput.value = config.message ?? DEFAULTS.message;
   rememberTokenInput.checked = Boolean(config.rememberToken);
   autoLoadOnStartInput.checked = Boolean(config.autoLoadOnStart);
@@ -351,6 +388,7 @@ function applyDefaults(showStatus) {
 
   currentSha = '';
   syncRepoSummary();
+  syncUploadHint();
   saveSettings();
 
   if (showStatus) {
@@ -373,6 +411,7 @@ function resetSavedSettings() {
   updateStatsFromEditor();
   refreshVisualEditor();
   syncRepoSummary();
+  syncUploadHint();
   saveSettings();
   setStatus('success', 'Сохраненные настройки сброшены к значениям по умолчанию.');
 }
@@ -419,6 +458,7 @@ function saveSettings() {
       repo: cfg.repo,
       branch: cfg.branch,
       path: cfg.path,
+      uploadDir: cfg.uploadDir,
       message: cfg.message,
       autoLoadOnStart: cfg.autoLoadOnStart,
       rememberToken: cfg.rememberToken,
@@ -433,6 +473,7 @@ function getConfig() {
     repo: repoInput.value.trim(),
     branch: branchInput.value.trim() || 'main',
     path: pathInput.value.trim() || 'src/content/site-content.json',
+    uploadDir: normalizeUploadDir(uploadDirInput.value || DEFAULTS.uploadDir),
     token: tokenInput.value.trim(),
     rememberToken: rememberTokenInput.checked,
     autoLoadOnStart: autoLoadOnStartInput.checked,
@@ -471,6 +512,7 @@ function syncRepoSummary() {
     `<strong>Репозиторий:</strong> ${escapeHtml(cfg.owner || '-')} / ${escapeHtml(cfg.repo || '-')}`,
     `<strong>Ветка:</strong> ${escapeHtml(cfg.branch || '-')}`,
     `<strong>Файл контента:</strong> ${escapeHtml(cfg.path || '-')}`,
+    `<strong>Папка для фото:</strong> ${escapeHtml(cfg.uploadDir || '-')}`,
     pagesUrl
       ? `<strong>Сайт:</strong> <a href="${escapeHtml(pagesUrl)}" target="_blank" rel="noreferrer">${escapeHtml(pagesUrl)}</a>`
       : '',
@@ -480,6 +522,11 @@ function syncRepoSummary() {
   ]
     .filter(Boolean)
     .join('<br />');
+}
+
+function syncUploadHint() {
+  const cfg = getConfig();
+  uploadHintEl.textContent = `Файл будет загружен в папку "${cfg.uploadDir}". После деплоя фото станет доступно на сайте.`;
 }
 
 function escapeHtml(value) {
@@ -520,6 +567,247 @@ async function copyToClipboard(text) {
   temporary.select();
   document.execCommand('copy');
   temporary.remove();
+}
+
+function normalizeUploadDir(value) {
+  const raw = String(value || '')
+    .trim()
+    .replaceAll('\\', '/');
+
+  if (!raw) {
+    return DEFAULTS.uploadDir;
+  }
+
+  return raw.replace(/^\/+/, '').replace(/\/+$/, '');
+}
+
+function requireImageUploadConfig() {
+  const cfg = getConfig();
+  if (!cfg.owner || !cfg.repo) {
+    throw new Error('Сначала заполните владельца и репозиторий.');
+  }
+
+  if (!cfg.token) {
+    throw new Error('Для загрузки фото нужен GitHub Token.');
+  }
+
+  if (!cfg.uploadDir.startsWith('public/')) {
+    throw new Error('Для GitHub Pages укажите папку внутри public/, например public/uploads.');
+  }
+
+  return cfg;
+}
+
+function joinUrl(base, path) {
+  return `${String(base || '').replace(/\/+$/, '')}/${String(path || '').replace(/^\/+/, '')}`;
+}
+
+function toPublicAssetPath(repoPath) {
+  const normalized = String(repoPath || '').replace(/^\/+/, '');
+  if (normalized.startsWith('public/')) {
+    return normalized.slice('public/'.length);
+  }
+  return normalized;
+}
+
+function buildPagesAssetUrl(cfg, repoPath) {
+  const pagesBase = getPagesBaseUrl(cfg.owner, cfg.repo);
+  if (!pagesBase) {
+    return '';
+  }
+  const publicPath = toPublicAssetPath(repoPath);
+  return joinUrl(pagesBase, publicPath);
+}
+
+function inferExtensionFromMime(mimeType) {
+  const map = {
+    'image/jpeg': 'jpg',
+    'image/png': 'png',
+    'image/webp': 'webp',
+    'image/gif': 'gif',
+    'image/svg+xml': 'svg',
+    'image/avif': 'avif'
+  };
+  return map[String(mimeType || '').toLowerCase()] || '';
+}
+
+function buildUploadFileName(originalName, mimeType) {
+  const fromName = String(originalName || '').toLowerCase().match(/\.([a-z0-9]{2,10})$/)?.[1] || '';
+  const extension = fromName || inferExtensionFromMime(mimeType) || 'jpg';
+
+  let base = String(originalName || '')
+    .replace(/\.[^/.]+$/, '')
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+/, '')
+    .replace(/-+$/, '');
+
+  if (!base) {
+    base = 'image';
+  }
+
+  return `${base}-${Date.now()}.${extension}`;
+}
+
+function readFileAsBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error('Не удалось прочитать выбранный файл.'));
+    reader.onload = () => {
+      const value = String(reader.result || '');
+      const commaIndex = value.indexOf(',');
+      if (commaIndex === -1) {
+        reject(new Error('Не удалось преобразовать файл в base64.'));
+        return;
+      }
+      resolve(value.slice(commaIndex + 1));
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function pickImageFile() {
+  if (pickImageBtn.disabled) {
+    return;
+  }
+  imageFileInput.click();
+}
+
+function onImageFileChange(event) {
+  const input = event.target;
+  const file = input.files?.[0];
+  if (!file) {
+    return;
+  }
+  uploadImageToGitHub(file);
+  input.value = '';
+}
+
+function onUploadDragEnter(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  uploadDropZone.classList.add('dragover');
+}
+
+function onUploadDragLeave(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  const related = event.relatedTarget;
+  if (related instanceof Node && uploadDropZone.contains(related)) {
+    return;
+  }
+  uploadDropZone.classList.remove('dragover');
+}
+
+function onUploadDrop(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  uploadDropZone.classList.remove('dragover');
+
+  const file = event.dataTransfer?.files?.[0];
+  if (!file) {
+    return;
+  }
+  uploadImageToGitHub(file);
+}
+
+function injectUploadedUrlIntoCurrentEntry(url) {
+  const target = document.getElementById('vf-imageUrl');
+  if (!target) {
+    return false;
+  }
+
+  target.value = url;
+  target.dispatchEvent(new Event('input', { bubbles: true }));
+  refreshPhotoPreviewFromInputs();
+  return true;
+}
+
+async function copyUploadedUrl() {
+  try {
+    const url = uploadedImageUrlInput.value.trim();
+    if (!url) {
+      throw new Error('Сначала загрузите фото, чтобы появился URL.');
+    }
+    await copyToClipboard(url);
+    setStatus('success', 'URL загруженного фото скопирован.');
+  } catch (error) {
+    setStatus('error', getErrorMessage(error));
+  }
+}
+
+function useUploadedUrlInCurrentEntry() {
+  try {
+    const url = uploadedImageUrlInput.value.trim();
+    if (!url) {
+      throw new Error('Сначала загрузите фото, чтобы появился URL.');
+    }
+
+    const updated = injectUploadedUrlIntoCurrentEntry(url);
+    if (!updated) {
+      throw new Error('Сейчас нет поля URL изображения. Откройте запись в разделах "Статьи" или "Галерея".');
+    }
+
+    setStatus('success', 'URL подставлен в текущую запись. Нажмите "Применить изменения".');
+  } catch (error) {
+    setStatus('error', getErrorMessage(error));
+  }
+}
+
+async function uploadImageToGitHub(file) {
+  try {
+    const cfg = requireImageUploadConfig();
+    if (!String(file.type || '').startsWith('image/')) {
+      throw new Error('Можно загрузить только файл изображения (JPG, PNG, WebP и т.д.).');
+    }
+
+    const maxSize = 15 * 1024 * 1024;
+    if (file.size > maxSize) {
+      throw new Error('Файл слишком большой. Максимум: 15 MB.');
+    }
+
+    saveSettings();
+    setBusy(true);
+    uploadDropZone.classList.add('is-uploading');
+    setStatus('info', `Загружаю "${file.name}" в GitHub...`);
+
+    const fileName = buildUploadFileName(file.name, file.type);
+    const repoPath = `${cfg.uploadDir}/${fileName}`;
+    const base64Content = await readFileAsBase64(file);
+
+    const putUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${encodePath(repoPath)}`;
+    await githubRequest(putUrl, {
+      method: 'PUT',
+      headers: {
+        ...headers(cfg.token),
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: `chore(media): upload ${fileName} via admin`,
+        content: base64Content,
+        branch: cfg.branch
+      })
+    });
+
+    const websiteUrl = buildPagesAssetUrl(cfg, repoPath);
+    const finalUrl = websiteUrl ? `${websiteUrl}?v=${Date.now()}` : '';
+    uploadedImageUrlInput.value = finalUrl;
+
+    const hasApplied = finalUrl ? injectUploadedUrlIntoCurrentEntry(finalUrl) : false;
+    if (hasApplied) {
+      setStatus('success', `Фото загружено. URL сразу подставлен в запись. Не забудьте нажать "Применить изменения".`);
+    } else {
+      setStatus('success', 'Фото загружено. Теперь можно вставить URL в нужное поле.');
+    }
+  } catch (error) {
+    setStatus('error', getErrorMessage(error));
+  } finally {
+    setBusy(false);
+    uploadDropZone.classList.remove('is-uploading', 'dragover');
+    syncUploadHint();
+  }
 }
 
 function encodePath(path) {
@@ -1004,6 +1292,87 @@ function setVisualNotice(message, type) {
   visualNoticeEl.textContent = message;
 }
 
+function getOptionalString(value) {
+  const normalized = String(value || '').trim();
+  return normalized || undefined;
+}
+
+function isCustomMediaReference(value) {
+  return /^(https?:)?\/\//i.test(value) || value.startsWith('/') || value.startsWith('./') || value.startsWith('../') || value.startsWith('data:') || value.startsWith('blob:');
+}
+
+function resolvePreviewImageSource(imageUrl, imageSeed) {
+  const normalizedUrl = String(imageUrl || '').trim();
+  if (normalizedUrl) {
+    return normalizedUrl;
+  }
+
+  const normalizedSeed = String(imageSeed || '').trim();
+  if (!normalizedSeed) {
+    return '';
+  }
+
+  if (isCustomMediaReference(normalizedSeed)) {
+    return normalizedSeed;
+  }
+
+  return `https://picsum.photos/seed/${encodeURIComponent(normalizedSeed)}/900/520?grayscale`;
+}
+
+function renderPhotoPreviewMarkup(source) {
+  const hasSource = Boolean(source);
+  return `
+    <div class="photo-preview full">
+      <p class="form-hint">
+        Предпросмотр. Если заполнен URL, на сайте будет использоваться он. Если URL пустой, используется imageSeed.
+      </p>
+      <img
+        id="vf-preview-image"
+        src="${hasSource ? escapeHtml(source) : ''}"
+        alt="Предпросмотр изображения"
+        loading="lazy"
+        referrerpolicy="no-referrer"
+        ${hasSource ? '' : 'hidden'}
+      />
+      <div id="vf-preview-empty" class="photo-preview-empty" ${hasSource ? 'hidden' : ''}>
+        Добавьте URL фото или imageSeed, чтобы увидеть превью.
+      </div>
+    </div>
+  `;
+}
+
+function refreshPhotoPreviewFromInputs() {
+  const imageEl = document.getElementById('vf-preview-image');
+  const emptyEl = document.getElementById('vf-preview-empty');
+  if (!imageEl || !emptyEl) {
+    return;
+  }
+
+  const source = resolvePreviewImageSource(getFieldValue('vf-imageUrl'), getFieldValue('vf-imageSeed'));
+  if (!source) {
+    imageEl.setAttribute('hidden', 'hidden');
+    imageEl.setAttribute('src', '');
+    emptyEl.removeAttribute('hidden');
+    return;
+  }
+
+  imageEl.setAttribute('src', source);
+  imageEl.removeAttribute('hidden');
+  emptyEl.setAttribute('hidden', 'hidden');
+}
+
+function bindPhotoPreviewInputs() {
+  const imageUrlInput = document.getElementById('vf-imageUrl');
+  const imageSeedInput = document.getElementById('vf-imageSeed');
+  if (!imageUrlInput || !imageSeedInput) {
+    return;
+  }
+
+  imageUrlInput.addEventListener('input', refreshPhotoPreviewFromInputs);
+  imageSeedInput.addEventListener('input', refreshPhotoPreviewFromInputs);
+  refreshPhotoPreviewFromInputs();
+}
+
 function renderVisualForm() {
   const data = getVisualData();
   if (!data) {
@@ -1030,14 +1399,18 @@ function renderVisualForm() {
   setVisualNotice(`Редактируется: ${getSectionLabel(section)} / #${entry.id} / язык ${lang}`, 'info');
 
   if (section === 'items') {
+    const previewSource = resolvePreviewImageSource(entry.imageUrl, entry.imageSeed);
     visualFormEl.innerHTML = `
       <label>ID<input id="vf-id" value="${escapeHtml(entry.id)}" disabled /></label>
       <label>FIG<input id="vf-fig" value="${escapeHtml(entry.fig || '')}" /></label>
       <label class="full">Заголовок<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
       <label class="full">Подзаголовок<input id="vf-subtitle" value="${escapeHtml(entry.subtitle || '')}" /></label>
       <label class="full">Описание<textarea id="vf-description">${escapeHtml(entry.description || '')}</textarea></label>
-      <label class="full">imageSeed<input id="vf-imageSeed" value="${escapeHtml(entry.imageSeed || '')}" /></label>
+      <label class="full">URL фото (необязательно)<input id="vf-imageUrl" placeholder="https://..." value="${escapeHtml(entry.imageUrl || '')}" /></label>
+      <label class="full">imageSeed (если URL пустой)<input id="vf-imageSeed" value="${escapeHtml(entry.imageSeed || '')}" /></label>
+      ${renderPhotoPreviewMarkup(previewSource)}
     `;
+    bindPhotoPreviewInputs();
     return;
   }
 
@@ -1064,6 +1437,7 @@ function renderVisualForm() {
     return;
   }
 
+  const previewSource = resolvePreviewImageSource(entry.imageUrl, entry.imageSeed);
   visualFormEl.innerHTML = `
     <label>ID<input id="vf-id" value="${escapeHtml(entry.id)}" disabled /></label>
     <label>Дата<input id="vf-date" value="${escapeHtml(entry.date || '')}" /></label>
@@ -1074,9 +1448,13 @@ function renderVisualForm() {
     <label>Подкатегория<input id="vf-subcategory" value="${escapeHtml(entry.subcategory || '')}" /></label>
     <label class="full">Краткое описание<textarea id="vf-excerpt">${escapeHtml(entry.excerpt || '')}</textarea></label>
     <label class="full">Теги (через запятую)<input id="vf-tags" value="${escapeHtml(Array.isArray(entry.tags) ? entry.tags.join(', ') : '')}" /></label>
-    <label class="full">imageSeed<input id="vf-imageSeed" value="${escapeHtml(entry.imageSeed || '')}" /></label>
+    <label class="full">URL обложки (необязательно)<input id="vf-imageUrl" placeholder="https://..." value="${escapeHtml(entry.imageUrl || '')}" /></label>
+    <label class="full">imageSeed (если URL пустой)<input id="vf-imageSeed" value="${escapeHtml(entry.imageSeed || '')}" /></label>
+    ${renderPhotoPreviewMarkup(previewSource)}
     <label class="full">Контент статьи (JSON блоков)<textarea id="vf-content-json">${escapeHtml(JSON.stringify(entry.content || [], null, 2))}</textarea></label>
+    <p class="form-hint full">Для блоков в статье можно вставлять URL картинок прямо в <code>content</code> у блока типа <code>image</code> или в массиве <code>gallery</code>.</p>
   `;
+  bindPhotoPreviewInputs();
 }
 
 function getFieldValue(id) {
@@ -1114,7 +1492,8 @@ function applyVisualChanges() {
         title: getFieldValue('vf-title').trim(),
         subtitle: getFieldValue('vf-subtitle').trim(),
         description: getFieldValue('vf-description').trim(),
-        imageSeed: getFieldValue('vf-imageSeed').trim()
+        imageSeed: getFieldValue('vf-imageSeed').trim(),
+        imageUrl: getOptionalString(getFieldValue('vf-imageUrl'))
       };
     } else if (section === 'reviews') {
       const rating = Number(getFieldValue('vf-rating'));
@@ -1162,6 +1541,7 @@ function applyVisualChanges() {
         subcategory: getFieldValue('vf-subcategory').trim() || undefined,
         tags,
         imageSeed: getFieldValue('vf-imageSeed').trim(),
+        imageUrl: getOptionalString(getFieldValue('vf-imageUrl')),
         content: parsedContent
       };
     }

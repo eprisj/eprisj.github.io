@@ -44,7 +44,7 @@ body {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 430px 1fr;
+  grid-template-columns: 470px 1fr;
   gap: 18px;
   padding: 18px;
 }
@@ -80,9 +80,9 @@ body {
 
 h1 {
   margin: 8px 0 10px;
-  font-size: 1.2rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: 1.32rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
 }
 
 .muted {
@@ -103,6 +103,40 @@ h1 {
   border: 1px solid color-mix(in srgb, var(--line) 16%, transparent);
   border-radius: 12px;
   background: color-mix(in srgb, #ffffff 70%, var(--panel-soft));
+}
+
+.quick-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.step-card {
+  border: 1px solid color-mix(in srgb, var(--line) 16%, transparent);
+  border-radius: 12px;
+  background: #fff;
+  padding: 10px;
+}
+
+.step-num {
+  margin: 0 0 6px;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--muted) 82%, white);
+}
+
+.step-title {
+  margin: 0 0 6px;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.step-text {
+  margin: 0;
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: var(--muted);
 }
 
 .guide-title {
@@ -186,9 +220,10 @@ h1 {
 label {
   display: grid;
   gap: 5px;
-  font-size: 0.74rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  font-size: 0.79rem;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  font-weight: 600;
   color: color-mix(in srgb, var(--text) 86%, black);
 }
 
@@ -204,7 +239,7 @@ input {
   color: var(--text);
   padding: 9px 11px;
   font: inherit;
-  font-size: 0.82rem;
+  font-size: 0.86rem;
 }
 
 select {
@@ -215,7 +250,7 @@ select {
   color: var(--text);
   padding: 9px 11px;
   font: inherit;
-  font-size: 0.82rem;
+  font-size: 0.86rem;
 }
 
 input:focus,
@@ -232,9 +267,14 @@ input[type="checkbox"] {
 }
 
 .actions {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   flex-wrap: wrap;
   gap: 8px;
+  padding: 8px;
+  border-radius: 12px;
+  background: color-mix(in srgb, #d6e7ff 20%, white);
+  border: 1px solid color-mix(in srgb, var(--line) 18%, transparent);
 }
 
 .btn {
@@ -242,11 +282,12 @@ input[type="checkbox"] {
   border-radius: 10px;
   background: white;
   color: var(--text);
-  padding: 8px 10px;
+  padding: 9px 11px;
   font: inherit;
-  font-size: 0.73rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.01em;
   cursor: pointer;
   transition: transform 0.12s ease, background-color 0.12s ease, border-color 0.12s ease;
 }
@@ -346,6 +387,26 @@ input[type="checkbox"] {
   gap: 10px;
 }
 
+.visual-intro {
+  border: 1px solid color-mix(in srgb, var(--line) 16%, transparent);
+  border-radius: 10px;
+  background: #fff;
+  padding: 10px 12px;
+}
+
+.visual-intro-title {
+  margin: 0 0 5px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.visual-intro-text {
+  margin: 0;
+  font-size: 0.77rem;
+  color: var(--muted);
+}
+
 .visual-toolbar {
   display: grid;
   grid-template-columns: 170px 170px minmax(220px, 1fr) minmax(180px, 240px) auto;
@@ -354,9 +415,9 @@ input[type="checkbox"] {
 }
 
 .visual-toolbar label {
-  text-transform: uppercase;
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
+  text-transform: none;
+  font-size: 0.74rem;
+  letter-spacing: 0.01em;
 }
 
 .visual-entry-label {
@@ -387,6 +448,86 @@ input[type="checkbox"] {
   background: var(--danger-soft);
 }
 
+.upload-panel {
+  border: 1px solid color-mix(in srgb, var(--line) 18%, transparent);
+  border-radius: 12px;
+  background: #fff;
+  padding: 10px;
+  display: grid;
+  gap: 8px;
+}
+
+.upload-head {
+  display: grid;
+  gap: 4px;
+}
+
+.upload-title {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.upload-text {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.upload-dropzone {
+  border: 1px dashed color-mix(in srgb, var(--line) 30%, transparent);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--panel-soft) 55%, white);
+  padding: 16px 12px;
+  text-align: center;
+  display: grid;
+  gap: 5px;
+  justify-items: center;
+  cursor: pointer;
+  transition: border-color 0.16s ease, background-color 0.16s ease, transform 0.16s ease;
+}
+
+.upload-dropzone:focus {
+  outline: 2px solid color-mix(in srgb, #4f90ff 35%, transparent);
+  outline-offset: 0;
+}
+
+.upload-dropzone.dragover {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent-soft) 60%, white);
+  transform: translateY(-1px);
+}
+
+.upload-dropzone.is-uploading {
+  opacity: 0.75;
+  cursor: progress;
+}
+
+.upload-drop-main {
+  margin: 0;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.upload-drop-sub {
+  margin: 0 0 4px;
+  font-size: 0.73rem;
+  color: var(--muted);
+}
+
+.upload-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.upload-hint {
+  margin: 0;
+  font-size: 0.73rem;
+  color: var(--muted);
+}
+
 .visual-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -407,6 +548,39 @@ input[type="checkbox"] {
   font: inherit;
   font-size: 0.8rem;
   line-height: 1.45;
+}
+
+.form-hint {
+  margin: -2px 0 6px;
+  font-size: 0.73rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.photo-preview {
+  border: 1px solid color-mix(in srgb, var(--line) 18%, transparent);
+  border-radius: 12px;
+  background: #fff;
+  padding: 10px;
+}
+
+.photo-preview img {
+  display: block;
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--line) 15%, transparent);
+}
+
+.photo-preview-empty {
+  border: 1px dashed color-mix(in srgb, var(--line) 20%, transparent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--panel-soft) 55%, white);
+  color: var(--muted);
+  font-size: 0.76rem;
+  padding: 20px 12px;
+  text-align: center;
 }
 
 .raw-panel {
@@ -478,6 +652,10 @@ code {
     grid-template-columns: 1fr;
   }
 
+  .quick-steps {
+    grid-template-columns: 1fr;
+  }
+
   .grid {
     grid-template-columns: 1fr;
   }
@@ -492,6 +670,10 @@ code {
 
   .visual-buttons {
     flex-wrap: wrap;
+  }
+
+  .actions {
+    grid-template-columns: 1fr;
   }
 
   textarea {

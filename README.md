@@ -31,9 +31,16 @@ Admin URL:
 What it does:
 
 - Loads `src/content/site-content.json` from your GitHub repo
-- Lets you edit JSON content
+- Lets you edit content in a visual form and in raw JSON
 - Validates and formats JSON
 - Commits changes back to the repo through GitHub API
+- Supports image URLs in visual editor (`imageUrl` / article cover URL)
+- Supports drag-and-drop image upload to `public/uploads` via GitHub API
+
+Image behavior:
+
+- If `imageUrl` is filled, the site uses it directly
+- If `imageUrl` is empty, the site falls back to `imageSeed` (picsum seed mode)
 
 Required auth:
 

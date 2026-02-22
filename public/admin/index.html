@@ -12,10 +12,10 @@
     <main class="layout">
       <section class="panel panel-config">
         <header class="brand">
-          <p class="kicker">eprisj.github.io</p>
-          <h1>Админка контента EPRIS</h1>
+          <p class="kicker">eprisj.github.io / панель редактора</p>
+          <h1>Панель управления контентом EPRIS</h1>
           <p class="muted">
-            Здесь можно менять разделы, статьи и остальной контент сайта. Файл источника: <code>src/content/site-content.json</code>.
+            Здесь можно менять разделы, статьи и карточки сайта без кода. Все данные берутся из файла <code>src/content/site-content.json</code>.
           </p>
           <div class="brand-actions">
             <a href="../" class="link">Открыть сайт</a>
@@ -23,15 +23,33 @@
           </div>
         </header>
 
+        <section class="quick-steps" aria-label="Быстрый старт">
+          <article class="step-card">
+            <p class="step-num">Шаг 1</p>
+            <p class="step-title">Загрузите контент</p>
+            <p class="step-text">Вставьте GitHub Token и нажмите <strong>Загрузить из GitHub</strong>.</p>
+          </article>
+          <article class="step-card">
+            <p class="step-num">Шаг 2</p>
+            <p class="step-title">Измените нужный раздел</p>
+            <p class="step-text">Выберите раздел, язык и запись в визуальном редакторе справа.</p>
+          </article>
+          <article class="step-card">
+            <p class="step-num">Шаг 3</p>
+            <p class="step-title">Сохраните</p>
+            <p class="step-text">Нажмите <strong>Сохранить в GitHub</strong>. Сайт обновится после деплоя автоматически.</p>
+          </article>
+        </section>
+
         <section class="guide" aria-label="Инструкция">
-          <p class="guide-title">Что заполнять</p>
+          <p class="guide-title">Что важно знать</p>
           <ol class="guide-list">
             <li><strong>Обязательно:</strong> вставьте GitHub Token с доступом <code>Contents: Read and write</code>.</li>
             <li><strong>Нажмите:</strong> <code>Загрузить из GitHub</code>.</li>
-            <li><strong>Измените JSON:</strong> например <code>articles</code>, <code>items</code>, <code>reviews</code> или <code>libraryItems</code>.</li>
+            <li><strong>Редактируйте справа:</strong> <code>articles</code>, <code>items</code>, <code>reviews</code>, <code>libraryItems</code>.</li>
             <li><strong>Нажмите:</strong> <code>Сохранить в GitHub</code>.</li>
           </ol>
-          <p class="guide-note">Поля owner/repo/branch/path уже настроены под ваш сайт. Обычно их менять не нужно.</p>
+          <p class="guide-note">Фото можно ставить по URL: в полях <code>URL фото</code> / <code>URL обложки</code>. Если URL пустой, используется <code>imageSeed</code>.</p>
         </section>
 
         <div class="quick-row">
@@ -63,6 +81,10 @@
             <input id="path" value="src/content/site-content.json" />
           </label>
           <label class="full">
+            Папка для загружаемых фото
+            <input id="uploadDir" value="public/uploads" placeholder="public/uploads" />
+          </label>
+          <label class="full">
             GitHub Token (fine-grained PAT, доступ Contents: Read and write)
             <input id="token" type="password" autocomplete="off" placeholder="github_pat_..." />
           </label>
@@ -91,6 +113,10 @@
 
       <section class="panel panel-editor">
         <div class="visual-editor">
+          <div class="visual-intro">
+            <p class="visual-intro-title">Визуальный редактор</p>
+            <p class="visual-intro-text">Рекомендуемый режим для обычной работы. Сырой JSON ниже нужен только для сложных правок.</p>
+          </div>
           <div class="visual-toolbar">
             <label>
               Раздел
@@ -122,6 +148,33 @@
             </div>
           </div>
           <p id="visualNotice" class="visual-notice">Выберите запись для редактирования.</p>
+
+          <section class="upload-panel" aria-label="Загрузка фото">
+            <div class="upload-head">
+              <p class="upload-title">Загрузка фото в GitHub (drag-and-drop)</p>
+              <p class="upload-text">Перетащите изображение сюда или выберите файл. После загрузки URL можно сразу подставить в поле текущей записи.</p>
+            </div>
+
+            <div id="uploadDropZone" class="upload-dropzone" tabindex="0" role="button" aria-label="Зона загрузки изображения">
+              <p class="upload-drop-main">Перетащите фото сюда</p>
+              <p class="upload-drop-sub">или нажмите, чтобы выбрать файл</p>
+              <button id="pickImageBtn" class="btn" type="button">Выбрать файл</button>
+              <input id="imageFileInput" type="file" accept="image/*" hidden />
+            </div>
+
+            <label class="full">
+              URL загруженного файла
+              <input id="uploadedImageUrl" readonly placeholder="После загрузки здесь появится ссылка" />
+            </label>
+
+            <div class="upload-buttons">
+              <button id="useUploadedUrlBtn" class="btn" type="button">Подставить URL в текущую запись</button>
+              <button id="copyUploadedUrlBtn" class="btn" type="button">Скопировать URL</button>
+            </div>
+
+            <p id="uploadHint" class="upload-hint">Файл будет загружен в папку из поля «Папка для загружаемых фото».</p>
+          </section>
+
           <div id="visualForm" class="visual-form"></div>
         </div>
 
