@@ -9,6 +9,7 @@ export interface Item {
   fig: string;
   description: string;
   imageSeed: string;
+  imageUrl?: string;
 }
 
 export interface ContentBlock {
@@ -30,6 +31,7 @@ export interface Article {
   subcategory?: string;
   tags: string[];
   imageSeed: string;
+  imageUrl?: string;
   content: ContentBlock[];
 }
 
