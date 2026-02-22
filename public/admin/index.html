@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1f2e45" />
+    <title>EPRIS Админка контента</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="ambient"></div>
+    <main class="layout">
+      <section class="panel panel-config">
+        <header class="brand">
+          <p class="kicker">eprisj.github.io</p>
+          <h1>Админка контента EPRIS</h1>
+          <p class="muted">
+            Здесь можно менять разделы, статьи и остальной контент сайта. Файл источника: <code>src/content/site-content.json</code>.
+          </p>
+          <div class="brand-actions">
+            <a href="../" class="link">Открыть сайт</a>
+            <button id="copySiteBtn" class="btn btn-ghost" type="button">Скопировать URL админки</button>
+          </div>
+        </header>
+
+        <section class="guide" aria-label="Инструкция">
+          <p class="guide-title">Что заполнять</p>
+          <ol class="guide-list">
+            <li><strong>Обязательно:</strong> вставьте GitHub Token с доступом <code>Contents: Read and write</code>.</li>
+            <li><strong>Нажмите:</strong> <code>Загрузить из GitHub</code>.</li>
+            <li><strong>Измените JSON:</strong> например <code>articles</code>, <code>items</code>, <code>reviews</code> или <code>libraryItems</code>.</li>
+            <li><strong>Нажмите:</strong> <code>Сохранить в GitHub</code>.</li>
+          </ol>
+          <p class="guide-note">Поля owner/repo/branch/path уже настроены под ваш сайт. Обычно их менять не нужно.</p>
+        </section>
+
+        <div class="quick-row">
+          <button id="applyDefaultsBtn" class="btn" type="button">Стандартные eprisj</button>
+          <button id="resetSettingsBtn" class="btn" type="button">Сбросить настройки</button>
+          <label class="inline switch" for="autoLoadOnStart">
+            <input id="autoLoadOnStart" type="checkbox" />
+            Автозагрузка JSON при открытии
+          </label>
+        </div>
+
+        <div id="repoSummary" class="repo-summary"></div>
+
+        <div class="grid">
+          <label>
+            Владелец GitHub (обычно не менять)
+            <input id="owner" placeholder="your-org-or-user" value="eprisj" />
+          </label>
+          <label>
+            Репозиторий (обычно не менять)
+            <input id="repo" placeholder="repo-name" value="eprisj.github.io" />
+          </label>
+          <label>
+            Ветка (обычно не менять)
+            <input id="branch" placeholder="main" value="main" />
+          </label>
+          <label>
+            Путь к файлу (обычно не менять)
+            <input id="path" value="src/content/site-content.json" />
+          </label>
+          <label class="full">
+            GitHub Token (fine-grained PAT, доступ Contents: Read and write)
+            <input id="token" type="password" autocomplete="off" placeholder="github_pat_..." />
+          </label>
+          <label class="full inline" for="rememberToken">
+            <input id="rememberToken" type="checkbox" />
+            Запомнить токен в этом браузере
+          </label>
+          <label class="full">
+            Комментарий коммита (можно оставить как есть)
+            <input id="message" value="chore(content): обновление контента через админку" />
+          </label>
+        </div>
+
+        <div class="actions">
+          <button id="loadBtn" class="btn" type="button">Загрузить из GitHub</button>
+          <button id="validateBtn" class="btn" type="button">Проверить JSON</button>
+          <button id="formatBtn" class="btn" type="button">Форматировать JSON</button>
+          <button id="downloadBtn" class="btn" type="button">Скачать JSON</button>
+          <button id="saveBtn" class="btn btn-primary" type="button">Сохранить в GitHub</button>
+        </div>
+
+        <p id="status" class="status">Готово.</p>
+        <p id="editorState" class="editor-state">Нет локальных изменений.</p>
+        <div id="stats" class="stats"></div>
+      </section>
+
+      <section class="panel panel-editor">
+        <div class="visual-editor">
+          <div class="visual-toolbar">
+            <label>
+              Раздел
+              <select id="visualSection">
+                <option value="articles">Статьи</option>
+                <option value="reviews">Обзоры</option>
+                <option value="items">Галерея</option>
+                <option value="libraryItems">Библиотека</option>
+              </select>
+            </label>
+            <label>
+              Язык контента
+              <select id="visualLang"></select>
+            </label>
+            <label class="visual-entry-label">
+              Запись
+              <select id="visualEntry"></select>
+            </label>
+            <label>
+              Поиск записи
+              <input id="visualSearch" placeholder="id, заголовок..." />
+            </label>
+            <div class="visual-buttons">
+              <button id="addEntryBtn" class="btn" type="button">+ Добавить</button>
+              <button id="duplicateEntryBtn" class="btn" type="button">Дублировать</button>
+              <button id="deleteEntryBtn" class="btn" type="button">Удалить</button>
+              <button id="copyFromEnBtn" class="btn" type="button">Копия из EN</button>
+              <button id="applyEntryBtn" class="btn btn-primary" type="button">Применить изменения</button>
+            </div>
+          </div>
+          <p id="visualNotice" class="visual-notice">Выберите запись для редактирования.</p>
+          <div id="visualForm" class="visual-form"></div>
+        </div>
+
+        <details class="raw-panel">
+          <summary>Сырой JSON (для продвинутого редактирования)</summary>
+          <div class="editor-top">
+            <label class="editor-label" for="editor">JSON контента</label>
+            <p class="shortcuts">Ctrl/Cmd+S: сохранить в GitHub, Ctrl/Cmd+Shift+L: загрузить, Ctrl/Cmd+Shift+F: форматировать</p>
+            <p class="shortcuts">Подсказка: <code>items</code> = галерея, <code>articles</code> = статьи, <code>reviews</code> = обзоры, <code>libraryItems</code> = библиотека.</p>
+          </div>
+          <textarea id="editor" spellcheck="false"></textarea>
+        </details>
+      </section>
+    </main>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
