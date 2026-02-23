@@ -40,6 +40,7 @@ body {
     radial-gradient(circle at 12% 15%, color-mix(in srgb, #53d6ab 18%, transparent) 0%, transparent 45%),
     radial-gradient(circle at 86% 12%, color-mix(in srgb, #4c85ff 20%, transparent) 0%, transparent 48%),
     radial-gradient(circle at 70% 85%, color-mix(in srgb, #ffde9e 13%, transparent) 0%, transparent 40%);
+  animation: ambientShift 18s ease-in-out infinite alternate;
 }
 
 .layout {
@@ -70,6 +71,15 @@ body {
   top: 12px;
   max-height: calc(100vh - 24px);
   overflow: auto;
+}
+
+.panel-config::-webkit-scrollbar {
+  width: 10px;
+}
+
+.panel-config::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--line) 24%, transparent);
+  border-radius: 999px;
 }
 
 .brand {
@@ -128,6 +138,13 @@ h1 {
   border-radius: 12px;
   background: #fff;
   padding: 10px;
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--line) 10%, transparent);
+  transition: transform 0.16s ease, border-color 0.16s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--info) 24%, transparent);
 }
 
 .step-num {
@@ -287,6 +304,10 @@ input[type="checkbox"] {
   border-radius: 12px;
   background: color-mix(in srgb, #d6e7ff 20%, white);
   border: 1px solid color-mix(in srgb, var(--line) 18%, transparent);
+}
+
+#saveBtn {
+  grid-column: 1 / -1;
 }
 
 .btn {
@@ -615,6 +636,30 @@ input[type="checkbox"] {
   color: var(--muted);
 }
 
+.workspace-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.workspace-pill {
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--line) 20%, transparent);
+  background: #fff;
+  color: var(--text);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+}
+
+.workspace-pill-soft {
+  background: color-mix(in srgb, var(--info-soft) 72%, white);
+  color: var(--info);
+  border-color: color-mix(in srgb, var(--info) 24%, transparent);
+}
+
 .visual-toolbar {
   display: grid;
   grid-template-columns: 170px 170px minmax(220px, 1fr) minmax(180px, 240px) auto;
@@ -659,7 +704,7 @@ input[type="checkbox"] {
 .upload-panel {
   border: 1px solid color-mix(in srgb, var(--line) 18%, transparent);
   border-radius: 12px;
-  background: #fff;
+  background: linear-gradient(180deg, #ffffff, color-mix(in srgb, var(--panel-soft) 50%, white));
   padding: 10px;
   display: grid;
   gap: 8px;
@@ -686,7 +731,7 @@ input[type="checkbox"] {
 .upload-dropzone {
   border: 1px dashed color-mix(in srgb, var(--line) 30%, transparent);
   border-radius: 10px;
-  background: color-mix(in srgb, var(--panel-soft) 55%, white);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--panel-soft) 65%, white), #fff);
   padding: 16px 12px;
   text-align: center;
   display: grid;
@@ -728,6 +773,10 @@ input[type="checkbox"] {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+}
+
+.upload-buttons .btn {
+  flex: 1 1 180px;
 }
 
 .upload-hint {
@@ -849,6 +898,17 @@ code {
   border: 1px solid color-mix(in srgb, var(--line) 18%, transparent);
   background: color-mix(in srgb, var(--panel-soft) 70%, white);
   padding: 2px 4px;
+}
+
+@keyframes ambientShift {
+  from {
+    opacity: 0.85;
+    transform: translateY(0px) scale(1);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-6px) scale(1.02);
+  }
 }
 
 @media (max-width: 1150px) {

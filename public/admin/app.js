@@ -122,7 +122,7 @@ function init() {
   refreshVisualEditor();
   updateEditorState();
   saveSettings();
-  queueMonitoringChecks();
+  queueMonitoringChecks(320, 'full');
 
   if (getConfig().autoLoadOnStart) {
     loadFromGitHub();
@@ -175,7 +175,7 @@ function bindEvents() {
   useUploadedPagesUrlBtn.addEventListener('click', useUploadedPagesUrlInCurrentEntry);
   copyUploadedUrlBtn.addEventListener('click', copyUploadedUrl);
   imageFileInput.addEventListener('change', onImageFileChange);
-  monitorRunBtn.addEventListener('click', runMonitoringChecks);
+  monitorRunBtn.addEventListener('click', () => runMonitoringChecks({ mode: 'full' }));
 
   uploadDropZone.addEventListener('click', pickImageFile);
   uploadDropZone.addEventListener('keydown', (event) => {
@@ -208,14 +208,14 @@ function bindEvents() {
       syncRepoSummary();
       syncUploadHint();
       syncExternalLinks();
-      queueMonitoringChecks();
+      queueMonitoringChecks(550, 'local');
     });
     input.addEventListener('input', () => {
       saveSettings();
       syncRepoSummary();
       syncUploadHint();
       syncExternalLinks();
-      queueMonitoringChecks();
+      queueMonitoringChecks(550, 'local');
     });
   }
 
@@ -224,7 +224,7 @@ function bindEvents() {
     updateEditorState();
     scheduleDraftSave();
     scheduleVisualRefresh();
-    queueMonitoringChecks();
+    queueMonitoringChecks(350, 'local');
   });
 
   document.addEventListener('keydown', (event) => {
@@ -270,13 +270,13 @@ function scheduleVisualRefresh() {
   }, 180);
 }
 
-function queueMonitoringChecks(delay = 450) {
+function queueMonitoringChecks(delay = 450, mode = 'local') {
   if (monitorTimer) {
     clearTimeout(monitorTimer);
   }
 
   monitorTimer = setTimeout(() => {
-    runMonitoringChecks();
+    runMonitoringChecks({ mode });
   }, delay);
 }
 
@@ -1456,12 +1456,15 @@ async function runUploadDirectoryCheck(cfg) {
   }
 }
 
-async function runMonitoringChecks() {
+async function runMonitoringChecks(options = {}) {
+  const mode = options.mode === 'full' ? 'full' : 'local';
   const cfg = getConfig();
   const content = parseEditorJsonSafe();
 
-  monitorRunBtn.disabled = true;
-  monitorRunBtn.textContent = 'Проверка...';
+  if (mode === 'full') {
+    monitorRunBtn.disabled = true;
+    monitorRunBtn.textContent = 'Проверка...';
+  }
 
   try {
     const localResults = [
@@ -1469,17 +1472,31 @@ async function runMonitoringChecks() {
       runMediaQualityChecks(content)
     ];
 
-    const remoteResults = await Promise.all([
-      runGitHubAuthCheck(cfg),
-      runDeployStatusCheck(cfg),
-      runPagesAvailabilityCheck(cfg),
-      runUploadDirectoryCheck(cfg)
-    ]);
+    let remoteResults = [];
+    if (mode === 'full') {
+      remoteResults = await Promise.all([
+        runGitHubAuthCheck(cfg),
+        runDeployStatusCheck(cfg),
+        runPagesAvailabilityCheck(cfg),
+        runUploadDirectoryCheck(cfg)
+      ]);
+    } else {
+      remoteResults = [
+        createMonitorResult(
+          'info',
+          'Внешние проверки',
+          'Быстрая локальная проверка завершена. Для полного мониторинга нажмите «Обновить мониторинг».',
+          []
+        )
+      ];
+    }
 
     renderMonitoringResults([...remoteResults, ...localResults]);
   } finally {
-    monitorRunBtn.disabled = false;
-    monitorRunBtn.textContent = 'Обновить мониторинг';
+    if (mode === 'full') {
+      monitorRunBtn.disabled = false;
+      monitorRunBtn.textContent = 'Обновить мониторинг';
+    }
   }
 }
 
