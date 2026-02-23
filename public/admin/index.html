@@ -109,6 +109,31 @@
         <p id="status" class="status">Готово.</p>
         <p id="editorState" class="editor-state">Нет локальных изменений.</p>
         <div id="stats" class="stats"></div>
+
+        <section class="monitor-panel" aria-label="Мониторинг">
+          <div class="monitor-head">
+            <div>
+              <p class="monitor-kicker">Контроль качества</p>
+              <h2 class="monitor-title">Мониторинг проекта</h2>
+            </div>
+            <div class="monitor-head-actions">
+              <button id="monitorRunBtn" class="btn" type="button">Обновить мониторинг</button>
+            </div>
+          </div>
+
+          <div class="monitor-links">
+            <a id="openRepoLink" class="monitor-link" target="_blank" rel="noreferrer" href="#">Открыть репозиторий</a>
+            <a id="openActionsLink" class="monitor-link" target="_blank" rel="noreferrer" href="#">Открыть GitHub Actions</a>
+            <a id="openPagesLink" class="monitor-link" target="_blank" rel="noreferrer" href="#">Открыть сайт</a>
+          </div>
+
+          <div id="monitorSummary" class="monitor-summary">
+            Нажмите «Обновить мониторинг», чтобы проверить деплой, доступность сайта и качество контента.
+          </div>
+
+          <div id="monitorGrid" class="monitor-grid"></div>
+          <p id="monitorTimestamp" class="monitor-timestamp">Мониторинг еще не запускался.</p>
+        </section>
       </section>
 
       <section class="panel panel-editor">
