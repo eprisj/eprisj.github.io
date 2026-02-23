@@ -1804,6 +1804,1620 @@
           "year": "2024"
         }
       ]
+    },
+    "DE": {
+      "items": [
+        {
+          "id": 2,
+          "title": "Urban Solitude",
+          "subtitle": "Berlin, Germany",
+          "fig": "FIG. 02",
+          "description": "Finding peace in the concrete rhythm of the city.",
+          "imageSeed": "berlin-street"
+        },
+        {
+          "id": 3,
+          "title": "Mediterranean Feast",
+          "subtitle": "Sicily, Italy",
+          "fig": "FIG. 03",
+          "description": "A celebration of simple ingredients: olive oil, tomatoes, and sea salt.",
+          "imageSeed": "italian-food"
+        },
+        {
+          "id": 4,
+          "title": "Mountain Breath",
+          "subtitle": "Carpathians, Ukraine",
+          "fig": "FIG. 04",
+          "description": "The crisp air of the highlands and the scent of pine forests.",
+          "imageSeed": "mountains"
+        },
+        {
+          "id": 5,
+          "title": "Siesta Shadows",
+          "subtitle": "Seville, Spain",
+          "fig": "FIG. 05",
+          "description": "The slow passage of time during a hot afternoon.",
+          "imageSeed": "shadows-wall"
+        },
+        {
+          "id": 6,
+          "title": "Velvet Night",
+          "subtitle": "Istanbul, Turkey",
+          "fig": "FIG. 06",
+          "description": "Lights reflecting on the Bosphorus as the city comes alive.",
+          "imageSeed": "istanbul-night"
+        }
+      ],
+      "articles": [
+        {
+          "id": 1,
+          "title": "The Art of Slow Living!",
+          "author": "Masha Peut",
+          "role": "Editor-in-Chief",
+          "date": "Oct 12, 2025",
+          "excerpt": "Why doing less might a!ctually mean living more. A journey into the philosophy of slowing down in a hyper-connected world.",
+          "category": "Lifestyle",
+          "subcategory": "Philosophy",
+          "tags": [
+            "Lifestyle",
+            "Philosophy",
+            "Wellness"
+          ],
+          "imageSeed": "slow-living",
+          "content": [
+            {
+              "type": "text",
+              "content": "In a world that constantly demands our attention, the act of slowing down has become a radical form of resistance. It is not merely about doing less, but about doing things with intention, presence, and care. The philosophy of slow living invites us to savor the mundane, to find beauty in the ordinary, and to reconnect with the natural rhythms of life."
+            },
+            {
+              "type": "note",
+              "content": "Slow living is not about being lazy. It's about being intentional with your time and energy."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "slow-morning",
+                "coffee-book",
+                "rainy-window"
+              ],
+              "caption": "Moments of stillness in everyday life."
+            },
+            {
+              "type": "quote",
+              "content": "Speed is irrelevant if you are going in the wrong direction. The true luxury of our time is the ability to pause."
+            },
+            {
+              "type": "text",
+              "content": "My journey began in a small village in Tuscany, where time seemed to stretch endlessly. The locals didn't rush through their meals; they celebrated them. Lunch was not a break from work, but the centerpiece of the day. This shift in perspective changed everything for me. I realized that urgency is often an illusion we create for ourselves."
+            },
+            {
+              "type": "image",
+              "content": "tuscany-landscape",
+              "caption": "The rolling hills of Val d'Orcia, where time stands still."
+            },
+            {
+              "type": "text",
+              "content": "We often confuse busyness with productivity, and speed with efficiency. But true creativity and deep thought require space. They require the 'unproductive' moments of staring out a window, walking without a destination, or simply sitting in silence. It is in these pauses that the magic happens."
+            },
+            {
+              "type": "audio",
+              "content": "https://actions.google.com/sounds/v1/ambiences/forest_morning.ogg",
+              "caption": "Soundscape: Morning in the Tuscan hills."
+            },
+            {
+              "type": "checklist",
+              "content": {
+                "items": [
+                  "Turn off notifications for one hour a day",
+                  "Eat one meal without distractions",
+                  "Spend 10 minutes doing absolutely nothing",
+                  "Read a physical book before bed"
+                ]
+              },
+              "caption": "Daily Slow Living Practices"
+            },
+            {
+              "type": "text",
+              "content": "Adopting a slow mindset doesn't mean moving at a snail's pace in everything we do. It means assigning the correct speed to each activity. It means eating slowly to taste the food, listening deeply to understand rather than to reply, and working with focus rather than frantic multitasking."
+            },
+            {
+              "type": "map",
+              "content": "Val d'Orcia, Tuscany",
+              "coordinates": {
+                "lat": 43.0766,
+                "lng": 11.6146
+              }
+            },
+            {
+              "type": "text",
+              "content": "Start small. Dedicate one hour a week to doing absolutely nothing. Turn off your phone. Watch the clouds. Brew a cup of tea and drink it without reading the news. Reclaim your time, and you will reclaim your life."
+            },
+            {
+              "type": "link",
+              "content": "Read more about the Slow Food Movement",
+              "url": "https://www.slowfood.com"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Taste of the Earth",
+          "author": "Marco Rossi",
+          "date": "Sep 28, 2025",
+          "excerpt": "Exploring the connection between soil health and the flavors on our plate. A visit to organic vineyards in Tuscany.",
+          "category": "Food",
+          "subcategory": "Travel",
+          "tags": [
+            "Food",
+            "Travel",
+            "Sustainability"
+          ],
+          "imageSeed": "vineyard",
+          "content": [
+            {
+              "type": "text",
+              "content": "Wine is bottled poetry, but it is also bottled geography. The concept of 'terroir' speaks to the profound connection between the land and the produce it yields. In the heart of Chianti, I discovered that the health of the soil is directly reflected in the complexity of the wine."
+            },
+            {
+              "type": "image",
+              "content": "grapes",
+              "caption": "Sangiovese grapes ripening under the Tuscan sun."
+            },
+            {
+              "type": "text",
+              "content": "Organic farming is not just a trend here; it is a return to tradition. By avoiding synthetic pesticides and fertilizers, winemakers are allowing the true character of the land to shine through. The result is a wine that is vibrant, alive, and deeply connected to its origins."
+            },
+            {
+              "type": "quote",
+              "content": "To care for the soil is to care for ourselves. We are what we eat, and what we eat comes from the earth."
+            },
+            {
+              "type": "text",
+              "content": "Walking through the vineyards, you can smell the difference. The air is thick with the scent of wild herbs, damp earth, and ripening fruit. It's a sensory experience that no supermarket wine can replicate. This is the taste of patience, of seasons, of respect for nature."
+            },
+            {
+              "type": "poll",
+              "content": {
+                "question": "What is your preferred type of wine?",
+                "options": [
+                  {
+                    "label": "Red (Full-bodied)",
+                    "votes": 45
+                  },
+                  {
+                    "label": "White (Crisp)",
+                    "votes": 30
+                  },
+                  {
+                    "label": "Rosé (Dry)",
+                    "votes": 15
+                  },
+                  {
+                    "label": "Sparkling",
+                    "votes": 10
+                  }
+                ]
+              }
+            },
+            {
+              "type": "map",
+              "content": "Chianti Classico Region",
+              "coordinates": {
+                "lat": 43.4764,
+                "lng": 11.3134
+              }
+            },
+            {
+              "type": "text",
+              "content": "The future of food lies in the past. It lies in the hands of those who understand that we are stewards of the land, not its masters. Every time we choose organic, local, and seasonal food, we are voting for a healthier planet and a richer palate."
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Architectures of Happiness",
+          "author": "Leyla Yilmaz",
+          "date": "Sep 15, 2025",
+          "excerpt": "How our physical surroundings impact our mental state. Designing spaces for joy and connection.",
+          "category": "Design",
+          "subcategory": "Psychology",
+          "tags": [
+            "Design",
+            "Psychology",
+            "Home"
+          ],
+          "imageSeed": "interior-design",
+          "content": [
+            {
+              "type": "text",
+              "content": "We shape our buildings; thereafter they shape us. This famous quote by Winston Churchill rings truer than ever. The spaces we inhabit have a profound impact on our mood, productivity, and overall well-being. But what makes a space 'happy'?"
+            },
+            {
+              "type": "text",
+              "content": "Light, proportion, and materials all play a crucial role. Natural light boosts serotonin, while natural materials like wood and stone ground us. But beyond the physical, it is the emotional resonance of a space that truly matters. A home should be a sanctuary, a place where we can be our most authentic selves."
+            },
+            {
+              "type": "image",
+              "content": "modern-living-room",
+              "caption": "A space designed for light and tranquility."
+            },
+            {
+              "type": "note",
+              "content": "Tip: Use mirrors to reflect natural light into darker corners of your home."
+            },
+            {
+              "type": "text",
+              "content": "Biophilic design—incorporating elements of nature into our built environments—is key. A view of a tree, a potted plant, or even the use of organic patterns can lower stress levels and improve cognitive function. We are biological beings, and we crave connection with the living world."
+            },
+            {
+              "type": "quote",
+              "content": "Architecture is not about math or zoning, it's about visceral emotions."
+            },
+            {
+              "type": "text",
+              "content": "Ultimately, a happy home is one that facilitates connection—with ourselves, with our loved ones, and with the environment. It is a stage for the drama of life, a backdrop for our memories, and a shelter for our dreams."
+            },
+            {
+              "type": "link",
+              "content": "Explore the Neuroarchitecture Institute",
+              "url": "https://www.anfarch.org"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Digital Detox Diaries",
+          "author": "Hans Weber",
+          "date": "Aug 30, 2025",
+          "excerpt": "One month without social media. The withdrawal, the boredom, and the eventual clarity.",
+          "category": "Tech",
+          "subcategory": "Personal",
+          "tags": [
+            "Tech",
+            "Mindfulness",
+            "Personal"
+          ],
+          "imageSeed": "nature-walk",
+          "content": [
+            {
+              "type": "text",
+              "content": "The first week was the hardest. My thumb would instinctively reach for the app icon that wasn't there. The silence was deafening. But as the days went by, something shifted. The fog lifted. I started noticing the colors of the sunset, the taste of my coffee, the sound of the wind in the trees."
+            },
+            {
+              "type": "quote",
+              "content": "Boredom is the birthplace of creativity. When we stop consuming, we start creating."
+            },
+            {
+              "type": "text",
+              "content": "Reclaiming my attention felt like reclaiming my life. I read books, I wrote in my journal, I had long conversations with friends without checking my phone. The world didn't end because I wasn't watching. In fact, it became more vivid."
+            },
+            {
+              "type": "image",
+              "content": "journal-writing",
+              "caption": "Rediscovering the analog joy of pen on paper."
+            },
+            {
+              "type": "checklist",
+              "content": {
+                "items": [
+                  "Delete social media apps from phone",
+                  "Set up 'Do Not Disturb' hours",
+                  "Buy an analog alarm clock",
+                  "Inform close friends/family of your detox"
+                ]
+              },
+              "caption": "Preparation Checklist"
+            },
+            {
+              "type": "text",
+              "content": "We are drowning in information but starving for wisdom. The constant stream of notifications fragments our attention and keeps us in a state of chronic low-level anxiety. Stepping away allowed me to hear my own thoughts again."
+            },
+            {
+              "type": "text",
+              "content": "I'm back online now, but with strict boundaries. I use technology; I don't let it use me. The clarity I gained is too precious to lose again."
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "title": "The Future of Remote Work",
+          "author": "Sarah Jenkins",
+          "date": "Nov 15, 2025",
+          "excerpt": "Asynchronous communication is the key to unlocking global talent and work-life balance.",
+          "category": "Tech",
+          "subcategory": "Work",
+          "tags": [
+            "Tech",
+            "Remote Work",
+            "Productivity"
+          ],
+          "imageSeed": "home-office",
+          "content": [
+            {
+              "type": "text",
+              "content": "The 9-to-5 is dead. Long live the results-oriented work environment. As companies embrace remote-first policies, the focus is shifting from hours logged to output delivered. But this transition requires a fundamental rethink of how we communicate."
+            },
+            {
+              "type": "poll",
+              "content": {
+                "question": "What is your biggest challenge with remote work?",
+                "options": [
+                  {
+                    "label": "Loneliness/Isolation",
+                    "votes": 25
+                  },
+                  {
+                    "label": "Overworking/Burnout",
+                    "votes": 35
+                  },
+                  {
+                    "label": "Communication Issues",
+                    "votes": 20
+                  },
+                  {
+                    "label": "Distractions at Home",
+                    "votes": 20
+                  }
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "content": "Asynchronous communication—writing things down instead of holding meetings—is the superpower of distributed teams. It allows people to work when they are most productive, regardless of their time zone. It creates a written record of decisions. And most importantly, it respects everyone's time."
+            },
+            {
+              "type": "note",
+              "content": "Async doesn't mean 'never talk'. It means 'talk when necessary, write by default'."
+            },
+            {
+              "type": "checklist",
+              "content": {
+                "items": [
+                  "Default to public channels over DMs",
+                  "Record loom videos for complex explanations",
+                  "Write detailed meeting agendas",
+                  "Block out 'deep work' time on your calendar"
+                ]
+              },
+              "caption": "Best Practices for Async Work"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "title": "Minimalist Wardrobe Guide",
+          "author": "Elena K.",
+          "date": "Oct 05, 2025",
+          "excerpt": "Building a capsule wardrobe that sparks joy and reduces decision fatigue.",
+          "category": "Lifestyle",
+          "subcategory": "Fashion",
+          "tags": [
+            "Lifestyle",
+            "Fashion",
+            "Minimalism"
+          ],
+          "imageSeed": "wardrobe",
+          "content": [
+            {
+              "type": "text",
+              "content": "We wear 20% of our clothes 80% of the time. The rest is just clutter. A minimalist wardrobe is not about deprivation; it's about curation. It's about owning fewer, better things that you truly love and that work together seamlessly."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "white-shirt",
+                "denim-jeans",
+                "trench-coat"
+              ],
+              "caption": "The Essentials"
+            },
+            {
+              "type": "checklist",
+              "content": {
+                "items": [
+                  "White Button-Down Shirt",
+                  "Classic Blue Jeans",
+                  "Black Trousers",
+                  "Beige Trench Coat",
+                  "White Sneakers",
+                  "Black Ankle Boots"
+                ]
+              },
+              "caption": "Capsule Wardrobe Starter Pack"
+            },
+            {
+              "type": "text",
+              "content": "Start by decluttering. Take everything out of your closet. Hold each item. Does it fit? Is it in good condition? do you feel confident in it? If the answer is no, let it go. Donate, sell, or recycle."
+            },
+            {
+              "type": "note",
+              "content": "Quality over quantity. Invest in natural fabrics like cotton, linen, wool, and silk."
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "title": "Hidden Gems of Kyoto",
+          "author": "Kenji Tanaka",
+          "date": "Nov 01, 2025",
+          "excerpt": "Beyond the Golden Pavilion. Discovering the quiet temples and secret gardens of Japan's ancient capital.",
+          "category": "Travel",
+          "subcategory": "Japan",
+          "tags": [
+            "Travel",
+            "Japan",
+            "Culture"
+          ],
+          "imageSeed": "kyoto-temple",
+          "content": [
+            {
+              "type": "text",
+              "content": "Kyoto is a city of layers. The famous sites are breathtaking, but the true soul of the city lies in its hidden corners. In the small neighborhood shrines, the moss-covered gardens, and the artisan workshops that have been operating for centuries."
+            },
+            {
+              "type": "map",
+              "content": "Gio-ji Temple (The Moss Temple)",
+              "coordinates": {
+                "lat": 35.0267,
+                "lng": 135.6686
+              }
+            },
+            {
+              "type": "text",
+              "content": "Gio-ji is a small, quiet temple in Arashiyama, known for its lush moss garden. It feels worlds away from the crowds of the Bamboo Grove. The light filtering through the maple trees creates a magical, ethereal atmosphere."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "moss-garden",
+                "bamboo-forest",
+                "tea-ceremony"
+              ],
+              "caption": "Textures of Kyoto"
+            },
+            {
+              "type": "note",
+              "content": "Best time to visit: Early morning or late afternoon to avoid the crowds."
+            },
+            {
+              "type": "text",
+              "content": "Don't rush Kyoto. It is a city best experienced on foot or by bicycle. Get lost in the narrow alleys of Gion. Sit by the Kamo River. Drink matcha in a traditional tea house. Let the city reveal itself to you slowly."
+            }
+          ]
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "title": "A Symphony of Flavors!!!!!!!!!!!!!!!!!!!!!!!",
+          "subject": "Restaurant 'Olea', Limassol",
+          "rating": 4.5,
+          "content": "The tasting menu was a journey through the island's history. Each dish told a story of conquest and trade.",
+          "author": "Elena K."
+        },
+        {
+          "id": 2,
+          "title": "The Book of Whispers",
+          "subject": "Novel by S. Alexiou",
+          "rating": 5,
+          "content": "Hauntingly beautiful. A prose that feels like poetry, exploring memory and loss in a divided city.",
+          "author": "Maria S."
+        },
+        {
+          "id": 3,
+          "title": "Modernist Retreat",
+          "subject": "Hotel 'The Edge', Paphos",
+          "rating": 4,
+          "content": "Stunning architecture, but the service lacked the warmth one expects in the Mediterranean.",
+          "author": "James B."
+        }
+      ],
+      "libraryItems": [
+        {
+          "id": 1,
+          "title": "The Philosophy of Taste",
+          "type": "PDF",
+          "size": "14.5 MB",
+          "year": "2024"
+        },
+        {
+          "id": 2,
+          "title": "Mediterranean Diet: A History",
+          "type": "EPUB",
+          "size": "8.2 MB",
+          "year": "2023"
+        },
+        {
+          "id": 3,
+          "title": "Visual Diaries: 2020-2025",
+          "type": "ZIP",
+          "size": "456 MB",
+          "year": "2025"
+        },
+        {
+          "id": 4,
+          "title": "Sounds of the City: Audio Archive",
+          "type": "MP3",
+          "size": "120 MB",
+          "year": "2024"
+        }
+      ]
+    },
+    "ES": {
+      "items": [
+        {
+          "id": 2,
+          "title": "Urban Solitude",
+          "subtitle": "Berlin, Germany",
+          "fig": "FIG. 02",
+          "description": "Finding peace in the concrete rhythm of the city.",
+          "imageSeed": "berlin-street"
+        },
+        {
+          "id": 3,
+          "title": "Mediterranean Feast",
+          "subtitle": "Sicily, Italy",
+          "fig": "FIG. 03",
+          "description": "A celebration of simple ingredients: olive oil, tomatoes, and sea salt.",
+          "imageSeed": "italian-food"
+        },
+        {
+          "id": 4,
+          "title": "Mountain Breath",
+          "subtitle": "Carpathians, Ukraine",
+          "fig": "FIG. 04",
+          "description": "The crisp air of the highlands and the scent of pine forests.",
+          "imageSeed": "mountains"
+        },
+        {
+          "id": 5,
+          "title": "Siesta Shadows",
+          "subtitle": "Seville, Spain",
+          "fig": "FIG. 05",
+          "description": "The slow passage of time during a hot afternoon.",
+          "imageSeed": "shadows-wall"
+        },
+        {
+          "id": 6,
+          "title": "Velvet Night",
+          "subtitle": "Istanbul, Turkey",
+          "fig": "FIG. 06",
+          "description": "Lights reflecting on the Bosphorus as the city comes alive.",
+          "imageSeed": "istanbul-night"
+        }
+      ],
+      "articles": [
+        {
+          "id": 1,
+          "title": "The Art of Slow Living!",
+          "author": "Masha Peut",
+          "role": "Editor-in-Chief",
+          "date": "Oct 12, 2025",
+          "excerpt": "Why doing less might a!ctually mean living more. A journey into the philosophy of slowing down in a hyper-connected world.",
+          "category": "Lifestyle",
+          "subcategory": "Philosophy",
+          "tags": [
+            "Lifestyle",
+            "Philosophy",
+            "Wellness"
+          ],
+          "imageSeed": "slow-living",
+          "content": [
+            {
+              "type": "text",
+              "content": "In a world that constantly demands our attention, the act of slowing down has become a radical form of resistance. It is not merely about doing less, but about doing things with intention, presence, and care. The philosophy of slow living invites us to savor the mundane, to find beauty in the ordinary, and to reconnect with the natural rhythms of life."
+            },
+            {
+              "type": "note",
+              "content": "Slow living is not about being lazy. It's about being intentional with your time and energy."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "slow-morning",
+                "coffee-book",
+                "rainy-window"
+              ],
+              "caption": "Moments of stillness in everyday life."
+            },
+            {
+              "type": "quote",
+              "content": "Speed is irrelevant if you are going in the wrong direction. The true luxury of our time is the ability to pause."
+            },
+            {
+              "type": "text",
+              "content": "My journey began in a small village in Tuscany, where time seemed to stretch endlessly. The locals didn't rush through their meals; they celebrated them. Lunch was not a break from work, but the centerpiece of the day. This shift in perspective changed everything for me. I realized that urgency is often an illusion we create for ourselves."
+            },
+            {
+              "type": "image",
+              "content": "tuscany-landscape",
+              "caption": "The rolling hills of Val d'Orcia, where time stands still."
+            },
+            {
+              "type": "text",
+              "content": "We often confuse busyness with productivity, and speed with efficiency. But true creativity and deep thought require space. They require the 'unproductive' moments of staring out a window, walking without a destination, or simply sitting in silence. It is in these pauses that the magic happens."
+            },
+            {
+              "type": "audio",
+              "content": "https://actions.google.com/sounds/v1/ambiences/forest_morning.ogg",
+              "caption": "Soundscape: Morning in the Tuscan hills."
+            },
+            {
+              "type": "checklist",
+              "content": {
+                "items": [
+                  "Turn off notifications for one hour a day",
+                  "Eat one meal without distractions",
+                  "Spend 10 minutes doing absolutely nothing",
+                  "Read a physical book before bed"
+                ]
+              },
+              "caption": "Daily Slow Living Practices"
+            },
+            {
+              "type": "text",
+              "content": "Adopting a slow mindset doesn't mean moving at a snail's pace in everything we do. It means assigning the correct speed to each activity. It means eating slowly to taste the food, listening deeply to understand rather than to reply, and working with focus rather than frantic multitasking."
+            },
+            {
+              "type": "map",
+              "content": "Val d'Orcia, Tuscany",
+              "coordinates": {
+                "lat": 43.0766,
+                "lng": 11.6146
+              }
+            },
+            {
+              "type": "text",
+              "content": "Start small. Dedicate one hour a week to doing absolutely nothing. Turn off your phone. Watch the clouds. Brew a cup of tea and drink it without reading the news. Reclaim your time, and you will reclaim your life."
+            },
+            {
+              "type": "link",
+              "content": "Read more about the Slow Food Movement",
+              "url": "https://www.slowfood.com"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Taste of the Earth",
+          "author": "Marco Rossi",
+          "date": "Sep 28, 2025",
+          "excerpt": "Exploring the connection between soil health and the flavors on our plate. A visit to organic vineyards in Tuscany.",
+          "category": "Food",
+          "subcategory": "Travel",
+          "tags": [
+            "Food",
+            "Travel",
+            "Sustainability"
+          ],
+          "imageSeed": "vineyard",
+          "content": [
+            {
+              "type": "text",
+              "content": "Wine is bottled poetry, but it is also bottled geography. The concept of 'terroir' speaks to the profound connection between the land and the produce it yields. In the heart of Chianti, I discovered that the health of the soil is directly reflected in the complexity of the wine."
+            },
+            {
+              "type": "image",
+              "content": "grapes",
+              "caption": "Sangiovese grapes ripening under the Tuscan sun."
+            },
+            {
+              "type": "text",
+              "content": "Organic farming is not just a trend here; it is a return to tradition. By avoiding synthetic pesticides and fertilizers, winemakers are allowing the true character of the land to shine through. The result is a wine that is vibrant, alive, and deeply connected to its origins."
+            },
+            {
+              "type": "quote",
+              "content": "To care for the soil is to care for ourselves. We are what we eat, and what we eat comes from the earth."
+            },
+            {
+              "type": "text",
+              "content": "Walking through the vineyards, you can smell the difference. The air is thick with the scent of wild herbs, damp earth, and ripening fruit. It's a sensory experience that no supermarket wine can replicate. This is the taste of patience, of seasons, of respect for nature."
+            },
+            {
+              "type": "poll",
+              "content": {
+                "question": "What is your preferred type of wine?",
+                "options": [
+                  {
+                    "label": "Red (Full-bodied)",
+                    "votes": 45
+                  },
+                  {
+                    "label": "White (Crisp)",
+                    "votes": 30
+                  },
+                  {
+                    "label": "Rosé (Dry)",
+                    "votes": 15
+                  },
+                  {
+                    "label": "Sparkling",
+                    "votes": 10
+                  }
+                ]
+              }
+            },
+            {
+              "type": "map",
+              "content": "Chianti Classico Region",
+              "coordinates": {
+                "lat": 43.4764,
+                "lng": 11.3134
+              }
+            },
+            {
+              "type": "text",
+              "content": "The future of food lies in the past. It lies in the hands of those who understand that we are stewards of the land, not its masters. Every time we choose organic, local, and seasonal food, we are voting for a healthier planet and a richer palate."
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Architectures of Happiness",
+          "author": "Leyla Yilmaz",
+          "date": "Sep 15, 2025",
+          "excerpt": "How our physical surroundings impact our mental state. Designing spaces for joy and connection.",
+          "category": "Design",
+          "subcategory": "Psychology",
+          "tags": [
+            "Design",
+            "Psychology",
+            "Home"
+          ],
+          "imageSeed": "interior-design",
+          "content": [
+            {
+              "type": "text",
+              "content": "We shape our buildings; thereafter they shape us. This famous quote by Winston Churchill rings truer than ever. The spaces we inhabit have a profound impact on our mood, productivity, and overall well-being. But what makes a space 'happy'?"
+            },
+            {
+              "type": "text",
+              "content": "Light, proportion, and materials all play a crucial role. Natural light boosts serotonin, while natural materials like wood and stone ground us. But beyond the physical, it is the emotional resonance of a space that truly matters. A home should be a sanctuary, a place where we can be our most authentic selves."
+            },
+            {
+              "type": "image",
+              "content": "modern-living-room",
+              "caption": "A space designed for light and tranquility."
+            },
+            {
+              "type": "note",
+              "content": "Tip: Use mirrors to reflect natural light into darker corners of your home."
+            },
+            {
+              "type": "text",
+              "content": "Biophilic design—incorporating elements of nature into our built environments—is key. A view of a tree, a potted plant, or even the use of organic patterns can lower stress levels and improve cognitive function. We are biological beings, and we crave connection with the living world."
+            },
+            {
+              "type": "quote",
+              "content": "Architecture is not about math or zoning, it's about visceral emotions."
+            },
+            {
+              "type": "text",
+              "content": "Ultimately, a happy home is one that facilitates connection—with ourselves, with our loved ones, and with the environment. It is a stage for the drama of life, a backdrop for our memories, and a shelter for our dreams."
+            },
+            {
+              "type": "link",
+              "content": "Explore the Neuroarchitecture Institute",
+              "url": "https://www.anfarch.org"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Digital Detox Diaries",
+          "author": "Hans Weber",
+          "date": "Aug 30, 2025",
+          "excerpt": "One month without social media. The withdrawal, the boredom, and the eventual clarity.",
+          "category": "Tech",
+          "subcategory": "Personal",
+          "tags": [
+            "Tech",
+            "Mindfulness",
+            "Personal"
+          ],
+          "imageSeed": "nature-walk",
+          "content": [
+            {
+              "type": "text",
+              "content": "The first week was the hardest. My thumb would instinctively reach for the app icon that wasn't there. The silence was deafening. But as the days went by, something shifted. The fog lifted. I started noticing the colors of the sunset, the taste of my coffee, the sound of the wind in the trees."
+            },
+            {
+              "type": "quote",
+              "content": "Boredom is the birthplace of creativity. When we stop consuming, we start creating."
+            },
+            {
+              "type": "text",
+              "content": "Reclaiming my attention felt like reclaiming my life. I read books, I wrote in my journal, I had long conversations with friends without checking my phone. The world didn't end because I wasn't watching. In fact, it became more vivid."
+            },
+            {
+              "type": "image",
+              "content": "journal-writing",
+              "caption": "Rediscovering the analog joy of pen on paper."
+            },
+            {
+              "type": "checklist",
+              "content": {
+                "items": [
+                  "Delete social media apps from phone",
+                  "Set up 'Do Not Disturb' hours",
+                  "Buy an analog alarm clock",
+                  "Inform close friends/family of your detox"
+                ]
+              },
+              "caption": "Preparation Checklist"
+            },
+            {
+              "type": "text",
+              "content": "We are drowning in information but starving for wisdom. The constant stream of notifications fragments our attention and keeps us in a state of chronic low-level anxiety. Stepping away allowed me to hear my own thoughts again."
+            },
+            {
+              "type": "text",
+              "content": "I'm back online now, but with strict boundaries. I use technology; I don't let it use me. The clarity I gained is too precious to lose again."
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "title": "The Future of Remote Work",
+          "author": "Sarah Jenkins",
+          "date": "Nov 15, 2025",
+          "excerpt": "Asynchronous communication is the key to unlocking global talent and work-life balance.",
+          "category": "Tech",
+          "subcategory": "Work",
+          "tags": [
+            "Tech",
+            "Remote Work",
+            "Productivity"
+          ],
+          "imageSeed": "home-office",
+          "content": [
+            {
+              "type": "text",
+              "content": "The 9-to-5 is dead. Long live the results-oriented work environment. As companies embrace remote-first policies, the focus is shifting from hours logged to output delivered. But this transition requires a fundamental rethink of how we communicate."
+            },
+            {
+              "type": "poll",
+              "content": {
+                "question": "What is your biggest challenge with remote work?",
+                "options": [
+                  {
+                    "label": "Loneliness/Isolation",
+                    "votes": 25
+                  },
+                  {
+                    "label": "Overworking/Burnout",
+                    "votes": 35
+                  },
+                  {
+                    "label": "Communication Issues",
+                    "votes": 20
+                  },
+                  {
+                    "label": "Distractions at Home",
+                    "votes": 20
+                  }
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "content": "Asynchronous communication—writing things down instead of holding meetings—is the superpower of distributed teams. It allows people to work when they are most productive, regardless of their time zone. It creates a written record of decisions. And most importantly, it respects everyone's time."
+            },
+            {
+              "type": "note",
+              "content": "Async doesn't mean 'never talk'. It means 'talk when necessary, write by default'."
+            },
+            {
+              "type": "checklist",
+              "content": {
+                "items": [
+                  "Default to public channels over DMs",
+                  "Record loom videos for complex explanations",
+                  "Write detailed meeting agendas",
+                  "Block out 'deep work' time on your calendar"
+                ]
+              },
+              "caption": "Best Practices for Async Work"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "title": "Minimalist Wardrobe Guide",
+          "author": "Elena K.",
+          "date": "Oct 05, 2025",
+          "excerpt": "Building a capsule wardrobe that sparks joy and reduces decision fatigue.",
+          "category": "Lifestyle",
+          "subcategory": "Fashion",
+          "tags": [
+            "Lifestyle",
+            "Fashion",
+            "Minimalism"
+          ],
+          "imageSeed": "wardrobe",
+          "content": [
+            {
+              "type": "text",
+              "content": "We wear 20% of our clothes 80% of the time. The rest is just clutter. A minimalist wardrobe is not about deprivation; it's about curation. It's about owning fewer, better things that you truly love and that work together seamlessly."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "white-shirt",
+                "denim-jeans",
+                "trench-coat"
+              ],
+              "caption": "The Essentials"
+            },
+            {
+              "type": "checklist",
+              "content": {
+                "items": [
+                  "White Button-Down Shirt",
+                  "Classic Blue Jeans",
+                  "Black Trousers",
+                  "Beige Trench Coat",
+                  "White Sneakers",
+                  "Black Ankle Boots"
+                ]
+              },
+              "caption": "Capsule Wardrobe Starter Pack"
+            },
+            {
+              "type": "text",
+              "content": "Start by decluttering. Take everything out of your closet. Hold each item. Does it fit? Is it in good condition? do you feel confident in it? If the answer is no, let it go. Donate, sell, or recycle."
+            },
+            {
+              "type": "note",
+              "content": "Quality over quantity. Invest in natural fabrics like cotton, linen, wool, and silk."
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "title": "Hidden Gems of Kyoto",
+          "author": "Kenji Tanaka",
+          "date": "Nov 01, 2025",
+          "excerpt": "Beyond the Golden Pavilion. Discovering the quiet temples and secret gardens of Japan's ancient capital.",
+          "category": "Travel",
+          "subcategory": "Japan",
+          "tags": [
+            "Travel",
+            "Japan",
+            "Culture"
+          ],
+          "imageSeed": "kyoto-temple",
+          "content": [
+            {
+              "type": "text",
+              "content": "Kyoto is a city of layers. The famous sites are breathtaking, but the true soul of the city lies in its hidden corners. In the small neighborhood shrines, the moss-covered gardens, and the artisan workshops that have been operating for centuries."
+            },
+            {
+              "type": "map",
+              "content": "Gio-ji Temple (The Moss Temple)",
+              "coordinates": {
+                "lat": 35.0267,
+                "lng": 135.6686
+              }
+            },
+            {
+              "type": "text",
+              "content": "Gio-ji is a small, quiet temple in Arashiyama, known for its lush moss garden. It feels worlds away from the crowds of the Bamboo Grove. The light filtering through the maple trees creates a magical, ethereal atmosphere."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "moss-garden",
+                "bamboo-forest",
+                "tea-ceremony"
+              ],
+              "caption": "Textures of Kyoto"
+            },
+            {
+              "type": "note",
+              "content": "Best time to visit: Early morning or late afternoon to avoid the crowds."
+            },
+            {
+              "type": "text",
+              "content": "Don't rush Kyoto. It is a city best experienced on foot or by bicycle. Get lost in the narrow alleys of Gion. Sit by the Kamo River. Drink matcha in a traditional tea house. Let the city reveal itself to you slowly."
+            }
+          ]
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "title": "A Symphony of Flavors!!!!!!!!!!!!!!!!!!!!!!!",
+          "subject": "Restaurant 'Olea', Limassol",
+          "rating": 4.5,
+          "content": "The tasting menu was a journey through the island's history. Each dish told a story of conquest and trade.",
+          "author": "Elena K."
+        },
+        {
+          "id": 2,
+          "title": "The Book of Whispers",
+          "subject": "Novel by S. Alexiou",
+          "rating": 5,
+          "content": "Hauntingly beautiful. A prose that feels like poetry, exploring memory and loss in a divided city.",
+          "author": "Maria S."
+        },
+        {
+          "id": 3,
+          "title": "Modernist Retreat",
+          "subject": "Hotel 'The Edge', Paphos",
+          "rating": 4,
+          "content": "Stunning architecture, but the service lacked the warmth one expects in the Mediterranean.",
+          "author": "James B."
+        }
+      ],
+      "libraryItems": [
+        {
+          "id": 1,
+          "title": "The Philosophy of Taste",
+          "type": "PDF",
+          "size": "14.5 MB",
+          "year": "2024"
+        },
+        {
+          "id": 2,
+          "title": "Mediterranean Diet: A History",
+          "type": "EPUB",
+          "size": "8.2 MB",
+          "year": "2023"
+        },
+        {
+          "id": 3,
+          "title": "Visual Diaries: 2020-2025",
+          "type": "ZIP",
+          "size": "456 MB",
+          "year": "2025"
+        },
+        {
+          "id": 4,
+          "title": "Sounds of the City: Audio Archive",
+          "type": "MP3",
+          "size": "120 MB",
+          "year": "2024"
+        }
+      ]
+    },
+    "TR": {
+      "items": [
+        {
+          "id": 2,
+          "title": "Urban Solitude",
+          "subtitle": "Berlin, Germany",
+          "fig": "FIG. 02",
+          "description": "Finding peace in the concrete rhythm of the city.",
+          "imageSeed": "berlin-street"
+        },
+        {
+          "id": 3,
+          "title": "Mediterranean Feast",
+          "subtitle": "Sicily, Italy",
+          "fig": "FIG. 03",
+          "description": "A celebration of simple ingredients: olive oil, tomatoes, and sea salt.",
+          "imageSeed": "italian-food"
+        },
+        {
+          "id": 4,
+          "title": "Mountain Breath",
+          "subtitle": "Carpathians, Ukraine",
+          "fig": "FIG. 04",
+          "description": "The crisp air of the highlands and the scent of pine forests.",
+          "imageSeed": "mountains"
+        },
+        {
+          "id": 5,
+          "title": "Siesta Shadows",
+          "subtitle": "Seville, Spain",
+          "fig": "FIG. 05",
+          "description": "The slow passage of time during a hot afternoon.",
+          "imageSeed": "shadows-wall"
+        },
+        {
+          "id": 6,
+          "title": "Velvet Night",
+          "subtitle": "Istanbul, Turkey",
+          "fig": "FIG. 06",
+          "description": "Lights reflecting on the Bosphorus as the city comes alive.",
+          "imageSeed": "istanbul-night"
+        }
+      ],
+      "articles": [
+        {
+          "id": 1,
+          "title": "The Art of Slow Living!",
+          "author": "Masha Peut",
+          "role": "Editor-in-Chief",
+          "date": "Oct 12, 2025",
+          "excerpt": "Why doing less might a!ctually mean living more. A journey into the philosophy of slowing down in a hyper-connected world.",
+          "category": "Lifestyle",
+          "subcategory": "Philosophy",
+          "tags": [
+            "Lifestyle",
+            "Philosophy",
+            "Wellness"
+          ],
+          "imageSeed": "slow-living",
+          "content": [
+            {
+              "type": "text",
+              "content": "In a world that constantly demands our attention, the act of slowing down has become a radical form of resistance. It is not merely about doing less, but about doing things with intention, presence, and care. The philosophy of slow living invites us to savor the mundane, to find beauty in the ordinary, and to reconnect with the natural rhythms of life."
+            },
+            {
+              "type": "note",
+              "content": "Slow living is not about being lazy. It's about being intentional with your time and energy."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "slow-morning",
+                "coffee-book",
+                "rainy-window"
+              ],
+              "caption": "Moments of stillness in everyday life."
+            },
+            {
+              "type": "quote",
+              "content": "Speed is irrelevant if you are going in the wrong direction. The true luxury of our time is the ability to pause."
+            },
+            {
+              "type": "text",
+              "content": "My journey began in a small village in Tuscany, where time seemed to stretch endlessly. The locals didn't rush through their meals; they celebrated them. Lunch was not a break from work, but the centerpiece of the day. This shift in perspective changed everything for me. I realized that urgency is often an illusion we create for ourselves."
+            },
+            {
+              "type": "image",
+              "content": "tuscany-landscape",
+              "caption": "The rolling hills of Val d'Orcia, where time stands still."
+            },
+            {
+              "type": "text",
+              "content": "We often confuse busyness with productivity, and speed with efficiency. But true creativity and deep thought require space. They require the 'unproductive' moments of staring out a window, walking without a destination, or simply sitting in silence. It is in these pauses that the magic happens."
+            },
+            {
+              "type": "audio",
+              "content": "https://actions.google.com/sounds/v1/ambiences/forest_morning.ogg",
+              "caption": "Soundscape: Morning in the Tuscan hills."
+            },
+            {
+              "type": "checklist",
+              "content": {
+                "items": [
+                  "Turn off notifications for one hour a day",
+                  "Eat one meal without distractions",
+                  "Spend 10 minutes doing absolutely nothing",
+                  "Read a physical book before bed"
+                ]
+              },
+              "caption": "Daily Slow Living Practices"
+            },
+            {
+              "type": "text",
+              "content": "Adopting a slow mindset doesn't mean moving at a snail's pace in everything we do. It means assigning the correct speed to each activity. It means eating slowly to taste the food, listening deeply to understand rather than to reply, and working with focus rather than frantic multitasking."
+            },
+            {
+              "type": "map",
+              "content": "Val d'Orcia, Tuscany",
+              "coordinates": {
+                "lat": 43.0766,
+                "lng": 11.6146
+              }
+            },
+            {
+              "type": "text",
+              "content": "Start small. Dedicate one hour a week to doing absolutely nothing. Turn off your phone. Watch the clouds. Brew a cup of tea and drink it without reading the news. Reclaim your time, and you will reclaim your life."
+            },
+            {
+              "type": "link",
+              "content": "Read more about the Slow Food Movement",
+              "url": "https://www.slowfood.com"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Taste of the Earth",
+          "author": "Marco Rossi",
+          "date": "Sep 28, 2025",
+          "excerpt": "Exploring the connection between soil health and the flavors on our plate. A visit to organic vineyards in Tuscany.",
+          "category": "Food",
+          "subcategory": "Travel",
+          "tags": [
+            "Food",
+            "Travel",
+            "Sustainability"
+          ],
+          "imageSeed": "vineyard",
+          "content": [
+            {
+              "type": "text",
+              "content": "Wine is bottled poetry, but it is also bottled geography. The concept of 'terroir' speaks to the profound connection between the land and the produce it yields. In the heart of Chianti, I discovered that the health of the soil is directly reflected in the complexity of the wine."
+            },
+            {
+              "type": "image",
+              "content": "grapes",
+              "caption": "Sangiovese grapes ripening under the Tuscan sun."
+            },
+            {
+              "type": "text",
+              "content": "Organic farming is not just a trend here; it is a return to tradition. By avoiding synthetic pesticides and fertilizers, winemakers are allowing the true character of the land to shine through. The result is a wine that is vibrant, alive, and deeply connected to its origins."
+            },
+            {
+              "type": "quote",
+              "content": "To care for the soil is to care for ourselves. We are what we eat, and what we eat comes from the earth."
+            },
+            {
+              "type": "text",
+              "content": "Walking through the vineyards, you can smell the difference. The air is thick with the scent of wild herbs, damp earth, and ripening fruit. It's a sensory experience that no supermarket wine can replicate. This is the taste of patience, of seasons, of respect for nature."
+            },
+            {
+              "type": "poll",
+              "content": {
+                "question": "What is your preferred type of wine?",
+                "options": [
+                  {
+                    "label": "Red (Full-bodied)",
+                    "votes": 45
+                  },
+                  {
+                    "label": "White (Crisp)",
+                    "votes": 30
+                  },
+                  {
+                    "label": "Rosé (Dry)",
+                    "votes": 15
+                  },
+                  {
+                    "label": "Sparkling",
+                    "votes": 10
+                  }
+                ]
+              }
+            },
+            {
+              "type": "map",
+              "content": "Chianti Classico Region",
+              "coordinates": {
+                "lat": 43.4764,
+                "lng": 11.3134
+              }
+            },
+            {
+              "type": "text",
+              "content": "The future of food lies in the past. It lies in the hands of those who understand that we are stewards of the land, not its masters. Every time we choose organic, local, and seasonal food, we are voting for a healthier planet and a richer palate."
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Architectures of Happiness",
+          "author": "Leyla Yilmaz",
+          "date": "Sep 15, 2025",
+          "excerpt": "How our physical surroundings impact our mental state. Designing spaces for joy and connection.",
+          "category": "Design",
+          "subcategory": "Psychology",
+          "tags": [
+            "Design",
+            "Psychology",
+            "Home"
+          ],
+          "imageSeed": "interior-design",
+          "content": [
+            {
+              "type": "text",
+              "content": "We shape our buildings; thereafter they shape us. This famous quote by Winston Churchill rings truer than ever. The spaces we inhabit have a profound impact on our mood, productivity, and overall well-being. But what makes a space 'happy'?"
+            },
+            {
+              "type": "text",
+              "content": "Light, proportion, and materials all play a crucial role. Natural light boosts serotonin, while natural materials like wood and stone ground us. But beyond the physical, it is the emotional resonance of a space that truly matters. A home should be a sanctuary, a place where we can be our most authentic selves."
+            },
+            {
+              "type": "image",
+              "content": "modern-living-room",
+              "caption": "A space designed for light and tranquility."
+            },
+            {
+              "type": "note",
+              "content": "Tip: Use mirrors to reflect natural light into darker corners of your home."
+            },
+            {
+              "type": "text",
+              "content": "Biophilic design—incorporating elements of nature into our built environments—is key. A view of a tree, a potted plant, or even the use of organic patterns can lower stress levels and improve cognitive function. We are biological beings, and we crave connection with the living world."
+            },
+            {
+              "type": "quote",
+              "content": "Architecture is not about math or zoning, it's about visceral emotions."
+            },
+            {
+              "type": "text",
+              "content": "Ultimately, a happy home is one that facilitates connection—with ourselves, with our loved ones, and with the environment. It is a stage for the drama of life, a backdrop for our memories, and a shelter for our dreams."
+            },
+            {
+              "type": "link",
+              "content": "Explore the Neuroarchitecture Institute",
+              "url": "https://www.anfarch.org"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Digital Detox Diaries",
+          "author": "Hans Weber",
+          "date": "Aug 30, 2025",
+          "excerpt": "One month without social media. The withdrawal, the boredom, and the eventual clarity.",
+          "category": "Tech",
+          "subcategory": "Personal",
+          "tags": [
+            "Tech",
+            "Mindfulness",
+            "Personal"
+          ],
+          "imageSeed": "nature-walk",
+          "content": [
+            {
+              "type": "text",
+              "content": "The first week was the hardest. My thumb would instinctively reach for the app icon that wasn't there. The silence was deafening. But as the days went by, something shifted. The fog lifted. I started noticing the colors of the sunset, the taste of my coffee, the sound of the wind in the trees."
+            },
+            {
+              "type": "quote",
+              "content": "Boredom is the birthplace of creativity. When we stop consuming, we start creating."
+            },
+            {
+              "type": "text",
+              "content": "Reclaiming my attention felt like reclaiming my life. I read books, I wrote in my journal, I had long conversations with friends without checking my phone. The world didn't end because I wasn't watching. In fact, it became more vivid."
+            },
+            {
+              "type": "image",
+              "content": "journal-writing",
+              "caption": "Rediscovering the analog joy of pen on paper."
+            },
+            {
+              "type": "checklist",
+              "content": {
+                "items": [
+                  "Delete social media apps from phone",
+                  "Set up 'Do Not Disturb' hours",
+                  "Buy an analog alarm clock",
+                  "Inform close friends/family of your detox"
+                ]
+              },
+              "caption": "Preparation Checklist"
+            },
+            {
+              "type": "text",
+              "content": "We are drowning in information but starving for wisdom. The constant stream of notifications fragments our attention and keeps us in a state of chronic low-level anxiety. Stepping away allowed me to hear my own thoughts again."
+            },
+            {
+              "type": "text",
+              "content": "I'm back online now, but with strict boundaries. I use technology; I don't let it use me. The clarity I gained is too precious to lose again."
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "title": "The Future of Remote Work",
+          "author": "Sarah Jenkins",
+          "date": "Nov 15, 2025",
+          "excerpt": "Asynchronous communication is the key to unlocking global talent and work-life balance.",
+          "category": "Tech",
+          "subcategory": "Work",
+          "tags": [
+            "Tech",
+            "Remote Work",
+            "Productivity"
+          ],
+          "imageSeed": "home-office",
+          "content": [
+            {
+              "type": "text",
+              "content": "The 9-to-5 is dead. Long live the results-oriented work environment. As companies embrace remote-first policies, the focus is shifting from hours logged to output delivered. But this transition requires a fundamental rethink of how we communicate."
+            },
+            {
+              "type": "poll",
+              "content": {
+                "question": "What is your biggest challenge with remote work?",
+                "options": [
+                  {
+                    "label": "Loneliness/Isolation",
+                    "votes": 25
+                  },
+                  {
+                    "label": "Overworking/Burnout",
+                    "votes": 35
+                  },
+                  {
+                    "label": "Communication Issues",
+                    "votes": 20
+                  },
+                  {
+                    "label": "Distractions at Home",
+                    "votes": 20
+                  }
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "content": "Asynchronous communication—writing things down instead of holding meetings—is the superpower of distributed teams. It allows people to work when they are most productive, regardless of their time zone. It creates a written record of decisions. And most importantly, it respects everyone's time."
+            },
+            {
+              "type": "note",
+              "content": "Async doesn't mean 'never talk'. It means 'talk when necessary, write by default'."
+            },
+            {
+              "type": "checklist",
+              "content": {
+                "items": [
+                  "Default to public channels over DMs",
+                  "Record loom videos for complex explanations",
+                  "Write detailed meeting agendas",
+                  "Block out 'deep work' time on your calendar"
+                ]
+              },
+              "caption": "Best Practices for Async Work"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "title": "Minimalist Wardrobe Guide",
+          "author": "Elena K.",
+          "date": "Oct 05, 2025",
+          "excerpt": "Building a capsule wardrobe that sparks joy and reduces decision fatigue.",
+          "category": "Lifestyle",
+          "subcategory": "Fashion",
+          "tags": [
+            "Lifestyle",
+            "Fashion",
+            "Minimalism"
+          ],
+          "imageSeed": "wardrobe",
+          "content": [
+            {
+              "type": "text",
+              "content": "We wear 20% of our clothes 80% of the time. The rest is just clutter. A minimalist wardrobe is not about deprivation; it's about curation. It's about owning fewer, better things that you truly love and that work together seamlessly."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "white-shirt",
+                "denim-jeans",
+                "trench-coat"
+              ],
+              "caption": "The Essentials"
+            },
+            {
+              "type": "checklist",
+              "content": {
+                "items": [
+                  "White Button-Down Shirt",
+                  "Classic Blue Jeans",
+                  "Black Trousers",
+                  "Beige Trench Coat",
+                  "White Sneakers",
+                  "Black Ankle Boots"
+                ]
+              },
+              "caption": "Capsule Wardrobe Starter Pack"
+            },
+            {
+              "type": "text",
+              "content": "Start by decluttering. Take everything out of your closet. Hold each item. Does it fit? Is it in good condition? do you feel confident in it? If the answer is no, let it go. Donate, sell, or recycle."
+            },
+            {
+              "type": "note",
+              "content": "Quality over quantity. Invest in natural fabrics like cotton, linen, wool, and silk."
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "title": "Hidden Gems of Kyoto",
+          "author": "Kenji Tanaka",
+          "date": "Nov 01, 2025",
+          "excerpt": "Beyond the Golden Pavilion. Discovering the quiet temples and secret gardens of Japan's ancient capital.",
+          "category": "Travel",
+          "subcategory": "Japan",
+          "tags": [
+            "Travel",
+            "Japan",
+            "Culture"
+          ],
+          "imageSeed": "kyoto-temple",
+          "content": [
+            {
+              "type": "text",
+              "content": "Kyoto is a city of layers. The famous sites are breathtaking, but the true soul of the city lies in its hidden corners. In the small neighborhood shrines, the moss-covered gardens, and the artisan workshops that have been operating for centuries."
+            },
+            {
+              "type": "map",
+              "content": "Gio-ji Temple (The Moss Temple)",
+              "coordinates": {
+                "lat": 35.0267,
+                "lng": 135.6686
+              }
+            },
+            {
+              "type": "text",
+              "content": "Gio-ji is a small, quiet temple in Arashiyama, known for its lush moss garden. It feels worlds away from the crowds of the Bamboo Grove. The light filtering through the maple trees creates a magical, ethereal atmosphere."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "moss-garden",
+                "bamboo-forest",
+                "tea-ceremony"
+              ],
+              "caption": "Textures of Kyoto"
+            },
+            {
+              "type": "note",
+              "content": "Best time to visit: Early morning or late afternoon to avoid the crowds."
+            },
+            {
+              "type": "text",
+              "content": "Don't rush Kyoto. It is a city best experienced on foot or by bicycle. Get lost in the narrow alleys of Gion. Sit by the Kamo River. Drink matcha in a traditional tea house. Let the city reveal itself to you slowly."
+            }
+          ]
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "title": "A Symphony of Flavors!!!!!!!!!!!!!!!!!!!!!!!",
+          "subject": "Restaurant 'Olea', Limassol",
+          "rating": 4.5,
+          "content": "The tasting menu was a journey through the island's history. Each dish told a story of conquest and trade.",
+          "author": "Elena K."
+        },
+        {
+          "id": 2,
+          "title": "The Book of Whispers",
+          "subject": "Novel by S. Alexiou",
+          "rating": 5,
+          "content": "Hauntingly beautiful. A prose that feels like poetry, exploring memory and loss in a divided city.",
+          "author": "Maria S."
+        },
+        {
+          "id": 3,
+          "title": "Modernist Retreat",
+          "subject": "Hotel 'The Edge', Paphos",
+          "rating": 4,
+          "content": "Stunning architecture, but the service lacked the warmth one expects in the Mediterranean.",
+          "author": "James B."
+        }
+      ],
+      "libraryItems": [
+        {
+          "id": 1,
+          "title": "The Philosophy of Taste",
+          "type": "PDF",
+          "size": "14.5 MB",
+          "year": "2024"
+        },
+        {
+          "id": 2,
+          "title": "Mediterranean Diet: A History",
+          "type": "EPUB",
+          "size": "8.2 MB",
+          "year": "2023"
+        },
+        {
+          "id": 3,
+          "title": "Visual Diaries: 2020-2025",
+          "type": "ZIP",
+          "size": "456 MB",
+          "year": "2025"
+        },
+        {
+          "id": 4,
+          "title": "Sounds of the City: Audio Archive",
+          "type": "MP3",
+          "size": "120 MB",
+          "year": "2024"
+        }
+      ]
     }
   }
 }
