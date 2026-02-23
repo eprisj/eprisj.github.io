@@ -61,7 +61,9 @@ const uploadDropZone = byId('uploadDropZone');
 const imageFileInput = byId('imageFileInput');
 const pickImageBtn = byId('pickImageBtn');
 const uploadedImageUrlInput = byId('uploadedImageUrl');
+const uploadedImagePagesUrlInput = byId('uploadedImagePagesUrl');
 const useUploadedUrlBtn = byId('useUploadedUrlBtn');
+const useUploadedPagesUrlBtn = byId('useUploadedPagesUrlBtn');
 const copyUploadedUrlBtn = byId('copyUploadedUrlBtn');
 const uploadHintEl = byId('uploadHint');
 
@@ -81,6 +83,7 @@ const interactiveButtons = [
   applyEntryBtn,
   pickImageBtn,
   useUploadedUrlBtn,
+  useUploadedPagesUrlBtn,
   copyUploadedUrlBtn
 ];
 
@@ -158,6 +161,7 @@ function bindEvents() {
     pickImageFile();
   });
   useUploadedUrlBtn.addEventListener('click', useUploadedUrlInCurrentEntry);
+  useUploadedPagesUrlBtn.addEventListener('click', useUploadedPagesUrlInCurrentEntry);
   copyUploadedUrlBtn.addEventListener('click', copyUploadedUrl);
   imageFileInput.addEventListener('change', onImageFileChange);
 
@@ -407,6 +411,8 @@ function resetSavedSettings() {
   });
 
   editor.value = '';
+  uploadedImageUrlInput.value = '';
+  uploadedImagePagesUrlInput.value = '';
   setLastSyncedSnapshotFromText('');
   updateStatsFromEditor();
   refreshVisualEditor();
@@ -526,7 +532,7 @@ function syncRepoSummary() {
 
 function syncUploadHint() {
   const cfg = getConfig();
-  uploadHintEl.textContent = `Файл будет загружен в папку "${cfg.uploadDir}". После деплоя фото станет доступно на сайте.`;
+  uploadHintEl.textContent = `Файл загрузится в "${cfg.uploadDir}". Быстрый URL работает сразу, URL сайта начнет работать после деплоя.`;
 }
 
 function escapeHtml(value) {
@@ -725,14 +731,29 @@ function injectUploadedUrlIntoCurrentEntry(url) {
   return true;
 }
 
+function applyUrlToCurrentEntry(url, label) {
+  const normalized = String(url || '').trim();
+  if (!normalized) {
+    throw new Error(`Сначала загрузите фото, чтобы появился ${label}.`);
+  }
+
+  const updated = injectUploadedUrlIntoCurrentEntry(normalized);
+  if (!updated) {
+    throw new Error('Сейчас нет поля URL изображения. Откройте запись в разделах "Статьи" или "Галерея".');
+  }
+
+  applyVisualChanges();
+  setStatus('success', `${label} подставлен и применен в текущей записи. Теперь нажмите "Сохранить в GitHub".`);
+}
+
 async function copyUploadedUrl() {
   try {
     const url = uploadedImageUrlInput.value.trim();
     if (!url) {
-      throw new Error('Сначала загрузите фото, чтобы появился URL.');
+      throw new Error('Сначала загрузите фото, чтобы появился быстрый URL.');
     }
     await copyToClipboard(url);
-    setStatus('success', 'URL загруженного фото скопирован.');
+    setStatus('success', 'Быстрый URL загруженного фото скопирован.');
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   }
@@ -740,17 +761,15 @@ async function copyUploadedUrl() {
 
 function useUploadedUrlInCurrentEntry() {
   try {
-    const url = uploadedImageUrlInput.value.trim();
-    if (!url) {
-      throw new Error('Сначала загрузите фото, чтобы появился URL.');
-    }
+    applyUrlToCurrentEntry(uploadedImageUrlInput.value, 'Быстрый URL');
+  } catch (error) {
+    setStatus('error', getErrorMessage(error));
+  }
+}
 
-    const updated = injectUploadedUrlIntoCurrentEntry(url);
-    if (!updated) {
-      throw new Error('Сейчас нет поля URL изображения. Откройте запись в разделах "Статьи" или "Галерея".');
-    }
-
-    setStatus('success', 'URL подставлен в текущую запись. Нажмите "Применить изменения".');
+function useUploadedPagesUrlInCurrentEntry() {
+  try {
+    applyUrlToCurrentEntry(uploadedImagePagesUrlInput.value, 'URL сайта');
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   }
@@ -778,7 +797,7 @@ async function uploadImageToGitHub(file) {
     const base64Content = await readFileAsBase64(file);
 
     const putUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${encodePath(repoPath)}`;
-    await githubRequest(putUrl, {
+    const uploadResult = await githubRequest(putUrl, {
       method: 'PUT',
       headers: {
         ...headers(cfg.token),
@@ -791,15 +810,20 @@ async function uploadImageToGitHub(file) {
       })
     });
 
+    const immediateUrl = String(uploadResult?.content?.download_url || '').trim();
     const websiteUrl = buildPagesAssetUrl(cfg, repoPath);
-    const finalUrl = websiteUrl ? `${websiteUrl}?v=${Date.now()}` : '';
-    uploadedImageUrlInput.value = finalUrl;
+    const websiteUrlWithCache = websiteUrl ? `${websiteUrl}?v=${Date.now()}` : '';
 
-    const hasApplied = finalUrl ? injectUploadedUrlIntoCurrentEntry(finalUrl) : false;
+    uploadedImageUrlInput.value = immediateUrl || websiteUrlWithCache;
+    uploadedImagePagesUrlInput.value = websiteUrlWithCache;
+
+    const inserted = immediateUrl || websiteUrlWithCache;
+    const hasApplied = inserted ? injectUploadedUrlIntoCurrentEntry(inserted) : false;
     if (hasApplied) {
-      setStatus('success', `Фото загружено. URL сразу подставлен в запись. Не забудьте нажать "Применить изменения".`);
+      applyVisualChanges();
+      setStatus('success', 'Фото загружено. Быстрый URL подставлен и применен в текущей записи.');
     } else {
-      setStatus('success', 'Фото загружено. Теперь можно вставить URL в нужное поле.');
+      setStatus('success', 'Фото загружено. Выберите, какой URL подставить в запись.');
     }
   } catch (error) {
     setStatus('error', getErrorMessage(error));

@@ -163,13 +163,18 @@
             </div>
 
             <label class="full">
-              URL загруженного файла
-              <input id="uploadedImageUrl" readonly placeholder="После загрузки здесь появится ссылка" />
+              URL для вставки (работает сразу)
+              <input id="uploadedImageUrl" readonly placeholder="После загрузки здесь появится прямая ссылка на файл" />
+            </label>
+            <label class="full">
+              URL на вашем сайте (после деплоя)
+              <input id="uploadedImagePagesUrl" readonly placeholder="После деплоя будет доступен URL на вашем домене" />
             </label>
 
             <div class="upload-buttons">
-              <button id="useUploadedUrlBtn" class="btn" type="button">Подставить URL в текущую запись</button>
-              <button id="copyUploadedUrlBtn" class="btn" type="button">Скопировать URL</button>
+              <button id="useUploadedUrlBtn" class="btn" type="button">Подставить быстрый URL</button>
+              <button id="useUploadedPagesUrlBtn" class="btn" type="button">Подставить URL сайта</button>
+              <button id="copyUploadedUrlBtn" class="btn" type="button">Скопировать быстрый URL</button>
             </div>
 
             <p id="uploadHint" class="upload-hint">Файл будет загружен в папку из поля «Папка для загружаемых фото».</p>
