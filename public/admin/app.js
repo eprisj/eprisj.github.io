@@ -66,6 +66,13 @@ const useUploadedUrlBtn = byId('useUploadedUrlBtn');
 const useUploadedPagesUrlBtn = byId('useUploadedPagesUrlBtn');
 const copyUploadedUrlBtn = byId('copyUploadedUrlBtn');
 const uploadHintEl = byId('uploadHint');
+const monitorRunBtn = byId('monitorRunBtn');
+const monitorSummaryEl = byId('monitorSummary');
+const monitorGridEl = byId('monitorGrid');
+const monitorTimestampEl = byId('monitorTimestamp');
+const openRepoLink = byId('openRepoLink');
+const openActionsLink = byId('openActionsLink');
+const openPagesLink = byId('openPagesLink');
 
 const interactiveButtons = [
   loadBtn,
@@ -84,7 +91,8 @@ const interactiveButtons = [
   pickImageBtn,
   useUploadedUrlBtn,
   useUploadedPagesUrlBtn,
-  copyUploadedUrlBtn
+  copyUploadedUrlBtn,
+  monitorRunBtn
 ];
 
 let currentSha = '';
@@ -92,6 +100,7 @@ let lastSyncedSnapshot = '';
 let pendingVisualEntryId = null;
 let visualRefreshTimer = null;
 let draftSaveTimer = null;
+let monitorTimer = null;
 
 init();
 
@@ -108,10 +117,12 @@ function init() {
   bindEvents();
   syncRepoSummary();
   syncUploadHint();
+  syncExternalLinks();
   updateStatsFromEditor();
   refreshVisualEditor();
   updateEditorState();
   saveSettings();
+  queueMonitoringChecks();
 
   if (getConfig().autoLoadOnStart) {
     loadFromGitHub();
@@ -164,6 +175,7 @@ function bindEvents() {
   useUploadedPagesUrlBtn.addEventListener('click', useUploadedPagesUrlInCurrentEntry);
   copyUploadedUrlBtn.addEventListener('click', copyUploadedUrl);
   imageFileInput.addEventListener('change', onImageFileChange);
+  monitorRunBtn.addEventListener('click', runMonitoringChecks);
 
   uploadDropZone.addEventListener('click', pickImageFile);
   uploadDropZone.addEventListener('keydown', (event) => {
@@ -195,11 +207,15 @@ function bindEvents() {
       saveSettings();
       syncRepoSummary();
       syncUploadHint();
+      syncExternalLinks();
+      queueMonitoringChecks();
     });
     input.addEventListener('input', () => {
       saveSettings();
       syncRepoSummary();
       syncUploadHint();
+      syncExternalLinks();
+      queueMonitoringChecks();
     });
   }
 
@@ -208,6 +224,7 @@ function bindEvents() {
     updateEditorState();
     scheduleDraftSave();
     scheduleVisualRefresh();
+    queueMonitoringChecks();
   });
 
   document.addEventListener('keydown', (event) => {
@@ -251,6 +268,16 @@ function scheduleVisualRefresh() {
   visualRefreshTimer = setTimeout(() => {
     refreshVisualEditor();
   }, 180);
+}
+
+function queueMonitoringChecks(delay = 450) {
+  if (monitorTimer) {
+    clearTimeout(monitorTimer);
+  }
+
+  monitorTimer = setTimeout(() => {
+    runMonitoringChecks();
+  }, delay);
 }
 
 function normalizeJsonText(text) {
@@ -393,6 +420,7 @@ function applyDefaults(showStatus) {
   currentSha = '';
   syncRepoSummary();
   syncUploadHint();
+  syncExternalLinks();
   saveSettings();
 
   if (showStatus) {
@@ -418,6 +446,7 @@ function resetSavedSettings() {
   refreshVisualEditor();
   syncRepoSummary();
   syncUploadHint();
+  syncExternalLinks();
   saveSettings();
   setStatus('success', 'Сохраненные настройки сброшены к значениям по умолчанию.');
 }
@@ -509,6 +538,13 @@ function getPagesBaseUrl(owner, repo) {
   return `https://${owner}.github.io/${repo}`;
 }
 
+function getRepoWebUrl(owner, repo) {
+  if (!owner || !repo) {
+    return '';
+  }
+  return `https://github.com/${owner}/${repo}`;
+}
+
 function syncRepoSummary() {
   const cfg = getConfig();
   const pagesUrl = getPagesBaseUrl(cfg.owner, cfg.repo);
@@ -533,6 +569,21 @@ function syncRepoSummary() {
 function syncUploadHint() {
   const cfg = getConfig();
   uploadHintEl.textContent = `Файл загрузится в "${cfg.uploadDir}". Быстрый URL работает сразу, URL сайта начнет работать после деплоя.`;
+}
+
+function syncExternalLinks() {
+  const cfg = getConfig();
+  const repoUrl = getRepoWebUrl(cfg.owner, cfg.repo);
+  const actionsUrl = repoUrl ? `${repoUrl}/actions` : '#';
+  const pagesUrl = getPagesBaseUrl(cfg.owner, cfg.repo) || '#';
+
+  openRepoLink.href = repoUrl || '#';
+  openActionsLink.href = actionsUrl;
+  openPagesLink.href = pagesUrl;
+
+  openRepoLink.setAttribute('aria-disabled', repoUrl ? 'false' : 'true');
+  openActionsLink.setAttribute('aria-disabled', repoUrl ? 'false' : 'true');
+  openPagesLink.setAttribute('aria-disabled', pagesUrl !== '#' ? 'false' : 'true');
 }
 
 function escapeHtml(value) {
@@ -1039,6 +1090,399 @@ function updateStats(data) {
     .join('');
 }
 
+const MONITOR_LEVEL_ORDER = {
+  info: 0,
+  ok: 1,
+  warn: 2,
+  error: 3
+};
+
+function getHigherMonitorLevel(left, right) {
+  const leftScore = MONITOR_LEVEL_ORDER[left] ?? 0;
+  const rightScore = MONITOR_LEVEL_ORDER[right] ?? 0;
+  return leftScore >= rightScore ? left : right;
+}
+
+function createMonitorResult(level, title, detail, items = [], linkUrl = '', linkLabel = '') {
+  return {
+    level,
+    title,
+    detail,
+    items,
+    linkUrl,
+    linkLabel
+  };
+}
+
+function monitorLabel(level) {
+  if (level === 'ok') return 'OK';
+  if (level === 'warn') return 'Внимание';
+  if (level === 'error') return 'Ошибка';
+  return 'Инфо';
+}
+
+function renderMonitoringResults(results) {
+  const counts = {
+    ok: 0,
+    warn: 0,
+    error: 0,
+    info: 0
+  };
+
+  for (const result of results) {
+    counts[result.level] = (counts[result.level] || 0) + 1;
+  }
+
+  monitorGridEl.innerHTML = results
+    .map((result) => {
+      const list = Array.isArray(result.items) && result.items.length
+        ? `<ul class="monitor-card-list">${result.items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`
+        : '';
+
+      const link = result.linkUrl
+        ? `<a class="monitor-card-link" target="_blank" rel="noreferrer" href="${escapeHtml(result.linkUrl)}">${escapeHtml(result.linkLabel || 'Открыть')}</a>`
+        : '';
+
+      return `
+        <article class="monitor-card ${escapeHtml(result.level)}">
+          <div class="monitor-card-head">
+            <h3 class="monitor-card-title">${escapeHtml(result.title)}</h3>
+            <span class="monitor-pill ${escapeHtml(result.level)}">${monitorLabel(result.level)}</span>
+          </div>
+          <p class="monitor-card-detail">${escapeHtml(result.detail)}</p>
+          ${list}
+          ${link}
+        </article>
+      `;
+    })
+    .join('');
+
+  const summaryLevel = counts.error > 0 ? 'error' : counts.warn > 0 ? 'warn' : 'ok';
+  monitorSummaryEl.className = `monitor-summary is-${summaryLevel}`;
+  monitorSummaryEl.textContent = `OK: ${counts.ok} · Внимание: ${counts.warn} · Ошибки: ${counts.error} · Инфо: ${counts.info}`;
+  monitorTimestampEl.textContent = `Последняя проверка: ${new Date().toLocaleString('ru-RU')}`;
+}
+
+function collectDuplicateIdIssues(entries, sectionLabel) {
+  const seen = new Set();
+  const duplicates = new Set();
+
+  for (const entry of entries || []) {
+    const id = Number(entry?.id);
+    if (!Number.isFinite(id)) {
+      continue;
+    }
+    if (seen.has(id)) {
+      duplicates.add(id);
+    } else {
+      seen.add(id);
+    }
+  }
+
+  if (!duplicates.size) {
+    return [];
+  }
+
+  return [`${sectionLabel}: дубли ID (${Array.from(duplicates).join(', ')})`];
+}
+
+function runContentQualityChecks(data) {
+  if (!data) {
+    return createMonitorResult('error', 'Качество контента', 'JSON некорректный. Сначала исправьте структуру.', []);
+  }
+
+  const issues = [];
+  const warnings = [];
+
+  const sections = [
+    ['items', 'Галерея'],
+    ['articles', 'Статьи'],
+    ['reviews', 'Обзоры'],
+    ['libraryItems', 'Библиотека']
+  ];
+
+  for (const [sectionKey, sectionLabel] of sections) {
+    if (!Array.isArray(data[sectionKey])) {
+      issues.push(`${sectionLabel}: отсутствует массив ${sectionKey}`);
+      continue;
+    }
+    warnings.push(...collectDuplicateIdIssues(data[sectionKey], sectionLabel));
+  }
+
+  const translations = data.translations && typeof data.translations === 'object' ? data.translations : {};
+  const baseTranslation = translations[DEFAULT_LANGUAGE] && typeof translations[DEFAULT_LANGUAGE] === 'object'
+    ? translations[DEFAULT_LANGUAGE]
+    : {};
+  const baseKeys = Object.keys(baseTranslation);
+
+  for (const [lang, bucket] of Object.entries(translations)) {
+    if (lang === DEFAULT_LANGUAGE || !bucket || typeof bucket !== 'object') {
+      continue;
+    }
+    const missing = baseKeys.filter((key) => !String(bucket[key] ?? '').trim());
+    if (missing.length) {
+      warnings.push(`${lang}: не заполнено ключей интерфейса — ${missing.length}`);
+    }
+  }
+
+  const localized = data.localizedCollections && typeof data.localizedCollections === 'object'
+    ? data.localizedCollections
+    : {};
+
+  for (const [lang, bucket] of Object.entries(localized)) {
+    if (!bucket || typeof bucket !== 'object') {
+      issues.push(`${lang}: локализованная коллекция повреждена.`);
+      continue;
+    }
+
+    for (const [sectionKey, sectionLabel] of sections) {
+      if (!Array.isArray(bucket[sectionKey])) {
+        warnings.push(`${lang}: нет массива ${sectionKey}, используется EN fallback.`);
+        continue;
+      }
+
+      if (Array.isArray(data[sectionKey]) && bucket[sectionKey].length !== data[sectionKey].length) {
+        warnings.push(`${lang}/${sectionLabel}: ${bucket[sectionKey].length} записей вместо ${data[sectionKey].length}`);
+      }
+
+      warnings.push(...collectDuplicateIdIssues(bucket[sectionKey], `${lang}/${sectionLabel}`));
+    }
+  }
+
+  const level = issues.length > 0 ? 'error' : warnings.length > 0 ? 'warn' : 'ok';
+  const detail = level === 'ok'
+    ? 'Ключевые проверки структуры, ID и переводов пройдены.'
+    : issues.length > 0
+      ? 'Найдены критичные проблемы в структуре контента.'
+      : 'Есть предупреждения по переводам или локализованным коллекциям.';
+
+  return createMonitorResult(level, 'Качество контента', detail, [...issues, ...warnings].slice(0, 8));
+}
+
+function runMediaQualityChecks(data) {
+  if (!data) {
+    return createMonitorResult('warn', 'Медиа и изображения', 'Проверка медиа ограничена, пока JSON невалиден.', []);
+  }
+
+  const warnings = [];
+  const errors = [];
+
+  const checkRecords = (entries, sectionLabel) => {
+    for (const entry of entries || []) {
+      const imageUrl = String(entry?.imageUrl || '').trim();
+      const imageSeed = String(entry?.imageSeed || '').trim();
+      if (!imageUrl && !imageSeed) {
+        warnings.push(`${sectionLabel} #${entry?.id ?? '?'}: нет imageUrl и imageSeed`);
+      }
+
+      if (imageUrl && !/^(https?:)?\/\//i.test(imageUrl) && !imageUrl.startsWith('/') && !imageUrl.startsWith('./') && !imageUrl.startsWith('../')) {
+        errors.push(`${sectionLabel} #${entry?.id ?? '?'}: imageUrl имеет неподдерживаемый формат`);
+      }
+    }
+  };
+
+  checkRecords(data.items, 'Галерея');
+  checkRecords(data.articles, 'Статьи');
+
+  const level = errors.length > 0 ? 'error' : warnings.length > 0 ? 'warn' : 'ok';
+  const detail = level === 'ok'
+    ? 'Медиа-поля заполнены корректно.'
+    : errors.length > 0
+      ? 'Обнаружены ошибки формата URL изображений.'
+      : 'Есть записи без imageUrl/imageSeed.';
+
+  return createMonitorResult(level, 'Медиа и изображения', detail, [...errors, ...warnings].slice(0, 8));
+}
+
+async function runGitHubAuthCheck(cfg) {
+  if (!cfg.token) {
+    return createMonitorResult('warn', 'Доступ GitHub API', 'Токен не заполнен. Часть проверок и запись в репозиторий недоступны.', []);
+  }
+
+  try {
+    const payload = await githubRequest('https://api.github.com/user', {
+      method: 'GET',
+      headers: headers(cfg.token)
+    });
+    return createMonitorResult('ok', 'Доступ GitHub API', `Токен валиден. Пользователь: ${payload.login || 'unknown'}.`, []);
+  } catch (error) {
+    return createMonitorResult('error', 'Доступ GitHub API', `Ошибка авторизации: ${getErrorMessage(error)}`, []);
+  }
+}
+
+async function runDeployStatusCheck(cfg) {
+  if (!cfg.owner || !cfg.repo) {
+    return createMonitorResult('warn', 'Статус деплоя', 'Заполните owner/repo для проверки деплоя.', []);
+  }
+
+  try {
+    const workflowData = await githubRequest(
+      `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/actions/workflows?per_page=100`,
+      {
+        method: 'GET',
+        headers: headers(cfg.token)
+      }
+    );
+
+    const workflows = Array.isArray(workflowData.workflows) ? workflowData.workflows : [];
+    const workflow =
+      workflows.find((item) => String(item.path || '').includes('deploy-pages')) ||
+      workflows.find((item) => /deploy github pages/i.test(String(item.name || ''))) ||
+      workflows.find((item) => /pages/i.test(String(item.name || '')));
+
+    if (!workflow) {
+      return createMonitorResult('warn', 'Статус деплоя', 'Не найден workflow деплоя Pages.', []);
+    }
+
+    const runsData = await githubRequest(
+      `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/actions/workflows/${workflow.id}/runs?branch=${encodeURIComponent(cfg.branch)}&per_page=1`,
+      {
+        method: 'GET',
+        headers: headers(cfg.token)
+      }
+    );
+
+    const run = Array.isArray(runsData.workflow_runs) ? runsData.workflow_runs[0] : null;
+    if (!run) {
+      return createMonitorResult('warn', 'Статус деплоя', 'Запусков workflow пока нет.', [], workflow.html_url || '');
+    }
+
+    if (run.status !== 'completed') {
+      return createMonitorResult('warn', 'Статус деплоя', `Workflow "${workflow.name}" сейчас в состоянии "${run.status}".`, [], run.html_url || '', 'Открыть запуск');
+    }
+
+    if (run.conclusion === 'success') {
+      return createMonitorResult('ok', 'Статус деплоя', `Последний деплой успешен (${new Date(run.updated_at).toLocaleString('ru-RU')}).`, [], run.html_url || '', 'Открыть запуск');
+    }
+
+    return createMonitorResult('error', 'Статус деплоя', `Последний запуск завершился с "${run.conclusion || 'unknown'}".`, [], run.html_url || '', 'Открыть запуск');
+  } catch (error) {
+    return createMonitorResult('error', 'Статус деплоя', `Не удалось получить данные workflow: ${getErrorMessage(error)}`, []);
+  }
+}
+
+async function probeUrl(url) {
+  try {
+    const response = await fetch(url, {
+      method: 'HEAD',
+      cache: 'no-store'
+    });
+
+    if (response.ok) {
+      return { level: 'ok', detail: `${url} доступен (HTTP ${response.status}).` };
+    }
+
+    if (response.status >= 500) {
+      return { level: 'error', detail: `${url} отвечает ошибкой сервера (HTTP ${response.status}).` };
+    }
+
+    return { level: 'warn', detail: `${url} отвечает с кодом HTTP ${response.status}.` };
+  } catch {
+    try {
+      await fetch(url, {
+        method: 'GET',
+        mode: 'no-cors',
+        cache: 'no-store'
+      });
+      return { level: 'warn', detail: `${url}: браузер не дал прочитать HTTP-статус (CORS), но запрос отправлен.` };
+    } catch (error) {
+      return { level: 'error', detail: `${url} недоступен: ${getErrorMessage(error)}` };
+    }
+  }
+}
+
+async function runPagesAvailabilityCheck(cfg) {
+  const pagesUrl = getPagesBaseUrl(cfg.owner, cfg.repo);
+  if (!pagesUrl) {
+    return createMonitorResult('warn', 'Доступность сайта', 'Не удалось вычислить URL Pages для проверки.', []);
+  }
+
+  const adminUrl = joinUrl(pagesUrl, 'admin/index.html');
+  const siteProbe = await probeUrl(pagesUrl);
+  const adminProbe = await probeUrl(adminUrl);
+  const level = getHigherMonitorLevel(siteProbe.level, adminProbe.level);
+
+  return createMonitorResult(
+    level,
+    'Доступность сайта',
+    'Проверка главной страницы и админки завершена.',
+    [siteProbe.detail, adminProbe.detail],
+    pagesUrl,
+    'Открыть сайт'
+  );
+}
+
+async function runUploadDirectoryCheck(cfg) {
+  if (!cfg.owner || !cfg.repo) {
+    return createMonitorResult('warn', 'Папка загрузок', 'Заполните owner/repo, чтобы проверить папку загрузок.', []);
+  }
+
+  if (!cfg.uploadDir.startsWith('public/')) {
+    return createMonitorResult('error', 'Папка загрузок', 'Папка для фото должна быть внутри public/.', []);
+  }
+
+  try {
+    const payload = await githubRequest(
+      `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${encodePath(cfg.uploadDir)}?ref=${encodeURIComponent(cfg.branch)}`,
+      {
+        method: 'GET',
+        headers: headers(cfg.token)
+      }
+    );
+
+    if (!Array.isArray(payload)) {
+      return createMonitorResult('warn', 'Папка загрузок', `Путь ${cfg.uploadDir} существует, но не является папкой.`, []);
+    }
+
+    const files = payload.filter((item) => item && item.type === 'file');
+    const latest = files
+      .slice(0, 3)
+      .map((item) => String(item.name || '').trim())
+      .filter(Boolean);
+
+    return createMonitorResult(
+      'ok',
+      'Папка загрузок',
+      `Папка ${cfg.uploadDir} доступна. Файлов: ${files.length}.`,
+      latest.length ? [`Последние файлы: ${latest.join(', ')}`] : []
+    );
+  } catch (error) {
+    const message = getErrorMessage(error);
+    if (/404/.test(message) || /Not Found/i.test(message)) {
+      return createMonitorResult('warn', 'Папка загрузок', `Папка ${cfg.uploadDir} пока не создана. Она появится после первой загрузки.`, []);
+    }
+
+    return createMonitorResult('error', 'Папка загрузок', `Не удалось проверить папку: ${message}`, []);
+  }
+}
+
+async function runMonitoringChecks() {
+  const cfg = getConfig();
+  const content = parseEditorJsonSafe();
+
+  monitorRunBtn.disabled = true;
+  monitorRunBtn.textContent = 'Проверка...';
+
+  try {
+    const localResults = [
+      runContentQualityChecks(content),
+      runMediaQualityChecks(content)
+    ];
+
+    const remoteResults = await Promise.all([
+      runGitHubAuthCheck(cfg),
+      runDeployStatusCheck(cfg),
+      runPagesAvailabilityCheck(cfg),
+      runUploadDirectoryCheck(cfg)
+    ]);
+
+    renderMonitoringResults([...remoteResults, ...localResults]);
+  } finally {
+    monitorRunBtn.disabled = false;
+    monitorRunBtn.textContent = 'Обновить мониторинг';
+  }
+}
+
 function downloadJson() {
   try {
     const parsed = parseEditorJson();
@@ -1148,6 +1592,7 @@ function setEditorData(data, options = {}) {
     saveDraft();
   }
   saveSettings();
+  queueMonitoringChecks(120);
 }
 
 function deepClone(value) {
