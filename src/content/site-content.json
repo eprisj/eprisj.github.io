@@ -184,7 +184,8 @@
       "subtitle": "Sicily, Italy",
       "fig": "FIG. 01",
       "description": "Why doing less might actually mean living more. A journey into the philosophy of slowing down in a hyper-connected world.",
-      "imageSeed": "morning-rituals-sicily"
+      "imageSeed": "morning-rituals-sicily",
+      "imageUrl": "/images/morning-rituals.png"
     },
     {
       "id": 2,
@@ -192,7 +193,8 @@
       "subtitle": "New York, USA",
       "fig": "FIG. 02",
       "description": "Finding peace in the concrete rhythm of the city. A quiet meditation on solitude in the world's most crowded places.",
-      "imageSeed": "urban-solitude-nyc"
+      "imageSeed": "urban-solitude-nyc",
+      "imageUrl": "/images/urban-solitude.png"
     },
     {
       "id": 3,
@@ -200,7 +202,8 @@
       "subtitle": "Warsaw, Poland",
       "fig": "FIG. 03",
       "description": "A celebration of simple ingredients and the art of gathering around a table. Food as memory, culture, and connection.",
-      "imageSeed": "mediterranean-feast-warsaw"
+      "imageSeed": "mediterranean-feast-warsaw",
+      "imageUrl": "/images/mediterranean-feast.png"
     },
     {
       "id": 4,
@@ -208,7 +211,8 @@
       "subtitle": "Sicily, Italy",
       "fig": "FIG. 04",
       "description": "The quiet hours before the world wakes. Light through curtains, coffee, and the sacred pause before the day begins.",
-      "imageSeed": "morning-rituals-sicily-2"
+      "imageSeed": "morning-rituals-sicily-2",
+      "imageUrl": "/images/grid-4.png"
     },
     {
       "id": 5,
@@ -216,7 +220,8 @@
       "subtitle": "New York, USA",
       "fig": "FIG. 05",
       "description": "Empty streets, long shadows, and the particular solitude of a city that never truly sleeps.",
-      "imageSeed": "urban-solitude-nyc-2"
+      "imageSeed": "urban-solitude-nyc-2",
+      "imageUrl": "/images/grid-5.png"
     },
     {
       "id": 6,
@@ -224,7 +229,8 @@
       "subtitle": "Warsaw, Poland",
       "fig": "FIG. 06",
       "description": "Where southern flavors meet northern sensibilities. A journey through taste, texture, and tradition.",
-      "imageSeed": "mediterranean-feast-warsaw-2"
+      "imageSeed": "mediterranean-feast-warsaw-2",
+      "imageUrl": "/images/featured.png"
     }
   ],
   "articles": [
@@ -316,7 +322,8 @@
           "content": "Read more about the Slow Food Movement",
           "url": "https://www.slowfood.com"
         }
-      ]
+      ],
+      "imageUrl": "/images/featured.png"
     },
     {
       "id": 2,
