@@ -23,7 +23,8 @@
       "library.type": "Type",
       "library.size": "Size",
       "library.year": "Year",
-      "library.action": "Action"
+      "library.action": "Action",
+      "hero.quote": "\"Epris journal is not just about publication; it is a living archive of the things that make life tasting. Born from a desire to slow down and document the fleeting beauty of our existence, this journal serves as a sanctuary for the thoughtful, the curious and the aesthetic.\""
     },
     "RU": {
       "nav.gallery": "Галерея",
@@ -178,62 +179,70 @@
   },
   "items": [
     {
+      "id": 1,
+      "title": "Morning rituals",
+      "subtitle": "Sicily, Italy",
+      "fig": "FIG. 01",
+      "description": "Why doing less might actually mean living more. A journey into the philosophy of slowing down in a hyper-connected world.",
+      "imageSeed": "morning-rituals-sicily"
+    },
+    {
       "id": 2,
-      "title": "Urban Solitude",
-      "subtitle": "Berlin, Germany",
+      "title": "Urban solitude",
+      "subtitle": "New York, USA",
       "fig": "FIG. 02",
-      "description": "Finding peace in the concrete rhythm of the city.",
-      "imageSeed": "berlin-street"
+      "description": "Finding peace in the concrete rhythm of the city. A quiet meditation on solitude in the world's most crowded places.",
+      "imageSeed": "urban-solitude-nyc"
     },
     {
       "id": 3,
       "title": "Mediterranean Feast",
-      "subtitle": "Sicily, Italy",
+      "subtitle": "Warsaw, Poland",
       "fig": "FIG. 03",
-      "description": "A celebration of simple ingredients: olive oil, tomatoes, and sea salt.",
-      "imageSeed": "italian-food"
+      "description": "A celebration of simple ingredients and the art of gathering around a table. Food as memory, culture, and connection.",
+      "imageSeed": "mediterranean-feast-warsaw"
     },
     {
       "id": 4,
-      "title": "Mountain Breath",
-      "subtitle": "Carpathians, Ukraine",
+      "title": "Morning rituals",
+      "subtitle": "Sicily, Italy",
       "fig": "FIG. 04",
-      "description": "The crisp air of the highlands and the scent of pine forests.",
-      "imageSeed": "mountains"
+      "description": "The quiet hours before the world wakes. Light through curtains, coffee, and the sacred pause before the day begins.",
+      "imageSeed": "morning-rituals-sicily-2"
     },
     {
       "id": 5,
-      "title": "Siesta Shadows",
-      "subtitle": "Seville, Spain",
+      "title": "Urban solitude",
+      "subtitle": "New York, USA",
       "fig": "FIG. 05",
-      "description": "The slow passage of time during a hot afternoon.",
-      "imageSeed": "shadows-wall"
+      "description": "Empty streets, long shadows, and the particular solitude of a city that never truly sleeps.",
+      "imageSeed": "urban-solitude-nyc-2"
     },
     {
       "id": 6,
-      "title": "Velvet Night",
-      "subtitle": "Istanbul, Turkey",
+      "title": "Mediterranean Feast",
+      "subtitle": "Warsaw, Poland",
       "fig": "FIG. 06",
-      "description": "Lights reflecting on the Bosphorus as the city comes alive.",
-      "imageSeed": "istanbul-night"
+      "description": "Where southern flavors meet northern sensibilities. A journey through taste, texture, and tradition.",
+      "imageSeed": "mediterranean-feast-warsaw-2"
     }
   ],
   "articles": [
     {
       "id": 1,
-      "title": "The Art of Slow Living!",
-      "author": "Masha Peut",
+      "title": "Morning rituals",
+      "author": "Mariia Ivanova",
       "role": "Editor-in-Chief",
       "date": "Oct 12, 2025",
-      "excerpt": "Why doing less might a!ctually mean living more. A journey into the philosophy of slowing down in a hyper-connected world.",
-      "category": "Lifestyle",
-      "subcategory": "Philosophy",
+      "excerpt": "Why doing less might actually mean living more. A journey into the philosophy of slowing down in a hyper-connected world.",
+      "category": "Travel",
+      "subcategory": "Sicily",
       "tags": [
-        "Lifestyle",
-        "Philosophy",
-        "Wellness"
+        "Travel",
+        "Sicily",
+        "Slow Living"
       ],
-      "imageSeed": "slow-living",
+      "imageSeed": "morning-rituals-sicily",
       "content": [
         {
           "type": "text",
@@ -768,7 +777,7 @@
         {
           "id": 1,
           "title": "Искусство медленной жизни",
-          "author": "Masha Peut",
+          "author": "Mariia Ivanova",
           "role": "Главный редактор",
           "date": "Oct 12, 2025",
           "excerpt": "Почему делать меньше может на самом деле означать жить больше. Путешествие в философию замедления в гиперсвязанном мире.",
@@ -1314,7 +1323,7 @@
         {
           "id": 1,
           "title": "Мистецтво повільного життя",
-          "author": "Masha Peut",
+          "author": "Mariia Ivanova",
           "role": "Головний редактор",
           "date": "Oct 12, 2025",
           "excerpt": "Чому робити менше може означати жити більше. Подорож у філософію уповільнення в гіперзв’язаному світі.",
@@ -1852,7 +1861,7 @@
         {
           "id": 1,
           "title": "The Art of Slow Living!",
-          "author": "Masha Peut",
+          "author": "Mariia Ivanova",
           "role": "Editor-in-Chief",
           "date": "Oct 12, 2025",
           "excerpt": "Why doing less might a!ctually mean living more. A journey into the philosophy of slowing down in a hyper-connected world.",
@@ -2390,7 +2399,7 @@
         {
           "id": 1,
           "title": "The Art of Slow Living!",
-          "author": "Masha Peut",
+          "author": "Mariia Ivanova",
           "role": "Editor-in-Chief",
           "date": "Oct 12, 2025",
           "excerpt": "Why doing less might a!ctually mean living more. A journey into the philosophy of slowing down in a hyper-connected world.",
@@ -2928,7 +2937,7 @@
         {
           "id": 1,
           "title": "The Art of Slow Living!",
-          "author": "Masha Peut",
+          "author": "Mariia Ivanova",
           "role": "Editor-in-Chief",
           "date": "Oct 12, 2025",
           "excerpt": "Why doing less might a!ctually mean living more. A journey into the philosophy of slowing down in a hyper-connected world.",

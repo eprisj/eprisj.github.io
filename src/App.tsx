@@ -250,7 +250,7 @@ function Hero({ t }: { t: (key: string) => string }) {
       <div className="absolute top-24 md:top-32 right-8 md:right-16 flex flex-col items-end gap-2">
         <Star className="w-8 h-8 md:w-12 md:h-12 text-[#501a2c] stroke-1" />
         <div className="text-right font-mono text-xs md:text-sm uppercase tracking-widest text-[#501a2c]/80">
-          <p className="font-bold">Masha Peut</p>
+          <p className="font-bold">Mariia Ivanova</p>
           <p>{t('editor')}</p>
         </div>
       </div>
@@ -291,8 +291,8 @@ function AboutSection({ t }: { t: (key: string) => string }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
           <div className="aspect-[3/4] bg-[#E8DED5] relative overflow-hidden">
              <img 
-               src="https://picsum.photos/seed/masha-peut/800/1000?grayscale" 
-               alt="Masha Peut" 
+               src="https://picsum.photos/seed/mariia-ivanova/800/1000?grayscale"
+               alt="Mariia Ivanova"
                className="w-full h-full object-cover grayscale"
                referrerPolicy="no-referrer"
              />
@@ -302,14 +302,14 @@ function AboutSection({ t }: { t: (key: string) => string }) {
               {t('editor')}
             </div>
             <h2 className="font-serif text-4xl md:text-6xl text-[#501a2c] mb-8">
-              Masha Peut
+              Mariia Ivanova
             </h2>
             <div className="prose prose-lg prose-stone font-serif text-[#501a2c]/80">
               <p className="mb-6">
-                "Epris Journal is not just a publication; it is a living archive of the things that make life worth tasting. Born from a desire to slow down and document the fleeting beauty of our existence, this journal serves as a sanctuary for the thoughtful, the curious, and the aesthetic."
+                "Epris journal is not just about publication; it is a living archive of the things that make life tasting. Born from a desire to slow down and document the fleeting beauty of our existence, this journal serves as a sanctuary for the thoughtful, the curious and the aesthetic."
               </p>
               <p>
-                With a background in architectural history and a passion for Mediterranean culture, Masha founded Epris Journal in 2026. Her vision was to create a digital space that feels as tangible and timeless as a printed volume found in an old library.
+                With a background in art history and a passion for slow travel, Mariia founded Epris Journal in 2026. Her vision was to create a digital space that feels as tangible and timeless as a printed volume found in an old library.
               </p>
             </div>
             <div className="mt-12 pt-8 border-t border-[#501a2c]/20 flex gap-8">
