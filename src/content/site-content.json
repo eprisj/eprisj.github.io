@@ -622,6 +622,79 @@
       ]
     },
     {
+      "id": 8,
+      "title": "Home Away From Home",
+      "author": "Mariia Ivanova",
+      "role": "Editor-in-Chief",
+      "date": "Mar 14, 2026",
+      "excerpt": "To choose a place of stay in a travel destination is to trust and share the significant moments of your life. The Pied-a-terre as architectural philosophy.",
+      "category": "Travel",
+      "subcategory": "Paris",
+      "tags": [
+        "Travel",
+        "Architecture",
+        "Paris"
+      ],
+      "imageUrl": "/images/article-img-1.png",
+      "content": [
+        {
+          "type": "image",
+          "content": "/images/article-img-1.png",
+          "caption": ""
+        },
+        {
+          "type": "text",
+          "content": "Every apartments are exclusive, it gives an opportunity to actually choose what you want to experience. Two-storey townhouse on Tuileries by Necchi Architecture, is a diochromatic sanctuary, gently enriched by details in a way to make you feel calm... Townhouse is not the only object designed by Charlotte Albert and Alexis Lamesta from Necchi Architecture. Superior Loft on Oberkampf catch the eye from the first second."
+        },
+        {
+          "type": "image",
+          "content": "/images/article-img-3.png",
+          "caption": ""
+        },
+        {
+          "type": "text",
+          "content": "Each of the apartments is a small journey within a big one... Being exposed to new memories and spiritual-material richness is fruitful to your soul and your heart. I specify the duality of the richness, because design is constructed by physical, but everything in it contributes to mental..."
+        },
+        {
+          "type": "image",
+          "content": "/images/article-img-4.png",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "content": "/images/article-img-6.png",
+          "caption": ""
+        },
+        {
+          "type": "text",
+          "content": "To choose a place of stay in a travel destination is to trust and share the significant moments of your life... The Pied-a-terre is not only a French term, which literally mean 'feet on the ground', labeling the second home in an often visited city, but also a name for the set of architectural apartments in the prime location of The Moveable Feast."
+        },
+        {
+          "type": "image",
+          "content": "/images/article-img-7.png",
+          "caption": ""
+        },
+        {
+          "type": "text",
+          "content": "Provocative pattern, red color, chrome, and mirrors immediately take us to the joyful evening in 1970s Parisian apartment... One of the best characteristics here is unpredictability. You slightly turn the gaze and see completely different scene, untouched by the presence of the former perspective."
+        },
+        {
+          "type": "image",
+          "content": "/images/article-img-8.png",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "content": "/images/article-img-9.png",
+          "caption": ""
+        },
+        {
+          "type": "text",
+          "content": "There is an association of Pied-à-terre with a pack of exquisite chocolate candies... The list continues, but when you know all the flavors the spark of discovery is partly faded. Explore it by yourself."
+        }
+      ]
+    },
+    {
       "id": 7,
       "title": "Hidden Gems of Kyoto",
       "author": "Kenji Tanaka",
