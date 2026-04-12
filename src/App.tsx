@@ -355,6 +355,27 @@ function AboutSection({ t }: { t: (key: string) => string }) {
   );
 }
 
+function WelcomingLetter({ t }: { t: (key: string) => string }) {
+  return (
+    <Reveal>
+      <section className="mb-24 border border-[#501a2c]/20 p-10 md:p-16">
+        <div className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/50 mb-8">
+          {t('welcoming.letter')}
+        </div>
+        <p className="font-serif text-xl md:text-2xl text-[#501a2c] leading-relaxed mb-10 max-w-3xl">
+          {t('hero.quote')}
+        </p>
+        <div className="flex items-center gap-4 border-t border-[#501a2c]/20 pt-8">
+          <div>
+            <p className="font-serif text-lg text-[#501a2c]">Mariia Ivanova</p>
+            <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60">{t('editor')} — OCT 12, 2025</p>
+          </div>
+        </div>
+      </section>
+    </Reveal>
+  );
+}
+
 function GallerySection({ items }: { items: Item[] }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
@@ -935,7 +956,12 @@ export default function App() {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
             >
-              {activeTab === 'gallery' && <GallerySection items={items} />}
+              {activeTab === 'gallery' && (
+                <>
+                  <WelcomingLetter t={t} />
+                  <GallerySection items={items} />
+                </>
+              )}
               {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => setSelectedArticleId(article.id)} t={t} />}
               {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} />}
               {activeTab === 'library' && <LibrarySection libraryItems={libraryItems} t={t} />}
