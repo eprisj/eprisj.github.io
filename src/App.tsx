@@ -563,35 +563,38 @@ function ArticleView({ article, onClose, t }: { article: Article; onClose: () =>
         </button>
 
         <article className="mt-12">
-          <header className="mb-16 text-center">
-            <div className="flex items-center justify-center gap-4 font-mono text-xs text-[#501a2c]/60 uppercase tracking-widest mb-6">
-              <span>{article.date}</span>
-              <span className="w-1 h-1 bg-[#501a2c]/40 rounded-full" />
-              <span>{article.author}</span>
-              {article.role && (
-                <>
-                  <span className="w-1 h-1 bg-[#501a2c]/40 rounded-full" />
-                  <span className="text-[#C9A690]">{article.role}</span>
-                </>
-              )}
-            </div>
-            <h1 className="font-serif text-4xl md:text-7xl text-[#501a2c] mb-8 leading-tight">
-              {article.title}
-            </h1>
-            <div className="flex justify-center gap-2 mb-12">
-              {article.tags.map(tag => (
-                <span key={tag} className="border border-[#501a2c] px-3 py-1 text-[10px] font-mono uppercase tracking-wider text-[#501a2c]">
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <div className="aspect-[21/9] w-full overflow-hidden bg-[#E8DED5]">
-              <img 
-                src={resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 600)} 
+          <header className="mb-16">
+            {/* Hero image first — matches Figma layout */}
+            <div className="aspect-[16/9] w-full overflow-hidden bg-[#E8DED5] mb-12">
+              <img
+                src={resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 675)}
                 alt={article.title}
                 className="w-full h-full object-cover grayscale"
                 referrerPolicy="no-referrer"
               />
+            </div>
+            <div className="text-center">
+              <div className="flex items-center justify-center gap-4 font-mono text-xs text-[#501a2c]/60 uppercase tracking-widest mb-6">
+                <span>{article.date}</span>
+                <span className="w-1 h-1 bg-[#501a2c]/40 rounded-full" />
+                <span>{article.author}</span>
+                {article.role && (
+                  <>
+                    <span className="w-1 h-1 bg-[#501a2c]/40 rounded-full" />
+                    <span className="text-[#C9A690]">{article.role}</span>
+                  </>
+                )}
+              </div>
+              <h1 className="font-serif text-4xl md:text-7xl text-[#501a2c] mb-8 leading-tight">
+                {article.title}
+              </h1>
+              <div className="flex justify-center gap-2">
+                {article.tags.map(tag => (
+                  <span key={tag} className="border border-[#501a2c] px-3 py-1 text-[10px] font-mono uppercase tracking-wider text-[#501a2c]">
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
           </header>
 
