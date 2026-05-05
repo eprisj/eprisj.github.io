@@ -242,44 +242,33 @@ function NavBar({
 
 function Hero({ t }: { t: (key: string) => string }) {
   return (
-    <section className="relative min-h-[80vh] pt-20 flex flex-col justify-center px-8 md:px-16 overflow-hidden border-b border-[#501a2c]">
-      <div className="absolute top-24 md:top-32 left-8 md:left-16 border border-[#501a2c] px-3 py-1 text-xs font-mono uppercase text-[#501a2c]">
-        {t('hero.est')}
-      </div>
-      
-      <div className="absolute top-24 md:top-32 right-8 md:right-16 flex flex-col items-end gap-2">
-        <Star className="w-8 h-8 md:w-12 md:h-12 text-[#501a2c] stroke-1" />
-        <div className="text-right font-mono text-xs md:text-sm uppercase tracking-widest text-[#501a2c]/80">
-          <p className="font-bold">Mariia Ivanova</p>
-          <p>{t('editor')}</p>
+    <section className="relative pt-16 border-b border-[#501a2c]/20">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+        className="grid grid-cols-3 items-end px-8 md:px-16 py-16 md:py-28 gap-8"
+      >
+        {/* Left: EPRIS masthead */}
+        <div>
+          <p className="font-mono text-5xl md:text-7xl tracking-[0.13em] text-[#501a2c] leading-none">EPRIS</p>
+          <p className="font-mono text-sm tracking-[0.13em] text-[#501a2c]/50 uppercase mt-1">journal.</p>
         </div>
-      </div>
 
-      <div className="mt-20">
-        <motion.h1 
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="font-serif text-[9vw] md:text-[11vw] leading-[0.85] tracking-tight text-[#501a2c]"
-        >
-          {t('hero.title1')}
-        </motion.h1>
-        <motion.h1 
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="font-serif text-[9vw] md:text-[11vw] leading-[0.85] tracking-tight text-[#C9A690]"
-        >
-          {t('hero.title2')}
-        </motion.h1>
-      </div>
+        {/* Center: categories tagline */}
+        <div className="flex items-end justify-center pb-1">
+          <p className="font-mono text-xs md:text-sm tracking-[0.13em] text-[#501a2c]/50 uppercase text-center">
+            design art travel
+          </p>
+        </div>
 
-      <div className="absolute bottom-12 left-8 md:left-16 max-w-md text-[#501a2c]">
-        <p className="font-mono text-xs md:text-sm uppercase leading-relaxed tracking-wide">
-          {t('hero.subtitle1')}<br/>
-          {t('hero.subtitle2')}
-        </p>
-      </div>
+        {/* Right: brand tagline */}
+        <div className="flex items-end justify-end pb-1">
+          <p className="font-mono text-xs md:text-sm tracking-[0.13em] text-[#501a2c]/50 uppercase text-right">
+            reveal the invisible
+          </p>
+        </div>
+      </motion.div>
     </section>
   );
 }
@@ -364,8 +353,8 @@ function WelcomingLetter({ t }: { t: (key: string) => string }) {
             {t('hero.quote')}
           </p>
           <div>
-            <p className="font-serif text-base text-[#501a2c]">Mariia Ivanova</p>
-            <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/50 mt-1">{t('editor')}</p>
+            <p style={{ fontFamily: "'Zeyada', cursive" }} className="text-4xl text-[#501a2c] tracking-[0.04em]">Mariia Ivanova</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.13em] text-[#501a2c]/50 mt-1">Editor-in-Chief</p>
           </div>
         </div>
       </section>
