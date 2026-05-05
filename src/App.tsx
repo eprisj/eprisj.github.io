@@ -358,17 +358,14 @@ function AboutSection({ t }: { t: (key: string) => string }) {
 function WelcomingLetter({ t }: { t: (key: string) => string }) {
   return (
     <Reveal>
-      <section className="mb-24 border border-[#501a2c]/20 p-10 md:p-16">
-        <div className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/50 mb-8">
-          {t('welcoming.letter')}
-        </div>
-        <p className="font-serif text-xl md:text-2xl text-[#501a2c] leading-relaxed mb-10 max-w-3xl">
-          {t('hero.quote')}
-        </p>
-        <div className="flex items-center gap-4 border-t border-[#501a2c]/20 pt-8">
+      <section className="mb-16 py-16 border-b border-[#501a2c]/20">
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="font-serif text-xl md:text-2xl text-[#501a2c]/70 leading-relaxed mb-10 italic">
+            {t('hero.quote')}
+          </p>
           <div>
-            <p className="font-serif text-lg text-[#501a2c]">Mariia Ivanova</p>
-            <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60">{t('editor')} — OCT 12, 2025</p>
+            <p className="font-serif text-base text-[#501a2c]">Mariia Ivanova</p>
+            <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/50 mt-1">{t('editor')}</p>
           </div>
         </div>
       </section>
@@ -377,40 +374,76 @@ function WelcomingLetter({ t }: { t: (key: string) => string }) {
 }
 
 function GallerySection({ items }: { items: Item[] }) {
+  if (items.length === 0) return null;
+  const [featured, ...rest] = items;
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
-      {items.map((item, index) => (
-        <div key={item.id} className={index % 2 === 1 ? "md:mt-24" : ""}>
-          <Reveal delay={index % 2 * 0.1}>
-            <div className="group cursor-pointer mb-24">
-              <div className="relative overflow-hidden mb-4 bg-[#E8DED5]">
+    <div>
+      {/* Featured article */}
+      <Reveal>
+        <div className="grid grid-cols-1 md:grid-cols-3 mb-12 border border-[#501a2c] group cursor-pointer overflow-hidden">
+          <div className="md:col-span-2 aspect-[4/3] overflow-hidden bg-[#E8DED5]">
+            <motion.img
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              src={resolveMediaSource(featured.imageUrl || featured.imageSeed, 1000, 750)}
+              alt={featured.title}
+              className="w-full h-full object-cover grayscale"
+              referrerPolicy="no-referrer"
+            />
+          </div>
+          <div className="p-8 md:p-12 flex flex-col justify-between border-t md:border-t-0 md:border-l border-[#501a2c]">
+            <div>
+              <span className="border border-[#501a2c] px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-[#501a2c]">
+                {featured.fig}
+              </span>
+              <h2 className="font-serif text-3xl md:text-4xl text-[#501a2c] mt-6 mb-4 leading-tight">
+                {featured.title}
+              </h2>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60 mb-6">
+                {featured.subtitle}
+              </p>
+              <p className="font-serif text-base text-[#501a2c]/70 leading-relaxed">
+                {featured.description}
+              </p>
+            </div>
+            <div className="mt-8 pt-6 border-t border-[#501a2c]/20">
+              <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c] group-hover:gap-4 transition-all duration-300">
+                View <ArrowUpRight size={14} />
+              </span>
+            </div>
+          </div>
+        </div>
+      </Reveal>
+
+      {/* 3-column grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {rest.map((item, index) => (
+          <Reveal key={item.id} delay={index * 0.05}>
+            <div className="group cursor-pointer">
+              <div className="aspect-[4/3] overflow-hidden bg-[#E8DED5] mb-4">
                 <motion.img
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
-                  src={resolveMediaSource(item.imageUrl || item.imageSeed, 800, 1000)}
+                  src={resolveMediaSource(item.imageUrl || item.imageSeed, 600, 450)}
                   alt={item.title}
-                  className="w-full h-auto object-cover grayscale contrast-[1.1] group-hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                   referrerPolicy="no-referrer"
                 />
               </div>
-              
-              <div className="flex justify-between items-start border-t border-[#501a2c] pt-3">
-                <div>
-                  <h3 className="font-serif text-2xl md:text-3xl text-[#501a2c] mb-1">
-                    {item.title}
-                  </h3>
-                  <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60">
-                    {item.subtitle}
-                  </p>
+              <div className="border-t border-[#501a2c] pt-3">
+                <div className="flex justify-between items-baseline mb-1">
+                  <h3 className="font-serif text-xl text-[#501a2c]">{item.title}</h3>
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40">{item.fig}</span>
                 </div>
-                <span className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 mt-1">
-                  {item.fig}
-                </span>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60">
+                  {item.subtitle}
+                </p>
               </div>
             </div>
           </Reveal>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
