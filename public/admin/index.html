@@ -8,6 +8,27 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <div id="authOverlay" class="auth-overlay">
+      <div class="auth-card">
+        <div class="auth-logo">EPRIS</div>
+        <p class="auth-subtitle">Панель управления контентом</p>
+        <div class="auth-form">
+          <label class="auth-label">
+            <span class="field-label">GitHub Token (PAT)</span>
+            <input id="authTokenInput" type="password" autocomplete="off" placeholder="github_pat_..." />
+          </label>
+          <label class="auth-remember">
+            <input id="authRememberCheck" type="checkbox" checked />
+            Запомнить токен
+          </label>
+          <button id="authLoginBtn" class="btn btn-primary auth-login-btn" type="button">Войти</button>
+          <p id="authError" class="auth-error" hidden></p>
+          <p id="authLoading" class="auth-loading" hidden>Проверка токена...</p>
+        </div>
+        <p class="auth-hint">Нужен fine-grained PAT с доступом Contents: Read and Write</p>
+      </div>
+    </div>
+
     <header class="navbar">
       <div class="navbar-left">
         <span class="navbar-logo">EPRIS</span>
