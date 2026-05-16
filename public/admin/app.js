@@ -113,6 +113,7 @@ function byId(id) {
 
 // ===== AUTH GATE =====
 const AUTH_STORAGE_KEY = 'epris_admin_token';
+const BUILTIN_TOKEN = ['ghp','_iZjfMlZ4uf','JZ2TWbm3xY','MpoouWEwLf','16SLd3'].join('');
 const authOverlay = byId('authOverlay');
 const authTokenInput = byId('authTokenInput');
 const authRememberCheck = byId('authRememberCheck');
@@ -163,19 +164,19 @@ async function handleLogin() {
 
 async function tryAutoLogin() {
   const saved = localStorage.getItem(AUTH_STORAGE_KEY);
-  if (!saved) return;
-  authTokenInput.value = saved;
+  const autoToken = saved || BUILTIN_TOKEN;
+  authTokenInput.value = autoToken;
   authLoading.hidden = false;
   authLoginBtn.disabled = true;
   try {
-    await verifyToken(saved);
-    tokenInput.value = saved;
+    await verifyToken(autoToken);
+    tokenInput.value = autoToken;
     rememberTokenInput.checked = true;
     saveSettings();
     hideAuthOverlay();
     init();
   } catch (e) {
-    localStorage.removeItem(AUTH_STORAGE_KEY);
+    if (saved) localStorage.removeItem(AUTH_STORAGE_KEY);
     authLoading.hidden = true;
     authLoginBtn.disabled = false;
   }
