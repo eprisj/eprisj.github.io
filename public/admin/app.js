@@ -102,8 +102,6 @@ let visualRefreshTimer = null;
 let draftSaveTimer = null;
 let monitorTimer = null;
 
-init();
-
 function byId(id) {
   const element = document.getElementById(id);
   if (!element) {
@@ -111,6 +109,82 @@ function byId(id) {
   }
   return element;
 }
+
+
+// ===== AUTH GATE =====
+const AUTH_STORAGE_KEY = 'epris_admin_token';
+const authOverlay = byId('authOverlay');
+const authTokenInput = byId('authTokenInput');
+const authRememberCheck = byId('authRememberCheck');
+const authLoginBtn = byId('authLoginBtn');
+const authError = byId('authError');
+const authLoading = byId('authLoading');
+
+async function verifyToken(token) {
+  const resp = await fetch('https://api.github.com/user', {
+    headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+  });
+  if (!resp.ok) throw new Error('Недействительный токен');
+  return await resp.json();
+}
+
+function showAuthError(msg) {
+  authError.textContent = msg;
+  authError.hidden = false;
+  authLoading.hidden = true;
+  authLoginBtn.disabled = false;
+}
+
+function hideAuthOverlay() {
+  authOverlay.classList.add('hidden');
+  setTimeout(() => { authOverlay.style.display = 'none'; }, 350);
+}
+
+async function handleLogin() {
+  const token = authTokenInput.value.trim();
+  if (!token) { showAuthError('Введите токен'); return; }
+  authError.hidden = true;
+  authLoading.hidden = false;
+  authLoginBtn.disabled = true;
+  try {
+    await verifyToken(token);
+    tokenInput.value = token;
+    if (authRememberCheck.checked) {
+      localStorage.setItem(AUTH_STORAGE_KEY, token);
+      rememberTokenInput.checked = true;
+    }
+    saveSettings();
+    hideAuthOverlay();
+    init();
+  } catch (e) {
+    showAuthError('Токен не прошёл проверку. Убедитесь что PAT действителен.');
+  }
+}
+
+async function tryAutoLogin() {
+  const saved = localStorage.getItem(AUTH_STORAGE_KEY);
+  if (!saved) return;
+  authTokenInput.value = saved;
+  authLoading.hidden = false;
+  authLoginBtn.disabled = true;
+  try {
+    await verifyToken(saved);
+    tokenInput.value = saved;
+    rememberTokenInput.checked = true;
+    saveSettings();
+    hideAuthOverlay();
+    init();
+  } catch (e) {
+    localStorage.removeItem(AUTH_STORAGE_KEY);
+    authLoading.hidden = true;
+    authLoginBtn.disabled = false;
+  }
+}
+
+// Bootstrap: auth gate first, then init
+authLoginBtn.addEventListener('click', handleLogin);
+authTokenInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleLogin(); });
+tryAutoLogin();
 
 function init() {
   hydrateSettings();
@@ -1937,10 +2011,10 @@ function renderVisualForm() {
     <label class="full">URL обложки (необязательно)<input id="vf-imageUrl" placeholder="https://..." value="${escapeHtml(entry.imageUrl || '')}" /></label>
     <label class="full">imageSeed (если URL пустой)<input id="vf-imageSeed" value="${escapeHtml(entry.imageSeed || '')}" /></label>
     ${renderPhotoPreviewMarkup(previewSource)}
-    <label class="full">Контент статьи (JSON блоков)<textarea id="vf-content-json">${escapeHtml(JSON.stringify(entry.content || [], null, 2))}</textarea></label>
-    <p class="form-hint full">Для блоков в статье можно вставлять URL картинок прямо в <code>content</code> у блока типа <code>image</code> или в массиве <code>gallery</code>.</p>
+    <div class="block-editor" id="vf-block-editor">${renderBlockEditor(entry.content || [])}</div>
   `;
   bindPhotoPreviewInputs();
+  bindBlockEditorEvents();
 }
 
 function getFieldValue(id) {
@@ -2003,13 +2077,7 @@ function applyVisualChanges() {
         year: getFieldValue('vf-year').trim()
       };
     } else {
-      const rawContent = getFieldValue('vf-content-json').trim();
-      let parsedContent = [];
-      try {
-        parsedContent = JSON.parse(rawContent || '[]');
-      } catch (error) {
-        throw new Error(`Блоки контента статьи содержат некорректный JSON: ${getErrorMessage(error)}`);
-      }
+      const parsedContent = collectBlockEditorContent();
 
       const tags = getFieldValue('vf-tags')
         .split(',')
@@ -2170,6 +2238,405 @@ function copyFromEnglishEntry() {
     setStatus('error', getErrorMessage(error));
   }
 }
+
+
+// ===== BLOCK EDITOR FOR ARTICLES =====
+const BLOCK_TYPES = [
+  { type: 'text', label: 'Текст', icon: '\u270E' },
+  { type: 'quote', label: 'Цитата', icon: '\u201C' },
+  { type: 'note', label: 'Заметка', icon: '\u2139' },
+  { type: 'image', label: 'Фото', icon: '\u{1F5BC}' },
+  { type: 'gallery', label: 'Галерея', icon: '\u{1F5BC}\u{1F5BC}' },
+  { type: 'audio', label: 'Аудио', icon: '\u266B' },
+  { type: 'link', label: 'Ссылка', icon: '\u{1F517}' },
+  { type: 'checklist', label: 'Чеклист', icon: '\u2611' },
+  { type: 'map', label: 'Карта', icon: '\u{1F4CD}' },
+  { type: 'poll', label: 'Опрос', icon: '\u{1F4CA}' }
+];
+
+function getBlockTypeLabel(type) {
+  const found = BLOCK_TYPES.find((bt) => bt.type === type);
+  return found ? found.label : type;
+}
+
+function getBlockTypeIcon(type) {
+  const found = BLOCK_TYPES.find((bt) => bt.type === type);
+  return found ? found.icon : '\u25A0';
+}
+
+function renderBlockBody(block, index) {
+  const t = block.type || 'text';
+  const c = block.content || '';
+
+  if (t === 'text' || t === 'quote' || t === 'note') {
+    const textVal = typeof c === 'string' ? c : '';
+    return `<textarea data-block-field="content" placeholder="Введите текст...">${escapeHtml(textVal)}</textarea>`;
+  }
+
+  if (t === 'image') {
+    const src = typeof c === 'string' ? c : '';
+    const cap = block.caption || '';
+    return `
+      <div><span class="block-field-label">Источник (URL или seed)</span>
+      <input data-block-field="content" value="${escapeHtml(src)}" placeholder="URL или imageSeed" /></div>
+      <div><span class="block-field-label">Подпись</span>
+      <input data-block-field="caption" value="${escapeHtml(cap)}" placeholder="Подпись к фото" /></div>`;
+  }
+
+  if (t === 'gallery') {
+    const items = Array.isArray(c) ? c : [];
+    const cap = block.caption || '';
+    let html = '<span class="block-field-label">Элементы галереи (URL или seed)</span><div class="block-gallery-items" data-block-gallery="' + index + '">';
+    items.forEach((item, gi) => {
+      html += `<div class="block-gallery-item"><input data-gallery-item="${gi}" value="${escapeHtml(item)}" placeholder="URL или seed" /><button type="button" class="block-action-btn danger" onclick="removeGalleryItem(${index}, ${gi})" title="Удалить">\u2716</button></div>`;
+    });
+    html += `</div><button type="button" class="add-block-btn" onclick="addGalleryItem(${index})">+ элемент</button>`;
+    html += `<div><span class="block-field-label">Подпись</span><input data-block-field="caption" value="${escapeHtml(cap)}" placeholder="Подпись к галерее" /></div>`;
+    return html;
+  }
+
+  if (t === 'audio') {
+    const src = typeof c === 'string' ? c : '';
+    const cap = block.caption || '';
+    return `
+      <div><span class="block-field-label">URL аудио</span>
+      <input data-block-field="content" value="${escapeHtml(src)}" placeholder="https://..." /></div>
+      <div><span class="block-field-label">Подпись</span>
+      <input data-block-field="caption" value="${escapeHtml(cap)}" placeholder="Описание аудио" /></div>`;
+  }
+
+  if (t === 'link') {
+    const text = typeof c === 'string' ? c : '';
+    const url = block.url || '';
+    return `
+      <div><span class="block-field-label">Текст ссылки</span>
+      <input data-block-field="content" value="${escapeHtml(text)}" placeholder="Текст" /></div>
+      <div><span class="block-field-label">URL</span>
+      <input data-block-field="url" value="${escapeHtml(url)}" placeholder="https://..." /></div>`;
+  }
+
+  if (t === 'checklist') {
+    const items = (c && c.items) ? c.items : [];
+    const cap = block.caption || '';
+    let html = '<span class="block-field-label">Элементы чеклиста</span><div class="block-checklist-items" data-block-checklist="' + index + '">';
+    items.forEach((item, ci) => {
+      html += `<div class="block-checklist-item"><input data-checklist-item="${ci}" value="${escapeHtml(item)}" placeholder="Пункт..." /><button type="button" class="block-action-btn danger" onclick="removeChecklistItem(${index}, ${ci})" title="Удалить">\u2716</button></div>`;
+    });
+    html += `</div><button type="button" class="add-block-btn" onclick="addChecklistItem(${index})">+ пункт</button>`;
+    html += `<div><span class="block-field-label">Заголовок</span><input data-block-field="caption" value="${escapeHtml(cap)}" placeholder="Заголовок чеклиста" /></div>`;
+    return html;
+  }
+
+  if (t === 'map') {
+    const place = typeof c === 'string' ? c : '';
+    const lat = (block.coordinates && block.coordinates.lat) || '';
+    const lng = (block.coordinates && block.coordinates.lng) || '';
+    return `
+      <div><span class="block-field-label">Место</span>
+      <input data-block-field="content" value="${escapeHtml(place)}" placeholder="Название места" /></div>
+      <div class="block-field-row">
+        <div><span class="block-field-label">Широта (lat)</span><input data-block-field="lat" type="number" step="any" value="${escapeHtml(String(lat))}" /></div>
+        <div><span class="block-field-label">Долгота (lng)</span><input data-block-field="lng" type="number" step="any" value="${escapeHtml(String(lng))}" /></div>
+      </div>`;
+  }
+
+  if (t === 'poll') {
+    const question = (c && c.question) ? c.question : '';
+    const options = (c && c.options) ? c.options : [];
+    let html = `<div><span class="block-field-label">Вопрос</span><input data-block-field="poll-question" value="${escapeHtml(question)}" placeholder="Вопрос опроса" /></div>`;
+    html += '<span class="block-field-label">Варианты</span><div class="block-poll-options" data-block-poll="' + index + '">';
+    options.forEach((opt, oi) => {
+      html += `<div class="block-poll-option"><input data-poll-label="${oi}" value="${escapeHtml(opt.label || '')}" placeholder="Вариант" /><input data-poll-votes="${oi}" type="number" min="0" value="${opt.votes || 0}" placeholder="Голоса" /><button type="button" class="block-action-btn danger" onclick="removePollOption(${index}, ${oi})" title="Удалить">\u2716</button></div>`;
+    });
+    html += `</div><button type="button" class="add-block-btn" onclick="addPollOption(${index})">+ вариант</button>`;
+    return html;
+  }
+
+  // Fallback: raw JSON
+  const raw = typeof c === 'object' ? JSON.stringify(c, null, 2) : String(c);
+  return `<textarea data-block-field="content-raw">${escapeHtml(raw)}</textarea>`;
+}
+
+function renderBlockEditor(blocks) {
+  if (!Array.isArray(blocks)) blocks = [];
+  let html = '';
+
+  blocks.forEach((block, i) => {
+    const t = block.type || 'text';
+    html += `<div class="block-card" data-block-index="${i}">
+      <div class="block-card-header">
+        <span class="block-type-badge">${getBlockTypeIcon(t)} ${escapeHtml(getBlockTypeLabel(t))}</span>
+        <span style="font-size:.68rem;color:var(--muted);">#${i + 1}</span>
+        <div class="block-actions">
+          <button type="button" class="block-action-btn" onclick="moveBlock(${i}, -1)" title="Вверх" ${i === 0 ? 'disabled' : ''}>\u2191</button>
+          <button type="button" class="block-action-btn" onclick="moveBlock(${i}, 1)" title="Вниз" ${i === blocks.length - 1 ? 'disabled' : ''}>\u2193</button>
+          <button type="button" class="block-action-btn danger" onclick="removeBlock(${i})" title="Удалить блок">\u2716</button>
+        </div>
+      </div>
+      <div class="block-card-body">${renderBlockBody(block, i)}</div>
+    </div>`;
+  });
+
+  html += `<div class="add-block-row">`;
+  BLOCK_TYPES.forEach((bt) => {
+    html += `<button type="button" class="add-block-btn" onclick="addBlock('${bt.type}')">${bt.icon} ${escapeHtml(bt.label)}</button>`;
+  });
+  html += `</div>`;
+
+  return html;
+}
+
+function bindBlockEditorEvents() {
+  // Block editor uses onclick handlers directly for simplicity
+}
+
+function getCurrentArticleBlocks() {
+  const editorEl = document.getElementById('vf-block-editor');
+  if (!editorEl) return [];
+  return collectBlockEditorContent();
+}
+
+function collectBlockEditorContent() {
+  const editorEl = document.getElementById('vf-block-editor');
+  if (!editorEl) return [];
+
+  const blockCards = editorEl.querySelectorAll('.block-card');
+  const blocks = [];
+
+  blockCards.forEach((card) => {
+    const badge = card.querySelector('.block-type-badge');
+    if (!badge) return;
+
+    // Extract type from badge text (icon + label)
+    const idx = Number(card.dataset.blockIndex);
+    const body = card.querySelector('.block-card-body');
+    if (!body) return;
+
+    // Determine block type from data we stored
+    const blockType = detectBlockType(body);
+    const block = buildBlockFromDom(blockType, body, idx);
+    if (block) blocks.push(block);
+  });
+
+  return blocks;
+}
+
+function detectBlockType(body) {
+  if (body.querySelector('[data-block-field="poll-question"]')) return 'poll';
+  if (body.querySelector('[data-block-checklist]')) return 'checklist';
+  if (body.querySelector('[data-block-gallery]')) return 'gallery';
+  if (body.querySelector('[data-block-field="url"]')) return 'link';
+  if (body.querySelector('[data-block-field="lat"]')) return 'map';
+  if (body.querySelector('[data-block-field="content-raw"]')) return 'raw';
+
+  const contentField = body.querySelector('[data-block-field="content"]');
+  const captionField = body.querySelector('[data-block-field="caption"]');
+
+  if (contentField && contentField.tagName === 'TEXTAREA' && !captionField) {
+    // Could be text, quote, or note - check the badge in parent
+    const badge = body.closest('.block-card').querySelector('.block-type-badge');
+    const badgeText = badge ? badge.textContent.trim().toLowerCase() : '';
+    if (badgeText.includes('цитата')) return 'quote';
+    if (badgeText.includes('заметка')) return 'note';
+    return 'text';
+  }
+
+  if (contentField && contentField.tagName === 'INPUT' && captionField) {
+    const badge = body.closest('.block-card').querySelector('.block-type-badge');
+    const badgeText = badge ? badge.textContent.trim().toLowerCase() : '';
+    if (badgeText.includes('аудио')) return 'audio';
+    return 'image';
+  }
+
+  return 'text';
+}
+
+function buildBlockFromDom(type, body, idx) {
+  if (type === 'text' || type === 'quote' || type === 'note') {
+    const ta = body.querySelector('[data-block-field="content"]');
+    return { type, content: ta ? ta.value : '' };
+  }
+
+  if (type === 'image') {
+    const src = body.querySelector('[data-block-field="content"]');
+    const cap = body.querySelector('[data-block-field="caption"]');
+    const block = { type: 'image', content: src ? src.value.trim() : '' };
+    if (cap && cap.value.trim()) block.caption = cap.value.trim();
+    return block;
+  }
+
+  if (type === 'gallery') {
+    const items = [];
+    body.querySelectorAll('[data-gallery-item]').forEach((inp) => {
+      if (inp.value.trim()) items.push(inp.value.trim());
+    });
+    const cap = body.querySelector('[data-block-field="caption"]');
+    const block = { type: 'gallery', content: items };
+    if (cap && cap.value.trim()) block.caption = cap.value.trim();
+    return block;
+  }
+
+  if (type === 'audio') {
+    const src = body.querySelector('[data-block-field="content"]');
+    const cap = body.querySelector('[data-block-field="caption"]');
+    const block = { type: 'audio', content: src ? src.value.trim() : '' };
+    if (cap && cap.value.trim()) block.caption = cap.value.trim();
+    return block;
+  }
+
+  if (type === 'link') {
+    const text = body.querySelector('[data-block-field="content"]');
+    const url = body.querySelector('[data-block-field="url"]');
+    return { type: 'link', content: text ? text.value.trim() : '', url: url ? url.value.trim() : '' };
+  }
+
+  if (type === 'checklist') {
+    const items = [];
+    body.querySelectorAll('[data-checklist-item]').forEach((inp) => {
+      if (inp.value.trim()) items.push(inp.value.trim());
+    });
+    const cap = body.querySelector('[data-block-field="caption"]');
+    const block = { type: 'checklist', content: { items } };
+    if (cap && cap.value.trim()) block.caption = cap.value.trim();
+    return block;
+  }
+
+  if (type === 'map') {
+    const place = body.querySelector('[data-block-field="content"]');
+    const lat = body.querySelector('[data-block-field="lat"]');
+    const lng = body.querySelector('[data-block-field="lng"]');
+    const block = { type: 'map', content: place ? place.value.trim() : '' };
+    const latVal = lat ? parseFloat(lat.value) : NaN;
+    const lngVal = lng ? parseFloat(lng.value) : NaN;
+    if (!Number.isNaN(latVal) && !Number.isNaN(lngVal)) {
+      block.coordinates = { lat: latVal, lng: lngVal };
+    }
+    return block;
+  }
+
+  if (type === 'poll') {
+    const q = body.querySelector('[data-block-field="poll-question"]');
+    const options = [];
+    body.querySelectorAll('[data-poll-label]').forEach((inp, oi) => {
+      const votesInp = body.querySelector(`[data-poll-votes="${oi}"]`);
+      options.push({
+        label: inp.value.trim(),
+        votes: votesInp ? parseInt(votesInp.value, 10) || 0 : 0
+      });
+    });
+    return { type: 'poll', content: { question: q ? q.value.trim() : '', options } };
+  }
+
+  // raw fallback
+  const raw = body.querySelector('[data-block-field="content-raw"]');
+  if (raw) {
+    try {
+      return { type: 'text', content: JSON.parse(raw.value) };
+    } catch (e) {
+      return { type: 'text', content: raw.value };
+    }
+  }
+
+  return { type: 'text', content: '' };
+}
+
+// Global block manipulation functions (called from onclick)
+window.moveBlock = function(index, direction) {
+  const blocks = collectBlockEditorContent();
+  const newIndex = index + direction;
+  if (newIndex < 0 || newIndex >= blocks.length) return;
+  const temp = blocks[index];
+  blocks[index] = blocks[newIndex];
+  blocks[newIndex] = temp;
+  const editorEl = document.getElementById('vf-block-editor');
+  if (editorEl) {
+    editorEl.innerHTML = renderBlockEditor(blocks);
+    bindBlockEditorEvents();
+  }
+};
+
+window.removeBlock = function(index) {
+  const blocks = collectBlockEditorContent();
+  blocks.splice(index, 1);
+  const editorEl = document.getElementById('vf-block-editor');
+  if (editorEl) {
+    editorEl.innerHTML = renderBlockEditor(blocks);
+    bindBlockEditorEvents();
+  }
+};
+
+window.addBlock = function(type) {
+  const blocks = collectBlockEditorContent();
+  const newBlock = { type, content: '' };
+  if (type === 'gallery') newBlock.content = [];
+  if (type === 'checklist') newBlock.content = { items: [''] };
+  if (type === 'poll') newBlock.content = { question: '', options: [{ label: '', votes: 0 }] };
+  if (type === 'map') { newBlock.content = ''; newBlock.coordinates = { lat: 0, lng: 0 }; }
+  blocks.push(newBlock);
+  const editorEl = document.getElementById('vf-block-editor');
+  if (editorEl) {
+    editorEl.innerHTML = renderBlockEditor(blocks);
+    bindBlockEditorEvents();
+    editorEl.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+};
+
+window.addGalleryItem = function(blockIndex) {
+  const blocks = collectBlockEditorContent();
+  if (blocks[blockIndex] && blocks[blockIndex].type === 'gallery') {
+    if (!Array.isArray(blocks[blockIndex].content)) blocks[blockIndex].content = [];
+    blocks[blockIndex].content.push('');
+    const editorEl = document.getElementById('vf-block-editor');
+    if (editorEl) { editorEl.innerHTML = renderBlockEditor(blocks); bindBlockEditorEvents(); }
+  }
+};
+
+window.removeGalleryItem = function(blockIndex, itemIndex) {
+  const blocks = collectBlockEditorContent();
+  if (blocks[blockIndex] && Array.isArray(blocks[blockIndex].content)) {
+    blocks[blockIndex].content.splice(itemIndex, 1);
+    const editorEl = document.getElementById('vf-block-editor');
+    if (editorEl) { editorEl.innerHTML = renderBlockEditor(blocks); bindBlockEditorEvents(); }
+  }
+};
+
+window.addChecklistItem = function(blockIndex) {
+  const blocks = collectBlockEditorContent();
+  if (blocks[blockIndex] && blocks[blockIndex].type === 'checklist') {
+    if (!blocks[blockIndex].content || !blocks[blockIndex].content.items) blocks[blockIndex].content = { items: [] };
+    blocks[blockIndex].content.items.push('');
+    const editorEl = document.getElementById('vf-block-editor');
+    if (editorEl) { editorEl.innerHTML = renderBlockEditor(blocks); bindBlockEditorEvents(); }
+  }
+};
+
+window.removeChecklistItem = function(blockIndex, itemIndex) {
+  const blocks = collectBlockEditorContent();
+  if (blocks[blockIndex] && blocks[blockIndex].content && blocks[blockIndex].content.items) {
+    blocks[blockIndex].content.items.splice(itemIndex, 1);
+    const editorEl = document.getElementById('vf-block-editor');
+    if (editorEl) { editorEl.innerHTML = renderBlockEditor(blocks); bindBlockEditorEvents(); }
+  }
+};
+
+window.addPollOption = function(blockIndex) {
+  const blocks = collectBlockEditorContent();
+  if (blocks[blockIndex] && blocks[blockIndex].type === 'poll') {
+    if (!blocks[blockIndex].content || !blocks[blockIndex].content.options) blocks[blockIndex].content = { question: '', options: [] };
+    blocks[blockIndex].content.options.push({ label: '', votes: 0 });
+    const editorEl = document.getElementById('vf-block-editor');
+    if (editorEl) { editorEl.innerHTML = renderBlockEditor(blocks); bindBlockEditorEvents(); }
+  }
+};
+
+window.removePollOption = function(blockIndex, optionIndex) {
+  const blocks = collectBlockEditorContent();
+  if (blocks[blockIndex] && blocks[blockIndex].content && blocks[blockIndex].content.options) {
+    blocks[blockIndex].content.options.splice(optionIndex, 1);
+    const editorEl = document.getElementById('vf-block-editor');
+    if (editorEl) { editorEl.innerHTML = renderBlockEditor(blocks); bindBlockEditorEvents(); }
+  }
+};
 
 function addVisualEntry() {
   try {
