@@ -94,11 +94,11 @@ function hasFullLocalizedContent(lang: string): boolean {
 }
 
 export function getAvailableLanguages(): string[] {
-  const localized = Object.keys(localizedCollections).filter(
-    (lang) => lang !== DEFAULT_LANGUAGE && hasFullLocalizedContent(lang)
-  );
-
-  return [DEFAULT_LANGUAGE, ...localized];
+  const allLangs = Object.keys(content.translations);
+  if (!allLangs.includes(DEFAULT_LANGUAGE)) {
+    allLangs.unshift(DEFAULT_LANGUAGE);
+  }
+  return allLangs;
 }
 
 export function getContentForLanguage(lang: string): LanguageContent {

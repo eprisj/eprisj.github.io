@@ -25,7 +25,28 @@
       "library.year": "Year",
       "library.action": "Action",
       "hero.quote": "\"Epris journal is not just about publication; it is a living archive of the things that make life tasting. Born from a desire to slow down and document the fleeting beauty of our existence, this journal serves as a sanctuary for the thoughtful, the curious and the aesthetic.\"",
-      "welcoming.letter": "Welcoming letter"
+      "welcoming.letter": "Welcoming letter",
+      "hero.tagline1": "design art travel",
+      "hero.tagline2": "reveal the invisible",
+      "about.quote1": "\"Epris journal is not just about publication; it is a living archive of the things that make life tasting. Born from a desire to slow down and document the fleeting beauty of our existence, this journal serves as a sanctuary for the thoughtful, the curious and the aesthetic.\"",
+      "about.bio": "With a background in art history and a passion for slow travel, Mariia founded Epris Journal in 2026. Her vision was to create a digital space that feels as tangible and timeless as a printed volume found in an old library.",
+      "about.contact": "Contact",
+      "about.social": "Social",
+      "about.manifesto": "The Manifesto",
+      "about.slowdown": "Slow Down",
+      "about.slowdown.desc": "We believe in the luxury of time. In consuming content that requires attention and rewards patience.",
+      "about.curate": "Curate Life",
+      "about.curate.desc": "Life is an art form. We curate experiences, spaces, and flavors that elevate the everyday.",
+      "about.preserve": "Preserve Beauty",
+      "about.preserve.desc": "In a digital age of ephemerality, we strive to create an archive of enduring beauty.",
+      "poll.thanks": "Thank you for voting",
+      "maps.open": "Open in Maps",
+      "gallery.view": "View",
+      "sidebar.lifestyle": "Lifestyle",
+      "sidebar.travel": "Travel",
+      "sidebar.taste": "Taste",
+      "sidebar.design": "Design",
+      "sidebar.culture": "Culture"
     },
     "RU": {
       "nav.gallery": "Галерея",
@@ -50,7 +71,30 @@
       "library.type": "Тип",
       "library.size": "Размер",
       "library.year": "Год",
-      "library.action": "Действие"
+      "library.action": "Действие",
+      "hero.quote": "\"Журнал Epris — это не просто публикация; это живой архив того, что придаёт жизни вкус. Рождённый из желания замедлиться и запечатлеть мимолётную красоту нашего существования, этот журнал служит убежищем для вдумчивых, любопытных и эстетов.\"",
+      "welcoming.letter": "Приветственное письмо",
+      "hero.tagline1": "дизайн искусство путешествия",
+      "hero.tagline2": "раскрой невидимое",
+      "about.quote1": "\"Журнал Epris — это не просто публикация; это живой архив того, что придаёт жизни вкус. Рождённый из желания замедлиться и запечатлеть мимолётную красоту нашего существования, этот журнал служит убежищем для вдумчивых, любопытных и эстетов.\"",
+      "about.bio": "С образованием в области истории искусства и страстью к медленным путешествиям, Мария основала Epris Journal в 2026 году. Её видение — создать цифровое пространство, столь же осязаемое и вневременное, как печатный том, найденный в старой библиотеке.",
+      "about.contact": "Контакт",
+      "about.social": "Соцсети",
+      "about.manifesto": "Манифест",
+      "about.slowdown": "Замедлись",
+      "about.slowdown.desc": "Мы верим в роскошь времени. В потребление контента, который требует внимания и вознаграждает терпение.",
+      "about.curate": "Курируй жизнь",
+      "about.curate.desc": "Жизнь — это искусство. Мы курируем опыт, пространства и вкусы, возвышающие повседневность.",
+      "about.preserve": "Сохрани красоту",
+      "about.preserve.desc": "В цифровой эпохе эфемерности мы стремимся создать архив непреходящей красоты.",
+      "poll.thanks": "Спасибо за голос",
+      "maps.open": "Открыть на карте",
+      "gallery.view": "Смотреть",
+      "sidebar.lifestyle": "Стиль жизни",
+      "sidebar.travel": "Путешествия",
+      "sidebar.taste": "Вкус",
+      "sidebar.design": "Дизайн",
+      "sidebar.culture": "Культура"
     },
     "UA": {
       "nav.gallery": "Галерея",
@@ -75,7 +119,30 @@
       "library.type": "Тип",
       "library.size": "Розмір",
       "library.year": "Рік",
-      "library.action": "Дія"
+      "library.action": "Дія",
+      "hero.quote": "\"Журнал Epris — це не просто публікація; це живий архів того, що надає життю смаку. Народжений з бажання уповільнитися та задокументувати мінливу красу нашого існування, цей журнал слугує притулком для вдумливих, допитливих та естетів.\"",
+      "welcoming.letter": "Вітальний лист",
+      "hero.tagline1": "дизайн мистецтво подорожі",
+      "hero.tagline2": "розкрий невидиме",
+      "about.quote1": "\"Журнал Epris — це не просто публікація; це живий архів того, що надає життю смаку. Народжений з бажання уповільнитися та задокументувати мінливу красу нашого існування, цей журнал слугує притулком для вдумливих, допитливих та естетів.\"",
+      "about.bio": "З освітою в галузі історії мистецтва та пристрастю до повільних подорожей, Марія заснувала Epris Journal у 2026 році. Її бачення — створити цифровий простір, настільки ж відчутний і позачасовий, як друкований том, знайдений у старій бібліотеці.",
+      "about.contact": "Контакт",
+      "about.social": "Соцмережі",
+      "about.manifesto": "Маніфест",
+      "about.slowdown": "Уповільнись",
+      "about.slowdown.desc": "Ми віримо в розкіш часу. У споживання контенту, який вимагає уваги та винагороджує терпіння.",
+      "about.curate": "Курируй життя",
+      "about.curate.desc": "Життя — це мистецтво. Ми куруємо досвід, простори та смаки, що підносять повсякденність.",
+      "about.preserve": "Збережи красу",
+      "about.preserve.desc": "У цифрову епоху ефемерності ми прагнемо створити архів непроминаючої краси.",
+      "poll.thanks": "Дякуємо за голос",
+      "maps.open": "Відкрити на карті",
+      "gallery.view": "Дивитися",
+      "sidebar.lifestyle": "Стиль життя",
+      "sidebar.travel": "Подорожі",
+      "sidebar.taste": "Смак",
+      "sidebar.design": "Дизайн",
+      "sidebar.culture": "Культура"
     },
     "TR": {
       "nav.gallery": "Galeri",
@@ -100,7 +167,30 @@
       "library.type": "Tür",
       "library.size": "Boyut",
       "library.year": "Yıl",
-      "library.action": "İşlem"
+      "library.action": "İşlem",
+      "hero.quote": "\"Epris dergisi sadece bir yayın değil; hayatı lezzetli kılan şeylerin yaşayan bir arşividir. Yavaşlama ve varlığımızın gelip geçici güzelliğini belgeleme arzusundan doğan bu dergi, düşünceli, meraklı ve estetler için bir sığınak görevi görür.\"",
+      "welcoming.letter": "Hoş geldiniz mektubu",
+      "hero.tagline1": "tasarım sanat seyahat",
+      "hero.tagline2": "görünmezi ortaya çıkar",
+      "about.quote1": "\"Epris dergisi sadece bir yayın değil; hayatı lezzetli kılan şeylerin yaşayan bir arşividir. Yavaşlama ve varlığımızın gelip geçici güzelliğini belgeleme arzusundan doğan bu dergi, düşünceli, meraklı ve estetler için bir sığınak görevi görür.\"",
+      "about.bio": "Sanat tarihi geçmişi ve yavaş seyahat tutkusuyla Mariia, 2026'da Epris Journal'ı kurdu. Vizyonu, eski bir kütüphanede bulunan basılı bir cilt kadar somut ve zamansız hissettiren dijital bir alan yaratmaktı.",
+      "about.contact": "İletişim",
+      "about.social": "Sosyal",
+      "about.manifesto": "Manifesto",
+      "about.slowdown": "Yavaşla",
+      "about.slowdown.desc": "Zamanın lüksüne inanıyoruz. Dikkat gerektiren ve sabrı ödüllendiren içerik tüketimine.",
+      "about.curate": "Hayatı Kürate Et",
+      "about.curate.desc": "Hayat bir sanat formudur. Günlük olanı yücelten deneyimleri, mekanları ve tatları kürate ediyoruz.",
+      "about.preserve": "Güzelliği Koru",
+      "about.preserve.desc": "Geçiciliğin dijital çağında, kalıcı güzelliğin bir arşivini yaratmaya çalışıyoruz.",
+      "poll.thanks": "Oyunuz için teşekkürler",
+      "maps.open": "Haritada aç",
+      "gallery.view": "Görüntüle",
+      "sidebar.lifestyle": "Yaşam tarzı",
+      "sidebar.travel": "Seyahat",
+      "sidebar.taste": "Lezzet",
+      "sidebar.design": "Tasarım",
+      "sidebar.culture": "Kültür"
     },
     "DE": {
       "nav.gallery": "Galerie",
@@ -125,7 +215,30 @@
       "library.type": "Typ",
       "library.size": "Größe",
       "library.year": "Jahr",
-      "library.action": "Aktion"
+      "library.action": "Aktion",
+      "hero.quote": "\"Das Epris Journal ist nicht nur eine Publikation; es ist ein lebendiges Archiv der Dinge, die das Leben schmackhaft machen. Aus dem Wunsch geboren, langsamer zu werden und die flüchtige Schönheit unserer Existenz zu dokumentieren, dient dieses Journal als Zufluchtsort für Nachdenkliche, Neugierige und Ästheten.\"",
+      "welcoming.letter": "Willkommensbrief",
+      "hero.tagline1": "Design Kunst Reisen",
+      "hero.tagline2": "das Unsichtbare enthüllen",
+      "about.quote1": "\"Das Epris Journal ist nicht nur eine Publikation; es ist ein lebendiges Archiv der Dinge, die das Leben schmackhaft machen. Aus dem Wunsch geboren, langsamer zu werden und die flüchtige Schönheit unserer Existenz zu dokumentieren, dient dieses Journal als Zufluchtsort für Nachdenkliche, Neugierige und Ästheten.\"",
+      "about.bio": "Mit einem Hintergrund in Kunstgeschichte und einer Leidenschaft für langsames Reisen gründete Mariia 2026 das Epris Journal. Ihre Vision war es, einen digitalen Raum zu schaffen, der sich so greifbar und zeitlos anfühlt wie ein gedruckter Band aus einer alten Bibliothek.",
+      "about.contact": "Kontakt",
+      "about.social": "Sozial",
+      "about.manifesto": "Das Manifest",
+      "about.slowdown": "Verlangsame dich",
+      "about.slowdown.desc": "Wir glauben an den Luxus der Zeit. An den Konsum von Inhalten, die Aufmerksamkeit erfordern und Geduld belohnen.",
+      "about.curate": "Kuratiere das Leben",
+      "about.curate.desc": "Das Leben ist eine Kunstform. Wir kuratieren Erfahrungen, Räume und Geschmäcker, die den Alltag erheben.",
+      "about.preserve": "Bewahre Schönheit",
+      "about.preserve.desc": "In einem digitalen Zeitalter der Vergänglichkeit streben wir danach, ein Archiv dauerhafter Schönheit zu schaffen.",
+      "poll.thanks": "Danke für Ihre Stimme",
+      "maps.open": "In Karten öffnen",
+      "gallery.view": "Ansehen",
+      "sidebar.lifestyle": "Lebensstil",
+      "sidebar.travel": "Reisen",
+      "sidebar.taste": "Geschmack",
+      "sidebar.design": "Design",
+      "sidebar.culture": "Kultur"
     },
     "IT": {
       "nav.gallery": "Galleria",
@@ -150,7 +263,30 @@
       "library.type": "Tipo",
       "library.size": "Dimensione",
       "library.year": "Anno",
-      "library.action": "Azione"
+      "library.action": "Azione",
+      "hero.quote": "\"La rivista Epris non è solo una pubblicazione; è un archivio vivente delle cose che rendono la vita gustosa. Nata dal desiderio di rallentare e documentare la bellezza fugace della nostra esistenza, questa rivista funge da santuario per i riflessivi, i curiosi e gli esteti.\"",
+      "welcoming.letter": "Lettera di benvenuto",
+      "hero.tagline1": "design arte viaggi",
+      "hero.tagline2": "rivela l'invisibile",
+      "about.quote1": "\"La rivista Epris non è solo una pubblicazione; è un archivio vivente delle cose che rendono la vita gustosa. Nata dal desiderio di rallentare e documentare la bellezza fugace della nostra esistenza, questa rivista funge da santuario per i riflessivi, i curiosi e gli esteti.\"",
+      "about.bio": "Con una formazione in storia dell'arte e una passione per i viaggi lenti, Mariia ha fondato Epris Journal nel 2026. La sua visione era creare uno spazio digitale che sembrasse tangibile e senza tempo come un volume stampato trovato in una vecchia biblioteca.",
+      "about.contact": "Contatto",
+      "about.social": "Social",
+      "about.manifesto": "Il Manifesto",
+      "about.slowdown": "Rallenta",
+      "about.slowdown.desc": "Crediamo nel lusso del tempo. Nel consumare contenuti che richiedono attenzione e premiano la pazienza.",
+      "about.curate": "Cura la Vita",
+      "about.curate.desc": "La vita è una forma d'arte. Curiamo esperienze, spazi e sapori che elevano il quotidiano.",
+      "about.preserve": "Preserva la Bellezza",
+      "about.preserve.desc": "In un'era digitale di effimero, ci impegniamo a creare un archivio di bellezza duratura.",
+      "poll.thanks": "Grazie per il tuo voto",
+      "maps.open": "Apri in Mappe",
+      "gallery.view": "Visualizza",
+      "sidebar.lifestyle": "Stile di vita",
+      "sidebar.travel": "Viaggi",
+      "sidebar.taste": "Gusto",
+      "sidebar.design": "Design",
+      "sidebar.culture": "Cultura"
     },
     "ES": {
       "nav.gallery": "Galería",
@@ -175,7 +311,30 @@
       "library.type": "Tipo",
       "library.size": "Tamaño",
       "library.year": "Año",
-      "library.action": "Acción"
+      "library.action": "Acción",
+      "hero.quote": "\"La revista Epris no es solo una publicación; es un archivo vivo de las cosas que hacen la vida sabrosa. Nacida del deseo de desacelerar y documentar la belleza fugaz de nuestra existencia, esta revista sirve como santuario para los reflexivos, los curiosos y los estetas.\"",
+      "welcoming.letter": "Carta de bienvenida",
+      "hero.tagline1": "diseño arte viajes",
+      "hero.tagline2": "revela lo invisible",
+      "about.quote1": "\"La revista Epris no es solo una publicación; es un archivo vivo de las cosas que hacen la vida sabrosa. Nacida del deseo de desacelerar y documentar la belleza fugaz de nuestra existencia, esta revista sirve como santuario para los reflexivos, los curiosos y los estetas.\"",
+      "about.bio": "Con formación en historia del arte y pasión por los viajes lentos, Mariia fundó Epris Journal en 2026. Su visión era crear un espacio digital que se sintiera tan tangible y atemporal como un volumen impreso encontrado en una vieja biblioteca.",
+      "about.contact": "Contacto",
+      "about.social": "Social",
+      "about.manifesto": "El Manifiesto",
+      "about.slowdown": "Desacelera",
+      "about.slowdown.desc": "Creemos en el lujo del tiempo. En consumir contenido que requiere atención y recompensa la paciencia.",
+      "about.curate": "Cura la Vida",
+      "about.curate.desc": "La vida es una forma de arte. Curamos experiencias, espacios y sabores que elevan lo cotidiano.",
+      "about.preserve": "Preserva la Belleza",
+      "about.preserve.desc": "En una era digital de lo efímero, nos esforzamos por crear un archivo de belleza perdurable.",
+      "poll.thanks": "Gracias por tu voto",
+      "maps.open": "Abrir en Mapas",
+      "gallery.view": "Ver",
+      "sidebar.lifestyle": "Estilo de vida",
+      "sidebar.travel": "Viajes",
+      "sidebar.taste": "Sabor",
+      "sidebar.design": "Diseño",
+      "sidebar.culture": "Cultura"
     }
   },
   "items": [
@@ -1898,70 +2057,78 @@
     "DE": {
       "items": [
         {
+          "id": 1,
+          "title": "Morgenrituale",
+          "subtitle": "Kappadokien, Türkei",
+          "fig": "FIG. 01",
+          "description": "Die Stille der Morgendämmerung und der Geschmack frischen Kaffees mit Blick auf die Täler.",
+          "imageSeed": "coffee-morning"
+        },
+        {
           "id": 2,
-          "title": "Urban Solitude",
-          "subtitle": "Berlin, Germany",
+          "title": "Städtische Einsamkeit",
+          "subtitle": "Berlin, Deutschland",
           "fig": "FIG. 02",
-          "description": "Finding peace in the concrete rhythm of the city.",
+          "description": "Frieden finden im betonierten Rhythmus der Stadt.",
           "imageSeed": "berlin-street"
         },
         {
           "id": 3,
-          "title": "Mediterranean Feast",
-          "subtitle": "Sicily, Italy",
+          "title": "Mediterranes Fest",
+          "subtitle": "Sizilien, Italien",
           "fig": "FIG. 03",
-          "description": "A celebration of simple ingredients: olive oil, tomatoes, and sea salt.",
+          "description": "Ein Fest einfacher Zutaten: Olivenöl, Tomaten und Meersalz.",
           "imageSeed": "italian-food"
         },
         {
           "id": 4,
-          "title": "Mountain Breath",
-          "subtitle": "Carpathians, Ukraine",
+          "title": "Bergatem",
+          "subtitle": "Karpaten, Ukraine",
           "fig": "FIG. 04",
-          "description": "The crisp air of the highlands and the scent of pine forests.",
+          "description": "Die frische Luft des Hochlands und der Duft der Kiefernwälder.",
           "imageSeed": "mountains"
         },
         {
           "id": 5,
-          "title": "Siesta Shadows",
-          "subtitle": "Seville, Spain",
+          "title": "Siesta-Schatten",
+          "subtitle": "Sevilla, Spanien",
           "fig": "FIG. 05",
-          "description": "The slow passage of time during a hot afternoon.",
+          "description": "Das langsame Verstreichen der Zeit an einem heißen Nachmittag.",
           "imageSeed": "shadows-wall"
         },
         {
           "id": 6,
-          "title": "Velvet Night",
-          "subtitle": "Istanbul, Turkey",
+          "title": "Samtnacht",
+          "subtitle": "Istanbul, Türkei",
           "fig": "FIG. 06",
-          "description": "Lights reflecting on the Bosphorus as the city comes alive.",
+          "description": "Lichter spiegeln sich im Bosporus, während die Stadt zum Leben erwacht.",
           "imageSeed": "istanbul-night"
         }
       ],
       "articles": [
         {
           "id": 1,
-          "title": "The Art of Slow Living!",
+          "title": "Die Kunst des langsamen Lebens",
           "author": "Mariia Ivanova",
-          "role": "Editor-in-Chief",
+          "role": "Chefredakteurin",
           "date": "Oct 12, 2025",
-          "excerpt": "Why doing less might a!ctually mean living more. A journey into the philosophy of slowing down in a hyper-connected world.",
-          "category": "Lifestyle",
-          "subcategory": "Philosophy",
+          "excerpt": "Warum weniger tun tatsächlich mehr leben bedeuten kann. Eine Reise in die Philosophie der Entschleunigung in einer hypervernetzten Welt.",
+          "category": "Lebensstil",
+          "subcategory": "Philosophie",
           "tags": [
-            "Lifestyle",
-            "Philosophy",
+            "Lebensstil",
+            "Philosophie",
             "Wellness"
           ],
           "imageSeed": "slow-living",
           "content": [
             {
               "type": "text",
-              "content": "In a world that constantly demands our attention, the act of slowing down has become a radical form of resistance. It is not merely about doing less, but about doing things with intention, presence, and care. The philosophy of slow living invites us to savor the mundane, to find beauty in the ordinary, and to reconnect with the natural rhythms of life."
+              "content": "In einer Welt, die ständig unsere Aufmerksamkeit fordert, ist das Verlangsamen zu einer radikalen Form des Widerstands geworden. Es geht nicht nur darum, weniger zu tun, sondern Dinge mit Absicht, Präsenz und Sorgfalt zu tun. Die Philosophie des langsamen Lebens lädt uns ein, das Alltägliche zu genießen, Schönheit im Gewöhnlichen zu finden und uns mit den natürlichen Rhythmen des Lebens zu verbinden."
             },
             {
               "type": "note",
-              "content": "Slow living is not about being lazy. It's about being intentional with your time and energy."
+              "content": "Langsames Leben bedeutet nicht Faulheit. Es geht darum, seine Zeit und Energie bewusst einzusetzen."
             },
             {
               "type": "gallery",
@@ -1970,49 +2137,49 @@
                 "coffee-book",
                 "rainy-window"
               ],
-              "caption": "Moments of stillness in everyday life."
+              "caption": "Momente der Stille im Alltag."
             },
             {
               "type": "quote",
-              "content": "Speed is irrelevant if you are going in the wrong direction. The true luxury of our time is the ability to pause."
+              "content": "Geschwindigkeit ist irrelevant, wenn man in die falsche Richtung geht. Der wahre Luxus unserer Zeit ist die Fähigkeit innezuhalten."
             },
             {
               "type": "text",
-              "content": "My journey began in a small village in Tuscany, where time seemed to stretch endlessly. The locals didn't rush through their meals; they celebrated them. Lunch was not a break from work, but the centerpiece of the day. This shift in perspective changed everything for me. I realized that urgency is often an illusion we create for ourselves."
+              "content": "Meine Reise begann in einem kleinen Dorf in der Toskana, wo die Zeit endlos zu fließen schien. Die Einheimischen hetzten nicht durch ihre Mahlzeiten; sie zelebrierten sie. Das Mittagessen war keine Arbeitspause, sondern der Mittelpunkt des Tages. Dieser Perspektivwechsel veränderte alles für mich."
             },
             {
               "type": "image",
               "content": "tuscany-landscape",
-              "caption": "The rolling hills of Val d'Orcia, where time stands still."
+              "caption": "Die Hügel des Val d'Orcia, wo die Zeit stillsteht."
             },
             {
               "type": "text",
-              "content": "We often confuse busyness with productivity, and speed with efficiency. But true creativity and deep thought require space. They require the 'unproductive' moments of staring out a window, walking without a destination, or simply sitting in silence. It is in these pauses that the magic happens."
+              "content": "Wir verwechseln oft Geschäftigkeit mit Produktivität und Schnelligkeit mit Effizienz. Doch wahre Kreativität und tiefes Denken brauchen Raum. Sie brauchen die 'unproduktiven' Momente des Aus-dem-Fenster-Schauens, des ziellosen Gehens oder einfach des stillen Sitzens. In diesen Pausen geschieht die Magie."
             },
             {
               "type": "audio",
               "content": "https://actions.google.com/sounds/v1/ambiences/forest_morning.ogg",
-              "caption": "Soundscape: Morning in the Tuscan hills."
+              "caption": "Klanglandschaft: Morgen in den toskanischen Hügeln."
             },
             {
               "type": "checklist",
               "content": {
                 "items": [
-                  "Turn off notifications for one hour a day",
-                  "Eat one meal without distractions",
-                  "Spend 10 minutes doing absolutely nothing",
-                  "Read a physical book before bed"
+                  "Benachrichtigungen eine Stunde am Tag ausschalten",
+                  "Eine Mahlzeit ohne Ablenkung essen",
+                  "10 Minuten absolut nichts tun",
+                  "Vor dem Schlafengehen ein gedrucktes Buch lesen"
                 ]
               },
-              "caption": "Daily Slow Living Practices"
+              "caption": "Tägliche Praktiken des langsamen Lebens"
             },
             {
               "type": "text",
-              "content": "Adopting a slow mindset doesn't mean moving at a snail's pace in everything we do. It means assigning the correct speed to each activity. It means eating slowly to taste the food, listening deeply to understand rather than to reply, and working with focus rather than frantic multitasking."
+              "content": "Eine langsame Denkweise zu übernehmen bedeutet nicht, bei allem im Schneckentempo zu gehen. Es bedeutet, jeder Aktivität die richtige Geschwindigkeit zuzuweisen. Langsam essen, um das Essen zu schmecken, aufmerksam zuhören, um zu verstehen statt zu antworten, und fokussiert arbeiten statt hektisch mehrere Aufgaben gleichzeitig zu erledigen."
             },
             {
               "type": "map",
-              "content": "Val d'Orcia, Tuscany",
+              "content": "Val d'Orcia, Toskana",
               "coordinates": {
                 "lat": 43.0766,
                 "lng": 11.6146
@@ -2020,70 +2187,70 @@
             },
             {
               "type": "text",
-              "content": "Start small. Dedicate one hour a week to doing absolutely nothing. Turn off your phone. Watch the clouds. Brew a cup of tea and drink it without reading the news. Reclaim your time, and you will reclaim your life."
+              "content": "Fangen Sie klein an. Widmen Sie eine Stunde pro Woche dem absoluten Nichtstun. Schalten Sie Ihr Telefon aus. Beobachten Sie die Wolken. Brühen Sie eine Tasse Tee und trinken Sie sie, ohne Nachrichten zu lesen. Gewinnen Sie Ihre Zeit zurück, und Sie gewinnen Ihr Leben zurück."
             },
             {
               "type": "link",
-              "content": "Read more about the Slow Food Movement",
+              "content": "Erfahren Sie mehr über die Slow-Food-Bewegung.",
               "url": "https://www.slowfood.com"
             }
           ]
         },
         {
           "id": 2,
-          "title": "Taste of the Earth",
+          "title": "Der Geschmack der Erde",
           "author": "Marco Rossi",
           "date": "Sep 28, 2025",
-          "excerpt": "Exploring the connection between soil health and the flavors on our plate. A visit to organic vineyards in Tuscany.",
-          "category": "Food",
-          "subcategory": "Travel",
+          "excerpt": "Die Verbindung zwischen Bodengesundheit und dem Geschmack auf unserem Teller. Ein Besuch auf Bio-Weinbergen in der Toskana.",
+          "category": "Essen",
+          "subcategory": "Reisen",
           "tags": [
-            "Food",
-            "Travel",
-            "Sustainability"
+            "Essen",
+            "Reisen",
+            "Nachhaltigkeit"
           ],
           "imageSeed": "vineyard",
           "content": [
             {
               "type": "text",
-              "content": "Wine is bottled poetry, but it is also bottled geography. The concept of 'terroir' speaks to the profound connection between the land and the produce it yields. In the heart of Chianti, I discovered that the health of the soil is directly reflected in the complexity of the wine."
+              "content": "Wein ist Poesie in Flaschen, aber auch Geografie in Flaschen. Das Konzept des 'Terroir' spricht von einer tiefen Verbindung zwischen dem Land und dem, was es hervorbringt. Im Herzen des Chianti entdeckte ich, dass die Bodengesundheit sich direkt in der Komplexität des Weins widerspiegelt."
             },
             {
               "type": "image",
               "content": "grapes",
-              "caption": "Sangiovese grapes ripening under the Tuscan sun."
+              "caption": "Sangiovese-Trauben reifen unter der toskanischen Sonne."
             },
             {
               "type": "text",
-              "content": "Organic farming is not just a trend here; it is a return to tradition. By avoiding synthetic pesticides and fertilizers, winemakers are allowing the true character of the land to shine through. The result is a wine that is vibrant, alive, and deeply connected to its origins."
+              "content": "Biologische Landwirtschaft ist hier nicht nur ein Trend; es ist eine Rückkehr zur Tradition. Durch den Verzicht auf synthetische Pestizide und Düngemittel lassen die Winzer den wahren Charakter des Bodens zum Vorschein kommen. Das Ergebnis ist ein Wein, der lebendig, vital und tief mit seinem Ursprung verbunden ist."
             },
             {
               "type": "quote",
-              "content": "To care for the soil is to care for ourselves. We are what we eat, and what we eat comes from the earth."
+              "content": "Sich um den Boden zu kümmern bedeutet, sich um sich selbst zu kümmern. Wir sind, was wir essen, und was wir essen, kommt aus der Erde."
             },
             {
               "type": "text",
-              "content": "Walking through the vineyards, you can smell the difference. The air is thick with the scent of wild herbs, damp earth, and ripening fruit. It's a sensory experience that no supermarket wine can replicate. This is the taste of patience, of seasons, of respect for nature."
+              "content": "Beim Spaziergang durch die Weinberge spürt man den Unterschied. Die Luft ist erfüllt von wilden Kräutern, feuchter Erde und reifenden Früchten. Es ist eine sinnliche Erfahrung, die kein Supermarktwein nachahmen kann."
             },
             {
               "type": "poll",
               "content": {
-                "question": "What is your preferred type of wine?",
+                "question": "Welche Weinsorte bevorzugen Sie?",
                 "options": [
                   {
-                    "label": "Red (Full-bodied)",
+                    "label": "Rot (Vollmundig)",
                     "votes": 45
                   },
                   {
-                    "label": "White (Crisp)",
+                    "label": "Weiß (Frisch)",
                     "votes": 30
                   },
                   {
-                    "label": "Rosé (Dry)",
+                    "label": "Rosé (Trocken)",
                     "votes": 15
                   },
                   {
-                    "label": "Sparkling",
+                    "label": "Schaumwein",
                     "votes": 10
                   }
                 ]
@@ -2099,153 +2266,153 @@
             },
             {
               "type": "text",
-              "content": "The future of food lies in the past. It lies in the hands of those who understand that we are stewards of the land, not its masters. Every time we choose organic, local, and seasonal food, we are voting for a healthier planet and a richer palate."
+              "content": "Die Zukunft des Essens liegt in der Vergangenheit. Sie liegt in den Händen derer, die verstehen, dass wir Hüter des Landes sind, nicht seine Herren."
             }
           ]
         },
         {
           "id": 3,
-          "title": "Architectures of Happiness",
+          "title": "Die Architektur des Glücks",
           "author": "Leyla Yilmaz",
           "date": "Sep 15, 2025",
-          "excerpt": "How our physical surroundings impact our mental state. Designing spaces for joy and connection.",
+          "excerpt": "Wie unsere physische Umgebung unseren Geisteszustand beeinflusst. Räume für Freude und Verbindung gestalten.",
           "category": "Design",
-          "subcategory": "Psychology",
+          "subcategory": "Psychologie",
           "tags": [
             "Design",
-            "Psychology",
-            "Home"
+            "Psychologie",
+            "Zuhause"
           ],
           "imageSeed": "interior-design",
           "content": [
             {
               "type": "text",
-              "content": "We shape our buildings; thereafter they shape us. This famous quote by Winston Churchill rings truer than ever. The spaces we inhabit have a profound impact on our mood, productivity, and overall well-being. But what makes a space 'happy'?"
+              "content": "Wir formen unsere Gebäude; danach formen sie uns. Dieses berühmte Zitat von Winston Churchill klingt wahrer denn je. Die Räume, in denen wir leben, haben einen tiefgreifenden Einfluss auf unsere Stimmung, Produktivität und unser Wohlbefinden."
             },
             {
               "type": "text",
-              "content": "Light, proportion, and materials all play a crucial role. Natural light boosts serotonin, while natural materials like wood and stone ground us. But beyond the physical, it is the emotional resonance of a space that truly matters. A home should be a sanctuary, a place where we can be our most authentic selves."
+              "content": "Licht, Proportionen und Materialien spielen eine entscheidende Rolle. Natürliches Licht steigert Serotonin, während natürliche Materialien wie Holz und Stein uns erden. Aber über das Physische hinaus ist es die emotionale Resonanz eines Raumes, die wirklich zählt."
             },
             {
               "type": "image",
               "content": "modern-living-room",
-              "caption": "A space designed for light and tranquility."
+              "caption": "Ein Raum, gestaltet für Licht und Ruhe."
             },
             {
               "type": "note",
-              "content": "Tip: Use mirrors to reflect natural light into darker corners of your home."
+              "content": "Tipp: Verwenden Sie Spiegel, um natürliches Licht in dunklere Ecken Ihres Hauses zu reflektieren."
             },
             {
               "type": "text",
-              "content": "Biophilic design—incorporating elements of nature into our built environments—is key. A view of a tree, a potted plant, or even the use of organic patterns can lower stress levels and improve cognitive function. We are biological beings, and we crave connection with the living world."
+              "content": "Biophiles Design – die Einbeziehung von Naturelementen in unsere gebaute Umgebung – ist der Schlüssel. Ein Blick auf einen Baum, eine Topfpflanze oder sogar die Verwendung organischer Muster kann Stress reduzieren und die kognitive Funktion verbessern."
             },
             {
               "type": "quote",
-              "content": "Architecture is not about math or zoning, it's about visceral emotions."
+              "content": "Architektur handelt nicht von Mathematik oder Zonierung, sondern von intuitiven Emotionen."
             },
             {
               "type": "text",
-              "content": "Ultimately, a happy home is one that facilitates connection—with ourselves, with our loved ones, and with the environment. It is a stage for the drama of life, a backdrop for our memories, and a shelter for our dreams."
+              "content": "Letztendlich ist ein glückliches Zuhause eines, das Verbindung ermöglicht – mit uns selbst, mit unseren Lieben und mit der Umwelt."
             },
             {
               "type": "link",
-              "content": "Explore the Neuroarchitecture Institute",
+              "content": "Entdecken Sie das Institut für Neuroarchitektur",
               "url": "https://www.anfarch.org"
             }
           ]
         },
         {
           "id": 4,
-          "title": "Digital Detox Diaries",
+          "title": "Digitale Entgiftung Tagebücher",
           "author": "Hans Weber",
           "date": "Aug 30, 2025",
-          "excerpt": "One month without social media. The withdrawal, the boredom, and the eventual clarity.",
-          "category": "Tech",
-          "subcategory": "Personal",
+          "excerpt": "Ein Monat ohne soziale Medien. Der Entzug, die Langeweile und die schließliche Klarheit.",
+          "category": "Technik",
+          "subcategory": "Persönlich",
           "tags": [
-            "Tech",
-            "Mindfulness",
-            "Personal"
+            "Technik",
+            "Achtsamkeit",
+            "Persönlich"
           ],
           "imageSeed": "nature-walk",
           "content": [
             {
               "type": "text",
-              "content": "The first week was the hardest. My thumb would instinctively reach for the app icon that wasn't there. The silence was deafening. But as the days went by, something shifted. The fog lifted. I started noticing the colors of the sunset, the taste of my coffee, the sound of the wind in the trees."
+              "content": "Die erste Woche war die härteste. Mein Daumen griff instinktiv nach dem App-Symbol, das nicht mehr da war. Die Stille war ohrenbetäubend. Aber mit den Tagen verschob sich etwas. Der Nebel lichtete sich. Ich begann, die Farben des Sonnenuntergangs zu bemerken, den Geschmack meines Kaffees, das Rauschen des Windes in den Bäumen."
             },
             {
               "type": "quote",
-              "content": "Boredom is the birthplace of creativity. When we stop consuming, we start creating."
+              "content": "Langeweile ist der Geburtsort der Kreativität. Wenn wir aufhören zu konsumieren, beginnen wir zu kreieren."
             },
             {
               "type": "text",
-              "content": "Reclaiming my attention felt like reclaiming my life. I read books, I wrote in my journal, I had long conversations with friends without checking my phone. The world didn't end because I wasn't watching. In fact, it became more vivid."
+              "content": "Meine Aufmerksamkeit zurückzugewinnen fühlte sich an wie mein Leben zurückzugewinnen. Ich las Bücher, schrieb in mein Tagebuch, führte lange Gespräche mit Freunden, ohne mein Telefon zu überprüfen."
             },
             {
               "type": "image",
               "content": "journal-writing",
-              "caption": "Rediscovering the analog joy of pen on paper."
+              "caption": "Die analoge Freude von Stift auf Papier wiederentdecken."
             },
             {
               "type": "checklist",
               "content": {
                 "items": [
-                  "Delete social media apps from phone",
-                  "Set up 'Do Not Disturb' hours",
-                  "Buy an analog alarm clock",
-                  "Inform close friends/family of your detox"
+                  "Social-Media-Apps vom Telefon löschen",
+                  "'Nicht stören'-Zeiten einrichten",
+                  "Einen analogen Wecker kaufen",
+                  "Enge Freunde/Familie über den Entzug informieren"
                 ]
               },
-              "caption": "Preparation Checklist"
+              "caption": "Vorbereitungs-Checkliste"
             },
             {
               "type": "text",
-              "content": "We are drowning in information but starving for wisdom. The constant stream of notifications fragments our attention and keeps us in a state of chronic low-level anxiety. Stepping away allowed me to hear my own thoughts again."
+              "content": "Wir ertrinken in Information, aber verhungern nach Weisheit. Der ständige Strom von Benachrichtigungen fragmentiert unsere Aufmerksamkeit."
             },
             {
               "type": "text",
-              "content": "I'm back online now, but with strict boundaries. I use technology; I don't let it use me. The clarity I gained is too precious to lose again."
+              "content": "Ich bin jetzt wieder online, aber mit strengen Grenzen. Ich nutze Technologie; ich lasse mich nicht von ihr nutzen."
             }
           ]
         },
         {
           "id": 5,
-          "title": "The Future of Remote Work",
+          "title": "Die Zukunft der Fernarbeit",
           "author": "Sarah Jenkins",
           "date": "Nov 15, 2025",
-          "excerpt": "Asynchronous communication is the key to unlocking global talent and work-life balance.",
-          "category": "Tech",
-          "subcategory": "Work",
+          "excerpt": "Asynchrone Kommunikation ist der Schlüssel zur Erschließung globaler Talente und Work-Life-Balance.",
+          "category": "Technik",
+          "subcategory": "Arbeit",
           "tags": [
-            "Tech",
-            "Remote Work",
-            "Productivity"
+            "Technik",
+            "Fernarbeit",
+            "Produktivität"
           ],
           "imageSeed": "home-office",
           "content": [
             {
               "type": "text",
-              "content": "The 9-to-5 is dead. Long live the results-oriented work environment. As companies embrace remote-first policies, the focus is shifting from hours logged to output delivered. But this transition requires a fundamental rethink of how we communicate."
+              "content": "Der 9-to-5 ist tot. Es lebe die ergebnisorientierte Arbeitsumgebung. Während Unternehmen Remote-First-Richtlinien annehmen, verlagert sich der Fokus von protokollierten Stunden auf gelieferte Ergebnisse."
             },
             {
               "type": "poll",
               "content": {
-                "question": "What is your biggest challenge with remote work?",
+                "question": "Was ist Ihre größte Herausforderung bei der Fernarbeit?",
                 "options": [
                   {
-                    "label": "Loneliness/Isolation",
+                    "label": "Einsamkeit/Isolation",
                     "votes": 25
                   },
                   {
-                    "label": "Overworking/Burnout",
+                    "label": "Überarbeitung/Burnout",
                     "votes": 35
                   },
                   {
-                    "label": "Communication Issues",
+                    "label": "Kommunikationsprobleme",
                     "votes": 20
                   },
                   {
-                    "label": "Distractions at Home",
+                    "label": "Ablenkungen zu Hause",
                     "votes": 20
                   }
                 ]
@@ -2253,44 +2420,44 @@
             },
             {
               "type": "text",
-              "content": "Asynchronous communication—writing things down instead of holding meetings—is the superpower of distributed teams. It allows people to work when they are most productive, regardless of their time zone. It creates a written record of decisions. And most importantly, it respects everyone's time."
+              "content": "Asynchrone Kommunikation – Dinge aufzuschreiben statt Meetings abzuhalten – ist die Superkraft verteilter Teams. Sie ermöglicht es Menschen, dann zu arbeiten, wenn sie am produktivsten sind."
             },
             {
               "type": "note",
-              "content": "Async doesn't mean 'never talk'. It means 'talk when necessary, write by default'."
+              "content": "Async bedeutet nicht 'nie reden'. Es bedeutet 'reden wenn nötig, schreiben als Standard'."
             },
             {
               "type": "checklist",
               "content": {
                 "items": [
-                  "Default to public channels over DMs",
-                  "Record loom videos for complex explanations",
-                  "Write detailed meeting agendas",
-                  "Block out 'deep work' time on your calendar"
+                  "Öffentliche Kanäle statt DMs bevorzugen",
+                  "Loom-Videos für komplexe Erklärungen aufnehmen",
+                  "Detaillierte Meeting-Agenden schreiben",
+                  "'Deep Work'-Zeit im Kalender blockieren"
                 ]
               },
-              "caption": "Best Practices for Async Work"
+              "caption": "Best Practices für asynchrone Arbeit"
             }
           ]
         },
         {
           "id": 6,
-          "title": "Minimalist Wardrobe Guide",
+          "title": "Minimalistische Garderobe",
           "author": "Elena K.",
           "date": "Oct 05, 2025",
-          "excerpt": "Building a capsule wardrobe that sparks joy and reduces decision fatigue.",
-          "category": "Lifestyle",
-          "subcategory": "Fashion",
+          "excerpt": "Eine Capsule-Garderobe aufbauen, die Freude weckt und Entscheidungsmüdigkeit reduziert.",
+          "category": "Lebensstil",
+          "subcategory": "Mode",
           "tags": [
-            "Lifestyle",
-            "Fashion",
-            "Minimalism"
+            "Lebensstil",
+            "Mode",
+            "Minimalismus"
           ],
           "imageSeed": "wardrobe",
           "content": [
             {
               "type": "text",
-              "content": "We wear 20% of our clothes 80% of the time. The rest is just clutter. A minimalist wardrobe is not about deprivation; it's about curation. It's about owning fewer, better things that you truly love and that work together seamlessly."
+              "content": "Wir tragen 20% unserer Kleidung 80% der Zeit. Der Rest ist nur Unordnung. Eine minimalistische Garderobe bedeutet nicht Verzicht; es bedeutet Kuration."
             },
             {
               "type": "gallery",
@@ -2299,54 +2466,54 @@
                 "denim-jeans",
                 "trench-coat"
               ],
-              "caption": "The Essentials"
+              "caption": "Die Essentials"
             },
             {
               "type": "checklist",
               "content": {
                 "items": [
-                  "White Button-Down Shirt",
-                  "Classic Blue Jeans",
-                  "Black Trousers",
-                  "Beige Trench Coat",
-                  "White Sneakers",
-                  "Black Ankle Boots"
+                  "Weißes Button-Down-Hemd",
+                  "Klassische blaue Jeans",
+                  "Schwarze Hose",
+                  "Beiger Trenchcoat",
+                  "Weiße Sneaker",
+                  "Schwarze Stiefeletten"
                 ]
               },
-              "caption": "Capsule Wardrobe Starter Pack"
+              "caption": "Capsule-Garderobe Starter-Pack"
             },
             {
               "type": "text",
-              "content": "Start by decluttering. Take everything out of your closet. Hold each item. Does it fit? Is it in good condition? do you feel confident in it? If the answer is no, let it go. Donate, sell, or recycle."
+              "content": "Beginnen Sie mit dem Ausmisten. Nehmen Sie alles aus Ihrem Schrank. Halten Sie jedes Teil. Passt es? Ist es in gutem Zustand? Fühlen Sie sich darin sicher? Wenn nein, lassen Sie es los."
             },
             {
               "type": "note",
-              "content": "Quality over quantity. Invest in natural fabrics like cotton, linen, wool, and silk."
+              "content": "Qualität vor Quantität. Investieren Sie in Naturfasern wie Baumwolle, Leinen, Wolle und Seide."
             }
           ]
         },
         {
           "id": 7,
-          "title": "Hidden Gems of Kyoto",
+          "title": "Verborgene Schätze von Kyoto",
           "author": "Kenji Tanaka",
           "date": "Nov 01, 2025",
-          "excerpt": "Beyond the Golden Pavilion. Discovering the quiet temples and secret gardens of Japan's ancient capital.",
-          "category": "Travel",
+          "excerpt": "Jenseits des Goldenen Pavillons. Die stillen Tempel und geheimen Gärten von Japans alter Hauptstadt entdecken.",
+          "category": "Reisen",
           "subcategory": "Japan",
           "tags": [
-            "Travel",
+            "Reisen",
             "Japan",
-            "Culture"
+            "Kultur"
           ],
           "imageSeed": "kyoto-temple",
           "content": [
             {
               "type": "text",
-              "content": "Kyoto is a city of layers. The famous sites are breathtaking, but the true soul of the city lies in its hidden corners. In the small neighborhood shrines, the moss-covered gardens, and the artisan workshops that have been operating for centuries."
+              "content": "Kyoto ist eine Stadt der Schichten. Die berühmten Sehenswürdigkeiten sind atemberaubend, aber die wahre Seele der Stadt liegt in ihren verborgenen Ecken."
             },
             {
               "type": "map",
-              "content": "Gio-ji Temple (The Moss Temple)",
+              "content": "Gio-ji Tempel (Der Moostempel)",
               "coordinates": {
                 "lat": 35.0267,
                 "lng": 135.6686
@@ -2354,7 +2521,7 @@
             },
             {
               "type": "text",
-              "content": "Gio-ji is a small, quiet temple in Arashiyama, known for its lush moss garden. It feels worlds away from the crowds of the Bamboo Grove. The light filtering through the maple trees creates a magical, ethereal atmosphere."
+              "content": "Gio-ji ist ein kleiner, ruhiger Tempel in Arashiyama, bekannt für seinen üppigen Moosgarten. Er fühlt sich Welten entfernt von den Menschenmassen des Bambushains an."
             },
             {
               "type": "gallery",
@@ -2363,15 +2530,88 @@
                 "bamboo-forest",
                 "tea-ceremony"
               ],
-              "caption": "Textures of Kyoto"
+              "caption": "Texturen von Kyoto"
             },
             {
               "type": "note",
-              "content": "Best time to visit: Early morning or late afternoon to avoid the crowds."
+              "content": "Beste Reisezeit: Früher Morgen oder später Nachmittag, um Menschenmassen zu vermeiden."
             },
             {
               "type": "text",
-              "content": "Don't rush Kyoto. It is a city best experienced on foot or by bicycle. Get lost in the narrow alleys of Gion. Sit by the Kamo River. Drink matcha in a traditional tea house. Let the city reveal itself to you slowly."
+              "content": "Hetzen Sie nicht durch Kyoto. Es ist eine Stadt, die am besten zu Fuß oder mit dem Fahrrad erlebt wird."
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "title": "Zuhause in der Ferne",
+          "author": "Mariia Ivanova",
+          "role": "Chefredakteurin",
+          "date": "Mar 14, 2026",
+          "excerpt": "Einen Aufenthaltsort am Reiseziel zu wählen bedeutet, die bedeutsamen Momente des Lebens zu teilen. Das Pied-à-terre als architektonische Philosophie.",
+          "category": "Reisen",
+          "subcategory": "Paris",
+          "tags": [
+            "Reisen",
+            "Architektur",
+            "Paris"
+          ],
+          "imageUrl": "/images/article-img-1.png",
+          "content": [
+            {
+              "type": "image",
+              "content": "/images/article-img-1.png",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Jede Wohnung ist exklusiv und bietet die Möglichkeit, wirklich zu wählen, was man erleben möchte. Das zweistöckige Stadthaus an den Tuilerien von Necchi Architecture ist ein dichromatisches Heiligtum, sanft bereichert durch Details, die ein Gefühl der Ruhe vermitteln..."
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-3.png",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Jede der Wohnungen ist eine kleine Reise innerhalb einer großen... Neuen Erinnerungen und geistig-materiellen Reichtümern ausgesetzt zu sein, ist fruchtbar für Seele und Herz."
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-4.png",
+              "caption": ""
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-6.png",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Einen Aufenthaltsort am Reiseziel zu wählen bedeutet, zu vertrauen und die bedeutsamen Momente des Lebens zu teilen... Das Pied-à-terre ist nicht nur ein französischer Begriff, der wörtlich 'Füße auf dem Boden' bedeutet."
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-7.png",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Provokatives Muster, rote Farbe, Chrom und Spiegel versetzen uns sofort in den fröhlichen Abend einer Pariser Wohnung der 1970er Jahre... Eine der besten Eigenschaften hier ist die Unvorhersehbarkeit."
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-8.png",
+              "caption": ""
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-9.png",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Es gibt eine Assoziation des Pied-à-terre mit einer Schachtel exquisiter Pralinen... Die Liste geht weiter, aber wenn man alle Geschmacksrichtungen kennt, verblasst der Entdeckungsfunke teilweise. Entdecken Sie es selbst."
             }
           ]
         }
@@ -2379,54 +2619,54 @@
       "reviews": [
         {
           "id": 1,
-          "title": "A Symphony of Flavors!!!!!!!!!!!!!!!!!!!!!!!",
+          "title": "Eine Symphonie der Aromen",
           "subject": "Restaurant 'Olea', Limassol",
           "rating": 4.5,
-          "content": "The tasting menu was a journey through the island's history. Each dish told a story of conquest and trade.",
+          "content": "Das Degustationsmenü war eine Reise durch die Geschichte der Insel. Jedes Gericht erzählte eine Geschichte von Eroberung und Handel.",
           "author": "Elena K."
         },
         {
           "id": 2,
-          "title": "The Book of Whispers",
-          "subject": "Novel by S. Alexiou",
+          "title": "Das Buch der Flüsterer",
+          "subject": "Roman von S. Alexiou",
           "rating": 5,
-          "content": "Hauntingly beautiful. A prose that feels like poetry, exploring memory and loss in a divided city.",
+          "content": "Unheimlich schön. Eine Prosa, die sich wie Poesie anfühlt, und Erinnerung und Verlust in einer geteilten Stadt erforscht.",
           "author": "Maria S."
         },
         {
           "id": 3,
-          "title": "Modernist Retreat",
+          "title": "Modernistischer Rückzugsort",
           "subject": "Hotel 'The Edge', Paphos",
           "rating": 4,
-          "content": "Stunning architecture, but the service lacked the warmth one expects in the Mediterranean.",
+          "content": "Atemberaubende Architektur, aber dem Service fehlte die Wärme, die man im Mittelmeerraum erwartet.",
           "author": "James B."
         }
       ],
       "libraryItems": [
         {
           "id": 1,
-          "title": "The Philosophy of Taste",
+          "title": "Die Philosophie des Geschmacks",
           "type": "PDF",
           "size": "14.5 MB",
           "year": "2024"
         },
         {
           "id": 2,
-          "title": "Mediterranean Diet: A History",
+          "title": "Mediterrane Küche: Eine Geschichte",
           "type": "EPUB",
           "size": "8.2 MB",
           "year": "2023"
         },
         {
           "id": 3,
-          "title": "Visual Diaries: 2020-2025",
+          "title": "Visuelle Tagebücher: 2020-2025",
           "type": "ZIP",
           "size": "456 MB",
           "year": "2025"
         },
         {
           "id": 4,
-          "title": "Sounds of the City: Audio Archive",
+          "title": "Klänge der Stadt: Audioarchiv",
           "type": "MP3",
           "size": "120 MB",
           "year": "2024"
@@ -2436,70 +2676,78 @@
     "ES": {
       "items": [
         {
+          "id": 1,
+          "title": "Rituales matutinos",
+          "subtitle": "Capadocia, Turquía",
+          "fig": "FIG. 01",
+          "description": "El silencio del amanecer y el sabor del café fresco con vistas a los valles.",
+          "imageSeed": "coffee-morning"
+        },
+        {
           "id": 2,
-          "title": "Urban Solitude",
-          "subtitle": "Berlin, Germany",
+          "title": "Soledad urbana",
+          "subtitle": "Berlín, Alemania",
           "fig": "FIG. 02",
-          "description": "Finding peace in the concrete rhythm of the city.",
+          "description": "Encontrar paz en el ritmo de hormigón de la ciudad.",
           "imageSeed": "berlin-street"
         },
         {
           "id": 3,
-          "title": "Mediterranean Feast",
-          "subtitle": "Sicily, Italy",
+          "title": "Fiesta mediterránea",
+          "subtitle": "Sicilia, Italia",
           "fig": "FIG. 03",
-          "description": "A celebration of simple ingredients: olive oil, tomatoes, and sea salt.",
+          "description": "Una celebración de ingredientes simples: aceite de oliva, tomates y sal marina.",
           "imageSeed": "italian-food"
         },
         {
           "id": 4,
-          "title": "Mountain Breath",
-          "subtitle": "Carpathians, Ukraine",
+          "title": "Aliento montañés",
+          "subtitle": "Cárpatos, Ucrania",
           "fig": "FIG. 04",
-          "description": "The crisp air of the highlands and the scent of pine forests.",
+          "description": "El aire fresco de las tierras altas y el aroma de los bosques de pinos.",
           "imageSeed": "mountains"
         },
         {
           "id": 5,
-          "title": "Siesta Shadows",
-          "subtitle": "Seville, Spain",
+          "title": "Sombras de siesta",
+          "subtitle": "Sevilla, España",
           "fig": "FIG. 05",
-          "description": "The slow passage of time during a hot afternoon.",
+          "description": "El lento paso del tiempo durante una tarde calurosa.",
           "imageSeed": "shadows-wall"
         },
         {
           "id": 6,
-          "title": "Velvet Night",
-          "subtitle": "Istanbul, Turkey",
+          "title": "Noche de terciopelo",
+          "subtitle": "Estambul, Turquía",
           "fig": "FIG. 06",
-          "description": "Lights reflecting on the Bosphorus as the city comes alive.",
+          "description": "Luces reflejándose en el Bósforo mientras la ciudad cobra vida.",
           "imageSeed": "istanbul-night"
         }
       ],
       "articles": [
         {
           "id": 1,
-          "title": "The Art of Slow Living!",
+          "title": "El arte de vivir despacio",
           "author": "Mariia Ivanova",
-          "role": "Editor-in-Chief",
+          "role": "Editora en jefe",
           "date": "Oct 12, 2025",
-          "excerpt": "Why doing less might a!ctually mean living more. A journey into the philosophy of slowing down in a hyper-connected world.",
-          "category": "Lifestyle",
-          "subcategory": "Philosophy",
+          "excerpt": "Por qué hacer menos podría significar vivir más. Un viaje a la filosofía de desacelerar en un mundo hiperconectado.",
+          "category": "Estilo de vida",
+          "subcategory": "Filosofía",
           "tags": [
-            "Lifestyle",
-            "Philosophy",
-            "Wellness"
+            "Estilo de vida",
+            "Filosofía",
+            "Bienestar"
           ],
           "imageSeed": "slow-living",
           "content": [
             {
               "type": "text",
-              "content": "In a world that constantly demands our attention, the act of slowing down has become a radical form of resistance. It is not merely about doing less, but about doing things with intention, presence, and care. The philosophy of slow living invites us to savor the mundane, to find beauty in the ordinary, and to reconnect with the natural rhythms of life."
+              "content": "En un mundo que constantemente demanda nuestra atención, el acto de desacelerar se ha convertido en una forma radical de resistencia. No se trata simplemente de hacer menos, sino de hacer las cosas con intención, presencia y cuidado. La filosofía del vivir lento nos invita a saborear lo mundano, encontrar belleza en lo ordinario y reconectarnos con los ritmos naturales de la vida."
             },
             {
               "type": "note",
-              "content": "Slow living is not about being lazy. It's about being intentional with your time and energy."
+              "content": "Vivir despacio no es ser perezoso. Se trata de ser intencional con tu tiempo y energía."
             },
             {
               "type": "gallery",
@@ -2508,49 +2756,49 @@
                 "coffee-book",
                 "rainy-window"
               ],
-              "caption": "Moments of stillness in everyday life."
+              "caption": "Momentos de quietud en la vida cotidiana."
             },
             {
               "type": "quote",
-              "content": "Speed is irrelevant if you are going in the wrong direction. The true luxury of our time is the ability to pause."
+              "content": "La velocidad es irrelevante si vas en la dirección equivocada. El verdadero lujo de nuestro tiempo es la capacidad de pausar."
             },
             {
               "type": "text",
-              "content": "My journey began in a small village in Tuscany, where time seemed to stretch endlessly. The locals didn't rush through their meals; they celebrated them. Lunch was not a break from work, but the centerpiece of the day. This shift in perspective changed everything for me. I realized that urgency is often an illusion we create for ourselves."
+              "content": "Mi viaje comenzó en un pequeño pueblo de la Toscana, donde el tiempo parecía estirarse infinitamente. Los lugareños no se apresuraban con sus comidas; las celebraban. El almuerzo no era un descanso del trabajo, sino el evento central del día."
             },
             {
               "type": "image",
               "content": "tuscany-landscape",
-              "caption": "The rolling hills of Val d'Orcia, where time stands still."
+              "caption": "Las colinas del Val d'Orcia, donde el tiempo se detiene."
             },
             {
               "type": "text",
-              "content": "We often confuse busyness with productivity, and speed with efficiency. But true creativity and deep thought require space. They require the 'unproductive' moments of staring out a window, walking without a destination, or simply sitting in silence. It is in these pauses that the magic happens."
+              "content": "A menudo confundimos la ocupación con la productividad y la velocidad con la eficiencia. Pero la verdadera creatividad y el pensamiento profundo requieren espacio. Requieren los momentos 'improductivos' de mirar por la ventana, caminar sin destino o simplemente sentarse en silencio."
             },
             {
               "type": "audio",
               "content": "https://actions.google.com/sounds/v1/ambiences/forest_morning.ogg",
-              "caption": "Soundscape: Morning in the Tuscan hills."
+              "caption": "Paisaje sonoro: Mañana en las colinas toscanas."
             },
             {
               "type": "checklist",
               "content": {
                 "items": [
-                  "Turn off notifications for one hour a day",
-                  "Eat one meal without distractions",
-                  "Spend 10 minutes doing absolutely nothing",
-                  "Read a physical book before bed"
+                  "Desactivar notificaciones una hora al día",
+                  "Comer una comida sin distracciones",
+                  "Pasar 10 minutos sin hacer absolutamente nada",
+                  "Leer un libro físico antes de dormir"
                 ]
               },
-              "caption": "Daily Slow Living Practices"
+              "caption": "Prácticas diarias del vivir lento"
             },
             {
               "type": "text",
-              "content": "Adopting a slow mindset doesn't mean moving at a snail's pace in everything we do. It means assigning the correct speed to each activity. It means eating slowly to taste the food, listening deeply to understand rather than to reply, and working with focus rather than frantic multitasking."
+              "content": "Adoptar una mentalidad lenta no significa moverse a paso de tortuga en todo lo que hacemos. Significa asignar la velocidad correcta a cada actividad."
             },
             {
               "type": "map",
-              "content": "Val d'Orcia, Tuscany",
+              "content": "Val d'Orcia, Toscana",
               "coordinates": {
                 "lat": 43.0766,
                 "lng": 11.6146
@@ -2558,70 +2806,70 @@
             },
             {
               "type": "text",
-              "content": "Start small. Dedicate one hour a week to doing absolutely nothing. Turn off your phone. Watch the clouds. Brew a cup of tea and drink it without reading the news. Reclaim your time, and you will reclaim your life."
+              "content": "Empieza poco a poco. Dedica una hora a la semana a no hacer absolutamente nada. Apaga tu teléfono. Observa las nubes. Prepara una taza de té y bébela sin leer noticias."
             },
             {
               "type": "link",
-              "content": "Read more about the Slow Food Movement",
+              "content": "Conoce más sobre el movimiento Slow Food.",
               "url": "https://www.slowfood.com"
             }
           ]
         },
         {
           "id": 2,
-          "title": "Taste of the Earth",
+          "title": "El sabor de la tierra",
           "author": "Marco Rossi",
           "date": "Sep 28, 2025",
-          "excerpt": "Exploring the connection between soil health and the flavors on our plate. A visit to organic vineyards in Tuscany.",
-          "category": "Food",
-          "subcategory": "Travel",
+          "excerpt": "Explorando la conexión entre la salud del suelo y el sabor en nuestro plato. Visitando viñedos orgánicos en la Toscana.",
+          "category": "Comida",
+          "subcategory": "Viajes",
           "tags": [
-            "Food",
-            "Travel",
-            "Sustainability"
+            "Comida",
+            "Viajes",
+            "Sostenibilidad"
           ],
           "imageSeed": "vineyard",
           "content": [
             {
               "type": "text",
-              "content": "Wine is bottled poetry, but it is also bottled geography. The concept of 'terroir' speaks to the profound connection between the land and the produce it yields. In the heart of Chianti, I discovered that the health of the soil is directly reflected in the complexity of the wine."
+              "content": "El vino es poesía embotellada, pero también es geografía embotellada. El concepto de 'terroir' habla de una conexión profunda entre la tierra y lo que produce. En el corazón del Chianti, descubrí que la salud del suelo se refleja directamente en la complejidad del vino."
             },
             {
               "type": "image",
               "content": "grapes",
-              "caption": "Sangiovese grapes ripening under the Tuscan sun."
+              "caption": "Uvas Sangiovese madurando bajo el sol toscano."
             },
             {
               "type": "text",
-              "content": "Organic farming is not just a trend here; it is a return to tradition. By avoiding synthetic pesticides and fertilizers, winemakers are allowing the true character of the land to shine through. The result is a wine that is vibrant, alive, and deeply connected to its origins."
+              "content": "La agricultura orgánica aquí no es solo una tendencia; es un regreso a la tradición. Al evitar pesticidas y fertilizantes sintéticos, los viticultores permiten que el verdadero carácter de la tierra brille."
             },
             {
               "type": "quote",
-              "content": "To care for the soil is to care for ourselves. We are what we eat, and what we eat comes from the earth."
+              "content": "Cuidar el suelo es cuidarse a uno mismo. Somos lo que comemos, y lo que comemos viene de la tierra."
             },
             {
               "type": "text",
-              "content": "Walking through the vineyards, you can smell the difference. The air is thick with the scent of wild herbs, damp earth, and ripening fruit. It's a sensory experience that no supermarket wine can replicate. This is the taste of patience, of seasons, of respect for nature."
+              "content": "Al caminar por los viñedos, se puede sentir la diferencia. El aire está saturado de hierbas silvestres, tierra húmeda y frutas madurando."
             },
             {
               "type": "poll",
               "content": {
-                "question": "What is your preferred type of wine?",
+                "question": "¿Qué tipo de vino prefieres?",
                 "options": [
                   {
-                    "label": "Red (Full-bodied)",
+                    "label": "Tinto (Con cuerpo)",
                     "votes": 45
                   },
                   {
-                    "label": "White (Crisp)",
+                    "label": "Blanco (Fresco)",
                     "votes": 30
                   },
                   {
-                    "label": "Rosé (Dry)",
+                    "label": "Rosado (Seco)",
                     "votes": 15
                   },
                   {
-                    "label": "Sparkling",
+                    "label": "Espumoso",
                     "votes": 10
                   }
                 ]
@@ -2629,7 +2877,7 @@
             },
             {
               "type": "map",
-              "content": "Chianti Classico Region",
+              "content": "Región del Chianti Classico",
               "coordinates": {
                 "lat": 43.4764,
                 "lng": 11.3134
@@ -2637,71 +2885,71 @@
             },
             {
               "type": "text",
-              "content": "The future of food lies in the past. It lies in the hands of those who understand that we are stewards of the land, not its masters. Every time we choose organic, local, and seasonal food, we are voting for a healthier planet and a richer palate."
+              "content": "El futuro de la comida está en el pasado. Está en las manos de quienes entienden que somos guardianes de la tierra, no sus dueños."
             }
           ]
         },
         {
           "id": 3,
-          "title": "Architectures of Happiness",
+          "title": "La arquitectura de la felicidad",
           "author": "Leyla Yilmaz",
           "date": "Sep 15, 2025",
-          "excerpt": "How our physical surroundings impact our mental state. Designing spaces for joy and connection.",
-          "category": "Design",
-          "subcategory": "Psychology",
+          "excerpt": "Cómo nuestro entorno físico impacta nuestro estado mental. Diseñando espacios para la alegría y la conexión.",
+          "category": "Diseño",
+          "subcategory": "Psicología",
           "tags": [
-            "Design",
-            "Psychology",
-            "Home"
+            "Diseño",
+            "Psicología",
+            "Hogar"
           ],
           "imageSeed": "interior-design",
           "content": [
             {
               "type": "text",
-              "content": "We shape our buildings; thereafter they shape us. This famous quote by Winston Churchill rings truer than ever. The spaces we inhabit have a profound impact on our mood, productivity, and overall well-being. But what makes a space 'happy'?"
+              "content": "Nosotros damos forma a nuestros edificios; después ellos nos dan forma a nosotros. Esta famosa cita de Winston Churchill suena más verdadera que nunca."
             },
             {
               "type": "text",
-              "content": "Light, proportion, and materials all play a crucial role. Natural light boosts serotonin, while natural materials like wood and stone ground us. But beyond the physical, it is the emotional resonance of a space that truly matters. A home should be a sanctuary, a place where we can be our most authentic selves."
+              "content": "La luz, la proporción y los materiales juegan un papel crucial. La luz natural aumenta la serotonina, mientras que materiales naturales como la madera y la piedra nos arraigan."
             },
             {
               "type": "image",
               "content": "modern-living-room",
-              "caption": "A space designed for light and tranquility."
+              "caption": "Un espacio diseñado para la luz y la tranquilidad."
             },
             {
               "type": "note",
-              "content": "Tip: Use mirrors to reflect natural light into darker corners of your home."
+              "content": "Consejo: Usa espejos para reflejar la luz natural en los rincones más oscuros de tu hogar."
             },
             {
               "type": "text",
-              "content": "Biophilic design—incorporating elements of nature into our built environments—is key. A view of a tree, a potted plant, or even the use of organic patterns can lower stress levels and improve cognitive function. We are biological beings, and we crave connection with the living world."
+              "content": "El diseño biofílico — incorporar elementos de la naturaleza en nuestros entornos construidos — es clave. La vista de un árbol, una planta en maceta o incluso el uso de patrones orgánicos puede reducir el estrés."
             },
             {
               "type": "quote",
-              "content": "Architecture is not about math or zoning, it's about visceral emotions."
+              "content": "La arquitectura no trata de matemáticas o zonificación, sino de emociones viscerales."
             },
             {
               "type": "text",
-              "content": "Ultimately, a happy home is one that facilitates connection—with ourselves, with our loved ones, and with the environment. It is a stage for the drama of life, a backdrop for our memories, and a shelter for our dreams."
+              "content": "En definitiva, un hogar feliz es aquel que facilita la conexión — con nosotros mismos, con nuestros seres queridos y con el medio ambiente."
             },
             {
               "type": "link",
-              "content": "Explore the Neuroarchitecture Institute",
+              "content": "Explora el Instituto de Neuroarquitectura",
               "url": "https://www.anfarch.org"
             }
           ]
         },
         {
           "id": 4,
-          "title": "Digital Detox Diaries",
+          "title": "Diarios de desintoxicación digital",
           "author": "Hans Weber",
           "date": "Aug 30, 2025",
-          "excerpt": "One month without social media. The withdrawal, the boredom, and the eventual clarity.",
-          "category": "Tech",
+          "excerpt": "Un mes sin redes sociales. La abstinencia, el aburrimiento y la eventual claridad.",
+          "category": "Tecnología",
           "subcategory": "Personal",
           "tags": [
-            "Tech",
+            "Tecnología",
             "Mindfulness",
             "Personal"
           ],
@@ -2709,81 +2957,81 @@
           "content": [
             {
               "type": "text",
-              "content": "The first week was the hardest. My thumb would instinctively reach for the app icon that wasn't there. The silence was deafening. But as the days went by, something shifted. The fog lifted. I started noticing the colors of the sunset, the taste of my coffee, the sound of the wind in the trees."
+              "content": "La primera semana fue la más dura. Mi pulgar buscaba instintivamente el ícono de la app que ya no estaba. El silencio era ensordecedor. Pero con el paso de los días, algo cambió."
             },
             {
               "type": "quote",
-              "content": "Boredom is the birthplace of creativity. When we stop consuming, we start creating."
+              "content": "El aburrimiento es la cuna de la creatividad. Cuando dejamos de consumir, empezamos a crear."
             },
             {
               "type": "text",
-              "content": "Reclaiming my attention felt like reclaiming my life. I read books, I wrote in my journal, I had long conversations with friends without checking my phone. The world didn't end because I wasn't watching. In fact, it became more vivid."
+              "content": "Recuperar mi atención se sintió como recuperar mi vida. Leí libros, escribí en mi diario, tuve largas conversaciones con amigos sin revisar mi teléfono."
             },
             {
               "type": "image",
               "content": "journal-writing",
-              "caption": "Rediscovering the analog joy of pen on paper."
+              "caption": "Redescubrir la alegría analógica de la pluma sobre el papel."
             },
             {
               "type": "checklist",
               "content": {
                 "items": [
-                  "Delete social media apps from phone",
-                  "Set up 'Do Not Disturb' hours",
-                  "Buy an analog alarm clock",
-                  "Inform close friends/family of your detox"
+                  "Eliminar apps de redes sociales del teléfono",
+                  "Configurar horas de 'No molestar'",
+                  "Comprar un despertador analógico",
+                  "Informar a amigos/familia cercanos sobre la desintoxicación"
                 ]
               },
-              "caption": "Preparation Checklist"
+              "caption": "Lista de preparación"
             },
             {
               "type": "text",
-              "content": "We are drowning in information but starving for wisdom. The constant stream of notifications fragments our attention and keeps us in a state of chronic low-level anxiety. Stepping away allowed me to hear my own thoughts again."
+              "content": "Nos estamos ahogando en información pero muriéndonos de hambre de sabiduría."
             },
             {
               "type": "text",
-              "content": "I'm back online now, but with strict boundaries. I use technology; I don't let it use me. The clarity I gained is too precious to lose again."
+              "content": "Estoy de vuelta en línea, pero con límites estrictos. Uso la tecnología; no dejo que ella me use a mí."
             }
           ]
         },
         {
           "id": 5,
-          "title": "The Future of Remote Work",
+          "title": "El futuro del trabajo remoto",
           "author": "Sarah Jenkins",
           "date": "Nov 15, 2025",
-          "excerpt": "Asynchronous communication is the key to unlocking global talent and work-life balance.",
-          "category": "Tech",
-          "subcategory": "Work",
+          "excerpt": "La comunicación asíncrona es la clave para desbloquear el talento global y el equilibrio vida-trabajo.",
+          "category": "Tecnología",
+          "subcategory": "Trabajo",
           "tags": [
-            "Tech",
-            "Remote Work",
-            "Productivity"
+            "Tecnología",
+            "Trabajo remoto",
+            "Productividad"
           ],
           "imageSeed": "home-office",
           "content": [
             {
               "type": "text",
-              "content": "The 9-to-5 is dead. Long live the results-oriented work environment. As companies embrace remote-first policies, the focus is shifting from hours logged to output delivered. But this transition requires a fundamental rethink of how we communicate."
+              "content": "El horario de 9 a 5 ha muerto. Larga vida al entorno de trabajo orientado a resultados."
             },
             {
               "type": "poll",
               "content": {
-                "question": "What is your biggest challenge with remote work?",
+                "question": "¿Cuál es tu mayor desafío con el trabajo remoto?",
                 "options": [
                   {
-                    "label": "Loneliness/Isolation",
+                    "label": "Soledad/Aislamiento",
                     "votes": 25
                   },
                   {
-                    "label": "Overworking/Burnout",
+                    "label": "Exceso de trabajo/Burnout",
                     "votes": 35
                   },
                   {
-                    "label": "Communication Issues",
+                    "label": "Problemas de comunicación",
                     "votes": 20
                   },
                   {
-                    "label": "Distractions at Home",
+                    "label": "Distracciones en casa",
                     "votes": 20
                   }
                 ]
@@ -2791,44 +3039,44 @@
             },
             {
               "type": "text",
-              "content": "Asynchronous communication—writing things down instead of holding meetings—is the superpower of distributed teams. It allows people to work when they are most productive, regardless of their time zone. It creates a written record of decisions. And most importantly, it respects everyone's time."
+              "content": "La comunicación asíncrona — escribir las cosas en lugar de hacer reuniones — es el superpoder de los equipos distribuidos."
             },
             {
               "type": "note",
-              "content": "Async doesn't mean 'never talk'. It means 'talk when necessary, write by default'."
+              "content": "Async no significa 'nunca hablar'. Significa 'hablar cuando sea necesario, escribir por defecto'."
             },
             {
               "type": "checklist",
               "content": {
                 "items": [
-                  "Default to public channels over DMs",
-                  "Record loom videos for complex explanations",
-                  "Write detailed meeting agendas",
-                  "Block out 'deep work' time on your calendar"
+                  "Preferir canales públicos sobre DMs",
+                  "Grabar videos de Loom para explicaciones complejas",
+                  "Escribir agendas detalladas de reuniones",
+                  "Bloquear tiempo de 'trabajo profundo' en el calendario"
                 ]
               },
-              "caption": "Best Practices for Async Work"
+              "caption": "Mejores prácticas para trabajo asíncrono"
             }
           ]
         },
         {
           "id": 6,
-          "title": "Minimalist Wardrobe Guide",
+          "title": "Guía de armario minimalista",
           "author": "Elena K.",
           "date": "Oct 05, 2025",
-          "excerpt": "Building a capsule wardrobe that sparks joy and reduces decision fatigue.",
-          "category": "Lifestyle",
-          "subcategory": "Fashion",
+          "excerpt": "Construir un armario cápsula que genere alegría y reduzca la fatiga de decisiones.",
+          "category": "Estilo de vida",
+          "subcategory": "Moda",
           "tags": [
-            "Lifestyle",
-            "Fashion",
-            "Minimalism"
+            "Estilo de vida",
+            "Moda",
+            "Minimalismo"
           ],
           "imageSeed": "wardrobe",
           "content": [
             {
               "type": "text",
-              "content": "We wear 20% of our clothes 80% of the time. The rest is just clutter. A minimalist wardrobe is not about deprivation; it's about curation. It's about owning fewer, better things that you truly love and that work together seamlessly."
+              "content": "Usamos el 20% de nuestra ropa el 80% del tiempo. El resto es solo desorden."
             },
             {
               "type": "gallery",
@@ -2837,54 +3085,54 @@
                 "denim-jeans",
                 "trench-coat"
               ],
-              "caption": "The Essentials"
+              "caption": "Los esenciales"
             },
             {
               "type": "checklist",
               "content": {
                 "items": [
-                  "White Button-Down Shirt",
-                  "Classic Blue Jeans",
-                  "Black Trousers",
-                  "Beige Trench Coat",
-                  "White Sneakers",
-                  "Black Ankle Boots"
+                  "Camisa blanca con botones",
+                  "Jeans azul clásicos",
+                  "Pantalones negros",
+                  "Gabardina beige",
+                  "Zapatillas blancas",
+                  "Botines negros"
                 ]
               },
-              "caption": "Capsule Wardrobe Starter Pack"
+              "caption": "Pack inicial de armario cápsula"
             },
             {
               "type": "text",
-              "content": "Start by decluttering. Take everything out of your closet. Hold each item. Does it fit? Is it in good condition? do you feel confident in it? If the answer is no, let it go. Donate, sell, or recycle."
+              "content": "Empieza con el orden. Saca todo de tu armario. Sostén cada prenda. ¿Te queda? ¿Está en buen estado? ¿Te sientes seguro con ella?"
             },
             {
               "type": "note",
-              "content": "Quality over quantity. Invest in natural fabrics like cotton, linen, wool, and silk."
+              "content": "Calidad sobre cantidad. Invierte en fibras naturales como algodón, lino, lana y seda."
             }
           ]
         },
         {
           "id": 7,
-          "title": "Hidden Gems of Kyoto",
+          "title": "Joyas ocultas de Kioto",
           "author": "Kenji Tanaka",
           "date": "Nov 01, 2025",
-          "excerpt": "Beyond the Golden Pavilion. Discovering the quiet temples and secret gardens of Japan's ancient capital.",
-          "category": "Travel",
-          "subcategory": "Japan",
+          "excerpt": "Más allá del Pabellón Dorado. Descubriendo los templos silenciosos y jardines secretos de la antigua capital de Japón.",
+          "category": "Viajes",
+          "subcategory": "Japón",
           "tags": [
-            "Travel",
-            "Japan",
-            "Culture"
+            "Viajes",
+            "Japón",
+            "Cultura"
           ],
           "imageSeed": "kyoto-temple",
           "content": [
             {
               "type": "text",
-              "content": "Kyoto is a city of layers. The famous sites are breathtaking, but the true soul of the city lies in its hidden corners. In the small neighborhood shrines, the moss-covered gardens, and the artisan workshops that have been operating for centuries."
+              "content": "Kioto es una ciudad de capas. Los sitios famosos son impresionantes, pero la verdadera alma de la ciudad está en sus rincones ocultos."
             },
             {
               "type": "map",
-              "content": "Gio-ji Temple (The Moss Temple)",
+              "content": "Templo Gio-ji (El Templo del Musgo)",
               "coordinates": {
                 "lat": 35.0267,
                 "lng": 135.6686
@@ -2892,7 +3140,7 @@
             },
             {
               "type": "text",
-              "content": "Gio-ji is a small, quiet temple in Arashiyama, known for its lush moss garden. It feels worlds away from the crowds of the Bamboo Grove. The light filtering through the maple trees creates a magical, ethereal atmosphere."
+              "content": "Gio-ji es un pequeño y tranquilo templo en Arashiyama, conocido por su exuberante jardín de musgo."
             },
             {
               "type": "gallery",
@@ -2901,15 +3149,88 @@
                 "bamboo-forest",
                 "tea-ceremony"
               ],
-              "caption": "Textures of Kyoto"
+              "caption": "Texturas de Kioto"
             },
             {
               "type": "note",
-              "content": "Best time to visit: Early morning or late afternoon to avoid the crowds."
+              "content": "Mejor momento para visitar: Temprano en la mañana o al final de la tarde para evitar multitudes."
             },
             {
               "type": "text",
-              "content": "Don't rush Kyoto. It is a city best experienced on foot or by bicycle. Get lost in the narrow alleys of Gion. Sit by the Kamo River. Drink matcha in a traditional tea house. Let the city reveal itself to you slowly."
+              "content": "No apresures Kioto. Es una ciudad que se experimenta mejor a pie o en bicicleta."
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "title": "Hogar lejos del hogar",
+          "author": "Mariia Ivanova",
+          "role": "Editora en jefe",
+          "date": "Mar 14, 2026",
+          "excerpt": "Elegir un lugar de estancia en un destino de viaje es confiar y compartir los momentos significativos de la vida. El Pied-à-terre como filosofía arquitectónica.",
+          "category": "Viajes",
+          "subcategory": "París",
+          "tags": [
+            "Viajes",
+            "Arquitectura",
+            "París"
+          ],
+          "imageUrl": "/images/article-img-1.png",
+          "content": [
+            {
+              "type": "image",
+              "content": "/images/article-img-1.png",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Cada apartamento es exclusivo, ofrece la oportunidad de elegir realmente lo que quieres experimentar. La casa de dos pisos en Tuileries de Necchi Architecture es un santuario dicromático..."
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-3.png",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Cada uno de los apartamentos es un pequeño viaje dentro de uno grande... Estar expuesto a nuevos recuerdos y riqueza espiritual-material es fructífero para el alma y el corazón."
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-4.png",
+              "caption": ""
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-6.png",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Elegir un lugar de estancia en un destino de viaje es confiar y compartir los momentos significativos de la vida... El Pied-à-terre no es solo un término francés que significa literalmente 'pies en el suelo'."
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-7.png",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Patrón provocativo, color rojo, cromo y espejos nos transportan inmediatamente a la alegre noche de un apartamento parisino de los años 70..."
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-8.png",
+              "caption": ""
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-9.png",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Hay una asociación del Pied-à-terre con una caja de exquisitos chocolates... La lista continúa, pero cuando conoces todos los sabores, la chispa del descubrimiento se desvanece parcialmente. Explóralo tú mismo."
             }
           ]
         }
@@ -2917,54 +3238,54 @@
       "reviews": [
         {
           "id": 1,
-          "title": "A Symphony of Flavors!!!!!!!!!!!!!!!!!!!!!!!",
-          "subject": "Restaurant 'Olea', Limassol",
+          "title": "Una sinfonía de sabores",
+          "subject": "Restaurante 'Olea', Limassol",
           "rating": 4.5,
-          "content": "The tasting menu was a journey through the island's history. Each dish told a story of conquest and trade.",
+          "content": "El menú degustación fue un viaje a través de la historia de la isla. Cada plato contaba una historia de conquista y comercio.",
           "author": "Elena K."
         },
         {
           "id": 2,
-          "title": "The Book of Whispers",
-          "subject": "Novel by S. Alexiou",
+          "title": "El libro de los susurros",
+          "subject": "Novela de S. Alexiou",
           "rating": 5,
-          "content": "Hauntingly beautiful. A prose that feels like poetry, exploring memory and loss in a divided city.",
+          "content": "De una belleza inquietante. Una prosa que se siente como poesía, explorando la memoria y la pérdida en una ciudad dividida.",
           "author": "Maria S."
         },
         {
           "id": 3,
-          "title": "Modernist Retreat",
+          "title": "Retiro modernista",
           "subject": "Hotel 'The Edge', Paphos",
           "rating": 4,
-          "content": "Stunning architecture, but the service lacked the warmth one expects in the Mediterranean.",
+          "content": "Arquitectura impresionante, pero al servicio le faltaba la calidez que se espera en el Mediterráneo.",
           "author": "James B."
         }
       ],
       "libraryItems": [
         {
           "id": 1,
-          "title": "The Philosophy of Taste",
+          "title": "La filosofía del gusto",
           "type": "PDF",
           "size": "14.5 MB",
           "year": "2024"
         },
         {
           "id": 2,
-          "title": "Mediterranean Diet: A History",
+          "title": "Dieta mediterránea: una historia",
           "type": "EPUB",
           "size": "8.2 MB",
           "year": "2023"
         },
         {
           "id": 3,
-          "title": "Visual Diaries: 2020-2025",
+          "title": "Diarios visuales: 2020-2025",
           "type": "ZIP",
           "size": "456 MB",
           "year": "2025"
         },
         {
           "id": 4,
-          "title": "Sounds of the City: Audio Archive",
+          "title": "Sonidos de la ciudad: archivo de audio",
           "type": "MP3",
           "size": "120 MB",
           "year": "2024"
@@ -2974,70 +3295,78 @@
     "TR": {
       "items": [
         {
+          "id": 1,
+          "title": "Sabah ritüelleri",
+          "subtitle": "Kapadokya, Türkiye",
+          "fig": "FIG. 01",
+          "description": "Şafağın sessizliği ve vadilere bakan taze kahvenin tadı.",
+          "imageSeed": "coffee-morning"
+        },
+        {
           "id": 2,
-          "title": "Urban Solitude",
-          "subtitle": "Berlin, Germany",
+          "title": "Kentsel yalnızlık",
+          "subtitle": "Berlin, Almanya",
           "fig": "FIG. 02",
-          "description": "Finding peace in the concrete rhythm of the city.",
+          "description": "Şehrin beton ritminde huzur bulmak.",
           "imageSeed": "berlin-street"
         },
         {
           "id": 3,
-          "title": "Mediterranean Feast",
-          "subtitle": "Sicily, Italy",
+          "title": "Akdeniz şöleni",
+          "subtitle": "Sicilya, İtalya",
           "fig": "FIG. 03",
-          "description": "A celebration of simple ingredients: olive oil, tomatoes, and sea salt.",
+          "description": "Basit malzemelerin kutlaması: zeytinyağı, domates ve deniz tuzu.",
           "imageSeed": "italian-food"
         },
         {
           "id": 4,
-          "title": "Mountain Breath",
-          "subtitle": "Carpathians, Ukraine",
+          "title": "Dağ nefesi",
+          "subtitle": "Karpatlar, Ukrayna",
           "fig": "FIG. 04",
-          "description": "The crisp air of the highlands and the scent of pine forests.",
+          "description": "Yaylaların temiz havası ve çam ormanlarının kokusu.",
           "imageSeed": "mountains"
         },
         {
           "id": 5,
-          "title": "Siesta Shadows",
-          "subtitle": "Seville, Spain",
+          "title": "Siesta gölgeleri",
+          "subtitle": "Sevilla, İspanya",
           "fig": "FIG. 05",
-          "description": "The slow passage of time during a hot afternoon.",
+          "description": "Sıcak bir öğleden sonra zamanın yavaş geçişi.",
           "imageSeed": "shadows-wall"
         },
         {
           "id": 6,
-          "title": "Velvet Night",
-          "subtitle": "Istanbul, Turkey",
+          "title": "Kadife gece",
+          "subtitle": "İstanbul, Türkiye",
           "fig": "FIG. 06",
-          "description": "Lights reflecting on the Bosphorus as the city comes alive.",
+          "description": "Şehir canlanırken Boğaz'da yansıyan ışıklar.",
           "imageSeed": "istanbul-night"
         }
       ],
       "articles": [
         {
           "id": 1,
-          "title": "The Art of Slow Living!",
+          "title": "Yavaş yaşam sanatı",
           "author": "Mariia Ivanova",
-          "role": "Editor-in-Chief",
+          "role": "Genel Yayın Yönetmeni",
           "date": "Oct 12, 2025",
-          "excerpt": "Why doing less might a!ctually mean living more. A journey into the philosophy of slowing down in a hyper-connected world.",
-          "category": "Lifestyle",
-          "subcategory": "Philosophy",
+          "excerpt": "Neden daha az yapmanın aslında daha çok yaşamak anlamına gelebileceği. Hiper bağlantılı bir dünyada yavaşlama felsefesine bir yolculuk.",
+          "category": "Yaşam tarzı",
+          "subcategory": "Felsefe",
           "tags": [
-            "Lifestyle",
-            "Philosophy",
-            "Wellness"
+            "Yaşam tarzı",
+            "Felsefe",
+            "Sağlık"
           ],
           "imageSeed": "slow-living",
           "content": [
             {
               "type": "text",
-              "content": "In a world that constantly demands our attention, the act of slowing down has become a radical form of resistance. It is not merely about doing less, but about doing things with intention, presence, and care. The philosophy of slow living invites us to savor the mundane, to find beauty in the ordinary, and to reconnect with the natural rhythms of life."
+              "content": "Sürekli dikkatimizi talep eden bir dünyada, yavaşlama eylemi radikal bir direniş biçimi haline geldi. Bu sadece daha az yapmak değil, her şeyi niyet, mevcudiyet ve özenle yapmaktır. Yavaş yaşam felsefesi bizi sıradan olanın tadını çıkarmaya, alelade olanda güzellik bulmaya ve yaşamın doğal ritimlerine yeniden bağlanmaya davet eder."
             },
             {
               "type": "note",
-              "content": "Slow living is not about being lazy. It's about being intentional with your time and energy."
+              "content": "Yavaş yaşam tembellik değildir. Zamanınızı ve enerjinizi bilinçli kullanmaktır."
             },
             {
               "type": "gallery",
@@ -3046,49 +3375,49 @@
                 "coffee-book",
                 "rainy-window"
               ],
-              "caption": "Moments of stillness in everyday life."
+              "caption": "Günlük hayatta durgunluk anları."
             },
             {
               "type": "quote",
-              "content": "Speed is irrelevant if you are going in the wrong direction. The true luxury of our time is the ability to pause."
+              "content": "Yanlış yöne gidiyorsanız hız önemsizdir. Zamanımızın gerçek lüksü duraklatabilme yeteneğidir."
             },
             {
               "type": "text",
-              "content": "My journey began in a small village in Tuscany, where time seemed to stretch endlessly. The locals didn't rush through their meals; they celebrated them. Lunch was not a break from work, but the centerpiece of the day. This shift in perspective changed everything for me. I realized that urgency is often an illusion we create for ourselves."
+              "content": "Yolculuğum Toskana'daki küçük bir köyde başladı, zamanın sonsuzca uzadığı bir yerde. Yerliler yemeklerini aceleye getirmiyordu; onları kutluyordu. Öğle yemeği işten bir mola değil, günün merkez olayıydı."
             },
             {
               "type": "image",
               "content": "tuscany-landscape",
-              "caption": "The rolling hills of Val d'Orcia, where time stands still."
+              "caption": "Zamanın durduğu Val d'Orcia tepeleri."
             },
             {
               "type": "text",
-              "content": "We often confuse busyness with productivity, and speed with efficiency. But true creativity and deep thought require space. They require the 'unproductive' moments of staring out a window, walking without a destination, or simply sitting in silence. It is in these pauses that the magic happens."
+              "content": "Meşguliyeti üretkenlikle, hızı verimlilikle sık sık karıştırırız. Ama gerçek yaratıcılık ve derin düşünce alan gerektirir. Pencereden dışarı bakma, amaçsız yürüme ya da sadece sessizce oturma gibi 'verimsiz' anlar gerektirir."
             },
             {
               "type": "audio",
               "content": "https://actions.google.com/sounds/v1/ambiences/forest_morning.ogg",
-              "caption": "Soundscape: Morning in the Tuscan hills."
+              "caption": "Ses manzarası: Toskana tepelerinde sabah."
             },
             {
               "type": "checklist",
               "content": {
                 "items": [
-                  "Turn off notifications for one hour a day",
-                  "Eat one meal without distractions",
-                  "Spend 10 minutes doing absolutely nothing",
-                  "Read a physical book before bed"
+                  "Günde bir saat bildirimleri kapatın",
+                  "Dikkat dağıtmadan bir öğün yiyin",
+                  "10 dakika kesinlikle hiçbir şey yapmayın",
+                  "Yatmadan önce basılı bir kitap okuyun"
                 ]
               },
-              "caption": "Daily Slow Living Practices"
+              "caption": "Yavaş yaşam günlük pratikleri"
             },
             {
               "type": "text",
-              "content": "Adopting a slow mindset doesn't mean moving at a snail's pace in everything we do. It means assigning the correct speed to each activity. It means eating slowly to taste the food, listening deeply to understand rather than to reply, and working with focus rather than frantic multitasking."
+              "content": "Yavaş bir zihniyet benimsemek her şeyde kaplumbağa hızıyla hareket etmek değildir. Her aktiviteye doğru hızı atamaktır."
             },
             {
               "type": "map",
-              "content": "Val d'Orcia, Tuscany",
+              "content": "Val d'Orcia, Toskana",
               "coordinates": {
                 "lat": 43.0766,
                 "lng": 11.6146
@@ -3096,70 +3425,70 @@
             },
             {
               "type": "text",
-              "content": "Start small. Dedicate one hour a week to doing absolutely nothing. Turn off your phone. Watch the clouds. Brew a cup of tea and drink it without reading the news. Reclaim your time, and you will reclaim your life."
+              "content": "Küçük başlayın. Haftada bir saatinizi kesinlikle hiçbir şey yapmamaya ayırın. Telefonunuzu kapatın. Bulutları izleyin. Bir fincan çay demlayip haber okumadan için."
             },
             {
               "type": "link",
-              "content": "Read more about the Slow Food Movement",
+              "content": "Slow Food hareketi hakkında daha fazla bilgi edinin.",
               "url": "https://www.slowfood.com"
             }
           ]
         },
         {
           "id": 2,
-          "title": "Taste of the Earth",
+          "title": "Toprağın tadı",
           "author": "Marco Rossi",
           "date": "Sep 28, 2025",
-          "excerpt": "Exploring the connection between soil health and the flavors on our plate. A visit to organic vineyards in Tuscany.",
-          "category": "Food",
-          "subcategory": "Travel",
+          "excerpt": "Toprak sağlığı ile tabağımızdaki tat arasındaki bağlantıyı keşfetmek. Toskana'daki organik bağları ziyaret.",
+          "category": "Yemek",
+          "subcategory": "Seyahat",
           "tags": [
-            "Food",
-            "Travel",
-            "Sustainability"
+            "Yemek",
+            "Seyahat",
+            "Sürdürülebilirlik"
           ],
           "imageSeed": "vineyard",
           "content": [
             {
               "type": "text",
-              "content": "Wine is bottled poetry, but it is also bottled geography. The concept of 'terroir' speaks to the profound connection between the land and the produce it yields. In the heart of Chianti, I discovered that the health of the soil is directly reflected in the complexity of the wine."
+              "content": "Şarap şişelenmiş şiirdir, ama aynı zamanda şişelenmiş coğrafyadır. 'Terroir' kavramı toprak ile ürettiği arasındaki derin bağı anlatır. Chianti'nin kalbinde, toprağın sağlığının şarabın karmaşıklığına doğrudan yansıdığını keşfettim."
             },
             {
               "type": "image",
               "content": "grapes",
-              "caption": "Sangiovese grapes ripening under the Tuscan sun."
+              "caption": "Toskana güneşi altında olgunlaşan Sangiovese üzümleri."
             },
             {
               "type": "text",
-              "content": "Organic farming is not just a trend here; it is a return to tradition. By avoiding synthetic pesticides and fertilizers, winemakers are allowing the true character of the land to shine through. The result is a wine that is vibrant, alive, and deeply connected to its origins."
+              "content": "Organik tarım burada sadece bir trend değil; geleneğe bir geri dönüş. Sentetik pestisit ve gübrelerden kaçınarak, şarap üreticileri toprağın gerçek karakterinin ortaya çıkmasını sağlıyor."
             },
             {
               "type": "quote",
-              "content": "To care for the soil is to care for ourselves. We are what we eat, and what we eat comes from the earth."
+              "content": "Toprağa bakmak kendine bakmaktır. Biz ne yediysek oyuz ve yediğimiz topraktan gelir."
             },
             {
               "type": "text",
-              "content": "Walking through the vineyards, you can smell the difference. The air is thick with the scent of wild herbs, damp earth, and ripening fruit. It's a sensory experience that no supermarket wine can replicate. This is the taste of patience, of seasons, of respect for nature."
+              "content": "Bağlarda yürürken farkı hissedebilirsiniz. Hava yabani otlar, nemli toprak ve olgunlaşan meyvelerle dolu."
             },
             {
               "type": "poll",
               "content": {
-                "question": "What is your preferred type of wine?",
+                "question": "Hangi şarap türünü tercih edersiniz?",
                 "options": [
                   {
-                    "label": "Red (Full-bodied)",
+                    "label": "Kırmızı (Dolgun)",
                     "votes": 45
                   },
                   {
-                    "label": "White (Crisp)",
+                    "label": "Beyaz (Taze)",
                     "votes": 30
                   },
                   {
-                    "label": "Rosé (Dry)",
+                    "label": "Roze (Kuru)",
                     "votes": 15
                   },
                   {
-                    "label": "Sparkling",
+                    "label": "Köpüklü",
                     "votes": 10
                   }
                 ]
@@ -3167,7 +3496,7 @@
             },
             {
               "type": "map",
-              "content": "Chianti Classico Region",
+              "content": "Chianti Classico Bölgesi",
               "coordinates": {
                 "lat": 43.4764,
                 "lng": 11.3134
@@ -3175,153 +3504,153 @@
             },
             {
               "type": "text",
-              "content": "The future of food lies in the past. It lies in the hands of those who understand that we are stewards of the land, not its masters. Every time we choose organic, local, and seasonal food, we are voting for a healthier planet and a richer palate."
+              "content": "Yemeğin geleceği geçmişte yatıyor. Toprağın efendisi değil, koruyucusu olduğumuzu anlayan insanların elinde."
             }
           ]
         },
         {
           "id": 3,
-          "title": "Architectures of Happiness",
+          "title": "Mutluluğun mimarisi",
           "author": "Leyla Yilmaz",
           "date": "Sep 15, 2025",
-          "excerpt": "How our physical surroundings impact our mental state. Designing spaces for joy and connection.",
-          "category": "Design",
-          "subcategory": "Psychology",
+          "excerpt": "Fiziksel çevremizin zihinsel durumumuzu nasıl etkilediği. Neşe ve bağlantı için mekanlar tasarlamak.",
+          "category": "Tasarım",
+          "subcategory": "Psikoloji",
           "tags": [
-            "Design",
-            "Psychology",
-            "Home"
+            "Tasarım",
+            "Psikoloji",
+            "Ev"
           ],
           "imageSeed": "interior-design",
           "content": [
             {
               "type": "text",
-              "content": "We shape our buildings; thereafter they shape us. This famous quote by Winston Churchill rings truer than ever. The spaces we inhabit have a profound impact on our mood, productivity, and overall well-being. But what makes a space 'happy'?"
+              "content": "Binalarımızı biz şekillendiririz; sonra onlar bizi şekillendirir. Winston Churchill'in bu ünlü sözü her zamankinden daha doğru. İçinde yaşadığımız mekanlar ruh halimiz, üretkenliğimiz ve genel refahımız üzerinde derin bir etkiye sahiptir."
             },
             {
               "type": "text",
-              "content": "Light, proportion, and materials all play a crucial role. Natural light boosts serotonin, while natural materials like wood and stone ground us. But beyond the physical, it is the emotional resonance of a space that truly matters. A home should be a sanctuary, a place where we can be our most authentic selves."
+              "content": "Işık, oran ve malzemeler çok önemli bir rol oynar. Doğal ışık serotonini artırır, ahşap ve taş gibi doğal malzemeler bizi topraklar."
             },
             {
               "type": "image",
               "content": "modern-living-room",
-              "caption": "A space designed for light and tranquility."
+              "caption": "Işık ve huzur için tasarlanmış bir mekan."
             },
             {
               "type": "note",
-              "content": "Tip: Use mirrors to reflect natural light into darker corners of your home."
+              "content": "İpucu: Doğal ışığı evinizin karanlık köşelerine yansıtmak için ayna kullanın."
             },
             {
               "type": "text",
-              "content": "Biophilic design—incorporating elements of nature into our built environments—is key. A view of a tree, a potted plant, or even the use of organic patterns can lower stress levels and improve cognitive function. We are biological beings, and we crave connection with the living world."
+              "content": "Biyofilik tasarım — yapılı çevremize doğa unsurlarını dahil etmek — anahtardır. Bir ağaç manzarası, saksı bitkisi veya organik desenlerin kullanımı stresi azaltabilir."
             },
             {
               "type": "quote",
-              "content": "Architecture is not about math or zoning, it's about visceral emotions."
+              "content": "Mimarlık matematik veya imar değil, içgüdüsel duygulardır."
             },
             {
               "type": "text",
-              "content": "Ultimately, a happy home is one that facilitates connection—with ourselves, with our loved ones, and with the environment. It is a stage for the drama of life, a backdrop for our memories, and a shelter for our dreams."
+              "content": "Sonuç olarak, mutlu bir ev bağlantıyı kolaylaştıran evdir — kendimizle, sevdiklerimizle ve çevreyle."
             },
             {
               "type": "link",
-              "content": "Explore the Neuroarchitecture Institute",
+              "content": "Nöromimarlık Enstitüsü'nü keşfedin",
               "url": "https://www.anfarch.org"
             }
           ]
         },
         {
           "id": 4,
-          "title": "Digital Detox Diaries",
+          "title": "Dijital detoks günlükleri",
           "author": "Hans Weber",
           "date": "Aug 30, 2025",
-          "excerpt": "One month without social media. The withdrawal, the boredom, and the eventual clarity.",
-          "category": "Tech",
-          "subcategory": "Personal",
+          "excerpt": "Sosyal medyasız bir ay. Yoksunluk, sıkıntı ve nihayet gelen berraklık.",
+          "category": "Teknoloji",
+          "subcategory": "Kişisel",
           "tags": [
-            "Tech",
-            "Mindfulness",
-            "Personal"
+            "Teknoloji",
+            "Farkındalık",
+            "Kişisel"
           ],
           "imageSeed": "nature-walk",
           "content": [
             {
               "type": "text",
-              "content": "The first week was the hardest. My thumb would instinctively reach for the app icon that wasn't there. The silence was deafening. But as the days went by, something shifted. The fog lifted. I started noticing the colors of the sunset, the taste of my coffee, the sound of the wind in the trees."
+              "content": "İlk hafta en zoruydu. Başparmağım içgüdüsel olarak artık orada olmayan uygulama simgesine uzanıyordu. Sessizlik sağır ediciydi. Ama günler geçtikçe bir şeyler değişti."
             },
             {
               "type": "quote",
-              "content": "Boredom is the birthplace of creativity. When we stop consuming, we start creating."
+              "content": "Sıkıntı yaratıcılığın doğum yeridir. Tüketmeyi bıraktığımızda yaratmaya başlarız."
             },
             {
               "type": "text",
-              "content": "Reclaiming my attention felt like reclaiming my life. I read books, I wrote in my journal, I had long conversations with friends without checking my phone. The world didn't end because I wasn't watching. In fact, it became more vivid."
+              "content": "Dikkatimi geri kazanmak hayatımı geri kazanmak gibi hissettirdi. Kitaplar okudum, günlüğüme yazdım, telefonumu kontrol etmeden arkadaşlarımla uzun sohbetler ettim."
             },
             {
               "type": "image",
               "content": "journal-writing",
-              "caption": "Rediscovering the analog joy of pen on paper."
+              "caption": "Kalemin kağıt üzerindeki analog keyfini yeniden keşfetmek."
             },
             {
               "type": "checklist",
               "content": {
                 "items": [
-                  "Delete social media apps from phone",
-                  "Set up 'Do Not Disturb' hours",
-                  "Buy an analog alarm clock",
-                  "Inform close friends/family of your detox"
+                  "Sosyal medya uygulamalarını telefondan silmek",
+                  "'Rahatsız Etmeyin' saatleri belirlemek",
+                  "Analog bir çalar saat almak",
+                  "Yakın arkadaş/aileyi detoks hakkında bilgilendirmek"
                 ]
               },
-              "caption": "Preparation Checklist"
+              "caption": "Hazırlık kontrol listesi"
             },
             {
               "type": "text",
-              "content": "We are drowning in information but starving for wisdom. The constant stream of notifications fragments our attention and keeps us in a state of chronic low-level anxiety. Stepping away allowed me to hear my own thoughts again."
+              "content": "Bilgide boğuluyoruz ama bilgelik açlığı çekiyoruz."
             },
             {
               "type": "text",
-              "content": "I'm back online now, but with strict boundaries. I use technology; I don't let it use me. The clarity I gained is too precious to lose again."
+              "content": "Tekrar çevrimiçiyim, ama katı sınırlarla. Teknolojiyi ben kullanıyorum; onun beni kullanmasına izin vermiyorum."
             }
           ]
         },
         {
           "id": 5,
-          "title": "The Future of Remote Work",
+          "title": "Uzaktan çalışmanın geleceği",
           "author": "Sarah Jenkins",
           "date": "Nov 15, 2025",
-          "excerpt": "Asynchronous communication is the key to unlocking global talent and work-life balance.",
-          "category": "Tech",
-          "subcategory": "Work",
+          "excerpt": "Asenkron iletişim, küresel yeteneği ve iş-yaşam dengesini açmanın anahtarıdır.",
+          "category": "Teknoloji",
+          "subcategory": "İş",
           "tags": [
-            "Tech",
-            "Remote Work",
-            "Productivity"
+            "Teknoloji",
+            "Uzaktan Çalışma",
+            "Verimlilik"
           ],
           "imageSeed": "home-office",
           "content": [
             {
               "type": "text",
-              "content": "The 9-to-5 is dead. Long live the results-oriented work environment. As companies embrace remote-first policies, the focus is shifting from hours logged to output delivered. But this transition requires a fundamental rethink of how we communicate."
+              "content": "9-5 öldü. Yaşasın sonuç odaklı çalışma ortamı. Şirketler uzaktan öncelikli politikaları benimserken, odak kaydedilen saatten teslim edilen sonuca kayıyor."
             },
             {
               "type": "poll",
               "content": {
-                "question": "What is your biggest challenge with remote work?",
+                "question": "Uzaktan çalışmadaki en büyük zorluğunuz nedir?",
                 "options": [
                   {
-                    "label": "Loneliness/Isolation",
+                    "label": "Yalnızlık/İzolasyon",
                     "votes": 25
                   },
                   {
-                    "label": "Overworking/Burnout",
+                    "label": "Aşırı çalışma/Tükenmişlik",
                     "votes": 35
                   },
                   {
-                    "label": "Communication Issues",
+                    "label": "İletişim sorunları",
                     "votes": 20
                   },
                   {
-                    "label": "Distractions at Home",
+                    "label": "Evde dikkat dağınıklığı",
                     "votes": 20
                   }
                 ]
@@ -3329,44 +3658,44 @@
             },
             {
               "type": "text",
-              "content": "Asynchronous communication—writing things down instead of holding meetings—is the superpower of distributed teams. It allows people to work when they are most productive, regardless of their time zone. It creates a written record of decisions. And most importantly, it respects everyone's time."
+              "content": "Asenkron iletişim — toplantı yapmak yerine yazıya dökmek — dağıtık ekiplerin süper gücüdür."
             },
             {
               "type": "note",
-              "content": "Async doesn't mean 'never talk'. It means 'talk when necessary, write by default'."
+              "content": "Asenkron 'hiç konuşmamak' demek değildir. 'Gerektiğinde konuş, varsayılan olarak yaz' demektir."
             },
             {
               "type": "checklist",
               "content": {
                 "items": [
-                  "Default to public channels over DMs",
-                  "Record loom videos for complex explanations",
-                  "Write detailed meeting agendas",
-                  "Block out 'deep work' time on your calendar"
+                  "DM'ler yerine genel kanallari tercih edin",
+                  "Karmaşık açıklamalar için Loom videoları kaydedin",
+                  "Detaylı toplantı gündemleri yazın",
+                  "Takvimde 'derin çalışma' zamanı ayırın"
                 ]
               },
-              "caption": "Best Practices for Async Work"
+              "caption": "Asenkron çalışma için en iyi uygulamalar"
             }
           ]
         },
         {
           "id": 6,
-          "title": "Minimalist Wardrobe Guide",
+          "title": "Minimalist gardırop rehberi",
           "author": "Elena K.",
           "date": "Oct 05, 2025",
-          "excerpt": "Building a capsule wardrobe that sparks joy and reduces decision fatigue.",
-          "category": "Lifestyle",
-          "subcategory": "Fashion",
+          "excerpt": "Neşe uyandıran ve karar yorgunluğunu azaltan bir kapsül gardırop oluşturmak.",
+          "category": "Yaşam tarzı",
+          "subcategory": "Moda",
           "tags": [
-            "Lifestyle",
-            "Fashion",
-            "Minimalism"
+            "Yaşam tarzı",
+            "Moda",
+            "Minimalizm"
           ],
           "imageSeed": "wardrobe",
           "content": [
             {
               "type": "text",
-              "content": "We wear 20% of our clothes 80% of the time. The rest is just clutter. A minimalist wardrobe is not about deprivation; it's about curation. It's about owning fewer, better things that you truly love and that work together seamlessly."
+              "content": "Kıyafetlerimizin %20'sini zamanın %80'inde giyeriz. Gerisi sadece dağınıklık."
             },
             {
               "type": "gallery",
@@ -3375,54 +3704,54 @@
                 "denim-jeans",
                 "trench-coat"
               ],
-              "caption": "The Essentials"
+              "caption": "Temel parçalar"
             },
             {
               "type": "checklist",
               "content": {
                 "items": [
-                  "White Button-Down Shirt",
-                  "Classic Blue Jeans",
-                  "Black Trousers",
-                  "Beige Trench Coat",
-                  "White Sneakers",
-                  "Black Ankle Boots"
+                  "Beyaz düğmeli gömlek",
+                  "Klasik mavi kot",
+                  "Siyah pantolon",
+                  "Bej trençkot",
+                  "Beyaz spor ayakkabı",
+                  "Siyah bot"
                 ]
               },
-              "caption": "Capsule Wardrobe Starter Pack"
+              "caption": "Kapsül gardırop başlangıç paketi"
             },
             {
               "type": "text",
-              "content": "Start by decluttering. Take everything out of your closet. Hold each item. Does it fit? Is it in good condition? do you feel confident in it? If the answer is no, let it go. Donate, sell, or recycle."
+              "content": "Temizlemeye başlayın. Dolabınızdaki her şeyi çıkarın. Her parçayı tutun. Oluyor mu? İyi durumda mı? İçinde kendinizi güvende hissediyor musunuz?"
             },
             {
               "type": "note",
-              "content": "Quality over quantity. Invest in natural fabrics like cotton, linen, wool, and silk."
+              "content": "Nicelik değil nitelik. Pamuk, keten, yün ve ipek gibi doğal liflere yatırım yapın."
             }
           ]
         },
         {
           "id": 7,
-          "title": "Hidden Gems of Kyoto",
+          "title": "Kyoto'nun gizli hazineleri",
           "author": "Kenji Tanaka",
           "date": "Nov 01, 2025",
-          "excerpt": "Beyond the Golden Pavilion. Discovering the quiet temples and secret gardens of Japan's ancient capital.",
-          "category": "Travel",
-          "subcategory": "Japan",
+          "excerpt": "Altın Pavyon'un ötesinde. Japonya'nın kadim başkentinin sessiz tapınakları ve gizli bahçelerini keşfetmek.",
+          "category": "Seyahat",
+          "subcategory": "Japonya",
           "tags": [
-            "Travel",
-            "Japan",
-            "Culture"
+            "Seyahat",
+            "Japonya",
+            "Kültür"
           ],
           "imageSeed": "kyoto-temple",
           "content": [
             {
               "type": "text",
-              "content": "Kyoto is a city of layers. The famous sites are breathtaking, but the true soul of the city lies in its hidden corners. In the small neighborhood shrines, the moss-covered gardens, and the artisan workshops that have been operating for centuries."
+              "content": "Kyoto katmanlı bir şehirdir. Ünlü mekanlar nefes kesicidir, ama şehrin gerçek ruhu gizli köşelerinde yatar."
             },
             {
               "type": "map",
-              "content": "Gio-ji Temple (The Moss Temple)",
+              "content": "Gio-ji Tapınağı (Yosun Tapınağı)",
               "coordinates": {
                 "lat": 35.0267,
                 "lng": 135.6686
@@ -3430,7 +3759,7 @@
             },
             {
               "type": "text",
-              "content": "Gio-ji is a small, quiet temple in Arashiyama, known for its lush moss garden. It feels worlds away from the crowds of the Bamboo Grove. The light filtering through the maple trees creates a magical, ethereal atmosphere."
+              "content": "Gio-ji, Arashiyama'da yemyeşil yosun bahçesiyle tanınan küçük, sakin bir tapınaktır."
             },
             {
               "type": "gallery",
@@ -3439,15 +3768,88 @@
                 "bamboo-forest",
                 "tea-ceremony"
               ],
-              "caption": "Textures of Kyoto"
+              "caption": "Kyoto'nun dokuları"
             },
             {
               "type": "note",
-              "content": "Best time to visit: Early morning or late afternoon to avoid the crowds."
+              "content": "Ziyaret için en iyi zaman: Kalabalıklardan kaçınmak için sabah erken veya akşamüstü geç."
             },
             {
               "type": "text",
-              "content": "Don't rush Kyoto. It is a city best experienced on foot or by bicycle. Get lost in the narrow alleys of Gion. Sit by the Kamo River. Drink matcha in a traditional tea house. Let the city reveal itself to you slowly."
+              "content": "Kyoto'da acele etmeyin. Yürüyerek veya bisikletle en iyi deneyimlenen bir şehirdir."
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "title": "Evden uzakta ev",
+          "author": "Mariia Ivanova",
+          "role": "Genel Yayın Yönetmeni",
+          "date": "Mar 14, 2026",
+          "excerpt": "Seyahat destinasyonunda kalacak yer seçmek, hayatın önemli anlarına güvenmek ve paylaşmaktır. Mimari felsefe olarak Pied-à-terre.",
+          "category": "Seyahat",
+          "subcategory": "Paris",
+          "tags": [
+            "Seyahat",
+            "Mimarlık",
+            "Paris"
+          ],
+          "imageUrl": "/images/article-img-1.png",
+          "content": [
+            {
+              "type": "image",
+              "content": "/images/article-img-1.png",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Her daire özeldir, gerçekten ne deneyimlemek istediğinizi seçme fırsatı sunar. Necchi Architecture'ın Tuileries'deki iki katlı şehir evi, detaylarla zarif bir şekilde zenginleştirilmiş dikromatik bir sığınaktır..."
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-3.png",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Dairelerin her biri büyük bir yolculuğun içinde küçük bir yolculuktur... Yeni anılara ve ruhani-maddi zenginliğe maruz kalmak ruhunuz ve kalbiniz için verimlidir."
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-4.png",
+              "caption": ""
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-6.png",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Seyahat destinasyonunda kalacak yer seçmek, hayatın önemli anlarına güvenmek ve paylaşmaktır... Pied-à-terre sadece kelime anlamı 'ayaklar yerde' olan bir Fransızca terim değildir."
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-7.png",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Kışkırtıcı desen, kırmızı renk, krom ve aynalar bizi anında 1970'lerin neşeli bir Paris dairesinin akşamına götürür..."
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-8.png",
+              "caption": ""
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-9.png",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Pied-à-terre'in zarif çikolata kutularıyla bir çağrışımı vardır... Liste devam eder, ama tüm tatları bildiğinizde keşif kıvılcımı kısmen söner. Kendiniz keşfedin."
             }
           ]
         }
@@ -3455,54 +3857,673 @@
       "reviews": [
         {
           "id": 1,
-          "title": "A Symphony of Flavors!!!!!!!!!!!!!!!!!!!!!!!",
-          "subject": "Restaurant 'Olea', Limassol",
+          "title": "Tatların senfonisi",
+          "subject": "Restoran 'Olea', Limassol",
           "rating": 4.5,
-          "content": "The tasting menu was a journey through the island's history. Each dish told a story of conquest and trade.",
+          "content": "Tadım menüsü adanın tarihine bir yolculuktu. Her yemek fetih ve ticaretin hikayesini anlatıyordu.",
           "author": "Elena K."
         },
         {
           "id": 2,
-          "title": "The Book of Whispers",
-          "subject": "Novel by S. Alexiou",
+          "title": "Fısıltıların kitabı",
+          "subject": "S. Alexiou'nun romanı",
           "rating": 5,
-          "content": "Hauntingly beautiful. A prose that feels like poetry, exploring memory and loss in a divided city.",
+          "content": "Ruhani güzellikte. Bölünmüş bir şehirde hafıza ve kaybı araştıran şiir gibi bir düzyazı.",
           "author": "Maria S."
         },
         {
           "id": 3,
-          "title": "Modernist Retreat",
+          "title": "Modernist sığınak",
           "subject": "Hotel 'The Edge', Paphos",
           "rating": 4,
-          "content": "Stunning architecture, but the service lacked the warmth one expects in the Mediterranean.",
+          "content": "Muhteşem mimari, ama servise Akdeniz'de beklenen sıcaklık eksikti.",
           "author": "James B."
         }
       ],
       "libraryItems": [
         {
           "id": 1,
-          "title": "The Philosophy of Taste",
+          "title": "Tadın felsefesi",
           "type": "PDF",
           "size": "14.5 MB",
           "year": "2024"
         },
         {
           "id": 2,
-          "title": "Mediterranean Diet: A History",
+          "title": "Akdeniz diyeti: bir tarih",
           "type": "EPUB",
           "size": "8.2 MB",
           "year": "2023"
         },
         {
           "id": 3,
-          "title": "Visual Diaries: 2020-2025",
+          "title": "Görsel günlükler: 2020-2025",
           "type": "ZIP",
           "size": "456 MB",
           "year": "2025"
         },
         {
           "id": 4,
-          "title": "Sounds of the City: Audio Archive",
+          "title": "Şehrin sesleri: ses arşivi",
+          "type": "MP3",
+          "size": "120 MB",
+          "year": "2024"
+        }
+      ]
+    },
+    "IT": {
+      "items": [
+        {
+          "id": 1,
+          "title": "Rituali mattutini",
+          "subtitle": "Cappadocia, Turchia",
+          "fig": "FIG. 01",
+          "description": "Il silenzio dell'alba e il sapore del caffè fresco con vista sulle valli.",
+          "imageSeed": "coffee-morning"
+        },
+        {
+          "id": 2,
+          "title": "Solitudine urbana",
+          "subtitle": "Berlino, Germania",
+          "fig": "FIG. 02",
+          "description": "Trovare pace nel ritmo di cemento della città.",
+          "imageSeed": "berlin-street"
+        },
+        {
+          "id": 3,
+          "title": "Festa mediterranea",
+          "subtitle": "Sicilia, Italia",
+          "fig": "FIG. 03",
+          "description": "Una celebrazione di ingredienti semplici: olio d'oliva, pomodori e sale marino.",
+          "imageSeed": "italian-food"
+        },
+        {
+          "id": 4,
+          "title": "Respiro montano",
+          "subtitle": "Carpazi, Ucraina",
+          "fig": "FIG. 04",
+          "description": "L'aria fresca dell'altopiano e il profumo delle pinete.",
+          "imageSeed": "mountains"
+        },
+        {
+          "id": 5,
+          "title": "Ombre della siesta",
+          "subtitle": "Siviglia, Spagna",
+          "fig": "FIG. 05",
+          "description": "Il lento scorrere del tempo in un pomeriggio caldo.",
+          "imageSeed": "shadows-wall"
+        },
+        {
+          "id": 6,
+          "title": "Notte di velluto",
+          "subtitle": "Istanbul, Turchia",
+          "fig": "FIG. 06",
+          "description": "Luci che si riflettono sul Bosforo mentre la città prende vita.",
+          "imageSeed": "istanbul-night"
+        }
+      ],
+      "articles": [
+        {
+          "id": 1,
+          "title": "L'arte del vivere lento",
+          "author": "Mariia Ivanova",
+          "role": "Direttrice editoriale",
+          "date": "Oct 12, 2025",
+          "excerpt": "Perché fare meno potrebbe effettivamente significare vivere di più. Un viaggio nella filosofia del rallentamento in un mondo iperconnesso.",
+          "category": "Stile di vita",
+          "subcategory": "Filosofia",
+          "tags": [
+            "Stile di vita",
+            "Filosofia",
+            "Benessere"
+          ],
+          "imageSeed": "slow-living",
+          "content": [
+            {
+              "type": "text",
+              "content": "In un mondo che richiede costantemente la nostra attenzione, l'atto di rallentare è diventato una forma radicale di resistenza. Non si tratta semplicemente di fare meno, ma di fare le cose con intenzione, presenza e cura. La filosofia del vivere lento ci invita ad assaporare il banale, a trovare bellezza nell'ordinario e a riconnetterci con i ritmi naturali della vita."
+            },
+            {
+              "type": "note",
+              "content": "Il vivere lento non significa essere pigri. Significa essere intenzionali con il proprio tempo e la propria energia."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "slow-morning",
+                "coffee-book",
+                "rainy-window"
+              ],
+              "caption": "Momenti di quiete nella vita quotidiana."
+            },
+            {
+              "type": "quote",
+              "content": "La velocità è irrilevante se si va nella direzione sbagliata. Il vero lusso del nostro tempo è la capacità di fare una pausa."
+            },
+            {
+              "type": "text",
+              "content": "Il mio viaggio è iniziato in un piccolo villaggio in Toscana, dove il tempo sembrava estendersi all'infinito. Gli abitanti del luogo non si affrettavano nei pasti; li celebravano. Il pranzo non era una pausa dal lavoro, ma il pezzo forte della giornata."
+            },
+            {
+              "type": "image",
+              "content": "tuscany-landscape",
+              "caption": "Le colline della Val d'Orcia, dove il tempo si ferma."
+            },
+            {
+              "type": "text",
+              "content": "Spesso confondiamo l'essere occupati con la produttività e la velocità con l'efficienza. Ma la vera creatività e il pensiero profondo richiedono spazio. Richiedono i momenti 'improduttivi' di guardare fuori dalla finestra, camminare senza meta o semplicemente sedersi in silenzio."
+            },
+            {
+              "type": "audio",
+              "content": "https://actions.google.com/sounds/v1/ambiences/forest_morning.ogg",
+              "caption": "Paesaggio sonoro: Mattina sulle colline toscane."
+            },
+            {
+              "type": "checklist",
+              "content": {
+                "items": [
+                  "Disattiva le notifiche per un'ora al giorno",
+                  "Mangia un pasto senza distrazioni",
+                  "Trascorri 10 minuti senza fare assolutamente nulla",
+                  "Leggi un libro cartaceo prima di dormire"
+                ]
+              },
+              "caption": "Pratiche quotidiane del vivere lento"
+            },
+            {
+              "type": "text",
+              "content": "Abbracciare una mentalità lenta non significa muoversi a passo di lumaca in tutto ciò che facciamo. Significa assegnare la giusta velocità a ogni attività."
+            },
+            {
+              "type": "map",
+              "content": "Val d'Orcia, Toscana",
+              "coordinates": {
+                "lat": 43.0766,
+                "lng": 11.6146
+              }
+            },
+            {
+              "type": "text",
+              "content": "Inizia in piccolo. Dedica un'ora alla settimana al non fare assolutamente nulla. Spegni il telefono. Osserva le nuvole. Prepara una tazza di tè e bevila senza leggere le notizie."
+            },
+            {
+              "type": "link",
+              "content": "Scopri di più sul movimento Slow Food.",
+              "url": "https://www.slowfood.com"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Il sapore della terra",
+          "author": "Marco Rossi",
+          "date": "Sep 28, 2025",
+          "excerpt": "Esplorare il legame tra la salute del suolo e il sapore nel nostro piatto. Visita ai vigneti biologici in Toscana.",
+          "category": "Cibo",
+          "subcategory": "Viaggi",
+          "tags": [
+            "Cibo",
+            "Viaggi",
+            "Sostenibilità"
+          ],
+          "imageSeed": "vineyard",
+          "content": [
+            {
+              "type": "text",
+              "content": "Il vino è poesia in bottiglia, ma è anche geografia in bottiglia. Il concetto di 'terroir' parla di un legame profondo tra la terra e ciò che produce. Nel cuore del Chianti, ho scoperto che la salute del suolo si riflette direttamente nella complessità del vino."
+            },
+            {
+              "type": "image",
+              "content": "grapes",
+              "caption": "Uva Sangiovese che matura sotto il sole toscano."
+            },
+            {
+              "type": "text",
+              "content": "L'agricoltura biologica qui non è solo una tendenza; è un ritorno alla tradizione. Evitando pesticidi e fertilizzanti sintetici, i viticoltori lasciano emergere il vero carattere della terra."
+            },
+            {
+              "type": "quote",
+              "content": "Prendersi cura del suolo significa prendersi cura di sé stessi. Siamo ciò che mangiamo, e ciò che mangiamo viene dalla terra."
+            },
+            {
+              "type": "text",
+              "content": "Passeggiando per i vigneti, si può sentire la differenza. L'aria è satura di erbe selvatiche, terra umida e frutti che maturano."
+            },
+            {
+              "type": "poll",
+              "content": {
+                "question": "Quale tipo di vino preferisci?",
+                "options": [
+                  {
+                    "label": "Rosso (Corposo)",
+                    "votes": 45
+                  },
+                  {
+                    "label": "Bianco (Fresco)",
+                    "votes": 30
+                  },
+                  {
+                    "label": "Rosato (Secco)",
+                    "votes": 15
+                  },
+                  {
+                    "label": "Spumante",
+                    "votes": 10
+                  }
+                ]
+              }
+            },
+            {
+              "type": "map",
+              "content": "Regione del Chianti Classico",
+              "coordinates": {
+                "lat": 43.4764,
+                "lng": 11.3134
+              }
+            },
+            {
+              "type": "text",
+              "content": "Il futuro del cibo sta nel passato. Sta nelle mani di chi capisce che siamo custodi della terra, non i suoi padroni."
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "title": "L'architettura della felicità",
+          "author": "Leyla Yilmaz",
+          "date": "Sep 15, 2025",
+          "excerpt": "Come l'ambiente fisico influenza il nostro stato mentale. Progettare spazi per la gioia e la connessione.",
+          "category": "Design",
+          "subcategory": "Psicologia",
+          "tags": [
+            "Design",
+            "Psicologia",
+            "Casa"
+          ],
+          "imageSeed": "interior-design",
+          "content": [
+            {
+              "type": "text",
+              "content": "Noi diamo forma ai nostri edifici; poi loro danno forma a noi. Questa celebre citazione di Winston Churchill suona più vera che mai. Gli spazi che abitiamo hanno un impatto profondo sul nostro umore, la produttività e il benessere generale."
+            },
+            {
+              "type": "text",
+              "content": "Luce, proporzione e materiali giocano un ruolo cruciale. La luce naturale aumenta la serotonina, mentre materiali naturali come legno e pietra ci radicano."
+            },
+            {
+              "type": "image",
+              "content": "modern-living-room",
+              "caption": "Uno spazio progettato per la luce e la tranquillità."
+            },
+            {
+              "type": "note",
+              "content": "Consiglio: Usa gli specchi per riflettere la luce naturale negli angoli più bui della tua casa."
+            },
+            {
+              "type": "text",
+              "content": "Il design biofilico — incorporare elementi della natura nei nostri ambienti costruiti — è fondamentale. La vista di un albero, una pianta in vaso o anche l'uso di pattern organici può ridurre lo stress e migliorare la funzione cognitiva."
+            },
+            {
+              "type": "quote",
+              "content": "L'architettura non riguarda la matematica o la zonizzazione, ma le emozioni viscerali."
+            },
+            {
+              "type": "text",
+              "content": "In definitiva, una casa felice è quella che facilita la connessione — con noi stessi, con i nostri cari e con l'ambiente."
+            },
+            {
+              "type": "link",
+              "content": "Scopri l'Istituto di Neuroarchitettura",
+              "url": "https://www.anfarch.org"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Diario della disintossicazione digitale",
+          "author": "Hans Weber",
+          "date": "Aug 30, 2025",
+          "excerpt": "Un mese senza social media. L'astinenza, la noia e l'eventuale chiarezza.",
+          "category": "Tecnologia",
+          "subcategory": "Personale",
+          "tags": [
+            "Tecnologia",
+            "Mindfulness",
+            "Personale"
+          ],
+          "imageSeed": "nature-walk",
+          "content": [
+            {
+              "type": "text",
+              "content": "La prima settimana è stata la più dura. Il mio pollice raggiungeva istintivamente l'icona dell'app che non c'era più. Il silenzio era assordante. Ma col passare dei giorni, qualcosa è cambiato."
+            },
+            {
+              "type": "quote",
+              "content": "La noia è il luogo di nascita della creatività. Quando smettiamo di consumare, iniziamo a creare."
+            },
+            {
+              "type": "text",
+              "content": "Riappropriarmi della mia attenzione è stato come riappropriarmi della mia vita. Ho letto libri, scritto nel mio diario, avuto lunghe conversazioni con amici senza controllare il telefono."
+            },
+            {
+              "type": "image",
+              "content": "journal-writing",
+              "caption": "Riscoprire la gioia analogica della penna sulla carta."
+            },
+            {
+              "type": "checklist",
+              "content": {
+                "items": [
+                  "Eliminare le app social dal telefono",
+                  "Impostare orari 'Non disturbare'",
+                  "Comprare una sveglia analogica",
+                  "Informare amici/famiglia della disintossicazione"
+                ]
+              },
+              "caption": "Checklist di preparazione"
+            },
+            {
+              "type": "text",
+              "content": "Stiamo affogando nelle informazioni ma morendo di fame per la saggezza."
+            },
+            {
+              "type": "text",
+              "content": "Sono tornato online, ma con limiti rigidi. Uso la tecnologia; non le permetto di usare me."
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "title": "Il futuro del lavoro remoto",
+          "author": "Sarah Jenkins",
+          "date": "Nov 15, 2025",
+          "excerpt": "La comunicazione asincrona è la chiave per sbloccare il talento globale e l'equilibrio vita-lavoro.",
+          "category": "Tecnologia",
+          "subcategory": "Lavoro",
+          "tags": [
+            "Tecnologia",
+            "Lavoro remoto",
+            "Produttività"
+          ],
+          "imageSeed": "home-office",
+          "content": [
+            {
+              "type": "text",
+              "content": "Il 9-17 è morto. Lunga vita all'ambiente di lavoro orientato ai risultati. Mentre le aziende adottano politiche remote-first, l'attenzione si sposta dalle ore registrate ai risultati ottenuti."
+            },
+            {
+              "type": "poll",
+              "content": {
+                "question": "Qual è la tua sfida più grande con il lavoro remoto?",
+                "options": [
+                  {
+                    "label": "Solitudine/Isolamento",
+                    "votes": 25
+                  },
+                  {
+                    "label": "Sovraccarico/Burnout",
+                    "votes": 35
+                  },
+                  {
+                    "label": "Problemi di comunicazione",
+                    "votes": 20
+                  },
+                  {
+                    "label": "Distrazioni a casa",
+                    "votes": 20
+                  }
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "content": "La comunicazione asincrona — scrivere le cose invece di fare riunioni — è il superpotere dei team distribuiti."
+            },
+            {
+              "type": "note",
+              "content": "Async non significa 'mai parlare'. Significa 'parlare quando necessario, scrivere per default'."
+            },
+            {
+              "type": "checklist",
+              "content": {
+                "items": [
+                  "Preferire canali pubblici ai DM",
+                  "Registrare video Loom per spiegazioni complesse",
+                  "Scrivere agende dettagliate per le riunioni",
+                  "Bloccare tempo per 'deep work' nel calendario"
+                ]
+              },
+              "caption": "Best Practice per il lavoro asincrono"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "title": "Guida al guardaroba minimalista",
+          "author": "Elena K.",
+          "date": "Oct 05, 2025",
+          "excerpt": "Costruire un guardaroba capsula che suscita gioia e riduce l'affaticamento decisionale.",
+          "category": "Stile di vita",
+          "subcategory": "Moda",
+          "tags": [
+            "Stile di vita",
+            "Moda",
+            "Minimalismo"
+          ],
+          "imageSeed": "wardrobe",
+          "content": [
+            {
+              "type": "text",
+              "content": "Indossiamo il 20% dei nostri vestiti l'80% delle volte. Il resto è solo disordine. Un guardaroba minimalista non riguarda la privazione; riguarda la curazione."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "white-shirt",
+                "denim-jeans",
+                "trench-coat"
+              ],
+              "caption": "Gli essenziali"
+            },
+            {
+              "type": "checklist",
+              "content": {
+                "items": [
+                  "Camicia bianca con bottoni",
+                  "Jeans blu classici",
+                  "Pantaloni neri",
+                  "Trench beige",
+                  "Sneaker bianche",
+                  "Stivaletti neri"
+                ]
+              },
+              "caption": "Starter Pack guardaroba capsula"
+            },
+            {
+              "type": "text",
+              "content": "Inizia con il decluttering. Togli tutto dall'armadio. Tieni ogni capo. Ti sta? È in buone condizioni? Ti senti sicuro indossandolo?"
+            },
+            {
+              "type": "note",
+              "content": "Qualità prima della quantità. Investi in fibre naturali come cotone, lino, lana e seta."
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "title": "Gemme nascoste di Kyoto",
+          "author": "Kenji Tanaka",
+          "date": "Nov 01, 2025",
+          "excerpt": "Oltre il Padiglione d'Oro. Scoprire i templi silenziosi e i giardini segreti dell'antica capitale del Giappone.",
+          "category": "Viaggi",
+          "subcategory": "Giappone",
+          "tags": [
+            "Viaggi",
+            "Giappone",
+            "Cultura"
+          ],
+          "imageSeed": "kyoto-temple",
+          "content": [
+            {
+              "type": "text",
+              "content": "Kyoto è una città di strati. I siti famosi sono mozzafiato, ma la vera anima della città sta nei suoi angoli nascosti."
+            },
+            {
+              "type": "map",
+              "content": "Tempio Gio-ji (Il Tempio del Muschio)",
+              "coordinates": {
+                "lat": 35.0267,
+                "lng": 135.6686
+              }
+            },
+            {
+              "type": "text",
+              "content": "Gio-ji è un piccolo e tranquillo tempio ad Arashiyama, noto per il suo lussureggiante giardino di muschio."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "moss-garden",
+                "bamboo-forest",
+                "tea-ceremony"
+              ],
+              "caption": "Texture di Kyoto"
+            },
+            {
+              "type": "note",
+              "content": "Periodo migliore per visitare: Prima mattina o tardo pomeriggio per evitare la folla."
+            },
+            {
+              "type": "text",
+              "content": "Non avere fretta a Kyoto. È una città che si vive meglio a piedi o in bicicletta."
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "title": "Casa lontano da casa",
+          "author": "Mariia Ivanova",
+          "role": "Direttrice editoriale",
+          "date": "Mar 14, 2026",
+          "excerpt": "Scegliere un luogo di soggiorno in una destinazione di viaggio significa fidarsi e condividere i momenti significativi della vita. Il Pied-à-terre come filosofia architettonica.",
+          "category": "Viaggi",
+          "subcategory": "Parigi",
+          "tags": [
+            "Viaggi",
+            "Architettura",
+            "Parigi"
+          ],
+          "imageUrl": "/images/article-img-1.png",
+          "content": [
+            {
+              "type": "image",
+              "content": "/images/article-img-1.png",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Ogni appartamento è esclusivo, offre l'opportunità di scegliere davvero cosa vivere. La casa a due piani sulle Tuileries di Necchi Architecture è un santuario dicromatico, delicatamente arricchito da dettagli che trasmettono calma..."
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-3.png",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Ognuno degli appartamenti è un piccolo viaggio dentro uno grande... Essere esposti a nuovi ricordi e ricchezza spirituale-materiale è fruttifero per l'anima e il cuore."
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-4.png",
+              "caption": ""
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-6.png",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Scegliere un luogo di soggiorno in una destinazione di viaggio significa fidarsi e condividere i momenti significativi della vita... Il Pied-à-terre non è solo un termine francese che significa letteralmente 'piedi per terra'."
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-7.png",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Pattern provocatorio, colore rosso, cromo e specchi ci trasportano immediatamente nella gioiosa sera di un appartamento parigino degli anni '70..."
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-8.png",
+              "caption": ""
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-9.png",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "C'è un'associazione del Pied-à-terre con una scatola di cioccolatini squisiti... La lista continua, ma quando conosci tutti i gusti, la scintilla della scoperta è parzialmente sbiadita. Esploralo tu stesso."
+            }
+          ]
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "title": "Una sinfonia di sapori",
+          "subject": "Ristorante 'Olea', Limassol",
+          "rating": 4.5,
+          "content": "Il menu degustazione è stato un viaggio attraverso la storia dell'isola. Ogni piatto raccontava una storia di conquista e commercio.",
+          "author": "Elena K."
+        },
+        {
+          "id": 2,
+          "title": "Il libro dei sussurri",
+          "subject": "Romanzo di S. Alexiou",
+          "rating": 5,
+          "content": "Di una bellezza inquietante. Una prosa che sembra poesia, esplorando la memoria e la perdita in una città divisa.",
+          "author": "Maria S."
+        },
+        {
+          "id": 3,
+          "title": "Rifugio modernista",
+          "subject": "Hotel 'The Edge', Paphos",
+          "rating": 4,
+          "content": "Architettura straordinaria, ma al servizio mancava il calore che ci si aspetta nel Mediterraneo.",
+          "author": "James B."
+        }
+      ],
+      "libraryItems": [
+        {
+          "id": 1,
+          "title": "La filosofia del gusto",
+          "type": "PDF",
+          "size": "14.5 MB",
+          "year": "2024"
+        },
+        {
+          "id": 2,
+          "title": "Dieta mediterranea: una storia",
+          "type": "EPUB",
+          "size": "8.2 MB",
+          "year": "2023"
+        },
+        {
+          "id": 3,
+          "title": "Diari visivi: 2020-2025",
+          "type": "ZIP",
+          "size": "456 MB",
+          "year": "2025"
+        },
+        {
+          "id": 4,
+          "title": "Suoni della città: archivio audio",
           "type": "MP3",
           "size": "120 MB",
           "year": "2024"
