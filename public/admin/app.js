@@ -101,6 +101,12 @@ let pendingVisualEntryId = null;
 let visualRefreshTimer = null;
 let draftSaveTimer = null;
 let monitorTimer = null;
+let lastSyncedTime = null;
+
+const toastContainerEl = byId('toastContainer');
+const loadingBarEl = byId('loadingBar');
+const lastSyncedEl = byId('lastSynced');
+const helpBtn = byId('helpBtn');
 
 function byId(id) {
   const element = document.getElementById(id);
@@ -155,7 +161,7 @@ async function handleLogin() {
       rememberTokenInput.checked = true;
     }
     hideAuthOverlay();
-    await init();
+    await init({ fromLogin: true });
   } catch (e) {
     showAuthError('Токен не прошёл проверку. Убедитесь что PAT действителен.');
   }
@@ -172,7 +178,7 @@ async function tryAutoLogin() {
     tokenInput.value = autoToken;
     rememberTokenInput.checked = true;
     hideAuthOverlay();
-    await init();
+    await init({ fromLogin: true });
   } catch (e) {
     if (saved) localStorage.removeItem(AUTH_STORAGE_KEY);
     authLoading.hidden = true;
@@ -185,7 +191,8 @@ authLoginBtn.addEventListener('click', handleLogin);
 authTokenInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleLogin(); });
 tryAutoLogin();
 
-async function init() {
+async function init(options = {}) {
+  const { fromLogin = false } = options;
   hydrateSettings();
   bindEvents();
   syncRepoSummary();
@@ -196,7 +203,7 @@ async function init() {
   updateEditorState();
   saveSettings();
 
-  if (getConfig().autoLoadOnStart) {
+  if (fromLogin || getConfig().autoLoadOnStart) {
     await loadFromGitHub();
   } else {
     restoreDraftIfAny();
@@ -300,7 +307,15 @@ function bindEvents() {
     queueMonitoringChecks(350, 'local');
   });
 
+  helpBtn.addEventListener('click', showShortcutsPanel);
+
   document.addEventListener('keydown', (event) => {
+    if (event.key === '?' && !event.ctrlKey && !event.metaKey && !event.altKey && document.activeElement?.tagName !== 'INPUT' && document.activeElement?.tagName !== 'TEXTAREA' && document.activeElement?.tagName !== 'SELECT') {
+      event.preventDefault();
+      showShortcutsPanel();
+      return;
+    }
+
     const isMeta = event.metaKey || event.ctrlKey;
     if (!isMeta) {
       return;
@@ -384,6 +399,7 @@ function updateEditorState() {
   } else {
     editorStateEl.textContent = 'Нет локальных изменений.';
   }
+  updateLastSyncedBadge();
 }
 
 function scheduleDraftSave() {
@@ -1021,6 +1037,7 @@ function setBusy(value) {
   for (const button of interactiveButtons) {
     button.disabled = value;
   }
+  loadingBarEl.classList.toggle('active', value);
 }
 
 async function loadFromGitHub() {
@@ -1043,6 +1060,8 @@ async function loadFromGitHub() {
 
     currentSha = payload.sha || '';
     setEditorData(parsed, { markSynced: true, clearDraft: true });
+    lastSyncedTime = new Date();
+    updateLastSyncedBadge();
     setStatus('success', `Файл ${cfg.path} загружен из ${cfg.owner}/${cfg.repo}@${cfg.branch}`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
@@ -1590,6 +1609,12 @@ function downloadJson() {
 }
 
 async function saveToGitHub() {
+  const confirmed = await showConfirmModal(
+    '\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f?',
+    '\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f \u0431\u0443\u0434\u0443\u0442 \u0437\u0430\u043a\u043e\u043c\u043c\u0438\u0447\u0435\u043d\u044b \u0432 <strong>GitHub</strong> \u0438 \u0441\u0430\u0439\u0442 \u043e\u0431\u043d\u043e\u0432\u0438\u0442\u0441\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438.',
+    '\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c'
+  );
+  if (!confirmed) return;
   try {
     setBusy(true);
     setStatus('info', 'Создаю коммит в GitHub...');
@@ -1633,6 +1658,8 @@ async function saveToGitHub() {
     currentSha = result.content?.sha || sha;
     setLastSyncedSnapshotFromText(editor.value);
     localStorage.removeItem(DRAFT_KEY);
+    lastSyncedTime = new Date();
+    updateLastSyncedBadge();
     setStatus('success', `Изменения сохранены в ${cfg.owner}/${cfg.repo}@${cfg.branch}`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
@@ -1657,6 +1684,77 @@ function setStatus(type, message) {
   }
 
   statusEl.textContent = message;
+
+  if (type === 'error' || type === 'success') {
+    showToast(type, message);
+  }
+}
+
+// ===== TOAST NOTIFICATIONS =====
+function showToast(type, text, duration = 4000) {
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  const icons = { success: '\u2713', error: '\u2717', info: '\u2139' };
+  toast.innerHTML = `<span class="toast-icon">${icons[type] || icons.info}</span><span class="toast-body">${escapeHtml(text)}</span><button class="toast-close" type="button">\u00D7</button><div class="toast-progress" style="animation-duration:${duration}ms"></div>`;
+  toastContainerEl.appendChild(toast);
+  const close = toast.querySelector('.toast-close');
+  const dismiss = () => { toast.classList.add('removing'); setTimeout(() => toast.remove(), 260); };
+  close.addEventListener('click', dismiss);
+  setTimeout(dismiss, duration);
+}
+
+// ===== LAST SYNCED BADGE =====
+function updateLastSyncedBadge() {
+  if (!lastSyncedTime) { lastSyncedEl.textContent = ''; return; }
+  const dirty = isEditorDirty();
+  const ago = formatTimeAgo(lastSyncedTime);
+  lastSyncedEl.innerHTML = `<span class="last-synced-dot ${dirty ? 'dirty' : 'synced'}"></span>${ago}`;
+}
+
+function formatTimeAgo(date) {
+  const s = Math.floor((Date.now() - date.getTime()) / 1000);
+  if (s < 10) return '\u0442\u043e\u043b\u044c\u043a\u043e \u0447\u0442\u043e';
+  if (s < 60) return `${s}\u0441 \u043d\u0430\u0437\u0430\u0434`;
+  const m = Math.floor(s / 60);
+  if (m < 60) return `${m}\u043c \u043d\u0430\u0437\u0430\u0434`;
+  const h = Math.floor(m / 60);
+  return `${h}\u0447 \u043d\u0430\u0437\u0430\u0434`;
+}
+
+setInterval(updateLastSyncedBadge, 15000);
+
+// ===== SAVE CONFIRMATION MODAL =====
+function showConfirmModal(title, bodyHtml, confirmLabel = '\u0414\u0430') {
+  return new Promise((resolve) => {
+    const overlay = document.createElement('div');
+    overlay.className = 'modal-overlay';
+    overlay.innerHTML = `<div class="modal-card"><h3 class="modal-title">${escapeHtml(title)}</h3><div class="modal-body">${bodyHtml}</div><div class="modal-actions"><button class="btn" type="button" data-action="cancel">\u041e\u0442\u043c\u0435\u043d\u0430</button><button class="btn btn-primary" type="button" data-action="confirm">${escapeHtml(confirmLabel)}</button></div></div>`;
+    document.body.appendChild(overlay);
+    const close = (result) => { overlay.classList.add('removing'); setTimeout(() => overlay.remove(), 200); resolve(result); };
+    overlay.querySelector('[data-action="cancel"]').addEventListener('click', () => close(false));
+    overlay.querySelector('[data-action="confirm"]').addEventListener('click', () => close(true));
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(false); });
+  });
+}
+
+// ===== KEYBOARD SHORTCUTS PANEL =====
+function showShortcutsPanel() {
+  const existing = document.querySelector('.shortcuts-panel');
+  if (existing) { existing.classList.add('removing'); setTimeout(() => existing.remove(), 200); return; }
+  const shortcuts = [
+    { keys: ['Ctrl', 'S'], desc: '\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0432 GitHub' },
+    { keys: ['Ctrl', 'Shift', 'L'], desc: '\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0438\u0437 GitHub' },
+    { keys: ['Ctrl', 'Shift', 'F'], desc: '\u0424\u043e\u0440\u043c\u0430\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c JSON' },
+    { keys: ['?'], desc: '\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u044c/\u0441\u043a\u0440\u044b\u0442\u044c \u044d\u0442\u0443 \u043f\u0430\u043d\u0435\u043b\u044c' }
+  ];
+  const rows = shortcuts.map(s => `<div class="shortcut-row"><span class="shortcut-desc">${escapeHtml(s.desc)}</span><span class="shortcut-keys">${s.keys.map(k => `<span class="shortcut-key">${k}</span>`).join('')}</span></div>`).join('');
+  const panel = document.createElement('div');
+  panel.className = 'shortcuts-panel';
+  panel.innerHTML = `<div class="shortcuts-card"><div class="shortcuts-title">\u0413\u043e\u0440\u044f\u0447\u0438\u0435 \u043a\u043b\u0430\u0432\u0438\u0448\u0438<button class="shortcuts-close" type="button">\u00D7</button></div><div class="shortcuts-grid">${rows}</div></div>`;
+  document.body.appendChild(panel);
+  const close = () => { panel.classList.add('removing'); setTimeout(() => panel.remove(), 200); };
+  panel.querySelector('.shortcuts-close').addEventListener('click', close);
+  panel.addEventListener('click', (e) => { if (e.target === panel) close(); });
 }
 
 function getErrorMessage(error) {
@@ -2446,7 +2544,7 @@ function renderBlockEditor(blocks) {
     const preview = getBlockContentPreview(block);
 
     // Insert-between button before each block
-    html += '<div class="block-insert-between"><button type="button" class="block-insert-btn" onclick="showInsertMenu(' + i + ')" title="Вставить блок">+ вставить</button></div>';
+    html += '<div class="block-insert-between"><button type="button" class="block-insert-btn" onclick="showInsertMenu(' + i + ', this)" title="Вставить блок">+ вставить</button></div>';
 
     html += '<div class="block-card' + (isCollapsed ? ' collapsed' : '') + '" data-block-index="' + i + '" data-block-type="' + t + '" draggable="true">';
     html += '<div class="block-card-header">';
@@ -2652,36 +2750,63 @@ window.refreshBlockImagePreview = function(index) {
 };
 
 // ===== INSERT BLOCK BETWEEN =====
-window.showInsertMenu = function(beforeIndex) {
-  const blocks = collectBlockEditorContent();
-  // Show a popup-like type selection
-  const typeStr = prompt('Тип блока:\n' + BLOCK_TYPES.map((bt, i) => (i + 1) + '. ' + bt.label).join('\n') + '\n\nВведите номер (1-10):');
-  if (!typeStr) return;
-  const typeIdx = parseInt(typeStr, 10) - 1;
-  if (typeIdx < 0 || typeIdx >= BLOCK_TYPES.length) return;
+window.showInsertMenu = function(beforeIndex, triggerEl) {
+  const existingOverlay = document.querySelector('.block-insert-overlay');
+  const existingPopup = document.querySelector('.block-insert-popup');
+  if (existingOverlay) existingOverlay.remove();
+  if (existingPopup) existingPopup.remove();
 
-  const type = BLOCK_TYPES[typeIdx].type;
-  const newBlock = { type, content: '' };
-  if (type === 'gallery') newBlock.content = [];
-  if (type === 'checklist') newBlock.content = { items: [''] };
-  if (type === 'poll') newBlock.content = { question: '', options: [{ label: '', votes: 0 }] };
-  if (type === 'map') { newBlock.content = ''; newBlock.coordinates = { lat: 0, lng: 0 }; }
+  const overlay = document.createElement('div');
+  overlay.className = 'block-insert-overlay';
+  document.body.appendChild(overlay);
 
-  blocks.splice(beforeIndex, 0, newBlock);
-  // Shift collapse states
-  const newStates = {};
-  Object.keys(blockCollapseStates).forEach(k => {
-    const ki = Number(k);
-    if (ki >= beforeIndex) newStates[ki + 1] = blockCollapseStates[ki];
-    else newStates[ki] = blockCollapseStates[ki];
-  });
-  blockCollapseStates = newStates;
+  const popup = document.createElement('div');
+  popup.className = 'block-insert-popup';
+  popup.innerHTML = BLOCK_TYPES.map(bt =>
+    `<button class="block-insert-popup-btn" type="button" data-type="${bt.type}"><span class="popup-icon">${bt.icon}</span>${escapeHtml(bt.label)}</button>`
+  ).join('');
+  document.body.appendChild(popup);
 
-  const editorEl = document.getElementById('vf-block-editor');
-  if (editorEl) {
-    editorEl.innerHTML = renderBlockEditor(blocks);
-    bindBlockEditorEvents();
+  if (triggerEl) {
+    const rect = triggerEl.getBoundingClientRect();
+    popup.style.top = (rect.bottom + 4) + 'px';
+    popup.style.left = Math.max(8, rect.left) + 'px';
+  } else {
+    popup.style.top = '50%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
   }
+
+  const closePopup = () => { overlay.remove(); popup.remove(); };
+  overlay.addEventListener('click', closePopup);
+
+  popup.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-type]');
+    if (!btn) return;
+    closePopup();
+    const type = btn.dataset.type;
+    const blocks = collectBlockEditorContent();
+    const newBlock = { type, content: '' };
+    if (type === 'gallery') newBlock.content = [];
+    if (type === 'checklist') newBlock.content = { items: [''] };
+    if (type === 'poll') newBlock.content = { question: '', options: [{ label: '', votes: 0 }] };
+    if (type === 'map') { newBlock.content = ''; newBlock.coordinates = { lat: 0, lng: 0 }; }
+
+    blocks.splice(beforeIndex, 0, newBlock);
+    const newStates = {};
+    Object.keys(blockCollapseStates).forEach(k => {
+      const ki = Number(k);
+      if (ki >= beforeIndex) newStates[ki + 1] = blockCollapseStates[ki];
+      else newStates[ki] = blockCollapseStates[ki];
+    });
+    blockCollapseStates = newStates;
+
+    const editorEl = document.getElementById('vf-block-editor');
+    if (editorEl) {
+      editorEl.innerHTML = renderBlockEditor(blocks);
+      bindBlockEditorEvents();
+    }
+  });
 };
 
 // ===== BLOCK DUPLICATION =====
