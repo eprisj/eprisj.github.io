@@ -258,14 +258,14 @@ function Hero({ t }: { t: (key: string) => string }) {
         {/* Center: categories tagline */}
         <div className="flex items-end justify-center pb-1">
           <p className="font-mono text-xs md:text-sm tracking-[0.13em] text-[#501a2c]/50 uppercase text-center">
-            design art travel
+            {t('hero.tagline1')}
           </p>
         </div>
 
         {/* Right: brand tagline */}
         <div className="flex items-end justify-center md:justify-end pb-1">
           <p className="font-mono text-xs md:text-sm tracking-[0.13em] text-[#501a2c]/50 uppercase text-center md:text-right">
-            reveal the invisible
+            {t('hero.tagline2')}
           </p>
         </div>
       </motion.div>
@@ -295,19 +295,19 @@ function AboutSection({ t }: { t: (key: string) => string }) {
             </h2>
             <div className="prose prose-lg prose-stone font-serif text-[#501a2c]/80">
               <p className="mb-6">
-                "Epris journal is not just about publication; it is a living archive of the things that make life tasting. Born from a desire to slow down and document the fleeting beauty of our existence, this journal serves as a sanctuary for the thoughtful, the curious and the aesthetic."
+                {t('about.quote1')}
               </p>
               <p>
-                With a background in art history and a passion for slow travel, Mariia founded Epris Journal in 2026. Her vision was to create a digital space that feels as tangible and timeless as a printed volume found in an old library.
+                {t('about.bio')}
               </p>
             </div>
             <div className="mt-12 pt-8 border-t border-[#501a2c]/20 flex gap-8">
               <div>
-                <div className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 mb-1">Contact</div>
+                <div className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 mb-1">{t('about.contact')}</div>
                 <a href="mailto:editor@eprisjournal.com" className="font-serif text-lg text-[#501a2c] hover:text-[#C9A690] transition-colors">editor@eprisjournal.com</a>
               </div>
               <div>
-                <div className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 mb-1">Social</div>
+                <div className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 mb-1">{t('about.social')}</div>
                 <div className="flex gap-4 font-serif text-lg text-[#501a2c]">
                   <a href="#" className="hover:text-[#C9A690] transition-colors">Instagram</a>
                   <a href="#" className="hover:text-[#C9A690] transition-colors">Twitter</a>
@@ -320,22 +320,22 @@ function AboutSection({ t }: { t: (key: string) => string }) {
 
       <Reveal delay={0.2}>
         <div className="border-t border-[#501a2c] pt-24">
-          <h3 className="font-serif text-3xl md:text-4xl text-[#501a2c] mb-12 text-center">The Manifesto</h3>
+          <h3 className="font-serif text-3xl md:text-4xl text-[#501a2c] mb-12 text-center">{t('about.manifesto')}</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
             <div>
               <div className="w-12 h-12 rounded-full border border-[#501a2c] flex items-center justify-center mx-auto mb-6 text-[#501a2c]">01</div>
-              <h4 className="font-mono text-xs uppercase tracking-widest mb-4">Slow Down</h4>
-              <p className="font-serif text-[#501a2c]/80">We believe in the luxury of time. In consuming content that requires attention and rewards patience.</p>
+                            <h4 className="font-mono text-xs uppercase tracking-widest mb-4">{t('about.slowdown')}</h4>
+                            <p className="font-serif text-[#501a2c]/80">{t('about.slowdown.desc')}</p>
             </div>
             <div>
               <div className="w-12 h-12 rounded-full border border-[#501a2c] flex items-center justify-center mx-auto mb-6 text-[#501a2c]">02</div>
-              <h4 className="font-mono text-xs uppercase tracking-widest mb-4">Curate Life</h4>
-              <p className="font-serif text-[#501a2c]/80">Life is an art form. We curate experiences, spaces, and flavors that elevate the everyday.</p>
+                            <h4 className="font-mono text-xs uppercase tracking-widest mb-4">{t('about.curate')}</h4>
+                            <p className="font-serif text-[#501a2c]/80">{t('about.curate.desc')}</p>
             </div>
             <div>
               <div className="w-12 h-12 rounded-full border border-[#501a2c] flex items-center justify-center mx-auto mb-6 text-[#501a2c]">03</div>
-              <h4 className="font-mono text-xs uppercase tracking-widest mb-4">Preserve Beauty</h4>
-              <p className="font-serif text-[#501a2c]/80">In a digital age of ephemerality, we strive to create an archive of enduring beauty.</p>
+                            <h4 className="font-mono text-xs uppercase tracking-widest mb-4">{t('about.preserve')}</h4>
+                            <p className="font-serif text-[#501a2c]/80">{t('about.preserve.desc')}</p>
             </div>
           </div>
         </div>
@@ -473,7 +473,7 @@ function ChecklistBlock({ items, caption }: { items: string[], caption?: string 
   );
 }
 
-function PollBlock({ question, options }: { question: string, options: { label: string, votes: number }[] }) {
+function PollBlock({ question, options, t }: { question: string, options: { label: string, votes: number }[], t: (key: string) => string }) {
   const [votedIndex, setVotedIndex] = useState<number | null>(null);
   const [localOptions, setLocalOptions] = useState(options);
 
@@ -517,7 +517,7 @@ function PollBlock({ question, options }: { question: string, options: { label: 
       </div>
       {votedIndex !== null && (
         <p className="mt-6 text-center font-mono text-xs uppercase tracking-widest opacity-40">
-          Thank you for voting
+          {t('poll.thanks')}
         </p>
       )}
     </div>
@@ -642,7 +642,7 @@ function ArticleView({ article, onClose, t }: { article: Article; onClose: () =>
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 mt-4 text-xs font-mono uppercase tracking-widest text-[#501a2c] hover:text-[#C9A690] transition-colors"
                       >
-                        Open in Maps <ExternalLink size={12} />
+                        {t('maps.open')} <ExternalLink size={12} />
                       </a>
                     </div>
                   );
@@ -738,7 +738,7 @@ function ArticleView({ article, onClose, t }: { article: Article; onClose: () =>
                     'options' in block.content &&
                     Array.isArray(block.content.options)
                   ) {
-                    return <PollBlock key={index} question={block.content.question} options={block.content.options} />;
+                    return <PollBlock key={index} question={block.content.question} options={block.content.options} t={t} />;
                   }
                   return null;
                 case 'note':
@@ -922,25 +922,16 @@ function LibrarySection({ libraryItems, t }: { libraryItems: LibraryItem[]; t: (
   );
 }
 
-function Sidebar() {
+function Sidebar({ t }: { t: (key: string) => string }) {
+  const labels = [t('sidebar.lifestyle'), t('sidebar.travel'), t('sidebar.taste'), t('sidebar.design'), t('sidebar.culture'), t('sidebar.lifestyle'), t('sidebar.travel')];
   return (
     <aside className="hidden lg:flex w-12 border-l border-[#501a2c] flex-col justify-between items-center py-8 fixed right-0 top-0 h-full bg-[#F5F0EB] z-40 pt-24">
       <div className="h-full w-full relative">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-max h-full pt-4">
           <p className="writing-vertical-rl text-[10px] font-mono uppercase tracking-[0.3em] text-[#501a2c]/40 flex gap-8 whitespace-nowrap">
-            <span>Lifestyle</span>
-            <span className="text-[#C9A690]">•</span>
-            <span>Travel</span>
-            <span className="text-[#C9A690]">•</span>
-            <span>Taste</span>
-            <span className="text-[#C9A690]">•</span>
-            <span>Design</span>
-            <span className="text-[#C9A690]">•</span>
-            <span>Culture</span>
-            <span className="text-[#C9A690]">•</span>
-            <span>Lifestyle</span>
-            <span className="text-[#C9A690]">•</span>
-            <span>Travel</span>
+            {labels.map((label, i) => (
+              <span key={i}>{i > 0 && <span className="text-[#C9A690] mr-8">•</span>}{label}</span>
+            ))}
           </p>
         </div>
       </div>
@@ -1012,7 +1003,7 @@ export default function App() {
         </footer>
       </div>
       
-      <Sidebar />
+      <Sidebar t={t} />
 
       <AnimatePresence>
         {selectedArticle && (
