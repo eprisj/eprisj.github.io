@@ -213,7 +213,7 @@ function NavBar({
             </div>
             
             <div className="mt-auto border-t border-[#501a2c]">
-              <div className="grid grid-cols-4 divide-x divide-[#501a2c] border-b border-[#501a2c]">
+              <div className="grid grid-cols-3 sm:grid-cols-4 divide-x divide-[#501a2c] border-b border-[#501a2c]">
                 {languages.map(lang => (
                   <button 
                     key={lang}
@@ -247,10 +247,10 @@ function Hero({ t }: { t: (key: string) => string }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-        className="grid grid-cols-3 items-end px-8 md:px-16 py-16 md:py-28 gap-8"
+        className="grid grid-cols-1 md:grid-cols-3 items-end px-8 md:px-16 py-16 md:py-28 gap-4 md:gap-8"
       >
         {/* Left: EPRIS masthead */}
-        <div>
+        <div className="text-center md:text-left">
           <p className="font-mono text-5xl md:text-7xl tracking-[0.13em] text-[#501a2c] leading-none">EPRIS</p>
           <p className="font-mono text-sm tracking-[0.13em] text-[#501a2c]/50 uppercase mt-1">journal.</p>
         </div>
@@ -263,8 +263,8 @@ function Hero({ t }: { t: (key: string) => string }) {
         </div>
 
         {/* Right: brand tagline */}
-        <div className="flex items-end justify-end pb-1">
-          <p className="font-mono text-xs md:text-sm tracking-[0.13em] text-[#501a2c]/50 uppercase text-right">
+        <div className="flex items-end justify-center md:justify-end pb-1">
+          <p className="font-mono text-xs md:text-sm tracking-[0.13em] text-[#501a2c]/50 uppercase text-center md:text-right">
             reveal the invisible
           </p>
         </div>
