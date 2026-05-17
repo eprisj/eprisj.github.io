@@ -7,7 +7,7 @@ const DEFAULTS = Object.freeze({
   message: 'chore(content): обновление контента через админку',
   rememberToken: false,
   token: '',
-  autoLoadOnStart: false
+  autoLoadOnStart: true
 });
 
 const STORAGE_KEY = 'epris-admin-settings-v3';
@@ -187,7 +187,7 @@ authLoginBtn.addEventListener('click', handleLogin);
 authTokenInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleLogin(); });
 tryAutoLogin();
 
-function init() {
+async function init() {
   hydrateSettings();
   bindEvents();
   syncRepoSummary();
@@ -197,13 +197,13 @@ function init() {
   refreshVisualEditor();
   updateEditorState();
   saveSettings();
-  queueMonitoringChecks(320, 'full');
 
   if (getConfig().autoLoadOnStart) {
-    loadFromGitHub();
+    await loadFromGitHub();
   } else {
     restoreDraftIfAny();
   }
+  queueMonitoringChecks(320, 'full');
 }
 
 function bindEvents() {
@@ -458,7 +458,7 @@ function hydrateSettings() {
     ...inferred,
     token: '',
     rememberToken: false,
-    autoLoadOnStart: false
+    autoLoadOnStart: true
   };
 
   applyConfig(baseline);
