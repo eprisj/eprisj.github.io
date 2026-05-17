@@ -2241,19 +2241,21 @@ function copyFromEnglishEntry() {
 }
 
 
-// ===== BLOCK EDITOR FOR ARTICLES =====
+// ===== IMPROVED BLOCK EDITOR FOR ARTICLES =====
 const BLOCK_TYPES = [
   { type: 'text', label: 'Текст', icon: '\u270E' },
   { type: 'quote', label: 'Цитата', icon: '\u201C' },
   { type: 'note', label: 'Заметка', icon: '\u2139' },
-  { type: 'image', label: 'Фото', icon: '\u{1F5BC}' },
-  { type: 'gallery', label: 'Галерея', icon: '\u{1F5BC}\u{1F5BC}' },
+  { type: 'image', label: 'Фото', icon: '\uD83D\uDDBC' },
+  { type: 'gallery', label: 'Галерея', icon: '\uD83D\uDDBC\uD83D\uDDBC' },
   { type: 'audio', label: 'Аудио', icon: '\u266B' },
-  { type: 'link', label: 'Ссылка', icon: '\u{1F517}' },
+  { type: 'link', label: 'Ссылка', icon: '\uD83D\uDD17' },
   { type: 'checklist', label: 'Чеклист', icon: '\u2611' },
-  { type: 'map', label: 'Карта', icon: '\u{1F4CD}' },
-  { type: 'poll', label: 'Опрос', icon: '\u{1F4CA}' }
+  { type: 'map', label: 'Карта', icon: '\uD83D\uDCCD' },
+  { type: 'poll', label: 'Опрос', icon: '\uD83D\uDCCA' }
 ];
+
+let blockCollapseStates = {};
 
 function getBlockTypeLabel(type) {
   const found = BLOCK_TYPES.find((bt) => bt.type === type);
@@ -2265,21 +2267,73 @@ function getBlockTypeIcon(type) {
   return found ? found.icon : '\u25A0';
 }
 
+function getBlockContentPreview(block) {
+  const t = block.type || 'text';
+  const c = block.content || '';
+  if (t === 'text' || t === 'quote' || t === 'note') {
+    const text = typeof c === 'string' ? c : '';
+    return text.substring(0, 60) + (text.length > 60 ? '...' : '');
+  }
+  if (t === 'image') return typeof c === 'string' ? (c.substring(0, 40) || 'пусто') : 'пусто';
+  if (t === 'gallery') return Array.isArray(c) ? c.length + ' фото' : '0 фото';
+  if (t === 'audio') return typeof c === 'string' ? (c.substring(0, 40) || 'пусто') : 'пусто';
+  if (t === 'link') return typeof c === 'string' ? (c || 'пусто') : 'пусто';
+  if (t === 'checklist') return (c && c.items) ? c.items.length + ' пунктов' : '0 пунктов';
+  if (t === 'map') return typeof c === 'string' ? (c || 'место') : 'место';
+  if (t === 'poll') return (c && c.question) ? c.question.substring(0, 40) : 'опрос';
+  return '';
+}
+
+function countWords(text) {
+  if (!text || typeof text !== 'string') return 0;
+  return text.trim().split(/\s+/).filter(Boolean).length;
+}
+
+function countChars(text) {
+  if (!text || typeof text !== 'string') return 0;
+  return text.length;
+}
+
+function resolveBlockImageUrl(src) {
+  if (!src || typeof src !== 'string') return '';
+  const s = src.trim();
+  if (!s) return '';
+  if (/^(https?:)?\/\//i.test(s) || s.startsWith('/') || s.startsWith('./') || s.startsWith('data:')) return s;
+  return 'https://picsum.photos/seed/' + encodeURIComponent(s) + '/400/250?grayscale';
+}
+
 function renderBlockBody(block, index) {
   const t = block.type || 'text';
   const c = block.content || '';
 
   if (t === 'text' || t === 'quote' || t === 'note') {
     const textVal = typeof c === 'string' ? c : '';
-    return `<textarea data-block-field="content" placeholder="Введите текст...">${escapeHtml(textVal)}</textarea>`;
+    const words = countWords(textVal);
+    const chars = countChars(textVal);
+    let toolbar = '';
+    if (t === 'text') {
+      toolbar = `<div class="block-toolbar">
+        <button type="button" class="block-toolbar-btn" onclick="wrapSelection(${index}, '**', '**')" title="Жирный"><b>B</b></button>
+        <button type="button" class="block-toolbar-btn" onclick="wrapSelection(${index}, '*', '*')" title="Курсив"><i>I</i></button>
+        <button type="button" class="block-toolbar-btn" onclick="wrapSelection(${index}, '~~', '~~')" title="Зачёркнутый"><s>S</s></button>
+        <span class="block-toolbar-sep"></span>
+        <button type="button" class="block-toolbar-btn" onclick="wrapSelection(${index}, '[', '](url)')" title="Ссылка" style="font-family:var(--font-mono);font-size:.6rem">🔗</button>
+      </div>`;
+    }
+    return toolbar + `<textarea data-block-field="content" data-block-index="${index}" class="auto-expand" placeholder="Введите текст...">${escapeHtml(textVal)}</textarea>
+    <div class="block-word-count" style="text-align:right;padding:0 4px;">${words} слов · ${chars} символов</div>`;
   }
 
   if (t === 'image') {
     const src = typeof c === 'string' ? c : '';
     const cap = block.caption || '';
+    const previewUrl = resolveBlockImageUrl(src);
     return `
       <div><span class="block-field-label">Источник (URL или seed)</span>
-      <input data-block-field="content" value="${escapeHtml(src)}" placeholder="URL или imageSeed" /></div>
+      <input data-block-field="content" data-block-index="${index}" value="${escapeHtml(src)}" placeholder="URL или imageSeed" oninput="refreshBlockImagePreview(${index})" /></div>
+      <div class="block-image-preview" id="block-img-preview-${index}">
+        ${previewUrl ? '<img src="' + escapeHtml(previewUrl) + '" referrerpolicy="no-referrer" onerror="this.style.display=\'none\'" />' : '<div class="block-image-preview-empty">Нет превью</div>'}
+      </div>
       <div><span class="block-field-label">Подпись</span>
       <input data-block-field="caption" value="${escapeHtml(cap)}" placeholder="Подпись к фото" /></div>`;
   }
@@ -2289,10 +2343,19 @@ function renderBlockBody(block, index) {
     const cap = block.caption || '';
     let html = '<span class="block-field-label">Элементы галереи (URL или seed)</span><div class="block-gallery-items" data-block-gallery="' + index + '">';
     items.forEach((item, gi) => {
-      html += `<div class="block-gallery-item"><input data-gallery-item="${gi}" value="${escapeHtml(item)}" placeholder="URL или seed" /><button type="button" class="block-action-btn danger" onclick="removeGalleryItem(${index}, ${gi})" title="Удалить">\u2716</button></div>`;
+      html += '<div class="block-gallery-item"><input data-gallery-item="' + gi + '" value="' + escapeHtml(item) + '" placeholder="URL или seed" /><button type="button" class="block-action-btn danger" onclick="removeGalleryItem(' + index + ', ' + gi + ')" title="Удалить">\u2716</button></div>';
     });
-    html += `</div><button type="button" class="add-block-btn" onclick="addGalleryItem(${index})">+ элемент</button>`;
-    html += `<div><span class="block-field-label">Подпись</span><input data-block-field="caption" value="${escapeHtml(cap)}" placeholder="Подпись к галерее" /></div>`;
+    html += '</div><button type="button" class="add-block-btn" onclick="addGalleryItem(' + index + ')">+ элемент</button>';
+    // Gallery preview
+    const previews = items.filter(Boolean).map(item => resolveBlockImageUrl(item)).filter(Boolean);
+    if (previews.length) {
+      html += '<div class="block-gallery-preview">';
+      previews.forEach(url => {
+        html += '<img src="' + escapeHtml(url) + '" referrerpolicy="no-referrer" onerror="this.style.display=\'none\'" />';
+      });
+      html += '</div>';
+    }
+    html += '<div><span class="block-field-label">Подпись</span><input data-block-field="caption" value="' + escapeHtml(cap) + '" placeholder="Подпись к галерее" /></div>';
     return html;
   }
 
@@ -2321,10 +2384,10 @@ function renderBlockBody(block, index) {
     const cap = block.caption || '';
     let html = '<span class="block-field-label">Элементы чеклиста</span><div class="block-checklist-items" data-block-checklist="' + index + '">';
     items.forEach((item, ci) => {
-      html += `<div class="block-checklist-item"><input data-checklist-item="${ci}" value="${escapeHtml(item)}" placeholder="Пункт..." /><button type="button" class="block-action-btn danger" onclick="removeChecklistItem(${index}, ${ci})" title="Удалить">\u2716</button></div>`;
+      html += '<div class="block-checklist-item"><input data-checklist-item="' + ci + '" value="' + escapeHtml(item) + '" placeholder="Пункт..." /><button type="button" class="block-action-btn danger" onclick="removeChecklistItem(' + index + ', ' + ci + ')" title="Удалить">\u2716</button></div>';
     });
-    html += `</div><button type="button" class="add-block-btn" onclick="addChecklistItem(${index})">+ пункт</button>`;
-    html += `<div><span class="block-field-label">Заголовок</span><input data-block-field="caption" value="${escapeHtml(cap)}" placeholder="Заголовок чеклиста" /></div>`;
+    html += '</div><button type="button" class="add-block-btn" onclick="addChecklistItem(' + index + ')">+ пункт</button>';
+    html += '<div><span class="block-field-label">Заголовок</span><input data-block-field="caption" value="' + escapeHtml(cap) + '" placeholder="Заголовок чеклиста" /></div>';
     return html;
   }
 
@@ -2344,52 +2407,297 @@ function renderBlockBody(block, index) {
   if (t === 'poll') {
     const question = (c && c.question) ? c.question : '';
     const options = (c && c.options) ? c.options : [];
-    let html = `<div><span class="block-field-label">Вопрос</span><input data-block-field="poll-question" value="${escapeHtml(question)}" placeholder="Вопрос опроса" /></div>`;
+    let html = '<div><span class="block-field-label">Вопрос</span><input data-block-field="poll-question" value="' + escapeHtml(question) + '" placeholder="Вопрос опроса" /></div>';
     html += '<span class="block-field-label">Варианты</span><div class="block-poll-options" data-block-poll="' + index + '">';
     options.forEach((opt, oi) => {
-      html += `<div class="block-poll-option"><input data-poll-label="${oi}" value="${escapeHtml(opt.label || '')}" placeholder="Вариант" /><input data-poll-votes="${oi}" type="number" min="0" value="${opt.votes || 0}" placeholder="Голоса" /><button type="button" class="block-action-btn danger" onclick="removePollOption(${index}, ${oi})" title="Удалить">\u2716</button></div>`;
+      html += '<div class="block-poll-option"><input data-poll-label="' + oi + '" value="' + escapeHtml(opt.label || '') + '" placeholder="Вариант" /><input data-poll-votes="' + oi + '" type="number" min="0" value="' + (opt.votes || 0) + '" placeholder="Голоса" /><button type="button" class="block-action-btn danger" onclick="removePollOption(' + index + ', ' + oi + ')" title="Удалить">\u2716</button></div>';
     });
-    html += `</div><button type="button" class="add-block-btn" onclick="addPollOption(${index})">+ вариант</button>`;
+    html += '</div><button type="button" class="add-block-btn" onclick="addPollOption(' + index + ')">+ вариант</button>';
     return html;
   }
 
   // Fallback: raw JSON
   const raw = typeof c === 'object' ? JSON.stringify(c, null, 2) : String(c);
-  return `<textarea data-block-field="content-raw">${escapeHtml(raw)}</textarea>`;
+  return '<textarea data-block-field="content-raw">' + escapeHtml(raw) + '</textarea>';
 }
 
 function renderBlockEditor(blocks) {
   if (!Array.isArray(blocks)) blocks = [];
   let html = '';
 
-  blocks.forEach((block, i) => {
-    const t = block.type || 'text';
-    html += `<div class="block-card" data-block-index="${i}">
-      <div class="block-card-header">
-        <span class="block-type-badge">${getBlockTypeIcon(t)} ${escapeHtml(getBlockTypeLabel(t))}</span>
-        <span style="font-size:.68rem;color:var(--muted);">#${i + 1}</span>
-        <div class="block-actions">
-          <button type="button" class="block-action-btn" onclick="moveBlock(${i}, -1)" title="Вверх" ${i === 0 ? 'disabled' : ''}>\u2191</button>
-          <button type="button" class="block-action-btn" onclick="moveBlock(${i}, 1)" title="Вниз" ${i === blocks.length - 1 ? 'disabled' : ''}>\u2193</button>
-          <button type="button" class="block-action-btn danger" onclick="removeBlock(${i})" title="Удалить блок">\u2716</button>
-        </div>
-      </div>
-      <div class="block-card-body">${renderBlockBody(block, i)}</div>
-    </div>`;
+  // Stats bar
+  let totalWords = 0;
+  let totalChars = 0;
+  blocks.forEach(b => {
+    if ((b.type === 'text' || b.type === 'quote' || b.type === 'note') && typeof b.content === 'string') {
+      totalWords += countWords(b.content);
+      totalChars += countChars(b.content);
+    }
   });
 
-  html += `<div class="add-block-row">`;
-  BLOCK_TYPES.forEach((bt) => {
-    html += `<button type="button" class="add-block-btn" onclick="addBlock('${bt.type}')">${bt.icon} ${escapeHtml(bt.label)}</button>`;
+  if (blocks.length > 0) {
+    html += '<div class="block-collapse-all-row">';
+    html += '<button type="button" class="block-collapse-all-btn" onclick="collapseAllBlocks()">Свернуть все</button>';
+    html += '<button type="button" class="block-collapse-all-btn" onclick="expandAllBlocks()">Развернуть все</button>';
+    html += '</div>';
+  }
+
+  blocks.forEach((block, i) => {
+    const t = block.type || 'text';
+    const isCollapsed = blockCollapseStates[i] === true;
+    const preview = getBlockContentPreview(block);
+
+    // Insert-between button before each block
+    html += '<div class="block-insert-between"><button type="button" class="block-insert-btn" onclick="showInsertMenu(' + i + ')" title="Вставить блок">+ вставить</button></div>';
+
+    html += '<div class="block-card' + (isCollapsed ? ' collapsed' : '') + '" data-block-index="' + i + '" data-block-type="' + t + '" draggable="true">';
+    html += '<div class="block-card-header">';
+    html += '<span class="block-drag-handle" title="Перетащить">\u2630</span>';
+    html += '<span class="block-type-badge type-' + t + '">' + getBlockTypeIcon(t) + ' ' + escapeHtml(getBlockTypeLabel(t)) + '</span>';
+    html += '<span style="font-size:.6rem;color:var(--text-muted);opacity:.5;">#' + (i + 1) + '</span>';
+    if (preview && isCollapsed) {
+      html += '<span class="block-content-preview">' + escapeHtml(preview) + '</span>';
+    }
+    if ((t === 'text' || t === 'quote' || t === 'note') && typeof block.content === 'string') {
+      const w = countWords(block.content);
+      if (w > 0) html += '<span class="block-word-count">' + w + ' сл.</span>';
+    }
+    html += '<div class="block-actions">';
+    html += '<button type="button" class="block-action-btn collapse-btn" onclick="toggleBlockCollapse(' + i + ')" title="' + (isCollapsed ? 'Развернуть' : 'Свернуть') + '">' + (isCollapsed ? '\u25BC' : '\u25B2') + '</button>';
+    html += '<button type="button" class="block-action-btn" onclick="duplicateBlock(' + i + ')" title="Дублировать">\u2398</button>';
+    html += '<button type="button" class="block-action-btn" onclick="moveBlock(' + i + ', -1)" title="Вверх" ' + (i === 0 ? 'disabled' : '') + '>\u2191</button>';
+    html += '<button type="button" class="block-action-btn" onclick="moveBlock(' + i + ', 1)" title="Вниз" ' + (i === blocks.length - 1 ? 'disabled' : '') + '>\u2193</button>';
+    html += '<button type="button" class="block-action-btn danger" onclick="removeBlock(' + i + ')" title="Удалить блок">\u2716</button>';
+    html += '</div>';
+    html += '</div>';
+    html += '<div class="block-card-body">' + renderBlockBody(block, i) + '</div>';
+    html += '</div>';
   });
-  html += `</div>`;
+
+  // Add block row at end
+  html += '<div class="add-block-row">';
+  BLOCK_TYPES.forEach((bt) => {
+    html += '<button type="button" class="add-block-btn" onclick="addBlock(\'' + bt.type + '\')">' + bt.icon + ' ' + escapeHtml(bt.label) + '</button>';
+  });
+  html += '</div>';
+
+  // Stats bar
+  if (blocks.length > 0) {
+    html += '<div class="block-stats-bar">';
+    html += '<span>\u2630 ' + blocks.length + ' блоков</span>';
+    html += '<span>\u270E ' + totalWords + ' слов</span>';
+    html += '<span>\u2328 ' + totalChars + ' символов</span>';
+    html += '</div>';
+  }
 
   return html;
 }
 
 function bindBlockEditorEvents() {
-  // Block editor uses onclick handlers directly for simplicity
+  const editorEl = document.getElementById('vf-block-editor');
+  if (!editorEl) return;
+
+  // Auto-expand textareas
+  editorEl.querySelectorAll('textarea.auto-expand').forEach(ta => {
+    autoExpandTextarea(ta);
+    ta.addEventListener('input', () => {
+      autoExpandTextarea(ta);
+      updateBlockWordCount(ta);
+    });
+  });
+
+  // Drag & drop
+  const cards = editorEl.querySelectorAll('.block-card[draggable]');
+  cards.forEach(card => {
+    card.addEventListener('dragstart', handleBlockDragStart);
+    card.addEventListener('dragend', handleBlockDragEnd);
+    card.addEventListener('dragover', handleBlockDragOver);
+    card.addEventListener('dragenter', handleBlockDragEnter);
+    card.addEventListener('dragleave', handleBlockDragLeave);
+    card.addEventListener('drop', handleBlockDrop);
+  });
 }
+
+function autoExpandTextarea(ta) {
+  ta.style.height = 'auto';
+  ta.style.height = Math.max(80, ta.scrollHeight) + 'px';
+}
+
+function updateBlockWordCount(ta) {
+  const countEl = ta.parentElement.querySelector('.block-word-count');
+  if (countEl) {
+    const words = countWords(ta.value);
+    const chars = countChars(ta.value);
+    countEl.textContent = words + ' слов \u00B7 ' + chars + ' символов';
+  }
+}
+
+// ===== DRAG & DROP =====
+let dragSrcIndex = null;
+
+function handleBlockDragStart(e) {
+  dragSrcIndex = Number(this.dataset.blockIndex);
+  this.classList.add('dragging');
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/plain', String(dragSrcIndex));
+}
+
+function handleBlockDragEnd(e) {
+  this.classList.remove('dragging');
+  document.querySelectorAll('.block-card.drag-over').forEach(el => el.classList.remove('drag-over'));
+}
+
+function handleBlockDragOver(e) {
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'move';
+}
+
+function handleBlockDragEnter(e) {
+  e.preventDefault();
+  const card = e.target.closest('.block-card');
+  if (card && Number(card.dataset.blockIndex) !== dragSrcIndex) {
+    card.classList.add('drag-over');
+  }
+}
+
+function handleBlockDragLeave(e) {
+  const card = e.target.closest('.block-card');
+  if (card) {
+    const rect = card.getBoundingClientRect();
+    if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) {
+      card.classList.remove('drag-over');
+    }
+  }
+}
+
+function handleBlockDrop(e) {
+  e.preventDefault();
+  const card = e.target.closest('.block-card');
+  if (!card) return;
+  const targetIndex = Number(card.dataset.blockIndex);
+  if (targetIndex === dragSrcIndex || dragSrcIndex === null) return;
+
+  const blocks = collectBlockEditorContent();
+  const moved = blocks.splice(dragSrcIndex, 1)[0];
+  blocks.splice(targetIndex, 0, moved);
+
+  // Shift collapse states
+  const newStates = {};
+  blocks.forEach((_, i) => { newStates[i] = false; });
+  blockCollapseStates = newStates;
+
+  const editorEl = document.getElementById('vf-block-editor');
+  if (editorEl) {
+    editorEl.innerHTML = renderBlockEditor(blocks);
+    bindBlockEditorEvents();
+  }
+  dragSrcIndex = null;
+}
+
+// ===== TEXT FORMATTING =====
+window.wrapSelection = function(blockIndex, before, after) {
+  const ta = document.querySelector('[data-block-field="content"][data-block-index="' + blockIndex + '"]');
+  if (!ta) return;
+  const start = ta.selectionStart;
+  const end = ta.selectionEnd;
+  const text = ta.value;
+  const selected = text.substring(start, end) || 'текст';
+  ta.value = text.substring(0, start) + before + selected + after + text.substring(end);
+  ta.focus();
+  ta.setSelectionRange(start + before.length, start + before.length + selected.length);
+  autoExpandTextarea(ta);
+  updateBlockWordCount(ta);
+};
+
+// ===== BLOCK COLLAPSE =====
+window.toggleBlockCollapse = function(index) {
+  blockCollapseStates[index] = !blockCollapseStates[index];
+  const blocks = collectBlockEditorContent();
+  const editorEl = document.getElementById('vf-block-editor');
+  if (editorEl) {
+    editorEl.innerHTML = renderBlockEditor(blocks);
+    bindBlockEditorEvents();
+  }
+};
+
+window.collapseAllBlocks = function() {
+  const blocks = collectBlockEditorContent();
+  blocks.forEach((_, i) => { blockCollapseStates[i] = true; });
+  const editorEl = document.getElementById('vf-block-editor');
+  if (editorEl) {
+    editorEl.innerHTML = renderBlockEditor(blocks);
+    bindBlockEditorEvents();
+  }
+};
+
+window.expandAllBlocks = function() {
+  blockCollapseStates = {};
+  const blocks = collectBlockEditorContent();
+  const editorEl = document.getElementById('vf-block-editor');
+  if (editorEl) {
+    editorEl.innerHTML = renderBlockEditor(blocks);
+    bindBlockEditorEvents();
+  }
+};
+
+// ===== IMAGE PREVIEW =====
+window.refreshBlockImagePreview = function(index) {
+  const input = document.querySelector('[data-block-field="content"][data-block-index="' + index + '"]');
+  const preview = document.getElementById('block-img-preview-' + index);
+  if (!input || !preview) return;
+  const url = resolveBlockImageUrl(input.value);
+  if (url) {
+    preview.innerHTML = '<img src="' + escapeHtml(url) + '" referrerpolicy="no-referrer" onerror="this.style.display=\'none\'" />';
+  } else {
+    preview.innerHTML = '<div class="block-image-preview-empty">Нет превью</div>';
+  }
+};
+
+// ===== INSERT BLOCK BETWEEN =====
+window.showInsertMenu = function(beforeIndex) {
+  const blocks = collectBlockEditorContent();
+  // Show a popup-like type selection
+  const typeStr = prompt('Тип блока:\n' + BLOCK_TYPES.map((bt, i) => (i + 1) + '. ' + bt.label).join('\n') + '\n\nВведите номер (1-10):');
+  if (!typeStr) return;
+  const typeIdx = parseInt(typeStr, 10) - 1;
+  if (typeIdx < 0 || typeIdx >= BLOCK_TYPES.length) return;
+
+  const type = BLOCK_TYPES[typeIdx].type;
+  const newBlock = { type, content: '' };
+  if (type === 'gallery') newBlock.content = [];
+  if (type === 'checklist') newBlock.content = { items: [''] };
+  if (type === 'poll') newBlock.content = { question: '', options: [{ label: '', votes: 0 }] };
+  if (type === 'map') { newBlock.content = ''; newBlock.coordinates = { lat: 0, lng: 0 }; }
+
+  blocks.splice(beforeIndex, 0, newBlock);
+  // Shift collapse states
+  const newStates = {};
+  Object.keys(blockCollapseStates).forEach(k => {
+    const ki = Number(k);
+    if (ki >= beforeIndex) newStates[ki + 1] = blockCollapseStates[ki];
+    else newStates[ki] = blockCollapseStates[ki];
+  });
+  blockCollapseStates = newStates;
+
+  const editorEl = document.getElementById('vf-block-editor');
+  if (editorEl) {
+    editorEl.innerHTML = renderBlockEditor(blocks);
+    bindBlockEditorEvents();
+  }
+};
+
+// ===== BLOCK DUPLICATION =====
+window.duplicateBlock = function(index) {
+  const blocks = collectBlockEditorContent();
+  if (index < 0 || index >= blocks.length) return;
+  const clone = JSON.parse(JSON.stringify(blocks[index]));
+  blocks.splice(index + 1, 0, clone);
+  const editorEl = document.getElementById('vf-block-editor');
+  if (editorEl) {
+    editorEl.innerHTML = renderBlockEditor(blocks);
+    bindBlockEditorEvents();
+  }
+};
 
 function getCurrentArticleBlocks() {
   const editorEl = document.getElementById('vf-block-editor');
@@ -2405,17 +2713,11 @@ function collectBlockEditorContent() {
   const blocks = [];
 
   blockCards.forEach((card) => {
-    const badge = card.querySelector('.block-type-badge');
-    if (!badge) return;
-
-    // Extract type from badge text (icon + label)
-    const idx = Number(card.dataset.blockIndex);
     const body = card.querySelector('.block-card-body');
     if (!body) return;
 
-    // Determine block type from data we stored
-    const blockType = detectBlockType(body);
-    const block = buildBlockFromDom(blockType, body, idx);
+    const blockType = card.dataset.blockType || detectBlockType(body);
+    const block = buildBlockFromDom(blockType, body);
     if (block) blocks.push(block);
   });
 
@@ -2423,6 +2725,9 @@ function collectBlockEditorContent() {
 }
 
 function detectBlockType(body) {
+  const card = body.closest('.block-card');
+  if (card && card.dataset.blockType) return card.dataset.blockType;
+
   if (body.querySelector('[data-block-field="poll-question"]')) return 'poll';
   if (body.querySelector('[data-block-checklist]')) return 'checklist';
   if (body.querySelector('[data-block-gallery]')) return 'gallery';
@@ -2434,7 +2739,6 @@ function detectBlockType(body) {
   const captionField = body.querySelector('[data-block-field="caption"]');
 
   if (contentField && contentField.tagName === 'TEXTAREA' && !captionField) {
-    // Could be text, quote, or note - check the badge in parent
     const badge = body.closest('.block-card').querySelector('.block-type-badge');
     const badgeText = badge ? badge.textContent.trim().toLowerCase() : '';
     if (badgeText.includes('цитата')) return 'quote';
@@ -2452,7 +2756,7 @@ function detectBlockType(body) {
   return 'text';
 }
 
-function buildBlockFromDom(type, body, idx) {
+function buildBlockFromDom(type, body) {
   if (type === 'text' || type === 'quote' || type === 'note') {
     const ta = body.querySelector('[data-block-field="content"]');
     return { type, content: ta ? ta.value : '' };
@@ -2519,7 +2823,7 @@ function buildBlockFromDom(type, body, idx) {
     const q = body.querySelector('[data-block-field="poll-question"]');
     const options = [];
     body.querySelectorAll('[data-poll-label]').forEach((inp, oi) => {
-      const votesInp = body.querySelector(`[data-poll-votes="${oi}"]`);
+      const votesInp = body.querySelector('[data-poll-votes="' + oi + '"]');
       options.push({
         label: inp.value.trim(),
         votes: votesInp ? parseInt(votesInp.value, 10) || 0 : 0
@@ -2549,6 +2853,11 @@ window.moveBlock = function(index, direction) {
   const temp = blocks[index];
   blocks[index] = blocks[newIndex];
   blocks[newIndex] = temp;
+  // Swap collapse states
+  const s1 = blockCollapseStates[index];
+  const s2 = blockCollapseStates[newIndex];
+  blockCollapseStates[index] = s2;
+  blockCollapseStates[newIndex] = s1;
   const editorEl = document.getElementById('vf-block-editor');
   if (editorEl) {
     editorEl.innerHTML = renderBlockEditor(blocks);
@@ -2557,8 +2866,13 @@ window.moveBlock = function(index, direction) {
 };
 
 window.removeBlock = function(index) {
+  if (!confirm('Удалить блок #' + (index + 1) + '?')) return;
   const blocks = collectBlockEditorContent();
   blocks.splice(index, 1);
+  // Shift collapse states
+  const newStates = {};
+  blocks.forEach((_, i) => { newStates[i] = blockCollapseStates[i >= index ? i + 1 : i] || false; });
+  blockCollapseStates = newStates;
   const editorEl = document.getElementById('vf-block-editor');
   if (editorEl) {
     editorEl.innerHTML = renderBlockEditor(blocks);
@@ -2578,7 +2892,9 @@ window.addBlock = function(type) {
   if (editorEl) {
     editorEl.innerHTML = renderBlockEditor(blocks);
     bindBlockEditorEvents();
-    editorEl.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    // Scroll to new block
+    const lastCard = editorEl.querySelector('.block-card:last-of-type');
+    if (lastCard) lastCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 };
 
