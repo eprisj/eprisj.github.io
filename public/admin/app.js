@@ -154,9 +154,8 @@ async function handleLogin() {
       localStorage.setItem(AUTH_STORAGE_KEY, token);
       rememberTokenInput.checked = true;
     }
-    saveSettings();
     hideAuthOverlay();
-    init();
+    await init();
   } catch (e) {
     showAuthError('Токен не прошёл проверку. Убедитесь что PAT действителен.');
   }
@@ -172,9 +171,8 @@ async function tryAutoLogin() {
     await verifyToken(autoToken);
     tokenInput.value = autoToken;
     rememberTokenInput.checked = true;
-    saveSettings();
     hideAuthOverlay();
-    init();
+    await init();
   } catch (e) {
     if (saved) localStorage.removeItem(AUTH_STORAGE_KEY);
     authLoading.hidden = true;
