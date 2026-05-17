@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <div id="toastContainer" class="toast-container"></div>
+    <div id="loadingBar" class="loading-bar"></div>
     <div id="authOverlay" class="auth-overlay">
       <div class="auth-card">
         <div class="auth-logo">EPRIS</div>
@@ -36,10 +38,12 @@
         <span class="navbar-subtitle">Панель управления контентом</span>
       </div>
       <div class="navbar-right">
+        <span id="lastSynced" class="last-synced"></span>
         <a href="../" class="navbar-link" target="_blank" rel="noreferrer">Открыть сайт &#8599;</a>
         <button id="copySiteBtn" class="btn btn-ghost" type="button">Скопировать URL</button>
         <button id="loadBtn" class="btn btn-outline-light" type="button">Загрузить из GitHub</button>
         <button id="saveBtn" class="btn btn-save" type="button">Сохранить в GitHub</button>
+        <button id="helpBtn" class="btn-help" type="button" title="Клавиши (?)">?</button>
       </div>
     </header>
 
