@@ -1638,6 +1638,11 @@ async function saveToGitHub() {
     }
 
     const parsed = parseEditorJson();
+    const syncSummary = await ensureAllContentLanguages(parsed, visualLangSelect.value || DEFAULT_LANGUAGE);
+    if (syncSummary.created) {
+      setEditorData(parsed);
+      setStatus('info', `Перед сохранением создано переводов: ${syncSummary.created}. Отправляю в GitHub...`);
+    }
     saveSettings();
 
     let sha = currentSha;
@@ -2180,8 +2185,9 @@ function getFieldValue(id) {
   return element.value;
 }
 
-function applyVisualChanges() {
+async function applyVisualChanges() {
   try {
+    setBusy(true);
     const data = parseEditorJson();
     const section = visualSectionSelect.value;
     const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
@@ -2256,11 +2262,15 @@ function applyVisualChanges() {
     }
 
     entries[entryIndex] = next;
+    const syncedLangs = await syncMissingEntryLanguages(data, section, lang, next);
     pendingVisualEntryId = selectedId;
     setEditorData(data);
-    setStatus('success', `Запись #${selectedId} обновлена (${getSectionLabel(section)} / ${lang}).`);
+    const syncNote = syncedLangs.length ? ` Недостающие языки созданы: ${syncedLangs.join(', ')}.` : '';
+    setStatus('success', `Запись #${selectedId} обновлена (${getSectionLabel(section)} / ${lang}).${syncNote}`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
+  } finally {
+    setBusy(false);
   }
 }
 
@@ -2631,6 +2641,14 @@ function getEntriesForLanguage(data, section, lang, createLocalized = false) {
   return getSectionArray(data, section, lang, createLocalized && lang !== DEFAULT_LANGUAGE);
 }
 
+function hasConcreteEntryForLanguage(data, section, lang, entryId) {
+  const entries = lang === DEFAULT_LANGUAGE
+    ? data[section]
+    : data.localizedCollections?.[lang]?.[section];
+
+  return Array.isArray(entries) && entries.some((item) => Number(item.id) === Number(entryId));
+}
+
 function upsertEntryForLanguage(data, section, lang, entry) {
   const targetEntries = getEntriesForLanguage(data, section, lang, true);
   const targetIndex = targetEntries.findIndex((item) => Number(item.id) === Number(entry.id));
@@ -2639,6 +2657,58 @@ function upsertEntryForLanguage(data, section, lang, entry) {
   } else {
     targetEntries.push(entry);
   }
+}
+
+async function syncMissingEntryLanguages(data, section, sourceLang, sourceEntry) {
+  const createdLangs = [];
+  const targetLangs = getTranslationLanguages(data).filter((lang) => lang !== sourceLang);
+
+  for (const lang of targetLangs) {
+    if (hasConcreteEntryForLanguage(data, section, lang, sourceEntry.id)) {
+      continue;
+    }
+
+    const translated = await translateEntryForSection(section, sourceEntry, lang, sourceLang);
+    upsertEntryForLanguage(data, section, lang, translated);
+    createdLangs.push(lang);
+  }
+
+  return createdLangs;
+}
+
+function getConcreteEntryIds(data, section) {
+  const ids = new Set();
+  if (Array.isArray(data[section])) {
+    data[section].forEach((entry) => ids.add(Number(entry.id)));
+  }
+
+  const localized = data.localizedCollections && typeof data.localizedCollections === 'object'
+    ? data.localizedCollections
+    : {};
+
+  for (const collection of Object.values(localized)) {
+    const entries = collection?.[section];
+    if (!Array.isArray(entries)) continue;
+    entries.forEach((entry) => ids.add(Number(entry.id)));
+  }
+
+  return Array.from(ids).filter(Number.isFinite);
+}
+
+async function ensureAllContentLanguages(data, preferredSourceLang = DEFAULT_LANGUAGE) {
+  const sections = ['articles', 'items', 'reviews', 'libraryItems'];
+  let created = 0;
+
+  for (const section of sections) {
+    for (const id of getConcreteEntryIds(data, section)) {
+      const source = requireSourceEntry(data, section, preferredSourceLang, id);
+      setStatus('info', `Проверяю языки: ${getSectionLabel(section)} #${id}...`);
+      const createdLangs = await syncMissingEntryLanguages(data, section, source.lang, source.entry);
+      created += createdLangs.length;
+    }
+  }
+
+  return { created };
 }
 
 function findEntryInLanguage(data, section, lang, selectedId) {
