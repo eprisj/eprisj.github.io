@@ -36,7 +36,7 @@ What it does:
 - Commits changes back to the repo through GitHub API
 - Supports image URLs in visual editor (`imageUrl` / article cover URL)
 - Supports drag-and-drop image upload to `public/uploads` via GitHub API
-- Can machine-translate EN articles into the languages listed in `translations`
+- Can machine-translate the current visual-editor entry or section into every language listed in `translations`
 - Shows poll votes from JSON separately from local votes stored in the current browser
 
 Image behavior:

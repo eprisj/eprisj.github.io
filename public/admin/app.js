@@ -254,8 +254,8 @@ function bindEvents() {
   duplicateEntryBtn.addEventListener('click', duplicateVisualEntry);
   deleteEntryBtn.addEventListener('click', deleteVisualEntry);
   copyFromEnBtn.addEventListener('click', copyFromEnglishEntry);
-  translateEntryBtn.addEventListener('click', translateSelectedArticleToCurrentLanguage);
-  translateAllArticlesBtn.addEventListener('click', translateAllArticlesToAvailableLanguages);
+  translateEntryBtn.addEventListener('click', translateSelectedEntryToAvailableLanguages);
+  translateAllArticlesBtn.addEventListener('click', translateCurrentSectionToAvailableLanguages);
   applyEntryBtn.addEventListener('click', applyVisualChanges);
   pickImageBtn.addEventListener('click', (event) => {
     event.stopPropagation();
@@ -2510,34 +2510,46 @@ async function translateText(value, targetLang, sourceLang = DEFAULT_LANGUAGE) {
   return translated;
 }
 
-async function translateStringArray(values, targetLang) {
+function getTranslationLanguages(data) {
+  const fromTranslations = data?.translations && typeof data.translations === 'object'
+    ? Object.keys(data.translations)
+    : [];
+  const fromCollections = data?.localizedCollections && typeof data.localizedCollections === 'object'
+    ? Object.keys(data.localizedCollections)
+    : [];
+  return Array.from(new Set([DEFAULT_LANGUAGE, ...fromTranslations, ...fromCollections]))
+    .filter((lang) => getTranslationTargetCode(lang))
+    .sort((a, b) => (a === DEFAULT_LANGUAGE ? -1 : b === DEFAULT_LANGUAGE ? 1 : a.localeCompare(b)));
+}
+
+async function translateStringArray(values, targetLang, sourceLang = DEFAULT_LANGUAGE) {
   if (!Array.isArray(values)) {
     return [];
   }
 
   const translated = [];
   for (const value of values) {
-    translated.push(await translateText(value, targetLang));
+    translated.push(await translateText(value, targetLang, sourceLang));
   }
   return translated;
 }
 
-async function translateArticleBlock(block, targetLang) {
+async function translateArticleBlock(block, targetLang, sourceLang = DEFAULT_LANGUAGE) {
   const next = deepClone(block || {});
 
   if (typeof next.caption === 'string') {
-    next.caption = await translateText(next.caption, targetLang);
+    next.caption = await translateText(next.caption, targetLang, sourceLang);
   }
 
   if (['text', 'quote', 'note', 'link', 'map'].includes(next.type) && typeof next.content === 'string') {
-    next.content = await translateText(next.content, targetLang);
+    next.content = await translateText(next.content, targetLang, sourceLang);
     return next;
   }
 
   if (next.type === 'checklist' && next.content && typeof next.content === 'object' && Array.isArray(next.content.items)) {
     next.content = {
       ...next.content,
-      items: await translateStringArray(next.content.items, targetLang)
+      items: await translateStringArray(next.content.items, targetLang, sourceLang)
     };
     return next;
   }
@@ -2549,16 +2561,16 @@ async function translateArticleBlock(block, targetLang) {
       if (option && typeof option === 'object') {
         translatedOptions.push({
           ...option,
-          label: await translateText(option.label || '', targetLang)
+          label: await translateText(option.label || '', targetLang, sourceLang)
         });
       } else {
-        translatedOptions.push(await translateText(option, targetLang));
+        translatedOptions.push(await translateText(option, targetLang, sourceLang));
       }
     }
 
     next.content = {
       ...next.content,
-      question: await translateText(next.content.question || '', targetLang),
+      question: await translateText(next.content.question || '', targetLang, sourceLang),
       options: translatedOptions
     };
   }
@@ -2566,28 +2578,61 @@ async function translateArticleBlock(block, targetLang) {
   return next;
 }
 
-async function translateArticleFromEnglish(article, targetLang) {
+async function translateArticleEntry(article, targetLang, sourceLang = DEFAULT_LANGUAGE) {
   const next = deepClone(article);
 
-  next.title = await translateText(article.title, targetLang);
-  next.role = article.role ? await translateText(article.role, targetLang) : article.role;
-  next.date = article.date ? await translateText(article.date, targetLang) : article.date;
-  next.excerpt = await translateText(article.excerpt, targetLang);
-  next.category = await translateText(article.category, targetLang);
-  next.subcategory = article.subcategory ? await translateText(article.subcategory, targetLang) : article.subcategory;
-  next.tags = await translateStringArray(article.tags, targetLang);
+  next.title = await translateText(article.title, targetLang, sourceLang);
+  next.role = article.role ? await translateText(article.role, targetLang, sourceLang) : article.role;
+  next.date = article.date ? await translateText(article.date, targetLang, sourceLang) : article.date;
+  next.excerpt = await translateText(article.excerpt, targetLang, sourceLang);
+  next.category = await translateText(article.category, targetLang, sourceLang);
+  next.subcategory = article.subcategory ? await translateText(article.subcategory, targetLang, sourceLang) : article.subcategory;
+  next.tags = await translateStringArray(article.tags, targetLang, sourceLang);
 
   const blocks = Array.isArray(article.content) ? article.content : [];
   next.content = [];
   for (const block of blocks) {
-    next.content.push(await translateArticleBlock(block, targetLang));
+    next.content.push(await translateArticleBlock(block, targetLang, sourceLang));
   }
 
   return next;
 }
 
-function upsertLocalizedEntry(data, section, lang, entry) {
-  const targetEntries = getSectionArray(data, section, lang, true);
+async function translateEntryForSection(section, entry, targetLang, sourceLang = DEFAULT_LANGUAGE) {
+  if (section === 'articles') {
+    return translateArticleEntry(entry, targetLang, sourceLang);
+  }
+
+  const next = deepClone(entry);
+  if (section === 'items') {
+    next.title = await translateText(entry.title, targetLang, sourceLang);
+    next.subtitle = await translateText(entry.subtitle, targetLang, sourceLang);
+    next.description = await translateText(entry.description, targetLang, sourceLang);
+    return next;
+  }
+
+  if (section === 'reviews') {
+    next.title = await translateText(entry.title, targetLang, sourceLang);
+    next.subject = await translateText(entry.subject, targetLang, sourceLang);
+    next.content = await translateText(entry.content, targetLang, sourceLang);
+    return next;
+  }
+
+  if (section === 'libraryItems') {
+    next.title = await translateText(entry.title, targetLang, sourceLang);
+    next.type = await translateText(entry.type, targetLang, sourceLang);
+    return next;
+  }
+
+  return next;
+}
+
+function getEntriesForLanguage(data, section, lang, createLocalized = false) {
+  return getSectionArray(data, section, lang, createLocalized && lang !== DEFAULT_LANGUAGE);
+}
+
+function upsertEntryForLanguage(data, section, lang, entry) {
+  const targetEntries = getEntriesForLanguage(data, section, lang, true);
   const targetIndex = targetEntries.findIndex((item) => Number(item.id) === Number(entry.id));
   if (targetIndex >= 0) {
     targetEntries[targetIndex] = entry;
@@ -2596,75 +2641,105 @@ function upsertLocalizedEntry(data, section, lang, entry) {
   }
 }
 
-async function translateSelectedArticleToCurrentLanguage() {
-  try {
-    const section = visualSectionSelect.value;
-    const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
-
-    if (section !== 'articles') {
-      throw new Error('Автоперевод сейчас работает для статей. Выберите раздел «Статьи».');
-    }
-
-    if (lang === DEFAULT_LANGUAGE) {
-      const dataForLanguages = parseEditorJson();
-      const targets = getLanguageOptions(dataForLanguages).filter((item) => item !== DEFAULT_LANGUAGE);
-      if (!targets.length) {
-        throw new Error('Нет доступных языков кроме EN.');
-      }
-      await translateSelectedArticleToLanguages(targets);
-      return;
-    }
-
-    await translateSelectedArticleToLanguages([lang]);
-  } catch (error) {
-    setStatus('error', getErrorMessage(error));
-  }
+function findEntryInLanguage(data, section, lang, selectedId) {
+  const sourceEntries = getEntriesForLanguage(data, section, lang, false);
+  return sourceEntries.find((item) => Number(item.id) === Number(selectedId));
 }
 
-async function translateSelectedArticleToLanguages(targetLangs) {
-  const data = parseEditorJson();
-  const selectedId = Number(visualEntrySelect.value);
-  const sourceEntries = getSectionArray(data, 'articles', DEFAULT_LANGUAGE, false);
-  const sourceEntry = sourceEntries.find((item) => Number(item.id) === selectedId);
-
-  if (!sourceEntry) {
-    throw new Error('Не найдена EN-статья для перевода.');
+function getSourceEntriesForLanguage(data, section, preferredLang) {
+  const baseEntries = getEntriesForLanguage(data, section, DEFAULT_LANGUAGE, false);
+  if (preferredLang === DEFAULT_LANGUAGE) {
+    return baseEntries.map((entry) => ({ entry, lang: DEFAULT_LANGUAGE }));
   }
 
+  const preferredEntries = getEntriesForLanguage(data, section, preferredLang, false);
+  const preferredById = new Map(preferredEntries.map((entry) => [Number(entry.id), entry]));
+  const baseIds = new Set(baseEntries.map((entry) => Number(entry.id)));
+  const merged = baseEntries.map((baseEntry) => {
+    const preferredEntry = preferredById.get(Number(baseEntry.id));
+    return preferredEntry
+      ? { entry: preferredEntry, lang: preferredLang }
+      : { entry: baseEntry, lang: DEFAULT_LANGUAGE };
+  });
+
+  for (const entry of preferredEntries) {
+    if (!baseIds.has(Number(entry.id))) {
+      merged.push({ entry, lang: preferredLang });
+    }
+  }
+
+  return merged;
+}
+
+function requireSourceEntry(data, section, preferredSourceLang, selectedId) {
+  const preferredEntry = findEntryInLanguage(data, section, preferredSourceLang, selectedId);
+  if (preferredEntry) {
+    return { entry: preferredEntry, lang: preferredSourceLang };
+  }
+
+  const defaultEntry = findEntryInLanguage(data, section, DEFAULT_LANGUAGE, selectedId);
+  if (defaultEntry) {
+    return { entry: defaultEntry, lang: DEFAULT_LANGUAGE };
+  }
+
+  for (const lang of getTranslationLanguages(data)) {
+    const entry = findEntryInLanguage(data, section, lang, selectedId);
+    if (entry) {
+      return { entry, lang };
+    }
+  }
+
+  throw new Error(`Не найдена запись #${selectedId} ни в одном языке.`);
+}
+
+async function translateSelectedEntryToAvailableLanguages() {
+  const data = parseEditorJson();
+  const section = visualSectionSelect.value;
+  const preferredSourceLang = visualLangSelect.value || DEFAULT_LANGUAGE;
+  const selectedId = Number(visualEntrySelect.value);
+  const source = requireSourceEntry(data, section, preferredSourceLang, selectedId);
+  const sourceLang = source.lang;
+  const sourceEntry = source.entry;
+  const targetLangs = getTranslationLanguages(data).filter((lang) => lang !== sourceLang);
+
   setBusy(true);
-  setStatus('info', `Перевожу статью #${selectedId}: ${targetLangs.join(', ')}...`);
+  setStatus('info', `Перевожу запись #${selectedId} из ${sourceLang}: ${targetLangs.join(', ')}...`);
 
   try {
     for (const lang of targetLangs) {
-      const translated = await translateArticleFromEnglish(sourceEntry, lang);
-      upsertLocalizedEntry(data, 'articles', lang, translated);
+      const translated = await translateEntryForSection(section, sourceEntry, lang, sourceLang);
+      upsertEntryForLanguage(data, section, lang, translated);
     }
 
     pendingVisualEntryId = selectedId;
     setEditorData(data);
-    setStatus('success', `Статья #${selectedId} переведена: ${targetLangs.join(', ')}. Проверьте текст и сохраните в GitHub.`);
+    setStatus('success', `Запись #${selectedId} доступна на языках: ${getTranslationLanguages(data).join(', ')}. Проверьте и сохраните в GitHub.`);
+  } catch (error) {
+    setStatus('error', getErrorMessage(error));
   } finally {
     setBusy(false);
   }
 }
 
-async function translateAllArticlesToAvailableLanguages() {
+async function translateCurrentSectionToAvailableLanguages() {
   try {
     const data = parseEditorJson();
-    const targetLangs = getLanguageOptions(data).filter((lang) => lang !== DEFAULT_LANGUAGE);
-    const sourceEntries = getSectionArray(data, 'articles', DEFAULT_LANGUAGE, false);
+    const section = visualSectionSelect.value;
+    const preferredSourceLang = visualLangSelect.value || DEFAULT_LANGUAGE;
+    const sourceEntries = getSourceEntriesForLanguage(data, section, preferredSourceLang);
+    const allLangs = getTranslationLanguages(data);
 
     if (!sourceEntries.length) {
-      throw new Error('В EN нет статей для перевода.');
+      throw new Error(`В разделе «${getSectionLabel(section)}» нет записей для перевода.`);
     }
 
-    if (!targetLangs.length) {
-      throw new Error('Нет доступных языков кроме EN.');
+    if (allLangs.length < 2) {
+      throw new Error('Недостаточно языков для перевода.');
     }
 
     const confirmed = await showConfirmModal(
-      'Автоматически перевести все статьи?',
-      `Будут обновлены локализованные версии для языков: <strong>${escapeHtml(targetLangs.join(', '))}</strong>. После машинного перевода лучше быстро вычитать заголовки, цитаты и опросы.`,
+      `Автоматически перевести раздел «${escapeHtml(getSectionLabel(section))}»?`,
+      `Основной источник: <strong>${escapeHtml(preferredSourceLang)}</strong>. Если в нём нет записи, будет взята EN-версия. Раздел будет разложен по всем языкам: <strong>${escapeHtml(allLangs.join(', '))}</strong>. После машинного перевода лучше быстро вычитать тексты.`,
       'Перевести'
     );
     if (!confirmed) {
@@ -2673,19 +2748,22 @@ async function translateAllArticlesToAvailableLanguages() {
 
     setBusy(true);
     let done = 0;
-    const total = sourceEntries.length * targetLangs.length;
+    const total = sourceEntries.reduce((sum, item) => sum + allLangs.filter((lang) => lang !== item.lang).length, 0);
 
-    for (const lang of targetLangs) {
-      for (const article of sourceEntries) {
+    for (const source of sourceEntries) {
+      const entry = source.entry;
+      const sourceLang = source.lang;
+      const targetLangs = allLangs.filter((lang) => lang !== sourceLang);
+      for (const lang of targetLangs) {
         done += 1;
-        setStatus('info', `Автоперевод ${done}/${total}: статья #${article.id} → ${lang}`);
-        const translated = await translateArticleFromEnglish(article, lang);
-        upsertLocalizedEntry(data, 'articles', lang, translated);
+        setStatus('info', `Автоперевод ${done}/${total}: ${getSectionLabel(section)} #${entry.id} ${sourceLang} → ${lang}`);
+        const translated = await translateEntryForSection(section, entry, lang, sourceLang);
+        upsertEntryForLanguage(data, section, lang, translated);
       }
     }
 
     setEditorData(data);
-    setStatus('success', `Автоперевод готов: ${sourceEntries.length} статей на ${targetLangs.length} языков. Проверьте и сохраните в GitHub.`);
+    setStatus('success', `Раздел «${getSectionLabel(section)}» переведен: ${sourceEntries.length} записей разложены по ${allLangs.length} языкам. Проверьте и сохраните в GitHub.`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
