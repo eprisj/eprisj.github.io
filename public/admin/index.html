@@ -320,6 +320,10 @@
             btn.classList.add('active');
             var target = document.getElementById('tab-' + btn.dataset.tab);
             if (target) target.classList.add('active');
+            // Auto-render polls when switching to polls tab
+            if (btn.dataset.tab === 'polls' && typeof window._renderPollResults === 'function') {
+              window._renderPollResults();
+            }
           });
         });
       });

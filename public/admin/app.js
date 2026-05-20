@@ -1781,6 +1781,10 @@ function setEditorData(data, options = {}) {
   }
   saveSettings();
   queueMonitoringChecks(120);
+  // Auto-update polls when data changes
+  if (typeof renderPollResults === 'function') {
+    try { renderPollResults(); } catch {}
+  }
 }
 
 function deepClone(value) {
@@ -1899,31 +1903,57 @@ function refreshVisualEditor() {
   const entries = getSectionArray(data, section, lang, false);
   const search = visualSearchInput.value.trim().toLowerCase();
 
-  const visibleEntries = !search
-    ? entries
-    : entries.filter((entry) => {
-        const idText = String(entry.id || '').toLowerCase();
-        const title = getEntryTitle(section, entry).toLowerCase();
-        return idText.includes(search) || title.includes(search);
+  // For non-EN languages, build dropdown from ALL EN entries so untranslated ones are visible
+  let dropdownEntries;
+  if (lang !== DEFAULT_LANGUAGE) {
+    const enEntries = getSectionArray(data, section, DEFAULT_LANGUAGE, false);
+    const localizedIds = new Set(entries.map(e => Number(e.id)));
+    dropdownEntries = enEntries.map(enEntry => {
+      const localizedEntry = entries.find(le => Number(le.id) === Number(enEntry.id));
+      return {
+        id: enEntry.id,
+        _entry: localizedEntry || enEntry,
+        _hasTranslation: localizedIds.has(Number(enEntry.id)),
+        _enTitle: getEntryTitle(section, enEntry)
+      };
+    });
+  } else {
+    dropdownEntries = entries.map(entry => ({
+      id: entry.id,
+      _entry: entry,
+      _hasTranslation: true,
+      _enTitle: getEntryTitle(section, entry)
+    }));
+  }
+
+  const visibleDropdown = !search
+    ? dropdownEntries
+    : dropdownEntries.filter((item) => {
+        const idText = String(item.id || '').toLowerCase();
+        const title = getEntryTitle(section, item._entry).toLowerCase();
+        const enTitle = item._enTitle.toLowerCase();
+        return idText.includes(search) || title.includes(search) || enTitle.includes(search);
       });
 
-  const optionsHtml = visibleEntries
-    .map((entry) => {
-      const id = Number(entry.id);
-      const label = getEntryTitle(section, entry);
+  const optionsHtml = visibleDropdown
+    .map((item) => {
+      const id = Number(item.id);
+      const label = item._hasTranslation
+        ? getEntryTitle(section, item._entry)
+        : item._enTitle + ' (не переведено)';
       return `<option value="${id}">#${id} - ${escapeHtml(label)}</option>`;
     })
     .join('');
 
   visualEntrySelect.innerHTML = optionsHtml;
 
-  if (!entries.length) {
-    setVisualNotice(`В разделе "${getSectionLabel(section)}" пока нет записей для языка ${lang}.`, 'info');
+  if (!dropdownEntries.length) {
+    setVisualNotice(`В разделе "${getSectionLabel(section)}" пока нет записей.`, 'info');
     visualFormEl.innerHTML = '';
     return;
   }
 
-  if (!visibleEntries.length) {
+  if (!visibleDropdown.length) {
     setVisualNotice(`По запросу "${search}" ничего не найдено.`, 'info');
     visualFormEl.innerHTML = '';
     return;
@@ -1932,10 +1962,10 @@ function refreshVisualEditor() {
   const desiredId = pendingVisualEntryId !== null ? String(pendingVisualEntryId) : visualEntrySelect.value;
   pendingVisualEntryId = null;
 
-  if (desiredId && visibleEntries.some((entry) => String(entry.id) === desiredId)) {
+  if (desiredId && visibleDropdown.some((item) => String(item.id) === desiredId)) {
     visualEntrySelect.value = desiredId;
   } else {
-    visualEntrySelect.value = String(visibleEntries[0].id);
+    visualEntrySelect.value = String(visibleDropdown[0].id);
   }
 
   renderVisualForm();
@@ -2046,7 +2076,22 @@ function renderVisualForm() {
   }
 
   const selectedId = Number(visualEntrySelect.value);
-  const entry = entries.find((item) => Number(item.id) === selectedId) || entries[0];
+  let entry = entries.find((item) => Number(item.id) === selectedId);
+
+  // If entry not found in localized collection, check if it exists in EN
+  if (!entry && lang !== DEFAULT_LANGUAGE) {
+    const enEntries = getSectionArray(data, section, DEFAULT_LANGUAGE, false);
+    const enEntry = enEntries.find((item) => Number(item.id) === selectedId);
+    if (enEntry) {
+      setVisualNotice(`Запись #${selectedId} ещё не переведена на ${lang}. Нажмите «Копия из EN», чтобы создать перевод.`, 'info');
+      // Show the EN content as read-only preview
+      entry = enEntry;
+    }
+  }
+
+  if (!entry) {
+    entry = entries[0];
+  }
 
   if (!entry) {
     visualFormEl.innerHTML = '';
@@ -3242,6 +3287,9 @@ if (pollRefreshBtn) {
   pollRefreshBtn.addEventListener('click', renderPollResults);
 }
 
+// Expose for cross-script access (tab switching in index.html)
+window._renderPollResults = renderPollResults;
+
 // Auto-render polls when content is loaded
 const origLoadBtn = loadBtn;
 if (origLoadBtn) {
@@ -3250,3 +3298,8 @@ if (origLoadBtn) {
     setTimeout(renderPollResults, 2000);
   });
 }
+
+// Auto-render polls on initial load if data is already present
+setTimeout(() => {
+  try { renderPollResults(); } catch {}
+}, 500);
