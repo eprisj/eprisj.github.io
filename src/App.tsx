@@ -247,11 +247,11 @@ function Hero({ t }: { t: (key: string) => string }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-        className="grid grid-cols-1 md:grid-cols-3 items-end px-8 md:px-16 py-16 md:py-28 gap-4 md:gap-8"
+        className="grid grid-cols-1 md:grid-cols-3 items-end px-4 sm:px-8 md:px-16 py-10 sm:py-16 md:py-28 gap-4 md:gap-8"
       >
         {/* Left: EPRIS masthead */}
         <div className="text-center md:text-left">
-          <p className="font-mono text-5xl md:text-7xl tracking-[0.13em] text-[#501a2c] leading-none">EPRIS</p>
+          <p className="font-mono text-4xl sm:text-5xl md:text-7xl tracking-[0.13em] text-[#501a2c] leading-none">EPRIS</p>
           <p className="font-mono text-sm tracking-[0.13em] text-[#501a2c]/50 uppercase mt-1">journal.</p>
         </div>
 
@@ -290,7 +290,7 @@ function AboutSection({ t }: { t: (key: string) => string }) {
             <div className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/60 mb-4">
               {t('editor')}
             </div>
-            <h2 className="font-serif text-4xl md:text-6xl text-[#501a2c] mb-8">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl text-[#501a2c] mb-6 sm:mb-8">
               Mariia Ivanova
             </h2>
             <div className="prose prose-lg prose-stone font-serif text-[#501a2c]/80">
@@ -301,7 +301,7 @@ function AboutSection({ t }: { t: (key: string) => string }) {
                 {t('about.bio')}
               </p>
             </div>
-            <div className="mt-12 pt-8 border-t border-[#501a2c]/20 flex gap-8">
+            <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-[#501a2c]/20 flex flex-col sm:flex-row gap-6 sm:gap-8">
               <div>
                 <div className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 mb-1">{t('about.contact')}</div>
                 <a href="mailto:editor@eprisjournal.com" className="font-serif text-lg text-[#501a2c] hover:text-[#C9A690] transition-colors">editor@eprisjournal.com</a>
@@ -543,10 +543,10 @@ function ArticleView({ article, onClose, t }: { article: Article; onClose: () =>
       exit={{ opacity: 0, y: 50 }}
       className="fixed inset-0 z-[60] bg-[#F5F0EB] overflow-y-auto"
     >
-      <div className="max-w-4xl mx-auto px-4 md:px-8 py-12 md:py-24 relative">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-24 relative">
         <button 
           onClick={onClose}
-          className="fixed top-8 left-8 md:left-16 z-50 flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c] hover:opacity-60 transition-opacity bg-[#F5F0EB]/80 backdrop-blur-sm px-4 py-2 rounded-full border border-[#501a2c]/10"
+          className="fixed top-4 left-4 sm:top-8 sm:left-8 md:left-16 z-50 flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c] hover:opacity-60 transition-opacity bg-[#F5F0EB]/80 backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-[#501a2c]/10"
         >
           <ArrowLeft size={16} /> {t('back')}
         </button>
@@ -563,7 +563,7 @@ function ArticleView({ article, onClose, t }: { article: Article; onClose: () =>
               />
             </div>
             <div className="text-center">
-              <div className="flex items-center justify-center gap-4 font-mono text-xs text-[#501a2c]/60 uppercase tracking-widest mb-6">
+              <div className="flex items-center justify-center gap-2 md:gap-4 font-mono text-[10px] md:text-xs text-[#501a2c]/60 uppercase tracking-widest mb-6 flex-wrap">
                 <span>{article.date}</span>
                 <span className="w-1 h-1 bg-[#501a2c]/40 rounded-full" />
                 <span>{article.author}</span>
@@ -574,10 +574,10 @@ function ArticleView({ article, onClose, t }: { article: Article; onClose: () =>
                   </>
                 )}
               </div>
-              <h1 className="font-serif text-4xl md:text-7xl text-[#501a2c] mb-8 leading-tight">
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-7xl text-[#501a2c] mb-8 leading-tight">
                 {article.title}
               </h1>
-              <div className="flex justify-center gap-2">
+              <div className="flex justify-center gap-2 flex-wrap">
                 {article.tags.map(tag => (
                   <span key={tag} className="border border-[#501a2c] px-3 py-1 text-[10px] font-mono uppercase tracking-wider text-[#501a2c]">
                     {tag}
@@ -679,7 +679,7 @@ function ArticleView({ article, onClose, t }: { article: Article; onClose: () =>
                   );
                 case 'audio':
                   return (
-                    <figure key={index} className="my-12 p-6 bg-[#E8DED5] border border-[#501a2c]/20 flex items-center gap-4">
+                    <figure key={index} className="my-8 sm:my-12 p-4 sm:p-6 bg-[#E8DED5] border border-[#501a2c]/20 flex items-center gap-3 sm:gap-4">
                       <div className="w-12 h-12 rounded-full bg-[#501a2c] flex items-center justify-center text-[#F5F0EB]">
                         <Music size={20} />
                       </div>
@@ -810,7 +810,7 @@ function ArticlesSection({
                     />
                  </div>
                  <div className="md:col-span-2">
-                    <div className="flex items-baseline justify-between mb-4 font-mono text-xs text-[#501a2c]/60 uppercase tracking-widest">
+                    <div className="flex items-baseline justify-between mb-4 font-mono text-[10px] sm:text-xs text-[#501a2c]/60 uppercase tracking-widest gap-2 flex-wrap">
                       <div className="flex gap-2">
                         <span>{article.date}</span>
                         {article.category && (
@@ -822,7 +822,7 @@ function ArticlesSection({
                       </div>
                       <span>{article.author}</span>
                     </div>
-                    <h2 className="font-serif text-3xl md:text-5xl text-[#501a2c] mb-6 group-hover:text-[#C9A690] transition-colors">
+                    <h2 className="font-serif text-2xl sm:text-3xl md:text-5xl text-[#501a2c] mb-4 sm:mb-6 group-hover:text-[#C9A690] transition-colors">
                       {article.title}
                     </h2>
                     <p className="font-serif text-lg text-[#501a2c]/80 leading-relaxed mb-6">
@@ -831,15 +831,15 @@ function ArticlesSection({
                  </div>
               </div>
               
-              <div className="flex items-center justify-between">
-                <div className="flex gap-2 flex-wrap">
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex gap-2 flex-wrap min-w-0">
                   {article.tags.map(tag => (
-                    <span key={tag} className="border border-[#501a2c] px-3 py-1 text-[10px] font-mono uppercase tracking-wider text-[#501a2c]">
+                    <span key={tag} className="border border-[#501a2c] px-2 sm:px-3 py-1 text-[10px] font-mono uppercase tracking-wider text-[#501a2c]">
                       {tag}
                     </span>
                   ))}
                 </div>
-                <span className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#501a2c] group-hover:translate-x-2 transition-transform whitespace-nowrap">
+                <span className="flex items-center gap-2 text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#501a2c] group-hover:translate-x-2 transition-transform whitespace-nowrap shrink-0">
                   {t('read.article')} <ArrowUpRight size={14} />
                 </span>
               </div>
@@ -891,25 +891,25 @@ function ReviewsSection({ reviews, t }: { reviews: Review[]; t: (key: string) =>
 function LibrarySection({ libraryItems, t }: { libraryItems: LibraryItem[]; t: (key: string) => string }) {
   return (
     <div className="border border-[#501a2c]">
-      <div className="grid grid-cols-12 border-b border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] p-4 font-mono text-xs uppercase tracking-widest">
-        <div className="col-span-8 md:col-span-5">{t('library.title')}</div>
+      <div className="grid grid-cols-12 border-b border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] p-3 sm:p-4 font-mono text-[10px] sm:text-xs uppercase tracking-widest">
+        <div className="col-span-9 sm:col-span-8 md:col-span-5">{t('library.title')}</div>
         <div className="col-span-2 hidden md:block">{t('library.type')}</div>
         <div className="col-span-2 hidden md:block">{t('library.size')}</div>
         <div className="col-span-2 hidden md:block">{t('library.year')}</div>
-        <div className="col-span-4 md:col-span-1 text-right">{t('library.action')}</div>
+        <div className="col-span-3 sm:col-span-4 md:col-span-1 text-right">{t('library.action')}</div>
       </div>
       {libraryItems.map((item, index) => (
         <div key={item.id}>
           <Reveal delay={index * 0.05}>
-            <div className="grid grid-cols-12 p-4 border-b border-[#501a2c]/20 items-center hover:bg-[#E8DED5] transition-colors group font-mono text-sm text-[#501a2c]">
-              <div className="col-span-8 md:col-span-5 font-medium flex items-center gap-3">
-                <BookOpen size={16} className="text-[#501a2c]/40 group-hover:text-[#501a2c] shrink-0" />
+            <div className="grid grid-cols-12 p-3 sm:p-4 border-b border-[#501a2c]/20 items-center hover:bg-[#E8DED5] transition-colors group font-mono text-xs sm:text-sm text-[#501a2c]">
+              <div className="col-span-9 sm:col-span-8 md:col-span-5 font-medium flex items-center gap-2 sm:gap-3 min-w-0">
+                <BookOpen size={16} className="text-[#501a2c]/40 group-hover:text-[#501a2c] shrink-0 hidden sm:block" />
                 <span className="truncate">{item.title}</span>
               </div>
               <div className="col-span-2 hidden md:block opacity-60">{item.type}</div>
               <div className="col-span-2 hidden md:block opacity-60">{item.size}</div>
               <div className="col-span-2 hidden md:block opacity-60">{item.year}</div>
-              <div className="col-span-4 md:col-span-1 text-right">
+              <div className="col-span-3 sm:col-span-4 md:col-span-1 text-right">
                 <button className="inline-flex items-center justify-center w-8 h-8 border border-[#501a2c] rounded-full hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-colors">
                   <Download size={14} />
                 </button>
@@ -963,7 +963,7 @@ export default function App() {
       <div className="lg:pr-12"> {/* Padding for sidebar */}
         <Hero t={t} />
 
-        <main className="max-w-[1600px] mx-auto px-4 md:px-16 py-12 md:py-24">
+        <main className="max-w-[1600px] mx-auto px-4 sm:px-8 md:px-16 py-8 sm:py-12 md:py-24">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -986,16 +986,16 @@ export default function App() {
           </AnimatePresence>
         </main>
 
-        <footer className="border-t border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] py-12 md:py-24 px-8 md:px-16">
+        <footer className="border-t border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
           <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
             <div>
-              <h2 className="font-serif text-4xl md:text-6xl mb-8 text-[#C9A690]">EPRIS JOURNAL</h2>
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-[#C9A690]">EPRIS JOURNAL</h2>
               <div className="font-mono text-xs uppercase tracking-widest opacity-60 max-w-xs leading-relaxed">
                 <p>{t('hero.subtitle2')}</p>
                 <p>{t('hero.subtitle1')}</p>
               </div>
             </div>
-            <div className="text-right font-mono text-xs uppercase tracking-widest opacity-40">
+            <div className="text-left md:text-right font-mono text-xs uppercase tracking-widest opacity-40">
               <p>© 2026 Epris Journal</p>
               <p>{t('footer.rights')}</p>
             </div>
