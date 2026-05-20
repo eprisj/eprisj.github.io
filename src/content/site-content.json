@@ -903,6 +903,156 @@
           "content": "Don't rush Kyoto. It is a city best experienced on foot or by bicycle. Get lost in the narrow alleys of Gion. Sit by the Kamo River. Drink matcha in a traditional tea house. Let the city reveal itself to you slowly."
         }
       ]
+    },
+    {
+      "id": 9,
+      "title": "The Threshold of Time",
+      "author": "Viacheslav Munister",
+      "role": "Guest Author",
+      "date": "May 20, 2026",
+      "excerpt": "Door restoration as the practice of preserving urban memory. From the sun-bleached portals of Lisbon to the carved wooden masterpieces of Tbilisi, every threshold tells a story that the city is afraid to forget.",
+      "category": "Design",
+      "subcategory": "Heritage",
+      "tags": [
+        "Restoration",
+        "Heritage",
+        "Architecture",
+        "Urban Memory"
+      ],
+      "imageSeed": "old-wooden-door-europe",
+      "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&h=675&fit=crop",
+      "content": [
+        {
+          "type": "text",
+          "content": "There is a peculiar kind of silence that inhabits old doorways — a silence woven from centuries of hands pressing against timber, of keys turning in iron locks worn smooth by ten thousand evenings. Stand before a door on Rua Augusta in Lisbon, on a cobblestoned alley of Tbilisi's Sololaki, or in the salt-crusted shade of a Havana portico, and you will hear it: the low, unhurried breathing of a city remembering itself."
+        },
+        {
+          "type": "text",
+          "content": "Door restoration is not merely carpentry. It is an act of archaeological tenderness, a conversation between the living and the vanished. When a restorer peels away layers of paint — cerulean blue over terracotta over bone white — they are reading the autobiography of a building. Each colour is a decade, each crack a winter survived, each replaced hinge a family that once called this threshold home."
+        },
+        {
+          "type": "note",
+          "content": "A single historic door can contain up to twelve layers of paint, each one a chapter in the biography of the street. In Saint Petersburg, restorers have discovered pre-revolutionary pigments hidden beneath Soviet-era enamels — colours that had not seen daylight for over a century."
+        },
+        {
+          "type": "quote",
+          "content": "The door is the first sentence the building speaks to the street. Destroy it, and you erase the opening line of a story that took centuries to compose."
+        },
+        {
+          "type": "text",
+          "content": "In Lisbon, the ancient Pombaline doors — born from the rubble of the catastrophic 1755 earthquake — stand as monuments to resilience wrapped in ornament. Framed by azulejo tiles of cobalt and gold, these towering panels of Brazilian hardwood bear the scars of Atlantic storms and the caress of jasmine-scented breezes. The city's Baixa district is a living museum of these portals: double-winged, iron-studded, their fanlights casting kaleidoscopic shadows onto marble vestibules at the hour when the Tagus turns amber."
+        },
+        {
+          "type": "image",
+          "content": "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&h=500&fit=crop",
+          "caption": "A weathered doorway in Lisbon's Alfama district — centuries of ocean wind etched into every grain."
+        },
+        {
+          "type": "text",
+          "content": "Travel eastward, and the doors of Tbilisi reveal an entirely different grammar of beauty. In the labyrinthine streets of the Old Town, Art Nouveau doors with oval stained-glass windows coexist beside austere Georgian carved panels depicting grapevines and mythical beasts. The Kaleidoscope Door on Betlemi Street — an entrance shattered into a mosaic of coloured glass — scatters the Caucasian sunlight into a hundred chromatic whispers on the stairwell walls. The Shalimov House on Lado Asatiani Street still guards its angel frescoes above a threshold where, they say, the poet Nikoloz Baratashvili once paused to compose a verse."
+        },
+        {
+          "type": "gallery",
+          "content": [
+            "https://images.unsplash.com/photo-1504198266287-1659872e6590?w=400&h=400&fit=crop",
+            "https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?w=400&h=400&fit=crop",
+            "https://images.unsplash.com/photo-1534609146522-370a4e534697?w=400&h=400&fit=crop"
+          ],
+          "caption": "Doors of the world: from Mediterranean arches to Caucasian carvings."
+        },
+        {
+          "type": "text",
+          "content": "In Havana, doors are not restored — they are resurrected. The crumbling pastel facades of Centro Habana conceal portals of mahogany and cedar that once welcomed sugar barons and revolutionary poets alike. Behind every peeling turquoise shutter lies the ghost of a courtyard where bougainvillea climbed wrought-iron balconies and the murmur of a fountain competed with the distant percussion of son cubano. Cuban restorers work with tools inherited from their grandfathers, re-carving rosettes and acanthus leaves from memory, because the original blueprints dissolved long ago in the tropical humidity."
+        },
+        {
+          "type": "text",
+          "content": "Florence offers perhaps the most celebrated example of door restoration as high art. Lorenzo Ghiberti's Porta del Paradiso — the gilded bronze Gates of Paradise at the Baptistery of San Giovanni — underwent a painstaking twenty-seven-year conservation that concluded in 2012. Restorers used laser technology to remove five centuries of grime and oxidation, revealing the luminous gold that Michelangelo himself once praised. Each of the ten panels, depicting scenes from the Old Testament, emerged from the cleaning as vivid and trembling with life as the day Ghiberti's hammer struck the final blow in 1452."
+        },
+        {
+          "type": "image",
+          "content": "https://images.unsplash.com/photo-1553521041-d6a39b0300e0?w=800&h=500&fit=crop",
+          "caption": "The monumental bronze doors of Florence — where restoration meets revelation."
+        },
+        {
+          "type": "quote",
+          "content": "Speed is irrelevant when you are restoring something that took three generations to build. The door does not care about your deadline. It cares only that you listen to the wood."
+        },
+        {
+          "type": "text",
+          "content": "Saint Petersburg — that northernmost Venice of granite and fog — holds a special place in the cartography of doors. The pre-revolutionary entrances of the Petrogradskaya Side, with their linden-wood panels and wrought-iron transom grilles, are among the most endangered species of urban ornament in Europe. The community «Двери с помоек» — literally, 'Doors from the Dump' — rescues discarded historic doors from demolition skips, restores them in volunteer workshops, and returns them to their rightful buildings. They have documented cases where doors of Karelian birch, nearly two centuries old, were found propped against dumpsters, their original hand-painted floral cartouches still faintly visible beneath decades of neglect."
+        },
+        {
+          "type": "map",
+          "content": "Durham Cathedral, England",
+          "coordinates": {
+            "lat": 54.7734,
+            "lng": -1.5762
+          }
+        },
+        {
+          "type": "text",
+          "content": "At Durham Cathedral in northern England, the North Door — a massive slab of oak dating from between 1109 and 1144 — recently underwent conservation by Skillingtons Workshop. The restorers adopted a 'minimalist' philosophy: dry-brushing trapped medieval dust from the open grain, applying four layers of Tung oil to replace natural oils lost over nine centuries, and hand-forging replacement nails to match the originals. The result is not a door that looks new, but a door that looks exactly as ancient and magnificent as it truly is."
+        },
+        {
+          "type": "text",
+          "content": "Prague's doors speak in a different dialect altogether: the language of Baroque exuberance. In Malá Strana, beneath the shadow of Prague Castle, doors of carved limewood depict saints, griffins, and garlands of impossible fruit. The Palazzo Negri in Istrian Vodnjan — restored by the Ars et Labor Foundation during the European Year of Cultural Heritage — demonstrated how a single community workshop can preserve an entire region's identity simply by saving one door at a time. Their motto, borrowed from the Gospels, is quietly magnificent: 'Knock, and the door will be opened to you.'"
+        },
+        {
+          "type": "checklist",
+          "content": {
+            "items": [
+              "Photograph the door from every angle before any work begins",
+              "Document each paint layer with a stratigraphic sample",
+              "Test cleaning solutions on a hidden section first",
+              "Replace only what is structurally necessary — preserve original material",
+              "Use historically appropriate hardware and finishes",
+              "Record the restoration process for future conservators"
+            ]
+          },
+          "caption": "The Restorer's Code: Six Principles of Ethical Door Conservation"
+        },
+        {
+          "type": "text",
+          "content": "What makes a door worth saving? It is not merely the age of the timber or the elegance of the carving. It is the accumulated weight of passage — the thousands of arrivals and departures, the hands that reached for the handle in joy and in grief, the threshold that divided the public chaos of the street from the private sanctuary of the home. Every restored door is a bridge between the city we inhabit and the city that inhabits us."
+        },
+        {
+          "type": "poll",
+          "content": {
+            "question": "Which city's historic doors fascinate you most?",
+            "options": [
+              {
+                "label": "Lisbon",
+                "votes": 0
+              },
+              {
+                "label": "Tbilisi",
+                "votes": 0
+              },
+              {
+                "label": "Havana",
+                "votes": 0
+              },
+              {
+                "label": "Florence",
+                "votes": 0
+              },
+              {
+                "label": "Saint Petersburg",
+                "votes": 0
+              }
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "content": "In the end, the restorer's craft is an act of radical empathy extended across time. To sand a piece of oak that a medieval carpenter shaped is to shake hands with the dead. To re-gild a bronze panel that Ghiberti cast is to continue a conversation begun in the fifteenth century. The door does not merely connect rooms; it connects eras. And when we save it, we are not preserving an object — we are preserving the possibility of crossing a threshold that someone, centuries from now, will pause before in wonder, just as we do today."
+        },
+        {
+          "type": "link",
+          "content": "Explore the Ars et Labor Foundation's Door Restoration Project",
+          "url": "https://www.fondazionearsetlabor.org/main-door-of-palazzo-negri/?lang=en"
+        }
+      ]
     }
   ],
   "reviews": [
@@ -1447,6 +1597,156 @@
             {
               "type": "text",
               "content": "Не торопите Киото. Этот город лучше всего исследовать пешком или на велосипеде. Заблудитесь в узких улочках Гиона. Посидите у реки Камо. Выпейте матча в традиционном чайном домике. Позвольте городу медленно раскрыться перед вами."
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "title": "Порог времени",
+          "author": "Viacheslav Munister",
+          "role": "Приглашённый автор",
+          "date": "May 20, 2026",
+          "excerpt": "Реставрация дверей как практика сохранения городской памяти. От выгоревших на солнце порталов Лиссабона до резных деревянных шедевров Тбилиси — каждый порог хранит историю, которую город боится забыть.",
+          "category": "Дизайн",
+          "subcategory": "Наследие",
+          "tags": [
+            "Реставрация",
+            "Наследие",
+            "Архитектура",
+            "Городская память"
+          ],
+          "imageSeed": "old-wooden-door-europe",
+          "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&h=675&fit=crop",
+          "content": [
+            {
+              "type": "text",
+              "content": "Есть особенная тишина, что обитает в старых дверных проёмах, — тишина, сотканная из столетий ладоней, прижимавшихся к древесине, из ключей, поворачивавшихся в железных замках, отполированных десятью тысячами вечеров до шёлковой гладкости. Встаньте перед дверью на Руа Аугушта в Лиссабоне, на мощёном переулке тбилисского Сололаки или в просоленной тени гаванского портика — и вы услышите его: неторопливое, приглушённое дыхание города, вспоминающего самого себя."
+            },
+            {
+              "type": "text",
+              "content": "Реставрация дверей — это не просто столярное ремесло. Это акт археологической нежности, разговор между живыми и исчезнувшими. Когда реставратор снимает слои краски — лазурно-голубой поверх терракотового, терракотовый поверх костяно-белого — он читает автобиографию здания. Каждый цвет — десятилетие, каждая трещина — пережитая зима, каждая заменённая петля — семья, некогда назвавшая этот порог домом."
+            },
+            {
+              "type": "note",
+              "content": "Одна историческая дверь может содержать до двенадцати слоёв краски, и каждый из них — глава в биографии улицы. В Петербурге реставраторы обнаруживали дореволюционные пигменты под советскими эмалями — цвета, не видевшие дневного света более века."
+            },
+            {
+              "type": "quote",
+              "content": "Дверь — это первая фраза, которую здание произносит улице. Уничтожьте её — и вы сотрёте начальную строку истории, на создание которой ушли столетия."
+            },
+            {
+              "type": "text",
+              "content": "В Лиссабоне старинные помбалинские двери — рождённые из руин катастрофического землетрясения 1755 года — стоят как монументы стойкости, облачённые в орнамент. Обрамлённые азулежу кобальтовых и золотых оттенков, эти громадные панели из бразильского твёрдого дерева несут на себе шрамы атлантических штормов и ласку жасминовых бризов. Район Байша — живой музей этих порталов: двустворчатых, окованных железом, с ажурными фрамугами, отбрасывающими калейдоскопические тени на мраморные вестибюли в тот час, когда Тежу становится янтарным."
+            },
+            {
+              "type": "image",
+              "content": "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&h=500&fit=crop",
+              "caption": "Потрёпанный временем дверной проём в лиссабонском районе Алфама — столетия океанского ветра, запечатлённые в каждом волокне."
+            },
+            {
+              "type": "text",
+              "content": "Двигаясь на восток, вы откроете совсем иную грамматику красоты в дверях Тбилиси. В лабиринтах Старого города двери в стиле ар-нуво с овальными витражными окнами соседствуют со строгими грузинскими резными панелями, изображающими виноградные лозы и мифических зверей. Дверь-Калейдоскоп на улице Бетлеми — вход, разбитый в мозаику цветного стекла — рассеивает кавказское солнце в сотню хроматических шёпотов на стенах лестничной клетки. Дом Шалимова на улице Ладо Асатиани до сих пор хранит ангельские фрески над порогом, где, говорят, поэт Николоз Бараташвили однажды остановился, чтобы сочинить строку."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://images.unsplash.com/photo-1504198266287-1659872e6590?w=400&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?w=400&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1534609146522-370a4e534697?w=400&h=400&fit=crop"
+              ],
+              "caption": "Двери мира: от средиземноморских арок до кавказской резьбы."
+            },
+            {
+              "type": "text",
+              "content": "В Гаване двери не реставрируют — их воскрешают. За осыпающимися пастельными фасадами Центральной Гаваны скрываются порталы из красного дерева и кедра, некогда встречавшие сахарных баронов и революционных поэтов. За каждой облупившейся бирюзовой ставней таится призрак двора, где бугенвиллея взбиралась по кованым балконам, а журчание фонтана состязалось с далёкой перкуссией сон-кубано. Кубинские реставраторы работают инструментами, унаследованными от дедов, вырезая розетки и листья аканта по памяти — ведь оригинальные чертежи давно растворились в тропической влажности."
+            },
+            {
+              "type": "text",
+              "content": "Флоренция являет, пожалуй, самый знаменитый пример реставрации двери как высокого искусства. «Врата Рая» Лоренцо Гиберти — позолоченные бронзовые двери Баптистерия Сан-Джованни — прошли кропотливую двадцатисемилетнюю реставрацию, завершившуюся в 2012 году. Реставраторы использовали лазерные технологии, чтобы удалить пять столетий копоти и окисления, обнажив сияющее золото, которое когда-то восхвалял сам Микеланджело. Каждая из десяти панелей, изображающих сцены Ветхого Завета, явилась из-под патины столь же живой и трепещущей, как в тот день, когда молот Гиберти нанёс последний удар в 1452 году."
+            },
+            {
+              "type": "image",
+              "content": "https://images.unsplash.com/photo-1553521041-d6a39b0300e0?w=800&h=500&fit=crop",
+              "caption": "Монументальные бронзовые двери Флоренции — где реставрация становится откровением."
+            },
+            {
+              "type": "quote",
+              "content": "Скорость не имеет значения, когда вы реставрируете то, что строили три поколения. Двери не волнует ваш дедлайн. Её волнует лишь одно — слушаете ли вы дерево."
+            },
+            {
+              "type": "text",
+              "content": "Петербург — эта самая северная Венеция из гранита и тумана — занимает особое место в картографии дверей. Дореволюционные парадные Петроградской стороны с липовыми филёнками и кованными решётками фрамуг — один из самых исчезающих видов городского орнамента в Европе. Сообщество «Двери с помоек» спасает выброшенные исторические двери с мусорных площадок, реставрирует их в волонтёрских мастерских и возвращает родным зданиям. Они задокументировали случаи, когда двери из карельской берёзы — почти двухсотлетние — находили прислонёнными к мусорным контейнерам, с едва различимыми оригинальными расписными картушами под десятилетиями запустения."
+            },
+            {
+              "type": "map",
+              "content": "Даремский собор, Англия",
+              "coordinates": {
+                "lat": 54.7734,
+                "lng": -1.5762
+              }
+            },
+            {
+              "type": "text",
+              "content": "В Даремском соборе на севере Англии Северная дверь — массивная плита из дуба, датируемая периодом между 1109 и 1144 годами — недавно прошла консервацию мастерской Скиллингтон. Реставраторы избрали «минималистичную» философию: сухой кистью удаляли средневековую пыль из открытых волокон, нанесли четыре слоя тунгового масла взамен природных масел, утраченных за девять столетий, и вручную выковали заменяющие гвозди по образцу оригиналов. Результат — не дверь, которая выглядит новой, а дверь, которая выглядит именно так древне и величественно, как она есть на самом деле."
+            },
+            {
+              "type": "text",
+              "content": "Двери Праги говорят на совсем ином диалекте — языке барочного великолепия. В Мала-Стране, под тенью Пражского Града, двери из резной липы изображают святых, грифонов и гирлянды невозможных фруктов. Палаццо Негри в истрийском Воднянe — отреставрированное фондом Ars et Labor в Европейский год культурного наследия — продемонстрировало, как одна общественная мастерская может сохранить идентичность целого региона, спасая по одной двери за раз. Их девиз, заимствованный из Евангелия, негромко великолепен: «Стучите, и отворят вам»."
+            },
+            {
+              "type": "checklist",
+              "content": {
+                "items": [
+                  "Сфотографировать дверь со всех ракурсов до начала работ",
+                  "Задокументировать каждый слой краски стратиграфическим образцом",
+                  "Протестировать чистящие средства на скрытом участке",
+                  "Заменять только то, что конструктивно необходимо — сохранять оригинальный материал",
+                  "Использовать исторически аутентичную фурнитуру и покрытия",
+                  "Записать процесс реставрации для будущих хранителей"
+                ]
+              },
+              "caption": "Кодекс реставратора: шесть принципов этичной консервации дверей"
+            },
+            {
+              "type": "text",
+              "content": "Что делает дверь достойной спасения? Не только возраст древесины и не только изящество резьбы. Это накопленный вес прохождений — тысячи приходов и уходов, руки, тянувшиеся к ручке в радости и в горе, порог, разделявший публичный хаос улицы и частное убежище дома. Каждая реставрированная дверь — мост между городом, в котором мы живём, и городом, что живёт в нас."
+            },
+            {
+              "type": "poll",
+              "content": {
+                "question": "Двери какого города восхищают вас больше всего?",
+                "options": [
+                  {
+                    "label": "Лиссабон",
+                    "votes": 0
+                  },
+                  {
+                    "label": "Тбилиси",
+                    "votes": 0
+                  },
+                  {
+                    "label": "Гавана",
+                    "votes": 0
+                  },
+                  {
+                    "label": "Флоренция",
+                    "votes": 0
+                  },
+                  {
+                    "label": "Санкт-Петербург",
+                    "votes": 0
+                  }
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "content": "В конечном счёте, ремесло реставратора — это акт радикальной эмпатии, простёртой сквозь время. Шлифовать кусок дуба, который обтёсывал средневековый плотник, — значит пожать руку ушедшим. Покрывать позолотой бронзовую панель, которую отливал Гиберти, — значит продолжить разговор, начатый в пятнадцатом веке. Дверь не просто соединяет комнаты — она соединяет эпохи. И когда мы спасаем её, мы сохраняем не предмет — мы сохраняем возможность переступить порог, перед которым кто-то через столетия замрёт в изумлении, точно так же, как замираем сегодня мы."
+            },
+            {
+              "type": "link",
+              "content": "Проект реставрации дверей фонда Ars et Labor",
+              "url": "https://www.fondazionearsetlabor.org/main-door-of-palazzo-negri/?lang=en"
             }
           ]
         }
