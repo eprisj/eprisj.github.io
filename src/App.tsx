@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { useRef, ReactNode, useState, FormEvent } from 'react';
+import { useRef, ReactNode, useState, useEffect, useCallback, FormEvent } from 'react';
 import {
   Article,
   ContentBlock,
@@ -939,20 +939,72 @@ function Sidebar({ t }: { t: (key: string) => string }) {
   );
 }
 
+function parseHash(hash: string): { tab?: string; articleId?: number } {
+  const h = hash.replace(/^#/, '');
+  if (!h) return {};
+  const articleMatch = h.match(/^article\/(\d+)$/);
+  if (articleMatch) return { tab: 'articles', articleId: parseInt(articleMatch[1], 10) };
+  const validTabs = ['gallery', 'articles', 'reviews', 'library', 'about'];
+  if (validTabs.includes(h)) return { tab: h };
+  return {};
+}
+
 export default function App() {
-  const [activeTab, setActiveTab] = useState('gallery');
-  const [selectedArticleId, setSelectedArticleId] = useState<number | null>(null);
+  const initialHash = parseHash(window.location.hash);
+  const [activeTab, setActiveTab] = useState(initialHash.tab || 'gallery');
+  const [selectedArticleId, setSelectedArticleId] = useState<number | null>(initialHash.articleId ?? null);
   const [currentLang, setCurrentLang] = useState(DEFAULT_LANGUAGE);
   const languageOptions = getAvailableLanguages();
   const { items, articles, reviews, libraryItems } = getContentForLanguage(currentLang);
   const selectedArticle = selectedArticleId !== null ? articles.find((article) => article.id === selectedArticleId) || null : null;
   const t = (key: string) => getTranslation(currentLang, key);
 
+  const updateHash = useCallback((tab: string, articleId: number | null) => {
+    if (articleId !== null) {
+      window.location.hash = `article/${articleId}`;
+    } else if (tab !== 'gallery') {
+      window.location.hash = tab;
+    } else {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  }, []);
+
+  const handleSetTab = useCallback((tab: string) => {
+    setActiveTab(tab);
+    setSelectedArticleId(null);
+    updateHash(tab, null);
+  }, [updateHash]);
+
+  const handleSelectArticle = useCallback((id: number) => {
+    setSelectedArticleId(id);
+    updateHash('articles', id);
+  }, [updateHash]);
+
+  const handleCloseArticle = useCallback(() => {
+    setSelectedArticleId(null);
+    updateHash(activeTab, null);
+  }, [activeTab, updateHash]);
+
+  useEffect(() => {
+    const onHashChange = () => {
+      const parsed = parseHash(window.location.hash);
+      if (parsed.articleId !== undefined) {
+        setSelectedArticleId(parsed.articleId);
+        setActiveTab('articles');
+      } else {
+        setSelectedArticleId(null);
+        if (parsed.tab) setActiveTab(parsed.tab);
+      }
+    };
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#F5F0EB] text-[#501a2c] selection:bg-[#C9A690] selection:text-white">
       <NavBar
         activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        setActiveTab={handleSetTab}
         currentLang={currentLang}
         setCurrentLang={setCurrentLang}
         t={t}
@@ -978,7 +1030,7 @@ export default function App() {
                   <GallerySection items={items} />
                 </>
               )}
-              {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => setSelectedArticleId(article.id)} t={t} />}
+              {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id)} t={t} />}
               {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} />}
               {activeTab === 'library' && <LibrarySection libraryItems={libraryItems} t={t} />}
               {activeTab === 'about' && <AboutSection t={t} />}
@@ -1007,7 +1059,7 @@ export default function App() {
 
       <AnimatePresence>
         {selectedArticle && (
-          <ArticleView article={selectedArticle} onClose={() => setSelectedArticleId(null)} t={t} />
+          <ArticleView article={selectedArticle} onClose={handleCloseArticle} t={t} />
         )}
       </AnimatePresence>
     </div>
