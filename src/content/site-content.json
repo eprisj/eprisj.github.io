@@ -948,7 +948,7 @@
         },
         {
           "type": "image",
-          "content": "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&h=500&fit=crop",
+          "content": "https://images.unsplash.com/photo-1760468710389-1023382b2aed?w=900&h=600&fit=crop",
           "caption": "A weathered doorway in Lisbon's Alfama district — centuries of Atlantic wind, salt crystallisation, and ultraviolet degradation etched into every tangential grain."
         },
         {
@@ -966,12 +966,12 @@
         {
           "type": "gallery",
           "content": [
-            "https://images.unsplash.com/photo-1504198266287-1659872e6590?w=400&h=400&fit=crop",
+            "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=400&fit=crop",
+            "https://images.unsplash.com/photo-1762629453885-d89746e14c60?w=400&h=400&fit=crop",
+            "https://images.unsplash.com/photo-1760468710389-1023382b2aed?w=400&h=400&fit=crop",
+            "https://images.unsplash.com/photo-1505577058444-a3dab90d4253?w=400&h=400&fit=crop",
             "https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?w=400&h=400&fit=crop",
-            "https://images.unsplash.com/photo-1534609146522-370a4e534697?w=400&h=400&fit=crop",
-            "https://images.unsplash.com/photo-1679506606389-05ab5ee9793a?w=400&h=400&fit=crop",
-            "https://images.unsplash.com/photo-1635617462498-15a4f3e47be9?w=400&h=400&fit=crop",
-            "https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=400&h=400&fit=crop"
+            "https://images.unsplash.com/photo-1534609146522-370a4e534697?w=400&h=400&fit=crop"
           ],
           "caption": "Six thresholds, six centuries: from Mediterranean ironwork to Caucasian carved walnut."
         },
@@ -985,7 +985,7 @@
         },
         {
           "type": "image",
-          "content": "https://images.unsplash.com/photo-1553521041-d6a39b0300e0?w=800&h=500&fit=crop",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Lorenzo_ghiberti%2C_porta_del_paradiso%2C_1425-52%2C_00.JPG/600px-Lorenzo_ghiberti%2C_porta_del_paradiso%2C_1425-52%2C_00.JPG",
           "caption": "Monumental bronze doors of Florence — where Nd:YAG laser ablation meets mercury-fire gilding."
         },
         {
@@ -1034,7 +1034,7 @@
         },
         {
           "type": "image",
-          "content": "https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=800&h=500&fit=crop",
+          "content": "https://images.unsplash.com/photo-1504392022767-a8fc0771f239?w=900&h=600&fit=crop",
           "caption": "A Cuban doorway's decay: where mahogany meets maritime humidity, and restoration becomes resurrection."
         },
         {
@@ -1708,7 +1708,7 @@
             },
             {
               "type": "image",
-              "content": "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&h=500&fit=crop",
+              "content": "https://images.unsplash.com/photo-1760468710389-1023382b2aed?w=900&h=600&fit=crop",
               "caption": "Потрёпанный временем дверной проём в лиссабонской Алфаме — столетия атлантического ветра, солевой кристаллизации и ультрафиолетовой деградации, запечатлённые в каждом тангенциальном волокне."
             },
             {
@@ -1726,12 +1726,12 @@
             {
               "type": "gallery",
               "content": [
-                "https://images.unsplash.com/photo-1504198266287-1659872e6590?w=400&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1762629453885-d89746e14c60?w=400&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1760468710389-1023382b2aed?w=400&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1505577058444-a3dab90d4253?w=400&h=400&fit=crop",
                 "https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?w=400&h=400&fit=crop",
-                "https://images.unsplash.com/photo-1534609146522-370a4e534697?w=400&h=400&fit=crop",
-                "https://images.unsplash.com/photo-1679506606389-05ab5ee9793a?w=400&h=400&fit=crop",
-                "https://images.unsplash.com/photo-1635617462498-15a4f3e47be9?w=400&h=400&fit=crop",
-                "https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=400&h=400&fit=crop"
+                "https://images.unsplash.com/photo-1534609146522-370a4e534697?w=400&h=400&fit=crop"
               ],
               "caption": "Шесть порогов, шесть столетий: от средиземноморской ковки до кавказского резного ореха."
             },
@@ -1745,7 +1745,7 @@
             },
             {
               "type": "image",
-              "content": "https://images.unsplash.com/photo-1553521041-d6a39b0300e0?w=800&h=500&fit=crop",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Lorenzo_ghiberti%2C_porta_del_paradiso%2C_1425-52%2C_00.JPG/600px-Lorenzo_ghiberti%2C_porta_del_paradiso%2C_1425-52%2C_00.JPG",
               "caption": "Монументальные бронзовые двери Флоренции — где лазерная абляция Nd:YAG встречается с ртутным огневым золочением."
             },
             {
@@ -1794,7 +1794,7 @@
             },
             {
               "type": "image",
-              "content": "https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=400&h=500&fit=crop",
+              "content": "https://images.unsplash.com/photo-1504392022767-a8fc0771f239?w=900&h=600&fit=crop",
               "caption": "Кубинский дверной проём: где красное дерево встречает морскую влажность, и реставрация становится воскрешением."
             },
             {
