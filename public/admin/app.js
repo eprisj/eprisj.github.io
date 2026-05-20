@@ -3584,6 +3584,43 @@ function getPollStorageKeyForArticle(articleId, blockIndex) {
   return `epris-poll-v2-article-${articleId}-block-${blockIndex}`;
 }
 
+const POLL_COUNTER_NAMESPACE = 'eprisj-github-io';
+const POLL_COUNTER_BASE_URL = 'https://api.counterapi.dev/v1';
+
+function getPollCounterName(pollKey, optionIndex) {
+  return `${pollKey}-option-${optionIndex}`
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 120);
+}
+
+async function readPollCounter(pollKey, optionIndex) {
+  const name = getPollCounterName(pollKey, optionIndex);
+  const response = await fetch(`${POLL_COUNTER_BASE_URL}/${POLL_COUNTER_NAMESPACE}/${encodeURIComponent(name)}/`, {
+    cache: 'no-store'
+  });
+
+  if (response.status === 400 || response.status === 404) {
+    return 0;
+  }
+
+  if (!response.ok) {
+    throw new Error(`Poll counter read failed: ${response.status}`);
+  }
+
+  const payload = await response.json();
+  return Number(payload.count) || 0;
+}
+
+async function readPollCounters(poll) {
+  const counts = await Promise.all(poll.options.map((_, index) => readPollCounter(poll.pollKey, index)));
+  return poll.options.map((option, index) => ({
+    ...option,
+    onlineVotes: counts[index] || 0
+  }));
+}
+
 function collectPollsFromContent() {
   const polls = [];
   try {
@@ -3621,12 +3658,14 @@ function collectPollsFromContent() {
             options: options.map((opt, i) => ({
               label: opt.label || opt,
               baseVotes: opt.votes || 0,
-              localVotes: savedVotes && Array.isArray(savedVotes.votes) ? (savedVotes.votes[i] || 0) : null
+              localVotes: savedVotes && typeof savedVotes.votedIndex === 'number' && savedVotes.votedIndex === i ? 1 : 0,
+              onlineVotes: 0
             })),
             articleTitle: article.title || `#${article.id}`,
             articleId: article.id,
             blockIndex,
             localizedLanguages: languagesByArticleId.get(Number(article.id)) || [],
+            pollKey: `article-${article.id}-block-${blockIndex}`,
             storageKey,
             lastVoteTime: savedVotes ? savedVotes.timestamp : null
           });
@@ -3636,7 +3675,7 @@ function collectPollsFromContent() {
   return polls;
 }
 
-function renderPollResults() {
+async function renderPollResults() {
   if (!pollResultsGrid) return;
   const polls = collectPollsFromContent();
 
@@ -3645,11 +3684,22 @@ function renderPollResults() {
     return;
   }
 
+  pollResultsGrid.innerHTML = '<p style="color:#94a3b8;text-align:center;padding:32px 0;">Загружаю онлайн-голоса...</p>';
+
   let html = '';
   for (const poll of polls) {
+    let optionsWithOnlineVotes = poll.options;
+    let onlineError = '';
+    try {
+      optionsWithOnlineVotes = await readPollCounters(poll);
+    } catch (error) {
+      onlineError = getErrorMessage(error);
+    }
+
     const jsonTotalVotes = poll.options.reduce((s, o) => s + o.baseVotes, 0);
-    const browserTotalVotes = poll.options.reduce((s, o) => s + (o.localVotes ?? o.baseVotes), 0);
-    const hasBrowserVotes = poll.options.some((o) => o.localVotes !== null);
+    const onlineTotalVotes = optionsWithOnlineVotes.reduce((s, o) => s + o.onlineVotes, 0);
+    const browserTotalVotes = poll.options.reduce((s, o) => s + o.localVotes, 0);
+    const combinedTotalVotes = optionsWithOnlineVotes.reduce((s, o) => s + o.baseVotes + o.onlineVotes, 0);
     html += `<div class="monitor-card" style="margin-bottom:16px;">`;
     html += `<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">`;
     html += `<div>`;
@@ -3659,16 +3709,20 @@ function renderPollResults() {
       html += `<p style="font-size:11px;color:#64748b;margin:4px 0 0;">Переводы статьи: ${escapeHtml(poll.localizedLanguages.join(', '))}</p>`;
     }
     html += `</div>`;
-    html += `<span style="font-size:12px;color:#64748b;white-space:nowrap;margin-left:12px;">JSON: ${jsonTotalVotes}</span>`;
+    html += `<span style="font-size:12px;color:#64748b;white-space:nowrap;margin-left:12px;">Всего: ${combinedTotalVotes}</span>`;
     html += `</div>`;
+    html += `<p style="font-size:11px;color:#64748b;margin:0 0 10px;">JSON: ${jsonTotalVotes} · Онлайн: ${onlineTotalVotes} · Этот браузер: ${browserTotalVotes}</p>`;
+    if (onlineError) {
+      html += `<p style="font-size:11px;color:#b45309;margin:0 0 10px;">Онлайн-счётчик временно недоступен: ${escapeHtml(onlineError)}</p>`;
+    }
 
-    for (const opt of poll.options) {
-      const visibleVotes = opt.localVotes ?? opt.baseVotes;
-      const pct = browserTotalVotes > 0 ? Math.round((visibleVotes / browserTotalVotes) * 100) : 0;
+    for (const opt of optionsWithOnlineVotes) {
+      const visibleVotes = opt.baseVotes + opt.onlineVotes;
+      const pct = combinedTotalVotes > 0 ? Math.round((visibleVotes / combinedTotalVotes) * 100) : 0;
       html += `<div style="margin-bottom:8px;">`;
       html += `<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:2px;">`;
       html += `<span>${escapeHtml(opt.label)}</span>`;
-      html += `<span style="color:#94a3b8;">JSON ${opt.baseVotes}${hasBrowserVotes ? ` · этот браузер ${visibleVotes}` : ''} (${pct}%)</span>`;
+      html += `<span style="color:#94a3b8;">${visibleVotes} (${pct}%) · JSON ${opt.baseVotes} · онлайн ${opt.onlineVotes}</span>`;
       html += `</div>`;
       html += `<div style="height:8px;background:#1e293b;border-radius:4px;overflow:hidden;">`;
       html += `<div style="height:100%;width:${pct}%;background:linear-gradient(90deg,#3b82f6,#8b5cf6);border-radius:4px;transition:width .3s;"></div>`;
@@ -3679,8 +3733,6 @@ function renderPollResults() {
     if (poll.lastVoteTime) {
       const d = new Date(poll.lastVoteTime);
       html += `<p style="font-size:11px;color:#475569;margin:8px 0 0;text-align:right;">Последний голос: ${d.toLocaleString('ru-RU')}</p>`;
-    } else {
-      html += `<p style="font-size:11px;color:#475569;margin:8px 0 0;">Локальных голосов в этом браузере нет. Для общего онлайн-счётчика нужен внешний backend; сейчас сайт хранит голос посетителя локально.</p>`;
     }
     html += `</div>`;
   }
