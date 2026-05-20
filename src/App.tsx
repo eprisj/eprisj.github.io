@@ -514,36 +514,50 @@ function ChecklistBlock({ items, caption }: { items: string[], caption?: string 
   );
 }
 
-function getPollStorageKey(question: string) {
+function getLegacyPollStorageKey(question: string) {
   return 'epris-poll-' + question.replace(/\s+/g, '-').toLowerCase().slice(0, 60);
 }
 
-function PollBlock({ question, options, t }: { question: string, options: { label: string, votes: number }[], t: (key: string) => string }) {
-  const storageKey = getPollStorageKey(question);
+function getPollStorageKey(pollKey: string) {
+  return 'epris-poll-v2-' + pollKey;
+}
+
+function readSavedPoll(storageKey: string, legacyKey: string) {
+  try {
+    const saved = localStorage.getItem(storageKey) || localStorage.getItem(legacyKey);
+    return saved ? JSON.parse(saved) : null;
+  } catch {
+    return null;
+  }
+}
+
+function PollBlock({ question, options, t, pollKey }: { question: string, options: { label: string, votes: number }[], t: (key: string) => string; pollKey: string }) {
+  const storageKey = getPollStorageKey(pollKey);
+  const legacyKey = getLegacyPollStorageKey(question);
 
   const [votedIndex, setVotedIndex] = useState<number | null>(() => {
-    try {
-      const saved = localStorage.getItem(storageKey);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        return typeof parsed.votedIndex === 'number' ? parsed.votedIndex : null;
-      }
-    } catch { /* ignore */ }
+    const parsed = readSavedPoll(storageKey, legacyKey);
+    if (parsed && typeof parsed.votedIndex === 'number') return parsed.votedIndex;
     return null;
   });
 
   const [localOptions, setLocalOptions] = useState(() => {
-    try {
-      const saved = localStorage.getItem(storageKey);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed.votes)) {
-          return options.map((opt, i) => ({ ...opt, votes: (parsed.votes[i] ?? opt.votes) }));
-        }
-      }
-    } catch { /* ignore */ }
+    const parsed = readSavedPoll(storageKey, legacyKey);
+    if (parsed && Array.isArray(parsed.votes)) {
+      return options.map((opt, i) => ({ ...opt, votes: (parsed.votes[i] ?? opt.votes) }));
+    }
     return options;
   });
+
+  useEffect(() => {
+    const parsed = readSavedPoll(storageKey, legacyKey);
+    setVotedIndex(parsed && typeof parsed.votedIndex === 'number' ? parsed.votedIndex : null);
+    if (parsed && Array.isArray(parsed.votes)) {
+      setLocalOptions(options.map((opt, i) => ({ ...opt, votes: (parsed.votes[i] ?? opt.votes) })));
+    } else {
+      setLocalOptions(options);
+    }
+  }, [storageKey, legacyKey, options]);
 
   const handleVote = (index: number) => {
     if (votedIndex !== null) return;
@@ -554,6 +568,7 @@ function PollBlock({ question, options, t }: { question: string, options: { labe
     try {
       localStorage.setItem(storageKey, JSON.stringify({
         question,
+        pollKey,
         votedIndex: index,
         votes: newOptions.map(o => o.votes),
         timestamp: Date.now()
@@ -883,7 +898,7 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
                     'options' in block.content &&
                     Array.isArray(block.content.options)
                   ) {
-                    return <PollBlock key={index} question={block.content.question} options={block.content.options} t={t} />;
+                    return <PollBlock key={index} question={block.content.question} options={block.content.options} t={t} pollKey={`article-${article.id}-block-${index}`} />;
                   }
                   return null;
                 case 'note':
