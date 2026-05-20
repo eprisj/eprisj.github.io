@@ -3139,3 +3139,118 @@ function deleteVisualEntry() {
     setStatus('error', getErrorMessage(error));
   }
 }
+
+/* ── Poll Results Section ── */
+const pollResultsGrid = byId('pollResultsGrid');
+const pollRefreshBtn = byId('pollRefreshBtn');
+const pollTimestamp = byId('pollTimestamp');
+
+function collectPollsFromContent() {
+  const polls = [];
+  try {
+    const data = parseEditorJson();
+    const allArticleSets = [{ lang: 'EN', articles: data.articles || [] }];
+    if (data.localizedCollections) {
+      for (const [lang, collection] of Object.entries(data.localizedCollections)) {
+        if (collection.articles) {
+          allArticleSets.push({ lang, articles: collection.articles });
+        }
+      }
+    }
+    for (const { lang, articles } of allArticleSets) {
+      for (const article of articles) {
+        if (!Array.isArray(article.content)) continue;
+        for (const block of article.content) {
+          if (block.type !== 'poll' || !block.content) continue;
+          const pollData = block.content;
+          const storageKey = 'epris-poll-' + (pollData.question || '').replace(/\s+/g, '-').toLowerCase().slice(0, 60);
+          let savedVotes = null;
+          try {
+            const saved = localStorage.getItem(storageKey);
+            if (saved) savedVotes = JSON.parse(saved);
+          } catch {}
+          polls.push({
+            question: pollData.question || '(без вопроса)',
+            options: (pollData.options || []).map((opt, i) => ({
+              label: opt.label || opt,
+              baseVotes: opt.votes || 0,
+              savedVotes: savedVotes && Array.isArray(savedVotes.votes) ? (savedVotes.votes[i] || 0) : (opt.votes || 0)
+            })),
+            articleTitle: article.title || `#${article.id}`,
+            articleId: article.id,
+            lang,
+            storageKey,
+            lastVoteTime: savedVotes ? savedVotes.timestamp : null
+          });
+        }
+      }
+    }
+  } catch {}
+  return polls;
+}
+
+function renderPollResults() {
+  if (!pollResultsGrid) return;
+  const polls = collectPollsFromContent();
+
+  if (!polls.length) {
+    pollResultsGrid.innerHTML = '<p style="color:#94a3b8;text-align:center;padding:32px 0;">Опросы не найдены. Загрузите контент из GitHub.</p>';
+    return;
+  }
+
+  let html = '';
+  for (const poll of polls) {
+    const totalVotes = poll.options.reduce((s, o) => s + o.savedVotes, 0);
+    html += `<div class="monitor-card" style="margin-bottom:16px;">`;
+    html += `<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">`;
+    html += `<div>`;
+    html += `<h3 style="font-size:14px;font-weight:600;margin:0 0 4px;">${escapeHtml(poll.question)}</h3>`;
+    html += `<p style="font-size:12px;color:#94a3b8;margin:0;">Статья: ${escapeHtml(poll.articleTitle)} [${poll.lang}]</p>`;
+    html += `</div>`;
+    html += `<span style="font-size:12px;color:#64748b;white-space:nowrap;margin-left:12px;">${totalVotes} голос${totalVotes === 1 ? '' : totalVotes < 5 ? 'а' : 'ов'}</span>`;
+    html += `</div>`;
+
+    for (const opt of poll.options) {
+      const pct = totalVotes > 0 ? Math.round((opt.savedVotes / totalVotes) * 100) : 0;
+      html += `<div style="margin-bottom:8px;">`;
+      html += `<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:2px;">`;
+      html += `<span>${escapeHtml(opt.label)}</span>`;
+      html += `<span style="color:#94a3b8;">${opt.savedVotes} (${pct}%)</span>`;
+      html += `</div>`;
+      html += `<div style="height:8px;background:#1e293b;border-radius:4px;overflow:hidden;">`;
+      html += `<div style="height:100%;width:${pct}%;background:linear-gradient(90deg,#3b82f6,#8b5cf6);border-radius:4px;transition:width .3s;"></div>`;
+      html += `</div>`;
+      html += `</div>`;
+    }
+
+    if (poll.lastVoteTime) {
+      const d = new Date(poll.lastVoteTime);
+      html += `<p style="font-size:11px;color:#475569;margin:8px 0 0;text-align:right;">Последний голос: ${d.toLocaleString('ru-RU')}</p>`;
+    }
+    html += `</div>`;
+  }
+
+  pollResultsGrid.innerHTML = html;
+  if (pollTimestamp) {
+    pollTimestamp.textContent = `Обновлено: ${new Date().toLocaleString('ru-RU')}`;
+  }
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+if (pollRefreshBtn) {
+  pollRefreshBtn.addEventListener('click', renderPollResults);
+}
+
+// Auto-render polls when content is loaded
+const origLoadBtn = loadBtn;
+if (origLoadBtn) {
+  const origClickHandlers = origLoadBtn.onclick;
+  origLoadBtn.addEventListener('click', () => {
+    setTimeout(renderPollResults, 2000);
+  });
+}
