@@ -116,6 +116,46 @@
             </div>
           </div>
 
+          <section class="creator-studio" aria-label="Creator Studio">
+            <div class="creator-head">
+              <div>
+                <p class="creator-kicker">Creator Studio</p>
+                <h2>Собрать публикацию</h2>
+              </div>
+              <div id="creatorQuality" class="creator-quality" aria-live="polite"></div>
+            </div>
+
+            <div class="creator-grid">
+              <label class="creator-field">
+                <span>Заголовок</span>
+                <input id="creatorTitle" placeholder="Название новой статьи" />
+              </label>
+              <label class="creator-field">
+                <span>Категория</span>
+                <input id="creatorCategory" placeholder="Culture, Design, Travel..." />
+              </label>
+              <label class="creator-field">
+                <span>imageSeed</span>
+                <input id="creatorSeed" placeholder="visual-seed" />
+              </label>
+              <label class="creator-field creator-field-wide">
+                <span>URL обложки</span>
+                <input id="creatorImageUrl" placeholder="https://..." />
+              </label>
+            </div>
+
+            <div class="creator-actions">
+              <button id="storyBlueprintBtn" class="btn btn-sm" type="button">Статья</button>
+              <button id="guideBlueprintBtn" class="btn btn-sm" type="button">Гид</button>
+              <button id="photoEssayBlueprintBtn" class="btn btn-sm" type="button">Фото-эссе</button>
+              <button id="reviewBlueprintBtn" class="btn btn-sm" type="button">Рецензия</button>
+              <span class="toolbar-sep"></span>
+              <button id="insertStructureBtn" class="btn btn-sm" type="button">+ Структура</button>
+              <button id="insertChecklistTemplateBtn" class="btn btn-sm" type="button">+ Чеклист</button>
+              <button id="insertPollTemplateBtn" class="btn btn-sm" type="button">+ Опрос</button>
+            </div>
+          </section>
+
           <div class="editor-body">
             <p id="visualNotice" class="visual-notice">Выберите запись для редактирования.</p>
             <div id="visualForm" class="visual-form"></div>

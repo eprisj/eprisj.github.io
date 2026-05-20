@@ -57,6 +57,18 @@ const copyFromEnBtn = byId('copyFromEnBtn');
 const translateEntryBtn = byId('translateEntryBtn');
 const translateAllArticlesBtn = byId('translateAllArticlesBtn');
 const applyEntryBtn = byId('applyEntryBtn');
+const creatorQualityEl = byId('creatorQuality');
+const creatorTitleInput = byId('creatorTitle');
+const creatorCategoryInput = byId('creatorCategory');
+const creatorSeedInput = byId('creatorSeed');
+const creatorImageUrlInput = byId('creatorImageUrl');
+const storyBlueprintBtn = byId('storyBlueprintBtn');
+const guideBlueprintBtn = byId('guideBlueprintBtn');
+const photoEssayBlueprintBtn = byId('photoEssayBlueprintBtn');
+const reviewBlueprintBtn = byId('reviewBlueprintBtn');
+const insertStructureBtn = byId('insertStructureBtn');
+const insertChecklistTemplateBtn = byId('insertChecklistTemplateBtn');
+const insertPollTemplateBtn = byId('insertPollTemplateBtn');
 const visualFormEl = byId('visualForm');
 const visualNoticeEl = byId('visualNotice');
 const uploadDropZone = byId('uploadDropZone');
@@ -92,6 +104,13 @@ const interactiveButtons = [
   translateEntryBtn,
   translateAllArticlesBtn,
   applyEntryBtn,
+  storyBlueprintBtn,
+  guideBlueprintBtn,
+  photoEssayBlueprintBtn,
+  reviewBlueprintBtn,
+  insertStructureBtn,
+  insertChecklistTemplateBtn,
+  insertPollTemplateBtn,
   pickImageBtn,
   useUploadedUrlBtn,
   useUploadedPagesUrlBtn,
@@ -257,6 +276,13 @@ function bindEvents() {
   translateEntryBtn.addEventListener('click', translateSelectedEntryToAvailableLanguages);
   translateAllArticlesBtn.addEventListener('click', translateCurrentSectionToAvailableLanguages);
   applyEntryBtn.addEventListener('click', applyVisualChanges);
+  storyBlueprintBtn.addEventListener('click', () => createArticleFromBlueprint('story'));
+  guideBlueprintBtn.addEventListener('click', () => createArticleFromBlueprint('guide'));
+  photoEssayBlueprintBtn.addEventListener('click', () => createArticleFromBlueprint('photoEssay'));
+  reviewBlueprintBtn.addEventListener('click', () => createArticleFromBlueprint('review'));
+  insertStructureBtn.addEventListener('click', () => appendArticlePreset('structure'));
+  insertChecklistTemplateBtn.addEventListener('click', () => appendArticlePreset('checklist'));
+  insertPollTemplateBtn.addEventListener('click', () => appendArticlePreset('poll'));
   pickImageBtn.addEventListener('click', (event) => {
     event.stopPropagation();
     pickImageFile();
@@ -1815,6 +1841,7 @@ function getVisualData() {
     setVisualNotice('JSON сейчас некорректный. Исправьте его, чтобы открыть визуальный редактор.', 'error');
     visualFormEl.innerHTML = '';
     visualEntrySelect.innerHTML = '';
+    renderCreatorQuality(null);
     return null;
   }
 
@@ -1894,6 +1921,348 @@ function getEntryTitle(section, entry) {
   return `ID ${entry.id || '-'}`;
 }
 
+const ARTICLE_BLUEPRINTS = {
+  story: {
+    title: 'New editorial story',
+    category: 'Culture',
+    subcategory: 'Feature',
+    tags: ['story', 'culture', 'editorial'],
+    excerpt: 'A focused opening paragraph for a new editorial story.',
+    blocks: [
+      { type: 'text', content: 'Start with the strongest scene, fact, or observation. Keep this first block tight and specific.' },
+      { type: 'image', content: '', caption: 'Lead image' },
+      { type: 'quote', content: 'Add a line worth remembering here.' },
+      { type: 'note', content: 'Editorial note, source context, or a short aside.' },
+      { type: 'checklist', caption: 'What to cover', content: { items: ['Context', 'Key detail', 'Human angle', 'What changes next'] } },
+      { type: 'poll', content: { question: 'What should we explore next?', options: [{ label: 'More context', votes: 0 }, { label: 'Practical guide', votes: 0 }] } }
+    ]
+  },
+  guide: {
+    title: 'New practical guide',
+    category: 'Guide',
+    subcategory: 'How to',
+    tags: ['guide', 'how-to', 'editorial'],
+    excerpt: 'A practical guide with a clear promise and usable steps.',
+    blocks: [
+      { type: 'text', content: 'Define the problem and the outcome the reader will get by the end.' },
+      { type: 'checklist', caption: 'Steps', content: { items: ['Prepare the basics', 'Do the main action', 'Check the result', 'Save the useful links'] } },
+      { type: 'note', content: 'Add timing, limits, or caveats here.' },
+      { type: 'image', content: '', caption: 'Process visual' },
+      { type: 'poll', content: { question: 'Was this guide useful?', options: [{ label: 'Yes', votes: 0 }, { label: 'Needs more detail', votes: 0 }] } }
+    ]
+  },
+  photoEssay: {
+    title: 'New photo essay',
+    category: 'Photo Essay',
+    subcategory: 'Visual story',
+    tags: ['photo', 'essay', 'visual'],
+    excerpt: 'A visual story built around images, captions, and a concise narrative line.',
+    blocks: [
+      { type: 'text', content: 'Set the visual premise in one short paragraph.' },
+      { type: 'image', content: '', caption: 'Opening frame' },
+      { type: 'gallery', content: [], caption: 'Sequence' },
+      { type: 'quote', content: 'A small quote or caption line that gives the sequence texture.' },
+      { type: 'text', content: 'Close with what the images reveal, not just what they show.' }
+    ]
+  },
+  review: {
+    title: 'New review',
+    category: 'Review',
+    subcategory: 'Critique',
+    tags: ['review', 'critique', 'editorial'],
+    excerpt: 'A review with a clear verdict, criteria, and context.',
+    blocks: [
+      { type: 'text', content: 'Open with the verdict and the reason it matters.' },
+      { type: 'quote', content: 'The line that captures the whole review.' },
+      { type: 'checklist', caption: 'Criteria', content: { items: ['Idea', 'Execution', 'Usefulness', 'Originality'] } },
+      { type: 'image', content: '', caption: 'Reference image' },
+      { type: 'poll', content: { question: 'Would you read more reviews like this?', options: [{ label: 'Yes', votes: 0 }, { label: 'Not this format', votes: 0 }] } }
+    ]
+  }
+};
+
+const ARTICLE_BLOCK_PRESETS = {
+  structure: [
+    { type: 'text', content: 'Lead: one strong paragraph that explains what is new, important, or beautiful here.' },
+    { type: 'quote', content: 'A quote, thesis, or memorable line.' },
+    { type: 'image', content: '', caption: 'Supporting visual' },
+    { type: 'note', content: 'Context, source, or editor note.' }
+  ],
+  checklist: [
+    { type: 'checklist', caption: 'Checklist', content: { items: ['Main point', 'Useful detail', 'Source or example', 'Next step'] } }
+  ],
+  poll: [
+    { type: 'poll', content: { question: 'What should we add next?', options: [{ label: 'More examples', votes: 0 }, { label: 'Shorter summary', votes: 0 }] } }
+  ]
+};
+
+function getAdminDateLabel() {
+  return new Date().toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
+  });
+}
+
+function getNextEntryId(data, section) {
+  const ids = getConcreteEntryIds(data, section);
+  return ids.length ? Math.max(...ids) + 1 : 1;
+}
+
+function slugifySeed(value, fallback) {
+  const slug = String(value || '')
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 48);
+
+  return slug || fallback;
+}
+
+function getCreatorInputValue(input) {
+  return String(input?.value || '').trim();
+}
+
+function buildArticleBlueprint(kind, nextId) {
+  const blueprint = ARTICLE_BLUEPRINTS[kind] || ARTICLE_BLUEPRINTS.story;
+  const title = getCreatorInputValue(creatorTitleInput) || blueprint.title;
+  const category = getCreatorInputValue(creatorCategoryInput) || blueprint.category;
+  const seedFallback = `${kind || 'article'}-${nextId}`;
+  const imageSeed = getCreatorInputValue(creatorSeedInput) || slugifySeed(title, seedFallback);
+  const imageUrl = getOptionalString(getCreatorInputValue(creatorImageUrlInput));
+  const content = deepClone(blueprint.blocks).map((block, index) => {
+    if (block.type === 'image' && !block.content) {
+      return { ...block, content: `${imageSeed}-${index + 1}` };
+    }
+
+    if (block.type === 'gallery' && Array.isArray(block.content) && !block.content.length) {
+      return {
+        ...block,
+        content: [`${imageSeed}-gallery-1`, `${imageSeed}-gallery-2`, `${imageSeed}-gallery-3`]
+      };
+    }
+
+    return block;
+  });
+
+  return {
+    id: nextId,
+    title,
+    author: 'EPRIS Journal',
+    role: 'Editorial Desk',
+    date: getAdminDateLabel(),
+    excerpt: blueprint.excerpt,
+    category,
+    subcategory: blueprint.subcategory,
+    tags: deepClone(blueprint.tags),
+    imageSeed,
+    imageUrl,
+    content
+  };
+}
+
+function renderCreatorQuality(data, section, lang, entry) {
+  if (!creatorQualityEl) {
+    return;
+  }
+
+  if (!data || !entry) {
+    creatorQualityEl.innerHTML = '<span class="quality-chip warn">Нет записи</span>';
+    return;
+  }
+
+  const chips = [];
+  const addChip = (label, ok, danger = false) => {
+    chips.push({
+      label,
+      state: ok ? 'ok' : (danger ? 'danger' : 'warn')
+    });
+  };
+
+  const languages = getTranslationLanguages(data);
+  const entryId = Number(entry.id);
+  const concreteLangs = languages.filter((language) => hasConcreteEntryForLanguage(data, section, language, entryId));
+
+  addChip(entry.title ? 'Заголовок' : 'Нет заголовка', Boolean(entry.title), true);
+  addChip(`${concreteLangs.length}/${languages.length} языков`, languages.length > 0 && concreteLangs.length === languages.length, true);
+
+  if (section === 'articles') {
+    const blocks = Array.isArray(entry.content) ? entry.content : [];
+    const hasMedia = Boolean(entry.imageUrl || entry.imageSeed) || blocks.some((block) => ['image', 'gallery'].includes(block?.type));
+    const hasPoll = blocks.some((block) => {
+      const options = block?.content?.options;
+      return block?.type === 'poll' && block.content?.question && Array.isArray(options) && options.length >= 2;
+    });
+    const words = blocks.reduce((sum, block) => {
+      if (['text', 'quote', 'note'].includes(block?.type) && typeof block.content === 'string') {
+        return sum + countWords(block.content);
+      }
+      return sum;
+    }, 0);
+
+    addChip(entry.excerpt ? 'Лид' : 'Нет лида', Boolean(entry.excerpt));
+    addChip(hasMedia ? 'Обложка' : 'Нет фото', hasMedia);
+    addChip(`${blocks.length} блоков`, blocks.length >= 3);
+    addChip(`${words} слов`, words >= 80);
+    addChip(Array.isArray(entry.tags) && entry.tags.length ? 'Теги' : 'Нет тегов', Array.isArray(entry.tags) && entry.tags.length);
+    addChip(hasPoll ? 'Опрос' : 'Нет опроса', hasPoll);
+  } else if (section === 'items') {
+    addChip(entry.description ? 'Описание' : 'Нет описания', Boolean(entry.description));
+    addChip(entry.imageUrl || entry.imageSeed ? 'Фото' : 'Нет фото', Boolean(entry.imageUrl || entry.imageSeed));
+  } else if (section === 'reviews') {
+    addChip(entry.content ? 'Текст' : 'Нет текста', Boolean(entry.content));
+    addChip(Number(entry.rating) > 0 ? 'Рейтинг' : 'Нет рейтинга', Number(entry.rating) > 0);
+  } else if (section === 'libraryItems') {
+    addChip(entry.type ? 'Тип' : 'Нет типа', Boolean(entry.type));
+    addChip(entry.year ? 'Год' : 'Нет года', Boolean(entry.year));
+  }
+
+  creatorQualityEl.innerHTML = chips
+    .map((chip) => `<span class="quality-chip ${chip.state}">${escapeHtml(chip.label)}</span>`)
+    .join('');
+}
+
+function buildQualityEntryFromForm(section, fallback = {}) {
+  const base = { ...fallback, id: Number(visualEntrySelect.value) || fallback.id };
+
+  if (section === 'items') {
+    return {
+      ...base,
+      title: getFieldValue('vf-title').trim(),
+      description: getFieldValue('vf-description').trim(),
+      imageSeed: getFieldValue('vf-imageSeed').trim(),
+      imageUrl: getFieldValue('vf-imageUrl').trim()
+    };
+  }
+
+  if (section === 'reviews') {
+    return {
+      ...base,
+      title: getFieldValue('vf-title').trim(),
+      content: getFieldValue('vf-content').trim(),
+      rating: Number(getFieldValue('vf-rating'))
+    };
+  }
+
+  if (section === 'libraryItems') {
+    return {
+      ...base,
+      title: getFieldValue('vf-title').trim(),
+      type: getFieldValue('vf-type').trim(),
+      year: getFieldValue('vf-year').trim()
+    };
+  }
+
+  return {
+    ...base,
+    title: getFieldValue('vf-title').trim(),
+    excerpt: getFieldValue('vf-excerpt').trim(),
+    tags: getFieldValue('vf-tags').split(',').map((tag) => tag.trim()).filter(Boolean),
+    imageSeed: getFieldValue('vf-imageSeed').trim(),
+    imageUrl: getFieldValue('vf-imageUrl').trim(),
+    content: collectBlockEditorContent()
+  };
+}
+
+function refreshCreatorQualityFromForm(fallback = {}) {
+  const data = getVisualData();
+  if (!data) {
+    return;
+  }
+
+  const section = visualSectionSelect.value;
+  const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
+  renderCreatorQuality(data, section, lang, buildQualityEntryFromForm(section, fallback));
+}
+
+function bindCreatorQualityInputs(fallback = {}) {
+  visualFormEl.querySelectorAll('input, textarea, select').forEach((field) => {
+    field.addEventListener('input', () => refreshCreatorQualityFromForm(fallback));
+    field.addEventListener('change', () => refreshCreatorQualityFromForm(fallback));
+  });
+}
+
+async function createArticleFromBlueprint(kind) {
+  try {
+    setBusy(true);
+    const data = parseEditorJson();
+    const sourceLang = visualLangSelect.value || DEFAULT_LANGUAGE;
+    const entries = getSectionArray(data, 'articles', sourceLang, sourceLang !== DEFAULT_LANGUAGE);
+    const nextId = getNextEntryId(data, 'articles');
+    const baseArticle = buildArticleBlueprint(kind, nextId);
+    let sourceArticle = baseArticle;
+
+    if (sourceLang !== DEFAULT_LANGUAGE) {
+      setStatus('info', `Готовлю шаблон на ${sourceLang}...`);
+      sourceArticle = await translateEntryForSection('articles', baseArticle, sourceLang, DEFAULT_LANGUAGE);
+      const titleOverride = getCreatorInputValue(creatorTitleInput);
+      const categoryOverride = getCreatorInputValue(creatorCategoryInput);
+      if (titleOverride) sourceArticle.title = titleOverride;
+      if (categoryOverride) sourceArticle.category = categoryOverride;
+    }
+
+    entries.push(sourceArticle);
+    setStatus('info', `Создаю языковые версии статьи #${nextId}...`);
+    const syncedLangs = await syncMissingEntryLanguages(data, 'articles', sourceLang, sourceArticle);
+
+    visualSectionSelect.value = 'articles';
+    visualLangSelect.value = sourceLang;
+    pendingVisualEntryId = nextId;
+    setEditorData(data);
+    const syncNote = syncedLangs.length ? ` Языки: ${syncedLangs.join(', ')}.` : '';
+    setStatus('success', `Шаблон статьи #${nextId} создан.${syncNote}`);
+  } catch (error) {
+    setStatus('error', getErrorMessage(error));
+  } finally {
+    setBusy(false);
+  }
+}
+
+function appendArticlePreset(kind) {
+  try {
+    if (visualSectionSelect.value !== 'articles') {
+      throw new Error('Быстрые блоки доступны в разделе «Статьи».');
+    }
+
+    const editorEl = document.getElementById('vf-block-editor');
+    if (!editorEl) {
+      throw new Error('Сначала выберите статью.');
+    }
+
+    const preset = ARTICLE_BLOCK_PRESETS[kind];
+    if (!preset) {
+      throw new Error('Неизвестный шаблон блока.');
+    }
+
+    const blocks = collectBlockEditorContent();
+    const seed = getFieldValue('vf-imageSeed').trim() || getCreatorInputValue(creatorSeedInput) || `article-${visualEntrySelect.value || 'new'}`;
+    const nextBlocks = deepClone(preset).map((block, index) => {
+      if (block.type === 'image' && !block.content) {
+        return { ...block, content: `${seed}-section-${blocks.length + index + 1}` };
+      }
+      return block;
+    });
+
+    editorEl.innerHTML = renderBlockEditor([...blocks, ...nextBlocks]);
+    bindBlockEditorEvents();
+    bindCreatorQualityInputs(buildQualityEntryFromForm('articles'));
+    renderCreatorQuality(getVisualData(), 'articles', visualLangSelect.value || DEFAULT_LANGUAGE, {
+      id: Number(visualEntrySelect.value),
+      title: getFieldValue('vf-title').trim(),
+      excerpt: getFieldValue('vf-excerpt').trim(),
+      tags: getFieldValue('vf-tags').split(',').map((tag) => tag.trim()).filter(Boolean),
+      imageSeed: getFieldValue('vf-imageSeed').trim(),
+      imageUrl: getFieldValue('vf-imageUrl').trim(),
+      content: collectBlockEditorContent()
+    });
+    setStatus('success', 'Блоки добавлены. Нажмите «Применить изменения», чтобы записать их в JSON.');
+  } catch (error) {
+    setStatus('error', getErrorMessage(error));
+  }
+}
+
 function renderVisualLanguageOptions(data) {
   const options = getLanguageOptions(data);
   const current = visualLangSelect.value || DEFAULT_LANGUAGE;
@@ -1968,12 +2337,14 @@ function refreshVisualEditor() {
   if (!dropdownEntries.length) {
     setVisualNotice(`В разделе "${getSectionLabel(section)}" пока нет записей.`, 'info');
     visualFormEl.innerHTML = '';
+    renderCreatorQuality(data, section, lang, null);
     return;
   }
 
   if (!visibleDropdown.length) {
     setVisualNotice(`По запросу "${search}" ничего не найдено.`, 'info');
     visualFormEl.innerHTML = '';
+    renderCreatorQuality(data, section, lang, null);
     return;
   }
 
@@ -2090,6 +2461,7 @@ function renderVisualForm() {
 
   if (!entries.length) {
     visualFormEl.innerHTML = '';
+    renderCreatorQuality(data, section, lang, null);
     return;
   }
 
@@ -2113,10 +2485,12 @@ function renderVisualForm() {
 
   if (!entry) {
     visualFormEl.innerHTML = '';
+    renderCreatorQuality(data, section, lang, null);
     return;
   }
 
   setVisualNotice(`Редактируется: ${getSectionLabel(section)} / #${entry.id} / язык ${lang}`, 'info');
+  renderCreatorQuality(data, section, lang, entry);
 
   if (section === 'items') {
     const previewSource = resolvePreviewImageSource(entry.imageUrl, entry.imageSeed);
@@ -2131,6 +2505,7 @@ function renderVisualForm() {
       ${renderPhotoPreviewMarkup(previewSource)}
     `;
     bindPhotoPreviewInputs();
+    bindCreatorQualityInputs(entry);
     return;
   }
 
@@ -2143,6 +2518,7 @@ function renderVisualForm() {
       <label class="full">Текст обзора<textarea id="vf-content">${escapeHtml(entry.content || '')}</textarea></label>
       <label class="full">Автор<input id="vf-author" value="${escapeHtml(entry.author || '')}" /></label>
     `;
+    bindCreatorQualityInputs(entry);
     return;
   }
 
@@ -2154,6 +2530,7 @@ function renderVisualForm() {
       <label>Размер<input id="vf-size" value="${escapeHtml(entry.size || '')}" /></label>
       <label>Год<input id="vf-year" value="${escapeHtml(entry.year || '')}" /></label>
     `;
+    bindCreatorQualityInputs(entry);
     return;
   }
 
@@ -2175,6 +2552,7 @@ function renderVisualForm() {
   `;
   bindPhotoPreviewInputs();
   bindBlockEditorEvents();
+  bindCreatorQualityInputs(entry);
 }
 
 function getFieldValue(id) {
@@ -2278,7 +2656,7 @@ function createDefaultEntry(section, nextId) {
   if (section === 'items') {
     return {
       id: nextId,
-      title: 'Новый элемент',
+      title: 'New item',
       subtitle: '',
       fig: `FIG. ${String(nextId).padStart(2, '0')}`,
       description: '',
@@ -2289,7 +2667,7 @@ function createDefaultEntry(section, nextId) {
   if (section === 'reviews') {
     return {
       id: nextId,
-      title: 'Новый обзор',
+      title: 'New review',
       subject: '',
       rating: 5,
       content: '',
@@ -2300,35 +2678,19 @@ function createDefaultEntry(section, nextId) {
   if (section === 'libraryItems') {
     return {
       id: nextId,
-      title: 'Новый файл',
+      title: 'New file',
       type: 'PDF',
       size: '0 MB',
       year: String(new Date().getFullYear())
     };
   }
 
-  return {
-    id: nextId,
-    title: 'Новая статья',
-    author: '',
-    role: '',
-    date: '',
-    excerpt: '',
-    category: '',
-    subcategory: '',
-    tags: [],
-    imageSeed: `new-article-${nextId}`,
-    content: [
-      {
-        type: 'text',
-        content: ''
-      }
-    ]
-  };
+  return buildArticleBlueprint('story', nextId);
 }
 
-function duplicateVisualEntry() {
+async function duplicateVisualEntry() {
   try {
+    setBusy(true);
     const data = parseEditorJson();
     const section = visualSectionSelect.value;
     const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
@@ -2344,12 +2706,7 @@ function duplicateVisualEntry() {
       throw new Error('Не найдена выбранная запись.');
     }
 
-    const maxId = entries.reduce((acc, item) => {
-      const id = Number(item.id);
-      return Number.isFinite(id) && id > acc ? id : acc;
-    }, 0);
-
-    const nextId = maxId + 1;
+    const nextId = getNextEntryId(data, section);
     const duplicate = deepClone(entries[entryIndex]);
     duplicate.id = nextId;
     if (typeof duplicate.title === 'string') {
@@ -2357,11 +2714,15 @@ function duplicateVisualEntry() {
     }
 
     entries.splice(entryIndex + 1, 0, duplicate);
+    const syncedLangs = await syncMissingEntryLanguages(data, section, lang, duplicate);
     pendingVisualEntryId = nextId;
     setEditorData(data);
-    setStatus('success', `Запись #${selectedId} дублирована в #${nextId}.`);
+    const syncNote = syncedLangs.length ? ` Языки: ${syncedLangs.join(', ')}.` : '';
+    setStatus('success', `Запись #${selectedId} дублирована в #${nextId}.${syncNote}`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
+  } finally {
+    setBusy(false);
   }
 }
 
@@ -3583,26 +3944,33 @@ window.removePollOption = function(blockIndex, optionIndex) {
   }
 };
 
-function addVisualEntry() {
+async function addVisualEntry() {
   try {
+    setBusy(true);
     const data = parseEditorJson();
     const section = visualSectionSelect.value;
     const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
     const entries = getSectionArray(data, section, lang, lang !== DEFAULT_LANGUAGE);
+    const nextId = getNextEntryId(data, section);
+    let entry = createDefaultEntry(section, nextId);
 
-    const maxId = entries.reduce((acc, item) => {
-      const id = Number(item.id);
-      return Number.isFinite(id) && id > acc ? id : acc;
-    }, 0);
+    if (lang !== DEFAULT_LANGUAGE) {
+      setStatus('info', `Готовлю новую запись на ${lang}...`);
+      entry = await translateEntryForSection(section, entry, lang, DEFAULT_LANGUAGE);
+    }
 
-    const nextId = maxId + 1;
-    entries.push(createDefaultEntry(section, nextId));
+    entries.push(entry);
+    setStatus('info', `Создаю языковые версии записи #${nextId}...`);
+    const syncedLangs = await syncMissingEntryLanguages(data, section, lang, entry);
 
     pendingVisualEntryId = nextId;
     setEditorData(data);
-    setStatus('success', `Добавлена новая запись #${nextId} (${getSectionLabel(section)} / ${lang}).`);
+    const syncNote = syncedLangs.length ? ` Языки: ${syncedLangs.join(', ')}.` : '';
+    setStatus('success', `Добавлена новая запись #${nextId} (${getSectionLabel(section)} / ${lang}).${syncNote}`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
+  } finally {
+    setBusy(false);
   }
 }
 
