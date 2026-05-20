@@ -69,6 +69,12 @@ const reviewBlueprintBtn = byId('reviewBlueprintBtn');
 const insertStructureBtn = byId('insertStructureBtn');
 const insertChecklistTemplateBtn = byId('insertChecklistTemplateBtn');
 const insertPollTemplateBtn = byId('insertPollTemplateBtn');
+const contentAuditMetricsEl = byId('contentAuditMetrics');
+const entryPreviewEl = byId('entryPreview');
+const findMissingLangBtn = byId('findMissingLangBtn');
+const findNoPhotoBtn = byId('findNoPhotoBtn');
+const findNoPollBtn = byId('findNoPollBtn');
+const findThinTextBtn = byId('findThinTextBtn');
 const visualFormEl = byId('visualForm');
 const visualNoticeEl = byId('visualNotice');
 const uploadDropZone = byId('uploadDropZone');
@@ -111,6 +117,10 @@ const interactiveButtons = [
   insertStructureBtn,
   insertChecklistTemplateBtn,
   insertPollTemplateBtn,
+  findMissingLangBtn,
+  findNoPhotoBtn,
+  findNoPollBtn,
+  findThinTextBtn,
   pickImageBtn,
   useUploadedUrlBtn,
   useUploadedPagesUrlBtn,
@@ -283,6 +293,10 @@ function bindEvents() {
   insertStructureBtn.addEventListener('click', () => appendArticlePreset('structure'));
   insertChecklistTemplateBtn.addEventListener('click', () => appendArticlePreset('checklist'));
   insertPollTemplateBtn.addEventListener('click', () => appendArticlePreset('poll'));
+  findMissingLangBtn.addEventListener('click', () => selectFirstIssueEntry('missingLang'));
+  findNoPhotoBtn.addEventListener('click', () => selectFirstIssueEntry('noPhoto'));
+  findNoPollBtn.addEventListener('click', () => selectFirstIssueEntry('noPoll'));
+  findThinTextBtn.addEventListener('click', () => selectFirstIssueEntry('thinText'));
   pickImageBtn.addEventListener('click', (event) => {
     event.stopPropagation();
     pickImageFile();
@@ -1842,6 +1856,7 @@ function getVisualData() {
     visualFormEl.innerHTML = '';
     visualEntrySelect.innerHTML = '';
     renderCreatorQuality(null);
+    renderContentCommand(null);
     return null;
   }
 
@@ -2124,6 +2139,326 @@ function renderCreatorQuality(data, section, lang, entry) {
     .join('');
 }
 
+function getEntryWordCount(section, entry) {
+  if (!entry || typeof entry !== 'object') {
+    return 0;
+  }
+
+  if (section === 'articles') {
+    const blocks = Array.isArray(entry.content) ? entry.content : [];
+    const blockWords = blocks.reduce((sum, block) => {
+      if (['text', 'quote', 'note'].includes(block?.type) && typeof block.content === 'string') {
+        return sum + countWords(block.content);
+      }
+      return sum;
+    }, 0);
+    return blockWords + countWords(entry.excerpt || '');
+  }
+
+  if (section === 'items') {
+    return countWords(`${entry.subtitle || ''} ${entry.description || ''}`);
+  }
+
+  if (section === 'reviews') {
+    return countWords(`${entry.subject || ''} ${entry.content || ''}`);
+  }
+
+  return countWords(`${entry.title || ''} ${entry.type || ''} ${entry.year || ''}`);
+}
+
+function entryHasMedia(section, entry) {
+  if (!entry || typeof entry !== 'object') {
+    return false;
+  }
+
+  if (section !== 'articles' && section !== 'items') {
+    return true;
+  }
+
+  if (entry.imageUrl || entry.imageSeed) {
+    return true;
+  }
+
+  const blocks = Array.isArray(entry.content) ? entry.content : [];
+  return blocks.some((block) => {
+    if (block?.type === 'image') {
+      return Boolean(block.content);
+    }
+    if (block?.type === 'gallery') {
+      return Array.isArray(block.content) && block.content.length > 0;
+    }
+    return false;
+  });
+}
+
+function entryHasPoll(section, entry) {
+  if (section !== 'articles') {
+    return true;
+  }
+
+  const blocks = Array.isArray(entry?.content) ? entry.content : [];
+  return blocks.some((block) => {
+    const options = block?.content?.options;
+    return block?.type === 'poll' && Boolean(block.content?.question) && Array.isArray(options) && options.length >= 2;
+  });
+}
+
+function entryIsThin(section, entry) {
+  if (!entry || typeof entry !== 'object') {
+    return true;
+  }
+
+  if (!entry.title) {
+    return true;
+  }
+
+  const words = getEntryWordCount(section, entry);
+  if (section === 'articles') {
+    const blocks = Array.isArray(entry.content) ? entry.content : [];
+    return !entry.excerpt || blocks.length < 3 || words < 80;
+  }
+
+  if (section === 'items') {
+    return !entry.description || words < 18;
+  }
+
+  if (section === 'reviews') {
+    return !entry.content || words < 25;
+  }
+
+  return !entry.type || !entry.year;
+}
+
+function getAuditEntry(data, section, preferredLang, entryId) {
+  try {
+    return requireSourceEntry(data, section, preferredLang, entryId);
+  } catch {
+    for (const lang of getTranslationLanguages(data)) {
+      const entry = findEntryInLanguage(data, section, lang, entryId);
+      if (entry) {
+        return { entry, lang };
+      }
+    }
+  }
+
+  return null;
+}
+
+function buildSectionAudit(data, section, preferredLang = DEFAULT_LANGUAGE) {
+  const languages = getTranslationLanguages(data);
+  const ids = getConcreteEntryIds(data, section).sort((a, b) => a - b);
+  const audit = {
+    total: ids.length,
+    languages,
+    completeLangEntries: 0,
+    missingPairs: 0,
+    missingLangItems: [],
+    noPhoto: [],
+    noPoll: [],
+    thinText: []
+  };
+
+  for (const id of ids) {
+    const missingLangs = languages.filter((lang) => !hasConcreteEntryForLanguage(data, section, lang, id));
+    if (missingLangs.length) {
+      audit.missingPairs += missingLangs.length;
+      audit.missingLangItems.push({ id, lang: missingLangs[0], missingLangs });
+    } else {
+      audit.completeLangEntries += 1;
+    }
+
+    const source = getAuditEntry(data, section, preferredLang, id);
+    if (!source) {
+      continue;
+    }
+
+    if (!entryHasMedia(section, source.entry)) {
+      audit.noPhoto.push({ id, lang: source.lang });
+    }
+
+    if (!entryHasPoll(section, source.entry)) {
+      audit.noPoll.push({ id, lang: source.lang });
+    }
+
+    if (entryIsThin(section, source.entry)) {
+      audit.thinText.push({ id, lang: source.lang });
+    }
+  }
+
+  return audit;
+}
+
+function renderAuditMetric(label, value, state) {
+  return `
+    <div class="audit-metric ${state || ''}">
+      <span>${escapeHtml(label)}</span>
+      <strong>${escapeHtml(value)}</strong>
+    </div>
+  `;
+}
+
+function setIssueButton(button, label, count) {
+  button.textContent = count ? `${label} (${count})` : label;
+  button.disabled = count === 0;
+}
+
+function getPreviewMeta(section, entry) {
+  if (section === 'articles') {
+    return [entry.category, entry.subcategory, entry.date].filter(Boolean).join(' · ');
+  }
+  if (section === 'items') {
+    return [entry.fig, entry.subtitle].filter(Boolean).join(' · ');
+  }
+  if (section === 'reviews') {
+    return [entry.subject, entry.rating ? `${entry.rating}/5` : ''].filter(Boolean).join(' · ');
+  }
+  return [entry.type, entry.size, entry.year].filter(Boolean).join(' · ');
+}
+
+function truncateText(value, maxLength = 180) {
+  const text = String(value || '').replace(/\s+/g, ' ').trim();
+  if (text.length <= maxLength) {
+    return text;
+  }
+  return `${text.slice(0, maxLength - 1).trim()}...`;
+}
+
+function renderEntryPreview(data, section, lang, entry) {
+  if (!entry) {
+    return `
+      <div class="preview-empty-state">
+        <p class="panel-kicker">Предпросмотр</p>
+        <h3>Запись не выбрана</h3>
+      </div>
+    `;
+  }
+
+  const title = getEntryTitle(section, entry);
+  const imageSource = section === 'articles' || section === 'items'
+    ? resolvePreviewImageSource(entry.imageUrl, entry.imageSeed)
+    : '';
+  const words = getEntryWordCount(section, entry);
+  const languages = getTranslationLanguages(data);
+  const concreteLangs = languages.filter((language) => hasConcreteEntryForLanguage(data, section, language, entry.id));
+  const meta = getPreviewMeta(section, entry);
+  const excerpt = section === 'articles'
+    ? entry.excerpt
+    : section === 'items'
+      ? entry.description
+      : section === 'reviews'
+        ? entry.content
+        : `${entry.type || ''} ${entry.size || ''} ${entry.year || ''}`;
+  const blocks = Array.isArray(entry.content) ? entry.content : [];
+  const tags = Array.isArray(entry.tags) ? entry.tags.slice(0, 5) : [];
+
+  return `
+    <div class="preview-head">
+      <div>
+        <p class="panel-kicker">Предпросмотр</p>
+        <h3>${escapeHtml(title)}</h3>
+      </div>
+      <span class="preview-id">#${escapeHtml(entry.id)} · ${escapeHtml(lang)}</span>
+    </div>
+    ${imageSource
+      ? `<img class="preview-image" src="${escapeHtml(imageSource)}" alt="" loading="lazy" referrerpolicy="no-referrer" />`
+      : '<div class="preview-image-empty">Нет обложки</div>'
+    }
+    <p class="preview-meta">${escapeHtml(meta || getSectionLabel(section))}</p>
+    <p class="preview-excerpt">${escapeHtml(truncateText(excerpt, 220) || 'Текст пока пустой.')}</p>
+    <div class="preview-pills">
+      <span>${escapeHtml(String(words))} слов</span>
+      <span>${escapeHtml(String(concreteLangs.length))}/${escapeHtml(String(languages.length))} языков</span>
+      ${section === 'articles' ? `<span>${escapeHtml(String(blocks.length))} блоков</span>` : ''}
+    </div>
+    ${tags.length
+      ? `<div class="preview-tags">${tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}</div>`
+      : ''
+    }
+  `;
+}
+
+function renderContentCommand(data, section = visualSectionSelect.value, lang = visualLangSelect.value || DEFAULT_LANGUAGE, entry = null) {
+  if (!contentAuditMetricsEl || !entryPreviewEl) {
+    return;
+  }
+
+  if (!data) {
+    contentAuditMetricsEl.innerHTML = renderAuditMetric('JSON', 'не загружен', 'warn');
+    entryPreviewEl.innerHTML = renderEntryPreview({ translations: {} }, section, lang, null);
+    [findMissingLangBtn, findNoPhotoBtn, findNoPollBtn, findThinTextBtn].forEach((button) => { button.disabled = true; });
+    return;
+  }
+
+  const audit = buildSectionAudit(data, section, lang);
+  const completeState = audit.total && audit.completeLangEntries === audit.total ? 'ok' : 'warn';
+  const missingState = audit.missingPairs ? 'danger' : 'ok';
+  const weakState = audit.thinText.length ? 'warn' : 'ok';
+  const metrics = [
+    renderAuditMetric('Записей', String(audit.total), audit.total ? 'ok' : 'warn'),
+    renderAuditMetric('7 языков', `${audit.completeLangEntries}/${audit.total}`, completeState),
+    renderAuditMetric('Пропусков языка', String(audit.missingPairs), missingState),
+    renderAuditMetric(section === 'articles' || section === 'items' ? 'Без фото' : 'Медиа', String(audit.noPhoto.length), audit.noPhoto.length ? 'warn' : 'ok'),
+    renderAuditMetric(section === 'articles' ? 'Без опроса' : 'Опросы', String(audit.noPoll.length), audit.noPoll.length ? 'warn' : 'ok'),
+    renderAuditMetric('Слабый текст', String(audit.thinText.length), weakState)
+  ];
+
+  contentAuditMetricsEl.innerHTML = metrics.join('');
+  setIssueButton(findMissingLangBtn, 'Нет языка', audit.missingLangItems.length);
+  setIssueButton(findNoPhotoBtn, 'Нет фото', audit.noPhoto.length);
+  setIssueButton(findNoPollBtn, 'Нет опроса', audit.noPoll.length);
+  setIssueButton(findThinTextBtn, 'Слабый текст', audit.thinText.length);
+  entryPreviewEl.innerHTML = renderEntryPreview(data, section, lang, entry);
+}
+
+function getFirstIssueTarget(audit, issueType) {
+  if (issueType === 'missingLang') {
+    return audit.missingLangItems[0] || null;
+  }
+  if (issueType === 'noPhoto') {
+    return audit.noPhoto[0] || null;
+  }
+  if (issueType === 'noPoll') {
+    return audit.noPoll[0] || null;
+  }
+  if (issueType === 'thinText') {
+    return audit.thinText[0] || null;
+  }
+  return null;
+}
+
+function getIssueLabel(issueType) {
+  if (issueType === 'missingLang') return 'пропуск языка';
+  if (issueType === 'noPhoto') return 'нет фото';
+  if (issueType === 'noPoll') return 'нет опроса';
+  if (issueType === 'thinText') return 'слабый текст';
+  return 'задача';
+}
+
+function selectFirstIssueEntry(issueType) {
+  try {
+    const data = parseEditorJson();
+    const section = visualSectionSelect.value;
+    const currentLang = visualLangSelect.value || DEFAULT_LANGUAGE;
+    const audit = buildSectionAudit(data, section, currentLang);
+    const target = getFirstIssueTarget(audit, issueType);
+
+    if (!target) {
+      setStatus('success', `В разделе «${getSectionLabel(section)}» нет проблемы: ${getIssueLabel(issueType)}.`);
+      return;
+    }
+
+    visualSearchInput.value = '';
+    if (target.lang) {
+      visualLangSelect.value = target.lang;
+    }
+    pendingVisualEntryId = target.id;
+    refreshVisualEditor();
+    setStatus('info', `Открыта запись #${target.id}: ${getIssueLabel(issueType)}.`);
+  } catch (error) {
+    setStatus('error', getErrorMessage(error));
+  }
+}
+
 function buildQualityEntryFromForm(section, fallback = {}) {
   const base = { ...fallback, id: Number(visualEntrySelect.value) || fallback.id };
 
@@ -2174,7 +2509,9 @@ function refreshCreatorQualityFromForm(fallback = {}) {
 
   const section = visualSectionSelect.value;
   const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
-  renderCreatorQuality(data, section, lang, buildQualityEntryFromForm(section, fallback));
+  const entry = buildQualityEntryFromForm(section, fallback);
+  renderCreatorQuality(data, section, lang, entry);
+  renderContentCommand(data, section, lang, entry);
 }
 
 function bindCreatorQualityInputs(fallback = {}) {
@@ -2248,7 +2585,8 @@ function appendArticlePreset(kind) {
     editorEl.innerHTML = renderBlockEditor([...blocks, ...nextBlocks]);
     bindBlockEditorEvents();
     bindCreatorQualityInputs(buildQualityEntryFromForm('articles'));
-    renderCreatorQuality(getVisualData(), 'articles', visualLangSelect.value || DEFAULT_LANGUAGE, {
+    const data = getVisualData();
+    const previewEntry = {
       id: Number(visualEntrySelect.value),
       title: getFieldValue('vf-title').trim(),
       excerpt: getFieldValue('vf-excerpt').trim(),
@@ -2256,7 +2594,9 @@ function appendArticlePreset(kind) {
       imageSeed: getFieldValue('vf-imageSeed').trim(),
       imageUrl: getFieldValue('vf-imageUrl').trim(),
       content: collectBlockEditorContent()
-    });
+    };
+    renderCreatorQuality(data, 'articles', visualLangSelect.value || DEFAULT_LANGUAGE, previewEntry);
+    renderContentCommand(data, 'articles', visualLangSelect.value || DEFAULT_LANGUAGE, previewEntry);
     setStatus('success', 'Блоки добавлены. Нажмите «Применить изменения», чтобы записать их в JSON.');
   } catch (error) {
     setStatus('error', getErrorMessage(error));
@@ -2338,6 +2678,7 @@ function refreshVisualEditor() {
     setVisualNotice(`В разделе "${getSectionLabel(section)}" пока нет записей.`, 'info');
     visualFormEl.innerHTML = '';
     renderCreatorQuality(data, section, lang, null);
+    renderContentCommand(data, section, lang, null);
     return;
   }
 
@@ -2345,6 +2686,7 @@ function refreshVisualEditor() {
     setVisualNotice(`По запросу "${search}" ничего не найдено.`, 'info');
     visualFormEl.innerHTML = '';
     renderCreatorQuality(data, section, lang, null);
+    renderContentCommand(data, section, lang, null);
     return;
   }
 
@@ -2462,6 +2804,7 @@ function renderVisualForm() {
   if (!entries.length) {
     visualFormEl.innerHTML = '';
     renderCreatorQuality(data, section, lang, null);
+    renderContentCommand(data, section, lang, null);
     return;
   }
 
@@ -2486,11 +2829,13 @@ function renderVisualForm() {
   if (!entry) {
     visualFormEl.innerHTML = '';
     renderCreatorQuality(data, section, lang, null);
+    renderContentCommand(data, section, lang, null);
     return;
   }
 
   setVisualNotice(`Редактируется: ${getSectionLabel(section)} / #${entry.id} / язык ${lang}`, 'info');
   renderCreatorQuality(data, section, lang, entry);
+  renderContentCommand(data, section, lang, entry);
 
   if (section === 'items') {
     const previewSource = resolvePreviewImageSource(entry.imageUrl, entry.imageSeed);
@@ -3477,6 +3822,12 @@ function bindBlockEditorEvents() {
     card.addEventListener('dragenter', handleBlockDragEnter);
     card.addEventListener('dragleave', handleBlockDragLeave);
     card.addEventListener('drop', handleBlockDrop);
+  });
+
+  queueMicrotask(() => {
+    try {
+      refreshCreatorQualityFromForm();
+    } catch {}
   });
 }
 

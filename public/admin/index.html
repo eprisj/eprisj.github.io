@@ -154,6 +154,26 @@
               <button id="insertChecklistTemplateBtn" class="btn btn-sm" type="button">+ Чеклист</button>
               <button id="insertPollTemplateBtn" class="btn btn-sm" type="button">+ Опрос</button>
             </div>
+
+            <div class="command-center">
+              <section class="audit-panel" aria-label="Аудит контента">
+                <div class="panel-head">
+                  <div>
+                    <p class="panel-kicker">Аудит</p>
+                    <h3>Готовность раздела</h3>
+                  </div>
+                  <div class="audit-actions">
+                    <button id="findMissingLangBtn" class="btn btn-sm" type="button">Нет языка</button>
+                    <button id="findNoPhotoBtn" class="btn btn-sm" type="button">Нет фото</button>
+                    <button id="findNoPollBtn" class="btn btn-sm" type="button">Нет опроса</button>
+                    <button id="findThinTextBtn" class="btn btn-sm" type="button">Слабый текст</button>
+                  </div>
+                </div>
+                <div id="contentAuditMetrics" class="audit-metrics" aria-live="polite"></div>
+              </section>
+
+              <section id="entryPreview" class="entry-preview" aria-label="Предпросмотр записи" aria-live="polite"></section>
+            </div>
           </section>
 
           <div class="editor-body">
