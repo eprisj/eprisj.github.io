@@ -1167,7 +1167,12 @@ export default function App() {
   const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
   const languageOptions = getAvailableLanguages();
   const { items, articles, reviews, libraryItems } = getContentForLanguage(currentLang);
-  const selectedArticle = selectedArticleId !== null ? articles.find((article) => article.id === selectedArticleId) || null : null;
+  const defaultContent = getContentForLanguage(DEFAULT_LANGUAGE);
+  const selectedArticle = selectedArticleId !== null
+    ? articles.find((article) => article.id === selectedArticleId)
+      || defaultContent.articles.find((article) => article.id === selectedArticleId)
+      || null
+    : null;
   const t = (key: string) => getTranslation(currentLang, key);
 
   const handleImageClick = useCallback((src: string, alt: string) => {
