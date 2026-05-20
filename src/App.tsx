@@ -11,7 +11,7 @@ import {
   Review,
   translations
 } from './data';
-import { Search, Folder, Star, ArrowUpRight, Download, FileText, BookOpen, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb } from 'lucide-react';
+import { Search, Folder, Star, ArrowUpRight, Download, FileText, BookOpen, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
 
 function generateSlug(title: string): string {
   return title
@@ -623,6 +623,25 @@ const LANG_LABELS: Record<string, string> = {
 
 function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurrentLang, languages }: { article: Article; onClose: () => void; onImageClick: (src: string, alt: string) => void; t: (key: string) => string; currentLang: string; setCurrentLang: (lang: string) => void; languages: string[] }) {
   const [isArticleLangOpen, setIsArticleLangOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleShare = async () => {
+    const url = window.location.href;
+    const title = article.title;
+    const text = article.excerpt || '';
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, text, url });
+      } catch {}
+    } else {
+      try {
+        await navigator.clipboard.writeText(url);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch {}
+    }
+  };
 
   return (
     <motion.div 
@@ -896,6 +915,16 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
                 ))}
               </div>
             )}
+
+            <div className="mt-10 pt-8 border-t border-[#501a2c]/10 flex justify-center">
+              <button
+                onClick={handleShare}
+                className="flex items-center gap-3 px-6 py-3 border border-[#501a2c]/20 rounded-full font-mono text-xs uppercase tracking-widest text-[#501a2c] hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-colors"
+              >
+                {copied ? <Check size={16} /> : <Share2 size={16} />}
+                {copied ? t('share.copied') : t('share')}
+              </button>
+            </div>
           </footer>
         </article>
       </div>
