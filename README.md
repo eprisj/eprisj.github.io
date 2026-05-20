@@ -36,6 +36,8 @@ What it does:
 - Commits changes back to the repo through GitHub API
 - Supports image URLs in visual editor (`imageUrl` / article cover URL)
 - Supports drag-and-drop image upload to `public/uploads` via GitHub API
+- Can machine-translate EN articles into the languages listed in `translations`
+- Shows poll votes from JSON separately from local votes stored in the current browser
 
 Image behavior:
 
@@ -45,6 +47,13 @@ Image behavior:
 Required auth:
 
 - Fine-grained GitHub Personal Access Token with `Contents: Read and write` for your repository
+- Tokens are entered in the browser and are not hardcoded in the admin bundle
+
+Poll behavior:
+
+- The static site stores each visitor's vote in that visitor's `localStorage`
+- `src/content/site-content.json` contains the baseline vote numbers that ship with the site
+- A shared live vote counter requires an external backend or database
 
 ## GitHub Pages setup
 

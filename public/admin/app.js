@@ -54,6 +54,8 @@ const addEntryBtn = byId('addEntryBtn');
 const duplicateEntryBtn = byId('duplicateEntryBtn');
 const deleteEntryBtn = byId('deleteEntryBtn');
 const copyFromEnBtn = byId('copyFromEnBtn');
+const translateEntryBtn = byId('translateEntryBtn');
+const translateAllArticlesBtn = byId('translateAllArticlesBtn');
 const applyEntryBtn = byId('applyEntryBtn');
 const visualFormEl = byId('visualForm');
 const visualNoticeEl = byId('visualNotice');
@@ -87,6 +89,8 @@ const interactiveButtons = [
   duplicateEntryBtn,
   deleteEntryBtn,
   copyFromEnBtn,
+  translateEntryBtn,
+  translateAllArticlesBtn,
   applyEntryBtn,
   pickImageBtn,
   useUploadedUrlBtn,
@@ -119,7 +123,6 @@ function byId(id) {
 
 // ===== AUTH GATE =====
 const AUTH_STORAGE_KEY = 'epris_admin_token';
-const BUILTIN_TOKEN = ['ghp','_iZjfMlZ4uf','JZ2TWbm3xY','MpoouWEwLf','16SLd3'].join('');
 const authOverlay = byId('authOverlay');
 const authTokenInput = byId('authTokenInput');
 const authRememberCheck = byId('authRememberCheck');
@@ -169,7 +172,12 @@ async function handleLogin() {
 
 async function tryAutoLogin() {
   const saved = localStorage.getItem(AUTH_STORAGE_KEY);
-  const autoToken = saved || BUILTIN_TOKEN;
+  const autoToken = saved;
+  if (!autoToken) {
+    authLoading.hidden = true;
+    authLoginBtn.disabled = false;
+    return;
+  }
   authTokenInput.value = autoToken;
   authLoading.hidden = false;
   authLoginBtn.disabled = true;
@@ -246,6 +254,8 @@ function bindEvents() {
   duplicateEntryBtn.addEventListener('click', duplicateVisualEntry);
   deleteEntryBtn.addEventListener('click', deleteVisualEntry);
   copyFromEnBtn.addEventListener('click', copyFromEnglishEntry);
+  translateEntryBtn.addEventListener('click', translateSelectedArticleToCurrentLanguage);
+  translateAllArticlesBtn.addEventListener('click', translateAllArticlesToAvailableLanguages);
   applyEntryBtn.addEventListener('click', applyVisualChanges);
   pickImageBtn.addEventListener('click', (event) => {
     event.stopPropagation();
@@ -1014,7 +1024,10 @@ function headers(token) {
 }
 
 async function githubRequest(url, options = {}) {
-  const response = await fetch(url, options);
+  const response = await fetch(url, {
+    cache: 'no-store',
+    ...options
+  });
 
   if (response.ok) {
     return response.json();
@@ -2381,6 +2394,305 @@ function copyFromEnglishEntry() {
   }
 }
 
+const TRANSLATION_TARGET_CODES = {
+  EN: 'en',
+  RU: 'ru',
+  UA: 'uk',
+  UK: 'uk',
+  TR: 'tr',
+  DE: 'de',
+  IT: 'it',
+  ES: 'es',
+  FR: 'fr',
+  PL: 'pl',
+  PT: 'pt'
+};
+
+const translationCache = new Map();
+
+function getTranslationTargetCode(lang) {
+  return TRANSLATION_TARGET_CODES[String(lang || '').toUpperCase()] || String(lang || '').toLowerCase();
+}
+
+function isLikelyMediaOrUrl(value) {
+  const text = String(value || '').trim();
+  return (
+    /^(https?:)?\/\//i.test(text) ||
+    text.startsWith('/') ||
+    text.startsWith('./') ||
+    text.startsWith('../') ||
+    text.startsWith('data:') ||
+    /\.(avif|gif|jpe?g|png|svg|webp|mp3|mp4|wav)(\?.*)?$/i.test(text)
+  );
+}
+
+function splitTextForTranslation(text, maxLength = 1700) {
+  const source = String(text || '');
+  if (source.length <= maxLength) {
+    return [source];
+  }
+
+  const parts = source.match(/[^.!?\n]+[.!?\n]+|[^.!?\n]+$/g) || [source];
+  const chunks = [];
+  let current = '';
+
+  for (const part of parts) {
+    if ((current + part).length > maxLength && current) {
+      chunks.push(current);
+      current = '';
+    }
+
+    if (part.length > maxLength) {
+      for (let i = 0; i < part.length; i += maxLength) {
+        chunks.push(part.slice(i, i + maxLength));
+      }
+      continue;
+    }
+
+    current += part;
+  }
+
+  if (current) {
+    chunks.push(current);
+  }
+
+  return chunks;
+}
+
+function readGoogleTranslatePayload(payload) {
+  if (!Array.isArray(payload) || !Array.isArray(payload[0])) {
+    return '';
+  }
+
+  return payload[0]
+    .map((part) => (Array.isArray(part) ? part[0] : ''))
+    .filter(Boolean)
+    .join('');
+}
+
+async function translateText(value, targetLang, sourceLang = DEFAULT_LANGUAGE) {
+  const text = String(value || '');
+  if (!text.trim() || isLikelyMediaOrUrl(text)) {
+    return text;
+  }
+
+  const sourceCode = getTranslationTargetCode(sourceLang);
+  const targetCode = getTranslationTargetCode(targetLang);
+  if (!targetCode || sourceCode === targetCode) {
+    return text;
+  }
+
+  const cacheKey = `${sourceCode}:${targetCode}:${text}`;
+  if (translationCache.has(cacheKey)) {
+    return translationCache.get(cacheKey);
+  }
+
+  const translatedParts = [];
+  for (const chunk of splitTextForTranslation(text)) {
+    const url = new URL('https://translate.googleapis.com/translate_a/single');
+    url.searchParams.set('client', 'gtx');
+    url.searchParams.set('sl', sourceCode);
+    url.searchParams.set('tl', targetCode);
+    url.searchParams.set('dt', 't');
+    url.searchParams.set('q', chunk);
+
+    const response = await fetch(url.toString(), { cache: 'no-store' });
+    if (!response.ok) {
+      throw new Error(`Сервис перевода ответил HTTP ${response.status}. Попробуйте позже.`);
+    }
+
+    const payload = await response.json();
+    translatedParts.push(readGoogleTranslatePayload(payload) || chunk);
+  }
+
+  const translated = translatedParts.join('');
+  translationCache.set(cacheKey, translated);
+  return translated;
+}
+
+async function translateStringArray(values, targetLang) {
+  if (!Array.isArray(values)) {
+    return [];
+  }
+
+  const translated = [];
+  for (const value of values) {
+    translated.push(await translateText(value, targetLang));
+  }
+  return translated;
+}
+
+async function translateArticleBlock(block, targetLang) {
+  const next = deepClone(block || {});
+
+  if (typeof next.caption === 'string') {
+    next.caption = await translateText(next.caption, targetLang);
+  }
+
+  if (['text', 'quote', 'note', 'link', 'map'].includes(next.type) && typeof next.content === 'string') {
+    next.content = await translateText(next.content, targetLang);
+    return next;
+  }
+
+  if (next.type === 'checklist' && next.content && typeof next.content === 'object' && Array.isArray(next.content.items)) {
+    next.content = {
+      ...next.content,
+      items: await translateStringArray(next.content.items, targetLang)
+    };
+    return next;
+  }
+
+  if (next.type === 'poll' && next.content && typeof next.content === 'object') {
+    const options = Array.isArray(next.content.options) ? next.content.options : [];
+    const translatedOptions = [];
+    for (const option of options) {
+      if (option && typeof option === 'object') {
+        translatedOptions.push({
+          ...option,
+          label: await translateText(option.label || '', targetLang)
+        });
+      } else {
+        translatedOptions.push(await translateText(option, targetLang));
+      }
+    }
+
+    next.content = {
+      ...next.content,
+      question: await translateText(next.content.question || '', targetLang),
+      options: translatedOptions
+    };
+  }
+
+  return next;
+}
+
+async function translateArticleFromEnglish(article, targetLang) {
+  const next = deepClone(article);
+
+  next.title = await translateText(article.title, targetLang);
+  next.role = article.role ? await translateText(article.role, targetLang) : article.role;
+  next.date = article.date ? await translateText(article.date, targetLang) : article.date;
+  next.excerpt = await translateText(article.excerpt, targetLang);
+  next.category = await translateText(article.category, targetLang);
+  next.subcategory = article.subcategory ? await translateText(article.subcategory, targetLang) : article.subcategory;
+  next.tags = await translateStringArray(article.tags, targetLang);
+
+  const blocks = Array.isArray(article.content) ? article.content : [];
+  next.content = [];
+  for (const block of blocks) {
+    next.content.push(await translateArticleBlock(block, targetLang));
+  }
+
+  return next;
+}
+
+function upsertLocalizedEntry(data, section, lang, entry) {
+  const targetEntries = getSectionArray(data, section, lang, true);
+  const targetIndex = targetEntries.findIndex((item) => Number(item.id) === Number(entry.id));
+  if (targetIndex >= 0) {
+    targetEntries[targetIndex] = entry;
+  } else {
+    targetEntries.push(entry);
+  }
+}
+
+async function translateSelectedArticleToCurrentLanguage() {
+  try {
+    const section = visualSectionSelect.value;
+    const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
+
+    if (section !== 'articles') {
+      throw new Error('Автоперевод сейчас работает для статей. Выберите раздел «Статьи».');
+    }
+
+    if (lang === DEFAULT_LANGUAGE) {
+      const dataForLanguages = parseEditorJson();
+      const targets = getLanguageOptions(dataForLanguages).filter((item) => item !== DEFAULT_LANGUAGE);
+      if (!targets.length) {
+        throw new Error('Нет доступных языков кроме EN.');
+      }
+      await translateSelectedArticleToLanguages(targets);
+      return;
+    }
+
+    await translateSelectedArticleToLanguages([lang]);
+  } catch (error) {
+    setStatus('error', getErrorMessage(error));
+  }
+}
+
+async function translateSelectedArticleToLanguages(targetLangs) {
+  const data = parseEditorJson();
+  const selectedId = Number(visualEntrySelect.value);
+  const sourceEntries = getSectionArray(data, 'articles', DEFAULT_LANGUAGE, false);
+  const sourceEntry = sourceEntries.find((item) => Number(item.id) === selectedId);
+
+  if (!sourceEntry) {
+    throw new Error('Не найдена EN-статья для перевода.');
+  }
+
+  setBusy(true);
+  setStatus('info', `Перевожу статью #${selectedId}: ${targetLangs.join(', ')}...`);
+
+  try {
+    for (const lang of targetLangs) {
+      const translated = await translateArticleFromEnglish(sourceEntry, lang);
+      upsertLocalizedEntry(data, 'articles', lang, translated);
+    }
+
+    pendingVisualEntryId = selectedId;
+    setEditorData(data);
+    setStatus('success', `Статья #${selectedId} переведена: ${targetLangs.join(', ')}. Проверьте текст и сохраните в GitHub.`);
+  } finally {
+    setBusy(false);
+  }
+}
+
+async function translateAllArticlesToAvailableLanguages() {
+  try {
+    const data = parseEditorJson();
+    const targetLangs = getLanguageOptions(data).filter((lang) => lang !== DEFAULT_LANGUAGE);
+    const sourceEntries = getSectionArray(data, 'articles', DEFAULT_LANGUAGE, false);
+
+    if (!sourceEntries.length) {
+      throw new Error('В EN нет статей для перевода.');
+    }
+
+    if (!targetLangs.length) {
+      throw new Error('Нет доступных языков кроме EN.');
+    }
+
+    const confirmed = await showConfirmModal(
+      'Автоматически перевести все статьи?',
+      `Будут обновлены локализованные версии для языков: <strong>${escapeHtml(targetLangs.join(', '))}</strong>. После машинного перевода лучше быстро вычитать заголовки, цитаты и опросы.`,
+      'Перевести'
+    );
+    if (!confirmed) {
+      return;
+    }
+
+    setBusy(true);
+    let done = 0;
+    const total = sourceEntries.length * targetLangs.length;
+
+    for (const lang of targetLangs) {
+      for (const article of sourceEntries) {
+        done += 1;
+        setStatus('info', `Автоперевод ${done}/${total}: статья #${article.id} → ${lang}`);
+        const translated = await translateArticleFromEnglish(article, lang);
+        upsertLocalizedEntry(data, 'articles', lang, translated);
+      }
+    }
+
+    setEditorData(data);
+    setStatus('success', `Автоперевод готов: ${sourceEntries.length} статей на ${targetLangs.length} языков. Проверьте и сохраните в GitHub.`);
+  } catch (error) {
+    setStatus('error', getErrorMessage(error));
+  } finally {
+    setBusy(false);
+  }
+}
+
 
 // ===== IMPROVED BLOCK EDITOR FOR ARTICLES =====
 const BLOCK_TYPES = [
@@ -3190,45 +3502,57 @@ const pollResultsGrid = byId('pollResultsGrid');
 const pollRefreshBtn = byId('pollRefreshBtn');
 const pollTimestamp = byId('pollTimestamp');
 
+function getPollStorageKeyForArticle(articleId, blockIndex) {
+  return `epris-poll-v2-article-${articleId}-block-${blockIndex}`;
+}
+
 function collectPollsFromContent() {
   const polls = [];
   try {
     const data = parseEditorJson();
-    const allArticleSets = [{ lang: 'EN', articles: data.articles || [] }];
-    if (data.localizedCollections) {
-      for (const [lang, collection] of Object.entries(data.localizedCollections)) {
-        if (collection.articles) {
-          allArticleSets.push({ lang, articles: collection.articles });
-        }
+    const localized = data.localizedCollections && typeof data.localizedCollections === 'object'
+      ? data.localizedCollections
+      : {};
+    const languagesByArticleId = new Map();
+
+    for (const [lang, collection] of Object.entries(localized)) {
+      if (!collection || !Array.isArray(collection.articles)) continue;
+      for (const article of collection.articles) {
+        const id = Number(article?.id);
+        if (!Number.isFinite(id)) continue;
+        const list = languagesByArticleId.get(id) || [];
+        list.push(lang);
+        languagesByArticleId.set(id, list);
       }
     }
-    for (const { lang, articles } of allArticleSets) {
-      for (const article of articles) {
-        if (!Array.isArray(article.content)) continue;
-        for (const block of article.content) {
-          if (block.type !== 'poll' || !block.content) continue;
+
+    for (const article of data.articles || []) {
+      if (!Array.isArray(article.content)) continue;
+      article.content.forEach((block, blockIndex) => {
+        if (block.type !== 'poll' || !block.content) return;
           const pollData = block.content;
-          const storageKey = 'epris-poll-' + (pollData.question || '').replace(/\s+/g, '-').toLowerCase().slice(0, 60);
+          const storageKey = getPollStorageKeyForArticle(article.id, blockIndex);
           let savedVotes = null;
           try {
             const saved = localStorage.getItem(storageKey);
             if (saved) savedVotes = JSON.parse(saved);
           } catch {}
+          const options = pollData.options || [];
           polls.push({
             question: pollData.question || '(без вопроса)',
-            options: (pollData.options || []).map((opt, i) => ({
+            options: options.map((opt, i) => ({
               label: opt.label || opt,
               baseVotes: opt.votes || 0,
-              savedVotes: savedVotes && Array.isArray(savedVotes.votes) ? (savedVotes.votes[i] || 0) : (opt.votes || 0)
+              localVotes: savedVotes && Array.isArray(savedVotes.votes) ? (savedVotes.votes[i] || 0) : null
             })),
             articleTitle: article.title || `#${article.id}`,
             articleId: article.id,
-            lang,
+            blockIndex,
+            localizedLanguages: languagesByArticleId.get(Number(article.id)) || [],
             storageKey,
             lastVoteTime: savedVotes ? savedVotes.timestamp : null
           });
-        }
-      }
+      });
     }
   } catch {}
   return polls;
@@ -3245,22 +3569,28 @@ function renderPollResults() {
 
   let html = '';
   for (const poll of polls) {
-    const totalVotes = poll.options.reduce((s, o) => s + o.savedVotes, 0);
+    const jsonTotalVotes = poll.options.reduce((s, o) => s + o.baseVotes, 0);
+    const browserTotalVotes = poll.options.reduce((s, o) => s + (o.localVotes ?? o.baseVotes), 0);
+    const hasBrowserVotes = poll.options.some((o) => o.localVotes !== null);
     html += `<div class="monitor-card" style="margin-bottom:16px;">`;
     html += `<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">`;
     html += `<div>`;
     html += `<h3 style="font-size:14px;font-weight:600;margin:0 0 4px;">${escapeHtml(poll.question)}</h3>`;
-    html += `<p style="font-size:12px;color:#94a3b8;margin:0;">Статья: ${escapeHtml(poll.articleTitle)} [${poll.lang}]</p>`;
+    html += `<p style="font-size:12px;color:#94a3b8;margin:0;">Статья: ${escapeHtml(poll.articleTitle)} · блок #${poll.blockIndex + 1}</p>`;
+    if (poll.localizedLanguages.length) {
+      html += `<p style="font-size:11px;color:#64748b;margin:4px 0 0;">Переводы статьи: ${escapeHtml(poll.localizedLanguages.join(', '))}</p>`;
+    }
     html += `</div>`;
-    html += `<span style="font-size:12px;color:#64748b;white-space:nowrap;margin-left:12px;">${totalVotes} голос${totalVotes === 1 ? '' : totalVotes < 5 ? 'а' : 'ов'}</span>`;
+    html += `<span style="font-size:12px;color:#64748b;white-space:nowrap;margin-left:12px;">JSON: ${jsonTotalVotes}</span>`;
     html += `</div>`;
 
     for (const opt of poll.options) {
-      const pct = totalVotes > 0 ? Math.round((opt.savedVotes / totalVotes) * 100) : 0;
+      const visibleVotes = opt.localVotes ?? opt.baseVotes;
+      const pct = browserTotalVotes > 0 ? Math.round((visibleVotes / browserTotalVotes) * 100) : 0;
       html += `<div style="margin-bottom:8px;">`;
       html += `<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:2px;">`;
       html += `<span>${escapeHtml(opt.label)}</span>`;
-      html += `<span style="color:#94a3b8;">${opt.savedVotes} (${pct}%)</span>`;
+      html += `<span style="color:#94a3b8;">JSON ${opt.baseVotes}${hasBrowserVotes ? ` · этот браузер ${visibleVotes}` : ''} (${pct}%)</span>`;
       html += `</div>`;
       html += `<div style="height:8px;background:#1e293b;border-radius:4px;overflow:hidden;">`;
       html += `<div style="height:100%;width:${pct}%;background:linear-gradient(90deg,#3b82f6,#8b5cf6);border-radius:4px;transition:width .3s;"></div>`;
@@ -3271,6 +3601,8 @@ function renderPollResults() {
     if (poll.lastVoteTime) {
       const d = new Date(poll.lastVoteTime);
       html += `<p style="font-size:11px;color:#475569;margin:8px 0 0;text-align:right;">Последний голос: ${d.toLocaleString('ru-RU')}</p>`;
+    } else {
+      html += `<p style="font-size:11px;color:#475569;margin:8px 0 0;">Локальных голосов в этом браузере нет. Для общего онлайн-счётчика нужен внешний backend; сейчас сайт хранит голос посетителя локально.</p>`;
     }
     html += `</div>`;
   }
