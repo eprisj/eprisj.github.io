@@ -966,14 +966,14 @@
         {
           "type": "gallery",
           "content": [
-            "https://images.unsplash.com/photo-1558449028-b53a39d100fc?w=400&h=400&fit=crop",
-            "https://images.unsplash.com/photo-1762629453885-d89746e14c60?w=400&h=400&fit=crop",
             "https://images.unsplash.com/photo-1760468710389-1023382b2aed?w=400&h=400&fit=crop",
-            "https://images.unsplash.com/photo-1505577058444-a3dab90d4253?w=400&h=400&fit=crop",
-            "https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?w=400&h=400&fit=crop",
-            "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&h=400&fit=crop"
+            "https://images.unsplash.com/photo-1627274920239-400f57071249?w=400&h=400&fit=crop",
+            "https://images.unsplash.com/photo-1673564728405-a14844ac8ae6?w=400&h=400&fit=crop",
+            "https://images.unsplash.com/photo-1756477287028-50295b49572e?w=400&h=400&fit=crop",
+            "https://images.unsplash.com/photo-1576176351482-edd54a14354f?w=400&h=400&fit=crop",
+            "https://images.unsplash.com/photo-1690831327098-a63f0f344795?w=400&h=400&fit=crop"
           ],
-          "caption": "Six thresholds, six centuries: from Mediterranean ironwork to Caucasian carved walnut."
+          "caption": "Six thresholds, six cities: from Lisbon's azulejo-framed entries to Saint Petersburg's imperial doorways."
         },
         {
           "type": "text",
@@ -982,6 +982,11 @@
         {
           "type": "text",
           "content": "The Tbilisi Development Fund's 'New Tbilisi' project has systematically restored historic entrances on Atoneli Street since 2020, at a documented cost of 414,886 Georgian Lari per pair of entrances. The scope of work reads like a surgical protocol: restoration of marble floor and stair treads, conservation of wooden doors and windows (including re-glazing with period-appropriate crown glass), casting and installation of missing cast-iron balustrade details from silicone moulds taken from surviving originals, and — most remarkably — the uncovering of forgotten wall paintings sealed behind plaster for decades. At 31 Atoneli Street, workers removing a layer of Soviet-era cement render discovered a polychrome mural depicting pastoral scenes, its original casein binder still viable, the pigments — earth ochres, ultramarine, and bone black — as saturated as the day they were applied."
+        },
+        {
+          "type": "image",
+          "content": "https://images.unsplash.com/photo-1617372155383-e53c256df29a?w=900&h=600&fit=crop",
+          "caption": "Carved wooden balconies and painted doors in Tbilisi's Old Town — each doorway a palimpsest of Georgian, Persian, and Soviet layers."
         },
         {
           "type": "image",
@@ -1009,6 +1014,11 @@
           "content": "Their methodology is forensic. When a discarded door is retrieved — often from a skip outside a building undergoing 'renovation' by developers who consider plastic replacements an upgrade — it is first photographed in situ, then transported to the workshop for assessment. The species is identified: Karelian birch (Betula pendula var. carelica) with its distinctive flame figuring, Scots pine (Pinus sylvestris) from the Archangelsk forests, or Siberian larch (Larix sibirica), the same timber used in Venetian pilings and prized for its extraordinary resistance to moisture. Paint stratigraphy is performed on a micro-core sample: each layer is catalogued against known periods of building maintenance, cross-referenced with the building's archival records when available. The restorers have documented doors with hand-painted floral cartouches — executed in casein-bound distemper over a gesso ground — that survived beneath layers of Soviet khaki enamel, the delicate petals still discernible despite decades of chemical and mechanical insult."
         },
         {
+          "type": "image",
+          "content": "https://images.unsplash.com/photo-1723027094512-60b950f0d292?w=900&h=600&fit=crop",
+          "caption": "A Saint Petersburg courtyard entrance — behind these gates, volunteers of Tom Sawyer Fest salvage pre-revolutionary doors from demolition."
+        },
+        {
           "type": "text",
           "content": "Mann notes a grim irony: 'The best-preserved doors are often the ones the Soviets painted over most aggressively. The very enamel that obliterated their beauty also sealed them from oxygen and UV, preserving the original pigments in a state that borders on anaerobic conservation. When we peel back the PF-115, we find colours that a museum conservator would envy.' The collective's restoration of linden-wood doors from the Kamienny Ostrov area required eleven months of patient work: chemical paint removal using NMP (N-Methyl-2-pyrrolidone) — chosen over methylene chloride for its lower toxicity and slower evaporation rate, which allows for more controlled stripping — followed by consolidation of worm-damaged areas with Paraloid B-72 in acetone at 5% concentration, and final finishing with cold-pressed linseed oil, applied in four thin coats and allowed to cure for seventy-two hours between applications."
         },
@@ -1029,17 +1039,27 @@
           "content": "The 2019 conservation by Skillingtons Workshop exemplified the minimalist philosophy that defines contemporary best practice. Phase one: dry-brushing with natural-bristle brushes and low-suction vacuuming to remove trapped particulate matter from the open grain — medieval oak, unlike modern kiln-dried timber, retains a pronounced tangential grain pattern that acts as a trap for atmospheric soot and mineral dust. Phase two: aqueous cleaning with de-ionised water and a non-ionic surfactant (Synperonic A7) at 1% concentration, tested first on a concealed section of the rebate to verify that no dimensional change or surface blanching occurred. Phase three: re-saturation with cold-pressed Tung oil (Vernicia fordii), applied in four successive coats over sixteen days, each coat absorbed before the next was brushed on. Tung oil was chosen over linseed for its superior resistance to hydrolysis and its lower tendency to yellow with age. Phase four: the corroded wrought-iron fittings were stabilised with Renaissance Wax — a microcrystalline blend developed by the British Museum in the 1950s — rather than varnish, which would have created a non-breathing barrier antithetical to the iron's long-term preservation."
         },
         {
+          "type": "image",
+          "content": "https://images.unsplash.com/photo-1760382739146-99c865bd4152?w=900&h=600&fit=crop",
+          "caption": "Durham Cathedral — nine centuries of English oak, iron, and faith embedded in its Romanesque arches."
+        },
+        {
           "type": "text",
           "content": "In Havana, the challenge is not preservation of the ancient but resurrection of the abandoned. The crumbling pastel facades of Centro Habana conceal portals of Cuban mahogany (Swietenia mahagoni) and Spanish cedar (Cedrela odorata) — aromatic, naturally insect-resistant hardwoods that once welcomed sugar barons and revolutionary poets alike. The tropical climate imposes unique stresses: relative humidity regularly exceeds 85%, driving cycles of expansion and contraction that no temperate-climate joinery was designed to withstand. Cuban restorers — many trained at the Oficina del Historiador de la Ciudad, the heritage office established by Eusebio Leal Spengler — work with tools inherited from their grandfathers: wooden moulding planes with hand-forged blades, bow saws strung with tempered wire, and scratch stocks for reproducing ogee and cyma recta profiles. They re-carve rosettes and acanthus leaves not from measured drawings, which dissolved long ago in the tropical humidity, but from plaster casts taken from surviving examples in neighbouring buildings — a technique that preserves the local 'dialect' of ornamental carving, the subtle variations that distinguish Havana Baroque from its Andalusian ancestors."
         },
         {
           "type": "image",
-          "content": "https://images.unsplash.com/photo-1504392022767-a8fc0771f239?w=900&h=600&fit=crop",
-          "caption": "A Cuban doorway's decay: where mahogany meets maritime humidity, and restoration becomes resurrection."
+          "content": "https://images.unsplash.com/photo-1777518120419-24a9b9650b0d?w=900&h=600&fit=crop",
+          "caption": "A Cuban doorway where mahogany meets maritime humidity — the weathered blue paint a century's palimpsest of Caribbean salt and sun."
         },
         {
           "type": "text",
           "content": "Prague's doors speak in the dialect of Central European Baroque: a language of carved limewood (Tilia europaea) featuring saints, griffins, and garlands of impossible fruit rendered with a virtuosity that rivals the altarpiece carvings of Tilman Riemenschneider. In Malá Strana, beneath the shadow of Prague Castle, the portals of aristocratic palaces bear the heraldic devices of families who have been extinct for three centuries, their carved escutcheons the last material evidence that these lineages ever existed. The Palazzo Negri in Istrian Vodnjan — restored by the Ars et Labor Foundation during the European Year of Cultural Heritage in 2018 — demonstrated how a single Didactic Workshop, staffed by volunteer conservators and funded entirely by private donors, can preserve a region's identity one door at a time. The project's ten-month timeline included complete dismantling of the Baroque door, treatment of each component, and reassembly using traditional hide-glue joinery. Their motto, borrowed from the Gospel of Matthew, is quietly magnificent: 'Knock, and the door will be opened to you.'"
+        },
+        {
+          "type": "image",
+          "content": "https://images.unsplash.com/photo-1757004953637-9cb42bbda6c8?w=900&h=600&fit=crop",
+          "caption": "Ornate church entrance in Prague — where Gothic tracery meets baroque wood carving in the lanes of Malá Strana."
         },
         {
           "type": "text",
@@ -1726,14 +1746,14 @@
             {
               "type": "gallery",
               "content": [
-                "https://images.unsplash.com/photo-1558449028-b53a39d100fc?w=400&h=400&fit=crop",
-                "https://images.unsplash.com/photo-1762629453885-d89746e14c60?w=400&h=400&fit=crop",
                 "https://images.unsplash.com/photo-1760468710389-1023382b2aed?w=400&h=400&fit=crop",
-                "https://images.unsplash.com/photo-1505577058444-a3dab90d4253?w=400&h=400&fit=crop",
-                "https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?w=400&h=400&fit=crop",
-                "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&h=400&fit=crop"
+                "https://images.unsplash.com/photo-1627274920239-400f57071249?w=400&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1673564728405-a14844ac8ae6?w=400&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1756477287028-50295b49572e?w=400&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1576176351482-edd54a14354f?w=400&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1690831327098-a63f0f344795?w=400&h=400&fit=crop"
               ],
-              "caption": "Шесть порогов, шесть столетий: от средиземноморской ковки до кавказского резного ореха."
+              "caption": "Шесть порогов, шесть городов: от лиссабонских входов в обрамлении азулежу до петербургских имперских подъездов."
             },
             {
               "type": "text",
@@ -1742,6 +1762,11 @@
             {
               "type": "text",
               "content": "Тбилисский фонд развития в рамках проекта «Новый Тбилиси» системно реставрирует исторические парадные на улице Атонели с 2020 года, с документированной стоимостью 414 886 грузинских лари на пару входов. Объём работ читается как хирургический протокол: реставрация мраморных полов и ступеней, консервация деревянных дверей и окон (включая переостекление стеклом, соответствующим эпохе — лунным стеклом ручной выдувки), литьё и установка недостающих чугунных балюстрадных деталей по силиконовым формам, снятым с сохранившихся оригиналов, и — самое поразительное — обнаружение забытых настенных росписей, замурованных под штукатуркой на десятилетия. На Атонели, 31 рабочие, снимая слой советской цементной штукатурки, обнаружили полихромную фреску с пасторальными сценами — её оригинальное казеиновое связующее всё ещё было жизнеспособно, пигменты — земляные охры, ультрамарин и жжёная кость — столь же насыщены, как в день нанесения."
+            },
+            {
+              "type": "image",
+              "content": "https://images.unsplash.com/photo-1617372155383-e53c256df29a?w=900&h=600&fit=crop",
+              "caption": "Резные деревянные балконы и расписные двери Старого Тбилиси — каждый порог хранит грузинские, персидские и советские слои."
             },
             {
               "type": "image",
@@ -1769,6 +1794,11 @@
               "content": "Их методология — криминалистическая. Когда выброшенную дверь извлекают — нередко из мусорного контейнера перед зданием, проходящим «ремонт» застройщиками, считающими пластиковые замены прогрессом — её сначала фотографируют in situ, затем перевозят в мастерскую для оценки. Идентифицируется порода: карельская берёза (Betula pendula var. carelica) с характерной узорчатой текстурой «пламени», сосна обыкновенная (Pinus sylvestris) из архангельских лесов или лиственница сибирская (Larix sibirica) — та самая древесина, что идёт на венецианские сваи и ценится за исключительную влагостойкость. Стратиграфия красочного слоя выполняется по микрокерну: каждый слой каталогизируется в привязке к известным периодам технического обслуживания здания, сопоставляется с архивными данными, когда они доступны."
             },
             {
+              "type": "image",
+              "content": "https://images.unsplash.com/photo-1723027094512-60b950f0d292?w=900&h=600&fit=crop",
+              "caption": "Парадный вход петербургского двора — за этими воротами волонтёры Tom Sawyer Fest спасают дореволюционные двери от сноса."
+            },
+            {
               "type": "text",
               "content": "Манн отмечает горькую иронию: «Лучше всего сохранившиеся двери — зачастую те, которые Советы закрашивали наиболее агрессивно. Та самая эмаль, что уничтожила их красоту, одновременно запечатала от кислорода и ультрафиолета, сохранив оригинальные пигменты в состоянии, граничащем с анаэробной консервацией. Когда мы снимаем ПФ-115, мы обнаруживаем цвета, которым позавидовал бы музейный хранитель». Реставрация липовых дверей с Каменного острова потребовала одиннадцати месяцев терпеливой работы: химическое удаление краски с помощью НМП (N-метил-2-пирролидон) — выбранного вместо метиленхлорида за меньшую токсичность и более медленное испарение, обеспечивающее контролируемое удаление — затем консолидация повреждённых жуком участков Paraloid B-72 в ацетоне в 5%-ной концентрации и финишная отделка холоднопрессованным льняным маслом, наносимым в четыре тонких слоя с семидесятидвухчасовой полимеризацией между нанесениями."
             },
@@ -1789,17 +1819,27 @@
               "content": "Консервация 2019 года мастерской Скиллингтон стала образцом минималистической философии, определяющей современную лучшую практику. Фаза первая: сухая чистка щетинными кистями и маломощным вакуумированием для удаления накопившихся частиц из открытых волокон — средневековый дуб, в отличие от современного камерно-сушёного пиломатериала, сохраняет выраженную тангенциальную текстуру, действующую как ловушка для атмосферной копоти и минеральной пыли. Фаза вторая: водная очистка деионизованной водой с неионогенным ПАВ Synperonic A7 в 1%-ной концентрации, предварительно проверенная на скрытом участке фальца. Фаза третья: пересатурация холоднопрессованным тунговым маслом (Vernicia fordii), нанесённым в четыре последовательных слоя за шестнадцать дней. Тунговое масло выбрано вместо льняного за превосходную устойчивость к гидролизу и меньшую склонность к пожелтению. Фаза четвёртая: корродированная фурнитура стабилизирована воском Renaissance — микрокристаллической смесью, разработанной Британским музеем в 1950-х — вместо лака, который создал бы непаропроницаемый барьер, противопоказанный долгосрочной сохранности железа."
             },
             {
+              "type": "image",
+              "content": "https://images.unsplash.com/photo-1760382739146-99c865bd4152?w=900&h=600&fit=crop",
+              "caption": "Даремский собор — девять веков английского дуба, железа и веры в романских арках."
+            },
+            {
               "type": "text",
               "content": "В Гаване вызов состоит не в сохранении древнего, а в воскрешении заброшенного. За осыпающимися пастельными фасадами Центральной Гаваны скрываются порталы из кубинского красного дерева (Swietenia mahagoni) и испанского кедра (Cedrela odorata) — ароматных, от природы устойчивых к насекомым твёрдых пород, некогда встречавших сахарных баронов и революционных поэтов. Тропический климат накладывает уникальные нагрузки: относительная влажность регулярно превышает 85%, провоцируя циклы расширения и сжатия, на которые ни одна столярка умеренного климата не рассчитана. Кубинские реставраторы — многие обучены в Oficina del Historiador de la Ciudad, основанной Эусебио Леалем Спенглером — работают инструментами, унаследованными от дедов: деревянными калёвками с ручной ковки лезвиями, лучковыми пилами на калёной проволоке и шпунтгобелями для воспроизведения профилей «гусёк» и «каблучок». Розетки и листья аканта они вырезают не по обмерным чертежам — те давно растворились в тропической влажности — а по гипсовым слепкам с уцелевших образцов в соседних зданиях, сохраняя местный «диалект» декоративной резьбы, тонкие вариации, отличающие гаванское барокко от его андалузских предков."
             },
             {
               "type": "image",
-              "content": "https://images.unsplash.com/photo-1504392022767-a8fc0771f239?w=900&h=600&fit=crop",
-              "caption": "Кубинский дверной проём: где красное дерево встречает морскую влажность, и реставрация становится воскрешением."
+              "content": "https://images.unsplash.com/photo-1777518120419-24a9b9650b0d?w=900&h=600&fit=crop",
+              "caption": "Кубинский дверной проём — там, где красное дерево встречает морскую влажность, и реставрация становится воскрешением."
             },
             {
               "type": "text",
               "content": "Двери Праги говорят на диалекте центральноевропейского барокко — языке резной липы (Tilia europaea) со святыми, грифонами и гирляндами невозможных фруктов, исполненными с виртуозностью, соперничающей с алтарной резьбой Тильмана Рименшнайдера. В Мала-Стране, под тенью Пражского Града, порталы аристократических дворцов несут геральдические щиты родов, угасших три столетия назад — их резные эскутчоны остаются последним материальным свидетельством того, что эти династии вообще существовали. Палаццо Негри в истрийском Воднянe — отреставрированное фондом Ars et Labor в Европейский год культурного наследия 2018 — продемонстрировало, как единственная Дидактическая мастерская, укомплектованная волонтёрами-консерваторами и финансируемая исключительно частными донорами, способна сохранить идентичность целого региона — по одной двери за раз. Десятимесячный хронометраж проекта включал полный демонтаж барочной двери, обработку каждого элемента и повторную сборку на традиционном мездровом клее. Их девиз, заимствованный из Евангелия от Матфея, негромко великолепен: «Стучите, и отворят вам»."
+            },
+            {
+              "type": "image",
+              "content": "https://images.unsplash.com/photo-1757004953637-9cb42bbda6c8?w=900&h=600&fit=crop",
+              "caption": "Орнаментальный церковный вход в Праге — готическое кружево встречает барочную резьбу по дереву на улочках Малой Страны."
             },
             {
               "type": "text",
