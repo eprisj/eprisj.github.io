@@ -11,7 +11,117 @@ import {
   Review,
   translations
 } from './data';
-import { Search, Folder, Star, ArrowUpRight, Download, FileText, BookOpen, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb } from 'lucide-react';
+import { Search, Folder, Star, ArrowUpRight, Download, FileText, BookOpen, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, ZoomIn, ZoomOut, Maximize2 } from 'lucide-react';
+
+function ImageLightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
+  const [scale, setScale] = useState(1);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+      if (e.key === '+' || e.key === '=') setScale(s => Math.min(s + 0.5, 5));
+      if (e.key === '-') setScale(s => Math.max(s - 0.5, 0.5));
+      if (e.key === '0') { setScale(1); setPosition({ x: 0, y: 0 }); }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
+  const handleWheel = useCallback((e: React.WheelEvent) => {
+    e.preventDefault();
+    const delta = e.deltaY > 0 ? -0.15 : 0.15;
+    setScale(s => Math.min(Math.max(s + delta, 0.5), 5));
+  }, []);
+
+  const handlePointerDown = useCallback((e: React.PointerEvent) => {
+    if (scale <= 1) return;
+    setIsDragging(true);
+    setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
+    (e.target as HTMLElement).setPointerCapture(e.pointerId);
+  }, [scale, position]);
+
+  const handlePointerMove = useCallback((e: React.PointerEvent) => {
+    if (!isDragging) return;
+    setPosition({ x: e.clientX - dragStart.x, y: e.clientY - dragStart.y });
+  }, [isDragging, dragStart]);
+
+  const handlePointerUp = useCallback(() => {
+    setIsDragging(false);
+  }, []);
+
+  const handleDoubleClick = useCallback(() => {
+    if (scale > 1) {
+      setScale(1);
+      setPosition({ x: 0, y: 0 });
+    } else {
+      setScale(2.5);
+    }
+  }, [scale]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] bg-black/95 flex flex-col"
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+    >
+      <div className="flex items-center justify-between p-3 sm:p-4 text-white/80 shrink-0">
+        <p className="font-mono text-xs uppercase tracking-widest truncate mr-4">{alt}</p>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setScale(s => Math.max(s - 0.5, 0.5))}
+            className="p-2 hover:bg-white/10 rounded-full transition-colors"
+          >
+            <ZoomOut size={18} />
+          </button>
+          <span className="font-mono text-xs min-w-[3rem] text-center">{Math.round(scale * 100)}%</span>
+          <button
+            onClick={() => setScale(s => Math.min(s + 0.5, 5))}
+            className="p-2 hover:bg-white/10 rounded-full transition-colors"
+          >
+            <ZoomIn size={18} />
+          </button>
+          <button
+            onClick={() => { setScale(1); setPosition({ x: 0, y: 0 }); }}
+            className="p-2 hover:bg-white/10 rounded-full transition-colors"
+          >
+            <Maximize2 size={18} />
+          </button>
+          <button
+            onClick={onClose}
+            className="p-2 hover:bg-white/10 rounded-full transition-colors ml-2"
+          >
+            <X size={20} />
+          </button>
+        </div>
+      </div>
+      <div
+        ref={containerRef}
+        className="flex-1 overflow-hidden flex items-center justify-center"
+        onWheel={handleWheel}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onDoubleClick={handleDoubleClick}
+        style={{ cursor: scale > 1 ? (isDragging ? 'grabbing' : 'grab') : 'zoom-in', touchAction: 'none' }}
+      >
+        <img
+          src={src}
+          alt={alt}
+          draggable={false}
+          className="max-w-full max-h-full object-contain select-none transition-transform duration-150"
+          style={{ transform: `translate(${position.x}px, ${position.y}px) scale(${scale})` }}
+          referrerPolicy="no-referrer"
+        />
+      </div>
+    </motion.div>
+  );
+}
 
 function getTranslation(lang: string, key: string) {
   return translations[lang]?.[key] || translations[DEFAULT_LANGUAGE]?.[key] || key;
@@ -381,22 +491,22 @@ function GallerySection({ items }: { items: Item[] }) {
               referrerPolicy="no-referrer"
             />
           </div>
-          <div className="p-8 md:p-12 flex flex-col justify-between border-t md:border-t-0 md:border-l border-[#501a2c]">
+          <div className="p-6 sm:p-8 md:p-12 flex flex-col justify-between border-t md:border-t-0 md:border-l border-[#501a2c]">
             <div>
               <span className="border border-[#501a2c] px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-[#501a2c]">
                 {featured.fig}
               </span>
-              <h2 className="font-serif text-3xl md:text-4xl text-[#501a2c] mt-6 mb-4 leading-tight">
+              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#501a2c] mt-4 sm:mt-6 mb-3 sm:mb-4 leading-tight">
                 {featured.title}
               </h2>
-              <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60 mb-6">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60 mb-4 sm:mb-6">
                 {featured.subtitle}
               </p>
-              <p className="font-serif text-base text-[#501a2c]/70 leading-relaxed">
+              <p className="font-serif text-sm sm:text-base text-[#501a2c]/70 leading-relaxed">
                 {featured.description}
               </p>
             </div>
-            <div className="mt-8 pt-6 border-t border-[#501a2c]/20">
+            <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-[#501a2c]/20">
               <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c] group-hover:gap-4 transition-all duration-300">
                 View <ArrowUpRight size={14} />
               </span>
@@ -406,7 +516,7 @@ function GallerySection({ items }: { items: Item[] }) {
       </Reveal>
 
       {/* 3-column grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
         {rest.map((item, index) => (
           <Reveal key={item.id} delay={index * 0.05}>
             <div className="group cursor-pointer">
@@ -580,13 +690,13 @@ const LANG_LABELS: Record<string, string> = {
   ES: 'Español'
 };
 
-function ArticleView({ article, onClose, t, currentLang, setCurrentLang, languages }: { article: Article; onClose: () => void; t: (key: string) => string; currentLang: string; setCurrentLang: (lang: string) => void; languages: string[] }) {
+function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurrentLang, languages }: { article: Article; onClose: () => void; onImageClick: (src: string, alt: string) => void; t: (key: string) => string; currentLang: string; setCurrentLang: (lang: string) => void; languages: string[] }) {
   return (
     <motion.div 
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 50 }}
-      className="fixed inset-0 z-[60] bg-[#F5F0EB] overflow-y-auto"
+      className="fixed inset-0 z-[60] bg-[#F5F0EB] overflow-y-auto overflow-x-hidden"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-24 relative">
         <div className="fixed top-4 left-4 right-4 sm:top-8 sm:left-8 sm:right-8 md:left-16 md:right-16 z-50 flex items-center justify-between">
@@ -620,7 +730,7 @@ function ArticleView({ article, onClose, t, currentLang, setCurrentLang, languag
         <article className="mt-12">
           <header className="mb-16">
             {/* Hero image first — matches Figma layout */}
-            <div className="aspect-[16/9] w-full overflow-hidden bg-[#E8DED5] mb-12">
+            <div className="aspect-[4/3] sm:aspect-[16/9] overflow-hidden bg-[#E8DED5] mb-8 sm:mb-12 cursor-pointer" onClick={() => onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 675), article.title)}>
               <img
                 src={resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 675)}
                 alt={article.title}
@@ -658,13 +768,13 @@ function ArticleView({ article, onClose, t, currentLang, setCurrentLang, languag
               switch (block.type) {
                 case 'text': {
                   if (typeof block.content !== 'string') return null;
-                  return <p key={index} className="mb-8 leading-relaxed text-xl">{block.content}</p>;
+                  return <p key={index} className="mb-6 sm:mb-8 leading-relaxed text-base sm:text-lg md:text-xl">{block.content}</p>;
                 }
                 case 'quote': {
                   if (typeof block.content !== 'string') return null;
                   return (
-                    <blockquote key={index} className="border-l-2 border-[#C9A690] pl-6 my-12 italic text-2xl text-[#501a2c]">
-                      <Quote className="inline-block w-6 h-6 text-[#C9A690] mb-2 mr-2 opacity-50" />
+                    <blockquote key={index} className="border-l-2 border-[#C9A690] pl-4 sm:pl-6 my-8 sm:my-12 italic text-lg sm:text-xl md:text-2xl text-[#501a2c]">
+                      <Quote className="inline-block w-5 h-5 sm:w-6 sm:h-6 text-[#C9A690] mb-2 mr-2 opacity-50" />
                       {block.content}
                     </blockquote>
                   );
@@ -674,15 +784,16 @@ function ArticleView({ article, onClose, t, currentLang, setCurrentLang, languag
                   const imageSource = resolveMediaSource(block.content, 800, 500);
                   if (!imageSource) return null;
                   return (
-                    <figure key={index} className="my-12">
+                    <figure key={index} className="my-8 sm:my-12 -mx-4 sm:mx-0">
                       <img 
                         src={imageSource} 
                         alt={block.caption || "Article image"} 
-                        className="w-full h-auto grayscale"
+                        className="w-full h-auto grayscale cursor-pointer hover:opacity-90 transition-opacity"
                         referrerPolicy="no-referrer"
+                        onClick={() => onImageClick(imageSource, block.caption || 'Article image')}
                       />
                       {block.caption && (
-                        <figcaption className="text-center font-mono text-xs text-[#501a2c]/60 mt-4 uppercase tracking-widest">
+                        <figcaption className="text-center font-mono text-xs text-[#501a2c]/60 mt-3 sm:mt-4 uppercase tracking-widest px-4 sm:px-0">
                           {block.caption}
                         </figcaption>
                       )}
@@ -773,8 +884,8 @@ function ArticleView({ article, onClose, t, currentLang, setCurrentLang, languag
                   );
                 case 'gallery':
                   return (
-                    <figure key={index} className="my-12">
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <figure key={index} className="my-8 sm:my-12 -mx-4 sm:mx-0">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-4">
                         {Array.isArray(block.content) &&
                           block.content.map((img, i) => {
                             if (typeof img !== 'string') return null;
@@ -782,7 +893,7 @@ function ArticleView({ article, onClose, t, currentLang, setCurrentLang, languag
                             if (!gallerySource) return null;
 
                             return (
-                              <div key={i} className="aspect-square bg-[#E8DED5] overflow-hidden">
+                              <div key={i} className="aspect-square bg-[#E8DED5] overflow-hidden cursor-pointer" onClick={() => onImageClick(gallerySource, `Gallery image ${i + 1}`)}>
                                 <img 
                                   src={gallerySource} 
                                   alt={`Gallery image ${i + 1}`}
@@ -794,7 +905,7 @@ function ArticleView({ article, onClose, t, currentLang, setCurrentLang, languag
                           })}
                       </div>
                       {block.caption && (
-                        <figcaption className="text-center font-mono text-xs text-[#501a2c]/60 mt-4 uppercase tracking-widest">
+                        <figcaption className="text-center font-mono text-xs text-[#501a2c]/60 mt-3 sm:mt-4 uppercase tracking-widest px-4 sm:px-0">
                           {block.caption}
                         </figcaption>
                       )}
@@ -826,9 +937,9 @@ function ArticleView({ article, onClose, t, currentLang, setCurrentLang, languag
             })}
           </div>
 
-          <footer className="mt-16 pt-12 border-t border-[#501a2c]/20">
-            <div className="flex items-start gap-6">
-              <div className="w-16 h-16 rounded-full bg-[#501a2c] flex items-center justify-center text-[#F5F0EB] font-serif text-xl shrink-0">
+          <footer className="mt-10 sm:mt-16 pt-8 sm:pt-12 border-t border-[#501a2c]/20">
+            <div className="flex items-start gap-4 sm:gap-6">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[#501a2c] flex items-center justify-center text-[#F5F0EB] font-serif text-lg sm:text-xl shrink-0">
                 {article.author.charAt(0)}
               </div>
               <div>
@@ -951,11 +1062,11 @@ function ArticlesSection({
 
 function ReviewsSection({ reviews, t }: { reviews: Review[]; t: (key: string) => string }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-12">
       {reviews.map((review, index) => (
         <div key={review.id}>
           <Reveal delay={index * 0.1}>
-            <div className="bg-[#E8DED5] p-8 md:p-12 border border-[#501a2c] h-full flex flex-col justify-between">
+            <div className="bg-[#E8DED5] p-6 sm:p-8 md:p-12 border border-[#501a2c] h-full flex flex-col justify-between">
               <div>
                 <div className="flex justify-between items-start mb-8">
                   <div className="flex gap-1">
@@ -1053,10 +1164,20 @@ export default function App() {
   const [activeTab, setActiveTab] = useState(initialRoute.tab || 'gallery');
   const [selectedArticleId, setSelectedArticleId] = useState<number | null>(initialRoute.articleId ?? null);
   const [currentLang, setCurrentLang] = useState(DEFAULT_LANGUAGE);
+  const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
   const languageOptions = getAvailableLanguages();
   const { items, articles, reviews, libraryItems } = getContentForLanguage(currentLang);
-  const selectedArticle = selectedArticleId !== null ? articles.find((article) => article.id === selectedArticleId) || null : null;
+  const defaultContent = getContentForLanguage(DEFAULT_LANGUAGE);
+  const selectedArticle = selectedArticleId !== null
+    ? articles.find((article) => article.id === selectedArticleId)
+      || defaultContent.articles.find((article) => article.id === selectedArticleId)
+      || null
+    : null;
   const t = (key: string) => getTranslation(currentLang, key);
+
+  const handleImageClick = useCallback((src: string, alt: string) => {
+    setLightboxImage({ src, alt });
+  }, []);
 
   const navigate = useCallback((path: string) => {
     window.history.pushState(null, '', path);
@@ -1143,6 +1264,7 @@ export default function App() {
             <div className="text-left md:text-right font-mono text-xs uppercase tracking-widest opacity-40">
               <p>© 2026 Epris Journal</p>
               <p>{t('footer.rights')}</p>
+              <a href="/admin/index.html" className="inline-block mt-4 opacity-60 hover:opacity-100 transition-opacity border-b border-[#F5F0EB]/30">Admin</a>
             </div>
           </div>
         </footer>
@@ -1152,7 +1274,17 @@ export default function App() {
 
       <AnimatePresence>
         {selectedArticle && (
-          <ArticleView article={selectedArticle} onClose={handleCloseArticle} t={t} currentLang={currentLang} setCurrentLang={setCurrentLang} languages={languageOptions} />
+          <ArticleView article={selectedArticle} onClose={handleCloseArticle} onImageClick={handleImageClick} t={t} currentLang={currentLang} setCurrentLang={setCurrentLang} languages={languageOptions} />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {lightboxImage && (
+          <ImageLightbox
+            src={lightboxImage.src}
+            alt={lightboxImage.alt}
+            onClose={() => setLightboxImage(null)}
+          />
         )}
       </AnimatePresence>
     </div>
