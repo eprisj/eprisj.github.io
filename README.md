@@ -37,7 +37,7 @@ What it does:
 - Supports image URLs in visual editor (`imageUrl` / article cover URL)
 - Supports drag-and-drop image upload to `public/uploads` via GitHub API
 - Can machine-translate the current visual-editor entry or section into every language listed in `translations`
-- Shows poll votes from JSON separately from local votes stored in the current browser
+- Shows baseline JSON poll votes, shared online votes, and the current browser's local vote marker separately
 
 Image behavior:
 
@@ -51,9 +51,9 @@ Required auth:
 
 Poll behavior:
 
-- The static site stores each visitor's vote in that visitor's `localStorage`
+- Shared poll votes are stored in CounterAPI v1 counters under the `eprisj-github-io` namespace
+- `localStorage` is only used to remember that this browser has already voted
 - `src/content/site-content.json` contains the baseline vote numbers that ship with the site
-- A shared live vote counter requires an external backend or database
 
 ## GitHub Pages setup
 

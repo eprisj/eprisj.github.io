@@ -522,6 +522,49 @@ function getPollStorageKey(pollKey: string) {
   return 'epris-poll-v2-' + pollKey;
 }
 
+const POLL_COUNTER_NAMESPACE = 'eprisj-github-io';
+const POLL_COUNTER_BASE_URL = 'https://api.counterapi.dev/v1';
+
+function getPollCounterName(pollKey: string, optionIndex: number) {
+  return `${pollKey}-option-${optionIndex}`
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 120);
+}
+
+async function readPollCounter(pollKey: string, optionIndex: number): Promise<number> {
+  const name = getPollCounterName(pollKey, optionIndex);
+  const response = await fetch(`${POLL_COUNTER_BASE_URL}/${POLL_COUNTER_NAMESPACE}/${encodeURIComponent(name)}/`, {
+    cache: 'no-store'
+  });
+
+  if (response.status === 400 || response.status === 404) {
+    return 0;
+  }
+
+  if (!response.ok) {
+    throw new Error(`Poll counter read failed: ${response.status}`);
+  }
+
+  const payload = await response.json();
+  return Number(payload.count) || 0;
+}
+
+async function incrementPollCounter(pollKey: string, optionIndex: number): Promise<number> {
+  const name = getPollCounterName(pollKey, optionIndex);
+  const response = await fetch(`${POLL_COUNTER_BASE_URL}/${POLL_COUNTER_NAMESPACE}/${encodeURIComponent(name)}/up`, {
+    cache: 'no-store'
+  });
+
+  if (!response.ok) {
+    throw new Error(`Poll counter write failed: ${response.status}`);
+  }
+
+  const payload = await response.json();
+  return Number(payload.count) || 0;
+}
+
 function readSavedPoll(storageKey: string, legacyKey: string) {
   try {
     const saved = localStorage.getItem(storageKey) || localStorage.getItem(legacyKey);
@@ -534,6 +577,10 @@ function readSavedPoll(storageKey: string, legacyKey: string) {
 function PollBlock({ question, options, t, pollKey }: { question: string, options: { label: string, votes: number }[], t: (key: string) => string; pollKey: string }) {
   const storageKey = getPollStorageKey(pollKey);
   const legacyKey = getLegacyPollStorageKey(question);
+  const [onlineVotes, setOnlineVotes] = useState<number[]>(() => options.map(() => 0));
+  const [isLoadingVotes, setIsLoadingVotes] = useState(true);
+  const [voteError, setVoteError] = useState('');
+  const [isVoting, setIsVoting] = useState(false);
 
   const [votedIndex, setVotedIndex] = useState<number | null>(() => {
     const parsed = readSavedPoll(storageKey, legacyKey);
@@ -542,41 +589,76 @@ function PollBlock({ question, options, t, pollKey }: { question: string, option
   });
 
   const [localOptions, setLocalOptions] = useState(() => {
-    const parsed = readSavedPoll(storageKey, legacyKey);
-    if (parsed && Array.isArray(parsed.votes)) {
-      return options.map((opt, i) => ({ ...opt, votes: (parsed.votes[i] ?? opt.votes) }));
-    }
     return options;
   });
 
   useEffect(() => {
     const parsed = readSavedPoll(storageKey, legacyKey);
     setVotedIndex(parsed && typeof parsed.votedIndex === 'number' ? parsed.votedIndex : null);
-    if (parsed && Array.isArray(parsed.votes)) {
-      setLocalOptions(options.map((opt, i) => ({ ...opt, votes: (parsed.votes[i] ?? opt.votes) })));
-    } else {
-      setLocalOptions(options);
-    }
+    setLocalOptions(options);
   }, [storageKey, legacyKey, options]);
 
-  const handleVote = (index: number) => {
-    if (votedIndex !== null) return;
+  useEffect(() => {
+    let cancelled = false;
+    setIsLoadingVotes(true);
+    setVoteError('');
+
+    Promise.all(options.map((_, index) => readPollCounter(pollKey, index)))
+      .then((counts) => {
+        if (!cancelled) {
+          setOnlineVotes(counts);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setVoteError('Online poll is temporarily unavailable');
+          setOnlineVotes(options.map(() => 0));
+        }
+      })
+      .finally(() => {
+        if (!cancelled) {
+          setIsLoadingVotes(false);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [pollKey, options]);
+
+  const handleVote = async (index: number) => {
+    if (votedIndex !== null || isVoting) return;
+    setIsVoting(true);
+    setVoteError('');
+
+    const previousOnlineVotes = onlineVotes;
     setVotedIndex(index);
-    const newOptions = [...localOptions];
-    newOptions[index] = { ...newOptions[index], votes: newOptions[index].votes + 1 };
-    setLocalOptions(newOptions);
+    setOnlineVotes((votes) => votes.map((count, i) => i === index ? count + 1 : count));
+
     try {
+      const count = await incrementPollCounter(pollKey, index);
+      const nextOnlineVotes = previousOnlineVotes.map((value, i) => i === index ? count : value);
+      setOnlineVotes(nextOnlineVotes);
       localStorage.setItem(storageKey, JSON.stringify({
         question,
         pollKey,
         votedIndex: index,
-        votes: newOptions.map(o => o.votes),
         timestamp: Date.now()
       }));
-    } catch { /* quota exceeded */ }
+    } catch {
+      setVotedIndex(null);
+      setOnlineVotes(previousOnlineVotes);
+      setVoteError('Could not save your vote online. Please try again.');
+    } finally {
+      setIsVoting(false);
+    }
   };
 
-  const totalVotes = localOptions.reduce((acc, curr) => acc + curr.votes, 0);
+  const displayedOptions = localOptions.map((option, index) => ({
+    ...option,
+    votes: option.votes + (onlineVotes[index] || 0)
+  }));
+  const totalVotes = displayedOptions.reduce((acc, curr) => acc + curr.votes, 0);
 
   return (
     <div className="my-12 p-8 bg-[#501a2c] text-[#F5F0EB] rounded-xl">
@@ -585,13 +667,13 @@ function PollBlock({ question, options, t, pollKey }: { question: string, option
         {question}
       </h4>
       <div className="space-y-4">
-        {localOptions.map((opt, index) => {
+        {displayedOptions.map((opt, index) => {
           const percentage = totalVotes > 0 ? Math.round((opt.votes / totalVotes) * 100) : 0;
           return (
-            <div key={index} onClick={() => handleVote(index)} className={`cursor-pointer ${votedIndex !== null ? 'pointer-events-none' : ''}`}>
+            <div key={index} onClick={() => handleVote(index)} className={`cursor-pointer ${votedIndex !== null || isVoting ? 'pointer-events-none' : ''}`}>
               <div className="flex justify-between text-sm font-mono uppercase tracking-widest mb-2 opacity-80">
                 <span>{opt.label}</span>
-                {votedIndex !== null && <span>{percentage}%</span>}
+                {votedIndex !== null && <span>{percentage}% · {opt.votes}</span>}
               </div>
               <div className="h-12 border border-[#F5F0EB]/20 relative overflow-hidden group">
                 <motion.div 
@@ -606,6 +688,16 @@ function PollBlock({ question, options, t, pollKey }: { question: string, option
           );
         })}
       </div>
+      {isLoadingVotes && (
+        <p className="mt-6 text-center font-mono text-xs uppercase tracking-widest opacity-40">
+          Loading live votes...
+        </p>
+      )}
+      {voteError && (
+        <p className="mt-6 text-center font-mono text-xs uppercase tracking-widest text-[#C9A690]">
+          {voteError}
+        </p>
+      )}
       {votedIndex !== null && (
         <p className="mt-6 text-center font-mono text-xs uppercase tracking-widest opacity-40">
           {t('poll.thanks')}
