@@ -78,19 +78,17 @@ export interface SiteContent {
 const content = rawContent as SiteContent;
 const localizedCollections = content.localizedCollections || {};
 
-function pickLocalizedArray<T>(value: T[] | undefined, fallback: T[]): T[] {
-  return Array.isArray(value) ? value : fallback;
-}
+function mergeLocalizedArray<T extends { id: number }>(value: T[] | undefined, fallback: T[]): T[] {
+  if (!Array.isArray(value)) {
+    return fallback;
+  }
 
-function hasFullLocalizedContent(lang: string): boolean {
-  const bucket = localizedCollections[lang];
-  return Boolean(
-    bucket &&
-      Array.isArray(bucket.items) &&
-      Array.isArray(bucket.articles) &&
-      Array.isArray(bucket.reviews) &&
-      Array.isArray(bucket.libraryItems)
-  );
+  const localizedById = new Map(value.map((entry) => [Number(entry.id), entry]));
+  const merged = fallback.map((entry) => localizedById.get(Number(entry.id)) || entry);
+  const fallbackIds = new Set(fallback.map((entry) => Number(entry.id)));
+  const localizedOnly = value.filter((entry) => !fallbackIds.has(Number(entry.id)));
+
+  return [...merged, ...localizedOnly];
 }
 
 export function getAvailableLanguages(): string[] {
@@ -105,10 +103,10 @@ export function getContentForLanguage(lang: string): LanguageContent {
   const bucket = localizedCollections[lang] || {};
 
   return {
-    items: pickLocalizedArray(bucket.items, content.items),
-    articles: pickLocalizedArray(bucket.articles, content.articles),
-    reviews: pickLocalizedArray(bucket.reviews, content.reviews),
-    libraryItems: pickLocalizedArray(bucket.libraryItems, content.libraryItems)
+    items: mergeLocalizedArray(bucket.items, content.items),
+    articles: mergeLocalizedArray(bucket.articles, content.articles),
+    reviews: mergeLocalizedArray(bucket.reviews, content.reviews),
+    libraryItems: mergeLocalizedArray(bucket.libraryItems, content.libraryItems)
   };
 }
 
