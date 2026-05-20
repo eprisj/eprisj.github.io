@@ -1259,6 +1259,7 @@ export default function App() {
             <div className="text-left md:text-right font-mono text-xs uppercase tracking-widest opacity-40">
               <p>© 2026 Epris Journal</p>
               <p>{t('footer.rights')}</p>
+              <a href="/admin/index.html" className="inline-block mt-4 opacity-60 hover:opacity-100 transition-opacity border-b border-[#F5F0EB]/30">Admin</a>
             </div>
           </div>
         </footer>

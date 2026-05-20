@@ -3236,11 +3236,7 @@ function renderPollResults() {
   }
 }
 
-function escapeHtml(str) {
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
-}
+// escapeHtml already defined above (line 678)
 
 if (pollRefreshBtn) {
   pollRefreshBtn.addEventListener('click', renderPollResults);
