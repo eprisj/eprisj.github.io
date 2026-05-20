@@ -1,5 +1,5 @@
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { useRef, ReactNode, useState, useEffect, useCallback, FormEvent } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ReactNode, useState, useEffect, useCallback, FormEvent } from 'react';
 import {
   Article,
   ContentBlock,
@@ -11,114 +11,47 @@ import {
   Review,
   translations
 } from './data';
-import { Search, Folder, Star, ArrowUpRight, Download, FileText, BookOpen, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, ZoomIn, ZoomOut, Maximize2 } from 'lucide-react';
+import { Search, Folder, Star, ArrowUpRight, Download, FileText, BookOpen, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb } from 'lucide-react';
+
+function generateSlug(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
 
 function ImageLightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
-  const [scale, setScale] = useState(1);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-  const containerRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
-      if (e.key === '+' || e.key === '=') setScale(s => Math.min(s + 0.5, 5));
-      if (e.key === '-') setScale(s => Math.max(s - 0.5, 0.5));
-      if (e.key === '0') { setScale(1); setPosition({ x: 0, y: 0 }); }
     };
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
-
-  const handleWheel = useCallback((e: React.WheelEvent) => {
-    e.preventDefault();
-    const delta = e.deltaY > 0 ? -0.15 : 0.15;
-    setScale(s => Math.min(Math.max(s + delta, 0.5), 5));
-  }, []);
-
-  const handlePointerDown = useCallback((e: React.PointerEvent) => {
-    if (scale <= 1) return;
-    setIsDragging(true);
-    setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
-    (e.target as HTMLElement).setPointerCapture(e.pointerId);
-  }, [scale, position]);
-
-  const handlePointerMove = useCallback((e: React.PointerEvent) => {
-    if (!isDragging) return;
-    setPosition({ x: e.clientX - dragStart.x, y: e.clientY - dragStart.y });
-  }, [isDragging, dragStart]);
-
-  const handlePointerUp = useCallback(() => {
-    setIsDragging(false);
-  }, []);
-
-  const handleDoubleClick = useCallback(() => {
-    if (scale > 1) {
-      setScale(1);
-      setPosition({ x: 0, y: 0 });
-    } else {
-      setScale(2.5);
-    }
-  }, [scale]);
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[100] bg-black/95 flex flex-col"
+      transition={{ duration: 0.2 }}
+      className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4"
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
-      <div className="flex items-center justify-between p-3 sm:p-4 text-white/80 shrink-0">
-        <p className="font-mono text-xs uppercase tracking-widest truncate mr-4">{alt}</p>
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => setScale(s => Math.max(s - 0.5, 0.5))}
-            className="p-2 hover:bg-white/10 rounded-full transition-colors"
-          >
-            <ZoomOut size={18} />
-          </button>
-          <span className="font-mono text-xs min-w-[3rem] text-center">{Math.round(scale * 100)}%</span>
-          <button
-            onClick={() => setScale(s => Math.min(s + 0.5, 5))}
-            className="p-2 hover:bg-white/10 rounded-full transition-colors"
-          >
-            <ZoomIn size={18} />
-          </button>
-          <button
-            onClick={() => { setScale(1); setPosition({ x: 0, y: 0 }); }}
-            className="p-2 hover:bg-white/10 rounded-full transition-colors"
-          >
-            <Maximize2 size={18} />
-          </button>
-          <button
-            onClick={onClose}
-            className="p-2 hover:bg-white/10 rounded-full transition-colors ml-2"
-          >
-            <X size={20} />
-          </button>
-        </div>
-      </div>
-      <div
-        ref={containerRef}
-        className="flex-1 overflow-hidden flex items-center justify-center"
-        onWheel={handleWheel}
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={handlePointerUp}
-        onDoubleClick={handleDoubleClick}
-        style={{ cursor: scale > 1 ? (isDragging ? 'grabbing' : 'grab') : 'zoom-in', touchAction: 'none' }}
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 p-2 text-white/80 hover:bg-white/10 rounded-full transition-colors z-10"
       >
-        <img
-          src={src}
-          alt={alt}
-          draggable={false}
-          className="max-w-full max-h-full object-contain select-none transition-transform duration-150"
-          style={{ transform: `translate(${position.x}px, ${position.y}px) scale(${scale})` }}
-          referrerPolicy="no-referrer"
-        />
-      </div>
+        <X size={24} />
+      </button>
+      <img
+        src={src}
+        alt={alt}
+        className="max-w-full max-h-full object-contain select-none"
+        referrerPolicy="no-referrer"
+      />
     </motion.div>
   );
 }
@@ -147,10 +80,10 @@ function resolveMediaSource(value: string | undefined, width: number, height: nu
 function Reveal({ children, delay = 0 }: { children: ReactNode; delay?: number }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10%" }}
-      transition={{ duration: 0.8, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
+      viewport={{ once: true, margin: "-5%" }}
+      transition={{ duration: 0.35, delay: Math.min(delay, 0.1), ease: "easeOut" }}
     >
       {children}
     </motion.div>
@@ -235,24 +168,26 @@ function NavBar({
             <Search size={16} />
           </button>
           
-          <div className="relative w-16 group">
+          <div className="relative w-16">
             <button 
               className="w-full h-full flex items-center justify-center hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-colors"
               onClick={() => setIsLangOpen(!isLangOpen)}
             >
               {currentLang}
             </button>
-            <div className="absolute top-full right-0 w-16 bg-[#F5F0EB] border-x border-b border-[#501a2c] hidden group-hover:block">
-              {languages.filter(l => l !== currentLang).map(lang => (
-                <button 
-                  key={lang}
-                  onClick={() => setCurrentLang(lang)}
-                  className="w-full py-2 hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-colors block text-center border-b border-[#501a2c]/20 last:border-0"
-                >
-                  {lang}
-                </button>
-              ))}
-            </div>
+            {isLangOpen && (
+              <div className="absolute top-full right-0 w-16 bg-[#F5F0EB] border-x border-b border-[#501a2c] z-50">
+                {languages.filter(l => l !== currentLang).map(lang => (
+                  <button 
+                    key={lang}
+                    onClick={() => { setCurrentLang(lang); setIsLangOpen(false); }}
+                    className="w-full py-2 hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-colors block text-center border-b border-[#501a2c]/20 last:border-0"
+                  >
+                    {lang}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           <button 
@@ -356,7 +291,7 @@ function Hero({ t }: { t: (key: string) => string }) {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         className="grid grid-cols-1 md:grid-cols-3 items-end px-4 sm:px-8 md:px-16 py-10 sm:py-16 md:py-28 gap-4 md:gap-8"
       >
         {/* Left: EPRIS masthead */}
@@ -482,12 +417,10 @@ function GallerySection({ items }: { items: Item[] }) {
       <Reveal>
         <div className="grid grid-cols-1 md:grid-cols-3 mb-12 border border-[#501a2c] group cursor-pointer overflow-hidden">
           <div className="md:col-span-2 aspect-[4/3] overflow-hidden bg-[#E8DED5]">
-            <motion.img
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+            <img
               src={resolveMediaSource(featured.imageUrl || featured.imageSeed, 1000, 750)}
               alt={featured.title}
-              className="w-full h-full object-cover grayscale"
+              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
               referrerPolicy="no-referrer"
             />
           </div>
@@ -521,12 +454,10 @@ function GallerySection({ items }: { items: Item[] }) {
           <Reveal key={item.id} delay={index * 0.05}>
             <div className="group cursor-pointer">
               <div className="aspect-[4/3] overflow-hidden bg-[#E8DED5] mb-4">
-                <motion.img
-                  whileHover={{ scale: 1.03 }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
+                <img
                   src={resolveMediaSource(item.imageUrl || item.imageSeed, 600, 450)}
                   alt={item.title}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -691,11 +622,14 @@ const LANG_LABELS: Record<string, string> = {
 };
 
 function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurrentLang, languages }: { article: Article; onClose: () => void; onImageClick: (src: string, alt: string) => void; t: (key: string) => string; currentLang: string; setCurrentLang: (lang: string) => void; languages: string[] }) {
+  const [isArticleLangOpen, setIsArticleLangOpen] = useState(false);
+
   return (
     <motion.div 
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 50 }}
+      exit={{ opacity: 0, y: 20 }}
+      transition={{ duration: 0.25 }}
       className="fixed inset-0 z-[60] bg-[#F5F0EB] overflow-y-auto overflow-x-hidden"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-24 relative">
@@ -707,23 +641,28 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
             <ArrowLeft size={16} /> {t('back')}
           </button>
 
-          <div className="relative group">
-            <button className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c] bg-[#F5F0EB]/80 backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-[#501a2c]/10 hover:opacity-60 transition-opacity">
+          <div className="relative">
+            <button
+              onClick={() => setIsArticleLangOpen(!isArticleLangOpen)}
+              className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c] bg-[#F5F0EB]/80 backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-[#501a2c]/10 hover:opacity-60 transition-opacity"
+            >
               <Globe size={14} />
               {currentLang}
             </button>
-            <div className="absolute top-full right-0 mt-1 bg-[#F5F0EB] border border-[#501a2c]/20 rounded-lg shadow-lg overflow-hidden hidden group-hover:block min-w-[140px]">
-              {languages.map(lang => (
-                <button
-                  key={lang}
-                  onClick={() => setCurrentLang(lang)}
-                  className={`w-full px-4 py-2 text-left font-mono text-xs tracking-wider hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-colors flex items-center justify-between gap-3 ${currentLang === lang ? 'bg-[#501a2c] text-[#F5F0EB]' : 'text-[#501a2c]'}`}
-                >
-                  <span>{LANG_LABELS[lang] || lang}</span>
-                  <span className="opacity-50">{lang}</span>
-                </button>
-              ))}
-            </div>
+            {isArticleLangOpen && (
+              <div className="absolute top-full right-0 mt-1 bg-[#F5F0EB] border border-[#501a2c]/20 rounded-lg shadow-lg overflow-hidden min-w-[140px] z-50">
+                {languages.map(lang => (
+                  <button
+                    key={lang}
+                    onClick={() => { setCurrentLang(lang); setIsArticleLangOpen(false); }}
+                    className={`w-full px-4 py-2 text-left font-mono text-xs tracking-wider hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-colors flex items-center justify-between gap-3 ${currentLang === lang ? 'bg-[#501a2c] text-[#F5F0EB]' : 'text-[#501a2c]'}`}
+                  >
+                    <span>{LANG_LABELS[lang] || lang}</span>
+                    <span className="opacity-50">{lang}</span>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
@@ -1150,13 +1089,78 @@ function Sidebar({ t }: { t: (key: string) => string }) {
 
 const VALID_TABS = ['gallery', 'articles', 'reviews', 'library', 'about'];
 
+function buildSlugMap(): Map<string, number> {
+  const allArticles = getContentForLanguage(DEFAULT_LANGUAGE).articles;
+  const map = new Map<string, number>();
+  for (const a of allArticles) {
+    map.set(generateSlug(a.title), a.id);
+  }
+  return map;
+}
+
+const SLUG_MAP = buildSlugMap();
+
+function getSlugForArticle(article: Article): string {
+  return generateSlug(article.title);
+}
+
 function parsePath(pathname: string): { tab?: string; articleId?: number } {
   const p = pathname.replace(/^\//, '').replace(/\/$/, '');
   if (!p) return {};
-  const articleMatch = p.match(/^article\/(\d+)$/);
-  if (articleMatch) return { tab: 'articles', articleId: parseInt(articleMatch[1], 10) };
+  const numericMatch = p.match(/^article\/(\d+)$/);
+  if (numericMatch) return { tab: 'articles', articleId: parseInt(numericMatch[1], 10) };
+  const slugMatch = p.match(/^article\/(.+)$/);
+  if (slugMatch) {
+    const id = SLUG_MAP.get(slugMatch[1]);
+    if (id !== undefined) return { tab: 'articles', articleId: id };
+  }
   if (VALID_TABS.includes(p)) return { tab: p };
   return {};
+}
+
+function updateMetaTags(article: Article | null) {
+  const setMeta = (property: string, content: string) => {
+    let el = document.querySelector(`meta[property="${property}"]`) || document.querySelector(`meta[name="${property}"]`);
+    if (!el) {
+      el = document.createElement('meta');
+      if (property.startsWith('og:') || property.startsWith('article:')) {
+        el.setAttribute('property', property);
+      } else {
+        el.setAttribute('name', property);
+      }
+      document.head.appendChild(el);
+    }
+    el.setAttribute('content', content);
+  };
+
+  if (article) {
+    const imageUrl = resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 630);
+    document.title = `${article.title} — EPRIS Journal`;
+    setMeta('og:title', article.title);
+    setMeta('og:description', article.excerpt);
+    setMeta('og:image', imageUrl);
+    setMeta('og:type', 'article');
+    setMeta('og:url', window.location.href);
+    setMeta('og:site_name', 'EPRIS Journal');
+    setMeta('twitter:card', 'summary_large_image');
+    setMeta('twitter:title', article.title);
+    setMeta('twitter:description', article.excerpt);
+    setMeta('twitter:image', imageUrl);
+    setMeta('description', article.excerpt);
+  } else {
+    document.title = 'EPRIS Journal';
+    setMeta('og:title', 'EPRIS Journal');
+    setMeta('og:description', 'Your personal archive. The taste of life.');
+    setMeta('og:image', 'https://eprisj.github.io/images/featured.png');
+    setMeta('og:type', 'website');
+    setMeta('og:url', window.location.href);
+    setMeta('og:site_name', 'EPRIS Journal');
+    setMeta('twitter:card', 'summary_large_image');
+    setMeta('twitter:title', 'EPRIS Journal');
+    setMeta('twitter:description', 'Your personal archive. The taste of life.');
+    setMeta('twitter:image', 'https://eprisj.github.io/images/featured.png');
+    setMeta('description', 'Your personal archive. The taste of life.');
+  }
 }
 
 export default function App() {
@@ -1175,6 +1179,10 @@ export default function App() {
     : null;
   const t = (key: string) => getTranslation(currentLang, key);
 
+  useEffect(() => {
+    updateMetaTags(selectedArticle);
+  }, [selectedArticle]);
+
   const handleImageClick = useCallback((src: string, alt: string) => {
     setLightboxImage({ src, alt });
   }, []);
@@ -1189,10 +1197,15 @@ export default function App() {
     navigate(tab === 'gallery' ? '/' : `/${tab}`);
   }, [navigate]);
 
-  const handleSelectArticle = useCallback((id: number) => {
+  const handleSelectArticle = useCallback((id: number, article?: Article) => {
     setSelectedArticleId(id);
-    navigate(`/article/${id}`);
-  }, [navigate]);
+    if (article) {
+      navigate(`/article/${getSlugForArticle(article)}`);
+    } else {
+      const a = defaultContent.articles.find(a => a.id === id);
+      navigate(`/article/${a ? getSlugForArticle(a) : id}`);
+    }
+  }, [navigate, defaultContent.articles]);
 
   const handleCloseArticle = useCallback(() => {
     setSelectedArticleId(null);
@@ -1214,6 +1227,18 @@ export default function App() {
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
 
+  useEffect(() => {
+    if (initialRoute.articleId !== undefined) {
+      const slug = window.location.pathname.match(/\/article\/(\d+)$/);
+      if (slug) {
+        const a = defaultContent.articles.find(a => a.id === initialRoute.articleId);
+        if (a) {
+          window.history.replaceState(null, '', `/article/${getSlugForArticle(a)}`);
+        }
+      }
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#F5F0EB] text-[#501a2c] selection:bg-[#C9A690] selection:text-white">
       <NavBar
@@ -1233,10 +1258,10 @@ export default function App() {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
             >
               {activeTab === 'gallery' && (
                 <>
@@ -1244,7 +1269,7 @@ export default function App() {
                   <GallerySection items={items} />
                 </>
               )}
-              {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id)} t={t} />}
+              {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
               {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} />}
               {activeTab === 'library' && <LibrarySection libraryItems={libraryItems} t={t} />}
               {activeTab === 'about' && <AboutSection t={t} />}
