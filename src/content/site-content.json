@@ -46,7 +46,9 @@
       "sidebar.travel": "Travel",
       "sidebar.taste": "Taste",
       "sidebar.design": "Design",
-      "sidebar.culture": "Culture"
+      "sidebar.culture": "Culture",
+      "share": "Share",
+      "share.copied": "Link copied"
     },
     "RU": {
       "nav.gallery": "Галерея",
@@ -94,7 +96,9 @@
       "sidebar.travel": "Путешествия",
       "sidebar.taste": "Вкус",
       "sidebar.design": "Дизайн",
-      "sidebar.culture": "Культура"
+      "sidebar.culture": "Культура",
+      "share": "Поделиться",
+      "share.copied": "Ссылка скопирована"
     },
     "UA": {
       "nav.gallery": "Галерея",
@@ -142,7 +146,9 @@
       "sidebar.travel": "Подорожі",
       "sidebar.taste": "Смак",
       "sidebar.design": "Дизайн",
-      "sidebar.culture": "Культура"
+      "sidebar.culture": "Культура",
+      "share": "Поділитися",
+      "share.copied": "Посилання скопійовано"
     },
     "TR": {
       "nav.gallery": "Galeri",
@@ -190,7 +196,9 @@
       "sidebar.travel": "Seyahat",
       "sidebar.taste": "Lezzet",
       "sidebar.design": "Tasarım",
-      "sidebar.culture": "Kültür"
+      "sidebar.culture": "Kültür",
+      "share": "Paylaş",
+      "share.copied": "Bağlantı kopyalandı"
     },
     "DE": {
       "nav.gallery": "Galerie",
@@ -238,7 +246,9 @@
       "sidebar.travel": "Reisen",
       "sidebar.taste": "Geschmack",
       "sidebar.design": "Design",
-      "sidebar.culture": "Kultur"
+      "sidebar.culture": "Kultur",
+      "share": "Teilen",
+      "share.copied": "Link kopiert"
     },
     "IT": {
       "nav.gallery": "Galleria",
@@ -286,7 +296,9 @@
       "sidebar.travel": "Viaggi",
       "sidebar.taste": "Gusto",
       "sidebar.design": "Design",
-      "sidebar.culture": "Cultura"
+      "sidebar.culture": "Cultura",
+      "share": "Condividi",
+      "share.copied": "Link copiato"
     },
     "ES": {
       "nav.gallery": "Galería",
@@ -334,7 +346,9 @@
       "sidebar.travel": "Viajes",
       "sidebar.taste": "Sabor",
       "sidebar.design": "Diseño",
-      "sidebar.culture": "Cultura"
+      "sidebar.culture": "Cultura",
+      "share": "Compartir",
+      "share.copied": "Enlace copiado"
     }
   },
   "items": [
