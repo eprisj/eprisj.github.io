@@ -700,7 +700,7 @@ function PollBlock({ question, options, t, pollKey }: { question: string, option
       )}
       {votedIndex !== null && (
         <p className="mt-6 text-center font-mono text-xs uppercase tracking-widest opacity-40">
-          {t('poll.thanks')}
+          {t('poll.thanks')} · {totalVotes.toLocaleString()} {t('poll.total')}
         </p>
       )}
     </div>
