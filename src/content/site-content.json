@@ -924,62 +924,93 @@
       "content": [
         {
           "type": "text",
-          "content": "There is a peculiar kind of silence that inhabits old doorways — a silence woven from centuries of hands pressing against timber, of keys turning in iron locks worn smooth by ten thousand evenings. Stand before a door on Rua Augusta in Lisbon, on a cobblestoned alley of Tbilisi's Sololaki, or in the salt-crusted shade of a Havana portico, and you will hear it: the low, unhurried breathing of a city remembering itself."
+          "content": "There is a peculiar kind of silence that inhabits old doorways — a silence woven from centuries of hands pressing against timber, of keys turning in iron locks worn smooth by ten thousand evenings. Stand before a door on Rua Augusta in Lisbon, on a cobblestoned alley of Tbilisi's Sololaki quarter, or in the salt-crusted shade of a Havana portico, and you will hear it: the low, unhurried breathing of a city remembering itself."
         },
         {
           "type": "text",
-          "content": "Door restoration is not merely carpentry. It is an act of archaeological tenderness, a conversation between the living and the vanished. When a restorer peels away layers of paint — cerulean blue over terracotta over bone white — they are reading the autobiography of a building. Each colour is a decade, each crack a winter survived, each replaced hinge a family that once called this threshold home."
+          "content": "Door restoration is not merely carpentry. It is an act of archaeological tenderness, a conversation between the living and the vanished. When a conservator peels away layers of paint — cerulean blue over terracotta over bone white — they are performing stratigraphic analysis, reading the autobiography of a building one pigment at a time. Each colour corresponds to a decade, each crack charts a winter survived, each replaced hinge marks a family that once named this threshold home. The paint cross-section, examined under a stereomicroscope at 40× magnification, reveals not just hues but binders: the linseed-oil grounds of the eighteenth century, the lead-white primers of the Napoleonic era, the alkyd enamels of the mid-twentieth century, each layer a forensic timestamp more precise than any archive."
         },
         {
           "type": "note",
-          "content": "A single historic door can contain up to twelve layers of paint, each one a chapter in the biography of the street. In Saint Petersburg, restorers have discovered pre-revolutionary pigments hidden beneath Soviet-era enamels — colours that had not seen daylight for over a century."
-        },
-        {
-          "type": "quote",
-          "content": "The door is the first sentence the building speaks to the street. Destroy it, and you erase the opening line of a story that took centuries to compose."
+          "content": "A single historic door can harbour up to twelve discrete paint strata. In Saint Petersburg, conservators from the 'Dveri s Pomoek' collective have documented pre-revolutionary pigments — Prussian blue, chrome yellow, genuine vermilion — entombed beneath Soviet-era PF-115 enamel. Some of these pigments had not absorbed a photon of visible light for over a century before the scalpel exposed them."
         },
         {
           "type": "text",
-          "content": "In Lisbon, the ancient Pombaline doors — born from the rubble of the catastrophic 1755 earthquake — stand as monuments to resilience wrapped in ornament. Framed by azulejo tiles of cobalt and gold, these towering panels of Brazilian hardwood bear the scars of Atlantic storms and the caress of jasmine-scented breezes. The city's Baixa district is a living museum of these portals: double-winged, iron-studded, their fanlights casting kaleidoscopic shadows onto marble vestibules at the hour when the Tagus turns amber."
+          "content": "The fundamental tension in door conservation sits between two imperatives that the uninitiated often confuse: restoration and conservation. Restoration implies returning an object to a specific historical state, which demands interpretive choices — which century's appearance do you privilege? Conservation, by contrast, aims to stabilise the object in its current condition, arresting decay without erasing the patina of time. The modern consensus, codified in the Venice Charter of 1964 and refined by the Burra Charter of 1979, leans decisively toward conservation: intervene minimally, document exhaustively, and ensure reversibility. Every epoxy fill, every dutchman splice, every re-gilded surface must be distinguishable from the original upon close inspection, and removable without damaging the host material."
+        },
+        {
+          "type": "quote",
+          "content": "The door is the first sentence the building speaks to the street. Destroy it, and you erase the opening line of a story that took centuries to compose. Replace it with a replica, and you have written fan fiction in the margins of a manuscript."
+        },
+        {
+          "type": "text",
+          "content": "Consider the materiality of a Pombaline door in Lisbon's Baixa district. After the catastrophic earthquake of November 1, 1755 — which killed between 30,000 and 50,000 people and levelled 85% of the city — the Marquis of Pombal commissioned a radical reconstruction based on proto-seismic engineering. The resulting Pombaline architecture introduced the 'gaiola pombalina' — a flexible timber-frame cage embedded within masonry walls, designed to flex rather than fracture during tremors. The doors of these buildings were crafted from Brazilian peroba rosa (Aspidosperma polyneuron) and pau-marfim (Balfourodendron riedelianum), imported from the Atlantic colonies: dense, resinous hardwoods with an interlocking grain that resists both marine humidity and the torsional stress of seismic movement. The joinery is mortise-and-tenon throughout, with wedged through-tenons at the stile-and-rail junctions — no nails, no screws, only the geometry of wood locking against wood."
         },
         {
           "type": "image",
           "content": "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&h=500&fit=crop",
-          "caption": "A weathered doorway in Lisbon's Alfama district — centuries of ocean wind etched into every grain."
+          "caption": "A weathered doorway in Lisbon's Alfama district — centuries of Atlantic wind, salt crystallisation, and ultraviolet degradation etched into every tangential grain."
         },
         {
           "type": "text",
-          "content": "Travel eastward, and the doors of Tbilisi reveal an entirely different grammar of beauty. In the labyrinthine streets of the Old Town, Art Nouveau doors with oval stained-glass windows coexist beside austere Georgian carved panels depicting grapevines and mythical beasts. The Kaleidoscope Door on Betlemi Street — an entrance shattered into a mosaic of coloured glass — scatters the Caucasian sunlight into a hundred chromatic whispers on the stairwell walls. The Shalimov House on Lado Asatiani Street still guards its angel frescoes above a threshold where, they say, the poet Nikoloz Baratashvili once paused to compose a verse."
+          "content": "Restoring a Pombaline door begins with a condition survey. The conservator taps the panels with a small brass mallet, listening for the dull thud of sound wood versus the hollow resonance of internal rot. Moisture content is measured with a pin-type meter: readings above 20% indicate active fungal colonisation, typically Serpula lacrymans (dry rot) or Coniophora puteana (cellar fungus). Insect damage — the sinuous galleries of Anobium punctatum (common furniture beetle) or, in tropical hardwoods, the broader tunnels of Lyctus brunneus (powder-post beetle) — is mapped with a dental probe. Only after this forensic inventory does physical intervention begin."
+        },
+        {
+          "type": "text",
+          "content": "The treatment protocol follows a strict hierarchy. First, consolidation: a low-viscosity epoxy resin (typically a two-part system with a 3:1 ratio of resin to hardener, viscosity below 500 centipoise) is injected into delaminated panels and decayed end-grain through 2mm drill holes, penetrating the cellular structure by capillary action. The epoxy cross-links within the wood fibres, creating a composite material that retains the original surface texture while recovering structural integrity. For more extensive losses, the conservator cuts a 'dutchman' — a precisely fitted wooden insert, grain-matched to the surrounding material, bonded with a reversible PVA adhesive rather than an irreversible epoxy, so that future conservators can remove and replace it without collateral damage."
+        },
+        {
+          "type": "text",
+          "content": "Hardware receives parallel attention. The wrought-iron strap hinges of a seventeenth-century door were not mass-produced but hand-forged: each pintle was drawn from a single bloom of smelted ore, the surface bearing the distinctive hammer-scale texture of a charcoal forge operating at approximately 1,100°C. When corroded, these elements are stabilised with a tannic acid conversion treatment — the tannins react with the iron(III) oxide to form iron(III) tannate, a stable, blue-black corrosion-resistant layer — rather than sandblasted, which would erase the forging marks that constitute the object's technological signature. Missing nails are reproduced using traditional heading tools: a nail rod is drawn through a swage plate, headed in a nail header, and given the characteristic rosehead profile by four blows of a ball-pein hammer, replicating a seventeenth-century technique documented in Moxon's 'Mechanick Exercises' of 1677."
         },
         {
           "type": "gallery",
           "content": [
             "https://images.unsplash.com/photo-1504198266287-1659872e6590?w=400&h=400&fit=crop",
             "https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?w=400&h=400&fit=crop",
-            "https://images.unsplash.com/photo-1534609146522-370a4e534697?w=400&h=400&fit=crop"
+            "https://images.unsplash.com/photo-1534609146522-370a4e534697?w=400&h=400&fit=crop",
+            "https://images.unsplash.com/photo-1679506606389-05ab5ee9793a?w=400&h=400&fit=crop",
+            "https://images.unsplash.com/photo-1635617462498-15a4f3e47be9?w=400&h=400&fit=crop",
+            "https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=400&h=400&fit=crop"
           ],
-          "caption": "Doors of the world: from Mediterranean arches to Caucasian carvings."
+          "caption": "Six thresholds, six centuries: from Mediterranean ironwork to Caucasian carved walnut."
         },
         {
           "type": "text",
-          "content": "In Havana, doors are not restored — they are resurrected. The crumbling pastel facades of Centro Habana conceal portals of mahogany and cedar that once welcomed sugar barons and revolutionary poets alike. Behind every peeling turquoise shutter lies the ghost of a courtyard where bougainvillea climbed wrought-iron balconies and the murmur of a fountain competed with the distant percussion of son cubano. Cuban restorers work with tools inherited from their grandfathers, re-carving rosettes and acanthus leaves from memory, because the original blueprints dissolved long ago in the tropical humidity."
+          "content": "Travel eastward, and the doors of Tbilisi reveal an entirely different grammar of beauty — one rooted not in post-catastrophe rationalism but in the exuberant decorative traditions of the Caucasus. In the labyrinthine streets of the Old Town, Art Nouveau doors with oval stained-glass windows in lead came coexist beside austere Georgian carved panels depicting grapevines and mythical beasts, executed in local walnut (Juglans regia) with chip-carving techniques unchanged since the Middle Ages. The celebrated Kaleidoscope entrance at 3 Betlemi Street — known locally as 'Gallery 27' — scatters Caucasian sunlight through a mosaic of coloured glass into a hundred chromatic whispers on the stairwell walls. The Shalimov House at 13 Lado Asatiani Street still guards its angel frescoes above a threshold where, legend maintains, the poet Nikoloz Baratashvili once paused to compose a verse on the nature of longing."
         },
         {
           "type": "text",
-          "content": "Florence offers perhaps the most celebrated example of door restoration as high art. Lorenzo Ghiberti's Porta del Paradiso — the gilded bronze Gates of Paradise at the Baptistery of San Giovanni — underwent a painstaking twenty-seven-year conservation that concluded in 2012. Restorers used laser technology to remove five centuries of grime and oxidation, revealing the luminous gold that Michelangelo himself once praised. Each of the ten panels, depicting scenes from the Old Testament, emerged from the cleaning as vivid and trembling with life as the day Ghiberti's hammer struck the final blow in 1452."
+          "content": "The Tbilisi Development Fund's 'New Tbilisi' project has systematically restored historic entrances on Atoneli Street since 2020, at a documented cost of 414,886 Georgian Lari per pair of entrances. The scope of work reads like a surgical protocol: restoration of marble floor and stair treads, conservation of wooden doors and windows (including re-glazing with period-appropriate crown glass), casting and installation of missing cast-iron balustrade details from silicone moulds taken from surviving originals, and — most remarkably — the uncovering of forgotten wall paintings sealed behind plaster for decades. At 31 Atoneli Street, workers removing a layer of Soviet-era cement render discovered a polychrome mural depicting pastoral scenes, its original casein binder still viable, the pigments — earth ochres, ultramarine, and bone black — as saturated as the day they were applied."
         },
         {
           "type": "image",
           "content": "https://images.unsplash.com/photo-1553521041-d6a39b0300e0?w=800&h=500&fit=crop",
-          "caption": "The monumental bronze doors of Florence — where restoration meets revelation."
-        },
-        {
-          "type": "quote",
-          "content": "Speed is irrelevant when you are restoring something that took three generations to build. The door does not care about your deadline. It cares only that you listen to the wood."
+          "caption": "Monumental bronze doors of Florence — where Nd:YAG laser ablation meets mercury-fire gilding."
         },
         {
           "type": "text",
-          "content": "Saint Petersburg — that northernmost Venice of granite and fog — holds a special place in the cartography of doors. The pre-revolutionary entrances of the Petrogradskaya Side, with their linden-wood panels and wrought-iron transom grilles, are among the most endangered species of urban ornament in Europe. The community «Двери с помоек» — literally, 'Doors from the Dump' — rescues discarded historic doors from demolition skips, restores them in volunteer workshops, and returns them to their rightful buildings. They have documented cases where doors of Karelian birch, nearly two centuries old, were found propped against dumpsters, their original hand-painted floral cartouches still faintly visible beneath decades of neglect."
+          "content": "Florence offers the most technically documented example of door restoration as high art. Lorenzo Ghiberti's Porta del Paradiso — the gilded bronze Gates of Paradise at the Baptistery of San Giovanni — underwent a twenty-seven-year conservation at the Opificio delle Pietre Dure that concluded in 2012. The challenge was formidable: five centuries of atmospheric corrosion had deposited a crust of copper carbonates (malachite and azurite), sulphates (brochantite), and chlorides (atacamite) over the original mercury-fire gilding — a technique in which gold leaf is amalgamated with mercury at approximately 350°C and applied to the bronze surface, the mercury then driven off by controlled heating, leaving a microscopically thin but extraordinarily durable gold film."
+        },
+        {
+          "type": "text",
+          "content": "The restoration team, led by conservators Annamaria Giusti and Mauro Matteini, developed a bespoke Nd:YAG laser cleaning protocol. The laser, operating at 1064 nanometres wavelength with pulse durations of 8 nanoseconds, selectively ablated the dark corrosion products through differential absorption: the dark crust absorbed the infrared radiation and vaporised, while the underlying gold — highly reflective at this wavelength — remained unaffected. Thermal modelling ensured that the instantaneous temperature rise in the gold film never exceeded 50°C, far below the threshold that would cause micro-cracking or delamination. Where the corrosion was too tenacious for laser alone, controlled chemical poultices of EDTA (ethylenediaminetetraacetic acid) at 5% concentration in deionised water were applied through Japanese tissue paper for precisely timed intervals, chelating the copper ions without attacking the substrate. The result: each of the ten panels, depicting scenes from Genesis to the story of Solomon, emerged with the luminous splendour that Michelangelo himself praised when he named these doors worthy of Paradise."
+        },
+        {
+          "type": "quote",
+          "content": "Speed is irrelevant when you are restoring something that took three generations to build. The Nd:YAG laser removes corrosion at four square centimetres per hour. Ghiberti spent twenty-seven years casting these doors. We spent twenty-seven years cleaning them. The symmetry is not accidental — it is respect."
+        },
+        {
+          "type": "text",
+          "content": "Saint Petersburg — that northernmost Venice of granite and fog — holds a singular position in the cartography of endangered doors. The pre-revolutionary entrances of the Petrogradskaya Side, with their linden-wood (Tilia cordata) panels and wrought-iron transom grilles, represent some of the most imperilled specimens of urban ornament in Europe. The volunteer collective 'Dveri s Pomoek' — 'Doors from the Dump' — was founded by engineers Valentina Mann and Andrei Troshkov and designer Alexander Artemyev, who met at the Tom Sawyer Fest, a grassroots festival of historic building restoration that originated in Samara in 2015 and has since spread to over sixty Russian cities."
+        },
+        {
+          "type": "text",
+          "content": "Their methodology is forensic. When a discarded door is retrieved — often from a skip outside a building undergoing 'renovation' by developers who consider plastic replacements an upgrade — it is first photographed in situ, then transported to the workshop for assessment. The species is identified: Karelian birch (Betula pendula var. carelica) with its distinctive flame figuring, Scots pine (Pinus sylvestris) from the Archangelsk forests, or Siberian larch (Larix sibirica), the same timber used in Venetian pilings and prized for its extraordinary resistance to moisture. Paint stratigraphy is performed on a micro-core sample: each layer is catalogued against known periods of building maintenance, cross-referenced with the building's archival records when available. The restorers have documented doors with hand-painted floral cartouches — executed in casein-bound distemper over a gesso ground — that survived beneath layers of Soviet khaki enamel, the delicate petals still discernible despite decades of chemical and mechanical insult."
+        },
+        {
+          "type": "text",
+          "content": "Mann notes a grim irony: 'The best-preserved doors are often the ones the Soviets painted over most aggressively. The very enamel that obliterated their beauty also sealed them from oxygen and UV, preserving the original pigments in a state that borders on anaerobic conservation. When we peel back the PF-115, we find colours that a museum conservator would envy.' The collective's restoration of linden-wood doors from the Kamienny Ostrov area required eleven months of patient work: chemical paint removal using NMP (N-Methyl-2-pyrrolidone) — chosen over methylene chloride for its lower toxicity and slower evaporation rate, which allows for more controlled stripping — followed by consolidation of worm-damaged areas with Paraloid B-72 in acetone at 5% concentration, and final finishing with cold-pressed linseed oil, applied in four thin coats and allowed to cure for seventy-two hours between applications."
         },
         {
           "type": "map",
@@ -991,29 +1022,50 @@
         },
         {
           "type": "text",
-          "content": "At Durham Cathedral in northern England, the North Door — a massive slab of oak dating from between 1109 and 1144 — recently underwent conservation by Skillingtons Workshop. The restorers adopted a 'minimalist' philosophy: dry-brushing trapped medieval dust from the open grain, applying four layers of Tung oil to replace natural oils lost over nine centuries, and hand-forging replacement nails to match the originals. The result is not a door that looks new, but a door that looks exactly as ancient and magnificent as it truly is."
+          "content": "At Durham Cathedral in northern England, the North Door presents a conservation challenge of an entirely different order: how to preserve a structure that has been in continuous functional use for nearly nine centuries. Dendrochronological analysis of the oak (Quercus robur) places the felling date of the timber between 1109 and 1144, making it contemporary with the cathedral's original Romanesque construction. The door is not a museum piece behind glass — it is opened and closed daily by tourists, choristers, and clergy, its iron ring handle worn to a mirror finish by 900 years of human touch."
         },
         {
           "type": "text",
-          "content": "Prague's doors speak in a different dialect altogether: the language of Baroque exuberance. In Malá Strana, beneath the shadow of Prague Castle, doors of carved limewood depict saints, griffins, and garlands of impossible fruit. The Palazzo Negri in Istrian Vodnjan — restored by the Ars et Labor Foundation during the European Year of Cultural Heritage — demonstrated how a single community workshop can preserve an entire region's identity simply by saving one door at a time. Their motto, borrowed from the Gospels, is quietly magnificent: 'Knock, and the door will be opened to you.'"
+          "content": "The 2019 conservation by Skillingtons Workshop exemplified the minimalist philosophy that defines contemporary best practice. Phase one: dry-brushing with natural-bristle brushes and low-suction vacuuming to remove trapped particulate matter from the open grain — medieval oak, unlike modern kiln-dried timber, retains a pronounced tangential grain pattern that acts as a trap for atmospheric soot and mineral dust. Phase two: aqueous cleaning with de-ionised water and a non-ionic surfactant (Synperonic A7) at 1% concentration, tested first on a concealed section of the rebate to verify that no dimensional change or surface blanching occurred. Phase three: re-saturation with cold-pressed Tung oil (Vernicia fordii), applied in four successive coats over sixteen days, each coat absorbed before the next was brushed on. Tung oil was chosen over linseed for its superior resistance to hydrolysis and its lower tendency to yellow with age. Phase four: the corroded wrought-iron fittings were stabilised with Renaissance Wax — a microcrystalline blend developed by the British Museum in the 1950s — rather than varnish, which would have created a non-breathing barrier antithetical to the iron's long-term preservation."
+        },
+        {
+          "type": "text",
+          "content": "In Havana, the challenge is not preservation of the ancient but resurrection of the abandoned. The crumbling pastel facades of Centro Habana conceal portals of Cuban mahogany (Swietenia mahagoni) and Spanish cedar (Cedrela odorata) — aromatic, naturally insect-resistant hardwoods that once welcomed sugar barons and revolutionary poets alike. The tropical climate imposes unique stresses: relative humidity regularly exceeds 85%, driving cycles of expansion and contraction that no temperate-climate joinery was designed to withstand. Cuban restorers — many trained at the Oficina del Historiador de la Ciudad, the heritage office established by Eusebio Leal Spengler — work with tools inherited from their grandfathers: wooden moulding planes with hand-forged blades, bow saws strung with tempered wire, and scratch stocks for reproducing ogee and cyma recta profiles. They re-carve rosettes and acanthus leaves not from measured drawings, which dissolved long ago in the tropical humidity, but from plaster casts taken from surviving examples in neighbouring buildings — a technique that preserves the local 'dialect' of ornamental carving, the subtle variations that distinguish Havana Baroque from its Andalusian ancestors."
+        },
+        {
+          "type": "image",
+          "content": "https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=800&h=500&fit=crop",
+          "caption": "A Cuban doorway's decay: where mahogany meets maritime humidity, and restoration becomes resurrection."
+        },
+        {
+          "type": "text",
+          "content": "Prague's doors speak in the dialect of Central European Baroque: a language of carved limewood (Tilia europaea) featuring saints, griffins, and garlands of impossible fruit rendered with a virtuosity that rivals the altarpiece carvings of Tilman Riemenschneider. In Malá Strana, beneath the shadow of Prague Castle, the portals of aristocratic palaces bear the heraldic devices of families who have been extinct for three centuries, their carved escutcheons the last material evidence that these lineages ever existed. The Palazzo Negri in Istrian Vodnjan — restored by the Ars et Labor Foundation during the European Year of Cultural Heritage in 2018 — demonstrated how a single Didactic Workshop, staffed by volunteer conservators and funded entirely by private donors, can preserve a region's identity one door at a time. The project's ten-month timeline included complete dismantling of the Baroque door, treatment of each component, and reassembly using traditional hide-glue joinery. Their motto, borrowed from the Gospel of Matthew, is quietly magnificent: 'Knock, and the door will be opened to you.'"
+        },
+        {
+          "type": "text",
+          "content": "The economics of door conservation are rarely discussed, yet they are decisive. A custom-fabricated fiberglass replacement door for a historic building costs between €800 and €2,000; a sympathetic conservation of the original, including paint analysis, timber repair, and hardware stabilisation, typically runs €3,000 to €8,000, depending on condition and complexity. The difference is not trivial, and developers routinely invoke it to justify replacement. But the calculus is incomplete. The original door embodies what economists call 'embedded energy' — the sum of human labour, material cultivation, transportation, and craft that produced it. A linden door from 1890s Saint Petersburg required a tree that germinated during the reign of Catherine the Great; its timber was air-dried for two to five years before a master joiner shaped it. No budget line captures this temporal investment. No replacement, however skilful, replicates it."
         },
         {
           "type": "checklist",
           "content": {
             "items": [
-              "Photograph the door from every angle before any work begins",
-              "Document each paint layer with a stratigraphic sample",
-              "Test cleaning solutions on a hidden section first",
-              "Replace only what is structurally necessary — preserve original material",
-              "Use historically appropriate hardware and finishes",
-              "Record the restoration process for future conservators"
+              "Photograph every elevation, profile, and hardware detail before any intervention",
+              "Extract a micro-core paint sample for stratigraphic and binding-medium analysis",
+              "Measure moisture content with a pin-type meter at three depths: surface, mid-panel, and core",
+              "Probe for insect galleries using a dental explorer; map damage on a scaled elevation drawing",
+              "Test all cleaning agents on a concealed area and observe for 72 hours before proceeding",
+              "Replace only structurally failed material — use dutchman splices with grain-matched timber",
+              "Bond repairs with reversible adhesives (PVA or Paraloid B-72), never irreversible epoxies on surfaces",
+              "Reproduce missing hardware using period-appropriate techniques: hand-forging, not casting",
+              "Apply finish coats (linseed or Tung oil) in thin layers with full cure time between each",
+              "Compile a conservation dossier: photographs, material analysis, intervention log, for future custodians"
             ]
           },
-          "caption": "The Restorer's Code: Six Principles of Ethical Door Conservation"
+          "caption": "The Restorer's Decalogue: Ten Principles of Ethical Door Conservation"
         },
         {
           "type": "text",
-          "content": "What makes a door worth saving? It is not merely the age of the timber or the elegance of the carving. It is the accumulated weight of passage — the thousands of arrivals and departures, the hands that reached for the handle in joy and in grief, the threshold that divided the public chaos of the street from the private sanctuary of the home. Every restored door is a bridge between the city we inhabit and the city that inhabits us."
+          "content": "There is a Japanese concept — kintsugi — that repairs broken ceramics with lacquer mixed with powdered gold, treating the fracture not as a flaw to be concealed but as a chapter in the object's biography. The best door conservation operates on a parallel philosophy. The 'dutchman' insert is not hidden; it is grain-matched but left legible, a frank acknowledgment that repair has occurred. The tannic-acid-blackened hinge does not pretend to be unworn; it wears its patina as evidence of nine centuries of openings and closings. The conservation report, archived alongside the door, ensures that the next conservator — in fifty years, in a hundred — will know exactly what was done, and why, and by whom. This is the opposite of vanity renovation. This is humility encoded in wood and iron."
         },
         {
           "type": "poll",
@@ -1039,17 +1091,29 @@
               {
                 "label": "Saint Petersburg",
                 "votes": 0
+              },
+              {
+                "label": "Prague",
+                "votes": 0
+              },
+              {
+                "label": "Durham",
+                "votes": 0
               }
             ]
           }
         },
         {
           "type": "text",
-          "content": "In the end, the restorer's craft is an act of radical empathy extended across time. To sand a piece of oak that a medieval carpenter shaped is to shake hands with the dead. To re-gild a bronze panel that Ghiberti cast is to continue a conversation begun in the fifteenth century. The door does not merely connect rooms; it connects eras. And when we save it, we are not preserving an object — we are preserving the possibility of crossing a threshold that someone, centuries from now, will pause before in wonder, just as we do today."
+          "content": "What makes a door worth saving? It is not merely the age of the timber or the elegance of the carving. It is the accumulated weight of passage — the thousands of arrivals and departures, the hands that reached for the handle in joy and in grief, the threshold that divided the public chaos of the street from the private sanctuary of the home. A doorframe bears a physical record of this traffic: the worn step, the burnished handle, the slight hollow in the threshold plank where generations of shoes have crossed. These are not defects. They are the autobiography of use — and they are irreplaceable."
+        },
+        {
+          "type": "text",
+          "content": "In the end, the conservator's craft is an act of radical empathy extended across time. To sand a piece of oak that a Romanesque carpenter shaped is to shake hands with the dead. To re-gild a bronze panel that Ghiberti cast is to continue a conversation begun in the fifteenth century. To inject epoxy into the heartwood of a Pombaline door is to say to the anonymous joiners of 1758: we see you; your work endures. The door does not merely connect rooms — it connects eras. And when we save it, we are not preserving an object. We are preserving the possibility of crossing a threshold that someone, centuries from now, will pause before in wonder — and in that pause, feel the accumulated presence of every hand that ever turned the latch."
         },
         {
           "type": "link",
-          "content": "Explore the Ars et Labor Foundation's Door Restoration Project",
+          "content": "Explore the Ars et Labor Foundation's 'Knock and the Door Will Be Opened' Project",
           "url": "https://www.fondazionearsetlabor.org/main-door-of-palazzo-negri/?lang=en"
         }
       ]
@@ -1624,58 +1688,89 @@
             },
             {
               "type": "text",
-              "content": "Реставрация дверей — это не просто столярное ремесло. Это акт археологической нежности, разговор между живыми и исчезнувшими. Когда реставратор снимает слои краски — лазурно-голубой поверх терракотового, терракотовый поверх костяно-белого — он читает автобиографию здания. Каждый цвет — десятилетие, каждая трещина — пережитая зима, каждая заменённая петля — семья, некогда назвавшая этот порог домом."
+              "content": "Реставрация дверей — это не просто столярное ремесло. Это акт археологической нежности, разговор между живыми и исчезнувшими. Когда реставратор снимает слои краски — лазурно-голубой поверх терракотового, терракотовый поверх костяно-белого — он выполняет стратиграфический анализ, читая автобиографию здания по одному пигменту за раз. Каждый цвет соответствует десятилетию, каждая трещина — пережитой зиме, каждая заменённая петля — семье, некогда назвавшей этот порог домом. Поперечный срез красочного слоя, изученный под стереомикроскопом при 40-кратном увеличении, обнажает не только оттенки, но и связующие: льняные олифы XVIII века, свинцово-белые грунты наполеоновской эпохи, алкидные эмали середины XX столетия — каждый слой является криминалистической меткой времени, более точной, чем любой архив."
             },
             {
               "type": "note",
-              "content": "Одна историческая дверь может содержать до двенадцати слоёв краски, и каждый из них — глава в биографии улицы. В Петербурге реставраторы обнаруживали дореволюционные пигменты под советскими эмалями — цвета, не видевшие дневного света более века."
-            },
-            {
-              "type": "quote",
-              "content": "Дверь — это первая фраза, которую здание произносит улице. Уничтожьте её — и вы сотрёте начальную строку истории, на создание которой ушли столетия."
+              "content": "Одна историческая дверь может содержать до двенадцати дискретных красочных слоёв. В Петербурге реставраторы из коллектива «Двери с помоек» задокументировали дореволюционные пигменты — берлинскую лазурь, хромовый жёлтый, подлинную киноварь — погребённые под советской эмалью ПФ-115. Некоторые из этих пигментов не поглощали ни единого фотона видимого света более века, прежде чем скальпель извлёк их на свет."
             },
             {
               "type": "text",
-              "content": "В Лиссабоне старинные помбалинские двери — рождённые из руин катастрофического землетрясения 1755 года — стоят как монументы стойкости, облачённые в орнамент. Обрамлённые азулежу кобальтовых и золотых оттенков, эти громадные панели из бразильского твёрдого дерева несут на себе шрамы атлантических штормов и ласку жасминовых бризов. Район Байша — живой музей этих порталов: двустворчатых, окованных железом, с ажурными фрамугами, отбрасывающими калейдоскопические тени на мраморные вестибюли в тот час, когда Тежу становится янтарным."
+              "content": "Фундаментальное напряжение в консервации дверей пролегает между двумя императивами, которые непосвящённые часто путают: реставрацией и консервацией. Реставрация предполагает возвращение объекта к конкретному историческому состоянию, что требует интерпретационных решений — облик какого столетия вы предпочтёте? Консервация, напротив, стремится стабилизировать объект в его нынешнем состоянии, останавливая распад, не стирая патину времени. Современный консенсус, кодифицированный Венецианской хартией 1964 года и уточнённый хартией Бурра 1979 года, решительно склоняется к консервации: вмешиваться минимально, документировать исчерпывающе и обеспечивать обратимость. Каждая эпоксидная заливка, каждая вставка-«заплатка», каждая перезолочённая поверхность должны быть отличимы от оригинала при внимательном осмотре и удаляемы без повреждения исходного материала."
+            },
+            {
+              "type": "quote",
+              "content": "Дверь — это первая фраза, которую здание произносит улице. Уничтожьте её — и вы сотрёте начальную строку истории, на создание которой ушли столетия. Замените копией — и вы напишете фанфик на полях рукописи."
+            },
+            {
+              "type": "text",
+              "content": "Рассмотрим материальность помбалинской двери в лиссабонском районе Байша. После катастрофического землетрясения 1 ноября 1755 года — унёсшего от 30 до 50 тысяч жизней и разрушившего 85% города — маркиз де Помбал заказал радикальную реконструкцию на основе протосейсмической инженерии. Результирующая помбалинская архитектура ввела «гайолу помбалину» — гибкий деревянный каркас, встроенный в каменные стены, спроектированный так, чтобы гнуться, а не ломаться при толчках. Двери этих зданий изготавливались из бразильской перобы розовой (Aspidosperma polyneuron) и пау-марфим (Balfourodendron riedelianum), завозимых из атлантических колоний: плотных, смолистых твёрдых пород с переплетённой текстурой, противостоящей и морской влажности, и торсионным напряжениям сейсмических движений. Столярные соединения — шип-паз на всём протяжении, с расклиненными сквозными шипами в стыках стоек и ригелей — ни гвоздей, ни шурупов, лишь геометрия дерева, сцепляющегося с деревом."
             },
             {
               "type": "image",
               "content": "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&h=500&fit=crop",
-              "caption": "Потрёпанный временем дверной проём в лиссабонском районе Алфама — столетия океанского ветра, запечатлённые в каждом волокне."
+              "caption": "Потрёпанный временем дверной проём в лиссабонской Алфаме — столетия атлантического ветра, солевой кристаллизации и ультрафиолетовой деградации, запечатлённые в каждом тангенциальном волокне."
             },
             {
               "type": "text",
-              "content": "Двигаясь на восток, вы откроете совсем иную грамматику красоты в дверях Тбилиси. В лабиринтах Старого города двери в стиле ар-нуво с овальными витражными окнами соседствуют со строгими грузинскими резными панелями, изображающими виноградные лозы и мифических зверей. Дверь-Калейдоскоп на улице Бетлеми — вход, разбитый в мозаику цветного стекла — рассеивает кавказское солнце в сотню хроматических шёпотов на стенах лестничной клетки. Дом Шалимова на улице Ладо Асатиани до сих пор хранит ангельские фрески над порогом, где, говорят, поэт Николоз Бараташвили однажды остановился, чтобы сочинить строку."
+              "content": "Реставрация помбалинской двери начинается с обследования состояния. Консерватор простукивает филёнки небольшим латунным молотком, различая глухой удар здорового дерева и полый резонанс внутренней гнили. Влажность измеряется штыревым влагомером: показания выше 20% указывают на активную грибковую колонизацию — как правило, Serpula lacrymans (настоящий домовый гриб) или Coniophora puteana (подвальный гриб). Повреждения насекомыми — извилистые ходы Anobium punctatum (мебельный точильщик) или, в тропических породах, более широкие тоннели Lyctus brunneus (пылевой жук-точильщик) — картируются зубоврачебным зондом. И лишь после этой криминалистической инвентаризации начинается физическое вмешательство."
+            },
+            {
+              "type": "text",
+              "content": "Протокол обработки следует строгой иерархии. Сначала — консолидация: низковязкий эпоксидный состав (обычно двухкомпонентная система с соотношением смолы к отвердителю 3:1, вязкость ниже 500 сантипуаз) инжектируется в расслоившиеся филёнки и деградированный торцевой срез через отверстия диаметром 2 мм, проникая в клеточную структуру капиллярным действием. Эпоксид сшивается внутри древесных волокон, создавая композитный материал, сохраняющий исходную текстуру поверхности при восстановлении структурной целостности. При более обширных утратах реставратор вырезает вставку-«заплатку» — точно подогнанную деревянную деталь, подобранную по направлению волокон, склеенную обратимым клеем ПВА, а не необратимой эпоксидной смолой, чтобы будущие консерваторы могли извлечь и заменить её без сопутствующего ущерба."
+            },
+            {
+              "type": "text",
+              "content": "Фурнитура получает параллельное внимание. Кованые петли-стремена XVII века не были массовым продуктом — каждый штырь вытягивался из единой крицы выплавленной руды, поверхность несла характерную текстуру окалины угольного горна, работавшего при приблизительно 1100°C. При коррозии эти элементы стабилизируют обработкой танниновой кислотой — таннины реагируют с оксидом железа(III), образуя таннат железа(III), стабильный сине-чёрный коррозионностойкий слой — а не пескоструят, что уничтожило бы следы ковки, составляющие технологическую подпись объекта. Недостающие гвозди воспроизводят при помощи традиционных инструментов: стержень протягивается через обжимную доску, головка формируется в гвоздильне, и характерный профиль розеточной шляпки создаётся четырьмя ударами шарового молотка — воспроизведение техники XVII века, описанной в «Mechanick Exercises» Моксона (1677)."
             },
             {
               "type": "gallery",
               "content": [
                 "https://images.unsplash.com/photo-1504198266287-1659872e6590?w=400&h=400&fit=crop",
                 "https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?w=400&h=400&fit=crop",
-                "https://images.unsplash.com/photo-1534609146522-370a4e534697?w=400&h=400&fit=crop"
+                "https://images.unsplash.com/photo-1534609146522-370a4e534697?w=400&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1679506606389-05ab5ee9793a?w=400&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1635617462498-15a4f3e47be9?w=400&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=400&h=400&fit=crop"
               ],
-              "caption": "Двери мира: от средиземноморских арок до кавказской резьбы."
+              "caption": "Шесть порогов, шесть столетий: от средиземноморской ковки до кавказского резного ореха."
             },
             {
               "type": "text",
-              "content": "В Гаване двери не реставрируют — их воскрешают. За осыпающимися пастельными фасадами Центральной Гаваны скрываются порталы из красного дерева и кедра, некогда встречавшие сахарных баронов и революционных поэтов. За каждой облупившейся бирюзовой ставней таится призрак двора, где бугенвиллея взбиралась по кованым балконам, а журчание фонтана состязалось с далёкой перкуссией сон-кубано. Кубинские реставраторы работают инструментами, унаследованными от дедов, вырезая розетки и листья аканта по памяти — ведь оригинальные чертежи давно растворились в тропической влажности."
+              "content": "Двигаясь на восток, вы откроете совсем иную грамматику красоты в дверях Тбилиси — укоренённую не в пост-катастрофическом рационализме, а в пышных декоративных традициях Кавказа. В лабиринтах Старого города двери в стиле ар-нуво с овальными витражами в свинцовой протяжке соседствуют со строгими грузинскими резными панелями, изображающими виноградные лозы и мифических зверей, выполненными из местного грецкого ореха (Juglans regia) техникой трёхгранно-выемчатой резьбы, не менявшейся со Средневековья. Знаменитый вход-Калейдоскоп на Бетлеми, 3 — известный местным как «Галерея 27» — рассеивает кавказское солнце сквозь мозаику цветного стекла в сотню хроматических шёпотов на стенах лестничной клетки. Дом Шалимова на Ладо Асатиани, 13 до сих пор хранит ангельские фрески над порогом, где, по легенде, поэт Николоз Бараташвили однажды остановился, чтобы сочинить строку о природе тоски."
             },
             {
               "type": "text",
-              "content": "Флоренция являет, пожалуй, самый знаменитый пример реставрации двери как высокого искусства. «Врата Рая» Лоренцо Гиберти — позолоченные бронзовые двери Баптистерия Сан-Джованни — прошли кропотливую двадцатисемилетнюю реставрацию, завершившуюся в 2012 году. Реставраторы использовали лазерные технологии, чтобы удалить пять столетий копоти и окисления, обнажив сияющее золото, которое когда-то восхвалял сам Микеланджело. Каждая из десяти панелей, изображающих сцены Ветхого Завета, явилась из-под патины столь же живой и трепещущей, как в тот день, когда молот Гиберти нанёс последний удар в 1452 году."
+              "content": "Тбилисский фонд развития в рамках проекта «Новый Тбилиси» системно реставрирует исторические парадные на улице Атонели с 2020 года, с документированной стоимостью 414 886 грузинских лари на пару входов. Объём работ читается как хирургический протокол: реставрация мраморных полов и ступеней, консервация деревянных дверей и окон (включая переостекление стеклом, соответствующим эпохе — лунным стеклом ручной выдувки), литьё и установка недостающих чугунных балюстрадных деталей по силиконовым формам, снятым с сохранившихся оригиналов, и — самое поразительное — обнаружение забытых настенных росписей, замурованных под штукатуркой на десятилетия. На Атонели, 31 рабочие, снимая слой советской цементной штукатурки, обнаружили полихромную фреску с пасторальными сценами — её оригинальное казеиновое связующее всё ещё было жизнеспособно, пигменты — земляные охры, ультрамарин и жжёная кость — столь же насыщены, как в день нанесения."
             },
             {
               "type": "image",
               "content": "https://images.unsplash.com/photo-1553521041-d6a39b0300e0?w=800&h=500&fit=crop",
-              "caption": "Монументальные бронзовые двери Флоренции — где реставрация становится откровением."
-            },
-            {
-              "type": "quote",
-              "content": "Скорость не имеет значения, когда вы реставрируете то, что строили три поколения. Двери не волнует ваш дедлайн. Её волнует лишь одно — слушаете ли вы дерево."
+              "caption": "Монументальные бронзовые двери Флоренции — где лазерная абляция Nd:YAG встречается с ртутным огневым золочением."
             },
             {
               "type": "text",
-              "content": "Петербург — эта самая северная Венеция из гранита и тумана — занимает особое место в картографии дверей. Дореволюционные парадные Петроградской стороны с липовыми филёнками и кованными решётками фрамуг — один из самых исчезающих видов городского орнамента в Европе. Сообщество «Двери с помоек» спасает выброшенные исторические двери с мусорных площадок, реставрирует их в волонтёрских мастерских и возвращает родным зданиям. Они задокументировали случаи, когда двери из карельской берёзы — почти двухсотлетние — находили прислонёнными к мусорным контейнерам, с едва различимыми оригинальными расписными картушами под десятилетиями запустения."
+              "content": "Флоренция являет наиболее технически задокументированный пример реставрации двери как высокого искусства. «Врата Рая» Лоренцо Гиберти — позолоченные бронзовые двери Баптистерия Сан-Джованни — прошли двадцатисемилетнюю консервацию в Opificio delle Pietre Dure, завершившуюся в 2012 году. Вызов был грандиозен: пять столетий атмосферной коррозии отложили корку карбонатов меди (малахит и азурит), сульфатов (брошантит) и хлоридов (атакамит) поверх оригинального ртутного огневого золочения — техники, при которой золотая фольга амальгамируется с ртутью при ~350°C и наносится на бронзовую поверхность, после чего ртуть удаляется контролируемым нагревом, оставляя микроскопически тонкую, но необычайно долговечную золотую плёнку."
+            },
+            {
+              "type": "text",
+              "content": "Команда реставраторов под руководством Аннамарии Джусти и Мауро Маттеини разработала индивидуальный протокол лазерной очистки Nd:YAG. Лазер, работающий на длине волны 1064 нанометра с длительностью импульса 8 наносекунд, селективно абляировал тёмные продукты коррозии за счёт дифференциального поглощения: тёмная корка поглощала инфракрасное излучение и испарялась, тогда как нижележащее золото — обладающее высокой отражательной способностью на данной длине волны — оставалось нетронутым. Термическое моделирование гарантировало, что мгновенный нагрев золотой плёнки никогда не превышал 50°C — значительно ниже порога, способного вызвать микротрещины или деламинацию. Там, где коррозия была слишком упорна для одного лишь лазера, применялись контролируемые химические компрессы ЭДТА (этилендиаминтетрауксусная кислота) в 5%-ной концентрации в деионизованной воде, наносимые через японскую папиросную бумагу на точно отмеренные интервалы, хелатируя ионы меди без атаки на подложку. Результат: каждая из десяти панелей, от Книги Бытия до истории Соломона, явилась в том сияющем великолепии, которое Микеланджело восславил, назвав эти двери достойными Рая."
+            },
+            {
+              "type": "quote",
+              "content": "Скорость не имеет значения, когда вы реставрируете то, что создавалось три поколения. Nd:YAG-лазер удаляет коррозию со скоростью четыре квадратных сантиметра в час. Гиберти потратил двадцать семь лет на отливку этих дверей. Мы потратили двадцать семь лет на их очистку. Эта симметрия не случайна — она и есть уважение."
+            },
+            {
+              "type": "text",
+              "content": "Петербург — эта самая северная Венеция из гранита и тумана — занимает особое место в картографии исчезающих дверей. Дореволюционные парадные Петроградской стороны с липовыми (Tilia cordata) филёнками и коваными фрамужными решётками представляют один из самых исчезающих видов городского орнамента в Европе. Волонтёрский коллектив «Двери с помоек» был основан инженерами Валентиной Манн и Андреем Трошковым и дизайнером Александром Артемьевым, познакомившимися на «Том Сойер Фесте» — низовом фестивале восстановления исторической среды, зародившемся в Самаре в 2015 году и с тех пор охватившем более шестидесяти городов."
+            },
+            {
+              "type": "text",
+              "content": "Их методология — криминалистическая. Когда выброшенную дверь извлекают — нередко из мусорного контейнера перед зданием, проходящим «ремонт» застройщиками, считающими пластиковые замены прогрессом — её сначала фотографируют in situ, затем перевозят в мастерскую для оценки. Идентифицируется порода: карельская берёза (Betula pendula var. carelica) с характерной узорчатой текстурой «пламени», сосна обыкновенная (Pinus sylvestris) из архангельских лесов или лиственница сибирская (Larix sibirica) — та самая древесина, что идёт на венецианские сваи и ценится за исключительную влагостойкость. Стратиграфия красочного слоя выполняется по микрокерну: каждый слой каталогизируется в привязке к известным периодам технического обслуживания здания, сопоставляется с архивными данными, когда они доступны."
+            },
+            {
+              "type": "text",
+              "content": "Манн отмечает горькую иронию: «Лучше всего сохранившиеся двери — зачастую те, которые Советы закрашивали наиболее агрессивно. Та самая эмаль, что уничтожила их красоту, одновременно запечатала от кислорода и ультрафиолета, сохранив оригинальные пигменты в состоянии, граничащем с анаэробной консервацией. Когда мы снимаем ПФ-115, мы обнаруживаем цвета, которым позавидовал бы музейный хранитель». Реставрация липовых дверей с Каменного острова потребовала одиннадцати месяцев терпеливой работы: химическое удаление краски с помощью НМП (N-метил-2-пирролидон) — выбранного вместо метиленхлорида за меньшую токсичность и более медленное испарение, обеспечивающее контролируемое удаление — затем консолидация повреждённых жуком участков Paraloid B-72 в ацетоне в 5%-ной концентрации и финишная отделка холоднопрессованным льняным маслом, наносимым в четыре тонких слоя с семидесятидвухчасовой полимеризацией между нанесениями."
             },
             {
               "type": "map",
@@ -1687,29 +1782,50 @@
             },
             {
               "type": "text",
-              "content": "В Даремском соборе на севере Англии Северная дверь — массивная плита из дуба, датируемая периодом между 1109 и 1144 годами — недавно прошла консервацию мастерской Скиллингтон. Реставраторы избрали «минималистичную» философию: сухой кистью удаляли средневековую пыль из открытых волокон, нанесли четыре слоя тунгового масла взамен природных масел, утраченных за девять столетий, и вручную выковали заменяющие гвозди по образцу оригиналов. Результат — не дверь, которая выглядит новой, а дверь, которая выглядит именно так древне и величественно, как она есть на самом деле."
+              "content": "В Даремском соборе на севере Англии Северная дверь ставит консервационную задачу совершенно иного порядка: как сохранить конструкцию, непрерывно функционирующую почти девять столетий. Дендрохронологический анализ дуба (Quercus robur) помещает дату валки между 1109 и 1144 годами, что делает дверь ровесницей первоначальной романской постройки собора. Эта дверь — не музейный экспонат под стеклом: её ежедневно открывают и закрывают туристы, хористы и священники, а её железная кольцевая ручка отполирована до зеркального блеска девятью столетиями человеческого прикосновения."
             },
             {
               "type": "text",
-              "content": "Двери Праги говорят на совсем ином диалекте — языке барочного великолепия. В Мала-Стране, под тенью Пражского Града, двери из резной липы изображают святых, грифонов и гирлянды невозможных фруктов. Палаццо Негри в истрийском Воднянe — отреставрированное фондом Ars et Labor в Европейский год культурного наследия — продемонстрировало, как одна общественная мастерская может сохранить идентичность целого региона, спасая по одной двери за раз. Их девиз, заимствованный из Евангелия, негромко великолепен: «Стучите, и отворят вам»."
+              "content": "Консервация 2019 года мастерской Скиллингтон стала образцом минималистической философии, определяющей современную лучшую практику. Фаза первая: сухая чистка щетинными кистями и маломощным вакуумированием для удаления накопившихся частиц из открытых волокон — средневековый дуб, в отличие от современного камерно-сушёного пиломатериала, сохраняет выраженную тангенциальную текстуру, действующую как ловушка для атмосферной копоти и минеральной пыли. Фаза вторая: водная очистка деионизованной водой с неионогенным ПАВ Synperonic A7 в 1%-ной концентрации, предварительно проверенная на скрытом участке фальца. Фаза третья: пересатурация холоднопрессованным тунговым маслом (Vernicia fordii), нанесённым в четыре последовательных слоя за шестнадцать дней. Тунговое масло выбрано вместо льняного за превосходную устойчивость к гидролизу и меньшую склонность к пожелтению. Фаза четвёртая: корродированная фурнитура стабилизирована воском Renaissance — микрокристаллической смесью, разработанной Британским музеем в 1950-х — вместо лака, который создал бы непаропроницаемый барьер, противопоказанный долгосрочной сохранности железа."
+            },
+            {
+              "type": "text",
+              "content": "В Гаване вызов состоит не в сохранении древнего, а в воскрешении заброшенного. За осыпающимися пастельными фасадами Центральной Гаваны скрываются порталы из кубинского красного дерева (Swietenia mahagoni) и испанского кедра (Cedrela odorata) — ароматных, от природы устойчивых к насекомым твёрдых пород, некогда встречавших сахарных баронов и революционных поэтов. Тропический климат накладывает уникальные нагрузки: относительная влажность регулярно превышает 85%, провоцируя циклы расширения и сжатия, на которые ни одна столярка умеренного климата не рассчитана. Кубинские реставраторы — многие обучены в Oficina del Historiador de la Ciudad, основанной Эусебио Леалем Спенглером — работают инструментами, унаследованными от дедов: деревянными калёвками с ручной ковки лезвиями, лучковыми пилами на калёной проволоке и шпунтгобелями для воспроизведения профилей «гусёк» и «каблучок». Розетки и листья аканта они вырезают не по обмерным чертежам — те давно растворились в тропической влажности — а по гипсовым слепкам с уцелевших образцов в соседних зданиях, сохраняя местный «диалект» декоративной резьбы, тонкие вариации, отличающие гаванское барокко от его андалузских предков."
+            },
+            {
+              "type": "image",
+              "content": "https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=400&h=500&fit=crop",
+              "caption": "Кубинский дверной проём: где красное дерево встречает морскую влажность, и реставрация становится воскрешением."
+            },
+            {
+              "type": "text",
+              "content": "Двери Праги говорят на диалекте центральноевропейского барокко — языке резной липы (Tilia europaea) со святыми, грифонами и гирляндами невозможных фруктов, исполненными с виртуозностью, соперничающей с алтарной резьбой Тильмана Рименшнайдера. В Мала-Стране, под тенью Пражского Града, порталы аристократических дворцов несут геральдические щиты родов, угасших три столетия назад — их резные эскутчоны остаются последним материальным свидетельством того, что эти династии вообще существовали. Палаццо Негри в истрийском Воднянe — отреставрированное фондом Ars et Labor в Европейский год культурного наследия 2018 — продемонстрировало, как единственная Дидактическая мастерская, укомплектованная волонтёрами-консерваторами и финансируемая исключительно частными донорами, способна сохранить идентичность целого региона — по одной двери за раз. Десятимесячный хронометраж проекта включал полный демонтаж барочной двери, обработку каждого элемента и повторную сборку на традиционном мездровом клее. Их девиз, заимствованный из Евангелия от Матфея, негромко великолепен: «Стучите, и отворят вам»."
+            },
+            {
+              "type": "text",
+              "content": "Экономика консервации дверей обсуждается редко, но именно она оказывается решающей. Индивидуально изготовленная дверь-замена из стеклопластика для исторического здания стоит от €800 до €2000; грамотная консервация оригинала, включая анализ красочного слоя, ремонт древесины и стабилизацию фурнитуры, обходится обычно в €3000–€8000 в зависимости от состояния и сложности. Разница не тривиальна, и застройщики неизменно используют её для оправдания замены. Но калькуляция неполна. Оригинальная дверь воплощает то, что экономисты называют «овеществлённой энергией» — совокупность человеческого труда, выращивания материала, транспортировки и ремесла, породивших её. Липовая дверь из петербургских 1890-х потребовала дерева, проросшего при Екатерине Великой; её древесина сушилась на воздухе от двух до пяти лет, прежде чем мастер-столяр придал ей форму. Ни одна бюджетная строка не отражает этих временных инвестиций. Ни одна замена, сколь бы искусной она ни была, их не воспроизводит."
             },
             {
               "type": "checklist",
               "content": {
                 "items": [
-                  "Сфотографировать дверь со всех ракурсов до начала работ",
-                  "Задокументировать каждый слой краски стратиграфическим образцом",
-                  "Протестировать чистящие средства на скрытом участке",
-                  "Заменять только то, что конструктивно необходимо — сохранять оригинальный материал",
-                  "Использовать исторически аутентичную фурнитуру и покрытия",
-                  "Записать процесс реставрации для будущих хранителей"
+                  "Сфотографировать каждый фасад, профиль и элемент фурнитуры до любого вмешательства",
+                  "Извлечь микрокерновый образец красочного слоя для стратиграфического и анализа связующих",
+                  "Измерить влажность штыревым влагомером на трёх глубинах: поверхность, середина панели, сердцевина",
+                  "Зондировать дентальным инструментом на предмет ходов насекомых; картировать повреждения на масштабном чертеже",
+                  "Протестировать все чистящие средства на скрытом участке и наблюдать 72 часа перед продолжением",
+                  "Заменять только конструктивно разрушенный материал — использовать вставки-«заплатки» с подбором волокон",
+                  "Склеивать ремонтные детали обратимыми клеями (ПВА или Paraloid B-72), никогда — необратимыми эпоксидами по лицевым поверхностям",
+                  "Воспроизводить утраченную фурнитуру аутентичными методами: ручной ковкой, не литьём",
+                  "Наносить финишное покрытие (льняное или тунговое масло) тонкими слоями с полной полимеризацией между ними",
+                  "Составить консервационное досье: фотографии, анализ материалов, журнал вмешательств — для будущих хранителей"
                 ]
               },
-              "caption": "Кодекс реставратора: шесть принципов этичной консервации дверей"
+              "caption": "Декалог реставратора: десять принципов этичной консервации дверей"
             },
             {
               "type": "text",
-              "content": "Что делает дверь достойной спасения? Не только возраст древесины и не только изящество резьбы. Это накопленный вес прохождений — тысячи приходов и уходов, руки, тянувшиеся к ручке в радости и в горе, порог, разделявший публичный хаос улицы и частное убежище дома. Каждая реставрированная дверь — мост между городом, в котором мы живём, и городом, что живёт в нас."
+              "content": "Есть японская концепция — кинцуги — ремонт разбитой керамики лаком с подмешанным золотым порошком, где трещина трактуется не как дефект, подлежащий сокрытию, а как глава в биографии предмета. Лучшая консервация дверей действует по параллельной философии. Вставка-«заплатка» не маскируется — она подбирается по волокнам, но остаётся читаемой, откровенным признанием того, что ремонт состоялся. Чернённая танниновой кислотой петля не притворяется неизношенной — она носит свою патину как свидетельство девяти столетий открываний и закрываний. Консервационный отчёт, архивированный рядом с дверью, гарантирует, что следующий хранитель — через пятьдесят лет, через сто — будет точно знать, что было сделано, и почему, и кем. Это противоположность тщеславного ремонта. Это смирение, закодированное в дереве и железе."
             },
             {
               "type": "poll",
@@ -1735,17 +1851,29 @@
                   {
                     "label": "Санкт-Петербург",
                     "votes": 0
+                  },
+                  {
+                    "label": "Прага",
+                    "votes": 0
+                  },
+                  {
+                    "label": "Дарем",
+                    "votes": 0
                   }
                 ]
               }
             },
             {
               "type": "text",
-              "content": "В конечном счёте, ремесло реставратора — это акт радикальной эмпатии, простёртой сквозь время. Шлифовать кусок дуба, который обтёсывал средневековый плотник, — значит пожать руку ушедшим. Покрывать позолотой бронзовую панель, которую отливал Гиберти, — значит продолжить разговор, начатый в пятнадцатом веке. Дверь не просто соединяет комнаты — она соединяет эпохи. И когда мы спасаем её, мы сохраняем не предмет — мы сохраняем возможность переступить порог, перед которым кто-то через столетия замрёт в изумлении, точно так же, как замираем сегодня мы."
+              "content": "Что делает дверь достойной спасения? Не только возраст древесины и не только изящество резьбы. Это накопленный вес прохождений — тысячи приходов и уходов, руки, тянувшиеся к ручке в радости и в горе, порог, разделявший публичный хаос улицы и частное убежище дома. Дверная коробка несёт физическую летопись этого движения: стёртая ступень, отполированная ручка, едва заметная впадина в пороговой доске, где поколения подошв пересекали границу. Это не дефекты. Это автобиография использования — и она незаменима."
+            },
+            {
+              "type": "text",
+              "content": "В конечном счёте, ремесло консерватора — это акт радикальной эмпатии, простёртой сквозь время. Шлифовать кусок дуба, который обтёсывал романский плотник, — значит пожать руку ушедшим. Покрывать позолотой бронзовую панель, которую отливал Гиберти, — значит продолжить разговор, начатый в пятнадцатом веке. Инжектировать эпоксид в ядровую древесину помбалинской двери — значит сказать безымянным столярам 1758 года: мы видим вас; ваша работа продолжается. Дверь не просто соединяет комнаты — она соединяет эпохи. И когда мы спасаем её, мы сохраняем не предмет. Мы сохраняем возможность переступить порог, перед которым кто-то через столетия замрёт в изумлении — и в этом замирании ощутит накопленное присутствие каждой руки, когда-либо повернувшей щеколду."
             },
             {
               "type": "link",
-              "content": "Проект реставрации дверей фонда Ars et Labor",
+              "content": "Проект «Стучите, и отворят вам» фонда Ars et Labor",
               "url": "https://www.fondazionearsetlabor.org/main-door-of-palazzo-negri/?lang=en"
             }
           ]
