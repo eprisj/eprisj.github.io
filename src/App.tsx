@@ -660,20 +660,30 @@ function ArticleView({ article, onClose, t }: { article: Article; onClose: () =>
                 }
                 case 'map': {
                   if (typeof block.content !== 'string') return null;
+                  const lat = block.coordinates?.lat;
+                  const lng = block.coordinates?.lng;
                   return (
                     <div key={index} className="my-12 p-6 bg-[#E8DED5] border border-[#501a2c]/20">
                       <div className="flex items-center gap-3 mb-4 text-[#501a2c]">
                         <MapPin size={20} />
                         <span className="font-mono text-sm uppercase tracking-widest">{block.content}</span>
                       </div>
-                      {block.coordinates && (
-                        <div className="aspect-video bg-[#501a2c]/5 flex items-center justify-center font-mono text-xs text-[#501a2c]/40 uppercase tracking-widest">
-                          Map View: {block.coordinates.lat.toFixed(4)}, {block.coordinates.lng.toFixed(4)}
+                      {lat !== undefined && lng !== undefined && (
+                        <div className="aspect-video overflow-hidden">
+                          <iframe
+                            title={block.content}
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0, filter: 'grayscale(100%) contrast(1.1)' }}
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            src={`https://www.openstreetmap.org/export/embed.html?bbox=${lng - 0.02}%2C${lat - 0.01}%2C${lng + 0.02}%2C${lat + 0.01}&layer=mapnik&marker=${lat}%2C${lng}`}
+                          />
                         </div>
                       )}
-                      <a 
-                        href={`https://www.google.com/maps/search/?api=1&query=${block.coordinates?.lat},${block.coordinates?.lng}`} 
-                        target="_blank" 
+                      <a
+                        href={`https://www.google.com/maps/search/?api=1&query=${lat},${lng}`}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 mt-4 text-xs font-mono uppercase tracking-widest text-[#501a2c] hover:text-[#C9A690] transition-colors"
                       >
@@ -784,6 +794,28 @@ function ArticleView({ article, onClose, t }: { article: Article; onClose: () =>
               }
             })}
           </div>
+
+          <footer className="mt-16 pt-12 border-t border-[#501a2c]/20">
+            <div className="flex items-start gap-6">
+              <div className="w-16 h-16 rounded-full bg-[#501a2c] flex items-center justify-center text-[#F5F0EB] font-serif text-xl shrink-0">
+                {article.author.charAt(0)}
+              </div>
+              <div>
+                <p className="font-serif text-xl mb-1">{article.author}</p>
+                <p className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/60 mb-3">{article.role}</p>
+                <p className="font-mono text-xs text-[#501a2c]/50">{article.date}</p>
+              </div>
+            </div>
+            {article.tags && (
+              <div className="flex flex-wrap gap-2 mt-8">
+                {article.tags.map((tag: string, i: number) => (
+                  <span key={i} className="px-3 py-1 border border-[#501a2c]/20 font-mono text-xs uppercase tracking-widest text-[#501a2c]/60">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </footer>
         </article>
       </div>
     </motion.div>
