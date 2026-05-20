@@ -473,16 +473,51 @@ function ChecklistBlock({ items, caption }: { items: string[], caption?: string 
   );
 }
 
+function getPollStorageKey(question: string) {
+  return 'epris-poll-' + question.replace(/\s+/g, '-').toLowerCase().slice(0, 60);
+}
+
 function PollBlock({ question, options, t }: { question: string, options: { label: string, votes: number }[], t: (key: string) => string }) {
-  const [votedIndex, setVotedIndex] = useState<number | null>(null);
-  const [localOptions, setLocalOptions] = useState(options);
+  const storageKey = getPollStorageKey(question);
+
+  const [votedIndex, setVotedIndex] = useState<number | null>(() => {
+    try {
+      const saved = localStorage.getItem(storageKey);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        return typeof parsed.votedIndex === 'number' ? parsed.votedIndex : null;
+      }
+    } catch { /* ignore */ }
+    return null;
+  });
+
+  const [localOptions, setLocalOptions] = useState(() => {
+    try {
+      const saved = localStorage.getItem(storageKey);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed.votes)) {
+          return options.map((opt, i) => ({ ...opt, votes: (parsed.votes[i] ?? opt.votes) }));
+        }
+      }
+    } catch { /* ignore */ }
+    return options;
+  });
 
   const handleVote = (index: number) => {
     if (votedIndex !== null) return;
     setVotedIndex(index);
     const newOptions = [...localOptions];
-    newOptions[index].votes += 1;
+    newOptions[index] = { ...newOptions[index], votes: newOptions[index].votes + 1 };
     setLocalOptions(newOptions);
+    try {
+      localStorage.setItem(storageKey, JSON.stringify({
+        question,
+        votedIndex: index,
+        votes: newOptions.map(o => o.votes),
+        timestamp: Date.now()
+      }));
+    } catch { /* quota exceeded */ }
   };
 
   const totalVotes = localOptions.reduce((acc, curr) => acc + curr.votes, 0);
@@ -939,65 +974,60 @@ function Sidebar({ t }: { t: (key: string) => string }) {
   );
 }
 
-function parseHash(hash: string): { tab?: string; articleId?: number } {
-  const h = hash.replace(/^#/, '');
-  if (!h) return {};
-  const articleMatch = h.match(/^article\/(\d+)$/);
+const VALID_TABS = ['gallery', 'articles', 'reviews', 'library', 'about'];
+
+function parsePath(pathname: string): { tab?: string; articleId?: number } {
+  const p = pathname.replace(/^\//, '').replace(/\/$/, '');
+  if (!p) return {};
+  const articleMatch = p.match(/^article\/(\d+)$/);
   if (articleMatch) return { tab: 'articles', articleId: parseInt(articleMatch[1], 10) };
-  const validTabs = ['gallery', 'articles', 'reviews', 'library', 'about'];
-  if (validTabs.includes(h)) return { tab: h };
+  if (VALID_TABS.includes(p)) return { tab: p };
   return {};
 }
 
 export default function App() {
-  const initialHash = parseHash(window.location.hash);
-  const [activeTab, setActiveTab] = useState(initialHash.tab || 'gallery');
-  const [selectedArticleId, setSelectedArticleId] = useState<number | null>(initialHash.articleId ?? null);
+  const initialRoute = parsePath(window.location.pathname);
+  const [activeTab, setActiveTab] = useState(initialRoute.tab || 'gallery');
+  const [selectedArticleId, setSelectedArticleId] = useState<number | null>(initialRoute.articleId ?? null);
   const [currentLang, setCurrentLang] = useState(DEFAULT_LANGUAGE);
   const languageOptions = getAvailableLanguages();
   const { items, articles, reviews, libraryItems } = getContentForLanguage(currentLang);
   const selectedArticle = selectedArticleId !== null ? articles.find((article) => article.id === selectedArticleId) || null : null;
   const t = (key: string) => getTranslation(currentLang, key);
 
-  const updateHash = useCallback((tab: string, articleId: number | null) => {
-    if (articleId !== null) {
-      window.location.hash = `article/${articleId}`;
-    } else if (tab !== 'gallery') {
-      window.location.hash = tab;
-    } else {
-      history.replaceState(null, '', window.location.pathname + window.location.search);
-    }
+  const navigate = useCallback((path: string) => {
+    window.history.pushState(null, '', path);
   }, []);
 
   const handleSetTab = useCallback((tab: string) => {
     setActiveTab(tab);
     setSelectedArticleId(null);
-    updateHash(tab, null);
-  }, [updateHash]);
+    navigate(tab === 'gallery' ? '/' : `/${tab}`);
+  }, [navigate]);
 
   const handleSelectArticle = useCallback((id: number) => {
     setSelectedArticleId(id);
-    updateHash('articles', id);
-  }, [updateHash]);
+    navigate(`/article/${id}`);
+  }, [navigate]);
 
   const handleCloseArticle = useCallback(() => {
     setSelectedArticleId(null);
-    updateHash(activeTab, null);
-  }, [activeTab, updateHash]);
+    navigate(activeTab === 'gallery' ? '/' : `/${activeTab}`);
+  }, [activeTab, navigate]);
 
   useEffect(() => {
-    const onHashChange = () => {
-      const parsed = parseHash(window.location.hash);
+    const onPopState = () => {
+      const parsed = parsePath(window.location.pathname);
       if (parsed.articleId !== undefined) {
         setSelectedArticleId(parsed.articleId);
         setActiveTab('articles');
       } else {
         setSelectedArticleId(null);
-        if (parsed.tab) setActiveTab(parsed.tab);
+        setActiveTab(parsed.tab || 'gallery');
       }
     };
-    window.addEventListener('hashchange', onHashChange);
-    return () => window.removeEventListener('hashchange', onHashChange);
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
   }, []);
 
   return (
