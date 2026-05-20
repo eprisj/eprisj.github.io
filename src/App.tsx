@@ -570,7 +570,17 @@ function NoteBlock({ content }: { content: string }) {
   );
 }
 
-function ArticleView({ article, onClose, t }: { article: Article; onClose: () => void; t: (key: string) => string }) {
+const LANG_LABELS: Record<string, string> = {
+  EN: 'English',
+  RU: 'Русский',
+  UA: 'Українська',
+  TR: 'Türkçe',
+  DE: 'Deutsch',
+  IT: 'Italiano',
+  ES: 'Español'
+};
+
+function ArticleView({ article, onClose, t, currentLang, setCurrentLang, languages }: { article: Article; onClose: () => void; t: (key: string) => string; currentLang: string; setCurrentLang: (lang: string) => void; languages: string[] }) {
   return (
     <motion.div 
       initial={{ opacity: 0, y: 50 }}
@@ -579,12 +589,33 @@ function ArticleView({ article, onClose, t }: { article: Article; onClose: () =>
       className="fixed inset-0 z-[60] bg-[#F5F0EB] overflow-y-auto"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-24 relative">
-        <button 
-          onClick={onClose}
-          className="fixed top-4 left-4 sm:top-8 sm:left-8 md:left-16 z-50 flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c] hover:opacity-60 transition-opacity bg-[#F5F0EB]/80 backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-[#501a2c]/10"
-        >
-          <ArrowLeft size={16} /> {t('back')}
-        </button>
+        <div className="fixed top-4 left-4 right-4 sm:top-8 sm:left-8 sm:right-8 md:left-16 md:right-16 z-50 flex items-center justify-between">
+          <button 
+            onClick={onClose}
+            className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c] hover:opacity-60 transition-opacity bg-[#F5F0EB]/80 backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-[#501a2c]/10"
+          >
+            <ArrowLeft size={16} /> {t('back')}
+          </button>
+
+          <div className="relative group">
+            <button className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c] bg-[#F5F0EB]/80 backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-[#501a2c]/10 hover:opacity-60 transition-opacity">
+              <Globe size={14} />
+              {currentLang}
+            </button>
+            <div className="absolute top-full right-0 mt-1 bg-[#F5F0EB] border border-[#501a2c]/20 rounded-lg shadow-lg overflow-hidden hidden group-hover:block min-w-[140px]">
+              {languages.map(lang => (
+                <button
+                  key={lang}
+                  onClick={() => setCurrentLang(lang)}
+                  className={`w-full px-4 py-2 text-left font-mono text-xs tracking-wider hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-colors flex items-center justify-between gap-3 ${currentLang === lang ? 'bg-[#501a2c] text-[#F5F0EB]' : 'text-[#501a2c]'}`}
+                >
+                  <span>{LANG_LABELS[lang] || lang}</span>
+                  <span className="opacity-50">{lang}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
 
         <article className="mt-12">
           <header className="mb-16">
@@ -1121,7 +1152,7 @@ export default function App() {
 
       <AnimatePresence>
         {selectedArticle && (
-          <ArticleView article={selectedArticle} onClose={handleCloseArticle} t={t} />
+          <ArticleView article={selectedArticle} onClose={handleCloseArticle} t={t} currentLang={currentLang} setCurrentLang={setCurrentLang} languages={languageOptions} />
         )}
       </AnimatePresence>
     </div>
