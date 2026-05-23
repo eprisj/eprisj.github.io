@@ -483,56 +483,6 @@
       "imageSeed": ""
     },
     {
-      "id": 7,
-      "title": "Hidden Gems of Kyoto",
-      "author": "Kenji Tanaka",
-      "date": "Nov 01, 2025",
-      "excerpt": "Beyond the Golden Pavilion. Discovering the quiet temples and secret gardens of Japan's ancient capital.",
-      "category": "Travel",
-      "subcategory": "Japan",
-      "tags": [
-        "Travel",
-        "Japan",
-        "Culture"
-      ],
-      "imageSeed": "kyoto-temple",
-      "content": [
-        {
-          "type": "text",
-          "content": "Kyoto is a city of layers. The famous sites are breathtaking, but the true soul of the city lies in its hidden corners. In the small neighborhood shrines, the moss-covered gardens, and the artisan workshops that have been operating for centuries."
-        },
-        {
-          "type": "map",
-          "content": "Gio-ji Temple (The Moss Temple)",
-          "coordinates": {
-            "lat": 35.0267,
-            "lng": 135.6686
-          }
-        },
-        {
-          "type": "text",
-          "content": "Gio-ji is a small, quiet temple in Arashiyama, known for its lush moss garden. It feels worlds away from the crowds of the Bamboo Grove. The light filtering through the maple trees creates a magical, ethereal atmosphere."
-        },
-        {
-          "type": "gallery",
-          "content": [
-            "moss-garden",
-            "bamboo-forest",
-            "tea-ceremony"
-          ],
-          "caption": "Textures of Kyoto"
-        },
-        {
-          "type": "note",
-          "content": "Best time to visit: Early morning or late afternoon to avoid the crowds."
-        },
-        {
-          "type": "text",
-          "content": "Don't rush Kyoto. It is a city best experienced on foot or by bicycle. Get lost in the narrow alleys of Gion. Sit by the Kamo River. Drink matcha in a traditional tea house. Let the city reveal itself to you slowly."
-        }
-      ]
-    },
-    {
       "id": 9,
       "title": "The Threshold of Time",
       "author": "Viacheslav Munister",
@@ -1149,6 +1099,56 @@
         {
           "type": "note",
           "content": "Quality over quantity. Invest in natural fibers like cotton, linen, wool and silk."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Hidden Treasures of Kyoto",
+      "author": "Kenji Tanaka",
+      "date": "Nov 01, 2025",
+      "excerpt": "Beyond the Golden Pavilion. Discover the quiet temples and secret gardens of Japan's ancient capital.",
+      "category": "Travel",
+      "subcategory": "Japan",
+      "tags": [
+        "Travel",
+        "Japan",
+        "culture"
+      ],
+      "imageSeed": "kyoto-temple",
+      "content": [
+        {
+          "type": "text",
+          "content": "Kyoto is a city of layers. The famous sights are breathtaking, but the city's true soul lies in its hidden corners."
+        },
+        {
+          "type": "map",
+          "content": "Gio-ji Temple (The Moss Temple)",
+          "coordinates": {
+            "lat": 35.0267,
+            "lng": 135.6686
+          }
+        },
+        {
+          "type": "text",
+          "content": "Gio-ji is a small, tranquil temple in Arashiyama, known for its lush moss garden. It feels worlds away from the crowds of the bamboo grove."
+        },
+        {
+          "type": "gallery",
+          "content": [
+            "moss-garden",
+            "bamboo-forest",
+            "tea-ceremony"
+          ],
+          "caption": "Textures of Kyoto"
+        },
+        {
+          "type": "note",
+          "content": "Best time to visit: Early morning or late afternoon to avoid crowds."
+        },
+        {
+          "type": "text",
+          "content": "Don't rush through Kyoto. It is a city best experienced on foot or by bike."
         }
       ]
     }
