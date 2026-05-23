@@ -1194,9 +1194,19 @@ function LibrarySection({ libraryItems, t }: { libraryItems: LibraryItem[]; t: (
               <div className="col-span-2 hidden md:block opacity-60">{item.size}</div>
               <div className="col-span-2 hidden md:block opacity-60">{item.year}</div>
               <div className="col-span-3 sm:col-span-4 md:col-span-1 text-right">
-                <button className="inline-flex items-center justify-center w-8 h-8 border border-[#501a2c] rounded-full hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-colors">
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Open ${item.title}`}
+                  className={`inline-flex items-center justify-center w-8 h-8 border border-[#501a2c] rounded-full transition-colors ${
+                    item.url
+                      ? 'hover:bg-[#501a2c] hover:text-[#F5F0EB]'
+                      : 'pointer-events-none opacity-40'
+                  }`}
+                >
                   <Download size={14} />
-                </button>
+                </a>
               </div>
             </div>
           </Reveal>
