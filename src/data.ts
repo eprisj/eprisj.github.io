@@ -50,6 +50,7 @@ export interface LibraryItem {
   type: string;
   size: string;
   year: string;
+  url?: string;
 }
 
 export interface LocalizedContentCollection {

@@ -2486,6 +2486,8 @@ function buildQualityEntryFromForm(section, fallback = {}) {
       ...base,
       title: getFieldValue('vf-title').trim(),
       type: getFieldValue('vf-type').trim(),
+      size: getFieldValue('vf-size').trim(),
+      url: getFieldValue('vf-url').trim(),
       year: getFieldValue('vf-year').trim()
     };
   }
@@ -2872,6 +2874,7 @@ function renderVisualForm() {
       <label>ID<input id="vf-id" value="${escapeHtml(entry.id)}" disabled /></label>
       <label>Тип<input id="vf-type" value="${escapeHtml(entry.type || '')}" /></label>
       <label class="full">Название<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
+      <label class="full">PDF URL<input id="vf-url" placeholder="https://..." value="${escapeHtml(entry.url || '')}" /></label>
       <label>Размер<input id="vf-size" value="${escapeHtml(entry.size || '')}" /></label>
       <label>Год<input id="vf-year" value="${escapeHtml(entry.year || '')}" /></label>
     `;
@@ -2958,6 +2961,7 @@ async function applyVisualChanges() {
         title: getFieldValue('vf-title').trim(),
         type: getFieldValue('vf-type').trim(),
         size: getFieldValue('vf-size').trim(),
+        url: getFieldValue('vf-url').trim(),
         year: getFieldValue('vf-year').trim()
       };
     } else {
@@ -3026,6 +3030,7 @@ function createDefaultEntry(section, nextId) {
       title: 'New file',
       type: 'PDF',
       size: '0 MB',
+      url: '',
       year: String(new Date().getFullYear())
     };
   }
