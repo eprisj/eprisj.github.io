@@ -8,6 +8,7 @@ import {
   DEFAULT_LANGUAGE,
   getAvailableLanguages,
   getContentForLanguage,
+  getIssue,
   Item,
   LibraryItem,
   Review,
@@ -123,7 +124,7 @@ function NavBar({
     { id: 'library', label: t('nav.library') },
     { id: 'about', label: 'About Us' },
     { id: 'materie', label: 'Materie' },
-    { id: 'issue', label: 'Issue' },
+    { id: 'issue', label: t('nav.issue') },
   ];
 
   const handleSearch = (e: FormEvent) => {
@@ -1426,6 +1427,7 @@ export default function App() {
   const [activeSearch, setActiveSearch] = useState('');
   const languageOptions = getAvailableLanguages();
   const { items, articles, reviews, libraryItems } = getContentForLanguage(currentLang);
+  const { issue: currentIssue, articles: issueArticles } = getIssue(currentLang);
   const defaultContent = getContentForLanguage(DEFAULT_LANGUAGE);
   const selectedArticle = selectedArticleId !== null
     ? articles.find((article) => article.id === selectedArticleId)
@@ -1519,10 +1521,10 @@ export default function App() {
 
         {activeTab === 'materie' ? (
           <div className="pt-16">
-            <MateriePage />
+            <MateriePage t={t} />
           </div>
         ) : activeTab === 'issue' ? (
-          <IssuePage articles={articles} />
+          <IssuePage issue={currentIssue} articles={issueArticles} t={t} />
         ) : (
           <main className="max-w-[1600px] mx-auto px-4 sm:px-8 md:px-16 py-8 sm:py-12 md:py-24">
             <AnimatePresence mode="wait">

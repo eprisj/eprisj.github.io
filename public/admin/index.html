@@ -386,57 +386,87 @@
       <section class="tab-panel" id="tab-issues">
         <div class="issues-layout">
 
+          <!-- Status / publish bar -->
+          <div class="issue-statusbar" id="issueStatusBar">
+            <div class="issue-statusbar-left">
+              <span class="issue-status-badge" id="issueStatusBadge">—</span>
+              <div>
+                <div class="issue-statusbar-title" id="issueStatusTitle">Конструктор выпусков</div>
+                <div class="issue-statusbar-sub" id="issueStatusSub">Загрузите контент, чтобы начать сборку номера.</div>
+              </div>
+            </div>
+            <div class="issue-statusbar-actions">
+              <a id="openIssueLink" href="../?tab=issue" target="_blank" rel="noreferrer" class="btn btn-sm">Открыть на сайте ↗</a>
+              <button id="saveDraftBtn" class="btn btn-sm" type="button">Сохранить черновик</button>
+              <button id="publishIssueBtn" class="btn btn-primary btn-sm" type="button" disabled>Опубликовать выпуск</button>
+            </div>
+          </div>
+
           <div class="card card-highlight">
             <h2 class="card-title">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-              Как пользоваться
+              Как работает конструктор
             </h2>
-            <p class="card-desc">Задайте параметры выпуска, выберите статьи. Нажмите «Сохранить» — данные запишутся в JSON. После этого откройте вкладку Issue на сайте, чтобы увидеть результат и скачать PDF.</p>
+            <p class="card-desc">Прозрачный механизм в 4 шага: <strong>1)</strong> задайте параметры номера, <strong>2)</strong> соберите статьи (вручную или «Собрать все»), <strong>3)</strong> проверьте валидацию — каждая статья проходит набор правил, <strong>4)</strong> опубликуйте. Публикация доступна, только если нет критических ошибок. После публикации нажмите «Сохранить в GitHub» в шапке — сайт и PDF обновятся автоматически.</p>
           </div>
 
           <div class="issues-grid">
-            <!-- Issue meta -->
+            <!-- Issue parameters -->
             <div class="card">
-              <h2 class="card-title">Мета выпуска</h2>
+              <h2 class="card-title">Параметры выпуска</h2>
               <div class="form-grid">
                 <label>
                   <span class="field-label">Название</span>
-                  <input id="issueName" placeholder="Issue 15" value="Issue 15" />
+                  <input id="issueName" placeholder="Issue 15" />
                 </label>
                 <label>
-                  <span class="field-label">Подзаголовок / сезон</span>
-                  <input id="issueSeason" placeholder="Spring 2026" value="Spring 2026" />
+                  <span class="field-label">Сезон</span>
+                  <input id="issueSeason" placeholder="Spring 2026" />
                 </label>
                 <label class="full">
-                  <span class="field-label">URL обложки (главная страница выпуска)</span>
+                  <span class="field-label">Подзаголовок (необязательно)</span>
+                  <input id="issueTagline" placeholder="The Door Issue" />
+                </label>
+                <label class="full">
+                  <span class="field-label">URL главной обложки</span>
                   <input id="issueCoverUrl" placeholder="https://..." />
                 </label>
-                <label class="full">
-                  <span class="field-label">Описание выпуска (для SEO / TOC)</span>
-                  <textarea id="issueDescription" style="height:72px;resize:vertical" placeholder="Краткое описание тематики номера..."></textarea>
-                </label>
               </div>
-              <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
-                <button id="saveIssueBtn" class="btn btn-primary" type="button">Сохранить выпуск</button>
-                <a id="openIssueLink" href="/?tab=issue" target="_blank" rel="noreferrer" class="btn" type="button">Открыть Issue на сайте ↗</a>
-              </div>
+              <div class="issue-cover-preview" id="issueCoverPreview"></div>
             </div>
 
-            <!-- Article selection -->
+            <!-- Validation report -->
             <div class="card">
-              <h2 class="card-title">Статьи в выпуске</h2>
-              <p class="card-desc">Отмечайте статьи, которые войдут в этот номер. Порядок в PDF соответствует порядку в списке.</p>
-              <div id="issueArticlesList" class="issue-articles-list">
-                <p style="color:var(--text-muted);font-size:.82rem">Загрузите контент, чтобы увидеть список статей.</p>
-              </div>
+              <h2 class="card-title">Валидация выпуска</h2>
+              <p class="card-desc">Критические ошибки блокируют публикацию. Предупреждения — на ваше усмотрение.</p>
+              <div id="issueValidationSummary" class="issue-validation-summary"></div>
+              <div id="issueValidationChecks" class="issue-validation-checks"></div>
             </div>
           </div>
 
-          <!-- Issue preview strip -->
+          <!-- Article collection -->
           <div class="card">
-            <h2 class="card-title">Структура PDF</h2>
+            <div class="issue-articles-head">
+              <h2 class="card-title" style="margin:0">Статьи выпуска</h2>
+              <div class="issue-articles-tools">
+                <span id="issueArticlesCount" class="issue-articles-count"></span>
+                <button id="collectAllBtn" class="btn btn-sm" type="button">Собрать все</button>
+                <button id="collectValidBtn" class="btn btn-sm" type="button">Только готовые</button>
+                <button id="clearSelectionBtn" class="btn btn-sm" type="button">Очистить</button>
+              </div>
+            </div>
+            <p class="card-desc">Отметьте статьи для номера. Порядок (стрелками) определяет последовательность в PDF и на сайте. У каждой статьи — индикатор готовности.</p>
+            <div id="issueArticlesList" class="issue-articles-list">
+              <p style="color:var(--text-muted);font-size:.82rem">Загрузите контент, чтобы увидеть список статей.</p>
+            </div>
+          </div>
+
+          <!-- PDF structure preview -->
+          <div class="card">
+            <h2 class="card-title">Предпросмотр структуры PDF</h2>
+            <p class="card-desc">Так будет собран PDF-журнал из выбранных статей.</p>
             <div id="issuePdfStructure" class="issue-pdf-structure">
-              <p style="color:var(--text-muted);font-size:.82rem">Выберите статьи выше, чтобы увидеть структуру PDF.</p>
+              <p style="color:var(--text-muted);font-size:.82rem">Выберите статьи, чтобы увидеть структуру.</p>
             </div>
           </div>
 
