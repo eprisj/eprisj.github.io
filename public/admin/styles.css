@@ -135,6 +135,36 @@ body {
 }
 .btn-save:hover { background: var(--accent-hover); border-color: var(--accent-hover); transform: none; box-shadow: none; }
 
+.btn-deploy {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 16px;
+  height: var(--navbar-h);
+  background: #0f766e;
+  border: none;
+  border-left: 1px solid #0d9488;
+  color: #f0fdfa;
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  cursor: pointer;
+  transition: background .15s;
+  white-space: nowrap;
+}
+.btn-deploy:hover { background: #0d9488; }
+.btn-deploy:disabled { opacity: .5; cursor: not-allowed; }
+
+.btn-ai {
+  background: linear-gradient(135deg, #6d28d9, #7c3aed);
+  border-color: #7c3aed;
+  color: #fff;
+  font-weight: 700;
+}
+.btn-ai:hover { background: linear-gradient(135deg, #7c3aed, #8b5cf6); border-color: #8b5cf6; }
+.btn-ai:disabled { opacity: .5; cursor: not-allowed; }
+
 /* ===== SUB-HEADER / TAB BAR ===== */
 .sub-header {
   position: sticky;
