@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { ReactNode, useState, useEffect, useCallback, FormEvent } from 'react';
 import { MateriePage } from './pages/MateriePage';
+import { IssuePage } from './pages/IssuePage';
 import {
   Article,
   ContentBlock,
@@ -122,6 +123,7 @@ function NavBar({
     { id: 'library', label: t('nav.library') },
     { id: 'about', label: t('nav.about') },
     { id: 'materie', label: 'Materie' },
+    { id: 'issue', label: 'Issue' },
   ];
 
   const handleSearch = (e: FormEvent) => {
@@ -151,7 +153,7 @@ function NavBar({
         </div>
         
         {/* Desktop Navigation */}
-        <div className="hidden md:grid flex-1 grid-cols-6 divide-x divide-[#501a2c]">
+        <div className="hidden md:grid flex-1 grid-cols-7 divide-x divide-[#501a2c]">
           {tabs.map((tab) => (
             <button
               type="button"
@@ -1327,7 +1329,7 @@ function SearchResults({
   );
 }
 
-const VALID_TABS = ['gallery', 'articles', 'reviews', 'library', 'about', 'materie'];
+const VALID_TABS = ['gallery', 'articles', 'reviews', 'library', 'about', 'materie', 'issue'];
 
 function buildSlugMap(): Map<string, number> {
   const allArticles = getContentForLanguage(DEFAULT_LANGUAGE).articles;
@@ -1501,12 +1503,14 @@ export default function App() {
       />
       
       <div className="lg:pr-12">
-        {activeTab !== 'materie' && !activeSearch && <Hero t={t} />}
+        {activeTab !== 'materie' && activeTab !== 'issue' && !activeSearch && <Hero t={t} />}
 
         {activeTab === 'materie' ? (
           <div className="pt-16">
             <MateriePage />
           </div>
+        ) : activeTab === 'issue' ? (
+          <IssuePage articles={articles} />
         ) : (
           <main className="max-w-[1600px] mx-auto px-4 sm:px-8 md:px-16 py-8 sm:py-12 md:py-24">
             <AnimatePresence mode="wait">
@@ -1544,7 +1548,7 @@ export default function App() {
           </main>
         )}
 
-        {activeTab !== 'materie' && <footer className="border-t border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
+        {activeTab !== 'materie' && activeTab !== 'issue' && <footer className="border-t border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
           <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
             <div>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-[#C9A690]">EPRIS JOURNAL</h2>
