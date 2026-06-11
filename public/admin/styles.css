@@ -1102,6 +1102,178 @@ code { border: 1px solid color-mix(in srgb, var(--line) 20%, transparent); backg
   .navbar-right .btn-help { width: 32px; height: 32px; }
 }
 
+/* ===== ISSUES TAB ===== */
+.issues-layout { padding: 24px; display: grid; gap: 16px; max-width: 1100px; margin: 0 auto; }
+.issues-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.issue-articles-list { display: grid; gap: 8px; margin-top: 4px; }
+
+.issue-article-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid color-mix(in srgb, var(--line) 18%, transparent);
+  background: var(--bg);
+  cursor: grab;
+  transition: background .12s;
+}
+.issue-article-row:hover { background: var(--accent-soft); }
+.issue-article-row.dragging { opacity: .4; cursor: grabbing; }
+.issue-article-row input[type="checkbox"] { width: 16px; height: 16px; flex-shrink: 0; }
+.issue-article-drag { color: var(--text-muted); font-size: .8rem; opacity: .35; cursor: grab; }
+.issue-article-info { flex: 1; min-width: 0; }
+.issue-article-title { font-family: var(--font-serif); font-size: .85rem; font-weight: 700; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.issue-article-meta { font-family: var(--font-mono); font-size: .56rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .07em; margin-top: 1px; }
+.issue-article-thumb { width: 36px; height: 48px; object-fit: cover; border: 1px solid color-mix(in srgb, var(--line) 12%, transparent); flex-shrink: 0; background: var(--bg-soft); }
+
+.issue-pdf-structure { display: flex; gap: 0; flex-wrap: wrap; }
+.issue-pdf-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 80px;
+  padding: 8px 4px;
+  border-right: 1px solid color-mix(in srgb, var(--line) 10%, transparent);
+}
+.issue-pdf-page:last-child { border-right: none; }
+.issue-pdf-rect {
+  width: 56px;
+  height: 72px;
+  border: 1px solid color-mix(in srgb, var(--line) 25%, transparent);
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.issue-pdf-rect.cover-rect { background: var(--accent); }
+.issue-pdf-rect.cover-rect span { color: var(--bg); }
+.issue-pdf-rect span { font-family: var(--font-mono); font-size: .42rem; color: var(--text-muted); text-align: center; text-transform: uppercase; letter-spacing: .04em; line-height: 1.4; padding: 4px; }
+.issue-pdf-label { font-family: var(--font-mono); font-size: .48rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; text-align: center; }
+.issue-pdf-num { font-family: var(--font-mono); font-size: .42rem; color: var(--text-muted); opacity: .5; }
+
+@media (max-width: 900px) {
+  .issues-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== TRANSLATIONS TAB ===== */
+.translations-layout { padding: 24px; display: grid; gap: 16px; max-width: 1100px; margin: 0 auto; }
+
+.translations-toolbar {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 12px 16px;
+  background: var(--bg-card);
+  border: 1px solid color-mix(in srgb, var(--line) 18%, transparent);
+}
+
+.transl-stats {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 14%, transparent);
+  background: var(--bg);
+  padding: 8px 16px;
+  flex-wrap: wrap;
+}
+.transl-stat-item {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding-right: 16px;
+  margin-right: 16px;
+  border-right: 1px solid color-mix(in srgb, var(--line) 12%, transparent);
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.transl-stat-item:last-child { border-right: none; }
+.transl-stat-val { color: var(--text); font-weight: 700; }
+.transl-stat-val.ok { color: var(--ok); }
+.transl-stat-val.warn { color: var(--warn); }
+.transl-stat-val.danger { color: var(--danger); }
+
+.transl-table-wrap { overflow-x: auto; }
+
+.transl-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .82rem;
+}
+.transl-table thead { position: sticky; top: 0; z-index: 2; }
+.transl-table th {
+  background: var(--bg);
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 25%, transparent);
+  padding: 10px 14px;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  white-space: nowrap;
+}
+.transl-th-key { width: 22%; min-width: 160px; }
+.transl-th-en  { width: 34%; }
+.transl-th-val { width: 34%; }
+.transl-th-action { width: 10%; text-align: center; }
+
+.transl-table td {
+  padding: 6px 14px;
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 10%, transparent);
+  vertical-align: middle;
+}
+.transl-table tr:hover td { background: color-mix(in srgb, var(--accent-soft) 40%, transparent); }
+.transl-table tr.transl-missing td { background: color-mix(in srgb, var(--warn-soft) 60%, transparent); }
+.transl-table tr.transl-missing:hover td { background: var(--warn-soft); }
+
+.transl-key {
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  color: var(--text-muted);
+  letter-spacing: .04em;
+}
+.transl-en-val { font-size: .82rem; color: var(--text); line-height: 1.45; }
+
+.transl-input {
+  width: 100%;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text);
+  padding: 5px 8px;
+  font: inherit;
+  font-size: .82rem;
+  transition: border-color .12s, background .12s;
+}
+.transl-input:focus { border-color: color-mix(in srgb, var(--gold) 60%, transparent); background: white; outline: none; }
+.transl-input.changed { border-color: color-mix(in srgb, var(--warn) 50%, transparent); background: var(--warn-soft); }
+
+.transl-copy-btn {
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: .55rem;
+  padding: 4px 8px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  transition: color .12s;
+  white-space: nowrap;
+}
+.transl-copy-btn:hover { color: var(--accent); }
+
+@media (max-width: 900px) {
+  .translations-toolbar { padding: 10px 12px; }
+  .transl-th-en { display: none; }
+  td.transl-en-cell { display: none; }
+}
+
 /* ===== OVERVIEW STRIP ===== */
 .overview-strip {
   display: grid;
