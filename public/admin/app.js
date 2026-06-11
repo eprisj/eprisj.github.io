@@ -4556,9 +4556,11 @@ setTimeout(() => {
   try { renderPollResults(); } catch {}
 }, 500);
 
-// ===== AI GENERATION (via VPS proxy /admin/ai) =====
+// ===== AI GENERATION (via api.eprisjournal.com proxy) =====
+const EPRIS_API = 'https://api.eprisjournal.com';
+
 async function callOpenRouter(prompt) {
-  const res = await fetch('/admin/ai', {
+  const res = await fetch(`${EPRIS_API}/ai`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ prompt }),
@@ -4682,7 +4684,7 @@ async function deployVPS() {
   btn.textContent = '⏳ Деплой...';
   showToast('Запускаю деплой VPS...', 'info');
   try {
-    const res = await fetch('/admin/deploy', {
+    const res = await fetch(`${EPRIS_API}/deploy`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ secret: 'epris-deploy-2026' }),
