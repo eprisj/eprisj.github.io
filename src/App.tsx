@@ -122,8 +122,8 @@ function NavBar({
     { id: 'articles', label: t('nav.articles') },
     { id: 'reviews', label: t('nav.reviews') },
     { id: 'library', label: t('nav.library') },
-    { id: 'about', label: 'About Us' },
-    { id: 'materie', label: 'Materie' },
+    { id: 'about', label: t('nav.about') },
+    { id: 'materie', label: t('nav.materie') },
     { id: 'issue', label: t('nav.issue') },
   ];
 

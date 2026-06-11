@@ -104,7 +104,8 @@
       "materie.studio.upload": "Drop or click to upload interior image",
       "materie.newimage": "New image",
       "materie.scanning": "Scanning structure...",
-      "materie.analyzing": "Analyzing space..."
+      "materie.analyzing": "Analyzing space...",
+      "nav.materie": "Materie"
     },
     "RU": {
       "nav.gallery": "Галерея",
@@ -210,7 +211,8 @@
       "materie.studio.upload": "Перетащите или нажмите, чтобы загрузить фото интерьера",
       "materie.newimage": "Новое фото",
       "materie.scanning": "Сканирование структуры...",
-      "materie.analyzing": "Анализ пространства..."
+      "materie.analyzing": "Анализ пространства...",
+      "nav.materie": "Materie"
     },
     "UA": {
       "nav.gallery": "Галерея",
@@ -316,7 +318,8 @@
       "materie.studio.upload": "Перетягніть або натисніть, щоб завантажити фото інтер’єру",
       "materie.newimage": "Нове фото",
       "materie.scanning": "Сканування структури...",
-      "materie.analyzing": "Аналіз простору..."
+      "materie.analyzing": "Аналіз простору...",
+      "nav.materie": "Materie"
     },
     "TR": {
       "nav.gallery": "Galeri",
@@ -422,7 +425,8 @@
       "materie.studio.upload": "İç mekân görseli yüklemek için sürükleyin veya tıklayın",
       "materie.newimage": "Yeni görsel",
       "materie.scanning": "Yapı taranıyor...",
-      "materie.analyzing": "Mekân analiz ediliyor..."
+      "materie.analyzing": "Mekân analiz ediliyor...",
+      "nav.materie": "Materie"
     },
     "DE": {
       "nav.gallery": "Galerie",
@@ -528,7 +532,8 @@
       "materie.studio.upload": "Innenraumbild ablegen oder klicken zum Hochladen",
       "materie.newimage": "Neues Bild",
       "materie.scanning": "Struktur wird gescannt...",
-      "materie.analyzing": "Raum wird analysiert..."
+      "materie.analyzing": "Raum wird analysiert...",
+      "nav.materie": "Materie"
     },
     "IT": {
       "nav.gallery": "Galleria",
@@ -634,7 +639,8 @@
       "materie.studio.upload": "Trascina o clicca per caricare un'immagine d'interni",
       "materie.newimage": "Nuova immagine",
       "materie.scanning": "Scansione struttura...",
-      "materie.analyzing": "Analisi dello spazio..."
+      "materie.analyzing": "Analisi dello spazio...",
+      "nav.materie": "Materie"
     },
     "ES": {
       "nav.gallery": "Galería",
@@ -740,7 +746,8 @@
       "materie.studio.upload": "Arrastra o haz clic para subir una imagen de interior",
       "materie.newimage": "Nueva imagen",
       "materie.scanning": "Escaneando estructura...",
-      "materie.analyzing": "Analizando el espacio..."
+      "materie.analyzing": "Analizando el espacio...",
+      "nav.materie": "Materie"
     }
   },
   "items": [
