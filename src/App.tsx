@@ -311,49 +311,69 @@ const HERO_BG =
 function Hero({ t }: { t: (key: string) => string }) {
   return (
     <section className="relative pt-16 border-b border-[#501a2c]/20 overflow-hidden">
-      {/* Background image — organic underlay */}
-      <img
-        src={HERO_BG}
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
-      />
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="relative z-10"
+      {/* Cinematic frame */}
+      <div
+        className="relative w-full overflow-hidden"
+        style={{ height: 'clamp(420px, 80vh, 800px)' }}
       >
-        {/* Mobile layout: EPRIS bottom-left, tagline bottom-right */}
-        <div className="flex md:hidden items-end justify-between px-5 sm:px-8 pb-8 pt-28 sm:pt-36">
-          <div>
-            <h1 className="font-mono text-5xl sm:text-6xl tracking-[0.13em] text-[#501a2c] leading-none">EPRIS</h1>
-            <p className="font-mono text-xs tracking-[0.13em] text-[#501a2c]/50 uppercase mt-1">journal.</p>
-          </div>
-          <p className="font-mono text-[9px] sm:text-[10px] tracking-[0.1em] text-[#501a2c]/45 uppercase text-right self-end pb-0.5">
-            {t('hero.tagline2')}
+        {/* Full-bleed image */}
+        <img
+          src={HERO_BG}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
+        />
+
+        {/* Bottom-to-top gradient so serif text is readable */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#F5F0EB] via-[#F5F0EB]/25 to-transparent pointer-events-none" />
+
+        {/* Est. badge — top-left */}
+        <div className="absolute top-6 left-6 md:top-10 md:left-10 z-10">
+          <span className="font-mono text-[9px] uppercase tracking-[0.35em] text-[#501a2c]/55 bg-[#F5F0EB]/60 backdrop-blur-sm px-2 py-1">
+            {t('hero.est')}
+          </span>
+        </div>
+
+        {/* Title — top-right */}
+        <div className="absolute top-6 right-6 md:top-10 md:right-10 z-10 text-right">
+          <p className="font-mono text-[9px] uppercase tracking-[0.35em] text-[#501a2c]/55">
+            EPRIS JOURNAL
           </p>
         </div>
 
-        {/* Desktop layout: 3-column grid */}
-        <div className="hidden md:grid grid-cols-3 items-end px-8 md:px-16 py-16 md:py-28 gap-8">
-          <div className="text-left">
-            <h1 className="font-mono text-5xl md:text-7xl tracking-[0.13em] text-[#501a2c] leading-none">EPRIS</h1>
-            <p className="font-mono text-sm tracking-[0.13em] text-[#501a2c]/50 uppercase mt-1">journal.</p>
-          </div>
-          <div className="flex items-end justify-center pb-1">
-            <p className="font-mono text-xs md:text-sm tracking-[0.13em] text-[#501a2c]/50 uppercase text-center">
+        {/* Main editorial block — bottom-left */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 px-6 pb-8 md:px-12 md:pb-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.15 }}
+          >
+            {/* Kicker line */}
+            <p className="font-mono text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-[#501a2c]/50 mb-3 md:mb-5">
               {t('hero.tagline1')}
             </p>
-          </div>
-          <div className="flex items-end justify-end pb-1">
-            <p className="font-mono text-xs md:text-sm tracking-[0.13em] text-[#501a2c]/50 uppercase text-right">
-              {t('hero.tagline2')}
-            </p>
-          </div>
+            {/* Giant stacked serif tagline */}
+            <h1
+              className="font-serif text-[#501a2c] leading-[0.83] tracking-tight"
+              style={{ fontSize: 'clamp(3.8rem, 12vw, 10rem)' }}
+            >
+              {t('hero.tagline2').split(' ').map((word: string, i: number) => (
+                <span key={i} className="block">{word}</span>
+              ))}
+            </h1>
+          </motion.div>
         </div>
-      </motion.div>
+      </div>
+
+      {/* Thin caption bar */}
+      <div className="flex items-center justify-between px-6 md:px-12 py-3 bg-[#F5F0EB]">
+        <p className="font-mono text-[9px] uppercase tracking-[0.28em] text-[#501a2c]/35">
+          {t('hero.subtitle1')}
+        </p>
+        <p className="font-mono text-[9px] uppercase tracking-[0.28em] text-[#501a2c]/35 text-right">
+          {t('hero.subtitle2')}
+        </p>
+      </div>
     </section>
   );
 }
