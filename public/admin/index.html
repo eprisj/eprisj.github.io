@@ -70,6 +70,14 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
           Мониторинг
         </button>
+        <button class="tab-btn" data-tab="issues" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          Выпуски
+        </button>
+        <button class="tab-btn" data-tab="translations" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+          Переводы
+        </button>
       </nav>
       <div class="sub-header-right">
         <p id="editorState" class="editor-state">Нет локальных изменений.</p>
@@ -373,6 +381,115 @@
       </section>
 
     </main>
+
+      <!-- ===== ISSUES TAB ===== -->
+      <section class="tab-panel" id="tab-issues">
+        <div class="issues-layout">
+
+          <div class="card card-highlight">
+            <h2 class="card-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              Как пользоваться
+            </h2>
+            <p class="card-desc">Задайте параметры выпуска, выберите статьи. Нажмите «Сохранить» — данные запишутся в JSON. После этого откройте вкладку Issue на сайте, чтобы увидеть результат и скачать PDF.</p>
+          </div>
+
+          <div class="issues-grid">
+            <!-- Issue meta -->
+            <div class="card">
+              <h2 class="card-title">Мета выпуска</h2>
+              <div class="form-grid">
+                <label>
+                  <span class="field-label">Название</span>
+                  <input id="issueName" placeholder="Issue 15" value="Issue 15" />
+                </label>
+                <label>
+                  <span class="field-label">Подзаголовок / сезон</span>
+                  <input id="issueSeason" placeholder="Spring 2026" value="Spring 2026" />
+                </label>
+                <label class="full">
+                  <span class="field-label">URL обложки (главная страница выпуска)</span>
+                  <input id="issueCoverUrl" placeholder="https://..." />
+                </label>
+                <label class="full">
+                  <span class="field-label">Описание выпуска (для SEO / TOC)</span>
+                  <textarea id="issueDescription" style="height:72px;resize:vertical" placeholder="Краткое описание тематики номера..."></textarea>
+                </label>
+              </div>
+              <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
+                <button id="saveIssueBtn" class="btn btn-primary" type="button">Сохранить выпуск</button>
+                <a id="openIssueLink" href="/?tab=issue" target="_blank" rel="noreferrer" class="btn" type="button">Открыть Issue на сайте ↗</a>
+              </div>
+            </div>
+
+            <!-- Article selection -->
+            <div class="card">
+              <h2 class="card-title">Статьи в выпуске</h2>
+              <p class="card-desc">Отмечайте статьи, которые войдут в этот номер. Порядок в PDF соответствует порядку в списке.</p>
+              <div id="issueArticlesList" class="issue-articles-list">
+                <p style="color:var(--text-muted);font-size:.82rem">Загрузите контент, чтобы увидеть список статей.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Issue preview strip -->
+          <div class="card">
+            <h2 class="card-title">Структура PDF</h2>
+            <div id="issuePdfStructure" class="issue-pdf-structure">
+              <p style="color:var(--text-muted);font-size:.82rem">Выберите статьи выше, чтобы увидеть структуру PDF.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== TRANSLATIONS TAB ===== -->
+      <section class="tab-panel" id="tab-translations">
+        <div class="translations-layout">
+
+          <div class="card card-highlight">
+            <h2 class="card-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+              Редактор переводов UI
+            </h2>
+            <p class="card-desc">Редактируйте тексты интерфейса по каждому языку. EN — базовый язык (эталон). Пустые ячейки используют EN как запасной вариант. После сохранения в GitHub сайт обновится автоматически.</p>
+          </div>
+
+          <div class="translations-toolbar">
+            <label class="toolbar-field">
+              <span class="toolbar-field-label">Язык</span>
+              <select id="translLangSelect"></select>
+            </label>
+            <label class="toolbar-field toolbar-field-grow">
+              <span class="toolbar-field-label">Поиск по ключу или тексту</span>
+              <input id="translSearch" placeholder="nav., hero., about..." />
+            </label>
+            <button id="translOnlyMissing" class="btn btn-sm" type="button">Только незаполненные</button>
+            <button id="translShowAll" class="btn btn-sm" type="button">Показать все</button>
+            <button id="translSaveBtn" class="btn btn-primary btn-sm" type="button">Применить изменения</button>
+          </div>
+
+          <div class="card" style="padding:0;overflow:hidden">
+            <div id="translStats" class="transl-stats"></div>
+            <div class="transl-table-wrap">
+              <table class="transl-table" id="translTable">
+                <thead>
+                  <tr>
+                    <th class="transl-th-key">Ключ</th>
+                    <th class="transl-th-en">EN (эталон)</th>
+                    <th class="transl-th-val" id="translLangHeader">Перевод</th>
+                    <th class="transl-th-action"></th>
+                  </tr>
+                </thead>
+                <tbody id="translBody">
+                  <tr><td colspan="4" style="text-align:center;padding:24px;color:var(--text-muted);font-size:.82rem">Загрузите контент, чтобы увидеть переводы.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </section>
 
     <script src="./app.js" type="module"></script>
     <script>

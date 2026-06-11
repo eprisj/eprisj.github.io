@@ -4739,3 +4739,274 @@ async function deployVPS() {
 
 const deployBtn = document.getElementById('deployVpsBtn');
 if (deployBtn) deployBtn.addEventListener('click', deployVPS);
+
+// ═══════════════════════════════════════════════════════════
+// ──  ISSUES TAB  ──────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════
+
+function renderIssuesTab() {
+  const data = parseEditorJsonSafe();
+  const listEl = document.getElementById('issueArticlesList');
+  const structEl = document.getElementById('issuePdfStructure');
+  if (!listEl || !structEl) return;
+
+  const articles = Array.isArray(data && data.articles) ? data.articles : [];
+  const issueData = (data && data.issue) || {};
+
+  // Populate meta fields
+  const nameEl = document.getElementById('issueName');
+  const seasonEl = document.getElementById('issueSeason');
+  const coverEl = document.getElementById('issueCoverUrl');
+  const descEl = document.getElementById('issueDescription');
+  if (nameEl && issueData.name) nameEl.value = issueData.name;
+  if (seasonEl && issueData.season) seasonEl.value = issueData.season;
+  if (coverEl && issueData.coverUrl) coverEl.value = issueData.coverUrl;
+  if (descEl && issueData.description) descEl.value = issueData.description;
+
+  const selectedIds = new Set(Array.isArray(issueData.articleIds) ? issueData.articleIds.map(Number) : articles.map(a => a.id));
+
+  if (!articles.length) {
+    listEl.innerHTML = '<p style="color:var(--text-muted);font-size:.82rem">Загрузите контент, чтобы увидеть список статей.</p>';
+    structEl.innerHTML = '<p style="color:var(--text-muted);font-size:.82rem">Нет статей.</p>';
+    return;
+  }
+
+  listEl.innerHTML = articles.map(a => {
+    const checked = selectedIds.has(a.id) ? 'checked' : '';
+    const thumb = a.imageUrl ? `<img class="issue-article-thumb" src="${escapeHtml(a.imageUrl)}" alt="" />` : '<div class="issue-article-thumb"></div>';
+    return `
+      <div class="issue-article-row" data-id="${a.id}">
+        <span class="issue-article-drag">⠿</span>
+        <input type="checkbox" class="issue-art-check" data-id="${a.id}" ${checked} />
+        ${thumb}
+        <div class="issue-article-info">
+          <div class="issue-article-title">${escapeHtml(a.title)}</div>
+          <div class="issue-article-meta">${escapeHtml(a.category || '')} · ID ${a.id}</div>
+        </div>
+      </div>`;
+  }).join('');
+
+  renderIssuePdfStructure(articles, selectedIds);
+
+  // Bind checkboxes
+  listEl.querySelectorAll('.issue-art-check').forEach(cb => {
+    cb.addEventListener('change', () => {
+      const checked = new Set(
+        Array.from(listEl.querySelectorAll('.issue-art-check:checked')).map(el => Number(el.dataset.id))
+      );
+      renderIssuePdfStructure(articles, checked);
+    });
+  });
+}
+
+function renderIssuePdfStructure(articles, selectedIds) {
+  const structEl = document.getElementById('issuePdfStructure');
+  if (!structEl) return;
+
+  const selected = articles.filter(a => selectedIds.has(a.id));
+  const pages = [
+    { label: 'Main Cover', type: 'cover' },
+    { label: 'Letter', type: 'letter' },
+    { label: 'Contents', type: 'toc' },
+    ...selected.flatMap(a => [
+      { label: `Cover\n${a.title.slice(0,12)}…`, type: 'cover' },
+      { label: `Title\n${a.title.slice(0,12)}…`, type: 'title' },
+      { label: `Article\n${a.title.slice(0,12)}…`, type: 'content' },
+    ]),
+    { label: 'Colophon', type: 'colophon' },
+  ];
+
+  structEl.innerHTML = pages.map((p, i) => {
+    const isCover = p.type === 'cover' || p.type === 'colophon';
+    return `
+      <div class="issue-pdf-page">
+        <div class="issue-pdf-rect ${isCover ? 'cover-rect' : ''}">
+          <span>${escapeHtml(p.label)}</span>
+        </div>
+        <div class="issue-pdf-label">${p.type}</div>
+        <div class="issue-pdf-num">${String(i + 1).padStart(2, '0')}</div>
+      </div>`;
+  }).join('');
+}
+
+const saveIssueBtn = document.getElementById('saveIssueBtn');
+if (saveIssueBtn) {
+  saveIssueBtn.addEventListener('click', () => {
+    const data = parseEditorJsonSafe();
+    if (!data) { showToast('error', 'Загрузите JSON перед сохранением.'); return; }
+
+    const listEl = document.getElementById('issueArticlesList');
+    const articleIds = listEl
+      ? Array.from(listEl.querySelectorAll('.issue-art-check:checked')).map(el => Number(el.dataset.id))
+      : (Array.isArray(data.articles) ? data.articles.map(a => a.id) : []);
+
+    data.issue = {
+      name: document.getElementById('issueName')?.value || 'Issue 15',
+      season: document.getElementById('issueSeason')?.value || 'Spring 2026',
+      coverUrl: document.getElementById('issueCoverUrl')?.value || '',
+      description: document.getElementById('issueDescription')?.value || '',
+      articleIds,
+    };
+
+    editor.value = JSON.stringify(data, null, 2);
+    updateEditorState();
+    showToast('success', 'Выпуск обновлён — нажмите Сохранить в GitHub.');
+  });
+}
+
+// Wire Issues tab render
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (btn.dataset.tab === 'issues') setTimeout(renderIssuesTab, 50);
+    if (btn.dataset.tab === 'translations') setTimeout(renderTranslationsTab, 50);
+  });
+});
+
+
+// ═══════════════════════════════════════════════════════════
+// ──  TRANSLATIONS TAB  ────────────────────────────────────
+// ═══════════════════════════════════════════════════════════
+
+let _translChanges = {}; // key → new value for selected lang
+let _translShowMissingOnly = false;
+
+function renderTranslationsTab() {
+  const data = parseEditorJsonSafe();
+  const bodyEl = document.getElementById('translBody');
+  const langSelect = document.getElementById('translLangSelect');
+  const statsEl = document.getElementById('translStats');
+  const headerEl = document.getElementById('translLangHeader');
+  if (!bodyEl || !langSelect) return;
+
+  if (!data || !data.translations) {
+    bodyEl.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:24px;color:var(--text-muted);font-size:.82rem">Загрузите контент для работы с переводами.</td></tr>';
+    return;
+  }
+
+  const langs = Object.keys(data.translations);
+  const enKeys = data.translations['EN'] || {};
+  const allKeys = Object.keys(enKeys);
+
+  // Populate lang selector
+  const prevLang = langSelect.value;
+  langSelect.innerHTML = langs.filter(l => l !== 'EN').map(l =>
+    `<option value="${l}" ${l === prevLang ? 'selected' : ''}>${l}</option>`
+  ).join('');
+  const activeLang = langSelect.value || langs.find(l => l !== 'EN') || '';
+  if (headerEl) headerEl.textContent = activeLang ? `${activeLang} — перевод` : 'Перевод';
+
+  const langMap = data.translations[activeLang] || {};
+  _translChanges = {};
+
+  const searchVal = (document.getElementById('translSearch')?.value || '').toLowerCase();
+
+  const filtered = allKeys.filter(k => {
+    if (_translShowMissingOnly && langMap[k]) return false;
+    if (searchVal && !k.toLowerCase().includes(searchVal) && !(enKeys[k] || '').toLowerCase().includes(searchVal)) return false;
+    return true;
+  });
+
+  const missing = allKeys.filter(k => !langMap[k]).length;
+  const filled = allKeys.length - missing;
+  const pct = allKeys.length ? Math.round((filled / allKeys.length) * 100) : 0;
+  const statClass = pct === 100 ? 'ok' : pct > 70 ? 'warn' : 'danger';
+  if (statsEl) {
+    statsEl.innerHTML = `
+      <div class="transl-stat-item">Язык: <span class="transl-stat-val">${activeLang}</span></div>
+      <div class="transl-stat-item">Ключей: <span class="transl-stat-val">${allKeys.length}</span></div>
+      <div class="transl-stat-item">Заполнено: <span class="transl-stat-val ${statClass}">${filled}</span></div>
+      <div class="transl-stat-item">Пропущено: <span class="transl-stat-val ${missing ? 'danger' : 'ok'}">${missing}</span></div>
+      <div class="transl-stat-item">Покрытие: <span class="transl-stat-val ${statClass}">${pct}%</span></div>
+    `;
+  }
+
+  if (!filtered.length) {
+    bodyEl.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:24px;color:var(--text-muted);font-size:.82rem">Нет ключей по фильтру.</td></tr>';
+    return;
+  }
+
+  bodyEl.innerHTML = filtered.map(k => {
+    const enVal = escapeHtml(enKeys[k] || '');
+    const curVal = escapeHtml(langMap[k] || '');
+    const isMissing = !langMap[k];
+    return `
+      <tr class="${isMissing ? 'transl-missing' : ''}" data-key="${escapeHtml(k)}">
+        <td><span class="transl-key">${escapeHtml(k)}</span></td>
+        <td class="transl-en-cell"><span class="transl-en-val">${enVal}</span></td>
+        <td>
+          <input class="transl-input" data-key="${escapeHtml(k)}" value="${curVal}" placeholder="${enVal}" />
+        </td>
+        <td style="text-align:center">
+          ${isMissing ? `<button class="transl-copy-btn" data-copy="${escapeHtml(k)}" title="Скопировать EN">↙ EN</button>` : ''}
+        </td>
+      </tr>`;
+  }).join('');
+
+  // Track changes
+  bodyEl.querySelectorAll('.transl-input').forEach(input => {
+    const key = input.dataset.key;
+    const original = langMap[key] || '';
+    input.addEventListener('input', () => {
+      if (input.value !== original) {
+        _translChanges[key] = input.value;
+        input.classList.add('changed');
+      } else {
+        delete _translChanges[key];
+        input.classList.remove('changed');
+      }
+    });
+  });
+
+  // Copy from EN buttons
+  bodyEl.querySelectorAll('.transl-copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.copy;
+      const input = bodyEl.querySelector(`.transl-input[data-key="${key}"]`);
+      if (input) {
+        input.value = enKeys[key] || '';
+        input.dispatchEvent(new Event('input'));
+      }
+    });
+  });
+}
+
+// Apply translation changes
+const translSaveBtn = document.getElementById('translSaveBtn');
+if (translSaveBtn) {
+  translSaveBtn.addEventListener('click', () => {
+    if (!Object.keys(_translChanges).length) {
+      showToast('info', 'Нет изменений — отредактируйте переводы.');
+      return;
+    }
+    const data = parseEditorJsonSafe();
+    if (!data) { showToast('error', 'Загрузите JSON.'); return; }
+
+    const langSelect = document.getElementById('translLangSelect');
+    const activeLang = langSelect?.value;
+    if (!activeLang) return;
+
+    if (!data.translations[activeLang]) data.translations[activeLang] = {};
+    Object.assign(data.translations[activeLang], _translChanges);
+
+    editor.value = JSON.stringify(data, null, 2);
+    updateEditorState();
+    _translChanges = {};
+    showToast('success', 'Переводы применены — сохраните в GitHub.');
+    renderTranslationsTab();
+  });
+}
+
+// Lang change
+const translLangSelect = document.getElementById('translLangSelect');
+if (translLangSelect) translLangSelect.addEventListener('change', renderTranslationsTab);
+
+// Search
+const translSearch = document.getElementById('translSearch');
+if (translSearch) translSearch.addEventListener('input', renderTranslationsTab);
+
+// Missing only / show all
+const translOnlyMissing = document.getElementById('translOnlyMissing');
+const translShowAll = document.getElementById('translShowAll');
+if (translOnlyMissing) translOnlyMissing.addEventListener('click', () => { _translShowMissingOnly = true; renderTranslationsTab(); });
+if (translShowAll) translShowAll.addEventListener('click', () => { _translShowMissingOnly = false; renderTranslationsTab(); });
+
