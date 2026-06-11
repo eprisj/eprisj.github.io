@@ -4565,8 +4565,8 @@ async function callOpenRouter(prompt) {
   });
   if (!res.ok) throw new Error(`AI proxy ${res.status}`);
   const data = await res.json();
-  if (data.error) throw new Error(data.error);
-  return data.content;
+  if (!data.ok) throw new Error(data.error || 'AI error');
+  return data.text;
 }
 
 function extractJSON(text) {
