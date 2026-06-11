@@ -1,12 +1,4 @@
-const KEY = import.meta.env.VITE_OPENROUTER_KEY as string;
-const API = 'https://openrouter.ai/api/v1/chat/completions';
-const VISION_MODEL = 'google/gemma-4-31b-it:free';
-const HEADERS = {
-  'Authorization': `Bearer ${KEY}`,
-  'Content-Type': 'application/json',
-  'HTTP-Referer': 'https://eprisjournal.com',
-  'X-Title': 'EPRIS Journal',
-};
+const API_BASE = 'https://api.eprisjournal.com';
 
 function extractJSON(text: string): string {
   const codeBlock = text.match(/```(?:json)?\s*([\s\S]*?)```/);
@@ -21,24 +13,19 @@ export async function analyzeImage<T>(
   mimeType: string,
   prompt: string,
 ): Promise<T> {
-  const res = await fetch(API, {
+  const res = await fetch(`${API_BASE}/vision`, {
     method: 'POST',
-    headers: HEADERS,
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: VISION_MODEL,
-      messages: [{
-        role: 'user',
-        content: [
-          { type: 'image_url', image_url: { url: `data:${mimeType};base64,${base64}` } },
-          { type: 'text', text: prompt + '\n\nReturn ONLY valid JSON, no markdown.' },
-        ],
-      }],
+      imageBase64: base64,
+      mimeType,
+      prompt: prompt + '\n\nReturn ONLY valid JSON, no markdown.',
     }),
   });
-  if (!res.ok) throw new Error(`OpenRouter ${res.status}: ${await res.text()}`);
+  if (!res.ok) throw new Error(`Vision API ${res.status}: ${await res.text()}`);
   const data = await res.json();
-  const content = data.choices[0].message.content as string;
-  return JSON.parse(extractJSON(content)) as T;
+  if (!data.ok) throw new Error(data.error || 'Vision error');
+  return JSON.parse(extractJSON(data.text)) as T;
 }
 
 export async function analyzeImageText(
@@ -46,21 +33,13 @@ export async function analyzeImageText(
   mimeType: string,
   prompt: string,
 ): Promise<string> {
-  const res = await fetch(API, {
+  const res = await fetch(`${API_BASE}/vision`, {
     method: 'POST',
-    headers: HEADERS,
-    body: JSON.stringify({
-      model: VISION_MODEL,
-      messages: [{
-        role: 'user',
-        content: [
-          { type: 'image_url', image_url: { url: `data:${mimeType};base64,${base64}` } },
-          { type: 'text', text: prompt },
-        ],
-      }],
-    }),
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ imageBase64: base64, mimeType, prompt }),
   });
-  if (!res.ok) throw new Error(`OpenRouter ${res.status}: ${await res.text()}`);
+  if (!res.ok) throw new Error(`Vision API ${res.status}: ${await res.text()}`);
   const data = await res.json();
-  return data.choices[0].message.content as string;
+  if (!data.ok) throw new Error(data.error || 'Vision error');
+  return data.text as string;
 }
