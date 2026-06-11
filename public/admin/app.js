@@ -1229,6 +1229,41 @@ function updateStats(data) {
   statsEl.innerHTML = rows
     .map(([label, count]) => `<div class="stat-row"><span>${label}</span><strong>${count}</strong></div>`)
     .join('');
+
+  // Overview strip — quick stats bar at top of content tab
+  const strip = document.getElementById('overviewStrip');
+  if (strip) {
+    const articlesCount = Array.isArray(data.articles) ? data.articles.length : 0;
+    const reviewsCount = Array.isArray(data.reviews) ? data.reviews.length : 0;
+    const itemsCount = Array.isArray(data.items) ? data.items.length : 0;
+    const libCount = Array.isArray(data.libraryItems) ? data.libraryItems.length : 0;
+    const langCount = typeof data.translations === 'object' && data.translations ? Object.keys(data.translations).length : 0;
+    const kbSize = Math.round(bytes / 1024);
+
+    const articlesWithContent = Array.isArray(data.articles)
+      ? data.articles.filter(a => Array.isArray(a.content) && a.content.length > 0).length
+      : 0;
+    const articlesWithPhoto = Array.isArray(data.articles)
+      ? data.articles.filter(a => a.imageUrl || a.imageSeed).length
+      : 0;
+
+    strip.style.display = 'grid';
+    strip.innerHTML = [
+      { label: 'Статьи', value: articlesCount, sub: `${articlesWithContent} с контентом` },
+      { label: 'С фото', value: articlesWithPhoto, sub: `из ${articlesCount} статей` },
+      { label: 'Обзоры', value: reviewsCount, sub: 'записей' },
+      { label: 'Галерея', value: itemsCount, sub: 'элементов' },
+      { label: 'Библиотека', value: libCount, sub: 'файлов' },
+      { label: 'Языки UI', value: langCount, sub: `+ EN базовый` },
+      { label: 'Размер', value: `${kbSize}`, sub: 'КБ' },
+    ].map(({ label, value, sub }) =>
+      `<div class="overview-cell">
+        <div class="overview-cell-label">${label}</div>
+        <div class="overview-cell-value">${value}</div>
+        <div class="overview-cell-sub">${sub}</div>
+      </div>`
+    ).join('');
+  }
 }
 
 const MONITOR_LEVEL_ORDER = {

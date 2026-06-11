@@ -363,11 +363,10 @@ function AboutSection({ t }: { t: (key: string) => string }) {
       <Reveal>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
           <div className="aspect-[3/4] bg-[#E8DED5] relative overflow-hidden">
-             <img 
-               src="/images/mariia-ivanova.jpg"
+             <img
+               src="https://raw.githubusercontent.com/eprisj/eprisj.github.io/refs/heads/main/%D1%81over/mashapeut_1768216703_3808400198850843332_4043713819.jpg"
                alt="Mariia Ivanova"
-               className="w-full h-full object-cover grayscale"
-               referrerPolicy="no-referrer"
+               className="w-full h-full object-cover object-[50%_18%] grayscale"
              />
           </div>
           <div>
@@ -385,16 +384,10 @@ function AboutSection({ t }: { t: (key: string) => string }) {
                 {t('about.bio')}
               </p>
             </div>
-            <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-[#501a2c]/20 flex flex-col sm:flex-row gap-6 sm:gap-8">
-              <div>
-                <div className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 mb-1">{t('about.contact')}</div>
-                <a href="mailto:editor@eprisjournal.com" className="font-serif text-lg text-[#501a2c] hover:text-[#C9A690] transition-colors">editor@eprisjournal.com</a>
-              </div>
-              <div>
-                <div className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 mb-1">{t('about.social')}</div>
-                <div className="flex gap-4 font-serif text-lg text-[#501a2c]">
-                  <a href="https://www.instagram.com/mashapeut/" target="_blank" rel="noopener noreferrer" className="hover:text-[#C9A690] transition-colors">Instagram</a>
-                </div>
+            <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-[#501a2c]/20">
+              <div className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 mb-1">{t('about.social')}</div>
+              <div className="flex gap-4 font-serif text-lg text-[#501a2c]">
+                <a href="https://www.instagram.com/mashapeut/" target="_blank" rel="noopener noreferrer" className="hover:text-[#C9A690] transition-colors">Instagram</a>
               </div>
             </div>
           </div>
