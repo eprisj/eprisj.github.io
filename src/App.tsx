@@ -304,14 +304,25 @@ function NavBar({
   );
 }
 
+const HERO_BG =
+  'https://raw.githubusercontent.com/eprisj/eprisj.github.io/main/%D1%81over/cover_main_section.png';
+
 function Hero({ t }: { t: (key: string) => string }) {
   return (
-    <section className="relative pt-16 border-b border-[#501a2c]/20">
+    <section className="relative pt-16 border-b border-[#501a2c]/20 overflow-hidden">
+      {/* Background image — organic underlay */}
+      <img
+        src={HERO_BG}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
+      />
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="grid grid-cols-1 md:grid-cols-3 items-end px-4 sm:px-8 md:px-16 py-10 sm:py-16 md:py-28 gap-4 md:gap-8"
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="relative z-10 grid grid-cols-1 md:grid-cols-3 items-end px-4 sm:px-8 md:px-16 py-10 sm:py-16 md:py-28 gap-4 md:gap-8"
       >
         {/* Left: EPRIS masthead */}
         <div className="text-center md:text-left">
