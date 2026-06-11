@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { ReactNode, useState, useEffect, useCallback, FormEvent } from 'react';
+import { MateriePage } from './pages/MateriePage';
 import {
   Article,
   ContentBlock,
@@ -118,6 +119,7 @@ function NavBar({
     { id: 'reviews', label: t('nav.reviews') },
     { id: 'library', label: t('nav.library') },
     { id: 'about', label: t('nav.about') },
+    { id: 'materie', label: 'Materie' },
   ];
 
   const handleSearch = (e: FormEvent) => {
@@ -1270,7 +1272,7 @@ function Sidebar({ t }: { t: (key: string) => string }) {
   );
 }
 
-const VALID_TABS = ['gallery', 'articles', 'reviews', 'library', 'about'];
+const VALID_TABS = ['gallery', 'articles', 'reviews', 'library', 'about', 'materie'];
 
 function buildSlugMap(): Map<string, number> {
   const allArticles = getContentForLanguage(DEFAULT_LANGUAGE).articles;
@@ -1435,32 +1437,38 @@ export default function App() {
       />
       
       <div className="lg:pr-12"> {/* Padding for sidebar */}
-        <Hero t={t} />
+        {activeTab !== 'materie' && <Hero t={t} />}
 
-        <main className="max-w-[1600px] mx-auto px-4 sm:px-8 md:px-16 py-8 sm:py-12 md:py-24">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.25 }}
-            >
-              {activeTab === 'gallery' && (
-                <>
-                  <WelcomingLetter t={t} />
-                  <GallerySection items={items} />
-                </>
-              )}
-              {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
-              {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} />}
-              {activeTab === 'library' && <LibrarySection libraryItems={libraryItems} t={t} />}
-              {activeTab === 'about' && <AboutSection t={t} />}
-            </motion.div>
-          </AnimatePresence>
-        </main>
+        {activeTab === 'materie' ? (
+          <div className="pt-16">
+            <MateriePage />
+          </div>
+        ) : (
+          <main className="max-w-[1600px] mx-auto px-4 sm:px-8 md:px-16 py-8 sm:py-12 md:py-24">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.25 }}
+              >
+                {activeTab === 'gallery' && (
+                  <>
+                    <WelcomingLetter t={t} />
+                    <GallerySection items={items} />
+                  </>
+                )}
+                {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
+                {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} />}
+                {activeTab === 'library' && <LibrarySection libraryItems={libraryItems} t={t} />}
+                {activeTab === 'about' && <AboutSection t={t} />}
+              </motion.div>
+            </AnimatePresence>
+          </main>
+        )}
 
-        <footer className="border-t border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
+        {activeTab !== 'materie' && <footer className="border-t border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
           <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
             <div>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-[#C9A690]">EPRIS JOURNAL</h2>
@@ -1475,7 +1483,7 @@ export default function App() {
               <a href="/admin/index.html" className="inline-block mt-4 opacity-60 hover:opacity-100 transition-opacity border-b border-[#F5F0EB]/30">Admin</a>
             </div>
           </div>
-        </footer>
+        </footer>}
       </div>
       
       <Sidebar t={t} />
