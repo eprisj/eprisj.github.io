@@ -140,20 +140,20 @@ function NavBar({
     <>
       <nav className="fixed top-0 left-0 w-full z-50 bg-[#F5F0EB] border-b border-[#501a2c] flex text-xs font-mono uppercase tracking-widest text-[#501a2c] h-16">
         {/* Logo Section */}
-        <div className="w-full md:w-64 border-r-0 md:border-r border-[#501a2c] p-4 flex items-center justify-between md:justify-start gap-3 shrink-0 cursor-pointer bg-[#F5F0EB] z-50">
+        <div className="w-full lg:w-64 border-r-0 lg:border-r border-[#501a2c] p-4 flex items-center justify-between lg:justify-start gap-3 shrink-0 cursor-pointer bg-[#F5F0EB] z-50">
           <button type="button" className="flex items-center gap-3" onClick={() => setActiveTab('gallery')} aria-label="Go to home">
             <div className="w-4 h-4 border border-[#501a2c] rounded-full flex items-center justify-center">
               <div className="w-1.5 h-1.5 bg-[#501a2c] rounded-full" />
             </div>
             <span className="font-bold tracking-[0.2em] whitespace-nowrap">EPRIS JOURNAL</span>
           </button>
-          <button type="button" aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button type="button" aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
         
         {/* Desktop Navigation */}
-        <div className="hidden md:grid flex-1 grid-cols-7 divide-x divide-[#501a2c]">
+        <div className="hidden lg:grid flex-1 grid-cols-7 divide-x divide-[#501a2c]">
           {tabs.map((tab) => (
             <button
               type="button"
@@ -169,7 +169,7 @@ function NavBar({
         </div>
 
         {/* Desktop Right Section */}
-        <div className="hidden md:flex divide-x divide-[#501a2c] border-l border-[#501a2c]">
+        <div className="hidden lg:flex divide-x divide-[#501a2c] border-l border-[#501a2c]">
           <button
             type="button"
             onClick={() => setIsSearchOpen(true)}
@@ -255,7 +255,7 @@ function NavBar({
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-16 left-0 w-full h-[calc(100vh-4rem)] bg-[#F5F0EB] z-40 flex flex-col md:hidden overflow-y-auto"
+            className="fixed top-16 left-0 w-full h-[calc(100vh-4rem)] bg-[#F5F0EB] z-40 flex flex-col lg:hidden overflow-y-auto"
           >
             <div className="flex flex-col divide-y divide-[#501a2c] border-b border-[#501a2c]">
               {tabs.map((tab) => (

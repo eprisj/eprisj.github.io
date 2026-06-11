@@ -24,8 +24,9 @@ export function IssuePage({ articles }: { articles: Article[] }) {
         import('react'),
       ]);
 
+      const baseUrl = window.location.origin;
       const blob = await pdf(
-        createElement(MagazinePDF, { articles })
+        createElement(MagazinePDF, { articles, baseUrl })
       ).toBlob();
 
       const url = URL.createObjectURL(blob);
@@ -152,10 +153,11 @@ export function IssuePage({ articles }: { articles: Article[] }) {
               <div className="space-y-2">
                 {[
                   { num: '01', label: 'Issue Cover' },
-                  { num: '02', label: `Cover · ${articles[0]?.title ?? ''}` },
-                  { num: '03', label: `Article · ${articles[0]?.title ?? ''}` },
-                  { num: '04', label: `Cover · ${articles[1]?.title ?? ''}` },
-                  { num: '05', label: `Article · ${articles[1]?.title ?? ''}` },
+                  { num: '02', label: 'Contents' },
+                  { num: '03', label: `Cover · ${articles[0]?.title ?? ''}` },
+                  { num: '04', label: `Article · ${articles[0]?.title ?? ''}` },
+                  { num: '05', label: `Cover · ${articles[1]?.title ?? ''}` },
+                  { num: '06', label: `Article · ${articles[1]?.title ?? ''}` },
                 ].map(({ num, label }) => (
                   <div key={num} className="flex items-center gap-3">
                     <span className="font-mono text-[9px] text-[#C9A690] w-6 shrink-0">{num}</span>
