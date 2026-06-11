@@ -121,7 +121,7 @@ function NavBar({
     { id: 'articles', label: t('nav.articles') },
     { id: 'reviews', label: t('nav.reviews') },
     { id: 'library', label: t('nav.library') },
-    { id: 'about', label: t('nav.about') },
+    { id: 'about', label: 'About Us' },
     { id: 'materie', label: 'Materie' },
     { id: 'issue', label: 'Issue' },
   ];
@@ -322,26 +322,35 @@ function Hero({ t }: { t: (key: string) => string }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="relative z-10 grid grid-cols-1 md:grid-cols-3 items-end px-4 sm:px-8 md:px-16 py-10 sm:py-16 md:py-28 gap-4 md:gap-8"
+        className="relative z-10"
       >
-        {/* Left: EPRIS masthead */}
-        <div className="text-center md:text-left">
-          <h1 className="font-mono text-4xl sm:text-5xl md:text-7xl tracking-[0.13em] text-[#501a2c] leading-none">EPRIS</h1>
-          <p className="font-mono text-sm tracking-[0.13em] text-[#501a2c]/50 uppercase mt-1">journal.</p>
-        </div>
-
-        {/* Center: categories tagline */}
-        <div className="flex items-end justify-center pb-1">
-          <p className="font-mono text-xs md:text-sm tracking-[0.13em] text-[#501a2c]/50 uppercase text-center">
-            {t('hero.tagline1')}
-          </p>
-        </div>
-
-        {/* Right: brand tagline */}
-        <div className="flex items-end justify-center md:justify-end pb-1">
-          <p className="font-mono text-xs md:text-sm tracking-[0.13em] text-[#501a2c]/50 uppercase text-center md:text-right">
+        {/* Mobile layout: EPRIS bottom-left, tagline bottom-right */}
+        <div className="flex md:hidden items-end justify-between px-5 sm:px-8 pb-8 pt-28 sm:pt-36">
+          <div>
+            <h1 className="font-mono text-5xl sm:text-6xl tracking-[0.13em] text-[#501a2c] leading-none">EPRIS</h1>
+            <p className="font-mono text-xs tracking-[0.13em] text-[#501a2c]/50 uppercase mt-1">journal.</p>
+          </div>
+          <p className="font-mono text-[9px] sm:text-[10px] tracking-[0.1em] text-[#501a2c]/45 uppercase text-right self-end pb-0.5">
             {t('hero.tagline2')}
           </p>
+        </div>
+
+        {/* Desktop layout: 3-column grid */}
+        <div className="hidden md:grid grid-cols-3 items-end px-8 md:px-16 py-16 md:py-28 gap-8">
+          <div className="text-left">
+            <h1 className="font-mono text-5xl md:text-7xl tracking-[0.13em] text-[#501a2c] leading-none">EPRIS</h1>
+            <p className="font-mono text-sm tracking-[0.13em] text-[#501a2c]/50 uppercase mt-1">journal.</p>
+          </div>
+          <div className="flex items-end justify-center pb-1">
+            <p className="font-mono text-xs md:text-sm tracking-[0.13em] text-[#501a2c]/50 uppercase text-center">
+              {t('hero.tagline1')}
+            </p>
+          </div>
+          <div className="flex items-end justify-end pb-1">
+            <p className="font-mono text-xs md:text-sm tracking-[0.13em] text-[#501a2c]/50 uppercase text-right">
+              {t('hero.tagline2')}
+            </p>
+          </div>
         </div>
       </motion.div>
     </section>
@@ -355,7 +364,7 @@ function AboutSection({ t }: { t: (key: string) => string }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
           <div className="aspect-[3/4] bg-[#E8DED5] relative overflow-hidden">
              <img 
-               src="https://picsum.photos/seed/mariia-ivanova/800/1000?grayscale"
+               src="/images/mariia-ivanova.jpg"
                alt="Mariia Ivanova"
                className="w-full h-full object-cover grayscale"
                referrerPolicy="no-referrer"
@@ -384,8 +393,7 @@ function AboutSection({ t }: { t: (key: string) => string }) {
               <div>
                 <div className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 mb-1">{t('about.social')}</div>
                 <div className="flex gap-4 font-serif text-lg text-[#501a2c]">
-                  <a href="#" className="hover:text-[#C9A690] transition-colors">Instagram</a>
-                  <a href="#" className="hover:text-[#C9A690] transition-colors">Twitter</a>
+                  <a href="https://www.instagram.com/mashapeut/" target="_blank" rel="noopener noreferrer" className="hover:text-[#C9A690] transition-colors">Instagram</a>
                 </div>
               </div>
             </div>
