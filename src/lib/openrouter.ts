@@ -1,6 +1,6 @@
 const KEY = import.meta.env.VITE_OPENROUTER_KEY as string;
 const API = 'https://openrouter.ai/api/v1/chat/completions';
-const VISION_MODEL = 'google/gemini-2.0-flash-exp:free';
+const VISION_MODEL = 'google/gemma-4-31b-it:free';
 const HEADERS = {
   'Authorization': `Bearer ${KEY}`,
   'Content-Type': 'application/json',
