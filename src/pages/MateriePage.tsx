@@ -211,22 +211,22 @@ function LabTool({ onBack }: { onBack: () => void }) {
       )}
 
       {upload && (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {/* Left: image */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="md:col-span-1 lg:col-span-2 space-y-4">
             {/* Visual mode bar */}
-            <div className="flex gap-0 border border-[#501a2c]">
+            <div className="flex gap-0 border border-[#501a2c] overflow-hidden">
               {(['rgb', 'thermal', 'xray', 'edge'] as VisualMode[]).map(m => (
                 <button
                   key={m}
                   type="button"
                   onClick={() => setVisualMode(m)}
-                  className={`flex-1 py-2 font-mono text-[10px] uppercase tracking-widest transition-colors ${visualMode === m ? 'bg-[#501a2c] text-[#F5F0EB]' : 'text-[#501a2c] hover:bg-[#E8DED5]'}`}
+                  className={`flex-1 py-2 font-mono text-[9px] sm:text-[10px] uppercase tracking-wider sm:tracking-widest transition-colors ${visualMode === m ? 'bg-[#501a2c] text-[#F5F0EB]' : 'text-[#501a2c] hover:bg-[#E8DED5]'}`}
                 >
                   {m}
                 </button>
               ))}
-              <button type="button" onClick={() => setFullscreen(!fullscreen)} className="px-3 text-[#501a2c] hover:bg-[#E8DED5] transition-colors border-l border-[#501a2c]">
+              <button type="button" onClick={() => setFullscreen(!fullscreen)} className="px-2 sm:px-3 text-[#501a2c] hover:bg-[#E8DED5] transition-colors border-l border-[#501a2c] shrink-0">
                 <Maximize size={14} />
               </button>
             </div>
@@ -464,7 +464,7 @@ function StudioTool({ onBack }: { onBack: () => void }) {
       )}
 
       {upload && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {/* Image panel */}
           <div className="space-y-4">
             <div className="relative bg-[#E8DED5] overflow-hidden">
@@ -645,12 +645,12 @@ export function MateriePage() {
   if (tool === 'studio') return <StudioTool onBack={() => setTool(null)} />;
 
   return (
-    <div className="min-h-screen bg-[#F5F0EB] px-4 sm:px-8 md:px-16 py-16">
+    <div className="min-h-[calc(100vh-4rem)] bg-[#F5F0EB] px-4 sm:px-8 md:px-16 pt-8 pb-16">
       {/* Header */}
-      <div className="max-w-4xl mb-16">
+      <div className="max-w-4xl mb-10 sm:mb-16">
         <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#501a2c]/40 mb-3">EPRIS / MATERIE</p>
-        <h1 className="font-mono text-5xl sm:text-7xl tracking-[0.08em] text-[#501a2c] leading-none mb-6">MATERIE</h1>
-        <p className="font-serif text-xl text-[#501a2c]/60 italic max-w-lg leading-relaxed">
+        <h1 className="font-mono text-4xl sm:text-6xl lg:text-7xl tracking-[0.08em] text-[#501a2c] leading-none mb-4 sm:mb-6">MATERIE</h1>
+        <p className="font-serif text-base sm:text-xl text-[#501a2c]/60 italic max-w-lg leading-relaxed">
           AI-powered tools for reading architecture and interior space through material intelligence.
         </p>
       </div>
