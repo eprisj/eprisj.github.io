@@ -84,12 +84,9 @@ function mergeLocalizedArray<T extends { id: number }>(value: T[] | undefined, f
     return fallback;
   }
 
+  // Only override items that exist in root (fallback). Never add extra localized-only items.
   const localizedById = new Map(value.map((entry) => [Number(entry.id), entry]));
-  const merged = fallback.map((entry) => localizedById.get(Number(entry.id)) || entry);
-  const fallbackIds = new Set(fallback.map((entry) => Number(entry.id)));
-  const localizedOnly = value.filter((entry) => !fallbackIds.has(Number(entry.id)));
-
-  return [...merged, ...localizedOnly];
+  return fallback.map((entry) => localizedById.get(Number(entry.id)) || entry);
 }
 
 export function getAvailableLanguages(): string[] {

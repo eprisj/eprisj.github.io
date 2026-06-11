@@ -640,6 +640,8 @@ function StudioTool({ onBack }: { onBack: () => void }) {
 
 // ─── MATERIE LANDING ───────────────────────────────────────────────────────
 
+const MATERIE_BG = 'https://raw.githubusercontent.com/eprisj/eprisj.github.io/main/%D1%81over/cover_main_section.png';
+
 export function MateriePage() {
   const [tool, setTool] = useState<Tool>(null);
 
@@ -647,80 +649,155 @@ export function MateriePage() {
   if (tool === 'studio') return <StudioTool onBack={() => setTool(null)} />;
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] bg-[#F5F0EB] px-4 sm:px-8 md:px-16 pt-8 pb-16">
-      {/* Header */}
-      <div className="max-w-4xl mb-10 sm:mb-16">
-        <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#501a2c]/40 mb-3">EPRIS / MATERIE</p>
-        <h1 className="font-mono text-4xl sm:text-6xl lg:text-7xl tracking-[0.08em] text-[#501a2c] leading-none mb-4 sm:mb-6">MATERIE</h1>
-        <p className="font-serif text-base sm:text-xl text-[#501a2c]/60 italic max-w-lg leading-relaxed">
-          AI-powered tools for reading architecture and interior space through material intelligence.
-        </p>
-      </div>
+    <div className="min-h-[calc(100vh-4rem)] bg-[#F5F0EB]">
 
-      {/* Tool cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-[#501a2c] max-w-4xl">
-        {/* Matter Lab */}
-        <button
-          type="button"
-          onClick={() => setTool('lab')}
-          className="group text-left p-8 sm:p-12 border-b md:border-b-0 md:border-r border-[#501a2c] hover:bg-[#501a2c] transition-colors duration-300"
-        >
-          <div className="mb-8">
-            <div className="w-10 h-10 border border-[#501a2c] group-hover:border-[#F5F0EB] flex items-center justify-center mb-6 transition-colors">
-              <Scan size={18} className="text-[#501a2c] group-hover:text-[#F5F0EB] transition-colors" />
-            </div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#501a2c]/40 group-hover:text-[#F5F0EB]/40 mb-2 transition-colors">01 / LAB</p>
-            <h2 className="font-mono text-2xl sm:text-3xl tracking-[0.1em] text-[#501a2c] group-hover:text-[#F5F0EB] transition-colors">MATTER LAB</h2>
-          </div>
-          <p className="font-serif text-base text-[#501a2c]/60 group-hover:text-[#F5F0EB]/60 leading-relaxed mb-8 transition-colors">
-            Upload any architectural image. The scanner identifies structural elements, estimates materials, composition and integrity — with bounding-box forensics.
+      {/* ── Cinematic hero ── */}
+      <div className="relative overflow-hidden border-b border-[#501a2c]/20">
+        <img
+          src={MATERIE_BG}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-30 pointer-events-none select-none"
+        />
+        <div className="relative z-10 px-6 sm:px-10 md:px-16 pt-14 pb-12 sm:pt-20 sm:pb-16">
+          <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#501a2c]/50 mb-5">
+            EPRIS · MATERIE · AI Tools
           </p>
-          <div className="flex flex-wrap gap-2 mb-8">
-            {['Material scan', 'Bounding boxes', 'Forensic report', 'Restoration protocol'].map(t => (
-              <span key={t} className="border border-[#501a2c]/30 group-hover:border-[#F5F0EB]/30 px-2 py-1 font-mono text-[9px] uppercase tracking-wider text-[#501a2c]/50 group-hover:text-[#F5F0EB]/50 transition-colors">
-                {t}
-              </span>
+          <h1 className="font-mono text-5xl sm:text-7xl lg:text-8xl tracking-[0.06em] text-[#501a2c] leading-none mb-6">
+            MATERIE
+          </h1>
+          <p className="font-serif text-lg sm:text-2xl text-[#501a2c]/55 italic max-w-xl leading-relaxed">
+            AI-powered vision tools for reading architecture and interior space through material intelligence.
+          </p>
+
+          {/* Stats strip */}
+          <div className="flex gap-8 sm:gap-14 mt-10 pt-8 border-t border-[#501a2c]/15">
+            {[
+              { num: '02', label: 'Tools' },
+              { num: 'AI', label: 'Vision models' },
+              { num: '∞', label: 'Analyses' },
+            ].map(({ num, label }) => (
+              <div key={label}>
+                <p className="font-mono text-2xl sm:text-3xl text-[#501a2c] leading-none">{num}</p>
+                <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#501a2c]/40 mt-1">{label}</p>
+              </div>
             ))}
           </div>
-          <span className="font-mono text-xs uppercase tracking-widest text-[#501a2c] group-hover:text-[#F5F0EB] flex items-center gap-2 transition-colors">
-            Open Lab <ChevronRight size={14} />
-          </span>
-        </button>
-
-        {/* Interior Studio */}
-        <button
-          type="button"
-          onClick={() => setTool('studio')}
-          className="group text-left p-8 sm:p-12 hover:bg-[#501a2c] transition-colors duration-300"
-        >
-          <div className="mb-8">
-            <div className="w-10 h-10 border border-[#501a2c] group-hover:border-[#F5F0EB] flex items-center justify-center mb-6 transition-colors">
-              <Layers size={18} className="text-[#501a2c] group-hover:text-[#F5F0EB] transition-colors" />
-            </div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#501a2c]/40 group-hover:text-[#F5F0EB]/40 mb-2 transition-colors">02 / STUDIO</p>
-            <h2 className="font-mono text-2xl sm:text-3xl tracking-[0.1em] text-[#501a2c] group-hover:text-[#F5F0EB] transition-colors">INTERIOR STUDIO</h2>
-          </div>
-          <p className="font-serif text-base text-[#501a2c]/60 group-hover:text-[#F5F0EB]/60 leading-relaxed mb-8 transition-colors">
-            Scan an interior space to extract design DNA — palette, spatial metrics, lighting mood, and a professional critique of strengths and opportunities.
-          </p>
-          <div className="flex flex-wrap gap-2 mb-8">
-            {['Design DNA', 'Color palette', 'Space metrics', 'AI critique'].map(t => (
-              <span key={t} className="border border-[#501a2c]/30 group-hover:border-[#F5F0EB]/30 px-2 py-1 font-mono text-[9px] uppercase tracking-wider text-[#501a2c]/50 group-hover:text-[#F5F0EB]/50 transition-colors">
-                {t}
-              </span>
-            ))}
-          </div>
-          <span className="font-mono text-xs uppercase tracking-widest text-[#501a2c] group-hover:text-[#F5F0EB] flex items-center gap-2 transition-colors">
-            Open Studio <ChevronRight size={14} />
-          </span>
-        </button>
+        </div>
       </div>
 
-      {/* Footer note */}
-      <div className="max-w-4xl mt-12 pt-8 border-t border-[#501a2c]/10">
-        <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/30">
-          Powered by AI vision models via OpenRouter · Free tier · No data stored
-        </p>
+      {/* ── Tool cards ── */}
+      <div className="px-6 sm:px-10 md:px-16 py-12 sm:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl">
+
+          {/* Matter Lab */}
+          <button
+            type="button"
+            onClick={() => setTool('lab')}
+            className="group text-left border border-[#501a2c] hover:bg-[#501a2c] transition-colors duration-300 overflow-hidden"
+          >
+            {/* Card top accent bar */}
+            <div className="h-1 bg-[#501a2c] group-hover:bg-[#C9A690] transition-colors duration-300" />
+            <div className="p-8 sm:p-10">
+              <div className="flex items-start justify-between mb-8">
+                <div className="w-11 h-11 border border-[#501a2c] group-hover:border-[#F5F0EB]/40 flex items-center justify-center transition-colors">
+                  <Scan size={18} className="text-[#501a2c] group-hover:text-[#F5F0EB] transition-colors" />
+                </div>
+                <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#501a2c]/30 group-hover:text-[#F5F0EB]/30 transition-colors mt-1">01</span>
+              </div>
+              <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#501a2c]/40 group-hover:text-[#C9A690] mb-2 transition-colors">Matter Lab</p>
+              <h2 className="font-mono text-2xl sm:text-3xl tracking-[0.08em] text-[#501a2c] group-hover:text-[#F5F0EB] mb-5 transition-colors leading-tight">
+                ARCHITECTURAL<br />FORENSICS
+              </h2>
+              <p className="font-serif text-sm text-[#501a2c]/60 group-hover:text-[#F5F0EB]/60 leading-relaxed mb-8 transition-colors">
+                Upload any architectural photo. The scanner identifies structural elements, estimates materials, composition and integrity — with interactive bounding-box forensics and restoration protocols.
+              </p>
+
+              <div className="grid grid-cols-2 gap-2 mb-8">
+                {[
+                  { icon: <Scan size={10} />, label: 'Material scan' },
+                  { icon: <Box size={10} />, label: 'Bounding boxes' },
+                  { icon: <Activity size={10} />, label: 'Integrity score' },
+                  { icon: <Zap size={10} />, label: 'Restoration AI' },
+                ].map(({ icon, label }) => (
+                  <div key={label} className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-wider text-[#501a2c]/45 group-hover:text-[#F5F0EB]/45 transition-colors">
+                    <span className="opacity-60">{icon}</span>{label}
+                  </div>
+                ))}
+              </div>
+
+              <span className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c] group-hover:text-[#C9A690] flex items-center gap-2 transition-colors">
+                Open Lab <ChevronRight size={13} />
+              </span>
+            </div>
+          </button>
+
+          {/* Interior Studio */}
+          <button
+            type="button"
+            onClick={() => setTool('studio')}
+            className="group text-left border border-[#501a2c] hover:bg-[#501a2c] transition-colors duration-300 overflow-hidden"
+          >
+            <div className="h-1 bg-[#C9A690] group-hover:bg-[#C9A690] transition-colors duration-300" />
+            <div className="p-8 sm:p-10">
+              <div className="flex items-start justify-between mb-8">
+                <div className="w-11 h-11 border border-[#501a2c] group-hover:border-[#F5F0EB]/40 flex items-center justify-center transition-colors">
+                  <Layers size={18} className="text-[#501a2c] group-hover:text-[#F5F0EB] transition-colors" />
+                </div>
+                <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#501a2c]/30 group-hover:text-[#F5F0EB]/30 transition-colors mt-1">02</span>
+              </div>
+              <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#501a2c]/40 group-hover:text-[#C9A690] mb-2 transition-colors">Interior Studio</p>
+              <h2 className="font-mono text-2xl sm:text-3xl tracking-[0.08em] text-[#501a2c] group-hover:text-[#F5F0EB] mb-5 transition-colors leading-tight">
+                DESIGN DNA<br />&amp; CRITIQUE
+              </h2>
+              <p className="font-serif text-sm text-[#501a2c]/60 group-hover:text-[#F5F0EB]/60 leading-relaxed mb-8 transition-colors">
+                Scan an interior space to extract its design DNA — color palette, spatial metrics, lighting mood, detected elements and a professional AI critique of strengths and opportunities.
+              </p>
+
+              <div className="grid grid-cols-2 gap-2 mb-8">
+                {[
+                  { icon: <Layers size={10} />, label: 'Design DNA' },
+                  { icon: <Home size={10} />, label: 'Color palette' },
+                  { icon: <Activity size={10} />, label: 'Space metrics' },
+                  { icon: <Zap size={10} />, label: 'AI critique' },
+                ].map(({ icon, label }) => (
+                  <div key={label} className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-wider text-[#501a2c]/45 group-hover:text-[#F5F0EB]/45 transition-colors">
+                    <span className="opacity-60">{icon}</span>{label}
+                  </div>
+                ))}
+              </div>
+
+              <span className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c] group-hover:text-[#C9A690] flex items-center gap-2 transition-colors">
+                Open Studio <ChevronRight size={13} />
+              </span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      {/* ── How it works ── */}
+      <div className="px-6 sm:px-10 md:px-16 pb-14 border-t border-[#501a2c]/10 pt-10 max-w-5xl">
+        <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#501a2c]/35 mb-8">How it works</p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12">
+          {[
+            { n: '01', title: 'Upload photo', desc: 'Any architectural or interior image — JPG, PNG, WEBP.' },
+            { n: '02', title: 'AI scans', desc: 'Vision model analyzes materials, elements, palette and spatial properties.' },
+            { n: '03', title: 'Read the report', desc: 'Interactive forensic report with bounding boxes, scores and restoration recommendations.' },
+          ].map(({ n, title, desc }) => (
+            <div key={n} className="flex gap-5">
+              <span className="font-mono text-[10px] text-[#C9A690] mt-0.5 shrink-0 w-5">{n}</span>
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c] mb-1">{title}</p>
+                <p className="font-serif text-sm text-[#501a2c]/50 leading-relaxed">{desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-10 pt-6 border-t border-[#501a2c]/10">
+          <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/25">
+            Powered by AI vision models via OpenRouter · No data stored · Free to use
+          </p>
+        </div>
       </div>
     </div>
   );
