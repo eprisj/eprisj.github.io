@@ -167,7 +167,8 @@ function LabTool({ onBack }: { onBack: () => void }) {
       const result = await analyzeImage<LabReport>(state.base64, state.mimeType, LAB_PROMPT);
       setReport(result);
     } catch (e) {
-      setError('Analysis failed. Check your API key or try again.');
+      const msg = e instanceof Error ? e.message : 'Unknown error';
+      setError(msg.includes('Rate') ? 'Rate limited — please wait a moment and try again.' : `Analysis failed: ${msg}`);
       console.error(e);
     } finally {
       setScanning(false);
@@ -433,7 +434,8 @@ function StudioTool({ onBack }: { onBack: () => void }) {
       const result = await analyzeImage<StudioReport>(state.base64, state.mimeType, STUDIO_PROMPT);
       setReport(result);
     } catch (e) {
-      setError('Analysis failed. Check your API key or try again.');
+      const msg = e instanceof Error ? e.message : 'Unknown error';
+      setError(msg.includes('Rate') ? 'Rate limited — please wait a moment and try again.' : `Analysis failed: ${msg}`);
       console.error(e);
     } finally {
       setAnalyzing(false);
