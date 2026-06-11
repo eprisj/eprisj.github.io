@@ -666,14 +666,10 @@ function requireRepoFields() {
 }
 
 function getPagesBaseUrl(owner, repo) {
-  if (!owner || !repo) {
-    return '';
-  }
-
-  if (repo.toLowerCase() === `${owner.toLowerCase()}.github.io`) {
-    return `https://${owner}.github.io`;
-  }
-
+  if (!owner || !repo) return '';
+  // eprisj repo → custom domain
+  if (owner === 'eprisj' && repo === 'eprisj.github.io') return 'https://eprisjournal.com';
+  if (repo.toLowerCase() === `${owner.toLowerCase()}.github.io`) return `https://${owner}.github.io`;
   return `https://${owner}.github.io/${repo}`;
 }
 
@@ -4559,3 +4555,150 @@ if (origLoadBtn) {
 setTimeout(() => {
   try { renderPollResults(); } catch {}
 }, 500);
+
+// ===== AI GENERATION (via VPS proxy /admin/ai) =====
+async function callOpenRouter(prompt) {
+  const res = await fetch('/admin/ai', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ prompt }),
+  });
+  if (!res.ok) throw new Error(`AI proxy ${res.status}`);
+  const data = await res.json();
+  if (data.error) throw new Error(data.error);
+  return data.content;
+}
+
+function extractJSON(text) {
+  const m = text.match(/```(?:json)?\s*([\s\S]*?)```/);
+  if (m) return m[1].trim();
+  const obj = text.match(/\{[\s\S]*\}/);
+  return obj ? obj[0] : text;
+}
+
+async function aiGenerateArticle() {
+  const title = (byId('creatorTitle').value || '').trim();
+  const category = (byId('creatorCategory').value || 'Culture').trim();
+  const seed = (byId('creatorSeed').value || '').trim();
+
+  if (!title) { showToast('Введите заголовок для AI-генерации', 'error'); return; }
+
+  const btn = byId('aiGenerateBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Генерирую...';
+  showToast('AI генерирует статью...', 'info');
+
+  const prompt = `You are a content writer for EPRIS Journal — a sophisticated lifestyle magazine about design, art, travel, architecture.
+
+Write a complete article in English. Return ONLY valid JSON (no markdown) with this exact structure:
+{
+  "title": "${title}",
+  "excerpt": "2-3 sentence summary",
+  "category": "${category}",
+  "subcategory": "specific subcategory",
+  "tags": ["tag1", "tag2", "tag3"],
+  "author": "Author Name",
+  "date": "${new Date().toISOString().slice(0,10)}",
+  "imageSeed": "${seed || title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}",
+  "content": [
+    {"type": "text", "content": "Opening paragraph (3-4 sentences, elegant and atmospheric)"},
+    {"type": "text", "content": "Second paragraph developing the theme"},
+    {"type": "quote", "content": "An insightful quote related to the theme", "caption": "— Source"},
+    {"type": "text", "content": "Third paragraph with depth and nuance"},
+    {"type": "heading", "content": "A Compelling Subheading"},
+    {"type": "text", "content": "Fourth paragraph"},
+    {"type": "checklist", "content": {"caption": "Key Takeaways", "items": ["insight 1", "insight 2", "insight 3"]}},
+    {"type": "text", "content": "Closing paragraph that resonates"}
+  ]
+}`;
+
+  try {
+    const raw = await callOpenRouter(prompt);
+    const article = JSON.parse(extractJSON(raw));
+
+    // Insert into editor
+    let data;
+    try { data = JSON.parse(editor.value); } catch { showToast('Сначала загрузите контент', 'error'); return; }
+
+    const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
+    const section = 'articles';
+    const allEntries = getSectionEntries(data, section, lang);
+    const maxId = allEntries.reduce((m, e) => Math.max(m, Number(e.id) || 0), 0);
+    article.id = maxId + 1;
+
+    setSectionEntries(data, section, lang, [...allEntries, article]);
+    editor.value = JSON.stringify(data, null, 2);
+    markDirty();
+    refreshVisualEditor();
+
+    // Select the new entry
+    setTimeout(() => {
+      visualSectionSelect.value = 'articles';
+      visualSectionSelect.dispatchEvent(new Event('change'));
+      setTimeout(() => {
+        const opts = Array.from(visualEntrySelect.options);
+        const last = opts[opts.length - 1];
+        if (last) { visualEntrySelect.value = last.value; renderVisualForm(); }
+      }, 200);
+    }, 100);
+
+    showToast(`✨ Статья "${article.title}" создана!`, 'success');
+  } catch (e) {
+    showToast('Ошибка AI: ' + e.message, 'error');
+    console.error(e);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '✨ AI Generate';
+  }
+}
+
+// Helper: get/set section entries (handles both localizedCollections and translations structure)
+function getSectionEntries(data, section, lang) {
+  if (data?.localizedCollections?.[lang]?.[section]) return data.localizedCollections[lang][section];
+  if (data?.translations?.[lang]?.[section]) return data.translations[lang][section];
+  if (data?.[section]) return data[section];
+  return [];
+}
+function setSectionEntries(data, section, lang, entries) {
+  if (data?.localizedCollections?.[lang]) { data.localizedCollections[lang][section] = entries; return; }
+  if (data?.translations?.[lang]) { data.translations[lang][section] = entries; return; }
+  if (Object.prototype.hasOwnProperty.call(data, section)) { data[section] = entries; }
+}
+
+// Wire up AI button (injected into Creator Studio)
+document.addEventListener('DOMContentLoaded', () => {
+  const aiBtn = document.getElementById('aiGenerateBtn');
+  if (aiBtn) aiBtn.addEventListener('click', aiGenerateArticle);
+});
+// Also wire immediately if DOM already loaded
+const aiBtn = document.getElementById('aiGenerateBtn');
+if (aiBtn) aiBtn.addEventListener('click', aiGenerateArticle);
+
+
+// ===== VPS DEPLOY =====
+async function deployVPS() {
+  const btn = byId('deployVpsBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Деплой...';
+  showToast('Запускаю деплой VPS...', 'info');
+  try {
+    const res = await fetch('/admin/deploy', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ secret: 'epris-deploy-2026' }),
+    });
+    const data = await res.json();
+    if (data.ok) {
+      showToast('🚀 Деплой запущен! Сборка займёт ~30 сек.', 'success');
+    } else {
+      showToast('Ошибка деплоя: ' + (data.error || 'unknown'), 'error');
+    }
+  } catch (e) {
+    showToast('Ошибка деплоя: ' + e.message, 'error');
+  } finally {
+    setTimeout(() => { btn.disabled = false; btn.textContent = '🚀 Deploy VPS'; }, 5000);
+  }
+}
+
+const deployBtn = document.getElementById('deployVpsBtn');
+if (deployBtn) deployBtn.addEventListener('click', deployVPS);
