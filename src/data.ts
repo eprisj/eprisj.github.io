@@ -67,6 +67,16 @@ export interface LanguageContent {
   libraryItems: LibraryItem[];
 }
 
+export interface Issue {
+  name: string;
+  season: string;
+  tagline?: string;
+  coverUrl: string;
+  articleIds: number[];
+  status: 'draft' | 'published';
+  publishedAt?: string;
+}
+
 export interface SiteContent {
   translations: Record<string, Record<string, string>>;
   items: Item[];
@@ -74,6 +84,7 @@ export interface SiteContent {
   reviews: Review[];
   libraryItems: LibraryItem[];
   localizedCollections?: Record<string, LocalizedContentCollection>;
+  issue?: Issue;
 }
 
 const content = rawContent as SiteContent;
@@ -109,3 +120,35 @@ export function getContentForLanguage(lang: string): LanguageContent {
 }
 
 export const translations = content.translations;
+
+const DEFAULT_ISSUE: Issue = {
+  name: 'Issue 15',
+  season: 'Spring 2026',
+  coverUrl: 'https://raw.githubusercontent.com/eprisj/eprisj.github.io/main/%D1%81over/main_cover.PNG',
+  articleIds: content.articles.map((a) => a.id),
+  status: 'published',
+};
+
+/**
+ * Returns the published issue with its articles resolved for the given language.
+ * Articles are returned in the exact order listed in issue.articleIds, filtered
+ * to those that still exist in the content. Falls back to all articles if the
+ * issue config is missing or has no valid article references.
+ */
+export function getIssue(lang: string = DEFAULT_LANGUAGE): { issue: Issue; articles: Article[] } {
+  const issue = content.issue || DEFAULT_ISSUE;
+  const localizedArticles = getContentForLanguage(lang).articles;
+  const byId = new Map(localizedArticles.map((a) => [Number(a.id), a]));
+
+  const ordered = Array.isArray(issue.articleIds) ? issue.articleIds : [];
+  let resolved = ordered
+    .map((id) => byId.get(Number(id)))
+    .filter((a): a is Article => Boolean(a));
+
+  // Fallback: if nothing resolved, use every article.
+  if (resolved.length === 0) {
+    resolved = localizedArticles;
+  }
+
+  return { issue, articles: resolved };
+}

@@ -1874,6 +1874,13 @@ function setEditorData(data, options = {}) {
   if (typeof renderPollResults === 'function') {
     try { renderPollResults(); } catch {}
   }
+  // Re-seed Issue Builder + Translations from freshly loaded content
+  if (typeof renderIssuesTab === 'function' && document.getElementById('issueArticlesList')) {
+    try { renderIssuesTab(); } catch {}
+  }
+  if (typeof renderTranslationsTab === 'function' && document.getElementById('translBody')) {
+    try { renderTranslationsTab(); } catch {}
+  }
 }
 
 function deepClone(value) {
@@ -4741,120 +4748,331 @@ const deployBtn = document.getElementById('deployVpsBtn');
 if (deployBtn) deployBtn.addEventListener('click', deployVPS);
 
 // ═══════════════════════════════════════════════════════════
-// ──  ISSUES TAB  ──────────────────────────────────────────
+// ──  ISSUES TAB — Issue Builder  ──────────────────────────
+//  Transparent collect → validate → publish mechanism.
 // ═══════════════════════════════════════════════════════════
 
+const DESIGNED_COVER_IDS = new Set([8, 9]); // articles that ship with cover art
+let _issueOrder = null;     // ordered array of selected article ids
+let _issueStatus = 'draft'; // workflow status
+
+function issueArticlesOf(data) {
+  return Array.isArray(data && data.articles) ? data.articles : [];
+}
+
+// Validate one article against the issue rules.
+function validateIssueArticle(a) {
+  const errors = [], warnings = [];
+  if (!a.title || !String(a.title).trim()) errors.push('нет заголовка');
+  if (!a.excerpt || !String(a.excerpt).trim()) warnings.push('нет описания');
+  if (!a.category || !String(a.category).trim()) warnings.push('нет категории');
+  if (!a.author || !String(a.author).trim()) warnings.push('нет автора');
+  if (!a.date || !String(a.date).trim()) warnings.push('нет даты');
+  const hasCover = DESIGNED_COVER_IDS.has(Number(a.id)) || (a.imageUrl && String(a.imageUrl).trim());
+  if (!hasCover) warnings.push('нет обложки');
+  const totalBlocks = Array.isArray(a.content) ? a.content.length : 0;
+  if (totalBlocks < 3) warnings.push('мало контента');
+  const level = errors.length ? 'danger' : (warnings.length ? 'warn' : 'ok');
+  return { level, errors, warnings, totalBlocks };
+}
+
+// Validate the whole issue. Publishing is blocked only by errors (danger).
+function validateIssue(data, order) {
+  const articles = issueArticlesOf(data);
+  const byId = new Map(articles.map(a => [Number(a.id), a]));
+  const checks = []; // { level, text }
+
+  const name = (document.getElementById('issueName')?.value || '').trim();
+  const season = (document.getElementById('issueSeason')?.value || '').trim();
+  const cover = (document.getElementById('issueCoverUrl')?.value || '').trim();
+
+  checks.push(name ? { level: 'ok', text: 'Название выпуска задано' } : { level: 'danger', text: 'Не задано название выпуска' });
+  checks.push(season ? { level: 'ok', text: 'Сезон задан' } : { level: 'danger', text: 'Не задан сезон' });
+  checks.push(/^https?:\/\//.test(cover) ? { level: 'ok', text: 'URL обложки корректен' } : { level: 'danger', text: 'Нет/некорректный URL главной обложки' });
+  checks.push(order.length ? { level: 'ok', text: `Выбрано статей: ${order.length}` } : { level: 'danger', text: 'Не выбрано ни одной статьи' });
+
+  let articleErrors = 0, articleWarnings = 0;
+  order.forEach(id => {
+    const a = byId.get(Number(id));
+    if (!a) { checks.push({ level: 'danger', text: `Статья ID ${id} не найдена` }); articleErrors++; return; }
+    const v = validateIssueArticle(a);
+    if (v.level === 'danger') { articleErrors++; checks.push({ level: 'danger', text: `«${a.title}»: ${v.errors.join(', ')}` }); }
+    else if (v.level === 'warn') { articleWarnings++; checks.push({ level: 'warn', text: `«${a.title}»: ${v.warnings.join(', ')}` }); }
+    else { checks.push({ level: 'ok', text: `«${a.title}» — готова` }); }
+  });
+
+  const errors = checks.filter(c => c.level === 'danger').length;
+  const warnings = checks.filter(c => c.level === 'warn').length;
+  return { checks, errors, warnings, canPublish: errors === 0, articleErrors, articleWarnings };
+}
+
+// First open / content reload: seed builder state from saved issue config.
 function renderIssuesTab() {
   const data = parseEditorJsonSafe();
   const listEl = document.getElementById('issueArticlesList');
-  const structEl = document.getElementById('issuePdfStructure');
-  if (!listEl || !structEl) return;
+  if (!listEl) return;
 
-  const articles = Array.isArray(data && data.articles) ? data.articles : [];
+  const articles = issueArticlesOf(data);
   const issueData = (data && data.issue) || {};
 
-  // Populate meta fields
-  const nameEl = document.getElementById('issueName');
-  const seasonEl = document.getElementById('issueSeason');
-  const coverEl = document.getElementById('issueCoverUrl');
-  const descEl = document.getElementById('issueDescription');
-  if (nameEl && issueData.name) nameEl.value = issueData.name;
-  if (seasonEl && issueData.season) seasonEl.value = issueData.season;
-  if (coverEl && issueData.coverUrl) coverEl.value = issueData.coverUrl;
-  if (descEl && issueData.description) descEl.value = issueData.description;
+  // Seed inputs (only here, not on every refresh, to avoid clobbering typing)
+  const set = (id, val) => { const el = document.getElementById(id); if (el && val != null) el.value = val; };
+  set('issueName', issueData.name || 'Issue 15');
+  set('issueSeason', issueData.season || 'Spring 2026');
+  set('issueTagline', issueData.tagline || '');
+  set('issueCoverUrl', issueData.coverUrl || '');
+  _issueStatus = issueData.status === 'published' ? 'published' : 'draft';
 
-  const selectedIds = new Set(Array.isArray(issueData.articleIds) ? issueData.articleIds.map(Number) : articles.map(a => a.id));
+  // Seed order: saved articleIds (filtered to existing) or all articles
+  const existing = new Set(articles.map(a => Number(a.id)));
+  const seeded = Array.isArray(issueData.articleIds) ? issueData.articleIds.map(Number).filter(id => existing.has(id)) : null;
+  _issueOrder = seeded && seeded.length ? seeded : articles.map(a => Number(a.id));
+
+  renderIssueList();
+  refreshIssueValidation();
+}
+
+function renderIssueList() {
+  const data = parseEditorJsonSafe();
+  const listEl = document.getElementById('issueArticlesList');
+  if (!listEl) return;
+  const articles = issueArticlesOf(data);
+  const countEl = document.getElementById('issueArticlesCount');
 
   if (!articles.length) {
     listEl.innerHTML = '<p style="color:var(--text-muted);font-size:.82rem">Загрузите контент, чтобы увидеть список статей.</p>';
-    structEl.innerHTML = '<p style="color:var(--text-muted);font-size:.82rem">Нет статей.</p>';
+    if (countEl) countEl.textContent = '';
     return;
   }
 
-  listEl.innerHTML = articles.map(a => {
-    const checked = selectedIds.has(a.id) ? 'checked' : '';
-    const thumb = a.imageUrl ? `<img class="issue-article-thumb" src="${escapeHtml(a.imageUrl)}" alt="" />` : '<div class="issue-article-thumb"></div>';
+  const byId = new Map(articles.map(a => [Number(a.id), a]));
+  const order = (_issueOrder || []).filter(id => byId.has(Number(id)));
+  const unselected = articles.filter(a => !order.includes(Number(a.id)));
+  if (countEl) countEl.textContent = `${order.length} из ${articles.length}`;
+
+  const badge = (a) => {
+    const v = validateIssueArticle(a);
+    const txt = v.level === 'ok' ? 'готова' : v.level === 'warn' ? `${v.warnings.length} замеч.` : 'ошибка';
+    return `<span class="issue-article-badge ${v.level}" title="${escapeHtml([...v.errors, ...v.warnings].join('; ') || 'все проверки пройдены')}">${txt}</span>`;
+  };
+  const thumbOf = (a) => a.imageUrl
+    ? `<img class="issue-article-thumb" src="${escapeHtml(a.imageUrl)}" alt="" />`
+    : '<div class="issue-article-thumb"></div>';
+
+  const selectedRows = order.map((id, idx) => {
+    const a = byId.get(Number(id));
     return `
-      <div class="issue-article-row" data-id="${a.id}">
-        <span class="issue-article-drag">⠿</span>
-        <input type="checkbox" class="issue-art-check" data-id="${a.id}" ${checked} />
-        ${thumb}
+      <div class="issue-article-row selected" data-id="${id}">
+        <div class="issue-article-order">
+          <button class="issue-order-btn" data-act="up" data-id="${id}" type="button" ${idx === 0 ? 'disabled' : ''}>▲</button>
+          <button class="issue-order-btn" data-act="down" data-id="${id}" type="button" ${idx === order.length - 1 ? 'disabled' : ''}>▼</button>
+        </div>
+        <span class="issue-order-num">${String(idx + 1).padStart(2, '0')}</span>
+        <input type="checkbox" class="issue-art-check" data-id="${id}" checked />
+        ${thumbOf(a)}
         <div class="issue-article-info">
           <div class="issue-article-title">${escapeHtml(a.title)}</div>
-          <div class="issue-article-meta">${escapeHtml(a.category || '')} · ID ${a.id}</div>
+          <div class="issue-article-meta">${escapeHtml(a.category || '—')} · ID ${id}</div>
         </div>
+        ${badge(a)}
       </div>`;
   }).join('');
 
-  renderIssuePdfStructure(articles, selectedIds);
+  const divider = unselected.length && order.length
+    ? '<div style="font-family:var(--font-mono);font-size:.56rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin:6px 0 2px">Не в выпуске</div>'
+    : '';
 
-  // Bind checkboxes
+  const unselectedRows = unselected.map(a => `
+      <div class="issue-article-row" data-id="${a.id}">
+        <span class="issue-order-num" style="opacity:.3">—</span>
+        <input type="checkbox" class="issue-art-check" data-id="${a.id}" />
+        ${thumbOf(a)}
+        <div class="issue-article-info">
+          <div class="issue-article-title">${escapeHtml(a.title)}</div>
+          <div class="issue-article-meta">${escapeHtml(a.category || '—')} · ID ${a.id}</div>
+        </div>
+        ${badge(a)}
+      </div>`).join('');
+
+  listEl.innerHTML = selectedRows + divider + unselectedRows;
+
+  // Checkbox toggle
   listEl.querySelectorAll('.issue-art-check').forEach(cb => {
     cb.addEventListener('change', () => {
-      const checked = new Set(
-        Array.from(listEl.querySelectorAll('.issue-art-check:checked')).map(el => Number(el.dataset.id))
-      );
-      renderIssuePdfStructure(articles, checked);
+      const id = Number(cb.dataset.id);
+      if (cb.checked) { if (!_issueOrder.includes(id)) _issueOrder.push(id); }
+      else { _issueOrder = _issueOrder.filter(x => x !== id); }
+      renderIssueList();
+      refreshIssueValidation();
+    });
+  });
+  // Reorder arrows
+  listEl.querySelectorAll('.issue-order-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = Number(btn.dataset.id);
+      const i = _issueOrder.indexOf(id);
+      if (i < 0) return;
+      const j = btn.dataset.act === 'up' ? i - 1 : i + 1;
+      if (j < 0 || j >= _issueOrder.length) return;
+      [_issueOrder[i], _issueOrder[j]] = [_issueOrder[j], _issueOrder[i]];
+      renderIssueList();
+      refreshIssueValidation();
     });
   });
 }
 
-function renderIssuePdfStructure(articles, selectedIds) {
+// Recompute validation, status bar, publish gate, cover preview, PDF structure.
+function refreshIssueValidation() {
+  const data = parseEditorJsonSafe();
+  if (!data) return;
+  const order = (_issueOrder || []);
+  const result = validateIssue(data, order);
+
+  // Validation chips + checks
+  const sumEl = document.getElementById('issueValidationSummary');
+  if (sumEl) {
+    const ok = result.checks.filter(c => c.level === 'ok').length;
+    sumEl.innerHTML = `
+      <span class="issue-val-chip ok"><span class="n">${ok}</span> пройдено</span>
+      <span class="issue-val-chip warn"><span class="n">${result.warnings}</span> предупр.</span>
+      <span class="issue-val-chip danger"><span class="n">${result.errors}</span> ошибок</span>`;
+  }
+  const checksEl = document.getElementById('issueValidationChecks');
+  if (checksEl) {
+    const icon = { ok: '✓', warn: '!', danger: '✕' };
+    checksEl.innerHTML = result.checks.map(c =>
+      `<div class="issue-check-row ${c.level} ${c.level === 'ok' ? 'muted' : ''}">
+        <span class="issue-check-icon">${icon[c.level]}</span>
+        <span class="issue-check-text">${escapeHtml(c.text)}</span>
+      </div>`).join('');
+  }
+
+  // Status bar
+  const badgeEl = document.getElementById('issueStatusBadge');
+  const titleEl = document.getElementById('issueStatusTitle');
+  const subEl = document.getElementById('issueStatusSub');
+  if (badgeEl) {
+    badgeEl.className = `issue-status-badge ${_issueStatus}`;
+    badgeEl.textContent = _issueStatus === 'published' ? 'Опубликован' : 'Черновик';
+  }
+  if (titleEl) titleEl.textContent = (document.getElementById('issueName')?.value || 'Выпуск');
+  if (subEl) {
+    subEl.textContent = result.canPublish
+      ? `Готов к публикации · ${order.length} статей · ${result.warnings} предупреждений`
+      : `Публикация заблокирована · ${result.errors} ошибок`;
+  }
+
+  // Publish gate
+  const pubBtn = document.getElementById('publishIssueBtn');
+  if (pubBtn) {
+    pubBtn.disabled = !result.canPublish;
+    pubBtn.title = result.canPublish ? 'Опубликовать выпуск' : 'Сначала исправьте ошибки';
+  }
+
+  // Cover preview
+  const cp = document.getElementById('issueCoverPreview');
+  if (cp) {
+    const url = (document.getElementById('issueCoverUrl')?.value || '').trim();
+    cp.innerHTML = /^https?:\/\//.test(url)
+      ? `<img src="${escapeHtml(url)}" alt="cover" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'cover-empty',textContent:'Обложка не загрузилась'}))" />`
+      : '<div class="cover-empty">Укажите URL обложки для предпросмотра</div>';
+  }
+
+  renderIssuePdfStructure(data, order);
+}
+
+function renderIssuePdfStructure(data, order) {
   const structEl = document.getElementById('issuePdfStructure');
   if (!structEl) return;
-
-  const selected = articles.filter(a => selectedIds.has(a.id));
+  const byId = new Map(issueArticlesOf(data).map(a => [Number(a.id), a]));
+  const sel = order.map(id => byId.get(Number(id))).filter(Boolean);
+  if (!sel.length) {
+    structEl.innerHTML = '<p style="color:var(--text-muted);font-size:.82rem">Выберите статьи, чтобы увидеть структуру.</p>';
+    return;
+  }
+  const short = (s) => (s.length > 11 ? s.slice(0, 11) + '…' : s);
   const pages = [
-    { label: 'Main Cover', type: 'cover' },
-    { label: 'Letter', type: 'letter' },
-    { label: 'Contents', type: 'toc' },
-    ...selected.flatMap(a => [
-      { label: `Cover\n${a.title.slice(0,12)}…`, type: 'cover' },
-      { label: `Title\n${a.title.slice(0,12)}…`, type: 'title' },
-      { label: `Article\n${a.title.slice(0,12)}…`, type: 'content' },
+    { label: 'Обложка', type: 'cover' },
+    { label: 'Письмо', type: 'letter' },
+    { label: 'Содерж.', type: 'toc' },
+    ...sel.flatMap(a => [
+      { label: short(a.title), type: 'cover' },
+      { label: short(a.title), type: 'article' },
     ]),
-    { label: 'Colophon', type: 'colophon' },
+    { label: 'Колофон', type: 'colophon' },
   ];
-
   structEl.innerHTML = pages.map((p, i) => {
-    const isCover = p.type === 'cover' || p.type === 'colophon';
-    return `
-      <div class="issue-pdf-page">
-        <div class="issue-pdf-rect ${isCover ? 'cover-rect' : ''}">
-          <span>${escapeHtml(p.label)}</span>
-        </div>
+    const dark = p.type === 'cover' || p.type === 'colophon';
+    return `<div class="issue-pdf-page">
+        <div class="issue-pdf-rect ${dark ? 'cover-rect' : ''}"><span>${escapeHtml(p.label)}</span></div>
         <div class="issue-pdf-label">${p.type}</div>
         <div class="issue-pdf-num">${String(i + 1).padStart(2, '0')}</div>
       </div>`;
   }).join('');
 }
 
-const saveIssueBtn = document.getElementById('saveIssueBtn');
-if (saveIssueBtn) {
-  saveIssueBtn.addEventListener('click', () => {
-    const data = parseEditorJsonSafe();
-    if (!data) { showToast('error', 'Загрузите JSON перед сохранением.'); return; }
-
-    const listEl = document.getElementById('issueArticlesList');
-    const articleIds = listEl
-      ? Array.from(listEl.querySelectorAll('.issue-art-check:checked')).map(el => Number(el.dataset.id))
-      : (Array.isArray(data.articles) ? data.articles.map(a => a.id) : []);
-
-    data.issue = {
-      name: document.getElementById('issueName')?.value || 'Issue 15',
-      season: document.getElementById('issueSeason')?.value || 'Spring 2026',
-      coverUrl: document.getElementById('issueCoverUrl')?.value || '',
-      description: document.getElementById('issueDescription')?.value || '',
-      articleIds,
-    };
-
-    editor.value = JSON.stringify(data, null, 2);
-    updateEditorState();
-    showToast('success', 'Выпуск обновлён — нажмите Сохранить в GitHub.');
-  });
+// Write issue config into the editor JSON. status: 'draft' | 'published'.
+function writeIssueConfig(status) {
+  const data = parseEditorJsonSafe();
+  if (!data) { showToast('error', 'Загрузите JSON перед сохранением.'); return false; }
+  const order = (_issueOrder || []);
+  if (status === 'published') {
+    const result = validateIssue(data, order);
+    if (!result.canPublish) { showToast('error', `Нельзя опубликовать: ${result.errors} ошибок.`); return false; }
+  }
+  const prev = data.issue || {};
+  data.issue = {
+    name: (document.getElementById('issueName')?.value || 'Issue 15').trim(),
+    season: (document.getElementById('issueSeason')?.value || 'Spring 2026').trim(),
+    tagline: (document.getElementById('issueTagline')?.value || '').trim(),
+    coverUrl: (document.getElementById('issueCoverUrl')?.value || '').trim(),
+    articleIds: order,
+    status,
+    publishedAt: status === 'published' ? new Date().toISOString().slice(0, 10) : (prev.publishedAt || ''),
+  };
+  editor.value = JSON.stringify(data, null, 2);
+  updateEditorState();
+  _issueStatus = status;
+  refreshIssueValidation();
+  return true;
 }
 
-// Wire Issues tab render
+// Buttons
+function bindIssueBuilder() {
+  const onClick = (id, fn) => { const el = document.getElementById(id); if (el) el.addEventListener('click', fn); };
+
+  onClick('saveDraftBtn', () => {
+    if (writeIssueConfig('draft')) showToast('success', 'Черновик сохранён — нажмите «Сохранить в GitHub».');
+  });
+  onClick('publishIssueBtn', () => {
+    if (writeIssueConfig('published')) showToast('success', 'Выпуск опубликован — нажмите «Сохранить в GitHub», чтобы он попал на сайт.');
+  });
+  onClick('collectAllBtn', () => {
+    const data = parseEditorJsonSafe();
+    _issueOrder = issueArticlesOf(data).map(a => Number(a.id));
+    renderIssueList(); refreshIssueValidation();
+    showToast('info', `Собраны все статьи: ${_issueOrder.length}.`);
+  });
+  onClick('collectValidBtn', () => {
+    const data = parseEditorJsonSafe();
+    _issueOrder = issueArticlesOf(data).filter(a => validateIssueArticle(a).level !== 'danger').map(a => Number(a.id));
+    renderIssueList(); refreshIssueValidation();
+    showToast('info', `Собраны готовые статьи: ${_issueOrder.length}.`);
+  });
+  onClick('clearSelectionBtn', () => {
+    _issueOrder = [];
+    renderIssueList(); refreshIssueValidation();
+  });
+
+  // Live-update validation as parameters change
+  ['issueName', 'issueSeason', 'issueTagline', 'issueCoverUrl'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', refreshIssueValidation);
+  });
+}
+bindIssueBuilder();
+
+// Wire tab rendering
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     if (btn.dataset.tab === 'issues') setTimeout(renderIssuesTab, 50);

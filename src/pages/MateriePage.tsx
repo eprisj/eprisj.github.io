@@ -4,6 +4,7 @@ import { analyzeImage, analyzeImageText } from '../lib/openrouter';
 
 // ─── Shared types ──────────────────────────────────────────────────────────
 
+type T = (key: string) => string;
 type Tool = null | 'lab' | 'studio';
 
 interface UploadState {
@@ -105,10 +106,10 @@ function UploadZone({ onFile, label }: { onFile: (s: UploadState) => void; label
   );
 }
 
-function BackBtn({ onClick }: { onClick: () => void }) {
+function BackBtn({ onClick, t }: { onClick: () => void; t: T }) {
   return (
     <button type="button" onClick={onClick} className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c]/60 hover:text-[#501a2c] transition-colors mb-8">
-      <ArrowLeft size={14} /> Back to Materie
+      <ArrowLeft size={14} /> {t('materie.back')}
     </button>
   );
 }
@@ -145,7 +146,7 @@ Return JSON:
 Coordinates are 0-100 normalized, [ymin,xmin,ymax,xmax].
 `;
 
-function LabTool({ onBack }: { onBack: () => void }) {
+function LabTool({ onBack, t }: { onBack: () => void; t: T }) {
   const [upload, setUpload] = useState<UploadState | null>(null);
   const [scanning, setScanning] = useState(false);
   const [report, setReport] = useState<LabReport | null>(null);
@@ -197,17 +198,17 @@ function LabTool({ onBack }: { onBack: () => void }) {
 
   return (
     <div className="min-h-screen bg-[#F5F0EB] px-4 sm:px-8 md:px-16 py-8">
-      <BackBtn onClick={onBack} />
+      <BackBtn onClick={onBack} t={t} />
 
       <div className="mb-8">
         <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#501a2c]/40 mb-1">EPRIS / MATERIE</p>
         <h1 className="font-mono text-3xl sm:text-5xl tracking-[0.1em] text-[#501a2c]">MATTER LAB</h1>
-        <p className="font-mono text-xs text-[#501a2c]/50 mt-2 uppercase tracking-widest">Architectural forensics — AI material scanner</p>
+        <p className="font-mono text-xs text-[#501a2c]/50 mt-2 uppercase tracking-widest">{t('materie.lab.tagline')}</p>
       </div>
 
       {!upload && (
         <div className="max-w-2xl">
-          <UploadZone onFile={handleUpload} label="Drop or click to upload architectural image" />
+          <UploadZone onFile={handleUpload} label={t('materie.lab.upload')} />
         </div>
       )}
 
@@ -250,7 +251,7 @@ function LabTool({ onBack }: { onBack: () => void }) {
                 <div className="absolute inset-0 bg-[#501a2c]/20 flex items-center justify-center">
                   <div className="bg-[#F5F0EB] border border-[#501a2c] px-6 py-4 flex items-center gap-3">
                     <Loader2 size={16} className="animate-spin text-[#501a2c]" />
-                    <span className="font-mono text-xs uppercase tracking-widest text-[#501a2c]">Scanning structure...</span>
+                    <span className="font-mono text-xs uppercase tracking-widest text-[#501a2c]">{t('materie.scanning')}</span>
                   </div>
                 </div>
               )}
@@ -283,7 +284,7 @@ function LabTool({ onBack }: { onBack: () => void }) {
               onClick={() => { setUpload(null); setReport(null); setActiveNode(null); }}
               className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 hover:text-[#501a2c] transition-colors flex items-center gap-2"
             >
-              <Upload size={12} /> New image
+              <Upload size={12} /> {t('materie.newimage')}
             </button>
           </div>
 
@@ -417,7 +418,7 @@ function MetricBar({ label, value }: { label: string; value: number }) {
   );
 }
 
-function StudioTool({ onBack }: { onBack: () => void }) {
+function StudioTool({ onBack, t }: { onBack: () => void; t: T }) {
   const [upload, setUpload] = useState<UploadState | null>(null);
   const [analyzing, setAnalyzing] = useState(false);
   const [report, setReport] = useState<StudioReport | null>(null);
@@ -451,17 +452,17 @@ function StudioTool({ onBack }: { onBack: () => void }) {
 
   return (
     <div className="min-h-screen bg-[#F5F0EB] px-4 sm:px-8 md:px-16 py-8">
-      <BackBtn onClick={onBack} />
+      <BackBtn onClick={onBack} t={t} />
 
       <div className="mb-8">
         <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#501a2c]/40 mb-1">EPRIS / MATERIE</p>
         <h1 className="font-mono text-3xl sm:text-5xl tracking-[0.1em] text-[#501a2c]">INTERIOR STUDIO</h1>
-        <p className="font-mono text-xs text-[#501a2c]/50 mt-2 uppercase tracking-widest">AI interior analysis — design DNA & critique</p>
+        <p className="font-mono text-xs text-[#501a2c]/50 mt-2 uppercase tracking-widest">{t('materie.studio.tagline')}</p>
       </div>
 
       {!upload && (
         <div className="max-w-2xl">
-          <UploadZone onFile={handleUpload} label="Drop or click to upload interior image" />
+          <UploadZone onFile={handleUpload} label={t('materie.studio.upload')} />
         </div>
       )}
 
@@ -498,7 +499,7 @@ function StudioTool({ onBack }: { onBack: () => void }) {
                 <div className="absolute inset-0 bg-[#501a2c]/20 flex items-center justify-center">
                   <div className="bg-[#F5F0EB] border border-[#501a2c] px-6 py-4 flex items-center gap-3">
                     <Loader2 size={16} className="animate-spin text-[#501a2c]" />
-                    <span className="font-mono text-xs uppercase tracking-widest text-[#501a2c]">Analyzing space...</span>
+                    <span className="font-mono text-xs uppercase tracking-widest text-[#501a2c]">{t('materie.analyzing')}</span>
                   </div>
                 </div>
               )}
@@ -520,7 +521,7 @@ function StudioTool({ onBack }: { onBack: () => void }) {
               onClick={() => { setUpload(null); setReport(null); }}
               className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 hover:text-[#501a2c] transition-colors flex items-center gap-2"
             >
-              <Upload size={12} /> New image
+              <Upload size={12} /> {t('materie.newimage')}
             </button>
           </div>
 
@@ -642,11 +643,11 @@ function StudioTool({ onBack }: { onBack: () => void }) {
 
 const MATERIE_BG = 'https://raw.githubusercontent.com/eprisj/eprisj.github.io/main/%D1%81over/cover_main_section.png';
 
-export function MateriePage() {
+export function MateriePage({ t }: { t: T }) {
   const [tool, setTool] = useState<Tool>(null);
 
-  if (tool === 'lab') return <LabTool onBack={() => setTool(null)} />;
-  if (tool === 'studio') return <StudioTool onBack={() => setTool(null)} />;
+  if (tool === 'lab') return <LabTool onBack={() => setTool(null)} t={t} />;
+  if (tool === 'studio') return <StudioTool onBack={() => setTool(null)} t={t} />;
 
   return (
     <div className="min-h-[calc(100vh-4rem)] bg-[#F5F0EB]">
@@ -661,21 +662,21 @@ export function MateriePage() {
         />
         <div className="relative z-10 px-6 sm:px-10 md:px-16 pt-14 pb-12 sm:pt-20 sm:pb-16">
           <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#501a2c]/50 mb-5">
-            EPRIS · MATERIE · AI Tools
+            {t('materie.kicker')}
           </p>
           <h1 className="font-mono text-5xl sm:text-7xl lg:text-8xl tracking-[0.06em] text-[#501a2c] leading-none mb-6">
             MATERIE
           </h1>
           <p className="font-serif text-lg sm:text-2xl text-[#501a2c]/55 italic max-w-xl leading-relaxed">
-            AI-powered vision tools for reading architecture and interior space through material intelligence.
+            {t('materie.subtitle')}
           </p>
 
           {/* Stats strip */}
           <div className="flex gap-8 sm:gap-14 mt-10 pt-8 border-t border-[#501a2c]/15">
             {[
-              { num: '02', label: 'Tools' },
-              { num: 'AI', label: 'Vision models' },
-              { num: '∞', label: 'Analyses' },
+              { num: '02', label: t('materie.stats.tools') },
+              { num: 'AI', label: t('materie.stats.models') },
+              { num: '∞', label: t('materie.stats.analyses') },
             ].map(({ num, label }) => (
               <div key={label}>
                 <p className="font-mono text-2xl sm:text-3xl text-[#501a2c] leading-none">{num}</p>
@@ -707,10 +708,10 @@ export function MateriePage() {
               </div>
               <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#501a2c]/40 group-hover:text-[#C9A690] mb-2 transition-colors">Matter Lab</p>
               <h2 className="font-mono text-2xl sm:text-3xl tracking-[0.08em] text-[#501a2c] group-hover:text-[#F5F0EB] mb-5 transition-colors leading-tight">
-                ARCHITECTURAL<br />FORENSICS
+                {t('materie.lab.title')}
               </h2>
               <p className="font-serif text-sm text-[#501a2c]/60 group-hover:text-[#F5F0EB]/60 leading-relaxed mb-8 transition-colors">
-                Upload any architectural photo. The scanner identifies structural elements, estimates materials, composition and integrity — with interactive bounding-box forensics and restoration protocols.
+                {t('materie.lab.desc')}
               </p>
 
               <div className="grid grid-cols-2 gap-2 mb-8">
@@ -727,7 +728,7 @@ export function MateriePage() {
               </div>
 
               <span className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c] group-hover:text-[#C9A690] flex items-center gap-2 transition-colors">
-                Open Lab <ChevronRight size={13} />
+                {t('materie.lab.open')} <ChevronRight size={13} />
               </span>
             </div>
           </button>
@@ -748,10 +749,10 @@ export function MateriePage() {
               </div>
               <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#501a2c]/40 group-hover:text-[#C9A690] mb-2 transition-colors">Interior Studio</p>
               <h2 className="font-mono text-2xl sm:text-3xl tracking-[0.08em] text-[#501a2c] group-hover:text-[#F5F0EB] mb-5 transition-colors leading-tight">
-                DESIGN DNA<br />&amp; CRITIQUE
+                {t('materie.studio.title')}
               </h2>
               <p className="font-serif text-sm text-[#501a2c]/60 group-hover:text-[#F5F0EB]/60 leading-relaxed mb-8 transition-colors">
-                Scan an interior space to extract its design DNA — color palette, spatial metrics, lighting mood, detected elements and a professional AI critique of strengths and opportunities.
+                {t('materie.studio.desc')}
               </p>
 
               <div className="grid grid-cols-2 gap-2 mb-8">
@@ -768,7 +769,7 @@ export function MateriePage() {
               </div>
 
               <span className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c] group-hover:text-[#C9A690] flex items-center gap-2 transition-colors">
-                Open Studio <ChevronRight size={13} />
+                {t('materie.studio.open')} <ChevronRight size={13} />
               </span>
             </div>
           </button>
@@ -777,12 +778,12 @@ export function MateriePage() {
 
       {/* ── How it works ── */}
       <div className="px-6 sm:px-10 md:px-16 pb-14 border-t border-[#501a2c]/10 pt-10 max-w-5xl">
-        <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#501a2c]/35 mb-8">How it works</p>
+        <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#501a2c]/35 mb-8">{t('materie.how')}</p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12">
           {[
-            { n: '01', title: 'Upload photo', desc: 'Any architectural or interior image — JPG, PNG, WEBP.' },
-            { n: '02', title: 'AI scans', desc: 'Vision model analyzes materials, elements, palette and spatial properties.' },
-            { n: '03', title: 'Read the report', desc: 'Interactive forensic report with bounding boxes, scores and restoration recommendations.' },
+            { n: '01', title: t('materie.step1.title'), desc: t('materie.step1.desc') },
+            { n: '02', title: t('materie.step2.title'), desc: t('materie.step2.desc') },
+            { n: '03', title: t('materie.step3.title'), desc: t('materie.step3.desc') },
           ].map(({ n, title, desc }) => (
             <div key={n} className="flex gap-5">
               <span className="font-mono text-[10px] text-[#C9A690] mt-0.5 shrink-0 w-5">{n}</span>
@@ -795,7 +796,7 @@ export function MateriePage() {
         </div>
         <div className="mt-10 pt-6 border-t border-[#501a2c]/10">
           <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/25">
-            Powered by AI vision models via OpenRouter · No data stored · Free to use
+            {t('materie.powered')}
           </p>
         </div>
       </div>
