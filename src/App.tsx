@@ -147,7 +147,7 @@ function NavBar({
         </div>
         
         {/* Desktop Navigation */}
-        <div className="hidden md:grid flex-1 grid-cols-5 divide-x divide-[#501a2c]">
+        <div className="hidden md:grid flex-1 grid-cols-6 divide-x divide-[#501a2c]">
           {tabs.map((tab) => (
             <button
               type="button"
