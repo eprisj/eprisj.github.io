@@ -98,7 +98,8 @@ function NavBar({
   setCurrentLang,
   t,
   languages,
-  libraryCount
+  libraryCount,
+  onSearch,
 }: {
   activeTab: string;
   setActiveTab: (tab: string) => void;
@@ -107,6 +108,7 @@ function NavBar({
   t: (key: string) => string;
   languages: string[];
   libraryCount: number;
+  onSearch: (q: string) => void;
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
@@ -124,9 +126,11 @@ function NavBar({
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
-    // In a real app, this would trigger a search. 
-    // For now, we'll just close the overlay and maybe log it.
-    console.log("Searching for:", searchQuery);
+    const q = searchQuery.trim();
+    if (q) {
+      onSearch(q);
+      setSearchQuery('');
+    }
     setIsSearchOpen(false);
   };
 
@@ -1272,6 +1276,57 @@ function Sidebar({ t }: { t: (key: string) => string }) {
   );
 }
 
+function SearchResults({
+  query,
+  articles,
+  onClear,
+  onArticleClick,
+  t,
+}: {
+  query: string;
+  articles: Article[];
+  onClear: () => void;
+  onArticleClick: (article: Article) => void;
+  t: (key: string) => string;
+}) {
+  const q = query.toLowerCase();
+  const results = articles.filter(a =>
+    a.title.toLowerCase().includes(q) ||
+    (a.excerpt || '').toLowerCase().includes(q) ||
+    (a.category || '').toLowerCase().includes(q) ||
+    (a.author || '').toLowerCase().includes(q) ||
+    (a.tags || []).some(tag => tag.toLowerCase().includes(q)) ||
+    (a.content || []).some(b => typeof b.content === 'string' && b.content.toLowerCase().includes(q))
+  );
+
+  return (
+    <div className="max-w-4xl mx-auto">
+      <div className="flex items-center justify-between mb-8 pb-6 border-b border-[#501a2c]/20">
+        <div>
+          <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 mb-1">Search results</p>
+          <h2 className="font-serif text-2xl text-[#501a2c]">
+            "{query}" — <span className="text-[#C9A690]">{results.length}</span>
+          </h2>
+        </div>
+        <button
+          type="button"
+          onClick={onClear}
+          className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c]/60 hover:text-[#501a2c] transition-colors border border-[#501a2c]/20 px-4 py-2 rounded-full"
+        >
+          <X size={12} /> Clear
+        </button>
+      </div>
+      {results.length === 0 ? (
+        <div className="text-center py-24">
+          <p className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/30">Nothing found</p>
+        </div>
+      ) : (
+        <ArticlesSection articles={results} onArticleClick={onArticleClick} t={t} />
+      )}
+    </div>
+  );
+}
+
 const VALID_TABS = ['gallery', 'articles', 'reviews', 'library', 'about', 'materie'];
 
 function buildSlugMap(): Map<string, number> {
@@ -1354,6 +1409,7 @@ export default function App() {
   const [selectedArticleId, setSelectedArticleId] = useState<number | null>(initialRoute.articleId ?? null);
   const [currentLang, setCurrentLang] = useState(DEFAULT_LANGUAGE);
   const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
+  const [activeSearch, setActiveSearch] = useState('');
   const languageOptions = getAvailableLanguages();
   const { items, articles, reviews, libraryItems } = getContentForLanguage(currentLang);
   const defaultContent = getContentForLanguage(DEFAULT_LANGUAGE);
@@ -1376,9 +1432,16 @@ export default function App() {
     window.history.pushState(null, '', path);
   }, []);
 
+  const handleSearch = useCallback((q: string) => {
+    setActiveSearch(q);
+    setSelectedArticleId(null);
+    navigate('/search');
+  }, [navigate]);
+
   const handleSetTab = useCallback((tab: string) => {
     setActiveTab(tab);
     setSelectedArticleId(null);
+    setActiveSearch('');
     navigate(tab === 'gallery' ? '/' : `/${tab}`);
   }, [navigate]);
 
@@ -1434,10 +1497,11 @@ export default function App() {
         t={t}
         languages={languageOptions}
         libraryCount={libraryItems.length}
+        onSearch={handleSearch}
       />
       
-      <div className="lg:pr-12"> {/* Padding for sidebar */}
-        {activeTab !== 'materie' && <Hero t={t} />}
+      <div className="lg:pr-12">
+        {activeTab !== 'materie' && !activeSearch && <Hero t={t} />}
 
         {activeTab === 'materie' ? (
           <div className="pt-16">
@@ -1447,22 +1511,34 @@ export default function App() {
           <main className="max-w-[1600px] mx-auto px-4 sm:px-8 md:px-16 py-8 sm:py-12 md:py-24">
             <AnimatePresence mode="wait">
               <motion.div
-                key={activeTab}
+                key={activeSearch ? `search-${activeSearch}` : activeTab}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.25 }}
               >
-                {activeTab === 'gallery' && (
+                {activeSearch ? (
+                  <SearchResults
+                    query={activeSearch}
+                    articles={articles}
+                    onClear={() => { setActiveSearch(''); navigate(activeTab === 'gallery' ? '/' : `/${activeTab}`); }}
+                    onArticleClick={(article) => handleSelectArticle(article.id, article)}
+                    t={t}
+                  />
+                ) : (
                   <>
-                    <WelcomingLetter t={t} />
-                    <GallerySection items={items} />
+                    {activeTab === 'gallery' && (
+                      <>
+                        <WelcomingLetter t={t} />
+                        <GallerySection items={items} />
+                      </>
+                    )}
+                    {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
+                    {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} />}
+                    {activeTab === 'library' && <LibrarySection libraryItems={libraryItems} t={t} />}
+                    {activeTab === 'about' && <AboutSection t={t} />}
                   </>
                 )}
-                {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
-                {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} />}
-                {activeTab === 'library' && <LibrarySection libraryItems={libraryItems} t={t} />}
-                {activeTab === 'about' && <AboutSection t={t} />}
               </motion.div>
             </AnimatePresence>
           </main>
