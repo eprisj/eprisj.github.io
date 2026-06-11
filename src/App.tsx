@@ -133,13 +133,13 @@ function NavBar({
       <nav className="fixed top-0 left-0 w-full z-50 bg-[#F5F0EB] border-b border-[#501a2c] flex text-xs font-mono uppercase tracking-widest text-[#501a2c] h-16">
         {/* Logo Section */}
         <div className="w-full md:w-64 border-r-0 md:border-r border-[#501a2c] p-4 flex items-center justify-between md:justify-start gap-3 shrink-0 cursor-pointer bg-[#F5F0EB] z-50">
-          <div className="flex items-center gap-3" onClick={() => setActiveTab('gallery')}>
+          <button type="button" className="flex items-center gap-3" onClick={() => setActiveTab('gallery')} aria-label="Go to home">
             <div className="w-4 h-4 border border-[#501a2c] rounded-full flex items-center justify-center">
               <div className="w-1.5 h-1.5 bg-[#501a2c] rounded-full" />
             </div>
             <span className="font-bold tracking-[0.2em] whitespace-nowrap">EPRIS JOURNAL</span>
-          </div>
-          <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          </button>
+          <button type="button" aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
@@ -148,6 +148,7 @@ function NavBar({
         <div className="hidden md:grid flex-1 grid-cols-5 divide-x divide-[#501a2c]">
           {tabs.map((tab) => (
             <button
+              type="button"
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`flex flex-col items-center justify-center transition-colors group h-full ${
@@ -161,24 +162,29 @@ function NavBar({
 
         {/* Desktop Right Section */}
         <div className="hidden md:flex divide-x divide-[#501a2c] border-l border-[#501a2c]">
-          <button 
+          <button
+            type="button"
             onClick={() => setIsSearchOpen(true)}
+            aria-label="Open search"
             className="w-16 flex items-center justify-center hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-colors"
           >
             <Search size={16} />
           </button>
           
           <div className="relative w-16">
-            <button 
+            <button
+              type="button"
               className="w-full h-full flex items-center justify-center hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-colors"
               onClick={() => setIsLangOpen(!isLangOpen)}
+              aria-label="Select language"
             >
               {currentLang}
             </button>
             {isLangOpen && (
               <div className="absolute top-full right-0 w-16 bg-[#F5F0EB] border-x border-b border-[#501a2c] z-50">
                 {languages.filter(l => l !== currentLang).map(lang => (
-                  <button 
+                  <button
+                    type="button"
                     key={lang}
                     onClick={() => { setCurrentLang(lang); setIsLangOpen(false); }}
                     className="w-full py-2 hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-colors block text-center border-b border-[#501a2c]/20 last:border-0"
@@ -190,14 +196,15 @@ function NavBar({
             )}
           </div>
 
-          <button 
+          <button
+            type="button"
             onClick={() => setActiveTab('library')}
             className={`w-24 flex flex-col items-center justify-center transition-colors gap-1 ${
               activeTab === 'library' ? 'bg-[#501a2c] text-[#F5F0EB]' : 'hover:bg-[#501a2c] hover:text-[#F5F0EB]'
             }`}
           >
             <Folder size={16} />
-            <span className="text-[9px]">{t('files')} ({libraryCount})</span>
+            <span className="text-[11px]">{t('files')} ({libraryCount})</span>
           </button>
         </div>
       </nav>
@@ -211,8 +218,10 @@ function NavBar({
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[60] bg-[#F5F0EB]/95 backdrop-blur-sm flex items-center justify-center p-4"
           >
-            <button 
+            <button
+              type="button"
               onClick={() => setIsSearchOpen(false)}
+              aria-label="Close search"
               className="absolute top-8 right-8 p-2 hover:bg-[#501a2c] hover:text-[#F5F0EB] rounded-full transition-colors border border-[#501a2c]"
             >
               <X size={24} />
@@ -243,6 +252,7 @@ function NavBar({
             <div className="flex flex-col divide-y divide-[#501a2c] border-b border-[#501a2c]">
               {tabs.map((tab) => (
                 <button
+                  type="button"
                   key={tab.id}
                   onClick={() => {
                     setActiveTab(tab.id);
@@ -260,7 +270,8 @@ function NavBar({
             <div className="mt-auto border-t border-[#501a2c]">
               <div className="grid grid-cols-3 sm:grid-cols-4 divide-x divide-[#501a2c] border-b border-[#501a2c]">
                 {languages.map(lang => (
-                  <button 
+                  <button
+                    type="button"
                     key={lang}
                     onClick={() => setCurrentLang(lang)}
                     className={`p-4 text-center hover:bg-[#501a2c] hover:text-[#F5F0EB] ${currentLang === lang ? 'bg-[#501a2c] text-[#F5F0EB]' : ''}`}
@@ -270,10 +281,10 @@ function NavBar({
                 ))}
               </div>
               <div className="p-4 flex justify-center gap-8">
-                <button onClick={() => { setIsMenuOpen(false); setIsSearchOpen(true); }}>
+                <button type="button" aria-label="Open search" onClick={() => { setIsMenuOpen(false); setIsSearchOpen(true); }}>
                   <Search size={24} />
                 </button>
-                <button onClick={() => { setIsMenuOpen(false); setActiveTab('library'); }}>
+                <button type="button" aria-label="Open library" onClick={() => { setIsMenuOpen(false); setActiveTab('library'); }}>
                   <Folder size={24} />
                 </button>
               </div>
@@ -296,7 +307,7 @@ function Hero({ t }: { t: (key: string) => string }) {
       >
         {/* Left: EPRIS masthead */}
         <div className="text-center md:text-left">
-          <p className="font-mono text-4xl sm:text-5xl md:text-7xl tracking-[0.13em] text-[#501a2c] leading-none">EPRIS</p>
+          <h1 className="font-mono text-4xl sm:text-5xl md:text-7xl tracking-[0.13em] text-[#501a2c] leading-none">EPRIS</h1>
           <p className="font-mono text-sm tracking-[0.13em] text-[#501a2c]/50 uppercase mt-1">journal.</p>
         </div>
 
@@ -415,7 +426,12 @@ function GallerySection({ items }: { items: Item[] }) {
     <div>
       {/* Featured article */}
       <Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-3 mb-12 border border-[#501a2c] group cursor-pointer overflow-hidden">
+        <div
+          className="grid grid-cols-1 md:grid-cols-3 mb-12 border border-[#501a2c] group cursor-pointer overflow-hidden"
+          role="button"
+          tabIndex={0}
+          aria-label={`View: ${featured.title}`}
+        >
           <div className="md:col-span-2 aspect-[4/3] overflow-hidden bg-[#E8DED5]">
             <img
               src={resolveMediaSource(featured.imageUrl || featured.imageSeed, 1000, 750)}
@@ -452,7 +468,7 @@ function GallerySection({ items }: { items: Item[] }) {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
         {rest.map((item, index) => (
           <Reveal key={item.id} delay={index * 0.05}>
-            <div className="group cursor-pointer">
+            <div className="group cursor-pointer" role="button" tabIndex={0} aria-label={`View: ${item.title}`}>
               <div className="aspect-[4/3] overflow-hidden bg-[#E8DED5] mb-4">
                 <img
                   src={resolveMediaSource(item.imageUrl || item.imageSeed, 600, 450)}
@@ -496,9 +512,12 @@ function ChecklistBlock({ items, caption }: { items: string[], caption?: string 
       )}
       <ul className="space-y-4">
         {items.map((item, index) => (
-          <li 
-            key={index} 
+          <li
+            key={index}
+            role="button"
+            tabIndex={0}
             onClick={() => toggle(index)}
+            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && toggle(index)}
             className="flex items-start gap-4 cursor-pointer group"
           >
             <div className={`mt-1 w-5 h-5 border border-[#501a2c] flex items-center justify-center transition-colors ${checkedState[index] ? 'bg-[#501a2c]' : 'bg-transparent'}`}>
@@ -760,7 +779,8 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-24 relative">
         <div className="fixed top-4 left-4 right-4 sm:top-8 sm:left-8 sm:right-8 md:left-16 md:right-16 z-50 flex items-center justify-between">
-          <button 
+          <button
+            type="button"
             onClick={onClose}
             className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c] hover:opacity-60 transition-opacity bg-[#F5F0EB]/80 backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-[#501a2c]/10"
           >
@@ -769,7 +789,9 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
 
           <div className="relative">
             <button
+              type="button"
               onClick={() => setIsArticleLangOpen(!isArticleLangOpen)}
+              aria-label="Select language"
               className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c] bg-[#F5F0EB]/80 backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-[#501a2c]/10 hover:opacity-60 transition-opacity"
             >
               <Globe size={14} />
@@ -779,6 +801,7 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
               <div className="absolute top-full right-0 mt-1 bg-[#F5F0EB] border border-[#501a2c]/20 rounded-lg shadow-lg overflow-hidden min-w-[140px] z-50">
                 {languages.map(lang => (
                   <button
+                    type="button"
                     key={lang}
                     onClick={() => { setCurrentLang(lang); setIsArticleLangOpen(false); }}
                     className={`w-full px-4 py-2 text-left font-mono text-xs tracking-wider hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-colors flex items-center justify-between gap-3 ${currentLang === lang ? 'bg-[#501a2c] text-[#F5F0EB]' : 'text-[#501a2c]'}`}
@@ -795,7 +818,14 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
         <article className="mt-12">
           <header className="mb-16">
             {/* Hero image first — matches Figma layout */}
-            <div className="aspect-[4/3] sm:aspect-[16/9] overflow-hidden bg-[#E8DED5] mb-8 sm:mb-12 cursor-pointer" onClick={() => onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 675), article.title)}>
+            <div
+              className="aspect-[4/3] sm:aspect-[16/9] overflow-hidden bg-[#E8DED5] mb-8 sm:mb-12 cursor-pointer"
+              role="button"
+              tabIndex={0}
+              aria-label="View full image"
+              onClick={() => onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 675), article.title)}
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 675), article.title)}
+            >
               <img
                 src={resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 675)}
                 alt={article.title}
@@ -1025,6 +1055,7 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
 
             <div className="mt-10 pt-8 border-t border-[#501a2c]/10 flex justify-center">
               <button
+                type="button"
                 onClick={handleShare}
                 className="flex items-center gap-3 px-6 py-3 border border-[#501a2c]/20 rounded-full font-mono text-xs uppercase tracking-widest text-[#501a2c] hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-colors"
               >
@@ -1060,14 +1091,16 @@ function ArticlesSection({
     <div className="max-w-4xl mx-auto space-y-12">
       {/* Category Filter */}
       <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-16 border-b border-[#501a2c]/20 pb-8">
-        <button 
+        <button
+          type="button"
           onClick={() => setActiveCategory(null)}
           className={`font-mono text-xs uppercase tracking-widest transition-colors ${!activeCategory ? 'text-[#501a2c] font-bold' : 'text-[#501a2c]/60 hover:text-[#501a2c]'}`}
         >
           {t('all')}
         </button>
         {categories.map(cat => (
-          <button 
+          <button
+            type="button"
             key={cat}
             onClick={() => setActiveCategory(cat)}
             className={`font-mono text-xs uppercase tracking-widest transition-colors ${activeCategory === cat ? 'text-[#501a2c] font-bold' : 'text-[#501a2c]/60 hover:text-[#501a2c]'}`}
@@ -1080,9 +1113,13 @@ function ArticlesSection({
       {filteredArticles.map((article, index) => (
         <div key={article.id}>
           <Reveal delay={index * 0.1}>
-            <article 
+            <article
               className="border-b border-[#501a2c]/20 pb-12 group cursor-pointer"
               onClick={() => onArticleClick(article)}
+              tabIndex={0}
+              role="button"
+              aria-label={`Read article: ${article.title}`}
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onArticleClick(article)}
             >
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                  <div className="md:col-span-1 aspect-[4/3] overflow-hidden bg-[#E8DED5]">
