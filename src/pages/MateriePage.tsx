@@ -3,14 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Upload, X, Loader2, ArrowLeft, Scan, Home, Layers, Activity, Zap,
   ChevronRight, AlertCircle, Maximize, Box, Sun, Wind, Thermometer,
-  Waves, Check, ArrowRight, Sparkles, Music, Hand,
+  Waves, Check, ArrowRight, BookOpen, Star, Aperture,
 } from 'lucide-react';
 import { analyzeImage, analyzeImageText } from '../lib/openrouter';
 
 // ─── Shared types ──────────────────────────────────────────────────────────
 
 type T = (key: string) => string;
-type Tool = null | 'lab' | 'studio' | 'aura';
+type Tool = null | 'lab' | 'studio' | 'chronicle';
 
 interface UploadState {
   src: string;
@@ -75,23 +75,22 @@ interface StudioReport {
 
 type StudioTab = 'dna' | 'palette' | 'metrics' | 'critique';
 
-// ─── AURA types ────────────────────────────────────────────────────────────
+// ─── CHRONICLE types ───────────────────────────────────────────────────────
 
-interface AuraReport {
-  mood: string;
-  secondary_moods: string[];
-  poetic_reading: string;
-  sensory: {
-    sound: string;
-    scent: string;
-    texture: string;
-    temperature: string;
-  };
-  energy: number;
-  time_of_day: string;
-  season: string;
+interface ChronicleReport {
+  headline: string;
+  subheadline: string;
+  narrative: string;
+  caption: string;
+  emotion: string;
+  secondary_emotions: string[];
+  tension: string;
+  light_quality: string;
+  composition: string;
+  era: string;
+  human_presence: 'direct' | 'implied' | 'absent';
   tags: string[];
-  music: string;
+  editorial_score: number;
 }
 
 // ─── Status / category colors ──────────────────────────────────────────────
@@ -111,18 +110,8 @@ const CATEGORY_COLOR: Record<string, string> = {
   Structure: '#4A5568',
 };
 
-const TIME_ICONS: Record<string, string> = {
-  morning: '🌅',
-  afternoon: '☀️',
-  evening: '🌆',
-  night: '🌙',
-};
-const SEASON_ICONS: Record<string, string> = {
-  spring: '🌸',
-  summer: '☀️',
-  autumn: '🍂',
-  winter: '❄️',
-};
+const SCORE_COLOR = (v: number) => v >= 75 ? '#4A7C59' : v >= 50 ? '#B8860B' : '#8B3A3A';
+const PRESENCE_LABEL: Record<string, string> = { direct: 'Human presence', implied: 'Implied presence', absent: 'No human presence' };
 
 // ─── Shared helpers ────────────────────────────────────────────────────────
 
@@ -714,40 +703,40 @@ function StudioTool({ onBack, t }: { onBack: () => void; t: T }) {
   );
 }
 
-// ─── AURA ─────────────────────────────────────────────────────────────────
+// ─── CHRONICLE ─────────────────────────────────────────────────────────────
 
-const AURA_PROMPT = `
-You are a sensory and atmospheric analyst for a luxury lifestyle magazine.
-Analyze this image and decode its emotional atmosphere and sensory resonance.
+const CHRONICLE_PROMPT = `
+You are a senior photo editor and documentary critic at a prestigious international magazine.
+Analyze this photograph with the eye of a seasoned photojournalist and cultural critic.
+This could be any image — people, landscape, event, still life, architecture, abstract, art.
 Return ONLY this JSON (no markdown, no explanation):
 {
-  "mood": "one powerful word capturing the primary mood (e.g. Solitude, Serenity, Nostalgia, Reverie)",
-  "secondary_moods": ["word2", "word3"],
-  "poetic_reading": "one beautiful evocative sentence of 15-25 words capturing the invisible essence of this scene",
-  "sensory": {
-    "sound": "what this space sounds like in a short evocative phrase",
-    "scent": "what it smells like in a short evocative phrase",
-    "texture": "the dominant tactile sensation",
-    "temperature": "perceived temperature and air quality"
-  },
-  "energy": a number 0-100 (0=absolute stillness, 100=maximum energy),
-  "time_of_day": "morning|afternoon|evening|night",
-  "season": "spring|summer|autumn|winter",
-  "tags": ["ATMOSPHERIC_TAG_1","ATMOSPHERIC_TAG_2","ATMOSPHERIC_TAG_3"],
-  "music": "one specific artist or album that perfectly fits this atmosphere"
+  "headline": "a sharp, publishable editorial headline (6-10 words, no quotes around it)",
+  "subheadline": "a secondary line adding context or irony (8-14 words)",
+  "narrative": "a serious 3-4 sentence editorial paragraph reading this photograph — its story, context, and significance, written in the voice of a magazine journalist",
+  "caption": "a ready-to-publish photo caption (15-25 words) as it would appear under the image in a printed magazine",
+  "emotion": "the single dominant emotion this photograph communicates (one word, e.g. Grief, Defiance, Wonder, Solitude)",
+  "secondary_emotions": ["second emotion", "third emotion"],
+  "tension": "what creates visual or narrative tension in this frame (one sentence)",
+  "light_quality": "describe the light quality and its effect on meaning (one evocative phrase)",
+  "composition": "key compositional technique at work (e.g. Rule of thirds, Leading lines, Frame within frame)",
+  "era": "estimated time period this image feels tied to (e.g. Present day, Early 2000s, Mid-century, Timeless)",
+  "human_presence": "direct|implied|absent",
+  "tags": ["EDITORIAL_TAG_1", "EDITORIAL_TAG_2", "EDITORIAL_TAG_3"],
+  "editorial_score": a number 0-100 representing editorial publishability and visual impact
 }
 `;
 
-function AuraTool({ onBack, t }: { onBack: () => void; t: T }) {
+function ChronicleTool({ onBack, t }: { onBack: () => void; t: T }) {
   const [upload, setUpload]   = useState<UploadState | null>(null);
   const [reading, setReading] = useState(false);
-  const [report, setReport]   = useState<AuraReport | null>(null);
+  const [report, setReport]   = useState<ChronicleReport | null>(null);
   const [error, setError]     = useState<string | null>(null);
 
   const handleUpload = async (state: UploadState) => {
     setUpload(state); setReport(null); setError(null); setReading(true);
     try {
-      const result = await analyzeImage<AuraReport>(state.base64, state.mimeType, AURA_PROMPT);
+      const result = await analyzeImage<ChronicleReport>(state.base64, state.mimeType, CHRONICLE_PROMPT);
       setReport(result);
     } catch (e) {
       const msg = e instanceof Error ? e.message : 'Unknown error';
@@ -755,160 +744,148 @@ function AuraTool({ onBack, t }: { onBack: () => void; t: T }) {
     } finally { setReading(false); }
   };
 
-  const energyColor = (v: number) => v <= 30 ? '#4A7C59' : v <= 65 ? '#B8860B' : '#8B3A3A';
-
   return (
     <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.3 }}
       className="min-h-screen bg-[#F5F0EB] px-4 sm:px-8 md:px-16 py-8">
       <BackBtn onClick={onBack} t={t} />
-      <ToolHeader kicker="EPRIS / MATERIE" title="AURA" tagline={t('materie.aura.tagline')} />
+      <ToolHeader kicker="EPRIS / MATERIE" title="CHRONICLE" tagline={t('materie.chronicle.tagline')} />
 
-      {!upload && <div className="max-w-2xl"><UploadZone onFile={handleUpload} label={t('materie.aura.upload')} /></div>}
+      {!upload && <div className="max-w-2xl"><UploadZone onFile={handleUpload} label={t('materie.chronicle.upload')} /></div>}
 
       {upload && (
-        <div className="max-w-3xl space-y-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 max-w-5xl">
 
-          {/* ── Image with mood overlay ── */}
-          <div className="relative overflow-hidden bg-[#E8DED5]">
-            <img src={upload.src} alt="Atmosphere target" className="w-full object-contain" />
-            {reading && <ScanOverlay label="Reading atmosphere..." />}
+          {/* ── Left: image + caption strip ── */}
+          <div className="flex flex-col">
+            <div className="relative bg-[#1a1008] overflow-hidden">
+              <img src={upload.src} alt="Chronicle subject"
+                className="w-full object-contain max-h-[75vh]" />
+              {reading && <ScanOverlay label="Reading photograph..." />}
 
-            {/* Mood overlay — bottom gradient */}
+              {report && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="absolute bottom-0 left-0 right-0 px-5 pb-5 pt-12 bg-gradient-to-t from-black/80 to-transparent">
+                  <div className="flex flex-wrap gap-1.5 mb-2">
+                    {report.secondary_emotions.map(e => (
+                      <span key={e} className="font-mono text-[8px] uppercase tracking-[0.2em] text-white/40">{e}</span>
+                    ))}
+                  </div>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#C9A690]/70 mb-1">{report.emotion}</p>
+                </motion.div>
+              )}
+            </div>
+
+            {/* Caption bar */}
             {report && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6 }}
-                className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#501a2c] via-[#501a2c]/55 to-transparent px-8 pb-8 pt-20">
-                <div className="flex flex-wrap gap-2 mb-2">
-                  {report.secondary_moods.map(m => (
-                    <span key={m} className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#F5F0EB]/45">{m}</span>
-                  ))}
-                </div>
-                <h2 className="font-serif leading-none text-[#F5F0EB]"
-                  style={{ fontSize: 'clamp(3rem, 8vw, 6rem)' }}>
-                  {report.mood}
-                </h2>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
+                className="bg-[#1a1008] px-5 py-4 border-t border-white/10">
+                <p className="font-serif text-xs text-white/60 italic leading-relaxed">{report.caption}</p>
               </motion.div>
             )}
           </div>
 
-          {/* ── Poetic reading ── */}
-          {report && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="bg-[#501a2c] text-[#F5F0EB] px-8 py-10 text-center">
-              <p className="font-serif text-xl md:text-2xl italic text-[#F5F0EB]/80 leading-relaxed max-w-2xl mx-auto">
-                "{report.poetic_reading}"
-              </p>
-              <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#C9A690]/50 mt-5">— AURA</p>
-            </motion.div>
-          )}
+          {/* ── Right: editorial reading ── */}
+          <div className="border border-[#501a2c] border-l-0 flex flex-col">
+            {!report && !error && (
+              <div className="flex-1 flex items-center justify-center py-20">
+                <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/30">
+                  {reading ? 'Analysing…' : 'Upload photograph to begin'}
+                </p>
+              </div>
+            )}
 
-          {/* ── Sensory grid ── */}
-          {report && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.25 }}
-              className="grid grid-cols-2 border border-[#501a2c]">
-              {([
-                { label: 'Sound',       value: report.sensory.sound,       icon: <Waves size={11} /> },
-                { label: 'Scent',       value: report.sensory.scent,       icon: <Wind size={11} /> },
-                { label: 'Touch',       value: report.sensory.texture,     icon: <Hand size={11} /> },
-                { label: 'Temperature', value: report.sensory.temperature, icon: <Thermometer size={11} /> },
-              ] as const).map(({ label, value, icon }, i) => (
-                <div key={label}
-                  className={`p-5 ${i % 2 === 0 ? 'border-r' : ''} ${i < 2 ? 'border-b' : ''} border-[#501a2c]/20`}>
-                  <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/35 mb-2">
-                    {icon} {label}
+            {error && (
+              <div className="p-6 flex items-start gap-3">
+                <AlertCircle size={14} className="text-[#501a2c] mt-0.5 shrink-0" />
+                <p className="font-mono text-xs text-[#501a2c]">{error}</p>
+              </div>
+            )}
+
+            {report && (
+              <>
+                {/* Headline block */}
+                <div className="bg-[#501a2c] text-[#F5F0EB] px-6 py-6">
+                  <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-[#C9A690]/50 mb-2">Chronicle / Editorial</p>
+                  <h2 className="font-serif text-2xl md:text-3xl leading-tight text-[#F5F0EB] mb-2">{report.headline}</h2>
+                  <p className="font-serif text-sm italic text-[#F5F0EB]/55 leading-snug">{report.subheadline}</p>
+                </div>
+
+                {/* Narrative */}
+                <div className="px-6 py-6 border-b border-[#501a2c]/15">
+                  <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/35 mb-3">Editorial Reading</p>
+                  <p className="font-serif text-sm text-[#501a2c]/80 leading-relaxed">{report.narrative}</p>
+                </div>
+
+                {/* Tension + Light */}
+                <div className="grid grid-cols-2 border-b border-[#501a2c]/15">
+                  <div className="px-5 py-4 border-r border-[#501a2c]/15">
+                    <p className="font-mono text-[8px] uppercase tracking-widest text-[#501a2c]/35 mb-1.5">Tension</p>
+                    <p className="font-serif text-xs text-[#501a2c]/70 leading-snug">{report.tension}</p>
                   </div>
-                  <p className="font-serif text-sm text-[#501a2c]/75 leading-snug">{value}</p>
+                  <div className="px-5 py-4">
+                    <p className="font-mono text-[8px] uppercase tracking-widest text-[#501a2c]/35 mb-1.5">Light</p>
+                    <p className="font-serif text-xs text-[#501a2c]/70 leading-snug">{report.light_quality}</p>
+                  </div>
                 </div>
-              ))}
-            </motion.div>
-          )}
 
-          {/* ── Energy + meta ── */}
-          {report && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.35 }}
-              className="border border-t-0 border-[#501a2c] p-6 space-y-5">
+                {/* Technical + era */}
+                <div className="grid grid-cols-2 border-b border-[#501a2c]/15">
+                  <div className="px-5 py-4 border-r border-[#501a2c]/15">
+                    <p className="font-mono text-[8px] uppercase tracking-widest text-[#501a2c]/35 mb-1">Composition</p>
+                    <p className="font-mono text-[10px] text-[#501a2c]">{report.composition}</p>
+                  </div>
+                  <div className="px-5 py-4">
+                    <p className="font-mono text-[8px] uppercase tracking-widest text-[#501a2c]/35 mb-1">Era</p>
+                    <p className="font-mono text-[10px] text-[#501a2c]">{report.era}</p>
+                  </div>
+                </div>
 
-              {/* Energy bar */}
-              <div>
-                <div className="flex justify-between items-baseline mb-2">
-                  <span className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/40">Energy</span>
-                  <span className="font-mono text-2xl leading-none" style={{ color: energyColor(report.energy) }}>
-                    {report.energy}
-                  </span>
+                {/* Human presence + Editorial score */}
+                <div className="px-6 py-5 border-b border-[#501a2c]/15 flex items-center gap-4 justify-between">
+                  <div>
+                    <p className="font-mono text-[8px] uppercase tracking-widest text-[#501a2c]/35 mb-1">Subject</p>
+                    <p className="font-mono text-[10px] text-[#501a2c]">{PRESENCE_LABEL[report.human_presence] ?? report.human_presence}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-mono text-[8px] uppercase tracking-widest text-[#501a2c]/35 mb-1">Editorial Score</p>
+                    <div className="flex items-baseline gap-1.5 justify-end">
+                      <span className="font-mono text-3xl leading-none font-light"
+                        style={{ color: SCORE_COLOR(report.editorial_score) }}>
+                        {report.editorial_score}
+                      </span>
+                      <span className="font-mono text-[9px] text-[#501a2c]/30">/100</span>
+                    </div>
+                    <div className="mt-2 w-24 ml-auto h-px bg-[#501a2c]/10">
+                      <motion.div className="h-px" style={{ backgroundColor: SCORE_COLOR(report.editorial_score) }}
+                        initial={{ width: 0 }}
+                        animate={{ width: `${report.editorial_score}%` }}
+                        transition={{ duration: 0.8, ease: 'easeOut' }} />
+                    </div>
+                  </div>
                 </div>
-                <div className="h-px bg-[#501a2c]/10">
-                  <motion.div className="h-px" style={{ backgroundColor: energyColor(report.energy) }}
-                    initial={{ width: 0 }}
-                    animate={{ width: `${report.energy}%` }}
-                    transition={{ duration: 0.9, ease: 'easeOut' }} />
-                </div>
-                <div className="flex justify-between mt-1">
-                  <span className="font-mono text-[8px] text-[#501a2c]/25 uppercase">Stillness</span>
-                  <span className="font-mono text-[8px] text-[#501a2c]/25 uppercase">Energy</span>
-                </div>
-              </div>
 
-              {/* Time / Season */}
-              <div className="flex items-center gap-6">
-                <div>
-                  <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/35 mb-1">Time</p>
-                  <p className="font-mono text-xs text-[#501a2c] flex items-center gap-1.5">
-                    {TIME_ICONS[report.time_of_day] ?? '●'} {report.time_of_day}
-                  </p>
+                {/* Tags */}
+                <div className="px-6 py-5 flex flex-wrap gap-2">
+                  {report.tags.map(tag => (
+                    <span key={tag} className="border border-[#501a2c]/25 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/55">
+                      {tag}
+                    </span>
+                  ))}
                 </div>
-                <div className="w-px h-8 bg-[#501a2c]/15" />
-                <div>
-                  <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/35 mb-1">Season</p>
-                  <p className="font-mono text-xs text-[#501a2c] flex items-center gap-1.5">
-                    {SEASON_ICONS[report.season] ?? '●'} {report.season}
-                  </p>
-                </div>
-              </div>
+              </>
+            )}
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2">
-                {report.tags.map(tag => (
-                  <span key={tag} className="border border-[#501a2c]/30 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/60">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              {/* Music */}
-              <div className="flex items-center gap-3 pt-1 border-t border-[#501a2c]/10">
-                <Music size={13} className="text-[#C9A690] shrink-0" />
-                <div>
-                  <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/35">Sounds Like</p>
-                  <p className="font-serif text-sm text-[#501a2c] italic mt-0.5">{report.music}</p>
-                </div>
-              </div>
-            </motion.div>
-          )}
-
-          {error && (
-            <div className="border border-[#501a2c]/20 p-4 flex items-start gap-3 mt-4">
-              <AlertCircle size={14} className="text-[#501a2c] mt-0.5 shrink-0" />
-              <p className="font-mono text-xs text-[#501a2c]">{error}</p>
+            <div className="mt-auto px-6 pb-5 pt-2 border-t border-[#501a2c]/10">
+              <button type="button"
+                onClick={() => { setUpload(null); setReport(null); }}
+                className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 hover:text-[#501a2c] transition-colors flex items-center gap-2">
+                <Upload size={12} /> {t('materie.newimage')}
+              </button>
             </div>
-          )}
-
-          <button type="button"
-            onClick={() => { setUpload(null); setReport(null); }}
-            className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 hover:text-[#501a2c] transition-colors flex items-center gap-2 mt-4">
-            <Upload size={12} /> {t('materie.newimage')}
-          </button>
+          </div>
         </div>
       )}
     </motion.div>
@@ -953,20 +930,20 @@ const TOOL_CARDS = (t: T) => [
     cta: t('materie.studio.open'),
   },
   {
-    id: 'aura' as const,
+    id: 'chronicle' as const,
     num: '03',
-    kicker: 'AURA',
-    icon: <Sparkles size={18} />,
-    accent: '#4A7C59',
-    title: t('materie.aura.title'),
-    desc: t('materie.aura.desc'),
+    kicker: 'Chronicle',
+    icon: <Aperture size={18} />,
+    accent: '#4A5568',
+    title: t('materie.chronicle.title'),
+    desc: t('materie.chronicle.desc'),
     features: [
-      { icon: <Sparkles size={10} />,  label: 'Mood reading' },
-      { icon: <Waves size={10} />,     label: 'Sensory profile' },
-      { icon: <Activity size={10} />,  label: 'Energy score' },
-      { icon: <Music size={10} />,     label: 'Music pairing' },
+      { icon: <BookOpen size={10} />,  label: 'Editorial reading' },
+      { icon: <Star size={10} />,      label: 'Editorial score' },
+      { icon: <Activity size={10} />,  label: 'Visual tension' },
+      { icon: <Aperture size={10} />,  label: 'Photo caption' },
     ],
-    cta: t('materie.aura.open'),
+    cta: t('materie.chronicle.open'),
   },
 ];
 
@@ -977,7 +954,7 @@ export function MateriePage({ t }: { t: T }) {
     <AnimatePresence mode="wait">
       {tool === 'lab'    && <LabTool    key="lab"    onBack={() => setTool(null)} t={t} />}
       {tool === 'studio' && <StudioTool key="studio" onBack={() => setTool(null)} t={t} />}
-      {tool === 'aura'   && <AuraTool   key="aura"   onBack={() => setTool(null)} t={t} />}
+      {tool === 'chronicle' && <ChronicleTool key="chronicle" onBack={() => setTool(null)} t={t} />}
       {!tool && (
         <motion.div key="landing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}

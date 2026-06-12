@@ -50,6 +50,10 @@
 
     <div class="sub-header">
       <nav class="tab-bar">
+        <button class="tab-btn" data-tab="dashboard" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+          Обзор
+        </button>
         <button class="tab-btn active" data-tab="content" type="button">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
           Контент
@@ -86,6 +90,100 @@
     </div>
 
     <main class="main-content">
+
+      <!-- ===== DASHBOARD TAB ===== -->
+      <section class="tab-panel" id="tab-dashboard">
+        <div class="dashboard-layout">
+
+          <!-- Quick stats row -->
+          <div class="dash-stats-row" id="dashStatsRow">
+            <div class="dash-stat-card">
+              <div class="dash-stat-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              </div>
+              <div>
+                <div class="dash-stat-value" id="dashCountArticles">—</div>
+                <div class="dash-stat-label">Статьи</div>
+              </div>
+            </div>
+            <div class="dash-stat-card">
+              <div class="dash-stat-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              </div>
+              <div>
+                <div class="dash-stat-value" id="dashCountReviews">—</div>
+                <div class="dash-stat-label">Обзоры</div>
+              </div>
+            </div>
+            <div class="dash-stat-card">
+              <div class="dash-stat-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              </div>
+              <div>
+                <div class="dash-stat-value" id="dashCountIssues">—</div>
+                <div class="dash-stat-label">Выпуски</div>
+              </div>
+            </div>
+            <div class="dash-stat-card">
+              <div class="dash-stat-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+              </div>
+              <div>
+                <div class="dash-stat-value" id="dashCountLangs">—</div>
+                <div class="dash-stat-label">Языков</div>
+              </div>
+            </div>
+            <div class="dash-stat-card dash-stat-card--wide">
+              <div class="dash-stat-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
+              </div>
+              <div>
+                <div class="dash-stat-value" id="dashIssueStatus">—</div>
+                <div class="dash-stat-label">Текущий выпуск</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-main-grid">
+            <!-- Translation coverage -->
+            <div class="card">
+              <div class="dash-section-head">
+                <h2 class="card-title" style="margin:0">Покрытие переводов</h2>
+                <button class="btn btn-sm" type="button" onclick="document.querySelector('[data-tab=translations]').click()">Открыть →</button>
+              </div>
+              <p class="card-desc">Заполненность переводов интерфейса по каждому языку.</p>
+              <div id="dashTranslCoverage" class="dash-transl-coverage">
+                <p class="dash-empty-hint">Загрузите контент, чтобы увидеть покрытие.</p>
+              </div>
+            </div>
+
+            <!-- Content audit summary -->
+            <div class="card">
+              <div class="dash-section-head">
+                <h2 class="card-title" style="margin:0">Качество контента</h2>
+                <button class="btn btn-sm" type="button" onclick="document.querySelector('[data-tab=content]').click()">Открыть →</button>
+              </div>
+              <p class="card-desc">Сводка по разделам: полнота, фото, переводы.</p>
+              <div id="dashContentAudit" class="dash-content-audit">
+                <p class="dash-empty-hint">Загрузите контент для аудита.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Issue timeline -->
+          <div class="card">
+            <div class="dash-section-head">
+              <h2 class="card-title" style="margin:0">История выпусков</h2>
+              <button class="btn btn-sm" type="button" onclick="document.querySelector('[data-tab=issues]').click()">Конструктор →</button>
+            </div>
+            <p class="card-desc">Все номера журнала с их статусами.</p>
+            <div id="dashIssueTimeline" class="dash-issue-timeline">
+              <p class="dash-empty-hint">Загрузите контент, чтобы увидеть историю выпусков.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
 
       <section class="tab-panel active" id="tab-content">
         <div id="overviewStrip" class="overview-strip" style="display:none"></div>
@@ -490,13 +588,8 @@
       <section class="tab-panel" id="tab-translations">
         <div class="translations-layout">
 
-          <div class="card card-highlight">
-            <h2 class="card-title">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
-              Редактор переводов UI
-            </h2>
-            <p class="card-desc">Редактируйте тексты интерфейса по каждому языку. EN — базовый язык (эталон). Пустые ячейки используют EN как запасной вариант. После сохранения в GitHub сайт обновится автоматически.</p>
-          </div>
+          <!-- Language coverage overview -->
+          <div id="translLangOverview" class="transl-lang-overview"></div>
 
           <div class="translations-toolbar">
             <label class="toolbar-field">
@@ -507,9 +600,10 @@
               <span class="toolbar-field-label">Поиск по ключу или тексту</span>
               <input id="translSearch" placeholder="nav., hero., about..." />
             </label>
-            <button id="translOnlyMissing" class="btn btn-sm" type="button">Только незаполненные</button>
-            <button id="translShowAll" class="btn btn-sm" type="button">Показать все</button>
-            <button id="translSaveBtn" class="btn btn-primary btn-sm" type="button">Применить изменения</button>
+            <button id="translOnlyMissing" class="btn btn-sm" type="button">Только пустые</button>
+            <button id="translShowAll" class="btn btn-sm" type="button">Все</button>
+            <button id="translAiBtn" class="btn btn-sm btn-ai" type="button">✨ Перевести пустые</button>
+            <button id="translSaveBtn" class="btn btn-primary btn-sm" type="button">Применить</button>
           </div>
 
           <div class="card" style="padding:0;overflow:hidden">
