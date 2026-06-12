@@ -1860,6 +1860,7 @@ function setEditorData(data, options = {}) {
   updateStats(data);
   refreshVisualEditor();
   updateEditorState();
+  setTimeout(() => { try { renderDashboard(); } catch {} }, 100);
   if (markSynced) {
     setLastSyncedSnapshotFromText(editor.value);
   }
@@ -5285,9 +5286,113 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     if (btn.dataset.tab === 'issues') setTimeout(renderIssuesTab, 50);
     if (btn.dataset.tab === 'translations') setTimeout(renderTranslationsTab, 50);
+    if (btn.dataset.tab === 'dashboard') setTimeout(renderDashboard, 50);
   });
 });
 
+
+// ═══════════════════════════════════════════════════════════
+// ──  DASHBOARD  ───────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════
+
+function renderDashboard() {
+  const data = parseEditorJsonSafe();
+
+  // ── Stats row ──
+  const setVal = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+
+  if (!data) {
+    setVal('dashCountArticles', '—');
+    setVal('dashCountReviews', '—');
+    setVal('dashCountIssues', '—');
+    setVal('dashCountLangs', '—');
+    setVal('dashIssueStatus', 'Нет данных');
+    return;
+  }
+
+  const enArticles = (data.articles && data.articles['EN']) ? data.articles['EN'].length : 0;
+  const enReviews  = (data.reviews  && data.reviews['EN'])  ? data.reviews['EN'].length  : 0;
+  const issues     = Array.isArray(data.issues) ? data.issues : [];
+  const langs      = data.translations ? Object.keys(data.translations).length : 0;
+  const published  = issues.find(i => i.status === 'published');
+
+  setVal('dashCountArticles', enArticles);
+  setVal('dashCountReviews',  enReviews);
+  setVal('dashCountIssues',   issues.length);
+  setVal('dashCountLangs',    langs);
+  setVal('dashIssueStatus',   published ? `${published.name} (${published.season || 'опубликован'})` : (issues.length ? `${issues[0].name} — черновик` : 'Нет выпусков'));
+
+  // ── Translation coverage ──
+  const covEl = document.getElementById('dashTranslCoverage');
+  if (covEl && data.translations) {
+    const enKeys = Object.keys(data.translations['EN'] || {});
+    const total  = enKeys.length;
+    const langsList = Object.keys(data.translations).filter(l => l !== 'EN');
+    if (!total) {
+      covEl.innerHTML = '<p class="dash-empty-hint">Нет ключей перевода.</p>';
+    } else {
+      covEl.innerHTML = langsList.map(lang => {
+        const filled = enKeys.filter(k => data.translations[lang]?.[k]).length;
+        const pct    = Math.round((filled / total) * 100);
+        const color  = pct === 100 ? '#4A7C59' : pct > 70 ? '#B8860B' : '#8B3A3A';
+        return `<div class="dash-lang-row">
+          <span class="dash-lang-name">${escapeHtml(lang)}</span>
+          <div class="dash-lang-track"><div class="dash-lang-fill" style="width:${pct}%;background:${color}"></div></div>
+          <span class="dash-lang-pct" style="color:${color}">${pct}%</span>
+        </div>`;
+      }).join('');
+    }
+  }
+
+  // ── Content audit ──
+  const auditEl = document.getElementById('dashContentAudit');
+  if (auditEl) {
+    const sections = [
+      { key: 'articles',     label: 'Статьи' },
+      { key: 'reviews',      label: 'Обзоры' },
+      { key: 'items',        label: 'Галерея' },
+      { key: 'libraryItems', label: 'Библиотека' },
+    ];
+    const enLang = 'EN';
+    auditEl.innerHTML = sections.map(sec => {
+      const entries = (data[sec.key] && data[sec.key][enLang]) || [];
+      const total   = entries.length;
+      if (!total) return '';
+      const withPhoto = entries.filter(e => e.imageUrl || e.image || (e.blocks || []).some(b => b.type === 'image' && b.src)).length;
+      const pct = Math.round((withPhoto / total) * 100);
+      const badge = pct === 100 ? 'ok' : pct > 60 ? 'warn' : 'danger';
+      const badgeLabel = pct === 100 ? 'Полный' : pct > 60 ? 'Частично' : 'Неполный';
+      return `<div class="dash-audit-row">
+        <span class="dash-audit-section">${escapeHtml(sec.label)}</span>
+        <div class="dash-audit-bar-wrap"><div class="dash-audit-bar-fill" style="width:${pct}%"></div></div>
+        <span class="dash-audit-num">${total} зап.</span>
+        <span class="dash-audit-badge ${badge}">${badgeLabel}</span>
+      </div>`;
+    }).filter(Boolean).join('') || '<p class="dash-empty-hint">Нет данных по разделам.</p>';
+  }
+
+  // ── Issue timeline ──
+  const timelineEl = document.getElementById('dashIssueTimeline');
+  if (timelineEl) {
+    if (!issues.length) {
+      timelineEl.innerHTML = '<p class="dash-empty-hint">Нет выпусков.</p>';
+    } else {
+      timelineEl.innerHTML = issues.slice().reverse().map(iss => {
+        const statusLabel = iss.status === 'published' ? 'Опубликован' : iss.status === 'archived' ? 'Архив' : 'Черновик';
+        const articles = Array.isArray(iss.articleIds) ? iss.articleIds.length : 0;
+        return `<div class="dash-issue-card" onclick="document.querySelector('[data-tab=issues]').click()">
+          <div class="dash-issue-card-status ${iss.status}">${statusLabel}</div>
+          <div class="dash-issue-card-name">${escapeHtml(iss.name || `Выпуск ${iss.id}`)}</div>
+          <div class="dash-issue-card-meta">${escapeHtml(iss.season || '')} · ${articles} ст.</div>
+        </div>`;
+      }).join('');
+    }
+  }
+}
+
+// Auto-refresh dashboard when JSON changes
+const _origUpdateEditorState = updateEditorState;
+// (patch inline at call sites via init/loadFromGitHub hooks — renderDashboard called after load)
 
 // ═══════════════════════════════════════════════════════════
 // ──  TRANSLATIONS TAB  ────────────────────────────────────
@@ -5313,6 +5418,28 @@ function renderTranslationsTab() {
   const enKeys = data.translations['EN'] || {};
   const allKeys = Object.keys(enKeys);
 
+  // ── Language overview pills ──
+  const overviewEl = document.getElementById('translLangOverview');
+  if (overviewEl) {
+    const nonEnLangs = langs.filter(l => l !== 'EN');
+    overviewEl.innerHTML = nonEnLangs.map(lang => {
+      const filled = allKeys.filter(k => data.translations[lang]?.[k]).length;
+      const pct = allKeys.length ? Math.round((filled / allKeys.length) * 100) : 0;
+      const color = pct === 100 ? '#4A7C59' : pct > 70 ? '#B8860B' : '#8B3A3A';
+      return `<div class="transl-lang-pill" data-lang="${escapeHtml(lang)}" title="${filled}/${allKeys.length} ключей">
+        <span class="transl-lang-pill-name">${escapeHtml(lang)}</span>
+        <div class="transl-lang-pill-track"><div class="transl-lang-pill-fill" style="width:${pct}%;background:${color}"></div></div>
+        <span class="transl-lang-pill-pct" style="color:${color}">${pct}%</span>
+      </div>`;
+    }).join('');
+    overviewEl.querySelectorAll('.transl-lang-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        const sel = document.getElementById('translLangSelect');
+        if (sel) { sel.value = pill.dataset.lang; sel.dispatchEvent(new Event('change')); }
+      });
+    });
+  }
+
   // Populate lang selector
   const prevLang = langSelect.value;
   langSelect.innerHTML = langs.filter(l => l !== 'EN').map(l =>
@@ -5320,6 +5447,13 @@ function renderTranslationsTab() {
   ).join('');
   const activeLang = langSelect.value || langs.find(l => l !== 'EN') || '';
   if (headerEl) headerEl.textContent = activeLang ? `${activeLang} — перевод` : 'Перевод';
+
+  // Mark active pill
+  if (overviewEl) {
+    overviewEl.querySelectorAll('.transl-lang-pill').forEach(p => {
+      p.classList.toggle('active', p.dataset.lang === activeLang);
+    });
+  }
 
   const langMap = data.translations[activeLang] || {};
   _translChanges = {};
@@ -5435,4 +5569,44 @@ const translOnlyMissing = document.getElementById('translOnlyMissing');
 const translShowAll = document.getElementById('translShowAll');
 if (translOnlyMissing) translOnlyMissing.addEventListener('click', () => { _translShowMissingOnly = true; renderTranslationsTab(); });
 if (translShowAll) translShowAll.addEventListener('click', () => { _translShowMissingOnly = false; renderTranslationsTab(); });
+
+// AI translate missing
+const translAiBtn = document.getElementById('translAiBtn');
+if (translAiBtn) {
+  translAiBtn.addEventListener('click', async () => {
+    const data = parseEditorJsonSafe();
+    if (!data?.translations) { showToast('error', 'Загрузите JSON.'); return; }
+    const langSelect = document.getElementById('translLangSelect');
+    const activeLang = langSelect?.value;
+    if (!activeLang) return;
+    const enKeys = data.translations['EN'] || {};
+    const langMap = data.translations[activeLang] || {};
+    const missingKeys = Object.keys(enKeys).filter(k => !langMap[k]);
+    if (!missingKeys.length) { showToast('info', 'Нет незаполненных переводов.'); return; }
+    if (missingKeys.length > 40) { showToast('warn', `Слишком много ключей (${missingKeys.length}), запустите несколько раз.`); }
+    const batch = missingKeys.slice(0, 40);
+    translAiBtn.disabled = true;
+    translAiBtn.textContent = `Перевожу ${batch.length} ключей…`;
+    try {
+      const payload = batch.map(k => `${k}: ${enKeys[k]}`).join('\n');
+      const prompt = `Translate these UI strings from English to ${activeLang}.\nReturn ONLY a JSON object mapping each key to its translated value. Do not add explanations.\n\n${payload}`;
+      const result = await callOpenRouter(prompt);
+      const parsed = extractJSON(result);
+      if (!parsed || typeof parsed !== 'object') throw new Error('Bad JSON response');
+      Object.assign(_translChanges, parsed);
+      // Show changes in inputs
+      renderTranslationsTab();
+      Object.entries(parsed).forEach(([k, v]) => {
+        const input = document.querySelector(`.transl-input[data-key="${CSS.escape(k)}"]`);
+        if (input) { input.value = v; input.classList.add('changed'); }
+      });
+      showToast('success', `Переведено ${Object.keys(parsed).length} ключей — нажмите «Применить».`);
+    } catch (e) {
+      showToast('error', `Ошибка перевода: ${e.message}`);
+    } finally {
+      translAiBtn.disabled = false;
+      translAiBtn.textContent = '✨ Перевести пустые';
+    }
+  });
+}
 

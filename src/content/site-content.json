@@ -116,7 +116,12 @@
       "studio.projects.title": "Selected projects",
       "studio.cta.title": "Have a project in mind?",
       "studio.cta.desc": "Get in touch via Instagram to discuss collaborations and commissions.",
-      "studio.cta.button": "Message on Instagram"
+      "studio.cta.button": "Message on Instagram",
+      "materie.chronicle.title": "Chronicle",
+      "materie.chronicle.tagline": "The photo editor's eye — documentary & editorial intelligence",
+      "materie.chronicle.upload": "Drop any photograph to begin editorial analysis",
+      "materie.chronicle.desc": "Read any photograph through a documentary lens — narrative, tension, light, and editorial weight.",
+      "materie.chronicle.open": "Open Chronicle"
     },
     "RU": {
       "nav.gallery": "Галерея",
@@ -234,7 +239,12 @@
       "studio.projects.title": "Избранные проекты",
       "studio.cta.title": "Есть идея проекта?",
       "studio.cta.desc": "Напишите в Instagram, чтобы обсудить сотрудничество и заказы.",
-      "studio.cta.button": "Написать в Instagram"
+      "studio.cta.button": "Написать в Instagram",
+      "materie.chronicle.title": "Хроника",
+      "materie.chronicle.tagline": "Взгляд фоторедактора — документальный и редакционный анализ",
+      "materie.chronicle.upload": "Перетащите любую фотографию для редакционного анализа",
+      "materie.chronicle.desc": "Читайте любую фотографию сквозь документальную призму — нарратив, напряжение, свет и редакционный вес.",
+      "materie.chronicle.open": "Открыть Chronicle"
     },
     "UA": {
       "nav.gallery": "Галерея",
@@ -352,7 +362,12 @@
       "studio.projects.title": "Обрані проєкти",
       "studio.cta.title": "Маєте ідею проєкту?",
       "studio.cta.desc": "Напишіть в Instagram, щоб обговорити співпрацю та замовлення.",
-      "studio.cta.button": "Написати в Instagram"
+      "studio.cta.button": "Написати в Instagram",
+      "materie.chronicle.title": "Хроніка",
+      "materie.chronicle.tagline": "Погляд фоторедактора — документальний та редакційний аналіз",
+      "materie.chronicle.upload": "Перетягніть будь-яке фото для редакційного аналізу",
+      "materie.chronicle.desc": "Читайте будь-яке фото крізь документальну призму — наратив, напруга, світло та редакційна вага.",
+      "materie.chronicle.open": "Відкрити Chronicle"
     },
     "TR": {
       "nav.gallery": "Galeri",
@@ -470,7 +485,12 @@
       "studio.projects.title": "Seçili projeler",
       "studio.cta.title": "Bir proje fikriniz mi var?",
       "studio.cta.desc": "İşbirlikleri ve siparişleri tartışmak için Instagram üzerinden iletişime geçin.",
-      "studio.cta.button": "Instagram'dan yazın"
+      "studio.cta.button": "Instagram'dan yazın",
+      "materie.chronicle.title": "Kronik",
+      "materie.chronicle.tagline": "Fotoğraf editörünün gözü — belgesel ve editoryal analiz",
+      "materie.chronicle.upload": "Editoryal analiz için herhangi bir fotoğraf bırakın",
+      "materie.chronicle.desc": "Her fotoğrafı belgesel bir bakışla okuyun — anlatı, gerilim, ışık ve editoryal ağırlık.",
+      "materie.chronicle.open": "Chronicle'ı Aç"
     },
     "DE": {
       "nav.gallery": "Galerie",
@@ -588,7 +608,12 @@
       "studio.projects.title": "Ausgewählte Projekte",
       "studio.cta.title": "Haben Sie ein Projekt im Sinn?",
       "studio.cta.desc": "Kontaktieren Sie uns über Instagram, um Kooperationen und Aufträge zu besprechen.",
-      "studio.cta.button": "Auf Instagram schreiben"
+      "studio.cta.button": "Auf Instagram schreiben",
+      "materie.chronicle.title": "Chronik",
+      "materie.chronicle.tagline": "Das Auge des Bildredakteurs — dokumentarische und redaktionelle Analyse",
+      "materie.chronicle.upload": "Foto ablegen für die redaktionelle Analyse",
+      "materie.chronicle.desc": "Lesen Sie jedes Foto durch eine dokumentarische Linse — Erzählung, Spannung, Licht und redaktionelles Gewicht.",
+      "materie.chronicle.open": "Chronicle öffnen"
     },
     "IT": {
       "nav.gallery": "Galleria",
@@ -706,7 +731,12 @@
       "studio.projects.title": "Progetti selezionati",
       "studio.cta.title": "Hai un progetto in mente?",
       "studio.cta.desc": "Scrivi su Instagram per discutere collaborazioni e commissioni.",
-      "studio.cta.button": "Scrivi su Instagram"
+      "studio.cta.button": "Scrivi su Instagram",
+      "materie.chronicle.title": "Cronaca",
+      "materie.chronicle.tagline": "L'occhio del photo-editor — intelligenza documentaria e editoriale",
+      "materie.chronicle.upload": "Trascina una foto per l'analisi editoriale",
+      "materie.chronicle.desc": "Leggi qualsiasi fotografia attraverso una lente documentaristica — narrazione, tensione, luce e peso editoriale.",
+      "materie.chronicle.open": "Apri Chronicle"
     },
     "ES": {
       "nav.gallery": "Galería",
@@ -824,7 +854,12 @@
       "studio.projects.title": "Proyectos seleccionados",
       "studio.cta.title": "¿Tienes un proyecto en mente?",
       "studio.cta.desc": "Escribe por Instagram para hablar de colaboraciones y encargos.",
-      "studio.cta.button": "Escribir por Instagram"
+      "studio.cta.button": "Escribir por Instagram",
+      "materie.chronicle.title": "Crónica",
+      "materie.chronicle.tagline": "El ojo del editor fotográfico — inteligencia documental y editorial",
+      "materie.chronicle.upload": "Suelta una foto para iniciar el análisis editorial",
+      "materie.chronicle.desc": "Lee cualquier fotografía a través de una lente documental — narrativa, tensión, luz y peso editorial.",
+      "materie.chronicle.open": "Abrir Chronicle"
     }
   },
   "items": [
