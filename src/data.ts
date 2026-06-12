@@ -73,6 +73,16 @@ export interface StudioProject {
   category: string;
   year: string;
   imageUrl: string;
+  location?: string;
+  description?: string;
+  role?: string;
+  gallery?: string[];
+  featured?: boolean;
+}
+
+export interface StudioStat {
+  value: string;
+  key: string;
 }
 
 export interface Studio {
@@ -80,7 +90,9 @@ export interface Studio {
   instagram: string;
   email?: string;
   heroImage: string;
+  statement?: string;
   services: string[];
+  stats?: StudioStat[];
   projects: StudioProject[];
 }
 
@@ -212,7 +224,9 @@ const DEFAULT_STUDIO: Studio = {
   name: 'Masha Peut Studio',
   instagram: 'https://www.instagram.com/mashapeut/',
   heroImage: '/images/mariia-ivanova.jpg',
+  statement: '',
   services: [],
+  stats: [],
   projects: [],
 };
 
