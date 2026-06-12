@@ -405,7 +405,21 @@
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
               Как работает конструктор
             </h2>
-            <p class="card-desc">Прозрачный механизм в 4 шага: <strong>1)</strong> задайте параметры номера, <strong>2)</strong> соберите статьи (вручную или «Собрать все»), <strong>3)</strong> проверьте валидацию — каждая статья проходит набор правил, <strong>4)</strong> опубликуйте. Публикация доступна, только если нет критических ошибок. После публикации нажмите «Сохранить в GitHub» в шапке — сайт и PDF обновятся автоматически.</p>
+            <p class="card-desc">Прозрачный механизм в 4 шага: <strong>1)</strong> выберите или создайте выпуск ниже и задайте параметры номера, <strong>2)</strong> соберите статьи (вручную, drag-and-drop или «Собрать все»), <strong>3)</strong> проверьте валидацию — каждая статья проходит набор правил, <strong>4)</strong> опубликуйте. Публикация доступна, только если нет критических ошибок, и автоматически архивирует предыдущий опубликованный номер. После публикации нажмите «Сохранить в GitHub» в шапке — сайт и PDF обновятся автоматически.</p>
+          </div>
+
+          <!-- Issue archive / switcher -->
+          <div class="card">
+            <div class="issue-articles-head">
+              <h2 class="card-title" style="margin:0">Выпуски</h2>
+              <div class="issue-articles-tools">
+                <button id="newIssueBtn" class="btn btn-sm" type="button">+ Новый выпуск</button>
+                <button id="duplicateIssueBtn" class="btn btn-sm" type="button">Дублировать</button>
+                <button id="deleteIssueBtn" class="btn btn-sm btn-danger-text" type="button">Удалить</button>
+              </div>
+            </div>
+            <p class="card-desc">Архив всех номеров. Опубликованный — текущий номер на сайте, остальные доступны в архиве на странице «Выпуск».</p>
+            <div id="issueSwitcherList" class="issue-switcher-list"></div>
           </div>
 
           <div class="issues-grid">
@@ -430,6 +444,7 @@
                   <input id="issueCoverUrl" placeholder="https://..." />
                 </label>
               </div>
+              <div id="issueCoverPicks" class="issue-cover-picks"></div>
               <div class="issue-cover-preview" id="issueCoverPreview"></div>
             </div>
 
@@ -453,7 +468,7 @@
                 <button id="clearSelectionBtn" class="btn btn-sm" type="button">Очистить</button>
               </div>
             </div>
-            <p class="card-desc">Отметьте статьи для номера. Порядок (стрелками) определяет последовательность в PDF и на сайте. У каждой статьи — индикатор готовности.</p>
+            <p class="card-desc">Отметьте статьи для номера. Порядок (стрелками или перетаскиванием за ⠿) определяет последовательность в PDF и на сайте. У каждой статьи — индикатор готовности.</p>
             <div id="issueArticlesList" class="issue-articles-list">
               <p style="color:var(--text-muted);font-size:.82rem">Загрузите контент, чтобы увидеть список статей.</p>
             </div>

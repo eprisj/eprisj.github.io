@@ -2,13 +2,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ReactNode, useState, useEffect, useCallback, FormEvent } from 'react';
 import { MateriePage } from './pages/MateriePage';
 import { IssuePage } from './pages/IssuePage';
+import { StudioPage } from './pages/StudioPage';
 import {
   Article,
   ContentBlock,
   DEFAULT_LANGUAGE,
   getAvailableLanguages,
   getContentForLanguage,
-  getIssue,
+  getIssueArchive,
+  getStudio,
   Item,
   LibraryItem,
   Review,
@@ -125,6 +127,7 @@ function NavBar({
     { id: 'about', label: t('nav.about') },
     { id: 'materie', label: t('nav.materie') },
     { id: 'issue', label: t('nav.issue') },
+    { id: 'studio', label: t('nav.studio') },
   ];
 
   const handleSearch = (e: FormEvent) => {
@@ -154,7 +157,7 @@ function NavBar({
         </div>
         
         {/* Desktop Navigation */}
-        <div className="hidden lg:grid flex-1 grid-cols-7 divide-x divide-[#501a2c]">
+        <div className="hidden lg:grid flex-1 grid-cols-8 divide-x divide-[#501a2c]">
           {tabs.map((tab) => (
             <button
               type="button"
@@ -1342,7 +1345,7 @@ function SearchResults({
   );
 }
 
-const VALID_TABS = ['gallery', 'articles', 'reviews', 'library', 'about', 'materie', 'issue'];
+const VALID_TABS = ['gallery', 'articles', 'reviews', 'library', 'about', 'materie', 'issue', 'studio'];
 
 function buildSlugMap(): Map<string, number> {
   const allArticles = getContentForLanguage(DEFAULT_LANGUAGE).articles;
@@ -1427,7 +1430,8 @@ export default function App() {
   const [activeSearch, setActiveSearch] = useState('');
   const languageOptions = getAvailableLanguages();
   const { items, articles, reviews, libraryItems } = getContentForLanguage(currentLang);
-  const { issue: currentIssue, articles: issueArticles } = getIssue(currentLang);
+  const issueArchive = getIssueArchive(currentLang);
+  const studio = getStudio();
   const defaultContent = getContentForLanguage(DEFAULT_LANGUAGE);
   const selectedArticle = selectedArticleId !== null
     ? articles.find((article) => article.id === selectedArticleId)
@@ -1517,14 +1521,16 @@ export default function App() {
       />
       
       <div className="lg:pr-12">
-        {activeTab !== 'materie' && activeTab !== 'issue' && !activeSearch && <Hero t={t} />}
+        {activeTab !== 'materie' && activeTab !== 'issue' && activeTab !== 'studio' && !activeSearch && <Hero t={t} />}
 
         {activeTab === 'materie' ? (
           <div className="pt-16">
             <MateriePage t={t} />
           </div>
         ) : activeTab === 'issue' ? (
-          <IssuePage issue={currentIssue} articles={issueArticles} t={t} />
+          <IssuePage archive={issueArchive} t={t} />
+        ) : activeTab === 'studio' ? (
+          <StudioPage studio={studio} t={t} />
         ) : (
           <main className="max-w-[1600px] mx-auto px-4 sm:px-8 md:px-16 py-8 sm:py-12 md:py-24">
             <AnimatePresence mode="wait">
@@ -1562,7 +1568,7 @@ export default function App() {
           </main>
         )}
 
-        {activeTab !== 'materie' && activeTab !== 'issue' && <footer className="border-t border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
+        {activeTab !== 'materie' && activeTab !== 'issue' && activeTab !== 'studio' && <footer className="border-t border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
           <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
             <div>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-[#C9A690]">EPRIS JOURNAL</h2>

@@ -1876,6 +1876,7 @@ function setEditorData(data, options = {}) {
   }
   // Re-seed Issue Builder + Translations from freshly loaded content
   if (typeof renderIssuesTab === 'function' && document.getElementById('issueArticlesList')) {
+    _issues = null; // force resync of issue archive from reloaded content
     try { renderIssuesTab(); } catch {}
   }
   if (typeof renderTranslationsTab === 'function' && document.getElementById('translBody')) {
@@ -4749,15 +4750,151 @@ if (deployBtn) deployBtn.addEventListener('click', deployVPS);
 
 // ═══════════════════════════════════════════════════════════
 // ──  ISSUES TAB — Issue Builder  ──────────────────────────
-//  Transparent collect → validate → publish mechanism.
+//  Archive of issues + transparent collect → validate → publish.
 // ═══════════════════════════════════════════════════════════
 
 const DESIGNED_COVER_IDS = new Set([8, 9]); // articles that ship with cover art
+let _issues = null;         // working copy of data.issues (array)
+let _currentIssueIdx = 0;   // index of the issue being edited
 let _issueOrder = null;     // ordered array of selected article ids
-let _issueStatus = 'draft'; // workflow status
+let _issueStatus = 'draft'; // workflow status of the current issue
+let issueDragSrcId = null;  // article drag-and-drop source id
 
 function issueArticlesOf(data) {
   return Array.isArray(data && data.articles) ? data.articles : [];
+}
+
+function nextIssueId(issues) {
+  return issues.reduce((max, i) => Math.max(max, Number(i.id) || 0), 0) + 1;
+}
+
+function defaultIssue(id) {
+  return {
+    id,
+    name: `Issue ${id}`,
+    season: '',
+    tagline: '',
+    coverUrl: '',
+    articleIds: [],
+    status: 'draft',
+    publishedAt: '',
+  };
+}
+
+// Migrate legacy single data.issue -> data.issues array. Returns the array.
+function ensureIssuesArray(data) {
+  if (Array.isArray(data.issues) && data.issues.length) return data.issues;
+  if (data.issue) {
+    const migrated = [{ ...data.issue, id: data.issue.id || 1 }];
+    delete data.issue;
+    data.issues = migrated;
+    return migrated;
+  }
+  data.issues = [defaultIssue(1)];
+  return data.issues;
+}
+
+// Save the current form + article order into _issues[_currentIssueIdx] (in memory only).
+function captureCurrentIssueFromForm() {
+  if (!_issues || !_issues[_currentIssueIdx]) return;
+  const cur = _issues[_currentIssueIdx];
+  cur.name = (document.getElementById('issueName')?.value || '').trim() || cur.name;
+  cur.season = (document.getElementById('issueSeason')?.value || '').trim();
+  cur.tagline = (document.getElementById('issueTagline')?.value || '').trim();
+  cur.coverUrl = (document.getElementById('issueCoverUrl')?.value || '').trim();
+  cur.articleIds = (_issueOrder || []).slice();
+}
+
+// Write _issues into the editor JSON (data.issues).
+function commitIssuesToEditor() {
+  const data = parseEditorJsonSafe();
+  if (!data) return false;
+  data.issues = _issues;
+  delete data.issue;
+  editor.value = JSON.stringify(data, null, 2);
+  updateEditorState();
+  return true;
+}
+
+// Switch the builder to a different issue by index, capturing current edits first.
+function switchToIssue(idx) {
+  if (!_issues || !_issues[idx]) return;
+  captureCurrentIssueFromForm();
+  _currentIssueIdx = idx;
+  seedIssueForm(_issues[idx]);
+  renderIssueSwitcher();
+  renderIssueList();
+  renderIssueCoverPicks();
+  refreshIssueValidation();
+}
+
+function seedIssueForm(issueData) {
+  const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val || ''; };
+  set('issueName', issueData.name);
+  set('issueSeason', issueData.season);
+  set('issueTagline', issueData.tagline);
+  set('issueCoverUrl', issueData.coverUrl);
+  _issueStatus = issueData.status === 'published' ? 'published' : (issueData.status === 'archived' ? 'archived' : 'draft');
+
+  const data = parseEditorJsonSafe();
+  const articles = issueArticlesOf(data);
+  const existing = new Set(articles.map(a => Number(a.id)));
+  const seeded = Array.isArray(issueData.articleIds) ? issueData.articleIds.map(Number).filter(id => existing.has(id)) : [];
+  _issueOrder = seeded;
+}
+
+function renderIssueSwitcher() {
+  const listEl = document.getElementById('issueSwitcherList');
+  if (!listEl || !_issues) return;
+  const statusLabel = { published: 'Опубликован', draft: 'Черновик', archived: 'Архив' };
+  listEl.innerHTML = _issues.map((issue, idx) => {
+    const status = issue.status === 'published' ? 'published' : (issue.status === 'archived' ? 'archived' : 'draft');
+    const thumb = issue.coverUrl
+      ? `<img class="issue-switcher-thumb" src="${escapeHtml(issue.coverUrl)}" alt="" onerror="this.style.visibility='hidden'" />`
+      : '<div class="issue-switcher-thumb"></div>';
+    return `
+      <div class="issue-switcher-card ${idx === _currentIssueIdx ? 'active' : ''}" data-idx="${idx}">
+        ${thumb}
+        <div class="issue-switcher-info">
+          <div class="issue-switcher-title">${escapeHtml(issue.name || 'Без названия')}</div>
+          <div class="issue-switcher-meta"><span class="issue-switcher-dot ${status}"></span>${escapeHtml(issue.season || '—')} · ${statusLabel[status]}</div>
+        </div>
+      </div>`;
+  }).join('');
+
+  listEl.querySelectorAll('.issue-switcher-card').forEach(card => {
+    card.addEventListener('click', () => switchToIssue(Number(card.dataset.idx)));
+  });
+}
+
+function renderIssueCoverPicks() {
+  const wrap = document.getElementById('issueCoverPicks');
+  if (!wrap) return;
+  const data = parseEditorJsonSafe();
+  const byId = new Map(issueArticlesOf(data).map(a => [Number(a.id), a]));
+  const order = (_issueOrder || []);
+  const candidates = order.map(id => byId.get(Number(id))).filter(a => a && a.imageUrl);
+
+  if (!candidates.length) {
+    wrap.innerHTML = '';
+    return;
+  }
+  wrap.innerHTML = '<span style="font-family:var(--font-mono);font-size:.56rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;align-self:center;margin-right:2px">Обложка из статьи:</span>' +
+    candidates.map(a => `
+      <button class="issue-cover-pick" type="button" data-url="${escapeHtml(a.imageUrl)}" title="${escapeHtml(a.title)}">
+        <img src="${escapeHtml(a.imageUrl)}" alt="" />
+        ${escapeHtml(a.title.length > 16 ? a.title.slice(0, 16) + '…' : a.title)}
+      </button>`).join('');
+
+  wrap.querySelectorAll('.issue-cover-pick').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const input = document.getElementById('issueCoverUrl');
+      if (input) {
+        input.value = btn.dataset.url;
+        refreshIssueValidation();
+      }
+    });
+  });
 }
 
 // Validate one article against the issue rules.
@@ -4806,29 +4943,27 @@ function validateIssue(data, order) {
   return { checks, errors, warnings, canPublish: errors === 0, articleErrors, articleWarnings };
 }
 
-// First open / content reload: seed builder state from saved issue config.
+// First open / content reload: seed builder state from saved issues archive.
 function renderIssuesTab() {
   const data = parseEditorJsonSafe();
   const listEl = document.getElementById('issueArticlesList');
-  if (!listEl) return;
+  if (!listEl || !data) return;
 
-  const articles = issueArticlesOf(data);
-  const issueData = (data && data.issue) || {};
+  if (!_issues) {
+    _issues = ensureIssuesArray(data).map(i => ({ ...i, articleIds: Array.isArray(i.articleIds) ? i.articleIds.slice() : [] }));
+    // Default to the published issue, or the first one.
+    const pubIdx = _issues.findIndex(i => i.status === 'published');
+    _currentIssueIdx = pubIdx >= 0 ? pubIdx : 0;
+    seedIssueForm(_issues[_currentIssueIdx]);
+    // If no order was seeded (new/empty issue), default to all articles.
+    if (!_issueOrder || !_issueOrder.length) {
+      _issueOrder = issueArticlesOf(data).map(a => Number(a.id));
+    }
+  }
 
-  // Seed inputs (only here, not on every refresh, to avoid clobbering typing)
-  const set = (id, val) => { const el = document.getElementById(id); if (el && val != null) el.value = val; };
-  set('issueName', issueData.name || 'Issue 15');
-  set('issueSeason', issueData.season || 'Spring 2026');
-  set('issueTagline', issueData.tagline || '');
-  set('issueCoverUrl', issueData.coverUrl || '');
-  _issueStatus = issueData.status === 'published' ? 'published' : 'draft';
-
-  // Seed order: saved articleIds (filtered to existing) or all articles
-  const existing = new Set(articles.map(a => Number(a.id)));
-  const seeded = Array.isArray(issueData.articleIds) ? issueData.articleIds.map(Number).filter(id => existing.has(id)) : null;
-  _issueOrder = seeded && seeded.length ? seeded : articles.map(a => Number(a.id));
-
+  renderIssueSwitcher();
   renderIssueList();
+  renderIssueCoverPicks();
   refreshIssueValidation();
 }
 
@@ -4862,7 +4997,8 @@ function renderIssueList() {
   const selectedRows = order.map((id, idx) => {
     const a = byId.get(Number(id));
     return `
-      <div class="issue-article-row selected" data-id="${id}">
+      <div class="issue-article-row selected" data-id="${id}" draggable="true">
+        <span class="issue-drag-handle" title="Перетащить для изменения порядка">⠿</span>
         <div class="issue-article-order">
           <button class="issue-order-btn" data-act="up" data-id="${id}" type="button" ${idx === 0 ? 'disabled' : ''}>▲</button>
           <button class="issue-order-btn" data-act="down" data-id="${id}" type="button" ${idx === order.length - 1 ? 'disabled' : ''}>▼</button>
@@ -4903,6 +5039,7 @@ function renderIssueList() {
       if (cb.checked) { if (!_issueOrder.includes(id)) _issueOrder.push(id); }
       else { _issueOrder = _issueOrder.filter(x => x !== id); }
       renderIssueList();
+      renderIssueCoverPicks();
       refreshIssueValidation();
     });
   });
@@ -4916,6 +5053,38 @@ function renderIssueList() {
       if (j < 0 || j >= _issueOrder.length) return;
       [_issueOrder[i], _issueOrder[j]] = [_issueOrder[j], _issueOrder[i]];
       renderIssueList();
+      renderIssueCoverPicks();
+      refreshIssueValidation();
+    });
+  });
+  // Drag & drop reordering of selected articles
+  listEl.querySelectorAll('.issue-article-row.selected[draggable]').forEach(row => {
+    row.addEventListener('dragstart', () => {
+      issueDragSrcId = Number(row.dataset.id);
+      row.classList.add('dragging');
+    });
+    row.addEventListener('dragend', () => {
+      row.classList.remove('dragging');
+      listEl.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
+    });
+    row.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      if (Number(row.dataset.id) !== issueDragSrcId) row.classList.add('drag-over');
+    });
+    row.addEventListener('dragleave', () => row.classList.remove('drag-over'));
+    row.addEventListener('drop', (e) => {
+      e.preventDefault();
+      row.classList.remove('drag-over');
+      const targetId = Number(row.dataset.id);
+      if (issueDragSrcId === null || targetId === issueDragSrcId) return;
+      const from = _issueOrder.indexOf(issueDragSrcId);
+      const to = _issueOrder.indexOf(targetId);
+      if (from < 0 || to < 0) return;
+      const [moved] = _issueOrder.splice(from, 1);
+      _issueOrder.splice(to, 0, moved);
+      issueDragSrcId = null;
+      renderIssueList();
+      renderIssueCoverPicks();
       refreshIssueValidation();
     });
   });
@@ -4953,7 +5122,7 @@ function refreshIssueValidation() {
   const subEl = document.getElementById('issueStatusSub');
   if (badgeEl) {
     badgeEl.className = `issue-status-badge ${_issueStatus}`;
-    badgeEl.textContent = _issueStatus === 'published' ? 'Опубликован' : 'Черновик';
+    badgeEl.textContent = _issueStatus === 'published' ? 'Опубликован' : (_issueStatus === 'archived' ? 'В архиве' : 'Черновик');
   }
   if (titleEl) titleEl.textContent = (document.getElementById('issueName')?.value || 'Выпуск');
   if (subEl) {
@@ -5011,28 +5180,31 @@ function renderIssuePdfStructure(data, order) {
   }).join('');
 }
 
-// Write issue config into the editor JSON. status: 'draft' | 'published'.
+// Write the current issue's config into _issues + editor JSON. status: 'draft' | 'published'.
 function writeIssueConfig(status) {
   const data = parseEditorJsonSafe();
-  if (!data) { showToast('error', 'Загрузите JSON перед сохранением.'); return false; }
+  if (!data || !_issues || !_issues[_currentIssueIdx]) { showToast('error', 'Загрузите JSON перед сохранением.'); return false; }
   const order = (_issueOrder || []);
   if (status === 'published') {
     const result = validateIssue(data, order);
     if (!result.canPublish) { showToast('error', `Нельзя опубликовать: ${result.errors} ошибок.`); return false; }
   }
-  const prev = data.issue || {};
-  data.issue = {
-    name: (document.getElementById('issueName')?.value || 'Issue 15').trim(),
-    season: (document.getElementById('issueSeason')?.value || 'Spring 2026').trim(),
-    tagline: (document.getElementById('issueTagline')?.value || '').trim(),
-    coverUrl: (document.getElementById('issueCoverUrl')?.value || '').trim(),
-    articleIds: order,
-    status,
-    publishedAt: status === 'published' ? new Date().toISOString().slice(0, 10) : (prev.publishedAt || ''),
-  };
-  editor.value = JSON.stringify(data, null, 2);
-  updateEditorState();
+  captureCurrentIssueFromForm();
+  const cur = _issues[_currentIssueIdx];
+  cur.articleIds = order;
+  cur.status = status;
+  cur.publishedAt = status === 'published' ? new Date().toISOString().slice(0, 10) : (cur.publishedAt || '');
+
+  // Only one issue can be 'published' at a time — archive the previous one.
+  if (status === 'published') {
+    _issues.forEach((iss, idx) => {
+      if (idx !== _currentIssueIdx && iss.status === 'published') iss.status = 'archived';
+    });
+  }
+
+  commitIssuesToEditor();
   _issueStatus = status;
+  renderIssueSwitcher();
   refreshIssueValidation();
   return true;
 }
@@ -5050,18 +5222,54 @@ function bindIssueBuilder() {
   onClick('collectAllBtn', () => {
     const data = parseEditorJsonSafe();
     _issueOrder = issueArticlesOf(data).map(a => Number(a.id));
-    renderIssueList(); refreshIssueValidation();
+    renderIssueList(); renderIssueCoverPicks(); refreshIssueValidation();
     showToast('info', `Собраны все статьи: ${_issueOrder.length}.`);
   });
   onClick('collectValidBtn', () => {
     const data = parseEditorJsonSafe();
     _issueOrder = issueArticlesOf(data).filter(a => validateIssueArticle(a).level !== 'danger').map(a => Number(a.id));
-    renderIssueList(); refreshIssueValidation();
+    renderIssueList(); renderIssueCoverPicks(); refreshIssueValidation();
     showToast('info', `Собраны готовые статьи: ${_issueOrder.length}.`);
   });
   onClick('clearSelectionBtn', () => {
     _issueOrder = [];
-    renderIssueList(); refreshIssueValidation();
+    renderIssueList(); renderIssueCoverPicks(); refreshIssueValidation();
+  });
+
+  onClick('newIssueBtn', () => {
+    if (!_issues) return;
+    captureCurrentIssueFromForm();
+    const issue = defaultIssue(nextIssueId(_issues));
+    _issues.push(issue);
+    if (!commitIssuesToEditor()) return;
+    switchToIssue(_issues.length - 1);
+    showToast('success', `Создан новый выпуск «${issue.name}».`);
+  });
+
+  onClick('duplicateIssueBtn', () => {
+    if (!_issues || !_issues[_currentIssueIdx]) return;
+    captureCurrentIssueFromForm();
+    const src = _issues[_currentIssueIdx];
+    const copy = { ...src, id: nextIssueId(_issues), name: `${src.name} (копия)`, status: 'draft', publishedAt: '', articleIds: (src.articleIds || []).slice() };
+    _issues.splice(_currentIssueIdx + 1, 0, copy);
+    if (!commitIssuesToEditor()) return;
+    switchToIssue(_currentIssueIdx + 1);
+    showToast('success', `Выпуск продублирован как «${copy.name}».`);
+  });
+
+  onClick('deleteIssueBtn', () => {
+    if (!_issues || _issues.length <= 1) { showToast('error', 'Должен остаться хотя бы один выпуск.'); return; }
+    const cur = _issues[_currentIssueIdx];
+    if (!window.confirm(`Удалить выпуск «${cur.name}»? Это действие сразу применится к JSON.`)) return;
+    _issues.splice(_currentIssueIdx, 1);
+    if (_currentIssueIdx >= _issues.length) _currentIssueIdx = _issues.length - 1;
+    if (!commitIssuesToEditor()) return;
+    seedIssueForm(_issues[_currentIssueIdx]);
+    renderIssueSwitcher();
+    renderIssueList();
+    renderIssueCoverPicks();
+    refreshIssueValidation();
+    showToast('success', `Выпуск «${cur.name}» удалён.`);
   });
 
   // Live-update validation as parameters change

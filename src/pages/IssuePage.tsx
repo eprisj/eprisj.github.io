@@ -18,14 +18,16 @@ function coverFor(article: Article): string | null {
 }
 
 export function IssuePage({
-  issue,
-  articles,
+  archive,
   t,
 }: {
-  issue: Issue;
-  articles: Article[];
+  archive: { issue: Issue; articles: Article[] }[];
   t: (key: string) => string;
 }) {
+  const [selectedId, setSelectedId] = useState<number>(archive[0]?.issue.id);
+  const selected = archive.find((entry) => entry.issue.id === selectedId) || archive[0];
+  const { issue, articles } = selected;
+  const otherIssues = archive.filter((entry) => entry.issue.id !== issue.id);
   const [status, setStatus] = useState<'idle' | 'loading' | 'done' | 'error'>('idle');
 
   const handleDownload = async () => {
@@ -208,6 +210,44 @@ export function IssuePage({
             </div>
           </div>
         </motion.div>
+
+        {/* Archive of past issues */}
+        {otherIssues.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.45 }}
+            className="border-t border-[#501a2c]/20 pt-10 mt-14 md:mt-20"
+          >
+            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#501a2c]/40 mb-6">
+              {t('issue.archive')}
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6">
+              {otherIssues.map(({ issue: pastIssue }) => (
+                <button
+                  key={pastIssue.id}
+                  type="button"
+                  onClick={() => setSelectedId(pastIssue.id)}
+                  className="text-left group"
+                >
+                  <div className="relative aspect-[3/4] bg-[#1a0812] overflow-hidden shadow-md">
+                    <img
+                      src={pastIssue.coverUrl}
+                      alt={`${pastIssue.name} — ${pastIssue.season}`}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  <p className="mt-2 font-serif text-sm text-[#501a2c] leading-tight truncate">
+                    {pastIssue.name}
+                  </p>
+                  <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/35">
+                    {pastIssue.season}
+                  </p>
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
       </div>
     </div>
   );
