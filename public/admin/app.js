@@ -5287,6 +5287,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     if (btn.dataset.tab === 'issues') setTimeout(renderIssuesTab, 50);
     if (btn.dataset.tab === 'translations') setTimeout(renderTranslationsTab, 50);
     if (btn.dataset.tab === 'dashboard') setTimeout(renderDashboard, 50);
+    if (btn.dataset.tab === 'studio') setTimeout(renderStudioTab, 50);
   });
 });
 
@@ -5609,4 +5610,216 @@ if (translAiBtn) {
     }
   });
 }
+
+
+// ═══════════════════════════════════════════════════════════
+// ──  STUDIO TAB  ──────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════
+
+let _studio = null; // working copy of the studio object
+
+const STUDIO_STAT_KEYS = ['studio.stats.years', 'studio.stats.projects', 'studio.stats.cities'];
+
+function defaultStudio() {
+  return {
+    name: '', instagram: '', email: '', heroImage: '',
+    statement: '', services: [], stats: [], projects: [],
+  };
+}
+
+function nextStudioProjectId(projects) {
+  return projects.reduce((m, p) => Math.max(m, Number(p.id) || 0), 0) + 1;
+}
+
+// Read current DOM form back into _studio (so add/remove/apply never lose edits)
+function captureStudioForm() {
+  if (!_studio) return;
+  const val = (id) => (document.getElementById(id)?.value || '').trim();
+  _studio.name = val('studioName');
+  _studio.instagram = val('studioInstagram');
+  _studio.email = val('studioEmail');
+  _studio.heroImage = val('studioHeroImage');
+
+  _studio.services = [...document.querySelectorAll('#studioServicesList .studio-service-input')]
+    .map((i) => i.value.trim()).filter(Boolean);
+
+  _studio.stats = [...document.querySelectorAll('#studioStatsList .studio-stat-row')].map((row) => ({
+    value: row.querySelector('.studio-stat-value')?.value.trim() || '',
+    key: row.querySelector('.studio-stat-key')?.value.trim() || 'studio.stats.years',
+  })).filter((s) => s.value);
+
+  _studio.projects = [...document.querySelectorAll('#studioProjectsList .studio-project-card')].map((card) => {
+    const f = (cls) => card.querySelector('.' + cls)?.value.trim() || '';
+    const gallery = (card.querySelector('.studio-proj-gallery')?.value || '')
+      .split('\n').map((s) => s.trim()).filter(Boolean);
+    return {
+      id: Number(card.dataset.id),
+      title: f('studio-proj-title'),
+      category: f('studio-proj-category'),
+      year: f('studio-proj-year'),
+      location: f('studio-proj-location'),
+      role: f('studio-proj-role'),
+      imageUrl: f('studio-proj-image'),
+      description: f('studio-proj-desc'),
+      gallery,
+      featured: card.querySelector('.studio-proj-featured')?.checked || false,
+    };
+  });
+}
+
+function renderStudioTab() {
+  const data = parseEditorJsonSafe();
+  const layout = document.querySelector('.studio-layout');
+  if (!layout) return;
+  if (!data) {
+    document.getElementById('studioServicesList').innerHTML =
+      '<p style="color:var(--text-muted);font-size:.82rem">Загрузите контент из GitHub, чтобы редактировать студию.</p>';
+    return;
+  }
+  _studio = JSON.parse(JSON.stringify(data.studio || defaultStudio()));
+  _studio.services = _studio.services || [];
+  _studio.stats = _studio.stats || [];
+  _studio.projects = _studio.projects || [];
+  renderStudioForm();
+}
+
+function renderStudioForm() {
+  if (!_studio) return;
+  const setVal = (id, v) => { const el = document.getElementById(id); if (el) el.value = v || ''; };
+  setVal('studioName', _studio.name);
+  setVal('studioInstagram', _studio.instagram);
+  setVal('studioEmail', _studio.email);
+  setVal('studioHeroImage', _studio.heroImage);
+
+  // Hero preview
+  const prev = document.getElementById('studioHeroPreview');
+  if (prev) {
+    const url = (_studio.heroImage || '').trim();
+    prev.innerHTML = url
+      ? `<img src="${escapeHtml(url)}" alt="hero" onerror="this.style.display='none'" />`
+      : '<div class="studio-empty-prev">Укажите URL изображения</div>';
+  }
+
+  // Services
+  const sList = document.getElementById('studioServicesList');
+  if (sList) {
+    sList.innerHTML = _studio.services.length
+      ? _studio.services.map((s, i) => `
+        <div class="studio-service-row" data-index="${i}">
+          <span class="studio-row-num">${String(i + 1).padStart(2, '0')}</span>
+          <input class="studio-service-input" value="${escapeHtml(s)}" placeholder="Название услуги" />
+          <button class="studio-icon-btn" data-act="up" data-i="${i}" title="Вверх" type="button">↑</button>
+          <button class="studio-icon-btn" data-act="down" data-i="${i}" title="Вниз" type="button">↓</button>
+          <button class="studio-icon-btn danger" data-act="del" data-i="${i}" title="Удалить" type="button">✕</button>
+        </div>`).join('')
+      : '<p style="color:var(--text-muted);font-size:.82rem">Нет услуг. Добавьте первую.</p>';
+  }
+
+  // Stats
+  const stList = document.getElementById('studioStatsList');
+  if (stList) {
+    stList.innerHTML = _studio.stats.length
+      ? _studio.stats.map((s, i) => `
+        <div class="studio-stat-row" data-index="${i}">
+          <input class="studio-stat-value" value="${escapeHtml(s.value || '')}" placeholder="8" />
+          <select class="studio-stat-key">
+            ${STUDIO_STAT_KEYS.map((k) => `<option value="${k}" ${k === s.key ? 'selected' : ''}>${k.replace('studio.stats.', '')}</option>`).join('')}
+          </select>
+          <button class="studio-icon-btn danger" data-act="del-stat" data-i="${i}" title="Удалить" type="button">✕</button>
+        </div>`).join('')
+      : '<p style="color:var(--text-muted);font-size:.82rem">Нет показателей.</p>';
+  }
+
+  // Projects
+  const pList = document.getElementById('studioProjectsList');
+  if (pList) {
+    pList.innerHTML = _studio.projects.length
+      ? _studio.projects.map((p, i) => `
+        <div class="studio-project-card" data-id="${p.id}" data-index="${i}">
+          <div class="studio-proj-head">
+            <span class="studio-row-num">${String(i + 1).padStart(2, '0')}</span>
+            <label class="studio-featured-label">
+              <input type="checkbox" class="studio-proj-featured" ${p.featured ? 'checked' : ''} />
+              Featured
+            </label>
+            <div class="studio-proj-tools">
+              <button class="studio-icon-btn" data-act="proj-up" data-i="${i}" title="Вверх" type="button">↑</button>
+              <button class="studio-icon-btn" data-act="proj-down" data-i="${i}" title="Вниз" type="button">↓</button>
+              <button class="studio-icon-btn" data-act="proj-dup" data-i="${i}" title="Дублировать" type="button">⧉</button>
+              <button class="studio-icon-btn danger" data-act="proj-del" data-i="${i}" title="Удалить" type="button">✕</button>
+            </div>
+          </div>
+          <div class="studio-proj-thumb">${p.imageUrl ? `<img src="${escapeHtml(p.imageUrl)}" onerror="this.style.display='none'" alt="" />` : ''}</div>
+          <div class="studio-proj-grid">
+            <input class="studio-proj-title" value="${escapeHtml(p.title || '')}" placeholder="Название проекта" />
+            <input class="studio-proj-category" value="${escapeHtml(p.category || '')}" placeholder="Категория" />
+            <input class="studio-proj-year" value="${escapeHtml(p.year || '')}" placeholder="Год" />
+            <input class="studio-proj-location" value="${escapeHtml(p.location || '')}" placeholder="Локация" />
+            <input class="studio-proj-role" value="${escapeHtml(p.role || '')}" placeholder="Роль" />
+            <input class="studio-proj-image" value="${escapeHtml(p.imageUrl || '')}" placeholder="URL обложки" />
+          </div>
+          <textarea class="studio-proj-desc" rows="2" placeholder="Описание кейса">${escapeHtml(p.description || '')}</textarea>
+          <textarea class="studio-proj-gallery" rows="2" placeholder="URL галереи — по одному на строку">${escapeHtml((p.gallery || []).join('\n'))}</textarea>
+        </div>`).join('')
+      : '<p style="color:var(--text-muted);font-size:.82rem">Нет проектов. Добавьте первый.</p>';
+  }
+
+  bindStudioRowActions();
+}
+
+function bindStudioRowActions() {
+  document.querySelectorAll('#tab-studio [data-act]').forEach((btn) => {
+    btn.onclick = () => {
+      captureStudioForm();
+      const i = Number(btn.dataset.i);
+      const act = btn.dataset.act;
+      const arrMove = (arr, from, to) => { if (to < 0 || to >= arr.length) return; const [x] = arr.splice(from, 1); arr.splice(to, 0, x); };
+      switch (act) {
+        case 'up': arrMove(_studio.services, i, i - 1); break;
+        case 'down': arrMove(_studio.services, i, i + 1); break;
+        case 'del': _studio.services.splice(i, 1); break;
+        case 'del-stat': _studio.stats.splice(i, 1); break;
+        case 'proj-up': arrMove(_studio.projects, i, i - 1); break;
+        case 'proj-down': arrMove(_studio.projects, i, i + 1); break;
+        case 'proj-del': _studio.projects.splice(i, 1); break;
+        case 'proj-dup': {
+          const src = _studio.projects[i];
+          _studio.projects.splice(i + 1, 0, { ...src, id: nextStudioProjectId(_studio.projects), title: src.title + ' (копия)', featured: false, gallery: (src.gallery || []).slice() });
+          break;
+        }
+      }
+      renderStudioForm();
+    };
+  });
+
+  // live hero preview
+  const hero = document.getElementById('studioHeroImage');
+  if (hero) hero.oninput = () => {
+    const prev = document.getElementById('studioHeroPreview');
+    const url = hero.value.trim();
+    if (prev) prev.innerHTML = url ? `<img src="${escapeHtml(url)}" alt="hero" onerror="this.style.display='none'" />` : '<div class="studio-empty-prev">Укажите URL изображения</div>';
+  };
+}
+
+// Add buttons
+(function bindStudioAddButtons() {
+  const onClick = (id, fn) => { const el = document.getElementById(id); if (el) el.addEventListener('click', fn); };
+  onClick('studioAddServiceBtn', () => { captureStudioForm(); if (!_studio) return; _studio.services.push(''); renderStudioForm(); });
+  onClick('studioAddStatBtn', () => { captureStudioForm(); if (!_studio) return; _studio.stats.push({ value: '', key: STUDIO_STAT_KEYS[0] }); renderStudioForm(); });
+  onClick('studioAddProjectBtn', () => {
+    captureStudioForm();
+    if (!_studio) return;
+    _studio.projects.push({ id: nextStudioProjectId(_studio.projects), title: '', category: '', year: new Date().getFullYear().toString(), location: '', role: '', imageUrl: '', description: '', gallery: [], featured: false });
+    renderStudioForm();
+  });
+  onClick('studioApplyBtn', () => {
+    const data = parseEditorJsonSafe();
+    if (!data) { showToast('error', 'Загрузите JSON перед сохранением.'); return; }
+    captureStudioForm();
+    data.studio = _studio;
+    editor.value = JSON.stringify(data, null, 2);
+    updateEditorState();
+    showToast('success', 'Студия обновлена — нажмите «Сохранить в GitHub».');
+  });
+})();
 

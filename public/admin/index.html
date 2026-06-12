@@ -78,6 +78,10 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
           Выпуски
         </button>
+        <button class="tab-btn" data-tab="studio" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Студия
+        </button>
         <button class="tab-btn" data-tab="translations" type="button">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
           Переводы
@@ -579,6 +583,81 @@
             <div id="issuePdfStructure" class="issue-pdf-structure">
               <p style="color:var(--text-muted);font-size:.82rem">Выберите статьи, чтобы увидеть структуру.</p>
             </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== STUDIO TAB ===== -->
+      <section class="tab-panel" id="tab-studio">
+        <div class="studio-layout">
+
+          <div class="card card-highlight">
+            <h2 class="card-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              Редактор страницы «Студия»
+            </h2>
+            <p class="card-desc">Управляйте контентом раздела <strong>/studio</strong>: профиль, услуги, статистика и проекты с кейсами. Переводимые заголовки секций (философия, процесс, подписи) редактируются во вкладке «Переводы» по ключам <code>studio.*</code>. После правок нажмите «Применить», затем «Сохранить в GitHub».</p>
+            <div class="studio-toolbar">
+              <a id="studioOpenLink" href="../studio" target="_blank" rel="noreferrer" class="btn btn-sm">Открыть на сайте ↗</a>
+              <button id="studioApplyBtn" class="btn btn-primary btn-sm" type="button">Применить изменения</button>
+            </div>
+          </div>
+
+          <div class="studio-grid">
+            <!-- Profile -->
+            <div class="card">
+              <h2 class="card-title">Профиль студии</h2>
+              <div class="form-grid">
+                <label>
+                  <span class="field-label">Название</span>
+                  <input id="studioName" placeholder="Masha Peut Studio" />
+                </label>
+                <label>
+                  <span class="field-label">Instagram URL</span>
+                  <input id="studioInstagram" placeholder="https://instagram.com/..." />
+                </label>
+                <label>
+                  <span class="field-label">Email</span>
+                  <input id="studioEmail" placeholder="hello@studio.com" />
+                </label>
+                <label>
+                  <span class="field-label">URL hero-изображения</span>
+                  <input id="studioHeroImage" placeholder="/images/..." />
+                </label>
+              </div>
+              <div class="studio-hero-preview" id="studioHeroPreview"></div>
+            </div>
+
+            <!-- Stats -->
+            <div class="card">
+              <div class="studio-section-head">
+                <h2 class="card-title" style="margin:0">Статистика</h2>
+                <button id="studioAddStatBtn" class="btn btn-sm" type="button">+ Показатель</button>
+              </div>
+              <p class="card-desc">Значение — это число/текст. Подпись — ключ перевода (редактируется во вкладке «Переводы»).</p>
+              <div id="studioStatsList" class="studio-stats-list"></div>
+            </div>
+          </div>
+
+          <!-- Services -->
+          <div class="card">
+            <div class="studio-section-head">
+              <h2 class="card-title" style="margin:0">Услуги</h2>
+              <button id="studioAddServiceBtn" class="btn btn-sm" type="button">+ Услуга</button>
+            </div>
+            <p class="card-desc">Список дисциплин: бегущая строка и нумерованный список на странице.</p>
+            <div id="studioServicesList" class="studio-services-list"></div>
+          </div>
+
+          <!-- Projects -->
+          <div class="card">
+            <div class="studio-section-head">
+              <h2 class="card-title" style="margin:0">Проекты</h2>
+              <button id="studioAddProjectBtn" class="btn btn-sm" type="button">+ Проект</button>
+            </div>
+            <p class="card-desc">Карточки портфолио. Отмеченный «Featured» показывается крупным разворотом. Галерея — по одному URL на строку.</p>
+            <div id="studioProjectsList" class="studio-projects-list"></div>
           </div>
 
         </div>
