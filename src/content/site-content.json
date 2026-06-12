@@ -105,7 +105,18 @@
       "materie.newimage": "New image",
       "materie.scanning": "Scanning structure...",
       "materie.analyzing": "Analyzing space...",
-      "nav.materie": "Materie"
+      "nav.materie": "Materie",
+      "issue.archive": "Archive",
+      "nav.studio": "Studio",
+      "studio.kicker": "EPRIS · STUDIO",
+      "studio.title": "Masha Peut Studio",
+      "studio.tagline": "Interior design & spatial styling",
+      "studio.bio": "Masha Peut Studio creates calm, considered interiors that balance natural materials, soft light and honest proportions. Founded by Mariia Ivanova, the studio works on residential and commercial spaces across Europe — from concept to final styling.",
+      "studio.services.title": "Services",
+      "studio.projects.title": "Selected projects",
+      "studio.cta.title": "Have a project in mind?",
+      "studio.cta.desc": "Get in touch via Instagram to discuss collaborations and commissions.",
+      "studio.cta.button": "Message on Instagram"
     },
     "RU": {
       "nav.gallery": "Галерея",
@@ -212,7 +223,18 @@
       "materie.newimage": "Новое фото",
       "materie.scanning": "Сканирование структуры...",
       "materie.analyzing": "Анализ пространства...",
-      "nav.materie": "Materie"
+      "nav.materie": "Materie",
+      "issue.archive": "Архив выпусков",
+      "nav.studio": "Студия",
+      "studio.kicker": "EPRIS · СТУДИЯ",
+      "studio.title": "Masha Peut Studio",
+      "studio.tagline": "Дизайн интерьера и пространственный стайлинг",
+      "studio.bio": "Masha Peut Studio создаёт спокойные, выверенные интерьеры, где сочетаются природные материалы, мягкий свет и честные пропорции. Основанная Марией Ивановой, студия работает с жилыми и коммерческими пространствами по всей Европе — от концепции до финального стайлинга.",
+      "studio.services.title": "Услуги",
+      "studio.projects.title": "Избранные проекты",
+      "studio.cta.title": "Есть идея проекта?",
+      "studio.cta.desc": "Напишите в Instagram, чтобы обсудить сотрудничество и заказы.",
+      "studio.cta.button": "Написать в Instagram"
     },
     "UA": {
       "nav.gallery": "Галерея",
@@ -319,7 +341,18 @@
       "materie.newimage": "Нове фото",
       "materie.scanning": "Сканування структури...",
       "materie.analyzing": "Аналіз простору...",
-      "nav.materie": "Materie"
+      "nav.materie": "Materie",
+      "issue.archive": "Архів випусків",
+      "nav.studio": "Студія",
+      "studio.kicker": "EPRIS · СТУДІЯ",
+      "studio.title": "Masha Peut Studio",
+      "studio.tagline": "Дизайн інтер'єру та просторовий стайлінг",
+      "studio.bio": "Masha Peut Studio створює спокійні, виважені інтер'єри, де поєднуються природні матеріали, м'яке світло та чесні пропорції. Заснована Марією Івановою, студія працює з житловими та комерційними просторами по всій Європі — від концепції до фінального стайлінгу.",
+      "studio.services.title": "Послуги",
+      "studio.projects.title": "Обрані проєкти",
+      "studio.cta.title": "Маєте ідею проєкту?",
+      "studio.cta.desc": "Напишіть в Instagram, щоб обговорити співпрацю та замовлення.",
+      "studio.cta.button": "Написати в Instagram"
     },
     "TR": {
       "nav.gallery": "Galeri",
@@ -426,7 +459,18 @@
       "materie.newimage": "Yeni görsel",
       "materie.scanning": "Yapı taranıyor...",
       "materie.analyzing": "Mekân analiz ediliyor...",
-      "nav.materie": "Materie"
+      "nav.materie": "Materie",
+      "issue.archive": "Arşiv",
+      "nav.studio": "Stüdyo",
+      "studio.kicker": "EPRIS · STÜDYO",
+      "studio.title": "Masha Peut Studio",
+      "studio.tagline": "İç mekan tasarımı ve mekansal stil",
+      "studio.bio": "Masha Peut Studio, doğal malzemeler, yumuşak ışık ve dengeli oranları bir araya getiren sakin ve özenli iç mekanlar yaratır. Mariia Ivanova tarafından kurulan stüdyo, Avrupa'da konut ve ticari mekanlarla çalışır — konseptten son stil çalışmasına kadar.",
+      "studio.services.title": "Hizmetler",
+      "studio.projects.title": "Seçili projeler",
+      "studio.cta.title": "Bir proje fikriniz mi var?",
+      "studio.cta.desc": "İşbirlikleri ve siparişleri tartışmak için Instagram üzerinden iletişime geçin.",
+      "studio.cta.button": "Instagram'dan yazın"
     },
     "DE": {
       "nav.gallery": "Galerie",
@@ -533,7 +577,18 @@
       "materie.newimage": "Neues Bild",
       "materie.scanning": "Struktur wird gescannt...",
       "materie.analyzing": "Raum wird analysiert...",
-      "nav.materie": "Materie"
+      "nav.materie": "Materie",
+      "issue.archive": "Archiv",
+      "nav.studio": "Studio",
+      "studio.kicker": "EPRIS · STUDIO",
+      "studio.title": "Masha Peut Studio",
+      "studio.tagline": "Innenarchitektur & räumliches Styling",
+      "studio.bio": "Masha Peut Studio gestaltet ruhige, durchdachte Innenräume, die natürliche Materialien, sanftes Licht und stimmige Proportionen vereinen. Gegründet von Mariia Ivanova, arbeitet das Studio an Wohn- und Gewerbeflächen in ganz Europa — vom Konzept bis zum finalen Styling.",
+      "studio.services.title": "Leistungen",
+      "studio.projects.title": "Ausgewählte Projekte",
+      "studio.cta.title": "Haben Sie ein Projekt im Sinn?",
+      "studio.cta.desc": "Kontaktieren Sie uns über Instagram, um Kooperationen und Aufträge zu besprechen.",
+      "studio.cta.button": "Auf Instagram schreiben"
     },
     "IT": {
       "nav.gallery": "Galleria",
@@ -640,7 +695,18 @@
       "materie.newimage": "Nuova immagine",
       "materie.scanning": "Scansione struttura...",
       "materie.analyzing": "Analisi dello spazio...",
-      "nav.materie": "Materie"
+      "nav.materie": "Materie",
+      "issue.archive": "Archivio",
+      "nav.studio": "Studio",
+      "studio.kicker": "EPRIS · STUDIO",
+      "studio.title": "Masha Peut Studio",
+      "studio.tagline": "Interior design e styling degli spazi",
+      "studio.bio": "Masha Peut Studio crea interni calmi e ricercati, in cui materiali naturali, luce soffusa e proporzioni equilibrate si incontrano. Fondato da Mariia Ivanova, lo studio lavora su spazi residenziali e commerciali in tutta Europa — dal concept allo styling finale.",
+      "studio.services.title": "Servizi",
+      "studio.projects.title": "Progetti selezionati",
+      "studio.cta.title": "Hai un progetto in mente?",
+      "studio.cta.desc": "Scrivi su Instagram per discutere collaborazioni e commissioni.",
+      "studio.cta.button": "Scrivi su Instagram"
     },
     "ES": {
       "nav.gallery": "Galería",
@@ -747,7 +813,18 @@
       "materie.newimage": "Nueva imagen",
       "materie.scanning": "Escaneando estructura...",
       "materie.analyzing": "Analizando el espacio...",
-      "nav.materie": "Materie"
+      "nav.materie": "Materie",
+      "issue.archive": "Archivo",
+      "nav.studio": "Estudio",
+      "studio.kicker": "EPRIS · ESTUDIO",
+      "studio.title": "Masha Peut Studio",
+      "studio.tagline": "Diseño de interiores y estilismo espacial",
+      "studio.bio": "Masha Peut Studio crea interiores serenos y cuidados que combinan materiales naturales, luz suave y proporciones honestas. Fundado por Mariia Ivanova, el estudio trabaja en espacios residenciales y comerciales en toda Europa — desde el concepto hasta el estilismo final.",
+      "studio.services.title": "Servicios",
+      "studio.projects.title": "Proyectos seleccionados",
+      "studio.cta.title": "¿Tienes un proyecto en mente?",
+      "studio.cta.desc": "Escribe por Instagram para hablar de colaboraciones y encargos.",
+      "studio.cta.button": "Escribir por Instagram"
     }
   },
   "items": [
@@ -4257,16 +4334,60 @@
       ]
     }
   },
-  "issue": {
-    "name": "Issue 15",
-    "season": "Spring 2026",
-    "tagline": "The Door Issue",
-    "coverUrl": "https://raw.githubusercontent.com/eprisj/eprisj.github.io/main/%D1%81over/main_cover.PNG",
-    "articleIds": [
-      8,
-      9
+  "issues": [
+    {
+      "name": "Issue 15",
+      "season": "Spring 2026",
+      "tagline": "The Door Issue",
+      "coverUrl": "https://raw.githubusercontent.com/eprisj/eprisj.github.io/main/%D1%81over/main_cover.PNG",
+      "articleIds": [
+        8,
+        9
+      ],
+      "status": "published",
+      "publishedAt": "2026-06-01",
+      "id": 1
+    }
+  ],
+  "studio": {
+    "name": "Masha Peut Studio",
+    "instagram": "https://www.instagram.com/mashapeut/",
+    "heroImage": "/images/mariia-ivanova.jpg",
+    "services": [
+      "Interior design",
+      "Space planning",
+      "Styling & art direction",
+      "Concept development"
     ],
-    "status": "published",
-    "publishedAt": "2026-06-01"
+    "projects": [
+      {
+        "id": 1,
+        "title": "Quiet Apartment",
+        "category": "Residential",
+        "year": "2025",
+        "imageUrl": "/images/article-img-1.png"
+      },
+      {
+        "id": 2,
+        "title": "Studio Loft",
+        "category": "Residential",
+        "year": "2025",
+        "imageUrl": "/images/article-img-3.png"
+      },
+      {
+        "id": 3,
+        "title": "Coastal Retreat",
+        "category": "Interior",
+        "year": "2024",
+        "imageUrl": "/images/article-img-4.png"
+      },
+      {
+        "id": 4,
+        "title": "Minimal Office",
+        "category": "Commercial",
+        "year": "2024",
+        "imageUrl": "/images/article-img-6.png"
+      }
+    ]
   }
 }
