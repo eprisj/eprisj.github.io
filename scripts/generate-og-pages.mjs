@@ -74,3 +74,43 @@ for (const article of content.articles) {
 }
 
 console.log(`\nGenerated OG pages for ${content.articles.length} articles.`);
+
+// ── SPA deep-link routes ─────────────────────────────────────────────────────
+// GitHub Pages has no SPA fallback: a direct hit on /studio, /materie, etc.
+// returns its own 404. We emit a static <route>/index.html (a copy of the app
+// shell) for every known tab route so deep-links resolve with HTTP 200, and a
+// catch-all 404.html so any other path still boots the SPA (client router then
+// reads window.location.pathname and renders the right view).
+const ROUTES = {
+  articles: 'Articles',
+  reviews: 'Reviews',
+  library: 'Library',
+  about: 'About',
+  materie: 'Materie',
+  studio: 'Studio',
+  issue: 'Issue',
+};
+
+function routeHead(label) {
+  return `<title>${label} — EPRIS Journal</title>
+    <meta name="description" content="EPRIS Journal — a living archive of taste, design and slow living." />
+    <meta property="og:title" content="${label} — EPRIS Journal" />
+    <meta property="og:description" content="EPRIS Journal — a living archive of taste, design and slow living." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="EPRIS Journal" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${label} — EPRIS Journal" />`;
+}
+
+for (const [route, label] of Object.entries(ROUTES)) {
+  const pageHtml = template.replace('<!--TITLE-->', routeHead(label));
+  const routeDir = join(distDir, route);
+  mkdirSync(routeDir, { recursive: true });
+  writeFileSync(join(routeDir, 'index.html'), pageHtml);
+  console.log(`Generated: /${route}`);
+}
+
+// Catch-all 404 (also a copy of the shell) for any unmatched path.
+const notFoundHtml = template.replace('<!--TITLE-->', routeHead('EPRIS Journal'));
+writeFileSync(join(distDir, '404.html'), notFoundHtml);
+console.log('Generated: /404.html (SPA catch-all)');
