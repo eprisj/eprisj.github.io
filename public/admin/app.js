@@ -5780,8 +5780,12 @@ function captureStudioForm() {
 
   _studio.projects = [...document.querySelectorAll('#studioProjectsList .studio-project-card')].map((card) => {
     const f = (cls) => card.querySelector('.' + cls)?.value.trim() || '';
-    const gallery = (card.querySelector('.studio-proj-gallery')?.value || '')
-      .split('\n').map((s) => s.trim()).filter(Boolean);
+    const lines = (cls) => (card.querySelector('.' + cls)?.value || '').split('\n').map((s) => s.trim()).filter(Boolean);
+    // caseSteps stored one per line as "Title | Detail"
+    const caseSteps = lines('studio-proj-steps').map((row) => {
+      const [title, ...rest] = row.split('|');
+      return { title: (title || '').trim(), detail: rest.join('|').trim() };
+    }).filter((s) => s.title);
     return {
       id: Number(card.dataset.id),
       title: f('studio-proj-title'),
@@ -5790,8 +5794,11 @@ function captureStudioForm() {
       location: f('studio-proj-location'),
       role: f('studio-proj-role'),
       imageUrl: f('studio-proj-image'),
+      beforeImage: f('studio-proj-before'),
       description: f('studio-proj-desc'),
-      gallery,
+      gallery: lines('studio-proj-gallery'),
+      materials: lines('studio-proj-materials'),
+      caseSteps,
       featured: card.querySelector('.studio-proj-featured')?.checked || false,
     };
   });
@@ -5912,9 +5919,12 @@ function renderStudioForm() {
             <input class="studio-proj-year" value="${escapeHtml(p.year || '')}" placeholder="Год" />
             <input class="studio-proj-location" value="${escapeHtml(p.location || '')}" placeholder="Локация" />
             <input class="studio-proj-role" value="${escapeHtml(p.role || '')}" placeholder="Роль" />
-            <input class="studio-proj-image" value="${escapeHtml(p.imageUrl || '')}" placeholder="URL обложки" />
+            <input class="studio-proj-image" value="${escapeHtml(p.imageUrl || '')}" placeholder="URL обложки (After)" />
+            <input class="studio-proj-before" value="${escapeHtml(p.beforeImage || '')}" placeholder="URL «До» (Before/After)" />
           </div>
           <textarea class="studio-proj-desc" rows="2" placeholder="Описание кейса">${escapeHtml(p.description || '')}</textarea>
+          <textarea class="studio-proj-materials" rows="2" placeholder="Материалы — по одному на строку">${escapeHtml((p.materials || []).join('\n'))}</textarea>
+          <textarea class="studio-proj-steps" rows="3" placeholder="Процесс — по строке «Заголовок | Описание»">${escapeHtml((p.caseSteps || []).map((s) => `${s.title} | ${s.detail}`).join('\n'))}</textarea>
           <textarea class="studio-proj-gallery" rows="2" placeholder="URL галереи — по одному на строку">${escapeHtml((p.gallery || []).join('\n'))}</textarea>
         </div>`).join('')
       : '<p style="color:var(--text-muted);font-size:.82rem">Нет проектов. Добавьте первый.</p>';

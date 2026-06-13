@@ -157,7 +157,28 @@
       "reviews.pros": "For",
       "reviews.cons": "Against",
       "reviews.all": "All",
-      "reviews.kicker": "Reviews"
+      "reviews.kicker": "Reviews",
+      "studio.case.beforeafter": "Before / After",
+      "studio.case.before": "Before",
+      "studio.case.after": "After",
+      "studio.case.materials": "Materials",
+      "studio.case.process": "Process",
+      "studio.brief.kicker": "Start a project",
+      "studio.brief.title": "Tell us about your space",
+      "studio.brief.desc": "A few details help us reply with a thoughtful first response.",
+      "studio.brief.name": "Your name",
+      "studio.brief.email": "Email",
+      "studio.brief.type": "Project type",
+      "studio.brief.area": "Area (m²)",
+      "studio.brief.budget": "Budget",
+      "studio.brief.timeline": "Timeline",
+      "studio.brief.message": "About the space",
+      "studio.brief.send": "Send brief",
+      "studio.brief.copy": "Copy brief",
+      "studio.brief.copied": "Brief copied",
+      "studio.brief.required": "Please add your name and email.",
+      "studio.brief.optional": "optional",
+      "studio.brief.choose": "Choose…"
     },
     "RU": {
       "nav.gallery": "Галерея",
@@ -316,7 +337,28 @@
       "reviews.pros": "За",
       "reviews.cons": "Против",
       "reviews.all": "Все",
-      "reviews.kicker": "Обзоры"
+      "reviews.kicker": "Обзоры",
+      "studio.case.beforeafter": "До / После",
+      "studio.case.before": "До",
+      "studio.case.after": "После",
+      "studio.case.materials": "Материалы",
+      "studio.case.process": "Процесс",
+      "studio.brief.kicker": "Начать проект",
+      "studio.brief.title": "Расскажите о вашем пространстве",
+      "studio.brief.desc": "Несколько деталей помогут нам ответить вдумчиво.",
+      "studio.brief.name": "Ваше имя",
+      "studio.brief.email": "Email",
+      "studio.brief.type": "Тип проекта",
+      "studio.brief.area": "Площадь (м²)",
+      "studio.brief.budget": "Бюджет",
+      "studio.brief.timeline": "Сроки",
+      "studio.brief.message": "О пространстве",
+      "studio.brief.send": "Отправить бриф",
+      "studio.brief.copy": "Скопировать бриф",
+      "studio.brief.copied": "Бриф скопирован",
+      "studio.brief.required": "Укажите имя и email.",
+      "studio.brief.optional": "необязательно",
+      "studio.brief.choose": "Выберите…"
     },
     "UA": {
       "nav.gallery": "Галерея",
@@ -475,7 +517,28 @@
       "reviews.pros": "За",
       "reviews.cons": "Проти",
       "reviews.all": "Усі",
-      "reviews.kicker": "Огляди"
+      "reviews.kicker": "Огляди",
+      "studio.case.beforeafter": "До / Після",
+      "studio.case.before": "До",
+      "studio.case.after": "Після",
+      "studio.case.materials": "Матеріали",
+      "studio.case.process": "Процес",
+      "studio.brief.kicker": "Почати проєкт",
+      "studio.brief.title": "Розкажіть про ваш простір",
+      "studio.brief.desc": "Кілька деталей допоможуть нам відповісти вдумливо.",
+      "studio.brief.name": "Ваше ім’я",
+      "studio.brief.email": "Email",
+      "studio.brief.type": "Тип проєкту",
+      "studio.brief.area": "Площа (м²)",
+      "studio.brief.budget": "Бюджет",
+      "studio.brief.timeline": "Терміни",
+      "studio.brief.message": "Про простір",
+      "studio.brief.send": "Надіслати бриф",
+      "studio.brief.copy": "Скопіювати бриф",
+      "studio.brief.copied": "Бриф скопійовано",
+      "studio.brief.required": "Вкажіть ім’я та email.",
+      "studio.brief.optional": "необов’язково",
+      "studio.brief.choose": "Оберіть…"
     },
     "TR": {
       "nav.gallery": "Galeri",
@@ -634,7 +697,28 @@
       "reviews.pros": "Artılar",
       "reviews.cons": "Eksiler",
       "reviews.all": "Tümü",
-      "reviews.kicker": "İncelemeler"
+      "reviews.kicker": "İncelemeler",
+      "studio.case.beforeafter": "Önce / Sonra",
+      "studio.case.before": "Önce",
+      "studio.case.after": "Sonra",
+      "studio.case.materials": "Malzemeler",
+      "studio.case.process": "Süreç",
+      "studio.brief.kicker": "Projeye başla",
+      "studio.brief.title": "Mekânınızı anlatın",
+      "studio.brief.desc": "Birkaç ayrıntı, özenli bir ilk yanıt vermemize yardımcı olur.",
+      "studio.brief.name": "Adınız",
+      "studio.brief.email": "E-posta",
+      "studio.brief.type": "Proje türü",
+      "studio.brief.area": "Alan (m²)",
+      "studio.brief.budget": "Bütçe",
+      "studio.brief.timeline": "Zaman çizelgesi",
+      "studio.brief.message": "Mekân hakkında",
+      "studio.brief.send": "Brief gönder",
+      "studio.brief.copy": "Brief’i kopyala",
+      "studio.brief.copied": "Brief kopyalandı",
+      "studio.brief.required": "Lütfen adınızı ve e-postanızı ekleyin.",
+      "studio.brief.optional": "isteğe bağlı",
+      "studio.brief.choose": "Seçin…"
     },
     "DE": {
       "nav.gallery": "Galerie",
@@ -793,7 +877,28 @@
       "reviews.pros": "Dafür",
       "reviews.cons": "Dagegen",
       "reviews.all": "Alle",
-      "reviews.kicker": "Rezensionen"
+      "reviews.kicker": "Rezensionen",
+      "studio.case.beforeafter": "Vorher / Nachher",
+      "studio.case.before": "Vorher",
+      "studio.case.after": "Nachher",
+      "studio.case.materials": "Materialien",
+      "studio.case.process": "Prozess",
+      "studio.brief.kicker": "Projekt starten",
+      "studio.brief.title": "Erzählen Sie von Ihrem Raum",
+      "studio.brief.desc": "Ein paar Angaben helfen uns, durchdacht zu antworten.",
+      "studio.brief.name": "Ihr Name",
+      "studio.brief.email": "E-Mail",
+      "studio.brief.type": "Projektart",
+      "studio.brief.area": "Fläche (m²)",
+      "studio.brief.budget": "Budget",
+      "studio.brief.timeline": "Zeitrahmen",
+      "studio.brief.message": "Über den Raum",
+      "studio.brief.send": "Brief senden",
+      "studio.brief.copy": "Brief kopieren",
+      "studio.brief.copied": "Brief kopiert",
+      "studio.brief.required": "Bitte Name und E-Mail angeben.",
+      "studio.brief.optional": "optional",
+      "studio.brief.choose": "Wählen…"
     },
     "IT": {
       "nav.gallery": "Galleria",
@@ -952,7 +1057,28 @@
       "reviews.pros": "A favore",
       "reviews.cons": "Contro",
       "reviews.all": "Tutte",
-      "reviews.kicker": "Recensioni"
+      "reviews.kicker": "Recensioni",
+      "studio.case.beforeafter": "Prima / Dopo",
+      "studio.case.before": "Prima",
+      "studio.case.after": "Dopo",
+      "studio.case.materials": "Materiali",
+      "studio.case.process": "Processo",
+      "studio.brief.kicker": "Avvia un progetto",
+      "studio.brief.title": "Raccontaci del tuo spazio",
+      "studio.brief.desc": "Pochi dettagli ci aiutano a risponderti con cura.",
+      "studio.brief.name": "Il tuo nome",
+      "studio.brief.email": "Email",
+      "studio.brief.type": "Tipo di progetto",
+      "studio.brief.area": "Superficie (m²)",
+      "studio.brief.budget": "Budget",
+      "studio.brief.timeline": "Tempistica",
+      "studio.brief.message": "Sullo spazio",
+      "studio.brief.send": "Invia il brief",
+      "studio.brief.copy": "Copia il brief",
+      "studio.brief.copied": "Brief copiato",
+      "studio.brief.required": "Inserisci nome ed email.",
+      "studio.brief.optional": "facoltativo",
+      "studio.brief.choose": "Scegli…"
     },
     "ES": {
       "nav.gallery": "Galería",
@@ -1111,7 +1237,28 @@
       "reviews.pros": "A favor",
       "reviews.cons": "En contra",
       "reviews.all": "Todas",
-      "reviews.kicker": "Reseñas"
+      "reviews.kicker": "Reseñas",
+      "studio.case.beforeafter": "Antes / Después",
+      "studio.case.before": "Antes",
+      "studio.case.after": "Después",
+      "studio.case.materials": "Materiales",
+      "studio.case.process": "Proceso",
+      "studio.brief.kicker": "Iniciar un proyecto",
+      "studio.brief.title": "Cuéntanos sobre tu espacio",
+      "studio.brief.desc": "Unos pocos detalles nos ayudan a responder con criterio.",
+      "studio.brief.name": "Tu nombre",
+      "studio.brief.email": "Correo",
+      "studio.brief.type": "Tipo de proyecto",
+      "studio.brief.area": "Superficie (m²)",
+      "studio.brief.budget": "Presupuesto",
+      "studio.brief.timeline": "Plazos",
+      "studio.brief.message": "Sobre el espacio",
+      "studio.brief.send": "Enviar el brief",
+      "studio.brief.copy": "Copiar el brief",
+      "studio.brief.copied": "Brief copiado",
+      "studio.brief.required": "Añade tu nombre y correo.",
+      "studio.brief.optional": "opcional",
+      "studio.brief.choose": "Elige…"
     }
   },
   "items": [
@@ -4927,6 +5074,31 @@
           "/images/article-img-1.png",
           "/images/morning-rituals.png",
           "/images/urban-solitude.png"
+        ],
+        "beforeImage": "/images/urban-solitude.png",
+        "materials": [
+          "Lime-washed walls",
+          "Oak flooring",
+          "Linen textiles",
+          "Brushed brass"
+        ],
+        "caseSteps": [
+          {
+            "title": "Survey & brief",
+            "detail": "Mapped daily routines and light across the apartment before touching the plan."
+          },
+          {
+            "title": "Spatial reset",
+            "detail": "Removed a partition to let morning light reach the core living space."
+          },
+          {
+            "title": "Material palette",
+            "detail": "Lime plaster, oak and linen chosen for warmth that ages well."
+          },
+          {
+            "title": "Styling & handover",
+            "detail": "Final styling with a restrained selection of objects and art."
+          }
         ]
       },
       {
@@ -4941,6 +5113,13 @@
         "gallery": [
           "/images/article-img-3.png",
           "/images/grid-4.png"
+        ],
+        "beforeImage": "/images/grid-4.png",
+        "materials": [
+          "Oak volume",
+          "Polished concrete",
+          "Black steel",
+          "Wool"
         ]
       },
       {
@@ -4955,6 +5134,13 @@
         "gallery": [
           "/images/article-img-4.png",
           "/images/mediterranean-feast.png"
+        ],
+        "beforeImage": "/images/mediterranean-feast.png",
+        "materials": [
+          "Lime plaster",
+          "Rattan",
+          "Bleached wood",
+          "Terracotta"
         ]
       },
       {
