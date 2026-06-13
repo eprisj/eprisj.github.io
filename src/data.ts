@@ -109,6 +109,14 @@ export interface StudioStat {
   key: string;
 }
 
+export interface StudioPackage {
+  name: string;
+  price: string;
+  desc: string;
+  features: string[];
+  highlight?: boolean;
+}
+
 export interface Studio {
   name: string;
   instagram: string;
@@ -118,6 +126,8 @@ export interface Studio {
   services: string[];
   offerings?: StudioOffering[];
   stats?: StudioStat[];
+  packages?: StudioPackage[];
+  availability?: string;
   projects: StudioProject[];
 }
 

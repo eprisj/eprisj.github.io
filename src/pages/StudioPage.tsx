@@ -564,6 +564,36 @@ export function StudioPage({ studio, t }: { studio: Studio; t: T }) {
         </div>
       </section>
 
+      {/* ── 7b. Packages / pricing ── */}
+      {studio.packages && studio.packages.length > 0 && (
+        <section className="px-6 sm:px-10 md:px-16 py-16 md:py-28 border-b border-[#501a2c]/15">
+          <div className="max-w-6xl mx-auto">
+            <Reveal>
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#501a2c]/40 mb-3">{t('studio.packages.title')}</p>
+              <p className="font-serif text-sm text-[#501a2c]/55 mb-12 md:mb-16 max-w-xl">{t('studio.packages.note')}</p>
+            </Reveal>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#501a2c]/15 border border-[#501a2c]/15">
+              {studio.packages.map((pkg, i) => (
+                <Reveal key={i} delay={i * 0.08}>
+                  <div className={`h-full flex flex-col p-6 md:p-8 ${pkg.highlight ? 'bg-[#501a2c] text-[#F5F0EB]' : 'bg-[#F5F0EB] text-[#501a2c]'}`}>
+                    <h3 className="font-serif text-2xl mb-1">{t(pkg.name)}</h3>
+                    <p className={`font-mono text-[11px] uppercase tracking-widest mb-4 ${pkg.highlight ? 'text-[#C9A690]' : 'text-[#501a2c]/50'}`}>{pkg.price}</p>
+                    <p className={`font-serif text-sm leading-relaxed mb-6 ${pkg.highlight ? 'text-[#F5F0EB]/70' : 'text-[#501a2c]/65'}`}>{t(pkg.desc)}</p>
+                    <ul className="space-y-2 mt-auto">
+                      {pkg.features.map((f, j) => (
+                        <li key={j} className={`font-mono text-[10px] uppercase tracking-wider flex items-start gap-2 ${pkg.highlight ? 'text-[#F5F0EB]/80' : 'text-[#501a2c]/60'}`}>
+                          <span className="text-[#C9A690] mt-px">—</span> {t(f)}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── 8. Stats ── */}
       {studio.stats && studio.stats.length > 0 && (
         <section className="px-6 sm:px-10 md:px-16 py-14 md:py-20 border-b border-[#501a2c]/15">
@@ -588,6 +618,12 @@ export function StudioPage({ studio, t }: { studio: Studio; t: T }) {
         <Reveal className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-10">
             <div>
+              {studio.availability && (
+                <p className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60 mb-4 px-3 py-1.5 border border-[#501a2c]/20">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#C9A690]" />
+                  {t(studio.availability)}
+                </p>
+              )}
               <p className="font-serif text-3xl md:text-5xl text-[#501a2c] mb-3 max-w-lg leading-tight">{t('studio.cta.title')}</p>
               <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40">{t('studio.cta.desc')}</p>
             </div>
