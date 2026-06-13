@@ -42,6 +42,15 @@ export interface Review {
   rating: number;
   content: string;
   author: string;
+  category?: string;
+  imageUrl?: string;
+  verdict?: string;
+  pros?: string[];
+  cons?: string[];
+  meta?: string;
+  link?: string;
+  date?: string;
+  featured?: boolean;
 }
 
 export interface LibraryItem {
@@ -80,6 +89,13 @@ export interface StudioProject {
   featured?: boolean;
 }
 
+export interface StudioOffering {
+  title: string;
+  summary: string;
+  items: string[];
+  kind?: 'service' | 'ergonomics';
+}
+
 export interface StudioStat {
   value: string;
   key: string;
@@ -92,6 +108,7 @@ export interface Studio {
   heroImage: string;
   statement?: string;
   services: string[];
+  offerings?: StudioOffering[];
   stats?: StudioStat[];
   projects: StudioProject[];
 }
@@ -105,6 +122,9 @@ export interface Issue {
   articleIds: number[];
   status: 'draft' | 'published' | 'archived';
   publishedAt?: string;
+  number?: string;
+  letterHeading?: string;
+  letterBody?: string;
 }
 
 export interface SiteContent {
@@ -120,7 +140,24 @@ export interface SiteContent {
 }
 
 const content = rawContent as SiteContent;
-const localizedCollections = content.localizedCollections || {};
+
+// ── Preview override ─────────────────────────────────────────────────────────
+// The admin can preview an unsaved issue draft by writing its full content JSON
+// to localStorage and opening /issue?preview=1. App.tsx reads it and calls
+// setPreviewOverride before render; the issue/studio/content read-paths below
+// then resolve against the override instead of the bundled content.
+let previewContent: SiteContent | null = null;
+let previewIssueId: number | null = null;
+export function setPreviewOverride(json: SiteContent | null, issueId?: number | null): void {
+  previewContent = json;
+  previewIssueId = issueId ?? null;
+}
+function src(): SiteContent {
+  return previewContent || content;
+}
+function isPreview(): boolean {
+  return previewContent !== null;
+}
 
 function mergeLocalizedArray<T extends { id: number }>(value: T[] | undefined, fallback: T[]): T[] {
   if (!Array.isArray(value)) {
@@ -141,13 +178,14 @@ export function getAvailableLanguages(): string[] {
 }
 
 export function getContentForLanguage(lang: string): LanguageContent {
-  const bucket = localizedCollections[lang] || {};
+  const c = src();
+  const bucket = (c.localizedCollections || {})[lang] || {};
 
   return {
-    items: mergeLocalizedArray(bucket.items, content.items),
-    articles: mergeLocalizedArray(bucket.articles, content.articles),
-    reviews: mergeLocalizedArray(bucket.reviews, content.reviews),
-    libraryItems: mergeLocalizedArray(bucket.libraryItems, content.libraryItems)
+    items: mergeLocalizedArray(bucket.items, c.items),
+    articles: mergeLocalizedArray(bucket.articles, c.articles),
+    reviews: mergeLocalizedArray(bucket.reviews, c.reviews),
+    libraryItems: mergeLocalizedArray(bucket.libraryItems, c.libraryItems)
   };
 }
 
@@ -167,11 +205,12 @@ const DEFAULT_ISSUE: Issue = {
  * legacy single content.issue object (wrapped in an array) for older saves.
  */
 export function getAllIssues(): Issue[] {
-  if (Array.isArray(content.issues) && content.issues.length > 0) {
-    return content.issues;
+  const c = src();
+  if (Array.isArray(c.issues) && c.issues.length > 0) {
+    return c.issues;
   }
-  if (content.issue) {
-    return [{ ...content.issue, id: content.issue.id ?? 1 }];
+  if (c.issue) {
+    return [{ ...c.issue, id: c.issue.id ?? 1 }];
   }
   return [DEFAULT_ISSUE];
 }
@@ -182,6 +221,10 @@ export function getAllIssues(): Issue[] {
  */
 export function getLiveIssue(): Issue {
   const issues = getAllIssues();
+  if (isPreview() && previewIssueId != null) {
+    const target = issues.find((i) => i.id === previewIssueId);
+    if (target) return target;
+  }
   return issues.find((i) => i.status === 'published') || issues[issues.length - 1] || DEFAULT_ISSUE;
 }
 
@@ -234,11 +277,12 @@ const DEFAULT_STUDIO: Studio = {
  * Returns the design studio profile (bio/services/portfolio shown on /studio).
  */
 export function getStudio(): Studio {
-  return content.studio || DEFAULT_STUDIO;
+  return src().studio || DEFAULT_STUDIO;
 }
 
 export function getIssueArchive(lang: string = DEFAULT_LANGUAGE): { issue: Issue; articles: Article[] }[] {
-  const issues = getAllIssues().filter((i) => i.status !== 'draft');
+  // In preview mode, keep drafts so an unpublished issue can be previewed.
+  const issues = getAllIssues().filter((i) => isPreview() || i.status !== 'draft');
   const live = getLiveIssue();
   const rest = issues
     .filter((i) => i.id !== live.id)

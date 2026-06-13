@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { ReactNode, useState, useEffect, useCallback, FormEvent } from 'react';
+import { ReactNode, useState, useEffect, useCallback, useMemo, FormEvent } from 'react';
 import { MateriePage } from './pages/MateriePage';
 import { IssuePage } from './pages/IssuePage';
 import { StudioPage } from './pages/StudioPage';
@@ -14,9 +14,27 @@ import {
   Item,
   LibraryItem,
   Review,
+  setPreviewOverride,
   translations
 } from './data';
 import { Search, Folder, Star, ArrowUpRight, Download, FileText, BookOpen, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
+
+// Issue-draft preview: when the admin opens /issue?preview=1, load the unsaved
+// content JSON it stashed in localStorage and override the data layer before any
+// render reads it. Same-origin (both on eprisj.github.io), so this is safe.
+(function initIssuePreview() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('preview') !== '1') return;
+    const raw = localStorage.getItem('epris_preview');
+    if (!raw) return;
+    const json = JSON.parse(raw);
+    const issueId = Number(localStorage.getItem('epris_preview_issue'));
+    setPreviewOverride(json, Number.isFinite(issueId) ? issueId : null);
+  } catch {
+    /* ignore malformed preview payloads */
+  }
+})();
 
 function generateSlug(title: string): string {
   return title
@@ -1196,39 +1214,162 @@ function ArticlesSection({
   );
 }
 
-function ReviewsSection({ reviews, t }: { reviews: Review[]; t: (key: string) => string }) {
+function RatingStars({ rating, size = 16 }: { rating: number; size?: number }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-12">
-      {reviews.map((review, index) => (
-        <div key={review.id}>
-          <Reveal delay={index * 0.1}>
-            <div className="bg-[#E8DED5] p-6 sm:p-8 md:p-12 border border-[#501a2c] h-full flex flex-col justify-between">
-              <div>
-                <div className="flex justify-between items-start mb-8">
-                  <div className="flex gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star 
-                        key={i} 
-                        size={16} 
-                        className={i < Math.floor(review.rating) ? "fill-[#501a2c] text-[#501a2c]" : "text-[#501a2c]/20"} 
-                      />
-                    ))}
-                  </div>
-                  <span className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/40">{t('review')} 0{review.id}</span>
-                </div>
-                <h3 className="font-serif text-3xl text-[#501a2c] mb-2">{review.title}</h3>
-                <p className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/60 mb-6">{review.subject}</p>
-                <p className="font-serif text-lg leading-relaxed text-[#501a2c]/80 italic">
-                  "{review.content}"
-                </p>
+    <div className="flex gap-1">
+      {[...Array(5)].map((_, i) => (
+        <Star
+          key={i}
+          size={size}
+          className={i < Math.round(rating) ? 'fill-[#501a2c] text-[#501a2c]' : 'text-[#501a2c]/20'}
+        />
+      ))}
+    </div>
+  );
+}
+
+function ProsCons({ pros, cons, t }: { pros?: string[]; cons?: string[]; t: (key: string) => string }) {
+  if ((!pros || !pros.length) && (!cons || !cons.length)) return null;
+  return (
+    <div className="grid grid-cols-2 gap-4 mt-6">
+      {pros && pros.length > 0 && (
+        <div>
+          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#4A7C59] mb-2">{t('reviews.pros')}</p>
+          <ul className="space-y-1.5">
+            {pros.map((p, i) => (
+              <li key={i} className="flex items-baseline gap-2 font-serif text-sm text-[#501a2c]/75">
+                <span className="text-[#4A7C59] text-[10px] shrink-0">+</span>{p}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {cons && cons.length > 0 && (
+        <div>
+          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8B3A3A] mb-2">{t('reviews.cons')}</p>
+          <ul className="space-y-1.5">
+            {cons.map((c, i) => (
+              <li key={i} className="flex items-baseline gap-2 font-serif text-sm text-[#501a2c]/75">
+                <span className="text-[#8B3A3A] text-[10px] shrink-0">−</span>{c}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ReviewsSection({ reviews, t }: { reviews: Review[]; t: (key: string) => string }) {
+  const [activeCategory, setActiveCategory] = useState('__all');
+  const categories = useMemo(() => {
+    const set = Array.from(new Set(reviews.map((r) => r.category).filter((c): c is string => Boolean(c))));
+    return ['__all', ...set];
+  }, [reviews]);
+
+  const featured = reviews.find((r) => r.featured);
+  const rest = reviews.filter((r) => r.id !== (featured?.id ?? -1));
+  const filtered = activeCategory === '__all' ? rest : rest.filter((r) => r.category === activeCategory);
+
+  return (
+    <div>
+      {/* Featured review */}
+      {featured && (
+        <Reveal>
+          <div className="mb-12 md:mb-16 border border-[#501a2c] grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
+            {featured.imageUrl && (
+              <div className="relative aspect-[4/3] lg:aspect-auto bg-[#1a0812] overflow-hidden">
+                <img src={featured.imageUrl} alt={featured.title} className="w-full h-full object-cover" />
+                <span className="absolute top-4 left-4 bg-[#F5F0EB]/90 text-[#501a2c] font-mono text-[9px] uppercase tracking-[0.2em] px-3 py-1.5">
+                  {t('reviews.featured')}
+                </span>
               </div>
-              <div className="mt-8 pt-6 border-t border-[#501a2c]/10 font-mono text-xs uppercase tracking-widest text-[#501a2c]/60 text-right">
-                — {review.author}
+            )}
+            <div className="p-7 sm:p-10 md:p-12 bg-[#E8DED5] flex flex-col">
+              <div className="flex items-center justify-between mb-5">
+                <RatingStars rating={featured.rating} />
+                {featured.category && (
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#C9A690]">{featured.category}</span>
+                )}
+              </div>
+              <h3 className="font-serif text-3xl md:text-4xl text-[#501a2c] mb-1.5">{featured.title}</h3>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/55 mb-5">{featured.subject}</p>
+              {featured.verdict && (
+                <p className="font-serif text-xl md:text-2xl italic text-[#501a2c] leading-snug mb-5 border-l-2 border-[#C9A690] pl-4">
+                  {featured.verdict}
+                </p>
+              )}
+              <p className="font-serif text-base leading-relaxed text-[#501a2c]/75">{featured.content}</p>
+              <ProsCons pros={featured.pros} cons={featured.cons} t={t} />
+              <div className="mt-auto pt-6 flex items-center justify-between">
+                {featured.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/40">{featured.meta}</span>}
+                <span className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60 ml-auto">— {featured.author}</span>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      )}
+
+      {/* Category filter */}
+      {categories.length > 2 && (
+        <div className="flex flex-wrap gap-2 mb-8">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => setActiveCategory(cat)}
+              className={`px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest border transition-colors ${
+                activeCategory === cat
+                  ? 'bg-[#501a2c] text-[#F5F0EB] border-[#501a2c]'
+                  : 'text-[#501a2c] border-[#501a2c]/30 hover:border-[#501a2c]'
+              }`}
+            >
+              {cat === '__all' ? t('reviews.all') : cat}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* Review grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        {filtered.map((review, index) => (
+          <Reveal key={review.id} delay={(index % 2) * 0.08}>
+            <div className="bg-[#E8DED5] border border-[#501a2c] h-full flex flex-col overflow-hidden">
+              {review.imageUrl && (
+                <div className="relative aspect-[16/9] bg-[#1a0812] overflow-hidden">
+                  <img src={review.imageUrl} alt={review.title} className="w-full h-full object-cover" />
+                  {review.category && (
+                    <span className="absolute top-3 left-3 bg-[#F5F0EB]/90 text-[#501a2c] font-mono text-[8px] uppercase tracking-[0.2em] px-2.5 py-1">
+                      {review.category}
+                    </span>
+                  )}
+                </div>
+              )}
+              <div className="p-6 sm:p-8 flex flex-col flex-1">
+                <div className="flex justify-between items-start mb-4">
+                  <RatingStars rating={review.rating} />
+                  {!review.imageUrl && review.category && (
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-[#C9A690]">{review.category}</span>
+                  )}
+                </div>
+                <h3 className="font-serif text-2xl md:text-3xl text-[#501a2c] mb-1.5">{review.title}</h3>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/55 mb-4">{review.subject}</p>
+                {review.verdict && (
+                  <p className="font-serif text-lg italic text-[#501a2c] leading-snug mb-4 border-l-2 border-[#C9A690] pl-3">
+                    {review.verdict}
+                  </p>
+                )}
+                <p className="font-serif text-base leading-relaxed text-[#501a2c]/75">{review.content}</p>
+                <ProsCons pros={review.pros} cons={review.cons} t={t} />
+                <div className="mt-auto pt-6 flex items-center justify-between gap-3">
+                  {review.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/40">{review.meta}</span>}
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60 ml-auto">— {review.author}</span>
+                </div>
               </div>
             </div>
           </Reveal>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

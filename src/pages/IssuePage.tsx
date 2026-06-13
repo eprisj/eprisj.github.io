@@ -78,7 +78,7 @@ export function IssuePage({
       <div className="border-b border-[#501a2c]/20 px-6 sm:px-10 md:px-16 py-10 md:py-16">
         <div className="max-w-6xl mx-auto">
           <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#501a2c]/40 mb-3">
-            {t('issue.edition')}
+            {t('issue.edition')}{issue.number ? ` · ${issue.number}` : ''}
           </p>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
@@ -93,6 +93,35 @@ export function IssuePage({
           </div>
         </div>
       </div>
+
+      {/* Editor's letter (per-issue, falls back to global translation) */}
+      {(() => {
+        const heading = (issue.letterHeading || '').trim() || t('issue.letter.heading');
+        const body = (issue.letterBody || '').trim() || t('issue.letter.body');
+        if (!heading && !body) return null;
+        return (
+          <div className="border-b border-[#501a2c]/15 px-6 sm:px-10 md:px-16 py-12 md:py-20">
+            <div className="max-w-2xl mx-auto">
+              <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#C9A690] mb-6">
+                {t('pdf.letter.kicker')}
+              </p>
+              <h2 className="font-serif text-2xl md:text-4xl italic text-[#501a2c] leading-snug mb-6">
+                {heading}
+              </h2>
+              <div className="w-12 border-t border-[#C9A690] mb-6" />
+              {body.split('\n\n').map((p, i) => (
+                <p key={i} className="font-serif text-base md:text-lg text-[#501a2c]/75 leading-relaxed mb-4">
+                  {p}
+                </p>
+              ))}
+              <p className="font-serif text-lg italic text-[#501a2c] mt-6">Mariia Ivanova</p>
+              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#501a2c]/40 mt-1">
+                {t('issue.letter.role')}
+              </p>
+            </div>
+          </div>
+        );
+      })()}
 
       <div className="max-w-6xl mx-auto px-6 sm:px-10 md:px-16 py-12 md:py-20">
 

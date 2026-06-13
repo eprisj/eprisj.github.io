@@ -1020,6 +1020,57 @@ async function uploadImageToGitHub(file) {
   }
 }
 
+// Generic image upload that resolves to the immediate URL (reused by the
+// review-photo and issue-cover upload buttons). Does not touch the visual entry.
+async function uploadImageReturnUrl(file) {
+  const cfg = requireImageUploadConfig();
+  if (!String(file.type || '').startsWith('image/')) {
+    throw new Error('Можно загрузить только файл изображения.');
+  }
+  if (file.size > 15 * 1024 * 1024) {
+    throw new Error('Файл слишком большой. Максимум: 15 MB.');
+  }
+  saveSettings();
+  const fileName = buildUploadFileName(file.name, file.type);
+  const repoPath = `${cfg.uploadDir}/${fileName}`;
+  const base64Content = await readFileAsBase64(file);
+  const putUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${encodePath(repoPath)}`;
+  const uploadResult = await githubRequest(putUrl, {
+    method: 'PUT',
+    headers: { ...headers(cfg.token), 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: `chore(media): upload ${fileName} via admin`, content: base64Content, branch: cfg.branch })
+  });
+  const immediateUrl = String(uploadResult?.content?.download_url || '').trim();
+  return immediateUrl || buildPagesAssetUrl(cfg, repoPath);
+}
+
+// Wire a file-input + button pair to upload and drop the resulting URL into a
+// target text input (and run an optional callback, e.g. to refresh a preview).
+function bindUploadButton(btnId, fileInputId, targetInputId, onDone) {
+  const btn = document.getElementById(btnId);
+  const fileInput = document.getElementById(fileInputId);
+  const target = document.getElementById(targetInputId);
+  if (!btn || !fileInput || !target) return;
+  btn.onclick = () => fileInput.click();
+  fileInput.onchange = async () => {
+    const file = fileInput.files && fileInput.files[0];
+    if (!file) return;
+    const original = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Загрузка…';
+    try {
+      const url = await uploadImageReturnUrl(file);
+      target.value = url;
+      target.dispatchEvent(new Event('input'));
+      if (typeof onDone === 'function') onDone(url);
+      showToast('success', 'Фото загружено — URL подставлен.');
+    } catch (e) {
+      showToast('error', getErrorMessage(e));
+    } finally {
+      btn.disabled = false; btn.textContent = original; fileInput.value = '';
+    }
+  };
+}
+
 function encodePath(path) {
   return path
     .split('/')
@@ -2897,14 +2948,43 @@ function renderVisualForm() {
   }
 
   if (section === 'reviews') {
+    const revImg = (entry.imageUrl || '').trim();
     visualFormEl.innerHTML = `
       <label>ID<input id="vf-id" value="${escapeHtml(entry.id)}" disabled /></label>
       <label>Рейтинг (0-5)<input id="vf-rating" type="number" min="0" max="5" step="0.1" value="${escapeHtml(entry.rating || 0)}" /></label>
+      <label>Категория<input id="vf-category" value="${escapeHtml(entry.category || '')}" placeholder="Food / Books / Stay…" /></label>
+      <label class="checkbox-label" style="align-self:end" for="vf-featured"><input id="vf-featured" type="checkbox" ${entry.featured ? 'checked' : ''} /> Главный обзор (featured)</label>
       <label class="full">Заголовок<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
-      <label class="full">Тема<input id="vf-subject" value="${escapeHtml(entry.subject || '')}" /></label>
+      <label class="full">Тема (что обозревается)<input id="vf-subject" value="${escapeHtml(entry.subject || '')}" /></label>
+      <label class="full">Вердикт (одна строка-вывод)<input id="vf-verdict" value="${escapeHtml(entry.verdict || '')}" /></label>
       <label class="full">Текст обзора<textarea id="vf-content">${escapeHtml(entry.content || '')}</textarea></label>
+      <label class="full">Плюсы (по одному на строку)<textarea id="vf-pros">${escapeHtml(Array.isArray(entry.pros) ? entry.pros.join('\n') : '')}</textarea></label>
+      <label class="full">Минусы (по одному на строку)<textarea id="vf-cons">${escapeHtml(Array.isArray(entry.cons) ? entry.cons.join('\n') : '')}</textarea></label>
+      <label>Мета (локация/цена/год)<input id="vf-meta" value="${escapeHtml(entry.meta || '')}" /></label>
+      <label>Ссылка (необязательно)<input id="vf-link" value="${escapeHtml(entry.link || '')}" placeholder="https://…" /></label>
+      <label>Дата (необязательно)<input id="vf-date" value="${escapeHtml(entry.date || '')}" /></label>
+      <label class="full">URL фото<input id="vf-imageUrl" value="${escapeHtml(entry.imageUrl || '')}" placeholder="/images/… или https://…" /></label>
+      <div class="full" style="display:flex;gap:8px;align-items:center;margin:-4px 0 4px">
+        <button id="vf-rev-upload-btn" class="btn btn-sm" type="button">Загрузить фото</button>
+        <input id="vf-rev-upload-input" type="file" accept="image/*" hidden />
+        <span class="form-hint" style="margin:0">или вставьте URL выше</span>
+      </div>
+      <div class="photo-preview full">
+        <img id="vf-rev-preview" src="${revImg ? escapeHtml(revImg) : ''}" alt="Превью" loading="lazy" referrerpolicy="no-referrer" ${revImg ? '' : 'hidden'} />
+        <div id="vf-rev-preview-empty" class="photo-preview-empty" ${revImg ? 'hidden' : ''}>Добавьте URL фото, чтобы увидеть превью.</div>
+      </div>
       <label class="full">Автор<input id="vf-author" value="${escapeHtml(entry.author || '')}" /></label>
     `;
+    const refreshRevPreview = () => {
+      const img = document.getElementById('vf-rev-preview');
+      const empty = document.getElementById('vf-rev-preview-empty');
+      const url = (document.getElementById('vf-imageUrl')?.value || '').trim();
+      if (!img || !empty) return;
+      if (url) { img.src = url; img.removeAttribute('hidden'); empty.setAttribute('hidden', 'hidden'); }
+      else { img.setAttribute('hidden', 'hidden'); img.src = ''; empty.removeAttribute('hidden'); }
+    };
+    document.getElementById('vf-imageUrl')?.addEventListener('input', refreshRevPreview);
+    bindUploadButton('vf-rev-upload-btn', 'vf-rev-upload-input', 'vf-imageUrl', refreshRevPreview);
     bindCreatorQualityInputs(entry);
     return;
   }
@@ -2987,13 +3067,23 @@ async function applyVisualChanges() {
       if (Number.isNaN(rating)) {
         throw new Error('Рейтинг должен быть числом.');
       }
+      const lines = (id) => getFieldValue(id).split('\n').map((s) => s.trim()).filter(Boolean);
       next = {
         ...next,
         title: getFieldValue('vf-title').trim(),
         subject: getFieldValue('vf-subject').trim(),
         rating,
         content: getFieldValue('vf-content').trim(),
-        author: getFieldValue('vf-author').trim()
+        author: getFieldValue('vf-author').trim(),
+        category: getOptionalString(getFieldValue('vf-category')),
+        verdict: getOptionalString(getFieldValue('vf-verdict')),
+        pros: lines('vf-pros'),
+        cons: lines('vf-cons'),
+        meta: getOptionalString(getFieldValue('vf-meta')),
+        link: getOptionalString(getFieldValue('vf-link')),
+        date: getOptionalString(getFieldValue('vf-date')),
+        imageUrl: getOptionalString(getFieldValue('vf-imageUrl')),
+        featured: Boolean(document.getElementById('vf-featured')?.checked)
       };
     } else if (section === 'libraryItems') {
       next = {
@@ -4803,6 +4893,10 @@ function captureCurrentIssueFromForm() {
   cur.season = (document.getElementById('issueSeason')?.value || '').trim();
   cur.tagline = (document.getElementById('issueTagline')?.value || '').trim();
   cur.coverUrl = (document.getElementById('issueCoverUrl')?.value || '').trim();
+  cur.number = (document.getElementById('issueNumber')?.value || '').trim();
+  cur.publishedAt = (document.getElementById('issuePublishedAt')?.value || '').trim();
+  cur.letterHeading = (document.getElementById('issueLetterHeading')?.value || '').trim();
+  cur.letterBody = (document.getElementById('issueLetterBody')?.value || '').trim();
   cur.articleIds = (_issueOrder || []).slice();
 }
 
@@ -4835,6 +4929,10 @@ function seedIssueForm(issueData) {
   set('issueSeason', issueData.season);
   set('issueTagline', issueData.tagline);
   set('issueCoverUrl', issueData.coverUrl);
+  set('issueNumber', issueData.number);
+  set('issuePublishedAt', issueData.publishedAt);
+  set('issueLetterHeading', issueData.letterHeading);
+  set('issueLetterBody', issueData.letterBody);
   _issueStatus = issueData.status === 'published' ? 'published' : (issueData.status === 'archived' ? 'archived' : 'draft');
 
   const data = parseEditorJsonSafe();
@@ -5194,7 +5292,11 @@ function writeIssueConfig(status) {
   const cur = _issues[_currentIssueIdx];
   cur.articleIds = order;
   cur.status = status;
-  cur.publishedAt = status === 'published' ? new Date().toISOString().slice(0, 10) : (cur.publishedAt || '');
+  // Respect a manually entered publish date; default to today only when
+  // publishing without one set.
+  if (!cur.publishedAt && status === 'published') {
+    cur.publishedAt = new Date().toISOString().slice(0, 10);
+  }
 
   // Only one issue can be 'published' at a time — archive the previous one.
   if (status === 'published') {
@@ -5274,9 +5376,30 @@ function bindIssueBuilder() {
   });
 
   // Live-update validation as parameters change
-  ['issueName', 'issueSeason', 'issueTagline', 'issueCoverUrl'].forEach(id => {
+  ['issueName', 'issueSeason', 'issueTagline', 'issueCoverUrl', 'issueNumber', 'issuePublishedAt'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.addEventListener('input', refreshIssueValidation);
+  });
+
+  // Cover upload → drops the URL into issueCoverUrl and refreshes the preview.
+  bindUploadButton('issueCoverUploadBtn', 'issueCoverUploadInput', 'issueCoverUrl', () => refreshIssueValidation());
+
+  // Live PDF preview: stash the current (unsaved) draft and open the site issue
+  // page in preview mode for the issue being edited.
+  onClick('previewPdfBtn', () => {
+    const data = parseEditorJsonSafe();
+    if (!data || !_issues || !_issues[_currentIssueIdx]) { showToast('error', 'Загрузите JSON.'); return; }
+    captureCurrentIssueFromForm();
+    if (!commitIssuesToEditor()) return;
+    const cur = _issues[_currentIssueIdx];
+    try {
+      localStorage.setItem('epris_preview', editor.value);
+      localStorage.setItem('epris_preview_issue', String(cur.id));
+      window.open('../issue?preview=1', '_blank');
+      showToast('info', 'Открыт предпросмотр текущего черновика на сайте.');
+    } catch (e) {
+      showToast('error', `Не удалось открыть предпросмотр: ${e.message}`);
+    }
   });
 }
 bindIssueBuilder();
@@ -5643,6 +5766,13 @@ function captureStudioForm() {
   _studio.services = [...document.querySelectorAll('#studioServicesList .studio-service-input')]
     .map((i) => i.value.trim()).filter(Boolean);
 
+  _studio.offerings = [...document.querySelectorAll('#studioOfferingsList .studio-offering-card')].map((card) => ({
+    title: card.querySelector('.studio-off-title')?.value.trim() || '',
+    summary: card.querySelector('.studio-off-summary')?.value.trim() || '',
+    items: (card.querySelector('.studio-off-items')?.value || '').split('\n').map((s) => s.trim()).filter(Boolean),
+    kind: card.querySelector('.studio-off-ergo')?.checked ? 'ergonomics' : 'service',
+  })).filter((o) => o.title);
+
   _studio.stats = [...document.querySelectorAll('#studioStatsList .studio-stat-row')].map((row) => ({
     value: row.querySelector('.studio-stat-value')?.value.trim() || '',
     key: row.querySelector('.studio-stat-key')?.value.trim() || 'studio.stats.years',
@@ -5678,6 +5808,7 @@ function renderStudioTab() {
   }
   _studio = JSON.parse(JSON.stringify(data.studio || defaultStudio()));
   _studio.services = _studio.services || [];
+  _studio.offerings = _studio.offerings || [];
   _studio.stats = _studio.stats || [];
   _studio.projects = _studio.projects || [];
   renderStudioForm();
@@ -5711,6 +5842,31 @@ function renderStudioForm() {
           <button class="studio-icon-btn" data-act="up" data-i="${i}" title="Вверх" type="button">↑</button>
           <button class="studio-icon-btn" data-act="down" data-i="${i}" title="Вниз" type="button">↓</button>
           <button class="studio-icon-btn danger" data-act="del" data-i="${i}" title="Удалить" type="button">✕</button>
+        </div>`).join('')
+      : '<p style="color:var(--text-muted);font-size:.82rem">Нет услуг. Добавьте первую.</p>';
+  }
+
+  // Offerings (detailed services)
+  const oList = document.getElementById('studioOfferingsList');
+  if (oList) {
+    oList.innerHTML = _studio.offerings.length
+      ? _studio.offerings.map((o, i) => `
+        <div class="studio-offering-card" data-index="${i}">
+          <div class="studio-proj-head">
+            <span class="studio-row-num">${String(i + 1).padStart(2, '0')}</span>
+            <label class="studio-featured-label">
+              <input type="checkbox" class="studio-off-ergo" ${o.kind === 'ergonomics' ? 'checked' : ''} />
+              Эргономика
+            </label>
+            <div class="studio-proj-tools">
+              <button class="studio-icon-btn" data-act="off-up" data-i="${i}" title="Вверх" type="button">↑</button>
+              <button class="studio-icon-btn" data-act="off-down" data-i="${i}" title="Вниз" type="button">↓</button>
+              <button class="studio-icon-btn danger" data-act="off-del" data-i="${i}" title="Удалить" type="button">✕</button>
+            </div>
+          </div>
+          <input class="studio-off-title" value="${escapeHtml(o.title || '')}" placeholder="Название услуги" />
+          <textarea class="studio-off-summary" rows="2" placeholder="Краткое описание">${escapeHtml(o.summary || '')}</textarea>
+          <textarea class="studio-off-items" rows="4" placeholder="Что входит — по одному пункту на строку">${escapeHtml((o.items || []).join('\n'))}</textarea>
         </div>`).join('')
       : '<p style="color:var(--text-muted);font-size:.82rem">Нет услуг. Добавьте первую.</p>';
   }
@@ -5779,6 +5935,9 @@ function bindStudioRowActions() {
         case 'down': arrMove(_studio.services, i, i + 1); break;
         case 'del': _studio.services.splice(i, 1); break;
         case 'del-stat': _studio.stats.splice(i, 1); break;
+        case 'off-up': arrMove(_studio.offerings, i, i - 1); break;
+        case 'off-down': arrMove(_studio.offerings, i, i + 1); break;
+        case 'off-del': _studio.offerings.splice(i, 1); break;
         case 'proj-up': arrMove(_studio.projects, i, i - 1); break;
         case 'proj-down': arrMove(_studio.projects, i, i + 1); break;
         case 'proj-del': _studio.projects.splice(i, 1); break;
@@ -5805,6 +5964,7 @@ function bindStudioRowActions() {
 (function bindStudioAddButtons() {
   const onClick = (id, fn) => { const el = document.getElementById(id); if (el) el.addEventListener('click', fn); };
   onClick('studioAddServiceBtn', () => { captureStudioForm(); if (!_studio) return; _studio.services.push(''); renderStudioForm(); });
+  onClick('studioAddOfferingBtn', () => { captureStudioForm(); if (!_studio) return; _studio.offerings.push({ title: '', summary: '', items: [], kind: 'service' }); renderStudioForm(); });
   onClick('studioAddStatBtn', () => { captureStudioForm(); if (!_studio) return; _studio.stats.push({ value: '', key: STUDIO_STAT_KEYS[0] }); renderStudioForm(); });
   onClick('studioAddProjectBtn', () => {
     captureStudioForm();
