@@ -76,6 +76,11 @@ export interface LanguageContent {
   libraryItems: LibraryItem[];
 }
 
+export interface StudioCaseStep {
+  title: string;
+  detail: string;
+}
+
 export interface StudioProject {
   id: number;
   title: string;
@@ -87,6 +92,9 @@ export interface StudioProject {
   role?: string;
   gallery?: string[];
   featured?: boolean;
+  beforeImage?: string;
+  materials?: string[];
+  caseSteps?: StudioCaseStep[];
 }
 
 export interface StudioOffering {

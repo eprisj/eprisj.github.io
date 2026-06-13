@@ -1,9 +1,58 @@
-import { useState, useRef, useMemo, ReactNode } from 'react';
+import { useState, useRef, useMemo, useCallback, ReactNode } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { ArrowUpRight, ArrowLeft, Mail, Instagram, ArrowDown } from 'lucide-react';
+import { ArrowUpRight, ArrowLeft, Mail, Instagram, ArrowDown, MoveHorizontal, Check, Copy } from 'lucide-react';
 import type { Studio, StudioProject } from '../data';
 
 type T = (key: string) => string;
+
+// ─── Before / After comparison slider ────────────────────────────────────────
+
+function BeforeAfter({ before, after, t }: { before: string; after: string; t: T }) {
+  const [pos, setPos] = useState(50);
+  const ref = useRef<HTMLDivElement>(null);
+  const dragging = useRef(false);
+
+  const setFromClientX = useCallback((clientX: number) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const pct = ((clientX - rect.left) / rect.width) * 100;
+    setPos(Math.max(0, Math.min(100, pct)));
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className="relative aspect-[16/10] md:aspect-[2/1] bg-[#1a0812] overflow-hidden select-none cursor-ew-resize"
+      onPointerDown={(e) => { dragging.current = true; try { (e.target as Element).setPointerCapture?.(e.pointerId); } catch { /* capture optional */ } setFromClientX(e.clientX); }}
+      onPointerMove={(e) => { if (dragging.current) setFromClientX(e.clientX); }}
+      onPointerUp={() => { dragging.current = false; }}
+      onPointerLeave={() => { dragging.current = false; }}
+    >
+      {/* After (full) */}
+      <img src={after} alt={t('studio.case.after')} className="absolute inset-0 w-full h-full object-cover pointer-events-none" draggable={false} />
+      {/* Before (clipped to the left of the handle) */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ width: `${pos}%` }}>
+        <img
+          src={before}
+          alt={t('studio.case.before')}
+          className="absolute inset-0 h-full object-cover max-w-none"
+          style={{ width: ref.current ? ref.current.clientWidth : '100%' }}
+          draggable={false}
+        />
+      </div>
+      {/* Labels */}
+      <span className="absolute top-3 left-3 bg-[#1a0812]/70 text-[#F5F0EB] font-mono text-[9px] uppercase tracking-[0.2em] px-2.5 py-1 pointer-events-none">{t('studio.case.before')}</span>
+      <span className="absolute top-3 right-3 bg-[#1a0812]/70 text-[#F5F0EB] font-mono text-[9px] uppercase tracking-[0.2em] px-2.5 py-1 pointer-events-none">{t('studio.case.after')}</span>
+      {/* Handle */}
+      <div className="absolute top-0 bottom-0 w-[2px] bg-[#F5F0EB] pointer-events-none" style={{ left: `${pos}%` }}>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#F5F0EB] text-[#501a2c] flex items-center justify-center shadow-lg">
+          <MoveHorizontal size={16} />
+        </div>
+      </div>
+    </div>
+  );
+}
 
 // Local scroll-reveal (Reveal in App.tsx isn't exported)
 function Reveal({ children, delay = 0, className = '' }: { children: ReactNode; delay?: number; className?: string }) {
@@ -77,6 +126,46 @@ function CaseView({ project, t, onBack }: { project: StudioProject; t: T; onBack
           </div>
         </div>
 
+        {/* Before / After */}
+        {project.beforeImage && (
+          <Reveal className="mb-14 md:mb-20">
+            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#501a2c]/40 mb-4">{t('studio.case.beforeafter')}</p>
+            <BeforeAfter before={project.beforeImage} after={project.imageUrl} t={t} />
+          </Reveal>
+        )}
+
+        {/* Materials + Process */}
+        {((project.materials && project.materials.length > 0) || (project.caseSteps && project.caseSteps.length > 0)) && (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 mb-14 md:mb-20">
+            {project.materials && project.materials.length > 0 && (
+              <Reveal className="md:col-span-1">
+                <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#501a2c]/40 mb-4">{t('studio.case.materials')}</p>
+                <div className="flex flex-wrap gap-2">
+                  {project.materials.map((m, i) => (
+                    <span key={i} className="border border-[#501a2c]/25 px-3 py-1.5 font-serif text-sm text-[#501a2c]/75">{m}</span>
+                  ))}
+                </div>
+              </Reveal>
+            )}
+            {project.caseSteps && project.caseSteps.length > 0 && (
+              <Reveal className="md:col-span-2">
+                <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#501a2c]/40 mb-5">{t('studio.case.process')}</p>
+                <div className="space-y-5">
+                  {project.caseSteps.map((step, i) => (
+                    <div key={i} className="flex gap-4 border-t border-[#501a2c]/15 pt-4">
+                      <span className="font-mono text-[11px] text-[#C9A690] shrink-0 mt-1">0{i + 1}</span>
+                      <div>
+                        <h4 className="font-serif text-lg text-[#501a2c] mb-1">{step.title}</h4>
+                        <p className="font-serif text-sm text-[#501a2c]/65 leading-relaxed">{step.detail}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            )}
+          </div>
+        )}
+
         {/* Gallery */}
         {gallery.length > 1 && (
           <div className="space-y-6 md:space-y-10">
@@ -91,6 +180,117 @@ function CaseView({ project, t, onBack }: { project: StudioProject; t: T; onBack
         )}
       </div>
     </motion.div>
+  );
+}
+
+// ─── "Start a project" brief form (no backend — composes a mailto) ────────────
+
+const BRIEF_TYPES = ['Apartment', 'House', 'Commercial', 'Single room', 'Styling only'];
+const BRIEF_BUDGETS = ['Under €10k', '€10–30k', '€30–60k', '€60k+', 'To discuss'];
+
+function BriefForm({ studio, t }: { studio: Studio; t: T }) {
+  const [form, setForm] = useState({ name: '', email: '', type: '', area: '', budget: '', timeline: '', message: '' });
+  const [error, setError] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
+    setForm((f) => ({ ...f, [k]: e.target.value }));
+
+  const buildBrief = () =>
+    [
+      `${t('studio.brief.name')}: ${form.name}`,
+      `${t('studio.brief.email')}: ${form.email}`,
+      `${t('studio.brief.type')}: ${form.type}`,
+      `${t('studio.brief.area')}: ${form.area}`,
+      `${t('studio.brief.budget')}: ${form.budget}`,
+      `${t('studio.brief.timeline')}: ${form.timeline}`,
+      '',
+      `${t('studio.brief.message')}:`,
+      form.message,
+    ].join('\n');
+
+  const handleSend = () => {
+    if (!form.name.trim() || !form.email.trim()) { setError(true); return; }
+    setError(false);
+    const subject = `${t('studio.brief.kicker')} — ${form.name}`;
+    const to = studio.email || '';
+    window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildBrief())}`;
+  };
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(buildBrief());
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch { /* clipboard unavailable */ }
+  };
+
+  const field = 'w-full bg-transparent border border-[#501a2c]/25 px-4 py-3 font-serif text-[#501a2c] focus:border-[#501a2c] focus:outline-none transition-colors placeholder:text-[#501a2c]/35';
+  const label = 'font-mono text-[9px] uppercase tracking-[0.2em] text-[#501a2c]/45 mb-2 block';
+
+  return (
+    <section className="px-6 sm:px-10 md:px-16 py-16 md:py-28 border-t border-[#501a2c]/15 bg-[#E8DED5]/40">
+      <Reveal className="max-w-3xl mx-auto">
+        <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#C9A690] mb-3">{t('studio.brief.kicker')}</p>
+        <h2 className="font-serif text-3xl md:text-5xl text-[#501a2c] mb-3 leading-tight">{t('studio.brief.title')}</h2>
+        <p className="font-serif text-base text-[#501a2c]/60 mb-10">{t('studio.brief.desc')}</p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <span className={label}>{t('studio.brief.name')}</span>
+            <input className={field} value={form.name} onChange={set('name')} />
+          </div>
+          <div>
+            <span className={label}>{t('studio.brief.email')}</span>
+            <input type="email" className={field} value={form.email} onChange={set('email')} />
+          </div>
+          <div>
+            <span className={label}>{t('studio.brief.type')} <span className="text-[#501a2c]/30">· {t('studio.brief.optional')}</span></span>
+            <select className={field} value={form.type} onChange={set('type')}>
+              <option value="">{t('studio.brief.choose')}</option>
+              {BRIEF_TYPES.map((x) => <option key={x} value={x}>{x}</option>)}
+            </select>
+          </div>
+          <div>
+            <span className={label}>{t('studio.brief.budget')} <span className="text-[#501a2c]/30">· {t('studio.brief.optional')}</span></span>
+            <select className={field} value={form.budget} onChange={set('budget')}>
+              <option value="">{t('studio.brief.choose')}</option>
+              {BRIEF_BUDGETS.map((x) => <option key={x} value={x}>{x}</option>)}
+            </select>
+          </div>
+          <div>
+            <span className={label}>{t('studio.brief.area')} <span className="text-[#501a2c]/30">· {t('studio.brief.optional')}</span></span>
+            <input className={field} value={form.area} onChange={set('area')} placeholder="—" />
+          </div>
+          <div>
+            <span className={label}>{t('studio.brief.timeline')} <span className="text-[#501a2c]/30">· {t('studio.brief.optional')}</span></span>
+            <input className={field} value={form.timeline} onChange={set('timeline')} placeholder="—" />
+          </div>
+          <div className="sm:col-span-2">
+            <span className={label}>{t('studio.brief.message')} <span className="text-[#501a2c]/30">· {t('studio.brief.optional')}</span></span>
+            <textarea className={`${field} min-h-[120px] resize-y`} value={form.message} onChange={set('message')} />
+          </div>
+        </div>
+
+        {error && <p className="font-mono text-[10px] uppercase tracking-widest text-[#8B3A3A] mt-4">{t('studio.brief.required')}</p>}
+
+        <div className="flex flex-col sm:flex-row gap-3 mt-8">
+          <button
+            type="button"
+            onClick={handleSend}
+            className="flex items-center justify-center gap-3 px-8 py-4 font-mono text-xs uppercase tracking-widest bg-[#501a2c] text-[#F5F0EB] hover:bg-[#3d1421] transition-colors w-full sm:w-auto"
+          >
+            <Mail size={15} /> {t('studio.brief.send')}
+          </button>
+          <button
+            type="button"
+            onClick={handleCopy}
+            className="flex items-center justify-center gap-3 px-8 py-4 font-mono text-xs uppercase tracking-widest border border-[#501a2c] text-[#501a2c] hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-colors w-full sm:w-auto"
+          >
+            {copied ? <Check size={15} /> : <Copy size={15} />} {copied ? t('studio.brief.copied') : t('studio.brief.copy')}
+          </button>
+        </div>
+      </Reveal>
+    </section>
   );
 }
 
@@ -380,7 +580,10 @@ export function StudioPage({ studio, t }: { studio: Studio; t: T }) {
         </section>
       )}
 
-      {/* ── 9. Contact / CTA ── */}
+      {/* ── 9. Start a project — brief form ── */}
+      <BriefForm studio={studio} t={t} />
+
+      {/* ── 10. Contact / CTA ── */}
       <section className="px-6 sm:px-10 md:px-16 py-16 md:py-28">
         <Reveal className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-10">
