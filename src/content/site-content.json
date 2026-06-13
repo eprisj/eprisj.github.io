@@ -148,7 +148,16 @@
       "studio.case.year": "Year",
       "studio.case.role": "Role",
       "studio.case.about": "About the project",
-      "studio.cta.email": "Email the studio"
+      "studio.cta.email": "Email the studio",
+      "studio.offerings.title": "Services & expertise",
+      "studio.offerings.includes": "What it includes",
+      "studio.offerings.ergonomics": "Ergonomics",
+      "reviews.featured": "Featured review",
+      "reviews.verdict": "The verdict",
+      "reviews.pros": "For",
+      "reviews.cons": "Against",
+      "reviews.all": "All",
+      "reviews.kicker": "Reviews"
     },
     "RU": {
       "nav.gallery": "Галерея",
@@ -298,7 +307,16 @@
       "studio.case.year": "Год",
       "studio.case.role": "Роль",
       "studio.case.about": "О проекте",
-      "studio.cta.email": "Написать студии"
+      "studio.cta.email": "Написать студии",
+      "studio.offerings.title": "Услуги и экспертиза",
+      "studio.offerings.includes": "Что входит",
+      "studio.offerings.ergonomics": "Эргономика",
+      "reviews.featured": "Главный обзор",
+      "reviews.verdict": "Вердикт",
+      "reviews.pros": "За",
+      "reviews.cons": "Против",
+      "reviews.all": "Все",
+      "reviews.kicker": "Обзоры"
     },
     "UA": {
       "nav.gallery": "Галерея",
@@ -448,7 +466,16 @@
       "studio.case.year": "Рік",
       "studio.case.role": "Роль",
       "studio.case.about": "Про проєкт",
-      "studio.cta.email": "Написати студії"
+      "studio.cta.email": "Написати студії",
+      "studio.offerings.title": "Послуги та експертиза",
+      "studio.offerings.includes": "Що входить",
+      "studio.offerings.ergonomics": "Ергономіка",
+      "reviews.featured": "Головний огляд",
+      "reviews.verdict": "Вердикт",
+      "reviews.pros": "За",
+      "reviews.cons": "Проти",
+      "reviews.all": "Усі",
+      "reviews.kicker": "Огляди"
     },
     "TR": {
       "nav.gallery": "Galeri",
@@ -598,7 +625,16 @@
       "studio.case.year": "Yıl",
       "studio.case.role": "Rol",
       "studio.case.about": "Proje hakkında",
-      "studio.cta.email": "Stüdyoya e-posta"
+      "studio.cta.email": "Stüdyoya e-posta",
+      "studio.offerings.title": "Hizmetler ve uzmanlık",
+      "studio.offerings.includes": "Neler dahil",
+      "studio.offerings.ergonomics": "Ergonomi",
+      "reviews.featured": "Öne çıkan inceleme",
+      "reviews.verdict": "Karar",
+      "reviews.pros": "Artılar",
+      "reviews.cons": "Eksiler",
+      "reviews.all": "Tümü",
+      "reviews.kicker": "İncelemeler"
     },
     "DE": {
       "nav.gallery": "Galerie",
@@ -748,7 +784,16 @@
       "studio.case.year": "Jahr",
       "studio.case.role": "Rolle",
       "studio.case.about": "Über das Projekt",
-      "studio.cta.email": "Studio anschreiben"
+      "studio.cta.email": "Studio anschreiben",
+      "studio.offerings.title": "Leistungen & Expertise",
+      "studio.offerings.includes": "Was enthalten ist",
+      "studio.offerings.ergonomics": "Ergonomie",
+      "reviews.featured": "Empfohlene Rezension",
+      "reviews.verdict": "Das Fazit",
+      "reviews.pros": "Dafür",
+      "reviews.cons": "Dagegen",
+      "reviews.all": "Alle",
+      "reviews.kicker": "Rezensionen"
     },
     "IT": {
       "nav.gallery": "Galleria",
@@ -898,7 +943,16 @@
       "studio.case.year": "Anno",
       "studio.case.role": "Ruolo",
       "studio.case.about": "Sul progetto",
-      "studio.cta.email": "Scrivi allo studio"
+      "studio.cta.email": "Scrivi allo studio",
+      "studio.offerings.title": "Servizi e competenze",
+      "studio.offerings.includes": "Cosa include",
+      "studio.offerings.ergonomics": "Ergonomia",
+      "reviews.featured": "Recensione in evidenza",
+      "reviews.verdict": "Il verdetto",
+      "reviews.pros": "A favore",
+      "reviews.cons": "Contro",
+      "reviews.all": "Tutte",
+      "reviews.kicker": "Recensioni"
     },
     "ES": {
       "nav.gallery": "Galería",
@@ -1048,7 +1102,16 @@
       "studio.case.year": "Año",
       "studio.case.role": "Rol",
       "studio.case.about": "Sobre el proyecto",
-      "studio.cta.email": "Escribir al estudio"
+      "studio.cta.email": "Escribir al estudio",
+      "studio.offerings.title": "Servicios y experiencia",
+      "studio.offerings.includes": "Qué incluye",
+      "studio.offerings.ergonomics": "Ergonomía",
+      "reviews.featured": "Reseña destacada",
+      "reviews.verdict": "El veredicto",
+      "reviews.pros": "A favor",
+      "reviews.cons": "En contra",
+      "reviews.all": "Todas",
+      "reviews.kicker": "Reseñas"
     }
   },
   "items": [
@@ -1417,7 +1480,20 @@
       "subject": "Restaurant 'Olea', Limassol",
       "rating": 4.5,
       "content": "The tasting menu was a journey through the island's history. Each dish told a story of conquest and trade.",
-      "author": "Elena K."
+      "author": "Elena K.",
+      "imageUrl": "/images/mediterranean-feast.png",
+      "featured": true,
+      "category": "Food",
+      "verdict": "A tasting menu that reads the island like a history book.",
+      "meta": "Limassol · Tasting menu · €€€",
+      "pros": [
+        "Inventive island-sourced courses",
+        "Faultless wine pairing",
+        "Warm, unhurried service"
+      ],
+      "cons": [
+        "Tables a touch close together"
+      ]
     },
     {
       "id": 2,
@@ -1425,7 +1501,19 @@
       "subject": "Novel by S. Alexiou",
       "rating": 5,
       "content": "Hauntingly beautiful. A prose that feels like poetry, exploring memory and loss in a divided city.",
-      "author": "Maria S."
+      "author": "Maria S.",
+      "imageUrl": "/images/urban-solitude.png",
+      "featured": false,
+      "category": "Books",
+      "verdict": "Prose that moves like poetry through memory and loss.",
+      "meta": "Novel · 248 pp · S. Alexiou",
+      "pros": [
+        "Luminous, restrained language",
+        "Unforgettable sense of place"
+      ],
+      "cons": [
+        "Slow middle third"
+      ]
     },
     {
       "id": 3,
@@ -1433,7 +1521,20 @@
       "subject": "Hotel 'The Edge', Paphos",
       "rating": 4,
       "content": "Stunning architecture, but the service lacked the warmth one expects in the Mediterranean.",
-      "author": "James B."
+      "author": "James B.",
+      "imageUrl": "/images/article-img-4.png",
+      "featured": false,
+      "category": "Stay",
+      "verdict": "Stunning architecture let down by lukewarm service.",
+      "meta": "Paphos · Design hotel · €€€",
+      "pros": [
+        "Breathtaking cliff-edge design",
+        "Serene, minimal rooms"
+      ],
+      "cons": [
+        "Service lacks Mediterranean warmth",
+        "Limited dining options"
+      ]
     }
   ],
   "libraryItems": [
@@ -1918,7 +2019,20 @@
           "subject": "Ресторан «Олеа», Лимассол",
           "rating": 4.5,
           "content": "Дегустационное меню представляло собой путешествие по истории острова. Каждое блюдо рассказывало историю завоеваний и торговли.",
-          "author": "Elena K."
+          "author": "Elena K.",
+          "imageUrl": "/images/mediterranean-feast.png",
+          "featured": true,
+          "category": "Еда",
+          "verdict": "Дегустационное меню читает остров как книгу по истории.",
+          "meta": "Лимассол · Дегустация · €€€",
+          "pros": [
+            "Изобретательные блюда из местных продуктов",
+            "Безупречные винные пары",
+            "Тёплый, неспешный сервис"
+          ],
+          "cons": [
+            "Столы чуть тесновато"
+          ]
         },
         {
           "id": 2,
@@ -1926,7 +2040,19 @@
           "subject": "Роман С. Алексиу",
           "rating": 5,
           "content": "Завораживающе красиво. Проза, похожая на поэзию, исследующая воспоминания и потери в разделенном городе.",
-          "author": "Maria S."
+          "author": "Maria S.",
+          "imageUrl": "/images/urban-solitude.png",
+          "featured": false,
+          "category": "Книги",
+          "verdict": "Проза, что движется как поэзия — сквозь память и утрату.",
+          "meta": "Роман · 248 с. · С. Алексиу",
+          "pros": [
+            "Светлый, сдержанный язык",
+            "Незабываемое чувство места"
+          ],
+          "cons": [
+            "Провисает середина"
+          ]
         },
         {
           "id": 3,
@@ -1934,7 +2060,20 @@
           "subject": "Отель The Edge, Пафос",
           "rating": 4,
           "content": "Потрясающая архитектура, но сервису не хватало той теплоты, которую можно ожидать от Средиземноморья.",
-          "author": "James B."
+          "author": "James B.",
+          "imageUrl": "/images/article-img-4.png",
+          "featured": false,
+          "category": "Отели",
+          "verdict": "Потрясающая архитектура, подведённая прохладным сервисом.",
+          "meta": "Пафос · Дизайн-отель · €€€",
+          "pros": [
+            "Захватывающая архитектура на краю скалы",
+            "Спокойные минималистичные номера"
+          ],
+          "cons": [
+            "Сервису не хватает средиземноморского тепла",
+            "Скудный выбор еды"
+          ]
         }
       ],
       "libraryItems": [
@@ -2419,7 +2558,20 @@
           "subject": "Ресторан «Олеа», Лімасол",
           "rating": 4.5,
           "content": "Дегустаційне меню представляло собою подорож історією острова. Кожна страва розповідала історію завоювань і торгівлі.",
-          "author": "Elena K."
+          "author": "Elena K.",
+          "imageUrl": "/images/mediterranean-feast.png",
+          "featured": true,
+          "category": "Їжа",
+          "verdict": "Дегустаційне меню читає острів, наче книгу з історії.",
+          "meta": "Лімасол · Дегустація · €€€",
+          "pros": [
+            "Винахідливі страви з місцевих продуктів",
+            "Бездоганні винні пари",
+            "Тепле, неквапливе обслуговування"
+          ],
+          "cons": [
+            "Столи трохи тіснувато"
+          ]
         },
         {
           "id": 2,
@@ -2427,7 +2579,19 @@
           "subject": "Роман С. Алексіу",
           "rating": 5,
           "content": "Надзвичайно красива. Проза, схожа на поезію, досліджує пам’ять і втрату в розділеному місті.",
-          "author": "Maria S."
+          "author": "Maria S.",
+          "imageUrl": "/images/urban-solitude.png",
+          "featured": false,
+          "category": "Книги",
+          "verdict": "Проза, що рухається як поезія — крізь пам’ять і втрату.",
+          "meta": "Роман · 248 с. · С. Алексіу",
+          "pros": [
+            "Світла, стримана мова",
+            "Незабутнє відчуття місця"
+          ],
+          "cons": [
+            "Провисає середина"
+          ]
         },
         {
           "id": 3,
@@ -2435,7 +2599,20 @@
           "subject": "Готель 'The Edge', Пафос",
           "rating": 4,
           "content": "Приголомшлива архітектура, але обслуговуванню не вистачало тепла, якого можна очікувати в Середземному морі.",
-          "author": "James B."
+          "author": "James B.",
+          "imageUrl": "/images/article-img-4.png",
+          "featured": false,
+          "category": "Готелі",
+          "verdict": "Приголомшлива архітектура, підведена прохолодним сервісом.",
+          "meta": "Пафос · Дизайн-готель · €€€",
+          "pros": [
+            "Захоплива архітектура на краю скелі",
+            "Спокійні мінімалістичні номери"
+          ],
+          "cons": [
+            "Сервісу бракує середземноморського тепла",
+            "Обмежений вибір їжі"
+          ]
         }
       ],
       "libraryItems": [
@@ -2920,7 +3097,20 @@
           "subject": "Restaurant 'Olea', Limassol",
           "rating": 4.5,
           "content": "Das Degustationsmenü war eine Reise durch die Geschichte der Insel. Jedes Gericht erzählte eine Geschichte von Eroberung und Handel.",
-          "author": "Elena K."
+          "author": "Elena K.",
+          "imageUrl": "/images/mediterranean-feast.png",
+          "featured": true,
+          "category": "Essen",
+          "verdict": "Ein Degustationsmenü, das die Insel wie ein Geschichtsbuch liest.",
+          "meta": "Limassol · Degustation · €€€",
+          "pros": [
+            "Erfindungsreiche, regionale Gänge",
+            "Tadellose Weinbegleitung",
+            "Warmer, unaufgeregter Service"
+          ],
+          "cons": [
+            "Tische etwas eng"
+          ]
         },
         {
           "id": 2,
@@ -2928,7 +3118,19 @@
           "subject": "Roman von S. Alexiou",
           "rating": 5,
           "content": "Unheimlich schön. Eine Prosa, die sich wie Poesie anfühlt, und Erinnerung und Verlust in einer geteilten Stadt erforscht.",
-          "author": "Maria S."
+          "author": "Maria S.",
+          "imageUrl": "/images/urban-solitude.png",
+          "featured": false,
+          "category": "Bücher",
+          "verdict": "Prosa, die wie Poesie durch Erinnerung und Verlust gleitet.",
+          "meta": "Roman · 248 S. · S. Alexiou",
+          "pros": [
+            "Leuchtende, zurückhaltende Sprache",
+            "Unvergessliches Ortsgefühl"
+          ],
+          "cons": [
+            "Zähes Mittelteil"
+          ]
         },
         {
           "id": 3,
@@ -2936,7 +3138,20 @@
           "subject": "Hotel 'The Edge', Paphos",
           "rating": 4,
           "content": "Atemberaubende Architektur, aber dem Service fehlte die Wärme, die man im Mittelmeerraum erwartet.",
-          "author": "James B."
+          "author": "James B.",
+          "imageUrl": "/images/article-img-4.png",
+          "featured": false,
+          "category": "Hotels",
+          "verdict": "Atemberaubende Architektur, gebremst durch lauen Service.",
+          "meta": "Paphos · Designhotel · €€€",
+          "pros": [
+            "Spektakuläre Architektur am Klippenrand",
+            "Ruhige, minimalistische Zimmer"
+          ],
+          "cons": [
+            "Service ohne mediterrane Wärme",
+            "Wenig kulinarische Auswahl"
+          ]
         }
       ],
       "libraryItems": [
@@ -3421,7 +3636,20 @@
           "subject": "Restaurante 'Olea', Limassol",
           "rating": 4.5,
           "content": "El menú degustación fue un viaje a través de la historia de la isla. Cada plato contaba una historia de conquista y comercio.",
-          "author": "Elena K."
+          "author": "Elena K.",
+          "imageUrl": "/images/mediterranean-feast.png",
+          "featured": true,
+          "category": "Gastronomía",
+          "verdict": "Un menú degustación que lee la isla como un libro de historia.",
+          "meta": "Limasol · Degustación · €€€",
+          "pros": [
+            "Platos locales e inventivos",
+            "Maridaje impecable",
+            "Servicio cálido y sin prisas"
+          ],
+          "cons": [
+            "Mesas algo juntas"
+          ]
         },
         {
           "id": 2,
@@ -3429,7 +3657,19 @@
           "subject": "Novela de S. Alexiou",
           "rating": 5,
           "content": "De una belleza inquietante. Una prosa que se siente como poesía, explorando la memoria y la pérdida en una ciudad dividida.",
-          "author": "Maria S."
+          "author": "Maria S.",
+          "imageUrl": "/images/urban-solitude.png",
+          "featured": false,
+          "category": "Libros",
+          "verdict": "Una prosa que fluye como poesía entre memoria y pérdida.",
+          "meta": "Novela · 248 pp · S. Alexiou",
+          "pros": [
+            "Lenguaje luminoso y contenido",
+            "Sentido del lugar inolvidable"
+          ],
+          "cons": [
+            "Tercio central lento"
+          ]
         },
         {
           "id": 3,
@@ -3437,7 +3677,20 @@
           "subject": "Hotel 'The Edge', Paphos",
           "rating": 4,
           "content": "Arquitectura impresionante, pero al servicio le faltaba la calidez que se espera en el Mediterráneo.",
-          "author": "James B."
+          "author": "James B.",
+          "imageUrl": "/images/article-img-4.png",
+          "featured": false,
+          "category": "Alojamiento",
+          "verdict": "Arquitectura impresionante, lastrada por un servicio tibio.",
+          "meta": "Pafos · Hotel de diseño · €€€",
+          "pros": [
+            "Arquitectura imponente al borde del acantilado",
+            "Habitaciones serenas y mínimas"
+          ],
+          "cons": [
+            "Al servicio le falta calidez mediterránea",
+            "Oferta gastronómica limitada"
+          ]
         }
       ],
       "libraryItems": [
@@ -3922,7 +4175,20 @@
           "subject": "Restoran 'Olea', Limassol",
           "rating": 4.5,
           "content": "Tadım menüsü adanın tarihine bir yolculuktu. Her yemek fetih ve ticaretin hikayesini anlatıyordu.",
-          "author": "Elena K."
+          "author": "Elena K.",
+          "imageUrl": "/images/mediterranean-feast.png",
+          "featured": true,
+          "category": "Yemek",
+          "verdict": "Adayı bir tarih kitabı gibi okuyan bir tadım menüsü.",
+          "meta": "Limasol · Tadım menüsü · €€€",
+          "pros": [
+            "Yaratıcı, yerel ürünlü tabaklar",
+            "Kusursuz şarap eşleşmesi",
+            "Sıcak, telaşsız servis"
+          ],
+          "cons": [
+            "Masalar biraz sıkışık"
+          ]
         },
         {
           "id": 2,
@@ -3930,7 +4196,19 @@
           "subject": "S. Alexiou'nun romanı",
           "rating": 5,
           "content": "Ruhani güzellikte. Bölünmüş bir şehirde hafıza ve kaybı araştıran şiir gibi bir düzyazı.",
-          "author": "Maria S."
+          "author": "Maria S.",
+          "imageUrl": "/images/urban-solitude.png",
+          "featured": false,
+          "category": "Kitaplar",
+          "verdict": "Bellek ve kayıp arasında şiir gibi akan bir düzyazı.",
+          "meta": "Roman · 248 s. · S. Alexiou",
+          "pros": [
+            "Aydınlık, ölçülü dil",
+            "Unutulmaz mekân hissi"
+          ],
+          "cons": [
+            "Orta bölüm yavaş"
+          ]
         },
         {
           "id": 3,
@@ -3938,7 +4216,20 @@
           "subject": "Hotel 'The Edge', Paphos",
           "rating": 4,
           "content": "Muhteşem mimari, ama servise Akdeniz'de beklenen sıcaklık eksikti.",
-          "author": "James B."
+          "author": "James B.",
+          "imageUrl": "/images/article-img-4.png",
+          "featured": false,
+          "category": "Konaklama",
+          "verdict": "Nefes kesen mimari, ılık servisle gölgeleniyor.",
+          "meta": "Baf · Tasarım otel · €€€",
+          "pros": [
+            "Uçurum kenarında çarpıcı mimari",
+            "Sakin, minimal odalar"
+          ],
+          "cons": [
+            "Serviste Akdeniz sıcaklığı yok",
+            "Sınırlı yemek seçeneği"
+          ]
         }
       ],
       "libraryItems": [
@@ -4423,7 +4714,20 @@
           "subject": "Ristorante 'Olea', Limassol",
           "rating": 4.5,
           "content": "Il menu degustazione è stato un viaggio attraverso la storia dell'isola. Ogni piatto raccontava una storia di conquista e commercio.",
-          "author": "Elena K."
+          "author": "Elena K.",
+          "imageUrl": "/images/mediterranean-feast.png",
+          "featured": true,
+          "category": "Cibo",
+          "verdict": "Un menu degustazione che legge l’isola come un libro di storia.",
+          "meta": "Limassol · Degustazione · €€€",
+          "pros": [
+            "Portate locali e inventive",
+            "Abbinamento vini impeccabile",
+            "Servizio caldo e senza fretta"
+          ],
+          "cons": [
+            "Tavoli un po’ ravvicinati"
+          ]
         },
         {
           "id": 2,
@@ -4431,7 +4735,19 @@
           "subject": "Romanzo di S. Alexiou",
           "rating": 5,
           "content": "Di una bellezza inquietante. Una prosa che sembra poesia, esplorando la memoria e la perdita in una città divisa.",
-          "author": "Maria S."
+          "author": "Maria S.",
+          "imageUrl": "/images/urban-solitude.png",
+          "featured": false,
+          "category": "Libri",
+          "verdict": "Una prosa che scorre come poesia tra memoria e perdita.",
+          "meta": "Romanzo · 248 pp · S. Alexiou",
+          "pros": [
+            "Lingua luminosa e misurata",
+            "Senso del luogo indimenticabile"
+          ],
+          "cons": [
+            "Parte centrale lenta"
+          ]
         },
         {
           "id": 3,
@@ -4439,7 +4755,20 @@
           "subject": "Hotel 'The Edge', Paphos",
           "rating": 4,
           "content": "Architettura straordinaria, ma al servizio mancava il calore che ci si aspetta nel Mediterraneo.",
-          "author": "James B."
+          "author": "James B.",
+          "imageUrl": "/images/article-img-4.png",
+          "featured": false,
+          "category": "Soggiorni",
+          "verdict": "Architettura splendida, tradita da un servizio tiepido.",
+          "meta": "Paphos · Design hotel · €€€",
+          "pros": [
+            "Architettura mozzafiato a picco sul mare",
+            "Camere serene e minimal"
+          ],
+          "cons": [
+            "Servizio senza calore mediterraneo",
+            "Scelta gastronomica limitata"
+          ]
         }
       ],
       "libraryItems": [
@@ -4656,6 +4985,85 @@
       {
         "value": "6",
         "key": "studio.stats.cities"
+      }
+    ],
+    "offerings": [
+      {
+        "kind": "service",
+        "title": "Interior design",
+        "summary": "Full residential and commercial interiors from first sketch to finished room — layout, materials, joinery and detailing held to one calm idea.",
+        "items": [
+          "Architectural layout & zoning",
+          "Material & finish palettes",
+          "Custom joinery & built-ins",
+          "Technical drawings for builders"
+        ]
+      },
+      {
+        "kind": "service",
+        "title": "Concept & art direction",
+        "summary": "The narrative and mood of a space — a clear visual language that guides every later decision.",
+        "items": [
+          "Mood & reference research",
+          "Spatial concept & story",
+          "Colour & texture direction",
+          "Art & object curation"
+        ]
+      },
+      {
+        "kind": "ergonomics",
+        "title": "Ergonomics & life scenarios",
+        "summary": "We map how you actually live — routines, distances, postures — and shape the plan around real movement, not just looks.",
+        "items": [
+          "Daily-routine & flow mapping",
+          "Circulation & reach distances",
+          "Seating, desk & counter heights",
+          "Accessibility & ageing-in-place"
+        ]
+      },
+      {
+        "kind": "ergonomics",
+        "title": "Kitchen & work-zone ergonomics",
+        "summary": "The hardest-working rooms, planned around the body: the work triangle, comfortable counters and tools within reach.",
+        "items": [
+          "Work-triangle & prep zones",
+          "Counter & cabinet heights",
+          "Lighting for tasks",
+          "Storage at point of use"
+        ]
+      },
+      {
+        "kind": "ergonomics",
+        "title": "Storage & life systems",
+        "summary": "Storage designed around what you own and where you use it — so order is effortless to keep.",
+        "items": [
+          "Inventory & needs audit",
+          "Built-in & modular systems",
+          "Entryway, kitchen & wardrobe logic",
+          "Hidden vs. display balance"
+        ]
+      },
+      {
+        "kind": "service",
+        "title": "Light & daylight planning",
+        "summary": "Natural and artificial light treated as structure — layered, dimmable and tuned to the rhythm of the day.",
+        "items": [
+          "Daylight study & orientation",
+          "Layered lighting scheme",
+          "Fixture selection & placement",
+          "Circadian & scene control"
+        ]
+      },
+      {
+        "kind": "service",
+        "title": "Styling & delivery",
+        "summary": "On-site coordination and final styling — furniture, textiles and objects placed so the space is ready to live in.",
+        "items": [
+          "Furniture & textile sourcing",
+          "On-site supervision",
+          "Final styling & art placement",
+          "Handover & care guide"
+        ]
       }
     ]
   }

@@ -195,22 +195,52 @@ export function StudioPage({ studio, t }: { studio: Studio; t: T }) {
         </div>
       </section>
 
-      {/* ── 4. Services list ── */}
-      {studio.services.length > 0 && (
+      {/* ── 4. Services & expertise (offerings) ── */}
+      {studio.offerings && studio.offerings.length > 0 && (
         <section className="px-6 sm:px-10 md:px-16 py-16 md:py-24 border-t border-[#501a2c]/15">
           <div className="max-w-6xl mx-auto">
             <Reveal>
-              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#501a2c]/40 mb-8">{t('studio.services.title')}</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#501a2c]/40 mb-10 md:mb-12">{t('studio.offerings.title')}</p>
             </Reveal>
-            <div className="border-t border-[#501a2c]/20">
-              {studio.services.map((service, i) => (
-                <Reveal key={i} delay={i * 0.05}>
-                  <div className="group flex items-baseline gap-6 py-5 md:py-6 border-b border-[#501a2c]/20 hover:bg-[#E8DED5]/50 transition-colors px-2 -mx-2">
-                    <span className="font-mono text-[11px] text-[#C9A690] w-8 shrink-0">{String(i + 1).padStart(2, '0')}</span>
-                    <span className="font-serif text-2xl md:text-4xl text-[#501a2c] group-hover:translate-x-2 transition-transform">{service}</span>
-                  </div>
-                </Reveal>
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+              {studio.offerings.map((o, i) => {
+                const ergo = o.kind === 'ergonomics';
+                return (
+                  <Reveal key={i} delay={(i % 2) * 0.06}>
+                    <div
+                      className={`h-full p-6 md:p-8 border transition-colors ${
+                        ergo
+                          ? 'bg-[#E8DED5]/40 border-[#501a2c]/15 border-l-2 border-l-[#C9A690]'
+                          : 'border-[#501a2c]/15 hover:border-[#501a2c]/40'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="font-mono text-[10px] text-[#C9A690]">{String(i + 1).padStart(2, '0')}</span>
+                        {ergo && (
+                          <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#C9A690] border border-[#C9A690]/40 px-2 py-0.5">
+                            {t('studio.offerings.ergonomics')}
+                          </span>
+                        )}
+                      </div>
+                      <h3 className="font-serif text-2xl md:text-3xl text-[#501a2c] mb-3">{o.title}</h3>
+                      <p className="font-serif text-base text-[#501a2c]/65 leading-relaxed mb-5">{o.summary}</p>
+                      {o.items && o.items.length > 0 && (
+                        <>
+                          <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#501a2c]/35 mb-2.5">{t('studio.offerings.includes')}</p>
+                          <ul className="space-y-1.5">
+                            {o.items.map((it, j) => (
+                              <li key={j} className="flex items-baseline gap-2.5 font-serif text-sm text-[#501a2c]/75">
+                                <span className="text-[#C9A690] text-[10px] shrink-0 translate-y-[-1px]">—</span>
+                                {it}
+                              </li>
+                            ))}
+                          </ul>
+                        </>
+                      )}
+                    </div>
+                  </Reveal>
+                );
+              })}
             </div>
           </div>
         </section>

@@ -496,7 +496,7 @@
               </div>
             </div>
             <div class="issue-statusbar-actions">
-              <a id="openIssueLink" href="../?tab=issue" target="_blank" rel="noreferrer" class="btn btn-sm">Открыть на сайте ↗</a>
+              <button id="previewPdfBtn" class="btn btn-sm" type="button">Предпросмотр PDF ↗</button>
               <button id="saveDraftBtn" class="btn btn-sm" type="button">Сохранить черновик</button>
               <button id="publishIssueBtn" class="btn btn-primary btn-sm" type="button" disabled>Опубликовать выпуск</button>
             </div>
@@ -537,6 +537,14 @@
                   <span class="field-label">Сезон</span>
                   <input id="issueSeason" placeholder="Spring 2026" />
                 </label>
+                <label>
+                  <span class="field-label">Номер / том (необязательно)</span>
+                  <input id="issueNumber" placeholder="Vol. 15" />
+                </label>
+                <label>
+                  <span class="field-label">Дата публикации</span>
+                  <input id="issuePublishedAt" type="date" />
+                </label>
                 <label class="full">
                   <span class="field-label">Подзаголовок (необязательно)</span>
                   <input id="issueTagline" placeholder="The Door Issue" />
@@ -546,8 +554,29 @@
                   <input id="issueCoverUrl" placeholder="https://..." />
                 </label>
               </div>
+              <div class="issue-cover-upload-row">
+                <button id="issueCoverUploadBtn" class="btn btn-sm" type="button">Загрузить обложку</button>
+                <input id="issueCoverUploadInput" type="file" accept="image/*" hidden />
+                <span class="form-hint" style="margin:0">или вставьте URL / выберите из статьи ниже</span>
+              </div>
               <div id="issueCoverPicks" class="issue-cover-picks"></div>
               <div class="issue-cover-preview" id="issueCoverPreview"></div>
+            </div>
+
+            <!-- Editor's letter -->
+            <div class="card">
+              <h2 class="card-title">Письмо редактора</h2>
+              <p class="card-desc">Своё письмо для этого выпуска (в PDF и на странице «Выпуск»). Если оставить пустым — используется общий текст из переводов. Абзацы разделяйте пустой строкой.</p>
+              <div class="form-grid">
+                <label class="full">
+                  <span class="field-label">Заголовок письма</span>
+                  <input id="issueLetterHeading" placeholder="A season of thresholds…" />
+                </label>
+                <label class="full">
+                  <span class="field-label">Текст письма</span>
+                  <textarea id="issueLetterBody" rows="6" placeholder="Dear reader,&#10;&#10;…"></textarea>
+                </label>
+              </div>
             </div>
 
             <!-- Validation report -->
@@ -648,6 +677,16 @@
             </div>
             <p class="card-desc">Список дисциплин: бегущая строка и нумерованный список на странице.</p>
             <div id="studioServicesList" class="studio-services-list"></div>
+          </div>
+
+          <!-- Offerings (detailed services) -->
+          <div class="card">
+            <div class="studio-section-head">
+              <h2 class="card-title" style="margin:0">Услуги и экспертиза</h2>
+              <button id="studioAddOfferingBtn" class="btn btn-sm" type="button">+ Услуга</button>
+            </div>
+            <p class="card-desc">Развёрнутые услуги с описанием и списком «что входит». Отметьте «Эргономика» для акцентного блока. Пункты — по одному на строку.</p>
+            <div id="studioOfferingsList" class="studio-offerings-list"></div>
           </div>
 
           <!-- Projects -->

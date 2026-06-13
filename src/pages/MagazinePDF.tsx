@@ -284,11 +284,13 @@ function CoverPage({ issue }: { issue: Issue }) {
 }
 
 function LetterPage({ issue, t }: { issue: Issue; t: T }) {
-  const paragraphs = t('issue.letter.body').split('\n\n');
+  const heading = (issue.letterHeading || '').trim() || t('issue.letter.heading');
+  const body = (issue.letterBody || '').trim() || t('issue.letter.body');
+  const paragraphs = body.split('\n\n');
   return (
     <Page size="A4" style={s.letterPage}>
       <Text style={s.letterKicker}>{t('pdf.letter.kicker').toUpperCase()}</Text>
-      <Text style={s.letterHeading}>{t('issue.letter.heading')}</Text>
+      <Text style={s.letterHeading}>{heading}</Text>
       <View style={s.letterRule} />
       {paragraphs.map((p, i) => (
         <Text key={i} style={s.letterBody}>{p}</Text>
@@ -495,7 +497,7 @@ function ColophonPage({ issue, t }: { issue: Issue; t: T }) {
       </View>
       <View>
         <View style={s.colophonRule} />
-        <Text style={s.colophonIssue}>{issue.name}  ·  {issue.season}</Text>
+        <Text style={s.colophonIssue}>{issue.name}{issue.number ? `  ·  ${issue.number}` : ''}  ·  {issue.season}</Text>
         <Text style={s.colophonMeta}>{t('pdf.credits.editor')}  ·  Mariia Ivanova</Text>
         <Text style={s.colophonMeta}>{t('pdf.credits.design')}  ·  EPRIS Studio</Text>
         <Text style={s.colophonMeta}>{t('pdf.credits.printed')}</Text>
