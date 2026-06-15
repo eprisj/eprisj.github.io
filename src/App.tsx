@@ -148,8 +148,8 @@ function NavBar({
     { id: 'materie', label: t('nav.materie') },
     { id: 'issue', label: t('nav.issue') },
     { id: 'studio', label: t('nav.studio') },
-    { id: 'radio', label: 'Radio' },
-    { id: 'podcasts', label: t('nav.podcasts') || 'Podcasts' },
+    { id: 'radio', label: t('nav.radio') },
+    { id: 'podcasts', label: t('nav.podcasts') },
   ];
 
   const handleSearch = (e: FormEvent) => {
