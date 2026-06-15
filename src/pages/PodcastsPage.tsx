@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect, useRef } from 'react'
 import { Play, Pause, X, ChevronRight } from 'lucide-react'
 
-const API = 'https://live.eprisjournal.com'
+const API = 'https://eprisradio.munister.com.ua'
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
