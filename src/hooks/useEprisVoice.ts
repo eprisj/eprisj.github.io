@@ -54,6 +54,13 @@ export type RadioMember = {
   speaking?: boolean
 }
 
+export type ActiveRoom = {
+  slug: string
+  title: string
+  call_id: number
+  member_count: number
+}
+
 type PeerEntry = {
   pc: RTCPeerConnection
   audio: HTMLAudioElement
@@ -120,7 +127,7 @@ function startKeepAlive(ctx: AudioContext): AudioBufferSourceNode {
 
 // ── Hook ─────────────────────────────────────────────────────────────────────
 
-export function useEprisVoice(opts?: { nickname?: string }) {
+export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string }) {
   const [members, setMembers] = useState<RadioMember[]>([])
   const [joined, setJoined] = useState(false)
   const [micOn, setMicOn] = useState(false)
@@ -130,6 +137,9 @@ export function useEprisVoice(opts?: { nickname?: string }) {
   const [audioBlocked, setAudioBlocked] = useState(false)
   const [myUser, setMyUser] = useState<{ id: number; nickname: string; color: string } | null>(getStoredUser)
   const [memberVolumes, setMemberVolumesState] = useState<Record<number, number>>({})
+  const [isHost, setIsHost] = useState(false)
+  const [broadcastEnded, setBroadcastEnded] = useState(false)
+  const [activeRooms, setActiveRooms] = useState<ActiveRoom[]>([])
 
   const callIdRef = useRef<number | null>(null)
   const myUserIdRef = useRef<number | null>(myUser?.id ?? null)
@@ -151,6 +161,7 @@ export function useEprisVoice(opts?: { nickname?: string }) {
   const blockedAudiosRef = useRef<Set<HTMLAudioElement>>(new Set())
   const wakeLockRef = useRef<WakeLockSentinel | null>(null)
   const reconnectViaRelayRef = useRef<(id: number) => void>(() => {})
+  const roomSlugRef = useRef(opts?.roomSlug || 'main')
   // Android background: near-silent audio element keeps audio session alive
   const androidCleanupRef = useRef<() => void>(() => {})
   // Tracks whether the user intentionally enabled the mic (vs OS killing it)
@@ -424,6 +435,12 @@ export function useEprisVoice(opts?: { nickname?: string }) {
           if (sig.signal_type === 'offer' || sig.signal_type === 'answer') await handleDescription(sig.from_user_id, payload as RTCSessionDescriptionInit)
           else if (sig.signal_type === 'ice') await handleIce(sig.from_user_id, payload as RTCIceCandidateInit)
           else if (sig.signal_type === 'bye') cleanupPeer(sig.from_user_id)
+          else if (sig.signal_type === 'ended') {
+            // Host ended the broadcast — auto-leave and surface the reason
+            setBroadcastEnded(true)
+            leaveFnRef.current().catch(() => {})
+            return  // discard any signals that came after 'ended'
+          }
         } catch { /* ignore */ }
       }
     } catch { /* ignore */ }
@@ -468,19 +485,40 @@ export function useEprisVoice(opts?: { nickname?: string }) {
 
   const refreshActive = useCallback(async () => {
     try {
-      const data = await apiFetch('/api/calls/active')
+      const slug = encodeURIComponent(roomSlugRef.current)
+      const data = await apiFetch(`/api/calls/active?room_slug=${slug}`)
       if (data) {
         callIdRef.current = data.call_id
         if (!joinedRef.current) { serverMembersRef.current = data.members; applyMembers() }
+        if (data.is_host !== undefined) setIsHost(!!data.is_host)
       } else if (!joinedRef.current) { callIdRef.current = null; serverMembersRef.current = []; applyMembers() }
     } catch { /* ignore */ }
   }, [applyMembers])
 
+  const refreshRooms = useCallback(async () => {
+    try {
+      const data = await apiFetch('/api/calls/rooms')
+      setActiveRooms(data || [])
+    } catch { /* ignore */ }
+  }, [])
+
   useEffect(() => {
     refreshActive()
-    const t = window.setInterval(() => { if (!joinedRef.current) refreshActive() }, MEMBERS_POLL_MS)
+    refreshRooms()
+    const t = window.setInterval(() => {
+      if (!joinedRef.current) { refreshActive(); refreshRooms() }
+    }, MEMBERS_POLL_MS)
     return () => window.clearInterval(t)
-  }, [refreshActive])
+  }, [refreshActive, refreshRooms])
+
+  // Sync roomSlug ref when opts change
+  useEffect(() => {
+    const newSlug = opts?.roomSlug || 'main'
+    if (newSlug !== roomSlugRef.current) {
+      roomSlugRef.current = newSlug
+      if (!joinedRef.current) refreshActive()
+    }
+  }, [opts?.roomSlug, refreshActive])
 
   const join = useCallback(async (nickname?: string) => {
     setError(null); setConnecting(true)
@@ -490,9 +528,13 @@ export function useEprisVoice(opts?: { nickname?: string }) {
       myUserIdRef.current = user.id; setMyUser(user)
       const cfg = await apiFetch('/api/calls/config')
       if (cfg.ice_servers?.length) iceServersRef.current = cfg.ice_servers
-      const res = await apiFetch('/api/calls/join', { method: 'POST', body: '{}' })
+      const res = await apiFetch('/api/calls/join', {
+        method: 'POST',
+        body: JSON.stringify({ room_slug: roomSlugRef.current }),
+      })
       callIdRef.current = res.call_id; afterIdRef.current = 0
       joinedRef.current = true; setJoined(true)
+      setIsHost(!!res.is_host); setBroadcastEnded(false)
       serverMembersRef.current = res.members; applyMembers()
       for (const m of res.members) ensurePeer(m.user_id)
       startTimers(); pollMembers(); pollSignals()
@@ -556,12 +598,20 @@ export function useEprisVoice(opts?: { nickname?: string }) {
     } finally { setConnecting(false) }
   }, [ensureAudioCtx, applyMembers, ensurePeer, startTimers, pollMembers, pollSignals, acquireWakeLock, unlockAudio, opts?.nickname])
 
+  const endBroadcast = useCallback(async () => {
+    const cid = callIdRef.current; if (!cid) return
+    try { await apiFetch(`/api/calls/${cid}/end`, { method: 'POST', body: '{}' }) } catch { /* ignore */ }
+    // After ending we also leave ourselves
+    leaveFnRef.current().catch(() => {})
+  }, [])
+
   const leave = useCallback(async () => {
     const cid = callIdRef.current
     stopTimers()
     wakeLockRef.current?.release().catch(() => {}); wakeLockRef.current = null
     androidCleanupRef.current()
     userWantsMicRef.current = false
+    setIsHost(false)
     if ('mediaSession' in navigator) {
       try {
         navigator.mediaSession.metadata = null
@@ -683,5 +733,9 @@ export function useEprisVoice(opts?: { nickname?: string }) {
     audioCtxRef.current = null
   }, [stopTimers, cleanupAll])
 
-  return { members, memberVolumes, joined, micOn, speaking, connecting, error, audioBlocked, myUser, join, leave, toggleMic, unlockAudio, setMemberVolume }
+  return {
+    members, memberVolumes, joined, micOn, speaking, connecting, error,
+    audioBlocked, myUser, isHost, broadcastEnded, activeRooms,
+    join, leave, endBroadcast, toggleMic, unlockAudio, setMemberVolume,
+  }
 }
