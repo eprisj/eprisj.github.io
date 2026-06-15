@@ -127,7 +127,7 @@ function startKeepAlive(ctx: AudioContext): AudioBufferSourceNode {
 
 // ── Hook ─────────────────────────────────────────────────────────────────────
 
-export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string }) {
+export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roomTitle?: string }) {
   const [members, setMembers] = useState<RadioMember[]>([])
   const [joined, setJoined] = useState(false)
   const [micOn, setMicOn] = useState(false)
@@ -162,6 +162,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string }) {
   const wakeLockRef = useRef<WakeLockSentinel | null>(null)
   const reconnectViaRelayRef = useRef<(id: number) => void>(() => {})
   const roomSlugRef = useRef(opts?.roomSlug || 'main')
+  const roomTitleRef = useRef(opts?.roomTitle || '')
   // Android background: near-silent audio element keeps audio session alive
   const androidCleanupRef = useRef<() => void>(() => {})
   // Tracks whether the user intentionally enabled the mic (vs OS killing it)
@@ -511,14 +512,15 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string }) {
     return () => window.clearInterval(t)
   }, [refreshActive, refreshRooms])
 
-  // Sync roomSlug ref when opts change
+  // Sync room refs when opts change
   useEffect(() => {
     const newSlug = opts?.roomSlug || 'main'
+    roomTitleRef.current = opts?.roomTitle || ''
     if (newSlug !== roomSlugRef.current) {
       roomSlugRef.current = newSlug
       if (!joinedRef.current) refreshActive()
     }
-  }, [opts?.roomSlug, refreshActive])
+  }, [opts?.roomSlug, opts?.roomTitle, refreshActive])
 
   const join = useCallback(async (nickname?: string) => {
     setError(null); setConnecting(true)
@@ -530,7 +532,10 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string }) {
       if (cfg.ice_servers?.length) iceServersRef.current = cfg.ice_servers
       const res = await apiFetch('/api/calls/join', {
         method: 'POST',
-        body: JSON.stringify({ room_slug: roomSlugRef.current }),
+        body: JSON.stringify({
+          room_slug: roomSlugRef.current,
+          room_title: roomTitleRef.current || roomSlugRef.current,
+        }),
       })
       callIdRef.current = res.call_id; afterIdRef.current = 0
       joinedRef.current = true; setJoined(true)
