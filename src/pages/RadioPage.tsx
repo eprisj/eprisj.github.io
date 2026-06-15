@@ -89,6 +89,23 @@ function ScheduleCard({ ann }: { ann: Announcement }) {
   )
 }
 
+// ── Volume toggle (3 levels) ──────────────────────────────────────────────────
+
+function VolumeToggle({ userId, volume, onSet }: { userId: number; volume: number; onSet: (id: number, v: number) => void }) {
+  const icon = volume >= 0.75 ? '🔊' : volume >= 0.25 ? '🔉' : '🔇'
+  const next = volume >= 0.75 ? 0.5 : volume >= 0.25 ? 0 : 1
+  return (
+    <button
+      onClick={e => { e.stopPropagation(); onSet(userId, next) }}
+      className="shrink-0 text-[13px] opacity-40 hover:opacity-80 active:scale-110 transition-all select-none"
+      title="Volume"
+      style={{ touchAction: 'none' }}
+    >
+      {icon}
+    </button>
+  )
+}
+
 // ── Nickname prompt ───────────────────────────────────────────────────────────
 
 function NicknamePrompt({ onJoin, loading, t }: { onJoin: (nick: string) => void; loading: boolean; t: (k: string) => string }) {
@@ -121,11 +138,18 @@ function NicknamePrompt({ onJoin, loading, t }: { onJoin: (nick: string) => void
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 export function RadioPage({ t }: { t: (k: string) => string }) {
-  const { members, joined, micOn, speaking, connecting, error, audioBlocked, myUser, join, leave, toggleMic, unlockAudio } = useEprisVoice()
+  const { members, memberVolumes, joined, micOn, speaking, connecting, error, audioBlocked, myUser, join, leave, toggleMic, unlockAudio, setMemberVolume } = useEprisVoice()
   const [showNickPrompt, setShowNickPrompt] = useState(false)
   const [pttHeld, setPttHeld] = useState(false)
   const [announcements, setAnnouncements] = useState<Announcement[]>([])
+  const [reactions, setReactions] = useState<{ id: number; emoji: string; x: number }[]>([])
   const pttBusyRef = useRef(false)
+
+  const sendReaction = useCallback((emoji: string) => {
+    const id = Date.now() + Math.random()
+    setReactions(prev => [...prev, { id, emoji, x: 15 + Math.random() * 70 }])
+    setTimeout(() => setReactions(prev => prev.filter(r => r.id !== id)), 2200)
+  }, [])
 
   const total = members.length + (joined ? 1 : 0)
   const anyoneSpeaking = members.some(m => m.speaking) || (micOn && speaking)
@@ -340,25 +364,58 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                 <div className="flex flex-col items-center gap-8">
                   {/* Big PTT button */}
                   <div className="flex flex-col items-center gap-4">
-                    <button
-                      onTouchStart={e => { e.preventDefault(); pttTouchStart() }}
-                      onTouchEnd={e => { e.preventDefault(); pttTouchEnd() }}
-                      onClick={toggleMic}
-                      className={`w-28 h-28 rounded-full border-2 flex flex-col items-center justify-center gap-2 select-none transition-all active:scale-95 ${
-                        micOn
-                          ? 'bg-[#501a2c] border-[#501a2c] text-[#F5F0EB] shadow-[0_0_0_8px_rgba(80,26,44,0.15)]'
-                          : 'bg-transparent border-[#501a2c] text-[#501a2c]'
-                      }`}
-                      style={{ WebkitTapHighlightColor: 'transparent', touchAction: 'none' }}
-                    >
-                      <MicIcon off={!micOn} />
-                      <span className="font-mono text-[9px] uppercase tracking-widest">
-                        {micOn ? 'TAP OFF' : 'TAP ON'}
-                      </span>
-                    </button>
+                    <div className="relative flex items-center justify-center">
+                      {speaking && micOn && (
+                        <span className="absolute inset-0 rounded-full border-2 border-[#C9A690] animate-ping opacity-60 pointer-events-none" />
+                      )}
+                      <button
+                        onTouchStart={e => { e.preventDefault(); pttTouchStart() }}
+                        onTouchEnd={e => { e.preventDefault(); pttTouchEnd() }}
+                        onClick={toggleMic}
+                        className={`w-28 h-28 rounded-full border-2 flex flex-col items-center justify-center gap-2 select-none transition-all active:scale-95 ${
+                          micOn
+                            ? 'bg-[#501a2c] border-[#501a2c] text-[#F5F0EB] shadow-[0_0_0_8px_rgba(80,26,44,0.15)]'
+                            : 'bg-transparent border-[#501a2c] text-[#501a2c]'
+                        }`}
+                        style={{ WebkitTapHighlightColor: 'transparent', touchAction: 'none' }}
+                      >
+                        <MicIcon off={!micOn} />
+                        <span className="font-mono text-[9px] uppercase tracking-widest">
+                          {micOn ? 'TAP OFF' : 'TAP ON'}
+                        </span>
+                      </button>
+                    </div>
                     <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/30 text-center">
                       {micOn ? t('radio.mic_on') : t('radio.mic_off')}
                     </p>
+                  </div>
+
+                  {/* Emoji reactions */}
+                  <div className="relative w-full flex flex-col items-center gap-3">
+                    <div className="relative h-10 w-full overflow-visible pointer-events-none select-none">
+                      {reactions.map(r => (
+                        <span
+                          key={r.id}
+                          className="absolute text-2xl"
+                          style={{
+                            left: `${r.x}%`,
+                            bottom: 0,
+                            animation: 'epris-float-up 2.2s ease-out forwards',
+                          }}
+                        >{r.emoji}</span>
+                      ))}
+                      <style>{`@keyframes epris-float-up { 0% { transform: translateY(0) scale(1); opacity: 1; } 100% { transform: translateY(-80px) scale(0.5); opacity: 0; } }`}</style>
+                    </div>
+                    <div className="flex gap-5 justify-center">
+                      {['👏', '❤️', '🎙'].map(e => (
+                        <button
+                          key={e}
+                          onClick={() => sendReaction(e)}
+                          className="text-2xl opacity-50 hover:opacity-100 active:scale-125 transition-all select-none"
+                          style={{ touchAction: 'none', WebkitTapHighlightColor: 'transparent' }}
+                        >{e}</button>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Participants horizontal scroll */}
@@ -379,8 +436,9 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                         <li key={m.user_id} className={`px-4 py-3 flex items-center gap-3 ${m.mic_on ? '' : 'opacity-60'}`}>
                           <span className="w-2 h-2 rounded-full shrink-0" style={{ background: m.color }} />
                           <span className="font-serif text-[#501a2c] truncate">{m.nickname}</span>
-                          {m.speaking && <span className="ml-auto w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse shrink-0" />}
+                          {m.speaking && <span className="w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse shrink-0" />}
                           <span className="ml-auto font-mono text-[9px] text-[#501a2c]/40 shrink-0">{m.mic_on ? 'MIC' : 'MUTE'}</span>
+                          <VolumeToggle userId={m.user_id} volume={memberVolumes[m.user_id] ?? 1} onSet={setMemberVolume} />
                         </li>
                       ))}
                     </ul>
@@ -398,15 +456,20 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                 <div className="grid md:grid-cols-[1fr_280px] gap-12 items-start">
                   <div>
                     <div className="flex flex-wrap gap-4 mb-10">
-                      <button
-                        className={`flex items-center gap-3 border px-6 py-4 font-mono text-xs uppercase tracking-widest transition-colors ${
-                          micOn ? 'bg-[#501a2c] text-[#F5F0EB] border-[#501a2c]' : 'text-[#501a2c] border-[#501a2c] hover:bg-[#501a2c] hover:text-[#F5F0EB]'
-                        }`}
-                        onClick={toggleMic}
-                      >
-                        <MicIcon off={!micOn} />
-                        {micOn ? t('radio.mic_on') : t('radio.mic_off')}
-                      </button>
+                      <div className="relative">
+                        {speaking && micOn && (
+                          <span className="absolute inset-0 border border-[#C9A690] animate-ping opacity-50 pointer-events-none" />
+                        )}
+                        <button
+                          className={`flex items-center gap-3 border px-6 py-4 font-mono text-xs uppercase tracking-widest transition-colors ${
+                            micOn ? 'bg-[#501a2c] text-[#F5F0EB] border-[#501a2c]' : 'text-[#501a2c] border-[#501a2c] hover:bg-[#501a2c] hover:text-[#F5F0EB]'
+                          }`}
+                          onClick={toggleMic}
+                        >
+                          <MicIcon off={!micOn} />
+                          {micOn ? t('radio.mic_on') : t('radio.mic_off')}
+                        </button>
+                      </div>
                       <button
                         className="border border-[#501a2c]/30 text-[#501a2c]/60 px-6 py-4 font-mono text-xs uppercase tracking-widest hover:border-[#501a2c] hover:text-[#501a2c] transition-colors"
                         onClick={leave}
@@ -414,7 +477,27 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                         {t('radio.leave')}
                       </button>
                     </div>
-                    <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/30">{t('radio.ptt_hint')}</p>
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/30 mb-8">{t('radio.ptt_hint')}</p>
+
+                    {/* Emoji reactions — desktop */}
+                    <div className="relative">
+                      <div className="absolute bottom-12 left-0 w-48 h-8 overflow-visible pointer-events-none select-none">
+                        {reactions.map(r => (
+                          <span key={r.id} className="absolute text-2xl"
+                            style={{ left: `${r.x}%`, bottom: 0, animation: 'epris-float-up 2.2s ease-out forwards' }}>
+                            {r.emoji}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex gap-4">
+                        {['👏', '❤️', '🎙'].map(e => (
+                          <button key={e} onClick={() => sendReaction(e)}
+                            className="text-xl opacity-40 hover:opacity-80 active:scale-125 transition-all select-none border border-[#501a2c]/10 w-10 h-10 flex items-center justify-center hover:border-[#501a2c]/30">
+                            {e}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
                   </div>
 
                   <div className="border border-[#501a2c]">
@@ -434,8 +517,9 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                         <li key={m.user_id} className={`px-4 py-3 flex items-center gap-3 ${m.mic_on ? '' : 'opacity-60'}`}>
                           <span className="w-2 h-2 rounded-full shrink-0" style={{ background: m.color }} />
                           <span className="font-serif text-[#501a2c]">{m.nickname}</span>
-                          {m.speaking && <span className="ml-auto w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse" />}
+                          {m.speaking && <span className="w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse" />}
                           <span className="ml-auto font-mono text-[10px] text-[#501a2c]/40">{m.mic_on ? 'MIC' : 'MUTE'}</span>
+                          <VolumeToggle userId={m.user_id} volume={memberVolumes[m.user_id] ?? 1} onSet={setMemberVolume} />
                         </li>
                       ))}
                     </ul>
