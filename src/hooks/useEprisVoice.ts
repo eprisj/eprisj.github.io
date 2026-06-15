@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-const API = 'https://live.eprisjournal.com'
+const API = 'https://eprisradio.munister.com.ua'
 const SIGNAL_POLL_MS = 1000
 const MEMBERS_POLL_MS = 2500
 const SPEAK_TICK_MS = 180
