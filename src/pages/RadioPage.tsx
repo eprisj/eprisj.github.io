@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useRef, useEffect, useCallback } from 'react'
+import { useState, useRef, useEffect, useCallback, useMemo } from 'react'
 import { useEprisVoice } from '../hooks/useEprisVoice'
+import type { ActiveRoom } from '../hooks/useEprisVoice'
 
 const isTouch = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0)
 
@@ -137,9 +138,118 @@ function NicknamePrompt({ onJoin, loading, t }: { onJoin: (nick: string) => void
 
 // ── Main ──────────────────────────────────────────────────────────────────────
 
+// ── Slug helper ───────────────────────────────────────────────────────────────
+
+function toSlug(s: string) {
+  return s.trim().toLowerCase().replace(/[^a-z0-9а-яіїє]+/gi, '-').replace(/^-|-$/g, '').slice(0, 40) || 'main'
+}
+
+// ── Active rooms list ─────────────────────────────────────────────────────────
+
+function RoomsList({ rooms, onJoin, t }: { rooms: ActiveRoom[]; onJoin: (slug: string, title: string) => void; t: (k: string) => string }) {
+  if (!rooms.length) return null
+  return (
+    <div className="mt-12 border-t border-[#501a2c]/10 pt-10">
+      <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#501a2c]/40 mb-5">{t('radio.active_rooms')}</p>
+      <ul className="space-y-0">
+        {rooms.map(r => (
+          <li key={r.slug} className="border border-[#501a2c]/10 hover:border-[#501a2c]/30 transition-colors">
+            <button
+              onClick={() => onJoin(r.slug, r.title)}
+              className="w-full flex items-center justify-between px-5 py-4 text-left group"
+            >
+              <span className="flex items-center gap-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C9A690] animate-pulse" />
+                <span className="font-serif text-lg text-[#501a2c] group-hover:text-[#3d1220] transition-colors">
+                  {r.title === r.slug ? r.slug : r.title}
+                </span>
+              </span>
+              <span className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40">
+                {r.member_count} {t('radio.participants').toLowerCase()}
+              </span>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+// ── Create room panel ─────────────────────────────────────────────────────────
+
+function CreateRoomPanel({ onStart, t }: { onStart: (slug: string, title: string) => void; t: (k: string) => string }) {
+  const [name, setName] = useState('')
+  const slug = name.trim() ? toSlug(name) : ''
+  return (
+    <div className="mt-8 border border-dashed border-[#501a2c]/20 p-6 max-w-sm">
+      <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 mb-4">{t('radio.create_room')}</p>
+      <input
+        type="text"
+        value={name}
+        onChange={e => setName(e.target.value)}
+        onKeyDown={e => e.key === 'Enter' && slug && onStart(slug, name.trim())}
+        placeholder={t('radio.room_name_placeholder')}
+        maxLength={50}
+        className="w-full bg-transparent border-b border-[#501a2c]/30 font-serif text-lg text-[#501a2c] placeholder-[#501a2c]/20 focus:outline-none pb-2 mb-4 focus:border-[#501a2c]"
+        autoFocus
+      />
+      {slug && (
+        <p className="font-mono text-[9px] text-[#501a2c]/30 mb-4 truncate">
+          /radio?room={slug}
+        </p>
+      )}
+      <button
+        onClick={() => slug && onStart(slug, name.trim())}
+        disabled={!slug}
+        className="w-full border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] font-mono text-xs uppercase tracking-widest py-3 hover:bg-[#3d1220] transition-colors disabled:opacity-30"
+      >
+        {t('radio.create_and_join')}
+      </button>
+    </div>
+  )
+}
+
+// ── Share button ──────────────────────────────────────────────────────────────
+
+function ShareButton({ roomSlug, t }: { roomSlug: string; t: (k: string) => string }) {
+  const [copied, setCopied] = useState(false)
+  const copy = () => {
+    const url = roomSlug === 'main'
+      ? `${window.location.origin}/radio`
+      : `${window.location.origin}/radio?room=${encodeURIComponent(roomSlug)}`
+    navigator.clipboard?.writeText(url).then(() => { setCopied(true); setTimeout(() => setCopied(false), 2000) }).catch(() => {})
+  }
+  return (
+    <button
+      onClick={copy}
+      className="border border-[#F5F0EB]/20 px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-[#F5F0EB]/50 hover:border-[#C9A690] hover:text-[#C9A690] transition-colors whitespace-nowrap"
+    >
+      {copied ? '✓ copied' : t('radio.share_link')}
+    </button>
+  )
+}
+
+// ── Main ──────────────────────────────────────────────────────────────────────
+
 export function RadioPage({ t }: { t: (k: string) => string }) {
-  const { members, memberVolumes, joined, micOn, speaking, connecting, error, audioBlocked, myUser, join, leave, toggleMic, unlockAudio, setMemberVolume } = useEprisVoice()
+  // Parse room from URL — stable for the lifetime of the page
+  const [roomSlug, setRoomSlug] = useState(() => {
+    const p = new URLSearchParams(window.location.search)
+    return p.get('room') || 'main'
+  })
+  const roomTitle = useMemo(() => {
+    const p = new URLSearchParams(window.location.search)
+    return p.get('room') || ''
+  }, [])
+
+  const {
+    members, memberVolumes, joined, micOn, speaking, connecting, error,
+    audioBlocked, myUser, isHost, broadcastEnded, activeRooms,
+    join, leave, endBroadcast, toggleMic, unlockAudio, setMemberVolume,
+  } = useEprisVoice({ roomSlug })
+
   const [showNickPrompt, setShowNickPrompt] = useState(false)
+  const [showCreateRoom, setShowCreateRoom] = useState(false)
   const [pttHeld, setPttHeld] = useState(false)
   const [announcements, setAnnouncements] = useState<Announcement[]>([])
   const [reactions, setReactions] = useState<{ id: number; emoji: string; x: number }[]>([])
@@ -151,6 +261,15 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
     setTimeout(() => setReactions(prev => prev.filter(r => r.id !== id)), 2200)
   }, [])
 
+  const navigateToRoom = useCallback((slug: string, title: string) => {
+    const url = slug === 'main' ? '/radio' : `/radio?room=${encodeURIComponent(slug)}`
+    window.history.pushState(null, '', url)
+    setRoomSlug(slug)
+    setShowNickPrompt(true)
+    setShowCreateRoom(false)
+    void title  // used for future: room title display
+  }, [])
+
   const total = members.length + (joined ? 1 : 0)
   const anyoneSpeaking = members.some(m => m.speaking) || (micOn && speaking)
   const isActive = joined || members.length > 0
@@ -159,7 +278,13 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
     fetch(`${API}/api/announcements`).then(r => r.json()).then(d => setAnnouncements(d.data || [])).catch(() => {})
   }, [])
 
-  const handleJoin = async (nick: string) => { setShowNickPrompt(false); await join(nick) }
+  const handleJoin = async (nick: string) => {
+    setShowNickPrompt(false)
+    // Ensure URL reflects the room before joining
+    const url = roomSlug === 'main' ? '/radio' : `/radio?room=${encodeURIComponent(roomSlug)}`
+    window.history.replaceState(null, '', url)
+    await join(nick)
+  }
 
   // PTT Space key (desktop only)
   useEffect(() => {
@@ -215,6 +340,12 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                   {total} {pluralEn(total, t)}
                 </span>
               )}
+              {roomSlug !== 'main' && (
+                <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#C9A690]/60 max-w-[120px] truncate">
+                  #{roomSlug}
+                </span>
+              )}
+              {joined && <ShareButton roomSlug={roomSlug} t={t} />}
             </div>
           </div>
 
@@ -259,8 +390,19 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
 
         <AnimatePresence mode="wait">
 
+          {/* Broadcast ended notice */}
+          <AnimatePresence>
+            {broadcastEnded && !joined && (
+              <motion.div key="ended-notice" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
+                className="mb-8 border border-[#501a2c]/20 bg-[#501a2c]/5 p-4 flex items-center justify-between">
+                <span className="font-mono text-xs text-[#501a2c]/70 uppercase tracking-widest">{t('radio.broadcast_ended')}</span>
+                <button onClick={() => {}} className="font-mono text-[10px] text-[#501a2c]/40 uppercase tracking-widest hover:text-[#501a2c]">✕</button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           {/* Idle — no one in ether */}
-          {!joined && members.length === 0 && !showNickPrompt && (
+          {!joined && members.length === 0 && !showNickPrompt && !showCreateRoom && (
             <motion.div key="idle" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
               <div className="grid md:grid-cols-2 gap-16 items-start">
                 <div>
@@ -270,13 +412,21 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                   <p className="font-serif text-lg text-[#501a2c]/70 leading-relaxed mb-10">
                     {t('radio.idle_desc')}
                   </p>
-                  <button
-                    onClick={() => setShowNickPrompt(true)}
-                    disabled={connecting}
-                    className="border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] font-mono text-xs uppercase tracking-widest px-8 py-4 hover:bg-[#3d1220] transition-colors disabled:opacity-50"
-                  >
-                    {connecting ? t('radio.connecting') : t('radio.join_cta')}
-                  </button>
+                  <div className="flex flex-wrap gap-4">
+                    <button
+                      onClick={() => setShowNickPrompt(true)}
+                      disabled={connecting}
+                      className="border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] font-mono text-xs uppercase tracking-widest px-8 py-4 hover:bg-[#3d1220] transition-colors disabled:opacity-50"
+                    >
+                      {connecting ? t('radio.connecting') : t('radio.join_cta')}
+                    </button>
+                    <button
+                      onClick={() => setShowCreateRoom(true)}
+                      className="border border-[#501a2c]/30 text-[#501a2c]/60 font-mono text-xs uppercase tracking-widest px-6 py-4 hover:border-[#501a2c] hover:text-[#501a2c] transition-colors"
+                    >
+                      {t('radio.create_room')}
+                    </button>
+                  </div>
                 </div>
                 <div className="space-y-0">
                   {[t('radio.feat1'), t('radio.feat2'), t('radio.feat3'), t('radio.feat4')].map((item, i) => (
@@ -290,13 +440,27 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                 </div>
               </div>
 
+              <RoomsList rooms={activeRooms} onJoin={navigateToRoom} t={t} />
+
               {/* Empty schedule notice */}
-              {announcements.length === 0 && (
+              {announcements.length === 0 && activeRooms.length === 0 && (
                 <div className="mt-16 border-t border-[#501a2c]/10 pt-10">
                   <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#501a2c]/30 mb-2">{t('radio.schedule_title')}</p>
                   <p className="font-serif text-[#501a2c]/30">{t('radio.schedule_empty')}</p>
                 </div>
               )}
+            </motion.div>
+          )}
+
+          {/* Create room panel */}
+          {!joined && showCreateRoom && (
+            <motion.div key="create" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
+              <div className="mb-8">
+                <button onClick={() => setShowCreateRoom(false)} className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/50 hover:text-[#501a2c] transition-colors">
+                  {t('radio.back')}
+                </button>
+              </div>
+              <CreateRoomPanel onStart={(slug, title) => navigateToRoom(slug, title)} t={t} />
             </motion.div>
           )}
 
@@ -444,12 +608,22 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                     </ul>
                   </div>
 
-                  <button
-                    className="w-full border border-[#501a2c]/30 text-[#501a2c]/60 py-4 font-mono text-xs uppercase tracking-widest hover:border-[#501a2c] hover:text-[#501a2c] transition-colors"
-                    onClick={leave}
-                  >
-                    {t('radio.leave')}
-                  </button>
+                  <div className="w-full flex gap-3">
+                    <button
+                      className="flex-1 border border-[#501a2c]/30 text-[#501a2c]/60 py-4 font-mono text-xs uppercase tracking-widest hover:border-[#501a2c] hover:text-[#501a2c] transition-colors"
+                      onClick={leave}
+                    >
+                      {t('radio.leave')}
+                    </button>
+                    {isHost && (
+                      <button
+                        className="flex-1 border border-red-800/30 text-red-800/60 py-4 font-mono text-xs uppercase tracking-widest hover:border-red-800 hover:text-red-800 transition-colors"
+                        onClick={endBroadcast}
+                      >
+                        {t('radio.end_broadcast')}
+                      </button>
+                    )}
+                  </div>
                 </div>
               ) : (
                 /* Desktop layout */
@@ -476,6 +650,14 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                       >
                         {t('radio.leave')}
                       </button>
+                      {isHost && (
+                        <button
+                          className="border border-red-800/20 text-red-800/50 px-6 py-4 font-mono text-xs uppercase tracking-widest hover:border-red-800/60 hover:text-red-800 transition-colors"
+                          onClick={endBroadcast}
+                        >
+                          {t('radio.end_broadcast')}
+                        </button>
+                      )}
                     </div>
                     <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/30 mb-8">{t('radio.ptt_hint')}</p>
 
