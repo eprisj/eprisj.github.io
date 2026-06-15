@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect, useRef } from 'react'
-import { Play, Pause, X, ChevronRight } from 'lucide-react'
+import { Play, Pause, X, ChevronRight, Mic2 } from 'lucide-react'
 
 const API = 'https://eprisradio.munister.com.ua'
 
@@ -50,59 +50,35 @@ function useAudioPlayer(src: string | null) {
   }, [src])
 
   const toggle = () => {
-    const audio = audioRef.current
-    if (!audio) return
-    if (playing) { audio.pause(); setPlaying(false) }
-    else { audio.play().catch(() => {}); setPlaying(true) }
+    const a = audioRef.current; if (!a) return
+    if (playing) { a.pause(); setPlaying(false) } else { a.play().catch(() => {}); setPlaying(true) }
   }
-
-  const seek = (ratio: number) => {
-    const audio = audioRef.current
-    if (!audio) return
-    audio.currentTime = ratio * (audio.duration || 0)
-  }
-
+  const seek = (r: number) => { const a = audioRef.current; if (a) a.currentTime = r * (a.duration || 0) }
   const fmtTime = (s: number) => {
     if (!s || !isFinite(s)) return '0:00'
-    const m = Math.floor(s / 60), sec = Math.floor(s % 60)
-    return `${m}:${sec.toString().padStart(2, '0')}`
+    return `${Math.floor(s / 60)}:${Math.floor(s % 60).toString().padStart(2, '0')}`
   }
-
   return { playing, progress, duration, toggle, seek, fmtTime }
 }
 
 // ── Episode card ─────────────────────────────────────────────────────────────
 
-function EpisodeCard({ ep, onClick }: { ep: Podcast; onClick: () => void }) {
-  const cover = ep.cover_url
-    ? ep.cover_url
-    : `https://picsum.photos/seed/epris-ep-${ep.id}/400/400?grayscale`
-
+function EpisodeCard({ ep, onClick, t }: { ep: Podcast; onClick: () => void; t: (k: string) => string }) {
+  const cover = ep.cover_url ?? `https://picsum.photos/seed/epris-ep-${ep.id}/400/400?grayscale`
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.3 }}
+      initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3 }}
       className="group cursor-pointer border border-[#501a2c]/20 hover:border-[#501a2c] transition-colors"
-      onClick={onClick}
-      role="button"
-      tabIndex={0}
-      onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && onClick()}
+      onClick={onClick} role="button" tabIndex={0} onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && onClick()}
     >
       <div className="aspect-square overflow-hidden bg-[#E8DED5] relative">
-        <img
-          src={cover}
-          alt={ep.title}
-          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-          referrerPolicy="no-referrer"
-        />
+        <img src={cover} alt={ep.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" referrerPolicy="no-referrer" />
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-[#501a2c]/60">
           <Play size={32} className="text-[#F5F0EB]" />
         </div>
         {ep.episode_number !== undefined && (
           <div className="absolute top-3 left-3 bg-[#F5F0EB]/90 px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-[#501a2c]">
-            {ep.season ? `${ep.season} · ` : ''}Ep. {ep.episode_number}
+            {ep.season ? `${ep.season} · ` : ''}{t('podcasts.episode_label')} {ep.episode_number}
           </div>
         )}
       </div>
@@ -112,9 +88,7 @@ function EpisodeCard({ ep, onClick }: { ep: Podcast; onClick: () => void }) {
           <span className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/50">
             {new Date(ep.published_at).toLocaleDateString('uk-UA', { day: 'numeric', month: 'long', year: 'numeric' })}
           </span>
-          {ep.duration_label && (
-            <span className="font-mono text-[10px] text-[#501a2c]/40">{ep.duration_label}</span>
-          )}
+          {ep.duration_label && <span className="font-mono text-[10px] text-[#501a2c]/40">{ep.duration_label}</span>}
         </div>
       </div>
     </motion.div>
@@ -123,11 +97,9 @@ function EpisodeCard({ ep, onClick }: { ep: Podcast; onClick: () => void }) {
 
 // ── Episode detail overlay ───────────────────────────────────────────────────
 
-function EpisodeDetail({ ep, onClose }: { ep: Podcast; onClose: () => void }) {
+function EpisodeDetail({ ep, onClose, t }: { ep: Podcast; onClose: () => void; t: (k: string) => string }) {
   const { playing, progress, duration, toggle, seek, fmtTime } = useAudioPlayer(ep.audio_url)
-  const cover = ep.cover_url
-    ? ep.cover_url
-    : `https://picsum.photos/seed/epris-ep-${ep.id}/800/800?grayscale`
+  const cover = ep.cover_url ?? `https://picsum.photos/seed/epris-ep-${ep.id}/800/800?grayscale`
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
@@ -137,16 +109,13 @@ function EpisodeDetail({ ep, onClose }: { ep: Podcast; onClose: () => void }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 20 }}
-      transition={{ duration: 0.25 }}
+      initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }} transition={{ duration: 0.25 }}
       className="fixed inset-0 z-[60] bg-[#F5F0EB] overflow-y-auto"
     >
       <div className="max-w-4xl mx-auto px-6 sm:px-8 md:px-16 py-8 md:py-16">
         <div className="flex items-center justify-between mb-12">
-          <button onClick={onClose} className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c]/60 hover:text-[#501a2c] transition-colors">
-            ← Подкасти
+          <button onClick={onClose} className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/60 hover:text-[#501a2c] transition-colors">
+            {t('podcasts.back')}
           </button>
           <button onClick={onClose} className="w-8 h-8 flex items-center justify-center border border-[#501a2c]/20 hover:border-[#501a2c] transition-colors text-[#501a2c]">
             <X size={14} />
@@ -154,35 +123,19 @@ function EpisodeDetail({ ep, onClose }: { ep: Podcast; onClose: () => void }) {
         </div>
 
         <div className="grid md:grid-cols-[280px_1fr] gap-12 items-start">
-          {/* Cover */}
           <div>
             <div className="aspect-square bg-[#E8DED5] overflow-hidden mb-6">
               <img src={cover} alt={ep.title} className="w-full h-full object-cover grayscale" referrerPolicy="no-referrer" />
             </div>
-
-            {/* Player */}
             <div className="border border-[#501a2c] p-4">
               <div className="flex items-center gap-4 mb-4">
-                <button
-                  onClick={toggle}
-                  className="w-12 h-12 rounded-full bg-[#501a2c] text-[#F5F0EB] flex items-center justify-center hover:bg-[#3d1220] transition-colors shrink-0"
-                >
+                <button onClick={toggle} className="w-12 h-12 rounded-full bg-[#501a2c] text-[#F5F0EB] flex items-center justify-center hover:bg-[#3d1220] transition-colors shrink-0">
                   {playing ? <Pause size={18} /> : <Play size={18} />}
                 </button>
-                <div className="flex-1 min-w-0">
-                  <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60 truncate">{ep.title}</p>
-                </div>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60 truncate flex-1 min-w-0">{ep.title}</p>
               </div>
-
-              {/* Progress bar */}
-              <div
-                className="h-1 bg-[#501a2c]/15 rounded-full cursor-pointer relative overflow-hidden"
-                onClick={e => {
-                  const rect = e.currentTarget.getBoundingClientRect()
-                  seek((e.clientX - rect.left) / rect.width)
-                }}
-              >
-                <div className="h-full bg-[#501a2c] transition-all" style={{ width: `${progress * 100}%` }} />
+              <div className="h-1 bg-[#501a2c]/15 rounded-full cursor-pointer" onClick={e => { const r = e.currentTarget.getBoundingClientRect(); seek((e.clientX - r.left) / r.width) }}>
+                <div className="h-full bg-[#501a2c] rounded-full transition-all" style={{ width: `${progress * 100}%` }} />
               </div>
               <div className="flex justify-between font-mono text-[10px] text-[#501a2c]/40 mt-1">
                 <span>{fmtTime(progress * duration)}</span>
@@ -191,26 +144,21 @@ function EpisodeDetail({ ep, onClose }: { ep: Podcast; onClose: () => void }) {
             </div>
           </div>
 
-          {/* Meta */}
           <div>
             {ep.episode_number !== undefined && (
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#501a2c]/50 mb-4">
-                {ep.season ? `${ep.season} · ` : ''}Епізод {ep.episode_number}
+                {ep.season ? `${ep.season} · ` : ''}{t('podcasts.episode_label')} {ep.episode_number}
               </p>
             )}
             <h1 className="font-serif text-4xl md:text-5xl text-[#501a2c] mb-6 leading-tight">{ep.title}</h1>
             <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 mb-8">
               {new Date(ep.published_at).toLocaleDateString('uk-UA', { day: 'numeric', month: 'long', year: 'numeric' })}
             </p>
-            {ep.description && (
-              <p className="font-serif text-xl text-[#501a2c]/70 leading-relaxed mb-8">{ep.description}</p>
-            )}
+            {ep.description && <p className="font-serif text-xl text-[#501a2c]/70 leading-relaxed mb-8">{ep.description}</p>}
             {ep.tags.length > 0 && (
               <div className="flex flex-wrap gap-2">
                 {ep.tags.map(tag => (
-                  <span key={tag} className="border border-[#501a2c]/20 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60">
-                    {tag}
-                  </span>
+                  <span key={tag} className="border border-[#501a2c]/20 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60">{tag}</span>
                 ))}
               </div>
             )}
@@ -221,17 +169,17 @@ function EpisodeDetail({ ep, onClose }: { ep: Podcast; onClose: () => void }) {
   )
 }
 
-// ── Announcement card ────────────────────────────────────────────────────────
+// ── Announcement card ─────────────────────────────────────────────────────────
 
 function AnnouncementCard({ ann }: { ann: Announcement }) {
-  const cover = ann.cover_url
-    ? ann.cover_url
-    : `https://picsum.photos/seed/epris-ann-${ann.id}/600/400?grayscale`
-
+  const cover = ann.cover_url ?? `https://picsum.photos/seed/epris-ann-${ann.id}/600/400?grayscale`
   return (
-    <div className="border border-[#501a2c]/20 bg-[#E8DED5] overflow-hidden">
-      <div className="aspect-[3/2] overflow-hidden bg-[#E8DED5]">
-        <img src={cover} alt={ann.title} className="w-full h-full object-cover grayscale" referrerPolicy="no-referrer" />
+    <motion.div
+      initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3 }}
+      className="border border-[#501a2c]/20 bg-[#E8DED5] overflow-hidden hover:border-[#501a2c] transition-colors"
+    >
+      <div className="aspect-[3/2] overflow-hidden">
+        <img src={cover} alt={ann.title} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" referrerPolicy="no-referrer" />
       </div>
       <div className="p-6">
         {ann.event_date && (
@@ -250,21 +198,17 @@ function AnnouncementCard({ ann }: { ann: Announcement }) {
           </div>
         )}
         {ann.link_url && (
-          <a
-            href={ann.link_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c] border-b border-[#501a2c]/40 hover:border-[#501a2c] transition-colors"
-          >
+          <a href={ann.link_url} target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c] border-b border-[#501a2c]/40 hover:border-[#501a2c] transition-colors">
             {ann.link_label || 'Детальніше'} <ChevronRight size={12} />
           </a>
         )}
       </div>
-    </div>
+    </motion.div>
   )
 }
 
-// ── Main page ────────────────────────────────────────────────────────────────
+// ── Main page ─────────────────────────────────────────────────────────────────
 
 export function PodcastsPage({ t }: { t: (k: string) => string }) {
   const [podcasts, setPodcasts] = useState<Podcast[]>([])
@@ -286,70 +230,77 @@ export function PodcastsPage({ t }: { t: (k: string) => string }) {
 
   return (
     <div className="pt-16 min-h-screen bg-[#F5F0EB]">
-      {/* Header */}
-      <div className="border-b border-[#501a2c] px-8 md:px-16 py-12">
-        <div className="max-w-5xl mx-auto">
-          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#501a2c]/50 mb-3">EPRIS · Audio</p>
-          <h1 className="font-serif text-5xl md:text-7xl text-[#501a2c] leading-none">Подкасти</h1>
-        </div>
-      </div>
 
-      {/* Tab switcher */}
-      <div className="border-b border-[#501a2c]/20">
-        <div className="max-w-5xl mx-auto px-8 md:px-16">
-          <div className="flex">
+      {/* Header dark */}
+      <div className="bg-[#501a2c]">
+        <div className="max-w-5xl mx-auto px-8 md:px-16 pt-12 pb-12">
+          <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-[#C9A690] mb-4">{t('podcasts.eyebrow')}</p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+              <h1 className="font-serif text-5xl md:text-7xl text-[#F5F0EB] leading-none mb-4">{t('podcasts.title')}</h1>
+              <p className="font-serif text-lg text-[#F5F0EB]/60 max-w-lg leading-relaxed">{t('podcasts.intro')}</p>
+            </div>
+            <div className="flex items-center gap-3 shrink-0">
+              <Mic2 size={16} className="text-[#C9A690]" />
+              <span className="font-mono text-[10px] uppercase tracking-widest text-[#F5F0EB]/40">
+                {podcasts.length > 0 ? `${podcasts.length} ep.` : 'EPRIS Audio'}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Tab bar */}
+        <div className="border-t border-[#F5F0EB]/10">
+          <div className="max-w-5xl mx-auto px-8 md:px-16 flex">
             {(['podcasts', 'announcements'] as const).map(tab => (
               <button
                 key={tab}
                 onClick={() => setView(tab)}
                 className={`px-6 py-4 font-mono text-xs uppercase tracking-widest border-b-2 transition-colors ${
-                  view === tab ? 'border-[#501a2c] text-[#501a2c]' : 'border-transparent text-[#501a2c]/40 hover:text-[#501a2c]'
+                  view === tab ? 'border-[#C9A690] text-[#F5F0EB]' : 'border-transparent text-[#F5F0EB]/30 hover:text-[#F5F0EB]/60'
                 }`}
               >
-                {tab === 'podcasts' ? 'Епізоди' : 'Анонси'}
+                {tab === 'podcasts' ? t('podcasts.tab_episodes') : t('podcasts.tab_announcements')}
               </button>
             ))}
           </div>
         </div>
       </div>
 
+      {/* Content */}
       <div className="max-w-5xl mx-auto px-8 md:px-16 py-16">
         {loading ? (
           <div className="text-center py-24">
-            <p className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/30">Завантаження…</p>
+            <p className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/30">…</p>
           </div>
         ) : view === 'podcasts' ? (
           podcasts.length === 0 ? (
             <div className="text-center py-24">
-              <div className="w-16 h-16 rounded-full border border-[#501a2c]/20 flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 border border-[#501a2c]/20 flex items-center justify-center mx-auto mb-6">
                 <Play size={24} className="text-[#501a2c]/30" />
               </div>
-              <p className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/30">Епізоди з'являться незабаром</p>
+              <p className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/30">{t('podcasts.empty_episodes')}</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {podcasts.map(ep => (
-                <EpisodeCard key={ep.id} ep={ep} onClick={() => setSelectedEp(ep)} />
-              ))}
+              {podcasts.map(ep => <EpisodeCard key={ep.id} ep={ep} onClick={() => setSelectedEp(ep)} t={t} />)}
             </div>
           )
         ) : (
           announcements.length === 0 ? (
             <div className="text-center py-24">
-              <p className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/30">Анонси з'являться незабаром</p>
+              <p className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/30">{t('podcasts.empty_announcements')}</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {announcements.map(ann => (
-                <AnnouncementCard key={ann.id} ann={ann} />
-              ))}
+              {announcements.map(ann => <AnnouncementCard key={ann.id} ann={ann} />)}
             </div>
           )
         )}
       </div>
 
       <AnimatePresence>
-        {selectedEp && <EpisodeDetail ep={selectedEp} onClose={() => setSelectedEp(null)} />}
+        {selectedEp && <EpisodeDetail ep={selectedEp} onClose={() => setSelectedEp(null)} t={t} />}
       </AnimatePresence>
     </div>
   )

@@ -2,6 +2,19 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useRef, useEffect } from 'react'
 import { useEprisVoice } from '../hooks/useEprisVoice'
 
+const API = 'https://eprisradio.munister.com.ua'
+
+type Announcement = {
+  id: number
+  title: string
+  body?: string
+  event_date?: string
+  location?: string
+  tags: string[]
+  link_url?: string
+  link_label?: string
+}
+
 // ── Icons ────────────────────────────────────────────────────────────────────
 
 function MicIcon({ off }: { off?: boolean }) {
@@ -14,48 +27,79 @@ function MicIcon({ off }: { off?: boolean }) {
   )
 }
 
-// ── Signal bars animation ────────────────────────────────────────────────────
+// ── Signal bars ───────────────────────────────────────────────────────────────
 
 function SignalBars({ active }: { active: boolean }) {
   return (
     <div className="flex items-end gap-[3px] h-8" aria-hidden>
-      {Array.from({ length: 18 }).map((_, i) => (
+      {Array.from({ length: 24 }).map((_, i) => (
         <span
           key={i}
-          className={`w-[3px] rounded-sm transition-colors duration-300 ${active ? 'bg-[#501a2c]' : 'bg-[#501a2c]/20'}`}
+          className={`w-[3px] rounded-sm ${active ? 'bg-[#F5F0EB]' : 'bg-[#F5F0EB]/20'}`}
           style={{
-            height: active
-              ? `${20 + Math.sin(i * 0.7) * 12}px`
-              : `${6 + (i % 3) * 3}px`,
-            transition: active ? `height 0.${3 + (i % 4)}s ease-in-out ${i * 0.04}s, background-color 0.3s` : 'all 0.5s',
+            height: active ? `${20 + Math.sin(i * 0.7) * 12}px` : `${4 + (i % 4) * 3}px`,
+            transition: active ? `height 0.${3 + (i % 4)}s ease-in-out ${i * 0.04}s, background-color 0.3s` : 'all 0.6s',
             animation: active ? `epris-bar ${0.6 + (i % 5) * 0.15}s ease-in-out infinite alternate` : 'none',
-            animationDelay: `${i * 0.06}s`,
+            animationDelay: `${i * 0.05}s`,
           }}
         />
       ))}
-      <style>{`
-        @keyframes epris-bar {
-          from { height: 4px; }
-          to { height: 28px; }
-        }
-      `}</style>
+      <style>{`@keyframes epris-bar { from { height: 4px; } to { height: 28px; } }`}</style>
     </div>
   )
 }
 
-// ── Nickname prompt ──────────────────────────────────────────────────────────
+// ── Live badge ────────────────────────────────────────────────────────────────
 
-function NicknamePrompt({ onJoin, loading }: { onJoin: (nick: string) => void; loading: boolean }) {
+function LiveBadge({ label }: { label: string }) {
+  return (
+    <span className="inline-flex items-center gap-2 border border-[#C9A690] px-3 py-1">
+      <span className="w-1.5 h-1.5 rounded-full bg-[#C9A690] animate-pulse" />
+      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#C9A690]">{label}</span>
+    </span>
+  )
+}
+
+// ── Schedule card (announcements used as broadcast schedule) ─────────────────
+
+function ScheduleCard({ ann }: { ann: Announcement }) {
+  return (
+    <div className="border-b border-[#F5F0EB]/10 py-5 last:border-0">
+      <div className="flex items-start justify-between gap-6">
+        <div className="flex-1 min-w-0">
+          {ann.event_date && (
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#C9A690] mb-2">
+              {new Date(ann.event_date).toLocaleDateString('uk-UA', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}
+              {ann.location && ` · ${ann.location}`}
+            </p>
+          )}
+          <h3 className="font-serif text-lg text-[#F5F0EB] leading-snug">{ann.title}</h3>
+          {ann.body && <p className="font-mono text-[11px] text-[#F5F0EB]/50 mt-2 leading-relaxed">{ann.body}</p>}
+        </div>
+        {ann.link_url && (
+          <a href={ann.link_url} target="_blank" rel="noopener noreferrer"
+            className="shrink-0 border border-[#F5F0EB]/20 px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-[#F5F0EB]/60 hover:border-[#C9A690] hover:text-[#C9A690] transition-colors whitespace-nowrap">
+            {ann.link_label || '→'}
+          </a>
+        )}
+      </div>
+    </div>
+  )
+}
+
+// ── Nickname prompt ───────────────────────────────────────────────────────────
+
+function NicknamePrompt({ onJoin, loading, t }: { onJoin: (nick: string) => void; loading: boolean; t: (k: string) => string }) {
   const [nick, setNick] = useState('')
   return (
     <div className="border border-[#501a2c] p-8 max-w-sm mx-auto">
-      <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60 mb-6">Ваш псевдонім в ефірі</p>
+      <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60 mb-6">{t('radio.nick_label')}</p>
       <input
         type="text"
         value={nick}
         onChange={e => setNick(e.target.value)}
         onKeyDown={e => e.key === 'Enter' && nick.trim().length >= 2 && onJoin(nick.trim())}
-        placeholder="Введіть ім'я…"
+        placeholder={t('radio.nick_placeholder')}
         maxLength={24}
         className="w-full bg-transparent border-b border-[#501a2c] font-serif text-xl text-[#501a2c] placeholder-[#501a2c]/30 focus:outline-none pb-2 mb-8"
         autoFocus
@@ -65,133 +109,158 @@ function NicknamePrompt({ onJoin, loading }: { onJoin: (nick: string) => void; l
         disabled={loading}
         className="w-full border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] font-mono text-xs uppercase tracking-widest py-3 hover:bg-[#3d1220] transition-colors disabled:opacity-50"
       >
-        {loading ? 'Підключення…' : 'Увійти в ефір'}
+        {loading ? t('radio.connecting') : t('radio.nick_enter')}
       </button>
-      <p className="font-mono text-[10px] text-[#501a2c]/40 mt-4 text-center">
-        Можна залишити порожнім — отримаєте випадкове ім'я
-      </p>
+      <p className="font-mono text-[10px] text-[#501a2c]/40 mt-4 text-center">{t('radio.nick_anon')}</p>
     </div>
   )
 }
 
-// ── Main component ───────────────────────────────────────────────────────────
+// ── Main ──────────────────────────────────────────────────────────────────────
 
 export function RadioPage({ t }: { t: (k: string) => string }) {
   const { members, joined, micOn, speaking, connecting, error, audioBlocked, myUser, join, leave, toggleMic, unlockAudio } = useEprisVoice()
   const [showNickPrompt, setShowNickPrompt] = useState(false)
   const [pttHeld, setPttHeld] = useState(false)
+  const [announcements, setAnnouncements] = useState<Announcement[]>([])
   const pttBusyRef = useRef(false)
 
   const total = members.length + (joined ? 1 : 0)
   const anyoneSpeaking = members.some(m => m.speaking) || (micOn && speaking)
+  const isActive = joined || members.length > 0
 
-  const handleJoin = async (nick: string) => {
-    setShowNickPrompt(false)
-    await join(nick)
-  }
+  useEffect(() => {
+    fetch(`${API}/api/announcements`).then(r => r.json()).then(d => setAnnouncements(d.data || [])).catch(() => {})
+  }, [])
 
-  // PTT: Space key
+  const handleJoin = async (nick: string) => { setShowNickPrompt(false); await join(nick) }
+
+  // PTT Space key
   useEffect(() => {
     if (!joined) return
     const onDown = (e: KeyboardEvent) => {
       if (e.code !== 'Space' || e.repeat) return
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
       e.preventDefault()
-      if (!pttBusyRef.current && !micOn) {
-        pttBusyRef.current = true
-        setPttHeld(true)
-        toggleMic().finally(() => { pttBusyRef.current = false })
-      }
+      if (!pttBusyRef.current && !micOn) { pttBusyRef.current = true; setPttHeld(true); toggleMic().finally(() => { pttBusyRef.current = false }) }
     }
     const onUp = (e: KeyboardEvent) => {
       if (e.code !== 'Space') return
       if (pttHeld && micOn) { setPttHeld(false); toggleMic() }
     }
-    window.addEventListener('keydown', onDown)
-    window.addEventListener('keyup', onUp)
+    window.addEventListener('keydown', onDown); window.addEventListener('keyup', onUp)
     return () => { window.removeEventListener('keydown', onDown); window.removeEventListener('keyup', onUp) }
   }, [joined, micOn, pttHeld, toggleMic])
 
   return (
-    <div className="pt-16 min-h-screen bg-[#F5F0EB]">
-      {/* Header strip */}
-      <div className="border-b border-[#501a2c] px-8 md:px-16 py-12">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
-          <div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#501a2c]/50 mb-3">EPRIS · Live Radio</p>
-            <h1 className="font-serif text-5xl md:text-7xl text-[#501a2c] leading-none">
-              {joined ? 'На зв\'язку' : members.length > 0 ? 'Ефір йде' : 'Ефір'}
-            </h1>
+    <div className="min-h-screen bg-[#F5F0EB]">
+
+      {/* ── Hero dark strip ────────────────────────────────────────────────── */}
+      <div className="bg-[#501a2c] pt-16">
+        <div className="max-w-5xl mx-auto px-8 md:px-16 pt-12 pb-10">
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-[#C9A690] mb-4">{t('radio.eyebrow')}</p>
+              <h1 className="font-serif text-5xl md:text-7xl text-[#F5F0EB] leading-none mb-4">
+                {joined ? t('radio.on_air') : members.length > 0 ? t('radio.broadcast_active') : 'EPRIS Live'}
+              </h1>
+              <p className="font-serif text-lg text-[#F5F0EB]/60 max-w-xl leading-relaxed">
+                {t('radio.concept')}
+              </p>
+            </div>
+            <div className="flex flex-col items-end gap-3 shrink-0">
+              {isActive
+                ? <LiveBadge label={t('radio.live_badge')} />
+                : <span className="font-mono text-[10px] uppercase tracking-widest text-[#F5F0EB]/30">{t('radio.standby')}</span>
+              }
+              {isActive && (
+                <span className="font-mono text-xs text-[#F5F0EB]/40 uppercase tracking-widest">
+                  {total} {pluralEn(total, t)}
+                </span>
+              )}
+            </div>
           </div>
-          <div className="flex items-center gap-4">
-            <div className={`w-2 h-2 rounded-full ${joined || members.length > 0 ? 'bg-[#501a2c] animate-pulse' : 'bg-[#501a2c]/20'}`} />
-            <span className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/60">
-              {joined ? `В ефірі · ${total} ${plural(total)}` : members.length > 0 ? `Йде · ${members.length} ${plural(members.length)}` : 'Очікування'}
-            </span>
+
+          {/* Signal meter */}
+          <div className="border border-[#F5F0EB]/10 p-5">
+            <div className="flex items-center justify-between mb-3">
+              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#F5F0EB]/40">Signal · WebRTC</span>
+              <span className="font-mono text-[10px] uppercase tracking-widest text-[#C9A690]">
+                {anyoneSpeaking ? '● LIVE' : '○ STANDBY'}
+              </span>
+            </div>
+            <SignalBars active={anyoneSpeaking} />
           </div>
         </div>
+
+        {/* Schedule strip (inside dark bg) */}
+        {announcements.length > 0 && (
+          <div className="border-t border-[#F5F0EB]/10">
+            <div className="max-w-5xl mx-auto px-8 md:px-16 py-8">
+              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#C9A690] mb-6">{t('radio.schedule_title')}</p>
+              {announcements.slice(0, 3).map(ann => <ScheduleCard key={ann.id} ann={ann} />)}
+            </div>
+          </div>
+        )}
       </div>
 
+      {/* ── Light area ─────────────────────────────────────────────────────── */}
       <div className="max-w-5xl mx-auto px-8 md:px-16 py-16">
 
-        {/* Audio unlock banner */}
+        {/* Audio unlock */}
         <AnimatePresence>
           {audioBlocked && (
-            <motion.div
-              initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
-              className="mb-8 border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] p-4 flex items-center justify-between"
-            >
-              <span className="font-mono text-xs uppercase tracking-widest">Натисніть, щоб увімкнути звук</span>
+            <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
+              className="mb-8 border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] p-4 flex items-center justify-between">
+              <span className="font-mono text-xs uppercase tracking-widest">{t('radio.unlock_audio')}</span>
               <button onClick={unlockAudio} className="border border-[#F5F0EB]/30 px-4 py-2 font-mono text-xs uppercase tracking-widest hover:bg-[#F5F0EB]/10 transition-colors">
-                Увімкнути
+                {t('radio.unlock_btn')}
               </button>
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Signal deck */}
-        <div className="border border-[#501a2c] p-6 mb-12">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#501a2c]/50">Signal / WebRTC</p>
-              <p className="font-mono text-xs font-bold text-[#501a2c] mt-1">{anyoneSpeaking ? 'LIVE' : 'STANDBY'}</p>
-            </div>
-            <div className="flex items-center gap-3 text-[10px] font-mono uppercase tracking-widest text-[#501a2c]/40">
-              <span>−40</span><span>−20</span><span>−10</span><span>0 dB</span>
-            </div>
-          </div>
-          <SignalBars active={anyoneSpeaking} />
-        </div>
-
         <AnimatePresence mode="wait">
-          {/* Not joined, idle */}
+
+          {/* Idle — no one in ether */}
           {!joined && members.length === 0 && !showNickPrompt && (
             <motion.div key="idle" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
               <div className="grid md:grid-cols-2 gap-16 items-start">
                 <div>
                   <h2 className="font-serif text-4xl md:text-5xl text-[#501a2c] mb-6 leading-tight">
-                    Живий голосовий ефір для читачів EPRIS
+                    {t('radio.idle_title')}
                   </h2>
-                  <p className="font-serif text-lg text-[#501a2c]/70 leading-relaxed mb-8">
-                    Відкритий простір для розмови. Слухайте без мікрофона — або беріть слово, коли захочете.
+                  <p className="font-serif text-lg text-[#501a2c]/70 leading-relaxed mb-10">
+                    {t('radio.idle_desc')}
                   </p>
                   <button
                     onClick={() => setShowNickPrompt(true)}
                     disabled={connecting}
                     className="border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] font-mono text-xs uppercase tracking-widest px-8 py-4 hover:bg-[#3d1220] transition-colors disabled:opacity-50"
                   >
-                    {connecting ? 'Підключення…' : 'Розпочати ефір'}
+                    {connecting ? t('radio.connecting') : t('radio.join_cta')}
                   </button>
                 </div>
-                <div className="space-y-6">
-                  {['Голосовий зв\'язок через WebRTC — без затримок', 'Push-to-Talk або вільний мікрофон', 'До 10 учасників одночасно в ефірі', 'Працює в браузері — без встановлення'].map((item, i) => (
-                    <div key={i} className="flex items-start gap-4 border-b border-[#501a2c]/10 pb-4 last:border-0">
-                      <div className="w-8 h-8 rounded-full border border-[#501a2c] flex items-center justify-center text-[#501a2c] font-mono text-[10px] shrink-0">{String(i + 1).padStart(2, '0')}</div>
-                      <p className="font-serif text-[#501a2c]/70 mt-1">{item}</p>
+                <div className="space-y-0">
+                  {[t('radio.feat1'), t('radio.feat2'), t('radio.feat3'), t('radio.feat4')].map((item, i) => (
+                    <div key={i} className="flex items-start gap-4 border-b border-[#501a2c]/10 py-5 first:pt-0">
+                      <div className="w-8 h-8 border border-[#501a2c]/30 flex items-center justify-center text-[#501a2c]/40 font-mono text-[10px] shrink-0">
+                        {String(i + 1).padStart(2, '0')}
+                      </div>
+                      <p className="font-serif text-[#501a2c]/70 mt-1 leading-snug">{item}</p>
                     </div>
                   ))}
                 </div>
               </div>
+
+              {/* Empty schedule notice */}
+              {announcements.length === 0 && (
+                <div className="mt-16 border-t border-[#501a2c]/10 pt-10">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#501a2c]/30 mb-2">{t('radio.schedule_title')}</p>
+                  <p className="font-serif text-[#501a2c]/30">{t('radio.schedule_empty')}</p>
+                </div>
+              )}
             </motion.div>
           )}
 
@@ -199,34 +268,40 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
           {!joined && showNickPrompt && (
             <motion.div key="nick" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
               <div className="mb-8">
-                <button onClick={() => setShowNickPrompt(false)} className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/50 hover:text-[#501a2c] transition-colors flex items-center gap-2">
-                  ← Назад
+                <button onClick={() => setShowNickPrompt(false)} className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/50 hover:text-[#501a2c] transition-colors">
+                  {t('radio.back')}
                 </button>
               </div>
-              <NicknamePrompt onJoin={handleJoin} loading={connecting} />
+              <NicknamePrompt onJoin={handleJoin} loading={connecting} t={t} />
             </motion.div>
           )}
 
           {/* Others in ether, not joined */}
           {!joined && members.length > 0 && !showNickPrompt && (
             <motion.div key="watching" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-              <div className="grid md:grid-cols-2 gap-16">
+              <div className="grid md:grid-cols-2 gap-16 items-start">
                 <div>
-                  <h2 className="font-serif text-4xl text-[#501a2c] mb-4 leading-tight">Ефір іде</h2>
-                  <p className="font-serif text-lg text-[#501a2c]/70 mb-8">
-                    {members.map(m => m.nickname).join(', ')} {members.length === 1 ? 'в ефірі' : 'в ефірі'}
+                  <div className="flex items-center gap-4 mb-6">
+                    <LiveBadge label={t('radio.live_badge')} />
+                  </div>
+                  <h2 className="font-serif text-4xl text-[#501a2c] mb-4 leading-tight">{t('radio.broadcast_active')}</h2>
+                  <p className="font-serif text-lg text-[#501a2c]/60 mb-10">
+                    {members.map(m => m.nickname).join(', ')}
                   </p>
                   <button
                     onClick={() => setShowNickPrompt(true)}
                     disabled={connecting}
                     className="border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] font-mono text-xs uppercase tracking-widest px-8 py-4 hover:bg-[#3d1220] transition-colors disabled:opacity-50"
                   >
-                    Приєднатись
+                    {connecting ? t('radio.connecting') : t('radio.join_active')}
                   </button>
                 </div>
-                <ul className="space-y-3">
+                <ul className="border border-[#501a2c]/20">
+                  <li className="bg-[#501a2c]/5 px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40">
+                    {t('radio.participants')} · {members.length}
+                  </li>
                   {members.map(m => (
-                    <li key={m.user_id} className="flex items-center gap-3 border-b border-[#501a2c]/10 pb-3">
+                    <li key={m.user_id} className="border-t border-[#501a2c]/10 px-4 py-3 flex items-center gap-3">
                       <span className="w-2 h-2 rounded-full shrink-0" style={{ background: m.color }} />
                       <span className="font-serif text-lg text-[#501a2c]">{m.nickname}</span>
                       <span className="ml-auto font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40">{m.mic_on ? 'MIC' : 'MUTE'}</span>
@@ -240,56 +315,47 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
           {/* Joined — live */}
           {joined && (
             <motion.div key="live" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-              <div className="grid md:grid-cols-[1fr_320px] gap-12">
+              <div className="grid md:grid-cols-[1fr_280px] gap-12 items-start">
                 <div>
-                  {/* Status */}
-                  <p className="font-serif text-lg text-[#501a2c]/70 mb-10">
+                  <p className="font-serif text-xl text-[#501a2c]/70 mb-10 leading-relaxed">
                     {members.some(m => m.speaking)
-                      ? `Говорить: ${members.filter(m => m.speaking).map(m => m.nickname).join(', ')}`
+                      ? `${members.filter(m => m.speaking).map(m => m.nickname).join(', ')}…`
                       : micOn && speaking
-                        ? 'Ваш мікрофон увімкнено — вас чують'
-                        : 'Слухаєте. Натисніть мікрофон, щоб говорити'}
+                        ? t('radio.mic_on')
+                        : t('radio.mic_off')}
                   </p>
 
-                  {/* Mic control */}
                   <div className="flex flex-wrap gap-4 mb-10">
                     <button
                       className={`flex items-center gap-3 border px-6 py-4 font-mono text-xs uppercase tracking-widest transition-colors ${
-                        micOn
-                          ? 'bg-[#501a2c] text-[#F5F0EB] border-[#501a2c]'
-                          : 'text-[#501a2c] border-[#501a2c] hover:bg-[#501a2c] hover:text-[#F5F0EB]'
+                        micOn ? 'bg-[#501a2c] text-[#F5F0EB] border-[#501a2c]' : 'text-[#501a2c] border-[#501a2c] hover:bg-[#501a2c] hover:text-[#F5F0EB]'
                       }`}
                       onClick={toggleMic}
                     >
                       <MicIcon off={!micOn} />
-                      {micOn ? 'Вимкнути мікрофон' : 'Увімкнути мікрофон'}
+                      {micOn ? t('radio.mic_on') : t('radio.mic_off')}
                     </button>
-
                     <button
                       className="border border-[#501a2c]/30 text-[#501a2c]/60 px-6 py-4 font-mono text-xs uppercase tracking-widest hover:border-[#501a2c] hover:text-[#501a2c] transition-colors"
                       onClick={leave}
                     >
-                      Вийти
+                      {t('radio.leave')}
                     </button>
                   </div>
 
-                  {/* PTT hint */}
-                  <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/30">
-                    Або утримуйте Space для Push-to-Talk
-                  </p>
+                  <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/30">{t('radio.ptt_hint')}</p>
                 </div>
 
-                {/* Members list */}
                 <div className="border border-[#501a2c]">
                   <div className="bg-[#501a2c] text-[#F5F0EB] px-4 py-3 font-mono text-[10px] uppercase tracking-widest">
-                    Учасники · {total}
+                    {t('radio.participants')} · {total}
                   </div>
                   <ul className="divide-y divide-[#501a2c]/10">
                     {myUser && (
                       <li className={`px-4 py-3 flex items-center gap-3 ${micOn ? '' : 'opacity-60'}`}>
                         <span className="w-2 h-2 rounded-full shrink-0" style={{ background: myUser.color }} />
                         <span className="font-serif text-[#501a2c]">{myUser.nickname}</span>
-                        {speaking && <span className="ml-auto w-1.5 h-1.5 bg-[#501a2c] rounded-full animate-pulse" />}
+                        {speaking && <span className="ml-auto w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse" />}
                         <span className="ml-auto font-mono text-[10px] text-[#501a2c]/40">{micOn ? 'MIC' : 'MUTE'}</span>
                       </li>
                     )}
@@ -297,7 +363,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                       <li key={m.user_id} className={`px-4 py-3 flex items-center gap-3 ${m.mic_on ? '' : 'opacity-60'}`}>
                         <span className="w-2 h-2 rounded-full shrink-0" style={{ background: m.color }} />
                         <span className="font-serif text-[#501a2c]">{m.nickname}</span>
-                        {m.speaking && <span className="ml-auto w-1.5 h-1.5 bg-[#501a2c] rounded-full animate-pulse" />}
+                        {m.speaking && <span className="ml-auto w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse" />}
                         <span className="ml-auto font-mono text-[10px] text-[#501a2c]/40">{m.mic_on ? 'MIC' : 'MUTE'}</span>
                       </li>
                     ))}
@@ -309,18 +375,14 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
         </AnimatePresence>
 
         {error && (
-          <div className="mt-8 border border-[#501a2c]/30 bg-[#E8DED5] p-4 font-mono text-xs text-[#501a2c]">
-            {error}
-          </div>
+          <div className="mt-8 border border-[#501a2c]/20 bg-[#E8DED5] p-4 font-mono text-xs text-[#501a2c]">{error}</div>
         )}
       </div>
     </div>
   )
 }
 
-function plural(n: number) {
-  const m10 = n % 10, m100 = n % 100
-  if (m10 === 1 && m100 !== 11) return 'людина'
-  if (m10 >= 2 && m10 <= 4 && (m100 < 10 || m100 >= 20)) return 'людини'
-  return 'людей'
+function pluralEn(n: number, t: (k: string) => string) {
+  // simple: just return "participants" label without count, count shown separately
+  return t('radio.participants').toLowerCase()
 }
