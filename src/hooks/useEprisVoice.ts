@@ -78,6 +78,7 @@ async function getMicStream(): Promise<MediaStream> {
     autoGainControl: true,
     channelCount: { ideal: 1 },
     sampleRate: { ideal: 48000 },
+    // @ts-expect-error — non-standard but supported in Chrome/Firefox
     latency: { ideal: 0.01 },
   }
   try { return await navigator.mediaDevices.getUserMedia({ audio: ideal }) }
@@ -128,6 +129,7 @@ export function useEprisVoice(opts?: { nickname?: string }) {
   const [error, setError] = useState<string | null>(null)
   const [audioBlocked, setAudioBlocked] = useState(false)
   const [myUser, setMyUser] = useState<{ id: number; nickname: string; color: string } | null>(getStoredUser)
+  const [memberVolumes, setMemberVolumesState] = useState<Record<number, number>>({})
 
   const callIdRef = useRef<number | null>(null)
   const myUserIdRef = useRef<number | null>(myUser?.id ?? null)
@@ -149,6 +151,13 @@ export function useEprisVoice(opts?: { nickname?: string }) {
   const blockedAudiosRef = useRef<Set<HTMLAudioElement>>(new Set())
   const wakeLockRef = useRef<WakeLockSentinel | null>(null)
   const reconnectViaRelayRef = useRef<(id: number) => void>(() => {})
+  // Android background: near-silent audio element keeps audio session alive
+  const androidCleanupRef = useRef<() => void>(() => {})
+  // Tracks whether the user intentionally enabled the mic (vs OS killing it)
+  const userWantsMicRef = useRef(false)
+  // Stable refs to latest callbacks for MediaSession action handlers
+  const toggleMicRef = useRef<() => Promise<void>>(() => Promise.resolve())
+  const leaveFnRef = useRef<() => Promise<void>>(() => Promise.resolve())
 
   const applyMembers = useCallback(() => {
     setMembers(serverMembersRef.current.map(m => ({ ...m, speaking: !!speakingRef.current.get(m.user_id) })))
@@ -216,6 +225,12 @@ export function useEprisVoice(opts?: { nickname?: string }) {
     for (const audio of [...blockedAudiosRef.current]) playAudioEl(audio)
   }, [ensureAudioCtx, playAudioEl])
 
+  const setMemberVolume = useCallback((userId: number, volume: number) => {
+    const entry = peersRef.current.get(userId)
+    if (entry) entry.audio.volume = Math.max(0, Math.min(1, volume))
+    setMemberVolumesState(prev => ({ ...prev, [userId]: volume }))
+  }, [])
+
   useEffect(() => {
     const onGesture = () => unlockAudio()
     const onVisible = () => { if (document.visibilityState === 'visible') { unlockAudio(); if (joinedRef.current) acquireWakeLock() } }
@@ -239,9 +254,7 @@ export function useEprisVoice(opts?: { nickname?: string }) {
     if (!p.encodings?.length) p.encodings = [{}]
     const enc = p.encodings[0]
     enc.maxBitrate = AUDIO_MAX_BITRATE
-    // @ts-expect-error — non-standard but supported in Chrome/Edge
     enc.priority = 'high'
-    // @ts-expect-error
     enc.networkPriority = 'high'
     sender.setParameters(p).catch(() => {})
   }, [])
@@ -424,6 +437,17 @@ export function useEprisVoice(opts?: { nickname?: string }) {
       const ids = new Set(list.map((m: RadioMember) => m.user_id))
       for (const m of list) ensurePeer(m.user_id)
       for (const pid of [...peersRef.current.keys()]) { if (!ids.has(pid)) cleanupPeer(pid) }
+      // Keep Android lock screen info fresh
+      if ('mediaSession' in navigator) {
+        try {
+          navigator.mediaSession.metadata = new MediaMetadata({
+            title: 'EPRIS Radio Live',
+            artist: 'EPRIS Journal',
+            album: `${list.length + 1} у ефірі`,
+          })
+          navigator.mediaSession.playbackState = 'playing'
+        } catch { /* ignore */ }
+      }
     } catch { /* ignore */ }
   }, [applyMembers, ensurePeer, cleanupPeer])
 
@@ -474,17 +498,57 @@ export function useEprisVoice(opts?: { nickname?: string }) {
       startTimers(); pollMembers(); pollSignals()
       await acquireWakeLock()
 
+      // Android: a near-silent oscillator routed through an <audio> element registers
+      // with the OS audio session manager, keeping background audio alive.
+      const ctx = audioCtxRef.current
+      if (ctx) {
+        androidCleanupRef.current()
+        const osc = ctx.createOscillator()
+        const gainNode = ctx.createGain()
+        gainNode.gain.value = 0.001  // 0.1% — essentially silent but non-zero
+        osc.type = 'sine'; osc.frequency.value = 20  // 20 Hz, below hearing
+        osc.connect(gainNode)
+        const streamDest = ctx.createMediaStreamDestination()
+        gainNode.connect(streamDest); osc.start()
+        const androidEl = document.createElement('audio')
+        androidEl.srcObject = streamDest.stream; androidEl.autoplay = true; androidEl.style.display = 'none'
+        document.body.appendChild(androidEl); androidEl.play().catch(() => {})
+        androidCleanupRef.current = () => {
+          try { osc.stop() } catch {}
+          androidEl.srcObject = null; androidEl.remove()
+          androidCleanupRef.current = () => {}
+        }
+      }
+
       if ('mediaSession' in navigator) {
         try {
           navigator.mediaSession.metadata = new MediaMetadata({
             title: 'EPRIS Radio Live',
             artist: 'EPRIS Journal',
-            album: 'Live Broadcast',
+            album: `${res.members.length + 1} у ефірі`,
           })
           navigator.mediaSession.playbackState = 'playing'
-          navigator.mediaSession.setActionHandler('pause', () => { /* keep alive, do nothing */ })
-          navigator.mediaSession.setActionHandler('play', () => unlockAudio())
-          navigator.mediaSession.setActionHandler('stop', () => { /* handled by leave */ })
+          // pause → mute mic (don't disconnect)
+          navigator.mediaSession.setActionHandler('pause', () => {
+            if (micOnRef.current) toggleMicRef.current().catch(() => {})
+          })
+          // play → unmute mic / unlock audio
+          navigator.mediaSession.setActionHandler('play', () => {
+            unlockAudio()
+            if (!micOnRef.current) toggleMicRef.current().catch(() => {})
+            try { navigator.mediaSession.playbackState = 'playing' } catch {}
+          })
+          // next track → toggle mic (PTT from lock screen)
+          navigator.mediaSession.setActionHandler('nexttrack', () => {
+            toggleMicRef.current().catch(() => {})
+          })
+          // previous track → leave call
+          navigator.mediaSession.setActionHandler('previoustrack', () => {
+            leaveFnRef.current().catch(() => {})
+          })
+          navigator.mediaSession.setActionHandler('stop', () => {
+            leaveFnRef.current().catch(() => {})
+          })
         } catch { /* ignore */ }
       }
     } catch (err) {
@@ -496,13 +560,15 @@ export function useEprisVoice(opts?: { nickname?: string }) {
     const cid = callIdRef.current
     stopTimers()
     wakeLockRef.current?.release().catch(() => {}); wakeLockRef.current = null
+    androidCleanupRef.current()
+    userWantsMicRef.current = false
     if ('mediaSession' in navigator) {
       try {
         navigator.mediaSession.metadata = null
         navigator.mediaSession.playbackState = 'none'
-        navigator.mediaSession.setActionHandler('pause', null)
-        navigator.mediaSession.setActionHandler('play', null)
-        navigator.mediaSession.setActionHandler('stop', null)
+        for (const action of ['pause', 'play', 'stop', 'nexttrack', 'previoustrack'] as const) {
+          navigator.mediaSession.setActionHandler(action, null)
+        }
       } catch { /* ignore */ }
     }
     for (const [pid] of peersRef.current) {
@@ -523,7 +589,7 @@ export function useEprisVoice(opts?: { nickname?: string }) {
       try {
         if (!navigator.mediaDevices?.getUserMedia) { setError('Браузер не підтримує мікрофон.'); return }
         const stream = await getMicStream()
-        localStreamRef.current = stream; micOnRef.current = true
+        localStreamRef.current = stream; micOnRef.current = true; userWantsMicRef.current = true
         const track = stream.getAudioTracks()[0]
         if (track) {
           track.onended = () => {
@@ -546,7 +612,7 @@ export function useEprisVoice(opts?: { nickname?: string }) {
         return
       }
     } else {
-      micOnRef.current = false
+      micOnRef.current = false; userWantsMicRef.current = false
       for (const [, entry] of peersRef.current) { const tr = audioTransceiver(entry.pc); if (tr) applyMicToTransceiver(tr) }
       if (localStreamRef.current) { for (const t of localStreamRef.current.getTracks()) t.stop(); localStreamRef.current = null }
       setSpeaking(false)
@@ -584,6 +650,14 @@ export function useEprisVoice(opts?: { nickname?: string }) {
       }
       acquireWakeLock()
       startTimers(); pollMembers(); pollSignals()
+      // Android: if OS killed the mic track while screen was locked, re-enable it
+      if (userWantsMicRef.current && !micOnRef.current) {
+        toggleMicRef.current().catch(() => {})
+      }
+      // Refresh Android lock screen session state
+      if ('mediaSession' in navigator) {
+        try { navigator.mediaSession.playbackState = 'playing' } catch { /* ignore */ }
+      }
     }
     document.addEventListener('visibilitychange', recover)
     window.addEventListener('online', recover)
@@ -595,14 +669,19 @@ export function useEprisVoice(opts?: { nickname?: string }) {
     }
   }, [ensureAudioCtx, acquireWakeLock, startTimers, pollMembers, pollSignals])
 
+  // Keep MediaSession action handler refs current
+  useEffect(() => { toggleMicRef.current = toggleMic }, [toggleMic])
+  useEffect(() => { leaveFnRef.current = leave }, [leave])
+
   // Cleanup on unmount
   useEffect(() => () => {
     stopTimers(); cleanupAll()
     keepAliveRef.current?.stop?.()
+    androidCleanupRef.current()
     wakeLockRef.current?.release().catch(() => {})
     audioCtxRef.current?.close?.().catch(() => {})
     audioCtxRef.current = null
   }, [stopTimers, cleanupAll])
 
-  return { members, joined, micOn, speaking, connecting, error, audioBlocked, myUser, join, leave, toggleMic, unlockAudio }
+  return { members, memberVolumes, joined, micOn, speaking, connecting, error, audioBlocked, myUser, join, leave, toggleMic, unlockAudio, setMemberVolume }
 }
