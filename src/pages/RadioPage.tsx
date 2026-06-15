@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useRef, useEffect, useCallback, useMemo } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { useEprisVoice } from '../hooks/useEprisVoice'
 import type { ActiveRoom } from '../hooks/useEprisVoice'
 
@@ -232,21 +232,18 @@ function ShareButton({ roomSlug, t }: { roomSlug: string; t: (k: string) => stri
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 export function RadioPage({ t }: { t: (k: string) => string }) {
-  // Parse room from URL — stable for the lifetime of the page
   const [roomSlug, setRoomSlug] = useState(() => {
     const p = new URLSearchParams(window.location.search)
     return p.get('room') || 'main'
   })
-  const roomTitle = useMemo(() => {
-    const p = new URLSearchParams(window.location.search)
-    return p.get('room') || ''
-  }, [])
+  const [roomTitle, setRoomTitle] = useState('')
+  const [showEndedNotice, setShowEndedNotice] = useState(false)
 
   const {
     members, memberVolumes, joined, micOn, speaking, connecting, error,
     audioBlocked, myUser, isHost, broadcastEnded, activeRooms,
     join, leave, endBroadcast, toggleMic, unlockAudio, setMemberVolume,
-  } = useEprisVoice({ roomSlug })
+  } = useEprisVoice({ roomSlug, roomTitle })
 
   const [showNickPrompt, setShowNickPrompt] = useState(false)
   const [showCreateRoom, setShowCreateRoom] = useState(false)
@@ -265,10 +262,13 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
     const url = slug === 'main' ? '/radio' : `/radio?room=${encodeURIComponent(slug)}`
     window.history.pushState(null, '', url)
     setRoomSlug(slug)
+    setRoomTitle(title)
     setShowNickPrompt(true)
     setShowCreateRoom(false)
-    void title  // used for future: room title display
   }, [])
+
+  // Show ended notice when broadcast is terminated by host
+  useEffect(() => { if (broadcastEnded) setShowEndedNotice(true) }, [broadcastEnded])
 
   const total = members.length + (joined ? 1 : 0)
   const anyoneSpeaking = members.some(m => m.speaking) || (micOn && speaking)
@@ -392,11 +392,11 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
 
           {/* Broadcast ended notice */}
           <AnimatePresence>
-            {broadcastEnded && !joined && (
+            {showEndedNotice && !joined && (
               <motion.div key="ended-notice" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
                 className="mb-8 border border-[#501a2c]/20 bg-[#501a2c]/5 p-4 flex items-center justify-between">
                 <span className="font-mono text-xs text-[#501a2c]/70 uppercase tracking-widest">{t('radio.broadcast_ended')}</span>
-                <button onClick={() => {}} className="font-mono text-[10px] text-[#501a2c]/40 uppercase tracking-widest hover:text-[#501a2c]">✕</button>
+                <button onClick={() => setShowEndedNotice(false)} className="font-mono text-[10px] text-[#501a2c]/40 uppercase tracking-widest hover:text-[#501a2c]">✕</button>
               </motion.div>
             )}
           </AnimatePresence>
@@ -618,7 +618,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                     {isHost && (
                       <button
                         className="flex-1 border border-red-800/30 text-red-800/60 py-4 font-mono text-xs uppercase tracking-widest hover:border-red-800 hover:text-red-800 transition-colors"
-                        onClick={endBroadcast}
+                        onClick={() => window.confirm(t('radio.end_broadcast_confirm')) && endBroadcast()}
                       >
                         {t('radio.end_broadcast')}
                       </button>
@@ -653,7 +653,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                       {isHost && (
                         <button
                           className="border border-red-800/20 text-red-800/50 px-6 py-4 font-mono text-xs uppercase tracking-widest hover:border-red-800/60 hover:text-red-800 transition-colors"
-                          onClick={endBroadcast}
+                          onClick={() => window.confirm(t('radio.end_broadcast_confirm')) && endBroadcast()}
                         >
                           {t('radio.end_broadcast')}
                         </button>
