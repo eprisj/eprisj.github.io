@@ -1,29 +1,19 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 const API = 'https://eprisradio.munister.com.ua'
-const SIGNAL_POLL_MS = 1000
-const MEMBERS_POLL_MS = 2500
-const SPEAK_TICK_MS = 180
-const SPEAK_THRESHOLD = 0.02
-const AUDIO_MAX_BITRATE = 24000
+const SIGNAL_POLL_MS = 800
+const MEMBERS_POLL_MS = 2000
+const SPEAK_TICK_MS = 150
+const SPEAK_THRESHOLD = 0.018
+const AUDIO_MAX_BITRATE = 128_000   // 128 kbps — high-quality voice
 
 // ── Storage helpers ──────────────────────────────────────────────────────────
 
-function getToken(): string | null {
-  return localStorage.getItem('epris_radio_token')
-}
-
-function setToken(t: string) {
-  localStorage.setItem('epris_radio_token', t)
-}
-
+function getToken(): string | null { return localStorage.getItem('epris_radio_token') }
+function setToken(t: string) { localStorage.setItem('epris_radio_token', t) }
 function getStoredUser(): { id: number; nickname: string; color: string } | null {
-  try {
-    const raw = localStorage.getItem('epris_radio_user')
-    return raw ? JSON.parse(raw) : null
-  } catch { return null }
+  try { const r = localStorage.getItem('epris_radio_user'); return r ? JSON.parse(r) : null } catch { return null }
 }
-
 function setStoredUser(u: { id: number; nickname: string; color: string }) {
   localStorage.setItem('epris_radio_user', JSON.stringify(u))
 }
@@ -48,19 +38,10 @@ async function apiFetch(path: string, opts: RequestInit = {}) {
 async function ensureAuth(nickname?: string): Promise<{ id: number; nickname: string; color: string }> {
   const token = getToken()
   if (token) {
-    try {
-      const user = await apiFetch('/api/auth/me')
-      setStoredUser(user)
-      return user
-    } catch { /* token invalid, re-auth */ }
+    try { const user = await apiFetch('/api/auth/me'); setStoredUser(user); return user } catch { /* re-auth */ }
   }
-  const data = await apiFetch('/api/auth/guest', {
-    method: 'POST',
-    body: JSON.stringify({ nickname: nickname || '' }),
-  })
-  setToken(data.token)
-  setStoredUser(data.user)
-  return data.user
+  const data = await apiFetch('/api/auth/guest', { method: 'POST', body: JSON.stringify({ nickname: nickname || '' }) })
+  setToken(data.token); setStoredUser(data.user); return data.user
 }
 
 // ── Types ────────────────────────────────────────────────────────────────────
@@ -88,7 +69,7 @@ type AnalyserEntry = {
   data: Uint8Array<ArrayBuffer>
 }
 
-// ── getMicStream ─────────────────────────────────────────────────────────────
+// ── Mic stream — high quality Opus settings ──────────────────────────────────
 
 async function getMicStream(): Promise<MediaStream> {
   const ideal: MediaTrackConstraints = {
@@ -97,15 +78,43 @@ async function getMicStream(): Promise<MediaStream> {
     autoGainControl: true,
     channelCount: { ideal: 1 },
     sampleRate: { ideal: 48000 },
+    latency: { ideal: 0.01 },
   }
-  try {
-    return await navigator.mediaDevices.getUserMedia({ audio: ideal })
-  } catch (e) {
+  try { return await navigator.mediaDevices.getUserMedia({ audio: ideal }) }
+  catch (e) {
     if (e instanceof DOMException && ['NotSupportedError', 'OverconstrainedError', 'ConstraintNotSatisfiedError'].includes(e.name)) {
       return await navigator.mediaDevices.getUserMedia({ audio: true })
     }
     throw e
   }
+}
+
+// ── Prefer Opus fullband ─────────────────────────────────────────────────────
+
+function preferOpus(pc: RTCPeerConnection) {
+  try {
+    const caps = RTCRtpReceiver.getCapabilities?.('audio')?.codecs
+    if (!caps) return
+    const opus = caps.filter(c => c.mimeType.toLowerCase() === 'audio/opus')
+    const rest = caps.filter(c => c.mimeType.toLowerCase() !== 'audio/opus')
+    for (const tr of pc.getTransceivers()) {
+      if (tr.receiver.track?.kind === 'audio' || tr.direction !== 'inactive') {
+        try { tr.setCodecPreferences?.([...opus, ...rest]) } catch { /* ignore */ }
+      }
+    }
+  } catch { /* ignore */ }
+}
+
+// ── iOS keep-alive: silent looping buffer keeps AudioContext alive ────────────
+
+function startKeepAlive(ctx: AudioContext): AudioBufferSourceNode {
+  const buf = ctx.createBuffer(1, ctx.sampleRate * 2, ctx.sampleRate)
+  const src = ctx.createBufferSource()
+  src.buffer = buf
+  src.loop = true
+  src.connect(ctx.destination)
+  src.start(0)
+  return src
 }
 
 // ── Hook ─────────────────────────────────────────────────────────────────────
@@ -134,6 +143,7 @@ export function useEprisVoice(opts?: { nickname?: string }) {
   const membersTimerRef = useRef<number | null>(null)
   const speakTimerRef = useRef<number | null>(null)
   const audioCtxRef = useRef<AudioContext | null>(null)
+  const keepAliveRef = useRef<AudioBufferSourceNode | null>(null)
   const analysersRef = useRef<Map<number, AnalyserEntry>>(new Map())
   const speakingRef = useRef<Map<number, boolean>>(new Map())
   const blockedAudiosRef = useRef<Set<HTMLAudioElement>>(new Set())
@@ -145,21 +155,27 @@ export function useEprisVoice(opts?: { nickname?: string }) {
   }, [])
 
   const ensureAudioCtx = useCallback((): AudioContext | null => {
-    if (!audioCtxRef.current) {
+    if (!audioCtxRef.current || audioCtxRef.current.state === 'closed') {
       const Ctx = window.AudioContext || (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext
-      if (Ctx) audioCtxRef.current = new Ctx()
+      if (Ctx) {
+        audioCtxRef.current = new Ctx({ latencyHint: 'interactive', sampleRate: 48000 })
+        keepAliveRef.current = startKeepAlive(audioCtxRef.current)
+      }
     }
     audioCtxRef.current?.resume?.().catch(() => {})
     return audioCtxRef.current
   }, [])
 
+  const acquireWakeLock = useCallback(async () => {
+    if (wakeLockRef.current) return
+    try { wakeLockRef.current = await navigator.wakeLock?.request('screen') } catch { /* ignore */ }
+  }, [])
+
   const detachAnalyser = useCallback((key: number) => {
-    const a = analysersRef.current.get(key)
-    if (!a) return
+    const a = analysersRef.current.get(key); if (!a) return
     try { a.source.disconnect() } catch { /* ignore */ }
     try { a.analyser.disconnect() } catch { /* ignore */ }
-    analysersRef.current.delete(key)
-    speakingRef.current.delete(key)
+    analysersRef.current.delete(key); speakingRef.current.delete(key)
   }, [])
 
   const attachAnalyser = useCallback((key: number, stream: MediaStream) => {
@@ -168,8 +184,7 @@ export function useEprisVoice(opts?: { nickname?: string }) {
     detachAnalyser(key)
     try {
       const source = ctx.createMediaStreamSource(stream)
-      const analyser = ctx.createAnalyser()
-      analyser.fftSize = 512
+      const analyser = ctx.createAnalyser(); analyser.fftSize = 512
       source.connect(analyser)
       analysersRef.current.set(key, { analyser, source, data: new Uint8Array(new ArrayBuffer(analyser.fftSize)) })
     } catch { /* ignore */ }
@@ -184,7 +199,7 @@ export function useEprisVoice(opts?: { nickname?: string }) {
       const isSpeaking = Math.sqrt(sum / a.data.length) > SPEAK_THRESHOLD
       if (speakingRef.current.get(key) !== isSpeaking) { speakingRef.current.set(key, isSpeaking); changed = true }
     }
-    if (changed) { setSpeaking(micOnRef.current); applyMembers() }
+    if (changed) { setSpeaking(!!micOnRef.current); applyMembers() }
   }, [applyMembers])
 
   const playAudioEl = useCallback((audio: HTMLAudioElement) => {
@@ -196,14 +211,14 @@ export function useEprisVoice(opts?: { nickname?: string }) {
   }, [])
 
   const unlockAudio = useCallback(() => {
-    audioCtxRef.current?.resume?.().catch(() => {})
+    ensureAudioCtx()
     for (const [, entry] of peersRef.current) { if (entry.audio.srcObject) playAudioEl(entry.audio) }
     for (const audio of [...blockedAudiosRef.current]) playAudioEl(audio)
-  }, [playAudioEl])
+  }, [ensureAudioCtx, playAudioEl])
 
   useEffect(() => {
     const onGesture = () => unlockAudio()
-    const onVisible = () => { if (document.visibilityState === 'visible') unlockAudio() }
+    const onVisible = () => { if (document.visibilityState === 'visible') { unlockAudio(); if (joinedRef.current) acquireWakeLock() } }
     window.addEventListener('pointerdown', onGesture)
     window.addEventListener('keydown', onGesture)
     window.addEventListener('touchend', onGesture)
@@ -214,7 +229,7 @@ export function useEprisVoice(opts?: { nickname?: string }) {
       window.removeEventListener('touchend', onGesture)
       document.removeEventListener('visibilitychange', onVisible)
     }
-  }, [unlockAudio])
+  }, [unlockAudio, acquireWakeLock])
 
   const audioTransceiver = (pc: RTCPeerConnection) =>
     pc.getTransceivers().find(t => t.receiver.track?.kind === 'audio')
@@ -222,10 +237,13 @@ export function useEprisVoice(opts?: { nickname?: string }) {
   const capBitrate = useCallback((sender: RTCRtpSender) => {
     const p = sender.getParameters()
     if (!p.encodings?.length) p.encodings = [{}]
-    if (p.encodings[0].maxBitrate !== AUDIO_MAX_BITRATE) {
-      p.encodings[0].maxBitrate = AUDIO_MAX_BITRATE
-      sender.setParameters(p).catch(() => {})
-    }
+    const enc = p.encodings[0]
+    enc.maxBitrate = AUDIO_MAX_BITRATE
+    // @ts-expect-error — non-standard but supported in Chrome/Edge
+    enc.priority = 'high'
+    // @ts-expect-error
+    enc.networkPriority = 'high'
+    sender.setParameters(p).catch(() => {})
   }, [])
 
   const applyMicToTransceiver = useCallback((tr: RTCRtpTransceiver) => {
@@ -236,42 +254,35 @@ export function useEprisVoice(opts?: { nickname?: string }) {
   }, [capBitrate])
 
   const cleanupPeer = useCallback((userId: number) => {
-    const entry = peersRef.current.get(userId)
-    if (!entry) return
+    const entry = peersRef.current.get(userId); if (!entry) return
     if (entry.restartTimer) { window.clearTimeout(entry.restartTimer); entry.restartTimer = null }
     try { entry.pc.close() } catch { /* ignore */ }
-    entry.audio.srcObject = null
-    entry.audio.remove()
+    entry.audio.srcObject = null; entry.audio.remove()
     blockedAudiosRef.current.delete(entry.audio)
-    peersRef.current.delete(userId)
-    pendingIceRef.current.delete(userId)
-    detachAnalyser(userId)
+    peersRef.current.delete(userId); pendingIceRef.current.delete(userId); detachAnalyser(userId)
   }, [detachAnalyser])
 
   const cleanupAll = useCallback(() => {
     for (const [uid] of peersRef.current) cleanupPeer(uid)
-    if (localStreamRef.current) {
-      for (const t of localStreamRef.current.getTracks()) t.stop()
-      localStreamRef.current = null
-    }
+    if (localStreamRef.current) { for (const t of localStreamRef.current.getTracks()) t.stop(); localStreamRef.current = null }
   }, [cleanupPeer])
 
   const flushPendingIce = useCallback(async (userId: number, pc: RTCPeerConnection) => {
-    const queued = pendingIceRef.current.get(userId)
-    if (!queued?.length) return
+    const queued = pendingIceRef.current.get(userId); if (!queued?.length) return
     pendingIceRef.current.delete(userId)
     for (const cand of queued) { try { await pc.addIceCandidate(cand) } catch { /* ignore */ } }
   }, [])
 
   const createPeer = useCallback((peerId: number, peerOpts: { initiator: boolean; forceRelay?: boolean }): PeerEntry | undefined => {
     if (peersRef.current.has(peerId)) return peersRef.current.get(peerId)
-    const myId = myUserIdRef.current
-    if (!myId || !callIdRef.current) return undefined
+    const myId = myUserIdRef.current; if (!myId || !callIdRef.current) return undefined
     const polite = myId < peerId
     const pc = new RTCPeerConnection({
       iceServers: iceServersRef.current,
       iceTransportPolicy: peerOpts.forceRelay ? 'relay' : 'all',
-      iceCandidatePoolSize: 4,
+      iceCandidatePoolSize: 6,
+      // @ts-expect-error — Chrome-specific for better audio
+      sdpSemantics: 'unified-plan',
     })
     const audio = document.createElement('audio')
     audio.autoplay = true;
@@ -289,6 +300,7 @@ export function useEprisVoice(opts?: { nickname?: string }) {
       audio.muted = false
       playAudioEl(audio)
       attachAnalyser(peerId, stream)
+      preferOpus(pc)
     }
     pc.onicecandidate = e => {
       if (e.candidate && callIdRef.current) {
@@ -299,8 +311,10 @@ export function useEprisVoice(opts?: { nickname?: string }) {
       }
     }
     pc.onconnectionstatechange = () => {
-      if (pc.connectionState === 'connected' && entry.restartTimer) {
-        window.clearTimeout(entry.restartTimer); entry.restartTimer = null
+      if (pc.connectionState === 'connected') {
+        if (entry.restartTimer) { window.clearTimeout(entry.restartTimer); entry.restartTimer = null }
+        preferOpus(pc)
+        capBitrate(pc.getSenders().find(s => s.track?.kind === 'audio')!)
       }
       if (pc.connectionState === 'failed') {
         if (entry.restartTimer) window.clearTimeout(entry.restartTimer)
@@ -309,17 +323,15 @@ export function useEprisVoice(opts?: { nickname?: string }) {
         entry.restartTimer = window.setTimeout(() => {
           entry.restartTimer = null
           if (pc.connectionState === 'failed') reconnectViaRelayRef.current(peerId)
-        }, 8000)
-      } else if (pc.connectionState === 'closed') {
-        cleanupPeer(peerId)
-      }
+        }, 6000)
+      } else if (pc.connectionState === 'closed') { cleanupPeer(peerId) }
     }
     pc.oniceconnectionstatechange = () => {
       if (pc.iceConnectionState === 'disconnected' && !entry.restartTimer) {
         entry.restartTimer = window.setTimeout(() => {
           entry.restartTimer = null
           if (pc.iceConnectionState === 'disconnected') { try { pc.restartIce() } catch { cleanupPeer(peerId) } }
-        }, 2500)
+        }, 2000)
       }
     }
     pc.onnegotiationneeded = async () => {
@@ -329,11 +341,7 @@ export function useEprisVoice(opts?: { nickname?: string }) {
         if (callIdRef.current && pc.localDescription) {
           await apiFetch(`/api/calls/${callIdRef.current}/signals`, {
             method: 'POST',
-            body: JSON.stringify({
-              signal_type: pc.localDescription.type,
-              to_user_id: peerId,
-              payload: pc.localDescription,
-            }),
+            body: JSON.stringify({ signal_type: pc.localDescription.type, to_user_id: peerId, payload: pc.localDescription }),
           })
         }
       } catch { /* ignore */ } finally { entry.makingOffer = false }
@@ -342,9 +350,10 @@ export function useEprisVoice(opts?: { nickname?: string }) {
       const track = localStreamRef.current?.getAudioTracks()[0] ?? null
       if (track) pc.addTransceiver(track, { direction: 'sendrecv' })
       else pc.addTransceiver('audio', { direction: 'sendrecv' })
+      preferOpus(pc)
     }
     return entry
-  }, [attachAnalyser, cleanupPeer, playAudioEl])
+  }, [attachAnalyser, cleanupPeer, playAudioEl, capBitrate])
 
   const ensurePeer = useCallback((peerId: number) => {
     const myId = myUserIdRef.current
@@ -353,10 +362,8 @@ export function useEprisVoice(opts?: { nickname?: string }) {
   }, [createPeer])
 
   const reconnectViaRelay = useCallback((peerId: number) => {
-    const myId = myUserIdRef.current
-    if (!myId) return
-    cleanupPeer(peerId)
-    createPeer(peerId, { initiator: myId > peerId, forceRelay: true })
+    const myId = myUserIdRef.current; if (!myId) return
+    cleanupPeer(peerId); createPeer(peerId, { initiator: myId > peerId, forceRelay: true })
   }, [cleanupPeer, createPeer])
   reconnectViaRelayRef.current = reconnectViaRelay
 
@@ -387,17 +394,13 @@ export function useEprisVoice(opts?: { nickname?: string }) {
   const handleIce = useCallback(async (fromId: number, cand: RTCIceCandidateInit) => {
     const entry = peersRef.current.get(fromId)
     if (!entry || !entry.pc.remoteDescription) {
-      const q = pendingIceRef.current.get(fromId) ?? []
-      q.push(cand)
-      pendingIceRef.current.set(fromId, q)
-      return
+      const q = pendingIceRef.current.get(fromId) ?? []; q.push(cand); pendingIceRef.current.set(fromId, q); return
     }
     try { await entry.pc.addIceCandidate(cand) } catch { /* ignore */ }
   }, [])
 
   const pollSignals = useCallback(async () => {
-    const cid = callIdRef.current
-    if (!cid) return
+    const cid = callIdRef.current; if (!cid) return
     try {
       const signals = await apiFetch(`/api/calls/${cid}/signals?after_id=${afterIdRef.current}`)
       for (const sig of signals) {
@@ -405,25 +408,19 @@ export function useEprisVoice(opts?: { nickname?: string }) {
         let payload: unknown
         try { payload = JSON.parse(sig.payload) } catch { payload = sig.payload }
         try {
-          if (sig.signal_type === 'offer' || sig.signal_type === 'answer') {
-            await handleDescription(sig.from_user_id, payload as RTCSessionDescriptionInit)
-          } else if (sig.signal_type === 'ice') {
-            await handleIce(sig.from_user_id, payload as RTCIceCandidateInit)
-          } else if (sig.signal_type === 'bye') {
-            cleanupPeer(sig.from_user_id)
-          }
+          if (sig.signal_type === 'offer' || sig.signal_type === 'answer') await handleDescription(sig.from_user_id, payload as RTCSessionDescriptionInit)
+          else if (sig.signal_type === 'ice') await handleIce(sig.from_user_id, payload as RTCIceCandidateInit)
+          else if (sig.signal_type === 'bye') cleanupPeer(sig.from_user_id)
         } catch { /* ignore */ }
       }
     } catch { /* ignore */ }
   }, [handleDescription, handleIce, cleanupPeer])
 
   const pollMembers = useCallback(async () => {
-    const cid = callIdRef.current
-    if (!cid || !joinedRef.current) return
+    const cid = callIdRef.current; if (!cid || !joinedRef.current) return
     try {
       const list = await apiFetch(`/api/calls/${cid}/members`)
-      serverMembersRef.current = list
-      applyMembers()
+      serverMembersRef.current = list; applyMembers()
       const ids = new Set(list.map((m: RadioMember) => m.user_id))
       for (const m of list) ensurePeer(m.user_id)
       for (const pid of [...peersRef.current.keys()]) { if (!ids.has(pid)) cleanupPeer(pid) }
@@ -451,11 +448,7 @@ export function useEprisVoice(opts?: { nickname?: string }) {
       if (data) {
         callIdRef.current = data.call_id
         if (!joinedRef.current) { serverMembersRef.current = data.members; applyMembers() }
-      } else if (!joinedRef.current) {
-        callIdRef.current = null
-        serverMembersRef.current = []
-        applyMembers()
-      }
+      } else if (!joinedRef.current) { callIdRef.current = null; serverMembersRef.current = []; applyMembers() }
     } catch { /* ignore */ }
   }, [applyMembers])
 
@@ -466,83 +459,76 @@ export function useEprisVoice(opts?: { nickname?: string }) {
   }, [refreshActive])
 
   const join = useCallback(async (nickname?: string) => {
-    setError(null)
-    setConnecting(true)
+    setError(null); setConnecting(true)
     try {
       ensureAudioCtx()
       const user = await ensureAuth(nickname || opts?.nickname)
-      myUserIdRef.current = user.id
-      setMyUser(user)
-
+      myUserIdRef.current = user.id; setMyUser(user)
       const cfg = await apiFetch('/api/calls/config')
       if (cfg.ice_servers?.length) iceServersRef.current = cfg.ice_servers
-
       const res = await apiFetch('/api/calls/join', { method: 'POST', body: '{}' })
-      callIdRef.current = res.call_id
-      afterIdRef.current = 0
-      joinedRef.current = true
-      setJoined(true)
-      serverMembersRef.current = res.members
-      applyMembers()
+      callIdRef.current = res.call_id; afterIdRef.current = 0
+      joinedRef.current = true; setJoined(true)
+      serverMembersRef.current = res.members; applyMembers()
       for (const m of res.members) ensurePeer(m.user_id)
-      startTimers()
-      pollMembers()
-      pollSignals()
-      try { wakeLockRef.current = await navigator.wakeLock?.request('screen') } catch { /* ignore */ }
+      startTimers(); pollMembers(); pollSignals()
+      await acquireWakeLock()
+
       if ('mediaSession' in navigator) {
         try {
-          navigator.mediaSession.metadata = new MediaMetadata({ title: 'EPRIS Radio Live', artist: 'EPRIS Journal' })
+          navigator.mediaSession.metadata = new MediaMetadata({
+            title: 'EPRIS Radio Live',
+            artist: 'EPRIS Journal',
+            album: 'Live Broadcast',
+          })
           navigator.mediaSession.playbackState = 'playing'
+          navigator.mediaSession.setActionHandler('pause', () => { /* keep alive, do nothing */ })
+          navigator.mediaSession.setActionHandler('play', () => unlockAudio())
+          navigator.mediaSession.setActionHandler('stop', () => { /* handled by leave */ })
         } catch { /* ignore */ }
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Не вдалося підключитись.')
-    } finally {
-      setConnecting(false)
-    }
-  }, [ensureAudioCtx, applyMembers, ensurePeer, startTimers, pollMembers, pollSignals, opts?.nickname])
+    } finally { setConnecting(false) }
+  }, [ensureAudioCtx, applyMembers, ensurePeer, startTimers, pollMembers, pollSignals, acquireWakeLock, unlockAudio, opts?.nickname])
 
   const leave = useCallback(async () => {
     const cid = callIdRef.current
     stopTimers()
-    wakeLockRef.current?.release().catch(() => {})
-    wakeLockRef.current = null
-    if ('mediaSession' in navigator) { try { navigator.mediaSession.metadata = null; navigator.mediaSession.playbackState = 'none' } catch { /* ignore */ } }
+    wakeLockRef.current?.release().catch(() => {}); wakeLockRef.current = null
+    if ('mediaSession' in navigator) {
+      try {
+        navigator.mediaSession.metadata = null
+        navigator.mediaSession.playbackState = 'none'
+        navigator.mediaSession.setActionHandler('pause', null)
+        navigator.mediaSession.setActionHandler('play', null)
+        navigator.mediaSession.setActionHandler('stop', null)
+      } catch { /* ignore */ }
+    }
     for (const [pid] of peersRef.current) {
       if (cid) apiFetch(`/api/calls/${cid}/signals`, { method: 'POST', body: JSON.stringify({ signal_type: 'bye', to_user_id: pid, payload: { bye: true } }) }).catch(() => {})
     }
     cleanupAll()
-    joinedRef.current = false
-    micOnRef.current = false
-    setJoined(false)
-    setMicOn(false)
-    setSpeaking(false)
-    setError(null)
-    speakingRef.current.clear()
-    serverMembersRef.current = []
-    setMembers([])
+    joinedRef.current = false; micOnRef.current = false
+    setJoined(false); setMicOn(false); setSpeaking(false); setError(null)
+    speakingRef.current.clear(); serverMembersRef.current = []; setMembers([])
     if (cid) { try { await apiFetch(`/api/calls/${cid}/leave`, { method: 'PUT', body: '{}' }) } catch { /* ignore */ } }
     await refreshActive()
   }, [stopTimers, cleanupAll, refreshActive])
 
   const toggleMic = useCallback(async () => {
-    const cid = callIdRef.current
-    if (!cid) return
+    const cid = callIdRef.current; if (!cid) return
     const next = !micOnRef.current
     if (next) {
       try {
         if (!navigator.mediaDevices?.getUserMedia) { setError('Браузер не підтримує мікрофон.'); return }
         const stream = await getMicStream()
-        localStreamRef.current = stream
-        micOnRef.current = true
+        localStreamRef.current = stream; micOnRef.current = true
         const track = stream.getAudioTracks()[0]
         if (track) {
           track.onended = () => {
             if (localStreamRef.current !== stream) return
-            localStreamRef.current = null
-            micOnRef.current = false
-            setMicOn(false)
-            setSpeaking(false)
+            localStreamRef.current = null; micOnRef.current = false; setMicOn(false); setSpeaking(false)
             for (const [, entry] of peersRef.current) { const tr = audioTransceiver(entry.pc); if (tr) applyMicToTransceiver(tr) }
             apiFetch(`/api/calls/${cid}/mic`, { method: 'PUT', body: JSON.stringify({ on: false }) }).catch(() => {})
           }
@@ -552,7 +538,7 @@ export function useEprisVoice(opts?: { nickname?: string }) {
       } catch (err) {
         micOnRef.current = false
         if (err instanceof DOMException) {
-          if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') setError('Доступ до мікрофона заблоковано. Дозвольте у налаштуваннях браузера.')
+          if (['NotAllowedError', 'PermissionDeniedError'].includes(err.name)) setError('Доступ до мікрофона заблоковано.')
           else if (err.name === 'NotFoundError') setError('Мікрофон не знайдено.')
           else if (err.name === 'NotReadableError') setError('Мікрофон зайнятий іншою програмою.')
           else setError('Не вдалося увімкнути мікрофон.')
@@ -565,16 +551,15 @@ export function useEprisVoice(opts?: { nickname?: string }) {
       if (localStreamRef.current) { for (const t of localStreamRef.current.getTracks()) t.stop(); localStreamRef.current = null }
       setSpeaking(false)
     }
-    setMicOn(next)
-    setError(null)
+    setMicOn(next); setError(null)
     apiFetch(`/api/calls/${cid}/mic`, { method: 'PUT', body: JSON.stringify({ on: next }) }).catch(() => {})
   }, [applyMicToTransceiver])
 
+  // Pagehide — send leave beacon
   useEffect(() => {
     const onHide = (e: PageTransitionEvent) => {
       if (e.persisted) return
-      const cid = callIdRef.current
-      if (!joinedRef.current || !cid) return
+      const cid = callIdRef.current; if (!joinedRef.current || !cid) return
       const token = getToken()
       fetch(`${API}/api/calls/${cid}/leave`, {
         method: 'PUT',
@@ -586,6 +571,7 @@ export function useEprisVoice(opts?: { nickname?: string }) {
     return () => window.removeEventListener('pagehide', onHide)
   }, [])
 
+  // Recover on visibility / network restore
   useEffect(() => {
     const recover = () => {
       if (document.visibilityState === 'hidden' || !joinedRef.current) return
@@ -596,6 +582,7 @@ export function useEprisVoice(opts?: { nickname?: string }) {
           try { entry.pc.restartIce() } catch { /* ignore */ }
         }
       }
+      acquireWakeLock()
       startTimers(); pollMembers(); pollSignals()
     }
     document.addEventListener('visibilitychange', recover)
@@ -606,11 +593,12 @@ export function useEprisVoice(opts?: { nickname?: string }) {
       window.removeEventListener('online', recover)
       window.removeEventListener('pageshow', recover)
     }
-  }, [ensureAudioCtx, startTimers, pollMembers, pollSignals])
+  }, [ensureAudioCtx, acquireWakeLock, startTimers, pollMembers, pollSignals])
 
+  // Cleanup on unmount
   useEffect(() => () => {
-    stopTimers()
-    cleanupAll()
+    stopTimers(); cleanupAll()
+    keepAliveRef.current?.stop?.()
     wakeLockRef.current?.release().catch(() => {})
     audioCtxRef.current?.close?.().catch(() => {})
     audioCtxRef.current = null

@@ -1,6 +1,8 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { useEprisVoice } from '../hooks/useEprisVoice'
+
+const isTouch = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0)
 
 const API = 'https://eprisradio.munister.com.ua'
 
@@ -135,9 +137,9 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
 
   const handleJoin = async (nick: string) => { setShowNickPrompt(false); await join(nick) }
 
-  // PTT Space key
+  // PTT Space key (desktop only)
   useEffect(() => {
-    if (!joined) return
+    if (!joined || isTouch) return
     const onDown = (e: KeyboardEvent) => {
       if (e.code !== 'Space' || e.repeat) return
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
@@ -151,6 +153,16 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
     window.addEventListener('keydown', onDown); window.addEventListener('keyup', onUp)
     return () => { window.removeEventListener('keydown', onDown); window.removeEventListener('keyup', onUp) }
   }, [joined, micOn, pttHeld, toggleMic])
+
+  // Mobile PTT — touch hold
+  const pttTouchStart = useCallback(() => {
+    if (pttBusyRef.current || micOn) return
+    pttBusyRef.current = true; setPttHeld(true)
+    toggleMic().finally(() => { pttBusyRef.current = false })
+  }, [micOn, toggleMic])
+  const pttTouchEnd = useCallback(() => {
+    if (pttHeld && micOn) { setPttHeld(false); toggleMic() }
+  }, [pttHeld, micOn, toggleMic])
 
   return (
     <div className="min-h-screen bg-[#F5F0EB]">
@@ -315,61 +327,121 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
           {/* Joined — live */}
           {joined && (
             <motion.div key="live" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-              <div className="grid md:grid-cols-[1fr_280px] gap-12 items-start">
-                <div>
-                  <p className="font-serif text-xl text-[#501a2c]/70 mb-10 leading-relaxed">
-                    {members.some(m => m.speaking)
-                      ? `${members.filter(m => m.speaking).map(m => m.nickname).join(', ')}…`
-                      : micOn && speaking
-                        ? t('radio.mic_on')
-                        : t('radio.mic_off')}
-                  </p>
 
-                  <div className="flex flex-wrap gap-4 mb-10">
+              {/* Status line */}
+              <p className="font-serif text-xl text-[#501a2c]/70 mb-8 leading-relaxed">
+                {members.some(m => m.speaking)
+                  ? `${members.filter(m => m.speaking).map(m => m.nickname).join(', ')}…`
+                  : micOn && speaking ? t('radio.mic_on') : t('radio.mic_off')}
+              </p>
+
+              {/* Mobile layout: PTT big button centered + members below */}
+              {isTouch ? (
+                <div className="flex flex-col items-center gap-8">
+                  {/* Big PTT button */}
+                  <div className="flex flex-col items-center gap-4">
                     <button
-                      className={`flex items-center gap-3 border px-6 py-4 font-mono text-xs uppercase tracking-widest transition-colors ${
-                        micOn ? 'bg-[#501a2c] text-[#F5F0EB] border-[#501a2c]' : 'text-[#501a2c] border-[#501a2c] hover:bg-[#501a2c] hover:text-[#F5F0EB]'
-                      }`}
+                      onTouchStart={e => { e.preventDefault(); pttTouchStart() }}
+                      onTouchEnd={e => { e.preventDefault(); pttTouchEnd() }}
                       onClick={toggleMic}
+                      className={`w-28 h-28 rounded-full border-2 flex flex-col items-center justify-center gap-2 select-none transition-all active:scale-95 ${
+                        micOn
+                          ? 'bg-[#501a2c] border-[#501a2c] text-[#F5F0EB] shadow-[0_0_0_8px_rgba(80,26,44,0.15)]'
+                          : 'bg-transparent border-[#501a2c] text-[#501a2c]'
+                      }`}
+                      style={{ WebkitTapHighlightColor: 'transparent', touchAction: 'none' }}
                     >
                       <MicIcon off={!micOn} />
+                      <span className="font-mono text-[9px] uppercase tracking-widest">
+                        {micOn ? 'TAP OFF' : 'TAP ON'}
+                      </span>
+                    </button>
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/30 text-center">
                       {micOn ? t('radio.mic_on') : t('radio.mic_off')}
-                    </button>
-                    <button
-                      className="border border-[#501a2c]/30 text-[#501a2c]/60 px-6 py-4 font-mono text-xs uppercase tracking-widest hover:border-[#501a2c] hover:text-[#501a2c] transition-colors"
-                      onClick={leave}
-                    >
-                      {t('radio.leave')}
-                    </button>
+                    </p>
                   </div>
 
-                  <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/30">{t('radio.ptt_hint')}</p>
-                </div>
-
-                <div className="border border-[#501a2c]">
-                  <div className="bg-[#501a2c] text-[#F5F0EB] px-4 py-3 font-mono text-[10px] uppercase tracking-widest">
-                    {t('radio.participants')} · {total}
+                  {/* Participants horizontal scroll */}
+                  <div className="w-full border border-[#501a2c]">
+                    <div className="bg-[#501a2c] text-[#F5F0EB] px-4 py-2.5 font-mono text-[10px] uppercase tracking-widest">
+                      {t('radio.participants')} · {total}
+                    </div>
+                    <ul className="divide-y divide-[#501a2c]/10 max-h-48 overflow-y-auto">
+                      {myUser && (
+                        <li className={`px-4 py-3 flex items-center gap-3 ${micOn ? '' : 'opacity-60'}`}>
+                          <span className="w-2 h-2 rounded-full shrink-0" style={{ background: myUser.color }} />
+                          <span className="font-serif text-[#501a2c]">{myUser.nickname}</span>
+                          {speaking && <span className="ml-auto w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse shrink-0" />}
+                          <span className="ml-auto font-mono text-[9px] text-[#501a2c]/40 shrink-0">{micOn ? 'MIC' : 'MUTE'}</span>
+                        </li>
+                      )}
+                      {members.map(m => (
+                        <li key={m.user_id} className={`px-4 py-3 flex items-center gap-3 ${m.mic_on ? '' : 'opacity-60'}`}>
+                          <span className="w-2 h-2 rounded-full shrink-0" style={{ background: m.color }} />
+                          <span className="font-serif text-[#501a2c] truncate">{m.nickname}</span>
+                          {m.speaking && <span className="ml-auto w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse shrink-0" />}
+                          <span className="ml-auto font-mono text-[9px] text-[#501a2c]/40 shrink-0">{m.mic_on ? 'MIC' : 'MUTE'}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <ul className="divide-y divide-[#501a2c]/10">
-                    {myUser && (
-                      <li className={`px-4 py-3 flex items-center gap-3 ${micOn ? '' : 'opacity-60'}`}>
-                        <span className="w-2 h-2 rounded-full shrink-0" style={{ background: myUser.color }} />
-                        <span className="font-serif text-[#501a2c]">{myUser.nickname}</span>
-                        {speaking && <span className="ml-auto w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse" />}
-                        <span className="ml-auto font-mono text-[10px] text-[#501a2c]/40">{micOn ? 'MIC' : 'MUTE'}</span>
-                      </li>
-                    )}
-                    {members.map(m => (
-                      <li key={m.user_id} className={`px-4 py-3 flex items-center gap-3 ${m.mic_on ? '' : 'opacity-60'}`}>
-                        <span className="w-2 h-2 rounded-full shrink-0" style={{ background: m.color }} />
-                        <span className="font-serif text-[#501a2c]">{m.nickname}</span>
-                        {m.speaking && <span className="ml-auto w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse" />}
-                        <span className="ml-auto font-mono text-[10px] text-[#501a2c]/40">{m.mic_on ? 'MIC' : 'MUTE'}</span>
-                      </li>
-                    ))}
-                  </ul>
+
+                  <button
+                    className="w-full border border-[#501a2c]/30 text-[#501a2c]/60 py-4 font-mono text-xs uppercase tracking-widest hover:border-[#501a2c] hover:text-[#501a2c] transition-colors"
+                    onClick={leave}
+                  >
+                    {t('radio.leave')}
+                  </button>
                 </div>
-              </div>
+              ) : (
+                /* Desktop layout */
+                <div className="grid md:grid-cols-[1fr_280px] gap-12 items-start">
+                  <div>
+                    <div className="flex flex-wrap gap-4 mb-10">
+                      <button
+                        className={`flex items-center gap-3 border px-6 py-4 font-mono text-xs uppercase tracking-widest transition-colors ${
+                          micOn ? 'bg-[#501a2c] text-[#F5F0EB] border-[#501a2c]' : 'text-[#501a2c] border-[#501a2c] hover:bg-[#501a2c] hover:text-[#F5F0EB]'
+                        }`}
+                        onClick={toggleMic}
+                      >
+                        <MicIcon off={!micOn} />
+                        {micOn ? t('radio.mic_on') : t('radio.mic_off')}
+                      </button>
+                      <button
+                        className="border border-[#501a2c]/30 text-[#501a2c]/60 px-6 py-4 font-mono text-xs uppercase tracking-widest hover:border-[#501a2c] hover:text-[#501a2c] transition-colors"
+                        onClick={leave}
+                      >
+                        {t('radio.leave')}
+                      </button>
+                    </div>
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/30">{t('radio.ptt_hint')}</p>
+                  </div>
+
+                  <div className="border border-[#501a2c]">
+                    <div className="bg-[#501a2c] text-[#F5F0EB] px-4 py-3 font-mono text-[10px] uppercase tracking-widest">
+                      {t('radio.participants')} · {total}
+                    </div>
+                    <ul className="divide-y divide-[#501a2c]/10 max-h-72 overflow-y-auto">
+                      {myUser && (
+                        <li className={`px-4 py-3 flex items-center gap-3 ${micOn ? '' : 'opacity-60'}`}>
+                          <span className="w-2 h-2 rounded-full shrink-0" style={{ background: myUser.color }} />
+                          <span className="font-serif text-[#501a2c]">{myUser.nickname}</span>
+                          {speaking && <span className="ml-auto w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse" />}
+                          <span className="ml-auto font-mono text-[10px] text-[#501a2c]/40">{micOn ? 'MIC' : 'MUTE'}</span>
+                        </li>
+                      )}
+                      {members.map(m => (
+                        <li key={m.user_id} className={`px-4 py-3 flex items-center gap-3 ${m.mic_on ? '' : 'opacity-60'}`}>
+                          <span className="w-2 h-2 rounded-full shrink-0" style={{ background: m.color }} />
+                          <span className="font-serif text-[#501a2c]">{m.nickname}</span>
+                          {m.speaking && <span className="ml-auto w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse" />}
+                          <span className="ml-auto font-mono text-[10px] text-[#501a2c]/40">{m.mic_on ? 'MIC' : 'MUTE'}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
             </motion.div>
           )}
         </AnimatePresence>
