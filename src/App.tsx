@@ -333,216 +333,51 @@ function NavBar({
 const HERO_BG =
   'https://raw.githubusercontent.com/eprisj/eprisj.github.io/main/%D1%81over/cover_main_section.png';
 
-const HERO_CHIPS = [
-  { label: 'Interior Studio', side: 'left'  as const, top: '14%' },
-  { label: 'Matter Lab',      side: 'right' as const, top: '36%' },
-  { label: 'Chronicle',       side: 'left'  as const, bottom: '30%' },
-  { label: 'Style Notes',     side: 'right' as const, bottom: '12%' },
-];
-
-function Hero({ t }: { t: (key: string) => string }) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [mouse, setMouse] = useState({ x: 0.5, y: 0.5 });
-
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const onMove = (e: MouseEvent) => {
-      const r = el.getBoundingClientRect();
-      setMouse({ x: (e.clientX - r.left) / r.width, y: (e.clientY - r.top) / r.height });
-    };
-    el.addEventListener('mousemove', onMove);
-    return () => el.removeEventListener('mousemove', onMove);
-  }, []);
-
-  const rx = (mouse.y - 0.5) * -10;
-  const ry = (mouse.x - 0.5) * 13;
-  const tx = (mouse.x - 0.5) * -14;
-  const ty = (mouse.y - 0.5) * -9;
-
+function Hero({ t: _t }: { t: (key: string) => string }) {
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-[90vh] flex flex-col overflow-hidden border-b border-[#501a2c]/20"
-    >
-      {/* Aurora blobs */}
-      <div aria-hidden className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="hero-blob hero-blob-1" />
-        <div className="hero-blob hero-blob-2" />
-        <div className="hero-blob hero-blob-3" />
-      </div>
-
-      {/* Cursor spotlight */}
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `radial-gradient(620px circle at ${mouse.x * 100}% ${mouse.y * 100}%, rgba(201,166,144,.20), transparent 65%)`,
-          transition: 'background 0.06s linear',
-        }}
+    <section className="relative h-[calc(100vh-4rem)] overflow-hidden border-b border-[#501a2c]/20">
+      {/* Full-bleed background */}
+      <img
+        src={HERO_BG}
+        alt="EPRIS Journal"
+        className="absolute inset-0 w-full h-full object-cover select-none"
+        draggable={false}
       />
 
-      {/* Main two-column layout */}
-      <div className="relative z-10 flex-1 flex flex-col md:flex-row items-center gap-10 px-6 md:px-14 lg:px-24 pt-24 pb-12 md:py-20 w-full max-w-[1440px] mx-auto">
-
-        {/* ── Left: text ─────────────────────────────── */}
-        <div className="flex-1 flex flex-col justify-center order-2 md:order-1 text-center md:text-left">
-
-          {/* Issue kicker */}
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.05 }}
-            className="font-mono text-[9px] tracking-[0.22em] uppercase text-[#501a2c]/40 mb-7 flex items-center gap-3 justify-center md:justify-start"
-          >
-            <span className="w-6 h-px bg-[#501a2c]/30 hidden md:block" />
-            Est. 2024 · Issue N° 3
-          </motion.div>
-
-          {/* Kinetic title letters */}
-          <h1 aria-label="EPRIS" className="font-mono leading-[0.85] tracking-[0.08em] mb-6 flex justify-center md:justify-start">
-            {['E','P','R','I','S'].map((ch, i) => (
-              <motion.span
-                key={ch + i}
-                initial={{ opacity: 0, y: 64 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.15 + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
-                className="text-[clamp(68px,11vw,148px)] text-[#501a2c] block"
-              >
-                {ch}
-              </motion.span>
-            ))}
-          </h1>
-
-          {/* Sub-label */}
-          <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.65 }}
-            className="font-mono text-[10px] tracking-[0.18em] uppercase text-[#501a2c]/45 mb-3"
-          >
-            journal.
-          </motion.p>
-
-          {/* Tagline */}
-          <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.78 }}
-            className="font-serif text-lg md:text-xl text-[#501a2c]/65 max-w-sm mx-auto md:mx-0 leading-relaxed mb-10"
-          >
-            {t('hero.tagline2')}
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.92 }}
-            className="flex gap-4 flex-wrap justify-center md:justify-start"
-          >
-            <button
-              className="font-mono text-[10px] tracking-[0.16em] uppercase border border-[#501a2c] text-[#501a2c] px-5 py-3 hover:bg-[#501a2c] hover:text-[#f5f0eb] transition-colors duration-200"
-            >
-              Explore issue →
-            </button>
-            <button
-              className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#501a2c]/45 px-5 py-3 hover:text-[#501a2c] transition-colors duration-200"
-            >
-              Meet the studio
-            </button>
-          </motion.div>
-        </div>
-
-        {/* ── Right: parallax mockup ──────────────────── */}
-        <div className="flex-1 flex items-center justify-center order-1 md:order-2 py-4">
-          <motion.div
-            initial={{ opacity: 0, y: 28, scale: 0.94 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          >
-            {/* Parallax tilt wrapper (separate from entry animation) */}
-            <div
-              style={{
-                transform: `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translate(${tx}px,${ty}px)`,
-                transition: 'transform 0.12s linear',
-                position: 'relative',
-                display: 'inline-block',
-              }}
-            >
-              {/* Magazine cover */}
-              <div
-                className="relative overflow-hidden rounded-[2px]"
-                style={{
-                  width: 'clamp(200px, 28vw, 320px)',
-                  aspectRatio: '2/3',
-                  boxShadow: '0 32px 80px rgba(80,26,44,.22), 0 8px 24px rgba(80,26,44,.10)',
-                }}
-              >
-                <img
-                  src={HERO_BG}
-                  alt="EPRIS Journal cover"
-                  className="w-full h-full object-cover"
-                  draggable={false}
-                />
-                {/* Subtle gloss sheen */}
-                <div
-                  aria-hidden
-                  className="absolute inset-0 pointer-events-none"
-                  style={{ background: 'linear-gradient(135deg, rgba(255,255,255,.12) 0%, transparent 50%)' }}
-                />
-              </div>
-
-              {/* Floating feature chips */}
-              {HERO_CHIPS.map(({ label, side, top, bottom }, i) => (
-                <div
-                  key={label}
-                  style={{
-                    position: 'absolute',
-                    ...(top    ? { top }    : {}),
-                    ...(bottom ? { bottom } : {}),
-                    ...(side === 'left'
-                      ? { left: 0, transform: 'translateX(calc(-100% - 14px))' }
-                      : { right: 0, transform: 'translateX(calc(100% + 14px))' }),
-                  }}
-                >
-                  <motion.span
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1, y: [0, -6, 0] }}
-                    transition={{
-                      opacity: { duration: 0.4, delay: 1.0 + i * 0.12 },
-                      scale:   { duration: 0.4, delay: 1.0 + i * 0.12 },
-                      y: { duration: 3.2 + i * 0.6, repeat: Infinity, ease: 'easeInOut', delay: 1.5 + i * 0.3 },
-                    }}
-                    className="block font-mono text-[9px] tracking-[0.15em] uppercase border border-[#501a2c]/28 bg-[#f5f0eb]/88 backdrop-blur-sm text-[#501a2c] px-3 py-1.5 whitespace-nowrap select-none"
-                    style={{ backdropFilter: 'blur(8px)' }}
-                  >
-                    {label}
-                  </motion.span>
-                </div>
-              ))}
-
-              {/* Ground shadow */}
-              <div
-                aria-hidden
-                className="absolute -bottom-6 left-[15%] right-[15%] pointer-events-none"
-                style={{ height: 20, background: 'rgba(80,26,44,.10)', filter: 'blur(14px)', borderRadius: '50%' }}
-              />
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Editorial bottom strip */}
+      {/* Bottom-left: EPRIS + JOURNAL. */}
       <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute bottom-[18%] left-[4%]"
+      >
+        <h1 className="font-mono text-[clamp(64px,10vw,148px)] leading-none tracking-[0.06em] text-[#501a2c]">
+          EPRIS
+        </h1>
+        <p className="font-mono text-[11px] tracking-[0.28em] uppercase text-[#501a2c]/55 mt-1">
+          JOURNAL.
+        </p>
+      </motion.div>
+
+      {/* Center: DESIGN ART TRAVEL */}
+      <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.3 }}
-        className="relative z-10 border-t border-[#501a2c]/12 px-6 md:px-14 lg:px-24 py-4 flex justify-between items-center"
+        transition={{ duration: 0.9, delay: 0.3 }}
+        className="absolute top-[38%] left-1/2 -translate-x-1/2 font-mono text-[11px] tracking-[0.32em] uppercase text-[#501a2c]/55 whitespace-nowrap"
       >
-        <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-[#501a2c]/30">Journal of living aesthetics</span>
-        <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-[#501a2c]/30">eprisjournal.com</span>
-      </motion.div>
+        DESIGN ART TRAVEL
+      </motion.p>
+
+      {/* Right: REVEAL THE INVISIBLE */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.9, delay: 0.4 }}
+        className="absolute top-[38%] right-[4%] font-mono text-[11px] tracking-[0.32em] uppercase text-[#501a2c]/55 whitespace-nowrap"
+      >
+        REVEAL THE INVISIBLE
+      </motion.p>
     </section>
   );
 }

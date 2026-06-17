@@ -59,11 +59,29 @@ export function useChat(callId: number | null, joined: boolean) {
   const sendText = useCallback(async (cid: number, content: string) => {
     const trimmed = content.trim().slice(0, 300)
     if (!trimmed) return
-    await apiFetch(`/api/calls/${cid}/chat`, { method: 'POST', body: JSON.stringify({ type: 'text', content: trimmed }) })
+    try {
+      const data: ChatMessage = await apiFetch(`/api/calls/${cid}/chat`, {
+        method: 'POST',
+        body: JSON.stringify({ type: 'text', content: trimmed }),
+      })
+      if (data?.id) {
+        afterIdRef.current = Math.max(afterIdRef.current, data.id)
+        setMessages(prev => prev.some(m => m.id === data.id) ? prev : [...prev.slice(-80), data])
+      }
+    } catch { /* ignore */ }
   }, [])
 
   const sendReaction = useCallback(async (cid: number, emoji: string) => {
-    await apiFetch(`/api/calls/${cid}/chat`, { method: 'POST', body: JSON.stringify({ type: 'reaction', content: emoji }) })
+    try {
+      const data: ChatMessage = await apiFetch(`/api/calls/${cid}/chat`, {
+        method: 'POST',
+        body: JSON.stringify({ type: 'reaction', content: emoji }),
+      })
+      if (data?.id) {
+        afterIdRef.current = Math.max(afterIdRef.current, data.id)
+        setMessages(prev => prev.some(m => m.id === data.id) ? prev : [...prev.slice(-80), data])
+      }
+    } catch { /* ignore */ }
   }, [])
 
   const rename = useCallback(async (nickname: string) => {
