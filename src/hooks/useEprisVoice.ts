@@ -38,7 +38,16 @@ async function apiFetch(path: string, opts: RequestInit = {}) {
 async function ensureAuth(nickname?: string): Promise<{ id: number; nickname: string; color: string }> {
   const token = getToken()
   if (token) {
-    try { const user = await apiFetch('/api/auth/me'); setStoredUser(user); return user } catch { /* re-auth */ }
+    try {
+      const user = await apiFetch('/api/auth/me')
+      if (nickname && nickname.trim() !== user.nickname) {
+        try {
+          const updated = await apiFetch('/api/auth/me', { method: 'PUT', body: JSON.stringify({ nickname: nickname.trim() }) })
+          setStoredUser(updated); return updated
+        } catch { /* ignore — return original */ }
+      }
+      setStoredUser(user); return user
+    } catch { /* re-auth */ }
   }
   const data = await apiFetch('/api/auth/guest', { method: 'POST', body: JSON.stringify({ nickname: nickname || '' }) })
   setToken(data.token); setStoredUser(data.user); return data.user
@@ -140,6 +149,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
   const [isHost, setIsHost] = useState(false)
   const [broadcastEnded, setBroadcastEnded] = useState(false)
   const [activeRooms, setActiveRooms] = useState<ActiveRoom[]>([])
+  const [callId, setCallId] = useState<number | null>(null)
 
   const callIdRef = useRef<number | null>(null)
   const myUserIdRef = useRef<number | null>(myUser?.id ?? null)
@@ -489,10 +499,10 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
       const slug = encodeURIComponent(roomSlugRef.current)
       const data = await apiFetch(`/api/calls/active?room_slug=${slug}`)
       if (data) {
-        callIdRef.current = data.call_id
+        callIdRef.current = data.call_id; setCallId(data.call_id)
         if (!joinedRef.current) { serverMembersRef.current = data.members; applyMembers() }
         if (data.is_host !== undefined) setIsHost(!!data.is_host)
-      } else if (!joinedRef.current) { callIdRef.current = null; serverMembersRef.current = []; applyMembers() }
+      } else if (!joinedRef.current) { callIdRef.current = null; setCallId(null); serverMembersRef.current = []; applyMembers() }
     } catch { /* ignore */ }
   }, [applyMembers])
 
@@ -537,7 +547,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
           room_title: roomTitleRef.current || roomSlugRef.current,
         }),
       })
-      callIdRef.current = res.call_id; afterIdRef.current = 0
+      callIdRef.current = res.call_id; setCallId(res.call_id); afterIdRef.current = 0
       joinedRef.current = true; setJoined(true)
       setIsHost(!!res.is_host); setBroadcastEnded(false)
       serverMembersRef.current = res.members; applyMembers()
@@ -631,7 +641,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
     }
     cleanupAll()
     joinedRef.current = false; micOnRef.current = false
-    setJoined(false); setMicOn(false); setSpeaking(false); setError(null)
+    setJoined(false); setMicOn(false); setSpeaking(false); setError(null); setCallId(null)
     speakingRef.current.clear(); serverMembersRef.current = []; setMembers([])
     if (cid) { try { await apiFetch(`/api/calls/${cid}/leave`, { method: 'PUT', body: '{}' }) } catch { /* ignore */ } }
     await refreshActive()
@@ -740,7 +750,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
 
   return {
     members, memberVolumes, joined, micOn, speaking, connecting, error,
-    audioBlocked, myUser, isHost, broadcastEnded, activeRooms,
+    audioBlocked, myUser, isHost, broadcastEnded, activeRooms, callId,
     join, leave, endBroadcast, toggleMic, unlockAudio, setMemberVolume,
   }
 }
