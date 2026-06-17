@@ -2,6 +2,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { useEprisVoice } from '../hooks/useEprisVoice'
 import type { ActiveRoom } from '../hooks/useEprisVoice'
+import { useChat, REACTIONS } from '../hooks/useChat'
+import type { ChatMessage } from '../hooks/useChat'
 
 const isTouch = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0)
 
@@ -209,6 +211,84 @@ function CreateRoomPanel({ onStart, t }: { onStart: (slug: string, title: string
   )
 }
 
+// ── Inline nick editor ────────────────────────────────────────────────────────
+
+function NickEditor({ current, onSave, onCancel }: { current: string; onSave: (v: string) => void; onCancel: () => void }) {
+  const [val, setVal] = useState(current)
+  return (
+    <form onSubmit={e => { e.preventDefault(); val.trim().length >= 2 && onSave(val.trim()) }}
+      className="flex items-center gap-2">
+      <input type="text" value={val} onChange={e => setVal(e.target.value)} maxLength={24} autoFocus
+        className="bg-transparent border-b border-[#501a2c] text-[#501a2c] font-serif text-base w-32 focus:outline-none pb-0.5" />
+      <button type="submit" className="font-mono text-[10px] text-[#501a2c] uppercase tracking-widest hover:opacity-60">OK</button>
+      <button type="button" onClick={onCancel} className="font-mono text-[10px] text-[#501a2c]/30 uppercase tracking-widest">✕</button>
+    </form>
+  )
+}
+
+// ── Chat panel ────────────────────────────────────────────────────────────────
+
+function ChatPanel({
+  messages, callId, myNick, onSendText, onSendReaction, t,
+}: {
+  messages: ChatMessage[]; callId: number; myNick: string
+  onSendText: (cid: number, text: string) => void
+  onSendReaction: (cid: number, emoji: string) => void
+  t: (k: string) => string
+}) {
+  const [text, setText] = useState('')
+  const [showPicker, setShowPicker] = useState(false)
+  const bottomRef = useRef<HTMLDivElement>(null)
+  useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: 'smooth' }) }, [messages.length])
+  const textMessages = messages.filter(m => m.type === 'text')
+  return (
+    <div className="border border-[#501a2c]/20 mt-6">
+      <div className="bg-[#501a2c]/5 px-4 py-2.5 font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 flex items-center justify-between border-b border-[#501a2c]/10">
+        <span>{t('radio.chat') || 'Чат'}</span>
+        <button onClick={() => setShowPicker(p => !p)} className="text-base opacity-50 hover:opacity-100 transition-opacity">🙂</button>
+      </div>
+      <AnimatePresence>
+        {showPicker && (
+          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}
+            className="border-b border-[#501a2c]/10 overflow-hidden">
+            <div className="flex flex-wrap gap-3 px-4 py-3">
+              {REACTIONS.map(e => (
+                <button key={e} onClick={() => { onSendReaction(callId, e); setShowPicker(false) }}
+                  className="text-xl hover:scale-125 active:scale-110 transition-all">{e}</button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <div className="h-40 overflow-y-auto px-4 py-3 space-y-2 overscroll-contain">
+        {textMessages.length === 0 && (
+          <p className="font-mono text-[10px] text-[#501a2c]/20 text-center pt-4">…</p>
+        )}
+        {textMessages.map(m => (
+          <div key={m.id} className={`flex gap-2 items-start ${m.nickname === myNick ? 'flex-row-reverse' : ''}`}>
+            <div className="w-5 h-5 rounded-full flex items-center justify-center font-semibold text-[9px] text-[#F5F0EB] shrink-0"
+              style={{ background: m.color }}>{m.nickname[0]?.toUpperCase()}</div>
+            <div className={`flex flex-col gap-0.5 max-w-[72%] ${m.nickname === myNick ? 'items-end' : ''}`}>
+              {m.nickname !== myNick && <span className="font-mono text-[9px] text-[#501a2c]/30">{m.nickname}</span>}
+              <span className={`px-3 py-1.5 font-sans text-sm leading-snug break-words ${
+                m.nickname === myNick ? 'bg-[#501a2c] text-[#F5F0EB]' : 'bg-[#501a2c]/8 text-[#501a2c]'
+              }`}>{m.content}</span>
+            </div>
+          </div>
+        ))}
+        <div ref={bottomRef} />
+      </div>
+      <form onSubmit={e => { e.preventDefault(); if (text.trim()) { onSendText(callId, text); setText('') } }}
+        className="border-t border-[#501a2c]/10 flex items-center gap-2 px-3 py-2">
+        <input type="text" value={text} onChange={e => setText(e.target.value)} placeholder="Написать…" maxLength={300}
+          className="flex-1 bg-transparent text-sm text-[#501a2c] placeholder-[#501a2c]/25 focus:outline-none" />
+        <button type="submit" disabled={!text.trim()}
+          className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c] disabled:opacity-20">→</button>
+      </form>
+    </div>
+  )
+}
+
 // ── Share button ──────────────────────────────────────────────────────────────
 
 function ShareButton({ roomSlug, t }: { roomSlug: string; t: (k: string) => string }) {
@@ -241,22 +321,41 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
 
   const {
     members, memberVolumes, joined, micOn, speaking, connecting, error,
-    audioBlocked, myUser, isHost, broadcastEnded, activeRooms,
+    audioBlocked, myUser, isHost, broadcastEnded, activeRooms, callId,
     join, leave, endBroadcast, toggleMic, unlockAudio, setMemberVolume,
   } = useEprisVoice({ roomSlug, roomTitle })
 
+  const { messages, sendText, sendReaction: sendReactionApi, rename } = useChat(callId, joined)
+
   const [showNickPrompt, setShowNickPrompt] = useState(false)
   const [showCreateRoom, setShowCreateRoom] = useState(false)
+  const [editingNick, setEditingNick] = useState(false)
   const [pttHeld, setPttHeld] = useState(false)
   const [announcements, setAnnouncements] = useState<Announcement[]>([])
-  const [reactions, setReactions] = useState<{ id: number; emoji: string; x: number }[]>([])
+  const [floatReactions, setFloatReactions] = useState<{ id: string; emoji: string; x: number }[]>([])
   const pttBusyRef = useRef(false)
+  const lastReactionIdRef = useRef(0)
+
+  // broadcast shared reactions from chat poll
+  useEffect(() => {
+    const newR = messages.filter(m => m.type === 'reaction' && m.id > lastReactionIdRef.current)
+    if (!newR.length) return
+    lastReactionIdRef.current = messages.filter(m => m.type === 'reaction').reduce((mx, m) => Math.max(mx, m.id), lastReactionIdRef.current)
+    newR.forEach((r, i) => {
+      const fid = `${r.id}-${i}`
+      setFloatReactions(prev => [...prev, { id: fid, emoji: r.content, x: 10 + Math.random() * 80 }])
+      setTimeout(() => setFloatReactions(prev => prev.filter(f => f.id !== fid)), 2400)
+    })
+  }, [messages])
 
   const sendReaction = useCallback((emoji: string) => {
-    const id = Date.now() + Math.random()
-    setReactions(prev => [...prev, { id, emoji, x: 15 + Math.random() * 70 }])
-    setTimeout(() => setReactions(prev => prev.filter(r => r.id !== id)), 2200)
-  }, [])
+    if (callId) sendReactionApi(callId, emoji)
+  }, [callId, sendReactionApi])
+
+  const handleRename = async (nick: string) => {
+    await rename(nick)
+    setEditingNick(false)
+  }
 
   const navigateToRoom = useCallback((slug: string, title: string) => {
     const url = slug === 'main' ? '/radio' : `/radio?room=${encodeURIComponent(slug)}`
@@ -557,7 +656,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                   {/* Emoji reactions */}
                   <div className="relative w-full flex flex-col items-center gap-3">
                     <div className="relative h-10 w-full overflow-visible pointer-events-none select-none">
-                      {reactions.map(r => (
+                      {floatReactions.map(r => (
                         <span
                           key={r.id}
                           className="absolute text-2xl"
@@ -591,8 +690,9 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                       {myUser && (
                         <li className={`px-4 py-3 flex items-center gap-3 ${micOn ? '' : 'opacity-60'}`}>
                           <span className="w-2 h-2 rounded-full shrink-0" style={{ background: myUser.color }} />
-                          <span className="font-serif text-[#501a2c]">{myUser.nickname}</span>
-                          {speaking && <span className="ml-auto w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse shrink-0" />}
+                          {editingNick
+                            ? <NickEditor current={myUser.nickname} onSave={handleRename} onCancel={() => setEditingNick(false)} />
+                            : <button onClick={() => setEditingNick(true)} className="font-serif text-[#501a2c] hover:underline text-left">{myUser.nickname} ✏️</button>}
                           <span className="ml-auto font-mono text-[9px] text-[#501a2c]/40 shrink-0">{micOn ? 'MIC' : 'MUTE'}</span>
                         </li>
                       )}
@@ -607,6 +707,11 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                       ))}
                     </ul>
                   </div>
+
+                  {callId && (
+                    <ChatPanel messages={messages} callId={callId} myNick={myUser?.nickname ?? ''}
+                      onSendText={sendText} onSendReaction={sendReactionApi} t={t} />
+                  )}
 
                   <div className="w-full flex gap-3">
                     <button
@@ -664,7 +769,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                     {/* Emoji reactions — desktop */}
                     <div className="relative">
                       <div className="absolute bottom-12 left-0 w-48 h-8 overflow-visible pointer-events-none select-none">
-                        {reactions.map(r => (
+                        {floatReactions.map(r => (
                           <span key={r.id} className="absolute text-2xl"
                             style={{ left: `${r.x}%`, bottom: 0, animation: 'epris-float-up 2.2s ease-out forwards' }}>
                             {r.emoji}
@@ -690,8 +795,9 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                       {myUser && (
                         <li className={`px-4 py-3 flex items-center gap-3 ${micOn ? '' : 'opacity-60'}`}>
                           <span className="w-2 h-2 rounded-full shrink-0" style={{ background: myUser.color }} />
-                          <span className="font-serif text-[#501a2c]">{myUser.nickname}</span>
-                          {speaking && <span className="ml-auto w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse" />}
+                          {editingNick
+                            ? <NickEditor current={myUser.nickname} onSave={handleRename} onCancel={() => setEditingNick(false)} />
+                            : <button onClick={() => setEditingNick(true)} className="font-serif text-[#501a2c] hover:underline text-left">{myUser.nickname} ✏️</button>}
                           <span className="ml-auto font-mono text-[10px] text-[#501a2c]/40">{micOn ? 'MIC' : 'MUTE'}</span>
                         </li>
                       )}
@@ -705,6 +811,10 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                         </li>
                       ))}
                     </ul>
+                    {callId && (
+                      <ChatPanel messages={messages} callId={callId} myNick={myUser?.nickname ?? ''}
+                        onSendText={sendText} onSendReaction={sendReactionApi} t={t} />
+                    )}
                   </div>
                 </div>
               )}
