@@ -162,6 +162,9 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
   const [callId, setCallId] = useState<number | null>(null)
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([])
   const [peerStates, setPeerStates] = useState<Record<number, RTCPeerConnectionState>>({})
+  const [isMusicOn, setIsMusicOn] = useState(false)
+  const [musicGain, setMusicGainState] = useState(0.8)
+  const [nowPlaying, setNowPlaying] = useState<{ trackId: number; title: string; artist: string } | null>(null)
 
   const callIdRef = useRef<number | null>(null)
   const myUserIdRef = useRef<number | null>(myUser?.id ?? null)
@@ -195,6 +198,12 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
   // Stable refs to latest callbacks for MediaSession action handlers
   const toggleMicRef = useRef<() => Promise<void>>(() => Promise.resolve())
   const leaveFnRef = useRef<() => Promise<void>>(() => Promise.resolve())
+  // Music broadcast
+  const musicAudioRef = useRef<HTMLAudioElement | null>(null)
+  const musicGainNodeRef = useRef<GainNode | null>(null)
+  const micInMixGainRef = useRef<GainNode | null>(null)
+  const mixDestRef = useRef<MediaStreamAudioDestinationNode | null>(null)
+  const musicGainValueRef = useRef(0.8)
 
   const applyMembers = useCallback(() => {
     setMembers(serverMembersRef.current.map(m => ({ ...m, speaking: !!speakingRef.current.get(m.user_id) })))
@@ -297,7 +306,9 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
   }, [])
 
   const applyMicToTransceiver = useCallback((tr: RTCRtpTransceiver) => {
-    const track = localStreamRef.current?.getAudioTracks()[0] ?? null
+    const track = mixDestRef.current
+      ? mixDestRef.current.stream.getAudioTracks()[0] ?? null
+      : localStreamRef.current?.getAudioTracks()[0] ?? null
     tr.sender.replaceTrack(track).catch(() => {})
     if (tr.direction !== 'sendrecv' && tr.direction !== 'sendonly') tr.direction = 'sendrecv'
     capBitrate(tr.sender)
@@ -658,6 +669,84 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
     } finally { setConnecting(false) }
   }, [ensureAudioCtx, applyMembers, ensurePeer, startTimers, pollMembers, pollSignals, acquireWakeLock, unlockAudio, opts?.nickname])
 
+  const stopMusicBroadcast = useCallback(() => {
+    if (musicAudioRef.current) {
+      try { musicAudioRef.current.pause() } catch { /* ignore */ }
+      musicAudioRef.current.src = ''
+      musicAudioRef.current.remove()
+      musicAudioRef.current = null
+    }
+    musicGainNodeRef.current = null
+    micInMixGainRef.current = null
+    mixDestRef.current = null
+    setNowPlaying(null)
+    setIsMusicOn(false)
+    // Restore raw mic track on all peers
+    for (const [, entry] of peersRef.current) {
+      const tr = audioTransceiver(entry.pc)
+      if (tr) {
+        const track = localStreamRef.current?.getAudioTracks()[0] ?? null
+        tr.sender.replaceTrack(track).catch(() => {})
+      }
+    }
+  }, [])
+
+  const startMusicBroadcast = useCallback(async (trackId: number, title: string, artist: string) => {
+    const ctx = ensureAudioCtx()
+    if (!ctx) return
+    stopMusicBroadcast()
+
+    const audioEl = document.createElement('audio')
+    audioEl.crossOrigin = 'anonymous'
+    audioEl.src = `${API}/api/music/tracks/${trackId}/file`
+    audioEl.preload = 'auto'
+    audioEl.style.display = 'none'
+    document.body.appendChild(audioEl)
+    musicAudioRef.current = audioEl
+
+    const mixDest = ctx.createMediaStreamDestination()
+    mixDestRef.current = mixDest
+
+    const musicSrc = ctx.createMediaElementSource(audioEl)
+    const musicGainNode = ctx.createGain()
+    musicGainNode.gain.value = musicGainValueRef.current
+    musicGainNodeRef.current = musicGainNode
+    musicSrc.connect(musicGainNode)
+    musicGainNode.connect(mixDest)
+
+    // Mix mic if it's currently active
+    if (localStreamRef.current?.getAudioTracks().length) {
+      const micGain = ctx.createGain()
+      micGain.gain.value = 1.0
+      micInMixGainRef.current = micGain
+      const micSrc = ctx.createMediaStreamSource(localStreamRef.current)
+      micSrc.connect(micGain)
+      micGain.connect(mixDest)
+    }
+
+    // Replace sender track on all existing peers
+    const mixTrack = mixDest.stream.getAudioTracks()[0]
+    if (mixTrack) {
+      for (const [, entry] of peersRef.current) {
+        const sender = entry.pc.getSenders().find(s => s.track?.kind === 'audio')
+        if (sender) sender.replaceTrack(mixTrack).catch(() => {})
+      }
+    }
+
+    audioEl.addEventListener('ended', stopMusicBroadcast)
+    await audioEl.play().catch(() => {})
+
+    setNowPlaying({ trackId, title, artist })
+    setIsMusicOn(true)
+  }, [ensureAudioCtx, stopMusicBroadcast])
+
+  const setMusicGain = useCallback((v: number) => {
+    const clamped = Math.max(0, Math.min(1, v))
+    musicGainValueRef.current = clamped
+    if (musicGainNodeRef.current) musicGainNodeRef.current.gain.value = clamped
+    setMusicGainState(clamped)
+  }, [])
+
   const endBroadcast = useCallback(async () => {
     const cid = callIdRef.current; if (!cid) return
     try { await apiFetch(`/api/calls/${cid}/end`, { method: 'POST', body: '{}' }) } catch { /* ignore */ }
@@ -668,6 +757,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
   const leave = useCallback(async () => {
     const cid = callIdRef.current
     stopTimers()
+    stopMusicBroadcast()
     wakeLockRef.current?.release().catch(() => {}); wakeLockRef.current = null
     androidCleanupRef.current()
     userWantsMicRef.current = false
@@ -711,6 +801,16 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
           }
         }
         setSpeaking(true)
+        // If music is playing, feed mic into the mix
+        if (mixDestRef.current && audioCtxRef.current) {
+          const ctx = audioCtxRef.current
+          const micGain = ctx.createGain()
+          micGain.gain.value = 1.0
+          micInMixGainRef.current = micGain
+          const micSrc = ctx.createMediaStreamSource(stream)
+          micSrc.connect(micGain)
+          micGain.connect(mixDestRef.current)
+        }
         for (const [, entry] of peersRef.current) { const tr = audioTransceiver(entry.pc); if (tr) applyMicToTransceiver(tr) }
       } catch (err) {
         micOnRef.current = false
@@ -724,6 +824,8 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
       }
     } else {
       micOnRef.current = false; userWantsMicRef.current = false
+      // Mute mic in the mix if music is playing
+      if (micInMixGainRef.current) { micInMixGainRef.current.gain.value = 0; micInMixGainRef.current = null }
       for (const [, entry] of peersRef.current) { const tr = audioTransceiver(entry.pc); if (tr) applyMicToTransceiver(tr) }
       if (localStreamRef.current) { for (const t of localStreamRef.current.getTracks()) t.stop(); localStreamRef.current = null }
       setSpeaking(false)
@@ -797,7 +899,8 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
   return {
     members, memberVolumes, joined, micOn, speaking, connecting, error,
     audioBlocked, myUser, isHost, broadcastEnded, activeRooms, callId,
-    chatMessages, peerStates,
+    chatMessages, peerStates, isMusicOn, musicGain, nowPlaying,
     join, leave, endBroadcast, toggleMic, unlockAudio, setMemberVolume, sendChat,
+    startMusicBroadcast, stopMusicBroadcast, setMusicGain,
   }
 }
