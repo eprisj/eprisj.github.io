@@ -48,3 +48,47 @@ select {
 .writing-vertical-rl {
   writing-mode: vertical-rl;
 }
+
+/* ── Aurora hero blobs ─────────────────────────────────────── */
+@keyframes aurora-1 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%      { transform: translate(70px,-50px) scale(1.18); }
+  66%      { transform: translate(-40px,60px) scale(0.90); }
+}
+@keyframes aurora-2 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  40%      { transform: translate(-80px,35px) scale(1.12); }
+  70%      { transform: translate(50px,-60px) scale(0.93); }
+}
+@keyframes aurora-3 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  25%      { transform: translate(50px,70px) scale(1.10); }
+  75%      { transform: translate(-60px,-35px) scale(1.15); }
+}
+
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  pointer-events: none;
+}
+.hero-blob-1 {
+  width: 650px; height: 650px;
+  left: -12%; top: -25%;
+  background: radial-gradient(circle, rgba(201,166,144,.22), rgba(80,26,44,.10) 55%, transparent 72%);
+  animation: aurora-1 13s ease-in-out infinite;
+}
+.hero-blob-2 {
+  width: 750px; height: 750px;
+  right: -18%; top: -15%;
+  background: radial-gradient(circle, rgba(80,26,44,.12), rgba(201,166,144,.16) 55%, transparent 72%);
+  animation: aurora-2 17s ease-in-out infinite;
+  filter: blur(90px);
+}
+.hero-blob-3 {
+  width: 520px; height: 520px;
+  left: 28%; bottom: -12%;
+  background: radial-gradient(circle, rgba(232,190,190,.18), rgba(80,26,44,.07) 55%, transparent 72%);
+  animation: aurora-3 21s ease-in-out infinite;
+  filter: blur(60px);
+}

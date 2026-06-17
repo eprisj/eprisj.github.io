@@ -70,6 +70,16 @@ export type ActiveRoom = {
   member_count: number
 }
 
+export type ChatMessage = {
+  id: number
+  user_id: number
+  nickname: string
+  color: string
+  type: 'text' | 'reaction'
+  content: string
+  created_at: string
+}
+
 type PeerEntry = {
   pc: RTCPeerConnection
   audio: HTMLAudioElement
@@ -150,6 +160,8 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
   const [broadcastEnded, setBroadcastEnded] = useState(false)
   const [activeRooms, setActiveRooms] = useState<ActiveRoom[]>([])
   const [callId, setCallId] = useState<number | null>(null)
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([])
+  const [peerStates, setPeerStates] = useState<Record<number, RTCPeerConnectionState>>({})
 
   const callIdRef = useRef<number | null>(null)
   const myUserIdRef = useRef<number | null>(myUser?.id ?? null)
@@ -173,6 +185,9 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
   const reconnectViaRelayRef = useRef<(id: number) => void>(() => {})
   const roomSlugRef = useRef(opts?.roomSlug || 'main')
   const roomTitleRef = useRef(opts?.roomTitle || '')
+  const afterChatIdRef = useRef(0)
+  const chatTimerRef = useRef<number | null>(null)
+  const hbTimerRef = useRef<number | null>(null)
   // Android background: near-silent audio element keeps audio session alive
   const androidCleanupRef = useRef<() => void>(() => {})
   // Tracks whether the user intentionally enabled the mic (vs OS killing it)
@@ -295,6 +310,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
     entry.audio.srcObject = null; entry.audio.remove()
     blockedAudiosRef.current.delete(entry.audio)
     peersRef.current.delete(userId); pendingIceRef.current.delete(userId); detachAnalyser(userId)
+    setPeerStates(prev => { const n = { ...prev }; delete n[userId]; return n })
   }, [detachAnalyser])
 
   const cleanupAll = useCallback(() => {
@@ -346,6 +362,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
       }
     }
     pc.onconnectionstatechange = () => {
+      setPeerStates(prev => ({ ...prev, [peerId]: pc.connectionState }))
       if (pc.connectionState === 'connected') {
         if (entry.restartTimer) { window.clearTimeout(entry.restartTimer); entry.restartTimer = null }
         preferOpus(pc)
@@ -479,17 +496,41 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
     } catch { /* ignore */ }
   }, [applyMembers, ensurePeer, cleanupPeer])
 
+  const pollChat = useCallback(async () => {
+    const cid = callIdRef.current; if (!cid || !joinedRef.current) return
+    try {
+      const msgs = await apiFetch(`/api/calls/${cid}/chat?after_id=${afterChatIdRef.current}`)
+      if (msgs?.length) {
+        afterChatIdRef.current = msgs[msgs.length - 1].id
+        setChatMessages(prev => [...prev, ...msgs])
+      }
+    } catch { /* ignore */ }
+  }, [])
+
+  const sendChat = useCallback(async (content: string, type: 'text' | 'reaction' = 'text') => {
+    const cid = callIdRef.current; if (!cid || !content.trim()) return
+    try { await apiFetch(`/api/calls/${cid}/chat`, { method: 'POST', body: JSON.stringify({ content: content.trim(), type }) }) }
+    catch { /* ignore */ }
+  }, [])
+
+  const sendHeartbeat = useCallback(async () => {
+    const cid = callIdRef.current; if (!cid || !joinedRef.current) return
+    try { await apiFetch(`/api/calls/${cid}/heartbeat`, { method: 'PUT', body: '{}' }) }
+    catch { /* ignore */ }
+  }, [])
+
   const startTimers = useCallback(() => {
-    for (const r of [signalTimerRef, membersTimerRef, speakTimerRef]) {
+    for (const r of [signalTimerRef, membersTimerRef, speakTimerRef, chatTimerRef, hbTimerRef]) {
       if (r.current) { window.clearInterval(r.current); r.current = null }
     }
     signalTimerRef.current = window.setInterval(pollSignals, SIGNAL_POLL_MS)
     membersTimerRef.current = window.setInterval(pollMembers, MEMBERS_POLL_MS)
     speakTimerRef.current = window.setInterval(speakTick, SPEAK_TICK_MS)
-  }, [pollSignals, pollMembers, speakTick])
+    hbTimerRef.current = window.setInterval(sendHeartbeat, 4000)
+  }, [pollSignals, pollMembers, speakTick, sendHeartbeat])
 
   const stopTimers = useCallback(() => {
-    for (const r of [signalTimerRef, membersTimerRef, speakTimerRef]) {
+    for (const r of [signalTimerRef, membersTimerRef, speakTimerRef, chatTimerRef, hbTimerRef]) {
       if (r.current) { window.clearInterval(r.current); r.current = null }
     }
   }, [])
@@ -547,9 +588,13 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
           room_title: roomTitleRef.current || roomSlugRef.current,
         }),
       })
-      callIdRef.current = res.call_id; setCallId(res.call_id); afterIdRef.current = 0
+      callIdRef.current = res.call_id; setCallId(res.call_id)
+      // CRITICAL: start from current max signal/chat ID — skip all stale signals from previous sessions
+      afterIdRef.current = res.after_signal_id ?? 0
+      afterChatIdRef.current = res.after_chat_id ?? 0
       joinedRef.current = true; setJoined(true)
       setIsHost(!!res.is_host); setBroadcastEnded(false)
+      setChatMessages([]); setPeerStates({})
       serverMembersRef.current = res.members; applyMembers()
       for (const m of res.members) ensurePeer(m.user_id)
       startTimers(); pollMembers(); pollSignals()
@@ -643,6 +688,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
     joinedRef.current = false; micOnRef.current = false
     setJoined(false); setMicOn(false); setSpeaking(false); setError(null); setCallId(null)
     speakingRef.current.clear(); serverMembersRef.current = []; setMembers([])
+    setChatMessages([]); setPeerStates({})
     if (cid) { try { await apiFetch(`/api/calls/${cid}/leave`, { method: 'PUT', body: '{}' }) } catch { /* ignore */ } }
     await refreshActive()
   }, [stopTimers, cleanupAll, refreshActive])
@@ -751,6 +797,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
   return {
     members, memberVolumes, joined, micOn, speaking, connecting, error,
     audioBlocked, myUser, isHost, broadcastEnded, activeRooms, callId,
-    join, leave, endBroadcast, toggleMic, unlockAudio, setMemberVolume,
+    chatMessages, peerStates,
+    join, leave, endBroadcast, toggleMic, unlockAudio, setMemberVolume, sendChat,
   }
 }
