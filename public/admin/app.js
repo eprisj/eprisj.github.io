@@ -5993,3 +5993,409 @@ function bindStudioRowActions() {
   });
 })();
 
+// ═══════════════════════════════════════════════════════════
+// ──  RADIO TAB  ───────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════
+
+(function initRadioTab() {
+  const RADIO_API = 'https://eprisradio.munister.com.ua';
+  const RADIO_TOKEN_KEY = 'epris_radio_admin_pw';
+
+  function getRadioToken() {
+    return document.getElementById('radioAdminToken')?.value.trim()
+      || localStorage.getItem(RADIO_TOKEN_KEY) || '';
+  }
+
+  function radioFetch(path, opts) {
+    const token = getRadioToken();
+    return fetch(RADIO_API + path, {
+      ...opts,
+      headers: {
+        'X-Admin-Token': token,
+        'Content-Type': 'application/json',
+        ...(opts?.headers || {}),
+      },
+    }).then(r => r.json());
+  }
+
+  function fmtBytes(b) {
+    if (!b) return '';
+    if (b > 1024 * 1024) return (b / 1024 / 1024).toFixed(1) + ' МБ';
+    return (b / 1024).toFixed(0) + ' КБ';
+  }
+
+  function fmtDate(d) {
+    if (!d) return '';
+    try { return new Date(d).toLocaleDateString('uk-UA', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' }); }
+    catch { return d; }
+  }
+
+  function radioShowToast(msg, type) {
+    showToast(type || 'info', msg);
+  }
+
+  // ── Sub-tab switching ──────────────────────────────────────
+
+  document.querySelectorAll('.radio-sub-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.radio-sub-btn').forEach(b => {
+        b.style.borderBottomColor = 'transparent';
+        b.style.color = 'var(--text-muted)';
+      });
+      document.querySelectorAll('.radio-sub-panel').forEach(p => { p.style.display = 'none'; });
+      btn.style.borderBottomColor = 'var(--accent)';
+      btn.style.color = 'var(--text)';
+      const sub = document.getElementById('radio-sub-' + btn.dataset.rsub);
+      if (sub) sub.style.display = 'flex', sub.style.flexDirection = 'column', sub.style.gap = '16px';
+    });
+  });
+
+  // ── Connect button ─────────────────────────────────────────
+
+  const connectBtn = document.getElementById('radioConnectBtn');
+  const statusEl = document.getElementById('radioStatus');
+  const radioPanel = document.getElementById('radioPanel');
+
+  async function radioConnect() {
+    const token = getRadioToken();
+    if (!token) { radioShowToast('Введите Admin Token', 'error'); return; }
+    localStorage.setItem(RADIO_TOKEN_KEY, token);
+    statusEl.textContent = 'Подключаюсь...';
+    try {
+      const r = await fetch(RADIO_API + '/api/health');
+      const j = await r.json();
+      if (j.ok) {
+        statusEl.textContent = '✓ ' + (j.station || 'Подключено');
+        statusEl.style.color = '#16a34a';
+        radioPanel.style.display = 'flex';
+        radioPanel.style.flexDirection = 'column';
+        radioPanel.style.gap = '24px';
+        loadTracks();
+        loadPodcasts();
+        loadAnnouncements();
+      } else throw new Error(j.error || 'error');
+    } catch (e) {
+      statusEl.textContent = '✗ ' + e.message;
+      statusEl.style.color = 'var(--danger)';
+    }
+  }
+
+  if (connectBtn) connectBtn.addEventListener('click', radioConnect);
+
+  // Auto-connect on tab switch if token saved
+  document.querySelector('[data-tab="radio"]')?.addEventListener('click', () => {
+    const saved = localStorage.getItem(RADIO_TOKEN_KEY);
+    if (saved && radioPanel && radioPanel.style.display === 'none' || radioPanel?.style.display === '') {
+      const inp = document.getElementById('radioAdminToken');
+      if (inp && !inp.value && saved) inp.value = saved;
+      radioConnect();
+    }
+  });
+
+  // ── TRACKS ────────────────────────────────────────────────
+
+  let _tracks = [];
+  let _trackAudioEl = null;
+
+  function renderTrackList() {
+    const el = document.getElementById('trackList');
+    const countEl = document.getElementById('trackCount');
+    if (!el) return;
+    if (!_tracks.length) {
+      el.innerHTML = '<p style="padding:24px;text-align:center;font-size:.8rem;color:var(--text-muted)">Треков нет. Загрузите первый!</p>';
+      if (countEl) countEl.textContent = '0 треков';
+      return;
+    }
+    if (countEl) countEl.textContent = _tracks.length + ' ' + (_tracks.length === 1 ? 'трек' : 'треков');
+    el.innerHTML = _tracks.map(t => `
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid var(--line)">
+        <div style="flex:1;min-width:0">
+          <div style="font-size:.88rem;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escapeHtml(t.title)}</div>
+          <div style="font-size:.72rem;color:var(--text-muted)">${escapeHtml(t.artist || '')} ${t.artist ? '·' : ''} ${fmtBytes(t.size_bytes)} · ${fmtDate(t.uploaded_at)}</div>
+        </div>
+        <button class="btn btn-sm" type="button" onclick="window._radioPreviewTrack(${t.id}, '${escapeHtml(t.title)}')" title="Прослушать">▶</button>
+        <button class="btn btn-sm btn-danger-text" type="button" onclick="window._radioDeleteTrack(${t.id}, '${escapeHtml(t.title)}')" title="Удалить">✕</button>
+      </div>
+    `).join('');
+  }
+
+  async function loadTracks() {
+    try {
+      const j = await radioFetch('/api/music/tracks');
+      if (j.ok) { _tracks = j.data || []; renderTrackList(); }
+      else radioShowToast('Ошибка загрузки треков: ' + (j.error || ''), 'error');
+    } catch (e) { radioShowToast('Ошибка: ' + e.message, 'error'); }
+  }
+
+  window._radioPreviewTrack = function(id, title) {
+    if (_trackAudioEl) { _trackAudioEl.pause(); _trackAudioEl.src = ''; }
+    _trackAudioEl = new Audio(RADIO_API + '/api/music/tracks/' + id + '/file');
+    _trackAudioEl.play().catch(() => {});
+    radioShowToast('▶ ' + title, 'info');
+  };
+
+  window._radioDeleteTrack = async function(id, title) {
+    if (!confirm('Удалить «' + title + '»?')) return;
+    try {
+      const j = await radioFetch('/api/music/tracks/' + id, { method: 'DELETE' });
+      if (j.ok) { radioShowToast('Трек удалён', 'success'); loadTracks(); }
+      else radioShowToast('Ошибка: ' + (j.error || ''), 'error');
+    } catch (e) { radioShowToast('Ошибка: ' + e.message, 'error'); }
+  };
+
+  // Upload
+  const dropZone = document.getElementById('trackDropZone');
+  const fileInput = document.getElementById('trackFileInput');
+  const uploadBtn = document.getElementById('trackUploadBtn');
+  const refreshBtn = document.getElementById('trackRefreshBtn');
+  const progressWrap = document.getElementById('trackUploadProgress');
+  const progressBar = document.getElementById('trackProgressBar');
+  const progressLabel = document.getElementById('trackProgressLabel');
+
+  if (dropZone) {
+    dropZone.addEventListener('click', () => fileInput?.click());
+    dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.style.borderColor = 'var(--accent)'; });
+    dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = ''; });
+    dropZone.addEventListener('drop', e => {
+      e.preventDefault(); dropZone.style.borderColor = '';
+      const f = e.dataTransfer?.files[0];
+      if (f) applyTrackFile(f);
+    });
+  }
+  if (fileInput) fileInput.addEventListener('change', () => { if (fileInput.files[0]) applyTrackFile(fileInput.files[0]); });
+
+  let _pendingFile = null;
+  function applyTrackFile(f) {
+    _pendingFile = f;
+    const titleInp = document.getElementById('trackTitle');
+    if (titleInp && !titleInp.value) titleInp.value = f.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
+    if (dropZone) dropZone.querySelector('.upload-drop-main') && (dropZone.querySelector('.upload-drop-main').textContent = f.name);
+    const mainDiv = dropZone?.querySelector('div');
+    if (mainDiv) mainDiv.textContent = f.name + ' (' + fmtBytes(f.size) + ')';
+  }
+
+  async function uploadTrack() {
+    if (!_pendingFile) { radioShowToast('Выберите файл', 'error'); return; }
+    const token = getRadioToken();
+    if (!token) { radioShowToast('Нет Admin Token', 'error'); return; }
+    const title = document.getElementById('trackTitle')?.value.trim() || _pendingFile.name;
+    const artist = document.getElementById('trackArtist')?.value.trim() || '';
+    const fd = new FormData();
+    fd.append('file', _pendingFile);
+    fd.append('title', title);
+    if (artist) fd.append('artist', artist);
+    if (progressWrap) progressWrap.style.display = 'block';
+    if (progressBar) progressBar.style.width = '0%';
+    if (progressLabel) progressLabel.textContent = 'Загружаю...';
+    if (uploadBtn) uploadBtn.disabled = true;
+    try {
+      await new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', RADIO_API + '/api/music/upload');
+        xhr.setRequestHeader('X-Admin-Token', token);
+        xhr.upload.onprogress = e => {
+          if (e.lengthComputable) {
+            const pct = Math.round(e.loaded / e.total * 100);
+            if (progressBar) progressBar.style.width = pct + '%';
+            if (progressLabel) progressLabel.textContent = pct + '% · ' + fmtBytes(e.loaded) + ' / ' + fmtBytes(e.total);
+          }
+        };
+        xhr.onload = () => {
+          try {
+            const j = JSON.parse(xhr.responseText);
+            if (j.ok) resolve(j);
+            else reject(new Error(j.error || 'upload error'));
+          } catch { reject(new Error('parse error')); }
+        };
+        xhr.onerror = () => reject(new Error('network error'));
+        xhr.send(fd);
+      });
+      radioShowToast('Трек загружен!', 'success');
+      _pendingFile = null;
+      if (document.getElementById('trackTitle')) document.getElementById('trackTitle').value = '';
+      if (document.getElementById('trackArtist')) document.getElementById('trackArtist').value = '';
+      if (dropZone) { const d = dropZone.querySelector('div'); if (d) d.textContent = 'Перетащите аудиофайл или нажмите'; }
+      loadTracks();
+    } catch (e) {
+      radioShowToast('Ошибка загрузки: ' + e.message, 'error');
+    } finally {
+      if (progressWrap) setTimeout(() => { progressWrap.style.display = 'none'; }, 2000);
+      if (uploadBtn) uploadBtn.disabled = false;
+    }
+  }
+
+  if (uploadBtn) uploadBtn.addEventListener('click', uploadTrack);
+  if (refreshBtn) refreshBtn.addEventListener('click', loadTracks);
+
+  // ── PODCASTS ──────────────────────────────────────────────
+
+  let _podcasts = [];
+  let _podcastEditing = null;
+
+  function renderPodcastList() {
+    const el = document.getElementById('podcastList');
+    if (!el) return;
+    if (!_podcasts.length) {
+      el.innerHTML = '<p style="padding:24px;text-align:center;font-size:.8rem;color:var(--text-muted)">Подкастов нет.</p>';
+      return;
+    }
+    el.innerHTML = _podcasts.map(p => `
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid var(--line)">
+        <div style="flex:1;min-width:0">
+          <div style="font-size:.88rem;font-weight:600;color:var(--text)">${escapeHtml(p.title)}</div>
+          <div style="font-size:.72rem;color:var(--text-muted)">${fmtDate(p.published_at)} · ${p.duration_label || ''} · ${p.is_published ? '✓ Опубл.' : '○ Черновик'}</div>
+        </div>
+        <button class="btn btn-sm" type="button" onclick="window._podcastEdit(${p.id})">✎</button>
+        <button class="btn btn-sm btn-danger-text" type="button" onclick="window._podcastDelete(${p.id}, '${escapeHtml(p.title)}')">✕</button>
+      </div>
+    `).join('');
+  }
+
+  async function loadPodcasts() {
+    try {
+      const j = await radioFetch('/api/podcasts/all');
+      if (j.ok) { _podcasts = j.data || []; renderPodcastList(); }
+    } catch { /* ignore */ }
+  }
+
+  function showPodcastForm(p) {
+    const form = document.getElementById('podcastForm');
+    if (!form) return;
+    _podcastEditing = p || null;
+    document.getElementById('podcastTitle').value = p?.title || '';
+    document.getElementById('podcastAudioUrl').value = p?.audio_url || '';
+    document.getElementById('podcastCoverUrl').value = p?.cover_url || '';
+    document.getElementById('podcastDuration').value = p?.duration_label || '';
+    document.getElementById('podcastDesc').value = p?.description || '';
+    document.getElementById('podcastEditId').value = p?.id || '';
+    form.style.display = 'block';
+    document.getElementById('podcastTitle').focus();
+  }
+
+  function hidePodcastForm() {
+    const form = document.getElementById('podcastForm');
+    if (form) form.style.display = 'none';
+    _podcastEditing = null;
+  }
+
+  async function savePodcast() {
+    const title = document.getElementById('podcastTitle')?.value.trim();
+    const audio_url = document.getElementById('podcastAudioUrl')?.value.trim();
+    if (!title || !audio_url) { radioShowToast('Название и URL аудио обязательны', 'error'); return; }
+    const body = {
+      title, audio_url,
+      cover_url: document.getElementById('podcastCoverUrl')?.value.trim() || null,
+      duration_label: document.getElementById('podcastDuration')?.value.trim() || null,
+      description: document.getElementById('podcastDesc')?.value.trim() || null,
+      is_published: true,
+    };
+    const id = document.getElementById('podcastEditId')?.value;
+    try {
+      const j = await radioFetch(id ? '/api/podcasts/' + id : '/api/podcasts', { method: id ? 'PUT' : 'POST', body: JSON.stringify(body) });
+      if (j.ok) { radioShowToast('Подкаст сохранён', 'success'); hidePodcastForm(); loadPodcasts(); }
+      else radioShowToast('Ошибка: ' + (j.error || ''), 'error');
+    } catch (e) { radioShowToast('Ошибка: ' + e.message, 'error'); }
+  }
+
+  window._podcastEdit = id => { const p = _podcasts.find(x => x.id === id); if (p) showPodcastForm(p); };
+  window._podcastDelete = async (id, title) => {
+    if (!confirm('Удалить «' + title + '»?')) return;
+    try {
+      const j = await radioFetch('/api/podcasts/' + id, { method: 'DELETE' });
+      if (j.ok) { radioShowToast('Удалено', 'success'); loadPodcasts(); }
+    } catch { /* ignore */ }
+  };
+
+  document.getElementById('podcastNewBtn')?.addEventListener('click', () => showPodcastForm(null));
+  document.getElementById('podcastSaveBtn')?.addEventListener('click', savePodcast);
+  document.getElementById('podcastCancelBtn')?.addEventListener('click', hidePodcastForm);
+  document.getElementById('podcastRefreshBtn')?.addEventListener('click', loadPodcasts);
+
+  // ── ANNOUNCEMENTS ─────────────────────────────────────────
+
+  let _announcements = [];
+
+  function renderAnnList() {
+    const el = document.getElementById('annList');
+    if (!el) return;
+    if (!_announcements.length) {
+      el.innerHTML = '<p style="padding:24px;text-align:center;font-size:.8rem;color:var(--text-muted)">Анонсов нет.</p>';
+      return;
+    }
+    el.innerHTML = _announcements.map(a => `
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid var(--line)">
+        <div style="flex:1;min-width:0">
+          <div style="font-size:.88rem;font-weight:600;color:var(--text)">${escapeHtml(a.title)}</div>
+          <div style="font-size:.72rem;color:var(--text-muted)">${a.event_date ? fmtDate(a.event_date) + ' · ' : ''}${escapeHtml(a.location || '')} ${a.is_published ? '✓' : '○'}</div>
+        </div>
+        <button class="btn btn-sm" type="button" onclick="window._annEdit(${a.id})">✎</button>
+        <button class="btn btn-sm btn-danger-text" type="button" onclick="window._annDelete(${a.id}, '${escapeHtml(a.title)}')">✕</button>
+      </div>
+    `).join('');
+  }
+
+  async function loadAnnouncements() {
+    try {
+      const j = await radioFetch('/api/announcements/all');
+      if (j.ok) { _announcements = j.data || []; renderAnnList(); }
+    } catch { /* ignore */ }
+  }
+
+  function showAnnForm(a) {
+    const form = document.getElementById('annForm');
+    if (!form) return;
+    document.getElementById('annTitle').value = a?.title || '';
+    document.getElementById('annDate').value = a?.event_date ? a.event_date.slice(0, 16) : '';
+    document.getElementById('annLocation').value = a?.location || '';
+    document.getElementById('annLink').value = a?.link_url || '';
+    document.getElementById('annBody').value = a?.body || '';
+    document.getElementById('annEditId').value = a?.id || '';
+    form.style.display = 'block';
+    document.getElementById('annTitle').focus();
+  }
+
+  function hideAnnForm() {
+    const form = document.getElementById('annForm');
+    if (form) form.style.display = 'none';
+  }
+
+  async function saveAnn() {
+    const title = document.getElementById('annTitle')?.value.trim();
+    if (!title) { radioShowToast('Название обязательно', 'error'); return; }
+    const body = {
+      title,
+      event_date: document.getElementById('annDate')?.value || null,
+      location: document.getElementById('annLocation')?.value.trim() || null,
+      link_url: document.getElementById('annLink')?.value.trim() || null,
+      body: document.getElementById('annBody')?.value.trim() || null,
+      is_published: true,
+    };
+    const id = document.getElementById('annEditId')?.value;
+    try {
+      const j = await radioFetch(id ? '/api/announcements/' + id : '/api/announcements', { method: id ? 'PUT' : 'POST', body: JSON.stringify(body) });
+      if (j.ok) { radioShowToast('Анонс сохранён', 'success'); hideAnnForm(); loadAnnouncements(); }
+      else radioShowToast('Ошибка: ' + (j.error || ''), 'error');
+    } catch (e) { radioShowToast('Ошибка: ' + e.message, 'error'); }
+  }
+
+  window._annEdit = id => { const a = _announcements.find(x => x.id === id); if (a) showAnnForm(a); };
+  window._annDelete = async (id, title) => {
+    if (!confirm('Удалить «' + title + '»?')) return;
+    try {
+      const j = await radioFetch('/api/announcements/' + id, { method: 'DELETE' });
+      if (j.ok) { radioShowToast('Удалено', 'success'); loadAnnouncements(); }
+    } catch { /* ignore */ }
+  };
+
+  document.getElementById('annNewBtn')?.addEventListener('click', () => showAnnForm(null));
+  document.getElementById('annSaveBtn')?.addEventListener('click', saveAnn);
+  document.getElementById('annCancelBtn')?.addEventListener('click', hideAnnForm);
+  document.getElementById('annRefreshBtn')?.addEventListener('click', loadAnnouncements);
+
+  // Init sub-panel visibility
+  document.querySelectorAll('.radio-sub-panel').forEach((p, i) => {
+    p.style.display = i === 0 ? 'flex' : 'none';
+    if (i === 0) { p.style.flexDirection = 'column'; p.style.gap = '16px'; }
+  });
+})();
+

@@ -6,28 +6,18 @@ import { useChat, REACTIONS } from '../hooks/useChat'
 import type { ChatMessage } from '../hooks/useChat'
 
 const isTouch = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0)
-
 const API = 'https://eprisradio.munister.com.ua'
 const CHANNEL = 'eprisj-'
 
 function stripChannel(slug: string) { return slug.startsWith(CHANNEL) ? slug.slice(CHANNEL.length) : slug }
 
-type Announcement = {
-  id: number
-  title: string
-  body?: string
-  event_date?: string
-  location?: string
-  tags: string[]
-  link_url?: string
-  link_label?: string
-}
+type MusicTrack = { id: number; title: string; artist: string; size_bytes: number; uploaded_at: string }
 
-// ── Icons ────────────────────────────────────────────────────────────────────
+// ── Icons ─────────────────────────────────────────────────────────────────────
 
 function MicIcon({ off }: { off?: boolean }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" width={20} height={20} aria-hidden>
+    <svg viewBox="0 0 24 24" fill="none" width={18} height={18} aria-hidden>
       <path d="M9 4.5a3 3 0 0 1 6 0v6a3 3 0 0 1-6 0v-6Z" stroke="currentColor" strokeWidth="1.7" />
       <path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M9 21h6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
       {off && <path d="M3.5 3.5l17 17" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />}
@@ -35,80 +25,115 @@ function MicIcon({ off }: { off?: boolean }) {
   )
 }
 
-// ── Signal bars ───────────────────────────────────────────────────────────────
+function MusicIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" width={16} height={16} aria-hidden>
+      <path d="M9 18V5l12-2v13" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="6" cy="18" r="3" stroke="currentColor" strokeWidth="1.7" />
+      <circle cx="18" cy="16" r="3" stroke="currentColor" strokeWidth="1.7" />
+    </svg>
+  )
+}
+
+function ChatIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" width={16} height={16} aria-hidden>
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function UsersIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" width={16} height={16} aria-hidden>
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+      <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="1.7" />
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+// ── Signal waveform ───────────────────────────────────────────────────────────
 
 function SignalBars({ active }: { active: boolean }) {
   return (
-    <div className="flex items-end gap-[3px] h-8" aria-hidden>
-      {Array.from({ length: 24 }).map((_, i) => (
-        <span
-          key={i}
-          className={`w-[3px] rounded-sm ${active ? 'bg-[#F5F0EB]' : 'bg-[#F5F0EB]/20'}`}
+    <div className="flex items-end gap-[3px] h-7" aria-hidden>
+      {Array.from({ length: 20 }).map((_, i) => (
+        <span key={i} className={`w-[3px] rounded-sm transition-all ${active ? 'bg-[#F5F0EB]' : 'bg-[#F5F0EB]/15'}`}
           style={{
-            height: active ? `${20 + Math.sin(i * 0.7) * 12}px` : `${4 + (i % 4) * 3}px`,
-            transition: active ? `height 0.${3 + (i % 4)}s ease-in-out ${i * 0.04}s, background-color 0.3s` : 'all 0.6s',
-            animation: active ? `epris-bar ${0.6 + (i % 5) * 0.15}s ease-in-out infinite alternate` : 'none',
+            height: active ? `${14 + Math.sin(i * 0.7) * 10}px` : `${3 + (i % 4) * 2}px`,
+            animation: active ? `epris-bar ${0.5 + (i % 5) * 0.12}s ease-in-out infinite alternate` : 'none',
             animationDelay: `${i * 0.05}s`,
-          }}
-        />
+          }} />
       ))}
-      <style>{`@keyframes epris-bar { from { height: 4px; } to { height: 28px; } }`}</style>
+      <style>{`@keyframes epris-bar { from { height: 3px; } to { height: 24px; } }`}</style>
     </div>
   )
 }
 
-// ── Live badge ────────────────────────────────────────────────────────────────
+// ── Toast system ──────────────────────────────────────────────────────────────
 
-function LiveBadge({ label }: { label: string }) {
+type Toast = { id: string; text: string; color?: string }
+
+function ToastStack({ toasts }: { toasts: Toast[] }) {
   return (
-    <span className="inline-flex items-center gap-2 border border-[#C9A690] px-3 py-1">
-      <span className="w-1.5 h-1.5 rounded-full bg-[#C9A690] animate-pulse" />
-      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#C9A690]">{label}</span>
-    </span>
-  )
-}
-
-// ── Schedule card (announcements used as broadcast schedule) ─────────────────
-
-function ScheduleCard({ ann }: { ann: Announcement }) {
-  return (
-    <div className="border-b border-[#F5F0EB]/10 py-5 last:border-0">
-      <div className="flex items-start justify-between gap-6">
-        <div className="flex-1 min-w-0">
-          {ann.event_date && (
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#C9A690] mb-2">
-              {new Date(ann.event_date).toLocaleDateString('uk-UA', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}
-              {ann.location && ` · ${ann.location}`}
-            </p>
-          )}
-          <h3 className="font-serif text-lg text-[#F5F0EB] leading-snug">{ann.title}</h3>
-          {ann.body && <p className="font-mono text-[11px] text-[#F5F0EB]/50 mt-2 leading-relaxed">{ann.body}</p>}
-        </div>
-        {ann.link_url && (
-          <a href={ann.link_url} target="_blank" rel="noopener noreferrer"
-            className="shrink-0 border border-[#F5F0EB]/20 px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-[#F5F0EB]/60 hover:border-[#C9A690] hover:text-[#C9A690] transition-colors whitespace-nowrap">
-            {ann.link_label || '→'}
-          </a>
-        )}
-      </div>
+    <div className="fixed bottom-24 right-4 z-50 flex flex-col gap-2 pointer-events-none">
+      <AnimatePresence>
+        {toasts.map(t => (
+          <motion.div key={t.id} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }}
+            className="flex items-center gap-2 bg-[#501a2c] text-[#F5F0EB] px-4 py-2.5 font-mono text-[11px] uppercase tracking-widest shadow-lg">
+            <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: t.color || '#C9A690' }} />
+            {t.text}
+          </motion.div>
+        ))}
+      </AnimatePresence>
     </div>
   )
 }
 
-// ── Volume toggle (3 levels) ──────────────────────────────────────────────────
+function useToasts() {
+  const [toasts, setToasts] = useState<Toast[]>([])
+  const push = useCallback((text: string, color?: string) => {
+    const id = Math.random().toString(36).slice(2)
+    setToasts(prev => [...prev.slice(-3), { id, text, color }])
+    setTimeout(() => setToasts(prev => prev.filter(t => t.id !== id)), 3000)
+  }, [])
+  return { toasts, push }
+}
+
+// ── Connection dot ────────────────────────────────────────────────────────────
+
+function ConnDot({ state }: { state?: RTCPeerConnectionState }) {
+  const color = !state ? '#C9A690' :
+    state === 'connected' ? '#4ade80' :
+    state === 'connecting' || state === 'new' ? '#facc15' :
+    state === 'failed' || state === 'closed' ? '#f87171' : '#C9A690'
+  return <span className="w-1.5 h-1.5 rounded-full shrink-0 transition-colors" style={{ background: color }} title={state || 'loading'} />
+}
+
+// ── Volume toggle ─────────────────────────────────────────────────────────────
 
 function VolumeToggle({ userId, volume, onSet }: { userId: number; volume: number; onSet: (id: number, v: number) => void }) {
   const icon = volume >= 0.75 ? '🔊' : volume >= 0.25 ? '🔉' : '🔇'
   const next = volume >= 0.75 ? 0.5 : volume >= 0.25 ? 0 : 1
   return (
-    <button
-      onClick={e => { e.stopPropagation(); onSet(userId, next) }}
-      className="shrink-0 text-[13px] opacity-40 hover:opacity-80 active:scale-110 transition-all select-none"
-      title="Volume"
-      style={{ touchAction: 'none' }}
-    >
-      {icon}
-    </button>
+    <button onClick={e => { e.stopPropagation(); onSet(userId, next) }}
+      className="shrink-0 text-[12px] opacity-35 hover:opacity-80 active:scale-110 transition-all" title="Volume"
+      style={{ touchAction: 'none' }}>{icon}</button>
+  )
+}
+
+// ── Nick editor ───────────────────────────────────────────────────────────────
+
+function NickEditor({ current, onSave, onCancel }: { current: string; onSave: (v: string) => void; onCancel: () => void }) {
+  const [val, setVal] = useState(current)
+  return (
+    <form onSubmit={e => { e.preventDefault(); val.trim().length >= 2 && onSave(val.trim()) }} className="flex items-center gap-2">
+      <input type="text" value={val} onChange={e => setVal(e.target.value)} maxLength={24} autoFocus
+        className="bg-transparent border-b border-[#501a2c] text-[#501a2c] font-serif text-base w-28 focus:outline-none pb-0.5" />
+      <button type="submit" className="font-mono text-[10px] text-[#501a2c] uppercase tracking-widest hover:opacity-60">OK</button>
+      <button type="button" onClick={onCancel} className="font-mono text-[10px] text-[#501a2c]/30 uppercase">✕</button>
+    </form>
   )
 }
 
@@ -119,21 +144,12 @@ function NicknamePrompt({ onJoin, loading, t }: { onJoin: (nick: string) => void
   return (
     <div className="border border-[#501a2c] p-8 max-w-sm mx-auto">
       <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60 mb-6">{t('radio.nick_label')}</p>
-      <input
-        type="text"
-        value={nick}
-        onChange={e => setNick(e.target.value)}
+      <input type="text" value={nick} onChange={e => setNick(e.target.value)}
         onKeyDown={e => e.key === 'Enter' && nick.trim().length >= 2 && onJoin(nick.trim())}
-        placeholder={t('radio.nick_placeholder')}
-        maxLength={24}
-        className="w-full bg-transparent border-b border-[#501a2c] font-serif text-xl text-[#501a2c] placeholder-[#501a2c]/30 focus:outline-none pb-2 mb-8"
-        autoFocus
-      />
-      <button
-        onClick={() => onJoin(nick.trim() || '')}
-        disabled={loading}
-        className="w-full border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] font-mono text-xs uppercase tracking-widest py-3 hover:bg-[#3d1220] transition-colors disabled:opacity-50"
-      >
+        placeholder={t('radio.nick_placeholder')} maxLength={24}
+        className="w-full bg-transparent border-b border-[#501a2c] font-serif text-xl text-[#501a2c] placeholder-[#501a2c]/30 focus:outline-none pb-2 mb-8" autoFocus />
+      <button onClick={() => onJoin(nick.trim() || '')} disabled={loading}
+        className="w-full border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] font-mono text-xs uppercase tracking-widest py-3 hover:bg-[#3d1220] transition-colors disabled:opacity-50">
         {loading ? t('radio.connecting') : t('radio.nick_enter')}
       </button>
       <p className="font-mono text-[10px] text-[#501a2c]/40 mt-4 text-center">{t('radio.nick_anon')}</p>
@@ -141,37 +157,31 @@ function NicknamePrompt({ onJoin, loading, t }: { onJoin: (nick: string) => void
   )
 }
 
-// ── Main ──────────────────────────────────────────────────────────────────────
-
 // ── Slug helper ───────────────────────────────────────────────────────────────
 
 function toSlug(s: string) {
   return s.trim().toLowerCase().replace(/[^a-z0-9а-яіїє]+/gi, '-').replace(/^-|-$/g, '').slice(0, 40) || 'main'
 }
 
-// ── Active rooms list ─────────────────────────────────────────────────────────
+// ── Rooms list ────────────────────────────────────────────────────────────────
 
 function RoomsList({ rooms, onJoin, t }: { rooms: ActiveRoom[]; onJoin: (slug: string, title: string) => void; t: (k: string) => string }) {
   const filtered = rooms.filter(r => r.slug.startsWith(CHANNEL))
   if (!filtered.length) return null
   return (
-    <div className="mt-12 border-t border-[#501a2c]/10 pt-10">
-      <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#501a2c]/40 mb-5">{t('radio.active_rooms')}</p>
+    <div className="mt-10 border-t border-[#501a2c]/10 pt-8">
+      <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#501a2c]/40 mb-4">{t('radio.active_rooms')}</p>
       <ul className="space-y-0">
         {filtered.map(r => {
-          const rawSlug = stripChannel(r.slug)
-          const displayTitle = r.title === r.slug ? rawSlug : r.title
+          const raw = stripChannel(r.slug)
+          const display = r.title === r.slug ? raw : r.title
           return (
             <li key={r.slug} className="border border-[#501a2c]/10 hover:border-[#501a2c]/30 transition-colors">
-              <button
-                onClick={() => onJoin(rawSlug, displayTitle)}
-                className="w-full flex items-center justify-between px-5 py-4 text-left group"
-              >
+              <button onClick={() => onJoin(raw, display)}
+                className="w-full flex items-center justify-between px-5 py-4 text-left group">
                 <span className="flex items-center gap-4">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#C9A690] animate-pulse" />
-                  <span className="font-serif text-lg text-[#501a2c] group-hover:text-[#3d1220] transition-colors">
-                    {displayTitle}
-                  </span>
+                  <span className="font-serif text-lg text-[#501a2c] group-hover:text-[#3d1220] transition-colors">{display}</span>
                 </span>
                 <span className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40">
                   {r.member_count} {t('radio.participants').toLowerCase()}
@@ -191,108 +201,17 @@ function CreateRoomPanel({ onStart, t }: { onStart: (slug: string, title: string
   const [name, setName] = useState('')
   const slug = name.trim() ? toSlug(name) : ''
   return (
-    <div className="mt-8 border border-dashed border-[#501a2c]/20 p-6 max-w-sm">
+    <div className="mt-6 border border-dashed border-[#501a2c]/20 p-6 max-w-sm">
       <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 mb-4">{t('radio.create_room')}</p>
-      <input
-        type="text"
-        value={name}
-        onChange={e => setName(e.target.value)}
+      <input type="text" value={name} onChange={e => setName(e.target.value)}
         onKeyDown={e => e.key === 'Enter' && slug && onStart(slug, name.trim())}
-        placeholder={t('radio.room_name_placeholder')}
-        maxLength={50}
-        className="w-full bg-transparent border-b border-[#501a2c]/30 font-serif text-lg text-[#501a2c] placeholder-[#501a2c]/20 focus:outline-none pb-2 mb-4 focus:border-[#501a2c]"
-        autoFocus
-      />
-      {slug && (
-        <p className="font-mono text-[9px] text-[#501a2c]/30 mb-4 truncate">
-          /radio?room={slug}
-        </p>
-      )}
-      <button
-        onClick={() => slug && onStart(slug, name.trim())}
-        disabled={!slug}
-        className="w-full border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] font-mono text-xs uppercase tracking-widest py-3 hover:bg-[#3d1220] transition-colors disabled:opacity-30"
-      >
+        placeholder={t('radio.room_name_placeholder')} maxLength={50}
+        className="w-full bg-transparent border-b border-[#501a2c]/30 font-serif text-lg text-[#501a2c] placeholder-[#501a2c]/20 focus:outline-none pb-2 mb-4 focus:border-[#501a2c]" autoFocus />
+      {slug && <p className="font-mono text-[9px] text-[#501a2c]/30 mb-4 truncate">/radio?room={slug}</p>}
+      <button onClick={() => slug && onStart(slug, name.trim())} disabled={!slug}
+        className="w-full border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] font-mono text-xs uppercase tracking-widest py-3 hover:bg-[#3d1220] transition-colors disabled:opacity-30">
         {t('radio.create_and_join')}
       </button>
-    </div>
-  )
-}
-
-// ── Inline nick editor ────────────────────────────────────────────────────────
-
-function NickEditor({ current, onSave, onCancel }: { current: string; onSave: (v: string) => void; onCancel: () => void }) {
-  const [val, setVal] = useState(current)
-  return (
-    <form onSubmit={e => { e.preventDefault(); val.trim().length >= 2 && onSave(val.trim()) }}
-      className="flex items-center gap-2">
-      <input type="text" value={val} onChange={e => setVal(e.target.value)} maxLength={24} autoFocus
-        className="bg-transparent border-b border-[#501a2c] text-[#501a2c] font-serif text-base w-32 focus:outline-none pb-0.5" />
-      <button type="submit" className="font-mono text-[10px] text-[#501a2c] uppercase tracking-widest hover:opacity-60">OK</button>
-      <button type="button" onClick={onCancel} className="font-mono text-[10px] text-[#501a2c]/30 uppercase tracking-widest">✕</button>
-    </form>
-  )
-}
-
-// ── Chat panel ────────────────────────────────────────────────────────────────
-
-function ChatPanel({
-  messages, callId, myNick, onSendText, onSendReaction, t,
-}: {
-  messages: ChatMessage[]; callId: number; myNick: string
-  onSendText: (cid: number, text: string) => void
-  onSendReaction: (cid: number, emoji: string) => void
-  t: (k: string) => string
-}) {
-  const [text, setText] = useState('')
-  const [showPicker, setShowPicker] = useState(false)
-  const bottomRef = useRef<HTMLDivElement>(null)
-  useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: 'smooth' }) }, [messages.length])
-  const textMessages = messages.filter(m => m.type === 'text')
-  return (
-    <div className="border border-[#501a2c]/20 mt-6">
-      <div className="bg-[#501a2c]/5 px-4 py-2.5 font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 flex items-center justify-between border-b border-[#501a2c]/10">
-        <span>{t('radio.chat') || 'Чат'}</span>
-        <button onClick={() => setShowPicker(p => !p)} className="text-base opacity-50 hover:opacity-100 transition-opacity">🙂</button>
-      </div>
-      <AnimatePresence>
-        {showPicker && (
-          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}
-            className="border-b border-[#501a2c]/10 overflow-hidden">
-            <div className="flex flex-wrap gap-3 px-4 py-3">
-              {REACTIONS.map(e => (
-                <button key={e} onClick={() => { onSendReaction(callId, e); setShowPicker(false) }}
-                  className="text-xl hover:scale-125 active:scale-110 transition-all">{e}</button>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <div className="h-40 overflow-y-auto px-4 py-3 space-y-2 overscroll-contain">
-        {textMessages.length === 0 && (
-          <p className="font-mono text-[10px] text-[#501a2c]/20 text-center pt-4">…</p>
-        )}
-        {textMessages.map(m => (
-          <div key={m.id} className={`flex gap-2 items-start ${m.nickname === myNick ? 'flex-row-reverse' : ''}`}>
-            <div className="w-5 h-5 rounded-full flex items-center justify-center font-semibold text-[9px] text-[#F5F0EB] shrink-0"
-              style={{ background: m.color }}>{m.nickname[0]?.toUpperCase()}</div>
-            <div className={`flex flex-col gap-0.5 max-w-[72%] ${m.nickname === myNick ? 'items-end' : ''}`}>
-              {m.nickname !== myNick && <span className="font-mono text-[9px] text-[#501a2c]/30">{m.nickname}</span>}
-              <span className={`px-3 py-1.5 font-sans text-sm leading-snug break-words ${
-                m.nickname === myNick ? 'bg-[#501a2c] text-[#F5F0EB]' : 'bg-[#501a2c]/8 text-[#501a2c]'
-              }`}>{m.content}</span>
-            </div>
-          </div>
-        ))}
-        <div ref={bottomRef} />
-      </div>
-      <form onSubmit={e => { e.preventDefault(); if (text.trim()) { onSendText(callId, text); setText('') } }}
-        className="border-t border-[#501a2c]/10 flex items-center gap-2 px-3 py-2">
-        <input type="text" value={text} onChange={e => setText(e.target.value)} placeholder="Написать…" maxLength={300}
-          className="flex-1 bg-transparent text-sm text-[#501a2c] placeholder-[#501a2c]/25 focus:outline-none" />
-        <button type="submit" disabled={!text.trim()}
-          className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c] disabled:opacity-20">→</button>
-      </form>
     </div>
   )
 }
@@ -303,18 +222,172 @@ function ShareButton({ roomSlug, t }: { roomSlug: string; t: (k: string) => stri
   const [copied, setCopied] = useState(false)
   const copy = () => {
     const raw = stripChannel(roomSlug)
-    const url = raw === 'main'
-      ? `${window.location.origin}/radio`
-      : `${window.location.origin}/radio?room=${encodeURIComponent(raw)}`
+    const url = raw === 'main' ? `${window.location.origin}/radio` : `${window.location.origin}/radio?room=${encodeURIComponent(raw)}`
     navigator.clipboard?.writeText(url).then(() => { setCopied(true); setTimeout(() => setCopied(false), 2000) }).catch(() => {})
   }
   return (
-    <button
-      onClick={copy}
-      className="border border-[#F5F0EB]/20 px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-[#F5F0EB]/50 hover:border-[#C9A690] hover:text-[#C9A690] transition-colors whitespace-nowrap"
-    >
+    <button onClick={copy}
+      className="border border-[#F5F0EB]/20 px-3 py-1.5 font-mono text-[9px] uppercase tracking-widest text-[#F5F0EB]/50 hover:border-[#C9A690] hover:text-[#C9A690] transition-colors whitespace-nowrap">
       {copied ? '✓ copied' : t('radio.share_link')}
     </button>
+  )
+}
+
+// ── Chat panel ────────────────────────────────────────────────────────────────
+
+function ChatPanel({ messages, callId, myNick, onSendText, onSendReaction, compact = false }:
+  { messages: ChatMessage[]; callId: number; myNick: string; onSendText: (cid: number, text: string) => void; onSendReaction: (cid: number, emoji: string) => void; compact?: boolean }) {
+  const [text, setText] = useState('')
+  const [showPicker, setShowPicker] = useState(false)
+  const bottomRef = useRef<HTMLDivElement>(null)
+  useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: 'smooth' }) }, [messages.length])
+  const textMsgs = messages.filter(m => m.type === 'text')
+  return (
+    <div className={`flex flex-col ${compact ? 'h-full' : 'border border-[#501a2c]/20'}`}>
+      {!compact && (
+        <div className="bg-[#501a2c]/5 px-4 py-2.5 font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 flex items-center justify-between border-b border-[#501a2c]/10">
+          <span>Чат</span>
+          <button onClick={() => setShowPicker(p => !p)} className="opacity-50 hover:opacity-100 transition-opacity">🙂</button>
+        </div>
+      )}
+      <AnimatePresence>
+        {showPicker && (
+          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}
+            className="border-b border-[#501a2c]/10 overflow-hidden bg-[#F5F0EB]">
+            <div className="flex flex-wrap gap-2 px-4 py-3">
+              {REACTIONS.map(e => (
+                <button key={e} onClick={() => { onSendReaction(callId, e); setShowPicker(false) }}
+                  className="text-xl hover:scale-125 active:scale-110 transition-transform">{e}</button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <div className={`overflow-y-auto px-4 py-3 space-y-2 overscroll-contain flex-1 ${compact ? 'min-h-0' : 'h-44'}`}>
+        {textMsgs.length === 0 && <p className="font-mono text-[10px] text-[#501a2c]/20 text-center pt-6">…</p>}
+        {textMsgs.map(m => (
+          <div key={m.id} className={`flex gap-2 items-end ${m.nickname === myNick ? 'flex-row-reverse' : ''}`}>
+            <div className="w-5 h-5 rounded-full flex items-center justify-center font-semibold text-[9px] text-[#F5F0EB] shrink-0 mb-0.5"
+              style={{ background: m.color }}>{m.nickname[0]?.toUpperCase()}</div>
+            <div className={`flex flex-col gap-0.5 max-w-[75%] ${m.nickname === myNick ? 'items-end' : ''}`}>
+              {m.nickname !== myNick && <span className="font-mono text-[9px] text-[#501a2c]/30 px-1">{m.nickname}</span>}
+              <span className={`px-3 py-1.5 font-sans text-sm leading-snug break-words ${
+                m.nickname === myNick ? 'bg-[#501a2c] text-[#F5F0EB]' : 'bg-[#501a2c]/8 text-[#501a2c] border border-[#501a2c]/10'
+              }`}>{m.content}</span>
+            </div>
+          </div>
+        ))}
+        <div ref={bottomRef} />
+      </div>
+      <form onSubmit={e => { e.preventDefault(); if (text.trim()) { onSendText(callId, text); setText('') } }}
+        className="border-t border-[#501a2c]/10 flex items-center gap-2 px-3 py-2 bg-white/30">
+        <button type="button" onClick={() => setShowPicker(p => !p)} className="text-base opacity-40 hover:opacity-80">🙂</button>
+        <input type="text" value={text} onChange={e => setText(e.target.value)} placeholder="Написати…" maxLength={300}
+          className="flex-1 bg-transparent text-sm text-[#501a2c] placeholder-[#501a2c]/25 focus:outline-none" />
+        <button type="submit" disabled={!text.trim()} className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c] disabled:opacity-20 px-1">→</button>
+      </form>
+    </div>
+  )
+}
+
+// ── Now Playing bar ───────────────────────────────────────────────────────────
+
+function NowPlayingBar({ title, artist, isHost, musicGain, onStop, onGain }:
+  { title: string; artist: string; isHost: boolean; musicGain: number; onStop: () => void; onGain: (v: number) => void }) {
+  return (
+    <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
+      className="bg-[#501a2c] text-[#F5F0EB] px-6 py-3 flex items-center gap-4 border-b border-[#F5F0EB]/10">
+      <span className="w-1.5 h-1.5 rounded-full bg-[#C9A690] animate-pulse shrink-0" />
+      <div className="flex-1 min-w-0">
+        <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#C9A690]">Now Playing</span>
+        <p className="font-serif text-sm text-[#F5F0EB] leading-tight truncate">{title}{artist ? ` — ${artist}` : ''}</p>
+      </div>
+      {isHost && (
+        <>
+          <input type="range" min={0} max={1} step={0.05} value={musicGain}
+            onChange={e => onGain(parseFloat(e.target.value))}
+            className="w-20 accent-[#C9A690] shrink-0" title="Гучність музики" />
+          <button onClick={onStop} className="font-mono text-[9px] uppercase tracking-widest text-[#F5F0EB]/50 hover:text-[#F5F0EB] border border-[#F5F0EB]/20 px-3 py-1.5 transition-colors whitespace-nowrap">
+            ■ Стоп
+          </button>
+        </>
+      )}
+    </motion.div>
+  )
+}
+
+// ── Music panel (host) ────────────────────────────────────────────────────────
+
+function MusicPanel({ onPlay, isPlaying }: { onPlay: (id: number, title: string, artist: string) => void; isPlaying: boolean }) {
+  const [tracks, setTracks] = useState<MusicTrack[]>([])
+  const [loading, setLoading] = useState(true)
+
+  const loadTracks = useCallback(async () => {
+    try {
+      const r = await fetch(`${API}/api/music/tracks`, { headers: { 'X-Admin-Token': '' } })
+      const j = await r.json()
+      if (j.ok) setTracks(j.data || [])
+    } catch { /* ignore */ }
+    finally { setLoading(false) }
+  }, [])
+
+  useEffect(() => { loadTracks() }, [loadTracks])
+
+  if (loading) return <p className="font-mono text-[10px] text-[#501a2c]/30 text-center py-4">…</p>
+  if (!tracks.length) return (
+    <p className="font-mono text-[10px] text-[#501a2c]/30 text-center py-6">
+      Треків немає. Завантажте в адмінці.
+    </p>
+  )
+  return (
+    <div className="divide-y divide-[#501a2c]/8 max-h-72 overflow-y-auto">
+      {tracks.map(tr => (
+        <div key={tr.id} className="flex items-center gap-3 px-4 py-3 hover:bg-[#501a2c]/4 transition-colors group">
+          <div className="flex-1 min-w-0">
+            <p className="font-serif text-[#501a2c] text-sm truncate">{tr.title}</p>
+            {tr.artist && <p className="font-mono text-[10px] text-[#501a2c]/40 truncate">{tr.artist}</p>}
+          </div>
+          <button onClick={() => onPlay(tr.id, tr.title, tr.artist)}
+            disabled={isPlaying}
+            className="shrink-0 border border-[#501a2c]/30 px-3 py-1 font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/60 hover:border-[#501a2c] hover:text-[#501a2c] transition-colors disabled:opacity-30 group-hover:border-[#501a2c]/60">
+            ▶ Запустити
+          </button>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+// ── Members panel ─────────────────────────────────────────────────────────────
+
+function MembersPanel({ members, myUser, memberVolumes, peerStates, micOn, speaking, editingNick, onEditNick, onSaveNick, onCancelNick, onSetVolume, total, t }:
+  { members: ReturnType<typeof useEprisVoice>['members']; myUser: ReturnType<typeof useEprisVoice>['myUser']; memberVolumes: Record<number, number>; peerStates: Record<number, RTCPeerConnectionState>; micOn: boolean; speaking: boolean; editingNick: boolean; onEditNick: () => void; onSaveNick: (v: string) => void; onCancelNick: () => void; onSetVolume: (id: number, v: number) => void; total: number; t: (k: string) => string }) {
+  return (
+    <div className="divide-y divide-[#501a2c]/8 overflow-y-auto">
+      {myUser && (
+        <div className={`px-4 py-3 flex items-center gap-3 ${micOn ? '' : 'opacity-60'}`}>
+          <span className="w-2 h-2 rounded-full shrink-0" style={{ background: myUser.color }} />
+          {editingNick
+            ? <NickEditor current={myUser.nickname} onSave={onSaveNick} onCancel={onCancelNick} />
+            : <button onClick={onEditNick} className="font-serif text-[#501a2c] text-left hover:underline flex items-center gap-1.5">
+                {myUser.nickname} <span className="text-[10px] opacity-30">✏</span>
+              </button>}
+          {(micOn && speaking) && <span className="ml-auto w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse" />}
+          <span className={`ml-auto font-mono text-[9px] text-[#501a2c]/40 ${(micOn && speaking) ? 'ml-1' : ''}`}>{micOn ? 'MIC' : 'MUTE'}</span>
+        </div>
+      )}
+      {members.map(m => (
+        <div key={m.user_id} className={`px-4 py-3 flex items-center gap-3 ${m.mic_on ? '' : 'opacity-60'}`}>
+          <ConnDot state={peerStates[m.user_id]} />
+          <span className="w-2 h-2 rounded-full shrink-0" style={{ background: m.color }} />
+          <span className="font-serif text-[#501a2c] truncate flex-1">{m.nickname}</span>
+          {m.speaking && <span className="w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse shrink-0" />}
+          <span className="font-mono text-[9px] text-[#501a2c]/40 shrink-0">{m.mic_on ? 'MIC' : 'MUTE'}</span>
+          <VolumeToggle userId={m.user_id} volume={memberVolumes[m.user_id] ?? 1} onSet={onSetVolume} />
+        </div>
+      ))}
+      {total === 0 && <p className="px-4 py-6 font-mono text-[10px] text-[#501a2c]/20 text-center">Тільки ви в ефірі</p>}
+    </div>
   )
 }
 
@@ -331,21 +404,55 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
   const {
     members, memberVolumes, joined, micOn, speaking, connecting, error,
     audioBlocked, myUser, isHost, broadcastEnded, activeRooms, callId,
+    peerStates, isMusicOn, musicGain, nowPlaying,
     join, leave, endBroadcast, toggleMic, unlockAudio, setMemberVolume,
+    startMusicBroadcast, stopMusicBroadcast, setMusicGain,
   } = useEprisVoice({ roomSlug, roomTitle })
 
-  const { messages, sendText, sendReaction: sendReactionApi, rename } = useChat(callId, joined)
+  const { messages, sendText, sendReaction, rename } = useChat(callId, joined)
+
+  const { toasts, push: pushToast } = useToasts()
 
   const [showNickPrompt, setShowNickPrompt] = useState(false)
   const [showCreateRoom, setShowCreateRoom] = useState(false)
   const [editingNick, setEditingNick] = useState(false)
   const [pttHeld, setPttHeld] = useState(false)
-  const [announcements, setAnnouncements] = useState<Announcement[]>([])
   const [floatReactions, setFloatReactions] = useState<{ id: string; emoji: string; x: number }[]>([])
+  const [mobileTab, setMobileTab] = useState<'members' | 'chat' | 'music'>('members')
+  const [desktopTab, setDesktopTab] = useState<'members' | 'chat' | 'music'>('members')
+  const [unreadChat, setUnreadChat] = useState(0)
+  const lastSeenMsgId = useRef(0)
   const pttBusyRef = useRef(false)
+  const prevMembersRef = useRef<typeof members>([])
   const lastReactionIdRef = useRef(0)
 
-  // broadcast shared reactions from chat poll
+  // Join/leave toasts
+  useEffect(() => {
+    const prev = prevMembersRef.current
+    if (!joined) { prevMembersRef.current = members; return }
+    const prevIds = new Set(prev.map(m => m.user_id))
+    const currIds = new Set(members.map(m => m.user_id))
+    for (const m of members) if (!prevIds.has(m.user_id)) pushToast(`${m.nickname} приєднався`, m.color)
+    for (const m of prev) if (!currIds.has(m.user_id)) pushToast(`${m.nickname} вийшов`, '#501a2c')
+    prevMembersRef.current = members
+  }, [members, joined, pushToast])
+
+  // Unread chat badge
+  useEffect(() => {
+    const newMsgs = messages.filter(m => m.type === 'text' && m.id > lastSeenMsgId.current)
+    if (!newMsgs.length) return
+    const activeTab = isTouch ? mobileTab : desktopTab
+    if (activeTab !== 'chat') setUnreadChat(n => n + newMsgs.length)
+  }, [messages, mobileTab, desktopTab])
+
+  const switchToChat = (which: 'mobile' | 'desktop') => {
+    if (which === 'mobile') setMobileTab('chat')
+    else setDesktopTab('chat')
+    setUnreadChat(0)
+    lastSeenMsgId.current = messages.filter(m => m.type === 'text').reduce((mx, m) => Math.max(mx, m.id), lastSeenMsgId.current)
+  }
+
+  // Floating reactions
   useEffect(() => {
     const newR = messages.filter(m => m.type === 'reaction' && m.id > lastReactionIdRef.current)
     if (!newR.length) return
@@ -357,44 +464,31 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
     })
   }, [messages])
 
-  const sendReaction = useCallback((emoji: string) => {
-    if (callId) sendReactionApi(callId, emoji)
-  }, [callId, sendReactionApi])
+  useEffect(() => { if (broadcastEnded) setShowEndedNotice(true) }, [broadcastEnded])
+
+  const navigateToRoom = useCallback((raw: string, title: string) => {
+    const url = raw === 'main' ? '/radio' : `/radio?room=${encodeURIComponent(raw)}`
+    window.history.pushState(null, '', url)
+    setRoomSlug(CHANNEL + raw)
+    setRoomTitle(title)
+    setShowNickPrompt(true)
+    setShowCreateRoom(false)
+  }, [])
+
+  const handleJoin = async (nick: string) => {
+    setShowNickPrompt(false)
+    const raw = stripChannel(roomSlug)
+    const url = raw === 'main' ? '/radio' : `/radio?room=${encodeURIComponent(raw)}`
+    window.history.replaceState(null, '', url)
+    await join(nick)
+  }
 
   const handleRename = async (nick: string) => {
     await rename(nick)
     setEditingNick(false)
   }
 
-  const navigateToRoom = useCallback((rawSlug: string, title: string) => {
-    const url = rawSlug === 'main' ? '/radio' : `/radio?room=${encodeURIComponent(rawSlug)}`
-    window.history.pushState(null, '', url)
-    setRoomSlug(CHANNEL + rawSlug)
-    setRoomTitle(title)
-    setShowNickPrompt(true)
-    setShowCreateRoom(false)
-  }, [])
-
-  // Show ended notice when broadcast is terminated by host
-  useEffect(() => { if (broadcastEnded) setShowEndedNotice(true) }, [broadcastEnded])
-
-  const total = members.length + (joined ? 1 : 0)
-  const anyoneSpeaking = members.some(m => m.speaking) || (micOn && speaking)
-  const isActive = joined || members.length > 0
-
-  useEffect(() => {
-    fetch(`${API}/api/announcements`).then(r => r.json()).then(d => setAnnouncements(d.data || [])).catch(() => {})
-  }, [])
-
-  const handleJoin = async (nick: string) => {
-    setShowNickPrompt(false)
-    const rawSlug = stripChannel(roomSlug)
-    const url = rawSlug === 'main' ? '/radio' : `/radio?room=${encodeURIComponent(rawSlug)}`
-    window.history.replaceState(null, '', url)
-    await join(nick)
-  }
-
-  // PTT Space key (desktop only)
+  // PTT — spacebar desktop
   useEffect(() => {
     if (!joined || isTouch) return
     const onDown = (e: KeyboardEvent) => {
@@ -411,7 +505,6 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
     return () => { window.removeEventListener('keydown', onDown); window.removeEventListener('keyup', onUp) }
   }, [joined, micOn, pttHeld, toggleMic])
 
-  // Mobile PTT — touch hold
   const pttTouchStart = useCallback(() => {
     if (pttBusyRef.current || micOn) return
     pttBusyRef.current = true; setPttHeld(true)
@@ -421,47 +514,45 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
     if (pttHeld && micOn) { setPttHeld(false); toggleMic() }
   }, [pttHeld, micOn, toggleMic])
 
+  const total = members.length
+  const anyoneSpeaking = members.some(m => m.speaking) || (micOn && speaking)
+  const isActive = joined || members.length > 0
+  const roomDisplayName = (() => { const r = stripChannel(roomSlug); return r === 'main' ? 'Main' : r })()
+
   return (
     <div className="min-h-screen bg-[#F5F0EB]">
 
-      {/* ── Hero dark strip ────────────────────────────────────────────────── */}
-      <div className="bg-[#501a2c] pt-16">
-        <div className="max-w-5xl mx-auto px-8 md:px-16 pt-12 pb-10">
-
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+      {/* ── Hero dark ──────────────────────────────────────────────────────── */}
+      <div className="bg-[#501a2c]">
+        <div className="max-w-5xl mx-auto px-6 md:px-14 pt-14 pb-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-[#C9A690] mb-4">{t('radio.eyebrow')}</p>
-              <h1 className="font-serif text-5xl md:text-7xl text-[#F5F0EB] leading-none mb-4">
+              <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-[#C9A690] mb-3">{t('radio.eyebrow')}</p>
+              <h1 className="font-serif text-4xl md:text-6xl text-[#F5F0EB] leading-none mb-3">
                 {joined ? t('radio.on_air') : members.length > 0 ? t('radio.broadcast_active') : 'EPRIS Live'}
               </h1>
-              <p className="font-serif text-lg text-[#F5F0EB]/60 max-w-xl leading-relaxed">
-                {t('radio.concept')}
-              </p>
+              <p className="font-serif text-base text-[#F5F0EB]/50 max-w-lg leading-relaxed">{t('radio.concept')}</p>
             </div>
-            <div className="flex flex-col items-end gap-3 shrink-0">
+            <div className="flex flex-col items-start md:items-end gap-2 shrink-0">
               {isActive
-                ? <LiveBadge label={t('radio.live_badge')} />
-                : <span className="font-mono text-[10px] uppercase tracking-widest text-[#F5F0EB]/30">{t('radio.standby')}</span>
-              }
-              {isActive && (
-                <span className="font-mono text-xs text-[#F5F0EB]/40 uppercase tracking-widest">
-                  {total} {pluralEn(total, t)}
-                </span>
-              )}
-              {roomSlug !== 'main' && (
-                <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#C9A690]/60 max-w-[120px] truncate">
-                  #{roomSlug}
-                </span>
+                ? <span className="inline-flex items-center gap-2 border border-[#C9A690] px-3 py-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C9A690] animate-pulse" />
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#C9A690]">{t('radio.live_badge')}</span>
+                  </span>
+                : <span className="font-mono text-[10px] uppercase tracking-widest text-[#F5F0EB]/30">{t('radio.standby')}</span>}
+              {isActive && <span className="font-mono text-[10px] text-[#F5F0EB]/40 uppercase tracking-widest">{total + (joined ? 1 : 0)} {t('radio.participants').toLowerCase()}</span>}
+              {roomSlug !== CHANNEL + 'main' && (
+                <span className="font-mono text-[9px] uppercase tracking-widest text-[#C9A690]/50">#{roomDisplayName}</span>
               )}
               {joined && <ShareButton roomSlug={roomSlug} t={t} />}
             </div>
           </div>
 
           {/* Signal meter */}
-          <div className="border border-[#F5F0EB]/10 p-5">
-            <div className="flex items-center justify-between mb-3">
-              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#F5F0EB]/40">Signal · WebRTC</span>
-              <span className="font-mono text-[10px] uppercase tracking-widest text-[#C9A690]">
+          <div className="border border-[#F5F0EB]/10 p-4">
+            <div className="flex items-center justify-between mb-2">
+              <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#F5F0EB]/30">Signal · WebRTC</span>
+              <span className="font-mono text-[9px] uppercase tracking-widest text-[#C9A690]">
                 {anyoneSpeaking ? '● LIVE' : '○ STANDBY'}
               </span>
             </div>
@@ -469,326 +560,287 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
           </div>
         </div>
 
-        {/* Schedule strip (inside dark bg) */}
-        {announcements.length > 0 && (
-          <div className="border-t border-[#F5F0EB]/10">
-            <div className="max-w-5xl mx-auto px-8 md:px-16 py-8">
-              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#C9A690] mb-6">{t('radio.schedule_title')}</p>
-              {announcements.slice(0, 3).map(ann => <ScheduleCard key={ann.id} ann={ann} />)}
-            </div>
-          </div>
-        )}
+        {/* Now Playing strip */}
+        <AnimatePresence>
+          {nowPlaying && (
+            <NowPlayingBar title={nowPlaying.title} artist={nowPlaying.artist}
+              isHost={isHost} musicGain={musicGain}
+              onStop={stopMusicBroadcast} onGain={setMusicGain} />
+          )}
+        </AnimatePresence>
       </div>
 
       {/* ── Light area ─────────────────────────────────────────────────────── */}
-      <div className="max-w-5xl mx-auto px-8 md:px-16 py-16">
+      <div className="max-w-5xl mx-auto px-6 md:px-14 py-12">
 
         {/* Audio unlock */}
         <AnimatePresence>
           {audioBlocked && (
-            <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
-              className="mb-8 border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] p-4 flex items-center justify-between">
+            <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
+              className="mb-6 border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] p-4 flex items-center justify-between">
               <span className="font-mono text-xs uppercase tracking-widest">{t('radio.unlock_audio')}</span>
-              <button onClick={unlockAudio} className="border border-[#F5F0EB]/30 px-4 py-2 font-mono text-xs uppercase tracking-widest hover:bg-[#F5F0EB]/10 transition-colors">
+              <button onClick={unlockAudio} className="border border-[#F5F0EB]/30 px-4 py-2 font-mono text-xs uppercase tracking-widest hover:bg-[#F5F0EB]/10">
                 {t('radio.unlock_btn')}
               </button>
             </motion.div>
           )}
         </AnimatePresence>
 
+        {/* Broadcast ended notice */}
+        <AnimatePresence>
+          {showEndedNotice && !joined && (
+            <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
+              className="mb-6 border border-[#501a2c]/20 bg-[#501a2c]/5 p-4 flex items-center justify-between">
+              <span className="font-mono text-xs text-[#501a2c]/70 uppercase tracking-widest">{t('radio.broadcast_ended')}</span>
+              <button onClick={() => setShowEndedNotice(false)} className="font-mono text-[10px] text-[#501a2c]/40 uppercase hover:text-[#501a2c]">✕</button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <AnimatePresence mode="wait">
 
-          {/* Broadcast ended notice */}
-          <AnimatePresence>
-            {showEndedNotice && !joined && (
-              <motion.div key="ended-notice" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-                className="mb-8 border border-[#501a2c]/20 bg-[#501a2c]/5 p-4 flex items-center justify-between">
-                <span className="font-mono text-xs text-[#501a2c]/70 uppercase tracking-widest">{t('radio.broadcast_ended')}</span>
-                <button onClick={() => setShowEndedNotice(false)} className="font-mono text-[10px] text-[#501a2c]/40 uppercase tracking-widest hover:text-[#501a2c]">✕</button>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {/* Idle — no one in ether */}
+          {/* Idle */}
           {!joined && members.length === 0 && !showNickPrompt && !showCreateRoom && (
             <motion.div key="idle" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-              <div className="grid md:grid-cols-2 gap-16 items-start">
+              <div className="grid md:grid-cols-2 gap-14 items-start">
                 <div>
-                  <h2 className="font-serif text-4xl md:text-5xl text-[#501a2c] mb-6 leading-tight">
-                    {t('radio.idle_title')}
-                  </h2>
-                  <p className="font-serif text-lg text-[#501a2c]/70 leading-relaxed mb-10">
-                    {t('radio.idle_desc')}
-                  </p>
-                  <div className="flex flex-wrap gap-4">
-                    <button
-                      onClick={() => setShowNickPrompt(true)}
-                      disabled={connecting}
-                      className="border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] font-mono text-xs uppercase tracking-widest px-8 py-4 hover:bg-[#3d1220] transition-colors disabled:opacity-50"
-                    >
+                  <h2 className="font-serif text-4xl md:text-5xl text-[#501a2c] mb-5 leading-tight">{t('radio.idle_title')}</h2>
+                  <p className="font-serif text-lg text-[#501a2c]/60 leading-relaxed mb-8">{t('radio.idle_desc')}</p>
+                  <div className="flex flex-wrap gap-3">
+                    <button onClick={() => setShowNickPrompt(true)} disabled={connecting}
+                      className="border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] font-mono text-xs uppercase tracking-widest px-8 py-4 hover:bg-[#3d1220] transition-colors disabled:opacity-50">
                       {connecting ? t('radio.connecting') : t('radio.join_cta')}
                     </button>
-                    <button
-                      onClick={() => setShowCreateRoom(true)}
-                      className="border border-[#501a2c]/30 text-[#501a2c]/60 font-mono text-xs uppercase tracking-widest px-6 py-4 hover:border-[#501a2c] hover:text-[#501a2c] transition-colors"
-                    >
+                    <button onClick={() => setShowCreateRoom(true)}
+                      className="border border-[#501a2c]/30 text-[#501a2c]/60 font-mono text-xs uppercase tracking-widest px-6 py-4 hover:border-[#501a2c] hover:text-[#501a2c] transition-colors">
                       {t('radio.create_room')}
                     </button>
                   </div>
                 </div>
                 <div className="space-y-0">
                   {[t('radio.feat1'), t('radio.feat2'), t('radio.feat3'), t('radio.feat4')].map((item, i) => (
-                    <div key={i} className="flex items-start gap-4 border-b border-[#501a2c]/10 py-5 first:pt-0">
-                      <div className="w-8 h-8 border border-[#501a2c]/30 flex items-center justify-center text-[#501a2c]/40 font-mono text-[10px] shrink-0">
+                    <div key={i} className="flex items-start gap-4 border-b border-[#501a2c]/10 py-4 first:pt-0">
+                      <div className="w-7 h-7 border border-[#501a2c]/20 flex items-center justify-center text-[#501a2c]/30 font-mono text-[10px] shrink-0">
                         {String(i + 1).padStart(2, '0')}
                       </div>
-                      <p className="font-serif text-[#501a2c]/70 mt-1 leading-snug">{item}</p>
+                      <p className="font-serif text-[#501a2c]/60 mt-0.5 leading-snug">{item}</p>
                     </div>
                   ))}
                 </div>
               </div>
-
               <RoomsList rooms={activeRooms} onJoin={navigateToRoom} t={t} />
-
-              {/* Empty schedule notice */}
-              {announcements.length === 0 && activeRooms.length === 0 && (
-                <div className="mt-16 border-t border-[#501a2c]/10 pt-10">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#501a2c]/30 mb-2">{t('radio.schedule_title')}</p>
-                  <p className="font-serif text-[#501a2c]/30">{t('radio.schedule_empty')}</p>
-                </div>
-              )}
             </motion.div>
           )}
 
-          {/* Create room panel */}
+          {/* Create room */}
           {!joined && showCreateRoom && (
             <motion.div key="create" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-              <div className="mb-8">
-                <button onClick={() => setShowCreateRoom(false)} className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/50 hover:text-[#501a2c] transition-colors">
-                  {t('radio.back')}
-                </button>
-              </div>
+              <button onClick={() => setShowCreateRoom(false)} className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/50 hover:text-[#501a2c] mb-6 block">{t('radio.back')}</button>
               <CreateRoomPanel onStart={(slug, title) => navigateToRoom(slug, title)} t={t} />
             </motion.div>
           )}
 
-          {/* Nickname prompt */}
+          {/* Nick prompt */}
           {!joined && showNickPrompt && (
             <motion.div key="nick" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-              <div className="mb-8">
-                <button onClick={() => setShowNickPrompt(false)} className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/50 hover:text-[#501a2c] transition-colors">
-                  {t('radio.back')}
-                </button>
-              </div>
+              <button onClick={() => setShowNickPrompt(false)} className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/50 hover:text-[#501a2c] mb-6 block">{t('radio.back')}</button>
               <NicknamePrompt onJoin={handleJoin} loading={connecting} t={t} />
             </motion.div>
           )}
 
-          {/* Others in ether, not joined */}
+          {/* Others live, not joined */}
           {!joined && members.length > 0 && !showNickPrompt && (
             <motion.div key="watching" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-              <div className="grid md:grid-cols-2 gap-16 items-start">
+              <div className="grid md:grid-cols-2 gap-14 items-start">
                 <div>
-                  <div className="flex items-center gap-4 mb-6">
-                    <LiveBadge label={t('radio.live_badge')} />
-                  </div>
-                  <h2 className="font-serif text-4xl text-[#501a2c] mb-4 leading-tight">{t('radio.broadcast_active')}</h2>
-                  <p className="font-serif text-lg text-[#501a2c]/60 mb-10">
-                    {members.map(m => m.nickname).join(', ')}
-                  </p>
-                  <button
-                    onClick={() => setShowNickPrompt(true)}
-                    disabled={connecting}
-                    className="border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] font-mono text-xs uppercase tracking-widest px-8 py-4 hover:bg-[#3d1220] transition-colors disabled:opacity-50"
-                  >
+                  <h2 className="font-serif text-4xl text-[#501a2c] mb-4">{t('radio.broadcast_active')}</h2>
+                  <p className="font-serif text-lg text-[#501a2c]/60 mb-8">{members.map(m => m.nickname).join(', ')}</p>
+                  <button onClick={() => setShowNickPrompt(true)} disabled={connecting}
+                    className="border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] font-mono text-xs uppercase tracking-widest px-8 py-4 hover:bg-[#3d1220] transition-colors disabled:opacity-50">
                     {connecting ? t('radio.connecting') : t('radio.join_active')}
                   </button>
                 </div>
-                <ul className="border border-[#501a2c]/20">
-                  <li className="bg-[#501a2c]/5 px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40">
+                <div className="border border-[#501a2c]/20">
+                  <div className="bg-[#501a2c]/5 px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40">
                     {t('radio.participants')} · {members.length}
-                  </li>
+                  </div>
                   {members.map(m => (
-                    <li key={m.user_id} className="border-t border-[#501a2c]/10 px-4 py-3 flex items-center gap-3">
-                      <span className="w-2 h-2 rounded-full shrink-0" style={{ background: m.color }} />
-                      <span className="font-serif text-lg text-[#501a2c]">{m.nickname}</span>
-                      <span className="ml-auto font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40">{m.mic_on ? 'MIC' : 'MUTE'}</span>
-                    </li>
+                    <div key={m.user_id} className="border-t border-[#501a2c]/10 px-4 py-3 flex items-center gap-3">
+                      <span className="w-2 h-2 rounded-full" style={{ background: m.color }} />
+                      <span className="font-serif text-[#501a2c]">{m.nickname}</span>
+                      <span className="ml-auto font-mono text-[9px] text-[#501a2c]/40">{m.mic_on ? 'MIC' : 'MUTE'}</span>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             </motion.div>
           )}
 
-          {/* Joined — live */}
+          {/* ── JOINED — live ─────────────────────────────────────────────── */}
           {joined && (
             <motion.div key="live" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
 
-              {/* Status line */}
-              <p className="font-serif text-xl text-[#501a2c]/70 mb-8 leading-relaxed">
-                {members.some(m => m.speaking)
-                  ? `${members.filter(m => m.speaking).map(m => m.nickname).join(', ')}…`
-                  : micOn && speaking ? t('radio.mic_on') : t('radio.mic_off')}
-              </p>
-
-              {/* Mobile layout: PTT big button centered + members below */}
               {isTouch ? (
-                <div className="flex flex-col items-center gap-8">
-                  {/* Big PTT button */}
-                  <div className="flex flex-col items-center gap-4">
+                /* ── MOBILE ─────────────────────────────────────────────── */
+                <div className="flex flex-col gap-0">
+                  {/* Big PTT */}
+                  <div className="flex flex-col items-center pt-2 pb-6 gap-5">
                     <div className="relative flex items-center justify-center">
-                      {speaking && micOn && (
-                        <span className="absolute inset-0 rounded-full border-2 border-[#C9A690] animate-ping opacity-60 pointer-events-none" />
-                      )}
+                      {speaking && micOn && <span className="absolute inset-0 rounded-full border-2 border-[#C9A690] animate-ping opacity-60 pointer-events-none" />}
                       <button
                         onTouchStart={e => { e.preventDefault(); pttTouchStart() }}
                         onTouchEnd={e => { e.preventDefault(); pttTouchEnd() }}
                         onClick={toggleMic}
-                        className={`w-28 h-28 rounded-full border-2 flex flex-col items-center justify-center gap-2 select-none transition-all active:scale-95 ${
-                          micOn
-                            ? 'bg-[#501a2c] border-[#501a2c] text-[#F5F0EB] shadow-[0_0_0_8px_rgba(80,26,44,0.15)]'
-                            : 'bg-transparent border-[#501a2c] text-[#501a2c]'
+                        className={`w-24 h-24 rounded-full border-2 flex flex-col items-center justify-center gap-2 select-none transition-all active:scale-95 ${
+                          micOn ? 'bg-[#501a2c] border-[#501a2c] text-[#F5F0EB] shadow-[0_0_0_8px_rgba(80,26,44,0.12)]' : 'bg-transparent border-[#501a2c] text-[#501a2c]'
                         }`}
-                        style={{ WebkitTapHighlightColor: 'transparent', touchAction: 'none' }}
-                      >
+                        style={{ WebkitTapHighlightColor: 'transparent', touchAction: 'none' }}>
                         <MicIcon off={!micOn} />
-                        <span className="font-mono text-[9px] uppercase tracking-widest">
-                          {micOn ? 'TAP OFF' : 'TAP ON'}
-                        </span>
+                        <span className="font-mono text-[9px] uppercase tracking-widest">{micOn ? 'TAP OFF' : 'TAP ON'}</span>
                       </button>
                     </div>
-                    <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/30 text-center">
-                      {micOn ? t('radio.mic_on') : t('radio.mic_off')}
-                    </p>
-                  </div>
-
-                  {/* Emoji reactions */}
-                  <div className="relative w-full flex flex-col items-center gap-3">
-                    <div className="relative h-10 w-full overflow-visible pointer-events-none select-none">
+                    {/* Floating reactions */}
+                    <div className="relative h-8 w-full overflow-visible pointer-events-none select-none">
                       {floatReactions.map(r => (
-                        <span
-                          key={r.id}
-                          className="absolute text-2xl"
-                          style={{
-                            left: `${r.x}%`,
-                            bottom: 0,
-                            animation: 'epris-float-up 2.2s ease-out forwards',
-                          }}
-                        >{r.emoji}</span>
+                        <span key={r.id} className="absolute text-xl"
+                          style={{ left: `${r.x}%`, bottom: 0, animation: 'epris-float-up 2.2s ease-out forwards' }}>{r.emoji}</span>
                       ))}
-                      <style>{`@keyframes epris-float-up { 0% { transform: translateY(0) scale(1); opacity: 1; } 100% { transform: translateY(-80px) scale(0.5); opacity: 0; } }`}</style>
+                      <style>{`@keyframes epris-float-up { 0%{transform:translateY(0) scale(1);opacity:1}100%{transform:translateY(-70px) scale(.5);opacity:0} }`}</style>
                     </div>
-                    <div className="flex gap-5 justify-center">
-                      {['👏', '❤️', '🎙'].map(e => (
-                        <button
-                          key={e}
-                          onClick={() => sendReaction(e)}
+                    {/* Quick reactions */}
+                    <div className="flex gap-5">
+                      {['👏', '❤️', '🔥', '🎙'].map(e => (
+                        <button key={e} onClick={() => sendReaction(callId!, e)}
                           className="text-2xl opacity-50 hover:opacity-100 active:scale-125 transition-all select-none"
-                          style={{ touchAction: 'none', WebkitTapHighlightColor: 'transparent' }}
-                        >{e}</button>
+                          style={{ touchAction: 'none', WebkitTapHighlightColor: 'transparent' }}>{e}</button>
                       ))}
                     </div>
                   </div>
 
-                  {/* Participants horizontal scroll */}
-                  <div className="w-full border border-[#501a2c]">
-                    <div className="bg-[#501a2c] text-[#F5F0EB] px-4 py-2.5 font-mono text-[10px] uppercase tracking-widest">
-                      {t('radio.participants')} · {total}
+                  {/* Mobile tab bar */}
+                  <div className="border-t border-[#501a2c]/10">
+                    <div className="grid grid-cols-3 border-b border-[#501a2c]/10">
+                      {([
+                        { id: 'members' as const, label: t('radio.participants'), Icon: UsersIcon },
+                        { id: 'chat' as const, label: 'Чат', Icon: ChatIcon, badge: unreadChat },
+                        { id: 'music' as const, label: 'Музика', Icon: MusicIcon, dot: isMusicOn },
+                      ]).map(tab => (
+                        <button key={tab.id} onClick={() => { setMobileTab(tab.id); if (tab.id === 'chat') switchToChat('mobile') }}
+                          className={`relative py-3 flex flex-col items-center gap-1 font-mono text-[9px] uppercase tracking-widest transition-colors ${
+                            mobileTab === tab.id ? 'bg-[#501a2c] text-[#F5F0EB]' : 'text-[#501a2c]/50 hover:text-[#501a2c]'
+                          }`}>
+                          <tab.Icon />
+                          {tab.label}
+                          {'badge' in tab && (tab.badge ?? 0) > 0 && (
+                            <span className="absolute top-1.5 right-1/4 w-4 h-4 bg-[#C9A690] rounded-full font-mono text-[8px] flex items-center justify-center text-[#501a2c]">{tab.badge}</span>
+                          )}
+                          {'dot' in tab && tab.dot && <span className="absolute top-2 right-1/4 w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse" />}
+                        </button>
+                      ))}
                     </div>
-                    <ul className="divide-y divide-[#501a2c]/10 max-h-48 overflow-y-auto">
-                      {myUser && (
-                        <li className={`px-4 py-3 flex items-center gap-3 ${micOn ? '' : 'opacity-60'}`}>
-                          <span className="w-2 h-2 rounded-full shrink-0" style={{ background: myUser.color }} />
-                          {editingNick
-                            ? <NickEditor current={myUser.nickname} onSave={handleRename} onCancel={() => setEditingNick(false)} />
-                            : <button onClick={() => setEditingNick(true)} className="font-serif text-[#501a2c] hover:underline text-left">{myUser.nickname} ✏️</button>}
-                          <span className="ml-auto font-mono text-[9px] text-[#501a2c]/40 shrink-0">{micOn ? 'MIC' : 'MUTE'}</span>
-                        </li>
+
+                    <div className="min-h-[200px]">
+                      {mobileTab === 'members' && (
+                        <div className="border-b border-[#501a2c]/10">
+                          <div className="bg-[#501a2c] text-[#F5F0EB] px-4 py-2.5 font-mono text-[10px] uppercase tracking-widest">
+                            {t('radio.participants')} · {total + 1}
+                          </div>
+                          <MembersPanel members={members} myUser={myUser} memberVolumes={memberVolumes} peerStates={peerStates}
+                            micOn={micOn} speaking={speaking} editingNick={editingNick} onEditNick={() => setEditingNick(true)}
+                            onSaveNick={handleRename} onCancelNick={() => setEditingNick(false)}
+                            onSetVolume={setMemberVolume} total={total} t={t} />
+                        </div>
                       )}
-                      {members.map(m => (
-                        <li key={m.user_id} className={`px-4 py-3 flex items-center gap-3 ${m.mic_on ? '' : 'opacity-60'}`}>
-                          <span className="w-2 h-2 rounded-full shrink-0" style={{ background: m.color }} />
-                          <span className="font-serif text-[#501a2c] truncate">{m.nickname}</span>
-                          {m.speaking && <span className="w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse shrink-0" />}
-                          <span className="ml-auto font-mono text-[9px] text-[#501a2c]/40 shrink-0">{m.mic_on ? 'MIC' : 'MUTE'}</span>
-                          <VolumeToggle userId={m.user_id} volume={memberVolumes[m.user_id] ?? 1} onSet={setMemberVolume} />
-                        </li>
-                      ))}
-                    </ul>
+                      {mobileTab === 'chat' && callId && (
+                        <div className="h-[300px] flex flex-col">
+                          <ChatPanel messages={messages} callId={callId} myNick={myUser?.nickname ?? ''}
+                            onSendText={sendText} onSendReaction={sendReaction} compact />
+                        </div>
+                      )}
+                      {mobileTab === 'music' && (
+                        <div className="border-b border-[#501a2c]/10">
+                          {isHost ? (
+                            <>
+                              <div className="bg-[#501a2c]/5 px-4 py-2.5 font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 flex items-center gap-2">
+                                <MusicIcon /> Бібліотека треків
+                              </div>
+                              <MusicPanel onPlay={startMusicBroadcast} isPlaying={isMusicOn} />
+                            </>
+                          ) : (
+                            <div className="px-4 py-8 text-center">
+                              <p className="font-mono text-[10px] text-[#501a2c]/40 uppercase tracking-widest">
+                                {nowPlaying ? `♫ ${nowPlaying.title}` : 'Музика не грає'}
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
 
-                  {callId && (
-                    <ChatPanel messages={messages} callId={callId} myNick={myUser?.nickname ?? ''}
-                      onSendText={sendText} onSendReaction={sendReactionApi} t={t} />
-                  )}
-
-                  <div className="w-full flex gap-3">
-                    <button
-                      className="flex-1 border border-[#501a2c]/30 text-[#501a2c]/60 py-4 font-mono text-xs uppercase tracking-widest hover:border-[#501a2c] hover:text-[#501a2c] transition-colors"
-                      onClick={leave}
-                    >
+                  {/* Controls */}
+                  <div className="flex gap-2 pt-4">
+                    <button onClick={leave} className="flex-1 border border-[#501a2c]/30 text-[#501a2c]/60 py-3.5 font-mono text-[10px] uppercase tracking-widest hover:border-[#501a2c] hover:text-[#501a2c] transition-colors">
                       {t('radio.leave')}
                     </button>
                     {isHost && (
-                      <button
-                        className="flex-1 border border-red-800/30 text-red-800/60 py-4 font-mono text-xs uppercase tracking-widest hover:border-red-800 hover:text-red-800 transition-colors"
-                        onClick={() => window.confirm(t('radio.end_broadcast_confirm')) && endBroadcast()}
-                      >
+                      <button onClick={() => window.confirm(t('radio.end_broadcast_confirm')) && endBroadcast()}
+                        className="flex-1 border border-red-800/30 text-red-800/60 py-3.5 font-mono text-[10px] uppercase tracking-widest hover:border-red-800 hover:text-red-800 transition-colors">
                         {t('radio.end_broadcast')}
                       </button>
                     )}
                   </div>
                 </div>
               ) : (
-                /* Desktop layout */
-                <div className="grid md:grid-cols-[1fr_280px] gap-12 items-start">
+                /* ── DESKTOP ────────────────────────────────────────────── */
+                <div className="grid grid-cols-[1fr_300px] gap-10 items-start">
+                  {/* Left: controls + reactions */}
                   <div>
-                    <div className="flex flex-wrap gap-4 mb-10">
+                    {/* Status */}
+                    <p className="font-serif text-lg text-[#501a2c]/70 mb-6 leading-relaxed">
+                      {members.some(m => m.speaking)
+                        ? `${members.filter(m => m.speaking).map(m => m.nickname).join(', ')} говорить…`
+                        : micOn && speaking ? t('radio.mic_on') : t('radio.mic_off')}
+                    </p>
+
+                    {/* Action buttons */}
+                    <div className="flex flex-wrap gap-3 mb-8">
                       <div className="relative">
-                        {speaking && micOn && (
-                          <span className="absolute inset-0 border border-[#C9A690] animate-ping opacity-50 pointer-events-none" />
-                        )}
-                        <button
-                          className={`flex items-center gap-3 border px-6 py-4 font-mono text-xs uppercase tracking-widest transition-colors ${
+                        {speaking && micOn && <span className="absolute inset-0 border border-[#C9A690] animate-ping opacity-40 pointer-events-none" />}
+                        <button onClick={toggleMic}
+                          className={`flex items-center gap-3 border px-6 py-3.5 font-mono text-xs uppercase tracking-widest transition-colors ${
                             micOn ? 'bg-[#501a2c] text-[#F5F0EB] border-[#501a2c]' : 'text-[#501a2c] border-[#501a2c] hover:bg-[#501a2c] hover:text-[#F5F0EB]'
-                          }`}
-                          onClick={toggleMic}
-                        >
+                          }`}>
                           <MicIcon off={!micOn} />
                           {micOn ? t('radio.mic_on') : t('radio.mic_off')}
                         </button>
                       </div>
-                      <button
-                        className="border border-[#501a2c]/30 text-[#501a2c]/60 px-6 py-4 font-mono text-xs uppercase tracking-widest hover:border-[#501a2c] hover:text-[#501a2c] transition-colors"
-                        onClick={leave}
-                      >
+                      <button onClick={leave}
+                        className="border border-[#501a2c]/30 text-[#501a2c]/60 px-6 py-3.5 font-mono text-xs uppercase tracking-widest hover:border-[#501a2c] hover:text-[#501a2c] transition-colors">
                         {t('radio.leave')}
                       </button>
                       {isHost && (
-                        <button
-                          className="border border-red-800/20 text-red-800/50 px-6 py-4 font-mono text-xs uppercase tracking-widest hover:border-red-800/60 hover:text-red-800 transition-colors"
-                          onClick={() => window.confirm(t('radio.end_broadcast_confirm')) && endBroadcast()}
-                        >
+                        <button onClick={() => window.confirm(t('radio.end_broadcast_confirm')) && endBroadcast()}
+                          className="border border-red-800/20 text-red-800/50 px-6 py-3.5 font-mono text-xs uppercase tracking-widest hover:border-red-800/60 hover:text-red-800 transition-colors">
                           {t('radio.end_broadcast')}
                         </button>
                       )}
                     </div>
-                    <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/30 mb-8">{t('radio.ptt_hint')}</p>
 
-                    {/* Emoji reactions — desktop */}
+                    <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/30 mb-8">{t('radio.ptt_hint')}</p>
+
+                    {/* Reactions */}
                     <div className="relative">
-                      <div className="absolute bottom-12 left-0 w-48 h-8 overflow-visible pointer-events-none select-none">
+                      <div className="absolute bottom-10 left-0 w-48 h-6 overflow-visible pointer-events-none select-none">
                         {floatReactions.map(r => (
-                          <span key={r.id} className="absolute text-2xl"
-                            style={{ left: `${r.x}%`, bottom: 0, animation: 'epris-float-up 2.2s ease-out forwards' }}>
-                            {r.emoji}
-                          </span>
+                          <span key={r.id} className="absolute text-xl"
+                            style={{ left: `${r.x}%`, bottom: 0, animation: 'epris-float-up 2.2s ease-out forwards' }}>{r.emoji}</span>
                         ))}
                       </div>
-                      <div className="flex gap-4">
-                        {['👏', '❤️', '🎙'].map(e => (
-                          <button key={e} onClick={() => sendReaction(e)}
-                            className="text-xl opacity-40 hover:opacity-80 active:scale-125 transition-all select-none border border-[#501a2c]/10 w-10 h-10 flex items-center justify-center hover:border-[#501a2c]/30">
+                      <div className="flex gap-2 flex-wrap">
+                        {REACTIONS.map(e => (
+                          <button key={e} onClick={() => sendReaction(callId!, e)}
+                            className="text-lg w-9 h-9 flex items-center justify-center border border-[#501a2c]/10 hover:border-[#501a2c]/40 hover:scale-110 active:scale-95 transition-all">
                             {e}
                           </button>
                         ))}
@@ -796,33 +848,69 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                     </div>
                   </div>
 
-                  <div className="border border-[#501a2c]">
-                    <div className="bg-[#501a2c] text-[#F5F0EB] px-4 py-3 font-mono text-[10px] uppercase tracking-widest">
-                      {t('radio.participants')} · {total}
-                    </div>
-                    <ul className="divide-y divide-[#501a2c]/10 max-h-72 overflow-y-auto">
-                      {myUser && (
-                        <li className={`px-4 py-3 flex items-center gap-3 ${micOn ? '' : 'opacity-60'}`}>
-                          <span className="w-2 h-2 rounded-full shrink-0" style={{ background: myUser.color }} />
-                          {editingNick
-                            ? <NickEditor current={myUser.nickname} onSave={handleRename} onCancel={() => setEditingNick(false)} />
-                            : <button onClick={() => setEditingNick(true)} className="font-serif text-[#501a2c] hover:underline text-left">{myUser.nickname} ✏️</button>}
-                          <span className="ml-auto font-mono text-[10px] text-[#501a2c]/40">{micOn ? 'MIC' : 'MUTE'}</span>
-                        </li>
-                      )}
-                      {members.map(m => (
-                        <li key={m.user_id} className={`px-4 py-3 flex items-center gap-3 ${m.mic_on ? '' : 'opacity-60'}`}>
-                          <span className="w-2 h-2 rounded-full shrink-0" style={{ background: m.color }} />
-                          <span className="font-serif text-[#501a2c]">{m.nickname}</span>
-                          {m.speaking && <span className="w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse" />}
-                          <span className="ml-auto font-mono text-[10px] text-[#501a2c]/40">{m.mic_on ? 'MIC' : 'MUTE'}</span>
-                          <VolumeToggle userId={m.user_id} volume={memberVolumes[m.user_id] ?? 1} onSet={setMemberVolume} />
-                        </li>
+                  {/* Right: tabbed sidebar */}
+                  <div className="border border-[#501a2c]/20 flex flex-col" style={{ minHeight: 420 }}>
+                    {/* Tab bar */}
+                    <div className="grid grid-cols-3 border-b border-[#501a2c]/10">
+                      {([
+                        { id: 'members' as const, label: t('radio.participants').slice(0, 8), Icon: UsersIcon },
+                        { id: 'chat' as const, label: 'Чат', Icon: ChatIcon, badge: unreadChat },
+                        { id: 'music' as const, label: 'Музика', Icon: MusicIcon, dot: isMusicOn },
+                      ]).map(tab => (
+                        <button key={tab.id} onClick={() => { setDesktopTab(tab.id); if (tab.id === 'chat') switchToChat('desktop') }}
+                          className={`relative py-2.5 flex flex-col items-center gap-1 font-mono text-[8px] uppercase tracking-widest border-r border-[#501a2c]/10 last:border-r-0 transition-colors ${
+                            desktopTab === tab.id ? 'bg-[#501a2c] text-[#F5F0EB]' : 'text-[#501a2c]/40 hover:text-[#501a2c] hover:bg-[#501a2c]/5'
+                          }`}>
+                          <tab.Icon />
+                          {tab.label}
+                          {'badge' in tab && (tab.badge ?? 0) > 0 && (
+                            <span className="absolute top-1 right-2 w-3.5 h-3.5 bg-[#C9A690] rounded-full font-mono text-[7px] flex items-center justify-center text-[#501a2c]">{tab.badge}</span>
+                          )}
+                          {'dot' in tab && tab.dot && <span className="absolute top-1.5 right-2 w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse" />}
+                        </button>
                       ))}
-                    </ul>
-                    {callId && (
-                      <ChatPanel messages={messages} callId={callId} myNick={myUser?.nickname ?? ''}
-                        onSendText={sendText} onSendReaction={sendReactionApi} t={t} />
+                    </div>
+
+                    {/* Tab content */}
+                    {desktopTab === 'members' && (
+                      <>
+                        <div className="bg-[#501a2c] text-[#F5F0EB] px-4 py-2.5 font-mono text-[9px] uppercase tracking-widest">
+                          {t('radio.participants')} · {total + 1}
+                        </div>
+                        <div className="flex-1 overflow-y-auto">
+                          <MembersPanel members={members} myUser={myUser} memberVolumes={memberVolumes} peerStates={peerStates}
+                            micOn={micOn} speaking={speaking} editingNick={editingNick} onEditNick={() => setEditingNick(true)}
+                            onSaveNick={handleRename} onCancelNick={() => setEditingNick(false)}
+                            onSetVolume={setMemberVolume} total={total} t={t} />
+                        </div>
+                      </>
+                    )}
+
+                    {desktopTab === 'chat' && callId && (
+                      <div className="flex-1 flex flex-col min-h-0">
+                        <ChatPanel messages={messages} callId={callId} myNick={myUser?.nickname ?? ''}
+                          onSendText={sendText} onSendReaction={sendReaction} compact />
+                      </div>
+                    )}
+
+                    {desktopTab === 'music' && (
+                      <div className="flex-1 overflow-y-auto">
+                        {isHost ? (
+                          <>
+                            <div className="bg-[#501a2c]/5 px-4 py-2.5 font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/40 flex items-center gap-2 border-b border-[#501a2c]/10">
+                              <MusicIcon /> Треки для трансляції
+                            </div>
+                            <MusicPanel onPlay={startMusicBroadcast} isPlaying={isMusicOn} />
+                          </>
+                        ) : (
+                          <div className="px-4 py-10 text-center">
+                            <MusicIcon />
+                            <p className="font-mono text-[10px] text-[#501a2c]/40 uppercase tracking-widest mt-3">
+                              {nowPlaying ? `♫ ${nowPlaying.title}` : 'Музика не транслюється'}
+                            </p>
+                          </div>
+                        )}
+                      </div>
                     )}
                   </div>
                 </div>
@@ -831,15 +919,10 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
           )}
         </AnimatePresence>
 
-        {error && (
-          <div className="mt-8 border border-[#501a2c]/20 bg-[#E8DED5] p-4 font-mono text-xs text-[#501a2c]">{error}</div>
-        )}
+        {error && <div className="mt-6 border border-[#501a2c]/20 bg-[#E8DED5] p-4 font-mono text-xs text-[#501a2c]">{error}</div>}
       </div>
+
+      <ToastStack toasts={toasts} />
     </div>
   )
-}
-
-function pluralEn(n: number, t: (k: string) => string) {
-  // simple: just return "participants" label without count, count shown separately
-  return t('radio.participants').toLowerCase()
 }
