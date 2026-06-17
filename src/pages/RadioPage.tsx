@@ -8,6 +8,9 @@ import type { ChatMessage } from '../hooks/useChat'
 const isTouch = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0)
 
 const API = 'https://eprisradio.munister.com.ua'
+const CHANNEL = 'eprisj-'
+
+function stripChannel(slug: string) { return slug.startsWith(CHANNEL) ? slug.slice(CHANNEL.length) : slug }
 
 type Announcement = {
   id: number
@@ -149,29 +152,34 @@ function toSlug(s: string) {
 // ── Active rooms list ─────────────────────────────────────────────────────────
 
 function RoomsList({ rooms, onJoin, t }: { rooms: ActiveRoom[]; onJoin: (slug: string, title: string) => void; t: (k: string) => string }) {
-  if (!rooms.length) return null
+  const filtered = rooms.filter(r => r.slug.startsWith(CHANNEL))
+  if (!filtered.length) return null
   return (
     <div className="mt-12 border-t border-[#501a2c]/10 pt-10">
       <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#501a2c]/40 mb-5">{t('radio.active_rooms')}</p>
       <ul className="space-y-0">
-        {rooms.map(r => (
-          <li key={r.slug} className="border border-[#501a2c]/10 hover:border-[#501a2c]/30 transition-colors">
-            <button
-              onClick={() => onJoin(r.slug, r.title)}
-              className="w-full flex items-center justify-between px-5 py-4 text-left group"
-            >
-              <span className="flex items-center gap-4">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C9A690] animate-pulse" />
-                <span className="font-serif text-lg text-[#501a2c] group-hover:text-[#3d1220] transition-colors">
-                  {r.title === r.slug ? r.slug : r.title}
+        {filtered.map(r => {
+          const rawSlug = stripChannel(r.slug)
+          const displayTitle = r.title === r.slug ? rawSlug : r.title
+          return (
+            <li key={r.slug} className="border border-[#501a2c]/10 hover:border-[#501a2c]/30 transition-colors">
+              <button
+                onClick={() => onJoin(rawSlug, displayTitle)}
+                className="w-full flex items-center justify-between px-5 py-4 text-left group"
+              >
+                <span className="flex items-center gap-4">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#C9A690] animate-pulse" />
+                  <span className="font-serif text-lg text-[#501a2c] group-hover:text-[#3d1220] transition-colors">
+                    {displayTitle}
+                  </span>
                 </span>
-              </span>
-              <span className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40">
-                {r.member_count} {t('radio.participants').toLowerCase()}
-              </span>
-            </button>
-          </li>
-        ))}
+                <span className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40">
+                  {r.member_count} {t('radio.participants').toLowerCase()}
+                </span>
+              </button>
+            </li>
+          )
+        })}
       </ul>
     </div>
   )
@@ -294,9 +302,10 @@ function ChatPanel({
 function ShareButton({ roomSlug, t }: { roomSlug: string; t: (k: string) => string }) {
   const [copied, setCopied] = useState(false)
   const copy = () => {
-    const url = roomSlug === 'main'
+    const raw = stripChannel(roomSlug)
+    const url = raw === 'main'
       ? `${window.location.origin}/radio`
-      : `${window.location.origin}/radio?room=${encodeURIComponent(roomSlug)}`
+      : `${window.location.origin}/radio?room=${encodeURIComponent(raw)}`
     navigator.clipboard?.writeText(url).then(() => { setCopied(true); setTimeout(() => setCopied(false), 2000) }).catch(() => {})
   }
   return (
@@ -314,7 +323,7 @@ function ShareButton({ roomSlug, t }: { roomSlug: string; t: (k: string) => stri
 export function RadioPage({ t }: { t: (k: string) => string }) {
   const [roomSlug, setRoomSlug] = useState(() => {
     const p = new URLSearchParams(window.location.search)
-    return p.get('room') || 'main'
+    return CHANNEL + (p.get('room') || 'main')
   })
   const [roomTitle, setRoomTitle] = useState('')
   const [showEndedNotice, setShowEndedNotice] = useState(false)
@@ -357,10 +366,10 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
     setEditingNick(false)
   }
 
-  const navigateToRoom = useCallback((slug: string, title: string) => {
-    const url = slug === 'main' ? '/radio' : `/radio?room=${encodeURIComponent(slug)}`
+  const navigateToRoom = useCallback((rawSlug: string, title: string) => {
+    const url = rawSlug === 'main' ? '/radio' : `/radio?room=${encodeURIComponent(rawSlug)}`
     window.history.pushState(null, '', url)
-    setRoomSlug(slug)
+    setRoomSlug(CHANNEL + rawSlug)
     setRoomTitle(title)
     setShowNickPrompt(true)
     setShowCreateRoom(false)
@@ -379,8 +388,8 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
 
   const handleJoin = async (nick: string) => {
     setShowNickPrompt(false)
-    // Ensure URL reflects the room before joining
-    const url = roomSlug === 'main' ? '/radio' : `/radio?room=${encodeURIComponent(roomSlug)}`
+    const rawSlug = stripChannel(roomSlug)
+    const url = rawSlug === 'main' ? '/radio' : `/radio?room=${encodeURIComponent(rawSlug)}`
     window.history.replaceState(null, '', url)
     await join(nick)
   }
