@@ -30,6 +30,8 @@ export type ChatMessage = {
 
 export const REACTIONS = ['👏', '❤️', '🔥', '😂', '🎉', '💯', '👍', '🙌']
 
+let _tempId = -1
+
 export function useChat(callId: number | null, joined: boolean) {
   const [messages, setMessages] = useState<ChatMessage[]>([])
   const afterIdRef = useRef(0)
@@ -46,10 +48,20 @@ export function useChat(callId: number | null, joined: boolean) {
       try {
         const data: ChatMessage[] = await apiFetch(`/api/calls/${callId}/chat?after_id=${afterIdRef.current}`)
         if (alive && data?.length) {
+          // Replace any temp optimistic messages with server messages by content match
           afterIdRef.current = data[data.length - 1].id
-          setMessages(prev => [...prev.slice(-80), ...data])
+          setMessages(prev => {
+            const serverIds = new Set(data.map(m => m.id))
+            // Remove optimistic placeholders for messages now confirmed by server
+            const filtered = prev.filter(m => m.id > 0 || !data.some(s => s.content === m.content && s.nickname === m.nickname))
+            // Add new server messages not already in state
+            const existing = new Set(filtered.map(m => m.id))
+            const toAdd = data.filter(m => !existing.has(m.id))
+            return toAdd.length ? [...filtered.slice(-80), ...toAdd] : filtered
+          })
+          afterIdRef.current = data[data.length - 1].id
         }
-      } catch { /* ignore */ }
+      } catch { /* transient errors — ignore */ }
       if (alive) timerRef.current = setTimeout(poll, 2000)
     }
     poll()
@@ -59,6 +71,20 @@ export function useChat(callId: number | null, joined: boolean) {
   const sendText = useCallback(async (cid: number, content: string) => {
     const trimmed = content.trim().slice(0, 300)
     if (!trimmed) return
+
+    // Optimistic: show message immediately with temp id < 0
+    const tempId = _tempId--
+    const tempMsg: ChatMessage = {
+      id: tempId,
+      type: 'text',
+      content: trimmed,
+      created_at: new Date().toISOString(),
+      nickname: '', // filled from server response
+      color: '',
+    }
+    // We'll get real nickname/color from server; show placeholder immediately
+    setMessages(prev => [...prev.slice(-80), tempMsg])
+
     try {
       const data: ChatMessage = await apiFetch(`/api/calls/${cid}/chat`, {
         method: 'POST',
@@ -66,9 +92,15 @@ export function useChat(callId: number | null, joined: boolean) {
       })
       if (data?.id) {
         afterIdRef.current = Math.max(afterIdRef.current, data.id)
-        setMessages(prev => prev.some(m => m.id === data.id) ? prev : [...prev.slice(-80), data])
+        // Replace temp message with real one
+        setMessages(prev => prev.map(m => m.id === tempId ? data : m).filter((m, i, arr) =>
+          m.id > 0 || !arr.some(r => r.id > 0 && r.content === m.content)
+        ))
       }
-    } catch { /* ignore */ }
+    } catch {
+      // Remove optimistic message on failure
+      setMessages(prev => prev.filter(m => m.id !== tempId))
+    }
   }, [])
 
   const sendReaction = useCallback(async (cid: number, emoji: string) => {

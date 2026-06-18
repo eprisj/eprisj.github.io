@@ -235,57 +235,108 @@ function ShareButton({ roomSlug, t }: { roomSlug: string; t: (k: string) => stri
 
 // ── Chat panel ────────────────────────────────────────────────────────────────
 
-function ChatPanel({ messages, callId, myNick, onSendText, onSendReaction, compact = false }:
-  { messages: ChatMessage[]; callId: number; myNick: string; onSendText: (cid: number, text: string) => void; onSendReaction: (cid: number, emoji: string) => void; compact?: boolean }) {
+function ChatPanel({ messages, callId, myNick, onSendText, onSendReaction, compact = false, t }:
+  { messages: ChatMessage[]; callId: number; myNick: string; onSendText: (cid: number, text: string) => void; onSendReaction: (cid: number, emoji: string) => void; compact?: boolean; t: (k: string) => string }) {
   const [text, setText] = useState('')
   const [showPicker, setShowPicker] = useState(false)
   const bottomRef = useRef<HTMLDivElement>(null)
-  useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: 'smooth' }) }, [messages.length])
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages.length])
+
   const textMsgs = messages.filter(m => m.type === 'text')
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    const trimmed = text.trim()
+    if (!trimmed) return
+    onSendText(callId, trimmed)
+    setText('')
+    inputRef.current?.focus()
+  }
+
   return (
-    <div className={`flex flex-col ${compact ? 'h-full' : 'border border-[#501a2c]/20'}`}>
-      {!compact && (
-        <div className="bg-[#501a2c]/5 px-4 py-2.5 font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 flex items-center justify-between border-b border-[#501a2c]/10">
-          <span>Чат</span>
-          <button onClick={() => setShowPicker(p => !p)} className="opacity-50 hover:opacity-100 transition-opacity">🙂</button>
-        </div>
-      )}
+    <div className={`flex flex-col bg-[#FDFAF7] ${compact ? 'h-full' : 'border border-[#501a2c]/15 rounded-lg overflow-hidden'}`}>
+      {/* Emoji picker */}
       <AnimatePresence>
         {showPicker && (
           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}
             className="border-b border-[#501a2c]/10 overflow-hidden bg-[#F5F0EB]">
-            <div className="flex flex-wrap gap-2 px-4 py-3">
+            <div className="flex flex-wrap gap-1.5 px-4 py-3">
               {REACTIONS.map(e => (
                 <button key={e} onClick={() => { onSendReaction(callId, e); setShowPicker(false) }}
-                  className="text-xl hover:scale-125 active:scale-110 transition-transform">{e}</button>
+                  className="text-xl hover:scale-125 active:scale-110 transition-transform w-9 h-9 flex items-center justify-center rounded-lg hover:bg-[#501a2c]/8">{e}</button>
               ))}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-      <div className={`overflow-y-auto px-4 py-3 space-y-2 overscroll-contain flex-1 ${compact ? 'min-h-0' : 'h-44'}`}>
-        {textMsgs.length === 0 && <p className="font-mono text-[10px] text-[#501a2c]/20 text-center pt-6">…</p>}
-        {textMsgs.map(m => (
-          <div key={m.id} className={`flex gap-2 items-end ${m.nickname === myNick ? 'flex-row-reverse' : ''}`}>
-            <div className="w-5 h-5 rounded-full flex items-center justify-center font-semibold text-[9px] text-[#F5F0EB] shrink-0 mb-0.5"
-              style={{ background: m.color }}>{m.nickname[0]?.toUpperCase()}</div>
-            <div className={`flex flex-col gap-0.5 max-w-[75%] ${m.nickname === myNick ? 'items-end' : ''}`}>
-              {m.nickname !== myNick && <span className="font-mono text-[9px] text-[#501a2c]/30 px-1">{m.nickname}</span>}
-              <span className={`px-3 py-1.5 font-sans text-sm leading-snug break-words ${
-                m.nickname === myNick ? 'bg-[#501a2c] text-[#F5F0EB]' : 'bg-[#501a2c]/8 text-[#501a2c] border border-[#501a2c]/10'
-              }`}>{m.content}</span>
-            </div>
+
+      {/* Message list */}
+      <div className={`overflow-y-auto px-3 py-3 flex flex-col gap-2 overscroll-contain flex-1 ${compact ? 'min-h-0' : 'h-52'}`}>
+        {textMsgs.length === 0 && (
+          <div className="flex flex-col items-center justify-center h-full gap-2 py-8">
+            <span className="text-2xl opacity-20">💬</span>
+            <p className="font-mono text-[9px] text-[#501a2c]/25 text-center uppercase tracking-widest">
+              Чат порожній
+            </p>
           </div>
-        ))}
+        )}
+        {textMsgs.map(m => {
+          const isMe = m.nickname === myNick || (m.id < 0)
+          const isPending = m.id < 0
+          return (
+            <div key={m.id} className={`flex gap-2 items-end ${isMe ? 'flex-row-reverse' : ''}`}>
+              {/* Avatar */}
+              {!isMe && (
+                <div className="w-6 h-6 rounded-full flex items-center justify-center font-bold text-[9px] text-[#F5F0EB] shrink-0 mb-0.5 shadow-sm"
+                  style={{ background: m.color || '#501a2c' }}>{(m.nickname || '?')[0]?.toUpperCase()}</div>
+              )}
+              <div className={`flex flex-col gap-0.5 max-w-[78%] ${isMe ? 'items-end' : 'items-start'}`}>
+                {!isMe && m.nickname && (
+                  <span className="font-mono text-[9px] text-[#501a2c]/40 px-1 leading-none">{m.nickname}</span>
+                )}
+                <span className={`px-3 py-2 text-[13px] leading-snug break-words rounded-2xl ${
+                  isMe
+                    ? `bg-[#501a2c] text-[#F5F0EB] rounded-br-sm ${isPending ? 'opacity-60' : ''}`
+                    : 'bg-white text-[#2A1A22] border border-[#E2D8CF] rounded-bl-sm shadow-sm'
+                }`}>
+                  {m.content}
+                  {isPending && <span className="ml-1.5 text-[10px] opacity-50">…</span>}
+                </span>
+              </div>
+            </div>
+          )
+        })}
         <div ref={bottomRef} />
       </div>
-      <form onSubmit={e => { e.preventDefault(); if (text.trim()) { onSendText(callId, text); setText('') } }}
-        className="border-t border-[#501a2c]/10 flex items-center gap-2 px-3 py-2 bg-white/30">
-        <button type="button" onClick={() => setShowPicker(p => !p)} className="text-base opacity-40 hover:opacity-80">🙂</button>
-        <input type="text" value={text} onChange={e => setText(e.target.value)} placeholder="Написати…" maxLength={300}
-          className="flex-1 bg-transparent text-sm text-[#501a2c] placeholder-[#501a2c]/25 focus:outline-none" />
-        <button type="submit" disabled={!text.trim()} className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c] disabled:opacity-20 px-1">→</button>
-      </form>
+
+      {/* Composer */}
+      <div className="border-t border-[#501a2c]/10 bg-white/60 backdrop-blur-sm">
+        <form onSubmit={handleSubmit} className="flex items-center gap-2 px-3 py-2.5">
+          <button type="button" onClick={() => setShowPicker(p => !p)}
+            className={`text-base shrink-0 transition-all w-7 h-7 flex items-center justify-center rounded-lg ${showPicker ? 'bg-[#501a2c]/10' : 'opacity-40 hover:opacity-80'}`}>
+            🙂
+          </button>
+          <input
+            ref={inputRef}
+            type="text"
+            value={text}
+            onChange={e => setText(e.target.value)}
+            placeholder={t('radio.chat_placeholder')}
+            maxLength={300}
+            className="flex-1 bg-transparent text-[13px] text-[#2A1A22] placeholder-[#501a2c]/30 focus:outline-none min-w-0"
+          />
+          <button type="submit" disabled={!text.trim()}
+            className="shrink-0 w-8 h-8 rounded-full bg-[#501a2c] text-[#F5F0EB] flex items-center justify-center disabled:opacity-25 transition-opacity hover:bg-[#6b2438]">
+            <svg viewBox="0 0 24 24" fill="none" width={14} height={14}>
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </form>
+      </div>
     </div>
   )
 }
@@ -754,7 +805,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                       {mobileTab === 'chat' && callId && (
                         <div className="h-[300px] flex flex-col">
                           <ChatPanel messages={messages} callId={callId} myNick={myUser?.nickname ?? ''}
-                            onSendText={sendText} onSendReaction={sendReaction} compact />
+                            onSendText={sendText} onSendReaction={sendReaction} compact t={t} />
                         </div>
                       )}
                       {mobileTab === 'music' && (
@@ -889,7 +940,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                     {desktopTab === 'chat' && callId && (
                       <div className="flex-1 flex flex-col min-h-0">
                         <ChatPanel messages={messages} callId={callId} myNick={myUser?.nickname ?? ''}
-                          onSendText={sendText} onSendReaction={sendReaction} compact />
+                          onSendText={sendText} onSendReaction={sendReaction} compact t={t} />
                       </div>
                     )}
 
