@@ -6082,15 +6082,18 @@ function bindStudioRowActions() {
 
   if (connectBtn) connectBtn.addEventListener('click', radioConnect);
 
-  // Auto-connect on tab switch if token saved
+  // Auto-connect when Radio tab is opened
   document.querySelector('[data-tab="radio"]')?.addEventListener('click', () => {
-    const saved = localStorage.getItem(RADIO_TOKEN_KEY);
-    if (saved && radioPanel && radioPanel.style.display === 'none' || radioPanel?.style.display === '') {
-      const inp = document.getElementById('radioAdminToken');
-      if (inp && !inp.value && saved) inp.value = saved;
+    if (!radioPanel || radioPanel.style.display === 'none' || radioPanel.style.display === '') {
       radioConnect();
     }
   });
+
+  // Auto-connect immediately if Radio tab is active on page load
+  if (document.getElementById('tab-radio')?.classList.contains('active') ||
+      document.querySelector('[data-tab="radio"]')?.classList.contains('active')) {
+    radioConnect();
+  }
 
   // ── TRACKS ────────────────────────────────────────────────
 
@@ -6310,6 +6313,74 @@ function bindStudioRowActions() {
   document.getElementById('podcastSaveBtn')?.addEventListener('click', savePodcast);
   document.getElementById('podcastCancelBtn')?.addEventListener('click', hidePodcastForm);
   document.getElementById('podcastRefreshBtn')?.addEventListener('click', loadPodcasts);
+
+  // ── Podcast file uploads ───────────────────────────────────
+
+  function podcastFileUpload(fileInput, urlInput, progressWrap, progressBar, progressLabel, endpoint) {
+    const file = fileInput.files[0];
+    if (!file) return;
+    const token = getRadioToken();
+    const fd = new FormData();
+    fd.append('file', file);
+    progressWrap.style.display = 'block';
+    progressBar.style.width = '0%';
+    progressLabel.textContent = 'Загружаю...';
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', RADIO_API + endpoint);
+    xhr.setRequestHeader('X-Admin-Token', token);
+    xhr.upload.onprogress = e => {
+      if (e.lengthComputable) {
+        const pct = Math.round(e.loaded / e.total * 100);
+        progressBar.style.width = pct + '%';
+        progressLabel.textContent = pct + '% · ' + fmtBytes(e.loaded) + ' / ' + fmtBytes(e.total);
+      }
+    };
+    xhr.onload = () => {
+      try {
+        const j = JSON.parse(xhr.responseText);
+        if (j.ok) {
+          urlInput.value = j.url;
+          radioShowToast('Загружено: ' + j.url, 'success');
+        } else {
+          radioShowToast('Ошибка: ' + (j.error || ''), 'error');
+        }
+      } catch { radioShowToast('Ошибка парсинга', 'error'); }
+      setTimeout(() => { progressWrap.style.display = 'none'; }, 2000);
+    };
+    xhr.onerror = () => { radioShowToast('Ошибка сети', 'error'); progressWrap.style.display = 'none'; };
+    xhr.send(fd);
+  }
+
+  const podcastAudioUploadBtn = document.getElementById('podcastAudioUploadBtn');
+  const podcastAudioFileInput = document.getElementById('podcastAudioFileInput');
+  const podcastCoverUploadBtn = document.getElementById('podcastCoverUploadBtn');
+  const podcastCoverFileInput = document.getElementById('podcastCoverFileInput');
+
+  if (podcastAudioUploadBtn) podcastAudioUploadBtn.addEventListener('click', () => podcastAudioFileInput?.click());
+  if (podcastAudioFileInput) podcastAudioFileInput.addEventListener('change', () => {
+    if (!podcastAudioFileInput.files[0]) return;
+    podcastFileUpload(
+      podcastAudioFileInput,
+      document.getElementById('podcastAudioUrl'),
+      document.getElementById('podcastAudioProgress'),
+      document.getElementById('podcastAudioProgressBar'),
+      document.getElementById('podcastAudioProgressLabel'),
+      '/api/uploads/audio'
+    );
+  });
+
+  if (podcastCoverUploadBtn) podcastCoverUploadBtn.addEventListener('click', () => podcastCoverFileInput?.click());
+  if (podcastCoverFileInput) podcastCoverFileInput.addEventListener('change', () => {
+    if (!podcastCoverFileInput.files[0]) return;
+    podcastFileUpload(
+      podcastCoverFileInput,
+      document.getElementById('podcastCoverUrl'),
+      document.getElementById('podcastCoverProgress'),
+      document.getElementById('podcastCoverProgressBar'),
+      document.getElementById('podcastCoverProgressLabel'),
+      '/api/uploads/image'
+    );
+  });
 
   // ── ANNOUNCEMENTS ─────────────────────────────────────────
 

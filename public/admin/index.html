@@ -754,17 +754,10 @@
       <section class="tab-panel" id="tab-radio">
         <div style="max-width:900px;margin:0 auto;padding:24px;display:flex;flex-direction:column;gap:24px">
 
-          <!-- Auth row -->
-          <div class="card" style="padding:16px">
-            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
-              <label style="display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--text-muted);flex:1;min-width:220px">
-                <span style="white-space:nowrap">Admin Token:</span>
-                <input id="radioAdminToken" type="password" placeholder="VKWMdnFERF5luvSm" autocomplete="off"
-                  style="flex:1;background:var(--bg);border:1px solid var(--line);padding:6px 10px;border-radius:4px;font-family:var(--font-mono);font-size:.75rem;color:var(--text)" />
-              </label>
-              <button class="btn btn-sm btn-primary" type="button" id="radioConnectBtn">Подключиться</button>
-              <span id="radioStatus" style="font-size:.75rem;color:var(--text-muted)">Не подключено</span>
-            </div>
+          <!-- Auth row (hidden — auto-connect) -->
+          <input id="radioAdminToken" type="hidden" value="VKWMdnFERF5luvSm" />
+          <div style="display:flex;align-items:center;gap:8px;padding:4px 0">
+            <span id="radioStatus" style="font-size:.75rem;color:var(--text-muted)">Подключаюсь...</span>
           </div>
 
           <!-- Sub-tabs -->
@@ -840,14 +833,34 @@
                         style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" />
                     </label>
                     <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">
-                      URL аудио *
-                      <input id="podcastAudioUrl" type="url" placeholder="https://..."
-                        style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" />
+                      Аудио *
+                      <div style="display:flex;gap:6px;align-items:center">
+                        <input id="podcastAudioUrl" type="url" placeholder="https://... или загрузите файл"
+                          style="flex:1;background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" />
+                        <button class="btn btn-sm" type="button" id="podcastAudioUploadBtn" title="Загрузить файл с ПК" style="white-space:nowrap">📁 Файл</button>
+                        <input id="podcastAudioFileInput" type="file" accept=".mp3,.wav,.ogg,.flac,.m4a,.aac,.opus,.webm,.mp4" style="display:none" />
+                      </div>
+                      <div id="podcastAudioProgress" style="display:none;margin-top:4px">
+                        <div style="height:3px;background:var(--line);border-radius:2px;overflow:hidden">
+                          <div id="podcastAudioProgressBar" style="height:100%;background:var(--accent);width:0%;transition:width .2s"></div>
+                        </div>
+                        <span id="podcastAudioProgressLabel" style="font-size:.7rem;color:var(--text-muted)"></span>
+                      </div>
                     </label>
                     <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">
-                      Обложка URL
-                      <input id="podcastCoverUrl" type="url" placeholder="https://..."
-                        style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" />
+                      Обложка
+                      <div style="display:flex;gap:6px;align-items:center">
+                        <input id="podcastCoverUrl" type="url" placeholder="https://... или загрузите фото"
+                          style="flex:1;background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" />
+                        <button class="btn btn-sm" type="button" id="podcastCoverUploadBtn" title="Загрузить обложку с ПК" style="white-space:nowrap">📁 Фото</button>
+                        <input id="podcastCoverFileInput" type="file" accept=".jpg,.jpeg,.png,.webp,.gif,.avif" style="display:none" />
+                      </div>
+                      <div id="podcastCoverProgress" style="display:none;margin-top:4px">
+                        <div style="height:3px;background:var(--line);border-radius:2px;overflow:hidden">
+                          <div id="podcastCoverProgressBar" style="height:100%;background:var(--accent);width:0%;transition:width .2s"></div>
+                        </div>
+                        <span id="podcastCoverProgressLabel" style="font-size:.7rem;color:var(--text-muted)"></span>
+                      </div>
                     </label>
                     <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">
                       Длительность
