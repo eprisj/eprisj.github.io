@@ -5530,6 +5530,20 @@
       "status": "published",
       "publishedAt": "2026-06-01",
       "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Issue",
+      "season": "Spring 2026",
+      "tagline": "",
+      "coverUrl": "https://raw.githubusercontent.com/eprisj/eprisj.github.io/main/public/uploads/1781781860448_Знімок екрана 2026-06-18 о 10.21.16.png",
+      "articleIds": [
+        8
+      ],
+      "status": "published",
+      "number": "16",
+      "letterHeading": "Dear Reader",
+      "letterBody": "Thank you"
     }
   ],
   "studio": {
