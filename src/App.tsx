@@ -364,7 +364,7 @@ function Hero({ t: _t }: { t: (key: string) => string }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.9, delay: 0.3 }}
-        className="absolute top-[38%] left-1/2 -translate-x-1/2 font-mono text-[11px] tracking-[0.32em] uppercase text-[#501a2c]/55 whitespace-nowrap"
+        className="hidden sm:block absolute top-[38%] left-1/2 -translate-x-1/2 font-mono text-[11px] tracking-[0.32em] uppercase text-[#501a2c]/55 whitespace-nowrap"
       >
         DESIGN ART TRAVEL
       </motion.p>
@@ -374,7 +374,7 @@ function Hero({ t: _t }: { t: (key: string) => string }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.9, delay: 0.4 }}
-        className="absolute top-[38%] right-[4%] font-mono text-[11px] tracking-[0.32em] uppercase text-[#501a2c]/55 whitespace-nowrap"
+        className="hidden sm:block absolute top-[38%] right-[4%] font-mono text-[11px] tracking-[0.32em] uppercase text-[#501a2c]/55 whitespace-nowrap"
       >
         REVEAL THE INVISIBLE
       </motion.p>
@@ -1665,7 +1665,7 @@ export default function App() {
       />
       
       <div className="lg:pr-12">
-        {activeTab !== 'materie' && activeTab !== 'issue' && activeTab !== 'studio' && activeTab !== 'radio' && activeTab !== 'podcasts' && !activeSearch && <Hero t={t} />}
+        {activeTab === 'gallery' && !activeSearch && <Hero t={t} />}
 
         {activeTab === 'materie' ? (
           <div className="pt-16">
