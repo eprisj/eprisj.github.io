@@ -5548,17 +5548,16 @@
         "title": "Quiet Apartment",
         "category": "Residential",
         "year": "2025",
-        "imageUrl": "/images/article-img-1.png",
-        "location": "Lviv, UA",
+        "location": "",
         "role": "Concept → Styling",
-        "featured": true,
+        "imageUrl": "/images/article-img-1.png",
+        "beforeImage": "/images/urban-solitude.png",
         "description": "A two-bedroom apartment stripped back to its calm essentials — lime-washed walls, oak floors and a restrained palette that lets daylight do the work.",
         "gallery": [
           "/images/article-img-1.png",
           "/images/morning-rituals.png",
           "/images/urban-solitude.png"
         ],
-        "beforeImage": "/images/urban-solitude.png",
         "materials": [
           "Lime-washed walls",
           "Oak flooring",
@@ -5582,63 +5581,72 @@
             "title": "Styling & handover",
             "detail": "Final styling with a restrained selection of objects and art."
           }
-        ]
+        ],
+        "featured": true
       },
       {
         "id": 2,
         "title": "Studio Loft",
         "category": "Residential",
         "year": "2025",
-        "imageUrl": "/images/article-img-3.png",
-        "location": "Kyiv, UA",
+        "location": "",
         "role": "Space planning → Styling",
+        "imageUrl": "/images/article-img-3.png",
+        "beforeImage": "/images/grid-4.png",
         "description": "An open loft reorganised around a central oak volume, balancing work and rest within a single airy shell.",
         "gallery": [
           "/images/article-img-3.png",
           "/images/grid-4.png"
         ],
-        "beforeImage": "/images/grid-4.png",
         "materials": [
           "Oak volume",
           "Polished concrete",
           "Black steel",
           "Wool"
-        ]
+        ],
+        "caseSteps": [],
+        "featured": false
       },
       {
         "id": 3,
         "title": "Coastal Retreat",
         "category": "Interior",
         "year": "2024",
-        "imageUrl": "/images/article-img-4.png",
         "location": "Algarve, PT",
         "role": "Concept → Art direction",
+        "imageUrl": "/images/article-img-4.png",
+        "beforeImage": "/images/mediterranean-feast.png",
         "description": "A weekend house near the sea, composed from lime plaster, rattan and bleached wood to hold the light of the coast.",
         "gallery": [
           "/images/article-img-4.png",
           "/images/mediterranean-feast.png"
         ],
-        "beforeImage": "/images/mediterranean-feast.png",
         "materials": [
           "Lime plaster",
           "Rattan",
           "Bleached wood",
           "Terracotta"
-        ]
+        ],
+        "caseSteps": [],
+        "featured": false
       },
       {
         "id": 4,
         "title": "Minimal Office",
         "category": "Commercial",
         "year": "2024",
-        "imageUrl": "/images/article-img-6.png",
         "location": "Berlin, DE",
         "role": "Interior design",
+        "imageUrl": "/images/article-img-6.png",
+        "beforeImage": "",
         "description": "A small studio office designed for focus — acoustic softness, warm neutrals and a single statement of greenery.",
         "gallery": [
           "/images/article-img-6.png",
           "/images/grid-5.png"
-        ]
+        ],
+        "materials": [],
+        "caseSteps": [],
+        "featured": false
       }
     ],
     "email": "hello@mashapeut.studio",
@@ -5658,7 +5666,6 @@
     ],
     "offerings": [
       {
-        "kind": "service",
         "title": "Interior design",
         "summary": "Full residential and commercial interiors from first sketch to finished room — layout, materials, joinery and detailing held to one calm idea.",
         "items": [
@@ -5666,10 +5673,10 @@
           "Material & finish palettes",
           "Custom joinery & built-ins",
           "Technical drawings for builders"
-        ]
+        ],
+        "kind": "service"
       },
       {
-        "kind": "service",
         "title": "Concept & art direction",
         "summary": "The narrative and mood of a space — a clear visual language that guides every later decision.",
         "items": [
@@ -5677,10 +5684,10 @@
           "Spatial concept & story",
           "Colour & texture direction",
           "Art & object curation"
-        ]
+        ],
+        "kind": "service"
       },
       {
-        "kind": "ergonomics",
         "title": "Ergonomics & life scenarios",
         "summary": "We map how you actually live — routines, distances, postures — and shape the plan around real movement, not just looks.",
         "items": [
@@ -5688,10 +5695,10 @@
           "Circulation & reach distances",
           "Seating, desk & counter heights",
           "Accessibility & ageing-in-place"
-        ]
+        ],
+        "kind": "ergonomics"
       },
       {
-        "kind": "ergonomics",
         "title": "Kitchen & work-zone ergonomics",
         "summary": "The hardest-working rooms, planned around the body: the work triangle, comfortable counters and tools within reach.",
         "items": [
@@ -5699,10 +5706,10 @@
           "Counter & cabinet heights",
           "Lighting for tasks",
           "Storage at point of use"
-        ]
+        ],
+        "kind": "ergonomics"
       },
       {
-        "kind": "ergonomics",
         "title": "Storage & life systems",
         "summary": "Storage designed around what you own and where you use it — so order is effortless to keep.",
         "items": [
@@ -5710,10 +5717,10 @@
           "Built-in & modular systems",
           "Entryway, kitchen & wardrobe logic",
           "Hidden vs. display balance"
-        ]
+        ],
+        "kind": "ergonomics"
       },
       {
-        "kind": "service",
         "title": "Light & daylight planning",
         "summary": "Natural and artificial light treated as structure — layered, dimmable and tuned to the rhythm of the day.",
         "items": [
@@ -5721,10 +5728,10 @@
           "Layered lighting scheme",
           "Fixture selection & placement",
           "Circadian & scene control"
-        ]
+        ],
+        "kind": "service"
       },
       {
-        "kind": "service",
         "title": "Styling & delivery",
         "summary": "On-site coordination and final styling — furniture, textiles and objects placed so the space is ready to live in.",
         "items": [
@@ -5732,7 +5739,8 @@
           "On-site supervision",
           "Final styling & art placement",
           "Handover & care guide"
-        ]
+        ],
+        "kind": "service"
       }
     ],
     "availability": "studio.availability.open",
