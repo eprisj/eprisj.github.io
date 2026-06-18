@@ -247,7 +247,8 @@
       "podcasts.empty_episodes": "Episodes coming soon",
       "podcasts.empty_announcements": "No announcements yet",
       "podcasts.back": "← Podcasts",
-      "podcasts.episode_label": "Episode"
+      "podcasts.episode_label": "Episode",
+      "radio.chat_placeholder": "Write a message…"
     },
     "RU": {
       "nav.gallery": "Галерея",
@@ -496,7 +497,8 @@
       "podcasts.empty_episodes": "Эпизоды появятся скоро",
       "podcasts.empty_announcements": "Анонсов пока нет",
       "podcasts.back": "← Подкасты",
-      "podcasts.episode_label": "Эпизод"
+      "podcasts.episode_label": "Эпизод",
+      "radio.chat_placeholder": "Написать сообщение…"
     },
     "UA": {
       "nav.gallery": "Галерея",
@@ -745,7 +747,8 @@
       "podcasts.empty_episodes": "Епізоди з'являться незабаром",
       "podcasts.empty_announcements": "Анонсів поки немає",
       "podcasts.back": "← Подкасти",
-      "podcasts.episode_label": "Епізод"
+      "podcasts.episode_label": "Епізод",
+      "radio.chat_placeholder": "Написати повідомлення…"
     },
     "TR": {
       "nav.gallery": "Galeri",
@@ -994,7 +997,8 @@
       "podcasts.empty_episodes": "Bölümler yakında gelecek",
       "podcasts.empty_announcements": "Henüz duyuru yok",
       "podcasts.back": "← Podcast",
-      "podcasts.episode_label": "Bölüm"
+      "podcasts.episode_label": "Bölüm",
+      "radio.chat_placeholder": "Mesaj yazın…"
     },
     "DE": {
       "nav.gallery": "Galerie",
@@ -1243,7 +1247,8 @@
       "podcasts.empty_episodes": "Episoden erscheinen demnächst",
       "podcasts.empty_announcements": "Noch keine Ankündigungen",
       "podcasts.back": "← Podcasts",
-      "podcasts.episode_label": "Episode"
+      "podcasts.episode_label": "Episode",
+      "radio.chat_placeholder": "Nachricht schreiben…"
     },
     "IT": {
       "nav.gallery": "Galleria",
@@ -1492,7 +1497,8 @@
       "podcasts.empty_episodes": "Gli episodi arriveranno presto",
       "podcasts.empty_announcements": "Nessun annuncio ancora",
       "podcasts.back": "← Podcast",
-      "podcasts.episode_label": "Episodio"
+      "podcasts.episode_label": "Episodio",
+      "radio.chat_placeholder": "Scrivi un messaggio…"
     },
     "ES": {
       "nav.gallery": "Galería",
@@ -1741,7 +1747,8 @@
       "podcasts.empty_episodes": "Los episodios llegarán pronto",
       "podcasts.empty_announcements": "Aún no hay anuncios",
       "podcasts.back": "← Podcasts",
-      "podcasts.episode_label": "Episodio"
+      "podcasts.episode_label": "Episodio",
+      "radio.chat_placeholder": "Escribe un mensaje…"
     }
   },
   "items": [
