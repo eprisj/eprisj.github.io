@@ -1003,6 +1003,14 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
 
           <div className="prose prose-lg prose-stone mx-auto font-serif text-[#501a2c]/80">
             {article.content?.map((block, index) => {
+              // Skip the first image block if it duplicates the hero cover photo
+              if (
+                block.type === 'image' &&
+                typeof block.content === 'string' &&
+                index === 0 &&
+                article.imageUrl &&
+                block.content.trim() === article.imageUrl.trim()
+              ) return null;
               switch (block.type) {
                 case 'text': {
                   if (typeof block.content !== 'string') return null;
