@@ -74,23 +74,61 @@ export function IssuePage({
 
   return (
     <div className="pt-16 min-h-screen bg-[#F5F0EB]">
-      {/* Issue header banner */}
-      <div className="border-b border-[#501a2c]/20 px-6 sm:px-10 md:px-16 py-10 md:py-16">
-        <div className="max-w-6xl mx-auto">
-          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#501a2c]/40 mb-3">
-            {t('issue.edition')}{issue.number ? ` · ${issue.number}` : ''}
-          </p>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-            <div>
-              <h1 className="font-serif text-5xl md:text-7xl text-[#501a2c] leading-none mb-2">
-                {issue.name}
-              </h1>
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#C9A690]">
-                {issue.season}
+      {/* Cinematic issue hero */}
+      <div className="relative border-b border-[#501a2c]/20 overflow-hidden">
+        {/* Blurred cover wash backdrop */}
+        <div className="absolute inset-0 pointer-events-none">
+          <img
+            src={issue.coverUrl}
+            alt=""
+            aria-hidden
+            className="w-full h-full object-cover opacity-30 blur-2xl scale-125"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#F5F0EB]/80 via-[#F5F0EB]/85 to-[#F5F0EB]" />
+        </div>
+
+        <div className="relative max-w-6xl mx-auto px-6 sm:px-10 md:px-16 py-12 md:py-20 grid md:grid-cols-[1.5fr_1fr] gap-10 md:gap-16 items-center">
+          {/* Title block */}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#501a2c]/45 mb-5">
+              {t('issue.edition')}{issue.number ? ` · ${issue.number}` : ''}
+            </p>
+            <h1
+              style={{ fontFamily: "'Playfair Display', serif", fontWeight: 500 }}
+              className="text-[clamp(46px,8vw,92px)] leading-[0.96] text-[#501a2c] mb-4"
+            >
+              {issue.name}
+            </h1>
+            <p className="font-mono text-xs uppercase tracking-[0.22em] text-[#C9A690] mb-6">
+              {issue.season}
+            </p>
+            {issue.tagline && (
+              <p className="font-serif text-lg md:text-xl italic text-[#501a2c]/70 max-w-md mb-8 leading-relaxed">
+                {issue.tagline}
               </p>
+            )}
+            <DownloadButton status={status} onDownload={handleDownload} t={t} large />
+          </motion.div>
+
+          {/* Cover */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+            className="hidden md:block"
+          >
+            <div className="aspect-[3/4] max-w-[280px] mx-auto overflow-hidden shadow-2xl ring-1 ring-[#501a2c]/10">
+              <img
+                src={issue.coverUrl}
+                alt={`${issue.name} — ${issue.season}`}
+                className="w-full h-full object-cover"
+              />
             </div>
-            <DownloadButton status={status} onDownload={handleDownload} t={t} />
-          </div>
+          </motion.div>
         </div>
       </div>
 
@@ -125,70 +163,53 @@ export function IssuePage({
 
       <div className="max-w-6xl mx-auto px-6 sm:px-10 md:px-16 py-12 md:py-20">
 
-        {/* Cover grid: issue cover + article cards (scales with article count) */}
+        {/* In this issue */}
+        <div className="flex items-baseline justify-between gap-4 mb-8 md:mb-10">
+          <h2 style={{ fontFamily: "'Playfair Display', serif" }} className="text-2xl md:text-4xl text-[#501a2c]">
+            {t('issue.inThisIssue')}
+          </h2>
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#501a2c]/40 whitespace-nowrap">
+            {articles.length} {articles.length === 1 ? t('issue.story') : t('issue.stories')}
+          </span>
+        </div>
+
+        {/* Article cards (scales with article count) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-14 md:mb-20">
-
-          {/* Issue cover */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="relative aspect-[3/4] bg-[#1a0812] overflow-hidden shadow-lg">
-              <img
-                src={issue.coverUrl}
-                alt={`${issue.name} — ${issue.season}`}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute bottom-0 inset-x-0 bg-[#501a2c] px-4 py-3">
-                <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#C9A690] mb-0.5">
-                  EPRIS Journal
-                </p>
-                <p className="font-serif text-sm text-[#F5F0EB] leading-tight">
-                  {issue.name} · {issue.season}
-                </p>
-              </div>
-            </div>
-            <div className="mt-4">
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#501a2c]/30 mb-1">
-                {t('issue.label')}
-              </p>
-              <p className="font-serif text-lg text-[#501a2c] leading-tight">
-                {issue.season}
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Article cards */}
           {articles.map((article, index) => {
             const cover = coverFor(article);
             return (
               <motion.div
                 key={article.id}
                 initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.12 + index * 0.1 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-8%' }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                className="group cursor-pointer"
               >
                 <div className="relative aspect-[3/4] bg-[#1a0812] overflow-hidden shadow-lg">
                   {cover ? (
                     <img
                       src={cover}
                       alt={article.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
                       <BookOpen size={24} className="text-[#C9A690]/30" />
                     </div>
                   )}
-                  <div className="absolute bottom-0 inset-x-0 bg-[#501a2c] px-4 py-3">
-                    <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#C9A690]">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute top-3 left-3">
+                    <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#F5F0EB] bg-[#501a2c]/85 backdrop-blur-sm px-2.5 py-1">
                       {article.category}
-                    </p>
+                    </span>
                   </div>
+                  <span className="absolute bottom-3 right-3 font-mono text-[9px] text-[#F5F0EB] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1">
+                    {t('read.article')} <ArrowRight size={12} />
+                  </span>
                 </div>
                 <div className="mt-4">
-                  <h3 className="font-serif text-lg md:text-xl text-[#501a2c] leading-tight mb-2">
+                  <h3 className="font-serif text-lg md:text-xl text-[#501a2c] leading-tight mb-2 group-hover:text-[#C9A690] transition-colors">
                     {article.title}
                   </h3>
                   <p className="font-serif text-sm text-[#501a2c]/55 leading-relaxed line-clamp-3 mb-3">
