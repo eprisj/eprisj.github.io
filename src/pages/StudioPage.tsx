@@ -192,6 +192,7 @@ function BriefForm({ studio, t }: { studio: Studio; t: T }) {
   const [form, setForm] = useState({ name: '', email: '', type: '', area: '', budget: '', timeline: '', message: '' });
   const [error, setError] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [sent, setSent] = useState(false);
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
 
@@ -213,7 +214,19 @@ function BriefForm({ studio, t }: { studio: Studio; t: T }) {
     setError(false);
     const subject = `${t('studio.brief.kicker')} — ${form.name}`;
     const to = studio.email || '';
-    window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildBrief())}`;
+    const href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildBrief())}`;
+    // Most reliable cross-device mailto: create hidden anchor and click it.
+    // This avoids navigation away from the page (window.location.href quirk) and
+    // works on iOS Safari even when no default mail app is configured — the OS
+    // shows a picker. Falls back to visible email address on the same click.
+    const a = document.createElement('a');
+    a.href = href;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setSent(true);
   };
 
   const handleCopy = async () => {
@@ -289,6 +302,24 @@ function BriefForm({ studio, t }: { studio: Studio; t: T }) {
             {copied ? <Check size={15} /> : <Copy size={15} />} {copied ? t('studio.brief.copied') : t('studio.brief.copy')}
           </button>
         </div>
+
+        {/* Fallback: visible email address — works on any device even without a mail app */}
+        {studio.email && (
+          <div className="mt-6 pt-6 border-t border-[#501a2c]/15">
+            {sent && (
+              <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/50 mb-3">
+                Если почта не открылась — напишите напрямую:
+              </p>
+            )}
+            <a
+              href={`mailto:${studio.email}`}
+              className="inline-flex items-center gap-2 font-mono text-sm text-[#501a2c] underline underline-offset-4 hover:text-[#C9A690] transition-colors break-all"
+            >
+              <Mail size={13} />
+              {studio.email}
+            </a>
+          </div>
+        )}
       </Reveal>
     </section>
   );
@@ -627,22 +658,38 @@ export function StudioPage({ studio, t }: { studio: Studio; t: T }) {
               <p className="font-serif text-3xl md:text-5xl text-[#501a2c] mb-3 max-w-lg leading-tight">{t('studio.cta.title')}</p>
               <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40">{t('studio.cta.desc')}</p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-              <a
-                href={studio.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 px-7 py-4 font-mono text-xs uppercase tracking-widest border border-[#501a2c] text-[#501a2c] hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-all duration-300 w-fit"
-              >
-                <Instagram size={15} /> {t('studio.cta.button')}
-              </a>
-              {studio.email && (
+            <div className="flex flex-col gap-3 shrink-0">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <a
-                  href={`mailto:${studio.email}`}
-                  className="flex items-center gap-3 px-7 py-4 font-mono text-xs uppercase tracking-widest bg-[#501a2c] text-[#F5F0EB] hover:bg-[#3d1421] transition-all duration-300 w-fit"
+                  href={studio.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 px-7 py-4 font-mono text-xs uppercase tracking-widest border border-[#501a2c] text-[#501a2c] hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-all duration-300 w-fit"
                 >
-                  <Mail size={15} /> {t('studio.cta.email')}
+                  <Instagram size={15} /> {t('studio.cta.button')}
                 </a>
+                {studio.email && (
+                  <a
+                    href={`mailto:${studio.email}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 px-7 py-4 font-mono text-xs uppercase tracking-widest bg-[#501a2c] text-[#F5F0EB] hover:bg-[#3d1421] transition-all duration-300 w-fit"
+                  >
+                    <Mail size={15} /> {t('studio.cta.email')}
+                  </a>
+                )}
+              </div>
+              {/* Plain email address — always visible, copyable on any device */}
+              {studio.email && (
+                <p className="font-mono text-[11px] text-[#501a2c]/50 tracking-widest flex items-center gap-1.5">
+                  <Mail size={11} />
+                  <a
+                    href={`mailto:${studio.email}`}
+                    className="hover:text-[#501a2c] transition-colors"
+                  >
+                    {studio.email}
+                  </a>
+                </p>
               )}
             </div>
           </div>
