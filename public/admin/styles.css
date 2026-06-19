@@ -1808,3 +1808,72 @@ code { border: 1px solid color-mix(in srgb, var(--line) 20%, transparent); backg
   letter-spacing: .08em;
   margin-top: 1px;
 }
+
+/* ── Autosave indicator ───────────────────────────────────── */
+.autosave-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.autosave-indicator::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background .3s;
+}
+.autosave-indicator[data-state="saving"]::before  { background: var(--gold); animation: pulse .8s infinite alternate; }
+.autosave-indicator[data-state="saved"]::before   { background: #4caf50; }
+.autosave-indicator[data-state="saved"]::after    { content: 'автосохранено'; }
+.autosave-indicator[data-state="restore"]::before { background: #2196f3; }
+.autosave-indicator[data-state="restore"]::after  { content: 'черновик'; }
+.autosave-indicator[data-state="error"]::before   { background: #f44336; }
+.autosave-indicator[data-state="error"]::after    { content: 'ошибка'; }
+@keyframes pulse { from { opacity: 1; } to { opacity: .3; } }
+
+.autosave-restore-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: color-mix(in srgb, var(--accent) 12%, var(--bg-card));
+  border-bottom: 1px solid var(--accent);
+  font-size: .8rem;
+  color: var(--text);
+}
+.autosave-restore-banner span { flex: 1; }
+
+/* ── Studio Packages ──────────────────────────────────────── */
+.studio-pkgs-list { display: flex; flex-direction: column; gap: 16px; }
+.studio-pkg-card {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--bg);
+}
+.studio-pkg-features { display: flex; flex-direction: column; gap: 6px; }
+.studio-pkg-features-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.studio-pkg-feature-rows { display: flex; flex-direction: column; gap: 5px; }
+.studio-pkg-feature-row { display: flex; gap: 6px; align-items: center; }
+.studio-pkg-feature-input {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 5px 8px;
+  font-size: .8rem;
+  color: var(--text);
+}
