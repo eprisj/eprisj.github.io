@@ -330,54 +330,83 @@ function NavBar({
   );
 }
 
-const HERO_BG =
-  'https://raw.githubusercontent.com/eprisj/eprisj.github.io/main/%D1%81over/cover_main_section.png';
+const HERO_DESKTOP = '/epris-hero-desktop.jpg';
+const HERO_MOBILE = '/epris-hero-mobile.jpg';
 
 function Hero({ t: _t }: { t: (key: string) => string }) {
   return (
-    <section className="relative h-[calc(100vh-4rem)] overflow-hidden border-b border-[#501a2c]/20">
-      {/* Full-bleed background */}
-      <img
-        src={HERO_BG}
-        alt="EPRIS Journal"
-        className="absolute inset-0 w-full h-full object-cover select-none"
-        draggable={false}
+    <section className="relative h-[calc(100vh-4rem)] min-h-[540px] overflow-hidden bg-[#1c1611]">
+      {/* Full-bleed responsive photo */}
+      <picture>
+        <source media="(max-width: 640px)" srcSet={HERO_MOBILE} />
+        <motion.img
+          src={HERO_DESKTOP}
+          alt="EPRIS Journal"
+          initial={{ scale: 1.08 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 2.4, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute inset-0 w-full h-full object-cover select-none"
+          draggable={false}
+        />
+      </picture>
+
+      {/* Cinematic warm scrim + vignette for legibility */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'linear-gradient(180deg, rgba(20,14,10,.42) 0%, rgba(20,14,10,.06) 26%, rgba(20,14,10,.12) 58%, rgba(20,14,10,.68) 100%)',
+        }}
+      />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ boxShadow: 'inset 0 0 200px 50px rgba(16,11,8,.5)' }}
       />
 
-      {/* Bottom-left: EPRIS + JOURNAL. */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute bottom-[18%] left-[4%]"
-      >
-        <h1 className="font-mono text-[clamp(64px,10vw,148px)] leading-none tracking-[0.06em] text-[#501a2c]">
+      {/* Centered masthead (offset for the fixed nav) */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pt-16">
+        <motion.h1
+          initial={{ opacity: 0, y: 26, letterSpacing: '0.46em' }}
+          animate={{ opacity: 1, y: 0, letterSpacing: '0.16em' }}
+          transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+          style={{ fontFamily: "'Playfair Display', serif", fontWeight: 500 }}
+          className="text-[#F7F2EC] text-[clamp(56px,15vw,184px)] leading-[0.9] pl-[0.16em]"
+        >
           EPRIS
-        </h1>
-        <p className="font-mono text-[11px] tracking-[0.28em] uppercase text-[#501a2c]/55 mt-1">
-          JOURNAL.
-        </p>
+        </motion.h1>
+
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 1.1, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          className="w-20 sm:w-36 h-px bg-[#F7F2EC]/45 my-5 sm:my-7 origin-center"
+        />
+
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.78 }}
+          className="font-mono text-[#F7F2EC]/85 text-[9.5px] sm:text-[12.5px] tracking-[0.34em] uppercase"
+        >
+          A Journal of Design, Travel &amp; Interiors
+        </motion.p>
+      </div>
+
+      {/* Bottom caption rail */}
+      <motion.div
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 1 }}
+        className="absolute bottom-6 sm:bottom-8 left-0 right-0 px-6 sm:px-12 flex items-center justify-between"
+      >
+        <span className="font-mono text-[9px] sm:text-[11px] tracking-[0.28em] uppercase text-[#F7F2EC]/70">
+          Spring 2026
+        </span>
+        <span className="flex items-center gap-3 font-mono text-[9px] sm:text-[11px] tracking-[0.28em] uppercase text-[#F7F2EC]/70">
+          Latest Issue
+          <span className="inline-block w-7 sm:w-10 h-px bg-[#F7F2EC]/45" />
+        </span>
       </motion.div>
-
-      {/* Center: DESIGN ART TRAVEL */}
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.9, delay: 0.3 }}
-        className="hidden sm:block absolute top-[38%] left-1/2 -translate-x-1/2 font-mono text-[11px] tracking-[0.32em] uppercase text-[#501a2c]/55 whitespace-nowrap"
-      >
-        DESIGN ART TRAVEL
-      </motion.p>
-
-      {/* Right: REVEAL THE INVISIBLE */}
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.9, delay: 0.4 }}
-        className="hidden sm:block absolute top-[38%] right-[4%] font-mono text-[11px] tracking-[0.32em] uppercase text-[#501a2c]/55 whitespace-nowrap"
-      >
-        REVEAL THE INVISIBLE
-      </motion.p>
     </section>
   );
 }
