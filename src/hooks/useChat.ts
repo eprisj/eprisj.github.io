@@ -48,18 +48,16 @@ export function useChat(callId: number | null, joined: boolean) {
       try {
         const data: ChatMessage[] = await apiFetch(`/api/calls/${callId}/chat?after_id=${afterIdRef.current}`)
         if (alive && data?.length) {
-          // Replace any temp optimistic messages with server messages by content match
           afterIdRef.current = data[data.length - 1].id
           setMessages(prev => {
-            const serverIds = new Set(data.map(m => m.id))
-            // Remove optimistic placeholders for messages now confirmed by server
-            const filtered = prev.filter(m => m.id > 0 || !data.some(s => s.content === m.content && s.nickname === m.nickname))
-            // Add new server messages not already in state
-            const existing = new Set(filtered.map(m => m.id))
-            const toAdd = data.filter(m => !existing.has(m.id))
-            return toAdd.length ? [...filtered.slice(-80), ...toAdd] : filtered
+            const existingIds = new Set(prev.filter(m => m.id > 0).map(m => m.id))
+            const incoming = data.filter(m => !existingIds.has(m.id))
+            if (!incoming.length) return prev
+            // Drop optimistic placeholders (id < 0) now confirmed by the server.
+            const incomingContents = new Set(data.map(m => m.content))
+            const cleaned = prev.filter(m => m.id > 0 || !incomingContents.has(m.content))
+            return [...cleaned.slice(-80), ...incoming]
           })
-          afterIdRef.current = data[data.length - 1].id
         }
       } catch { /* transient errors — ignore */ }
       if (alive) timerRef.current = setTimeout(poll, 2000)
@@ -92,10 +90,12 @@ export function useChat(callId: number | null, joined: boolean) {
       })
       if (data?.id) {
         afterIdRef.current = Math.max(afterIdRef.current, data.id)
-        // Replace temp message with real one
-        setMessages(prev => prev.map(m => m.id === tempId ? data : m).filter((m, i, arr) =>
-          m.id > 0 || !arr.some(r => r.id > 0 && r.content === m.content)
-        ))
+        // Replace temp with the real message (skip if poll already added it).
+        setMessages(prev => {
+          const withoutTemp = prev.filter(m => m.id !== tempId)
+          if (withoutTemp.some(m => m.id === data.id)) return withoutTemp
+          return [...withoutTemp.slice(-80), data]
+        })
       }
     } catch {
       // Remove optimistic message on failure
