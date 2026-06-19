@@ -13,13 +13,14 @@ import {
   getContentForLanguage,
   getIssueArchive,
   getStudio,
+  Issue,
   Item,
   LibraryItem,
   Review,
   setPreviewOverride,
   translations
 } from './data';
-import { Search, Folder, Star, ArrowUpRight, Download, FileText, BookOpen, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
+import { Search, Folder, Star, ArrowUpRight, ArrowRight, Download, FileText, BookOpen, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
 
 // Issue-draft preview: when the admin opens /issue?preview=1, load the unsaved
 // content JSON it stashed in localStorage and override the data layer before any
@@ -164,22 +165,45 @@ function NavBar({
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-50 bg-[#F5F0EB] border-b border-[#501a2c] flex text-xs font-mono uppercase tracking-widest text-[#501a2c] h-16">
+      {/* ── Mobile header: hamburger · EPRIS · ISSUE ── */}
+      <nav className="lg:hidden fixed top-0 left-0 w-full z-50 bg-[#F5F0EB] border-b border-[#501a2c]/25 h-16 grid grid-cols-[1fr_auto_1fr] items-center px-4">
+        <button
+          type="button"
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="justify-self-start text-[#501a2c] p-1"
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+        <button
+          type="button"
+          onClick={() => { setActiveTab('gallery'); setIsMenuOpen(false); }}
+          aria-label="EPRIS — home"
+          className="justify-self-center leading-none"
+          style={{ fontFamily: "'Playfair Display', serif" }}
+        >
+          <span className="text-[26px] tracking-[0.22em] text-[#501a2c] pl-[0.22em]">EPRIS</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => { setActiveTab('issue'); setIsMenuOpen(false); }}
+          className="justify-self-end bg-[#501a2c] text-[#F5F0EB] rounded-full px-5 py-2.5 font-mono text-[11px] tracking-[0.18em] uppercase hover:bg-[#3d1421] transition-colors"
+        >
+          {t('nav.issue')}
+        </button>
+      </nav>
+
+      {/* ── Desktop header ── */}
+      <nav className="hidden lg:flex fixed top-0 left-0 w-full z-50 bg-[#F5F0EB] border-b border-[#501a2c] text-xs font-mono uppercase tracking-widest text-[#501a2c] h-16">
         {/* Logo Section */}
-        <div className="w-full lg:w-64 border-r-0 lg:border-r border-[#501a2c] p-4 flex items-center justify-between lg:justify-start gap-3 shrink-0 cursor-pointer bg-[#F5F0EB] z-50">
-          <button type="button" className="flex items-center gap-3" onClick={() => setActiveTab('gallery')} aria-label="Go to home">
-            <div className="w-4 h-4 border border-[#501a2c] rounded-full flex items-center justify-center">
-              <div className="w-1.5 h-1.5 bg-[#501a2c] rounded-full" />
-            </div>
-            <span className="font-bold tracking-[0.2em] whitespace-nowrap">EPRIS JOURNAL</span>
-          </button>
-          <button type="button" aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        <div className="w-64 border-r border-[#501a2c] px-6 flex items-center shrink-0 bg-[#F5F0EB] z-50">
+          <button type="button" className="flex items-center" onClick={() => setActiveTab('gallery')} aria-label="Go to home" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <span className="text-2xl tracking-[0.2em] text-[#501a2c] pl-[0.2em] normal-case leading-none">EPRIS</span>
           </button>
         </div>
-        
+
         {/* Desktop Navigation */}
-        <div className="hidden lg:grid flex-1 grid-cols-10 divide-x divide-[#501a2c]">
+        <div className="grid flex-1 grid-cols-10 divide-x divide-[#501a2c]">
           {tabs.map((tab) => (
             <button
               type="button"
@@ -195,7 +219,7 @@ function NavBar({
         </div>
 
         {/* Desktop Right Section */}
-        <div className="hidden lg:flex divide-x divide-[#501a2c] border-l border-[#501a2c]">
+        <div className="flex divide-x divide-[#501a2c] border-l border-[#501a2c]">
           <button
             type="button"
             onClick={() => setIsSearchOpen(true)}
@@ -333,81 +357,126 @@ function NavBar({
 const HERO_DESKTOP = '/epris-hero-desktop.jpg';
 const HERO_MOBILE = '/epris-hero-mobile.jpg';
 
-function Hero({ t: _t }: { t: (key: string) => string }) {
+function Hero({
+  t,
+  issue,
+  onExplore,
+  onHome,
+}: {
+  t: (key: string) => string;
+  issue?: Issue;
+  onExplore: () => void;
+  onHome: () => void;
+}) {
+  const season = issue?.season || 'Spring 2026';
+  const headline = (issue?.tagline || issue?.name || '').trim() || t('home.headline');
+  const intro = t('home.intro');
+
   return (
-    <section className="relative h-[calc(100vh-4rem)] min-h-[540px] overflow-hidden bg-[#1c1611]">
-      {/* Full-bleed responsive photo */}
-      <picture>
-        <source media="(max-width: 640px)" srcSet={HERO_MOBILE} />
-        <motion.img
-          src={HERO_DESKTOP}
-          alt="EPRIS Journal"
-          initial={{ scale: 1.08 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 2.4, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute inset-0 w-full h-full object-cover select-none"
-          draggable={false}
-        />
-      </picture>
-
-      {/* Cinematic warm scrim + vignette for legibility */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'linear-gradient(180deg, rgba(20,14,10,.42) 0%, rgba(20,14,10,.06) 26%, rgba(20,14,10,.12) 58%, rgba(20,14,10,.68) 100%)',
-        }}
-      />
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ boxShadow: 'inset 0 0 200px 50px rgba(16,11,8,.5)' }}
-      />
-
-      {/* Centered masthead (offset for the fixed nav) */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pt-16">
-        <motion.h1
-          initial={{ opacity: 0, y: 26, letterSpacing: '0.46em' }}
-          animate={{ opacity: 1, y: 0, letterSpacing: '0.16em' }}
-          transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-          style={{ fontFamily: "'Playfair Display', serif", fontWeight: 500 }}
-          className="text-[#F7F2EC] text-[clamp(56px,15vw,184px)] leading-[0.9] pl-[0.16em]"
-        >
-          EPRIS
-        </motion.h1>
-
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ duration: 1.1, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="w-20 sm:w-36 h-px bg-[#F7F2EC]/45 my-5 sm:my-7 origin-center"
-        />
-
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.78 }}
-          className="font-mono text-[#F7F2EC]/85 text-[9.5px] sm:text-[12.5px] tracking-[0.34em] uppercase"
-        >
-          A Journal of Design, Travel &amp; Interiors
-        </motion.p>
+    <div className="bg-[#F5F0EB]">
+      {/* Breadcrumb (offset for the fixed nav) */}
+      <div className="pt-16">
+        <div className="px-5 sm:px-10 md:px-16 py-3.5 border-b border-[#501a2c]/12">
+          <p className="font-mono text-[11px] tracking-[0.12em]">
+            <button type="button" onClick={onHome} className="text-[#501a2c] font-semibold hover:opacity-60 transition-opacity">
+              Home
+            </button>
+            <span className="mx-2 text-[#501a2c]/30">/</span>
+            <span className="text-[#501a2c]/55">Journal</span>
+          </p>
+        </div>
       </div>
 
-      {/* Bottom caption rail */}
-      <motion.div
-        initial={{ opacity: 0, y: 14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1 }}
-        className="absolute bottom-6 sm:bottom-8 left-0 right-0 px-6 sm:px-12 flex items-center justify-between"
-      >
-        <span className="font-mono text-[9px] sm:text-[11px] tracking-[0.28em] uppercase text-[#F7F2EC]/70">
-          Spring 2026
-        </span>
-        <span className="flex items-center gap-3 font-mono text-[9px] sm:text-[11px] tracking-[0.28em] uppercase text-[#F7F2EC]/70">
-          Latest Issue
-          <span className="inline-block w-7 sm:w-10 h-px bg-[#F7F2EC]/45" />
-        </span>
-      </motion.div>
-    </section>
+      {/* Hero photo with EPRIS masthead */}
+      <section className="relative h-[60vh] min-h-[440px] sm:h-[66vh] overflow-hidden bg-[#1c1611]">
+        <picture>
+          <source media="(max-width: 640px)" srcSet={HERO_MOBILE} />
+          <motion.img
+            src={HERO_DESKTOP}
+            alt="EPRIS Journal"
+            initial={{ scale: 1.08 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 2.4, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute inset-0 w-full h-full object-cover select-none"
+            draggable={false}
+          />
+        </picture>
+
+        {/* Warm scrim + vignette for legibility */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(20,14,10,.30) 0%, rgba(20,14,10,.04) 30%, rgba(20,14,10,.10) 62%, rgba(20,14,10,.46) 100%)',
+          }}
+        />
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ boxShadow: 'inset 0 0 180px 40px rgba(16,11,8,.4)' }}
+        />
+
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          <motion.h1
+            initial={{ opacity: 0, y: 24, letterSpacing: '0.4em' }}
+            animate={{ opacity: 1, y: 0, letterSpacing: '0.14em' }}
+            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+            style={{ fontFamily: "'Playfair Display', serif", fontWeight: 500 }}
+            className="text-[#F7F2EC] text-[clamp(64px,18vw,208px)] leading-[0.86] pl-[0.14em] drop-shadow-[0_2px_24px_rgba(0,0,0,.35)]"
+          >
+            EPRIS
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.7 }}
+            className="mt-4 sm:mt-6 text-[10px] sm:text-[13px] tracking-[0.22em] sm:tracking-[0.28em] uppercase"
+          >
+            <span className="font-semibold text-[#F7F2EC]">A Journal</span>{' '}
+            <span className="text-[#F7F2EC]/75">of Design, Travel &amp; Interiors</span>
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Editorial intro promoting the latest issue */}
+      <section className="max-w-5xl mx-auto px-5 sm:px-10 md:px-16">
+        {/* Season / latest-issue rail */}
+        <div className="flex items-center gap-4 sm:gap-6 py-5 border-b border-[#501a2c]/12">
+          <span className="font-mono text-[10px] sm:text-[11px] tracking-[0.22em] uppercase text-[#501a2c]/75 whitespace-nowrap">
+            {season}
+          </span>
+          <span className="flex-1 h-px bg-[#501a2c]/20" />
+          <button
+            type="button"
+            onClick={onExplore}
+            className="group flex items-center gap-2 sm:gap-3 font-mono text-[10px] sm:text-[11px] tracking-[0.22em] uppercase text-[#501a2c] whitespace-nowrap hover:opacity-70 transition-opacity"
+          >
+            Latest Issue
+            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
+
+        {/* Headline + lede */}
+        <Reveal>
+          <div className="py-9 sm:py-14">
+            <h2 className="font-serif text-[clamp(38px,9vw,80px)] leading-[1.03] text-[#501a2c] mb-6 sm:mb-8 max-w-3xl">
+              {headline}
+            </h2>
+            <p className="font-serif text-lg sm:text-xl text-[#501a2c]/70 leading-relaxed max-w-xl mb-8 sm:mb-10">
+              {intro}
+            </p>
+            <button
+              type="button"
+              onClick={onExplore}
+              className="group inline-flex items-center gap-3 font-mono text-[11px] sm:text-xs tracking-[0.2em] uppercase text-[#501a2c] border-b border-[#501a2c] pb-1.5 hover:gap-5 transition-all duration-300"
+            >
+              {t('home.explore')}
+              <ArrowRight size={15} />
+            </button>
+          </div>
+        </Reveal>
+      </section>
+    </div>
   );
 }
 
@@ -1694,7 +1763,14 @@ export default function App() {
       />
       
       <div className="lg:pr-12">
-        {activeTab === 'gallery' && !activeSearch && <Hero t={t} />}
+        {activeTab === 'gallery' && !activeSearch && (
+          <Hero
+            t={t}
+            issue={issueArchive[0]?.issue}
+            onExplore={() => handleSetTab('issue')}
+            onHome={() => handleSetTab('gallery')}
+          />
+        )}
 
         {activeTab === 'materie' ? (
           <div className="pt-16">

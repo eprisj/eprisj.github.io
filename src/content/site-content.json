@@ -248,7 +248,13 @@
       "podcasts.empty_announcements": "No announcements yet",
       "podcasts.back": "← Podcasts",
       "podcasts.episode_label": "Episode",
-      "radio.chat_placeholder": "Write a message…"
+      "radio.chat_placeholder": "Write a message…",
+      "home.headline": "A Playground of Quiet Design",
+      "home.intro": "Exploring the spaces and stories that shape how we live — with intention, beauty, and a sense of place.",
+      "home.explore": "Explore the Issue",
+      "issue.inThisIssue": "In This Issue",
+      "issue.story": "story",
+      "issue.stories": "stories"
     },
     "RU": {
       "nav.gallery": "Галерея",
@@ -498,7 +504,13 @@
       "podcasts.empty_announcements": "Анонсов пока нет",
       "podcasts.back": "← Подкасты",
       "podcasts.episode_label": "Эпизод",
-      "radio.chat_placeholder": "Написать сообщение…"
+      "radio.chat_placeholder": "Написать сообщение…",
+      "home.headline": "Пространство тихого дизайна",
+      "home.intro": "Исследуем места и истории, которые формируют то, как мы живём, — с намерением, красотой и чувством места.",
+      "home.explore": "Открыть выпуск",
+      "issue.inThisIssue": "В этом выпуске",
+      "issue.story": "материал",
+      "issue.stories": "материалов"
     },
     "UA": {
       "nav.gallery": "Галерея",
@@ -748,7 +760,13 @@
       "podcasts.empty_announcements": "Анонсів поки немає",
       "podcasts.back": "← Подкасти",
       "podcasts.episode_label": "Епізод",
-      "radio.chat_placeholder": "Написати повідомлення…"
+      "radio.chat_placeholder": "Написати повідомлення…",
+      "home.headline": "Простір тихого дизайну",
+      "home.intro": "Досліджуємо місця та історії, що формують те, як ми живемо, — з наміром, красою та відчуттям місця.",
+      "home.explore": "Відкрити випуск",
+      "issue.inThisIssue": "У цьому випуску",
+      "issue.story": "матеріал",
+      "issue.stories": "матеріалів"
     },
     "TR": {
       "nav.gallery": "Galeri",
