@@ -5762,6 +5762,8 @@ function captureStudioForm() {
   _studio.instagram = val('studioInstagram');
   _studio.email = val('studioEmail');
   _studio.heroImage = val('studioHeroImage');
+  _studio.availability = val('studioAvailability') || undefined;
+  _studio.statement = val('studioStatement') || undefined;
 
   _studio.services = [...document.querySelectorAll('#studioServicesList .studio-service-input')]
     .map((i) => i.value.trim()).filter(Boolean);
@@ -5781,7 +5783,6 @@ function captureStudioForm() {
   _studio.projects = [...document.querySelectorAll('#studioProjectsList .studio-project-card')].map((card) => {
     const f = (cls) => card.querySelector('.' + cls)?.value.trim() || '';
     const lines = (cls) => (card.querySelector('.' + cls)?.value || '').split('\n').map((s) => s.trim()).filter(Boolean);
-    // caseSteps stored one per line as "Title | Detail"
     const caseSteps = lines('studio-proj-steps').map((row) => {
       const [title, ...rest] = row.split('|');
       return { title: (title || '').trim(), detail: rest.join('|').trim() };
@@ -5802,6 +5803,18 @@ function captureStudioForm() {
       featured: card.querySelector('.studio-proj-featured')?.checked || false,
     };
   });
+
+  _studio.packages = [...document.querySelectorAll('#studioPkgList .studio-pkg-card')].map((card) => {
+    const f = (cls) => card.querySelector('.' + cls)?.value.trim() || '';
+    const features = [...card.querySelectorAll('.studio-pkg-feature-input')].map((i) => i.value.trim()).filter(Boolean);
+    return {
+      name: f('studio-pkg-name'),
+      price: f('studio-pkg-price'),
+      desc: f('studio-pkg-desc'),
+      features,
+      highlight: card.querySelector('.studio-pkg-highlight')?.checked || false,
+    };
+  }).filter((p) => p.name);
 }
 
 function renderStudioTab() {
@@ -5818,6 +5831,7 @@ function renderStudioTab() {
   _studio.offerings = _studio.offerings || [];
   _studio.stats = _studio.stats || [];
   _studio.projects = _studio.projects || [];
+  _studio.packages = _studio.packages || [];
   renderStudioForm();
 }
 
@@ -5828,6 +5842,8 @@ function renderStudioForm() {
   setVal('studioInstagram', _studio.instagram);
   setVal('studioEmail', _studio.email);
   setVal('studioHeroImage', _studio.heroImage);
+  setVal('studioAvailability', _studio.availability);
+  setVal('studioStatement', _studio.statement);
 
   // Hero preview
   const prev = document.getElementById('studioHeroPreview');
@@ -5930,6 +5946,44 @@ function renderStudioForm() {
       : '<p style="color:var(--text-muted);font-size:.82rem">Нет проектов. Добавьте первый.</p>';
   }
 
+  // Packages
+  const pkgList = document.getElementById('studioPkgList');
+  if (pkgList) {
+    const pkgs = _studio.packages || [];
+    pkgList.innerHTML = pkgs.length
+      ? pkgs.map((p, i) => `
+        <div class="studio-pkg-card" data-pkg-index="${i}">
+          <div class="studio-proj-head">
+            <span class="studio-row-num">${String(i + 1).padStart(2, '0')}</span>
+            <label class="studio-featured-label"><input type="checkbox" class="studio-pkg-highlight" ${p.highlight ? 'checked' : ''} /> Акцент</label>
+            <div class="studio-proj-tools">
+              <button class="studio-icon-btn" data-act="pkg-up" data-i="${i}" title="Вверх" type="button">↑</button>
+              <button class="studio-icon-btn" data-act="pkg-down" data-i="${i}" title="Вниз" type="button">↓</button>
+              <button class="studio-icon-btn danger" data-act="pkg-del" data-i="${i}" title="Удалить" type="button">✕</button>
+            </div>
+          </div>
+          <div class="studio-proj-grid">
+            <input class="studio-pkg-name" value="${escapeHtml(p.name || '')}" placeholder="studio.packages.design.name" title="Ключ перевода или текст" />
+            <input class="studio-pkg-price" value="${escapeHtml(p.price || '')}" placeholder="от €2 500" title="Прямой текст цены" />
+            <input class="studio-pkg-desc" value="${escapeHtml(p.desc || '')}" placeholder="studio.packages.design.desc" title="Ключ перевода или текст" style="grid-column:1/-1" />
+          </div>
+          <div class="studio-pkg-features">
+            <div class="studio-pkg-features-head">
+              <span style="font-size:.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em">Что входит</span>
+              <button class="studio-icon-btn" data-act="pkg-add-feature" data-i="${i}" title="+ Пункт" type="button">+ Пункт</button>
+            </div>
+            <div class="studio-pkg-feature-rows">
+              ${(p.features || []).map((f, fi) => `
+                <div class="studio-pkg-feature-row">
+                  <input class="studio-pkg-feature-input" value="${escapeHtml(f)}" placeholder="studio.packages.design.f1" />
+                  <button class="studio-icon-btn danger" data-act="pkg-del-feature" data-i="${i}" data-fi="${fi}" title="Удалить" type="button">✕</button>
+                </div>`).join('')}
+            </div>
+          </div>
+        </div>`).join('')
+      : '<p style="color:var(--text-muted);font-size:.82rem">Нет пакетов. Добавьте первый.</p>';
+  }
+
   bindStudioRowActions();
 }
 
@@ -5954,6 +6008,20 @@ function bindStudioRowActions() {
         case 'proj-dup': {
           const src = _studio.projects[i];
           _studio.projects.splice(i + 1, 0, { ...src, id: nextStudioProjectId(_studio.projects), title: src.title + ' (копия)', featured: false, gallery: (src.gallery || []).slice() });
+          break;
+        }
+        case 'pkg-up': arrMove(_studio.packages || [], i, i - 1); break;
+        case 'pkg-down': arrMove(_studio.packages || [], i, i + 1); break;
+        case 'pkg-del': (_studio.packages || []).splice(i, 1); break;
+        case 'pkg-add-feature': {
+          const pkg = (_studio.packages || [])[i];
+          if (pkg) { pkg.features = pkg.features || []; pkg.features.push(''); }
+          break;
+        }
+        case 'pkg-del-feature': {
+          const pkg = (_studio.packages || [])[i];
+          const fi = Number(btn.dataset.fi);
+          if (pkg && pkg.features) pkg.features.splice(fi, 1);
           break;
         }
       }
@@ -5981,6 +6049,27 @@ function bindStudioRowActions() {
     if (!_studio) return;
     _studio.projects.push({ id: nextStudioProjectId(_studio.projects), title: '', category: '', year: new Date().getFullYear().toString(), location: '', role: '', imageUrl: '', description: '', gallery: [], featured: false });
     renderStudioForm();
+  });
+  onClick('studioAddPkgBtn', () => {
+    captureStudioForm();
+    if (!_studio) return;
+    _studio.packages = _studio.packages || [];
+    _studio.packages.push({ name: '', price: '', desc: '', features: [], highlight: false });
+    renderStudioForm();
+  });
+  onClick('studioPreviewBtn', () => {
+    const data = parseEditorJsonSafe();
+    if (!data) { showToast('error', 'Загрузите JSON.'); return; }
+    captureStudioForm();
+    const previewData = { ...data, studio: _studio };
+    try {
+      localStorage.setItem('epris_preview', JSON.stringify(previewData));
+      localStorage.setItem('epris_preview_studio', '1');
+      window.open('../studio?preview=1', '_blank');
+      showToast('info', 'Открыт предпросмотр страницы студии.');
+    } catch (e) {
+      showToast('error', `Предпросмотр недоступен: ${e.message}`);
+    }
   });
   onClick('studioApplyBtn', () => {
     const data = parseEditorJsonSafe();
@@ -6467,6 +6556,112 @@ function bindStudioRowActions() {
   document.querySelectorAll('.radio-sub-panel').forEach((p, i) => {
     p.style.display = i === 0 ? 'flex' : 'none';
     if (i === 0) { p.style.flexDirection = 'column'; p.style.gap = '16px'; }
+  });
+})();
+
+// ═══════════════════════════════════════════════════════════
+// ── AUTOSAVE DRAFT + UNSAVED-CHANGES GUARD ────────────────
+// ═══════════════════════════════════════════════════════════
+
+(function initAutosave() {
+  const DRAFT_KEY = 'epris_admin_draft';
+  const DRAFT_TS_KEY = 'epris_admin_draft_ts';
+  const indicator = document.getElementById('autosaveIndicator');
+
+  function setIndicator(state) {
+    if (!indicator) return;
+    indicator.dataset.state = state;
+    indicator.title = {
+      saving: 'Сохранение черновика…',
+      saved: 'Черновик сохранён в браузер',
+      error: 'Ошибка автосохранения',
+      restore: 'Восстановлен черновик из браузера',
+      clean: '',
+    }[state] || '';
+  }
+
+  // Restore draft on load (before autoLoad overrides it)
+  const savedDraft = localStorage.getItem(DRAFT_KEY);
+  const savedTs = localStorage.getItem(DRAFT_TS_KEY);
+  if (savedDraft && savedTs && editor) {
+    const age = Date.now() - Number(savedTs);
+    // Only restore if draft is newer than 7 days and editor is empty
+    if (age < 7 * 24 * 3600 * 1000 && !editor.value.trim()) {
+      const tsLabel = new Date(Number(savedTs)).toLocaleString('ru', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+      const banner = document.createElement('div');
+      banner.className = 'autosave-restore-banner';
+      banner.innerHTML = `<span>📋 Найден несохранённый черновик от ${tsLabel}.</span>
+        <button id="restoreDraftBtn" class="btn btn-sm" type="button">Восстановить</button>
+        <button id="discardDraftBtn" class="btn btn-sm" type="button">Отклонить</button>`;
+      document.querySelector('.sub-header')?.after(banner);
+      document.getElementById('restoreDraftBtn')?.addEventListener('click', () => {
+        if (editor) editor.value = savedDraft;
+        updateEditorState();
+        setIndicator('restore');
+        setTimeout(() => setIndicator('saved'), 2000);
+        banner.remove();
+        showToast('success', 'Черновик восстановлен.');
+      });
+      document.getElementById('discardDraftBtn')?.addEventListener('click', () => {
+        localStorage.removeItem(DRAFT_KEY);
+        localStorage.removeItem(DRAFT_TS_KEY);
+        banner.remove();
+      });
+    }
+  }
+
+  // Debounced autosave on editor input
+  let autosaveTimer = null;
+  let lastSaved = null;
+  if (editor) {
+    editor.addEventListener('input', () => {
+      setIndicator('saving');
+      clearTimeout(autosaveTimer);
+      autosaveTimer = setTimeout(() => {
+        try {
+          const val = editor.value;
+          if (!val.trim()) return;
+          localStorage.setItem(DRAFT_KEY, val);
+          localStorage.setItem(DRAFT_TS_KEY, String(Date.now()));
+          lastSaved = Date.now();
+          setIndicator('saved');
+          setTimeout(() => { if (Date.now() - lastSaved > 4000) setIndicator('clean'); }, 4000);
+        } catch {
+          setIndicator('error');
+        }
+      }, 2000);
+    });
+  }
+
+  // Clear draft after successful GitHub save
+  const origSaveBtn = document.getElementById('saveBtn');
+  if (origSaveBtn) {
+    const origClick = origSaveBtn.onclick;
+    origSaveBtn.addEventListener('click', () => {
+      // clear draft after a moment (save is async — clear on next tick)
+      setTimeout(() => {
+        localStorage.removeItem(DRAFT_KEY);
+        localStorage.removeItem(DRAFT_TS_KEY);
+        setIndicator('clean');
+      }, 3000);
+    }, true);
+  }
+
+  // Unsaved-changes guard
+  let _isDirty = false;
+  if (editor) {
+    editor.addEventListener('input', () => { _isDirty = true; });
+  }
+  // Reset dirty after successful save (hook into showToast success pattern)
+  const _origUpdateEditorState = window.updateEditorState;
+  window.addEventListener('epris:saved', () => { _isDirty = false; });
+
+  window.addEventListener('beforeunload', (e) => {
+    if (_isDirty) {
+      e.preventDefault();
+      e.returnValue = 'Есть несохранённые изменения. Покинуть страницу?';
+      return e.returnValue;
+    }
   });
 })();
 

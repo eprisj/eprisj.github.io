@@ -92,6 +92,7 @@
         </button>
       </nav>
       <div class="sub-header-right">
+        <span id="autosaveIndicator" class="autosave-indicator" title="Автосохранение черновика в браузер"></span>
         <p id="editorState" class="editor-state">Нет локальных изменений.</p>
         <p id="status" class="status">Готово.</p>
       </div>
@@ -633,6 +634,7 @@
             <p class="card-desc">Управляйте контентом раздела <strong>/studio</strong>: профиль, услуги, статистика и проекты с кейсами. Переводимые заголовки секций (философия, процесс, подписи) редактируются во вкладке «Переводы» по ключам <code>studio.*</code>. После правок нажмите «Применить», затем «Сохранить в GitHub».</p>
             <div class="studio-toolbar">
               <a id="studioOpenLink" href="../studio" target="_blank" rel="noreferrer" class="btn btn-sm">Открыть на сайте ↗</a>
+              <button id="studioPreviewBtn" class="btn btn-sm" type="button">Предпросмотр ↗</button>
               <button id="studioApplyBtn" class="btn btn-primary btn-sm" type="button">Применить изменения</button>
             </div>
           </div>
@@ -657,6 +659,14 @@
                 <label>
                   <span class="field-label">URL hero-изображения</span>
                   <input id="studioHeroImage" placeholder="/images/..." />
+                </label>
+                <label class="full">
+                  <span class="field-label">Доступность (текст бейджа — ключ перевода или текст)</span>
+                  <input id="studioAvailability" placeholder="studio.availability.open" />
+                </label>
+                <label class="full">
+                  <span class="field-label">Заявление студии (statement — короткий абзац над bio)</span>
+                  <input id="studioStatement" placeholder="Masha Peut Studio designs…" />
                 </label>
               </div>
               <div class="studio-hero-preview" id="studioHeroPreview"></div>
@@ -691,6 +701,16 @@
             </div>
             <p class="card-desc">Развёрнутые услуги с описанием и списком «что входит». Отметьте «Эргономика» для акцентного блока. Пункты — по одному на строку.</p>
             <div id="studioOfferingsList" class="studio-offerings-list"></div>
+          </div>
+
+          <!-- Packages / Pricing -->
+          <div class="card">
+            <div class="studio-section-head">
+              <h2 class="card-title" style="margin:0">Пакеты и цены</h2>
+              <button id="studioAddPkgBtn" class="btn btn-sm" type="button">+ Пакет</button>
+            </div>
+            <p class="card-desc">Ценовые тарифы. Название/описание/пункты — ключи перевода. Цена — прямой текст («от €2 500»). «Акцент» = тёмный выделенный тариф.</p>
+            <div id="studioPkgList" class="studio-pkgs-list"></div>
           </div>
 
           <!-- Projects -->
