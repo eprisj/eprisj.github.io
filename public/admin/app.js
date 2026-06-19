@@ -6162,6 +6162,7 @@ function bindStudioRowActions() {
         loadTracks();
         loadPodcasts();
         loadAnnouncements();
+        loadNowPlaying();
       } else throw new Error(j.error || 'error');
     } catch (e) {
       statusEl.textContent = '✗ ' + e.message;
@@ -6189,6 +6190,50 @@ function bindStudioRowActions() {
   let _tracks = [];
   let _trackAudioEl = null;
 
+  let _nowPlaying = null;
+  let _playingTrackId = null;
+
+  async function loadNowPlaying() {
+    try {
+      const j = await radioFetch('/api/music/now-playing');
+      if (j.ok) { _nowPlaying = j.data; renderNowPlayingBar(); }
+    } catch { /* ignore */ }
+  }
+
+  function renderNowPlayingBar() {
+    let bar = document.getElementById('radioNowPlayingBar');
+    if (!bar) {
+      bar = document.createElement('div');
+      bar.id = 'radioNowPlayingBar';
+      bar.style.cssText = 'padding:10px 20px;background:color-mix(in srgb,var(--accent) 10%,var(--bg-card));border-bottom:1px solid var(--accent);display:flex;align-items:center;gap:10px;font-size:.8rem;color:var(--text)';
+      const trackLib = document.querySelector('#radio-sub-tracks');
+      if (trackLib) trackLib.prepend(bar);
+    }
+    if (_nowPlaying) {
+      bar.innerHTML = `<span style="color:var(--accent);font-weight:700">▶ В эфире:</span> <span style="flex:1">${escapeHtml(_nowPlaying.title)}${_nowPlaying.artist ? ' — ' + escapeHtml(_nowPlaying.artist) : ''}</span><button class="btn btn-sm btn-danger-text" id="radioClearNowPlaying" type="button">✕ Остановить</button>`;
+      document.getElementById('radioClearNowPlaying')?.addEventListener('click', () => setNowPlaying(null));
+    } else {
+      bar.innerHTML = '<span style="color:var(--text-muted)">Сейчас ничего не играет.</span>';
+    }
+  }
+
+  async function setNowPlaying(track) {
+    try {
+      const j = await radioFetch('/api/music/now-playing', {
+        method: 'PUT',
+        body: JSON.stringify(track ? { track_id: track.id, title: track.title, artist: track.artist || '' } : {}),
+      });
+      if (j.ok) {
+        _nowPlaying = track ? { track_id: track.id, title: track.title, artist: track.artist || '' } : null;
+        renderNowPlayingBar();
+        renderTrackList();
+        radioShowToast(track ? `▶ В эфире: ${track.title}` : 'Эфир остановлен', 'success');
+      } else {
+        radioShowToast('Ошибка: ' + (j.error || ''), 'error');
+      }
+    } catch (e) { radioShowToast('Ошибка: ' + e.message, 'error'); }
+  }
+
   function renderTrackList() {
     const el = document.getElementById('trackList');
     const countEl = document.getElementById('trackCount');
@@ -6199,16 +6244,20 @@ function bindStudioRowActions() {
       return;
     }
     if (countEl) countEl.textContent = _tracks.length + ' ' + (_tracks.length === 1 ? 'трек' : 'треков');
-    el.innerHTML = _tracks.map(t => `
-      <div style="display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid var(--line)">
+    el.innerHTML = _tracks.map(t => {
+      const isPlaying = _nowPlaying && _nowPlaying.track_id === t.id;
+      const isPreviewing = _playingTrackId === t.id;
+      return `
+      <div style="display:flex;align-items:center;gap:8px;padding:10px 20px;border-bottom:1px solid var(--line);${isPlaying ? 'background:color-mix(in srgb,var(--accent) 8%,var(--bg-card))' : ''}">
         <div style="flex:1;min-width:0">
-          <div style="font-size:.88rem;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escapeHtml(t.title)}</div>
+          <div style="font-size:.88rem;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${isPlaying ? '▶ ' : ''}${escapeHtml(t.title)}</div>
           <div style="font-size:.72rem;color:var(--text-muted)">${escapeHtml(t.artist || '')} ${t.artist ? '·' : ''} ${fmtBytes(t.size_bytes)} · ${fmtDate(t.uploaded_at)}</div>
         </div>
-        <button class="btn btn-sm" type="button" onclick="window._radioPreviewTrack(${t.id}, '${escapeHtml(t.title)}')" title="Прослушать">▶</button>
+        <button class="btn btn-sm" type="button" onclick="window._radioPreviewTrack(${t.id}, '${escapeHtml(t.title)}')" title="${isPreviewing ? 'Остановить' : 'Прослушать'}" style="${isPreviewing ? 'background:var(--accent);color:#fff' : ''}">${isPreviewing ? '⏹' : '▶'}</button>
+        <button class="btn btn-sm" type="button" onclick="window._radioSetOnAir(${t.id}, '${escapeHtml(t.title)}', '${escapeHtml(t.artist || '')}')" title="${isPlaying ? 'Снять с эфира' : 'В эфир'}" style="${isPlaying ? 'background:var(--accent);color:#fff' : ''}">${isPlaying ? '📡 Эфир' : '📡'}</button>
         <button class="btn btn-sm btn-danger-text" type="button" onclick="window._radioDeleteTrack(${t.id}, '${escapeHtml(t.title)}')" title="Удалить">✕</button>
-      </div>
-    `).join('');
+      </div>`;
+    }).join('');
   }
 
   async function loadTracks() {
@@ -6221,9 +6270,26 @@ function bindStudioRowActions() {
 
   window._radioPreviewTrack = function(id, title) {
     if (_trackAudioEl) { _trackAudioEl.pause(); _trackAudioEl.src = ''; }
+    if (_playingTrackId === id) {
+      _playingTrackId = null;
+      renderTrackList();
+      return;
+    }
+    _playingTrackId = id;
     _trackAudioEl = new Audio(RADIO_API + '/api/music/tracks/' + id + '/file');
     _trackAudioEl.play().catch(() => {});
+    _trackAudioEl.addEventListener('ended', () => { _playingTrackId = null; renderTrackList(); });
     radioShowToast('▶ ' + title, 'info');
+    renderTrackList();
+  };
+
+  window._radioSetOnAir = function(id, title, artist) {
+    const track = _tracks.find(t => t.id === id);
+    if (_nowPlaying && _nowPlaying.track_id === id) {
+      setNowPlaying(null);
+    } else {
+      setNowPlaying(track || { id, title, artist });
+    }
   };
 
   window._radioDeleteTrack = async function(id, title) {
