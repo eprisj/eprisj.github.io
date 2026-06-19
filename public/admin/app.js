@@ -3938,6 +3938,7 @@ function renderBlockEditor(blocks) {
 function bindBlockEditorEvents() {
   const editorEl = document.getElementById('vf-block-editor');
   if (!editorEl) return;
+  if (typeof window._schedulePreviewRefresh === 'function') window._schedulePreviewRefresh(80);
 
   // Auto-expand textareas
   editorEl.querySelectorAll('textarea.auto-expand').forEach(ta => {
@@ -6731,3 +6732,315 @@ function bindStudioRowActions() {
   });
 })();
 
+
+// ═══════════════════════════════════════════════════════════
+// ── LIVE ARTICLE PREVIEW (split-pane, streaming refresh) ──
+// ═══════════════════════════════════════════════════════════
+
+(function initLivePreview() {
+  const toggleBtn = document.getElementById('togglePreviewBtn');
+  const split     = document.getElementById('editorSplit');
+  const pane      = document.getElementById('previewPane');
+  const closeBtn  = document.getElementById('closePreviewBtn');
+  const deviceBtn = document.getElementById('previewDeviceToggle');
+  const wrap      = document.getElementById('previewDeviceWrap');
+  const previewEl = document.getElementById('articleLivePreview');
+  const liveDot   = document.getElementById('previewLiveDot');
+
+  if (!toggleBtn || !split || !pane || !previewEl) return;
+
+  let _previewOpen = false;
+  let _mobileMode  = false;
+  let _refreshTimer = null;
+  let _lastHash = '';
+
+  // ── toggle open/close ──────────────────────────────────
+  function openPreview() {
+    _previewOpen = true;
+    pane.removeAttribute('hidden');
+    split.classList.add('preview-open');
+    toggleBtn.classList.add('active');
+    schedulePreviewRefresh(0);
+  }
+  function closePreview() {
+    _previewOpen = false;
+    pane.setAttribute('hidden', '');
+    split.classList.remove('preview-open');
+    toggleBtn.classList.remove('active');
+  }
+  toggleBtn.addEventListener('click', () => _previewOpen ? closePreview() : openPreview());
+  closeBtn.addEventListener('click', closePreview);
+  document.addEventListener('keydown', (e) => { if (e.altKey && e.key === 'p') { e.preventDefault(); _previewOpen ? closePreview() : openPreview(); } });
+
+  // ── device toggle ──────────────────────────────────────
+  deviceBtn.addEventListener('click', () => {
+    _mobileMode = !_mobileMode;
+    wrap.classList.toggle('mobile', _mobileMode);
+    deviceBtn.textContent = _mobileMode ? '🖥️' : '📱';
+    deviceBtn.title = _mobileMode ? 'Переключить на десктоп' : 'Переключить на мобильный';
+  });
+
+  // ── schedule debounced refresh ─────────────────────────
+  function schedulePreviewRefresh(delay = 220) {
+    if (!_previewOpen) return;
+    if (liveDot) liveDot.classList.add('refreshing');
+    clearTimeout(_refreshTimer);
+    _refreshTimer = setTimeout(doRefresh, delay);
+  }
+  window._schedulePreviewRefresh = schedulePreviewRefresh;
+
+  // ── collect article from form ──────────────────────────
+  function snapshotArticle() {
+    const v = (id) => (document.getElementById(id)?.value || '').trim();
+    const tags = v('vf-tags').split(',').map(t => t.trim()).filter(Boolean);
+    const blocks = captureBlocksFromEditor();
+    return {
+      id: Number(v('vf-id')) || 0,
+      title: v('vf-title'),
+      author: v('vf-author'),
+      role: v('vf-role'),
+      date: v('vf-date'),
+      category: v('vf-category'),
+      subcategory: v('vf-subcategory'),
+      excerpt: v('vf-excerpt'),
+      tags,
+      imageUrl: v('vf-imageUrl'),
+      imageSeed: v('vf-imageSeed'),
+      content: blocks,
+    };
+  }
+
+  function captureBlocksFromEditor() {
+    try {
+      // collectBlockEditorContent is defined in the main app.js scope
+      return typeof collectBlockEditorContent === 'function'
+        ? collectBlockEditorContent()
+        : [];
+    } catch { return []; }
+  }
+
+  // ── main render ────────────────────────────────────────
+  function doRefresh() {
+    if (!_previewOpen || !previewEl) return;
+
+    const section = document.getElementById('visualSection')?.value;
+    if (section && section !== 'articles') {
+      previewEl.innerHTML = renderNonArticlePreview();
+      if (liveDot) liveDot.classList.remove('refreshing');
+      return;
+    }
+
+    const article = snapshotArticle();
+    const hash = JSON.stringify(article);
+    // Always render on first open or when content changed
+    if (hash === _lastHash) { if (liveDot) liveDot.classList.remove('refreshing'); return; }
+    _lastHash = hash;
+
+    // Fade out → update → fade in (no RAF to avoid context issues)
+    previewEl.style.opacity = '0.35';
+    previewEl.style.transition = 'opacity .1s ease';
+    const html = renderArticleHTML(article);
+    setTimeout(() => {
+      previewEl.innerHTML = html;
+      previewEl.style.opacity = '1';
+      if (liveDot) liveDot.classList.remove('refreshing');
+    }, 80);
+  }
+
+  // Reset hash when entry changes so preview always refreshes
+  function resetPreviewHash() { _lastHash = ''; }
+  window._resetPreviewHash = resetPreviewHash;
+  ['visualSection', 'visualEntry', 'visualLang'].forEach(id => {
+    document.getElementById(id)?.addEventListener('change', resetPreviewHash);
+  });
+
+  // ── article HTML renderer ──────────────────────────────
+  function renderArticleHTML(a) {
+    if (!a.title && !a.imageUrl && (!a.content || !a.content.length)) {
+      return `<div class="alp-empty"><div class="alp-empty-icon">✦</div><div class="alp-empty-text">Выберите статью для предпросмотра</div></div>`;
+    }
+
+    let html = '<article>';
+
+    // Hero image
+    const heroSrc = resolveImgSrc(a.imageUrl, a.imageSeed, 800, 600);
+    html += '<div class="alp-hero">';
+    if (heroSrc) {
+      html += `<img src="${escapeHtml(heroSrc)}" alt="" referrerpolicy="no-referrer" loading="eager" />`;
+    } else {
+      html += `<div class="alp-hero-placeholder">Нет обложки</div>`;
+    }
+    html += '</div>';
+
+    // Meta
+    const parts = [];
+    if (a.date)   parts.push(`<span>${escapeHtml(a.date)}</span>`);
+    if (a.author) parts.push(`<span>${escapeHtml(a.author)}</span>`);
+    if (a.role)   parts.push(`<span class="alp-meta-role">${escapeHtml(a.role)}</span>`);
+    if (parts.length) {
+      html += `<div class="alp-meta">${parts.join('<span class="alp-meta-dot"></span>')}</div>`;
+    }
+
+    // Title
+    if (a.title) {
+      html += `<h1 class="alp-title">${escapeHtml(a.title)}</h1>`;
+    }
+
+    // Tags
+    if (a.tags && a.tags.length) {
+      html += `<div class="alp-tags">${a.tags.map(t => `<span class="alp-tag">${escapeHtml(t)}</span>`).join('')}</div>`;
+    }
+
+    // Content blocks
+    html += '<div class="alp-body">';
+    if (a.content && a.content.length) {
+      a.content.forEach((block, idx) => {
+        // Skip first block if it duplicates the hero
+        if (idx === 0 && block.type === 'image' && typeof block.content === 'string' && a.imageUrl && block.content.trim() === a.imageUrl.trim()) return;
+        html += renderBlockHTML(block);
+      });
+    } else {
+      html += `<p class="alp-p" style="opacity:.4;font-style:italic">Добавьте блоки контента…</p>`;
+    }
+    html += '</div>';
+
+    html += '</article>';
+    return html;
+  }
+
+  function renderBlockHTML(block) {
+    const t = block.type || 'text';
+    const c = block.content || '';
+
+    if (t === 'text') {
+      if (typeof c !== 'string' || !c.trim()) return '';
+      return `<p class="alp-p">${inlineMarkdown(escapeHtml(c))}</p>`;
+    }
+    if (t === 'quote') {
+      if (typeof c !== 'string' || !c.trim()) return '';
+      return `<blockquote class="alp-quote">${escapeHtml(c)}</blockquote>`;
+    }
+    if (t === 'note') {
+      if (typeof c !== 'string' || !c.trim()) return '';
+      return `<div class="alp-note">${escapeHtml(c)}</div>`;
+    }
+    if (t === 'image') {
+      if (typeof c !== 'string' || !c.trim()) return '';
+      const src = resolveImgSrc(c, '', 800, 500);
+      if (!src) return '';
+      return `<figure class="alp-figure"><img src="${escapeHtml(src)}" alt="${escapeHtml(block.caption || '')}" loading="lazy" referrerpolicy="no-referrer" />${block.caption ? `<figcaption class="alp-figcaption">${escapeHtml(block.caption)}</figcaption>` : ''}</figure>`;
+    }
+    if (t === 'gallery') {
+      const items = Array.isArray(c) ? c.filter(Boolean) : [];
+      if (!items.length) return '';
+      const imgs = items.map(item => {
+        const src = resolveImgSrc(item, '', 400, 400);
+        return src ? `<img src="${escapeHtml(src)}" alt="" loading="lazy" referrerpolicy="no-referrer" />` : '';
+      }).filter(Boolean).join('');
+      return imgs ? `<div class="alp-gallery">${imgs}</div>` : '';
+    }
+    if (t === 'checklist') {
+      const items = (c && c.items) ? c.items : [];
+      if (!items.length) return '';
+      const rows = items.map(item => `<div class="alp-checklist-item"><div class="alp-check-icon"></div><span>${escapeHtml(item)}</span></div>`).join('');
+      return `<div class="alp-checklist">${block.caption ? `<div class="alp-checklist-title">${escapeHtml(block.caption)}</div>` : ''}${rows}</div>`;
+    }
+    if (t === 'link') {
+      if (!block.url && !c) return '';
+      return `<a href="${escapeHtml(block.url || '#')}" class="alp-link" target="_blank" rel="noopener">↗ ${escapeHtml(typeof c === 'string' ? c : block.url || '')}</a>`;
+    }
+    if (t === 'audio') {
+      if (typeof c !== 'string' || !c.trim()) return '';
+      return `<div class="alp-audio"><span class="alp-audio-icon">♪</span><span class="alp-audio-caption">${escapeHtml(block.caption || c)}</span></div>`;
+    }
+    if (t === 'video') {
+      if (typeof c !== 'string' || !c.trim()) return '';
+      const ytMatch = c.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+      if (ytMatch) return `<div class="alp-video-wrap"><iframe src="https://www.youtube.com/embed/${ytMatch[1]}" allowfullscreen></iframe></div>`;
+      return `<div class="alp-audio"><span class="alp-audio-icon">▶</span><span class="alp-audio-caption">${escapeHtml(block.caption || c)}</span></div>`;
+    }
+    if (t === 'poll') {
+      const q = (c && c.question) ? c.question : '';
+      const opts = (c && c.options) ? c.options : [];
+      if (!q && !opts.length) return '';
+      return `<div class="alp-poll"><div class="alp-poll-question">${escapeHtml(q)}</div>${opts.map(o => `<div class="alp-poll-option"><div class="alp-poll-dot"></div><span>${escapeHtml(o.label || '')}</span></div>`).join('')}</div>`;
+    }
+    if (t === 'map') {
+      const place = typeof c === 'string' ? c : '';
+      return `<div class="alp-map">📍 ${escapeHtml(place || 'Карта')}</div>`;
+    }
+    return '';
+  }
+
+  // Minimal inline markdown: **bold**, *italic*, ~~strike~~, [text](url)
+  function inlineMarkdown(html) {
+    return html
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/~~(.+?)~~/g, '<s>$1</s>')
+      .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  }
+
+  function resolveImgSrc(url, seed, w, h) {
+    if (url && url.trim()) return url.trim();
+    if (seed && seed.trim()) {
+      // Check if it's already a URL
+      if (seed.startsWith('http')) return seed.trim();
+      return `https://source.unsplash.com/${w}x${h}/?${encodeURIComponent(seed)}`;
+    }
+    return '';
+  }
+
+  function renderNonArticlePreview(section) {
+    const labels = { reviews: 'Обзоры', items: 'Галерея', libraryItems: 'Библиотека' };
+    return `<div class="alp-empty"><div class="alp-empty-icon">☰</div><div class="alp-empty-text">Предпросмотр доступен для статей</div><div style="font-family:var(--font-mono);font-size:.6rem;color:rgba(80,26,44,.35);margin-top:.5rem">Переключитесь на раздел «Статьи»</div></div>`;
+  }
+
+  // ── hook into DOM changes ──────────────────────────────
+  // Observe visualForm for input events (covers all fields + block editor)
+  const formObserver = new MutationObserver(() => {
+    schedulePreviewRefresh(100);
+    bindPreviewInputs();
+  });
+  const formEl = document.getElementById('visualForm');
+  if (formEl) formObserver.observe(formEl, { childList: true, subtree: false });
+
+  function bindPreviewInputs() {
+    const formEl = document.getElementById('visualForm');
+    if (!formEl) return;
+    formEl.querySelectorAll('input, textarea, select').forEach(el => {
+      if (!el._previewBound) {
+        el._previewBound = true;
+        el.addEventListener('input', () => schedulePreviewRefresh());
+        el.addEventListener('change', () => schedulePreviewRefresh());
+      }
+    });
+    // Also observe block editor for new blocks being added
+    const blockEl = document.getElementById('vf-block-editor');
+    if (blockEl && !blockEl._previewObserver) {
+      const obs = new MutationObserver(() => schedulePreviewRefresh(80));
+      obs.observe(blockEl, { childList: true, subtree: true });
+      blockEl._previewObserver = obs;
+    }
+  }
+
+  // Re-bind after renderVisualForm runs (it replaces innerHTML)
+  const origRenderVisualForm = window.renderVisualForm;
+  if (typeof renderVisualForm === 'function') {
+    // Patch via prototype isn't possible for module functions, use MutationObserver approach above
+  }
+  // Also trigger on section/entry/lang change
+  ['visualSection', 'visualEntry', 'visualLang'].forEach(id => {
+    document.getElementById(id)?.addEventListener('change', () => schedulePreviewRefresh(150));
+  });
+
+  // Patch applyEntryBtn to also refresh after apply
+  const applyBtn = document.getElementById('applyEntryBtn');
+  if (applyBtn) {
+    applyBtn.addEventListener('click', () => schedulePreviewRefresh(300), true);
+  }
+
+  // ── keyboard shortcut Alt+P ────────────────────────────
+  // (handled above in the toggle listener)
+
+})();
