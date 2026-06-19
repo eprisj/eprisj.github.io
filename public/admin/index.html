@@ -229,6 +229,11 @@
               <button id="translateEntryBtn" class="btn btn-sm" type="button">Запись → 7 языков</button>
               <button id="translateAllArticlesBtn" class="btn btn-sm" type="button">Весь раздел → 7 языков</button>
               <span class="toolbar-sep"></span>
+              <button id="togglePreviewBtn" class="btn btn-sm btn-preview-toggle" type="button" title="Показать/скрыть превью (Alt+P)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                Превью
+              </button>
+              <span class="toolbar-sep"></span>
               <button id="applyEntryBtn" class="btn btn-primary btn-sm" type="button">Применить изменения</button>
             </div>
           </div>
@@ -295,9 +300,28 @@
             </div>
           </section>
 
-          <div class="editor-body">
-            <p id="visualNotice" class="visual-notice">Выберите запись для редактирования.</p>
-            <div id="visualForm" class="visual-form"></div>
+          <div class="editor-split" id="editorSplit">
+            <div class="editor-pane" id="editorPane">
+              <p id="visualNotice" class="visual-notice">Выберите запись для редактирования.</p>
+              <div id="visualForm" class="visual-form"></div>
+            </div>
+            <div class="preview-pane" id="previewPane" hidden>
+              <div class="preview-pane-header">
+                <span class="preview-pane-label">
+                  <span class="preview-live-dot" id="previewLiveDot"></span>
+                  Live Preview
+                </span>
+                <div class="preview-pane-tools">
+                  <button id="previewDeviceToggle" class="btn btn-sm" type="button" title="Переключить мобильный/десктоп">📱</button>
+                  <button id="closePreviewBtn" class="btn btn-sm" type="button">✕</button>
+                </div>
+              </div>
+              <div class="preview-pane-scroll" id="previewPaneScroll">
+                <div class="preview-device-wrap" id="previewDeviceWrap">
+                  <div id="articleLivePreview" class="article-live-preview"></div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div id="stats" class="stats"></div>
