@@ -18,20 +18,41 @@
           <span class="auth-logo-epris">EPRIS</span>
           <span class="auth-logo-sub">Редакция</span>
         </div>
-        <div class="auth-form">
+        <!-- Mode switcher -->
+        <div class="auth-mode-switch">
+          <button class="auth-mode-btn active" id="authModePassword" type="button">Пароль</button>
+          <button class="auth-mode-btn" id="authModePat" type="button">GitHub PAT</button>
+        </div>
+
+        <!-- Password mode (default — for editors) -->
+        <div class="auth-form" id="authFormPassword">
           <label class="auth-label">
-            <span class="field-label">GitHub Token (PAT)</span>
-            <input id="authTokenInput" type="password" autocomplete="off" placeholder="github_pat_..." />
+            <span class="field-label">Пароль редакции</span>
+            <input id="authPasswordInput" type="password" autocomplete="current-password" placeholder="Пароль..." />
           </label>
           <label class="auth-remember">
             <input id="authRememberCheck" type="checkbox" checked />
             Запомнить в этом браузере
           </label>
-          <button id="authLoginBtn" class="btn btn-primary auth-login-btn" type="button">Войти</button>
+          <button id="authLoginPasswordBtn" class="btn btn-primary auth-login-btn" type="button">Войти</button>
           <p id="authError" class="auth-error" hidden></p>
           <p id="authLoading" class="auth-loading" hidden>Проверка…</p>
+          <p class="auth-hint" style="margin-top:12px">Для редакторов — простой вход по паролю</p>
         </div>
-        <p class="auth-hint">Нужен fine-grained PAT с доступом Contents: Read and Write</p>
+
+        <!-- PAT mode (for developers) -->
+        <div class="auth-form" id="authFormPat" style="display:none">
+          <label class="auth-label">
+            <span class="field-label">GitHub Token (PAT)</span>
+            <input id="authTokenInput" type="password" autocomplete="off" placeholder="github_pat_..." />
+          </label>
+          <label class="auth-remember">
+            <input id="authRememberPatCheck" type="checkbox" checked />
+            Запомнить токен
+          </label>
+          <button id="authLoginBtn" class="btn btn-primary auth-login-btn" type="button">Войти по PAT</button>
+          <p class="auth-hint" style="margin-top:12px">fine-grained PAT · Contents: Read and Write</p>
+        </div>
       </div>
     </div>
 

@@ -7044,3 +7044,91 @@ function bindStudioRowActions() {
   // (handled above in the toggle listener)
 
 })();
+
+// ═══════════════════════════════════════════════════════════
+// ── PASSWORD AUTH (editor mode) ───────────────────────────
+// ═══════════════════════════════════════════════════════════
+
+(function initPasswordAuth() {
+  const TOKEN_API = 'https://api.eprisjournal.com/token';
+  const formPw   = document.getElementById('authFormPassword');
+  const formPat  = document.getElementById('authFormPat');
+  const btnPw    = document.getElementById('authModePassword');
+  const btnPat   = document.getElementById('authModePat');
+  const pwInput  = document.getElementById('authPasswordInput');
+  const loginBtn = document.getElementById('authLoginPasswordBtn');
+  const errEl    = document.getElementById('authError');
+  const loadEl   = document.getElementById('authLoading');
+  const rememberCb = document.getElementById('authRememberCheck');
+
+  if (!formPw || !loginBtn) return;
+
+  // Mode switch
+  btnPw?.addEventListener('click', () => {
+    btnPw.classList.add('active'); btnPat?.classList.remove('active');
+    formPw.style.display = ''; formPat.style.display = 'none';
+    if (errEl) { errEl.hidden = true; errEl.textContent = ''; }
+  });
+  btnPat?.addEventListener('click', () => {
+    btnPat.classList.add('active'); btnPw?.classList.remove('active');
+    formPat.style.display = ''; formPw.style.display = 'none';
+    if (errEl) { errEl.hidden = true; errEl.textContent = ''; }
+  });
+
+  // Password submit
+  async function handlePasswordLogin() {
+    const pw = (pwInput?.value || '').trim();
+    if (!pw) { showError('Введите пароль'); return; }
+
+    if (loadEl) loadEl.hidden = false;
+    if (errEl)  errEl.hidden = true;
+    if (loginBtn) loginBtn.disabled = true;
+
+    try {
+      const res = await fetch(TOKEN_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: pw }),
+      });
+      const data = await res.json();
+      if (!data.ok) throw new Error(data.error || 'Неверный пароль');
+
+      // Got the PAT — store it and fill settings
+      const pat = data.token;
+      if (rememberCb?.checked) {
+        localStorage.setItem('epris_admin_token', pat);
+      }
+      // Fill the hidden PAT field so the existing auth flow picks it up
+      const patInput = document.getElementById('authTokenInput');
+      if (patInput) patInput.value = pat;
+      const rememberPat = document.getElementById('authRememberPatCheck');
+      if (rememberPat) rememberPat.checked = !!rememberCb?.checked;
+
+      // Fill settings fields too
+      if (data.owner) { const el = document.getElementById('owner'); if (el) el.value = data.owner; }
+      if (data.repo)  { const el = document.getElementById('repo');  if (el) el.value = data.repo;  }
+      if (data.branch){ const el = document.getElementById('branch');if (el) el.value = data.branch;}
+      if (data.path)  { const el = document.getElementById('path');  if (el) el.value = data.path;  }
+
+      // Trigger the existing PAT login flow
+      const loginPat = document.getElementById('authLoginBtn');
+      if (loginPat) loginPat.click();
+
+    } catch (err) {
+      showError(err.message || 'Ошибка сервера');
+    } finally {
+      if (loadEl) loadEl.hidden = true;
+      if (loginBtn) loginBtn.disabled = false;
+    }
+  }
+
+  function showError(msg) {
+    if (errEl) { errEl.textContent = msg; errEl.hidden = false; }
+  }
+
+  loginBtn.addEventListener('click', handlePasswordLogin);
+  pwInput?.addEventListener('keydown', e => { if (e.key === 'Enter') handlePasswordLogin(); });
+
+  // Auto-focus password field if password mode is default
+  setTimeout(() => { if (formPw.style.display !== 'none') pwInput?.focus(); }, 300);
+})();
