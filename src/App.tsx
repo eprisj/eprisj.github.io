@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform, useSpring, LayoutGroup } from 'framer-motion';
 import { ReactNode, useState, useEffect, useCallback, useMemo, FormEvent, useRef } from 'react';
 import { MateriePage } from './pages/MateriePage';
 import { IssuePage } from './pages/IssuePage';
@@ -103,18 +103,42 @@ function resolveMediaSource(value: string | undefined, width: number, height: nu
   return `https://picsum.photos/seed/${encodeURIComponent(normalized)}/${width}/${height}?grayscale`;
 }
 
-function Reveal({ children, delay = 0 }: { children: ReactNode; delay?: number }) {
+function Reveal({ children, delay = 0, y = 28, className = '' }: { children: ReactNode; delay?: number; y?: number; className?: string }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-5%" }}
-      transition={{ duration: 0.35, delay: Math.min(delay, 0.1), ease: "easeOut" }}
+      viewport={{ once: true, margin: '-8%' }}
+      transition={{ duration: 0.7, delay: Math.min(delay, 0.35), ease: [0.22, 1, 0.36, 1] }}
+      className={className}
     >
       {children}
     </motion.div>
   );
 }
+
+// Parallax shimmer for hero — subtle scroll drift
+function HeroParallax() {
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 500], [0, 80]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0.6]);
+  return (
+    <motion.div
+      className="absolute inset-0 pointer-events-none"
+      style={{ y, opacity }}
+    />
+  );
+}
+
+// Stagger container for lists
+const staggerContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
+};
+const staggerItem = {
+  hidden: { opacity: 0, y: 22 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+};
 
 function NavBar({
   activeTab,
@@ -203,20 +227,30 @@ function NavBar({
         </div>
 
         {/* Desktop Navigation */}
-        <div className="grid flex-1 grid-cols-10 divide-x divide-[#501a2c]">
-          {tabs.map((tab) => (
-            <button
-              type="button"
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`flex flex-col items-center justify-center transition-colors group h-full ${
-                activeTab === tab.id ? 'bg-[#501a2c] text-[#F5F0EB]' : 'hover:bg-[#501a2c] hover:text-[#F5F0EB]'
-              }`}
-            >
-              <span className="font-bold">{tab.label}</span>
-            </button>
-          ))}
-        </div>
+        <LayoutGroup id="nav-tabs">
+          <div className="grid flex-1 grid-cols-10 divide-x divide-[#501a2c]">
+            {tabs.map((tab) => (
+              <button
+                type="button"
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`relative flex flex-col items-center justify-center group h-full overflow-hidden ${
+                  activeTab === tab.id ? 'bg-[#501a2c] text-[#F5F0EB]' : 'hover:bg-[#501a2c]/8 text-[#501a2c]'
+                } transition-colors duration-200`}
+              >
+                <span className="font-bold relative z-10">{tab.label}</span>
+                {activeTab === tab.id && (
+                  <motion.div
+                    layoutId="nav-pill"
+                    className="absolute inset-0 bg-[#501a2c]"
+                    style={{ zIndex: 0 }}
+                    transition={{ type: 'spring', bounce: 0.18, duration: 0.55 }}
+                  />
+                )}
+              </button>
+            ))}
+          </div>
+        </LayoutGroup>
 
         {/* Desktop Right Section */}
         <div className="flex divide-x divide-[#501a2c] border-l border-[#501a2c]">
@@ -389,14 +423,15 @@ function Hero({
 
       {/* Hero photo with EPRIS masthead */}
       <section className="relative h-[60vh] min-h-[440px] sm:h-[66vh] overflow-hidden bg-[#1c1611]">
+        <HeroParallax />
         <picture>
           <source media="(max-width: 640px)" srcSet={HERO_MOBILE} />
           <motion.img
             src={HERO_DESKTOP}
             alt="EPRIS Journal"
-            initial={{ scale: 1.08 }}
+            initial={{ scale: 1.1 }}
             animate={{ scale: 1 }}
-            transition={{ duration: 2.4, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 2.8, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0 w-full h-full object-cover select-none"
             draggable={false}
           />
@@ -607,16 +642,30 @@ function GallerySection({ items }: { items: Item[] }) {
         </div>
       </Reveal>
 
-      {/* 3-column grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-        {rest.map((item, index) => (
-          <Reveal key={item.id} delay={index * 0.05}>
+      {/* 3-column grid — staggered reveal */}
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: '-6%' }}
+      >
+        {rest.map((item) => (
+          <motion.div
+            key={item.id}
+            variants={staggerItem}
+            whileHover={{ y: -6 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          >
             <div className="group cursor-pointer" role="button" tabIndex={0} aria-label={`View: ${item.title}`}>
               <div className="aspect-[4/3] overflow-hidden bg-[#E8DED5] mb-4">
-                <img
+                <motion.img
                   src={resolveMediaSource(item.imageUrl || item.imageSeed, 600, 450)}
                   alt={item.title}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0"
+                  style={{ transition: 'filter 0.5s ease' }}
+                  whileHover={{ scale: 1.04 }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -630,9 +679,9 @@ function GallerySection({ items }: { items: Item[] }) {
                 </p>
               </div>
             </div>
-          </Reveal>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }
@@ -913,11 +962,11 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
   };
 
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 20 }}
-      transition={{ duration: 0.25 }}
+    <motion.div
+      initial={{ opacity: 0, x: '3%' }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: '3%' }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className="fixed inset-0 z-[60] bg-[#F5F0EB] overflow-y-auto overflow-x-hidden"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-24 relative">
@@ -1261,23 +1310,28 @@ function ArticlesSection({
         ))}
       </div>
 
-      {filteredArticles.map((article, index) => (
-        <div key={article.id}>
-          <Reveal delay={index * 0.1}>
-            <article
+      <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-5%' }}>
+      {filteredArticles.map((article) => (
+        <motion.div key={article.id} variants={staggerItem}>
+            <motion.article
               className="border-b border-[#501a2c]/20 pb-12 group cursor-pointer"
               onClick={() => onArticleClick(article)}
               tabIndex={0}
               role="button"
               aria-label={`Read article: ${article.title}`}
               onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onArticleClick(article)}
+              whileHover={{ x: 4 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                  <div className="md:col-span-1 aspect-[4/3] overflow-hidden bg-[#E8DED5]">
-                    <img 
-                      src={resolveMediaSource(article.imageUrl || article.imageSeed, 400, 300)} 
+                    <motion.img
+                      src={resolveMediaSource(article.imageUrl || article.imageSeed, 400, 300)}
                       alt={article.title}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0"
+                      style={{ transition: 'filter 0.5s ease' }}
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                       referrerPolicy="no-referrer"
                     />
                  </div>
@@ -1294,7 +1348,7 @@ function ArticlesSection({
                       </div>
                       <span>{article.author}</span>
                     </div>
-                    <h2 className="font-serif text-2xl sm:text-3xl md:text-5xl text-[#501a2c] mb-4 sm:mb-6 group-hover:text-[#C9A690] transition-colors">
+                    <h2 className="font-serif text-2xl sm:text-3xl md:text-5xl text-[#501a2c] mb-4 sm:mb-6 group-hover:text-[#C9A690] transition-colors duration-300">
                       {article.title}
                     </h2>
                     <p className="font-serif text-lg text-[#501a2c]/80 leading-relaxed mb-6">
@@ -1315,10 +1369,10 @@ function ArticlesSection({
                   {t('read.article')} <ArrowUpRight size={14} />
                 </span>
               </div>
-            </article>
-          </Reveal>
-        </div>
+            </motion.article>
+        </motion.div>
       ))}
+      </motion.div>
     </div>
   );
 }
@@ -1797,10 +1851,10 @@ export default function App() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeSearch ? `search-${activeSearch}` : activeTab}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.25 }}
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               >
                 {activeSearch ? (
                   <SearchResults
