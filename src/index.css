@@ -22,7 +22,16 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* Momentum scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
 }
+
+/* Themed scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(80,26,44,.2); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(80,26,44,.4); }
+* { scrollbar-width: thin; scrollbar-color: rgba(80,26,44,.2) transparent; }
 
 body {
   margin: 0;
@@ -92,3 +101,28 @@ select {
   animation: aurora-3 21s ease-in-out infinite;
   filter: blur(60px);
 }
+/* ── Smooth image loading ─────────────────────────────────── */
+img {
+  image-rendering: auto;
+}
+img[loading="lazy"] {
+  animation: imgReveal .5s ease forwards;
+}
+@keyframes imgReveal {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Focus ring ───────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid rgba(80,26,44,.45);
+  outline-offset: 3px;
+}
+
+/* ── Smooth overscroll chrome ─────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* ── View transitions (Chrome 111+) ──────────────────────── */
+@view-transition { navigation: auto; }
