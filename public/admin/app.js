@@ -6138,15 +6138,11 @@ function bindStudioRowActions() {
 
   document.querySelectorAll('.radio-sub-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.radio-sub-btn').forEach(b => {
-        b.style.borderBottomColor = 'transparent';
-        b.style.color = 'var(--text-muted)';
-      });
+      document.querySelectorAll('.radio-sub-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.radio-sub-panel').forEach(p => { p.style.display = 'none'; });
-      btn.style.borderBottomColor = 'var(--accent)';
-      btn.style.color = 'var(--text)';
+      btn.classList.add('active');
       const sub = document.getElementById('radio-sub-' + btn.dataset.rsub);
-      if (sub) sub.style.display = 'flex', sub.style.flexDirection = 'column', sub.style.gap = '16px';
+      if (sub) { sub.style.display = 'flex'; sub.style.flexDirection = 'column'; sub.style.gap = '16px'; }
     });
   });
 
@@ -6174,6 +6170,7 @@ function bindStudioRowActions() {
         loadPodcasts();
         loadAnnouncements();
         loadNowPlaying();
+        loadPlaylists();
       } else throw new Error(j.error || 'error');
     } catch (e) {
       statusEl.textContent = '✗ ' + e.message;
@@ -6408,16 +6405,41 @@ function bindStudioRowActions() {
       el.innerHTML = '<p style="padding:24px;text-align:center;font-size:.8rem;color:var(--text-muted)">Подкастов нет.</p>';
       return;
     }
-    el.innerHTML = _podcasts.map(p => `
-      <div style="display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid var(--line)">
-        <div style="flex:1;min-width:0">
-          <div style="font-size:.88rem;font-weight:600;color:var(--text)">${escapeHtml(p.title)}</div>
-          <div style="font-size:.72rem;color:var(--text-muted)">${fmtDate(p.published_at)} · ${p.duration_label || ''} · ${p.is_published ? '✓ Опубл.' : '○ Черновик'}</div>
-        </div>
-        <button class="btn btn-sm" type="button" onclick="window._podcastEdit(${p.id})">✎</button>
-        <button class="btn btn-sm btn-danger-text" type="button" onclick="window._podcastDelete(${p.id}, '${escapeHtml(p.title)}')">✕</button>
-      </div>
-    `).join('');
+    // Group by season
+    const groups = {};
+    _podcasts.forEach(p => { const s = (p.season || '').trim() || '—'; (groups[s] = groups[s] || []).push(p); });
+    const seasonKeys = Object.keys(groups).sort((a, b) => (a === '—' ? 1 : b === '—' ? -1 : b.localeCompare(a)));
+    el.innerHTML = seasonKeys.map(season => {
+      const items = groups[season].sort((a, b) => (b.episode_number ?? 0) - (a.episode_number ?? 0));
+      const head = season !== '—'
+        ? `<div style="padding:8px 20px;background:var(--bg-soft);font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted)">${escapeHtml(season)} · ${items.length} эп.</div>`
+        : '';
+      const rows = items.map(p => {
+        const cover = (p.cover_url || '').trim();
+        const tags = Array.isArray(p.tags) && p.tags.length
+          ? `<span style="font-size:.62rem;color:var(--gold)">${p.tags.slice(0,3).map(escapeHtml).join(' · ')}</span>` : '';
+        return `
+        <div style="display:flex;align-items:center;gap:12px;padding:11px 20px;border-bottom:1px solid var(--line)">
+          <div style="width:42px;height:42px;border-radius:6px;background:var(--bg-soft);overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--text-faint)">
+            ${cover ? `<img src="${escapeHtml(cover)}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentNode.textContent='🎙'" />` : '🎙'}
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:.86rem;font-weight:600;color:var(--text);display:flex;align-items:center;gap:7px">
+              ${p.episode_number != null ? `<span style="font-family:var(--font-mono);font-size:.62rem;background:var(--bg-soft);padding:1px 6px;border-radius:10px;color:var(--text-muted)">№${p.episode_number}</span>` : ''}
+              <span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escapeHtml(p.title)}</span>
+            </div>
+            <div style="font-size:.7rem;color:var(--text-muted);margin-top:2px;display:flex;gap:8px;flex-wrap:wrap">
+              <span>${fmtDate(p.published_at)}</span>${p.duration_label ? `<span>· ${escapeHtml(p.duration_label)}</span>` : ''}${tags ? `<span>·</span>${tags}` : ''}
+            </div>
+          </div>
+          <button class="btn btn-sm" type="button" onclick="window._podcastTogglePub(${p.id})" title="${p.is_published ? 'Снять с публикации' : 'Опубликовать'}" style="${p.is_published ? 'color:#2d7a44' : 'color:var(--text-muted)'}">${p.is_published ? '👁 Опубл.' : '○ Черновик'}</button>
+          <button class="btn btn-sm" type="button" onclick="window._podcastPreview(${p.id})" title="Прослушать">▶</button>
+          <button class="btn btn-sm" type="button" onclick="window._podcastEdit(${p.id})">✎</button>
+          <button class="btn btn-sm btn-danger-text" type="button" onclick="window._podcastDelete(${p.id}, '${escapeHtml(p.title)}')">✕</button>
+        </div>`;
+      }).join('');
+      return head + rows;
+    }).join('');
   }
 
   async function loadPodcasts() {
@@ -6436,6 +6458,10 @@ function bindStudioRowActions() {
     document.getElementById('podcastCoverUrl').value = p?.cover_url || '';
     document.getElementById('podcastDuration').value = p?.duration_label || '';
     document.getElementById('podcastDesc').value = p?.description || '';
+    const seasonEl = document.getElementById('podcastSeason'); if (seasonEl) seasonEl.value = p?.season || '';
+    const epEl = document.getElementById('podcastEpisode'); if (epEl) epEl.value = p?.episode_number ?? '';
+    const tagsEl = document.getElementById('podcastTags'); if (tagsEl) tagsEl.value = Array.isArray(p?.tags) ? p.tags.join(', ') : '';
+    const pubEl = document.getElementById('podcastPublished'); if (pubEl) pubEl.checked = p ? !!p.is_published : true;
     document.getElementById('podcastEditId').value = p?.id || '';
     form.style.display = 'block';
     document.getElementById('podcastTitle').focus();
@@ -6451,12 +6477,17 @@ function bindStudioRowActions() {
     const title = document.getElementById('podcastTitle')?.value.trim();
     const audio_url = document.getElementById('podcastAudioUrl')?.value.trim();
     if (!title || !audio_url) { radioShowToast('Название и URL аудио обязательны', 'error'); return; }
+    const tagsRaw = document.getElementById('podcastTags')?.value.trim() || '';
+    const epRaw = document.getElementById('podcastEpisode')?.value.trim() || '';
     const body = {
       title, audio_url,
       cover_url: document.getElementById('podcastCoverUrl')?.value.trim() || null,
       duration_label: document.getElementById('podcastDuration')?.value.trim() || null,
       description: document.getElementById('podcastDesc')?.value.trim() || null,
-      is_published: true,
+      season: document.getElementById('podcastSeason')?.value.trim() || null,
+      episode_number: epRaw ? Number(epRaw) : null,
+      tags: tagsRaw ? tagsRaw.split(',').map(s => s.trim()).filter(Boolean) : [],
+      is_published: document.getElementById('podcastPublished')?.checked ?? true,
     };
     const id = document.getElementById('podcastEditId')?.value;
     try {
@@ -6473,6 +6504,21 @@ function bindStudioRowActions() {
       const j = await radioFetch('/api/podcasts/' + id, { method: 'DELETE' });
       if (j.ok) { radioShowToast('Удалено', 'success'); loadPodcasts(); }
     } catch { /* ignore */ }
+  };
+  window._podcastTogglePub = async id => {
+    const p = _podcasts.find(x => x.id === id); if (!p) return;
+    try {
+      const j = await radioFetch('/api/podcasts/' + id, { method: 'PUT', body: JSON.stringify({ is_published: !p.is_published }) });
+      if (j.ok) { radioShowToast(p.is_published ? 'Снят с публикации' : 'Опубликован', 'success'); loadPodcasts(); }
+    } catch { /* ignore */ }
+  };
+  let _podcastAudio = null;
+  window._podcastPreview = id => {
+    const p = _podcasts.find(x => x.id === id); if (!p?.audio_url) return;
+    if (_podcastAudio) { _podcastAudio.pause(); _podcastAudio = null; }
+    _podcastAudio = new Audio(p.audio_url);
+    _podcastAudio.play().catch(() => radioShowToast('Не удалось воспроизвести', 'error'));
+    radioShowToast('▶ ' + p.title, 'info');
   };
 
   document.getElementById('podcastNewBtn')?.addEventListener('click', () => showPodcastForm(null));
@@ -6628,6 +6674,241 @@ function bindStudioRowActions() {
   document.getElementById('annSaveBtn')?.addEventListener('click', saveAnn);
   document.getElementById('annCancelBtn')?.addEventListener('click', hideAnnForm);
   document.getElementById('annRefreshBtn')?.addEventListener('click', loadAnnouncements);
+
+  // ── PLAYLISTS CONFIGURATOR ─────────────────────────────────
+
+  let _playlists = [];
+  let _activePl = null;       // currently selected playlist (full, with tracks)
+  let _plDragId = null;       // pt_id being dragged
+  let _plPickerQuery = '';
+
+  async function loadPlaylists(selectId) {
+    try {
+      const j = await radioFetch('/api/playlists');
+      if (j.ok) {
+        _playlists = j.data || [];
+        renderPlaylistList();
+        const keep = selectId || _activePl?.id;
+        if (keep && _playlists.find(p => p.id === keep)) selectPlaylist(keep);
+        else if (_activePl && !_playlists.find(p => p.id === _activePl.id)) { _activePl = null; renderPlaylistEditor(); }
+      }
+    } catch (e) { radioShowToast('Ошибка плейлистов: ' + e.message, 'error'); }
+  }
+
+  function renderPlaylistList() {
+    const el = document.getElementById('plList');
+    if (!el) return;
+    if (!_playlists.length) { el.innerHTML = '<p class="pl-empty">Нет плейлистов.<br>Создайте первый.</p>'; return; }
+    el.innerHTML = _playlists.map(p => {
+      const cover = (p.cover_url || '').trim();
+      const mins = Math.round((p.total_duration || 0) / 60);
+      return `
+      <div class="pl-card ${_activePl && _activePl.id === p.id ? 'active' : ''}" onclick="window._plSelect(${p.id})">
+        <div class="pl-card-cover">${cover ? `<img src="${escapeHtml(cover)}" onerror="this.parentNode.textContent='📃'" />` : '📃'}</div>
+        <div class="pl-card-info">
+          <div class="pl-card-title">${escapeHtml(p.title)}</div>
+          <div class="pl-card-meta">${p.track_count} трек.${mins ? ' · ' + mins + ' мин' : ''}</div>
+        </div>
+        ${p.is_active ? '<span class="pl-onair-badge">эфир</span>' : ''}
+      </div>`;
+    }).join('');
+  }
+
+  async function selectPlaylist(id) {
+    try {
+      const j = await radioFetch('/api/playlists/' + id);
+      if (j.ok) { _activePl = j.data; renderPlaylistList(); renderPlaylistEditor(); }
+    } catch (e) { radioShowToast('Ошибка: ' + e.message, 'error'); }
+  }
+
+  function renderPlaylistEditor() {
+    const empty = document.getElementById('plEditorEmpty');
+    const body = document.getElementById('plEditorBody');
+    if (!empty || !body) return;
+    if (!_activePl) { empty.style.display = 'flex'; body.style.display = 'none'; return; }
+    empty.style.display = 'none'; body.style.display = 'block';
+    const p = _activePl;
+    const cover = (p.cover_url || '').trim();
+    const mins = Math.round((p.total_duration || 0) / 60);
+    const tracksHtml = (p.tracks || []).length
+      ? p.tracks.map((t, i) => `
+        <div class="pl-track-row" draggable="true" data-pt="${t.pt_id}">
+          <span class="pl-drag-handle">⠿</span>
+          <span class="pl-track-num">${i + 1}</span>
+          <div class="pl-track-info">
+            <div class="pl-track-title">${escapeHtml(t.title)}</div>
+            ${t.artist ? `<div class="pl-track-artist">${escapeHtml(t.artist)}</div>` : ''}
+          </div>
+          <div class="pl-track-actions">
+            <button class="pl-icon-btn" onclick="window._plPreview(${t.id})" title="Прослушать">▶</button>
+            <button class="pl-icon-btn danger" onclick="window._plRemoveTrack(${t.pt_id})" title="Убрать">✕</button>
+          </div>
+        </div>`).join('')
+      : '<p class="pl-empty">Пусто. Добавьте треки из библиотеки ниже.</p>';
+
+    // Library picker — tracks not already in playlist
+    const inPl = new Set((p.tracks || []).map(t => t.id));
+    const avail = _tracks.filter(t => !inPl.has(t.id) &&
+      (!_plPickerQuery || (t.title + ' ' + (t.artist || '')).toLowerCase().includes(_plPickerQuery)));
+    const pickerHtml = avail.length
+      ? avail.map(t => `
+        <div class="pl-picker-row" onclick="window._plAddTrack(${t.id})">
+          <span class="pl-picker-add">＋</span>
+          <div class="pl-track-info">
+            <div class="pl-track-title">${escapeHtml(t.title)}</div>
+            ${t.artist ? `<div class="pl-track-artist">${escapeHtml(t.artist)}</div>` : ''}
+          </div>
+        </div>`).join('')
+      : `<p class="pl-empty">${_tracks.length ? 'Все треки уже добавлены.' : 'Сначала загрузите треки во вкладке «Треки».'}</p>`;
+
+    body.innerHTML = `
+      <div class="pl-editor-head">
+        <div class="pl-editor-cover" onclick="document.getElementById('plCoverInput').click()" title="Загрузить обложку">
+          ${cover ? `<img src="${escapeHtml(cover)}" onerror="this.parentNode.textContent='📃'" />` : '📃'}
+        </div>
+        <input type="file" id="plCoverInput" accept="image/*" style="display:none" />
+        <div class="pl-editor-fields">
+          <input class="pl-title-input" id="plTitleInput" value="${escapeHtml(p.title)}" placeholder="Название плейлиста" />
+          <textarea class="pl-desc-input" id="plDescInput" rows="2" placeholder="Описание (необязательно)">${escapeHtml(p.description || '')}</textarea>
+        </div>
+      </div>
+      <div class="pl-editor-actions">
+        <span class="pl-stat"><strong>${p.track_count}</strong> треков</span>
+        ${mins ? `<span class="pl-stat">·  <strong>${mins}</strong> мин</span>` : ''}
+        <button class="btn btn-sm" type="button" id="plSaveMetaBtn">Сохранить</button>
+        <button class="btn btn-sm btn-danger-text" type="button" id="plDeleteBtn">Удалить плейлист</button>
+        <button class="pl-onair-toggle ${p.is_active ? 'on' : ''}" type="button" id="plOnAirBtn">${p.is_active ? 'В эфире' : 'Вывести в эфир'}</button>
+      </div>
+      <div class="pl-tracks" id="plTracks">${tracksHtml}</div>
+      <div class="pl-picker">
+        <div class="pl-picker-head">
+          <h4 style="margin:0;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-family:var(--font-mono)">Библиотека</h4>
+          <input id="plPickerSearch" placeholder="Поиск трека…" value="${escapeHtml(_plPickerQuery)}" />
+        </div>
+        <div class="pl-picker-list">${pickerHtml}</div>
+      </div>`;
+
+    bindPlaylistEditorEvents();
+  }
+
+  function bindPlaylistEditorEvents() {
+    document.getElementById('plSaveMetaBtn')?.addEventListener('click', savePlaylistMeta);
+    document.getElementById('plDeleteBtn')?.addEventListener('click', deletePlaylist);
+    document.getElementById('plOnAirBtn')?.addEventListener('click', toggleOnAir);
+    const search = document.getElementById('plPickerSearch');
+    if (search) search.addEventListener('input', () => {
+      _plPickerQuery = search.value.trim().toLowerCase();
+      const list = document.querySelector('.pl-picker-list');
+      const inPl = new Set((_activePl.tracks || []).map(t => t.id));
+      const avail = _tracks.filter(t => !inPl.has(t.id) &&
+        (!_plPickerQuery || (t.title + ' ' + (t.artist || '')).toLowerCase().includes(_plPickerQuery)));
+      if (list) list.innerHTML = avail.length ? avail.map(t => `
+        <div class="pl-picker-row" onclick="window._plAddTrack(${t.id})">
+          <span class="pl-picker-add">＋</span>
+          <div class="pl-track-info"><div class="pl-track-title">${escapeHtml(t.title)}</div>${t.artist ? `<div class="pl-track-artist">${escapeHtml(t.artist)}</div>` : ''}</div>
+        </div>`).join('') : '<p class="pl-empty">Ничего не найдено.</p>';
+    });
+    // Cover upload
+    const coverInput = document.getElementById('plCoverInput');
+    if (coverInput) coverInput.addEventListener('change', () => {
+      if (!coverInput.files[0]) return;
+      const fakeProgress = document.createElement('div'); // reuse podcast uploader pattern
+      const tmpBar = document.createElement('div'); const tmpLabel = document.createElement('div');
+      const urlHolder = { value: '' };
+      const xhr = new XMLHttpRequest();
+      const fd = new FormData(); fd.append('file', coverInput.files[0]);
+      xhr.open('POST', RADIO_API + '/api/uploads/image');
+      xhr.setRequestHeader('X-Admin-Token', getRadioToken());
+      radioShowToast('Загружаю обложку…', 'info');
+      xhr.onload = async () => {
+        try {
+          const j = JSON.parse(xhr.responseText);
+          if (j.ok) {
+            await radioFetch('/api/playlists/' + _activePl.id, { method: 'PUT', body: JSON.stringify({ cover_url: j.url }) });
+            radioShowToast('Обложка обновлена', 'success');
+            selectPlaylist(_activePl.id); loadPlaylists();
+          } else radioShowToast('Ошибка: ' + (j.error || ''), 'error');
+        } catch { radioShowToast('Ошибка загрузки', 'error'); }
+      };
+      xhr.onerror = () => radioShowToast('Ошибка сети', 'error');
+      xhr.send(fd);
+    });
+    // Drag-drop reordering
+    const rows = document.querySelectorAll('#plTracks .pl-track-row');
+    rows.forEach(row => {
+      row.addEventListener('dragstart', () => { _plDragId = row.dataset.pt; row.classList.add('dragging'); });
+      row.addEventListener('dragend', () => { row.classList.remove('dragging'); document.querySelectorAll('.pl-track-row').forEach(r => r.classList.remove('drag-over')); });
+      row.addEventListener('dragover', e => { e.preventDefault(); row.classList.add('drag-over'); });
+      row.addEventListener('dragleave', () => row.classList.remove('drag-over'));
+      row.addEventListener('drop', e => {
+        e.preventDefault(); row.classList.remove('drag-over');
+        if (!_plDragId || _plDragId === row.dataset.pt) return;
+        const order = [...document.querySelectorAll('#plTracks .pl-track-row')].map(r => r.dataset.pt);
+        const from = order.indexOf(_plDragId), to = order.indexOf(row.dataset.pt);
+        order.splice(to, 0, order.splice(from, 1)[0]);
+        reorderPlaylist(order);
+      });
+    });
+  }
+
+  async function savePlaylistMeta() {
+    if (!_activePl) return;
+    const title = document.getElementById('plTitleInput')?.value.trim() || 'Без названия';
+    const description = document.getElementById('plDescInput')?.value.trim() || null;
+    try {
+      const j = await radioFetch('/api/playlists/' + _activePl.id, { method: 'PUT', body: JSON.stringify({ title, description }) });
+      if (j.ok) { _activePl = j.data; radioShowToast('Сохранено', 'success'); renderPlaylistList(); }
+    } catch (e) { radioShowToast('Ошибка: ' + e.message, 'error'); }
+  }
+
+  async function deletePlaylist() {
+    if (!_activePl || !confirm('Удалить плейлист «' + _activePl.title + '»?')) return;
+    try {
+      const j = await radioFetch('/api/playlists/' + _activePl.id, { method: 'DELETE' });
+      if (j.ok) { radioShowToast('Удалено', 'success'); _activePl = null; loadPlaylists(); }
+    } catch (e) { radioShowToast('Ошибка: ' + e.message, 'error'); }
+  }
+
+  async function toggleOnAir() {
+    if (!_activePl) return;
+    const action = _activePl.is_active ? 'deactivate' : 'activate';
+    try {
+      const j = await radioFetch('/api/playlists/' + _activePl.id + '/' + action, { method: 'PUT' });
+      if (j.ok) { radioShowToast(_activePl.is_active ? 'Снят с эфира' : 'Выведен в эфир', 'success'); loadPlaylists(_activePl.id); }
+    } catch (e) { radioShowToast('Ошибка: ' + e.message, 'error'); }
+  }
+
+  async function reorderPlaylist(order) {
+    if (!_activePl) return;
+    try {
+      const j = await radioFetch('/api/playlists/' + _activePl.id + '/reorder', { method: 'PUT', body: JSON.stringify({ order }) });
+      if (j.ok) { _activePl = j.data; renderPlaylistEditor(); }
+    } catch (e) { radioShowToast('Ошибка: ' + e.message, 'error'); }
+  }
+
+  window._plSelect = id => selectPlaylist(id);
+  window._plPreview = id => window._radioPreviewTrack(id, '');
+  window._plAddTrack = async tid => {
+    if (!_activePl) return;
+    try {
+      const j = await radioFetch('/api/playlists/' + _activePl.id + '/tracks', { method: 'POST', body: JSON.stringify({ track_id: tid }) });
+      if (j.ok) { _activePl = j.data; renderPlaylistEditor(); renderPlaylistList(); }
+    } catch (e) { radioShowToast('Ошибка: ' + e.message, 'error'); }
+  };
+  window._plRemoveTrack = async ptid => {
+    if (!_activePl) return;
+    try {
+      const j = await radioFetch('/api/playlists/' + _activePl.id + '/tracks/' + ptid, { method: 'DELETE' });
+      if (j.ok) { _activePl = j.data; renderPlaylistEditor(); renderPlaylistList(); }
+    } catch (e) { radioShowToast('Ошибка: ' + e.message, 'error'); }
+  };
+
+  document.getElementById('plNewBtn')?.addEventListener('click', async () => {
+    try {
+      const j = await radioFetch('/api/playlists', { method: 'POST', body: JSON.stringify({ title: 'Новый плейлист' }) });
+      if (j.ok) { radioShowToast('Плейлист создан', 'success'); _activePl = j.data; await loadPlaylists(j.data.id); }
+    } catch (e) { radioShowToast('Ошибка: ' + e.message, 'error'); }
+  });
 
   // Init sub-panel visibility
   document.querySelectorAll('.radio-sub-panel').forEach((p, i) => {

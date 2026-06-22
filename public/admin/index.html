@@ -636,18 +636,44 @@
 
           <!-- ===== RADIO ===== -->
           <section class="tab-panel" id="tab-radio">
-            <div style="max-width:900px;margin:0 auto;padding:24px;display:flex;flex-direction:column;gap:24px">
+            <div style="max-width:1180px;margin:0 auto;padding:24px;display:flex;flex-direction:column;gap:20px">
               <input id="radioAdminToken" type="hidden" value="VKWMdnFERF5luvSm" />
               <div style="display:flex;align-items:center;gap:8px;padding:4px 0">
                 <span id="radioStatus" style="font-size:.75rem;color:var(--text-muted)">Подключаюсь...</span>
               </div>
-              <div id="radioPanel" style="display:none;flex-direction:column;gap:24px">
-                <div style="display:flex;gap:0;border-bottom:1px solid var(--line)">
-                  <button class="radio-sub-btn active" data-rsub="tracks" type="button" style="padding:10px 20px;font-size:.78rem;font-family:var(--font-mono);background:none;border:none;border-bottom:2px solid var(--accent);cursor:pointer;color:var(--text)">🎵 Треки</button>
-                  <button class="radio-sub-btn" data-rsub="podcasts" type="button" style="padding:10px 20px;font-size:.78rem;font-family:var(--font-mono);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;color:var(--text-muted)">🎙 Подкасты</button>
-                  <button class="radio-sub-btn" data-rsub="announcements" type="button" style="padding:10px 20px;font-size:.78rem;font-family:var(--font-mono);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;color:var(--text-muted)">📢 Анонсы</button>
+              <div id="radioPanel" style="display:none;flex-direction:column;gap:20px">
+                <div class="radio-subtabs">
+                  <button class="radio-sub-btn active" data-rsub="playlists" type="button">📃 Плейлисты</button>
+                  <button class="radio-sub-btn" data-rsub="tracks" type="button">🎵 Треки</button>
+                  <button class="radio-sub-btn" data-rsub="podcasts" type="button">🎙 Подкасты</button>
+                  <button class="radio-sub-btn" data-rsub="announcements" type="button">📢 Анонсы</button>
                 </div>
-                <div id="radio-sub-tracks" class="radio-sub-panel">
+
+                <!-- ═══ PLAYLISTS CONFIGURATOR ═══ -->
+                <div id="radio-sub-playlists" class="radio-sub-panel">
+                  <div class="pl-configurator">
+                    <!-- Left: playlist list -->
+                    <aside class="pl-sidebar">
+                      <div class="pl-sidebar-head">
+                        <h3 class="card-title" style="margin:0">Плейлисты</h3>
+                        <button class="btn btn-primary btn-sm" type="button" id="plNewBtn">+ Создать</button>
+                      </div>
+                      <div id="plList" class="pl-list"><p class="pl-empty">Загружаю…</p></div>
+                    </aside>
+                    <!-- Right: playlist editor -->
+                    <div class="pl-editor" id="plEditor">
+                      <div class="pl-editor-empty" id="plEditorEmpty">
+                        <div style="font-size:2.4rem;opacity:.25">📃</div>
+                        <p style="color:var(--text-muted);font-size:.85rem;max-width:260px;text-align:center">Выберите плейлист слева или создайте новый, чтобы собрать эфирную программу.</p>
+                      </div>
+                      <div class="pl-editor-body" id="plEditorBody" style="display:none">
+                        <!-- filled by JS -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="radio-sub-tracks" class="radio-sub-panel" style="display:none">
                   <div class="card" style="padding:0;overflow:hidden">
                     <div style="padding:16px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px"><h3 class="card-title" style="margin:0;flex:1">Загрузить трек</h3></div>
                     <div style="padding:20px;display:grid;gap:12px">
@@ -678,7 +704,11 @@
                         <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Аудио *<div style="display:flex;gap:6px;align-items:center"><input id="podcastAudioUrl" type="url" placeholder="https://..." style="flex:1;background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" /><button class="btn btn-sm" type="button" id="podcastAudioUploadBtn">📁 Файл</button><input id="podcastAudioFileInput" type="file" accept=".mp3,.wav,.ogg,.flac,.m4a,.aac,.opus,.webm,.mp4" style="display:none" /></div><div id="podcastAudioProgress" style="display:none;margin-top:4px"><div style="height:3px;background:var(--line);border-radius:2px;overflow:hidden"><div id="podcastAudioProgressBar" style="height:100%;background:var(--accent);width:0%;transition:width .2s"></div></div><span id="podcastAudioProgressLabel" style="font-size:.7rem;color:var(--text-muted)"></span></div></label>
                         <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Обложка<div style="display:flex;gap:6px;align-items:center"><input id="podcastCoverUrl" type="url" placeholder="https://..." style="flex:1;background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" /><button class="btn btn-sm" type="button" id="podcastCoverUploadBtn">📁 Фото</button><input id="podcastCoverFileInput" type="file" accept=".jpg,.jpeg,.png,.webp,.gif,.avif" style="display:none" /></div><div id="podcastCoverProgress" style="display:none;margin-top:4px"><div style="height:3px;background:var(--line);border-radius:2px;overflow:hidden"><div id="podcastCoverProgressBar" style="height:100%;background:var(--accent);width:0%;transition:width .2s"></div></div><span id="podcastCoverProgressLabel" style="font-size:.7rem;color:var(--text-muted)"></span></div></label>
                         <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Длительность<input id="podcastDuration" type="text" placeholder="45:30" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" /></label>
+                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Сезон<input id="podcastSeason" type="text" placeholder="Сезон 1 / 2026" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" /></label>
+                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">№ эпизода<input id="podcastEpisode" type="number" min="0" placeholder="1" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" /></label>
+                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted);grid-column:1/-1">Теги (через запятую)<input id="podcastTags" type="text" placeholder="дизайн, интервью, культура" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" /></label>
                         <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted);grid-column:1/-1">Описание<textarea id="podcastDesc" rows="2" placeholder="Описание эпизода..." style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text);resize:vertical"></textarea></label>
+                        <label class="checkbox-label" style="grid-column:1/-1;font-size:.8rem"><input id="podcastPublished" type="checkbox" checked /> Опубликован (виден на сайте)</label>
                       </div>
                       <div style="display:flex;gap:8px"><button class="btn btn-primary btn-sm" type="button" id="podcastSaveBtn">Сохранить</button><button class="btn btn-sm" type="button" id="podcastCancelBtn">Отмена</button></div>
                       <input type="hidden" id="podcastEditId" value="" />
