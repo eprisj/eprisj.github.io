@@ -233,9 +233,60 @@ async function tryAutoLogin() {
   }
 }
 
+// ── Password login (exchanges password → GitHub PAT + radio token) ──
+const TOKEN_API = 'https://api.eprisjournal.com/token';
+const authPasswordInput = byId('authPasswordInput');
+const authLoginPwBtn = byId('authLoginPwBtn');
+const authFormPassword = byId('authFormPassword');
+const authFormPat = byId('authFormPat');
+
+function applyRadioToken(rt) {
+  if (!rt) return;
+  try { localStorage.setItem('epris_radio_admin_pw', rt); } catch { /* */ }
+  const el = byId('radioAdminToken');
+  if (el) el.value = rt;
+}
+
+async function handlePasswordLogin() {
+  const pw = (authPasswordInput?.value || '').trim();
+  if (!pw) { showAuthError('Введите пароль'); return; }
+  authError.hidden = true;
+  authLoading.hidden = false;
+  if (authLoginPwBtn) authLoginPwBtn.disabled = true;
+  try {
+    const res = await fetch(TOKEN_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: pw }),
+    });
+    const data = await res.json();
+    if (!data.ok || !data.token) throw new Error(data.error || 'Неверный пароль');
+    applyRadioToken(data.radio_token);
+    // hand off to the existing PAT verify+init flow
+    await verifyToken(data.token);
+    tokenInput.value = data.token;
+    if (authRememberCheck?.checked) {
+      localStorage.setItem(AUTH_STORAGE_KEY, data.token);
+      rememberTokenInput.checked = true;
+    }
+    hideAuthOverlay();
+    await init({ fromLogin: true });
+  } catch (e) {
+    showAuthError(e.message === 'Неверный пароль' || /invalid/i.test(e.message) ? 'Неверный пароль' : 'Ошибка входа: ' + e.message);
+    if (authLoginPwBtn) authLoginPwBtn.disabled = false;
+  }
+}
+
+// Form toggle (password ⇄ PAT)
+byId('authShowPat')?.addEventListener('click', () => { authFormPassword.hidden = true; authFormPat.hidden = false; authTokenInput?.focus(); });
+byId('authShowPw')?.addEventListener('click', () => { authFormPat.hidden = true; authFormPassword.hidden = false; authPasswordInput?.focus(); });
+authLoginPwBtn?.addEventListener('click', handlePasswordLogin);
+authPasswordInput?.addEventListener('keydown', (e) => { if (e.key === 'Enter') handlePasswordLogin(); });
+
 // Bootstrap: auth gate first, then init
 authLoginBtn.addEventListener('click', handleLogin);
 authTokenInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleLogin(); });
+setTimeout(() => { if (!authOverlay.classList.contains('hidden')) authPasswordInput?.focus(); }, 200);
 tryAutoLogin();
 
 async function init(options = {}) {
@@ -6171,6 +6222,7 @@ function bindStudioRowActions() {
         loadAnnouncements();
         loadNowPlaying();
         loadPlaylists();
+        startRadioStatus();
       } else throw new Error(j.error || 'error');
     } catch (e) {
       statusEl.textContent = '✗ ' + e.message;
@@ -6674,6 +6726,80 @@ function bindStudioRowActions() {
   document.getElementById('annSaveBtn')?.addEventListener('click', saveAnn);
   document.getElementById('annCancelBtn')?.addEventListener('click', hideAnnForm);
   document.getElementById('annRefreshBtn')?.addEventListener('click', loadAnnouncements);
+
+  // ── LIVE RADIO STATUS / QUALITY INDICATOR ──────────────────
+
+  let _radioStatusTimer = null;
+
+  function ensureStatusBar() {
+    let bar = document.getElementById('radioStatusBar');
+    if (!bar) {
+      bar = document.createElement('div');
+      bar.id = 'radioStatusBar';
+      bar.className = 'radio-status-bar';
+      const subtabs = document.querySelector('#radioPanel .radio-subtabs');
+      if (subtabs) subtabs.parentNode.insertBefore(bar, subtabs);
+    }
+    return bar;
+  }
+
+  function qualityFromPing(ms) {
+    if (ms < 150) return 'good';
+    if (ms < 400) return 'ok';
+    return 'weak';
+  }
+
+  function renderRadioStatus(s) {
+    const bar = ensureStatusBar();
+    if (!s.online) {
+      bar.innerHTML = `<span class="rs-dot offline"></span><span class="rs-item"><strong>Сервер недоступен</strong></span>
+        <button class="rs-refresh" id="rsRefreshBtn" title="Проверить">↻</button>`;
+      document.getElementById('rsRefreshBtn')?.addEventListener('click', pollRadioStatus);
+      return;
+    }
+    const q = qualityFromPing(s.ping);
+    const qLabel = q === 'good' ? 'отличная' : q === 'ok' ? 'нормальная' : 'слабая';
+    const lvl = q === 'good' ? 3 : q === 'ok' ? 2 : 1;
+    const bars = [1, 2, 3].map(b => `<i class="${b <= lvl ? 'on ' + q : ''}" style="height:${b * 4 + 2}px"></i>`).join('');
+    bar.innerHTML = `
+      <span class="rs-dot online"></span>
+      <span class="rs-item"><strong>${escapeHtml(s.station || 'EPRIS Radio')}</strong> онлайн</span>
+      <span class="rs-sep"></span>
+      <span class="rs-item" title="Задержка до сервера"><span class="rs-bars">${bars}</span> ${s.ping} мс · связь ${qLabel}</span>
+      <span class="rs-sep"></span>
+      <span class="rs-item">👥 <strong>${s.listeners}</strong> ${s.listeners === 1 ? 'слушатель' : 'в эфире'}</span>
+      ${s.live ? '<span class="rs-sep"></span><span class="rs-live-pill">эфир идёт</span>' : ''}
+      <button class="rs-refresh" id="rsRefreshBtn" title="Обновить">↻</button>`;
+    document.getElementById('rsRefreshBtn')?.addEventListener('click', pollRadioStatus);
+  }
+
+  async function pollRadioStatus() {
+    const bar = ensureStatusBar();
+    if (!bar.innerHTML) bar.innerHTML = '<span class="rs-dot checking"></span><span class="rs-item">Проверка связи…</span>';
+    const t0 = performance.now();
+    try {
+      const r = await fetch(RADIO_API + '/api/health', { cache: 'no-store' });
+      const ping = Math.round(performance.now() - t0);
+      const h = await r.json();
+      let listeners = 0, live = false;
+      try {
+        const rooms = await radioFetch('/api/calls/rooms');
+        if (rooms.ok && Array.isArray(rooms.data)) {
+          listeners = rooms.data.reduce((n, rm) => n + (rm.member_count || 0), 0);
+          live = rooms.data.length > 0;
+        }
+      } catch { /* rooms optional */ }
+      renderRadioStatus({ online: !!h.ok, station: h.station, ping, listeners, live });
+    } catch {
+      renderRadioStatus({ online: false });
+    }
+  }
+
+  function startRadioStatus() {
+    pollRadioStatus();
+    if (_radioStatusTimer) clearInterval(_radioStatusTimer);
+    _radioStatusTimer = setInterval(pollRadioStatus, 12000);
+  }
 
   // ── PLAYLISTS CONFIGURATOR ─────────────────────────────────
 

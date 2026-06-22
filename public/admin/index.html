@@ -18,18 +18,34 @@
           <span class="auth-logo-epris">EPRIS</span>
           <span class="auth-logo-sub">Редакция</span>
         </div>
-        <div class="auth-form" id="authFormPat">
+        <!-- Password login (primary, for editors) -->
+        <div class="auth-form" id="authFormPassword">
           <label class="auth-label">
-            <span class="field-label">GitHub Token (PAT)</span>
-            <input id="authTokenInput" type="password" autocomplete="off" placeholder="github_pat_..." />
+            <span class="field-label">Пароль редакции</span>
+            <input id="authPasswordInput" type="password" autocomplete="current-password" placeholder="Введите пароль…" />
           </label>
           <label class="auth-remember">
             <input id="authRememberCheck" type="checkbox" checked />
             Запомнить в этом браузере
           </label>
-          <button id="authLoginBtn" class="btn btn-primary auth-login-btn" type="button">Войти</button>
+          <button id="authLoginPwBtn" class="btn btn-primary auth-login-btn" type="button">Войти</button>
           <p id="authError" class="auth-error" hidden></p>
           <p id="authLoading" class="auth-loading" hidden>Проверка…</p>
+          <button id="authShowPat" type="button" class="auth-toggle-link">Войти по GitHub-токену →</button>
+        </div>
+
+        <!-- PAT login (fallback, for developers) -->
+        <div class="auth-form" id="authFormPat" hidden>
+          <label class="auth-label">
+            <span class="field-label">GitHub Token (PAT)</span>
+            <input id="authTokenInput" type="password" autocomplete="off" placeholder="github_pat_..." />
+          </label>
+          <label class="auth-remember">
+            <input id="authRememberPatCheck" type="checkbox" checked />
+            Запомнить в этом браузере
+          </label>
+          <button id="authLoginBtn" class="btn btn-primary auth-login-btn" type="button">Войти</button>
+          <button id="authShowPw" type="button" class="auth-toggle-link">← Войти по паролю</button>
         </div>
       </div>
     </div>
@@ -637,7 +653,7 @@
           <!-- ===== RADIO ===== -->
           <section class="tab-panel" id="tab-radio">
             <div style="max-width:1180px;margin:0 auto;padding:24px;display:flex;flex-direction:column;gap:20px">
-              <input id="radioAdminToken" type="hidden" value="VKWMdnFERF5luvSm" />
+              <input id="radioAdminToken" type="hidden" value="" />
               <div style="display:flex;align-items:center;gap:8px;padding:4px 0">
                 <span id="radioStatus" style="font-size:.75rem;color:var(--text-muted)">Подключаюсь...</span>
               </div>
