@@ -6205,7 +6205,10 @@ function bindStudioRowActions() {
 
   async function radioConnect() {
     const token = getRadioToken();
-    if (!token) { radioShowToast('Введите Admin Token', 'error'); return; }
+    if (!token) {
+      if (statusEl) { statusEl.textContent = '⚠ Войдите по паролю редакции для доступа к радио (выйдите и зайдите заново)'; statusEl.style.color = 'var(--warn, #9a5b00)'; }
+      return;
+    }
     localStorage.setItem(RADIO_TOKEN_KEY, token);
     statusEl.textContent = 'Подключаюсь...';
     try {
