@@ -3495,3 +3495,50 @@ body {
 }
 .pl-picker-row:hover { background: var(--bg-soft); }
 .pl-picker-add { color: var(--accent); font-weight: 700; font-size: 1rem; }
+
+/* ── Auth toggle link ─────────────────────────────────────── */
+.auth-toggle-link {
+  background: none; border: none; cursor: pointer;
+  color: var(--text-muted); font-family: var(--font-mono);
+  font-size: .62rem; letter-spacing: .04em; padding: 8px 0 0;
+  text-align: center; width: 100%; transition: color .15s;
+}
+.auth-toggle-link:hover { color: var(--accent); }
+
+/* ── Radio status / quality indicator (admin) ─────────────── */
+.radio-status-bar {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  padding: 11px 16px; border-radius: var(--radius, 8px);
+  background: var(--bg-card); border: 1px solid var(--line);
+  box-shadow: var(--shadow-xs); font-size: .74rem;
+}
+.rs-dot {
+  width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0;
+  background: var(--text-faint);
+}
+.rs-dot.online { background: #2d9a52; box-shadow: 0 0 0 3px rgba(45,154,82,.18); }
+.rs-dot.offline { background: #c0392b; box-shadow: 0 0 0 3px rgba(192,57,43,.18); }
+.rs-dot.checking { background: var(--gold); animation: previewPulse .8s infinite alternate; }
+.rs-item { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); }
+.rs-item strong { color: var(--text); font-weight: 600; }
+.rs-sep { width: 1px; height: 16px; background: var(--line); }
+/* signal bars */
+.rs-bars { display: inline-flex; align-items: flex-end; gap: 2px; height: 14px; }
+.rs-bars i { width: 3px; border-radius: 1px; background: rgba(80,26,44,.18); }
+.rs-bars i.on.good { background: #2d9a52; }
+.rs-bars i.on.ok { background: var(--gold); }
+.rs-bars i.on.weak { background: #d9824a; }
+.rs-live-pill {
+  font-family: var(--font-mono); font-size: .58rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em; padding: 3px 9px; border-radius: 20px;
+  background: var(--accent); color: #fff; display: inline-flex; align-items: center; gap: 5px;
+}
+.rs-live-pill::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #fff; animation: previewPulse .7s infinite alternate; }
+.rs-refresh {
+  margin-left: auto; background: none; border: 1px solid var(--line);
+  border-radius: 6px; width: 28px; height: 28px; cursor: pointer; color: var(--text-muted);
+  transition: all .15s;
+}
+.rs-refresh:hover { border-color: var(--accent); color: var(--accent); }
+
+.auth-form[hidden] { display: none !important; }
