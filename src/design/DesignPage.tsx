@@ -1,8 +1,8 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, X, Loader2, ExternalLink, ArrowRight } from 'lucide-react';
+import { ArrowUpRight, X, Loader2, ExternalLink, ArrowRight, Sparkles } from 'lucide-react';
 import { CATALOG, CATALOG_BY_ID, SHOP_CATEGORIES, SETS, type CatalogItem, type ShopCategory, type SetDesign } from './catalog';
-import { resolveMany, formatPrice, type ResolvedProduct } from './shopApi';
+import { resolveMany, curateBoard, formatPrice, type ResolvedProduct, type CurateResult } from './shopApi';
 import { getUI, getLook } from './designI18n';
 
 type Resolved = Record<number, ResolvedProduct | null>;
@@ -258,6 +258,140 @@ function LookPanel({ set, lookIndex, activeId, onSelect, resolved, onOpen, lang 
   );
 }
 
+// ── AI Stylist panel ──────────────────────────────────────────────────────────
+const STYLIST_PRESETS = [
+  'Cozy Scandinavian bedroom, warm tones, budget $800',
+  'Minimalist home office, black and white, under $600',
+  'Mid-century modern living room, warm wood tones',
+  'Gallery wall and reading corner for a rented flat',
+];
+
+function StylistPanel({ resolved, onOpen, lang }: {
+  resolved: Resolved;
+  onOpen: (item: CatalogItem, data: ResolvedProduct) => void;
+  lang: string;
+}) {
+  const ui = getUI(lang);
+  const [brief, setBrief] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState<CurateResult | null>(null);
+
+  const handleSubmit = async () => {
+    if (!brief.trim() || loading) return;
+    setLoading(true);
+    setResult(null);
+    const r = await curateBoard(brief);
+    setResult(r);
+    setLoading(false);
+  };
+
+  const picks = result?.ok
+    ? (result.picks || []).map((id) => CATALOG_BY_ID.get(id)).filter((c): c is CatalogItem => !!c)
+    : [];
+
+  return (
+    <div className="border-b border-white/5 bg-[#0a0306]">
+      <div className="px-6 md:px-12 lg:px-16 py-12 md:py-16">
+        {/* Header */}
+        <div className="flex items-center gap-3 mb-5">
+          <div className="h-px w-6 bg-[#C9A690]/40" />
+          <Sparkles size={9} className="text-[#C9A690]/50" />
+          <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-[#C9A690]/60">{ui.stylistLabel}</span>
+        </div>
+        <h2
+          style={{ fontFamily: "'Playfair Display', serif" }}
+          className="text-[clamp(32px,6vw,80px)] leading-[0.92] text-white mb-3"
+        >{ui.stylistTitle}</h2>
+        <p className="text-sm text-white/30 mb-8 max-w-md leading-relaxed">{ui.stylistSub}</p>
+
+        {/* Input area */}
+        <div className="max-w-2xl">
+          <div className="border border-white/10 focus-within:border-[#C9A690]/40 transition-colors duration-300">
+            <textarea
+              value={brief}
+              onChange={(e) => setBrief(e.target.value)}
+              placeholder={ui.stylistPlaceholder}
+              rows={2}
+              className="w-full bg-transparent text-white text-sm px-5 py-4 resize-none outline-none placeholder:text-white/18 font-sans leading-relaxed"
+              onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSubmit(); } }}
+            />
+          </div>
+
+          {/* Preset chips */}
+          <div className="flex flex-wrap gap-2 mt-3 mb-5">
+            {STYLIST_PRESETS.map((p) => (
+              <button
+                key={p}
+                onClick={() => setBrief(p)}
+                className="font-mono text-[7px] uppercase tracking-wider text-white/28 border border-white/8 px-2.5 py-1.5 hover:border-[#C9A690]/35 hover:text-[#C9A690]/55 transition-all duration-200 max-w-[200px] truncate"
+              >
+                {p.split(',')[0]}
+              </button>
+            ))}
+          </div>
+
+          <button
+            onClick={handleSubmit}
+            disabled={!brief.trim() || loading}
+            className="inline-flex items-center gap-2.5 bg-[#C9A690] text-[#0d0408] font-mono text-[9px] uppercase tracking-widest px-6 py-3.5 hover:bg-white transition-colors duration-200 disabled:opacity-30 disabled:cursor-not-allowed"
+          >
+            {loading
+              ? <><Loader2 size={11} className="animate-spin" /> {ui.stylistLoading}</>
+              : <>{ui.stylistCta} <ArrowRight size={11} /></>}
+          </button>
+        </div>
+
+        {/* Error */}
+        {result && !result.ok && (
+          <p className="mt-6 font-mono text-[9px] uppercase tracking-wider text-red-400/50">
+            {result.error || 'Something went wrong'}
+          </p>
+        )}
+
+        {/* Curated result */}
+        {result?.ok && picks.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-12 border-t border-white/8 pt-10"
+          >
+            <div className="mb-8">
+              <p className="font-mono text-[7px] uppercase tracking-[0.35em] text-[#C9A690]/40 mb-2">
+                {ui.stylistBoardFor} "{brief.split(',')[0].trim()}"
+              </p>
+              <h3
+                style={{ fontFamily: "'Playfair Display', serif" }}
+                className="text-[clamp(24px,4vw,52px)] leading-tight text-white mb-3"
+              >{result.title}</h3>
+              <p className="text-sm text-white/32 max-w-lg leading-relaxed">{result.summary}</p>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
+              {picks.map((item, i) => (
+                <div key={item.id}>
+                  <DarkProductCard item={item} data={resolved[item.id]} index={i} onOpen={onOpen} />
+                  {result.notes?.[String(item.id)] && (
+                    <p className="font-mono text-[7px] text-white/18 leading-snug mt-1.5 px-0.5 line-clamp-2">
+                      {result.notes[String(item.id)]}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <button
+              onClick={() => { setResult(null); setBrief(''); }}
+              className="mt-8 font-mono text-[8px] uppercase tracking-widest text-white/20 hover:text-[#C9A690]/55 transition-colors border border-white/8 hover:border-[#C9A690]/25 px-4 py-2 duration-200"
+            >
+              {ui.stylistTryAgain}
+            </button>
+          </motion.div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ── Main page ─────────────────────────────────────────────────────────────────
 export function DesignPage({ lang = 'EN' }: { lang?: string }) {
   const ui = getUI(lang);
@@ -334,6 +468,9 @@ export function DesignPage({ lang = 'EN' }: { lang?: string }) {
           </div>
         </div>
       </div>
+
+      {/* ── AI STYLIST ── */}
+      <StylistPanel resolved={resolved} onOpen={openModal} lang={lang} />
 
       {/* ── LOOKS — alternating panels ── */}
       <div>

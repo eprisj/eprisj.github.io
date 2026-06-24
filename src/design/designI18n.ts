@@ -16,6 +16,14 @@ export interface DesignUI {
   shopAt: string;
   allFilter: string;
   priceNote: string;
+  stylistLabel: string;
+  stylistTitle: string;
+  stylistSub: string;
+  stylistPlaceholder: string;
+  stylistCta: string;
+  stylistLoading: string;
+  stylistBoardFor: string;
+  stylistTryAgain: string;
 }
 
 export interface LookI18n {
@@ -41,6 +49,14 @@ const ui: Record<SupportedLang, DesignUI> = {
     shopAt: 'Shop at',
     allFilter: 'All',
     priceNote: 'Images and prices fetched live from retailer pages. Links open the maker\'s site.',
+    stylistLabel: 'AI Stylist',
+    stylistTitle: 'Ask the Stylist',
+    stylistSub: 'Describe your space, style, and budget. The AI picks a curated board from our real catalogue.',
+    stylistPlaceholder: 'e.g. cozy Scandinavian bedroom, warm tones, budget $800',
+    stylistCta: 'Curate for me',
+    stylistLoading: 'Curating…',
+    stylistBoardFor: 'Board for',
+    stylistTryAgain: 'Try another brief',
   },
   UA: {
     masthead: 'Справжні кімнати.',
@@ -58,6 +74,14 @@ const ui: Record<SupportedLang, DesignUI> = {
     shopAt: 'Купити у',
     allFilter: 'Всі',
     priceNote: 'Зображення та ціни завантажуються наживо зі сторінок ритейлерів. Посилання відкривають сайт виробника.',
+    stylistLabel: 'AI-стиліст',
+    stylistTitle: 'Запитай стиліста',
+    stylistSub: 'Опишіть ваш простір, стиль і бюджет. AI підбере добірку з реального каталогу.',
+    stylistPlaceholder: 'напр. скандинавська спальня, теплі відтінки, бюджет $800',
+    stylistCta: 'Підібрати',
+    stylistLoading: 'Підбираємо…',
+    stylistBoardFor: 'Добірка для',
+    stylistTryAgain: 'Спробувати інший запит',
   },
   RU: {
     masthead: 'Настоящие комнаты.',
@@ -75,6 +99,14 @@ const ui: Record<SupportedLang, DesignUI> = {
     shopAt: 'Купить у',
     allFilter: 'Все',
     priceNote: 'Изображения и цены загружаются в реальном времени со страниц ритейлеров.',
+    stylistLabel: 'AI-стилист',
+    stylistTitle: 'Спроси стилиста',
+    stylistSub: 'Опишите ваше пространство, стиль и бюджет. AI составит подборку из реального каталога.',
+    stylistPlaceholder: 'напр. скандинавская спальня, тёплые тона, бюджет $800',
+    stylistCta: 'Подобрать',
+    stylistLoading: 'Подбираем…',
+    stylistBoardFor: 'Подборка для',
+    stylistTryAgain: 'Попробовать другой запрос',
   },
   DE: {
     masthead: 'Echte Räume.',
@@ -92,6 +124,14 @@ const ui: Record<SupportedLang, DesignUI> = {
     shopAt: 'Kaufen bei',
     allFilter: 'Alle',
     priceNote: 'Bilder und Preise werden live von den Händlerseiten abgerufen.',
+    stylistLabel: 'KI-Stylistin',
+    stylistTitle: 'Die Stylistin fragen',
+    stylistSub: 'Beschreiben Sie Ihren Raum, Stil und Budget. Die KI wählt eine kuratierte Auswahl aus unserem Katalog.',
+    stylistPlaceholder: 'z.B. gemütliches Schlafzimmer, Scandi-Stil, Budget 800 €',
+    stylistCta: 'Kuratieren',
+    stylistLoading: 'Wird zusammengestellt…',
+    stylistBoardFor: 'Board für',
+    stylistTryAgain: 'Neue Anfrage versuchen',
   },
   IT: {
     masthead: 'Stanze vere.',
@@ -109,6 +149,14 @@ const ui: Record<SupportedLang, DesignUI> = {
     shopAt: 'Acquista da',
     allFilter: 'Tutti',
     priceNote: 'Immagini e prezzi caricati in tempo reale dalle pagine dei rivenditori.',
+    stylistLabel: 'Stilista AI',
+    stylistTitle: 'Chiedi allo Stilista',
+    stylistSub: "Descrivi il tuo spazio, stile e budget. L'AI selezionerà una board dal nostro catalogo reale.",
+    stylistPlaceholder: 'es. camera da letto scandinava accogliente, toni caldi, budget $800',
+    stylistCta: 'Crea la mia board',
+    stylistLoading: 'Selezione in corso…',
+    stylistBoardFor: 'Board per',
+    stylistTryAgain: "Prova un'altra descrizione",
   },
   ES: {
     masthead: 'Habitaciones reales.',
@@ -126,6 +174,14 @@ const ui: Record<SupportedLang, DesignUI> = {
     shopAt: 'Comprar en',
     allFilter: 'Todo',
     priceNote: 'Imágenes y precios cargados en tiempo real desde las páginas de los minoristas.',
+    stylistLabel: 'Estilista AI',
+    stylistTitle: 'Pregunta al Estilista',
+    stylistSub: 'Describe tu espacio, estilo y presupuesto. La IA seleccionará una colección de nuestro catálogo real.',
+    stylistPlaceholder: 'p.ej. dormitorio escandinavo acogedor, tonos cálidos, presupuesto $800',
+    stylistCta: 'Seleccionar para mí',
+    stylistLoading: 'Seleccionando…',
+    stylistBoardFor: 'Selección para',
+    stylistTryAgain: 'Intentar otra descripción',
   },
   TR: {
     masthead: 'Gerçek odalar.',
@@ -143,6 +199,14 @@ const ui: Record<SupportedLang, DesignUI> = {
     shopAt: 'Satın al:',
     allFilter: 'Tümü',
     priceNote: 'Görseller ve fiyatlar perakendeci sayfalarından canlı olarak yüklenir.',
+    stylistLabel: 'AI Stilist',
+    stylistTitle: 'Stiliste Sor',
+    stylistSub: 'Alanınızı, stilinizi ve bütçenizi açıklayın. AI, gerçek kataloğumuzdan seçkiler yapacak.',
+    stylistPlaceholder: 'örn. sıcak tonlarda İskandinav yatak odası, bütçe $800',
+    stylistCta: 'Benim için seç',
+    stylistLoading: 'Seçiliyor…',
+    stylistBoardFor: 'Seçki için',
+    stylistTryAgain: 'Başka bir açıklama deneyin',
   },
 };
 
