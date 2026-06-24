@@ -5,10 +5,11 @@ export type ShopCategory =
   | 'Tables'
   | 'Storage'
   | 'Rugs'
-  | 'Mirrors';
+  | 'Mirrors'
+  | 'Art';
 
 export const SHOP_CATEGORIES: ShopCategory[] = [
-  'Sofas', 'Armchairs', 'Lighting', 'Tables', 'Storage', 'Rugs', 'Mirrors',
+  'Art', 'Sofas', 'Armchairs', 'Lighting', 'Tables', 'Storage', 'Rugs', 'Mirrors',
 ];
 
 export interface CatalogItem {
@@ -80,6 +81,24 @@ export const CATALOG: CatalogItem[] = [
   { id: 19, url: 'https://www.ikea.com/us/en/p/lindbyn-mirror-gold-20597961/', name: 'LINDBYN Mirror, gold', category: 'Mirrors', styles: ['classic', 'elevated', 'warm'], room: 'entry', retailer: 'IKEA' },
   { id: 20, url: 'https://www.ikea.com/us/en/p/nissedal-mirror-black-50503777/', name: 'NISSEDAL Mirror, black', category: 'Mirrors', styles: ['minimalist', 'modern'], room: 'bedroom', retailer: 'IKEA' },
   { id: 21, url: 'https://www.ikea.com/us/en/p/ikornnes-floor-mirror-ash-90524042/', name: 'IKORNNES Floor mirror, ash', category: 'Mirrors', styles: ['scandinavian', 'warm', 'minimalist'], room: 'bedroom', retailer: 'IKEA' },
+
+  // ── Armchairs — CB2 ──
+  { id: 29, url: 'https://www.cb2.com/club-lounge-chair/s341429', name: 'Club Lounge Chair', category: 'Armchairs', styles: ['modern', 'elevated', 'statement'], room: 'living', retailer: 'CB2' },
+  { id: 30, url: 'https://www.cb2.com/club-chair/f13915', name: 'Club Chair', category: 'Armchairs', styles: ['modern', 'minimalist', 'design-classic'], room: 'living', retailer: 'CB2' },
+
+  // ── Lighting — Ferm Living ──
+  { id: 31, url: 'https://fermliving.com/products/arum-table-lamp-cashmere', name: 'Arum Table Lamp, cashmere', category: 'Lighting', styles: ['organic', 'warm', 'elevated'], room: 'living', retailer: 'Ferm Living' },
+  { id: 32, url: 'https://fermliving.com/products/arum-table-lamp-black', name: 'Arum Table Lamp, black', category: 'Lighting', styles: ['graphic', 'modern', 'minimal'], room: 'bedroom', retailer: 'Ferm Living' },
+  { id: 33, url: 'https://fermliving.com/products/gry-table-lamp-blacktranslucent', name: 'Gry Table Lamp, black', category: 'Lighting', styles: ['portable', 'modern', 'outdoor'], room: 'living', retailer: 'Ferm Living' },
+
+  // ── Art — Amazon ──
+  { id: 34, url: 'https://www.amazon.com/wall26-Large-Framed-Canvas-Print/dp/B0FXF59ZG3', name: 'Minimalist Neutral Abstract, 60″×20″', category: 'Art', styles: ['minimalist', 'neutral', 'large-format'], room: 'living', retailer: 'Amazon' },
+  { id: 35, url: 'https://www.amazon.com/Beautiful-Abstract-Painting-Minimalist-Bathroom/dp/B0BCZRQZPJ', name: 'Abstract Canvas Set of 3, 16″×24″', category: 'Art', styles: ['abstract', 'neutral', 'set'], room: 'living', retailer: 'Amazon' },
+  { id: 36, url: 'https://www.amazon.com/Abstract-Wall-Art-Living-Room/dp/B0C6TDTN8V', name: 'Abstract Navy & Grey Set of 3', category: 'Art', styles: ['abstract', 'dark', 'moody'], room: 'living', retailer: 'Amazon' },
+  { id: 37, url: 'https://www.amazon.com/Abstract-Decorations-Bathroom-Paintings-Decoration/dp/B09GFFD94D', name: 'Boho Abstract Wall Art, 3 pieces', category: 'Art', styles: ['boho', 'warm', 'abstract'], room: 'living', retailer: 'Amazon' },
+  { id: 38, url: 'https://www.amazon.com/Neutral-Abstract-Paintings-Minimalist-Pictures/dp/B0F8W5RKWX', name: 'Neutral Abstract Set of 2, 16″×24″', category: 'Art', styles: ['neutral', 'minimalist', 'paired'], room: 'bedroom', retailer: 'Amazon' },
+  { id: 39, url: 'https://www.amazon.com/Abstract-Contemporary-Painting-Geometric-Midcentury/dp/B0DDC2MTNL', name: 'Geometric Mid-Century Set of 3', category: 'Art', styles: ['geometric', 'mid-century', 'graphic'], room: 'office', retailer: 'Amazon' },
+  { id: 40, url: 'https://www.amazon.com/Neutral-Minimalist-Abstract-Geometric-Painting/dp/B0DMW6G71K', name: 'Boho Geometric Canvas Set of 3', category: 'Art', styles: ['boho', 'geometric', 'warm'], room: 'bedroom', retailer: 'Amazon' },
 ];
 
 export const CATALOG_BY_ID = new Map(CATALOG.map((c) => [c.id, c]));
@@ -149,11 +168,21 @@ export const SETS: SetDesign[] = [
   {
     id: 7,
     title: 'Designer Mix',
-    subtitle: 'HAY, Muuto, West Elm — in one room',
-    story: 'A living room that refuses one brand allegiance. The HAY chair beside the Muuto pendant above the West Elm table. Every piece earns its place independently.',
+    subtitle: 'HAY, Muuto, CB2, West Elm — in one room',
+    story: 'A living room that refuses one brand allegiance. The HAY chair, the Muuto pendant, the CB2 lounge — each chosen on its own merits. The brands compete; the room wins.',
     photo: 'https://api.eprisjournal.com/design/img?url=https%3A%2F%2Fwww.ikea.com%2Fext%2Fingkadam%2Fm%2F12dd4bb7b782761c%2Foriginal%2FPH205297.jpg%3Ff%3Dxl',
     style: 'Curated mix',
     room: 'Living room',
-    catalogIds: [22, 23, 24, 25, 26, 27, 28],
+    catalogIds: [22, 29, 25, 27, 31, 34, 35],
+  },
+  {
+    id: 8,
+    title: 'Gallery Wall',
+    subtitle: 'Art that changes how a room feels',
+    story: 'The art arrives before the furniture. Once the wall speaks, the room follows. Neutral abstracts pull more light; dark moody pieces add weight. Choose by feeling, not by size chart.',
+    photo: 'https://api.eprisjournal.com/design/img?url=https%3A%2F%2Fwww.ikea.com%2Fext%2Fingkadam%2Fm%2F3c265ccb875da578%2Foriginal%2FPH205398.jpg%3Ff%3Dxl',
+    style: 'Editorial art',
+    room: 'Living room',
+    catalogIds: [34, 35, 36, 37, 38, 39, 40],
   },
 ];
