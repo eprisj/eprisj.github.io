@@ -1843,7 +1843,7 @@ export default function App() {
         ) : activeTab === 'issue' ? (
           <IssuePage archive={issueArchive} t={t} />
         ) : activeTab === 'design' ? (
-          <DesignPage />
+          <DesignPage lang={currentLang} />
         ) : activeTab === 'studio' ? (
           <StudioPage studio={studio} t={t} />
         ) : activeTab === 'radio' ? (
