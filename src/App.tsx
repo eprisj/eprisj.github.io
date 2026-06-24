@@ -5,6 +5,7 @@ import { IssuePage } from './pages/IssuePage';
 import { StudioPage } from './pages/StudioPage';
 import { RadioPage } from './pages/RadioPage';
 import { PodcastsPage } from './pages/PodcastsPage';
+import { DesignPage } from './design/DesignPage';
 import {
   Article,
   ContentBlock,
@@ -172,6 +173,7 @@ function NavBar({
     { id: 'about', label: t('nav.about') },
     { id: 'materie', label: t('nav.materie') },
     { id: 'issue', label: t('nav.issue') },
+    { id: 'design', label: 'Design' },
     { id: 'studio', label: t('nav.studio') },
     { id: 'radio', label: t('nav.radio') },
     { id: 'podcasts', label: t('nav.podcasts') },
@@ -228,7 +230,7 @@ function NavBar({
 
         {/* Desktop Navigation */}
         <LayoutGroup id="nav-tabs">
-          <div className="grid flex-1 grid-cols-10 divide-x divide-[#501a2c]">
+          <div className="grid flex-1 grid-cols-11 divide-x divide-[#501a2c]">
             {tabs.map((tab) => (
               <button
                 type="button"
@@ -1649,7 +1651,7 @@ function SearchResults({
   );
 }
 
-const VALID_TABS = ['gallery', 'articles', 'reviews', 'library', 'about', 'materie', 'issue', 'studio', 'radio', 'podcasts'];
+const VALID_TABS = ['gallery', 'articles', 'reviews', 'library', 'about', 'materie', 'issue', 'studio', 'radio', 'podcasts', 'design'];
 
 function buildSlugMap(): Map<string, number> {
   const allArticles = getContentForLanguage(DEFAULT_LANGUAGE).articles;
@@ -1840,6 +1842,8 @@ export default function App() {
           </div>
         ) : activeTab === 'issue' ? (
           <IssuePage archive={issueArchive} t={t} />
+        ) : activeTab === 'design' ? (
+          <DesignPage />
         ) : activeTab === 'studio' ? (
           <StudioPage studio={studio} t={t} />
         ) : activeTab === 'radio' ? (
@@ -1883,7 +1887,7 @@ export default function App() {
           </main>
         )}
 
-        {activeTab !== 'materie' && activeTab !== 'issue' && activeTab !== 'studio' && activeTab !== 'radio' && activeTab !== 'podcasts' && <footer className="border-t border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
+        {activeTab !== 'materie' && activeTab !== 'issue' && activeTab !== 'design' && activeTab !== 'studio' && activeTab !== 'radio' && activeTab !== 'podcasts' && <footer className="border-t border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
           <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
             <div>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-[#C9A690]">EPRIS JOURNAL</h2>
