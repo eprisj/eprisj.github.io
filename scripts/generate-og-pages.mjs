@@ -89,6 +89,9 @@ const ROUTES = {
   materie: 'Materie',
   studio: 'Studio',
   issue: 'Issue',
+  design: 'Design',
+  radio: 'Radio',
+  podcasts: 'Podcasts',
 };
 
 function routeHead(label) {
