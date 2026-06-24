@@ -75,7 +75,7 @@ function DarkProductCard({ item, data, index, onOpen }: {
       className="group"
     >
       <button type="button" onClick={() => data && onOpen(item, data)} disabled={loading} className="block w-full text-left">
-        <div className="relative aspect-square overflow-hidden bg-[#1a0a12]">
+        <div className={`relative overflow-hidden bg-[#1a0a12] ${item.category === 'Art' ? 'aspect-[3/4]' : 'aspect-square'}`}>
           {loading ? (
             <div className="absolute inset-0 flex items-center justify-center">
               <Loader2 size={14} className="animate-spin text-white/15" />
@@ -316,8 +316,9 @@ export function DesignPage() {
             <div className="hidden lg:block text-right mt-4">
               <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/20 leading-relaxed">
                 {SETS.length} curated looks<br />
-                {CATALOG.length} verified products<br />
-                All prices live
+                {CATALOG.length} real products<br />
+                IKEA · HAY · Muuto · CB2<br />
+                Ferm Living · West Elm · Amazon
               </p>
             </div>
           </div>
