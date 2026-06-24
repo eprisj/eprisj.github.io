@@ -6,7 +6,7 @@
 import { CATALOG, type CatalogItem } from './catalog';
 
 const API_BASE = 'https://api.eprisjournal.com';
-const LS_KEY = 'epris_design_products_v1';
+const LS_KEY = 'epris_design_products_v2';
 const TTL = 1000 * 60 * 60 * 12;
 
 export interface ResolvedProduct {
