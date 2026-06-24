@@ -25,6 +25,7 @@ export interface SetDesign {
   id: number;
   title: string;
   subtitle: string;
+  story: string;
   photo: string;
   style: string;
   room: string;
@@ -32,27 +33,40 @@ export interface SetDesign {
 }
 
 export const CATALOG: CatalogItem[] = [
-  // ── Sofas ──
+  // ── Sofas — IKEA ──
   { id: 1, url: 'https://www.ikea.com/us/en/p/kivik-sofa-tibbleby-beige-gray-s39440593/', name: 'KIVIK Sofa, beige/gray', category: 'Sofas', styles: ['warm', 'minimalist', 'scandinavian'], room: 'living', retailer: 'IKEA' },
-  { id: 2, url: 'https://www.ikea.com/us/en/p/vimle-sofa-3-seat-lejde-light-gray-s29484837/', name: 'VIMLE Sofa, Lejde light gray', category: 'Sofas', styles: ['minimalist', 'modern', 'scandinavian'], room: 'living', retailer: 'IKEA' },
+  { id: 2, url: 'https://www.ikea.com/us/en/p/vimle-sofa-3-seat-lejde-light-gray-s29484837/', name: 'VIMLE Sofa, light gray', category: 'Sofas', styles: ['minimalist', 'modern', 'scandinavian'], room: 'living', retailer: 'IKEA' },
   { id: 3, url: 'https://www.ikea.com/us/en/p/stockholm-2025-sofa-sundhamn-beige-00586096/', name: 'STOCKHOLM 2025 Sofa, beige', category: 'Sofas', styles: ['warm', 'classic', 'elevated'], room: 'living', retailer: 'IKEA' },
   { id: 4, url: 'https://www.ikea.com/us/en/p/finnala-sofa-with-chaise-gunnared-medium-gray-s39319101/', name: 'FINNALA Sofa with chaise, gray', category: 'Sofas', styles: ['modern', 'minimalist'], room: 'living', retailer: 'IKEA' },
   { id: 5, url: 'https://www.ikea.com/us/en/p/stockholm-sofa-seglora-natural-20245049/', name: 'STOCKHOLM Sofa, natural leather', category: 'Sofas', styles: ['mid-century', 'classic', 'leather', 'elevated'], room: 'living', retailer: 'IKEA' },
 
-  // ── Armchairs ──
+  // ── Armchairs — IKEA ──
   { id: 6, url: 'https://www.ikea.com/us/en/p/ekenaset-armchair-kilanda-light-beige-30533493/', name: 'EKENÄSET Armchair, light beige', category: 'Armchairs', styles: ['mid-century', 'scandinavian', 'warm'], room: 'living', retailer: 'IKEA' },
   { id: 7, url: 'https://www.ikea.com/us/en/p/strandmon-armchair-and-ottoman-nordvalla-dark-gray-s19487874/', name: 'STRANDMON Wing chair & ottoman', category: 'Armchairs', styles: ['classic', 'cozy'], room: 'living', retailer: 'IKEA' },
 
-  // ── Lighting ──
+  // ── Armchairs — HAY & Muuto ──
+  { id: 22, url: 'https://www.hay.com/hay/furniture/seating/chair/about-a-chair/aac-22', name: 'About A Chair AAC 22', category: 'Armchairs', styles: ['scandinavian', 'design-classic', 'minimal'], room: 'living', retailer: 'HAY' },
+  { id: 23, url: 'https://www.muuto.com/product/fiber-armchair-wood-base-p5063/p5063/', name: 'Fiber Armchair, wood base', category: 'Armchairs', styles: ['organic', 'scandinavian', 'modern'], room: 'living', retailer: 'Muuto' },
+
+  // ── Lighting — IKEA ──
   { id: 8, url: 'https://www.ikea.com/us/en/p/ranarp-floor-reading-lamp-with-led-bulb-off-white-20419657/', name: 'RANARP Floor lamp, off-white', category: 'Lighting', styles: ['classic', 'industrial', 'warm'], room: 'living', retailer: 'IKEA' },
   { id: 9, url: 'https://www.ikea.com/us/en/p/hektar-floor-lamp-dark-gray-70216544/', name: 'HEKTAR Floor lamp, dark gray', category: 'Lighting', styles: ['industrial', 'modern'], room: 'living', retailer: 'IKEA' },
   { id: 10, url: 'https://www.ikea.com/us/en/p/oekensand-floor-lamp-beech-white-90541536/', name: 'ÖKENSAND Floor lamp, beech/white', category: 'Lighting', styles: ['scandinavian', 'minimalist', 'warm'], room: 'living', retailer: 'IKEA' },
   { id: 11, url: 'https://www.ikea.com/us/en/p/fado-table-lamp-with-led-bulb-white-60416280/', name: 'FADO Table lamp, white', category: 'Lighting', styles: ['minimalist', 'soft', 'scandinavian'], room: 'bedroom', retailer: 'IKEA' },
 
-  // ── Tables ──
+  // ── Lighting — Muuto & HAY ──
+  { id: 24, url: 'https://www.muuto.com/product/under-the-bell-pendant-lamp--p2854/p2854/', name: 'Under the Bell Pendant Lamp', category: 'Lighting', styles: ['statement', 'modern', 'acoustic'], room: 'dining', retailer: 'Muuto' },
+  { id: 25, url: 'https://www.hay.com/hay/lighting/pendant-lamp/nelson-pendant', name: 'Nelson Pendant Lamp', category: 'Lighting', styles: ['organic', 'mid-century', 'warm'], room: 'living', retailer: 'HAY' },
+  { id: 26, url: 'https://www.hay.com/hay/lighting/pendant-lamp/ava-cone-pendant', name: 'Ava Cone Pendant', category: 'Lighting', styles: ['geometric', 'minimalist', 'modern'], room: 'dining', retailer: 'HAY' },
+
+  // ── Tables — IKEA ──
   { id: 12, url: 'https://www.ikea.com/us/en/p/oestavall-adjustable-coffee-table-white-00530066/', name: 'ÖSTAVALL Coffee table, white', category: 'Tables', styles: ['modern', 'minimalist'], room: 'living', retailer: 'IKEA' },
   { id: 13, url: 'https://www.ikea.com/us/en/p/idanaes-coffee-table-white-20487873/', name: 'IDANÄS Coffee table, white', category: 'Tables', styles: ['classic', 'warm'], room: 'living', retailer: 'IKEA' },
   { id: 14, url: 'https://www.ikea.com/us/en/p/lack-coffee-table-white-stained-oak-effect-50319029/', name: 'LACK Coffee table, oak effect', category: 'Tables', styles: ['minimalist', 'scandinavian', 'budget'], room: 'living', retailer: 'IKEA' },
+
+  // ── Tables — West Elm ──
+  { id: 27, url: 'https://www.westelm.com/products/mid-century-round-coffee-table-h11978/', name: 'Mid-Century Round Coffee Table', category: 'Tables', styles: ['mid-century', 'warm', 'wood'], room: 'living', retailer: 'West Elm' },
+  { id: 28, url: 'https://www.westelm.com/products/reeve-mid-century-rectangular-coffee-table-h1181/', name: 'Reeve Mid-Century Coffee Table', category: 'Tables', styles: ['mid-century', 'classic', 'elevated'], room: 'living', retailer: 'West Elm' },
 
   // ── Storage ──
   { id: 15, url: 'https://www.ikea.com/us/en/p/lommarp-bookcase-dark-blue-green-40415465/', name: 'LOMMARP Bookcase, dark blue-green', category: 'Storage', styles: ['classic', 'elevated', 'moody'], room: 'office', retailer: 'IKEA' },
@@ -70,16 +84,13 @@ export const CATALOG: CatalogItem[] = [
 
 export const CATALOG_BY_ID = new Map(CATALOG.map((c) => [c.id, c]));
 
-// ── Curated set-designs — real room compositions ──────────────────────────────
-// Photos: Unsplash (free for embedding). catalogIds = items visible/matching in
-// that room; used for "Shop This Look" product strip.
-// Photos are IKEA's own room staging shots, fetched via VPS image proxy.
-// Source pages: ikea.com/us/en/rooms/* — og:image resolved at build time.
+// Photos: IKEA room staging shots via VPS image proxy.
 export const SETS: SetDesign[] = [
   {
     id: 1,
     title: 'Living Room',
     subtitle: 'Soft seating, warm light, a rug that anchors it all',
+    story: 'A sofa wide enough for Sunday mornings. Lamps that know when to dim themselves. The rug is the room — everything else just attends.',
     photo: 'https://api.eprisjournal.com/design/img?url=https%3A%2F%2Fwww.ikea.com%2Fext%2Fingkadam%2Fm%2F12dd4bb7b782761c%2Foriginal%2FPH205297.jpg%3Ff%3Dxl',
     style: 'Warm minimalism',
     room: 'Living room',
@@ -89,6 +100,7 @@ export const SETS: SetDesign[] = [
     id: 2,
     title: 'Bedroom',
     subtitle: 'Calm palette, clean lines, restful light',
+    story: 'White on white — but nothing is quite the same shade. Rest as a considered act. The mirror doubles the light; the lamp earns its place on the nightstand.',
     photo: 'https://api.eprisjournal.com/design/img?url=https%3A%2F%2Fwww.ikea.com%2Fext%2Fingkadam%2Fm%2F1e794903b557ade3%2Foriginal%2FPH206321.jpg%3Ff%3Dxl',
     style: 'Minimalist',
     room: 'Bedroom',
@@ -98,6 +110,7 @@ export const SETS: SetDesign[] = [
     id: 3,
     title: 'Home Office',
     subtitle: 'Dark shelves, a wing chair, focused light',
+    story: 'A room that takes work seriously without taking itself too seriously. The bookcase is a statement; the wing chair, a retreat. Morning light does the rest.',
     photo: 'https://api.eprisjournal.com/design/img?url=https%3A%2F%2Fwww.ikea.com%2Fext%2Fingkadam%2Fm%2F3c265ccb875da578%2Foriginal%2FPH205398.jpg%3Ff%3Dxl',
     style: 'Classic & elevated',
     room: 'Home office',
@@ -107,18 +120,40 @@ export const SETS: SetDesign[] = [
     id: 4,
     title: 'Dining Room',
     subtitle: 'A table worth gathering around',
+    story: 'The best dining rooms are the ones nobody wants to leave. The table is the argument — every other choice follows from it. Set it well and the room sets itself.',
     photo: 'https://api.eprisjournal.com/design/img?url=https%3A%2F%2Fwww.ikea.com%2Fext%2Fingkadam%2Fm%2F3ee2fff2f0669cd3%2Foriginal%2FPH176762.jpg%3Ff%3Dxl',
     style: 'Scandinavian',
     room: 'Dining room',
-    catalogIds: [3, 12, 14, 18, 16],
+    catalogIds: [3, 26, 27, 18, 16],
   },
   {
     id: 5,
     title: 'Hallway',
     subtitle: 'First impression. Mirror, light, intention.',
+    story: 'The hallway is a room people forget to design. That is the mistake. A good mirror, one considered lamp, and the floor you actually want to walk on. The rest of the apartment follows.',
     photo: 'https://api.eprisjournal.com/design/img?url=https%3A%2F%2Fwww.ikea.com%2Fext%2Fingkadam%2Fm%2F20d098f35acc5791%2Foriginal%2FPH206222.jpg%3Ff%3Dxl',
     style: 'Minimalist',
     room: 'Hallway',
     catalogIds: [19, 21, 20, 10],
+  },
+  {
+    id: 6,
+    title: 'Reading Corner',
+    subtitle: 'One chair. One lamp. Everything you need.',
+    story: 'Not a room — a decision. The chair that makes you stay longer than you planned. A lamp positioned exactly right. Books within reach. The rest of the apartment disappears.',
+    photo: 'https://api.eprisjournal.com/design/img?url=https%3A%2F%2Fwww.ikea.com%2Fext%2Fingkadam%2Fm%2F3c265ccb875da578%2Foriginal%2FPH205398.jpg%3Ff%3Dxl',
+    style: 'Cozy classic',
+    room: 'Living room',
+    catalogIds: [7, 22, 23, 8, 25, 15],
+  },
+  {
+    id: 7,
+    title: 'Designer Mix',
+    subtitle: 'HAY, Muuto, West Elm — in one room',
+    story: 'A living room that refuses one brand allegiance. The HAY chair beside the Muuto pendant above the West Elm table. Every piece earns its place independently.',
+    photo: 'https://api.eprisjournal.com/design/img?url=https%3A%2F%2Fwww.ikea.com%2Fext%2Fingkadam%2Fm%2F12dd4bb7b782761c%2Foriginal%2FPH205297.jpg%3Ff%3Dxl',
+    style: 'Curated mix',
+    room: 'Living room',
+    catalogIds: [22, 23, 24, 25, 26, 27, 28],
   },
 ];
