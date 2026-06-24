@@ -225,7 +225,8 @@ function LookPanel({ set, lookIndex, activeId, onSelect, resolved, onOpen }: {
               style={{ fontFamily: "'Playfair Display', serif" }}
               className="text-[clamp(36px,5.5vw,72px)] leading-[0.93] text-white mb-5"
             >{set.title}</h2>
-            <p className="font-serif italic text-base md:text-lg text-white/40 mb-8 max-w-xs">{set.subtitle}</p>
+            <p className="font-serif italic text-base md:text-lg text-white/40 mb-5 max-w-xs">{set.subtitle}</p>
+            <p className="text-sm text-white/25 leading-relaxed mb-8 max-w-sm">{set.story}</p>
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); onSelect(set.id); }}
