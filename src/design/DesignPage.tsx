@@ -3,12 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, X, Loader2, ExternalLink, ArrowRight } from 'lucide-react';
 import { CATALOG, CATALOG_BY_ID, SHOP_CATEGORIES, SETS, type CatalogItem, type ShopCategory, type SetDesign } from './catalog';
 import { resolveMany, formatPrice, type ResolvedProduct } from './shopApi';
+import { getUI, getLook } from './designI18n';
 
 type Resolved = Record<number, ResolvedProduct | null>;
 
 // ── Product modal ─────────────────────────────────────────────────────────────
-function ProductModal({ item, data, onClose }: {
-  item: CatalogItem; data: ResolvedProduct; onClose: () => void;
+function ProductModal({ item, data, onClose, lang }: {
+  item: CatalogItem; data: ResolvedProduct; onClose: () => void; lang: string;
 }) {
   useEffect(() => {
     const h = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
@@ -51,7 +52,7 @@ function ProductModal({ item, data, onClose }: {
             href={data.url} target="_blank" rel="noopener noreferrer"
             className="mt-auto inline-flex items-center justify-center gap-2 bg-white text-[#0d0408] font-mono text-[10px] uppercase tracking-widest px-5 py-4 hover:bg-[#C9A690] transition-colors"
           >
-            Shop at {data.siteName || item.retailer} <ArrowUpRight size={12} />
+            {getUI(lang).shopAt} {data.siteName || item.retailer} <ArrowUpRight size={12} />
           </a>
         </div>
       </motion.div>
@@ -103,10 +104,11 @@ function DarkProductCard({ item, data, index, onOpen }: {
 }
 
 // ── Horizontal product strip in look panels ───────────────────────────────────
-function LookProductStrip({ set, resolved, onOpen }: {
+function LookProductStrip({ set, resolved, onOpen, lang }: {
   set: SetDesign; resolved: Resolved;
-  onOpen: (item: CatalogItem, data: ResolvedProduct) => void;
+  onOpen: (item: CatalogItem, data: ResolvedProduct) => void; lang: string;
 }) {
+  const ui = getUI(lang);
   const items = set.catalogIds.map((id) => CATALOG_BY_ID.get(id)).filter((c): c is CatalogItem => !!c);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -117,7 +119,7 @@ function LookProductStrip({ set, resolved, onOpen }: {
       className="border-t border-white/8"
     >
       <div className="flex items-center justify-between px-6 md:px-10 py-4">
-        <p className="font-mono text-[8px] uppercase tracking-[0.32em] text-white/35">Shop the pieces · {items.length} items</p>
+        <p className="font-mono text-[8px] uppercase tracking-[0.32em] text-white/35">{ui.shopPieces} · {items.length} {ui.items}</p>
         <div className="flex gap-1">
           <button onClick={() => scrollRef.current?.scrollBy({ left: -280, behavior: 'smooth' })}
             className="w-7 h-7 border border-white/12 text-white/30 hover:text-white hover:border-white/30 transition-colors flex items-center justify-center font-mono text-xs">←</button>
@@ -165,11 +167,13 @@ function LookProductStrip({ set, resolved, onOpen }: {
 }
 
 // ── Single look panel ─────────────────────────────────────────────────────────
-function LookPanel({ set, lookIndex, activeId, onSelect, resolved, onOpen }: {
+function LookPanel({ set, lookIndex, activeId, onSelect, resolved, onOpen, lang }: {
   set: SetDesign; lookIndex: number; activeId: number | null;
   onSelect: (id: number) => void; resolved: Resolved;
-  onOpen: (item: CatalogItem, data: ResolvedProduct) => void;
+  onOpen: (item: CatalogItem, data: ResolvedProduct) => void; lang: string;
 }) {
+  const ui = getUI(lang);
+  const look = getLook(set.id, lang);
   const num = String(lookIndex + 1).padStart(2, '0');
   const isEven = lookIndex % 2 === 0;
   const isActive = activeId === set.id;
@@ -199,7 +203,7 @@ function LookPanel({ set, lookIndex, activeId, onSelect, resolved, onOpen }: {
           {isActive && (
             <div className="absolute top-5 left-5 flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C9A690] animate-pulse" />
-              <span className="font-mono text-[8px] uppercase tracking-widest text-[#C9A690]">viewing</span>
+              <span className="font-mono text-[8px] uppercase tracking-widest text-[#C9A690]">{ui.viewing}</span>
             </div>
           )}
         </div>
@@ -224,9 +228,9 @@ function LookPanel({ set, lookIndex, activeId, onSelect, resolved, onOpen }: {
             <h2
               style={{ fontFamily: "'Playfair Display', serif" }}
               className="text-[clamp(36px,5.5vw,72px)] leading-[0.93] text-white mb-5"
-            >{set.title}</h2>
-            <p className="font-serif italic text-base md:text-lg text-white/40 mb-5 max-w-xs">{set.subtitle}</p>
-            <p className="text-sm text-white/25 leading-relaxed mb-8 max-w-sm">{set.story}</p>
+            >{look.title || set.title}</h2>
+            <p className="font-serif italic text-base md:text-lg text-white/40 mb-5 max-w-xs">{look.subtitle || set.subtitle}</p>
+            <p className="text-sm text-white/25 leading-relaxed mb-8 max-w-sm">{look.story || set.story}</p>
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); onSelect(set.id); }}
@@ -236,7 +240,7 @@ function LookPanel({ set, lookIndex, activeId, onSelect, resolved, onOpen }: {
                   : 'border-white/15 text-white/45 hover:border-[#C9A690] hover:text-[#C9A690]'
               }`}
             >
-              {isActive ? 'Close look' : 'Shop this look'} <ArrowRight size={11} />
+              {isActive ? ui.closeLook : ui.shopThisLook} <ArrowRight size={11} />
             </button>
           </div>
         </div>
@@ -246,7 +250,7 @@ function LookPanel({ set, lookIndex, activeId, onSelect, resolved, onOpen }: {
       <AnimatePresence>
         {isActive && (
           <div className="bg-[#100610]">
-            <LookProductStrip set={set} resolved={resolved} onOpen={onOpen} />
+            <LookProductStrip set={set} resolved={resolved} onOpen={onOpen} lang={lang} />
           </div>
         )}
       </AnimatePresence>
@@ -255,7 +259,8 @@ function LookPanel({ set, lookIndex, activeId, onSelect, resolved, onOpen }: {
 }
 
 // ── Main page ─────────────────────────────────────────────────────────────────
-export function DesignPage() {
+export function DesignPage({ lang = 'EN' }: { lang?: string }) {
+  const ui = getUI(lang);
   const [resolved, setResolved] = useState<Resolved>({});
   const [activeCat, setActiveCat] = useState<ShopCategory | '__all'>('__all');
   const [activeSetId, setActiveSetId] = useState<number | null>(null);
@@ -311,11 +316,11 @@ export function DesignPage() {
               <h1
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-[clamp(48px,10vw,140px)] leading-[0.88] text-white"
-              >Real rooms.<br />Real things.</h1>
+              >{ui.masthead}<br />{ui.masthead2}</h1>
             </div>
             <div className="hidden lg:block text-right mt-4">
               <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/20 leading-relaxed">
-                {SETS.length} curated looks<br />
+                {SETS.length} {ui.looksBelow.split(' ').slice(1).join(' ')}<br />
                 {CATALOG.length} real products<br />
                 IKEA · HAY · Muuto · CB2<br />
                 Ferm Living · West Elm · Amazon
@@ -325,7 +330,7 @@ export function DesignPage() {
           {/* Divider */}
           <div className="mt-8 flex items-center gap-4">
             <div className="h-px flex-1 bg-white/6" />
-            <span className="font-mono text-[7px] uppercase tracking-[0.4em] text-white/15">{SETS.length} looks below</span>
+            <span className="font-mono text-[7px] uppercase tracking-[0.4em] text-white/15">{SETS.length} {ui.looksBelow}</span>
           </div>
         </div>
       </div>
@@ -336,7 +341,7 @@ export function DesignPage() {
           <div key={set.id} ref={(el) => { if (el) stripRef.current.set(set.id, el); }}>
             <LookPanel
               set={set} lookIndex={i} activeId={activeSetId}
-              onSelect={handleSetClick} resolved={resolved} onOpen={openModal}
+              onSelect={handleSetClick} resolved={resolved} onOpen={openModal} lang={lang}
             />
             {i < SETS.length - 1 && <div className="h-px bg-white/5" />}
           </div>
@@ -356,12 +361,12 @@ export function DesignPage() {
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="h-px w-6 bg-[#C9A690]/40" />
-                  <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-[#C9A690]/60">Full catalogue</span>
+                  <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-[#C9A690]/60">{ui.catalogKicker}</span>
                 </div>
                 <h2
                   style={{ fontFamily: "'Playfair Display', serif" }}
                   className="text-[clamp(40px,8vw,100px)] leading-[0.9] text-white"
-                >The Edit</h2>
+                >{ui.catalogTitle}</h2>
               </div>
               <div className="flex flex-wrap gap-2">
                 {(['__all', ...SHOP_CATEGORIES] as const).map((cat) => (
@@ -371,7 +376,7 @@ export function DesignPage() {
                         ? 'border-[#C9A690] text-[#C9A690] bg-[#C9A690]/8'
                         : 'border-white/10 text-white/30 hover:border-white/30 hover:text-white/60'
                     }`}>
-                    {cat === '__all' ? 'All' : cat}
+                    {cat === '__all' ? ui.allFilter : cat}
                   </button>
                 ))}
               </div>
@@ -396,7 +401,7 @@ export function DesignPage() {
                       className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-[1.04] transition-all duration-700"
                     />
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20 flex items-center justify-center">
-                      <span className="font-mono text-[9px] uppercase tracking-widest text-white border border-white/30 px-4 py-2">Quick view</span>
+                      <span className="font-mono text-[9px] uppercase tracking-widest text-white border border-white/30 px-4 py-2">{ui.quickView}</span>
                     </div>
                   </>
                 ) : (
@@ -409,7 +414,7 @@ export function DesignPage() {
               {/* Info */}
               <div className="flex flex-col justify-between p-8 md:p-12 lg:p-14 border-l border-white/5">
                 <div>
-                  <p className="font-mono text-[8px] uppercase tracking-[0.35em] text-[#C9A690]/60 mb-4">Featured · {filtered[0].category}</p>
+                  <p className="font-mono text-[8px] uppercase tracking-[0.35em] text-[#C9A690]/60 mb-4">{ui.featuredLabel} · {filtered[0].category}</p>
                   <h3
                     style={{ fontFamily: "'Playfair Display', serif" }}
                     className="text-[clamp(26px,3.5vw,48px)] leading-tight text-white mb-3"
@@ -430,7 +435,7 @@ export function DesignPage() {
                   href={filtered[0].url} target="_blank" rel="noopener noreferrer"
                   className="self-start inline-flex items-center gap-2 bg-white text-[#0d0408] font-mono text-[10px] uppercase tracking-widest px-6 py-4 hover:bg-[#C9A690] transition-colors"
                 >
-                  Shop at {filtered[0].retailer} <ArrowUpRight size={12} />
+                  {ui.shopAt} {filtered[0].retailer} <ArrowUpRight size={12} />
                 </a>
               </div>
             </div>
@@ -450,13 +455,13 @@ export function DesignPage() {
         <div className="px-6 md:px-12 lg:px-16 pb-12 border-t border-white/5 pt-6">
           <p className="font-mono text-[7px] uppercase tracking-widest text-white/15 flex items-start gap-2 max-w-md">
             <ExternalLink size={9} className="mt-0.5 shrink-0" />
-            Images and prices fetched live from retailer pages. Links open the maker's site.
+            {ui.priceNote}
           </p>
         </div>
       </div>
 
       <AnimatePresence>
-        {modal && <ProductModal item={modal.item} data={modal.data} onClose={() => setModal(null)} />}
+        {modal && <ProductModal item={modal.item} data={modal.data} onClose={() => setModal(null)} lang={lang} />}
       </AnimatePresence>
     </div>
   );
