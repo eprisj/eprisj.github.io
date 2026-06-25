@@ -229,15 +229,15 @@ function LookPanel({ set, lookIndex, activeId, onSelect, resolved, onOpen, lang 
               style={{ fontFamily: "'Playfair Display', serif" }}
               className="text-[clamp(36px,5.5vw,72px)] leading-[0.93] text-white mb-5"
             >{look.title || set.title}</h2>
-            <p className="font-serif italic text-base md:text-lg text-white/40 mb-5 max-w-xs">{look.subtitle || set.subtitle}</p>
-            <p className="text-sm text-white/55 leading-relaxed mb-8 max-w-sm">{look.story || set.story}</p>
+            <p className="font-serif italic text-base md:text-lg text-white/70 mb-5 max-w-xs">{look.subtitle || set.subtitle}</p>
+            <p className="text-sm text-white/75 leading-relaxed mb-8 max-w-sm">{look.story || set.story}</p>
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); onSelect(set.id); }}
               className={`inline-flex items-center gap-3 border font-mono text-[9px] uppercase tracking-[0.28em] px-6 py-3.5 transition-all duration-300 ${
                 isActive
                   ? 'border-[#C9A690]/60 text-[#C9A690] hover:bg-[#C9A690]/10'
-                  : 'border-white/15 text-white/45 hover:border-[#C9A690] hover:text-[#C9A690]'
+                  : 'border-white/30 text-white/70 hover:border-[#C9A690] hover:text-[#C9A690]'
               }`}
             >
               {isActive ? ui.closeLook : ui.shopThisLook} <ArrowRight size={11} />
