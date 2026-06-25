@@ -3,6 +3,8 @@ export type SupportedLang = 'EN' | 'UA' | 'RU' | 'DE' | 'IT' | 'ES' | 'TR';
 export interface DesignUI {
   masthead: string;
   masthead2: string;
+  intro1?: string;
+  intro2?: string;
   looksBelow: string;
   shopThisLook: string;
   closeLook: string;
@@ -79,6 +81,8 @@ const ui: Record<SupportedLang, DesignUI> = {
   EN: {
     masthead: 'Real rooms.',
     masthead2: 'Real things.',
+    intro1: 'Every piece here is a real product — priced, linked, and shoppable the moment you see it. No mood-board fantasy, no items you can\'t actually buy. Images and prices are fetched live from IKEA, HAY, Muuto, West Elm, and other makers we trust.',
+    intro2: 'Use the AI Stylist to describe your space — room, style, budget — and it will compose a considered board from the catalogue, with an explanation of why each piece earns its place. Or browse the curated looks below and shop any piece directly.',
     looksBelow: 'looks below',
     shopThisLook: 'Shop this look',
     closeLook: 'Close look',
@@ -104,6 +108,8 @@ const ui: Record<SupportedLang, DesignUI> = {
   UA: {
     masthead: 'Справжні кімнати.',
     masthead2: 'Справжні речі.',
+    intro1: 'Кожен предмет тут — реальний товар із ціною та посиланням. Ніякого «мудборду для натхнення» — лише речі, які можна купити прямо зараз. Зображення й ціни завантажуються наживо з IKEA, HAY, Muuto, West Elm та інших брендів.',
+    intro2: 'Скористайтесь AI-стилістом: опишіть кімнату, стиль і бюджет — він підбере добірку з каталогу й поясить, чому кожна річ тут доречна. Або переглядайте готові образи нижче та купуйте окремі предмети.',
     looksBelow: 'образів нижче',
     shopThisLook: 'Купити цей образ',
     closeLook: 'Закрити',
@@ -129,6 +135,8 @@ const ui: Record<SupportedLang, DesignUI> = {
   RU: {
     masthead: 'Настоящие комнаты.',
     masthead2: 'Настоящие вещи.',
+    intro1: 'Каждый предмет здесь — реальный товар с ценой и ссылкой. Никаких «inspirational moodboard» — только то, что можно купить прямо сейчас. Изображения и цены подгружаются вживую с IKEA, HAY, Muuto, West Elm и других марок.',
+    intro2: 'Используйте AI-стилиста: опишите комнату, стиль и бюджет — он подберёт подборку из каталога и объяснит, почему каждый предмет здесь уместен. Или листайте готовые образы ниже и покупайте отдельные вещи.',
     looksBelow: 'образов ниже',
     shopThisLook: 'Купить этот образ',
     closeLook: 'Закрыть',
