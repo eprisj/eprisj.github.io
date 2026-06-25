@@ -200,6 +200,85 @@ export const CATALOG: CatalogItem[] = [
   { id: 108, url: 'https://www.westelm.com/products/mid-century-mini-desk-h3907/', name: 'Mid-Century Mini Desk', category: 'Tables', styles: ['mid-century', 'wood', 'elevated'], room: 'office', retailer: 'West Elm' },
   { id: 109, url: 'https://www.ikea.com/us/en/p/markus-office-chair-vissle-dark-gray-70261150/', name: 'MARKUS Office chair, dark gray', category: 'Armchairs', styles: ['modern', 'ergonomic', 'office'], room: 'office', retailer: 'IKEA' },
   { id: 110, url: 'https://www.ikea.com/us/en/p/flintan-office-chair-vissle-beige-20447971/', name: 'FLINTAN Office chair, beige', category: 'Armchairs', styles: ['scandinavian', 'warm', 'office'], room: 'office', retailer: 'IKEA' },
+
+  // ── Normann Copenhagen ──
+  { id: 111, url: 'https://www.normann-copenhagen.com/products/era-sofa', name: 'Era Sofa', category: 'Sofas', styles: ['design-classic', 'scandinavian', 'elevated', 'mid-century'], room: 'living', retailer: 'Normann Copenhagen' },
+  { id: 112, url: 'https://www.normann-copenhagen.com/products/hyg-lounge-chair', name: 'Hyg Lounge Chair', category: 'Armchairs', styles: ['scandinavian', 'cozy', 'design-classic', 'warm'], room: 'living', retailer: 'Normann Copenhagen' },
+  { id: 113, url: 'https://www.normann-copenhagen.com/products/forest-pendant', name: 'Forest Pendant Lamp', category: 'Lighting', styles: ['organic', 'scandinavian', 'elevated', 'statement'], room: 'dining', retailer: 'Normann Copenhagen' },
+  { id: 114, url: 'https://www.normann-copenhagen.com/products/tablo-coffee-table', name: 'Tablo Coffee Table', category: 'Tables', styles: ['graphic', 'design-classic', 'modern'], room: 'living', retailer: 'Normann Copenhagen' },
+  { id: 115, url: 'https://www.normann-copenhagen.com/products/withing-mirror', name: 'Withing Mirror', category: 'Mirrors', styles: ['design-classic', 'elevated', 'minimal'], room: 'entry', retailer: 'Normann Copenhagen' },
+
+  // ── Gubi ──
+  { id: 116, url: 'https://www.gubi.com/uk/products/lounge-chairs/beetle-lounge-chair/', name: 'Beetle Lounge Chair', category: 'Armchairs', styles: ['design-classic', 'elevated', 'warm', 'statement'], room: 'living', retailer: 'Gubi' },
+  { id: 117, url: 'https://www.gubi.com/uk/products/pendant-lamps/bestlite-bl4/', name: 'Bestlite BL4 Pendant', category: 'Lighting', styles: ['design-classic', 'industrial', 'elevated', 'statement'], room: 'dining', retailer: 'Gubi' },
+  { id: 118, url: 'https://www.gubi.com/uk/products/coffee-tables/ts-coffee-table/', name: 'TS Coffee Table', category: 'Tables', styles: ['mid-century', 'elevated', 'warm', 'marble'], room: 'living', retailer: 'Gubi' },
+  { id: 119, url: 'https://www.gubi.com/uk/products/sofas/epic-sofa/', name: 'Epic Sofa, 3-seater', category: 'Sofas', styles: ['elevated', 'modern', 'statement', 'design-classic'], room: 'living', retailer: 'Gubi' },
+
+  // ── &Tradition ──
+  { id: 120, url: 'https://www.andtradition.com/collections/sofas/fly-sofa-sc3/', name: 'Fly Sofa SC3', category: 'Sofas', styles: ['design-classic', 'elevated', 'modern', 'warm'], room: 'living', retailer: '&Tradition' },
+  { id: 121, url: 'https://www.andtradition.com/collections/lounge-chairs/fly-chair-sc1/', name: 'Fly Chair SC1', category: 'Armchairs', styles: ['design-classic', 'elevated', 'modern', 'warm'], room: 'living', retailer: '&Tradition' },
+  { id: 122, url: 'https://www.andtradition.com/collections/pendant-lamps/flowerpot-vp1/', name: 'Flowerpot VP1 Pendant', category: 'Lighting', styles: ['design-classic', 'statement', 'pop', 'elevated'], room: 'dining', retailer: '&Tradition' },
+  { id: 123, url: 'https://www.andtradition.com/collections/floor-lamps/set-sl6/', name: 'SET Floor Lamp', category: 'Lighting', styles: ['minimalist', 'elevated', 'graphic'], room: 'living', retailer: '&Tradition' },
+
+  // ── Audo Copenhagen (ex Menu) ──
+  { id: 124, url: 'https://www.audo.com/en/products/co-lounge-chair', name: 'Co Lounge Chair', category: 'Armchairs', styles: ['design-classic', 'elevated', 'warm', 'organic'], room: 'living', retailer: 'Audo Copenhagen' },
+  { id: 125, url: 'https://www.audo.com/en/products/androgyne-lounge-table', name: 'Androgyne Lounge Table', category: 'Tables', styles: ['design-classic', 'elevated', 'organic', 'statement'], room: 'living', retailer: 'Audo Copenhagen' },
+  { id: 126, url: 'https://www.audo.com/en/products/path-floor-lamp', name: 'Path Floor Lamp', category: 'Lighting', styles: ['minimalist', 'elevated', 'modern'], room: 'living', retailer: 'Audo Copenhagen' },
+  { id: 127, url: 'https://www.audo.com/en/products/jwda-pendant-lamp', name: 'JWDA Pendant Lamp', category: 'Lighting', styles: ['design-classic', 'warm', 'elevated', 'brass'], room: 'dining', retailer: 'Audo Copenhagen' },
+
+  // ── Crate & Barrel ──
+  { id: 128, url: 'https://www.crateandbarrel.com/lounge-ii-petite-leather-sofa/s537756', name: 'Lounge II Leather Sofa', category: 'Sofas', styles: ['classic', 'leather', 'elevated', 'warm'], room: 'living', retailer: 'Crate & Barrel' },
+  { id: 129, url: 'https://www.crateandbarrel.com/cavett-leather-chair/s546453', name: 'Cavett Leather Chair', category: 'Armchairs', styles: ['classic', 'leather', 'elevated', 'warm'], room: 'living', retailer: 'Crate & Barrel' },
+  { id: 130, url: 'https://www.crateandbarrel.com/yukon-natural-grey-round-dining-table/s486555', name: 'Yukon Dining Table, natural grey', category: 'Dining', styles: ['organic', 'modern', 'wood', 'elevated'], room: 'dining', retailer: 'Crate & Barrel' },
+  { id: 131, url: 'https://www.crateandbarrel.com/arc-floor-lamp/s680408', name: 'Arc Floor Lamp', category: 'Lighting', styles: ['modern', 'elevated', 'statement', 'minimalist'], room: 'living', retailer: 'Crate & Barrel' },
+  { id: 132, url: 'https://www.crateandbarrel.com/colby-queen-platform-bed/s682010', name: 'Colby Platform Bed', category: 'Beds', styles: ['modern', 'minimalist', 'elevated', 'wood'], room: 'bedroom', retailer: 'Crate & Barrel' },
+
+  // ── Anthropologie ──
+  { id: 133, url: 'https://www.anthropologie.com/shop/alchemy-velvet-sofa', name: 'Alchemy Velvet Sofa', category: 'Sofas', styles: ['elevated', 'statement', 'velvet', 'classic'], room: 'living', retailer: 'Anthropologie' },
+  { id: 134, url: 'https://www.anthropologie.com/shop/slung-leather-chair', name: 'Slung Leather Chair', category: 'Armchairs', styles: ['elevated', 'leather', 'mid-century', 'warm'], room: 'living', retailer: 'Anthropologie' },
+  { id: 135, url: 'https://www.anthropologie.com/shop/caden-bed', name: 'Caden Upholstered Bed', category: 'Beds', styles: ['elevated', 'upholstered', 'classic', 'warm'], room: 'bedroom', retailer: 'Anthropologie' },
+  { id: 136, url: 'https://www.anthropologie.com/shop/opalhouse-tufted-jute-rug', name: 'Tufted Jute Rug', category: 'Rugs', styles: ['boho', 'natural', 'warm', 'textured'], room: 'living', retailer: 'Anthropologie' },
+  { id: 137, url: 'https://www.anthropologie.com/shop/beatrice-round-mirror', name: 'Beatrice Round Mirror', category: 'Mirrors', styles: ['boho', 'statement', 'organic', 'warm'], room: 'living', retailer: 'Anthropologie' },
+
+  // ── Article ──
+  { id: 138, url: 'https://www.article.com/product/17048/gaba-natural-sofa', name: 'Gaba Natural Sofa', category: 'Sofas', styles: ['organic', 'warm', 'modern', 'natural'], room: 'living', retailer: 'Article' },
+  { id: 139, url: 'https://www.article.com/product/14765/kyoto-dark-walnut-dining-table', name: 'Kyoto Walnut Dining Table', category: 'Dining', styles: ['mid-century', 'wood', 'warm', 'elevated'], room: 'dining', retailer: 'Article' },
+  { id: 140, url: 'https://www.article.com/product/14308/sven-charme-tan-sofa', name: 'Sven Charme Tan Sofa', category: 'Sofas', styles: ['mid-century', 'leather', 'warm', 'elevated'], room: 'living', retailer: 'Article' },
+  { id: 141, url: 'https://www.article.com/product/15621/ceni-walnut-coffee-table', name: 'Ceni Walnut Coffee Table', category: 'Tables', styles: ['mid-century', 'wood', 'warm', 'elevated'], room: 'living', retailer: 'Article' },
+  { id: 142, url: 'https://www.article.com/product/16902/burrard-light-grey-bed', name: 'Burrard Upholstered Bed, light grey', category: 'Beds', styles: ['modern', 'minimalist', 'upholstered', 'elevated'], room: 'bedroom', retailer: 'Article' },
+
+  // ── Pottery Barn ──
+  { id: 143, url: 'https://www.potterybarn.com/products/comfort-roll-arm-slipcovered-sofa/', name: 'Comfort Roll Arm Sofa', category: 'Sofas', styles: ['classic', 'cozy', 'warm', 'slipcovered'], room: 'living', retailer: 'Pottery Barn' },
+  { id: 144, url: 'https://www.potterybarn.com/products/lorraine-upholstered-bed/', name: 'Lorraine Upholstered Bed', category: 'Beds', styles: ['classic', 'upholstered', 'elevated', 'warm'], room: 'bedroom', retailer: 'Pottery Barn' },
+  { id: 145, url: 'https://www.potterybarn.com/products/wool-jute-rug/', name: 'Wool Jute Rug', category: 'Rugs', styles: ['organic', 'natural', 'warm', 'classic'], room: 'living', retailer: 'Pottery Barn' },
+  { id: 146, url: 'https://www.potterybarn.com/products/hayes-dining-table/', name: 'Hayes Dining Table', category: 'Dining', styles: ['classic', 'wood', 'elevated', 'warm'], room: 'dining', retailer: 'Pottery Barn' },
+
+  // ── Vitra ──
+  { id: 147, url: 'https://www.vitra.com/en-us/product/eames-lounge-chair-and-ottoman', name: 'Eames Lounge Chair & Ottoman', category: 'Armchairs', styles: ['design-icon', 'mid-century', 'leather', 'elevated', 'statement'], room: 'living', retailer: 'Vitra' },
+  { id: 148, url: 'https://www.vitra.com/en-us/product/eames-plastic-chair-daw', name: 'Eames Plastic Chair DAW', category: 'Dining', styles: ['design-icon', 'mid-century', 'modern', 'elevated'], room: 'dining', retailer: 'Vitra' },
+  { id: 149, url: 'https://www.vitra.com/en-us/product/side-table-dte', name: 'Eames Side Table DTE', category: 'Tables', styles: ['design-icon', 'mid-century', 'elevated', 'warm'], room: 'living', retailer: 'Vitra' },
+
+  // ── Design Within Reach ──
+  { id: 150, url: 'https://www.dwr.com/seating-sofas/jasper-sofa/2615.html', name: 'Jasper Sofa', category: 'Sofas', styles: ['modern', 'elevated', 'minimalist', 'design-classic'], room: 'living', retailer: 'DWR' },
+  { id: 151, url: 'https://www.dwr.com/lighting-floor-lamps/nelson-bubble-lamp-arched/2631.html', name: 'Nelson Bubble Arched Floor Lamp', category: 'Lighting', styles: ['design-icon', 'mid-century', 'warm', 'organic', 'elevated'], room: 'living', retailer: 'DWR' },
+  { id: 152, url: 'https://www.dwr.com/dining/wireframe-dining-table/3629.html', name: 'Wireframe Dining Table', category: 'Dining', styles: ['modern', 'graphic', 'elevated', 'minimalist'], room: 'dining', retailer: 'DWR' },
+
+  // ── Ferm Living — more ──
+  { id: 153, url: 'https://fermliving.com/products/catena-sofa-eggshell', name: 'Catena Sofa, eggshell', category: 'Sofas', styles: ['scandinavian', 'organic', 'elevated', 'warm'], room: 'living', retailer: 'Ferm Living' },
+  { id: 154, url: 'https://fermliving.com/products/level-coffee-table-dark-grey', name: 'Level Coffee Table, dark grey', category: 'Tables', styles: ['graphic', 'minimalist', 'elevated', 'dark'], room: 'living', retailer: 'Ferm Living' },
+  { id: 155, url: 'https://fermliving.com/products/plant-box-large-black', name: 'Plant Box, black', category: 'Storage', styles: ['scandinavian', 'graphic', 'modern'], room: 'living', retailer: 'Ferm Living' },
+  { id: 156, url: 'https://fermliving.com/products/turn-dining-table-dark-stained-oak', name: 'Turn Dining Table, dark stained oak', category: 'Dining', styles: ['organic', 'warm', 'elevated', 'scandinavian'], room: 'dining', retailer: 'Ferm Living' },
+  { id: 157, url: 'https://fermliving.com/products/mineral-bed-dark-blue', name: 'Mineral Bed, dark blue', category: 'Beds', styles: ['graphic', 'moody', 'elevated', 'statement'], room: 'bedroom', retailer: 'Ferm Living' },
+
+  // ── HAY — more ──
+  { id: 158, url: 'https://www.hay.com/hay/furniture/sofas/mags-soft-sofa', name: 'MAGS Soft Sofa', category: 'Sofas', styles: ['design-classic', 'modern', 'elevated', 'modular'], room: 'living', retailer: 'HAY' },
+  { id: 159, url: 'https://www.hay.com/hay/furniture/tables/dining-table/t12-table', name: 'T12 Dining Table', category: 'Dining', styles: ['scandinavian', 'minimalist', 'elevated', 'design-classic'], room: 'dining', retailer: 'HAY' },
+  { id: 160, url: 'https://www.hay.com/hay/furniture/storage/loop-stand', name: 'Loop Stand Room Divider', category: 'Storage', styles: ['graphic', 'design-classic', 'scandinavian', 'statement'], room: 'office', retailer: 'HAY' },
+
+  // ── Muuto — more ──
+  { id: 161, url: 'https://www.muuto.com/product/outline-sofa-2-seater/p3041/', name: 'Outline Sofa, 2-seater', category: 'Sofas', styles: ['scandinavian', 'modern', 'elevated', 'design-classic'], room: 'living', retailer: 'Muuto' },
+  { id: 162, url: 'https://www.muuto.com/product/compose-side-table/p3066/', name: 'Compose Side Table', category: 'Tables', styles: ['organic', 'scandinavian', 'warm', 'elevated'], room: 'living', retailer: 'Muuto' },
+  { id: 163, url: 'https://www.muuto.com/product/stacked-storage-system/p3079/', name: 'Stacked Storage System', category: 'Storage', styles: ['scandinavian', 'graphic', 'design-classic', 'modular'], room: 'office', retailer: 'Muuto' },
 ];
 
 export const CATALOG_BY_ID = new Map(CATALOG.map((c) => [c.id, c]));
