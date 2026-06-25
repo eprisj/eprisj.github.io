@@ -350,16 +350,16 @@ function StylistPanel({ resolved, onOpen, lang }: {
         <p className="text-sm text-white/30 mb-9 max-w-md leading-relaxed">{ui.stylistSub}</p>
 
         {/* ── Structured brief builder ── */}
-        <div className="max-w-2xl space-y-6">
+        <div className="max-w-2xl space-y-7">
           {/* Room */}
           <div>
-            <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/35 mb-2.5">{ui.stylistRoom}</p>
-            <div className="flex flex-wrap gap-2">
+            <p className="font-mono text-[11px] font-bold uppercase tracking-[0.25em] text-white mb-3">{ui.stylistRoom}</p>
+            <div className="flex flex-wrap gap-2.5">
               {STYLIST_ROOMS.map((r) => {
                 const on = room === r.key;
                 return (
                   <button key={r.key} onClick={() => setRoom(on ? null : r.key)}
-                    className={`font-mono text-[9px] uppercase tracking-wider px-3.5 py-2 border transition-all duration-200 ${on ? 'bg-[#C9A690] text-[#0d0408] border-[#C9A690]' : 'text-white/40 border-white/10 hover:border-[#C9A690]/35 hover:text-[#C9A690]/60'}`}>
+                    className={`font-mono text-[11px] font-semibold uppercase tracking-wider px-4 py-2.5 border transition-all duration-200 ${on ? 'bg-[#C9A690] text-[#0d0408] border-[#C9A690]' : 'text-white border-white/25 hover:border-[#C9A690] hover:text-[#C9A690]'}`}>
                     {getRoomLabel(r.key, lang)}
                   </button>
                 );
@@ -369,13 +369,13 @@ function StylistPanel({ resolved, onOpen, lang }: {
 
           {/* Style */}
           <div>
-            <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/35 mb-2.5">{ui.stylistStyle} <span className="text-white/45">· max 3</span></p>
-            <div className="flex flex-wrap gap-2">
+            <p className="font-mono text-[11px] font-bold uppercase tracking-[0.25em] text-white mb-3">{ui.stylistStyle} <span className="font-normal text-white/55">· max 3</span></p>
+            <div className="flex flex-wrap gap-2.5">
               {STYLIST_STYLES.map((s) => {
                 const on = styles.includes(s);
                 return (
                   <button key={s} onClick={() => toggleStyle(s)}
-                    className={`font-mono text-[9px] uppercase tracking-wider px-3.5 py-2 border transition-all duration-200 ${on ? 'bg-white text-[#0d0408] border-white' : 'text-white/40 border-white/10 hover:border-white/30 hover:text-white/70'}`}>
+                    className={`font-mono text-[11px] font-semibold uppercase tracking-wider px-4 py-2.5 border transition-all duration-200 ${on ? 'bg-white text-[#0d0408] border-white' : 'text-white border-white/25 hover:border-white hover:text-white'}`}>
                     {s}
                   </button>
                 );
@@ -385,14 +385,14 @@ function StylistPanel({ resolved, onOpen, lang }: {
 
           {/* Budget */}
           <div>
-            <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/35 mb-2.5">{ui.stylistBudget}</p>
-            <div className="flex flex-wrap gap-2">
+            <p className="font-mono text-[11px] font-bold uppercase tracking-[0.25em] text-white mb-3">{ui.stylistBudget}</p>
+            <div className="flex flex-wrap gap-2.5">
               {STYLIST_BUDGETS.map((b) => {
                 const on = budget === b;
                 const label = b === 0 ? ui.stylistAnyBudget : `$${b.toLocaleString()}`;
                 return (
                   <button key={b} onClick={() => setBudget(on ? null : b)}
-                    className={`font-mono text-[9px] uppercase tracking-wider px-3.5 py-2 border transition-all duration-200 ${on ? 'bg-[#C9A690] text-[#0d0408] border-[#C9A690]' : 'text-white/40 border-white/10 hover:border-[#C9A690]/35 hover:text-[#C9A690]/60'}`}>
+                    className={`font-mono text-[11px] font-semibold uppercase tracking-wider px-4 py-2.5 border transition-all duration-200 ${on ? 'bg-[#C9A690] text-[#0d0408] border-[#C9A690]' : 'text-white border-white/25 hover:border-[#C9A690] hover:text-[#C9A690]'}`}>
                     {b === 0 ? label : `≤ ${label}`}
                   </button>
                 );
@@ -401,13 +401,13 @@ function StylistPanel({ resolved, onOpen, lang }: {
           </div>
 
           {/* Freeform refine */}
-          <div className="border border-white/10 focus-within:border-[#C9A690]/40 transition-colors duration-300">
+          <div className="border border-white/25 focus-within:border-[#C9A690]/70 transition-colors duration-300">
             <textarea
               value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder={ui.stylistRefine}
               rows={2}
-              className="w-full bg-transparent text-white text-sm px-5 py-4 resize-none outline-none placeholder:text-white/40 font-sans leading-relaxed"
+              className="w-full bg-transparent text-white text-base px-5 py-4 resize-none outline-none placeholder:text-white/45 font-sans leading-relaxed"
               onKeyDown={(e) => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) { e.preventDefault(); handleSubmit(); } }}
             />
           </div>
@@ -415,7 +415,7 @@ function StylistPanel({ resolved, onOpen, lang }: {
           <button
             onClick={handleSubmit}
             disabled={!canSubmit || loading}
-            className="inline-flex items-center gap-2.5 bg-[#C9A690] text-[#0d0408] font-mono text-[9px] uppercase tracking-widest px-7 py-3.5 hover:bg-white transition-colors duration-200 disabled:opacity-25 disabled:cursor-not-allowed"
+            className="inline-flex items-center gap-2.5 bg-[#C9A690] text-[#0d0408] font-mono text-[11px] font-bold uppercase tracking-widest px-8 py-4 hover:bg-white transition-colors duration-200 disabled:opacity-25 disabled:cursor-not-allowed"
           >
             {loading
               ? <><Loader2 size={11} className="animate-spin" /> {ui.stylistLoading}</>
