@@ -224,13 +224,13 @@ function LookPanel({ set, lookIndex, activeId, onSelect, resolved, onOpen, lang 
               <div className="h-px flex-1 max-w-12 bg-[#C9A690]/30" />
               <span className="font-mono text-[8px] uppercase tracking-[0.35em] text-[#C9A690]/60">Look {num}</span>
             </div>
-            <p className="font-mono text-[8px] uppercase tracking-[0.28em] text-white/25 mb-3">{set.style} · {set.room}</p>
+            <p className="font-mono text-[8px] uppercase tracking-[0.28em] text-white/55 mb-3">{set.style} · {set.room}</p>
             <h2
               style={{ fontFamily: "'Playfair Display', serif" }}
               className="text-[clamp(36px,5.5vw,72px)] leading-[0.93] text-white mb-5"
             >{look.title || set.title}</h2>
             <p className="font-serif italic text-base md:text-lg text-white/40 mb-5 max-w-xs">{look.subtitle || set.subtitle}</p>
-            <p className="text-sm text-white/25 leading-relaxed mb-8 max-w-sm">{look.story || set.story}</p>
+            <p className="text-sm text-white/55 leading-relaxed mb-8 max-w-sm">{look.story || set.story}</p>
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); onSelect(set.id); }}
@@ -369,7 +369,7 @@ function StylistPanel({ resolved, onOpen, lang }: {
 
           {/* Style */}
           <div>
-            <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/35 mb-2.5">{ui.stylistStyle} <span className="text-white/20">· max 3</span></p>
+            <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/35 mb-2.5">{ui.stylistStyle} <span className="text-white/45">· max 3</span></p>
             <div className="flex flex-wrap gap-2">
               {STYLIST_STYLES.map((s) => {
                 const on = styles.includes(s);
@@ -407,7 +407,7 @@ function StylistPanel({ resolved, onOpen, lang }: {
               onChange={(e) => setText(e.target.value)}
               placeholder={ui.stylistRefine}
               rows={2}
-              className="w-full bg-transparent text-white text-sm px-5 py-4 resize-none outline-none placeholder:text-white/18 font-sans leading-relaxed"
+              className="w-full bg-transparent text-white text-sm px-5 py-4 resize-none outline-none placeholder:text-white/40 font-sans leading-relaxed"
               onKeyDown={(e) => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) { e.preventDefault(); handleSubmit(); } }}
             />
           </div>
@@ -616,7 +616,7 @@ export function DesignPage({ lang = 'EN' }: { lang?: string }) {
               >{ui.masthead}<br />{ui.masthead2}</h1>
             </div>
             <div className="hidden lg:block text-right mt-4">
-              <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/20 leading-relaxed">
+              <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/55 leading-relaxed">
                 {SETS.length} {ui.looksBelow.split(' ').slice(1).join(' ')}<br />
                 {CATALOG.length} real products<br />
                 IKEA · HAY · Muuto · CB2<br />
@@ -624,10 +624,16 @@ export function DesignPage({ lang = 'EN' }: { lang?: string }) {
               </p>
             </div>
           </div>
+          {/* Intro — 2 paragraphs explaining the section */}
+          <div className="mt-10 grid md:grid-cols-2 gap-6 md:gap-12 max-w-4xl">
+            <p className="text-[15px] text-white/70 leading-relaxed">{ui.intro1}</p>
+            <p className="text-[15px] text-white/70 leading-relaxed">{ui.intro2}</p>
+          </div>
+
           {/* Divider */}
-          <div className="mt-8 flex items-center gap-4">
+          <div className="mt-10 flex items-center gap-4">
             <div className="h-px flex-1 bg-white/6" />
-            <span className="font-mono text-[7px] uppercase tracking-[0.4em] text-white/15">{SETS.length} {ui.looksBelow}</span>
+            <span className="font-mono text-[7px] uppercase tracking-[0.4em] text-white/45">{SETS.length} {ui.looksBelow}</span>
           </div>
         </div>
       </div>
@@ -753,7 +759,7 @@ export function DesignPage({ lang = 'EN' }: { lang?: string }) {
 
         {/* Footer note */}
         <div className="px-6 md:px-12 lg:px-16 pb-12 border-t border-white/5 pt-6">
-          <p className="font-mono text-[7px] uppercase tracking-widest text-white/15 flex items-start gap-2 max-w-md">
+          <p className="font-mono text-[7px] uppercase tracking-widest text-white/45 flex items-start gap-2 max-w-md">
             <ExternalLink size={9} className="mt-0.5 shrink-0" />
             {ui.priceNote}
           </p>
