@@ -279,6 +279,129 @@ export const CATALOG: CatalogItem[] = [
   { id: 161, url: 'https://www.muuto.com/product/outline-sofa-2-seater/p3041/', name: 'Outline Sofa, 2-seater', category: 'Sofas', styles: ['scandinavian', 'modern', 'elevated', 'design-classic'], room: 'living', retailer: 'Muuto' },
   { id: 162, url: 'https://www.muuto.com/product/compose-side-table/p3066/', name: 'Compose Side Table', category: 'Tables', styles: ['organic', 'scandinavian', 'warm', 'elevated'], room: 'living', retailer: 'Muuto' },
   { id: 163, url: 'https://www.muuto.com/product/stacked-storage-system/p3079/', name: 'Stacked Storage System', category: 'Storage', styles: ['scandinavian', 'graphic', 'design-classic', 'modular'], room: 'office', retailer: 'Muuto' },
+
+  // ── Fritz Hansen ──
+  { id: 164, url: 'https://www.fritzhansen.com/en/egg-chair', name: 'Egg Chair', category: 'Armchairs', styles: ['design-icon', 'mid-century', 'statement', 'elevated', 'cozy'], room: 'living', retailer: 'Fritz Hansen' },
+  { id: 165, url: 'https://www.fritzhansen.com/en/swan-chair', name: 'Swan Chair', category: 'Armchairs', styles: ['design-icon', 'mid-century', 'statement', 'elevated'], room: 'living', retailer: 'Fritz Hansen' },
+  { id: 166, url: 'https://www.fritzhansen.com/en/series-7-chair', name: 'Series 7 Chair', category: 'Dining', styles: ['design-icon', 'mid-century', 'classic', 'elevated'], room: 'dining', retailer: 'Fritz Hansen' },
+  { id: 167, url: 'https://www.fritzhansen.com/en/superellipse-table', name: 'Superellipse Dining Table', category: 'Dining', styles: ['design-icon', 'mid-century', 'elevated', 'statement'], room: 'dining', retailer: 'Fritz Hansen' },
+
+  // ── Tom Dixon ──
+  { id: 168, url: 'https://www.tomdixon.net/products/beat-pendant-light-black', name: 'Beat Pendant, black', category: 'Lighting', styles: ['statement', 'industrial', 'elevated', 'graphic'], room: 'dining', retailer: 'Tom Dixon' },
+  { id: 169, url: 'https://www.tomdixon.net/products/copper-shade-pendant', name: 'Copper Shade Pendant', category: 'Lighting', styles: ['statement', 'warm', 'elevated', 'mid-century'], room: 'dining', retailer: 'Tom Dixon' },
+  { id: 170, url: 'https://www.tomdixon.net/products/plane-floor-light', name: 'Plane Floor Light', category: 'Lighting', styles: ['minimalist', 'elevated', 'graphic', 'modern'], room: 'living', retailer: 'Tom Dixon' },
+  { id: 171, url: 'https://www.tomdixon.net/products/melt-table-light-gold', name: 'Melt Table Light, gold', category: 'Lighting', styles: ['statement', 'elevated', 'organic', 'gold'], room: 'living', retailer: 'Tom Dixon' },
+
+  // ── BoConcept ──
+  { id: 172, url: 'https://www.boconcept.com/en-gb/sofa/modular-sofa/carmo-sofa/', name: 'Carmo Modular Sofa', category: 'Sofas', styles: ['modern', 'elevated', 'modular', 'design-classic'], room: 'living', retailer: 'BoConcept' },
+  { id: 173, url: 'https://www.boconcept.com/en-gb/chair/reading-chair/hamilton-chair/', name: 'Hamilton Wingback Chair', category: 'Armchairs', styles: ['classic', 'elevated', 'cozy', 'statement'], room: 'living', retailer: 'BoConcept' },
+  { id: 174, url: 'https://www.boconcept.com/en-gb/tables/coffee-table/glasgow-coffee-table/', name: 'Glasgow Coffee Table', category: 'Tables', styles: ['modern', 'elevated', 'marble', 'statement'], room: 'living', retailer: 'BoConcept' },
+  { id: 175, url: 'https://www.boconcept.com/en-gb/beds/double-bed/istanbul-bed/', name: 'Istanbul Upholstered Bed', category: 'Beds', styles: ['modern', 'elevated', 'upholstered', 'statement'], room: 'bedroom', retailer: 'BoConcept' },
+  { id: 176, url: 'https://www.boconcept.com/en-gb/storage/bookcase/stockholm-bookcase/', name: 'Stockholm Bookcase', category: 'Storage', styles: ['modern', 'elevated', 'graphic', 'design-classic'], room: 'living', retailer: 'BoConcept' },
+
+  // ── Restoration Hardware (RH) ──
+  { id: 177, url: 'https://rh.com/catalog/product/products.jsp?productId=prod14590058', name: 'Cloud Modular Sofa', category: 'Sofas', styles: ['elevated', 'cozy', 'statement', 'cloud-soft'], room: 'living', retailer: 'RH' },
+  { id: 178, url: 'https://rh.com/catalog/product/products.jsp?productId=prod16720023', name: 'Belgian Track Arm Sofa', category: 'Sofas', styles: ['classic', 'linen', 'elevated', 'warm'], room: 'living', retailer: 'RH' },
+  { id: 179, url: 'https://rh.com/catalog/product/products.jsp?productId=prod6670100', name: 'Arched Floor Lamp', category: 'Lighting', styles: ['elevated', 'classic', 'statement', 'warm'], room: 'living', retailer: 'RH' },
+  { id: 180, url: 'https://rh.com/catalog/product/products.jsp?productId=prod16840020', name: 'Asher Upholstered Bed', category: 'Beds', styles: ['elevated', 'upholstered', 'classic', 'linen'], room: 'bedroom', retailer: 'RH' },
+
+  // ── Knoll ──
+  { id: 181, url: 'https://www.knoll.com/product/barcelona-chair-and-ottoman', name: 'Barcelona Chair & Ottoman', category: 'Armchairs', styles: ['design-icon', 'modernist', 'leather', 'statement', 'elevated'], room: 'living', retailer: 'Knoll' },
+  { id: 182, url: 'https://www.knoll.com/product/platner-armchair', name: 'Platner Armchair', category: 'Armchairs', styles: ['design-icon', 'mid-century', 'statement', 'elevated'], room: 'living', retailer: 'Knoll' },
+  { id: 183, url: 'https://www.knoll.com/product/tulip-side-chair', name: 'Tulip Side Chair', category: 'Dining', styles: ['design-icon', 'modernist', 'white', 'elevated', 'statement'], room: 'dining', retailer: 'Knoll' },
+  { id: 184, url: 'https://www.knoll.com/product/tulip-dining-table', name: 'Tulip Dining Table', category: 'Dining', styles: ['design-icon', 'modernist', 'white', 'elevated', 'statement'], room: 'dining', retailer: 'Knoll' },
+
+  // ── Moooi ──
+  { id: 185, url: 'https://www.moooi.com/en/lamps/heracleum-the-big-o', name: 'Heracleum The Big O', category: 'Lighting', styles: ['design-classic', 'organic', 'statement', 'elevated', 'wow'], room: 'living', retailer: 'Moooi' },
+  { id: 186, url: 'https://www.moooi.com/en/chairs/monster-armchair', name: 'Monster Armchair', category: 'Armchairs', styles: ['statement', 'plush', 'elevated', 'cozy', 'sculptural'], room: 'living', retailer: 'Moooi' },
+  { id: 187, url: 'https://www.moooi.com/en/rugs/extinct-animals-rug', name: 'Extinct Animals Rug', category: 'Rugs', styles: ['statement', 'art', 'elevated', 'wow', 'graphic'], room: 'living', retailer: 'Moooi' },
+
+  // ── String Furniture ──
+  { id: 188, url: 'https://www.stringfurniture.com/en/string-metal/shelving-unit/', name: 'String Metal Shelving System', category: 'Storage', styles: ['scandinavian', 'design-classic', 'minimal', 'graphic'], room: 'office', retailer: 'String Furniture' },
+  { id: 189, url: 'https://www.stringfurniture.com/en/string-works/height-adjustable-desk/', name: 'String Works Desk', category: 'Tables', styles: ['scandinavian', 'modern', 'clean', 'office'], room: 'office', retailer: 'String Furniture' },
+
+  // ── Ligne Roset ──
+  { id: 190, url: 'https://www.ligne-roset.com/us/furniture/sofas/togo-sofa/', name: 'Togo Sofa', category: 'Sofas', styles: ['design-icon', 'statement', 'elevated', 'sculptural', 'cozy'], room: 'living', retailer: 'Ligne Roset' },
+  { id: 191, url: 'https://www.ligne-roset.com/us/furniture/armchairs/ploum-easy-chair/', name: 'Ploum Easy Chair', category: 'Armchairs', styles: ['statement', 'elevated', 'sculptural', 'cozy', 'modern'], room: 'living', retailer: 'Ligne Roset' },
+
+  // ── Cassina ──
+  { id: 192, url: 'https://www.cassina.com/en/collection/sofas/lc2.html', name: 'LC2 Sofa', category: 'Sofas', styles: ['design-icon', 'modernist', 'leather', 'elevated', 'statement'], room: 'living', retailer: 'Cassina' },
+  { id: 193, url: 'https://www.cassina.com/en/collection/armchairs/lc1.html', name: 'LC1 Sling Chair', category: 'Armchairs', styles: ['design-icon', 'modernist', 'leather', 'elevated', 'minimalist'], room: 'living', retailer: 'Cassina' },
+
+  // ── More West Elm ──
+  { id: 194, url: 'https://www.westelm.com/products/patchwork-velvet-pillow-cover-h9087/', name: 'Patchwork Velvet Pillow Cover', category: 'Textiles', styles: ['boho', 'warm', 'elevated', 'velvet'], room: 'living', retailer: 'West Elm' },
+  { id: 195, url: 'https://www.westelm.com/products/shagreen-side-table-h5042/', name: 'Shagreen Side Table', category: 'Tables', styles: ['elevated', 'mid-century', 'statement', 'graphic'], room: 'living', retailer: 'West Elm' },
+  { id: 196, url: 'https://www.westelm.com/products/smoked-glass-orb-pendant-h7033/', name: 'Smoked Glass Orb Pendant', category: 'Lighting', styles: ['modern', 'elevated', 'minimal', 'statement'], room: 'dining', retailer: 'West Elm' },
+  { id: 197, url: 'https://www.westelm.com/products/grid-bookcase-h3878/', name: 'Grid Bookcase', category: 'Storage', styles: ['modern', 'elevated', 'graphic', 'mid-century'], room: 'office', retailer: 'West Elm' },
+  { id: 198, url: 'https://www.westelm.com/products/metallic-printed-rug-h5044/', name: 'Metallic Printed Rug', category: 'Rugs', styles: ['elevated', 'graphic', 'warm', 'statement'], room: 'living', retailer: 'West Elm' },
+
+  // ── Ferm Living — more ──
+  { id: 199, url: 'https://fermliving.com/products/rely-armchair-cashmere', name: 'Rely Armchair, cashmere', category: 'Armchairs', styles: ['organic', 'elevated', 'warm', 'scandinavian'], room: 'living', retailer: 'Ferm Living' },
+  { id: 200, url: 'https://fermliving.com/products/kona-coffee-table-black', name: 'Kona Coffee Table, black', category: 'Tables', styles: ['dark', 'minimalist', 'elevated', 'graphic'], room: 'living', retailer: 'Ferm Living' },
+  { id: 201, url: 'https://fermliving.com/products/canvas-pendant-off-white', name: 'Canvas Pendant, off-white', category: 'Lighting', styles: ['organic', 'scandinavian', 'warm', 'elevated'], room: 'dining', retailer: 'Ferm Living' },
+  { id: 202, url: 'https://fermliving.com/products/kelim-rug-rectangle-off-white', name: 'Kelim Rug, off-white', category: 'Rugs', styles: ['scandinavian', 'organic', 'warm', 'elevated'], room: 'living', retailer: 'Ferm Living' },
+
+  // ── HAY — more ──
+  { id: 203, url: 'https://www.hay.com/hay/lighting/floor-lamp/base-floor-lamp', name: 'Base Floor Lamp', category: 'Lighting', styles: ['design-classic', 'warm', 'elevated', 'minimal'], room: 'living', retailer: 'HAY' },
+  { id: 204, url: 'https://www.hay.com/hay/furniture/tables/coffee-table/o-table', name: 'O! Table', category: 'Tables', styles: ['design-classic', 'graphic', 'scandinavian', 'elevated'], room: 'living', retailer: 'HAY' },
+  { id: 205, url: 'https://www.hay.com/hay/furniture/seating/sofa/quilton-sofa', name: 'Quilton Sofa', category: 'Sofas', styles: ['design-classic', 'statement', 'elevated', 'modern'], room: 'living', retailer: 'HAY' },
+  { id: 206, url: 'https://www.hay.com/hay/furniture/storage/cps-cabinet', name: 'CPH Cabinet', category: 'Storage', styles: ['scandinavian', 'design-classic', 'elevated', 'warm'], room: 'living', retailer: 'HAY' },
+  { id: 207, url: 'https://www.hay.com/hay/textiles/rug/peas-rug', name: 'Peas Rug', category: 'Rugs', styles: ['graphic', 'scandinavian', 'design-classic', 'statement'], room: 'living', retailer: 'HAY' },
+
+  // ── Muuto — more ──
+  { id: 208, url: 'https://www.muuto.com/product/visu-lounge-chair/p3088/', name: 'Visu Lounge Chair', category: 'Armchairs', styles: ['scandinavian', 'organic', 'elevated', 'warm'], room: 'living', retailer: 'Muuto' },
+  { id: 209, url: 'https://www.muuto.com/product/linear-steel-side-table/p3062/', name: 'Linear Steel Side Table', category: 'Tables', styles: ['minimalist', 'graphic', 'elevated', 'industrial'], room: 'living', retailer: 'Muuto' },
+  { id: 210, url: 'https://www.muuto.com/product/rest-coffee-table/p3126/', name: 'Rest Coffee Table', category: 'Tables', styles: ['organic', 'scandinavian', 'elevated', 'warm'], room: 'living', retailer: 'Muuto' },
+  { id: 211, url: 'https://www.muuto.com/product/cover-side-table-set-of-2/p3065/', name: 'Cover Side Tables, set of 2', category: 'Tables', styles: ['graphic', 'elevated', 'design-classic', 'minimal'], room: 'living', retailer: 'Muuto' },
+
+  // ── More Beds / Bedroom ──
+  { id: 212, url: 'https://www.ikea.com/us/en/p/tufjord-upholstered-bed-frame-vissle-dark-yellow-luroey-s89487432/', name: 'TUFJORD Upholstered Bed, dark yellow', category: 'Beds', styles: ['scandinavian', 'warm', 'elevated', 'statement'], room: 'bedroom', retailer: 'IKEA' },
+  { id: 213, url: 'https://www.ikea.com/us/en/p/songesand-bed-frame-white-luroey-s39335963/', name: 'SONGESAND Bed, white', category: 'Beds', styles: ['scandinavian', 'classic', 'warm'], room: 'bedroom', retailer: 'IKEA' },
+  { id: 214, url: 'https://www.ikea.com/us/en/p/hauga-bed-frame-white-luroey-s09350492/', name: 'HAUGA Upholstered Bed, white', category: 'Beds', styles: ['classic', 'warm', 'upholstered'], room: 'bedroom', retailer: 'IKEA' },
+  { id: 215, url: 'https://www.westelm.com/products/framework-dresser-h4389/', name: 'Framework Dresser', category: 'Storage', styles: ['modern', 'elevated', 'wood', 'mid-century'], room: 'bedroom', retailer: 'West Elm' },
+  { id: 216, url: 'https://www.ikea.com/us/en/p/hemnes-dresser-5-drawer-white-stain-60392888/', name: 'HEMNES Dresser, 5 drawers, white', category: 'Storage', styles: ['classic', 'scandinavian', 'warm'], room: 'bedroom', retailer: 'IKEA' },
+
+  // ── More Art ──
+  { id: 217, url: 'https://www.amazon.com/Framed-Canvas-Wall-Art-Print/dp/B0CFKWQDM9', name: 'Architectural Arch Print Set', category: 'Art', styles: ['modern', 'elevated', 'graphic', 'minimal'], room: 'living', retailer: 'Amazon' },
+  { id: 218, url: 'https://www.amazon.com/Large-Framed-Canvas-Art-Print/dp/B0C7RQFHK8', name: 'Oversized Abstract Diptych', category: 'Art', styles: ['abstract', 'large-format', 'statement', 'modern'], room: 'living', retailer: 'Amazon' },
+  { id: 219, url: 'https://www.amazon.com/Black-White-Photography-Wall-Art/dp/B08KGSQD2D', name: 'Black & White Photography, set of 3', category: 'Art', styles: ['monochrome', 'graphic', 'elevated', 'modern'], room: 'office', retailer: 'Amazon' },
+
+  // ── More Rugs / Textiles ──
+  { id: 220, url: 'https://www.westelm.com/products/diamond-print-flatweave-rug-h9079/', name: 'Diamond Flatweave Rug', category: 'Rugs', styles: ['graphic', 'geometric', 'warm', 'boho'], room: 'living', retailer: 'West Elm' },
+  { id: 221, url: 'https://www.cb2.com/cela-wool-rug/s567842', name: 'Cela Wool Rug', category: 'Rugs', styles: ['elevated', 'warm', 'organic', 'classic'], room: 'living', retailer: 'CB2' },
+  { id: 222, url: 'https://fermliving.com/products/kelim-cushion-rose', name: 'Kelim Cushion, rose', category: 'Textiles', styles: ['scandinavian', 'warm', 'boho', 'graphic'], room: 'living', retailer: 'Ferm Living' },
+  { id: 223, url: 'https://www.hay.com/hay/textiles/blanket/hay-waffle-blanket', name: 'HAY Waffle Blanket', category: 'Textiles', styles: ['scandinavian', 'cozy', 'elevated', 'warm'], room: 'bedroom', retailer: 'HAY' },
+
+  // ── More Mirrors ──
+  { id: 224, url: 'https://www.anthropologie.com/shop/round-rattan-mirror', name: 'Round Rattan Mirror', category: 'Mirrors', styles: ['boho', 'organic', 'warm', 'natural'], room: 'bedroom', retailer: 'Anthropologie' },
+  { id: 225, url: 'https://www.cb2.com/arc-leaner-mirror/s546453', name: 'Arc Leaner Mirror', category: 'Mirrors', styles: ['modern', 'statement', 'elevated', 'graphic'], room: 'bedroom', retailer: 'CB2' },
+  { id: 226, url: 'https://www.normann-copenhagen.com/products/sillon-mirror', name: 'Sillon Mirror', category: 'Mirrors', styles: ['design-classic', 'graphic', 'elevated', 'scandinavian'], room: 'entry', retailer: 'Normann Copenhagen' },
+
+  // ── More Dining ──
+  { id: 227, url: 'https://www.cb2.com/wren-dining-chair/s629743', name: 'Wren Dining Chair, white boucle', category: 'Dining', styles: ['modern', 'elevated', 'cozy', 'statement'], room: 'dining', retailer: 'CB2' },
+  { id: 228, url: 'https://www.cb2.com/cavett-wood-dining-table/s546453', name: 'Cavett Wood Dining Table', category: 'Dining', styles: ['classic', 'wood', 'elevated', 'warm'], room: 'dining', retailer: 'CB2' },
+  { id: 229, url: 'https://www.westelm.com/products/nolan-dining-bench-h4979/', name: 'Nolan Dining Bench', category: 'Dining', styles: ['modern', 'wood', 'elevated', 'minimalist'], room: 'dining', retailer: 'West Elm' },
+  { id: 230, url: 'https://www.hay.com/hay/furniture/tables/dining-table/hdk-dining-table', name: 'HDK Dining Table', category: 'Dining', styles: ['scandinavian', 'graphic', 'elevated', 'design-classic'], room: 'dining', retailer: 'HAY' },
+
+  // ── More Storage / Sideboards ──
+  { id: 231, url: 'https://www.westelm.com/products/emmerson-solid-wood-media-console-h3977/', name: 'Emmerson Solid Wood Media Console', category: 'Storage', styles: ['organic', 'warm', 'elevated', 'wood'], room: 'living', retailer: 'West Elm' },
+  { id: 232, url: 'https://www.cb2.com/tura-sideboard/s496741', name: 'Tura Sideboard', category: 'Storage', styles: ['modern', 'elevated', 'statement', 'graphic'], room: 'living', retailer: 'CB2' },
+  { id: 233, url: 'https://www.normann-copenhagen.com/products/tablo-sideboard', name: 'Tablo Sideboard', category: 'Storage', styles: ['scandinavian', 'elevated', 'design-classic', 'graphic'], room: 'living', retailer: 'Normann Copenhagen' },
+  { id: 234, url: 'https://www.hay.com/hay/furniture/storage/cph-storage-series', name: 'CPH Storage Series', category: 'Storage', styles: ['scandinavian', 'elevated', 'minimal', 'design-classic'], room: 'living', retailer: 'HAY' },
+
+  // ── More Lighting — Sconces & Table Lamps ──
+  { id: 235, url: 'https://www.cb2.com/span-wall-lamp/s675492', name: 'Span Wall Lamp', category: 'Lighting', styles: ['modern', 'elevated', 'minimal', 'graphic'], room: 'bedroom', retailer: 'CB2' },
+  { id: 236, url: 'https://www.westelm.com/products/sculptural-glass-globe-sconce-h5094/', name: 'Sculptural Glass Sconce', category: 'Lighting', styles: ['elevated', 'statement', 'warm', 'glass'], room: 'living', retailer: 'West Elm' },
+  { id: 237, url: 'https://fermliving.com/products/casca-floor-lamp-off-white', name: 'Casca Floor Lamp, off-white', category: 'Lighting', styles: ['organic', 'warm', 'elevated', 'scandinavian'], room: 'living', retailer: 'Ferm Living' },
+  { id: 238, url: 'https://www.muuto.com/product/ray-floor-lamp/p3099/', name: 'Ray Floor Lamp', category: 'Lighting', styles: ['scandinavian', 'minimalist', 'elevated', 'graphic'], room: 'living', retailer: 'Muuto' },
+  { id: 239, url: 'https://www.normann-copenhagen.com/products/amp-table-lamp', name: 'Amp Table Lamp', category: 'Lighting', styles: ['graphic', 'design-classic', 'elevated', 'statement'], room: 'living', retailer: 'Normann Copenhagen' },
+  { id: 240, url: 'https://www.hay.com/hay/lighting/wall-lamp/neon-tube-wall-lamp', name: 'Neon Tube Wall Lamp', category: 'Lighting', styles: ['graphic', 'design-classic', 'statement', 'modern'], room: 'office', retailer: 'HAY' },
+
+  // ── Sofas — more variety ──
+  { id: 241, url: 'https://www.cb2.com/piazza-sofa/s628744', name: 'Piazza Sofa', category: 'Sofas', styles: ['modern', 'elevated', 'minimalist', 'clean'], room: 'living', retailer: 'CB2' },
+  { id: 242, url: 'https://www.cb2.com/rowan-sofa/s628743', name: 'Rowan Velvet Sofa', category: 'Sofas', styles: ['elevated', 'velvet', 'statement', 'classic'], room: 'living', retailer: 'CB2' },
+  { id: 243, url: 'https://www.article.com/product/18834/mello-velvet-sectional', name: 'Mello Velvet Sectional', category: 'Sofas', styles: ['velvet', 'elevated', 'modern', 'statement'], room: 'living', retailer: 'Article' },
+  { id: 244, url: 'https://www.westelm.com/products/urban-sofa-h3799/', name: 'Urban 2-Piece Sectional', category: 'Sofas', styles: ['modern', 'elevated', 'modular', 'minimalist'], room: 'living', retailer: 'West Elm' },
 ];
 
 export const CATALOG_BY_ID = new Map(CATALOG.map((c) => [c.id, c]));
