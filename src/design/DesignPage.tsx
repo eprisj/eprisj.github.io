@@ -2,8 +2,8 @@ import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, X, Loader2, ExternalLink, ArrowRight, Sparkles } from 'lucide-react';
 import { CATALOG, CATALOG_BY_ID, SHOP_CATEGORIES, SETS, type CatalogItem, type ShopCategory, type SetDesign } from './catalog';
-import { resolveMany, curateBoard, formatPrice, type ResolvedProduct, type CurateResult } from './shopApi';
-import { getUI, getLook } from './designI18n';
+import { resolveMany, curateBoard, localCurate, formatPrice, parseBudget, type ResolvedProduct, type CurateResult, type StylistBrief } from './shopApi';
+import { getUI, getLook, getRoomLabel, STYLIST_ROOMS, STYLIST_STYLES, STYLIST_BUDGETS } from './designI18n';
 
 type Resolved = Record<number, ResolvedProduct | null>;
 
@@ -259,12 +259,19 @@ function LookPanel({ set, lookIndex, activeId, onSelect, resolved, onOpen, lang 
 }
 
 // ── AI Stylist panel ──────────────────────────────────────────────────────────
-const STYLIST_PRESETS = [
-  'Cozy Scandinavian bedroom, warm tones, budget $800',
-  'Minimalist home office, black and white, under $600',
-  'Mid-century modern living room, warm wood tones',
-  'Gallery wall and reading corner for a rented flat',
-];
+const ROLE_ORDER: Record<string, number> = { anchor: 0, support: 1, accent: 2 };
+
+function RoleBadge({ role, ui }: { role: string; ui: ReturnType<typeof getUI> }) {
+  const label = role === 'anchor' ? ui.roleAnchor : role === 'accent' ? ui.roleAccent : ui.roleSupport;
+  const tone = role === 'anchor'
+    ? 'text-[#0d0408] bg-[#C9A690]'
+    : role === 'accent'
+      ? 'text-[#C9A690] border border-[#C9A690]/40'
+      : 'text-white/45 border border-white/15';
+  return (
+    <span className={`font-mono text-[7px] uppercase tracking-[0.2em] px-2 py-0.5 ${tone}`}>{label}</span>
+  );
+}
 
 function StylistPanel({ resolved, onOpen, lang }: {
   resolved: Resolved;
@@ -272,22 +279,60 @@ function StylistPanel({ resolved, onOpen, lang }: {
   lang: string;
 }) {
   const ui = getUI(lang);
-  const [brief, setBrief] = useState('');
+  const [room, setRoom] = useState<string | null>(null);
+  const [styles, setStyles] = useState<string[]>([]);
+  const [budget, setBudget] = useState<number | null>(null);
+  const [text, setText] = useState('');
   const [loading, setLoading] = useState(false);
+  const [refining, setRefining] = useState(false);
   const [result, setResult] = useState<CurateResult | null>(null);
+  const resultRef = useRef<HTMLDivElement>(null);
+  const runRef = useRef(0);
 
+  const toggleStyle = (s: string) =>
+    setStyles((prev) => prev.includes(s) ? prev.filter((x) => x !== s) : prev.length < 3 ? [...prev, s] : prev);
+
+  const canSubmit = !!(room || styles.length || text.trim());
+
+  // Progressive: show a strong local board instantly, then upgrade to the AI
+  // composition once it returns (free models can be slow under load).
   const handleSubmit = async () => {
-    if (!brief.trim() || loading) return;
+    if (!canSubmit || loading) return;
+    const run = ++runRef.current;
+    const brief: StylistBrief = {
+      text: text.trim(),
+      room: room || undefined,
+      styles: styles.length ? styles.map((s) => s.toLowerCase()) : undefined,
+      budget: budget || parseBudget(text) || undefined,
+    };
     setLoading(true);
     setResult(null);
-    const r = await curateBoard(brief);
-    setResult(r);
+    // instant local board
+    const local = localCurate(brief, resolved);
+    setResult(local);
     setLoading(false);
+    setRefining(true);
+    setTimeout(() => resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+    // background AI upgrade
+    try {
+      const ai = await curateBoard(brief, resolved);
+      if (run === runRef.current && ai.ok && ai.source === 'ai') setResult(ai);
+    } finally {
+      if (run === runRef.current) setRefining(false);
+    }
   };
 
+  const reset = () => { runRef.current++; setResult(null); setRefining(false); setRoom(null); setStyles([]); setBudget(null); setText(''); };
+
   const picks = result?.ok
-    ? (result.picks || []).map((id) => CATALOG_BY_ID.get(id)).filter((c): c is CatalogItem => !!c)
+    ? (result.picks || [])
+        .map((p) => ({ pick: p, item: CATALOG_BY_ID.get(p.id) }))
+        .filter((x): x is { pick: typeof x.pick; item: CatalogItem } => !!x.item)
+        .sort((a, b) => (ROLE_ORDER[a.pick.role] ?? 1) - (ROLE_ORDER[b.pick.role] ?? 1))
     : [];
+
+  const effBudget = budget || (result && parseBudget(text)) || 0;
+  const overBudget = !!(effBudget && result?.total && result.total > effBudget);
 
   return (
     <div className="border-b border-white/5 bg-[#0a0306]">
@@ -302,42 +347,79 @@ function StylistPanel({ resolved, onOpen, lang }: {
           style={{ fontFamily: "'Playfair Display', serif" }}
           className="text-[clamp(32px,6vw,80px)] leading-[0.92] text-white mb-3"
         >{ui.stylistTitle}</h2>
-        <p className="text-sm text-white/30 mb-8 max-w-md leading-relaxed">{ui.stylistSub}</p>
+        <p className="text-sm text-white/30 mb-9 max-w-md leading-relaxed">{ui.stylistSub}</p>
 
-        {/* Input area */}
-        <div className="max-w-2xl">
-          <div className="border border-white/10 focus-within:border-[#C9A690]/40 transition-colors duration-300">
-            <textarea
-              value={brief}
-              onChange={(e) => setBrief(e.target.value)}
-              placeholder={ui.stylistPlaceholder}
-              rows={2}
-              className="w-full bg-transparent text-white text-sm px-5 py-4 resize-none outline-none placeholder:text-white/18 font-sans leading-relaxed"
-              onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSubmit(); } }}
-            />
+        {/* ── Structured brief builder ── */}
+        <div className="max-w-2xl space-y-6">
+          {/* Room */}
+          <div>
+            <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/35 mb-2.5">{ui.stylistRoom}</p>
+            <div className="flex flex-wrap gap-2">
+              {STYLIST_ROOMS.map((r) => {
+                const on = room === r.key;
+                return (
+                  <button key={r.key} onClick={() => setRoom(on ? null : r.key)}
+                    className={`font-mono text-[9px] uppercase tracking-wider px-3.5 py-2 border transition-all duration-200 ${on ? 'bg-[#C9A690] text-[#0d0408] border-[#C9A690]' : 'text-white/40 border-white/10 hover:border-[#C9A690]/35 hover:text-[#C9A690]/60'}`}>
+                    {getRoomLabel(r.key, lang)}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
-          {/* Preset chips */}
-          <div className="flex flex-wrap gap-2 mt-3 mb-5">
-            {STYLIST_PRESETS.map((p) => (
-              <button
-                key={p}
-                onClick={() => setBrief(p)}
-                className="font-mono text-[7px] uppercase tracking-wider text-white/28 border border-white/8 px-2.5 py-1.5 hover:border-[#C9A690]/35 hover:text-[#C9A690]/55 transition-all duration-200 max-w-[200px] truncate"
-              >
-                {p.split(',')[0]}
-              </button>
-            ))}
+          {/* Style */}
+          <div>
+            <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/35 mb-2.5">{ui.stylistStyle} <span className="text-white/20">· max 3</span></p>
+            <div className="flex flex-wrap gap-2">
+              {STYLIST_STYLES.map((s) => {
+                const on = styles.includes(s);
+                return (
+                  <button key={s} onClick={() => toggleStyle(s)}
+                    className={`font-mono text-[9px] uppercase tracking-wider px-3.5 py-2 border transition-all duration-200 ${on ? 'bg-white text-[#0d0408] border-white' : 'text-white/40 border-white/10 hover:border-white/30 hover:text-white/70'}`}>
+                    {s}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Budget */}
+          <div>
+            <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/35 mb-2.5">{ui.stylistBudget}</p>
+            <div className="flex flex-wrap gap-2">
+              {STYLIST_BUDGETS.map((b) => {
+                const on = budget === b;
+                const label = b === 0 ? ui.stylistAnyBudget : `$${b.toLocaleString()}`;
+                return (
+                  <button key={b} onClick={() => setBudget(on ? null : b)}
+                    className={`font-mono text-[9px] uppercase tracking-wider px-3.5 py-2 border transition-all duration-200 ${on ? 'bg-[#C9A690] text-[#0d0408] border-[#C9A690]' : 'text-white/40 border-white/10 hover:border-[#C9A690]/35 hover:text-[#C9A690]/60'}`}>
+                    {b === 0 ? label : `≤ ${label}`}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Freeform refine */}
+          <div className="border border-white/10 focus-within:border-[#C9A690]/40 transition-colors duration-300">
+            <textarea
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              placeholder={ui.stylistRefine}
+              rows={2}
+              className="w-full bg-transparent text-white text-sm px-5 py-4 resize-none outline-none placeholder:text-white/18 font-sans leading-relaxed"
+              onKeyDown={(e) => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) { e.preventDefault(); handleSubmit(); } }}
+            />
           </div>
 
           <button
             onClick={handleSubmit}
-            disabled={!brief.trim() || loading}
-            className="inline-flex items-center gap-2.5 bg-[#C9A690] text-[#0d0408] font-mono text-[9px] uppercase tracking-widest px-6 py-3.5 hover:bg-white transition-colors duration-200 disabled:opacity-30 disabled:cursor-not-allowed"
+            disabled={!canSubmit || loading}
+            className="inline-flex items-center gap-2.5 bg-[#C9A690] text-[#0d0408] font-mono text-[9px] uppercase tracking-widest px-7 py-3.5 hover:bg-white transition-colors duration-200 disabled:opacity-25 disabled:cursor-not-allowed"
           >
             {loading
               ? <><Loader2 size={11} className="animate-spin" /> {ui.stylistLoading}</>
-              : <>{ui.stylistCta} <ArrowRight size={11} /></>}
+              : <>{ui.stylistCompose} <ArrowRight size={11} /></>}
           </button>
         </div>
 
@@ -348,40 +430,108 @@ function StylistPanel({ resolved, onOpen, lang }: {
           </p>
         )}
 
-        {/* Curated result */}
+        {/* ── Curated board with reasoning ── */}
         {result?.ok && picks.length > 0 && (
           <motion.div
+            ref={resultRef}
             initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-12 border-t border-white/8 pt-10"
+            className="mt-14 border-t border-white/8 pt-12"
           >
-            <div className="mb-8">
-              <p className="font-mono text-[7px] uppercase tracking-[0.35em] text-[#C9A690]/40 mb-2">
-                {ui.stylistBoardFor} "{brief.split(',')[0].trim()}"
-              </p>
-              <h3
-                style={{ fontFamily: "'Playfair Display', serif" }}
-                className="text-[clamp(24px,4vw,52px)] leading-tight text-white mb-3"
-              >{result.title}</h3>
-              <p className="text-sm text-white/32 max-w-lg leading-relaxed">{result.summary}</p>
+            {/* Concept header */}
+            <div className="grid md:grid-cols-[1.4fr_1fr] gap-8 md:gap-12 mb-12">
+              <div>
+                <div className="flex items-center gap-3 mb-3">
+                  <p className="font-mono text-[7px] uppercase tracking-[0.35em] text-[#C9A690]/45">{ui.stylistConcept}</p>
+                  {refining ? (
+                    <span className="inline-flex items-center gap-1.5 font-mono text-[7px] uppercase tracking-[0.2em] text-white/30">
+                      <Loader2 size={9} className="animate-spin" /> AI
+                    </span>
+                  ) : (
+                    <span className="font-mono text-[7px] uppercase tracking-[0.2em] text-[#C9A690]/40 border border-[#C9A690]/20 px-1.5 py-0.5">
+                      {result.source === 'ai' ? 'AI-composed' : "Stylist's pick"}
+                    </span>
+                  )}
+                </div>
+                <h3
+                  style={{ fontFamily: "'Playfair Display', serif" }}
+                  className="text-[clamp(26px,4.4vw,56px)] leading-[1.02] text-white mb-4"
+                >{result.title}</h3>
+                <p className="text-sm md:text-[15px] text-white/40 max-w-lg leading-relaxed">{result.concept}</p>
+              </div>
+
+              <div className="space-y-7 md:pt-7">
+                {/* Palette */}
+                {result.palette && result.palette.length > 0 && (
+                  <div>
+                    <p className="font-mono text-[7px] uppercase tracking-[0.3em] text-white/30 mb-2.5">{ui.stylistPalette}</p>
+                    <div className="flex flex-wrap gap-x-4 gap-y-1.5">
+                      {result.palette.map((c) => (
+                        <span key={c} className="font-serif text-xs text-white/55 flex items-center gap-1.5">
+                          <span className="inline-block w-2 h-2 rounded-full" style={{ background: swatch(c) }} />
+                          {c}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {/* Total + budget verdict */}
+                {result.total != null && result.total > 0 && (
+                  <div>
+                    <p className="font-mono text-[7px] uppercase tracking-[0.3em] text-white/30 mb-1.5">{ui.stylistEstimate}</p>
+                    <p className="flex items-baseline gap-2.5">
+                      <span style={{ fontFamily: "'Playfair Display', serif" }} className="text-3xl text-white">${result.total.toLocaleString()}</span>
+                      {effBudget > 0 && (
+                        <span className={`font-mono text-[8px] uppercase tracking-wider px-2 py-0.5 ${overBudget ? 'text-red-300/70 border border-red-400/30' : 'text-[#C9A690] border border-[#C9A690]/35'}`}>
+                          {overBudget ? `over $${effBudget.toLocaleString()}` : `within $${effBudget.toLocaleString()}`}
+                        </span>
+                      )}
+                    </p>
+                    {result.budgetNote && <p className="text-[11px] text-white/30 leading-relaxed mt-2 max-w-xs">{result.budgetNote}</p>}
+                  </div>
+                )}
+              </div>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
-              {picks.map((item, i) => (
-                <div key={item.id}>
-                  <DarkProductCard item={item} data={resolved[item.id]} index={i} onOpen={onOpen} />
-                  {result.notes?.[String(item.id)] && (
-                    <p className="font-mono text-[7px] text-white/18 leading-snug mt-1.5 px-0.5 line-clamp-2">
-                      {result.notes[String(item.id)]}
-                    </p>
-                  )}
+            {/* Picks — image + role + reasoning */}
+            <p className="font-mono text-[7px] uppercase tracking-[0.35em] text-white/30 mb-5">{ui.stylistWhy} · {picks.length} {ui.items}</p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-9">
+              {picks.map(({ pick, item }, i) => (
+                <div key={item.id} className="flex gap-4">
+                  <div className="w-24 sm:w-28 shrink-0">
+                    <DarkProductCard item={item} data={resolved[item.id]} index={i} onOpen={onOpen} />
+                  </div>
+                  <div className="flex-1 min-w-0 pt-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <RoleBadge role={pick.role} ui={ui} />
+                      {resolved[item.id]?.price && (
+                        <span className="font-mono text-[8px] text-white/35">{formatPrice(resolved[item.id]!)}</span>
+                      )}
+                    </div>
+                    <p className="text-[13px] text-white/45 leading-relaxed">{pick.reason}</p>
+                  </div>
                 </div>
               ))}
             </div>
 
+            {/* Styling tips */}
+            {result.tips && result.tips.length > 0 && (
+              <div className="mt-12 border-t border-white/8 pt-8">
+                <p className="font-mono text-[7px] uppercase tracking-[0.35em] text-[#C9A690]/45 mb-4">{ui.stylistTips}</p>
+                <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3">
+                  {result.tips.map((tip, i) => (
+                    <li key={i} className="flex gap-2.5 text-[13px] text-white/40 leading-relaxed">
+                      <span className="font-mono text-[#C9A690]/40 text-[10px] pt-0.5">{String(i + 1).padStart(2, '0')}</span>
+                      {tip}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             <button
-              onClick={() => { setResult(null); setBrief(''); }}
-              className="mt-8 font-mono text-[8px] uppercase tracking-widest text-white/20 hover:text-[#C9A690]/55 transition-colors border border-white/8 hover:border-[#C9A690]/25 px-4 py-2 duration-200"
+              onClick={reset}
+              className="mt-10 font-mono text-[8px] uppercase tracking-widest text-white/20 hover:text-[#C9A690]/55 transition-colors border border-white/8 hover:border-[#C9A690]/25 px-4 py-2 duration-200"
             >
               {ui.stylistTryAgain}
             </button>
@@ -390,6 +540,19 @@ function StylistPanel({ resolved, onOpen, lang }: {
       </div>
     </div>
   );
+}
+
+// Map a palette word to a rough swatch colour for the dots.
+function swatch(word: string): string {
+  const w = word.toLowerCase();
+  if (/brass|gold|honey|amber/.test(w)) return '#b8925a';
+  if (/oat|bone|cream|linen|warm white|beige|greige/.test(w)) return '#d8cbb8';
+  if (/clay|terracotta|rust|warm/.test(w)) return '#b08365';
+  if (/oak|wood|ash|natural/.test(w)) return '#a98c6b';
+  if (/ink|charcoal|black|moody|dark/.test(w)) return '#2a2530';
+  if (/sage|green|olive/.test(w)) return '#7e8a6f';
+  if (/blue|navy|slate/.test(w)) return '#5a6b7e';
+  return '#9a8f86';
 }
 
 // ── Main page ─────────────────────────────────────────────────────────────────
