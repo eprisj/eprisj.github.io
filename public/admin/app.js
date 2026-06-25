@@ -7465,3 +7465,221 @@ function bindStudioRowActions() {
 
 })();
 
+
+// ══════════════════════════════════════════════════════════
+// PODCASTS TAB — mirrors Radio podcasts sub-section
+// ══════════════════════════════════════════════════════════
+(function () {
+  const RADIO_API = 'https://live.eprisjournal.com';
+  const RADIO_TOKEN_KEY = 'epris_radio_admin_pw';
+
+  function getToken() {
+    return localStorage.getItem(RADIO_TOKEN_KEY) || '';
+  }
+
+  async function apiFetch(path, opts = {}) {
+    const token = getToken();
+    const headers = { 'Content-Type': 'application/json', ...(opts.headers || {}) };
+    if (token) headers['X-Admin-Password'] = token;
+    const r = await fetch(RADIO_API + path, { ...opts, headers });
+    return r.json();
+  }
+
+  // Activate panel when token is available
+  function tryActivate() {
+    const token = getToken();
+    const statusEl = document.getElementById('podcastsTabStatus');
+    const panel = document.getElementById('podcastsTabPanel');
+    if (!panel) return;
+    if (token) {
+      if (statusEl) statusEl.style.display = 'none';
+      panel.style.display = 'flex';
+      loadList();
+    }
+  }
+
+  let _editing = null;
+  let _list = [];
+
+  function renderList() {
+    const el = document.getElementById('podcastsTabList');
+    if (!el) return;
+    if (!_list.length) { el.innerHTML = '<p style="padding:24px;text-align:center;font-size:.8rem;color:var(--text-muted)">Нет эпизодов.</p>'; return; }
+    const groups = {};
+    _list.forEach(p => { const s = (p.season || '').trim() || '—'; (groups[s] = groups[s] || []).push(p); });
+    el.innerHTML = Object.entries(groups).map(([season, items]) => `
+      <div style="border-bottom:1px solid var(--line)">
+        <div style="padding:8px 20px;font-family:var(--font-mono);font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);background:var(--bg)">${season}</div>
+        ${items.map(p => `
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 20px;border-bottom:1px solid var(--line)">
+            ${p.cover_url ? `<img src="${p.cover_url}" style="width:44px;height:44px;object-fit:cover;border-radius:4px;flex-shrink:0" />` : `<div style="width:44px;height:44px;background:var(--bg-soft);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.2rem">🎙</div>`}
+            <div style="flex:1;min-width:0">
+              <div style="font-weight:600;font-size:.84rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.title}</div>
+              <div style="font-size:.7rem;color:var(--text-muted);margin-top:2px">${p.duration || ''}${p.episode ? ` · Эп. ${p.episode}` : ''}${p.tags ? ` · ${p.tags}` : ''}</div>
+            </div>
+            <div style="display:flex;gap:5px;flex-shrink:0">
+              <button class="btn btn-sm" type="button" onclick="window._ptTogglePub(${p.id})" style="color:${p.is_published ? 'var(--ok)' : 'var(--text-muted)'}">${p.is_published ? '👁' : '○'}</button>
+              <button class="btn btn-sm" type="button" onclick="window._ptEdit(${p.id})">✎</button>
+              <button class="btn btn-sm btn-danger-text" type="button" onclick="window._ptDelete(${p.id},'${(p.title||'').replace(/'/g,"\\'")}')">✕</button>
+            </div>
+          </div>`).join('')}
+      </div>`).join('');
+  }
+
+  async function loadList() {
+    try {
+      const j = await apiFetch('/api/podcasts/all');
+      if (j.ok) { _list = j.data || []; renderList(); }
+    } catch {}
+  }
+
+  function showForm(p = null) {
+    _editing = p ? p.id : null;
+    const form = document.getElementById('podcastsTabForm');
+    if (!form) return;
+    document.getElementById('ptTitle').value = p?.title || '';
+    document.getElementById('ptEpisode').value = p?.episode || '';
+    document.getElementById('ptAudioUrl').value = p?.audio_url || '';
+    document.getElementById('ptCoverUrl').value = p?.cover_url || '';
+    document.getElementById('ptDuration').value = p?.duration || '';
+    document.getElementById('ptSeason').value = p?.season || '';
+    document.getElementById('ptTags').value = p?.tags || '';
+    document.getElementById('ptDesc').value = p?.description || '';
+    document.getElementById('ptPublished').checked = p ? !!p.is_published : true;
+    document.getElementById('ptEditId').value = p?.id || '';
+    form.style.display = 'block';
+  }
+
+  async function saveEpisode() {
+    const id = document.getElementById('ptEditId').value;
+    const body = {
+      title: document.getElementById('ptTitle').value.trim(),
+      audio_url: document.getElementById('ptAudioUrl').value.trim(),
+      cover_url: document.getElementById('ptCoverUrl').value.trim(),
+      description: document.getElementById('ptDesc').value.trim(),
+      duration: document.getElementById('ptDuration').value.trim(),
+      season: document.getElementById('ptSeason').value.trim(),
+      episode: parseInt(document.getElementById('ptEpisode').value) || 0,
+      tags: document.getElementById('ptTags').value.trim(),
+      is_published: document.getElementById('ptPublished').checked ? 1 : 0,
+    };
+    if (!body.title || !body.audio_url) { alert('Название и аудио обязательны'); return; }
+    const path = id ? `/api/podcasts/${id}` : '/api/podcasts';
+    const method = id ? 'PUT' : 'POST';
+    const j = await apiFetch(path, { method, body: JSON.stringify(body) });
+    if (j.ok) { document.getElementById('podcastsTabForm').style.display = 'none'; loadList(); }
+    else alert(j.error || 'Ошибка сохранения');
+  }
+
+  window._ptEdit = id => { showForm(_list.find(p => p.id === id)); };
+  window._ptTogglePub = async id => {
+    const p = _list.find(p => p.id === id);
+    if (!p) return;
+    await apiFetch(`/api/podcasts/${id}`, { method: 'PUT', body: JSON.stringify({ ...p, is_published: p.is_published ? 0 : 1 }) });
+    loadList();
+  };
+  window._ptDelete = async (id, title) => {
+    if (!confirm(`Удалить «${title}»?`)) return;
+    await apiFetch(`/api/podcasts/${id}`, { method: 'DELETE' });
+    loadList();
+  };
+
+  document.getElementById('podcastsTabNewBtn')?.addEventListener('click', () => showForm());
+  document.getElementById('podcastsTabRefreshBtn')?.addEventListener('click', loadList);
+  document.getElementById('ptSaveBtn')?.addEventListener('click', saveEpisode);
+  document.getElementById('ptCancelBtn')?.addEventListener('click', () => { document.getElementById('podcastsTabForm').style.display = 'none'; });
+
+  // Activate when tab is opened
+  document.querySelector('[data-tab="podcasts"]')?.addEventListener('click', tryActivate);
+  // Also activate if token already present on load
+  setTimeout(tryActivate, 600);
+})();
+
+// ══════════════════════════════════════════════════════════
+// DESIGN TAB — catalog stats + VPS API health
+// ══════════════════════════════════════════════════════════
+(function () {
+  const DESIGN_API = 'https://api.eprisjournal.com';
+
+  async function loadDesignStats() {
+    const statusEl = document.getElementById('designApiStatus');
+    const retailerEl = document.getElementById('designRetailerList');
+    if (statusEl) statusEl.textContent = 'Проверяю…';
+    try {
+      // Check resolver endpoint
+      const r = await fetch(DESIGN_API + '/design/resolve?url=https://hay.dk', { signal: AbortSignal.timeout(6000) });
+      if (r.ok) {
+        if (statusEl) { statusEl.textContent = '✓ VPS resolver доступен'; statusEl.style.color = 'var(--ok)'; }
+      }
+    } catch (e) {
+      if (statusEl) { statusEl.textContent = '✗ ' + e.message; statusEl.style.color = 'var(--danger)'; }
+    }
+    // Load catalog stats from localStorage cache
+    try {
+      const raw = localStorage.getItem('epris_design_products_v2');
+      if (raw) {
+        const cache = JSON.parse(raw);
+        const items = Object.values(cache).filter(v => v && v.title);
+        document.getElementById('designStatItems').textContent = items.length;
+        const retailers = [...new Set(items.map(i => i.siteName || i.brand).filter(Boolean))];
+        document.getElementById('designStatRetailers').textContent = retailers.length;
+        const styles = [...new Set(items.flatMap(i => i.styles || []))];
+        document.getElementById('designStatStyles').textContent = styles.length;
+        if (retailerEl) {
+          retailerEl.innerHTML = retailers.slice(0, 20).map(r => `
+            <div class="dash-audit-row">
+              <span class="dash-audit-section">${r}</span>
+              <div class="dash-audit-chips">
+                <span class="dash-audit-chip ok">${items.filter(i => (i.siteName || i.brand) === r).length} товаров</span>
+              </div>
+            </div>`).join('') || '<p class="dash-empty-hint">Нет данных кеша.</p>';
+        }
+      } else {
+        document.getElementById('designStatItems').textContent = '—';
+        document.getElementById('designStatRetailers').textContent = '—';
+        document.getElementById('designStatStyles').textContent = '—';
+      }
+      // Count looks from site-content if loaded
+      const looksCount = document.querySelectorAll('.look-card')?.length || '—';
+      document.getElementById('designStatLooks').textContent = looksCount;
+    } catch {}
+  }
+
+  async function testCurate() {
+    const el = document.getElementById('designCurateStatus');
+    if (el) el.textContent = 'Отправляю тестовый запрос…';
+    try {
+      const r = await fetch(DESIGN_API + '/design/curate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ brief: 'Test', items: [] }),
+        signal: AbortSignal.timeout(15000),
+      });
+      const j = await r.json();
+      if (el) { el.textContent = j.title ? `✓ AI ответил: «${j.title}»` : '✓ Эндпоинт доступен'; el.style.color = 'var(--ok)'; }
+    } catch (e) {
+      if (el) { el.textContent = '✗ ' + e.message; el.style.color = 'var(--danger)'; }
+    }
+  }
+
+  async function clearVpsCache() {
+    const btn = document.getElementById('designClearCacheBtn');
+    if (btn) { btn.disabled = true; btn.textContent = 'Очищаю…'; }
+    try {
+      const r = await fetch(DESIGN_API + '/design/cache/clear', { method: 'POST', signal: AbortSignal.timeout(6000) });
+      const j = await r.json().catch(() => ({}));
+      const statusEl = document.getElementById('designApiStatus');
+      if (statusEl) { statusEl.textContent = j.ok ? '✓ Кеш VPS очищен' : (j.error || 'Готово'); statusEl.style.color = 'var(--ok)'; }
+    } catch (e) {
+      const statusEl = document.getElementById('designApiStatus');
+      if (statusEl) { statusEl.textContent = '✗ ' + e.message; statusEl.style.color = 'var(--danger)'; }
+    } finally {
+      if (btn) { btn.disabled = false; btn.textContent = 'Очистить кеш VPS'; }
+    }
+  }
+
+  document.getElementById('designCheckApiBtn')?.addEventListener('click', loadDesignStats);
+  document.getElementById('designTestCurateBtn')?.addEventListener('click', testCurate);
+  document.getElementById('designClearCacheBtn')?.addEventListener('click', clearVpsCache);
+  document.querySelector('[data-tab="design"]')?.addEventListener('click', loadDesignStats);
+})();
