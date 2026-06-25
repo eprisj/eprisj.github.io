@@ -218,10 +218,11 @@ function normalizeCurate(j: any): CurateResult {
 // category-balanced selection inside budget, and writes a reasoning line each.
 const ROOM_WORDS: Record<string, string[]> = {
   living: ['living', 'lounge', 'sitting', 'family', 'гостин', 'salon', 'salotto', 'wohnzimmer'],
-  bedroom: ['bedroom', 'bed', 'sleep', 'спальн', 'camera', 'schlaf', 'dormitor'],
-  office: ['office', 'study', 'work', 'desk', 'кабинет', 'офис', 'studio', 'arbeits'],
-  dining: ['dining', 'dinner', 'kitchen', 'столов', 'кухн', 'esszimmer', 'sala da pranzo'],
+  bedroom: ['bedroom', 'bed', 'sleep', 'спальн', 'camera', 'schlaf', 'dormitor', 'night', 'master'],
+  office: ['office', 'study', 'work', 'desk', 'кабинет', 'офис', 'studio', 'arbeits', 'home office'],
+  dining: ['dining', 'dinner', 'kitchen', 'столов', 'кухн', 'esszimmer', 'sala da pranzo', 'eat'],
   entry: ['entry', 'hall', 'hallway', 'foyer', 'прихож', 'коридор', 'eingang', 'ingresso'],
+  outdoor: ['outdoor', 'balcony', 'terrace', 'patio', 'балкон', 'terras', 'garden'],
 };
 
 function inferRoom(brief: StylistBrief): string | null {
@@ -262,8 +263,8 @@ function reasonFor(c: CatalogItem, role: PickRole, room: string | null): string 
 function cap(s: string) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
 // Anchor categories lead a board; accents finish it.
-const ANCHOR_CATS: ShopCategory[] = ['Sofas', 'Armchairs', 'Storage', 'Tables'];
-const ACCENT_CATS: ShopCategory[] = ['Art', 'Mirrors', 'Rugs', 'Lighting'];
+const ANCHOR_CATS: ShopCategory[] = ['Sofas', 'Armchairs', 'Beds', 'Dining', 'Storage', 'Tables'];
+const ACCENT_CATS: ShopCategory[] = ['Art', 'Mirrors', 'Rugs', 'Textiles', 'Lighting', 'Outdoor'];
 
 // Relevance score of every catalogue item against the brief (room + style +
 // price availability). Shared by the AI shortlist and the local stylist.

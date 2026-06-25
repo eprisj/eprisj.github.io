@@ -6,10 +6,14 @@ export type ShopCategory =
   | 'Storage'
   | 'Rugs'
   | 'Mirrors'
-  | 'Art';
+  | 'Art'
+  | 'Beds'
+  | 'Dining'
+  | 'Textiles'
+  | 'Outdoor';
 
 export const SHOP_CATEGORIES: ShopCategory[] = [
-  'Art', 'Sofas', 'Armchairs', 'Lighting', 'Tables', 'Storage', 'Rugs', 'Mirrors',
+  'Art', 'Sofas', 'Armchairs', 'Beds', 'Lighting', 'Tables', 'Dining', 'Storage', 'Rugs', 'Textiles', 'Mirrors', 'Outdoor',
 ];
 
 export interface CatalogItem {
@@ -100,6 +104,102 @@ export const CATALOG: CatalogItem[] = [
   { id: 38, url: 'https://www.amazon.com/Neutral-Abstract-Paintings-Minimalist-Pictures/dp/B0F8W5RKWX', name: 'Neutral Abstract Set of 2, 16″×24″', category: 'Art', styles: ['neutral', 'minimalist', 'paired'], room: 'bedroom', retailer: 'Amazon' },
   { id: 39, url: 'https://www.amazon.com/Abstract-Contemporary-Painting-Geometric-Midcentury/dp/B0DDC2MTNL', name: 'Geometric Mid-Century Set of 3', category: 'Art', styles: ['geometric', 'mid-century', 'graphic'], room: 'office', retailer: 'Amazon' },
   { id: 40, url: 'https://www.amazon.com/Neutral-Minimalist-Abstract-Geometric-Painting/dp/B0DMW6G71K', name: 'Boho Geometric Canvas Set of 3', category: 'Art', styles: ['boho', 'geometric', 'warm'], room: 'bedroom', retailer: 'Amazon' },
+
+  // ── Sofas — more options ──
+  { id: 41, url: 'https://www.ikea.com/us/en/p/haerlanda-sofa-ljungen-medium-gray-s79319501/', name: 'HÄRLANDA Sofa, gray', category: 'Sofas', styles: ['modern', 'minimalist', 'scandinavian'], room: 'living', retailer: 'IKEA' },
+  { id: 42, url: 'https://www.ikea.com/us/en/p/aepplaryd-sofa-with-chaise-lejde-light-gray-s59434349/', name: 'ÄPPLARYD Sofa with chaise, light gray', category: 'Sofas', styles: ['modern', 'minimalist', 'elevated'], room: 'living', retailer: 'IKEA' },
+  { id: 43, url: 'https://www.westelm.com/products/harris-leather-sofa-h4351/', name: 'Harris Leather Sofa', category: 'Sofas', styles: ['classic', 'leather', 'elevated', 'warm'], room: 'living', retailer: 'West Elm' },
+  { id: 44, url: 'https://www.westelm.com/products/eddy-sofa-h5088/', name: 'Eddy Sofa', category: 'Sofas', styles: ['modern', 'cozy', 'statement'], room: 'living', retailer: 'West Elm' },
+  { id: 45, url: 'https://www.cb2.com/decker-sofa/s498527', name: 'Decker Sofa', category: 'Sofas', styles: ['modern', 'minimalist', 'design-classic'], room: 'living', retailer: 'CB2' },
+
+  // ── Beds ──
+  { id: 46, url: 'https://www.ikea.com/us/en/p/hemnes-bed-frame-with-2-storage-boxes-white-stain-luroy-s89941471/', name: 'HEMNES Bed, white stain', category: 'Beds', styles: ['classic', 'scandinavian', 'warm'], room: 'bedroom', retailer: 'IKEA' },
+  { id: 47, url: 'https://www.ikea.com/us/en/p/malm-bed-frame-high-white-luroey-s19175174/', name: 'MALM Bed, high, white', category: 'Beds', styles: ['minimalist', 'modern', 'budget'], room: 'bedroom', retailer: 'IKEA' },
+  { id: 48, url: 'https://www.ikea.com/us/en/p/idanaes-bed-frame-white-luroey-s79339060/', name: 'IDANÄS Bed, white', category: 'Beds', styles: ['classic', 'warm', 'elevated'], room: 'bedroom', retailer: 'IKEA' },
+  { id: 49, url: 'https://www.westelm.com/products/mod-nightstand-h5070/', name: 'Mod Nightstand', category: 'Tables', styles: ['modern', 'minimalist', 'wood'], room: 'bedroom', retailer: 'West Elm' },
+  { id: 50, url: 'https://www.ikea.com/us/en/p/hemnes-daybed-frame-with-3-drawers-white-luroy-s49941523/', name: 'HEMNES Daybed, white', category: 'Beds', styles: ['classic', 'versatile', 'scandinavian'], room: 'bedroom', retailer: 'IKEA' },
+  { id: 51, url: 'https://www.cb2.com/ventana-bed/s628929', name: 'Ventana Bed', category: 'Beds', styles: ['modern', 'upholstered', 'elevated'], room: 'bedroom', retailer: 'CB2' },
+
+  // ── Dining ──
+  { id: 52, url: 'https://www.ikea.com/us/en/p/ekedalen-extendable-table-white-00347409/', name: 'EKEDALEN Extendable table, white', category: 'Dining', styles: ['scandinavian', 'minimalist', 'budget'], room: 'dining', retailer: 'IKEA' },
+  { id: 53, url: 'https://www.ikea.com/us/en/p/nordviken-extendable-table-white-30488202/', name: 'NORDVIKEN Table, white', category: 'Dining', styles: ['classic', 'warm', 'elevated'], room: 'dining', retailer: 'IKEA' },
+  { id: 54, url: 'https://www.westelm.com/products/modern-expandable-dining-table-h4430/', name: 'Modern Expandable Dining Table', category: 'Dining', styles: ['modern', 'wood', 'elevated'], room: 'dining', retailer: 'West Elm' },
+  { id: 55, url: 'https://www.ikea.com/us/en/p/ekedalen-chair-white-orrsta-light-gray-s39297553/', name: 'EKEDALEN Chair, white', category: 'Dining', styles: ['scandinavian', 'minimalist'], room: 'dining', retailer: 'IKEA' },
+  { id: 56, url: 'https://www.ikea.com/us/en/p/nordviken-chair-white-50488213/', name: 'NORDVIKEN Chair, white', category: 'Dining', styles: ['classic', 'warm'], room: 'dining', retailer: 'IKEA' },
+  { id: 57, url: 'https://www.hay.com/hay/furniture/tables/dining-table/copenhague-table', name: 'Copenhague Dining Table', category: 'Dining', styles: ['scandinavian', 'design-classic', 'elevated'], room: 'dining', retailer: 'HAY' },
+  { id: 58, url: 'https://www.hay.com/hay/furniture/seating/chair/j104-chair', name: 'J104 Chair', category: 'Dining', styles: ['scandinavian', 'design-classic', 'warm'], room: 'dining', retailer: 'HAY' },
+  { id: 59, url: 'https://www.muuto.com/product/linear-wood-chair/p3082/', name: 'Linear Wood Chair', category: 'Dining', styles: ['scandinavian', 'organic', 'modern'], room: 'dining', retailer: 'Muuto' },
+
+  // ── More Armchairs ──
+  { id: 60, url: 'https://www.ikea.com/us/en/p/poaeng-armchair-birch-veneer-ullevi-dark-blue-s89507424/', name: 'POÄNG Armchair, dark blue', category: 'Armchairs', styles: ['scandinavian', 'classic', 'budget'], room: 'living', retailer: 'IKEA' },
+  { id: 61, url: 'https://www.westelm.com/products/haven-chair-h6183/', name: 'Haven Lounge Chair', category: 'Armchairs', styles: ['modern', 'cozy', 'organic'], room: 'living', retailer: 'West Elm' },
+  { id: 62, url: 'https://www.muuto.com/product/rest-sofa-1-seater/p3118/', name: 'Rest Sofa 1-seater', category: 'Armchairs', styles: ['modern', 'elevated', 'organic'], room: 'living', retailer: 'Muuto' },
+
+  // ── More Lighting ──
+  { id: 63, url: 'https://www.ikea.com/us/en/p/nymoe-pendant-lamp-brass-60558913/', name: 'NYMÖE Pendant lamp, brass', category: 'Lighting', styles: ['warm', 'elevated', 'classic'], room: 'dining', retailer: 'IKEA' },
+  { id: 64, url: 'https://www.ikea.com/us/en/p/tradfri-led-bulb-e26-1055-lumen-warm-dimming-globe-opal-white-30554912/', name: 'TRÅDFRI Smart bulb, warm white', category: 'Lighting', styles: ['smart', 'minimalist', 'warm'], room: 'living', retailer: 'IKEA' },
+  { id: 65, url: 'https://www.ikea.com/us/en/p/skurup-work-wall-lamp-white-30435977/', name: 'SKURUP Wall lamp, white', category: 'Lighting', styles: ['industrial', 'modern', 'minimal'], room: 'office', retailer: 'IKEA' },
+  { id: 66, url: 'https://www.westelm.com/products/overarching-floor-lamp-h4394/', name: 'Overarching Floor Lamp', category: 'Lighting', styles: ['modern', 'statement', 'elevated'], room: 'living', retailer: 'West Elm' },
+  { id: 67, url: 'https://www.hay.com/hay/lighting/table-lamp/jwda-table-lamp', name: 'JWDA Table Lamp', category: 'Lighting', styles: ['design-classic', 'warm', 'elevated'], room: 'living', retailer: 'HAY' },
+  { id: 68, url: 'https://www.muuto.com/product/unfold-pendant/p2870/', name: 'Unfold Pendant', category: 'Lighting', styles: ['minimalist', 'graphic', 'modern'], room: 'dining', retailer: 'Muuto' },
+  { id: 69, url: 'https://fermliving.com/products/setup-pendant-grey', name: 'Setup Pendant, grey', category: 'Lighting', styles: ['scandinavian', 'minimal', 'warm'], room: 'dining', retailer: 'Ferm Living' },
+
+  // ── More Tables ──
+  { id: 70, url: 'https://www.ikea.com/us/en/p/trulstorp-coffee-table-black-brown-70521880/', name: 'TRULSTORP Coffee table, black-brown', category: 'Tables', styles: ['modern', 'dark', 'moody'], room: 'living', retailer: 'IKEA' },
+  { id: 71, url: 'https://www.ikea.com/us/en/p/lisabo-coffee-table-ash-veneer-30461244/', name: 'LISABO Coffee table, ash veneer', category: 'Tables', styles: ['mid-century', 'scandinavian', 'warm'], room: 'living', retailer: 'IKEA' },
+  { id: 72, url: 'https://www.westelm.com/products/terrace-coffee-table-h5059/', name: 'Terrace Coffee Table', category: 'Tables', styles: ['modern', 'elevated', 'wood'], room: 'living', retailer: 'West Elm' },
+  { id: 73, url: 'https://www.cb2.com/slab-marble-coffee-table/s332571', name: 'Slab Marble Coffee Table', category: 'Tables', styles: ['modern', 'statement', 'elevated', 'marble'], room: 'living', retailer: 'CB2' },
+  { id: 74, url: 'https://www.ikea.com/us/en/p/gladom-tray-table-black-20414908/', name: 'GLADOM Tray table, black', category: 'Tables', styles: ['minimalist', 'modern', 'budget'], room: 'living', retailer: 'IKEA' },
+
+  // ── More Storage ──
+  { id: 75, url: 'https://www.ikea.com/us/en/p/kallax-shelf-unit-white-00275848/', name: 'KALLAX Shelf unit, white', category: 'Storage', styles: ['minimalist', 'modern', 'budget'], room: 'office', retailer: 'IKEA' },
+  { id: 76, url: 'https://www.ikea.com/us/en/p/besta-tv-unit-white-10387239/', name: 'BESTÅ TV unit, white', category: 'Storage', styles: ['minimalist', 'modern', 'scandinavian'], room: 'living', retailer: 'IKEA' },
+  { id: 77, url: 'https://www.ikea.com/us/en/p/alex-drawer-unit-white-00473546/', name: 'ALEX Drawer unit, white', category: 'Storage', styles: ['minimalist', 'clean', 'budget'], room: 'office', retailer: 'IKEA' },
+  { id: 78, url: 'https://www.westelm.com/products/parsons-tall-bookcase-h3889/', name: 'Parsons Tall Bookcase', category: 'Storage', styles: ['modern', 'elevated', 'classic'], room: 'office', retailer: 'West Elm' },
+  { id: 79, url: 'https://www.cb2.com/latitude-tall-bookcase/s501049', name: 'Latitude Tall Bookcase', category: 'Storage', styles: ['modern', 'minimalist', 'elevated'], room: 'office', retailer: 'CB2' },
+
+  // ── More Rugs ──
+  { id: 80, url: 'https://www.ikea.com/us/en/p/vindum-rug-high-pile-off-white-90337626/', name: 'VINDUM Rug, high-pile, off-white', category: 'Rugs', styles: ['cozy', 'soft', 'minimalist'], room: 'living', retailer: 'IKEA' },
+  { id: 81, url: 'https://www.ikea.com/us/en/p/stoense-rug-low-pile-off-white-30399024/', name: 'STOENSE Rug, low-pile, off-white', category: 'Rugs', styles: ['minimalist', 'scandinavian', 'budget'], room: 'living', retailer: 'IKEA' },
+  { id: 82, url: 'https://www.ikea.com/us/en/p/knardrup-rug-low-pile-light-gray-00494623/', name: 'KNARDRUP Rug, light gray', category: 'Rugs', styles: ['minimalist', 'modern', 'budget'], room: 'living', retailer: 'IKEA' },
+  { id: 83, url: 'https://www.westelm.com/products/jute-boucle-rug-h8386/', name: 'Jute Boucle Rug', category: 'Rugs', styles: ['boho', 'natural', 'warm'], room: 'living', retailer: 'West Elm' },
+  { id: 84, url: 'https://www.westelm.com/products/kilim-printed-rug-h4342/', name: 'Kilim Printed Rug', category: 'Rugs', styles: ['boho', 'graphic', 'warm', 'mid-century'], room: 'living', retailer: 'West Elm' },
+  { id: 85, url: 'https://www.cb2.com/fringe-natural-jute-rug/s654301', name: 'Fringe Natural Jute Rug', category: 'Rugs', styles: ['natural', 'boho', 'warm'], room: 'living', retailer: 'CB2' },
+
+  // ── Textiles ──
+  { id: 86, url: 'https://www.ikea.com/us/en/p/gurli-throw-white-40322290/', name: 'GURLI Throw, white', category: 'Textiles', styles: ['minimalist', 'soft', 'scandinavian'], room: 'living', retailer: 'IKEA' },
+  { id: 87, url: 'https://www.ikea.com/us/en/p/vonge-throw-beige-10430126/', name: 'VONGE Throw, beige', category: 'Textiles', styles: ['cozy', 'warm', 'organic'], room: 'bedroom', retailer: 'IKEA' },
+  { id: 88, url: 'https://www.ikea.com/us/en/p/alvine-kvist-duvet-cover-pillow-cases-white-gray-20338879/', name: 'ALVINE KVIST Duvet set, white/gray', category: 'Textiles', styles: ['classic', 'scandinavian', 'budget'], room: 'bedroom', retailer: 'IKEA' },
+  { id: 89, url: 'https://www.westelm.com/products/organic-washed-cotton-percale-duvet-cover-h5062/', name: 'Organic Washed Percale Duvet Cover', category: 'Textiles', styles: ['organic', 'soft', 'elevated'], room: 'bedroom', retailer: 'West Elm' },
+  { id: 90, url: 'https://fermliving.com/products/dawn-cushion-offwhite', name: 'Dawn Cushion, off-white', category: 'Textiles', styles: ['scandinavian', 'organic', 'warm'], room: 'living', retailer: 'Ferm Living' },
+  { id: 91, url: 'https://www.hay.com/hay/textiles/cushion/outline-cushion', name: 'Outline Cushion', category: 'Textiles', styles: ['graphic', 'scandinavian', 'design-classic'], room: 'living', retailer: 'HAY' },
+
+  // ── More Mirrors ──
+  { id: 92, url: 'https://www.ikea.com/us/en/p/stockholm-mirror-walnut-veneer-40305767/', name: 'STOCKHOLM Mirror, walnut', category: 'Mirrors', styles: ['mid-century', 'warm', 'elevated'], room: 'entry', retailer: 'IKEA' },
+  { id: 93, url: 'https://www.westelm.com/products/floating-glass-mirror-h2095/', name: 'Floating Glass Mirror', category: 'Mirrors', styles: ['modern', 'minimalist', 'elevated'], room: 'entry', retailer: 'West Elm' },
+  { id: 94, url: 'https://www.cb2.com/arched-mirror/s671244', name: 'Arched Mirror', category: 'Mirrors', styles: ['modern', 'statement', 'elevated'], room: 'entry', retailer: 'CB2' },
+  { id: 95, url: 'https://www.hay.com/hay/accessories/mirror/sillon-mirror', name: 'Sillon Mirror', category: 'Mirrors', styles: ['design-classic', 'graphic', 'elevated'], room: 'living', retailer: 'HAY' },
+
+  // ── More Art ──
+  { id: 96, url: 'https://www.amazon.com/Abstract-Wall-Art-Bedroom-Canvas/dp/B0BWMG7FVW', name: 'Black & White Abstract Set of 3', category: 'Art', styles: ['minimalist', 'graphic', 'modern'], room: 'bedroom', retailer: 'Amazon' },
+  { id: 97, url: 'https://www.amazon.com/Landscape-Canvas-Prints-Mountain-Painting/dp/B08HMQFKPT', name: 'Mountain Landscape Canvas', category: 'Art', styles: ['organic', 'natural', 'moody'], room: 'living', retailer: 'Amazon' },
+  { id: 98, url: 'https://www.amazon.com/Framed-Canvas-Wall-Art-Bathroom/dp/B0CRTMQ2QN', name: 'Framed Botanical Set of 3', category: 'Art', styles: ['botanical', 'organic', 'warm'], room: 'bedroom', retailer: 'Amazon' },
+  { id: 99, url: 'https://www.amazon.com/Abstract-Gold-Leaf-Painting-Canvas/dp/B09Q2TZTWB', name: 'Gold Leaf Abstract Canvas', category: 'Art', styles: ['elevated', 'warm', 'abstract', 'gold'], room: 'living', retailer: 'Amazon' },
+  { id: 100, url: 'https://www.amazon.com/Japanese-Wall-Art-Print-Minimalist/dp/B09NXPFMVL', name: 'Japanese Minimalist Print Set', category: 'Art', styles: ['minimalist', 'graphic', 'calm'], room: 'office', retailer: 'Amazon' },
+
+  // ── Outdoor / Balcony ──
+  { id: 101, url: 'https://www.ikea.com/us/en/p/tarno-armchair-outdoor-foldable-black-80536181/', name: 'TARNÖ Armchair, black, outdoor', category: 'Outdoor', styles: ['minimalist', 'budget', 'outdoor'], room: 'living', retailer: 'IKEA' },
+  { id: 102, url: 'https://www.ikea.com/us/en/p/kungsholmen-armchair-outdoor-gray-foldable-20514162/', name: 'KUNGSHOLMEN Chair, gray, outdoor', category: 'Outdoor', styles: ['scandinavian', 'modern', 'outdoor'], room: 'living', retailer: 'IKEA' },
+  { id: 103, url: 'https://www.ikea.com/us/en/p/askholmen-table-outdoor-gray-brown-60603699/', name: 'ASKHOLMEN Table, outdoor', category: 'Outdoor', styles: ['natural', 'wood', 'outdoor'], room: 'living', retailer: 'IKEA' },
+  { id: 104, url: 'https://www.westelm.com/products/portside-outdoor-sofa-h5122/', name: 'Portside Outdoor Sofa', category: 'Outdoor', styles: ['modern', 'elevated', 'outdoor'], room: 'living', retailer: 'West Elm' },
+  { id: 105, url: 'https://www.cb2.com/spark-outdoor-dining-table/s648402', name: 'Spark Outdoor Dining Table', category: 'Outdoor', styles: ['modern', 'elevated', 'outdoor'], room: 'dining', retailer: 'CB2' },
+
+  // ── Office / Desk ──
+  { id: 106, url: 'https://www.ikea.com/us/en/p/lagkapten-alex-desk-anthracite-s79417485/', name: 'LAGKAPTEN/ALEX Desk, anthracite', category: 'Tables', styles: ['modern', 'dark', 'office'], room: 'office', retailer: 'IKEA' },
+  { id: 107, url: 'https://www.ikea.com/us/en/p/lagkapten-alex-desk-white-s99417459/', name: 'LAGKAPTEN/ALEX Desk, white', category: 'Tables', styles: ['minimalist', 'clean', 'office'], room: 'office', retailer: 'IKEA' },
+  { id: 108, url: 'https://www.westelm.com/products/mid-century-mini-desk-h3907/', name: 'Mid-Century Mini Desk', category: 'Tables', styles: ['mid-century', 'wood', 'elevated'], room: 'office', retailer: 'West Elm' },
+  { id: 109, url: 'https://www.ikea.com/us/en/p/markus-office-chair-vissle-dark-gray-70261150/', name: 'MARKUS Office chair, dark gray', category: 'Armchairs', styles: ['modern', 'ergonomic', 'office'], room: 'office', retailer: 'IKEA' },
+  { id: 110, url: 'https://www.ikea.com/us/en/p/flintan-office-chair-vissle-beige-20447971/', name: 'FLINTAN Office chair, beige', category: 'Armchairs', styles: ['scandinavian', 'warm', 'office'], room: 'office', retailer: 'IKEA' },
 ];
 
 export const CATALOG_BY_ID = new Map(CATALOG.map((c) => [c.id, c]));
