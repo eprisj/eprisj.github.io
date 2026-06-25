@@ -20,6 +20,7 @@ export interface CatalogItem {
   styles: string[];
   room: string;
   retailer: string;
+  image?: string; // static fallback image when resolver can't scrape the retailer
 }
 
 export interface SetDesign {

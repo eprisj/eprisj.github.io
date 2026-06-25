@@ -24,7 +24,50 @@ export interface DesignUI {
   stylistLoading: string;
   stylistBoardFor: string;
   stylistTryAgain: string;
+  // ── Stylist v2 (structured brief + reasoning) — optional, EN-merged ──
+  stylistRoom?: string;
+  stylistStyle?: string;
+  stylistBudget?: string;
+  stylistAnyBudget?: string;
+  stylistRefine?: string;
+  stylistCompose?: string;
+  stylistConcept?: string;
+  stylistPalette?: string;
+  stylistEstimate?: string;
+  stylistTips?: string;
+  stylistWhy?: string;
+  roleAnchor?: string;
+  roleSupport?: string;
+  roleAccent?: string;
 }
+
+// New stylist UI strings, merged onto every language (EN fallback per-key).
+const STYLIST_EXT: Record<SupportedLang, Partial<DesignUI>> = {
+  EN: { stylistRoom: 'Room', stylistStyle: 'Style', stylistBudget: 'Budget', stylistAnyBudget: 'No limit', stylistRefine: 'Add detail — palette, mood, what it\'s for…', stylistCompose: 'Compose my room', stylistConcept: 'The concept', stylistPalette: 'Palette', stylistEstimate: 'Estimated total', stylistTips: 'Styling notes', stylistWhy: 'Why it works', roleAnchor: 'Anchor', roleSupport: 'Supporting', roleAccent: 'Accent' },
+  UA: { stylistRoom: 'Кімната', stylistStyle: 'Стиль', stylistBudget: 'Бюджет', stylistAnyBudget: 'Без межі', stylistRefine: 'Додайте деталі — палітра, настрій, призначення…', stylistCompose: 'Скласти кімнату', stylistConcept: 'Концепція', stylistPalette: 'Палітра', stylistEstimate: 'Орієнтовна сума', stylistTips: 'Поради стиліста', stylistWhy: 'Чому це працює', roleAnchor: 'Основа', roleSupport: 'Підтримка', roleAccent: 'Акцент' },
+  RU: { stylistRoom: 'Комната', stylistStyle: 'Стиль', stylistBudget: 'Бюджет', stylistAnyBudget: 'Без лимита', stylistRefine: 'Добавьте деталей — палитра, настроение, для чего…', stylistCompose: 'Собрать комнату', stylistConcept: 'Концепция', stylistPalette: 'Палитра', stylistEstimate: 'Примерная сумма', stylistTips: 'Заметки стилиста', stylistWhy: 'Почему это работает', roleAnchor: 'Основа', roleSupport: 'Поддержка', roleAccent: 'Акцент' },
+  DE: { stylistRoom: 'Raum', stylistStyle: 'Stil', stylistBudget: 'Budget', stylistAnyBudget: 'Kein Limit', stylistRefine: 'Details ergänzen — Palette, Stimmung, Zweck…', stylistCompose: 'Raum gestalten', stylistConcept: 'Das Konzept', stylistPalette: 'Palette', stylistEstimate: 'Geschätzte Summe', stylistTips: 'Styling-Notizen', stylistWhy: 'Warum es funktioniert', roleAnchor: 'Anker', roleSupport: 'Ergänzend', roleAccent: 'Akzent' },
+  IT: { stylistRoom: 'Stanza', stylistStyle: 'Stile', stylistBudget: 'Budget', stylistAnyBudget: 'Nessun limite', stylistRefine: 'Aggiungi dettagli — palette, atmosfera, uso…', stylistCompose: 'Componi la stanza', stylistConcept: 'Il concept', stylistPalette: 'Palette', stylistEstimate: 'Totale stimato', stylistTips: 'Note di stile', stylistWhy: 'Perché funziona', roleAnchor: 'Ancora', roleSupport: 'Di supporto', roleAccent: 'Accento' },
+  ES: { stylistRoom: 'Estancia', stylistStyle: 'Estilo', stylistBudget: 'Presupuesto', stylistAnyBudget: 'Sin límite', stylistRefine: 'Añade detalles — paleta, ambiente, uso…', stylistCompose: 'Componer mi estancia', stylistConcept: 'El concepto', stylistPalette: 'Paleta', stylistEstimate: 'Total estimado', stylistTips: 'Notas de estilo', stylistWhy: 'Por qué funciona', roleAnchor: 'Ancla', roleSupport: 'De apoyo', roleAccent: 'Acento' },
+  TR: { stylistRoom: 'Oda', stylistStyle: 'Stil', stylistBudget: 'Bütçe', stylistAnyBudget: 'Sınır yok', stylistRefine: 'Detay ekleyin — palet, hava, amaç…', stylistCompose: 'Odamı oluştur', stylistConcept: 'Konsept', stylistPalette: 'Palet', stylistEstimate: 'Tahmini toplam', stylistTips: 'Stil notları', stylistWhy: 'Neden işe yarıyor', roleAnchor: 'Çapa', roleSupport: 'Destekleyici', roleAccent: 'Aksan' },
+};
+
+export interface RoomChip { key: string; label: Record<SupportedLang, string>; }
+export const STYLIST_ROOMS: RoomChip[] = [
+  { key: 'living', label: { EN: 'Living room', UA: 'Вітальня', RU: 'Гостиная', DE: 'Wohnzimmer', IT: 'Soggiorno', ES: 'Salón', TR: 'Oturma odası' } },
+  { key: 'bedroom', label: { EN: 'Bedroom', UA: 'Спальня', RU: 'Спальня', DE: 'Schlafzimmer', IT: 'Camera', ES: 'Dormitorio', TR: 'Yatak odası' } },
+  { key: 'office', label: { EN: 'Home office', UA: 'Офіс', RU: 'Кабинет', DE: 'Büro', IT: 'Studio', ES: 'Despacho', TR: 'Ofis' } },
+  { key: 'dining', label: { EN: 'Dining', UA: 'Їдальня', RU: 'Столовая', DE: 'Esszimmer', IT: 'Sala da pranzo', ES: 'Comedor', TR: 'Yemek' } },
+  { key: 'entry', label: { EN: 'Hallway', UA: 'Передпокій', RU: 'Прихожая', DE: 'Flur', IT: 'Ingresso', ES: 'Entrada', TR: 'Hol' } },
+];
+export function getRoomLabel(key: string, lang: string): string {
+  const r = STYLIST_ROOMS.find((x) => x.key === key);
+  return r ? (r.label[lang as SupportedLang] ?? r.label.EN) : key;
+}
+
+// Design vocabulary — kept in English (universal, matches catalogue style tags).
+export const STYLIST_STYLES = ['Scandinavian', 'Minimalist', 'Mid-century', 'Warm', 'Modern', 'Classic', 'Moody', 'Boho'];
+export const STYLIST_BUDGETS = [800, 1500, 3000, 0];
 
 export interface LookI18n {
   title: string;
@@ -289,7 +332,9 @@ const looks: Record<number, Partial<Record<SupportedLang, LookI18n>>> = {
 const FALLBACK: SupportedLang = 'EN';
 
 export function getUI(lang: string): DesignUI {
-  return ui[lang as SupportedLang] ?? ui[FALLBACK];
+  const L = (lang as SupportedLang) in ui ? (lang as SupportedLang) : FALLBACK;
+  // Merge stylist v2 strings (EN as per-key fallback) onto the base table.
+  return { ...ui[L], ...STYLIST_EXT.EN, ...STYLIST_EXT[L] };
 }
 
 export function getLook(id: number, lang: string): LookI18n {
