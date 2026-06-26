@@ -45,7 +45,7 @@ function ProductModal({ item, data, onClose, lang }: {
           )}
           <div className="flex flex-wrap gap-1.5 mb-8">
             {item.styles.map((s) => (
-              <span key={s} className="font-mono text-[8px] uppercase tracking-[0.18em] text-white/25 border border-white/10 px-2 py-0.5">{s}</span>
+              <span key={s} className="font-mono text-[10px] font-semibold uppercase tracking-wider text-white/70 border border-white/30 px-2.5 py-1">{s}</span>
             ))}
           </div>
           <a
@@ -93,8 +93,8 @@ function DarkProductCard({ item, data, index, onOpen }: {
           )}
         </div>
         <div className="mt-3 px-0.5">
-          <p className="font-mono text-[7px] uppercase tracking-[0.25em] text-[#C9A690]/50 mb-1">{item.category}</p>
-          <h3 className="font-serif text-sm text-white/80 leading-snug line-clamp-2 group-hover:text-white transition-colors">
+          <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#C9A690] mb-1">{item.category}</p>
+          <h3 className="font-serif text-[14px] font-medium text-white leading-snug line-clamp-2 group-hover:text-[#C9A690] transition-colors">
             {loading ? item.name : data!.title}
           </h3>
         </div>
@@ -667,7 +667,7 @@ export function DesignPage({ lang = 'EN' }: { lang?: string }) {
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="h-px w-6 bg-[#C9A690]/40" />
-                  <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-[#C9A690]/60">{ui.catalogKicker}</span>
+                  <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.3em] text-[#C9A690]">{ui.catalogKicker}</span>
                 </div>
                 <h2
                   style={{ fontFamily: "'Playfair Display', serif" }}
@@ -677,10 +677,10 @@ export function DesignPage({ lang = 'EN' }: { lang?: string }) {
               <div className="flex flex-wrap gap-2">
                 {(['__all', ...SHOP_CATEGORIES] as const).map((cat) => (
                   <button key={cat} onClick={() => setActiveCat(cat)}
-                    className={`font-mono text-[8px] uppercase tracking-[0.22em] px-3.5 py-2 border transition-all duration-200 ${
+                    className={`font-mono text-[11px] font-semibold uppercase tracking-wider px-4 py-2 border transition-all duration-200 ${
                       activeCat === cat
-                        ? 'border-[#C9A690] text-[#C9A690] bg-[#C9A690]/8'
-                        : 'border-white/10 text-white/30 hover:border-white/30 hover:text-white/60'
+                        ? 'border-[#C9A690] text-[#C9A690] bg-[#C9A690]/10'
+                        : 'border-white/25 text-white hover:border-white hover:text-white'
                     }`}>
                     {cat === '__all' ? ui.allFilter : cat}
                   </button>
@@ -720,7 +720,7 @@ export function DesignPage({ lang = 'EN' }: { lang?: string }) {
               {/* Info */}
               <div className="flex flex-col justify-between p-8 md:p-12 lg:p-14 border-l border-white/5">
                 <div>
-                  <p className="font-mono text-[8px] uppercase tracking-[0.35em] text-[#C9A690]/60 mb-4">{ui.featuredLabel} · {filtered[0].category}</p>
+                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.25em] text-[#C9A690] mb-4">{ui.featuredLabel} · {filtered[0].category}</p>
                   <h3
                     style={{ fontFamily: "'Playfair Display', serif" }}
                     className="text-[clamp(26px,3.5vw,48px)] leading-tight text-white mb-3"
@@ -728,12 +728,12 @@ export function DesignPage({ lang = 'EN' }: { lang?: string }) {
                   {resolved[filtered[0].id]?.price && (
                     <p className="font-mono text-2xl md:text-3xl font-bold text-[#C9A690] mb-5">{formatPrice(resolved[filtered[0].id]!)}</p>
                   )}
-                  <p className="text-sm text-white/30 leading-relaxed line-clamp-3 mb-6">
+                  <p className="text-[15px] text-white/75 leading-relaxed line-clamp-3 mb-6">
                     {resolved[filtered[0].id]?.description}
                   </p>
-                  <div className="flex flex-wrap gap-1.5 mb-8">
+                  <div className="flex flex-wrap gap-2 mb-8">
                     {filtered[0].styles.map((s) => (
-                      <span key={s} className="font-mono text-[7px] uppercase tracking-widest text-white/20 border border-white/8 px-2 py-0.5">{s}</span>
+                      <span key={s} className="font-mono text-[10px] font-semibold uppercase tracking-wider text-white border border-white/30 px-2.5 py-1">{s}</span>
                     ))}
                   </div>
                 </div>
