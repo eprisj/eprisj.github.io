@@ -151,17 +151,25 @@ function byId(id) {
 
 
 // Setup via URL: ?setup=TOKEN seeds localStorage and reloads clean
+// Also supports ?pw=PASSWORD for first-time password-based remember-me seeding
 (function setupFromUrl() {
   const p = new URLSearchParams(location.search);
   const t = p.get('setup');
   if (t && t.length > 20) {
     localStorage.setItem('epris_admin_token', t);
     location.replace(location.pathname);
+    return;
+  }
+  const pw = p.get('pw');
+  if (pw && pw.length > 4) {
+    localStorage.setItem('epris_admin_pw_saved', btoa(pw));
+    location.replace(location.pathname);
   }
 })();
 
 // ===== AUTH GATE =====
-const AUTH_STORAGE_KEY = 'epris_admin_token';
+const AUTH_STORAGE_KEY    = 'epris_admin_token';
+const AUTH_PW_STORAGE_KEY = 'epris_admin_pw_saved'; // obfuscated saved password for auto-reauth
 const authOverlay = byId('authOverlay');
 const authTokenInput = byId('authTokenInput');
 const authRememberCheck = byId('authRememberCheck');
@@ -210,27 +218,51 @@ async function handleLogin() {
 }
 
 async function tryAutoLogin() {
-  const saved = localStorage.getItem(AUTH_STORAGE_KEY);
-  const autoToken = saved;
-  if (!autoToken) {
-    authLoading.hidden = true;
-    authLoginBtn.disabled = false;
-    return;
+  // 1. Try saved PAT first (fastest, no round-trip to /token)
+  const savedPat = localStorage.getItem(AUTH_STORAGE_KEY);
+  if (savedPat) {
+    authLoading.hidden = false;
+    authLoginBtn.disabled = true;
+    try {
+      await verifyToken(savedPat);
+      tokenInput.value = savedPat;
+      rememberTokenInput.checked = true;
+      // Restore radio token too if present
+      const rt = localStorage.getItem('epris_radio_admin_pw');
+      if (rt) applyRadioToken(rt);
+      hideAuthOverlay();
+      await init({ fromLogin: true });
+      return;
+    } catch {
+      localStorage.removeItem(AUTH_STORAGE_KEY);
+    }
   }
-  authTokenInput.value = autoToken;
-  authLoading.hidden = false;
-  authLoginBtn.disabled = true;
-  try {
-    await verifyToken(autoToken);
-    tokenInput.value = autoToken;
-    rememberTokenInput.checked = true;
-    hideAuthOverlay();
-    await init({ fromLogin: true });
-  } catch (e) {
-    if (saved) localStorage.removeItem(AUTH_STORAGE_KEY);
-    authLoading.hidden = true;
-    authLoginBtn.disabled = false;
+  // 2. Try saved password → exchange for fresh PAT
+  const savedPw = localStorage.getItem(AUTH_PW_STORAGE_KEY);
+  if (savedPw) {
+    authLoading.hidden = false;
+    try {
+      const pw = atob(savedPw); // light obfuscation only
+      const res = await fetch(TOKEN_API, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: pw }),
+      });
+      const data = await res.json();
+      if (data.ok && data.token) {
+        await verifyToken(data.token);
+        tokenInput.value = data.token;
+        localStorage.setItem(AUTH_STORAGE_KEY, data.token);
+        applyRadioToken(data.radio_token);
+        rememberTokenInput.checked = true;
+        hideAuthOverlay();
+        await init({ fromLogin: true });
+        return;
+      }
+    } catch { /* fall through to login form */ }
+    localStorage.removeItem(AUTH_PW_STORAGE_KEY);
   }
+  authLoading.hidden = true;
+  authLoginBtn.disabled = false;
 }
 
 // ── Password login (exchanges password → GitHub PAT + radio token) ──
@@ -267,6 +299,7 @@ async function handlePasswordLogin() {
     tokenInput.value = data.token;
     if (authRememberCheck?.checked) {
       localStorage.setItem(AUTH_STORAGE_KEY, data.token);
+      localStorage.setItem(AUTH_PW_STORAGE_KEY, btoa(pw)); // save password for silent re-auth
       rememberTokenInput.checked = true;
     }
     hideAuthOverlay();
@@ -7614,34 +7647,39 @@ function bindStudioRowActions() {
     } catch (e) {
       if (statusEl) { statusEl.textContent = '✗ ' + e.message; statusEl.style.color = 'var(--danger)'; }
     }
-    // Load catalog stats from localStorage cache
+    // Catalog stats — hardcoded from catalog.ts (updated when catalog grows)
+    const CATALOG_STATS = {
+      items: 244,
+      looks: 8,
+      retailers: ['IKEA','HAY','Muuto','Ferm Living','CB2','West Elm','Crate & Barrel','Article',
+        'Pottery Barn','Anthropologie','Normann Copenhagen','Gubi','&Tradition','Vitra',
+        'Audo Copenhagen','Fritz Hansen','Tom Dixon','BoConcept','RH','Knoll','Moooi',
+        'Ligne Roset','Cassina','String Furniture','DWR','Amazon'],
+      styles: ['scandinavian','minimalist','mid-century','warm','classic','moody','boho',
+        'elevated','design-classic','organic','modern','industrial','statement','leather',
+        'wood','graphic','cozy','dark','natural','geometric','mid-century','japandi','wabi-sabi'],
+    };
     try {
+      document.getElementById('designStatItems').textContent = CATALOG_STATS.items;
+      document.getElementById('designStatRetailers').textContent = CATALOG_STATS.retailers.length;
+      document.getElementById('designStatStyles').textContent = CATALOG_STATS.styles.length;
+      document.getElementById('designStatLooks').textContent = CATALOG_STATS.looks;
+      // Show retailer breakdown
+      if (retailerEl) {
+        retailerEl.innerHTML = CATALOG_STATS.retailers.map(r => `
+          <div class="dash-audit-row">
+            <span class="dash-audit-section">${r}</span>
+          </div>`).join('');
+      }
+      // Enrich with live cache counts if available
       const raw = localStorage.getItem('epris_design_products_v2');
       if (raw) {
         const cache = JSON.parse(raw);
-        const items = Object.values(cache).filter(v => v && v.title);
-        document.getElementById('designStatItems').textContent = items.length;
-        const retailers = [...new Set(items.map(i => i.siteName || i.brand).filter(Boolean))];
-        document.getElementById('designStatRetailers').textContent = retailers.length;
-        const styles = [...new Set(items.flatMap(i => i.styles || []))];
-        document.getElementById('designStatStyles').textContent = styles.length;
-        if (retailerEl) {
-          retailerEl.innerHTML = retailers.slice(0, 20).map(r => `
-            <div class="dash-audit-row">
-              <span class="dash-audit-section">${r}</span>
-              <div class="dash-audit-chips">
-                <span class="dash-audit-chip ok">${items.filter(i => (i.siteName || i.brand) === r).length} товаров</span>
-              </div>
-            </div>`).join('') || '<p class="dash-empty-hint">Нет данных кеша.</p>';
+        const items = Object.values(cache).filter(v => v && (v.title || v.data));
+        if (items.length > 5) {
+          document.getElementById('designStatItems').textContent = CATALOG_STATS.items + ' (' + items.length + ' в кеше)';
         }
-      } else {
-        document.getElementById('designStatItems').textContent = '—';
-        document.getElementById('designStatRetailers').textContent = '—';
-        document.getElementById('designStatStyles').textContent = '—';
       }
-      // Count looks from site-content if loaded
-      const looksCount = document.querySelectorAll('.look-card')?.length || '—';
-      document.getElementById('designStatLooks').textContent = looksCount;
     } catch {}
   }
 
@@ -7682,4 +7720,6 @@ function bindStudioRowActions() {
   document.getElementById('designTestCurateBtn')?.addEventListener('click', testCurate);
   document.getElementById('designClearCacheBtn')?.addEventListener('click', clearVpsCache);
   document.querySelector('[data-tab="design"]')?.addEventListener('click', loadDesignStats);
+  // Auto-load on init
+  setTimeout(loadDesignStats, 800);
 })();
