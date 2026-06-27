@@ -181,6 +181,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
   const speakTimerRef = useRef<number | null>(null)
   const audioCtxRef = useRef<AudioContext | null>(null)
   const keepAliveRef = useRef<AudioBufferSourceNode | null>(null)
+  const noSleepElRef = useRef<HTMLAudioElement | null>(null)
   const analysersRef = useRef<Map<number, AnalyserEntry>>(new Map())
   const speakingRef = useRef<Map<number, boolean>>(new Map())
   const blockedAudiosRef = useRef<Set<HTMLAudioElement>>(new Set())
@@ -221,9 +222,47 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
     return audioCtxRef.current
   }, [])
 
+  // NoSleep: <audio> з реальним WAV-блобом — iOS тримає аудіо-сесію
+  // живою при блокуванні екрана лише якщо грає справжній <audio>.
+  const startNoSleep = useCallback(() => {
+    if (noSleepElRef.current) return
+    try {
+      const wav = new Uint8Array([
+        0x52,0x49,0x46,0x46,0x25,0x00,0x00,0x00,0x57,0x41,0x56,0x45,
+        0x66,0x6d,0x74,0x20,0x10,0x00,0x00,0x00,0x01,0x00,0x01,0x00,
+        0x40,0x1f,0x00,0x00,0x40,0x1f,0x00,0x00,0x01,0x00,0x08,0x00,
+        0x64,0x61,0x74,0x61,0x01,0x00,0x00,0x00,0x80,
+      ])
+      const url = URL.createObjectURL(new Blob([wav], { type: 'audio/wav' }))
+      const el = new Audio(url)
+      el.loop = true; el.volume = 0.001
+      el.setAttribute('playsinline', '')
+      ;(el as HTMLAudioElement & { playsInline?: boolean }).playsInline = true
+      document.body.appendChild(el)
+      noSleepElRef.current = el
+      el.play().catch(() => {})
+    } catch { /* unsupported */ }
+  }, [])
+
+  const stopNoSleep = useCallback(() => {
+    if (!noSleepElRef.current) return
+    noSleepElRef.current.pause()
+    noSleepElRef.current.src = ''
+    noSleepElRef.current.remove()
+    noSleepElRef.current = null
+  }, [])
+
   const acquireWakeLock = useCallback(async () => {
     if (wakeLockRef.current) return
-    try { wakeLockRef.current = await navigator.wakeLock?.request('screen') } catch { /* ignore */ }
+    try {
+      if (!navigator.wakeLock) return
+      const sentinel = await navigator.wakeLock.request('screen')
+      wakeLockRef.current = sentinel
+      sentinel.addEventListener('release', () => {
+        wakeLockRef.current = null
+        if (document.visibilityState === 'visible' && joinedRef.current) acquireWakeLock()
+      }, { once: true })
+    } catch { /* ignore */ }
   }, [])
 
   const detachAnalyser = useCallback((key: number) => {
@@ -351,6 +390,10 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
     (audio as HTMLAudioElement & { playsInline?: boolean }).playsInline = true
     audio.setAttribute('playsinline', '')
     audio.style.display = 'none'
+    // iOS може заглушити <audio> при блокуванні екрана — одразу відновлюємо
+    audio.addEventListener('pause', () => {
+      if (joinedRef.current && audio.srcObject) audio.play().catch(() => {})
+    })
     document.body.appendChild(audio)
 
     const entry: PeerEntry = { pc, audio, polite, makingOffer: false, ignoreOffer: false, restartTimer: null }
@@ -588,6 +631,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
     setError(null); setConnecting(true)
     try {
       ensureAudioCtx()
+      startNoSleep()
       const user = await ensureAuth(nickname || opts?.nickname)
       myUserIdRef.current = user.id; setMyUser(user)
       const cfg = await apiFetch('/api/calls/config')
@@ -659,8 +703,10 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
           navigator.mediaSession.setActionHandler('previoustrack', () => {
             leaveFnRef.current().catch(() => {})
           })
+          // 'stop' — iOS натискає на локскрині і вбиває аудіо-сесію.
+          // Резистуємо: скидаємо playbackState в 'playing' замість виходу.
           navigator.mediaSession.setActionHandler('stop', () => {
-            leaveFnRef.current().catch(() => {})
+            try { navigator.mediaSession.playbackState = 'playing' } catch { /* ignore */ }
           })
         } catch { /* ignore */ }
       }
@@ -783,35 +829,37 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
     await refreshActive()
   }, [stopTimers, cleanupAll, refreshActive])
 
+  // Захоплюємо мікрофон ОДИН раз і тримаємо весь дзвінок.
+  // PTT/мьют перемикають лише track.enabled — миттєво, без повторного getUserMedia
+  // і без renegotiation. Повторний захват пристрою = затримки + гальмування AEC на мобайлі.
+  const ensureMicStream = useCallback(async (): Promise<MediaStreamTrack | null> => {
+    const live = localStreamRef.current?.getAudioTracks().find(t => t.readyState === 'live')
+    if (live) return live
+    const stream = await getMicStream()
+    localStreamRef.current = stream
+    const track = stream.getAudioTracks()[0] ?? null
+    if (track) {
+      track.enabled = false
+      track.onended = () => {
+        if (localStreamRef.current !== stream) return
+        localStreamRef.current = null; micOnRef.current = false; setMicOn(false); setSpeaking(false)
+        for (const [, entry] of peersRef.current) { const tr = audioTransceiver(entry.pc); if (tr) applyMicToTransceiver(tr) }
+        const cid = callIdRef.current
+        if (cid) apiFetch(`/api/calls/${cid}/mic`, { method: 'PUT', body: JSON.stringify({ on: false }) }).catch(() => {})
+      }
+      for (const [, entry] of peersRef.current) { const tr = audioTransceiver(entry.pc); if (tr) applyMicToTransceiver(tr) }
+    }
+    return track
+  }, [applyMicToTransceiver])
+
   const toggleMic = useCallback(async () => {
     const cid = callIdRef.current; if (!cid) return
     const next = !micOnRef.current
     if (next) {
+      if (!navigator.mediaDevices?.getUserMedia) { setError('Браузер не підтримує мікрофон.'); return }
+      let track: MediaStreamTrack | null
       try {
-        if (!navigator.mediaDevices?.getUserMedia) { setError('Браузер не підтримує мікрофон.'); return }
-        const stream = await getMicStream()
-        localStreamRef.current = stream; micOnRef.current = true; userWantsMicRef.current = true
-        const track = stream.getAudioTracks()[0]
-        if (track) {
-          track.onended = () => {
-            if (localStreamRef.current !== stream) return
-            localStreamRef.current = null; micOnRef.current = false; setMicOn(false); setSpeaking(false)
-            for (const [, entry] of peersRef.current) { const tr = audioTransceiver(entry.pc); if (tr) applyMicToTransceiver(tr) }
-            apiFetch(`/api/calls/${cid}/mic`, { method: 'PUT', body: JSON.stringify({ on: false }) }).catch(() => {})
-          }
-        }
-        setSpeaking(true)
-        // If music is playing, feed mic into the mix
-        if (mixDestRef.current && audioCtxRef.current) {
-          const ctx = audioCtxRef.current
-          const micGain = ctx.createGain()
-          micGain.gain.value = 1.0
-          micInMixGainRef.current = micGain
-          const micSrc = ctx.createMediaStreamSource(stream)
-          micSrc.connect(micGain)
-          micGain.connect(mixDestRef.current)
-        }
-        for (const [, entry] of peersRef.current) { const tr = audioTransceiver(entry.pc); if (tr) applyMicToTransceiver(tr) }
+        track = await ensureMicStream()
       } catch (err) {
         micOnRef.current = false
         if (err instanceof DOMException) {
@@ -822,17 +870,28 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
         } else { setError('Не вдалося увімкнути мікрофон.') }
         return
       }
+      if (!track) { setError('Не вдалося увімкнути мікрофон.'); return }
+      audioCtxRef.current?.resume?.().catch(() => {})
+      track.enabled = true
+      micOnRef.current = true; userWantsMicRef.current = true; setSpeaking(true)
+      // Music mix: connect mic gain if music is playing
+      if (mixDestRef.current && audioCtxRef.current && localStreamRef.current) {
+        const ctx = audioCtxRef.current
+        const micGain = ctx.createGain(); micGain.gain.value = 1.0
+        micInMixGainRef.current = micGain
+        ctx.createMediaStreamSource(localStreamRef.current).connect(micGain)
+        micGain.connect(mixDestRef.current)
+      }
     } else {
+      const track = localStreamRef.current?.getAudioTracks()[0]
+      if (track) track.enabled = false  // тиша миттєво, пристрій НЕ звільняємо
       micOnRef.current = false; userWantsMicRef.current = false
-      // Mute mic in the mix if music is playing
       if (micInMixGainRef.current) { micInMixGainRef.current.gain.value = 0; micInMixGainRef.current = null }
-      for (const [, entry] of peersRef.current) { const tr = audioTransceiver(entry.pc); if (tr) applyMicToTransceiver(tr) }
-      if (localStreamRef.current) { for (const t of localStreamRef.current.getTracks()) t.stop(); localStreamRef.current = null }
       setSpeaking(false)
     }
     setMicOn(next); setError(null)
     apiFetch(`/api/calls/${cid}/mic`, { method: 'PUT', body: JSON.stringify({ on: next }) }).catch(() => {})
-  }, [applyMicToTransceiver])
+  }, [ensureMicStream, applyMicToTransceiver])
 
   // Pagehide — send leave beacon
   useEffect(() => {
@@ -855,6 +914,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
     const recover = () => {
       if (document.visibilityState === 'hidden' || !joinedRef.current) return
       ensureAudioCtx()
+      startNoSleep()
       for (const [, entry] of peersRef.current) {
         entry.audio.play().catch(() => {})
         if (entry.pc.connectionState === 'failed' || entry.pc.iceConnectionState === 'disconnected') {
@@ -863,11 +923,16 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
       }
       acquireWakeLock()
       startTimers(); pollMembers(); pollSignals()
-      // Android: if OS killed the mic track while screen was locked, re-enable it
-      if (userWantsMicRef.current && !micOnRef.current) {
-        toggleMicRef.current().catch(() => {})
+      // iOS/Android: якщо ОС завершила трек під час локскрину — перезахоплюємо
+      if (userWantsMicRef.current) {
+        const track = localStreamRef.current?.getAudioTracks()[0]
+        if (!track || track.readyState === 'ended') {
+          toggleMicRef.current().catch(() => {})
+        } else {
+          track.enabled = true
+          audioCtxRef.current?.resume?.().catch(() => {})
+        }
       }
-      // Refresh Android lock screen session state
       if ('mediaSession' in navigator) {
         try { navigator.mediaSession.playbackState = 'playing' } catch { /* ignore */ }
       }
@@ -880,7 +945,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
       window.removeEventListener('online', recover)
       window.removeEventListener('pageshow', recover)
     }
-  }, [ensureAudioCtx, acquireWakeLock, startTimers, pollMembers, pollSignals])
+  }, [ensureAudioCtx, startNoSleep, acquireWakeLock, startTimers, pollMembers, pollSignals])
 
   // Keep MediaSession action handler refs current
   useEffect(() => { toggleMicRef.current = toggleMic }, [toggleMic])
@@ -890,11 +955,12 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
   useEffect(() => () => {
     stopTimers(); cleanupAll()
     keepAliveRef.current?.stop?.()
+    stopNoSleep()
     androidCleanupRef.current()
     wakeLockRef.current?.release().catch(() => {})
     audioCtxRef.current?.close?.().catch(() => {})
     audioCtxRef.current = null
-  }, [stopTimers, cleanupAll])
+  }, [stopTimers, cleanupAll, stopNoSleep])
 
   return {
     members, memberVolumes, joined, micOn, speaking, connecting, error,
