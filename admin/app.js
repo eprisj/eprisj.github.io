@@ -62,6 +62,7 @@ const creatorTitleInput = byId('creatorTitle');
 const creatorCategoryInput = byId('creatorCategory');
 const creatorSeedInput = byId('creatorSeed');
 const creatorImageUrlInput = byId('creatorImageUrl');
+const creatorImagePreview = byId('creatorImagePreview');
 const storyBlueprintBtn = byId('storyBlueprintBtn');
 const guideBlueprintBtn = byId('guideBlueprintBtn');
 const photoEssayBlueprintBtn = byId('photoEssayBlueprintBtn');
@@ -354,6 +355,25 @@ function bindEvents() {
   insertStructureBtn.addEventListener('click', () => appendArticlePreset('structure'));
   insertChecklistTemplateBtn.addEventListener('click', () => appendArticlePreset('checklist'));
   insertPollTemplateBtn.addEventListener('click', () => appendArticlePreset('poll'));
+
+  // Creator Image Upload & Preview
+  if (creatorImageUrlInput) {
+    creatorImageUrlInput.addEventListener('input', () => {
+      const url = creatorImageUrlInput.value.trim();
+      if (creatorImagePreview) {
+        if (url) {
+          creatorImagePreview.src = url;
+          creatorImagePreview.removeAttribute('hidden');
+        } else {
+          creatorImagePreview.setAttribute('hidden', 'hidden');
+          creatorImagePreview.src = '';
+        }
+      }
+    });
+    bindUploadButton('creatorImageUploadBtn', 'creatorImageUploadInput', 'creatorImageUrl', () => {
+      creatorImageUrlInput.dispatchEvent(new Event('input'));
+    });
+  }
   findMissingLangBtn.addEventListener('click', () => selectFirstIssueEntry('missingLang'));
   findNoPhotoBtn.addEventListener('click', () => selectFirstIssueEntry('noPhoto'));
   findNoPollBtn.addEventListener('click', () => selectFirstIssueEntry('noPoll'));
@@ -3004,6 +3024,9 @@ function renderVisualForm() {
       ${renderPhotoPreviewMarkup(previewSource)}
     `;
     bindPhotoPreviewInputs();
+    bindUploadButton('vf-img-upload-btn', 'vf-img-upload-input', 'vf-imageUrl', () => {
+      document.getElementById('vf-imageUrl')?.dispatchEvent(new Event('input'));
+    });
     bindCreatorQualityInputs(entry);
     return;
   }
@@ -3074,7 +3097,13 @@ function renderVisualForm() {
     <label>Подкатегория<input id="vf-subcategory" value="${escapeHtml(entry.subcategory || '')}" /></label>
     <label class="full">Краткое описание<textarea id="vf-excerpt">${escapeHtml(entry.excerpt || '')}</textarea></label>
     <label class="full">Теги (через запятую)<input id="vf-tags" value="${escapeHtml(Array.isArray(entry.tags) ? entry.tags.join(', ') : '')}" /></label>
-    <label class="full">URL обложки (необязательно)<input id="vf-imageUrl" placeholder="https://..." value="${escapeHtml(entry.imageUrl || '')}" /></label>
+    <label class="full">URL обложки (необязательно)
+      <div style="display:flex;gap:8px;align-items:center;width:100%;">
+        <input id="vf-imageUrl" placeholder="https://..." value="${escapeHtml(entry.imageUrl || '')}" style="flex:1" />
+        <button id="vf-img-upload-btn" class="btn btn-sm" type="button" title="Загрузить с ПК">📁 Загрузить</button>
+        <input id="vf-img-upload-input" type="file" accept="image/*" hidden />
+      </div>
+    </label>
     <label class="full">imageSeed (если URL пустой)<input id="vf-imageSeed" value="${escapeHtml(entry.imageSeed || '')}" /></label>
     ${renderPhotoPreviewMarkup(previewSource)}
     <div class="block-editor" id="vf-block-editor">${renderBlockEditor(entry.content || [])}</div>
