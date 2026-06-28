@@ -3120,6 +3120,9 @@ html, body {
    EasyMDE Custom Dark Mode Theme 
    ========================================================================== */
 .editor-toolbar {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
   border: 1px solid var(--line-strong) !important;
   border-radius: 6px !important;
   background: var(--bg-card) !important;
@@ -3132,6 +3135,7 @@ html, body {
   z-index: 100;
   box-shadow: var(--shadow);
   padding: 2px !important;
+  width: max-content !important;
 }
 .block-card:hover .editor-toolbar,
 .block-card:focus-within .editor-toolbar {
@@ -3336,4 +3340,29 @@ img {
   align-items: center;
   gap: 8px;
   opacity: 0.6;
+}
+
+/* ==========================================================================
+   Loading Overlay (body.busy)
+   ========================================================================== */
+body.busy {
+  cursor: wait !important;
+  pointer-events: none !important;
+}
+body.busy::after {
+  content: "Создаем контент... Пожалуйста, подождите (до 60 секунд).";
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(18, 9, 15, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-size: 1.25rem;
+  font-weight: 500;
+  pointer-events: all;
+  cursor: wait;
 }
