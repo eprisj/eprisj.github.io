@@ -3128,28 +3128,83 @@ function renderVisualForm() {
   }
 
   const previewSource = resolvePreviewImageSource(entry.imageUrl, entry.imageSeed);
+  const hasSource = Boolean(previewSource);
   visualFormEl.innerHTML = `
-    <label>ID<input id="vf-id" value="${escapeHtml(entry.id)}" disabled /></label>
-    <label>Дата<input id="vf-date" value="${escapeHtml(entry.date || '')}" /></label>
-    <label class="full">Заголовок<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
-    <label>Автор<input id="vf-author" value="${escapeHtml(entry.author || '')}" /></label>
-    <label>Роль<input id="vf-role" value="${escapeHtml(entry.role || '')}" /></label>
-    <label>Категория<input id="vf-category" value="${escapeHtml(entry.category || '')}" /></label>
-    <label>Подкатегория<input id="vf-subcategory" value="${escapeHtml(entry.subcategory || '')}" /></label>
-    <label class="full">Краткое описание<textarea id="vf-excerpt">${escapeHtml(entry.excerpt || '')}</textarea></label>
-    <label class="full">Теги (через запятую)<input id="vf-tags" value="${escapeHtml(Array.isArray(entry.tags) ? entry.tags.join(', ') : '')}" /></label>
-    <label class="full">URL обложки (необязательно)
-      <div style="display:flex;gap:8px;align-items:center;width:100%;">
-        <input id="vf-imageUrl" placeholder="https://..." value="${escapeHtml(entry.imageUrl || '')}" style="flex:1" />
-        <button id="vf-img-upload-btn" class="btn btn-sm" type="button" title="Загрузить с ПК">📁 Загрузить</button>
-        <input id="vf-img-upload-input" type="file" accept="image/*" hidden />
+    <div class="editor-canvas-layout">
+      <!-- MAIN CANVAS -->
+      <div class="editor-main-canvas">
+        <input id="vf-title" class="canvas-title" placeholder="Заголовок статьи..." value="${escapeHtml(entry.title || '')}" />
+        <textarea id="vf-excerpt" class="canvas-excerpt" placeholder="Введите краткое описание (лид) статьи...">${escapeHtml(entry.excerpt || '')}</textarea>
+        <div class="block-editor" id="vf-block-editor">${renderBlockEditor(entry.content || [])}</div>
       </div>
-    </label>
-    <label class="full">imageSeed (если URL пустой)<input id="vf-imageSeed" value="${escapeHtml(entry.imageSeed || '')}" /></label>
-    ${renderPhotoPreviewMarkup(previewSource)}
-    <div class="block-editor" id="vf-block-editor">${renderBlockEditor(entry.content || [])}</div>
+      
+      <!-- META SIDEBAR -->
+      <div class="editor-meta-sidebar">
+        <!-- Cover Preview Box -->
+        <div class="canvas-cover-preview">
+          <img id="vf-preview-image" src="${hasSource ? escapeHtml(previewSource) : ''}" ${!hasSource ? 'hidden' : ''} />
+          <div id="vf-preview-empty" class="canvas-cover-empty" ${hasSource ? 'hidden' : ''}>
+            <span style="font-size:2rem;margin-bottom:4px">🖼️</span>
+            <span>Нет обложки</span>
+          </div>
+        </div>
+        
+        <div class="meta-field-group">
+          <label>URL обложки</label>
+          <div style="display:flex;gap:4px;">
+            <input id="vf-imageUrl" placeholder="https://..." value="${escapeHtml(entry.imageUrl || '')}" style="flex:1" />
+            <button id="vf-img-upload-btn" class="btn btn-sm" type="button" title="Загрузить с ПК" style="padding:4px 8px;font-size:.8rem;">📁</button>
+            <input id="vf-img-upload-input" type="file" accept="image/*" hidden />
+          </div>
+        </div>
+
+        <div class="meta-field-group">
+          <label>imageSeed (если URL пуст)</label>
+          <input id="vf-imageSeed" value="${escapeHtml(entry.imageSeed || '')}" placeholder="visual-seed..." />
+        </div>
+
+        <div style="display:flex;gap:12px;width:100%;">
+          <div class="meta-field-group" style="width:60px;">
+            <label>ID</label>
+            <input id="vf-id" value="${escapeHtml(entry.id)}" disabled style="background:var(--bg);opacity:0.7;padding:8px 4px;text-align:center;" />
+          </div>
+          <div class="meta-field-group" style="flex:1;">
+            <label>Дата</label>
+            <input id="vf-date" value="${escapeHtml(entry.date || '')}" placeholder="Mar 14, 2026" />
+          </div>
+        </div>
+        
+        <div class="meta-field-group">
+          <label>Категория</label>
+          <input id="vf-category" value="${escapeHtml(entry.category || '')}" placeholder="Culture, Travel..." />
+        </div>
+        
+        <div class="meta-field-group">
+          <label>Подкатегория</label>
+          <input id="vf-subcategory" value="${escapeHtml(entry.subcategory || '')}" placeholder="Essay..." />
+        </div>
+        
+        <div class="meta-field-group">
+          <label>Автор</label>
+          <input id="vf-author" value="${escapeHtml(entry.author || '')}" placeholder="Имя автора" />
+        </div>
+        
+        <div class="meta-field-group">
+          <label>Роль автора</label>
+          <input id="vf-role" value="${escapeHtml(entry.role || '')}" placeholder="Photographer" />
+        </div>
+        
+        <div class="meta-field-group">
+          <label>Теги (через запятую)</label>
+          <input id="vf-tags" value="${escapeHtml(Array.isArray(entry.tags) ? entry.tags.join(', ') : '')}" placeholder="tag1, tag2..." />
+        </div>
+      </div>
+    </div>
   `;
   bindPhotoPreviewInputs();
+  bindUploadButton('vf-img-upload-btn', 'vf-img-upload-input', 'vf-imageUrl', () => {
+    document.getElementById('vf-imageUrl')?.dispatchEvent(new Event('input'));
+  });
   bindBlockEditorEvents();
   bindCreatorQualityInputs(entry);
 }
