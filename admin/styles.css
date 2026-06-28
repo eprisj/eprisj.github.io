@@ -636,6 +636,8 @@ input[type="checkbox"] {
   height: 15px;
   accent-color: var(--accent);
   cursor: pointer;
+  -webkit-appearance: auto;
+  appearance: auto;
 }
 select { cursor: pointer; }
 
