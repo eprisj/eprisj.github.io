@@ -179,11 +179,16 @@ async function verifyToken(token) {
   return await resp.json();
 }
 
+function setAuthBusy(isBusy) {
+  authLoading.hidden = !isBusy;
+  if (authLoginBtn) authLoginBtn.disabled = isBusy;
+  if (byId('authLoginPwBtn')) byId('authLoginPwBtn').disabled = isBusy;
+}
+
 function showAuthError(msg) {
   authError.textContent = msg;
   authError.hidden = false;
-  authLoading.hidden = true;
-  authLoginBtn.disabled = false;
+  setAuthBusy(false);
 }
 
 function hideAuthOverlay() {
@@ -195,8 +200,7 @@ async function handleLogin() {
   const token = authTokenInput.value.trim();
   if (!token) { showAuthError('Введите токен'); return; }
   authError.hidden = true;
-  authLoading.hidden = false;
-  authLoginBtn.disabled = true;
+  setAuthBusy(true);
   try {
     await verifyToken(token);
     tokenInput.value = token;
@@ -215,8 +219,7 @@ async function tryAutoLogin() {
   // 1. Try saved PAT — fastest path, no extra round-trip
   const savedPat = localStorage.getItem(AUTH_STORAGE_KEY);
   if (savedPat) {
-    authLoading.hidden = false;
-    authLoginBtn.disabled = true;
+    setAuthBusy(true);
     try {
       await verifyToken(savedPat);
       tokenInput.value = savedPat;
@@ -238,7 +241,7 @@ async function tryAutoLogin() {
   // 3. Exchange saved password for fresh PAT
   const savedPwB64 = localStorage.getItem(AUTH_PW_STORAGE_KEY);
   if (savedPwB64) {
-    authLoading.hidden = false;
+    setAuthBusy(true);
     try {
       const pw = atob(savedPwB64);
       const res = await fetch(TOKEN_API, {
@@ -259,8 +262,7 @@ async function tryAutoLogin() {
     } catch { /* fall through to login form */ }
     localStorage.removeItem(AUTH_PW_STORAGE_KEY);
   }
-  authLoading.hidden = true;
-  authLoginBtn.disabled = false;
+  setAuthBusy(false);
 }
 
 // ── Password login (exchanges password → GitHub PAT + radio token) ──
@@ -281,8 +283,7 @@ async function handlePasswordLogin() {
   const pw = (authPasswordInput?.value || '').trim();
   if (!pw) { showAuthError('Введите пароль'); return; }
   authError.hidden = true;
-  authLoading.hidden = false;
-  if (authLoginPwBtn) authLoginPwBtn.disabled = true;
+  setAuthBusy(true);
   try {
     const res = await fetch(TOKEN_API, {
       method: 'POST',
@@ -302,8 +303,7 @@ async function handlePasswordLogin() {
     hideAuthOverlay();
     await init({ fromLogin: true });
   } catch (e) {
-    showAuthError(e.message === 'Неверный пароль' || /invalid/i.test(e.message) ? 'Неверный пароль' : 'Ошибка входа: ' + e.message);
-    if (authLoginPwBtn) authLoginPwBtn.disabled = false;
+    showAuthError(e.message === 'Неверный пароль' || /invalid/i.test(e.message) || /fetch/i.test(e.message) ? 'Ошибка соединения или неверный пароль' : 'Ошибка входа: ' + e.message);
   }
 }
 
