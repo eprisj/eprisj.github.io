@@ -3980,11 +3980,11 @@ function renderBlockEditor(blocks) {
     const preview = getBlockContentPreview(block);
 
     // Insert-between button before each block
-    html += '<div class="block-insert-between"><button type="button" class="block-insert-btn" onclick="showInsertMenu(' + i + ', this)" title="Вставить блок">+ вставить</button></div>';
+    html += '<div class="block-insert-between"><button type="button" class="block-insert-btn" onclick="showInsertMenu(' + i + ', this)" title="Вставить блок"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button></div>';
 
     html += '<div class="block-card' + (isCollapsed ? ' collapsed' : '') + '" data-block-index="' + i + '" data-block-type="' + t + '" draggable="true">';
     html += '<div class="block-card-header">';
-    html += '<span class="block-drag-handle" title="Перетащить">\u2630</span>';
+    html += '<span class="block-drag-handle" title="Перетащить"></span>';
     html += '<span class="block-type-badge type-' + t + '">' + getBlockTypeIcon(t) + ' ' + escapeHtml(getBlockTypeLabel(t)) + '</span>';
     html += '<span style="font-size:.6rem;color:var(--text-muted);opacity:.5;">#' + (i + 1) + '</span>';
     if (preview && isCollapsed) {
@@ -3995,11 +3995,25 @@ function renderBlockEditor(blocks) {
       if (w > 0) html += '<span class="block-word-count">' + w + ' сл.</span>';
     }
     html += '<div class="block-actions">';
-    html += '<button type="button" class="block-action-btn collapse-btn" onclick="toggleBlockCollapse(' + i + ')" title="' + (isCollapsed ? 'Развернуть' : 'Свернуть') + '">' + (isCollapsed ? '\u25BC' : '\u25B2') + '</button>';
-    html += '<button type="button" class="block-action-btn" onclick="duplicateBlock(' + i + ')" title="Дублировать">\u2398</button>';
-    html += '<button type="button" class="block-action-btn" onclick="moveBlock(' + i + ', -1)" title="Вверх" ' + (i === 0 ? 'disabled' : '') + '>\u2191</button>';
-    html += '<button type="button" class="block-action-btn" onclick="moveBlock(' + i + ', 1)" title="Вниз" ' + (i === blocks.length - 1 ? 'disabled' : '') + '>\u2193</button>';
-    html += '<button type="button" class="block-action-btn danger" onclick="removeBlock(' + i + ')" title="Удалить блок">\u2716</button>';
+    
+    // Collapse/Expand Icon
+    const collapseIcon = isCollapsed 
+      ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>'
+      : '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>';
+    html += '<button type="button" class="block-action-btn collapse-btn" onclick="toggleBlockCollapse(' + i + ')" title="' + (isCollapsed ? 'Развернуть' : 'Свернуть') + '">' + collapseIcon + '</button>';
+    
+    // Duplicate Icon
+    html += '<button type="button" class="block-action-btn" onclick="duplicateBlock(' + i + ')" title="Дублировать"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></button>';
+    
+    // Move Up Icon
+    html += '<button type="button" class="block-action-btn" onclick="moveBlock(' + i + ', -1)" title="Вверх" ' + (i === 0 ? 'disabled' : '') + '><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg></button>';
+    
+    // Move Down Icon
+    html += '<button type="button" class="block-action-btn" onclick="moveBlock(' + i + ', 1)" title="Вниз" ' + (i === blocks.length - 1 ? 'disabled' : '') + '><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>';
+    
+    // Remove Icon
+    html += '<button type="button" class="block-action-btn danger" onclick="removeBlock(' + i + ')" title="Удалить блок"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>';
+    
     html += '</div>';
     html += '</div>';
     html += '<div class="block-card-body">' + renderBlockBody(block, i) + '</div>';
