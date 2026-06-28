@@ -4030,7 +4030,7 @@ function bindBlockEditorEvents() {
 
 function autoExpandTextarea(ta) {
   ta.style.height = 'auto';
-  ta.style.height = Math.max(80, ta.scrollHeight) + 'px';
+  ta.style.height = ta.scrollHeight + 'px';
 }
 
 function updateBlockWordCount(ta) {
@@ -7683,3 +7683,26 @@ function bindStudioRowActions() {
   document.getElementById('designClearCacheBtn')?.addEventListener('click', clearVpsCache);
   document.querySelector('[data-tab="design"]')?.addEventListener('click', loadDesignStats);
 })();
+
+// ===== GLOBAL TEXTAREA AUTO-EXPAND =====
+document.addEventListener('input', (e) => {
+  if (e.target.tagName === 'TEXTAREA' && e.target.id !== 'editor') {
+    autoExpandTextarea(e.target);
+  }
+});
+const globalTextareaObserver = new MutationObserver((mutations) => {
+  let hasAdded = false;
+  for (const m of mutations) {
+    if (m.addedNodes.length) { hasAdded = true; break; }
+  }
+  if (hasAdded) {
+    document.querySelectorAll('textarea:not(#editor)').forEach(ta => {
+      if (!ta.dataset.expandedOnce) {
+        autoExpandTextarea(ta);
+        ta.dataset.expandedOnce = 'true';
+      }
+    });
+  }
+});
+globalTextareaObserver.observe(document.body, { childList: true, subtree: true });
+

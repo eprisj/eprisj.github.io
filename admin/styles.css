@@ -584,11 +584,16 @@ select {
   -webkit-appearance: none;
 }
 input:focus,
-select:focus,
-textarea:focus {
+select:focus {
   outline: none;
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--line);
+  background: var(--bg-card);
+}
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: -3px 0 0 var(--accent);
   background: var(--bg-card);
 }
 input[type="checkbox"] {
@@ -601,17 +606,16 @@ select { cursor: pointer; }
 
 textarea {
   width: 100%;
-  border: 1px solid var(--line-strong);
+  border: 1px solid var(--line);
   background: var(--bg-card);
   color: var(--text);
-  padding: 10px 12px;
-  font: inherit;
-  font-family: var(--font-mono);
-  font-size: .82rem;
-  line-height: 1.6;
+  padding: 12px 14px;
+  font-family: var(--font-ui), system-ui, -apple-system, sans-serif;
+  font-size: .88rem;
+  line-height: 1.5;
   border-radius: var(--radius);
   resize: vertical;
-  transition: border-color .14s, box-shadow .14s;
+  transition: border-color .2s, box-shadow .2s;
 }
 
 .field-label {
@@ -1152,6 +1156,11 @@ textarea {
   font-size: .8rem;
 }
 
+#editor {
+  font-family: var(--font-mono);
+  font-size: .82rem;
+}
+
 /* ══════════════════════════════════════════════════════════
    REPO SUMMARY / CODE
    ══════════════════════════════════════════════════════════ */
@@ -1395,7 +1404,20 @@ code {
 .block-action-btn.collapse-btn { font-size: .48rem; }
 
 .block-card-body { padding: 12px 14px; display: grid; gap: 10px; }
-.block-card-body textarea { min-height: 80px; resize: vertical; }
+.block-card-body textarea {
+  min-height: 80px;
+  resize: vertical;
+  background: transparent;
+  border-color: transparent;
+  padding: 8px 0;
+  font-size: .92rem;
+  line-height: 1.6;
+}
+.block-card-body textarea:focus {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: -2px 0 0 var(--accent);
+}
 .block-card-body textarea.auto-expand { resize: none; overflow: hidden; }
 .block-card-body input { font-size: .8rem; }
 .block-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
