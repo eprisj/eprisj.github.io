@@ -62,6 +62,7 @@ const creatorTitleInput = byId('creatorTitle');
 const creatorCategoryInput = byId('creatorCategory');
 const creatorSeedInput = byId('creatorSeed');
 const creatorImageUrlInput = byId('creatorImageUrl');
+const creatorImagePreview = byId('creatorImagePreview');
 const storyBlueprintBtn = byId('storyBlueprintBtn');
 const guideBlueprintBtn = byId('guideBlueprintBtn');
 const photoEssayBlueprintBtn = byId('photoEssayBlueprintBtn');
@@ -151,25 +152,17 @@ function byId(id) {
 
 
 // Setup via URL: ?setup=TOKEN seeds localStorage and reloads clean
-// Also supports ?pw=PASSWORD for first-time password-based remember-me seeding
 (function setupFromUrl() {
   const p = new URLSearchParams(location.search);
   const t = p.get('setup');
   if (t && t.length > 20) {
     localStorage.setItem('epris_admin_token', t);
     location.replace(location.pathname);
-    return;
-  }
-  const pw = p.get('pw');
-  if (pw && pw.length > 4) {
-    localStorage.setItem('epris_admin_pw_saved', btoa(pw));
-    location.replace(location.pathname);
   }
 })();
 
 // ===== AUTH GATE =====
-const AUTH_STORAGE_KEY    = 'epris_admin_token';
-const AUTH_PW_STORAGE_KEY = 'epris_admin_pw_saved'; // obfuscated saved password for auto-reauth
+const AUTH_STORAGE_KEY = 'epris_admin_token';
 const authOverlay = byId('authOverlay');
 const authTokenInput = byId('authTokenInput');
 const authRememberCheck = byId('authRememberCheck');
@@ -218,51 +211,27 @@ async function handleLogin() {
 }
 
 async function tryAutoLogin() {
-  // 1. Try saved PAT first (fastest, no round-trip to /token)
-  const savedPat = localStorage.getItem(AUTH_STORAGE_KEY);
-  if (savedPat) {
-    authLoading.hidden = false;
-    authLoginBtn.disabled = true;
-    try {
-      await verifyToken(savedPat);
-      tokenInput.value = savedPat;
-      rememberTokenInput.checked = true;
-      // Restore radio token too if present
-      const rt = localStorage.getItem('epris_radio_admin_pw');
-      if (rt) applyRadioToken(rt);
-      hideAuthOverlay();
-      await init({ fromLogin: true });
-      return;
-    } catch {
-      localStorage.removeItem(AUTH_STORAGE_KEY);
-    }
+  const saved = localStorage.getItem(AUTH_STORAGE_KEY);
+  const autoToken = saved;
+  if (!autoToken) {
+    authLoading.hidden = true;
+    authLoginBtn.disabled = false;
+    return;
   }
-  // 2. Try saved password → exchange for fresh PAT
-  const savedPw = localStorage.getItem(AUTH_PW_STORAGE_KEY);
-  if (savedPw) {
-    authLoading.hidden = false;
-    try {
-      const pw = atob(savedPw); // light obfuscation only
-      const res = await fetch(TOKEN_API, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password: pw }),
-      });
-      const data = await res.json();
-      if (data.ok && data.token) {
-        await verifyToken(data.token);
-        tokenInput.value = data.token;
-        localStorage.setItem(AUTH_STORAGE_KEY, data.token);
-        applyRadioToken(data.radio_token);
-        rememberTokenInput.checked = true;
-        hideAuthOverlay();
-        await init({ fromLogin: true });
-        return;
-      }
-    } catch { /* fall through to login form */ }
-    localStorage.removeItem(AUTH_PW_STORAGE_KEY);
+  authTokenInput.value = autoToken;
+  authLoading.hidden = false;
+  authLoginBtn.disabled = true;
+  try {
+    await verifyToken(autoToken);
+    tokenInput.value = autoToken;
+    rememberTokenInput.checked = true;
+    hideAuthOverlay();
+    await init({ fromLogin: true });
+  } catch (e) {
+    if (saved) localStorage.removeItem(AUTH_STORAGE_KEY);
+    authLoading.hidden = true;
+    authLoginBtn.disabled = false;
   }
-  authLoading.hidden = true;
-  authLoginBtn.disabled = false;
 }
 
 // ── Password login (exchanges password → GitHub PAT + radio token) ──
@@ -299,7 +268,6 @@ async function handlePasswordLogin() {
     tokenInput.value = data.token;
     if (authRememberCheck?.checked) {
       localStorage.setItem(AUTH_STORAGE_KEY, data.token);
-      localStorage.setItem(AUTH_PW_STORAGE_KEY, btoa(pw)); // save password for silent re-auth
       rememberTokenInput.checked = true;
     }
     hideAuthOverlay();
@@ -387,6 +355,25 @@ function bindEvents() {
   insertStructureBtn.addEventListener('click', () => appendArticlePreset('structure'));
   insertChecklistTemplateBtn.addEventListener('click', () => appendArticlePreset('checklist'));
   insertPollTemplateBtn.addEventListener('click', () => appendArticlePreset('poll'));
+
+  // Creator Image Upload & Preview
+  if (creatorImageUrlInput) {
+    creatorImageUrlInput.addEventListener('input', () => {
+      const url = creatorImageUrlInput.value.trim();
+      if (creatorImagePreview) {
+        if (url) {
+          creatorImagePreview.src = url;
+          creatorImagePreview.removeAttribute('hidden');
+        } else {
+          creatorImagePreview.setAttribute('hidden', 'hidden');
+          creatorImagePreview.src = '';
+        }
+      }
+    });
+    bindUploadButton('creatorImageUploadBtn', 'creatorImageUploadInput', 'creatorImageUrl', () => {
+      creatorImageUrlInput.dispatchEvent(new Event('input'));
+    });
+  }
   findMissingLangBtn.addEventListener('click', () => selectFirstIssueEntry('missingLang'));
   findNoPhotoBtn.addEventListener('click', () => selectFirstIssueEntry('noPhoto'));
   findNoPollBtn.addEventListener('click', () => selectFirstIssueEntry('noPoll'));
@@ -3037,6 +3024,9 @@ function renderVisualForm() {
       ${renderPhotoPreviewMarkup(previewSource)}
     `;
     bindPhotoPreviewInputs();
+    bindUploadButton('vf-img-upload-btn', 'vf-img-upload-input', 'vf-imageUrl', () => {
+      document.getElementById('vf-imageUrl')?.dispatchEvent(new Event('input'));
+    });
     bindCreatorQualityInputs(entry);
     return;
   }
@@ -3107,7 +3097,13 @@ function renderVisualForm() {
     <label>Подкатегория<input id="vf-subcategory" value="${escapeHtml(entry.subcategory || '')}" /></label>
     <label class="full">Краткое описание<textarea id="vf-excerpt">${escapeHtml(entry.excerpt || '')}</textarea></label>
     <label class="full">Теги (через запятую)<input id="vf-tags" value="${escapeHtml(Array.isArray(entry.tags) ? entry.tags.join(', ') : '')}" /></label>
-    <label class="full">URL обложки (необязательно)<input id="vf-imageUrl" placeholder="https://..." value="${escapeHtml(entry.imageUrl || '')}" /></label>
+    <label class="full">URL обложки (необязательно)
+      <div style="display:flex;gap:8px;align-items:center;width:100%;">
+        <input id="vf-imageUrl" placeholder="https://..." value="${escapeHtml(entry.imageUrl || '')}" style="flex:1" />
+        <button id="vf-img-upload-btn" class="btn btn-sm" type="button" title="Загрузить с ПК">📁 Загрузить</button>
+        <input id="vf-img-upload-input" type="file" accept="image/*" hidden />
+      </div>
+    </label>
     <label class="full">imageSeed (если URL пустой)<input id="vf-imageSeed" value="${escapeHtml(entry.imageSeed || '')}" /></label>
     ${renderPhotoPreviewMarkup(previewSource)}
     <div class="block-editor" id="vf-block-editor">${renderBlockEditor(entry.content || [])}</div>
@@ -4063,7 +4059,7 @@ function bindBlockEditorEvents() {
 
 function autoExpandTextarea(ta) {
   ta.style.height = 'auto';
-  ta.style.height = Math.max(80, ta.scrollHeight) + 'px';
+  ta.style.height = ta.scrollHeight + 'px';
 }
 
 function updateBlockWordCount(ta) {
@@ -5145,6 +5141,7 @@ function renderIssuesTab() {
 
   if (!_issues) {
     _issues = ensureIssuesArray(data).map(i => ({ ...i, articleIds: Array.isArray(i.articleIds) ? i.articleIds.slice() : [] }));
+    window._issues = _issues;
     // Default to the published issue, or the first one.
     const pubIdx = _issues.findIndex(i => i.status === 'published');
     _currentIssueIdx = pubIdx >= 0 ? pubIdx : 0;
@@ -6365,6 +6362,11 @@ function bindStudioRowActions() {
   }
 
   window._radioPreviewTrack = function(id, title) {
+    if (window._globalPlay) {
+      window._globalPlay(title, 'Radio Track', '', RADIO_API + '/api/music/tracks/' + id + '/file');
+      return;
+    }
+    // fallback if global play not ready
     if (_trackAudioEl) { _trackAudioEl.pause(); _trackAudioEl.src = ''; }
     if (_playingTrackId === id) {
       _playingTrackId = null;
@@ -6533,7 +6535,7 @@ function bindStudioRowActions() {
   async function loadPodcasts() {
     try {
       const j = await radioFetch('/api/podcasts/all');
-      if (j.ok) { _podcasts = j.data || []; renderPodcastList(); }
+      if (j.ok) { _podcasts = j.data || []; window._podcasts = _podcasts; renderPodcastList(); }
     } catch { /* ignore */ }
   }
 
@@ -6603,6 +6605,10 @@ function bindStudioRowActions() {
   let _podcastAudio = null;
   window._podcastPreview = id => {
     const p = _podcasts.find(x => x.id === id); if (!p?.audio_url) return;
+    if (window._globalPlay) {
+      window._globalPlay(p.title, p.season ? p.season + (p.episode_number ? ' / Эп. ' + p.episode_number : '') : 'Podcast', p.cover_url, p.audio_url);
+      return;
+    }
     if (_podcastAudio) { _podcastAudio.pause(); _podcastAudio = null; }
     _podcastAudio = new Audio(p.audio_url);
     _podcastAudio.play().catch(() => radioShowToast('Не удалось воспроизвести', 'error'));
@@ -7647,39 +7653,34 @@ function bindStudioRowActions() {
     } catch (e) {
       if (statusEl) { statusEl.textContent = '✗ ' + e.message; statusEl.style.color = 'var(--danger)'; }
     }
-    // Catalog stats — hardcoded from catalog.ts (updated when catalog grows)
-    const CATALOG_STATS = {
-      items: 244,
-      looks: 8,
-      retailers: ['IKEA','HAY','Muuto','Ferm Living','CB2','West Elm','Crate & Barrel','Article',
-        'Pottery Barn','Anthropologie','Normann Copenhagen','Gubi','&Tradition','Vitra',
-        'Audo Copenhagen','Fritz Hansen','Tom Dixon','BoConcept','RH','Knoll','Moooi',
-        'Ligne Roset','Cassina','String Furniture','DWR','Amazon'],
-      styles: ['scandinavian','minimalist','mid-century','warm','classic','moody','boho',
-        'elevated','design-classic','organic','modern','industrial','statement','leather',
-        'wood','graphic','cozy','dark','natural','geometric','mid-century','japandi','wabi-sabi'],
-    };
+    // Load catalog stats from localStorage cache
     try {
-      document.getElementById('designStatItems').textContent = CATALOG_STATS.items;
-      document.getElementById('designStatRetailers').textContent = CATALOG_STATS.retailers.length;
-      document.getElementById('designStatStyles').textContent = CATALOG_STATS.styles.length;
-      document.getElementById('designStatLooks').textContent = CATALOG_STATS.looks;
-      // Show retailer breakdown
-      if (retailerEl) {
-        retailerEl.innerHTML = CATALOG_STATS.retailers.map(r => `
-          <div class="dash-audit-row">
-            <span class="dash-audit-section">${r}</span>
-          </div>`).join('');
-      }
-      // Enrich with live cache counts if available
       const raw = localStorage.getItem('epris_design_products_v2');
       if (raw) {
         const cache = JSON.parse(raw);
-        const items = Object.values(cache).filter(v => v && (v.title || v.data));
-        if (items.length > 5) {
-          document.getElementById('designStatItems').textContent = CATALOG_STATS.items + ' (' + items.length + ' в кеше)';
+        const items = Object.values(cache).filter(v => v && v.title);
+        document.getElementById('designStatItems').textContent = items.length;
+        const retailers = [...new Set(items.map(i => i.siteName || i.brand).filter(Boolean))];
+        document.getElementById('designStatRetailers').textContent = retailers.length;
+        const styles = [...new Set(items.flatMap(i => i.styles || []))];
+        document.getElementById('designStatStyles').textContent = styles.length;
+        if (retailerEl) {
+          retailerEl.innerHTML = retailers.slice(0, 20).map(r => `
+            <div class="dash-audit-row">
+              <span class="dash-audit-section">${r}</span>
+              <div class="dash-audit-chips">
+                <span class="dash-audit-chip ok">${items.filter(i => (i.siteName || i.brand) === r).length} товаров</span>
+              </div>
+            </div>`).join('') || '<p class="dash-empty-hint">Нет данных кеша.</p>';
         }
+      } else {
+        document.getElementById('designStatItems').textContent = '—';
+        document.getElementById('designStatRetailers').textContent = '—';
+        document.getElementById('designStatStyles').textContent = '—';
       }
+      // Count looks from site-content if loaded
+      const looksCount = document.querySelectorAll('.look-card')?.length || '—';
+      document.getElementById('designStatLooks').textContent = looksCount;
     } catch {}
   }
 
@@ -7720,6 +7721,298 @@ function bindStudioRowActions() {
   document.getElementById('designTestCurateBtn')?.addEventListener('click', testCurate);
   document.getElementById('designClearCacheBtn')?.addEventListener('click', clearVpsCache);
   document.querySelector('[data-tab="design"]')?.addEventListener('click', loadDesignStats);
-  // Auto-load on init
-  setTimeout(loadDesignStats, 800);
 })();
+
+// ===== GLOBAL TEXTAREA AUTO-EXPAND =====
+document.addEventListener('input', (e) => {
+  if (e.target.tagName === 'TEXTAREA' && e.target.id !== 'editor') {
+    autoExpandTextarea(e.target);
+  }
+});
+const globalTextareaObserver = new MutationObserver((mutations) => {
+  let hasAdded = false;
+  for (const m of mutations) {
+    if (m.addedNodes.length) { hasAdded = true; break; }
+  }
+  if (hasAdded) {
+    document.querySelectorAll('textarea:not(#editor)').forEach(ta => {
+      if (!ta.dataset.expandedOnce) {
+        autoExpandTextarea(ta);
+        ta.dataset.expandedOnce = 'true';
+      }
+    });
+  }
+});
+globalTextareaObserver.observe(document.body, { childList: true, subtree: true });
+
+// ===== GLOBAL AUDIO PLAYER & WYSIWYG =====
+(function initMaximumUpgrades() {
+  const player = document.getElementById('globalAudioPlayer');
+  const audio = document.getElementById('globalAudioEl');
+  const cover = document.getElementById('playerCoverImg');
+  const fallback = document.getElementById('playerFallbackIcon');
+  const titleEl = document.getElementById('playerTitle');
+  const subtitleEl = document.getElementById('playerSubtitle');
+  const playBtn = document.getElementById('playerPlayBtn');
+  const closeBtn = document.getElementById('playerCloseBtn');
+  const progressWrap = document.getElementById('playerProgressWrap');
+  const progress = document.getElementById('playerProgress');
+  const timeEl = document.getElementById('playerTime');
+
+  if (!player || !audio) return;
+
+  function formatTime(s) {
+    if (isNaN(s)) return '0:00';
+    const min = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return min + ':' + (sec < 10 ? '0' : '') + sec;
+  }
+
+  window._globalPlay = function(title, subtitle, coverUrl, audioUrl) {
+    player.classList.add('active');
+    titleEl.textContent = title || 'Без назви';
+    subtitleEl.textContent = subtitle || '';
+    if (coverUrl) {
+      cover.src = coverUrl;
+      cover.style.display = 'block';
+      fallback.style.display = 'none';
+    } else {
+      cover.style.display = 'none';
+      fallback.style.display = 'block';
+    }
+    audio.src = audioUrl;
+    audio.play().catch(e => console.error('Audio play error:', e));
+  };
+
+  playBtn.addEventListener('click', () => {
+    if (audio.paused) audio.play();
+    else audio.pause();
+  });
+
+  closeBtn.addEventListener('click', () => {
+    audio.pause();
+    player.classList.remove('active');
+  });
+
+  audio.addEventListener('play', () => playBtn.textContent = '⏸');
+  audio.addEventListener('pause', () => playBtn.textContent = '▶');
+  audio.addEventListener('timeupdate', () => {
+    const p = (audio.currentTime / audio.duration) * 100 || 0;
+    progress.style.width = p + '%';
+    timeEl.textContent = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
+  });
+  progressWrap.addEventListener('click', (e) => {
+    const rect = progressWrap.getBoundingClientRect();
+    const pos = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = pos * audio.duration;
+  });
+
+  // WYSIWYG
+  const toolbar = document.getElementById('wysiwygToolbar');
+  if (toolbar) {
+    let currentTa = null;
+    document.addEventListener('selectionchange', () => {
+      const active = document.activeElement;
+      if (active && active.tagName === 'TEXTAREA' && active.closest('.block-card-body')) {
+        const text = active.value.substring(active.selectionStart, active.selectionEnd);
+        if (text.trim().length > 0) {
+          const rect = active.getBoundingClientRect();
+          // rough estimation of cursor position
+          toolbar.style.display = 'flex';
+          toolbar.style.top = (rect.top - 10) + 'px';
+          toolbar.style.left = (rect.left + rect.width/2) + 'px';
+          currentTa = active;
+        } else {
+          toolbar.style.display = 'none';
+        }
+      } else {
+        toolbar.style.display = 'none';
+      }
+    });
+
+    toolbar.addEventListener('mousedown', (e) => {
+      e.preventDefault(); // keep focus
+      const btn = e.target.closest('button');
+      if (!btn || !currentTa) return;
+      const cmd = btn.dataset.cmd;
+      const start = currentTa.selectionStart;
+      const end = currentTa.selectionEnd;
+      const text = currentTa.value.substring(start, end);
+      let newText = text;
+      
+      if (cmd === 'bold') newText = `**${text}**`;
+      else if (cmd === 'italic') newText = `*${text}*`;
+      else if (cmd === 'link') {
+        const url = prompt('URL:');
+        if (url) newText = `[${text}](${url})`;
+      } else if (cmd === 'h2') newText = `\n## ${text}\n`;
+      else if (cmd === 'h3') newText = `\n### ${text}\n`;
+
+      currentTa.setRangeText(newText, start, end, 'select');
+      currentTa.dispatchEvent(new Event('input', { bubbles: true }));
+      toolbar.style.display = 'none';
+    });
+  }
+
+  // THEME TOGGLE
+  const themeBtn = document.getElementById('themeToggleBtn');
+  if (themeBtn) {
+    const isDark = localStorage.getItem('epris_theme') === 'dark';
+    if (isDark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeBtn.innerHTML = '<span>Світла тема</span><span>☀️</span>';
+    }
+    themeBtn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      if (current === 'dark') {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('epris_theme', 'light');
+        themeBtn.innerHTML = '<span>Темна тема</span><span>🌙</span>';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('epris_theme', 'dark');
+        themeBtn.innerHTML = '<span>Світла тема</span><span>☀️</span>';
+      }
+    });
+  }
+
+  // CMD+K SEARCH
+  const cmdkModal = document.getElementById('cmdkModal');
+  const cmdkInput = document.getElementById('cmdkInput');
+  const cmdkResults = document.getElementById('cmdkResults');
+  if (cmdkModal && cmdkInput && cmdkResults) {
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        cmdkModal.style.display = 'flex';
+        cmdkInput.value = '';
+        cmdkResults.innerHTML = '<div class="cmdk-empty">Введіть текст для пошуку</div>';
+        setTimeout(() => cmdkInput.focus(), 50);
+      }
+      if (e.key === 'Escape' && cmdkModal.style.display === 'flex') {
+        cmdkModal.style.display = 'none';
+      }
+    });
+    
+    cmdkModal.addEventListener('click', (e) => {
+      if (e.target === cmdkModal) cmdkModal.style.display = 'none';
+    });
+
+    cmdkInput.addEventListener('input', () => {
+      const q = cmdkInput.value.toLowerCase().trim();
+      if (!q) {
+        cmdkResults.innerHTML = '<div class="cmdk-empty">Введіть текст для пошуку</div>';
+        return;
+      }
+      
+      let resHtml = '';
+      let siteData = {};
+      try { siteData = JSON.parse(document.getElementById('editor').value || '{}'); } catch(e) {}
+      
+      // Search Articles
+      if (Array.isArray(siteData.articles)) {
+        siteData.articles.forEach(a => {
+          if ((a.title || '').toLowerCase().includes(q) || (a.id || '').toLowerCase().includes(q)) {
+            resHtml += `<div class="cmdk-item" onclick="document.getElementById('cmdkModal').style.display='none'; window.location.hash='visual'; setTimeout(()=>{ document.getElementById('visualSection').value='articles'; document.getElementById('visualSection').dispatchEvent(new Event('change')); setTimeout(()=>{ document.getElementById('visualEntry').value='${escapeHtml(a.id)}'; document.getElementById('visualEntry').dispatchEvent(new Event('change')); }, 50); }, 50);">
+              <div class="cmdk-item-title">${escapeHtml(a.title || a.id)}</div>
+              <div class="cmdk-item-type">Стаття</div>
+            </div>`;
+          }
+        });
+      }
+      
+      // Search Issues (magazines)
+      if (typeof window._issues !== 'undefined') {
+        window._issues.forEach(iss => {
+          if ((iss.title || '').toLowerCase().includes(q)) {
+            resHtml += `<div class="cmdk-item" onclick="window.location.hash='issues'; window._issueEdit(${iss.id}); document.getElementById('cmdkModal').style.display='none';">
+              <div class="cmdk-item-title">${escapeHtml(iss.title)}</div>
+              <div class="cmdk-item-type">Випуск (Журнал)</div>
+            </div>`;
+          }
+        });
+      }
+      
+      // Search Podcasts
+      if (typeof window._podcasts !== 'undefined') {
+        window._podcasts.forEach(p => {
+          if ((p.title || '').toLowerCase().includes(q)) {
+            resHtml += `<div class="cmdk-item" onclick="window.location.hash='podcasts'; window._podcastEdit(${p.id}); document.getElementById('cmdkModal').style.display='none';">
+              <div class="cmdk-item-title">${escapeHtml(p.title)}</div>
+              <div class="cmdk-item-type">Подкаст</div>
+            </div>`;
+          }
+        });
+      }
+      
+      if (!resHtml) {
+        resHtml = '<div class="cmdk-empty">Нічого не знайдено</div>';
+      }
+      cmdkResults.innerHTML = resHtml;
+    });
+  }
+
+  // DRAG & DROP IMAGE UPLOAD FOR TEXTAREAS
+  document.addEventListener('dragover', (e) => {
+    if (e.target.tagName === 'TEXTAREA') {
+      e.preventDefault();
+      e.target.style.border = '2px dashed var(--accent)';
+    }
+  });
+  document.addEventListener('dragleave', (e) => {
+    if (e.target.tagName === 'TEXTAREA') {
+      e.target.style.border = '';
+    }
+  });
+  document.addEventListener('drop', async (e) => {
+    if (e.target.tagName === 'TEXTAREA') {
+      e.preventDefault();
+      e.target.style.border = '';
+      const file = e.dataTransfer.files[0];
+      if (!file || !String(file.type || '').startsWith('image/')) return;
+      
+      const ta = e.target;
+      const start = ta.selectionStart;
+      const placeholder = `![Завантаження ${file.name}...]()`;
+      ta.setRangeText(placeholder, start, start, 'end');
+      ta.dispatchEvent(new Event('input', { bubbles: true }));
+
+      try {
+        const cfg = requireImageUploadConfig();
+        const maxSize = 15 * 1024 * 1024;
+        if (file.size > maxSize) throw new Error('File too large');
+
+        const fileName = buildUploadFileName(file.name, file.type);
+        const repoPath = `${cfg.uploadDir}/${fileName}`;
+        const base64Content = await readFileAsBase64(file);
+
+        const putUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${encodePath(repoPath)}`;
+        const uploadResult = await githubRequest(putUrl, {
+          method: 'PUT',
+          headers: { ...headers(cfg.token), 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: `chore(media): upload ${fileName} via admin dnd`,
+            content: base64Content,
+            branch: cfg.branch
+          })
+        });
+
+        const immediateUrl = String(uploadResult?.content?.download_url || '').trim();
+        const websiteUrl = buildPagesAssetUrl(cfg, repoPath);
+        const finalUrl = websiteUrl ? `${websiteUrl}?v=${Date.now()}` : immediateUrl;
+
+        const currentVal = ta.value;
+        ta.value = currentVal.replace(placeholder, `![](${finalUrl})`);
+        ta.dispatchEvent(new Event('input', { bubbles: true }));
+      } catch (err) {
+        console.error('DND Upload error:', err);
+        const currentVal = ta.value;
+        ta.value = currentVal.replace(placeholder, `*[Помилка завантаження: ${err.message}]*`);
+        ta.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+    }
+  });
+
+})();
+
+
