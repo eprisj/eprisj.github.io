@@ -6,6 +6,11 @@
     <meta name="theme-color" content="#180c0f" />
     <title>EPRIS — Редакция</title>
     <link rel="stylesheet" href="./styles.css" />
+    <script>
+      if (localStorage.getItem('epris_theme') === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    </script>
   </head>
   <body>
     <div id="toastContainer" class="toast-container"></div>
@@ -150,6 +155,7 @@
           <div class="sidebar-secondary-actions">
             <button id="deployVpsBtn" class="sidebar-btn-ghost" type="button">🚀 Deploy VPS</button>
             <a href="../" class="sidebar-btn-ghost" target="_blank" rel="noreferrer">Сайт ↗</a>
+            <button id="themeToggleBtn" class="sidebar-btn-ghost" type="button" style="margin-top: 4px; display:flex; justify-content:space-between"><span>Темна тема</span><span>🌙</span></button>
           </div>
         </div>
       </aside>
@@ -892,6 +898,19 @@
       <div class="wysiwyg-sep"></div>
       <button type="button" data-cmd="h2" title="Заголовок H2">H2</button>
       <button type="button" data-cmd="h3" title="Заголовок H3">H3</button>
+    </div>
+
+    <!-- Cmd+K Modal -->
+    <div id="cmdkModal" class="cmdk-overlay" style="display:none">
+      <div class="cmdk-dialog">
+        <div class="cmdk-header">
+          <input type="text" id="cmdkInput" placeholder="Пошук статей, подкастів... (Cmd+K)" autocomplete="off" />
+          <span class="cmdk-shortcut">Esc</span>
+        </div>
+        <div class="cmdk-results" id="cmdkResults">
+          <div class="cmdk-empty">Введіть текст для пошуку</div>
+        </div>
+      </div>
     </div>
 
     <script src="./app.js" type="module"></script>

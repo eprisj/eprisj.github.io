@@ -5112,6 +5112,7 @@ function renderIssuesTab() {
 
   if (!_issues) {
     _issues = ensureIssuesArray(data).map(i => ({ ...i, articleIds: Array.isArray(i.articleIds) ? i.articleIds.slice() : [] }));
+    window._issues = _issues;
     // Default to the published issue, or the first one.
     const pubIdx = _issues.findIndex(i => i.status === 'published');
     _currentIssueIdx = pubIdx >= 0 ? pubIdx : 0;
@@ -6505,7 +6506,7 @@ function bindStudioRowActions() {
   async function loadPodcasts() {
     try {
       const j = await radioFetch('/api/podcasts/all');
-      if (j.ok) { _podcasts = j.data || []; renderPodcastList(); }
+      if (j.ok) { _podcasts = j.data || []; window._podcasts = _podcasts; renderPodcastList(); }
     } catch { /* ignore */ }
   }
 
@@ -7823,6 +7824,166 @@ globalTextareaObserver.observe(document.body, { childList: true, subtree: true }
       toolbar.style.display = 'none';
     });
   }
+
+  // THEME TOGGLE
+  const themeBtn = document.getElementById('themeToggleBtn');
+  if (themeBtn) {
+    const isDark = localStorage.getItem('epris_theme') === 'dark';
+    if (isDark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeBtn.innerHTML = '<span>Світла тема</span><span>☀️</span>';
+    }
+    themeBtn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      if (current === 'dark') {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('epris_theme', 'light');
+        themeBtn.innerHTML = '<span>Темна тема</span><span>🌙</span>';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('epris_theme', 'dark');
+        themeBtn.innerHTML = '<span>Світла тема</span><span>☀️</span>';
+      }
+    });
+  }
+
+  // CMD+K SEARCH
+  const cmdkModal = document.getElementById('cmdkModal');
+  const cmdkInput = document.getElementById('cmdkInput');
+  const cmdkResults = document.getElementById('cmdkResults');
+  if (cmdkModal && cmdkInput && cmdkResults) {
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        cmdkModal.style.display = 'flex';
+        cmdkInput.value = '';
+        cmdkResults.innerHTML = '<div class="cmdk-empty">Введіть текст для пошуку</div>';
+        setTimeout(() => cmdkInput.focus(), 50);
+      }
+      if (e.key === 'Escape' && cmdkModal.style.display === 'flex') {
+        cmdkModal.style.display = 'none';
+      }
+    });
+    
+    cmdkModal.addEventListener('click', (e) => {
+      if (e.target === cmdkModal) cmdkModal.style.display = 'none';
+    });
+
+    cmdkInput.addEventListener('input', () => {
+      const q = cmdkInput.value.toLowerCase().trim();
+      if (!q) {
+        cmdkResults.innerHTML = '<div class="cmdk-empty">Введіть текст для пошуку</div>';
+        return;
+      }
+      
+      let resHtml = '';
+      let siteData = {};
+      try { siteData = JSON.parse(document.getElementById('editor').value || '{}'); } catch(e) {}
+      
+      // Search Articles
+      if (Array.isArray(siteData.articles)) {
+        siteData.articles.forEach(a => {
+          if ((a.title || '').toLowerCase().includes(q) || (a.id || '').toLowerCase().includes(q)) {
+            resHtml += `<div class="cmdk-item" onclick="document.getElementById('cmdkModal').style.display='none'; window.location.hash='visual'; setTimeout(()=>{ document.getElementById('visualSection').value='articles'; document.getElementById('visualSection').dispatchEvent(new Event('change')); setTimeout(()=>{ document.getElementById('visualEntry').value='${escapeHtml(a.id)}'; document.getElementById('visualEntry').dispatchEvent(new Event('change')); }, 50); }, 50);">
+              <div class="cmdk-item-title">${escapeHtml(a.title || a.id)}</div>
+              <div class="cmdk-item-type">Стаття</div>
+            </div>`;
+          }
+        });
+      }
+      
+      // Search Issues (magazines)
+      if (typeof window._issues !== 'undefined') {
+        window._issues.forEach(iss => {
+          if ((iss.title || '').toLowerCase().includes(q)) {
+            resHtml += `<div class="cmdk-item" onclick="window.location.hash='issues'; window._issueEdit(${iss.id}); document.getElementById('cmdkModal').style.display='none';">
+              <div class="cmdk-item-title">${escapeHtml(iss.title)}</div>
+              <div class="cmdk-item-type">Випуск (Журнал)</div>
+            </div>`;
+          }
+        });
+      }
+      
+      // Search Podcasts
+      if (typeof window._podcasts !== 'undefined') {
+        window._podcasts.forEach(p => {
+          if ((p.title || '').toLowerCase().includes(q)) {
+            resHtml += `<div class="cmdk-item" onclick="window.location.hash='podcasts'; window._podcastEdit(${p.id}); document.getElementById('cmdkModal').style.display='none';">
+              <div class="cmdk-item-title">${escapeHtml(p.title)}</div>
+              <div class="cmdk-item-type">Подкаст</div>
+            </div>`;
+          }
+        });
+      }
+      
+      if (!resHtml) {
+        resHtml = '<div class="cmdk-empty">Нічого не знайдено</div>';
+      }
+      cmdkResults.innerHTML = resHtml;
+    });
+  }
+
+  // DRAG & DROP IMAGE UPLOAD FOR TEXTAREAS
+  document.addEventListener('dragover', (e) => {
+    if (e.target.tagName === 'TEXTAREA') {
+      e.preventDefault();
+      e.target.style.border = '2px dashed var(--accent)';
+    }
+  });
+  document.addEventListener('dragleave', (e) => {
+    if (e.target.tagName === 'TEXTAREA') {
+      e.target.style.border = '';
+    }
+  });
+  document.addEventListener('drop', async (e) => {
+    if (e.target.tagName === 'TEXTAREA') {
+      e.preventDefault();
+      e.target.style.border = '';
+      const file = e.dataTransfer.files[0];
+      if (!file || !String(file.type || '').startsWith('image/')) return;
+      
+      const ta = e.target;
+      const start = ta.selectionStart;
+      const placeholder = `![Завантаження ${file.name}...]()`;
+      ta.setRangeText(placeholder, start, start, 'end');
+      ta.dispatchEvent(new Event('input', { bubbles: true }));
+
+      try {
+        const cfg = requireImageUploadConfig();
+        const maxSize = 15 * 1024 * 1024;
+        if (file.size > maxSize) throw new Error('File too large');
+
+        const fileName = buildUploadFileName(file.name, file.type);
+        const repoPath = `${cfg.uploadDir}/${fileName}`;
+        const base64Content = await readFileAsBase64(file);
+
+        const putUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${encodePath(repoPath)}`;
+        const uploadResult = await githubRequest(putUrl, {
+          method: 'PUT',
+          headers: { ...headers(cfg.token), 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: `chore(media): upload ${fileName} via admin dnd`,
+            content: base64Content,
+            branch: cfg.branch
+          })
+        });
+
+        const immediateUrl = String(uploadResult?.content?.download_url || '').trim();
+        const websiteUrl = buildPagesAssetUrl(cfg, repoPath);
+        const finalUrl = websiteUrl ? `${websiteUrl}?v=${Date.now()}` : immediateUrl;
+
+        const currentVal = ta.value;
+        ta.value = currentVal.replace(placeholder, `![](${finalUrl})`);
+        ta.dispatchEvent(new Event('input', { bubbles: true }));
+      } catch (err) {
+        console.error('DND Upload error:', err);
+        const currentVal = ta.value;
+        ta.value = currentVal.replace(placeholder, `*[Помилка завантаження: ${err.message}]*`);
+        ta.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+    }
+  });
+
 })();
 
 
