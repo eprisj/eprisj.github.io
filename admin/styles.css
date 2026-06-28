@@ -1347,14 +1347,16 @@ code {
 
 .block-card {
   border: 1px solid var(--line);
-  background: var(--bg-card);
+  background: transparent;
   overflow: hidden;
-  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+  transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease, transform .2s ease;
   border-radius: 6px;
-  box-shadow: var(--shadow-xs);
+  box-shadow: none;
 }
-.block-card:hover {
+.block-card:hover,
+.block-card:focus-within {
   border-color: var(--line-strong);
+  background-color: var(--bg-card);
   box-shadow: var(--shadow-sm);
 }
 .block-card.dragging { opacity: .45; border-style: dashed; }
@@ -1366,8 +1368,8 @@ code {
   align-items: center;
   gap: 10px;
   padding: 8px 16px;
-  background: var(--bg-card);
-  border-bottom: 1px solid var(--line);
+  background: transparent;
+  border-bottom: 1px solid transparent;
   font-family: var(--font-mono);
   font-size: .62rem;
   font-weight: 700;
@@ -1376,6 +1378,14 @@ code {
   letter-spacing: .08em;
   cursor: grab;
   user-select: none;
+  opacity: 0.3;
+  transition: opacity .2s ease, border-color .2s ease, background-color .2s ease;
+}
+.block-card:hover .block-card-header,
+.block-card:focus-within .block-card-header {
+  opacity: 1;
+  background-color: var(--bg-card);
+  border-bottom-color: var(--line);
 }
 .block-card-header:active { cursor: grabbing; }
 .block-drag-handle {
@@ -1475,7 +1485,18 @@ code {
   box-shadow: -2px 0 0 var(--accent);
 }
 .block-card-body textarea.auto-expand { resize: none; overflow: hidden; }
-.block-card-body input { font-size: .8rem; }
+.block-card-body input {
+  font-size: .82rem;
+  border-color: var(--line);
+  background: transparent;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: border-color .15s ease, background-color .15s ease;
+}
+.block-card-body input:focus {
+  background-color: var(--bg-card);
+  border-color: var(--accent);
+}
 .block-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .block-field-label {
   display: block;
