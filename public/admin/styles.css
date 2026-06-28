@@ -3137,3 +3137,56 @@ html, body {
   text-transform: uppercase;
   letter-spacing: .05em;
 }
+
+/* ==========================================================================
+   EasyMDE Custom Dark Mode Theme 
+   ========================================================================== */
+.editor-toolbar {
+  border: 1px solid var(--line-strong) !important;
+  border-bottom: none !important;
+  border-radius: 6px 6px 0 0 !important;
+  background: var(--bg-soft) !important;
+  opacity: 1 !important;
+  padding: 4px !important;
+}
+.editor-toolbar button {
+  color: var(--text) !important;
+  border: none !important;
+  border-radius: 4px !important;
+  transition: all .15s ease !important;
+}
+.editor-toolbar button:hover, .editor-toolbar button.active {
+  background: var(--accent) !important;
+  color: var(--bg-card) !important;
+}
+.editor-toolbar i.separator {
+  border-left: 1px solid var(--line) !important;
+  border-right: none !important;
+  margin: 0 4px !important;
+}
+.EasyMDEContainer .CodeMirror {
+  background: transparent !important;
+  border: 1px solid var(--line-strong) !important;
+  border-radius: 0 0 6px 6px !important;
+  color: var(--text) !important;
+  font-family: var(--font-main) !important;
+  font-size: .95rem !important;
+  line-height: 1.6 !important;
+  padding: 8px !important;
+}
+.EasyMDEContainer .CodeMirror-focused {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-soft) !important;
+}
+.EasyMDEContainer .CodeMirror-cursor {
+  border-left: 2px solid var(--accent) !important;
+}
+.editor-preview, .editor-preview-side {
+  background: var(--bg-card) !important;
+  color: var(--text) !important;
+  padding: 12px !important;
+  font-family: var(--font-main) !important;
+}
+.block-card-body .EasyMDEContainer {
+  margin-top: 8px;
+}
