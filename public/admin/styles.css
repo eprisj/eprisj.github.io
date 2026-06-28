@@ -3210,6 +3210,7 @@ img {
   gap: 32px;
   align-items: flex-start;
   margin-top: 8px;
+  grid-column: 1 / -1;
 }
 
 .editor-main-canvas {
