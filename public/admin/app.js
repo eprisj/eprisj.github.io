@@ -4311,7 +4311,7 @@ window.refreshBlockGalleryPreview = function(index) {
     return;
   }
   
-  previewDiv.innerHTML = urls.map(url => '<img src="' + escapeHtml(url) + '" referrerpolicy="no-referrer" onerror="this.style.display=\\'none\\'" />').join('');
+  previewDiv.innerHTML = urls.map(url => `<img src="${escapeHtml(url)}" referrerpolicy="no-referrer" onerror="this.style.display='none'" />`).join('');
 };
 
 // ===== INSERT BLOCK BETWEEN =====
@@ -8194,10 +8194,6 @@ window.handleBlockGalleryUpload = async function(index, gi) {
     btn.disabled = false;
   }
 };
-
-
-};
-
 // ===== AUTOSAVE & HOTKEYS =====
 let visualAutoSyncTimer = null;
 window.scheduleVisualAutoSync = function() {
