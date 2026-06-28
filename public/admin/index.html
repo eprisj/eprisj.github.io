@@ -280,74 +280,61 @@
                 </div>
               </div>
 
-              <section class="creator-studio" aria-label="Creator Studio">
-                <div class="creator-head">
-                  <div>
-                    <p class="creator-kicker">Создание записей</p>
-                    <h2>Новая статья (Creator Studio)</h2>
-                  </div>
-                  <div id="creatorQuality" class="creator-quality" aria-live="polite"></div>
-                </div>
-                <div class="creator-grid">
-                  <label class="creator-field">
-                    <span>Заголовок</span>
-                    <input id="creatorTitle" placeholder="Название новой статьи" />
-                  </label>
-                  <label class="creator-field">
-                    <span>Категория</span>
-                    <input id="creatorCategory" placeholder="Culture, Design, Travel..." />
-                  </label>
-                  <label class="creator-field">
-                    <span>imageSeed</span>
-                    <input id="creatorSeed" placeholder="visual-seed" />
-                  </label>
-                  <label class="creator-field creator-field-wide">
-                    <span>URL обложки</span>
-                    <div style="display:flex;gap:8px;align-items:center;width:100%;">
-                      <input id="creatorImageUrl" placeholder="https://..." style="flex:1" />
-                      <button id="creatorImageUploadBtn" class="btn btn-sm" type="button" title="Загрузить с ПК">📁 Загрузить</button>
-                      <input id="creatorImageUploadInput" type="file" accept="image/*" hidden />
-                    </div>
-                  </label>
-                  <div class="photo-preview creator-field-wide">
-                    <img id="creatorImagePreview" src="" alt="Превью" loading="lazy" referrerpolicy="no-referrer" hidden style="max-height: 120px; object-fit: contain; margin-top: 5px; border-radius: var(--radius-sm);" />
-                  </div>
-                </div>
-                <div class="creator-actions">
-                  <button id="aiGenerateBtn" class="btn btn-sm btn-ai" type="button" title="AI Генерация (Черновик)">✨ AI Generate</button>
-                  <span class="toolbar-sep"></span>
-                  <button id="storyBlueprintBtn" class="btn btn-primary btn-sm" type="button" title="Создать обычную статью">Статья</button>
-                  <button id="guideBlueprintBtn" class="btn btn-primary btn-sm" type="button" title="Создать статью-гид">Гид</button>
-                  <button id="photoEssayBlueprintBtn" class="btn btn-primary btn-sm" type="button" title="Создать фото-эссе">Фото-эссе</button>
-                  <button id="reviewBlueprintBtn" class="btn btn-primary btn-sm" type="button" title="Создать рецензию">Рецензия</button>
-                  <span class="toolbar-sep"></span>
-                  <button id="insertStructureBtn" class="btn btn-sm" type="button">+ Структура</button>
-                  <button id="insertChecklistTemplateBtn" class="btn btn-sm" type="button">+ Чеклист</button>
-                  <button id="insertPollTemplateBtn" class="btn btn-sm" type="button">+ Опрос</button>
-                </div>
-                <div class="command-center">
-                  <section class="audit-panel" aria-label="Аудит контента">
-                    <div class="panel-head">
-                      <div>
-                        <p class="panel-kicker">Аудит</p>
-                        <h3>Готовность раздела</h3>
+              <!-- ── Creator Studio — collapsible, collapsed when editing ── -->
+              <details class="creator-studio-wrap" id="creatorStudioWrap" open>
+                <summary class="creator-studio-toggle">
+                  <span class="creator-studio-toggle-label">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    Создать новую запись
+                  </span>
+                  <span id="creatorQualityInline" class="creator-quality-inline"></span>
+                </summary>
+                <section class="creator-studio" aria-label="Creator Studio">
+                  <div id="creatorQuality" class="creator-quality" aria-live="polite" style="display:none"></div>
+                  <div class="creator-grid">
+                    <label class="creator-field">
+                      <span>Заголовок</span>
+                      <input id="creatorTitle" placeholder="Название новой статьи" />
+                    </label>
+                    <label class="creator-field">
+                      <span>Категория</span>
+                      <input id="creatorCategory" placeholder="Culture, Design, Travel..." />
+                    </label>
+                    <label class="creator-field">
+                      <span>imageSeed</span>
+                      <input id="creatorSeed" placeholder="visual-seed" />
+                    </label>
+                    <label class="creator-field creator-field-wide">
+                      <span>URL обложки</span>
+                      <div style="display:flex;gap:8px;align-items:center;width:100%;">
+                        <input id="creatorImageUrl" placeholder="https://..." style="flex:1" />
+                        <button id="creatorImageUploadBtn" class="btn btn-sm" type="button" title="Загрузить с ПК">📁 Загрузить</button>
+                        <input id="creatorImageUploadInput" type="file" accept="image/*" hidden />
                       </div>
-                      <div class="audit-actions">
-                        <button id="findMissingLangBtn" class="btn btn-sm" type="button">Нет языка</button>
-                        <button id="findNoPhotoBtn" class="btn btn-sm" type="button">Нет фото</button>
-                        <button id="findNoPollBtn" class="btn btn-sm" type="button">Нет опроса</button>
-                        <button id="findThinTextBtn" class="btn btn-sm" type="button">Слабый текст</button>
-                      </div>
+                    </label>
+                    <div class="photo-preview creator-field-wide">
+                      <img id="creatorImagePreview" src="" alt="Превью" loading="lazy" referrerpolicy="no-referrer" hidden style="max-height:90px;object-fit:contain;margin-top:4px;border-radius:var(--radius-sm);" />
                     </div>
-                    <div id="contentAuditMetrics" class="audit-metrics" aria-live="polite"></div>
-                  </section>
-                  <section id="entryPreview" class="entry-preview" aria-label="Предпросмотр записи" aria-live="polite"></section>
-                </div>
-              </section>
+                  </div>
+                  <div class="creator-actions">
+                    <button id="aiGenerateBtn" class="btn btn-sm btn-ai" type="button" title="AI Генерация (Черновик)">✨ AI</button>
+                    <span class="toolbar-sep"></span>
+                    <button id="storyBlueprintBtn" class="btn btn-primary btn-sm" type="button">Статья</button>
+                    <button id="guideBlueprintBtn" class="btn btn-primary btn-sm" type="button">Гид</button>
+                    <button id="photoEssayBlueprintBtn" class="btn btn-primary btn-sm" type="button">Фото-эссе</button>
+                    <button id="reviewBlueprintBtn" class="btn btn-primary btn-sm" type="button">Рецензия</button>
+                    <span class="toolbar-sep"></span>
+                    <button id="insertStructureBtn" class="btn btn-sm" type="button">+ Структура</button>
+                    <button id="insertChecklistTemplateBtn" class="btn btn-sm" type="button">+ Чеклист</button>
+                    <button id="insertPollTemplateBtn" class="btn btn-sm" type="button">+ Опрос</button>
+                  </div>
+                </section>
+              </details>
 
+              <!-- ── Main editor — block editor + split preview ── -->
               <div class="editor-split" id="editorSplit">
                 <div class="editor-pane" id="editorPane">
-                  <p id="visualNotice" class="visual-notice">Выберите запись для редактирования.</p>
+                  <p id="visualNotice" class="visual-notice">Выберите запись и нажмите «Применить».</p>
                   <div id="visualForm" class="visual-form"></div>
                 </div>
                 <div class="preview-pane" id="previewPane" hidden>
@@ -367,6 +354,26 @@
                     </div>
                   </div>
                 </div>
+              </div>
+
+              <!-- ── Audit + Entry preview ── -->
+              <div class="command-center" id="commandCenter">
+                <section class="audit-panel" aria-label="Аудит контента">
+                  <div class="panel-head">
+                    <div>
+                      <p class="panel-kicker">Аудит</p>
+                      <h3>Готовность раздела</h3>
+                    </div>
+                    <div class="audit-actions">
+                      <button id="findMissingLangBtn" class="btn btn-sm" type="button">Нет языка</button>
+                      <button id="findNoPhotoBtn" class="btn btn-sm" type="button">Нет фото</button>
+                      <button id="findNoPollBtn" class="btn btn-sm" type="button">Нет опроса</button>
+                      <button id="findThinTextBtn" class="btn btn-sm" type="button">Слабый текст</button>
+                    </div>
+                  </div>
+                  <div id="contentAuditMetrics" class="audit-metrics" aria-live="polite"></div>
+                </section>
+                <section id="entryPreview" class="entry-preview" aria-label="Предпросмотр записи" aria-live="polite"></section>
               </div>
 
               <div id="stats" class="stats"></div>
