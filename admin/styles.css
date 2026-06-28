@@ -3154,6 +3154,20 @@ html, body {
   border: none !important;
   border-radius: 4px !important;
   transition: all .15s ease !important;
+  display: inline-block !important;
+  width: 30px !important;
+  height: 30px !important;
+  min-width: 30px !important;
+  line-height: 30px !important;
+  padding: 0 !important;
+  margin: 0 1px !important;
+  text-align: center !important;
+}
+
+/* Fix globally overflowing oversized images */
+img {
+  max-width: 100%;
+  height: auto;
 }
 .editor-toolbar button:hover, .editor-toolbar button.active {
   background: var(--accent) !important;
