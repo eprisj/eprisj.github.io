@@ -4103,9 +4103,21 @@ function bindBlockEditorEvents() {
         element: ta,
         spellChecker: false,
         status: false,
-        minHeight: '120px',
+        minHeight: '80px',
         placeholder: 'Напишите текст...',
-        toolbar: ['bold', 'italic', 'strikethrough', 'heading', '|', 'quote', 'unordered-list', 'ordered-list', '|', 'link', 'guide']
+        toolbar: ['bold', 'italic', 'strikethrough', 'heading', '|', 'quote', 'unordered-list', 'ordered-list', '|', 'link', 'guide'],
+        uploadImage: true,
+        imageUploadFunction: async function(file, onSuccess, onError) {
+          try {
+            showToast('info', 'Загрузка фото...');
+            const url = await uploadImageReturnUrl(file);
+            onSuccess(url);
+            showToast('success', 'Фото добавлено в текст');
+          } catch (err) {
+            onError(err.message || 'Ошибка загрузки');
+            showToast('error', err.message || 'Ошибка загрузки');
+          }
+        }
       });
       
       mde.codemirror.on('change', () => {

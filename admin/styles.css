@@ -1379,14 +1379,20 @@ code {
 .block-editor { display: grid; gap: 6px; grid-column: 1 / -1; }
 
 .block-card {
-  border: 1px solid var(--line);
-  background: var(--bg-card);
-  overflow: hidden;
-  transition: border-color .15s, box-shadow .15s;
+  border: 1px solid transparent;
+  background: transparent;
+  overflow: visible;
+  transition: background-color .15s, border-color .15s;
   border-radius: 6px;
+  position: relative;
+  margin-bottom: 12px;
 }
-.block-card:hover      { border-color: var(--line-strong); }
-.block-card:focus-within { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(80,26,44,.1); }
+.block-card:hover {
+  background: rgba(255, 255, 255, 0.015) !important;
+}
+.block-card:focus-within {
+  background: rgba(255, 255, 255, 0.025) !important;
+}
 .block-card.dragging   { opacity: .45; border-style: dashed; }
 .block-card.drag-over  { border-color: var(--gold); box-shadow: 0 0 0 2px rgba(201,166,144,.25); }
 .block-card.collapsed .block-card-body { display: none; }
@@ -1395,9 +1401,9 @@ code {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 7px 12px;
-  background: var(--bg);
-  border-bottom: 1px solid var(--line);
+  padding: 4px 8px;
+  background: transparent;
+  border-bottom: none;
   font-family: var(--font-mono);
   font-size: .62rem;
   font-weight: 700;
@@ -1406,9 +1412,13 @@ code {
   letter-spacing: .07em;
   cursor: grab;
   user-select: none;
-  /* always visible — no opacity trick */
+  opacity: 0.08;
+  transition: opacity .15s ease;
 }
-.block-card:focus-within .block-card-header { background: var(--bg-card); border-bottom-color: var(--line-strong); }
+.block-card:hover .block-card-header,
+.block-card:focus-within .block-card-header {
+  opacity: 0.8;
+}
 .block-card-header:active { cursor: grabbing; }
 .block-drag-handle {
   display: flex;
@@ -3143,11 +3153,22 @@ html, body {
    ========================================================================== */
 .editor-toolbar {
   border: 1px solid var(--line-strong) !important;
-  border-bottom: none !important;
-  border-radius: 6px 6px 0 0 !important;
-  background: var(--bg-soft) !important;
+  border-radius: 6px !important;
+  background: var(--bg-card) !important;
+  opacity: 0 !important;
+  visibility: hidden;
+  transition: opacity .15s ease, visibility .15s ease;
+  position: absolute;
+  top: -36px;
+  left: 8px;
+  z-index: 100;
+  box-shadow: var(--shadow);
+  padding: 2px !important;
+}
+.block-card:hover .editor-toolbar,
+.block-card:focus-within .editor-toolbar {
   opacity: 1 !important;
-  padding: 4px !important;
+  visibility: visible;
 }
 .editor-toolbar button {
   color: var(--text) !important;
@@ -3180,17 +3201,17 @@ img {
 }
 .EasyMDEContainer .CodeMirror {
   background: transparent !important;
-  border: 1px solid var(--line-strong) !important;
-  border-radius: 0 0 6px 6px !important;
+  border: none !important;
+  border-radius: 6px !important;
   color: var(--text) !important;
   font-family: var(--font-main) !important;
   font-size: .95rem !important;
   line-height: 1.6 !important;
-  padding: 8px !important;
+  padding: 6px 0 !important;
 }
 .EasyMDEContainer .CodeMirror-focused {
-  border-color: var(--accent) !important;
-  box-shadow: 0 0 0 3px var(--accent-soft) !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
 }
 .EasyMDEContainer .CodeMirror-cursor {
   border-left: 2px solid var(--accent) !important;
