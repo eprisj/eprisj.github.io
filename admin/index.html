@@ -154,6 +154,7 @@
               Сохранить
             </button>
           </div>
+          <div id="autosave-status" class="autosave-status"></div>
           <div class="sidebar-secondary-actions">
             <button id="deployVpsBtn" class="sidebar-btn-ghost" type="button">🚀 Deploy VPS</button>
             <a href="../" class="sidebar-btn-ghost" target="_blank" rel="noreferrer">Сайт ↗</a>
@@ -540,11 +541,17 @@
                     <label><span class="field-label">Номер / том</span><input id="issueNumber" placeholder="Vol. 15" /></label>
                     <label><span class="field-label">Дата публикации</span><input id="issuePublishedAt" type="date" /></label>
                     <label class="full"><span class="field-label">Подзаголовок</span><input id="issueTagline" placeholder="The Door Issue" /></label>
-                    <label class="full"><span class="field-label">URL главной обложки</span><input id="issueCoverUrl" placeholder="https://..." /></label>
+                    <label class="full"><span class="field-label">URL главной обложки</span>
+                      <div style="display:flex;gap:8px;align-items:center;">
+                        <input id="issueCoverUrl" placeholder="https://..." style="flex:1;" />
+                        <button type="button" class="btn btn-sm" id="issueCoverUploadBtn">📁 Загрузить</button>
+                        <input type="file" id="issueCoverFileInput" accept="image/*" hidden />
+                      </div>
+                    </label>
                   </div>
-                  <div class="issue-cover-upload-row">
-                    <button id="issueCoverUploadBtn" class="btn btn-sm" type="button">Загрузить обложку</button>
-                    <input id="issueCoverUploadInput" type="file" accept="image/*" hidden />
+                  <div class="issue-cover-upload-row" style="display:none">
+                    <button id="oldIssueCoverUploadBtn" class="btn btn-sm" type="button">Загрузить обложку</button>
+                    <input id="oldIssueCoverUploadInput" type="file" accept="image/*" hidden />
                     <span class="form-hint" style="margin:0">или вставьте URL / выберите из статьи</span>
                   </div>
                   <div id="issueCoverPicks" class="issue-cover-picks"></div>
@@ -930,7 +937,7 @@
     </div>
 
     <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
-    <script src="./app.js?v=2.1" type="module"></script>
+    <script src="./app.js?v=2.2" type="module"></script>
     <script>
       // Tab switching + page title update
       document.addEventListener('DOMContentLoaded', function () {

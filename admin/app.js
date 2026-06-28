@@ -2727,8 +2727,14 @@ function refreshCreatorQualityFromForm(fallback = {}) {
 
 function bindCreatorQualityInputs(fallback = {}) {
   visualFormEl.querySelectorAll('input, textarea, select').forEach((field) => {
-    field.addEventListener('input', () => refreshCreatorQualityFromForm(fallback));
-    field.addEventListener('change', () => refreshCreatorQualityFromForm(fallback));
+    field.addEventListener('input', () => {
+      refreshCreatorQualityFromForm(fallback);
+      if (typeof scheduleVisualAutoSync === 'function') scheduleVisualAutoSync();
+    });
+    field.addEventListener('change', () => {
+      refreshCreatorQualityFromForm(fallback);
+      if (typeof scheduleVisualAutoSync === 'function') scheduleVisualAutoSync();
+    });
   });
 }
 
@@ -4122,6 +4128,7 @@ function bindBlockEditorEvents() {
       
       mde.codemirror.on('change', () => {
         const val = mde.value();
+        if (typeof scheduleVisualAutoSync === 'function') scheduleVisualAutoSync();
         const wordCountEl = ta.parentElement.querySelector('.block-word-count');
         if (wordCountEl) {
           const words = val.trim().split(/\s+/).filter(Boolean).length;
@@ -4304,7 +4311,7 @@ window.refreshBlockGalleryPreview = function(index) {
     return;
   }
   
-  previewDiv.innerHTML = urls.map(url => '<img src="' + escapeHtml(url) + '" referrerpolicy="no-referrer" onerror="this.style.display=\\'none\\'" />').join('');
+  previewDiv.innerHTML = urls.map(url => `<img src="${escapeHtml(url)}" referrerpolicy="no-referrer" onerror="this.style.display='none'" />`).join('');
 };
 
 // ===== INSERT BLOCK BETWEEN =====
@@ -5586,7 +5593,7 @@ function bindIssueBuilder() {
   });
 
   // Cover upload → drops the URL into issueCoverUrl and refreshes the preview.
-  bindUploadButton('issueCoverUploadBtn', 'issueCoverUploadInput', 'issueCoverUrl', () => refreshIssueValidation());
+  bindUploadButton('issueCoverUploadBtn', 'issueCoverFileInput', 'issueCoverUrl', () => refreshIssueValidation());
 
   // Live PDF preview: stash the current (unsaved) draft and open the site issue
   // page in preview mode for the issue being edited.
@@ -8187,5 +8194,92 @@ window.handleBlockGalleryUpload = async function(index, gi) {
     btn.disabled = false;
   }
 };
+// ===== AUTOSAVE & HOTKEYS =====
+let visualAutoSyncTimer = null;
+window.scheduleVisualAutoSync = function() {
+  if (visualAutoSyncTimer) clearTimeout(visualAutoSyncTimer);
+  visualAutoSyncTimer = setTimeout(() => {
+    autoSyncVisualToEditor();
+  }, 1000); // Save 1 second after typing stops
+};
 
+async function autoSyncVisualToEditor() {
+  try {
+    const data = parseEditorJsonSafe();
+    if (!data) return;
+    const section = visualSectionSelect.value;
+    const lang = visualLangSelect.value || 'ru';
+    const entries = getSectionArray(data, section, lang, false);
+    if (!entries || !entries.length) return;
+    
+    const selectedId = Number(visualEntrySelect.value);
+    const entryIndex = entries.findIndex((item) => Number(item.id) === selectedId);
+    if (entryIndex === -1) return;
 
+    let next = { ...entries[entryIndex] };
+
+    if (section === 'items') {
+        next = {
+          ...next,
+          fig: getFieldValue('vf-fig').trim(),
+          title: getFieldValue('vf-title').trim(),
+          subtitle: getFieldValue('vf-subtitle').trim(),
+          description: getFieldValue('vf-description').trim(),
+          imageSeed: getFieldValue('vf-imageSeed').trim(),
+          imageUrl: getFieldValue('vf-imageUrl').trim() || undefined
+        };
+    } else if (section === 'reviews') {
+        next = {
+          ...next,
+          title: getFieldValue('vf-title').trim(),
+          subject: getFieldValue('vf-subject').trim(),
+          rating: Number(getFieldValue('vf-rating')),
+          content: getFieldValue('vf-content').trim()
+        };
+    } else if (section === 'libraryItems') {
+        next = {
+          ...next,
+          title: getFieldValue('vf-title').trim(),
+          type: getFieldValue('vf-type').trim(),
+          size: getFieldValue('vf-size').trim(),
+          url: getFieldValue('vf-url').trim(),
+          year: getFieldValue('vf-year').trim()
+        };
+    } else {
+        next = {
+          ...next,
+          title: getFieldValue('vf-title').trim(),
+          excerpt: getFieldValue('vf-excerpt').trim(),
+          tags: getFieldValue('vf-tags').split(',').map((tag) => tag.trim()).filter(Boolean),
+          imageSeed: getFieldValue('vf-imageSeed').trim(),
+          imageUrl: getFieldValue('vf-imageUrl').trim() || undefined,
+          content: collectBlockEditorContent()
+        };
+    }
+
+    entries[entryIndex] = next;
+    // Update the textarea silently
+    editor.value = JSON.stringify(data, null, 2);
+    updateEditorState();
+    
+    // Save to localStorage
+    if (editor.value.trim()) {
+      localStorage.setItem('epris-site-draft', editor.value);
+      const autosaveStatus = document.getElementById('autosave-status');
+      if (autosaveStatus) {
+        const time = new Date().toLocaleTimeString('ru-RU', {hour: '2-digit', minute:'2-digit', second:'2-digit'});
+        autosaveStatus.innerText = `Сохранено в ${time}`;
+      }
+    }
+  } catch(e) {}
+}
+
+document.addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') {
+    e.preventDefault();
+    const btn = document.getElementById('saveBtn');
+    if (btn && !btn.disabled) {
+      btn.click();
+    }
+  }
+});
