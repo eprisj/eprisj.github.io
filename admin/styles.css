@@ -1569,6 +1569,59 @@ code {
   transform: scale(1.15);
 }
 
+/* Block Insert Popover Menu */
+.block-insert-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 999;
+  background: transparent;
+}
+.block-insert-popup {
+  position: absolute;
+  z-index: 1000;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 6px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+  min-width: 250px;
+  transform-origin: top left;
+  animation: popupIn .16s cubic-bezier(.34, 1.56, .64, 1);
+}
+@keyframes popupIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.block-insert-popup-btn {
+  border: none;
+  background: transparent;
+  color: var(--text);
+  padding: 8px 12px;
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all .15s ease;
+  text-align: left;
+}
+.block-insert-popup-btn:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.block-insert-popup-btn .popup-icon {
+  font-size: .8rem;
+  opacity: .85;
+}
+
 .add-block-row {
   display: flex;
   gap: 8px;
