@@ -3862,7 +3862,11 @@ function renderBlockBody(block, index) {
     const previewUrl = resolveBlockImageUrl(src);
     return `
       <div><span class="block-field-label">Источник (URL или seed)</span>
-      <input data-block-field="content" data-block-index="${index}" value="${escapeHtml(src)}" placeholder="URL или imageSeed" oninput="refreshBlockImagePreview(${index})" /></div>
+      <div style="display:flex;gap:8px;align-items:center;width:100%;">
+        <input data-block-field="content" data-block-index="${index}" id="block-img-input-${index}" value="${escapeHtml(src)}" placeholder="URL или imageSeed" oninput="refreshBlockImagePreview(${index})" style="flex:1" />
+        <button id="block-img-upload-btn-${index}" class="btn btn-sm" type="button" title="Загрузить с ПК" onclick="triggerBlockImageUpload(${index})">📁 Загрузить</button>
+        <input id="block-img-file-${index}" type="file" accept="image/*" onchange="handleBlockImageUpload(${index})" hidden />
+      </div></div>
       <div class="block-image-preview" id="block-img-preview-${index}">
         ${previewUrl ? '<img src="' + escapeHtml(previewUrl) + '" referrerpolicy="no-referrer" onerror="this.style.display=\'none\'" />' : '<div class="block-image-preview-empty">Нет превью</div>'}
       </div>
@@ -3875,7 +3879,12 @@ function renderBlockBody(block, index) {
     const cap = block.caption || '';
     let html = '<span class="block-field-label">Элементы галереи (URL или seed)</span><div class="block-gallery-items" data-block-gallery="' + index + '">';
     items.forEach((item, gi) => {
-      html += '<div class="block-gallery-item"><input data-gallery-item="' + gi + '" value="' + escapeHtml(item) + '" placeholder="URL или seed" /><button type="button" class="block-action-btn danger" onclick="removeGalleryItem(' + index + ', ' + gi + ')" title="Удалить">\u2716</button></div>';
+      html += `<div class="block-gallery-item" style="display:flex;gap:6px;align-items:center;width:100%;margin-bottom:4px;">
+        <input data-gallery-item="${gi}" id="block-gallery-input-${index}-${gi}" value="${escapeHtml(item)}" placeholder="URL или seed" style="flex:1" />
+        <button id="block-gallery-upload-btn-${index}-${gi}" class="btn btn-sm" type="button" title="Загрузить с ПК" onclick="triggerBlockGalleryUpload(${index}, ${gi})">📁</button>
+        <input id="block-gallery-file-${index}-${gi}" type="file" accept="image/*" onchange="handleBlockGalleryUpload(${index}, ${gi})" hidden />
+        <button type="button" class="block-action-btn danger" onclick="removeGalleryItem(${index}, ${gi})" title="Удалить"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      </div>`;
     });
     html += '</div><button type="button" class="add-block-btn" onclick="addGalleryItem(' + index + ')">+ элемент</button>';
     // Gallery preview
@@ -8028,5 +8037,69 @@ globalTextareaObserver.observe(document.body, { childList: true, subtree: true }
   });
 
 })();
+
+// ===== GLOBAL BLOCK IMAGE/GALLERY UPLOAD HELPERS =====
+window.triggerBlockImageUpload = function(index) {
+  document.getElementById(`block-img-file-${index}`)?.click();
+};
+
+window.handleBlockImageUpload = async function(index) {
+  const fileInput = document.getElementById(`block-img-file-${index}`);
+  const textInput = document.getElementById(`block-img-input-${index}`);
+  if (!fileInput || !fileInput.files || !fileInput.files[0] || !textInput) return;
+  const file = fileInput.files[0];
+  const btn = document.getElementById(`block-img-upload-btn-${index}`);
+  const originalText = btn.innerHTML;
+  try {
+    btn.innerHTML = '⏳...';
+    btn.disabled = true;
+    const url = await uploadImageReturnUrl(file);
+    textInput.value = url;
+    textInput.dispatchEvent(new Event('input', { bubbles: true }));
+    textInput.dispatchEvent(new Event('change', { bubbles: true }));
+    if (typeof refreshBlockImagePreview === 'function') {
+      refreshBlockImagePreview(index);
+    }
+  } catch (err) {
+    alert(err.message || 'Ошибка загрузки');
+  } finally {
+    btn.innerHTML = originalText;
+    btn.disabled = false;
+  }
+};
+
+window.triggerBlockGalleryUpload = function(index, gi) {
+  document.getElementById(`block-gallery-file-${index}-${gi}`)?.click();
+};
+
+window.handleBlockGalleryUpload = async function(index, gi) {
+  const fileInput = document.getElementById(`block-gallery-file-${index}-${gi}`);
+  const textInput = document.getElementById(`block-gallery-input-${index}-${gi}`);
+  if (!fileInput || !fileInput.files || !fileInput.files[0] || !textInput) return;
+  const file = fileInput.files[0];
+  const btn = document.getElementById(`block-gallery-upload-btn-${index}-${gi}`);
+  const originalText = btn.innerHTML;
+  try {
+    btn.innerHTML = '⏳';
+    btn.disabled = true;
+    const url = await uploadImageReturnUrl(file);
+    textInput.value = url;
+    textInput.dispatchEvent(new Event('input', { bubbles: true }));
+    textInput.dispatchEvent(new Event('change', { bubbles: true }));
+    
+    // Refresh the block editor so the gallery thumbnail list updates with the new image
+    const editorEl = document.getElementById('vf-block-editor');
+    if (editorEl) {
+      const blocks = collectBlockEditorContent();
+      editorEl.innerHTML = renderBlockEditor(blocks);
+      bindBlockEditorEvents();
+    }
+  } catch (err) {
+    alert(err.message || 'Ошибка загрузки');
+  } finally {
+    btn.innerHTML = originalText;
+    btn.disabled = false;
+  }
+};
 
 
