@@ -4280,6 +4280,33 @@ window.refreshBlockImagePreview = function(index) {
   }
 };
 
+window.refreshBlockGalleryPreview = function(index) {
+  const container = document.querySelector('.block-gallery-items[data-block-gallery="' + index + '"]');
+  if (!container) return;
+  const inputs = Array.from(container.querySelectorAll('input[data-block-gallery-field="url"]'));
+  const urls = inputs.map(i => resolveBlockImageUrl(i.value)).filter(Boolean);
+  
+  let previewDiv = container.nextElementSibling;
+  while (previewDiv && previewDiv.tagName === 'BUTTON') {
+    previewDiv = previewDiv.nextElementSibling;
+  }
+  
+  if (!previewDiv || !previewDiv.classList.contains('block-gallery-preview')) {
+    const addBtn = container.nextElementSibling;
+    const newPreview = document.createElement('div');
+    newPreview.className = 'block-gallery-preview';
+    addBtn.parentNode.insertBefore(newPreview, addBtn.nextSibling);
+    previewDiv = newPreview;
+  }
+  
+  if (urls.length === 0) {
+    previewDiv.innerHTML = '';
+    return;
+  }
+  
+  previewDiv.innerHTML = urls.map(url => '<img src="' + escapeHtml(url) + '" referrerpolicy="no-referrer" onerror="this.style.display=\\'none\\'" />').join('');
+};
+
 // ===== INSERT BLOCK BETWEEN =====
 window.showInsertMenu = function(beforeIndex, triggerEl) {
   const existingOverlay = document.querySelector('.block-insert-overlay');
@@ -8149,14 +8176,12 @@ window.handleBlockGalleryUpload = async function(index, gi) {
     textInput.value = url;
     textInput.dispatchEvent(new Event('input', { bubbles: true }));
     textInput.dispatchEvent(new Event('change', { bubbles: true }));
-    
-    // Refresh the block editor so the gallery thumbnail list updates with the new image
-    const editorEl = document.getElementById('vf-block-editor');
-    if (editorEl) {
-      const blocks = collectBlockEditorContent();
-      redrawBlockEditor(blocks);}
+    // Refresh only the gallery preview DOM
+    if (typeof refreshBlockGalleryPreview === 'function') {
+      refreshBlockGalleryPreview(index);
+    }
   } catch (err) {
-    alert(err.message || 'Ошибка загрузки');
+    showToast('error', err.message || 'Ошибка загрузки');
   } finally {
     btn.innerHTML = originalText;
     btn.disabled = false;
