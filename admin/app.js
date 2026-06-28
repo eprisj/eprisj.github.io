@@ -6332,6 +6332,11 @@ function bindStudioRowActions() {
   }
 
   window._radioPreviewTrack = function(id, title) {
+    if (window._globalPlay) {
+      window._globalPlay(title, 'Radio Track', '', RADIO_API + '/api/music/tracks/' + id + '/file');
+      return;
+    }
+    // fallback if global play not ready
     if (_trackAudioEl) { _trackAudioEl.pause(); _trackAudioEl.src = ''; }
     if (_playingTrackId === id) {
       _playingTrackId = null;
@@ -6570,6 +6575,10 @@ function bindStudioRowActions() {
   let _podcastAudio = null;
   window._podcastPreview = id => {
     const p = _podcasts.find(x => x.id === id); if (!p?.audio_url) return;
+    if (window._globalPlay) {
+      window._globalPlay(p.title, p.season ? p.season + (p.episode_number ? ' / Эп. ' + p.episode_number : '') : 'Podcast', p.cover_url, p.audio_url);
+      return;
+    }
     if (_podcastAudio) { _podcastAudio.pause(); _podcastAudio = null; }
     _podcastAudio = new Audio(p.audio_url);
     _podcastAudio.play().catch(() => radioShowToast('Не удалось воспроизвести', 'error'));
@@ -7705,4 +7714,115 @@ const globalTextareaObserver = new MutationObserver((mutations) => {
   }
 });
 globalTextareaObserver.observe(document.body, { childList: true, subtree: true });
+
+// ===== GLOBAL AUDIO PLAYER & WYSIWYG =====
+(function initMaximumUpgrades() {
+  const player = document.getElementById('globalAudioPlayer');
+  const audio = document.getElementById('globalAudioEl');
+  const cover = document.getElementById('playerCoverImg');
+  const fallback = document.getElementById('playerFallbackIcon');
+  const titleEl = document.getElementById('playerTitle');
+  const subtitleEl = document.getElementById('playerSubtitle');
+  const playBtn = document.getElementById('playerPlayBtn');
+  const closeBtn = document.getElementById('playerCloseBtn');
+  const progressWrap = document.getElementById('playerProgressWrap');
+  const progress = document.getElementById('playerProgress');
+  const timeEl = document.getElementById('playerTime');
+
+  if (!player || !audio) return;
+
+  function formatTime(s) {
+    if (isNaN(s)) return '0:00';
+    const min = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return min + ':' + (sec < 10 ? '0' : '') + sec;
+  }
+
+  window._globalPlay = function(title, subtitle, coverUrl, audioUrl) {
+    player.classList.add('active');
+    titleEl.textContent = title || 'Без назви';
+    subtitleEl.textContent = subtitle || '';
+    if (coverUrl) {
+      cover.src = coverUrl;
+      cover.style.display = 'block';
+      fallback.style.display = 'none';
+    } else {
+      cover.style.display = 'none';
+      fallback.style.display = 'block';
+    }
+    audio.src = audioUrl;
+    audio.play().catch(e => console.error('Audio play error:', e));
+  };
+
+  playBtn.addEventListener('click', () => {
+    if (audio.paused) audio.play();
+    else audio.pause();
+  });
+
+  closeBtn.addEventListener('click', () => {
+    audio.pause();
+    player.classList.remove('active');
+  });
+
+  audio.addEventListener('play', () => playBtn.textContent = '⏸');
+  audio.addEventListener('pause', () => playBtn.textContent = '▶');
+  audio.addEventListener('timeupdate', () => {
+    const p = (audio.currentTime / audio.duration) * 100 || 0;
+    progress.style.width = p + '%';
+    timeEl.textContent = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
+  });
+  progressWrap.addEventListener('click', (e) => {
+    const rect = progressWrap.getBoundingClientRect();
+    const pos = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = pos * audio.duration;
+  });
+
+  // WYSIWYG
+  const toolbar = document.getElementById('wysiwygToolbar');
+  if (toolbar) {
+    let currentTa = null;
+    document.addEventListener('selectionchange', () => {
+      const active = document.activeElement;
+      if (active && active.tagName === 'TEXTAREA' && active.closest('.block-card-body')) {
+        const text = active.value.substring(active.selectionStart, active.selectionEnd);
+        if (text.trim().length > 0) {
+          const rect = active.getBoundingClientRect();
+          // rough estimation of cursor position
+          toolbar.style.display = 'flex';
+          toolbar.style.top = (rect.top - 10) + 'px';
+          toolbar.style.left = (rect.left + rect.width/2) + 'px';
+          currentTa = active;
+        } else {
+          toolbar.style.display = 'none';
+        }
+      } else {
+        toolbar.style.display = 'none';
+      }
+    });
+
+    toolbar.addEventListener('mousedown', (e) => {
+      e.preventDefault(); // keep focus
+      const btn = e.target.closest('button');
+      if (!btn || !currentTa) return;
+      const cmd = btn.dataset.cmd;
+      const start = currentTa.selectionStart;
+      const end = currentTa.selectionEnd;
+      const text = currentTa.value.substring(start, end);
+      let newText = text;
+      
+      if (cmd === 'bold') newText = `**${text}**`;
+      else if (cmd === 'italic') newText = `*${text}*`;
+      else if (cmd === 'link') {
+        const url = prompt('URL:');
+        if (url) newText = `[${text}](${url})`;
+      } else if (cmd === 'h2') newText = `\n## ${text}\n`;
+      else if (cmd === 'h3') newText = `\n### ${text}\n`;
+
+      currentTa.setRangeText(newText, start, end, 'select');
+      currentTa.dispatchEvent(new Event('input', { bubbles: true }));
+      toolbar.style.display = 'none';
+    });
+  }
+})();
+
 
