@@ -283,8 +283,8 @@
               <section class="creator-studio" aria-label="Creator Studio">
                 <div class="creator-head">
                   <div>
-                    <p class="creator-kicker">Creator Studio</p>
-                    <h2>Собрать публикацию</h2>
+                    <p class="creator-kicker">Создание записей</p>
+                    <h2>Новая статья (Creator Studio)</h2>
                   </div>
                   <div id="creatorQuality" class="creator-quality" aria-live="polite"></div>
                 </div>
@@ -303,16 +303,23 @@
                   </label>
                   <label class="creator-field creator-field-wide">
                     <span>URL обложки</span>
-                    <input id="creatorImageUrl" placeholder="https://..." />
+                    <div style="display:flex;gap:8px;align-items:center;width:100%;">
+                      <input id="creatorImageUrl" placeholder="https://..." style="flex:1" />
+                      <button id="creatorImageUploadBtn" class="btn btn-sm" type="button" title="Загрузить с ПК">📁 Загрузить</button>
+                      <input id="creatorImageUploadInput" type="file" accept="image/*" hidden />
+                    </div>
                   </label>
+                  <div class="photo-preview creator-field-wide">
+                    <img id="creatorImagePreview" src="" alt="Превью" loading="lazy" referrerpolicy="no-referrer" hidden style="max-height: 120px; object-fit: contain; margin-top: 5px; border-radius: var(--radius-sm);" />
+                  </div>
                 </div>
                 <div class="creator-actions">
-                  <button id="aiGenerateBtn" class="btn btn-sm btn-ai" type="button">✨ AI Generate</button>
+                  <button id="aiGenerateBtn" class="btn btn-sm btn-ai" type="button" title="AI Генерация (Черновик)">✨ AI Generate</button>
                   <span class="toolbar-sep"></span>
-                  <button id="storyBlueprintBtn" class="btn btn-sm" type="button">Статья</button>
-                  <button id="guideBlueprintBtn" class="btn btn-sm" type="button">Гид</button>
-                  <button id="photoEssayBlueprintBtn" class="btn btn-sm" type="button">Фото-эссе</button>
-                  <button id="reviewBlueprintBtn" class="btn btn-sm" type="button">Рецензия</button>
+                  <button id="storyBlueprintBtn" class="btn btn-primary btn-sm" type="button" title="Создать обычную статью">Статья</button>
+                  <button id="guideBlueprintBtn" class="btn btn-primary btn-sm" type="button" title="Создать статью-гид">Гид</button>
+                  <button id="photoEssayBlueprintBtn" class="btn btn-primary btn-sm" type="button" title="Создать фото-эссе">Фото-эссе</button>
+                  <button id="reviewBlueprintBtn" class="btn btn-primary btn-sm" type="button" title="Создать рецензию">Рецензия</button>
                   <span class="toolbar-sep"></span>
                   <button id="insertStructureBtn" class="btn btn-sm" type="button">+ Структура</button>
                   <button id="insertChecklistTemplateBtn" class="btn btn-sm" type="button">+ Чеклист</button>
