@@ -20,9 +20,11 @@ import {
   Review,
   setPreviewOverride,
   getTranslations,
+  getTheme,
   loadLiveContent,
   subscribeContent
 } from './data';
+import type { SiteTheme } from './data';
 import { Search, Folder, Star, ArrowUpRight, ArrowRight, Download, FileText, BookOpen, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
 
 // Issue-draft preview: when the admin opens /issue?preview=1, load the unsaved
@@ -157,6 +159,48 @@ function sanitizeRichText(html: string): string {
   return root ? walk(root) : '';
 }
 
+// ── Site theme application (colors + fonts from content.theme) ───────────────
+function hexToRgbChannels(hex: string): string | null {
+  const h = String(hex || '').trim().replace('#', '');
+  const full = h.length === 3 ? h.split('').map((c) => c + c).join('') : h;
+  if (!/^[0-9a-fA-F]{6}$/.test(full)) return null;
+  const r = parseInt(full.slice(0, 2), 16);
+  const g = parseInt(full.slice(2, 4), 16);
+  const b = parseInt(full.slice(4, 6), 16);
+  return `${r} ${g} ${b}`;
+}
+const __loadedFonts = new Set<string>();
+function ensureGoogleFont(name: string) {
+  const fam = String(name || '').trim();
+  if (!fam || fam === 'Playfair Display' || fam.startsWith('Iowan')) return; // defaults already present
+  const key = fam.toLowerCase();
+  if (__loadedFonts.has(key)) return;
+  __loadedFonts.add(key);
+  const id = 'gf-' + key.replace(/[^a-z0-9]/g, '');
+  if (document.getElementById(id)) return;
+  const link = document.createElement('link');
+  link.id = id;
+  link.rel = 'stylesheet';
+  link.href = 'https://fonts.googleapis.com/css2?family=' + fam.replace(/ /g, '+') + ':wght@400;700&display=swap';
+  document.head.appendChild(link);
+}
+function applySiteTheme(theme: SiteTheme) {
+  if (typeof document === 'undefined') return;
+  const root = document.documentElement.style;
+  const setColor = (varName: string, rgbVar: string, hex?: string) => {
+    if (!hex) return;
+    const rgb = hexToRgbChannels(hex);
+    if (!rgb) return;
+    root.setProperty(varName, hex);
+    root.setProperty(rgbVar, rgb);
+  };
+  setColor('--c-accent', '--c-accent-rgb', theme.accent);
+  setColor('--c-gold', '--c-gold-rgb', theme.gold);
+  setColor('--c-bg', '--c-bg-rgb', theme.bg);
+  if (theme.fontDisplay) { ensureGoogleFont(theme.fontDisplay); root.setProperty('--font-display', `'${theme.fontDisplay}', serif`); }
+  if (theme.fontBody) { ensureGoogleFont(theme.fontBody); root.setProperty('--font-body', `'${theme.fontBody}', serif`); }
+}
+
 function Reveal({ children, delay = 0, y = 28, className = '' }: { children: ReactNode; delay?: number; y?: number; className?: string }) {
   return (
     <motion.div
@@ -245,12 +289,12 @@ function NavBar({
   return (
     <>
       {/* ── Mobile header: hamburger · EPRIS · ISSUE ── */}
-      <nav className="lg:hidden fixed top-0 left-0 w-full z-50 bg-[#F5F0EB] border-b border-[#501a2c]/25 h-16 grid grid-cols-[1fr_auto_1fr] items-center px-4">
+      <nav className="lg:hidden fixed top-0 left-0 w-full z-50 bg-[var(--c-bg)] border-b border-[rgb(var(--c-accent-rgb)_/_0.25)] h-16 grid grid-cols-[1fr_auto_1fr] items-center px-4">
         <button
           type="button"
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="justify-self-start text-[#501a2c] p-1"
+          className="justify-self-start text-[var(--c-accent)] p-1"
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -259,45 +303,45 @@ function NavBar({
           onClick={() => { setActiveTab('gallery'); setIsMenuOpen(false); }}
           aria-label="EPRIS — home"
           className="justify-self-center leading-none"
-          style={{ fontFamily: "'Playfair Display', serif" }}
+          style={{ fontFamily: "var(--font-display)" }}
         >
-          <span className="text-[26px] tracking-[0.22em] text-[#501a2c] pl-[0.22em]">EPRIS</span>
+          <span className="text-[26px] tracking-[0.22em] text-[var(--c-accent)] pl-[0.22em]">EPRIS</span>
         </button>
         <button
           type="button"
           onClick={() => { setActiveTab('issue'); setIsMenuOpen(false); }}
-          className="justify-self-end bg-[#501a2c] text-[#F5F0EB] rounded-full px-5 py-2.5 font-mono text-[11px] tracking-[0.18em] uppercase hover:bg-[#3d1421] transition-colors"
+          className="justify-self-end bg-[var(--c-accent)] text-[var(--c-bg)] rounded-full px-5 py-2.5 font-mono text-[11px] tracking-[0.18em] uppercase hover:bg-[#3d1421] transition-colors"
         >
           {t('nav.issue')}
         </button>
       </nav>
 
       {/* ── Desktop header ── */}
-      <nav className="hidden lg:flex fixed top-0 left-0 w-full z-50 bg-[#F5F0EB] border-b border-[#501a2c] text-xs font-mono uppercase tracking-widest text-[#501a2c] h-16">
+      <nav className="hidden lg:flex fixed top-0 left-0 w-full z-50 bg-[var(--c-bg)] border-b border-[var(--c-accent)] text-xs font-mono uppercase tracking-widest text-[var(--c-accent)] h-16">
         {/* Logo Section */}
-        <div className="w-64 border-r border-[#501a2c] px-6 flex items-center shrink-0 bg-[#F5F0EB] z-50">
-          <button type="button" className="flex items-center" onClick={() => setActiveTab('gallery')} aria-label="Go to home" style={{ fontFamily: "'Playfair Display', serif" }}>
-            <span className="text-2xl tracking-[0.2em] text-[#501a2c] pl-[0.2em] normal-case leading-none">EPRIS</span>
+        <div className="w-64 border-r border-[var(--c-accent)] px-6 flex items-center shrink-0 bg-[var(--c-bg)] z-50">
+          <button type="button" className="flex items-center" onClick={() => setActiveTab('gallery')} aria-label="Go to home" style={{ fontFamily: "var(--font-display)" }}>
+            <span className="text-2xl tracking-[0.2em] text-[var(--c-accent)] pl-[0.2em] normal-case leading-none">EPRIS</span>
           </button>
         </div>
 
         {/* Desktop Navigation */}
         <LayoutGroup id="nav-tabs">
-          <div className="grid flex-1 grid-cols-11 divide-x divide-[#501a2c]">
+          <div className="grid flex-1 grid-cols-11 divide-x divide-[var(--c-accent)]">
             {tabs.map((tab) => (
               <button
                 type="button"
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`relative flex flex-col items-center justify-center group h-full overflow-hidden ${
-                  activeTab === tab.id ? 'bg-[#501a2c] text-[#F5F0EB]' : 'hover:bg-[#501a2c]/8 text-[#501a2c]'
+                  activeTab === tab.id ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'hover:bg-[rgb(var(--c-accent-rgb)_/_0.08)] text-[var(--c-accent)]'
                 } transition-colors duration-200`}
               >
                 <span className="font-bold relative z-10">{tab.label}</span>
                 {activeTab === tab.id && (
                   <motion.div
                     layoutId="nav-pill"
-                    className="absolute inset-0 bg-[#501a2c]"
+                    className="absolute inset-0 bg-[var(--c-accent)]"
                     style={{ zIndex: 0 }}
                     transition={{ type: 'spring', bounce: 0.18, duration: 0.55 }}
                   />
@@ -308,12 +352,12 @@ function NavBar({
         </LayoutGroup>
 
         {/* Desktop Right Section */}
-        <div className="flex divide-x divide-[#501a2c] border-l border-[#501a2c]">
+        <div className="flex divide-x divide-[var(--c-accent)] border-l border-[var(--c-accent)]">
           <button
             type="button"
             onClick={() => setIsSearchOpen(true)}
             aria-label="Open search"
-            className="w-16 flex items-center justify-center hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-colors"
+            className="w-16 flex items-center justify-center hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors"
           >
             <Search size={16} />
           </button>
@@ -321,20 +365,20 @@ function NavBar({
           <div className="relative w-16">
             <button
               type="button"
-              className="w-full h-full flex items-center justify-center hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-colors"
+              className="w-full h-full flex items-center justify-center hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors"
               onClick={() => setIsLangOpen(!isLangOpen)}
               aria-label="Select language"
             >
               {currentLang}
             </button>
             {isLangOpen && (
-              <div className="absolute top-full right-0 w-16 bg-[#F5F0EB] border-x border-b border-[#501a2c] z-50">
+              <div className="absolute top-full right-0 w-16 bg-[var(--c-bg)] border-x border-b border-[var(--c-accent)] z-50">
                 {languages.filter(l => l !== currentLang).map(lang => (
                   <button
                     type="button"
                     key={lang}
                     onClick={() => { setCurrentLang(lang); setIsLangOpen(false); }}
-                    className="w-full py-2 hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-colors block text-center border-b border-[#501a2c]/20 last:border-0"
+                    className="w-full py-2 hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors block text-center border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] last:border-0"
                   >
                     {lang}
                   </button>
@@ -347,7 +391,7 @@ function NavBar({
             type="button"
             onClick={() => setActiveTab('library')}
             className={`w-24 flex flex-col items-center justify-center transition-colors gap-1 ${
-              activeTab === 'library' ? 'bg-[#501a2c] text-[#F5F0EB]' : 'hover:bg-[#501a2c] hover:text-[#F5F0EB]'
+              activeTab === 'library' ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]'
             }`}
           >
             <Folder size={16} />
@@ -363,13 +407,13 @@ function NavBar({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-[#F5F0EB]/95 backdrop-blur-sm flex items-center justify-center p-4"
+            className="fixed inset-0 z-[60] bg-[rgb(var(--c-bg-rgb)_/_0.95)] backdrop-blur-sm flex items-center justify-center p-4"
           >
             <button
               type="button"
               onClick={() => setIsSearchOpen(false)}
               aria-label="Close search"
-              className="absolute top-8 right-8 p-2 hover:bg-[#501a2c] hover:text-[#F5F0EB] rounded-full transition-colors border border-[#501a2c]"
+              className="absolute top-8 right-8 p-2 hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] rounded-full transition-colors border border-[var(--c-accent)]"
             >
               <X size={24} />
             </button>
@@ -379,7 +423,7 @@ function NavBar({
                 placeholder={t('search.placeholder')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-transparent border-b-2 border-[#501a2c] text-3xl md:text-5xl font-serif text-[#501a2c] placeholder-[#501a2c]/20 focus:outline-none py-4 text-center"
+                className="w-full bg-transparent border-b-2 border-[var(--c-accent)] text-3xl md:text-5xl font-serif text-[var(--c-accent)] placeholder-[rgb(var(--c-accent-rgb)_/_0.2)] focus:outline-none py-4 text-center"
                 autoFocus
               />
             </form>
@@ -394,9 +438,9 @@ function NavBar({
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-16 left-0 w-full h-[calc(100vh-4rem)] bg-[#F5F0EB] z-40 flex flex-col lg:hidden overflow-y-auto"
+            className="fixed top-16 left-0 w-full h-[calc(100vh-4rem)] bg-[var(--c-bg)] z-40 flex flex-col lg:hidden overflow-y-auto"
           >
-            <div className="flex flex-col divide-y divide-[#501a2c] border-b border-[#501a2c]">
+            <div className="flex flex-col divide-y divide-[var(--c-accent)] border-b border-[var(--c-accent)]">
               {tabs.map((tab) => (
                 <button
                   type="button"
@@ -406,7 +450,7 @@ function NavBar({
                     setIsMenuOpen(false);
                   }}
                   className={`p-6 flex items-center justify-between text-left ${
-                    activeTab === tab.id ? 'bg-[#501a2c] text-[#F5F0EB]' : ''
+                    activeTab === tab.id ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : ''
                   }`}
                 >
                   <span className="font-bold text-lg">{tab.label}</span>
@@ -414,14 +458,14 @@ function NavBar({
               ))}
             </div>
             
-            <div className="mt-auto border-t border-[#501a2c]">
-              <div className="grid grid-cols-3 sm:grid-cols-4 divide-x divide-[#501a2c] border-b border-[#501a2c]">
+            <div className="mt-auto border-t border-[var(--c-accent)]">
+              <div className="grid grid-cols-3 sm:grid-cols-4 divide-x divide-[var(--c-accent)] border-b border-[var(--c-accent)]">
                 {languages.map(lang => (
                   <button
                     type="button"
                     key={lang}
                     onClick={() => setCurrentLang(lang)}
-                    className={`p-4 text-center hover:bg-[#501a2c] hover:text-[#F5F0EB] ${currentLang === lang ? 'bg-[#501a2c] text-[#F5F0EB]' : ''}`}
+                    className={`p-4 text-center hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] ${currentLang === lang ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : ''}`}
                   >
                     {lang}
                   </button>
@@ -462,16 +506,16 @@ function Hero({
   const intro = t('home.intro');
 
   return (
-    <div className="bg-[#F5F0EB]">
+    <div className="bg-[var(--c-bg)]">
       {/* Breadcrumb (offset for the fixed nav) */}
       <div className="pt-16">
-        <div className="px-5 sm:px-10 md:px-16 py-3.5 border-b border-[#501a2c]/12">
+        <div className="px-5 sm:px-10 md:px-16 py-3.5 border-b border-[rgb(var(--c-accent-rgb)_/_0.12)]">
           <p className="font-mono text-[11px] tracking-[0.12em]">
-            <button type="button" onClick={onHome} className="text-[#501a2c] font-semibold hover:opacity-60 transition-opacity">
+            <button type="button" onClick={onHome} className="text-[var(--c-accent)] font-semibold hover:opacity-60 transition-opacity">
               Home
             </button>
-            <span className="mx-2 text-[#501a2c]/30">/</span>
-            <span className="text-[#501a2c]/55">Journal</span>
+            <span className="mx-2 text-[rgb(var(--c-accent-rgb)_/_0.3)]">/</span>
+            <span className="text-[rgb(var(--c-accent-rgb)_/_0.55)]">Journal</span>
           </p>
         </div>
       </div>
@@ -510,7 +554,7 @@ function Hero({
             initial={{ opacity: 0, y: 24, letterSpacing: '0.4em' }}
             animate={{ opacity: 1, y: 0, letterSpacing: '0.14em' }}
             transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-            style={{ fontFamily: "'Playfair Display', serif", fontWeight: 500 }}
+            style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
             className="text-[#F7F2EC] text-[clamp(64px,18vw,208px)] leading-[0.86] pl-[0.14em] drop-shadow-[0_2px_24px_rgba(0,0,0,.35)]"
           >
             EPRIS
@@ -531,15 +575,15 @@ function Hero({
       {/* Editorial intro promoting the latest issue */}
       <section className="max-w-5xl mx-auto px-5 sm:px-10 md:px-16">
         {/* Season / latest-issue rail */}
-        <div className="flex items-center gap-4 sm:gap-6 py-5 border-b border-[#501a2c]/12">
-          <span className="font-mono text-[10px] sm:text-[11px] tracking-[0.22em] uppercase text-[#501a2c]/75 whitespace-nowrap">
+        <div className="flex items-center gap-4 sm:gap-6 py-5 border-b border-[rgb(var(--c-accent-rgb)_/_0.12)]">
+          <span className="font-mono text-[10px] sm:text-[11px] tracking-[0.22em] uppercase text-[rgb(var(--c-accent-rgb)_/_0.75)] whitespace-nowrap">
             {season}
           </span>
-          <span className="flex-1 h-px bg-[#501a2c]/20" />
+          <span className="flex-1 h-px bg-[rgb(var(--c-accent-rgb)_/_0.2)]" />
           <button
             type="button"
             onClick={onExplore}
-            className="group flex items-center gap-2 sm:gap-3 font-mono text-[10px] sm:text-[11px] tracking-[0.22em] uppercase text-[#501a2c] whitespace-nowrap hover:opacity-70 transition-opacity"
+            className="group flex items-center gap-2 sm:gap-3 font-mono text-[10px] sm:text-[11px] tracking-[0.22em] uppercase text-[var(--c-accent)] whitespace-nowrap hover:opacity-70 transition-opacity"
           >
             Latest Issue
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -549,16 +593,16 @@ function Hero({
         {/* Headline + lede */}
         <Reveal>
           <div className="py-9 sm:py-14">
-            <h2 className="font-serif text-[clamp(38px,9vw,80px)] leading-[1.03] text-[#501a2c] mb-6 sm:mb-8 max-w-3xl">
+            <h2 className="font-serif text-[clamp(38px,9vw,80px)] leading-[1.03] text-[var(--c-accent)] mb-6 sm:mb-8 max-w-3xl">
               {headline}
             </h2>
-            <p className="font-serif text-lg sm:text-xl text-[#501a2c]/70 leading-relaxed max-w-xl mb-8 sm:mb-10">
+            <p className="font-serif text-lg sm:text-xl text-[rgb(var(--c-accent-rgb)_/_0.7)] leading-relaxed max-w-xl mb-8 sm:mb-10">
               {intro}
             </p>
             <button
               type="button"
               onClick={onExplore}
-              className="group inline-flex items-center gap-3 font-mono text-[11px] sm:text-xs tracking-[0.2em] uppercase text-[#501a2c] border-b border-[#501a2c] pb-1.5 hover:gap-5 transition-all duration-300"
+              className="group inline-flex items-center gap-3 font-mono text-[11px] sm:text-xs tracking-[0.2em] uppercase text-[var(--c-accent)] border-b border-[var(--c-accent)] pb-1.5 hover:gap-5 transition-all duration-300"
             >
               {t('home.explore')}
               <ArrowRight size={15} />
@@ -583,13 +627,13 @@ function AboutSection({ t }: { t: (key: string) => string }) {
              />
           </div>
           <div>
-            <div className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/60 mb-4">
+            <div className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-4">
               {t('editor')}
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl text-[#501a2c] mb-6 sm:mb-8">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl text-[var(--c-accent)] mb-6 sm:mb-8">
               Mariia Ivanova
             </h2>
-            <div className="prose prose-lg prose-stone font-serif text-[#501a2c]/80">
+            <div className="prose prose-lg prose-stone font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)]">
               <p className="mb-6">
                 {t('about.quote1')}
               </p>
@@ -597,10 +641,10 @@ function AboutSection({ t }: { t: (key: string) => string }) {
                 {t('about.bio')}
               </p>
             </div>
-            <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-[#501a2c]/20">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 mb-1">{t('about.social')}</div>
-              <div className="flex gap-4 font-serif text-lg text-[#501a2c]">
-                <a href="https://www.instagram.com/mashapeut/" target="_blank" rel="noopener noreferrer" className="hover:text-[#C9A690] transition-colors">Instagram</a>
+            <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+              <div className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-1">{t('about.social')}</div>
+              <div className="flex gap-4 font-serif text-lg text-[var(--c-accent)]">
+                <a href="https://www.instagram.com/mashapeut/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--c-gold)] transition-colors">Instagram</a>
               </div>
             </div>
           </div>
@@ -608,23 +652,23 @@ function AboutSection({ t }: { t: (key: string) => string }) {
       </Reveal>
 
       <Reveal delay={0.2}>
-        <div className="border-t border-[#501a2c] pt-24">
-          <h3 className="font-serif text-3xl md:text-4xl text-[#501a2c] mb-12 text-center">{t('about.manifesto')}</h3>
+        <div className="border-t border-[var(--c-accent)] pt-24">
+          <h3 className="font-serif text-3xl md:text-4xl text-[var(--c-accent)] mb-12 text-center">{t('about.manifesto')}</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
             <div>
-              <div className="w-12 h-12 rounded-full border border-[#501a2c] flex items-center justify-center mx-auto mb-6 text-[#501a2c]">01</div>
+              <div className="w-12 h-12 rounded-full border border-[var(--c-accent)] flex items-center justify-center mx-auto mb-6 text-[var(--c-accent)]">01</div>
                             <h4 className="font-mono text-xs uppercase tracking-widest mb-4">{t('about.slowdown')}</h4>
-                            <p className="font-serif text-[#501a2c]/80">{t('about.slowdown.desc')}</p>
+                            <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)]">{t('about.slowdown.desc')}</p>
             </div>
             <div>
-              <div className="w-12 h-12 rounded-full border border-[#501a2c] flex items-center justify-center mx-auto mb-6 text-[#501a2c]">02</div>
+              <div className="w-12 h-12 rounded-full border border-[var(--c-accent)] flex items-center justify-center mx-auto mb-6 text-[var(--c-accent)]">02</div>
                             <h4 className="font-mono text-xs uppercase tracking-widest mb-4">{t('about.curate')}</h4>
-                            <p className="font-serif text-[#501a2c]/80">{t('about.curate.desc')}</p>
+                            <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)]">{t('about.curate.desc')}</p>
             </div>
             <div>
-              <div className="w-12 h-12 rounded-full border border-[#501a2c] flex items-center justify-center mx-auto mb-6 text-[#501a2c]">03</div>
+              <div className="w-12 h-12 rounded-full border border-[var(--c-accent)] flex items-center justify-center mx-auto mb-6 text-[var(--c-accent)]">03</div>
                             <h4 className="font-mono text-xs uppercase tracking-widest mb-4">{t('about.preserve')}</h4>
-                            <p className="font-serif text-[#501a2c]/80">{t('about.preserve.desc')}</p>
+                            <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)]">{t('about.preserve.desc')}</p>
             </div>
           </div>
         </div>
@@ -636,14 +680,14 @@ function AboutSection({ t }: { t: (key: string) => string }) {
 function WelcomingLetter({ t }: { t: (key: string) => string }) {
   return (
     <Reveal>
-      <section className="mb-16 py-16 border-b border-[#501a2c]/20">
+      <section className="mb-16 py-16 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)]">
         <div className="max-w-2xl mx-auto text-center">
-          <p className="font-serif text-xl md:text-2xl text-[#501a2c]/70 leading-relaxed mb-10 italic">
+          <p className="font-serif text-xl md:text-2xl text-[rgb(var(--c-accent-rgb)_/_0.7)] leading-relaxed mb-10 italic">
             {t('hero.quote')}
           </p>
           <div>
-            <p style={{ fontFamily: "'Zeyada', cursive" }} className="text-4xl text-[#501a2c] tracking-[0.04em]">Mariia Ivanova</p>
-            <p className="font-mono text-[10px] uppercase tracking-[0.13em] text-[#501a2c]/50 mt-1">Editor-in-Chief</p>
+            <p style={{ fontFamily: "'Zeyada', cursive" }} className="text-4xl text-[var(--c-accent)] tracking-[0.04em]">Mariia Ivanova</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.13em] text-[rgb(var(--c-accent-rgb)_/_0.5)] mt-1">Editor-in-Chief</p>
           </div>
         </div>
       </section>
@@ -660,7 +704,7 @@ function GallerySection({ items }: { items: Item[] }) {
       {/* Featured article */}
       <Reveal>
         <div
-          className="grid grid-cols-1 md:grid-cols-3 mb-12 border border-[#501a2c] group cursor-pointer overflow-hidden"
+          className="grid grid-cols-1 md:grid-cols-3 mb-12 border border-[var(--c-accent)] group cursor-pointer overflow-hidden"
           role="button"
           tabIndex={0}
           aria-label={`View: ${featured.title}`}
@@ -673,23 +717,23 @@ function GallerySection({ items }: { items: Item[] }) {
               referrerPolicy="no-referrer"
             />
           </div>
-          <div className="p-6 sm:p-8 md:p-12 flex flex-col justify-between border-t md:border-t-0 md:border-l border-[#501a2c]">
+          <div className="p-6 sm:p-8 md:p-12 flex flex-col justify-between border-t md:border-t-0 md:border-l border-[var(--c-accent)]">
             <div>
-              <span className="border border-[#501a2c] px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-[#501a2c]">
+              <span className="border border-[var(--c-accent)] px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-[var(--c-accent)]">
                 {featured.fig}
               </span>
-              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#501a2c] mt-4 sm:mt-6 mb-3 sm:mb-4 leading-tight">
+              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[var(--c-accent)] mt-4 sm:mt-6 mb-3 sm:mb-4 leading-tight">
                 {featured.title}
               </h2>
-              <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60 mb-4 sm:mb-6">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-4 sm:mb-6">
                 {featured.subtitle}
               </p>
-              <p className="font-serif text-sm sm:text-base text-[#501a2c]/70 leading-relaxed">
+              <p className="font-serif text-sm sm:text-base text-[rgb(var(--c-accent-rgb)_/_0.7)] leading-relaxed">
                 {featured.description}
               </p>
             </div>
-            <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-[#501a2c]/20">
-              <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c] group-hover:gap-4 transition-all duration-300">
+            <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+              <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] group-hover:gap-4 transition-all duration-300">
                 View <ArrowUpRight size={14} />
               </span>
             </div>
@@ -724,12 +768,12 @@ function GallerySection({ items }: { items: Item[] }) {
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <div className="border-t border-[#501a2c] pt-3">
+              <div className="border-t border-[var(--c-accent)] pt-3">
                 <div className="flex justify-between items-baseline mb-1">
-                  <h3 className="font-serif text-xl text-[#501a2c]">{item.title}</h3>
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40">{item.fig}</span>
+                  <h3 className="font-serif text-xl text-[var(--c-accent)]">{item.title}</h3>
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{item.fig}</span>
                 </div>
-                <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60">
+                <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)]">
                   {item.subtitle}
                 </p>
               </div>
@@ -751,9 +795,9 @@ function ChecklistBlock({ items, caption }: { items: string[], caption?: string 
   };
 
   return (
-    <div className="my-12 p-8 bg-[#F5F0EB] border border-[#501a2c]/20 rounded-xl">
+    <div className="my-12 p-8 bg-[var(--c-bg)] border border-[rgb(var(--c-accent-rgb)_/_0.2)] rounded-xl">
       {caption && (
-        <h4 className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/60 mb-6 flex items-center gap-2">
+        <h4 className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-6 flex items-center gap-2">
           <CheckSquare size={14} /> {caption}
         </h4>
       )}
@@ -767,8 +811,8 @@ function ChecklistBlock({ items, caption }: { items: string[], caption?: string 
             onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && toggle(index)}
             className="flex items-start gap-4 cursor-pointer group"
           >
-            <div className={`mt-1 w-5 h-5 border border-[#501a2c] flex items-center justify-center transition-colors ${checkedState[index] ? 'bg-[#501a2c]' : 'bg-transparent'}`}>
-              {checkedState[index] && <CheckSquare size={14} className="text-[#F5F0EB]" />}
+            <div className={`mt-1 w-5 h-5 border border-[var(--c-accent)] flex items-center justify-center transition-colors ${checkedState[index] ? 'bg-[var(--c-accent)]' : 'bg-transparent'}`}>
+              {checkedState[index] && <CheckSquare size={14} className="text-[var(--c-bg)]" />}
             </div>
             <span className={`font-serif text-lg transition-opacity ${checkedState[index] ? 'opacity-40 line-through' : 'opacity-100'}`}>
               {item}
@@ -927,7 +971,7 @@ function PollBlock({ question, options, t, pollKey }: { question: string, option
   const totalVotes = displayedOptions.reduce((acc, curr) => acc + curr.votes, 0);
 
   return (
-    <div className="my-12 p-8 bg-[#501a2c] text-[#F5F0EB] rounded-xl">
+    <div className="my-12 p-8 bg-[var(--c-accent)] text-[var(--c-bg)] rounded-xl">
       <h4 className="font-serif text-2xl mb-8 flex items-center gap-3">
         <BarChart size={24} className="opacity-60" />
         {question}
@@ -941,13 +985,13 @@ function PollBlock({ question, options, t, pollKey }: { question: string, option
                 <span>{opt.label}</span>
                 {votedIndex !== null && <span>{percentage}% · {opt.votes}</span>}
               </div>
-              <div className="h-12 border border-[#F5F0EB]/20 relative overflow-hidden group">
+              <div className="h-12 border border-[rgb(var(--c-bg-rgb)_/_0.2)] relative overflow-hidden group">
                 <motion.div 
                   initial={{ width: 0 }}
                   animate={{ width: votedIndex !== null ? `${percentage}%` : '0%' }}
-                  className="absolute top-0 left-0 h-full bg-[#C9A690]/40"
+                  className="absolute top-0 left-0 h-full bg-[rgb(var(--c-gold-rgb)_/_0.4)]"
                 />
-                <div className={`absolute inset-0 flex items-center px-4 transition-colors ${votedIndex === index ? 'bg-[#C9A690]/20' : 'group-hover:bg-[#F5F0EB]/5'}`}>
+                <div className={`absolute inset-0 flex items-center px-4 transition-colors ${votedIndex === index ? 'bg-[rgb(var(--c-gold-rgb)_/_0.2)]' : 'group-hover:bg-[rgb(var(--c-bg-rgb)_/_0.05)]'}`}>
                 </div>
               </div>
             </div>
@@ -960,7 +1004,7 @@ function PollBlock({ question, options, t, pollKey }: { question: string, option
         </p>
       )}
       {voteError && (
-        <p className="mt-6 text-center font-mono text-xs uppercase tracking-widest text-[#C9A690]">
+        <p className="mt-6 text-center font-mono text-xs uppercase tracking-widest text-[var(--c-gold)]">
           {voteError}
         </p>
       )}
@@ -975,9 +1019,9 @@ function PollBlock({ question, options, t, pollKey }: { question: string, option
 
 function NoteBlock({ content }: { content: string }) {
   return (
-    <div className="my-12 p-6 bg-[#C9A690]/10 border-l-4 border-[#C9A690] flex gap-4">
-      <Lightbulb className="w-6 h-6 text-[#C9A690] shrink-0" />
-      <p className="font-serif text-lg text-[#501a2c] italic">
+    <div className="my-12 p-6 bg-[rgb(var(--c-gold-rgb)_/_0.1)] border-l-4 border-[var(--c-gold)] flex gap-4">
+      <Lightbulb className="w-6 h-6 text-[var(--c-gold)] shrink-0" />
+      <p className="font-serif text-lg text-[var(--c-accent)] italic">
         {content}
       </p>
     </div>
@@ -1022,14 +1066,14 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: '3%' }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed inset-0 z-[60] bg-[#F5F0EB] overflow-y-auto overflow-x-hidden"
+      className="fixed inset-0 z-[60] bg-[var(--c-bg)] overflow-y-auto overflow-x-hidden"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-24 relative">
         <div className="fixed top-4 left-4 right-4 sm:top-8 sm:left-8 sm:right-8 md:left-16 md:right-16 z-50 flex items-center justify-between">
           <button
             type="button"
             onClick={onClose}
-            className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c] hover:opacity-60 transition-opacity bg-[#F5F0EB]/80 backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-[#501a2c]/10"
+            className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] hover:opacity-60 transition-opacity bg-[rgb(var(--c-bg-rgb)_/_0.8)] backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.1)]"
           >
             <ArrowLeft size={16} /> {t('back')}
           </button>
@@ -1039,19 +1083,19 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
               type="button"
               onClick={() => setIsArticleLangOpen(!isArticleLangOpen)}
               aria-label="Select language"
-              className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c] bg-[#F5F0EB]/80 backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-[#501a2c]/10 hover:opacity-60 transition-opacity"
+              className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] bg-[rgb(var(--c-bg-rgb)_/_0.8)] backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.1)] hover:opacity-60 transition-opacity"
             >
               <Globe size={14} />
               {currentLang}
             </button>
             {isArticleLangOpen && (
-              <div className="absolute top-full right-0 mt-1 bg-[#F5F0EB] border border-[#501a2c]/20 rounded-lg shadow-lg overflow-hidden min-w-[140px] z-50">
+              <div className="absolute top-full right-0 mt-1 bg-[var(--c-bg)] border border-[rgb(var(--c-accent-rgb)_/_0.2)] rounded-lg shadow-lg overflow-hidden min-w-[140px] z-50">
                 {languages.map(lang => (
                   <button
                     type="button"
                     key={lang}
                     onClick={() => { setCurrentLang(lang); setIsArticleLangOpen(false); }}
-                    className={`w-full px-4 py-2 text-left font-mono text-xs tracking-wider hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-colors flex items-center justify-between gap-3 ${currentLang === lang ? 'bg-[#501a2c] text-[#F5F0EB]' : 'text-[#501a2c]'}`}
+                    className={`w-full px-4 py-2 text-left font-mono text-xs tracking-wider hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors flex items-center justify-between gap-3 ${currentLang === lang ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'text-[var(--c-accent)]'}`}
                   >
                     <span>{LANG_LABELS[lang] || lang}</span>
                     <span className="opacity-50">{lang}</span>
@@ -1081,23 +1125,23 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
               />
             </div>
             <div className="text-center">
-              <div className="flex items-center justify-center gap-2 md:gap-4 font-mono text-[10px] md:text-xs text-[#501a2c]/60 uppercase tracking-widest mb-6 flex-wrap">
+              <div className="flex items-center justify-center gap-2 md:gap-4 font-mono text-[10px] md:text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] uppercase tracking-widest mb-6 flex-wrap">
                 <span>{article.date}</span>
-                <span className="w-1 h-1 bg-[#501a2c]/40 rounded-full" />
+                <span className="w-1 h-1 bg-[rgb(var(--c-accent-rgb)_/_0.4)] rounded-full" />
                 <span>{article.author}</span>
                 {article.role && (
                   <>
-                    <span className="w-1 h-1 bg-[#501a2c]/40 rounded-full" />
-                    <span className="text-[#C9A690]">{article.role}</span>
+                    <span className="w-1 h-1 bg-[rgb(var(--c-accent-rgb)_/_0.4)] rounded-full" />
+                    <span className="text-[var(--c-gold)]">{article.role}</span>
                   </>
                 )}
               </div>
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-7xl text-[#501a2c] mb-8 leading-tight">
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-7xl text-[var(--c-accent)] mb-8 leading-tight">
                 {article.title}
               </h1>
               <div className="flex justify-center gap-2 flex-wrap">
                 {article.tags.map(tag => (
-                  <span key={tag} className="border border-[#501a2c] px-3 py-1 text-[10px] font-mono uppercase tracking-wider text-[#501a2c]">
+                  <span key={tag} className="border border-[var(--c-accent)] px-3 py-1 text-[10px] font-mono uppercase tracking-wider text-[var(--c-accent)]">
                     {tag}
                   </span>
                 ))}
@@ -1105,7 +1149,7 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
             </div>
           </header>
 
-          <div className="prose prose-lg prose-stone mx-auto font-serif text-[#501a2c]/80">
+          <div className="prose prose-lg prose-stone mx-auto font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)]">
             {article.content?.map((block, index) => {
               // Skip the first image block if it duplicates the hero cover photo
               if (
@@ -1127,8 +1171,8 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
                   return (
                     <Tag
                       key={index}
-                      className={`font-bold text-[#501a2c] mt-10 mb-4 ${lvl === 3 ? 'text-xl sm:text-2xl' : 'text-2xl sm:text-3xl'}`}
-                      style={{ fontFamily: "'Playfair Display', serif" }}
+                      className={`font-bold text-[var(--c-accent)] mt-10 mb-4 ${lvl === 3 ? 'text-xl sm:text-2xl' : 'text-2xl sm:text-3xl'}`}
+                      style={{ fontFamily: "var(--font-display)" }}
                       dangerouslySetInnerHTML={{ __html: sanitizeRichText(block.content) }}
                     />
                   );
@@ -1136,8 +1180,8 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
                 case 'quote': {
                   if (typeof block.content !== 'string') return null;
                   return (
-                    <blockquote key={index} className="border-l-2 border-[#C9A690] pl-4 sm:pl-6 my-8 sm:my-12 italic text-lg sm:text-xl md:text-2xl text-[#501a2c]">
-                      <Quote className="inline-block w-5 h-5 sm:w-6 sm:h-6 text-[#C9A690] mb-2 mr-2 opacity-50" />
+                    <blockquote key={index} className="border-l-2 border-[var(--c-gold)] pl-4 sm:pl-6 my-8 sm:my-12 italic text-lg sm:text-xl md:text-2xl text-[var(--c-accent)]">
+                      <Quote className="inline-block w-5 h-5 sm:w-6 sm:h-6 text-[var(--c-gold)] mb-2 mr-2 opacity-50" />
                       <span className="rich-text" dangerouslySetInnerHTML={{ __html: sanitizeRichText(block.content) }} />
                     </blockquote>
                   );
@@ -1157,7 +1201,7 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
                         onClick={() => onImageClick(imageSource, block.caption || 'Article image')}
                       />
                       {block.caption && (
-                        <figcaption className="text-center font-mono text-xs text-[#501a2c]/60 mt-3 sm:mt-4 uppercase tracking-widest px-4 sm:px-0">
+                        <figcaption className="text-center font-mono text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] mt-3 sm:mt-4 uppercase tracking-widest px-4 sm:px-0">
                           {block.caption}
                         </figcaption>
                       )}
@@ -1169,8 +1213,8 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
                   const lat = block.coordinates?.lat;
                   const lng = block.coordinates?.lng;
                   return (
-                    <div key={index} className="my-12 p-6 bg-[#E8DED5] border border-[#501a2c]/20">
-                      <div className="flex items-center gap-3 mb-4 text-[#501a2c]">
+                    <div key={index} className="my-12 p-6 bg-[#E8DED5] border border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+                      <div className="flex items-center gap-3 mb-4 text-[var(--c-accent)]">
                         <MapPin size={20} />
                         <span className="font-mono text-sm uppercase tracking-widest">{block.content}</span>
                       </div>
@@ -1191,7 +1235,7 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
                         href={`https://www.google.com/maps/search/?api=1&query=${lat},${lng}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 mt-4 text-xs font-mono uppercase tracking-widest text-[#501a2c] hover:text-[#C9A690] transition-colors"
+                        className="inline-flex items-center gap-2 mt-4 text-xs font-mono uppercase tracking-widest text-[var(--c-accent)] hover:text-[var(--c-gold)] transition-colors"
                       >
                         {t('maps.open')} <ExternalLink size={12} />
                       </a>
@@ -1206,7 +1250,7 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
                         href={block.url} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-lg font-serif text-[#501a2c] border-b border-[#501a2c] hover:text-[#C9A690] hover:border-[#C9A690] transition-colors pb-1"
+                        className="inline-flex items-center gap-2 text-lg font-serif text-[var(--c-accent)] border-b border-[var(--c-accent)] hover:text-[var(--c-gold)] hover:border-[var(--c-gold)] transition-colors pb-1"
                       >
                         {block.content} <ArrowUpRight size={16} />
                       </a>
@@ -1222,7 +1266,7 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
                         <span className="sr-only">Play Video</span>
                       </div>
                       {block.caption && (
-                        <figcaption className="text-center font-mono text-xs text-[#501a2c]/60 mt-4 uppercase tracking-widest">
+                        <figcaption className="text-center font-mono text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] mt-4 uppercase tracking-widest">
                           {block.caption}
                         </figcaption>
                       )}
@@ -1230,16 +1274,16 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
                   );
                 case 'audio':
                   return (
-                    <figure key={index} className="my-8 sm:my-12 p-4 sm:p-6 bg-[#E8DED5] border border-[#501a2c]/20 flex items-center gap-3 sm:gap-4">
-                      <div className="w-12 h-12 rounded-full bg-[#501a2c] flex items-center justify-center text-[#F5F0EB]">
+                    <figure key={index} className="my-8 sm:my-12 p-4 sm:p-6 bg-[#E8DED5] border border-[rgb(var(--c-accent-rgb)_/_0.2)] flex items-center gap-3 sm:gap-4">
+                      <div className="w-12 h-12 rounded-full bg-[var(--c-accent)] flex items-center justify-center text-[var(--c-bg)]">
                         <Music size={20} />
                       </div>
                       <div className="flex-1">
-                        <div className="h-1 bg-[#501a2c]/20 rounded-full overflow-hidden">
-                          <div className="h-full w-1/3 bg-[#501a2c]" />
+                        <div className="h-1 bg-[rgb(var(--c-accent-rgb)_/_0.2)] rounded-full overflow-hidden">
+                          <div className="h-full w-1/3 bg-[var(--c-accent)]" />
                         </div>
                         {block.caption && (
-                          <figcaption className="font-mono text-xs text-[#501a2c]/60 mt-2 uppercase tracking-widest">
+                          <figcaption className="font-mono text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] mt-2 uppercase tracking-widest">
                             {block.caption}
                           </figcaption>
                         )}
@@ -1269,7 +1313,7 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
                           })}
                       </div>
                       {block.caption && (
-                        <figcaption className="text-center font-mono text-xs text-[#501a2c]/60 mt-3 sm:mt-4 uppercase tracking-widest px-4 sm:px-0">
+                        <figcaption className="text-center font-mono text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] mt-3 sm:mt-4 uppercase tracking-widest px-4 sm:px-0">
                           {block.caption}
                         </figcaption>
                       )}
@@ -1301,32 +1345,32 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
             })}
           </div>
 
-          <footer className="mt-10 sm:mt-16 pt-8 sm:pt-12 border-t border-[#501a2c]/20">
+          <footer className="mt-10 sm:mt-16 pt-8 sm:pt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)]">
             <div className="flex items-start gap-4 sm:gap-6">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[#501a2c] flex items-center justify-center text-[#F5F0EB] font-serif text-lg sm:text-xl shrink-0">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[var(--c-accent)] flex items-center justify-center text-[var(--c-bg)] font-serif text-lg sm:text-xl shrink-0">
                 {article.author.charAt(0)}
               </div>
               <div>
                 <p className="font-serif text-xl mb-1">{article.author}</p>
-                <p className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/60 mb-3">{article.role}</p>
-                <p className="font-mono text-xs text-[#501a2c]/50">{article.date}</p>
+                <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-3">{article.role}</p>
+                <p className="font-mono text-xs text-[rgb(var(--c-accent-rgb)_/_0.5)]">{article.date}</p>
               </div>
             </div>
             {article.tags && (
               <div className="flex flex-wrap gap-2 mt-8">
                 {article.tags.map((tag: string, i: number) => (
-                  <span key={i} className="px-3 py-1 border border-[#501a2c]/20 font-mono text-xs uppercase tracking-widest text-[#501a2c]/60">
+                  <span key={i} className="px-3 py-1 border border-[rgb(var(--c-accent-rgb)_/_0.2)] font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)]">
                     {tag}
                   </span>
                 ))}
               </div>
             )}
 
-            <div className="mt-10 pt-8 border-t border-[#501a2c]/10 flex justify-center">
+            <div className="mt-10 pt-8 border-t border-[rgb(var(--c-accent-rgb)_/_0.1)] flex justify-center">
               <button
                 type="button"
                 onClick={handleShare}
-                className="flex items-center gap-3 px-6 py-3 border border-[#501a2c]/20 rounded-full font-mono text-xs uppercase tracking-widest text-[#501a2c] hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-colors"
+                className="flex items-center gap-3 px-6 py-3 border border-[rgb(var(--c-accent-rgb)_/_0.2)] rounded-full font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors"
               >
                 {copied ? <Check size={16} /> : <Share2 size={16} />}
                 {copied ? t('share.copied') : t('share')}
@@ -1359,11 +1403,11 @@ function ArticlesSection({
   return (
     <div className="max-w-4xl mx-auto space-y-12">
       {/* Category Filter */}
-      <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-16 border-b border-[#501a2c]/20 pb-8">
+      <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-16 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-8">
         <button
           type="button"
           onClick={() => setActiveCategory(null)}
-          className={`font-mono text-xs uppercase tracking-widest transition-colors ${!activeCategory ? 'text-[#501a2c] font-bold' : 'text-[#501a2c]/60 hover:text-[#501a2c]'}`}
+          className={`font-mono text-xs uppercase tracking-widest transition-colors ${!activeCategory ? 'text-[var(--c-accent)] font-bold' : 'text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:text-[var(--c-accent)]'}`}
         >
           {t('all')}
         </button>
@@ -1372,7 +1416,7 @@ function ArticlesSection({
             type="button"
             key={cat}
             onClick={() => setActiveCategory(cat)}
-            className={`font-mono text-xs uppercase tracking-widest transition-colors ${activeCategory === cat ? 'text-[#501a2c] font-bold' : 'text-[#501a2c]/60 hover:text-[#501a2c]'}`}
+            className={`font-mono text-xs uppercase tracking-widest transition-colors ${activeCategory === cat ? 'text-[var(--c-accent)] font-bold' : 'text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:text-[var(--c-accent)]'}`}
           >
             {cat}
           </button>
@@ -1383,7 +1427,7 @@ function ArticlesSection({
       {filteredArticles.map((article) => (
         <motion.div key={article.id} variants={staggerItem}>
             <motion.article
-              className="border-b border-[#501a2c]/20 pb-12 group cursor-pointer"
+              className="border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-12 group cursor-pointer"
               onClick={() => onArticleClick(article)}
               tabIndex={0}
               role="button"
@@ -1405,22 +1449,22 @@ function ArticlesSection({
                     />
                  </div>
                  <div className="md:col-span-2">
-                    <div className="flex items-baseline justify-between mb-4 font-mono text-[10px] sm:text-xs text-[#501a2c]/60 uppercase tracking-widest gap-2 flex-wrap">
+                    <div className="flex items-baseline justify-between mb-4 font-mono text-[10px] sm:text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] uppercase tracking-widest gap-2 flex-wrap">
                       <div className="flex gap-2">
                         <span>{article.date}</span>
                         {article.category && (
                           <>
-                            <span className="text-[#C9A690]">•</span>
-                            <span className="text-[#501a2c]">{article.category}</span>
+                            <span className="text-[var(--c-gold)]">•</span>
+                            <span className="text-[var(--c-accent)]">{article.category}</span>
                           </>
                         )}
                       </div>
                       <span>{article.author}</span>
                     </div>
-                    <h2 className="font-serif text-2xl sm:text-3xl md:text-5xl text-[#501a2c] mb-4 sm:mb-6 group-hover:text-[#C9A690] transition-colors duration-300">
+                    <h2 className="font-serif text-2xl sm:text-3xl md:text-5xl text-[var(--c-accent)] mb-4 sm:mb-6 group-hover:text-[var(--c-gold)] transition-colors duration-300">
                       {article.title}
                     </h2>
-                    <p className="font-serif text-lg text-[#501a2c]/80 leading-relaxed mb-6">
+                    <p className="font-serif text-lg text-[rgb(var(--c-accent-rgb)_/_0.8)] leading-relaxed mb-6">
                       {article.excerpt}
                     </p>
                  </div>
@@ -1429,12 +1473,12 @@ function ArticlesSection({
               <div className="flex items-center justify-between gap-4">
                 <div className="flex gap-2 flex-wrap min-w-0">
                   {article.tags.map(tag => (
-                    <span key={tag} className="border border-[#501a2c] px-2 sm:px-3 py-1 text-[10px] font-mono uppercase tracking-wider text-[#501a2c]">
+                    <span key={tag} className="border border-[var(--c-accent)] px-2 sm:px-3 py-1 text-[10px] font-mono uppercase tracking-wider text-[var(--c-accent)]">
                       {tag}
                     </span>
                   ))}
                 </div>
-                <span className="flex items-center gap-2 text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#501a2c] group-hover:translate-x-2 transition-transform whitespace-nowrap shrink-0">
+                <span className="flex items-center gap-2 text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[var(--c-accent)] group-hover:translate-x-2 transition-transform whitespace-nowrap shrink-0">
                   {t('read.article')} <ArrowUpRight size={14} />
                 </span>
               </div>
@@ -1453,7 +1497,7 @@ function RatingStars({ rating, size = 16 }: { rating: number; size?: number }) {
         <Star
           key={i}
           size={size}
-          className={i < Math.round(rating) ? 'fill-[#501a2c] text-[#501a2c]' : 'text-[#501a2c]/20'}
+          className={i < Math.round(rating) ? 'fill-[var(--c-accent)] text-[var(--c-accent)]' : 'text-[rgb(var(--c-accent-rgb)_/_0.2)]'}
         />
       ))}
     </div>
@@ -1469,7 +1513,7 @@ function ProsCons({ pros, cons, t }: { pros?: string[]; cons?: string[]; t: (key
           <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#4A7C59] mb-2">{t('reviews.pros')}</p>
           <ul className="space-y-1.5">
             {pros.map((p, i) => (
-              <li key={i} className="flex items-baseline gap-2 font-serif text-sm text-[#501a2c]/75">
+              <li key={i} className="flex items-baseline gap-2 font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.75)]">
                 <span className="text-[#4A7C59] text-[10px] shrink-0">+</span>{p}
               </li>
             ))}
@@ -1481,7 +1525,7 @@ function ProsCons({ pros, cons, t }: { pros?: string[]; cons?: string[]; t: (key
           <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8B3A3A] mb-2">{t('reviews.cons')}</p>
           <ul className="space-y-1.5">
             {cons.map((c, i) => (
-              <li key={i} className="flex items-baseline gap-2 font-serif text-sm text-[#501a2c]/75">
+              <li key={i} className="flex items-baseline gap-2 font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.75)]">
                 <span className="text-[#8B3A3A] text-[10px] shrink-0">−</span>{c}
               </li>
             ))}
@@ -1508,11 +1552,11 @@ function ReviewsSection({ reviews, t }: { reviews: Review[]; t: (key: string) =>
       {/* Featured review */}
       {featured && (
         <Reveal>
-          <div className="mb-12 md:mb-16 border border-[#501a2c] grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
+          <div className="mb-12 md:mb-16 border border-[var(--c-accent)] grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
             {featured.imageUrl && (
               <div className="relative aspect-[4/3] lg:aspect-auto bg-[#1a0812] overflow-hidden">
                 <img src={featured.imageUrl} alt={featured.title} className="w-full h-full object-cover" />
-                <span className="absolute top-4 left-4 bg-[#F5F0EB]/90 text-[#501a2c] font-mono text-[9px] uppercase tracking-[0.2em] px-3 py-1.5">
+                <span className="absolute top-4 left-4 bg-[rgb(var(--c-bg-rgb)_/_0.9)] text-[var(--c-accent)] font-mono text-[9px] uppercase tracking-[0.2em] px-3 py-1.5">
                   {t('reviews.featured')}
                 </span>
               </div>
@@ -1521,21 +1565,21 @@ function ReviewsSection({ reviews, t }: { reviews: Review[]; t: (key: string) =>
               <div className="flex items-center justify-between mb-5">
                 <RatingStars rating={featured.rating} />
                 {featured.category && (
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#C9A690]">{featured.category}</span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)]">{featured.category}</span>
                 )}
               </div>
-              <h3 className="font-serif text-3xl md:text-4xl text-[#501a2c] mb-1.5">{featured.title}</h3>
-              <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/55 mb-5">{featured.subject}</p>
+              <h3 className="font-serif text-3xl md:text-4xl text-[var(--c-accent)] mb-1.5">{featured.title}</h3>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-5">{featured.subject}</p>
               {featured.verdict && (
-                <p className="font-serif text-xl md:text-2xl italic text-[#501a2c] leading-snug mb-5 border-l-2 border-[#C9A690] pl-4">
+                <p className="font-serif text-xl md:text-2xl italic text-[var(--c-accent)] leading-snug mb-5 border-l-2 border-[var(--c-gold)] pl-4">
                   {featured.verdict}
                 </p>
               )}
-              <p className="font-serif text-base leading-relaxed text-[#501a2c]/75">{featured.content}</p>
+              <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{featured.content}</p>
               <ProsCons pros={featured.pros} cons={featured.cons} t={t} />
               <div className="mt-auto pt-6 flex items-center justify-between">
-                {featured.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/40">{featured.meta}</span>}
-                <span className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60 ml-auto">— {featured.author}</span>
+                {featured.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{featured.meta}</span>}
+                <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] ml-auto">— {featured.author}</span>
               </div>
             </div>
           </div>
@@ -1552,8 +1596,8 @@ function ReviewsSection({ reviews, t }: { reviews: Review[]; t: (key: string) =>
               onClick={() => setActiveCategory(cat)}
               className={`px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest border transition-colors ${
                 activeCategory === cat
-                  ? 'bg-[#501a2c] text-[#F5F0EB] border-[#501a2c]'
-                  : 'text-[#501a2c] border-[#501a2c]/30 hover:border-[#501a2c]'
+                  ? 'bg-[var(--c-accent)] text-[var(--c-bg)] border-[var(--c-accent)]'
+                  : 'text-[var(--c-accent)] border-[rgb(var(--c-accent-rgb)_/_0.3)] hover:border-[var(--c-accent)]'
               }`}
             >
               {cat === '__all' ? t('reviews.all') : cat}
@@ -1566,12 +1610,12 @@ function ReviewsSection({ reviews, t }: { reviews: Review[]; t: (key: string) =>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
         {filtered.map((review, index) => (
           <Reveal key={review.id} delay={(index % 2) * 0.08}>
-            <div className="bg-[#E8DED5] border border-[#501a2c] h-full flex flex-col overflow-hidden">
+            <div className="bg-[#E8DED5] border border-[var(--c-accent)] h-full flex flex-col overflow-hidden">
               {review.imageUrl && (
                 <div className="relative aspect-[16/9] bg-[#1a0812] overflow-hidden">
                   <img src={review.imageUrl} alt={review.title} className="w-full h-full object-cover" />
                   {review.category && (
-                    <span className="absolute top-3 left-3 bg-[#F5F0EB]/90 text-[#501a2c] font-mono text-[8px] uppercase tracking-[0.2em] px-2.5 py-1">
+                    <span className="absolute top-3 left-3 bg-[rgb(var(--c-bg-rgb)_/_0.9)] text-[var(--c-accent)] font-mono text-[8px] uppercase tracking-[0.2em] px-2.5 py-1">
                       {review.category}
                     </span>
                   )}
@@ -1581,21 +1625,21 @@ function ReviewsSection({ reviews, t }: { reviews: Review[]; t: (key: string) =>
                 <div className="flex justify-between items-start mb-4">
                   <RatingStars rating={review.rating} />
                   {!review.imageUrl && review.category && (
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-[#C9A690]">{review.category}</span>
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--c-gold)]">{review.category}</span>
                   )}
                 </div>
-                <h3 className="font-serif text-2xl md:text-3xl text-[#501a2c] mb-1.5">{review.title}</h3>
-                <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/55 mb-4">{review.subject}</p>
+                <h3 className="font-serif text-2xl md:text-3xl text-[var(--c-accent)] mb-1.5">{review.title}</h3>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-4">{review.subject}</p>
                 {review.verdict && (
-                  <p className="font-serif text-lg italic text-[#501a2c] leading-snug mb-4 border-l-2 border-[#C9A690] pl-3">
+                  <p className="font-serif text-lg italic text-[var(--c-accent)] leading-snug mb-4 border-l-2 border-[var(--c-gold)] pl-3">
                     {review.verdict}
                   </p>
                 )}
-                <p className="font-serif text-base leading-relaxed text-[#501a2c]/75">{review.content}</p>
+                <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{review.content}</p>
                 <ProsCons pros={review.pros} cons={review.cons} t={t} />
                 <div className="mt-auto pt-6 flex items-center justify-between gap-3">
-                  {review.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/40">{review.meta}</span>}
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60 ml-auto">— {review.author}</span>
+                  {review.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{review.meta}</span>}
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] ml-auto">— {review.author}</span>
                 </div>
               </div>
             </div>
@@ -1608,8 +1652,8 @@ function ReviewsSection({ reviews, t }: { reviews: Review[]; t: (key: string) =>
 
 function LibrarySection({ libraryItems, t }: { libraryItems: LibraryItem[]; t: (key: string) => string }) {
   return (
-    <div className="border border-[#501a2c]">
-      <div className="grid grid-cols-12 border-b border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] p-3 sm:p-4 font-mono text-[10px] sm:text-xs uppercase tracking-widest">
+    <div className="border border-[var(--c-accent)]">
+      <div className="grid grid-cols-12 border-b border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)] p-3 sm:p-4 font-mono text-[10px] sm:text-xs uppercase tracking-widest">
         <div className="col-span-9 sm:col-span-8 md:col-span-5">{t('library.title')}</div>
         <div className="col-span-2 hidden md:block">{t('library.type')}</div>
         <div className="col-span-2 hidden md:block">{t('library.size')}</div>
@@ -1619,9 +1663,9 @@ function LibrarySection({ libraryItems, t }: { libraryItems: LibraryItem[]; t: (
       {libraryItems.map((item, index) => (
         <div key={item.id}>
           <Reveal delay={index * 0.05}>
-            <div className="grid grid-cols-12 p-3 sm:p-4 border-b border-[#501a2c]/20 items-center hover:bg-[#E8DED5] transition-colors group font-mono text-xs sm:text-sm text-[#501a2c]">
+            <div className="grid grid-cols-12 p-3 sm:p-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] items-center hover:bg-[#E8DED5] transition-colors group font-mono text-xs sm:text-sm text-[var(--c-accent)]">
               <div className="col-span-9 sm:col-span-8 md:col-span-5 font-medium flex items-center gap-2 sm:gap-3 min-w-0">
-                <BookOpen size={16} className="text-[#501a2c]/40 group-hover:text-[#501a2c] shrink-0 hidden sm:block" />
+                <BookOpen size={16} className="text-[rgb(var(--c-accent-rgb)_/_0.4)] group-hover:text-[var(--c-accent)] shrink-0 hidden sm:block" />
                 <span className="truncate">{item.title}</span>
               </div>
               <div className="col-span-2 hidden md:block opacity-60">{item.type}</div>
@@ -1633,9 +1677,9 @@ function LibrarySection({ libraryItems, t }: { libraryItems: LibraryItem[]; t: (
                   target="_blank"
                   rel="noreferrer"
                   aria-label={`Open ${item.title}`}
-                  className={`inline-flex items-center justify-center w-8 h-8 border border-[#501a2c] rounded-full transition-colors ${
+                  className={`inline-flex items-center justify-center w-8 h-8 border border-[var(--c-accent)] rounded-full transition-colors ${
                     item.url
-                      ? 'hover:bg-[#501a2c] hover:text-[#F5F0EB]'
+                      ? 'hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]'
                       : 'pointer-events-none opacity-40'
                   }`}
                 >
@@ -1653,12 +1697,12 @@ function LibrarySection({ libraryItems, t }: { libraryItems: LibraryItem[]; t: (
 function Sidebar({ t }: { t: (key: string) => string }) {
   const labels = [t('sidebar.lifestyle'), t('sidebar.travel'), t('sidebar.taste'), t('sidebar.design'), t('sidebar.culture'), t('sidebar.lifestyle'), t('sidebar.travel')];
   return (
-    <aside className="hidden lg:flex w-12 border-l border-[#501a2c] flex-col justify-between items-center py-8 fixed right-0 top-0 h-full bg-[#F5F0EB] z-40 pt-24">
+    <aside className="hidden lg:flex w-12 border-l border-[var(--c-accent)] flex-col justify-between items-center py-8 fixed right-0 top-0 h-full bg-[var(--c-bg)] z-40 pt-24">
       <div className="h-full w-full relative">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-max h-full pt-4">
-          <p className="writing-vertical-rl text-[10px] font-mono uppercase tracking-[0.3em] text-[#501a2c]/40 flex gap-8 whitespace-nowrap">
+          <p className="writing-vertical-rl text-[10px] font-mono uppercase tracking-[0.3em] text-[rgb(var(--c-accent-rgb)_/_0.4)] flex gap-8 whitespace-nowrap">
             {labels.map((label, i) => (
-              <span key={i}>{i > 0 && <span className="text-[#C9A690] mr-8">•</span>}{label}</span>
+              <span key={i}>{i > 0 && <span className="text-[var(--c-gold)] mr-8">•</span>}{label}</span>
             ))}
           </p>
         </div>
@@ -1692,24 +1736,24 @@ function SearchResults({
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="flex items-center justify-between mb-8 pb-6 border-b border-[#501a2c]/20">
+      <div className="flex items-center justify-between mb-8 pb-6 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)]">
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 mb-1">Search results</p>
-          <h2 className="font-serif text-2xl text-[#501a2c]">
-            "{query}" — <span className="text-[#C9A690]">{results.length}</span>
+          <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-1">Search results</p>
+          <h2 className="font-serif text-2xl text-[var(--c-accent)]">
+            "{query}" — <span className="text-[var(--c-gold)]">{results.length}</span>
           </h2>
         </div>
         <button
           type="button"
           onClick={onClear}
-          className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c]/60 hover:text-[#501a2c] transition-colors border border-[#501a2c]/20 px-4 py-2 rounded-full"
+          className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:text-[var(--c-accent)] transition-colors border border-[rgb(var(--c-accent-rgb)_/_0.2)] px-4 py-2 rounded-full"
         >
           <X size={12} /> Clear
         </button>
       </div>
       {results.length === 0 ? (
         <div className="text-center py-24">
-          <p className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/30">Nothing found</p>
+          <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.3)]">Nothing found</p>
         </div>
       ) : (
         <ArticlesSection articles={results} onArticleClick={onArticleClick} t={t} />
@@ -1805,8 +1849,9 @@ export default function App() {
   // swaps in. Until then (or if the VPS is unreachable) the bundled JSON renders.
   const [, setContentVersion] = useState(0);
   useEffect(() => {
-    const unsubscribe = subscribeContent(() => setContentVersion((v) => v + 1));
-    loadLiveContent();
+    applySiteTheme(getTheme()); // bundled/default theme on first paint
+    const unsubscribe = subscribeContent(() => { setContentVersion((v) => v + 1); applySiteTheme(getTheme()); });
+    loadLiveContent().then(() => applySiteTheme(getTheme()));
     return unsubscribe;
   }, []);
   const languageOptions = getAvailableLanguages();
@@ -1889,7 +1934,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F5F0EB] text-[#501a2c] selection:bg-[#C9A690] selection:text-white">
+    <div className="min-h-screen bg-[var(--c-bg)] text-[var(--c-accent)] selection:bg-[var(--c-gold)] selection:text-white">
       <NavBar
         activeTab={activeTab}
         setActiveTab={handleSetTab}
@@ -1962,10 +2007,10 @@ export default function App() {
           </main>
         )}
 
-        {activeTab !== 'materie' && activeTab !== 'issue' && activeTab !== 'design' && activeTab !== 'studio' && activeTab !== 'radio' && activeTab !== 'podcasts' && <footer className="border-t border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
+        {activeTab !== 'materie' && activeTab !== 'issue' && activeTab !== 'design' && activeTab !== 'studio' && activeTab !== 'radio' && activeTab !== 'podcasts' && <footer className="border-t border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
           <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
             <div>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-[#C9A690]">EPRIS JOURNAL</h2>
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-[var(--c-gold)]">EPRIS JOURNAL</h2>
               <div className="font-mono text-xs uppercase tracking-widest opacity-60 max-w-xs leading-relaxed">
                 <p>{t('hero.subtitle2')}</p>
                 <p>{t('hero.subtitle1')}</p>
@@ -1974,7 +2019,7 @@ export default function App() {
             <div className="text-left md:text-right font-mono text-xs uppercase tracking-widest opacity-40">
               <p>© 2026 Epris Journal</p>
               <p>{t('footer.rights')}</p>
-              <a href="/admin/index.html" className="inline-block mt-4 opacity-60 hover:opacity-100 transition-opacity border-b border-[#F5F0EB]/30">Admin</a>
+              <a href="/admin/index.html" className="inline-block mt-4 opacity-60 hover:opacity-100 transition-opacity border-b border-[rgb(var(--c-bg-rgb)_/_0.3)]">Admin</a>
             </div>
           </div>
         </footer>}

@@ -59,7 +59,7 @@ function SignalBars({ active }: { active: boolean }) {
   return (
     <div className="flex items-end gap-[3px] h-7" aria-hidden>
       {Array.from({ length: 20 }).map((_, i) => (
-        <span key={i} className={`w-[3px] rounded-sm transition-all ${active ? 'bg-[#F5F0EB]' : 'bg-[#F5F0EB]/15'}`}
+        <span key={i} className={`w-[3px] rounded-sm transition-all ${active ? 'bg-[var(--c-bg)]' : 'bg-[rgb(var(--c-bg-rgb)_/_0.15)]'}`}
           style={{
             height: active ? `${14 + Math.sin(i * 0.7) * 10}px` : `${3 + (i % 4) * 2}px`,
             animation: active ? `epris-bar ${0.5 + (i % 5) * 0.12}s ease-in-out infinite alternate` : 'none',
@@ -81,7 +81,7 @@ function ToastStack({ toasts }: { toasts: Toast[] }) {
       <AnimatePresence>
         {toasts.map(t => (
           <motion.div key={t.id} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }}
-            className="flex items-center gap-2 bg-[#501a2c] text-[#F5F0EB] px-4 py-2.5 font-mono text-[11px] uppercase tracking-widest shadow-lg">
+            className="flex items-center gap-2 bg-[var(--c-accent)] text-[var(--c-bg)] px-4 py-2.5 font-mono text-[11px] uppercase tracking-widest shadow-lg">
             <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: t.color || '#C9A690' }} />
             {t.text}
           </motion.div>
@@ -130,9 +130,9 @@ function NickEditor({ current, onSave, onCancel }: { current: string; onSave: (v
   return (
     <form onSubmit={e => { e.preventDefault(); val.trim().length >= 2 && onSave(val.trim()) }} className="flex items-center gap-2">
       <input type="text" value={val} onChange={e => setVal(e.target.value)} maxLength={24} autoFocus
-        className="bg-transparent border-b border-[#501a2c] text-[#501a2c] font-serif text-base w-28 focus:outline-none pb-0.5" />
-      <button type="submit" className="font-mono text-[10px] text-[#501a2c] uppercase tracking-widest hover:opacity-60">OK</button>
-      <button type="button" onClick={onCancel} className="font-mono text-[10px] text-[#501a2c]/30 uppercase">✕</button>
+        className="bg-transparent border-b border-[var(--c-accent)] text-[var(--c-accent)] font-serif text-base w-28 focus:outline-none pb-0.5" />
+      <button type="submit" className="font-mono text-[10px] text-[var(--c-accent)] uppercase tracking-widest hover:opacity-60">OK</button>
+      <button type="button" onClick={onCancel} className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.3)] uppercase">✕</button>
     </form>
   )
 }
@@ -142,17 +142,17 @@ function NickEditor({ current, onSave, onCancel }: { current: string; onSave: (v
 function NicknamePrompt({ onJoin, loading, t }: { onJoin: (nick: string) => void; loading: boolean; t: (k: string) => string }) {
   const [nick, setNick] = useState('')
   return (
-    <div className="border border-[#501a2c] p-8 max-w-sm mx-auto">
-      <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60 mb-6">{t('radio.nick_label')}</p>
+    <div className="border border-[var(--c-accent)] p-8 max-w-sm mx-auto">
+      <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-6">{t('radio.nick_label')}</p>
       <input type="text" value={nick} onChange={e => setNick(e.target.value)}
         onKeyDown={e => e.key === 'Enter' && nick.trim().length >= 2 && onJoin(nick.trim())}
         placeholder={t('radio.nick_placeholder')} maxLength={24}
-        className="w-full bg-transparent border-b border-[#501a2c] font-serif text-xl text-[#501a2c] placeholder-[#501a2c]/30 focus:outline-none pb-2 mb-8" autoFocus />
+        className="w-full bg-transparent border-b border-[var(--c-accent)] font-serif text-xl text-[var(--c-accent)] placeholder-[rgb(var(--c-accent-rgb)_/_0.3)] focus:outline-none pb-2 mb-8" autoFocus />
       <button onClick={() => onJoin(nick.trim() || '')} disabled={loading}
-        className="w-full border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] font-mono text-xs uppercase tracking-widest py-3 hover:bg-[#3d1220] transition-colors disabled:opacity-50">
+        className="w-full border border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)] font-mono text-xs uppercase tracking-widest py-3 hover:bg-[#3d1220] transition-colors disabled:opacity-50">
         {loading ? t('radio.connecting') : t('radio.nick_enter')}
       </button>
-      <p className="font-mono text-[10px] text-[#501a2c]/40 mt-4 text-center">{t('radio.nick_anon')}</p>
+      <p className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.4)] mt-4 text-center">{t('radio.nick_anon')}</p>
     </div>
   )
 }
@@ -169,21 +169,21 @@ function RoomsList({ rooms, onJoin, t }: { rooms: ActiveRoom[]; onJoin: (slug: s
   const filtered = rooms.filter(r => r.slug.startsWith(CHANNEL))
   if (!filtered.length) return null
   return (
-    <div className="mt-10 border-t border-[#501a2c]/10 pt-8">
-      <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#501a2c]/40 mb-4">{t('radio.active_rooms')}</p>
+    <div className="mt-10 border-t border-[rgb(var(--c-accent-rgb)_/_0.1)] pt-8">
+      <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-4">{t('radio.active_rooms')}</p>
       <ul className="space-y-0">
         {filtered.map(r => {
           const raw = stripChannel(r.slug)
           const display = r.title === r.slug ? raw : r.title
           return (
-            <li key={r.slug} className="border border-[#501a2c]/10 hover:border-[#501a2c]/30 transition-colors">
+            <li key={r.slug} className="border border-[rgb(var(--c-accent-rgb)_/_0.1)] hover:border-[rgb(var(--c-accent-rgb)_/_0.3)] transition-colors">
               <button onClick={() => onJoin(raw, display)}
                 className="w-full flex items-center justify-between px-5 py-4 text-left group">
                 <span className="flex items-center gap-4">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#C9A690] animate-pulse" />
-                  <span className="font-serif text-lg text-[#501a2c] group-hover:text-[#3d1220] transition-colors">{display}</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--c-gold)] animate-pulse" />
+                  <span className="font-serif text-lg text-[var(--c-accent)] group-hover:text-[#3d1220] transition-colors">{display}</span>
                 </span>
-                <span className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">
                   {r.member_count} {t('radio.participants').toLowerCase()}
                 </span>
               </button>
@@ -201,15 +201,15 @@ function CreateRoomPanel({ onStart, t }: { onStart: (slug: string, title: string
   const [name, setName] = useState('')
   const slug = name.trim() ? toSlug(name) : ''
   return (
-    <div className="mt-6 border border-dashed border-[#501a2c]/20 p-6 max-w-sm">
-      <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 mb-4">{t('radio.create_room')}</p>
+    <div className="mt-6 border border-dashed border-[rgb(var(--c-accent-rgb)_/_0.2)] p-6 max-w-sm">
+      <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-4">{t('radio.create_room')}</p>
       <input type="text" value={name} onChange={e => setName(e.target.value)}
         onKeyDown={e => e.key === 'Enter' && slug && onStart(slug, name.trim())}
         placeholder={t('radio.room_name_placeholder')} maxLength={50}
-        className="w-full bg-transparent border-b border-[#501a2c]/30 font-serif text-lg text-[#501a2c] placeholder-[#501a2c]/20 focus:outline-none pb-2 mb-4 focus:border-[#501a2c]" autoFocus />
-      {slug && <p className="font-mono text-[9px] text-[#501a2c]/30 mb-4 truncate">/radio?room={slug}</p>}
+        className="w-full bg-transparent border-b border-[rgb(var(--c-accent-rgb)_/_0.3)] font-serif text-lg text-[var(--c-accent)] placeholder-[rgb(var(--c-accent-rgb)_/_0.2)] focus:outline-none pb-2 mb-4 focus:border-[var(--c-accent)]" autoFocus />
+      {slug && <p className="font-mono text-[9px] text-[rgb(var(--c-accent-rgb)_/_0.3)] mb-4 truncate">/radio?room={slug}</p>}
       <button onClick={() => slug && onStart(slug, name.trim())} disabled={!slug}
-        className="w-full border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] font-mono text-xs uppercase tracking-widest py-3 hover:bg-[#3d1220] transition-colors disabled:opacity-30">
+        className="w-full border border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)] font-mono text-xs uppercase tracking-widest py-3 hover:bg-[#3d1220] transition-colors disabled:opacity-30">
         {t('radio.create_and_join')}
       </button>
     </div>
@@ -227,7 +227,7 @@ function ShareButton({ roomSlug, t }: { roomSlug: string; t: (k: string) => stri
   }
   return (
     <button onClick={copy}
-      className="border border-[#F5F0EB]/20 px-3 py-1.5 font-mono text-[9px] uppercase tracking-widest text-[#F5F0EB]/50 hover:border-[#C9A690] hover:text-[#C9A690] transition-colors whitespace-nowrap">
+      className="border border-[rgb(var(--c-bg-rgb)_/_0.2)] px-3 py-1.5 font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-bg-rgb)_/_0.5)] hover:border-[var(--c-gold)] hover:text-[var(--c-gold)] transition-colors whitespace-nowrap">
       {copied ? '✓ copied' : t('radio.share_link')}
     </button>
   )
@@ -258,16 +258,16 @@ function ChatPanel({ messages, callId, myNick, onSendText, onSendReaction, compa
   }
 
   return (
-    <div className={`flex flex-col bg-[#FDFAF7] ${compact ? 'h-full' : 'border border-[#501a2c]/15 rounded-lg overflow-hidden'}`}>
+    <div className={`flex flex-col bg-[#FDFAF7] ${compact ? 'h-full' : 'border border-[rgb(var(--c-accent-rgb)_/_0.15)] rounded-lg overflow-hidden'}`}>
       {/* Emoji picker */}
       <AnimatePresence>
         {showPicker && (
           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}
-            className="border-b border-[#501a2c]/10 overflow-hidden bg-[#F5F0EB]">
+            className="border-b border-[rgb(var(--c-accent-rgb)_/_0.1)] overflow-hidden bg-[var(--c-bg)]">
             <div className="flex flex-wrap gap-1.5 px-4 py-3">
               {REACTIONS.map(e => (
                 <button key={e} onClick={() => { onSendReaction(callId, e); setShowPicker(false) }}
-                  className="text-xl hover:scale-125 active:scale-110 transition-transform w-9 h-9 flex items-center justify-center rounded-lg hover:bg-[#501a2c]/8">{e}</button>
+                  className="text-xl hover:scale-125 active:scale-110 transition-transform w-9 h-9 flex items-center justify-center rounded-lg hover:bg-[rgb(var(--c-accent-rgb)_/_0.08)]">{e}</button>
               ))}
             </div>
           </motion.div>
@@ -279,7 +279,7 @@ function ChatPanel({ messages, callId, myNick, onSendText, onSendReaction, compa
         {textMsgs.length === 0 && (
           <div className="flex flex-col items-center justify-center h-full gap-2 py-8">
             <span className="text-2xl opacity-20">💬</span>
-            <p className="font-mono text-[9px] text-[#501a2c]/25 text-center uppercase tracking-widest">
+            <p className="font-mono text-[9px] text-[rgb(var(--c-accent-rgb)_/_0.25)] text-center uppercase tracking-widest">
               Чат порожній
             </p>
           </div>
@@ -291,16 +291,16 @@ function ChatPanel({ messages, callId, myNick, onSendText, onSendReaction, compa
             <div key={m.id} className={`flex gap-2 items-end ${isMe ? 'flex-row-reverse' : ''}`}>
               {/* Avatar */}
               {!isMe && (
-                <div className="w-6 h-6 rounded-full flex items-center justify-center font-bold text-[9px] text-[#F5F0EB] shrink-0 mb-0.5 shadow-sm"
+                <div className="w-6 h-6 rounded-full flex items-center justify-center font-bold text-[9px] text-[var(--c-bg)] shrink-0 mb-0.5 shadow-sm"
                   style={{ background: m.color || '#501a2c' }}>{(m.nickname || '?')[0]?.toUpperCase()}</div>
               )}
               <div className={`flex flex-col gap-0.5 max-w-[78%] ${isMe ? 'items-end' : 'items-start'}`}>
                 {!isMe && m.nickname && (
-                  <span className="font-mono text-[9px] text-[#501a2c]/40 px-1 leading-none">{m.nickname}</span>
+                  <span className="font-mono text-[9px] text-[rgb(var(--c-accent-rgb)_/_0.4)] px-1 leading-none">{m.nickname}</span>
                 )}
                 <span className={`px-3 py-2 text-[13px] leading-snug break-words rounded-2xl ${
                   isMe
-                    ? `bg-[#501a2c] text-[#F5F0EB] rounded-br-sm ${isPending ? 'opacity-60' : ''}`
+                    ? `bg-[var(--c-accent)] text-[var(--c-bg)] rounded-br-sm ${isPending ? 'opacity-60' : ''}`
                     : 'bg-white text-[#2A1A22] border border-[#E2D8CF] rounded-bl-sm shadow-sm'
                 }`}>
                   {m.content}
@@ -314,10 +314,10 @@ function ChatPanel({ messages, callId, myNick, onSendText, onSendReaction, compa
       </div>
 
       {/* Composer */}
-      <div className="border-t border-[#501a2c]/10 bg-white/60 backdrop-blur-sm">
+      <div className="border-t border-[rgb(var(--c-accent-rgb)_/_0.1)] bg-white/60 backdrop-blur-sm">
         <form onSubmit={handleSubmit} className="flex items-center gap-2 px-3 py-2.5">
           <button type="button" onClick={() => setShowPicker(p => !p)}
-            className={`text-base shrink-0 transition-all w-7 h-7 flex items-center justify-center rounded-lg ${showPicker ? 'bg-[#501a2c]/10' : 'opacity-40 hover:opacity-80'}`}>
+            className={`text-base shrink-0 transition-all w-7 h-7 flex items-center justify-center rounded-lg ${showPicker ? 'bg-[rgb(var(--c-accent-rgb)_/_0.1)]' : 'opacity-40 hover:opacity-80'}`}>
             🙂
           </button>
           <input
@@ -327,10 +327,10 @@ function ChatPanel({ messages, callId, myNick, onSendText, onSendReaction, compa
             onChange={e => setText(e.target.value)}
             placeholder={t('radio.chat_placeholder')}
             maxLength={300}
-            className="flex-1 bg-transparent text-[13px] text-[#2A1A22] placeholder-[#501a2c]/30 focus:outline-none min-w-0"
+            className="flex-1 bg-transparent text-[13px] text-[#2A1A22] placeholder-[rgb(var(--c-accent-rgb)_/_0.3)] focus:outline-none min-w-0"
           />
           <button type="submit" disabled={!text.trim()}
-            className="shrink-0 w-8 h-8 rounded-full bg-[#501a2c] text-[#F5F0EB] flex items-center justify-center disabled:opacity-25 transition-opacity hover:bg-[#6b2438]">
+            className="shrink-0 w-8 h-8 rounded-full bg-[var(--c-accent)] text-[var(--c-bg)] flex items-center justify-center disabled:opacity-25 transition-opacity hover:bg-[#6b2438]">
             <svg viewBox="0 0 24 24" fill="none" width={14} height={14}>
               <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
@@ -347,18 +347,18 @@ function NowPlayingBar({ title, artist, isHost, musicGain, onStop, onGain }:
   { title: string; artist: string; isHost: boolean; musicGain: number; onStop: () => void; onGain: (v: number) => void }) {
   return (
     <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
-      className="bg-[#501a2c] text-[#F5F0EB] px-6 py-3 flex items-center gap-4 border-b border-[#F5F0EB]/10">
-      <span className="w-1.5 h-1.5 rounded-full bg-[#C9A690] animate-pulse shrink-0" />
+      className="bg-[var(--c-accent)] text-[var(--c-bg)] px-6 py-3 flex items-center gap-4 border-b border-[rgb(var(--c-bg-rgb)_/_0.1)]">
+      <span className="w-1.5 h-1.5 rounded-full bg-[var(--c-gold)] animate-pulse shrink-0" />
       <div className="flex-1 min-w-0">
-        <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#C9A690]">Now Playing</span>
-        <p className="font-serif text-sm text-[#F5F0EB] leading-tight truncate">{title}{artist ? ` — ${artist}` : ''}</p>
+        <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--c-gold)]">Now Playing</span>
+        <p className="font-serif text-sm text-[var(--c-bg)] leading-tight truncate">{title}{artist ? ` — ${artist}` : ''}</p>
       </div>
       {isHost && (
         <>
           <input type="range" min={0} max={1} step={0.05} value={musicGain}
             onChange={e => onGain(parseFloat(e.target.value))}
-            className="w-20 accent-[#C9A690] shrink-0" title="Гучність музики" />
-          <button onClick={onStop} className="font-mono text-[9px] uppercase tracking-widest text-[#F5F0EB]/50 hover:text-[#F5F0EB] border border-[#F5F0EB]/20 px-3 py-1.5 transition-colors whitespace-nowrap">
+            className="w-20 accent-[var(--c-gold)] shrink-0" title="Гучність музики" />
+          <button onClick={onStop} className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-bg-rgb)_/_0.5)] hover:text-[var(--c-bg)] border border-[rgb(var(--c-bg-rgb)_/_0.2)] px-3 py-1.5 transition-colors whitespace-nowrap">
             ■ Стоп
           </button>
         </>
@@ -384,23 +384,23 @@ function MusicPanel({ onPlay, isPlaying }: { onPlay: (id: number, title: string,
 
   useEffect(() => { loadTracks() }, [loadTracks])
 
-  if (loading) return <p className="font-mono text-[10px] text-[#501a2c]/30 text-center py-4">…</p>
+  if (loading) return <p className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.3)] text-center py-4">…</p>
   if (!tracks.length) return (
-    <p className="font-mono text-[10px] text-[#501a2c]/30 text-center py-6">
+    <p className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.3)] text-center py-6">
       Треків немає. Завантажте в адмінці.
     </p>
   )
   return (
-    <div className="divide-y divide-[#501a2c]/8 max-h-72 overflow-y-auto">
+    <div className="divide-y divide-[rgb(var(--c-accent-rgb)_/_0.08)] max-h-72 overflow-y-auto">
       {tracks.map(tr => (
-        <div key={tr.id} className="flex items-center gap-3 px-4 py-3 hover:bg-[#501a2c]/4 transition-colors group">
+        <div key={tr.id} className="flex items-center gap-3 px-4 py-3 hover:bg-[rgb(var(--c-accent-rgb)_/_0.04)] transition-colors group">
           <div className="flex-1 min-w-0">
-            <p className="font-serif text-[#501a2c] text-sm truncate">{tr.title}</p>
-            {tr.artist && <p className="font-mono text-[10px] text-[#501a2c]/40 truncate">{tr.artist}</p>}
+            <p className="font-serif text-[var(--c-accent)] text-sm truncate">{tr.title}</p>
+            {tr.artist && <p className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.4)] truncate">{tr.artist}</p>}
           </div>
           <button onClick={() => onPlay(tr.id, tr.title, tr.artist)}
             disabled={isPlaying}
-            className="shrink-0 border border-[#501a2c]/30 px-3 py-1 font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/60 hover:border-[#501a2c] hover:text-[#501a2c] transition-colors disabled:opacity-30 group-hover:border-[#501a2c]/60">
+            className="shrink-0 border border-[rgb(var(--c-accent-rgb)_/_0.3)] px-3 py-1 font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:border-[var(--c-accent)] hover:text-[var(--c-accent)] transition-colors disabled:opacity-30 group-hover:border-[rgb(var(--c-accent-rgb)_/_0.6)]">
             ▶ Запустити
           </button>
         </div>
@@ -414,30 +414,30 @@ function MusicPanel({ onPlay, isPlaying }: { onPlay: (id: number, title: string,
 function MembersPanel({ members, myUser, memberVolumes, peerStates, micOn, speaking, editingNick, onEditNick, onSaveNick, onCancelNick, onSetVolume, total, t }:
   { members: ReturnType<typeof useEprisVoice>['members']; myUser: ReturnType<typeof useEprisVoice>['myUser']; memberVolumes: Record<number, number>; peerStates: Record<number, RTCPeerConnectionState>; micOn: boolean; speaking: boolean; editingNick: boolean; onEditNick: () => void; onSaveNick: (v: string) => void; onCancelNick: () => void; onSetVolume: (id: number, v: number) => void; total: number; t: (k: string) => string }) {
   return (
-    <div className="divide-y divide-[#501a2c]/8 overflow-y-auto">
+    <div className="divide-y divide-[rgb(var(--c-accent-rgb)_/_0.08)] overflow-y-auto">
       {myUser && (
         <div className={`px-4 py-3 flex items-center gap-3 ${micOn ? '' : 'opacity-60'}`}>
           <span className="w-2 h-2 rounded-full shrink-0" style={{ background: myUser.color }} />
           {editingNick
             ? <NickEditor current={myUser.nickname} onSave={onSaveNick} onCancel={onCancelNick} />
-            : <button onClick={onEditNick} className="font-serif text-[#501a2c] text-left hover:underline flex items-center gap-1.5">
+            : <button onClick={onEditNick} className="font-serif text-[var(--c-accent)] text-left hover:underline flex items-center gap-1.5">
                 {myUser.nickname} <span className="text-[10px] opacity-30">✏</span>
               </button>}
-          {(micOn && speaking) && <span className="ml-auto w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse" />}
-          <span className={`ml-auto font-mono text-[9px] text-[#501a2c]/40 ${(micOn && speaking) ? 'ml-1' : ''}`}>{micOn ? 'MIC' : 'MUTE'}</span>
+          {(micOn && speaking) && <span className="ml-auto w-1.5 h-1.5 bg-[var(--c-gold)] rounded-full animate-pulse" />}
+          <span className={`ml-auto font-mono text-[9px] text-[rgb(var(--c-accent-rgb)_/_0.4)] ${(micOn && speaking) ? 'ml-1' : ''}`}>{micOn ? 'MIC' : 'MUTE'}</span>
         </div>
       )}
       {members.map(m => (
         <div key={m.user_id} className={`px-4 py-3 flex items-center gap-3 ${m.mic_on ? '' : 'opacity-60'}`}>
           <ConnDot state={peerStates[m.user_id]} />
           <span className="w-2 h-2 rounded-full shrink-0" style={{ background: m.color }} />
-          <span className="font-serif text-[#501a2c] truncate flex-1">{m.nickname}</span>
-          {m.speaking && <span className="w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse shrink-0" />}
-          <span className="font-mono text-[9px] text-[#501a2c]/40 shrink-0">{m.mic_on ? 'MIC' : 'MUTE'}</span>
+          <span className="font-serif text-[var(--c-accent)] truncate flex-1">{m.nickname}</span>
+          {m.speaking && <span className="w-1.5 h-1.5 bg-[var(--c-gold)] rounded-full animate-pulse shrink-0" />}
+          <span className="font-mono text-[9px] text-[rgb(var(--c-accent-rgb)_/_0.4)] shrink-0">{m.mic_on ? 'MIC' : 'MUTE'}</span>
           <VolumeToggle userId={m.user_id} volume={memberVolumes[m.user_id] ?? 1} onSet={onSetVolume} />
         </div>
       ))}
-      {total === 0 && <p className="px-4 py-6 font-mono text-[10px] text-[#501a2c]/20 text-center">Тільки ви в ефірі</p>}
+      {total === 0 && <p className="px-4 py-6 font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.2)] text-center">Тільки ви в ефірі</p>}
     </div>
   )
 }
@@ -571,39 +571,39 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
   const roomDisplayName = (() => { const r = stripChannel(roomSlug); return r === 'main' ? 'Main' : r })()
 
   return (
-    <div className="min-h-screen bg-[#F5F0EB]">
+    <div className="min-h-screen bg-[var(--c-bg)]">
 
       {/* ── Hero dark ──────────────────────────────────────────────────────── */}
-      <div className="bg-[#501a2c]">
+      <div className="bg-[var(--c-accent)]">
         <div className="max-w-5xl mx-auto px-6 md:px-14 pt-14 pb-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-[#C9A690] mb-3">{t('radio.eyebrow')}</p>
-              <h1 className="font-serif text-4xl md:text-6xl text-[#F5F0EB] leading-none mb-3">
+              <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-[var(--c-gold)] mb-3">{t('radio.eyebrow')}</p>
+              <h1 className="font-serif text-4xl md:text-6xl text-[var(--c-bg)] leading-none mb-3">
                 {joined ? t('radio.on_air') : members.length > 0 ? t('radio.broadcast_active') : 'EPRIS Live'}
               </h1>
-              <p className="font-serif text-base text-[#F5F0EB]/50 max-w-lg leading-relaxed">{t('radio.concept')}</p>
+              <p className="font-serif text-base text-[rgb(var(--c-bg-rgb)_/_0.5)] max-w-lg leading-relaxed">{t('radio.concept')}</p>
             </div>
             <div className="flex flex-col items-start md:items-end gap-2 shrink-0">
               {isActive
-                ? <span className="inline-flex items-center gap-2 border border-[#C9A690] px-3 py-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#C9A690] animate-pulse" />
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#C9A690]">{t('radio.live_badge')}</span>
+                ? <span className="inline-flex items-center gap-2 border border-[var(--c-gold)] px-3 py-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--c-gold)] animate-pulse" />
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)]">{t('radio.live_badge')}</span>
                   </span>
-                : <span className="font-mono text-[10px] uppercase tracking-widest text-[#F5F0EB]/30">{t('radio.standby')}</span>}
-              {isActive && <span className="font-mono text-[10px] text-[#F5F0EB]/40 uppercase tracking-widest">{total + (joined ? 1 : 0)} {t('radio.participants').toLowerCase()}</span>}
+                : <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-bg-rgb)_/_0.3)]">{t('radio.standby')}</span>}
+              {isActive && <span className="font-mono text-[10px] text-[rgb(var(--c-bg-rgb)_/_0.4)] uppercase tracking-widest">{total + (joined ? 1 : 0)} {t('radio.participants').toLowerCase()}</span>}
               {roomSlug !== CHANNEL + 'main' && (
-                <span className="font-mono text-[9px] uppercase tracking-widest text-[#C9A690]/50">#{roomDisplayName}</span>
+                <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-gold-rgb)_/_0.5)]">#{roomDisplayName}</span>
               )}
               {joined && <ShareButton roomSlug={roomSlug} t={t} />}
             </div>
           </div>
 
           {/* Signal meter */}
-          <div className="border border-[#F5F0EB]/10 p-4">
+          <div className="border border-[rgb(var(--c-bg-rgb)_/_0.1)] p-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#F5F0EB]/30">Signal · WebRTC</span>
-              <span className="font-mono text-[9px] uppercase tracking-widest text-[#C9A690]">
+              <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-[rgb(var(--c-bg-rgb)_/_0.3)]">Signal · WebRTC</span>
+              <span className="font-mono text-[9px] uppercase tracking-widest text-[var(--c-gold)]">
                 {anyoneSpeaking ? '● LIVE' : '○ STANDBY'}
               </span>
             </div>
@@ -628,9 +628,9 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
         <AnimatePresence>
           {audioBlocked && (
             <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-              className="mb-6 border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] p-4 flex items-center justify-between">
+              className="mb-6 border border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)] p-4 flex items-center justify-between">
               <span className="font-mono text-xs uppercase tracking-widest">{t('radio.unlock_audio')}</span>
-              <button onClick={unlockAudio} className="border border-[#F5F0EB]/30 px-4 py-2 font-mono text-xs uppercase tracking-widest hover:bg-[#F5F0EB]/10">
+              <button onClick={unlockAudio} className="border border-[rgb(var(--c-bg-rgb)_/_0.3)] px-4 py-2 font-mono text-xs uppercase tracking-widest hover:bg-[rgb(var(--c-bg-rgb)_/_0.1)]">
                 {t('radio.unlock_btn')}
               </button>
             </motion.div>
@@ -641,9 +641,9 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
         <AnimatePresence>
           {showEndedNotice && !joined && (
             <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-              className="mb-6 border border-[#501a2c]/20 bg-[#501a2c]/5 p-4 flex items-center justify-between">
-              <span className="font-mono text-xs text-[#501a2c]/70 uppercase tracking-widest">{t('radio.broadcast_ended')}</span>
-              <button onClick={() => setShowEndedNotice(false)} className="font-mono text-[10px] text-[#501a2c]/40 uppercase hover:text-[#501a2c]">✕</button>
+              className="mb-6 border border-[rgb(var(--c-accent-rgb)_/_0.2)] bg-[rgb(var(--c-accent-rgb)_/_0.05)] p-4 flex items-center justify-between">
+              <span className="font-mono text-xs text-[rgb(var(--c-accent-rgb)_/_0.7)] uppercase tracking-widest">{t('radio.broadcast_ended')}</span>
+              <button onClick={() => setShowEndedNotice(false)} className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.4)] uppercase hover:text-[var(--c-accent)]">✕</button>
             </motion.div>
           )}
         </AnimatePresence>
@@ -655,26 +655,26 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
             <motion.div key="idle" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
               <div className="grid md:grid-cols-2 gap-14 items-start">
                 <div>
-                  <h2 className="font-serif text-4xl md:text-5xl text-[#501a2c] mb-5 leading-tight">{t('radio.idle_title')}</h2>
-                  <p className="font-serif text-lg text-[#501a2c]/60 leading-relaxed mb-8">{t('radio.idle_desc')}</p>
+                  <h2 className="font-serif text-4xl md:text-5xl text-[var(--c-accent)] mb-5 leading-tight">{t('radio.idle_title')}</h2>
+                  <p className="font-serif text-lg text-[rgb(var(--c-accent-rgb)_/_0.6)] leading-relaxed mb-8">{t('radio.idle_desc')}</p>
                   <div className="flex flex-wrap gap-3">
                     <button onClick={() => setShowNickPrompt(true)} disabled={connecting}
-                      className="border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] font-mono text-xs uppercase tracking-widest px-8 py-4 hover:bg-[#3d1220] transition-colors disabled:opacity-50">
+                      className="border border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)] font-mono text-xs uppercase tracking-widest px-8 py-4 hover:bg-[#3d1220] transition-colors disabled:opacity-50">
                       {connecting ? t('radio.connecting') : t('radio.join_cta')}
                     </button>
                     <button onClick={() => setShowCreateRoom(true)}
-                      className="border border-[#501a2c]/30 text-[#501a2c]/60 font-mono text-xs uppercase tracking-widest px-6 py-4 hover:border-[#501a2c] hover:text-[#501a2c] transition-colors">
+                      className="border border-[rgb(var(--c-accent-rgb)_/_0.3)] text-[rgb(var(--c-accent-rgb)_/_0.6)] font-mono text-xs uppercase tracking-widest px-6 py-4 hover:border-[var(--c-accent)] hover:text-[var(--c-accent)] transition-colors">
                       {t('radio.create_room')}
                     </button>
                   </div>
                 </div>
                 <div className="space-y-0">
                   {[t('radio.feat1'), t('radio.feat2'), t('radio.feat3'), t('radio.feat4')].map((item, i) => (
-                    <div key={i} className="flex items-start gap-4 border-b border-[#501a2c]/10 py-4 first:pt-0">
-                      <div className="w-7 h-7 border border-[#501a2c]/20 flex items-center justify-center text-[#501a2c]/30 font-mono text-[10px] shrink-0">
+                    <div key={i} className="flex items-start gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.1)] py-4 first:pt-0">
+                      <div className="w-7 h-7 border border-[rgb(var(--c-accent-rgb)_/_0.2)] flex items-center justify-center text-[rgb(var(--c-accent-rgb)_/_0.3)] font-mono text-[10px] shrink-0">
                         {String(i + 1).padStart(2, '0')}
                       </div>
-                      <p className="font-serif text-[#501a2c]/60 mt-0.5 leading-snug">{item}</p>
+                      <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.6)] mt-0.5 leading-snug">{item}</p>
                     </div>
                   ))}
                 </div>
@@ -686,7 +686,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
           {/* Create room */}
           {!joined && showCreateRoom && (
             <motion.div key="create" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-              <button onClick={() => setShowCreateRoom(false)} className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/50 hover:text-[#501a2c] mb-6 block">{t('radio.back')}</button>
+              <button onClick={() => setShowCreateRoom(false)} className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] hover:text-[var(--c-accent)] mb-6 block">{t('radio.back')}</button>
               <CreateRoomPanel onStart={(slug, title) => navigateToRoom(slug, title)} t={t} />
             </motion.div>
           )}
@@ -694,7 +694,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
           {/* Nick prompt */}
           {!joined && showNickPrompt && (
             <motion.div key="nick" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-              <button onClick={() => setShowNickPrompt(false)} className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/50 hover:text-[#501a2c] mb-6 block">{t('radio.back')}</button>
+              <button onClick={() => setShowNickPrompt(false)} className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] hover:text-[var(--c-accent)] mb-6 block">{t('radio.back')}</button>
               <NicknamePrompt onJoin={handleJoin} loading={connecting} t={t} />
             </motion.div>
           )}
@@ -704,22 +704,22 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
             <motion.div key="watching" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
               <div className="grid md:grid-cols-2 gap-14 items-start">
                 <div>
-                  <h2 className="font-serif text-4xl text-[#501a2c] mb-4">{t('radio.broadcast_active')}</h2>
-                  <p className="font-serif text-lg text-[#501a2c]/60 mb-8">{members.map(m => m.nickname).join(', ')}</p>
+                  <h2 className="font-serif text-4xl text-[var(--c-accent)] mb-4">{t('radio.broadcast_active')}</h2>
+                  <p className="font-serif text-lg text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-8">{members.map(m => m.nickname).join(', ')}</p>
                   <button onClick={() => setShowNickPrompt(true)} disabled={connecting}
-                    className="border border-[#501a2c] bg-[#501a2c] text-[#F5F0EB] font-mono text-xs uppercase tracking-widest px-8 py-4 hover:bg-[#3d1220] transition-colors disabled:opacity-50">
+                    className="border border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)] font-mono text-xs uppercase tracking-widest px-8 py-4 hover:bg-[#3d1220] transition-colors disabled:opacity-50">
                     {connecting ? t('radio.connecting') : t('radio.join_active')}
                   </button>
                 </div>
-                <div className="border border-[#501a2c]/20">
-                  <div className="bg-[#501a2c]/5 px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40">
+                <div className="border border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+                  <div className="bg-[rgb(var(--c-accent-rgb)_/_0.05)] px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">
                     {t('radio.participants')} · {members.length}
                   </div>
                   {members.map(m => (
-                    <div key={m.user_id} className="border-t border-[#501a2c]/10 px-4 py-3 flex items-center gap-3">
+                    <div key={m.user_id} className="border-t border-[rgb(var(--c-accent-rgb)_/_0.1)] px-4 py-3 flex items-center gap-3">
                       <span className="w-2 h-2 rounded-full" style={{ background: m.color }} />
-                      <span className="font-serif text-[#501a2c]">{m.nickname}</span>
-                      <span className="ml-auto font-mono text-[9px] text-[#501a2c]/40">{m.mic_on ? 'MIC' : 'MUTE'}</span>
+                      <span className="font-serif text-[var(--c-accent)]">{m.nickname}</span>
+                      <span className="ml-auto font-mono text-[9px] text-[rgb(var(--c-accent-rgb)_/_0.4)]">{m.mic_on ? 'MIC' : 'MUTE'}</span>
                     </div>
                   ))}
                 </div>
@@ -737,13 +737,13 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                   {/* Big PTT */}
                   <div className="flex flex-col items-center pt-2 pb-6 gap-5">
                     <div className="relative flex items-center justify-center">
-                      {speaking && micOn && <span className="absolute inset-0 rounded-full border-2 border-[#C9A690] animate-ping opacity-60 pointer-events-none" />}
+                      {speaking && micOn && <span className="absolute inset-0 rounded-full border-2 border-[var(--c-gold)] animate-ping opacity-60 pointer-events-none" />}
                       <button
                         onTouchStart={e => { e.preventDefault(); pttTouchStart() }}
                         onTouchEnd={e => { e.preventDefault(); pttTouchEnd() }}
                         onClick={toggleMic}
                         className={`w-24 h-24 rounded-full border-2 flex flex-col items-center justify-center gap-2 select-none transition-all active:scale-95 ${
-                          micOn ? 'bg-[#501a2c] border-[#501a2c] text-[#F5F0EB] shadow-[0_0_0_8px_rgba(80,26,44,0.12)]' : 'bg-transparent border-[#501a2c] text-[#501a2c]'
+                          micOn ? 'bg-[var(--c-accent)] border-[var(--c-accent)] text-[var(--c-bg)] shadow-[0_0_0_8px_rgba(80,26,44,0.12)]' : 'bg-transparent border-[var(--c-accent)] text-[var(--c-accent)]'
                         }`}
                         style={{ WebkitTapHighlightColor: 'transparent', touchAction: 'none' }}>
                         <MicIcon off={!micOn} />
@@ -769,8 +769,8 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                   </div>
 
                   {/* Mobile tab bar */}
-                  <div className="border-t border-[#501a2c]/10">
-                    <div className="grid grid-cols-3 border-b border-[#501a2c]/10">
+                  <div className="border-t border-[rgb(var(--c-accent-rgb)_/_0.1)]">
+                    <div className="grid grid-cols-3 border-b border-[rgb(var(--c-accent-rgb)_/_0.1)]">
                       {([
                         { id: 'members' as const, label: t('radio.participants'), Icon: UsersIcon },
                         { id: 'chat' as const, label: 'Чат', Icon: ChatIcon, badge: unreadChat },
@@ -778,22 +778,22 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                       ]).map(tab => (
                         <button key={tab.id} onClick={() => { setMobileTab(tab.id); if (tab.id === 'chat') switchToChat('mobile') }}
                           className={`relative py-3 flex flex-col items-center gap-1 font-mono text-[9px] uppercase tracking-widest transition-colors ${
-                            mobileTab === tab.id ? 'bg-[#501a2c] text-[#F5F0EB]' : 'text-[#501a2c]/50 hover:text-[#501a2c]'
+                            mobileTab === tab.id ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'text-[rgb(var(--c-accent-rgb)_/_0.5)] hover:text-[var(--c-accent)]'
                           }`}>
                           <tab.Icon />
                           {tab.label}
                           {'badge' in tab && (tab.badge ?? 0) > 0 && (
-                            <span className="absolute top-1.5 right-1/4 w-4 h-4 bg-[#C9A690] rounded-full font-mono text-[8px] flex items-center justify-center text-[#501a2c]">{tab.badge}</span>
+                            <span className="absolute top-1.5 right-1/4 w-4 h-4 bg-[var(--c-gold)] rounded-full font-mono text-[8px] flex items-center justify-center text-[var(--c-accent)]">{tab.badge}</span>
                           )}
-                          {'dot' in tab && tab.dot && <span className="absolute top-2 right-1/4 w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse" />}
+                          {'dot' in tab && tab.dot && <span className="absolute top-2 right-1/4 w-1.5 h-1.5 bg-[var(--c-gold)] rounded-full animate-pulse" />}
                         </button>
                       ))}
                     </div>
 
                     <div className="min-h-[200px]">
                       {mobileTab === 'members' && (
-                        <div className="border-b border-[#501a2c]/10">
-                          <div className="bg-[#501a2c] text-[#F5F0EB] px-4 py-2.5 font-mono text-[10px] uppercase tracking-widest">
+                        <div className="border-b border-[rgb(var(--c-accent-rgb)_/_0.1)]">
+                          <div className="bg-[var(--c-accent)] text-[var(--c-bg)] px-4 py-2.5 font-mono text-[10px] uppercase tracking-widest">
                             {t('radio.participants')} · {total + 1}
                           </div>
                           <MembersPanel members={members} myUser={myUser} memberVolumes={memberVolumes} peerStates={peerStates}
@@ -809,17 +809,17 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                         </div>
                       )}
                       {mobileTab === 'music' && (
-                        <div className="border-b border-[#501a2c]/10">
+                        <div className="border-b border-[rgb(var(--c-accent-rgb)_/_0.1)]">
                           {isHost ? (
                             <>
-                              <div className="bg-[#501a2c]/5 px-4 py-2.5 font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 flex items-center gap-2">
+                              <div className="bg-[rgb(var(--c-accent-rgb)_/_0.05)] px-4 py-2.5 font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] flex items-center gap-2">
                                 <MusicIcon /> Бібліотека треків
                               </div>
                               <MusicPanel onPlay={startMusicBroadcast} isPlaying={isMusicOn} />
                             </>
                           ) : (
                             <div className="px-4 py-8 text-center">
-                              <p className="font-mono text-[10px] text-[#501a2c]/40 uppercase tracking-widest">
+                              <p className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.4)] uppercase tracking-widest">
                                 {nowPlaying ? `♫ ${nowPlaying.title}` : 'Музика не грає'}
                               </p>
                             </div>
@@ -831,7 +831,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
 
                   {/* Controls */}
                   <div className="flex gap-2 pt-4">
-                    <button onClick={leave} className="flex-1 border border-[#501a2c]/30 text-[#501a2c]/60 py-3.5 font-mono text-[10px] uppercase tracking-widest hover:border-[#501a2c] hover:text-[#501a2c] transition-colors">
+                    <button onClick={leave} className="flex-1 border border-[rgb(var(--c-accent-rgb)_/_0.3)] text-[rgb(var(--c-accent-rgb)_/_0.6)] py-3.5 font-mono text-[10px] uppercase tracking-widest hover:border-[var(--c-accent)] hover:text-[var(--c-accent)] transition-colors">
                       {t('radio.leave')}
                     </button>
                     {isHost && (
@@ -848,7 +848,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                   {/* Left: controls + reactions */}
                   <div>
                     {/* Status */}
-                    <p className="font-serif text-lg text-[#501a2c]/70 mb-6 leading-relaxed">
+                    <p className="font-serif text-lg text-[rgb(var(--c-accent-rgb)_/_0.7)] mb-6 leading-relaxed">
                       {members.some(m => m.speaking)
                         ? `${members.filter(m => m.speaking).map(m => m.nickname).join(', ')} говорить…`
                         : micOn && speaking ? t('radio.mic_on') : t('radio.mic_off')}
@@ -857,17 +857,17 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                     {/* Action buttons */}
                     <div className="flex flex-wrap gap-3 mb-8">
                       <div className="relative">
-                        {speaking && micOn && <span className="absolute inset-0 border border-[#C9A690] animate-ping opacity-40 pointer-events-none" />}
+                        {speaking && micOn && <span className="absolute inset-0 border border-[var(--c-gold)] animate-ping opacity-40 pointer-events-none" />}
                         <button onClick={toggleMic}
                           className={`flex items-center gap-3 border px-6 py-3.5 font-mono text-xs uppercase tracking-widest transition-colors ${
-                            micOn ? 'bg-[#501a2c] text-[#F5F0EB] border-[#501a2c]' : 'text-[#501a2c] border-[#501a2c] hover:bg-[#501a2c] hover:text-[#F5F0EB]'
+                            micOn ? 'bg-[var(--c-accent)] text-[var(--c-bg)] border-[var(--c-accent)]' : 'text-[var(--c-accent)] border-[var(--c-accent)] hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]'
                           }`}>
                           <MicIcon off={!micOn} />
                           {micOn ? t('radio.mic_on') : t('radio.mic_off')}
                         </button>
                       </div>
                       <button onClick={leave}
-                        className="border border-[#501a2c]/30 text-[#501a2c]/60 px-6 py-3.5 font-mono text-xs uppercase tracking-widest hover:border-[#501a2c] hover:text-[#501a2c] transition-colors">
+                        className="border border-[rgb(var(--c-accent-rgb)_/_0.3)] text-[rgb(var(--c-accent-rgb)_/_0.6)] px-6 py-3.5 font-mono text-xs uppercase tracking-widest hover:border-[var(--c-accent)] hover:text-[var(--c-accent)] transition-colors">
                         {t('radio.leave')}
                       </button>
                       {isHost && (
@@ -878,7 +878,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                       )}
                     </div>
 
-                    <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/30 mb-8">{t('radio.ptt_hint')}</p>
+                    <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.3)] mb-8">{t('radio.ptt_hint')}</p>
 
                     {/* Reactions */}
                     <div className="relative">
@@ -891,7 +891,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                       <div className="flex gap-2 flex-wrap">
                         {REACTIONS.map(e => (
                           <button key={e} onClick={() => sendReaction(callId!, e)}
-                            className="text-lg w-9 h-9 flex items-center justify-center border border-[#501a2c]/10 hover:border-[#501a2c]/40 hover:scale-110 active:scale-95 transition-all">
+                            className="text-lg w-9 h-9 flex items-center justify-center border border-[rgb(var(--c-accent-rgb)_/_0.1)] hover:border-[rgb(var(--c-accent-rgb)_/_0.4)] hover:scale-110 active:scale-95 transition-all">
                             {e}
                           </button>
                         ))}
@@ -900,24 +900,24 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                   </div>
 
                   {/* Right: tabbed sidebar */}
-                  <div className="border border-[#501a2c]/20 flex flex-col" style={{ minHeight: 420 }}>
+                  <div className="border border-[rgb(var(--c-accent-rgb)_/_0.2)] flex flex-col" style={{ minHeight: 420 }}>
                     {/* Tab bar */}
-                    <div className="grid grid-cols-3 border-b border-[#501a2c]/10">
+                    <div className="grid grid-cols-3 border-b border-[rgb(var(--c-accent-rgb)_/_0.1)]">
                       {([
                         { id: 'members' as const, label: t('radio.participants').slice(0, 8), Icon: UsersIcon },
                         { id: 'chat' as const, label: 'Чат', Icon: ChatIcon, badge: unreadChat },
                         { id: 'music' as const, label: 'Музика', Icon: MusicIcon, dot: isMusicOn },
                       ]).map(tab => (
                         <button key={tab.id} onClick={() => { setDesktopTab(tab.id); if (tab.id === 'chat') switchToChat('desktop') }}
-                          className={`relative py-2.5 flex flex-col items-center gap-1 font-mono text-[8px] uppercase tracking-widest border-r border-[#501a2c]/10 last:border-r-0 transition-colors ${
-                            desktopTab === tab.id ? 'bg-[#501a2c] text-[#F5F0EB]' : 'text-[#501a2c]/40 hover:text-[#501a2c] hover:bg-[#501a2c]/5'
+                          className={`relative py-2.5 flex flex-col items-center gap-1 font-mono text-[8px] uppercase tracking-widest border-r border-[rgb(var(--c-accent-rgb)_/_0.1)] last:border-r-0 transition-colors ${
+                            desktopTab === tab.id ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'text-[rgb(var(--c-accent-rgb)_/_0.4)] hover:text-[var(--c-accent)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.05)]'
                           }`}>
                           <tab.Icon />
                           {tab.label}
                           {'badge' in tab && (tab.badge ?? 0) > 0 && (
-                            <span className="absolute top-1 right-2 w-3.5 h-3.5 bg-[#C9A690] rounded-full font-mono text-[7px] flex items-center justify-center text-[#501a2c]">{tab.badge}</span>
+                            <span className="absolute top-1 right-2 w-3.5 h-3.5 bg-[var(--c-gold)] rounded-full font-mono text-[7px] flex items-center justify-center text-[var(--c-accent)]">{tab.badge}</span>
                           )}
-                          {'dot' in tab && tab.dot && <span className="absolute top-1.5 right-2 w-1.5 h-1.5 bg-[#C9A690] rounded-full animate-pulse" />}
+                          {'dot' in tab && tab.dot && <span className="absolute top-1.5 right-2 w-1.5 h-1.5 bg-[var(--c-gold)] rounded-full animate-pulse" />}
                         </button>
                       ))}
                     </div>
@@ -925,7 +925,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                     {/* Tab content */}
                     {desktopTab === 'members' && (
                       <>
-                        <div className="bg-[#501a2c] text-[#F5F0EB] px-4 py-2.5 font-mono text-[9px] uppercase tracking-widest">
+                        <div className="bg-[var(--c-accent)] text-[var(--c-bg)] px-4 py-2.5 font-mono text-[9px] uppercase tracking-widest">
                           {t('radio.participants')} · {total + 1}
                         </div>
                         <div className="flex-1 overflow-y-auto">
@@ -948,7 +948,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                       <div className="flex-1 overflow-y-auto">
                         {isHost ? (
                           <>
-                            <div className="bg-[#501a2c]/5 px-4 py-2.5 font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/40 flex items-center gap-2 border-b border-[#501a2c]/10">
+                            <div className="bg-[rgb(var(--c-accent-rgb)_/_0.05)] px-4 py-2.5 font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] flex items-center gap-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.1)]">
                               <MusicIcon /> Треки для трансляції
                             </div>
                             <MusicPanel onPlay={startMusicBroadcast} isPlaying={isMusicOn} />
@@ -956,7 +956,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                         ) : (
                           <div className="px-4 py-10 text-center">
                             <MusicIcon />
-                            <p className="font-mono text-[10px] text-[#501a2c]/40 uppercase tracking-widest mt-3">
+                            <p className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.4)] uppercase tracking-widest mt-3">
                               {nowPlaying ? `♫ ${nowPlaying.title}` : 'Музика не транслюється'}
                             </p>
                           </div>
@@ -970,7 +970,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
           )}
         </AnimatePresence>
 
-        {error && <div className="mt-6 border border-[#501a2c]/20 bg-[#E8DED5] p-4 font-mono text-xs text-[#501a2c]">{error}</div>}
+        {error && <div className="mt-6 border border-[rgb(var(--c-accent-rgb)_/_0.2)] bg-[#E8DED5] p-4 font-mono text-xs text-[var(--c-accent)]">{error}</div>}
       </div>
 
       <ToastStack toasts={toasts} />

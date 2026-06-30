@@ -68,27 +68,27 @@ function EpisodeCard({ ep, onClick, t }: { ep: Podcast; onClick: () => void; t: 
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3 }}
-      className="group cursor-pointer border border-[#501a2c]/20 hover:border-[#501a2c] transition-colors"
+      className="group cursor-pointer border border-[rgb(var(--c-accent-rgb)_/_0.2)] hover:border-[var(--c-accent)] transition-colors"
       onClick={onClick} role="button" tabIndex={0} onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && onClick()}
     >
       <div className="aspect-square overflow-hidden bg-[#E8DED5] relative">
         <img src={cover} alt={ep.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" referrerPolicy="no-referrer" />
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-[#501a2c]/60">
-          <Play size={32} className="text-[#F5F0EB]" />
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-[rgb(var(--c-accent-rgb)_/_0.6)]">
+          <Play size={32} className="text-[var(--c-bg)]" />
         </div>
         {ep.episode_number !== undefined && (
-          <div className="absolute top-3 left-3 bg-[#F5F0EB]/90 px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-[#501a2c]">
+          <div className="absolute top-3 left-3 bg-[rgb(var(--c-bg-rgb)_/_0.9)] px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)]">
             {ep.season ? `${ep.season} · ` : ''}{t('podcasts.episode_label')} {ep.episode_number}
           </div>
         )}
       </div>
-      <div className="p-4 border-t border-[#501a2c]/20">
-        <h3 className="font-serif text-lg text-[#501a2c] mb-1 leading-tight">{ep.title}</h3>
+      <div className="p-4 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+        <h3 className="font-serif text-lg text-[var(--c-accent)] mb-1 leading-tight">{ep.title}</h3>
         <div className="flex items-center justify-between mt-2">
-          <span className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/50">
+          <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)]">
             {new Date(ep.published_at).toLocaleDateString('uk-UA', { day: 'numeric', month: 'long', year: 'numeric' })}
           </span>
-          {ep.duration_label && <span className="font-mono text-[10px] text-[#501a2c]/40">{ep.duration_label}</span>}
+          {ep.duration_label && <span className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.4)]">{ep.duration_label}</span>}
         </div>
       </div>
     </motion.div>
@@ -110,14 +110,14 @@ function EpisodeDetail({ ep, onClose, t }: { ep: Podcast; onClose: () => void; t
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }} transition={{ duration: 0.25 }}
-      className="fixed inset-0 z-[60] bg-[#F5F0EB] overflow-y-auto"
+      className="fixed inset-0 z-[60] bg-[var(--c-bg)] overflow-y-auto"
     >
       <div className="max-w-4xl mx-auto px-6 sm:px-8 md:px-16 py-8 md:py-16">
         <div className="flex items-center justify-between mb-12">
-          <button onClick={onClose} className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/60 hover:text-[#501a2c] transition-colors">
+          <button onClick={onClose} className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:text-[var(--c-accent)] transition-colors">
             {t('podcasts.back')}
           </button>
-          <button onClick={onClose} className="w-8 h-8 flex items-center justify-center border border-[#501a2c]/20 hover:border-[#501a2c] transition-colors text-[#501a2c]">
+          <button onClick={onClose} className="w-8 h-8 flex items-center justify-center border border-[rgb(var(--c-accent-rgb)_/_0.2)] hover:border-[var(--c-accent)] transition-colors text-[var(--c-accent)]">
             <X size={14} />
           </button>
         </div>
@@ -127,17 +127,17 @@ function EpisodeDetail({ ep, onClose, t }: { ep: Podcast; onClose: () => void; t
             <div className="aspect-square bg-[#E8DED5] overflow-hidden mb-6">
               <img src={cover} alt={ep.title} className="w-full h-full object-cover grayscale" referrerPolicy="no-referrer" />
             </div>
-            <div className="border border-[#501a2c] p-4">
+            <div className="border border-[var(--c-accent)] p-4">
               <div className="flex items-center gap-4 mb-4">
-                <button onClick={toggle} className="w-12 h-12 rounded-full bg-[#501a2c] text-[#F5F0EB] flex items-center justify-center hover:bg-[#3d1220] transition-colors shrink-0">
+                <button onClick={toggle} className="w-12 h-12 rounded-full bg-[var(--c-accent)] text-[var(--c-bg)] flex items-center justify-center hover:bg-[#3d1220] transition-colors shrink-0">
                   {playing ? <Pause size={18} /> : <Play size={18} />}
                 </button>
-                <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60 truncate flex-1 min-w-0">{ep.title}</p>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] truncate flex-1 min-w-0">{ep.title}</p>
               </div>
-              <div className="h-1 bg-[#501a2c]/15 rounded-full cursor-pointer" onClick={e => { const r = e.currentTarget.getBoundingClientRect(); seek((e.clientX - r.left) / r.width) }}>
-                <div className="h-full bg-[#501a2c] rounded-full transition-all" style={{ width: `${progress * 100}%` }} />
+              <div className="h-1 bg-[rgb(var(--c-accent-rgb)_/_0.15)] rounded-full cursor-pointer" onClick={e => { const r = e.currentTarget.getBoundingClientRect(); seek((e.clientX - r.left) / r.width) }}>
+                <div className="h-full bg-[var(--c-accent)] rounded-full transition-all" style={{ width: `${progress * 100}%` }} />
               </div>
-              <div className="flex justify-between font-mono text-[10px] text-[#501a2c]/40 mt-1">
+              <div className="flex justify-between font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.4)] mt-1">
                 <span>{fmtTime(progress * duration)}</span>
                 <span>{ep.duration_label || fmtTime(duration)}</span>
               </div>
@@ -146,19 +146,19 @@ function EpisodeDetail({ ep, onClose, t }: { ep: Podcast; onClose: () => void; t
 
           <div>
             {ep.episode_number !== undefined && (
-              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#501a2c]/50 mb-4">
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-4">
                 {ep.season ? `${ep.season} · ` : ''}{t('podcasts.episode_label')} {ep.episode_number}
               </p>
             )}
-            <h1 className="font-serif text-4xl md:text-5xl text-[#501a2c] mb-6 leading-tight">{ep.title}</h1>
-            <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 mb-8">
+            <h1 className="font-serif text-4xl md:text-5xl text-[var(--c-accent)] mb-6 leading-tight">{ep.title}</h1>
+            <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-8">
               {new Date(ep.published_at).toLocaleDateString('uk-UA', { day: 'numeric', month: 'long', year: 'numeric' })}
             </p>
-            {ep.description && <p className="font-serif text-xl text-[#501a2c]/70 leading-relaxed mb-8">{ep.description}</p>}
+            {ep.description && <p className="font-serif text-xl text-[rgb(var(--c-accent-rgb)_/_0.7)] leading-relaxed mb-8">{ep.description}</p>}
             {ep.tags.length > 0 && (
               <div className="flex flex-wrap gap-2">
                 {ep.tags.map(tag => (
-                  <span key={tag} className="border border-[#501a2c]/20 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/60">{tag}</span>
+                  <span key={tag} className="border border-[rgb(var(--c-accent-rgb)_/_0.2)] px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)]">{tag}</span>
                 ))}
               </div>
             )}
@@ -176,30 +176,30 @@ function AnnouncementCard({ ann }: { ann: Announcement }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3 }}
-      className="border border-[#501a2c]/20 bg-[#E8DED5] overflow-hidden hover:border-[#501a2c] transition-colors"
+      className="border border-[rgb(var(--c-accent-rgb)_/_0.2)] bg-[#E8DED5] overflow-hidden hover:border-[var(--c-accent)] transition-colors"
     >
       <div className="aspect-[3/2] overflow-hidden">
         <img src={cover} alt={ann.title} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" referrerPolicy="no-referrer" />
       </div>
       <div className="p-6">
         {ann.event_date && (
-          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#C9A690] mb-3">
+          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--c-gold)] mb-3">
             {new Date(ann.event_date).toLocaleDateString('uk-UA', { day: 'numeric', month: 'long', year: 'numeric' })}
             {ann.location && ` · ${ann.location}`}
           </p>
         )}
-        <h3 className="font-serif text-2xl text-[#501a2c] mb-3">{ann.title}</h3>
-        {ann.body && <p className="font-serif text-[#501a2c]/70 leading-relaxed mb-4">{ann.body}</p>}
+        <h3 className="font-serif text-2xl text-[var(--c-accent)] mb-3">{ann.title}</h3>
+        {ann.body && <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.7)] leading-relaxed mb-4">{ann.body}</p>}
         {ann.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-4">
             {ann.tags.map(tag => (
-              <span key={tag} className="border border-[#501a2c]/20 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/50">{tag}</span>
+              <span key={tag} className="border border-[rgb(var(--c-accent-rgb)_/_0.2)] px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)]">{tag}</span>
             ))}
           </div>
         )}
         {ann.link_url && (
           <a href={ann.link_url} target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c] border-b border-[#501a2c]/40 hover:border-[#501a2c] transition-colors">
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] border-b border-[rgb(var(--c-accent-rgb)_/_0.4)] hover:border-[var(--c-accent)] transition-colors">
             {ann.link_label || 'Детальніше'} <ChevronRight size={12} />
           </a>
         )}
@@ -229,20 +229,20 @@ export function PodcastsPage({ t }: { t: (k: string) => string }) {
   }, [])
 
   return (
-    <div className="pt-16 min-h-screen bg-[#F5F0EB]">
+    <div className="pt-16 min-h-screen bg-[var(--c-bg)]">
 
       {/* Header dark */}
-      <div className="bg-[#501a2c]">
+      <div className="bg-[var(--c-accent)]">
         <div className="max-w-5xl mx-auto px-8 md:px-16 pt-12 pb-12">
-          <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-[#C9A690] mb-4">{t('podcasts.eyebrow')}</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-[var(--c-gold)] mb-4">{t('podcasts.eyebrow')}</p>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-              <h1 className="font-serif text-5xl md:text-7xl text-[#F5F0EB] leading-none mb-4">{t('podcasts.title')}</h1>
-              <p className="font-serif text-lg text-[#F5F0EB]/60 max-w-lg leading-relaxed">{t('podcasts.intro')}</p>
+              <h1 className="font-serif text-5xl md:text-7xl text-[var(--c-bg)] leading-none mb-4">{t('podcasts.title')}</h1>
+              <p className="font-serif text-lg text-[rgb(var(--c-bg-rgb)_/_0.6)] max-w-lg leading-relaxed">{t('podcasts.intro')}</p>
             </div>
             <div className="flex items-center gap-3 shrink-0">
-              <Mic2 size={16} className="text-[#C9A690]" />
-              <span className="font-mono text-[10px] uppercase tracking-widest text-[#F5F0EB]/40">
+              <Mic2 size={16} className="text-[var(--c-gold)]" />
+              <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-bg-rgb)_/_0.4)]">
                 {podcasts.length > 0 ? `${podcasts.length} ep.` : 'EPRIS Audio'}
               </span>
             </div>
@@ -250,14 +250,14 @@ export function PodcastsPage({ t }: { t: (k: string) => string }) {
         </div>
 
         {/* Tab bar */}
-        <div className="border-t border-[#F5F0EB]/10">
+        <div className="border-t border-[rgb(var(--c-bg-rgb)_/_0.1)]">
           <div className="max-w-5xl mx-auto px-8 md:px-16 flex">
             {(['podcasts', 'announcements'] as const).map(tab => (
               <button
                 key={tab}
                 onClick={() => setView(tab)}
                 className={`px-6 py-4 font-mono text-xs uppercase tracking-widest border-b-2 transition-colors ${
-                  view === tab ? 'border-[#C9A690] text-[#F5F0EB]' : 'border-transparent text-[#F5F0EB]/30 hover:text-[#F5F0EB]/60'
+                  view === tab ? 'border-[var(--c-gold)] text-[var(--c-bg)]' : 'border-transparent text-[rgb(var(--c-bg-rgb)_/_0.3)] hover:text-[rgb(var(--c-bg-rgb)_/_0.6)]'
                 }`}
               >
                 {tab === 'podcasts' ? t('podcasts.tab_episodes') : t('podcasts.tab_announcements')}
@@ -271,15 +271,15 @@ export function PodcastsPage({ t }: { t: (k: string) => string }) {
       <div className="max-w-5xl mx-auto px-8 md:px-16 py-16">
         {loading ? (
           <div className="text-center py-24">
-            <p className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/30">…</p>
+            <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.3)]">…</p>
           </div>
         ) : view === 'podcasts' ? (
           podcasts.length === 0 ? (
             <div className="text-center py-24">
-              <div className="w-16 h-16 border border-[#501a2c]/20 flex items-center justify-center mx-auto mb-6">
-                <Play size={24} className="text-[#501a2c]/30" />
+              <div className="w-16 h-16 border border-[rgb(var(--c-accent-rgb)_/_0.2)] flex items-center justify-center mx-auto mb-6">
+                <Play size={24} className="text-[rgb(var(--c-accent-rgb)_/_0.3)]" />
               </div>
-              <p className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/30">{t('podcasts.empty_episodes')}</p>
+              <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.3)]">{t('podcasts.empty_episodes')}</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -289,7 +289,7 @@ export function PodcastsPage({ t }: { t: (k: string) => string }) {
         ) : (
           announcements.length === 0 ? (
             <div className="text-center py-24">
-              <p className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/30">{t('podcasts.empty_announcements')}</p>
+              <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.3)]">{t('podcasts.empty_announcements')}</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

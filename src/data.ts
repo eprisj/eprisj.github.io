@@ -147,7 +147,16 @@ export interface Issue {
   letterBody?: string;
 }
 
+export interface SiteTheme {
+  accent?: string;       // burgundy / primary text+accent (hex)
+  gold?: string;         // gold accent (hex)
+  bg?: string;           // page background (hex)
+  fontDisplay?: string;  // heading font family name (Google Font)
+  fontBody?: string;     // body font family name (Google Font)
+}
+
 export interface SiteContent {
+  theme?: SiteTheme;
   translations: Record<string, Record<string, string>>;
   items: Item[];
   articles: Article[];
@@ -262,6 +271,11 @@ export const translations = content.translations;
 /** Live-aware translations map (preview → live → bundled). */
 export function getTranslations(): Record<string, Record<string, string>> {
   return src().translations;
+}
+
+/** Site theme (colors/fonts) from content; empty object falls back to CSS defaults. */
+export function getTheme(): SiteTheme {
+  return src().theme || {};
 }
 
 const DEFAULT_ISSUE: Issue = {
