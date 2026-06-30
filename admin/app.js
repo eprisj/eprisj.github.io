@@ -188,6 +188,19 @@ async function verifyToken(token) {
   return await resp.json();
 }
 
+// Suppresses the floating toast popups while the post-login content load runs,
+// so logging in doesn't immediately throw a notification banner at the user.
+// The inline status line still updates — only the toast is skipped.
+let suppressLoginToasts = false;
+async function initAfterLogin() {
+  suppressLoginToasts = true;
+  try {
+    await init({ fromLogin: true });
+  } finally {
+    suppressLoginToasts = false;
+  }
+}
+
 function setAuthBusy(isBusy) {
   authLoading.hidden = !isBusy;
   if (authLoginBtn) authLoginBtn.disabled = isBusy;
@@ -218,36 +231,32 @@ async function handleLogin() {
       rememberTokenInput.checked = true;
     }
     hideAuthOverlay();
-    await init({ fromLogin: true });
+    await initAfterLogin();
   } catch (e) {
     showAuthError('Токен не прошёл проверку. Убедитесь что PAT действителен.');
   }
 }
 
 async function tryAutoLogin() {
-  // 1. Try saved PAT — fastest path, no extra round-trip
+  // 1. Try saved PAT — trusted as-is, the VPS doesn't depend on GitHub being
+  // reachable, so we don't re-verify it against GitHub on every page load.
   const savedPat = localStorage.getItem(AUTH_STORAGE_KEY);
   if (savedPat) {
-    setAuthBusy(true);
-    try {
-      await verifyToken(savedPat);
-      tokenInput.value = savedPat;
-      rememberTokenInput.checked = true;
-      const rt = localStorage.getItem('epris_radio_admin_pw');
-      if (rt) applyRadioToken(rt);
-      hideAuthOverlay();
-      await init({ fromLogin: true });
-      return;
-    } catch {
-      localStorage.removeItem(AUTH_STORAGE_KEY);
-    }
+    tokenInput.value = savedPat;
+    rememberTokenInput.checked = true;
+    const rt = localStorage.getItem('epris_radio_admin_pw');
+    if (rt) applyRadioToken(rt);
+    hideAuthOverlay();
+    await initAfterLogin();
+    return;
   }
   // 2. Seed default editorial password on first ever visit (assembled to avoid static scanning)
   if (!localStorage.getItem(AUTH_PW_STORAGE_KEY)) {
     const _d = ['epr','is-pr','ess-2','026'].join('');
     localStorage.setItem(AUTH_PW_STORAGE_KEY, btoa(_d));
   }
-  // 3. Exchange saved password for fresh PAT
+  // 3. Exchange saved password for a fresh PAT (VPS-validated; GitHub PAT is
+  // only carried along for the optional GitHub-dependent features below)
   const savedPwB64 = localStorage.getItem(AUTH_PW_STORAGE_KEY);
   if (savedPwB64) {
     setAuthBusy(true);
@@ -259,13 +268,12 @@ async function tryAutoLogin() {
       });
       const data = await res.json();
       if (data.ok && data.token) {
-        await verifyToken(data.token);
         tokenInput.value = data.token;
         localStorage.setItem(AUTH_STORAGE_KEY, data.token);
         applyRadioToken(data.radio_token);
         rememberTokenInput.checked = true;
         hideAuthOverlay();
-        await init({ fromLogin: true });
+        await initAfterLogin();
         return;
       }
     } catch { /* fall through to login form */ }
@@ -302,15 +310,16 @@ async function handlePasswordLogin() {
     const data = await res.json();
     if (!data.ok || !data.token) throw new Error(data.error || 'Неверный пароль');
     applyRadioToken(data.radio_token);
-    // hand off to the existing PAT verify+init flow
-    await verifyToken(data.token);
+    // Password is already validated by the VPS — log in immediately. The
+    // GitHub PAT is only carried along for optional GitHub-dependent features
+    // (Monitoring tab), never required for the login itself.
     tokenInput.value = data.token;
     // Always remember — no reason not to on a private editorial tool
     localStorage.setItem(AUTH_STORAGE_KEY, data.token);
     localStorage.setItem(AUTH_PW_STORAGE_KEY, btoa(pw));
     rememberTokenInput.checked = true;
     hideAuthOverlay();
-    await init({ fromLogin: true });
+    await initAfterLogin();
   } catch (e) {
     showAuthError(e.message === 'Неверный пароль' || /invalid/i.test(e.message) || /fetch/i.test(e.message) ? 'Ошибка соединения или неверный пароль' : 'Ошибка входа: ' + e.message);
   }
@@ -900,74 +909,8 @@ function normalizeUploadDir(value) {
   return raw.replace(/^\/+/, '').replace(/\/+$/, '');
 }
 
-function requireImageUploadConfig() {
-  const cfg = getConfig();
-  if (!cfg.owner || !cfg.repo) {
-    throw new Error('Сначала заполните владельца и репозиторий.');
-  }
-
-  if (!cfg.token) {
-    throw new Error('Для загрузки фото нужен GitHub Token.');
-  }
-
-  if (!cfg.uploadDir.startsWith('public/')) {
-    throw new Error('Для GitHub Pages укажите папку внутри public/, например public/uploads.');
-  }
-
-  return cfg;
-}
-
 function joinUrl(base, path) {
   return `${String(base || '').replace(/\/+$/, '')}/${String(path || '').replace(/^\/+/, '')}`;
-}
-
-function toPublicAssetPath(repoPath) {
-  const normalized = String(repoPath || '').replace(/^\/+/, '');
-  if (normalized.startsWith('public/')) {
-    return normalized.slice('public/'.length);
-  }
-  return normalized;
-}
-
-function buildPagesAssetUrl(cfg, repoPath) {
-  const pagesBase = getPagesBaseUrl(cfg.owner, cfg.repo);
-  if (!pagesBase) {
-    return '';
-  }
-  const publicPath = toPublicAssetPath(repoPath);
-  return joinUrl(pagesBase, publicPath);
-}
-
-function inferExtensionFromMime(mimeType) {
-  const map = {
-    'image/jpeg': 'jpg',
-    'image/png': 'png',
-    'image/webp': 'webp',
-    'image/gif': 'gif',
-    'image/svg+xml': 'svg',
-    'image/avif': 'avif'
-  };
-  return map[String(mimeType || '').toLowerCase()] || '';
-}
-
-function buildUploadFileName(originalName, mimeType) {
-  const fromName = String(originalName || '').toLowerCase().match(/\.([a-z0-9]{2,10})$/)?.[1] || '';
-  const extension = fromName || inferExtensionFromMime(mimeType) || 'jpg';
-
-  let base = String(originalName || '')
-    .replace(/\.[^/.]+$/, '')
-    .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+/, '')
-    .replace(/-+$/, '');
-
-  if (!base) {
-    base = 'image';
-  }
-
-  return `${base}-${Date.now()}.${extension}`;
 }
 
 function readFileAsBase64(file) {
@@ -1088,55 +1031,46 @@ function useUploadedPagesUrlInCurrentEntry() {
   }
 }
 
+// Images upload straight to the VPS (instant, no GitHub token needed). GitHub
+// only gets a best-effort nightly copy as secondary backup — see
+// epris-content-snapshot.js on the server.
+const UPLOAD_API = 'https://api.eprisjournal.com/upload';
+
+async function uploadImageToVPS(file) {
+  if (!String(file.type || '').startsWith('image/')) {
+    throw new Error('Можно загрузить только файл изображения (JPG, PNG, WebP и т.д.).');
+  }
+  if (file.size > 15 * 1024 * 1024) {
+    throw new Error('Файл слишком большой. Максимум: 15 MB.');
+  }
+  const base64Content = await readFileAsBase64(file);
+  const res = await fetch(UPLOAD_API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-Admin-Password': getAdminPassword() },
+    body: JSON.stringify({ filename: file.name, contentType: file.type, data: base64Content })
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || !data.ok || !data.url) throw new Error(data.error || `Ошибка загрузки на сервер (${res.status})`);
+  return data.url;
+}
+
 async function uploadImageToGitHub(file) {
   try {
-    const cfg = requireImageUploadConfig();
-    if (!String(file.type || '').startsWith('image/')) {
-      throw new Error('Можно загрузить только файл изображения (JPG, PNG, WebP и т.д.).');
-    }
-
-    const maxSize = 15 * 1024 * 1024;
-    if (file.size > maxSize) {
-      throw new Error('Файл слишком большой. Максимум: 15 MB.');
-    }
-
     saveSettings();
     setBusy(true);
     uploadDropZone.classList.add('is-uploading');
-    setStatus('info', `Загружаю "${file.name}" в GitHub...`);
+    setStatus('info', `Загружаю "${file.name}"...`);
 
-    const fileName = buildUploadFileName(file.name, file.type);
-    const repoPath = `${cfg.uploadDir}/${fileName}`;
-    const base64Content = await readFileAsBase64(file);
+    const url = await uploadImageToVPS(file);
+    uploadedImageUrlInput.value = url;
+    uploadedImagePagesUrlInput.value = url;
 
-    const putUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${encodePath(repoPath)}`;
-    const uploadResult = await githubRequest(putUrl, {
-      method: 'PUT',
-      headers: {
-        ...headers(cfg.token),
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        message: `chore(media): upload ${fileName} via admin`,
-        content: base64Content,
-        branch: cfg.branch
-      })
-    });
-
-    const immediateUrl = String(uploadResult?.content?.download_url || '').trim();
-    const websiteUrl = buildPagesAssetUrl(cfg, repoPath);
-    const websiteUrlWithCache = websiteUrl ? `${websiteUrl}?v=${Date.now()}` : '';
-
-    uploadedImageUrlInput.value = immediateUrl || websiteUrlWithCache;
-    uploadedImagePagesUrlInput.value = websiteUrlWithCache;
-
-    const inserted = immediateUrl || websiteUrlWithCache;
-    const hasApplied = inserted ? injectUploadedUrlIntoCurrentEntry(inserted) : false;
+    const hasApplied = injectUploadedUrlIntoCurrentEntry(url);
     if (hasApplied) {
       applyVisualChanges();
-      setStatus('success', 'Фото загружено. Быстрый URL подставлен и применен в текущей записи.');
+      setStatus('success', 'Фото загружено. URL подставлен и применен в текущей записи.');
     } else {
-      setStatus('success', 'Фото загружено. Выберите, какой URL подставить в запись.');
+      setStatus('success', 'Фото загружено.');
     }
   } catch (error) {
     setStatus('error', getErrorMessage(error));
@@ -1150,25 +1084,7 @@ async function uploadImageToGitHub(file) {
 // Generic image upload that resolves to the immediate URL (reused by the
 // review-photo and issue-cover upload buttons). Does not touch the visual entry.
 async function uploadImageReturnUrl(file) {
-  const cfg = requireImageUploadConfig();
-  if (!String(file.type || '').startsWith('image/')) {
-    throw new Error('Можно загрузить только файл изображения.');
-  }
-  if (file.size > 15 * 1024 * 1024) {
-    throw new Error('Файл слишком большой. Максимум: 15 MB.');
-  }
-  saveSettings();
-  const fileName = buildUploadFileName(file.name, file.type);
-  const repoPath = `${cfg.uploadDir}/${fileName}`;
-  const base64Content = await readFileAsBase64(file);
-  const putUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${encodePath(repoPath)}`;
-  const uploadResult = await githubRequest(putUrl, {
-    method: 'PUT',
-    headers: { ...headers(cfg.token), 'Content-Type': 'application/json' },
-    body: JSON.stringify({ message: `chore(media): upload ${fileName} via admin`, content: base64Content, branch: cfg.branch })
-  });
-  const immediateUrl = String(uploadResult?.content?.download_url || '').trim();
-  return immediateUrl || buildPagesAssetUrl(cfg, repoPath);
+  return uploadImageToVPS(file);
 }
 
 // Wire a file-input + button pair to upload and drop the resulting URL into a
@@ -1927,7 +1843,7 @@ function setStatus(type, message) {
 
   statusEl.textContent = message;
 
-  if (type === 'error' || type === 'success') {
+  if ((type === 'error' || type === 'success') && !suppressLoginToasts) {
     showToast(type, message);
   }
 }
@@ -8151,28 +8067,7 @@ globalTextareaObserver.observe(document.body, { childList: true, subtree: true }
       ta.dispatchEvent(new Event('input', { bubbles: true }));
 
       try {
-        const cfg = requireImageUploadConfig();
-        const maxSize = 15 * 1024 * 1024;
-        if (file.size > maxSize) throw new Error('File too large');
-
-        const fileName = buildUploadFileName(file.name, file.type);
-        const repoPath = `${cfg.uploadDir}/${fileName}`;
-        const base64Content = await readFileAsBase64(file);
-
-        const putUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${encodePath(repoPath)}`;
-        const uploadResult = await githubRequest(putUrl, {
-          method: 'PUT',
-          headers: { ...headers(cfg.token), 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            message: `chore(media): upload ${fileName} via admin dnd`,
-            content: base64Content,
-            branch: cfg.branch
-          })
-        });
-
-        const immediateUrl = String(uploadResult?.content?.download_url || '').trim();
-        const websiteUrl = buildPagesAssetUrl(cfg, repoPath);
-        const finalUrl = websiteUrl ? `${websiteUrl}?v=${Date.now()}` : immediateUrl;
+        const finalUrl = await uploadImageToVPS(file);
 
         const currentVal = ta.value;
         ta.value = currentVal.replace(placeholder, `![](${finalUrl})`);
