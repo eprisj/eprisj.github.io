@@ -8406,7 +8406,7 @@ function __blocksToEditor(blocks) {
     if (t === 'text') out.push({ type: 'paragraph', data: { text: __toCE(b.content) } });
     else if (t === 'header' && __hasTool('Header')) out.push({ type: 'header', data: { text: __toCE(b.content), level: Number(b.level) || 2 } });
     else if (t === 'quote' && __hasTool('Quote')) out.push({ type: 'quote', data: { text: __toCE(b.content), caption: __escCE(b.caption || '') } });
-    else if (t === 'image' && __hasTool('ImageTool')) out.push({ type: 'image', data: { file: { url: String(b.content || '') }, caption: __escCE(b.caption || ''), withBorder: false, stretched: !!b.stretched, withBackground: false } });
+    else if (t === 'image' && __hasTool('ImageTool')) out.push({ type: 'image', data: { file: { url: String(b.content || '') }, caption: __escCE(b.caption || ''), withBorder: false, stretched: !!b.stretched, withBackground: false }, tunes: { imgAlignTune: { align: b.align || (b.stretched ? 'full' : 'center'), width: b.width || 100 } } });
     else if (t === 'checklist' && __hasTool('Checklist')) out.push({ type: 'checklist', data: { items: (b.content && Array.isArray(b.content.items) ? b.content.items : []).map((x) => ({ text: __escCE(x), checked: false })) } });
     else out.push({ type: 'eprisBlock', data: { block: b } }); // preserve everything else
   });
@@ -8422,7 +8422,16 @@ function __editorToBlocks(data) {
     if (t === 'paragraph') res.push({ type: 'text', content: __sanitizeInline(d.text) });
     else if (t === 'header') res.push({ type: 'header', content: __sanitizeInline(d.text), level: Number(d.level) || 2 });
     else if (t === 'quote') { const o = { type: 'quote', content: __sanitizeInline(d.text) }; const cap = __stripHtml(d.caption); if (cap) o.caption = cap; res.push(o); }
-    else if (t === 'image') { const url = (d.file && d.file.url) || d.url || ''; const o = { type: 'image', content: String(url) }; const cap = __stripHtml(d.caption); if (cap) o.caption = cap; if (d.stretched) o.stretched = true; res.push(o); }
+    else if (t === 'image') {
+      const url = (d.file && d.file.url) || d.url || '';
+      const o = { type: 'image', content: String(url) };
+      const cap = __stripHtml(d.caption); if (cap) o.caption = cap;
+      const tune = blk.tunes && blk.tunes.imgAlignTune;
+      const align = tune && tune.align ? tune.align : (d.stretched ? 'full' : 'center');
+      if (align === 'full') o.stretched = true; else o.align = align;
+      if (tune && tune.width && tune.width !== 100 && align !== 'full') o.width = tune.width;
+      res.push(o);
+    }
     else if (t === 'checklist') res.push({ type: 'checklist', content: { items: (Array.isArray(d.items) ? d.items : []).map((i) => __stripHtml(i && i.text)).filter(Boolean) } });
     else if (t === 'list') { const items = Array.isArray(d.items) ? d.items : []; const lines = items.map((it, i) => { const txt = __stripHtml(typeof it === 'string' ? it : (it.content || it.text || '')); return (d.style === 'ordered' ? (i + 1) + '. ' : '• ') + txt; }); res.push({ type: 'text', content: lines.join('\n') }); }
     else if (t === 'delimiter') { /* no site equivalent — skip */ }
@@ -8558,6 +8567,47 @@ class EprisBlockTool {
   save() { return { block: this._collect() }; }
 }
 
+// Block Tune: alignment (left/center/right/full) + width slider for image blocks.
+class ImgAlignTune {
+  static get isTune() { return true; }
+  constructor({ data }) {
+    this.data = Object.assign({ align: 'center', width: 100 }, data || {});
+    this._wrap = null;
+  }
+  render() {
+    const opts = [['left', '⟸', 'Слева'], ['center', '▣', 'По центру'], ['right', '⟹', 'Справа'], ['full', '⛶', 'На всю ширину']];
+    const wrap = document.createElement('div');
+    wrap.className = 'ebt-imgtune';
+    const row = document.createElement('div');
+    row.className = 'ebt-imgtune-row';
+    opts.forEach(([val, icon, title]) => {
+      const b = document.createElement('div');
+      b.className = 'ebt-imgtune-btn' + (this.data.align === val ? ' active' : '');
+      b.title = title;
+      b.textContent = icon;
+      b.addEventListener('click', () => {
+        this.data.align = val;
+        row.querySelectorAll('.ebt-imgtune-btn').forEach((el, i) => el.classList.toggle('active', opts[i][0] === val));
+      });
+      row.appendChild(b);
+    });
+    const label = document.createElement('div');
+    label.className = 'ebt-imgtune-label';
+    label.textContent = 'Ширина: ' + this.data.width + '%';
+    const slider = document.createElement('input');
+    slider.type = 'range'; slider.min = '20'; slider.max = '100'; slider.step = '5';
+    slider.className = 'ebt-imgtune-width';
+    slider.value = String(this.data.width);
+    slider.addEventListener('input', () => { this.data.width = Number(slider.value); label.textContent = 'Ширина: ' + this.data.width + '%'; });
+    wrap.appendChild(row);
+    wrap.appendChild(label);
+    wrap.appendChild(slider);
+    this._wrap = wrap;
+    return wrap;
+  }
+  save() { return this.data; }
+}
+
 function __buildEditorTools() {
   const t = {};
   if (__hasTool('Header')) t.header = { class: window.Header, inlineToolbar: true, config: { levels: [2, 3], defaultLevel: 2, placeholder: 'Заголовок' } };
@@ -8567,8 +8617,10 @@ function __buildEditorTools() {
   if (__hasTool('Delimiter')) t.delimiter = { class: window.Delimiter };
   if (__hasTool('Marker')) t.marker = { class: window.Marker };
   if (__hasTool('Underline')) t.underline = { class: window.Underline };
+  t.imgAlignTune = { class: ImgAlignTune };
   if (__hasTool('ImageTool')) t.image = {
     class: window.ImageTool,
+    tunes: ['imgAlignTune'],
     config: {
       uploader: {
         uploadByFile: async (file) => { try { const url = await uploadImageReturnUrl(file); return { success: 1, file: { url } }; } catch (e) { alert('Ошибка загрузки изображения: ' + e.message); return { success: 0 }; } },
@@ -8636,7 +8688,16 @@ async function flushModernEditor() {
 (function () {
   const FONTS_DISPLAY = ['Playfair Display', 'Cormorant Garamond', 'EB Garamond', 'Libre Baskerville', 'Lora', 'Fraunces', 'Spectral', 'Bodoni Moda', 'Cinzel', 'Crimson Pro', 'Cardo'];
   const FONTS_BODY = ['Iowan Old Style', 'Lora', 'EB Garamond', 'Spectral', 'Source Serif 4', 'PT Serif', 'Inter', 'Work Sans', 'Karla', 'Nunito Sans', 'Mulish', 'Crimson Pro'];
-  const DEF = { accent: '#501a2c', gold: '#c9a690', bg: '#f5f0eb', fontDisplay: 'Playfair Display', fontBody: 'Iowan Old Style' };
+  const DEF = { accent: '#501a2c', gold: '#c9a690', bg: '#f5f0eb', bgImage: '', fontDisplay: 'Playfair Display', fontBody: 'Iowan Old Style' };
+  const PRESETS = [
+    { name: 'Классика', accent: '#501a2c', gold: '#c9a690', bg: '#f5f0eb', fontDisplay: 'Playfair Display', fontBody: 'Iowan Old Style' },
+    { name: 'Светлая', accent: '#2b2b2b', gold: '#b08d57', bg: '#ffffff', fontDisplay: 'EB Garamond', fontBody: 'Inter' },
+    { name: 'Тёмная', accent: '#e8e2d8', gold: '#c9a690', bg: '#171513', fontDisplay: 'Fraunces', fontBody: 'Source Serif 4' },
+    { name: 'Весна', accent: '#3d5a3d', gold: '#e0a96d', bg: '#f6f3ea', fontDisplay: 'Cormorant Garamond', fontBody: 'Lora' },
+    { name: 'Лето', accent: '#1d4e5f', gold: '#f2b134', bg: '#fdf8ee', fontDisplay: 'Spectral', fontBody: 'Karla' },
+    { name: 'Осень', accent: '#5c2e1f', gold: '#cc7722', bg: '#f3e9dc', fontDisplay: 'Bodoni Moda', fontBody: 'PT Serif' },
+    { name: 'Зима', accent: '#1f2937', gold: '#9ca8b8', bg: '#f4f6f8', fontDisplay: 'Cinzel', fontBody: 'Work Sans' },
+  ];
   const $ = (id) => document.getElementById(id);
   const loaded = new Set();
   function ensureFont(name) {
@@ -8658,18 +8719,49 @@ async function flushModernEditor() {
     pv.style.setProperty('--pv-accent', $('apAccentHex').value);
     pv.style.setProperty('--pv-gold', $('apGoldHex').value);
     pv.style.setProperty('--pv-bg', $('apBgHex').value);
+    const bgImg = ($('apBgImage') && $('apBgImage').value.trim()) || '';
+    pv.style.setProperty('--pv-bgimage', bgImg ? 'url("' + bgImg + '")' : 'none');
     pv.style.setProperty('--pv-display', "'" + fd + "', serif");
     pv.style.setProperty('--pv-body', "'" + fb + "', serif");
   }
   function setPair(colorId, hexId, v) { if ($(colorId)) $(colorId).value = v; if ($(hexId)) $(hexId).value = v; }
+  function applyThemeToControls(t) {
+    setPair('apAccent', 'apAccentHex', t.accent);
+    setPair('apGold', 'apGoldHex', t.gold);
+    setPair('apBg', 'apBgHex', t.bg);
+    if ($('apBgImage')) $('apBgImage').value = t.bgImage || '';
+    if ($('apFontDisplay')) $('apFontDisplay').value = t.fontDisplay;
+    if ($('apFontBody')) $('apFontBody').value = t.fontBody;
+    syncPreview();
+  }
   function loadControls() {
     const t = readTheme();
     setPair('apAccent', 'apAccentHex', t.accent);
     setPair('apGold', 'apGoldHex', t.gold);
     setPair('apBg', 'apBgHex', t.bg);
+    if ($('apBgImage')) $('apBgImage').value = t.bgImage || '';
     fillSelect($('apFontDisplay'), FONTS_DISPLAY, t.fontDisplay);
     fillSelect($('apFontBody'), FONTS_BODY, t.fontBody);
+    renderPresets();
     syncPreview();
+  }
+  function renderPresets() {
+    const wrap = $('apPresets'); if (!wrap || wrap.dataset.built) return;
+    wrap.dataset.built = '1';
+    wrap.innerHTML = PRESETS.map((p, i) =>
+      '<button type="button" class="ap-preset" data-preset="' + i + '"><span class="ap-preset-dot" style="background:' + p.accent + '"></span>' + p.name + '</button>'
+    ).join('');
+    wrap.querySelectorAll('.ap-preset').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const p = PRESETS[Number(btn.dataset.preset)];
+        if (!p) return;
+        if (!FONTS_DISPLAY.includes(p.fontDisplay)) FONTS_DISPLAY.push(p.fontDisplay);
+        if (!FONTS_BODY.includes(p.fontBody)) FONTS_BODY.push(p.fontBody);
+        fillSelect($('apFontDisplay'), FONTS_DISPLAY, p.fontDisplay);
+        fillSelect($('apFontBody'), FONTS_BODY, p.fontBody);
+        applyThemeToControls(Object.assign({ bgImage: $('apBgImage') ? $('apBgImage').value : '' }, p));
+      });
+    });
   }
   function bindColor(colorId, hexId) {
     const c = $(colorId), h = $(hexId); if (!c || !h) return;
@@ -8681,14 +8773,11 @@ async function flushModernEditor() {
   bindColor('apBg', 'apBgHex');
   $('apFontDisplay')?.addEventListener('change', syncPreview);
   $('apFontBody')?.addEventListener('change', syncPreview);
+  $('apBgImage')?.addEventListener('input', syncPreview);
+  $('apBgImageClear')?.addEventListener('click', () => { if ($('apBgImage')) $('apBgImage').value = ''; syncPreview(); });
   document.querySelector('[data-tab="appearance"]')?.addEventListener('click', () => setTimeout(loadControls, 60));
   $('apResetBtn')?.addEventListener('click', () => {
-    setPair('apAccent', 'apAccentHex', DEF.accent);
-    setPair('apGold', 'apGoldHex', DEF.gold);
-    setPair('apBg', 'apBgHex', DEF.bg);
-    if ($('apFontDisplay')) $('apFontDisplay').value = DEF.fontDisplay;
-    if ($('apFontBody')) $('apFontBody').value = DEF.fontBody;
-    syncPreview();
+    applyThemeToControls(DEF);
   });
   $('apPublishBtn')?.addEventListener('click', async () => {
     const st = $('apStatus');
@@ -8696,6 +8785,7 @@ async function flushModernEditor() {
       if (!$('editor').value) { st.textContent = 'Сначала загрузите контент (кнопка «Загрузить»).'; st.style.color = 'var(--warn)'; return; }
       const theme = {
         accent: $('apAccentHex').value, gold: $('apGoldHex').value, bg: $('apBgHex').value,
+        bgImage: ($('apBgImage') && $('apBgImage').value.trim()) || '',
         fontDisplay: $('apFontDisplay').value, fontBody: $('apFontBody').value
       };
       const j = JSON.parse($('editor').value);

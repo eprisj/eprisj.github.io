@@ -3463,11 +3463,11 @@ body.busy::after {
 .ap-hex { font-family: var(--font-code); font-size: .72rem; text-transform: lowercase; padding: 7px 8px; }
 
 /* Live preview surface — uses inline-set CSS vars so it reflects choices */
-#apPreview { --pv-accent: #501a2c; --pv-gold: #c9a690; --pv-bg: #f5f0eb; --pv-display: 'Playfair Display', serif; --pv-body: 'Iowan Old Style', serif; background: var(--pv-bg); }
+#apPreview { --pv-accent: #501a2c; --pv-gold: #c9a690; --pv-bg: #f5f0eb; --pv-bgimage: none; --pv-display: 'Playfair Display', serif; --pv-body: 'Iowan Old Style', serif; background: var(--pv-bg); background-image: var(--pv-bgimage); background-size: cover; background-position: center; }
 .ap-pv-hero { background: var(--pv-accent); color: var(--pv-bg); padding: 30px 24px 34px; text-align: center; }
 .ap-pv-kicker { font-family: var(--font-mono); font-size: .55rem; letter-spacing: .2em; color: var(--pv-gold); }
 .ap-pv-title { font-family: var(--pv-display); font-size: 1.8rem; font-weight: 700; margin-top: 8px; }
-.ap-pv-body { padding: 22px 24px 28px; color: var(--pv-accent); font-family: var(--pv-body); }
+.ap-pv-body { padding: 22px 24px 28px; color: var(--pv-accent); font-family: var(--pv-body); background: color-mix(in srgb, var(--pv-bg) 70%, transparent); }
 .ap-pv-tag { display: inline-block; font-family: var(--font-mono); font-size: .52rem; font-weight: 700; letter-spacing: .1em; color: var(--pv-accent); border: 1px solid var(--pv-gold); padding: 3px 9px; border-radius: 20px; margin-bottom: 10px; }
 .ap-pv-h { font-family: var(--pv-display); font-size: 1.5rem; font-weight: 700; color: var(--pv-accent); margin: 0 0 10px; }
 .ap-pv-p { font-family: var(--pv-body); font-size: .95rem; line-height: 1.7; color: var(--pv-accent); margin: 0 0 14px; }
@@ -3475,3 +3475,16 @@ body.busy::after {
 .ap-pv-p b { font-weight: 700; }
 .ap-pv-q { border-left: 3px solid var(--pv-gold); padding-left: 14px; margin: 0 0 16px; font-family: var(--pv-display); font-style: italic; font-size: 1.15rem; color: var(--pv-accent); }
 .ap-pv-btn { font-family: var(--font-mono); font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; background: var(--pv-accent); color: var(--pv-bg); border: none; padding: 10px 18px; border-radius: var(--radius-sm); cursor: default; }
+
+/* Preset chips */
+.ap-preset { display: flex; align-items: center; gap: 8px; padding: 7px 12px; border: 1px solid var(--line-strong); border-radius: 20px; background: var(--surface); cursor: pointer; font-family: var(--font-mono); font-size: .65rem; font-weight: 700; color: var(--text); transition: border-color .15s, transform .1s; }
+.ap-preset:hover { border-color: var(--accent); transform: translateY(-1px); }
+.ap-preset-dot { width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(0,0,0,.15); flex-shrink: 0; }
+
+/* Image block alignment/width tune (Editor.js block settings popover) */
+.ebt-imgtune { padding: 6px; min-width: 190px; }
+.ebt-imgtune-row { display: flex; gap: 4px; margin-bottom: 8px; }
+.ebt-imgtune-btn { flex: 1; padding: 7px 4px; text-align: center; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); cursor: pointer; font-size: .85rem; background: var(--surface); }
+.ebt-imgtune-btn.active { border-color: var(--accent); background: var(--accent-soft); }
+.ebt-imgtune-label { font-family: var(--font-mono); font-size: .58rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; margin: 4px 0 4px; }
+.ebt-imgtune-width { width: 100%; }

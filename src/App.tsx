@@ -199,6 +199,7 @@ function applySiteTheme(theme: SiteTheme) {
   setColor('--c-bg', '--c-bg-rgb', theme.bg);
   if (theme.fontDisplay) { ensureGoogleFont(theme.fontDisplay); root.setProperty('--font-display', `'${theme.fontDisplay}', serif`); }
   if (theme.fontBody) { ensureGoogleFont(theme.fontBody); root.setProperty('--font-body', `'${theme.fontBody}', serif`); }
+  if (theme.bgImage) { root.setProperty('--bg-image', `url("${theme.bgImage}")`); } else { root.removeProperty('--bg-image'); }
 }
 
 function Reveal({ children, delay = 0, y = 28, className = '' }: { children: ReactNode; delay?: number; y?: number; className?: string }) {
@@ -1188,11 +1189,22 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
                 }
                 case 'image': {
                   if (typeof block.content !== 'string') return null;
-                  const imageSource = resolveMediaSource(block.content, block.stretched ? 1600 : 800, block.stretched ? 900 : 500);
-                  if (!imageSource) return null;
                   const stretched = !!block.stretched;
+                  const align = block.align || (stretched ? 'full' : 'center');
+                  const imageSource = resolveMediaSource(block.content, stretched || align === 'full' ? 1600 : 800, stretched || align === 'full' ? 900 : 500);
+                  if (!imageSource) return null;
+                  const widthPct = block.width && block.width > 0 && block.width <= 100 ? block.width : undefined;
+                  const figureClass =
+                    stretched || align === 'full'
+                      ? 'my-10 sm:my-14 -mx-4 sm:-mx-12 lg:-mx-24'
+                      : align === 'left'
+                        ? 'my-6 sm:my-8 float-left mr-6 mb-2 max-w-[80%] sm:max-w-[55%] clear-left'
+                        : align === 'right'
+                          ? 'my-6 sm:my-8 float-right ml-6 mb-2 max-w-[80%] sm:max-w-[55%] clear-right'
+                          : 'my-8 sm:my-12 -mx-4 sm:mx-0';
+                  const figureStyle = widthPct && align !== 'full' && !stretched ? { width: `${widthPct}%`, maxWidth: '100%' } : undefined;
                   return (
-                    <figure key={index} className={stretched ? 'my-10 sm:my-14 -mx-4 sm:-mx-12 lg:-mx-24' : 'my-8 sm:my-12 -mx-4 sm:mx-0'}>
+                    <figure key={index} className={figureClass} style={figureStyle}>
                       <img
                         src={imageSource}
                         alt={block.caption || "Article image"}

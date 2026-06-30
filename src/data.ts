@@ -20,6 +20,8 @@ export interface ContentBlock {
   url?: string;
   level?: number;
   stretched?: boolean;
+  align?: 'left' | 'center' | 'right' | 'full';
+  width?: number;
 }
 
 export interface Article {
@@ -151,6 +153,7 @@ export interface SiteTheme {
   accent?: string;       // burgundy / primary text+accent (hex)
   gold?: string;         // gold accent (hex)
   bg?: string;           // page background (hex)
+  bgImage?: string;      // optional page background image URL (overlays bg color)
   fontDisplay?: string;  // heading font family name (Google Font)
   fontBody?: string;     // body font family name (Google Font)
 }
