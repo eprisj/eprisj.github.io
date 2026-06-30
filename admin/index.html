@@ -124,6 +124,10 @@
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
               Дизайн
             </button>
+            <button class="tab-btn" data-tab="appearance" type="button">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2a10 10 0 1 0 0 20 1.6 1.6 0 0 0 1.6-1.6c0-.4-.2-.8-.4-1.1-.2-.3-.4-.7-.4-1.1a1.6 1.6 0 0 1 1.6-1.6H16a6 6 0 0 0 6-6c0-5-4.5-9-10-9z"/></svg>
+              Оформление
+            </button>
           </div>
 
           <div class="sidebar-nav-group">
@@ -889,6 +893,55 @@
             </div>
           </section>
 
+          <!-- ===== APPEARANCE (site customizer) ===== -->
+          <section class="tab-panel" id="tab-appearance">
+            <div style="padding:24px 28px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:minmax(0,360px) 1fr;gap:24px;align-items:start">
+              <!-- Controls -->
+              <div style="display:flex;flex-direction:column;gap:16px">
+                <div class="card">
+                  <div class="card-title">Цвета сайта</div>
+                  <p class="card-desc">Меняются по всему публичному сайту мгновенно после публикации.</p>
+                  <div style="display:grid;gap:12px">
+                    <label class="ap-color"><span>Основной (текст / акцент)</span><input type="color" id="apAccent" value="#501a2c" /><input type="text" id="apAccentHex" class="ap-hex" value="#501a2c" /></label>
+                    <label class="ap-color"><span>Золотой акцент</span><input type="color" id="apGold" value="#c9a690" /><input type="text" id="apGoldHex" class="ap-hex" value="#c9a690" /></label>
+                    <label class="ap-color"><span>Фон страницы</span><input type="color" id="apBg" value="#f5f0eb" /><input type="text" id="apBgHex" class="ap-hex" value="#f5f0eb" /></label>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-title">Шрифты</div>
+                  <div style="display:grid;gap:12px">
+                    <label style="display:grid;gap:5px"><span class="field-label">Заголовки</span><select id="apFontDisplay"></select></label>
+                    <label style="display:grid;gap:5px"><span class="field-label">Основной текст</span><select id="apFontBody"></select></label>
+                  </div>
+                </div>
+                <div class="card">
+                  <div style="display:flex;gap:8px;flex-wrap:wrap">
+                    <button class="btn btn-primary" type="button" id="apPublishBtn">Опубликовать оформление</button>
+                    <button class="btn" type="button" id="apResetBtn">Сбросить к классике</button>
+                  </div>
+                  <div id="apStatus" style="margin-top:10px;font-family:var(--font-mono);font-size:.62rem;color:var(--text-muted)"></div>
+                </div>
+              </div>
+              <!-- Live preview -->
+              <div class="card" style="padding:0;overflow:hidden;position:sticky;top:0">
+                <div style="padding:10px 16px;border-bottom:1px solid var(--line);font-family:var(--font-mono);font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted)">Предпросмотр</div>
+                <div id="apPreview" style="padding:0">
+                  <div class="ap-pv-hero">
+                    <div class="ap-pv-kicker">A JOURNAL OF DESIGN</div>
+                    <div class="ap-pv-title">The Door Issue</div>
+                  </div>
+                  <div class="ap-pv-body">
+                    <div class="ap-pv-tag">TRAVEL</div>
+                    <h3 class="ap-pv-h">Home Away From Home</h3>
+                    <p class="ap-pv-p">To choose a place of stay is to trust a stranger with the <b>significant moments</b> of your life — a <a href="#" onclick="return false">small act of faith</a>.</p>
+                    <blockquote class="ap-pv-q">Every threshold is a palimpsest of arrivals.</blockquote>
+                    <button class="ap-pv-btn">Читать дальше</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
         </main>
       </div><!-- /main-area -->
     </div><!-- /admin-layout -->
@@ -948,7 +1001,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=2.5" type="module"></script>
+    <script src="./app.js?v=2.6" type="module"></script>
     <script>
       // Tab switching + page title update
       document.addEventListener('DOMContentLoaded', function () {
@@ -965,6 +1018,7 @@
           radio: 'Радио',
           podcasts: 'Подкасты',
           design: 'Дизайн',
+          appearance: 'Оформление',
           monitor: 'Мониторинг',
           settings: 'Настройки',
         };

@@ -73,9 +73,9 @@ export function IssuePage({
   });
 
   return (
-    <div className="pt-16 min-h-screen bg-[#F5F0EB]">
+    <div className="pt-16 min-h-screen bg-[var(--c-bg)]">
       {/* Cinematic issue hero */}
-      <div className="relative border-b border-[#501a2c]/20 overflow-hidden">
+      <div className="relative border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] overflow-hidden">
         {/* Blurred cover wash backdrop */}
         <div className="absolute inset-0 pointer-events-none">
           <img
@@ -84,7 +84,7 @@ export function IssuePage({
             aria-hidden
             className="w-full h-full object-cover opacity-30 blur-2xl scale-125"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#F5F0EB]/80 via-[#F5F0EB]/85 to-[#F5F0EB]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[rgb(var(--c-bg-rgb)_/_0.8)] via-[rgb(var(--c-bg-rgb)_/_0.85)] to-[var(--c-bg)]" />
         </div>
 
         <div className="relative max-w-6xl mx-auto px-6 sm:px-10 md:px-16 py-12 md:py-20 grid md:grid-cols-[1.5fr_1fr] gap-10 md:gap-16 items-center">
@@ -94,20 +94,20 @@ export function IssuePage({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#501a2c]/45 mb-5">
+            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[rgb(var(--c-accent-rgb)_/_0.45)] mb-5">
               {t('issue.edition')}{issue.number ? ` · ${issue.number}` : ''}
             </p>
             <h1
-              style={{ fontFamily: "'Playfair Display', serif", fontWeight: 500 }}
-              className="text-[clamp(46px,8vw,92px)] leading-[0.96] text-[#501a2c] mb-4"
+              style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+              className="text-[clamp(46px,8vw,92px)] leading-[0.96] text-[var(--c-accent)] mb-4"
             >
               {issue.name}
             </h1>
-            <p className="font-mono text-xs uppercase tracking-[0.22em] text-[#C9A690] mb-6">
+            <p className="font-mono text-xs uppercase tracking-[0.22em] text-[var(--c-gold)] mb-6">
               {issue.season}
             </p>
             {issue.tagline && (
-              <p className="font-serif text-lg md:text-xl italic text-[#501a2c]/70 max-w-md mb-8 leading-relaxed">
+              <p className="font-serif text-lg md:text-xl italic text-[rgb(var(--c-accent-rgb)_/_0.7)] max-w-md mb-8 leading-relaxed">
                 {issue.tagline}
               </p>
             )}
@@ -121,7 +121,7 @@ export function IssuePage({
             transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
             className="hidden md:block"
           >
-            <div className="aspect-[3/4] max-w-[280px] mx-auto overflow-hidden shadow-2xl ring-1 ring-[#501a2c]/10">
+            <div className="aspect-[3/4] max-w-[280px] mx-auto overflow-hidden shadow-2xl ring-1 ring-[rgb(var(--c-accent-rgb)_/_0.1)]">
               <img
                 src={issue.coverUrl}
                 alt={`${issue.name} — ${issue.season}`}
@@ -138,22 +138,22 @@ export function IssuePage({
         const body = (issue.letterBody || '').trim() || t('issue.letter.body');
         if (!heading && !body) return null;
         return (
-          <div className="border-b border-[#501a2c]/15 px-6 sm:px-10 md:px-16 py-12 md:py-20">
+          <div className="border-b border-[rgb(var(--c-accent-rgb)_/_0.15)] px-6 sm:px-10 md:px-16 py-12 md:py-20">
             <div className="max-w-2xl mx-auto">
-              <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#C9A690] mb-6">
+              <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-[var(--c-gold)] mb-6">
                 {t('pdf.letter.kicker')}
               </p>
-              <h2 className="font-serif text-2xl md:text-4xl italic text-[#501a2c] leading-snug mb-6">
+              <h2 className="font-serif text-2xl md:text-4xl italic text-[var(--c-accent)] leading-snug mb-6">
                 {heading}
               </h2>
-              <div className="w-12 border-t border-[#C9A690] mb-6" />
+              <div className="w-12 border-t border-[var(--c-gold)] mb-6" />
               {body.split('\n\n').map((p, i) => (
-                <p key={i} className="font-serif text-base md:text-lg text-[#501a2c]/75 leading-relaxed mb-4">
+                <p key={i} className="font-serif text-base md:text-lg text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-4">
                   {p}
                 </p>
               ))}
-              <p className="font-serif text-lg italic text-[#501a2c] mt-6">Mariia Ivanova</p>
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#501a2c]/40 mt-1">
+              <p className="font-serif text-lg italic text-[var(--c-accent)] mt-6">Mariia Ivanova</p>
+              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.4)] mt-1">
                 {t('issue.letter.role')}
               </p>
             </div>
@@ -165,10 +165,10 @@ export function IssuePage({
 
         {/* In this issue */}
         <div className="flex items-baseline justify-between gap-4 mb-8 md:mb-10">
-          <h2 style={{ fontFamily: "'Playfair Display', serif" }} className="text-2xl md:text-4xl text-[#501a2c]">
+          <h2 style={{ fontFamily: "var(--font-display)" }} className="text-2xl md:text-4xl text-[var(--c-accent)]">
             {t('issue.inThisIssue')}
           </h2>
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#501a2c]/40 whitespace-nowrap">
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.4)] whitespace-nowrap">
             {articles.length} {articles.length === 1 ? t('issue.story') : t('issue.stories')}
           </span>
         </div>
@@ -195,27 +195,27 @@ export function IssuePage({
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
-                      <BookOpen size={24} className="text-[#C9A690]/30" />
+                      <BookOpen size={24} className="text-[rgb(var(--c-gold-rgb)_/_0.3)]" />
                     </div>
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute top-3 left-3">
-                    <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#F5F0EB] bg-[#501a2c]/85 backdrop-blur-sm px-2.5 py-1">
+                    <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-[var(--c-bg)] bg-[rgb(var(--c-accent-rgb)_/_0.85)] backdrop-blur-sm px-2.5 py-1">
                       {article.category}
                     </span>
                   </div>
-                  <span className="absolute bottom-3 right-3 font-mono text-[9px] text-[#F5F0EB] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1">
+                  <span className="absolute bottom-3 right-3 font-mono text-[9px] text-[var(--c-bg)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1">
                     {t('read.article')} <ArrowRight size={12} />
                   </span>
                 </div>
                 <div className="mt-4">
-                  <h3 className="font-serif text-lg md:text-xl text-[#501a2c] leading-tight mb-2 group-hover:text-[#C9A690] transition-colors">
+                  <h3 className="font-serif text-lg md:text-xl text-[var(--c-accent)] leading-tight mb-2 group-hover:text-[var(--c-gold)] transition-colors">
                     {article.title}
                   </h3>
-                  <p className="font-serif text-sm text-[#501a2c]/55 leading-relaxed line-clamp-3 mb-3">
+                  <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.55)] leading-relaxed line-clamp-3 mb-3">
                     {article.excerpt}
                   </p>
-                  <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/35">
+                  <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.35)]">
                     {article.author} · {article.date}
                   </p>
                 </div>
@@ -229,19 +229,19 @@ export function IssuePage({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.35 }}
-          className="border-t border-[#501a2c]/20 pt-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-end"
+          className="border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-end"
         >
           {/* PDF Contents */}
           <div>
-            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#501a2c]/40 mb-4 flex items-center gap-2">
+            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-4 flex items-center gap-2">
               <BookOpen size={11} />
               {t('issue.contents')}
             </p>
             <div className="space-y-2.5">
               {contentsRows.map(({ num, label }) => (
                 <div key={num} className="flex items-baseline gap-3">
-                  <span className="font-mono text-[9px] text-[#C9A690] w-6 shrink-0">{num}</span>
-                  <span className="font-mono text-[9px] uppercase tracking-wider text-[#501a2c]/45 truncate">{label}</span>
+                  <span className="font-mono text-[9px] text-[var(--c-gold)] w-6 shrink-0">{num}</span>
+                  <span className="font-mono text-[9px] uppercase tracking-wider text-[rgb(var(--c-accent-rgb)_/_0.45)] truncate">{label}</span>
                 </div>
               ))}
             </div>
@@ -249,10 +249,10 @@ export function IssuePage({
 
           {/* CTA */}
           <div className="flex flex-col sm:items-end gap-3">
-            <p className="font-serif text-2xl md:text-3xl text-[#501a2c]">
+            <p className="font-serif text-2xl md:text-3xl text-[var(--c-accent)]">
               {t('issue.cta.title')}
             </p>
-            <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/35 sm:text-right">
+            <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.35)] sm:text-right">
               {t('issue.cta.spec')}
             </p>
             <div className="mt-1">
@@ -267,9 +267,9 @@ export function IssuePage({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.45 }}
-            className="border-t border-[#501a2c]/20 pt-10 mt-14 md:mt-20"
+            className="border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-10 mt-14 md:mt-20"
           >
-            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#501a2c]/40 mb-6">
+            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-6">
               {t('issue.archive')}
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6">
@@ -287,10 +287,10 @@ export function IssuePage({
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                   </div>
-                  <p className="mt-2 font-serif text-sm text-[#501a2c] leading-tight truncate">
+                  <p className="mt-2 font-serif text-sm text-[var(--c-accent)] leading-tight truncate">
                     {pastIssue.name}
                   </p>
-                  <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/35">
+                  <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.35)]">
                     {pastIssue.season}
                   </p>
                 </button>
@@ -320,8 +320,8 @@ function DownloadButton({
 
   if (status === 'loading') {
     return (
-      <div className={`${base} border-[#501a2c]/30 text-[#501a2c]/40 cursor-not-allowed`}>
-        <span className="inline-block w-3 h-3 border border-[#501a2c]/40 border-t-[#501a2c] rounded-full animate-spin" />
+      <div className={`${base} border-[rgb(var(--c-accent-rgb)_/_0.3)] text-[rgb(var(--c-accent-rgb)_/_0.4)] cursor-not-allowed`}>
+        <span className="inline-block w-3 h-3 border border-[rgb(var(--c-accent-rgb)_/_0.4)] border-t-[var(--c-accent)] rounded-full animate-spin" />
         {t('issue.generating')}
       </div>
     );
@@ -329,7 +329,7 @@ function DownloadButton({
 
   if (status === 'done') {
     return (
-      <div className={`${base} border-[#C9A690] text-[#C9A690]`}>
+      <div className={`${base} border-[var(--c-gold)] text-[var(--c-gold)]`}>
         <ArrowRight size={large ? 16 : 13} />
         {t('issue.downloaded')}
       </div>
@@ -348,7 +348,7 @@ function DownloadButton({
     <button
       type="button"
       onClick={onDownload}
-      className={`${base} border-[#501a2c] text-[#501a2c] hover:bg-[#501a2c] hover:text-[#F5F0EB]`}
+      className={`${base} border-[var(--c-accent)] text-[var(--c-accent)] hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]`}
     >
       <Download size={large ? 16 : 13} />
       {t('issue.download')}

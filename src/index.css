@@ -3,11 +3,22 @@
 @tailwind utilities;
 
 :root {
-  font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, serif;
+  /* Theme tokens — overridable from the admin Appearance panel (content.theme).
+     Defaults reproduce the original EPRIS palette exactly (no visual change). */
+  --c-accent: #501a2c;       /* burgundy: text + accent */
+  --c-accent-rgb: 80 26 44;
+  --c-gold: #c9a690;         /* gold */
+  --c-gold-rgb: 201 166 144;
+  --c-bg: #f5f0eb;           /* page background */
+  --c-bg-rgb: 245 240 235;
+  --font-display: 'Playfair Display', serif;       /* headings */
+  --font-body: 'Iowan Old Style', 'Palatino Linotype', Palatino, serif; /* body */
+
+  font-family: var(--font-body);
   line-height: 1.5;
   font-weight: 400;
-  color: #501a2c;
-  background-color: #f5f0eb;
+  color: var(--c-accent);
+  background-color: var(--c-bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -36,8 +47,9 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: #f5f0eb;
-  color: #501a2c;
+  background-color: var(--c-bg);
+  color: var(--c-accent);
+  font-family: var(--font-body);
   overflow-x: hidden;
 }
 

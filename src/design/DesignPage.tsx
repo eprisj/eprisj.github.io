@@ -35,11 +35,11 @@ function ProductModal({ item, data, onClose, lang }: {
           <button onClick={onClose} className="absolute top-5 right-5 text-white/20 hover:text-white transition-colors">
             <X size={18} />
           </button>
-          <span className="font-mono text-[8px] uppercase tracking-[0.35em] text-[#C9A690]/70">{item.category} · {data.brand || item.retailer}</span>
-          <h2 style={{ fontFamily: "'Playfair Display', serif" }} className="text-[clamp(20px,2.8vw,34px)] leading-tight text-white mt-3 mb-2">
+          <span className="font-mono text-[8px] uppercase tracking-[0.35em] text-[rgb(var(--c-gold-rgb)_/_0.7)]">{item.category} · {data.brand || item.retailer}</span>
+          <h2 style={{ fontFamily: "var(--font-display)" }} className="text-[clamp(20px,2.8vw,34px)] leading-tight text-white mt-3 mb-2">
             {data.title}
           </h2>
-          {data.price && <p className="font-mono text-2xl font-bold text-[#C9A690] mb-4">{formatPrice(data)}</p>}
+          {data.price && <p className="font-mono text-2xl font-bold text-[var(--c-gold)] mb-4">{formatPrice(data)}</p>}
           {data.description && (
             <p className="text-sm text-white/40 leading-relaxed mb-6 line-clamp-4">{data.description}</p>
           )}
@@ -50,7 +50,7 @@ function ProductModal({ item, data, onClose, lang }: {
           </div>
           <a
             href={data.url} target="_blank" rel="noopener noreferrer"
-            className="mt-auto inline-flex items-center justify-center gap-2 bg-white text-[#0d0408] font-mono text-[10px] uppercase tracking-widest px-5 py-4 hover:bg-[#C9A690] transition-colors"
+            className="mt-auto inline-flex items-center justify-center gap-2 bg-white text-[#0d0408] font-mono text-[10px] uppercase tracking-widest px-5 py-4 hover:bg-[var(--c-gold)] transition-colors"
           >
             {getUI(lang).shopAt} {data.siteName || item.retailer} <ArrowUpRight size={12} />
           </a>
@@ -87,14 +87,14 @@ function DarkProductCard({ item, data, index, onOpen }: {
                 className="w-full h-full object-cover opacity-85 transition-all duration-700 group-hover:opacity-100 group-hover:scale-[1.06]" />
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-3 bg-gradient-to-t from-black/80 to-transparent">
                 <span className="font-mono text-[8px] uppercase tracking-wider text-white/70 leading-none">{formatPrice(data!) || '—'}</span>
-                <ArrowUpRight size={12} className="text-[#C9A690]" />
+                <ArrowUpRight size={12} className="text-[var(--c-gold)]" />
               </div>
             </>
           )}
         </div>
         <div className="mt-3 px-0.5">
-          <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#C9A690] mb-1">{item.category}</p>
-          <h3 className="font-serif text-[14px] font-medium text-white leading-snug line-clamp-2 group-hover:text-[#C9A690] transition-colors">
+          <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[var(--c-gold)] mb-1">{item.category}</p>
+          <h3 className="font-serif text-[14px] font-medium text-white leading-snug line-clamp-2 group-hover:text-[var(--c-gold)] transition-colors">
             {loading ? item.name : data!.title}
           </h3>
         </div>
@@ -151,7 +151,7 @@ function LookProductStrip({ set, resolved, onOpen, lang }: {
                   </>
                 )}
               </div>
-              <p className="font-mono text-[7px] uppercase tracking-widest text-[#C9A690]/50 mb-0.5">{item.category}</p>
+              <p className="font-mono text-[7px] uppercase tracking-widest text-[rgb(var(--c-gold-rgb)_/_0.5)] mb-0.5">{item.category}</p>
               <p className="font-serif text-xs text-white/65 group-hover:text-white transition-colors line-clamp-2 leading-snug">
                 {data?.title || item.name}
               </p>
@@ -202,8 +202,8 @@ function LookPanel({ set, lookIndex, activeId, onSelect, resolved, onOpen, lang 
           {/* Active indicator */}
           {isActive && (
             <div className="absolute top-5 left-5 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C9A690] animate-pulse" />
-              <span className="font-mono text-[8px] uppercase tracking-widest text-[#C9A690]">{ui.viewing}</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--c-gold)] animate-pulse" />
+              <span className="font-mono text-[8px] uppercase tracking-widest text-[var(--c-gold)]">{ui.viewing}</span>
             </div>
           )}
         </div>
@@ -221,12 +221,12 @@ function LookPanel({ set, lookIndex, activeId, onSelect, resolved, onOpen, lang 
 
           <div className="relative z-10">
             <div className="flex items-center gap-3 mb-6">
-              <div className="h-px flex-1 max-w-12 bg-[#C9A690]/30" />
-              <span className="font-mono text-[8px] uppercase tracking-[0.35em] text-[#C9A690]/60">Look {num}</span>
+              <div className="h-px flex-1 max-w-12 bg-[rgb(var(--c-gold-rgb)_/_0.3)]" />
+              <span className="font-mono text-[8px] uppercase tracking-[0.35em] text-[rgb(var(--c-gold-rgb)_/_0.6)]">Look {num}</span>
             </div>
             <p className="font-mono text-[8px] uppercase tracking-[0.28em] text-white/55 mb-3">{set.style} · {set.room}</p>
             <h2
-              style={{ fontFamily: "'Playfair Display', serif" }}
+              style={{ fontFamily: "var(--font-display)" }}
               className="text-[clamp(36px,5.5vw,72px)] leading-[0.93] text-white mb-5"
             >{look.title || set.title}</h2>
             <p className="font-serif italic text-base md:text-lg text-white/70 mb-5 max-w-xs">{look.subtitle || set.subtitle}</p>
@@ -236,8 +236,8 @@ function LookPanel({ set, lookIndex, activeId, onSelect, resolved, onOpen, lang 
               onClick={(e) => { e.stopPropagation(); onSelect(set.id); }}
               className={`inline-flex items-center gap-3 border font-mono text-[9px] uppercase tracking-[0.28em] px-6 py-3.5 transition-all duration-300 ${
                 isActive
-                  ? 'border-[#C9A690]/60 text-[#C9A690] hover:bg-[#C9A690]/10'
-                  : 'border-white/30 text-white/70 hover:border-[#C9A690] hover:text-[#C9A690]'
+                  ? 'border-[rgb(var(--c-gold-rgb)_/_0.6)] text-[var(--c-gold)] hover:bg-[rgb(var(--c-gold-rgb)_/_0.1)]'
+                  : 'border-white/30 text-white/70 hover:border-[var(--c-gold)] hover:text-[var(--c-gold)]'
               }`}
             >
               {isActive ? ui.closeLook : ui.shopThisLook} <ArrowRight size={11} />
@@ -264,9 +264,9 @@ const ROLE_ORDER: Record<string, number> = { anchor: 0, support: 1, accent: 2 };
 function RoleBadge({ role, ui }: { role: string; ui: ReturnType<typeof getUI> }) {
   const label = role === 'anchor' ? ui.roleAnchor : role === 'accent' ? ui.roleAccent : ui.roleSupport;
   const tone = role === 'anchor'
-    ? 'text-[#0d0408] bg-[#C9A690]'
+    ? 'text-[#0d0408] bg-[var(--c-gold)]'
     : role === 'accent'
-      ? 'text-[#C9A690] border border-[#C9A690]/40'
+      ? 'text-[var(--c-gold)] border border-[rgb(var(--c-gold-rgb)_/_0.4)]'
       : 'text-white/45 border border-white/15';
   return (
     <span className={`font-mono text-[7px] uppercase tracking-[0.2em] px-2 py-0.5 ${tone}`}>{label}</span>
@@ -339,12 +339,12 @@ function StylistPanel({ resolved, onOpen, lang }: {
       <div className="px-6 md:px-12 lg:px-16 py-12 md:py-16">
         {/* Header */}
         <div className="flex items-center gap-3 mb-5">
-          <div className="h-px w-6 bg-[#C9A690]/40" />
-          <Sparkles size={9} className="text-[#C9A690]/50" />
-          <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-[#C9A690]/60">{ui.stylistLabel}</span>
+          <div className="h-px w-6 bg-[rgb(var(--c-gold-rgb)_/_0.4)]" />
+          <Sparkles size={9} className="text-[rgb(var(--c-gold-rgb)_/_0.5)]" />
+          <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-[rgb(var(--c-gold-rgb)_/_0.6)]">{ui.stylistLabel}</span>
         </div>
         <h2
-          style={{ fontFamily: "'Playfair Display', serif" }}
+          style={{ fontFamily: "var(--font-display)" }}
           className="text-[clamp(32px,6vw,80px)] leading-[0.92] text-white mb-3"
         >{ui.stylistTitle}</h2>
         <p className="text-sm text-white/30 mb-9 max-w-md leading-relaxed">{ui.stylistSub}</p>
@@ -359,7 +359,7 @@ function StylistPanel({ resolved, onOpen, lang }: {
                 const on = room === r.key;
                 return (
                   <button key={r.key} onClick={() => setRoom(on ? null : r.key)}
-                    className={`font-mono text-[11px] font-semibold uppercase tracking-wider px-4 py-2.5 border transition-all duration-200 ${on ? 'bg-[#C9A690] text-[#0d0408] border-[#C9A690]' : 'text-white border-white/25 hover:border-[#C9A690] hover:text-[#C9A690]'}`}>
+                    className={`font-mono text-[11px] font-semibold uppercase tracking-wider px-4 py-2.5 border transition-all duration-200 ${on ? 'bg-[var(--c-gold)] text-[#0d0408] border-[var(--c-gold)]' : 'text-white border-white/25 hover:border-[var(--c-gold)] hover:text-[var(--c-gold)]'}`}>
                     {getRoomLabel(r.key, lang)}
                   </button>
                 );
@@ -392,7 +392,7 @@ function StylistPanel({ resolved, onOpen, lang }: {
                 const label = b === 0 ? ui.stylistAnyBudget : `$${b.toLocaleString()}`;
                 return (
                   <button key={b} onClick={() => setBudget(on ? null : b)}
-                    className={`font-mono text-[11px] font-semibold uppercase tracking-wider px-4 py-2.5 border transition-all duration-200 ${on ? 'bg-[#C9A690] text-[#0d0408] border-[#C9A690]' : 'text-white border-white/25 hover:border-[#C9A690] hover:text-[#C9A690]'}`}>
+                    className={`font-mono text-[11px] font-semibold uppercase tracking-wider px-4 py-2.5 border transition-all duration-200 ${on ? 'bg-[var(--c-gold)] text-[#0d0408] border-[var(--c-gold)]' : 'text-white border-white/25 hover:border-[var(--c-gold)] hover:text-[var(--c-gold)]'}`}>
                     {b === 0 ? label : `≤ ${label}`}
                   </button>
                 );
@@ -401,7 +401,7 @@ function StylistPanel({ resolved, onOpen, lang }: {
           </div>
 
           {/* Freeform refine */}
-          <div className="border border-white/25 focus-within:border-[#C9A690]/70 transition-colors duration-300">
+          <div className="border border-white/25 focus-within:border-[rgb(var(--c-gold-rgb)_/_0.7)] transition-colors duration-300">
             <textarea
               value={text}
               onChange={(e) => setText(e.target.value)}
@@ -415,7 +415,7 @@ function StylistPanel({ resolved, onOpen, lang }: {
           <button
             onClick={handleSubmit}
             disabled={!canSubmit || loading}
-            className="inline-flex items-center gap-2.5 bg-[#C9A690] text-[#0d0408] font-mono text-[11px] font-bold uppercase tracking-widest px-8 py-4 hover:bg-white transition-colors duration-200 disabled:opacity-25 disabled:cursor-not-allowed"
+            className="inline-flex items-center gap-2.5 bg-[var(--c-gold)] text-[#0d0408] font-mono text-[11px] font-bold uppercase tracking-widest px-8 py-4 hover:bg-white transition-colors duration-200 disabled:opacity-25 disabled:cursor-not-allowed"
           >
             {loading
               ? <><Loader2 size={11} className="animate-spin" /> {ui.stylistLoading}</>
@@ -442,19 +442,19 @@ function StylistPanel({ resolved, onOpen, lang }: {
             <div className="grid md:grid-cols-[1.4fr_1fr] gap-8 md:gap-12 mb-12">
               <div>
                 <div className="flex items-center gap-3 mb-3">
-                  <p className="font-mono text-[7px] uppercase tracking-[0.35em] text-[#C9A690]/45">{ui.stylistConcept}</p>
+                  <p className="font-mono text-[7px] uppercase tracking-[0.35em] text-[rgb(var(--c-gold-rgb)_/_0.45)]">{ui.stylistConcept}</p>
                   {refining ? (
                     <span className="inline-flex items-center gap-1.5 font-mono text-[7px] uppercase tracking-[0.2em] text-white/30">
                       <Loader2 size={9} className="animate-spin" /> AI
                     </span>
                   ) : (
-                    <span className="font-mono text-[7px] uppercase tracking-[0.2em] text-[#C9A690]/40 border border-[#C9A690]/20 px-1.5 py-0.5">
+                    <span className="font-mono text-[7px] uppercase tracking-[0.2em] text-[rgb(var(--c-gold-rgb)_/_0.4)] border border-[rgb(var(--c-gold-rgb)_/_0.2)] px-1.5 py-0.5">
                       {result.source === 'ai' ? 'AI-composed' : "Stylist's pick"}
                     </span>
                   )}
                 </div>
                 <h3
-                  style={{ fontFamily: "'Playfair Display', serif" }}
+                  style={{ fontFamily: "var(--font-display)" }}
                   className="text-[clamp(26px,4.4vw,56px)] leading-[1.02] text-white mb-4"
                 >{result.title}</h3>
                 <p className="text-sm md:text-[15px] text-white/40 max-w-lg leading-relaxed">{result.concept}</p>
@@ -480,9 +480,9 @@ function StylistPanel({ resolved, onOpen, lang }: {
                   <div>
                     <p className="font-mono text-[7px] uppercase tracking-[0.3em] text-white/30 mb-1.5">{ui.stylistEstimate}</p>
                     <p className="flex items-baseline gap-2.5">
-                      <span style={{ fontFamily: "'Playfair Display', serif" }} className="text-3xl text-white">${result.total.toLocaleString()}</span>
+                      <span style={{ fontFamily: "var(--font-display)" }} className="text-3xl text-white">${result.total.toLocaleString()}</span>
                       {effBudget > 0 && (
-                        <span className={`font-mono text-[8px] uppercase tracking-wider px-2 py-0.5 ${overBudget ? 'text-red-300/70 border border-red-400/30' : 'text-[#C9A690] border border-[#C9A690]/35'}`}>
+                        <span className={`font-mono text-[8px] uppercase tracking-wider px-2 py-0.5 ${overBudget ? 'text-red-300/70 border border-red-400/30' : 'text-[var(--c-gold)] border border-[rgb(var(--c-gold-rgb)_/_0.35)]'}`}>
                           {overBudget ? `over $${effBudget.toLocaleString()}` : `within $${effBudget.toLocaleString()}`}
                         </span>
                       )}
@@ -517,11 +517,11 @@ function StylistPanel({ resolved, onOpen, lang }: {
             {/* Styling tips */}
             {result.tips && result.tips.length > 0 && (
               <div className="mt-12 border-t border-white/8 pt-8">
-                <p className="font-mono text-[7px] uppercase tracking-[0.35em] text-[#C9A690]/45 mb-4">{ui.stylistTips}</p>
+                <p className="font-mono text-[7px] uppercase tracking-[0.35em] text-[rgb(var(--c-gold-rgb)_/_0.45)] mb-4">{ui.stylistTips}</p>
                 <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3">
                   {result.tips.map((tip, i) => (
                     <li key={i} className="flex gap-2.5 text-[13px] text-white/40 leading-relaxed">
-                      <span className="font-mono text-[#C9A690]/40 text-[10px] pt-0.5">{String(i + 1).padStart(2, '0')}</span>
+                      <span className="font-mono text-[rgb(var(--c-gold-rgb)_/_0.4)] text-[10px] pt-0.5">{String(i + 1).padStart(2, '0')}</span>
                       {tip}
                     </li>
                   ))}
@@ -531,7 +531,7 @@ function StylistPanel({ resolved, onOpen, lang }: {
 
             <button
               onClick={reset}
-              className="mt-10 font-mono text-[8px] uppercase tracking-widest text-white/20 hover:text-[#C9A690]/55 transition-colors border border-white/8 hover:border-[#C9A690]/25 px-4 py-2 duration-200"
+              className="mt-10 font-mono text-[8px] uppercase tracking-widest text-white/20 hover:text-[rgb(var(--c-gold-rgb)_/_0.55)] transition-colors border border-white/8 hover:border-[rgb(var(--c-gold-rgb)_/_0.25)] px-4 py-2 duration-200"
             >
               {ui.stylistTryAgain}
             </button>
@@ -607,11 +607,11 @@ export function DesignPage({ lang = 'EN' }: { lang?: string }) {
           <div className="flex items-start justify-between gap-8">
             <div>
               <div className="flex items-center gap-3 mb-5">
-                <div className="h-px w-8 bg-[#C9A690]/40" />
-                <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-[#C9A690]/60">EPRIS · Journal</span>
+                <div className="h-px w-8 bg-[rgb(var(--c-gold-rgb)_/_0.4)]" />
+                <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-[rgb(var(--c-gold-rgb)_/_0.6)]">EPRIS · Journal</span>
               </div>
               <h1
-                style={{ fontFamily: "'Playfair Display', serif" }}
+                style={{ fontFamily: "var(--font-display)" }}
                 className="text-[clamp(48px,10vw,140px)] leading-[0.88] text-white"
               >{ui.masthead}<br />{ui.masthead2}</h1>
             </div>
@@ -666,11 +666,11 @@ export function DesignPage({ lang = 'EN' }: { lang?: string }) {
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
               <div>
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="h-px w-6 bg-[#C9A690]/40" />
-                  <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.3em] text-[#C9A690]">{ui.catalogKicker}</span>
+                  <div className="h-px w-6 bg-[rgb(var(--c-gold-rgb)_/_0.4)]" />
+                  <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.3em] text-[var(--c-gold)]">{ui.catalogKicker}</span>
                 </div>
                 <h2
-                  style={{ fontFamily: "'Playfair Display', serif" }}
+                  style={{ fontFamily: "var(--font-display)" }}
                   className="text-[clamp(40px,8vw,100px)] leading-[0.9] text-white"
                 >{ui.catalogTitle}</h2>
               </div>
@@ -679,7 +679,7 @@ export function DesignPage({ lang = 'EN' }: { lang?: string }) {
                   <button key={cat} onClick={() => setActiveCat(cat)}
                     className={`font-mono text-[11px] font-semibold uppercase tracking-wider px-4 py-2 border transition-all duration-200 ${
                       activeCat === cat
-                        ? 'border-[#C9A690] text-[#C9A690] bg-[#C9A690]/10'
+                        ? 'border-[var(--c-gold)] text-[var(--c-gold)] bg-[rgb(var(--c-gold-rgb)_/_0.1)]'
                         : 'border-white/25 text-white hover:border-white hover:text-white'
                     }`}>
                     {cat === '__all' ? ui.allFilter : cat}
@@ -720,13 +720,13 @@ export function DesignPage({ lang = 'EN' }: { lang?: string }) {
               {/* Info */}
               <div className="flex flex-col justify-between p-8 md:p-12 lg:p-14 border-l border-white/5">
                 <div>
-                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.25em] text-[#C9A690] mb-4">{ui.featuredLabel} · {filtered[0].category}</p>
+                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--c-gold)] mb-4">{ui.featuredLabel} · {filtered[0].category}</p>
                   <h3
-                    style={{ fontFamily: "'Playfair Display', serif" }}
+                    style={{ fontFamily: "var(--font-display)" }}
                     className="text-[clamp(26px,3.5vw,48px)] leading-tight text-white mb-3"
                   >{resolved[filtered[0].id]?.title || filtered[0].name}</h3>
                   {resolved[filtered[0].id]?.price && (
-                    <p className="font-mono text-2xl md:text-3xl font-bold text-[#C9A690] mb-5">{formatPrice(resolved[filtered[0].id]!)}</p>
+                    <p className="font-mono text-2xl md:text-3xl font-bold text-[var(--c-gold)] mb-5">{formatPrice(resolved[filtered[0].id]!)}</p>
                   )}
                   <p className="text-[15px] text-white/75 leading-relaxed line-clamp-3 mb-6">
                     {resolved[filtered[0].id]?.description}
@@ -739,7 +739,7 @@ export function DesignPage({ lang = 'EN' }: { lang?: string }) {
                 </div>
                 <a
                   href={filtered[0].url} target="_blank" rel="noopener noreferrer"
-                  className="self-start inline-flex items-center gap-2 bg-white text-[#0d0408] font-mono text-[10px] uppercase tracking-widest px-6 py-4 hover:bg-[#C9A690] transition-colors"
+                  className="self-start inline-flex items-center gap-2 bg-white text-[#0d0408] font-mono text-[10px] uppercase tracking-widest px-6 py-4 hover:bg-[var(--c-gold)] transition-colors"
                 >
                   {ui.shopAt} {filtered[0].retailer} <ArrowUpRight size={12} />
                 </a>

@@ -137,16 +137,16 @@ function UploadZone({ onFile, label }: { onFile: (s: UploadState) => void; label
 
   return (
     <div
-      className="border border-dashed border-[#501a2c]/30 flex flex-col items-center justify-center gap-4 py-20 cursor-pointer hover:border-[#501a2c] hover:bg-[#E8DED5]/40 transition-all group"
+      className="border border-dashed border-[rgb(var(--c-accent-rgb)_/_0.3)] flex flex-col items-center justify-center gap-4 py-20 cursor-pointer hover:border-[var(--c-accent)] hover:bg-[#E8DED5]/40 transition-all group"
       onClick={() => ref.current?.click()}
       onDrop={onDrop}
       onDragOver={(e) => e.preventDefault()}
     >
-      <div className="w-12 h-12 border border-[#501a2c]/20 group-hover:border-[#501a2c] flex items-center justify-center transition-colors">
-        <Upload size={20} className="text-[#501a2c]/40 group-hover:text-[#501a2c] transition-colors" />
+      <div className="w-12 h-12 border border-[rgb(var(--c-accent-rgb)_/_0.2)] group-hover:border-[var(--c-accent)] flex items-center justify-center transition-colors">
+        <Upload size={20} className="text-[rgb(var(--c-accent-rgb)_/_0.4)] group-hover:text-[var(--c-accent)] transition-colors" />
       </div>
-      <p className="font-mono text-xs uppercase tracking-widest text-[#501a2c]/50">{label}</p>
-      <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#501a2c]/25">JPG · PNG · WEBP</p>
+      <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)]">{label}</p>
+      <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.25)]">JPG · PNG · WEBP</p>
       <input ref={ref} type="file" accept="image/*" className="hidden"
         onChange={(e) => { const f = e.target.files?.[0]; if (f) handle(f); }} />
     </div>
@@ -156,7 +156,7 @@ function UploadZone({ onFile, label }: { onFile: (s: UploadState) => void; label
 function BackBtn({ onClick, t }: { onClick: () => void; t: T }) {
   return (
     <button type="button" onClick={onClick}
-      className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#501a2c]/60 hover:text-[#501a2c] transition-colors mb-8">
+      className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:text-[var(--c-accent)] transition-colors mb-8">
       <ArrowLeft size={14} /> {t('materie.back')}
     </button>
   );
@@ -165,9 +165,9 @@ function BackBtn({ onClick, t }: { onClick: () => void; t: T }) {
 function ToolHeader({ kicker, title, tagline }: { kicker: string; title: string; tagline: string }) {
   return (
     <div className="mb-8">
-      <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#501a2c]/40 mb-1">{kicker}</p>
-      <h1 className="font-mono text-3xl sm:text-5xl tracking-[0.1em] text-[#501a2c]">{title}</h1>
-      <p className="font-mono text-xs text-[#501a2c]/50 mt-2 uppercase tracking-widest">{tagline}</p>
+      <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-1">{kicker}</p>
+      <h1 className="font-mono text-3xl sm:text-5xl tracking-[0.1em] text-[var(--c-accent)]">{title}</h1>
+      <p className="font-mono text-xs text-[rgb(var(--c-accent-rgb)_/_0.5)] mt-2 uppercase tracking-widest">{tagline}</p>
     </div>
   );
 }
@@ -175,7 +175,7 @@ function ToolHeader({ kicker, title, tagline }: { kicker: string; title: string;
 /** Animated scanline overlay shown while AI is processing */
 function ScanOverlay({ label }: { label: string }) {
   return (
-    <div className="absolute inset-0 bg-[#F5F0EB]/10 overflow-hidden">
+    <div className="absolute inset-0 bg-[rgb(var(--c-bg-rgb)_/_0.1)] overflow-hidden">
       <motion.div
         className="absolute left-0 right-0 h-[1px] pointer-events-none"
         style={{ background: 'linear-gradient(90deg, transparent 0%, #501a2c 40%, #C9A690 50%, #501a2c 60%, transparent 100%)' }}
@@ -183,9 +183,9 @@ function ScanOverlay({ label }: { label: string }) {
         transition={{ duration: 1.7, repeat: Infinity, ease: 'linear' }}
       />
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="bg-[#F5F0EB] border border-[#501a2c] px-6 py-4 flex items-center gap-3 shadow-sm">
-          <Loader2 size={15} className="animate-spin text-[#501a2c]" />
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#501a2c]">{label}</span>
+        <div className="bg-[var(--c-bg)] border border-[var(--c-accent)] px-6 py-4 flex items-center gap-3 shadow-sm">
+          <Loader2 size={15} className="animate-spin text-[var(--c-accent)]" />
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-accent)]">{label}</span>
         </div>
       </div>
     </div>
@@ -208,10 +208,10 @@ function IntegrityGauge({ value }: { value: number }) {
             animate={{ strokeDashoffset: circ * (1 - value / 100) }}
             transition={{ duration: 0.9, ease: 'easeOut' }} />
         </svg>
-        <span className="absolute inset-0 flex items-center justify-center font-mono text-[11px] text-[#501a2c]">{value}</span>
+        <span className="absolute inset-0 flex items-center justify-center font-mono text-[11px] text-[var(--c-accent)]">{value}</span>
       </div>
       <div>
-        <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/35">Integrity</p>
+        <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.35)]">Integrity</p>
         <p className="font-mono text-[10px] font-bold" style={{ color }}>
           {value >= 75 ? 'Good' : value >= 40 ? 'Fair' : 'Poor'}
         </p>
@@ -294,7 +294,7 @@ function LabTool({ onBack, t }: { onBack: () => void; t: T }) {
   return (
     <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.3 }}
-      className="min-h-screen bg-[#F5F0EB] px-4 sm:px-8 md:px-16 py-8">
+      className="min-h-screen bg-[var(--c-bg)] px-4 sm:px-8 md:px-16 py-8">
       <BackBtn onClick={onBack} t={t} />
       <ToolHeader kicker="EPRIS / MATERIE" title="MATTER LAB" tagline={t('materie.lab.tagline')} />
 
@@ -304,15 +304,15 @@ function LabTool({ onBack, t }: { onBack: () => void; t: T }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           <div className="md:col-span-1 lg:col-span-2 space-y-4">
             {/* Visual mode bar */}
-            <div className="flex gap-0 border border-[#501a2c] overflow-hidden">
+            <div className="flex gap-0 border border-[var(--c-accent)] overflow-hidden">
               {(['rgb', 'thermal', 'xray', 'edge'] as VisualMode[]).map(m => (
                 <button key={m} type="button" onClick={() => setVisualMode(m)}
-                  className={`flex-1 py-2 font-mono text-[9px] sm:text-[10px] uppercase tracking-widest transition-colors ${visualMode === m ? 'bg-[#501a2c] text-[#F5F0EB]' : 'text-[#501a2c] hover:bg-[#E8DED5]'}`}>
+                  className={`flex-1 py-2 font-mono text-[9px] sm:text-[10px] uppercase tracking-widest transition-colors ${visualMode === m ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'text-[var(--c-accent)] hover:bg-[#E8DED5]'}`}>
                   {m}
                 </button>
               ))}
               <button type="button" onClick={() => setFullscreen(!fullscreen)}
-                className="px-3 text-[#501a2c] hover:bg-[#E8DED5] transition-colors border-l border-[#501a2c] shrink-0">
+                className="px-3 text-[var(--c-accent)] hover:bg-[#E8DED5] transition-colors border-l border-[var(--c-accent)] shrink-0">
                 <Maximize size={14} />
               </button>
             </div>
@@ -321,7 +321,7 @@ function LabTool({ onBack, t }: { onBack: () => void; t: T }) {
             <div className={`relative bg-[#E8DED5] overflow-hidden ${fullscreen ? 'fixed inset-4 z-50' : ''}`}>
               {fullscreen && (
                 <button type="button" onClick={() => setFullscreen(false)}
-                  className="absolute top-3 right-3 z-10 bg-[#501a2c] text-[#F5F0EB] p-1">
+                  className="absolute top-3 right-3 z-10 bg-[var(--c-accent)] text-[var(--c-bg)] p-1">
                   <X size={16} />
                 </button>
               )}
@@ -341,11 +341,11 @@ function LabTool({ onBack, t }: { onBack: () => void; t: T }) {
                     border: `1.5px solid ${activeNode === i ? '#C9A690' : statusColor(node.status)}`,
                     background: activeNode === i ? 'rgba(201,166,144,0.12)' : 'rgba(80,26,44,0.03)',
                   }}>
-                  <span className="absolute -top-px -left-px font-mono text-[8px] px-1.5 py-0.5 leading-none text-[#F5F0EB]"
+                  <span className="absolute -top-px -left-px font-mono text-[8px] px-1.5 py-0.5 leading-none text-[var(--c-bg)]"
                     style={{ backgroundColor: activeNode === i ? '#C9A690' : statusColor(node.status) }}>
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <span className="absolute bottom-0 left-0 right-0 bg-[#501a2c]/80 text-[#F5F0EB] font-mono text-[8px] px-1.5 py-0.5 opacity-0 group-hover:opacity-100 transition-opacity truncate">
+                  <span className="absolute bottom-0 left-0 right-0 bg-[rgb(var(--c-accent-rgb)_/_0.8)] text-[var(--c-bg)] font-mono text-[8px] px-1.5 py-0.5 opacity-0 group-hover:opacity-100 transition-opacity truncate">
                     {node.title}
                   </span>
                 </motion.button>
@@ -354,16 +354,16 @@ function LabTool({ onBack, t }: { onBack: () => void; t: T }) {
 
             {/* Material composition */}
             {report?.materials && report.materials.length > 0 && (
-              <div className="border border-[#501a2c]/20 p-4 space-y-3">
-                <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/40">Material Composition</p>
+              <div className="border border-[rgb(var(--c-accent-rgb)_/_0.2)] p-4 space-y-3">
+                <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">Material Composition</p>
                 {report.materials.map((m, i) => (
                   <div key={i}>
                     <div className="flex justify-between mb-1">
-                      <span className="font-mono text-[10px] text-[#501a2c]/70 uppercase tracking-wider">{m.name}</span>
-                      <span className="font-mono text-[10px] text-[#501a2c]/50">{m.value}%</span>
+                      <span className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.7)] uppercase tracking-wider">{m.name}</span>
+                      <span className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{m.value}%</span>
                     </div>
-                    <div className="h-px bg-[#501a2c]/10">
-                      <motion.div className="h-px bg-[#501a2c]"
+                    <div className="h-px bg-[rgb(var(--c-accent-rgb)_/_0.1)]">
+                      <motion.div className="h-px bg-[var(--c-accent)]"
                         initial={{ width: 0 }}
                         animate={{ width: `${m.value}%` }}
                         transition={{ duration: 0.7, delay: i * 0.1, ease: 'easeOut' }} />
@@ -375,64 +375,64 @@ function LabTool({ onBack, t }: { onBack: () => void; t: T }) {
 
             <button type="button"
               onClick={() => { setUpload(null); setReport(null); setActiveNode(null); }}
-              className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 hover:text-[#501a2c] transition-colors flex items-center gap-2">
+              className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] hover:text-[var(--c-accent)] transition-colors flex items-center gap-2">
               <Upload size={12} /> {t('materie.newimage')}
             </button>
           </div>
 
           {/* Report panel */}
-          <div className="space-y-0 border border-[#501a2c]">
-            <div className="bg-[#501a2c] text-[#F5F0EB] p-4">
+          <div className="space-y-0 border border-[var(--c-accent)]">
+            <div className="bg-[var(--c-accent)] text-[var(--c-bg)] p-4">
               <div className="font-mono text-[9px] uppercase tracking-widest opacity-50 mb-1">
                 {report ? `${report.style} · ${report.era}` : 'Awaiting scan'}
               </div>
               <div className="font-mono text-sm tracking-wider">{report?.title ?? 'MATTER LAB REPORT'}</div>
             </div>
             {error && (
-              <div className="p-4 flex items-start gap-3 border-b border-[#501a2c]/20">
-                <AlertCircle size={14} className="text-[#501a2c] mt-0.5 shrink-0" />
-                <p className="font-mono text-xs text-[#501a2c]">{error}</p>
+              <div className="p-4 flex items-start gap-3 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+                <AlertCircle size={14} className="text-[var(--c-accent)] mt-0.5 shrink-0" />
+                <p className="font-mono text-xs text-[var(--c-accent)]">{error}</p>
               </div>
             )}
             {report && (
               <>
-                <div className="divide-y divide-[#501a2c]/10">
+                <div className="divide-y divide-[rgb(var(--c-accent-rgb)_/_0.1)]">
                   {report.nodes.map((node, i) => (
                     <button key={node.id} type="button"
                       onClick={() => { setActiveNode(i); setDeepAnalysis(null); }}
-                      className={`w-full text-left p-4 transition-colors flex items-start gap-3 ${activeNode === i ? 'bg-[#E8DED5]' : 'hover:bg-[#F5F0EB]'}`}>
+                      className={`w-full text-left p-4 transition-colors flex items-start gap-3 ${activeNode === i ? 'bg-[#E8DED5]' : 'hover:bg-[var(--c-bg)]'}`}>
                       <span className="mt-1.5 w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: statusColor(node.status) }} />
                       <div className="min-w-0 flex-1">
-                        <div className="font-mono text-xs uppercase tracking-wider text-[#501a2c] truncate">{node.title}</div>
+                        <div className="font-mono text-xs uppercase tracking-wider text-[var(--c-accent)] truncate">{node.title}</div>
                         <div className="flex items-center gap-2 mt-0.5">
-                          <span className="font-mono text-[9px] text-[#501a2c]/40 uppercase">{node.type}</span>
+                          <span className="font-mono text-[9px] text-[rgb(var(--c-accent-rgb)_/_0.4)] uppercase">{node.type}</span>
                           <span className="font-mono text-[9px] uppercase font-medium" style={{ color: statusColor(node.status) }}>{node.status}</span>
                         </div>
-                        <div className="mt-1.5 h-px bg-[#501a2c]/10">
+                        <div className="mt-1.5 h-px bg-[rgb(var(--c-accent-rgb)_/_0.1)]">
                           <div className="h-px" style={{ width: `${node.forensics.integrity_score}%`, backgroundColor: statusColor(node.status) }} />
                         </div>
                       </div>
-                      <span className="font-mono text-[10px] text-[#501a2c]/30 mt-0.5 shrink-0">{node.forensics.integrity_score}</span>
+                      <span className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.3)] mt-0.5 shrink-0">{node.forensics.integrity_score}</span>
                     </button>
                   ))}
                 </div>
-                <div className="p-4 border-t border-[#501a2c]/20 bg-[#F5F0EB]">
-                  <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/40 mb-2">Summary</p>
-                  <p className="font-serif text-sm text-[#501a2c]/80 leading-relaxed">{report.summary}</p>
+                <div className="p-4 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] bg-[var(--c-bg)]">
+                  <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-2">Summary</p>
+                  <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.8)] leading-relaxed">{report.summary}</p>
                 </div>
               </>
             )}
             {activeNodeData && (
-              <div className="border-t border-[#501a2c] bg-[#E8DED5] p-4 space-y-4">
+              <div className="border-t border-[var(--c-accent)] bg-[#E8DED5] p-4 space-y-4">
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <div className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/40 mb-1">Forensic Detail</div>
-                    <div className="font-mono text-sm uppercase text-[#501a2c]">{activeNodeData.title}</div>
-                    <p className="font-serif text-xs text-[#501a2c]/70 mt-1 leading-relaxed">{activeNodeData.description}</p>
+                    <div className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-1">Forensic Detail</div>
+                    <div className="font-mono text-sm uppercase text-[var(--c-accent)]">{activeNodeData.title}</div>
+                    <p className="font-serif text-xs text-[rgb(var(--c-accent-rgb)_/_0.7)] mt-1 leading-relaxed">{activeNodeData.description}</p>
                   </div>
                   <IntegrityGauge value={activeNodeData.forensics.integrity_score} />
                 </div>
-                <div className="grid grid-cols-2 gap-x-4 gap-y-3 pt-3 border-t border-[#501a2c]/15">
+                <div className="grid grid-cols-2 gap-x-4 gap-y-3 pt-3 border-t border-[rgb(var(--c-accent-rgb)_/_0.15)]">
                   {[
                     ['Composition', activeNodeData.forensics.composition],
                     ['Origin', activeNodeData.forensics.material_origin],
@@ -440,8 +440,8 @@ function LabTool({ onBack, t }: { onBack: () => void; t: T }) {
                     ['Durability', activeNodeData.forensics.durability],
                   ].map(([k, v]) => (
                     <div key={k} className="font-mono text-[10px]">
-                      <div className="text-[#501a2c]/35 uppercase mb-0.5">{k}</div>
-                      <div className="text-[#501a2c] leading-snug">{v}</div>
+                      <div className="text-[rgb(var(--c-accent-rgb)_/_0.35)] uppercase mb-0.5">{k}</div>
+                      <div className="text-[var(--c-accent)] leading-snug">{v}</div>
                     </div>
                   ))}
                 </div>
@@ -450,18 +450,18 @@ function LabTool({ onBack, t }: { onBack: () => void; t: T }) {
                     <button key={kind} type="button"
                       onClick={() => handleDeepAnalysis(kind)}
                       disabled={deepLoading}
-                      className="flex-1 py-2.5 border border-[#501a2c] font-mono text-[9px] uppercase tracking-wider text-[#501a2c] hover:bg-[#501a2c] hover:text-[#F5F0EB] transition-colors disabled:opacity-40 flex items-center justify-center gap-1.5">
+                      className="flex-1 py-2.5 border border-[var(--c-accent)] font-mono text-[9px] uppercase tracking-wider text-[var(--c-accent)] hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors disabled:opacity-40 flex items-center justify-center gap-1.5">
                       {deepLoading ? <Loader2 size={11} className="animate-spin" /> : null}
                       {kind === 'restoration' ? 'Restoration' : 'Risk Analysis'}
                     </button>
                   ))}
                 </div>
                 {deepAnalysis && (
-                  <div className="bg-[#F5F0EB] border border-[#501a2c]/20 p-4">
-                    <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/40 mb-3">Analysis Result</p>
+                  <div className="bg-[var(--c-bg)] border border-[rgb(var(--c-accent-rgb)_/_0.2)] p-4">
+                    <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-3">Analysis Result</p>
                     <div className="space-y-2">
                       {deepAnalysis.split('\n').filter(Boolean).map((line, i) => (
-                        <p key={i} className="font-serif text-xs text-[#501a2c]/80 leading-relaxed">{line}</p>
+                        <p key={i} className="font-serif text-xs text-[rgb(var(--c-accent-rgb)_/_0.8)] leading-relaxed">{line}</p>
                       ))}
                     </div>
                   </div>
@@ -496,13 +496,13 @@ function MetricRow({ label, value, icon }: { label: string; value: number; icon:
   const color = value >= 70 ? '#4A7C59' : value >= 40 ? '#B8860B' : '#8B3A3A';
   return (
     <div className="flex items-center gap-4">
-      <div className="text-[#501a2c]/35 shrink-0 w-5 flex justify-center">{icon}</div>
+      <div className="text-[rgb(var(--c-accent-rgb)_/_0.35)] shrink-0 w-5 flex justify-center">{icon}</div>
       <div className="flex-1">
         <div className="flex justify-between items-baseline mb-1.5">
-          <span className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/50">{label}</span>
+          <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)]">{label}</span>
           <span className="font-mono text-xl leading-none font-light" style={{ color }}>{value}</span>
         </div>
-        <div className="h-px bg-[#501a2c]/10">
+        <div className="h-px bg-[rgb(var(--c-accent-rgb)_/_0.1)]">
           <motion.div className="h-px" style={{ backgroundColor: color }}
             initial={{ width: 0 }}
             animate={{ width: `${value}%` }}
@@ -542,7 +542,7 @@ function StudioTool({ onBack, t }: { onBack: () => void; t: T }) {
   return (
     <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.3 }}
-      className="min-h-screen bg-[#F5F0EB] px-4 sm:px-8 md:px-16 py-8">
+      className="min-h-screen bg-[var(--c-bg)] px-4 sm:px-8 md:px-16 py-8">
       <BackBtn onClick={onBack} t={t} />
       <ToolHeader kicker="EPRIS / MATERIE" title="INTERIOR STUDIO" tagline={t('materie.studio.tagline')} />
 
@@ -565,7 +565,7 @@ function StudioTool({ onBack, t }: { onBack: () => void; t: T }) {
                   onMouseEnter={() => setHoveredElement(i)}
                   onMouseLeave={() => setHoveredElement(null)}>
                   {hoveredElement === i && (
-                    <span className="absolute top-0 left-0 font-mono text-[8px] px-1.5 py-0.5 text-[#F5F0EB] whitespace-nowrap"
+                    <span className="absolute top-0 left-0 font-mono text-[8px] px-1.5 py-0.5 text-[var(--c-bg)] whitespace-nowrap"
                       style={{ backgroundColor: CATEGORY_COLOR[el.category] || '#501a2c' }}>
                       {el.name}
                     </span>
@@ -577,23 +577,23 @@ function StudioTool({ onBack, t }: { onBack: () => void; t: T }) {
             {report && (
               <div className="flex flex-wrap gap-2">
                 {report.tags.map(tag => (
-                  <span key={tag} className="border border-[#501a2c] px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-[#501a2c]">
+                  <span key={tag} className="border border-[var(--c-accent)] px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)]">
                     {tag}
                   </span>
                 ))}
               </div>
             )}
             <button type="button" onClick={() => { setUpload(null); setReport(null); }}
-              className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 hover:text-[#501a2c] transition-colors flex items-center gap-2">
+              className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] hover:text-[var(--c-accent)] transition-colors flex items-center gap-2">
               <Upload size={12} /> {t('materie.newimage')}
             </button>
           </div>
 
-          <div className="border border-[#501a2c]">
-            <div className="grid grid-cols-4 border-b border-[#501a2c]">
+          <div className="border border-[var(--c-accent)]">
+            <div className="grid grid-cols-4 border-b border-[var(--c-accent)]">
               {TABS.map(tab => (
                 <button key={tab.id} type="button" onClick={() => setActiveTab(tab.id)}
-                  className={`py-3 font-mono text-[10px] uppercase tracking-widest transition-colors ${activeTab === tab.id ? 'bg-[#501a2c] text-[#F5F0EB]' : 'text-[#501a2c] hover:bg-[#E8DED5]'}`}>
+                  className={`py-3 font-mono text-[10px] uppercase tracking-widest transition-colors ${activeTab === tab.id ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'text-[var(--c-accent)] hover:bg-[#E8DED5]'}`}>
                   {tab.label}
                 </button>
               ))}
@@ -601,29 +601,29 @@ function StudioTool({ onBack, t }: { onBack: () => void; t: T }) {
             <div className="p-6 min-h-[320px]">
               {error && (
                 <div className="flex items-start gap-3">
-                  <AlertCircle size={14} className="text-[#501a2c] mt-0.5 shrink-0" />
-                  <p className="font-mono text-xs text-[#501a2c]">{error}</p>
+                  <AlertCircle size={14} className="text-[var(--c-accent)] mt-0.5 shrink-0" />
+                  <p className="font-mono text-xs text-[var(--c-accent)]">{error}</p>
                 </div>
               )}
               {!report && !error && (
                 <div className="flex items-center justify-center h-full py-16">
-                  <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/30">
+                  <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.3)]">
                     {analyzing ? 'Processing...' : 'Upload image to begin'}
                   </p>
                 </div>
               )}
               {report && activeTab === 'dna' && (
                 <div className="space-y-5">
-                  <p className="font-serif text-sm text-[#501a2c]/80 leading-relaxed">{report.description}</p>
+                  <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.8)] leading-relaxed">{report.description}</p>
                   <div>
-                    <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/40 mb-2">Detected Elements</p>
-                    <div className="divide-y divide-[#501a2c]/10">
+                    <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-2">Detected Elements</p>
+                    <div className="divide-y divide-[rgb(var(--c-accent-rgb)_/_0.1)]">
                       {report.elements.map((el, i) => (
                         <div key={i} className="py-2 flex justify-between items-center cursor-default transition-opacity"
                           style={{ opacity: hoveredElement !== null && hoveredElement !== i ? 0.35 : 1 }}
                           onMouseEnter={() => setHoveredElement(i)}
                           onMouseLeave={() => setHoveredElement(null)}>
-                          <span className="font-mono text-xs text-[#501a2c]">{el.name}</span>
+                          <span className="font-mono text-xs text-[var(--c-accent)]">{el.name}</span>
                           <span className="font-mono text-[9px] uppercase pl-3"
                             style={{ color: CATEGORY_COLOR[el.category] || '#501a2c', borderLeft: `2px solid ${CATEGORY_COLOR[el.category] || '#501a2c'}` }}>
                             {el.category}
@@ -632,26 +632,26 @@ function StudioTool({ onBack, t }: { onBack: () => void; t: T }) {
                       ))}
                     </div>
                   </div>
-                  <div className="pt-3 border-t border-[#501a2c]/10">
-                    <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/40 mb-1">Lighting</p>
-                    <p className="font-mono text-xs text-[#501a2c] mb-1">{report.lighting.mood} — {report.lighting.sources.join(', ')}</p>
-                    <p className="font-serif text-xs text-[#501a2c]/60 italic">{report.lighting.suggestion}</p>
+                  <div className="pt-3 border-t border-[rgb(var(--c-accent-rgb)_/_0.1)]">
+                    <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-1">Lighting</p>
+                    <p className="font-mono text-xs text-[var(--c-accent)] mb-1">{report.lighting.mood} — {report.lighting.sources.join(', ')}</p>
+                    <p className="font-serif text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] italic">{report.lighting.suggestion}</p>
                   </div>
                 </div>
               )}
               {report && activeTab === 'palette' && (
                 <div className="space-y-4">
-                  <div className="h-5 flex overflow-hidden border border-[#501a2c]/10">
+                  <div className="h-5 flex overflow-hidden border border-[rgb(var(--c-accent-rgb)_/_0.1)]">
                     {report.palette.map((item, i) => (
                       <div key={i} style={{ backgroundColor: item.hex, flex: 1 }} title={item.name} />
                     ))}
                   </div>
                   {report.palette.map((item, i) => (
                     <div key={i} className="flex items-center gap-4">
-                      <div className="w-12 h-10 shrink-0 border border-[#501a2c]/10" style={{ backgroundColor: item.hex }} />
+                      <div className="w-12 h-10 shrink-0 border border-[rgb(var(--c-accent-rgb)_/_0.1)]" style={{ backgroundColor: item.hex }} />
                       <div>
-                        <div className="font-mono text-xs uppercase tracking-wider text-[#501a2c]">{item.name}</div>
-                        <div className="font-mono text-[10px] text-[#501a2c]/40">{item.hex}</div>
+                        <div className="font-mono text-xs uppercase tracking-wider text-[var(--c-accent)]">{item.name}</div>
+                        <div className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.4)]">{item.hex}</div>
                       </div>
                     </div>
                   ))}
@@ -668,27 +668,27 @@ function StudioTool({ onBack, t }: { onBack: () => void; t: T }) {
               {report && activeTab === 'critique' && (
                 <div className="space-y-5">
                   <div>
-                    <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/40 mb-3">Strengths</p>
+                    <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-3">Strengths</p>
                     <ul className="space-y-2.5">
                       {report.critique.strengths.map((s, i) => (
                         <li key={i} className="flex items-start gap-3">
                           <span className="mt-0.5 w-4 h-4 rounded-full bg-[#4A7C59]/12 border border-[#4A7C59]/30 flex items-center justify-center shrink-0">
                             <Check size={9} className="text-[#4A7C59]" />
                           </span>
-                          <span className="font-serif text-sm text-[#501a2c]/70 leading-snug">{s}</span>
+                          <span className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.7)] leading-snug">{s}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
-                  <div className="pt-3 border-t border-[#501a2c]/10">
-                    <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/40 mb-3">Opportunities</p>
+                  <div className="pt-3 border-t border-[rgb(var(--c-accent-rgb)_/_0.1)]">
+                    <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-3">Opportunities</p>
                     <ul className="space-y-2.5">
                       {report.critique.opportunities.map((s, i) => (
                         <li key={i} className="flex items-start gap-3">
-                          <span className="mt-0.5 w-4 h-4 rounded-full bg-[#C9A690]/15 border border-[#C9A690]/40 flex items-center justify-center shrink-0">
-                            <ArrowRight size={9} className="text-[#C9A690]" />
+                          <span className="mt-0.5 w-4 h-4 rounded-full bg-[rgb(var(--c-gold-rgb)_/_0.15)] border border-[rgb(var(--c-gold-rgb)_/_0.4)] flex items-center justify-center shrink-0">
+                            <ArrowRight size={9} className="text-[var(--c-gold)]" />
                           </span>
-                          <span className="font-serif text-sm text-[#501a2c]/70 leading-snug">{s}</span>
+                          <span className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.7)] leading-snug">{s}</span>
                         </li>
                       ))}
                     </ul>
@@ -747,7 +747,7 @@ function ChronicleTool({ onBack, t }: { onBack: () => void; t: T }) {
   return (
     <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.3 }}
-      className="min-h-screen bg-[#F5F0EB] px-4 sm:px-8 md:px-16 py-8">
+      className="min-h-screen bg-[var(--c-bg)] px-4 sm:px-8 md:px-16 py-8">
       <BackBtn onClick={onBack} t={t} />
       <ToolHeader kicker="EPRIS / MATERIE" title="CHRONICLE" tagline={t('materie.chronicle.tagline')} />
 
@@ -773,7 +773,7 @@ function ChronicleTool({ onBack, t }: { onBack: () => void; t: T }) {
                       <span key={e} className="font-mono text-[8px] uppercase tracking-[0.2em] text-white/40">{e}</span>
                     ))}
                   </div>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#C9A690]/70 mb-1">{report.emotion}</p>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[rgb(var(--c-gold-rgb)_/_0.7)] mb-1">{report.emotion}</p>
                 </motion.div>
               )}
             </div>
@@ -788,10 +788,10 @@ function ChronicleTool({ onBack, t }: { onBack: () => void; t: T }) {
           </div>
 
           {/* ── Right: editorial reading ── */}
-          <div className="border border-[#501a2c] border-l-0 flex flex-col">
+          <div className="border border-[var(--c-accent)] border-l-0 flex flex-col">
             {!report && !error && (
               <div className="flex-1 flex items-center justify-center py-20">
-                <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/30">
+                <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.3)]">
                   {reading ? 'Analysing…' : 'Upload photograph to begin'}
                 </p>
               </div>
@@ -799,66 +799,66 @@ function ChronicleTool({ onBack, t }: { onBack: () => void; t: T }) {
 
             {error && (
               <div className="p-6 flex items-start gap-3">
-                <AlertCircle size={14} className="text-[#501a2c] mt-0.5 shrink-0" />
-                <p className="font-mono text-xs text-[#501a2c]">{error}</p>
+                <AlertCircle size={14} className="text-[var(--c-accent)] mt-0.5 shrink-0" />
+                <p className="font-mono text-xs text-[var(--c-accent)]">{error}</p>
               </div>
             )}
 
             {report && (
               <>
                 {/* Headline block */}
-                <div className="bg-[#501a2c] text-[#F5F0EB] px-6 py-6">
-                  <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-[#C9A690]/50 mb-2">Chronicle / Editorial</p>
-                  <h2 className="font-serif text-2xl md:text-3xl leading-tight text-[#F5F0EB] mb-2">{report.headline}</h2>
-                  <p className="font-serif text-sm italic text-[#F5F0EB]/55 leading-snug">{report.subheadline}</p>
+                <div className="bg-[var(--c-accent)] text-[var(--c-bg)] px-6 py-6">
+                  <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-[rgb(var(--c-gold-rgb)_/_0.5)] mb-2">Chronicle / Editorial</p>
+                  <h2 className="font-serif text-2xl md:text-3xl leading-tight text-[var(--c-bg)] mb-2">{report.headline}</h2>
+                  <p className="font-serif text-sm italic text-[rgb(var(--c-bg-rgb)_/_0.55)] leading-snug">{report.subheadline}</p>
                 </div>
 
                 {/* Narrative */}
-                <div className="px-6 py-6 border-b border-[#501a2c]/15">
-                  <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/35 mb-3">Editorial Reading</p>
-                  <p className="font-serif text-sm text-[#501a2c]/80 leading-relaxed">{report.narrative}</p>
+                <div className="px-6 py-6 border-b border-[rgb(var(--c-accent-rgb)_/_0.15)]">
+                  <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.35)] mb-3">Editorial Reading</p>
+                  <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.8)] leading-relaxed">{report.narrative}</p>
                 </div>
 
                 {/* Tension + Light */}
-                <div className="grid grid-cols-2 border-b border-[#501a2c]/15">
-                  <div className="px-5 py-4 border-r border-[#501a2c]/15">
-                    <p className="font-mono text-[8px] uppercase tracking-widest text-[#501a2c]/35 mb-1.5">Tension</p>
-                    <p className="font-serif text-xs text-[#501a2c]/70 leading-snug">{report.tension}</p>
+                <div className="grid grid-cols-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.15)]">
+                  <div className="px-5 py-4 border-r border-[rgb(var(--c-accent-rgb)_/_0.15)]">
+                    <p className="font-mono text-[8px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.35)] mb-1.5">Tension</p>
+                    <p className="font-serif text-xs text-[rgb(var(--c-accent-rgb)_/_0.7)] leading-snug">{report.tension}</p>
                   </div>
                   <div className="px-5 py-4">
-                    <p className="font-mono text-[8px] uppercase tracking-widest text-[#501a2c]/35 mb-1.5">Light</p>
-                    <p className="font-serif text-xs text-[#501a2c]/70 leading-snug">{report.light_quality}</p>
+                    <p className="font-mono text-[8px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.35)] mb-1.5">Light</p>
+                    <p className="font-serif text-xs text-[rgb(var(--c-accent-rgb)_/_0.7)] leading-snug">{report.light_quality}</p>
                   </div>
                 </div>
 
                 {/* Technical + era */}
-                <div className="grid grid-cols-2 border-b border-[#501a2c]/15">
-                  <div className="px-5 py-4 border-r border-[#501a2c]/15">
-                    <p className="font-mono text-[8px] uppercase tracking-widest text-[#501a2c]/35 mb-1">Composition</p>
-                    <p className="font-mono text-[10px] text-[#501a2c]">{report.composition}</p>
+                <div className="grid grid-cols-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.15)]">
+                  <div className="px-5 py-4 border-r border-[rgb(var(--c-accent-rgb)_/_0.15)]">
+                    <p className="font-mono text-[8px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.35)] mb-1">Composition</p>
+                    <p className="font-mono text-[10px] text-[var(--c-accent)]">{report.composition}</p>
                   </div>
                   <div className="px-5 py-4">
-                    <p className="font-mono text-[8px] uppercase tracking-widest text-[#501a2c]/35 mb-1">Era</p>
-                    <p className="font-mono text-[10px] text-[#501a2c]">{report.era}</p>
+                    <p className="font-mono text-[8px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.35)] mb-1">Era</p>
+                    <p className="font-mono text-[10px] text-[var(--c-accent)]">{report.era}</p>
                   </div>
                 </div>
 
                 {/* Human presence + Editorial score */}
-                <div className="px-6 py-5 border-b border-[#501a2c]/15 flex items-center gap-4 justify-between">
+                <div className="px-6 py-5 border-b border-[rgb(var(--c-accent-rgb)_/_0.15)] flex items-center gap-4 justify-between">
                   <div>
-                    <p className="font-mono text-[8px] uppercase tracking-widest text-[#501a2c]/35 mb-1">Subject</p>
-                    <p className="font-mono text-[10px] text-[#501a2c]">{PRESENCE_LABEL[report.human_presence] ?? report.human_presence}</p>
+                    <p className="font-mono text-[8px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.35)] mb-1">Subject</p>
+                    <p className="font-mono text-[10px] text-[var(--c-accent)]">{PRESENCE_LABEL[report.human_presence] ?? report.human_presence}</p>
                   </div>
                   <div className="text-right">
-                    <p className="font-mono text-[8px] uppercase tracking-widest text-[#501a2c]/35 mb-1">Editorial Score</p>
+                    <p className="font-mono text-[8px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.35)] mb-1">Editorial Score</p>
                     <div className="flex items-baseline gap-1.5 justify-end">
                       <span className="font-mono text-3xl leading-none font-light"
                         style={{ color: SCORE_COLOR(report.editorial_score) }}>
                         {report.editorial_score}
                       </span>
-                      <span className="font-mono text-[9px] text-[#501a2c]/30">/100</span>
+                      <span className="font-mono text-[9px] text-[rgb(var(--c-accent-rgb)_/_0.3)]">/100</span>
                     </div>
-                    <div className="mt-2 w-24 ml-auto h-px bg-[#501a2c]/10">
+                    <div className="mt-2 w-24 ml-auto h-px bg-[rgb(var(--c-accent-rgb)_/_0.1)]">
                       <motion.div className="h-px" style={{ backgroundColor: SCORE_COLOR(report.editorial_score) }}
                         initial={{ width: 0 }}
                         animate={{ width: `${report.editorial_score}%` }}
@@ -870,7 +870,7 @@ function ChronicleTool({ onBack, t }: { onBack: () => void; t: T }) {
                 {/* Tags */}
                 <div className="px-6 py-5 flex flex-wrap gap-2">
                   {report.tags.map(tag => (
-                    <span key={tag} className="border border-[#501a2c]/25 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/55">
+                    <span key={tag} className="border border-[rgb(var(--c-accent-rgb)_/_0.25)] px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)]">
                       {tag}
                     </span>
                   ))}
@@ -878,10 +878,10 @@ function ChronicleTool({ onBack, t }: { onBack: () => void; t: T }) {
               </>
             )}
 
-            <div className="mt-auto px-6 pb-5 pt-2 border-t border-[#501a2c]/10">
+            <div className="mt-auto px-6 pb-5 pt-2 border-t border-[rgb(var(--c-accent-rgb)_/_0.1)]">
               <button type="button"
                 onClick={() => { setUpload(null); setReport(null); }}
-                className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c]/40 hover:text-[#501a2c] transition-colors flex items-center gap-2">
+                className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] hover:text-[var(--c-accent)] transition-colors flex items-center gap-2">
                 <Upload size={12} /> {t('materie.newimage')}
               </button>
             </div>
@@ -958,25 +958,25 @@ export function MateriePage({ t }: { t: T }) {
       {!tool && (
         <motion.div key="landing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
-          className="min-h-[calc(100vh-4rem)] bg-[#F5F0EB]">
+          className="min-h-[calc(100vh-4rem)] bg-[var(--c-bg)]">
 
           {/* ── Hero ── */}
-          <div className="relative overflow-hidden border-b border-[#501a2c]/20">
+          <div className="relative overflow-hidden border-b border-[rgb(var(--c-accent-rgb)_/_0.2)]">
             <img src={MATERIE_BG} alt="" aria-hidden="true"
               className="absolute inset-0 w-full h-full object-cover object-center opacity-30 pointer-events-none select-none" />
             <div className="relative z-10 px-6 sm:px-10 md:px-16 pt-14 pb-12 sm:pt-20 sm:pb-16">
-              <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#501a2c]/50 mb-5">{t('materie.kicker')}</p>
-              <h1 className="font-mono text-5xl sm:text-7xl lg:text-8xl tracking-[0.06em] text-[#501a2c] leading-none mb-6">MATERIE</h1>
-              <p className="font-serif text-lg sm:text-2xl text-[#501a2c]/55 italic max-w-xl leading-relaxed">{t('materie.subtitle')}</p>
-              <div className="flex gap-8 sm:gap-14 mt-10 pt-8 border-t border-[#501a2c]/15">
+              <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-5">{t('materie.kicker')}</p>
+              <h1 className="font-mono text-5xl sm:text-7xl lg:text-8xl tracking-[0.06em] text-[var(--c-accent)] leading-none mb-6">MATERIE</h1>
+              <p className="font-serif text-lg sm:text-2xl text-[rgb(var(--c-accent-rgb)_/_0.55)] italic max-w-xl leading-relaxed">{t('materie.subtitle')}</p>
+              <div className="flex gap-8 sm:gap-14 mt-10 pt-8 border-t border-[rgb(var(--c-accent-rgb)_/_0.15)]">
                 {[
                   { num: '03', label: t('materie.stats.tools') },
                   { num: 'AI', label: t('materie.stats.models') },
                   { num: '∞',  label: t('materie.stats.analyses') },
                 ].map(({ num, label }) => (
                   <div key={label}>
-                    <p className="font-mono text-2xl sm:text-3xl text-[#501a2c] leading-none">{num}</p>
-                    <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#501a2c]/40 mt-1">{label}</p>
+                    <p className="font-mono text-2xl sm:text-3xl text-[var(--c-accent)] leading-none">{num}</p>
+                    <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.4)] mt-1">{label}</p>
                   </div>
                 ))}
               </div>
@@ -988,32 +988,32 @@ export function MateriePage({ t }: { t: T }) {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-6 max-w-6xl">
               {TOOL_CARDS(t).map((card) => (
                 <button key={card.id} type="button" onClick={() => setTool(card.id)}
-                  className="group text-left border border-[#501a2c] hover:bg-[#501a2c] transition-colors duration-300 overflow-hidden">
+                  className="group text-left border border-[var(--c-accent)] hover:bg-[var(--c-accent)] transition-colors duration-300 overflow-hidden">
                   <div className="h-1 transition-colors duration-300"
                     style={{ backgroundColor: card.accent }} />
                   <div className="p-7 sm:p-8">
                     <div className="flex items-start justify-between mb-7">
-                      <div className="w-10 h-10 border border-[#501a2c] group-hover:border-[#F5F0EB]/40 flex items-center justify-center transition-colors">
-                        <span className="text-[#501a2c] group-hover:text-[#F5F0EB] transition-colors">{card.icon}</span>
+                      <div className="w-10 h-10 border border-[var(--c-accent)] group-hover:border-[rgb(var(--c-bg-rgb)_/_0.4)] flex items-center justify-center transition-colors">
+                        <span className="text-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">{card.icon}</span>
                       </div>
-                      <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#501a2c]/30 group-hover:text-[#F5F0EB]/30 transition-colors mt-1">{card.num}</span>
+                      <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.3)] group-hover:text-[rgb(var(--c-bg-rgb)_/_0.3)] transition-colors mt-1">{card.num}</span>
                     </div>
-                    <p className="font-mono text-[9px] uppercase tracking-[0.25em] mb-2 transition-colors group-hover:text-[#C9A690]"
+                    <p className="font-mono text-[9px] uppercase tracking-[0.25em] mb-2 transition-colors group-hover:text-[var(--c-gold)]"
                       style={{ color: card.accent + '99' }}>{card.kicker}</p>
-                    <h2 className="font-mono text-xl sm:text-2xl tracking-[0.08em] text-[#501a2c] group-hover:text-[#F5F0EB] mb-4 transition-colors leading-tight">
+                    <h2 className="font-mono text-xl sm:text-2xl tracking-[0.08em] text-[var(--c-accent)] group-hover:text-[var(--c-bg)] mb-4 transition-colors leading-tight">
                       {card.title}
                     </h2>
-                    <p className="font-serif text-sm text-[#501a2c]/60 group-hover:text-[#F5F0EB]/60 leading-relaxed mb-7 transition-colors">
+                    <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.6)] group-hover:text-[rgb(var(--c-bg-rgb)_/_0.6)] leading-relaxed mb-7 transition-colors">
                       {card.desc}
                     </p>
                     <div className="grid grid-cols-2 gap-1.5 mb-7">
                       {card.features.map(({ icon, label }) => (
-                        <div key={label} className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-wider text-[#501a2c]/45 group-hover:text-[#F5F0EB]/45 transition-colors">
+                        <div key={label} className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-wider text-[rgb(var(--c-accent-rgb)_/_0.45)] group-hover:text-[rgb(var(--c-bg-rgb)_/_0.45)] transition-colors">
                           <span className="opacity-60">{icon}</span>{label}
                         </div>
                       ))}
                     </div>
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c] group-hover:text-[#C9A690] flex items-center gap-2 transition-colors">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:text-[var(--c-gold)] flex items-center gap-2 transition-colors">
                       {card.cta} <ChevronRight size={13} />
                     </span>
                   </div>
@@ -1023,8 +1023,8 @@ export function MateriePage({ t }: { t: T }) {
           </div>
 
           {/* ── How it works ── */}
-          <div className="px-6 sm:px-10 md:px-16 pb-14 border-t border-[#501a2c]/10 pt-10 max-w-6xl">
-            <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#501a2c]/35 mb-8">{t('materie.how')}</p>
+          <div className="px-6 sm:px-10 md:px-16 pb-14 border-t border-[rgb(var(--c-accent-rgb)_/_0.1)] pt-10 max-w-6xl">
+            <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[rgb(var(--c-accent-rgb)_/_0.35)] mb-8">{t('materie.how')}</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12">
               {[
                 { n: '01', title: t('materie.step1.title'), desc: t('materie.step1.desc') },
@@ -1032,16 +1032,16 @@ export function MateriePage({ t }: { t: T }) {
                 { n: '03', title: t('materie.step3.title'), desc: t('materie.step3.desc') },
               ].map(({ n, title, desc }) => (
                 <div key={n} className="flex gap-5">
-                  <span className="font-mono text-[10px] text-[#C9A690] mt-0.5 shrink-0 w-5">{n}</span>
+                  <span className="font-mono text-[10px] text-[var(--c-gold)] mt-0.5 shrink-0 w-5">{n}</span>
                   <div>
-                    <p className="font-mono text-[10px] uppercase tracking-widest text-[#501a2c] mb-1">{title}</p>
-                    <p className="font-serif text-sm text-[#501a2c]/50 leading-relaxed">{desc}</p>
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] mb-1">{title}</p>
+                    <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.5)] leading-relaxed">{desc}</p>
                   </div>
                 </div>
               ))}
             </div>
-            <div className="mt-10 pt-6 border-t border-[#501a2c]/10">
-              <p className="font-mono text-[9px] uppercase tracking-widest text-[#501a2c]/25">{t('materie.powered')}</p>
+            <div className="mt-10 pt-6 border-t border-[rgb(var(--c-accent-rgb)_/_0.1)]">
+              <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.25)]">{t('materie.powered')}</p>
             </div>
           </div>
         </motion.div>

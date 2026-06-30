@@ -8629,3 +8629,86 @@ async function flushModernEditor() {
   try { const d = await __modernEditor.save(); window.__modernBlocksCache = __editorToBlocks(d); } catch (e) { /* ignore */ }
   return window.__modernBlocksCache;
 }
+
+// ════════════════════════════════════════════════════════════════════════════
+// APPEARANCE — site customizer (colors + fonts → content.theme → publish to VPS)
+// ════════════════════════════════════════════════════════════════════════════
+(function () {
+  const FONTS_DISPLAY = ['Playfair Display', 'Cormorant Garamond', 'EB Garamond', 'Libre Baskerville', 'Lora', 'Fraunces', 'Spectral', 'Bodoni Moda', 'Cinzel', 'Crimson Pro', 'Cardo'];
+  const FONTS_BODY = ['Iowan Old Style', 'Lora', 'EB Garamond', 'Spectral', 'Source Serif 4', 'PT Serif', 'Inter', 'Work Sans', 'Karla', 'Nunito Sans', 'Mulish', 'Crimson Pro'];
+  const DEF = { accent: '#501a2c', gold: '#c9a690', bg: '#f5f0eb', fontDisplay: 'Playfair Display', fontBody: 'Iowan Old Style' };
+  const $ = (id) => document.getElementById(id);
+  const loaded = new Set();
+  function ensureFont(name) {
+    if (!name || name === 'Iowan Old Style') return;
+    const key = name.toLowerCase();
+    if (loaded.has(key)) return;
+    loaded.add(key);
+    const l = document.createElement('link');
+    l.rel = 'stylesheet';
+    l.href = 'https://fonts.googleapis.com/css2?family=' + name.replace(/ /g, '+') + ':wght@400;700&display=swap';
+    document.head.appendChild(l);
+  }
+  function fillSelect(sel, arr, val) { if (sel) sel.innerHTML = arr.map((f) => '<option value="' + f + '"' + (f === val ? ' selected' : '') + '>' + f + '</option>').join(''); }
+  function readTheme() { try { const j = JSON.parse($('editor').value || '{}'); return Object.assign({}, DEF, j.theme || {}); } catch (e) { return Object.assign({}, DEF); } }
+  function syncPreview() {
+    const pv = $('apPreview'); if (!pv) return;
+    const fd = $('apFontDisplay').value, fb = $('apFontBody').value;
+    ensureFont(fd); ensureFont(fb);
+    pv.style.setProperty('--pv-accent', $('apAccentHex').value);
+    pv.style.setProperty('--pv-gold', $('apGoldHex').value);
+    pv.style.setProperty('--pv-bg', $('apBgHex').value);
+    pv.style.setProperty('--pv-display', "'" + fd + "', serif");
+    pv.style.setProperty('--pv-body', "'" + fb + "', serif");
+  }
+  function setPair(colorId, hexId, v) { if ($(colorId)) $(colorId).value = v; if ($(hexId)) $(hexId).value = v; }
+  function loadControls() {
+    const t = readTheme();
+    setPair('apAccent', 'apAccentHex', t.accent);
+    setPair('apGold', 'apGoldHex', t.gold);
+    setPair('apBg', 'apBgHex', t.bg);
+    fillSelect($('apFontDisplay'), FONTS_DISPLAY, t.fontDisplay);
+    fillSelect($('apFontBody'), FONTS_BODY, t.fontBody);
+    syncPreview();
+  }
+  function bindColor(colorId, hexId) {
+    const c = $(colorId), h = $(hexId); if (!c || !h) return;
+    c.addEventListener('input', () => { h.value = c.value; syncPreview(); });
+    h.addEventListener('input', () => { if (/^#[0-9a-fA-F]{6}$/.test(h.value)) { c.value = h.value; syncPreview(); } });
+  }
+  bindColor('apAccent', 'apAccentHex');
+  bindColor('apGold', 'apGoldHex');
+  bindColor('apBg', 'apBgHex');
+  $('apFontDisplay')?.addEventListener('change', syncPreview);
+  $('apFontBody')?.addEventListener('change', syncPreview);
+  document.querySelector('[data-tab="appearance"]')?.addEventListener('click', () => setTimeout(loadControls, 60));
+  $('apResetBtn')?.addEventListener('click', () => {
+    setPair('apAccent', 'apAccentHex', DEF.accent);
+    setPair('apGold', 'apGoldHex', DEF.gold);
+    setPair('apBg', 'apBgHex', DEF.bg);
+    if ($('apFontDisplay')) $('apFontDisplay').value = DEF.fontDisplay;
+    if ($('apFontBody')) $('apFontBody').value = DEF.fontBody;
+    syncPreview();
+  });
+  $('apPublishBtn')?.addEventListener('click', async () => {
+    const st = $('apStatus');
+    try {
+      if (!$('editor').value) { st.textContent = 'Сначала загрузите контент (кнопка «Загрузить»).'; st.style.color = 'var(--warn)'; return; }
+      const theme = {
+        accent: $('apAccentHex').value, gold: $('apGoldHex').value, bg: $('apBgHex').value,
+        fontDisplay: $('apFontDisplay').value, fontBody: $('apFontBody').value
+      };
+      const j = JSON.parse($('editor').value);
+      j.theme = theme;
+      if (typeof setEditorData === 'function') setEditorData(j); else $('editor').value = JSON.stringify(j, null, 2);
+      st.textContent = 'Публикую…'; st.style.color = 'var(--text-muted)';
+      const pw = (typeof getAdminPassword === 'function') ? getAdminPassword() : '';
+      if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
+      const res = await fetch(CONTENT_API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw }, body: JSON.stringify(j) });
+      const d = await res.json().catch(() => ({}));
+      if (!res.ok || !d.ok) throw new Error(d.error || ('VPS вернул ' + res.status));
+      if (typeof setLastSyncedSnapshotFromText === 'function') setLastSyncedSnapshotFromText($('editor').value);
+      st.textContent = '✓ Оформление опубликовано — сайт обновлён мгновенно'; st.style.color = 'var(--ok)';
+    } catch (e) { st.textContent = '✗ ' + e.message; st.style.color = 'var(--danger)'; }
+  });
+})();
