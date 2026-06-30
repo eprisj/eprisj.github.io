@@ -159,11 +159,57 @@ export interface SiteContent {
 
 const content = rawContent as SiteContent;
 
+// ── Live content layer (VPS is the source of truth) ──────────────────────────
+// The admin saves content to the VPS API, and the public site fetches it live
+// on startup via loadLiveContent(). The bundled `content` above is the offline
+// fallback: if the VPS is unreachable, the site keeps rendering the last build.
+export const CONTENT_API = 'https://api.eprisjournal.com/content';
+
+let liveContent: SiteContent | null = null;
+const contentListeners = new Set<() => void>();
+
+/** Subscribe to live-content swaps; returns an unsubscribe fn. */
+export function subscribeContent(cb: () => void): () => void {
+  contentListeners.add(cb);
+  return () => { contentListeners.delete(cb); };
+}
+function notifyContentChanged(): void {
+  contentListeners.forEach((cb) => { try { cb(); } catch { /* ignore */ } });
+}
+
+export function applyLiveContent(json: SiteContent): void {
+  liveContent = json;
+  notifyContentChanged();
+}
+
+/**
+ * Fetches the live content from the VPS and swaps it in. Resolves to true on
+ * success, false on any failure (network, timeout, bad shape) — in which case
+ * the bundled fallback stays active and the site is unaffected.
+ */
+export async function loadLiveContent(timeoutMs = 4000): Promise<boolean> {
+  try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+    const res = await fetch(CONTENT_API, { signal: ctrl.signal, cache: 'no-store' });
+    clearTimeout(timer);
+    if (!res.ok) return false;
+    const json = await res.json();
+    if (!json || typeof json !== 'object' || !json.translations || !Array.isArray(json.articles)) {
+      return false;
+    }
+    applyLiveContent(json as SiteContent);
+    return true;
+  } catch {
+    return false; // keep bundled fallback
+  }
+}
+
 // ── Preview override ─────────────────────────────────────────────────────────
 // The admin can preview an unsaved issue draft by writing its full content JSON
 // to localStorage and opening /issue?preview=1. App.tsx reads it and calls
 // setPreviewOverride before render; the issue/studio/content read-paths below
-// then resolve against the override instead of the bundled content.
+// then resolve against the override instead of the live/bundled content.
 let previewContent: SiteContent | null = null;
 let previewIssueId: number | null = null;
 export function setPreviewOverride(json: SiteContent | null, issueId?: number | null): void {
@@ -171,7 +217,7 @@ export function setPreviewOverride(json: SiteContent | null, issueId?: number | 
   previewIssueId = issueId ?? null;
 }
 function src(): SiteContent {
-  return previewContent || content;
+  return previewContent || liveContent || content;
 }
 function isPreview(): boolean {
   return previewContent !== null;
@@ -188,7 +234,7 @@ function mergeLocalizedArray<T extends { id: number }>(value: T[] | undefined, f
 }
 
 export function getAvailableLanguages(): string[] {
-  const allLangs = Object.keys(content.translations);
+  const allLangs = Object.keys(src().translations);
   if (!allLangs.includes(DEFAULT_LANGUAGE)) {
     allLangs.unshift(DEFAULT_LANGUAGE);
   }
@@ -207,7 +253,14 @@ export function getContentForLanguage(lang: string): LanguageContent {
   };
 }
 
+// Back-compat: the bundled translations map. Prefer getTranslations() for
+// live-aware lookups (it resolves against the active content source).
 export const translations = content.translations;
+
+/** Live-aware translations map (preview → live → bundled). */
+export function getTranslations(): Record<string, Record<string, string>> {
+  return src().translations;
+}
 
 const DEFAULT_ISSUE: Issue = {
   id: 1,

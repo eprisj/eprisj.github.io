@@ -19,7 +19,9 @@ import {
   LibraryItem,
   Review,
   setPreviewOverride,
-  translations
+  getTranslations,
+  loadLiveContent,
+  subscribeContent
 } from './data';
 import { Search, Folder, Star, ArrowUpRight, ArrowRight, Download, FileText, BookOpen, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
 
@@ -84,7 +86,8 @@ function ImageLightbox({ src, alt, onClose }: { src: string; alt: string; onClos
 }
 
 function getTranslation(lang: string, key: string) {
-  return translations[lang]?.[key] || translations[DEFAULT_LANGUAGE]?.[key] || key;
+  const tr = getTranslations();
+  return tr[lang]?.[key] || tr[DEFAULT_LANGUAGE]?.[key] || key;
 }
 
 function isCustomMediaReference(value: string): boolean {
@@ -1734,6 +1737,14 @@ export default function App() {
   const [currentLang, setCurrentLang] = useState(DEFAULT_LANGUAGE);
   const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
   const [activeSearch, setActiveSearch] = useState('');
+  // Live content: fetch the latest from the VPS on mount and re-render when it
+  // swaps in. Until then (or if the VPS is unreachable) the bundled JSON renders.
+  const [, setContentVersion] = useState(0);
+  useEffect(() => {
+    const unsubscribe = subscribeContent(() => setContentVersion((v) => v + 1));
+    loadLiveContent();
+    return unsubscribe;
+  }, []);
   const languageOptions = getAvailableLanguages();
   const { items, articles, reviews, libraryItems } = getContentForLanguage(currentLang);
   const issueArchive = getIssueArchive(currentLang);
