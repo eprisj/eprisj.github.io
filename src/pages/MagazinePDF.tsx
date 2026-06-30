@@ -368,11 +368,14 @@ function ArticleContentPage({
   // content page opens straight into the masthead + body — no repeated hero.
   let firstText = true;
 
+    // react-pdf can't render HTML — flatten any inline markup to plain text.
+    const plain = (html: string) => String(html || '').replace(/<br\s*\/?>(?=)/gi, ' ').replace(/<[^>]*>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&nbsp;/g, ' ');
+
   const renderBlock = (block: ContentBlock, key: number) => {
     if (block.type === 'text' && typeof block.content === 'string') {
       if (firstText) {
         firstText = false;
-        const text = block.content;
+        const text = plain(block.content);
         return (
           <View key={key} style={s.dropCapRow}>
             <Text style={s.dropCapLetter}>{text.charAt(0)}</Text>
@@ -380,18 +383,18 @@ function ArticleContentPage({
           </View>
         );
       }
-      return <Text key={key} style={s.para}>{block.content}</Text>;
+      return <Text key={key} style={s.para}>{plain(block.content)}</Text>;
     }
 
     if (block.type === 'header' && typeof block.content === 'string') {
-      return <Text key={key} style={s.subheading}>{block.content}</Text>;
+      return <Text key={key} style={s.subheading}>{plain(block.content)}</Text>;
     }
 
     if (block.type === 'quote' && typeof block.content === 'string') {
       return (
         <View key={key} style={s.quoteView} wrap={false}>
           <Text style={s.quoteMark}>“</Text>
-          <Text style={s.quoteText}>{block.content}</Text>
+          <Text style={s.quoteText}>{plain(block.content)}</Text>
           {block.caption ? <Text style={s.quoteSource}>{block.caption.toUpperCase()}</Text> : null}
         </View>
       );

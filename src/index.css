@@ -126,3 +126,12 @@ img[loading="lazy"] {
 
 /* ── View transitions (Chrome 111+) ──────────────────────── */
 @view-transition { navigation: auto; }
+
+/* Rich inline text rendered from the admin editor (bold/italic/links/marker/underline) */
+.rich-text a { color: #501a2c; text-decoration: underline; text-underline-offset: 2px; transition: color .15s; }
+.rich-text a:hover { color: #9c7b54; }
+.rich-text mark { background: rgba(201,166,144,.38); color: inherit; padding: 0 .12em; border-radius: 2px; }
+.rich-text code { font-family: 'IBM Plex Mono', monospace; background: rgba(80,26,44,.07); padding: .05em .35em; border-radius: 3px; font-size: .9em; }
+.rich-text strong, .rich-text b { font-weight: 700; }
+.rich-text em, .rich-text i { font-style: italic; }
+.rich-text u { text-decoration: underline; }

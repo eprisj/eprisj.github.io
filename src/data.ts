@@ -19,6 +19,7 @@ export interface ContentBlock {
   coordinates?: { lat: number; lng: number };
   url?: string;
   level?: number;
+  stretched?: boolean;
 }
 
 export interface Article {
