@@ -13,6 +13,7 @@
   --c-bg-rgb: 245 240 235;
   --font-display: 'Playfair Display', serif;       /* headings */
   --font-body: 'Iowan Old Style', 'Palatino Linotype', Palatino, serif; /* body */
+  --bg-image: none;          /* optional page background image (admin Appearance) */
 
   font-family: var(--font-body);
   line-height: 1.5;
@@ -48,6 +49,11 @@ body {
   margin: 0;
   min-height: 100vh;
   background-color: var(--c-bg);
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   color: var(--c-accent);
   font-family: var(--font-body);
   overflow-x: hidden;
