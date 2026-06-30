@@ -164,6 +164,15 @@ function byId(id) {
 // ===== AUTH GATE =====
 const AUTH_STORAGE_KEY    = 'epris_admin_token';
 const AUTH_PW_STORAGE_KEY = 'epris_admin_pw_saved';
+
+// ── Content API: the VPS is the source of truth (instant publish, no rebuild) ──
+const CONTENT_API = 'https://api.eprisjournal.com/content';
+function getAdminPassword() {
+  try {
+    const b64 = localStorage.getItem(AUTH_PW_STORAGE_KEY);
+    return b64 ? atob(b64) : '';
+  } catch { return ''; }
+}
 const authOverlay = byId('authOverlay');
 const authTokenInput = byId('authTokenInput');
 const authRememberCheck = byId('authRememberCheck');
@@ -179,11 +188,16 @@ async function verifyToken(token) {
   return await resp.json();
 }
 
+function setAuthBusy(isBusy) {
+  authLoading.hidden = !isBusy;
+  if (authLoginBtn) authLoginBtn.disabled = isBusy;
+  if (byId('authLoginPwBtn')) byId('authLoginPwBtn').disabled = isBusy;
+}
+
 function showAuthError(msg) {
   authError.textContent = msg;
   authError.hidden = false;
-  authLoading.hidden = true;
-  authLoginBtn.disabled = false;
+  setAuthBusy(false);
 }
 
 function hideAuthOverlay() {
@@ -195,8 +209,7 @@ async function handleLogin() {
   const token = authTokenInput.value.trim();
   if (!token) { showAuthError('Введите токен'); return; }
   authError.hidden = true;
-  authLoading.hidden = false;
-  authLoginBtn.disabled = true;
+  setAuthBusy(true);
   try {
     await verifyToken(token);
     tokenInput.value = token;
@@ -215,8 +228,7 @@ async function tryAutoLogin() {
   // 1. Try saved PAT — fastest path, no extra round-trip
   const savedPat = localStorage.getItem(AUTH_STORAGE_KEY);
   if (savedPat) {
-    authLoading.hidden = false;
-    authLoginBtn.disabled = true;
+    setAuthBusy(true);
     try {
       await verifyToken(savedPat);
       tokenInput.value = savedPat;
@@ -238,7 +250,7 @@ async function tryAutoLogin() {
   // 3. Exchange saved password for fresh PAT
   const savedPwB64 = localStorage.getItem(AUTH_PW_STORAGE_KEY);
   if (savedPwB64) {
-    authLoading.hidden = false;
+    setAuthBusy(true);
     try {
       const pw = atob(savedPwB64);
       const res = await fetch(TOKEN_API, {
@@ -259,8 +271,7 @@ async function tryAutoLogin() {
     } catch { /* fall through to login form */ }
     localStorage.removeItem(AUTH_PW_STORAGE_KEY);
   }
-  authLoading.hidden = true;
-  authLoginBtn.disabled = false;
+  setAuthBusy(false);
 }
 
 // ── Password login (exchanges password → GitHub PAT + radio token) ──
@@ -281,8 +292,7 @@ async function handlePasswordLogin() {
   const pw = (authPasswordInput?.value || '').trim();
   if (!pw) { showAuthError('Введите пароль'); return; }
   authError.hidden = true;
-  authLoading.hidden = false;
-  if (authLoginPwBtn) authLoginPwBtn.disabled = true;
+  setAuthBusy(true);
   try {
     const res = await fetch(TOKEN_API, {
       method: 'POST',
@@ -302,8 +312,7 @@ async function handlePasswordLogin() {
     hideAuthOverlay();
     await init({ fromLogin: true });
   } catch (e) {
-    showAuthError(e.message === 'Неверный пароль' || /invalid/i.test(e.message) ? 'Неверный пароль' : 'Ошибка входа: ' + e.message);
-    if (authLoginPwBtn) authLoginPwBtn.disabled = false;
+    showAuthError(e.message === 'Неверный пароль' || /invalid/i.test(e.message) || /fetch/i.test(e.message) ? 'Ошибка соединения или неверный пароль' : 'Ошибка входа: ' + e.message);
   }
 }
 
@@ -1258,29 +1267,24 @@ function setBusy(value) {
   loadingBarEl.classList.toggle('active', value);
 }
 
+// Loads the live content from the VPS (source of truth). Name kept for the
+// existing callers; persistence moved off GitHub to api.eprisjournal.com/content.
 async function loadFromGitHub() {
   try {
     setBusy(true);
-    setStatus('info', 'Загружаю файл из GitHub...');
-
-    const cfg = requireRepoFields();
+    setStatus('info', 'Загружаю контент с VPS...');
     saveSettings();
 
-    const url = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${encodePath(cfg.path)}?ref=${encodeURIComponent(cfg.branch)}`;
-    const payload = await githubRequest(url, {
-      method: 'GET',
-      headers: headers(cfg.token)
-    });
-
-    const contentText = decodeBase64Utf8(payload.content || '');
-    const parsed = JSON.parse(contentText);
+    const res = await fetch(CONTENT_API, { cache: 'no-store' });
+    if (!res.ok) throw new Error('VPS вернул статус ' + res.status);
+    const parsed = await res.json();
     validateShape(parsed);
 
-    currentSha = payload.sha || '';
+    currentSha = '';
     setEditorData(parsed, { markSynced: true, clearDraft: true });
     lastSyncedTime = new Date();
     updateLastSyncedBadge();
-    setStatus('success', `Файл ${cfg.path} загружен из ${cfg.owner}/${cfg.repo}@${cfg.branch}`);
+    setStatus('success', 'Контент загружен с VPS (live)');
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
@@ -1861,64 +1865,44 @@ function downloadJson() {
   }
 }
 
+// Publishes the editor content to the VPS. The public site reads it live, so
+// changes appear immediately — no GitHub commit, no Actions rebuild.
 async function saveToGitHub() {
   const confirmed = await showConfirmModal(
-    '\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f?',
-    '\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f \u0431\u0443\u0434\u0443\u0442 \u0437\u0430\u043a\u043e\u043c\u043c\u0438\u0447\u0435\u043d\u044b \u0432 <strong>GitHub</strong> \u0438 \u0441\u0430\u0439\u0442 \u043e\u0431\u043d\u043e\u0432\u0438\u0442\u0441\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438.',
-    '\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c'
+    'Опубликовать изменения?',
+    'Контент будет сохранён на <strong>VPS</strong> и сайт обновится <strong>сразу</strong> — без пересборки.',
+    'Опубликовать'
   );
   if (!confirmed) return;
   try {
     setBusy(true);
-    setStatus('info', 'Создаю коммит в GitHub...');
-
-    const cfg = requireRepoFields();
-    if (!cfg.token) {
-      throw new Error('Для сохранения изменений нужен Token.');
-    }
+    setStatus('info', 'Публикую на VPS...');
 
     const parsed = parseEditorJson();
     const syncSummary = await ensureAllContentLanguages(parsed, visualLangSelect.value || DEFAULT_LANGUAGE);
     if (syncSummary.created) {
       setEditorData(parsed);
-      setStatus('info', `Перед сохранением создано переводов: ${syncSummary.created}. Отправляю в GitHub...`);
+      setStatus('info', `Создано переводов: ${syncSummary.created}. Публикую...`);
     }
     saveSettings();
 
-    let sha = currentSha;
-    if (!sha) {
-      const lookupUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${encodePath(cfg.path)}?ref=${encodeURIComponent(cfg.branch)}`;
-      const existing = await githubRequest(lookupUrl, {
-        method: 'GET',
-        headers: headers(cfg.token)
-      });
-      sha = existing.sha || '';
-    }
+    const pw = getAdminPassword();
+    if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
 
-    const content = JSON.stringify(parsed, null, 2) + '\n';
-    const payload = {
-      message: cfg.message,
-      content: encodeBase64Utf8(content),
-      branch: cfg.branch,
-      sha
-    };
-
-    const putUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${encodePath(cfg.path)}`;
-    const result = await githubRequest(putUrl, {
-      method: 'PUT',
-      headers: {
-        ...headers(cfg.token),
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
+    const res = await fetch(CONTENT_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
+      body: JSON.stringify(parsed)
     });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || !data.ok) throw new Error(data.error || ('VPS вернул статус ' + res.status));
 
-    currentSha = result.content?.sha || sha;
+    currentSha = '';
     setLastSyncedSnapshotFromText(editor.value);
     localStorage.removeItem(DRAFT_KEY);
     lastSyncedTime = new Date();
     updateLastSyncedBadge();
-    setStatus('success', `Изменения сохранены в ${cfg.owner}/${cfg.repo}@${cfg.branch}`);
+    setStatus('success', 'Опубликовано на VPS — сайт обновлён мгновенно');
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
