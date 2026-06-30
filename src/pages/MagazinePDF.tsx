@@ -383,6 +383,10 @@ function ArticleContentPage({
       return <Text key={key} style={s.para}>{block.content}</Text>;
     }
 
+    if (block.type === 'header' && typeof block.content === 'string') {
+      return <Text key={key} style={s.subheading}>{block.content}</Text>;
+    }
+
     if (block.type === 'quote' && typeof block.content === 'string') {
       return (
         <View key={key} style={s.quoteView} wrap={false}>

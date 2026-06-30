@@ -2998,6 +2998,8 @@ function renderVisualForm() {
 
   const section = visualSectionSelect.value;
   const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
+  // The modern Editor.js editor only applies to articles; tear it down otherwise.
+  if (section !== 'articles') unmountModernEditor();
   const entries = getSectionArray(data, section, lang, false);
 
   if (!entries.length) {
@@ -3119,7 +3121,7 @@ function renderVisualForm() {
       <div class="editor-main-canvas">
         <input id="vf-title" class="canvas-title" placeholder="Заголовок статьи..." value="${escapeHtml(entry.title || '')}" />
         <textarea id="vf-excerpt" class="canvas-excerpt" placeholder="Введите краткое описание (лид) статьи...">${escapeHtml(entry.excerpt || '')}</textarea>
-        <div class="block-editor" id="vf-block-editor">${renderBlockEditor(entry.content || [])}</div>
+        <div class="block-editor" id="vf-block-editor"></div>
       </div>
       
       <!-- META SIDEBAR -->
@@ -3189,7 +3191,8 @@ function renderVisualForm() {
   bindUploadButton('vf-img-upload-btn', 'vf-img-upload-input', 'vf-imageUrl', () => {
     document.getElementById('vf-imageUrl')?.dispatchEvent(new Event('input'));
   });
-  bindBlockEditorEvents();
+  // Articles use the modern Editor.js block editor.
+  mountModernEditor(entry.content || []);
   bindCreatorQualityInputs(entry);
 }
 
@@ -3204,6 +3207,8 @@ function getFieldValue(id) {
 async function applyVisualChanges() {
   try {
     setBusy(true);
+    // Ensure the modern editor's latest content is flushed into the cache first.
+    if (window.__modernEditorActive) await flushModernEditor();
     const data = parseEditorJson();
     const section = visualSectionSelect.value;
     const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
@@ -4036,6 +4041,8 @@ function renderBlockBody(block, index) {
 window.mdeInstances = {};
 
 function redrawBlockEditor(blocks) {
+  // Articles use the modern Editor.js editor — re-mount it with the new blocks.
+  if (window.__modernEditorActive) { mountModernEditor(blocks); return; }
   const editorEl = document.getElementById('vf-block-editor');
   if (!editorEl) return;
   // Cleanup old EasyMDE instances
@@ -4045,7 +4052,9 @@ function redrawBlockEditor(blocks) {
     });
     window.mdeInstances = {};
   }
-  redrawBlockEditor(blocks);}
+  editorEl.innerHTML = renderBlockEditor(blocks);
+  bindBlockEditorEvents();
+}
 
 function renderBlockEditor(blocks) {
   if (!Array.isArray(blocks)) blocks = [];
@@ -4429,6 +4438,9 @@ function getCurrentArticleBlocks() {
 }
 
 function collectBlockEditorContent() {
+  // When the modern Editor.js editor is active, its synced cache is the source.
+  if (window.__modernEditorActive) return (window.__modernBlocksCache || []);
+
   const editorEl = document.getElementById('vf-block-editor');
   if (!editorEl) return [];
 
@@ -8325,3 +8337,256 @@ document.addEventListener('keydown', (e) => {
     }
   }
 });
+
+// ════════════════════════════════════════════════════════════════════════════
+// MODERN ARTICLE EDITOR — Editor.js integration
+// Native tools for text/header/quote/image/checklist/list; a passthrough tool
+// (eprisBlock) preserves + edits the EPRIS-specific blocks (note/gallery/map/
+// poll/link/audio/video). Output stays in the exact ContentBlock[] shape the
+// public site renders, so nothing on the site changes.
+// ════════════════════════════════════════════════════════════════════════════
+let __modernEditor = null;
+window.__modernEditorActive = false;
+window.__modernBlocksCache = [];
+
+function __escCE(s) {
+  return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+function __stripHtml(html) {
+  const d = document.createElement('div');
+  d.innerHTML = String(html == null ? '' : html);
+  return (d.textContent || '').replace(/ /g, ' ').trim();
+}
+function __hasTool(g) { return typeof window[g] !== 'undefined'; }
+
+// ContentBlock[] → Editor.js blocks
+function __blocksToEditor(blocks) {
+  const out = [];
+  (Array.isArray(blocks) ? blocks : []).forEach((b) => {
+    if (!b || !b.type) return;
+    const t = b.type;
+    if (t === 'text') out.push({ type: 'paragraph', data: { text: __escCE(b.content) } });
+    else if (t === 'header' && __hasTool('Header')) out.push({ type: 'header', data: { text: __escCE(b.content), level: Number(b.level) || 2 } });
+    else if (t === 'quote' && __hasTool('Quote')) out.push({ type: 'quote', data: { text: __escCE(b.content), caption: __escCE(b.caption || '') } });
+    else if (t === 'image' && __hasTool('ImageTool')) out.push({ type: 'image', data: { file: { url: String(b.content || '') }, caption: __escCE(b.caption || ''), withBorder: false, stretched: false, withBackground: false } });
+    else if (t === 'checklist' && __hasTool('Checklist')) out.push({ type: 'checklist', data: { items: (b.content && Array.isArray(b.content.items) ? b.content.items : []).map((x) => ({ text: __escCE(x), checked: false })) } });
+    else out.push({ type: 'eprisBlock', data: { block: b } }); // preserve everything else
+  });
+  return out.length ? out : [{ type: 'paragraph', data: { text: '' } }];
+}
+
+// Editor.js blocks → ContentBlock[]
+function __editorToBlocks(data) {
+  const res = [];
+  const blocks = (data && Array.isArray(data.blocks)) ? data.blocks : [];
+  blocks.forEach((blk) => {
+    const t = blk.type, d = blk.data || {};
+    if (t === 'paragraph') res.push({ type: 'text', content: __stripHtml(d.text) });
+    else if (t === 'header') res.push({ type: 'header', content: __stripHtml(d.text), level: Number(d.level) || 2 });
+    else if (t === 'quote') { const o = { type: 'quote', content: __stripHtml(d.text) }; const cap = __stripHtml(d.caption); if (cap) o.caption = cap; res.push(o); }
+    else if (t === 'image') { const url = (d.file && d.file.url) || d.url || ''; const o = { type: 'image', content: String(url) }; const cap = __stripHtml(d.caption); if (cap) o.caption = cap; res.push(o); }
+    else if (t === 'checklist') res.push({ type: 'checklist', content: { items: (Array.isArray(d.items) ? d.items : []).map((i) => __stripHtml(i && i.text)).filter(Boolean) } });
+    else if (t === 'list') { const items = Array.isArray(d.items) ? d.items : []; const lines = items.map((it, i) => { const txt = __stripHtml(typeof it === 'string' ? it : (it.content || it.text || '')); return (d.style === 'ordered' ? (i + 1) + '. ' : '• ') + txt; }); res.push({ type: 'text', content: lines.join('\n') }); }
+    else if (t === 'delimiter') { /* no site equivalent — skip */ }
+    else if (t === 'eprisBlock') { if (d.block && d.block.type) res.push(d.block); }
+  });
+  return res;
+}
+
+// Passthrough/editor tool for EPRIS-specific block types.
+const EPRIS_SPECIAL_TYPES = ['note', 'gallery', 'map', 'poll', 'link', 'audio', 'video'];
+class EprisBlockTool {
+  static get toolbox() {
+    return { title: 'EPRIS блок', icon: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>' };
+  }
+  static get enableLineBreaks() { return true; }
+  constructor({ data }) {
+    this.block = (data && data.block && data.block.type) ? JSON.parse(JSON.stringify(data.block)) : { type: 'note', content: '' };
+    this.wrap = null;
+    this.fields = {};
+  }
+  _label(t) {
+    return ({ note: 'Заметка', gallery: 'Галерея', map: 'Карта', poll: 'Опрос', link: 'Ссылка', audio: 'Аудио', video: 'Видео' })[t] || t;
+  }
+  render() {
+    this.wrap = document.createElement('div');
+    this.wrap.className = 'ebt';
+    this._build();
+    return this.wrap;
+  }
+  _mkRow(labelText, el) {
+    const row = document.createElement('label');
+    row.className = 'ebt-row';
+    const lab = document.createElement('span');
+    lab.className = 'ebt-lab';
+    lab.textContent = labelText;
+    row.appendChild(lab);
+    row.appendChild(el);
+    return row;
+  }
+  _input(val) { const i = document.createElement('input'); i.className = 'ebt-input'; i.value = val == null ? '' : val; return i; }
+  _textarea(val) { const t = document.createElement('textarea'); t.className = 'ebt-textarea'; t.value = val == null ? '' : val; return t; }
+  _build() {
+    const b = this.block;
+    this.wrap.innerHTML = '';
+    this.fields = {};
+    const head = document.createElement('div');
+    head.className = 'ebt-head';
+    const badge = document.createElement('span');
+    badge.className = 'ebt-badge';
+    badge.textContent = this._label(b.type);
+    const sel = document.createElement('select');
+    sel.className = 'ebt-type';
+    const types = EPRIS_SPECIAL_TYPES.slice();
+    if (!types.includes(b.type)) types.push(b.type);
+    types.forEach((tp) => { const o = document.createElement('option'); o.value = tp; o.textContent = this._label(tp); if ((b.type || 'note') === tp) o.selected = true; sel.appendChild(o); });
+    sel.onchange = () => { this.block = this._collect(); this.block.type = sel.value; this._build(); };
+    head.appendChild(badge);
+    head.appendChild(sel);
+    this.wrap.appendChild(head);
+
+    const body = document.createElement('div');
+    body.className = 'ebt-body';
+    this.wrap.appendChild(body);
+    const t = b.type;
+
+    if (t === 'note') {
+      this.fields.content = this._textarea(b.content || '');
+      body.appendChild(this._mkRow('Текст заметки', this.fields.content));
+    } else if (t === 'link') {
+      this.fields.content = this._input(b.content || '');
+      this.fields.url = this._input(b.url || '');
+      body.appendChild(this._mkRow('Текст', this.fields.content));
+      body.appendChild(this._mkRow('URL', this.fields.url));
+    } else if (t === 'gallery') {
+      this.fields.content = this._textarea((Array.isArray(b.content) ? b.content : []).join('\n'));
+      this.fields.caption = this._input(b.caption || '');
+      body.appendChild(this._mkRow('URL изображений (по одному на строку)', this.fields.content));
+      body.appendChild(this._mkRow('Подпись', this.fields.caption));
+    } else if (t === 'map') {
+      this.fields.content = this._input(b.content || '');
+      this.fields.lat = this._input(b.coordinates ? b.coordinates.lat : '');
+      this.fields.lng = this._input(b.coordinates ? b.coordinates.lng : '');
+      body.appendChild(this._mkRow('Место', this.fields.content));
+      body.appendChild(this._mkRow('Широта (lat)', this.fields.lat));
+      body.appendChild(this._mkRow('Долгота (lng)', this.fields.lng));
+    } else if (t === 'audio' || t === 'video') {
+      this.fields.content = this._input(b.content || '');
+      this.fields.caption = this._input(b.caption || '');
+      body.appendChild(this._mkRow('URL', this.fields.content));
+      body.appendChild(this._mkRow('Подпись', this.fields.caption));
+    } else if (t === 'poll') {
+      const q = b.content && b.content.question ? b.content.question : '';
+      this.fields.question = this._input(q);
+      body.appendChild(this._mkRow('Вопрос', this.fields.question));
+      this.fields.options = [];
+      const opts = (b.content && Array.isArray(b.content.options)) ? b.content.options : [];
+      const optsWrap = document.createElement('div');
+      optsWrap.className = 'ebt-opts';
+      const renderOpt = (opt) => {
+        const r = document.createElement('div'); r.className = 'ebt-opt';
+        const lab = this._input(opt.label || ''); lab.placeholder = 'Вариант';
+        const votes = this._input(opt.votes == null ? 0 : opt.votes); votes.type = 'number'; votes.className = 'ebt-input ebt-votes'; votes.style.maxWidth = '70px';
+        const del = document.createElement('button'); del.type = 'button'; del.className = 'ebt-del'; del.textContent = '✕';
+        const ref = { label: lab, votes };
+        del.onclick = () => { const i = this.fields.options.indexOf(ref); if (i > -1) this.fields.options.splice(i, 1); r.remove(); };
+        r.appendChild(lab); r.appendChild(votes); r.appendChild(del);
+        this.fields.options.push(ref);
+        optsWrap.appendChild(r);
+      };
+      (opts.length ? opts : [{ label: '', votes: 0 }]).forEach(renderOpt);
+      body.appendChild(this._mkRow('Варианты', optsWrap));
+      const add = document.createElement('button'); add.type = 'button'; add.className = 'ebt-add'; add.textContent = '+ Вариант';
+      add.onclick = () => renderOpt({ label: '', votes: 0 });
+      body.appendChild(add);
+    } else {
+      // Unknown type — raw JSON fallback so nothing is ever lost.
+      this.fields.raw = this._textarea(JSON.stringify(b, null, 2));
+      body.appendChild(this._mkRow('Raw JSON', this.fields.raw));
+    }
+  }
+  _collect() {
+    const f = this.fields;
+    const t = (this.wrap && this.wrap.querySelector('.ebt-type')) ? this.wrap.querySelector('.ebt-type').value : this.block.type;
+    if (t === 'note') return { type: 'note', content: f.content ? f.content.value : '' };
+    if (t === 'link') return { type: 'link', content: f.content ? f.content.value.trim() : '', url: f.url ? f.url.value.trim() : '' };
+    if (t === 'gallery') { const o = { type: 'gallery', content: (f.content ? f.content.value : '').split('\n').map((s) => s.trim()).filter(Boolean) }; if (f.caption && f.caption.value.trim()) o.caption = f.caption.value.trim(); return o; }
+    if (t === 'map') return { type: 'map', content: f.content ? f.content.value.trim() : '', coordinates: { lat: parseFloat(f.lat ? f.lat.value : '') || 0, lng: parseFloat(f.lng ? f.lng.value : '') || 0 } };
+    if (t === 'audio' || t === 'video') { const o = { type: t, content: f.content ? f.content.value.trim() : '' }; if (f.caption && f.caption.value.trim()) o.caption = f.caption.value.trim(); return o; }
+    if (t === 'poll') return { type: 'poll', content: { question: f.question ? f.question.value.trim() : '', options: (f.options || []).map((r) => ({ label: r.label.value.trim(), votes: parseInt(r.votes.value, 10) || 0 })).filter((o) => o.label) } };
+    if (f.raw) { try { return JSON.parse(f.raw.value); } catch (e) { return this.block; } }
+    return this.block;
+  }
+  save() { return { block: this._collect() }; }
+}
+
+function __buildEditorTools() {
+  const t = {};
+  if (__hasTool('Header')) t.header = { class: window.Header, inlineToolbar: true, config: { levels: [2, 3], defaultLevel: 2, placeholder: 'Заголовок' } };
+  if (__hasTool('List')) t.list = { class: window.List, inlineToolbar: true };
+  if (__hasTool('Quote')) t.quote = { class: window.Quote, inlineToolbar: true, config: { quotePlaceholder: 'Цитата', captionPlaceholder: 'Автор' } };
+  if (__hasTool('Checklist')) t.checklist = { class: window.Checklist, inlineToolbar: true };
+  if (__hasTool('Delimiter')) t.delimiter = { class: window.Delimiter };
+  if (__hasTool('Marker')) t.marker = { class: window.Marker };
+  if (__hasTool('ImageTool')) t.image = {
+    class: window.ImageTool,
+    config: {
+      uploader: {
+        uploadByFile: async (file) => { try { const url = await uploadImageReturnUrl(file); return { success: 1, file: { url } }; } catch (e) { alert('Ошибка загрузки изображения: ' + e.message); return { success: 0 }; } },
+        uploadByUrl: async (url) => ({ success: 1, file: { url } })
+      }
+    }
+  };
+  t.eprisBlock = { class: EprisBlockTool };
+  return t;
+}
+
+function mountModernEditor(blocks) {
+  const holder = document.getElementById('vf-block-editor');
+  if (!holder) return;
+  // Graceful fallback to the classic block editor if Editor.js didn't load.
+  if (typeof window.EditorJS === 'undefined') {
+    window.__modernEditorActive = false;
+    holder.innerHTML = renderBlockEditor(blocks);
+    bindBlockEditorEvents();
+    return;
+  }
+  unmountModernEditor();
+  holder.innerHTML = '';
+  window.__modernBlocksCache = Array.isArray(blocks) ? blocks : [];
+  try {
+    __modernEditor = new window.EditorJS({
+      holder,
+      autofocus: false,
+      minHeight: 120,
+      placeholder: 'Начните писать или нажмите Tab для блоков…',
+      tools: __buildEditorTools(),
+      data: { blocks: __blocksToEditor(blocks) },
+      onReady: () => { window.__modernEditorActive = true; },
+      onChange: async () => {
+        try { const d = await __modernEditor.save(); window.__modernBlocksCache = __editorToBlocks(d); } catch (e) { /* ignore */ }
+        if (typeof window._schedulePreviewRefresh === 'function') window._schedulePreviewRefresh(150);
+      }
+    });
+    window.__modernEditorActive = true;
+  } catch (e) {
+    console.error('Editor.js mount failed, falling back:', e);
+    window.__modernEditorActive = false;
+    holder.innerHTML = renderBlockEditor(blocks);
+    bindBlockEditorEvents();
+  }
+}
+
+function unmountModernEditor() {
+  if (__modernEditor) {
+    try { if (typeof __modernEditor.destroy === 'function') __modernEditor.destroy(); } catch (e) { /* ignore */ }
+    __modernEditor = null;
+  }
+  window.__modernEditorActive = false;
+}
+
+async function flushModernEditor() {
+  if (!__modernEditor) return window.__modernBlocksCache || [];
+  try { const d = await __modernEditor.save(); window.__modernBlocksCache = __editorToBlocks(d); } catch (e) { /* ignore */ }
+  return window.__modernBlocksCache;
+}
