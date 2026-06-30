@@ -8359,16 +8359,54 @@ function __stripHtml(html) {
 }
 function __hasTool(g) { return typeof window[g] !== 'undefined'; }
 
+// Allow-list sanitizer for rich inline text saved from the editor (keeps
+// bold/italic/links/marker/underline; drops everything else). Mirrors the
+// public site's sanitizer so what you see is what renders.
+const __RICH_TAGS = new Set(['B', 'STRONG', 'I', 'EM', 'U', 'S', 'MARK', 'CODE', 'BR', 'A', 'SPAN']);
+function __sanitizeInline(html) {
+  const input = String(html == null ? '' : html);
+  try {
+    const doc = new DOMParser().parseFromString('<div id="r">' + input + '</div>', 'text/html');
+    const root = doc.getElementById('r');
+    const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const walk = (node) => {
+      let out = '';
+      node.childNodes.forEach((ch) => {
+        if (ch.nodeType === 3) out += esc(ch.textContent || '');
+        else if (ch.nodeType === 1) {
+          const el = ch, tag = el.tagName;
+          if (tag === 'BR') { out += '<br>'; return; }
+          if (__RICH_TAGS.has(tag)) {
+            let attrs = '';
+            if (tag === 'A') { const href = el.getAttribute('href') || ''; if (/^(https?:|mailto:)/i.test(href)) attrs = ' href="' + href.replace(/"/g, '&quot;') + '"'; }
+            const t = tag.toLowerCase();
+            out += '<' + t + attrs + '>' + walk(el) + '</' + t + '>';
+          } else { out += walk(el); }
+        }
+      });
+      return out;
+    };
+    return root ? walk(root) : '';
+  } catch (e) { return input; }
+}
+// Prepare stored content for a contenteditable: keep inline markup as HTML,
+// otherwise escape plain text.
+function __toCE(content) {
+  const s = String(content == null ? '' : content);
+  if (/<\/?(b|strong|i|em|u|s|mark|code|br|a|span)\b/i.test(s)) return s;
+  return __escCE(s);
+}
+
 // ContentBlock[] → Editor.js blocks
 function __blocksToEditor(blocks) {
   const out = [];
   (Array.isArray(blocks) ? blocks : []).forEach((b) => {
     if (!b || !b.type) return;
     const t = b.type;
-    if (t === 'text') out.push({ type: 'paragraph', data: { text: __escCE(b.content) } });
-    else if (t === 'header' && __hasTool('Header')) out.push({ type: 'header', data: { text: __escCE(b.content), level: Number(b.level) || 2 } });
-    else if (t === 'quote' && __hasTool('Quote')) out.push({ type: 'quote', data: { text: __escCE(b.content), caption: __escCE(b.caption || '') } });
-    else if (t === 'image' && __hasTool('ImageTool')) out.push({ type: 'image', data: { file: { url: String(b.content || '') }, caption: __escCE(b.caption || ''), withBorder: false, stretched: false, withBackground: false } });
+    if (t === 'text') out.push({ type: 'paragraph', data: { text: __toCE(b.content) } });
+    else if (t === 'header' && __hasTool('Header')) out.push({ type: 'header', data: { text: __toCE(b.content), level: Number(b.level) || 2 } });
+    else if (t === 'quote' && __hasTool('Quote')) out.push({ type: 'quote', data: { text: __toCE(b.content), caption: __escCE(b.caption || '') } });
+    else if (t === 'image' && __hasTool('ImageTool')) out.push({ type: 'image', data: { file: { url: String(b.content || '') }, caption: __escCE(b.caption || ''), withBorder: false, stretched: !!b.stretched, withBackground: false } });
     else if (t === 'checklist' && __hasTool('Checklist')) out.push({ type: 'checklist', data: { items: (b.content && Array.isArray(b.content.items) ? b.content.items : []).map((x) => ({ text: __escCE(x), checked: false })) } });
     else out.push({ type: 'eprisBlock', data: { block: b } }); // preserve everything else
   });
@@ -8381,10 +8419,10 @@ function __editorToBlocks(data) {
   const blocks = (data && Array.isArray(data.blocks)) ? data.blocks : [];
   blocks.forEach((blk) => {
     const t = blk.type, d = blk.data || {};
-    if (t === 'paragraph') res.push({ type: 'text', content: __stripHtml(d.text) });
-    else if (t === 'header') res.push({ type: 'header', content: __stripHtml(d.text), level: Number(d.level) || 2 });
-    else if (t === 'quote') { const o = { type: 'quote', content: __stripHtml(d.text) }; const cap = __stripHtml(d.caption); if (cap) o.caption = cap; res.push(o); }
-    else if (t === 'image') { const url = (d.file && d.file.url) || d.url || ''; const o = { type: 'image', content: String(url) }; const cap = __stripHtml(d.caption); if (cap) o.caption = cap; res.push(o); }
+    if (t === 'paragraph') res.push({ type: 'text', content: __sanitizeInline(d.text) });
+    else if (t === 'header') res.push({ type: 'header', content: __sanitizeInline(d.text), level: Number(d.level) || 2 });
+    else if (t === 'quote') { const o = { type: 'quote', content: __sanitizeInline(d.text) }; const cap = __stripHtml(d.caption); if (cap) o.caption = cap; res.push(o); }
+    else if (t === 'image') { const url = (d.file && d.file.url) || d.url || ''; const o = { type: 'image', content: String(url) }; const cap = __stripHtml(d.caption); if (cap) o.caption = cap; if (d.stretched) o.stretched = true; res.push(o); }
     else if (t === 'checklist') res.push({ type: 'checklist', content: { items: (Array.isArray(d.items) ? d.items : []).map((i) => __stripHtml(i && i.text)).filter(Boolean) } });
     else if (t === 'list') { const items = Array.isArray(d.items) ? d.items : []; const lines = items.map((it, i) => { const txt = __stripHtml(typeof it === 'string' ? it : (it.content || it.text || '')); return (d.style === 'ordered' ? (i + 1) + '. ' : '• ') + txt; }); res.push({ type: 'text', content: lines.join('\n') }); }
     else if (t === 'delimiter') { /* no site equivalent — skip */ }
@@ -8528,6 +8566,7 @@ function __buildEditorTools() {
   if (__hasTool('Checklist')) t.checklist = { class: window.Checklist, inlineToolbar: true };
   if (__hasTool('Delimiter')) t.delimiter = { class: window.Delimiter };
   if (__hasTool('Marker')) t.marker = { class: window.Marker };
+  if (__hasTool('Underline')) t.underline = { class: window.Underline };
   if (__hasTool('ImageTool')) t.image = {
     class: window.ImageTool,
     config: {

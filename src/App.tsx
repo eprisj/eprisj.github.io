@@ -107,6 +107,56 @@ function resolveMediaSource(value: string | undefined, width: number, height: nu
   return `https://picsum.photos/seed/${encodeURIComponent(normalized)}/${width}/${height}?grayscale`;
 }
 
+// Allow-list sanitizer for rich inline text coming from the admin editor. Only a
+// small set of inline formatting tags survive; everything else is unwrapped to
+// its text. Anchors keep a safe href only. Rebuilding the tree (rather than
+// regex-stripping) is what makes it XSS-safe.
+const RICH_ALLOWED_TAGS = new Set(['B', 'STRONG', 'I', 'EM', 'U', 'S', 'MARK', 'CODE', 'BR', 'A', 'SPAN']);
+function escapeTextNode(s: string): string {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+function sanitizeRichText(html: string): string {
+  const input = String(html == null ? '' : html);
+  if (typeof window === 'undefined' || typeof DOMParser === 'undefined') {
+    // Build/SSR fallback: strip all tags to plain text.
+    return escapeTextNode(input.replace(/<[^>]*>/g, ''));
+  }
+  let root: HTMLElement | null = null;
+  try {
+    const doc = new DOMParser().parseFromString('<div id="r">' + input + '</div>', 'text/html');
+    root = doc.getElementById('r');
+  } catch {
+    return escapeTextNode(input.replace(/<[^>]*>/g, ''));
+  }
+  const walk = (node: Node): string => {
+    let out = '';
+    node.childNodes.forEach((child) => {
+      if (child.nodeType === 3) {
+        out += escapeTextNode(child.textContent || '');
+      } else if (child.nodeType === 1) {
+        const el = child as HTMLElement;
+        const tag = el.tagName;
+        if (tag === 'BR') { out += '<br>'; return; }
+        if (RICH_ALLOWED_TAGS.has(tag)) {
+          let attrs = '';
+          if (tag === 'A') {
+            const href = el.getAttribute('href') || '';
+            if (/^(https?:|mailto:)/i.test(href)) {
+              attrs = ` href="${href.replace(/"/g, '&quot;')}" target="_blank" rel="noopener noreferrer"`;
+            }
+          }
+          const t = tag.toLowerCase();
+          out += `<${t}${attrs}>${walk(el)}</${t}>`;
+        } else {
+          out += walk(el); // drop disallowed tag, keep its contents
+        }
+      }
+    });
+    return out;
+  };
+  return root ? walk(root) : '';
+}
+
 function Reveal({ children, delay = 0, y = 28, className = '' }: { children: ReactNode; delay?: number; y?: number; className?: string }) {
   return (
     <motion.div
@@ -1068,7 +1118,7 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
               switch (block.type) {
                 case 'text': {
                   if (typeof block.content !== 'string') return null;
-                  return <p key={index} className="mb-6 sm:mb-8 leading-relaxed text-base sm:text-lg md:text-xl">{block.content}</p>;
+                  return <p key={index} className="mb-6 sm:mb-8 leading-relaxed text-base sm:text-lg md:text-xl rich-text" dangerouslySetInnerHTML={{ __html: sanitizeRichText(block.content) }} />;
                 }
                 case 'header': {
                   if (typeof block.content !== 'string') return null;
@@ -1079,9 +1129,8 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
                       key={index}
                       className={`font-bold text-[#501a2c] mt-10 mb-4 ${lvl === 3 ? 'text-xl sm:text-2xl' : 'text-2xl sm:text-3xl'}`}
                       style={{ fontFamily: "'Playfair Display', serif" }}
-                    >
-                      {block.content}
-                    </Tag>
+                      dangerouslySetInnerHTML={{ __html: sanitizeRichText(block.content) }}
+                    />
                   );
                 }
                 case 'quote': {
@@ -1089,19 +1138,20 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
                   return (
                     <blockquote key={index} className="border-l-2 border-[#C9A690] pl-4 sm:pl-6 my-8 sm:my-12 italic text-lg sm:text-xl md:text-2xl text-[#501a2c]">
                       <Quote className="inline-block w-5 h-5 sm:w-6 sm:h-6 text-[#C9A690] mb-2 mr-2 opacity-50" />
-                      {block.content}
+                      <span className="rich-text" dangerouslySetInnerHTML={{ __html: sanitizeRichText(block.content) }} />
                     </blockquote>
                   );
                 }
                 case 'image': {
                   if (typeof block.content !== 'string') return null;
-                  const imageSource = resolveMediaSource(block.content, 800, 500);
+                  const imageSource = resolveMediaSource(block.content, block.stretched ? 1600 : 800, block.stretched ? 900 : 500);
                   if (!imageSource) return null;
+                  const stretched = !!block.stretched;
                   return (
-                    <figure key={index} className="my-8 sm:my-12 -mx-4 sm:mx-0">
-                      <img 
-                        src={imageSource} 
-                        alt={block.caption || "Article image"} 
+                    <figure key={index} className={stretched ? 'my-10 sm:my-14 -mx-4 sm:-mx-12 lg:-mx-24' : 'my-8 sm:my-12 -mx-4 sm:mx-0'}>
+                      <img
+                        src={imageSource}
+                        alt={block.caption || "Article image"}
                         className="w-full h-auto grayscale cursor-pointer hover:opacity-90 transition-opacity"
                         referrerPolicy="no-referrer"
                         onClick={() => onImageClick(imageSource, block.caption || 'Article image')}
