@@ -7667,17 +7667,20 @@ function bindStudioRowActions() {
 // PODCASTS TAB — mirrors Radio podcasts sub-section
 // ══════════════════════════════════════════════════════════
 (function () {
-  const RADIO_API = 'https://live.eprisjournal.com';
+  // live.eprisjournal.com has no DNS record; the radio backend is reachable via
+  // eprisradio.munister.com.ua (same host the radio sub-tab + public pages use).
+  const RADIO_API = 'https://eprisradio.munister.com.ua';
   const RADIO_TOKEN_KEY = 'epris_radio_admin_pw';
 
   function getToken() {
-    return localStorage.getItem(RADIO_TOKEN_KEY) || '';
+    return document.getElementById('radioAdminToken')?.value.trim()
+      || localStorage.getItem(RADIO_TOKEN_KEY) || '';
   }
 
   async function apiFetch(path, opts = {}) {
     const token = getToken();
     const headers = { 'Content-Type': 'application/json', ...(opts.headers || {}) };
-    if (token) headers['X-Admin-Password'] = token;
+    if (token) headers['X-Admin-Token'] = token; // radio backend expects X-Admin-Token
     const r = await fetch(RADIO_API + path, { ...opts, headers });
     return r.json();
   }
