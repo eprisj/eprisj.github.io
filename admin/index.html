@@ -36,8 +36,6 @@
             Запомнить в этом браузере
           </label>
           <button id="authLoginPwBtn" class="btn btn-primary auth-login-btn" type="button">Войти</button>
-          <p id="authError" class="auth-error" hidden></p>
-          <p id="authLoading" class="auth-loading" hidden>Проверка…</p>
           <button id="authShowPat" type="button" class="auth-toggle-link">Войти по GitHub-токену →</button>
         </div>
 
@@ -54,6 +52,9 @@
           <button id="authLoginBtn" class="btn btn-primary auth-login-btn" type="button">Войти</button>
           <button id="authShowPw" type="button" class="auth-toggle-link">← Войти по паролю</button>
         </div>
+
+        <p id="authError" class="auth-error" hidden></p>
+        <p id="authLoading" class="auth-loading" hidden>Проверка…</p>
       </div>
     </div>
 
@@ -261,9 +262,9 @@
                     <span class="toolbar-field-label">Запись</span>
                     <select id="visualEntry"></select>
                   </label>
-                  <label class="toolbar-field">
+                  <label class="toolbar-field toolbar-field-grow">
                     <span class="toolbar-field-label">Поиск</span>
-                    <input id="visualSearch" placeholder="id, заголовок..." />
+                    <input id="visualSearch" placeholder="Поиск по названию или #id..." />
                   </label>
                 </div>
                 <div class="toolbar-buttons">
@@ -937,7 +938,16 @@
     </div>
 
     <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
-    <script src="./app.js?v=2.3" type="module"></script>
+    <!-- Editor.js (modern block editor) + tools — loaded before the module so globals are ready -->
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@2.30.8/dist/editorjs.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@2.8.8/dist/header.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@1.10.0/dist/list.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/quote@2.7.6/dist/quote.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/checklist@1.6.0/dist/checklist.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/image@2.10.2/dist/image.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
+    <script src="./app.js?v=2.4" type="module"></script>
     <script>
       // Tab switching + page title update
       document.addEventListener('DOMContentLoaded', function () {

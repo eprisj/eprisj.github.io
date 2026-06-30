@@ -1070,6 +1070,20 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
                   if (typeof block.content !== 'string') return null;
                   return <p key={index} className="mb-6 sm:mb-8 leading-relaxed text-base sm:text-lg md:text-xl">{block.content}</p>;
                 }
+                case 'header': {
+                  if (typeof block.content !== 'string') return null;
+                  const lvl = block.level === 3 ? 3 : 2;
+                  const Tag = (lvl === 3 ? 'h3' : 'h2') as keyof JSX.IntrinsicElements;
+                  return (
+                    <Tag
+                      key={index}
+                      className={`font-bold text-[#501a2c] mt-10 mb-4 ${lvl === 3 ? 'text-xl sm:text-2xl' : 'text-2xl sm:text-3xl'}`}
+                      style={{ fontFamily: "'Playfair Display', serif" }}
+                    >
+                      {block.content}
+                    </Tag>
+                  );
+                }
                 case 'quote': {
                   if (typeof block.content !== 'string') return null;
                   return (

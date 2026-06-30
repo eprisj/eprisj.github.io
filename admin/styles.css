@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbit&family=IBM+Plex+Mono:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 /* ══════════════════════════════════════════════════════════
    EPRIS ADMIN — Design tokens
@@ -44,9 +44,10 @@
   --radius:     4px;
   --radius-sm:  3px;
 
-  /* Type */
-  --font-serif: 'Playfair Display','Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;
-  --font-mono:  'IBM Plex Mono','SF Mono','Fira Code',monospace;
+  /* Type — Orbit is the base UI font; mono kept only for raw code/JSON */
+  --font-serif: 'Orbit','Playfair Display',Georgia,serif;
+  --font-mono:  'Orbit','IBM Plex Mono',system-ui,sans-serif;
+  --font-code:  'IBM Plex Mono','SF Mono','Fira Code',monospace;
 
   /* Shadows */
   --shadow-xs:  0 1px 4px rgba(80,26,44,.06);
@@ -1234,7 +1235,7 @@ textarea {
 }
 
 #editor {
-  font-family: var(--font-mono);
+  font-family: var(--font-code);
   font-size: .82rem;
 }
 
@@ -1246,7 +1247,7 @@ code {
   border: 1px solid var(--line);
   background: var(--bg);
   padding: 2px 5px;
-  font-family: var(--font-mono);
+  font-family: var(--font-code);
   font-size: .8rem;
   border-radius: 3px;
 }
@@ -3366,3 +3367,89 @@ body.busy::after {
   pointer-events: all;
   cursor: wait;
 }
+
+/* ══════════════════════════════════════════════════════════
+   MODERN EDITOR (Editor.js) — themed to EPRIS / Orbit
+   ══════════════════════════════════════════════════════════ */
+#vf-block-editor {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 8px 8px;
+  min-height: 200px;
+  margin-top: 12px;
+}
+.codex-editor { font-family: var(--font-mono); }
+/* Use the full canvas width instead of Editor.js's narrow centered column */
+.codex-editor__redactor { padding-bottom: 120px !important; }
+.ce-block__content,
+.ce-toolbar__content { max-width: none; margin: 0 16px; }
+.ce-paragraph,
+.cdx-block { font-family: var(--font-mono); color: var(--text); line-height: 1.65; font-size: .94rem; }
+.ce-header { font-family: var(--font-serif); color: var(--text); font-weight: 700; }
+.ce-block a { color: var(--accent); }
+.cdx-quote, .cdx-quote__text { font-family: var(--font-serif); }
+.ce-blockquote, blockquote.cdx-quote__text { border-left: 2px solid var(--gold); }
+.cdx-checklist__item-text { font-family: var(--font-mono); }
+/* Editor.js toolbar + popovers */
+.ce-toolbar__plus,
+.ce-toolbar__settings-btn { color: var(--accent); background: var(--bg); border: 1px solid var(--line); }
+.ce-toolbar__plus:hover,
+.ce-toolbar__settings-btn:hover { background: var(--accent-soft); }
+.ce-popover, .ce-popover__items { font-family: var(--font-mono); }
+.ce-popover-item__title { font-family: var(--font-mono); }
+.cdx-search-field__input { font-family: var(--font-mono); }
+.ce-inline-toolbar { font-family: var(--font-mono); }
+.ce-block--selected .ce-block__content { background: var(--accent-soft); }
+.cdx-marker { background: rgba(201,166,144,.4); }
+.image-tool__caption,
+.cdx-input { font-family: var(--font-mono); border-radius: var(--radius-sm); }
+
+/* EPRIS passthrough tool (note/gallery/map/poll/link/audio/video) */
+.ebt {
+  border: 1px solid var(--line-strong);
+  border-left: 3px solid var(--gold);
+  background: var(--gold-soft);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin: 6px 0;
+}
+.ebt-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.ebt-badge {
+  font-family: var(--font-mono); font-size: .55rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; color: #7a5c2e;
+  background: #fff; border: 1px solid rgba(201,166,144,.5);
+  padding: 3px 9px; border-radius: 20px;
+}
+.ebt-type {
+  font-family: var(--font-mono); font-size: .72rem; padding: 5px 10px;
+  border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+  background: #fff; color: var(--text); cursor: pointer; margin-left: auto;
+}
+.ebt-body { display: grid; gap: 10px; }
+.ebt-row { display: grid; gap: 4px; }
+.ebt-lab {
+  font-family: var(--font-mono); font-size: .56rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted);
+}
+.ebt-input, .ebt-textarea {
+  width: 100%; font-family: var(--font-mono); font-size: .82rem;
+  padding: 8px 10px; border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm); background: #fff; color: var(--text);
+}
+.ebt-textarea { min-height: 70px; resize: vertical; line-height: 1.5; }
+.ebt-opts { display: grid; gap: 6px; }
+.ebt-opt { display: flex; gap: 6px; align-items: center; }
+.ebt-opt .ebt-input { flex: 1; }
+.ebt-del {
+  border: 1px solid var(--line); background: #fff; color: var(--danger);
+  width: 28px; height: 28px; border-radius: var(--radius-sm); cursor: pointer; flex-shrink: 0;
+}
+.ebt-del:hover { background: var(--danger-soft); }
+.ebt-add {
+  font-family: var(--font-mono); font-size: .6rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .06em;
+  border: 1px dashed var(--line-strong); background: #fff; color: var(--accent);
+  padding: 6px 12px; border-radius: var(--radius-sm); cursor: pointer; justify-self: start;
+}
+.ebt-add:hover { background: var(--accent-soft); }

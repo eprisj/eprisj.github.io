@@ -13,11 +13,12 @@ export interface Item {
 }
 
 export interface ContentBlock {
-  type: 'text' | 'image' | 'quote' | 'map' | 'link' | 'video' | 'audio' | 'gallery' | 'checklist' | 'poll' | 'note';
+  type: 'text' | 'header' | 'image' | 'quote' | 'map' | 'link' | 'video' | 'audio' | 'gallery' | 'checklist' | 'poll' | 'note';
   content: string | string[] | { question: string; options: { label: string; votes: number }[] } | { items: string[] };
   caption?: string;
   coordinates?: { lat: number; lng: number };
   url?: string;
+  level?: number;
 }
 
 export interface Article {
