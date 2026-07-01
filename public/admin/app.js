@@ -8740,6 +8740,7 @@ async function flushModernEditor() {
   let _model   = null;
   let _ctx     = { section: 'articles', lang: DEFAULT_LANGUAGE, id: 0 };
   let _commitTimer = null;
+  let _publishTimer = null;
   let _reloadTimer = null;
   let _suspendReload = false;
 
@@ -8783,11 +8784,28 @@ async function flushModernEditor() {
   function scheduleReload() { clearTimeout(_reloadTimer); _reloadTimer = setTimeout(reload, 140); }
 
   // ── commit model → JSON (debounced, no heavy refresh) ─────────────────────
-  function scheduleCommit() { setSave('editing'); clearTimeout(_commitTimer); _commitTimer = setTimeout(commit, 450); }
+  // Two tiers: a fast local commit into the editor textarea (so nothing is
+  // ever lost even on refresh), then — once typing pauses — a silent publish
+  // straight to the VPS content API. No "Сохранить" click needed.
+  function scheduleCommit() {
+    setSave('editing');
+    clearTimeout(_commitTimer); _commitTimer = setTimeout(commit, 450);
+  }
+  // Every commit — whether from debounced typing or an instant structural
+  // click (add/delete/reorder block, tag, etc.) — arms the same publish
+  // debounce, so nothing needs to remember to call it separately. `commit()`
+  // only flushes to the local textarea; `armPublish()` is a distinct step so
+  // publishSilently() can re-flush without re-arming itself into a loop.
   function commit() {
-    if (!_model) return;
+    if (!flushLocal()) return;
+    _errorRetries = 0;
+    armPublish(2600);
+    setSave('saved');
+  }
+  function flushLocal() {
+    if (!_model) return false;
     const data = parseEditorJsonSafe();
-    if (!data) return;
+    if (!data) return false;
     const arr = getSectionArray(data, _ctx.section, _ctx.lang, _ctx.lang !== DEFAULT_LANGUAGE);
     const idx = arr.findIndex((e) => Number(e.id) === _ctx.id);
     const clean = clone(_model);
@@ -8798,11 +8816,60 @@ async function flushModernEditor() {
     try { updateEditorState(); } catch {}
     try { saveDraft(); } catch {}
     setTimeout(() => { _suspendReload = false; }, 60);
-    setSave('saved');
+    return true;
   }
+  function armPublish(delay) { clearTimeout(_publishTimer); _publishTimer = setTimeout(publishSilently, delay); }
+
+  let _publishing = false;
+  let _publishQueued = false;
+  let _errorRetries = 0;
+  async function publishSilently() {
+    if (!_model) return;
+    clearTimeout(_commitTimer);
+    flushLocal(); // make sure the very latest keystrokes are in editor.value first
+    if (_publishing) { _publishQueued = true; return; }
+    const pw = (typeof getAdminPassword === 'function') ? getAdminPassword() : '';
+    if (!pw) { setSave('nopw'); return; } // no password on file — stays local-only, no spam
+    _publishing = true;
+    setSave('publishing');
+    try {
+      const res = await fetch(CONTENT_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
+        body: editor.value,
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) throw new Error(data.error || ('VPS ' + res.status));
+      try { setLastSyncedSnapshotFromText(editor.value); } catch {}
+      try { localStorage.removeItem(DRAFT_KEY); } catch {}
+      lastSyncedTime = new Date();
+      try { updateLastSyncedBadge(); } catch {}
+      setSave('published');
+      _errorRetries = 0;
+    } catch (e) {
+      _errorRetries += 1;
+      if (_errorRetries <= 5) { setSave('error'); armPublish(4000); }
+      else { setSave('error-final'); } // stop hammering the VPS; next edit resets the counter
+    } finally {
+      _publishing = false;
+      if (_publishQueued) { _publishQueued = false; publishSilently(); }
+    }
+  }
+  // Flush on tab close / hide so a fast edit-then-leave is never lost.
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && _model) publishSilently(); });
+
   function setSave(s) {
     if (!saveState) return;
-    saveState.textContent = s === 'editing' ? 'Изменяю…' : 'Сохранено локально';
+    const labels = {
+      editing: 'Изменяю…',
+      saved: 'Сохранено локально',
+      publishing: 'Публикую на сайт…',
+      published: 'Опубликовано ✓',
+      error: 'Ошибка публикации — повторяю…',
+      'error-final': 'Не удалось опубликовать (сохранено локально)',
+      nopw: 'Сохранено локально (нет пароля для публикации)',
+    };
+    saveState.textContent = labels[s] || labels.saved;
     saveState.className = 'wys-save-state ' + s;
   }
 
@@ -8872,7 +8939,8 @@ async function flushModernEditor() {
       <button class="wys-bc-btn" data-wys-act="down" data-i="${i}" title="Вниз">↓</button>
       <button class="wys-bc-btn" data-wys-act="type" data-i="${i}" title="Тип блока">⇄</button>
       <button class="wys-bc-btn danger" data-wys-act="del" data-i="${i}" title="Удалить">×</button>
-    </div>`;
+    </div>
+    <span class="wys-bc-drag" draggable="true" data-drag-i="${i}" title="Перетащить, чтобы переставить">⠿</span>`;
   }
 
   function renderBlock(block, i) {
@@ -8984,6 +9052,49 @@ async function flushModernEditor() {
   function swap(a, b) { const arr = _model.content; const t = arr[a]; arr[a] = arr[b]; arr[b] = t; }
   function focusBlock(i) { setTimeout(() => { const el = canvas.querySelector(`.wys-block[data-i="${i}"] [contenteditable], .wys-block[data-i="${i}"] input`); if (el) el.focus(); }, 40); }
 
+  // ── drag-and-drop block reorder ───────────────────────────────────────────
+  let _dragFrom = null;
+  canvas.addEventListener('dragstart', (e) => {
+    const handle = e.target.closest('.wys-bc-drag');
+    if (!handle) { e.preventDefault(); return; }
+    _dragFrom = Number(handle.getAttribute('data-drag-i'));
+    const block = handle.closest('.wys-block');
+    if (block) { block.classList.add('dragging'); e.dataTransfer.setDragImage(block, 20, 20); }
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', String(_dragFrom));
+  });
+  canvas.addEventListener('dragover', (e) => {
+    if (_dragFrom == null) return;
+    const over = e.target.closest('.wys-block');
+    if (!over) return;
+    e.preventDefault();
+    const r = over.getBoundingClientRect();
+    const before = (e.clientY - r.top) < r.height / 2;
+    canvas.querySelectorAll('.wys-block.drop-before, .wys-block.drop-after').forEach((el) => el.classList.remove('drop-before', 'drop-after'));
+    over.classList.add(before ? 'drop-before' : 'drop-after');
+  });
+  canvas.addEventListener('drop', (e) => {
+    if (_dragFrom == null || !_model) return;
+    const over = e.target.closest('.wys-block');
+    if (!over) { _dragFrom = null; return; }
+    e.preventDefault();
+    const toRaw = Number(over.getAttribute('data-i'));
+    const before = over.classList.contains('drop-before');
+    canvas.querySelectorAll('.wys-block.drop-before, .wys-block.drop-after, .wys-block.dragging').forEach((el) => el.classList.remove('drop-before', 'drop-after', 'dragging'));
+    const arr = _model.content;
+    const [moved] = arr.splice(_dragFrom, 1);
+    let to = toRaw > _dragFrom ? toRaw - 1 : toRaw; // account for removal shift
+    if (!before) to += 1;
+    arr.splice(Math.max(0, Math.min(arr.length, to)), 0, moved);
+    _dragFrom = null;
+    render();
+    commit();
+  });
+  canvas.addEventListener('dragend', () => {
+    _dragFrom = null;
+    canvas.querySelectorAll('.wys-block.drop-before, .wys-block.drop-after, .wys-block.dragging').forEach((el) => el.classList.remove('drop-before', 'drop-after', 'dragging'));
+  });
+
   function newBlock(type) {
     if (type === 'image') return { type: 'image', content: '', caption: '' };
     if (type === 'gallery') return { type: 'gallery', content: [], caption: '' };
@@ -9006,6 +9117,20 @@ async function flushModernEditor() {
   }
 
   // ── image picker popover ──────────────────────────────────────────────────
+  // Media library — cached list of previously uploaded images, so picking a
+  // photo you already used doesn't mean re-uploading or hunting for its URL.
+  let _mediaCache = null; // null = not fetched yet this session
+  async function fetchMediaLibrary(force) {
+    if (_mediaCache && !force) return _mediaCache;
+    try {
+      const pw = (typeof getAdminPassword === 'function') ? getAdminPassword() : '';
+      const r = await fetch('https://api.eprisjournal.com/uploads-list', { headers: { 'X-Admin-Password': pw } });
+      const d = await r.json();
+      _mediaCache = (d.ok && Array.isArray(d.items)) ? d.items : [];
+    } catch { _mediaCache = _mediaCache || []; }
+    return _mediaCache;
+  }
+
   function openImagePicker(onPick) {
     closePopovers();
     const pop = document.createElement('div');
@@ -9016,11 +9141,16 @@ async function flushModernEditor() {
         <button class="btn btn-sm" data-up>📁 Загрузить с ПК</button>
         <button class="btn btn-primary btn-sm" data-ok>Применить</button>
       </div>
-      <input type="file" accept="image/*" hidden />`;
+      <input type="file" accept="image/*" hidden />
+      <div class="wys-media-lib">
+        <div class="wys-media-lib-head"><span>Медиатека</span><button type="button" class="wys-media-refresh" data-refresh title="Обновить">↻</button></div>
+        <div class="wys-media-grid" data-grid><div class="wys-media-loading">Загружаю…</div></div>
+      </div>`;
     document.body.appendChild(pop);
     positionCenter(pop);
     const inp = pop.querySelector('.wys-pop-input');
     const file = pop.querySelector('input[type=file]');
+    const grid = pop.querySelector('[data-grid]');
     inp.focus();
     pop.querySelector('[data-ok]').onclick = () => { const v = inp.value.trim(); closePopovers(); if (v) onPick(v); };
     inp.onkeydown = (e) => { if (e.key === 'Enter') pop.querySelector('[data-ok]').click(); };
@@ -9028,9 +9158,24 @@ async function flushModernEditor() {
     file.onchange = async () => {
       const f = file.files && file.files[0]; if (!f) return;
       const btn = pop.querySelector('[data-up]'); btn.disabled = true; btn.textContent = 'Загрузка…';
-      try { const url = await uploadImageReturnUrl(f); closePopovers(); onPick(url); }
-      catch (err) { btn.disabled = false; btn.textContent = '📁 Загрузить с ПК'; alert('Ошибка загрузки: ' + err.message); }
+      try {
+        const url = await uploadImageReturnUrl(f);
+        // Show the freshly uploaded file at the front of the library immediately.
+        if (Array.isArray(_mediaCache)) _mediaCache.unshift({ name: f.name, url, mtime: Date.now(), size: f.size });
+        closePopovers(); onPick(url);
+      } catch (err) { btn.disabled = false; btn.textContent = '📁 Загрузить с ПК'; alert('Ошибка загрузки: ' + err.message); }
     };
+
+    async function renderGrid(force) {
+      grid.innerHTML = '<div class="wys-media-loading">Загружаю…</div>';
+      const items = await fetchMediaLibrary(force);
+      if (!items.length) { grid.innerHTML = '<div class="wys-media-empty">Пока нет загруженных фото — загрузите первое выше.</div>'; return; }
+      grid.innerHTML = items.map((it) => `<button type="button" class="wys-media-item" data-url="${esc(it.url)}" title="${esc(it.name)}"><img src="${esc(it.url)}" loading="lazy" referrerpolicy="no-referrer" alt=""></button>`).join('');
+      grid.querySelectorAll('.wys-media-item').forEach((btn) => { btn.onclick = () => { const u = btn.getAttribute('data-url'); closePopovers(); onPick(u); }; });
+    }
+    renderGrid(false);
+    pop.querySelector('[data-refresh]').onclick = () => renderGrid(true);
+
     setTimeout(() => document.addEventListener('mousedown', outside), 0);
     function outside(ev) { if (!pop.contains(ev.target)) { closePopovers(); } }
     pop._outside = outside;
@@ -9052,7 +9197,11 @@ async function flushModernEditor() {
     pop._outside = outside;
   }
 
-  function positionCenter(pop) { pop.style.top = (window.scrollY + Math.max(80, window.innerHeight / 2 - 100)) + 'px'; pop.style.left = (window.innerWidth / 2 - 170) + 'px'; }
+  function positionCenter(pop) {
+    const w = pop.offsetWidth || 340;
+    pop.style.top = (window.scrollY + Math.max(60, window.innerHeight * 0.08)) + 'px';
+    pop.style.left = Math.max(10, window.innerWidth / 2 - w / 2) + 'px';
+  }
   function closePopovers() { document.querySelectorAll('.wys-pop').forEach((p) => { if (p._outside) document.removeEventListener('mousedown', p._outside); p.remove(); }); }
 
   // ── inline selection toolbar (bold/italic/underline/strike/link) ──────────
