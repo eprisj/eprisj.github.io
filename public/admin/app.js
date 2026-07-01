@@ -8697,3 +8697,439 @@ async function flushModernEditor() {
     } catch (e) { st.textContent = '✗ ' + e.message; st.style.color = 'var(--danger)'; }
   });
 })();
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// ── EPRIS STUDIO — full WYSIWYG live editor (edit everything inline) ──
+// Renders the article exactly like the magazine and makes every element
+// editable in place. Writes straight into the site-content JSON (debounced),
+// no "Применить" needed. Save button pushes to GitHub as usual.
+// ═══════════════════════════════════════════════════════════════════════════
+(function initWysiwygEditor() {
+  const shell     = document.getElementById('wysShell');
+  const canvas    = document.getElementById('wysCanvas');
+  const toggleBtn = document.getElementById('wysToggleBtn');
+  const closeBtn  = document.getElementById('wysCloseBtn');
+  const deviceBtn = document.getElementById('wysDeviceBtn');
+  const metaBtn   = document.getElementById('wysMetaBtn');
+  const drawer    = document.getElementById('wysMetaDrawer');
+  const drawerClose = document.getElementById('wysMetaClose');
+  const drawerBody  = document.getElementById('wysMetaBody');
+  const saveState = document.getElementById('wysSaveState');
+  if (!shell || !canvas || !toggleBtn) return;
+
+  const esc = (s) => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const sanitizeInline = (h) => (typeof __sanitizeInline === 'function' ? __sanitizeInline(h) : esc(h));
+  const clone = (o) => JSON.parse(JSON.stringify(o));
+
+  const BLOCK_TYPES = [
+    { t: 'text',      label: 'Текст',    icon: '¶' },
+    { t: 'header',    label: 'Заголовок',icon: 'H' },
+    { t: 'quote',     label: 'Цитата',   icon: '❝' },
+    { t: 'note',      label: 'Заметка',  icon: '✎' },
+    { t: 'image',     label: 'Фото',     icon: '▣' },
+    { t: 'gallery',   label: 'Галерея',  icon: '⊞' },
+    { t: 'checklist', label: 'Чеклист',  icon: '☑' },
+    { t: 'link',      label: 'Ссылка',   icon: '↗' },
+    { t: 'audio',     label: 'Аудио',    icon: '♪' },
+    { t: 'poll',      label: 'Опрос',    icon: '▤' },
+    { t: 'map',       label: 'Карта',    icon: '⚑' },
+  ];
+
+  let _enabled = true;
+  let _model   = null;
+  let _ctx     = { section: 'articles', lang: DEFAULT_LANGUAGE, id: 0 };
+  let _commitTimer = null;
+  let _reloadTimer = null;
+  let _suspendReload = false;
+
+  const CLASSIC = ['creatorStudioWrap', 'editorSplit', 'commandCenter', 'stats'];
+  const classicEls = () => CLASSIC.map((id) => document.getElementById(id)).filter(Boolean);
+
+  function showWys()     { shell.classList.add('on'); classicEls().forEach((el) => (el.style.display = 'none')); toggleBtn.classList.add('active'); }
+  function showClassic() { shell.classList.remove('on'); classicEls().forEach((el) => (el.style.display = '')); toggleBtn.classList.remove('active'); }
+
+  function imgUrl(src, w = 900, h = 600) {
+    if (!src) return '';
+    const s = String(src).trim();
+    if (!s) return '';
+    if (typeof resolveBlockImageUrl === 'function') { const r = resolveBlockImageUrl(s); if (r) return r; }
+    if (s.startsWith('http')) return s;
+    return `https://source.unsplash.com/${w}x${h}/?${encodeURIComponent(s)}`;
+  }
+
+  // ── load current selection into the model ─────────────────────────────────
+  function reload() {
+    if (_suspendReload) return;
+    const section = visualSectionSelect.value;
+    const lang    = visualLangSelect.value || DEFAULT_LANGUAGE;
+    if (!_enabled || section !== 'articles') { showClassic(); return; }
+    const data = parseEditorJsonSafe();
+    if (!data) { showClassic(); return; }
+    const arr = getSectionArray(data, section, lang, false);
+    const id  = Number(visualEntrySelect.value);
+    let entry = arr.find((e) => Number(e.id) === id);
+    if (!entry && lang !== DEFAULT_LANGUAGE) {
+      const en = getSectionArray(data, section, DEFAULT_LANGUAGE, false);
+      entry = en.find((e) => Number(e.id) === id);
+    }
+    showWys();
+    if (!entry) { canvas.innerHTML = '<div class="wys-empty"><div class="wys-empty-icon">✦</div><p>Выберите статью в списке сверху или создайте новую.</p></div>'; return; }
+    _ctx = { section, lang, id };
+    _model = clone(entry);
+    if (!Array.isArray(_model.content)) _model.content = [];
+    render();
+  }
+  function scheduleReload() { clearTimeout(_reloadTimer); _reloadTimer = setTimeout(reload, 140); }
+
+  // ── commit model → JSON (debounced, no heavy refresh) ─────────────────────
+  function scheduleCommit() { setSave('editing'); clearTimeout(_commitTimer); _commitTimer = setTimeout(commit, 450); }
+  function commit() {
+    if (!_model) return;
+    const data = parseEditorJsonSafe();
+    if (!data) return;
+    const arr = getSectionArray(data, _ctx.section, _ctx.lang, _ctx.lang !== DEFAULT_LANGUAGE);
+    const idx = arr.findIndex((e) => Number(e.id) === _ctx.id);
+    const clean = clone(_model);
+    if (idx >= 0) arr[idx] = clean; else arr.push(clean);
+    _suspendReload = true;
+    editor.value = JSON.stringify(data, null, 2);
+    try { updateStats(data); } catch {}
+    try { updateEditorState(); } catch {}
+    try { saveDraft(); } catch {}
+    setTimeout(() => { _suspendReload = false; }, 60);
+    setSave('saved');
+  }
+  function setSave(s) {
+    if (!saveState) return;
+    saveState.textContent = s === 'editing' ? 'Изменяю…' : 'Сохранено локально';
+    saveState.className = 'wys-save-state ' + s;
+  }
+
+  // ── render the editable canvas ────────────────────────────────────────────
+  function render() {
+    if (!_model) return;
+    const a = _model;
+    const hero = imgUrl(a.imageUrl || a.imageSeed, 1200, 700);
+    let h = '<article class="wys-article">';
+
+    // Hero
+    h += '<div class="wys-hero" data-wys-act="hero">';
+    h += hero
+      ? `<img src="${esc(hero)}" referrerpolicy="no-referrer" alt="">`
+      : '<div class="wys-hero-empty">Нажмите, чтобы добавить обложку</div>';
+    h += '<span class="wys-hero-edit">✎ Обложка</span></div>';
+
+    // Meta line
+    h += '<div class="wys-meta">';
+    h += `<span class="wys-ce wys-meta-item" contenteditable="true" data-wys="date"    data-empty="Дата">${esc(a.date || '')}</span>`;
+    h += '<span class="wys-meta-dot"></span>';
+    h += `<span class="wys-ce wys-meta-item" contenteditable="true" data-wys="author"  data-empty="Автор">${esc(a.author || '')}</span>`;
+    h += '<span class="wys-meta-dot"></span>';
+    h += `<span class="wys-ce wys-meta-item wys-meta-role" contenteditable="true" data-wys="role" data-empty="Роль">${esc(a.role || '')}</span>`;
+    h += '</div>';
+
+    // Category (kicker)
+    h += `<div class="wys-kicker wys-ce" contenteditable="true" data-wys="category" data-empty="Категория">${esc(a.category || '')}</div>`;
+
+    // Title
+    h += `<h1 class="wys-title wys-ce" contenteditable="true" data-wys="title" data-empty="Заголовок статьи…">${esc(a.title || '')}</h1>`;
+
+    // Excerpt
+    h += `<p class="wys-excerpt wys-ce" contenteditable="true" data-wys="excerpt" data-empty="Краткое описание — первый абзац-крючок…">${esc(a.excerpt || '')}</p>`;
+
+    // Tags
+    h += '<div class="wys-tags" data-wys-tags>';
+    (a.tags || []).forEach((tag, i) => {
+      h += `<span class="wys-tag">${esc(tag)}<button class="wys-tag-x" data-wys-act="tag-del" data-i="${i}" title="Убрать">×</button></span>`;
+    });
+    h += '<button class="wys-tag-add" data-wys-act="tag-add">+ тег</button></div>';
+
+    // Body blocks
+    h += '<div class="wys-body">';
+    h += insertBtn(0);
+    (a.content || []).forEach((block, i) => {
+      h += renderBlock(block, i);
+      h += insertBtn(i + 1);
+    });
+    if (!(a.content || []).length) {
+      h += '<div class="wys-body-hint">Пусто. Нажмите «+» выше, чтобы добавить блок.</div>';
+    }
+    h += '</div>';
+
+    h += '</article>';
+    canvas.innerHTML = h;
+    applyEmptyStates();
+  }
+
+  function insertBtn(pos) {
+    return `<div class="wys-insert"><button class="wys-insert-btn" data-wys-act="insert" data-pos="${pos}" title="Вставить блок">+</button></div>`;
+  }
+
+  function blockControls(i) {
+    return `<div class="wys-bc">
+      <button class="wys-bc-btn" data-wys-act="up"   data-i="${i}" title="Вверх">↑</button>
+      <button class="wys-bc-btn" data-wys-act="down" data-i="${i}" title="Вниз">↓</button>
+      <button class="wys-bc-btn" data-wys-act="type" data-i="${i}" title="Тип блока">⇄</button>
+      <button class="wys-bc-btn danger" data-wys-act="del" data-i="${i}" title="Удалить">×</button>
+    </div>`;
+  }
+
+  function renderBlock(block, i) {
+    const t = block.type || 'text';
+    const c = block.content;
+    let inner = '';
+
+    if (t === 'text') {
+      inner = `<div class="wys-rt wys-p" contenteditable="true" data-wys="block" data-i="${i}" data-empty="Текст абзаца…">${sanitizeInline(typeof c === 'string' ? c : '')}</div>`;
+    } else if (t === 'header') {
+      inner = `<div class="wys-rt wys-h2" contenteditable="true" data-wys="block" data-i="${i}" data-empty="Подзаголовок…">${sanitizeInline(typeof c === 'string' ? c : '')}</div>`;
+    } else if (t === 'quote') {
+      inner = `<blockquote class="wys-rt wys-quote" contenteditable="true" data-wys="block" data-i="${i}" data-empty="Цитата…">${sanitizeInline(typeof c === 'string' ? c : '')}</blockquote>`;
+    } else if (t === 'note') {
+      inner = `<div class="wys-rt wys-note" contenteditable="true" data-wys="block" data-i="${i}" data-empty="Заметка на полях…">${sanitizeInline(typeof c === 'string' ? c : '')}</div>`;
+    } else if (t === 'image') {
+      const src = imgUrl(typeof c === 'string' ? c : '', 900, 600);
+      inner = `<figure class="wys-fig">
+        <div class="wys-fig-img" data-wys-act="img" data-i="${i}">${src ? `<img src="${esc(src)}" referrerpolicy="no-referrer" alt="">` : '<div class="wys-fig-empty">Нажмите, чтобы добавить фото</div>'}<span class="wys-fig-edit">✎</span></div>
+        <figcaption class="wys-ce wys-figcap" contenteditable="true" data-wys="caption" data-i="${i}" data-empty="Подпись к фото">${esc(block.caption || '')}</figcaption>
+      </figure>`;
+    } else if (t === 'gallery') {
+      const items = Array.isArray(c) ? c : [];
+      inner = '<div class="wys-gal">';
+      items.forEach((it, gi) => { const s = imgUrl(it, 400, 400); inner += `<div class="wys-gal-item">${s ? `<img src="${esc(s)}" referrerpolicy="no-referrer" alt="">` : ''}<button class="wys-gal-x" data-wys-act="gal-del" data-i="${i}" data-gi="${gi}">×</button></div>`; });
+      inner += `<button class="wys-gal-add" data-wys-act="gal-add" data-i="${i}">+ фото</button></div>`;
+      inner += `<input class="wys-inline-input" data-wys="caption" data-i="${i}" value="${esc(block.caption || '')}" placeholder="Подпись к галерее">`;
+    } else if (t === 'checklist') {
+      const items = (c && Array.isArray(c.items)) ? c.items : [];
+      inner = `<input class="wys-inline-input wys-check-title" data-wys="caption" data-i="${i}" value="${esc(block.caption || '')}" placeholder="Заголовок чеклиста">`;
+      inner += '<div class="wys-check">';
+      items.forEach((it, ci) => { inner += `<div class="wys-check-row"><span class="wys-check-box"></span><input class="wys-inline-input" data-wys="check-item" data-i="${i}" data-ci="${ci}" value="${esc(it)}" placeholder="Пункт…"><button class="wys-mini-x" data-wys-act="check-del" data-i="${i}" data-ci="${ci}">×</button></div>`; });
+      inner += `<button class="wys-gal-add" data-wys-act="check-add" data-i="${i}">+ пункт</button></div>`;
+    } else if (t === 'link') {
+      inner = `<div class="wys-linkblock"><input class="wys-inline-input" data-wys="content-str" data-i="${i}" value="${esc(typeof c === 'string' ? c : '')}" placeholder="Текст ссылки"><input class="wys-inline-input" data-wys="url" data-i="${i}" value="${esc(block.url || '')}" placeholder="https://…"></div>`;
+    } else if (t === 'audio') {
+      inner = `<div class="wys-audio"><span class="wys-audio-ic">♪</span><div class="wys-audio-fields"><input class="wys-inline-input" data-wys="content-str" data-i="${i}" value="${esc(typeof c === 'string' ? c : '')}" placeholder="URL аудио"><input class="wys-inline-input" data-wys="caption" data-i="${i}" value="${esc(block.caption || '')}" placeholder="Подпись"></div></div>`;
+    } else if (t === 'poll') {
+      const q = (c && c.question) ? c.question : '';
+      const opts = (c && Array.isArray(c.options)) ? c.options : [];
+      inner = `<div class="wys-poll"><input class="wys-inline-input wys-poll-q" data-wys="poll-q" data-i="${i}" value="${esc(q)}" placeholder="Вопрос опроса">`;
+      opts.forEach((o, oi) => { inner += `<div class="wys-poll-row"><span class="wys-poll-dot"></span><input class="wys-inline-input" data-wys="poll-opt" data-i="${i}" data-oi="${oi}" value="${esc(o.label || '')}" placeholder="Вариант"><button class="wys-mini-x" data-wys-act="poll-del" data-i="${i}" data-oi="${oi}">×</button></div>`; });
+      inner += `<button class="wys-gal-add" data-wys-act="poll-add" data-i="${i}">+ вариант</button></div>`;
+    } else if (t === 'map') {
+      inner = `<div class="wys-mapblock"><span class="wys-map-pin">⚑</span><input class="wys-inline-input" data-wys="content-str" data-i="${i}" value="${esc(typeof c === 'string' ? c : '')}" placeholder="Название места"></div>`;
+    } else {
+      inner = `<div class="wys-unknown">Блок «${esc(t)}»</div>`;
+    }
+
+    return `<div class="wys-block" data-type="${esc(t)}" data-i="${i}">${blockControls(i)}<div class="wys-block-inner">${inner}</div></div>`;
+  }
+
+  function applyEmptyStates() {
+    canvas.querySelectorAll('[data-empty]').forEach((el) => {
+      const upd = () => el.classList.toggle('is-empty', !el.textContent.trim());
+      upd();
+      el._wysEmpty || (el.addEventListener('input', upd), (el._wysEmpty = true));
+    });
+  }
+
+  // ── edits: text (input, no re-render) ─────────────────────────────────────
+  canvas.addEventListener('input', (e) => {
+    const el = e.target.closest('[data-wys]');
+    if (!el || !_model) return;
+    const field = el.getAttribute('data-wys');
+    const i = Number(el.getAttribute('data-i'));
+    const val = el.classList.contains('wys-rt') ? sanitizeInline(el.innerHTML) : (el.tagName === 'INPUT' ? el.value : el.textContent);
+
+    if (field === 'title') _model.title = val;
+    else if (field === 'excerpt') _model.excerpt = val;
+    else if (field === 'category') _model.category = val;
+    else if (field === 'date') _model.date = val;
+    else if (field === 'author') _model.author = val;
+    else if (field === 'role') _model.role = val;
+    else if (field === 'block') { if (_model.content[i]) _model.content[i].content = val; }
+    else if (field === 'caption') { if (_model.content[i]) _model.content[i].caption = val; }
+    else if (field === 'content-str') { if (_model.content[i]) _model.content[i].content = val; }
+    else if (field === 'url') { if (_model.content[i]) _model.content[i].url = val; }
+    else if (field === 'check-item') { const ci = Number(el.getAttribute('data-ci')); const b = _model.content[i]; if (b && b.content && b.content.items) b.content.items[ci] = val; }
+    else if (field === 'poll-q') { const b = _model.content[i]; if (b) { b.content = b.content || {}; b.content.question = val; } }
+    else if (field === 'poll-opt') { const oi = Number(el.getAttribute('data-oi')); const b = _model.content[i]; if (b && b.content && b.content.options && b.content.options[oi]) b.content.options[oi].label = val; }
+    scheduleCommit();
+  });
+
+  // ── clicks: structural actions ────────────────────────────────────────────
+  canvas.addEventListener('click', (e) => {
+    const act = e.target.closest('[data-wys-act]');
+    if (!act || !_model) return;
+    const a = act.getAttribute('data-wys-act');
+    const i = Number(act.getAttribute('data-i'));
+
+    if (a === 'hero') return openImagePicker((url) => { _model.imageUrl = url; _model.imageSeed = ''; render(); commit(); });
+    if (a === 'img')  return openImagePicker((url) => { if (_model.content[i]) _model.content[i].content = url; render(); commit(); });
+    if (a === 'insert') { const pos = Number(act.getAttribute('data-pos')); return openTypeMenu(act, (type) => { _model.content.splice(pos, 0, newBlock(type)); render(); commit(); focusBlock(pos); }); }
+    if (a === 'type') return openTypeMenu(act, (type) => { changeBlockType(i, type); render(); commit(); });
+    if (a === 'up')   { if (i > 0) { swap(i, i - 1); render(); commit(); } return; }
+    if (a === 'down') { if (i < _model.content.length - 1) { swap(i, i + 1); render(); commit(); } return; }
+    if (a === 'del')  { _model.content.splice(i, 1); render(); commit(); return; }
+    if (a === 'tag-add') { const t = prompt('Новый тег:'); if (t && t.trim()) { _model.tags = _model.tags || []; _model.tags.push(t.trim()); render(); commit(); } return; }
+    if (a === 'tag-del') { _model.tags.splice(i, 1); render(); commit(); return; }
+    if (a === 'gal-add') { const b = _model.content[i]; if (b) { if (!Array.isArray(b.content)) b.content = []; openImagePicker((url) => { b.content.push(url); render(); commit(); }); } return; }
+    if (a === 'gal-del') { const gi = Number(act.getAttribute('data-gi')); const b = _model.content[i]; if (b && Array.isArray(b.content)) { b.content.splice(gi, 1); render(); commit(); } return; }
+    if (a === 'check-add') { const b = _model.content[i]; if (b) { b.content = b.content || { items: [] }; if (!Array.isArray(b.content.items)) b.content.items = []; b.content.items.push(''); render(); commit(); } return; }
+    if (a === 'check-del') { const ci = Number(act.getAttribute('data-ci')); const b = _model.content[i]; if (b && b.content && b.content.items) { b.content.items.splice(ci, 1); render(); commit(); } return; }
+    if (a === 'poll-add') { const b = _model.content[i]; if (b) { b.content = b.content || { question: '', options: [] }; if (!Array.isArray(b.content.options)) b.content.options = []; b.content.options.push({ label: '', votes: 0 }); render(); commit(); } return; }
+    if (a === 'poll-del') { const oi = Number(act.getAttribute('data-oi')); const b = _model.content[i]; if (b && b.content && b.content.options) { b.content.options.splice(oi, 1); render(); commit(); } return; }
+  });
+
+  function swap(a, b) { const arr = _model.content; const t = arr[a]; arr[a] = arr[b]; arr[b] = t; }
+  function focusBlock(i) { setTimeout(() => { const el = canvas.querySelector(`.wys-block[data-i="${i}"] [contenteditable], .wys-block[data-i="${i}"] input`); if (el) el.focus(); }, 40); }
+
+  function newBlock(type) {
+    if (type === 'image') return { type: 'image', content: '', caption: '' };
+    if (type === 'gallery') return { type: 'gallery', content: [], caption: '' };
+    if (type === 'checklist') return { type: 'checklist', content: { items: [''] }, caption: '' };
+    if (type === 'poll') return { type: 'poll', content: { question: '', options: [{ label: '', votes: 0 }, { label: '', votes: 0 }] } };
+    if (type === 'link') return { type: 'link', content: '', url: '' };
+    if (type === 'audio') return { type: 'audio', content: '', caption: '' };
+    if (type === 'map') return { type: 'map', content: '' };
+    if (type === 'header') return { type: 'header', content: '' };
+    if (type === 'quote') return { type: 'quote', content: '' };
+    if (type === 'note') return { type: 'note', content: '' };
+    return { type: 'text', content: '' };
+  }
+  function changeBlockType(i, type) {
+    const b = _model.content[i]; if (!b) return;
+    const text = typeof b.content === 'string' ? b.content : (b.content && b.content.question) || '';
+    const nb = newBlock(type);
+    if (['text', 'header', 'quote', 'note'].includes(type)) nb.content = text;
+    _model.content[i] = nb;
+  }
+
+  // ── image picker popover ──────────────────────────────────────────────────
+  function openImagePicker(onPick) {
+    closePopovers();
+    const pop = document.createElement('div');
+    pop.className = 'wys-pop wys-pop-img';
+    pop.innerHTML = `<div class="wys-pop-head">Изображение</div>
+      <input class="wys-pop-input" placeholder="URL или imageSeed…" />
+      <div class="wys-pop-actions">
+        <button class="btn btn-sm" data-up>📁 Загрузить с ПК</button>
+        <button class="btn btn-primary btn-sm" data-ok>Применить</button>
+      </div>
+      <input type="file" accept="image/*" hidden />`;
+    document.body.appendChild(pop);
+    positionCenter(pop);
+    const inp = pop.querySelector('.wys-pop-input');
+    const file = pop.querySelector('input[type=file]');
+    inp.focus();
+    pop.querySelector('[data-ok]').onclick = () => { const v = inp.value.trim(); closePopovers(); if (v) onPick(v); };
+    inp.onkeydown = (e) => { if (e.key === 'Enter') pop.querySelector('[data-ok]').click(); };
+    pop.querySelector('[data-up]').onclick = () => file.click();
+    file.onchange = async () => {
+      const f = file.files && file.files[0]; if (!f) return;
+      const btn = pop.querySelector('[data-up]'); btn.disabled = true; btn.textContent = 'Загрузка…';
+      try { const url = await uploadImageReturnUrl(f); closePopovers(); onPick(url); }
+      catch (err) { btn.disabled = false; btn.textContent = '📁 Загрузить с ПК'; alert('Ошибка загрузки: ' + err.message); }
+    };
+    setTimeout(() => document.addEventListener('mousedown', outside), 0);
+    function outside(ev) { if (!pop.contains(ev.target)) { closePopovers(); } }
+    pop._outside = outside;
+  }
+
+  // ── block type menu ───────────────────────────────────────────────────────
+  function openTypeMenu(anchor, onPick) {
+    closePopovers();
+    const pop = document.createElement('div');
+    pop.className = 'wys-pop wys-pop-types';
+    pop.innerHTML = BLOCK_TYPES.map((b) => `<button class="wys-type-item" data-t="${b.t}"><span class="wys-type-ic">${b.icon}</span>${b.label}</button>`).join('');
+    document.body.appendChild(pop);
+    const r = anchor.getBoundingClientRect();
+    pop.style.top = (window.scrollY + r.bottom + 6) + 'px';
+    pop.style.left = Math.min(window.scrollX + r.left, window.innerWidth - 240) + 'px';
+    pop.querySelectorAll('.wys-type-item').forEach((btn) => { btn.onclick = () => { const t = btn.getAttribute('data-t'); closePopovers(); onPick(t); }; });
+    setTimeout(() => document.addEventListener('mousedown', outside), 0);
+    function outside(ev) { if (!pop.contains(ev.target) && ev.target !== anchor) closePopovers(); }
+    pop._outside = outside;
+  }
+
+  function positionCenter(pop) { pop.style.top = (window.scrollY + Math.max(80, window.innerHeight / 2 - 100)) + 'px'; pop.style.left = (window.innerWidth / 2 - 170) + 'px'; }
+  function closePopovers() { document.querySelectorAll('.wys-pop').forEach((p) => { if (p._outside) document.removeEventListener('mousedown', p._outside); p.remove(); }); }
+
+  // ── inline selection toolbar (bold/italic/underline/strike/link) ──────────
+  const sel = document.createElement('div');
+  sel.className = 'wys-seltool';
+  sel.innerHTML = `
+    <button data-cmd="bold"><b>B</b></button>
+    <button data-cmd="italic"><i>I</i></button>
+    <button data-cmd="underline"><u>U</u></button>
+    <button data-cmd="strikeThrough"><s>S</s></button>
+    <button data-cmd="link">🔗</button>`;
+  document.body.appendChild(sel);
+  sel.querySelectorAll('button').forEach((b) => {
+    b.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      const cmd = b.getAttribute('data-cmd');
+      if (cmd === 'link') { const url = prompt('URL ссылки:', 'https://'); if (url) document.execCommand('createLink', false, url); }
+      else document.execCommand(cmd, false, null);
+      const rt = document.activeElement && document.activeElement.closest('.wys-rt');
+      if (rt) { const i = Number(rt.getAttribute('data-i')); if (_model && _model.content[i]) { _model.content[i].content = sanitizeInline(rt.innerHTML); scheduleCommit(); } }
+    });
+  });
+  function updateSelTool() {
+    const s = window.getSelection();
+    if (!s || s.isCollapsed || !s.rangeCount) { sel.classList.remove('on'); return; }
+    const node = s.anchorNode;
+    const host = node && (node.nodeType === 1 ? node : node.parentElement);
+    if (!host || !host.closest('.wys-rt')) { sel.classList.remove('on'); return; }
+    const r = s.getRangeAt(0).getBoundingClientRect();
+    if (!r.width) { sel.classList.remove('on'); return; }
+    sel.style.top = (window.scrollY + r.top - 44) + 'px';
+    sel.style.left = (window.scrollX + r.left + r.width / 2 - 90) + 'px';
+    sel.classList.add('on');
+  }
+  document.addEventListener('selectionchange', () => { if (shell.classList.contains('on')) updateSelTool(); });
+  document.addEventListener('mouseup', () => setTimeout(updateSelTool, 0));
+
+  // ── metadata drawer ───────────────────────────────────────────────────────
+  function renderDrawer() {
+    if (!_model) return;
+    const row = (label, field, val, ph) => `<label class="wys-meta-field"><span>${label}</span><input data-mfield="${field}" value="${esc(val || '')}" placeholder="${ph || ''}"></label>`;
+    drawerBody.innerHTML =
+      row('Категория', 'category', _model.category, 'Culture') +
+      row('Подкатегория', 'subcategory', _model.subcategory, 'Feature') +
+      row('Автор', 'author', _model.author) +
+      row('Роль автора', 'role', _model.role, 'Editor') +
+      row('Дата', 'date', _model.date, '2026') +
+      row('imageSeed', 'imageSeed', _model.imageSeed, 'если URL пустой') +
+      row('URL обложки', 'imageUrl', _model.imageUrl, 'https://…') +
+      `<label class="wys-meta-field"><span>Теги (через запятую)</span><input data-mfield="tags" value="${esc((_model.tags || []).join(', '))}"></label>`;
+    drawerBody.querySelectorAll('input[data-mfield]').forEach((inp) => {
+      inp.addEventListener('input', () => {
+        const f = inp.getAttribute('data-mfield');
+        if (f === 'tags') _model.tags = inp.value.split(',').map((t) => t.trim()).filter(Boolean);
+        else _model[f] = inp.value;
+        scheduleCommit();
+        if (['category', 'imageUrl', 'imageSeed', 'author', 'role', 'date', 'tags'].includes(f)) { clearTimeout(_reloadTimer); _reloadTimer = setTimeout(render, 400); }
+      });
+    });
+  }
+  metaBtn && (metaBtn.onclick = () => { renderDrawer(); drawer.hidden = false; });
+  drawerClose && (drawerClose.onclick = () => { drawer.hidden = true; });
+
+  // ── device toggle ─────────────────────────────────────────────────────────
+  let _mobile = false;
+  deviceBtn && (deviceBtn.onclick = () => { _mobile = !_mobile; canvas.classList.toggle('mobile', _mobile); deviceBtn.textContent = _mobile ? '🖥️' : '📱'; });
+
+  // ── mode toggle ───────────────────────────────────────────────────────────
+  toggleBtn.addEventListener('click', () => { _enabled = !_enabled; if (_enabled) reload(); else showClassic(); });
+  closeBtn && (closeBtn.onclick = () => { _enabled = false; showClassic(); });
+
+  // ── react to selection changes from the classic toolbar ───────────────────
+  ['visualSection', 'visualEntry', 'visualLang'].forEach((id) => {
+    document.getElementById(id)?.addEventListener('change', scheduleReload);
+  });
+  // initial + when content tab shown
+  document.querySelector('[data-tab="content"]')?.addEventListener('click', () => setTimeout(reload, 200));
+  setTimeout(reload, 900);
+  window._wysReload = reload;
+})();
