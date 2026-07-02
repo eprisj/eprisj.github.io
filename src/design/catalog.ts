@@ -220,11 +220,12 @@ export const CATALOG: CatalogItem[] = [
   { id: 122, url: 'https://www.andtradition.com/collections/pendant-lamps/flowerpot-vp1/', name: 'Flowerpot VP1 Pendant', category: 'Lighting', styles: ['design-classic', 'statement', 'pop', 'elevated'], room: 'dining', retailer: '&Tradition' },
   { id: 123, url: 'https://www.andtradition.com/collections/floor-lamps/set-sl6/', name: 'SET Floor Lamp', category: 'Lighting', styles: ['minimalist', 'elevated', 'graphic'], room: 'living', retailer: '&Tradition' },
 
-  // ── Audo Copenhagen (ex Menu) ──
-  { id: 124, url: 'https://www.audo.com/en/products/co-lounge-chair', name: 'Co Lounge Chair', category: 'Armchairs', styles: ['design-classic', 'elevated', 'warm', 'organic'], room: 'living', retailer: 'Audo Copenhagen' },
-  { id: 125, url: 'https://www.audo.com/en/products/androgyne-lounge-table', name: 'Androgyne Lounge Table', category: 'Tables', styles: ['design-classic', 'elevated', 'organic', 'statement'], room: 'living', retailer: 'Audo Copenhagen' },
-  { id: 126, url: 'https://www.audo.com/en/products/path-floor-lamp', name: 'Path Floor Lamp', category: 'Lighting', styles: ['minimalist', 'elevated', 'modern'], room: 'living', retailer: 'Audo Copenhagen' },
-  { id: 127, url: 'https://www.audo.com/en/products/jwda-pendant-lamp', name: 'JWDA Pendant Lamp', category: 'Lighting', styles: ['design-classic', 'warm', 'elevated', 'brass'], room: 'dining', retailer: 'Audo Copenhagen' },
+  // ── Audo Copenhagen (ex Menu) — audo.com was sold to an unrelated company;
+  // the brand's real current domain is audocph.com, re-verified 2026-07-02 ──
+  { id: 124, url: 'https://audocph.com/products/co-lounge-chair', name: 'Co Lounge Chair', category: 'Armchairs', styles: ['design-classic', 'elevated', 'warm', 'organic'], room: 'living', retailer: 'Audo Copenhagen' },
+  { id: 125, url: 'https://audocph.com/products/androgyne-lounge-table', name: 'Androgyne Lounge Table', category: 'Tables', styles: ['design-classic', 'elevated', 'organic', 'statement'], room: 'living', retailer: 'Audo Copenhagen' },
+  { id: 126, url: 'https://audocph.com/products/jwda-table-lamp', name: 'JWDA Table Lamp, Marble', category: 'Lighting', styles: ['design-classic', 'elevated', 'marble', 'modern'], room: 'living', retailer: 'Audo Copenhagen' },
+  { id: 127, url: 'https://audocph.com/products/jwda-pendant-lamp', name: 'JWDA Pendant Lamp', category: 'Lighting', styles: ['design-classic', 'warm', 'elevated', 'brass'], room: 'dining', retailer: 'Audo Copenhagen' },
 
   // ── Crate & Barrel ──
   { id: 128, url: 'https://www.crateandbarrel.com/lounge-ii-petite-leather-sofa/s537756', name: 'Lounge II Leather Sofa', category: 'Sofas', styles: ['classic', 'leather', 'elevated', 'warm'], room: 'living', retailer: 'Crate & Barrel' },
