@@ -1,11 +1,15 @@
 import { motion, AnimatePresence, useScroll, useTransform, useSpring, LayoutGroup } from 'framer-motion';
-import { ReactNode, useState, useEffect, useCallback, useMemo, FormEvent, useRef } from 'react';
-import { MateriePage } from './pages/MateriePage';
-import { IssuePage } from './pages/IssuePage';
-import { StudioPage } from './pages/StudioPage';
-import { RadioPage } from './pages/RadioPage';
-import { PodcastsPage } from './pages/PodcastsPage';
-import { DesignPage } from './design/DesignPage';
+import { ReactNode, useState, useEffect, useCallback, useMemo, FormEvent, useRef, Suspense, lazy } from 'react';
+// Heavy, rarely-visited tabs are code-split out of the critical bundle —
+// e.g. DesignPage alone carries a 244-item catalogue that has no business
+// loading for a reader who just opened an article. Each only downloads once
+// its tab is actually clicked.
+const MateriePage = lazy(() => import('./pages/MateriePage').then((m) => ({ default: m.MateriePage })));
+const IssuePage = lazy(() => import('./pages/IssuePage').then((m) => ({ default: m.IssuePage })));
+const StudioPage = lazy(() => import('./pages/StudioPage').then((m) => ({ default: m.StudioPage })));
+const RadioPage = lazy(() => import('./pages/RadioPage').then((m) => ({ default: m.RadioPage })));
+const PodcastsPage = lazy(() => import('./pages/PodcastsPage').then((m) => ({ default: m.PodcastsPage })));
+const DesignPage = lazy(() => import('./design/DesignPage').then((m) => ({ default: m.DesignPage })));
 import {
   Article,
   ContentBlock,
@@ -213,6 +217,23 @@ function Reveal({ children, delay = 0, y = 28, className = '' }: { children: Rea
     >
       {children}
     </motion.div>
+  );
+}
+
+// Shown briefly while a code-split tab (materie/issue/design/studio/radio/
+// podcasts) downloads its chunk. On a warm cache this basically never shows.
+function TabLoadingFallback() {
+  return (
+    <div className="min-h-[60vh] flex items-center justify-center">
+      <motion.div
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+        transition={{ duration: 0.3, delay: 0.15 }}
+        className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--c-accent)] opacity-50"
+      >
+        <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--c-accent)] animate-pulse" />
+        Loading
+      </motion.div>
+    </div>
   );
 }
 
@@ -1969,19 +1990,31 @@ export default function App() {
         )}
 
         {activeTab === 'materie' ? (
-          <div className="pt-16">
-            <MateriePage t={t} />
-          </div>
+          <Suspense fallback={<TabLoadingFallback />}>
+            <div className="pt-16">
+              <MateriePage t={t} />
+            </div>
+          </Suspense>
         ) : activeTab === 'issue' ? (
-          <IssuePage archive={issueArchive} t={t} />
+          <Suspense fallback={<TabLoadingFallback />}>
+            <IssuePage archive={issueArchive} t={t} />
+          </Suspense>
         ) : activeTab === 'design' ? (
-          <DesignPage lang={currentLang} />
+          <Suspense fallback={<TabLoadingFallback />}>
+            <DesignPage lang={currentLang} />
+          </Suspense>
         ) : activeTab === 'studio' ? (
-          <StudioPage studio={studio} t={t} />
+          <Suspense fallback={<TabLoadingFallback />}>
+            <StudioPage studio={studio} t={t} />
+          </Suspense>
         ) : activeTab === 'radio' ? (
-          <RadioPage t={t} />
+          <Suspense fallback={<TabLoadingFallback />}>
+            <RadioPage t={t} />
+          </Suspense>
         ) : activeTab === 'podcasts' ? (
-          <PodcastsPage t={t} />
+          <Suspense fallback={<TabLoadingFallback />}>
+            <PodcastsPage t={t} />
+          </Suspense>
         ) : (
           <main className="max-w-[1600px] mx-auto px-4 sm:px-8 md:px-16 py-8 sm:py-12 md:py-24">
             <AnimatePresence mode="wait">
