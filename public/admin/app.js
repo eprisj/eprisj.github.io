@@ -845,7 +845,9 @@ function syncUploadHint() {
 function syncExternalLinks() {
   const cfg = getConfig();
   const repoUrl = getRepoWebUrl(cfg.owner, cfg.repo);
-  const actionsUrl = repoUrl ? `${repoUrl}/actions` : '#';
+  // Deploy runs via a VPS cron autopull, not GitHub Actions — link to commit
+  // history instead, which is what actually reflects what will go live next.
+  const actionsUrl = repoUrl ? `${repoUrl}/commits/${encodeURIComponent(cfg.branch || 'main')}` : '#';
   const pagesUrl = getPagesBaseUrl(cfg.owner, cfg.repo) || '#';
 
   openRepoLink.href = repoUrl || '#';
@@ -1575,54 +1577,49 @@ async function runGitHubAuthCheck(cfg) {
   }
 }
 
+// Deploy is a VPS cron autopull (push → within ~2 min live), not GitHub
+// Actions — the site hasn't used GitHub Pages since the 2026-07-01 VPS
+// migration. This compares the commit actually live on the VPS against the
+// branch HEAD on GitHub, via the read-only /deploy-status endpoint.
 async function runDeployStatusCheck(cfg) {
   if (!cfg.owner || !cfg.repo) {
     return createMonitorResult('warn', 'Статус деплоя', 'Заполните owner/repo для проверки деплоя.', []);
   }
 
+  let vps;
   try {
-    const workflowData = await githubRequest(
-      `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/actions/workflows?per_page=100`,
-      {
-        method: 'GET',
-        headers: headers(cfg.token)
-      }
-    );
-
-    const workflows = Array.isArray(workflowData.workflows) ? workflowData.workflows : [];
-    const workflow =
-      workflows.find((item) => String(item.path || '').includes('deploy-pages')) ||
-      workflows.find((item) => /deploy github pages/i.test(String(item.name || ''))) ||
-      workflows.find((item) => /pages/i.test(String(item.name || '')));
-
-    if (!workflow) {
-      return createMonitorResult('warn', 'Статус деплоя', 'Не найден workflow деплоя Pages.', []);
-    }
-
-    const runsData = await githubRequest(
-      `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/actions/workflows/${workflow.id}/runs?branch=${encodeURIComponent(cfg.branch)}&per_page=1`,
-      {
-        method: 'GET',
-        headers: headers(cfg.token)
-      }
-    );
-
-    const run = Array.isArray(runsData.workflow_runs) ? runsData.workflow_runs[0] : null;
-    if (!run) {
-      return createMonitorResult('warn', 'Статус деплоя', 'Запусков workflow пока нет.', [], workflow.html_url || '');
-    }
-
-    if (run.status !== 'completed') {
-      return createMonitorResult('warn', 'Статус деплоя', `Workflow "${workflow.name}" сейчас в состоянии "${run.status}".`, [], run.html_url || '', 'Открыть запуск');
-    }
-
-    if (run.conclusion === 'success') {
-      return createMonitorResult('ok', 'Статус деплоя', `Последний деплой успешен (${new Date(run.updated_at).toLocaleString('ru-RU')}).`, [], run.html_url || '', 'Открыть запуск');
-    }
-
-    return createMonitorResult('error', 'Статус деплоя', `Последний запуск завершился с "${run.conclusion || 'unknown'}".`, [], run.html_url || '', 'Открыть запуск');
+    const r = await fetch('https://api.eprisjournal.com/deploy-status', { cache: 'no-store', signal: AbortSignal.timeout(8000) });
+    vps = await r.json();
+    if (!vps.ok) throw new Error(vps.error || 'VPS вернул ошибку');
   } catch (error) {
-    return createMonitorResult('error', 'Статус деплоя', `Не удалось получить данные workflow: ${getErrorMessage(error)}`, []);
+    return createMonitorResult('error', 'Статус деплоя', `VPS недоступен: ${getErrorMessage(error)}`, []);
+  }
+
+  try {
+    const head = await githubRequest(
+      `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/commits/${encodeURIComponent(cfg.branch)}`,
+      { method: 'GET', headers: { ...headers(cfg.token), Accept: 'application/vnd.github.sha' } }
+    ).catch(async () => {
+      // fallback: some proxies mangle the sha media type — ask for the JSON form instead
+      return githubRequest(
+        `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/commits/${encodeURIComponent(cfg.branch)}?per_page=1`,
+        { method: 'GET', headers: headers(cfg.token) }
+      );
+    });
+    const headSha = typeof head === 'string' ? head.trim() : (head && head.sha) || '';
+    const when = vps.lastDeployAt ? new Date(vps.lastDeployAt).toLocaleString('ru-RU') : 'неизвестно';
+
+    if (headSha && vps.commit && headSha === vps.commit) {
+      return createMonitorResult('ok', 'Статус деплоя', `VPS на актуальном коммите ${vps.commitShort} — «${vps.subject}». Последний деплой: ${when}.`, []);
+    }
+    if (headSha) {
+      return createMonitorResult('warn', 'Статус деплоя', `VPS на ${vps.commitShort} («${vps.subject}»), на GitHub есть более новый коммит ${headSha.slice(0, 7)}. Автопул раз в 2 мин — подождите или запустите деплой вручную.`, []);
+    }
+    return createMonitorResult('ok', 'Статус деплоя', `VPS на коммите ${vps.commitShort} — «${vps.subject}». Последний деплой: ${when}.`, []);
+  } catch (error) {
+    // Can't reach GitHub to compare — still report what's actually live, which is the important part.
+    const when = vps.lastDeployAt ? new Date(vps.lastDeployAt).toLocaleString('ru-RU') : 'неизвестно';
+    return createMonitorResult('warn', 'Статус деплоя', `VPS на коммите ${vps.commitShort} — «${vps.subject}» (деплой: ${when}). Не удалось сверить с GitHub: ${getErrorMessage(error)}`, []);
   }
 }
 
@@ -5612,8 +5609,11 @@ function renderDashboard() {
     return;
   }
 
-  const enArticles = (data.articles && data.articles['EN']) ? data.articles['EN'].length : 0;
-  const enReviews  = (data.reviews  && data.reviews['EN'])  ? data.reviews['EN'].length  : 0;
+  // articles/reviews are flat arrays (the EN/default set) — per-language
+  // copies live under data.localizedCollections[lang], NOT as data.articles[lang].
+  // Only `translations` is actually keyed by language at the top level.
+  const enArticles = Array.isArray(data.articles) ? data.articles.length : 0;
+  const enReviews  = Array.isArray(data.reviews)  ? data.reviews.length  : 0;
   const issues     = Array.isArray(data.issues) ? data.issues : [];
   const langs      = data.translations ? Object.keys(data.translations).length : 0;
   const published  = issues.find(i => i.status === 'published');
@@ -5655,12 +5655,12 @@ function renderDashboard() {
       { key: 'items',        label: 'Галерея' },
       { key: 'libraryItems', label: 'Библиотека' },
     ];
-    const enLang = 'EN';
     auditEl.innerHTML = sections.map(sec => {
-      const entries = (data[sec.key] && data[sec.key][enLang]) || [];
+      // Flat arrays (EN/default set) — same schema as the dashboard counts above.
+      const entries = Array.isArray(data[sec.key]) ? data[sec.key] : [];
       const total   = entries.length;
       if (!total) return '';
-      const withPhoto = entries.filter(e => e.imageUrl || e.image || (e.blocks || []).some(b => b.type === 'image' && b.src)).length;
+      const withPhoto = entries.filter(e => e.imageUrl || e.image || (Array.isArray(e.content) && e.content.some(b => b.type === 'image' && b.content))).length;
       const pct = Math.round((withPhoto / total) * 100);
       const badge = pct === 100 ? 'ok' : pct > 60 ? 'warn' : 'danger';
       const badgeLabel = pct === 100 ? 'Полный' : pct > 60 ? 'Частично' : 'Неполный';
@@ -7729,12 +7729,48 @@ function bindStudioRowActions() {
 (function () {
   const DESIGN_API = 'https://api.eprisjournal.com';
 
-  async function loadDesignStats() {
-    const statusEl = document.getElementById('designApiStatus');
+  // Catalog stats — hardcoded from src/design/catalog.ts (localStorage cache
+  // is per-browser, from visiting the public /design page, and is empty in
+  // a fresh admin session; it was never a reliable source for this).
+  // Update these when items are added/removed from the catalogue.
+  const CATALOG_STATS = {
+    items: 244, styles: 58, looks: 8,
+    retailers: [
+      ['IKEA', 59], ['West Elm', 27], ['HAY', 20], ['CB2', 17], ['Ferm Living', 16],
+      ['Amazon', 15], ['Muuto', 13], ['Normann Copenhagen', 8], ['Anthropologie', 6],
+      ['Article', 6], ['Crate & Barrel', 5], ['BoConcept', 5], ['Gubi', 4], ['&Tradition', 4],
+      ['Audo Copenhagen', 4], ['Pottery Barn', 4], ['Fritz Hansen', 4], ['Tom Dixon', 4],
+      ['RH', 4], ['Knoll', 4], ['Vitra', 3], ['DWR', 3], ['Moooi', 3],
+      ['String Furniture', 2], ['Ligne Roset', 2], ['Cassina', 2],
+    ],
+  };
+
+  function renderCatalogStats() {
     const retailerEl = document.getElementById('designRetailerList');
+    try {
+      document.getElementById('designStatItems').textContent = CATALOG_STATS.items;
+      document.getElementById('designStatRetailers').textContent = CATALOG_STATS.retailers.length;
+      document.getElementById('designStatStyles').textContent = CATALOG_STATS.styles;
+      document.getElementById('designStatLooks').textContent = CATALOG_STATS.looks;
+      if (retailerEl) {
+        retailerEl.innerHTML = CATALOG_STATS.retailers.map(([name, count]) => `
+          <div class="dash-audit-row">
+            <span class="dash-audit-section">${name}</span>
+            <div class="dash-audit-chips">
+              <span class="dash-audit-chip ok">${count} товаров</span>
+            </div>
+          </div>`).join('');
+      }
+    } catch {}
+  }
+
+  async function loadDesignStats() {
+    // Local stats render instantly — no reason to make them wait on a
+    // network round-trip to the VPS resolver below.
+    renderCatalogStats();
+    const statusEl = document.getElementById('designApiStatus');
     if (statusEl) statusEl.textContent = 'Проверяю…';
     try {
-      // Check resolver endpoint
       const r = await fetch(DESIGN_API + '/design/resolve?url=https://hay.dk', { signal: AbortSignal.timeout(6000) });
       if (r.ok) {
         if (statusEl) { statusEl.textContent = '✓ VPS resolver доступен'; statusEl.style.color = 'var(--ok)'; }
@@ -7742,35 +7778,6 @@ function bindStudioRowActions() {
     } catch (e) {
       if (statusEl) { statusEl.textContent = '✗ ' + e.message; statusEl.style.color = 'var(--danger)'; }
     }
-    // Load catalog stats from localStorage cache
-    try {
-      const raw = localStorage.getItem('epris_design_products_v2');
-      if (raw) {
-        const cache = JSON.parse(raw);
-        const items = Object.values(cache).filter(v => v && v.title);
-        document.getElementById('designStatItems').textContent = items.length;
-        const retailers = [...new Set(items.map(i => i.siteName || i.brand).filter(Boolean))];
-        document.getElementById('designStatRetailers').textContent = retailers.length;
-        const styles = [...new Set(items.flatMap(i => i.styles || []))];
-        document.getElementById('designStatStyles').textContent = styles.length;
-        if (retailerEl) {
-          retailerEl.innerHTML = retailers.slice(0, 20).map(r => `
-            <div class="dash-audit-row">
-              <span class="dash-audit-section">${r}</span>
-              <div class="dash-audit-chips">
-                <span class="dash-audit-chip ok">${items.filter(i => (i.siteName || i.brand) === r).length} товаров</span>
-              </div>
-            </div>`).join('') || '<p class="dash-empty-hint">Нет данных кеша.</p>';
-        }
-      } else {
-        document.getElementById('designStatItems').textContent = '—';
-        document.getElementById('designStatRetailers').textContent = '—';
-        document.getElementById('designStatStyles').textContent = '—';
-      }
-      // Count looks from site-content if loaded
-      const looksCount = document.querySelectorAll('.look-card')?.length || '—';
-      document.getElementById('designStatLooks').textContent = looksCount;
-    } catch {}
   }
 
   async function testCurate() {
