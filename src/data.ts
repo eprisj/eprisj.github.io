@@ -37,6 +37,10 @@ export interface Article {
   imageSeed: string;
   imageUrl?: string;
   content: ContentBlock[];
+  /** Hidden from the public site until unset. */
+  draft?: boolean;
+  /** ISO datetime; hidden from the public site until this moment passes. */
+  publishAt?: string;
 }
 
 export interface Review {
@@ -255,13 +259,28 @@ export function getAvailableLanguages(): string[] {
   return allLangs;
 }
 
+/**
+ * True when the article should be visible to readers: not a draft, and its
+ * publishAt moment (if any) has passed. The admin preview bypasses this so
+ * drafts can be proofread on the real site.
+ */
+export function isArticleLive(a: Article): boolean {
+  if (a.draft) return false;
+  if (a.publishAt) {
+    const ts = Date.parse(a.publishAt);
+    if (!Number.isNaN(ts) && ts > Date.now()) return false;
+  }
+  return true;
+}
+
 export function getContentForLanguage(lang: string): LanguageContent {
   const c = src();
   const bucket = (c.localizedCollections || {})[lang] || {};
+  const articles = mergeLocalizedArray(bucket.articles, c.articles);
 
   return {
     items: mergeLocalizedArray(bucket.items, c.items),
-    articles: mergeLocalizedArray(bucket.articles, c.articles),
+    articles: isPreview() ? articles : articles.filter(isArticleLive),
     reviews: mergeLocalizedArray(bucket.reviews, c.reviews),
     libraryItems: mergeLocalizedArray(bucket.libraryItems, c.libraryItems)
   };

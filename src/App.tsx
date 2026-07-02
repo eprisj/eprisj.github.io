@@ -1110,9 +1110,16 @@ const LANG_LABELS: Record<string, string> = {
   ES: 'Español'
 };
 
-function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurrentLang, languages }: { article: Article; onClose: () => void; onImageClick: (src: string, alt: string) => void; t: (key: string) => string; currentLang: string; setCurrentLang: (lang: string) => void; languages: string[] }) {
+function ArticleView({ article, related, onArticleClick, onClose, onImageClick, t, currentLang, setCurrentLang, languages }: { article: Article; related: Article[]; onArticleClick: (article: Article) => void; onClose: () => void; onImageClick: (src: string, alt: string) => void; t: (key: string) => string; currentLang: string; setCurrentLang: (lang: string) => void; languages: string[] }) {
   const [isArticleLangOpen, setIsArticleLangOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Jumping to a related article swaps content inside the same overlay — snap
+  // the scroll back to the top so the reader starts at the new article's hero.
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ top: 0 });
+  }, [article.id]);
 
   const handleShare = async () => {
     const url = window.location.href;
@@ -1134,6 +1141,7 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
 
   return (
     <motion.div
+      ref={scrollRef}
       initial={{ opacity: 0, x: '3%' }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: '3%' }}
@@ -1447,6 +1455,36 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
               </button>
             </div>
           </footer>
+
+          {related.length > 0 && (
+            <section className="mt-12 sm:mt-20 pt-10 sm:pt-14 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+              <h2 className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-8">
+                {t('article.related') === 'article.related' ? (currentLang === 'RU' ? 'Читать также' : 'Read also') : t('article.related')}
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+                {related.map((rel) => (
+                  <button
+                    type="button"
+                    key={rel.id}
+                    onClick={() => onArticleClick(rel)}
+                    className="text-left group"
+                  >
+                    <div className="aspect-[4/3] overflow-hidden bg-[#E8DED5] mb-4">
+                      <img
+                        src={resolveMediaSource(rel.imageUrl || rel.imageSeed, 600, 450)}
+                        alt={rel.title}
+                        loading="lazy"
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                      />
+                    </div>
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--c-gold)] mb-2">{rel.category}</p>
+                    <h3 className="font-serif text-lg sm:text-xl leading-snug text-[var(--c-accent)] group-hover:opacity-70 transition-opacity">{rel.title}</h3>
+                  </button>
+                ))}
+              </div>
+            </section>
+          )}
         </article>
       </div>
     </motion.div>
@@ -1934,6 +1972,18 @@ export default function App() {
       || defaultContent.articles.find((article) => article.id === selectedArticleId)
       || null
     : null;
+  // "Read also": same-category articles first, then the rest (newest ids first
+  // as a recency proxy), excluding the one being read. Three cards max.
+  const relatedArticles = selectedArticle
+    ? [...articles]
+        .filter((a) => a.id !== selectedArticle.id)
+        .sort((a, b) => {
+          const sameA = a.category === selectedArticle.category ? 1 : 0;
+          const sameB = b.category === selectedArticle.category ? 1 : 0;
+          return sameB - sameA || b.id - a.id;
+        })
+        .slice(0, 3)
+    : [];
   const t = (key: string) => getTranslation(currentLang, key);
 
   useEffect(() => {
@@ -2111,7 +2161,7 @@ export default function App() {
 
       <AnimatePresence>
         {selectedArticle && (
-          <ArticleView article={selectedArticle} onClose={handleCloseArticle} onImageClick={handleImageClick} t={t} currentLang={currentLang} setCurrentLang={setCurrentLang} languages={languageOptions} />
+          <ArticleView article={selectedArticle} related={relatedArticles} onArticleClick={(a) => handleSelectArticle(a.id, a)} onClose={handleCloseArticle} onImageClick={handleImageClick} t={t} currentLang={currentLang} setCurrentLang={setCurrentLang} languages={languageOptions} />
         )}
       </AnimatePresence>
 

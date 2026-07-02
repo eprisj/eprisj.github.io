@@ -2807,9 +2807,12 @@ function refreshVisualEditor() {
   const optionsHtml = visibleDropdown
     .map((item) => {
       const id = Number(item.id);
-      const label = item._hasTranslation
+      let label = item._hasTranslation
         ? getEntryTitle(section, item._entry)
         : item._enTitle + ' (не переведено)';
+      const e = item._entry || {};
+      if (e.draft) label += ' 📝 ЧЕРНОВИК';
+      else if (e.publishAt && Date.parse(e.publishAt) > Date.now()) label += ' ⏳ ОТЛОЖЕНО';
       return `<option value="${id}">#${id} - ${escapeHtml(label)}</option>`;
     })
     .join('');
@@ -8894,6 +8897,7 @@ async function flushModernEditor() {
     if (!Array.isArray(_model.content)) _model.content = [];
     render();
     resetHistory(_model);
+    updateDraftBadge();
   }
   function scheduleReload() { clearTimeout(_reloadTimer); _reloadTimer = setTimeout(reload, 140); }
 
@@ -9472,7 +9476,9 @@ async function flushModernEditor() {
       row('Дата', 'date', _model.date, '2026') +
       row('imageSeed', 'imageSeed', _model.imageSeed, 'если URL пустой') +
       row('URL обложки', 'imageUrl', _model.imageUrl, 'https://…') +
-      `<label class="wys-meta-field"><span>Теги (через запятую)</span><input data-mfield="tags" value="${esc((_model.tags || []).join(', '))}"></label>`;
+      `<label class="wys-meta-field"><span>Теги (через запятую)</span><input data-mfield="tags" value="${esc((_model.tags || []).join(', '))}"></label>` +
+      `<label class="wys-meta-check"><input type="checkbox" data-mdraft ${_model.draft ? 'checked' : ''}><span>Черновик — скрыт с сайта</span></label>` +
+      `<label class="wys-meta-field"><span>Отложенная публикация (скрыта до этого момента)</span><input type="datetime-local" data-mpublishat value="${esc(isoToLocalInput(_model.publishAt))}"></label>`;
     drawerBody.querySelectorAll('input[data-mfield]').forEach((inp) => {
       inp.addEventListener('input', () => {
         const f = inp.getAttribute('data-mfield');
@@ -9482,6 +9488,45 @@ async function flushModernEditor() {
         if (['category', 'imageUrl', 'imageSeed', 'author', 'role', 'date', 'tags'].includes(f)) { clearTimeout(_reloadTimer); _reloadTimer = setTimeout(render, 400); }
       });
     });
+    const draftInp = drawerBody.querySelector('[data-mdraft]');
+    draftInp && draftInp.addEventListener('change', () => {
+      if (draftInp.checked) _model.draft = true; else delete _model.draft;
+      updateDraftBadge();
+      scheduleCommit();
+    });
+    const pubInp = drawerBody.querySelector('[data-mpublishat]');
+    pubInp && pubInp.addEventListener('change', () => {
+      const v = pubInp.value; // local "YYYY-MM-DDTHH:mm" or ''
+      if (v) _model.publishAt = new Date(v).toISOString(); else delete _model.publishAt;
+      updateDraftBadge();
+      scheduleCommit();
+    });
+  }
+  // datetime-local wants local wall-clock "YYYY-MM-DDTHH:mm"; we store ISO/UTC.
+  function isoToLocalInput(iso) {
+    if (!iso) return '';
+    const d = new Date(iso);
+    if (isNaN(d)) return '';
+    const p = (n) => String(n).padStart(2, '0');
+    return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`;
+  }
+  // Persistent chip in the toolbar so an editor always sees when the open
+  // article is hidden from readers (draft or waiting for its publish moment).
+  function updateDraftBadge() {
+    let badge = document.getElementById('wysDraftBadge');
+    const scheduled = _model && _model.publishAt && Date.parse(_model.publishAt) > Date.now();
+    const on = _model && (_model.draft || scheduled);
+    if (!on) { badge && badge.remove(); return; }
+    if (!badge) {
+      badge = document.createElement('span');
+      badge.id = 'wysDraftBadge';
+      badge.className = 'wys-draft-badge';
+      const pill = document.getElementById('wysSaveState');
+      if (pill && pill.parentNode) pill.parentNode.insertBefore(badge, pill);
+      else return;
+    }
+    badge.textContent = _model.draft ? 'ЧЕРНОВИК' : ('ПУБЛИКАЦИЯ ' + new Date(_model.publishAt).toLocaleString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }));
+    badge.title = _model.draft ? 'Статья скрыта с сайта' : 'Статья появится на сайте в указанное время';
   }
   metaBtn && (metaBtn.onclick = () => { renderDrawer(); drawer.hidden = false; });
   drawerClose && (drawerClose.onclick = () => { drawer.hidden = true; });

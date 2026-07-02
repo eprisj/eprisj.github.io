@@ -3750,6 +3750,10 @@ body.busy::after {
 .wys-meta-field span { font-family: var(--font-mono); font-size: .58rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); }
 .wys-meta-field input { padding: 8px 11px; border: 1px solid var(--line); border-radius: 4px; font-size: .85rem; background: var(--bg); color: var(--text); }
 .wys-meta-field input:focus { outline: none; border-color: var(--accent); background: var(--bg-card); }
+.wys-meta-check { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 4px 0; }
+.wys-meta-check input { accent-color: var(--accent); width: 15px; height: 15px; cursor: pointer; }
+.wys-meta-check span { font-family: var(--font-mono); font-size: .62rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--warn); }
+.wys-draft-badge { font-family: var(--font-mono); font-size: .58rem; font-weight: 700; letter-spacing: .08em; color: #fff; background: var(--warn); border-radius: 4px; padding: 3px 8px; margin-right: 8px; white-space: nowrap; }
 
 /* Toggle button active */
 .btn-wys-toggle.active { background: var(--accent); color: #fff; border-color: var(--accent); }
