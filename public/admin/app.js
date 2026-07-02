@@ -1038,6 +1038,35 @@ function useUploadedPagesUrlInCurrentEntry() {
 // epris-content-snapshot.js on the server.
 const UPLOAD_API = 'https://api.eprisjournal.com/upload';
 
+// Web-size cap: photos straight from a camera are 4000px+ / 5-10 MB, which is
+// wasted bandwidth for readers. Downscale to max 2000px and re-encode as WebP
+// before upload. GIFs pass through untouched (canvas would kill the animation),
+// as does anything already small enough where re-encoding wouldn't pay off.
+const IMG_MAX_DIMENSION = 2000;
+const IMG_COMPRESS_THRESHOLD = 400 * 1024; // below this, upload as-is
+async function compressImageForUpload(file) {
+  if (file.type === 'image/gif' || file.type === 'image/svg+xml') return file;
+  if (file.size <= IMG_COMPRESS_THRESHOLD) return file;
+  let bitmap;
+  try { bitmap = await createImageBitmap(file); }
+  catch { return file; } // unreadable/exotic format — let the server take the original
+  try {
+    const scale = Math.min(1, IMG_MAX_DIMENSION / Math.max(bitmap.width, bitmap.height));
+    const w = Math.max(1, Math.round(bitmap.width * scale));
+    const h = Math.max(1, Math.round(bitmap.height * scale));
+    const canvas = document.createElement('canvas');
+    canvas.width = w; canvas.height = h;
+    canvas.getContext('2d').drawImage(bitmap, 0, 0, w, h);
+    const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/webp', 0.85));
+    // Only swap in the re-encode when it actually saves space.
+    if (!blob || blob.size >= file.size) return file;
+    const base = String(file.name || 'photo').replace(/\.[a-z0-9]{2,5}$/i, '');
+    return new File([blob], base + '.webp', { type: 'image/webp' });
+  } finally {
+    bitmap.close();
+  }
+}
+
 async function uploadImageToVPS(file) {
   if (!String(file.type || '').startsWith('image/')) {
     throw new Error('Можно загрузить только файл изображения (JPG, PNG, WebP и т.д.).');
@@ -1045,6 +1074,7 @@ async function uploadImageToVPS(file) {
   if (file.size > 15 * 1024 * 1024) {
     throw new Error('Файл слишком большой. Максимум: 15 MB.');
   }
+  file = await compressImageForUpload(file);
   const base64Content = await readFileAsBase64(file);
   const res = await fetch(UPLOAD_API, {
     method: 'POST',
@@ -9304,8 +9334,29 @@ async function flushModernEditor() {
       grid.innerHTML = '<div class="wys-media-loading">Загружаю…</div>';
       const items = await fetchMediaLibrary(force);
       if (!items.length) { grid.innerHTML = '<div class="wys-media-empty">Пока нет загруженных фото — загрузите первое выше.</div>'; return; }
-      grid.innerHTML = items.map((it) => `<button type="button" class="wys-media-item" data-url="${esc(it.url)}" title="${esc(it.name)}"><img src="${esc(it.url)}" loading="lazy" referrerpolicy="no-referrer" alt=""></button>`).join('');
+      grid.innerHTML = items.map((it) => `<div class="wys-media-cell"><button type="button" class="wys-media-item" data-url="${esc(it.url)}" title="${esc(it.name)}"><img src="${esc(it.url)}" loading="lazy" referrerpolicy="no-referrer" alt=""></button><button type="button" class="wys-media-del" data-name="${esc(it.name)}" title="Удалить с сервера">×</button></div>`).join('');
       grid.querySelectorAll('.wys-media-item').forEach((btn) => { btn.onclick = () => { const u = btn.getAttribute('data-url'); closePopovers(); onPick(u); }; });
+      grid.querySelectorAll('.wys-media-del').forEach((btn) => {
+        btn.onclick = async (ev) => {
+          ev.stopPropagation();
+          const name = btn.getAttribute('data-name');
+          if (!confirm(`Удалить «${name}» с сервера?\nСтатьи, где это фото используется, потеряют картинку.`)) return;
+          btn.disabled = true;
+          try {
+            const pw = (typeof getAdminPassword === 'function') ? getAdminPassword() : '';
+            const r = await fetch('https://api.eprisjournal.com/upload-delete', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
+              body: JSON.stringify({ name })
+            });
+            const d = await r.json().catch(() => ({}));
+            if (!r.ok || !d.ok) throw new Error(d.error || `HTTP ${r.status}`);
+            if (Array.isArray(_mediaCache)) _mediaCache = _mediaCache.filter((it) => it.name !== name);
+            btn.closest('.wys-media-cell').remove();
+            if (!grid.querySelector('.wys-media-cell')) grid.innerHTML = '<div class="wys-media-empty">Пока нет загруженных фото — загрузите первое выше.</div>';
+          } catch (err) { btn.disabled = false; alert('Не удалось удалить: ' + err.message); }
+        };
+      });
     }
     renderGrid(false);
     pop.querySelector('[data-refresh]').onclick = () => renderGrid(true);
