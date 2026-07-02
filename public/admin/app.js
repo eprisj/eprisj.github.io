@@ -3779,6 +3779,7 @@ const BLOCK_TYPES = [
   { type: 'image', label: 'Фото', icon: '\uD83D\uDDBC' },
   { type: 'gallery', label: 'Галерея', icon: '\uD83D\uDDBC\uD83D\uDDBC' },
   { type: 'audio', label: 'Аудио', icon: '\u266B' },
+  { type: 'video', label: 'Видео', icon: '▶' },
   { type: 'link', label: 'Ссылка', icon: '\uD83D\uDD17' },
   { type: 'checklist', label: 'Чеклист', icon: '\u2611' },
   { type: 'map', label: 'Карта', icon: '\uD83D\uDCCD' },
@@ -3896,6 +3897,16 @@ function renderBlockBody(block, index) {
       <input data-block-field="content" value="${escapeHtml(src)}" placeholder="https://..." /></div>
       <div><span class="block-field-label">Подпись</span>
       <input data-block-field="caption" value="${escapeHtml(cap)}" placeholder="Описание аудио" /></div>`;
+  }
+
+  if (t === 'video') {
+    const src = typeof c === 'string' ? c : '';
+    const cap = block.caption || '';
+    return `
+      <div><span class="block-field-label">Ссылка на YouTube</span>
+      <input data-block-field="content" value="${escapeHtml(src)}" placeholder="https://youtube.com/watch?v=..." /></div>
+      <div><span class="block-field-label">Подпись</span>
+      <input data-block-field="caption" value="${escapeHtml(cap)}" placeholder="Описание видео" /></div>`;
   }
 
   if (t === 'link') {
@@ -8736,6 +8747,7 @@ async function flushModernEditor() {
     { t: 'note',      label: 'Заметка',  icon: '✎' },
     { t: 'image',     label: 'Фото',     icon: '▣' },
     { t: 'gallery',   label: 'Галерея',  icon: '⊞' },
+    { t: 'video',     label: 'Видео',    icon: '▶' },
     { t: 'checklist', label: 'Чеклист',  icon: '☑' },
     { t: 'link',      label: 'Ссылка',   icon: '↗' },
     { t: 'audio',     label: 'Аудио',    icon: '♪' },
@@ -8750,6 +8762,63 @@ async function flushModernEditor() {
   let _publishTimer = null;
   let _reloadTimer = null;
   let _suspendReload = false;
+
+  // ── undo/redo history — a stack of full _model snapshots ──────────────────
+  const HISTORY_CAP = 60;
+  let _history = [];
+  let _historyIdx = -1;
+  let _restoringHistory = false;
+  const undoBtn = document.getElementById('wysUndoBtn');
+  const redoBtn = document.getElementById('wysRedoBtn');
+
+  function resetHistory(model) {
+    _history = [clone(model)];
+    _historyIdx = 0;
+    updateHistoryButtons();
+  }
+  function pushHistory() {
+    if (_restoringHistory || !_model) return;
+    // A new edit after undoing invalidates whatever redo branch existed.
+    _history = _history.slice(0, _historyIdx + 1);
+    _history.push(clone(_model));
+    if (_history.length > HISTORY_CAP) _history.shift();
+    _historyIdx = _history.length - 1;
+    updateHistoryButtons();
+  }
+  function updateHistoryButtons() {
+    if (undoBtn) undoBtn.disabled = _historyIdx <= 0;
+    if (redoBtn) redoBtn.disabled = _historyIdx >= _history.length - 1;
+  }
+  function undo() {
+    if (_historyIdx <= 0) return;
+    _historyIdx -= 1;
+    restoreHistoryStep();
+  }
+  function redo() {
+    if (_historyIdx >= _history.length - 1) return;
+    _historyIdx += 1;
+    restoreHistoryStep();
+  }
+  function restoreHistoryStep() {
+    _restoringHistory = true;
+    _model = clone(_history[_historyIdx]);
+    render();
+    flushLocal();
+    armPublish(900); // undo/redo is a deliberate act — publish it a bit sooner than idle typing
+    setSave('saved');
+    updateHistoryButtons();
+    _restoringHistory = false;
+  }
+  document.addEventListener('keydown', (e) => {
+    if (!shell.classList.contains('on')) return;
+    if (!(e.metaKey || e.ctrlKey) || e.key.toLowerCase() !== 'z') return;
+    // Don't hijack undo inside an ordinary input/textarea outside the canvas.
+    if (!canvas.contains(document.activeElement) && document.activeElement !== document.body) return;
+    e.preventDefault();
+    if (e.shiftKey) redo(); else undo();
+  });
+  undoBtn?.addEventListener('click', undo);
+  redoBtn?.addEventListener('click', redo);
 
   const CLASSIC = ['creatorStudioWrap', 'editorSplit', 'commandCenter', 'stats'];
   const classicEls = () => CLASSIC.map((id) => document.getElementById(id)).filter(Boolean);
@@ -8787,6 +8856,7 @@ async function flushModernEditor() {
     _model = clone(entry);
     if (!Array.isArray(_model.content)) _model.content = [];
     render();
+    resetHistory(_model);
   }
   function scheduleReload() { clearTimeout(_reloadTimer); _reloadTimer = setTimeout(reload, 140); }
 
@@ -8808,6 +8878,7 @@ async function flushModernEditor() {
     _errorRetries = 0;
     armPublish(2600);
     setSave('saved');
+    pushHistory();
   }
   function flushLocal() {
     if (!_model) return false;
@@ -8940,14 +9011,20 @@ async function flushModernEditor() {
     return `<div class="wys-insert"><button class="wys-insert-btn" data-wys-act="insert" data-pos="${pos}" title="Вставить блок">+</button></div>`;
   }
 
+  const ICON_UP     = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>';
+  const ICON_DOWN   = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>';
+  const ICON_REPEAT = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>';
+  const ICON_TRASH  = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>';
+  const ICON_GRIP   = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>';
+
   function blockControls(i) {
     return `<div class="wys-bc">
-      <button class="wys-bc-btn" data-wys-act="up"   data-i="${i}" title="Вверх">↑</button>
-      <button class="wys-bc-btn" data-wys-act="down" data-i="${i}" title="Вниз">↓</button>
-      <button class="wys-bc-btn" data-wys-act="type" data-i="${i}" title="Тип блока">⇄</button>
-      <button class="wys-bc-btn danger" data-wys-act="del" data-i="${i}" title="Удалить">×</button>
+      <button class="wys-bc-btn" data-wys-act="up"   data-i="${i}" title="Вверх">${ICON_UP}</button>
+      <button class="wys-bc-btn" data-wys-act="down" data-i="${i}" title="Вниз">${ICON_DOWN}</button>
+      <button class="wys-bc-btn" data-wys-act="type" data-i="${i}" title="Сменить тип блока">${ICON_REPEAT}</button>
+      <button class="wys-bc-btn danger" data-wys-act="del" data-i="${i}" title="Удалить блок">${ICON_TRASH}</button>
     </div>
-    <span class="wys-bc-drag" draggable="true" data-drag-i="${i}" title="Перетащить, чтобы переставить">⠿</span>`;
+    <span class="wys-bc-drag" draggable="true" data-drag-i="${i}" title="Перетащить, чтобы переставить">${ICON_GRIP}</span>`;
   }
 
   function renderBlock(block, i) {
@@ -8965,7 +9042,19 @@ async function flushModernEditor() {
       inner = `<div class="wys-rt wys-note" contenteditable="true" data-wys="block" data-i="${i}" data-empty="Заметка на полях…">${sanitizeInline(typeof c === 'string' ? c : '')}</div>`;
     } else if (t === 'image') {
       const src = imgUrl(typeof c === 'string' ? c : '', 900, 600);
-      inner = `<figure class="wys-fig">
+      const align = block.align || (block.stretched ? 'full' : 'center');
+      const width = block.width && block.width > 0 && block.width <= 100 ? block.width : 100;
+      const ALIGN_OPTS = [
+        { v: 'left',   label: 'Слева',        ic: '⟸' },
+        { v: 'center', label: 'По центру',    ic: '≡' },
+        { v: 'right',  label: 'Справа',       ic: '⟹' },
+        { v: 'full',   label: 'На всю ширину',ic: '⬌' },
+      ];
+      inner = `<div class="wys-fig-toolbar">
+        ${ALIGN_OPTS.map((o) => `<button type="button" class="wys-fig-align-btn${align === o.v ? ' active' : ''}" data-wys-act="img-align" data-i="${i}" data-align="${o.v}" title="${o.label}">${o.ic}</button>`).join('')}
+        ${align !== 'full' ? `<span class="wys-fig-width-wrap"><input type="range" min="30" max="100" step="5" value="${width}" class="wys-fig-width" data-wys="img-width" data-i="${i}"><span class="wys-fig-width-val">${width}%</span></span>` : ''}
+      </div>
+      <figure class="wys-fig wys-fig-align-${align}"${align !== 'full' && width !== 100 ? ` style="width:${width}%"` : ''}>
         <div class="wys-fig-img" data-wys-act="img" data-i="${i}">${src ? `<img src="${esc(src)}" referrerpolicy="no-referrer" alt="">` : '<div class="wys-fig-empty">Нажмите, чтобы добавить фото</div>'}<span class="wys-fig-edit">✎</span></div>
         <figcaption class="wys-ce wys-figcap" contenteditable="true" data-wys="caption" data-i="${i}" data-empty="Подпись к фото">${esc(block.caption || '')}</figcaption>
       </figure>`;
@@ -8985,6 +9074,18 @@ async function flushModernEditor() {
       inner = `<div class="wys-linkblock"><input class="wys-inline-input" data-wys="content-str" data-i="${i}" value="${esc(typeof c === 'string' ? c : '')}" placeholder="Текст ссылки"><input class="wys-inline-input" data-wys="url" data-i="${i}" value="${esc(block.url || '')}" placeholder="https://…"></div>`;
     } else if (t === 'audio') {
       inner = `<div class="wys-audio"><span class="wys-audio-ic">♪</span><div class="wys-audio-fields"><input class="wys-inline-input" data-wys="content-str" data-i="${i}" value="${esc(typeof c === 'string' ? c : '')}" placeholder="URL аудио"><input class="wys-inline-input" data-wys="caption" data-i="${i}" value="${esc(block.caption || '')}" placeholder="Подпись"></div></div>`;
+    } else if (t === 'video') {
+      const url = typeof c === 'string' ? c : '';
+      const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+      const thumb = ytMatch ? `https://img.youtube.com/vi/${ytMatch[1]}/hqdefault.jpg` : '';
+      inner = `<div class="wys-video">
+        <div class="wys-video-thumb">${thumb ? `<img src="${esc(thumb)}" referrerpolicy="no-referrer" alt="">` : '<div class="wys-video-ph">▶</div>'}</div>
+        <div class="wys-video-fields">
+          <input class="wys-inline-input" data-wys="content-str" data-i="${i}" value="${esc(url)}" placeholder="Ссылка на YouTube — youtube.com/watch?v=…">
+          <input class="wys-inline-input" data-wys="caption" data-i="${i}" value="${esc(block.caption || '')}" placeholder="Подпись (необязательно)">
+          ${url && !ytMatch ? '<p class="wys-video-warn">Пока распознаётся только YouTube — на сайте покажется заглушка.</p>' : ''}
+        </div>
+      </div>`;
     } else if (t === 'poll') {
       const q = (c && c.question) ? c.question : '';
       const opts = (c && Array.isArray(c.options)) ? c.options : [];
@@ -9029,6 +9130,16 @@ async function flushModernEditor() {
     else if (field === 'check-item') { const ci = Number(el.getAttribute('data-ci')); const b = _model.content[i]; if (b && b.content && b.content.items) b.content.items[ci] = val; }
     else if (field === 'poll-q') { const b = _model.content[i]; if (b) { b.content = b.content || {}; b.content.question = val; } }
     else if (field === 'poll-opt') { const oi = Number(el.getAttribute('data-oi')); const b = _model.content[i]; if (b && b.content && b.content.options && b.content.options[oi]) b.content.options[oi].label = val; }
+    else if (field === 'img-width') {
+      const b = _model.content[i]; if (!b) return;
+      b.width = Number(val);
+      // Live-update the figure width + readout without a full re-render —
+      // dragging a range input while it re-renders on every tick is jittery.
+      const fig = el.closest('.wys-block')?.querySelector('.wys-fig');
+      if (fig) fig.style.width = b.width + '%';
+      const readout = el.parentElement?.querySelector('.wys-fig-width-val');
+      if (readout) readout.textContent = b.width + '%';
+    }
     scheduleCommit();
   });
 
@@ -9041,6 +9152,14 @@ async function flushModernEditor() {
 
     if (a === 'hero') return openImagePicker((url) => { _model.imageUrl = url; _model.imageSeed = ''; render(); commit(); });
     if (a === 'img')  return openImagePicker((url) => { if (_model.content[i]) _model.content[i].content = url; render(); commit(); });
+    if (a === 'img-align') {
+      const b = _model.content[i]; if (!b) return;
+      const align = act.getAttribute('data-align');
+      if (align === 'full') { b.align = undefined; b.stretched = true; b.width = undefined; }
+      else { b.stretched = false; b.align = align === 'center' ? undefined : align; }
+      render(); commit();
+      return;
+    }
     if (a === 'insert') { const pos = Number(act.getAttribute('data-pos')); return openTypeMenu(act, (type) => { _model.content.splice(pos, 0, newBlock(type)); render(); commit(); focusBlock(pos); }); }
     if (a === 'type') return openTypeMenu(act, (type) => { changeBlockType(i, type); render(); commit(); });
     if (a === 'up')   { if (i > 0) { swap(i, i - 1); render(); commit(); } return; }
@@ -9109,6 +9228,7 @@ async function flushModernEditor() {
     if (type === 'poll') return { type: 'poll', content: { question: '', options: [{ label: '', votes: 0 }, { label: '', votes: 0 }] } };
     if (type === 'link') return { type: 'link', content: '', url: '' };
     if (type === 'audio') return { type: 'audio', content: '', caption: '' };
+    if (type === 'video') return { type: 'video', content: '', caption: '' };
     if (type === 'map') return { type: 'map', content: '' };
     if (type === 'header') return { type: 'header', content: '' };
     if (type === 'quote') return { type: 'quote', content: '' };
@@ -9211,21 +9331,57 @@ async function flushModernEditor() {
   }
   function closePopovers() { document.querySelectorAll('.wys-pop').forEach((p) => { if (p._outside) document.removeEventListener('mousedown', p._outside); p.remove(); }); }
 
-  // ── inline selection toolbar (bold/italic/underline/strike/link) ──────────
+  // ── inline selection toolbar (bold/italic/underline/strike/mark/code/link) ─
   const sel = document.createElement('div');
   sel.className = 'wys-seltool';
   sel.innerHTML = `
-    <button data-cmd="bold"><b>B</b></button>
-    <button data-cmd="italic"><i>I</i></button>
-    <button data-cmd="underline"><u>U</u></button>
-    <button data-cmd="strikeThrough"><s>S</s></button>
-    <button data-cmd="link">🔗</button>`;
+    <button data-cmd="bold" title="Жирный (Ctrl+B)"><b>B</b></button>
+    <button data-cmd="italic" title="Курсив (Ctrl+I)"><i>I</i></button>
+    <button data-cmd="underline" title="Подчёркнутый (Ctrl+U)"><u>U</u></button>
+    <button data-cmd="strikeThrough" title="Зачёркнутый"><s>S</s></button>
+    <span class="wys-seltool-sep"></span>
+    <button data-cmd="mark" title="Выделение"><mark>M</mark></button>
+    <button data-cmd="code" title="Код"><code>&lt;/&gt;</code></button>
+    <span class="wys-seltool-sep"></span>
+    <button data-cmd="link" title="Ссылка">🔗</button>`;
   document.body.appendChild(sel);
+
+  // execCommand has no native 'mark'/'code' — wrap or unwrap the selection
+  // in that tag ourselves. Toggling off works if the whole selection sits
+  // inside a matching tag already.
+  function toggleWrapTag(tagName) {
+    const s2 = window.getSelection();
+    if (!s2 || !s2.rangeCount || s2.isCollapsed) return;
+    const range = s2.getRangeAt(0);
+    let container = range.commonAncestorContainer;
+    if (container.nodeType === 3) container = container.parentElement;
+    const existing = container && container.closest && container.closest(tagName);
+    if (existing) {
+      const parent = existing.parentNode;
+      while (existing.firstChild) parent.insertBefore(existing.firstChild, existing);
+      parent.removeChild(existing);
+      return;
+    }
+    const el = document.createElement(tagName);
+    try {
+      range.surroundContents(el);
+    } catch {
+      const frag = range.extractContents();
+      el.appendChild(frag);
+      range.insertNode(el);
+    }
+    const newRange = document.createRange();
+    newRange.selectNodeContents(el);
+    s2.removeAllRanges();
+    s2.addRange(newRange);
+  }
+
   sel.querySelectorAll('button').forEach((b) => {
     b.addEventListener('mousedown', (e) => {
       e.preventDefault();
       const cmd = b.getAttribute('data-cmd');
       if (cmd === 'link') { const url = prompt('URL ссылки:', 'https://'); if (url) document.execCommand('createLink', false, url); }
+      else if (cmd === 'mark' || cmd === 'code') { toggleWrapTag(cmd); }
       else document.execCommand(cmd, false, null);
       const rt = document.activeElement && document.activeElement.closest('.wys-rt');
       if (rt) { const i = Number(rt.getAttribute('data-i')); if (_model && _model.content[i]) { _model.content[i].content = sanitizeInline(rt.innerHTML); scheduleCommit(); } }
