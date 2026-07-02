@@ -8840,7 +8840,14 @@ async function flushModernEditor() {
     if (_suspendReload) return;
     const section = visualSectionSelect.value;
     const lang    = visualLangSelect.value || DEFAULT_LANGUAGE;
-    if (!_enabled || section !== 'articles') { showClassic(); return; }
+    // Reviews get their own live canvas (initReviewCanvas, below) — just hide
+    // ours and leave classic alone; only items/libraryItems (no custom canvas
+    // yet) should fall back to the classic form.
+    if (!_enabled || section !== 'articles') {
+      if (section === 'reviews') { shell.classList.remove('on'); return; }
+      showClassic();
+      return;
+    }
     const data = parseEditorJsonSafe();
     if (!data) { showClassic(); return; }
     const arr = getSectionArray(data, section, lang, false);
@@ -9444,4 +9451,261 @@ async function flushModernEditor() {
   document.querySelector('[data-tab="content"]')?.addEventListener('click', () => setTimeout(reload, 200));
   setTimeout(reload, 900);
   window._wysReload = reload;
+  // Shared with initReviewCanvas below — same media library, same picker UX.
+  window._wysOpenImagePicker = openImagePicker;
+})();
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// ── REVIEW CANVAS — same live-editing pattern as EPRIS Studio, for Reviews ──
+// Reviews have a fixed field schema (no block array), and — unlike article
+// blocks — title/subject/verdict/content render on the site as PLAIN TEXT
+// (`{review.content}`, not dangerouslySetInnerHTML), so this canvas edits
+// via .textContent, never innerHTML/rich-text.
+// ═══════════════════════════════════════════════════════════════════════════
+(function initReviewCanvas() {
+  const shell     = document.getElementById('revWysShell');
+  const canvas    = document.getElementById('revCanvas');
+  const closeBtn  = document.getElementById('revCloseBtn');
+  const saveState = document.getElementById('revSaveState');
+  const undoBtn   = document.getElementById('revUndoBtn');
+  const redoBtn   = document.getElementById('revRedoBtn');
+  if (!shell || !canvas) return;
+
+  const esc = (s) => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const clone = (o) => JSON.parse(JSON.stringify(o));
+
+  let _model = null;
+  let _id = 0;
+  let _commitTimer = null, _publishTimer = null, _reloadTimer = null, _suspendReload = false;
+  let _publishing = false, _publishQueued = false, _errorRetries = 0;
+  let _history = [], _historyIdx = -1, _restoringHistory = false;
+
+  function imgUrl(src) {
+    if (!src) return '';
+    const s = String(src).trim();
+    if (!s) return '';
+    if (typeof resolveBlockImageUrl === 'function') { const r = resolveBlockImageUrl(s); if (r) return r; }
+    return s.startsWith('http') ? s : '';
+  }
+
+  // ── load / show-hide ────────────────────────────────────────────────────
+  function reload() {
+    if (_suspendReload) return;
+    const section = visualSectionSelect.value;
+    if (section !== 'reviews') { shell.classList.remove('on'); return; }
+    const data = parseEditorJsonSafe();
+    if (!data) { shell.classList.remove('on'); return; }
+    const arr = getSectionArray(data, section, visualLangSelect.value || DEFAULT_LANGUAGE, false);
+    const id = Number(visualEntrySelect.value);
+    const entry = arr.find((e) => Number(e.id) === id);
+    shell.classList.add('on');
+    if (!classicEls().every((el) => el.style.display === 'none')) classicEls().forEach((el) => (el.style.display = 'none'));
+    if (!entry) { canvas.innerHTML = '<div class="wys-empty"><div class="wys-empty-icon">✦</div><p>Выберите обзор в списке сверху или создайте новый.</p></div>'; return; }
+    _id = id;
+    _model = clone(entry);
+    render();
+    resetHistory(_model);
+  }
+  function scheduleReload() { clearTimeout(_reloadTimer); _reloadTimer = setTimeout(reload, 140); }
+  const CLASSIC = ['creatorStudioWrap', 'editorSplit', 'commandCenter', 'stats'];
+  const classicEls = () => CLASSIC.map((id) => document.getElementById(id)).filter(Boolean);
+
+  // ── history ──────────────────────────────────────────────────────────────
+  const HISTORY_CAP = 60;
+  function resetHistory(model) { _history = [clone(model)]; _historyIdx = 0; updateHistoryButtons(); }
+  function pushHistory() {
+    if (_restoringHistory || !_model) return;
+    _history = _history.slice(0, _historyIdx + 1);
+    _history.push(clone(_model));
+    if (_history.length > HISTORY_CAP) _history.shift();
+    _historyIdx = _history.length - 1;
+    updateHistoryButtons();
+  }
+  function updateHistoryButtons() {
+    if (undoBtn) undoBtn.disabled = _historyIdx <= 0;
+    if (redoBtn) redoBtn.disabled = _historyIdx >= _history.length - 1;
+  }
+  function undo() { if (_historyIdx <= 0) return; _historyIdx -= 1; restoreHistoryStep(); }
+  function redo() { if (_historyIdx >= _history.length - 1) return; _historyIdx += 1; restoreHistoryStep(); }
+  function restoreHistoryStep() {
+    _restoringHistory = true;
+    _model = clone(_history[_historyIdx]);
+    render(); flushLocal(); armPublish(900); setSave('saved'); updateHistoryButtons();
+    _restoringHistory = false;
+  }
+  document.addEventListener('keydown', (e) => {
+    if (!shell.classList.contains('on')) return;
+    if (!(e.metaKey || e.ctrlKey) || e.key.toLowerCase() !== 'z') return;
+    if (!canvas.contains(document.activeElement) && document.activeElement !== document.body) return;
+    e.preventDefault();
+    if (e.shiftKey) redo(); else undo();
+  });
+  undoBtn?.addEventListener('click', undo);
+  redoBtn?.addEventListener('click', redo);
+
+  // ── commit / publish (same pattern as the article canvas) ─────────────────
+  function scheduleCommit() { setSave('editing'); clearTimeout(_commitTimer); _commitTimer = setTimeout(commit, 450); }
+  function commit() { if (!flushLocal()) return; _errorRetries = 0; armPublish(2600); setSave('saved'); pushHistory(); }
+  function flushLocal() {
+    if (!_model) return false;
+    const data = parseEditorJsonSafe();
+    if (!data) return false;
+    const arr = getSectionArray(data, 'reviews', visualLangSelect.value || DEFAULT_LANGUAGE, (visualLangSelect.value || DEFAULT_LANGUAGE) !== DEFAULT_LANGUAGE);
+    const idx = arr.findIndex((e) => Number(e.id) === _id);
+    const clean = clone(_model);
+    if (idx >= 0) arr[idx] = clean; else arr.push(clean);
+    _suspendReload = true;
+    editor.value = JSON.stringify(data, null, 2);
+    try { updateStats(data); } catch {}
+    try { updateEditorState(); } catch {}
+    try { saveDraft(); } catch {}
+    setTimeout(() => { _suspendReload = false; }, 60);
+    return true;
+  }
+  function armPublish(delay) { clearTimeout(_publishTimer); _publishTimer = setTimeout(publishSilently, delay); }
+  async function publishSilently() {
+    if (!_model) return;
+    clearTimeout(_commitTimer);
+    flushLocal();
+    if (_publishing) { _publishQueued = true; return; }
+    const pw = (typeof getAdminPassword === 'function') ? getAdminPassword() : '';
+    if (!pw) { setSave('nopw'); return; }
+    _publishing = true;
+    setSave('publishing');
+    try {
+      const res = await fetch(CONTENT_API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw }, body: editor.value });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) throw new Error(data.error || ('VPS ' + res.status));
+      try { setLastSyncedSnapshotFromText(editor.value); } catch {}
+      try { localStorage.removeItem(DRAFT_KEY); } catch {}
+      lastSyncedTime = new Date();
+      try { updateLastSyncedBadge(); } catch {}
+      setSave('published'); _errorRetries = 0;
+    } catch (e) {
+      _errorRetries += 1;
+      if (_errorRetries <= 5) { setSave('error'); armPublish(4000); }
+      else { setSave('error-final'); }
+    } finally {
+      _publishing = false;
+      if (_publishQueued) { _publishQueued = false; publishSilently(); }
+    }
+  }
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && _model) publishSilently(); });
+  function setSave(s) {
+    if (!saveState) return;
+    const labels = { editing: 'Изменяю…', saved: 'Сохранено локально', publishing: 'Публикую на сайт…', published: 'Опубликовано ✓', error: 'Ошибка публикации — повторяю…', 'error-final': 'Не удалось опубликовать (сохранено локально)', nopw: 'Сохранено локально (нет пароля для публикации)' };
+    saveState.textContent = labels[s] || labels.saved;
+    saveState.className = 'wys-save-state ' + s;
+  }
+
+  // ── render ───────────────────────────────────────────────────────────────
+  function render() {
+    if (!_model) return;
+    const r = _model;
+    const img = imgUrl(r.imageUrl);
+    let h = '<article class="wys-article wys-review">';
+
+    h += `<div class="wys-hero wys-review-hero" data-wys-act="hero">`;
+    h += img ? `<img src="${esc(img)}" referrerpolicy="no-referrer" alt="">` : '<div class="wys-hero-empty">Нажмите, чтобы добавить обложку</div>';
+    h += '<span class="wys-hero-edit">✎ Обложка</span></div>';
+
+    h += '<div class="wys-review-top">';
+    h += '<div class="wys-review-stars" data-wys-act="stars">';
+    for (let i = 0; i < 5; i++) {
+      h += `<button type="button" class="wys-star${i < Math.round(r.rating || 0) ? ' filled' : ''}" data-wys-act="star" data-val="${i + 1}" title="${i + 1} из 5">★</button>`;
+    }
+    h += '</div>';
+    h += `<span class="wys-ce wys-kicker" contenteditable="true" data-wys="category" data-empty="Категория">${esc(r.category || '')}</span>`;
+    h += '<label class="wys-review-featured"><input type="checkbox" data-wys-act="featured"' + (r.featured ? ' checked' : '') + '> Featured (главный обзор раздела)</label>';
+    h += '</div>';
+
+    h += `<h1 class="wys-title wys-ce" contenteditable="true" data-wys="title-plain" data-empty="Заголовок обзора…">${esc(r.title || '')}</h1>`;
+    h += `<p class="wys-excerpt wys-ce" contenteditable="true" data-wys="subject-plain" data-empty="Что рецензируем — название заведения/продукта/книги…">${esc(r.subject || '')}</p>`;
+    h += `<blockquote class="wys-review-verdict wys-ce" contenteditable="true" data-wys="verdict-plain" data-empty="Вердикт одной фразой (необязательно)…">${esc(r.verdict || '')}</blockquote>`;
+    h += `<div class="wys-p wys-ce" contenteditable="true" data-wys="content-plain" data-empty="Текст обзора…" style="margin:16px 0">${esc(r.content || '')}</div>`;
+
+    h += '<div class="wys-review-proscons">';
+    h += renderChipList('pros', r.pros || [], 'Плюсы', '+');
+    h += renderChipList('cons', r.cons || [], 'Минусы', '−');
+    h += '</div>';
+
+    h += '<div class="wys-review-meta-row">';
+    h += `<span class="wys-ce wys-meta-item" contenteditable="true" data-wys="meta-plain" data-empty="Мета (напр. цена, сайт)">${esc(r.meta || '')}</span>`;
+    h += '<span class="wys-meta-dot"></span>';
+    h += `<span class="wys-ce wys-meta-item" contenteditable="true" data-wys="author-plain" data-empty="Автор">${esc(r.author || '')}</span>`;
+    h += '<span class="wys-meta-dot"></span>';
+    h += `<span class="wys-ce wys-meta-item" contenteditable="true" data-wys="date-plain" data-empty="Дата">${esc(r.date || '')}</span>`;
+    h += '</div>';
+
+    h += '</article>';
+    canvas.innerHTML = h;
+    applyEmptyStates();
+  }
+
+  function renderChipList(field, items, label, sign) {
+    let h = `<div class="wys-review-proscol wys-review-${field}"><p class="wys-review-proscol-label">${label}</p>`;
+    items.forEach((it, ci) => {
+      h += `<div class="wys-review-chip"><span class="wys-review-chip-sign">${sign}</span><input class="wys-inline-input" data-wys="${field}-item" data-ci="${ci}" value="${esc(it)}" placeholder="…"><button type="button" class="wys-mini-x" data-wys-act="${field}-del" data-ci="${ci}">×</button></div>`;
+    });
+    h += `<button type="button" class="wys-gal-add" data-wys-act="${field}-add">+ пункт</button></div>`;
+    return h;
+  }
+
+  function applyEmptyStates() {
+    canvas.querySelectorAll('[data-empty]').forEach((el) => {
+      const upd = () => el.classList.toggle('is-empty', !el.textContent.trim());
+      upd();
+      el._revEmpty || (el.addEventListener('input', upd), (el._revEmpty = true));
+    });
+  }
+
+  // ── edits ────────────────────────────────────────────────────────────────
+  canvas.addEventListener('input', (e) => {
+    const el = e.target.closest('[data-wys]');
+    if (!el || !_model) return;
+    const field = el.getAttribute('data-wys');
+    const val = el.tagName === 'INPUT' ? el.value : el.textContent;
+
+    if (field === 'title-plain') _model.title = val;
+    else if (field === 'subject-plain') _model.subject = val;
+    else if (field === 'verdict-plain') _model.verdict = val;
+    else if (field === 'content-plain') _model.content = val;
+    else if (field === 'category') _model.category = val;
+    else if (field === 'meta-plain') _model.meta = val;
+    else if (field === 'author-plain') _model.author = val;
+    else if (field === 'date-plain') _model.date = val;
+    else if (field === 'pros-item') { const ci = Number(el.getAttribute('data-ci')); if (_model.pros) _model.pros[ci] = val; }
+    else if (field === 'cons-item') { const ci = Number(el.getAttribute('data-ci')); if (_model.cons) _model.cons[ci] = val; }
+    scheduleCommit();
+  });
+
+  canvas.addEventListener('change', (e) => {
+    const el = e.target.closest('[data-wys-act="featured"]');
+    if (!el || !_model) return;
+    _model.featured = el.checked;
+    commit();
+  });
+
+  canvas.addEventListener('click', (e) => {
+    const act = e.target.closest('[data-wys-act]');
+    if (!act || !_model) return;
+    const a = act.getAttribute('data-wys-act');
+
+    if (a === 'hero') return window._wysOpenImagePicker?.((url) => { _model.imageUrl = url; render(); commit(); });
+    if (a === 'star') { _model.rating = Number(act.getAttribute('data-val')); render(); commit(); return; }
+    if (a === 'pros-add') { _model.pros = _model.pros || []; _model.pros.push(''); render(); commit(); return; }
+    if (a === 'cons-add') { _model.cons = _model.cons || []; _model.cons.push(''); render(); commit(); return; }
+    if (a === 'pros-del') { const ci = Number(act.getAttribute('data-ci')); _model.pros?.splice(ci, 1); render(); commit(); return; }
+    if (a === 'cons-del') { const ci = Number(act.getAttribute('data-ci')); _model.cons?.splice(ci, 1); render(); commit(); return; }
+  });
+
+  closeBtn && (closeBtn.onclick = () => { shell.classList.remove('on'); classicEls().forEach((el) => (el.style.display = '')); });
+
+  ['visualSection', 'visualEntry', 'visualLang'].forEach((id) => {
+    document.getElementById(id)?.addEventListener('change', scheduleReload);
+  });
+  document.querySelector('[data-tab="content"]')?.addEventListener('click', () => setTimeout(reload, 200));
+  setTimeout(reload, 900);
+  window._revReload = reload;
 })();
