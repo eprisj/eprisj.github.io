@@ -41,6 +41,16 @@ export interface DesignUI {
   roleAnchor?: string;
   roleSupport?: string;
   roleAccent?: string;
+  // ── The Edit — search & sort (optional, EN-merged) ──
+  searchPlaceholder?: string;
+  sortRelevance?: string;
+  sortPriceAsc?: string;
+  sortPriceDesc?: string;
+  sortName?: string;
+  noResults?: string;
+  noResultsHint?: string;
+  resultsCount?: string;
+  loadingCatalog?: string;
 }
 
 // New stylist UI strings, merged onto every language (EN fallback per-key).
@@ -52,6 +62,17 @@ const STYLIST_EXT: Record<SupportedLang, Partial<DesignUI>> = {
   IT: { stylistRoom: 'Stanza', stylistStyle: 'Stile', stylistBudget: 'Budget', stylistAnyBudget: 'Nessun limite', stylistRefine: 'Aggiungi dettagli — palette, atmosfera, uso…', stylistCompose: 'Componi la stanza', stylistConcept: 'Il concept', stylistPalette: 'Palette', stylistEstimate: 'Totale stimato', stylistTips: 'Note di stile', stylistWhy: 'Perché funziona', roleAnchor: 'Ancora', roleSupport: 'Di supporto', roleAccent: 'Accento' },
   ES: { stylistRoom: 'Estancia', stylistStyle: 'Estilo', stylistBudget: 'Presupuesto', stylistAnyBudget: 'Sin límite', stylistRefine: 'Añade detalles — paleta, ambiente, uso…', stylistCompose: 'Componer mi estancia', stylistConcept: 'El concepto', stylistPalette: 'Paleta', stylistEstimate: 'Total estimado', stylistTips: 'Notas de estilo', stylistWhy: 'Por qué funciona', roleAnchor: 'Ancla', roleSupport: 'De apoyo', roleAccent: 'Acento' },
   TR: { stylistRoom: 'Oda', stylistStyle: 'Stil', stylistBudget: 'Bütçe', stylistAnyBudget: 'Sınır yok', stylistRefine: 'Detay ekleyin — palet, hava, amaç…', stylistCompose: 'Odamı oluştur', stylistConcept: 'Konsept', stylistPalette: 'Palet', stylistEstimate: 'Tahmini toplam', stylistTips: 'Stil notları', stylistWhy: 'Neden işe yarıyor', roleAnchor: 'Çapa', roleSupport: 'Destekleyici', roleAccent: 'Aksan' },
+};
+
+// Search & sort strings for The Edit catalogue grid.
+const CATALOG_EXT: Record<SupportedLang, Partial<DesignUI>> = {
+  EN: { searchPlaceholder: 'Search by name or retailer…', sortRelevance: 'Featured', sortPriceAsc: 'Price: low to high', sortPriceDesc: 'Price: high to low', sortName: 'Name A–Z', noResults: 'No pieces match', noResultsHint: 'Try a different search or clear the category filter.', resultsCount: 'pieces', loadingCatalog: 'Loading the full catalogue —' },
+  UA: { searchPlaceholder: 'Пошук за назвою чи магазином…', sortRelevance: 'Рекомендовані', sortPriceAsc: 'Ціна: спочатку дешевші', sortPriceDesc: 'Ціна: спочатку дорожчі', sortName: 'Назва А–Я', noResults: 'Нічого не знайдено', noResultsHint: 'Спробуйте інший запит або скиньте фільтр категорії.', resultsCount: 'позицій', loadingCatalog: 'Завантажуємо весь каталог —' },
+  RU: { searchPlaceholder: 'Поиск по названию или магазину…', sortRelevance: 'Рекомендуемые', sortPriceAsc: 'Цена: сначала дешевле', sortPriceDesc: 'Цена: сначала дороже', sortName: 'Название А–Я', noResults: 'Ничего не найдено', noResultsHint: 'Попробуйте другой запрос или сбросьте фильтр категории.', resultsCount: 'позиций', loadingCatalog: 'Загружаем весь каталог —' },
+  DE: { searchPlaceholder: 'Suche nach Name oder Händler…', sortRelevance: 'Empfohlen', sortPriceAsc: 'Preis: aufsteigend', sortPriceDesc: 'Preis: absteigend', sortName: 'Name A–Z', noResults: 'Keine Treffer', noResultsHint: 'Versuchen Sie eine andere Suche oder setzen Sie den Filter zurück.', resultsCount: 'Stücke', loadingCatalog: 'Lade den gesamten Katalog —' },
+  IT: { searchPlaceholder: 'Cerca per nome o rivenditore…', sortRelevance: 'In evidenza', sortPriceAsc: 'Prezzo: dal più basso', sortPriceDesc: 'Prezzo: dal più alto', sortName: 'Nome A–Z', noResults: 'Nessun risultato', noResultsHint: 'Prova un’altra ricerca o rimuovi il filtro categoria.', resultsCount: 'pezzi', loadingCatalog: 'Caricamento del catalogo completo —' },
+  ES: { searchPlaceholder: 'Buscar por nombre o tienda…', sortRelevance: 'Destacados', sortPriceAsc: 'Precio: menor a mayor', sortPriceDesc: 'Precio: mayor a menor', sortName: 'Nombre A–Z', noResults: 'Sin resultados', noResultsHint: 'Prueba otra búsqueda o quita el filtro de categoría.', resultsCount: 'piezas', loadingCatalog: 'Cargando el catálogo completo —' },
+  TR: { searchPlaceholder: 'İsim veya mağazaya göre ara…', sortRelevance: 'Öne çıkanlar', sortPriceAsc: 'Fiyat: düşükten yükseğe', sortPriceDesc: 'Fiyat: yüksekten düşüğe', sortName: 'İsim A–Z', noResults: 'Sonuç yok', noResultsHint: 'Farklı bir arama deneyin ya da kategori filtresini temizleyin.', resultsCount: 'ürün', loadingCatalog: 'Tüm katalog yükleniyor —' },
 };
 
 export interface RoomChip { key: string; label: Record<SupportedLang, string>; }
@@ -341,8 +362,8 @@ const FALLBACK: SupportedLang = 'EN';
 
 export function getUI(lang: string): DesignUI {
   const L = (lang as SupportedLang) in ui ? (lang as SupportedLang) : FALLBACK;
-  // Merge stylist v2 strings (EN as per-key fallback) onto the base table.
-  return { ...ui[L], ...STYLIST_EXT.EN, ...STYLIST_EXT[L] };
+  // Merge stylist v2 + catalogue search/sort strings (EN as per-key fallback).
+  return { ...ui[L], ...STYLIST_EXT.EN, ...STYLIST_EXT[L], ...CATALOG_EXT.EN, ...CATALOG_EXT[L] };
 }
 
 export function getLook(id: number, lang: string): LookI18n {
