@@ -853,17 +853,20 @@ export function DesignPage({ lang = 'EN' }: { lang?: string }) {
         {modal && <ProductModal item={modal.item} data={modal.data} onClose={() => setModal(null)} lang={lang} />}
       </AnimatePresence>
 
-      {/* Catalogue resolve progress — reassures on a cold VPS cache, self-dismisses */}
+      {/* Catalogue resolve progress — reassures on a cold VPS cache, self-dismisses.
+          Full-width bottom bar on mobile (a floating corner card would sit on
+          top of scrolled content on a short viewport); small corner card on
+          desktop where there's room for it not to overlap anything. */}
       <AnimatePresence>
         {loadingCatalog && (
           <motion.div
             initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 12 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-5 right-5 z-40 bg-[#0d0408] border border-white/15 px-4 py-3 flex items-center gap-3 shadow-lg"
+            className="fixed inset-x-0 bottom-0 sm:inset-x-auto sm:bottom-5 sm:right-5 z-40 bg-[#0d0408] border-t sm:border border-white/15 px-4 py-3 flex items-center gap-3 shadow-lg pb-[calc(env(safe-area-inset-bottom)+12px)] sm:pb-3"
           >
             <Loader2 size={13} className="animate-spin text-[var(--c-gold)] shrink-0" />
-            <div className="min-w-[140px]">
-              <p className="font-mono text-[10px] uppercase tracking-wider text-white/70 mb-1.5">
+            <div className="min-w-0 flex-1 sm:min-w-[140px] sm:flex-initial">
+              <p className="font-mono text-[10px] uppercase tracking-wider text-white/70 mb-1.5 truncate">
                 {ui.loadingCatalog} {resolvedCount}/{CATALOG.length}
               </p>
               <div className="h-[2px] w-full bg-white/10 overflow-hidden">
