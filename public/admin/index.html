@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#180c0f" />
     <title>EPRIS — Редакция</title>
-    <link rel="stylesheet" href="./styles.css?v=3.4" />
+    <link rel="stylesheet" href="./styles.css?v=3.5" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
@@ -318,6 +318,25 @@
                     <button id="wysMetaClose" class="btn btn-sm" type="button">✕</button>
                   </div>
                   <div class="wys-meta-drawer-body" id="wysMetaBody"></div>
+                </div>
+              </div>
+
+              <!-- ═══ REVIEW CANVAS — same live-editing pattern, for Reviews ═══ -->
+              <div id="revWysShell" class="wys-shell">
+                <div class="wys-bar">
+                  <div class="wys-bar-left">
+                    <span class="wys-live-badge"><span class="wys-live-dot"></span>Живой предпросмотр</span>
+                    <span id="revSaveState" class="wys-save-state">Сохранено локально</span>
+                  </div>
+                  <div class="wys-bar-right">
+                    <button id="revUndoBtn" class="btn btn-sm" type="button" title="Отменить (Ctrl+Z)" disabled>↺</button>
+                    <button id="revRedoBtn" class="btn btn-sm" type="button" title="Повторить (Ctrl+Shift+Z)" disabled>↻</button>
+                    <span class="toolbar-sep"></span>
+                    <button id="revCloseBtn" class="btn btn-sm" type="button" title="Классический редактор">✕ Классика</button>
+                  </div>
+                </div>
+                <div class="wys-scroll">
+                  <div id="revCanvas" class="wys-canvas" aria-label="Редактируемый обзор"></div>
                 </div>
               </div>
 
@@ -1047,7 +1066,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=3.5" type="module"></script>
+    <script src="./app.js?v=3.6" type="module"></script>
     <script>
       // Tab switching + page title update
       document.addEventListener('DOMContentLoaded', function () {
