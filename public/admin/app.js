@@ -1038,6 +1038,21 @@ function useUploadedPagesUrlInCurrentEntry() {
 // epris-content-snapshot.js on the server.
 const UPLOAD_API = 'https://api.eprisjournal.com/upload';
 
+// Per-article read counters from the VPS (public GET /views). Cached for a
+// minute; failures resolve to an empty map so callers never await forever.
+let _viewsMap = null;
+let _viewsFetchedAt = 0;
+async function fetchViewsMap(force) {
+  if (_viewsMap && !force && Date.now() - _viewsFetchedAt < 60000) return _viewsMap;
+  try {
+    const r = await fetch('https://api.eprisjournal.com/views');
+    const d = await r.json();
+    _viewsMap = (d && d.ok && d.views) ? d.views : (_viewsMap || {});
+  } catch { _viewsMap = _viewsMap || {}; }
+  _viewsFetchedAt = Date.now();
+  return _viewsMap;
+}
+
 // Web-size cap: photos straight from a camera are 4000px+ / 5-10 MB, which is
 // wasted bandwidth for readers. Downscale to max 2000px and re-encode as WebP
 // before upload. GIFs pass through untouched (canvas would kill the animation),
@@ -2537,6 +2552,15 @@ function renderContentCommand(data, section = visualSectionSelect.value, lang = 
     renderAuditMetric(section === 'articles' ? 'Без опроса' : 'Опросы', String(audit.noPoll.length), audit.noPoll.length ? 'warn' : 'ok'),
     renderAuditMetric('Слабый текст', String(audit.thinText.length), weakState)
   ];
+  if (section === 'articles') {
+    if (_viewsMap) {
+      const total = Object.values(_viewsMap).reduce((s, n) => s + (Number(n) || 0), 0);
+      metrics.push(renderAuditMetric('Просмотров всего', String(total), 'ok'));
+    } else {
+      // First render before the counters arrive — refresh this panel once loaded.
+      fetchViewsMap().then(() => renderContentCommand(data, section, lang, entry));
+    }
+  }
 
   contentAuditMetricsEl.innerHTML = metrics.join('');
   setIssueButton(findMissingLangBtn, 'Нет языка', audit.missingLangItems.length);
@@ -9478,7 +9502,10 @@ async function flushModernEditor() {
       row('URL обложки', 'imageUrl', _model.imageUrl, 'https://…') +
       `<label class="wys-meta-field"><span>Теги (через запятую)</span><input data-mfield="tags" value="${esc((_model.tags || []).join(', '))}"></label>` +
       `<label class="wys-meta-check"><input type="checkbox" data-mdraft ${_model.draft ? 'checked' : ''}><span>Черновик — скрыт с сайта</span></label>` +
-      `<label class="wys-meta-field"><span>Отложенная публикация (скрыта до этого момента)</span><input type="datetime-local" data-mpublishat value="${esc(isoToLocalInput(_model.publishAt))}"></label>`;
+      `<label class="wys-meta-field"><span>Отложенная публикация (скрыта до этого момента)</span><input type="datetime-local" data-mpublishat value="${esc(isoToLocalInput(_model.publishAt))}"></label>` +
+      `<div class="wys-meta-field"><span>Просмотры</span><div class="wys-meta-views" data-views>…</div></div>`;
+    const viewsEl = drawerBody.querySelector('[data-views]');
+    if (viewsEl) fetchViewsMap().then((v) => { viewsEl.textContent = String(v[_model && _model.id] || 0); });
     drawerBody.querySelectorAll('input[data-mfield]').forEach((inp) => {
       inp.addEventListener('input', () => {
         const f = inp.getAttribute('data-mfield');
