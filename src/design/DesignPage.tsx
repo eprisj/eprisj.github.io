@@ -556,21 +556,38 @@ function swatch(word: string): string {
 }
 
 // ── Main page ─────────────────────────────────────────────────────────────────
+type SortMode = 'relevance' | 'price-asc' | 'price-desc' | 'name';
+
+function catalogItemPrice(item: CatalogItem, resolved: Resolved): number | null {
+  const p = resolved[item.id]?.price;
+  if (!p) return null;
+  const n = Number(String(p).replace(/,/g, ''));
+  return Number.isFinite(n) ? n : null;
+}
+
 export function DesignPage({ lang = 'EN' }: { lang?: string }) {
   const ui = getUI(lang);
   const [resolved, setResolved] = useState<Resolved>({});
   const [activeCat, setActiveCat] = useState<ShopCategory | '__all'>('__all');
   const [activeSetId, setActiveSetId] = useState<number | null>(null);
   const [modal, setModal] = useState<{ item: CatalogItem; data: ResolvedProduct } | null>(null);
+  const [search, setSearch] = useState('');
+  const [sortMode, setSortMode] = useState<SortMode>('relevance');
+  const [resolvedCount, setResolvedCount] = useState(0);
   const stripRef = useRef<Map<number, HTMLDivElement>>(new Map());
 
   useEffect(() => {
     let alive = true;
+    let count = 0;
     resolveMany(CATALOG, (item, data) => {
-      if (alive) setResolved((prev) => ({ ...prev, [item.id]: data }));
+      if (!alive) return;
+      count += 1;
+      setResolvedCount(count);
+      setResolved((prev) => ({ ...prev, [item.id]: data }));
     });
     return () => { alive = false; };
   }, []);
+  const loadingCatalog = resolvedCount < CATALOG.length;
 
   const openModal = useCallback((item: CatalogItem, data: ResolvedProduct) => setModal({ item, data }), []);
 
@@ -585,10 +602,38 @@ export function DesignPage({ lang = 'EN' }: { lang?: string }) {
     });
   }, []);
 
-  const filtered = useMemo(
-    () => (activeCat === '__all' ? CATALOG : CATALOG.filter((c) => c.category === activeCat)),
-    [activeCat],
-  );
+  const filtered = useMemo(() => {
+    let list = activeCat === '__all' ? CATALOG : CATALOG.filter((c) => c.category === activeCat);
+
+    const q = search.trim().toLowerCase();
+    if (q) {
+      const words = q.split(/\s+/).filter(Boolean);
+      list = list.filter((c) => {
+        const hay = [
+          resolved[c.id]?.title || c.name,
+          c.retailer, c.category, c.room, ...c.styles,
+        ].join(' ').toLowerCase();
+        return words.every((w) => hay.includes(w));
+      });
+    }
+
+    if (sortMode === 'price-asc' || sortMode === 'price-desc') {
+      const dir = sortMode === 'price-asc' ? 1 : -1;
+      list = [...list].sort((a, b) => {
+        const pa = catalogItemPrice(a, resolved);
+        const pb = catalogItemPrice(b, resolved);
+        if (pa == null && pb == null) return 0;
+        if (pa == null) return 1;  // unpriced items sink to the end either way
+        if (pb == null) return -1;
+        return (pa - pb) * dir;
+      });
+    } else if (sortMode === 'name') {
+      list = [...list].sort((a, b) =>
+        (resolved[a.id]?.title || a.name).localeCompare(resolved[b.id]?.title || b.name));
+    }
+
+    return list;
+  }, [activeCat, search, sortMode, resolved]);
 
   return (
     <div className="bg-[#0d0408] min-h-screen">
@@ -687,8 +732,46 @@ export function DesignPage({ lang = 'EN' }: { lang?: string }) {
                 ))}
               </div>
             </div>
+
+            {/* Search + sort row */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between mt-8 pt-6 border-t border-white/10">
+              <div className="relative w-full sm:max-w-xs">
+                <input
+                  type="text" value={search} onChange={(e) => setSearch(e.target.value)}
+                  placeholder={ui.searchPlaceholder}
+                  className="w-full bg-transparent border border-white/25 focus:border-[var(--c-gold)] text-white text-sm px-4 py-2.5 pr-9 outline-none placeholder:text-white/40 transition-colors"
+                />
+                {search && (
+                  <button
+                    onClick={() => setSearch('')}
+                    aria-label="Clear search"
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors"
+                  ><X size={14} /></button>
+                )}
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-[11px] text-white/50 whitespace-nowrap">{filtered.length} {ui.resultsCount}</span>
+                <select
+                  value={sortMode} onChange={(e) => setSortMode(e.target.value as SortMode)}
+                  className="bg-[#0d0408] border border-white/25 focus:border-[var(--c-gold)] text-white font-mono text-[11px] font-semibold uppercase tracking-wider px-3 py-2.5 outline-none cursor-pointer"
+                >
+                  <option value="relevance">{ui.sortRelevance}</option>
+                  <option value="price-asc">{ui.sortPriceAsc}</option>
+                  <option value="price-desc">{ui.sortPriceDesc}</option>
+                  <option value="name">{ui.sortName}</option>
+                </select>
+              </div>
+            </div>
           </div>
         </div>
+
+        {/* No results */}
+        {filtered.length === 0 && (
+          <div className="px-6 md:px-12 lg:px-16 py-24 text-center">
+            <p className="font-serif text-2xl text-white mb-2">{ui.noResults}</p>
+            <p className="text-sm text-white/50">{ui.noResultsHint}</p>
+          </div>
+        )}
 
         {/* Featured item */}
         {filtered.length > 0 && (
@@ -768,6 +851,30 @@ export function DesignPage({ lang = 'EN' }: { lang?: string }) {
 
       <AnimatePresence>
         {modal && <ProductModal item={modal.item} data={modal.data} onClose={() => setModal(null)} lang={lang} />}
+      </AnimatePresence>
+
+      {/* Catalogue resolve progress — reassures on a cold VPS cache, self-dismisses */}
+      <AnimatePresence>
+        {loadingCatalog && (
+          <motion.div
+            initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 12 }}
+            transition={{ duration: 0.3 }}
+            className="fixed bottom-5 right-5 z-40 bg-[#0d0408] border border-white/15 px-4 py-3 flex items-center gap-3 shadow-lg"
+          >
+            <Loader2 size={13} className="animate-spin text-[var(--c-gold)] shrink-0" />
+            <div className="min-w-[140px]">
+              <p className="font-mono text-[10px] uppercase tracking-wider text-white/70 mb-1.5">
+                {ui.loadingCatalog} {resolvedCount}/{CATALOG.length}
+              </p>
+              <div className="h-[2px] w-full bg-white/10 overflow-hidden">
+                <div
+                  className="h-full bg-[var(--c-gold)] transition-[width] duration-300 ease-out"
+                  style={{ width: `${Math.round((resolvedCount / CATALOG.length) * 100)}%` }}
+                />
+              </div>
+            </div>
+          </motion.div>
+        )}
       </AnimatePresence>
     </div>
   );

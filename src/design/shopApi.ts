@@ -53,10 +53,13 @@ export async function resolveProduct(url: string): Promise<ResolvedProduct | nul
 }
 
 // Resolve many with a small concurrency cap; calls onItem as each finishes.
+// 8 workers roughly halves cold-cache load time for the full 240+ item
+// catalogue vs the old default of 4, while staying gentle on the single VPS
+// resolver process (most calls are just I/O-bound retailer-page fetches).
 export async function resolveMany(
   items: CatalogItem[],
   onItem: (item: CatalogItem, data: ResolvedProduct | null) => void,
-  concurrency = 4,
+  concurrency = 8,
 ) {
   const queue = [...items];
   const workers = Array.from({ length: concurrency }, async () => {
