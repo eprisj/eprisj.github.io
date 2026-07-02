@@ -1110,7 +1110,7 @@ const LANG_LABELS: Record<string, string> = {
   ES: 'Español'
 };
 
-function ArticleView({ article, related, onArticleClick, onClose, onImageClick, t, currentLang, setCurrentLang, languages }: { article: Article; related: Article[]; onArticleClick: (article: Article) => void; onClose: () => void; onImageClick: (src: string, alt: string) => void; t: (key: string) => string; currentLang: string; setCurrentLang: (lang: string) => void; languages: string[] }) {
+function ArticleView({ article, related, onArticleClick, onTagClick, onClose, onImageClick, t, currentLang, setCurrentLang, languages }: { article: Article; related: Article[]; onArticleClick: (article: Article) => void; onTagClick: (tag: string) => void; onClose: () => void; onImageClick: (src: string, alt: string) => void; t: (key: string) => string; currentLang: string; setCurrentLang: (lang: string) => void; languages: string[] }) {
   const [isArticleLangOpen, setIsArticleLangOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -1119,6 +1119,22 @@ function ArticleView({ article, related, onArticleClick, onClose, onImageClick, 
   // the scroll back to the top so the reader starts at the new article's hero.
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: 0 });
+  }, [article.id]);
+
+  // Count the read once per browser session per article. Fire-and-forget: the
+  // counter is a nicety and must never affect reading.
+  useEffect(() => {
+    const key = `epris_viewed_${article.id}`;
+    try {
+      if (sessionStorage.getItem(key)) return;
+      sessionStorage.setItem(key, '1');
+    } catch { /* private mode etc. — just count every time */ }
+    fetch('https://api.eprisjournal.com/view', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: article.id }),
+      keepalive: true
+    }).catch(() => {});
   }, [article.id]);
 
   const handleShare = async () => {
@@ -1221,9 +1237,14 @@ function ArticleView({ article, related, onArticleClick, onClose, onImageClick, 
               </h1>
               <div className="flex justify-center gap-2 flex-wrap">
                 {article.tags.map(tag => (
-                  <span key={tag} className="border border-[var(--c-accent)] px-3 py-1 text-[10px] font-mono uppercase tracking-wider text-[var(--c-accent)]">
+                  <button
+                    type="button"
+                    key={tag}
+                    onClick={() => onTagClick(tag)}
+                    className="border border-[var(--c-accent)] px-3 py-1 text-[10px] font-mono uppercase tracking-wider text-[var(--c-accent)] hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors cursor-pointer"
+                  >
                     {tag}
-                  </span>
+                  </button>
                 ))}
               </div>
             </div>
@@ -1437,9 +1458,14 @@ function ArticleView({ article, related, onArticleClick, onClose, onImageClick, 
             {article.tags && (
               <div className="flex flex-wrap gap-2 mt-8">
                 {article.tags.map((tag: string, i: number) => (
-                  <span key={i} className="px-3 py-1 border border-[rgb(var(--c-accent-rgb)_/_0.2)] font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)]">
+                  <button
+                    type="button"
+                    key={i}
+                    onClick={() => onTagClick(tag)}
+                    className="px-3 py-1 border border-[rgb(var(--c-accent-rgb)_/_0.2)] font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:border-[var(--c-accent)] hover:text-[var(--c-accent)] transition-colors cursor-pointer"
+                  >
                     {tag}
-                  </span>
+                  </button>
                 ))}
               </div>
             )}
@@ -2161,7 +2187,7 @@ export default function App() {
 
       <AnimatePresence>
         {selectedArticle && (
-          <ArticleView article={selectedArticle} related={relatedArticles} onArticleClick={(a) => handleSelectArticle(a.id, a)} onClose={handleCloseArticle} onImageClick={handleImageClick} t={t} currentLang={currentLang} setCurrentLang={setCurrentLang} languages={languageOptions} />
+          <ArticleView article={selectedArticle} related={relatedArticles} onArticleClick={(a) => handleSelectArticle(a.id, a)} onTagClick={handleSearch} onClose={handleCloseArticle} onImageClick={handleImageClick} t={t} currentLang={currentLang} setCurrentLang={setCurrentLang} languages={languageOptions} />
         )}
       </AnimatePresence>
 
