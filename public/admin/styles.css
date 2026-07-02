@@ -44,8 +44,14 @@
   --radius:     4px;
   --radius-sm:  3px;
 
-  /* Type — Orbit is the base UI font; mono kept only for raw code/JSON */
-  --font-serif: 'Orbit','Playfair Display',Georgia,serif;
+  /* Type — --font-mono (Orbit) is the admin's own UI font, matching the
+     live site's tailwind font-mono. --font-serif is Playfair Display —
+     the site's real headline font — so the WYSIWYG canvas (.wys-title,
+     .wys-h2, .wys-quote, review verdict…) is an honest visual match, not
+     a generic Georgia stand-in. Both are loaded via Google Fonts in
+     index.html, same weights the site itself requests. */
+  --font-serif: 'Playfair Display',Georgia,serif;
+  --font-body:  'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif; /* matches the site's actual reading-copy font (native, no web load) */
   --font-mono:  'Orbit','IBM Plex Mono',system-ui,sans-serif;
   --font-code:  'IBM Plex Mono','SF Mono','Fira Code',monospace;
 
@@ -3631,7 +3637,7 @@ body.busy::after {
 .wys-block.drop-after  { box-shadow: 0 2px 0 0 var(--accent); }
 
 /* Block content styles (magazine look) */
-.wys-p { font-size: 1.12rem; line-height: 1.75; margin: 0; padding: 6px; min-height: 1.6em; }
+.wys-p { font-family: var(--font-body); font-size: 1.12rem; line-height: 1.75; margin: 0; padding: 6px; min-height: 1.6em; }
 .wys-h2 { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 700; line-height: 1.2; margin: 10px 0; padding: 6px; }
 .wys-quote { font-family: var(--font-serif); font-style: italic; font-size: 1.5rem; line-height: 1.4; border-left: 3px solid var(--gold); padding: 6px 6px 6px 22px; margin: 6px 0; color: var(--text); }
 .wys-note { background: var(--gold-soft); border-left: 3px solid var(--gold); padding: 14px 16px; font-size: .98rem; line-height: 1.6; border-radius: 0 4px 4px 0; margin: 4px 0; }
