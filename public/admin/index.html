@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#180c0f" />
     <title>EPRIS — Редакция</title>
-    <link rel="stylesheet" href="./styles.css?v=3.3" />
+    <link rel="stylesheet" href="./styles.css?v=3.4" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
@@ -300,6 +300,9 @@
                     <span id="wysSaveState" class="wys-save-state">Сохранено локально</span>
                   </div>
                   <div class="wys-bar-right">
+                    <button id="wysUndoBtn" class="btn btn-sm" type="button" title="Отменить (Ctrl+Z)" disabled>↺</button>
+                    <button id="wysRedoBtn" class="btn btn-sm" type="button" title="Повторить (Ctrl+Shift+Z)" disabled>↻</button>
+                    <span class="toolbar-sep"></span>
                     <button id="wysMetaBtn" class="btn btn-sm" type="button" title="Метаданные">⚙ Мета</button>
                     <button id="wysDeviceBtn" class="btn btn-sm" type="button" title="Мобильный/десктоп">📱</button>
                     <button id="wysCloseBtn" class="btn btn-sm" type="button" title="Классический редактор">✕ Классика</button>
@@ -1044,7 +1047,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=3.4" type="module"></script>
+    <script src="./app.js?v=3.5" type="module"></script>
     <script>
       // Tab switching + page title update
       document.addEventListener('DOMContentLoaded', function () {

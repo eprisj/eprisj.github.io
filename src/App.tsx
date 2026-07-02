@@ -220,6 +220,56 @@ function Reveal({ children, delay = 0, y = 28, className = '' }: { children: Rea
   );
 }
 
+// Extracts an 11-char YouTube video id from watch/share/embed/shorts URLs.
+function extractYouTubeId(url: string): string | null {
+  const m = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+  return m ? m[1] : null;
+}
+
+// Click-to-play YouTube embed — shows the real thumbnail + play button, only
+// loads the YouTube iframe (and its trackers) once a reader actually clicks.
+function VideoBlock({ content, caption }: { content: string; caption?: string }) {
+  const [playing, setPlaying] = useState(false);
+  const ytId = extractYouTubeId(content);
+
+  return (
+    <figure className="my-8 sm:my-12">
+      <div className="aspect-video bg-black relative overflow-hidden">
+        {playing && ytId ? (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1`}
+            title={caption || 'Video'}
+            className="w-full h-full"
+            allow="accelerated-video-playback; encrypted-media; picture-in-picture"
+            allowFullScreen
+          />
+        ) : (
+          <button
+            type="button"
+            onClick={() => setPlaying(true)}
+            className="w-full h-full relative flex items-center justify-center group cursor-pointer"
+            aria-label={caption || 'Play video'}
+          >
+            {ytId && (
+              <img
+                src={`https://img.youtube.com/vi/${ytId}/hqdefault.jpg`}
+                alt="" loading="lazy" referrerPolicy="no-referrer"
+                className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-85 transition-opacity"
+              />
+            )}
+            <Play size={48} className="relative text-white opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all" />
+          </button>
+        )}
+      </div>
+      {caption && (
+        <figcaption className="text-center font-mono text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] mt-3 sm:mt-4 uppercase tracking-widest">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
 // Shown briefly while a code-split tab (materie/issue/design/studio/radio/
 // podcasts) downloads its chunk. On a warm cache this basically never shows.
 function TabLoadingFallback() {
@@ -1291,20 +1341,7 @@ function ArticleView({ article, onClose, onImageClick, t, currentLang, setCurren
                   );
                 }
                 case 'video':
-                  return (
-                    <figure key={index} className="my-12">
-                      <div className="aspect-video bg-black relative flex items-center justify-center group cursor-pointer">
-                        {/* Placeholder for video player */}
-                        <Play size={48} className="text-white opacity-80 group-hover:opacity-100 transition-opacity" />
-                        <span className="sr-only">Play Video</span>
-                      </div>
-                      {block.caption && (
-                        <figcaption className="text-center font-mono text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] mt-4 uppercase tracking-widest">
-                          {block.caption}
-                        </figcaption>
-                      )}
-                    </figure>
-                  );
+                  return <VideoBlock key={index} content={typeof block.content === 'string' ? block.content : ''} caption={block.caption} />;
                 case 'audio':
                   return (
                     <figure key={index} className="my-8 sm:my-12 p-4 sm:p-6 bg-[#E8DED5] border border-[rgb(var(--c-accent-rgb)_/_0.2)] flex items-center gap-3 sm:gap-4">
