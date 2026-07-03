@@ -10,6 +10,10 @@ export interface Item {
   description: string;
   imageSeed: string;
   imageUrl?: string;
+  /** Hidden from the public site until unset. */
+  draft?: boolean;
+  /** ISO datetime; hidden from the public site until this moment passes. */
+  publishAt?: string;
 }
 
 export interface ContentBlock {
@@ -59,6 +63,10 @@ export interface Review {
   link?: string;
   date?: string;
   featured?: boolean;
+  /** Hidden from the public site until unset. */
+  draft?: boolean;
+  /** ISO datetime; hidden from the public site until this moment passes. */
+  publishAt?: string;
 }
 
 export interface LibraryItem {
@@ -68,6 +76,10 @@ export interface LibraryItem {
   size: string;
   year: string;
   url?: string;
+  /** Hidden from the public site until unset. */
+  draft?: boolean;
+  /** ISO datetime; hidden from the public site until this moment passes. */
+  publishAt?: string;
 }
 
 export interface LocalizedContentCollection {
@@ -260,29 +272,36 @@ export function getAvailableLanguages(): string[] {
 }
 
 /**
- * True when the article should be visible to readers: not a draft, and its
- * publishAt moment (if any) has passed. The admin preview bypasses this so
- * drafts can be proofread on the real site.
+ * True when an entity (article, review, item, library item) should be
+ * visible to readers: not a draft, and its publishAt moment (if any) has
+ * passed. The admin preview bypasses this so drafts can be proofread on
+ * the real site.
  */
-export function isArticleLive(a: Article): boolean {
-  if (a.draft) return false;
-  if (a.publishAt) {
-    const ts = Date.parse(a.publishAt);
+export function isEntityLive(e: { draft?: boolean; publishAt?: string }): boolean {
+  if (e.draft) return false;
+  if (e.publishAt) {
+    const ts = Date.parse(e.publishAt);
     if (!Number.isNaN(ts) && ts > Date.now()) return false;
   }
   return true;
 }
 
+/** @deprecated use isEntityLive — kept as an alias for back-compat. */
+export const isArticleLive = isEntityLive;
+
 export function getContentForLanguage(lang: string): LanguageContent {
   const c = src();
   const bucket = (c.localizedCollections || {})[lang] || {};
   const articles = mergeLocalizedArray(bucket.articles, c.articles);
+  const reviews = mergeLocalizedArray(bucket.reviews, c.reviews);
+  const items = mergeLocalizedArray(bucket.items, c.items);
+  const libraryItems = mergeLocalizedArray(bucket.libraryItems, c.libraryItems);
 
   return {
-    items: mergeLocalizedArray(bucket.items, c.items),
-    articles: isPreview() ? articles : articles.filter(isArticleLive),
-    reviews: mergeLocalizedArray(bucket.reviews, c.reviews),
-    libraryItems: mergeLocalizedArray(bucket.libraryItems, c.libraryItems)
+    items: isPreview() ? items : items.filter(isEntityLive),
+    articles: isPreview() ? articles : articles.filter(isEntityLive),
+    reviews: isPreview() ? reviews : reviews.filter(isEntityLive),
+    libraryItems: isPreview() ? libraryItems : libraryItems.filter(isEntityLive)
   };
 }
 

@@ -1130,6 +1130,11 @@ textarea {
 .monitor-summary.is-error { color: var(--danger); border-color: rgba(158,42,43,.28);   background: var(--danger-soft); }
 
 .monitor-grid { display: grid; gap: 10px; }
+
+.history-list { display: flex; flex-direction: column; gap: 8px; }
+.history-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 14px; background: var(--bg); }
+.history-row-main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.history-row-main strong { font-size: .85rem; }
 .monitor-card {
   border: 1px solid var(--line);
   background: var(--bg-card);

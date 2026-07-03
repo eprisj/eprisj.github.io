@@ -57,6 +57,7 @@ const copyFromEnBtn = byId('copyFromEnBtn');
 const translateEntryBtn = byId('translateEntryBtn');
 const translateAllArticlesBtn = byId('translateAllArticlesBtn');
 const applyEntryBtn = byId('applyEntryBtn');
+const saveEntryBtn = byId('saveEntryBtn');
 const creatorQualityEl = byId('creatorQuality');
 const creatorTitleInput = byId('creatorTitle');
 const creatorCategoryInput = byId('creatorCategory');
@@ -111,6 +112,7 @@ const interactiveButtons = [
   translateEntryBtn,
   translateAllArticlesBtn,
   applyEntryBtn,
+  saveEntryBtn,
   storyBlueprintBtn,
   guideBlueprintBtn,
   photoEssayBlueprintBtn,
@@ -412,6 +414,7 @@ function bindEvents() {
   translateEntryBtn.addEventListener('click', translateSelectedEntryToAvailableLanguages);
   translateAllArticlesBtn.addEventListener('click', translateCurrentSectionToAvailableLanguages);
   applyEntryBtn.addEventListener('click', applyVisualChanges);
+  saveEntryBtn.addEventListener('click', saveCurrentEntryOnly);
   storyBlueprintBtn.addEventListener('click', () => createArticleFromBlueprint('story'));
   guideBlueprintBtn.addEventListener('click', () => createArticleFromBlueprint('guide'));
   photoEssayBlueprintBtn.addEventListener('click', () => createArticleFromBlueprint('photoEssay'));
@@ -1321,6 +1324,42 @@ function validateShape(data) {
   }
 }
 
+// Mirrors the server's validateEntity() in deploy-webhook.js for instant
+// feedback before the round trip — the server is still the source of truth
+// (there's no shared module system between the Node backend and this
+// no-build-step admin bundle, so this is intentionally duplicated).
+const ENTITY_REQUIRED_FIELDS = {
+  articles:     { id: 'id', title: 'string', author: 'string', date: 'string', excerpt: 'string', category: 'string', imageSeed: 'string', tags: 'array', content: 'array' },
+  reviews:      { id: 'id', title: 'string', subject: 'string', rating: 'rating', content: 'string', author: 'string' },
+  items:        { id: 'id', title: 'string', subtitle: 'string', fig: 'string', description: 'string', imageSeed: 'string' },
+  libraryItems: { id: 'id', title: 'string', type: 'string', size: 'string', year: 'string' },
+};
+const ENTITY_OPTIONAL_FIELDS = {
+  articles:     { role: 'string', subcategory: 'string', imageUrl: 'string', draft: 'boolean', publishAt: 'isoDate' },
+  reviews:      { category: 'string', imageUrl: 'string', verdict: 'string', pros: 'array', cons: 'array', meta: 'string', link: 'string', date: 'string', featured: 'boolean', draft: 'boolean', publishAt: 'isoDate' },
+  items:        { imageUrl: 'string', draft: 'boolean', publishAt: 'isoDate' },
+  libraryItems: { url: 'string', draft: 'boolean', publishAt: 'isoDate' },
+};
+function validateEntityShape(section, entity) {
+  if (!ENTITY_REQUIRED_FIELDS[section]) return `unknown section: ${section}`;
+  if (!entity || typeof entity !== 'object' || Array.isArray(entity)) return 'entity must be an object';
+  const check = (spec, required) => {
+    for (const [field, kind] of Object.entries(spec)) {
+      const present = Object.prototype.hasOwnProperty.call(entity, field);
+      if (!present) { if (required) return `missing field: ${field}`; continue; }
+      const v = entity[field];
+      if (kind === 'id' && !(Number.isInteger(v) && v > 0)) return `${field} must be a positive integer`;
+      if (kind === 'string' && typeof v !== 'string') return `${field} must be a string`;
+      if (kind === 'array' && !Array.isArray(v)) return `${field} must be an array`;
+      if (kind === 'boolean' && typeof v !== 'boolean') return `${field} must be a boolean`;
+      if (kind === 'rating' && !(typeof v === 'number' && v >= 0 && v <= 5)) return 'rating must be a number 0-5';
+      if (kind === 'isoDate' && Number.isNaN(Date.parse(v))) return `${field} must be a valid ISO date string`;
+    }
+    return null;
+  };
+  return check(ENTITY_REQUIRED_FIELDS[section], true) || check(ENTITY_OPTIONAL_FIELDS[section], false);
+}
+
 function validateJson() {
   try {
     const parsed = parseEditorJson();
@@ -2179,6 +2218,17 @@ function getAdminDateLabel() {
   });
 }
 
+// datetime-local wants local wall-clock "YYYY-MM-DDTHH:mm"; publishAt is
+// stored as ISO/UTC. Module-level so both the classic form (Items/Reviews/
+// LibraryItems) and the WYSIWYG drawers can share it.
+function isoToLocalInput(iso) {
+  if (!iso) return '';
+  const d = new Date(iso);
+  if (isNaN(d)) return '';
+  const p = (n) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`;
+}
+
 function getNextEntryId(data, section) {
   const ids = getConcreteEntryIds(data, section);
   return ids.length ? Math.max(...ids) + 1 : 1;
@@ -2976,6 +3026,15 @@ function bindPhotoPreviewInputs() {
   refreshPhotoPreviewFromInputs();
 }
 
+// Shared draft/publishAt fields for the classic (non-canvas) forms — Items,
+// LibraryItems, and Reviews' plain-form fallback all reuse this markup.
+function renderDraftFieldsMarkup(entry) {
+  return `
+    <label class="checkbox-label" style="align-self:end" for="vf-draft"><input id="vf-draft" type="checkbox" ${entry.draft ? 'checked' : ''} /> Черновик (скрыт с сайта)</label>
+    <label class="full">Отложенная публикация (скрыта до этого момента)<input id="vf-publishAt" type="datetime-local" value="${escapeHtml(isoToLocalInput(entry.publishAt))}" /></label>
+  `;
+}
+
 function renderVisualForm() {
   const data = getVisualData();
   if (!data) {
@@ -3035,6 +3094,7 @@ function renderVisualForm() {
       <label class="full">URL фото (необязательно)<input id="vf-imageUrl" placeholder="https://..." value="${escapeHtml(entry.imageUrl || '')}" /></label>
       <label class="full">imageSeed (если URL пустой)<input id="vf-imageSeed" value="${escapeHtml(entry.imageSeed || '')}" /></label>
       ${renderPhotoPreviewMarkup(previewSource)}
+      ${renderDraftFieldsMarkup(entry)}
     `;
     bindPhotoPreviewInputs();
     bindUploadButton('vf-img-upload-btn', 'vf-img-upload-input', 'vf-imageUrl', () => {
@@ -3071,6 +3131,7 @@ function renderVisualForm() {
         <div id="vf-rev-preview-empty" class="photo-preview-empty" ${revImg ? 'hidden' : ''}>Добавьте URL фото, чтобы увидеть превью.</div>
       </div>
       <label class="full">Автор<input id="vf-author" value="${escapeHtml(entry.author || '')}" /></label>
+      ${renderDraftFieldsMarkup(entry)}
     `;
     const refreshRevPreview = () => {
       const img = document.getElementById('vf-rev-preview');
@@ -3094,6 +3155,7 @@ function renderVisualForm() {
       <label class="full">PDF URL<input id="vf-url" placeholder="https://..." value="${escapeHtml(entry.url || '')}" /></label>
       <label>Размер<input id="vf-size" value="${escapeHtml(entry.size || '')}" /></label>
       <label>Год<input id="vf-year" value="${escapeHtml(entry.year || '')}" /></label>
+      ${renderDraftFieldsMarkup(entry)}
     `;
     bindCreatorQualityInputs(entry);
     return;
@@ -3190,6 +3252,95 @@ function getFieldValue(id) {
   return element.value;
 }
 
+// Applies draft/publishAt from the shared classic-form fields (Items,
+// LibraryItems, Reviews) onto `next` in place, using the delete-when-unset
+// convention (matches the WYSIWYG drawers, keeps "live" entries field-free).
+function applyDraftFieldsFromForm(next) {
+  const draftEl = document.getElementById('vf-draft');
+  if (draftEl?.checked) next.draft = true; else delete next.draft;
+  const pv = document.getElementById('vf-publishAt')?.value;
+  if (pv) next.publishAt = new Date(pv).toISOString(); else delete next.publishAt;
+}
+
+// Reads the current classic-form fields into a full replacement entity for
+// `section`, based on `current` (spread first so untouched fields survive).
+// Shared by applyVisualChanges() (writes into the whole-document textarea)
+// and saveCurrentEntryOnly() (PATCHes just this one entity to the server).
+function buildEntryFromVisualForm(section, current) {
+  let next = { ...current };
+
+  if (section === 'items') {
+    next = {
+      ...next,
+      fig: getFieldValue('vf-fig').trim(),
+      title: getFieldValue('vf-title').trim(),
+      subtitle: getFieldValue('vf-subtitle').trim(),
+      description: getFieldValue('vf-description').trim(),
+      imageSeed: getFieldValue('vf-imageSeed').trim(),
+      imageUrl: getOptionalString(getFieldValue('vf-imageUrl'))
+    };
+    applyDraftFieldsFromForm(next);
+  } else if (section === 'reviews') {
+    const rating = Number(getFieldValue('vf-rating'));
+    if (Number.isNaN(rating)) {
+      throw new Error('Рейтинг должен быть числом.');
+    }
+    const lines = (id) => getFieldValue(id).split('\n').map((s) => s.trim()).filter(Boolean);
+    next = {
+      ...next,
+      title: getFieldValue('vf-title').trim(),
+      subject: getFieldValue('vf-subject').trim(),
+      rating,
+      content: getFieldValue('vf-content').trim(),
+      author: getFieldValue('vf-author').trim(),
+      category: getOptionalString(getFieldValue('vf-category')),
+      verdict: getOptionalString(getFieldValue('vf-verdict')),
+      pros: lines('vf-pros'),
+      cons: lines('vf-cons'),
+      meta: getOptionalString(getFieldValue('vf-meta')),
+      link: getOptionalString(getFieldValue('vf-link')),
+      date: getOptionalString(getFieldValue('vf-date')),
+      imageUrl: getOptionalString(getFieldValue('vf-imageUrl')),
+      featured: Boolean(document.getElementById('vf-featured')?.checked)
+    };
+    applyDraftFieldsFromForm(next);
+  } else if (section === 'libraryItems') {
+    next = {
+      ...next,
+      title: getFieldValue('vf-title').trim(),
+      type: getFieldValue('vf-type').trim(),
+      size: getFieldValue('vf-size').trim(),
+      url: getFieldValue('vf-url').trim(),
+      year: getFieldValue('vf-year').trim()
+    };
+    applyDraftFieldsFromForm(next);
+  } else {
+    const parsedContent = collectBlockEditorContent();
+
+    const tags = getFieldValue('vf-tags')
+      .split(',')
+      .map((tag) => tag.trim())
+      .filter(Boolean);
+
+    next = {
+      ...next,
+      title: getFieldValue('vf-title').trim(),
+      author: getFieldValue('vf-author').trim(),
+      role: getFieldValue('vf-role').trim() || undefined,
+      date: getFieldValue('vf-date').trim(),
+      excerpt: getFieldValue('vf-excerpt').trim(),
+      category: getFieldValue('vf-category').trim(),
+      subcategory: getFieldValue('vf-subcategory').trim() || undefined,
+      tags,
+      imageSeed: getFieldValue('vf-imageSeed').trim(),
+      imageUrl: getOptionalString(getFieldValue('vf-imageUrl')),
+      content: parsedContent
+    };
+  }
+
+  return next;
+}
+
 async function applyVisualChanges() {
   try {
     setBusy(true);
@@ -3211,73 +3362,7 @@ async function applyVisualChanges() {
     }
 
     const current = entries[entryIndex];
-    let next = { ...current };
-
-    if (section === 'items') {
-      next = {
-        ...next,
-        fig: getFieldValue('vf-fig').trim(),
-        title: getFieldValue('vf-title').trim(),
-        subtitle: getFieldValue('vf-subtitle').trim(),
-        description: getFieldValue('vf-description').trim(),
-        imageSeed: getFieldValue('vf-imageSeed').trim(),
-        imageUrl: getOptionalString(getFieldValue('vf-imageUrl'))
-      };
-    } else if (section === 'reviews') {
-      const rating = Number(getFieldValue('vf-rating'));
-      if (Number.isNaN(rating)) {
-        throw new Error('Рейтинг должен быть числом.');
-      }
-      const lines = (id) => getFieldValue(id).split('\n').map((s) => s.trim()).filter(Boolean);
-      next = {
-        ...next,
-        title: getFieldValue('vf-title').trim(),
-        subject: getFieldValue('vf-subject').trim(),
-        rating,
-        content: getFieldValue('vf-content').trim(),
-        author: getFieldValue('vf-author').trim(),
-        category: getOptionalString(getFieldValue('vf-category')),
-        verdict: getOptionalString(getFieldValue('vf-verdict')),
-        pros: lines('vf-pros'),
-        cons: lines('vf-cons'),
-        meta: getOptionalString(getFieldValue('vf-meta')),
-        link: getOptionalString(getFieldValue('vf-link')),
-        date: getOptionalString(getFieldValue('vf-date')),
-        imageUrl: getOptionalString(getFieldValue('vf-imageUrl')),
-        featured: Boolean(document.getElementById('vf-featured')?.checked)
-      };
-    } else if (section === 'libraryItems') {
-      next = {
-        ...next,
-        title: getFieldValue('vf-title').trim(),
-        type: getFieldValue('vf-type').trim(),
-        size: getFieldValue('vf-size').trim(),
-        url: getFieldValue('vf-url').trim(),
-        year: getFieldValue('vf-year').trim()
-      };
-    } else {
-      const parsedContent = collectBlockEditorContent();
-
-      const tags = getFieldValue('vf-tags')
-        .split(',')
-        .map((tag) => tag.trim())
-        .filter(Boolean);
-
-      next = {
-        ...next,
-        title: getFieldValue('vf-title').trim(),
-        author: getFieldValue('vf-author').trim(),
-        role: getFieldValue('vf-role').trim() || undefined,
-        date: getFieldValue('vf-date').trim(),
-        excerpt: getFieldValue('vf-excerpt').trim(),
-        category: getFieldValue('vf-category').trim(),
-        subcategory: getFieldValue('vf-subcategory').trim() || undefined,
-        tags,
-        imageSeed: getFieldValue('vf-imageSeed').trim(),
-        imageUrl: getOptionalString(getFieldValue('vf-imageUrl')),
-        content: parsedContent
-      };
-    }
+    const next = buildEntryFromVisualForm(section, current);
 
     entries[entryIndex] = next;
     const syncedLangs = await syncMissingEntryLanguages(data, section, lang, next);
@@ -3285,6 +3370,63 @@ async function applyVisualChanges() {
     setEditorData(data);
     const syncNote = syncedLangs.length ? ` Недостающие языки созданы: ${syncedLangs.join(', ')}.` : '';
     setStatus('success', `Запись #${selectedId} обновлена (${getSectionLabel(section)} / ${lang}).${syncNote}`);
+  } catch (error) {
+    setStatus('error', getErrorMessage(error));
+  } finally {
+    setBusy(false);
+  }
+}
+
+// ─── Per-entity save: PATCH one record instead of the whole document ─────────
+// Fast path for sections with no autopublish safety net (Items, LibraryItems,
+// Reviews' classic-form fallback). Fetches the current version right before
+// writing so a stale save surfaces as a clear "someone else saved" message
+// instead of silently losing an edit.
+const CONTENT_META_API = 'https://api.eprisjournal.com/content/meta';
+const CONTENT_ENTITY_API = 'https://api.eprisjournal.com/content/entity';
+async function saveEntityToServer(section, lang, entity) {
+  const pw = getAdminPassword();
+  if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
+  const metaRes = await fetch(CONTENT_META_API, { cache: 'no-store' });
+  const meta = await metaRes.json().catch(() => ({}));
+  const res = await fetch(CONTENT_ENTITY_API, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
+    body: JSON.stringify({ section, id: entity.id, entity, lang, expectedVersion: meta.version }),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (res.status === 409) throw new Error('Кто-то ещё сохранил изменения. Нажмите «Загрузить», затем повторите.');
+  if (!res.ok || !data.ok) throw new Error(data.error || ('VPS вернул статус ' + res.status));
+  return data;
+}
+
+async function saveCurrentEntryOnly() {
+  try {
+    setBusy(true);
+    if (window.__modernEditorActive) await flushModernEditor();
+    const data = parseEditorJson();
+    const section = visualSectionSelect.value;
+    const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
+    const entries = getSectionArray(data, section, lang, lang !== DEFAULT_LANGUAGE);
+
+    if (!entries.length) throw new Error('Нет записей для редактирования.');
+    const selectedId = Number(visualEntrySelect.value);
+    const entryIndex = entries.findIndex((item) => Number(item.id) === selectedId);
+    if (entryIndex === -1) throw new Error('Не найдена выбранная запись.');
+
+    const current = entries[entryIndex];
+    const next = buildEntryFromVisualForm(section, current);
+    const entityErr = validateEntityShape(section, next);
+    if (entityErr) throw new Error(entityErr);
+
+    await saveEntityToServer(section, lang, next);
+
+    // Reflect the save locally too, so the rest of the admin (dropdown badges,
+    // quality audit, draft) stays in sync without a full reload.
+    entries[entryIndex] = next;
+    pendingVisualEntryId = selectedId;
+    setEditorData(data, { markSynced: true });
+    setStatus('success', `Запись #${selectedId} сохранена на VPS (${getSectionLabel(section)} / ${lang}).`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
@@ -5670,9 +5812,109 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     if (btn.dataset.tab === 'translations') setTimeout(renderTranslationsTab, 50);
     if (btn.dataset.tab === 'dashboard') setTimeout(renderDashboard, 50);
     if (btn.dataset.tab === 'studio') setTimeout(renderStudioTab, 50);
+    if (btn.dataset.tab === 'history') setTimeout(refreshVersionHistory, 50);
   });
 });
 
+// ═══════════════════════════════════════════════════════════
+// ──  VERSION HISTORY — browse/restore the rolling VPS backups  ─────────────
+// ═══════════════════════════════════════════════════════════
+const CONTENT_HISTORY_API = 'https://api.eprisjournal.com/content/history';
+const CONTENT_RESTORE_API = 'https://api.eprisjournal.com/content/restore';
+const historyRefreshBtn = byId('historyRefreshBtn');
+const historyListEl = byId('historyList');
+const historyTimestampEl = byId('historyTimestamp');
+
+async function fetchVersionHistory() {
+  const pw = getAdminPassword();
+  if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
+  const res = await fetch(CONTENT_HISTORY_API, { headers: { 'X-Admin-Password': pw }, cache: 'no-store' });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || !data.ok) throw new Error(data.error || ('VPS вернул статус ' + res.status));
+  return data.backups || [];
+}
+
+function formatHistoryTimestamp(ts) {
+  if (!ts) return '—';
+  const d = new Date(ts);
+  if (isNaN(d)) return ts;
+  return d.toLocaleString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+}
+
+function renderHistoryList(backups) {
+  if (!historyListEl) return;
+  if (!backups.length) {
+    historyListEl.innerHTML = '<p class="form-hint">Нет сохранённых версий.</p>';
+    return;
+  }
+  historyListEl.innerHTML = backups.map((b, i) => {
+    const c = b.counts || {};
+    const countsStr = ['articles', 'reviews', 'items', 'libraryItems', 'issues']
+      .map((k) => `${k}: ${c[k] ?? '—'}`).join(' · ');
+    return `
+      <div class="history-row" data-filename="${escapeHtml(b.filename)}">
+        <div class="history-row-main">
+          <strong>${i === 0 ? 'Новейшая — ' : ''}${escapeHtml(formatHistoryTimestamp(b.timestamp))}</strong>
+          <span class="form-hint">${escapeHtml(countsStr)}</span>
+        </div>
+        <button class="btn btn-sm history-restore-btn" type="button" data-filename="${escapeHtml(b.filename)}">Восстановить</button>
+      </div>`;
+  }).join('');
+  historyListEl.querySelectorAll('.history-restore-btn').forEach((btn, i) => {
+    btn.addEventListener('click', () => restoreVersion(backups[i].filename, backups[i].timestamp));
+  });
+}
+
+async function refreshVersionHistory() {
+  if (!historyListEl) return;
+  try {
+    setBusy(true);
+    historyListEl.innerHTML = '<p class="form-hint">Загружаю…</p>';
+    const backups = await fetchVersionHistory();
+    renderHistoryList(backups);
+    if (historyTimestampEl) historyTimestampEl.textContent = `Обновлено: ${new Date().toLocaleTimeString('ru-RU')}. Версий: ${backups.length}.`;
+  } catch (error) {
+    historyListEl.innerHTML = '';
+    if (historyTimestampEl) historyTimestampEl.textContent = 'Ошибка: ' + getErrorMessage(error);
+    setStatus('error', getErrorMessage(error));
+  } finally {
+    setBusy(false);
+  }
+}
+
+async function restoreVersion(filename, timestamp) {
+  if (!filename) return;
+  showConfirmModal(
+    'Восстановить версию?',
+    `Весь документ будет заменён на версию от <strong>${escapeHtml(formatHistoryTimestamp(timestamp))}</strong>. Текущее состояние перед этим будет сохранено как новая резервная копия (само восстановление тоже можно отменить).`,
+    'Восстановить'
+  ).then(async (confirmed) => {
+    if (!confirmed) return;
+    try {
+      setBusy(true);
+      const pw = getAdminPassword();
+      if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
+      const metaRes = await fetch(CONTENT_META_API, { cache: 'no-store' });
+      const meta = await metaRes.json().catch(() => ({}));
+      const res = await fetch(CONTENT_RESTORE_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
+        body: JSON.stringify({ filename, expectedVersion: meta.version }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.status === 409) throw new Error('Кто-то ещё сохранил изменения. Обновите список и повторите.');
+      if (!res.ok || !data.ok) throw new Error(data.error || ('VPS вернул статус ' + res.status));
+      await loadFromGitHub();
+      await refreshVersionHistory();
+      setStatus('success', `Восстановлено из «${formatHistoryTimestamp(timestamp)}».`);
+    } catch (error) {
+      setStatus('error', getErrorMessage(error));
+    } finally {
+      setBusy(false);
+    }
+  });
+}
+historyRefreshBtn?.addEventListener('click', refreshVersionHistory);
 
 // ═══════════════════════════════════════════════════════════
 // ──  DASHBOARD  ───────────────────────────────────────────
@@ -9609,6 +9851,10 @@ async function flushModernEditor() {
   const saveState = document.getElementById('revSaveState');
   const undoBtn   = document.getElementById('revUndoBtn');
   const redoBtn   = document.getElementById('revRedoBtn');
+  const metaBtn   = document.getElementById('revMetaBtn');
+  const drawer    = document.getElementById('revMetaDrawer');
+  const drawerClose = document.getElementById('revMetaClose');
+  const drawerBody  = document.getElementById('revMetaBody');
   if (!shell || !canvas) return;
 
   const esc = (s) => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -9645,10 +9891,51 @@ async function flushModernEditor() {
     _model = clone(entry);
     render();
     resetHistory(_model);
+    updateDraftBadge();
   }
   function scheduleReload() { clearTimeout(_reloadTimer); _reloadTimer = setTimeout(reload, 140); }
   const CLASSIC = ['creatorStudioWrap', 'editorSplit', 'commandCenter', 'stats'];
   const classicEls = () => CLASSIC.map((id) => document.getElementById(id)).filter(Boolean);
+
+  // ── metadata drawer (draft / scheduled publish) ────────────────────────────
+  // Reviews only need draft+publishAt here — category/author/etc are already
+  // inline-editable directly on the canvas, unlike articles.
+  function renderReviewDrawer() {
+    if (!_model) return;
+    drawerBody.innerHTML =
+      `<label class="wys-meta-check"><input type="checkbox" data-mdraft ${_model.draft ? 'checked' : ''}><span>Черновик — скрыт с сайта</span></label>` +
+      `<label class="wys-meta-field"><span>Отложенная публикация (скрыта до этого момента)</span><input type="datetime-local" data-mpublishat value="${esc(isoToLocalInput(_model.publishAt))}"></label>`;
+    const draftInp = drawerBody.querySelector('[data-mdraft]');
+    draftInp && draftInp.addEventListener('change', () => {
+      if (draftInp.checked) _model.draft = true; else delete _model.draft;
+      updateDraftBadge();
+      scheduleCommit();
+    });
+    const pubInp = drawerBody.querySelector('[data-mpublishat]');
+    pubInp && pubInp.addEventListener('change', () => {
+      const v = pubInp.value;
+      if (v) _model.publishAt = new Date(v).toISOString(); else delete _model.publishAt;
+      updateDraftBadge();
+      scheduleCommit();
+    });
+  }
+  function updateDraftBadge() {
+    let badge = document.getElementById('revDraftBadge');
+    const scheduled = _model && _model.publishAt && Date.parse(_model.publishAt) > Date.now();
+    const on = _model && (_model.draft || scheduled);
+    if (!on) { badge && badge.remove(); return; }
+    if (!badge) {
+      badge = document.createElement('span');
+      badge.id = 'revDraftBadge';
+      badge.className = 'wys-draft-badge';
+      if (saveState && saveState.parentNode) saveState.parentNode.insertBefore(badge, saveState);
+      else return;
+    }
+    badge.textContent = _model.draft ? 'ЧЕРНОВИК' : ('ПУБЛИКАЦИЯ ' + new Date(_model.publishAt).toLocaleString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }));
+    badge.title = _model.draft ? 'Обзор скрыт с сайта' : 'Обзор появится на сайте в указанное время';
+  }
+  metaBtn && (metaBtn.onclick = () => { renderReviewDrawer(); drawer.hidden = false; });
+  drawerClose && (drawerClose.onclick = () => { drawer.hidden = true; });
 
   // ── history ──────────────────────────────────────────────────────────────
   const HISTORY_CAP = 60;
