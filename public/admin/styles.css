@@ -914,6 +914,8 @@ textarea {
   text-transform: uppercase;
 }
 .creator-actions { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.creator-actions-group { display: contents; }
+.creator-actions-group[hidden] { display: none; }
 .creator-quality {
   display: flex;
   justify-content: flex-end;
@@ -3768,7 +3770,11 @@ body.busy::after {
 
 /* Media library grid inside the image picker popover */
 .wys-media-lib { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
-.wys-media-lib-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; font-family: var(--font-mono); font-size: .58rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); }
+.wys-media-lib-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; font-family: var(--font-mono); font-size: .58rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); }
+.wys-media-filter { display: flex; align-items: center; gap: 4px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.wys-media-filter input { accent-color: var(--accent); cursor: pointer; }
+.wys-media-usage { position: absolute; bottom: 2px; left: 2px; z-index: 1; padding: 1px 5px; border-radius: 3px; font-family: var(--font-mono); font-size: .58rem; font-weight: 700; background: rgba(0,0,0,.6); color: #fff; }
+.wys-media-usage.zero { background: rgba(158,42,43,.75); }
 .wys-media-refresh { border: 1px solid var(--line); background: var(--bg); color: var(--text-muted); width: 22px; height: 22px; border-radius: 4px; cursor: pointer; font-size: .8rem; }
 .wys-media-refresh:hover { color: var(--accent); border-color: var(--accent); }
 .wys-media-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
@@ -3839,3 +3845,30 @@ body.busy::after {
 .wys-review-pros .wys-review-chip-sign { color: #4A7C59; }
 .wys-review-cons .wys-review-chip-sign { color: #8B3A3A; }
 .wys-review-meta-row { display: flex; align-items: center; gap: 8px; margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--line); font-family: var(--font-mono); font-size: .68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; }
+
+/* ── Toasts — showToast()/showToastWithAction() had no CSS at all until now ── */
+.toast-container { position: fixed; top: 16px; right: 16px; z-index: 900; display: flex; flex-direction: column; gap: 8px; max-width: 380px; }
+.toast {
+  position: relative; overflow: hidden; display: flex; align-items: center; gap: 10px;
+  background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow-sm); padding: 10px 14px; font-size: .82rem; color: var(--text);
+  animation: toast-in .18s ease-out;
+}
+.toast.removing { animation: toast-out .22s ease-in forwards; }
+@keyframes toast-in { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes toast-out { to { opacity: 0; transform: translateX(12px); } }
+.toast-icon { flex-shrink: 0; font-size: .9rem; }
+.toast-success .toast-icon { color: var(--ok); }
+.toast-error .toast-icon { color: var(--danger); }
+.toast-info .toast-icon { color: var(--info); }
+.toast-body { flex: 1; min-width: 0; line-height: 1.4; }
+.toast-action {
+  flex-shrink: 0; border: 1px solid var(--accent); background: none; color: var(--accent);
+  border-radius: var(--radius-sm); padding: 3px 9px; font-size: .74rem; font-weight: 600;
+  cursor: pointer; white-space: nowrap; transition: background .12s, color .12s;
+}
+.toast-action:hover { background: var(--accent); color: var(--bg-card); }
+.toast-close { flex-shrink: 0; border: none; background: none; color: var(--text-muted); font-size: 1rem; line-height: 1; cursor: pointer; padding: 2px; }
+.toast-close:hover { color: var(--text); }
+.toast-progress { position: absolute; bottom: 0; left: 0; height: 2px; background: var(--accent); animation: toast-progress linear forwards; }
+@keyframes toast-progress { from { width: 100%; } to { width: 0%; } }

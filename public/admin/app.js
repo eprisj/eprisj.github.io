@@ -71,6 +71,11 @@ const reviewBlueprintBtn = byId('reviewBlueprintBtn');
 const insertStructureBtn = byId('insertStructureBtn');
 const insertChecklistTemplateBtn = byId('insertChecklistTemplateBtn');
 const insertPollTemplateBtn = byId('insertPollTemplateBtn');
+const articleBlueprintGroupEl = byId('articleBlueprintGroup');
+const reviewBlueprintGroupEl = byId('reviewBlueprintGroup');
+const reviewPlaceBlueprintBtn = byId('reviewPlaceBlueprintBtn');
+const reviewProductBlueprintBtn = byId('reviewProductBlueprintBtn');
+const reviewMediaBlueprintBtn = byId('reviewMediaBlueprintBtn');
 const contentAuditMetricsEl = byId('contentAuditMetrics');
 const entryPreviewEl = byId('entryPreview');
 const findMissingLangBtn = byId('findMissingLangBtn');
@@ -117,6 +122,9 @@ const interactiveButtons = [
   guideBlueprintBtn,
   photoEssayBlueprintBtn,
   reviewBlueprintBtn,
+  reviewPlaceBlueprintBtn,
+  reviewProductBlueprintBtn,
+  reviewMediaBlueprintBtn,
   insertStructureBtn,
   insertChecklistTemplateBtn,
   insertPollTemplateBtn,
@@ -419,6 +427,9 @@ function bindEvents() {
   guideBlueprintBtn.addEventListener('click', () => createArticleFromBlueprint('guide'));
   photoEssayBlueprintBtn.addEventListener('click', () => createArticleFromBlueprint('photoEssay'));
   reviewBlueprintBtn.addEventListener('click', () => createArticleFromBlueprint('review'));
+  reviewPlaceBlueprintBtn.addEventListener('click', () => createReviewFromBlueprint('place'));
+  reviewProductBlueprintBtn.addEventListener('click', () => createReviewFromBlueprint('product'));
+  reviewMediaBlueprintBtn.addEventListener('click', () => createReviewFromBlueprint('media'));
   insertStructureBtn.addEventListener('click', () => appendArticlePreset('structure'));
   insertChecklistTemplateBtn.addEventListener('click', () => appendArticlePreset('checklist'));
   insertPollTemplateBtn.addEventListener('click', () => appendArticlePreset('poll'));
@@ -544,6 +555,18 @@ function bindEvents() {
     event.preventDefault();
     event.returnValue = '';
   });
+
+  updateCreatorStudioForSection();
+}
+
+// Creator Studio's blueprint buttons used to always show the Article set
+// regardless of the selected section — clicking any of them while viewing
+// Reviews silently created an Article and flipped the section over. Swap the
+// visible button group to match visualSectionSelect instead.
+function updateCreatorStudioForSection() {
+  const section = visualSectionSelect.value;
+  articleBlueprintGroupEl.hidden = section !== 'articles';
+  reviewBlueprintGroupEl.hidden = section !== 'reviews';
 }
 
 function scheduleVisualRefresh() {
@@ -1951,6 +1974,20 @@ function showToast(type, text, duration = 4000) {
   setTimeout(dismiss, duration);
 }
 
+// Like showToast(), but with a clickable action button (e.g. "\u041E\u0442\u043C\u0435\u043D\u0438\u0442\u044C" after
+// a delete). Additive \u2014 no existing showToast(type, text) call site changes.
+function showToastWithAction(type, text, actionLabel, onAction, duration = 8000) {
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  const icons = { success: '\u2713', error: '\u2717', info: '\u2139' };
+  toast.innerHTML = `<span class="toast-icon">${icons[type] || icons.info}</span><span class="toast-body">${escapeHtml(text)}</span><button class="toast-action" type="button">${escapeHtml(actionLabel)}</button><button class="toast-close" type="button">\u00D7</button><div class="toast-progress" style="animation-duration:${duration}ms"></div>`;
+  toastContainerEl.appendChild(toast);
+  const dismiss = () => { toast.classList.add('removing'); setTimeout(() => toast.remove(), 260); };
+  toast.querySelector('.toast-close').addEventListener('click', dismiss);
+  toast.querySelector('.toast-action').addEventListener('click', () => { onAction(); dismiss(); });
+  setTimeout(dismiss, duration);
+}
+
 // ===== LAST SYNCED BADGE =====
 function updateLastSyncedBadge() {
   if (!lastSyncedTime) { lastSyncedEl.textContent = ''; return; }
@@ -2285,6 +2322,58 @@ function buildArticleBlueprint(kind, nextId) {
     imageSeed,
     imageUrl,
     content
+  };
+}
+
+const REVIEW_BLUEPRINTS = {
+  place: {
+    category: 'Food & Stay',
+    verdict: 'Одна чёткая строка — стоит ли идти.',
+    content: 'Начните с первого впечатления — атмосфера, сервис, для кого это место. Затем конкретные детали, подтверждающие вывод.',
+    pros: ['Локация', 'Атмосфера', 'Соотношение цены и качества'],
+    cons: ['Один честный минус'],
+    meta: 'Локация · Ценовой диапазон · Посещено ММ.ГГГГ'
+  },
+  product: {
+    category: 'Design',
+    verdict: 'Одна чёткая строка — стоит ли покупать.',
+    content: 'Начните с того, что этот предмет делает хорошо и где его место в категории. Затем материалы, использование и слабые стороны.',
+    pros: ['Качество сборки', 'Дизайн', 'Полезность в быту'],
+    cons: ['Цена', 'Один недостаток'],
+    meta: 'Бренд · Цена · Где купить'
+  },
+  media: {
+    category: 'Books & Media',
+    verdict: 'Одна чёткая строка — стоит ли тратить время.',
+    content: 'Начните с сути и того, почему это актуально сейчас. Затем мастерство, темп повествования и кому стоит это прочитать/посмотреть/послушать.',
+    pros: ['Идеи', 'Мастерство', 'Темп'],
+    cons: ['Один честный минус'],
+    meta: 'Автор/создатель · Год · Формат'
+  }
+};
+
+// Builds a new Review entity from a REVIEW_BLUEPRINTS template. Mirrors
+// buildArticleBlueprint(), but Review has no imageSeed field (only imageUrl),
+// so creatorSeedInput is intentionally unused here.
+function buildReviewBlueprint(kind, nextId) {
+  const blueprint = REVIEW_BLUEPRINTS[kind] || REVIEW_BLUEPRINTS.place;
+  const title = getCreatorInputValue(creatorTitleInput) || 'New review';
+  const category = getCreatorInputValue(creatorCategoryInput) || blueprint.category;
+  const imageUrl = getOptionalString(getCreatorInputValue(creatorImageUrlInput));
+  return {
+    id: nextId,
+    title,
+    subject: title,
+    rating: 0,
+    content: blueprint.content,
+    author: 'EPRIS Journal',
+    category,
+    imageUrl,
+    verdict: blueprint.verdict,
+    pros: deepClone(blueprint.pros),
+    cons: deepClone(blueprint.cons),
+    meta: blueprint.meta,
+    date: getAdminDateLabel()
   };
 }
 
@@ -2784,6 +2873,42 @@ async function createArticleFromBlueprint(kind) {
   }
 }
 
+async function createReviewFromBlueprint(kind) {
+  try {
+    setBusy(true);
+    const data = parseEditorJson();
+    const sourceLang = visualLangSelect.value || DEFAULT_LANGUAGE;
+    const entries = getSectionArray(data, 'reviews', sourceLang, sourceLang !== DEFAULT_LANGUAGE);
+    const nextId = getNextEntryId(data, 'reviews');
+    const baseReview = buildReviewBlueprint(kind, nextId);
+    let sourceReview = baseReview;
+
+    if (sourceLang !== DEFAULT_LANGUAGE) {
+      setStatus('info', `Готовлю шаблон на ${sourceLang}...`);
+      sourceReview = await translateEntryForSection('reviews', baseReview, sourceLang, DEFAULT_LANGUAGE);
+      const titleOverride = getCreatorInputValue(creatorTitleInput);
+      const categoryOverride = getCreatorInputValue(creatorCategoryInput);
+      if (titleOverride) sourceReview.title = titleOverride;
+      if (categoryOverride) sourceReview.category = categoryOverride;
+    }
+
+    entries.push(sourceReview);
+    setStatus('info', `Создаю языковые версии обзора #${nextId}...`);
+    const syncedLangs = await syncMissingEntryLanguages(data, 'reviews', sourceLang, sourceReview);
+
+    visualSectionSelect.value = 'reviews';
+    visualLangSelect.value = sourceLang;
+    pendingVisualEntryId = nextId;
+    setEditorData(data);
+    const syncNote = syncedLangs.length ? ` Языки: ${syncedLangs.join(', ')}.` : '';
+    setStatus('success', `Шаблон обзора #${nextId} создан.${syncNote}`);
+  } catch (error) {
+    setStatus('error', getErrorMessage(error));
+  } finally {
+    setBusy(false);
+  }
+}
+
 function appendArticlePreset(kind) {
   try {
     if (visualSectionSelect.value !== 'articles') {
@@ -2935,6 +3060,10 @@ function refreshVisualEditor() {
   // on the OLD entry instead of the new one. Sync both canvases directly.
   if (typeof window._wysReload === 'function') window._wysReload();
   if (typeof window._revReload === 'function') window._revReload();
+  // Same reasoning applies to Creator Studio's blueprint button group — a
+  // programmatic section change (e.g. createReviewFromBlueprint switching
+  // to 'reviews') must also refresh which button set is visible.
+  updateCreatorStudioForSection();
 }
 
 function setVisualNotice(message, type) {
@@ -2970,6 +3099,36 @@ function resolvePreviewImageSource(imageUrl, imageSeed) {
   }
 
   return `https://picsum.photos/seed/${encodeURIComponent(normalizedSeed)}/900/520?grayscale`;
+}
+
+// Scans the currently loaded content (all languages) for references to a
+// given image URL — used by the media picker to show "used ×N" badges and
+// warn before deleting a photo that's actually in use. Computed on demand
+// from editor.value rather than a server-side count, so it stays correct
+// against unsaved edits (exactly the moment a delete decision is being made).
+// LibraryItem has no image field, so it's intentionally excluded.
+function countMediaUsage(url) {
+  const norm = String(url || '').trim();
+  if (!norm) return { count: 0, refs: [] };
+  const data = parseEditorJsonSafe();
+  if (!data) return { count: 0, refs: [] };
+  const matches = (v) => typeof v === 'string' && v.trim() === norm;
+  const refs = [];
+  const langs = getLanguageOptions(data);
+  ['articles', 'reviews', 'items'].forEach((section) => {
+    langs.forEach((lang) => {
+      getSectionArray(data, section, lang, false).forEach((entry) => {
+        if (matches(entry.imageUrl)) refs.push({ section, id: entry.id, lang });
+        if (section === 'articles' && Array.isArray(entry.content)) {
+          entry.content.forEach((block) => {
+            if (block.type === 'image' && matches(block.content)) refs.push({ section, id: entry.id, lang });
+            if (block.type === 'gallery' && Array.isArray(block.content) && block.content.some(matches)) refs.push({ section, id: entry.id, lang });
+          });
+        }
+      });
+    });
+  });
+  return { count: refs.length, refs };
 }
 
 function renderPhotoPreviewMarkup(source) {
@@ -3438,23 +3597,16 @@ function createDefaultEntry(section, nextId) {
   if (section === 'items') {
     return {
       id: nextId,
-      title: 'New item',
-      subtitle: '',
+      title: 'New gallery item',
+      subtitle: 'One-line context — replace me',
       fig: `FIG. ${String(nextId).padStart(2, '0')}`,
-      description: '',
+      description: 'One or two sentences describing this piece — replace with real copy before publishing.',
       imageSeed: `new-item-${nextId}`
     };
   }
 
   if (section === 'reviews') {
-    return {
-      id: nextId,
-      title: 'New review',
-      subject: '',
-      rating: 5,
-      content: '',
-      author: ''
-    };
+    return buildReviewBlueprint('place', nextId);
   }
 
   if (section === 'libraryItems') {
@@ -4860,7 +5012,39 @@ async function addVisualEntry() {
   }
 }
 
-function deleteVisualEntry() {
+// Deletion is purely local until the next explicit save (deleteVisualEntry
+// never calls the server), so a short-lived in-memory undo is enough — no
+// need for sessionStorage durability across a reload, since every other
+// unsaved edit in this admin is already lost on reload too.
+const DELETION_UNDO_CAP = 5;
+let _deletionUndoStack = [];
+
+function pushDeletedEntrySnapshot(snapshot) {
+  _deletionUndoStack.push(snapshot);
+  if (_deletionUndoStack.length > DELETION_UNDO_CAP) _deletionUndoStack.shift();
+}
+
+function undoLastDeletion() {
+  const snapshot = _deletionUndoStack.pop();
+  if (!snapshot) { showToast('info', 'Нечего отменять.'); return; }
+  try {
+    const data = parseEditorJson();
+    const entries = getSectionArray(data, snapshot.section, snapshot.lang, snapshot.lang !== DEFAULT_LANGUAGE);
+    if (entries.some((e) => Number(e.id) === Number(snapshot.entry.id))) {
+      throw new Error(`Запись #${snapshot.entry.id} уже существует — восстановление отменено, чтобы не создать дубликат.`);
+    }
+    entries.splice(Math.min(snapshot.index, entries.length), 0, snapshot.entry);
+    visualSectionSelect.value = snapshot.section;
+    visualLangSelect.value = snapshot.lang;
+    pendingVisualEntryId = Number(snapshot.entry.id);
+    setEditorData(data);
+    setStatus('success', `Запись #${snapshot.entry.id} (${snapshot.title}) восстановлена. Нажмите «Сохранить», чтобы это вступило в силу на сайте.`);
+  } catch (error) {
+    setStatus('error', getErrorMessage(error));
+  }
+}
+
+async function deleteVisualEntry() {
   try {
     const data = parseEditorJson();
     const section = visualSectionSelect.value;
@@ -4879,12 +5063,21 @@ function deleteVisualEntry() {
     }
 
     const entryTitle = getEntryTitle(section, entries[entryIndex]);
-    const shouldDelete = window.confirm(`Удалить запись #${selectedId} (${entryTitle})?`);
-    if (!shouldDelete) {
+    const isDefaultLang = lang === DEFAULT_LANGUAGE;
+    const warning = isDefaultLang
+      ? `Это версия <strong>${escapeHtml(DEFAULT_LANGUAGE)}</strong> (основная). Удаление скроет запись <strong>на всех языках</strong>, включая уже существующие переводы.`
+      : `Будет удалён только перевод на <strong>${escapeHtml(lang)}</strong>. Версия ${escapeHtml(DEFAULT_LANGUAGE)} и другие языки не пострадают.`;
+    const confirmed = await showConfirmModal(
+      `Удалить запись #${selectedId}?`,
+      `<p>${escapeHtml(entryTitle)}</p><p>${warning}</p>`,
+      'Удалить'
+    );
+    if (!confirmed) {
       return;
     }
 
-    entries.splice(entryIndex, 1);
+    const [deletedEntry] = entries.splice(entryIndex, 1);
+    pushDeletedEntrySnapshot({ section, lang, index: entryIndex, entry: deletedEntry, title: entryTitle });
 
     if (entries.length) {
       pendingVisualEntryId = Number(entries[Math.max(0, entryIndex - 1)].id);
@@ -4893,6 +5086,7 @@ function deleteVisualEntry() {
     }
 
     setEditorData(data);
+    showToastWithAction('success', `Запись #${selectedId} (${entryTitle}) удалена.`, 'Отменить', undoLastDeletion);
     setStatus('success', `Запись #${selectedId} удалена (${getSectionLabel(section)} / ${lang}).`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
@@ -9593,7 +9787,11 @@ async function flushModernEditor() {
       </div>
       <input type="file" accept="image/*" hidden />
       <div class="wys-media-lib">
-        <div class="wys-media-lib-head"><span>Медиатека</span><button type="button" class="wys-media-refresh" data-refresh title="Обновить">↻</button></div>
+        <div class="wys-media-lib-head">
+          <span>Медиатека</span>
+          <label class="wys-media-filter"><input type="checkbox" data-unused-only> Только неиспользуемые</label>
+          <button type="button" class="wys-media-refresh" data-refresh title="Обновить">↻</button>
+        </div>
         <div class="wys-media-grid" data-grid><div class="wys-media-loading">Загружаю…</div></div>
       </div>`;
     document.body.appendChild(pop);
@@ -9601,6 +9799,7 @@ async function flushModernEditor() {
     const inp = pop.querySelector('.wys-pop-input');
     const file = pop.querySelector('input[type=file]');
     const grid = pop.querySelector('[data-grid]');
+    const unusedOnlyInp = pop.querySelector('[data-unused-only]');
     inp.focus();
     pop.querySelector('[data-ok]').onclick = () => { const v = inp.value.trim(); closePopovers(); if (v) onPick(v); };
     inp.onkeydown = (e) => { if (e.key === 'Enter') pop.querySelector('[data-ok]').click(); };
@@ -9618,15 +9817,36 @@ async function flushModernEditor() {
 
     async function renderGrid(force) {
       grid.innerHTML = '<div class="wys-media-loading">Загружаю…</div>';
-      const items = await fetchMediaLibrary(force);
-      if (!items.length) { grid.innerHTML = '<div class="wys-media-empty">Пока нет загруженных фото — загрузите первое выше.</div>'; return; }
-      grid.innerHTML = items.map((it) => `<div class="wys-media-cell"><button type="button" class="wys-media-item" data-url="${esc(it.url)}" title="${esc(it.name)}"><img src="${esc(it.url)}" loading="lazy" referrerpolicy="no-referrer" alt=""></button><button type="button" class="wys-media-del" data-name="${esc(it.name)}" title="Удалить с сервера">×</button></div>`).join('');
+      let items = await fetchMediaLibrary(force);
+      const usageByUrl = new Map(items.map((it) => [it.url, countMediaUsage(it.url)]));
+      if (unusedOnlyInp && unusedOnlyInp.checked) {
+        items = items.filter((it) => (usageByUrl.get(it.url) || { count: 0 }).count === 0);
+      }
+      if (!items.length) {
+        grid.innerHTML = _mediaCache && _mediaCache.length
+          ? '<div class="wys-media-empty">Все фото используются — нет неиспользуемых.</div>'
+          : '<div class="wys-media-empty">Пока нет загруженных фото — загрузите первое выше.</div>';
+        return;
+      }
+      grid.innerHTML = items.map((it) => {
+        const usage = usageByUrl.get(it.url) || { count: 0, refs: [] };
+        const badgeText = usage.count ? `×${usage.count}` : 'не используется';
+        const badgeTitle = usage.count
+          ? usage.refs.map((r) => `${r.section}#${r.id} (${r.lang})`).join(', ')
+          : 'Не используется в статьях, обзорах или галерее (Выпуски и Студия не проверяются)';
+        return `<div class="wys-media-cell"><button type="button" class="wys-media-item" data-url="${esc(it.url)}" title="${esc(it.name)}"><img src="${esc(it.url)}" loading="lazy" referrerpolicy="no-referrer" alt=""><span class="wys-media-usage${usage.count ? '' : ' zero'}" title="${esc(badgeTitle)}">${badgeText}</span></button><button type="button" class="wys-media-del" data-name="${esc(it.name)}" data-url="${esc(it.url)}" title="Удалить с сервера">×</button></div>`;
+      }).join('');
       grid.querySelectorAll('.wys-media-item').forEach((btn) => { btn.onclick = () => { const u = btn.getAttribute('data-url'); closePopovers(); onPick(u); }; });
       grid.querySelectorAll('.wys-media-del').forEach((btn) => {
         btn.onclick = async (ev) => {
           ev.stopPropagation();
           const name = btn.getAttribute('data-name');
-          if (!confirm(`Удалить «${name}» с сервера?\nСтатьи, где это фото используется, потеряют картинку.`)) return;
+          const url = btn.getAttribute('data-url');
+          const usage = usageByUrl.get(url) || { count: 0, refs: [] };
+          const warning = usage.count
+            ? `Используется (мест: ${usage.count}): ${usage.refs.map((r) => `${r.section}#${r.id}`).join(', ')}.\nУдаление приведёт к разбитым изображениям в этих записях.`
+            : 'Фото не используется в статьях, обзорах или галерее.';
+          if (!confirm(`Удалить «${name}» с сервера?\n${warning}`)) return;
           btn.disabled = true;
           try {
             const pw = (typeof getAdminPassword === 'function') ? getAdminPassword() : '';
@@ -9646,6 +9866,7 @@ async function flushModernEditor() {
     }
     renderGrid(false);
     pop.querySelector('[data-refresh]').onclick = () => renderGrid(true);
+    unusedOnlyInp && unusedOnlyInp.addEventListener('change', () => renderGrid(false));
 
     setTimeout(() => document.addEventListener('mousedown', outside), 0);
     function outside(ev) { if (!pop.contains(ev.target)) { closePopovers(); } }
