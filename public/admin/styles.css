@@ -2499,6 +2499,57 @@ code {
   background: var(--bg);
   flex-wrap: wrap;
 }
+/* Cards render an arbitrary cover photo as <img> with no size of its own —
+   without an explicit box, a real full-size cover blows up to its natural
+   pixel dimensions and wrecks the whole page layout. */
+.issue-switcher-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 220px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color .12s;
+}
+.issue-switcher-card:hover { border-color: var(--accent); }
+.issue-switcher-card.active { border-color: var(--accent); background: var(--accent-soft); }
+.issue-switcher-thumb {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  background: var(--line);
+}
+.issue-switcher-info { min-width: 0; }
+.issue-switcher-title {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.issue-switcher-meta {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.issue-switcher-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; background: var(--text-muted); }
+.issue-switcher-dot.draft { background: var(--warn); }
+.issue-switcher-dot.published { background: var(--ok); }
+.issue-switcher-dot.archived { background: var(--text-muted); }
 
 .issues-grid {
   display: grid;
