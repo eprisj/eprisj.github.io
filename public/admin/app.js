@@ -3189,8 +3189,10 @@ function bindPhotoPreviewInputs() {
 // LibraryItems, and Reviews' plain-form fallback all reuse this markup.
 function renderDraftFieldsMarkup(entry) {
   return `
-    <label class="checkbox-label" style="align-self:end" for="vf-draft"><input id="vf-draft" type="checkbox" ${entry.draft ? 'checked' : ''} /> Черновик (скрыт с сайта)</label>
-    <label class="full">Отложенная публикация (скрыта до этого момента)<input id="vf-publishAt" type="datetime-local" value="${escapeHtml(isoToLocalInput(entry.publishAt))}" /></label>
+    <div class="entry-draft-fields full">
+      <label class="checkbox-label" for="vf-draft"><input id="vf-draft" type="checkbox" ${entry.draft ? 'checked' : ''} /> Черновик (скрыт с сайта)</label>
+      <label>Отложенная публикация (скрыта до этого момента)<input id="vf-publishAt" type="datetime-local" value="${escapeHtml(isoToLocalInput(entry.publishAt))}" /></label>
+    </div>
   `;
 }
 
@@ -7725,7 +7727,10 @@ function bindStudioRowActions() {
       banner.innerHTML = `<span>📋 Найден несохранённый черновик от ${tsLabel}.</span>
         <button id="restoreDraftBtn" class="btn btn-sm" type="button">Восстановить</button>
         <button id="discardDraftBtn" class="btn btn-sm" type="button">Отклонить</button>`;
-      document.querySelector('.sub-header')?.after(banner);
+      // .sub-header doesn't exist in the current layout (leftover from an
+      // older structure) — this silently no-op'd forever, so the draft
+      // recovery prompt never actually appeared. .topbar is the real header.
+      document.querySelector('.topbar')?.after(banner);
       document.getElementById('restoreDraftBtn')?.addEventListener('click', () => {
         if (editor) editor.value = savedDraft;
         updateEditorState();
