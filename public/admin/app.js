@@ -335,7 +335,16 @@ authPasswordInput?.addEventListener('keydown', (e) => { if (e.key === 'Enter') h
 authLoginBtn.addEventListener('click', handleLogin);
 authTokenInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleLogin(); });
 setTimeout(() => { if (!authOverlay.classList.contains('hidden')) authPasswordInput?.focus(); }, 200);
-tryAutoLogin();
+// Deferred to a fresh task: tryAutoLogin's synchronous call chain reaches deep
+// into the file (init -> refreshVisualEditor -> renderContentCommand ->
+// buildSectionAudit -> getTranslationLanguages -> getTranslationTargetCode),
+// which touches `const TRANSLATION_TARGET_CODES` declared thousands of lines
+// below this point. Calling it inline here threw "Cannot access before
+// initialization" (TDZ) on every load, which aborted init() before it ever
+// reached loadFromGitHub() — the admin silently never fetched fresh content
+// and was stuck on whatever was last saved to localStorage. setTimeout(0)
+// lets the rest of the module finish evaluating first.
+setTimeout(tryAutoLogin, 0);
 
 async function init(options = {}) {
   const { fromLogin = false } = options;
@@ -2869,6 +2878,13 @@ function refreshVisualEditor() {
   }
 
   renderVisualForm();
+  // Setting .value programmatically fires no 'change' event, so the WYSIWYG
+  // and Review live-canvases (which reload only on that event) would keep
+  // showing whatever entry was open before — e.g. after "create new article"
+  // the canvas kept the previous article, and edits typed there landed back
+  // on the OLD entry instead of the new one. Sync both canvases directly.
+  if (typeof window._wysReload === 'function') window._wysReload();
+  if (typeof window._revReload === 'function') window._revReload();
 }
 
 function setVisualNotice(message, type) {
