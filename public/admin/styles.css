@@ -805,7 +805,13 @@ textarea {
 /* ══════════════════════════════════════════════════════════
    CONTENT / EDITOR TAB
    ══════════════════════════════════════════════════════════ */
-.editor-toolbar {
+/* Renamed from .editor-toolbar: that name collided with EasyMDE's own
+   .editor-toolbar rule (styles.css ~3187, opacity:0!important;visibility:
+   hidden — meant for ITS OWN popup formatting toolbar) which, loading later
+   in the cascade, silently made this entire toolbar invisible to real mouse
+   users despite working fine when triggered via JS .click(). Do not rename
+   it back, and do not touch the EasyMDE rule further down. */
+.entry-toolbar {
   display: grid;
   gap: 12px;
   padding: 16px;
@@ -1042,14 +1048,77 @@ textarea {
   border-radius: var(--radius-sm);
 }
 
-/* Split editor with preview pane */
-.preview-pane {
-  height: calc(100vh - var(--topbar-h));
-  top: 0;
-}
+/* Split editor with preview pane — .editor-split/.editor-pane/.preview-pane*
+   had no base layout CSS at all until now, so "Превью" rendered as a
+   full-width block instead of a real side-by-side split. */
+.editor-split { display: flex; gap: 16px; align-items: flex-start; }
+.editor-pane { flex: 1 1 100%; min-width: 0; }
 .editor-split.preview-open .editor-pane {
+  flex: 1 1 50%;
   max-height: calc(100vh - var(--topbar-h));
+  overflow-y: auto;
 }
+.preview-pane {
+  flex: 1 1 50%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: calc(100vh - var(--topbar-h));
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-xs);
+  overflow: hidden;
+}
+.preview-pane-header {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  flex-shrink: 0;
+}
+.preview-pane-label {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted);
+}
+.preview-live-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--ok); box-shadow: 0 0 0 3px var(--ok-soft);
+  animation: wysPulse 2s infinite;
+}
+.preview-live-dot.refreshing { background: var(--warn); box-shadow: 0 0 0 3px var(--warn-soft); }
+.preview-pane-tools { display: flex; align-items: center; gap: 6px; }
+.preview-pane-scroll { flex: 1; overflow-y: auto; padding: 24px; }
+.preview-device-wrap { max-width: 100%; margin: 0 auto; transition: max-width .2s ease; }
+.preview-device-wrap.mobile { max-width: 390px; }
+
+/* ── Article Live Preview content (.alp-*) — had no CSS at all until now.
+   Ports display-only properties from the already-battle-tested .wys-*
+   classes in the WYSIWYG canvas, since this pane exists to approximate
+   the same public-site rendering. Covers the 8 highest-frequency block
+   types; niche types (gallery/poll/checklist/audio/video/map) are a
+   follow-up — the empty state below alone covers every non-article
+   section, so this already takes Preview from broken to usable. ── */
+.alp-article { font-family: var(--font-serif); color: var(--text); }
+.alp-hero { aspect-ratio: 16/9; border-radius: var(--radius); overflow: hidden; background: var(--bg); margin-bottom: 20px; }
+.alp-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.alp-hero-placeholder { display: flex; align-items: center; justify-content: center; height: 100%; color: var(--text-muted); font-family: var(--font-mono); font-size: .8rem; }
+.alp-meta { display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: .68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; flex-wrap: wrap; }
+.alp-meta-role { color: var(--accent); }
+.alp-meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--text-faint); }
+.alp-title { font-family: var(--font-serif); font-size: clamp(26px, 3.6vw, 42px); line-height: 1.08; font-weight: 700; margin: 10px 0 0; }
+.alp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.alp-tag { font-family: var(--font-mono); font-size: .6rem; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); border: 1px solid var(--line); padding: 3px 9px; border-radius: 20px; }
+.alp-body { margin-top: 20px; }
+.alp-p { font-size: 1rem; line-height: 1.7; margin: 0 0 16px; }
+.alp-quote { font-family: var(--font-serif); font-style: italic; font-size: 1.35rem; line-height: 1.4; border-left: 3px solid var(--gold); padding: 4px 4px 4px 20px; margin: 16px 0; }
+.alp-note { background: var(--gold-soft); border-left: 3px solid var(--gold); padding: 12px 14px; font-size: .92rem; line-height: 1.6; border-radius: 0 4px 4px 0; margin: 16px 0; }
+.alp-empty { display: grid; place-items: center; gap: 8px; min-height: 240px; color: var(--text-muted); text-align: center; }
+.alp-empty-icon { font-size: 1.6rem; opacity: .5; }
+.alp-empty-text { font-family: var(--font-mono); font-size: .68rem; }
 
 /* ══════════════════════════════════════════════════════════
    STATS
@@ -1199,6 +1268,24 @@ textarea {
 .visual-form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .visual-form .full { grid-column: 1 / -1; }
 .visual-form textarea { min-height: 180px; }
+
+/* Draft/publishAt fields — used to be two bare labels with an inline
+   align-self hack, no visual separation from the photo preview above. */
+.entry-draft-fields {
+  display: grid;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-xs);
+}
+/* Native calendar icon/popup otherwise renders black-on-dark against a
+   dark card — this is the one part of a datetime-local input that's
+   reliably stylable cross-browser; border/padding/font are already
+   inherited fine from the generic input rule. */
+input[type="datetime-local"] { color-scheme: light; }
+[data-theme="dark"] input[type="datetime-local"] { color-scheme: dark; }
 
 .photo-preview { border: 1px solid var(--line); background: var(--bg-card); padding: 10px; border-radius: var(--radius); }
 .photo-preview img { display: block; width: 100%; max-height: 220px; object-fit: cover; border: 1px solid var(--line); filter: grayscale(12%); border-radius: var(--radius-sm); }
@@ -3872,3 +3959,97 @@ body.busy::after {
 .toast-close:hover { color: var(--text); }
 .toast-progress { position: absolute; bottom: 0; left: 0; height: 2px; background: var(--accent); animation: toast-progress linear forwards; }
 @keyframes toast-progress { from { width: 100%; } to { width: 0%; } }
+
+/* ══════════════════════════════════════════════════════════
+   CONFIRM MODAL — showConfirmModal() had no CSS at all until now
+   ══════════════════════════════════════════════════════════ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99990;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: modalFadeIn .18s ease-out;
+}
+.modal-overlay.removing { animation: modalFadeOut .2s ease-in forwards; }
+@keyframes modalFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modalFadeOut { to { opacity: 0; } }
+
+.modal-card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 24px;
+  animation: modalCardIn .22s cubic-bezier(.16,1,.3,1);
+}
+.modal-overlay.removing .modal-card { animation: modalCardOut .2s ease-in forwards; }
+@keyframes modalCardIn { from { opacity: 0; transform: translateY(10px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes modalCardOut { to { opacity: 0; transform: translateY(6px) scale(.97); } }
+
+.modal-title { margin: 0 0 10px; font-size: 1.05rem; font-weight: 600; color: var(--text); line-height: 1.3; }
+.modal-body { margin: 0 0 20px; font-size: .88rem; line-height: 1.55; color: var(--text-muted); }
+.modal-body p { margin: 0 0 8px; }
+.modal-body p:last-child { margin-bottom: 0; }
+.modal-body strong { color: var(--text); font-weight: 600; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 8px; }
+
+/* ── Keyboard shortcuts panel — showShortcutsPanel() had no CSS at all until now ── */
+.shortcuts-panel {
+  position: fixed; inset: 0; z-index: 99990;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  animation: modalFadeIn .18s ease-out;
+}
+.shortcuts-panel.removing { animation: modalFadeOut .2s ease-in forwards; }
+.shortcuts-card {
+  width: 100%; max-width: 380px;
+  background: var(--bg-card); border: 1px solid var(--line);
+  border-radius: 12px; box-shadow: var(--shadow);
+  padding: 20px 24px;
+  animation: modalCardIn .22s cubic-bezier(.16,1,.3,1);
+}
+.shortcuts-panel.removing .shortcuts-card { animation: modalCardOut .2s ease-in forwards; }
+.shortcuts-title { display: flex; align-items: center; justify-content: space-between; margin: 0 0 14px; font-size: 1rem; font-weight: 600; color: var(--text); }
+.shortcuts-close { border: none; background: none; color: var(--text-muted); font-size: 1.2rem; line-height: 1; cursor: pointer; padding: 2px; }
+.shortcuts-close:hover { color: var(--text); }
+.shortcuts-grid { display: grid; gap: 10px; }
+.shortcut-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.shortcut-desc { font-size: .82rem; color: var(--text-muted); }
+.shortcut-keys { display: flex; gap: 4px; }
+.shortcut-key { font-family: var(--font-mono); font-size: .66rem; font-weight: 700; padding: 3px 7px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--bg); color: var(--text); }
+
+/* ── Translations tab toolbar — had no layout CSS, children stacked instead of a row ── */
+.translations-toolbar {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-xs);
+}
+
+/* ── Autosave restore banner — was never actually inserted (see app.js fix), had no CSS either ── */
+.autosave-restore-banner {
+  display: flex; align-items: center; gap: 10px;
+  margin: 16px 28px 0;
+  padding: 10px 14px;
+  background: var(--info-soft);
+  border: 1px solid rgba(29,95,138,.25);
+  border-radius: var(--radius);
+  color: var(--info);
+  font-size: .82rem;
+}
+.autosave-restore-banner span { flex: 1; }
