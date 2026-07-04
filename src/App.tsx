@@ -1536,7 +1536,54 @@ function ArticlesSection({
     : articles;
 
   return (
-    <div className="max-w-4xl mx-auto space-y-12">
+    <div>
+      {/* Section masthead — photo band with EPRIS journal / taglines overlay */}
+      <div className="relative h-[240px] sm:h-[320px] md:h-[360px] overflow-hidden mb-10 sm:mb-14">
+        <img
+          src="/images/hero-kitchen.jpg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          draggable={false}
+        />
+        {/* Film grain */}
+        <div
+          className="absolute inset-0 opacity-[0.35] mix-blend-overlay pointer-events-none"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E\")",
+          }}
+        />
+        {/* Legibility scrim */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: 'linear-gradient(180deg, rgba(10,8,6,.1) 0%, rgba(10,8,6,.15) 40%, rgba(10,8,6,.62) 100%)' }}
+        />
+        <div className="absolute inset-x-0 bottom-0 px-5 sm:px-10 md:px-16 pb-5 sm:pb-8 flex items-end justify-between gap-4 sm:gap-8 text-[#F7F2EC]">
+          <div className="leading-none shrink-0" style={{ fontFamily: 'var(--font-display)' }}>
+            <div className="text-lg sm:text-2xl tracking-[0.18em]">EPRIS</div>
+            <div className="font-mono text-[8px] sm:text-[9px] tracking-[0.3em] uppercase opacity-70 mt-1">journal</div>
+          </div>
+          <div className="hidden sm:flex items-center gap-4 flex-1 justify-center min-w-0">
+            <span className="h-px flex-1 max-w-[80px] bg-[#F7F2EC]/40" />
+            <span className="font-mono text-[10px] tracking-[0.28em] uppercase whitespace-nowrap">{t('hero.tagline1')}</span>
+            <span className="h-px flex-1 max-w-[80px] bg-[#F7F2EC]/40" />
+          </div>
+          <div className="font-mono text-[9px] sm:text-[10px] tracking-[0.28em] uppercase shrink-0 opacity-90">
+            {t('hero.tagline2')}
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-4xl mx-auto space-y-12">
+      {/* explore our latest article */}
+      <div className="flex items-center justify-center gap-4 -mt-4 mb-2">
+        <span className="h-px flex-1 max-w-[120px] bg-[rgb(var(--c-accent-rgb)_/_0.25)]" />
+        <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-[rgb(var(--c-accent-rgb)_/_0.55)] whitespace-nowrap">
+          {t('articles.exploreLatest') === 'articles.exploreLatest' ? 'explore our latest article' : t('articles.exploreLatest')}
+        </span>
+        <span className="h-px flex-1 max-w-[120px] bg-[rgb(var(--c-accent-rgb)_/_0.25)]" />
+      </div>
+
       {/* Category Filter */}
       <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-16 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-8">
         <button
@@ -1559,7 +1606,7 @@ function ArticlesSection({
       </div>
 
       <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-5%' }}>
-      {filteredArticles.map((article) => (
+      {filteredArticles.map((article, index) => (
         <motion.div key={article.id} variants={staggerItem}>
             <motion.article
               className="border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-12 group cursor-pointer"
@@ -1596,6 +1643,11 @@ function ArticlesSection({
                       </div>
                       <span>{article.author}</span>
                     </div>
+                    {index === 0 && (
+                      <span className="inline-block border border-[var(--c-accent)] px-2 py-0.5 mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--c-accent)]">
+                        {t('articles.newArticle') === 'articles.newArticle' ? 'New article' : t('articles.newArticle')}
+                      </span>
+                    )}
                     <h2 className="font-crimson text-2xl sm:text-[32px] text-[var(--c-accent)] mb-4 sm:mb-6 underline decoration-1 underline-offset-4 decoration-[rgb(var(--c-accent-rgb)_/_0.35)] group-hover:decoration-[var(--c-gold)] group-hover:text-[var(--c-gold)] transition-colors duration-300">
                       {article.title}
                     </h2>
@@ -1621,6 +1673,7 @@ function ArticlesSection({
         </motion.div>
       ))}
       </motion.div>
+    </div>
     </div>
   );
 }
@@ -2169,7 +2222,7 @@ export default function App() {
         {activeTab !== 'materie' && activeTab !== 'issue' && activeTab !== 'design' && activeTab !== 'studio' && activeTab !== 'radio' && activeTab !== 'podcasts' && <footer className="border-t border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
           <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
             <div>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-[var(--c-gold)]">EPRIS JOURNAL</h2>
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-[#c2542f]">EPRIS JOURNAL</h2>
               <div className="font-mono text-xs uppercase tracking-widest opacity-60 max-w-xs leading-relaxed">
                 <p>{t('hero.subtitle2')}</p>
                 <p>{t('hero.subtitle1')}</p>
