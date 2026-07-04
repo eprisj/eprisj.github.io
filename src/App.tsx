@@ -1502,58 +1502,20 @@ function ArticlesSection({
   onArticleClick: (article: Article) => void;
   t: (key: string) => string;
 }) {
-  // Get unique categories
-  const categories = Array.from(new Set(articles.map(a => a.category)));
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
-
-  const filteredArticles = activeCategory 
-    ? articles.filter(a => a.category === activeCategory)
-    : articles;
+  const filteredArticles = articles;
 
   return (
     <div>
-      <div className="mb-10 sm:mb-14">
-        <SectionMasthead t={t} />
-      </div>
+      <SectionMasthead t={t} />
 
-      <div className="max-w-4xl mx-auto space-y-12">
-      {/* explore our latest article */}
-      <div className="flex items-center justify-center gap-4 -mt-4 mb-2">
-        <span className="h-px flex-1 max-w-[120px] bg-[rgb(var(--c-accent-rgb)_/_0.25)]" />
-        <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-[rgb(var(--c-accent-rgb)_/_0.55)] whitespace-nowrap">
-          {t('articles.exploreLatest') === 'articles.exploreLatest' ? 'explore our latest article' : t('articles.exploreLatest')}
-        </span>
-        <span className="h-px flex-1 max-w-[120px] bg-[rgb(var(--c-accent-rgb)_/_0.25)]" />
-      </div>
-
-      {/* Category Filter */}
-      <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-16 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-8">
-        <button
-          type="button"
-          onClick={() => setActiveCategory(null)}
-          className={`font-mono text-xs uppercase tracking-widest transition-colors ${!activeCategory ? 'text-[var(--c-accent)] font-bold' : 'text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:text-[var(--c-accent)]'}`}
-        >
-          {t('all')}
-        </button>
-        {categories.map(cat => (
-          <button
-            type="button"
-            key={cat}
-            onClick={() => setActiveCategory(cat)}
-            className={`font-mono text-xs uppercase tracking-widest transition-colors ${activeCategory === cat ? 'text-[var(--c-accent)] font-bold' : 'text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:text-[var(--c-accent)]'}`}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
-
-      <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-5%' }}>
+      <div className="max-w-4xl mx-auto px-5 sm:px-0 pt-8 sm:pt-10">
+      <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-5%' }} className="space-y-6">
       {filteredArticles.map((article, index) => (
         <motion.div key={article.id} variants={staggerItem}>
           {index === 0 ? (
-            // Featured (first) article — larger side-by-side card, "read" button
+            // Featured (first) article — larger side-by-side card, whole card is the link
             <motion.article
-              className="border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-12 mb-12 group cursor-pointer grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch"
+              className="border border-[rgb(var(--c-accent-rgb)_/_0.2)] group cursor-pointer grid grid-cols-1 md:grid-cols-2 items-stretch overflow-hidden"
               onClick={() => onArticleClick(article)}
               tabIndex={0}
               role="button"
@@ -1573,7 +1535,7 @@ function ArticlesSection({
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col p-6 sm:p-8">
                 <span className="inline-block border border-[var(--c-accent)] px-2 py-0.5 mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--c-accent)] w-fit">
                   {t('articles.newArticle') === 'articles.newArticle' ? 'New article' : t('articles.newArticle')}
                 </span>
@@ -1585,18 +1547,15 @@ function ArticlesSection({
                     {article.category}
                   </p>
                 )}
-                <p className="font-serif text-base text-[rgb(var(--c-accent-rgb)_/_0.8)] leading-relaxed mb-6">
+                <p className="font-serif text-base text-[rgb(var(--c-accent-rgb)_/_0.8)] leading-relaxed">
                   {article.excerpt}
                 </p>
-                <span className="mt-auto inline-flex items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-5 py-2 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
-                  read
-                </span>
               </div>
             </motion.article>
           ) : (
-            // Rest of the list — compact row: small thumb, plain title, caption + read button on the right
+            // Rest of the list — same card family, compact: square thumb, category + title + excerpt + read button
             <motion.article
-              className="border-b border-[rgb(var(--c-accent-rgb)_/_0.15)] py-6 group cursor-pointer flex items-center gap-5 sm:gap-8"
+              className="border border-[rgb(var(--c-accent-rgb)_/_0.15)] group cursor-pointer grid grid-cols-[130px_1fr] sm:grid-cols-[160px_1fr] overflow-hidden"
               onClick={() => onArticleClick(article)}
               tabIndex={0}
               role="button"
@@ -1605,25 +1564,28 @@ function ArticlesSection({
               whileHover={{ x: 4 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="w-20 h-20 sm:w-24 sm:h-24 shrink-0 overflow-hidden bg-[#E8DED5]">
+              <div className="aspect-square overflow-hidden bg-[#E8DED5]">
                 <motion.img
-                  src={resolveMediaSource(article.imageUrl || article.imageSeed, 200, 200)}
+                  src={resolveMediaSource(article.imageUrl || article.imageSeed, 320, 320)}
                   alt={article.title}
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0"
                   style={{ transition: 'filter 0.5s ease' }}
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <h3 className="font-serif text-base sm:text-lg text-[var(--c-accent)] leading-snug flex-1 min-w-0 group-hover:text-[var(--c-gold)] transition-colors duration-300">
-                {article.title}
-              </h3>
-              <div className="hidden sm:flex flex-col items-end gap-2 shrink-0 text-right">
+              <div className="flex flex-col p-4 sm:p-6">
                 {article.category && (
-                  <span className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.55)] uppercase tracking-widest">
+                  <span className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.55)] uppercase tracking-widest mb-1">
                     {article.category}
                   </span>
                 )}
-                <span className="inline-flex items-center gap-2 border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
+                <h3 className="font-crimson text-lg sm:text-xl text-[var(--c-accent)] mb-2 group-hover:text-[var(--c-gold)] transition-colors duration-300">
+                  {article.title}
+                </h3>
+                <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-4 line-clamp-3">
+                  {article.excerpt}
+                </p>
+                <span className="mt-auto inline-flex items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
                   read
                 </span>
               </div>
@@ -1632,7 +1594,7 @@ function ArticlesSection({
         </motion.div>
       ))}
       </motion.div>
-    </div>
+      </div>
     </div>
   );
 }
