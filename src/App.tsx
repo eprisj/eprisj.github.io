@@ -1515,7 +1515,7 @@ function ArticlesSection({
           {index === 0 ? (
             // Featured (first) article — larger side-by-side card, whole card is the link
             <motion.article
-              className="border border-[rgb(var(--c-accent-rgb)_/_0.2)] group cursor-pointer grid grid-cols-1 md:grid-cols-2 items-stretch overflow-hidden"
+              className="border border-[rgb(var(--c-accent-rgb)_/_0.2)] group cursor-pointer grid grid-cols-1 md:grid-cols-[64%_1fr] items-stretch overflow-hidden"
               onClick={() => onArticleClick(article)}
               tabIndex={0}
               role="button"
@@ -1524,9 +1524,9 @@ function ArticlesSection({
               whileHover={{ x: 4 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="aspect-[4/3] overflow-hidden bg-[#E8DED5]">
+              <div className="aspect-[3/2] md:aspect-auto overflow-hidden bg-[#E8DED5]">
                 <motion.img
-                  src={resolveMediaSource(article.imageUrl || article.imageSeed, 600, 450)}
+                  src={resolveMediaSource(article.imageUrl || article.imageSeed, 800, 520)}
                   alt={article.title}
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0"
                   style={{ transition: 'filter 0.5s ease' }}
@@ -1553,9 +1553,9 @@ function ArticlesSection({
               </div>
             </motion.article>
           ) : (
-            // Rest of the list — same card family, compact: square thumb, category + title + excerpt + read button
+            // Rest of the list — same card family, compact: landscape thumb, category + title + excerpt + read button
             <motion.article
-              className="border border-[rgb(var(--c-accent-rgb)_/_0.15)] group cursor-pointer grid grid-cols-[130px_1fr] sm:grid-cols-[160px_1fr] overflow-hidden"
+              className="border border-[rgb(var(--c-accent-rgb)_/_0.15)] group cursor-pointer grid grid-cols-[42%_1fr] overflow-hidden"
               onClick={() => onArticleClick(article)}
               tabIndex={0}
               role="button"
@@ -1564,9 +1564,9 @@ function ArticlesSection({
               whileHover={{ x: 4 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="aspect-square overflow-hidden bg-[#E8DED5]">
+              <div className="aspect-[3/2] overflow-hidden bg-[#E8DED5]">
                 <motion.img
-                  src={resolveMediaSource(article.imageUrl || article.imageSeed, 320, 320)}
+                  src={resolveMediaSource(article.imageUrl || article.imageSeed, 480, 320)}
                   alt={article.title}
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0"
                   style={{ transition: 'filter 0.5s ease' }}
