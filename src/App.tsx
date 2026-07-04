@@ -29,7 +29,7 @@ import {
   subscribeContent
 } from './data';
 import type { SiteTheme } from './data';
-import { Search, Folder, Star, ArrowUpRight, ArrowRight, Download, FileText, BookOpen, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
+import { Search, Folder, Bookmark, Star, ArrowUpRight, ArrowRight, Download, FileText, BookOpen, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
 
 // Issue-draft preview: when the admin opens /issue?preview=1, load the unsaved
 // content JSON it stashed in localStorage and override the data layer before any
@@ -462,12 +462,13 @@ function NavBar({
           <button
             type="button"
             onClick={() => setActiveTab('library')}
-            className={`w-24 flex flex-col items-center justify-center transition-colors gap-1 ${
+            aria-label={`${t('files')} (${libraryCount})`}
+            title={`${t('files')} (${libraryCount})`}
+            className={`w-16 flex items-center justify-center transition-colors ${
               activeTab === 'library' ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]'
             }`}
           >
-            <Folder size={16} />
-            <span className="text-[11px]">{t('files')} ({libraryCount})</span>
+            <Bookmark size={16} />
           </button>
         </div>
       </nav>
@@ -1595,7 +1596,7 @@ function ArticlesSection({
                       </div>
                       <span>{article.author}</span>
                     </div>
-                    <h2 className="font-serif text-2xl sm:text-3xl md:text-5xl text-[var(--c-accent)] mb-4 sm:mb-6 group-hover:text-[var(--c-gold)] transition-colors duration-300">
+                    <h2 className="font-crimson text-2xl sm:text-[32px] text-[var(--c-accent)] mb-4 sm:mb-6 underline decoration-1 underline-offset-4 decoration-[rgb(var(--c-accent-rgb)_/_0.35)] group-hover:decoration-[var(--c-gold)] group-hover:text-[var(--c-gold)] transition-colors duration-300">
                       {article.title}
                     </h2>
                     <p className="font-serif text-lg text-[rgb(var(--c-accent-rgb)_/_0.8)] leading-relaxed mb-6">

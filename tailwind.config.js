@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
         mono: ['Orbit', 'ui-monospace', 'monospace'],
+        crimson: ['Crimson Text', 'serif'],
       },
     },
   },
