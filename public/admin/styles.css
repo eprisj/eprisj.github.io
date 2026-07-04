@@ -3614,7 +3614,7 @@ body.busy::after {
 .ap-hex { font-family: var(--font-code); font-size: .72rem; text-transform: lowercase; padding: 7px 8px; }
 
 /* Live preview surface — uses inline-set CSS vars so it reflects choices */
-#apPreview { --pv-accent: #501a2c; --pv-gold: #c9a690; --pv-bg: #f5f0eb; --pv-bgimage: none; --pv-display: 'Playfair Display', serif; --pv-body: 'Iowan Old Style', serif; background: var(--pv-bg); background-image: var(--pv-bgimage); background-size: cover; background-position: center; }
+#apPreview { --pv-accent: #111111; --pv-gold: #c9a690; --pv-bg: #f5f0eb; --pv-bgimage: none; --pv-display: 'Playfair Display', serif; --pv-body: 'Iowan Old Style', serif; background: var(--pv-bg); background-image: var(--pv-bgimage); background-size: cover; background-position: center; }
 .ap-pv-hero { background: var(--pv-accent); color: var(--pv-bg); padding: 30px 24px 34px; text-align: center; }
 .ap-pv-kicker { font-family: var(--font-mono); font-size: .55rem; letter-spacing: .2em; color: var(--pv-gold); }
 .ap-pv-title { font-family: var(--pv-display); font-size: 1.8rem; font-weight: 700; margin-top: 8px; }
