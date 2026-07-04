@@ -5,8 +5,8 @@
 :root {
   /* Theme tokens — overridable from the admin Appearance panel (content.theme).
      Defaults reproduce the original EPRIS palette exactly (no visual change). */
-  --c-accent: #501a2c;       /* burgundy: text + accent */
-  --c-accent-rgb: 80 26 44;
+  --c-accent: #111111;       /* text + accent (was burgundy #501a2c) */
+  --c-accent-rgb: 17 17 17;
   --c-gold: #c9a690;         /* gold */
   --c-gold-rgb: 201 166 144;
   --c-bg: #f5f0eb;           /* page background */
