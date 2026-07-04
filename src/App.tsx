@@ -1,4 +1,4 @@
-import { motion, AnimatePresence, useScroll, useTransform, useSpring, LayoutGroup } from 'framer-motion';
+import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { ReactNode, useState, useEffect, useCallback, useMemo, FormEvent, useRef, Suspense, lazy } from 'react';
 // Heavy, rarely-visited tabs are code-split out of the critical bundle —
 // e.g. DesignPage alone carries a 244-item catalogue that has no business
@@ -287,19 +287,6 @@ function TabLoadingFallback() {
   );
 }
 
-// Parallax shimmer for hero — subtle scroll drift
-function HeroParallax() {
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 500], [0, 80]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0.6]);
-  return (
-    <motion.div
-      className="absolute inset-0 pointer-events-none"
-      style={{ y, opacity }}
-    />
-  );
-}
-
 // Stagger container for lists
 const staggerContainer = {
   hidden: {},
@@ -560,8 +547,45 @@ function NavBar({
   );
 }
 
-const HERO_DESKTOP = '/epris-hero-desktop.jpg';
-const HERO_MOBILE = '/epris-hero-mobile.jpg';
+function SectionMasthead({ t }: { t: (key: string) => string }) {
+  return (
+    <div className="relative h-[240px] sm:h-[320px] md:h-[360px] overflow-hidden">
+      <img
+        src="/images/hero-kitchen.jpg"
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover"
+        draggable={false}
+      />
+      {/* Film grain */}
+      <div
+        className="absolute inset-0 opacity-[0.35] mix-blend-overlay pointer-events-none"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E\")",
+        }}
+      />
+      {/* Legibility scrim */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: 'linear-gradient(180deg, rgba(10,8,6,.1) 0%, rgba(10,8,6,.15) 40%, rgba(10,8,6,.62) 100%)' }}
+      />
+      <div className="absolute inset-x-0 bottom-0 px-5 sm:px-10 md:px-16 pb-5 sm:pb-8 flex items-end justify-between gap-4 sm:gap-8 text-[#F7F2EC]">
+        <div className="leading-none shrink-0" style={{ fontFamily: 'var(--font-display)' }}>
+          <div className="text-lg sm:text-2xl tracking-[0.18em]">EPRIS</div>
+          <div className="font-mono text-[8px] sm:text-[9px] tracking-[0.3em] uppercase opacity-70 mt-1">journal</div>
+        </div>
+        <div className="hidden sm:flex items-center gap-4 flex-1 justify-center min-w-0">
+          <span className="h-px flex-1 max-w-[80px] bg-[#F7F2EC]/40" />
+          <span className="font-mono text-[10px] tracking-[0.28em] uppercase whitespace-nowrap">{t('hero.tagline1')}</span>
+          <span className="h-px flex-1 max-w-[80px] bg-[#F7F2EC]/40" />
+        </div>
+        <div className="font-mono text-[9px] sm:text-[10px] tracking-[0.28em] uppercase shrink-0 opacity-90">
+          {t('hero.tagline2')}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function Hero({
   t,
@@ -593,57 +617,8 @@ function Hero({
         </div>
       </div>
 
-      {/* Hero photo with EPRIS masthead */}
-      <section className="relative h-[60vh] min-h-[440px] sm:h-[66vh] overflow-hidden bg-[#1c1611]">
-        <HeroParallax />
-        <picture>
-          <source media="(max-width: 640px)" srcSet={HERO_MOBILE} />
-          <motion.img
-            src={HERO_DESKTOP}
-            alt="EPRIS Journal"
-            initial={{ scale: 1.1 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 2.8, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-0 w-full h-full object-cover select-none"
-            draggable={false}
-          />
-        </picture>
-
-        {/* Warm scrim + vignette for legibility */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              'linear-gradient(180deg, rgba(20,14,10,.30) 0%, rgba(20,14,10,.04) 30%, rgba(20,14,10,.10) 62%, rgba(20,14,10,.46) 100%)',
-          }}
-        />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ boxShadow: 'inset 0 0 180px 40px rgba(16,11,8,.4)' }}
-        />
-
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          <motion.h1
-            initial={{ opacity: 0, y: 24, letterSpacing: '0.4em' }}
-            animate={{ opacity: 1, y: 0, letterSpacing: '0.14em' }}
-            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-            style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
-            className="text-[#F7F2EC] text-[clamp(64px,18vw,208px)] leading-[0.86] pl-[0.14em] drop-shadow-[0_2px_24px_rgba(0,0,0,.35)]"
-          >
-            EPRIS
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.7 }}
-            className="mt-4 sm:mt-6 text-[10px] sm:text-[13px] tracking-[0.22em] sm:tracking-[0.28em] uppercase"
-          >
-            <span className="font-semibold text-[#F7F2EC]">A Journal</span>{' '}
-            <span className="text-[#F7F2EC]/75">of Design, Travel &amp; Interiors</span>
-          </motion.p>
-        </div>
-      </section>
+      {/* Section masthead — photo band with EPRIS journal / taglines overlay */}
+      <SectionMasthead t={t} />
 
       {/* Editorial intro promoting the latest issue */}
       <section className="max-w-5xl mx-auto px-5 sm:px-10 md:px-16">
@@ -1537,41 +1512,8 @@ function ArticlesSection({
 
   return (
     <div>
-      {/* Section masthead — photo band with EPRIS journal / taglines overlay */}
-      <div className="relative h-[240px] sm:h-[320px] md:h-[360px] overflow-hidden mb-10 sm:mb-14">
-        <img
-          src="/images/hero-kitchen.jpg"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-          draggable={false}
-        />
-        {/* Film grain */}
-        <div
-          className="absolute inset-0 opacity-[0.35] mix-blend-overlay pointer-events-none"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E\")",
-          }}
-        />
-        {/* Legibility scrim */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: 'linear-gradient(180deg, rgba(10,8,6,.1) 0%, rgba(10,8,6,.15) 40%, rgba(10,8,6,.62) 100%)' }}
-        />
-        <div className="absolute inset-x-0 bottom-0 px-5 sm:px-10 md:px-16 pb-5 sm:pb-8 flex items-end justify-between gap-4 sm:gap-8 text-[#F7F2EC]">
-          <div className="leading-none shrink-0" style={{ fontFamily: 'var(--font-display)' }}>
-            <div className="text-lg sm:text-2xl tracking-[0.18em]">EPRIS</div>
-            <div className="font-mono text-[8px] sm:text-[9px] tracking-[0.3em] uppercase opacity-70 mt-1">journal</div>
-          </div>
-          <div className="hidden sm:flex items-center gap-4 flex-1 justify-center min-w-0">
-            <span className="h-px flex-1 max-w-[80px] bg-[#F7F2EC]/40" />
-            <span className="font-mono text-[10px] tracking-[0.28em] uppercase whitespace-nowrap">{t('hero.tagline1')}</span>
-            <span className="h-px flex-1 max-w-[80px] bg-[#F7F2EC]/40" />
-          </div>
-          <div className="font-mono text-[9px] sm:text-[10px] tracking-[0.28em] uppercase shrink-0 opacity-90">
-            {t('hero.tagline2')}
-          </div>
-        </div>
+      <div className="mb-10 sm:mb-14">
+        <SectionMasthead t={t} />
       </div>
 
       <div className="max-w-4xl mx-auto space-y-12">
