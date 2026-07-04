@@ -1608,8 +1608,10 @@ function ArticlesSection({
       <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-5%' }}>
       {filteredArticles.map((article, index) => (
         <motion.div key={article.id} variants={staggerItem}>
+          {index === 0 ? (
+            // Featured (first) article — larger side-by-side card, "read" button
             <motion.article
-              className="border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-12 group cursor-pointer"
+              className="border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-12 mb-12 group cursor-pointer grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch"
               onClick={() => onArticleClick(article)}
               tabIndex={0}
               role="button"
@@ -1618,58 +1620,73 @@ function ArticlesSection({
               whileHover={{ x: 4 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                 <div className="md:col-span-1 aspect-[4/3] overflow-hidden bg-[#E8DED5]">
-                    <motion.img
-                      src={resolveMediaSource(article.imageUrl || article.imageSeed, 400, 300)}
-                      alt={article.title}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0"
-                      style={{ transition: 'filter 0.5s ease' }}
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                      referrerPolicy="no-referrer"
-                    />
-                 </div>
-                 <div className="md:col-span-2">
-                    <div className="flex items-baseline justify-between mb-4 font-mono text-[10px] sm:text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] uppercase tracking-widest gap-2 flex-wrap">
-                      <div className="flex gap-2">
-                        <span>{article.date}</span>
-                        {article.category && (
-                          <>
-                            <span className="text-[var(--c-gold)]">•</span>
-                            <span className="text-[var(--c-accent)]">{article.category}</span>
-                          </>
-                        )}
-                      </div>
-                      <span>{article.author}</span>
-                    </div>
-                    {index === 0 && (
-                      <span className="inline-block border border-[var(--c-accent)] px-2 py-0.5 mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--c-accent)]">
-                        {t('articles.newArticle') === 'articles.newArticle' ? 'New article' : t('articles.newArticle')}
-                      </span>
-                    )}
-                    <h2 className="font-crimson text-2xl sm:text-[32px] text-[var(--c-accent)] mb-4 sm:mb-6 underline decoration-1 underline-offset-4 decoration-[rgb(var(--c-accent-rgb)_/_0.35)] group-hover:decoration-[var(--c-gold)] group-hover:text-[var(--c-gold)] transition-colors duration-300">
-                      {article.title}
-                    </h2>
-                    <p className="font-serif text-lg text-[rgb(var(--c-accent-rgb)_/_0.8)] leading-relaxed mb-6">
-                      {article.excerpt}
-                    </p>
-                 </div>
+              <div className="aspect-[4/3] overflow-hidden bg-[#E8DED5]">
+                <motion.img
+                  src={resolveMediaSource(article.imageUrl || article.imageSeed, 600, 450)}
+                  alt={article.title}
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0"
+                  style={{ transition: 'filter 0.5s ease' }}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  referrerPolicy="no-referrer"
+                />
               </div>
-              
-              <div className="flex items-center justify-between gap-4">
-                <div className="flex gap-2 flex-wrap min-w-0">
-                  {article.tags.map(tag => (
-                    <span key={tag} className="border border-[var(--c-accent)] px-2 sm:px-3 py-1 text-[10px] font-mono uppercase tracking-wider text-[var(--c-accent)]">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <span className="flex items-center gap-2 text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[var(--c-accent)] group-hover:translate-x-2 transition-transform whitespace-nowrap shrink-0">
-                  {t('read.article')} <ArrowUpRight size={14} />
+              <div className="flex flex-col">
+                <span className="inline-block border border-[var(--c-accent)] px-2 py-0.5 mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--c-accent)] w-fit">
+                  {t('articles.newArticle') === 'articles.newArticle' ? 'New article' : t('articles.newArticle')}
+                </span>
+                <h2 className="font-crimson text-2xl sm:text-[32px] text-[var(--c-accent)] underline decoration-1 underline-offset-4 decoration-[rgb(var(--c-accent-rgb)_/_0.35)] group-hover:decoration-[var(--c-gold)] group-hover:text-[var(--c-gold)] transition-colors duration-300">
+                  {article.title}
+                </h2>
+                {article.category && (
+                  <p className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.55)] uppercase tracking-widest mt-1 mb-4">
+                    {article.category}
+                  </p>
+                )}
+                <p className="font-serif text-base text-[rgb(var(--c-accent-rgb)_/_0.8)] leading-relaxed mb-6">
+                  {article.excerpt}
+                </p>
+                <span className="mt-auto inline-flex items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-5 py-2 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
+                  read
                 </span>
               </div>
             </motion.article>
+          ) : (
+            // Rest of the list — compact row: small thumb, plain title, caption + read button on the right
+            <motion.article
+              className="border-b border-[rgb(var(--c-accent-rgb)_/_0.15)] py-6 group cursor-pointer flex items-center gap-5 sm:gap-8"
+              onClick={() => onArticleClick(article)}
+              tabIndex={0}
+              role="button"
+              aria-label={`Read article: ${article.title}`}
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onArticleClick(article)}
+              whileHover={{ x: 4 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="w-20 h-20 sm:w-24 sm:h-24 shrink-0 overflow-hidden bg-[#E8DED5]">
+                <motion.img
+                  src={resolveMediaSource(article.imageUrl || article.imageSeed, 200, 200)}
+                  alt={article.title}
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0"
+                  style={{ transition: 'filter 0.5s ease' }}
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <h3 className="font-serif text-base sm:text-lg text-[var(--c-accent)] leading-snug flex-1 min-w-0 group-hover:text-[var(--c-gold)] transition-colors duration-300">
+                {article.title}
+              </h3>
+              <div className="hidden sm:flex flex-col items-end gap-2 shrink-0 text-right">
+                {article.category && (
+                  <span className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.55)] uppercase tracking-widest">
+                    {article.category}
+                  </span>
+                )}
+                <span className="inline-flex items-center gap-2 border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
+                  read
+                </span>
+              </div>
+            </motion.article>
+          )}
         </motion.div>
       ))}
       </motion.div>
