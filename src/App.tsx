@@ -18,7 +18,6 @@ import {
   getContentForLanguage,
   getIssueArchive,
   getStudio,
-  Issue,
   Item,
   LibraryItem,
   Review,
@@ -29,7 +28,7 @@ import {
   subscribeContent
 } from './data';
 import type { SiteTheme } from './data';
-import { Search, Folder, Bookmark, Star, ArrowUpRight, ArrowRight, Download, FileText, BookOpen, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
+import { Search, Folder, Bookmark, Star, ArrowUpRight, Download, FileText, BookOpen, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
 
 // Issue-draft preview: when the admin opens /issue?preview=1, load the unsaved
 // content JSON it stashed in localStorage and override the data layer before any
@@ -361,10 +360,9 @@ function NavBar({
           type="button"
           onClick={() => { setActiveTab('gallery'); setIsMenuOpen(false); }}
           aria-label="EPRIS — home"
-          className="justify-self-center leading-none"
-          style={{ fontFamily: "var(--font-display)" }}
+          className="justify-self-center leading-none font-mono"
         >
-          <span className="text-[26px] tracking-[0.22em] text-[var(--c-accent)] pl-[0.22em]">EPRIS</span>
+          <span className="text-xl tracking-[0.22em] text-[var(--c-accent)] pl-[0.22em]">EPRIS</span>
         </button>
         <button
           type="button"
@@ -379,8 +377,8 @@ function NavBar({
       <nav className="hidden lg:flex fixed top-0 left-0 w-full z-50 bg-[var(--c-bg)] border-b border-[var(--c-accent)] text-xs font-mono uppercase tracking-widest text-[var(--c-accent)] h-16">
         {/* Logo Section */}
         <div className="w-64 border-r border-[var(--c-accent)] px-6 flex items-center shrink-0 bg-[var(--c-bg)] z-50">
-          <button type="button" className="flex items-center" onClick={() => setActiveTab('gallery')} aria-label="Go to home" style={{ fontFamily: "var(--font-display)" }}>
-            <span className="text-2xl tracking-[0.2em] text-[var(--c-accent)] pl-[0.2em] normal-case leading-none">EPRIS</span>
+          <button type="button" className="flex items-center font-mono" onClick={() => setActiveTab('gallery')} aria-label="Go to home">
+            <span className="text-xl tracking-[0.2em] text-[var(--c-accent)] pl-[0.2em] normal-case leading-none">EPRIS</span>
           </button>
         </div>
 
@@ -547,7 +545,32 @@ function NavBar({
   );
 }
 
-function SectionMasthead({ t }: { t: (key: string) => string }) {
+function SectionMasthead({ t, variant = 'photo' }: { t: (key: string) => string; variant?: 'photo' | 'plain' }) {
+  const lockup = (
+    <>
+      <div className="leading-none shrink-0 font-mono">
+        <div className="text-lg sm:text-2xl tracking-[0.18em]">EPRIS</div>
+        <div className="font-mono text-[8px] sm:text-[9px] tracking-[0.3em] uppercase opacity-70 mt-1">journal</div>
+      </div>
+      <div className="hidden sm:flex items-center gap-4 flex-1 justify-center min-w-0">
+        <span className="h-px flex-1 max-w-[80px] bg-current opacity-40" />
+        <span className="font-mono text-[10px] tracking-[0.28em] uppercase whitespace-nowrap">{t('hero.tagline1')}</span>
+        <span className="h-px flex-1 max-w-[80px] bg-current opacity-40" />
+      </div>
+      <div className="font-mono text-[9px] sm:text-[10px] tracking-[0.28em] uppercase shrink-0 opacity-90">
+        {t('hero.tagline2')}
+      </div>
+    </>
+  );
+
+  if (variant === 'plain') {
+    return (
+      <div className="px-5 sm:px-10 md:px-16 pt-14 pb-10 sm:pt-20 sm:pb-14 flex items-end justify-between gap-4 sm:gap-8 text-[var(--c-accent)]">
+        {lockup}
+      </div>
+    );
+  }
+
   return (
     <div className="relative h-[240px] sm:h-[320px] md:h-[360px] overflow-hidden">
       <img
@@ -570,94 +593,29 @@ function SectionMasthead({ t }: { t: (key: string) => string }) {
         style={{ background: 'linear-gradient(180deg, rgba(10,8,6,.1) 0%, rgba(10,8,6,.15) 40%, rgba(10,8,6,.62) 100%)' }}
       />
       <div className="absolute inset-x-0 bottom-0 px-5 sm:px-10 md:px-16 pb-5 sm:pb-8 flex items-end justify-between gap-4 sm:gap-8 text-[#F7F2EC]">
-        <div className="leading-none shrink-0" style={{ fontFamily: 'var(--font-display)' }}>
-          <div className="text-lg sm:text-2xl tracking-[0.18em]">EPRIS</div>
-          <div className="font-mono text-[8px] sm:text-[9px] tracking-[0.3em] uppercase opacity-70 mt-1">journal</div>
-        </div>
-        <div className="hidden sm:flex items-center gap-4 flex-1 justify-center min-w-0">
-          <span className="h-px flex-1 max-w-[80px] bg-[#F7F2EC]/40" />
-          <span className="font-mono text-[10px] tracking-[0.28em] uppercase whitespace-nowrap">{t('hero.tagline1')}</span>
-          <span className="h-px flex-1 max-w-[80px] bg-[#F7F2EC]/40" />
-        </div>
-        <div className="font-mono text-[9px] sm:text-[10px] tracking-[0.28em] uppercase shrink-0 opacity-90">
-          {t('hero.tagline2')}
-        </div>
+        {lockup}
       </div>
     </div>
   );
 }
 
-function Hero({
-  t,
-  issue,
-  onExplore,
-  onHome,
-}: {
-  t: (key: string) => string;
-  issue?: Issue;
-  onExplore: () => void;
-  onHome: () => void;
-}) {
-  const season = issue?.season || 'Spring 2026';
-  const headline = (issue?.tagline || issue?.name || '').trim() || t('home.headline');
-  const intro = t('home.intro');
-
+function GalleryMasthead({ t }: { t: (key: string) => string }) {
   return (
-    <div className="bg-[var(--c-bg)]">
-      {/* Breadcrumb (offset for the fixed nav) */}
-      <div className="pt-16">
-        <div className="px-5 sm:px-10 md:px-16 py-3.5 border-b border-[rgb(var(--c-accent-rgb)_/_0.12)]">
-          <p className="font-mono text-[11px] tracking-[0.12em]">
-            <button type="button" onClick={onHome} className="text-[var(--c-accent)] font-semibold hover:opacity-60 transition-opacity">
-              Home
-            </button>
-            <span className="mx-2 text-[rgb(var(--c-accent-rgb)_/_0.3)]">/</span>
-            <span className="text-[rgb(var(--c-accent-rgb)_/_0.55)]">Journal</span>
-          </p>
-        </div>
+    <div className="bg-[var(--c-bg)] pt-16">
+      {/* Plain (photo-less) masthead — EPRIS journal lockup on the page background */}
+      <SectionMasthead t={t} variant="plain" />
+
+      {/* Full-bleed dotted rule */}
+      <div className="border-b border-dotted border-[rgb(var(--c-accent-rgb)_/_0.4)]" />
+
+      {/* "explore our latest article" kicker */}
+      <div className="flex items-center justify-center gap-4 sm:gap-6 py-8 sm:py-10 px-5">
+        <span className="h-px w-10 sm:w-16 bg-[rgb(var(--c-accent-rgb)_/_0.3)]" />
+        <span className="font-crimson italic text-sm sm:text-base tracking-wide text-[rgb(var(--c-accent-rgb)_/_0.75)]">
+          explore our latest article
+        </span>
+        <span className="h-px w-10 sm:w-16 bg-[rgb(var(--c-accent-rgb)_/_0.3)]" />
       </div>
-
-      {/* Section masthead — photo band with EPRIS journal / taglines overlay */}
-      <SectionMasthead t={t} />
-
-      {/* Editorial intro promoting the latest issue */}
-      <section className="max-w-5xl mx-auto px-5 sm:px-10 md:px-16">
-        {/* Season / latest-issue rail */}
-        <div className="flex items-center gap-4 sm:gap-6 py-5 border-b border-[rgb(var(--c-accent-rgb)_/_0.12)]">
-          <span className="font-mono text-[10px] sm:text-[11px] tracking-[0.22em] uppercase text-[rgb(var(--c-accent-rgb)_/_0.75)] whitespace-nowrap">
-            {season}
-          </span>
-          <span className="flex-1 h-px bg-[rgb(var(--c-accent-rgb)_/_0.2)]" />
-          <button
-            type="button"
-            onClick={onExplore}
-            className="group flex items-center gap-2 sm:gap-3 font-mono text-[10px] sm:text-[11px] tracking-[0.22em] uppercase text-[var(--c-accent)] whitespace-nowrap hover:opacity-70 transition-opacity"
-          >
-            Latest Issue
-            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-          </button>
-        </div>
-
-        {/* Headline + lede */}
-        <Reveal>
-          <div className="py-9 sm:py-14">
-            <h2 className="font-serif text-[clamp(38px,9vw,80px)] leading-[1.03] text-[var(--c-accent)] mb-6 sm:mb-8 max-w-3xl">
-              {headline}
-            </h2>
-            <p className="font-serif text-lg sm:text-xl text-[rgb(var(--c-accent-rgb)_/_0.7)] leading-relaxed max-w-xl mb-8 sm:mb-10">
-              {intro}
-            </p>
-            <button
-              type="button"
-              onClick={onExplore}
-              className="group inline-flex items-center gap-3 font-mono text-[11px] sm:text-xs tracking-[0.2em] uppercase text-[var(--c-accent)] border-b border-[var(--c-accent)] pb-1.5 hover:gap-5 transition-all duration-300"
-            >
-              {t('home.explore')}
-              <ArrowRight size={15} />
-            </button>
-          </div>
-        </Reveal>
-      </section>
     </div>
   );
 }
@@ -725,73 +683,54 @@ function AboutSection({ t }: { t: (key: string) => string }) {
   );
 }
 
-function WelcomingLetter({ t }: { t: (key: string) => string }) {
-  return (
-    <Reveal>
-      <section className="mb-16 py-16 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)]">
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="font-serif text-xl md:text-2xl text-[rgb(var(--c-accent-rgb)_/_0.7)] leading-relaxed mb-10 italic">
-            {t('hero.quote')}
-          </p>
-          <div>
-            <p style={{ fontFamily: "'Zeyada', cursive" }} className="text-4xl text-[var(--c-accent)] tracking-[0.04em]">Mariia Ivanova</p>
-            <p className="font-mono text-[10px] uppercase tracking-[0.13em] text-[rgb(var(--c-accent-rgb)_/_0.5)] mt-1">Editor-in-Chief</p>
-          </div>
-        </div>
-      </section>
-    </Reveal>
-  );
-}
-
 function GallerySection({ items }: { items: Item[] }) {
   if (items.length === 0) return null;
   const [featured, ...rest] = items;
 
   return (
     <div>
-      {/* Featured article */}
+      {/* Featured article — offset corner-bracket frame, no card border */}
       <Reveal>
-        <div
-          className="grid grid-cols-1 md:grid-cols-3 mb-12 border border-[var(--c-accent)] group cursor-pointer overflow-hidden"
-          role="button"
-          tabIndex={0}
-          aria-label={`View: ${featured.title}`}
-        >
-          <div className="md:col-span-2 aspect-[4/3] overflow-hidden bg-[#E8DED5]">
-            <img
-              src={resolveMediaSource(featured.imageUrl || featured.imageSeed, 1000, 750)}
-              alt={featured.title}
-              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-              referrerPolicy="no-referrer"
-            />
-          </div>
-          <div className="p-6 sm:p-8 md:p-12 flex flex-col justify-between border-t md:border-t-0 md:border-l border-[var(--c-accent)]">
-            <div>
-              <span className="border border-[var(--c-accent)] px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-[var(--c-accent)]">
-                {featured.fig}
-              </span>
-              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[var(--c-accent)] mt-4 sm:mt-6 mb-3 sm:mb-4 leading-tight">
+        <div className="relative p-4 sm:p-5 mb-20 sm:mb-28">
+          <span className="absolute top-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-t border-l border-[var(--c-accent)]" />
+          <span className="absolute top-0 right-0 w-6 h-6 sm:w-8 sm:h-8 border-t border-r border-[var(--c-accent)]" />
+          <span className="absolute bottom-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-b border-l border-[var(--c-accent)]" />
+          <span className="absolute bottom-0 right-0 w-6 h-6 sm:w-8 sm:h-8 border-b border-r border-[var(--c-accent)]" />
+          <div
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 group cursor-pointer"
+            role="button"
+            tabIndex={0}
+            aria-label={`View: ${featured.title}`}
+          >
+            <div className="md:col-span-2 aspect-[4/3] overflow-hidden bg-[#E8DED5]">
+              <img
+                src={resolveMediaSource(featured.imageUrl || featured.imageSeed, 1000, 750)}
+                alt={featured.title}
+                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            <div className="flex flex-col justify-center py-2">
+              <h2 className="font-crimson text-2xl sm:text-3xl text-[var(--c-accent)] underline decoration-1 underline-offset-4 decoration-[rgb(var(--c-accent-rgb)_/_0.35)] group-hover:decoration-[var(--c-gold)] group-hover:text-[var(--c-gold)] transition-colors duration-300 mb-2">
                 {featured.title}
               </h2>
-              <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-4 sm:mb-6">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-5">
                 {featured.subtitle}
               </p>
-              <p className="font-serif text-sm sm:text-base text-[rgb(var(--c-accent-rgb)_/_0.7)] leading-relaxed">
+              <p className="font-serif text-sm sm:text-base text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-6">
                 {featured.description}
               </p>
-            </div>
-            <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)]">
-              <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] group-hover:gap-4 transition-all duration-300">
-                View <ArrowUpRight size={14} />
+              <span className="inline-flex items-center self-start border border-[var(--c-accent)] rounded-full px-5 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors w-fit">
+                read
               </span>
             </div>
           </div>
         </div>
       </Reveal>
 
-      {/* 3-column grid — staggered reveal */}
+      {/* Article list — thumbnail / title / kicker+read, no borders, generous whitespace */}
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8"
+        className="flex flex-col gap-14 sm:gap-20"
         variants={staggerContainer}
         initial="hidden"
         whileInView="show"
@@ -801,29 +740,33 @@ function GallerySection({ items }: { items: Item[] }) {
           <motion.div
             key={item.id}
             variants={staggerItem}
-            whileHover={{ y: -6 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="group cursor-pointer flex flex-col sm:flex-row gap-5 sm:gap-8"
+            role="button"
+            tabIndex={0}
+            aria-label={`View: ${item.title}`}
           >
-            <div className="group cursor-pointer" role="button" tabIndex={0} aria-label={`View: ${item.title}`}>
-              <div className="aspect-[4/3] overflow-hidden bg-[#E8DED5] mb-4">
-                <motion.img
-                  src={resolveMediaSource(item.imageUrl || item.imageSeed, 600, 450)}
-                  alt={item.title}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0"
-                  style={{ transition: 'filter 0.5s ease' }}
-                  whileHover={{ scale: 1.04 }}
-                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="border-t border-[var(--c-accent)] pt-3">
-                <div className="flex justify-between items-baseline mb-1">
-                  <h3 className="font-serif text-xl text-[var(--c-accent)]">{item.title}</h3>
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{item.fig}</span>
-                </div>
-                <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)]">
+            <div className="w-full sm:w-44 md:w-48 aspect-square overflow-hidden bg-[#E8DED5] shrink-0">
+              <motion.img
+                src={resolveMediaSource(item.imageUrl || item.imageSeed, 400, 400)}
+                alt={item.title}
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0"
+                style={{ transition: 'filter 0.5s ease' }}
+                whileHover={{ scale: 1.04 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            <div className="flex-1 flex flex-col sm:flex-row justify-between gap-4 sm:gap-10">
+              <h3 className="font-crimson text-xl sm:text-2xl text-[var(--c-accent)] leading-snug max-w-md self-start group-hover:text-[var(--c-gold)] transition-colors duration-300">
+                {item.title}
+              </h3>
+              <div className="flex sm:flex-col items-start sm:items-end justify-between shrink-0">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)]">
                   {item.subtitle}
-                </p>
+                </span>
+                <span className="inline-flex items-center border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
+                  read
+                </span>
               </div>
             </div>
           </motion.div>
@@ -1509,13 +1452,13 @@ function ArticlesSection({
       <SectionMasthead t={t} />
 
       <div className="max-w-4xl mx-auto px-5 sm:px-0 pt-8 sm:pt-10">
-      <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-5%' }} className="space-y-6">
+      <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-5%' }} className="space-y-10 sm:space-y-14">
       {filteredArticles.map((article, index) => (
         <motion.div key={article.id} variants={staggerItem}>
           {index === 0 ? (
             // Featured (first) article — larger side-by-side card, whole card is the link
             <motion.article
-              className="border border-[rgb(var(--c-accent-rgb)_/_0.2)] group cursor-pointer grid grid-cols-1 md:grid-cols-[64%_1fr] items-stretch overflow-hidden"
+              className="border border-[var(--c-accent)] group cursor-pointer grid grid-cols-1 md:grid-cols-[64%_1fr] items-stretch overflow-hidden"
               onClick={() => onArticleClick(article)}
               tabIndex={0}
               role="button"
@@ -1555,7 +1498,7 @@ function ArticlesSection({
           ) : (
             // Rest of the list — same card family, compact: landscape thumb, category + title + excerpt + read button
             <motion.article
-              className="border border-[rgb(var(--c-accent-rgb)_/_0.15)] group cursor-pointer grid grid-cols-[42%_1fr] overflow-hidden"
+              className="border border-[var(--c-accent)] group cursor-pointer grid grid-cols-[45%_1fr] items-stretch overflow-hidden"
               onClick={() => onArticleClick(article)}
               tabIndex={0}
               role="button"
@@ -1564,9 +1507,9 @@ function ArticlesSection({
               whileHover={{ x: 4 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="aspect-[3/2] overflow-hidden bg-[#E8DED5]">
+              <div className="aspect-square overflow-hidden bg-[#E8DED5]">
                 <motion.img
-                  src={resolveMediaSource(article.imageUrl || article.imageSeed, 480, 320)}
+                  src={resolveMediaSource(article.imageUrl || article.imageSeed, 480, 480)}
                   alt={article.title}
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0"
                   style={{ transition: 'filter 0.5s ease' }}
@@ -2069,12 +2012,7 @@ export default function App() {
       
       <div className="lg:pr-12">
         {activeTab === 'gallery' && !activeSearch && (
-          <Hero
-            t={t}
-            issue={issueArchive[0]?.issue}
-            onExplore={() => handleSetTab('issue')}
-            onHome={() => handleSetTab('gallery')}
-          />
+          <GalleryMasthead t={t} />
         )}
 
         {activeTab === 'materie' ? (
@@ -2124,10 +2062,7 @@ export default function App() {
                 ) : (
                   <>
                     {activeTab === 'gallery' && (
-                      <>
-                        <WelcomingLetter t={t} />
-                        <GallerySection items={items} />
-                      </>
+                      <GallerySection items={items} />
                     )}
                     {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
                     {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} />}
