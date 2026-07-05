@@ -1496,7 +1496,7 @@ function ArticlesSection({
           ) : (
             // Rest of the list — same card family, compact: landscape thumb, category + title + excerpt + read button
             <motion.article
-              className="border border-[var(--c-accent)] group cursor-pointer grid grid-cols-[45%_1fr] items-stretch overflow-hidden"
+              className="border border-[var(--c-accent)] group cursor-pointer grid grid-cols-1 sm:grid-cols-[45%_1fr] items-stretch overflow-hidden"
               onClick={() => onArticleClick(article)}
               tabIndex={0}
               role="button"
