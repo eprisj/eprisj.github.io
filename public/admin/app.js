@@ -51,6 +51,8 @@ const visualLangSelect = byId('visualLang');
 const visualEntrySelect = byId('visualEntry');
 const visualSearchInput = byId('visualSearch');
 const addEntryBtn = byId('addEntryBtn');
+const moveEntryUpBtn = byId('moveEntryUpBtn');
+const moveEntryDownBtn = byId('moveEntryDownBtn');
 const duplicateEntryBtn = byId('duplicateEntryBtn');
 const deleteEntryBtn = byId('deleteEntryBtn');
 const copyFromEnBtn = byId('copyFromEnBtn');
@@ -111,6 +113,8 @@ const interactiveButtons = [
   resetSettingsBtn,
   copySiteBtn,
   addEntryBtn,
+  moveEntryUpBtn,
+  moveEntryDownBtn,
   duplicateEntryBtn,
   deleteEntryBtn,
   copyFromEnBtn,
@@ -416,6 +420,8 @@ function bindEvents() {
   });
 
   addEntryBtn.addEventListener('click', addVisualEntry);
+  moveEntryUpBtn.addEventListener('click', () => moveVisualEntry(-1));
+  moveEntryDownBtn.addEventListener('click', () => moveVisualEntry(1));
   duplicateEntryBtn.addEventListener('click', duplicateVisualEntry);
   deleteEntryBtn.addEventListener('click', deleteVisualEntry);
   copyFromEnBtn.addEventListener('click', copyFromEnglishEntry);
@@ -5011,6 +5017,47 @@ async function addVisualEntry() {
     setStatus('error', getErrorMessage(error));
   } finally {
     setBusy(false);
+  }
+}
+
+// Array order is meaningful on the live site, not just cosmetic in this
+// editor: GallerySection destructures `[featured, ...rest] = items`, so the
+// first entry in 'items' is what renders as the featured card. Reviews and
+// Library render in array order too. Previously the only way to change this
+// was to hand-edit the raw JSON — this gives every section an in-UI reorder.
+function moveVisualEntry(direction) {
+  try {
+    const data = parseEditorJson();
+    const section = visualSectionSelect.value;
+    const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
+    const entries = getSectionArray(data, section, lang, lang !== DEFAULT_LANGUAGE);
+
+    if (!entries.length) {
+      throw new Error('Нет записей для перемещения.');
+    }
+
+    const selectedId = Number(visualEntrySelect.value);
+    const entryIndex = entries.findIndex((item) => Number(item.id) === selectedId);
+    if (entryIndex === -1) {
+      throw new Error('Не найдена выбранная запись.');
+    }
+
+    const targetIndex = entryIndex + direction;
+    if (targetIndex < 0 || targetIndex >= entries.length) {
+      return;
+    }
+
+    const [moved] = entries.splice(entryIndex, 1);
+    entries.splice(targetIndex, 0, moved);
+
+    pendingVisualEntryId = selectedId;
+    setEditorData(data);
+    const note = section === 'items' && targetIndex === 0
+      ? ' Теперь это featured-запись Галереи.'
+      : '';
+    setStatus('success', `Запись #${selectedId} перемещена ${direction < 0 ? 'выше' : 'ниже'}.${note}`);
+  } catch (error) {
+    setStatus('error', getErrorMessage(error));
   }
 }
 
