@@ -706,7 +706,7 @@ function GallerySection({ items }: { items: Item[] }) {
               <img
                 src={resolveMediaSource(featured.imageUrl || featured.imageSeed, 1000, 750)}
                 alt={featured.title}
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -749,8 +749,7 @@ function GallerySection({ items }: { items: Item[] }) {
               <motion.img
                 src={resolveMediaSource(item.imageUrl || item.imageSeed, 400, 400)}
                 alt={item.title}
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0"
-                style={{ transition: 'filter 0.5s ease' }}
+                className="w-full h-full object-cover"
                 whileHover={{ scale: 1.04 }}
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 referrerPolicy="no-referrer"
@@ -1471,8 +1470,7 @@ function ArticlesSection({
                 <motion.img
                   src={resolveMediaSource(article.imageUrl || article.imageSeed, 800, 520)}
                   alt={article.title}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0"
-                  style={{ transition: 'filter 0.5s ease' }}
+                  className="w-full h-full object-cover"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   referrerPolicy="no-referrer"
@@ -1511,8 +1509,7 @@ function ArticlesSection({
                 <motion.img
                   src={resolveMediaSource(article.imageUrl || article.imageSeed, 480, 480)}
                   alt={article.title}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0"
-                  style={{ transition: 'filter 0.5s ease' }}
+                  className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
               </div>
