@@ -1809,24 +1809,6 @@
       "description": "The quiet hours before the world wakes. Light through curtains, coffee, and the sacred pause before the day begins.",
       "imageSeed": "morning-rituals-sicily-2",
       "imageUrl": "/images/gallery-family-room.jpg"
-    },
-    {
-      "id": 5,
-      "title": "Urban solitude",
-      "subtitle": "New York, USA",
-      "fig": "FIG. 05",
-      "description": "Empty streets, long shadows, and the particular solitude of a city that never truly sleeps.",
-      "imageSeed": "urban-solitude-nyc-2",
-      "imageUrl": "/images/grid-5.png"
-    },
-    {
-      "id": 6,
-      "title": "Mediterranean Feast",
-      "subtitle": "Warsaw, Poland",
-      "fig": "FIG. 06",
-      "description": "Where southern flavors meet northern sensibilities. A journey through taste, texture, and tradition.",
-      "imageSeed": "mediterranean-feast-warsaw-2",
-      "imageUrl": "/images/featured.png"
     }
   ],
   "articles": [
