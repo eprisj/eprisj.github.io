@@ -749,7 +749,7 @@ function GallerySection({ items, onImageClick }: { items: Item[]; onImageClick: 
             onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onImageClick(resolveMediaSource(item.imageUrl || item.imageSeed, 1200, 1200), item.title)}
             aria-label={`View: ${item.title}`}
           >
-            <div className="w-full sm:w-44 md:w-48 aspect-square overflow-hidden bg-[#E8DED5] shrink-0">
+            <div className="w-full sm:w-44 md:w-48 aspect-square overflow-hidden bg-[#E8DED5] shrink-0 border border-[var(--c-accent)]">
               <motion.img
                 src={resolveMediaSource(item.imageUrl || item.imageSeed, 400, 400)}
                 alt={item.title}
