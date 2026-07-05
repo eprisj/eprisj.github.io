@@ -90,6 +90,69 @@ function ImageLightbox({ src, alt, onClose }: { src: string; alt: string; onClos
   );
 }
 
+function GalleryItemView({ item, onClose }: { item: Item; onClose: () => void }) {
+  const photos = item.images && item.images.length > 0
+    ? item.images
+    : [{ url: resolveMediaSource(item.imageUrl || item.imageSeed, 1000, 750) }];
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 12 }}
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed inset-0 z-[100] bg-[var(--c-bg)] overflow-y-auto"
+    >
+      <button
+        type="button"
+        onClick={onClose}
+        aria-label="Close"
+        className="fixed top-4 right-4 sm:top-8 sm:right-8 z-10 p-2 border border-[var(--c-accent)] rounded-full text-[var(--c-accent)] hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors bg-[var(--c-bg)]"
+      >
+        <X size={20} />
+      </button>
+      <div className="max-w-3xl mx-auto px-5 sm:px-10 py-16 sm:py-24">
+        <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-3">
+          {item.subtitle}
+        </p>
+        <h2 className="font-crimson text-3xl sm:text-4xl text-[var(--c-accent)] mb-6">
+          {item.title}
+        </h2>
+        <p className="font-serif text-base sm:text-lg text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-12 max-w-xl">
+          {item.description}
+        </p>
+        <div className="space-y-10">
+          {photos.map((photo, i) => (
+            <figure key={i}>
+              <div className="aspect-[4/3] overflow-hidden bg-[#E8DED5]">
+                <img
+                  src={resolveMediaSource(photo.url, 900, 675)}
+                  alt={photo.caption || item.title}
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              {photo.caption && (
+                <figcaption className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] mt-3">
+                  {photo.caption}
+                </figcaption>
+              )}
+            </figure>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 function getTranslation(lang: string, key: string) {
   const tr = getTranslations();
   return tr[lang]?.[key] || tr[DEFAULT_LANGUAGE]?.[key] || key;
@@ -683,7 +746,7 @@ function AboutSection({ t }: { t: (key: string) => string }) {
   );
 }
 
-function GallerySection({ items, onImageClick }: { items: Item[]; onImageClick: (src: string, alt: string) => void }) {
+function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (item: Item) => void }) {
   if (items.length === 0) return null;
   const [featured, ...rest] = items;
 
@@ -700,8 +763,8 @@ function GallerySection({ items, onImageClick }: { items: Item[]; onImageClick: 
             className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 group cursor-pointer"
             role="button"
             tabIndex={0}
-            onClick={() => onImageClick(resolveMediaSource(featured.imageUrl || featured.imageSeed, 1400, 1050), featured.title)}
-            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onImageClick(resolveMediaSource(featured.imageUrl || featured.imageSeed, 1400, 1050), featured.title)}
+            onClick={() => onItemClick(featured)}
+            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onItemClick(featured)}
             aria-label={`View: ${featured.title}`}
           >
             <div className="md:col-span-2 aspect-[4/3] overflow-hidden bg-[#E8DED5]">
@@ -745,8 +808,8 @@ function GallerySection({ items, onImageClick }: { items: Item[]; onImageClick: 
             className="group cursor-pointer flex flex-col sm:flex-row gap-5 sm:gap-8"
             role="button"
             tabIndex={0}
-            onClick={() => onImageClick(resolveMediaSource(item.imageUrl || item.imageSeed, 1200, 1200), item.title)}
-            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onImageClick(resolveMediaSource(item.imageUrl || item.imageSeed, 1200, 1200), item.title)}
+            onClick={() => onItemClick(item)}
+            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onItemClick(item)}
             aria-label={`View: ${item.title}`}
           >
             <div className="w-full sm:w-44 md:w-48 aspect-square overflow-hidden bg-[#E8DED5] shrink-0">
@@ -1897,6 +1960,7 @@ export default function App() {
   const [selectedArticleId, setSelectedArticleId] = useState<number | null>(initialRoute.articleId ?? null);
   const [currentLang, setCurrentLang] = useState(DEFAULT_LANGUAGE);
   const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
+  const [selectedGalleryItem, setSelectedGalleryItem] = useState<Item | null>(null);
   const [activeSearch, setActiveSearch] = useState('');
   // Live content: fetch the latest from the VPS on mount and re-render when it
   // swaps in. Until then (or if the VPS is unreachable) the bundled JSON renders.
@@ -2063,7 +2127,7 @@ export default function App() {
                 ) : (
                   <>
                     {activeTab === 'gallery' && (
-                      <GallerySection items={items} onImageClick={handleImageClick} />
+                      <GallerySection items={items} onItemClick={setSelectedGalleryItem} />
                     )}
                     {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
                     {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} />}
@@ -2108,6 +2172,15 @@ export default function App() {
             src={lightboxImage.src}
             alt={lightboxImage.alt}
             onClose={() => setLightboxImage(null)}
+          />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {selectedGalleryItem && (
+          <GalleryItemView
+            item={selectedGalleryItem}
+            onClose={() => setSelectedGalleryItem(null)}
           />
         )}
       </AnimatePresence>
