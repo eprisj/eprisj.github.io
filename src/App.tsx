@@ -683,7 +683,7 @@ function AboutSection({ t }: { t: (key: string) => string }) {
   );
 }
 
-function GallerySection({ items }: { items: Item[] }) {
+function GallerySection({ items, onImageClick }: { items: Item[]; onImageClick: (src: string, alt: string) => void }) {
   if (items.length === 0) return null;
   const [featured, ...rest] = items;
 
@@ -700,6 +700,8 @@ function GallerySection({ items }: { items: Item[] }) {
             className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 group cursor-pointer"
             role="button"
             tabIndex={0}
+            onClick={() => onImageClick(resolveMediaSource(featured.imageUrl || featured.imageSeed, 1400, 1050), featured.title)}
+            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onImageClick(resolveMediaSource(featured.imageUrl || featured.imageSeed, 1400, 1050), featured.title)}
             aria-label={`View: ${featured.title}`}
           >
             <div className="md:col-span-2 aspect-[4/3] overflow-hidden bg-[#E8DED5]">
@@ -743,6 +745,8 @@ function GallerySection({ items }: { items: Item[] }) {
             className="group cursor-pointer flex flex-col sm:flex-row gap-5 sm:gap-8"
             role="button"
             tabIndex={0}
+            onClick={() => onImageClick(resolveMediaSource(item.imageUrl || item.imageSeed, 1200, 1200), item.title)}
+            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onImageClick(resolveMediaSource(item.imageUrl || item.imageSeed, 1200, 1200), item.title)}
             aria-label={`View: ${item.title}`}
           >
             <div className="w-full sm:w-44 md:w-48 aspect-square overflow-hidden bg-[#E8DED5] shrink-0">
@@ -2059,7 +2063,7 @@ export default function App() {
                 ) : (
                   <>
                     {activeTab === 'gallery' && (
-                      <GallerySection items={items} />
+                      <GallerySection items={items} onImageClick={handleImageClick} />
                     )}
                     {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
                     {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} />}
