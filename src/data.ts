@@ -10,6 +10,8 @@ export interface Item {
   description: string;
   imageSeed: string;
   imageUrl?: string;
+  /** Extra photos shown in the "read" detail view, each with its own caption. Falls back to just imageUrl/imageSeed when absent. */
+  images?: { url: string; caption?: string }[];
   /** Hidden from the public site until unset. */
   draft?: boolean;
   /** ISO datetime; hidden from the public site until this moment passes. */

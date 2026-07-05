@@ -3191,6 +3191,71 @@ function bindPhotoPreviewInputs() {
   refreshPhotoPreviewFromInputs();
 }
 
+// Gallery items' extra "photos" repeater — shown in the site's read-detail
+// view (GalleryItemView) alongside the cover imageUrl above. Reads current
+// row values straight from the DOM before every add/remove so in-progress
+// edits in other rows survive the redraw, same pattern as the block editor's
+// gallery/checklist/poll repeaters.
+function renderGalleryPhotosRepeaterMarkup(photos) {
+  if (!photos.length) {
+    return '<p class="form-hint">Доп. фото нет — в просмотре покажется только обложка.</p>';
+  }
+  return photos.map((photo, i) => `
+    <div class="vf-photo-row" style="display:flex;gap:8px;align-items:flex-start;margin-bottom:8px;">
+      <input class="vf-photo-url" placeholder="URL фото" value="${escapeHtml(photo.url || '')}" style="flex:2;min-width:0" />
+      <input class="vf-photo-caption" placeholder="Подпись (необязательно)" value="${escapeHtml(photo.caption || '')}" style="flex:1;min-width:0" />
+      <button type="button" class="btn btn-sm" onclick="uploadGalleryPhotoRow(${i})" title="Загрузить с ПК">📁</button>
+      <button type="button" class="block-action-btn danger" onclick="removeGalleryPhotoRow(${i})" title="Удалить"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+  `).join('');
+}
+
+function readGalleryPhotoRows() {
+  return Array.from(document.querySelectorAll('#vf-photos-repeater .vf-photo-row')).map((row) => ({
+    url: row.querySelector('.vf-photo-url')?.value || '',
+    caption: row.querySelector('.vf-photo-caption')?.value || ''
+  }));
+}
+
+function redrawGalleryPhotosRepeater(photos) {
+  const container = document.getElementById('vf-photos-repeater');
+  if (container) container.innerHTML = renderGalleryPhotosRepeaterMarkup(photos);
+}
+
+window.addGalleryPhotoRow = function() {
+  const photos = readGalleryPhotoRows();
+  photos.push({ url: '', caption: '' });
+  redrawGalleryPhotosRepeater(photos);
+};
+
+window.removeGalleryPhotoRow = function(index) {
+  const photos = readGalleryPhotoRows();
+  photos.splice(index, 1);
+  redrawGalleryPhotosRepeater(photos);
+};
+
+window.uploadGalleryPhotoRow = async function(index) {
+  const fileInput = document.getElementById('vf-photo-upload-input');
+  if (!fileInput) return;
+  fileInput.onchange = async () => {
+    const file = fileInput.files && fileInput.files[0];
+    fileInput.value = '';
+    if (!file) return;
+    try {
+      const url = await uploadImageReturnUrl(file);
+      const photos = readGalleryPhotoRows();
+      if (photos[index]) {
+        photos[index].url = url;
+        redrawGalleryPhotosRepeater(photos);
+        showToast('success', 'Фото загружено — URL подставлен.');
+      }
+    } catch (e) {
+      showToast('error', getErrorMessage(e));
+    }
+  };
+  fileInput.click();
+};
+
 // Shared draft/publishAt fields for the classic (non-canvas) forms — Items,
 // LibraryItems, and Reviews' plain-form fallback all reuse this markup.
 function renderDraftFieldsMarkup(entry) {
@@ -3258,9 +3323,20 @@ function renderVisualForm() {
       <label class="full">Заголовок<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
       <label class="full">Подзаголовок<input id="vf-subtitle" value="${escapeHtml(entry.subtitle || '')}" /></label>
       <label class="full">Описание<textarea id="vf-description">${escapeHtml(entry.description || '')}</textarea></label>
-      <label class="full">URL фото (необязательно)<input id="vf-imageUrl" placeholder="https://..." value="${escapeHtml(entry.imageUrl || '')}" /></label>
+      <label class="full">URL фото — обложка (необязательно)<input id="vf-imageUrl" placeholder="https://..." value="${escapeHtml(entry.imageUrl || '')}" /></label>
+      <div class="full" style="display:flex;gap:8px;align-items:center;margin:-4px 0 4px">
+        <button id="vf-img-upload-btn" class="btn btn-sm" type="button">Загрузить фото</button>
+        <input id="vf-img-upload-input" type="file" accept="image/*" hidden />
+        <span class="form-hint" style="margin:0">или вставьте URL выше</span>
+      </div>
       <label class="full">imageSeed (если URL пустой)<input id="vf-imageSeed" value="${escapeHtml(entry.imageSeed || '')}" /></label>
       ${renderPhotoPreviewMarkup(previewSource)}
+      <div class="full">
+        <span class="toolbar-field-label" style="display:block;margin-bottom:6px;">Доп. фото для просмотра «read» (необязательно, с подписями)</span>
+        <div id="vf-photos-repeater">${renderGalleryPhotosRepeaterMarkup(entry.images || [])}</div>
+        <button type="button" class="btn btn-sm" onclick="addGalleryPhotoRow()" style="margin-top:4px;">+ Добавить фото</button>
+        <input id="vf-photo-upload-input" type="file" accept="image/*" hidden />
+      </div>
       ${renderDraftFieldsMarkup(entry)}
     `;
     bindPhotoPreviewInputs();
@@ -3437,6 +3513,10 @@ function buildEntryFromVisualForm(section, current) {
   let next = { ...current };
 
   if (section === 'items') {
+    const photos = readGalleryPhotoRows()
+      .map((p) => ({ url: p.url.trim(), caption: p.caption.trim() }))
+      .filter((p) => p.url)
+      .map((p) => (p.caption ? p : { url: p.url }));
     next = {
       ...next,
       fig: getFieldValue('vf-fig').trim(),
@@ -3444,7 +3524,8 @@ function buildEntryFromVisualForm(section, current) {
       subtitle: getFieldValue('vf-subtitle').trim(),
       description: getFieldValue('vf-description').trim(),
       imageSeed: getFieldValue('vf-imageSeed').trim(),
-      imageUrl: getOptionalString(getFieldValue('vf-imageUrl'))
+      imageUrl: getOptionalString(getFieldValue('vf-imageUrl')),
+      images: photos.length ? photos : undefined
     };
     applyDraftFieldsFromForm(next);
   } else if (section === 'reviews') {
