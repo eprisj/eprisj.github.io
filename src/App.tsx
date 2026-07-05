@@ -2011,7 +2011,7 @@ export default function App() {
         onSearch={handleSearch}
       />
       
-      <div className="lg:pr-12">
+      <div className={activeTab === 'gallery' ? '' : 'lg:pr-12'}>
         {activeTab === 'gallery' && !activeSearch && (
           <GalleryMasthead t={t} />
         )}
@@ -2094,7 +2094,7 @@ export default function App() {
         </footer>}
       </div>
       
-      <Sidebar t={t} />
+      {activeTab !== 'gallery' && <Sidebar t={t} />}
 
       <AnimatePresence>
         {selectedArticle && (
