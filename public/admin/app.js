@@ -6971,12 +6971,14 @@ function bindStudioRowActions() {
 
   async function radioConnect() {
     const token = getRadioToken();
+    if (connectBtn) connectBtn.style.display = 'none';
     if (!token) {
       if (statusEl) { statusEl.textContent = '⚠ Войдите по паролю редакции для доступа к радио (выйдите и зайдите заново)'; statusEl.style.color = 'var(--warn, #9a5b00)'; }
       return;
     }
     localStorage.setItem(RADIO_TOKEN_KEY, token);
     statusEl.textContent = 'Подключаюсь...';
+    statusEl.style.color = 'var(--text-muted)';
     try {
       const r = await fetch(RADIO_API + '/api/health');
       const j = await r.json();
@@ -6994,8 +6996,9 @@ function bindStudioRowActions() {
         startRadioStatus();
       } else throw new Error(j.error || 'error');
     } catch (e) {
-      statusEl.textContent = '✗ ' + e.message;
+      statusEl.textContent = '✗ Не удалось подключиться к радио: ' + e.message;
       statusEl.style.color = 'var(--danger)';
+      if (connectBtn) connectBtn.style.display = 'inline-flex';
     }
   }
 
@@ -8311,7 +8314,11 @@ function bindStudioRowActions() {
     try {
       const j = await apiFetch('/api/podcasts/all');
       if (j.ok) { _list = j.data || []; renderList(); }
-    } catch {}
+    } catch (e) {
+      const el = document.getElementById('podcastsTabList');
+      if (el) el.innerHTML = `<div style="padding:24px;text-align:center;font-size:.8rem;color:var(--danger)">✕ Не удалось загрузить подкасты: ${escapeHtml(e.message)}<br><button class="btn btn-sm" type="button" id="podcastsRetryBtn" style="margin-top:10px">↻ Повторить</button></div>`;
+      document.getElementById('podcastsRetryBtn')?.addEventListener('click', loadList);
+    }
   }
 
   function showForm(p = null) {

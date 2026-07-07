@@ -2706,6 +2706,47 @@ code {
 .issue-validation-summary.warn  { color: var(--warn);   background: var(--warn-soft);   border-color: rgba(154,91,0,.22); }
 .issue-validation-summary.error { color: var(--danger); background: var(--danger-soft); border-color: rgba(158,42,43,.22); }
 .issue-validation-checks { display: grid; gap: 5px; }
+.issue-val-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 10px; margin-right: 6px;
+  border-radius: 20px;
+  font-family: var(--font-mono); font-size: .68rem; font-weight: 700;
+}
+.issue-val-chip .n { font-weight: 700; }
+.issue-val-chip.ok     { color: var(--ok);     background: var(--ok-soft); }
+.issue-val-chip.warn   { color: var(--warn);   background: var(--warn-soft); }
+.issue-val-chip.danger { color: var(--danger); background: var(--danger-soft); }
+.issue-check-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  font-size: .78rem;
+  background: var(--bg);
+}
+.issue-check-row.muted { opacity: .6; }
+.issue-check-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 16px; height: 16px; flex-shrink: 0;
+  border-radius: 50%;
+  font-size: .62rem; font-weight: 700;
+}
+.issue-check-row.ok     .issue-check-icon { color: var(--ok);     background: var(--ok-soft); }
+.issue-check-row.warn   .issue-check-icon { color: var(--warn);   background: var(--warn-soft); }
+.issue-check-row.danger .issue-check-icon { color: var(--danger); background: var(--danger-soft); }
+.issue-check-text { color: var(--text); }
+.issue-cover-pick {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  width: 72px; padding: 6px;
+  border: 1px solid var(--line); border-radius: var(--radius-sm);
+  background: var(--bg-card); cursor: pointer;
+  font-family: var(--font-mono); font-size: .58rem; color: var(--text-muted);
+  text-align: center; transition: border-color .12s;
+}
+.issue-cover-pick:hover { border-color: var(--accent); }
+.issue-cover-pick img {
+  width: 100%; height: 48px; object-fit: cover;
+  border-radius: 3px; background: var(--line);
+}
 
 /* Issue Articles List Styles */
 .issue-article-row {
