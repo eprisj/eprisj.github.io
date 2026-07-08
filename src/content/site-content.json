@@ -2176,6 +2176,95 @@
         }
       ],
       "imageUrl": "https://eprisjournal.com/images/article-polkadot-bedroom.jpg"
+    },
+    {
+      "id": 11,
+      "title": "The Heart of EPRIS: Maria Is Now a Bachelor of Architecture",
+      "author": "EPRIS Journal",
+      "role": "Editorial Desk",
+      "date": "Jul 7, 2026",
+      "excerpt": "On July 7th, Mariia Ivanova, EPRIS's editor-in-chief, officially became a Bachelor of Architecture. To mark the day — a heart built from the architecture and art that inspire her.",
+      "category": "Culture",
+      "subcategory": "From the Editors",
+      "tags": [
+        "architecture",
+        "mariia ivanova",
+        "celebration"
+      ],
+      "imageUrl": "/images/heart-hero.jpg",
+      "imageSeed": "maria-graduation-heart",
+      "draft": false,
+      "content": [
+        {
+          "type": "text",
+          "content": "Yesterday, on July 7th, 2026, something special happened in the life of the EPRIS editorial team. Mariia Ivanova — our editor-in-chief, and the person whose brainchild this journal is — officially became a Bachelor of Architecture. Years of drafting, models, and sleepless nights before her thesis defense are behind her now. A new chapter begins — and we couldn't let it pass without marking it here, on the pages of EPRIS."
+        },
+        {
+          "type": "text",
+          "content": "It's no secret that an architect's eye runs through every issue of EPRIS — in the way we talk about space, light, and detail. Today, that eye earned its official credentials."
+        },
+        {
+          "type": "mosaic",
+          "content": [
+            "/images/heart-tiles/tile-01.jpg",
+            "/images/heart-tiles/tile-02.jpg",
+            "/images/heart-tiles/tile-03.jpg",
+            "/images/heart-tiles/tile-04.jpg",
+            "/images/heart-tiles/tile-05.jpg",
+            "/images/heart-tiles/tile-06.jpg",
+            "/images/heart-tiles/tile-07.jpg",
+            "/images/heart-tiles/tile-08.jpg",
+            "/images/heart-tiles/tile-09.jpg",
+            "/images/heart-tiles/tile-10.jpg",
+            "/images/heart-tiles/tile-11.jpg",
+            "/images/heart-tiles/tile-12.jpg",
+            "/images/heart-tiles/tile-13.jpg",
+            "/images/heart-tiles/tile-14.jpg",
+            "/images/heart-tiles/tile-15.jpg",
+            "/images/heart-tiles/tile-16.jpg",
+            "/images/heart-tiles/tile-17.jpg",
+            "/images/heart-tiles/tile-18.jpg",
+            "/images/heart-tiles/tile-19.jpg",
+            "/images/heart-tiles/tile-20.jpg",
+            "/images/heart-tiles/tile-21.jpg",
+            "/images/heart-tiles/tile-22.jpg",
+            "/images/heart-tiles/tile-23.jpg",
+            "/images/heart-tiles/tile-24.jpg",
+            "/images/heart-tiles/tile-25.jpg",
+            "/images/heart-tiles/tile-26.jpg",
+            "/images/heart-tiles/tile-27.jpg",
+            "/images/heart-tiles/tile-28.jpg",
+            "/images/heart-tiles/tile-29.jpg",
+            "/images/heart-tiles/tile-30.jpg",
+            "/images/heart-tiles/tile-31.jpg",
+            "/images/heart-tiles/tile-32.jpg",
+            "/images/heart-tiles/tile-33.jpg",
+            "/images/heart-tiles/tile-34.jpg",
+            "/images/heart-tiles/tile-35.jpg",
+            "/images/heart-tiles/tile-36.jpg",
+            "/images/heart-tiles/tile-37.jpg",
+            "/images/heart-tiles/tile-38.jpg",
+            "/images/heart-tiles/tile-39.jpg",
+            "/images/heart-tiles/tile-40.jpg",
+            "/images/heart-tiles/tile-41.jpg",
+            "/images/heart-tiles/tile-42.jpg",
+            "/images/heart-tiles/tile-43.jpg",
+            "/images/heart-tiles/tile-44.jpg",
+            "/images/heart-tiles/tile-45.jpg",
+            "/images/heart-tiles/tile-46.jpg",
+            "/images/heart-tiles/tile-47.jpg"
+          ],
+          "caption": "A heart built from the architecture and art that have inspired Mariia for years — from the Sagrada Família to Michelangelo's David."
+        },
+        {
+          "type": "quote",
+          "content": "Architecture taught me to see the structure behind the beauty. EPRIS taught me to tell others about it. To me, they're two languages for the same feeling."
+        },
+        {
+          "type": "note",
+          "content": "The EPRIS editorial team congratulates Mariia on her degree, and thanks her for the inspiration that lives in every issue of the journal. This diploma marks a new chapter. We're glad you're reading it with us."
+        }
+      ]
     }
   ],
   "reviews": [
