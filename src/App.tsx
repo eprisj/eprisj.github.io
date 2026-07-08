@@ -175,6 +175,21 @@ function resolveMediaSource(value: string | undefined, width: number, height: nu
   return `https://picsum.photos/seed/${encodeURIComponent(normalized)}/${width}/${height}?grayscale`;
 }
 
+// Pixel-heart silhouette for the 'mosaic' content block — each 'X' becomes one photo tile.
+const HEART_PATTERN = [
+  '.XX...XX.',
+  'XXXXXXXXX',
+  'XXXXXXXXX',
+  'XXXXXXXXX',
+  '.XXXXXXX.',
+  '..XXXXX..',
+  '...XXX...',
+  '....X....',
+];
+const HEART_CELLS: [number, number][] = HEART_PATTERN.flatMap((row, r) =>
+  row.split('').map((cell, c) => (cell === 'X' ? [r, c] as [number, number] : null)).filter((v): v is [number, number] => v !== null)
+);
+
 // Allow-list sanitizer for rich inline text coming from the admin editor. Only a
 // small set of inline formatting tags survive; everything else is unwrapped to
 // its text. Anchors keep a safe href only. Rebuilding the tree (rather than
@@ -1403,6 +1418,46 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                       )}
                     </figure>
                   );
+                case 'mosaic': {
+                  const tiles = Array.isArray(block.content) ? block.content : [];
+                  return (
+                    <figure key={index} className="my-8 sm:my-12 flex flex-col items-center">
+                      <div
+                        className="grid gap-1 sm:gap-1.5 w-full max-w-[400px] sm:max-w-[460px] aspect-square"
+                        style={{
+                          gridTemplateColumns: `repeat(${HEART_PATTERN[0].length}, 1fr)`,
+                          gridTemplateRows: `repeat(${HEART_PATTERN.length}, 1fr)`,
+                        }}
+                      >
+                        {HEART_CELLS.map(([r, c], i) => {
+                          const img = tiles.length ? tiles[i % tiles.length] : '';
+                          const tileSource = resolveMediaSource(typeof img === 'string' ? img : '', 200, 200);
+                          if (!tileSource) return null;
+                          return (
+                            <div
+                              key={`${r}-${c}`}
+                              style={{ gridRow: r + 1, gridColumn: c + 1 }}
+                              className="overflow-hidden bg-[#E8DED5] rounded-sm cursor-pointer"
+                              onClick={() => onImageClick(tileSource, `Mosaic tile ${i + 1}`)}
+                            >
+                              <img
+                                src={tileSource}
+                                alt=""
+                                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                                referrerPolicy="no-referrer"
+                              />
+                            </div>
+                          );
+                        })}
+                      </div>
+                      {block.caption && (
+                        <figcaption className="text-center font-mono text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] mt-4 sm:mt-6 uppercase tracking-widest px-4 max-w-md">
+                          {block.caption}
+                        </figcaption>
+                      )}
+                    </figure>
+                  );
+                }
                 case 'checklist':
                   if (typeof block.content === 'object' && !Array.isArray(block.content) && 'items' in block.content && Array.isArray(block.content.items)) {
                     return <ChecklistBlock key={index} items={block.content.items} caption={block.caption} />;
