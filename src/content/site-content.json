@@ -500,7 +500,7 @@
       "podcasts.intro": "Разговоры, интервью и размышления от редакции EPRIS.",
       "podcasts.tab_episodes": "Эпизоды",
       "podcasts.tab_announcements": "Анонсы",
-      "podcasts.empty_episodes": "Эпизоды появятся скоро",
+      "podcasts.empty_episodes": "Эпиз��ды появятся скоро",
       "podcasts.empty_announcements": "Анонсов пока нет",
       "podcasts.back": "← Подкасты",
       "podcasts.episode_label": "Эпизод",
@@ -2204,6 +2204,15 @@
           "content": "It's no secret that an architect's eye runs through every issue of EPRIS — in the way we talk about space, light, and detail. Today, that eye earned its official credentials."
         },
         {
+          "type": "text",
+          "content": "Those who worked alongside her on this issue know the ritual well: studio lights on late into the night, tracing paper covered in revisions, a cup of coffee gone cold beside the model she kept rebuilding until it finally felt right. That same restlessness — the refusal to settle for ‘good enough’ — is what has shaped this magazine since its very first page."
+        },
+        {
+          "type": "header",
+          "content": "A Heart Made of What Inspired Her",
+          "level": 3
+        },
+        {
           "type": "mosaic",
           "content": [
             "/images/heart-tiles/tile-01.jpg",
@@ -2254,7 +2263,11 @@
             "/images/heart-tiles/tile-46.jpg",
             "/images/heart-tiles/tile-47.jpg"
           ],
-          "caption": "A heart built from the architecture and art that have inspired Mariia for years — from the Sagrada Família to Michelangelo's David."
+          "caption": "Forty-seven places and works of art that have shaped the way Mariia sees the world — from the Sagrada Família to Michelangelo's David. A little of each of them finds its way into every issue of EPRIS."
+        },
+        {
+          "type": "text",
+          "content": "Some of these buildings she has visited in person, sketchbook in hand. Others she has only ever seen in photographs — and still they shaped how she thinks about a page, a layout, a story. That's the strange gift of studying architecture: it never quite lets go of how you see everything else."
         },
         {
           "type": "quote",
@@ -2262,7 +2275,7 @@
         },
         {
           "type": "note",
-          "content": "The EPRIS editorial team congratulates Mariia on her degree, and thanks her for the inspiration that lives in every issue of the journal. This diploma marks a new chapter. We're glad you're reading it with us."
+          "content": "The EPRIS editorial team congratulates Mariia on her degree, and thanks her for the inspiration that lives in every issue of the journal. This diploma marks a new chapter — and we suspect it won't be the last one worth celebrating. We're glad you're reading it with us."
         }
       ]
     }
@@ -2603,7 +2616,7 @@
             },
             {
               "type": "text",
-              "content": "Фундаментальное напряжение в консервации дверей пролегает между двумя императивами, которые непосвящённые часто путают: реставрацией и консервацией. Реставрация предполагает возвращение объекта к конкретному историческому состоянию, что требует интерпретационных решений — облик какого столетия вы предпочтёте? Консервация, напротив, стремится стабилизировать объект в его нынешнем состоянии, останавливая распад, не стирая патину времени. Современный консенсус, кодифицированный Венецианской хартией 1964 года и уточнённый хартией Бурра 1979 года, решительно склоняется к консервации: вмешиваться минимально, документировать исчерпывающе и обеспечивать обратимость. Каждая эпоксидная заливка, каждая вставка-«заплатка», каждая перезолочённая поверхность должны быть отличимы от оригинала при внимательном осмотре и удаляемы без повреждения исходного материала."
+              "content": "Фундаментальное напряжение в консервации дверей пролегает между двумя императивами, которые непосвящённые часто путают: реставрацией и консервацией. Реставрация предполагает возвращение объекта к конкретному ��сторическому состоянию, что требует интерпретационных решений — облик какого столетия вы предпочтёте? Консервация, напротив, стремится стабилизировать объект в его нынешнем состоянии, останавливая распад, не стирая патину времени. Современный консенсус, кодифицированный Венецианской хартией 1964 года и уточнённый хартией Бурра 1979 года, решительно склоняется к консервации: вмешиваться минимально, документировать исчерпывающе и обеспечивать обратимость. Каждая эпоксидная заливка, каждая вставка-«заплатка», каждая перезолочённая поверхность должны быть отличимы от оригинала при внимательном осмотре и удаляемы без повреждения исходного материала."
             },
             {
               "type": "quote",
@@ -2895,6 +2908,15 @@
               "content": "Не секрет, что взгляд архитектора чувствуется в каждом выпуске EPRIS — в том, как мы говорим о пространстве, свете и деталях. Сегодня этот взгляд получил официальное подтверждение."
             },
             {
+              "type": "text",
+              "content": "Те, кто работал с ней над этим номером, хорошо знают этот ритуал: свет в мастерской допоздна, калька, испещрённая правками, остывший кофе рядом с макетом, который она пересобирала снова и снова, пока не становилось по-настоящему хорошо. Та же неуспокоенность — нежелание довольствоваться «и так сойдёт» — формирует этот журнал с самой первой страницы."
+            },
+            {
+              "type": "header",
+              "content": "Сердце из того, что её вдохновляет",
+              "level": 3
+            },
+            {
               "type": "mosaic",
               "content": [
                 "/images/heart-tiles/tile-01.jpg",
@@ -2945,7 +2967,11 @@
                 "/images/heart-tiles/tile-46.jpg",
                 "/images/heart-tiles/tile-47.jpg"
               ],
-              "caption": "Сердце, собранное из архитектуры и искусства — того, что годами вдохновляло Марию: от собора Саграда Фамилия до микеланджеловского Давида."
+              "caption": "Сорок семь мест и произведений искусства, которые сформировали то, как Мария видит мир — от собора Саграда Фамилия до микеланджеловского Давида. Частичка каждого из них есть в любом номере EPRIS."
+            },
+            {
+              "type": "text",
+              "content": "Какие-то из этих зданий она видела своими глазами, с блокнотом для набросков в руках. Другие — только на фотографиях, но и они повлияли на то, как она думает о развороте, вёрстке, истории. В этом странный дар архитектурного образования: оно никогда до конца не отпускает то, как ты видишь всё остальное."
             },
             {
               "type": "quote",
@@ -2953,7 +2979,7 @@
             },
             {
               "type": "note",
-              "content": "Редакция EPRIS поздравляет Марию с дипломом и благодарит за вдохновение, которое живёт в каждом номере журнала. С этим дипломом — новая глава. Мы рады, что вы читаете её вместе с нами."
+              "content": "Редакция EPRIS поздравляет Марию с дипломом и благодарит за вдохновение, которое живёт в каждом номере журнала. С этим дипломом — новая глава, и, кажется, не последняя, которую стоит отмечать. Мы рады, что вы читаете её вместе с нами."
             }
           ]
         }
@@ -3302,7 +3328,7 @@
             },
             {
               "type": "text",
-              "content": "Подумайте про суттєвість дверей Pombaline в районі Байша в Лісабоні. Після катастрофічного землетрусу 1 листопада 1755 року, який забрав життя від 30 000 до 50 000 людей і зрівняв 85% міста, маркіз Помбал замовив радикальну реконструкцію на основі протосейсмічної інженерії. В результаті архітектура Pombaline представила «gaiola pombalina» — гнучку дерев’яну каркасну клітку, вбудовану в цегельні стіни, розроблену для згинання, а не руйнування під час поштовхів. Двері цих будівель були виготовлені з бразильської peroba rosa (Aspidosperma polyneuron) і pau-marfim (Balfourodendron riedelianum), імпортованих з атлантичних колоній: щільні, смолисті листяні породи деревини з переплетеними волокнами, які протистоять як морській вологості, так і крутильній напрузі сейсмічного руху. Столярна конструкція виконана з використанням пазів і шипів, із заклиненими наскрізними шипами в місцях з’єднання балок і рейок — ні цвяхів, ні шурупів, лише геометрія дерева, що фіксується на дереві."
+              "content": "Подумайте про суттєвість дверей Pombaline в районі Байша в Лісабоні. Після катастрофічного землетрусу 1 листопада 1755 року, який забрав життя від 30 000 до 50 000 людей і зрівняв 85% міста, маркіз Помбал замовив радикальну реконструкцію на основі протосейсмічної інженерії. В результаті архітектура Pombaline представила «gaiola pombalina» — гнучку дерев’яну каркасну клітку, вбудовану в цегельні стіни, розроблену для згинання, а не руйнування під час поштовхів. Двері цих будівель були виготовлені з бразильської peroba rosa (Aspidosperma polyneuron) і pau-marfim (Balfourodendron riedelianum), імпортованих з атлантичних колоній: щільні, смолисті листяні породи деревини з переплетеними волокнам��, які протистоять як морській вологості, так і крутильній напрузі сейсмічного руху. Столярна конструкція виконана з використанням пазів і шипів, із заклиненими наскрізними шипами в місцях з’єднання балок і рейок — ні цвяхів, ні шурупів, лише геометрія дерева, що фіксується на дереві."
             },
             {
               "type": "image",
@@ -3586,6 +3612,15 @@
               "content": "Не секрет, що погляд архітектора відчувається в кожному випуску EPRIS — у тому, як ми говоримо про простір, світло й деталі. Сьогодні цей погляд отримав офіційне підтвердження."
             },
             {
+              "type": "text",
+              "content": "Ті, хто працював з нею над цим номером, добре знають цей ритуал: світло в майстерні допізна, калька, вкрита правками, охолола кава біля макета, який вона перезбирала знову й знову, поки не ставало по-справжньому добре. Та сама невгамовність — небажання задовольнятися «і так зійде» — формує цей журнал від першої сторінки."
+            },
+            {
+              "type": "header",
+              "content": "Серце з того, що її надихає",
+              "level": 3
+            },
+            {
               "type": "mosaic",
               "content": [
                 "/images/heart-tiles/tile-01.jpg",
@@ -3636,7 +3671,11 @@
                 "/images/heart-tiles/tile-46.jpg",
                 "/images/heart-tiles/tile-47.jpg"
               ],
-              "caption": "Серце, зібране з архітектури та мистецтва — того, що роками надихало Марію: від собору Саграда Фамілія до мікеланджелівського Давида."
+              "caption": "Сорок сім місць і творів мистецтва, які сформували те, як Марія бачить світ — від собору Саграда Фамілія до мікеланджелівського Давида. Частинка кожного з них є в будь-якому номері EPRIS."
+            },
+            {
+              "type": "text",
+              "content": "Деякі з цих будівель вона бачила на власні очі, зі скетчбуком у руках. Інші — лише на фотографіях, але й вони вплинули на те, як вона думає про розворот, верстку, історію. У цьому дивний дар архітектурної освіти: він ніколи до кінця не відпускає те, як ти бачиш усе інше."
             },
             {
               "type": "quote",
@@ -3644,7 +3683,7 @@
             },
             {
               "type": "note",
-              "content": "Редакція EPRIS вітає Марію з дипломом і дякує за натхнення, яке живе в кожному номері журналу. З цим дипломом — новий розділ. Ми раді, що ви читаєте його разом з нами."
+              "content": "Редакція EPRIS вітає Марію з дипломом і дякує за натхнення, яке живе в кожному номері журналу. З цим дипломом — новий розділ, і, здається, не останній, який варто відзначити. Ми раді, що ви читаєте його разом з нами."
             }
           ]
         }
@@ -4277,6 +4316,15 @@
               "content": "Es ist kein Geheimnis, dass sich der Blick einer Architektin durch jede Ausgabe von EPRIS zieht — in der Art, wie wir über Raum, Licht und Details sprechen. Heute hat dieser Blick seine offizielle Bestätigung erhalten."
             },
             {
+              "type": "text",
+              "content": "Wer mit ihr an dieser Ausgabe gearbeitet hat, kennt das Ritual gut: das Licht im Studio, das bis spät in die Nacht brennt, Transparentpapier voller Korrekturen, ein kalt gewordener Kaffee neben dem Modell, das sie immer wieder neu baute, bis es endlich stimmte. Genau diese Rastlosigkeit — die Weigerung, sich mit „gut genug“ zufriedenzugeben — prägt dieses Magazin seit der allerersten Seite."
+            },
+            {
+              "type": "header",
+              "content": "Ein Herz aus dem, was sie inspiriert",
+              "level": 3
+            },
+            {
               "type": "mosaic",
               "content": [
                 "/images/heart-tiles/tile-01.jpg",
@@ -4327,7 +4375,11 @@
                 "/images/heart-tiles/tile-46.jpg",
                 "/images/heart-tiles/tile-47.jpg"
               ],
-              "caption": "Ein Herz aus der Architektur und Kunst, die Mariia seit Jahren inspirieren — von der Sagrada Família bis zu Michelangelos David."
+              "caption": "Siebenundvierzig Orte und Kunstwerke, die geprägt haben, wie Mariia die Welt sieht — von der Sagrada Família bis zu Michelangelos David. Ein Stück von jedem findet sich in jeder Ausgabe von EPRIS wieder."
+            },
+            {
+              "type": "text",
+              "content": "Manche dieser Bauwerke hat sie mit eigenen Augen gesehen, Skizzenbuch in der Hand. Andere kennt sie nur von Fotografien — und trotzdem haben sie geprägt, wie sie über eine Seite, ein Layout, eine Geschichte denkt. Das ist die eigenartige Gabe eines Architekturstudiums: Es lässt einen nie ganz los, wie man alles andere sieht."
             },
             {
               "type": "quote",
@@ -4335,7 +4387,7 @@
             },
             {
               "type": "note",
-              "content": "Die Redaktion von EPRIS gratuliert Mariia zu ihrem Abschluss und dankt ihr für die Inspiration, die in jeder Ausgabe des Magazins lebt. Dieses Diplom markiert ein neues Kapitel. Wir freuen uns, dass Sie es gemeinsam mit uns lesen."
+              "content": "Die Redaktion von EPRIS gratuliert Mariia zu ihrem Abschluss und dankt ihr für die Inspiration, die in jeder Ausgabe des Magazins lebt. Dieses Diplom markiert ein neues Kapitel — und vermutlich nicht das letzte, das es zu feiern gilt. Wir freuen uns, dass Sie es gemeinsam mit uns lesen."
             }
           ]
         }
@@ -4968,6 +5020,15 @@
               "content": "No es ningún secreto que la mirada de una arquitecta recorre cada número de EPRIS — en la forma en que hablamos del espacio, la luz y los detalles. Hoy, esa mirada obtuvo su reconocimiento oficial."
             },
             {
+              "type": "text",
+              "content": "Quienes trabajaron con ella en este número conocen bien el ritual: la luz del estudio encendida hasta tarde, papel vegetal cubierto de correcciones, un café ya frío junto a la maqueta que ella volvía a rehacer una y otra vez hasta que por fin quedaba bien. Esa misma inquietud — la negativa a conformarse con lo “suficientemente bueno” — es lo que ha dado forma a esta revista desde su primerísima página."
+            },
+            {
+              "type": "header",
+              "content": "Un corazón hecho de lo que la inspira",
+              "level": 3
+            },
+            {
               "type": "mosaic",
               "content": [
                 "/images/heart-tiles/tile-01.jpg",
@@ -5018,7 +5079,11 @@
                 "/images/heart-tiles/tile-46.jpg",
                 "/images/heart-tiles/tile-47.jpg"
               ],
-              "caption": "Un corazón hecho de la arquitectura y el arte que han inspirado a Mariia durante años — desde la Sagrada Família hasta el David de Miguel Ángel."
+              "caption": "Cuarenta y siete lugares y obras de arte que han moldeado la manera en que Mariia ve el mundo — desde la Sagrada Família hasta el David de Miguel Ángel. Un poco de cada uno aparece en todos los números de EPRIS."
+            },
+            {
+              "type": "text",
+              "content": "Algunos de estos edificios los ha visitado en persona, cuaderno de bocetos en mano. Otros solo los ha visto en fotografías — y aun así moldearon su forma de pensar una página, una maquetación, una historia. Ese es el extraño don de estudiar arquitectura: nunca termina de soltar la manera en que ves todo lo demás."
             },
             {
               "type": "quote",
@@ -5026,7 +5091,7 @@
             },
             {
               "type": "note",
-              "content": "El equipo editorial de EPRIS felicita a Mariia por su título y le agradece la inspiración que vive en cada número de la revista. Este diploma marca un nuevo capítulo. Nos alegra que lo leáis con nosotros."
+              "content": "El equipo editorial de EPRIS felicita a Mariia por su título y le agradece la inspiración que vive en cada número de la revista. Este diploma marca un nuevo capítulo — y sospechamos que no será el último que merezca celebrarse. Nos alegra que lo leáis con nosotros."
             }
           ]
         }
@@ -5659,6 +5724,15 @@
               "content": "Bir mimarın bakış açısının EPRIS'in her sayısında hissedildiği bir sır değil — mekân, ışık ve detaylar hakkında konuşma şeklimizde. Bugün bu bakış açısı resmi bir onay kazandı."
             },
             {
+              "type": "text",
+              "content": "Bu sayıda onunla birlikte çalışanlar bu ritüeli iyi bilir: geç saatlere kadar yanan stüdyo ışıkları, düzeltmelerle dolu aydınger kağıdı, tam istediği gibi olana kadar tekrar tekrar yeniden kurduğu maketin yanında soğuyan bir kahve. Aynı huzursuzluk — “yeterince iyi”yle yetinmeyi reddetmesi — bu dergiyi ilk sayfasından beri şekillendiren şey."
+            },
+            {
+              "type": "header",
+              "content": "Ona İlham Verenlerden Oluşan Bir Kalp",
+              "level": 3
+            },
+            {
               "type": "mosaic",
               "content": [
                 "/images/heart-tiles/tile-01.jpg",
@@ -5709,7 +5783,11 @@
                 "/images/heart-tiles/tile-46.jpg",
                 "/images/heart-tiles/tile-47.jpg"
               ],
-              "caption": "Mariia'ya yıllardır ilham veren mimari ve sanattan oluşan bir kalp — Sagrada Família'dan Michelangelo'nun David'ine kadar."
+              "caption": "Mariia'nın dünyayı görme biçimini şekillendiren kırk yedi yer ve sanat eseri — Sagrada Família'dan Michelangelo'nun David'ine kadar. Her birinden bir parça, EPRIS'in her sayısında yaşıyor."
+            },
+            {
+              "type": "text",
+              "content": "Bu binaların bazılarını elinde eskiz defteriyle bizzat gezdi. Bazılarını ise yalnızca fotoĝraflarda gördü — yine de bir sayfayı, bir düzeni, bir hikâyeyi düşünme biçimini şekillendirdiler. Mimarlık okumanın tuhaf armağanı da bu: geri kalan her şeyi nasıl gördüğünü hiçbir zaman tam olarak bırakmıyor."
             },
             {
               "type": "quote",
@@ -5717,7 +5795,7 @@
             },
             {
               "type": "note",
-              "content": "EPRIS editör ekibi, Mariia'yı diploması için tebrik eder ve derginin her sayısında yaşayan ilham için ona teşekkür eder. Bu diploma yeni bir bölümü işaret ediyor. Bunu bizimle birlikte okuduğunuz için mutluyuz."
+              "content": "EPRIS editör ekibi, Mariia'yı diploması için tebrik eder ve derginin her sayısında yaşayan ilham için ona teşekkür eder. Bu diploma yeni bir bölümü işaret ediyor — ve sanırız kutlanacak son bölüm olmayacak. Bunu bizimle birlikte okuduğunuz için mutluyuz."
             }
           ]
         }
@@ -6350,6 +6428,15 @@
               "content": "Non è un segreto che lo sguardo di un'architetta attraversi ogni numero di EPRIS — nel modo in cui parliamo di spazio, luce e dettagli. Oggi quello sguardo ha ricevuto la sua conferma ufficiale."
             },
             {
+              "type": "text",
+              "content": "Chi ha lavorato con lei a questo numero conosce bene il rituale: le luci dello studio accese fino a tardi, carta da lucido coperta di correzioni, un caffè ormai freddo accanto al modellino che continuava a rifare finché non era davvero giusto. Quella stessa irrequietezza — il rifiuto di accontentarsi del “abbastanza buono” — è ciò che plasma questa rivista fin dalla sua primissima pagina."
+            },
+            {
+              "type": "header",
+              "content": "Un cuore fatto di ciò che la ispira",
+              "level": 3
+            },
+            {
               "type": "mosaic",
               "content": [
                 "/images/heart-tiles/tile-01.jpg",
@@ -6400,7 +6487,11 @@
                 "/images/heart-tiles/tile-46.jpg",
                 "/images/heart-tiles/tile-47.jpg"
               ],
-              "caption": "Un cuore fatto dell'architettura e dell'arte che hanno ispirato Mariia per anni — dalla Sagrada Família al David di Michelangelo."
+              "caption": "Quarantasette luoghi e opere d'arte che hanno plasmato il modo in cui Mariia vede il mondo — dalla Sagrada Família al David di Michelangelo. Un pezzo di ciascuno vive in ogni numero di EPRIS."
+            },
+            {
+              "type": "text",
+              "content": "Alcuni di questi edifici li ha visitati di persona, taccuino di schizzi alla mano. Altri li ha visti solo in fotografia — eppure hanno comunque plasmato il suo modo di pensare una pagina, un'impaginazione, una storia. È lo strano dono di studiare architettura: non smette mai davvero di influenzare come guardi tutto il resto."
             },
             {
               "type": "quote",
@@ -6408,7 +6499,7 @@
             },
             {
               "type": "note",
-              "content": "La redazione di EPRIS si congratula con Mariia per la laurea e la ringrazia per l'ispirazione che vive in ogni numero della rivista. Questo diploma segna un nuovo capitolo. Siamo felici che lo leggiate insieme a noi."
+              "content": "La redazione di EPRIS si congratula con Mariia per la laurea e la ringrazia per l'ispirazione che vive in ogni numero della rivista. Questo diploma segna un nuovo capitolo — e sospettiamo non sarà l'ultimo da festeggiare. Siamo felici che lo leggiate insieme a noi."
             }
           ]
         }
