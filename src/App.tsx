@@ -2020,10 +2020,17 @@ export default function App() {
   // Live content: fetch the latest from the VPS on mount and re-render when it
   // swaps in. Until then (or if the VPS is unreachable) the bundled JSON renders.
   const [, setContentVersion] = useState(0);
+  // Fresh loads of /article/<slug> only have the bundled fallback articles to match
+  // against until the live fetch resolves (SLUG_MAP at module scope is built once,
+  // from that same stale bundle) — so any article published after the last deploy
+  // 404s silently on direct load/refresh/share instead of resolving once live data
+  // arrives. Track whether the live-content attempt has settled so we know when a
+  // still-unresolved /article/ path is a genuine 404 rather than "still loading."
+  const [contentLoadAttempted, setContentLoadAttempted] = useState(false);
   useEffect(() => {
     applySiteTheme(getTheme()); // bundled/default theme on first paint
     const unsubscribe = subscribeContent(() => { setContentVersion((v) => v + 1); applySiteTheme(getTheme()); });
-    loadLiveContent().then(() => applySiteTheme(getTheme()));
+    loadLiveContent().then(() => { applySiteTheme(getTheme()); setContentLoadAttempted(true); });
     return unsubscribe;
   }, []);
   const languageOptions = getAvailableLanguages();
@@ -2036,6 +2043,25 @@ export default function App() {
       || defaultContent.articles.find((article) => article.id === selectedArticleId)
       || null
     : null;
+  // Retry resolving /article/<slug> against live articles once they load — the
+  // synchronous initial parse only had the stale bundled SLUG_MAP to check against.
+  useEffect(() => {
+    if (selectedArticleId !== null) return;
+    const m = window.location.pathname.match(/^\/article\/([^/]+)\/?$/);
+    if (!m) return;
+    const slug = decodeURIComponent(m[1]);
+    if (/^\d+$/.test(slug)) return; // numeric ids already resolved by parsePath
+    const match = defaultContent.articles.find((a) => getSlugForArticle(a) === slug);
+    if (match) {
+      setSelectedArticleId(match.id);
+      setActiveTab('articles');
+    }
+  }, [defaultContent.articles, selectedArticleId]);
+  // Only a genuine 404 once the live fetch has had its chance — otherwise a
+  // fresh load would flash "not found" before the retry effect above can run.
+  const articleSlugNotFound = contentLoadAttempted
+    && selectedArticleId === null
+    && /^\/article\/([^/]+)\/?$/.test(window.location.pathname);
   // "Read also": same-category articles first, then the rest (newest ids first
   // as a recency proxy), excluding the one being read. Three cards max.
   const relatedArticles = selectedArticle
@@ -2218,6 +2244,30 @@ export default function App() {
       <AnimatePresence>
         {selectedArticle && (
           <ArticleView article={selectedArticle} related={relatedArticles} onArticleClick={(a) => handleSelectArticle(a.id, a)} onTagClick={handleSearch} onClose={handleCloseArticle} onImageClick={handleImageClick} t={t} currentLang={currentLang} setCurrentLang={setCurrentLang} languages={languageOptions} />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {articleSlugNotFound && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-[var(--c-bg)] flex items-center justify-center px-6"
+          >
+            <div className="text-center max-w-md">
+              <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-4">404</p>
+              <h1 className="font-serif text-3xl sm:text-4xl text-[var(--c-accent)] mb-4">Article not found</h1>
+              <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.7)] mb-8">This link may be broken, or the article has moved.</p>
+              <button
+                type="button"
+                onClick={() => { window.history.replaceState(null, '', '/articles'); setActiveTab('articles'); }}
+                className="font-mono text-xs uppercase tracking-widest border border-[var(--c-accent)] rounded-full px-6 py-3 hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors"
+              >
+                Back to Articles
+              </button>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
 
