@@ -500,7 +500,7 @@
       "podcasts.intro": "Разговоры, интервью и размышления от редакции EPRIS.",
       "podcasts.tab_episodes": "Эпизоды",
       "podcasts.tab_announcements": "Анонсы",
-      "podcasts.empty_episodes": "Эпиз��ды появятся скоро",
+      "podcasts.empty_episodes": "Эпиз����ды появятся скоро",
       "podcasts.empty_announcements": "Анонсов пока нет",
       "podcasts.back": "← Подкасты",
       "podcasts.episode_label": "Эпизод",
@@ -2278,6 +2278,221 @@
           "content": "The EPRIS editorial team congratulates Mariia on her degree, and thanks her for the inspiration that lives in every issue of the journal. This diploma marks a new chapter — and we suspect it won't be the last one worth celebrating. We're glad you're reading it with us."
         }
       ]
+    },
+    {
+      "id": 12,
+      "title": "The Sacred Spring: A Portrait of the Vienna Secession",
+      "author": "EPRIS Journal",
+      "role": "Arts Desk",
+      "date": "Jul 8, 2026",
+      "excerpt": "In 1897 a handful of Viennese artists walked out of the establishment, built a white temple crowned with a dome of gilded leaves, and declared that every age deserves an art of its own. This is the story of the Secession — and of the restless people who made it.",
+      "category": "Culture",
+      "subcategory": "The Long Read",
+      "tags": [
+        "vienna secession",
+        "art nouveau",
+        "gustav klimt",
+        "architecture",
+        "history"
+      ],
+      "imageUrl": "/images/secession/dome.jpg",
+      "imageSeed": "vienna-secession",
+      "draft": false,
+      "content": [
+        {
+          "type": "text",
+          "content": "Imagine Vienna in the last years of the nineteenth century: a city drunk on its own reflection. The Ringstrasse glittered with palaces dressed in borrowed history — a Greek parliament here, a Gothic city hall there, a Renaissance opera in between. It was magnificent, and it was exhausted. Behind the gilt, an entire generation of young painters and architects had begun to suspect that their city was building museums to a past that had never quite belonged to it, while the present — electric, anxious, alive — went unpainted."
+        },
+        {
+          "type": "text",
+          "content": "On the third of April 1897, a group of them stopped waiting for permission. Led by a thirty-four-year-old painter named Gustav Klimt, they resigned in a body from the Künstlerhaus, the official artists' association that controlled every important exhibition in the city. They called their new movement the Vereinigung bildender Künstler Österreichs — the Union of Austrian Artists — but history remembers them by the word they chose for the break itself: Secession."
+        },
+        {
+          "type": "text",
+          "content": "They were not a school. They shared no single style, no manifesto of technique. What bound them was a conviction, and they carved it in gold above the door of the building they would soon raise. It read: to every age its art, to art its freedom."
+        },
+        {
+          "type": "header",
+          "content": "To Every Age Its Art",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "The Secession announced itself the way a thunderclap announces a storm — with a poster. For the first exhibition in 1898, Klimt drew Theseus slaying the Minotaur, the young hero of a new art putting the old monster to the sword, while Pallas Athene, goddess of wisdom and just war, stood guard at the margin. The censors made him add a screen of trees to hide Theseus's nakedness. It was the first of many quarrels the Secession would pick with a public that did not yet know it wanted to be provoked."
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/klimt-poster.jpg",
+          "caption": "Gustav Klimt's poster for the first Secession exhibition, 1898. Theseus confronts the Minotaur; Athene stands watch at the right.",
+          "align": "full"
+        },
+        {
+          "type": "text",
+          "content": "Their creed had a name too — Ver Sacrum, the 'sacred spring.' In ancient Italy it was the rite by which a people, in a time of crisis, dedicated the coming generation to a fresh start. The Secessionists borrowed the phrase for their magazine, a square, exquisite journal in which text and image were designed as one living surface. To open an issue of Ver Sacrum was to hold the movement's philosophy in your hands: that a wine glass, a typeface, a chair and a painting were all art, and all equally worth perfecting."
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/versacrum.jpg",
+          "caption": "The first issue of Ver Sacrum, January 1898 — the movement's magazine, and its manifesto in print.",
+          "align": "full"
+        },
+        {
+          "type": "quote",
+          "content": "Der Zeit ihre Kunst. Der Kunst ihre Freiheit. — To every age its art. To art its freedom."
+        },
+        {
+          "type": "header",
+          "content": "The White Temple",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "A movement needs a home, and the Secession built one unlike anything Vienna had seen. The commission went to Joseph Maria Olbrich, barely thirty, a pupil of the great Otto Wagner. What he produced in 1898 was less a building than a declaration: a cubic, white-walled temple of pure geometry, stripped of every historical ornament, crowned with an openwork dome of three thousand gilded laurel leaves. Vienna, half-scandalised and half-delighted, nicknamed it 'the golden cabbage.'"
+        },
+        {
+          "type": "text",
+          "content": "Look closely at the façade and you find the movement's spirit written in plaster: three solemn owls, sacred to Athene, and above the entrance those defiant golden words. Even the decorative details were designed by members of the group — the owls and foliage by Koloman Moser — so that the building itself became a total work of art, a Gesamtkunstwerk, in which architecture, sculpture and ornament spoke a single language."
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/hero.jpg",
+          "caption": "Koloman Moser's owls and laurel on the Secession façade — Athene's birds, guarding a temple of new art.",
+          "align": "full"
+        },
+        {
+          "type": "header",
+          "content": "The People",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "The Secession was never a one-man movement, but it began, unmistakably, with one man. Gustav Klimt was the son of a gold engraver, and gold would never leave his work. He had made his name — and his fortune — painting decorous allegories on the ceilings of the very Ringstrasse palaces the Secession would rebel against. Then, at the height of his respectability, he turned. His art grew strange, erotic, ornamental and unafraid; his patrons grew nervous; and Klimt, serenely, kept going."
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/klimt-portrait.jpg",
+          "caption": "Gustav Klimt in his painter's smock, photographed in 1914. The first president of the Secession.",
+          "align": "full"
+        },
+        {
+          "type": "text",
+          "content": "In Pallas Athene of 1898 you can already see the future arriving. The goddess is armoured in hammered gold, her gaze cool and frontal, and in her hand she holds a tiny naked figure — Nuda Veritas, naked truth, holding up a mirror to a society that preferred not to look. It was Klimt's private motto made visible: the artist owes the age not flattery, but honesty."
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/pallas.jpg",
+          "caption": "Klimt, Pallas Athene, 1898 — the goddess in beaten gold, holding naked Truth in her palm.",
+          "align": "full"
+        },
+        {
+          "type": "text",
+          "content": "If Klimt was the movement's heart, Otto Wagner was its conscience turned to stone and iron. Already famous, already past fifty, the professor could have coasted into a comfortable old age of neo-Baroque commissions. Instead he threw in his lot with his own students, declaring that 'something impractical cannot be beautiful' and that the architecture of a new age must be born of new life, new materials, new needs."
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/wagner-portrait.jpg",
+          "caption": "Otto Wagner — the elder master who chose the side of the young.",
+          "align": "full"
+        },
+        {
+          "type": "text",
+          "content": "Wagner's buildings still stun. On the Linke Wienzeile he sheathed an entire apartment house in blossoming majolica tiles, flowers climbing five storeys into the Viennese sky — practical, weatherproof, and gloriously alive. And at Karlsplatz he built a pair of railway pavilions so elegant that the city's commuters passed each day through works of art, green iron and white marble stitched with golden sunflowers."
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/wagner-majolica.jpg",
+          "caption": "Wagner's Majolica House (1898) — an apartment block dressed in flowering ceramic tiles.",
+          "align": "full"
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/wagner-station.jpg",
+          "caption": "The Karlsplatz Stadtbahn pavilion (1898) — a railway station as a jewel of green and gold.",
+          "align": "full"
+        },
+        {
+          "type": "text",
+          "content": "Koloman Moser was the movement's quiet universe. Trained as a painter, he designed everything: postage stamps, stained glass, book covers, furniture, the owls on the Secession wall, the very pages of Ver Sacrum. If the Secession believed that art should saturate ordinary life, Moser was the proof — a man who could make a letterbox as beautiful as an altarpiece."
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/moser.jpg",
+          "caption": "Koloman Moser — painter, graphic genius, and the man who designed almost everything.",
+          "align": "full"
+        },
+        {
+          "type": "text",
+          "content": "Josef Hoffmann took that belief and built an empire on it. In 1903, with Moser and the banker Fritz Wärndorfer, he founded the Wiener Werkstätte — the Vienna Workshops — a cooperative of craftsmen determined to make objects of total quality, from cutlery to entire houses. His grids and squares were so rigorous that colleagues nicknamed him 'Quadratl-Hoffmann,' Little-Square Hoffmann. The nickname was a joke; the influence was not. His purity of line runs straight through the twentieth century into the design language we still live inside."
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/hoffmann.jpg",
+          "caption": "Josef Hoffmann — co-founder of the Wiener Werkstätte, apostle of the perfect square.",
+          "align": "full"
+        },
+        {
+          "type": "text",
+          "content": "And Joseph Maria Olbrich, the young architect of the temple itself, gave the movement its face. He did not stay in Vienna long — the Grand Duke of Hesse called him to Darmstadt to build an entire artists' colony from the ground up — but the golden dome he left behind still crowns the city, and still keeps its promise, a century and a quarter later."
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/olbrich.jpg",
+          "caption": "Joseph Maria Olbrich — the architect who was barely thirty when he built the Secession's temple.",
+          "align": "full"
+        },
+        {
+          "type": "header",
+          "content": "The Beethoven Exhibition",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "Everything the Secession believed came together, once, in a single room. In 1902 the fourteenth exhibition was conceived as a temple within the temple: a shrine to Ludwig van Beethoven, the artist as hero and prophet. At its centre stood Max Klinger's polychrome statue of the composer enthroned like a god; around the walls, twenty-one members contributed works meant to be seen together, as a single act of devotion. And along three walls Klimt painted the Beethoven Frieze — thirty-four metres of longing, suffering and deliverance."
+        },
+        {
+          "type": "text",
+          "content": "It begins with the yearning of humankind, drifts through the temptations and terrors of the world — the giant Typhoeus, a monstrous ape, and the Gorgons of sickness, madness and death — and resolves, at last, in art and love. The frieze was painted directly on the wall, meant to be destroyed when the show closed. It survived by accident, and today it is one of the supreme achievements of European painting."
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/beethoven-frieze.jpg",
+          "caption": "The Beethoven Frieze, 1902 — 'The Hostile Powers': the giant Typhoeus and the Gorgons of sickness, madness and death.",
+          "align": "full"
+        },
+        {
+          "type": "text",
+          "content": "But the frieze does not end in darkness. It climbs toward a choir of angels and closes on an embrace — a naked couple locked together beneath a golden sky, and above them the words of Schiller that Beethoven set to music in his Ninth Symphony: this kiss to the whole world. It is the Secession's deepest belief, painted large: that art, in the end, is a form of love, and love a form of deliverance."
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/beethoven-kiss.jpg",
+          "caption": "The frieze's finale — the choir of paradise and the embrace: 'This kiss to the whole world.'",
+          "align": "full"
+        },
+        {
+          "type": "header",
+          "content": "The Break, and the Gold",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "Movements are mortal, and the Secession's unity did not survive its success. By 1905 a rift had opened between the 'stylists' around Klimt, who wanted art and craft and commerce to fuse completely, and the 'naturalists' who feared the movement was becoming a shop. Klimt and his circle — Moser, Hoffmann, Wagner among them — resigned. The group they had founded eight years earlier went on without them; so, gloriously, did they."
+        },
+        {
+          "type": "text",
+          "content": "For it was in the years just after the break that Klimt entered his golden phase, and painted the picture that would eclipse everything else: The Kiss. Two figures kneel at the edge of a flowering meadow, wrapped in a single robe of shimmering gold, the man's patterns hard and rectangular, the woman's soft and circular, the whole world dissolved into ornament around them. Everything the Secession had argued for — the union of painting and decoration, the fearlessness before beauty, the gold inherited from a father's workshop — arrives here, complete."
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/klimt-kiss.jpg",
+          "caption": "Gustav Klimt, The Kiss, 1907–1908 — the golden summit of everything the Secession set in motion.",
+          "align": "full"
+        },
+        {
+          "type": "note",
+          "content": "The Secession Building still stands on the Friedrichstrasse, its dome still gilded, the Beethoven Frieze still glowing in the basement below. The words above the door have not changed in a hundred and twenty-eight years: to every age its art, to art its freedom. It remains, perhaps, the finest thing a group of young artists ever dared to promise — and one of the very few such promises that the world went on to keep."
+        }
+      ]
     }
   ],
   "reviews": [
@@ -2980,6 +3195,221 @@
             {
               "type": "note",
               "content": "Редакция EPRIS поздравляет Марию с дипломом и благодарит за вдохновение, которое живёт в каждом номере журнала. С этим дипломом — новая глава, и, кажется, не последняя, которую стоит отмечать. Мы рады, что вы читаете её вместе с нами."
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "title": "Ver Sacrum: портрет Венского сецессиона",
+          "author": "EPRIS Journal",
+          "role": "Arts Desk",
+          "date": "Jul 8, 2026",
+          "excerpt": "В 1897 году горстка венских художников порвала с академией, построила белый храм под куполом из золочёных листьев и провозгласила, что у каждой эпохи должно быть своё искусство. Это история Сецессиона — и беспокойных людей, которые его создали.",
+          "category": "Culture",
+          "subcategory": "Большое чтение",
+          "tags": [
+            "венский сецессион",
+            "модерн",
+            "густав климт",
+            "архитектура",
+            "история"
+          ],
+          "imageUrl": "/images/secession/dome.jpg",
+          "imageSeed": "vienna-secession",
+          "draft": false,
+          "content": [
+            {
+              "type": "text",
+              "content": "Представьте Вену последних лет девятнадцатого века: город, опьянённый собственным отражением. Рингштрассе сверкала дворцами в чужих исторических одеждах — здесь греческий парламент, там готическая ратуша, между ними ренессансная опера. Это было великолепно — и это было изнурено. За позолотой целое поколение молодых живописцев и архитекторов начало подозревать, что их город возводит музеи прошлому, которое никогда толком ему не принадлежало, пока настоящее — электрическое, тревожное, живое — остаётся ненаписанным."
+            },
+            {
+              "type": "text",
+              "content": "Третьего апреля 1897 года они перестали ждать разрешения. Во главе с тридцатичетырёхлетним живописцем по имени Густав Климт они всем составом вышли из Кюнстлерхауса — официального союза художников, распоряжавшегося каждой важной выставкой в городе. Своё новое движение они назвали Объединением художников Австрии, но история помнит их по слову, которым они назвали сам разрыв: Сецессион."
+            },
+            {
+              "type": "text",
+              "content": "Они не были школой. У них не было единого стиля, единого манифеста техники. Их связывало убеждение — и они вырезали его золотом над дверью здания, которое вскоре возвели. Там было написано: каждой эпохе — своё искусство, искусству — свою свободу."
+            },
+            {
+              "type": "header",
+              "content": "Каждой эпохе — своё искусство",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Сецессион возвестил о себе так, как гром возвещает грозу, — плакатом. Для первой выставки 1898 года Климт изобразил Тесея, поражающего Минотавра: юный герой нового искусства пронзает мечом старое чудовище, а на краю стоит на страже Паллада Афина, богиня мудрости и справедливой войны. Цензоры заставили его добавить завесу деревьев, чтобы прикрыть наготу Тесея. Это была первая из многих ссор, которые Сецессион затеет с публикой, ещё не знавшей, что хочет быть спровоцированной."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/klimt-poster.jpg",
+              "caption": "Плакат Густава Климта к первой выставке Сецессиона, 1898. Тесей одолевает Минотавра; справа на страже стоит Афина.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "У их веры тоже было имя — Ver Sacrum, «священная весна». В древней Италии так назывался обряд, которым народ в час беды посвящал грядущее поколение новому началу. Сецессионисты позаимствовали это выражение для своего журнала — квадратного, изысканного издания, где текст и изображение были задуманы как одна живая поверхность. Открыть номер Ver Sacrum значило держать в руках философию движения: что бокал вина, шрифт, стул и картина — всё это искусство и всё равно достойно совершенства."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/versacrum.jpg",
+              "caption": "Первый номер Ver Sacrum, январь 1898 — журнал движения и его манифест в печати.",
+              "align": "full"
+            },
+            {
+              "type": "quote",
+              "content": "Der Zeit ihre Kunst. Der Kunst ihre Freiheit. — Каждой эпохе — своё искусство. Искусству — свою свободу."
+            },
+            {
+              "type": "header",
+              "content": "Белый храм",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Движению нужен дом, и Сецессион построил такой, какого Вена ещё не видела. Заказ достался Йозефу Марии Ольбриху, которому едва исполнилось тридцать, — ученику великого Отто Вагнера. То, что он создал в 1898 году, было не столько зданием, сколько заявлением: кубический белостенный храм чистой геометрии, лишённый всякого исторического орнамента, увенчанный ажурным куполом из трёх тысяч золочёных лавровых листьев. Вена, наполовину возмущённая, наполовину восхищённая, прозвала его «золотым кочаном капусты»."
+            },
+            {
+              "type": "text",
+              "content": "Вглядитесь в фасад — и вы прочтёте дух движения, отлитый в штукатурке: три торжественные совы, священные птицы Афины, а над входом те самые вызывающие золотые слова. Даже декоративные детали придумали члены группы — сов и листву создал Коломан Мозер, — так что само здание стало тотальным произведением искусства, Gesamtkunstwerk, где архитектура, скульптура и орнамент говорят на одном языке."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/hero.jpg",
+              "caption": "Совы и лавр Коломана Мозера на фасаде Сецессиона — птицы Афины, хранящие храм нового искусства.",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "Люди",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Сецессион никогда не был движением одного человека, но начался он, вне всякого сомнения, с одного. Густав Климт был сыном гравёра по золоту — и золото уже не покинет его работ. Он сделал себе имя и состояние, расписывая благопристойные аллегории на потолках тех самых дворцов Рингштрассе, против которых восстанет Сецессион. А затем, на вершине респектабельности, он свернул. Его искусство стало странным, эротичным, орнаментальным и бесстрашным; его заказчики занервничали; а Климт безмятежно продолжал своё."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/klimt-portrait.jpg",
+              "caption": "Густав Климт в живописной блузе, 1914. Первый президент Сецессиона.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "В «Палладе Афине» 1898 года уже видно, как приходит будущее. Богиня закована в чеканное золото, её взгляд холоден и обращён прямо на зрителя, а в руке она держит крохотную обнажённую фигуру — Nuda Veritas, нагую истину, подносящую зеркало обществу, которое предпочитало не смотреть. Это был личный девиз Климта, ставший зримым: художник должен эпохе не лесть, а честность."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/pallas.jpg",
+              "caption": "Климт, «Паллада Афина», 1898 — богиня в чеканном золоте держит на ладони нагую Истину.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Если Климт был сердцем движения, то Отто Вагнер был его совестью, обращённой в камень и железо. Уже знаменитый, уже за пятьдесят, профессор мог бы спокойно доживать век на удобных необарочных заказах. Вместо этого он встал на сторону собственных учеников, объявив, что «непрактичное не может быть прекрасным» и что архитектура новой эпохи должна родиться из новой жизни, новых материалов, новых нужд."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/wagner-portrait.jpg",
+              "caption": "Отто Вагнер — старший мастер, вставший на сторону молодых.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Здания Вагнера поражают до сих пор. На Линке Винцайле он облицевал целый доходный дом цветущей майоликовой плиткой — цветы поднимаются на пять этажей в венское небо, практичные, стойкие к непогоде и великолепно живые. А на Карлсплац он построил пару вокзальных павильонов, столь изящных, что горожане каждый день проходили сквозь произведения искусства — зелёное железо и белый мрамор, прошитые золотыми подсолнухами."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/wagner-majolica.jpg",
+              "caption": "«Майоликовый дом» Вагнера (1898) — доходный дом, одетый в цветущую керамическую плитку.",
+              "align": "full"
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/wagner-station.jpg",
+              "caption": "Павильон Штадтбана на Карлсплац (1898) — вокзал как драгоценность из зелени и золота.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Коломан Мозер был тихой вселенной движения. Обученный как живописец, он проектировал всё: почтовые марки, витражи, книжные обложки, мебель, сов на стене Сецессиона, самые страницы Ver Sacrum. Если Сецессион верил, что искусство должно пропитывать обыденную жизнь, то Мозер был тому доказательством — человек, способный сделать почтовый ящик прекрасным, как алтарный образ."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/moser.jpg",
+              "caption": "Коломан Мозер — живописец, гений графики и человек, спроектировавший почти всё.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Йозеф Хоффман взял эту веру и построил на ней целую империю. В 1903 году вместе с Мозером и банкиром Фрицем Верндорфером он основал Wiener Werkstätte — Венские мастерские, — товарищество ремесленников, решивших создавать вещи безупречного качества, от столовых приборов до целых домов. Его сетки и квадраты были столь строги, что коллеги прозвали его «Quadratl-Hoffmann», Хоффман-Квадратик. Прозвище было шуткой; влияние — нет. Чистота его линии проходит сквозь весь двадцатый век прямо в язык дизайна, внутри которого мы живём."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/hoffmann.jpg",
+              "caption": "Йозеф Хоффман — сооснователь Wiener Werkstätte, апостол совершенного квадрата.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "А Йозеф Мария Ольбрих, молодой архитектор самого храма, дал движению его лицо. В Вене он пробыл недолго — великий герцог Гессенский призвал его в Дармштадт, чтобы построить с нуля целую колонию художников, — но золотой купол, который он оставил, всё ещё венчает город и всё ещё держит своё обещание, сто двадцать пять лет спустя."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/olbrich.jpg",
+              "caption": "Йозеф Мария Ольбрих — архитектор, которому едва исполнилось тридцать, когда он построил храм Сецессиона.",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "Выставка Бетховена",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Всё, во что верил Сецессион, однажды сошлось в одном зале. В 1902 году четырнадцатую выставку задумали как храм внутри храма — святилище Людвига ван Бетховена, художника как героя и пророка. В её центре стояла полихромная статуя композитора работы Макса Клингера, восседающего, как божество; вдоль стен двадцать один член объединения представил работы, которые следовало видеть вместе, как единый акт поклонения. А по трём стенам Климт написал Бетховенский фриз — тридцать четыре метра томления, страдания и избавления."
+            },
+            {
+              "type": "text",
+              "content": "Он начинается с томления человечества, дрейфует сквозь соблазны и ужасы мира — гиганта Тифея, чудовищную обезьяну и Горгон болезни, безумия и смерти — и разрешается наконец в искусстве и любви. Фриз был написан прямо по стене и должен был погибнуть с закрытием выставки. Он уцелел случайно и сегодня остаётся одним из высочайших достижений европейской живописи."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/beethoven-frieze.jpg",
+              "caption": "Бетховенский фриз, 1902 — «Враждебные силы»: гигант Тифей и Горгоны болезни, безумия и смерти.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Но фриз не кончается тьмой. Он восходит к хору ангелов и завершается объятием — обнажённая пара, слитая воедино под золотым небом, а над ними слова Шиллера, которые Бетховен положил на музыку в Девятой симфонии: этот поцелуй — всему миру. Это глубочайшая вера Сецессиона, написанная во весь рост: что искусство в конечном счёте есть форма любви, а любовь — форма избавления."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/beethoven-kiss.jpg",
+              "caption": "Финал фриза — райский хор и объятие: «этот поцелуй — всему миру».",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "Раскол и золото",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Движения смертны, и единство Сецессиона не пережило его успеха. К 1905 году между «стилистами» вокруг Климта, желавшими полного слияния искусства, ремесла и коммерции, и «натуралистами», опасавшимися, что движение превращается в лавку, разверзлась пропасть. Климт и его круг — Мозер, Хоффман, Вагнер в их числе — вышли из объединения. Группа, основанная ими восемью годами ранее, продолжила без них; продолжили, великолепно, и они сами."
+            },
+            {
+              "type": "text",
+              "content": "Ибо именно в годы сразу после раскола Климт вступил в свою золотую фазу и написал картину, которая затмит всё остальное, — «Поцелуй». Две фигуры преклонили колени у края цветущего луга, укрытые единым одеянием из мерцающего золота: узоры мужчины жёсткие и прямоугольные, женщины — мягкие и округлые, а весь мир вокруг растворился в орнаменте. Всё, за что боролся Сецессион, — союз живописи и декора, бесстрашие перед красотой, золото, унаследованное из отцовской мастерской, — сходится здесь воедино и до конца."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/klimt-kiss.jpg",
+              "caption": "Густав Климт, «Поцелуй», 1907–1908 — золотая вершина всего, что привёл в движение Сецессион.",
+              "align": "full"
+            },
+            {
+              "type": "note",
+              "content": "Здание Сецессиона по-прежнему стоит на Фридрихштрассе, его купол всё так же позолочен, а в подвале всё так же светится Бетховенский фриз. Слова над входом не изменились за сто двадцать восемь лет: каждой эпохе — своё искусство, искусству — свою свободу. Это, пожалуй, самое прекрасное обещание, какое когда-либо осмеливалась дать группа молодых художников, — и одно из немногих подобных обещаний, которое мир потом сдержал."
             }
           ]
         }
@@ -3686,6 +4116,221 @@
               "content": "Редакція EPRIS вітає Марію з дипломом і дякує за натхнення, яке живе в кожному номері журналу. З цим дипломом — новий розділ, і, здається, не останній, який варто відзначити. Ми раді, що ви читаєте його разом з нами."
             }
           ]
+        },
+        {
+          "id": 12,
+          "title": "Ver Sacrum: портрет Віденського сецесіону",
+          "author": "EPRIS Journal",
+          "role": "Arts Desk",
+          "date": "Jul 8, 2026",
+          "excerpt": "1897 року жменька віденських митців порвала з академією, звела білий храм під банею із золочених листків і проголосила, що кожна доба має мати власне мистецтво. Це історія Сецесіону — і неспокійних людей, які його створили.",
+          "category": "Culture",
+          "subcategory": "Велике читання",
+          "tags": [
+            "віденський сецесіон",
+            "модерн",
+            "густав клімт",
+            "архітектура",
+            "історія"
+          ],
+          "imageUrl": "/images/secession/dome.jpg",
+          "imageSeed": "vienna-secession",
+          "draft": false,
+          "content": [
+            {
+              "type": "text",
+              "content": "Уявіть Відень останніх років дев'ятнадцятого століття: місто, сп'яніле від власного віддзеркалення. Рінгштрассе виблискувала палацами в чужих історичних шатах — тут грецький парламент, там готична ратуша, поміж ними ренесансна опера. Це було розкішно — і виснажено. За позолотою ціле покоління молодих малярів і архітекторів почало підозрювати, що їхнє місто зводить музеї минулому, яке ніколи до пуття йому не належало, тоді як сучасність — електрична, тривожна, жива — лишається ненаписаною."
+            },
+            {
+              "type": "text",
+              "content": "Третього квітня 1897 року вони перестали чекати дозволу. На чолі з тридцятичотирирічним малярем на ім'я Густав Клімт вони всім складом вийшли з Кюнстлерхаусу — офіційної спілки митців, що порядкувала кожною важливою виставкою в місті. Свій новий рух вони назвали Об'єднанням образотворчих митців Австрії, та історія пам'ятає їх за словом, яким вони назвали сам розрив: Сецесіон."
+            },
+            {
+              "type": "text",
+              "content": "Вони не були школою. Не мали єдиного стилю, єдиного маніфесту техніки. Їх пов'язувало переконання — і вони викарбували його золотом над дверима будівлі, яку невдовзі звели. Там було написано: кожній добі — своє мистецтво, мистецтву — його свободу."
+            },
+            {
+              "type": "header",
+              "content": "Кожній добі — своє мистецтво",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Сецесіон сповістив про себе так, як грім сповіщає грозу, — плакатом. Для першої виставки 1898 року Клімт зобразив Тесея, що вражає Мінотавра: юний герой нового мистецтва протинає мечем старе чудовисько, а скраю стоїть на чатах Паллада Афіна, богиня мудрості та справедливої війни. Цензори змусили його додати завісу з дерев, аби прикрити наготу Тесея. То була перша з багатьох сварок, які Сецесіон затіє з публікою, що ще не знала, що прагне бути спровокованою."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/klimt-poster.jpg",
+              "caption": "Плакат Густава Клімта до першої виставки Сецесіону, 1898. Тесей долає Мінотавра; праворуч на чатах стоїть Афіна.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "У їхньої віри теж було ім'я — Ver Sacrum, «священна весна». У давній Італії так звався обряд, яким народ у годину лиха присвячував прийдешнє покоління новому початку. Сецесіоністи запозичили цей вислів для свого журналу — квадратного, вишуканого видання, де текст і зображення були задумані як одна жива поверхня. Розгорнути число Ver Sacrum означало тримати в руках філософію руху: що келих вина, шрифт, стілець і картина — усе це мистецтво й усе однаково гідне досконалості."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/versacrum.jpg",
+              "caption": "Перше число Ver Sacrum, січень 1898 — журнал руху та його маніфест у друці.",
+              "align": "full"
+            },
+            {
+              "type": "quote",
+              "content": "Der Zeit ihre Kunst. Der Kunst ihre Freiheit. — Кожній добі — своє мистецтво. Мистецтву — його свободу."
+            },
+            {
+              "type": "header",
+              "content": "Білий храм",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Рухові потрібен дім, і Сецесіон збудував такий, якого Відень ще не бачив. Замовлення дісталося Йозефу Марії Ольбріху, якому щойно виповнилося тридцять, — учневі великого Отто Вагнера. Те, що він створив 1898 року, було не так будівлею, як заявою: кубічний білостінний храм чистої геометрії, позбавлений будь-якого історичного орнаменту, увінчаний ажурною банею з трьох тисяч золочених лаврових листків. Відень, наполовину обурений, наполовину захоплений, прозвав його «золотою капустиною»."
+            },
+            {
+              "type": "text",
+              "content": "Вдивіться у фасад — і прочитаєте дух руху, відлитий у тиньку: три врочисті сови, священні птахи Афіни, а над входом ті самі зухвалі золоті слова. Навіть оздобні деталі вигадали члени групи — сов і листя створив Коломан Мозер, — тож сама будівля стала тотальним твором мистецтва, Gesamtkunstwerk, де архітектура, скульптура й орнамент говорять однією мовою."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/hero.jpg",
+              "caption": "Сови й лавр Коломана Мозера на фасаді Сецесіону — птахи Афіни, що бережуть храм нового мистецтва.",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "Люди",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Сецесіон ніколи не був рухом однієї людини, але почався він, поза всяким сумнівом, з однієї. Густав Клімт був сином гравера по золоту — і золото вже не полишить його творів. Він зробив собі ім'я та статок, розписуючи благопристойні алегорії на стелях тих самих палаців Рінгштрассе, проти яких повстане Сецесіон. А тоді, на вершині респектабельності, він звернув. Його мистецтво стало дивним, еротичним, орнаментальним і безстрашним; його замовники занервували; а Клімт безтурботно провадив своє."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/klimt-portrait.jpg",
+              "caption": "Густав Клімт у малярській блузі, 1914. Перший президент Сецесіону.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "У «Палладі Афіні» 1898 року вже видно, як приходить майбутнє. Богиня закута в карбоване золото, її погляд холодний і звернений просто на глядача, а в руці вона тримає крихітну оголену постать — Nuda Veritas, наготну істину, що підносить дзеркало суспільству, яке воліло не дивитися. Це був особистий девіз Клімта, що став зримим: митець винен добі не лестощі, а чесність."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/pallas.jpg",
+              "caption": "Клімт, «Паллада Афіна», 1898 — богиня в карбованому золоті тримає на долоні наготну Істину.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Якщо Клімт був серцем руху, то Отто Вагнер був його сумлінням, оберненим на камінь і залізо. Уже славетний, уже за п'ятдесят, професор міг би спокійно доживати віку на зручних необарокових замовленнях. Натомість він став на бік власних учнів, проголосивши, що «непрактичне не може бути прекрасним» і що архітектура нової доби має народитися з нового життя, нових матеріалів, нових потреб."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/wagner-portrait.jpg",
+              "caption": "Отто Вагнер — старший майстер, що став на бік молодих.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Будівлі Вагнера вражають досі. На Лінке Вінцайле він облицював цілий прибутковий будинок квітучою майоліковою плиткою — квіти здіймаються на п'ять поверхів у віденське небо, практичні, стійкі до негоди й розкішно живі. А на Карлсплац він звів пару вокзальних павільйонів, таких вишуканих, що містяни щодня проходили крізь твори мистецтва — зелене залізо й білий мармур, прошиті золотими соняшниками."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/wagner-majolica.jpg",
+              "caption": "«Майоліковий дім» Вагнера (1898) — прибутковий будинок, одягнений у квітучу кераміку.",
+              "align": "full"
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/wagner-station.jpg",
+              "caption": "Павільйон Штадтбану на Карлсплац (1898) — вокзал як коштовність із зелені та золота.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Коломан Мозер був тихим усесвітом руху. Навчений як маляр, він проєктував усе: поштові марки, вітражі, книжкові обкладинки, меблі, сов на стіні Сецесіону, самі сторінки Ver Sacrum. Якщо Сецесіон вірив, що мистецтво має просякати буденне життя, то Мозер був тому доказом — людина, здатна зробити поштову скриньку прекрасною, як вівтарний образ."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/moser.jpg",
+              "caption": "Коломан Мозер — маляр, геній графіки й людина, що спроєктувала майже все.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Йозеф Гофман узяв цю віру й збудував на ній цілу імперію. 1903 року разом із Мозером і банкіром Фріцом Верндорфером він заснував Wiener Werkstätte — Віденські майстерні, — товариство ремісників, що вирішили створювати речі бездоганної якості, від столових приборів до цілих будинків. Його сітки та квадрати були такі суворі, що колеги прозвали його «Quadratl-Hoffmann», Гофман-Квадратик. Прізвисько було жартом; вплив — ні. Чистота його лінії проходить крізь усе двадцяте століття просто в мову дизайну, всередині якої ми живемо."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/hoffmann.jpg",
+              "caption": "Йозеф Гофман — співзасновник Wiener Werkstätte, апостол досконалого квадрата.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "А Йозеф Марія Ольбріх, молодий архітектор самого храму, дав рухові його обличчя. У Відні він пробув недовго — великий герцог Гессенський покликав його до Дармштадта, щоб звести з нуля цілу колонію митців, — та золота баня, яку він лишив, досі вінчає місто й досі тримає свою обіцянку, сто двадцять п'ять років по тому."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/olbrich.jpg",
+              "caption": "Йозеф Марія Ольбріх — архітектор, якому щойно виповнилося тридцять, коли він звів храм Сецесіону.",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "Виставка Бетховена",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Усе, у що вірив Сецесіон, одного разу зійшлося в одній залі. 1902 року чотирнадцяту виставку задумали як храм усередині храму — святилище Людвіга ван Бетховена, митця як героя і пророка. У її центрі стояла поліхромна статуя композитора роботи Макса Клінгера, що сидів, як божество; вздовж стін двадцять один член об'єднання представив роботи, які належало бачити разом, як єдиний акт поклоніння. А по трьох стінах Клімт написав Бетховенський фриз — тридцять чотири метри туги, страждання та визволення."
+            },
+            {
+              "type": "text",
+              "content": "Він починається з туги людства, дрейфує крізь спокуси та жахи світу — велетня Тіфея, потворну мавпу й Горгон хвороби, безумства і смерті — і розв'язується нарешті в мистецтві та любові. Фриз був написаний просто по стіні й мав загинути із закриттям виставки. Він уцілів випадково й сьогодні лишається одним із найвищих досягнень європейського малярства."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/beethoven-frieze.jpg",
+              "caption": "Бетховенський фриз, 1902 — «Ворожі сили»: велетень Тіфей і Горгони хвороби, безумства й смерті.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Але фриз не кінчається темрявою. Він сходить до хору янголів і завершується обіймами — оголена пара, злита воєдино під золотим небом, а над ними слова Шиллера, що їх Бетховен поклав на музику в Дев'ятій симфонії: цей поцілунок — усьому світові. Це найглибша віра Сецесіону, написана на повний зріст: що мистецтво зрештою є формою любові, а любов — формою визволення."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/beethoven-kiss.jpg",
+              "caption": "Фінал фриза — райський хор і обійми: «цей поцілунок — усьому світові».",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "Розкол і золото",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Рухи смертні, і єдність Сецесіону не пережила його успіху. До 1905 року між «стилістами» довкола Клімта, що прагнули цілковитого злиття мистецтва, ремесла й комерції, та «натуралістами», що боялися, аби рух не перетворився на крамницю, розверзлася прірва. Клімт і його коло — Мозер, Гофман, Вагнер серед них — вийшли з об'єднання. Група, яку вони заснували вісьмома роками раніше, провадила без них; провадили, розкішно, і вони самі."
+            },
+            {
+              "type": "text",
+              "content": "Адже саме в роки одразу по розколі Клімт увійшов у свою золоту добу й написав картину, що затьмарить усе решту, — «Поцілунок». Дві постаті вклякли на краю квітучого лугу, вкриті єдиним убранням із мерехтливого золота: візерунки чоловіка тверді й прямокутні, жінки — м'які й округлі, а весь світ довкола розчинився в орнаменті. Усе, за що боровся Сецесіон, — союз малярства й декору, безстрашність перед красою, золото, успадковане з батькової майстерні, — сходиться тут воєдино й до кінця."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/klimt-kiss.jpg",
+              "caption": "Густав Клімт, «Поцілунок», 1907–1908 — золота вершина всього, що привів у рух Сецесіон.",
+              "align": "full"
+            },
+            {
+              "type": "note",
+              "content": "Будівля Сецесіону досі стоїть на Фрідріхштрассе, її баня досі позолочена, а в підвалі досі світиться Бетховенський фриз. Слова над входом не змінилися за сто двадцять вісім років: кожній добі — своє мистецтво, мистецтву — його свободу. Це, мабуть, найпрекрасніша обіцянка, яку будь-коли наважувалася дати група молодих митців, — і одна з небагатьох таких обіцянок, яку світ потім дотримав."
+            }
+          ]
         }
       ],
       "reviews": [
@@ -4388,6 +5033,221 @@
             {
               "type": "note",
               "content": "Die Redaktion von EPRIS gratuliert Mariia zu ihrem Abschluss und dankt ihr für die Inspiration, die in jeder Ausgabe des Magazins lebt. Dieses Diplom markiert ein neues Kapitel — und vermutlich nicht das letzte, das es zu feiern gilt. Wir freuen uns, dass Sie es gemeinsam mit uns lesen."
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "title": "Ver Sacrum: Ein Porträt der Wiener Secession",
+          "author": "EPRIS Journal",
+          "role": "Arts Desk",
+          "date": "Jul 8, 2026",
+          "excerpt": "1897 kehrte eine Handvoll Wiener Künstler dem Establishment den Rücken, errichtete einen weißen Tempel unter einer Kuppel aus vergoldeten Blättern und erklärte, dass jede Zeit ihre eigene Kunst verdient. Dies ist die Geschichte der Secession — und der ruhelosen Menschen, die sie schufen.",
+          "category": "Culture",
+          "subcategory": "Die große Lektüre",
+          "tags": [
+            "wiener secession",
+            "jugendstil",
+            "gustav klimt",
+            "architektur",
+            "geschichte"
+          ],
+          "imageUrl": "/images/secession/dome.jpg",
+          "imageSeed": "vienna-secession",
+          "draft": false,
+          "content": [
+            {
+              "type": "text",
+              "content": "Man stelle sich Wien in den letzten Jahren des neunzehnten Jahrhunderts vor: eine Stadt, berauscht vom eigenen Spiegelbild. Die Ringstraße glänzte von Palästen in geborgten historischen Gewändern — hier ein griechisches Parlament, dort ein gotisches Rathaus, dazwischen eine Renaissanceoper. Es war prachtvoll, und es war erschöpft. Hinter dem Gold begann eine ganze Generation junger Maler und Architekten zu ahnen, dass ihre Stadt Museen für eine Vergangenheit baute, die ihr nie ganz gehört hatte, während die Gegenwart — elektrisch, nervös, lebendig — ungemalt blieb."
+            },
+            {
+              "type": "text",
+              "content": "Am dritten April 1897 hörten sie auf, um Erlaubnis zu bitten. Angeführt von einem vierunddreißigjährigen Maler namens Gustav Klimt traten sie geschlossen aus dem Künstlerhaus aus, der offiziellen Künstlervereinigung, die jede wichtige Ausstellung der Stadt beherrschte. Ihre neue Bewegung nannten sie Vereinigung bildender Künstler Österreichs — doch die Geschichte kennt sie unter dem Wort, das sie für den Bruch selbst wählten: Secession."
+            },
+            {
+              "type": "text",
+              "content": "Sie waren keine Schule. Sie teilten keinen einheitlichen Stil, kein Manifest der Technik. Was sie verband, war eine Überzeugung, und sie meißelten sie in Gold über das Tor des Gebäudes, das sie bald errichten würden. Dort stand: Der Zeit ihre Kunst, der Kunst ihre Freiheit."
+            },
+            {
+              "type": "header",
+              "content": "Der Zeit ihre Kunst",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Die Secession kündigte sich an, wie ein Donnerschlag ein Gewitter ankündigt — mit einem Plakat. Für die erste Ausstellung 1898 zeichnete Klimt Theseus, der den Minotaurus erschlägt: der junge Held einer neuen Kunst durchbohrt das alte Ungeheuer mit dem Schwert, während Pallas Athene, Göttin der Weisheit und des gerechten Krieges, am Rand Wache hält. Die Zensur zwang ihn, einen Baumschleier hinzuzufügen, um Theseus' Nacktheit zu verbergen. Es war der erste von vielen Streitfällen, die die Secession mit einem Publikum suchen würde, das noch nicht wusste, dass es provoziert werden wollte."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/klimt-poster.jpg",
+              "caption": "Gustav Klimts Plakat für die erste Secessionsausstellung, 1898. Theseus bezwingt den Minotaurus; rechts hält Athene Wache.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Auch ihr Bekenntnis hatte einen Namen — Ver Sacrum, der „heilige Frühling“. Im alten Italien war es der Ritus, mit dem ein Volk in Zeiten der Not die kommende Generation einem neuen Anfang weihte. Die Secessionisten entliehen den Ausdruck für ihre Zeitschrift, ein quadratisches, erlesenes Blatt, in dem Text und Bild als eine einzige lebendige Fläche gestaltet waren. Eine Ausgabe von Ver Sacrum aufzuschlagen hieß, die Philosophie der Bewegung in Händen zu halten: dass ein Weinglas, eine Schrifttype, ein Stuhl und ein Gemälde allesamt Kunst sind und alle gleichermaßen der Vollendung wert."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/versacrum.jpg",
+              "caption": "Die erste Ausgabe von Ver Sacrum, Januar 1898 — die Zeitschrift der Bewegung und ihr gedrucktes Manifest.",
+              "align": "full"
+            },
+            {
+              "type": "quote",
+              "content": "Der Zeit ihre Kunst. Der Kunst ihre Freiheit."
+            },
+            {
+              "type": "header",
+              "content": "Der weiße Tempel",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Eine Bewegung braucht ein Zuhause, und die Secession baute eines, wie Wien es noch nicht gesehen hatte. Der Auftrag ging an Joseph Maria Olbrich, kaum dreißig, einen Schüler des großen Otto Wagner. Was er 1898 schuf, war weniger ein Bau als eine Erklärung: ein kubischer, weiß verputzter Tempel reiner Geometrie, von jedem historischen Ornament befreit, gekrönt von einer durchbrochenen Kuppel aus dreitausend vergoldeten Lorbeerblättern. Wien, halb empört und halb entzückt, taufte ihn das „goldene Krauthappl“."
+            },
+            {
+              "type": "text",
+              "content": "Betrachtet man die Fassade genau, findet man den Geist der Bewegung im Putz geschrieben: drei feierliche Eulen, der Athene heilig, und über dem Eingang jene trotzigen goldenen Worte. Selbst die Zierdetails entwarfen Mitglieder der Gruppe — die Eulen und das Laub schuf Koloman Moser —, sodass das Gebäude selbst zum Gesamtkunstwerk wurde, in dem Architektur, Skulptur und Ornament eine einzige Sprache sprechen."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/hero.jpg",
+              "caption": "Koloman Mosers Eulen und Lorbeer an der Secessionsfassade — Athenes Vögel, Wächter eines Tempels neuer Kunst.",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "Die Menschen",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Die Secession war nie die Bewegung eines einzelnen Mannes, doch sie begann, unverkennbar, mit einem. Gustav Klimt war der Sohn eines Goldgraveurs, und das Gold sollte sein Werk nie verlassen. Er hatte sich einen Namen — und ein Vermögen — gemacht, indem er sittsame Allegorien an die Decken eben jener Ringstraßenpaläste malte, gegen die die Secession rebellieren würde. Dann, auf dem Höhepunkt seiner Ehrbarkeit, wandte er sich ab. Seine Kunst wurde seltsam, erotisch, ornamental und furchtlos; seine Auftraggeber wurden nervös; und Klimt fuhr gelassen fort."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/klimt-portrait.jpg",
+              "caption": "Gustav Klimt im Malerkittel, 1914 fotografiert. Der erste Präsident der Secession.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "In der Pallas Athene von 1898 sieht man die Zukunft bereits eintreffen. Die Göttin ist in getriebenes Gold gepanzert, ihr Blick kühl und frontal, und in der Hand hält sie eine winzige nackte Gestalt — Nuda Veritas, die nackte Wahrheit, die einer Gesellschaft den Spiegel vorhält, die lieber nicht hinsah. Es war Klimts privates Motto, sichtbar gemacht: Der Künstler schuldet der Zeit nicht Schmeichelei, sondern Ehrlichkeit."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/pallas.jpg",
+              "caption": "Klimt, Pallas Athene, 1898 — die Göttin in getriebenem Gold, die nackte Wahrheit auf der Hand.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "War Klimt das Herz der Bewegung, so war Otto Wagner ihr in Stein und Eisen verwandeltes Gewissen. Schon berühmt, schon über fünfzig, hätte der Professor bequem in ein neobarockes Alter gleiten können. Stattdessen schlug er sich auf die Seite seiner eigenen Schüler und erklärte, dass „etwas Unpraktisches nicht schön sein kann“ und dass die Architektur einer neuen Zeit aus neuem Leben, neuen Materialien, neuen Bedürfnissen geboren werden müsse."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/wagner-portrait.jpg",
+              "caption": "Otto Wagner — der ältere Meister, der die Seite der Jungen wählte.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Wagners Bauten verblüffen noch heute. An der Linken Wienzeile überzog er ein ganzes Mietshaus mit blühenden Majolikakacheln — Blumen, die fünf Stockwerke in den Wiener Himmel klettern, praktisch, wetterfest und herrlich lebendig. Und am Karlsplatz baute er ein Paar Stadtbahnpavillons, so elegant, dass die Pendler der Stadt Tag für Tag durch Kunstwerke schritten, grünes Eisen und weißer Marmor, mit goldenen Sonnenblumen bestickt."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/wagner-majolica.jpg",
+              "caption": "Wagners Majolikahaus (1898) — ein Wohnhaus, gekleidet in blühende Keramikkacheln.",
+              "align": "full"
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/wagner-station.jpg",
+              "caption": "Der Stadtbahnpavillon Karlsplatz (1898) — ein Bahnhof als Kleinod aus Grün und Gold.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Koloman Moser war das stille Universum der Bewegung. Als Maler ausgebildet, entwarf er alles: Briefmarken, Glasfenster, Bucheinbände, Möbel, die Eulen an der Secessionswand, die Seiten von Ver Sacrum selbst. Wenn die Secession glaubte, Kunst solle das gewöhnliche Leben durchdringen, so war Moser der Beweis — ein Mann, der einen Briefkasten so schön machen konnte wie ein Altarbild."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/moser.jpg",
+              "caption": "Koloman Moser — Maler, grafisches Genie und der Mann, der beinahe alles entwarf.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Josef Hoffmann nahm diesen Glauben und baute ein Imperium darauf. 1903 gründete er mit Moser und dem Bankier Fritz Wärndorfer die Wiener Werkstätte, eine Genossenschaft von Handwerkern, entschlossen, Objekte von vollkommener Qualität zu schaffen, vom Besteck bis zu ganzen Häusern. Seine Raster und Quadrate waren so streng, dass Kollegen ihn „Quadratl-Hoffmann“ nannten. Der Spitzname war ein Scherz; der Einfluss war es nicht. Die Reinheit seiner Linie zieht sich mitten durch das zwanzigste Jahrhundert bis in die Formensprache, in der wir noch immer leben."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/hoffmann.jpg",
+              "caption": "Josef Hoffmann — Mitbegründer der Wiener Werkstätte, Apostel des vollkommenen Quadrats.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Und Joseph Maria Olbrich, der junge Architekt des Tempels selbst, gab der Bewegung ihr Gesicht. Lange blieb er nicht in Wien — der Großherzog von Hessen rief ihn nach Darmstadt, um eine ganze Künstlerkolonie aus dem Boden zu stampfen —, doch die goldene Kuppel, die er zurückließ, krönt die Stadt noch immer und hält, hundertfünfundzwanzig Jahre später, noch immer ihr Versprechen."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/olbrich.jpg",
+              "caption": "Joseph Maria Olbrich — der Architekt, kaum dreißig, als er den Tempel der Secession baute.",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "Die Beethoven-Ausstellung",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Alles, woran die Secession glaubte, fand einmal in einem einzigen Raum zusammen. 1902 wurde die vierzehnte Ausstellung als Tempel im Tempel gedacht: ein Heiligtum für Ludwig van Beethoven, den Künstler als Held und Prophet. In ihrer Mitte stand Max Klingers polychrome Statue des Komponisten, thronend wie ein Gott; ringsum an den Wänden trugen einundzwanzig Mitglieder Werke bei, die zusammen zu sehen waren, als ein einziger Akt der Andacht. Und über drei Wände malte Klimt den Beethovenfries — vierunddreißig Meter Sehnsucht, Leid und Erlösung."
+            },
+            {
+              "type": "text",
+              "content": "Er beginnt mit der Sehnsucht der Menschheit, treibt durch die Versuchungen und Schrecken der Welt — den Riesen Typhoeus, einen ungeheuren Affen und die Gorgonen von Krankheit, Wahnsinn und Tod — und löst sich zuletzt in Kunst und Liebe. Der Fries war direkt auf die Wand gemalt und sollte mit dem Ende der Schau zerstört werden. Er überlebte durch Zufall und zählt heute zu den höchsten Leistungen der europäischen Malerei."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/beethoven-frieze.jpg",
+              "caption": "Der Beethovenfries, 1902 — „Die feindlichen Gewalten“: der Riese Typhoeus und die Gorgonen von Krankheit, Wahnsinn und Tod.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Doch der Fries endet nicht im Dunkel. Er steigt zu einem Chor von Engeln empor und schließt mit einer Umarmung — ein nacktes Paar, unter goldenem Himmel ineinander verschlungen, und über ihnen die Worte Schillers, die Beethoven in seiner Neunten Symphonie vertonte: Diesen Kuss der ganzen Welt. Es ist der tiefste Glaube der Secession, groß gemalt: dass Kunst am Ende eine Form der Liebe ist und Liebe eine Form der Erlösung."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/beethoven-kiss.jpg",
+              "caption": "Das Finale des Frieses — der Paradieschor und die Umarmung: „Diesen Kuss der ganzen Welt.“",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "Der Bruch und das Gold",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Bewegungen sind sterblich, und die Einheit der Secession überlebte ihren Erfolg nicht. Um 1905 hatte sich ein Riss aufgetan zwischen den „Stilisten“ um Klimt, die Kunst, Handwerk und Handel vollständig verschmelzen wollten, und den „Naturalisten“, die fürchteten, die Bewegung werde zum Geschäft. Klimt und sein Kreis — Moser, Hoffmann, Wagner unter ihnen — traten aus. Die Gruppe, die sie acht Jahre zuvor gegründet hatten, ging ohne sie weiter; so, herrlich, taten es auch sie selbst."
+            },
+            {
+              "type": "text",
+              "content": "Denn gerade in den Jahren unmittelbar nach dem Bruch trat Klimt in seine goldene Phase ein und malte das Bild, das alles andere überstrahlen sollte — Der Kuss. Zwei Gestalten knien am Rand einer blühenden Wiese, in ein einziges Gewand aus schimmerndem Gold gehüllt, die Muster des Mannes hart und rechteckig, die der Frau weich und rund, die ganze Welt um sie herum in Ornament aufgelöst. Alles, wofür die Secession gestritten hatte — die Vereinigung von Malerei und Dekoration, die Furchtlosigkeit vor der Schönheit, das aus der Werkstatt des Vaters ererbte Gold —, trifft hier vollständig ein."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/klimt-kiss.jpg",
+              "caption": "Gustav Klimt, Der Kuss, 1907–1908 — der goldene Gipfel all dessen, was die Secession in Bewegung setzte.",
+              "align": "full"
+            },
+            {
+              "type": "note",
+              "content": "Das Secessionsgebäude steht noch immer an der Friedrichstraße, seine Kuppel ist noch immer vergoldet, und im Untergeschoss leuchtet noch immer der Beethovenfries. Die Worte über dem Eingang haben sich in hundertachtundzwanzig Jahren nicht geändert: Der Zeit ihre Kunst, der Kunst ihre Freiheit. Es bleibt vielleicht das Schönste, was eine Gruppe junger Künstler je zu versprechen gewagt hat — und eines der wenigen solcher Versprechen, die die Welt danach auch gehalten hat."
             }
           ]
         }
@@ -5094,6 +5954,221 @@
               "content": "El equipo editorial de EPRIS felicita a Mariia por su título y le agradece la inspiración que vive en cada número de la revista. Este diploma marca un nuevo capítulo — y sospechamos que no será el último que merezca celebrarse. Nos alegra que lo leáis con nosotros."
             }
           ]
+        },
+        {
+          "id": 12,
+          "title": "Ver Sacrum: retrato de la Secesión de Viena",
+          "author": "EPRIS Journal",
+          "role": "Arts Desk",
+          "date": "Jul 8, 2026",
+          "excerpt": "En 1897, un puñado de artistas vieneses abandonó la academia, levantó un templo blanco coronado por una cúpula de hojas doradas y proclamó que cada época merece un arte propio. Esta es la historia de la Secesión y de las personas inquietas que la hicieron.",
+          "category": "Culture",
+          "subcategory": "La lectura larga",
+          "tags": [
+            "secesión de viena",
+            "modernismo",
+            "gustav klimt",
+            "arquitectura",
+            "historia"
+          ],
+          "imageUrl": "/images/secession/dome.jpg",
+          "imageSeed": "vienna-secession",
+          "draft": false,
+          "content": [
+            {
+              "type": "text",
+              "content": "Imaginen Viena en los últimos años del siglo diecinueve: una ciudad ebria de su propio reflejo. La Ringstrasse relucía de palacios vestidos con una historia prestada — aquí un parlamento griego, allá un ayuntamiento gótico, en medio una ópera renacentista. Era magnífica, y estaba agotada. Tras el oropel, toda una generación de jóvenes pintores y arquitectos empezaba a sospechar que su ciudad construía museos a un pasado que nunca le había pertenecido del todo, mientras el presente — eléctrico, ansioso, vivo — quedaba sin pintar."
+            },
+            {
+              "type": "text",
+              "content": "El tres de abril de 1897 dejaron de esperar permiso. Encabezados por un pintor de treinta y cuatro años llamado Gustav Klimt, renunciaron en bloque a la Künstlerhaus, la asociación oficial de artistas que controlaba toda exposición importante de la ciudad. A su nuevo movimiento lo llamaron Unión de Artistas Plásticos de Austria, pero la historia los recuerda por la palabra que eligieron para la ruptura misma: Secesión."
+            },
+            {
+              "type": "text",
+              "content": "No eran una escuela. No compartían un estilo único, ni un manifiesto de técnica. Lo que los unía era una convicción, y la grabaron en oro sobre la puerta del edificio que pronto levantarían. Decía: a cada época su arte, al arte su libertad."
+            },
+            {
+              "type": "header",
+              "content": "A cada época su arte",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "La Secesión se anunció como un trueno anuncia la tormenta: con un cartel. Para la primera exposición de 1898, Klimt dibujó a Teseo dando muerte al Minotauro — el joven héroe de un arte nuevo pasando a espada al viejo monstruo — mientras Palas Atenea, diosa de la sabiduría y de la guerra justa, montaba guardia al margen. Los censores lo obligaron a añadir un velo de árboles para ocultar la desnudez de Teseo. Fue la primera de muchas peleas que la Secesión buscaría con un público que aún no sabía que quería ser provocado."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/klimt-poster.jpg",
+              "caption": "Cartel de Gustav Klimt para la primera exposición de la Secesión, 1898. Teseo se enfrenta al Minotauro; a la derecha, Atenea monta guardia.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Su credo también tenía nombre — Ver Sacrum, la «primavera sagrada». En la antigua Italia era el rito por el cual un pueblo, en tiempos de crisis, consagraba a la generación venidera a un nuevo comienzo. Los secesionistas tomaron prestada la expresión para su revista, una publicación cuadrada y exquisita donde texto e imagen se diseñaban como una sola superficie viva. Abrir un número de Ver Sacrum era sostener en las manos la filosofía del movimiento: que una copa de vino, una tipografía, una silla y un cuadro son todos arte, y todos igualmente dignos de perfección."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/versacrum.jpg",
+              "caption": "El primer número de Ver Sacrum, enero de 1898 — la revista del movimiento, y su manifiesto impreso.",
+              "align": "full"
+            },
+            {
+              "type": "quote",
+              "content": "Der Zeit ihre Kunst. Der Kunst ihre Freiheit. — A cada época su arte. Al arte su libertad."
+            },
+            {
+              "type": "header",
+              "content": "El templo blanco",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Un movimiento necesita un hogar, y la Secesión construyó uno como Viena no había visto. El encargo recayó en Joseph Maria Olbrich, de apenas treinta años, discípulo del gran Otto Wagner. Lo que creó en 1898 fue menos un edificio que una declaración: un templo cúbico de muros blancos y geometría pura, despojado de todo ornamento histórico, coronado por una cúpula calada de tres mil hojas de laurel doradas. Viena, entre escandalizada y encantada, lo apodó «el repollo dorado»."
+            },
+            {
+              "type": "text",
+              "content": "Miren de cerca la fachada y hallarán el espíritu del movimiento escrito en el yeso: tres búhos solemnes, aves sagradas de Atenea, y sobre la entrada aquellas desafiantes palabras doradas. Hasta los detalles decorativos los diseñaron miembros del grupo — los búhos y el follaje son de Koloman Moser —, de modo que el propio edificio se volvió una obra de arte total, un Gesamtkunstwerk, donde arquitectura, escultura y ornamento hablan una sola lengua."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/hero.jpg",
+              "caption": "Los búhos y el laurel de Koloman Moser en la fachada de la Secesión — las aves de Atenea, guardianas de un templo de arte nuevo.",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "Las personas",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "La Secesión nunca fue el movimiento de un solo hombre, pero comenzó, inconfundiblemente, con uno. Gustav Klimt era hijo de un grabador de oro, y el oro no abandonaría jamás su obra. Se había hecho un nombre — y una fortuna — pintando decorosas alegorías en los techos de esos mismos palacios de la Ringstrasse contra los que la Secesión se rebelaría. Entonces, en la cima de su respetabilidad, giró. Su arte se volvió extraño, erótico, ornamental y sin miedo; sus mecenas se pusieron nerviosos; y Klimt, sereno, siguió adelante."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/klimt-portrait.jpg",
+              "caption": "Gustav Klimt con su bata de pintor, fotografiado en 1914. El primer presidente de la Secesión.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "En la Palas Atenea de 1898 ya se ve llegar el futuro. La diosa está acorazada en oro repujado, su mirada fría y frontal, y en la mano sostiene una diminuta figura desnuda — Nuda Veritas, la verdad desnuda, que alza un espejo ante una sociedad que prefería no mirar. Era el lema privado de Klimt hecho visible: el artista no le debe a la época halago, sino honestidad."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/pallas.jpg",
+              "caption": "Klimt, Palas Atenea, 1898 — la diosa en oro repujado, sosteniendo a la Verdad desnuda en la palma.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Si Klimt era el corazón del movimiento, Otto Wagner era su conciencia vuelta piedra y hierro. Ya famoso, ya pasados los cincuenta, el profesor podría haberse deslizado hacia una cómoda vejez neobarroca. En cambio, se puso del lado de sus propios alumnos, declarando que «algo impráctico no puede ser bello» y que la arquitectura de una época nueva debía nacer de una vida nueva, materiales nuevos, necesidades nuevas."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/wagner-portrait.jpg",
+              "caption": "Otto Wagner — el maestro veterano que eligió el bando de los jóvenes.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Los edificios de Wagner aún asombran. En la Linke Wienzeile revistió toda una casa de vecindad con azulejos de mayólica florecidos — flores que trepan cinco pisos hacia el cielo vienés, prácticas, resistentes a la intemperie y gloriosamente vivas. Y en la Karlsplatz construyó un par de pabellones de ferrocarril tan elegantes que los pasajeros de la ciudad cruzaban cada día por obras de arte, hierro verde y mármol blanco cosidos con girasoles de oro."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/wagner-majolica.jpg",
+              "caption": "La Casa de la Mayólica de Wagner (1898) — un bloque de viviendas vestido de azulejos florecidos.",
+              "align": "full"
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/wagner-station.jpg",
+              "caption": "El pabellón del Stadtbahn de Karlsplatz (1898) — una estación de tren como joya verde y dorada.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Koloman Moser era el universo callado del movimiento. Formado como pintor, lo diseñaba todo: sellos postales, vidrieras, cubiertas de libros, muebles, los búhos del muro de la Secesión, las páginas mismas de Ver Sacrum. Si la Secesión creía que el arte debía saturar la vida ordinaria, Moser era la prueba — un hombre capaz de hacer un buzón tan hermoso como un retablo."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/moser.jpg",
+              "caption": "Koloman Moser — pintor, genio gráfico y el hombre que diseñó casi todo.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Josef Hoffmann tomó esa creencia y construyó un imperio sobre ella. En 1903, con Moser y el banquero Fritz Wärndorfer, fundó la Wiener Werkstätte — los Talleres de Viena —, una cooperativa de artesanos decidida a crear objetos de calidad total, desde los cubiertos hasta casas enteras. Sus retículas y cuadrados eran tan rigurosos que sus colegas lo apodaron «Quadratl-Hoffmann», Hoffmann Cuadradito. El apodo era una broma; la influencia no. La pureza de su línea atraviesa todo el siglo veinte hasta el lenguaje del diseño en el que aún vivimos."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/hoffmann.jpg",
+              "caption": "Josef Hoffmann — cofundador de la Wiener Werkstätte, apóstol del cuadrado perfecto.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Y Joseph Maria Olbrich, el joven arquitecto del templo mismo, le dio al movimiento su rostro. No permaneció mucho en Viena — el gran duque de Hesse lo llamó a Darmstadt para levantar de la nada toda una colonia de artistas —, pero la cúpula dorada que dejó atrás sigue coronando la ciudad y sigue cumpliendo su promesa, ciento veinticinco años después."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/olbrich.jpg",
+              "caption": "Joseph Maria Olbrich — el arquitecto que apenas tenía treinta años cuando levantó el templo de la Secesión.",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "La exposición Beethoven",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Todo aquello en lo que creía la Secesión se reunió, una vez, en una sola sala. En 1902 la decimocuarta exposición se concibió como un templo dentro del templo: un santuario a Ludwig van Beethoven, el artista como héroe y profeta. En su centro se alzaba la estatua policromada del compositor de Max Klinger, entronizado como un dios; en torno a los muros, veintiún miembros aportaron obras pensadas para verse juntas, como un solo acto de devoción. Y a lo largo de tres paredes Klimt pintó el Friso de Beethoven — treinta y cuatro metros de anhelo, sufrimiento y redención."
+            },
+            {
+              "type": "text",
+              "content": "Comienza con el anhelo de la humanidad, deriva por las tentaciones y los terrores del mundo — el gigante Tifón, un mono monstruoso y las Gorgonas de la enfermedad, la locura y la muerte — y se resuelve, al fin, en el arte y el amor. El friso se pintó directamente sobre el muro, destinado a ser destruido al cerrar la muestra. Sobrevivió por accidente y hoy es uno de los logros supremos de la pintura europea."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/beethoven-frieze.jpg",
+              "caption": "El Friso de Beethoven, 1902 — «Las fuerzas hostiles»: el gigante Tifón y las Gorgonas de la enfermedad, la locura y la muerte.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Pero el friso no termina en la oscuridad. Asciende hacia un coro de ángeles y cierra con un abrazo — una pareja desnuda entrelazada bajo un cielo dorado, y sobre ellos las palabras de Schiller que Beethoven puso en música en su Novena Sinfonía: este beso para el mundo entero. Es la creencia más profunda de la Secesión, pintada en grande: que el arte, al final, es una forma del amor, y el amor una forma de redención."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/beethoven-kiss.jpg",
+              "caption": "El final del friso — el coro del paraíso y el abrazo: «este beso para el mundo entero».",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "La ruptura y el oro",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Los movimientos son mortales, y la unidad de la Secesión no sobrevivió a su éxito. Hacia 1905 se había abierto una brecha entre los «estilistas» en torno a Klimt, que querían fundir por completo arte, oficio y comercio, y los «naturalistas», que temían que el movimiento se volviera una tienda. Klimt y su círculo — Moser, Hoffmann, Wagner entre ellos — renunciaron. El grupo que habían fundado ocho años antes siguió sin ellos; y ellos, gloriosamente, también siguieron."
+            },
+            {
+              "type": "text",
+              "content": "Pues fue en los años inmediatamente posteriores a la ruptura cuando Klimt entró en su fase dorada y pintó el cuadro que eclipsaría a todos los demás — El beso. Dos figuras se arrodillan al borde de un prado florido, envueltas en un solo manto de oro reluciente, los patrones del hombre duros y rectangulares, los de la mujer suaves y circulares, el mundo entero disuelto en ornamento a su alrededor. Todo lo que la Secesión había defendido — la unión de pintura y decoración, la valentía ante la belleza, el oro heredado del taller de un padre — llega aquí, completo."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/klimt-kiss.jpg",
+              "caption": "Gustav Klimt, El beso, 1907–1908 — la cumbre dorada de todo lo que la Secesión puso en marcha.",
+              "align": "full"
+            },
+            {
+              "type": "note",
+              "content": "El edificio de la Secesión sigue en pie en la Friedrichstrasse, su cúpula sigue dorada y en el sótano sigue brillando el Friso de Beethoven. Las palabras sobre la puerta no han cambiado en ciento veintiocho años: a cada época su arte, al arte su libertad. Sigue siendo, quizá, la promesa más hermosa que un grupo de jóvenes artistas se atrevió jamás a hacer, y una de las poquísimas que el mundo llegó a cumplir."
+            }
+          ]
         }
       ],
       "reviews": [
@@ -5798,6 +6873,221 @@
               "content": "EPRIS editör ekibi, Mariia'yı diploması için tebrik eder ve derginin her sayısında yaşayan ilham için ona teşekkür eder. Bu diploma yeni bir bölümü işaret ediyor — ve sanırız kutlanacak son bölüm olmayacak. Bunu bizimle birlikte okuduğunuz için mutluyuz."
             }
           ]
+        },
+        {
+          "id": 12,
+          "title": "Ver Sacrum: Viyana Sesesyonu'nun Portresi",
+          "author": "EPRIS Journal",
+          "role": "Arts Desk",
+          "date": "Jul 8, 2026",
+          "excerpt": "1897'de bir avuç Viyanalı sanatçı akademiden koptu, yaldızlı yapraklardan bir kubbeyle taçlanan beyaz bir tapınak inşa etti ve her çağın kendi sanatını hak ettiğini ilan etti. Bu, Sesesyon'un ve onu var eden huzursuz insanların hikâyesidir.",
+          "category": "Culture",
+          "subcategory": "Uzun Okuma",
+          "tags": [
+            "viyana sesesyonu",
+            "art nouveau",
+            "gustav klimt",
+            "mimari",
+            "tarih"
+          ],
+          "imageUrl": "/images/secession/dome.jpg",
+          "imageSeed": "vienna-secession",
+          "draft": false,
+          "content": [
+            {
+              "type": "text",
+              "content": "On dokuzuncu yüzyılın son yıllarında Viyana'yı düşünün: kendi yansımasından sarhoş bir şehir. Ringstrasse, ödünç alınmış tarihle giydirilmiş saraylarla ışıldıyordu — burada bir Yunan parlamentosu, orada bir Gotik belediye binası, aralarında bir Rönesans operası. Görkemliydi ve tükenmişti. Yaldızın ardında, bir kuşak dolusu genç ressam ve mimar, şehrinin hiçbir zaman tam olarak ona ait olmamış bir geçmişe müzeler inşa ettiğinden, oysa şimdinin — elektrikli, kaygılı, canlı — resimsiz kaldığından kuşkulanmaya başlamıştı."
+            },
+            {
+              "type": "text",
+              "content": "3 Nisan 1897'de izin beklemeyi bıraktılar. Gustav Klimt adında otuz dört yaşında bir ressamın önderliğinde, şehirdeki her önemli sergiyi denetleyen resmî sanatçı birliği Künstlerhaus'tan topluca istifa ettiler. Yeni akımlarına Avusturya Görsel Sanatçılar Birliği adını verdiler, ama tarih onları kopuşun kendisi için seçtikleri sözcükle anıyor: Sesesyon."
+            },
+            {
+              "type": "text",
+              "content": "Bir okul değildiler. Tek bir üslupları, tek bir teknik bildirileri yoktu. Onları birbirine bağlayan bir inançtı ve bunu, kısa süre sonra dikecekleri binanın kapısının üzerine altınla kazıdılar. Şöyle yazıyordu: her çağa kendi sanatı, sanata kendi özgürlüğü."
+            },
+            {
+              "type": "header",
+              "content": "Her Çağa Kendi Sanatı",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Sesesyon, gök gürültüsünün fırtınayı haber verdiği gibi kendini haber verdi — bir afişle. 1898'deki ilk sergi için Klimt, Minotauros'u öldüren Theseus'u çizdi: yeni bir sanatın genç kahramanı, eski canavarı kılıçtan geçirirken, bilgelik ve haklı savaş tanrıçası Pallas Athena kenarda nöbet tutuyordu. Sansürcüler, Theseus'un çıplaklığını gizlemek için ona bir ağaç perdesi eklettirdi. Bu, Sesesyon'un, henüz kışkırtılmak istediğini bilmeyen bir kamuoyuyla çıkaracağı pek çok kavgadan ilkiydi."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/klimt-poster.jpg",
+              "caption": "Gustav Klimt'in ilk Sesesyon sergisi için afişi, 1898. Theseus Minotauros'la karşı karşıya; sağda Athena nöbet tutuyor.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "İnançlarının da bir adı vardı — Ver Sacrum, «kutsal bahar». Antik İtalya'da bu, bir halkın kriz zamanında gelecek kuşağı yeni bir başlangıca adadığı ayindi. Sesesyoncular bu deyişi dergileri için ödünç aldılar; metnin ve görüntünün tek bir canlı yüzey olarak tasarlandığı kare, zarif bir yayın. Ver Sacrum'un bir sayısını açmak, akımın felsefesini ellerinde tutmak demekti: bir şarap kadehinin, bir yazı karakterinin, bir sandalyenin ve bir tablonun hepsinin sanat olduğu ve hepsinin eşit ölçüde kusursuzluğa değer olduğu."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/versacrum.jpg",
+              "caption": "Ver Sacrum'un ilk sayısı, Ocak 1898 — akımın dergisi ve basılı manifestosu.",
+              "align": "full"
+            },
+            {
+              "type": "quote",
+              "content": "Der Zeit ihre Kunst. Der Kunst ihre Freiheit. — Her çağa kendi sanatı. Sanata kendi özgürlüğü."
+            },
+            {
+              "type": "header",
+              "content": "Beyaz Tapınak",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Bir akımın bir yuvaya ihtiyacı vardır ve Sesesyon, Viyana'nın daha önce görmediği bir yuva inşa etti. İş, henüz otuzunda, büyük Otto Wagner'in öğrencisi Joseph Maria Olbrich'e verildi. 1898'de yarattığı şey bir binadan çok bir bildirgeydi: her tarihsel süslemeden arındırılmış, üç bin yaldızlı defne yaprağından oluşan ajur bir kubbeyle taçlanmış, saf geometriye sahip küp biçiminde, beyaz duvarlı bir tapınak. Viyana, yarı skandala uğramış yarı büyülenmiş, ona «altın lahana» adını taktı."
+            },
+            {
+              "type": "text",
+              "content": "Cepheye yakından bakın, akımın ruhunu sıvaya yazılmış bulursunuz: Athena'ya kutsal üç ağırbaşlı baykuş ve girişin üzerinde o meydan okuyan altın sözler. Süsleme ayrıntılarını bile grubun üyeleri tasarladı — baykuşları ve yaprakları Koloman Moser yaptı —, öyle ki binanın kendisi mimarinin, heykelin ve süslemenin tek bir dil konuştuğu bütünsel bir sanat eserine, bir Gesamtkunstwerk'e dönüştü."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/hero.jpg",
+              "caption": "Koloman Moser'in Sesesyon cephesindeki baykuşları ve defnesi — Athena'nın kuşları, yeni sanatın tapınağının bekçileri.",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "İnsanlar",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Sesesyon hiçbir zaman tek bir adamın akımı olmadı, ama tartışmasız biçimde tek bir adamla başladı. Gustav Klimt bir altın hakkâkının oğluydu ve altın, eserini asla terk etmeyecekti. Adını — ve servetini —, Sesesyon'un başkaldıracağı o Ringstrasse saraylarının tavanlarına terbiyeli alegoriler çizerek yapmıştı. Sonra, saygınlığının doruğunda döndü. Sanatı tuhaf, erotik, süslemeci ve korkusuz oldu; hamileri tedirginleşti; ve Klimt dingin biçimde yoluna devam etti."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/klimt-portrait.jpg",
+              "caption": "Ressam gömleğiyle Gustav Klimt, 1914'te çekildi. Sesesyon'un ilk başkanı.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "1898 tarihli Pallas Athena'da geleceğin gelişini şimdiden görürsünüz. Tanrıça dövme altınla zırhlanmış, bakışı soğuk ve karşıdan; elinde küçücük çıplak bir figür tutuyor — Nuda Veritas, çıplak hakikat, bakmamayı yeğleyen bir topluma ayna tutuyor. Bu, Klimt'in özel düsturunun görünür kılınmış hâliydi: sanatçı çağa dalkavukluk değil, dürüstlük borçludur."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/pallas.jpg",
+              "caption": "Klimt, Pallas Athena, 1898 — dövme altından tanrıça, avucunda çıplak Hakikat'i tutuyor.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Klimt akımın kalbiyse, Otto Wagner taşa ve demire dönüşmüş vicdanıydı. Zaten ünlü, zaten ellisini geçmiş profesör, rahat bir neo-Barok yaşlılığa süzülebilirdi. Bunun yerine kendi öğrencilerinin safını tuttu; «pratik olmayan bir şey güzel olamaz» ve yeni bir çağın mimarisinin yeni bir yaşamdan, yeni malzemelerden, yeni gereksinimlerden doğması gerektiğini ilan etti."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/wagner-portrait.jpg",
+              "caption": "Otto Wagner — gençlerin safını seçen kıdemli usta.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Wagner'in yapıları bugün hâlâ hayrete düşürüyor. Linke Wienzeile'de bütün bir apartmanı çiçek açan mayolika karolarıyla kapladı — Viyana göğüne beş kat tırmanan çiçekler; pratik, dış etkenlere dayanıklı ve muhteşem biçimde canlı. Karlsplatz'ta ise öyle zarif bir çift tren istasyonu pavyonu inşa etti ki şehrin yolcuları her gün sanat eserlerinin içinden geçiyordu — altın ayçiçekleriyle işlenmiş yeşil demir ve beyaz mermer."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/wagner-majolica.jpg",
+              "caption": "Wagner'in Mayolika Evi (1898) — çiçek açan seramik karolarla giydirilmiş bir apartman.",
+              "align": "full"
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/wagner-station.jpg",
+              "caption": "Karlsplatz Stadtbahn pavyonu (1898) — yeşil ve altından bir mücevher olarak tren istasyonu.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Koloman Moser akımın sessiz evreniydi. Ressam olarak yetişmiş, her şeyi tasarladı: posta pulları, vitraylar, kitap kapakları, mobilyalar, Sesesyon duvarındaki baykuşlar, Ver Sacrum'un sayfalarının ta kendisi. Sesesyon sanatın sıradan yaşamı doyurması gerektiğine inanıyorsa, Moser bunun kanıtıydı — bir posta kutusunu bir sunak resmi kadar güzel yapabilen bir adam."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/moser.jpg",
+              "caption": "Koloman Moser — ressam, grafik dehası ve neredeyse her şeyi tasarlayan adam.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Josef Hoffmann bu inancı aldı ve üzerine bir imparatorluk kurdu. 1903'te Moser ve bankacı Fritz Wärndorfer ile Wiener Werkstätte'yi — Viyana Atölyeleri'ni — kurdu; çatal bıçaktan bütün evlere kadar tam nitelikli nesneler üretmeye kararlı bir zanaatçılar birliği. Izgaraları ve kareleri öyle titizdi ki meslektaşları ona «Quadratl-Hoffmann», Karecik Hoffmann adını taktı. Lakap bir şakaydı; etkisi değil. Çizgisinin arılığı, yirminci yüzyılın tam ortasından geçip hâlâ içinde yaşadığımız tasarım diline uzanır."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/hoffmann.jpg",
+              "caption": "Josef Hoffmann — Wiener Werkstätte'nin kurucularından, kusursuz karenin havarisi.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Ve tapınağın genç mimarı Joseph Maria Olbrich, akıma yüzünü verdi. Viyana'da uzun kalmadı — Hessen Büyük Dükü, sıfırdan bütün bir sanatçı kolonisi kurmak için onu Darmstadt'a çağırdı —, ama geride bıraktığı altın kubbe hâlâ şehri taçlandırıyor ve yüz yirmi beş yıl sonra hâlâ sözünü tutuyor."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/olbrich.jpg",
+              "caption": "Joseph Maria Olbrich — Sesesyon'un tapınağını inşa ettiğinde daha otuzunda olan mimar.",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "Beethoven Sergisi",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Sesesyon'un inandığı her şey bir kez, tek bir odada bir araya geldi. 1902'de on dördüncü sergi, tapınak içinde bir tapınak olarak tasarlandı: sanatçıyı kahraman ve peygamber olarak yücelten, Ludwig van Beethoven'a adanmış bir mabet. Merkezinde Max Klinger'in bestecinin çok renkli heykeli, bir tanrı gibi tahtta oturuyordu; duvarlar boyunca yirmi bir üye, tek bir ibadet edimi olarak birlikte görülmesi amaçlanan eserler sundu. Ve üç duvar boyunca Klimt, Beethoven Frizi'ni resmetti — otuz dört metrelik özlem, ıstırap ve kurtuluş."
+            },
+            {
+              "type": "text",
+              "content": "İnsanlığın özlemiyle başlar, dünyanın ayartıları ve dehşetleri arasında sürüklenir — dev Typhoeus, canavarca bir maymun ve hastalığın, deliliğin ve ölümün Gorgonları — ve nihayet sanatta ve sevgide çözülür. Friz doğrudan duvara boyanmıştı ve sergi kapanınca yok edilmesi gerekiyordu. Kazayla hayatta kaldı ve bugün Avrupa resminin en yüce başarılarından biri."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/beethoven-frieze.jpg",
+              "caption": "Beethoven Frizi, 1902 — «Düşman Güçler»: dev Typhoeus ve hastalığın, deliliğin ve ölümün Gorgonları.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Ama friz karanlıkta bitmez. Bir melekler korosuna doğru yükselir ve bir kucaklaşmayla kapanır — altın bir gökyüzü altında birbirine kenetlenmiş çıplak bir çift ve üzerlerinde, Beethoven'ın Dokuzuncu Senfonisi'nde besteye döktüğü Schiller'in sözleri: tüm dünyaya bu öpücük. Bu, Sesesyon'un en derin inancının büyük harflerle resmedilmiş hâlidir: sanatın sonunda bir sevgi biçimi, sevginin de bir kurtuluş biçimi olduğu."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/beethoven-kiss.jpg",
+              "caption": "Frizin finali — cennet korosu ve kucaklaşma: «tüm dünyaya bu öpücük».",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "Kopuş ve Altın",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Akımlar ölümlüdür ve Sesesyon'un birliği başarısını atlatamadı. 1905'e gelindiğinde, sanatı, zanaatı ve ticareti tümüyle kaynaştırmak isteyen Klimt çevresindeki «üslupçular» ile akımın bir dükkâna dönüşmesinden korkan «doğalcılar» arasında bir yarık açılmıştı. Klimt ve çevresi — aralarında Moser, Hoffmann, Wagner — istifa etti. Sekiz yıl önce kurdukları grup onlarsız yoluna devam etti; onlar da, muhteşem biçimde, kendi yollarına."
+            },
+            {
+              "type": "text",
+              "content": "Çünkü tam da kopuştan hemen sonraki yıllarda Klimt altın dönemine girdi ve diğer her şeyi gölgede bırakacak tabloyu resmetti — Öpücük. İki figür, çiçek açan bir çayırın kıyısında diz çökmüş, pırıltılı altından tek bir cüppeye sarınmış; erkeğin desenleri sert ve dikdörtgen, kadınınki yumuşak ve dairesel, çevrelerindeki bütün dünya süslemeye dönüşmüş. Sesesyon'un savunduğu her şey — resim ile bezemenin birliği, güzellik karşısındaki korkusuzluk, bir babanın atölyesinden miras kalan altın — burada eksiksiz biçimde bir araya gelir."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/klimt-kiss.jpg",
+              "caption": "Gustav Klimt, Öpücük, 1907–1908 — Sesesyon'un harekete geçirdiği her şeyin altın doruğu.",
+              "align": "full"
+            },
+            {
+              "type": "note",
+              "content": "Sesesyon binası hâlâ Friedrichstrasse'de duruyor, kubbesi hâlâ yaldızlı ve alt kattaki Beethoven Frizi hâlâ parıldıyor. Kapının üzerindeki sözler yüz yirmi sekiz yıldır değişmedi: her çağa kendi sanatı, sanata kendi özgürlüğü. Bu, belki de bir grup genç sanatçının verdiği en güzel söz olarak kalıyor — ve dünyanın sonradan tuttuğu o pek az sözden biri."
+            }
+          ]
         }
       ],
       "reviews": [
@@ -6500,6 +7790,221 @@
             {
               "type": "note",
               "content": "La redazione di EPRIS si congratula con Mariia per la laurea e la ringrazia per l'ispirazione che vive in ogni numero della rivista. Questo diploma segna un nuovo capitolo — e sospettiamo non sarà l'ultimo da festeggiare. Siamo felici che lo leggiate insieme a noi."
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "title": "Ver Sacrum: ritratto della Secessione viennese",
+          "author": "EPRIS Journal",
+          "role": "Arts Desk",
+          "date": "Jul 8, 2026",
+          "excerpt": "Nel 1897 una manciata di artisti viennesi voltò le spalle all'establishment, eresse un tempio bianco coronato da una cupola di foglie dorate e proclamò che ogni epoca merita un'arte propria. Questa è la storia della Secessione — e delle persone inquiete che la fecero.",
+          "category": "Culture",
+          "subcategory": "La lettura lunga",
+          "tags": [
+            "secessione viennese",
+            "art nouveau",
+            "gustav klimt",
+            "architettura",
+            "storia"
+          ],
+          "imageUrl": "/images/secession/dome.jpg",
+          "imageSeed": "vienna-secession",
+          "draft": false,
+          "content": [
+            {
+              "type": "text",
+              "content": "Immaginate Vienna negli ultimi anni dell'Ottocento: una città ubriaca del proprio riflesso. La Ringstrasse scintillava di palazzi vestiti di una storia presa in prestito — qui un parlamento greco, là un municipio gotico, in mezzo un'opera rinascimentale. Era magnifica, ed era esausta. Dietro l'oro, un'intera generazione di giovani pittori e architetti cominciava a sospettare che la loro città stesse costruendo musei a un passato che non le era mai davvero appartenuto, mentre il presente — elettrico, ansioso, vivo — restava non dipinto."
+            },
+            {
+              "type": "text",
+              "content": "Il tre aprile 1897 smisero di aspettare il permesso. Guidati da un pittore trentaquattrenne di nome Gustav Klimt, si dimisero in blocco dalla Künstlerhaus, l'associazione ufficiale che controllava ogni mostra importante della città. Chiamarono il nuovo movimento Unione degli artisti figurativi austriaci, ma la storia li ricorda con la parola che scelsero per la rottura stessa: Secessione."
+            },
+            {
+              "type": "text",
+              "content": "Non erano una scuola. Non condividevano un unico stile, né un manifesto di tecnica. Ciò che li univa era una convinzione, e la incisero in oro sopra la porta dell'edificio che presto avrebbero eretto. Diceva: a ogni epoca la sua arte, all'arte la sua libertà."
+            },
+            {
+              "type": "header",
+              "content": "A ogni epoca la sua arte",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "La Secessione si annunciò come un tuono annuncia la tempesta — con un manifesto. Per la prima mostra del 1898 Klimt disegnò Teseo che uccide il Minotauro: il giovane eroe di un'arte nuova che passa a fil di spada il vecchio mostro, mentre Pallade Atena, dea della saggezza e della guerra giusta, monta la guardia sul margine. I censori lo costrinsero ad aggiungere un velo di alberi per nascondere la nudità di Teseo. Fu la prima di molte liti che la Secessione avrebbe cercato con un pubblico che ancora non sapeva di voler essere provocato."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/klimt-poster.jpg",
+              "caption": "Il manifesto di Gustav Klimt per la prima mostra della Secessione, 1898. Teseo affronta il Minotauro; a destra Atena monta la guardia.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Anche il loro credo aveva un nome — Ver Sacrum, la «primavera sacra». Nell'antica Italia era il rito con cui un popolo, in tempo di crisi, consacrava la generazione a venire a un nuovo inizio. I secessionisti presero in prestito l'espressione per la loro rivista, un periodico quadrato e squisito in cui testo e immagine erano concepiti come un'unica superficie viva. Aprire un numero di Ver Sacrum significava tenere in mano la filosofia del movimento: che un calice di vino, un carattere tipografico, una sedia e un dipinto sono tutti arte, e tutti egualmente degni di perfezione."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/versacrum.jpg",
+              "caption": "Il primo numero di Ver Sacrum, gennaio 1898 — la rivista del movimento, e il suo manifesto a stampa.",
+              "align": "full"
+            },
+            {
+              "type": "quote",
+              "content": "Der Zeit ihre Kunst. Der Kunst ihre Freiheit. — A ogni epoca la sua arte. All'arte la sua libertà."
+            },
+            {
+              "type": "header",
+              "content": "Il tempio bianco",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Un movimento ha bisogno di una casa, e la Secessione ne costruì una come Vienna non aveva mai visto. L'incarico andò a Joseph Maria Olbrich, appena trentenne, allievo del grande Otto Wagner. Ciò che creò nel 1898 fu meno un edificio che una dichiarazione: un tempio cubico dalle pareti bianche e dalla geometria pura, spogliato di ogni ornamento storico, coronato da una cupola traforata di tremila foglie di alloro dorate. Vienna, tra lo scandalizzato e l'incantato, lo soprannominò «il cavolo dorato»."
+            },
+            {
+              "type": "text",
+              "content": "Guardate da vicino la facciata e troverete lo spirito del movimento scritto nell'intonaco: tre gufi solenni, uccelli sacri ad Atena, e sopra l'ingresso quelle parole d'oro di sfida. Persino i dettagli decorativi furono disegnati da membri del gruppo — i gufi e il fogliame sono di Koloman Moser —, così che l'edificio stesso divenne un'opera d'arte totale, un Gesamtkunstwerk, in cui architettura, scultura e ornamento parlano un'unica lingua."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/hero.jpg",
+              "caption": "I gufi e l'alloro di Koloman Moser sulla facciata della Secessione — gli uccelli di Atena, guardiani di un tempio d'arte nuova.",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "Le persone",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "La Secessione non fu mai il movimento di un solo uomo, ma cominciò, inconfondibilmente, con uno. Gustav Klimt era figlio di un incisore d'oro, e l'oro non avrebbe mai lasciato la sua opera. Si era fatto un nome — e una fortuna — dipingendo compunte allegorie sui soffitti di quegli stessi palazzi della Ringstrasse contro cui la Secessione si sarebbe ribellata. Poi, all'apice della rispettabilità, cambiò rotta. La sua arte divenne strana, erotica, ornamentale e senza paura; i suoi committenti si innervosirono; e Klimt, sereno, andò avanti."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/klimt-portrait.jpg",
+              "caption": "Gustav Klimt nel camice da pittore, fotografato nel 1914. Il primo presidente della Secessione.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Nella Pallade Atena del 1898 si vede già arrivare il futuro. La dea è corazzata d'oro sbalzato, lo sguardo freddo e frontale, e in mano tiene una minuscola figura nuda — Nuda Veritas, la verità nuda, che leva uno specchio a una società che preferiva non guardare. Era il motto privato di Klimt reso visibile: l'artista deve all'epoca non l'adulazione, ma l'onestà."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/pallas.jpg",
+              "caption": "Klimt, Pallade Atena, 1898 — la dea in oro sbalzato, con la Verità nuda sul palmo.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Se Klimt era il cuore del movimento, Otto Wagner ne era la coscienza fatta pietra e ferro. Già famoso, già oltre i cinquanta, il professore avrebbe potuto scivolare in una comoda vecchiaia neobarocca. Si schierò invece con i propri allievi, dichiarando che «qualcosa di impratico non può essere bello» e che l'architettura di un'epoca nuova doveva nascere da una vita nuova, materiali nuovi, bisogni nuovi."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/wagner-portrait.jpg",
+              "caption": "Otto Wagner — il maestro anziano che scelse la parte dei giovani.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Gli edifici di Wagner sbalordiscono ancora. Sulla Linke Wienzeile rivestì un intero caseggiato di piastrelle di maiolica fiorita — fiori che salgono per cinque piani nel cielo viennese, pratici, resistenti alle intemperie e splendidamente vivi. E in Karlsplatz costruì una coppia di padiglioni ferroviari così eleganti che i pendolari della città attraversavano ogni giorno delle opere d'arte, ferro verde e marmo bianco cuciti di girasoli d'oro."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/wagner-majolica.jpg",
+              "caption": "La Casa della Maiolica di Wagner (1898) — un caseggiato vestito di piastrelle fiorite.",
+              "align": "full"
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/wagner-station.jpg",
+              "caption": "Il padiglione della Stadtbahn di Karlsplatz (1898) — una stazione ferroviaria come gioiello verde e oro.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Koloman Moser era l'universo silenzioso del movimento. Formatosi come pittore, disegnava tutto: francobolli, vetrate, copertine di libri, mobili, i gufi sul muro della Secessione, le pagine stesse di Ver Sacrum. Se la Secessione credeva che l'arte dovesse impregnare la vita comune, Moser ne era la prova — un uomo capace di rendere una cassetta delle lettere bella come una pala d'altare."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/moser.jpg",
+              "caption": "Koloman Moser — pittore, genio della grafica e l'uomo che disegnò quasi tutto.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Josef Hoffmann prese quella fede e vi costruì sopra un impero. Nel 1903, con Moser e il banchiere Fritz Wärndorfer, fondò la Wiener Werkstätte — le Officine viennesi —, una cooperativa di artigiani decisa a creare oggetti di qualità totale, dalle posate a case intere. Le sue griglie e i suoi quadrati erano così rigorosi che i colleghi lo soprannominarono «Quadratl-Hoffmann», Hoffmann Quadratino. Il soprannome era uno scherzo; l'influenza no. La purezza della sua linea attraversa tutto il Novecento fino al linguaggio del design in cui ancora viviamo."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/hoffmann.jpg",
+              "caption": "Josef Hoffmann — cofondatore della Wiener Werkstätte, apostolo del quadrato perfetto.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "E Joseph Maria Olbrich, il giovane architetto del tempio stesso, diede al movimento il suo volto. Non rimase a lungo a Vienna — il granduca d'Assia lo chiamò a Darmstadt per erigere dal nulla un'intera colonia di artisti —, ma la cupola dorata che lasciò corona ancora la città e mantiene ancora la sua promessa, centoventicinque anni dopo."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/olbrich.jpg",
+              "caption": "Joseph Maria Olbrich — l'architetto che aveva appena trent'anni quando eresse il tempio della Secessione.",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "La mostra su Beethoven",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Tutto ciò in cui la Secessione credeva si riunì, una volta, in una sola sala. Nel 1902 la quattordicesima mostra fu concepita come un tempio dentro il tempio: un santuario a Ludwig van Beethoven, l'artista come eroe e profeta. Al suo centro si ergeva la statua policroma del compositore di Max Klinger, in trono come un dio; lungo le pareti, ventun membri contribuirono con opere pensate per essere viste insieme, come un unico atto di devozione. E lungo tre pareti Klimt dipinse il Fregio di Beethoven — trentaquattro metri di desiderio, sofferenza e liberazione."
+            },
+            {
+              "type": "text",
+              "content": "Comincia con l'anelito dell'umanità, deriva tra le tentazioni e i terrori del mondo — il gigante Tifeo, una scimmia mostruosa e le Gorgoni della malattia, della follia e della morte — e si risolve, infine, nell'arte e nell'amore. Il fregio fu dipinto direttamente sul muro, destinato a essere distrutto alla chiusura della mostra. Sopravvisse per caso e oggi è una delle conquiste supreme della pittura europea."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/beethoven-frieze.jpg",
+              "caption": "Il Fregio di Beethoven, 1902 — «Le forze ostili»: il gigante Tifeo e le Gorgoni della malattia, della follia e della morte.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Ma il fregio non finisce nell'oscurità. Sale verso un coro di angeli e si chiude con un abbraccio — una coppia nuda avvinta sotto un cielo dorato, e sopra di loro le parole di Schiller che Beethoven mise in musica nella Nona Sinfonia: questo bacio al mondo intero. È la fede più profonda della Secessione, dipinta in grande: che l'arte, alla fine, è una forma d'amore, e l'amore una forma di liberazione."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/beethoven-kiss.jpg",
+              "caption": "Il finale del fregio — il coro del paradiso e l'abbraccio: «questo bacio al mondo intero».",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "La rottura e l'oro",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "I movimenti sono mortali, e l'unità della Secessione non sopravvisse al suo successo. Verso il 1905 si era aperta una frattura tra gli «stilisti» attorno a Klimt, che volevano fondere del tutto arte, artigianato e commercio, e i «naturalisti», che temevano che il movimento stesse diventando un negozio. Klimt e la sua cerchia — Moser, Hoffmann, Wagner tra loro — si dimisero. Il gruppo che avevano fondato otto anni prima proseguì senza di loro; e loro, gloriosamente, proseguirono a loro volta."
+            },
+            {
+              "type": "text",
+              "content": "Fu infatti negli anni immediatamente successivi alla rottura che Klimt entrò nella sua fase aurea e dipinse il quadro che avrebbe eclissato ogni altra cosa — Il bacio. Due figure si inginocchiano al margine di un prato fiorito, avvolte in un'unica veste d'oro scintillante, i motivi dell'uomo duri e rettangolari, quelli della donna morbidi e circolari, il mondo intero dissolto in ornamento intorno a loro. Tutto ciò per cui la Secessione aveva combattuto — l'unione di pittura e decorazione, l'assenza di paura davanti alla bellezza, l'oro ereditato dalla bottega di un padre — arriva qui, compiuto."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/klimt-kiss.jpg",
+              "caption": "Gustav Klimt, Il bacio, 1907–1908 — il vertice dorato di tutto ciò che la Secessione mise in moto.",
+              "align": "full"
+            },
+            {
+              "type": "note",
+              "content": "L'edificio della Secessione è ancora lì sulla Friedrichstrasse, la sua cupola è ancora dorata e nel seminterrato il Fregio di Beethoven brilla ancora. Le parole sopra la porta non sono cambiate in centoventotto anni: a ogni epoca la sua arte, all'arte la sua libertà. Resta forse la cosa più bella che un gruppo di giovani artisti abbia mai osato promettere — e una delle pochissime promesse simili che il mondo abbia poi mantenuto."
             }
           ]
         }
