@@ -1158,7 +1158,14 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   return (
     <motion.div
       ref={scrollRef}
-      initial={{ opacity: 0, x: '3%' }}
+      // Only the horizontal slide animates on entry — the backdrop itself
+      // must be fully opaque from frame one, or fading its opacity from 0
+      // fades the solid bg-[var(--c-bg)] along with it, letting the page
+      // underneath show through for the whole transition (a genuine "ghost
+      // of the homepage behind the article" flash on every open, not a
+      // rendering artifact). Exit still fades — closing back onto the page
+      // behind it is the correct, intentional cross-fade.
+      initial={{ opacity: 1, x: '3%' }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: '3%' }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
