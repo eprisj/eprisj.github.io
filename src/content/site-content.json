@@ -2141,9 +2141,11 @@
       "tags": [
         "Design",
         "Geometry",
-        "Materials"
+        "Materials",
+        "Pattern"
       ],
       "imageSeed": "",
+      "imageUrl": "https://eprisjournal.com/images/article-polkadot-bedroom.jpg",
       "content": [
         {
           "type": "text",
@@ -2172,11 +2174,22 @@
           "content": "The wallpaper is the only element working in two dimensions rather than three, and it's the strictest geometry in the room: a fixed grid, the same interval in every direction, no dot more important than its neighbor. Everything solid either respects that grid or fights it. The nightstand sits square inside it, edges parallel to the rows. The lamp doesn't — its arm crosses the grid at roughly twenty degrees, the single diagonal in a room otherwise built from verticals, horizontals, and one uninterrupted curve. That diagonal does more compositional work than either object beneath it: it's the line the eye follows first, precisely because it's the only thing in the frame not obeying the grid behind it."
         },
         {
+          "type": "text",
+          "content": "Look closer at the wallpaper and the strict grid softens: every dot is drawn, not stamped — each one a slightly different weight, a slightly different edge, no two identical the way no two brush marks ever are. The interval is mathematical; the mark inside it is not. That tension — a system exact about placement and careless about shape — is what keeps the pattern from reading as wallpaper-store regular. It's the same logic, at a much smaller scale, as the cone and the hexagon underneath it: rigor in the structure, freedom in the surface. Geometry, here, is what makes a hand-drawn mark feel deliberate instead of sloppy."
+        },
+        {
+          "type": "text",
+          "content": "This corner doesn't belong to itself. The same dot travels through the apartment at different scales — across a sectional sofa, folded into a coffee table's skirt, gathered into a curtain, laid flat across a bed — and the same burl veneer wrapping this nightstand reappears as a console top two rooms away, then again as a small framed panel on a shelf. A pair of greyhounds, painted in the same cool blue-grey, watches from at least two different walls. None of this reads as a decorating scheme announcing itself; it reads as a small set of decisions repeated with enough restraint that the repetition itself becomes the home's real structure — steadier, in the end, than any single cone or hexagon."
+        },
+        {
+          "type": "text",
+          "content": "The lamp earns its diagonal honestly: its shade tips toward the pillow at almost exactly the angle a person leans in to say one last thing before a room goes dark. That's a small, deliberate piece of theater — the one object in the frame allowed to behave like it has an audience."
+        },
+        {
           "type": "note",
-          "content": "Geometry doesn't explain why a room feels calm rather than staged — proportion and restraint do that. But naming the shapes is a decent place to start noticing why some \"clashing\" combinations hold together, and most don't."
+          "content": "Geometry and repetition don't explain why a room feels calm rather than staged — proportion and restraint do that. But naming the shapes, and counting how often they recur, is a decent place to start noticing why some \"clashing\" combinations hold together, and most don't."
         }
-      ],
-      "imageUrl": "https://eprisjournal.com/images/article-polkadot-bedroom.jpg"
+      ]
     },
     {
       "id": 11,
