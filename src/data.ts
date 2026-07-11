@@ -16,6 +16,8 @@ export interface Item {
   draft?: boolean;
   /** ISO datetime; hidden from the public site until this moment passes. */
   publishAt?: string;
+  /** Server-stamped on every /content/entity save — see mergeLocalizedArray. */
+  updatedAt?: string;
 }
 
 export interface ContentBlock {
@@ -47,6 +49,8 @@ export interface Article {
   draft?: boolean;
   /** ISO datetime; hidden from the public site until this moment passes. */
   publishAt?: string;
+  /** Server-stamped on every /content/entity save — see mergeLocalizedArray. */
+  updatedAt?: string;
 }
 
 export interface Review {
@@ -69,6 +73,8 @@ export interface Review {
   draft?: boolean;
   /** ISO datetime; hidden from the public site until this moment passes. */
   publishAt?: string;
+  /** Server-stamped on every /content/entity save — see mergeLocalizedArray. */
+  updatedAt?: string;
 }
 
 export interface LibraryItem {
@@ -82,6 +88,8 @@ export interface LibraryItem {
   draft?: boolean;
   /** ISO datetime; hidden from the public site until this moment passes. */
   publishAt?: string;
+  /** Server-stamped on every /content/entity save — see mergeLocalizedArray. */
+  updatedAt?: string;
 }
 
 export interface LocalizedContentCollection {
@@ -255,14 +263,36 @@ function isPreview(): boolean {
   return previewContent !== null;
 }
 
-function mergeLocalizedArray<T extends { id: number }>(value: T[] | undefined, fallback: T[]): T[] {
+/** Epoch-0 for anything missing a timestamp, so two untouched entries (both
+ *  missing updatedAt) still compare equal and existing behaviour is unchanged. */
+function ts(v: { updatedAt?: string } | undefined): number {
+  const t = v?.updatedAt ? Date.parse(v.updatedAt) : NaN;
+  return Number.isFinite(t) ? t : 0;
+}
+
+function mergeLocalizedArray<T extends { id: number; updatedAt?: string }>(value: T[] | undefined, fallback: T[]): T[] {
   if (!Array.isArray(value)) {
     return fallback;
   }
 
   // Only override items that exist in root (fallback). Never add extra localized-only items.
+  //
+  // A localized copy is a full, independently-editable snapshot (title,
+  // excerpt, content — everything), not a per-field overlay. Every save
+  // through /content/entity server-stamps updatedAt on whichever single
+  // language it touched — so editing the EN root does nothing to a UK/RU/…
+  // translation's own copy, and that copy would silently go stale forever
+  // (wrong title, wrong images, wrong text) with no way to tell it had
+  // drifted. Comparing timestamps here means a translation only wins when
+  // it's at least as fresh as root; the moment root is edited without a
+  // matching re-translation, every other language falls back to root's
+  // current content instead of showing outdated text under a fresh URL.
   const localizedById = new Map(value.map((entry) => [Number(entry.id), entry]));
-  return fallback.map((entry) => localizedById.get(Number(entry.id)) || entry);
+  return fallback.map((entry) => {
+    const localized = localizedById.get(Number(entry.id));
+    if (!localized) return entry;
+    return ts(localized) >= ts(entry) ? localized : entry;
+  });
 }
 
 export function getAvailableLanguages(): string[] {
