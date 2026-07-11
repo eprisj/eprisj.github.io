@@ -2135,41 +2135,45 @@
       "author": "EPRIS Journal",
       "role": "Editorial Desk",
       "date": "Jul 11, 2026",
-      "excerpt": "A cone of walnut wood, a lamp bent low over a burl table, dots repeating into the dark — on the particular hour when a blank page stops being frightening and starts being possible.",
+      "excerpt": "One corner, four materials, three colors that shouldn't work together — and do. We break down the palette of a single bedroom vignette: turned walnut, burl veneer, cotton, cold plaster-blue — and why the formula holds.",
       "category": "Culture",
-      "subcategory": "Feature",
+      "subcategory": "Design Study",
       "tags": [
-        "story",
-        "culture",
-        "editorial"
+        "Design",
+        "Color",
+        "Materials"
       ],
       "imageSeed": "",
       "content": [
         {
           "type": "text",
-          "content": "There is a lamp in the corner of the room that does one thing well: it makes a small, honest pool of light and asks nothing else of the evening. Its shade is a single cone of turned walnut, angled low over a nightstand veneered in burl — amboyna, most likely, its grain knotting and re-knotting like a held breath. Behind it, the wall repeats the same black dot at the same interval, hundreds of times, without apology. The bed does the same in miniature, a scatter of dots on woven cotton, as if the room had decided that pattern, too, could be a form of quiet."
+          "content": "Look at this corner long enough and it stops being a bedroom and starts being a color exercise. A hexagonal nightstand veneered in burl — dense, freckled, the kind of grain that reads almost like tortoiseshell — sits under a swing-arm lamp turned from a single piece of walnut into a smooth, unbroken cone. Behind both, a wall of black dots repeats at a fixed interval on cream ground, the one element in the frame doing something graphic rather than material. On the floor: a flat, cold blue-grey — the only color in the room that isn't wood, thread, or shadow."
         },
         {
           "type": "image",
           "content": "https://eprisjournal.com/images/article-polkadot-bedroom-detail-cone.jpg",
-          "caption": "The lamp, mid-thought."
-        },
-        {
-          "type": "quote",
-          "content": "A considered room says the same thing twice on purpose."
+          "caption": "Turned walnut, one continuous line from base to tip."
         },
         {
           "type": "text",
-          "content": "Every story at EPRIS starts somewhere this ordinary — a lamp switched on a beat before the room needs it, a surface cleared just enough to hold one object and one idea. We are not precious about the moment. We only insist that it be noticed. The burl table holds its own history in every ring of grain; the wallpaper commits to its dot the way a sentence commits to its first word. Editing, like styling a room, is mostly the discipline of leaving things out until what remains has to matter."
+          "content": "Pull the palette apart and it's almost entirely warm neutrals: the walnut sits somewhere around a deep umber, the burl veneer a shade lighter and redder, closer to rust; the bedding and wallpaper ground both hold a warm off-white rather than a true white. On paper, three browns and a cream should read as beige-on-beige — safe, forgettable. What saves it is proportion: the warm tones cover perhaps ninety percent of the frame, which means the two exceptions do all the work."
+        },
+        {
+          "type": "quote",
+          "content": "A palette this warm needs exactly one cold thing in it to read as intentional, not accidental."
         },
         {
           "type": "image",
           "content": "https://eprisjournal.com/images/article-polkadot-bedroom-detail-grain.jpg",
-          "caption": "Burl wood, close enough to read like a map."
+          "caption": "Burl veneer — every panel bookmatched, no two figures repeating."
+        },
+        {
+          "type": "text",
+          "content": "The first exception is the dot: pure black, printed flat and regular, with none of the tonal variation everything else in the room has earned honestly through grain and weave. It's the only non-material color in the frame, and it's what keeps the burl and the walnut from blurring into each other — two different woods read as distinct only because something graphic sits behind both of them. The second exception is the floor, a blue-grey with just enough green in it to feel like poured concrete rather than paint. It's barely a color at all next to the wood, which is exactly its job: a warm room this considered needs one cold surface to stand on, or it starts to feel upholstered rather than built."
         },
         {
           "type": "note",
-          "content": "This is where a new story begins its life on EPRIS — the lamp is on. Come back for what it finds."
+          "content": "We couldn't confirm a maker for this particular lamp or table — if you recognize either piece, write in. Until then, treat this as what it is: a color study, not a shopping list."
         }
       ],
       "imageUrl": "https://eprisjournal.com/images/article-polkadot-bedroom.jpg"
@@ -2937,7 +2941,7 @@
             },
             {
               "type": "text",
-              "content": "В Гаване вызов состоит не в сохранении древнего, а в воскрешении заброшенного. За осыпающимися пастельными фасадами Центральной Гаваны скрываются порталы из кубинского красного дерева (Swietenia mahagoni) и испанского кедра (Cedrela odorata) — ароматных, от природы устойчивых к насекомым твёрдых пород, некогда встречавших сахарных баронов и революционных поэтов. Тропический климат накладывает уникальные нагрузки: относительная влажность регулярно превышает 85%, провоцируя циклы расширения и сжатия, на которые ни одна столярка умеренного климата не рассчитана. Кубинские реставраторы — многие обучены в Oficina del Historiador de la Ciudad, основанной Эусебио Леалем Спенглером — работают инструментами, унаследованными от дедов: деревянными калёвками с ручной ковки лезвиями, лучковыми пилами на калёной проволоке и шпунтгобелями для воспроизведения профилей «гусёк» и «каблучок». Розетки и листья аканта они вырезают не по обмерным чертежам — те давно растворились в тропической влажности — а по гипсовым слепкам с уцелевших образцов в соседних зданиях, сохраняя местный «диалект» декоративной резьбы, тонкие вариации, отличающие гаванское барокко от его андалузских предков."
+              "content": "В Гаване вызов состоит не в сохранении древнего, а в воскрешении заброшенного. За осы��ающимися пастельными фасадами Центральной Гаваны скрываются порталы из кубинского красного дерева (Swietenia mahagoni) и испанского кедра (Cedrela odorata) — ароматных, от природы устойчивых к насекомым твёрдых пород, некогда встречавших сахарных баронов и революционных поэтов. Тропический климат накладывает уникальные нагрузки: относительная влажность регулярно превышает 85%, провоцируя циклы расширения и сжатия, на которые ни одна столярка умеренного климата не рассчитана. Кубинские реставраторы — многие обучены в Oficina del Historiador de la Ciudad, основанной Эусебио Леалем Спенглером — работают инструментами, унаследованными от дедов: деревянными калёвками с ручной ковки лезвиями, лучковыми пилами на калёной проволоке и шпунтгобелями для воспроизведения профилей «гусёк» и «каблучок». Розетки и листья аканта они вырезают не по обмерным чертежам — те давно растворились в тропической влажности — а по гипсовым слепкам с уцелевших образцов в соседних зданиях, сохраняя местный «диалект» декоративной резьбы, тонкие вариации, отличающие гаванское барокко от его андалузских предков."
             },
             {
               "type": "image",
@@ -3747,7 +3751,7 @@
             },
             {
               "type": "text",
-              "content": "Фундаментальна напруга в консервації дверей лежить між двома вимогами, які непосвячені часто плутають: реставрацією та консервацією. Реставрація – це повернення об’єкта до конкретного історичного стану, що вимагає інтерпретаційного вибору – вигляду якого століття ви віддаєте перевагу? Консервація, навпаки, спрямована на стабілізацію об’єкта в його поточному стані, зупиняючи розпад, не стираючи патину часу. Сучасний консенсус, кодифікований у Венеціанській хартії 1964 року та вдосконалений Хартією Бурри 1979 року, рішуче схиляється до збереження: мінімальне втручання, вичерпне документування та забезпечення оборотності. Кожне епоксидне заповнення, кожне голландське з’єднання, кожна повторно позолочена поверхня повинна відрізнятися від оригіналу при ретельному огляді та видалятися без пошкодження основного матеріалу."
+              "content": "Фундаментальна напруга в консервації дверей лежить між двома вимогами, які непосвячені часто плутають: реставрацією та консервацією. Реставрація – це повернення об’єкта до конкретного історичного стану, що вимагає інтерпретаційного вибору – вигляду якого століття ви віддаєте перевагу? Консервація, навпаки, спрямована на стабілізацію об’єкта в його поточному стані, зупиняючи розпад, не стираючи патину часу. Сучасни�� консенсус, кодифікований у Венеціанській хартії 1964 року та вдосконалений Хартією Бурри 1979 року, рішуче схиляється до збереження: мінімальне втручання, вичерпне документування та забезпечення оборотності. Кожне епоксидне заповнення, кожне голландське з’єднання, кожна повторно позолочена поверхня повинна відрізнятися від оригіналу при ретельному огляді та видалятися без пошкодження основного матеріалу."
             },
             {
               "type": "quote",
@@ -4315,7 +4319,7 @@
             },
             {
               "type": "text",
-              "content": "Адже саме в роки одразу по розколі Клімт увійшов у свою золоту добу й написав картину, що затьмарить усе решту, – «Поцілунок». Дві постаті вклякли на краю квітучого лугу, вкриті єдиним убранням із мерехтливого золота: візерунки чоловіка тверді й прямокутні, жінки – м'які й округлі, а весь світ довкола розчинився в орнаменті. Усе, за що боровся Сецесіон, – союз малярства й декору, безстрашність перед красою, золото, успадковане з батькової майстерні, – сходиться тут воєдино й до кінця."
+              "content": "Адже саме в роки одразу по розколі Клімт увійшов у свою золоту добу й написав картину, що затьмарить усе решту, – «Поцілунок». Дві постаті вклякли на краю квітучого лугу, вкриті єдиним убранням із мерехтливого золота: візерунки чоловіка тверді й прямокутні, жінки – м'які й округлі, а весь світ довкола розчинився в орнаменті. Усе, ��а що боровся Сецесіон, – союз малярства й декору, безстрашність перед красою, золото, успадковане з батькової майстерні, – сходиться тут воєдино й до кінця."
             },
             {
               "type": "image",
