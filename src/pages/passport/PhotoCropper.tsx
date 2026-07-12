@@ -4,8 +4,13 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 // PNG export, PDF export) so what you crop is exactly what you get.
 export const CROP_W = 240;
 export const CROP_H = 320;
-export const CROP_EXPORT_W = 720;
-export const CROP_EXPORT_H = 960;
+// The exported photo only ever renders inside a ~360px-wide box on the card
+// (preview, 1400px PNG/PDF page). 600×800 is more than enough for print at that
+// size while keeping the base64 payload small — the old 720×960@0.92 could
+// balloon to ~900KB, which made the publish POST slow and flaky on mobile.
+export const CROP_EXPORT_W = 600;
+export const CROP_EXPORT_H = 800;
+const CROP_EXPORT_QUALITY = 0.85;
 
 export function PhotoCropper({
   file,
@@ -88,7 +93,7 @@ export function PhotoCropper({
       natural.w * scale * exportScale,
       natural.h * scale * exportScale,
     );
-    onConfirm(canvas.toDataURL('image/jpeg', 0.92));
+    onConfirm(canvas.toDataURL('image/jpeg', CROP_EXPORT_QUALITY));
   }, [natural, offset, scale, onConfirm]);
 
   return (
