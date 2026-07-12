@@ -1948,6 +1948,7 @@ function buildSlugMap(): Map<string, number> {
   const map = new Map<string, number>();
   for (const a of allArticles) {
     map.set(generateSlug(a.title), a.id);
+    map.set(String(a.id), a.id);
   }
   return map;
 }
@@ -1955,7 +1956,8 @@ function buildSlugMap(): Map<string, number> {
 const SLUG_MAP = buildSlugMap();
 
 function getSlugForArticle(article: Article): string {
-  return generateSlug(article.title);
+  const canonical = getContentForLanguage(DEFAULT_LANGUAGE).articles.find((a) => a.id === article.id);
+  return generateSlug(canonical?.title || article.title);
 }
 
 function parsePath(pathname: string): { tab?: string; articleId?: number; passportCode?: string } {

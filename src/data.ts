@@ -263,35 +263,35 @@ function isPreview(): boolean {
   return previewContent !== null;
 }
 
-/** Epoch-0 for anything missing a timestamp, so two untouched entries (both
- *  missing updatedAt) still compare equal and existing behaviour is unchanged. */
-function ts(v: { updatedAt?: string } | undefined): number {
-  const t = v?.updatedAt ? Date.parse(v.updatedAt) : NaN;
-  return Number.isFinite(t) ? t : 0;
+function hasLocalizedPayload(entry: unknown): boolean {
+  if (!entry || typeof entry !== 'object') return false;
+  const record = entry as Record<string, unknown>;
+  const textKeys = ['title', 'excerpt', 'content', 'subject', 'author', 'category', 'caption', 'description'];
+  return textKeys.some((key) => {
+    const value = record[key];
+    if (typeof value === 'string') return value.trim().length > 0;
+    if (Array.isArray(value)) return value.length > 0;
+    return value && typeof value === 'object' && Object.keys(value).length > 0;
+  });
 }
 
-function mergeLocalizedArray<T extends { id: number; updatedAt?: string }>(value: T[] | undefined, fallback: T[]): T[] {
+function mergeLocalizedArray<T extends { id: number }>(value: T[] | undefined, fallback: T[]): T[] {
   if (!Array.isArray(value)) {
     return fallback;
   }
 
   // Only override items that exist in root (fallback). Never add extra localized-only items.
   //
-  // A localized copy is a full, independently-editable snapshot (title,
-  // excerpt, content — everything), not a per-field overlay. Every save
-  // through /content/entity server-stamps updatedAt on whichever single
-  // language it touched — so editing the EN root does nothing to a UK/RU/…
-  // translation's own copy, and that copy would silently go stale forever
-  // (wrong title, wrong images, wrong text) with no way to tell it had
-  // drifted. Comparing timestamps here means a translation only wins when
-  // it's at least as fresh as root; the moment root is edited without a
-  // matching re-translation, every other language falls back to root's
-  // current content instead of showing outdated text under a fresh URL.
+  // Localized copies are real reader-facing translations. Older content often
+  // has no updatedAt, while the EN root receives updatedAt on every admin save.
+  // Timestamp comparison made valid translations disappear after any EN edit.
+  // Prefer a localized entry whenever it has actual payload; fallback only for
+  // empty shells so language switching never silently drops back to English.
   const localizedById = new Map(value.map((entry) => [Number(entry.id), entry]));
   return fallback.map((entry) => {
     const localized = localizedById.get(Number(entry.id));
     if (!localized) return entry;
-    return ts(localized) >= ts(entry) ? localized : entry;
+    return hasLocalizedPayload(localized) ? localized : entry;
   });
 }
 
