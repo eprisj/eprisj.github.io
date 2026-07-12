@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState, type CSSProperties } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Upload, Download, FileText, Share2, Link2, Check, RotateCcw, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Upload, Download, FileText, Share2, Link2, Check, RotateCcw, ShieldCheck, Pencil } from 'lucide-react';
 import QRCode from 'qrcode';
 import { PhotoCropper } from './PhotoCropper';
 import { PassportPreview } from './PassportPreview';
@@ -129,7 +129,7 @@ function CreatorForm({
   );
 }
 
-function VerifyView({ code }: { code: string }) {
+function VerifyView({ code, onEdit }: { code: string; onEdit: (fields: PassportFields, photoUrl: string | null) => void }) {
   const [status, setStatus] = useState<'loading' | 'found' | 'missing'>('loading');
   const [fields, setFieldsState] = useState<PassportFields | null>(null);
   const [photoUrl, setPhotoUrl] = useState<string | null>(null);
@@ -164,8 +164,16 @@ function VerifyView({ code }: { code: string }) {
   }
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="flex items-center gap-2 mb-4 font-mono text-[11px] tracking-widest text-green-800">
-        <ShieldCheck size={16} /> VERIFIED · PUBLIC MEMBER PROFILE
+      <div className="flex items-center justify-between gap-4 mb-4 flex-wrap">
+        <div className="flex items-center gap-2 font-mono text-[11px] tracking-widest text-green-800">
+          <ShieldCheck size={16} /> VERIFIED · PUBLIC MEMBER PROFILE
+        </div>
+        <button
+          onClick={() => onEdit(fields, photoUrl)}
+          className="flex items-center gap-2 border border-[var(--pp-burgundy)] text-[var(--pp-burgundy)] font-mono text-[11px] uppercase tracking-widest px-3 py-1.5 hover:bg-[var(--pp-burgundy)]/5"
+        >
+          <Pencil size={13} /> Edit this passport
+        </button>
       </div>
       <PassportPreview fields={fields} photoUrl={photoUrl} code={code} qrDataUrl={qrDataUrl} />
     </div>
@@ -173,8 +181,12 @@ function VerifyView({ code }: { code: string }) {
 }
 
 export function PassportPage({ viewCode, onBack }: { viewCode: string | null; onBack: () => void }) {
+  const [mode, setMode] = useState<'create' | 'view' | 'edit'>(viewCode ? 'view' : 'create');
   const [fields, setFields] = useState<PassportFields>(emptyFields);
   const [photoDataUrl, setPhotoDataUrl] = useState<string | null>(null);
+  // When editing an existing passport, the photo lives at a remote URL until/unless
+  // the user uploads a new crop. Kept separate so we can re-publish without re-sending it.
+  const [existingPhotoUrl, setExistingPhotoUrl] = useState<string | null>(null);
   const [cropFile, setCropFile] = useState<File | null>(null);
   const [code, setCode] = useState(() => generatePassportCode());
   const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
@@ -185,6 +197,20 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
   const [pdfStatus, setPdfStatus] = useState<'idle' | 'loading' | 'done'>('idle');
   const [publishStatus, setPublishStatus] = useState<'idle' | 'loading' | 'done' | 'error'>('idle');
   const [copyStatus, setCopyStatus] = useState<'idle' | 'copied'>('idle');
+  const isEditing = mode === 'edit';
+
+  const startEdit = useCallback((editFields: PassportFields, photoUrl: string | null) => {
+    setFields(editFields);
+    setCode(viewCode || editFields.memberNumber || generatePassportCode());
+    setExistingPhotoUrl(photoUrl);
+    setPhotoDataUrl(null);
+    setIsPublic(true);
+    setConsent(true);
+    setErrors({});
+    setPublishStatus('idle');
+    setMode('edit');
+    window.scrollTo({ top: 0 });
+  }, [viewCode]);
 
   const verifyUrl = useMemo(() => `${window.location.origin}/passport/${code}`, [code]);
   const displayMemberNumber = fields.memberNumber || code;
@@ -212,11 +238,14 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
   const handleReset = useCallback(() => {
     setFields(emptyFields());
     setPhotoDataUrl(null);
+    setExistingPhotoUrl(null);
     setCode(generatePassportCode());
     setIsPublic(false);
     setConsent(false);
     setErrors({});
     setPublishStatus('idle');
+    setMode('create');
+    window.history.replaceState(null, '', '/passport');
   }, []);
 
   const handleDownloadPNG = useCallback(async () => {
@@ -270,7 +299,10 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
   const handlePublish = useCallback(async () => {
     if (!validate() || !consent) return;
     setPublishStatus('loading');
-    const res = await publishPassport(code, previewFields, photoDataUrl);
+    const res = await publishPassport(code, previewFields, photoDataUrl, {
+      overwrite: isEditing,
+      existingPhotoUrl,
+    });
     if (res.ok) {
       if (res.code && res.code !== code) setCode(res.code);
       setIsPublic(true);
@@ -278,7 +310,7 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
     } else {
       setPublishStatus('error');
     }
-  }, [validate, consent, code, previewFields, photoDataUrl]);
+  }, [validate, consent, code, previewFields, photoDataUrl, isEditing, existingPhotoUrl]);
 
   const handleCopyLink = useCallback(async () => {
     try {
@@ -295,13 +327,13 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
     handleCopyLink();
   }, [verifyUrl, handleCopyLink]);
 
-  if (viewCode) {
+  if (mode === 'view' && viewCode) {
     return (
       <div className="pt-16 pb-24 px-4 sm:px-8 max-w-6xl mx-auto" style={{ '--pp-burgundy': '#501a2c', '--pp-ink': '#241016' } as CSSProperties}>
         <button onClick={onBack} className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-[var(--pp-burgundy)] mb-8">
           <ArrowLeft size={14} /> Back to EPRIS Journal
         </button>
-        <VerifyView code={viewCode} />
+        <VerifyView code={viewCode} onEdit={startEdit} />
       </div>
     );
   }
@@ -316,11 +348,20 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
       </button>
 
       <div className="mb-8">
-        <h1 className="font-serif text-3xl sm:text-4xl text-[var(--pp-burgundy)]">EPRIS Digital Member Passport</h1>
-        <p className="font-crimson text-sm text-[var(--pp-ink)]/70 mt-2 max-w-2xl">
-          Design your own fictional EPRIS Journal membership passport — a cultural keepsake, not an identity document.
-          Personal data and your photo are processed locally in your browser and are never sent anywhere unless you choose to publish a public profile below.
-        </p>
+        <h1 className="font-serif text-3xl sm:text-4xl text-[var(--pp-burgundy)]">
+          {isEditing ? 'Edit your Member Passport' : 'EPRIS Digital Member Passport'}
+        </h1>
+        {isEditing ? (
+          <p className="font-crimson text-sm text-[var(--pp-ink)]/70 mt-2 max-w-2xl">
+            You're editing passport <span className="font-mono text-[var(--pp-burgundy)]">{code}</span>. Your changes will be saved
+            <strong> to the same link</strong> when you publish — the URL and QR code stay the same.
+          </p>
+        ) : (
+          <p className="font-crimson text-sm text-[var(--pp-ink)]/70 mt-2 max-w-2xl">
+            Design your own fictional EPRIS Journal membership passport — a cultural keepsake, not an identity document.
+            Personal data and your photo are processed locally in your browser and are never sent anywhere unless you choose to publish a public profile below.
+          </p>
+        )}
       </div>
 
       <div className="grid lg:grid-cols-[380px_1fr] gap-8 lg:gap-12">
@@ -373,17 +414,27 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
                 disabled={!consent || publishStatus === 'loading'}
                 className="flex items-center gap-2 bg-[var(--pp-ink)] text-[var(--pp-cream)] font-mono text-[11px] uppercase tracking-widest px-4 py-2.5 disabled:opacity-40"
               >
-                {publishStatus === 'loading' ? 'Publishing…' : publishStatus === 'done' ? 'Published ✓' : 'Publish public profile'}
+                {publishStatus === 'loading'
+                  ? (isEditing ? 'Saving…' : 'Publishing…')
+                  : publishStatus === 'done'
+                    ? 'Saved ✓'
+                    : (isEditing ? 'Save changes' : 'Publish public profile')}
               </button>
               {publishStatus === 'error' && <p className="text-[11px] text-red-700 mt-2">Publishing failed — please try again.</p>}
               {publishStatus === 'done' && (
-                <div className="flex flex-wrap items-center gap-3 mt-3">
-                  <button onClick={handleCopyLink} className="flex items-center gap-1.5 font-mono text-[11px] text-[var(--pp-burgundy)]">
-                    {copyStatus === 'copied' ? <Check size={13} /> : <Link2 size={13} />} {verifyUrl}
-                  </button>
-                  <button onClick={handleShare} className="flex items-center gap-1.5 font-mono text-[11px] text-[var(--pp-burgundy)]">
-                    <Share2 size={13} /> Share
-                  </button>
+                <div className="mt-3 border border-[var(--pp-burgundy)]/25 bg-[var(--pp-burgundy)]/5 p-3">
+                  <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--pp-burgundy)]/70 mb-1.5">
+                    {isEditing ? 'Updated — live at' : 'Your passport is live at'}
+                  </p>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <a href={verifyUrl} className="font-mono text-[12px] text-[var(--pp-burgundy)] underline break-all">{verifyUrl}</a>
+                    <button onClick={handleCopyLink} className="flex items-center gap-1.5 font-mono text-[11px] text-[var(--pp-burgundy)]">
+                      {copyStatus === 'copied' ? <Check size={13} /> : <Link2 size={13} />} {copyStatus === 'copied' ? 'Copied' : 'Copy'}
+                    </button>
+                    <button onClick={handleShare} className="flex items-center gap-1.5 font-mono text-[11px] text-[var(--pp-burgundy)]">
+                      <Share2 size={13} /> Share
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
@@ -392,7 +443,7 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
 
         <div className="lg:sticky lg:top-20 h-fit">
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }}>
-            <PassportPreview fields={previewFields} photoUrl={photoDataUrl} code={code} qrDataUrl={qrDataUrl} />
+            <PassportPreview fields={previewFields} photoUrl={photoDataUrl || existingPhotoUrl} code={code} qrDataUrl={qrDataUrl} />
           </motion.div>
           <p className="font-mono text-[9px] text-[var(--pp-ink)]/45 mt-3 leading-relaxed">
             This is a fictional cultural membership item created for EPRIS Journal. It is not a passport, visa, ID card or any government-issued document, and cannot be used as one.

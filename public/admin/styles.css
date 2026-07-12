@@ -4094,3 +4094,26 @@ body.busy::after {
   font-size: .82rem;
 }
 .autosave-restore-banner span { flex: 1; }
+
+/* ── Passports admin ─────────────────────────────────────── */
+.pp-admin { max-width: 1100px; }
+.pp-admin-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+.pp-admin-title { font-family: var(--font-mono); font-size: 1.05rem; color: var(--text); margin: 0 0 4px; }
+.pp-admin-sub { font-size: .82rem; color: var(--text-muted); margin: 0; max-width: 60ch; }
+.pp-admin-sub code { font-family: var(--font-mono); font-size: .78rem; background: var(--bg-soft); padding: 1px 5px; border-radius: 3px; }
+.pp-admin-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.pp-admin-stats { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.pp-stat { font-family: var(--font-mono); font-size: .72rem; color: var(--text-muted); background: var(--bg-card); border: 1px solid var(--line); border-radius: 20px; padding: 4px 12px; }
+.pp-stat b { color: var(--accent); }
+.pp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+.pp-card { display: flex; gap: 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-card); padding: 10px; box-shadow: var(--shadow-xs); }
+.pp-card-photo { width: 66px; height: 88px; flex-shrink: 0; border-radius: var(--radius-sm); overflow: hidden; background: var(--bg-soft); display: flex; align-items: center; justify-content: center; }
+.pp-card-photo img { width: 100%; height: 100%; object-fit: cover; }
+.pp-card-nophoto { font-family: var(--font-mono); font-size: .58rem; color: var(--text-faint); text-align: center; }
+.pp-card-body { min-width: 0; flex: 1; display: flex; flex-direction: column; }
+.pp-card-name { font-weight: 600; font-size: .9rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pp-card-meta { font-size: .74rem; color: var(--text-muted); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pp-card-code { font-family: var(--font-mono); font-size: .68rem; color: var(--accent); margin-top: 4px; }
+.pp-card-date { font-family: var(--font-mono); font-size: .62rem; color: var(--text-faint); margin-top: 1px; }
+.pp-card-actions { display: flex; gap: 6px; margin-top: auto; padding-top: 8px; }
+.pp-card-actions .btn { padding: 3px 8px; font-size: .64rem; }

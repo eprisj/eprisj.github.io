@@ -10496,3 +10496,114 @@ async function flushModernEditor() {
   setTimeout(reload, 900);
   window._revReload = reload;
 })();
+
+// ═══════════════════════════════════════════════════════════
+// ──  PASSPORTS — manage published Digital Member Passports  ─────────────────
+//     Wired to the VPS webhook: GET /passport-list, POST /passport-annul,
+//     POST /passport-deduplicate (all admin-password gated).
+// ═══════════════════════════════════════════════════════════
+(function initPassportsAdmin() {
+  const API = 'https://api.eprisjournal.com';
+  const grid = byId('ppGrid');
+  const stats = byId('ppStats');
+  const refreshBtn = byId('ppRefreshBtn');
+  const dedupeBtn = byId('ppDedupeBtn');
+  if (!grid) return;
+
+  let _loaded = false;
+
+  function fmtDate(iso) {
+    if (!iso) return '';
+    try {
+      return new Date(iso).toLocaleDateString('uk-UA', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+    } catch { return iso; }
+  }
+
+  function fullName(f) {
+    const s = (f.surname || '').trim();
+    const g = (f.givenNames || '').trim();
+    return [g, s].filter(Boolean).join(' ') || '—';
+  }
+
+  async function load() {
+    const pw = getAdminPassword();
+    if (!pw) { grid.innerHTML = '<p class="form-hint" style="padding:24px;text-align:center;color:var(--danger)">Нет пароля редакции — войдите заново.</p>'; return; }
+    grid.innerHTML = '<p class="form-hint" style="padding:24px;text-align:center">Загружаю…</p>';
+    try {
+      const r = await fetch(`${API}/passport-list`, { headers: { 'X-Admin-Password': pw }, cache: 'no-store' });
+      if (r.status === 401) { grid.innerHTML = '<p class="form-hint" style="padding:24px;text-align:center;color:var(--danger)">Неверный пароль (401).</p>'; return; }
+      const data = await r.json();
+      if (!data.ok) throw new Error(data.error || 'ошибка');
+      renderList(data.passports || []);
+      _loaded = true;
+    } catch (e) {
+      grid.innerHTML = `<p class="form-hint" style="padding:24px;text-align:center;color:var(--danger)">Не удалось загрузить: ${escapeHtml(e.message)}<br><button class="btn btn-sm" type="button" id="ppRetry" style="margin-top:10px">↻ Повторить</button></p>`;
+      byId('ppRetry')?.addEventListener('click', load);
+    }
+  }
+
+  function renderList(list) {
+    list.sort((a, b) => new Date(b.updatedAt || b.createdAt).getTime() - new Date(a.updatedAt || a.createdAt).getTime());
+    const withPhoto = list.filter((p) => p.photoUrl).length;
+    stats.innerHTML = `<span class="pp-stat"><b>${list.length}</b> паспортов</span><span class="pp-stat"><b>${withPhoto}</b> с фото</span>`;
+    if (!list.length) {
+      grid.innerHTML = '<p class="form-hint" style="padding:24px;text-align:center">Пока нет опубликованных паспортов.</p>';
+      return;
+    }
+    grid.innerHTML = list.map((p) => {
+      const f = p.fields || {};
+      const viewUrl = `https://eprisjournal.com/passport/${encodeURIComponent(p.code)}`;
+      const photo = p.photoUrl
+        ? `<img src="${escapeHtml(p.photoUrl)}" alt="" loading="lazy" referrerpolicy="no-referrer">`
+        : '<span class="pp-card-nophoto">Без фото</span>';
+      return `<div class="pp-card" data-code="${escapeHtml(p.code)}">
+        <div class="pp-card-photo">${photo}</div>
+        <div class="pp-card-body">
+          <div class="pp-card-name">${escapeHtml(fullName(f))}</div>
+          <div class="pp-card-meta">${escapeHtml(f.membershipType || '')}${f.field ? ' · ' + escapeHtml(f.field) : ''}</div>
+          <div class="pp-card-code">${escapeHtml(p.code)}</div>
+          <div class="pp-card-date">${fmtDate(p.updatedAt || p.createdAt)}${p.updatedAt ? ' · ред.' : ''}</div>
+          <div class="pp-card-actions">
+            <a class="btn btn-sm" href="${viewUrl}" target="_blank" rel="noreferrer">Открыть ↗</a>
+            <button class="btn btn-sm btn-danger-text" type="button" data-pp-del="${escapeHtml(p.code)}" data-pp-name="${escapeHtml(fullName(f))}">Удалить</button>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+
+    grid.querySelectorAll('[data-pp-del]').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const code = btn.getAttribute('data-pp-del');
+        const name = btn.getAttribute('data-pp-name');
+        const ok = await showConfirmModal('Удалить паспорт?', `Паспорт <strong>${escapeHtml(name)}</strong> (${escapeHtml(code)}) будет удалён вместе с фото. Ссылка перестанет работать. Действие необратимо.`, 'Удалить');
+        if (!ok) return;
+        const pw = getAdminPassword();
+        try {
+          const r = await fetch(`${API}/passport-annul`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw }, body: JSON.stringify({ code }) });
+          const d = await r.json();
+          if (!d.ok) throw new Error(d.error || 'ошибка');
+          showToast('success', `Паспорт ${code} удалён.`);
+          load();
+        } catch (e) { showToast('error', `Не удалось удалить: ${e.message}`); }
+      });
+    });
+  }
+
+  refreshBtn?.addEventListener('click', load);
+  dedupeBtn?.addEventListener('click', async () => {
+    const ok = await showConfirmModal('Убрать дубликаты?', 'Для каждого человека (имя + фамилия) останется только самый свежий паспорт, остальные будут удалены вместе с фото. Действие необратимо.', 'Убрать дубликаты');
+    if (!ok) return;
+    const pw = getAdminPassword();
+    try {
+      const r = await fetch(`${API}/passport-deduplicate`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw }, body: JSON.stringify({}) });
+      const d = await r.json();
+      if (!d.ok) throw new Error(d.error || 'ошибка');
+      showToast('success', `Удалено дубликатов: ${d.removedCount || 0}.`);
+      load();
+    } catch (e) { showToast('error', `Не удалось: ${e.message}`); }
+  });
+
+  document.querySelector('[data-tab="passports"]')?.addEventListener('click', () => {
+    if (!_loaded) setTimeout(load, 60);
+  });
+})();
