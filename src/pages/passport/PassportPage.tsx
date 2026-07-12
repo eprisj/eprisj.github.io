@@ -163,7 +163,7 @@ function VerifyView({ code }: { code: string }) {
     );
   }
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="max-w-4xl mx-auto">
       <div className="flex items-center gap-2 mb-4 font-mono text-[11px] tracking-widest text-green-800">
         <ShieldCheck size={16} /> VERIFIED · PUBLIC MEMBER PROFILE
       </div>
@@ -308,7 +308,7 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
 
   return (
     <div
-      className="pt-16 pb-24 px-4 sm:px-8 max-w-6xl mx-auto"
+      className="pt-16 pb-24 px-4 sm:px-8 max-w-7xl mx-auto"
       style={{ '--pp-burgundy': '#501a2c', '--pp-ink': '#241016', '--pp-cream': '#f7f2ea', '--pp-sand': '#c9a690' } as CSSProperties}
     >
       <button onClick={onBack} className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-[var(--pp-burgundy)] mb-6">
@@ -323,7 +323,7 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+      <div className="grid lg:grid-cols-[380px_1fr] gap-8 lg:gap-12">
         <div>
           <CreatorForm fields={fields} setFields={setFields} onPhotoFile={setCropFile} errors={errors} />
 
