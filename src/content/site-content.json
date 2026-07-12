@@ -1017,7 +1017,12 @@
       "podcasts.back": "← Podcast",
       "podcasts.episode_label": "Bölüm",
       "radio.chat_placeholder": "Mesaj yazın…",
-      "issue.inThisIssue": "Bu Sayıda"
+      "issue.inThisIssue": "Bu Sayıda",
+      "home.headline": "Sessiz Tasarımın Oyun Alanı",
+      "home.intro": "Nasıl yaşadığımızı şekillendiren mekanları ve hikayeleri — niyet, güzellik ve bir yer duygusuyla keşfediyoruz.",
+      "home.explore": "Sayıyı Keşfedin",
+      "issue.story": "hikaye",
+      "issue.stories": "hikayeler"
     },
     "DE": {
       "nav.gallery": "Galerie",
@@ -1268,7 +1273,12 @@
       "podcasts.back": "← Podcasts",
       "podcasts.episode_label": "Episode",
       "radio.chat_placeholder": "Nachricht schreiben…",
-      "issue.inThisIssue": "In dieser Ausgabe"
+      "issue.inThisIssue": "In dieser Ausgabe",
+      "home.headline": "Ein Spielplatz des stillen Designs",
+      "home.intro": "Wir erkunden die Räume und Geschichten, die unser Leben prägen — mit Absicht, Schönheit und Sinn für Ort.",
+      "home.explore": "Ausgabe entdecken",
+      "issue.story": "Geschichte",
+      "issue.stories": "Geschichten"
     },
     "IT": {
       "nav.gallery": "Galleria",
@@ -1519,7 +1529,12 @@
       "podcasts.back": "← Podcast",
       "podcasts.episode_label": "Episodio",
       "radio.chat_placeholder": "Scrivi un messaggio…",
-      "issue.inThisIssue": "In Questo Numero"
+      "issue.inThisIssue": "In Questo Numero",
+      "home.headline": "Un parco giochi del design silenzioso",
+      "home.intro": "Esploriamo gli spazi e le storie che plasmano il nostro modo di vivere — con intenzione, bellezza e senso del luogo.",
+      "home.explore": "Esplora il Numero",
+      "issue.story": "storia",
+      "issue.stories": "storie"
     },
     "ES": {
       "nav.gallery": "Galería",
@@ -1770,7 +1785,12 @@
       "podcasts.back": "← Podcasts",
       "podcasts.episode_label": "Episodio",
       "radio.chat_placeholder": "Escribe un mensaje…",
-      "issue.inThisIssue": "En Este Número"
+      "issue.inThisIssue": "En Este Número",
+      "home.headline": "Un Parque de Juegos del Diseño Silencioso",
+      "home.intro": "Explorando los espacios y las historias que dan forma a cómo vivimos — con intención, belleza y sentido del lugar.",
+      "home.explore": "Explorar el Número",
+      "issue.story": "historia",
+      "issue.stories": "historias"
     }
   },
   "items": [
@@ -3762,7 +3782,7 @@
           "content": [
             {
               "type": "text",
-              "content": "У старих дверях панує якась особлива тиша — тиша, зіткана століттями рук, що тиснули на деревину, ключів, що оберталися в залізних замках, гладко зношених десятьма тисячами вечорів. Станьте перед вивітреним порталом у Лісабонській Алфамі, і ви відчуєте це: текстура деревини зберігає олії п’яти поколінь пальм, петлі пам’ятають ритм приходів і відходів родини, а поріговий камінь — увігнутий двомастами роками кроків — відображає топологію людських звичок точніше, ніж будь-який перепис. Двері ніколи не є просто архітектурним елементом. Це найінтимніша поверхня, яку будівля пропонує вулиці, межа між публічним і приватним, місце, де душа міста зустрічає своїх відвідувачів. Відреставрувати двері - це оперувати пам'яттю місця."
+              "content": "У старих дверях панує якась особлива тиша — тиша, зіткана століттями рук, що тиснули на деревину, ключів, що оберталися в залізних замках, гладко зношених десятьма тисячами вечорів. Станьте перед вивітреним порталом у Лісабонській Алфамі, і ви відчуєте це: текстура деревини зберігає олії п’яти поколінь пальм, петлі пам’ятають ритм приходів і відходів родини, а поріговий камінь — увігнутий двомастами роками кроків — відображає топологію людських звичок точніше, ніж будь-який перепис. Двері ніколи не є просто архітектурним елементом. Це найінтимніша поверхня, яку будівля пропонує вулиці, межа між публічним �� приватним, місце, де душа міста зустрічає своїх відвідувачів. Відреставрувати двері - це оперувати пам'яттю місця."
             },
             {
               "type": "text",
@@ -4255,7 +4275,7 @@
             {
               "type": "image",
               "content": "/images/secession/wagner-station.jpg",
-              "caption": "Павільйон Штадтбану на Карлсплац (1898) – вокзал як коштовність із зелені та золота.",
+              "caption": "Павільйон Штадтбану на Карлсплац (1898) – вокзал як коштовність і�� зелені та золота.",
               "align": "full"
             },
             {
