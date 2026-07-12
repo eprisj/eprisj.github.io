@@ -9,6 +9,7 @@ const IssuePage = lazy(() => import('./pages/IssuePage').then((m) => ({ default:
 const StudioPage = lazy(() => import('./pages/StudioPage').then((m) => ({ default: m.StudioPage })));
 const RadioPage = lazy(() => import('./pages/RadioPage').then((m) => ({ default: m.RadioPage })));
 const PodcastsPage = lazy(() => import('./pages/PodcastsPage').then((m) => ({ default: m.PodcastsPage })));
+const PassportPage = lazy(() => import('./pages/passport/PassportPage').then((m) => ({ default: m.PassportPage })));
 const DesignPage = lazy(() => import('./design/DesignPage').then((m) => ({ default: m.DesignPage })));
 import {
   Article,
@@ -1940,7 +1941,7 @@ function SearchResults({
   );
 }
 
-const VALID_TABS = ['gallery', 'articles', 'reviews', 'library', 'about', 'materie', 'issue', 'studio', 'radio', 'podcasts', 'design'];
+const VALID_TABS = ['gallery', 'articles', 'reviews', 'library', 'about', 'materie', 'issue', 'studio', 'radio', 'podcasts', 'design', 'passport'];
 
 function buildSlugMap(): Map<string, number> {
   const allArticles = getContentForLanguage(DEFAULT_LANGUAGE).articles;
@@ -1957,7 +1958,7 @@ function getSlugForArticle(article: Article): string {
   return generateSlug(article.title);
 }
 
-function parsePath(pathname: string): { tab?: string; articleId?: number } {
+function parsePath(pathname: string): { tab?: string; articleId?: number; passportCode?: string } {
   const p = pathname.replace(/^\//, '').replace(/\/$/, '');
   if (!p) return {};
   const numericMatch = p.match(/^article\/(\d+)$/);
@@ -1967,6 +1968,8 @@ function parsePath(pathname: string): { tab?: string; articleId?: number } {
     const id = SLUG_MAP.get(slugMatch[1]);
     if (id !== undefined) return { tab: 'articles', articleId: id };
   }
+  const passportMatch = p.match(/^passport(?:\/([A-Za-z0-9-]+))?$/);
+  if (passportMatch) return { tab: 'passport', passportCode: passportMatch[1] || undefined };
   if (VALID_TABS.includes(p)) return { tab: p };
   return {};
 }
@@ -2020,6 +2023,7 @@ export default function App() {
   const initialRoute = parsePath(window.location.pathname);
   const [activeTab, setActiveTab] = useState(initialRoute.tab || 'gallery');
   const [selectedArticleId, setSelectedArticleId] = useState<number | null>(initialRoute.articleId ?? null);
+  const [passportCode, setPassportCode] = useState<string | undefined>(initialRoute.passportCode);
   const [currentLang, setCurrentLang] = useState(DEFAULT_LANGUAGE);
   const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
   const [selectedGalleryItem, setSelectedGalleryItem] = useState<Item | null>(null);
@@ -2105,6 +2109,7 @@ export default function App() {
     setActiveTab(tab);
     setSelectedArticleId(null);
     setActiveSearch('');
+    setPassportCode(undefined);
     navigate(tab === 'gallery' ? '/' : `/${tab}`);
   }, [navigate]);
 
@@ -2129,9 +2134,11 @@ export default function App() {
       if (parsed.articleId !== undefined) {
         setSelectedArticleId(parsed.articleId);
         setActiveTab('articles');
+        setPassportCode(undefined);
       } else {
         setSelectedArticleId(null);
         setActiveTab(parsed.tab || 'gallery');
+        setPassportCode(parsed.passportCode);
       }
     };
     window.addEventListener('popstate', onPopState);
@@ -2194,6 +2201,10 @@ export default function App() {
           <Suspense fallback={<TabLoadingFallback />}>
             <PodcastsPage t={t} />
           </Suspense>
+        ) : activeTab === 'passport' ? (
+          <Suspense fallback={<TabLoadingFallback />}>
+            <PassportPage viewCode={passportCode ?? null} onBack={() => handleSetTab('gallery')} />
+          </Suspense>
         ) : (
           <main className="max-w-[1600px] mx-auto px-4 sm:px-8 md:px-16 py-8 sm:py-12 md:py-24">
             <AnimatePresence mode="wait">
@@ -2228,7 +2239,7 @@ export default function App() {
           </main>
         )}
 
-        {activeTab !== 'materie' && activeTab !== 'issue' && activeTab !== 'design' && activeTab !== 'studio' && activeTab !== 'radio' && activeTab !== 'podcasts' && <footer className="border-t border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
+        {activeTab !== 'materie' && activeTab !== 'issue' && activeTab !== 'design' && activeTab !== 'studio' && activeTab !== 'radio' && activeTab !== 'podcasts' && activeTab !== 'passport' && <footer className="border-t border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
           <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
             <div>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-[#c2542f]">EPRIS JOURNAL</h2>
