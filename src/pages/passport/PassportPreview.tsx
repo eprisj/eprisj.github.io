@@ -1,60 +1,591 @@
-import type { CSSProperties, ReactNode } from 'react';
+import { useState, type CSSProperties } from 'react';
 import type { PassportFields } from './passportRender';
 import { generateSignatureString } from '../../lib/passportCode';
 
-function FieldRow({ en, fr, value, big }: { en: string; fr: string; value: string; big?: boolean }) {
+// ── MRZ ───────────────────────────────────────────────────────────────────────
+function padFill(s: string, n: number) {
+  return s.replace(/[^A-Z0-9]/gi, '').toUpperCase().slice(0, n).padEnd(n, '<');
+}
+function cdv(s: string): string {
+  const W = [7, 3, 1]; let sum = 0;
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i];
+    const v = c === '<' ? 0 : /\d/.test(c) ? +c : c.charCodeAt(0) - 55;
+    sum += v * W[i % 3];
+  }
+  return String(sum % 10);
+}
+function buildMRZ(f: PassportFields, code: string): [string, string] {
+  const sn = padFill(f.surname, 13), gn = padFill(f.givenNames, 15);
+  const line1 = `P<EPRISJ${sn}<<${gn}`.slice(0, 44).padEnd(44, '<');
+  const num = padFill(code.replace(/[^A-Z0-9]/g, ''), 9);
+  const dob = f.dob.replace(/-/g, '').slice(2, 8) || '000000';
+  const exp = f.expiryDate.replace(/-/g, '').slice(2, 8) || '310712';
+  const comp = `${num}${cdv(num)}${dob}${cdv(dob)}1${exp}${cdv(exp)}<<<<<<`;
+  const line2 = `${num}${cdv(num)}EPR${dob}${cdv(dob)}1${exp}${cdv(exp)}<<<<<<${cdv(comp)}`.slice(0, 44).padEnd(44, '<');
+  return [line1, line2];
+}
+
+// ── Rich Guilloche ────────────────────────────────────────────────────────────
+// Three wave families with visible warm amber+cool teal palette like in real passports
+function Guilloche() {
+  const pathsA: string[] = [];
+  const pathsB: string[] = [];
+  const pathsC: string[] = [];
+
+  for (let i = 0; i <= 46; i++) {
+    const y = (i / 46) * 100;
+    const a = 2.0 + Math.sin(i * 0.44) * 1.4;
+    const f = 0.06 + Math.sin(i * 0.25) * 0.02;
+    let d = '';
+    for (let x = 0; x <= 100; x += 0.45) {
+      const yy = y + a * Math.sin(x * f * Math.PI * 2 + i * 0.68);
+      d += x === 0 ? `M${x},${yy.toFixed(2)}` : `L${x},${yy.toFixed(2)}`;
+    }
+    pathsA.push(d);
+  }
+  for (let i = 0; i <= 32; i++) {
+    const x = (i / 32) * 100;
+    const a = 1.5 + Math.cos(i * 0.58) * 1.0;
+    const f = 0.055 + Math.cos(i * 0.35) * 0.015;
+    let d = '';
+    for (let y = 0; y <= 100; y += 0.55) {
+      const xx = x + a * Math.sin(y * f * Math.PI * 2 + i * 0.5);
+      d += y === 0 ? `M${xx.toFixed(2)},${y}` : `L${xx.toFixed(2)},${y}`;
+    }
+    pathsB.push(d);
+  }
+  for (let i = 0; i <= 22; i++) {
+    const x = (i / 22) * 100;
+    const a = 0.9 + Math.sin(i * 0.8) * 0.5;
+    const f = 0.1 + Math.sin(i * 0.45) * 0.025;
+    let d = '';
+    for (let y = 0; y <= 100; y += 0.65) {
+      const xx = x + a * Math.cos(y * f * Math.PI * 2 + i * 0.35);
+      d += y === 0 ? `M${xx.toFixed(2)},${y}` : `L${xx.toFixed(2)},${y}`;
+    }
+    pathsC.push(d);
+  }
+
   return (
-    <div>
-      <div className="font-mono text-[7.5px] sm:text-[9px] tracking-[0.15em] text-[var(--pp-burgundy)]/60 uppercase">
-        {en} / {fr}
-      </div>
-      <div className={`font-crimson font-semibold text-[var(--pp-ink)] ${big ? 'text-base sm:text-xl' : 'text-xs sm:text-base'}`}>
-        {value || '—'}
-      </div>
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none"
+      className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden>
+      <defs>
+        <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#8B5A2B"/>
+          <stop offset="50%" stopColor="#3d5a8a"/>
+          <stop offset="100%" stopColor="#5a3870"/>
+        </linearGradient>
+        <linearGradient id="gB" x1="1" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#2d6e5a"/>
+          <stop offset="100%" stopColor="#6e3d2d"/>
+        </linearGradient>
+      </defs>
+      <g stroke="url(#gA)" strokeWidth="0.22" fill="none" opacity="0.16" vectorEffect="non-scaling-stroke">
+        {pathsA.map((d, i) => <path key={`a${i}`} d={d}/>)}
+      </g>
+      <g stroke="url(#gB)" strokeWidth="0.18" fill="none" opacity="0.1" vectorEffect="non-scaling-stroke">
+        {pathsB.map((d, i) => <path key={`b${i}`} d={d}/>)}
+      </g>
+      <g stroke="#4a1728" strokeWidth="0.12" fill="none" opacity="0.08" vectorEffect="non-scaling-stroke">
+        {pathsC.map((d, i) => <path key={`c${i}`} d={d}/>)}
+      </g>
+    </svg>
+  );
+}
+
+// ── Emblem ────────────────────────────────────────────────────────────────────
+function Emblem({ px }: { px: number }) {
+  const r = px / 2;
+  const star = Array.from({length: 8}, (_, i) => {
+    const a = (i * 45 - 90) * Math.PI / 180;
+    const ro = i % 2 === 0 ? r * 0.88 : r * 0.54;
+    return `${r + ro * Math.cos(a)},${r + ro * Math.sin(a)}`;
+  }).join(' ');
+  const ticks = Array.from({length: 24}, (_, i) => {
+    const a = i * 15 * Math.PI / 180;
+    const r1 = r * 0.88, r2 = r;
+    return { x1: r + r1 * Math.cos(a), y1: r + r1 * Math.sin(a), x2: r + r2 * Math.cos(a), y2: r + r2 * Math.sin(a) };
+  });
+  return (
+    <svg width={px} height={px} viewBox={`0 0 ${px} ${px}`} fill="none" aria-hidden>
+      <circle cx={r} cy={r} r={r * 0.96} stroke="currentColor" strokeWidth="1" opacity="0.7"/>
+      <circle cx={r} cy={r} r={r * 0.82} stroke="currentColor" strokeWidth="0.5" opacity="0.4"/>
+      <polygon points={star} stroke="currentColor" strokeWidth="0.7" opacity="0.55"/>
+      {ticks.map((t, i) => <line key={i} x1={t.x1} y1={t.y1} x2={t.x2} y2={t.y2} stroke="currentColor" strokeWidth="0.4" opacity="0.35"/>)}
+      <polygon
+        points={`${r},${r * 0.28} ${r * 1.32},${r} ${r},${r * 1.72} ${r * 0.68},${r}`}
+        stroke="currentColor" strokeWidth="1" fill="white" opacity="0.92"
+      />
+      <circle cx={r} cy={r} r={r * 0.12} fill="currentColor" opacity="0.8"/>
+    </svg>
+  );
+}
+
+// ── Cultural Seal (lower ornament) ────────────────────────────────────────────
+function CulturalSeal() {
+  const spokes = Array.from({length: 24}, (_, i) => {
+    const a = i * 15 * Math.PI / 180;
+    return { x1: 150 + 18 * Math.cos(a), y1: 100 + 18 * Math.sin(a), x2: 150 + 80 * Math.cos(a), y2: 100 + 80 * Math.sin(a) };
+  });
+  const petals = Array.from({length: 8}, (_, i) => {
+    const a = i * 45 * Math.PI / 180;
+    return { cx: 150 + 52 * Math.cos(a), cy: 100 + 52 * Math.sin(a), rot: i * 45 };
+  });
+  const corners: [number, number][] = [[28, 24], [272, 24], [28, 176], [272, 176]];
+
+  return (
+    <svg viewBox="0 0 300 200" style={{ width: '100%', height: '100%' }} aria-hidden>
+      {/* Outer frame */}
+      <rect x="1" y="1" width="298" height="198" rx="3" fill="none" stroke="#4a1728" strokeWidth="1.8"/>
+      <rect x="5" y="5" width="290" height="190" rx="2" fill="none" stroke="#b8956e" strokeWidth="0.9"/>
+      {/* Center rosette rings */}
+      <circle cx="150" cy="100" r="80" fill="none" stroke="#4a1728" strokeWidth="1"/>
+      <circle cx="150" cy="100" r="66" fill="none" stroke="#b8956e" strokeWidth="0.7"/>
+      <circle cx="150" cy="100" r="52" fill="none" stroke="#4a1728" strokeWidth="0.8"/>
+      <circle cx="150" cy="100" r="36" fill="none" stroke="#4a1728" strokeWidth="0.6"/>
+      <circle cx="150" cy="100" r="18" fill="none" stroke="#b8956e" strokeWidth="0.7"/>
+      <circle cx="150" cy="100" r="7"  fill="none" stroke="#4a1728" strokeWidth="1.2"/>
+      <circle cx="150" cy="100" r="3"  fill="#4a1728"/>
+      {/* Spokes */}
+      {spokes.map((s, i) => <line key={i} x1={s.x1} y1={s.y1} x2={s.x2} y2={s.y2} stroke="#4a1728" strokeWidth="0.5"/>)}
+      {/* Petals */}
+      {petals.map((p, i) => (
+        <ellipse key={i} cx={p.cx} cy={p.cy} rx="11" ry="6"
+          transform={`rotate(${p.rot} ${p.cx} ${p.cy})`}
+          fill="none" stroke="#4a1728" strokeWidth="0.7"/>
+      ))}
+      {/* Text on arc top */}
+      <path id="arc1" d="M 78,100 A 72,72 0 0 1 222,100" fill="none"/>
+      <text fontFamily="serif" fontWeight="700" fontSize="13" fill="#4a1728" letterSpacing="3.5">
+        <textPath href="#arc1" startOffset="8%">EPRIS JOURNAL</textPath>
+      </text>
+      {/* Text on arc bottom */}
+      <path id="arc2" d="M 82,102 A 68,68 0 0 0 218,102" fill="none"/>
+      <text fontFamily="monospace" fontSize="7.5" fill="#4a1728" letterSpacing="2">
+        <textPath href="#arc2" startOffset="10%">REVEAL THE INVISIBLE</textPath>
+      </text>
+      {/* Corner ornaments */}
+      {corners.map(([cx, cy], i) => (
+        <g key={i}>
+          <circle cx={cx} cy={cy} r="14" fill="none" stroke="#4a1728" strokeWidth="0.9"/>
+          <circle cx={cx} cy={cy} r="8"  fill="none" stroke="#b8956e" strokeWidth="0.6"/>
+          <circle cx={cx} cy={cy} r="3"  fill="#4a1728"/>
+          {[0,90,180,270].map(a => {
+            const rad = a * Math.PI / 180;
+            return <line key={a} x1={cx + 8 * Math.cos(rad)} y1={cy + 8 * Math.sin(rad)} x2={cx + 14 * Math.cos(rad)} y2={cy + 14 * Math.sin(rad)} stroke="#4a1728" strokeWidth="0.5"/>;
+          })}
+        </g>
+      ))}
+      {/* Side decorative lines */}
+      <line x1="30" y1="100" x2="64" y2="100" stroke="#b8956e" strokeWidth="0.8"/>
+      <line x1="236" y1="100" x2="270" y2="100" stroke="#b8956e" strokeWidth="0.8"/>
+      <line x1="30" y1="96" x2="50" y2="96" stroke="#4a1728" strokeWidth="0.4"/>
+      <line x1="250" y1="96" x2="270" y2="96" stroke="#4a1728" strokeWidth="0.4"/>
+      <line x1="30" y1="104" x2="50" y2="104" stroke="#4a1728" strokeWidth="0.4"/>
+      <line x1="250" y1="104" x2="270" y2="104" stroke="#4a1728" strokeWidth="0.4"/>
+    </svg>
+  );
+}
+
+// ── Field ─────────────────────────────────────────────────────────────────────
+function F({
+  label, value, big, mono,
+}: {
+  label: string; value: string; big?: boolean; mono?: boolean;
+}) {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+      <span style={{
+        fontFamily: '"PT Sans", sans-serif',
+        fontSize: 'clamp(5px, 1.05cqw, 8.5px)',
+        color: '#4a1728',
+        opacity: 0.55,
+        fontStyle: 'italic',
+        lineHeight: 1,
+        letterSpacing: '0.02em',
+      }}>{label}</span>
+      <span style={{
+        fontFamily: big
+          ? '"Playfair Display", "PT Serif", serif'
+          : mono
+            ? '"Courier New", monospace'
+            : '"PT Serif", serif',
+        fontSize: big
+          ? 'clamp(9.5px, 1.95cqw, 16.5px)'
+          : 'clamp(7.5px, 1.35cqw, 11.5px)',
+        fontWeight: big ? 700 : 600,
+        color: '#1a0b10',
+        lineHeight: 1.1,
+        letterSpacing: big ? '0.01em' : mono ? '0.04em' : '0.005em',
+      }}>{value || '—'}</span>
     </div>
   );
 }
 
-const WAVE_BG =
-  "data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cpath d='M0 20 Q 30 0 60 20 T 120 20' stroke='%235a78a5' stroke-opacity='0.18' fill='none'/%3E%3Cpath d='M0 60 Q 30 40 60 60 T 120 60' stroke='%235a78a5' stroke-opacity='0.18' fill='none'/%3E%3Cpath d='M0 100 Q 30 80 60 100 T 120 100' stroke='%235a78a5' stroke-opacity='0.18' fill='none'/%3E%3C/svg%3E";
+// ── Tab button ────────────────────────────────────────────────────────────────
+function Tab({ active, onClick, label }: { active: boolean; onClick: () => void; label: string }) {
+  return (
+    <button 
+      onClick={onClick} 
+      className={`flex-1 flex items-center justify-center py-2.5 px-2 transition-all duration-300 text-[10px] sm:text-xs font-sans font-semibold tracking-[0.2em] uppercase border-b-2 ${
+        active 
+          ? 'border-[var(--pp-burgundy)] text-[var(--pp-burgundy)]' 
+          : 'border-transparent text-[var(--pp-burgundy)]/40 hover:text-[var(--pp-burgundy)]/70 hover:border-[var(--pp-burgundy)]/20'
+      }`}
+    >
+      {label}
+    </button>
+  );
+}
 
-function PageShell({ children, className = '' }: { children: ReactNode; className?: string }) {
+// ── Main passport page ────────────────────────────────────────────────────────
+export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: {
+  fields: PassportFields; photoUrl: string | null; code: string;
+  mrz: [string, string]; page2?: boolean; qrDataUrl?: string | null;
+}) {
   return (
     <div
-      className={`relative flex-1 min-w-0 overflow-hidden select-none ${className}`}
+      className="relative w-full select-none overflow-hidden"
       style={{
-        '--pp-cream': '#f7f2ea',
-        '--pp-burgundy': '#501a2c',
-        '--pp-sand': '#c9a690',
-        '--pp-ink': '#241016',
-        backgroundImage: `linear-gradient(135deg, #f7f2ea, #efe6d8), url("${WAVE_BG}")`,
+        aspectRatio: '88 / 125',
+        // Rich warm cream base
+        background: 'linear-gradient(160deg, #f5eddc 0%, #ede1c6 40%, #e7d8b8 100%)',
+        containerType: 'size',
+        // Layered shadow like a real document
+        boxShadow: '0 2px 6px rgba(74,23,40,0.12), 0 8px 28px rgba(74,23,40,0.16), 0 20px 60px rgba(74,23,40,0.12)',
       } as CSSProperties}
     >
-      <div className="absolute inset-[6px] sm:inset-2 border-2 border-[var(--pp-burgundy)] pointer-events-none" />
-      <div className="absolute inset-[10px] sm:inset-3.5 border border-[var(--pp-sand)] pointer-events-none" />
+      {/* Guilloche — rich colored background */}
+      <Guilloche />
 
-      <div className="absolute top-2 sm:top-3 left-4 right-4 overflow-hidden whitespace-nowrap font-mono text-[6px] sm:text-[7px] tracking-[0.3em] text-[var(--pp-burgundy)]/30 pointer-events-none">
-        {Array(8).fill('EPRIS JOURNAL • REVEAL THE INVISIBLE • DIGITAL MEMBER   ').join('')}
-      </div>
-      <div className="absolute bottom-2 sm:bottom-3 left-4 right-4 overflow-hidden whitespace-nowrap font-mono text-[6px] sm:text-[7px] tracking-[0.3em] text-[var(--pp-burgundy)]/30 pointer-events-none">
-        {Array(8).fill('EPRIS JOURNAL • REVEAL THE INVISIBLE • DIGITAL MEMBER   ').join('')}
+      {/* EPRIS watermark */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden" aria-hidden>
+        <span style={{
+          fontFamily: '"Playfair Display", serif',
+          fontWeight: 900,
+          fontSize: 'clamp(55px, 26cqw, 240px)',
+          color: '#4a1728',
+          opacity: 0.042,
+          letterSpacing: '-0.03em',
+          transform: 'rotate(-16deg)',
+          userSelect: 'none',
+          lineHeight: 1,
+        }}>EPRIS</span>
       </div>
 
-      {/* diagonal watermark — always on, not a user toggle */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ transform: 'rotate(-12deg)' }}>
-        <div className="text-center opacity-[0.09] text-[var(--pp-burgundy)] font-mono font-bold leading-tight text-xl sm:text-3xl">
-          FICTIONAL MEMBER ID
-          <div className="text-base sm:text-xl mt-1">EPRIS JOURNAL SPECIMEN</div>
+      {/* Outer heavy frame */}
+      <div className="absolute pointer-events-none" style={{
+        inset: '1.2%',
+        border: '2px solid #4a1728',
+        opacity: 0.82,
+      }}/>
+      {/* Inner thin frame */}
+      <div className="absolute pointer-events-none" style={{
+        inset: '2.2%',
+        border: '0.7px solid #b8956e',
+        opacity: 0.55,
+      }}/>
+
+      {/* Colored top accent band — like passport interior cover color */}
+      <div style={{
+        position: 'absolute',
+        top: '1.2%', left: '1.2%', right: '1.2%',
+        height: '6.5%',
+        background: 'linear-gradient(90deg, rgba(74,23,40,0.92) 0%, rgba(90,28,48,0.88) 50%, rgba(74,23,40,0.92) 100%)',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        padding: '0 3.5%',
+        pointerEvents: 'none',
+      }}>
+        <div style={{ color: '#f5eddc', opacity: 0.85 }}><Emblem px={22}/></div>
+        <div style={{ textAlign: 'center', flex: 1 }}>
+          <div style={{
+            fontFamily: '"Playfair Display", "PT Serif", serif',
+            fontWeight: 700,
+            fontSize: 'clamp(8px, 2cqw, 17px)',
+            color: '#f5eddc',
+            letterSpacing: '0.1em',
+            lineHeight: 1,
+          }}>
+            {page2 ? 'OBSERVATIONS' : 'EPRIS JOURNAL'}
+          </div>
+          <div style={{
+            fontFamily: '"PT Sans", sans-serif',
+            fontSize: 'clamp(3.5px, 0.75cqw, 6px)',
+            color: '#f5eddc',
+            opacity: 0.65,
+            letterSpacing: '0.2em',
+            lineHeight: 1.3,
+            marginTop: 2,
+          }}>
+            {page2 ? 'OBSERVATIONS' : 'DIGITAL MEMBER PASSPORT'}
+          </div>
+        </div>
+        <div style={{ color: '#f5eddc', opacity: 0.85 }}><Emblem px={22}/></div>
+      </div>
+
+      {/* Microtext strip under header band */}
+      <div className="absolute overflow-hidden whitespace-nowrap pointer-events-none" style={{
+        top: '7.8%', left: '3%', right: '3%',
+        fontFamily: 'monospace', fontSize: 'clamp(3.5px, 0.72cqw, 5.5px)',
+        letterSpacing: '0.22em', color: '#4a1728', opacity: 0.2, lineHeight: 1,
+      }}>
+        {'EPRIS JOURNAL · REVEAL THE INVISIBLE · '.repeat(24)}
+      </div>
+
+      {/* ── TYPE / CODE / NUMBER ROW ──────────────────────────────────────────── */}
+      {!page2 && (
+        <div style={{
+          position: 'absolute',
+          top: '9%', left: '4%', right: '4%',
+          display: 'grid', gridTemplateColumns: '1fr 2fr 4fr',
+          gap: '3%', alignItems: 'start',
+        }}>
+          <F label="Type" value="P" />
+          <F label="Code" value="EPR" />
+          <F label="Member No." value={code} mono />
+        </div>
+      )}
+
+      {/* Thin divider under type row */}
+      {!page2 && (
+        <div style={{
+          position: 'absolute', top: '15.5%', left: '3%', right: '3%',
+          height: '0.5px', background: '#b8956e', opacity: 0.5,
+        }}/>
+      )}
+
+      {/* Light overlay on content area for legibility */}
+      <div style={{
+        position: 'absolute',
+        top: page2 ? '8.5%' : '16.5%',
+        left: '3%', right: '3%',
+        bottom: page2 ? '5%' : '26%',
+        background: 'rgba(245,237,220,0.38)',
+        pointerEvents: 'none',
+      }}/>
+
+      {/* ── MAIN CONTENT AREA ─────────────────────────────────────────────────── */}
+      <div style={{
+        position: 'absolute',
+        top: page2 ? '8.5%' : '16.5%',
+        left: '3%', right: '3%',
+        bottom: page2 ? '5%' : '26%',
+        display: 'flex', gap: '3.5%',
+      }}>
+        {/* LEFT: Photo / QR */}
+        <div style={{
+          width: '32%', flexShrink: 0,
+          display: 'flex', flexDirection: 'column', gap: '4%',
+        }}>
+          {/* Photo/QR box — ICAO 35×45mm */}
+          <div style={{
+            width: '100%', aspectRatio: '35/45', flexShrink: 0,
+            border: '1.5px solid #4a1728',
+            background: page2 ? '#fff' : '#f8f4ed',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            overflow: 'hidden',
+            // Inner shadow for photo
+            boxShadow: 'inset 0 0 0 1px rgba(74,23,40,0.08)',
+          }}>
+            {page2 ? (
+              qrDataUrl
+                ? <img src={qrDataUrl} alt="QR" style={{ width: '86%', height: '86%', objectFit: 'contain' }}/>
+                : <span style={{ fontFamily: 'monospace', fontSize: 'clamp(5px, 1cqw, 8px)', color: '#4a1728', opacity: 0.3 }}>QR</span>
+            ) : (
+              photoUrl
+                ? <img src={photoUrl} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }}/>
+                : <span style={{ fontFamily: '"PT Sans",sans-serif', fontSize: 'clamp(5px, 1cqw, 8px)', color: '#4a1728', opacity: 0.3 }}>PHOTO</span>
+            )}
+          </div>
+
+          {/* Membership badge */}
+          {!page2 && (
+            <div style={{
+              padding: '5% 6%',
+              background: 'rgba(74,23,40,0.06)',
+              border: '0.8px solid rgba(74,23,40,0.18)',
+            }}>
+              <div style={{
+                fontFamily: '"PT Sans",sans-serif',
+                fontSize: 'clamp(4px, 0.78cqw, 6.5px)',
+                color: '#4a1728', opacity: 0.5,
+                letterSpacing: '0.12em', lineHeight: 1.3,
+                textAlign: 'center', textTransform: 'uppercase',
+              }}>Membership<br/>Type</div>
+              <div style={{
+                fontFamily: '"Playfair Display", serif', fontWeight: 700,
+                fontSize: 'clamp(7px, 1.4cqw, 11.5px)',
+                color: '#4a1728', textAlign: 'center',
+                marginTop: 3, lineHeight: 1,
+              }}>
+                {fields.membershipType || 'Author'}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* RIGHT: Fields */}
+        <div style={{
+          flex: 1, minWidth: 0,
+          display: 'flex', flexDirection: 'column',
+          justifyContent: 'space-between',
+        }}>
+          {!page2 ? (
+            <>
+              <F label="Surname" value={fields.surname.toUpperCase()} big />
+              <F label="Given Names" value={fields.givenNames.toUpperCase()} big />
+              <F label="Nationality" value={`EPRIS · ${fields.country || '—'}`.toUpperCase()} />
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
+                <F label="Date of birth" value={fields.dob || '—'} />
+                <F label="Record No." value={code} mono />
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
+                <F label="Sex" value="·" />
+                <F label="City" value={fields.city || '—'} />
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
+                <F label="Date of issue" value={fields.issueDate || '—'} />
+                <F label="Authority" value="EPRIS J." />
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
+                <F label="Date of expiry" value={fields.expiryDate || '—'} />
+                <div>
+                  <div style={{
+                    fontFamily: '"PT Sans",sans-serif',
+                    fontSize: 'clamp(5px, 1cqw, 8.5px)', color: '#4a1728', opacity: 0.52,
+                    fontStyle: 'italic', lineHeight: 1, marginBottom: 4,
+                  }}>Holder's signature</div>
+                  <div style={{ borderBottom: '0.8px solid #b8956e', width: '82%', height: 'clamp(8px, 1.8cqh, 18px)' }}/>
+                </div>
+              </div>
+              <F label="Professional Field" value={(fields.field || '—').toUpperCase()} />
+            </>
+          ) : (
+            <>
+              <F label="Personal Motto" value={fields.motto || '—'} big />
+              <F label="Website · ORCID · Social" value={fields.link || '—'} />
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
+                <F label="Membership Type" value={fields.membershipType || '—'} />
+                <F label="Verification" value={code} mono />
+              </div>
+              <F label="Digital Signature" value={generateSignatureString(code, fields)} mono />
+              <F label="Scan to Verify" value={`eprisjournal.com/passport/${code}`} />
+              {/* Decorative seal on observations page */}
+              <div style={{
+                flex: 1, minHeight: 0,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                opacity: 0.1,
+              }}>
+                <svg viewBox="0 0 120 80" style={{ width: '85%' }} aria-hidden>
+                  <ellipse cx="60" cy="40" rx="58" ry="38" stroke="#4a1728" strokeWidth="2" fill="none"/>
+                  <ellipse cx="60" cy="40" rx="50" ry="30" stroke="#4a1728" strokeWidth="1" fill="none"/>
+                  <text x="60" y="36" textAnchor="middle" fontFamily="serif" fontWeight="bold" fontSize="11" fill="#4a1728">EPRIS JOURNAL</text>
+                  <text x="60" y="48" textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill="#4a1728">REVEAL THE INVISIBLE</text>
+                  <line x1="16" y1="40" x2="36" y2="40" stroke="#4a1728" strokeWidth="0.8"/>
+                  <line x1="84" y1="40" x2="104" y2="40" stroke="#4a1728" strokeWidth="0.8"/>
+                </svg>
+              </div>
+            </>
+          )}
         </div>
       </div>
 
-      <div className="relative flex flex-col px-5 sm:px-8 pt-6 sm:pt-8 pb-5 sm:pb-7 h-full">
-        {children}
+      {/* ── CULTURAL SEAL ZONE (between content and MRZ) ─────────────────────── */}
+      {!page2 && (
+        <div style={{
+          position: 'absolute',
+          bottom: '11.5%', left: '3%', right: '3%',
+          height: '14%',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          opacity: 0.2,
+          pointerEvents: 'none',
+        }}>
+          <CulturalSeal />
+        </div>
+      )}
+
+      {/* ── HOLOGRAPHIC STRIP ─────────────────────────────────────────────────── */}
+      {!page2 && (
+        <>
+          <style>{`
+            @keyframes shimmerStrip {
+              0% { background-position: 200% center; }
+              100% { background-position: -200% center; }
+            }
+          `}</style>
+          <div style={{
+            position: 'absolute',
+            bottom: '11%', left: '3%', right: '3%',
+            height: '0.7%',
+            background: 'linear-gradient(90deg, transparent 0%, rgba(180,80,80,0.4) 15%, rgba(80,160,240,0.45) 30%, rgba(60,220,120,0.4) 45%, rgba(240,200,40,0.4) 60%, rgba(220,60,180,0.4) 75%, rgba(60,140,240,0.45) 85%, transparent 100%)',
+            backgroundSize: '200% 100%',
+            animation: 'shimmerStrip 8s linear infinite',
+            mixBlendMode: 'overlay',
+          }}/>
+        </>
+      )}
+
+      {/* ── MRZ ZONE ──────────────────────────────────────────────────────────── */}
+      {!page2 && (
+        <div style={{
+          position: 'absolute',
+          bottom: '1.5%', left: '3%', right: '3%',
+        }}>
+          {/* MRZ label */}
+          <div style={{
+            fontFamily: '"PT Sans", sans-serif',
+            fontSize: 'clamp(3.5px, 0.65cqw, 5.5px)',
+            color: '#4a1728', opacity: 0.38,
+            letterSpacing: '0.15em',
+            marginBottom: '0.8%',
+            textTransform: 'uppercase',
+          }}>Machine Readable Zone</div>
+          {/* MRZ background */}
+          <div style={{
+            background: 'rgba(255,255,255,0.85)',
+            border: '0.6px solid rgba(74,23,40,0.2)',
+            padding: '2% 2%',
+            boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.05)',
+          }}>
+            <div style={{
+              display: 'flex', justifyContent: 'space-between',
+              fontFamily: '"OCR-B 10 BT", "OCR-B", "Courier New", monospace',
+              fontSize: 'clamp(8px, 1.7cqw, 15px)',
+              fontWeight: 'bold',
+              color: '#1a0b10', opacity: 0.85,
+              lineHeight: 1.2,
+            }}>
+              {mrz[0].split('').map((c, i) => <span key={i}>{c}</span>)}
+            </div>
+            <div style={{
+              display: 'flex', justifyContent: 'space-between',
+              fontFamily: '"OCR-B 10 BT", "OCR-B", "Courier New", monospace',
+              fontSize: 'clamp(8px, 1.7cqw, 15px)',
+              fontWeight: 'bold',
+              color: '#1a0b10', opacity: 0.85,
+              lineHeight: 1.2,
+              marginTop: '1%',
+            }}>
+              {mrz[1].split('').map((c, i) => <span key={i}>{c}</span>)}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Page number */}
+      <div style={{
+        position: 'absolute', bottom: '0.5%', right: '3.5%',
+        fontFamily: 'monospace',
+        fontSize: 'clamp(3.5px, 0.6cqw, 5px)',
+        color: '#4a1728', opacity: 0.28,
+        letterSpacing: '0.1em',
+      }}>
+        {page2 ? '3' : '2'} / 32
       </div>
     </div>
   );
 }
-
 
 export function PassportPreview({
   fields,
@@ -67,90 +598,98 @@ export function PassportPreview({
   code: string;
   qrDataUrl: string | null;
 }) {
+  const [page, setPage] = useState<'bio' | 'obs'>('bio');
+  const [rot, setRot] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false);
+  const mrz = buildMRZ(fields, code);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isZoomed) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const cx = rect.width / 2;
+    const cy = rect.height / 2;
+    const rotateX = ((y - cy) / cy) * -4;
+    const rotateY = ((x - cx) / cx) * 4;
+    setRot({ x: rotateX, y: rotateY });
+  };
+
+  const handleMouseLeave = () => {
+    if (isZoomed) return;
+    setRot({ x: 0, y: 0 });
+    setIsHovering(false);
+  };
+
   return (
-    <div className="flex flex-col sm:flex-row w-full shadow-xl">
-      {/* ── Page 1 — bio data page ───────────────────────────────────────── */}
-      <PageShell>
-        <div>
-          <div className="font-serif font-bold text-lg sm:text-2xl text-[var(--pp-burgundy)] tracking-tight">EPRIS JOURNAL</div>
-          <div className="font-mono text-[7px] sm:text-[9px] tracking-[0.15em] text-[var(--pp-burgundy)]/75 mt-0.5">
-            DIGITAL MEMBER PASSPORT · PASSEPORT NUMÉRIQUE DE MEMBRE
-          </div>
-          <div className="mt-2 sm:mt-3 bg-[var(--pp-burgundy)] text-[var(--pp-cream)] font-mono font-bold text-[6.5px] sm:text-[9px] tracking-[0.08em] text-center py-1.5 sm:py-2 px-1">
-            NOT A GOVERNMENT DOCUMENT · FICTIONAL MEMBER ID · EPRIS JOURNAL ONLY
-          </div>
+    <>
+      <div className={`w-full max-w-[560px] mx-auto ${isZoomed ? 'hidden' : 'block'}`} style={{ perspective: 1200 }}>
+        {/* Tabs */}
+        <div className="flex mb-8 border-b border-[var(--pp-burgundy)]/10">
+          <Tab active={page === 'bio'} onClick={() => setPage('bio')} label="Biographical" />
+          <Tab active={page === 'obs'} onClick={() => setPage('obs')} label="Observations" />
         </div>
 
-        <div className="flex gap-4 sm:gap-6 mt-4 sm:mt-6">
-          <div className="w-[30%] sm:w-[26%] flex-shrink-0">
-            <div className="w-full aspect-[3/4] bg-white border-2 border-[var(--pp-burgundy)] flex items-center justify-center overflow-hidden">
-              {photoUrl ? (
-                <img src={photoUrl} alt="" className="w-full h-full object-cover" />
-              ) : (
-                <span className="font-crimson text-[10px] sm:text-xs text-[var(--pp-burgundy)]/40">PHOTO</span>
-              )}
+        <div
+          onMouseMove={handleMouseMove}
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={handleMouseLeave}
+          onClick={() => setIsZoomed(true)}
+          className="relative cursor-zoom-in"
+          style={{
+            transform: `rotateX(${rot.x}deg) rotateY(${rot.y}deg)`,
+            transition: isHovering ? 'transform 0.1s ease-out' : 'transform 0.5s ease-out',
+            transformStyle: 'preserve-3d',
+          }}
+        >
+          <div className="absolute inset-0 z-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity bg-[#f7f2ea]/20 rounded-xl pointer-events-none">
+            <div className="bg-[#501a2c] text-[#f7f2ea] font-mono tracking-widest text-[10px] uppercase px-5 py-2.5 rounded-sm flex items-center gap-2 shadow-lg">
+              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path><path d="M11 8v6"></path><path d="M8 11h6"></path></svg>
+              TAP TO ZOOM
             </div>
           </div>
-
-          <div className="flex-1 grid grid-cols-2 gap-x-3 gap-y-2.5 sm:gap-x-5 sm:gap-y-3.5 content-start min-w-0">
-            <div className="col-span-2"><FieldRow en="Surname" fr="Nom" value={fields.surname.toUpperCase()} big /></div>
-            <div className="col-span-2"><FieldRow en="Given Names" fr="Prénoms" value={fields.givenNames.toUpperCase()} big /></div>
-            <FieldRow en="Member No." fr="N° d'adhérent" value={code} />
-            <FieldRow en="Membership Type" fr="Type d'adhésion" value={fields.membershipType} />
-            <FieldRow en="Country" fr="Pays" value={fields.country} />
-            <FieldRow en="City" fr="Ville" value={fields.city} />
-            <FieldRow en="Date of Birth" fr="Date de naissance" value={fields.dob} />
-            <FieldRow en="Field" fr="Domaine" value={fields.field} />
-            <FieldRow en="Issue Date" fr="Date d'émission" value={fields.issueDate} />
-            <FieldRow en="Expiry Date" fr="Date d'expiration" value={fields.expiryDate} />
-          </div>
+          <PassportPage
+            fields={fields}
+            photoUrl={photoUrl}
+            code={code}
+            mrz={mrz}
+            page2={page === 'obs'}
+            qrDataUrl={qrDataUrl}
+          />
         </div>
+      </div>
 
-        <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-[var(--pp-sand)]">
-          <FieldRow en="Issuing Authority" fr="Autorité de délivrance" value="EPRIS JOURNAL" />
-        </div>
-      </PageShell>
-
-      {/* ── Spine ─────────────────────────────────────────────────────────── */}
-      <div className="hidden sm:block w-3 flex-shrink-0 bg-gradient-to-r from-black/15 via-black/25 to-black/15" />
-      <div className="sm:hidden h-2 bg-gradient-to-b from-black/10 to-black/20" />
-
-      {/* ── Page 2 — observations page, mirrors page 1's layout ─────────────── */}
-      <PageShell>
-        <div>
-          <div className="font-serif font-bold text-lg sm:text-2xl text-[var(--pp-burgundy)] tracking-tight">EPRIS JOURNAL</div>
-          <div className="font-mono text-[7px] sm:text-[9px] tracking-[0.15em] text-[var(--pp-burgundy)]/75 mt-0.5">
-            OBSERVATIONS · MENTIONS SPÉCIALES
-          </div>
-          <div className="mt-2 sm:mt-3 bg-[var(--pp-burgundy)] text-[var(--pp-cream)] font-mono font-bold text-[6.5px] sm:text-[9px] tracking-[0.08em] text-center py-1.5 sm:py-2 px-1">
-            NOT A GOVERNMENT DOCUMENT · FICTIONAL MEMBER ID · EPRIS JOURNAL ONLY
-          </div>
-        </div>
-
-        <div className="flex gap-4 sm:gap-6 mt-4 sm:mt-6">
-          <div className="w-[30%] sm:w-[26%] flex-shrink-0">
-            <div className="w-full aspect-[3/4] bg-white border-2 border-[var(--pp-burgundy)] flex items-center justify-center overflow-hidden p-2">
-              {qrDataUrl ? (
-                <img src={qrDataUrl} alt="verification QR" className="w-full h-full object-contain" />
-              ) : (
-                <span className="font-crimson text-[10px] sm:text-xs text-[var(--pp-burgundy)]/40">QR</span>
-              )}
+      {isZoomed && (
+        <div className="fixed inset-0 z-[200] bg-[#f7f2ea]/95 backdrop-blur-sm flex flex-col items-center justify-start overflow-y-auto pt-8 pb-24 px-2 sm:px-8 cursor-zoom-out" onClick={() => setIsZoomed(false)}>
+          <div className="w-full max-w-2xl mx-auto flex flex-col gap-8">
+            <div className="self-end text-[var(--pp-burgundy)] text-[10px] font-mono tracking-widest uppercase mb-2 flex items-center gap-2 hover:opacity-70 transition-opacity">
+              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+              CLOSE
+            </div>
+            <div className="shadow-[0_20px_50px_rgba(80,26,44,0.15)] rounded-2xl overflow-hidden ring-1 ring-[var(--pp-burgundy)]/10">
+              <PassportPage
+                fields={fields}
+                photoUrl={photoUrl}
+                code={code}
+                mrz={mrz}
+                page2={false}
+                qrDataUrl={qrDataUrl}
+              />
+            </div>
+            <div className="shadow-[0_20px_50px_rgba(80,26,44,0.15)] rounded-2xl overflow-hidden ring-1 ring-[var(--pp-burgundy)]/10">
+              <PassportPage
+                fields={fields}
+                photoUrl={photoUrl}
+                code={code}
+                mrz={mrz}
+                page2={true}
+                qrDataUrl={qrDataUrl}
+              />
             </div>
           </div>
-
-          <div className="flex-1 grid grid-cols-2 gap-x-3 gap-y-2.5 sm:gap-x-5 sm:gap-y-3.5 content-start min-w-0">
-            <div className="col-span-2"><FieldRow en="Personal Motto" fr="Devise personnelle" value={fields.motto} /></div>
-            <div className="col-span-2"><FieldRow en="Website / ORCID / Social" fr="Site web / ORCID / Réseau" value={fields.link} /></div>
-            <FieldRow en="Membership Type" fr="Type d'adhésion" value={fields.membershipType} />
-            <FieldRow en="Verification Code" fr="Code de vérification" value={code} />
-            <div className="col-span-2"><FieldRow en="Digital Signature" fr="Signature numérique" value={generateSignatureString(code, fields)} /></div>
-          </div>
         </div>
-
-        <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-[var(--pp-sand)] flex items-center justify-between gap-3">
-          <FieldRow en="Scan to Verify" fr="Scanner pour vérifier" value={`eprisjournal.com/passport/${code}`} />
-        </div>
-      </PageShell>
-    </div>
+      )}
+    </>
   );
 }
