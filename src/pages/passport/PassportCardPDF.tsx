@@ -1,5 +1,5 @@
 import React from 'react';
-import { Document, Page, View, Text, Image, StyleSheet, Font } from '@react-pdf/renderer';
+import { Document, Page, View, Text, Image, StyleSheet, Font, Svg, Path, Circle, Defs, LinearGradient, Stop, Rect, Polygon, Line, Ellipse } from '@react-pdf/renderer';
 import type { PassportFields } from './passportRender';
 import { generateSignatureString } from '../../lib/passportCode';
 
@@ -16,126 +16,259 @@ function registerFonts(baseUrl: string) {
   Font.registerHyphenationCallback((word) => [word]);
 }
 
-const c = { burgundy: '#501a2c', cream: '#f7f2ea', sand: '#c9a690', ink: '#241016' };
+// ── MRZ ───────────────────────────────────────────────────────────────────────
+function padFill(s: string, n: number) {
+  return s.replace(/[^A-Z0-9]/gi, '').toUpperCase().slice(0, n).padEnd(n, '<');
+}
+function cdv(s: string): string {
+  const W = [7, 3, 1]; let sum = 0;
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i];
+    const v = c === '<' ? 0 : /\d/.test(c) ? +c : c.charCodeAt(0) - 55;
+    sum += v * W[i % 3];
+  }
+  return String(sum % 10);
+}
+function buildMRZ(f: PassportFields, code: string): [string, string] {
+  const sn = padFill(f.surname, 13), gn = padFill(f.givenNames, 15);
+  const line1 = `P<EPRISJ${sn}<<${gn}`.slice(0, 44).padEnd(44, '<');
+  const num = padFill(code.replace(/[^A-Z0-9]/g, ''), 9);
+  const dob = f.dob.replace(/-/g, '').slice(2, 8) || '000000';
+  const exp = f.expiryDate.replace(/-/g, '').slice(2, 8) || '310712';
+  const comp = `${num}${cdv(num)}${dob}${cdv(dob)}1${exp}${cdv(exp)}<<<<<<`;
+  const line2 = `${num}${cdv(num)}EPR${dob}${cdv(dob)}1${exp}${cdv(exp)}<<<<<<${cdv(comp)}`.slice(0, 44).padEnd(44, '<');
+  return [line1, line2];
+}
 
-// Portrait passport-page proportions — each page of the spread is its own
-// PDF page (two pages, printed/viewed as a two-page booklet).
-const W = 420;
-const H = 540;
+// Aspect ratio 88:125 -> let's use 316.8 x 450 (which is 88*3.6, 125*3.6)
+const W = 316.8;
+const H = 450;
+const c = { 
+  burgundy: '#4a1728', 
+  burgundyDark: '#36111d',
+  cream: '#f5eddc', 
+  sand: '#b8956e', 
+  ink: '#1a0b10',
+  bg1: '#f5eddc',
+  bg2: '#ede1c6',
+  bg3: '#e7d8b8'
+};
 
 const s = StyleSheet.create({
-  page: { width: W, height: H, backgroundColor: c.cream, padding: 26, position: 'relative' },
-  border: { position: 'absolute', top: 10, left: 10, right: 10, bottom: 10, borderWidth: 2, borderColor: c.burgundy },
-  border2: { position: 'absolute', top: 15, left: 15, right: 15, bottom: 15, borderWidth: 1, borderColor: c.sand },
-  headerTitle: { fontFamily: 'PTSerifBold', fontSize: 19, color: c.burgundy },
-  headerSub: { fontFamily: 'PTSans', fontSize: 7, color: c.burgundy, opacity: 0.8, marginTop: 2, letterSpacing: 0.5 },
-  banner: { backgroundColor: c.burgundy, paddingVertical: 6, marginTop: 10, marginBottom: 14 },
-  bannerText: { fontFamily: 'PTSansBold', fontSize: 7.5, color: c.cream, textAlign: 'center', letterSpacing: 0.4 },
-  body: { flexDirection: 'row', gap: 14 },
-  photo: { width: 110, height: 147, objectFit: 'cover', borderWidth: 2, borderColor: c.burgundy },
-  fieldsCol: { flex: 1, flexDirection: 'row', flexWrap: 'wrap' },
-  fieldBox: { width: '50%', marginBottom: 12 },
-  fieldBoxFull: { width: '100%', marginBottom: 12 },
-  label: { fontFamily: 'PTSans', fontSize: 6, color: c.burgundy, opacity: 0.7, letterSpacing: 0.4 },
-  value: { fontFamily: 'PTSerifBold', fontSize: 11.5, color: c.ink, marginTop: 2 },
-  motto: { fontFamily: 'PTSerifItalic', fontSize: 12, color: c.burgundy, textAlign: 'center' },
-  qrBox: { width: 110, height: 147, borderWidth: 2, borderColor: c.burgundy, alignItems: 'center', justifyContent: 'center', padding: 8 },
+  page: { width: W, height: H, backgroundColor: c.bg2, position: 'relative' },
+  outerFrame: { position: 'absolute', top: 5, left: 5, right: 5, bottom: 5, borderWidth: 1.5, borderColor: c.burgundy, opacity: 0.82 },
+  innerFrame: { position: 'absolute', top: 9, left: 9, right: 9, bottom: 9, borderWidth: 0.7, borderColor: c.sand, opacity: 0.55 },
+  header: { 
+    position: 'absolute', top: 5, left: 5, right: 5, height: 28,
+    backgroundColor: c.burgundy, 
+    flexDirection: 'column', alignItems: 'center', justifyContent: 'center'
+  },
+  headerTitle: { fontFamily: 'PTSerifBold', fontSize: 11, color: c.cream, letterSpacing: 1.5 },
+  headerSub: { fontFamily: 'PTSans', fontSize: 4, color: c.cream, opacity: 0.7, letterSpacing: 0.8, marginTop: 1 },
+  microText: { 
+    position: 'absolute', top: 35, left: 12, right: 12, 
+    fontFamily: 'PTSans', fontSize: 3, color: c.burgundy, opacity: 0.3, letterSpacing: 1 
+  },
+  contentArea: { position: 'absolute', top: 75, left: 12, right: 12, bottom: 55, flexDirection: 'row' },
+  photoBox: { width: 90, height: 115.7, borderWidth: 1.2, borderColor: c.burgundy, backgroundColor: '#f8f4ed' },
+  photo: { width: '100%', height: '100%', objectFit: 'cover' },
+  qrBox: { width: 90, height: 115.7, borderWidth: 1.2, borderColor: c.burgundy, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center', padding: 4 },
   qr: { width: '100%', height: '100%', objectFit: 'contain' },
-  watermark: { position: 'absolute', top: 220, left: 60, fontFamily: 'PTSansBold', fontSize: 26, color: c.burgundy, opacity: 0.1, transform: 'rotate(-16deg)' },
-  authorityBox: { position: 'absolute', bottom: 60, left: 26, right: 26, borderTopWidth: 1, borderTopColor: c.sand, paddingTop: 8 },
-  verifyBox: { marginTop: 16 },
+  typeRow: { position: 'absolute', top: 42, left: 15, right: 15, flexDirection: 'row' },
+  fieldsCol: { flex: 1, marginLeft: 12, justifyContent: 'space-between' },
+  field: { marginBottom: 2 },
+  label: { fontFamily: 'PTSerifItalic', fontSize: 5, color: c.burgundy, opacity: 0.65 },
+  val: { fontFamily: 'PTSerifBold', fontSize: 8.5, color: c.ink, marginTop: 1 },
+  valMono: { fontFamily: 'PTSansBold', fontSize: 7, color: c.ink, marginTop: 1, letterSpacing: 0.5 },
+  valBig: { fontFamily: 'PTSerifBold', fontSize: 11, color: c.ink, marginTop: 1 },
+  mrzArea: { position: 'absolute', bottom: 6, left: 12, right: 12 },
+  mrzLabel: { fontFamily: 'PTSans', fontSize: 4, color: c.burgundy, opacity: 0.5, letterSpacing: 1, marginBottom: 2 },
+  mrzBox: { backgroundColor: 'rgba(255,255,255,0.85)', borderWidth: 0.5, borderColor: 'rgba(74,23,40,0.2)', padding: 6 },
+  mrzText: { fontFamily: 'Courier-Bold', fontSize: 10, color: c.ink, opacity: 0.9, letterSpacing: 0.6, lineHeight: 1.3 },
+  pageNo: { position: 'absolute', bottom: 3, right: 12, fontFamily: 'PTSans', fontSize: 4, color: c.burgundy, opacity: 0.4 },
+  hologram: { position: 'absolute', bottom: 50, left: 12, right: 12, height: 3, backgroundColor: 'rgba(100, 160, 240, 0.2)' },
+  sealArea: { position: 'absolute', bottom: 55, left: 12, right: 12, height: 50, alignItems: 'center', justifyContent: 'center', opacity: 0.15 },
+  watermark: { position: 'absolute', top: 180, left: 20, fontFamily: 'PTSerifBold', fontSize: 60, color: c.burgundy, opacity: 0.04, transform: 'rotate(-16deg)' },
+  overlay: { position: 'absolute', top: 75, left: 12, right: 12, bottom: 55, backgroundColor: 'rgba(245,237,220,0.4)' },
 });
 
-function FieldPDF({ en, fr, value, full }: { en: string; fr: string; value: string; full?: boolean }) {
+// Simplified Guilloche for PDF rendering performance
+function GuillochePDF() {
+  const paths: string[] = [];
+  for (let i = 0; i <= 20; i++) {
+    const y = (i / 20) * 100;
+    const a = 2.0;
+    let d = '';
+    for (let x = 0; x <= 100; x += 2) {
+      const yy = y + a * Math.sin(x * 0.1 + i * 0.68);
+      d += x === 0 ? `M${x},${yy}` : `L${x},${yy}`;
+    }
+    paths.push(d);
+  }
+  for (let i = 0; i <= 15; i++) {
+    const x = (i / 15) * 100;
+    const a = 1.5;
+    let d = '';
+    for (let y = 0; y <= 100; y += 2) {
+      const xx = x + a * Math.sin(y * 0.1 + i * 0.5);
+      d += y === 0 ? `M${xx},${y}` : `L${xx},${y}`;
+    }
+    paths.push(d);
+  }
   return (
-    <View style={full ? s.fieldBoxFull : s.fieldBox}>
-      <Text style={s.label}>{en.toUpperCase()} / {fr.toUpperCase()}</Text>
-      <Text style={s.value}>{value || '—'}</Text>
+    <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.15 }}>
+      <Svg viewBox="0 0 100 100" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
+        <Defs>
+          <LinearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+            <Stop offset="0%" stopColor="#8B5A2B"/>
+            <Stop offset="50%" stopColor="#3d5a8a"/>
+            <Stop offset="100%" stopColor="#5a3870"/>
+          </LinearGradient>
+        </Defs>
+        {paths.map((d, i) => <Path key={i} d={d} stroke="url(#g)" strokeWidth={0.2} fill="none" />)}
+      </Svg>
     </View>
   );
 }
 
-export function PassportCardPDF({
-  fields,
-  photoDataUrl,
-  code,
-  qrDataUrl,
-  baseUrl,
-}: {
-  fields: PassportFields;
-  photoDataUrl: string | null;
-  code: string;
-  qrDataUrl: string;
-  baseUrl: string;
-}) {
+function F({ label, val, big, mono }: { label: string; val: string; big?: boolean; mono?: boolean }) {
+  return (
+    <View style={s.field}>
+      <Text style={s.label}>{label}</Text>
+      <Text style={big ? s.valBig : mono ? s.valMono : s.val}>{val || '—'}</Text>
+    </View>
+  );
+}
+
+export function PassportCardPDF({ fields, photoDataUrl, code, qrDataUrl, baseUrl }: { fields: PassportFields; photoDataUrl: string | null; code: string; qrDataUrl: string; baseUrl: string; }) {
   registerFonts(baseUrl);
+  const mrz = buildMRZ(fields, code);
+  
   return (
     <Document>
-      {/* Page 1 — bio data page */}
+      {/* Page 1 */}
       <Page size={[W, H]} style={s.page}>
-        <View style={s.border} />
-        <View style={s.border2} />
-        <Text style={s.watermark}>FICTIONAL MEMBER ID</Text>
-        <Text style={s.headerTitle}>EPRIS JOURNAL</Text>
-        <Text style={s.headerSub}>DIGITAL MEMBER PASSPORT · PASSEPORT NUMÉRIQUE DE MEMBRE</Text>
-        <View style={s.banner}>
-          <Text style={s.bannerText}>NOT A GOVERNMENT DOCUMENT · FICTIONAL MEMBER ID · EPRIS JOURNAL ONLY</Text>
+        <GuillochePDF />
+        <Text style={s.watermark}>EPRIS</Text>
+        <View style={s.outerFrame} />
+        <View style={s.innerFrame} />
+        
+        <View style={s.header}>
+          <Text style={s.headerTitle}>EPRIS JOURNAL</Text>
+          <Text style={s.headerSub}>DIGITAL MEMBER PASSPORT</Text>
         </View>
-        <View style={s.body}>
-          {photoDataUrl ? <Image src={photoDataUrl} style={s.photo} /> : <View style={s.photo} />}
-          <View style={{ flex: 1 }}>
-            <View style={s.fieldsCol}>
-              <FieldPDF full en="Surname" fr="Nom" value={fields.surname.toUpperCase()} />
-              <FieldPDF full en="Given Names" fr="Prénoms" value={fields.givenNames.toUpperCase()} />
-              <FieldPDF en="Member No." fr="N° d'adhérent" value={code} />
-              <FieldPDF en="Membership Type" fr="Type d'adhésion" value={fields.membershipType} />
-              <FieldPDF en="Country" fr="Pays" value={fields.country} />
-              <FieldPDF en="City" fr="Ville" value={fields.city} />
+        
+        <Text style={s.microText}>{'EPRIS JOURNAL · REVEAL THE INVISIBLE · '.repeat(10)}</Text>
+        
+        <View style={s.typeRow}>
+          <View style={{ width: '25%' }}><F label="Type" val="P" /></View>
+          <View style={{ width: '25%' }}><F label="Code" val="EPR" /></View>
+          <View style={{ width: '50%' }}><F label="Member No." val={code} mono /></View>
+        </View>
+        <View style={{ position: 'absolute', top: 70, left: 12, right: 12, height: 0.5, backgroundColor: c.sand, opacity: 0.5 }} />
+        
+        <View style={s.overlay} />
+        <View style={s.contentArea}>
+          <View style={{ width: 90 }}>
+            <View style={s.photoBox}>
+              {photoDataUrl ? <Image src={photoDataUrl} style={s.photo} /> : null}
+            </View>
+            <View style={{ marginTop: 8, padding: 4, backgroundColor: 'rgba(74,23,40,0.06)', borderWidth: 0.5, borderColor: 'rgba(74,23,40,0.18)' }}>
+              <Text style={{ fontFamily: 'PTSans', fontSize: 3.5, color: c.burgundy, opacity: 0.5, textAlign: 'center' }}>MEMBERSHIP TYPE</Text>
+              <Text style={{ fontFamily: 'PTSerifBold', fontSize: 6, color: c.burgundy, textAlign: 'center', marginTop: 2 }}>{fields.membershipType || 'Author'}</Text>
             </View>
           </View>
+          
+          <View style={s.fieldsCol}>
+            <F label="Surname" val={fields.surname.toUpperCase()} big />
+            <F label="Given Names" val={fields.givenNames.toUpperCase()} big />
+            <F label="Nationality" val={`EPRIS · ${fields.country || '—'}`.toUpperCase()} />
+            
+            <View style={{ flexDirection: 'row' }}>
+              <View style={{ flex: 1 }}><F label="Date of birth" val={fields.dob} /></View>
+              <View style={{ flex: 1 }}><F label="Record No." val={code} mono /></View>
+            </View>
+            <View style={{ flexDirection: 'row' }}>
+              <View style={{ flex: 1 }}><F label="Sex" val="·" /></View>
+              <View style={{ flex: 1 }}><F label="City" val={fields.city} /></View>
+            </View>
+            <View style={{ flexDirection: 'row' }}>
+              <View style={{ flex: 1 }}><F label="Date of issue" val={fields.issueDate} /></View>
+              <View style={{ flex: 1 }}><F label="Authority" val="EPRIS J." /></View>
+            </View>
+            <View style={{ flexDirection: 'row' }}>
+              <View style={{ flex: 1 }}><F label="Date of expiry" val={fields.expiryDate} /></View>
+              <View style={{ flex: 1 }}>
+                <Text style={s.label}>Holder's signature</Text>
+                <View style={{ borderBottomWidth: 0.7, borderBottomColor: c.sand, width: '80%', height: 12, marginTop: 2 }} />
+              </View>
+            </View>
+            <F label="Professional Field" val={(fields.field || '—').toUpperCase()} />
+          </View>
         </View>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginTop: 16 }}>
-          <FieldPDF en="Date of Birth" fr="Date de naissance" value={fields.dob} />
-          <FieldPDF en="Field" fr="Domaine" value={fields.field} />
-          <FieldPDF en="Issue Date" fr="Date d'émission" value={fields.issueDate} />
-          <FieldPDF en="Expiry Date" fr="Date d'expiration" value={fields.expiryDate} />
+        
+        <View style={s.sealArea}>
+          <Svg viewBox="0 0 100 100" style={{ width: 50, height: 50 }}>
+            <Circle cx="50" cy="50" r="48" fill="none" stroke={c.burgundy} strokeWidth="1" />
+            <Circle cx="50" cy="50" r="40" fill="none" stroke={c.sand} strokeWidth="0.8" />
+            <Circle cx="50" cy="50" r="30" fill="none" stroke={c.burgundy} strokeWidth="0.8" />
+            <Circle cx="50" cy="50" r="10" fill="none" stroke={c.burgundy} strokeWidth="1" />
+          </Svg>
         </View>
-        <View style={s.authorityBox}>
-          <Text style={s.label}>ISSUING AUTHORITY / AUTORITÉ DE DÉLIVRANCE</Text>
-          <Text style={s.value}>EPRIS JOURNAL</Text>
+        
+        <View style={s.hologram} />
+        
+        <View style={s.mrzArea}>
+          <Text style={s.mrzLabel}>MACHINE READABLE ZONE</Text>
+          <View style={s.mrzBox}>
+            <Text style={s.mrzText}>{mrz[0]}</Text>
+            <Text style={s.mrzText}>{mrz[1]}</Text>
+          </View>
         </View>
+        <Text style={s.pageNo}>2 / 32</Text>
       </Page>
-
-      {/* Page 2 — observations page, mirrors page 1's layout */}
+      
+      {/* Page 2 */}
       <Page size={[W, H]} style={s.page}>
-        <View style={s.border} />
-        <View style={s.border2} />
-        <Text style={s.watermark}>FICTIONAL MEMBER ID</Text>
-        <Text style={s.headerTitle}>EPRIS JOURNAL</Text>
-        <Text style={s.headerSub}>OBSERVATIONS · MENTIONS SPÉCIALES</Text>
-        <View style={s.banner}>
-          <Text style={s.bannerText}>NOT A GOVERNMENT DOCUMENT · FICTIONAL MEMBER ID · EPRIS JOURNAL ONLY</Text>
+        <GuillochePDF />
+        <Text style={s.watermark}>EPRIS</Text>
+        <View style={s.outerFrame} />
+        <View style={s.innerFrame} />
+        
+        <View style={s.header}>
+          <Text style={s.headerTitle}>EPRIS JOURNAL</Text>
+          <Text style={s.headerSub}>OBSERVATIONS</Text>
         </View>
-        <View style={s.body}>
-          <View style={s.qrBox}>
-            <Image src={qrDataUrl} style={s.qr} />
+        
+        <Text style={s.microText}>{'EPRIS JOURNAL · REVEAL THE INVISIBLE · '.repeat(10)}</Text>
+        
+        <View style={s.overlay} />
+        <View style={{ position: 'absolute', top: 45, left: 12, right: 12, bottom: 20, flexDirection: 'row' }}>
+          <View style={{ width: 90 }}>
+            <View style={s.qrBox}>
+              {qrDataUrl ? <Image src={qrDataUrl} style={s.qr} /> : null}
+            </View>
           </View>
-          <View style={{ flex: 1 }}>
-            <View style={s.fieldsCol}>
-              <FieldPDF full en="Personal Motto" fr="Devise personnelle" value={fields.motto} />
-              <FieldPDF full en="Website / ORCID / Social" fr="Site web / ORCID / Réseau" value={fields.link} />
-              <FieldPDF en="Membership Type" fr="Type d'adhésion" value={fields.membershipType} />
-              <FieldPDF en="Verification Code" fr="Code de vérification" value={code} />
+          
+          <View style={s.fieldsCol}>
+            <F label="Personal Motto" val={fields.motto} big />
+            <F label="Website · ORCID · Social" val={fields.link} />
+            <View style={{ flexDirection: 'row' }}>
+              <View style={{ flex: 1 }}><F label="Membership Type" val={fields.membershipType} /></View>
+              <View style={{ flex: 1 }}><F label="Verification" val={code} mono /></View>
+            </View>
+            <F label="Digital Signature" val={generateSignatureString(code, fields)} mono />
+            <F label="Scan to Verify" val={`eprisjournal.com/passport/${code}`} />
+            
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', opacity: 0.15 }}>
+              <Svg viewBox="0 0 100 60" style={{ width: 80, height: 48 }}>
+                <Ellipse cx="50" cy="30" rx="48" ry="28" stroke={c.burgundy} strokeWidth="1" fill="none"/>
+                <Ellipse cx="50" cy="30" rx="42" ry="22" stroke={c.burgundy} strokeWidth="0.5" fill="none"/>
+              </Svg>
             </View>
           </View>
         </View>
-        <View style={{ marginTop: 16 }}>
-          <FieldPDF full en="Digital Signature" fr="Signature numérique" value={generateSignatureString(code, fields)} />
-        </View>
-        <View style={s.authorityBox}>
-          <Text style={s.label}>SCAN TO VERIFY / SCANNER POUR VÉRIFIER</Text>
-          <Text style={s.value}>eprisjournal.com/passport/{code}</Text>
-        </View>
+        <Text style={s.pageNo}>3 / 32</Text>
       </Page>
     </Document>
   );

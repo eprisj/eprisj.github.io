@@ -2,11 +2,11 @@ import { useCallback, useEffect, useMemo, useState, type CSSProperties } from 'r
 import { motion } from 'framer-motion';
 import { ArrowLeft, Upload, Download, FileText, Share2, Link2, Check, RotateCcw, ShieldCheck, Pencil } from 'lucide-react';
 import QRCode from 'qrcode';
-import { PhotoCropper } from './PhotoCropper';
 import { PassportPreview } from './PassportPreview';
 import { generatePassportCode } from '../../lib/passportCode';
-import { renderPassportPNG, type PassportFields } from './passportRender';
 import { publishPassport, fetchPassport } from './passportApi';
+import { renderPassportPNG, type PassportFields } from './passportRender';
+import { PhotoCropper } from './PhotoCropper';
 
 const MEMBERSHIP_TYPES = ['Author', 'Researcher', 'Editor', 'Reviewer', 'Contributor', 'Patron', 'Fellow'];
 
@@ -35,14 +35,14 @@ function emptyFields(): PassportFields {
 
 function Labeled({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <label className="block">
-      <span className="block font-mono text-[9px] uppercase tracking-[0.15em] text-[var(--pp-burgundy)]/70 mb-1.5">{label}</span>
+    <label className="block group">
+      <span className="block font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--pp-burgundy)]/50 group-focus-within:text-[var(--pp-burgundy)]/90 mb-2 transition-colors duration-300">{label}</span>
       {children}
     </label>
   );
 }
 
-const inputCls = 'w-full bg-white border border-[var(--pp-burgundy)]/25 focus:border-[var(--pp-burgundy)] outline-none px-3 py-2 font-crimson text-sm text-[var(--pp-ink)] transition-colors';
+const inputCls = 'w-full bg-white/60 backdrop-blur-sm border border-[var(--pp-burgundy)]/20 rounded-md focus:border-[var(--pp-burgundy)]/60 focus:bg-white focus:ring-4 focus:ring-[var(--pp-burgundy)]/5 outline-none px-4 py-2.5 font-serif text-[15px] text-[var(--pp-ink)] placeholder-[var(--pp-ink)]/30 transition-all duration-300 shadow-[0_2px_10px_rgba(80,26,44,0.02)] focus:shadow-[0_4px_20px_rgba(80,26,44,0.06)]';
 
 function CreatorForm({
   fields, setFields, onPhotoFile, errors,
@@ -54,11 +54,14 @@ function CreatorForm({
 }) {
   const set = <K extends keyof PassportFields>(k: K, v: PassportFields[K]) => setFields({ ...fields, [k]: v });
   return (
-    <div className="space-y-4">
+    <div className="space-y-6 bg-white/40 p-6 sm:p-8 rounded-xl shadow-[0_8px_30px_rgba(80,26,44,0.04)] border border-white/60 backdrop-blur-md">
       <Labeled label="Portrait Photo">
-        <label className="flex items-center gap-2 border border-dashed border-[var(--pp-burgundy)]/40 px-3 py-3 cursor-pointer hover:bg-[var(--pp-burgundy)]/5 transition-colors">
-          <Upload size={16} className="text-[var(--pp-burgundy)]" />
-          <span className="font-mono text-[11px] text-[var(--pp-burgundy)]">Upload &amp; crop photo</span>
+        <label className="flex flex-col items-center justify-center gap-3 border-2 border-dashed border-[var(--pp-burgundy)]/25 bg-white/50 hover:bg-white hover:border-[var(--pp-burgundy)]/50 rounded-lg px-6 py-8 cursor-pointer transition-all duration-300 group">
+          <div className="p-3 bg-[var(--pp-burgundy)]/5 text-[var(--pp-burgundy)] rounded-full group-hover:scale-110 group-hover:bg-[var(--pp-burgundy)]/10 transition-transform duration-300">
+            <Upload size={20} />
+          </div>
+          <span className="font-mono text-[11px] uppercase tracking-widest text-[var(--pp-burgundy)]/80 group-hover:text-[var(--pp-burgundy)] transition-colors">Upload &amp; crop photo</span>
+          <span className="font-serif text-[13px] text-[var(--pp-ink)]/40 italic">Ideal size: 35×45mm aspect ratio</span>
           <input
             type="file"
             accept="image/*"
@@ -129,11 +132,13 @@ function CreatorForm({
   );
 }
 
-function VerifyView({ code, onEdit }: { code: string; onEdit: (fields: PassportFields, photoUrl: string | null) => void }) {
+function VerifyView({ code, onEdit }: { code: string; onEdit: (code: string, fields: PassportFields, photoUrl: string | null) => void }) {
   const [status, setStatus] = useState<'loading' | 'found' | 'missing'>('loading');
   const [fields, setFieldsState] = useState<PassportFields | null>(null);
   const [photoUrl, setPhotoUrl] = useState<string | null>(null);
   const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
+  const [pdfStatus, setPdfStatus] = useState<'idle' | 'loading' | 'done'>('idle');
+  const [copyStatus, setCopyStatus] = useState<'idle' | 'copied'>('idle');
 
   useEffect(() => {
     let cancelled = false;
@@ -151,42 +156,152 @@ function VerifyView({ code, onEdit }: { code: string; onEdit: (fields: PassportF
     return () => { cancelled = true; };
   }, [code]);
 
+  const handleDownloadPDF = useCallback(async () => {
+    if (!fields) return;
+    setPdfStatus('loading');
+    try {
+      const verifyUrl = window.location.href;
+      const dataUrl = await renderPassportPNG({ ...fields, memberNumber: fields.memberNumber || code }, photoUrl, code, verifyUrl);
+      
+      const { jsPDF } = await import('jspdf');
+      const doc = new jsPDF({
+        orientation: 'landscape',
+        unit: 'mm',
+        format: [182, 125] // 88mm * 2 + 6mm spine width = 182mm
+      });
+      
+      doc.addImage(dataUrl, 'JPEG', 0, 0, 182, 125);
+      doc.save(`EPRIS-Passport-${code}.pdf`);
+      
+      setPdfStatus('done');
+    } catch (err) {
+      console.error('PDF export failed:', err);
+      setPdfStatus('idle');
+    }
+    setTimeout(() => setPdfStatus('idle'), 2500);
+  }, [fields, photoUrl, code]);
+
+  const handleCopyLink = useCallback(() => {
+    navigator.clipboard.writeText(window.location.href);
+    setCopyStatus('copied');
+    setTimeout(() => setCopyStatus('idle'), 2000);
+  }, []);
+
+  const shareText = fields ? `Check out my official EPRIS Digital Member Passport! (${fields.givenNames} ${fields.surname})` : 'EPRIS Digital Member Passport';
+  const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+
   if (status === 'loading') {
     return <div className="py-24 text-center font-mono text-xs tracking-widest text-[var(--pp-burgundy)]/60">VERIFYING…</div>;
   }
   if (status === 'missing' || !fields) {
     return (
       <div className="py-24 text-center">
-        <p className="font-serif text-xl text-[var(--pp-burgundy)] mb-2">Not found</p>
-        <p className="font-crimson text-sm text-[var(--pp-ink)]/70">This EPRIS Digital Member Passport is private or does not exist.</p>
+        <p className="font-serif text-2xl text-[var(--pp-burgundy)] mb-3">Not found</p>
+        <p className="font-sans text-base text-[var(--pp-ink)]/70 max-w-sm mx-auto">This EPRIS Digital Member Passport is private or does not exist.</p>
       </div>
     );
   }
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="flex items-center justify-between gap-4 mb-4 flex-wrap">
-        <div className="flex items-center gap-2 font-mono text-[11px] tracking-widest text-green-800">
-          <ShieldCheck size={16} /> VERIFIED · PUBLIC MEMBER PROFILE
+    <div className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center lg:items-stretch gap-12 lg:gap-16 relative">
+      
+      {/* Left Column: Typography & Actions */}
+      <div className="w-full lg:w-[45%] flex flex-col justify-center animate-fade-in-up" style={{ animationDuration: '0.8s' }}>
+        
+        {/* Verification Stamp */}
+        <div className="flex items-center gap-3 mb-8">
+          <div className="w-8 h-8 rounded-full border border-[var(--pp-burgundy)]/30 flex items-center justify-center bg-[var(--pp-burgundy)]/5">
+            <ShieldCheck size={14} className="text-[var(--pp-burgundy)]" />
+          </div>
+          <div className="font-sans text-[10px] font-semibold tracking-[0.25em] text-[var(--pp-burgundy)]/80 uppercase">
+            Verified Member Record
+          </div>
         </div>
-        <button
-          onClick={() => onEdit(fields, photoUrl)}
-          className="flex items-center gap-2 border border-[var(--pp-burgundy)] text-[var(--pp-burgundy)] font-mono text-[11px] uppercase tracking-widest px-3 py-1.5 hover:bg-[var(--pp-burgundy)]/5"
-        >
-          <Pencil size={13} /> Edit this passport
-        </button>
+
+        {/* Editorial Title */}
+        <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[var(--pp-ink)] leading-[1.1] mb-10">
+          Digital <br/><span className="italic text-[var(--pp-burgundy)]">Identity</span>
+        </h1>
+
+        {/* Actions */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-12 lg:mb-16">
+          <button
+            onClick={handleDownloadPDF}
+            disabled={pdfStatus === 'loading'}
+            className="flex items-center justify-center gap-3 border border-[var(--pp-burgundy)] text-[var(--pp-cream)] bg-[var(--pp-burgundy)] font-sans text-[11px] font-semibold uppercase tracking-[0.2em] px-8 py-3.5 hover:bg-transparent hover:text-[var(--pp-burgundy)] active:scale-[0.98] disabled:opacity-40 transition-all duration-500 w-full sm:w-auto"
+          >
+            <Download size={14} /> {pdfStatus === 'loading' ? 'Preparing PDF…' : pdfStatus === 'done' ? 'Downloaded' : 'Export PDF'}
+          </button>
+          <button
+            onClick={() => onEdit(code, fields, photoUrl)}
+            className="flex items-center justify-center gap-3 border border-[var(--pp-burgundy)]/30 text-[var(--pp-burgundy)] bg-transparent font-sans text-[11px] font-semibold uppercase tracking-[0.2em] px-8 py-3.5 hover:bg-[var(--pp-burgundy)]/5 active:scale-[0.98] transition-all duration-500 w-full sm:w-auto"
+          >
+            <Pencil size={14} /> Edit this passport
+          </button>
+        </div>
+
+        {/* Share Section (bottom left) */}
+        <div className="pt-8 border-t border-[var(--pp-burgundy)]/10 w-full max-w-xs">
+          <div className="text-left mb-4">
+            <p className="text-[9px] font-sans font-semibold text-[var(--pp-burgundy)]/50 uppercase tracking-[0.3em]">Share Public Link</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <button 
+              onClick={handleCopyLink}
+              className="flex items-center justify-center w-10 h-10 border border-[var(--pp-burgundy)]/20 text-[var(--pp-burgundy)] bg-transparent hover:bg-[var(--pp-burgundy)]/5 hover:border-[var(--pp-burgundy)]/40 transition-colors duration-300"
+              title="Copy Link"
+            >
+              {copyStatus === 'copied' ? <Check size={14} /> : <Link2 size={14} />}
+            </button>
+            
+            <a 
+              href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(shareText)}`}
+              target="_blank" rel="noreferrer"
+              className="flex items-center justify-center w-10 h-10 border border-[var(--pp-burgundy)]/20 text-[var(--pp-burgundy)] bg-transparent hover:bg-[var(--pp-burgundy)]/5 hover:border-[var(--pp-burgundy)]/40 transition-colors duration-300"
+            >
+              <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            
+            <a 
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`}
+              target="_blank" rel="noreferrer"
+              className="flex items-center justify-center w-10 h-10 border border-[var(--pp-burgundy)]/20 text-[var(--pp-burgundy)] bg-transparent hover:bg-[var(--pp-burgundy)]/5 hover:border-[var(--pp-burgundy)]/40 transition-colors duration-300"
+            >
+              <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            
+            <a 
+              href={`https://t.me/share/url?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(shareText)}`}
+              target="_blank" rel="noreferrer"
+              className="flex items-center justify-center w-10 h-10 border border-[var(--pp-burgundy)]/20 text-[var(--pp-burgundy)] bg-transparent hover:bg-[var(--pp-burgundy)]/5 hover:border-[var(--pp-burgundy)]/40 transition-colors duration-300"
+            >
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.42.91-4 2.64-.38.26-.71.39-1.01.38-.32-.01-.93-.18-1.38-.33-.56-.18-1-.28-.96-.6.02-.16.27-.32.74-.5 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .24z"/></svg>
+            </a>
+          </div>
+        </div>
       </div>
-      <PassportPreview fields={fields} photoUrl={photoUrl} code={code} qrDataUrl={qrDataUrl} />
+      
+      {/* Right Column: Passport */}
+      <div className="w-full lg:w-[55%] flex items-center justify-center relative animate-fade-in-up" style={{ animationDuration: '1.2s' }}>
+        <style dangerouslySetInnerHTML={{__html: `
+          @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          .animate-fade-in-up {
+            animation: fadeInUp ease-out forwards;
+          }
+        `}} />
+        <div className="w-full relative z-10 drop-shadow-[0_25px_40px_rgba(80,26,44,0.15)]">
+          <PassportPreview fields={fields} photoUrl={photoUrl} code={code} qrDataUrl={qrDataUrl} />
+        </div>
+      </div>
     </div>
   );
 }
 
 export function PassportPage({ viewCode, onBack }: { viewCode: string | null; onBack: () => void }) {
-  const [mode, setMode] = useState<'create' | 'view' | 'edit'>(viewCode ? 'view' : 'create');
   const [fields, setFields] = useState<PassportFields>(emptyFields);
   const [photoDataUrl, setPhotoDataUrl] = useState<string | null>(null);
-  // When editing an existing passport, the photo lives at a remote URL until/unless
-  // the user uploads a new crop. Kept separate so we can re-publish without re-sending it.
-  const [existingPhotoUrl, setExistingPhotoUrl] = useState<string | null>(null);
   const [cropFile, setCropFile] = useState<File | null>(null);
   const [code, setCode] = useState(() => generatePassportCode());
   const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
@@ -197,20 +312,21 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
   const [pdfStatus, setPdfStatus] = useState<'idle' | 'loading' | 'done'>('idle');
   const [publishStatus, setPublishStatus] = useState<'idle' | 'loading' | 'done' | 'error'>('idle');
   const [copyStatus, setCopyStatus] = useState<'idle' | 'copied'>('idle');
+  const [mode, setMode] = useState<'create' | 'edit'>('create');
+  const [existingPhotoUrl, setExistingPhotoUrl] = useState<string | null>(null);
   const isEditing = mode === 'edit';
 
-  const startEdit = useCallback((editFields: PassportFields, photoUrl: string | null) => {
+  const startEdit = useCallback((editCode: string, editFields: PassportFields, editPhotoUrl: string | null) => {
     setFields(editFields);
-    setCode(viewCode || editFields.memberNumber || generatePassportCode());
-    setExistingPhotoUrl(photoUrl);
     setPhotoDataUrl(null);
+    setExistingPhotoUrl(editPhotoUrl);
+    setCode(editCode);
     setIsPublic(true);
     setConsent(true);
     setErrors({});
     setPublishStatus('idle');
     setMode('edit');
-    window.scrollTo({ top: 0 });
-  }, [viewCode]);
+  }, []);
 
   const verifyUrl = useMemo(() => `${window.location.origin}/passport/${code}`, [code]);
   const displayMemberNumber = fields.memberNumber || code;
@@ -234,6 +350,7 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
   }, [fields]);
 
   const previewFields = useMemo(() => ({ ...fields, memberNumber: displayMemberNumber }), [fields, displayMemberNumber]);
+  const effectivePhotoUrl = photoDataUrl || existingPhotoUrl;
 
   const handleReset = useCallback(() => {
     setFields(emptyFields());
@@ -245,14 +362,13 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
     setErrors({});
     setPublishStatus('idle');
     setMode('create');
-    window.history.replaceState(null, '', '/passport');
   }, []);
 
   const handleDownloadPNG = useCallback(async () => {
     if (!validate()) return;
     setPngStatus('loading');
     try {
-      const dataUrl = await renderPassportPNG(previewFields, photoDataUrl, code, verifyUrl);
+      const dataUrl = await renderPassportPNG(previewFields, effectivePhotoUrl, code, verifyUrl);
       const a = document.createElement('a');
       a.href = dataUrl;
       a.download = `EPRIS-Passport-${code}.png`;
@@ -265,20 +381,23 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
       setPngStatus('idle');
     }
     setTimeout(() => setPngStatus('idle'), 2500);
-  }, [validate, previewFields, photoDataUrl, code, verifyUrl]);
+  }, [validate, previewFields, effectivePhotoUrl, code, verifyUrl]);
 
   const handleDownloadPDF = useCallback(async () => {
     if (!validate()) return;
     setPdfStatus('loading');
     try {
-      const [{ pdf }, { PassportCardPDF }, { createElement }] = await Promise.all([
+      const dataUrl = await renderPassportPNG(previewFields, effectivePhotoUrl, code, verifyUrl);
+      const [{ pdf }, { Document, Page, Image }, { createElement }] = await Promise.all([
         import('@react-pdf/renderer'),
-        import('./PassportCardPDF'),
+        import('@react-pdf/renderer'),
         import('react'),
       ]);
-      const baseUrl = window.location.origin;
-      const qr = qrDataUrl || await QRCode.toDataURL(verifyUrl, { margin: 0, width: 240 });
-      const element = createElement(PassportCardPDF, { fields: previewFields, photoDataUrl, code, qrDataUrl: qr, baseUrl });
+      const element = createElement(Document, null,
+        createElement(Page, { size: [507, 354] },
+          createElement(Image, { src: dataUrl, style: { width: '100%', height: '100%' } })
+        )
+      );
       const blob = await pdf(element as Parameters<typeof pdf>[0]).toBlob();
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -294,17 +413,15 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
       setPdfStatus('idle');
     }
     setTimeout(() => setPdfStatus('idle'), 2500);
-  }, [validate, previewFields, photoDataUrl, code, verifyUrl, qrDataUrl]);
+  }, [validate, previewFields, effectivePhotoUrl, code, verifyUrl, qrDataUrl]);
 
   const handlePublish = useCallback(async () => {
     if (!validate() || !consent) return;
     setPublishStatus('loading');
-    const res = await publishPassport(code, previewFields, photoDataUrl, {
-      overwrite: isEditing,
-      existingPhotoUrl,
-    });
+    const res = await publishPassport(code, previewFields, photoDataUrl, isEditing ? { overwrite: true, existingPhotoUrl } : {});
     if (res.ok) {
       if (res.code && res.code !== code) setCode(res.code);
+      if (photoDataUrl) setExistingPhotoUrl(photoDataUrl);
       setIsPublic(true);
       setPublishStatus('done');
     } else {
@@ -327,13 +444,18 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
     handleCopyLink();
   }, [verifyUrl, handleCopyLink]);
 
-  if (mode === 'view' && viewCode) {
+  if (viewCode && !isEditing) {
     return (
-      <div className="pt-16 pb-24 px-4 sm:px-8 max-w-6xl mx-auto" style={{ '--pp-burgundy': '#501a2c', '--pp-ink': '#241016' } as CSSProperties}>
-        <button onClick={onBack} className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-[var(--pp-burgundy)] mb-8">
-          <ArrowLeft size={14} /> Back to EPRIS Journal
-        </button>
-        <VerifyView code={viewCode} onEdit={startEdit} />
+      <div className="min-h-screen w-full bg-[var(--pp-cream)] text-[var(--pp-ink)] flex flex-col font-sans" style={{ '--pp-burgundy': '#501a2c', '--pp-ink': '#241016', '--pp-cream': '#f7f2ea', '--pp-sand': '#c9a690' } as CSSProperties}>
+        <div className="p-4 sm:p-8 w-full max-w-5xl mx-auto flex-grow flex flex-col pt-12 sm:pt-20">
+          <button onClick={onBack} className="self-start flex items-center justify-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--pp-burgundy)] hover:opacity-70 transition-all duration-300 mb-8 sm:mb-12 py-2">
+            <ArrowLeft size={14} /> RETURN TO JOURNAL
+          </button>
+          
+          <div className="flex-grow flex items-start justify-center pb-24">
+            <VerifyView code={viewCode} onEdit={startEdit} />
+          </div>
+        </div>
       </div>
     );
   }
@@ -347,103 +469,105 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
         <ArrowLeft size={14} /> Back to EPRIS Journal
       </button>
 
-      <div className="mb-8">
-        <h1 className="font-serif text-3xl sm:text-4xl text-[var(--pp-burgundy)]">
-          {isEditing ? 'Edit your Member Passport' : 'EPRIS Digital Member Passport'}
-        </h1>
-        {isEditing ? (
-          <p className="font-crimson text-sm text-[var(--pp-ink)]/70 mt-2 max-w-2xl">
-            You're editing passport <span className="font-mono text-[var(--pp-burgundy)]">{code}</span>. Your changes will be saved
-            <strong> to the same link</strong> when you publish — the URL and QR code stay the same.
-          </p>
-        ) : (
-          <p className="font-crimson text-sm text-[var(--pp-ink)]/70 mt-2 max-w-2xl">
-            Design your own fictional EPRIS Journal membership passport — a cultural keepsake, not an identity document.
-            Personal data and your photo are processed locally in your browser and are never sent anywhere unless you choose to publish a public profile below.
-          </p>
-        )}
+      <div className="mb-6 sm:mb-8 text-center lg:text-left">
+        <h1 className="font-serif text-3xl sm:text-4xl text-[var(--pp-burgundy)]">{isEditing ? 'Edit Your EPRIS Digital Member Passport' : 'EPRIS Digital Member Passport'}</h1>
+        <p className="font-crimson text-sm sm:text-base text-[var(--pp-ink)]/70 mt-3 max-w-2xl mx-auto lg:mx-0">
+          {isEditing
+            ? 'Update your published passport below. Changes are saved in place at the same link — nothing is duplicated.'
+            : 'Design your own fictional EPRIS Journal membership passport — a cultural keepsake, not an identity document. Personal data and your photo are processed locally in your browser and are never sent anywhere unless you choose to publish a public profile below.'}
+        </p>
       </div>
 
-      <div className="grid lg:grid-cols-[380px_1fr] gap-8 lg:gap-12">
-        <div>
+      <div className="flex flex-col lg:grid lg:grid-cols-[440px_1fr] gap-8 lg:gap-14">
+        <div className="order-1 lg:order-1">
           <CreatorForm fields={fields} setFields={setFields} onPhotoFile={setCropFile} errors={errors} />
 
-          <label className="flex items-start gap-2 mt-6 cursor-pointer">
-            <input type="checkbox" checked={isPublic} onChange={(e) => setIsPublic(e.target.checked)} className="mt-1 accent-[var(--pp-burgundy)]" />
-            <span className="font-crimson text-sm text-[var(--pp-ink)]">
-              Publish as a public member profile (viewable via the verification link/QR). Leave unchecked to keep it private and local-only.
-            </span>
-          </label>
-
-          {isPublic && (
-            <label className="flex items-start gap-2 mt-3 cursor-pointer">
-              <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-1 accent-[var(--pp-burgundy)]" />
-              <span className="font-crimson text-sm text-[var(--pp-ink)]">
-                I consent to my entered details and photo being stored by EPRIS Journal and shown publicly at the verification link above.
-              </span>
-            </label>
-          )}
-
-          <div className="flex flex-wrap gap-3 mt-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-8 mb-6">
             <button
               onClick={handleDownloadPNG}
               disabled={pngStatus === 'loading'}
-              className="flex items-center gap-2 bg-[var(--pp-burgundy)] text-[var(--pp-cream)] font-mono text-[11px] uppercase tracking-widest px-4 py-2.5 hover:opacity-90 disabled:opacity-50"
+              className="flex justify-center items-center gap-2 bg-[var(--pp-burgundy)] text-white font-mono text-[11px] uppercase tracking-widest px-5 py-3.5 sm:py-3 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm disabled:opacity-50 disabled:hover:translate-y-0 transition-all duration-300 w-full"
             >
-              <Download size={14} /> {pngStatus === 'loading' ? 'Rendering…' : pngStatus === 'done' ? 'Downloaded ✓' : 'PNG (high-res)'}
+              <Download size={15} /> {pngStatus === 'loading' ? 'Rendering…' : pngStatus === 'done' ? 'Downloaded ✓' : 'PNG (high-res)'}
             </button>
             <button
               onClick={handleDownloadPDF}
               disabled={pdfStatus === 'loading'}
-              className="flex items-center gap-2 border border-[var(--pp-burgundy)] text-[var(--pp-burgundy)] font-mono text-[11px] uppercase tracking-widest px-4 py-2.5 hover:bg-[var(--pp-burgundy)]/5 disabled:opacity-50"
+              className="flex justify-center items-center gap-2 bg-white/80 border border-[var(--pp-burgundy)]/20 text-[var(--pp-burgundy)] font-mono text-[11px] uppercase tracking-widest px-5 py-3.5 sm:py-3 rounded-lg shadow-sm hover:shadow-md hover:bg-white hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:hover:translate-y-0 transition-all duration-300 w-full"
             >
-              <FileText size={14} /> {pdfStatus === 'loading' ? 'Rendering…' : pdfStatus === 'done' ? 'Downloaded ✓' : 'Print-ready PDF'}
+              <FileText size={15} /> {pdfStatus === 'loading' ? 'Rendering…' : pdfStatus === 'done' ? 'Downloaded ✓' : 'Print-ready PDF'}
             </button>
             <button
               onClick={handleReset}
-              className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest px-4 py-2.5 text-[var(--pp-ink)]/60 hover:text-[var(--pp-ink)]"
+              className="col-span-1 sm:col-span-2 flex justify-center items-center gap-2 font-mono text-[11px] uppercase tracking-widest px-4 py-3 rounded-lg text-[var(--pp-ink)]/50 hover:text-[var(--pp-ink)] hover:bg-[var(--pp-ink)]/5 active:scale-95 transition-all duration-300"
             >
-              <RotateCcw size={14} /> Reset
+              <RotateCcw size={15} /> Reset
             </button>
           </div>
 
-          {isPublic && (
-            <div className="mt-4">
-              <button
-                onClick={handlePublish}
-                disabled={!consent || publishStatus === 'loading'}
-                className="flex items-center gap-2 bg-[var(--pp-ink)] text-[var(--pp-cream)] font-mono text-[11px] uppercase tracking-widest px-4 py-2.5 disabled:opacity-40"
-              >
-                {publishStatus === 'loading'
-                  ? (isEditing ? 'Saving…' : 'Publishing…')
-                  : publishStatus === 'done'
-                    ? 'Saved ✓'
-                    : (isEditing ? 'Save changes' : 'Publish public profile')}
-              </button>
-              {publishStatus === 'error' && <p className="text-[11px] text-red-700 mt-2">Publishing failed — please try again.</p>}
-              {publishStatus === 'done' && (
-                <div className="mt-3 border border-[var(--pp-burgundy)]/25 bg-[var(--pp-burgundy)]/5 p-3">
-                  <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--pp-burgundy)]/70 mb-1.5">
-                    {isEditing ? 'Updated — live at' : 'Your passport is live at'}
-                  </p>
-                  <div className="flex flex-wrap items-center gap-3">
-                    <a href={verifyUrl} className="font-mono text-[12px] text-[var(--pp-burgundy)] underline break-all">{verifyUrl}</a>
-                    <button onClick={handleCopyLink} className="flex items-center gap-1.5 font-mono text-[11px] text-[var(--pp-burgundy)]">
-                      {copyStatus === 'copied' ? <Check size={13} /> : <Link2 size={13} />} {copyStatus === 'copied' ? 'Copied' : 'Copy'}
-                    </button>
-                    <button onClick={handleShare} className="flex items-center gap-1.5 font-mono text-[11px] text-[var(--pp-burgundy)]">
-                      <Share2 size={13} /> Share
-                    </button>
-                  </div>
-                </div>
-              )}
+          <div className="space-y-4 bg-white/40 p-6 rounded-xl border border-white/60 shadow-[0_4px_20px_rgba(80,26,44,0.03)] backdrop-blur-sm">
+            <div className="flex items-center gap-2 mb-4 font-mono text-[11px] uppercase tracking-widest text-[var(--pp-burgundy)]">
+              <Link2 size={14} /> Web Profile
             </div>
-          )}
+            
+            <label className="flex items-start gap-3 cursor-pointer group">
+              <div className="relative flex items-center justify-center mt-0.5">
+                <input type="checkbox" checked={isPublic} onChange={(e) => setIsPublic(e.target.checked)} className="peer sr-only" />
+                <div className="w-5 h-5 rounded border border-[var(--pp-burgundy)]/30 bg-white/80 peer-checked:bg-[var(--pp-burgundy)] peer-checked:border-[var(--pp-burgundy)] transition-all duration-200"></div>
+                <Check size={14} className="absolute text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200 pointer-events-none" strokeWidth={3} />
+              </div>
+              <span className="font-serif text-[15px] text-[var(--pp-ink)]/80 group-hover:text-[var(--pp-ink)] leading-snug transition-colors">
+                Publish as a public member profile (viewable via the verification link/QR). Leave unchecked to keep it private and local-only.
+              </span>
+            </label>
+
+            {isPublic && (
+              <label className="flex items-start gap-3 cursor-pointer group pt-2 border-t border-[var(--pp-burgundy)]/10">
+                <div className="relative flex items-center justify-center mt-0.5">
+                  <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="peer sr-only" />
+                  <div className="w-5 h-5 rounded border border-[var(--pp-burgundy)]/30 bg-white/80 peer-checked:bg-[var(--pp-burgundy)] peer-checked:border-[var(--pp-burgundy)] transition-all duration-200"></div>
+                  <Check size={14} className="absolute text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200 pointer-events-none" strokeWidth={3} />
+                </div>
+                <span className="font-serif text-[15px] text-[var(--pp-ink)]/80 group-hover:text-[var(--pp-ink)] leading-snug transition-colors">
+                  I consent to my entered details and photo being stored by EPRIS Journal and shown publicly at the verification link above.
+                </span>
+              </label>
+            )}
+
+            {isPublic && (
+              <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="pt-2">
+                <button
+                  onClick={handlePublish}
+                  disabled={!consent || publishStatus === 'loading'}
+                  className="w-full flex justify-center items-center gap-2 bg-[var(--pp-ink)] text-[var(--pp-cream)] font-mono text-[11px] uppercase tracking-widest px-5 py-3.5 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm disabled:opacity-40 disabled:hover:translate-y-0 transition-all duration-300"
+                >
+                  {publishStatus === 'loading' ? (isEditing ? 'Saving…' : 'Publishing…') : publishStatus === 'done' ? (isEditing ? 'Saved ✓' : 'Published ✓') : (isEditing ? 'Save changes' : 'Publish public profile')}
+                </button>
+                {publishStatus === 'error' && <p className="text-[12px] font-serif text-red-700 mt-3 text-center">Publishing failed — please try again.</p>}
+                
+                {publishStatus === 'done' && (
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-4 p-4 bg-white/60 border border-[var(--pp-burgundy)]/10 rounded-lg">
+                    <div className="flex-1 font-mono text-[11px] tracking-wider text-[var(--pp-ink)] truncate max-w-[200px] sm:max-w-[250px]">
+                      {verifyUrl}
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <button onClick={handleCopyLink} className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-[var(--pp-burgundy)] bg-[var(--pp-burgundy)]/5 hover:bg-[var(--pp-burgundy)]/10 px-3 py-1.5 rounded transition-colors">
+                        {copyStatus === 'copied' ? <Check size={13} /> : <Link2 size={13} />} {copyStatus === 'copied' ? 'Copied' : 'Copy'}
+                      </button>
+                      <button onClick={handleShare} className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-[var(--pp-burgundy)] bg-[var(--pp-burgundy)]/5 hover:bg-[var(--pp-burgundy)]/10 px-3 py-1.5 rounded transition-colors">
+                        <Share2 size={13} /> Share
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </motion.div>
+            )}
+          </div>
         </div>
 
-        <div className="lg:sticky lg:top-20 h-fit">
+        <div className="order-2 lg:order-2 lg:sticky lg:top-20 h-fit">
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }}>
-            <PassportPreview fields={previewFields} photoUrl={photoDataUrl || existingPhotoUrl} code={code} qrDataUrl={qrDataUrl} />
+            <PassportPreview fields={previewFields} photoUrl={effectivePhotoUrl} code={code} qrDataUrl={qrDataUrl} />
           </motion.div>
           <p className="font-mono text-[9px] text-[var(--pp-ink)]/45 mt-3 leading-relaxed">
             This is a fictional cultural membership item created for EPRIS Journal. It is not a passport, visa, ID card or any government-issued document, and cannot be used as one.
