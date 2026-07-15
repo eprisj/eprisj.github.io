@@ -1898,7 +1898,8 @@
         },
         {
           "type": "image",
-          "content": "/images/article-img-7.png"
+          "content": "/images/article-img-7.png",
+          "caption": "Oberkampf - Superior Loft"
         },
         {
           "type": "image",
@@ -3249,7 +3250,7 @@
         },
         {
           "id": 12,
-          "title": "Ver Sacrum: портрет Венского се��ессиона",
+          "title": "Ver Sacrum: портрет Венского сецессиона",
           "author": "Viacheslav Munister",
           "role": "Arts Desk",
           "date": "Jul 8, 2026",
@@ -6095,7 +6096,7 @@
             },
             {
               "type": "text",
-              "content": "Koloman Moser era el universo callado del movimiento. Formado como pintor, lo diseñaba todo: sellos postales, vidrieras, cubiertas de libros, muebles, los búhos del muro de la Secesión, las páginas mismas de Ver Sacrum. Si la Secesión creía que el arte debía saturar la vida ordinaria, Moser era la prueba – un hombre capaz de hacer un buzón tan hermoso como un retablo."
+              "content": "Koloman Moser era el universo callado del movimiento. Formado como pintor, lo diseñaba todo: sellos postales, vidrieras, cubiertas de libros, muebles, los búhos del muro de la Secesión, las páginas mismas de Ver Sacrum. Si la Secesión creía que el arte debía saturar la vida ordinaria, Moser era la prueba ��� un hombre capaz de hacer un buzón tan hermoso como un retablo."
             },
             {
               "type": "image",
