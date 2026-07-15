@@ -1940,7 +1940,11 @@
         },
         {
           "type": "text",
-          "content": "Provocative patterns, red colour, chrome, and mirrors immediately transport us to a joyful evening in a 1970s Parisian apartment. The interior is composed of accents that support each other's flamboyance, grounded by touches of black.<br>You can almost see how the sunlight diffuses, moving from one corner of the room to another, hitting the lacquered surfaces and slipping past the sharp corners.<br>One of the most compelling qualities here is its unpredictability. You slightly turn your gaze and see a completely different scene, untouched by the perspective you just left."
+          "content": "Provocative patterns, red colour, chrome, and mirrors immediately transport us to a joyful evening in a 1970s Parisian apartment. The interior is composed of accents that support each other's flamboyance, grounded by touches of black.<br>You can almost see how the sunlight diffuses, moving from one corner of the room to another, hitting the lacquered surfaces and slipping past the sharp corners.<br><br>"
+        },
+        {
+          "type": "text",
+          "content": "One of the most compelling qualities here is its unpredictability. You slightly turn your gaze and see a completely different scene, untouched by the perspective you just left."
         },
         {
           "type": "image",
@@ -1977,7 +1981,7 @@
         },
         {
           "type": "text",
-          "content": "Door restoration is not merely carpentry. It is an act of archaeological tenderness, a conversation between the living and the vanished. When a conservator peels away layers of paint — cerulean blue over terracotta over bone white — they are performing stratigraphic analysis, reading the autobiography of a building one pigment at a time. Each colour corresponds to a decade, each crack charts a winter survived, each replaced hinge marks a family that once named this threshold home. The paint cross-section, examined under a stereomicroscope at 40× magnification, reveals not just hues but binders: the linseed-oil grounds of the eighteenth century, the lead-white primers of the Napoleonic era, the alkyd enamels of the mid-twentieth century, each layer a forensic timestamp more precise than any archive."
+          "content": "Door restoration is not merely carpentry. It is an act of archaeological tenderness, a conversation between the living and the vanished. When a conservator peels away layers of paint ��� cerulean blue over terracotta over bone white — they are performing stratigraphic analysis, reading the autobiography of a building one pigment at a time. Each colour corresponds to a decade, each crack charts a winter survived, each replaced hinge marks a family that once named this threshold home. The paint cross-section, examined under a stereomicroscope at 40× magnification, reveals not just hues but binders: the linseed-oil grounds of the eighteenth century, the lead-white primers of the Napoleonic era, the alkyd enamels of the mid-twentieth century, each layer a forensic timestamp more precise than any archive."
         },
         {
           "type": "note",
@@ -2828,7 +2832,7 @@
           "author": "Mariia Ivanova",
           "role": "Главный редактор",
           "date": "14 марта 2026 г.",
-          "excerpt": "Выбрать место пребывания в пункте путешествия – значит довериться и разделить значимые моменты своей жизни. Квартал как архитектурная фило��офия.",
+          "excerpt": "Выбрать место пребывания в пункте путешествия – значит довериться и разделить значимые моменты своей жизни. Квартал как архитектурная философия.",
           "category": "Путешествовать",
           "subcategory": "Париж",
           "tags": [
@@ -3907,7 +3911,7 @@
             },
             {
               "type": "text",
-              "content": "Їх методологія криміналістична. Коли викинуті двері витягують — часто зі скіпу поза будівлею, яку «ремонтують» забудовники, які вважають заміну пластику модернізацією, — їх спочатку фотографують на місці, а потім транспортують до майстерні для оцінки. Ідентифіковано вид: карельська береза ​​(Betula pendula var. carelica) з її характерною фігурою полум’я, сосна звичайна (Pinus sylvestris) з архангельських лісів або сибірська модрина (Larix sibirica), та сама деревина, яка використовувалася для венеціанських паль і цінувалася за її надзвичайну стійкість до вологи. Стратиграфія фарби виконується на зразку мікроядра: кожен шар каталогізується за відомими періодами технічного обслуговування будівлі з перехресними посиланнями на архівні записи будівлі, якщо вони доступні. Реставратори задокументували двері з намальованими вручну квітковими картушами — виконаними казеїновою темпою на гіпсовому ґрунті — які збереглися під шарами радянської емалі кольору хакі, делікатні пелюстки все ще помітні, незважаючи на десятиліття хімічного та механічного впливу."
+              "content": "Їх методологія криміналістична. Коли викинуті двері витягують — часто зі скіпу поза будівлею, яку «ремонтують» забудовники, які вважають заміну пластику модернізацією, — їх спочатку фотографують на місці, а потім транспортують до майстерні для оцінки. Ідентифіковано вид: карельська береза ​​(Betula pendula var. carelica) з її характерною фігурою полум’я, сосна звичайна (Pinus sylvestris) з архангельських лісів або сибірська модрина (Larix sibirica), та сама деревина, яка використовувалася для венеціанських паль і цінувалася за її надзвичайну стійкість до вологи. Стратиграфія фарби виконується на зразку мікроядра: кожен шар каталогізується за відомими періодами технічного обслуговування будівлі з перехресними посиланнями на архівні записи будівлі, якщо вони до��тупні. Реставратори задокументували двері з намальованими вручну квітковими картушами — виконаними казеїновою темпою на гіпсовому ґрунті — які збереглися під шарами радянської емалі кольору хакі, делікатні пелюстки все ще помітні, незважаючи на десятиліття хімічного та механічного впливу."
             },
             {
               "type": "image",
