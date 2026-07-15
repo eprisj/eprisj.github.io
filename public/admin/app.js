@@ -10542,19 +10542,19 @@ async function flushModernEditor() {
           <div class="text-xs text-muted">${p.fields.country}, ${p.fields.membershipType}</div>
         </td>
         <td>
-          ${p.photoUrl ? \`<a href="\${p.photoUrl}" target="_blank"><img src="\${p.photoUrl}" style="height:40px;border-radius:4px;object-fit:cover" /></a>\` : '<span class="text-muted">Нет фото</span>'}
+          ${p.photoUrl ? `<a href="${p.photoUrl}" target="_blank"><img src="${p.photoUrl}" style="height:40px;border-radius:4px;object-fit:cover" /></a>` : '<span class="text-muted">Нет фото</span>'}
         </td>
-        <td><div class="text-sm">\${new Date(p.createdAt).toLocaleString('ru-RU')}</div></td>
+        <td><div class="text-sm">${new Date(p.createdAt).toLocaleString('ru-RU')}</div></td>
         <td class="text-right">
-          <button class="btn btn-sm btn-danger btn-annul" data-code="\${p.code}">Аннулировать</button>
-          <a href="https://eprisjournal.com/passport/\${p.code}" target="_blank" class="btn btn-sm">Смотреть ↗</a>
+          <button class="btn btn-sm btn-danger btn-annul" data-code="${p.code}">Аннулировать</button>
+          <a href="https://eprisjournal.com/passport/${p.code}" target="_blank" class="btn btn-sm">Смотреть ↗</a>
         </td>
       </tr>
     `).join('');
-    
+
     tbody.querySelectorAll('.btn-annul').forEach(btn => {
       btn.onclick = async () => {
-        if (!confirm(\`Удалить паспорт \${btn.dataset.code}? Действие необратимо.\`)) return;
+        if (!confirm(`Удалить паспорт ${btn.dataset.code}? Действие необратимо.`)) return;
         btn.disabled = true;
         try {
            const pw = tokenInput.value;
@@ -10590,7 +10590,7 @@ async function flushModernEditor() {
       renderPassports();
       
     } catch (e) {
-      tbody.innerHTML = \`<tr><td colspan="5" class="text-center py-4 text-danger">\${e.message}</td></tr>\`;
+      tbody.innerHTML = `<tr><td colspan="5" class="text-center py-4 text-danger">${e.message}</td></tr>`;
     }
   }
 
@@ -10611,7 +10611,7 @@ async function flushModernEditor() {
        });
        const data = await r.json();
        if (!data.ok) throw new Error(data.error);
-       showToast('success', \`Удалено дубликатов: \${data.removedCount}\`);
+       showToast('success', `Удалено дубликатов: ${data.removedCount}`);
        loadPassports();
     } catch(e) {
        showToast('error', e.message);
