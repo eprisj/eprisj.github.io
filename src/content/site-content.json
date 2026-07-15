@@ -1909,11 +1909,15 @@
         },
         {
           "type": "text",
-          "content": "Each apartment is exclusive, giving you the opportunity to choose what you want to experience.<br>The two-storey townhouse on the Tuileries by Necchi Architecture is a dichromatic sanctuary, gently enriched with details in a way that makes you feel calm. The elaborate visual density is created through the overlay and juxtaposition of forms. Shadows playing across the monochromatic volumes create a textured canvas for exquisite black and steel elements.<br>Chairs 212 by Petite Furniture recreate René Herbst's Sandows collection of 1929, standing beside the 1980s Cello lamp by Jan Wickelgren for IKEA. The integrated desk in front of the windows is accompanied by the Memmi lamp by Modenature.<br>The townhouse is not the only project designed by Charlotte Albert and Alexis Lamesta of Necchi Architecture. The Superior Loft on Oberkampf catches the eye from the very first second."
+          "content": "Each apartment is exclusive, giving you the opportunity to choose what you want to experience.<br><br>Chairs 212 by Petite Furniture recreate René Herbst's Sandows collection of 1929, standing beside the 1980s Cello lamp by Jan Wickelgren for IKEA. The integrated desk in front of the windows is accompanied by the Memmi lamp by Modenature.<br>The townhouse is not the only project designed by Charlotte Albert and Alexis Lamesta of Necchi Architecture. The Superior Loft on Oberkampf catches the eye from the very first second."
         },
         {
           "type": "text",
-          "content": ""
+          "content": "The two-storey townhouse on the Tuileries by Necchi Architecture is a dichromatic sanctuary, gently enriched with details in a way that makes you feel calm. The elaborate visual density is created through the overlay and juxtaposition of forms. Shadows playing across the monochromatic volumes create a textured canvas for exquisite black and steel elements."
+        },
+        {
+          "type": "text",
+          "content": "<br>Chairs 212 by Petite Furniture recreate René Herbst's Sandows collection of 1929, standing beside the 1980s Cello lamp by Jan Wickelgren for IKEA. The integrated desk in front of the windows is accompanied by the Memmi lamp by Modenature."
         },
         {
           "type": "image",
@@ -2820,11 +2824,11 @@
           "author": "Mariia Ivanova",
           "role": "Главный редактор",
           "date": "14 марта 2026 г.",
-          "excerpt": "Выбрать место пребывания в пункте путешествия – значит довериться и разделить значимые моменты своей жизни. Квартал как архитектурная философия.",
+          "excerpt": "Выбрать место пребывания в пункте путешествия – ��начит довериться и разделить значимые моменты своей жизни. Квартал как архитектурная философия.",
           "category": "Путешествовать",
           "subcategory": "Париж",
           "tags": [
-            "Пут��шествовать",
+            "Путешествовать",
             "Архитектура",
             "Париж"
           ],
@@ -3264,7 +3268,7 @@
             },
             {
               "type": "quote",
-              "content": "Архитектура научила меня видеть конструкцию за красотой. EPRIS – рассказывать об этом другим. Для меня это два языка одного и того же чувства."
+              "content": "Архитектура научила меня видеть конструкцию за красотой. EPRIS – рассказывать ��б этом другим. Для меня это два языка одного и того же чувства."
             },
             {
               "type": "note",
