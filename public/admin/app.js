@@ -244,13 +244,9 @@ async function tryAutoLogin() {
     await initAfterLogin();
     return;
   }
-  // 2. Seed default editorial password on first ever visit (assembled to avoid static scanning)
-  if (!localStorage.getItem(AUTH_PW_STORAGE_KEY)) {
-    const _d = ['epr','is-pr','ess-2','026'].join('');
-    localStorage.setItem(AUTH_PW_STORAGE_KEY, btoa(_d));
-  }
-  // 3. Exchange saved password for a fresh PAT (VPS-validated; GitHub PAT is
-  // only carried along for the optional GitHub-dependent features below)
+  // 2. Exchange a previously-remembered password for a fresh PAT (only present
+  // if the user logged in with "Запомнить" checked — VPS-validated; GitHub PAT
+  // is only carried along for the optional GitHub-dependent features below)
   const savedPwB64 = localStorage.getItem(AUTH_PW_STORAGE_KEY);
   if (savedPwB64) {
     setAuthBusy(true);
@@ -307,10 +303,15 @@ async function handlePasswordLogin() {
     // GitHub PAT is only carried along for optional GitHub-dependent features
     // (Monitoring tab), never required for the login itself.
     tokenInput.value = data.token;
-    // Always remember — no reason not to on a private editorial tool
-    localStorage.setItem(AUTH_STORAGE_KEY, data.token);
-    localStorage.setItem(AUTH_PW_STORAGE_KEY, btoa(pw));
-    rememberTokenInput.checked = true;
+    if (authRememberCheck?.checked ?? true) {
+      localStorage.setItem(AUTH_STORAGE_KEY, data.token);
+      localStorage.setItem(AUTH_PW_STORAGE_KEY, btoa(pw));
+      rememberTokenInput.checked = true;
+    } else {
+      localStorage.removeItem(AUTH_STORAGE_KEY);
+      localStorage.removeItem(AUTH_PW_STORAGE_KEY);
+      rememberTokenInput.checked = false;
+    }
     hideAuthOverlay();
     await initAfterLogin();
   } catch (e) {
@@ -318,9 +319,19 @@ async function handlePasswordLogin() {
   }
 }
 
+function logout() {
+  localStorage.removeItem(AUTH_STORAGE_KEY);
+  localStorage.removeItem(AUTH_PW_STORAGE_KEY);
+  localStorage.removeItem('epris_radio_admin_pw');
+  window.location.reload();
+}
+
 // Password login bound directly
 authLoginPwBtn?.addEventListener('click', handlePasswordLogin);
 authPasswordInput?.addEventListener('keydown', (e) => { if (e.key === 'Enter') handlePasswordLogin(); });
+byId('logoutBtn')?.addEventListener('click', () => {
+  if (confirm('Выйти из редакции? Потребуется снова ввести пароль.')) logout();
+});
 
 // Bootstrap: auth gate first, then init
 setTimeout(() => { if (!authOverlay.classList.contains('hidden')) authPasswordInput?.focus(); }, 200);
