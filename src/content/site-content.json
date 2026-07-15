@@ -1914,7 +1914,7 @@
         },
         {
           "type": "text",
-          "content": "I have an association between a pied-a-terre and a box of exquisite chocolates.One carries orange zest, another lemon cream; the next reveals rosemary, while another holds delicate notes of jasmine.The list continues, but once you know all the flavours, the spark of discovery is partly faded.Explore it by yourself."
+          "content": "I have an association between a pied-a-terre and a box of exquisite chocolates.One carries orange zest, another lemon cream; the next reveals rosemary, while another holds delicate notes of jasmine<span>.</span><span><br></span><span>The list continues, but once you know all the flavours, the spark of discovery is partly faded.</span><span><br></span><span>Explore it by yourself.</span>"
         }
       ],
       "imageSeed": ""
@@ -2811,7 +2811,7 @@
             },
             {
               "type": "text",
-              "content": "Каждые апартаменты эксклюзивны, это дает возможность выбрать именно то, что вы хотите испытать. Д��ухэтажный таунхаус в Тюильри от Necchi Architecture представляет собой диохроматическое святилище, мягко обогащенное деталями, которые создают ощущение спокойствия... Таунхаус — не единственный объект, спроектированный Шарлоттой Альберт и Алексисом Ламеста из Necchi Architecture. Улучшенный лофт на Оберкампфе бросается в глаза с первой секунды."
+              "content": "Каждые апартаменты эксклюзивны, это дает возможность выб��ать именно то, что вы хотите испытать. Двухэтажный таунхаус в Тюильри от Necchi Architecture представляет собой диохроматическое святилище, мягко обогащенное деталями, которые создают ощущение спокойствия... Таунхаус — не единственный объект, спроектированный Шарлоттой Альберт и Алексисом Ламеста из Necchi Architecture. Улучшенный лофт на Оберкампфе бросается в глаза с первой секунды."
             },
             {
               "type": "image",
@@ -3878,7 +3878,7 @@
             {
               "type": "image",
               "content": "https://images.unsplash.com/photo-1723027094512-60b950f0d292?w=900&h=600&fit=crop",
-              "caption": "Вхід у дворик Санкт-Петер��урга — за цими воротами волонтери Tom Sawyer Fest рятують від знесення дореволюційні двері."
+              "caption": "Вхід у дворик Санкт-Петербурга — за цими воротами волонтери Tom Sawyer Fest рятують від знесення дореволюційні двері."
             },
             {
               "type": "text",
