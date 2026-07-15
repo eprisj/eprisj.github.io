@@ -188,9 +188,7 @@ function getAdminPassword() {
   } catch { return ''; }
 }
 const authOverlay = byId('authOverlay');
-const authTokenInput = byId('authTokenInput');
 const authRememberCheck = byId('authRememberCheck');
-const authLoginBtn = byId('authLoginBtn');
 const authError = byId('authError');
 const authLoading = byId('authLoading');
 
@@ -217,7 +215,6 @@ async function initAfterLogin() {
 
 function setAuthBusy(isBusy) {
   authLoading.hidden = !isBusy;
-  if (authLoginBtn) authLoginBtn.disabled = isBusy;
   if (byId('authLoginPwBtn')) byId('authLoginPwBtn').disabled = isBusy;
 }
 
@@ -232,24 +229,7 @@ function hideAuthOverlay() {
   setTimeout(() => { authOverlay.style.display = 'none'; }, 350);
 }
 
-async function handleLogin() {
-  const token = authTokenInput.value.trim();
-  if (!token) { showAuthError('Введите токен'); return; }
-  authError.hidden = true;
-  setAuthBusy(true);
-  try {
-    await verifyToken(token);
-    tokenInput.value = token;
-    if (authRememberCheck.checked) {
-      localStorage.setItem(AUTH_STORAGE_KEY, token);
-      rememberTokenInput.checked = true;
-    }
-    hideAuthOverlay();
-    await initAfterLogin();
-  } catch (e) {
-    showAuthError('Токен не прошёл проверку. Убедитесь что PAT действителен.');
-  }
-}
+// removed handleLogin
 
 async function tryAutoLogin() {
   // 1. Try saved PAT — trusted as-is, the VPS doesn't depend on GitHub being
@@ -301,7 +281,6 @@ const TOKEN_API = 'https://api.eprisjournal.com/token';
 const authPasswordInput = byId('authPasswordInput');
 const authLoginPwBtn = byId('authLoginPwBtn');
 const authFormPassword = byId('authFormPassword');
-const authFormPat = byId('authFormPat');
 
 function applyRadioToken(rt) {
   if (!rt) return;
@@ -339,15 +318,11 @@ async function handlePasswordLogin() {
   }
 }
 
-// Form toggle (password ⇄ PAT)
-byId('authShowPat')?.addEventListener('click', () => { authFormPassword.hidden = true; authFormPat.hidden = false; authTokenInput?.focus(); });
-byId('authShowPw')?.addEventListener('click', () => { authFormPat.hidden = true; authFormPassword.hidden = false; authPasswordInput?.focus(); });
+// Password login bound directly
 authLoginPwBtn?.addEventListener('click', handlePasswordLogin);
 authPasswordInput?.addEventListener('keydown', (e) => { if (e.key === 'Enter') handlePasswordLogin(); });
 
 // Bootstrap: auth gate first, then init
-authLoginBtn.addEventListener('click', handleLogin);
-authTokenInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleLogin(); });
 setTimeout(() => { if (!authOverlay.classList.contains('hidden')) authPasswordInput?.focus(); }, 200);
 // Deferred to a fresh task: tryAutoLogin's synchronous call chain reaches deep
 // into the file (init -> refreshVisualEditor -> renderContentCommand ->

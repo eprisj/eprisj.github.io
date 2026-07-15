@@ -251,7 +251,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
         aspectRatio: '88 / 125',
         // Rich warm cream base
         background: 'linear-gradient(160deg, #f5eddc 0%, #ede1c6 40%, #e7d8b8 100%)',
-        containerType: 'size',
+        containerType: 'inline-size',
         // Layered shadow like a real document
         boxShadow: '0 2px 6px rgba(74,23,40,0.12), 0 8px 28px rgba(74,23,40,0.16), 0 20px 60px rgba(74,23,40,0.12)',
       } as CSSProperties}
