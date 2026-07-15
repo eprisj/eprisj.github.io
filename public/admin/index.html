@@ -42,21 +42,6 @@
             Запомнить в этом браузере
           </label>
           <button id="authLoginPwBtn" class="btn btn-primary auth-login-btn" type="button">Войти</button>
-          <button id="authShowPat" type="button" class="auth-toggle-link">Войти по GitHub-токену →</button>
-        </div>
-
-        <!-- PAT login (fallback, for developers) -->
-        <div class="auth-form" id="authFormPat" hidden>
-          <label class="auth-label">
-            <span class="field-label">GitHub Token (PAT)</span>
-            <input id="authTokenInput" type="password" autocomplete="off" placeholder="github_pat_..." />
-          </label>
-          <label class="auth-remember">
-            <input id="authRememberPatCheck" type="checkbox" checked />
-            Запомнить в этом браузере
-          </label>
-          <button id="authLoginBtn" class="btn btn-primary auth-login-btn" type="button">Войти</button>
-          <button id="authShowPw" type="button" class="auth-toggle-link">← Войти по паролю</button>
         </div>
 
         <p id="authError" class="auth-error" hidden></p>
