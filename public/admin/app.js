@@ -10557,7 +10557,7 @@ async function flushModernEditor() {
         if (!confirm(`Удалить паспорт ${btn.dataset.code}? Действие необратимо.`)) return;
         btn.disabled = true;
         try {
-           const pw = tokenInput.value;
+           const pw = getAdminPassword();
            const r = await fetch(PASSPORT_ANNUL_API, {
              method: 'POST',
              headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
@@ -10576,7 +10576,7 @@ async function flushModernEditor() {
   }
 
   async function loadPassports() {
-    const pw = tokenInput.value;
+    const pw = getAdminPassword();
     if (!pw) return;
     tbody.innerHTML = '<tr><td colspan="5" class="text-center py-4">Загрузка...</td></tr>';
     try {
@@ -10598,7 +10598,7 @@ async function flushModernEditor() {
   if (searchInput) searchInput.addEventListener('input', renderPassports);
   
   if (btnDedup) btnDedup.onclick = async () => {
-    const pw = tokenInput.value;
+    const pw = getAdminPassword();
     if (!pw) return;
     if (!confirm('Найти и удалить все дубликаты (оставив только самые свежие)?')) return;
     
