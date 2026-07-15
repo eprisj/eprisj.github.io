@@ -1905,8 +1905,8 @@
           "content": "/images/article-img-8.png"
         },
         {
-          "type": "image",
-          "content": "",
+          "type": "gallery",
+          "content": [],
           "caption": ""
         },
         {
@@ -2816,7 +2816,7 @@
             },
             {
               "type": "text",
-              "content": "Кажд��е апартаменты эксклюзивны, это дает возможность выбрать именно то, что вы хотите испытать. Двухэтажный таунхаус в Тюильри от Necchi Architecture представляет собой диохроматическое святилище, мягко обогащенное деталями, которые создают ощущение спокойствия... Таунхаус — не единственный объект, спроектированный Шарлоттой Альберт и Алексисом Ламеста из Necchi Architecture. Улучшенный лофт на Оберкампфе бросается в глаза с первой секунды."
+              "content": "Каж��ые апартаменты эксклюзивны, это дает возможность выбрать именно то, что вы хотите испытать. Двухэтажный таунхаус в Тюильри от Necchi Architecture представляет собой диохроматическое святилище, мягко обогащенное деталями, которые создают ощущение спокойствия... Таунхаус — не единственный объект, спроектированный Шарлоттой Альберт и Алексисом Ламеста из Necchi Architecture. Улучшенный лофт на Оберкампфе бросается в глаза с первой секунды."
             },
             {
               "type": "image",
@@ -6099,7 +6099,7 @@
             },
             {
               "type": "text",
-              "content": "Koloman Moser era el universo callado del movimiento. Formado como pintor, lo diseñaba todo: sellos postales, vidrieras, cubiertas de libros, muebles, los búhos del muro de la Secesión, las páginas mismas de Ver Sacrum. Si la Secesión creía que el arte debía saturar la vida ordinaria, Moser era la prueba – un hombre capaz de hacer un buzón tan hermoso como un retablo."
+              "content": "Koloman Moser era el universo callado del movimiento. Formado como pintor, lo diseñaba todo: sellos postales, vidrieras, cubiertas de libros, muebles, los búhos del muro de la Secesión, las páginas mismas de Ver Sacrum. Si la Secesión creía que el arte debía saturar la vida ordinaria, Moser era la prueba �� un hombre capaz de hacer un buzón tan hermoso como un retablo."
             },
             {
               "type": "image",
