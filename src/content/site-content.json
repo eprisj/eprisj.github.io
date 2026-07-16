@@ -1849,130 +1849,407 @@
   ],
   "articles": [
     {
-      "id": 8,
-      "title": "Home Away From Home",
-      "author": "Maria Ivanova",
-      "role": "Editor-in-Chief",
-      "date": "Mar 14, 2026",
-      "excerpt": "A pied-à-terre always catches the irreplaceable light in your eyes, but it can also spark them.",
-      "category": "Travel",
-      "subcategory": "Essay",
+      "id": 12,
+      "title": "The Sacred Spring: A Portrait of the Vienna Secession",
+      "author": "Viacheslav Munister",
+      "role": "Arts Desk",
+      "date": "Jul 8, 2026",
+      "excerpt": "In 1897 a handful of Viennese artists walked out on the establishment, raised a white temple crowned with a dome of gilded leaves, and declared to a startled city that every age deserves an art of its own. This is the story of the Secession – and of the restless, brilliant people who made it.",
+      "category": "Culture",
+      "subcategory": "The Long Read",
       "tags": [
-        "Travel",
-        "Architecture",
-        "Paris"
+        "vienna secession",
+        "art nouveau",
+        "gustav klimt",
+        "architecture",
+        "history"
       ],
-      "imageUrl": "/images/article-img-1.png",
+      "imageUrl": "/images/secession/dome.jpg",
+      "imageSeed": "vienna-secession",
+      "draft": false,
       "content": [
         {
-          "type": "image",
-          "content": "/images/article-img-1.png",
-          "align": "center"
+          "type": "text",
+          "content": "Imagine Vienna in the last years of the nineteenth century: a city drunk on its own reflection. The Ringstrasse glittered with palaces dressed in borrowed history – a Greek parliament here, a Gothic city hall there, a Renaissance opera in between. It was magnificent, and it was exhausted. Behind the gilt, an entire generation of young painters and architects had begun to suspect that their city was building museums to a past that had never quite belonged to it, while the present – electric, anxious, alive – went unpainted."
         },
         {
           "type": "text",
-          "content": "Choosing a place to stay in a new destination means entrusting it with the significant moments of your life. Falling into bed after a long walk through unfamiliar streets, late-night talks filled with the thoughts and emotions of the day, planning the next breakfast at your newly favorite nearby boulangerie, sharing genuine smiles and the pure excitement of exploration.<br><br>"
+          "content": "On the third of April 1897, a group of them stopped waiting for permission. Led by a thirty-four-year-old painter named Gustav Klimt, they resigned in a body from the Künstlerhaus, the official artists' association that controlled every important exhibition in the city. They called their new movement the Vereinigung bildender Künstler Österreichs – the Union of Austrian Artists – but history remembers them by the word they chose for the break itself: Secession."
         },
         {
           "type": "text",
-          "content": "A pied-à-terre always catches the irreplaceable light in your eyes, but it can also spark them. A flat in the city naturally blends you with those who live nearby. You are no longer a tourist, but someone who acts as if it were the most natural thing to buy lactose-free milk for your morning coffee it the shop downstairs.<br>And it is not a one-sided longing when we speak about pied-à-terre residences in Paris - the collection of architectural apartments in the prime location of The Moveable Feast."
+          "content": "They were not a school. They shared no single style, no common manifesto of technique. What bound them was a conviction – fierce, simple, and impossible to compromise – and they cut it in gold above the door of the building they would soon raise. It read: to every age its art, to art its freedom."
         },
         {
-          "type": "image",
-          "content": "/images/article-img-3.png",
-          "caption": "Tuileries",
-          "align": "center"
-        },
-        {
-          "type": "text",
-          "content": "Each of the apartments is a small journey within a larger one. When a space is carefully designed, you are respectfully offered so much to discover.<br>"
+          "type": "header",
+          "content": "To Every Age Its Art",
+          "level": 3
         },
         {
           "type": "text",
-          "content": "What feelings these walls evoke in you, how warm the textures are, how fluid the spatial organization seems, how gentle the rays of sun are in this flat, how loudly the floors creak, or perhaps the renovation has made them completely quiet. All these questions will never consciously arise in your mind, yet they will be answered silently within your body."
-        },
-        {
-          "type": "text",
-          "content": "What I love about Pied-à-terre apartments is their complexity. The interiors are rich and confident.There is no attempt to reduce the experience of space to a minimum within your cognitive and emotional perception. Rather, the space helps you understand that sometimes valuable rest is not an introduction to emptiness, but a pleasant process of exploration That is exactly what we seek when booking flight tickets and anticipating the moment of landing in a distant place."
-        },
-        {
-          "type": "text",
-          "content": "Being exposed to new memories with spiritual and material richness is nourishing for both soul and heart. I emphasize this duality because design is constructed from physical elements, yet everything within it contributes to the mental experience The perception of interconnections is more important than the mere existence of things.<br>In other words, we appreciate how the lily makes us feel inside, rather than the fact of its tangible existence."
+          "content": "The Secession announced itself the way a thunderclap announces a storm – with a poster. For the first exhibition in 1898, Klimt drew Theseus slaying the Minotaur, the young hero of a new art putting the old monster to the sword, while Pallas Athene, goddess of wisdom and just war, stood guard at the margin. The censors made him add a screen of trees to hide Theseus's nakedness. It was the first of many quarrels the Secession would pick with a public that did not yet know it wanted to be provoked."
         },
         {
           "type": "image",
-          "content": "/images/article-img-4.png",
-          "caption": "Tuileries",
-          "align": "center"
+          "content": "/images/secession/klimt-poster.jpg",
+          "caption": "Gustav Klimt's poster for the first Secession exhibition, 1898. Theseus confronts the Minotaur; Athene stands watch at the right.",
+          "align": "full"
+        },
+        {
+          "type": "text",
+          "content": "Their creed had a name too – Ver Sacrum, the 'sacred spring.' In ancient Italy it was the rite by which a people, in a time of crisis, dedicated the coming generation to a fresh start. The Secessionists borrowed the phrase for their magazine, a square, exquisite journal in which text and image were designed as one living surface. To open an issue of Ver Sacrum was to hold the movement's philosophy in your hands: that a wine glass, a typeface, a chair and a painting were all art, and all equally worth perfecting."
         },
         {
           "type": "image",
-          "content": "/images/article-img-6.png",
-          "caption": "Tuileries",
-          "align": "center"
+          "content": "/images/secession/versacrum.jpg",
+          "caption": "The first issue of Ver Sacrum, January 1898 – the movement's magazine, and its manifesto in print.",
+          "align": "full"
+        },
+        {
+          "type": "quote",
+          "content": "Der Zeit ihre Kunst. Der Kunst ihre Freiheit. – To every age its art. To art its freedom."
+        },
+        {
+          "type": "header",
+          "content": "The White Temple",
+          "level": 3
         },
         {
           "type": "text",
-          "content": "Each apartment is exclusive, giving you the opportunity to choose what you want to experience.<br><br>"
+          "content": "A movement needs a home, and the Secession built one unlike anything Vienna had seen. The commission went to Joseph Maria Olbrich, barely thirty, a pupil of the great Otto Wagner. What he produced in 1898 was less a building than a declaration: a cubic, white-walled temple of pure geometry, stripped of every historical ornament, crowned with an openwork dome of three thousand gilded laurel leaves. Vienna, half-scandalised and half-delighted, nicknamed it 'the golden cabbage.'"
         },
         {
           "type": "text",
-          "content": "The two-storey townhouse on the Tuileries by Necchi Architecture is a dichromatic sanctuary, gently enriched with details in a way that makes you feel calm. The elaborate visual density is created through the overlay and juxtaposition of forms. Shadows playing across the monochromatic volumes create a textured canvas for exquisite black and steel elements."
-        },
-        {
-          "type": "text",
-          "content": "<br>Chairs 212 by Petite Furniture recreate René Herbst's Sandows collection of 1929, standing beside the 1980s Cello lamp by Jan Wickelgren for IKEA. The integrated desk in front of the windows is accompanied by the Memmi lamp by Modenature."
-        },
-        {
-          "type": "text",
-          "content": "<br>The townhouse is not the only project designed by Charlotte Albert and Alexis Lamesta of Necchi Architecture. The Superior Loft on Oberkampf catches the eye from the very first second."
+          "content": "Look closely at the façade and you find the movement's spirit written in plaster: three solemn owls, sacred to Athene, and above the entrance those defiant golden words. Even the decorative details were designed by members of the group – the owls and foliage by Koloman Moser – so that the building itself became a total work of art, a Gesamtkunstwerk, in which architecture, sculpture and ornament spoke a single language."
         },
         {
           "type": "image",
-          "content": "/images/article-img-7.png",
-          "caption": "Oberkampf - Superior Loft",
-          "align": "center"
+          "content": "/images/secession/hero.jpg",
+          "caption": "Koloman Moser's owls and laurel on the Secession façade – Athene's birds, guarding a temple of new art.",
+          "align": "full"
+        },
+        {
+          "type": "header",
+          "content": "The People",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "The Secession was never a one-man movement, but it began, unmistakably, with one man. Gustav Klimt was the son of a gold engraver, and gold would never leave his work. He had made his name – and his fortune – painting decorous allegories on the ceilings of the very Ringstrasse palaces the Secession would rebel against. Then, at the height of his respectability, he turned. His art grew strange, erotic, ornamental and unafraid; his patrons grew nervous; and Klimt, serenely, kept going."
         },
         {
           "type": "image",
-          "content": "/images/article-img-8.png",
-          "caption": "Oberkampf - Superior Loft",
-          "align": "center"
+          "content": "/images/secession/klimt-portrait.jpg",
+          "caption": "Gustav Klimt in his painter's smock, photographed in 1914. The first president of the Secession.",
+          "align": "full"
+        },
+        {
+          "type": "text",
+          "content": "In Pallas Athene of 1898 you can already see the future arriving. The goddess is armoured in hammered gold, her gaze cool and frontal, and in her hand she holds a tiny naked figure – Nuda Veritas, naked truth, holding up a mirror to a society that preferred not to look. It was Klimt's private motto made visible: the artist owes the age not flattery, but honesty."
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mrmixdvyzqad6p.avif",
-          "caption": "Oberkampf - Superior Loft",
-          "align": "center"
+          "content": "/images/secession/pallas.jpg",
+          "caption": "Klimt, Pallas Athene, 1898 – the goddess in beaten gold, holding naked Truth in her palm.",
+          "align": "full"
         },
         {
           "type": "text",
-          "content": "Provocative patterns, red colour, chrome, and mirrors immediately transport us to a joyful evening in a 1970s Parisian apartment. The interior is composed of accents that support each other's flamboyance, grounded by touches of black.<br>You can almost see how the sunlight diffuses, moving from one corner of the room to another, hitting the lacquered surfaces and slipping past the sharp corners.<br><br>"
-        },
-        {
-          "type": "text",
-          "content": "One of the most compelling qualities here is its unpredictability. You slightly turn your gaze and see a completely different scene, untouched by the perspective you just left."
+          "content": "If Klimt was the movement's heart, Otto Wagner was its conscience turned to stone and iron. Already famous, already past fifty, the professor could have coasted into a comfortable old age of neo-Baroque commissions. Instead he threw in his lot with his own students, declaring that 'something impractical cannot be beautiful' and that the architecture of a new age must be born of new life, new materials, new needs."
         },
         {
           "type": "image",
-          "content": "/images/article-img-9.png",
-          "align": "center"
+          "content": "/images/secession/wagner-portrait.jpg",
+          "caption": "Otto Wagner – the elder master who chose the side of the young.",
+          "align": "full"
         },
         {
           "type": "text",
-          "content": "I have an association between a pied-a-terre and a box of exquisite chocolates.One carries orange zest, another lemon cream; the next reveals rosemary, while another holds delicate notes of jasmine.<br><br>"
+          "content": "Wagner's buildings still stun. On the Linke Wienzeile he sheathed an entire apartment house in blossoming majolica tiles, flowers climbing five storeys into the Viennese sky – practical, weatherproof, and gloriously alive. And at Karlsplatz he built a pair of railway pavilions so elegant that the city's commuters passed each day through works of art, green iron and white marble stitched with golden sunflowers."
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/wagner-majolica.jpg",
+          "caption": "Wagner's Majolica House (1898) – an apartment block dressed in flowering ceramic tiles.",
+          "align": "full"
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/wagner-station.jpg",
+          "caption": "The Karlsplatz Stadtbahn pavilion (1898) – a railway station as a jewel of green and gold.",
+          "align": "full"
         },
         {
           "type": "text",
-          "content": "The list continues, but once you know all the flavours, the spark of discovery is partly faded."
+          "content": "Koloman Moser was the movement's quiet universe. Trained as a painter, he designed everything: postage stamps, stained glass, book covers, furniture, the owls on the Secession wall, the very pages of Ver Sacrum. If the Secession believed that art should saturate ordinary life, Moser was the proof – a man who could make a letterbox as beautiful as an altarpiece."
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/moser.jpg",
+          "caption": "Koloman Moser – painter, graphic genius, and the man who designed almost everything.",
+          "align": "full"
         },
         {
           "type": "text",
-          "content": "<br>Explore it by yourself."
+          "content": "Josef Hoffmann took that belief and built an empire on it. In 1903, with Moser and the banker Fritz Wärndorfer, he founded the Wiener Werkstätte – the Vienna Workshops – a cooperative of craftsmen determined to make objects of total quality, from cutlery to entire houses. His grids and squares were so rigorous that colleagues nicknamed him 'Quadratl-Hoffmann,' Little-Square Hoffmann. The nickname was a joke; the influence was not. His purity of line runs straight through the twentieth century into the design language we still live inside."
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/hoffmann.jpg",
+          "caption": "Josef Hoffmann – co-founder of the Wiener Werkstätte, apostle of the perfect square.",
+          "align": "full"
+        },
+        {
+          "type": "text",
+          "content": "And Joseph Maria Olbrich, the young architect of the temple itself, gave the movement its face. He did not stay in Vienna long – the Grand Duke of Hesse called him to Darmstadt to build an entire artists' colony from the ground up – but the golden dome he left behind still crowns the city, and still keeps its promise, a century and a quarter later."
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/olbrich.jpg",
+          "caption": "Joseph Maria Olbrich – the architect who was barely thirty when he built the Secession's temple.",
+          "align": "full"
+        },
+        {
+          "type": "header",
+          "content": "The Beethoven Exhibition",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "Everything the Secession believed came together, once, in a single room. In 1902 the fourteenth exhibition was conceived as a temple within the temple: a shrine to Ludwig van Beethoven, the artist as hero and prophet. At its centre stood Max Klinger's polychrome statue of the composer enthroned like a god; around the walls, twenty-one members contributed works meant to be seen together, as a single act of devotion. And along three walls Klimt painted the Beethoven Frieze – thirty-four metres of longing, suffering and deliverance."
+        },
+        {
+          "type": "text",
+          "content": "It begins with the yearning of humankind, drifts through the temptations and terrors of the world – the giant Typhoeus, a monstrous ape, and the Gorgons of sickness, madness and death – and resolves, at last, in art and love. The frieze was painted directly on the wall, meant to be destroyed when the show closed. It survived by accident, and today it is one of the supreme achievements of European painting."
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/beethoven-frieze.jpg",
+          "caption": "The Beethoven Frieze, 1902 – 'The Hostile Powers': the giant Typhoeus and the Gorgons of sickness, madness and death.",
+          "align": "full"
+        },
+        {
+          "type": "text",
+          "content": "But the frieze does not end in darkness. It climbs toward a choir of angels and closes on an embrace – a naked couple locked together beneath a golden sky, and above them the words of Schiller that Beethoven set to music in his Ninth Symphony: this kiss to the whole world. It is the Secession's deepest belief, painted large: that art, in the end, is a form of love, and love a form of deliverance."
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/beethoven-kiss.jpg",
+          "caption": "The frieze's finale – the choir of paradise and the embrace: 'This kiss to the whole world.'",
+          "align": "full"
+        },
+        {
+          "type": "header",
+          "content": "The Break, and the Gold",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "Movements are mortal, and the Secession's unity did not survive its success. By 1905 a rift had opened between the 'stylists' around Klimt, who wanted art and craft and commerce to fuse completely, and the 'naturalists' who feared the movement was becoming a shop. Klimt and his circle – Moser, Hoffmann, Wagner among them – resigned. The group they had founded eight years earlier went on without them; so, gloriously, did they."
+        },
+        {
+          "type": "text",
+          "content": "For it was in the years just after the break that Klimt entered his golden phase, and painted the picture that would eclipse everything else: The Kiss. Two figures kneel at the edge of a flowering meadow, wrapped in a single robe of shimmering gold, the man's patterns hard and rectangular, the woman's soft and circular, the whole world dissolved into ornament around them. Everything the Secession had argued for – the union of painting and decoration, the fearlessness before beauty, the gold inherited from a father's workshop – arrives here, complete."
+        },
+        {
+          "type": "image",
+          "content": "/images/secession/klimt-kiss.jpg",
+          "caption": "Gustav Klimt, The Kiss, 1907–1908 – the golden summit of everything the Secession set in motion.",
+          "align": "full"
+        },
+        {
+          "type": "note",
+          "content": "The Secession Building still stands on the Friedrichstrasse, its dome still gilded, the Beethoven Frieze still glowing in the basement below. The words above the door have not changed in a hundred and twenty-eight years: to every age its art, to art its freedom. It remains, perhaps, the finest thing a group of young artists ever dared to promise – and one of the very few such promises that the world went on to keep."
         }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "The Heart of EPRIS: Maria Is Now a Bachelor of Architecture",
+      "author": "EPRIS Journal",
+      "role": "Editorial Desk",
+      "date": "Jul 7, 2026",
+      "excerpt": "On July 7th, Mariia Ivanova, EPRIS's editor-in-chief, officially became a Bachelor of Architecture. To mark the day – a heart built from the architecture and art that inspire her.",
+      "category": "Culture",
+      "subcategory": "From the Editors",
+      "tags": [
+        "architecture",
+        "mariia ivanova",
+        "celebration"
+      ],
+      "imageUrl": "/images/heart-hero.jpg",
+      "imageSeed": "maria-graduation-heart",
+      "draft": false,
+      "content": [
+        {
+          "type": "text",
+          "content": "Yesterday, on July 7th, 2026, something special happened in the life of the EPRIS editorial team. Mariia Ivanova – our editor-in-chief, and the person whose brainchild this journal is – officially became a Bachelor of Architecture. Years of drafting, models, and sleepless nights before her thesis defense are behind her now. A new chapter begins – and we couldn't let it pass without marking it here, on the pages of EPRIS."
+        },
+        {
+          "type": "text",
+          "content": "It's no secret that an architect's eye runs through every issue of EPRIS – in the way we talk about space, light, and detail. Today, that eye earned its official credentials."
+        },
+        {
+          "type": "text",
+          "content": "Those who worked alongside her on this issue know the ritual well: studio lights on late into the night, tracing paper covered in revisions, a cup of coffee gone cold beside the model she kept rebuilding until it finally felt right. That same restlessness – the refusal to settle for ‘good enough’ – is what has shaped this magazine since its very first page."
+        },
+        {
+          "type": "header",
+          "content": "A Heart Made of What Inspired Her",
+          "level": 3
+        },
+        {
+          "type": "mosaic",
+          "content": [
+            "/images/heart-tiles/tile-01.jpg",
+            "/images/heart-tiles/tile-02.jpg",
+            "/images/heart-tiles/tile-03.jpg",
+            "/images/heart-tiles/tile-04.jpg",
+            "/images/heart-tiles/tile-05.jpg",
+            "/images/heart-tiles/tile-06.jpg",
+            "/images/heart-tiles/tile-07.jpg",
+            "/images/heart-tiles/tile-08.jpg",
+            "/images/heart-tiles/tile-09.jpg",
+            "/images/heart-tiles/tile-10.jpg",
+            "/images/heart-tiles/tile-11.jpg",
+            "/images/heart-tiles/tile-12.jpg",
+            "/images/heart-tiles/tile-13.jpg",
+            "/images/heart-tiles/tile-14.jpg",
+            "/images/heart-tiles/tile-15.jpg",
+            "/images/heart-tiles/tile-16.jpg",
+            "/images/heart-tiles/tile-17.jpg",
+            "/images/heart-tiles/tile-18.jpg",
+            "/images/heart-tiles/tile-19.jpg",
+            "/images/heart-tiles/tile-20.jpg",
+            "/images/heart-tiles/tile-21.jpg",
+            "/images/heart-tiles/tile-22.jpg",
+            "/images/heart-tiles/tile-23.jpg",
+            "/images/heart-tiles/tile-24.jpg",
+            "/images/heart-tiles/tile-25.jpg",
+            "/images/heart-tiles/tile-26.jpg",
+            "/images/heart-tiles/tile-27.jpg",
+            "/images/heart-tiles/tile-28.jpg",
+            "/images/heart-tiles/tile-29.jpg",
+            "/images/heart-tiles/tile-30.jpg",
+            "/images/heart-tiles/tile-31.jpg",
+            "/images/heart-tiles/tile-32.jpg",
+            "/images/heart-tiles/tile-33.jpg",
+            "/images/heart-tiles/tile-34.jpg",
+            "/images/heart-tiles/tile-35.jpg",
+            "/images/heart-tiles/tile-36.jpg",
+            "/images/heart-tiles/tile-37.jpg",
+            "/images/heart-tiles/tile-38.jpg",
+            "/images/heart-tiles/tile-39.jpg",
+            "/images/heart-tiles/tile-40.jpg",
+            "/images/heart-tiles/tile-41.jpg",
+            "/images/heart-tiles/tile-42.jpg",
+            "/images/heart-tiles/tile-43.jpg",
+            "/images/heart-tiles/tile-44.jpg",
+            "/images/heart-tiles/tile-45.jpg",
+            "/images/heart-tiles/tile-46.jpg",
+            "/images/heart-tiles/tile-47.jpg"
+          ],
+          "caption": "Forty-seven places and works of art that have shaped the way Mariia sees the world – from the Sagrada Família to Michelangelo's David. A little of each of them finds its way into every issue of EPRIS."
+        },
+        {
+          "type": "text",
+          "content": "Some of these buildings she has visited in person, sketchbook in hand. Others she has only ever seen in photographs. We hope that one day, she gets to see every single one of them with her own eyes."
+        },
+        {
+          "type": "quote",
+          "content": "Architecture taught me to see the structure behind the beauty. EPRIS taught me to tell others about it. To me, they're two languages for the same feeling."
+        },
+        {
+          "type": "note",
+          "content": "The EPRIS editorial team congratulates Mariia on her degree, and thanks her for the inspiration that lives in every issue of the journal. This diploma marks a new chapter – and we suspect it won't be the last one worth celebrating. We're glad you're reading it with us."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Five Rooms, One Signature",
+      "author": "EPRIS Journal",
+      "role": "Editorial Desk",
+      "date": "Jul 11, 2026",
+      "excerpt": "A dalmatian dot, a slab of burl, three portraits of the same painted dog, and one small cone that keeps reappearing where you least expect it — the disciplined vocabulary one apartment uses five different ways without ever repeating itself.",
+      "category": "Culture",
+      "subcategory": "Design Study",
+      "tags": [
+        "Design",
+        "Pattern",
+        "Materials",
+        "Interior"
       ],
       "imageSeed": "",
-      "updatedAt": "2026-07-16T11:39:01.878Z"
+      "imageUrl": "https://eprisjournal.com/images/article-polkadot-bedroom.jpg",
+      "content": [
+        {
+          "type": "text",
+          "content": "Walk through this apartment once and you'll clock the polka dot, the burl veneer, the pair of painted dogs watching from three different walls. Walk through it twice and you'll notice none of them ever appears the same way twice — the dot changes scale on every surface it lands on, the veneer goes from tabletop to cabinet front to a single framed square the size of a postcard, and the dogs shift from grey to black-and-white to a single cropped blue portrait, as if the same idea keeps being translated rather than repeated. That's the real subject here: not a look, but a small, disciplined set of decisions a home can apparently sustain across five very different rooms without ever repeating itself outright."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mrgg0dfmpqmyrg.jpg",
+          "caption": "The dot at its largest scale: a full sectional, upholstered edge to edge, the pattern reading almost as texture before it reads as pattern."
+        },
+        {
+          "type": "text",
+          "content": "Up close, this is not a printed polka dot — it's drawn, each mark an irregular blot with its own weight and edge, the kind of variation that happens when a hand repeats a gesture rather than a machine repeating a die-cut. At sofa scale that irregularity does real work: a perfectly regular dot this large would read as upholstery fabric behaving like wallpaper, decorative and slightly cheap. An irregular one reads as texture — closer to the fur it's clearly quoting than to a print. The skirted coffee table underneath, in the same dot at a smaller, denser scale, is the one piece of furniture in the room dressed rather than upholstered — a wood disc on a fabric petticoat, a deliberately strange thing to set next to a sectional this architectural. A small metal cone sits on that table next to a stack of books — the same silhouette the bedroom lamp repeats later, at a completely different scale, in a completely different material, though nothing about this room announces that yet."
+        },
+        {
+          "type": "quote",
+          "content": "The same idea, translated five times, is a collection. The same idea, copied five times, is a theme."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mrgg0dpaojhrg2.jpg",
+          "caption": "The same burl veneer three ways in one shot: a low credenza, a floating shelf, a single framed square holding a photograph instead of a view."
+        },
+        {
+          "type": "text",
+          "content": "Burl is wood at its least geometric — the pattern comes from a tree's stress response, a knot it tried and failed to grow around, so no two panels of it can ever be book-matched the way straight-grain veneer can. Using that much of it, at this many scales, only works because everything touching it is so plain: a clean-lined credenza, a cantilevered shelf with no visible bracket, a floral armchair with soft, boneless-looking arms. That chair is the one curved, patterned object let into a room otherwise built from straight edges and one wild, unrepeatable grain — the same trick the polka dot pulls next to the burl nightstand in the bedroom, just in a different material. A second cone turns up here too, catching the light on the same low round table — small enough to miss, insistent enough that once you've seen it once, you start looking for it everywhere else in the apartment."
+        },
+        {
+          "type": "quote",
+          "content": "Repeat an object enough times, in different sizes and different materials, and it stops being decoration and starts being a signature."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mrgg0dj90g3ij9.jpg",
+          "caption": "A third dog, a third register: black and white instead of blue-grey, posed instead of caught mid-turn, hung above a burl console instead of a wood-panelled wall."
+        },
+        {
+          "type": "text",
+          "content": "Three paintings of the same subject, three different colour treatments, and not one of them hung as a matching set — that's the tell that this is a collection built by eye, not ordered as a triptych. The chairs here do the same quiet work as the sofa's dot: a floral fabric, blue on white, wrapped around a frame with almost no right angles in it, so the pattern reads as movement rather than upholstery. Underneath, the same burl slab from the living room reappears as a table edge, thick enough to read as solid wood rather than veneer on plywood — the one place in the apartment where the material gets to be the whole object instead of a surface on top of one. The table's legs are polished to a full mirror, which does something the burl can't: it doubles the room instead of just decorating it, folding the chairs and their floral fabric back into the reflection like a second, slightly bluer dining room underneath the real one."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mrgg0dn3pl70qq.jpg",
+          "caption": "The dot at bedding scale, denser and smaller again, with the curtain behind it as a fourth scale still."
+        },
+        {
+          "type": "text",
+          "content": "This is the same fabric logic as the sofa, run through a full range of scales in a single room: one dot on the curtain, a different-weight dot on the coverlet, a third scale entirely in the woven stripe underneath it, and a fourth blue-toned dog watching over all of it from a single cropped portrait rather than a full pose. Nothing here is trying to match — the curtain's dot and the bedding's dot are close enough to belong to the same family and different enough that the eye keeps working to place them, which is most of why the room reads as layered instead of themed. Pull back and the bed itself is doing the same layering trick as the room around it: a ribbed brown blanket, a striped waffle throw, and the dot coverlet on top, three different textures stacked the way the three dog portraits are stacked across three different rooms — repetition disguised as variety, or maybe the other way around."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mrgg0dhfp07cpi.jpg",
+          "caption": "The one corner of the apartment where the whole vocabulary collapses into a single, small composition: dot, burl, wood, one deliberate diagonal."
+        },
+        {
+          "type": "text",
+          "content": "A cone tapers to a point with no seam, generated by nothing more than a straight line spun around an axis. Underneath it, a hexagon built from two stacked prisms, six flat planes each, closing on itself because six is the only number under ten that divides 360 without a remainder. One shape has no edges at all; the other is almost nothing but edges — and setting the cone's point directly above the hexagon's centre is what lets two unrelated families of geometry read as a single object. Behind both, the dot grid is the strictest geometry in the apartment, fixed interval, no dot more important than its neighbour — except that up close every mark is drawn, not stamped, the same disciplined irregularity holding the whole home together at every scale it appears. By the time the cone reaches this nightstand, it has already appeared twice as a small object on two different coffee tables — which means the lamp isn't introducing a new shape into the apartment so much as finally giving one of its recurring shapes somewhere serious to stand. The lamp is the one line in the frame that refuses the grid: its shade tips toward the pillow at almost exactly the angle a person leans in to say one last thing before a room goes dark — the single object here allowed to behave like it has somewhere to be."
+        },
+        {
+          "type": "quote",
+          "content": "Three coffee-table cones and one lamp aren't a coincidence. They're the closest thing this apartment has to a signature."
+        },
+        {
+          "type": "note",
+          "content": "None of this explains why the apartment feels calm rather than styled — restraint does that, and so does resisting the urge to match anything exactly. But counting how many times the same dot, the same burl, the same cone, and the same painted dog show up in five rooms, at five different scales, is a decent way to start noticing why some homes read as collected and most just read as decorated."
+        }
+      ],
+      "updatedAt": "2026-07-11T14:55:42.162Z"
     },
     {
       "id": 9,
@@ -2209,407 +2486,130 @@
       ]
     },
     {
-      "id": 10,
-      "title": "Five Rooms, One Signature",
-      "author": "EPRIS Journal",
-      "role": "Editorial Desk",
-      "date": "Jul 11, 2026",
-      "excerpt": "A dalmatian dot, a slab of burl, three portraits of the same painted dog, and one small cone that keeps reappearing where you least expect it — the disciplined vocabulary one apartment uses five different ways without ever repeating itself.",
-      "category": "Culture",
-      "subcategory": "Design Study",
+      "id": 8,
+      "title": "Home Away From Home",
+      "author": "Maria Ivanova",
+      "role": "Editor-in-Chief",
+      "date": "Mar 14, 2026",
+      "excerpt": "A pied-à-terre always catches the irreplaceable light in your eyes, but it can also spark them.",
+      "category": "Travel",
+      "subcategory": "Essay",
       "tags": [
-        "Design",
-        "Pattern",
-        "Materials",
-        "Interior"
+        "Travel",
+        "Architecture",
+        "Paris"
+      ],
+      "imageUrl": "/images/article-img-1.png",
+      "content": [
+        {
+          "type": "image",
+          "content": "/images/article-img-1.png",
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "content": "Choosing a place to stay in a new destination means entrusting it with the significant moments of your life. Falling into bed after a long walk through unfamiliar streets, late-night talks filled with the thoughts and emotions of the day, planning the next breakfast at your newly favorite nearby boulangerie, sharing genuine smiles and the pure excitement of exploration.<br><br>"
+        },
+        {
+          "type": "text",
+          "content": "A pied-à-terre always catches the irreplaceable light in your eyes, but it can also spark them. A flat in the city naturally blends you with those who live nearby. You are no longer a tourist, but someone who acts as if it were the most natural thing to buy lactose-free milk for your morning coffee it the shop downstairs.<br>And it is not a one-sided longing when we speak about pied-à-terre residences in Paris - the collection of architectural apartments in the prime location of The Moveable Feast."
+        },
+        {
+          "type": "image",
+          "content": "/images/article-img-3.png",
+          "caption": "Tuileries",
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "content": "Each of the apartments is a small journey within a larger one. When a space is carefully designed, you are respectfully offered so much to discover.<br>"
+        },
+        {
+          "type": "text",
+          "content": "What feelings these walls evoke in you, how warm the textures are, how fluid the spatial organization seems, how gentle the rays of sun are in this flat, how loudly the floors creak, or perhaps the renovation has made them completely quiet. All these questions will never consciously arise in your mind, yet they will be answered silently within your body."
+        },
+        {
+          "type": "text",
+          "content": "What I love about Pied-à-terre apartments is their complexity. The interiors are rich and confident.There is no attempt to reduce the experience of space to a minimum within your cognitive and emotional perception. Rather, the space helps you understand that sometimes valuable rest is not an introduction to emptiness, but a pleasant process of exploration That is exactly what we seek when booking flight tickets and anticipating the moment of landing in a distant place."
+        },
+        {
+          "type": "text",
+          "content": "Being exposed to new memories with spiritual and material richness is nourishing for both soul and heart. I emphasize this duality because design is constructed from physical elements, yet everything within it contributes to the mental experience The perception of interconnections is more important than the mere existence of things.<br>In other words, we appreciate how the lily makes us feel inside, rather than the fact of its tangible existence."
+        },
+        {
+          "type": "image",
+          "content": "/images/article-img-4.png",
+          "caption": "Tuileries",
+          "align": "center"
+        },
+        {
+          "type": "image",
+          "content": "/images/article-img-6.png",
+          "caption": "Tuileries",
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "content": "Each apartment is exclusive, giving you the opportunity to choose what you want to experience.<br><br>"
+        },
+        {
+          "type": "text",
+          "content": "The two-storey townhouse on the Tuileries by Necchi Architecture is a dichromatic sanctuary, gently enriched with details in a way that makes you feel calm. The elaborate visual density is created through the overlay and juxtaposition of forms. Shadows playing across the monochromatic volumes create a textured canvas for exquisite black and steel elements."
+        },
+        {
+          "type": "text",
+          "content": "<br>Chairs 212 by Petite Furniture recreate René Herbst's Sandows collection of 1929, standing beside the 1980s Cello lamp by Jan Wickelgren for IKEA. The integrated desk in front of the windows is accompanied by the Memmi lamp by Modenature."
+        },
+        {
+          "type": "text",
+          "content": "<br>The townhouse is not the only project designed by Charlotte Albert and Alexis Lamesta of Necchi Architecture. The Superior Loft on Oberkampf catches the eye from the very first second."
+        },
+        {
+          "type": "image",
+          "content": "/images/article-img-7.png",
+          "caption": "Oberkampf - Superior Loft",
+          "align": "center"
+        },
+        {
+          "type": "image",
+          "content": "/images/article-img-8.png",
+          "caption": "Oberkampf - Superior Loft",
+          "align": "center"
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mrmixdvyzqad6p.avif",
+          "caption": "Oberkampf - Superior Loft",
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "content": "Provocative patterns, red colour, chrome, and mirrors immediately transport us to a joyful evening in a 1970s Parisian apartment. The interior is composed of accents that support each other's flamboyance, grounded by touches of black.<br>You can almost see how the sunlight diffuses, moving from one corner of the room to another, hitting the lacquered surfaces and slipping past the sharp corners.<br><br>"
+        },
+        {
+          "type": "text",
+          "content": "One of the most compelling qualities here is its unpredictability. You slightly turn your gaze and see a completely different scene, untouched by the perspective you just left."
+        },
+        {
+          "type": "image",
+          "content": "/images/article-img-9.png",
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "content": "I have an association between a pied-a-terre and a box of exquisite chocolates.One carries orange zest, another lemon cream; the next reveals rosemary, while another holds delicate notes of jasmine.<br><br>"
+        },
+        {
+          "type": "text",
+          "content": "The list continues, but once you know all the flavours, the spark of discovery is partly faded."
+        },
+        {
+          "type": "text",
+          "content": "<br>Explore it by yourself."
+        }
       ],
       "imageSeed": "",
-      "imageUrl": "https://eprisjournal.com/images/article-polkadot-bedroom.jpg",
-      "content": [
-        {
-          "type": "text",
-          "content": "Walk through this apartment once and you'll clock the polka dot, the burl veneer, the pair of painted dogs watching from three different walls. Walk through it twice and you'll notice none of them ever appears the same way twice — the dot changes scale on every surface it lands on, the veneer goes from tabletop to cabinet front to a single framed square the size of a postcard, and the dogs shift from grey to black-and-white to a single cropped blue portrait, as if the same idea keeps being translated rather than repeated. That's the real subject here: not a look, but a small, disciplined set of decisions a home can apparently sustain across five very different rooms without ever repeating itself outright."
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mrgg0dfmpqmyrg.jpg",
-          "caption": "The dot at its largest scale: a full sectional, upholstered edge to edge, the pattern reading almost as texture before it reads as pattern."
-        },
-        {
-          "type": "text",
-          "content": "Up close, this is not a printed polka dot — it's drawn, each mark an irregular blot with its own weight and edge, the kind of variation that happens when a hand repeats a gesture rather than a machine repeating a die-cut. At sofa scale that irregularity does real work: a perfectly regular dot this large would read as upholstery fabric behaving like wallpaper, decorative and slightly cheap. An irregular one reads as texture — closer to the fur it's clearly quoting than to a print. The skirted coffee table underneath, in the same dot at a smaller, denser scale, is the one piece of furniture in the room dressed rather than upholstered — a wood disc on a fabric petticoat, a deliberately strange thing to set next to a sectional this architectural. A small metal cone sits on that table next to a stack of books — the same silhouette the bedroom lamp repeats later, at a completely different scale, in a completely different material, though nothing about this room announces that yet."
-        },
-        {
-          "type": "quote",
-          "content": "The same idea, translated five times, is a collection. The same idea, copied five times, is a theme."
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mrgg0dpaojhrg2.jpg",
-          "caption": "The same burl veneer three ways in one shot: a low credenza, a floating shelf, a single framed square holding a photograph instead of a view."
-        },
-        {
-          "type": "text",
-          "content": "Burl is wood at its least geometric — the pattern comes from a tree's stress response, a knot it tried and failed to grow around, so no two panels of it can ever be book-matched the way straight-grain veneer can. Using that much of it, at this many scales, only works because everything touching it is so plain: a clean-lined credenza, a cantilevered shelf with no visible bracket, a floral armchair with soft, boneless-looking arms. That chair is the one curved, patterned object let into a room otherwise built from straight edges and one wild, unrepeatable grain — the same trick the polka dot pulls next to the burl nightstand in the bedroom, just in a different material. A second cone turns up here too, catching the light on the same low round table — small enough to miss, insistent enough that once you've seen it once, you start looking for it everywhere else in the apartment."
-        },
-        {
-          "type": "quote",
-          "content": "Repeat an object enough times, in different sizes and different materials, and it stops being decoration and starts being a signature."
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mrgg0dj90g3ij9.jpg",
-          "caption": "A third dog, a third register: black and white instead of blue-grey, posed instead of caught mid-turn, hung above a burl console instead of a wood-panelled wall."
-        },
-        {
-          "type": "text",
-          "content": "Three paintings of the same subject, three different colour treatments, and not one of them hung as a matching set — that's the tell that this is a collection built by eye, not ordered as a triptych. The chairs here do the same quiet work as the sofa's dot: a floral fabric, blue on white, wrapped around a frame with almost no right angles in it, so the pattern reads as movement rather than upholstery. Underneath, the same burl slab from the living room reappears as a table edge, thick enough to read as solid wood rather than veneer on plywood — the one place in the apartment where the material gets to be the whole object instead of a surface on top of one. The table's legs are polished to a full mirror, which does something the burl can't: it doubles the room instead of just decorating it, folding the chairs and their floral fabric back into the reflection like a second, slightly bluer dining room underneath the real one."
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mrgg0dn3pl70qq.jpg",
-          "caption": "The dot at bedding scale, denser and smaller again, with the curtain behind it as a fourth scale still."
-        },
-        {
-          "type": "text",
-          "content": "This is the same fabric logic as the sofa, run through a full range of scales in a single room: one dot on the curtain, a different-weight dot on the coverlet, a third scale entirely in the woven stripe underneath it, and a fourth blue-toned dog watching over all of it from a single cropped portrait rather than a full pose. Nothing here is trying to match — the curtain's dot and the bedding's dot are close enough to belong to the same family and different enough that the eye keeps working to place them, which is most of why the room reads as layered instead of themed. Pull back and the bed itself is doing the same layering trick as the room around it: a ribbed brown blanket, a striped waffle throw, and the dot coverlet on top, three different textures stacked the way the three dog portraits are stacked across three different rooms — repetition disguised as variety, or maybe the other way around."
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mrgg0dhfp07cpi.jpg",
-          "caption": "The one corner of the apartment where the whole vocabulary collapses into a single, small composition: dot, burl, wood, one deliberate diagonal."
-        },
-        {
-          "type": "text",
-          "content": "A cone tapers to a point with no seam, generated by nothing more than a straight line spun around an axis. Underneath it, a hexagon built from two stacked prisms, six flat planes each, closing on itself because six is the only number under ten that divides 360 without a remainder. One shape has no edges at all; the other is almost nothing but edges — and setting the cone's point directly above the hexagon's centre is what lets two unrelated families of geometry read as a single object. Behind both, the dot grid is the strictest geometry in the apartment, fixed interval, no dot more important than its neighbour — except that up close every mark is drawn, not stamped, the same disciplined irregularity holding the whole home together at every scale it appears. By the time the cone reaches this nightstand, it has already appeared twice as a small object on two different coffee tables — which means the lamp isn't introducing a new shape into the apartment so much as finally giving one of its recurring shapes somewhere serious to stand. The lamp is the one line in the frame that refuses the grid: its shade tips toward the pillow at almost exactly the angle a person leans in to say one last thing before a room goes dark — the single object here allowed to behave like it has somewhere to be."
-        },
-        {
-          "type": "quote",
-          "content": "Three coffee-table cones and one lamp aren't a coincidence. They're the closest thing this apartment has to a signature."
-        },
-        {
-          "type": "note",
-          "content": "None of this explains why the apartment feels calm rather than styled — restraint does that, and so does resisting the urge to match anything exactly. But counting how many times the same dot, the same burl, the same cone, and the same painted dog show up in five rooms, at five different scales, is a decent way to start noticing why some homes read as collected and most just read as decorated."
-        }
-      ],
-      "updatedAt": "2026-07-11T14:55:42.162Z"
-    },
-    {
-      "id": 11,
-      "title": "The Heart of EPRIS: Maria Is Now a Bachelor of Architecture",
-      "author": "EPRIS Journal",
-      "role": "Editorial Desk",
-      "date": "Jul 7, 2026",
-      "excerpt": "On July 7th, Mariia Ivanova, EPRIS's editor-in-chief, officially became a Bachelor of Architecture. To mark the day – a heart built from the architecture and art that inspire her.",
-      "category": "Culture",
-      "subcategory": "From the Editors",
-      "tags": [
-        "architecture",
-        "mariia ivanova",
-        "celebration"
-      ],
-      "imageUrl": "/images/heart-hero.jpg",
-      "imageSeed": "maria-graduation-heart",
-      "draft": false,
-      "content": [
-        {
-          "type": "text",
-          "content": "Yesterday, on July 7th, 2026, something special happened in the life of the EPRIS editorial team. Mariia Ivanova – our editor-in-chief, and the person whose brainchild this journal is – officially became a Bachelor of Architecture. Years of drafting, models, and sleepless nights before her thesis defense are behind her now. A new chapter begins – and we couldn't let it pass without marking it here, on the pages of EPRIS."
-        },
-        {
-          "type": "text",
-          "content": "It's no secret that an architect's eye runs through every issue of EPRIS – in the way we talk about space, light, and detail. Today, that eye earned its official credentials."
-        },
-        {
-          "type": "text",
-          "content": "Those who worked alongside her on this issue know the ritual well: studio lights on late into the night, tracing paper covered in revisions, a cup of coffee gone cold beside the model she kept rebuilding until it finally felt right. That same restlessness – the refusal to settle for ‘good enough’ – is what has shaped this magazine since its very first page."
-        },
-        {
-          "type": "header",
-          "content": "A Heart Made of What Inspired Her",
-          "level": 3
-        },
-        {
-          "type": "mosaic",
-          "content": [
-            "/images/heart-tiles/tile-01.jpg",
-            "/images/heart-tiles/tile-02.jpg",
-            "/images/heart-tiles/tile-03.jpg",
-            "/images/heart-tiles/tile-04.jpg",
-            "/images/heart-tiles/tile-05.jpg",
-            "/images/heart-tiles/tile-06.jpg",
-            "/images/heart-tiles/tile-07.jpg",
-            "/images/heart-tiles/tile-08.jpg",
-            "/images/heart-tiles/tile-09.jpg",
-            "/images/heart-tiles/tile-10.jpg",
-            "/images/heart-tiles/tile-11.jpg",
-            "/images/heart-tiles/tile-12.jpg",
-            "/images/heart-tiles/tile-13.jpg",
-            "/images/heart-tiles/tile-14.jpg",
-            "/images/heart-tiles/tile-15.jpg",
-            "/images/heart-tiles/tile-16.jpg",
-            "/images/heart-tiles/tile-17.jpg",
-            "/images/heart-tiles/tile-18.jpg",
-            "/images/heart-tiles/tile-19.jpg",
-            "/images/heart-tiles/tile-20.jpg",
-            "/images/heart-tiles/tile-21.jpg",
-            "/images/heart-tiles/tile-22.jpg",
-            "/images/heart-tiles/tile-23.jpg",
-            "/images/heart-tiles/tile-24.jpg",
-            "/images/heart-tiles/tile-25.jpg",
-            "/images/heart-tiles/tile-26.jpg",
-            "/images/heart-tiles/tile-27.jpg",
-            "/images/heart-tiles/tile-28.jpg",
-            "/images/heart-tiles/tile-29.jpg",
-            "/images/heart-tiles/tile-30.jpg",
-            "/images/heart-tiles/tile-31.jpg",
-            "/images/heart-tiles/tile-32.jpg",
-            "/images/heart-tiles/tile-33.jpg",
-            "/images/heart-tiles/tile-34.jpg",
-            "/images/heart-tiles/tile-35.jpg",
-            "/images/heart-tiles/tile-36.jpg",
-            "/images/heart-tiles/tile-37.jpg",
-            "/images/heart-tiles/tile-38.jpg",
-            "/images/heart-tiles/tile-39.jpg",
-            "/images/heart-tiles/tile-40.jpg",
-            "/images/heart-tiles/tile-41.jpg",
-            "/images/heart-tiles/tile-42.jpg",
-            "/images/heart-tiles/tile-43.jpg",
-            "/images/heart-tiles/tile-44.jpg",
-            "/images/heart-tiles/tile-45.jpg",
-            "/images/heart-tiles/tile-46.jpg",
-            "/images/heart-tiles/tile-47.jpg"
-          ],
-          "caption": "Forty-seven places and works of art that have shaped the way Mariia sees the world – from the Sagrada Família to Michelangelo's David. A little of each of them finds its way into every issue of EPRIS."
-        },
-        {
-          "type": "text",
-          "content": "Some of these buildings she has visited in person, sketchbook in hand. Others she has only ever seen in photographs. We hope that one day, she gets to see every single one of them with her own eyes."
-        },
-        {
-          "type": "quote",
-          "content": "Architecture taught me to see the structure behind the beauty. EPRIS taught me to tell others about it. To me, they're two languages for the same feeling."
-        },
-        {
-          "type": "note",
-          "content": "The EPRIS editorial team congratulates Mariia on her degree, and thanks her for the inspiration that lives in every issue of the journal. This diploma marks a new chapter – and we suspect it won't be the last one worth celebrating. We're glad you're reading it with us."
-        }
-      ]
-    },
-    {
-      "id": 12,
-      "title": "The Sacred Spring: A Portrait of the Vienna Secession",
-      "author": "Viacheslav Munister",
-      "role": "Arts Desk",
-      "date": "Jul 8, 2026",
-      "excerpt": "In 1897 a handful of Viennese artists walked out on the establishment, raised a white temple crowned with a dome of gilded leaves, and declared to a startled city that every age deserves an art of its own. This is the story of the Secession – and of the restless, brilliant people who made it.",
-      "category": "Culture",
-      "subcategory": "The Long Read",
-      "tags": [
-        "vienna secession",
-        "art nouveau",
-        "gustav klimt",
-        "architecture",
-        "history"
-      ],
-      "imageUrl": "/images/secession/dome.jpg",
-      "imageSeed": "vienna-secession",
-      "draft": false,
-      "content": [
-        {
-          "type": "text",
-          "content": "Imagine Vienna in the last years of the nineteenth century: a city drunk on its own reflection. The Ringstrasse glittered with palaces dressed in borrowed history – a Greek parliament here, a Gothic city hall there, a Renaissance opera in between. It was magnificent, and it was exhausted. Behind the gilt, an entire generation of young painters and architects had begun to suspect that their city was building museums to a past that had never quite belonged to it, while the present – electric, anxious, alive – went unpainted."
-        },
-        {
-          "type": "text",
-          "content": "On the third of April 1897, a group of them stopped waiting for permission. Led by a thirty-four-year-old painter named Gustav Klimt, they resigned in a body from the Künstlerhaus, the official artists' association that controlled every important exhibition in the city. They called their new movement the Vereinigung bildender Künstler Österreichs – the Union of Austrian Artists – but history remembers them by the word they chose for the break itself: Secession."
-        },
-        {
-          "type": "text",
-          "content": "They were not a school. They shared no single style, no common manifesto of technique. What bound them was a conviction – fierce, simple, and impossible to compromise – and they cut it in gold above the door of the building they would soon raise. It read: to every age its art, to art its freedom."
-        },
-        {
-          "type": "header",
-          "content": "To Every Age Its Art",
-          "level": 3
-        },
-        {
-          "type": "text",
-          "content": "The Secession announced itself the way a thunderclap announces a storm – with a poster. For the first exhibition in 1898, Klimt drew Theseus slaying the Minotaur, the young hero of a new art putting the old monster to the sword, while Pallas Athene, goddess of wisdom and just war, stood guard at the margin. The censors made him add a screen of trees to hide Theseus's nakedness. It was the first of many quarrels the Secession would pick with a public that did not yet know it wanted to be provoked."
-        },
-        {
-          "type": "image",
-          "content": "/images/secession/klimt-poster.jpg",
-          "caption": "Gustav Klimt's poster for the first Secession exhibition, 1898. Theseus confronts the Minotaur; Athene stands watch at the right.",
-          "align": "full"
-        },
-        {
-          "type": "text",
-          "content": "Their creed had a name too – Ver Sacrum, the 'sacred spring.' In ancient Italy it was the rite by which a people, in a time of crisis, dedicated the coming generation to a fresh start. The Secessionists borrowed the phrase for their magazine, a square, exquisite journal in which text and image were designed as one living surface. To open an issue of Ver Sacrum was to hold the movement's philosophy in your hands: that a wine glass, a typeface, a chair and a painting were all art, and all equally worth perfecting."
-        },
-        {
-          "type": "image",
-          "content": "/images/secession/versacrum.jpg",
-          "caption": "The first issue of Ver Sacrum, January 1898 – the movement's magazine, and its manifesto in print.",
-          "align": "full"
-        },
-        {
-          "type": "quote",
-          "content": "Der Zeit ihre Kunst. Der Kunst ihre Freiheit. – To every age its art. To art its freedom."
-        },
-        {
-          "type": "header",
-          "content": "The White Temple",
-          "level": 3
-        },
-        {
-          "type": "text",
-          "content": "A movement needs a home, and the Secession built one unlike anything Vienna had seen. The commission went to Joseph Maria Olbrich, barely thirty, a pupil of the great Otto Wagner. What he produced in 1898 was less a building than a declaration: a cubic, white-walled temple of pure geometry, stripped of every historical ornament, crowned with an openwork dome of three thousand gilded laurel leaves. Vienna, half-scandalised and half-delighted, nicknamed it 'the golden cabbage.'"
-        },
-        {
-          "type": "text",
-          "content": "Look closely at the façade and you find the movement's spirit written in plaster: three solemn owls, sacred to Athene, and above the entrance those defiant golden words. Even the decorative details were designed by members of the group – the owls and foliage by Koloman Moser – so that the building itself became a total work of art, a Gesamtkunstwerk, in which architecture, sculpture and ornament spoke a single language."
-        },
-        {
-          "type": "image",
-          "content": "/images/secession/hero.jpg",
-          "caption": "Koloman Moser's owls and laurel on the Secession façade – Athene's birds, guarding a temple of new art.",
-          "align": "full"
-        },
-        {
-          "type": "header",
-          "content": "The People",
-          "level": 3
-        },
-        {
-          "type": "text",
-          "content": "The Secession was never a one-man movement, but it began, unmistakably, with one man. Gustav Klimt was the son of a gold engraver, and gold would never leave his work. He had made his name – and his fortune – painting decorous allegories on the ceilings of the very Ringstrasse palaces the Secession would rebel against. Then, at the height of his respectability, he turned. His art grew strange, erotic, ornamental and unafraid; his patrons grew nervous; and Klimt, serenely, kept going."
-        },
-        {
-          "type": "image",
-          "content": "/images/secession/klimt-portrait.jpg",
-          "caption": "Gustav Klimt in his painter's smock, photographed in 1914. The first president of the Secession.",
-          "align": "full"
-        },
-        {
-          "type": "text",
-          "content": "In Pallas Athene of 1898 you can already see the future arriving. The goddess is armoured in hammered gold, her gaze cool and frontal, and in her hand she holds a tiny naked figure – Nuda Veritas, naked truth, holding up a mirror to a society that preferred not to look. It was Klimt's private motto made visible: the artist owes the age not flattery, but honesty."
-        },
-        {
-          "type": "image",
-          "content": "/images/secession/pallas.jpg",
-          "caption": "Klimt, Pallas Athene, 1898 – the goddess in beaten gold, holding naked Truth in her palm.",
-          "align": "full"
-        },
-        {
-          "type": "text",
-          "content": "If Klimt was the movement's heart, Otto Wagner was its conscience turned to stone and iron. Already famous, already past fifty, the professor could have coasted into a comfortable old age of neo-Baroque commissions. Instead he threw in his lot with his own students, declaring that 'something impractical cannot be beautiful' and that the architecture of a new age must be born of new life, new materials, new needs."
-        },
-        {
-          "type": "image",
-          "content": "/images/secession/wagner-portrait.jpg",
-          "caption": "Otto Wagner – the elder master who chose the side of the young.",
-          "align": "full"
-        },
-        {
-          "type": "text",
-          "content": "Wagner's buildings still stun. On the Linke Wienzeile he sheathed an entire apartment house in blossoming majolica tiles, flowers climbing five storeys into the Viennese sky – practical, weatherproof, and gloriously alive. And at Karlsplatz he built a pair of railway pavilions so elegant that the city's commuters passed each day through works of art, green iron and white marble stitched with golden sunflowers."
-        },
-        {
-          "type": "image",
-          "content": "/images/secession/wagner-majolica.jpg",
-          "caption": "Wagner's Majolica House (1898) – an apartment block dressed in flowering ceramic tiles.",
-          "align": "full"
-        },
-        {
-          "type": "image",
-          "content": "/images/secession/wagner-station.jpg",
-          "caption": "The Karlsplatz Stadtbahn pavilion (1898) – a railway station as a jewel of green and gold.",
-          "align": "full"
-        },
-        {
-          "type": "text",
-          "content": "Koloman Moser was the movement's quiet universe. Trained as a painter, he designed everything: postage stamps, stained glass, book covers, furniture, the owls on the Secession wall, the very pages of Ver Sacrum. If the Secession believed that art should saturate ordinary life, Moser was the proof – a man who could make a letterbox as beautiful as an altarpiece."
-        },
-        {
-          "type": "image",
-          "content": "/images/secession/moser.jpg",
-          "caption": "Koloman Moser – painter, graphic genius, and the man who designed almost everything.",
-          "align": "full"
-        },
-        {
-          "type": "text",
-          "content": "Josef Hoffmann took that belief and built an empire on it. In 1903, with Moser and the banker Fritz Wärndorfer, he founded the Wiener Werkstätte – the Vienna Workshops – a cooperative of craftsmen determined to make objects of total quality, from cutlery to entire houses. His grids and squares were so rigorous that colleagues nicknamed him 'Quadratl-Hoffmann,' Little-Square Hoffmann. The nickname was a joke; the influence was not. His purity of line runs straight through the twentieth century into the design language we still live inside."
-        },
-        {
-          "type": "image",
-          "content": "/images/secession/hoffmann.jpg",
-          "caption": "Josef Hoffmann – co-founder of the Wiener Werkstätte, apostle of the perfect square.",
-          "align": "full"
-        },
-        {
-          "type": "text",
-          "content": "And Joseph Maria Olbrich, the young architect of the temple itself, gave the movement its face. He did not stay in Vienna long – the Grand Duke of Hesse called him to Darmstadt to build an entire artists' colony from the ground up – but the golden dome he left behind still crowns the city, and still keeps its promise, a century and a quarter later."
-        },
-        {
-          "type": "image",
-          "content": "/images/secession/olbrich.jpg",
-          "caption": "Joseph Maria Olbrich – the architect who was barely thirty when he built the Secession's temple.",
-          "align": "full"
-        },
-        {
-          "type": "header",
-          "content": "The Beethoven Exhibition",
-          "level": 3
-        },
-        {
-          "type": "text",
-          "content": "Everything the Secession believed came together, once, in a single room. In 1902 the fourteenth exhibition was conceived as a temple within the temple: a shrine to Ludwig van Beethoven, the artist as hero and prophet. At its centre stood Max Klinger's polychrome statue of the composer enthroned like a god; around the walls, twenty-one members contributed works meant to be seen together, as a single act of devotion. And along three walls Klimt painted the Beethoven Frieze – thirty-four metres of longing, suffering and deliverance."
-        },
-        {
-          "type": "text",
-          "content": "It begins with the yearning of humankind, drifts through the temptations and terrors of the world – the giant Typhoeus, a monstrous ape, and the Gorgons of sickness, madness and death – and resolves, at last, in art and love. The frieze was painted directly on the wall, meant to be destroyed when the show closed. It survived by accident, and today it is one of the supreme achievements of European painting."
-        },
-        {
-          "type": "image",
-          "content": "/images/secession/beethoven-frieze.jpg",
-          "caption": "The Beethoven Frieze, 1902 – 'The Hostile Powers': the giant Typhoeus and the Gorgons of sickness, madness and death.",
-          "align": "full"
-        },
-        {
-          "type": "text",
-          "content": "But the frieze does not end in darkness. It climbs toward a choir of angels and closes on an embrace – a naked couple locked together beneath a golden sky, and above them the words of Schiller that Beethoven set to music in his Ninth Symphony: this kiss to the whole world. It is the Secession's deepest belief, painted large: that art, in the end, is a form of love, and love a form of deliverance."
-        },
-        {
-          "type": "image",
-          "content": "/images/secession/beethoven-kiss.jpg",
-          "caption": "The frieze's finale – the choir of paradise and the embrace: 'This kiss to the whole world.'",
-          "align": "full"
-        },
-        {
-          "type": "header",
-          "content": "The Break, and the Gold",
-          "level": 3
-        },
-        {
-          "type": "text",
-          "content": "Movements are mortal, and the Secession's unity did not survive its success. By 1905 a rift had opened between the 'stylists' around Klimt, who wanted art and craft and commerce to fuse completely, and the 'naturalists' who feared the movement was becoming a shop. Klimt and his circle – Moser, Hoffmann, Wagner among them – resigned. The group they had founded eight years earlier went on without them; so, gloriously, did they."
-        },
-        {
-          "type": "text",
-          "content": "For it was in the years just after the break that Klimt entered his golden phase, and painted the picture that would eclipse everything else: The Kiss. Two figures kneel at the edge of a flowering meadow, wrapped in a single robe of shimmering gold, the man's patterns hard and rectangular, the woman's soft and circular, the whole world dissolved into ornament around them. Everything the Secession had argued for – the union of painting and decoration, the fearlessness before beauty, the gold inherited from a father's workshop – arrives here, complete."
-        },
-        {
-          "type": "image",
-          "content": "/images/secession/klimt-kiss.jpg",
-          "caption": "Gustav Klimt, The Kiss, 1907–1908 – the golden summit of everything the Secession set in motion.",
-          "align": "full"
-        },
-        {
-          "type": "note",
-          "content": "The Secession Building still stands on the Friedrichstrasse, its dome still gilded, the Beethoven Frieze still glowing in the basement below. The words above the door have not changed in a hundred and twenty-eight years: to every age its art, to art its freedom. It remains, perhaps, the finest thing a group of young artists ever dared to promise – and one of the very few such promises that the world went on to keep."
-        }
-      ]
+      "updatedAt": "2026-07-16T11:39:01.878Z"
     }
   ],
   "reviews": [
@@ -3194,7 +3194,7 @@
             },
             {
               "type": "text",
-              "content": "В конечном счёте ремесло консерватора — это акт радикальной эмпатии, протянутой сквозь время. Шлифовать дубовую доску, которую романский плотник обтёсывал девять веков назад, — значит пожать руку мёртвым. Смешивать пигменты, совпадающие с палитрой барочного живописца, — значит завершить разговор, прерванный столетиями. Каждая уцелевшая дверь — маленькая победа над энтропией, доказательство того, что красота способна пережить равнодушие прогресса. Порог времени стоит открытым. Наш выбор — единственный выбор, который имеет значение — пройти через него с благоговением, которого он заслуживает, или замуровать его бетоном забвения."
+              "content": "В конечном счёте ремесло консерватора — это акт радикальной эмпатии, протянутой сквозь время. Шлифовать дубовую доску, которую романский плотник обтёсывал девять веков назад, — значит пожать руку мёртвым. Смешивать пигменты, совпадающие с палитрой барочного живописца, — значит завершить разговор, прерванный столетиями. Каждая уцелевшая дверь — маленькая победа над энтропие��, доказательство того, что красота способна пережить равнодушие прогресса. Порог времени стоит открытым. Наш выбор — единственный выбор, который имеет значение — пройти через него с благоговением, которого он заслуживает, или замуровать его бетоном забвения."
             },
             {
               "type": "link",
@@ -4409,7 +4409,7 @@
             },
             {
               "type": "text",
-              "content": "У «Палладі Афіні» 1898 року вже видно, як приходить майбутнє. Богиня закута в карбоване золото, її погляд холодний і звернений просто на глядача, а в руці вона тримає крихітну оголену постать – Nuda Veritas, наготну істину, що підносить дзеркало суспільству, яке воліло не дивитися. Це був особистий девіз Клімта, що став зримим: митець винен добі не лестощі, а чесність."
+              "content": "У «Палладі Афіні» 1898 року вже видно, як приходить майбутнє. Богиня закута в карбоване золото, її погляд холодний і звернений прост�� на глядача, а в руці вона тримає крихітну оголену постать – Nuda Veritas, наготну істину, що підносить дзеркало суспільству, яке воліло не дивитися. Це був особистий девіз Клімта, що став зримим: митець винен добі не лестощі, а чесність."
             },
             {
               "type": "image",
