@@ -4655,13 +4655,13 @@
       "articles": [
         {
           "id": 8,
-          "title": "Zuhause in der Ferne",
-          "author": "Mariia Ivanova",
-          "role": "Chefredakteurin",
-          "date": "Mar 14, 2026",
-          "excerpt": "Einen Aufenthaltsort am Reiseziel zu wählen bedeutet, die bedeutsamen Momente des Lebens zu teilen. Das Pied-à-terre als architektonische Philosophie.",
+          "title": "Ein Zuhause in der Ferne",
+          "author": "Maria Ivanova",
+          "role": "Chefredakteur",
+          "date": "14. März 2026",
+          "excerpt": "Ein Pied-à-Terre fängt immer das unersetzliche Licht in Ihren Augen ein, kann sie aber auch entzünden.",
           "category": "Reisen",
-          "subcategory": "Paris",
+          "subcategory": "Aufsatz",
           "tags": [
             "Reisen",
             "Architektur",
@@ -4672,59 +4672,112 @@
             {
               "type": "image",
               "content": "/images/article-img-1.png",
-              "caption": ""
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Jede Wohnung ist exklusiv und bietet die Möglichkeit, wirklich zu wählen, was man erleben möchte. Das zweistöckige Stadthaus an den Tuilerien von Necchi Architecture ist ein dichromatisches Heiligtum, sanft bereichert durch Details, die ein Gefühl der Ruhe vermitteln..."
+              "content": "Wenn Sie sich für eine Unterkunft an einem neuen Reiseziel entscheiden, vertrauen Sie ihr die bedeutenden Momente Ihres Lebens an. Nach einem langen Spaziergang durch unbekannte Straßen ins Bett fallen, nächtliche Gespräche voller Gedanken und Gefühle des Tages führen, das nächste Frühstück in der neuen Lieblingsboutique in der Nähe planen, ein echtes Lächeln teilen und die pure Aufregung der Erkundung genießen.<br><br>"
+            },
+            {
+              "type": "text",
+              "content": "Ein Pied-à-Terre fängt immer das unersetzliche Licht in Ihren Augen ein, kann sie aber auch entzünden. Eine Wohnung in der Stadt verbindet Sie auf natürliche Weise mit den Menschen, die in der Nähe wohnen. Man ist kein Tourist mehr, sondern jemand, der so tut, als wäre es das Selbstverständlichste, im Laden unten laktosefreie Milch für den Morgenkaffee zu kaufen.<br>Und es ist keine einseitige Sehnsucht, wenn wir von Pied-à-Terre-Residenzen in Paris sprechen – der Ansammlung architektonischer Wohnungen in der erstklassigen Lage von The Moveable Feast."
             },
             {
               "type": "image",
               "content": "/images/article-img-3.png",
-              "caption": ""
+              "caption": "Tuilerien",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Jede der Wohnungen ist eine kleine Reise innerhalb einer großen... Neuen Erinnerungen und geistig-materiellen Reichtümern ausgesetzt zu sein, ist fruchtbar für Seele und Herz."
+              "content": "Jede der Wohnungen ist eine kleine Reise in einer größeren. Wenn ein Raum sorgfältig gestaltet ist, gibt es viel zu entdecken.<br>"
+            },
+            {
+              "type": "text",
+              "content": "Welche Gefühle diese Wände in Ihnen hervorrufen, wie warm die Texturen sind, wie fließend die räumliche Organisation scheint, wie sanft die Sonnenstrahlen in dieser Wohnung sind, wie laut die Böden knarren oder vielleicht durch die Renovierung völlig still geworden sind. All diese Fragen werden niemals bewusst in Ihrem Kopf auftauchen, doch sie werden stillschweigend in Ihrem Körper beantwortet."
+            },
+            {
+              "type": "text",
+              "content": "Was ich an Pied-à-terre-Wohnungen liebe, ist ihre Komplexität. Die Innenräume sind reichhaltig und selbstbewusst. Es gibt keinen Versuch, das Raumerlebnis innerhalb Ihrer kognitiven und emotionalen Wahrnehmung auf ein Minimum zu reduzieren. Vielmehr hilft Ihnen der Raum zu verstehen, dass wertvolle Ruhe manchmal kein Einstieg in die Leere ist, sondern ein angenehmer Prozess der Erkundung. Das ist genau das, was wir suchen, wenn wir Flugtickets buchen und den Moment der Landung an einem fernen Ort vorwegnehmen."
+            },
+            {
+              "type": "text",
+              "content": "Die Begegnung mit neuen Erinnerungen mit spirituellem und materiellem Reichtum nährt sowohl die Seele als auch das Herz. Ich betone diese Dualität, weil Design aus physischen Elementen aufgebaut ist, alles darin jedoch zur mentalen Erfahrung beiträgt. Die Wahrnehmung von Zusammenhängen ist wichtiger als die bloße Existenz von Dingen.<br>Mit anderen Worten: Wir schätzen das Gefühl, das die Lilie in uns auslöst, und nicht die Tatsache, dass sie greifbar existiert."
             },
             {
               "type": "image",
               "content": "/images/article-img-4.png",
-              "caption": ""
+              "caption": "Tuilerien",
+              "align": "center"
             },
             {
               "type": "image",
               "content": "/images/article-img-6.png",
-              "caption": ""
+              "caption": "Tuilerien",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Einen Aufenthaltsort am Reiseziel zu wählen bedeutet, zu vertrauen und die bedeutsamen Momente des Lebens zu teilen... Das Pied-à-terre ist nicht nur ein französischer Begriff, der wörtlich 'Füße auf dem Boden' bedeutet."
+              "content": "Jede Wohnung ist exklusiv und gibt Ihnen die Möglichkeit zu wählen, was Sie erleben möchten.<br><br>"
+            },
+            {
+              "type": "text",
+              "content": "Das zweistöckige Stadthaus an den Tuilerien von Necchi Architecture ist ein dichromatischer Zufluchtsort, der sanft mit Details bereichert wird, so dass Sie sich ruhig fühlen. Die aufwändige visuelle Dichte entsteht durch die Überlagerung und Gegenüberstellung von Formen. Schatten, die über die monochromatischen Volumen spielen, schaffen eine strukturierte Leinwand für exquisite Schwarz- und Stahlelemente."
+            },
+            {
+              "type": "text",
+              "content": "<br>Die Stühle 212 von Petite Furniture stellen die Sandows-Kollektion von René Herbst aus dem Jahr 1929 dar und stehen neben der Cello-Lampe aus den 1980er Jahren von Jan Wickelgren für IKEA. Der integrierte Schreibtisch vor den Fenstern wird von der Memmi-Leuchte von Modenature begleitet."
+            },
+            {
+              "type": "text",
+              "content": "<br>Das Stadthaus ist nicht das einzige Projekt, das von Charlotte Albert und Alexis Lamesta von Necchi Architecture entworfen wurde. Das Superior Loft am Oberkampf fällt von der ersten Sekunde an ins Auge."
             },
             {
               "type": "image",
               "content": "/images/article-img-7.png",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "Provokatives Muster, rote Farbe, Chrom und Spiegel versetzen uns sofort in den fröhlichen Abend einer Pariser Wohnung der 1970er Jahre... Eine der besten Eigenschaften hier ist die Unvorhersehbarkeit."
+              "caption": "Oberkampf - Superior Loft",
+              "align": "center"
             },
             {
               "type": "image",
               "content": "/images/article-img-8.png",
-              "caption": ""
+              "caption": "Oberkampf - Superior Loft",
+              "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrmixdvyzqad6p.avif",
+              "caption": "Oberkampf - Superior Loft",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Provokative Muster, rote Farbe, Chrom und Spiegel versetzen uns sofort in einen fröhlichen Abend in einer Pariser Wohnung der 1970er Jahre. Der Innenraum besteht aus Akzenten, die sich gegenseitig in ihrer Extravaganz unterstützen und durch schwarze Akzente untermauert werden.<br>Man kann fast sehen, wie das Sonnenlicht diffundiert, von einer Ecke des Raumes zur anderen wandert, auf die lackierten Oberflächen trifft und an den scharfen Ecken vorbeigleitet.<br><br>"
+            },
+            {
+              "type": "text",
+              "content": "Eine der überzeugendsten Eigenschaften hier ist seine Unvorhersehbarkeit. Sie drehen Ihren Blick leicht und sehen eine völlig andere Szene, unberührt von der Perspektive, die Sie gerade verlassen haben."
             },
             {
               "type": "image",
               "content": "/images/article-img-9.png",
-              "caption": ""
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Es gibt eine Assoziation des Pied-à-terre mit einer Schachtel exquisiter Pralinen... Die Liste geht weiter, aber wenn man alle Geschmacksrichtungen kennt, verblasst der Entdeckungsfunke teilweise. Entdecken Sie es selbst."
+              "content": "Ich habe eine Assoziation zwischen einem Pied-a-Terre und einer Schachtel erlesener Pralinen. Eine enthält Orangenschale, eine andere Zitronencreme; Der nächste Duft offenbart Rosmarin, während ein anderer zarte Jasminnoten enthält.<br><br>"
+            },
+            {
+              "type": "text",
+              "content": "Die Liste geht weiter, aber sobald man alle Geschmacksrichtungen kennt, ist der Funke der Entdeckung teilweise verblasst."
+            },
+            {
+              "type": "text",
+              "content": "<br>Entdecken Sie es selbst."
             }
-          ]
+          ],
+          "imageSeed": "",
+          "updatedAt": "2026-07-16T11:34:22.406Z"
         },
         {
           "id": 9,
