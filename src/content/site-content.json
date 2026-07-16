@@ -1831,14 +1831,6 @@
       "imageUrl": "https://api.eprisjournal.com/uploads/mro4ypcjfxlboi.webp"
     },
     {
-      "id": 5,
-      "title": "Siesta shadow",
-      "subtitle": "Seville, Spain",
-      "fig": "FIG. 05",
-      "description": "The slow passage of time on a hot afternoon.",
-      "imageSeed": "shadows-wall"
-    },
-    {
       "id": 6,
       "title": "Velvet night",
       "subtitle": "Istanbul, Türkiye",
@@ -3194,7 +3186,7 @@
             },
             {
               "type": "text",
-              "content": "В конечном счёте ремесло консерватора — это акт рад��кальной эмпатии, протянутой сквозь время. Шлифовать дубовую доску, которую романский плотник обтёсывал девять веков назад, — значит пожать руку мёртвым. Смешивать пигменты, совпадающие с палитрой барочного живописца, — значит завершить разговор, прерванный столетиями. Каждая уцелевшая дверь — маленькая победа над энтропией, доказательство того, что красота способна пережить равнодушие прогресса. Порог времени стоит открытым. Наш выбор — единственный выбор, который имеет значение — пройти через него с благоговением, которого он заслуживает, или замуровать его бетоном забвения."
+              "content": "В конечном счёте ремесло консерватора — это акт радикальной эмпатии, протянутой сквозь время. Шлифовать дубовую доску, которую романский плотник обтёсывал девять веков назад, — значит пожать руку мёртвым. Смешивать пигменты, совпадающие с палитрой барочного живописца, — значит завершить разговор, прерванный столетиями. Каждая уцелевшая дверь — маленькая победа над энтропией, доказательство того, что красота способна пережить равнодушие прогресса. Порог времени стоит открытым. Наш выбор — единственный выбор, который имеет значение — пройти через него с благоговением, которого он заслуживает, или замуровать его бетоном забвения."
             },
             {
               "type": "link",
@@ -5137,7 +5129,7 @@
           "content": [
             {
               "type": "text",
-              "content": "Vier Formen erledigen die ganze Arbeit in diesem Rahmen, und keine davon ist zufällig. Ein Kegel – der einfachste mögliche K��rper, eine durchgehende Oberfläche, die um eine einzige Achse geschwenkt wird – verjüngt sich von einer breiten Basis zu einer Spitze ohne Naht, ohne Facette, ohne nichts, woran das Auge hängen bleiben könnte. Darunter ein Sechseck: zwei gestapelte Prismen, jeweils sechs flache Ebenen, derselbe Winkel wiederholt sich, bis er sich in sich selbst schließt. Hinter beiden ein Gitter – Punkte in einem festen Abstand, Zeilen und Spalten, die einzig wahre zweidimensionale Geometrie im Raum. Und diagonal durch das Ganze geschnitten, der Lampenarm, die einzige Linie im Rahmen, die sich weigert, vertikal oder horizontal zu sein."
+              "content": "Vier Formen erledigen die ganze Arbeit in diesem Rahmen, und keine davon ist zufällig. Ein Kegel – der einfachste mögliche Körper, eine durchgehende Oberfläche, die um eine einzige Achse geschwenkt wird – verjüngt sich von einer breiten Basis zu einer Spitze ohne Naht, ohne Facette, ohne nichts, woran das Auge hängen bleiben könnte. Darunter ein Sechseck: zwei gestapelte Prismen, jeweils sechs flache Ebenen, derselbe Winkel wiederholt sich, bis er sich in sich selbst schließt. Hinter beiden ein Gitter – Punkte in einem festen Abstand, Zeilen und Spalten, die einzig wahre zweidimensionale Geometrie im Raum. Und diagonal durch das Ganze geschnitten, der Lampenarm, die einzige Linie im Rahmen, die sich weigert, vertikal oder horizontal zu sein."
             },
             {
               "type": "image",
