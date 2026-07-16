@@ -6624,13 +6624,13 @@
       "articles": [
         {
           "id": 8,
-          "title": "Evden uzakta ev",
-          "author": "Mariia Ivanova",
+          "title": "Evden Uzakta Ev",
+          "author": "Maria Ivanova",
           "role": "Genel Yayın Yönetmeni",
-          "date": "Mar 14, 2026",
-          "excerpt": "Seyahat destinasyonunda kalacak yer seçmek, hayatın önemli anlarına güvenmek ve paylaşmaktır. Mimari felsefe olarak Pied-à-terre.",
+          "date": "14 Mart 2026",
+          "excerpt": "Pied-à-terre her zaman gözlerinizdeki yeri doldurulamaz ışığı yakalar, ancak aynı zamanda onları ateşleyebilir.",
           "category": "Seyahat",
-          "subcategory": "Paris",
+          "subcategory": "Makale",
           "tags": [
             "Seyahat",
             "Mimarlık",
@@ -6641,59 +6641,112 @@
             {
               "type": "image",
               "content": "/images/article-img-1.png",
-              "caption": ""
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Her daire özeldir, gerçekten ne deneyimlemek istediğinizi seçme fırsatı sunar. Necchi Architecture'ın Tuileries'deki iki katlı şehir evi, detaylarla zarif bir şekilde zenginleştirilmiş dikromatik bir sığınaktır..."
+              "content": "Yeni bir destinasyonda kalacak yeri seçmek, hayatınızın önemli anlarını oraya emanet etmek anlamına gelir. Alışılmadık sokaklarda uzun bir yürüyüşten sonra yatağa düşmek, günün düşünceleri ve duygularıyla dolu gece sohbetleri, yakındaki yeni favori boulangerie'de bir sonraki kahvaltıyı planlamak, gerçek gülümsemeleri ve keşfetmenin saf heyecanını paylaşmak.<br><br>"
+            },
+            {
+              "type": "text",
+              "content": "Pied-à-terre her zaman gözlerinizdeki yeri doldurulamaz ışığı yakalar, ancak aynı zamanda onları ateşleyebilir. Şehirde bir daire doğal olarak sizi yakınlarda yaşayanlarla harmanlar. Artık turist değil, sabah kahveniz için alt kattaki dükkandan laktozsuz süt satın almak en doğal şeymiş gibi davranan birisiniz.<br>Ve Paris'teki alacalı rezidanslardan (The Moveable Feast'in en iyi lokasyonunda yer alan mimari apartmanlardan oluşan koleksiyon) bahsettiğimizde bu tek taraflı bir özlem değil."
             },
             {
               "type": "image",
               "content": "/images/article-img-3.png",
-              "caption": ""
+              "caption": "Tuileries",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Dairelerin her biri büyük bir yolculuğun içinde küçük bir yolculuktur... Yeni anılara ve ruhani-maddi zenginliğe maruz kalmak ruhunuz ve kalbiniz için verimlidir."
+              "content": "Dairelerin her biri daha büyük bir dairenin içindeki küçük bir yolculuktur. Bir mekan özenle tasarlandığında, size keşfedilecek pek çok şey saygıyla sunulur.<br>"
+            },
+            {
+              "type": "text",
+              "content": "Bu duvarlar sizde nasıl duygular uyandırıyor, dokular ne kadar sıcak, mekan organizasyonu ne kadar akıcı görünüyor, güneş ışınları bu dairede ne kadar yumuşak, döşemeler ne kadar gürültülü gıcırdıyor ya da belki de tadilat onları tamamen sessizleştirmiş. Tüm bu sorular hiçbir zaman bilinçli olarak zihninizde ortaya çıkmayacak, ancak bedeninizde sessizce cevaplanacaktır."
+            },
+            {
+              "type": "text",
+              "content": "Pied-à-terre dairelerinin sevdiğim yanı karmaşıklıklarıdır. İç mekanlar zengin ve güvenlidir. Bilişsel ve duygusal algınızda mekan deneyimini minimuma indirmeye yönelik bir girişim yoktur. Aksine, alan bazen değerli dinlenmenin boşluğa giriş değil, keyifli bir keşif süreci olduğunu anlamanıza yardımcı olur. Uçak bileti rezervasyonu yaparken ve uzak bir yere iniş anını tahmin ederken aradığımız şey tam olarak budur."
+            },
+            {
+              "type": "text",
+              "content": "Manevi ve maddi zenginliklere sahip yeni anılarla tanışmak hem ruh hem de kalp için besleyicidir. Bu ikiliği vurguluyorum çünkü tasarım fiziksel unsurlardan oluşuyor ama içindeki her şey zihinsel deneyime katkıda bulunuyor. Bağlantıların algılanması, nesnelerin salt varlığından daha önemlidir.<br>Başka bir deyişle, zambakın somut varlığından ziyade, içimizde bize nasıl hissettirdiğini takdir ediyoruz."
             },
             {
               "type": "image",
               "content": "/images/article-img-4.png",
-              "caption": ""
+              "caption": "Tuileries",
+              "align": "center"
             },
             {
               "type": "image",
               "content": "/images/article-img-6.png",
-              "caption": ""
+              "caption": "Tuileries",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Seyahat destinasyonunda kalacak yer seçmek, hayatın önemli anlarına güvenmek ve paylaşmaktır... Pied-à-terre sadece kelime anlamı 'ayaklar yerde' olan bir Fransızca terim değildir."
+              "content": "Her daire ayrıcalıklıdır ve size neyi deneyimlemek istediğinizi seçme fırsatı sunar.<br><br>"
+            },
+            {
+              "type": "text",
+              "content": "Necchi Mimarlık tarafından Tuileries'te yer alan iki katlı şehir evi, sizi sakin hissettirecek şekilde ayrıntılarla nazikçe zenginleştirilmiş, dikromatik bir sığınaktır. Ayrıntılı görsel yoğunluk, formların üst üste bindirilmesi ve yan yana getirilmesi yoluyla yaratılır. Tek renkli hacimlerde oynayan gölgeler, zarif siyah ve çelik unsurlar için dokulu bir tuval oluşturur."
+            },
+            {
+              "type": "text",
+              "content": "<br>Petite Mobilya'nın 212 numaralı sandalyesi, René Herbst'ün 1929 tarihli Sandows koleksiyonunu yeniden canlandırıyor ve Jan Wickelgren'in IKEA için tasarladığı 1980'lerdeki Çello lambasının yanında duruyor. Pencerelerin önündeki entegre çalışma masasına Modenature imzalı Memmi lamba eşlik ediyor."
+            },
+            {
+              "type": "text",
+              "content": "<br>Şehir evi, Necchi Mimarlık'tan Charlotte Albert ve Alexis Lamesta tarafından tasarlanan tek proje değil. Oberkampf'taki Superior Loft daha ilk saniyeden itibaren dikkat çekiyor."
             },
             {
               "type": "image",
               "content": "/images/article-img-7.png",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "Kışkırtıcı desen, kırmızı renk, krom ve aynalar bizi anında 1970'lerin neşeli bir Paris dairesinin akşamına götürür..."
+              "caption": "Oberkampf - Superior Çatı Katı",
+              "align": "center"
             },
             {
               "type": "image",
               "content": "/images/article-img-8.png",
-              "caption": ""
+              "caption": "Oberkampf - Superior Çatı Katı",
+              "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrmixdvyzqad6p.avif",
+              "caption": "Oberkampf - Superior Çatı Katı",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Kışkırtıcı desenler, kırmızı renk, krom ve aynalar bizi anında 1970'lerin Paris apartman dairesinde neşeli bir akşama taşıyor. İç mekan, siyah dokunuşlarla temellenen, birbirinin gösterişini destekleyen vurgulardan oluşuyor.<br>Güneş ışığının odanın bir köşesinden diğerine nasıl yayıldığını, lake yüzeylere çarptığını ve keskin köşelerden kayarak nasıl geçtiğini neredeyse görebilirsiniz.<br><br>"
+            },
+            {
+              "type": "text",
+              "content": "Buradaki en ilgi çekici niteliklerden biri öngörülemezliğidir. Bakışlarınızı hafifçe çevirirsiniz ve az önce bıraktığınız perspektifin dokunmadığı tamamen farklı bir sahne görürsünüz."
             },
             {
               "type": "image",
               "content": "/images/article-img-9.png",
-              "caption": ""
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Pied-à-terre'in zarif çikolata kutularıyla bir çağrışımı vardır... Liste devam eder, ama tüm tatları bildiğinizde keşif kıvılcımı kısmen söner. Kendiniz keşfedin."
+              "content": "Bir pied-a-terre ile bir kutu enfes çikolata arasında bir çağrışım var. Birinde portakal kabuğu rendesi, diğerinde limon kreması var; bir sonrakinde biberiye ortaya çıkarken, bir diğeri narin yasemin notaları taşıyor.<br><br>"
+            },
+            {
+              "type": "text",
+              "content": "Liste devam ediyor ama tüm lezzetleri öğrendiğinizde keşif kıvılcımı kısmen sönüyor."
+            },
+            {
+              "type": "text",
+              "content": "<br>Kendi başınıza keşfedin."
             }
-          ]
+          ],
+          "imageSeed": "",
+          "updatedAt": "2026-07-16T11:35:34.620Z"
         },
         {
           "id": 9,
