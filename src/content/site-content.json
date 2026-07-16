@@ -5614,14 +5614,14 @@
         {
           "id": 8,
           "title": "Hogar lejos del hogar",
-          "author": "Mariia Ivanova",
-          "role": "Editora en jefe",
-          "date": "Mar 14, 2026",
-          "excerpt": "Elegir un lugar de estancia en un destino de viaje es confiar y compartir los momentos significativos de la vida. El Pied-à-terre como filosofía arquitectónica.",
-          "category": "Viajes",
-          "subcategory": "París",
+          "author": "Maria Ivanova",
+          "role": "Editor en jefe",
+          "date": "14 de marzo de 2026",
+          "excerpt": "Un pied-à-terre siempre capta la luz irreemplazable de tus ojos, pero también puede encenderlos.",
+          "category": "Viajar",
+          "subcategory": "Ensayo",
           "tags": [
-            "Viajes",
+            "Viajar",
             "Arquitectura",
             "París"
           ],
@@ -5630,59 +5630,112 @@
             {
               "type": "image",
               "content": "/images/article-img-1.png",
-              "caption": ""
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Cada apartamento es exclusivo, ofrece la oportunidad de elegir realmente lo que quieres experimentar. La casa de dos pisos en Tuileries de Necchi Architecture es un santuario dicromático..."
+              "content": "Elegir un lugar para alojarse en un nuevo destino significa confiarle los momentos significativos de tu vida. Caer en la cama después de una larga caminata por calles desconocidas, charlas nocturnas llenas de pensamientos y emociones del día, planificar el próximo desayuno en su panadería cercana favorita, compartir sonrisas genuinas y la emoción pura de la exploración.<br><br>"
+            },
+            {
+              "type": "text",
+              "content": "Un pied-à-terre siempre capta la luz irreemplazable de tus ojos, pero también puede encenderlos. Un piso en la ciudad te fusiona naturalmente con quienes viven cerca. Ya no eres un turista, sino alguien que actúa como si lo más natural fuera comprar leche sin lactosa para el café de la mañana en la tienda de abajo.<br>Y no es un anhelo unilateral cuando hablamos de residencias pied-à-terre en París: el conjunto de apartamentos arquitectónicos en la ubicación privilegiada de The Moveable Feast."
             },
             {
               "type": "image",
               "content": "/images/article-img-3.png",
-              "caption": ""
+              "caption": "Tullerías",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Cada uno de los apartamentos es un pequeño viaje dentro de uno grande... Estar expuesto a nuevos recuerdos y riqueza espiritual-material es fructífero para el alma y el corazón."
+              "content": "Cada uno de los apartamentos es un pequeño viaje dentro de uno más grande. Cuando un espacio está cuidadosamente diseñado, respetuosamente se le ofrece mucho por descubrir.<br>"
+            },
+            {
+              "type": "text",
+              "content": "Qué sensaciones te evocan estas paredes, qué cálidas son las texturas, qué fluida parece la organización espacial, qué suaves son los rayos del sol en este piso, qué fuerte crujen los suelos, o quizás la reforma los ha dejado completamente silenciosos. Todas estas preguntas nunca surgirán conscientemente en tu mente, pero serán respondidas silenciosamente dentro de tu cuerpo."
+            },
+            {
+              "type": "text",
+              "content": "Lo que me encanta de los apartamentos Pied-à-terre es su complejidad. Los interiores son ricos y seguros. No se intenta reducir la experiencia del espacio al mínimo dentro de su percepción cognitiva y emocional. Más bien, el espacio ayuda a comprender que a veces el valioso descanso no es una introducción al vacío, sino un placentero proceso de exploración. Eso es exactamente lo que buscamos al reservar billetes de avión y anticipar el momento de aterrizar en un lugar lejano."
+            },
+            {
+              "type": "text",
+              "content": "Estar expuesto a nuevos recuerdos con riqueza espiritual y material es nutritivo tanto para el alma como para el corazón. Hago hincapié en esta dualidad porque el diseño se construye a partir de elementos físicos, sin embargo, todo lo que contiene contribuye a la experiencia mental. La percepción de las interconexiones es más importante que la mera existencia de las cosas.<br>En otras palabras, apreciamos cómo nos hace sentir el lirio por dentro, más que el hecho de su existencia tangible."
             },
             {
               "type": "image",
               "content": "/images/article-img-4.png",
-              "caption": ""
+              "caption": "Tullerías",
+              "align": "center"
             },
             {
               "type": "image",
               "content": "/images/article-img-6.png",
-              "caption": ""
+              "caption": "Tullerías",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Elegir un lugar de estancia en un destino de viaje es confiar y compartir los momentos significativos de la vida... El Pied-à-terre no es solo un término francés que significa literalmente 'pies en el suelo'."
+              "content": "Cada apartamento es exclusivo, dándote la oportunidad de elegir lo que quieres experimentar.<br><br>"
+            },
+            {
+              "type": "text",
+              "content": "La casa adosada de dos plantas en las Tullerías de Necchi Architecture es un santuario dicromático, suavemente enriquecido con detalles de una manera que te hace sentir tranquilo. La elaborada densidad visual se crea a través de la superposición y yuxtaposición de formas. Las sombras que juegan a través de los volúmenes monocromáticos crean un lienzo texturizado para exquisitos elementos negros y de acero."
+            },
+            {
+              "type": "text",
+              "content": "<br>Las sillas 212 de Petite Furniture recrean la colección Sandows de René Herbst de 1929, junto a la lámpara Cello de los años 80 de Jan Wickelgren para IKEA. El escritorio integrado frente a las ventanas va acompañado de la lámpara Memmi de Modenature."
+            },
+            {
+              "type": "text",
+              "content": "<br>La casa adosada no es el único proyecto diseñado por Charlotte Albert y Alexis Lamesta de Necchi Architecture. El Superior Loft en Oberkampf llama la atención desde el primer segundo."
             },
             {
               "type": "image",
               "content": "/images/article-img-7.png",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "Patrón provocativo, color rojo, cromo y espejos nos transportan inmediatamente a la alegre noche de un apartamento parisino de los años 70..."
+              "caption": "Oberkampf - Loft superior",
+              "align": "center"
             },
             {
               "type": "image",
               "content": "/images/article-img-8.png",
-              "caption": ""
+              "caption": "Oberkampf - Loft superior",
+              "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrmixdvyzqad6p.avif",
+              "caption": "Oberkampf - Loft superior",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Patrones provocativos, color rojo, cromo y espejos nos transportan inmediatamente a una velada alegre en un apartamento parisino de los años 70. El interior se compone de acentos que respaldan la extravagancia de cada uno, sustentados por toques de negro.<br>Casi se puede ver cómo la luz del sol se difunde, moviéndose de un rincón a otro de la habitación, golpeando las superficies lacadas y deslizándose por las esquinas afiladas.<br><br>"
+            },
+            {
+              "type": "text",
+              "content": "Una de las cualidades más convincentes aquí es su imprevisibilidad. Giras levemente la mirada y ves una escena completamente diferente, intacta por la perspectiva que acabas de abandonar."
             },
             {
               "type": "image",
               "content": "/images/article-img-9.png",
-              "caption": ""
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Hay una asociación del Pied-à-terre con una caja de exquisitos chocolates... La lista continúa, pero cuando conoces todos los sabores, la chispa del descubrimiento se desvanece parcialmente. Explóralo tú mismo."
+              "content": "Tengo una asociación entre un pied-a-terre y una caja de exquisitos bombones. Uno lleva ralladura de naranja, otro crema de limón; el siguiente revela romero, mientras que otro contiene delicadas notas de jazmín.<br><br>"
+            },
+            {
+              "type": "text",
+              "content": "La lista continúa, pero una vez que conoces todos los sabores, la chispa del descubrimiento se apaga en parte."
+            },
+            {
+              "type": "text",
+              "content": "<br>Exploralo por ti mismo."
             }
-          ]
+          ],
+          "imageSeed": "",
+          "updatedAt": "2026-07-16T11:34:41.993Z"
         },
         {
           "id": 9,
