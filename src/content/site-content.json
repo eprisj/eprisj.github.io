@@ -1866,7 +1866,8 @@
       "content": [
         {
           "type": "image",
-          "content": "/images/article-img-1.png"
+          "content": "/images/article-img-1.png",
+          "align": "center"
         },
         {
           "type": "text",
@@ -1879,11 +1880,12 @@
         {
           "type": "image",
           "content": "/images/article-img-3.png",
-          "caption": "Tuileries"
+          "caption": "Tuileries",
+          "align": "center"
         },
         {
           "type": "text",
-          "content": "<span>Each of the apartments is a small journey within a larger one. When a space is carefully designed, you are respectfully offered so much to discover.</span><br>"
+          "content": "Each of the apartments is a small journey within a larger one. When a space is carefully designed, you are respectfully offered so much to discover.<br>"
         },
         {
           "type": "text",
@@ -1895,17 +1897,19 @@
         },
         {
           "type": "text",
-          "content": "<span>Being exposed to new memories with spiritual and material richness is nourishing for both soul and heart. I emphasize this duality because design is constructed from physical elements, yet everything within it contributes to the mental experience The perception of interconnections is more important than the mere existence of things.</span><span><br></span><span>In other words, we appreciate how the lily makes us feel inside, rather than the fact of its tangible existence.</span>"
+          "content": "Being exposed to new memories with spiritual and material richness is nourishing for both soul and heart. I emphasize this duality because design is constructed from physical elements, yet everything within it contributes to the mental experience The perception of interconnections is more important than the mere existence of things.<br>In other words, we appreciate how the lily makes us feel inside, rather than the fact of its tangible existence."
         },
         {
           "type": "image",
           "content": "/images/article-img-4.png",
-          "caption": "Tuileries"
+          "caption": "Tuileries",
+          "align": "center"
         },
         {
           "type": "image",
           "content": "/images/article-img-6.png",
-          "caption": "Tuileries"
+          "caption": "Tuileries",
+          "align": "center"
         },
         {
           "type": "text",
@@ -1926,17 +1930,20 @@
         {
           "type": "image",
           "content": "/images/article-img-7.png",
-          "caption": "Oberkampf - Superior Loft"
+          "caption": "Oberkampf - Superior Loft",
+          "align": "center"
         },
         {
           "type": "image",
           "content": "/images/article-img-8.png",
-          "caption": "Oberkampf - Superior Loft"
+          "caption": "Oberkampf - Superior Loft",
+          "align": "center"
         },
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mrmixdvyzqad6p.avif",
-          "caption": "Oberkampf - Superior Loft"
+          "caption": "Oberkampf - Superior Loft",
+          "align": "center"
         },
         {
           "type": "text",
@@ -1948,11 +1955,12 @@
         },
         {
           "type": "image",
-          "content": "/images/article-img-9.png"
+          "content": "/images/article-img-9.png",
+          "align": "center"
         },
         {
           "type": "text",
-          "content": "I have an association between a pied-a-terre and a box of exquisite chocolates.One carries orange zest, another lemon cream; the next reveals rosemary, while another holds delicate notes of jasmine<span>.</span><span><br></span><br>"
+          "content": "I have an association between a pied-a-terre and a box of exquisite chocolates.One carries orange zest, another lemon cream; the next reveals rosemary, while another holds delicate notes of jasmine.<br><br>"
         },
         {
           "type": "text",
@@ -1963,7 +1971,8 @@
           "content": "<br>Explore it by yourself."
         }
       ],
-      "imageSeed": ""
+      "imageSeed": "",
+      "updatedAt": "2026-07-16T11:34:00.796Z"
     },
     {
       "id": 9,
