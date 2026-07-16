@@ -1829,14 +1829,6 @@
       "description": "Choosing a place to stay in a new destination means entrusting it with the significant moments of your life. Falling into bed after a long walk through unfamiliar streets, late-night talks filled with the thoughts and emotions of the day, planning the next breakfast at your newly favorite nearby boulangerie, sharing genuine smiles and the pure excitement of exploration.",
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/mro4ypcjfxlboi.webp"
-    },
-    {
-      "id": 6,
-      "title": "Velvet night",
-      "subtitle": "Istanbul, Türkiye",
-      "fig": "FIG. 06",
-      "description": "Lights reflect in the Bosphorus as the city comes to life.",
-      "imageSeed": "istanbul-night"
     }
   ],
   "articles": [
@@ -3253,7 +3245,7 @@
           "imageSeed": "maria-graduation-heart",
           "draft": false,
           "role": "Редакция",
-          "title": "Сердце EPRIS: у Марии диплом архитектора",
+          "title": "Сердце EPRIS: у Марии диплом архите��тора",
           "excerpt": "7 июля Мария Иванова, главный редактор EPRIS, официаль��о стала бакалавром архитектуры. В честь этого дня – сердце, собранное из архитектуры и искусства, которые её вдохновляют.",
           "subcategory": "От редакции",
           "tags": [
