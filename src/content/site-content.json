@@ -2776,12 +2776,62 @@
   ],
   "localizedCollections": {
     "RU": {
+      "items": [
+        {
+          "id": 1,
+          "title": "Утренние ритуалы",
+          "subtitle": "Каппадокия, Турция",
+          "fig": "FIG. 01",
+          "description": "Тишина рассвета и вкус свежего кофе с видом на долины.",
+          "imageSeed": "coffee-morning"
+        },
+        {
+          "id": 2,
+          "title": "Городское одиночество",
+          "subtitle": "Берлин, Германия",
+          "fig": "FIG. 02",
+          "description": "Нахождение покоя в конкретном ритме города.",
+          "imageSeed": "berlin-street"
+        },
+        {
+          "id": 3,
+          "title": "Средиземноморский праздник",
+          "subtitle": "Сицилия, Италия",
+          "fig": "FIG. 03",
+          "description": "Праздник простых ингредиентов: оливкового масла, помидоров и морской соли.",
+          "imageSeed": "italian-food"
+        },
+        {
+          "id": 4,
+          "title": "Горное дыхание",
+          "subtitle": "Карпаты, Украина",
+          "fig": "FIG. 04",
+          "description": "Свежий воздух высокогорья и аромат соснового леса.",
+          "imageSeed": "mountains"
+        },
+        {
+          "id": 5,
+          "title": "Сиеста Тени",
+          "subtitle": "Севилья, Испания",
+          "fig": "FIG. 05",
+          "description": "Медленное течение времени в жаркий полдень.",
+          "imageSeed": "shadows-wall"
+        },
+        {
+          "id": 6,
+          "title": "Бархатная ночь",
+          "subtitle": "Стамбул, Турция",
+          "fig": "FIG. 06",
+          "description": "Огни отражаются в Босфоре, город оживает.",
+          "imageSeed": "istanbul-night"
+        }
+      ],
       "articles": [
         {
           "id": 8,
           "title": "Дом Вдали от дома",
           "author": "Maria Ivanova",
-          "role": "Главный редактор",
+          "role": "Г��авный редактор",
           "date": "14 марта 2026 г.",
           "excerpt": "Pied-à-terre всегда ловит незаменимый свет в ваших глазах, но также может зажечь их.",
           "category": "Путешествовать",
@@ -3128,7 +3178,7 @@
             },
             {
               "type": "text",
-              "content": "В конечном счёте ремесло консерватора — это акт радикальной эмпатии, протянутой сквозь время. Шлифовать дубовую доску, которую романский плотник обтёсывал девять веков назад, — значит пожать руку мёртвым. Смешивать пигменты, совпадающие с палитрой барочного живописца, — значит завершить разговор, прерванный столетиями. Каждая уцелевшая дверь — маленькая победа над энтропией, доказательство того, что красота способна пережить равнодушие прогресса. Порог времени стоит открытым. Наш выбор — единственный выбор, который имеет значение — пройти через него с благоговением, которого он заслуживает, или замуровать его бетоном забвения."
+              "content": "В конечном счёте ремесло консерватора — это акт радикальной эмпатии, протянутой сквозь время. Шлифовать дубовую доску, которую романский плотник обтёсывал девять веков назад, — значит пожать руку мёртвым. Смешивать пигменты, совпадающие с палитрой барочного живописца, — значит завершить разговор, прерванный столетиями. Каждая уцелевшая дверь — маленькая победа над энтропией, доказательс��во того, что красота способна пережить равнодушие прогресса. Порог времени стоит открытым. Наш выбор — единственный выбор, который имеет значение — пройти через него с благоговением, которого он заслуживает, или замуровать его бетоном забвения."
             },
             {
               "type": "link",
@@ -3684,6 +3734,56 @@
       ]
     },
     "UA": {
+      "items": [
+        {
+          "id": 1,
+          "title": "Ранкові ритуали",
+          "subtitle": "Каппадокія, Туреччина",
+          "fig": "FIG. 01",
+          "description": "Тиша світанку та смак свіжої кави з видом на долини.",
+          "imageSeed": "coffee-morning"
+        },
+        {
+          "id": 2,
+          "title": "Міська самотність",
+          "subtitle": "Берлін, Німеччина",
+          "fig": "FIG. 02",
+          "description": "Знайти спокій у бетонному ритмі міста.",
+          "imageSeed": "berlin-street"
+        },
+        {
+          "id": 3,
+          "title": "Середземноморське свято",
+          "subtitle": "Сицилія, Італія",
+          "fig": "FIG. 03",
+          "description": "Свято простих інгредієнтів: оливкова олія, помідори та морська сіль.",
+          "imageSeed": "italian-food"
+        },
+        {
+          "id": 4,
+          "title": "Гірське дихання",
+          "subtitle": "Карпати, Україна",
+          "fig": "FIG. 04",
+          "description": "Чисте високогірне повітря і аромат соснових лісів.",
+          "imageSeed": "mountains"
+        },
+        {
+          "id": 5,
+          "title": "Сієста Тіні",
+          "subtitle": "Севілья, Іспанія",
+          "fig": "FIG. 05",
+          "description": "Повільний плин часу спекотного полудня.",
+          "imageSeed": "shadows-wall"
+        },
+        {
+          "id": 6,
+          "title": "Оксамитова ніч",
+          "subtitle": "Стамбул, Туреччина",
+          "fig": "FIG. 06",
+          "description": "Вогні відбиваються на Босфорі, коли місто оживає.",
+          "imageSeed": "istanbul-night"
+        }
+      ],
       "articles": [
         {
           "id": 8,
@@ -4592,6 +4692,56 @@
       ]
     },
     "DE": {
+      "items": [
+        {
+          "id": 1,
+          "title": "Morgenrituale",
+          "subtitle": "Kappadokien, Türkei",
+          "fig": "FIG. 01",
+          "description": "Die Stille der Morgendämmerung und der Geschmack frischen Kaffees mit Blick auf die Täler.",
+          "imageSeed": "coffee-morning"
+        },
+        {
+          "id": 2,
+          "title": "Städtische Einsamkeit",
+          "subtitle": "Berlin, Deutschland",
+          "fig": "FIG. 02",
+          "description": "Frieden finden im betonierten Rhythmus der Stadt.",
+          "imageSeed": "berlin-street"
+        },
+        {
+          "id": 3,
+          "title": "Mediterranes Fest",
+          "subtitle": "Sizilien, Italien",
+          "fig": "FIG. 03",
+          "description": "Ein Fest einfacher Zutaten: Olivenöl, Tomaten und Meersalz.",
+          "imageSeed": "italian-food"
+        },
+        {
+          "id": 4,
+          "title": "Bergatem",
+          "subtitle": "Karpaten, Ukraine",
+          "fig": "FIG. 04",
+          "description": "Die frische Luft des Hochlands und der Duft der Kiefernwälder.",
+          "imageSeed": "mountains"
+        },
+        {
+          "id": 5,
+          "title": "Siesta-Schatten",
+          "subtitle": "Sevilla, Spanien",
+          "fig": "FIG. 05",
+          "description": "Das langsame Verstreichen der Zeit an einem heißen Nachmittag.",
+          "imageSeed": "shadows-wall"
+        },
+        {
+          "id": 6,
+          "title": "Samtnacht",
+          "subtitle": "Istanbul, Türkei",
+          "fig": "FIG. 06",
+          "description": "Lichter spiegeln sich im Bosporus, während die Stadt zum Leben erwacht.",
+          "imageSeed": "istanbul-night"
+        }
+      ],
       "articles": [
         {
           "id": 8,
@@ -5500,6 +5650,56 @@
       ]
     },
     "ES": {
+      "items": [
+        {
+          "id": 1,
+          "title": "Rituales matutinos",
+          "subtitle": "Capadocia, Turquía",
+          "fig": "FIG. 01",
+          "description": "El silencio del amanecer y el sabor del café fresco con vistas a los valles.",
+          "imageSeed": "coffee-morning"
+        },
+        {
+          "id": 2,
+          "title": "Soledad urbana",
+          "subtitle": "Berlín, Alemania",
+          "fig": "FIG. 02",
+          "description": "Encontrar paz en el ritmo de hormigón de la ciudad.",
+          "imageSeed": "berlin-street"
+        },
+        {
+          "id": 3,
+          "title": "Fiesta mediterránea",
+          "subtitle": "Sicilia, Italia",
+          "fig": "FIG. 03",
+          "description": "Una celebración de ingredientes simples: aceite de oliva, tomates y sal marina.",
+          "imageSeed": "italian-food"
+        },
+        {
+          "id": 4,
+          "title": "Aliento montañés",
+          "subtitle": "Cárpatos, Ucrania",
+          "fig": "FIG. 04",
+          "description": "El aire fresco de las tierras altas y el aroma de los bosques de pinos.",
+          "imageSeed": "mountains"
+        },
+        {
+          "id": 5,
+          "title": "Sombras de siesta",
+          "subtitle": "Sevilla, España",
+          "fig": "FIG. 05",
+          "description": "El lento paso del tiempo durante una tarde calurosa.",
+          "imageSeed": "shadows-wall"
+        },
+        {
+          "id": 6,
+          "title": "Noche de terciopelo",
+          "subtitle": "Estambul, Turquía",
+          "fig": "FIG. 06",
+          "description": "Luces reflejándose en el Bósforo mientras la ciudad cobra vida.",
+          "imageSeed": "istanbul-night"
+        }
+      ],
       "articles": [
         {
           "id": 8,
@@ -5768,7 +5968,7 @@
             },
             {
               "type": "text",
-              "content": "En La Habana, el desafío no es la preservación de lo antiguo sino la resurrección de lo abandonado. Las desmoronadas fachadas color pastel de Centro Habana ocultan portales de caoba cubana (Swietenia mahagoni) y cedro español (Cedrela odorata), maderas duras aromáticas y naturalmente resistentes a los insectos que alguna vez dieron la bienvenida tanto a los barones del azúcar como a los poetas revolucionarios. El clima tropical impone tensiones únicas: la humedad relativa supera regularmente el 85%, lo que provoca ciclos de expansión y contracción que ninguna carpintería de clima templado fue diseñada para soportar. Los restauradores cubanos, muchos de ellos formados en la Oficina del Historiador de la Ciudad, la oficina de patrimonio establecida por Eusebio Leal Spengler, trabajan con herramientas heredadas de sus abuelos: cepillos de madera con hojas forjadas a mano, sierras de arco con alambre templado y cartulinas para reproducir perfiles conopial y cyma recta. Vuelven a tallar rosetas y hojas de acanto, no a partir de dibujos medidos, que se disolvieron hace mucho tiempo en la humedad tropical, sino de moldes de yeso tomados de ejemplos supervivientes en edificios vecinos, una técnica que preserva el \"dialecto\" local de la talla ornamental, las sutiles variaciones que distinguen al barroco habanero de sus ancestros andaluces."
+              "content": "En La Habana, el desafío no es la preservación de lo antiguo sino la resurrección de lo abandonado. Las desmoronadas fachadas color pastel de Centro Habana ocultan portales de caoba cubana (Swietenia mahagoni) y cedro español (Cedrela odorata), maderas duras aromáticas y naturalmente resistentes a los insectos que alguna vez dieron la bienvenida tanto a los barones del az��car como a los poetas revolucionarios. El clima tropical impone tensiones únicas: la humedad relativa supera regularmente el 85%, lo que provoca ciclos de expansión y contracción que ninguna carpintería de clima templado fue diseñada para soportar. Los restauradores cubanos, muchos de ellos formados en la Oficina del Historiador de la Ciudad, la oficina de patrimonio establecida por Eusebio Leal Spengler, trabajan con herramientas heredadas de sus abuelos: cepillos de madera con hojas forjadas a mano, sierras de arco con alambre templado y cartulinas para reproducir perfiles conopial y cyma recta. Vuelven a tallar rosetas y hojas de acanto, no a partir de dibujos medidos, que se disolvieron hace mucho tiempo en la humedad tropical, sino de moldes de yeso tomados de ejemplos supervivientes en edificios vecinos, una técnica que preserva el \"dialecto\" local de la talla ornamental, las sutiles variaciones que distinguen al barroco habanero de sus ancestros andaluces."
             },
             {
               "type": "image",
@@ -6408,6 +6608,56 @@
       ]
     },
     "TR": {
+      "items": [
+        {
+          "id": 1,
+          "title": "Sabah ritüelleri",
+          "subtitle": "Kapadokya, Türkiye",
+          "fig": "FIG. 01",
+          "description": "Şafağın sessizliği ve vadilere bakan taze kahvenin tadı.",
+          "imageSeed": "coffee-morning"
+        },
+        {
+          "id": 2,
+          "title": "Kentsel yalnızlık",
+          "subtitle": "Berlin, Almanya",
+          "fig": "FIG. 02",
+          "description": "Şehrin beton ritminde huzur bulmak.",
+          "imageSeed": "berlin-street"
+        },
+        {
+          "id": 3,
+          "title": "Akdeniz şöleni",
+          "subtitle": "Sicilya, İtalya",
+          "fig": "FIG. 03",
+          "description": "Basit malzemelerin kutlaması: zeytinyağı, domates ve deniz tuzu.",
+          "imageSeed": "italian-food"
+        },
+        {
+          "id": 4,
+          "title": "Dağ nefesi",
+          "subtitle": "Karpatlar, Ukrayna",
+          "fig": "FIG. 04",
+          "description": "Yaylaların temiz havası ve çam ormanlarının kokusu.",
+          "imageSeed": "mountains"
+        },
+        {
+          "id": 5,
+          "title": "Siesta gölgeleri",
+          "subtitle": "Sevilla, İspanya",
+          "fig": "FIG. 05",
+          "description": "Sıcak bir öğleden sonra zamanın yavaş geçişi.",
+          "imageSeed": "shadows-wall"
+        },
+        {
+          "id": 6,
+          "title": "Kadife gece",
+          "subtitle": "İstanbul, Türkiye",
+          "fig": "FIG. 06",
+          "description": "Şehir canlanırken Boğaz'da yansıyan ışıklar.",
+          "imageSeed": "istanbul-night"
+        }
+      ],
       "articles": [
         {
           "id": 8,
@@ -7316,6 +7566,56 @@
       ]
     },
     "IT": {
+      "items": [
+        {
+          "id": 1,
+          "title": "Rituali mattutini",
+          "subtitle": "Cappadocia, Turchia",
+          "fig": "FIG. 01",
+          "description": "Il silenzio dell'alba e il sapore del caffè fresco con vista sulle valli.",
+          "imageSeed": "coffee-morning"
+        },
+        {
+          "id": 2,
+          "title": "Solitudine urbana",
+          "subtitle": "Berlino, Germania",
+          "fig": "FIG. 02",
+          "description": "Trovare pace nel ritmo di cemento della città.",
+          "imageSeed": "berlin-street"
+        },
+        {
+          "id": 3,
+          "title": "Festa mediterranea",
+          "subtitle": "Sicilia, Italia",
+          "fig": "FIG. 03",
+          "description": "Una celebrazione di ingredienti semplici: olio d'oliva, pomodori e sale marino.",
+          "imageSeed": "italian-food"
+        },
+        {
+          "id": 4,
+          "title": "Respiro montano",
+          "subtitle": "Carpazi, Ucraina",
+          "fig": "FIG. 04",
+          "description": "L'aria fresca dell'altopiano e il profumo delle pinete.",
+          "imageSeed": "mountains"
+        },
+        {
+          "id": 5,
+          "title": "Ombre della siesta",
+          "subtitle": "Siviglia, Spagna",
+          "fig": "FIG. 05",
+          "description": "Il lento scorrere del tempo in un pomeriggio caldo.",
+          "imageSeed": "shadows-wall"
+        },
+        {
+          "id": 6,
+          "title": "Notte di velluto",
+          "subtitle": "Istanbul, Turchia",
+          "fig": "FIG. 06",
+          "description": "Luci che si riflettono sul Bosforo mentre la città prende vita.",
+          "imageSeed": "istanbul-night"
+        }
+      ],
       "articles": [
         {
           "id": 8,
