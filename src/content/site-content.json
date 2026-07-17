@@ -2820,7 +2820,9 @@
           "type": "gallery",
           "content": [
             "https://api.eprisjournal.com/uploads/mrpd6t8c37ggmd.webp",
-            "https://api.eprisjournal.com/uploads/mrpd6ycjkdxx24.jpg"
+            "https://api.eprisjournal.com/uploads/mrpd6ycjkdxx24.jpg",
+            "https://api.eprisjournal.com/uploads/mrpd73atqokur3.webp",
+            "https://api.eprisjournal.com/uploads/mrpd78b46a4cq8.webp"
           ],
           "caption": ""
         }
@@ -3339,7 +3341,7 @@
             {
               "type": "image",
               "content": "https://images.unsplash.com/photo-1757004953637-9cb42bbda6c8?w=900&h=600&fit=crop",
-              "caption": "Орнаментальный церковный вход в Праге — готическое круже��о встречает барочную резьбу по дереву на улочках Малой Страны."
+              "caption": "Орнаментальный церковный вход в Праге — готическое кружево встречает барочную резьбу по дереву на улочках Малой Страны."
             },
             {
               "type": "text",
@@ -4574,7 +4576,7 @@
                 "/images/heart-tiles/tile-46.jpg",
                 "/images/heart-tiles/tile-47.jpg"
               ],
-              "caption": "Сорок сім місць і творів мистецтва, які сформували те, як Марія бачить світ – від собору Саграда Фамілія до мікеланджелівського Давида. Частинка ��ожного з них є в будь-якому номері EPRIS."
+              "caption": "Сорок сім місць і творів мистецтва, які сформували те, як Марія бачить світ – від собору Саграда Фамілія до мікеланджелівського Давида. Частинка кожного з них є в будь-якому номері EPRIS."
             },
             {
               "type": "text",
