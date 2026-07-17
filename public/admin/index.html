@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#180c0f" />
     <title>EPRIS — Редакция</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23180c0f'/%3E%3Ccircle cx='32' cy='32' r='10' fill='%23caa790'/%3E%3C/svg%3E" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Same fonts the live site loads, so the canvas is a true WYSIWYG match:
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=4.6" />
+    <link rel="stylesheet" href="./styles.css?v=4.20" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
@@ -281,9 +282,23 @@
                   <button id="moveEntryDownBtn" class="btn btn-sm" type="button" title="Переместить ниже">↓</button>
                   <button id="duplicateEntryBtn" class="btn btn-sm" type="button">Дублировать</button>
                   <button id="deleteEntryBtn" class="btn btn-sm btn-danger-text" type="button">Удалить</button>
-                  <button id="copyFromEnBtn" class="btn btn-sm" type="button">Копия из EN</button>
-                  <button id="translateEntryBtn" class="btn btn-sm" type="button">→ 7 языков</button>
-                  <button id="translateAllArticlesBtn" class="btn btn-sm" type="button">Весь раздел</button>
+                  <span class="toolbar-sync-panel" aria-label="Синхронизация языков">
+                    <span class="toolbar-sync-label">Языки</span>
+                    <span id="languageSyncScope" class="toolbar-sync-scope" title="Текущий язык будет источником для остальных">Авто при сохранении</span>
+                    <button id="copyFromEnBtn" class="btn btn-sm" type="button" title="Создать этот язык как копию английской записи">Копия из EN</button>
+                    <button id="translateEntryBtn" class="btn btn-sm btn-sync" type="button" title="Взять текущий язык за основу, обновить все переводы и сохранить их на VPS">Синхронизировать</button>
+                    <button id="translateAllArticlesBtn" class="btn btn-sm" type="button" title="Проверить переводы всего выбранного раздела">Весь раздел</button>
+                  </span>
+                  <span class="toolbar-sync-panel toolbar-media-panel" aria-label="Оригиналы изображений">
+                    <span class="toolbar-sync-label">Медиа</span>
+                    <button id="downloadOriginalsBtn" class="btn btn-sm btn-media-download" type="button" title="Скачать оригинальные изображения выбранной статьи в ZIP">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+                      <span id="downloadOriginalsText">Оригиналы ZIP</span>
+                    </button>
+                    <button id="downloadAllOriginalsBtn" class="btn btn-sm" type="button" title="Скачать оригиналы изображений из всех статей"><span id="downloadAllOriginalsText">Все оригиналы</span></button>
+                    <span id="mediaExportMeta" class="media-export-meta" aria-live="polite">Выберите статью</span>
+                    <span id="mediaExportProgress" class="media-export-progress" hidden aria-hidden="true"><span></span></span>
+                  </span>
                   <span class="toolbar-sep"></span>
                   <button id="togglePreviewBtn" class="btn btn-sm btn-preview-toggle" type="button" title="Превью (Alt+P)">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
@@ -291,7 +306,10 @@
                   </button>
                   <span class="toolbar-sep"></span>
                   <button id="applyEntryBtn" class="btn btn-primary btn-sm" type="button">Применить</button>
-                  <button id="saveEntryBtn" class="btn btn-primary btn-sm" type="button" title="Сохранить только эту запись на VPS, без остального документа">💾 Сохранить запись</button>
+                  <button id="saveEntryBtn" class="btn btn-primary btn-sm" type="button" title="Сохранить эту запись на VPS">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg>
+                    <span id="saveEntryBtnText">Сохранить запись</span>
+                  </button>
                 </div>
               </div>
 
@@ -1052,32 +1070,118 @@
           <section class="tab-panel" id="tab-passports">
             <div class="pp-admin">
               <div class="pp-admin-head">
-                <div>
+                <div class="pp-admin-intro">
+                  <span class="pp-admin-kicker">Реестр участников</span>
                   <h2 class="pp-admin-title">Цифровые паспорта участников</h2>
-                  <p class="pp-admin-sub">Опубликованные паспорта с фото. Хранятся на VPS и синхронизированы с сайтом (<code>/passport/КОД</code>).</p>
+                  <p class="pp-admin-sub">Опубликованные записи хранятся на VPS и доступны на сайте по адресу <code>/passport/КОД</code>.</p>
                 </div>
                 <div class="pp-admin-actions">
-                  <input id="passportSearchInput" class="input" type="text" placeholder="Поиск по коду, имени, стране…" style="max-width:260px" />
-                  <button id="btnRefreshPassports" class="btn btn-sm" type="button">↻ Обновить</button>
+                  <label class="pp-search-field" for="passportSearchInput">
+                    <span class="sr-only">Поиск паспортов</span>
+                    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16.5 16.5 4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    <input id="passportSearchInput" class="input" type="search" placeholder="Код, имя или страна" autocomplete="off" />
+                  </label>
+                  <button id="btnRefreshPassports" class="btn btn-primary btn-sm" type="button">
+                    <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.34 5.66" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M20 5v6h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>Обновить</span>
+                  </button>
+                  <button id="btnExportPassportsCsv" class="btn btn-sm" type="button">CSV</button>
                   <button id="btnDedupPassports" class="btn btn-sm" type="button">Убрать дубликаты</button>
                 </div>
               </div>
-              <p class="form-hint" style="margin-bottom:10px">Найдено: <span id="passportsCount">0</span></p>
-              <div class="table-wrap">
-                <table class="pp-table">
-                  <thead>
-                    <tr>
-                      <th>Код</th>
-                      <th>Имя</th>
-                      <th>Фото</th>
-                      <th>Создан</th>
-                      <th class="text-right">Действия</th>
-                    </tr>
-                  </thead>
-                  <tbody id="passportsTableBody">
-                    <tr><td colspan="5" class="text-center py-4 text-muted">Нажмите «Обновить», чтобы загрузить паспорта.</td></tr>
-                  </tbody>
-                </table>
+
+              <div id="passportSyncStatus" class="pp-sync-status" data-state="idle" role="status" aria-live="polite">
+                <span class="pp-sync-indicator" aria-hidden="true"></span>
+                <div class="pp-sync-copy">
+                  <strong id="passportSyncTitle">Готово к обновлению</strong>
+                  <span id="passportSyncDetail">Получим свежие записи напрямую с VPS.</span>
+                </div>
+                <time id="passportLastUpdated" class="pp-sync-time" datetime="">Ещё не обновлялось</time>
+                <button id="btnRetryPassports" class="btn btn-sm pp-sync-retry" type="button" hidden>Повторить</button>
+              </div>
+
+              <div class="pp-control-row">
+                <label class="pp-select-field" for="passportFilterSelect">
+                  <span>Показать</span>
+                  <select id="passportFilterSelect">
+                    <option value="all">Все паспорта</option>
+                    <option value="photo">Только с фото</option>
+                    <option value="missing-photo">Без фото</option>
+                    <option value="complete">Полные записи</option>
+                    <option value="attention">Требуют внимания</option>
+                    <option value="duplicates">Дубликаты</option>
+                    <option value="expiring">Истекают</option>
+                  </select>
+                </label>
+                <label class="pp-select-field" for="passportSortSelect">
+                  <span>Сортировка</span>
+                  <select id="passportSortSelect">
+                    <option value="newest">Сначала новые</option>
+                    <option value="oldest">Сначала старые</option>
+                    <option value="name">По имени</option>
+                    <option value="country">По стране</option>
+                  </select>
+                </label>
+                <div class="pp-list-meta" aria-live="polite">
+                  <span><strong id="passportsCount">0</strong> показано</span>
+                  <span id="passportsTotalMeta">0 всего</span>
+                  <span id="passportsPhotoMeta">0 с фото</span>
+                  <span id="passportsAttentionMeta">0 проверить</span>
+                  <span id="passportsDuplicateMeta">0 дублей</span>
+                </div>
+              </div>
+
+              <div id="passportBulkBar" class="pp-bulk-bar" hidden>
+                <span><strong id="passportSelectedCount">0</strong> выбрано</span>
+                <button id="btnCopySelectedPassports" class="btn btn-sm" type="button">Копировать ссылки</button>
+                <button id="btnOpenSelectedPassport" class="btn btn-sm" type="button">Открыть первый</button>
+                <button id="btnClearPassportSelection" class="btn btn-sm btn-ghost" type="button">Снять выбор</button>
+              </div>
+
+              <div class="pp-workspace">
+                <div class="pp-list-panel">
+                  <div class="table-wrap">
+                    <table class="pp-table">
+                      <thead>
+                        <tr>
+                          <th scope="col" class="pp-check-cell">
+                            <input id="passportSelectAll" class="pp-check" type="checkbox" aria-label="Выбрать все паспорта на экране" />
+                          </th>
+                          <th scope="col">Код</th>
+                          <th scope="col">Участник</th>
+                          <th scope="col">Фото</th>
+                          <th scope="col">Создан</th>
+                          <th scope="col" class="text-right">Действия</th>
+                        </tr>
+                      </thead>
+                      <tbody id="passportsTableBody">
+                        <tr><td colspan="6" class="pp-table-message">Нажмите «Обновить», чтобы получить свежий реестр.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div id="passportPager" class="pp-pager" hidden>
+                    <span id="passportPagerInfo">0–0 из 0</span>
+                    <label class="pp-pager-size">
+                      <span>На странице</span>
+                      <select id="passportPageSize">
+                        <option value="10">10</option>
+                        <option value="25" selected>25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                      </select>
+                    </label>
+                    <button id="passportPrevPage" class="btn btn-sm" type="button">Назад</button>
+                    <button id="passportNextPage" class="btn btn-sm" type="button">Дальше</button>
+                  </div>
+                </div>
+
+                <aside id="passportPreview" class="pp-preview" aria-live="polite">
+                  <div class="pp-preview-empty">
+                    <span class="pp-preview-icon">◇</span>
+                    <strong>Выберите паспорт</strong>
+                    <span>Здесь появятся ссылка, фото и быстрые действия по записи.</span>
+                  </div>
+                </aside>
               </div>
             </div>
           </section>
@@ -1141,7 +1245,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.6" type="module"></script>
+    <script src="./app.js?v=4.20" type="module"></script>
     <script>
       // Tab switching + page title update
       document.addEventListener('DOMContentLoaded', function () {
