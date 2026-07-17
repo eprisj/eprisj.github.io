@@ -7001,6 +7001,7 @@ function renderTranslationsTab() {
         </td>
         <td style="text-align:center">
           ${isMissing ? `<button class="transl-copy-btn" data-copy="${escapeHtml(k)}" title="Скопировать EN">↙ EN</button>` : ''}
+          <button class="transl-ai-row-btn" data-ai-key="${escapeHtml(k)}" title="Перевести/улучшить только этот ключ через AI">✨</button>
         </td>
       </tr>`;
   }).join('');
@@ -7028,6 +7029,35 @@ function renderTranslationsTab() {
       if (input) {
         input.value = enKeys[key] || '';
         input.dispatchEvent(new Event('input'));
+      }
+    });
+  });
+
+  // Per-row AI translate — same callOpenRouter path as the bulk "Перевести
+  // пустые" button, but for exactly one key, and works even when the key
+  // already has a (bad/outdated) translation, which the bulk button skips.
+  bodyEl.querySelectorAll('.transl-ai-row-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const key = btn.dataset.aiKey;
+      const enText = enKeys[key] || '';
+      if (!enText) { showToast('error', 'Нет исходного EN-текста для этого ключа.'); return; }
+      const langSelect = document.getElementById('translLangSelect');
+      const activeLang = langSelect?.value;
+      if (!activeLang) return;
+      const original = btn.textContent;
+      btn.disabled = true; btn.textContent = '…';
+      try {
+        const prompt = `Translate this UI string from English to ${activeLang}.\nReturn ONLY the translated text, no quotes, no explanations.\n\n${enText}`;
+        const result = await callOpenRouter(prompt);
+        const translated = String(result || '').trim().replace(/^["']|["']$/g, '');
+        if (!translated) throw new Error('Empty response');
+        const input = bodyEl.querySelector(`.transl-input[data-key="${CSS.escape(key)}"]`);
+        if (input) { input.value = translated; input.dispatchEvent(new Event('input')); }
+        showToast('success', `Переведено — нажмите «Применить», чтобы сохранить.`);
+      } catch (e) {
+        showToast('error', `Ошибка перевода: ${e.message}`);
+      } finally {
+        btn.disabled = false; btn.textContent = original;
       }
     });
   });
