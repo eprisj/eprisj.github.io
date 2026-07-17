@@ -4138,7 +4138,11 @@ body.busy::after {
 .wys-gal { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 4px; margin: 8px 0; }
 .wys-gal-item { position: relative; aspect-ratio: 1; background: var(--bg-soft); border-radius: 3px; overflow: hidden; }
 .wys-gal-item img { width: 100%; height: 100%; object-fit: cover; }
-.wys-gal-x { position: absolute; top: 3px; right: 3px; width: 18px; height: 18px; border: none; border-radius: 50%; background: rgba(0,0,0,.6); color: #fff; cursor: pointer; font-size: .7rem; line-height: 1; }
+.wys-gal-x { position: absolute; top: 3px; right: 3px; width: 18px; height: 18px; border: none; border-radius: 50%; background: rgba(0,0,0,.6); color: #fff; cursor: pointer; font-size: .7rem; line-height: 1; z-index: 2; }
+.wys-gal-move { position: absolute; bottom: 3px; width: 18px; height: 18px; border: none; border-radius: 50%; background: rgba(0,0,0,.6); color: #fff; cursor: pointer; font-size: .75rem; line-height: 1; z-index: 2; }
+.wys-gal-move-l { left: 3px; }
+.wys-gal-move-r { right: 3px; }
+.wys-gal-move:hover { background: var(--accent); }
 .wys-gal-add { aspect-ratio: 1; border: 1px dashed var(--line-strong); background: none; color: var(--text-muted); cursor: pointer; border-radius: 3px; font-family: var(--font-mono); font-size: .62rem; }
 .wys-gal-add:hover { background: var(--accent-soft); color: var(--accent); }
 

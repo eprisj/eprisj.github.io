@@ -10303,8 +10303,16 @@ async function flushModernEditor() {
     } else if (t === 'gallery') {
       const items = Array.isArray(c) ? c : [];
       inner = '<div class="wys-gal">';
-      items.forEach((it, gi) => { const s = imgUrl(it, 400, 400); inner += `<div class="wys-gal-item">${s ? `<img src="${esc(s)}" referrerpolicy="no-referrer" alt="">` : ''}<button class="wys-gal-x" data-wys-act="gal-del" data-i="${i}" data-gi="${gi}">×</button></div>`; });
-      inner += `<button class="wys-gal-add" data-wys-act="gal-add" data-i="${i}">+ фото</button></div>`;
+      items.forEach((it, gi) => {
+        const s = imgUrl(it, 400, 400);
+        inner += `<div class="wys-gal-item">${s ? `<img src="${esc(s)}" referrerpolicy="no-referrer" alt="">` : ''}
+          <button class="wys-gal-x" data-wys-act="gal-del" data-i="${i}" data-gi="${gi}" title="Удалить">×</button>
+          ${gi > 0 ? `<button class="wys-gal-move wys-gal-move-l" data-wys-act="gal-move" data-i="${i}" data-gi="${gi}" data-dir="-1" title="Переместить влево">‹</button>` : ''}
+          ${gi < items.length - 1 ? `<button class="wys-gal-move wys-gal-move-r" data-wys-act="gal-move" data-i="${i}" data-gi="${gi}" data-dir="1" title="Переместить вправо">›</button>` : ''}
+        </div>`;
+      });
+      inner += `<button class="wys-gal-add" data-wys-act="gal-add" data-i="${i}">+ фото</button>`;
+      inner += `<button class="wys-gal-add" data-wys-act="gal-add-multi" data-i="${i}">⇪ Загрузить с ПК (сразу несколько)</button></div>`;
       inner += `<input class="wys-inline-input" data-wys="caption" data-i="${i}" value="${esc(block.caption || '')}" placeholder="Подпись к галерее">`;
     } else if (t === 'checklist') {
       const items = (c && Array.isArray(c.items)) ? c.items : [];
@@ -10414,7 +10422,21 @@ async function flushModernEditor() {
     if (a === 'tag-add') { const t = prompt('Новый тег:'); if (t && t.trim()) { _model.tags = _model.tags || []; _model.tags.push(t.trim()); render(); commit(); } return; }
     if (a === 'tag-del') { _model.tags.splice(i, 1); render(); commit(); return; }
     if (a === 'gal-add') { const b = _model.content[i]; if (b) { if (!Array.isArray(b.content)) b.content = []; openImagePicker((url) => { b.content.push(url); render(); commit(); }); } return; }
+    if (a === 'gal-add-multi') { const b = _model.content[i]; if (b) { if (!Array.isArray(b.content)) b.content = []; openMultiImageUpload((urls) => { b.content.push(...urls); render(); commit(); }, act); } return; }
     if (a === 'gal-del') { const gi = Number(act.getAttribute('data-gi')); const b = _model.content[i]; if (b && Array.isArray(b.content)) { b.content.splice(gi, 1); render(); commit(); } return; }
+    if (a === 'gal-move') {
+      const gi = Number(act.getAttribute('data-gi'));
+      const dir = Number(act.getAttribute('data-dir'));
+      const b = _model.content[i];
+      if (b && Array.isArray(b.content)) {
+        const target = gi + dir;
+        if (target >= 0 && target < b.content.length) {
+          const t = b.content[gi]; b.content[gi] = b.content[target]; b.content[target] = t;
+          render(); commit();
+        }
+      }
+      return;
+    }
     if (a === 'check-add') { const b = _model.content[i]; if (b) { b.content = b.content || { items: [] }; if (!Array.isArray(b.content.items)) b.content.items = []; b.content.items.push(''); render(); commit(); } return; }
     if (a === 'check-del') { const ci = Number(act.getAttribute('data-ci')); const b = _model.content[i]; if (b && b.content && b.content.items) { b.content.items.splice(ci, 1); render(); commit(); } return; }
     if (a === 'poll-add') { const b = _model.content[i]; if (b) { b.content = b.content || { question: '', options: [] }; if (!Array.isArray(b.content.options)) b.content.options = []; b.content.options.push({ label: '', votes: 0 }); render(); commit(); } return; }
@@ -10502,6 +10524,30 @@ async function flushModernEditor() {
       _mediaCache = (d.ok && Array.isArray(d.items)) ? d.items : [];
     } catch { _mediaCache = _mediaCache || []; }
     return _mediaCache;
+  }
+
+  // Uploads several files one after another (reusing the same compress+upload
+  // path as single-image upload) and hands the caller the full URL list once
+  // done, instead of forcing "+ фото" clicked N times for N photos.
+  function openMultiImageUpload(onDone, triggerBtn) {
+    const input = document.createElement('input');
+    input.type = 'file'; input.accept = 'image/*'; input.multiple = true; input.hidden = true;
+    document.body.appendChild(input);
+    input.onchange = async () => {
+      const files = Array.from(input.files || []);
+      input.remove();
+      if (!files.length) return;
+      const label = triggerBtn ? triggerBtn.textContent : '';
+      const urls = [];
+      for (let idx = 0; idx < files.length; idx++) {
+        if (triggerBtn) { triggerBtn.disabled = true; triggerBtn.textContent = `Загрузка ${idx + 1}/${files.length}…`; }
+        try { urls.push(await uploadImageReturnUrl(files[idx])); }
+        catch (err) { alert(`Не удалось загрузить "${files[idx].name}": ${err.message}`); }
+      }
+      if (triggerBtn) { triggerBtn.disabled = false; triggerBtn.textContent = label; }
+      if (urls.length) onDone(urls);
+    };
+    input.click();
   }
 
   function openImagePicker(onPick) {
