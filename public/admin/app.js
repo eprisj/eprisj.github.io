@@ -10484,6 +10484,43 @@ async function flushModernEditor() {
     render();
     commit();
   });
+
+  // ── drag files from the OS straight onto a gallery block ──────────────────
+  // Separate from the block-reorder drag above: that one only ever fires for
+  // internal drags started on .wys-bc-drag (_dragFrom stays null otherwise),
+  // so this can't misfire on a normal block-reorder drag.
+  canvas.addEventListener('dragover', (e) => {
+    if (_dragFrom != null || !e.dataTransfer?.types.includes('Files')) return;
+    const gal = e.target.closest('.wys-gal');
+    if (!gal) return;
+    e.preventDefault();
+    gal.classList.add('wys-gal-dragover');
+  });
+  canvas.addEventListener('dragleave', (e) => {
+    const gal = e.target.closest('.wys-gal');
+    if (gal && !gal.contains(e.relatedTarget)) gal.classList.remove('wys-gal-dragover');
+  });
+  canvas.addEventListener('drop', (e) => {
+    if (_dragFrom != null || !e.dataTransfer?.files?.length) return;
+    const gal = e.target.closest('.wys-gal');
+    if (!gal) return;
+    e.preventDefault();
+    gal.classList.remove('wys-gal-dragover');
+    const files = Array.from(e.dataTransfer.files).filter((f) => f.type.startsWith('image/'));
+    if (!files.length) return;
+    const block = gal.closest('.wys-block');
+    const i = block ? Number(block.getAttribute('data-i')) : NaN;
+    const b = _model?.content?.[i];
+    if (!b) return;
+    if (!Array.isArray(b.content)) b.content = [];
+    (async () => {
+      for (const f of files) {
+        try { b.content.push(await uploadImageReturnUrl(f)); render(); }
+        catch (err) { alert(`Не удалось загрузить "${f.name}": ${err.message}`); }
+      }
+      commit();
+    })();
+  });
   canvas.addEventListener('dragend', () => {
     _dragFrom = null;
     canvas.querySelectorAll('.wys-block.drop-before, .wys-block.drop-after, .wys-block.dragging').forEach((el) => el.classList.remove('drop-before', 'drop-after', 'dragging'));
