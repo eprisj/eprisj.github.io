@@ -1503,11 +1503,12 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                             const gallerySource = resolveMediaSource(img, 400, 400);
                             if (!gallerySource) return null;
 
+                            const altText = (Array.isArray(block.alts) && block.alts[i]?.trim()) || `Gallery image ${i + 1}`;
                             return (
-                              <div key={i} className="aspect-square bg-[#E8DED5] overflow-hidden cursor-pointer" onClick={() => onImageClick(gallerySource, `Gallery image ${i + 1}`)}>
-                                <img 
-                                  src={gallerySource} 
-                                  alt={`Gallery image ${i + 1}`}
+                              <div key={i} className="aspect-square bg-[#E8DED5] overflow-hidden cursor-pointer" onClick={() => onImageClick(gallerySource, altText)}>
+                                <img
+                                  src={gallerySource}
+                                  alt={altText}
                                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                                   referrerPolicy="no-referrer"
                                 />

@@ -4151,6 +4151,9 @@ body.busy::after {
 .wys-gal-move-l { left: 3px; }
 .wys-gal-move-r { right: 3px; }
 .wys-gal-move:hover { background: var(--accent); }
+.wys-gal-alt { position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%); width: 18px; height: 18px; border: none; border-radius: 50%; background: rgba(0,0,0,.5); color: #fff; cursor: pointer !important; font-size: .68rem; line-height: 1; z-index: 2; font-style: italic; font-family: Georgia, serif; }
+.wys-gal-alt.has-alt { background: var(--accent); }
+.wys-gal-alt:hover { background: var(--accent); }
 .wys-gal-add { aspect-ratio: 1; border: 1px dashed var(--line-strong); background: none; color: var(--text-muted); cursor: pointer; border-radius: 3px; font-family: var(--font-mono); font-size: .62rem; }
 .wys-gal-add:hover { background: var(--accent-soft); color: var(--accent); }
 

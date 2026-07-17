@@ -30,6 +30,7 @@ export interface ContentBlock {
   stretched?: boolean;
   align?: 'left' | 'center' | 'right' | 'full';
   width?: number;
+  alts?: string[]; // per-photo alt text for gallery blocks, index-aligned with content
 }
 
 export interface Article {
