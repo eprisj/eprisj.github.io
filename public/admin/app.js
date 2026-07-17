@@ -9992,6 +9992,7 @@ async function flushModernEditor() {
   let _commitTimer = null;
   let _publishTimer = null;
   let _reloadTimer = null;
+  let _galSelected = new Set(); // "${blockIndex}:${galleryItemIndex}" keys, for bulk-delete
   let _suspendReload = false;
 
   // ── undo/redo history — a stack of full _model snapshots ──────────────────
@@ -10302,10 +10303,13 @@ async function flushModernEditor() {
       </figure>`;
     } else if (t === 'gallery') {
       const items = Array.isArray(c) ? c : [];
+      const selCount = items.reduce((n, _, gi) => n + (_galSelected.has(`${i}:${gi}`) ? 1 : 0), 0);
       inner = '<div class="wys-gal">';
       items.forEach((it, gi) => {
         const s = imgUrl(it, 400, 400);
-        inner += `<div class="wys-gal-item" draggable="true" data-gal-i="${i}" data-gal-gi="${gi}">${s ? `<img src="${esc(s)}" referrerpolicy="no-referrer" alt="">` : ''}
+        const key = `${i}:${gi}`;
+        inner += `<div class="wys-gal-item${_galSelected.has(key) ? ' is-picked' : ''}" draggable="true" data-gal-i="${i}" data-gal-gi="${gi}">${s ? `<img src="${esc(s)}" referrerpolicy="no-referrer" alt="">` : ''}
+          <label class="wys-gal-pick" title="Выбрать"><input type="checkbox" data-wys-act="gal-select-toggle" data-i="${i}" data-gi="${gi}" ${_galSelected.has(key) ? 'checked' : ''}></label>
           <button class="wys-gal-x" data-wys-act="gal-del" data-i="${i}" data-gi="${gi}" title="Удалить">×</button>
           ${gi > 0 ? `<button class="wys-gal-move wys-gal-move-l" data-wys-act="gal-move" data-i="${i}" data-gi="${gi}" data-dir="-1" title="Переместить влево">‹</button>` : ''}
           ${gi < items.length - 1 ? `<button class="wys-gal-move wys-gal-move-r" data-wys-act="gal-move" data-i="${i}" data-gi="${gi}" data-dir="1" title="Переместить вправо">›</button>` : ''}
@@ -10313,6 +10317,7 @@ async function flushModernEditor() {
       });
       inner += `<button class="wys-gal-add" data-wys-act="gal-add" data-i="${i}">+ из медиатеки</button>`;
       inner += `<button class="wys-gal-add" data-wys-act="gal-add-multi" data-i="${i}">⇪ Загрузить с ПК (сразу несколько)</button></div>`;
+      if (selCount > 0) inner += `<button class="wys-gal-bulk-del" data-wys-act="gal-del-selected" data-i="${i}">🗑 Удалить выбранные (${selCount})</button>`;
       inner += `<input class="wys-inline-input" data-wys="caption" data-i="${i}" value="${esc(block.caption || '')}" placeholder="Подпись к галерее">`;
     } else if (t === 'checklist') {
       const items = (c && Array.isArray(c.items)) ? c.items : [];
@@ -10416,14 +10421,54 @@ async function flushModernEditor() {
     }
     if (a === 'insert') { const pos = Number(act.getAttribute('data-pos')); return openTypeMenu(act, (type) => { _model.content.splice(pos, 0, newBlock(type)); render(); commit(); focusBlock(pos); }); }
     if (a === 'type') return openTypeMenu(act, (type) => { changeBlockType(i, type); render(); commit(); });
-    if (a === 'up')   { if (i > 0) { swap(i, i - 1); render(); commit(); } return; }
-    if (a === 'down') { if (i < _model.content.length - 1) { swap(i, i + 1); render(); commit(); } return; }
-    if (a === 'del')  { _model.content.splice(i, 1); render(); commit(); return; }
+    if (a === 'up')   { if (i > 0) { swap(i, i - 1); _galSelected.clear(); render(); commit(); } return; }
+    if (a === 'down') { if (i < _model.content.length - 1) { swap(i, i + 1); _galSelected.clear(); render(); commit(); } return; }
+    if (a === 'del')  { _model.content.splice(i, 1); _galSelected.clear(); render(); commit(); return; }
     if (a === 'tag-add') { const t = prompt('Новый тег:'); if (t && t.trim()) { _model.tags = _model.tags || []; _model.tags.push(t.trim()); render(); commit(); } return; }
     if (a === 'tag-del') { _model.tags.splice(i, 1); render(); commit(); return; }
     if (a === 'gal-add') { const b = _model.content[i]; if (b) { if (!Array.isArray(b.content)) b.content = []; openImagePicker((urls) => { b.content.push(...(Array.isArray(urls) ? urls : [urls])); render(); commit(); }, { multi: true }); } return; }
     if (a === 'gal-add-multi') { const b = _model.content[i]; if (b) { if (!Array.isArray(b.content)) b.content = []; openMultiImageUpload((urls) => { b.content.push(...urls); render(); commit(); }, act); } return; }
-    if (a === 'gal-del') { const gi = Number(act.getAttribute('data-gi')); const b = _model.content[i]; if (b && Array.isArray(b.content)) { b.content.splice(gi, 1); render(); commit(); } return; }
+    if (a === 'gal-del') {
+      const gi = Number(act.getAttribute('data-gi'));
+      const b = _model.content[i];
+      if (b && Array.isArray(b.content)) {
+        const [removed] = b.content.splice(gi, 1);
+        render(); commit();
+        showToastWithAction('info', 'Фото удалено из галереи', 'Отменить', () => {
+          const bb = _model.content[i];
+          if (bb && Array.isArray(bb.content)) { bb.content.splice(gi, 0, removed); render(); commit(); }
+        });
+      }
+      return;
+    }
+    if (a === 'gal-select-toggle') {
+      const gi = Number(act.getAttribute('data-gi'));
+      const key = `${i}:${gi}`;
+      if (_galSelected.has(key)) _galSelected.delete(key); else _galSelected.add(key);
+      render();
+      return;
+    }
+    if (a === 'gal-del-selected') {
+      const b = _model.content[i];
+      if (b && Array.isArray(b.content)) {
+        const gisToRemove = Array.from(_galSelected)
+          .filter((k) => k.startsWith(`${i}:`))
+          .map((k) => Number(k.split(':')[1]))
+          .sort((x, y) => y - x); // descending, so earlier splices don't shift later indices
+        const removed = gisToRemove.map((gi) => ({ gi, url: b.content[gi] }));
+        gisToRemove.forEach((gi) => b.content.splice(gi, 1));
+        Array.from(_galSelected).filter((k) => k.startsWith(`${i}:`)).forEach((k) => _galSelected.delete(k));
+        render(); commit();
+        showToastWithAction('info', `Удалено фото: ${removed.length}`, 'Отменить', () => {
+          const bb = _model.content[i];
+          if (bb && Array.isArray(bb.content)) {
+            removed.slice().reverse().forEach(({ gi, url }) => bb.content.splice(gi, 0, url)); // ascending re-insert
+            render(); commit();
+          }
+        });
+      }
+      return;
+    }
     if (a === 'gal-move') {
       const gi = Number(act.getAttribute('data-gi'));
       const dir = Number(act.getAttribute('data-dir'));
@@ -10482,6 +10527,7 @@ async function flushModernEditor() {
     if (!before) to += 1;
     arr.splice(Math.max(0, Math.min(arr.length, to)), 0, moved);
     _dragFrom = null;
+    _galSelected.clear();
     render();
     commit();
   });
@@ -10564,6 +10610,68 @@ async function flushModernEditor() {
     _galDragFrom = null;
     canvas.querySelectorAll('.wys-gal-item.drop-target, .wys-gal-item.dragging').forEach((el) => el.classList.remove('drop-target', 'dragging'));
   });
+
+  // ── touch drag-to-reorder (native HTML5 DnD above is mouse-only — touch
+  // screens never fire dragstart, so this is a separate Pointer Events path
+  // gated to pointerType==='touch' only; mouse/pen keep using the DnD code
+  // untouched). A short hold-before-move threshold keeps a normal finger
+  // scroll from being hijacked as a drag.
+  let _touchDrag = null; // { i, gi, tile, startX, startY, holdTimer, active }
+  canvas.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'touch') return;
+    const tile = e.target.closest('.wys-gal-item');
+    if (!tile) return;
+    const state = {
+      i: Number(tile.getAttribute('data-gal-i')), gi: Number(tile.getAttribute('data-gal-gi')),
+      tile, startX: e.clientX, startY: e.clientY, pointerId: e.pointerId, active: false, holdTimer: null,
+    };
+    state.holdTimer = setTimeout(() => {
+      state.active = true;
+      tile.classList.add('dragging');
+      tile.style.touchAction = 'none';
+      try { tile.setPointerCapture(e.pointerId); } catch {}
+    }, 180);
+    _touchDrag = state;
+  });
+  canvas.addEventListener('pointermove', (e) => {
+    if (!_touchDrag || e.pointerId !== _touchDrag.pointerId) return;
+    const dx = e.clientX - _touchDrag.startX, dy = e.clientY - _touchDrag.startY;
+    if (!_touchDrag.active) {
+      if (Math.hypot(dx, dy) > 10) { clearTimeout(_touchDrag.holdTimer); _touchDrag = null; } // treat as a scroll
+      return;
+    }
+    e.preventDefault();
+    _touchDrag.tile.style.transform = `translate(${dx}px, ${dy}px)`;
+    _touchDrag.tile.style.zIndex = '10';
+    canvas.querySelectorAll('.wys-gal-item.drop-target').forEach((el) => el.classList.remove('drop-target'));
+    const under = document.elementFromPoint(e.clientX, e.clientY)?.closest('.wys-gal-item');
+    if (under && under !== _touchDrag.tile && Number(under.getAttribute('data-gal-i')) === _touchDrag.i) {
+      under.classList.add('drop-target');
+    }
+  });
+  function endTouchDrag(e) {
+    if (!_touchDrag) return;
+    clearTimeout(_touchDrag.holdTimer);
+    const { tile, i, gi, active } = _touchDrag;
+    tile.classList.remove('dragging');
+    tile.style.transform = ''; tile.style.zIndex = ''; tile.style.touchAction = '';
+    if (active) {
+      const under = document.elementFromPoint(e.clientX, e.clientY)?.closest('.wys-gal-item');
+      canvas.querySelectorAll('.wys-gal-item.drop-target').forEach((el) => el.classList.remove('drop-target'));
+      if (under && Number(under.getAttribute('data-gal-i')) === i) {
+        const targetGi = Number(under.getAttribute('data-gal-gi'));
+        const b = _model?.content?.[i];
+        if (b && Array.isArray(b.content) && targetGi !== gi) {
+          const [moved] = b.content.splice(gi, 1);
+          b.content.splice(targetGi, 0, moved);
+          render(); commit();
+        }
+      }
+    }
+    _touchDrag = null;
+  }
+  canvas.addEventListener('pointerup', endTouchDrag);
+  canvas.addEventListener('pointercancel', endTouchDrag);
 
   function newBlock(type) {
     if (type === 'image') return { type: 'image', content: '', caption: '' };
