@@ -1,5 +1,5 @@
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
-import { ReactNode, useState, useEffect, useCallback, useMemo, FormEvent, useRef, Suspense, lazy } from 'react';
+import { ReactNode, useState, useEffect, useCallback, useMemo, FormEvent, useRef, Suspense, lazy, Component } from 'react';
 // Heavy, rarely-visited tabs are code-split out of the critical bundle —
 // e.g. DesignPage alone carries a 244-item catalogue that has no business
 // loading for a reader who just opened an article. Each only downloads once
@@ -372,6 +372,59 @@ function TabLoadingFallback() {
         Loading
       </motion.div>
     </div>
+  );
+}
+
+// True cause of the intermittent white screen: every deploy replaces the
+// whole dist/ folder with newly content-hashed chunk filenames, so a tab a
+// visitor already has open (or a link/bookmark to a lazy route like /issue)
+// can ask for a JS chunk that no longer exists on the server. That 404
+// surfaces as a rejected dynamic import(), which React re-throws as a render
+// error on the next tick — Suspense only handles the *loading* state, not
+// this, so with no error boundary anywhere the whole app unmounted to a
+// blank white screen with nothing in the UI to explain why or recover.
+const CHUNK_ERROR_PATTERN = /fetch dynamically imported module|Importing a module script failed|Loading chunk/i;
+const RELOAD_GUARD_KEY = 'epris_chunk_reload_once';
+
+class TabErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
+  state = { hasError: false };
+  static getDerivedStateFromError() { return { hasError: true }; }
+  componentDidCatch(error: unknown) {
+    const message = error instanceof Error ? error.message : String(error);
+    // A stale chunk is only fixable by a fresh page load (new index.html →
+    // new chunk manifest) — not a React retry, which would just throw again.
+    // Guard against loop: only auto-reload once per session.
+    if (CHUNK_ERROR_PATTERN.test(message) && !sessionStorage.getItem(RELOAD_GUARD_KEY)) {
+      sessionStorage.setItem(RELOAD_GUARD_KEY, '1');
+      window.location.reload();
+    }
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="min-h-[60vh] flex flex-col items-center justify-center gap-4 px-6 text-center">
+          <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)]">
+            This section couldn't load — likely a new version just went live.
+          </p>
+          <button
+            type="button"
+            onClick={() => window.location.reload()}
+            className="border border-[var(--c-accent)] rounded-full px-6 py-2 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors"
+          >
+            Reload page
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
+function LazyTab({ children }: { children: ReactNode }) {
+  return (
+    <TabErrorBoundary>
+      <Suspense fallback={<TabLoadingFallback />}>{children}</Suspense>
+    </TabErrorBoundary>
   );
 }
 
@@ -2226,35 +2279,35 @@ export default function App() {
         )}
 
         {activeTab === 'materie' ? (
-          <Suspense fallback={<TabLoadingFallback />}>
+          <LazyTab>
             <div className="pt-16">
               <MateriePage t={t} />
             </div>
-          </Suspense>
+          </LazyTab>
         ) : activeTab === 'issue' ? (
-          <Suspense fallback={<TabLoadingFallback />}>
+          <LazyTab>
             <IssuePage archive={issueArchive} t={t} />
-          </Suspense>
+          </LazyTab>
         ) : activeTab === 'design' ? (
-          <Suspense fallback={<TabLoadingFallback />}>
+          <LazyTab>
             <DesignPage lang={currentLang} />
-          </Suspense>
+          </LazyTab>
         ) : activeTab === 'studio' ? (
-          <Suspense fallback={<TabLoadingFallback />}>
+          <LazyTab>
             <StudioPage studio={studio} t={t} />
-          </Suspense>
+          </LazyTab>
         ) : activeTab === 'radio' ? (
-          <Suspense fallback={<TabLoadingFallback />}>
+          <LazyTab>
             <RadioPage t={t} />
-          </Suspense>
+          </LazyTab>
         ) : activeTab === 'podcasts' ? (
-          <Suspense fallback={<TabLoadingFallback />}>
+          <LazyTab>
             <PodcastsPage t={t} />
-          </Suspense>
+          </LazyTab>
         ) : activeTab === 'passport' ? (
-          <Suspense fallback={<TabLoadingFallback />}>
+          <LazyTab>
             <PassportPage viewCode={passportCode ?? null} onBack={() => handleSetTab('gallery')} />
-          </Suspense>
+          </LazyTab>
         ) : (
           <main className="max-w-[1600px] mx-auto px-4 sm:px-8 md:px-16 py-8 sm:py-12 md:py-24">
             <AnimatePresence mode="wait">
