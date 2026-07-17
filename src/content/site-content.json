@@ -2633,15 +2633,15 @@
         },
         {
           "type": "text",
-          "content": "<span>Interior design is not just a setting, a static picture, a composition, or a color palette. It is a living environment that embraces and enswathes you. We are used to considering an interior as an external component of our existence, positioning ourselves merely as spectators. In reality, the moment we step into a space, we are absorbed by it, invisibly adopting its mood and yielding to the irresistible influence of its atmosphere. There is even a specific branch of science - neuroarchitecture - that studies how the environment affects our cognitive performance, as well as our psychological and physical well-being. Mostly, these effects are triggered by spatial characteristics, color psychology, and the tactile properties of materials. However, there is one element that often falls off this scientific list but still has a major impact on how we experience a space: details filled with irony and fun.</span>"
-        },
-        {
-          "type": "text",
-          "content": ""
+          "content": "<span>Interior design is not just a setting, a static picture, a composition, or a color palette. It is a living environment that embraces and enswathes you. We are used to considering an interior as an external component of our existence, positioning ourselves merely as spectators. In reality, the moment we step into a space, we are absorbed by it, invisibly adopting its mood and yielding to the irresistible influence of its atmosphere. There is even a specific branch of science - neuroarchitecture - that studies how the environment affects our cognitive performance, as well as our psychological and physical well-being. Mostly, these effects are triggered by spatial characteristics, color psychology, and the tactile properties of materials. However, there is one element that often falls off this scientific list but still has a major impact on how we experience a space: <i>details filled with irony and fun.</i></span>"
         },
         {
           "type": "quote",
           "content": "<span> In reality, the moment we step into a space, we are absorbed by it, invisibly adopting its mood and yielding to the irresistible influence of its atmosphere.</span>"
+        },
+        {
+          "type": "text",
+          "content": ""
         },
         {
           "type": "image",
@@ -3293,7 +3293,7 @@
           "content": [
             {
               "type": "text",
-              "content": "Всю работу в этом кадре выполняют четыре фигуры, и ни одна из них не случайна. Конус — простейшее твердое тело, имеющее одну непрерывную поверхность, обращенную вокруг одной оси — сужается от широкого основания до точки без шва, без грани, без чего глаз может остановиться. Под ним шестиугольник: две сложенные друг на друга призмы, по шесть плоских плоскостей каждая, один и тот же угол повторяется до тех пор, пока не замыкается сам на себя. За ними — сетка — точки с фиксированным интервалом, строки и столбцы — единственная настоящая двумерная геометрия в комнате. И пересекая все это по диагонали, кронштейн лампы, единственная линия в раме, которая отказывается быть вертикальной или горизонтальной."
+              "content": "Всю работу в этом кадре выполняют четыре фигуры, и ни одна из них не случайна. Конус — простейшее твердое тело, имеющее одну непрерывную поверхность, обращенную вокруг одной оси — сужается от широкого основания до точки без шва, без грани, без чего глаз может остановиться. Под ним шестиугольник: две сложенные друг на друга призмы, по шесть плоских плоскостей каждая, ��дин и тот же угол повторяется до тех пор, пока не замыкается сам на себя. За ними — сетка — точки с фиксированным интервалом, строки и столбцы — единственная настоящая двумерная геометрия в комнате. И пересекая все это по диагонали, кронштейн лампы, единственная линия в раме, которая отказывается быть вертикальной или горизонтальной."
             },
             {
               "type": "image",
@@ -4094,7 +4094,7 @@
             },
             {
               "type": "text",
-              "content": "Фундаментальна напруга в консервації дверей лежить між двома вимогами, які непосвячені часто плутають: реставрацією та консервацією. Реставрація – це повернення об’єкта до конкретного історичного стану, що вимагає інтерпретаційного вибору – вигляду якого століття ви віддаєте перевагу? Консервація, навпаки, спрямована на стабілізацію об’єкта в його поточному стані, зупиняючи розпад, не стираючи патину часу. Сучасни�� консенсус, кодифікований у Венеціанській хартії 1964 року та вдосконалений Хартією Бурри 1979 року, рішуче схиляється до збереження: мінімальне втручання, вичерпне документування та забезпечення оборотності. Кожне епоксидне заповнення, кожне голландське з’єднання, кожна повторно позолочена поверхня повинна відрізнятися від оригіналу при ретельному огляді та вид��лятися без пошкодження основного матеріалу."
+              "content": "Фундаментальна напруга в консервації дверей лежить між двома вимогами, які непосвячені часто плутають: реставрацією та консервацією. Реставрація – це повернення об’єкта до конкретного історичного стану, що вимагає інтерпретаційного вибору – вигляду якого століття ви віддаєте перевагу? Консервація, навпаки, спрямована на стабілізацію об’єкта в його поточному стані, зупиняючи розпад, не стираючи патину часу. Сучасни�� консенсус, кодифікований у Венеціанській хартії 1964 року та вдосконалений Хартією Бурри 1979 року, рішуче схиляється до збереження: мінімальне втручання, вичерпне документування та забезпечення оборотності. Кожне епоксидне заповнення, кожне голландське з’єднання, кожна повторно позолочена поверхня повинна відрізнятися від оригіналу при ретельному огляді та видалятися без пошкодження основного матеріалу."
             },
             {
               "type": "quote",
@@ -4544,7 +4544,7 @@
             },
             {
               "type": "text",
-              "content": "У «Палладі Афіні» 1898 року вже видно, як приходить майбутнє. Бог��ня закута в карбоване золото, її погляд холодний і звернений просто на глядача, а в руці вона тримає крихітну оголену постать – Nuda Veritas, наготну істину, що підносить дзеркало суспільству, яке воліло не дивитися. Це був особистий девіз Клімта, що став зримим: митець винен добі не лестощі, а чесність."
+              "content": "У «Палладі Афіні» 1898 року вже видно, як приходить майбутнє. Богиня закута в карбоване золото, її погляд холодний і звернений просто на глядача, а в руці вона тримає крихітну оголену постать – Nuda Veritas, наготну істину, що підносить дзеркало суспільству, яке воліло не дивитися. Це був особистий девіз Клімта, що став зримим: митець винен добі не лестощі, а чесність."
             },
             {
               "type": "image",
@@ -7165,7 +7165,7 @@
             },
             {
               "type": "text",
-              "content": "Lizbon'un Baixa semtindeki Pombaline kapısının önemliliğini düşünün. 30.000 ila 50.000 kişinin ölümüne ve şehrin %85'inin yerle bir olmasına yol açan 1 Kasım 1755'teki yıkıcı depremin ardından Pombal Markisi, proto-sismik mühendisliğe dayanan radikal bir yeniden yapılanma başlattı. Ortaya çıkan Pombaline mimarisi, sarsıntılar sırasında kırılmak yerine esnemek üzere tasarlanmış, taş duvarların içine gömülü esnek ahşap çerçeveli bir kafes olan 'gaiola pombalina'y���� ortaya çıkardı. Bu binaların kapıları, Atlantik kolonilerinden ithal edilen Brezilya peroba rosa (Aspidosperma polyneuron) ve pau-marfim'den (Balfourodendron riedelianum) yapılmıştır: hem deniz nemine hem de sismik hareketin burulma stresine direnen, birbirine kenetlenen damarlara sahip yoğun, reçineli sert ağaçlar. Doğramaların tamamı zıvana ve zıvanadan oluşuyor ve direk ve ray bağlantılarında kamalı geçmeli zıvanalar var; çivi yok, vida yok, yalnızca ahşab��n ahşaba karşı kilitlenmesinin geometrisi var."
+              "content": "Lizbon'un Baixa semtindeki Pombaline kapısının önemliliğini düşünün. 30.000 ila 50.000 kişinin ölümüne ve şehrin %85'inin yerle bir olmasına yol açan 1 Kasım 1755'teki yıkıcı depremin ardından Pombal Markisi, proto-sismik mühendisliğe dayanan radikal bir yeniden yapılanma başlattı. Ortaya çıkan Pombaline mimarisi, sarsıntılar sırasında kırılmak yerine esnemek üzere tasarlanmış, taş duvarların içine gömülü esnek ahşap çerçeveli bir kafes olan 'gaiola pombalina'y���� ortaya çıkardı. Bu binaların kapıları, Atlantik kolonilerinden ithal edilen Brezilya peroba rosa (Aspidosperma polyneuron) ve pau-marfim'den (Balfourodendron riedelianum) yapılmıştır: hem deniz nemine hem de sismik hareketin burulma stresine direnen, birbirine kenetlenen damarlara sahip yoğun, reçineli sert ağaçlar. Doğramaların tamamı zıvana ve zıvanadan oluşuyor ve direk ve ray bağlantılarında kamalı geçmeli zıvanalar var; çivi yok, vida yok, yalnızca ahşabın ahşaba karşı kilitlenmesinin geometrisi var."
             },
             {
               "type": "image",
