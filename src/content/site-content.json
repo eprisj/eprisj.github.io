@@ -2714,6 +2714,13 @@
           "content": "<span>Yet, the presence of this hidden depth never compromises the pure, joyful look of his pieces—they remain effortlessly delightful objects that you want to return to again and again.</span>"
         },
         {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/mrpa6tqpmljolk.jpg"
+          ],
+          "caption": ""
+        },
+        {
           "type": "image",
           "content": "new-editorial-story-2",
           "caption": "Lead image",
@@ -3298,7 +3305,7 @@
             {
               "type": "poll",
               "content": {
-                "question": "Двери какого города восхищают вас больше всего?",
+                "question": "Двери какого города восхи��ают вас больше всего?",
                 "options": [
                   {
                     "label": "Лиссабон",
