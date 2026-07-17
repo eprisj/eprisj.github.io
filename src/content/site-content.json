@@ -2609,7 +2609,7 @@
         "culture",
         "editorial"
       ],
-      "imageSeed": "new-editorial-story",
+      "imageSeed": "",
       "content": [
         {
           "type": "text",
@@ -2827,7 +2827,8 @@
           ],
           "caption": ""
         }
-      ]
+      ],
+      "imageUrl": "https://api.eprisjournal.com/uploads/mrpd6ycjkdxx24.jpg"
     }
   ],
   "reviews": [
@@ -8749,7 +8750,7 @@
             },
             {
               "type": "text",
-              "content": "Guardate da vicino la facciata e troverete lo spirito del movimento scritto nell'intonaco: tre gufi solenni, uccelli sacri ad Atena, e sopra l'ingresso quelle parole d'oro di sfida. Persino i dettagli decorativi furono disegnati da membri del gruppo – i gufi e il fogliame sono di Koloman Moser –, così che l'edificio stesso divenne un'opera d'arte totale, un Gesamtkunstwerk, in cui architettura, scultura e ornamento parlano un'unica lingua."
+              "content": "Guardate da vicino la facciata e troverete lo spirito del movimento scritto nell'intonaco: tre gufi solenni, uccelli sacri ad Atena, e sopra l'ingresso quelle parole d'oro di sfida. Persino i dettagli decorativi furono disegnati da membri del gruppo ��� i gufi e il fogliame sono di Koloman Moser –, così che l'edificio stesso divenne un'opera d'arte totale, un Gesamtkunstwerk, in cui architettura, scultura e ornamento parlano un'unica lingua."
             },
             {
               "type": "image",
