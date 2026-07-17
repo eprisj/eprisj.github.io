@@ -916,9 +916,16 @@ function GallerySection({ items, onItemClick, articles, onReadArticle }: { items
               />
             </div>
             <div className="flex-1 flex flex-col sm:flex-row justify-between gap-4 sm:gap-10">
-              <h3 className="font-crimson text-xl sm:text-2xl text-[var(--c-accent)] leading-snug max-w-md self-start group-hover:text-[var(--c-gold)] transition-colors duration-300">
-                {item.title}
-              </h3>
+              <div className="flex flex-col gap-2 max-w-md self-start">
+                <h3 className="font-crimson text-xl sm:text-2xl text-[var(--c-accent)] leading-snug group-hover:text-[var(--c-gold)] transition-colors duration-300">
+                  {item.title}
+                </h3>
+                {item.description && (
+                  <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed line-clamp-3">
+                    {item.description}
+                  </p>
+                )}
+              </div>
               <div className="flex sm:flex-col items-start sm:items-end justify-between shrink-0 gap-2">
                 <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)]">
                   {item.subtitle}
