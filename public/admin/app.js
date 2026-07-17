@@ -470,6 +470,9 @@ function bindEvents() {
   uploadDropZone.addEventListener('dragover', onUploadDragEnter);
   uploadDropZone.addEventListener('dragleave', onUploadDragLeave);
   uploadDropZone.addEventListener('drop', onUploadDrop);
+  // Paste a screenshot/copied image straight in (Ctrl/Cmd+V) while on the
+  // Upload tab — skips the save-to-disk-then-browse round trip.
+  document.addEventListener('paste', onUploadPaste);
 
   const inputs = [
     ownerInput,
@@ -996,6 +999,23 @@ function reportUploadSavings(originalSize, uploadedSize) {
     sizeEl.textContent = `${formatFileSize(originalSize)} → ${formatFileSize(uploadedSize)} (−${pct}%, сжато автоматически)`;
   } else {
     sizeEl.textContent = `${formatFileSize(originalSize)} · загружено без сжатия`;
+  }
+}
+
+function onUploadPaste(event) {
+  const uploadTab = byId('tab-upload');
+  if (!uploadTab || !uploadTab.classList.contains('active')) return;
+  const items = event.clipboardData?.items;
+  if (!items) return;
+  for (const item of items) {
+    if (item.kind === 'file' && item.type.startsWith('image/')) {
+      const file = item.getAsFile();
+      if (!file) continue;
+      event.preventDefault();
+      showUploadPreview(file);
+      uploadImageToGitHub(file);
+      return;
+    }
   }
 }
 
