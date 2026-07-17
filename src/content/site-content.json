@@ -2815,7 +2815,12 @@
         },
         {
           "type": "text",
-          "content": "<span>The central pillar of the Gaudets' work is not the inscriptions but the recreation of paper folding. However, even within this framework, we find the component of delightful familiarity combined with childish excitement. For example the paper planes of different colors, made from a lined notebook sheet. Finding it on the chest of drawers or coffetable among books and vases would be a wonderful time machine to the times of  </span><strong>carefreeness of the school times.</strong>"
+          "content": "<span>The central pillar of the Gaudets' work is not the inscriptions but the recreation of paper folding. However, even within this framework, we find the component of delightful familiarity combined with childish excitement. For example the paper planes of different colors, made from a lined notebook sheet. Finding it on the chest of drawers or coffetable among books and vases would be a wonderful time machine to the times of  </span><span>carefreeness of the school times.</span>"
+        },
+        {
+          "type": "gallery",
+          "content": [],
+          "caption": ""
         },
         {
           "type": "image",
@@ -4156,7 +4161,7 @@
             },
             {
               "type": "text",
-              "content": "Що мені подобається в апартаментах Pied-à-terre, так це їх складність. Інтер’єр багатий і впевнений. Немає жодних спроб звести відчуття простору до мінімуму в рамках вашого когнітивного та емоційного сприйняття. Скоріше простір допомагає зрозуміти, що часом повноцінний відпочинок – це не знайомство з порожнечею, а приємний процес дослідження. Саме цього ми прагнемо, бронюючи квитки на літак і передчуваючи мом��нт приземлення в далекій місцевості."
+              "content": "Що мені подобається в апартаментах Pied-à-terre, так це їх складність. Інтер’єр багатий і впевнений. Немає жодних спроб звести відчуття простору до мінімуму в рамках вашого когнітивного та емоційного сприйняття. Скоріше простір допомагає зрозуміти, що часом повноцінний відпочинок – це не знайомство з порожнечею, а приємний процес дослідження. Саме цього ми прагнемо, бронюючи квитки на літак і передчуваючи момент приземлення в далекій місцевості."
             },
             {
               "type": "text",
