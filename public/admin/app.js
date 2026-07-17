@@ -10311,7 +10311,7 @@ async function flushModernEditor() {
           ${gi < items.length - 1 ? `<button class="wys-gal-move wys-gal-move-r" data-wys-act="gal-move" data-i="${i}" data-gi="${gi}" data-dir="1" title="Переместить вправо">›</button>` : ''}
         </div>`;
       });
-      inner += `<button class="wys-gal-add" data-wys-act="gal-add" data-i="${i}">+ фото</button>`;
+      inner += `<button class="wys-gal-add" data-wys-act="gal-add" data-i="${i}">+ из медиатеки</button>`;
       inner += `<button class="wys-gal-add" data-wys-act="gal-add-multi" data-i="${i}">⇪ Загрузить с ПК (сразу несколько)</button></div>`;
       inner += `<input class="wys-inline-input" data-wys="caption" data-i="${i}" value="${esc(block.caption || '')}" placeholder="Подпись к галерее">`;
     } else if (t === 'checklist') {
@@ -10421,7 +10421,7 @@ async function flushModernEditor() {
     if (a === 'del')  { _model.content.splice(i, 1); render(); commit(); return; }
     if (a === 'tag-add') { const t = prompt('Новый тег:'); if (t && t.trim()) { _model.tags = _model.tags || []; _model.tags.push(t.trim()); render(); commit(); } return; }
     if (a === 'tag-del') { _model.tags.splice(i, 1); render(); commit(); return; }
-    if (a === 'gal-add') { const b = _model.content[i]; if (b) { if (!Array.isArray(b.content)) b.content = []; openImagePicker((url) => { b.content.push(url); render(); commit(); }); } return; }
+    if (a === 'gal-add') { const b = _model.content[i]; if (b) { if (!Array.isArray(b.content)) b.content = []; openImagePicker((urls) => { b.content.push(...(Array.isArray(urls) ? urls : [urls])); render(); commit(); }, { multi: true }); } return; }
     if (a === 'gal-add-multi') { const b = _model.content[i]; if (b) { if (!Array.isArray(b.content)) b.content = []; openMultiImageUpload((urls) => { b.content.push(...urls); render(); commit(); }, act); } return; }
     if (a === 'gal-del') { const gi = Number(act.getAttribute('data-gi')); const b = _model.content[i]; if (b && Array.isArray(b.content)) { b.content.splice(gi, 1); render(); commit(); } return; }
     if (a === 'gal-move') {
@@ -10550,20 +10550,26 @@ async function flushModernEditor() {
     input.click();
   }
 
-  function openImagePicker(onPick) {
+  // multi:true switches the library grid from pick-and-close to a toggleable
+  // multi-select with a "Готово (N)" confirm — used when adding to a gallery,
+  // so picking 5 already-uploaded photos doesn't mean reopening this 5 times.
+  function openImagePicker(onPick, opts) {
+    const multi = !!(opts && opts.multi);
+    const selected = new Set();
     closePopovers();
     const pop = document.createElement('div');
     pop.className = 'wys-pop wys-pop-img';
-    pop.innerHTML = `<div class="wys-pop-head">Изображение</div>
+    pop.innerHTML = `<div class="wys-pop-head">${multi ? 'Добавить фото в галерею' : 'Изображение'}</div>
       <input class="wys-pop-input" placeholder="URL или imageSeed…" />
       <div class="wys-pop-actions">
         <button class="btn btn-sm" data-up>📁 Загрузить с ПК</button>
-        <button class="btn btn-primary btn-sm" data-ok>Применить</button>
+        <button class="btn btn-primary btn-sm" data-ok>${multi ? 'Добавить URL' : 'Применить'}</button>
+        ${multi ? '<button class="btn btn-primary btn-sm" data-done disabled>Готово (0)</button>' : ''}
       </div>
       <input type="file" accept="image/*" hidden />
       <div class="wys-media-lib">
         <div class="wys-media-lib-head">
-          <span>Медиатека</span>
+          <span>Медиатека${multi ? ' — клик отмечает, повторный клик снимает' : ''}</span>
           <label class="wys-media-filter"><input type="checkbox" data-unused-only> Только неиспользуемые</label>
           <button type="button" class="wys-media-refresh" data-refresh title="Обновить">↻</button>
         </div>
@@ -10575,8 +10581,15 @@ async function flushModernEditor() {
     const file = pop.querySelector('input[type=file]');
     const grid = pop.querySelector('[data-grid]');
     const unusedOnlyInp = pop.querySelector('[data-unused-only]');
+    const doneBtn = pop.querySelector('[data-done]');
+    const updateDoneBtn = () => { if (doneBtn) { doneBtn.textContent = `Готово (${selected.size})`; doneBtn.disabled = !selected.size; } };
+    if (doneBtn) doneBtn.onclick = () => { closePopovers(); onPick(Array.from(selected)); };
     inp.focus();
-    pop.querySelector('[data-ok]').onclick = () => { const v = inp.value.trim(); closePopovers(); if (v) onPick(v); };
+    pop.querySelector('[data-ok]').onclick = () => {
+      const v = inp.value.trim(); if (!v) return;
+      if (multi) { selected.add(v); inp.value = ''; updateDoneBtn(); }
+      else { closePopovers(); onPick(v); }
+    };
     inp.onkeydown = (e) => { if (e.key === 'Enter') pop.querySelector('[data-ok]').click(); };
     pop.querySelector('[data-up]').onclick = () => file.click();
     file.onchange = async () => {
@@ -10586,8 +10599,10 @@ async function flushModernEditor() {
         const url = await uploadImageReturnUrl(f);
         // Show the freshly uploaded file at the front of the library immediately.
         if (Array.isArray(_mediaCache)) _mediaCache.unshift({ name: f.name, url, mtime: Date.now(), size: f.size });
-        closePopovers(); onPick(url);
-      } catch (err) { btn.disabled = false; btn.textContent = '📁 Загрузить с ПК'; alert('Ошибка загрузки: ' + err.message); }
+        if (multi) { selected.add(url); updateDoneBtn(); renderGrid(); }
+        else { closePopovers(); onPick(url); }
+      } catch (err) { alert('Ошибка загрузки: ' + err.message); }
+      finally { btn.disabled = false; btn.textContent = '📁 Загрузить с ПК'; }
     };
 
     async function renderGrid(force) {
@@ -10609,9 +10624,22 @@ async function flushModernEditor() {
         const badgeTitle = usage.count
           ? usage.refs.map((r) => `${r.section}#${r.id} (${r.lang})`).join(', ')
           : 'Не используется в статьях, обзорах или галерее (Выпуски и Студия не проверяются)';
-        return `<div class="wys-media-cell"><button type="button" class="wys-media-item" data-url="${esc(it.url)}" title="${esc(it.name)}"><img src="${esc(it.thumbUrl || it.url)}" loading="lazy" referrerpolicy="no-referrer" alt=""><span class="wys-media-usage${usage.count ? '' : ' zero'}" title="${esc(badgeTitle)}">${badgeText}</span></button><button type="button" class="wys-media-del" data-name="${esc(it.name)}" data-url="${esc(it.url)}" title="Удалить с сервера">×</button></div>`;
+        const isSel = multi && selected.has(it.url);
+        return `<div class="wys-media-cell"><button type="button" class="wys-media-item${isSel ? ' is-selected' : ''}" data-url="${esc(it.url)}" title="${esc(it.name)}"><img src="${esc(it.thumbUrl || it.url)}" loading="lazy" referrerpolicy="no-referrer" alt=""><span class="wys-media-usage${usage.count ? '' : ' zero'}" title="${esc(badgeTitle)}">${badgeText}</span>${isSel ? '<span class="wys-media-check">✓</span>' : ''}</button><button type="button" class="wys-media-del" data-name="${esc(it.name)}" data-url="${esc(it.url)}" title="Удалить с сервера">×</button></div>`;
       }).join('');
-      grid.querySelectorAll('.wys-media-item').forEach((btn) => { btn.onclick = () => { const u = btn.getAttribute('data-url'); closePopovers(); onPick(u); }; });
+      grid.querySelectorAll('.wys-media-item').forEach((btn) => {
+        btn.onclick = () => {
+          const u = btn.getAttribute('data-url');
+          if (multi) {
+            if (selected.has(u)) selected.delete(u); else selected.add(u);
+            btn.classList.toggle('is-selected');
+            let check = btn.querySelector('.wys-media-check');
+            if (selected.has(u) && !check) { check = document.createElement('span'); check.className = 'wys-media-check'; check.textContent = '✓'; btn.appendChild(check); }
+            else if (!selected.has(u) && check) check.remove();
+            updateDoneBtn();
+          } else { closePopovers(); onPick(u); }
+        };
+      });
       grid.querySelectorAll('.wys-media-del').forEach((btn) => {
         btn.onclick = async (ev) => {
           ev.stopPropagation();
