@@ -2681,7 +2681,9 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mrp9t34bnz37vq.webp",
-          "caption": ""
+          "caption": "",
+          "stretched": false,
+          "align": "left"
         },
         {
           "type": "text",
@@ -3315,7 +3317,7 @@
             },
             {
               "type": "text",
-              "content": "Что делает дверь достойной спасения? Не одна лишь древность древесины или изящество резьбы — хотя оба фактора важны. Это накопленный вес прохождений: тысячи приходов и уходов, влюблённые, задерживавшиеся в проёме, дети, нацарап��вшие свой рост на косяке, скорбящие, замиравшие перед тем, как шагнуть обратно на солнечный свет. Каждый порог — палимпсест человеческого опыта, наслоённый столь же плотно, как красочная стратиграфия на помбалинской филёнке. Когда мы позволяем застройщику вырвать дверной блок XIX века и заменить его штампованной стальной дверью из каталога, мы теряем не просто предмет. Мы стираем предложение из автобиографии города — а в отличие от книги, город не переиздать."
+              "content": "Что делает дверь достойной спасения? Не одна лишь древность древесины или изящество резьбы — хотя оба фактора важны. Это накопленный вес прохождений: тысячи приходов и уходов, влюблённые, задерживавшиеся в проёме, дети, нацарап��вшие свой рост на косяке, скорбящие, замиравшие перед тем, как шагнуть обратно на солнечный свет. Каждый порог — палимпсест человеческого опыта, наслоённый столь же плотно, как красочная стратиграфия на помбалинской филёнке. Когда мы позволяем застройщику вырвать дверно�� блок XIX века и заменить его штампованной стальной дверью из каталога, мы теряем не просто предмет. Мы стираем предложение из автобиографии города — а в отличие от книги, город не переиздать."
             },
             {
               "type": "text",
@@ -7202,7 +7204,7 @@
             },
             {
               "type": "text",
-              "content": "Kapı restorasyonu sadece marangozluk değildir. Bu, arkeolojik bir hassasiyet eylemidir; yaşayanlarla kayıplar arasındaki bir konuşmadır. Bir konservatör boya katmanlarını (pişmiş toprak üzerine gök mavisi üzerine kemik beyazı) soyunca stratigrafik analiz yapıyor ve bir binanın otobiyografisini her seferinde bir pigment olarak okuyor. Her renk on yıla karşılık geliyor, her çatlak tablosu hayatta kalan bir kışı temsil ediyor, değiştirilen her mente��e bir zamanlar bu eşiğe ev adını veren bir aileyi işaret ediyor. Stereomikroskop altında 40x büyütmede incelenen boya kesiti, yalnızca tonları değil bağlayıcıları da ortaya çıkarıyor: on sekizinci yüzyılın keten tohumu yağı zeminleri, Napolyon döneminin kurşun beyazı astarları, yirminci yüzyılın ortalarının alkid emayeleri, her katman herhangi bir arşivden daha kesin bir adli zaman damgası."
+              "content": "Kapı restorasyonu sadece marangozluk değildir. Bu, arkeolojik bir hassasiyet eylemidir; yaşayanlarla kayıplar arasındaki bir konuşmadır. Bir konservatör boya katmanlarını (pişmiş toprak üzerine gök mavisi üzerine kemik beyazı) soyunca stratigrafik analiz yapıyor ve bir binanın otobiyografisini her seferinde bir pigment olarak okuyor. Her renk on yıla karşılık geliyor, her çatlak tablosu hayatta kalan bir kışı temsil ediyor, değiştirilen her menteşe bir zamanlar bu eşiğe ev adını veren bir aileyi işaret ediyor. Stereomikroskop altında 40x büyütmede incelenen boya kesiti, yalnızca tonları değil bağlayıcıları da ortaya çıkarıyor: on sekizinci yüzyılın keten tohumu yağı zeminleri, Napolyon döneminin kurşun beyazı astarları, yirminci yüzyılın ortalarının alkid emayeleri, her katman herhangi bir arşivden daha kesin bir adli zaman damgası."
             },
             {
               "type": "note",
