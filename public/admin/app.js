@@ -10305,12 +10305,15 @@ async function flushModernEditor() {
       const items = Array.isArray(c) ? c : [];
       const selCount = items.reduce((n, _, gi) => n + (_galSelected.has(`${i}:${gi}`) ? 1 : 0), 0);
       inner = '<div class="wys-gal">';
+      const alts = Array.isArray(block.alts) ? block.alts : [];
       items.forEach((it, gi) => {
         const s = imgUrl(it, 400, 400);
         const key = `${i}:${gi}`;
+        const hasAlt = !!(alts[gi] && alts[gi].trim());
         inner += `<div class="wys-gal-item${_galSelected.has(key) ? ' is-picked' : ''}" draggable="true" data-gal-i="${i}" data-gal-gi="${gi}">${s ? `<img src="${esc(s)}" referrerpolicy="no-referrer" alt="">` : ''}
           <label class="wys-gal-pick" title="Выбрать"><input type="checkbox" data-wys-act="gal-select-toggle" data-i="${i}" data-gi="${gi}" ${_galSelected.has(key) ? 'checked' : ''}></label>
           <button class="wys-gal-x" data-wys-act="gal-del" data-i="${i}" data-gi="${gi}" title="Удалить">×</button>
+          <button class="wys-gal-alt${hasAlt ? ' has-alt' : ''}" data-wys-act="gal-alt" data-i="${i}" data-gi="${gi}" title="${hasAlt ? esc(alts[gi]) : 'Добавить описание фото (для SEO и незрячих пользователей)'}">ℹ</button>
           ${gi > 0 ? `<button class="wys-gal-move wys-gal-move-l" data-wys-act="gal-move" data-i="${i}" data-gi="${gi}" data-dir="-1" title="Переместить влево">‹</button>` : ''}
           ${gi < items.length - 1 ? `<button class="wys-gal-move wys-gal-move-r" data-wys-act="gal-move" data-i="${i}" data-gi="${gi}" data-dir="1" title="Переместить вправо">›</button>` : ''}
         </div>`;
@@ -10432,13 +10435,29 @@ async function flushModernEditor() {
       const gi = Number(act.getAttribute('data-gi'));
       const b = _model.content[i];
       if (b && Array.isArray(b.content)) {
-        const [removed] = b.content.splice(gi, 1);
+        const removedAlt = Array.isArray(b.alts) ? b.alts[gi] : undefined;
+        const [removed] = galSplice(b, gi, 1);
         render(); commit();
         showToastWithAction('info', 'Фото удалено из галереи', 'Отменить', () => {
           const bb = _model.content[i];
-          if (bb && Array.isArray(bb.content)) { bb.content.splice(gi, 0, removed); render(); commit(); }
+          if (bb && Array.isArray(bb.content)) {
+            galSplice(bb, gi, 0, removed);
+            if (removedAlt !== undefined) { bb.alts = bb.alts || []; bb.alts[gi] = removedAlt; }
+            render(); commit();
+          }
         });
       }
+      return;
+    }
+    if (a === 'gal-alt') {
+      const gi = Number(act.getAttribute('data-gi'));
+      const b = _model.content[i];
+      if (!b) return;
+      if (!Array.isArray(b.alts)) b.alts = [];
+      const v = prompt('Описание фото (alt-текст — для поисковиков и незрячих пользователей):', b.alts[gi] || '');
+      if (v === null) return; // cancelled
+      b.alts[gi] = v.trim();
+      render(); commit();
       return;
     }
     if (a === 'gal-select-toggle') {
@@ -10455,14 +10474,17 @@ async function flushModernEditor() {
           .filter((k) => k.startsWith(`${i}:`))
           .map((k) => Number(k.split(':')[1]))
           .sort((x, y) => y - x); // descending, so earlier splices don't shift later indices
-        const removed = gisToRemove.map((gi) => ({ gi, url: b.content[gi] }));
-        gisToRemove.forEach((gi) => b.content.splice(gi, 1));
+        const removed = gisToRemove.map((gi) => ({ gi, url: b.content[gi], alt: Array.isArray(b.alts) ? b.alts[gi] : undefined }));
+        gisToRemove.forEach((gi) => galSplice(b, gi, 1));
         Array.from(_galSelected).filter((k) => k.startsWith(`${i}:`)).forEach((k) => _galSelected.delete(k));
         render(); commit();
         showToastWithAction('info', `Удалено фото: ${removed.length}`, 'Отменить', () => {
           const bb = _model.content[i];
           if (bb && Array.isArray(bb.content)) {
-            removed.slice().reverse().forEach(({ gi, url }) => bb.content.splice(gi, 0, url)); // ascending re-insert
+            removed.slice().reverse().forEach(({ gi, url, alt }) => { // ascending re-insert
+              galSplice(bb, gi, 0, url);
+              if (alt !== undefined) { bb.alts = bb.alts || []; bb.alts[gi] = alt; }
+            });
             render(); commit();
           }
         });
@@ -10476,7 +10498,7 @@ async function flushModernEditor() {
       if (b && Array.isArray(b.content)) {
         const target = gi + dir;
         if (target >= 0 && target < b.content.length) {
-          const t = b.content[gi]; b.content[gi] = b.content[target]; b.content[target] = t;
+          galSwap(b, gi, target);
           render(); commit();
         }
       }
@@ -10489,6 +10511,25 @@ async function flushModernEditor() {
   });
 
   function swap(a, b) { const arr = _model.content; const t = arr[a]; arr[a] = arr[b]; arr[b] = t; }
+
+  // Gallery photos and their optional per-photo alt text (block.alts) are two
+  // parallel arrays that must stay index-aligned — any splice/swap on one
+  // has to happen identically on the other, or alt text silently attaches
+  // to the wrong photo after a delete/reorder.
+  function galSplice(b, start, deleteCount, ...items) {
+    const removedContent = b.content.splice(start, deleteCount, ...items);
+    if (Array.isArray(b.alts)) b.alts.splice(start, deleteCount, ...items.map(() => undefined));
+    return removedContent;
+  }
+  function galSwap(b, a, c) {
+    const arr = b.content; const t = arr[a]; arr[a] = arr[c]; arr[c] = t;
+    if (Array.isArray(b.alts)) { const at = b.alts[a]; b.alts[a] = b.alts[c]; b.alts[c] = at; }
+  }
+  function galMove(b, from, to) {
+    const [movedUrl] = b.content.splice(from, 1);
+    b.content.splice(to, 0, movedUrl);
+    if (Array.isArray(b.alts)) { const [movedAlt] = b.alts.splice(from, 1); b.alts.splice(to, 0, movedAlt); }
+  }
   function focusBlock(i) { setTimeout(() => { const el = canvas.querySelector(`.wys-block[data-i="${i}"] [contenteditable], .wys-block[data-i="${i}"] input`); if (el) el.focus(); }, 40); }
 
   // ── drag-and-drop block reorder ───────────────────────────────────────────
@@ -10600,8 +10641,7 @@ async function flushModernEditor() {
     const targetGi = Number(tile.getAttribute('data-gal-gi'));
     const b = _model?.content?.[_galDragFrom.i];
     if (b && Array.isArray(b.content) && targetGi !== _galDragFrom.gi) {
-      const [moved] = b.content.splice(_galDragFrom.gi, 1);
-      b.content.splice(targetGi, 0, moved);
+      galMove(b, _galDragFrom.gi, targetGi);
       render(); commit();
     }
     _galDragFrom = null;
@@ -10662,8 +10702,7 @@ async function flushModernEditor() {
         const targetGi = Number(under.getAttribute('data-gal-gi'));
         const b = _model?.content?.[i];
         if (b && Array.isArray(b.content) && targetGi !== gi) {
-          const [moved] = b.content.splice(gi, 1);
-          b.content.splice(targetGi, 0, moved);
+          galMove(b, gi, targetGi);
           render(); commit();
         }
       }
