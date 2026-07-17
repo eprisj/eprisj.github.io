@@ -2656,6 +2656,14 @@
           "content": "<span>French designer Lola Mayeras grew up in the South of France with a ceramist father, so her artistic heritage and exploration of colors and shapes began to form in early childhood. She worked as a fashion designer before launching her own design studio in 2020. During the lockdown, she rediscovered her father’s workshop in her hometown and followed an inner desire to create in a medium familiar to her since youth.</span>"
         },
         {
+          "type": "text",
+          "content": "<span>Her background in fashion preserved her love for draping, but now her target objects are furniture and sculptures. Her most frequent signature element is the button-down shirt -standing still in the form of a vase, modestly stacked in a sculpture, or effortlessly draped over the corner of a wooden table. The latter is my personal favorite among all her amazing pieces: a restrained, natural ceramic mass with a wrinkled, azure-blue shirt seemingly falling onto the floor.</span>"
+        },
+        {
+          "type": "text",
+          "content": ""
+        },
+        {
           "type": "image",
           "content": "new-editorial-story-2",
           "caption": "Lead image",
@@ -4103,7 +4111,7 @@
             },
             {
               "type": "note",
-              "content": "Одні історичні двері можуть містити до дванадцяти окремих шарів фарби. У Санкт-Петербурзі консерватори колективу «Двері з помічкою» задокументували дореволюційні пігменти — берлідську лазурь, хромово-жовтий, справжній кіновар — закопані під радянською емаллю ПФ-115. Деякі з цих пігментів не поглинали фотон видимого світла більше століття, перш ніж скальпель їх оголив."
+              "content": "Одні історичні двері можуть містити до дванадцяти окремих шарів фарби. У Санкт-Петербурзі консерватори колективу «Двері з помічкою» задокументували дореволюційні пігменти — берлідську лазурь, хромово-жовтий, справжній кіновар — закопані під радянською емаллю ПФ-115. Деякі з цих пігмен��ів не поглинали фотон видимого світла більше століття, перш ніж скальпель їх оголив."
             },
             {
               "type": "text",
@@ -4537,7 +4545,7 @@
             {
               "type": "image",
               "content": "/images/secession/hero.jpg",
-              "caption": "Сови й лавр Коломана Мозера на фасаді Сецесіону – птахи Афіни, що бережуть храм нового мистецтва.",
+              "caption": "Сови й лавр Коломана Мозера на фасаді Сецесіону – птахи Афіни, що бере��уть храм нового мистецтва.",
               "align": "full"
             },
             {
