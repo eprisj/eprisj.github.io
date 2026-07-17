@@ -9960,7 +9960,7 @@ async function flushModernEditor() {
         const badgeTitle = usage.count
           ? usage.refs.map((r) => `${r.section}#${r.id} (${r.lang})`).join(', ')
           : 'Не используется в статьях, обзорах или галерее (Выпуски и Студия не проверяются)';
-        return `<div class="wys-media-cell"><button type="button" class="wys-media-item" data-url="${esc(it.url)}" title="${esc(it.name)}"><img src="${esc(it.url)}" loading="lazy" referrerpolicy="no-referrer" alt=""><span class="wys-media-usage${usage.count ? '' : ' zero'}" title="${esc(badgeTitle)}">${badgeText}</span></button><button type="button" class="wys-media-del" data-name="${esc(it.name)}" data-url="${esc(it.url)}" title="Удалить с сервера">×</button></div>`;
+        return `<div class="wys-media-cell"><button type="button" class="wys-media-item" data-url="${esc(it.url)}" title="${esc(it.name)}"><img src="${esc(it.thumbUrl || it.url)}" loading="lazy" referrerpolicy="no-referrer" alt=""><span class="wys-media-usage${usage.count ? '' : ' zero'}" title="${esc(badgeTitle)}">${badgeText}</span></button><button type="button" class="wys-media-del" data-name="${esc(it.name)}" data-url="${esc(it.url)}" title="Удалить с сервера">×</button></div>`;
       }).join('');
       grid.querySelectorAll('.wys-media-item').forEach((btn) => { btn.onclick = () => { const u = btn.getAttribute('data-url'); closePopovers(); onPick(u); }; });
       grid.querySelectorAll('.wys-media-del').forEach((btn) => {
