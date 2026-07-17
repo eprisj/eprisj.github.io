@@ -2730,7 +2730,11 @@
         },
         {
           "type": "text",
-          "content": "<span>Swedish designer Fanny Ollas has a background in textile and fashion, that reflects in her elegantly ornamented vases. Each vessel looks like a fairy character, who live by your side rent-free and has all the rights to do so. The gentle tones and integration of faux fur, lacing, strass and pearls shape the magical tinkling appearance to every piece, yet they carry a certain state of melancholy. Her work revolves around thoughts about vulnerability, body, demands, fears, relationships and what is hidden behind our facades.</span>"
+          "content": "<span>Swedish designer Fanny Ollas has a background in textile and fashion, that reflects in her elegantly ornamented vases. Each vessel looks like a fairy character, who live by your side rent-free and has all the rights to do so. </span>"
+        },
+        {
+          "type": "text",
+          "content": "<span>The gentle tones and integration of faux fur, lacing, strass and pearls shape the magical tinkling appearance to every piece, yet they carry a certain state of melancholy. Her work revolves around thoughts about vulnerability, body, demands, fears, relationships and what is hidden behind our facades.</span>"
         },
         {
           "type": "image",
@@ -3312,7 +3316,7 @@
             },
             {
               "type": "text",
-              "content": "Есть японская концепция — кинцуги — ремонт разбитой керамики лаком с подмешанным золотым порошком, где трещина трактуется не как дефект, подлежащий сокрытию, а как глава в биографии предмета. Лучшая консервация дверей действует по параллельной философии. Вставка-«заплатка» не маскируется — она подбирается по волокнам, но остаётся читаемой, откровенным признанием тог��, что ремонт состоялся. Чернённая танниновой кислотой петля не притворяется неизношенной — она носит свою патину как свидетельство девяти столетий открываний и закрываний. Консервационный отчёт, архивированный рядом с дверью, гарантирует, что следующий хранитель — через пятьдесят лет, через сто — будет точно знать, что было сделано, и почему, и кем. Это противоположность тщеславного ремонта. Это смирение, закодированное в дереве и железе."
+              "content": "Есть японская концепция — кинцуги — ремонт разбитой керамики лаком с подмешанным золотым порошком, где трещина трактуется не как дефект, подлежащий сокрытию, а как глава в биографии предмета. Лучшая консервация дверей действует по параллельной философии. Вставка-«заплатка» не маскируется — она подбирается по волокнам, но ��стаётся читаемой, откровенным признанием того, что ремонт состоялся. Чернённая танниновой кислотой петля не притворяется неизношенной — она носит свою патину как свидетельство девяти столетий открываний и закрываний. Консервационный отчёт, архивированный рядом с дверью, гарантирует, что следующий хранитель — через пятьдесят лет, через сто — будет точно знать, что было сделано, и почему, и кем. Это противоположность тщеславного ремонта. Это смирение, закодированное в дереве и железе."
             },
             {
               "type": "poll",
@@ -6271,7 +6275,7 @@
             },
             {
               "type": "text",
-              "content": "El proyecto 'Nueva Tbilisi' del Fondo de Desarrollo de Tbilisi ha restaurado sistemáticamente entradas históricas en la calle Atoneli desde 2020, a un coste documentado de 414.886 lari georgianos por par de entradas. El alcance del trabajo se lee como un protocolo quirúrgico: restauración de pisos de mármol y peldaños de escaleras, conservación de puertas y ventanas de madera (incluido el nuevo vidriado con vidrio de corona apropiado para la época), fundición e instalación de detalles faltantes de balaustradas de hierro fundido a partir de moldes de silicona tomados de originales supervivientes y, lo más notable, el descubrimiento de pinturas murales olvidadas selladas detrás de yeso durante décadas. En el número 31 de la calle Atoneli, los trabajadores que retiraban una capa de cemento de la era soviética descubrieron un mural policromado que representaba escenas pastorales, con su aglutinante de caseína original todavía viable y los pigmentos (ocres tierra, ultramar y negro hueso) tan saturados como el día en que se aplicaron."
+              "content": "El proyecto 'Nueva Tbilisi' del Fondo de Desarrollo de Tbilisi ha restaurado sistemáticamente entradas históricas en la calle Atoneli desde 2020, a un coste documentado de 414.886 lari georgianos por par de entradas. El alcance del trabajo se lee como un protocolo quirúrgico: restauraci��n de pisos de mármol y peldaños de escaleras, conservación de puertas y ventanas de madera (incluido el nuevo vidriado con vidrio de corona apropiado para la época), fundición e instalación de detalles faltantes de balaustradas de hierro fundido a partir de moldes de silicona tomados de originales supervivientes y, lo más notable, el descubrimiento de pinturas murales olvidadas selladas detrás de yeso durante décadas. En el número 31 de la calle Atoneli, los trabajadores que retiraban una capa de cemento de la era soviética descubrieron un mural policromado que representaba escenas pastorales, con su aglutinante de caseína original todavía viable y los pigmentos (ocres tierra, ultramar y negro hueso) tan saturados como el día en que se aplicaron."
             },
             {
               "type": "image",
