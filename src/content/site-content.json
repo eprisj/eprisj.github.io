@@ -2799,7 +2799,9 @@
           "type": "gallery",
           "content": [
             "https://api.eprisjournal.com/uploads/mrpcsa7el8zveu.jpg",
-            "https://api.eprisjournal.com/uploads/mrpcsht8an9mj0.jpg"
+            "https://api.eprisjournal.com/uploads/mrpcsht8an9mj0.jpg",
+            "https://api.eprisjournal.com/uploads/mrpcsmmdz5dcno.jpg",
+            "https://api.eprisjournal.com/uploads/mrpcsrj1ny78bl.jpg"
           ],
           "caption": ""
         },
@@ -4162,7 +4164,7 @@
             },
             {
               "type": "text",
-              "content": "Кожна квартира ексклюзивна, що дає вам можливість вибрати те, що ви хочете відчути.<br><br>"
+              "content": "Кожн�� квартира ексклюзивна, що дає вам можливість вибрати те, що ви хочете відчути.<br><br>"
             },
             {
               "type": "text",
