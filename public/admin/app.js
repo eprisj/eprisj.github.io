@@ -58,8 +58,16 @@ const deleteEntryBtn = byId('deleteEntryBtn');
 const copyFromEnBtn = byId('copyFromEnBtn');
 const translateEntryBtn = byId('translateEntryBtn');
 const translateAllArticlesBtn = byId('translateAllArticlesBtn');
+const downloadOriginalsBtn = byId('downloadOriginalsBtn');
+const downloadAllOriginalsBtn = byId('downloadAllOriginalsBtn');
+const downloadOriginalsText = byId('downloadOriginalsText');
+const downloadAllOriginalsText = byId('downloadAllOriginalsText');
+const mediaExportMeta = byId('mediaExportMeta');
+const mediaExportProgress = byId('mediaExportProgress');
+const languageSyncScope = byId('languageSyncScope');
 const applyEntryBtn = byId('applyEntryBtn');
 const saveEntryBtn = byId('saveEntryBtn');
+const saveEntryBtnText = byId('saveEntryBtnText');
 const creatorQualityEl = byId('creatorQuality');
 const creatorTitleInput = byId('creatorTitle');
 const creatorCategoryInput = byId('creatorCategory');
@@ -120,6 +128,8 @@ const interactiveButtons = [
   copyFromEnBtn,
   translateEntryBtn,
   translateAllArticlesBtn,
+  downloadOriginalsBtn,
+  downloadAllOriginalsBtn,
   applyEntryBtn,
   saveEntryBtn,
   storyBlueprintBtn,
@@ -413,6 +423,8 @@ function bindEvents() {
   copyFromEnBtn.addEventListener('click', copyFromEnglishEntry);
   translateEntryBtn.addEventListener('click', translateSelectedEntryToAvailableLanguages);
   translateAllArticlesBtn.addEventListener('click', translateCurrentSectionToAvailableLanguages);
+  downloadOriginalsBtn.addEventListener('click', () => downloadArticleOriginals(false));
+  downloadAllOriginalsBtn.addEventListener('click', () => downloadArticleOriginals(true));
   applyEntryBtn.addEventListener('click', applyVisualChanges);
   saveEntryBtn.addEventListener('click', saveCurrentEntryOnly);
   storyBlueprintBtn.addEventListener('click', () => createArticleFromBlueprint('story'));
@@ -611,9 +623,9 @@ function updateEditorState() {
   editorStateEl.className = 'editor-state';
   if (isEditorDirty()) {
     editorStateEl.classList.add('dirty');
-    editorStateEl.textContent = 'Есть локальные изменения, которые еще не сохранены в GitHub.';
+    editorStateEl.textContent = 'Есть локальные изменения. Нажмите «Сохранить запись» или общий «Сохранить», чтобы отправить их на VPS.';
   } else {
-    editorStateEl.textContent = 'Нет локальных изменений.';
+    editorStateEl.textContent = 'Все изменения синхронизированы.';
   }
   updateLastSyncedBadge();
 }
@@ -1083,7 +1095,7 @@ function applyUrlToCurrentEntry(url, label) {
   }
 
   applyVisualChanges();
-  setStatus('success', `${label} подставлен и применен в текущей записи. Теперь нажмите "Сохранить в GitHub".`);
+  setStatus('success', `${label} подставлен и применен в текущей записи. Теперь нажмите «Сохранить запись» или общий «Сохранить».`);
 }
 
 async function copyUploadedUrl() {
@@ -1318,6 +1330,9 @@ function setBusy(value) {
     button.disabled = value;
   }
   loadingBarEl.classList.toggle('active', value);
+  if (!value && typeof updateAdminToolbarContext === 'function') {
+    updateAdminToolbarContext();
+  }
 }
 
 // Loads the live content from the VPS (source of truth). Name kept for the
@@ -1949,6 +1964,193 @@ function downloadJson() {
   }
 }
 
+function isOriginalImageUrl(value) {
+  return typeof value === 'string'
+    && /(^https?:\/\/|^\/|^\.\/|^\.\.\/).+\.(png|jpe?g|webp|gif|avif)(\?|#|$)/i.test(value);
+}
+
+function collectOriginalImageUrls(value, urls) {
+  if (isOriginalImageUrl(value)) {
+    urls.add(value);
+    return;
+  }
+  if (Array.isArray(value)) {
+    value.forEach((item) => collectOriginalImageUrls(item, urls));
+    return;
+  }
+  if (value && typeof value === 'object') {
+    Object.values(value).forEach((item) => collectOriginalImageUrls(item, urls));
+  }
+}
+
+function countArticleOriginals(article) {
+  if (!article || typeof article !== 'object') return 0;
+  const urls = new Set();
+  if (isOriginalImageUrl(article.imageUrl)) urls.add(article.imageUrl);
+  collectOriginalImageUrls(article.content || [], urls);
+  return urls.size;
+}
+
+function pluralImages(count) {
+  const mod10 = count % 10;
+  const mod100 = count % 100;
+  if (mod10 === 1 && mod100 !== 11) return 'изображение';
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return 'изображения';
+  return 'изображений';
+}
+
+function updateAdminToolbarContext() {
+  const data = getVisualData();
+  if (!data) return;
+
+  const section = visualSectionSelect.value;
+  const sourceLang = visualLangSelect.value || DEFAULT_LANGUAGE;
+  const targetLangs = getTranslationLanguages(data).filter((lang) => lang !== sourceLang);
+  if (languageSyncScope) {
+    languageSyncScope.textContent = section === 'articles'
+      ? `${sourceLang} → ${targetLangs.length} языков`
+      : 'Авто при сохранении';
+    languageSyncScope.title = section === 'articles'
+      ? `При сохранении ${sourceLang} обновятся: ${targetLangs.join(', ')}`
+      : 'Недостающие языковые версии будут созданы автоматически.';
+  }
+
+  if (saveEntryBtnText) {
+    saveEntryBtnText.textContent = section === 'articles'
+      ? `Сохранить + ${targetLangs.length} языков`
+      : 'Сохранить запись';
+    saveEntryBtn.title = section === 'articles'
+      ? `Сохранить источник ${sourceLang}, обновить ${targetLangs.join(', ')} и сразу опубликовать на VPS`
+      : 'Сохранить эту запись на VPS';
+  }
+
+  const articles = Array.isArray(data.articles) ? data.articles : [];
+  const selectedId = Number(visualEntrySelect.value);
+  const selectedArticle = articles.find((article) => Number(article.id) === selectedId);
+  const selectedCount = countArticleOriginals(selectedArticle);
+  const totalCount = articles.reduce((sum, article) => sum + countArticleOriginals(article), 0);
+  const canDownloadSelected = section === 'articles' && Boolean(selectedArticle) && selectedCount > 0;
+
+  if (downloadOriginalsText) {
+    downloadOriginalsText.textContent = canDownloadSelected
+      ? `ZIP статьи · ${selectedCount}`
+      : 'Выберите статью';
+  }
+  if (downloadAllOriginalsText) {
+    downloadAllOriginalsText.textContent = `Все статьи · ${totalCount}`;
+  }
+  downloadOriginalsBtn.disabled = !canDownloadSelected;
+  downloadAllOriginalsBtn.disabled = totalCount === 0;
+  if (mediaExportMeta && mediaExportProgress?.hidden !== false) {
+    mediaExportMeta.textContent = canDownloadSelected
+      ? `#${selectedId}: ${selectedCount} ${pluralImages(selectedCount)} в исходном качестве`
+      : `В архиве: ${articles.length} статей, ${totalCount} ${pluralImages(totalCount)}`;
+  }
+}
+
+function setMediaExportProgress({ active, percent = null, label = '' }) {
+  if (!mediaExportProgress || !mediaExportMeta) return;
+  mediaExportProgress.hidden = !active;
+  mediaExportProgress.classList.toggle('indeterminate', active && percent === null);
+  mediaExportProgress.setAttribute('aria-hidden', active ? 'false' : 'true');
+  const bar = mediaExportProgress.querySelector('span');
+  if (bar) bar.style.width = percent === null ? '32%' : `${Math.max(0, Math.min(100, percent))}%`;
+  if (label) mediaExportMeta.textContent = label;
+}
+
+async function responseBlobWithProgress(response) {
+  const total = Number(response.headers.get('Content-Length')) || 0;
+  if (!response.body || !total) return response.blob();
+
+  const reader = response.body.getReader();
+  const chunks = [];
+  let received = 0;
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    chunks.push(value);
+    received += value.byteLength;
+    const percent = Math.round((received / total) * 100);
+    setMediaExportProgress({ active: true, percent, label: `Скачивание ZIP: ${percent}%` });
+  }
+  return new Blob(chunks, { type: response.headers.get('Content-Type') || 'application/zip' });
+}
+
+function filenameFromDisposition(header, fallback) {
+  const raw = String(header || '');
+  const utf = raw.match(/filename\*=UTF-8''([^;]+)/i);
+  if (utf && utf[1]) {
+    try { return decodeURIComponent(utf[1]); } catch {}
+  }
+  const plain = raw.match(/filename="([^"]+)"/i) || raw.match(/filename=([^;]+)/i);
+  return plain && plain[1] ? plain[1].trim() : fallback;
+}
+
+async function downloadArticleOriginals(allArticles = false) {
+  try {
+    if (!allArticles && visualSectionSelect.value !== 'articles') {
+      throw new Error('Оригиналы ZIP доступны для раздела «Статьи». Выберите статью в визуальном редакторе.');
+    }
+    const pw = getAdminPassword();
+    if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
+
+    const selectedId = Number(visualEntrySelect.value);
+    if (!allArticles && !selectedId) {
+      throw new Error('Выберите статью для выгрузки оригиналов.');
+    }
+
+    setBusy(true);
+    setStatus('info', allArticles
+      ? 'Собираю ZIP со всеми оригинальными изображениями статей...'
+      : `Собираю ZIP с оригиналами статьи #${selectedId}...`);
+    setMediaExportProgress({
+      active: true,
+      percent: null,
+      label: allArticles ? 'Сервер собирает общий ZIP…' : `Сервер собирает ZIP статьи #${selectedId}…`
+    });
+
+    const res = await fetch('https://api.eprisjournal.com/content/article-images', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
+      body: JSON.stringify(allArticles ? { all: true } : { id: selectedId })
+    });
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error || `VPS вернул статус ${res.status}`);
+    }
+
+    const blob = await responseBlobWithProgress(res);
+    const count = res.headers.get('X-EPRIS-Image-Count');
+    const fileName = filenameFromDisposition(
+      res.headers.get('Content-Disposition'),
+      allArticles ? 'epris-all-article-originals.zip' : `epris-article-${selectedId}-originals.zip`
+    );
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 30000);
+
+    setStatus('success', count
+      ? `ZIP с оригиналами готов: ${count} ${pluralImages(Number(count))}.`
+      : 'ZIP с оригиналами готов.');
+    setMediaExportProgress({ active: true, percent: 100, label: `Готово: ${count || ''} ${count ? pluralImages(Number(count)) : 'файлов'} скачано` });
+    showToast('success', 'Оригиналы изображений скачаны в ZIP.');
+  } catch (error) {
+    setStatus('error', getErrorMessage(error));
+  } finally {
+    setBusy(false);
+    window.setTimeout(() => {
+      setMediaExportProgress({ active: false });
+      updateAdminToolbarContext();
+    }, 1400);
+  }
+}
+
 // Publishes the editor content to the VPS. The public site reads it live, so
 // changes appear immediately — no GitHub commit, no Actions rebuild.
 async function saveToGitHub() {
@@ -1994,7 +2196,9 @@ async function saveToGitHub() {
   }
 }
 
-function setStatus(type, message) {
+let statusCompactTimer = 0;
+function setStatus(type, message, options = {}) {
+  window.clearTimeout(statusCompactTimer);
   statusEl.className = 'status';
 
   if (type === 'error') {
@@ -2010,6 +2214,16 @@ function setStatus(type, message) {
   }
 
   statusEl.textContent = message;
+  statusEl.title = message;
+  statusEl.setAttribute('role', 'status');
+  statusEl.setAttribute('aria-live', type === 'error' ? 'assertive' : 'polite');
+
+  if (type === 'success' && options.sticky !== true) {
+    statusCompactTimer = window.setTimeout(() => {
+      statusEl.textContent = 'Синхронизировано';
+      statusEl.title = message;
+    }, 7000);
+  }
 
   if ((type === 'error' || type === 'success') && !suppressLoginToasts) {
     showToast(type, message);
@@ -2082,8 +2296,8 @@ function showShortcutsPanel() {
   const existing = document.querySelector('.shortcuts-panel');
   if (existing) { existing.classList.add('removing'); setTimeout(() => existing.remove(), 200); return; }
   const shortcuts = [
-    { keys: ['Ctrl', 'S'], desc: '\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0432 GitHub' },
-    { keys: ['Ctrl', 'Shift', 'L'], desc: '\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0438\u0437 GitHub' },
+    { keys: ['Ctrl', 'S'], desc: 'Сохранить на VPS' },
+    { keys: ['Ctrl', 'Shift', 'L'], desc: 'Загрузить свежий контент' },
     { keys: ['Ctrl', 'Shift', 'F'], desc: '\u0424\u043e\u0440\u043c\u0430\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c JSON' },
     { keys: ['?'], desc: '\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u044c/\u0441\u043a\u0440\u044b\u0442\u044c \u044d\u0442\u0443 \u043f\u0430\u043d\u0435\u043b\u044c' }
   ];
@@ -3114,6 +3328,7 @@ function refreshVisualEditor() {
     visualEntrySelect.value = String(visibleDropdown[0].id);
   }
 
+  updateAdminToolbarContext();
   renderVisualForm();
   // Setting .value programmatically fires no 'change' event, so the WYSIWYG
   // and Review live-canvases (which reload only on that event) would keep
@@ -3134,6 +3349,13 @@ function setVisualNotice(message, type) {
     visualNoticeEl.classList.add('error');
   }
   visualNoticeEl.textContent = message;
+}
+
+function setVisualNoticeHtml(html, type) {
+  visualNoticeEl.className = 'visual-notice';
+  if (type === 'error') visualNoticeEl.classList.add('error');
+  if (type === 'success') visualNoticeEl.classList.add('success');
+  visualNoticeEl.innerHTML = html;
 }
 
 function getOptionalString(value) {
@@ -3331,6 +3553,7 @@ function renderVisualForm() {
 
   const section = visualSectionSelect.value;
   const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
+  updateAdminToolbarContext();
   // The modern Editor.js editor only applies to articles; tear it down otherwise.
   if (section !== 'articles') unmountModernEditor();
   const entries = getSectionArray(data, section, lang, false);
@@ -3466,6 +3689,17 @@ function renderVisualForm() {
     <div class="editor-canvas-layout">
       <!-- MAIN CANVAS -->
       <div class="editor-main-canvas">
+        <div class="style-helper-card">
+          <div class="style-helper-head">
+            <strong>Как менять стиль текста</strong>
+            <span>Работает сразу в блоке, без обходных приемов</span>
+          </div>
+          <div class="style-helper-grid">
+            <span><b>Обычный текст</b> – блок Paragraph. Вставка очищается автоматически: чужой шрифт, размер и цвет из Word/Instagram не должны переноситься в статью.</span>
+            <span><b>Заголовок</b> – добавьте блок Heading, а не увеличивайте Paragraph вручную. Так сайт сохранит правильный шрифт, размер и SEO-структуру.</span>
+            <span><b>Переводы</b> – текущий язык становится источником. «Сохранить + языки» одновременно переводит текст, сохраняет абзацы, ссылки, фото и порядок блоков во всех версиях.</span>
+          </div>
+        </div>
         <input id="vf-title" class="canvas-title" placeholder="Заголовок статьи..." value="${escapeHtml(entry.title || '')}" />
         <textarea id="vf-excerpt" class="canvas-excerpt" placeholder="Введите краткое описание (лид) статьи...">${escapeHtml(entry.excerpt || '')}</textarea>
         <div class="block-editor" id="vf-block-editor"></div>
@@ -3669,11 +3903,26 @@ async function applyVisualChanges() {
     const next = buildEntryFromVisualForm(section, current);
 
     entries[entryIndex] = next;
-    const syncedLangs = await syncMissingEntryLanguages(data, section, lang, next);
+    const syncedLangs = section === 'articles'
+      ? await translateEntryToAllLanguages(data, section, lang, next, {
+          statusPrefix: `Обновляю переводы #${selectedId}`
+        })
+      : await syncMissingEntryLanguages(data, section, lang, next);
     pendingVisualEntryId = selectedId;
     setEditorData(data);
-    const syncNote = syncedLangs.length ? ` Недостающие языки созданы: ${syncedLangs.join(', ')}.` : '';
-    setStatus('success', `Запись #${selectedId} обновлена (${getSectionLabel(section)} / ${lang}).${syncNote}`);
+    const syncNote = section === 'articles'
+      ? formatLanguageSyncNote(syncedLangs, 'Языки обновлены')
+      : formatLanguageSyncNote(syncedLangs, 'Недостающие языки созданы');
+    const statusType = getLanguageSyncFailures(syncedLangs).length ? 'info' : 'success';
+    setStatus(statusType, `Запись #${selectedId} обновлена (${getSectionLabel(section)} / ${lang}).${syncNote}`);
+    showLanguageSyncReport({
+      selectedId,
+      section,
+      sourceLang: lang,
+      savedToServer: false,
+      syncResult: syncedLangs,
+      actionLabel: 'Запись обновлена'
+    });
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
@@ -3704,6 +3953,79 @@ async function saveEntityToServer(section, lang, entity) {
   return data;
 }
 
+function getLanguageSyncFailures(syncResult) {
+  return Array.isArray(syncResult?.failures) ? syncResult.failures : [];
+}
+
+function formatLanguageSyncNote(syncResult, successLabel, failLabel = 'Не обновились') {
+  const updated = Array.isArray(syncResult) ? syncResult : [];
+  const failures = getLanguageSyncFailures(syncResult);
+  const notes = [];
+
+  if (updated.length) {
+    notes.push(`${successLabel}: ${updated.join(', ')}.`);
+  }
+
+  if (failures.length) {
+    notes.push(`${failLabel}: ${failures.map((item) => `${item.lang} (${item.message})`).join('; ')}.`);
+  }
+
+  return notes.length ? ` ${notes.join(' ')}` : '';
+}
+
+function renderSyncReportMarkup({ title, sourceLang, savedToServer, updated = [], failures = [], nextStep, syncMeta = {} }) {
+  const successChips = updated.length
+    ? updated.map((lang) => `<span class="sync-report-chip ok">${escapeHtml(String(lang).toUpperCase())}</span>`).join('')
+    : '<span class="sync-report-chip muted">нет новых переводов</span>';
+  const failureChips = failures.length
+    ? failures.map((item) => {
+        const label = String(item?.lang || '').toUpperCase();
+        const message = item?.message ? ` — ${item.message}` : '';
+        return `<span class="sync-report-chip fail">${escapeHtml(`${label}${message}`)}</span>`;
+      }).join('')
+    : '';
+
+  return `
+    <div class="sync-report" role="status">
+      <div class="sync-report-head">
+        <strong>${escapeHtml(title)}</strong>
+        <span>${savedToServer ? 'VPS обновлен' : 'локальный черновик'}</span>
+      </div>
+      <div class="sync-report-meta">
+        <span class="sync-report-chip source">Источник: ${escapeHtml(String(sourceLang || DEFAULT_LANGUAGE).toUpperCase())}</span>
+        ${successChips}
+      </div>
+      ${failureChips ? `<div class="sync-report-errors">${failureChips}</div>` : ''}
+      ${syncMeta.targetCount ? `
+        <div class="sync-report-explainer">
+          <strong>${escapeHtml(String(updated.length))}/${escapeHtml(String(syncMeta.targetCount))} языков обновлено</strong>
+          <span>Структура ${escapeHtml(String(syncMeta.blockCount || 0))} блоков, переносы, ссылки и ${escapeHtml(String(syncMeta.imageCount || 0))} изображений сохранены одинаково.</span>
+        </div>
+      ` : ''}
+      <p>${escapeHtml(nextStep || '')}</p>
+    </div>
+  `;
+}
+
+function showLanguageSyncReport({ selectedId, section, sourceLang, savedToServer, syncResult, actionLabel }) {
+  const updated = Array.isArray(syncResult) ? syncResult : [];
+  const failures = getLanguageSyncFailures(syncResult);
+  const nextStep = failures.length
+    ? 'Часть языков не обновилась. Откройте язык из списка, проверьте текст и повторите «Синхронизировать».'
+    : (savedToServer
+        ? 'Готово: исходная запись и все переводы сохранены на VPS. Копировать блоки вручную больше не нужно.'
+        : 'Готово локально: проверьте текст и нажмите «Сохранить запись», чтобы отправить изменения на VPS.');
+  setVisualNoticeHtml(renderSyncReportMarkup({
+    title: `${actionLabel} #${selectedId} · ${getSectionLabel(section)}`,
+    sourceLang,
+    savedToServer,
+    updated,
+    failures,
+    nextStep,
+    syncMeta: syncResult?.syncMeta || {}
+  }), failures.length ? 'error' : 'success');
+}
+
 async function saveCurrentEntryOnly() {
   try {
     setBusy(true);
@@ -3728,9 +4050,30 @@ async function saveCurrentEntryOnly() {
     // Reflect the save locally too, so the rest of the admin (dropdown badges,
     // quality audit, draft) stays in sync without a full reload.
     entries[entryIndex] = next;
+    let syncedLangs = [];
+    if (section === 'articles') {
+      syncedLangs = await translateEntryToAllLanguages(data, section, lang, next, {
+        saveToServer: true,
+        statusPrefix: `Сохраняю переводы #${selectedId}`
+      });
+    } else {
+      syncedLangs = await syncMissingEntryLanguages(data, section, lang, next);
+    }
     pendingVisualEntryId = selectedId;
     setEditorData(data, { markSynced: true });
-    setStatus('success', `Запись #${selectedId} сохранена на VPS (${getSectionLabel(section)} / ${lang}).`);
+    const syncNote = section === 'articles'
+      ? formatLanguageSyncNote(syncedLangs, 'Языки обновлены на VPS')
+      : formatLanguageSyncNote(syncedLangs, 'Недостающие языки созданы');
+    const statusType = getLanguageSyncFailures(syncedLangs).length ? 'info' : 'success';
+    setStatus(statusType, `Запись #${selectedId} сохранена на VPS (${getSectionLabel(section)} / ${lang}).${syncNote}`);
+    showLanguageSyncReport({
+      selectedId,
+      section,
+      sourceLang: lang,
+      savedToServer: true,
+      syncResult: syncedLangs,
+      actionLabel: 'Запись сохранена'
+    });
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
@@ -3961,6 +4304,59 @@ async function translateText(value, targetLang, sourceLang = DEFAULT_LANGUAGE) {
   return translated;
 }
 
+const TRANSLATABLE_INLINE_TAGS = new Set([
+  'A', 'B', 'BR', 'CODE', 'DEL', 'EM', 'I', 'MARK', 'P', 'S', 'SMALL',
+  'SPAN', 'STRONG', 'SUB', 'SUP', 'U', 'UL', 'OL', 'LI'
+]);
+
+function sanitizeTranslatableMarkup(value) {
+  const template = document.createElement('template');
+  template.innerHTML = String(value || '');
+  template.content.querySelectorAll('script, style, iframe, object, embed').forEach((node) => node.remove());
+
+  const elements = Array.from(template.content.querySelectorAll('*'));
+  for (const element of elements) {
+    if (!TRANSLATABLE_INLINE_TAGS.has(element.tagName)) {
+      element.replaceWith(...element.childNodes);
+      continue;
+    }
+
+    const safeHref = element.tagName === 'A' ? element.getAttribute('href') : '';
+    const safeTitle = element.tagName === 'A' ? element.getAttribute('title') : '';
+    Array.from(element.attributes).forEach((attribute) => element.removeAttribute(attribute.name));
+    if (element.tagName === 'A' && safeHref && /^(https?:|mailto:|tel:|\/|#)/i.test(safeHref)) {
+      element.setAttribute('href', safeHref);
+      element.setAttribute('rel', 'noopener noreferrer');
+      if (safeTitle) element.setAttribute('title', safeTitle);
+    }
+  }
+
+  return template;
+}
+
+async function translateRichText(value, targetLang, sourceLang = DEFAULT_LANGUAGE) {
+  const source = String(value || '');
+  if (!/<[a-z][\s\S]*>/i.test(source)) {
+    return translateText(source, targetLang, sourceLang);
+  }
+
+  const template = sanitizeTranslatableMarkup(source);
+  const walker = document.createTreeWalker(template.content, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+
+  for (const node of nodes) {
+    const raw = node.nodeValue || '';
+    const core = raw.trim();
+    if (!core) continue;
+    const leading = raw.match(/^\s*/)?.[0] || '';
+    const trailing = raw.match(/\s*$/)?.[0] || '';
+    node.nodeValue = `${leading}${await translateText(core, targetLang, sourceLang)}${trailing}`;
+  }
+
+  return template.innerHTML;
+}
+
 function getTranslationLanguages(data) {
   const fromTranslations = data?.translations && typeof data.translations === 'object'
     ? Object.keys(data.translations)
@@ -3993,7 +4389,7 @@ async function translateArticleBlock(block, targetLang, sourceLang = DEFAULT_LAN
   }
 
   if (['text', 'quote', 'note', 'link', 'map'].includes(next.type) && typeof next.content === 'string') {
-    next.content = await translateText(next.content, targetLang, sourceLang);
+    next.content = await translateRichText(next.content, targetLang, sourceLang);
     return next;
   }
 
@@ -4117,6 +4513,46 @@ async function syncMissingEntryLanguages(data, section, sourceLang, sourceEntry)
   return createdLangs;
 }
 
+async function translateEntryToAllLanguages(data, section, sourceLang, sourceEntry, options = {}) {
+  const targetLangs = getTranslationLanguages(data).filter((lang) => lang !== sourceLang);
+  const updatedLangs = [];
+  const failures = [];
+  const total = targetLangs.length;
+
+  for (let i = 0; i < targetLangs.length; i += 1) {
+    const lang = targetLangs[i];
+    if (options.statusPrefix) {
+      setStatus('info', `${options.statusPrefix}: ${i + 1}/${total} ${sourceLang} → ${lang}`);
+    }
+    try {
+      const translated = await translateEntryForSection(section, sourceEntry, lang, sourceLang);
+      if (options.saveToServer) {
+        await saveEntityToServer(section, lang, translated);
+      }
+      upsertEntryForLanguage(data, section, lang, translated);
+      updatedLangs.push(lang);
+    } catch (error) {
+      const message = getErrorMessage(error);
+      failures.push({ lang, message });
+      if (options.statusPrefix) {
+        setStatus('info', `${options.statusPrefix}: ${lang} не обновлен – ${message}`);
+      }
+    }
+  }
+
+  updatedLangs.failures = failures;
+  updatedLangs.syncMeta = {
+    targetCount: total,
+    blockCount: Array.isArray(sourceEntry?.content) ? sourceEntry.content.length : 0,
+    imageCount: countArticleOriginals(sourceEntry)
+  };
+  if (failures.length && typeof showToast === 'function') {
+    showToast('error', `Не обновились языки: ${failures.map((item) => item.lang).join(', ')}`, 6500);
+  }
+
+  return updatedLangs;
+}
+
 function getConcreteEntryIds(data, section) {
   const ids = new Set();
   if (Array.isArray(data[section])) {
@@ -4204,27 +4640,65 @@ function requireSourceEntry(data, section, preferredSourceLang, selectedId) {
 }
 
 async function translateSelectedEntryToAvailableLanguages() {
-  const data = parseEditorJson();
-  const section = visualSectionSelect.value;
-  const preferredSourceLang = visualLangSelect.value || DEFAULT_LANGUAGE;
-  const selectedId = Number(visualEntrySelect.value);
-  const source = requireSourceEntry(data, section, preferredSourceLang, selectedId);
-  const sourceLang = source.lang;
-  const sourceEntry = source.entry;
-  const targetLangs = getTranslationLanguages(data).filter((lang) => lang !== sourceLang);
-
-  setBusy(true);
-  setStatus('info', `Перевожу запись #${selectedId} из ${sourceLang}: ${targetLangs.join(', ')}...`);
-
   try {
-    for (const lang of targetLangs) {
-      const translated = await translateEntryForSection(section, sourceEntry, lang, sourceLang);
-      upsertEntryForLanguage(data, section, lang, translated);
+    setBusy(true);
+    if (window.__modernEditorActive) await flushModernEditor();
+
+    const data = parseEditorJson();
+    const section = visualSectionSelect.value;
+    const preferredSourceLang = visualLangSelect.value || DEFAULT_LANGUAGE;
+    const selectedId = Number(visualEntrySelect.value);
+    const visibleEntries = getSectionArray(data, section, preferredSourceLang, preferredSourceLang !== DEFAULT_LANGUAGE);
+    const visibleIndex = visibleEntries.findIndex((item) => Number(item.id) === selectedId);
+    let sourceLang = preferredSourceLang;
+    let sourceEntry;
+
+    if (visibleIndex !== -1) {
+      sourceEntry = buildEntryFromVisualForm(section, visibleEntries[visibleIndex]);
+      const entityErr = validateEntityShape(section, sourceEntry);
+      if (entityErr) throw new Error(entityErr);
+      visibleEntries[visibleIndex] = sourceEntry;
+    } else {
+      const source = requireSourceEntry(data, section, preferredSourceLang, selectedId);
+      sourceLang = source.lang;
+      sourceEntry = source.entry;
     }
 
+    const targetLangs = getTranslationLanguages(data).filter((lang) => lang !== sourceLang);
+    const canSaveToServer = Boolean(getAdminPassword());
+    setStatus('info', `Обновляю языки для записи #${selectedId} из ${sourceLang}: ${targetLangs.join(', ')}...`);
+
+    if (canSaveToServer && visibleIndex !== -1) {
+      setStatus('info', `Сохраняю исходный язык #${selectedId} (${sourceLang}) на VPS...`);
+      await saveEntityToServer(section, sourceLang, sourceEntry);
+    }
+
+    const syncedLangs = await translateEntryToAllLanguages(data, section, sourceLang, sourceEntry, {
+      saveToServer: canSaveToServer,
+      statusPrefix: canSaveToServer
+        ? `Сохраняю языки #${selectedId}`
+        : `Обновляю языки #${selectedId}`
+    });
+
     pendingVisualEntryId = selectedId;
-    setEditorData(data);
-    setStatus('success', `Запись #${selectedId} доступна на языках: ${getTranslationLanguages(data).join(', ')}. Проверьте и сохраните в GitHub.`);
+    setEditorData(data, { markSynced: canSaveToServer });
+    const saveTail = canSaveToServer
+      ? 'и сохранены на VPS.'
+      : 'локально. Нажмите «Сохранить запись», чтобы отправить на VPS.';
+    const syncNote = formatLanguageSyncNote(syncedLangs, 'Обновлены');
+    const statusType = getLanguageSyncFailures(syncedLangs).length ? 'info' : 'success';
+    const resultLabel = syncedLangs.length
+      ? `языки обработаны ${saveTail}`
+      : (canSaveToServer ? 'переводы не обновились. Исходный язык сохранен на VPS.' : 'переводы не обновились. Исходный текст остался локально.');
+    setStatus(statusType, `Запись #${selectedId}: ${resultLabel}${syncNote}`);
+    showLanguageSyncReport({
+      selectedId,
+      section,
+      sourceLang,
+      savedToServer: canSaveToServer,
+      syncResult: syncedLangs,
+      actionLabel: 'Языки обновлены'
+    });
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
@@ -4248,10 +4722,11 @@ async function translateCurrentSectionToAvailableLanguages() {
       throw new Error('Недостаточно языков для перевода.');
     }
 
+    const canSaveToServer = Boolean(getAdminPassword());
     const confirmed = await showConfirmModal(
-      `Автоматически перевести раздел «${escapeHtml(getSectionLabel(section))}»?`,
-      `Основной источник: <strong>${escapeHtml(preferredSourceLang)}</strong>. Если в нём нет записи, будет взята EN-версия. Раздел будет разложен по всем языкам: <strong>${escapeHtml(allLangs.join(', '))}</strong>. После машинного перевода лучше быстро вычитать тексты.`,
-      'Перевести'
+      `Синхронизировать раздел «${escapeHtml(getSectionLabel(section))}»?`,
+      `Основной источник: <strong>${escapeHtml(preferredSourceLang)}</strong>. Если в нём нет записи, будет взята EN-версия. Все записи будут обновлены на <strong>${escapeHtml(allLangs.join(', '))}</strong>${canSaveToServer ? ' и сразу сохранены на VPS' : ''}. Структура блоков, ссылки и фото не изменятся.`,
+      canSaveToServer ? 'Перевести и сохранить' : 'Перевести локально'
     );
     if (!confirmed) {
       return;
@@ -4259,6 +4734,7 @@ async function translateCurrentSectionToAvailableLanguages() {
 
     setBusy(true);
     let done = 0;
+    const failures = [];
     const total = sourceEntries.reduce((sum, item) => sum + allLangs.filter((lang) => lang !== item.lang).length, 0);
 
     for (const source of sourceEntries) {
@@ -4267,14 +4743,33 @@ async function translateCurrentSectionToAvailableLanguages() {
       const targetLangs = allLangs.filter((lang) => lang !== sourceLang);
       for (const lang of targetLangs) {
         done += 1;
-        setStatus('info', `Автоперевод ${done}/${total}: ${getSectionLabel(section)} #${entry.id} ${sourceLang} → ${lang}`);
-        const translated = await translateEntryForSection(section, entry, lang, sourceLang);
-        upsertEntryForLanguage(data, section, lang, translated);
+        setStatus('info', `Синхронизация ${done}/${total}: ${getSectionLabel(section)} #${entry.id} ${sourceLang} → ${lang}`);
+        try {
+          const translated = await translateEntryForSection(section, entry, lang, sourceLang);
+          if (canSaveToServer) await saveEntityToServer(section, lang, translated);
+          upsertEntryForLanguage(data, section, lang, translated);
+        } catch (error) {
+          failures.push({ id: entry.id, lang, message: getErrorMessage(error) });
+        }
       }
     }
 
-    setEditorData(data);
-    setStatus('success', `Раздел «${getSectionLabel(section)}» переведен: ${sourceEntries.length} записей разложены по ${allLangs.length} языкам. Проверьте и сохраните в GitHub.`);
+    setEditorData(data, { markSynced: canSaveToServer && failures.length === 0 });
+    const completed = total - failures.length;
+    const failureText = failures.length
+      ? ` Не сохранились: ${failures.map((item) => `#${item.id} ${item.lang}`).join(', ')}.`
+      : '';
+    setStatus(failures.length ? 'info' : 'success', `Раздел «${getSectionLabel(section)}»: ${completed}/${total} языковых версий ${canSaveToServer ? 'сохранены на VPS' : 'подготовлены локально'}.${failureText}`);
+    setVisualNoticeHtml(renderSyncReportMarkup({
+      title: `Раздел синхронизирован · ${getSectionLabel(section)}`,
+      sourceLang: preferredSourceLang,
+      savedToServer: canSaveToServer && failures.length === 0,
+      updated: Array.from(new Set(allLangs.filter((lang) => lang !== preferredSourceLang))),
+      failures,
+      nextStep: failures.length
+        ? 'Повторите «Весь раздел»: уже сохраненные языки останутся целы, а сбойные будут обновлены повторно.'
+        : 'Все языковые версии уже на VPS; общее «Сохранить» нажимать не нужно.'
+    }), failures.length ? 'error' : 'success');
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
@@ -5384,7 +5879,7 @@ async function renderPollResults() {
   const polls = collectPollsFromContent();
 
   if (!polls.length) {
-    pollResultsGrid.innerHTML = '<p style="color:#94a3b8;text-align:center;padding:32px 0;">Опросы не найдены. Загрузите контент из GitHub.</p>';
+    pollResultsGrid.innerHTML = '<p style="color:#94a3b8;text-align:center;padding:32px 0;">Опросы не найдены. Загрузите свежий контент с VPS.</p>';
     return;
   }
 
@@ -6098,10 +6593,10 @@ function bindIssueBuilder() {
   const onClick = (id, fn) => { const el = document.getElementById(id); if (el) el.addEventListener('click', fn); };
 
   onClick('saveDraftBtn', () => {
-    if (writeIssueConfig('draft')) showToast('success', 'Черновик сохранён — нажмите «Сохранить в GitHub».');
+    if (writeIssueConfig('draft')) showToast('success', 'Черновик сохранён – нажмите общий «Сохранить», чтобы отправить на VPS.');
   });
   onClick('publishIssueBtn', () => {
-    if (writeIssueConfig('published')) showToast('success', 'Выпуск опубликован — нажмите «Сохранить в GitHub», чтобы он попал на сайт.');
+    if (writeIssueConfig('published')) showToast('success', 'Выпуск опубликован – нажмите общий «Сохранить», чтобы он попал на сайт.');
   });
   onClick('collectAllBtn', () => {
     const data = parseEditorJsonSafe();
@@ -6559,7 +7054,7 @@ if (translSaveBtn) {
     editor.value = JSON.stringify(data, null, 2);
     updateEditorState();
     _translChanges = {};
-    showToast('success', 'Переводы применены — сохраните в GitHub.');
+    showToast('success', 'Переводы применены – сохраните изменения на VPS.');
     renderTranslationsTab();
   });
 }
@@ -6707,7 +7202,7 @@ function renderStudioTab() {
   if (!layout) return;
   if (!data) {
     document.getElementById('studioServicesList').innerHTML =
-      '<p style="color:var(--text-muted);font-size:.82rem">Загрузите контент из GitHub, чтобы редактировать студию.</p>';
+      '<p style="color:var(--text-muted);font-size:.82rem">Загрузите свежий контент с VPS, чтобы редактировать студию.</p>';
     return;
   }
   _studio = JSON.parse(JSON.stringify(data.studio || defaultStudio()));
@@ -6962,7 +7457,7 @@ function bindStudioRowActions() {
     data.studio = _studio;
     editor.value = JSON.stringify(data, null, 2);
     updateEditorState();
-    showToast('success', 'Студия обновлена — нажмите «Сохранить в GitHub».');
+    showToast('success', 'Студия обновлена – нажмите общий «Сохранить», чтобы отправить на VPS.');
   });
 })();
 
@@ -8977,6 +9472,36 @@ function __stripHtml(html) {
 }
 function __hasTool(g) { return typeof window[g] !== 'undefined'; }
 
+function __normalizePastedText(text) {
+  return String(text == null ? '' : text)
+    .replace(/\r\n?/g, '\n')
+    .replace(/\u00a0/g, ' ')
+    .replace(/[ \t]+\n/g, '\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
+function __bindPlainPasteGuard(holder) {
+  if (!holder || holder.dataset.pasteGuard === '1') return;
+  holder.dataset.pasteGuard = '1';
+  holder.addEventListener('paste', (event) => {
+    const target = event.target;
+    if (!target || target.closest('input, textarea, .ebt, .ce-toolbar, .ce-settings')) return;
+    const editable = target.closest('[contenteditable="true"]');
+    if (!editable) return;
+
+    const clipboard = event.clipboardData || window.clipboardData;
+    const plain = __normalizePastedText(clipboard ? clipboard.getData('text/plain') : '');
+    if (!plain) return;
+
+    event.preventDefault();
+    document.execCommand('insertText', false, plain);
+    if (typeof showToast === 'function') {
+      showToast('info', 'Вставка очищена: чужие шрифты и стили не перенесены.', 2600);
+    }
+  }, true);
+}
+
 // Allow-list sanitizer for rich inline text saved from the editor (keeps
 // bold/italic/links/marker/underline; drops everything else). Mirrors the
 // public site's sanitizer so what you see is what renders.
@@ -9253,6 +9778,7 @@ function __buildEditorTools() {
 function mountModernEditor(blocks) {
   const holder = document.getElementById('vf-block-editor');
   if (!holder) return;
+  __bindPlainPasteGuard(holder);
   // Graceful fallback to the classic block editor if Editor.js didn't load.
   if (typeof window.EditorJS === 'undefined') {
     window.__modernEditorActive = false;
@@ -10567,125 +11093,628 @@ async function flushModernEditor() {
   const PASSPORT_LIST_API = 'https://api.eprisjournal.com/passport-list';
   const PASSPORT_ANNUL_API = 'https://api.eprisjournal.com/passport-annul';
   const PASSPORT_DEDUP_API = 'https://api.eprisjournal.com/passport-deduplicate';
+  const PASSPORT_CACHE_KEY = 'epris_passports_cache_v2';
+  const CACHE_MAX_AGE = 24 * 60 * 60 * 1000;
+  const REQUEST_TIMEOUT = 12000;
 
   const tbody = document.getElementById('passportsTableBody');
   const btnRefresh = document.getElementById('btnRefreshPassports');
   const btnDedup = document.getElementById('btnDedupPassports');
+  const btnRetry = document.getElementById('btnRetryPassports');
+  const btnExportCsv = document.getElementById('btnExportPassportsCsv');
   const countEl = document.getElementById('passportsCount');
+  const totalMetaEl = document.getElementById('passportsTotalMeta');
+  const photoMetaEl = document.getElementById('passportsPhotoMeta');
+  const attentionMetaEl = document.getElementById('passportsAttentionMeta');
+  const duplicateMetaEl = document.getElementById('passportsDuplicateMeta');
   const searchInput = document.getElementById('passportSearchInput');
-  
+  const filterSelect = document.getElementById('passportFilterSelect');
+  const sortSelect = document.getElementById('passportSortSelect');
+  const pagerEl = document.getElementById('passportPager');
+  const pagerInfoEl = document.getElementById('passportPagerInfo');
+  const pageSizeSelect = document.getElementById('passportPageSize');
+  const prevPageBtn = document.getElementById('passportPrevPage');
+  const nextPageBtn = document.getElementById('passportNextPage');
+  const selectAllInput = document.getElementById('passportSelectAll');
+  const bulkBar = document.getElementById('passportBulkBar');
+  const selectedCountEl = document.getElementById('passportSelectedCount');
+  const btnCopySelected = document.getElementById('btnCopySelectedPassports');
+  const btnOpenSelected = document.getElementById('btnOpenSelectedPassport');
+  const btnClearSelection = document.getElementById('btnClearPassportSelection');
+  const previewEl = document.getElementById('passportPreview');
+  const syncStatusEl = document.getElementById('passportSyncStatus');
+  const syncTitleEl = document.getElementById('passportSyncTitle');
+  const syncDetailEl = document.getElementById('passportSyncDetail');
+  const syncTimeEl = document.getElementById('passportLastUpdated');
+
   let allPassports = [];
+  let filteredPassports = [];
+  let visiblePassports = [];
+  let duplicateCodes = new Set();
+  let selectedCodes = new Set();
+  let currentPreviewCode = '';
+  let currentPage = 1;
+  let activeController = null;
+  let loadSequence = 0;
+  let lastLoadedAt = 0;
 
   if (!tbody) return;
-  
-  function renderPassports() {
-    let filtered = allPassports;
-    if (searchInput && searchInput.value.trim()) {
-       const q = searchInput.value.trim().toLowerCase();
-       filtered = allPassports.filter(p => 
-          p.code.toLowerCase().includes(q) || 
-          p.fields.givenNames.toLowerCase().includes(q) || 
-          p.fields.surname.toLowerCase().includes(q) ||
-          p.fields.country.toLowerCase().includes(q)
-       );
-    }
-    
-    if (countEl) countEl.textContent = filtered.length;
-    
-    if (filtered.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="5" class="text-center py-4 text-muted">Ничего не найдено</td></tr>';
-      return;
-    }
-    
-    tbody.innerHTML = filtered.map(p => `
-      <tr>
-        <td><code>${p.code}</code></td>
-        <td>
-          <div class="font-medium">${p.fields.givenNames} ${p.fields.surname}</div>
-          <div class="text-xs text-muted">${p.fields.country}, ${p.fields.membershipType}</div>
-        </td>
-        <td>
-          ${p.photoUrl ? `<a href="${p.photoUrl}" target="_blank"><img src="${p.photoUrl}" style="height:40px;border-radius:4px;object-fit:cover" /></a>` : '<span class="text-muted">Нет фото</span>'}
-        </td>
-        <td><div class="text-sm">${new Date(p.createdAt).toLocaleString('ru-RU')}</div></td>
-        <td class="text-right">
-          <button class="btn btn-sm btn-danger btn-annul" data-code="${p.code}">Аннулировать</button>
-          <a href="https://eprisjournal.com/passport/${p.code}" target="_blank" class="btn btn-sm">Смотреть ↗</a>
-        </td>
-      </tr>
-    `).join('');
 
-    tbody.querySelectorAll('.btn-annul').forEach(btn => {
-      btn.onclick = async () => {
-        if (!confirm(`Удалить паспорт ${btn.dataset.code}? Действие необратимо.`)) return;
-        btn.disabled = true;
-        try {
-           const pw = getAdminPassword();
-           const r = await fetch(PASSPORT_ANNUL_API, {
-             method: 'POST',
-             headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
-             body: JSON.stringify({ code: btn.dataset.code })
-           });
-           const data = await r.json();
-           if (!data.ok) throw new Error(data.error);
-           showToast('success', 'Паспорт аннулирован');
-           loadPassports();
-        } catch(e) {
-           showToast('error', e.message);
-           btn.disabled = false;
-        }
-      };
+  function passportFields(passport) {
+    const fields = passport && typeof passport.fields === 'object' && passport.fields ? passport.fields : {};
+    return {
+      givenNames: String(fields.givenNames || ''),
+      surname: String(fields.surname || ''),
+      country: String(fields.country || ''),
+      membershipType: String(fields.membershipType || ''),
+      city: String(fields.city || ''),
+      professionalLevel: String(fields.professionalLevel || ''),
+      website: String(fields.website || ''),
+      dateOfIssue: String(fields.dateOfIssue || fields.issueDate || fields.issuedAt || ''),
+      dateOfExpiry: String(fields.dateOfExpiry || fields.expiryDate || fields.expiresAt || fields.validUntil || '')
+    };
+  }
+
+  function safeHttpUrl(value) {
+    try {
+      const url = new URL(String(value || ''), window.location.origin);
+      return url.protocol === 'http:' || url.protocol === 'https:' ? url.href : '';
+    } catch {
+      return '';
+    }
+  }
+
+  function formatPassportDate(value) {
+    const date = new Date(value);
+    return Number.isNaN(date.getTime()) ? 'Дата не указана' : date.toLocaleString('ru-RU', { dateStyle: 'medium', timeStyle: 'short' });
+  }
+
+  function passportCode(passport) {
+    return String(passport?.code || '').trim();
+  }
+
+  function passportFullName(passport) {
+    const fields = passportFields(passport);
+    return `${fields.givenNames} ${fields.surname}`.trim() || 'Имя не указано';
+  }
+
+  function passportPublicUrl(code) {
+    return `https://eprisjournal.com/passport/${encodeURIComponent(code)}`;
+  }
+
+  function csvCell(value) {
+    return `"${String(value ?? '').replace(/"/g, '""')}"`;
+  }
+
+  function parseMaybeDate(value) {
+    if (!value) return null;
+    const date = new Date(value);
+    return Number.isNaN(date.getTime()) ? null : date;
+  }
+
+  function getExpiryState(passport) {
+    const fields = passportFields(passport);
+    const expiry = parseMaybeDate(fields.dateOfExpiry || passport?.dateOfExpiry || passport?.expiresAt || passport?.validUntil);
+    if (!expiry) return { state: 'none', label: 'Срок не указан', date: null };
+    const now = Date.now();
+    const days = Math.ceil((expiry.getTime() - now) / 86400000);
+    if (days < 0) return { state: 'expired', label: 'Срок истёк', date: expiry, days };
+    if (days <= 30) return { state: 'expiring', label: `Истекает через ${days} дн.`, date: expiry, days };
+    return { state: 'valid', label: 'Срок в норме', date: expiry, days };
+  }
+
+  function refreshPassportDiagnostics() {
+    const counts = new Map();
+    allPassports.forEach((passport) => {
+      const code = passportCode(passport);
+      if (code) counts.set(code, (counts.get(code) || 0) + 1);
+    });
+    duplicateCodes = new Set([...counts].filter(([, count]) => count > 1).map(([code]) => code));
+  }
+
+  function getPassportQuality(passport) {
+    const fields = passportFields(passport);
+    const code = passportCode(passport);
+    const missing = [];
+    if (!code) missing.push('код');
+    if (!fields.givenNames || !fields.surname) missing.push('имя');
+    if (!fields.country) missing.push('страна');
+    if (!fields.membershipType) missing.push('тип');
+    if (!safeHttpUrl(passport?.photoUrl)) missing.push('фото');
+    const expiry = getExpiryState(passport);
+    if (duplicateCodes.has(code)) missing.push('дубль');
+    if (expiry.state === 'expired') missing.push('срок истёк');
+    return {
+      complete: missing.length === 0,
+      missing,
+      expiry,
+      duplicate: duplicateCodes.has(code),
+      label: missing.length ? `Проверить: ${missing.join(', ')}` : 'Запись полная'
+    };
+  }
+
+  function setSyncState(state, title, detail, options = {}) {
+    if (syncStatusEl) syncStatusEl.dataset.state = state;
+    if (syncTitleEl) syncTitleEl.textContent = title;
+    if (syncDetailEl) {
+      syncDetailEl.textContent = detail;
+      syncDetailEl.title = detail;
+    }
+    if (btnRetry) btnRetry.hidden = !options.retry;
+    if (syncTimeEl && options.time) {
+      const date = new Date(options.time);
+      if (!Number.isNaN(date.getTime())) {
+        syncTimeEl.dateTime = date.toISOString();
+        syncTimeEl.textContent = `${options.cached ? 'Копия от' : 'Обновлено'} ${date.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })}`;
+      }
+    }
+  }
+
+  function setRefreshBusy(isBusy) {
+    if (!btnRefresh) return;
+    btnRefresh.disabled = isBusy;
+    btnRefresh.classList.toggle('is-loading', isBusy);
+    const label = btnRefresh.querySelector('span');
+    if (label) label.textContent = isBusy ? 'Обновляем' : 'Обновить';
+  }
+
+  function renderSkeleton() {
+    tbody.innerHTML = Array.from({ length: 3 }, () => `
+      <tr aria-hidden="true">
+        <td><span class="pp-skeleton" style="width:16px"></span></td>
+        <td><span class="pp-skeleton" style="width:84px"></span></td>
+        <td><span class="pp-skeleton" style="width:170px"></span></td>
+        <td><span class="pp-skeleton" style="width:40px;height:40px"></span></td>
+        <td><span class="pp-skeleton" style="width:120px"></span></td>
+        <td><span class="pp-skeleton" style="width:170px;margin-left:auto"></span></td>
+      </tr>`).join('');
+  }
+
+  function renderTableMessage(title, detail, retry = false) {
+    tbody.innerHTML = `<tr><td colspan="6" class="pp-table-message"><strong>${escapeHtml(title)}</strong>${detail ? `<span>${escapeHtml(detail)}</span>` : ''}${retry ? '<br><button class="btn btn-sm" type="button" data-passport-retry>Повторить запрос</button>' : ''}</td></tr>`;
+    tbody.querySelector('[data-passport-retry]')?.addEventListener('click', () => loadPassports({ force: true }));
+  }
+
+  function writeCache(passports) {
+    try {
+      localStorage.setItem(PASSPORT_CACHE_KEY, JSON.stringify({ savedAt: Date.now(), passports }));
+    } catch {}
+  }
+
+  function readCache() {
+    try {
+      const cached = JSON.parse(localStorage.getItem(PASSPORT_CACHE_KEY) || 'null');
+      if (!cached || !Array.isArray(cached.passports) || !Number.isFinite(cached.savedAt)) return null;
+      if (Date.now() - cached.savedAt > CACHE_MAX_AGE) return null;
+      return cached;
+    } catch {
+      return null;
+    }
+  }
+
+  async function fetchPassportJson(url, options = {}, timeoutMs = REQUEST_TIMEOUT, controller = new AbortController()) {
+    let timedOut = false;
+    const timer = window.setTimeout(() => {
+      timedOut = true;
+      controller.abort();
+    }, timeoutMs);
+    try {
+      const response = await fetch(url, { ...options, signal: controller.signal });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok || !data.ok) throw new Error(data.error || `VPS вернул статус ${response.status}`);
+      return data;
+    } catch (error) {
+      if (timedOut) throw new Error(`VPS не ответил за ${Math.round(timeoutMs / 1000)} секунд`);
+      if (error?.name === 'AbortError') throw error;
+      if (!navigator.onLine) throw new Error('Нет подключения к интернету');
+      throw error;
+    } finally {
+      window.clearTimeout(timer);
+    }
+  }
+
+  function updateSelectionUi() {
+    const visibleCodes = visiblePassports.map(passportCode).filter(Boolean);
+    selectedCodes = new Set([...selectedCodes].filter((code) => visibleCodes.includes(code) || allPassports.some((passport) => passportCode(passport) === code)));
+    const visibleSelectedCount = visibleCodes.filter((code) => selectedCodes.has(code)).length;
+    if (selectAllInput) {
+      selectAllInput.checked = visibleCodes.length > 0 && visibleSelectedCount === visibleCodes.length;
+      selectAllInput.indeterminate = visibleSelectedCount > 0 && visibleSelectedCount < visibleCodes.length;
+    }
+    if (selectedCountEl) selectedCountEl.textContent = selectedCodes.size;
+    if (bulkBar) bulkBar.hidden = selectedCodes.size === 0;
+    tbody.querySelectorAll('[data-passport-select]').forEach((input) => {
+      input.checked = selectedCodes.has(input.value);
+      input.closest('tr')?.classList.toggle('is-selected', input.checked);
     });
   }
 
-  async function loadPassports() {
-    const pw = getAdminPassword();
-    if (!pw) return;
-    tbody.innerHTML = '<tr><td colspan="5" class="text-center py-4">Загрузка...</td></tr>';
-    try {
-      const r = await fetch(PASSPORT_LIST_API, { headers: { 'X-Admin-Password': pw } });
-      const data = await r.json();
-      if (!data.ok) throw new Error(data.error);
-      
-      allPassports = data.passports || [];
-      allPassports.sort((a,b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-      
+  function resetPassportPaging() {
+    currentPage = 1;
+  }
+
+  function updatePager(total) {
+    const pageSize = Math.max(1, Number(pageSizeSelect?.value || 25));
+    const totalPages = Math.max(1, Math.ceil(total / pageSize));
+    currentPage = Math.min(Math.max(1, currentPage), totalPages);
+    const start = total ? (currentPage - 1) * pageSize + 1 : 0;
+    const end = total ? Math.min(total, currentPage * pageSize) : 0;
+    if (pagerEl) pagerEl.hidden = total <= pageSize;
+    if (pagerInfoEl) pagerInfoEl.textContent = `${start}-${end} из ${total}`;
+    if (prevPageBtn) prevPageBtn.disabled = currentPage <= 1;
+    if (nextPageBtn) nextPageBtn.disabled = currentPage >= totalPages;
+    return { pageSize, startIndex: (currentPage - 1) * pageSize };
+  }
+
+  function renderPassportPreview(passport) {
+    if (!previewEl) return;
+    if (!passport) {
+      previewEl.innerHTML = `
+        <div class="pp-preview-empty">
+          <span class="pp-preview-icon">◇</span>
+          <strong>Выберите паспорт</strong>
+          <span>Здесь появятся ссылка, фото и быстрые действия по записи.</span>
+        </div>`;
+      return;
+    }
+    const fields = passportFields(passport);
+    const code = passportCode(passport) || 'Без кода';
+    const photoUrl = safeHttpUrl(passport?.photoUrl);
+    const fullName = passportFullName(passport);
+    const publicUrl = passportPublicUrl(code);
+    const quality = getPassportQuality(passport);
+    const initials = fullName.split(/\s+/).map((part) => part[0]).join('').slice(0, 2).toUpperCase() || 'EP';
+    previewEl.innerHTML = `
+      <div class="pp-preview-card">
+        <div class="pp-preview-cover">
+          ${photoUrl ? `<img class="pp-preview-photo" src="${escapeHtml(photoUrl)}" loading="lazy" alt="Фото ${escapeHtml(fullName)}" />` : `<span class="pp-preview-monogram">${escapeHtml(initials)}</span>`}
+        </div>
+        <div class="pp-preview-body">
+          <span class="pp-preview-code">${escapeHtml(code)}</span>
+          <h3 class="pp-preview-name">${escapeHtml(fullName)}</h3>
+          <p class="pp-preview-meta">${escapeHtml([fields.country, fields.city, fields.membershipType].filter(Boolean).join(' · ') || 'Данные участника не заполнены')}</p>
+          <ul class="pp-preview-list">
+            <li><b>Статус:</b> ${escapeHtml(quality.label)}</li>
+            <li><b>Создан:</b> ${escapeHtml(formatPassportDate(passport?.createdAt))}</li>
+            <li><b>Срок:</b> ${escapeHtml(quality.expiry.label)}</li>
+            <li><b>Ссылка:</b> /passport/${escapeHtml(code)}</li>
+          </ul>
+          <div class="pp-preview-actions">
+            <a href="${escapeHtml(publicUrl)}" target="_blank" rel="noreferrer" class="btn btn-sm">Открыть</a>
+            <button class="btn btn-sm" type="button" data-preview-copy="${escapeHtml(code)}">Скопировать</button>
+            <button class="btn btn-sm btn-danger" type="button" data-preview-annul="${escapeHtml(code)}">Аннулировать</button>
+          </div>
+        </div>
+      </div>`;
+    previewEl.querySelector('[data-preview-copy]')?.addEventListener('click', async () => {
+      await copyToClipboard(publicUrl);
+      showToast('success', 'Ссылка на паспорт скопирована');
+    });
+    previewEl.querySelector('[data-preview-annul]')?.addEventListener('click', () => {
+      tbody.querySelector(`.btn-annul[data-code="${CSS.escape(code)}"]`)?.click();
+    });
+  }
+
+  function exportVisiblePassportsCsv() {
+    const rows = filteredPassports.length ? filteredPassports : allPassports;
+    if (!rows.length) {
+      showToast('info', 'Нет паспортов для экспорта');
+      return;
+    }
+    const header = ['code', 'name', 'country', 'city', 'membership_type', 'professional_level', 'created_at', 'expiry', 'has_photo', 'public_url', 'photo_url', 'quality'];
+    const body = rows.map((passport) => {
+      const fields = passportFields(passport);
+      const code = passportCode(passport);
+      const quality = getPassportQuality(passport);
+      return [
+        code,
+        passportFullName(passport),
+        fields.country,
+        fields.city,
+        fields.membershipType,
+        fields.professionalLevel,
+        passport?.createdAt || '',
+        fields.dateOfExpiry || '',
+        safeHttpUrl(passport?.photoUrl) ? 'yes' : 'no',
+        passportPublicUrl(code),
+        safeHttpUrl(passport?.photoUrl),
+        quality.label
+      ].map(csvCell).join(',');
+    });
+    const csv = [header.join(','), ...body].join('\n');
+    const blob = new Blob([`\ufeff${csv}`], { type: 'text/csv;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const stamp = new Date().toISOString().slice(0, 10);
+    a.href = url;
+    a.download = `epris-passports-${stamp}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    showToast('success', `CSV экспортирован: ${rows.length} записей`);
+  }
+
+  function renderPassports() {
+    refreshPassportDiagnostics();
+    let filtered = allPassports;
+    if (searchInput && searchInput.value.trim()) {
+      const q = searchInput.value.trim().toLocaleLowerCase('ru');
+      filtered = allPassports.filter((passport) => {
+        const fields = passportFields(passport);
+        return [passport?.code, fields.givenNames, fields.surname, fields.country, fields.city, fields.membershipType, fields.professionalLevel]
+          .some((value) => String(value || '').toLocaleLowerCase('ru').includes(q));
+      });
+    }
+    const filterMode = filterSelect?.value || 'all';
+    if (filterMode !== 'all') {
+      filtered = filtered.filter((passport) => {
+        const quality = getPassportQuality(passport);
+        const hasPhoto = Boolean(safeHttpUrl(passport?.photoUrl));
+        if (filterMode === 'photo') return hasPhoto;
+        if (filterMode === 'missing-photo') return !hasPhoto;
+        if (filterMode === 'complete') return quality.complete;
+        if (filterMode === 'attention') return !quality.complete;
+        if (filterMode === 'duplicates') return quality.duplicate;
+        if (filterMode === 'expiring') return quality.expiry.state === 'expiring' || quality.expiry.state === 'expired';
+        return true;
+      });
+    }
+    const sortMode = sortSelect?.value || 'newest';
+    filtered = [...filtered].sort((a, b) => {
+      if (sortMode === 'oldest') return (new Date(a?.createdAt).getTime() || 0) - (new Date(b?.createdAt).getTime() || 0);
+      if (sortMode === 'name') return passportFullName(a).localeCompare(passportFullName(b), 'ru');
+      if (sortMode === 'country') return passportFields(a).country.localeCompare(passportFields(b).country, 'ru') || passportFullName(a).localeCompare(passportFullName(b), 'ru');
+      return (new Date(b?.createdAt).getTime() || 0) - (new Date(a?.createdAt).getTime() || 0);
+    });
+    filteredPassports = filtered;
+    const page = updatePager(filtered.length);
+    visiblePassports = filtered.slice(page.startIndex, page.startIndex + page.pageSize);
+
+    if (countEl) countEl.textContent = filtered.length;
+    if (totalMetaEl) totalMetaEl.textContent = `${allPassports.length} всего`;
+    if (photoMetaEl) photoMetaEl.textContent = `${allPassports.filter((passport) => safeHttpUrl(passport?.photoUrl)).length} с фото`;
+    if (attentionMetaEl) attentionMetaEl.textContent = `${allPassports.filter((passport) => !getPassportQuality(passport).complete).length} проверить`;
+    if (duplicateMetaEl) duplicateMetaEl.textContent = `${duplicateCodes.size} дублей`;
+
+    if (filtered.length === 0) {
+      const hasQuery = Boolean(searchInput?.value.trim());
+      renderTableMessage(hasQuery ? 'Совпадений нет' : 'Паспортов пока нет', hasQuery ? 'Попробуйте изменить запрос.' : 'После публикации первая запись появится здесь.');
+      renderPassportPreview(null);
+      updateSelectionUi();
+      return;
+    }
+
+    if (!currentPreviewCode || !filtered.some((passport) => passportCode(passport) === currentPreviewCode)) {
+      currentPreviewCode = passportCode(visiblePassports[0] || filtered[0]);
+    }
+
+    tbody.innerHTML = visiblePassports.map((passport) => {
+      const fields = passportFields(passport);
+      const code = passportCode(passport) || 'Без кода';
+      const photoUrl = safeHttpUrl(passport?.photoUrl);
+      const publicUrl = passportPublicUrl(code);
+      const fullName = passportFullName(passport);
+      const meta = [fields.country, fields.city, fields.membershipType].filter(Boolean).join(' · ') || 'Данные участника не заполнены';
+      const quality = getPassportQuality(passport);
+      const expiryBadge = quality.expiry.state === 'expired'
+        ? '<span class="pp-status danger">срок истёк</span>'
+        : quality.expiry.state === 'expiring'
+          ? '<span class="pp-status info">истекает</span>'
+          : '';
+      const duplicateBadge = quality.duplicate ? '<span class="pp-status danger">дубль</span>' : '';
+      return `
+      <tr data-passport-row="${escapeHtml(code)}" class="${code === currentPreviewCode ? 'is-current' : ''}">
+        <td class="pp-check-cell"><input class="pp-check" type="checkbox" value="${escapeHtml(code)}" data-passport-select aria-label="Выбрать паспорт ${escapeHtml(code)}" /></td>
+        <td><code>${escapeHtml(code)}</code></td>
+        <td>
+          <div class="pp-person-name">${escapeHtml(fullName)}</div>
+          <div class="pp-person-meta">${escapeHtml(meta)}</div>
+          <span class="pp-status ${quality.complete ? 'ok' : 'warn'}">${escapeHtml(quality.complete ? 'готов' : 'проверить')}</span>
+          ${expiryBadge}${duplicateBadge}
+        </td>
+        <td>
+          ${photoUrl ? `<a class="pp-photo-link" href="${escapeHtml(photoUrl)}" target="_blank" rel="noreferrer" title="Открыть оригинал фото"><img class="pp-photo" src="${escapeHtml(photoUrl)}" width="40" height="40" loading="lazy" alt="Фото ${escapeHtml(fullName)}" /></a>` : '<span class="text-muted">Нет фото</span>'}
+        </td>
+        <td><div class="text-sm">${escapeHtml(formatPassportDate(passport?.createdAt))}</div></td>
+        <td class="text-right">
+          <div class="pp-row-actions">
+            <button class="btn btn-sm btn-copy-passport" type="button" data-url="${escapeHtml(publicUrl)}">Ссылка</button>
+            <button class="btn btn-sm btn-danger btn-annul" type="button" data-code="${escapeHtml(code)}">Аннулировать</button>
+            <a href="${escapeHtml(publicUrl)}" target="_blank" rel="noreferrer" class="btn btn-sm">Смотреть ↗</a>
+          </div>
+        </td>
+      </tr>
+    `;
+    }).join('');
+
+    tbody.querySelectorAll('[data-passport-row]').forEach((row) => {
+      row.addEventListener('click', (event) => {
+        if (event.target.closest('a, button, input')) return;
+        currentPreviewCode = row.dataset.passportRow || '';
+        renderPassports();
+      });
+    });
+
+    tbody.querySelectorAll('[data-passport-select]').forEach((input) => {
+      input.addEventListener('change', () => {
+        if (input.checked) selectedCodes.add(input.value);
+        else selectedCodes.delete(input.value);
+        updateSelectionUi();
+      });
+    });
+
+    tbody.querySelectorAll('.btn-copy-passport').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        await copyToClipboard(btn.dataset.url || '');
+        showToast('success', 'Публичная ссылка скопирована');
+      });
+    });
+
+    tbody.querySelectorAll('.btn-annul').forEach(btn => {
+      btn.onclick = async () => {
+        const code = btn.dataset.code || '';
+        const confirmed = await showConfirmModal('Аннулировать паспорт', `<p>Паспорт <strong>${escapeHtml(code)}</strong> будет удалён из реестра и перестанет открываться по публичной ссылке.</p><p class="text-danger">Это действие нельзя отменить.</p>`, 'Аннулировать');
+        if (!confirmed) return;
+        const pw = getAdminPassword();
+        if (!pw) {
+          setSyncState('error', 'Сессия истекла', 'Войдите в админку заново и повторите действие.', { retry: false });
+          showToast('error', 'Сессия истекла. Войдите заново.');
+          return;
+        }
+        btn.disabled = true;
+        setSyncState('loading', `Аннулируем ${code}`, 'Сохраняем изменение на VPS…');
+        try {
+          await fetchPassportJson(PASSPORT_ANNUL_API, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
+            body: JSON.stringify({ code })
+          }, 15000);
+          selectedCodes.delete(code);
+          if (currentPreviewCode === code) currentPreviewCode = '';
+          showToast('success', `Паспорт ${code} аннулирован`);
+          await loadPassports({ force: true });
+        } catch (error) {
+          if (error?.name !== 'AbortError') {
+            setSyncState('error', 'Не удалось аннулировать паспорт', getErrorMessage(error), { retry: true });
+            showToast('error', getErrorMessage(error));
+          }
+          btn.disabled = false;
+        }
+      };
+    });
+    renderPassportPreview(filtered.find((passport) => passportCode(passport) === currentPreviewCode) || visiblePassports[0] || filtered[0]);
+    updateSelectionUi();
+  }
+
+  async function loadPassports(options = {}) {
+    if (!options.force && allPassports.length && Date.now() - lastLoadedAt < 30000) {
       renderPassports();
-      
-    } catch (e) {
-      tbody.innerHTML = `<tr><td colspan="5" class="text-center py-4 text-danger">${e.message}</td></tr>`;
+      return;
+    }
+    const pw = getAdminPassword();
+    if (!pw) {
+      setSyncState('error', 'Сессия истекла', 'Пароль редакции недоступен. Выйдите и войдите в админку заново.');
+      renderTableMessage('Нужно войти заново', 'Сессия редакции завершилась, поэтому VPS не принимает запросы.');
+      return;
+    }
+
+    if (activeController) activeController.abort();
+    activeController = new AbortController();
+    const requestId = ++loadSequence;
+    setRefreshBusy(true);
+    setSyncState('loading', 'Синхронизируем с VPS', 'Получаем свежий реестр. Обычно это занимает меньше нескольких секунд.');
+    renderSkeleton();
+    try {
+      const data = await fetchPassportJson(PASSPORT_LIST_API, { headers: { 'X-Admin-Password': pw } }, REQUEST_TIMEOUT, activeController);
+      if (requestId !== loadSequence) return;
+      allPassports = data.passports || [];
+      allPassports.sort((a, b) => (new Date(b?.createdAt).getTime() || 0) - (new Date(a?.createdAt).getTime() || 0));
+      lastLoadedAt = Date.now();
+      writeCache(allPassports);
+      renderPassports();
+      setSyncState('success', 'Реестр актуален', `Получено записей: ${allPassports.length}. Источник — VPS.`, { time: lastLoadedAt });
+    } catch (error) {
+      if (requestId !== loadSequence || error?.name === 'AbortError') return;
+      const cached = readCache();
+      if (cached) {
+        allPassports = cached.passports;
+        lastLoadedAt = cached.savedAt;
+        renderPassports();
+        setSyncState('warning', 'Показана сохранённая копия', `${getErrorMessage(error)}. Данные можно просматривать, но для изменений нужен VPS.`, { time: cached.savedAt, cached: true, retry: true });
+      } else {
+        allPassports = [];
+        renderTableMessage('Не удалось получить реестр', getErrorMessage(error), true);
+        setSyncState('error', 'Синхронизация не выполнена', `${getErrorMessage(error)}. Проверьте соединение и повторите запрос.`, { retry: true });
+      }
+    } finally {
+      if (requestId === loadSequence) {
+        activeController = null;
+        setRefreshBusy(false);
+      }
     }
   }
 
-  if (btnRefresh) btnRefresh.onclick = loadPassports;
-  if (searchInput) searchInput.addEventListener('input', renderPassports);
-  
+  if (btnRefresh) btnRefresh.onclick = () => loadPassports({ force: true });
+  if (btnRetry) btnRetry.onclick = () => loadPassports({ force: true });
+  if (btnExportCsv) btnExportCsv.addEventListener('click', exportVisiblePassportsCsv);
+  if (searchInput) searchInput.addEventListener('input', () => { resetPassportPaging(); renderPassports(); });
+  if (filterSelect) filterSelect.addEventListener('change', () => { resetPassportPaging(); renderPassports(); });
+  if (sortSelect) sortSelect.addEventListener('change', () => { resetPassportPaging(); renderPassports(); });
+  if (pageSizeSelect) pageSizeSelect.addEventListener('change', () => { resetPassportPaging(); renderPassports(); });
+  if (prevPageBtn) prevPageBtn.addEventListener('click', () => { currentPage = Math.max(1, currentPage - 1); renderPassports(); });
+  if (nextPageBtn) nextPageBtn.addEventListener('click', () => { currentPage += 1; renderPassports(); });
+  if (selectAllInput) {
+    selectAllInput.addEventListener('change', () => {
+      visiblePassports.map(passportCode).filter(Boolean).forEach((code) => {
+        if (selectAllInput.checked) selectedCodes.add(code);
+        else selectedCodes.delete(code);
+      });
+      updateSelectionUi();
+    });
+  }
+  if (btnClearSelection) {
+    btnClearSelection.addEventListener('click', () => {
+      selectedCodes.clear();
+      updateSelectionUi();
+    });
+  }
+  if (btnCopySelected) {
+    btnCopySelected.addEventListener('click', async () => {
+      const links = [...selectedCodes].map(passportPublicUrl).join('\n');
+      if (!links) return;
+      await copyToClipboard(links);
+      showToast('success', `Скопировано ссылок: ${selectedCodes.size}`);
+    });
+  }
+  if (btnOpenSelected) {
+    btnOpenSelected.addEventListener('click', () => {
+      const first = [...selectedCodes][0];
+      if (!first) return;
+      window.open(passportPublicUrl(first), '_blank', 'noopener,noreferrer');
+    });
+  }
+
   if (btnDedup) btnDedup.onclick = async () => {
     const pw = getAdminPassword();
-    if (!pw) return;
-    if (!confirm('Найти и удалить все дубликаты (оставив только самые свежие)?')) return;
-    
+    if (!pw) {
+      setSyncState('error', 'Сессия истекла', 'Войдите в админку заново, чтобы менять реестр.');
+      return;
+    }
+    const confirmed = await showConfirmModal('Убрать дубликаты', '<p>Система сравнит коды паспортов и оставит только самую свежую запись для каждого кода.</p><p>Уникальные паспорта не изменятся.</p>', 'Проверить реестр');
+    if (!confirmed) return;
+
     btnDedup.disabled = true;
+    setSyncState('loading', 'Проверяем реестр', 'Ищем повторяющиеся коды на VPS…');
     try {
-       const r = await fetch(PASSPORT_DEDUP_API, {
-         method: 'POST',
-         headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
-         body: JSON.stringify({})
-       });
-       const data = await r.json();
-       if (!data.ok) throw new Error(data.error);
-       showToast('success', `Удалено дубликатов: ${data.removedCount}`);
-       loadPassports();
-    } catch(e) {
-       showToast('error', e.message);
+      const data = await fetchPassportJson(PASSPORT_DEDUP_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
+        body: JSON.stringify({})
+      }, 15000);
+      const removed = Number(data.removedCount || 0);
+      showToast('success', removed ? `Удалено дубликатов: ${removed}` : 'Дубликатов не найдено');
+      await loadPassports({ force: true });
+    } catch (error) {
+      setSyncState('error', 'Проверка не завершена', getErrorMessage(error), { retry: true });
+      showToast('error', getErrorMessage(error));
     } finally {
-       btnDedup.disabled = false;
+      btnDedup.disabled = false;
     }
   };
 
-  // hook into tabs
   document.querySelectorAll('.tab-btn[data-tab="passports"]').forEach(btn => {
-    btn.addEventListener('click', () => setTimeout(loadPassports, 50));
+    btn.addEventListener('click', () => setTimeout(() => loadPassports(), 50));
+  });
+
+  window.addEventListener('online', () => {
+    if (document.getElementById('tab-passports')?.classList.contains('active')) loadPassports({ force: true });
+  });
+
+  window.addEventListener('offline', () => {
+    if (document.getElementById('tab-passports')?.classList.contains('active')) {
+      setSyncState('warning', 'Нет подключения к интернету', 'Текущий список останется доступен. Обновление продолжится после восстановления сети.', { time: lastLoadedAt || undefined, cached: true, retry: true });
+    }
   });
 
 })();
