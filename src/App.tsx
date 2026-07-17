@@ -91,10 +91,11 @@ function ImageLightbox({ src, alt, onClose }: { src: string; alt: string; onClos
   );
 }
 
-function GalleryItemView({ item, onClose }: { item: Item; onClose: () => void }) {
+function GalleryItemView({ item, onClose, articles, onReadArticle }: { item: Item; onClose: () => void; articles: Article[]; onReadArticle: (article: Article) => void }) {
   const photos = item.images && item.images.length > 0
     ? item.images
     : [{ url: resolveMediaSource(item.imageUrl || item.imageSeed, 1000, 750) }];
+  const matchedArticle = findMatchingArticle(item, articles);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -127,9 +128,18 @@ function GalleryItemView({ item, onClose }: { item: Item; onClose: () => void })
         <h2 className="font-crimson text-3xl sm:text-4xl text-[var(--c-accent)] mb-6">
           {item.title}
         </h2>
-        <p className="font-serif text-base sm:text-lg text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-12 max-w-xl">
+        <p className="font-serif text-base sm:text-lg text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-6 max-w-xl">
           {item.description}
         </p>
+        {matchedArticle && (
+          <button
+            type="button"
+            onClick={() => onReadArticle(matchedArticle)}
+            className="inline-flex items-center gap-2 mb-12 border border-[var(--c-accent)] rounded-full px-5 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors"
+          >
+            Read the full article →
+          </button>
+        )}
         <div className="space-y-10">
           {photos.map((photo, i) => (
             <figure key={i}>
@@ -762,9 +772,10 @@ function AboutSection({ t }: { t: (key: string) => string }) {
   );
 }
 
-function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (item: Item) => void }) {
+function GallerySection({ items, onItemClick, articles, onReadArticle }: { items: Item[]; onItemClick: (item: Item) => void; articles: Article[]; onReadArticle: (article: Article) => void }) {
   if (items.length === 0) return null;
   const [featured, ...rest] = items;
+  const featuredArticle = findMatchingArticle(featured, articles);
 
   return (
     <div>
@@ -801,9 +812,20 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
               <p className="font-serif text-sm sm:text-base text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-6">
                 {featured.description}
               </p>
-              <span className="inline-flex items-center self-start border border-[var(--c-accent)] rounded-full px-5 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors w-fit">
-                read
-              </span>
+              <div className="flex items-center gap-4 flex-wrap">
+                <span className="inline-flex items-center self-start border border-[var(--c-accent)] rounded-full px-5 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors w-fit">
+                  read
+                </span>
+                {featuredArticle && (
+                  <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); onReadArticle(featuredArticle); }}
+                    className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors"
+                  >
+                    Full article →
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -817,7 +839,9 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
         whileInView="show"
         viewport={{ once: true, margin: '-6%' }}
       >
-        {rest.map((item) => (
+        {rest.map((item) => {
+          const matchedArticle = findMatchingArticle(item, articles);
+          return (
           <motion.div
             key={item.id}
             variants={staggerItem}
@@ -842,17 +866,29 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
               <h3 className="font-crimson text-xl sm:text-2xl text-[var(--c-accent)] leading-snug max-w-md self-start group-hover:text-[var(--c-gold)] transition-colors duration-300">
                 {item.title}
               </h3>
-              <div className="flex sm:flex-col items-start sm:items-end justify-between shrink-0">
+              <div className="flex sm:flex-col items-start sm:items-end justify-between shrink-0 gap-2">
                 <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)]">
                   {item.subtitle}
                 </span>
-                <span className="inline-flex items-center border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
-                  read
-                </span>
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex items-center border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
+                    read
+                  </span>
+                  {matchedArticle && (
+                    <button
+                      type="button"
+                      onClick={(e) => { e.stopPropagation(); onReadArticle(matchedArticle); }}
+                      className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors"
+                    >
+                      full article →
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           </motion.div>
-        ))}
+          );
+        })}
       </motion.div>
     </div>
   );
@@ -1960,6 +1996,18 @@ function getSlugForArticle(article: Article): string {
   return generateSlug(canonical?.title || article.title);
 }
 
+// Gallery items and full Articles have no shared id/slug field — some Gallery
+// pieces happen to also exist as a full standalone Article (same title, its
+// own /article/<slug> page with more room for photos/blocks). Matching by
+// exact title is the only signal the data model offers; when it doesn't
+// match anything, no link renders — deliberately conservative so this can't
+// point at the wrong piece.
+function findMatchingArticle(item: Item, articles: Article[]): Article | undefined {
+  const title = item.title?.trim();
+  if (!title) return undefined;
+  return articles.find((a) => a.title?.trim() === title);
+}
+
 function parsePath(pathname: string): { tab?: string; articleId?: number; passportCode?: string } {
   const p = pathname.replace(/^\//, '').replace(/\/$/, '');
   if (!p) return {};
@@ -2228,7 +2276,7 @@ export default function App() {
                 ) : (
                   <>
                     {activeTab === 'gallery' && (
-                      <GallerySection items={items} onItemClick={setSelectedGalleryItem} />
+                      <GallerySection items={items} onItemClick={setSelectedGalleryItem} articles={articles} onReadArticle={(a) => handleSelectArticle(a.id, a)} />
                     )}
                     {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
                     {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} />}
@@ -2306,6 +2354,8 @@ export default function App() {
           <GalleryItemView
             item={selectedGalleryItem}
             onClose={() => setSelectedGalleryItem(null)}
+            articles={articles}
+            onReadArticle={(a) => { setSelectedGalleryItem(null); handleSelectArticle(a.id, a); }}
           />
         )}
       </AnimatePresence>

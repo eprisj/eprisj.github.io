@@ -295,6 +295,25 @@ function mergeLocalizedArray<T extends { id: number }>(value: T[] | undefined, f
   });
 }
 
+// The homepage Gallery ("items") had a real incident: its root collection was
+// completely restructured (old travel captions replaced with new long-form
+// pieces, ids reused) while stale per-locale translations for those same ids
+// were never cleared — every non-English reader kept seeing the old, unrelated
+// item merged with the new one's id. mergeLocalizedArray's per-id merge can't
+// tell "this id still means the same thing" from "this id was recycled for
+// different content," and a timestamp-based check was already tried and
+// reverted elsewhere in this file for making valid translations disappear.
+// A cheap, unambiguous signal that doesn't need any admin-side bookkeeping:
+// if a locale's items array is a different LENGTH than the current root, the
+// two have structurally diverged (an item was added/removed/replaced) and the
+// whole locale bucket for items is untrustworthy until it's rebuilt to match
+// — safer to show the current English items than a locale-shaped bucket of
+// content that may no longer correspond to the same entries at all.
+function mergeLocalizedItems<T extends { id: number }>(value: T[] | undefined, fallback: T[]): T[] {
+  if (Array.isArray(value) && value.length !== fallback.length) return fallback;
+  return mergeLocalizedArray(value, fallback);
+}
+
 export function getAvailableLanguages(): string[] {
   const allLangs = Object.keys(src().translations);
   if (!allLangs.includes(DEFAULT_LANGUAGE)) {
@@ -326,7 +345,7 @@ export function getContentForLanguage(lang: string): LanguageContent {
   const bucket = (c.localizedCollections || {})[lang] || {};
   const articles = mergeLocalizedArray(bucket.articles, c.articles);
   const reviews = mergeLocalizedArray(bucket.reviews, c.reviews);
-  const items = mergeLocalizedArray(bucket.items, c.items);
+  const items = mergeLocalizedItems(bucket.items, c.items);
   const libraryItems = mergeLocalizedArray(bucket.libraryItems, c.libraryItems);
 
   return {
