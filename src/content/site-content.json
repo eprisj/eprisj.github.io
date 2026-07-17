@@ -2821,45 +2821,6 @@
           "type": "gallery",
           "content": [],
           "caption": ""
-        },
-        {
-          "type": "image",
-          "content": "new-editorial-story-2",
-          "caption": "Lead image",
-          "stretched": false,
-          "width": 100
-        },
-        {
-          "type": "note",
-          "content": "Editorial note, source context, or a short aside."
-        },
-        {
-          "type": "checklist",
-          "caption": "What to cover",
-          "content": {
-            "items": [
-              "Context",
-              "Key detail",
-              "Human angle",
-              "What changes next"
-            ]
-          }
-        },
-        {
-          "type": "poll",
-          "content": {
-            "question": "What should we explore next?",
-            "options": [
-              {
-                "label": "More context",
-                "votes": 0
-              },
-              {
-                "label": "Practical guide",
-                "votes": 0
-              }
-            ]
-          }
         }
       ]
     }
@@ -4165,7 +4126,7 @@
             },
             {
               "type": "text",
-              "content": "Відкриття нових спогадів із духовним і матеріальним багатством живить як душу, так і серце. Я наголошую на цій подвійності, тому що дизайн створений із фізичних елементів, але все, що в ньому, сприяє розумовому досвіду. Сприйняття взаємозв’язків важливіше, ніж просто існування речей.<br>Іншими словами, ми цінуємо те, що лілія викликає у нас почуття всередині, а не факт її відчутного існування."
+              "content": "Відкриття нових спогадів із духовним і матеріальним багатством живить як душу, так і серце. Я наголошую на цій подвійності, тому що дизайн створений із фізичних елементів, але все, що в ньому, сприяє розумовому досвіду. Сприйняття взаємозв’язків важливіше, ніж просто існування речей.<br>Іншими словами, ми цінуємо те, що лілія викликає у нас почуття всередині, а не факт її відчутного існув��ння."
             },
             {
               "type": "image",
@@ -6333,7 +6294,7 @@
             },
             {
               "type": "text",
-              "content": "La restauración de una puerta pombalina comienza con un estudio de estado. El conservador golpea los paneles con un pequeño mazo de latón, escuchando el ruido sordo de la madera sana frente a la resonancia hueca de la podredumbre interna. El contenido de humedad se mide con un medidor tipo alfiler: lecturas superiores al 20% indican colonización activa de hongos, típicamente Serpula lacrymans (podredumbre seca) o Coniophora puteana (hongo del sótano). Los daños causados ​​por insectos (las galerías sinuosas de Anobium punctatum (escarabajo común de los muebles) o, en las maderas duras tropicales, los túneles más anchos de Lyctus brunneus (escarabajo de los postes de pólvora), se mapean con una sonda dental. Sólo después de este inventario forense comienza la intervención física."
+              "content": "La restauración de una puerta pombalina comienza con un estudio de estado. El conservador golpea los paneles con un pequeño mazo de latón, escuchando el ruido sordo de la madera sana frente a la resonancia hueca de la podredumbre interna. El contenido de humedad se mide con un medidor tipo alfiler: lecturas superiores al 20% indican colonización activa de hongos, típicamente Serpula lacrymans (podredumbre seca) o Coniophora puteana (hongo del sótano). Los daños causados ���​por insectos (las galerías sinuosas de Anobium punctatum (escarabajo común de los muebles) o, en las maderas duras tropicales, los túneles más anchos de Lyctus brunneus (escarabajo de los postes de pólvora), se mapean con una sonda dental. Sólo después de este inventario forense comienza la intervención física."
             },
             {
               "type": "text",
