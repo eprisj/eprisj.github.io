@@ -2784,6 +2784,10 @@
           "caption": ""
         },
         {
+          "type": "header",
+          "content": ""
+        },
+        {
           "type": "image",
           "content": "new-editorial-story-2",
           "caption": "Lead image",
