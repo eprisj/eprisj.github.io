@@ -2797,7 +2797,10 @@
         },
         {
           "type": "gallery",
-          "content": [],
+          "content": [
+            "https://api.eprisjournal.com/uploads/mrpcsa7el8zveu.jpg",
+            "https://api.eprisjournal.com/uploads/mrpcsht8an9mj0.jpg"
+          ],
           "caption": ""
         },
         {
