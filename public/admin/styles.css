@@ -1158,6 +1158,16 @@ textarea {
 .upload-icon { color: var(--text-muted); margin-bottom: 4px; }
 .upload-drop-main { margin: 0; font-size: .9rem; font-weight: 700; }
 .upload-drop-sub { margin: 0 0 6px; font-size: .74rem; color: var(--text-muted); }
+.upload-preview-box {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px; margin-bottom: 16px;
+  border: 1px solid rgba(80,26,44,.12); border-radius: var(--radius);
+  background: var(--bg-card);
+}
+.upload-preview-box img { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; flex-shrink: 0; }
+.upload-preview-info { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.upload-preview-info span:first-child { font-size: .82rem; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.upload-preview-info span:last-child { font-size: .76rem; color: var(--text-muted); }
 .upload-results { display: grid; gap: 10px; margin-bottom: 14px; }
 .upload-action-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
 .upload-hint { margin: 0; font-family: var(--font-mono); font-size: .62rem; color: var(--text-muted); letter-spacing: .03em; }
@@ -3765,6 +3775,8 @@ body.busy::after {
 
 /* Excerpt */
 .wys-excerpt { font-family: var(--font-serif); font-style: italic; font-size: clamp(17px, 2.2vw, 22px); line-height: 1.5; color: var(--text-muted); margin: 18px 0 0; padding: 4px; }
+.wys-excerpt-count { font-size: 11px; color: var(--text-faint, #888); margin: 2px 4px 0; text-align: right; }
+.wys-excerpt-count .is-over { color: #e2673a; font-weight: 600; }
 
 /* Tags */
 .wys-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; align-items: center; }

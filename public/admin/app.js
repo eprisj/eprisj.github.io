@@ -966,12 +966,46 @@ function pickImageFile() {
   imageFileInput.click();
 }
 
+// Instant local preview the moment a file is picked/dropped — before this,
+// the only feedback during a multi-second upload was a plain "Загружаю..."
+// status line with nothing to look at.
+let _uploadPreviewObjectUrl = null;
+function showUploadPreview(file) {
+  const box = byId('uploadPreviewBox');
+  const img = byId('uploadPreviewImg');
+  const nameEl = byId('uploadPreviewName');
+  const sizeEl = byId('uploadPreviewSize');
+  if (!box || !img) return;
+  if (_uploadPreviewObjectUrl) URL.revokeObjectURL(_uploadPreviewObjectUrl);
+  _uploadPreviewObjectUrl = URL.createObjectURL(file);
+  img.src = _uploadPreviewObjectUrl;
+  nameEl.textContent = file.name;
+  sizeEl.textContent = formatFileSize(file.size);
+  box.hidden = false;
+}
+function formatFileSize(bytes) {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+function reportUploadSavings(originalSize, uploadedSize) {
+  const sizeEl = byId('uploadPreviewSize');
+  if (!sizeEl) return;
+  if (uploadedSize < originalSize) {
+    const pct = Math.round((1 - uploadedSize / originalSize) * 100);
+    sizeEl.textContent = `${formatFileSize(originalSize)} → ${formatFileSize(uploadedSize)} (−${pct}%, сжато автоматически)`;
+  } else {
+    sizeEl.textContent = `${formatFileSize(originalSize)} · загружено без сжатия`;
+  }
+}
+
 function onImageFileChange(event) {
   const input = event.target;
   const file = input.files?.[0];
   if (!file) {
     return;
   }
+  showUploadPreview(file);
   uploadImageToGitHub(file);
   input.value = '';
 }
@@ -1001,6 +1035,7 @@ function onUploadDrop(event) {
   if (!file) {
     return;
   }
+  showUploadPreview(file);
   uploadImageToGitHub(file);
 }
 
@@ -1129,6 +1164,7 @@ async function uploadImageToVPS(file) {
 }
 
 async function uploadImageToGitHub(file) {
+  const originalSize = file.size;
   try {
     saveSettings();
     setBusy(true);
@@ -1138,6 +1174,13 @@ async function uploadImageToGitHub(file) {
     const url = await uploadImageToVPS(file);
     uploadedImageUrlInput.value = url;
     uploadedImagePagesUrlInput.value = url;
+    // HEAD the result to learn the byte size actually stored on the server
+    // (compressImageForUpload may have re-encoded it smaller) and show the
+    // before/after — makes the automatic compression visible instead of silent.
+    fetch(url, { method: 'HEAD' }).then((r) => {
+      const len = Number(r.headers.get('content-length'));
+      if (len) reportUploadSavings(originalSize, len);
+    }).catch(() => {});
 
     const hasApplied = injectUploadedUrlIntoCurrentEntry(url);
     if (hasApplied) {
@@ -2612,6 +2655,13 @@ function truncateText(value, maxLength = 180) {
     return text;
   }
   return `${text.slice(0, maxLength - 1).trim()}...`;
+}
+
+const EXCERPT_PREVIEW_LIMIT = 220; // matches truncateText(excerpt, 220) in renderEntryPreview
+function excerptCountHtml(text) {
+  const len = String(text || '').length;
+  const over = len > EXCERPT_PREVIEW_LIMIT;
+  return `<span class="${over ? 'is-over' : ''}">${len} / ${EXCERPT_PREVIEW_LIMIT}</span>${over ? ' — обрежется на карточках сайта' : ''}`;
 }
 
 function renderEntryPreview(data, section, lang, entry) {
@@ -9623,8 +9673,11 @@ async function flushModernEditor() {
     // Title
     h += `<h1 class="wys-title wys-ce" contenteditable="true" data-wys="title" data-empty="Заголовок статьи…">${esc(a.title || '')}</h1>`;
 
-    // Excerpt
+    // Excerpt — carded previews truncate at 220 chars (see truncateText call
+    // in the preview renderer), so the editor needs to see that limit live
+    // instead of finding out only after the text gets cut off on the site.
     h += `<p class="wys-excerpt wys-ce" contenteditable="true" data-wys="excerpt" data-empty="Краткое описание — первый абзац-крючок…">${esc(a.excerpt || '')}</p>`;
+    h += `<div class="wys-excerpt-count" data-wys-excerpt-count>${excerptCountHtml(a.excerpt || '')}</div>`;
 
     // Tags
     h += '<div class="wys-tags" data-wys-tags>';
@@ -9761,7 +9814,11 @@ async function flushModernEditor() {
     const val = el.classList.contains('wys-rt') ? sanitizeInline(el.innerHTML) : (el.tagName === 'INPUT' ? el.value : el.textContent);
 
     if (field === 'title') _model.title = val;
-    else if (field === 'excerpt') _model.excerpt = val;
+    else if (field === 'excerpt') {
+      _model.excerpt = val;
+      const counter = canvas.querySelector('[data-wys-excerpt-count]');
+      if (counter) counter.innerHTML = excerptCountHtml(val);
+    }
     else if (field === 'category') _model.category = val;
     else if (field === 'date') _model.date = val;
     else if (field === 'author') _model.author = val;

@@ -527,6 +527,13 @@
                   <button id="pickImageBtn" class="btn btn-sm" type="button">Выбрать файл</button>
                   <input id="imageFileInput" type="file" accept="image/*" hidden />
                 </div>
+                <div id="uploadPreviewBox" class="upload-preview-box" hidden>
+                  <img id="uploadPreviewImg" alt="" />
+                  <div class="upload-preview-info">
+                    <span id="uploadPreviewName"></span>
+                    <span id="uploadPreviewSize"></span>
+                  </div>
+                </div>
                 <div class="upload-results">
                   <label class="full"><span class="field-label">Быстрый URL (работает сразу)</span><input id="uploadedImageUrl" readonly placeholder="После загрузки..." /></label>
                   <label class="full"><span class="field-label">URL сайта (после деплоя)</span><input id="uploadedImagePagesUrl" readonly placeholder="После деплоя..." /></label>
