@@ -10305,7 +10305,7 @@ async function flushModernEditor() {
       inner = '<div class="wys-gal">';
       items.forEach((it, gi) => {
         const s = imgUrl(it, 400, 400);
-        inner += `<div class="wys-gal-item">${s ? `<img src="${esc(s)}" referrerpolicy="no-referrer" alt="">` : ''}
+        inner += `<div class="wys-gal-item" draggable="true" data-gal-i="${i}" data-gal-gi="${gi}">${s ? `<img src="${esc(s)}" referrerpolicy="no-referrer" alt="">` : ''}
           <button class="wys-gal-x" data-wys-act="gal-del" data-i="${i}" data-gi="${gi}" title="Удалить">×</button>
           ${gi > 0 ? `<button class="wys-gal-move wys-gal-move-l" data-wys-act="gal-move" data-i="${i}" data-gi="${gi}" data-dir="-1" title="Переместить влево">‹</button>` : ''}
           ${gi < items.length - 1 ? `<button class="wys-gal-move wys-gal-move-r" data-wys-act="gal-move" data-i="${i}" data-gi="${gi}" data-dir="1" title="Переместить вправо">›</button>` : ''}
@@ -10449,6 +10449,7 @@ async function flushModernEditor() {
   // ── drag-and-drop block reorder ───────────────────────────────────────────
   let _dragFrom = null;
   canvas.addEventListener('dragstart', (e) => {
+    if (e.target.closest('.wys-gal-item')) return; // handled separately below
     const handle = e.target.closest('.wys-bc-drag');
     if (!handle) { e.preventDefault(); return; }
     _dragFrom = Number(handle.getAttribute('data-drag-i'));
@@ -10524,6 +10525,44 @@ async function flushModernEditor() {
   canvas.addEventListener('dragend', () => {
     _dragFrom = null;
     canvas.querySelectorAll('.wys-block.drop-before, .wys-block.drop-after, .wys-block.dragging').forEach((el) => el.classList.remove('drop-before', 'drop-after', 'dragging'));
+  });
+
+  // ── drag-and-drop reorder WITHIN a gallery (drag a tile onto another) ─────
+  let _galDragFrom = null; // { i: block index, gi: gallery item index }
+  canvas.addEventListener('dragstart', (e) => {
+    const tile = e.target.closest('.wys-gal-item');
+    if (!tile) return;
+    _galDragFrom = { i: Number(tile.getAttribute('data-gal-i')), gi: Number(tile.getAttribute('data-gal-gi')) };
+    tile.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', ''); // Firefox requires data to be set for drag to start
+  });
+  canvas.addEventListener('dragover', (e) => {
+    if (!_galDragFrom) return;
+    const tile = e.target.closest('.wys-gal-item');
+    if (!tile || Number(tile.getAttribute('data-gal-i')) !== _galDragFrom.i) return;
+    e.preventDefault();
+    canvas.querySelectorAll('.wys-gal-item.drop-target').forEach((el) => el.classList.remove('drop-target'));
+    tile.classList.add('drop-target');
+  });
+  canvas.addEventListener('drop', (e) => {
+    if (!_galDragFrom) return;
+    const tile = e.target.closest('.wys-gal-item');
+    canvas.querySelectorAll('.wys-gal-item.drop-target, .wys-gal-item.dragging').forEach((el) => el.classList.remove('drop-target', 'dragging'));
+    if (!tile || Number(tile.getAttribute('data-gal-i')) !== _galDragFrom.i) { _galDragFrom = null; return; }
+    e.preventDefault();
+    const targetGi = Number(tile.getAttribute('data-gal-gi'));
+    const b = _model?.content?.[_galDragFrom.i];
+    if (b && Array.isArray(b.content) && targetGi !== _galDragFrom.gi) {
+      const [moved] = b.content.splice(_galDragFrom.gi, 1);
+      b.content.splice(targetGi, 0, moved);
+      render(); commit();
+    }
+    _galDragFrom = null;
+  });
+  canvas.addEventListener('dragend', () => {
+    _galDragFrom = null;
+    canvas.querySelectorAll('.wys-gal-item.drop-target, .wys-gal-item.dragging').forEach((el) => el.classList.remove('drop-target', 'dragging'));
   });
 
   function newBlock(type) {
