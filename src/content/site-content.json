@@ -2716,7 +2716,9 @@
         {
           "type": "gallery",
           "content": [
-            "https://api.eprisjournal.com/uploads/mrpa6tqpmljolk.jpg"
+            "https://api.eprisjournal.com/uploads/mrpa6tqpmljolk.jpg",
+            "https://api.eprisjournal.com/uploads/mrpa71xju7awts.jpg",
+            "https://api.eprisjournal.com/uploads/mrpa77rpsjpc66.jpg"
           ],
           "caption": ""
         },
@@ -3305,7 +3307,7 @@
             {
               "type": "poll",
               "content": {
-                "question": "Двери какого города восхи��ают вас больше всего?",
+                "question": "Двери какого города восхищают вас больше всего?",
                 "options": [
                   {
                     "label": "Лиссабон",
