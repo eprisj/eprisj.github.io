@@ -4137,10 +4137,12 @@ body.busy::after {
 /* Gallery */
 .wys-gal { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 4px; margin: 8px 0; border-radius: 4px; transition: box-shadow .12s, background .12s; }
 .wys-gal.wys-gal-dragover { box-shadow: 0 0 0 2px var(--accent); background: var(--accent-soft); }
-.wys-gal-item { position: relative; aspect-ratio: 1; background: var(--bg-soft); border-radius: 3px; overflow: hidden; }
-.wys-gal-item img { width: 100%; height: 100%; object-fit: cover; }
-.wys-gal-x { position: absolute; top: 3px; right: 3px; width: 18px; height: 18px; border: none; border-radius: 50%; background: rgba(0,0,0,.6); color: #fff; cursor: pointer; font-size: .7rem; line-height: 1; z-index: 2; }
-.wys-gal-move { position: absolute; bottom: 3px; width: 18px; height: 18px; border: none; border-radius: 50%; background: rgba(0,0,0,.6); color: #fff; cursor: pointer; font-size: .75rem; line-height: 1; z-index: 2; }
+.wys-gal-item { position: relative; aspect-ratio: 1; background: var(--bg-soft); border-radius: 3px; overflow: hidden; cursor: grab; transition: box-shadow .12s, opacity .12s; }
+.wys-gal-item img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.wys-gal-item.dragging { opacity: .4; cursor: grabbing; }
+.wys-gal-item.drop-target { box-shadow: inset 0 0 0 3px var(--accent); }
+.wys-gal-x { position: absolute; top: 3px; right: 3px; width: 18px; height: 18px; border: none; border-radius: 50%; background: rgba(0,0,0,.6); color: #fff; cursor: pointer !important; font-size: .7rem; line-height: 1; z-index: 2; }
+.wys-gal-move { position: absolute; bottom: 3px; width: 18px; height: 18px; border: none; border-radius: 50%; background: rgba(0,0,0,.6); color: #fff; cursor: pointer !important; font-size: .75rem; line-height: 1; z-index: 2; }
 .wys-gal-move-l { left: 3px; }
 .wys-gal-move-r { right: 3px; }
 .wys-gal-move:hover { background: var(--accent); }
