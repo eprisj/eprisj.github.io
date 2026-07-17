@@ -2676,8 +2676,7 @@
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mrp9t34bnz37vq.webp",
           "caption": "",
-          "stretched": false,
-          "width": 100
+          "stretched": true
         },
         {
           "type": "text",
@@ -2691,7 +2690,7 @@
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mrp9xqom3fudfj.webp",
           "caption": "",
-          "width": 100
+          "stretched": true
         },
         {
           "type": "header",
@@ -4126,7 +4125,7 @@
             },
             {
               "type": "text",
-              "content": "Відкриття нових спогадів із духовним і матеріальним багатством живить як душу, так і серце. Я наголошую на цій подвійності, тому що дизайн створений із фізичних елементів, але все, що в ньому, сприяє розумовому досвіду. Сприйняття взаємозв’язків важливіше, ніж просто існування речей.<br>Іншими словами, ми цінуємо те, що лілія викликає у нас почуття всередині, а не факт її відчутного існув��ння."
+              "content": "Відкриття нових спогадів із духовним і матеріальним багатством живить як душу, так і серце. Я наголошую на цій подвійності, тому що дизайн створений із фізичних елементів, але все, що в ньому, сприяє розумовому досвіду. Сприйняття взаємозв’язків важливіше, ніж просто існування речей.<br>Іншими словами, ми цінуємо те, що лілія викликає у нас почуття всередині, а не факт її відчутного існування."
             },
             {
               "type": "image",
@@ -6294,7 +6293,7 @@
             },
             {
               "type": "text",
-              "content": "La restauración de una puerta pombalina comienza con un estudio de estado. El conservador golpea los paneles con un pequeño mazo de latón, escuchando el ruido sordo de la madera sana frente a la resonancia hueca de la podredumbre interna. El contenido de humedad se mide con un medidor tipo alfiler: lecturas superiores al 20% indican colonización activa de hongos, típicamente Serpula lacrymans (podredumbre seca) o Coniophora puteana (hongo del sótano). Los daños causados ���​por insectos (las galerías sinuosas de Anobium punctatum (escarabajo común de los muebles) o, en las maderas duras tropicales, los túneles más anchos de Lyctus brunneus (escarabajo de los postes de pólvora), se mapean con una sonda dental. Sólo después de este inventario forense comienza la intervención física."
+              "content": "La restauración de una puerta pombalina comienza con un estudio de estado. El conservador golpea los paneles con un pequeño mazo de latón, escuchando el ruido sordo de la madera sana frente a la resonancia hueca de la podredumbre interna. El contenido de humedad se mide con un medidor tipo alfiler: lecturas superiores al 20% indican colonización activa de hongos, típicamente Serpula lacrymans (podredumbre seca) o Coniophora puteana (hongo del sótano). Los daños causados ​​por insectos (las galerías sinuosas de Anobium punctatum (escarabajo común de los muebles) o, en las maderas duras tropicales, los túneles más anchos de Lyctus brunneus (escarabajo de los postes de pólvora), se mapean con una sonda dental. Sólo después de este inventario forense comienza la intervención física."
             },
             {
               "type": "text",
