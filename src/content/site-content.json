@@ -1849,6 +1849,11 @@
       "imageSeed": "",
       "content": [
         {
+          "type": "image",
+          "content": "",
+          "caption": ""
+        },
+        {
           "type": "text",
           "content": "<span>There is a </span>preconception<span> that pleasure derived from an art piece, or the smile it evokes, somehow lowers its value and strips it of the grand title of “Art.” However, this is simply not true.</span>"
         },
