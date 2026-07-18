@@ -2689,6 +2689,7 @@ function renderCreatorQuality(data, section, lang, entry) {
     addChip(hasMedia ? 'Обложка' : 'Нет фото', hasMedia);
     addChip(`${blocks.length} блоков`, blocks.length >= 3);
     addChip(`${words} слов`, words >= 80);
+    if (words > 0) addChip(`~${Math.max(1, Math.round(words / 200))} мин чтения`, true);
     addChip(Array.isArray(entry.tags) && entry.tags.length ? 'Теги' : 'Нет тегов', Array.isArray(entry.tags) && entry.tags.length);
     addChip(hasPoll ? 'Опрос' : 'Нет опроса', hasPoll);
   } else if (section === 'items') {
