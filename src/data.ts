@@ -174,6 +174,7 @@ export interface Issue {
   number?: string;
   letterHeading?: string;
   letterBody?: string;
+  letterSignature?: string;
 }
 
 export interface SiteTheme {
