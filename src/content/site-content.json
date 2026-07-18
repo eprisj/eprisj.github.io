@@ -1925,7 +1925,8 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mrp9xqom3fudfj.webp",
-          "stretched": true
+          "stretched": false,
+          "align": "left"
         },
         {
           "type": "header",
