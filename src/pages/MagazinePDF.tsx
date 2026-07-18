@@ -295,7 +295,7 @@ function LetterPage({ issue, t }: { issue: Issue; t: T }) {
       {paragraphs.map((p, i) => (
         <Text key={i} style={s.letterBody}>{p}</Text>
       ))}
-      <Text style={s.letterSignature}>Mariia Ivanova</Text>
+      <Text style={s.letterSignature}>{(issue.letterSignature || '').trim() || 'Mariia Ivanova'}</Text>
       <Text style={s.letterRole}>{t('issue.letter.role').toUpperCase()}</Text>
       <Text style={s.letterMark}>EPRIS</Text>
     </Page>

@@ -152,7 +152,7 @@ export function IssuePage({
                   {p}
                 </p>
               ))}
-              <p className="font-serif text-lg italic text-[var(--c-accent)] mt-6">Mariia Ivanova</p>
+              <p className="font-serif text-lg italic text-[var(--c-accent)] mt-6">{(issue.letterSignature || '').trim() || 'Mariia Ivanova'}</p>
               <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.4)] mt-1">
                 {t('issue.letter.role')}
               </p>

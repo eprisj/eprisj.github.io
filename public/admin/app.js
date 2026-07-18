@@ -6173,6 +6173,7 @@ function captureCurrentIssueFromForm() {
   cur.publishedAt = (document.getElementById('issuePublishedAt')?.value || '').trim();
   cur.letterHeading = (document.getElementById('issueLetterHeading')?.value || '').trim();
   cur.letterBody = (document.getElementById('issueLetterBody')?.value || '').trim();
+  cur.letterSignature = (document.getElementById('issueLetterSignature')?.value || '').trim();
   cur.articleIds = (_issueOrder || []).slice();
 }
 
@@ -6209,6 +6210,7 @@ function seedIssueForm(issueData) {
   set('issuePublishedAt', issueData.publishedAt);
   set('issueLetterHeading', issueData.letterHeading);
   set('issueLetterBody', issueData.letterBody);
+  set('issueLetterSignature', issueData.letterSignature);
   _issueStatus = issueData.status === 'published' ? 'published' : (issueData.status === 'archived' ? 'archived' : 'draft');
 
   const data = parseEditorJsonSafe();
