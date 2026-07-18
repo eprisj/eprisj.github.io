@@ -7734,70 +7734,89 @@ function bindStudioRowActions() {
     dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = ''; });
     dropZone.addEventListener('drop', e => {
       e.preventDefault(); dropZone.style.borderColor = '';
-      const f = e.dataTransfer?.files[0];
-      if (f) applyTrackFile(f);
+      const files = Array.from(e.dataTransfer?.files || []);
+      if (files.length) applyTrackFiles(files);
     });
   }
-  if (fileInput) fileInput.addEventListener('change', () => { if (fileInput.files[0]) applyTrackFile(fileInput.files[0]); });
+  if (fileInput) fileInput.addEventListener('change', () => { if (fileInput.files.length) applyTrackFiles(Array.from(fileInput.files)); });
 
-  let _pendingFile = null;
-  function applyTrackFile(f) {
-    _pendingFile = f;
+  let _pendingFiles = [];
+  function applyTrackFiles(files) {
+    _pendingFiles = files;
     const titleInp = document.getElementById('trackTitle');
-    if (titleInp && !titleInp.value) titleInp.value = f.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
-    if (dropZone) dropZone.querySelector('.upload-drop-main') && (dropZone.querySelector('.upload-drop-main').textContent = f.name);
     const mainDiv = dropZone?.querySelector('div');
-    if (mainDiv) mainDiv.textContent = f.name + ' (' + fmtBytes(f.size) + ')';
+    if (files.length === 1) {
+      if (titleInp) { titleInp.placeholder = 'Название трека'; if (!titleInp.value) titleInp.value = files[0].name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' '); }
+      if (mainDiv) mainDiv.textContent = files[0].name + ' (' + fmtBytes(files[0].size) + ')';
+    } else {
+      // Batch mode: title comes from each filename, "Название" field is
+      // ignored (would otherwise apply the same title to every track);
+      // "Исполнитель" still applies to all of them if filled in.
+      if (titleInp) titleInp.value = '';
+      if (titleInp) titleInp.placeholder = `Названия — из ${files.length} имён файлов`;
+      if (mainDiv) mainDiv.textContent = `Выбрано файлов: ${files.length} (${fmtBytes(files.reduce((s, f) => s + f.size, 0))})`;
+    }
+    if (uploadBtn) uploadBtn.textContent = files.length > 1 ? `Загрузить ${files.length} треков` : 'Загрузить';
+  }
+
+  async function uploadOneTrack(file, title, artist, onProgress) {
+    const token = getRadioToken();
+    const fd = new FormData();
+    fd.append('file', file);
+    fd.append('title', title);
+    if (artist) fd.append('artist', artist);
+    await new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', RADIO_API + '/api/music/upload');
+      xhr.setRequestHeader('X-Admin-Token', token);
+      xhr.upload.onprogress = e => { if (e.lengthComputable) onProgress(Math.round(e.loaded / e.total * 100), e.loaded, e.total); };
+      xhr.onload = () => {
+        try {
+          const j = JSON.parse(xhr.responseText);
+          if (j.ok) resolve(j);
+          else reject(new Error(j.error || 'upload error'));
+        } catch { reject(new Error('parse error')); }
+      };
+      xhr.onerror = () => reject(new Error('network error'));
+      xhr.send(fd);
+    });
   }
 
   async function uploadTrack() {
-    if (!_pendingFile) { radioShowToast('Выберите файл', 'error'); return; }
+    if (!_pendingFiles.length) { radioShowToast('Выберите файл', 'error'); return; }
     const token = getRadioToken();
     if (!token) { radioShowToast('Нет Admin Token', 'error'); return; }
-    const title = document.getElementById('trackTitle')?.value.trim() || _pendingFile.name;
-    const artist = document.getElementById('trackArtist')?.value.trim() || '';
-    const fd = new FormData();
-    fd.append('file', _pendingFile);
-    fd.append('title', title);
-    if (artist) fd.append('artist', artist);
+    const sharedArtist = document.getElementById('trackArtist')?.value.trim() || '';
+    const singleTitle = document.getElementById('trackTitle')?.value.trim() || '';
+    const files = _pendingFiles;
     if (progressWrap) progressWrap.style.display = 'block';
-    if (progressBar) progressBar.style.width = '0%';
-    if (progressLabel) progressLabel.textContent = 'Загружаю...';
     if (uploadBtn) uploadBtn.disabled = true;
-    try {
-      await new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', RADIO_API + '/api/music/upload');
-        xhr.setRequestHeader('X-Admin-Token', token);
-        xhr.upload.onprogress = e => {
-          if (e.lengthComputable) {
-            const pct = Math.round(e.loaded / e.total * 100);
-            if (progressBar) progressBar.style.width = pct + '%';
-            if (progressLabel) progressLabel.textContent = pct + '% · ' + fmtBytes(e.loaded) + ' / ' + fmtBytes(e.total);
-          }
-        };
-        xhr.onload = () => {
-          try {
-            const j = JSON.parse(xhr.responseText);
-            if (j.ok) resolve(j);
-            else reject(new Error(j.error || 'upload error'));
-          } catch { reject(new Error('parse error')); }
-        };
-        xhr.onerror = () => reject(new Error('network error'));
-        xhr.send(fd);
-      });
-      radioShowToast('Трек загружен!', 'success');
-      _pendingFile = null;
-      if (document.getElementById('trackTitle')) document.getElementById('trackTitle').value = '';
-      if (document.getElementById('trackArtist')) document.getElementById('trackArtist').value = '';
-      if (dropZone) { const d = dropZone.querySelector('div'); if (d) d.textContent = 'Перетащите аудиофайл или нажмите'; }
-      loadTracks();
-    } catch (e) {
-      radioShowToast('Ошибка загрузки: ' + e.message, 'error');
-    } finally {
-      if (progressWrap) setTimeout(() => { progressWrap.style.display = 'none'; }, 2000);
-      if (uploadBtn) uploadBtn.disabled = false;
+    let uploaded = 0, failed = 0;
+    for (let idx = 0; idx < files.length; idx++) {
+      const f = files[idx];
+      const title = files.length === 1 ? (singleTitle || f.name) : f.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
+      try {
+        await uploadOneTrack(f, title, sharedArtist, (pct, loaded, total) => {
+          if (progressBar) progressBar.style.width = pct + '%';
+          if (progressLabel) progressLabel.textContent = files.length > 1
+            ? `Трек ${idx + 1}/${files.length} — ${pct}% · ${fmtBytes(loaded)} / ${fmtBytes(total)}`
+            : `${pct}% · ${fmtBytes(loaded)} / ${fmtBytes(total)}`;
+        });
+        uploaded++;
+      } catch (e) {
+        failed++;
+        radioShowToast(`Ошибка "${f.name}": ${e.message}`, 'error');
+      }
     }
+    radioShowToast(failed ? `Загружено ${uploaded} из ${files.length}` : `Загружено треков: ${uploaded}`, failed ? 'error' : 'success');
+    _pendingFiles = [];
+    if (document.getElementById('trackTitle')) { document.getElementById('trackTitle').value = ''; document.getElementById('trackTitle').placeholder = 'Название трека'; }
+    if (document.getElementById('trackArtist')) document.getElementById('trackArtist').value = '';
+    if (dropZone) { const d = dropZone.querySelector('div'); if (d) d.textContent = 'Перетащите аудиофайл или нажмите'; }
+    if (uploadBtn) uploadBtn.textContent = 'Загрузить';
+    if (progressWrap) setTimeout(() => { progressWrap.style.display = 'none'; }, 2000);
+    if (uploadBtn) uploadBtn.disabled = false;
+    loadTracks();
   }
 
   if (uploadBtn) uploadBtn.addEventListener('click', uploadTrack);

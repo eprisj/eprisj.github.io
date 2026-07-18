@@ -501,12 +501,12 @@
               <div class="card">
                 <h2 class="card-title">Подключение к GitHub</h2>
                 <div class="form-grid">
-                  <label><span class="field-label">Владелец GitHub</span><input id="owner" placeholder="your-org-or-user" value="eprisj" /></label>
-                  <label><span class="field-label">Репозиторий</span><input id="repo" placeholder="repo-name" value="eprisj.github.io" /></label>
+                  <label><span class="field-label">Владелец GitHub</span><input id="owner" placeholder="ваш-логин-или-организация" value="eprisj" /></label>
+                  <label><span class="field-label">Репозиторий</span><input id="repo" placeholder="имя-репозитория" value="eprisj.github.io" /></label>
                   <label><span class="field-label">Ветка</span><input id="branch" placeholder="main" value="main" /></label>
                   <label><span class="field-label">Путь к файлу контента</span><input id="path" value="src/content/site-content.json" /></label>
                   <label class="full"><span class="field-label">Папка для загружаемых фото</span><input id="uploadDir" value="public/uploads" /></label>
-                  <label class="full"><span class="field-label">GitHub Token (PAT, Contents: Read and write)</span><input id="token" type="password" autocomplete="off" placeholder="github_pat_..." /></label>
+                  <label class="full"><span class="field-label">Токен GitHub (право доступа «Contents: Read and write»)</span><input id="token" type="password" autocomplete="off" placeholder="github_pat_..." /></label>
                   <div class="full checkbox-row">
                     <label class="checkbox-label" for="rememberToken"><input id="rememberToken" type="checkbox" />Запомнить токен</label>
                   </div>
@@ -517,7 +517,7 @@
                 <div class="card">
                   <h2 class="card-title">Быстрые действия</h2>
                   <div class="quick-actions-grid">
-                    <button id="applyDefaultsBtn" class="btn" type="button">Стандартные eprisj</button>
+                    <button id="applyDefaultsBtn" class="btn" type="button">Стандартные настройки eprisj</button>
                     <button id="resetSettingsBtn" class="btn" type="button">Сбросить настройки</button>
                   </div>
                   <div class="checkbox-row" style="margin-top:12px">
@@ -854,7 +854,7 @@
                       <div id="trackDropZone" style="border:2px dashed var(--line);border-radius:6px;padding:32px;text-align:center;cursor:pointer">
                         <div style="font-size:.9rem;font-weight:700;color:var(--text-muted)">Перетащите аудиофайл или нажмите</div>
                         <div style="font-size:.75rem;color:var(--text-muted);margin-top:4px">MP3, WAV, OGG, FLAC, M4A · макс. 300 МБ</div>
-                        <input id="trackFileInput" type="file" accept=".mp3,.wav,.ogg,.flac,.m4a,.aac,.opus,.webm" style="display:none" />
+                        <input id="trackFileInput" type="file" accept=".mp3,.wav,.ogg,.flac,.m4a,.aac,.opus,.webm" multiple style="display:none" />
                       </div>
                       <div id="trackUploadProgress" style="display:none"><div style="height:4px;background:var(--line);border-radius:2px;overflow:hidden"><div id="trackProgressBar" style="height:100%;background:var(--accent);width:0%;transition:width .3s"></div></div><p id="trackProgressLabel" style="font-size:.72rem;color:var(--text-muted);margin:4px 0 0"></p></div>
                       <div style="display:flex;gap:8px"><button class="btn btn-primary btn-sm" type="button" id="trackUploadBtn">Загрузить</button><button class="btn btn-sm" type="button" id="trackRefreshBtn">↻ Обновить</button></div>
