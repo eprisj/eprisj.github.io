@@ -2907,6 +2907,15 @@
           "content": "If the influences are to be determined, there are several main pillars of renowned architects \nphilosophy:"
         },
         {
+          "type": "checklist",
+          "content": {
+            "items": [
+              ""
+            ]
+          },
+          "caption": "If the influences are to be determined, there are several main pillars of renowned architects philosophy:"
+        },
+        {
           "type": "image",
           "content": "new-editorial-story-2",
           "caption": "Lead image"
