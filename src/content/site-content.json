@@ -2920,6 +2920,10 @@
         },
         {
           "type": "header",
+          "content": "Architectural Philosophy and Design Principles"
+        },
+        {
+          "type": "text",
           "content": ""
         },
         {
