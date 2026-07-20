@@ -2930,10 +2930,8 @@
           "content": "Another project executed in the late 1970s, the Rokko Housing complex, was widely published and emphasized its importance in the architectural field beyond the local context. It's inserted into a slope at the foot of the Rokko Mountains, allowing panoramic views. Remaining loyal to the rigid grid and geometry, Tadao Ando nonetheless worked in a more elaborate form and composition, proving that simplicity is a <i>conscious, but not limiting, choice for his philosophical embodiment.</i>"
         },
         {
-          "type": "gallery",
-          "content": [
-            "https://api.eprisjournal.com/uploads/mrt4d5ef1m1idz.jpg"
-          ],
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mrt4d5ef1m1idz.jpg",
           "caption": ""
         },
         {
