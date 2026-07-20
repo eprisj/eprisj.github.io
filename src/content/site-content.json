@@ -2984,11 +2984,7 @@
         },
         {
           "type": "text",
-          "content": ""
-        },
-        {
-          "type": "header",
-          "content": "Restricted vocabulary "
+          "content": "<span><i><u><b>Restricted vocabulary </b></u></i></span>"
         },
         {
           "type": "text",
