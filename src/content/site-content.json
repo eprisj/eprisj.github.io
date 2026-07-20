@@ -2944,7 +2944,8 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mrt4lpc2fr80ye.jpg",
-          "caption": "Church on the Water (1988)"
+          "caption": "Church on the Water (1988)",
+          "stretched": true
         },
         {
           "type": "image",
