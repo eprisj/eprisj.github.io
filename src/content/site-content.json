@@ -1795,6 +1795,15 @@
   },
   "items": [
     {
+      "id": 8,
+      "title": "Tadao Ando",
+      "subtitle": "Architecture beneath the tangible",
+      "fig": "FIG. 08",
+      "description": "Tadao Ando is one of the most influential architects of 21st century, who challenges the conventional definition and boarders of architecture. His unique approach showcased the rethinking of traditional Japanese principles through bold shapes, materials and spatial organizations. In this article we are going to reveal the core principles of his philosophy and its cues.",
+      "imageSeed": "new-item-8",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mrt8t15sx0d6xg.jpg"
+    },
+    {
       "id": 7,
       "title": "Art that makes you smile",
       "subtitle": "ART & DESIGN",
@@ -1838,15 +1847,6 @@
       "description": "Choosing a place to stay in a new destination means entrusting it with the significant moments of your life. Falling into bed after a long walk through unfamiliar streets, late-night talks filled with the thoughts and emotions of the day, planning the next breakfast at your newly favorite nearby boulangerie, sharing genuine smiles and the pure excitement of exploration.",
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/mro4ypcjfxlboi.webp"
-    },
-    {
-      "id": 8,
-      "title": "Tadao Ando",
-      "subtitle": "Architecture beneath the tangible",
-      "fig": "FIG. 08",
-      "description": "Tadao Ando is one of the most influential architects of 21st century, who challenges the conventional definition and boarders of architecture. His unique approach showcased the rethinking of traditional Japanese principles through bold shapes, materials and spatial organizations. In this article we are going to reveal the core principles of his philosophy and its cues.",
-      "imageSeed": "new-item-8",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mrt8t15sx0d6xg.jpg"
     }
   ],
   "articles": [
