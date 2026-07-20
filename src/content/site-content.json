@@ -1838,6 +1838,14 @@
       "description": "Choosing a place to stay in a new destination means entrusting it with the significant moments of your life. Falling into bed after a long walk through unfamiliar streets, late-night talks filled with the thoughts and emotions of the day, planning the next breakfast at your newly favorite nearby boulangerie, sharing genuine smiles and the pure excitement of exploration.",
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/mro4ypcjfxlboi.webp"
+    },
+    {
+      "id": 8,
+      "title": "New gallery item",
+      "subtitle": "One-line context — replace me",
+      "fig": "FIG. 08",
+      "description": "One or two sentences describing this piece — replace with real copy before publishing.",
+      "imageSeed": "new-item-8"
     }
   ],
   "articles": [
@@ -3295,6 +3303,14 @@
           "description": "Я считаю, что когда вы вводите в окружающую среду игровые предметы, это расширяет границы разума. Это дает вам невербальное разрешение мыслить свободно – не только отвергать общепринятые рамки, но и забывать о их существовании.",
           "imageSeed": "new-item-7",
           "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
+        },
+        {
+          "id": 8,
+          "title": "Новый элемент галереи",
+          "subtitle": "Однострочный контекст — замените меня",
+          "fig": "FIG. 08",
+          "description": "Одно или два предложения, описывающих эту статью. Перед публикацией замените реальной копией.",
+          "imageSeed": "new-item-8"
         }
       ],
       "articles": [
@@ -4625,6 +4641,14 @@
           "description": "Я вважаю, що коли ви вводите ігрові об’єкти в середовище, це розширює межі розуму. Це дає вам невербальний дозвіл мислити вільно - не просто протистояти звичайним рамкам, але й забути про їх існування.",
           "imageSeed": "new-item-7",
           "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
+        },
+        {
+          "id": 8,
+          "title": "Новий елемент галереї",
+          "subtitle": "Однорядковий контекст — замініть мене",
+          "fig": "FIG. 08",
+          "description": "Одне-два речення з описом цього твору — замініть на справжню копію перед публікацією.",
+          "imageSeed": "new-item-8"
         }
       ],
       "articles": [
@@ -5955,6 +5979,14 @@
           "description": "Ich glaube, dass die Grenzen des Geistes erweitert werden, wenn man spielerische Objekte in eine Umgebung einbringt. Es gibt Ihnen die nonverbale Erlaubnis, frei zu denken – nicht nur, sich gegen konventionelle Rahmen zu stellen, sondern zu vergessen, dass sie überhaupt existieren.",
           "imageSeed": "new-item-7",
           "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
+        },
+        {
+          "id": 8,
+          "title": "Neues Galerieelement",
+          "subtitle": "Einzeiliger Kontext – ersetze mich",
+          "fig": "FIG. 08",
+          "description": "Ein oder zwei Sätze, die dieses Stück beschreiben – ersetzen Sie es vor der Veröffentlichung durch eine echte Kopie.",
+          "imageSeed": "new-item-8"
         }
       ],
       "articles": [
@@ -7111,6 +7143,14 @@
           "description": "Creo que cuando introduces objetos divertidos en un entorno, se expanden los límites de la mente. Te da permiso no verbal para pensar libremente, no sólo para ir contra los marcos convencionales, sino para olvidar que incluso existen.",
           "imageSeed": "new-item-7",
           "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
+        },
+        {
+          "id": 8,
+          "title": "Nuevo elemento de la galería",
+          "subtitle": "Contexto de una línea: reemplázame",
+          "fig": "FIG. 08",
+          "description": "Una o dos oraciones que describan este artículo; reemplácelas con una copia real antes de publicarlo.",
+          "imageSeed": "new-item-8"
         }
       ],
       "articles": [
@@ -8267,6 +8307,14 @@
           "description": "Bir ortama eğlenceli nesneler kattığınızda zihnin sınırlarını genişlettiğine inanıyorum. Size sözlü olmayan özgür düşünme izni verir; sadece geleneksel çerçevelere karşı çıkmak için değil, aynı zamanda bunların var olduğunu bile unutmak için.",
           "imageSeed": "new-item-7",
           "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
+        },
+        {
+          "id": 8,
+          "title": "Yeni galeri öğesi",
+          "subtitle": "Tek satırlık bağlam — beni değiştir",
+          "fig": "FIG. 08",
+          "description": "Bu parçayı açıklayan bir veya iki cümle; yayınlamadan önce gerçek kopyayla değiştirin.",
+          "imageSeed": "new-item-8"
         }
       ],
       "articles": [
@@ -9597,6 +9645,14 @@
           "description": "Credo che quando si introducono oggetti giocosi in un ambiente, si espandono i confini della mente. Ti dà il permesso non verbale di pensare liberamente, non solo di opporti ai frame convenzionali, ma di dimenticare che addirittura esistono.",
           "imageSeed": "new-item-7",
           "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
+        },
+        {
+          "id": 8,
+          "title": "Nuovo elemento della galleria",
+          "subtitle": "Contesto di una riga: sostituiscimi",
+          "fig": "FIG. 08",
+          "description": "Una o due frasi che descrivono questo pezzo: sostituisci con una copia reale prima di pubblicarla.",
+          "imageSeed": "new-item-8"
         }
       ],
       "articles": [
