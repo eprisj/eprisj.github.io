@@ -2928,10 +2928,9 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mrt4d5ef1m1idz.jpg",
-          "caption": "",
+          "caption": "Rokko Housing",
           "width": 40,
-          "stretched": false,
-          "align": "left"
+          "stretched": false
         },
         {
           "type": "text",
