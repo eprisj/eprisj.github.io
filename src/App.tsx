@@ -826,10 +826,9 @@ function AboutSection({ t }: { t: (key: string) => string }) {
   );
 }
 
-function GallerySection({ items, onItemClick, articles, onReadArticle }: { items: Item[]; onItemClick: (item: Item) => void; articles: Article[]; onReadArticle: (article: Article) => void }) {
+function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (item: Item) => void }) {
   if (items.length === 0) return null;
   const [featured, ...rest] = items;
-  const featuredArticle = findMatchingArticle(featured, articles);
 
   return (
     <div>
@@ -866,20 +865,9 @@ function GallerySection({ items, onItemClick, articles, onReadArticle }: { items
               <p className="font-serif text-sm sm:text-base text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-6">
                 {featured.description}
               </p>
-              <div className="flex items-center gap-4 flex-wrap">
-                <span className="inline-flex items-center self-start border border-[var(--c-accent)] rounded-full px-5 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors w-fit">
-                  read
-                </span>
-                {featuredArticle && (
-                  <button
-                    type="button"
-                    onClick={(e) => { e.stopPropagation(); onReadArticle(featuredArticle); }}
-                    className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors"
-                  >
-                    Full article →
-                  </button>
-                )}
-              </div>
+              <span className="inline-flex items-center self-start border border-[var(--c-accent)] rounded-full px-5 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors w-fit">
+                read
+              </span>
             </div>
           </div>
         </div>
@@ -894,7 +882,6 @@ function GallerySection({ items, onItemClick, articles, onReadArticle }: { items
         viewport={{ once: true, margin: '-6%' }}
       >
         {rest.map((item) => {
-          const matchedArticle = findMatchingArticle(item, articles);
           return (
           <motion.div
             key={item.id}
@@ -931,20 +918,9 @@ function GallerySection({ items, onItemClick, articles, onReadArticle }: { items
                 <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)]">
                   {item.subtitle}
                 </span>
-                <div className="flex items-center gap-3">
-                  <span className="inline-flex items-center border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
-                    read
-                  </span>
-                  {matchedArticle && (
-                    <button
-                      type="button"
-                      onClick={(e) => { e.stopPropagation(); onReadArticle(matchedArticle); }}
-                      className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors"
-                    >
-                      full article →
-                    </button>
-                  )}
-                </div>
+                <span className="inline-flex items-center border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
+                  read
+                </span>
               </div>
             </div>
           </motion.div>
@@ -2383,7 +2359,7 @@ export default function App() {
                 ) : (
                   <>
                     {activeTab === 'gallery' && (
-                      <GallerySection items={items} onItemClick={setSelectedGalleryItem} articles={articles} onReadArticle={(a) => handleSelectArticle(a.id, a)} />
+                      <GallerySection items={items} onItemClick={setSelectedGalleryItem} />
                     )}
                     {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
                     {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} />}
