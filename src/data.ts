@@ -33,11 +33,24 @@ export interface ContentBlock {
   alts?: string[]; // per-photo alt text for gallery blocks, index-aligned with content
 }
 
+export interface Author {
+  id: string;
+  name: string;
+  role?: string;
+  bio?: string;
+  photoUrl?: string;
+  website?: string;
+  instagram?: string;
+  active?: boolean;
+}
+
 export interface Article {
   id: number;
   title: string;
   author: string;
   role?: string;
+  /** Optional link to an entry in SiteContent.authors; falls back to the `author`/`role` strings when absent. */
+  authorId?: string;
   date: string;
   excerpt: string;
   category: string;
@@ -197,6 +210,7 @@ export interface SiteContent {
   issue?: Issue;
   issues?: Issue[];
   studio?: Studio;
+  authors?: Author[];
 }
 
 const content = rawContent as SiteContent;
@@ -356,6 +370,30 @@ export function getContentForLanguage(lang: string): LanguageContent {
     reviews: isPreview() ? reviews : reviews.filter(isEntityLive),
     libraryItems: isPreview() ? libraryItems : libraryItems.filter(isEntityLive)
   };
+}
+
+/** Live-aware authors list (preview → live → bundled). Only active authors are returned. */
+export function getAuthors(): Author[] {
+  return (src().authors || []).filter((a) => a && a.active !== false);
+}
+
+/**
+ * Resolve the Author record for an article: by explicit authorId first, then by
+ * a case-insensitive name match against the `author` string. Returns null when
+ * nothing matches so callers can fall back to the plain `author`/`role` fields.
+ */
+export function resolveAuthor(article: { authorId?: string; author?: string }): Author | null {
+  const all = src().authors || [];
+  if (article.authorId) {
+    const byId = all.find((a) => a.id === article.authorId);
+    if (byId) return byId;
+  }
+  const name = (article.author || '').trim().toLowerCase();
+  if (name) {
+    const byName = all.find((a) => (a.name || '').trim().toLowerCase() === name);
+    if (byName) return byName;
+  }
+  return null;
 }
 
 // Back-compat: the bundled translations map. Prefer getTranslations() for
