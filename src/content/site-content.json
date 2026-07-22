@@ -11762,5 +11762,17 @@
         "highlight": false
       }
     ]
-  }
+  },
+  "authors": [
+    {
+      "id": "author-1784732936927-kw554",
+      "name": "Новый автор",
+      "role": "Автор",
+      "bio": "",
+      "photoUrl": "",
+      "website": "",
+      "instagram": "",
+      "active": true
+    }
+  ]
 }
