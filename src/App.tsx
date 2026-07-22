@@ -708,7 +708,7 @@ function SectionMasthead({ t, variant = 'photo' }: { t: (key: string) => string;
 
   if (variant === 'plain') {
     return (
-      <div className="px-5 sm:px-10 md:px-16 pt-14 pb-10 sm:pt-20 sm:pb-14 flex items-end justify-between gap-4 sm:gap-8 text-[var(--c-accent)]">
+      <div className="px-5 sm:px-10 md:px-16 pt-9 pb-8 sm:pt-20 sm:pb-14 flex items-end justify-between gap-4 sm:gap-8 text-[var(--c-accent)]">
         {lockup}
       </div>
     );
@@ -744,7 +744,7 @@ function SectionMasthead({ t, variant = 'photo' }: { t: (key: string) => string;
 
 function GalleryMasthead({ t }: { t: (key: string) => string }) {
   return (
-    <div className="bg-[var(--c-bg)] pt-16">
+    <div className="bg-[var(--c-bg)] pt-10 sm:pt-16">
       {/* Plain (photo-less) masthead — EPRIS journal lockup on the page background */}
       <SectionMasthead t={t} variant="plain" />
 
@@ -752,7 +752,7 @@ function GalleryMasthead({ t }: { t: (key: string) => string }) {
       <div className="border-b border-dotted border-[rgb(var(--c-accent-rgb)_/_0.4)]" />
 
       {/* "explore our latest article" kicker */}
-      <div className="flex items-center justify-center gap-4 sm:gap-6 py-8 sm:py-10 px-5">
+      <div className="flex items-center justify-center gap-4 sm:gap-6 py-6 sm:py-10 px-5">
         <span className="h-px w-10 sm:w-16 bg-[rgb(var(--c-accent-rgb)_/_0.3)]" />
         <span className="font-crimson italic text-sm sm:text-base tracking-wide text-[rgb(var(--c-accent-rgb)_/_0.75)]">
           explore our latest article
@@ -834,7 +834,7 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
     <div>
       {/* Featured article — offset corner-bracket frame, no card border */}
       <Reveal>
-        <div className="relative p-4 sm:p-5 mb-20 sm:mb-28">
+        <div className="relative p-4 sm:p-5 mb-14 sm:mb-28">
           <span className="absolute top-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-t border-l border-[var(--c-accent)]" />
           <span className="absolute top-0 right-0 w-6 h-6 sm:w-8 sm:h-8 border-t border-r border-[var(--c-accent)]" />
           <span className="absolute bottom-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-b border-l border-[var(--c-accent)]" />
@@ -865,7 +865,7 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
               <p className="font-serif text-sm sm:text-base text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-6">
                 {featured.description}
               </p>
-              <span className="inline-flex items-center self-start border border-[var(--c-accent)] rounded-full px-5 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors w-fit">
+              <span className="inline-flex items-center self-start border border-[var(--c-accent)] rounded-full px-5 py-2.5 sm:py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors w-fit">
                 read
               </span>
             </div>
@@ -918,7 +918,7 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
                 <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)]">
                   {item.subtitle}
                 </span>
-                <span className="inline-flex items-center border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
+                <span className="inline-flex items-center border border-[var(--c-accent)] rounded-full px-4 py-2 sm:py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
                   read
                 </span>
               </div>
