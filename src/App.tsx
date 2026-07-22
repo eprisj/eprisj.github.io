@@ -19,6 +19,7 @@ import {
   getContentForLanguage,
   getIssueArchive,
   getStudio,
+  resolveAuthor,
   Item,
   LibraryItem,
   Review,
@@ -1212,6 +1213,13 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   const [copied, setCopied] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  // Resolve the linked author record (by authorId or name) so the byline can
+  // show a real photo + bio; falls back to the plain author/role strings.
+  const resolvedAuthor = resolveAuthor(article);
+  const authorName = resolvedAuthor?.name || article.author;
+  const authorRole = resolvedAuthor?.role || article.role;
+  const authorPhoto = resolvedAuthor?.photoUrl;
+
   // Jumping to a related article swaps content inside the same overlay — snap
   // the scroll back to the top so the reader starts at the new article's hero.
   useEffect(() => {
@@ -1591,12 +1599,50 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
 
           <footer className="mt-10 sm:mt-16 pt-8 sm:pt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)]">
             <div className="flex items-start gap-4 sm:gap-6">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[var(--c-accent)] flex items-center justify-center text-[var(--c-bg)] font-serif text-lg sm:text-xl shrink-0">
-                {article.author.charAt(0)}
-              </div>
+              {authorPhoto ? (
+                <img
+                  src={authorPhoto}
+                  alt={authorName}
+                  loading="lazy"
+                  className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover shrink-0 border border-[rgb(var(--c-accent-rgb)_/_0.2)]"
+                />
+              ) : (
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[var(--c-accent)] flex items-center justify-center text-[var(--c-bg)] font-serif text-lg sm:text-xl shrink-0">
+                  {(authorName || '').charAt(0)}
+                </div>
+              )}
               <div>
-                <p className="font-serif text-xl mb-1">{article.author}</p>
-                <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-3">{article.role}</p>
+                <p className="font-serif text-xl mb-1">{authorName}</p>
+                {authorRole && (
+                  <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-3">{authorRole}</p>
+                )}
+                {resolvedAuthor?.bio && (
+                  <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.7)] leading-relaxed mb-3 max-w-xl">{resolvedAuthor.bio}</p>
+                )}
+                {(resolvedAuthor?.website || resolvedAuthor?.instagram) && (
+                  <div className="flex items-center gap-4 mb-3">
+                    {resolvedAuthor.website && (
+                      <a
+                        href={resolvedAuthor.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors"
+                      >
+                        Website
+                      </a>
+                    )}
+                    {resolvedAuthor.instagram && (
+                      <a
+                        href={`https://instagram.com/${resolvedAuthor.instagram.replace(/^@/, '')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors"
+                      >
+                        {resolvedAuthor.instagram}
+                      </a>
+                    )}
+                  </div>
+                )}
                 <p className="font-mono text-xs text-[rgb(var(--c-accent-rgb)_/_0.5)]">{article.date}</p>
               </div>
             </div>

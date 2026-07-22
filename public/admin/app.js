@@ -11052,8 +11052,7 @@ async function flushModernEditor() {
     drawerBody.innerHTML =
       row('Категория', 'category', _model.category, 'Culture') +
       row('Подкатегория', 'subcategory', _model.subcategory, 'Feature') +
-      row('Автор', 'author', _model.author) +
-      row('Роль автора', 'role', _model.role, 'Editor') +
+      `<div class="wys-meta-field" data-author-picker></div>` +
       row('Дата', 'date', _model.date, '2026') +
       row('imageSeed', 'imageSeed', _model.imageSeed, 'если URL пустой') +
       row('URL обложки', 'imageUrl', _model.imageUrl, 'https://…') +
@@ -11084,6 +11083,159 @@ async function flushModernEditor() {
       if (v) _model.publishAt = new Date(v).toISOString(); else delete _model.publishAt;
       updateDraftBadge();
       scheduleCommit();
+    });
+    renderAuthorPicker();
+  }
+
+  // ── author picker + inline author-card editor ─────────────────────────────
+  // Authors live as a top-level `authors[]` array in the whole-file JSON (the
+  // same store as issues/studio), NOT the per-entity /content/entity endpoint,
+  // so we read/write them straight through the editor textarea.
+  function authorsFromContent() {
+    const cdata = parseEditorJsonSafe();
+    const arr = cdata && Array.isArray(cdata.authors) ? cdata.authors : [];
+    return { cdata, arr };
+  }
+  function persistAuthors(cdata) {
+    editor.value = JSON.stringify(cdata, null, 2);
+    updateEditorState();
+  }
+  function newAuthorId() {
+    return 'author-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7);
+  }
+  // Denormalise the picked author into the plain author/role strings so old
+  // renderers and search keep working even without resolving the card.
+  function applyAuthorToModel(author) {
+    if (author) {
+      _model.authorId = author.id;
+      _model.author = author.name || '';
+      if (author.role) _model.role = author.role; else delete _model.role;
+    } else {
+      delete _model.authorId;
+    }
+    scheduleCommit();
+  }
+  function renderAuthorPicker() {
+    const host = drawerBody.querySelector('[data-author-picker]');
+    if (!host) return;
+    const { cdata, arr } = authorsFromContent();
+    const selected = _model.authorId ? arr.find((a) => a.id === _model.authorId) : null;
+    const manual = !_model.authorId;
+    const opts = ['<option value="">— Вручную (без карточки автора) —</option>']
+      .concat(arr.map((a) => `<option value="${esc(a.id)}"${a.id === _model.authorId ? ' selected' : ''}>${esc(a.name || '(без имени)')}${a.active === false ? ' — скрыт' : ''}</option>`))
+      .join('');
+    let html =
+      `<span>Автор</span>` +
+      `<select data-author-select style="width:100%">${opts}</select>`;
+    if (manual) {
+      html +=
+        `<div style="margin-top:8px;display:grid;gap:6px">` +
+        `<input data-author-manual-name value="${esc(_model.author || '')}" placeholder="Имя автора (текстом)">` +
+        `<input data-author-manual-role value="${esc(_model.role || '')}" placeholder="Роль автора">` +
+        `<button type="button" class="btn btn-sm" data-author-new>＋ Создать карточку автора</button>` +
+        `</div>`;
+    } else if (selected) {
+      html +=
+        `<div style="margin-top:8px;display:flex;align-items:center;gap:10px;padding:8px;border:1px solid rgba(0,0,0,0.12);border-radius:8px">` +
+        (selected.photoUrl
+          ? `<img src="${esc(selected.photoUrl)}" alt="" style="width:40px;height:40px;border-radius:50%;object-fit:cover;flex:0 0 auto">`
+          : `<div style="width:40px;height:40px;border-radius:50%;background:#c9b7a8;display:flex;align-items:center;justify-content:center;flex:0 0 auto">${esc((selected.name || '?').charAt(0))}</div>`) +
+        `<div style="flex:1;min-width:0"><div style="font-weight:600">${esc(selected.name || '')}</div><div style="opacity:.6;font-size:12px">${esc(selected.role || '')}</div></div>` +
+        `<button type="button" class="btn btn-sm" data-author-edit>✎</button>` +
+        `<button type="button" class="btn btn-sm" data-author-new>＋</button>` +
+        `</div>`;
+    }
+    host.innerHTML = html;
+
+    const sel = host.querySelector('[data-author-select]');
+    sel && sel.addEventListener('change', () => {
+      const id = sel.value;
+      if (!id) { applyAuthorToModel(null); }
+      else { const a = arr.find((x) => x.id === id); applyAuthorToModel(a || null); }
+      renderDrawer();
+      clearTimeout(_reloadTimer); _reloadTimer = setTimeout(render, 400);
+    });
+    const mName = host.querySelector('[data-author-manual-name]');
+    mName && mName.addEventListener('input', () => { _model.author = mName.value; scheduleCommit(); clearTimeout(_reloadTimer); _reloadTimer = setTimeout(render, 400); });
+    const mRole = host.querySelector('[data-author-manual-role]');
+    mRole && mRole.addEventListener('input', () => { _model.role = mRole.value; scheduleCommit(); });
+    const editBtn = host.querySelector('[data-author-edit]');
+    editBtn && editBtn.addEventListener('click', () => openAuthorEditor(selected));
+    const newBtn = host.querySelector('[data-author-new]');
+    newBtn && newBtn.addEventListener('click', () => openAuthorEditor(null));
+  }
+  // Modal-less inline editor for a single author card. `existing` = edit, null = create.
+  function openAuthorEditor(existing) {
+    const host = drawerBody.querySelector('[data-author-picker]');
+    if (!host) return;
+    const a = existing ? { ...existing } : { id: newAuthorId(), name: '', role: '', bio: '', photoUrl: '', website: '', instagram: '', active: true };
+    const field = (label, key, ph) => `<label class="wys-meta-field"><span>${label}</span><input data-af="${key}" value="${esc(a[key] || '')}" placeholder="${ph || ''}"></label>`;
+    host.innerHTML =
+      `<div style="display:grid;gap:6px;padding:8px;border:1px solid rgba(0,0,0,0.12);border-radius:8px">` +
+      `<div style="font-weight:600">${existing ? 'Редактирование автора' : 'Новый автор'}</div>` +
+      field('Имя', 'name', 'Имя автора') +
+      field('Роль', 'role', 'Автор') +
+      `<label class="wys-meta-field"><span>Био</span><textarea data-af="bio" rows="3" placeholder="Короткая биография">${esc(a.bio || '')}</textarea></label>` +
+      `<div class="wys-meta-field"><span>Фото</span>` +
+        `<div style="display:flex;align-items:center;gap:8px">` +
+        `<div data-af-photo style="width:44px;height:44px;border-radius:50%;background:#c9b7a8;object-fit:cover;overflow:hidden;flex:0 0 auto">${a.photoUrl ? `<img src="${esc(a.photoUrl)}" style="width:100%;height:100%;object-fit:cover">` : ''}</div>` +
+        `<button type="button" class="btn btn-sm" data-af-upload>Загрузить фото</button>` +
+        `</div>` +
+        `<input data-af="photoUrl" value="${esc(a.photoUrl || '')}" placeholder="URL фото" style="margin-top:6px">` +
+      `</div>` +
+      field('Website', 'website', 'https://…') +
+      field('Instagram', 'instagram', '@handle') +
+      `<label class="wys-meta-check"><input type="checkbox" data-af-active ${a.active !== false ? 'checked' : ''}><span>Активен (показывать)</span></label>` +
+      `<div style="display:flex;gap:8px;margin-top:4px">` +
+        `<button type="button" class="btn btn-primary btn-sm" data-af-save>Сохранить автора</button>` +
+        `<button type="button" class="btn btn-sm" data-af-cancel>Отмена</button>` +
+      `</div>` +
+      `</div>`;
+
+    host.querySelectorAll('[data-af]').forEach((inp) => {
+      inp.addEventListener('input', () => {
+        a[inp.getAttribute('data-af')] = inp.value;
+        if (inp.getAttribute('data-af') === 'photoUrl') {
+          const box = host.querySelector('[data-af-photo]');
+          if (box) box.innerHTML = inp.value ? `<img src="${esc(inp.value)}" style="width:100%;height:100%;object-fit:cover">` : '';
+        }
+      });
+    });
+    const upBtn = host.querySelector('[data-af-upload]');
+    upBtn && upBtn.addEventListener('click', () => {
+      const fi = document.createElement('input');
+      fi.type = 'file'; fi.accept = 'image/*';
+      fi.onchange = async () => {
+        const file = fi.files && fi.files[0];
+        if (!file) return;
+        upBtn.disabled = true; upBtn.textContent = 'Загрузка…';
+        try {
+          const url = await uploadImageReturnUrl(file);
+          a.photoUrl = url;
+          const urlInp = host.querySelector('[data-af="photoUrl"]');
+          if (urlInp) urlInp.value = url;
+          const box = host.querySelector('[data-af-photo]');
+          if (box) box.innerHTML = `<img src="${esc(url)}" style="width:100%;height:100%;object-fit:cover">`;
+        } catch (err) { alert('Не удалось загрузить фото: ' + err.message); }
+        finally { upBtn.disabled = false; upBtn.textContent = 'Загрузить фото'; }
+      };
+      fi.click();
+    });
+    host.querySelector('[data-af-cancel]').addEventListener('click', renderAuthorPicker);
+    host.querySelector('[data-af-save]').addEventListener('click', () => {
+      a.name = (a.name || '').trim();
+      if (!a.name) { alert('У автора должно быть имя.'); return; }
+      const activeCb = host.querySelector('[data-af-active]');
+      a.active = !!(activeCb && activeCb.checked);
+      const { cdata } = authorsFromContent();
+      if (!cdata) { alert('Не удалось прочитать контент из редактора.'); return; }
+      if (!Array.isArray(cdata.authors)) cdata.authors = [];
+      const idx = cdata.authors.findIndex((x) => x.id === a.id);
+      if (idx >= 0) cdata.authors[idx] = a; else cdata.authors.push(a);
+      persistAuthors(cdata);
+      applyAuthorToModel(a);
+      renderDrawer();
+      clearTimeout(_reloadTimer); _reloadTimer = setTimeout(render, 400);
     });
   }
   // datetime-local wants local wall-clock "YYYY-MM-DDTHH:mm"; we store ISO/UTC.
