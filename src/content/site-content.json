@@ -1847,6 +1847,22 @@
       "description": "Choosing a place to stay in a new destination means entrusting it with the significant moments of your life. Falling into bed after a long walk through unfamiliar streets, late-night talks filled with the thoughts and emotions of the day, planning the next breakfast at your newly favorite nearby boulangerie, sharing genuine smiles and the pure excitement of exploration.",
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/mro4ypcjfxlboi.webp"
+    },
+    {
+      "id": 5,
+      "title": "Siesta shadow",
+      "subtitle": "Seville, Spain",
+      "fig": "FIG. 05",
+      "description": "The slow passage of time on a hot afternoon.",
+      "imageSeed": "shadows-wall"
+    },
+    {
+      "id": 6,
+      "title": "Velvet night",
+      "subtitle": "Istanbul, Türkiye",
+      "fig": "FIG. 06",
+      "description": "Lights reflect in the Bosphorus as the city comes to life.",
+      "imageSeed": "istanbul-night"
     }
   ],
   "articles": [
@@ -3059,6 +3075,69 @@
       ],
       "imageSeed": "",
       "updatedAt": "2026-07-16T11:39:01.878Z"
+    },
+    {
+      "id": 14,
+      "title": "New editorial story",
+      "author": "EPRIS Journal",
+      "role": "Editorial team",
+      "date": "July 18, 2026",
+      "excerpt": "A focused opening paragraph for a new editorial story.",
+      "category": "culture",
+      "subcategory": "Special feature",
+      "tags": [
+        "Story",
+        "culture",
+        "editorial"
+      ],
+      "imageSeed": "new-editorial-story",
+      "content": [
+        {
+          "type": "text",
+          "content": "Start with the strongest scene, fact, or observation. Keep this first block narrow and specific."
+        },
+        {
+          "type": "image",
+          "content": "new-editorial-story-2",
+          "caption": "Mission statement"
+        },
+        {
+          "type": "quote",
+          "content": "Add a line here to remember."
+        },
+        {
+          "type": "note",
+          "content": "Editorial note, source context, or a brief note."
+        },
+        {
+          "type": "checklist",
+          "caption": "What to cover",
+          "content": {
+            "items": [
+              "context",
+              "Important detail",
+              "Human perspective",
+              "What changes next?"
+            ]
+          }
+        },
+        {
+          "type": "poll",
+          "content": {
+            "question": "What should we explore next?",
+            "options": [
+              {
+                "label": "More context",
+                "votes": 0
+              },
+              {
+                "label": "Practical guide",
+                "votes": 0
+              }
+            ]
+          }
+        }
+      ]
     }
   ],
   "reviews": [
@@ -11766,12 +11845,12 @@
   "authors": [
     {
       "id": "author-1784732936927-kw554",
-      "name": "Новый автор",
+      "name": "Viacheslav Munister",
       "role": "Автор",
-      "bio": "",
-      "photoUrl": "",
-      "website": "",
-      "instagram": "",
+      "bio": "Viacheslav Munister is an author, researcher, and digital heritage specialist. He is a member of the heritage associations En Quête de Patrimoine and Histoire d’en Parler. His work focuses on architecture, urban culture, collective memory, and the preservation and reinterpretation of cultural heritage through digital technologies.",
+      "photoUrl": "https://api.eprisjournal.com/uploads/mrw8auvtw5v16l.jpg",
+      "website": "https://munister.com.ua/",
+      "instagram": "@vmunister",
       "active": true
     }
   ]
