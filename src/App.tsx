@@ -823,32 +823,9 @@ function AboutSection({ t }: { t: (key: string) => string }) {
         </div>
       </Reveal>
 
-      <Reveal delay={0.2}>
-        <div className="border-t border-[var(--c-accent)] pt-24">
-          <h3 className="font-serif text-3xl md:text-4xl text-[var(--c-accent)] mb-12 text-center">{t('about.manifesto')}</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-            <div>
-              <div className="w-12 h-12 rounded-full border border-[var(--c-accent)] flex items-center justify-center mx-auto mb-6 text-[var(--c-accent)]">01</div>
-                            <h4 className="font-mono text-xs uppercase tracking-widest mb-4">{t('about.slowdown')}</h4>
-                            <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)]">{t('about.slowdown.desc')}</p>
-            </div>
-            <div>
-              <div className="w-12 h-12 rounded-full border border-[var(--c-accent)] flex items-center justify-center mx-auto mb-6 text-[var(--c-accent)]">02</div>
-                            <h4 className="font-mono text-xs uppercase tracking-widest mb-4">{t('about.curate')}</h4>
-                            <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)]">{t('about.curate.desc')}</p>
-            </div>
-            <div>
-              <div className="w-12 h-12 rounded-full border border-[var(--c-accent)] flex items-center justify-center mx-auto mb-6 text-[var(--c-accent)]">03</div>
-                            <h4 className="font-mono text-xs uppercase tracking-widest mb-4">{t('about.preserve')}</h4>
-                            <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)]">{t('about.preserve.desc')}</p>
-            </div>
-          </div>
-        </div>
-      </Reveal>
-
       {techDirector && (
-        <Reveal delay={0.3}>
-          <div className="border-t border-[var(--c-accent)] pt-24 mt-24">
+        <Reveal delay={0.2}>
+          <div className="border-t border-[var(--c-accent)] pt-24">
             <h3 className="font-serif text-3xl md:text-4xl text-[var(--c-accent)] mb-12 text-center">{t('about.team')}</h3>
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-12 max-w-2xl mx-auto">
               {techDirector.photoUrl && (
@@ -865,9 +842,11 @@ function AboutSection({ t }: { t: (key: string) => string }) {
                 <div className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-4">
                   {t('about.techDirector.role')}
                 </div>
-                <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)] mb-4">
-                  {t('about.techDirector.bio')}
-                </p>
+                {techDirector.bio && (
+                  <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)] mb-4">
+                    {techDirector.bio}
+                  </p>
+                )}
                 {(techDirector.website || techDirector.instagram) && (
                   <div className="flex justify-center sm:justify-start gap-4 font-serif text-sm text-[var(--c-accent)]">
                     {techDirector.website && (

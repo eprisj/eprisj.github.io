@@ -32,13 +32,6 @@
       "about.bio": "With a background in art history and a passion for slow travel, Mariia founded Epris Journal in 2026. Her vision was to create a digital space that feels as tangible and timeless as a printed volume found in an old library.",
       "about.contact": "Contact",
       "about.social": "Social",
-      "about.manifesto": "The Manifesto",
-      "about.slowdown": "Slow Down",
-      "about.slowdown.desc": "We believe in the luxury of time. In consuming content that requires attention and rewards patience.",
-      "about.curate": "Curate Life",
-      "about.curate.desc": "Life is an art form. We curate experiences, spaces, and flavors that elevate the everyday.",
-      "about.preserve": "Preserve Beauty",
-      "about.preserve.desc": "In a digital age of ephemerality, we strive to create an archive of enduring beauty.",
       "poll.thanks": "Thank you for voting",
       "poll.total": "votes",
       "maps.open": "Open in Maps",
@@ -256,8 +249,7 @@
       "issue.story": "story",
       "issue.stories": "stories",
       "about.team": "The Team",
-      "about.techDirector.role": "Technical & Creative Director",
-      "about.techDirector.bio": "Viacheslav Munister leads the technical architecture and creative direction of Epris Journal — from the platform's engineering to its visual identity."
+      "about.techDirector.role": "Technical & Creative Director"
     },
     "RU": {
       "nav.gallery": "Галерея",
@@ -291,13 +283,6 @@
       "about.bio": "С образованием в области истории искусства и страстью к медленным путешествиям, Мария основала Epris Journal в 2026 году. Её видение — создать цифровое пространство, столь же осязаемое и вневременное, как печатный том, найденный в старой библиотеке.",
       "about.contact": "Контакт",
       "about.social": "Соцсети",
-      "about.manifesto": "Манифест",
-      "about.slowdown": "Замедлись",
-      "about.slowdown.desc": "Мы верим в роскошь времени. В потребление контента, который требует внимания и вознаграждает терпение.",
-      "about.curate": "Курируй жизнь",
-      "about.curate.desc": "Жизнь — это искусство. Мы курируем опыт, пространства и вкусы, возвышающие повседневность.",
-      "about.preserve": "Сохрани красоту",
-      "about.preserve.desc": "В цифровой эпохе эфемерности мы стремимся создать архив непреходящей красоты.",
       "poll.thanks": "Спасибо за голос",
       "poll.total": "голосов",
       "maps.open": "Открыть на карте",
@@ -515,8 +500,7 @@
       "issue.story": "материал",
       "issue.stories": "материалов",
       "about.team": "Команда",
-      "about.techDirector.role": "Технический и креативный директор",
-      "about.techDirector.bio": "Вячеслав Мунистер отвечает за техническую архитектуру и креативное направление Epris Journal — от инженерной части платформы до её визуальной идентичности."
+      "about.techDirector.role": "Технический и креативный директор"
     },
     "UA": {
       "nav.gallery": "Галерея",
@@ -550,13 +534,6 @@
       "about.bio": "З освітою в галузі історії мистецтва та пристрастю до повільних подорожей, Марія заснувала Epris Journal у 2026 році. Її бачення — створити цифровий простір, настільки ж відчутний і позачасовий, як друкований том, знайдений у старій бібліотеці.",
       "about.contact": "Контакт",
       "about.social": "Соцмережі",
-      "about.manifesto": "Маніфест",
-      "about.slowdown": "Уповільнись",
-      "about.slowdown.desc": "Ми віримо в розкіш часу. У споживання контенту, який вимагає уваги та винагороджує терпіння.",
-      "about.curate": "Курируй життя",
-      "about.curate.desc": "Життя — це мистецтво. Ми куруємо досвід, простори та смаки, що підносять повсякденність.",
-      "about.preserve": "Збережи красу",
-      "about.preserve.desc": "У цифрову епоху ефемерності ми прагнемо створити архів непроминаючої краси.",
       "poll.thanks": "Дякуємо за голос",
       "poll.total": "голосів",
       "maps.open": "Відкрити на карті",
@@ -774,8 +751,7 @@
       "issue.story": "матеріал",
       "issue.stories": "матеріалів",
       "about.team": "Команда",
-      "about.techDirector.role": "Технічний та креативний директор",
-      "about.techDirector.bio": "В'ячеслав Муністер відповідає за технічну архітектуру та креативний напрям Epris Journal — від інженерної частини платформи до її візуальної ідентичності."
+      "about.techDirector.role": "Технічний та креативний директор"
     },
     "TR": {
       "nav.gallery": "Galeri",
@@ -809,13 +785,6 @@
       "about.bio": "Sanat tarihi geçmişi ve yavaş seyahat tutkusuyla Mariia, 2026'da Epris Journal'ı kurdu. Vizyonu, eski bir kütüphanede bulunan basılı bir cilt kadar somut ve zamansız hissettiren dijital bir alan yaratmaktı.",
       "about.contact": "İletişim",
       "about.social": "Sosyal",
-      "about.manifesto": "Manifesto",
-      "about.slowdown": "Yavaşla",
-      "about.slowdown.desc": "Zamanın lüksüne inanıyoruz. Dikkat gerektiren ve sabrı ödüllendiren içerik tüketimine.",
-      "about.curate": "Hayatı Kürate Et",
-      "about.curate.desc": "Hayat bir sanat formudur. Günlük olanı yücelten deneyimleri, mekanları ve tatları kürate ediyoruz.",
-      "about.preserve": "Güzelliği Koru",
-      "about.preserve.desc": "Geçiciliğin dijital çağında, kalıcı güzelliğin bir arşivini yaratmaya çalışıyoruz.",
       "poll.thanks": "Oyunuz için teşekkürler",
       "poll.total": "oy",
       "maps.open": "Haritada aç",
@@ -1033,8 +1002,7 @@
       "issue.story": "hikaye",
       "issue.stories": "hikayeler",
       "about.team": "Ekip",
-      "about.techDirector.role": "Teknik ve Yaratıcı Direktör",
-      "about.techDirector.bio": "Viacheslav Munister, Epris Journal'ın teknik mimarisinden görsel kimliğine kadar teknik ve yaratıcı yönetiminden sorumludur."
+      "about.techDirector.role": "Teknik ve Yaratıcı Direktör"
     },
     "DE": {
       "nav.gallery": "Galerie",
@@ -1068,13 +1036,6 @@
       "about.bio": "Mit einem Hintergrund in Kunstgeschichte und einer Leidenschaft für langsames Reisen gründete Mariia 2026 das Epris Journal. Ihre Vision war es, einen digitalen Raum zu schaffen, der sich so greifbar und zeitlos anfühlt wie ein gedruckter Band aus einer alten Bibliothek.",
       "about.contact": "Kontakt",
       "about.social": "Sozial",
-      "about.manifesto": "Das Manifest",
-      "about.slowdown": "Verlangsame dich",
-      "about.slowdown.desc": "Wir glauben an den Luxus der Zeit. An den Konsum von Inhalten, die Aufmerksamkeit erfordern und Geduld belohnen.",
-      "about.curate": "Kuratiere das Leben",
-      "about.curate.desc": "Das Leben ist eine Kunstform. Wir kuratieren Erfahrungen, Räume und Geschmäcker, die den Alltag erheben.",
-      "about.preserve": "Bewahre Schönheit",
-      "about.preserve.desc": "In einem digitalen Zeitalter der Vergänglichkeit streben wir danach, ein Archiv dauerhafter Schönheit zu schaffen.",
       "poll.thanks": "Danke für Ihre Stimme",
       "poll.total": "Stimmen",
       "maps.open": "In Karten öffnen",
@@ -1292,8 +1253,7 @@
       "issue.story": "Geschichte",
       "issue.stories": "Geschichten",
       "about.team": "Das Team",
-      "about.techDirector.role": "Technischer & Kreativdirektor",
-      "about.techDirector.bio": "Viacheslav Munister verantwortet die technische Architektur und kreative Leitung von Epris Journal — von der Plattform-Entwicklung bis zur visuellen Identität."
+      "about.techDirector.role": "Technischer & Kreativdirektor"
     },
     "IT": {
       "nav.gallery": "Galleria",
@@ -1327,13 +1287,6 @@
       "about.bio": "Con una formazione in storia dell'arte e una passione per i viaggi lenti, Mariia ha fondato Epris Journal nel 2026. La sua visione era creare uno spazio digitale che sembrasse tangibile e senza tempo come un volume stampato trovato in una vecchia biblioteca.",
       "about.contact": "Contatto",
       "about.social": "Social",
-      "about.manifesto": "Il Manifesto",
-      "about.slowdown": "Rallenta",
-      "about.slowdown.desc": "Crediamo nel lusso del tempo. Nel consumare contenuti che richiedono attenzione e premiano la pazienza.",
-      "about.curate": "Cura la Vita",
-      "about.curate.desc": "La vita è una forma d'arte. Curiamo esperienze, spazi e sapori che elevano il quotidiano.",
-      "about.preserve": "Preserva la Bellezza",
-      "about.preserve.desc": "In un'era digitale di effimero, ci impegniamo a creare un archivio di bellezza duratura.",
       "poll.thanks": "Grazie per il tuo voto",
       "poll.total": "voti",
       "maps.open": "Apri in Mappe",
@@ -1551,8 +1504,7 @@
       "issue.story": "storia",
       "issue.stories": "storie",
       "about.team": "Il Team",
-      "about.techDirector.role": "Direttore Tecnico e Creativo",
-      "about.techDirector.bio": "Viacheslav Munister guida l'architettura tecnica e la direzione creativa di Epris Journal, dall'ingegneria della piattaforma alla sua identità visiva."
+      "about.techDirector.role": "Direttore Tecnico e Creativo"
     },
     "ES": {
       "nav.gallery": "Galería",
@@ -1586,13 +1538,6 @@
       "about.bio": "Con formación en historia del arte y pasión por los viajes lentos, Mariia fundó Epris Journal en 2026. Su visión era crear un espacio digital que se sintiera tan tangible y atemporal como un volumen impreso encontrado en una vieja biblioteca.",
       "about.contact": "Contacto",
       "about.social": "Social",
-      "about.manifesto": "El Manifiesto",
-      "about.slowdown": "Desacelera",
-      "about.slowdown.desc": "Creemos en el lujo del tiempo. En consumir contenido que requiere atención y recompensa la paciencia.",
-      "about.curate": "Cura la Vida",
-      "about.curate.desc": "La vida es una forma de arte. Curamos experiencias, espacios y sabores que elevan lo cotidiano.",
-      "about.preserve": "Preserva la Belleza",
-      "about.preserve.desc": "En una era digital de lo efímero, nos esforzamos por crear un archivo de belleza perdurable.",
       "poll.thanks": "Gracias por tu voto",
       "poll.total": "votos",
       "maps.open": "Abrir en Mapas",
@@ -1810,8 +1755,7 @@
       "issue.story": "historia",
       "issue.stories": "historias",
       "about.team": "El Equipo",
-      "about.techDirector.role": "Director Técnico y Creativo",
-      "about.techDirector.bio": "Viacheslav Munister dirige la arquitectura técnica y la dirección creativa de Epris Journal, desde la ingeniería de la plataforma hasta su identidad visual."
+      "about.techDirector.role": "Director Técnico y Creativo"
     }
   },
   "items": [
