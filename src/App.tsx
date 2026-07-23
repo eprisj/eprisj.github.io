@@ -2088,7 +2088,17 @@ function getSlugForArticle(article: Article): string {
 function findMatchingArticle(item: Item, articles: Article[]): Article | undefined {
   const title = item.title?.trim();
   if (!title) return undefined;
-  return articles.find((a) => a.title?.trim() === title);
+  // Exact title is the strongest signal.
+  const exact = articles.find((a) => a.title?.trim() === title);
+  if (exact) return exact;
+  // Fallback: a gallery piece often carries a "Name: subtitle" headline while
+  // the full article is filed under just "Name" (or vice-versa). Compare the
+  // part before the first colon so the featured piece still links to its
+  // article — without loosening into arbitrary substring matches.
+  const base = (s: string) => s.split(':')[0].trim().toLowerCase();
+  const itemBase = base(title);
+  if (itemBase.length < 4) return undefined;
+  return articles.find((a) => a.title && base(a.title) === itemBase);
 }
 
 function parsePath(pathname: string): { tab?: string; articleId?: number; passportCode?: string } {
