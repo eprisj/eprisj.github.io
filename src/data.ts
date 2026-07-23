@@ -292,19 +292,30 @@ function isPreview(): boolean {
 // forms) — never on short fragments, because fragments like "замін" also occur
 // inside real words ("незамінне"/"irreplaceable") and would wrongly hide real
 // translations. Any real edit changes the title or copy and clears the flag.
+// Blueprint titles, EN seeds + the AI-translated forms found in every locale.
+// An unedited stub keeps one of these titles verbatim; real content never does.
 const PLACEHOLDER_TITLES = new Set([
+  // EN blueprint titles (admin)
   'new editorial story', 'new practical guide', 'new photo essay',
   'new review', 'new gallery item', 'new file',
+  // "New gallery item" translated
+  'neues galerieelement', 'nuevo elemento de la galería', 'yeni galeri öğesi',
+  'nuovo elemento della galleria', 'новый элемент галереи', 'новий елемент галереї',
+  // "New editorial story" translated
+  'neue redaktionelle geschichte', 'nueva historia editorial', 'yeni editoryal hikaye',
+  'nuova storia editoriale', 'новая редакционная история', 'нова редакційна історія',
 ]);
+// The "…— replace me" subtitle imperative, one distinctive token per language.
+// These never appear in real prose (unlike the fragment "замін", which is inside
+// real words like "незамінне"), so substring matching is safe.
 const PLACEHOLDER_PHRASES = [
-  // EN seeds (admin blueprints)
-  'one-line context — replace me', 'replace me',
-  'replace with real copy before publishing',
-  'a focused opening paragraph for a new editorial story',
-  // UA translated stubs seen in live data
-  'замініть мене', 'замініть на справжню копію',
-  // RU translated stubs seen in live data
-  'замените меня', 'замените реальной копией',
+  'replace me', 'replace with real copy before publishing',
+  'замініть мене', 'замініть на справжню копію',     // UA
+  'замените меня', 'замените реальной копией',        // RU
+  'ersetze mich',                                     // DE
+  'reemplázame',                                      // ES
+  'beni değiştir',                                    // TR
+  'sostituiscimi',                                    // IT
 ];
 
 /**
@@ -383,14 +394,19 @@ function mergeLocalizedArray<T extends { id: number }>(value: T[] | undefined, f
 // tell "this id still means the same thing" from "this id was recycled for
 // different content," and a timestamp-based check was already tried and
 // reverted elsewhere in this file for making valid translations disappear.
-// A cheap, unambiguous signal that doesn't need any admin-side bookkeeping:
-// if a locale's items array is a different LENGTH than the current root, the
-// two have structurally diverged (an item was added/removed/replaced) and the
-// whole locale bucket for items is untrustworthy until it's rebuilt to match
-// — safer to show the current English items than a locale-shaped bucket of
-// content that may no longer correspond to the same entries at all.
+// Two cheap, unambiguous signals that need no admin-side bookkeeping — if
+// either fires, the whole locale items bucket is untrustworthy and it's safer
+// to show the current English items than a bucket that may no longer correspond
+// to the same entries:
+//   1. Different LENGTH than the current root — structurally diverged.
+//   2. Contains a placeholder stub ("New gallery item" and its translations) —
+//      an unfinished/stale translation pass, so the "real-looking" siblings in
+//      the same bucket (which the per-id merge can't tell are stale) can't be
+//      trusted either. This is what caught the recycled-id incident again: every
+//      locale's items still translated the OLD deleted pieces on reused ids.
 function mergeLocalizedItems<T extends { id: number }>(value: T[] | undefined, fallback: T[]): T[] {
   if (Array.isArray(value) && value.length !== fallback.length) return fallback;
+  if (Array.isArray(value) && value.some(isPlaceholderEntity)) return fallback;
   return mergeLocalizedArray(value, fallback);
 }
 
