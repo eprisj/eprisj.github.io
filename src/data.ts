@@ -361,38 +361,121 @@ function hasLocalizedPayload(entry: unknown): boolean {
   });
 }
 
+// A localized entry is a full deep-clone snapshot of the base entry, taken when
+// its translation was first created (admin app.js: getSectionArray →
+// deepClone(base)). It then drifts: later edits to the BASE entry — a swapped
+// hero image, added/removed content blocks, a new gallery — never reach the
+// snapshot, so a whole-object override froze every language at translation time
+// while English moved on. That is the root cause of "content differs by
+// language": readers saw stale images and truncated articles in every locale
+// that had ever been translated.
+//
+// The fix is to treat a localized entry as a TEXT OVERLAY, not a replacement:
+// the base entry is authoritative for structure and media, and only translated
+// text fields are overlaid from the localized copy. These fields are structure/
+// media/state/links — never translated prose — so they always come from base.
+const BASE_AUTHORITATIVE_FIELDS = new Set([
+  'id', 'imageSeed', 'imageUrl', 'authorId', 'draft', 'publishAt', 'updatedAt',
+  'url', 'link', 'rating', 'featured', 'coordinates',
+]);
+
+// Content-block types whose `content` field is translatable prose (a string).
+// For every other block type `content` is media/data (an image URL, a gallery
+// URL array, a map's coordinates) and must come from the base block.
+const BLOCK_PROSE_TYPES = new Set(['text', 'header', 'quote', 'note']);
+
+// Merge one localized block's text onto a base block, keeping the base block's
+// structure and media. Blocks are matched positionally; if the types differ at
+// this index the localized array has structurally diverged from base, so we keep
+// the base block wholesale (English but correct) rather than paint mismatched
+// text onto it.
+function mergeContentBlock(base: ContentBlock, localized: ContentBlock | undefined): ContentBlock {
+  if (!localized || base.type !== localized.type) return base;
+  const merged: ContentBlock = { ...base };
+  if (typeof localized.caption === 'string' && localized.caption.trim()) merged.caption = localized.caption;
+  if (Array.isArray(localized.alts) && localized.alts.length) merged.alts = localized.alts;
+
+  if (BLOCK_PROSE_TYPES.has(base.type)) {
+    if (typeof localized.content === 'string') merged.content = localized.content;
+  } else if (base.type === 'checklist') {
+    const lc = localized.content as { items?: string[] } | undefined;
+    if (lc && typeof lc === 'object' && Array.isArray(lc.items)) merged.content = localized.content;
+  } else if (base.type === 'poll') {
+    // Translate question + option labels, but keep vote counts from base (they
+    // are live data, not text, and the localized snapshot's counts are stale).
+    const bc = base.content as { question?: string; options?: { label: string; votes: number }[] } | undefined;
+    const lc = localized.content as { question?: string; options?: { label: string; votes: number }[] } | undefined;
+    if (bc && lc && Array.isArray(bc.options) && Array.isArray(lc.options)) {
+      merged.content = {
+        question: typeof lc.question === 'string' ? lc.question : (bc.question || ''),
+        options: bc.options.map((opt, i) => ({
+          ...opt,
+          label: (lc.options![i] && typeof lc.options![i].label === 'string') ? lc.options![i].label : opt.label,
+        })),
+      };
+    }
+  }
+  // image / gallery / mosaic / video / audio / link / map: content stays base.
+  return merged;
+}
+
+// Base defines the block count and structure; localized supplies text where an
+// index exists and its type matches. Extra base blocks (added after translation)
+// render in the base language instead of vanishing — a full article beats a
+// silently truncated one.
+function mergeContentBlocks(base: ContentBlock[], localized: unknown): ContentBlock[] {
+  if (!Array.isArray(localized)) return base;
+  return base.map((b, i) => mergeContentBlock(b, (localized as ContentBlock[])[i]));
+}
+
+// Overlay a localized entry's translated text onto the base entry. Structure and
+// media always come from base (see BASE_AUTHORITATIVE_FIELDS); `content` blocks
+// and item `images` get a per-index text merge so their media stays base-owned.
+function mergeEntryTextOntoBase<T extends { id: number }>(base: T, localized: T): T {
+  const merged: Record<string, unknown> = { ...base };
+  const baseRec = base as Record<string, unknown>;
+  for (const [key, value] of Object.entries(localized as Record<string, unknown>)) {
+    if (BASE_AUTHORITATIVE_FIELDS.has(key)) continue;
+
+    if (key === 'content' && Array.isArray(baseRec.content)) {
+      merged.content = mergeContentBlocks(baseRec.content as ContentBlock[], value);
+      continue;
+    }
+    if (key === 'images' && Array.isArray(baseRec.images)) {
+      // Item detail photos: URLs are media (base), only captions are translated.
+      const localizedImages = Array.isArray(value) ? (value as { url: string; caption?: string }[]) : [];
+      merged.images = (baseRec.images as { url: string; caption?: string }[]).map((img, i) => {
+        const li = localizedImages[i];
+        return (li && typeof li.caption === 'string' && li.caption.trim()) ? { ...img, caption: li.caption } : img;
+      });
+      continue;
+    }
+
+    // Generic translated text field: overlay only when it carries real payload,
+    // so an empty/missing localized field never blanks a populated base one.
+    if (typeof value === 'string') { if (value.trim()) merged[key] = value; }
+    else if (Array.isArray(value)) { if (value.length) merged[key] = value; }
+    else if (value && typeof value === 'object') { if (Object.keys(value).length) merged[key] = value; }
+  }
+  return merged as T;
+}
+
 function mergeLocalizedArray<T extends { id: number }>(value: T[] | undefined, fallback: T[]): T[] {
   if (!Array.isArray(value)) {
     return fallback;
   }
 
-  // Only override items that exist in root (fallback). Never add extra localized-only items.
-  //
-  // Localized copies are real reader-facing translations. Older content often
-  // has no updatedAt, while the EN root receives updatedAt on every admin save.
-  // Timestamp comparison made valid translations disappear after any EN edit.
-  // Prefer a localized entry whenever it has actual payload; fallback only for
-  // empty shells so language switching never silently drops back to English.
+  // Only override entries that exist in root (fallback). Never add extra
+  // localized-only entries. Prefer a localized entry whenever it has real
+  // payload; fall back for empty shells so language switching never silently
+  // drops back to English. The overlay itself (mergeEntryTextOntoBase) keeps
+  // structure/media base-owned so a stale snapshot can't freeze this language.
   const localizedById = new Map(value.map((entry) => [Number(entry.id), entry]));
   return fallback.map((entry) => {
     const localized = localizedById.get(Number(entry.id));
     if (!localized) return entry;
     if (!hasLocalizedPayload(localized)) return entry;
-    // A translation pass only ever touches text fields (title/excerpt/content/...);
-    // it has no reason to carry the author link along. If the localized copy is
-    // missing authorId/author/role (translated before that field existed, or a
-    // sync script that doesn't know about it), silently swapping in the whole
-    // localized object would blank the byline in that language even though the
-    // root article has it. Backfill just those three fields from root.
-    const merged: Record<string, unknown> = { ...localized };
-    for (const key of ['authorId', 'author', 'role'] as const) {
-      const localizedValue = (localized as Record<string, unknown>)[key];
-      const rootValue = (entry as Record<string, unknown>)[key];
-      if ((localizedValue === undefined || localizedValue === null || localizedValue === '') && rootValue !== undefined) {
-        merged[key] = rootValue;
-      }
-    }
-    return merged as T;
+    return mergeEntryTextOntoBase(entry, localized);
   });
 }
 
