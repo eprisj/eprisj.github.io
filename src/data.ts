@@ -426,10 +426,20 @@ export const isArticleLive = isEntityLive;
 export function getContentForLanguage(lang: string): LanguageContent {
   const c = src();
   const bucket = (c.localizedCollections || {})[lang] || {};
-  const articles = mergeLocalizedArray(bucket.articles, c.articles);
-  const reviews = mergeLocalizedArray(bucket.reviews, c.reviews);
-  const items = mergeLocalizedItems(bucket.items, c.items);
-  const libraryItems = mergeLocalizedArray(bucket.libraryItems, c.libraryItems);
+
+  // "Is this an unfilled blueprint stub?" is a property of the BASE entry, not
+  // of any translation. A localized overlay carries the *translated* stub text
+  // (e.g. base "New editorial story" → UA "Нова редакційна історія"), which a
+  // post-merge check can't recognise. So drop placeholder base entries here,
+  // before the merge — mergeLocalizedArray never adds locale-only entries, so
+  // an orphaned localized stub for the same id is dropped along with it. Admin
+  // preview keeps everything so stubs remain visible for editing.
+  const liveBase = <T,>(arr: T[]): T[] => isPreview() ? arr : arr.filter((e) => !isPlaceholderEntity(e));
+
+  const articles = mergeLocalizedArray(bucket.articles, liveBase(c.articles));
+  const reviews = mergeLocalizedArray(bucket.reviews, liveBase(c.reviews));
+  const items = mergeLocalizedItems(bucket.items, liveBase(c.items));
+  const libraryItems = mergeLocalizedArray(bucket.libraryItems, liveBase(c.libraryItems));
 
   return {
     items: isPreview() ? items : items.filter(isEntityLive),
