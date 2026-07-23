@@ -249,7 +249,10 @@
       "issue.story": "story",
       "issue.stories": "stories",
       "about.team": "The Team",
-      "about.techDirector.role": "Technical & Creative Director"
+      "about.techDirector.role": "Technical & Creative Director",
+      "nav.manifest": "Manifesto",
+      "manifest.empty": "The manifesto will appear here soon.",
+      "about.techDirector.bio": "Viacheslav Munister is an author, researcher, and digital heritage specialist. He is a member of the heritage associations En Quête de Patrimoine and Histoire d’en Parler. His work focuses on architecture, urban culture, collective memory, and the preservation and reinterpretation of cultural heritage through digital technologies."
     },
     "RU": {
       "nav.gallery": "Галерея",
@@ -500,7 +503,10 @@
       "issue.story": "материал",
       "issue.stories": "материалов",
       "about.team": "Команда",
-      "about.techDirector.role": "Технический и креативный директор"
+      "about.techDirector.role": "Технический и креативный директор",
+      "nav.manifest": "Манифест",
+      "manifest.empty": "Манифест скоро появится здесь.",
+      "about.techDirector.bio": "Вячеслав Мунистер — автор, исследователь и специалист по цифровому наследию. Он является членом ассоциаций по сохранению наследия En Quête de Patrimoine и Histoire d’en Parler. Его работа посвящена архитектуре, городской культуре, коллективной памяти, а также сохранению и переосмыслению культурного наследия с помощью цифровых технологий."
     },
     "UA": {
       "nav.gallery": "Галерея",
@@ -751,7 +757,10 @@
       "issue.story": "матеріал",
       "issue.stories": "матеріалів",
       "about.team": "Команда",
-      "about.techDirector.role": "Технічний та креативний директор"
+      "about.techDirector.role": "Технічний та креативний директор",
+      "nav.manifest": "Маніфест",
+      "manifest.empty": "Маніфест з'явиться тут незабаром.",
+      "about.techDirector.bio": "В'ячеслав Муністер — автор, дослідник і фахівець із цифрової спадщини. Він є членом асоціацій зі збереження спадщини En Quête de Patrimoine та Histoire d’en Parler. Його робота зосереджена на архітектурі, міській культурі, колективній пам'яті, а також збереженні та переосмисленні культурної спадщини за допомогою цифрових технологій."
     },
     "TR": {
       "nav.gallery": "Galeri",
@@ -1002,7 +1011,10 @@
       "issue.story": "hikaye",
       "issue.stories": "hikayeler",
       "about.team": "Ekip",
-      "about.techDirector.role": "Teknik ve Yaratıcı Direktör"
+      "about.techDirector.role": "Teknik ve Yaratıcı Direktör",
+      "nav.manifest": "Manifesto",
+      "manifest.empty": "Manifesto yakında burada görünecek.",
+      "about.techDirector.bio": "Viacheslav Munister; yazar, araştırmacı ve dijital miras uzmanıdır. En Quête de Patrimoine ve Histoire d’en Parler miras derneklerinin üyesidir. Çalışmaları mimari, kentsel kültür, kolektif hafıza ve kültürel mirasın dijital teknolojiler aracılığıyla korunması ve yeniden yorumlanması üzerine odaklanır."
     },
     "DE": {
       "nav.gallery": "Galerie",
@@ -1253,7 +1265,10 @@
       "issue.story": "Geschichte",
       "issue.stories": "Geschichten",
       "about.team": "Das Team",
-      "about.techDirector.role": "Technischer & Kreativdirektor"
+      "about.techDirector.role": "Technischer & Kreativdirektor",
+      "nav.manifest": "Manifest",
+      "manifest.empty": "Das Manifest erscheint hier in Kürze.",
+      "about.techDirector.bio": "Viacheslav Munister ist Autor, Forscher und Spezialist für digitales Erbe. Er ist Mitglied der Denkmalvereine En Quête de Patrimoine und Histoire d’en Parler. Seine Arbeit konzentriert sich auf Architektur, urbane Kultur, kollektives Gedächtnis sowie die Bewahrung und Neuinterpretation des kulturellen Erbes durch digitale Technologien."
     },
     "IT": {
       "nav.gallery": "Galleria",
@@ -1504,7 +1519,10 @@
       "issue.story": "storia",
       "issue.stories": "storie",
       "about.team": "Il Team",
-      "about.techDirector.role": "Direttore Tecnico e Creativo"
+      "about.techDirector.role": "Direttore Tecnico e Creativo",
+      "nav.manifest": "Manifesto",
+      "manifest.empty": "Il manifesto apparirà qui a breve.",
+      "about.techDirector.bio": "Viacheslav Munister è autore, ricercatore e specialista di patrimonio digitale. È membro delle associazioni per il patrimonio En Quête de Patrimoine e Histoire d’en Parler. Il suo lavoro si concentra sull'architettura, la cultura urbana, la memoria collettiva e la conservazione e reinterpretazione del patrimonio culturale attraverso le tecnologie digitali."
     },
     "ES": {
       "nav.gallery": "Galería",
@@ -1755,7 +1773,10 @@
       "issue.story": "historia",
       "issue.stories": "historias",
       "about.team": "El Equipo",
-      "about.techDirector.role": "Director Técnico y Creativo"
+      "about.techDirector.role": "Director Técnico y Creativo",
+      "nav.manifest": "Manifiesto",
+      "manifest.empty": "El manifiesto aparecerá aquí pronto.",
+      "about.techDirector.bio": "Viacheslav Munister es autor, investigador y especialista en patrimonio digital. Es miembro de las asociaciones de patrimonio En Quête de Patrimoine e Histoire d’en Parler. Su trabajo se centra en la arquitectura, la cultura urbana, la memoria colectiva y la preservación y reinterpretación del patrimonio cultural a través de las tecnologías digitales."
     }
   },
   "items": [
@@ -11818,5 +11839,35 @@
       "instagram": "@vmunister",
       "active": true
     }
-  ]
+  ],
+  "manifest": {
+    "EN": {
+      "title": "The Manifesto",
+      "body": "<p>EPRIS Journal exists to slow the world down. In an age that rewards speed and forgetting, we choose attention — and we choose to remember.</p><p>We believe beauty is not decoration but evidence: proof that a life was noticed, that a room was loved, that a city once held its breath. We gather these fragments and give them a place to last.</p><p>We publish slowly and read closely. We prefer the tangible to the trending, the considered to the convenient, the honest to the loud.</p><p>This journal is a living archive of the things that make life worth tasting — design, art, travel, and the quiet architecture of memory. It is a sanctuary for the thoughtful, the curious, and the aesthetic.</p><p>Reveal the invisible. Preserve the fleeting. Taste the life.</p>"
+    },
+    "UA": {
+      "title": "Маніфест",
+      "body": "<p>EPRIS Journal існує, щоб уповільнити світ. В епоху, яка винагороджує швидкість і забуття, ми обираємо увагу — і обираємо пам'ятати.</p><p>Ми віримо, що краса — це не оздоблення, а свідчення: доказ того, що життя було помічене, що кімнату любили, що місто колись завмирало від захвату. Ми збираємо ці фрагменти й даємо їм місце, щоб вони залишилися.</p><p>Ми публікуємо повільно й читаємо уважно. Ми надаємо перевагу відчутному над модним, обдуманому над зручним, щирому над гучним.</p><p>Цей журнал — живий архів речей, які роблять життя вартим смакування: дизайн, мистецтво, подорожі та тиха архітектура пам'яті. Це прихисток для вдумливих, допитливих і естетів.</p><p>Розкривати невидиме. Зберігати миттєве. Смакувати життя.</p>"
+    },
+    "RU": {
+      "title": "Манифест",
+      "body": "<p>EPRIS Journal существует, чтобы замедлить мир. В эпоху, которая вознаграждает скорость и забвение, мы выбираем внимание — и выбираем помнить.</p><p>Мы верим, что красота — это не украшение, а свидетельство: доказательство того, что жизнь была замечена, что комнату любили, что город когда-то замирал от восторга. Мы собираем эти фрагменты и даём им место, чтобы они остались.</p><p>Мы публикуем медленно и читаем внимательно. Мы предпочитаем осязаемое модному, обдуманное удобному, искреннее громкому.</p><p>Этот журнал — живой архив вещей, ради которых стоит смаковать жизнь: дизайн, искусство, путешествия и тихая архитектура памяти. Это убежище для вдумчивых, любопытных и эстетов.</p><p>Раскрывать невидимое. Сохранять мимолётное. Смаковать жизнь.</p>"
+    },
+    "DE": {
+      "title": "Das Manifest",
+      "body": "<p>EPRIS Journal existiert, um die Welt zu entschleunigen. In einer Zeit, die Geschwindigkeit und Vergessen belohnt, wählen wir die Aufmerksamkeit — und wir wählen, uns zu erinnern.</p><p>Wir glauben, dass Schönheit keine Dekoration ist, sondern ein Zeugnis: der Beweis, dass ein Leben wahrgenommen wurde, dass ein Raum geliebt wurde, dass eine Stadt einst den Atem anhielt. Wir sammeln diese Fragmente und geben ihnen einen Ort, an dem sie bleiben.</p><p>Wir veröffentlichen langsam und lesen aufmerksam. Wir bevorzugen das Greifbare vor dem Angesagten, das Bedachte vor dem Bequemen, das Ehrliche vor dem Lauten.</p><p>Dieses Journal ist ein lebendiges Archiv der Dinge, die das Leben kostbar machen — Design, Kunst, Reisen und die stille Architektur der Erinnerung. Es ist ein Zufluchtsort für die Nachdenklichen, die Neugierigen und die Ästheten.</p><p>Das Unsichtbare enthüllen. Das Flüchtige bewahren. Das Leben kosten.</p>"
+    },
+    "ES": {
+      "title": "El Manifiesto",
+      "body": "<p>EPRIS Journal existe para desacelerar el mundo. En una época que premia la velocidad y el olvido, elegimos la atención — y elegimos recordar.</p><p>Creemos que la belleza no es decoración sino evidencia: la prueba de que una vida fue advertida, de que una habitación fue amada, de que una ciudad contuvo el aliento. Reunimos estos fragmentos y les damos un lugar donde perdurar.</p><p>Publicamos despacio y leemos con atención. Preferimos lo tangible a lo que está de moda, lo meditado a lo cómodo, lo honesto a lo ruidoso.</p><p>Esta revista es un archivo vivo de las cosas que hacen que la vida merezca saborearse: diseño, arte, viajes y la silenciosa arquitectura de la memoria. Es un santuario para los reflexivos, los curiosos y los estetas.</p><p>Revelar lo invisible. Preservar lo efímero. Saborear la vida.</p>"
+    },
+    "TR": {
+      "title": "Manifesto",
+      "body": "<p>EPRIS Journal, dünyayı yavaşlatmak için var. Hızı ve unutmayı ödüllendiren bir çağda biz dikkati seçiyoruz — ve hatırlamayı seçiyoruz.</p><p>Güzelliğin bir süs değil, bir kanıt olduğuna inanıyoruz: bir hayatın fark edildiğinin, bir odanın sevildiğinin, bir şehrin bir zamanlar nefesini tuttuğunun kanıtı. Bu parçaları topluyor ve onlara kalıcı olacakları bir yer veriyoruz.</p><p>Yavaş yayımlıyor, dikkatle okuyoruz. Elle tutulanı gösterişli olana, düşünülmüş olanı kolay olana, dürüst olanı gürültülü olana yeğliyoruz.</p><p>Bu dergi, hayatı tatmaya değer kılan şeylerin yaşayan bir arşividir — tasarım, sanat, seyahat ve belleğin sessiz mimarisi. Düşünceliler, meraklılar ve estetler için bir sığınaktır.</p><p>Görünmeyeni açığa çıkar. Geçici olanı koru. Hayatı tat.</p>"
+    },
+    "IT": {
+      "title": "Il Manifesto",
+      "body": "<p>EPRIS Journal esiste per rallentare il mondo. In un'epoca che premia la velocità e l'oblio, noi scegliamo l'attenzione — e scegliamo di ricordare.</p><p>Crediamo che la bellezza non sia decorazione ma testimonianza: la prova che una vita è stata notata, che una stanza è stata amata, che una città ha trattenuto il respiro. Raccogliamo questi frammenti e diamo loro un luogo in cui durare.</p><p>Pubblichiamo lentamente e leggiamo con attenzione. Preferiamo il tangibile al di moda, il ponderato al comodo, l'onesto al rumoroso.</p><p>Questa rivista è un archivio vivente delle cose che rendono la vita degna di essere assaporata: design, arte, viaggi e la silenziosa architettura della memoria. È un rifugio per i riflessivi, i curiosi e gli esteti.</p><p>Rivelare l'invisibile. Preservare l'effimero. Assaporare la vita.</p>"
+    }
+  }
 }
