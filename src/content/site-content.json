@@ -254,7 +254,10 @@
       "home.explore": "Explore the Issue",
       "issue.inThisIssue": "In This Issue",
       "issue.story": "story",
-      "issue.stories": "stories"
+      "issue.stories": "stories",
+      "about.team": "The Team",
+      "about.techDirector.role": "Technical & Creative Director",
+      "about.techDirector.bio": "Viacheslav Munister leads the technical architecture and creative direction of Epris Journal — from the platform's engineering to its visual identity."
     },
     "RU": {
       "nav.gallery": "Галерея",
@@ -510,7 +513,10 @@
       "home.explore": "Открыть выпуск",
       "issue.inThisIssue": "В этом номере",
       "issue.story": "материал",
-      "issue.stories": "материалов"
+      "issue.stories": "материалов",
+      "about.team": "Команда",
+      "about.techDirector.role": "Технический и креативный директор",
+      "about.techDirector.bio": "Вячеслав Мунистер отвечает за техническую архитектуру и креативное направление Epris Journal — от инженерной части платформы до её визуальной идентичности."
     },
     "UA": {
       "nav.gallery": "Галерея",
@@ -766,7 +772,10 @@
       "home.explore": "Відкрити випуск",
       "issue.inThisIssue": "У цьому номері",
       "issue.story": "матеріал",
-      "issue.stories": "матеріалів"
+      "issue.stories": "матеріалів",
+      "about.team": "Команда",
+      "about.techDirector.role": "Технічний та креативний директор",
+      "about.techDirector.bio": "В'ячеслав Муністер відповідає за технічну архітектуру та креативний напрям Epris Journal — від інженерної частини платформи до її візуальної ідентичності."
     },
     "TR": {
       "nav.gallery": "Galeri",
@@ -1022,7 +1031,10 @@
       "home.intro": "Nasıl yaşadığımızı şekillendiren mekanları ve hikayeleri — niyet, güzellik ve bir yer duygusuyla keşfediyoruz.",
       "home.explore": "Sayıyı Keşfedin",
       "issue.story": "hikaye",
-      "issue.stories": "hikayeler"
+      "issue.stories": "hikayeler",
+      "about.team": "Ekip",
+      "about.techDirector.role": "Teknik ve Yaratıcı Direktör",
+      "about.techDirector.bio": "Viacheslav Munister, Epris Journal'ın teknik mimarisinden görsel kimliğine kadar teknik ve yaratıcı yönetiminden sorumludur."
     },
     "DE": {
       "nav.gallery": "Galerie",
@@ -1278,7 +1290,10 @@
       "home.intro": "Wir erkunden die Räume und Geschichten, die unser Leben prägen — mit Absicht, Schönheit und Sinn für Ort.",
       "home.explore": "Ausgabe entdecken",
       "issue.story": "Geschichte",
-      "issue.stories": "Geschichten"
+      "issue.stories": "Geschichten",
+      "about.team": "Das Team",
+      "about.techDirector.role": "Technischer & Kreativdirektor",
+      "about.techDirector.bio": "Viacheslav Munister verantwortet die technische Architektur und kreative Leitung von Epris Journal — von der Plattform-Entwicklung bis zur visuellen Identität."
     },
     "IT": {
       "nav.gallery": "Galleria",
@@ -1534,7 +1549,10 @@
       "home.intro": "Esploriamo gli spazi e le storie che plasmano il nostro modo di vivere — con intenzione, bellezza e senso del luogo.",
       "home.explore": "Esplora il Numero",
       "issue.story": "storia",
-      "issue.stories": "storie"
+      "issue.stories": "storie",
+      "about.team": "Il Team",
+      "about.techDirector.role": "Direttore Tecnico e Creativo",
+      "about.techDirector.bio": "Viacheslav Munister guida l'architettura tecnica e la direzione creativa di Epris Journal, dall'ingegneria della piattaforma alla sua identità visiva."
     },
     "ES": {
       "nav.gallery": "Galería",
@@ -1790,7 +1808,10 @@
       "home.intro": "Explorando los espacios y las historias que dan forma a cómo vivimos — con intención, belleza y sentido del lugar.",
       "home.explore": "Explorar el Número",
       "issue.story": "historia",
-      "issue.stories": "historias"
+      "issue.stories": "historias",
+      "about.team": "El Equipo",
+      "about.techDirector.role": "Director Técnico y Creativo",
+      "about.techDirector.bio": "Viacheslav Munister dirige la arquitectura técnica y la dirección creativa de Epris Journal, desde la ingeniería de la plataforma hasta su identidad visual."
     }
   },
   "items": [

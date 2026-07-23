@@ -16,10 +16,12 @@ import {
   ContentBlock,
   DEFAULT_LANGUAGE,
   getAvailableLanguages,
+  getAuthors,
   getContentForLanguage,
   getIssueArchive,
   getStudio,
   resolveAuthor,
+  translateRole,
   Item,
   LibraryItem,
   Review,
@@ -784,6 +786,7 @@ function GalleryMasthead({ t }: { t: (key: string) => string }) {
 }
 
 function AboutSection({ t }: { t: (key: string) => string }) {
+  const techDirector = getAuthors().find((a) => a.id === 'author-1784732936927-kw554');
   return (
     <div className="max-w-4xl mx-auto">
       <Reveal>
@@ -842,6 +845,53 @@ function AboutSection({ t }: { t: (key: string) => string }) {
           </div>
         </div>
       </Reveal>
+
+      {techDirector && (
+        <Reveal delay={0.3}>
+          <div className="border-t border-[var(--c-accent)] pt-24 mt-24">
+            <h3 className="font-serif text-3xl md:text-4xl text-[var(--c-accent)] mb-12 text-center">{t('about.team')}</h3>
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-12 max-w-2xl mx-auto">
+              {techDirector.photoUrl && (
+                <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden shrink-0 border border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+                  <img
+                    src={techDirector.photoUrl}
+                    alt={techDirector.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+              <div className="text-center sm:text-left">
+                <h4 className="font-serif text-2xl md:text-3xl text-[var(--c-accent)] mb-1">{techDirector.name}</h4>
+                <div className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-4">
+                  {t('about.techDirector.role')}
+                </div>
+                <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)] mb-4">
+                  {t('about.techDirector.bio')}
+                </p>
+                {(techDirector.website || techDirector.instagram) && (
+                  <div className="flex justify-center sm:justify-start gap-4 font-serif text-sm text-[var(--c-accent)]">
+                    {techDirector.website && (
+                      <a href={techDirector.website} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--c-gold)] transition-colors">
+                        Website
+                      </a>
+                    )}
+                    {techDirector.instagram && (
+                      <a
+                        href={`https://instagram.com/${techDirector.instagram.replace(/^@/, '')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-[var(--c-gold)] transition-colors"
+                      >
+                        Instagram
+                      </a>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      )}
     </div>
   );
 }
@@ -1224,7 +1274,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   // article.role and only fall back to the author record's role when the
   // article doesn't specify one — otherwise the byline "role" freezes in
   // one language regardless of the reader's selected language.
-  const authorRole = article.role || resolvedAuthor?.role;
+  const authorRole = article.role || translateRole(resolvedAuthor?.role, currentLang);
   const authorPhoto = resolvedAuthor?.photoUrl;
 
   // Jumping to a related article swaps content inside the same overlay — snap
