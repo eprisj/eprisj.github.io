@@ -6690,6 +6690,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     if (btn.dataset.tab === 'translations') setTimeout(renderTranslationsTab, 50);
     if (btn.dataset.tab === 'dashboard') setTimeout(renderDashboard, 50);
     if (btn.dataset.tab === 'studio') setTimeout(renderStudioTab, 50);
+    if (btn.dataset.tab === 'authors') setTimeout(() => window._renderAuthorsTab && window._renderAuthorsTab(), 50);
     if (btn.dataset.tab === 'history') setTimeout(refreshVersionHistory, 50);
   });
 });
@@ -7492,6 +7493,172 @@ function bindStudioRowActions() {
     updateEditorState();
     showToast('success', 'Студия обновлена – нажмите общий «Сохранить», чтобы отправить на VPS.');
   });
+})();
+
+// ═══════════════════════════════════════════════════════════
+// ──  AUTHORS TAB  ─────────────────────────────────────────
+//  Manage the top-level authors[] collection (name, role, bio, photo,
+//  links). Stored in the whole-file content JSON — the same store as
+//  issues/studio — so the site can resolve an article's author by id or by
+//  a name match automatically, for both old and new articles.
+// ═══════════════════════════════════════════════════════════
+(function initAuthorsTab() {
+  const esc = (s) => String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const listEl = () => document.getElementById('authorsList');
+  const cardEl = () => document.getElementById('authorEditorCard');
+
+  function readContent() {
+    const data = (typeof parseEditorJsonSafe === 'function') ? parseEditorJsonSafe() : null;
+    return data;
+  }
+  function authorsArray(data) {
+    if (!Array.isArray(data.authors)) data.authors = [];
+    return data.authors;
+  }
+  function persist(data) {
+    editor.value = JSON.stringify(data, null, 2);
+    if (typeof updateEditorState === 'function') updateEditorState();
+  }
+  function newId() {
+    return 'author-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7);
+  }
+
+  function renderAuthorsTab() {
+    const wrap = listEl();
+    if (!wrap) return;
+    const data = readContent();
+    if (!data) { wrap.innerHTML = '<p class="form-hint">Сначала загрузите контент (вкладка «Контент» → «Загрузить»).</p>'; return; }
+    const authors = authorsArray(data);
+    if (!authors.length) {
+      wrap.innerHTML = '<p class="form-hint">Пока нет авторов. Нажмите «＋ Новый автор».</p>';
+      return;
+    }
+    wrap.innerHTML = authors.map((a, i) => `
+      <div class="card" style="display:flex;gap:14px;align-items:flex-start">
+        ${a.photoUrl
+          ? `<img src="${esc(a.photoUrl)}" alt="" style="width:56px;height:56px;border-radius:50%;object-fit:cover;flex:0 0 auto">`
+          : `<div style="width:56px;height:56px;border-radius:50%;background:#c9b7a8;display:flex;align-items:center;justify-content:center;flex:0 0 auto;font-size:20px">${esc((a.name || '?').charAt(0))}</div>`}
+        <div style="flex:1;min-width:0">
+          <div style="font-weight:600">${esc(a.name || '(без имени)')}${a.active === false ? ' <span style="opacity:.5;font-weight:400">— скрыт</span>' : ''}</div>
+          <div style="opacity:.65;font-size:13px;margin:2px 0 6px">${esc(a.role || '')}</div>
+          ${a.bio ? `<div style="opacity:.6;font-size:12px;line-height:1.4;max-height:3.6em;overflow:hidden">${esc(a.bio)}</div>` : ''}
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button class="btn btn-sm" type="button" data-author-edit="${i}">✎ Редактировать</button>
+            <button class="btn btn-sm" type="button" data-author-del="${i}">🗑 Удалить</button>
+          </div>
+        </div>
+      </div>`).join('');
+    wrap.querySelectorAll('[data-author-edit]').forEach((b) =>
+      b.addEventListener('click', () => openEditor(authors[Number(b.getAttribute('data-author-edit'))])));
+    wrap.querySelectorAll('[data-author-del]').forEach((b) =>
+      b.addEventListener('click', () => {
+        const idx = Number(b.getAttribute('data-author-del'));
+        const a = authors[idx];
+        if (!confirm(`Удалить автора «${a && a.name || ''}»? Статьи не удаляются, просто теряют привязку карточки.`)) return;
+        const d = readContent(); if (!d) return;
+        authorsArray(d).splice(idx, 1);
+        persist(d);
+        renderAuthorsTab();
+        if (typeof showToast === 'function') showToast('info', 'Автор удалён — нажмите «Применить», чтобы опубликовать.');
+      }));
+  }
+
+  function openEditor(existing) {
+    const card = cardEl();
+    if (!card) return;
+    const a = existing ? { ...existing } : { id: newId(), name: '', role: '', bio: '', photoUrl: '', website: '', instagram: '', active: true };
+    const field = (label, key, ph) => `<label><span class="field-label">${label}</span><input data-af="${key}" value="${esc(a[key] || '')}" placeholder="${ph || ''}"></label>`;
+    card.hidden = false;
+    card.innerHTML =
+      `<h2 class="card-title">${existing ? 'Редактирование автора' : 'Новый автор'}</h2>` +
+      `<div class="form-grid">` +
+        field('Имя', 'name', 'Имя автора') +
+        field('Роль', 'role', 'Автор') +
+        `<label class="full"><span class="field-label">Био</span><textarea data-af="bio" rows="3" placeholder="Короткая биография">${esc(a.bio || '')}</textarea></label>` +
+        `<label><span class="field-label">Website</span><input data-af="website" value="${esc(a.website || '')}" placeholder="https://…"></label>` +
+        `<label><span class="field-label">Instagram</span><input data-af="instagram" value="${esc(a.instagram || '')}" placeholder="@handle"></label>` +
+        `<div class="full" style="display:flex;align-items:center;gap:12px">` +
+          `<div data-af-photo style="width:52px;height:52px;border-radius:50%;background:#c9b7a8;overflow:hidden;flex:0 0 auto">${a.photoUrl ? `<img src="${esc(a.photoUrl)}" style="width:100%;height:100%;object-fit:cover">` : ''}</div>` +
+          `<button type="button" class="btn btn-sm" data-af-upload>Загрузить фото</button>` +
+          `<input data-af="photoUrl" value="${esc(a.photoUrl || '')}" placeholder="URL фото" style="flex:1">` +
+        `</div>` +
+        `<label class="full" style="display:flex;align-items:center;gap:8px"><input type="checkbox" data-af-active ${a.active !== false ? 'checked' : ''}><span class="field-label" style="margin:0">Активен (показывать на сайте)</span></label>` +
+      `</div>` +
+      `<div style="display:flex;gap:8px;margin-top:12px">` +
+        `<button type="button" class="btn btn-primary btn-sm" data-af-save>Сохранить автора</button>` +
+        `<button type="button" class="btn btn-sm" data-af-cancel>Отмена</button>` +
+      `</div>`;
+    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    card.querySelectorAll('[data-af]').forEach((inp) => inp.addEventListener('input', () => {
+      a[inp.getAttribute('data-af')] = inp.value;
+      if (inp.getAttribute('data-af') === 'photoUrl') {
+        const box = card.querySelector('[data-af-photo]');
+        if (box) box.innerHTML = inp.value ? `<img src="${esc(inp.value)}" style="width:100%;height:100%;object-fit:cover">` : '';
+      }
+    }));
+    const upBtn = card.querySelector('[data-af-upload]');
+    upBtn && upBtn.addEventListener('click', () => {
+      const fi = document.createElement('input');
+      fi.type = 'file'; fi.accept = 'image/*';
+      fi.onchange = async () => {
+        const file = fi.files && fi.files[0];
+        if (!file) return;
+        upBtn.disabled = true; upBtn.textContent = 'Загрузка…';
+        try {
+          const url = await uploadImageReturnUrl(file);
+          a.photoUrl = url;
+          const urlInp = card.querySelector('[data-af="photoUrl"]');
+          if (urlInp) urlInp.value = url;
+          const box = card.querySelector('[data-af-photo]');
+          if (box) box.innerHTML = `<img src="${esc(url)}" style="width:100%;height:100%;object-fit:cover">`;
+        } catch (err) { alert('Не удалось загрузить фото: ' + err.message); }
+        finally { upBtn.disabled = false; upBtn.textContent = 'Загрузить фото'; }
+      };
+      fi.click();
+    });
+    card.querySelector('[data-af-cancel]').addEventListener('click', () => { card.hidden = true; card.innerHTML = ''; });
+    card.querySelector('[data-af-save]').addEventListener('click', () => {
+      a.name = (a.name || '').trim();
+      if (!a.name) { alert('У автора должно быть имя.'); return; }
+      const activeCb = card.querySelector('[data-af-active]');
+      a.active = !!(activeCb && activeCb.checked);
+      const data = readContent();
+      if (!data) { alert('Не удалось прочитать контент.'); return; }
+      const arr = authorsArray(data);
+      const idx = arr.findIndex((x) => x.id === a.id);
+      if (idx >= 0) arr[idx] = a; else arr.push(a);
+      persist(data);
+      card.hidden = true; card.innerHTML = '';
+      renderAuthorsTab();
+      if (typeof showToast === 'function') showToast('success', 'Автор сохранён — нажмите «Применить», чтобы опубликовать.');
+    });
+  }
+
+  // Publish the whole content (authors included) straight to the VPS.
+  async function applyAuthors() {
+    if (!editor.value) { showToast && showToast('error', 'Сначала загрузите контент.'); return; }
+    const pw = (typeof getAdminPassword === 'function') ? getAdminPassword() : '';
+    if (!pw) { showToast && showToast('error', 'Нет пароля редакции — войдите заново.'); return; }
+    const btn = document.getElementById('authorsApplyBtn');
+    if (btn) { btn.disabled = true; btn.textContent = 'Публикую…'; }
+    try {
+      const res = await fetch(CONTENT_API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw }, body: editor.value });
+      const d = await res.json().catch(() => ({}));
+      if (!res.ok || !d.ok) throw new Error(d.error || ('VPS вернул ' + res.status));
+      if (typeof setLastSyncedSnapshotFromText === 'function') setLastSyncedSnapshotFromText(editor.value);
+      showToast && showToast('success', '✓ Авторы опубликованы — сайт обновлён.');
+    } catch (err) {
+      showToast && showToast('error', 'Не удалось опубликовать: ' + err.message);
+    } finally {
+      if (btn) { btn.disabled = false; btn.textContent = 'Применить'; }
+    }
+  }
+
+  document.getElementById('authorAddBtn')?.addEventListener('click', () => openEditor(null));
+  document.getElementById('authorsApplyBtn')?.addEventListener('click', applyAuthors);
+  window._renderAuthorsTab = renderAuthorsTab;
 })();
 
 // ═══════════════════════════════════════════════════════════
