@@ -411,6 +411,20 @@ export function resolveAuthor(article: { authorId?: string; author?: string }): 
   return null;
 }
 
+// Author.role is entered once in the admin in a single language, so it would
+// otherwise freeze in that language regardless of the reader's selected
+// locale. This lookup translates known role strings per language; unknown
+// roles fall back to the raw string as typed.
+const ROLE_TRANSLATIONS: Record<string, Record<string, string>> = {
+  'Автор': { EN: 'Author', RU: 'Автор', UA: 'Автор', DE: 'Autor', ES: 'Autor', TR: 'Yazar', IT: 'Autore' },
+};
+
+/** Translate an Author record's `role` string into the given language, if known. */
+export function translateRole(role: string | undefined, lang: string): string | undefined {
+  if (!role) return role;
+  return ROLE_TRANSLATIONS[role]?.[lang] || role;
+}
+
 // Back-compat: the bundled translations map. Prefer getTranslations() for
 // live-aware lookups (it resolves against the active content source).
 export const translations = content.translations;
