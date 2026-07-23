@@ -1,4 +1,4 @@
-import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
+import { motion, AnimatePresence, LayoutGroup, MotionConfig } from 'framer-motion';
 import { ReactNode, useState, useEffect, useCallback, useMemo, FormEvent, useRef, Suspense, lazy, Component } from 'react';
 // Heavy, rarely-visited tabs are code-split out of the critical bundle —
 // e.g. DesignPage alone carries a 244-item catalogue that has no business
@@ -439,6 +439,17 @@ const staggerItem = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
 
+// Shared motion tokens so interactions read as one system.
+const EASE = [0.22, 1, 0.36, 1] as const;
+// Card hover-lift on desktop; press feedback on touch (no hover there).
+const cardHover = { y: -6, transition: { duration: 0.4, ease: EASE } };
+const cardTap = { scale: 0.985, transition: { duration: 0.15, ease: EASE } };
+// A hairline that draws itself in when scrolled into view.
+const drawLine = {
+  hidden: { scaleX: 0, opacity: 0 },
+  show: { scaleX: 1, opacity: 1, transition: { duration: 0.8, ease: EASE } },
+};
+
 function NavBar({
   activeTab,
   setActiveTab,
@@ -752,13 +763,22 @@ function GalleryMasthead({ t }: { t: (key: string) => string }) {
       <div className="border-b border-dotted border-[rgb(var(--c-accent-rgb)_/_0.4)]" />
 
       {/* "explore our latest article" kicker */}
-      <div className="flex items-center justify-center gap-4 sm:gap-6 py-6 sm:py-10 px-5">
-        <span className="h-px w-10 sm:w-16 bg-[rgb(var(--c-accent-rgb)_/_0.3)]" />
-        <span className="font-crimson italic text-sm sm:text-base tracking-wide text-[rgb(var(--c-accent-rgb)_/_0.75)]">
+      <motion.div
+        className="flex items-center justify-center gap-4 sm:gap-6 py-6 sm:py-10 px-5"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: '-10%' }}
+      >
+        <motion.span variants={drawLine} className="h-px w-10 sm:w-16 bg-[rgb(var(--c-accent-rgb)_/_0.3)] origin-right" />
+        <motion.span
+          initial={{ opacity: 0, y: 8 }}
+          variants={{ hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE, delay: 0.15 } } }}
+          className="font-crimson italic text-sm sm:text-base tracking-wide text-[rgb(var(--c-accent-rgb)_/_0.75)]"
+        >
           explore our latest article
-        </span>
-        <span className="h-px w-10 sm:w-16 bg-[rgb(var(--c-accent-rgb)_/_0.3)]" />
-      </div>
+        </motion.span>
+        <motion.span variants={drawLine} className="h-px w-10 sm:w-16 bg-[rgb(var(--c-accent-rgb)_/_0.3)] origin-left" />
+      </motion.div>
     </div>
   );
 }
@@ -839,8 +859,10 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
           <span className="absolute top-0 right-0 w-6 h-6 sm:w-8 sm:h-8 border-t border-r border-[var(--c-accent)]" />
           <span className="absolute bottom-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-b border-l border-[var(--c-accent)]" />
           <span className="absolute bottom-0 right-0 w-6 h-6 sm:w-8 sm:h-8 border-b border-r border-[var(--c-accent)]" />
-          <div
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 group cursor-pointer"
+            whileHover={cardHover}
+            whileTap={cardTap}
             role="button"
             tabIndex={0}
             onClick={() => onItemClick(featured)}
@@ -869,7 +891,7 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
                 read
               </span>
             </div>
-          </div>
+          </motion.div>
         </div>
       </Reveal>
 
@@ -886,6 +908,8 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
           <motion.div
             key={item.id}
             variants={staggerItem}
+            whileHover={cardHover}
+            whileTap={cardTap}
             className="group cursor-pointer flex flex-col sm:flex-row gap-5 sm:gap-8"
             role="button"
             tabIndex={0}
@@ -2301,6 +2325,7 @@ export default function App() {
   }, []);
 
   return (
+    <MotionConfig reducedMotion="user">
     <div className="min-h-screen bg-[var(--c-bg)] text-[var(--c-accent)] selection:bg-[var(--c-gold)] selection:text-white">
       <NavBar
         activeTab={activeTab}
@@ -2453,5 +2478,6 @@ export default function App() {
         )}
       </AnimatePresence>
     </div>
+    </MotionConfig>
   );
 }
