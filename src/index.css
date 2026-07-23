@@ -153,3 +153,5 @@ img[loading="lazy"] {
 .rich-text strong, .rich-text b { font-weight: 700; }
 .rich-text em, .rich-text i { font-style: italic; }
 .rich-text u { text-decoration: underline; }
+.rich-text p { margin: 0 0 1em; }
+.rich-text p:last-child { margin-bottom: 0; }
