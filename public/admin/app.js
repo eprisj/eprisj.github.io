@@ -6690,6 +6690,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     if (btn.dataset.tab === 'translations') setTimeout(renderTranslationsTab, 50);
     if (btn.dataset.tab === 'dashboard') setTimeout(renderDashboard, 50);
     if (btn.dataset.tab === 'studio') setTimeout(renderStudioTab, 50);
+    if (btn.dataset.tab === 'manifest') setTimeout(() => window._renderManifestTab && window._renderManifestTab(), 50);
     if (btn.dataset.tab === 'authors') setTimeout(() => window._renderAuthorsTab && window._renderAuthorsTab(), 50);
     if (btn.dataset.tab === 'history') setTimeout(refreshVersionHistory, 50);
   });
@@ -7492,6 +7493,80 @@ function bindStudioRowActions() {
     editor.value = JSON.stringify(data, null, 2);
     updateEditorState();
     showToast('success', 'Студия обновлена – нажмите общий «Сохранить», чтобы отправить на VPS.');
+  });
+})();
+
+// ═══════════════════════════════════════════════════════════
+// ──  MANIFEST TAB  ────────────────────────────────────────
+//  Edits the per-language `manifest` object ({ [lang]: {title, body} })
+//  shown at /manifest. Mirrors the studio flow: edit a working copy, Apply
+//  writes it into the whole-file JSON, then the global Save pushes to VPS.
+// ═══════════════════════════════════════════════════════════
+(function initManifestTab() {
+  const DEFAULT_LANG = 'EN';
+  let _manifest = null;   // working copy { [lang]: {title, body} }
+  let _curLang = DEFAULT_LANG;
+
+  const el = (id) => document.getElementById(id);
+
+  function langs(data) {
+    const t = (data && data.translations && typeof data.translations === 'object') ? Object.keys(data.translations) : [];
+    if (!t.includes(DEFAULT_LANG)) t.unshift(DEFAULT_LANG);
+    return t;
+  }
+
+  // Read the two visible fields back into the working copy for the current lang.
+  function captureForm() {
+    if (!_manifest) return;
+    const title = el('manifestTitle') ? el('manifestTitle').value : '';
+    const body = el('manifestBody') ? el('manifestBody').value : '';
+    _manifest[_curLang] = { title: title, body: body };
+  }
+
+  function renderForm() {
+    const entry = (_manifest && _manifest[_curLang]) || {};
+    if (el('manifestTitle')) el('manifestTitle').value = entry.title || '';
+    if (el('manifestBody')) el('manifestBody').value = entry.body || '';
+  }
+
+  function renderManifestTab() {
+    const data = (typeof parseEditorJsonSafe === 'function') ? parseEditorJsonSafe() : null;
+    const sel = el('manifestLang');
+    if (!data || !sel) {
+      if (el('manifestBody')) el('manifestBody').value = '';
+      return;
+    }
+    _manifest = JSON.parse(JSON.stringify(data.manifest || {}));
+    const list = langs(data);
+    if (!list.includes(_curLang)) _curLang = list[0] || DEFAULT_LANG;
+    sel.innerHTML = list.map((l) => `<option value="${l}" ${l === _curLang ? 'selected' : ''}>${l}</option>`).join('');
+    renderForm();
+  }
+  window._renderManifestTab = renderManifestTab;
+
+  const selEl = el('manifestLang');
+  if (selEl) selEl.addEventListener('change', (e) => {
+    captureForm();                 // keep edits for the language we're leaving
+    _curLang = e.target.value;
+    renderForm();
+  });
+
+  const applyBtn = el('manifestApplyBtn');
+  if (applyBtn) applyBtn.addEventListener('click', () => {
+    const data = (typeof parseEditorJsonSafe === 'function') ? parseEditorJsonSafe() : null;
+    if (!data) { showToast('error', 'Загрузите JSON перед сохранением.'); return; }
+    captureForm();
+    // Drop entries that are entirely empty so we don't store blank shells.
+    const cleaned = {};
+    for (const [lang, entry] of Object.entries(_manifest || {})) {
+      const title = (entry && entry.title || '').trim();
+      const body = (entry && entry.body || '').trim();
+      if (title || body) cleaned[lang] = { title, body };
+    }
+    data.manifest = cleaned;
+    editor.value = JSON.stringify(data, null, 2);
+    if (typeof updateEditorState === 'function') updateEditorState();
+    showToast('success', 'Манифест обновлён – нажмите общий «Сохранить», чтобы отправить на VPS.');
   });
 })();
 

@@ -175,6 +175,15 @@ export interface Studio {
   projects: StudioProject[];
 }
 
+/** A per-language manifesto shown at /manifest. Each locale carries its own
+ *  title + HTML body; the page falls back to DEFAULT_LANGUAGE when a locale is
+ *  missing. Edited from the admin "Manifest" tab. */
+export interface ManifestEntry {
+  title?: string;
+  body?: string; // HTML (rendered with the same sanitizer as article text)
+}
+export type Manifest = Record<string, ManifestEntry>;
+
 export interface Issue {
   id: number;
   name: string;
@@ -211,6 +220,7 @@ export interface SiteContent {
   issues?: Issue[];
   studio?: Studio;
   authors?: Author[];
+  manifest?: Manifest;
 }
 
 const content = rawContent as SiteContent;
@@ -604,6 +614,15 @@ const DEFAULT_STUDIO: Studio = {
  */
 export function getStudio(): Studio {
   return src().studio || DEFAULT_STUDIO;
+}
+
+/**
+ * Returns the manifesto entry for a language, falling back to DEFAULT_LANGUAGE
+ * (and then to an empty entry) so /manifest always has something to render.
+ */
+export function getManifest(lang: string = DEFAULT_LANGUAGE): ManifestEntry {
+  const all = src().manifest || {};
+  return all[lang] || all[DEFAULT_LANGUAGE] || {};
 }
 
 export function getIssueArchive(lang: string = DEFAULT_LANGUAGE): { issue: Issue; articles: Article[] }[] {

@@ -86,6 +86,7 @@ const ROUTES = {
   reviews: 'Reviews',
   library: 'Library',
   about: 'About',
+  manifest: 'Manifesto',
   materie: 'Materie',
   studio: 'Studio',
   issue: 'Issue',

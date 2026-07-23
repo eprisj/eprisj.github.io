@@ -17,6 +17,7 @@ import {
   DEFAULT_LANGUAGE,
   getAvailableLanguages,
   getAuthors,
+  getManifest,
   getContentForLanguage,
   getIssueArchive,
   getStudio,
@@ -208,7 +209,7 @@ const HEART_CELLS: [number, number][] = HEART_PATTERN.flatMap((row, r) =>
 // small set of inline formatting tags survive; everything else is unwrapped to
 // its text. Anchors keep a safe href only. Rebuilding the tree (rather than
 // regex-stripping) is what makes it XSS-safe.
-const RICH_ALLOWED_TAGS = new Set(['B', 'STRONG', 'I', 'EM', 'U', 'S', 'MARK', 'CODE', 'BR', 'A', 'SPAN']);
+const RICH_ALLOWED_TAGS = new Set(['B', 'STRONG', 'I', 'EM', 'U', 'S', 'MARK', 'CODE', 'BR', 'A', 'SPAN', 'P']);
 function escapeTextNode(s: string): string {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
@@ -482,6 +483,7 @@ function NavBar({
     { id: 'reviews', label: t('nav.reviews') },
     { id: 'library', label: t('nav.library') },
     { id: 'about', label: t('nav.about') },
+    { id: 'manifest', label: t('nav.manifest') },
     { id: 'materie', label: t('nav.materie') },
     { id: 'issue', label: t('nav.issue') },
     { id: 'design', label: 'Design' },
@@ -842,11 +844,16 @@ function AboutSection({ t }: { t: (key: string) => string }) {
                 <div className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-4">
                   {t('about.techDirector.role')}
                 </div>
-                {techDirector.bio && (
-                  <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)] mb-4">
-                    {techDirector.bio}
-                  </p>
-                )}
+                {(() => {
+                  // The Author record's bio is a single global string, so it
+                  // froze in one language. Prefer the localized translation key
+                  // and only fall back to the record's bio when it's unset.
+                  const bio = t('about.techDirector.bio');
+                  const text = bio === 'about.techDirector.bio' ? techDirector.bio : bio;
+                  return text ? (
+                    <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)] mb-4">{text}</p>
+                  ) : null;
+                })()}
                 {(techDirector.website || techDirector.instagram) && (
                   <div className="flex justify-center sm:justify-start gap-4 font-serif text-sm text-[var(--c-accent)]">
                     {techDirector.website && (
@@ -871,6 +878,36 @@ function AboutSection({ t }: { t: (key: string) => string }) {
           </div>
         </Reveal>
       )}
+    </div>
+  );
+}
+
+function ManifestPage({ t, currentLang }: { t: (key: string) => string; currentLang: string }) {
+  const entry = getManifest(currentLang);
+  const title = entry.title || t('nav.manifest');
+  const body = entry.body || '';
+  return (
+    <div className="max-w-3xl mx-auto py-8 sm:py-16">
+      <Reveal>
+        <div className="font-mono text-xs uppercase tracking-[0.3em] text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-6 text-center">
+          EPRIS Journal
+        </div>
+        <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl text-[var(--c-accent)] mb-10 sm:mb-16 text-center leading-tight">
+          {title}
+        </h1>
+      </Reveal>
+      <Reveal delay={0.15}>
+        {body ? (
+          <div
+            className="manifest-body font-serif text-lg sm:text-xl leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.85)] rich-text"
+            dangerouslySetInnerHTML={{ __html: sanitizeRichText(body) }}
+          />
+        ) : (
+          <p className="font-serif text-lg text-[rgb(var(--c-accent-rgb)_/_0.6)] text-center italic">
+            {t('manifest.empty')}
+          </p>
+        )}
+      </Reveal>
     </div>
   );
 }
@@ -2120,7 +2157,7 @@ function SearchResults({
   );
 }
 
-const VALID_TABS = ['gallery', 'articles', 'reviews', 'library', 'about', 'materie', 'issue', 'studio', 'radio', 'podcasts', 'design', 'passport'];
+const VALID_TABS = ['gallery', 'articles', 'reviews', 'library', 'about', 'manifest', 'materie', 'issue', 'studio', 'radio', 'podcasts', 'design', 'passport'];
 
 function buildSlugMap(): Map<string, number> {
   const allArticles = getContentForLanguage(DEFAULT_LANGUAGE).articles;
@@ -2436,6 +2473,7 @@ export default function App() {
                     {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} />}
                     {activeTab === 'library' && <LibrarySection libraryItems={libraryItems} t={t} />}
                     {activeTab === 'about' && <AboutSection t={t} />}
+                    {activeTab === 'manifest' && <ManifestPage t={t} currentLang={currentLang} />}
                   </>
                 )}
               </motion.div>

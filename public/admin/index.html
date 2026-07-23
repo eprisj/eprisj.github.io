@@ -92,6 +92,10 @@
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
               Авторы
             </button>
+            <button class="tab-btn" data-tab="manifest" type="button">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 3h11l5 5v13a0 0 0 0 1 0 0H4z"/><polyline points="15 3 15 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+              Манифест
+            </button>
           </div>
 
           <div class="sidebar-nav-group">
@@ -766,6 +770,34 @@
                 <div class="studio-section-head"><h2 class="card-title" style="margin:0">Проекты</h2><button id="studioAddProjectBtn" class="btn btn-sm" type="button">+ Проект</button></div>
                 <p class="card-desc">Портфолио. «Featured» — крупный разворот. Галерея — по URL на строку.</p>
                 <div id="studioProjectsList" class="studio-projects-list"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ===== MANIFEST ===== -->
+          <section class="tab-panel" id="tab-manifest">
+            <div class="studio-layout">
+              <div class="card card-highlight">
+                <h2 class="card-title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 3h11l5 5v13H4z"/><polyline points="15 3 15 8 20 8"/></svg> Страница «Манифест»</h2>
+                <p class="card-desc">Контент страницы <strong>/manifest</strong>, свой для каждого языка. Заголовок и текст (можно с HTML: &lt;p&gt;, &lt;br&gt;, &lt;strong&gt;, &lt;em&gt;).</p>
+                <div class="studio-toolbar">
+                  <a id="manifestOpenLink" href="../manifest" target="_blank" rel="noreferrer" class="btn btn-sm">Открыть ↗</a>
+                  <button id="manifestApplyBtn" class="btn btn-primary btn-sm" type="button">Применить</button>
+                </div>
+              </div>
+              <div class="card">
+                <div class="form-grid">
+                  <label><span class="field-label">Язык</span>
+                    <select id="manifestLang"></select>
+                  </label>
+                  <label class="full"><span class="field-label">Заголовок</span>
+                    <input id="manifestTitle" placeholder="Манифест" />
+                  </label>
+                  <label class="full"><span class="field-label">Текст (HTML)</span>
+                    <textarea id="manifestBody" rows="16" placeholder="&lt;p&gt;Первый абзац…&lt;/p&gt;&lt;p&gt;Второй абзац…&lt;/p&gt;"></textarea>
+                  </label>
+                </div>
+                <p class="card-desc" style="margin-top:10px">Переключение языка сохраняет введённый текст в память. После правок нажмите «Применить», затем общий «Сохранить», чтобы отправить на VPS.</p>
               </div>
             </div>
           </section>
