@@ -307,7 +307,22 @@ function mergeLocalizedArray<T extends { id: number }>(value: T[] | undefined, f
   return fallback.map((entry) => {
     const localized = localizedById.get(Number(entry.id));
     if (!localized) return entry;
-    return hasLocalizedPayload(localized) ? localized : entry;
+    if (!hasLocalizedPayload(localized)) return entry;
+    // A translation pass only ever touches text fields (title/excerpt/content/...);
+    // it has no reason to carry the author link along. If the localized copy is
+    // missing authorId/author/role (translated before that field existed, or a
+    // sync script that doesn't know about it), silently swapping in the whole
+    // localized object would blank the byline in that language even though the
+    // root article has it. Backfill just those three fields from root.
+    const merged: Record<string, unknown> = { ...localized };
+    for (const key of ['authorId', 'author', 'role'] as const) {
+      const localizedValue = (localized as Record<string, unknown>)[key];
+      const rootValue = (entry as Record<string, unknown>)[key];
+      if ((localizedValue === undefined || localizedValue === null || localizedValue === '') && rootValue !== undefined) {
+        merged[key] = rootValue;
+      }
+    }
+    return merged as T;
   });
 }
 
