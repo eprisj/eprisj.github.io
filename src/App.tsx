@@ -209,7 +209,7 @@ const HEART_CELLS: [number, number][] = HEART_PATTERN.flatMap((row, r) =>
 // small set of inline formatting tags survive; everything else is unwrapped to
 // its text. Anchors keep a safe href only. Rebuilding the tree (rather than
 // regex-stripping) is what makes it XSS-safe.
-const RICH_ALLOWED_TAGS = new Set(['B', 'STRONG', 'I', 'EM', 'U', 'S', 'MARK', 'CODE', 'BR', 'A', 'SPAN', 'P']);
+const RICH_ALLOWED_TAGS = new Set(['B', 'STRONG', 'I', 'EM', 'U', 'S', 'MARK', 'CODE', 'BR', 'A', 'SPAN', 'P', 'H2', 'H3', 'H4', 'UL', 'OL', 'LI', 'HR', 'BLOCKQUOTE']);
 function escapeTextNode(s: string): string {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
@@ -483,7 +483,6 @@ function NavBar({
     { id: 'reviews', label: t('nav.reviews') },
     { id: 'library', label: t('nav.library') },
     { id: 'about', label: t('nav.about') },
-    { id: 'manifest', label: t('nav.manifest') },
     { id: 'materie', label: t('nav.materie') },
     { id: 'issue', label: t('nav.issue') },
     { id: 'design', label: 'Design' },
