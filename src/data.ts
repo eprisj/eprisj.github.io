@@ -279,7 +279,56 @@ function isPreview(): boolean {
   return previewContent !== null;
 }
 
+// Admin "add new" seeds every collection with a blueprint stub whose fields are
+// obvious placeholders ("New editorial story", "…— replace me"). If the author
+// never fills it in, that stub used to leak onto the public site — and once an
+// AI translate pass ran over it, translated placeholders ("замініть мене") got
+// stored per-locale and overrode the real base content for that language even
+// after the base entry was rewritten into a real piece. Both are the same bug:
+// unedited blueprint text being treated as real content.
+//
+// Detection is anchored on the FULL, distinctive seed strings (exact blueprint
+// titles + whole "replace me"/"before publishing" phrases and their translated
+// forms) — never on short fragments, because fragments like "замін" also occur
+// inside real words ("незамінне"/"irreplaceable") and would wrongly hide real
+// translations. Any real edit changes the title or copy and clears the flag.
+const PLACEHOLDER_TITLES = new Set([
+  'new editorial story', 'new practical guide', 'new photo essay',
+  'new review', 'new gallery item', 'new file',
+]);
+const PLACEHOLDER_PHRASES = [
+  // EN seeds (admin blueprints)
+  'one-line context — replace me', 'replace me',
+  'replace with real copy before publishing',
+  'a focused opening paragraph for a new editorial story',
+  // UA translated stubs seen in live data
+  'замініть мене', 'замініть на справжню копію',
+  // RU translated stubs seen in live data
+  'замените меня', 'замените реальной копией',
+];
+
+/**
+ * True when an entity is still an unedited blueprint stub (its title is a known
+ * seed title, or its subtitle/description/excerpt still carries a placeholder
+ * phrase). Used to hide such stubs from the public site and to ignore
+ * placeholder localized overrides so they fall back to the real base content.
+ */
+export function isPlaceholderEntity(entry: unknown): boolean {
+  if (!entry || typeof entry !== 'object') return false;
+  const e = entry as Record<string, unknown>;
+  const title = typeof e.title === 'string' ? e.title.trim().toLowerCase() : '';
+  if (title && PLACEHOLDER_TITLES.has(title)) return true;
+  const haystack = [e.subtitle, e.description, e.excerpt]
+    .filter((v): v is string => typeof v === 'string')
+    .join(' ')
+    .toLowerCase();
+  return PLACEHOLDER_PHRASES.some((p) => haystack.includes(p));
+}
+
 function hasLocalizedPayload(entry: unknown): boolean {
+  // A localized entry that is still a translated placeholder must not override
+  // real base content — treat it as no payload so the merge falls back.
+  if (isPlaceholderEntity(entry)) return false;
   if (!entry || typeof entry !== 'object') return false;
   const record = entry as Record<string, unknown>;
   const textKeys = ['title', 'excerpt', 'content', 'subject', 'author', 'category', 'caption', 'description'];
@@ -361,6 +410,9 @@ export function getAvailableLanguages(): string[] {
  */
 export function isEntityLive(e: { draft?: boolean; publishAt?: string }): boolean {
   if (e.draft) return false;
+  // Unedited blueprint stubs ("New editorial story", "…— replace me") never
+  // belong on the public site, even if nobody remembered to mark them draft.
+  if (isPlaceholderEntity(e)) return false;
   if (e.publishAt) {
     const ts = Date.parse(e.publishAt);
     if (!Number.isNaN(ts) && ts > Date.now()) return false;
