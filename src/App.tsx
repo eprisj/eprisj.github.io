@@ -1217,7 +1217,14 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   // show a real photo + bio; falls back to the plain author/role strings.
   const resolvedAuthor = resolveAuthor(article);
   const authorName = resolvedAuthor?.name || article.author;
-  const authorRole = resolvedAuthor?.role || article.role;
+  // article.role is per-language (each locale bucket carries its own translated
+  // string, e.g. "Arts Desk" vs "Arts Desk" translated); the Author record's
+  // role is a single global string entered once in the admin, so it can only
+  // ever show in whatever language it was typed in. Prefer the localized
+  // article.role and only fall back to the author record's role when the
+  // article doesn't specify one — otherwise the byline "role" freezes in
+  // one language regardless of the reader's selected language.
+  const authorRole = article.role || resolvedAuthor?.role;
   const authorPhoto = resolvedAuthor?.photoUrl;
 
   // Jumping to a related article swaps content inside the same overlay — snap
