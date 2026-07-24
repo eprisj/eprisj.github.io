@@ -185,7 +185,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
       <div className="absolute pointer-events-none" style={{ inset: '1.4%', border: '1px solid #4a1728', opacity: 0.7 }}/>
 
       {/* ══════════════════════════ TOP HALF — OBSERVATIONS ══════════════════════ */}
-      <div style={{ position: 'absolute', top: '2%', left: '4.5%', right: '4.5%', height: '35%', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', top: '2%', left: '4.5%', right: '4.5%', height: '32%', overflow: 'hidden' }}>
         {/* Big page number + small colored security glyph, top-right — a real
             specimen page's most immediately recognizable feature. */}
         <div style={{ position: 'absolute', top: 0, right: 0, display: 'flex', alignItems: 'center', gap: '3%' }}>
@@ -241,13 +241,13 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
       </div>
 
       {/* ══════════════════════════ DIVIDER (the fold) ═══════════════════════════ */}
-      <div className="absolute pointer-events-none" style={{ top: '38%', left: '2%', right: '2%', height: '1px', backgroundImage: 'repeating-linear-gradient(to right, rgba(74,23,40,0.45) 0 1.5px, transparent 1.5px 6px)' }}/>
-      <div className="absolute flex pointer-events-none" style={{ top: 'calc(38% - 3px)', left: '4.5%', right: '4.5%', justifyContent: 'space-between' }}>
+      <div className="absolute pointer-events-none" style={{ top: '36%', left: '2%', right: '2%', height: '1px', backgroundImage: 'repeating-linear-gradient(to right, rgba(74,23,40,0.45) 0 1.5px, transparent 1.5px 6px)' }}/>
+      <div className="absolute flex pointer-events-none" style={{ top: 'calc(36% - 3px)', left: '4.5%', right: '4.5%', justifyContent: 'space-between' }}>
         {Array.from({ length: 9 }, (_, i) => <div key={i} style={{ width: 5, height: 5, border: '0.6px solid rgba(74,23,40,0.35)' }} />)}
       </div>
 
       {/* ══════════════════════════ BOTTOM HALF — DATA PAGE ══════════════════════ */}
-      <div style={{ position: 'absolute', top: '41%', left: '4.5%', right: '4.5%', bottom: '2%' }}>
+      <div style={{ position: 'absolute', top: '39%', left: '4.5%', right: '4.5%', bottom: '2%' }}>
         {/* Header band */}
         <div style={{
           position: 'absolute', top: 0, left: '-1%', right: '-1%', height: '13%',
