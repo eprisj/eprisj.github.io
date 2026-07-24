@@ -5,7 +5,7 @@ import QRCode from 'qrcode';
 import { PassportPreview } from './PassportPreview';
 import { PassportBook } from './PassportBook';
 import { generatePassportCode } from '../../lib/passportCode';
-import { publishPassport, fetchPassport } from './passportApi';
+import { publishPassport, fetchPassport, getSavedAdminPassword, saveAdminPassword, verifyAdminPassword } from './passportApi';
 import { renderPassportPNG, type PassportFields } from './passportRender';
 import { PhotoCropper } from './PhotoCropper';
 
@@ -192,6 +192,71 @@ function VerifyView({ code }: { code: string }) {
   );
 }
 
+// Gates passport creation/editing behind the same password as the admin
+// panel. Sharing an existing published passport is a fictional keepsake and
+// stays open to everyone (see VerifyView) — this only guards the form that
+// creates or edits one. Shares a localStorage entry with public/admin/app.js,
+// so being logged into /admin already unlocks this with no extra prompt.
+function PassportAuthGate({ children }: { children: React.ReactNode }) {
+  const [status, setStatus] = useState<'checking' | 'ok' | 'locked'>('checking');
+  const [pwInput, setPwInput] = useState('');
+  const [error, setError] = useState('');
+  const [checking, setChecking] = useState(false);
+
+  useEffect(() => {
+    const saved = getSavedAdminPassword();
+    if (!saved) { setStatus('locked'); return; }
+    verifyAdminPassword(saved).then((valid) => setStatus(valid ? 'ok' : 'locked'));
+  }, []);
+
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
+    e.preventDefault();
+    setChecking(true);
+    setError('');
+    const valid = await verifyAdminPassword(pwInput);
+    setChecking(false);
+    if (valid) {
+      saveAdminPassword(pwInput);
+      setStatus('ok');
+    } else {
+      setError('Неверный пароль.');
+    }
+  }, [pwInput]);
+
+  if (status === 'ok') return <>{children}</>;
+
+  return (
+    <div className="min-h-screen w-full bg-[var(--pp-cream)] text-[var(--pp-ink)] flex items-center justify-center font-sans px-4" style={{ '--pp-burgundy': '#501a2c', '--pp-ink': '#241016', '--pp-cream': '#f7f2ea', '--pp-sand': '#c9a690' } as CSSProperties}>
+      {status === 'checking' ? (
+        <p className="font-mono text-xs tracking-widest text-[var(--pp-burgundy)]/60">CHECKING…</p>
+      ) : (
+        <form onSubmit={handleSubmit} className="w-full max-w-sm bg-white/50 border border-white/60 rounded-xl p-8 shadow-[0_8px_30px_rgba(80,26,44,0.06)]">
+          <p className="font-serif text-2xl text-[var(--pp-burgundy)] mb-2">Editorial access required</p>
+          <p className="font-sans text-sm text-[var(--pp-ink)]/70 mb-6">
+            Creating or editing an EPRIS Digital Member Passport requires the editorial password (same as the admin panel).
+          </p>
+          <input
+            type="password"
+            autoFocus
+            value={pwInput}
+            onChange={(e) => setPwInput(e.target.value)}
+            placeholder="Password"
+            className="w-full bg-white/70 border border-[var(--pp-burgundy)]/20 rounded-md focus:border-[var(--pp-burgundy)]/60 outline-none px-4 py-2.5 font-serif text-[15px] text-[var(--pp-ink)] mb-3"
+          />
+          {error && <p className="text-[12px] font-serif text-red-700 mb-3">{error}</p>}
+          <button
+            type="submit"
+            disabled={checking || !pwInput}
+            className="w-full bg-[var(--pp-burgundy)] text-white font-mono text-[11px] uppercase tracking-widest px-5 py-3 rounded-lg disabled:opacity-50 transition-opacity"
+          >
+            {checking ? 'Checking…' : 'Unlock'}
+          </button>
+        </form>
+      )}
+    </div>
+  );
+}
+
 export function PassportPage({ viewCode, onBack }: { viewCode: string | null; onBack: () => void }) {
   const [fields, setFields] = useState<PassportFields>(emptyFields);
   const [photoDataUrl, setPhotoDataUrl] = useState<string | null>(null);
@@ -358,13 +423,15 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
 
   if (isAdminEditRequest && adminEditStatus !== 'ready') {
     return (
-      <div className="min-h-screen w-full bg-[var(--pp-cream)] text-[var(--pp-ink)] flex items-center justify-center font-sans" style={{ '--pp-burgundy': '#501a2c', '--pp-ink': '#241016', '--pp-cream': '#f7f2ea', '--pp-sand': '#c9a690' } as CSSProperties}>
-        {adminEditStatus === 'error' ? (
-          <p className="font-serif text-xl text-[var(--pp-burgundy)]">Passport not found.</p>
-        ) : (
-          <p className="font-mono text-xs tracking-widest text-[var(--pp-burgundy)]/60">LOADING…</p>
-        )}
-      </div>
+      <PassportAuthGate>
+        <div className="min-h-screen w-full bg-[var(--pp-cream)] text-[var(--pp-ink)] flex items-center justify-center font-sans" style={{ '--pp-burgundy': '#501a2c', '--pp-ink': '#241016', '--pp-cream': '#f7f2ea', '--pp-sand': '#c9a690' } as CSSProperties}>
+          {adminEditStatus === 'error' ? (
+            <p className="font-serif text-xl text-[var(--pp-burgundy)]">Passport not found.</p>
+          ) : (
+            <p className="font-mono text-xs tracking-widest text-[var(--pp-burgundy)]/60">LOADING…</p>
+          )}
+        </div>
+      </PassportAuthGate>
     );
   }
 
@@ -385,6 +452,7 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
   }
 
   return (
+    <PassportAuthGate>
     <div
       className="pt-16 pb-24 px-4 sm:px-8 max-w-7xl mx-auto"
       style={{ '--pp-burgundy': '#501a2c', '--pp-ink': '#241016', '--pp-cream': '#f7f2ea', '--pp-sand': '#c9a690' } as CSSProperties}
@@ -519,5 +587,6 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
         />
       )}
     </div>
+    </PassportAuthGate>
   );
 }
