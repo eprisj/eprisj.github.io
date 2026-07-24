@@ -1340,6 +1340,7 @@
           history: 'История версий',
           settings: 'Настройки',
         };
+        var LAST_TAB_KEY = 'epris_admin_last_tab';
         tabButtons.forEach(function (btn) {
           btn.addEventListener('click', function () {
             tabButtons.forEach(function (b) { b.classList.remove('active'); });
@@ -1351,8 +1352,20 @@
             var titleEl = document.getElementById('pageTitle');
             if (titleEl && pageTitles[tab]) titleEl.textContent = pageTitles[tab];
             if (tab === 'polls' && typeof window._renderPollResults === 'function') window._renderPollResults();
+            try { localStorage.setItem(LAST_TAB_KEY, tab); } catch (e) { /* localStorage unavailable */ }
           });
         });
+
+        // Reopen on the tab the editor was on before the reload, instead of
+        // always landing back on whichever tab is hardcoded "active" in the
+        // markup.
+        try {
+          var lastTab = localStorage.getItem(LAST_TAB_KEY);
+          if (lastTab) {
+            var lastBtn = document.querySelector('.tab-btn[data-tab="' + lastTab + '"]');
+            if (lastBtn) lastBtn.click();
+          }
+        } catch (e) { /* localStorage unavailable */ }
       });
     </script>
   </body>

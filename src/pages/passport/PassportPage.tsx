@@ -200,6 +200,7 @@ function VerifyView({ code }: { code: string }) {
 function PassportAuthGate({ children }: { children: React.ReactNode }) {
   const [status, setStatus] = useState<'checking' | 'ok' | 'locked'>('checking');
   const [pwInput, setPwInput] = useState('');
+  const [remember, setRemember] = useState(true);
   const [error, setError] = useState('');
   const [checking, setChecking] = useState(false);
 
@@ -216,12 +217,12 @@ function PassportAuthGate({ children }: { children: React.ReactNode }) {
     const valid = await verifyAdminPassword(pwInput);
     setChecking(false);
     if (valid) {
-      saveAdminPassword(pwInput);
+      if (remember) saveAdminPassword(pwInput);
       setStatus('ok');
     } else {
       setError('Неверный пароль.');
     }
-  }, [pwInput]);
+  }, [pwInput, remember]);
 
   if (status === 'ok') return <>{children}</>;
 
@@ -243,6 +244,16 @@ function PassportAuthGate({ children }: { children: React.ReactNode }) {
             placeholder="Password"
             className="w-full bg-white/70 border border-[var(--pp-burgundy)]/20 rounded-md focus:border-[var(--pp-burgundy)]/60 outline-none px-4 py-2.5 font-serif text-[15px] text-[var(--pp-ink)] mb-3"
           />
+          <label className="flex items-center gap-2 cursor-pointer mb-4">
+            <input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} className="sr-only" />
+            <div
+              className="w-4 h-4 rounded-sm border transition-all duration-150 flex items-center justify-center"
+              style={{ backgroundColor: remember ? 'var(--pp-burgundy)' : 'rgba(255,255,255,0.8)', borderColor: remember ? 'var(--pp-burgundy)' : 'rgba(74,23,40,0.3)' }}
+            >
+              {remember && <Check size={11} className="text-white" strokeWidth={3.5} />}
+            </div>
+            <span className="font-sans text-[13px] text-[var(--pp-ink)]/70">Remember on this device</span>
+          </label>
           {error && <p className="text-[12px] font-serif text-red-700 mb-3">{error}</p>}
           <button
             type="submit"
