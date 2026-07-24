@@ -199,6 +199,36 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
   const [existingPhotoUrl, setExistingPhotoUrl] = useState<string | null>(null);
   const isEditing = mode === 'edit';
 
+  // Admin deep link only — never surfaced on the public verification page —
+  // that loads the existing record straight into the editor: /passport/CODE?edit=1
+  const isAdminEditRequest = useMemo(
+    () => Boolean(viewCode) && new URLSearchParams(window.location.search).get('edit') === '1',
+    [viewCode],
+  );
+  const [adminEditStatus, setAdminEditStatus] = useState<'idle' | 'loading' | 'ready' | 'error'>('idle');
+
+  useEffect(() => {
+    if (!isAdminEditRequest || !viewCode) return;
+    let cancelled = false;
+    setAdminEditStatus('loading');
+    fetchPassport(viewCode).then((res) => {
+      if (cancelled) return;
+      if (res.ok && res.record) {
+        setFields(res.record.fields);
+        setPhotoDataUrl(null);
+        setExistingPhotoUrl(res.record.photoUrl);
+        setCode(viewCode);
+        setIsPublic(true);
+        setConsent(true);
+        setMode('edit');
+        setAdminEditStatus('ready');
+      } else {
+        setAdminEditStatus('error');
+      }
+    });
+    return () => { cancelled = true; };
+  }, [isAdminEditRequest, viewCode]);
+
   const verifyUrl = useMemo(() => `${window.location.origin}/passport/${code}`, [code]);
   const displayMemberNumber = fields.memberNumber || code;
 
@@ -233,7 +263,8 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
     setErrors({});
     setPublishStatus('idle');
     setMode('create');
-  }, []);
+    if (isAdminEditRequest) window.history.replaceState(null, '', window.location.pathname);
+  }, [isAdminEditRequest]);
 
   const handleDownloadPNG = useCallback(async () => {
     if (!validate()) return;
@@ -315,6 +346,18 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
     handleCopyLink();
   }, [verifyUrl, handleCopyLink]);
 
+  if (isAdminEditRequest && adminEditStatus !== 'ready') {
+    return (
+      <div className="min-h-screen w-full bg-[var(--pp-cream)] text-[var(--pp-ink)] flex items-center justify-center font-sans" style={{ '--pp-burgundy': '#501a2c', '--pp-ink': '#241016', '--pp-cream': '#f7f2ea', '--pp-sand': '#c9a690' } as CSSProperties}>
+        {adminEditStatus === 'error' ? (
+          <p className="font-serif text-xl text-[var(--pp-burgundy)]">Passport not found.</p>
+        ) : (
+          <p className="font-mono text-xs tracking-widest text-[var(--pp-burgundy)]/60">LOADING…</p>
+        )}
+      </div>
+    );
+  }
+
   if (viewCode && !isEditing) {
     return (
       <div className="min-h-screen w-full bg-[var(--pp-cream)] text-[var(--pp-ink)] flex flex-col font-sans" style={{ '--pp-burgundy': '#501a2c', '--pp-ink': '#241016', '--pp-cream': '#f7f2ea', '--pp-sand': '#c9a690' } as CSSProperties}>
@@ -322,7 +365,7 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
           <button onClick={onBack} className="self-start flex items-center justify-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--pp-burgundy)] hover:opacity-70 transition-all duration-300 mb-8 sm:mb-12 py-2">
             <ArrowLeft size={14} /> RETURN TO JOURNAL
           </button>
-          
+
           <div className="flex-grow flex items-start justify-center pb-24">
             <VerifyView code={viewCode} />
           </div>
