@@ -223,22 +223,6 @@ function F({
   );
 }
 
-// ── Tab button ────────────────────────────────────────────────────────────────
-function Tab({ active, onClick, label }: { active: boolean; onClick: () => void; label: string }) {
-  return (
-    <button 
-      onClick={onClick} 
-      className={`flex-1 flex items-center justify-center py-2.5 px-2 transition-all duration-300 text-[10px] sm:text-xs font-sans font-semibold tracking-[0.2em] uppercase border-b-2 ${
-        active 
-          ? 'border-[var(--pp-burgundy)] text-[var(--pp-burgundy)]' 
-          : 'border-transparent text-[var(--pp-burgundy)]/40 hover:text-[var(--pp-burgundy)]/70 hover:border-[var(--pp-burgundy)]/20'
-      }`}
-    >
-      {label}
-    </button>
-  );
-}
-
 // ── Main passport page ────────────────────────────────────────────────────────
 export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: {
   fields: PassportFields; photoUrl: string | null; code: string;
@@ -598,7 +582,6 @@ export function PassportPreview({
   code: string;
   qrDataUrl: string | null;
 }) {
-  const [page, setPage] = useState<'bio' | 'obs'>('bio');
   const [rot, setRot] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
@@ -625,12 +608,6 @@ export function PassportPreview({
   return (
     <>
       <div className={`w-full max-w-[560px] mx-auto ${isZoomed ? 'hidden' : 'block'}`} style={{ perspective: 1200 }}>
-        {/* Tabs */}
-        <div className="flex mb-8 border-b border-[var(--pp-burgundy)]/10">
-          <Tab active={page === 'bio'} onClick={() => setPage('bio')} label="Biographical" />
-          <Tab active={page === 'obs'} onClick={() => setPage('obs')} label="Observations" />
-        </div>
-
         <div
           onMouseMove={handleMouseMove}
           onMouseEnter={() => setIsHovering(true)}
@@ -654,7 +631,6 @@ export function PassportPreview({
             photoUrl={photoUrl}
             code={code}
             mrz={mrz}
-            page2={page === 'obs'}
             qrDataUrl={qrDataUrl}
           />
         </div>
