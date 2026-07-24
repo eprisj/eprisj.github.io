@@ -44,6 +44,7 @@ export function PassportBook({
   qrDataUrl: string | null;
 }) {
   const [open, setOpen] = useState(false);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [vw, setVw] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
   const [bookH, setBookH] = useState(560);
   const rightRef = useRef<HTMLDivElement>(null);
@@ -78,6 +79,15 @@ export function PassportBook({
   const pageW = cardW;
   const shareText = `Check out my official EPRIS Digital Member Passport! (${fields.givenNames} ${fields.surname})`;
   const url = typeof window !== 'undefined' ? window.location.href : '';
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (open || isMobile) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+    const y = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+    setTilt({ x: -y * 8, y: x * 8 });
+  };
+  const handleMouseLeave = () => setTilt({ x: 0, y: 0 });
 
   // The cover panel: leather front + endpaper back, hinged on its left (spine).
   // `origin`/`openTransform` differ per layout (desktop swings left around the
@@ -155,12 +165,12 @@ export function PassportBook({
         </div>
       ) : (
         /* ── Desktop: the cover swings open into a two-page spread ── */
-        <div style={{ perspective: 2400 }}>
+        <div style={{ perspective: 2400 }} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
           <div
             style={{
               position: 'relative', width: pageW * 2, height: bookH,
-              transform: open ? 'translateX(0)' : `translateX(-25%)`,
-              transition: 'transform 1.05s cubic-bezier(0.6, 0.04, 0.24, 1)',
+              transform: open ? 'translateX(0)' : `translateX(-25%) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+              transition: (open || (tilt.x === 0 && tilt.y === 0)) ? 'transform 1.05s cubic-bezier(0.6, 0.04, 0.24, 1)' : 'transform 0.15s ease-out',
             }}
           >
             {/* Right page — the data page (revealed under the cover) */}

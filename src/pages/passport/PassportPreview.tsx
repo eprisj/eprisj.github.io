@@ -198,7 +198,7 @@ function F({
     <div style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
       <span style={{
         fontFamily: '"PT Sans", sans-serif',
-        fontSize: 'clamp(5px, 1.05cqw, 8.5px)',
+        fontSize: 'clamp(6px, 1.3cqw, 10px)',
         color: '#4a1728',
         opacity: 0.55,
         fontStyle: 'italic',
@@ -210,15 +210,45 @@ function F({
           ? '"Playfair Display", "PT Serif", serif'
           : mono
             ? '"Courier New", monospace'
-            : '"PT Serif", serif',
+            : '"Playfair Display", "PT Serif", serif',
         fontSize: big
-          ? 'clamp(9.5px, 1.95cqw, 16.5px)'
-          : 'clamp(7.5px, 1.35cqw, 11.5px)',
+          ? 'clamp(12px, 2.4cqw, 20px)'
+          : 'clamp(9.5px, 1.8cqw, 15px)',
         fontWeight: big ? 700 : 600,
         color: '#1a0b10',
         lineHeight: 1.1,
         letterSpacing: big ? '0.01em' : mono ? '0.04em' : '0.005em',
       }}>{value || '—'}</span>
+    </div>
+  );
+}
+
+// ── Verification Stamp ────────────────────────────────────────────────────────
+function VerificationStamp() {
+  const dateStr = new Date().toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' }).toUpperCase();
+  return (
+    <div style={{
+      position: 'absolute',
+      right: '6%',
+      bottom: '18%',
+      width: 'clamp(30px, 9cqw, 60px)',
+      height: 'clamp(30px, 9cqw, 60px)',
+      transform: 'rotate(-15deg)',
+      mixBlendMode: 'multiply',
+      opacity: 0.65,
+      pointerEvents: 'none',
+      zIndex: 10,
+    }}>
+      <svg viewBox="0 0 100 100" style={{ width: '100%', height: '100%' }}>
+        <circle cx="50" cy="50" r="45" fill="none" stroke="#b33939" strokeWidth="2.5" strokeDasharray="4 2" />
+        <circle cx="50" cy="50" r="41" fill="none" stroke="#b33939" strokeWidth="1" />
+        <path id="stamp-arc" d="M 20,50 A 30,30 0 0 1 80,50" fill="none" />
+        <text fontFamily="monospace" fontSize="10" fontWeight="bold" fill="#b33939" letterSpacing="1">
+          <textPath href="#stamp-arc" startOffset="50%" textAnchor="middle">VERIFIED</textPath>
+        </text>
+        <text x="50" y="60" fontFamily="monospace" fontSize="6.5" fontWeight="bold" fill="#b33939" textAnchor="middle">EPRIS J.</text>
+        <text x="50" y="70" fontFamily="monospace" fontSize="5" fill="#b33939" textAnchor="middle">{dateStr}</text>
+      </svg>
     </div>
   );
 }
@@ -238,6 +268,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
         containerType: 'inline-size',
         // Layered shadow like a real document
         boxShadow: '0 2px 6px rgba(74,23,40,0.12), 0 8px 28px rgba(74,23,40,0.16), 0 20px 60px rgba(74,23,40,0.12)',
+        borderRadius: '8px',
       } as CSSProperties}
     >
       {/* Guilloche — rich colored background */}
@@ -378,7 +409,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
                 : <span style={{ fontFamily: 'monospace', fontSize: 'clamp(5px, 1cqw, 8px)', color: '#4a1728', opacity: 0.3 }}>QR</span>
             ) : (
               photoUrl
-                ? <img src={photoUrl} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }}/>
+                ? <img src={photoUrl} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', mixBlendMode: 'multiply', filter: 'sepia(0.2) contrast(0.95)' }}/>
                 : <span style={{ fontFamily: '"PT Sans",sans-serif', fontSize: 'clamp(5px, 1cqw, 8px)', color: '#4a1728', opacity: 0.3 }}>PHOTO</span>
             )}
           </div>
@@ -444,6 +475,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
                 </div>
               </div>
               <F label="Professional Field" value={(fields.field || '—').toUpperCase()} />
+              <VerificationStamp />
             </>
           ) : (
             <>
