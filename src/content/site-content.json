@@ -3139,7 +3139,7 @@
         "design",
         "poland"
       ],
-      "imageSeed": "new-editorial-story",
+      "imageSeed": "",
       "content": [
         {
           "type": "text",
@@ -3341,7 +3341,8 @@
           "type": "text",
           "content": "This approach aligns with the broader trajectory of modern Polish design, which seeks to transcend mere decoration by imbuing functional objects with narrative depth.<br>"
         }
-      ]
+      ],
+      "imageUrl": "https://api.eprisjournal.com/uploads/mrz3r722rp5a1p.jpg"
     }
   ],
   "reviews": [
