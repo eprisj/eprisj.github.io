@@ -3243,6 +3243,10 @@
         },
         {
           "type": "header",
+          "content": "<span>Ania Jaworska</span>"
+        },
+        {
+          "type": "text",
           "content": ""
         },
         {
