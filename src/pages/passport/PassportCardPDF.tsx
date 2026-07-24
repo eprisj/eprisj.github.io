@@ -2,6 +2,7 @@ import React from 'react';
 import { Document, Page, View, Text, Image, StyleSheet, Font, Svg, Path, Circle, Defs, LinearGradient, Stop, Rect, Polygon, Line, Ellipse } from '@react-pdf/renderer';
 import type { PassportFields } from './passportRender';
 import { generateSignatureString } from '../../lib/passportCode';
+import { buildMRZ } from '../../lib/mrz';
 
 let _fontsRegistered = false;
 function registerFonts(baseUrl: string) {
@@ -16,29 +17,7 @@ function registerFonts(baseUrl: string) {
   Font.registerHyphenationCallback((word) => [word]);
 }
 
-// ── MRZ ───────────────────────────────────────────────────────────────────────
-function padFill(s: string, n: number) {
-  return s.replace(/[^A-Z0-9]/gi, '').toUpperCase().slice(0, n).padEnd(n, '<');
-}
-function cdv(s: string): string {
-  const W = [7, 3, 1]; let sum = 0;
-  for (let i = 0; i < s.length; i++) {
-    const c = s[i];
-    const v = c === '<' ? 0 : /\d/.test(c) ? +c : c.charCodeAt(0) - 55;
-    sum += v * W[i % 3];
-  }
-  return String(sum % 10);
-}
-function buildMRZ(f: PassportFields, code: string): [string, string] {
-  const sn = padFill(f.surname, 13), gn = padFill(f.givenNames, 15);
-  const line1 = `P<EPRISJ${sn}<<${gn}`.slice(0, 44).padEnd(44, '<');
-  const num = padFill(code.replace(/[^A-Z0-9]/g, ''), 9);
-  const dob = f.dob.replace(/-/g, '').slice(2, 8) || '000000';
-  const exp = f.expiryDate.replace(/-/g, '').slice(2, 8) || '310712';
-  const comp = `${num}${cdv(num)}${dob}${cdv(dob)}1${exp}${cdv(exp)}<<<<<<`;
-  const line2 = `${num}${cdv(num)}EPR${dob}${cdv(dob)}1${exp}${cdv(exp)}<<<<<<${cdv(comp)}`.slice(0, 44).padEnd(44, '<');
-  return [line1, line2];
-}
+// MRZ generation lives in ../../lib/mrz (single shared ICAO 9303 implementation).
 
 // Aspect ratio 88:125 -> let's use 316.8 x 450 (which is 88*3.6, 125*3.6)
 const W = 316.8;
@@ -189,7 +168,7 @@ export function PassportCardPDF({ fields, photoDataUrl, code, qrDataUrl, baseUrl
               <View style={{ flex: 1 }}><F label="Record No." val={code} mono /></View>
             </View>
             <View style={{ flexDirection: 'row' }}>
-              <View style={{ flex: 1 }}><F label="Sex" val="·" /></View>
+              <View style={{ flex: 1 }}><F label="Sex" val={(fields.sex || 'X').toUpperCase()} /></View>
               <View style={{ flex: 1 }}><F label="City" val={fields.city} /></View>
             </View>
             <View style={{ flexDirection: 'row' }}>
