@@ -1,30 +1,9 @@
 import { useState, type CSSProperties } from 'react';
 import type { PassportFields } from './passportRender';
 import { generateSignatureString } from '../../lib/passportCode';
+import { buildMRZ } from '../../lib/mrz';
 
-// ── MRZ ───────────────────────────────────────────────────────────────────────
-function padFill(s: string, n: number) {
-  return s.replace(/[^A-Z0-9]/gi, '').toUpperCase().slice(0, n).padEnd(n, '<');
-}
-function cdv(s: string): string {
-  const W = [7, 3, 1]; let sum = 0;
-  for (let i = 0; i < s.length; i++) {
-    const c = s[i];
-    const v = c === '<' ? 0 : /\d/.test(c) ? +c : c.charCodeAt(0) - 55;
-    sum += v * W[i % 3];
-  }
-  return String(sum % 10);
-}
-export function buildMRZ(f: PassportFields, code: string): [string, string] {
-  const sn = padFill(f.surname, 13), gn = padFill(f.givenNames, 15);
-  const line1 = `P<EPRISJ${sn}<<${gn}`.slice(0, 44).padEnd(44, '<');
-  const num = padFill(code.replace(/[^A-Z0-9]/g, ''), 9);
-  const dob = f.dob.replace(/-/g, '').slice(2, 8) || '000000';
-  const exp = f.expiryDate.replace(/-/g, '').slice(2, 8) || '310712';
-  const comp = `${num}${cdv(num)}${dob}${cdv(dob)}1${exp}${cdv(exp)}<<<<<<`;
-  const line2 = `${num}${cdv(num)}EPR${dob}${cdv(dob)}1${exp}${cdv(exp)}<<<<<<${cdv(comp)}`.slice(0, 44).padEnd(44, '<');
-  return [line1, line2];
-}
+export { buildMRZ };
 
 // ── Rich Guilloche ────────────────────────────────────────────────────────────
 // Three wave families with visible warm amber+cool teal palette like in real passports
@@ -456,7 +435,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
                 <F label="Record No." value={code} mono />
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
-                <F label="Sex" value="·" />
+                <F label="Sex" value={(fields.sex || 'X').toUpperCase()} />
                 <F label="City" value={fields.city || '—'} />
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>

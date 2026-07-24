@@ -1,5 +1,6 @@
 import QRCode from 'qrcode';
 import { generateSignatureString } from '../../lib/passportCode';
+import { buildMRZ } from '../../lib/mrz';
 
 export interface PassportFields {
   surname: string;
@@ -14,6 +15,8 @@ export interface PassportFields {
   issueDate: string;
   expiryDate: string;
   motto: string;
+  /** ICAO 9303 sex marker: 'M' | 'F' | 'X' (unspecified). Feeds the MRZ's sex position. */
+  sex: string;
 }
 
 // Portrait passport page: 88mm × 125mm at ~200dpi → 693×984 px per page
@@ -53,29 +56,7 @@ function loadImage(src: string): Promise<HTMLImageElement> {
   });
 }
 
-// ── MRZ ───────────────────────────────────────────────────────────────────────
-function padFill(s: string, n: number) {
-  return s.replace(/[^A-Z0-9]/gi, '').toUpperCase().slice(0, n).padEnd(n, '<');
-}
-function cdv(s: string): string {
-  const W = [7, 3, 1]; let sum = 0;
-  for (let i = 0; i < s.length; i++) {
-    const c = s[i];
-    const v = c === '<' ? 0 : /\d/.test(c) ? +c : c.charCodeAt(0) - 55;
-    sum += v * W[i % 3];
-  }
-  return String(sum % 10);
-}
-function buildMRZ(f: PassportFields, code: string): [string, string] {
-  const sn = padFill(f.surname, 13), gn = padFill(f.givenNames, 15);
-  const line1 = `P<EPRISJ${sn}<<${gn}`.slice(0, 44).padEnd(44, '<');
-  const num = padFill(code.replace(/[^A-Z0-9]/g, ''), 9);
-  const dob = f.dob.replace(/-/g, '').slice(2, 8) || '000000';
-  const exp = f.expiryDate.replace(/-/g, '').slice(2, 8) || '310712';
-  const comp = `${num}${cdv(num)}${dob}${cdv(dob)}1${exp}${cdv(exp)}<<<<<<`;
-  const line2 = `${num}${cdv(num)}EPR${dob}${cdv(dob)}1${exp}${cdv(exp)}<<<<<<${cdv(comp)}`.slice(0, 44).padEnd(44, '<');
-  return [line1, line2];
-}
+// MRZ generation lives in ../../lib/mrz (single shared ICAO 9303 implementation).
 
 // ── Guilloche ─────────────────────────────────────────────────────────────────
 function drawGuilloche(ctx: CanvasRenderingContext2D, ox: number, w: number, h: number) {
@@ -312,7 +293,7 @@ async function drawPage(
     fld(ctx, colX,          ry, 'Date of birth', f.dob||'—', 14);
     fld(ctx, colX+half+10,  ry, 'Record No.', code, 13, false, true); ry += rg;
 
-    fld(ctx, colX,          ry, 'Sex', '·', 14);
+    fld(ctx, colX,          ry, 'Sex', (f.sex || 'X').toUpperCase(), 14);
     fld(ctx, colX+half+10,  ry, 'City', f.city||'—', 14); ry += rg;
 
     fld(ctx, colX,          ry, 'Date of issue', f.issueDate||'—', 14);

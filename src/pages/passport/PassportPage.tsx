@@ -31,6 +31,7 @@ function emptyFields(): PassportFields {
     issueDate: todayISO(),
     expiryDate: todayISO(5),
     motto: '',
+    sex: '',
   };
 }
 
@@ -87,8 +88,13 @@ function CreatorForm({
         <Labeled label="Date of Birth">
           <input type="date" className={inputCls} value={fields.dob} onChange={(e) => set('dob', e.target.value)} />
         </Labeled>
-        <Labeled label="Professional Field">
-          <input className={inputCls} placeholder="Architecture, Editorial…" value={fields.field} onChange={(e) => set('field', e.target.value)} maxLength={50} />
+        <Labeled label="Sex">
+          <select className={inputCls} value={fields.sex} onChange={(e) => set('sex', e.target.value)}>
+            <option value="">Unspecified (X)</option>
+            <option value="M">M</option>
+            <option value="F">F</option>
+            <option value="X">X</option>
+          </select>
         </Labeled>
       </div>
 
@@ -100,6 +106,10 @@ function CreatorForm({
           <input className={inputCls} value={fields.city} onChange={(e) => set('city', e.target.value)} maxLength={40} />
         </Labeled>
       </div>
+
+      <Labeled label="Professional Field">
+        <input className={inputCls} placeholder="Architecture, Editorial…" value={fields.field} onChange={(e) => set('field', e.target.value)} maxLength={50} />
+      </Labeled>
 
       <Labeled label="Membership Type">
         <select className={inputCls} value={fields.membershipType} onChange={(e) => set('membershipType', e.target.value)}>
