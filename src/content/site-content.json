@@ -1855,8 +1855,8 @@
     {
       "id": 16,
       "title": "Past Through Present: Contemporary Polish Design",
-      "author": "EPRIS Journal",
-      "role": "Maria ivanova",
+      "author": "Maria Ivanova",
+      "role": "Author",
       "date": "Jul 24, 2026",
       "excerpt": "How does the sensetivity of Polish designers towards cultural heritage shape the design scene",
       "category": "design",
@@ -2073,7 +2073,8 @@
           "content": "Nowadays Polish Design is a quintessence of devotion to the craftsmanship, that has proclaimed the cultural identity for decades. Aspiring to create against the backdrop of utilitarian minimalism, architects and designers translate their vision, continuing to shape a unique national narrative that amazes the creatives around  the world. "
         }
       ],
-      "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg"
+      "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg",
+      "authorId": "author-1784896384236-4fokw"
     },
     {
       "id": 15,
@@ -4834,8 +4835,8 @@
         {
           "id": 16,
           "title": "Польский дизайн",
-          "author": "EPRIS Journal",
-          "role": "Мария иванова",
+          "author": "Maria Ivanova",
+          "role": "Автор",
           "date": "24 июля 2026 г.",
           "excerpt": "Целенаправленный вступительный абзац для новой редакционной статьи.",
           "category": "дизайн",
@@ -5021,7 +5022,8 @@
                 ]
               }
             }
-          ]
+          ],
+          "authorId": "author-1784896384236-4fokw"
         }
       ],
       "reviews": [
@@ -6509,8 +6511,8 @@
         {
           "id": 16,
           "title": "Польський дизайн",
-          "author": "EPRIS Journal",
-          "role": "Марія Іванова",
+          "author": "Maria Ivanova",
+          "role": "Автор",
           "date": "24 липня 2026 р",
           "excerpt": "Цілеспрямований початковий абзац для нової редакційної статті.",
           "category": "дизайн",
@@ -6696,7 +6698,8 @@
                 ]
               }
             }
-          ]
+          ],
+          "authorId": "author-1784896384236-4fokw"
         }
       ],
       "reviews": [
@@ -8010,8 +8013,8 @@
         {
           "id": 16,
           "title": "Polnisches Design",
-          "author": "EPRIS Journal",
-          "role": "Maria Iwanowa",
+          "author": "Maria Ivanova",
+          "role": "Autor",
           "date": "24. Juli 2026",
           "excerpt": "Ein fokussierter Eröffnungsabsatz für eine neue redaktionelle Geschichte.",
           "category": "Design",
@@ -8197,7 +8200,8 @@
                 ]
               }
             }
-          ]
+          ],
+          "authorId": "author-1784896384236-4fokw"
         }
       ],
       "reviews": [
@@ -9511,8 +9515,8 @@
         {
           "id": 16,
           "title": "Diseño polaco",
-          "author": "EPRIS Journal",
-          "role": "maria ivanova",
+          "author": "Maria Ivanova",
+          "role": "Autor",
           "date": "24 de julio de 2026",
           "excerpt": "Un párrafo inicial centrado en una nueva historia editorial.",
           "category": "diseño",
@@ -9698,7 +9702,8 @@
                 ]
               }
             }
-          ]
+          ],
+          "authorId": "author-1784896384236-4fokw"
         }
       ],
       "reviews": [
@@ -11186,8 +11191,8 @@
         {
           "id": 16,
           "title": "Polonya Tasarımı",
-          "author": "EPRIS Journal",
-          "role": "Maria Ivanova",
+          "author": "Maria Ivanova",
+          "role": "Yazar",
           "date": "24 Temmuz 2026",
           "excerpt": "Yeni bir editoryal hikaye için odaklanmış bir açılış paragrafı.",
           "category": "tasarım",
@@ -11373,7 +11378,8 @@
                 ]
               }
             }
-          ]
+          ],
+          "authorId": "author-1784896384236-4fokw"
         }
       ],
       "reviews": [
@@ -12542,8 +12548,8 @@
         {
           "id": 16,
           "title": "Design polacco",
-          "author": "EPRIS Journal",
-          "role": "Maria Ivanova",
+          "author": "Maria Ivanova",
+          "role": "Autore",
           "date": "24 luglio 2026",
           "excerpt": "Un paragrafo di apertura mirato per una nuova storia editoriale.",
           "category": "progetto",
@@ -12729,7 +12735,8 @@
                 ]
               }
             }
-          ]
+          ],
+          "authorId": "author-1784896384236-4fokw"
         }
       ],
       "reviews": [
