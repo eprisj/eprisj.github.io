@@ -11,15 +11,18 @@ const COVER_RATIO = 776 / 1100; // 0.705 — cropped cover art (closed booklet s
 // the public verification page.
 function ShareRow({ shareText, url }: { shareText: string; url: string }) {
   const [copied, setCopied] = useState(false);
+  // Copies the ready-made caption + link together, so pasting into any app
+  // (DM, email, notes) drops in a complete, presentable share — not just a
+  // bare URL the recipient has to caption themselves.
   const copy = useCallback(() => {
-    navigator.clipboard?.writeText(url);
+    navigator.clipboard?.writeText(`${shareText}\n${url}`);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
-  }, [url]);
+  }, [shareText, url]);
   const btn = 'flex items-center justify-center w-9 h-9 rounded-full border border-[var(--pp-burgundy)]/15 text-[var(--pp-burgundy)]/70 hover:text-[var(--pp-burgundy)] hover:border-[var(--pp-burgundy)]/40 transition-colors duration-300';
   return (
     <div className="flex items-center gap-2.5">
-      <button onClick={copy} title="Copy link" className={btn}>
+      <button onClick={copy} title="Copy caption + link" className={btn}>
         {copied ? <Check size={13} /> : <Link2 size={13} />}
       </button>
       <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(shareText)}`} target="_blank" rel="noreferrer" title="Share on X" className={btn}>
@@ -72,7 +75,7 @@ export function PassportBook({
     return () => ro.disconnect();
   }, [cardW]);
 
-  const shareText = `Check out my official EPRIS Digital Member Passport! (${fields.givenNames} ${fields.surname})`;
+  const shareText = `I just got my EPRIS Digital Member Passport \u2014 ${fields.membershipType || 'Member'} No. ${code}, issued to ${fields.givenNames} ${fields.surname}. Verify it here:`;
   const url = typeof window !== 'undefined' ? window.location.href : '';
 
   return (
