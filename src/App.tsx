@@ -2473,18 +2473,17 @@ export default function App() {
         )}
 
         {activeTab !== 'materie' && activeTab !== 'issue' && activeTab !== 'design' && activeTab !== 'studio' && activeTab !== 'radio' && activeTab !== 'podcasts' && activeTab !== 'passport' && <footer className="border-t border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
-          <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
+          <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center md:items-end gap-8 sm:gap-12 text-center md:text-left">
             <div>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-[#c2542f]">EPRIS JOURNAL</h2>
-              <div className="font-mono text-xs uppercase tracking-widest opacity-60 max-w-xs leading-relaxed">
+              <div className="font-mono text-xs uppercase tracking-widest opacity-60 max-w-xs mx-auto md:mx-0 leading-relaxed">
                 <p>{t('hero.subtitle2')}</p>
                 <p>{t('hero.subtitle1')}</p>
               </div>
             </div>
-            <div className="text-left md:text-right font-mono text-xs uppercase tracking-widest opacity-40">
+            <div className="text-center md:text-right font-mono text-xs uppercase tracking-widest opacity-40">
               <p>© 2026 Epris Journal</p>
               <p>{t('footer.rights')}</p>
-              <a href="/admin/index.html" className="inline-block mt-4 opacity-60 hover:opacity-100 transition-opacity border-b border-[rgb(var(--c-bg-rgb)_/_0.3)]">Admin</a>
             </div>
           </div>
         </footer>}
