@@ -104,6 +104,8 @@ export function PassportBook({
             transition: 'opacity 0.4s ease',
             cursor: open ? 'default' : 'pointer',
             pointerEvents: open ? 'none' : 'auto',
+            outline: 'none', // it stays in the DOM (just faded) after opening, so a lingering
+                              // browser focus ring would render right on top of the revealed card
           }}
         >
           <div style={{ position: 'absolute', inset: 0, borderRadius: 8, overflow: 'hidden', boxShadow: '0 26px 50px rgba(80,26,44,0.28)' }}>
