@@ -3222,7 +3222,10 @@
         },
         {
           "type": "gallery",
-          "content": [],
+          "content": [
+            "https://api.eprisjournal.com/uploads/mrz358aekj7rof.webp",
+            "https://api.eprisjournal.com/uploads/mrz358nxrlsbig.jpg"
+          ],
           "caption": ""
         },
         {
