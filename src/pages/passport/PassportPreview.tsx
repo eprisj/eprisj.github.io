@@ -73,6 +73,75 @@ function Guilloche() {
   );
 }
 
+// ── EPRIS Identity Backdrop ───────────────────────────────────────────────────
+// Real passport data pages are dominated by one continuous piece of national
+// artwork (a mountain photo, a landscape, a landmark) bleeding across both
+// pages, with fine engraved guilloche lines as a secondary security texture —
+// not the other way around. This is EPRIS's equivalent: an oversized compass
+// rosette + map-contour rings (echoing the endpaper art), bled off the edges,
+// extremely faint, so it reads as "this document's own world" rather than
+// generic security wallpaper. Same component on both pages -> the spread feels
+// continuous, exactly like the real passport's mountain art carrying across.
+function IdentityBackdrop() {
+  const rings = [96, 82, 68, 54, 40, 27, 15];
+  const spokes = Array.from({ length: 32 }, (_, i) => i * (360 / 32));
+  const contours = Array.from({ length: 9 }, (_, i) => 100 - i * 11);
+  return (
+    <svg viewBox="0 0 100 141" preserveAspectRatio="xMidYMid slice"
+      className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden>
+      {/* Soft pastel wash — EPRIS's answer to a "sky" gradient: warm gold to dusty rose */}
+      <defs>
+        <radialGradient id="idWash" cx="50%" cy="18%" r="95%">
+          <stop offset="0%" stopColor="#f6ecd6" />
+          <stop offset="45%" stopColor="#efe0c4" />
+          <stop offset="100%" stopColor="#e6d2c1" />
+        </radialGradient>
+      </defs>
+      <rect x="0" y="0" width="100" height="141" fill="url(#idWash)" />
+
+      {/* Map contour lines, oversized, bled off both edges */}
+      <g stroke="#4a1728" strokeWidth="0.15" fill="none" opacity="0.05">
+        {contours.map((r, i) => (
+          <ellipse key={i} cx="50" cy="55" rx={r * 1.05} ry={r * 0.98} />
+        ))}
+      </g>
+
+      {/* Oversized compass rosette, centered, bleeding past the frame */}
+      <g transform="translate(50, 58)" opacity="0.07">
+        <circle r="46" fill="none" stroke="#4a1728" strokeWidth="0.35" />
+        <circle r="38" fill="none" stroke="#b8956e" strokeWidth="0.25" />
+        {rings.slice(2).map((r, i) => (
+          <circle key={i} r={r * 0.42} fill="none" stroke="#4a1728" strokeWidth="0.18" />
+        ))}
+        {spokes.map((deg, i) => {
+          const rad = (deg * Math.PI) / 180;
+          const long = i % 4 === 0;
+          const r1 = long ? 12 : 30, r2 = 46;
+          return (
+            <line key={i}
+              x1={r1 * Math.cos(rad)} y1={r1 * Math.sin(rad)}
+              x2={r2 * Math.cos(rad)} y2={r2 * Math.sin(rad)}
+              stroke="#4a1728" strokeWidth={long ? 0.3 : 0.15} />
+          );
+        })}
+        {/* Cardinal star */}
+        <polygon points="0,-46 4,-8 0,0 -4,-8" fill="#4a1728" />
+        <polygon points="0,46 4,8 0,0 -4,8" fill="#4a1728" opacity="0.6" />
+        <polygon points="-46,0 -8,4 0,0 -8,-4" fill="#4a1728" opacity="0.6" />
+        <polygon points="46,0 8,4 0,0 8,-4" fill="#4a1728" opacity="0.6" />
+      </g>
+
+      {/* Fine engraved contour field filling the remaining space, like paper security tint */}
+      <g stroke="#8B5A2B" strokeWidth="0.1" fill="none" opacity="0.045">
+        {Array.from({ length: 24 }, (_, i) => {
+          const y = (i / 23) * 141;
+          return <path key={i} d={`M0,${y} Q25,${y - 4} 50,${y} T100,${y}`} />;
+        })}
+      </g>
+    </svg>
+  );
+}
+
 // ── Emblem ────────────────────────────────────────────────────────────────────
 function Emblem({ px }: { px: number }) {
   const r = px / 2;
@@ -242,15 +311,18 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
       className="relative w-full select-none overflow-hidden"
       style={{
         aspectRatio: '88 / 125',
-        // Rich warm cream base
-        background: 'linear-gradient(160deg, #f5eddc 0%, #ede1c6 40%, #e7d8b8 100%)',
+        // Soft pastel base — the IdentityBackdrop's wash sits on top of this,
+        // both pages share it so the open spread reads as one continuous scene.
+        background: '#efe2ca',
         containerType: 'inline-size',
         // Layered shadow like a real document
         boxShadow: '0 2px 6px rgba(74,23,40,0.12), 0 8px 28px rgba(74,23,40,0.16), 0 20px 60px rgba(74,23,40,0.12)',
         borderRadius: '8px',
       } as CSSProperties}
     >
-      {/* Guilloche — rich colored background */}
+      {/* EPRIS identity artwork — the passport's "world", bleeding both pages */}
+      <IdentityBackdrop />
+      {/* Fine engraved security lines on top of the identity art */}
       <Guilloche />
 
       {/* EPRIS watermark */}
@@ -374,22 +446,42 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
         }}>
           {/* Photo/QR box — ICAO 35×45mm */}
           <div style={{
+            position: 'relative',
             width: '100%', aspectRatio: '35/45', flexShrink: 0,
             border: '1.5px solid #4a1728',
             background: page2 ? '#fff' : '#f8f4ed',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            overflow: 'hidden',
+            overflow: 'visible',
             // Inner shadow for photo
             boxShadow: 'inset 0 0 0 1px rgba(74,23,40,0.08)',
           }}>
-            {page2 ? (
-              qrDataUrl
-                ? <img src={qrDataUrl} alt="QR" style={{ width: '86%', height: '86%', objectFit: 'contain' }}/>
-                : <span style={{ fontFamily: 'monospace', fontSize: 'clamp(5px, 1cqw, 8px)', color: '#4a1728', opacity: 0.3 }}>QR</span>
-            ) : (
-              photoUrl
-                ? <img src={photoUrl} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', mixBlendMode: 'multiply', filter: 'sepia(0.2) contrast(0.95)' }}/>
-                : <span style={{ fontFamily: '"PT Sans",sans-serif', fontSize: 'clamp(5px, 1cqw, 8px)', color: '#4a1728', opacity: 0.3 }}>PHOTO</span>
+            <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
+              {page2 ? (
+                qrDataUrl
+                  ? <img src={qrDataUrl} alt="QR" style={{ width: '86%', height: '86%', objectFit: 'contain', margin: '7% auto' }}/>
+                  : <span style={{ display: 'block', textAlign: 'center', marginTop: '45%', fontFamily: 'monospace', fontSize: 'clamp(5px, 1cqw, 8px)', color: '#4a1728', opacity: 0.3 }}>QR</span>
+              ) : (
+                photoUrl
+                  ? <img src={photoUrl} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', mixBlendMode: 'multiply', filter: 'sepia(0.2) contrast(0.95)' }}/>
+                  : <span style={{ display: 'block', textAlign: 'center', marginTop: '45%', fontFamily: '"PT Sans",sans-serif', fontSize: 'clamp(5px, 1cqw, 8px)', color: '#4a1728', opacity: 0.3 }}>PHOTO</span>
+              )}
+            </div>
+            {/* Ghost/security duplicate photo — a low-opacity greyscale echo offset
+                past the frame edge, the same anti-forgery convention real passport
+                data pages use (a second, smaller portrait printed into the page
+                texture itself). */}
+            {!page2 && photoUrl && (
+              <div style={{
+                position: 'absolute', right: '-14%', bottom: '-8%',
+                width: '46%', aspectRatio: '1 / 1.15',
+                clipPath: 'polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%)',
+                opacity: 0.5, mixBlendMode: 'multiply',
+                filter: 'grayscale(1) contrast(1.05)',
+                boxShadow: '0 0 0 0.5px rgba(74,23,40,0.35)',
+                zIndex: 1,
+              }}>
+                <img src={photoUrl} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }}/>
+              </div>
             )}
           </div>
 
@@ -466,20 +558,52 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
               </div>
               <F label="Digital Signature" value={generateSignatureString(code, fields)} mono />
               <F label="Scan to Verify" value={`eprisjournal.com/passport/${code}`} />
-              {/* Decorative seal on observations page */}
-              <div style={{
-                flex: 1, minHeight: 0,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                opacity: 0.1,
-              }}>
-                <svg viewBox="0 0 120 80" style={{ width: '85%' }} aria-hidden>
-                  <ellipse cx="60" cy="40" rx="58" ry="38" stroke="#4a1728" strokeWidth="2" fill="none"/>
-                  <ellipse cx="60" cy="40" rx="50" ry="30" stroke="#4a1728" strokeWidth="1" fill="none"/>
-                  <text x="60" y="36" textAnchor="middle" fontFamily="serif" fontWeight="bold" fontSize="11" fill="#4a1728">EPRIS JOURNAL</text>
-                  <text x="60" y="48" textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill="#4a1728">REVEAL THE INVISIBLE</text>
-                  <line x1="16" y1="40" x2="36" y2="40" stroke="#4a1728" strokeWidth="0.8"/>
-                  <line x1="84" y1="40" x2="104" y2="40" stroke="#4a1728" strokeWidth="0.8"/>
-                </svg>
+
+              {/* Official observations — the required bilingual notice that this
+                  is a cultural-membership document, not a travel/ID document. */}
+              <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column' }}>
+                <div style={{
+                  fontFamily: '"PT Sans", sans-serif',
+                  fontSize: 'clamp(6px, 1.15cqw, 9px)',
+                  color: '#4a1728', opacity: 0.55,
+                  letterSpacing: '0.14em', textTransform: 'uppercase',
+                  marginBottom: '3%',
+                }}>Official Observations · Офіційні примітки</div>
+                <div style={{
+                  borderTop: '0.6px solid rgba(74,23,40,0.25)',
+                  paddingTop: '4%',
+                  display: 'flex', flexDirection: 'column', gap: '5%',
+                }}>
+                  <p style={{
+                    fontFamily: '"Playfair Display", "PT Serif", serif',
+                    fontStyle: 'italic', fontWeight: 600,
+                    fontSize: 'clamp(8.5px, 1.55cqw, 12px)',
+                    lineHeight: 1.45, color: '#3a1520', opacity: 0.85, margin: 0,
+                  }}>
+                    This is not a travel document or a state-issued identification. It certifies
+                    membership in the EPRIS Journal cultural system only.
+                  </p>
+                  <p style={{
+                    fontFamily: '"Playfair Display", "PT Serif", serif',
+                    fontStyle: 'italic', fontWeight: 600,
+                    fontSize: 'clamp(8.5px, 1.55cqw, 12px)',
+                    lineHeight: 1.45, color: '#3a1520', opacity: 0.85, margin: 0,
+                  }}>
+                    Це не проїзний документ і не документ, що посвідчує особу від держави.
+                    Він підтверджує лише членство в культурній системі EPRIS Journal.
+                  </p>
+                </div>
+                {/* Small decorative seal, now a quiet accent rather than the main content */}
+                <div style={{ flex: 1, minHeight: 0, display: 'flex', alignItems: 'flex-end', justifyContent: 'center', opacity: 0.09, paddingTop: '3%' }}>
+                  <svg viewBox="0 0 120 80" style={{ width: '62%' }} aria-hidden>
+                    <ellipse cx="60" cy="40" rx="58" ry="38" stroke="#4a1728" strokeWidth="2" fill="none"/>
+                    <ellipse cx="60" cy="40" rx="50" ry="30" stroke="#4a1728" strokeWidth="1" fill="none"/>
+                    <text x="60" y="36" textAnchor="middle" fontFamily="serif" fontWeight="bold" fontSize="11" fill="#4a1728">EPRIS JOURNAL</text>
+                    <text x="60" y="48" textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill="#4a1728">REVEAL THE INVISIBLE</text>
+                    <line x1="16" y1="40" x2="36" y2="40" stroke="#4a1728" strokeWidth="0.8"/>
+                    <line x1="84" y1="40" x2="104" y2="40" stroke="#4a1728" strokeWidth="0.8"/>
+                  </svg>
+                </div>
               </div>
             </>
           )}
