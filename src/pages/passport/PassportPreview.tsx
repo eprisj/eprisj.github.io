@@ -15,7 +15,7 @@ function cdv(s: string): string {
   }
   return String(sum % 10);
 }
-function buildMRZ(f: PassportFields, code: string): [string, string] {
+export function buildMRZ(f: PassportFields, code: string): [string, string] {
   const sn = padFill(f.surname, 13), gn = padFill(f.givenNames, 15);
   const line1 = `P<EPRISJ${sn}<<${gn}`.slice(0, 44).padEnd(44, '<');
   const num = padFill(code.replace(/[^A-Z0-9]/g, ''), 9);
@@ -195,12 +195,12 @@ function F({
   label: string; value: string; big?: boolean; mono?: boolean;
 }) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       <span style={{
         fontFamily: '"PT Sans", sans-serif',
-        fontSize: 'clamp(6px, 1.3cqw, 10px)',
+        fontSize: 'clamp(8px, 1.6cqw, 12px)',
         color: '#4a1728',
-        opacity: 0.55,
+        opacity: 0.65,
         fontStyle: 'italic',
         lineHeight: 1,
         letterSpacing: '0.02em',
@@ -212,8 +212,8 @@ function F({
             ? '"Courier New", monospace'
             : '"Playfair Display", "PT Serif", serif',
         fontSize: big
-          ? 'clamp(12px, 2.4cqw, 20px)'
-          : 'clamp(9.5px, 1.8cqw, 15px)',
+          ? 'clamp(14px, 2.8cqw, 24px)'
+          : 'clamp(11px, 2.2cqw, 18px)',
         fontWeight: big ? 700 : 600,
         color: '#1a0b10',
         lineHeight: 1.1,
@@ -317,7 +317,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
           <div style={{
             fontFamily: '"Playfair Display", "PT Serif", serif',
             fontWeight: 700,
-            fontSize: 'clamp(8px, 2cqw, 17px)',
+            fontSize: 'clamp(10px, 2.5cqw, 20px)',
             color: '#f5eddc',
             letterSpacing: '0.1em',
             lineHeight: 1,
@@ -326,9 +326,9 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
           </div>
           <div style={{
             fontFamily: '"PT Sans", sans-serif',
-            fontSize: 'clamp(3.5px, 0.75cqw, 6px)',
+            fontSize: 'clamp(5px, 1cqw, 8px)',
             color: '#f5eddc',
-            opacity: 0.65,
+            opacity: 0.85,
             letterSpacing: '0.2em',
             lineHeight: 1.3,
             marginTop: 2,
@@ -423,14 +423,14 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
             }}>
               <div style={{
                 fontFamily: '"PT Sans",sans-serif',
-                fontSize: 'clamp(4px, 0.78cqw, 6.5px)',
-                color: '#4a1728', opacity: 0.5,
+                fontSize: 'clamp(6px, 1cqw, 9px)',
+                color: '#4a1728', opacity: 0.6,
                 letterSpacing: '0.12em', lineHeight: 1.3,
                 textAlign: 'center', textTransform: 'uppercase',
               }}>Membership<br/>Type</div>
               <div style={{
                 fontFamily: '"Playfair Display", serif', fontWeight: 700,
-                fontSize: 'clamp(7px, 1.4cqw, 11.5px)',
+                fontSize: 'clamp(9px, 1.8cqw, 14px)',
                 color: '#4a1728', textAlign: 'center',
                 marginTop: 3, lineHeight: 1,
               }}>
@@ -468,7 +468,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
                 <div>
                   <div style={{
                     fontFamily: '"PT Sans",sans-serif',
-                    fontSize: 'clamp(5px, 1cqw, 8.5px)', color: '#4a1728', opacity: 0.52,
+                    fontSize: 'clamp(7px, 1.4cqw, 11px)', color: '#4a1728', opacity: 0.65,
                     fontStyle: 'italic', lineHeight: 1, marginBottom: 4,
                   }}>Holder's signature</div>
                   <div style={{ borderBottom: '0.8px solid #b8956e', width: '82%', height: 'clamp(8px, 1.8cqh, 18px)' }}/>
@@ -551,8 +551,8 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
           {/* MRZ label */}
           <div style={{
             fontFamily: '"PT Sans", sans-serif',
-            fontSize: 'clamp(3.5px, 0.65cqw, 5.5px)',
-            color: '#4a1728', opacity: 0.38,
+            fontSize: 'clamp(5px, 1cqw, 8px)',
+            color: '#4a1728', opacity: 0.5,
             letterSpacing: '0.15em',
             marginBottom: '0.8%',
             textTransform: 'uppercase',
@@ -567,9 +567,9 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
             <div style={{
               display: 'flex', justifyContent: 'space-between',
               fontFamily: '"OCR-B 10 BT", "OCR-B", "Courier New", monospace',
-              fontSize: 'clamp(8px, 1.7cqw, 15px)',
+              fontSize: 'clamp(10px, 2cqw, 18px)',
               fontWeight: 'bold',
-              color: '#1a0b10', opacity: 0.85,
+              color: '#1a0b10', opacity: 0.9,
               lineHeight: 1.2,
             }}>
               {mrz[0].split('').map((c, i) => <span key={i}>{c}</span>)}
@@ -577,9 +577,9 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
             <div style={{
               display: 'flex', justifyContent: 'space-between',
               fontFamily: '"OCR-B 10 BT", "OCR-B", "Courier New", monospace',
-              fontSize: 'clamp(8px, 1.7cqw, 15px)',
+              fontSize: 'clamp(10px, 2cqw, 18px)',
               fontWeight: 'bold',
-              color: '#1a0b10', opacity: 0.85,
+              color: '#1a0b10', opacity: 0.9,
               lineHeight: 1.2,
               marginTop: '1%',
             }}>
