@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState, type CSSProperties } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Upload, Download, FileText, Share2, Link2, Check, RotateCcw, ShieldCheck, Pencil } from 'lucide-react';
+import { ArrowLeft, Upload, Download, FileText, Share2, Link2, Check, RotateCcw, Pencil } from 'lucide-react';
 import QRCode from 'qrcode';
 import { PassportPreview } from './PassportPreview';
 import { generatePassportCode } from '../../lib/passportCode';
@@ -137,7 +137,6 @@ function VerifyView({ code, onEdit }: { code: string; onEdit: (code: string, fie
   const [fields, setFieldsState] = useState<PassportFields | null>(null);
   const [photoUrl, setPhotoUrl] = useState<string | null>(null);
   const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
-  const [pdfStatus, setPdfStatus] = useState<'idle' | 'loading' | 'done'>('idle');
   const [copyStatus, setCopyStatus] = useState<'idle' | 'copied'>('idle');
 
   useEffect(() => {
@@ -155,31 +154,6 @@ function VerifyView({ code, onEdit }: { code: string; onEdit: (code: string, fie
     });
     return () => { cancelled = true; };
   }, [code]);
-
-  const handleDownloadPDF = useCallback(async () => {
-    if (!fields) return;
-    setPdfStatus('loading');
-    try {
-      const verifyUrl = window.location.href;
-      const dataUrl = await renderPassportPNG({ ...fields, memberNumber: fields.memberNumber || code }, photoUrl, code, verifyUrl);
-      
-      const { jsPDF } = await import('jspdf');
-      const doc = new jsPDF({
-        orientation: 'landscape',
-        unit: 'mm',
-        format: [182, 125] // 88mm * 2 + 6mm spine width = 182mm
-      });
-      
-      doc.addImage(dataUrl, 'JPEG', 0, 0, 182, 125);
-      doc.save(`EPRIS-Passport-${code}.pdf`);
-      
-      setPdfStatus('done');
-    } catch (err) {
-      console.error('PDF export failed:', err);
-      setPdfStatus('idle');
-    }
-    setTimeout(() => setPdfStatus('idle'), 2500);
-  }, [fields, photoUrl, code]);
 
   const handleCopyLink = useCallback(() => {
     navigator.clipboard.writeText(window.location.href);
@@ -202,98 +176,57 @@ function VerifyView({ code, onEdit }: { code: string; onEdit: (code: string, fie
     );
   }
   return (
-    <div className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center lg:items-stretch gap-12 lg:gap-16 relative">
-      
-      {/* Left Column: Typography & Actions */}
-      <div className="w-full lg:w-[45%] flex flex-col justify-center animate-fade-in-up" style={{ animationDuration: '0.8s' }}>
-        
-        {/* Verification Stamp */}
-        <div className="flex items-center gap-3 mb-8">
-          <div className="w-8 h-8 rounded-full border border-[var(--pp-burgundy)]/30 flex items-center justify-center bg-[var(--pp-burgundy)]/5">
-            <ShieldCheck size={14} className="text-[var(--pp-burgundy)]" />
-          </div>
-          <div className="font-sans text-[10px] font-semibold tracking-[0.25em] text-[var(--pp-burgundy)]/80 uppercase">
-            Verified Member Record
-          </div>
-        </div>
+    <div className="w-full flex flex-col items-center animate-fade-in-up" style={{ animationDuration: '1s' }}>
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up { animation: fadeInUp ease-out forwards; }
+      `}} />
 
-        {/* Editorial Title */}
-        <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[var(--pp-ink)] leading-[1.1] mb-10">
-          Digital <br/><span className="italic text-[var(--pp-burgundy)]">Identity</span>
-        </h1>
-
-        {/* Actions */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-12 lg:mb-16">
-          <button
-            onClick={handleDownloadPDF}
-            disabled={pdfStatus === 'loading'}
-            className="flex items-center justify-center gap-3 border border-[var(--pp-burgundy)] text-[var(--pp-cream)] bg-[var(--pp-burgundy)] font-sans text-[11px] font-semibold uppercase tracking-[0.2em] px-8 py-3.5 hover:bg-transparent hover:text-[var(--pp-burgundy)] active:scale-[0.98] disabled:opacity-40 transition-all duration-500 w-full sm:w-auto"
-          >
-            <Download size={14} /> {pdfStatus === 'loading' ? 'Preparing PDF…' : pdfStatus === 'done' ? 'Downloaded' : 'Export PDF'}
-          </button>
-          <button
-            onClick={() => onEdit(code, fields, photoUrl)}
-            className="flex items-center justify-center gap-3 border border-[var(--pp-burgundy)]/30 text-[var(--pp-burgundy)] bg-transparent font-sans text-[11px] font-semibold uppercase tracking-[0.2em] px-8 py-3.5 hover:bg-[var(--pp-burgundy)]/5 active:scale-[0.98] transition-all duration-500 w-full sm:w-auto"
-          >
-            <Pencil size={14} /> Edit this passport
-          </button>
-        </div>
-
-        {/* Share Section (bottom left) */}
-        <div className="pt-8 border-t border-[var(--pp-burgundy)]/10 w-full max-w-xs">
-          <div className="text-left mb-4">
-            <p className="text-[9px] font-sans font-semibold text-[var(--pp-burgundy)]/50 uppercase tracking-[0.3em]">Share Public Link</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <button 
-              onClick={handleCopyLink}
-              className="flex items-center justify-center w-10 h-10 border border-[var(--pp-burgundy)]/20 text-[var(--pp-burgundy)] bg-transparent hover:bg-[var(--pp-burgundy)]/5 hover:border-[var(--pp-burgundy)]/40 transition-colors duration-300"
-              title="Copy Link"
-            >
-              {copyStatus === 'copied' ? <Check size={14} /> : <Link2 size={14} />}
-            </button>
-            
-            <a 
-              href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(shareText)}`}
-              target="_blank" rel="noreferrer"
-              className="flex items-center justify-center w-10 h-10 border border-[var(--pp-burgundy)]/20 text-[var(--pp-burgundy)] bg-transparent hover:bg-[var(--pp-burgundy)]/5 hover:border-[var(--pp-burgundy)]/40 transition-colors duration-300"
-            >
-              <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            
-            <a 
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`}
-              target="_blank" rel="noreferrer"
-              className="flex items-center justify-center w-10 h-10 border border-[var(--pp-burgundy)]/20 text-[var(--pp-burgundy)] bg-transparent hover:bg-[var(--pp-burgundy)]/5 hover:border-[var(--pp-burgundy)]/40 transition-colors duration-300"
-            >
-              <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
-            
-            <a 
-              href={`https://t.me/share/url?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(shareText)}`}
-              target="_blank" rel="noreferrer"
-              className="flex items-center justify-center w-10 h-10 border border-[var(--pp-burgundy)]/20 text-[var(--pp-burgundy)] bg-transparent hover:bg-[var(--pp-burgundy)]/5 hover:border-[var(--pp-burgundy)]/40 transition-colors duration-300"
-            >
-              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.42.91-4 2.64-.38.26-.71.39-1.01.38-.32-.01-.93-.18-1.38-.33-.56-.18-1-.28-.96-.6.02-.16.27-.32.74-.5 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .24z"/></svg>
-            </a>
-          </div>
-        </div>
+      {/* The passport — the whole focus, centered */}
+      <div className="w-full max-w-[440px] relative z-10 drop-shadow-[0_30px_55px_rgba(80,26,44,0.18)]">
+        <PassportPreview fields={fields} photoUrl={photoUrl} code={code} qrDataUrl={qrDataUrl} />
       </div>
-      
-      {/* Right Column: Passport */}
-      <div className="w-full lg:w-[55%] flex items-center justify-center relative animate-fade-in-up" style={{ animationDuration: '1.2s' }}>
-        <style dangerouslySetInnerHTML={{__html: `
-          @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-          .animate-fade-in-up {
-            animation: fadeInUp ease-out forwards;
-          }
-        `}} />
-        <div className="w-full relative z-10 drop-shadow-[0_25px_40px_rgba(80,26,44,0.15)]">
-          <PassportPreview fields={fields} photoUrl={photoUrl} code={code} qrDataUrl={qrDataUrl} />
-        </div>
+
+      {/* Slim, subordinate actions — share + edit */}
+      <div className="mt-9 flex items-center gap-2.5">
+        <button
+          onClick={handleCopyLink}
+          title="Copy link"
+          className="flex items-center justify-center w-9 h-9 rounded-full border border-[var(--pp-burgundy)]/15 text-[var(--pp-burgundy)]/70 hover:text-[var(--pp-burgundy)] hover:border-[var(--pp-burgundy)]/40 transition-colors duration-300"
+        >
+          {copyStatus === 'copied' ? <Check size={13} /> : <Link2 size={13} />}
+        </button>
+        <a
+          href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(shareText)}`}
+          target="_blank" rel="noreferrer" title="Share on X"
+          className="flex items-center justify-center w-9 h-9 rounded-full border border-[var(--pp-burgundy)]/15 text-[var(--pp-burgundy)]/70 hover:text-[var(--pp-burgundy)] hover:border-[var(--pp-burgundy)]/40 transition-colors duration-300"
+        >
+          <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a
+          href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`}
+          target="_blank" rel="noreferrer" title="Share on LinkedIn"
+          className="flex items-center justify-center w-9 h-9 rounded-full border border-[var(--pp-burgundy)]/15 text-[var(--pp-burgundy)]/70 hover:text-[var(--pp-burgundy)] hover:border-[var(--pp-burgundy)]/40 transition-colors duration-300"
+        >
+          <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a
+          href={`https://t.me/share/url?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(shareText)}`}
+          target="_blank" rel="noreferrer" title="Share on Telegram"
+          className="flex items-center justify-center w-9 h-9 rounded-full border border-[var(--pp-burgundy)]/15 text-[var(--pp-burgundy)]/70 hover:text-[var(--pp-burgundy)] hover:border-[var(--pp-burgundy)]/40 transition-colors duration-300"
+        >
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.42.91-4 2.64-.38.26-.71.39-1.01.38-.32-.01-.93-.18-1.38-.33-.56-.18-1-.28-.96-.6.02-.16.27-.32.74-.5 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .24z"/></svg>
+        </a>
+        <span className="w-px h-5 bg-[var(--pp-burgundy)]/10 mx-1"></span>
+        <button
+          onClick={() => onEdit(code, fields, photoUrl)}
+          className="flex items-center gap-1.5 px-2 font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--pp-burgundy)]/60 hover:text-[var(--pp-burgundy)] transition-colors duration-300"
+        >
+          <Pencil size={12} /> Edit
+        </button>
       </div>
     </div>
   );
