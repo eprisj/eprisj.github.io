@@ -3285,34 +3285,6 @@
         {
           "type": "note",
           "content": "Editorial note, source context, or a short aside."
-        },
-        {
-          "type": "checklist",
-          "caption": "What to cover",
-          "content": {
-            "items": [
-              "Context",
-              "Key detail",
-              "Human angle",
-              "What changes next"
-            ]
-          }
-        },
-        {
-          "type": "poll",
-          "content": {
-            "question": "What should we explore next?",
-            "options": [
-              {
-                "label": "More context",
-                "votes": 0
-              },
-              {
-                "label": "Practical guide",
-                "votes": 0
-              }
-            ]
-          }
         }
       ]
     }
