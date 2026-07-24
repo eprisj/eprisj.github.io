@@ -1067,47 +1067,31 @@ function getPollStorageKey(pollKey: string) {
   return 'epris-poll-v2-' + pollKey;
 }
 
-const POLL_COUNTER_NAMESPACE = 'eprisj-github-io';
-const POLL_COUNTER_BASE_URL = 'https://api.counterapi.dev/v1';
+// Own API (api.eprisjournal.com), not a third-party counter service — votes
+// are deduped server-side by (hashed) IP, so clearing localStorage or using
+// incognito no longer allows a repeat vote, and results no longer depend on
+// an external service's uptime.
+const POLL_API_BASE = 'https://api.eprisjournal.com';
 
-function getPollCounterName(pollKey: string, optionIndex: number) {
-  return `${pollKey}-option-${optionIndex}`
-    .toLowerCase()
-    .replace(/[^a-z0-9_-]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .slice(0, 120);
+interface PollResults { counts: Record<number, number>; votedIndex: number | null }
+interface PollVoteResult extends PollResults { alreadyVoted: boolean }
+
+async function fetchPollResults(pollKey: string): Promise<PollResults> {
+  const response = await fetch(`${POLL_API_BASE}/poll-results?key=${encodeURIComponent(pollKey)}`, { cache: 'no-store' });
+  if (!response.ok) throw new Error(`Poll results fetch failed: ${response.status}`);
+  const payload = await response.json();
+  return { counts: payload.counts || {}, votedIndex: payload.votedIndex ?? null };
 }
 
-async function readPollCounter(pollKey: string, optionIndex: number): Promise<number> {
-  const name = getPollCounterName(pollKey, optionIndex);
-  const response = await fetch(`${POLL_COUNTER_BASE_URL}/${POLL_COUNTER_NAMESPACE}/${encodeURIComponent(name)}/`, {
-    cache: 'no-store'
+async function castPollVote(pollKey: string, optionIndex: number): Promise<PollVoteResult> {
+  const response = await fetch(`${POLL_API_BASE}/poll-vote`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ pollKey, optionIndex }),
   });
-
-  if (response.status === 400 || response.status === 404) {
-    return 0;
-  }
-
-  if (!response.ok) {
-    throw new Error(`Poll counter read failed: ${response.status}`);
-  }
-
+  if (!response.ok) throw new Error(`Poll vote failed: ${response.status}`);
   const payload = await response.json();
-  return Number(payload.count) || 0;
-}
-
-async function incrementPollCounter(pollKey: string, optionIndex: number): Promise<number> {
-  const name = getPollCounterName(pollKey, optionIndex);
-  const response = await fetch(`${POLL_COUNTER_BASE_URL}/${POLL_COUNTER_NAMESPACE}/${encodeURIComponent(name)}/up`, {
-    cache: 'no-store'
-  });
-
-  if (!response.ok) {
-    throw new Error(`Poll counter write failed: ${response.status}`);
-  }
-
-  const payload = await response.json();
-  return Number(payload.count) || 0;
+  return { counts: payload.counts || {}, votedIndex: payload.votedIndex ?? null, alreadyVoted: Boolean(payload.alreadyVoted) };
 }
 
 function readSavedPoll(storageKey: string, legacyKey: string) {
@@ -1148,10 +1132,17 @@ function PollBlock({ question, options, t, pollKey }: { question: string, option
     setIsLoadingVotes(true);
     setVoteError('');
 
-    Promise.all(options.map((_, index) => readPollCounter(pollKey, index)))
-      .then((counts) => {
-        if (!cancelled) {
-          setOnlineVotes(counts);
+    fetchPollResults(pollKey)
+      .then(({ counts, votedIndex: serverVotedIndex }) => {
+        if (cancelled) return;
+        setOnlineVotes(options.map((_, i) => Number(counts[i]) || 0));
+        // The server (IP-based) is authoritative: it catches repeat votes
+        // even after localStorage was cleared or from a different browser.
+        // Only trust localStorage's own vote when the server has no record
+        // for this poll yet (e.g. it was just deployed).
+        setVotedIndex(serverVotedIndex);
+        if (serverVotedIndex !== null) {
+          localStorage.setItem(storageKey, JSON.stringify({ question, pollKey, votedIndex: serverVotedIndex, timestamp: Date.now() }));
         }
       })
       .catch(() => {
@@ -1169,7 +1160,7 @@ function PollBlock({ question, options, t, pollKey }: { question: string, option
     return () => {
       cancelled = true;
     };
-  }, [pollKey, options]);
+  }, [pollKey, options, storageKey, question]);
 
   const handleVote = async (index: number) => {
     if (votedIndex !== null || isVoting) return;
@@ -1181,13 +1172,14 @@ function PollBlock({ question, options, t, pollKey }: { question: string, option
     setOnlineVotes((votes) => votes.map((count, i) => i === index ? count + 1 : count));
 
     try {
-      const count = await incrementPollCounter(pollKey, index);
-      const nextOnlineVotes = previousOnlineVotes.map((value, i) => i === index ? count : value);
-      setOnlineVotes(nextOnlineVotes);
+      const { counts, votedIndex: serverVotedIndex, alreadyVoted } = await castPollVote(pollKey, index);
+      setOnlineVotes(options.map((_, i) => Number(counts[i]) || 0));
+      setVotedIndex(serverVotedIndex);
+      if (alreadyVoted) setVoteError('You already voted in this poll.');
       localStorage.setItem(storageKey, JSON.stringify({
         question,
         pollKey,
-        votedIndex: index,
+        votedIndex: serverVotedIndex,
         timestamp: Date.now()
       }));
     } catch {
