@@ -434,25 +434,37 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
               <Link2 size={14} /> Web Profile
             </div>
             
-            <label className="flex items-start gap-3 cursor-pointer group">
+            <label className="flex items-start gap-3 cursor-pointer">
               <div className="relative flex items-center justify-center mt-0.5">
-                <input type="checkbox" checked={isPublic} onChange={(e) => setIsPublic(e.target.checked)} className="peer sr-only" />
-                <div className="w-5 h-5 rounded border border-[var(--pp-burgundy)]/30 bg-white/80 peer-checked:bg-[var(--pp-burgundy)] peer-checked:border-[var(--pp-burgundy)] transition-all duration-200"></div>
-                <Check size={14} className="absolute text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200 pointer-events-none" strokeWidth={3} />
+                <input type="checkbox" checked={isPublic} onChange={(e) => setIsPublic(e.target.checked)} className="sr-only" />
+                <div
+                  className="w-5 h-5 rounded border transition-all duration-200"
+                  style={{
+                    backgroundColor: isPublic ? 'var(--pp-burgundy)' : 'rgba(255,255,255,0.8)',
+                    borderColor: isPublic ? 'var(--pp-burgundy)' : 'rgba(74,23,40,0.3)',
+                  }}
+                />
+                <Check size={14} className="absolute text-white transition-opacity duration-200 pointer-events-none" style={{ opacity: isPublic ? 1 : 0 }} strokeWidth={3} />
               </div>
-              <span className="font-serif text-[15px] text-[var(--pp-ink)]/80 group-hover:text-[var(--pp-ink)] leading-snug transition-colors">
+              <span className="font-serif text-[15px] text-[var(--pp-ink)]/80 leading-snug transition-colors">
                 Publish as a public member profile (viewable via the verification link/QR). Leave unchecked to keep it private and local-only.
               </span>
             </label>
 
             {isPublic && (
-              <label className="flex items-start gap-3 cursor-pointer group pt-2 border-t border-[var(--pp-burgundy)]/10">
+              <label className="flex items-start gap-3 cursor-pointer pt-2 border-t border-[var(--pp-burgundy)]/10">
                 <div className="relative flex items-center justify-center mt-0.5">
-                  <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="peer sr-only" />
-                  <div className="w-5 h-5 rounded border border-[var(--pp-burgundy)]/30 bg-white/80 peer-checked:bg-[var(--pp-burgundy)] peer-checked:border-[var(--pp-burgundy)] transition-all duration-200"></div>
-                  <Check size={14} className="absolute text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200 pointer-events-none" strokeWidth={3} />
+                  <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="sr-only" />
+                  <div
+                    className="w-5 h-5 rounded border transition-all duration-200"
+                    style={{
+                      backgroundColor: consent ? 'var(--pp-burgundy)' : 'rgba(255,255,255,0.8)',
+                      borderColor: consent ? 'var(--pp-burgundy)' : 'rgba(74,23,40,0.3)',
+                    }}
+                  />
+                  <Check size={14} className="absolute text-white transition-opacity duration-200 pointer-events-none" style={{ opacity: consent ? 1 : 0 }} strokeWidth={3} />
                 </div>
-                <span className="font-serif text-[15px] text-[var(--pp-ink)]/80 group-hover:text-[var(--pp-ink)] leading-snug transition-colors">
+                <span className="font-serif text-[15px] text-[var(--pp-ink)]/80 leading-snug transition-colors">
                   I consent to my entered details and photo being stored by EPRIS Journal and shown publicly at the verification link above.
                 </span>
               </label>

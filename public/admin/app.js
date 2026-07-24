@@ -3753,15 +3753,24 @@ function renderVisualForm() {
         </div>
         
         <div class="meta-field-group">
+          <label>Автор из базы</label>
+          <select id="vf-authorId">
+            <option value="">— свободный текст ниже —</option>
+            ${(data.authors || []).map((a) => `<option value="${escapeHtml(a.id)}" ${entry.authorId === a.id ? 'selected' : ''}>${escapeHtml(a.name || a.id)}</option>`).join('')}
+          </select>
+          <span class="form-hint" style="margin:4px 0 0">Выбор подставит имя и роль ниже и свяжет статью с карточкой автора — так байлайн переводится на все языки автоматически.</span>
+        </div>
+
+        <div class="meta-field-group">
           <label>Автор</label>
           <input id="vf-author" value="${escapeHtml(entry.author || '')}" placeholder="Имя автора" />
         </div>
-        
+
         <div class="meta-field-group">
           <label>Роль автора</label>
           <input id="vf-role" value="${escapeHtml(entry.role || '')}" placeholder="Photographer" />
         </div>
-        
+
         <div class="meta-field-group">
           <label>Теги (через запятую)</label>
           <input id="vf-tags" value="${escapeHtml(Array.isArray(entry.tags) ? entry.tags.join(', ') : '')}" placeholder="tag1, tag2..." />
@@ -3772,6 +3781,14 @@ function renderVisualForm() {
   bindPhotoPreviewInputs();
   bindUploadButton('vf-img-upload-btn', 'vf-img-upload-input', 'vf-imageUrl', () => {
     document.getElementById('vf-imageUrl')?.dispatchEvent(new Event('input'));
+  });
+  document.getElementById('vf-authorId')?.addEventListener('change', (e) => {
+    const author = (data.authors || []).find((a) => a.id === e.target.value);
+    if (!author) return; // "— свободный текст —" chosen: leave Автор/Роль as typed
+    const authorInput = document.getElementById('vf-author');
+    const roleInput = document.getElementById('vf-role');
+    if (authorInput) { authorInput.value = author.name || ''; authorInput.dispatchEvent(new Event('input')); }
+    if (roleInput) { roleInput.value = author.role || ''; roleInput.dispatchEvent(new Event('input')); }
   });
   // Articles use the modern Editor.js block editor.
   mountModernEditor(entry.content || []);
@@ -3865,6 +3882,7 @@ function buildEntryFromVisualForm(section, current) {
       ...next,
       title: getFieldValue('vf-title').trim(),
       author: getFieldValue('vf-author').trim(),
+      authorId: getOptionalString(getFieldValue('vf-authorId')),
       role: getFieldValue('vf-role').trim() || undefined,
       date: getFieldValue('vf-date').trim(),
       excerpt: getFieldValue('vf-excerpt').trim(),

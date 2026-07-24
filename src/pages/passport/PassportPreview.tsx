@@ -1,4 +1,4 @@
-import { useState, type CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 import type { PassportFields } from './passportRender';
 import { generateSignatureString } from '../../lib/passportCode';
 import { buildMRZ } from '../../lib/mrz';
@@ -292,7 +292,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
                 </div>
               )}
             </div>
-            <div style={{ padding: '5% 6%', background: 'rgba(74,23,40,0.06)', border: '0.8px solid rgba(74,23,40,0.18)' }}>
+            <div style={{ padding: '5% 6%', background: 'rgba(74,23,40,0.06)' }}>
               <div style={{ fontFamily: '"PT Sans",sans-serif', fontSize: 'clamp(5.5px, 0.9cqw, 8px)', color: '#4a1728', opacity: 0.6, letterSpacing: '0.1em', lineHeight: 1.3, textAlign: 'center', textTransform: 'uppercase' }}>Membership<br/>Type</div>
               <div style={{ fontFamily: '"Playfair Display", serif', fontWeight: 700, fontSize: 'clamp(8px, 1.6cqw, 13px)', color: '#4a1728', textAlign: 'center', marginTop: 3, lineHeight: 1 }}>{fields.membershipType || 'Author'}</div>
             </div>
@@ -354,79 +354,19 @@ export function PassportPreview({
   code: string;
   qrDataUrl: string | null;
 }) {
-  const [rot, setRot] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
-  const [isZoomed, setIsZoomed] = useState(false);
   const mrz = buildMRZ(fields, code);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isZoomed) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const cx = rect.width / 2;
-    const cy = rect.height / 2;
-    const rotateX = ((y - cy) / cy) * -4;
-    const rotateY = ((x - cx) / cx) * 4;
-    setRot({ x: rotateX, y: rotateY });
-  };
-
-  const handleMouseLeave = () => {
-    if (isZoomed) return;
-    setRot({ x: 0, y: 0 });
-    setIsHovering(false);
-  };
-
   return (
-    <>
-      <div className={`w-full max-w-[560px] mx-auto ${isZoomed ? 'hidden' : 'block'}`} style={{ perspective: 1200 }}>
-        <div
-          onMouseMove={handleMouseMove}
-          onMouseEnter={() => setIsHovering(true)}
-          onMouseLeave={handleMouseLeave}
-          onClick={() => setIsZoomed(true)}
-          className="relative cursor-zoom-in"
-          style={{
-            transform: `rotateX(${rot.x}deg) rotateY(${rot.y}deg)`,
-            transition: isHovering ? 'transform 0.1s ease-out' : 'transform 0.5s ease-out',
-            transformStyle: 'preserve-3d',
-          }}
-        >
-          <div className="absolute inset-0 z-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity bg-[#f7f2ea]/20 rounded-xl pointer-events-none">
-            <div className="bg-[#501a2c] text-[#f7f2ea] font-mono tracking-widest text-[10px] uppercase px-5 py-2.5 rounded-sm flex items-center gap-2 shadow-lg">
-              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path><path d="M11 8v6"></path><path d="M8 11h6"></path></svg>
-              TAP TO ZOOM
-            </div>
-          </div>
-          <PassportPage
-            fields={fields}
-            photoUrl={photoUrl}
-            code={code}
-            mrz={mrz}
-            qrDataUrl={qrDataUrl}
-          />
-        </div>
+    <div className="w-full max-w-[560px] mx-auto">
+      <div className="relative">
+        <PassportPage
+          fields={fields}
+          photoUrl={photoUrl}
+          code={code}
+          mrz={mrz}
+          qrDataUrl={qrDataUrl}
+        />
       </div>
-
-      {isZoomed && (
-        <div className="fixed inset-0 z-[200] bg-[#f7f2ea]/95 backdrop-blur-sm flex flex-col items-center justify-start overflow-y-auto pt-8 pb-24 px-2 sm:px-8 cursor-zoom-out" onClick={() => setIsZoomed(false)}>
-          <div className="w-full max-w-xl mx-auto flex flex-col gap-8">
-            <div className="self-end text-[var(--pp-burgundy)] text-[10px] font-mono tracking-widest uppercase mb-2 flex items-center gap-2 hover:opacity-70 transition-opacity">
-              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
-              CLOSE
-            </div>
-            <div className="shadow-[0_20px_50px_rgba(80,26,44,0.15)] rounded-2xl overflow-hidden ring-1 ring-[var(--pp-burgundy)]/10">
-              <PassportPage
-                fields={fields}
-                photoUrl={photoUrl}
-                code={code}
-                mrz={mrz}
-                qrDataUrl={qrDataUrl}
-              />
-            </div>
-          </div>
-        </div>
-      )}
-    </>
+    </div>
   );
 }
