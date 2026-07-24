@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useMemo, useState, type CSSProperties } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Upload, Download, FileText, Share2, Link2, Check, RotateCcw, Pencil } from 'lucide-react';
+import { ArrowLeft, Upload, Download, FileText, Share2, Link2, Check, RotateCcw } from 'lucide-react';
 import QRCode from 'qrcode';
 import { PassportPreview } from './PassportPreview';
+import { PassportBook } from './PassportBook';
 import { generatePassportCode } from '../../lib/passportCode';
 import { publishPassport, fetchPassport } from './passportApi';
 import { renderPassportPNG, type PassportFields } from './passportRender';
@@ -132,12 +133,11 @@ function CreatorForm({
   );
 }
 
-function VerifyView({ code, onEdit }: { code: string; onEdit: (code: string, fields: PassportFields, photoUrl: string | null) => void }) {
+function VerifyView({ code }: { code: string }) {
   const [status, setStatus] = useState<'loading' | 'found' | 'missing'>('loading');
   const [fields, setFieldsState] = useState<PassportFields | null>(null);
   const [photoUrl, setPhotoUrl] = useState<string | null>(null);
   const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
-  const [copyStatus, setCopyStatus] = useState<'idle' | 'copied'>('idle');
 
   useEffect(() => {
     let cancelled = false;
@@ -154,15 +154,6 @@ function VerifyView({ code, onEdit }: { code: string; onEdit: (code: string, fie
     });
     return () => { cancelled = true; };
   }, [code]);
-
-  const handleCopyLink = useCallback(() => {
-    navigator.clipboard.writeText(window.location.href);
-    setCopyStatus('copied');
-    setTimeout(() => setCopyStatus('idle'), 2000);
-  }, []);
-
-  const shareText = fields ? `Check out my official EPRIS Digital Member Passport! (${fields.givenNames} ${fields.surname})` : 'EPRIS Digital Member Passport';
-  const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
 
   if (status === 'loading') {
     return <div className="py-24 text-center font-mono text-xs tracking-widest text-[var(--pp-burgundy)]/60">VERIFYING…</div>;
@@ -185,49 +176,8 @@ function VerifyView({ code, onEdit }: { code: string; onEdit: (code: string, fie
         .animate-fade-in-up { animation: fadeInUp ease-out forwards; }
       `}} />
 
-      {/* The passport — the whole focus, centered */}
-      <div className="w-full max-w-[440px] relative z-10 drop-shadow-[0_30px_55px_rgba(80,26,44,0.18)]">
-        <PassportPreview fields={fields} photoUrl={photoUrl} code={code} qrDataUrl={qrDataUrl} />
-      </div>
-
-      {/* Slim, subordinate actions — share + edit */}
-      <div className="mt-9 flex items-center gap-2.5">
-        <button
-          onClick={handleCopyLink}
-          title="Copy link"
-          className="flex items-center justify-center w-9 h-9 rounded-full border border-[var(--pp-burgundy)]/15 text-[var(--pp-burgundy)]/70 hover:text-[var(--pp-burgundy)] hover:border-[var(--pp-burgundy)]/40 transition-colors duration-300"
-        >
-          {copyStatus === 'copied' ? <Check size={13} /> : <Link2 size={13} />}
-        </button>
-        <a
-          href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(shareText)}`}
-          target="_blank" rel="noreferrer" title="Share on X"
-          className="flex items-center justify-center w-9 h-9 rounded-full border border-[var(--pp-burgundy)]/15 text-[var(--pp-burgundy)]/70 hover:text-[var(--pp-burgundy)] hover:border-[var(--pp-burgundy)]/40 transition-colors duration-300"
-        >
-          <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        </a>
-        <a
-          href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`}
-          target="_blank" rel="noreferrer" title="Share on LinkedIn"
-          className="flex items-center justify-center w-9 h-9 rounded-full border border-[var(--pp-burgundy)]/15 text-[var(--pp-burgundy)]/70 hover:text-[var(--pp-burgundy)] hover:border-[var(--pp-burgundy)]/40 transition-colors duration-300"
-        >
-          <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </a>
-        <a
-          href={`https://t.me/share/url?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(shareText)}`}
-          target="_blank" rel="noreferrer" title="Share on Telegram"
-          className="flex items-center justify-center w-9 h-9 rounded-full border border-[var(--pp-burgundy)]/15 text-[var(--pp-burgundy)]/70 hover:text-[var(--pp-burgundy)] hover:border-[var(--pp-burgundy)]/40 transition-colors duration-300"
-        >
-          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.42.91-4 2.64-.38.26-.71.39-1.01.38-.32-.01-.93-.18-1.38-.33-.56-.18-1-.28-.96-.6.02-.16.27-.32.74-.5 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .24z"/></svg>
-        </a>
-        <span className="w-px h-5 bg-[var(--pp-burgundy)]/10 mx-1"></span>
-        <button
-          onClick={() => onEdit(code, fields, photoUrl)}
-          className="flex items-center gap-1.5 px-2 font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--pp-burgundy)]/60 hover:text-[var(--pp-burgundy)] transition-colors duration-300"
-        >
-          <Pencil size={12} /> Edit
-        </button>
-      </div>
+      {/* The passport as a book: closed cover → opens to the data page. */}
+      <PassportBook fields={fields} photoUrl={photoUrl} code={code} qrDataUrl={qrDataUrl} />
     </div>
   );
 }
@@ -248,18 +198,6 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
   const [mode, setMode] = useState<'create' | 'edit'>('create');
   const [existingPhotoUrl, setExistingPhotoUrl] = useState<string | null>(null);
   const isEditing = mode === 'edit';
-
-  const startEdit = useCallback((editCode: string, editFields: PassportFields, editPhotoUrl: string | null) => {
-    setFields(editFields);
-    setPhotoDataUrl(null);
-    setExistingPhotoUrl(editPhotoUrl);
-    setCode(editCode);
-    setIsPublic(true);
-    setConsent(true);
-    setErrors({});
-    setPublishStatus('idle');
-    setMode('edit');
-  }, []);
 
   const verifyUrl = useMemo(() => `${window.location.origin}/passport/${code}`, [code]);
   const displayMemberNumber = fields.memberNumber || code;
@@ -386,7 +324,7 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
           </button>
           
           <div className="flex-grow flex items-start justify-center pb-24">
-            <VerifyView code={viewCode} onEdit={startEdit} />
+            <VerifyView code={viewCode} />
           </div>
         </div>
       </div>
