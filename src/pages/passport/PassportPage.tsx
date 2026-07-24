@@ -449,7 +449,7 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
   if (viewCode && !isEditing) {
     return (
       <div className="min-h-screen w-full bg-[var(--pp-cream)] text-[var(--pp-ink)] flex flex-col font-sans" style={{ '--pp-burgundy': '#501a2c', '--pp-ink': '#241016', '--pp-cream': '#f7f2ea', '--pp-sand': '#c9a690' } as CSSProperties}>
-        <div className="p-4 sm:p-8 w-full max-w-[1240px] mx-auto flex-grow flex flex-col pt-12 sm:pt-20">
+        <div className="p-4 sm:p-8 w-full max-w-[1240px] mx-auto flex-grow flex flex-col pt-24 sm:pt-20">
           <button onClick={onBack} className="self-start flex items-center justify-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--pp-burgundy)] hover:opacity-70 transition-all duration-300 mb-8 sm:mb-12 py-2">
             <ArrowLeft size={14} /> RETURN TO JOURNAL
           </button>
