@@ -5,14 +5,14 @@
 :root {
   /* Theme tokens — overridable from the admin Appearance panel (content.theme).
      Defaults reproduce the original EPRIS palette exactly (no visual change). */
-  --c-accent: #111111;       /* text + accent (was burgundy #501a2c) */
-  --c-accent-rgb: 17 17 17;
-  --c-gold: #c9a690;         /* gold */
-  --c-gold-rgb: 201 166 144;
-  --c-bg: #f5f0eb;           /* page background */
-  --c-bg-rgb: 245 240 235;
+  --c-accent: #4a1728;       /* text + accent (burgundy) */
+  --c-accent-rgb: 74 23 40;
+  --c-gold: #b8956e;         /* gold */
+  --c-gold-rgb: 184 149 110;
+  --c-bg: #ede1c6;           /* page background cream-base */
+  --c-bg-rgb: 237 225 198;
   --font-display: 'Playfair Display', serif;       /* headings */
-  --font-body: 'Iowan Old Style', 'Palatino Linotype', Palatino, serif; /* body */
+  --font-body: 'PT Sans', sans-serif; /* body */
   --bg-image: none;          /* optional page background image (admin Appearance) */
 
   font-family: var(--font-body);

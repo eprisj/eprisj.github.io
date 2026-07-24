@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link2, Check, X } from 'lucide-react';
-import { PassportPreview } from './PassportPreview';
+import { PassportPreview, PassportPage, buildMRZ } from './PassportPreview';
 import type { PassportFields } from './passportRender';
 
 const COVER_SRC = '/passport-assets/passport-cover.jpg';
@@ -89,52 +89,55 @@ export function PassportBook({
   };
   const handleMouseLeave = () => setTilt({ x: 0, y: 0 });
 
-  // The cover panel: leather front + endpaper back, hinged on its left (spine).
+  // The cover panel: leather front + rendered left page back, hinged on its left (spine).
   // `origin`/`openTransform` differ per layout (desktop swings left around the
   // spine; mobile turns in place and fades so it never overflows sideways).
   const coverPanel = (
     w: number, h: number,
     { origin, openTransform, fade }: { origin: string; openTransform: string; fade: boolean },
-  ) => (
-    <div
-      className="pp-float"
-      style={{ width: w, height: h, transformStyle: 'preserve-3d', animationPlayState: open ? 'paused' : 'running' }}
-    >
+  ) => {
+    const mrz = buildMRZ(fields, code);
+    return (
       <div
-        onClick={() => !open && setOpen(true)}
-        role="button"
-        tabIndex={open ? -1 : 0}
-        aria-label="Open passport"
-        onKeyDown={(e) => { if (!open && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); setOpen(true); } }}
-        style={{
-          position: 'absolute', inset: 0,
-          transformStyle: 'preserve-3d',
-          transformOrigin: origin,
-          transform: open ? openTransform : 'rotateY(0deg)',
-          opacity: fade && open ? 0 : 1,
-          transition: 'transform 1.05s cubic-bezier(0.6, 0.04, 0.24, 1), opacity 0.7s ease 0.35s',
-          cursor: open ? 'default' : 'pointer',
-          pointerEvents: open ? 'none' : 'auto',
-        }}
+        className="pp-float"
+        style={{ width: w, height: h, transformStyle: 'preserve-3d', animationPlayState: open ? 'paused' : 'running' }}
       >
-        {/* Front — leather cover */}
-        <div style={{ position: 'absolute', inset: 0, backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', borderRadius: 8, overflow: 'hidden', boxShadow: '0 26px 50px rgba(80,26,44,0.28), inset -3px 0 8px rgba(0,0,0,0.18)' }}>
-          <img src={COVER_SRC} alt="EPRIS passport cover" draggable={false} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-          {!open && (
-            <div style={{ position: 'absolute', left: 0, right: 0, bottom: 18, display: 'flex', justifyContent: 'center' }}>
-              <span className="pp-hint" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(247,242,234,0.85)', background: 'rgba(36,16,22,0.35)', backdropFilter: 'blur(2px)', padding: '6px 14px', borderRadius: 999, border: '1px solid rgba(247,242,234,0.2)' }}>
-                Tap to open
-              </span>
-            </div>
-          )}
-        </div>
-        {/* Back — endpaper (inside front cover) */}
-        <div style={{ position: 'absolute', inset: 0, backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', transform: 'rotateY(180deg)', borderRadius: 8, overflow: 'hidden', boxShadow: 'inset 3px 0 10px rgba(0,0,0,0.14)' }}>
-          <img src={ENDPAPER_SRC} alt="" draggable={false} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+        <div
+          onClick={() => !open && setOpen(true)}
+          role="button"
+          tabIndex={open ? -1 : 0}
+          aria-label="Open passport"
+          onKeyDown={(e) => { if (!open && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); setOpen(true); } }}
+          style={{
+            position: 'absolute', inset: 0,
+            transformStyle: 'preserve-3d',
+            transformOrigin: origin,
+            transform: open ? openTransform : 'rotateY(0deg)',
+            opacity: fade && open ? 0 : 1,
+            transition: 'transform 1.05s cubic-bezier(0.6, 0.04, 0.24, 1), opacity 0.7s ease 0.35s',
+            cursor: open ? 'default' : 'pointer',
+            pointerEvents: open ? 'none' : 'auto',
+          }}
+        >
+          {/* Front — leather cover */}
+          <div style={{ position: 'absolute', inset: 0, backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', borderRadius: 8, overflow: 'hidden', boxShadow: '0 26px 50px rgba(80,26,44,0.28), inset -3px 0 8px rgba(0,0,0,0.18)' }}>
+            <img src={COVER_SRC} alt="EPRIS passport cover" draggable={false} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            {!open && (
+              <div style={{ position: 'absolute', left: 0, right: 0, bottom: 18, display: 'flex', justifyContent: 'center' }}>
+                <span className="pp-hint" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(247,242,234,0.85)', background: 'rgba(36,16,22,0.35)', backdropFilter: 'blur(2px)', padding: '6px 14px', borderRadius: 999, border: '1px solid rgba(247,242,234,0.2)' }}>
+                  Tap to open
+                </span>
+              </div>
+            )}
+          </div>
+          {/* Back — actual observations page (inside front cover) */}
+          <div style={{ position: 'absolute', inset: 0, backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', transform: 'rotateY(180deg)', borderRadius: 8, overflow: 'hidden', boxShadow: 'inset 3px 0 10px rgba(0,0,0,0.14)', background: 'var(--pp-cream)' }}>
+            <PassportPage fields={fields} photoUrl={photoUrl} code={code} qrDataUrl={qrDataUrl} mrz={mrz} page2={true} />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <div className="w-full flex flex-col items-center" style={{ overflowX: 'clip' }}>
