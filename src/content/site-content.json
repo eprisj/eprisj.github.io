@@ -3124,6 +3124,69 @@
           }
         }
       ]
+    },
+    {
+      "id": 16,
+      "title": "New editorial story",
+      "author": "EPRIS Journal",
+      "role": "Editorial Desk",
+      "date": "Jul 24, 2026",
+      "excerpt": "A focused opening paragraph for a new editorial story.",
+      "category": "Culture",
+      "subcategory": "Feature",
+      "tags": [
+        "story",
+        "culture",
+        "editorial"
+      ],
+      "imageSeed": "new-editorial-story",
+      "content": [
+        {
+          "type": "text",
+          "content": "Start with the strongest scene, fact, or observation. Keep this first block tight and specific."
+        },
+        {
+          "type": "image",
+          "content": "new-editorial-story-2",
+          "caption": "Lead image"
+        },
+        {
+          "type": "quote",
+          "content": "Add a line worth remembering here."
+        },
+        {
+          "type": "note",
+          "content": "Editorial note, source context, or a short aside."
+        },
+        {
+          "type": "checklist",
+          "caption": "What to cover",
+          "content": {
+            "items": [
+              "Context",
+              "Key detail",
+              "Human angle",
+              "What changes next"
+            ]
+          }
+        },
+        {
+          "type": "poll",
+          "content": {
+            "question": "What should we explore next?",
+            "options": [
+              {
+                "label": "More context",
+                "votes": 0
+              },
+              {
+                "label": "Practical guide",
+                "votes": 0
+              }
+            ]
+          }
+        }
+      ]
     }
   ],
   "reviews": [
@@ -4607,6 +4670,69 @@
             }
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mrt4jakod3agex.jpg"
+        },
+        {
+          "id": 16,
+          "title": "Новая редакционная история",
+          "author": "EPRIS Journal",
+          "role": "Редакционный отдел",
+          "date": "24 июля 2026 г.",
+          "excerpt": "Целенаправленный вступительный абзац для новой редакционной статьи.",
+          "category": "Культура",
+          "subcategory": "Особенность",
+          "tags": [
+            "история",
+            "культура",
+            "редакционная статья"
+          ],
+          "imageSeed": "new-editorial-story",
+          "content": [
+            {
+              "type": "text",
+              "content": "Начните с самой яркой сцены, факта или наблюдения. Пусть этот первый блок будет четким и конкретным."
+            },
+            {
+              "type": "image",
+              "content": "new-editorial-story-2",
+              "caption": "Ведущее изображение"
+            },
+            {
+              "type": "quote",
+              "content": "Добавьте сюда строку, которую стоит запомнить."
+            },
+            {
+              "type": "note",
+              "content": "Редакционное примечание, контекст источника или небольшое отступление."
+            },
+            {
+              "type": "checklist",
+              "caption": "Что покрыть",
+              "content": {
+                "items": [
+                  "Контекст",
+                  "Ключевая деталь",
+                  "Человеческий угол",
+                  "Что изменится дальше"
+                ]
+              }
+            },
+            {
+              "type": "poll",
+              "content": {
+                "question": "Что нам следует изучить дальше?",
+                "options": [
+                  {
+                    "label": "Больше контекста",
+                    "votes": 0
+                  },
+                  {
+                    "label": "Практическое руководство",
+                    "votes": 0
+                  }
+                ]
+              }
+            }
+          ]
         }
       ],
       "reviews": [
@@ -6090,6 +6216,69 @@
             }
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mrt4jakod3agex.jpg"
+        },
+        {
+          "id": 16,
+          "title": "Нова редакційна історія",
+          "author": "EPRIS Journal",
+          "role": "Редакційний стіл",
+          "date": "24 липня 2026 р",
+          "excerpt": "Цілеспрямований початковий абзац для нової редакційної статті.",
+          "category": "Культура",
+          "subcategory": "Особливість",
+          "tags": [
+            "історія",
+            "культури",
+            "редакційна"
+          ],
+          "imageSeed": "new-editorial-story",
+          "content": [
+            {
+              "type": "text",
+              "content": "Почніть із найсильнішої сцени, факту чи спостереження. Тримайте цей перший блок щільним і конкретним."
+            },
+            {
+              "type": "image",
+              "content": "new-editorial-story-2",
+              "caption": "Головне зображення"
+            },
+            {
+              "type": "quote",
+              "content": "Додайте тут рядок, який варто запам’ятати."
+            },
+            {
+              "type": "note",
+              "content": "Редакційна примітка, контекст джерела або коротка примітка."
+            },
+            {
+              "type": "checklist",
+              "caption": "Що покривати",
+              "content": {
+                "items": [
+                  "Контекст",
+                  "Ключова деталь",
+                  "Людський ракурс",
+                  "Що зміниться далі"
+                ]
+              }
+            },
+            {
+              "type": "poll",
+              "content": {
+                "question": "Що ми повинні дослідити далі?",
+                "options": [
+                  {
+                    "label": "Більше контексту",
+                    "votes": 0
+                  },
+                  {
+                    "label": "Практичний посібник",
+                    "votes": 0
+                  }
+                ]
+              }
+            }
+          ]
         }
       ],
       "reviews": [
@@ -7399,6 +7588,69 @@
             }
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mrt4jakod3agex.jpg"
+        },
+        {
+          "id": 16,
+          "title": "Neue redaktionelle Geschichte",
+          "author": "EPRIS Journal",
+          "role": "Redaktion",
+          "date": "24. Juli 2026",
+          "excerpt": "Ein fokussierter Eröffnungsabsatz für eine neue redaktionelle Geschichte.",
+          "category": "Kultur",
+          "subcategory": "Besonderheit",
+          "tags": [
+            "Geschichte",
+            "Kultur",
+            "Leitartikel"
+          ],
+          "imageSeed": "new-editorial-story",
+          "content": [
+            {
+              "type": "text",
+              "content": "Beginnen Sie mit der stärksten Szene, Tatsache oder Beobachtung. Halten Sie diesen ersten Block eng und spezifisch."
+            },
+            {
+              "type": "image",
+              "content": "new-editorial-story-2",
+              "caption": "Leitbild"
+            },
+            {
+              "type": "quote",
+              "content": "Fügen Sie hier eine Zeile hinzu, an die Sie sich erinnern sollten."
+            },
+            {
+              "type": "note",
+              "content": "Redaktionelle Anmerkung, Quellenkontext oder eine kurze Anmerkung."
+            },
+            {
+              "type": "checklist",
+              "caption": "Was abzudecken ist",
+              "content": {
+                "items": [
+                  "Kontext",
+                  "Wichtiges Detail",
+                  "Menschlicher Blickwinkel",
+                  "Was ändert sich als nächstes?"
+                ]
+              }
+            },
+            {
+              "type": "poll",
+              "content": {
+                "question": "Was sollten wir als nächstes erkunden?",
+                "options": [
+                  {
+                    "label": "Mehr Kontext",
+                    "votes": 0
+                  },
+                  {
+                    "label": "Praktischer Leitfaden",
+                    "votes": 0
+                  }
+                ]
+              }
+            }
+          ]
         }
       ],
       "reviews": [
@@ -8708,6 +8960,69 @@
             }
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mrt4jakod3agex.jpg"
+        },
+        {
+          "id": 16,
+          "title": "Nueva historia editorial",
+          "author": "EPRIS Journal",
+          "role": "Escritorio editorial",
+          "date": "24 de julio de 2026",
+          "excerpt": "Un párrafo inicial centrado en una nueva historia editorial.",
+          "category": "Cultura",
+          "subcategory": "Característica",
+          "tags": [
+            "historia",
+            "cultura",
+            "editorial"
+          ],
+          "imageSeed": "new-editorial-story",
+          "content": [
+            {
+              "type": "text",
+              "content": "Comience con la escena, hecho u observación más fuerte. Mantenga este primer bloque estricto y específico."
+            },
+            {
+              "type": "image",
+              "content": "new-editorial-story-2",
+              "caption": "imagen principal"
+            },
+            {
+              "type": "quote",
+              "content": "Agregue una línea que valga la pena recordar aquí."
+            },
+            {
+              "type": "note",
+              "content": "Nota editorial, contexto fuente o breve comentario."
+            },
+            {
+              "type": "checklist",
+              "caption": "que cubrir",
+              "content": {
+                "items": [
+                  "Contexto",
+                  "Detalle clave",
+                  "ángulo humano",
+                  "¿Qué cambia a continuación?"
+                ]
+              }
+            },
+            {
+              "type": "poll",
+              "content": {
+                "question": "¿Qué deberíamos explorar a continuación?",
+                "options": [
+                  {
+                    "label": "Más contexto",
+                    "votes": 0
+                  },
+                  {
+                    "label": "guía practica",
+                    "votes": 0
+                  }
+                ]
+              }
+            }
+          ]
         }
       ],
       "reviews": [
@@ -10191,6 +10506,69 @@
             }
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mrt4jakod3agex.jpg"
+        },
+        {
+          "id": 16,
+          "title": "Yeni editoryal hikaye",
+          "author": "EPRIS Journal",
+          "role": "Editör Masası",
+          "date": "24 Temmuz 2026",
+          "excerpt": "Yeni bir editoryal hikaye için odaklanmış bir açılış paragrafı.",
+          "category": "Kültür",
+          "subcategory": "Özellik",
+          "tags": [
+            "hikaye",
+            "kültür",
+            "editoryal"
+          ],
+          "imageSeed": "new-editorial-story",
+          "content": [
+            {
+              "type": "text",
+              "content": "En güçlü sahne, gerçek veya gözlemle başlayın. Bu ilk bloğu sıkı ve spesifik tutun."
+            },
+            {
+              "type": "image",
+              "content": "new-editorial-story-2",
+              "caption": "Potansiyel müşteri resmi"
+            },
+            {
+              "type": "quote",
+              "content": "Buraya hatırlamaya değer bir satır ekleyin."
+            },
+            {
+              "type": "note",
+              "content": "Editoryal not, kaynak bağlamı veya kısa bir özet."
+            },
+            {
+              "type": "checklist",
+              "caption": "Neyi kapsamalı",
+              "content": {
+                "items": [
+                  "Bağlam",
+                  "Önemli ayrıntı",
+                  "İnsan açısı",
+                  "Bundan sonra ne değişecek?"
+                ]
+              }
+            },
+            {
+              "type": "poll",
+              "content": {
+                "question": "Bundan sonra neyi keşfetmemiz gerekiyor?",
+                "options": [
+                  {
+                    "label": "Daha fazla bağlam",
+                    "votes": 0
+                  },
+                  {
+                    "label": "Pratik kılavuz",
+                    "votes": 0
+                  }
+                ]
+              }
+            }
+          ]
         }
       ],
       "reviews": [
@@ -11299,6 +11677,69 @@
           "author": "EPRIS Journal",
           "role": "Scrivania editoriale",
           "date": "19 luglio 2026",
+          "excerpt": "Un paragrafo di apertura mirato per una nuova storia editoriale.",
+          "category": "Cultura",
+          "subcategory": "Caratteristica",
+          "tags": [
+            "storia",
+            "cultura",
+            "editoriale"
+          ],
+          "imageSeed": "new-editorial-story",
+          "content": [
+            {
+              "type": "text",
+              "content": "Inizia con la scena, il fatto o l'osservazione più forte. Mantieni questo primo blocco stretto e specifico."
+            },
+            {
+              "type": "image",
+              "content": "new-editorial-story-2",
+              "caption": "Immagine principale"
+            },
+            {
+              "type": "quote",
+              "content": "Aggiungi una riga che vale la pena ricordare qui."
+            },
+            {
+              "type": "note",
+              "content": "Nota editoriale, contesto della fonte o una breve nota."
+            },
+            {
+              "type": "checklist",
+              "caption": "Cosa coprire",
+              "content": {
+                "items": [
+                  "Contesto",
+                  "Dettaglio chiave",
+                  "Angolo umano",
+                  "Cosa cambia dopo"
+                ]
+              }
+            },
+            {
+              "type": "poll",
+              "content": {
+                "question": "Cosa dovremmo esplorare dopo?",
+                "options": [
+                  {
+                    "label": "Più contesto",
+                    "votes": 0
+                  },
+                  {
+                    "label": "Guida pratica",
+                    "votes": 0
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "title": "Nuova storia editoriale",
+          "author": "EPRIS Journal",
+          "role": "Scrivania editoriale",
+          "date": "24 luglio 2026",
           "excerpt": "Un paragrafo di apertura mirato per una nuova storia editoriale.",
           "category": "Cultura",
           "subcategory": "Caratteristica",
