@@ -12205,6 +12205,7 @@ async function flushModernEditor() {
           </ul>
           <div class="pp-preview-actions">
             <a href="${escapeHtml(publicUrl)}" target="_blank" rel="noreferrer" class="btn btn-sm">Открыть</a>
+            <a href="${escapeHtml(publicUrl)}?edit=1" target="_blank" rel="noreferrer" class="btn btn-sm">Редактировать</a>
             <button class="btn btn-sm" type="button" data-preview-copy="${escapeHtml(code)}">Скопировать</button>
             <button class="btn btn-sm btn-danger" type="button" data-preview-annul="${escapeHtml(code)}">Аннулировать</button>
           </div>
@@ -12344,6 +12345,7 @@ async function flushModernEditor() {
         <td class="text-right">
           <div class="pp-row-actions">
             <button class="btn btn-sm btn-copy-passport" type="button" data-url="${escapeHtml(publicUrl)}">Ссылка</button>
+            <a href="${escapeHtml(publicUrl)}?edit=1" target="_blank" rel="noreferrer" class="btn btn-sm">Редактировать</a>
             <button class="btn btn-sm btn-danger btn-annul" type="button" data-code="${escapeHtml(code)}">Аннулировать</button>
             <a href="${escapeHtml(publicUrl)}" target="_blank" rel="noreferrer" class="btn btn-sm">Смотреть ↗</a>
           </div>
