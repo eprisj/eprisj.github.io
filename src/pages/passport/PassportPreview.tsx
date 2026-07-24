@@ -58,91 +58,25 @@ function Emblem({ px }: { px: number }) {
   );
 }
 
-// ── Cultural Seal (lower ornament) ────────────────────────────────────────────
-function CulturalSeal() {
-  const spokes = Array.from({length: 24}, (_, i) => {
-    const a = i * 15 * Math.PI / 180;
-    return { x1: 150 + 18 * Math.cos(a), y1: 100 + 18 * Math.sin(a), x2: 150 + 80 * Math.cos(a), y2: 100 + 80 * Math.sin(a) };
-  });
-  const petals = Array.from({length: 8}, (_, i) => {
-    const a = i * 45 * Math.PI / 180;
-    return { cx: 150 + 52 * Math.cos(a), cy: 100 + 52 * Math.sin(a), rot: i * 45 };
-  });
-  const corners: [number, number][] = [[28, 24], [272, 24], [28, 176], [272, 176]];
-
-  return (
-    <svg viewBox="0 0 300 200" style={{ width: '100%', height: '100%' }} aria-hidden>
-      {/* Outer frame */}
-      <rect x="1" y="1" width="298" height="198" rx="3" fill="none" stroke="#4a1728" strokeWidth="1.8"/>
-      <rect x="5" y="5" width="290" height="190" rx="2" fill="none" stroke="#b8956e" strokeWidth="0.9"/>
-      {/* Center rosette rings */}
-      <circle cx="150" cy="100" r="80" fill="none" stroke="#4a1728" strokeWidth="1"/>
-      <circle cx="150" cy="100" r="66" fill="none" stroke="#b8956e" strokeWidth="0.7"/>
-      <circle cx="150" cy="100" r="52" fill="none" stroke="#4a1728" strokeWidth="0.8"/>
-      <circle cx="150" cy="100" r="36" fill="none" stroke="#4a1728" strokeWidth="0.6"/>
-      <circle cx="150" cy="100" r="18" fill="none" stroke="#b8956e" strokeWidth="0.7"/>
-      <circle cx="150" cy="100" r="7"  fill="none" stroke="#4a1728" strokeWidth="1.2"/>
-      <circle cx="150" cy="100" r="3"  fill="#4a1728"/>
-      {/* Spokes */}
-      {spokes.map((s, i) => <line key={i} x1={s.x1} y1={s.y1} x2={s.x2} y2={s.y2} stroke="#4a1728" strokeWidth="0.5"/>)}
-      {/* Petals */}
-      {petals.map((p, i) => (
-        <ellipse key={i} cx={p.cx} cy={p.cy} rx="11" ry="6"
-          transform={`rotate(${p.rot} ${p.cx} ${p.cy})`}
-          fill="none" stroke="#4a1728" strokeWidth="0.7"/>
-      ))}
-      {/* Text on arc top */}
-      <path id="arc1" d="M 78,100 A 72,72 0 0 1 222,100" fill="none"/>
-      <text fontFamily="serif" fontWeight="700" fontSize="13" fill="#4a1728" letterSpacing="3.5">
-        <textPath href="#arc1" startOffset="8%">EPRIS JOURNAL</textPath>
-      </text>
-      {/* Text on arc bottom */}
-      <path id="arc2" d="M 82,102 A 68,68 0 0 0 218,102" fill="none"/>
-      <text fontFamily="monospace" fontSize="7.5" fill="#4a1728" letterSpacing="2">
-        <textPath href="#arc2" startOffset="10%">REVEAL THE INVISIBLE</textPath>
-      </text>
-      {/* Corner ornaments */}
-      {corners.map(([cx, cy], i) => (
-        <g key={i}>
-          <circle cx={cx} cy={cy} r="14" fill="none" stroke="#4a1728" strokeWidth="0.9"/>
-          <circle cx={cx} cy={cy} r="8"  fill="none" stroke="#b8956e" strokeWidth="0.6"/>
-          <circle cx={cx} cy={cy} r="3"  fill="#4a1728"/>
-          {[0,90,180,270].map(a => {
-            const rad = a * Math.PI / 180;
-            return <line key={a} x1={cx + 8 * Math.cos(rad)} y1={cy + 8 * Math.sin(rad)} x2={cx + 14 * Math.cos(rad)} y2={cy + 14 * Math.sin(rad)} stroke="#4a1728" strokeWidth="0.5"/>;
-          })}
-        </g>
-      ))}
-      {/* Side decorative lines */}
-      <line x1="30" y1="100" x2="64" y2="100" stroke="#b8956e" strokeWidth="0.8"/>
-      <line x1="236" y1="100" x2="270" y2="100" stroke="#b8956e" strokeWidth="0.8"/>
-      <line x1="30" y1="96" x2="50" y2="96" stroke="#4a1728" strokeWidth="0.4"/>
-      <line x1="250" y1="96" x2="270" y2="96" stroke="#4a1728" strokeWidth="0.4"/>
-      <line x1="30" y1="104" x2="50" y2="104" stroke="#4a1728" strokeWidth="0.4"/>
-      <line x1="250" y1="104" x2="270" y2="104" stroke="#4a1728" strokeWidth="0.4"/>
-    </svg>
-  );
-}
-
 // ── Field ─────────────────────────────────────────────────────────────────────
 // Real passport data pages stack the field label in every one of the issuing
 // country's official languages (Switzerland: DE/FR/IT/RM). EPRIS's equivalent
-// is EN + Ukrainian — `label2` renders as a second, slightly smaller line
-// under the English label, matching that bilingual-caption convention.
+// is EN + Italian — `label2` renders as a second, slightly smaller line under
+// the English label, matching that bilingual-caption convention.
 function F({
   label, label2, value, big, mono,
 }: {
   label: string; label2?: string; value: string; big?: boolean; mono?: boolean;
 }) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
       <span style={{
         fontFamily: '"PT Sans", sans-serif',
-        fontSize: 'clamp(8px, 1.6cqw, 12px)',
+        fontSize: 'clamp(7px, 1.3cqw, 10px)',
         color: '#4a1728',
         opacity: 0.65,
         fontStyle: 'italic',
-        lineHeight: 1.35,
+        lineHeight: 1.25,
         letterSpacing: '0.02em',
       }}>
         {label}
@@ -155,11 +89,11 @@ function F({
             ? '"Courier New", monospace'
             : '"Playfair Display", "PT Serif", serif',
         fontSize: big
-          ? 'clamp(14px, 2.8cqw, 24px)'
-          : 'clamp(11px, 2.2cqw, 18px)',
+          ? 'clamp(13px, 2.6cqw, 22px)'
+          : 'clamp(9.5px, 1.9cqw, 15px)',
         fontWeight: big ? 700 : 600,
         color: '#1a0b10',
-        lineHeight: 1.1,
+        lineHeight: 1.05,
         letterSpacing: big ? '0.01em' : mono ? '0.04em' : '0.005em',
       }}>{value || '—'}</span>
     </div>
@@ -251,7 +185,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
       <div className="absolute pointer-events-none" style={{ inset: '1.4%', border: '1px solid #4a1728', opacity: 0.7 }}/>
 
       {/* ══════════════════════════ TOP HALF — OBSERVATIONS ══════════════════════ */}
-      <div style={{ position: 'absolute', top: '3%', left: '4.5%', right: '4.5%', height: '43%' }}>
+      <div style={{ position: 'absolute', top: '2%', left: '4.5%', right: '4.5%', height: '32%' }}>
         {/* Big page number + small colored security glyph, top-right — a real
             specimen page's most immediately recognizable feature. */}
         <div style={{ position: 'absolute', top: 0, right: 0, display: 'flex', alignItems: 'center', gap: '3%' }}>
@@ -271,8 +205,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
           {Array.from({ length: 7 }, (_, i) => <div key={i} style={{ width: 5, height: 5, border: '0.6px solid rgba(74,23,40,0.35)' }} />)}
         </div>
 
-        {/* Legibility scrim + content */}
-        <div style={{ position: 'absolute', top: '22%', left: 0, right: 0, bottom: 0, background: 'rgba(245,237,220,0.38)', pointerEvents: 'none' }}/>
+        {/* Content */}
         <div style={{ position: 'absolute', top: '22%', left: 0, right: 0, bottom: 0, display: 'flex', gap: '4%' }}>
           {/* QR box — mirrors the data page's photo box */}
           <div style={{ width: '26%', flexShrink: 0 }}>
@@ -285,21 +218,21 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
           {/* Fields + disclaimer */}
           <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: '3%' }}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6%' }}>
-              <F label="Membership Type" label2="Тип членства" value={fields.membershipType || '—'} />
-              <F label="Verification" label2="Верифікація" value={code} mono />
+              <F label="Membership Type" label2="Tipo di appartenenza" value={fields.membershipType || '—'} />
+              <F label="Verification" label2="Verifica" value={code} mono />
             </div>
-            <F label="Digital Signature" label2="Цифровий підпис" value={generateSignatureString(code, fields)} mono />
-            <F label="Scan to Verify" label2="Скануйте для перевірки" value={`eprisjournal.com/passport/${code}`} />
+            <F label="Digital Signature" label2="Firma digitale" value={generateSignatureString(code, fields)} mono />
+            <F label="Scan to Verify" label2="Scansiona per verificare" value={`eprisjournal.com/passport/${code}`} />
             <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column' }}>
               <div style={{ fontFamily: '"PT Sans", sans-serif', fontSize: 'clamp(6px, 1.05cqw, 8.5px)', color: '#4a1728', opacity: 0.55, letterSpacing: '0.13em', textTransform: 'uppercase', marginBottom: '2%' }}>
-                Official Observations · Офіційні примітки
+                Official Observations · Osservazioni ufficiali
               </div>
               <div style={{ borderTop: '0.6px solid rgba(74,23,40,0.25)', paddingTop: '3%', display: 'flex', flexDirection: 'column', gap: '3%' }}>
                 <p style={{ fontFamily: '"Playfair Display", "PT Serif", serif', fontStyle: 'italic', fontWeight: 600, fontSize: 'clamp(7.5px, 1.35cqw, 11px)', lineHeight: 1.4, color: '#3a1520', opacity: 0.85, margin: 0 }}>
                   This is not a travel document or a state-issued identification. It certifies membership in the EPRIS Journal cultural system only.
                 </p>
                 <p style={{ fontFamily: '"Playfair Display", "PT Serif", serif', fontStyle: 'italic', fontWeight: 600, fontSize: 'clamp(7.5px, 1.35cqw, 11px)', lineHeight: 1.4, color: '#3a1520', opacity: 0.85, margin: 0 }}>
-                  Це не проїзний документ і не документ, що посвідчує особу від держави. Він підтверджує лише членство в культурній системі EPRIS Journal.
+                  Questo non è un documento di viaggio né un documento d'identità statale. Certifica esclusivamente l'appartenenza al sistema culturale EPRIS Journal.
                 </p>
               </div>
             </div>
@@ -308,13 +241,13 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
       </div>
 
       {/* ══════════════════════════ DIVIDER (the fold) ═══════════════════════════ */}
-      <div className="absolute pointer-events-none" style={{ top: '48%', left: '2%', right: '2%', height: '1px', backgroundImage: 'repeating-linear-gradient(to right, rgba(74,23,40,0.45) 0 1.5px, transparent 1.5px 6px)' }}/>
-      <div className="absolute flex pointer-events-none" style={{ top: 'calc(48% - 3px)', left: '4.5%', right: '4.5%', justifyContent: 'space-between' }}>
+      <div className="absolute pointer-events-none" style={{ top: '36%', left: '2%', right: '2%', height: '1px', backgroundImage: 'repeating-linear-gradient(to right, rgba(74,23,40,0.45) 0 1.5px, transparent 1.5px 6px)' }}/>
+      <div className="absolute flex pointer-events-none" style={{ top: 'calc(36% - 3px)', left: '4.5%', right: '4.5%', justifyContent: 'space-between' }}>
         {Array.from({ length: 9 }, (_, i) => <div key={i} style={{ width: 5, height: 5, border: '0.6px solid rgba(74,23,40,0.35)' }} />)}
       </div>
 
       {/* ══════════════════════════ BOTTOM HALF — DATA PAGE ══════════════════════ */}
-      <div style={{ position: 'absolute', top: '51%', left: '4.5%', right: '4.5%', bottom: '3%' }}>
+      <div style={{ position: 'absolute', top: '39%', left: '4.5%', right: '4.5%', bottom: '2%' }}>
         {/* Header band */}
         <div style={{
           position: 'absolute', top: 0, left: '-1%', right: '-1%', height: '13%',
@@ -331,15 +264,14 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
 
         {/* Type / Code / Number row */}
         <div style={{ position: 'absolute', top: '16%', left: 0, right: 0, display: 'grid', gridTemplateColumns: '1fr 2fr 4fr', gap: '3%', alignItems: 'start' }}>
-          <F label="Type" label2="Тип" value="P" />
-          <F label="Code" label2="Код" value="EPR" />
-          <F label="Member No." label2="Номер" value={code} mono />
+          <F label="Type" label2="Tipo" value="P" />
+          <F label="Code" label2="Codice" value="EPR" />
+          <F label="Member No." label2="Numero" value={code} mono />
         </div>
-        <div className="absolute" style={{ top: '25%', left: 0, right: 0, height: '0.5px', background: '#b8956e', opacity: 0.5 }}/>
+        <div className="absolute" style={{ top: '22%', left: 0, right: 0, height: '0.5px', background: '#b8956e', opacity: 0.5 }}/>
 
-        {/* Legibility scrim + content */}
-        <div style={{ position: 'absolute', top: '27%', left: 0, right: 0, bottom: '12%', background: 'rgba(245,237,220,0.38)', pointerEvents: 'none' }}/>
-        <div style={{ position: 'absolute', top: '27%', left: 0, right: 0, bottom: '12%', display: 'flex', gap: '3.5%' }}>
+        {/* Content */}
+        <div style={{ position: 'absolute', top: '25%', left: 0, right: 0, bottom: '15%', display: 'flex', gap: '3.5%' }}>
           {/* Photo */}
           <div style={{ width: '30%', flexShrink: 0, display: 'flex', flexDirection: 'column', gap: '4%' }}>
             <div style={{ position: 'relative', width: '100%', aspectRatio: '35/45', flexShrink: 0, border: '1.5px solid #4a1728', background: '#f8f4ed', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'visible', boxShadow: 'inset 0 0 0 1px rgba(74,23,40,0.08)' }}>
@@ -368,44 +300,38 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
 
           {/* Fields */}
           <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-            <F label="Surname" label2="Прізвище" value={fields.surname.toUpperCase()} big />
-            <F label="Given Names" label2="Ім'я" value={fields.givenNames.toUpperCase()} big />
-            <F label="Nationality" label2="Громадянство" value={`EPRIS · ${fields.country || '—'}`.toUpperCase()} />
+            <F label="Surname" label2="Cognome" value={fields.surname.toUpperCase()} big />
+            <F label="Given Names" label2="Nome" value={fields.givenNames.toUpperCase()} big />
+            <F label="Nationality" label2="Cittadinanza" value={`EPRIS · ${fields.country || '—'}`.toUpperCase()} />
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
-              <F label="Date of birth" label2="Дата народження" value={fields.dob || '—'} />
-              <F label="Record No." label2="Номер запису" value={code} mono />
+              <F label="Date of birth" label2="Data di nascita" value={fields.dob || '—'} />
+              <F label="Record No." label2="Numero di registro" value={code} mono />
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
-              <F label="Sex" label2="Стать" value={(fields.sex || 'X').toUpperCase()} />
-              <F label="City" label2="Місто" value={fields.city || '—'} />
+              <F label="Sex" label2="Sesso" value={(fields.sex || 'X').toUpperCase()} />
+              <F label="City" label2="Città" value={fields.city || '—'} />
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
-              <F label="Date of issue" label2="Дата видачі" value={fields.issueDate || '—'} />
-              <F label="Authority" label2="Орган видачі" value="EPRIS J." />
+              <F label="Date of issue" label2="Data di rilascio" value={fields.issueDate || '—'} />
+              <F label="Authority" label2="Autorità" value="EPRIS J." />
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
-              <F label="Date of expiry" label2="Дійсний до" value={fields.expiryDate || '—'} />
+              <F label="Date of expiry" label2="Data di scadenza" value={fields.expiryDate || '—'} />
               <div>
                 <div style={{ fontFamily: '"PT Sans",sans-serif', fontSize: 'clamp(6.5px, 1.25cqw, 10px)', color: '#4a1728', opacity: 0.65, fontStyle: 'italic', lineHeight: 1.3, marginBottom: 4 }}>
-                  Holder's signature<br /><span style={{ opacity: 0.82 }}>Підпис власника</span>
+                  Holder's signature<br /><span style={{ opacity: 0.82 }}>Firma del titolare</span>
                 </div>
                 <div style={{ borderBottom: '0.8px solid #b8956e', width: '82%', height: 'clamp(7px, 1.6cqh, 15px)' }}/>
               </div>
             </div>
-            <F label="Professional Field" label2="Фахова галузь" value={(fields.field || '—').toUpperCase()} />
+            <F label="Professional Field" label2="Campo professionale" value={(fields.field || '—').toUpperCase()} />
             <VerificationStamp />
           </div>
         </div>
 
-        {/* Cultural seal */}
-        <div style={{ position: 'absolute', bottom: '2%', left: 0, right: 0, height: '9%', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0.2, pointerEvents: 'none' }}>
-          <CulturalSeal />
-        </div>
-
         {/* MRZ — printed directly on the page art, no boxed background */}
-        <div style={{ position: 'absolute', bottom: '-8%', left: 0, right: 0 }}>
-          <div className="absolute pointer-events-none" style={{ inset: '-6% -2%', background: 'linear-gradient(180deg, transparent 0%, rgba(245,237,220,0.55) 30%, rgba(245,237,220,0.55) 100%)' }}/>
-          <div style={{ position: 'relative', display: 'flex', justifyContent: 'space-between', fontFamily: '"OCR-B 10 BT", "OCR-B", "Courier New", monospace', fontSize: 'clamp(9px, 1.9cqw, 17px)', fontWeight: 'bold', color: '#1a0b10', lineHeight: 1.25 }}>
+        <div style={{ position: 'absolute', bottom: '2%', left: 0, right: 0 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: '"OCR-B 10 BT", "OCR-B", "Courier New", monospace', fontSize: 'clamp(9px, 1.9cqw, 17px)', fontWeight: 'bold', color: '#1a0b10', lineHeight: 1.25 }}>
             {mrz[0].split('').map((c, i) => <span key={i}>{c}</span>)}
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: '"OCR-B 10 BT", "OCR-B", "Courier New", monospace', fontSize: 'clamp(9px, 1.9cqw, 17px)', fontWeight: 'bold', color: '#1a0b10', lineHeight: 1.25, marginTop: '1.5%' }}>
