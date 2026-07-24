@@ -56,7 +56,9 @@ export function PassportBook({
 
   const isMobile = vw < 768;
   // Width of the interactive passport card (drives the whole book size).
-  const cardW = isMobile ? Math.min(vw - 56, 330) : Math.min(360, Math.max(288, Math.round(vw * 0.30)));
+  // The book is the whole point of this page, so let it be large; a bit of
+  // page scroll on short windows is fine and expected for a feature like this.
+  const cardW = isMobile ? Math.min(vw - 56, 330) : Math.min(560, Math.max(340, Math.round(vw * 0.34)));
 
   // Measure the passport card's natural height → the book's page height.
   useEffect(() => {
@@ -69,7 +71,11 @@ export function PassportBook({
     return () => ro.disconnect();
   }, [cardW]);
 
-  const pageW = Math.round(bookH * COVER_RATIO); // booklet page slightly wider than the inset card
+  // The page width must match the card's own width exactly — `bookH` measures
+  // the whole PassportPreview node, tabs included, so deriving pageW from it
+  // (via the cover-art ratio) made the page noticeably wider than the card
+  // sitting inside it, reading as a wide empty margin/frame around the card.
+  const pageW = cardW;
   const shareText = `Check out my official EPRIS Digital Member Passport! (${fields.givenNames} ${fields.surname})`;
   const url = typeof window !== 'undefined' ? window.location.href : '';
 
