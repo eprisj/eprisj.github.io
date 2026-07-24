@@ -3205,7 +3205,11 @@
         },
         {
           "type": "gallery",
-          "content": [],
+          "content": [
+            "https://api.eprisjournal.com/uploads/mrz34koa2396i9.jpg",
+            "https://api.eprisjournal.com/uploads/mrz34l3864mn1i.jpg",
+            "https://api.eprisjournal.com/uploads/mrz34le70fa3d5.jpg"
+          ],
           "caption": ""
         },
         {
@@ -3215,6 +3219,11 @@
         {
           "type": "text",
           "content": "This synthesis of tradition and modernism is perhaps most evident in her collaboration with the niche perfume store, Mood Scent Bar. Within this retail environment, Wyganowska integrates pajaki as a rhythmic counterpoint to the store’s minimalist architecture. By suspending these intricate, geometric structures against the sleek, stark lines of the display shelves, she recontextualizes folk art into a striking sculptural installation."
+        },
+        {
+          "type": "gallery",
+          "content": [],
+          "caption": ""
         },
         {
           "type": "header",
