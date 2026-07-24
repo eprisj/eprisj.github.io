@@ -9,8 +9,8 @@
   --c-accent-rgb: 74 23 40;
   --c-gold: #b8956e;         /* gold */
   --c-gold-rgb: 184 149 110;
-  --c-bg: #ede1c6;           /* page background cream-base */
-  --c-bg-rgb: 237 225 198;
+  --c-bg: #f5f0eb;           /* page background */
+  --c-bg-rgb: 245 240 235;
   --font-display: 'Playfair Display', serif;       /* headings */
   --font-body: 'PT Sans', sans-serif; /* body */
   --bg-image: none;          /* optional page background image (admin Appearance) */
