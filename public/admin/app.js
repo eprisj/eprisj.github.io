@@ -4307,7 +4307,11 @@ async function translateText(value, targetLang, sourceLang = DEFAULT_LANGUAGE) {
 
 const TRANSLATABLE_INLINE_TAGS = new Set([
   'A', 'B', 'BR', 'CODE', 'DEL', 'EM', 'I', 'MARK', 'P', 'S', 'SMALL',
-  'SPAN', 'STRONG', 'SUB', 'SUP', 'U', 'UL', 'OL', 'LI'
+  'SPAN', 'STRONG', 'SUB', 'SUP', 'U', 'UL', 'OL', 'LI',
+  // Block tags the manifesto uses — kept so translating a full /manifest body
+  // preserves its structure. Article blocks are single-block inline HTML and
+  // never contain these, so this doesn't affect article translation.
+  'H2', 'H3', 'H4', 'BLOCKQUOTE', 'HR'
 ]);
 
 function sanitizeTranslatableMarkup(value) {
@@ -7498,75 +7502,152 @@ function bindStudioRowActions() {
 
 // ═══════════════════════════════════════════════════════════
 // ──  MANIFEST TAB  ────────────────────────────────────────
-//  Edits the per-language `manifest` object ({ [lang]: {title, body} })
-//  shown at /manifest. Mirrors the studio flow: edit a working copy, Apply
-//  writes it into the whole-file JSON, then the global Save pushes to VPS.
+//  Edits the manifesto shown at /manifest as ONE base-language document,
+//  article-editor style: a WYSIWYG contenteditable + a format toolbar. The
+//  other site languages are never edited by hand — "Применить + перевести"
+//  auto-translates the base into every language (via the same Google-Translate
+//  engine the article editor uses) and writes the whole `manifest` object into
+//  the file JSON; the global Save then pushes to the VPS.
 // ═══════════════════════════════════════════════════════════
 (function initManifestTab() {
   const DEFAULT_LANG = 'EN';
-  let _manifest = null;   // working copy { [lang]: {title, body} }
-  let _curLang = DEFAULT_LANG;
-
   const el = (id) => document.getElementById(id);
+  const editorEl = () => el('manifestBodyEditor');
 
-  function langs(data) {
-    const t = (data && data.translations && typeof data.translations === 'object') ? Object.keys(data.translations) : [];
-    if (!t.includes(DEFAULT_LANG)) t.unshift(DEFAULT_LANG);
-    return t;
+  // Allow-list sanitizer for the manifest body: the block + inline tags the
+  // public site renders (src/App.tsx RICH_ALLOWED_TAGS). contenteditable wraps
+  // new lines in <div>, so those become <p>; unknown tags are unwrapped.
+  const BLOCK_TAGS = new Set(['P', 'H2', 'H3', 'H4', 'UL', 'OL', 'LI', 'HR', 'BLOCKQUOTE']);
+  const INLINE_TAGS = new Set(['B', 'STRONG', 'I', 'EM', 'U', 'S', 'MARK', 'CODE', 'BR', 'A', 'SPAN']);
+  function sanitizeManifestHtml(html) {
+    const escTxt = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    let root;
+    try {
+      const doc = new DOMParser().parseFromString('<div id="r">' + String(html == null ? '' : html) + '</div>', 'text/html');
+      root = doc.getElementById('r');
+    } catch (e) { return String(html || ''); }
+    const walk = (node) => {
+      let out = '';
+      node.childNodes.forEach((ch) => {
+        if (ch.nodeType === 3) { out += escTxt(ch.textContent || ''); return; }
+        if (ch.nodeType !== 1) return;
+        const tag = ch.tagName;
+        if (tag === 'BR') { out += '<br>'; return; }
+        if (tag === 'HR') { out += '<hr>'; return; }
+        if (tag === 'DIV') { const inner = walk(ch); if (inner.trim()) out += '<p>' + inner + '</p>'; return; }
+        if (BLOCK_TAGS.has(tag) || INLINE_TAGS.has(tag)) {
+          const inner = walk(ch);
+          if (BLOCK_TAGS.has(tag) && !inner.trim()) return; // drop empty block shells
+          let attrs = '';
+          if (tag === 'A') { const href = ch.getAttribute('href') || ''; if (/^(https?:|mailto:)/i.test(href)) attrs = ' href="' + href.replace(/"/g, '&quot;') + '"'; }
+          const t = tag.toLowerCase();
+          out += '<' + t + attrs + '>' + inner + '</' + t + '>';
+          return;
+        }
+        out += walk(ch); // unwrap disallowed tag, keep contents
+      });
+      return out;
+    };
+    return root ? walk(root) : '';
   }
 
-  // Read the two visible fields back into the working copy for the current lang.
-  function captureForm() {
-    if (!_manifest) return;
-    const title = el('manifestTitle') ? el('manifestTitle').value : '';
-    const body = el('manifestBody') ? el('manifestBody').value : '';
-    _manifest[_curLang] = { title: title, body: body };
-  }
-
-  function renderForm() {
-    const entry = (_manifest && _manifest[_curLang]) || {};
-    if (el('manifestTitle')) el('manifestTitle').value = entry.title || '';
-    if (el('manifestBody')) el('manifestBody').value = entry.body || '';
-  }
-
+  // Load the base-language entry into the title field + WYSIWYG surface.
   function renderManifestTab() {
     const data = (typeof parseEditorJsonSafe === 'function') ? parseEditorJsonSafe() : null;
-    const sel = el('manifestLang');
-    if (!data || !sel) {
-      if (el('manifestBody')) el('manifestBody').value = '';
-      return;
-    }
-    _manifest = JSON.parse(JSON.stringify(data.manifest || {}));
-    const list = langs(data);
-    if (!list.includes(_curLang)) _curLang = list[0] || DEFAULT_LANG;
-    sel.innerHTML = list.map((l) => `<option value="${l}" ${l === _curLang ? 'selected' : ''}>${l}</option>`).join('');
-    renderForm();
+    const ed = editorEl();
+    if (!data || !ed) { if (ed) ed.innerHTML = '<p></p>'; return; }
+    const entry = (data.manifest && data.manifest[DEFAULT_LANG]) || {};
+    if (el('manifestTitle')) el('manifestTitle').value = entry.title || '';
+    ed.innerHTML = (entry.body && entry.body.trim()) ? entry.body : '<p></p>';
   }
   window._renderManifestTab = renderManifestTab;
 
-  const selEl = el('manifestLang');
-  if (selEl) selEl.addEventListener('change', (e) => {
-    captureForm();                 // keep edits for the language we're leaving
-    _curLang = e.target.value;
-    renderForm();
+  // New lines should be <p>, not <div>, so the saved HTML matches the site.
+  try { document.execCommand('defaultParagraphSeparator', false, 'p'); } catch (e) { /* ignore */ }
+
+  // ── Format toolbar (block + inline formatting on the contenteditable) ──
+  const bar = el('manifestFmtBar');
+  if (bar) bar.addEventListener('mousedown', (e) => {
+    const btn = e.target.closest('[data-mfmt]');
+    if (!btn) return;
+    e.preventDefault();
+    const ed = editorEl();
+    if (!ed) return;
+    ed.focus();
+    const cmd = btn.getAttribute('data-mfmt');
+    if (cmd === 'p') document.execCommand('formatBlock', false, 'p');
+    else if (cmd === 'h2') document.execCommand('formatBlock', false, 'h2');
+    else if (cmd === 'h3') document.execCommand('formatBlock', false, 'h3');
+    else if (cmd === 'h4') document.execCommand('formatBlock', false, 'h4');
+    else if (cmd === 'quote') document.execCommand('formatBlock', false, 'blockquote');
+    else if (cmd === 'ul') document.execCommand('insertUnorderedList', false, null);
+    else if (cmd === 'hr') document.execCommand('insertHorizontalRule', false, null);
+    else if (cmd === 'bold') document.execCommand('bold', false, null);
+    else if (cmd === 'italic') document.execCommand('italic', false, null);
+    else if (cmd === 'link') { const u = prompt('URL ссылки:', 'https://'); if (u) document.execCommand('createLink', false, u); }
   });
 
+  // ── Apply + auto-translate to every site language ──
   const applyBtn = el('manifestApplyBtn');
-  if (applyBtn) applyBtn.addEventListener('click', () => {
+  const statusEl = el('manifestStatus');
+  if (applyBtn) applyBtn.addEventListener('click', async () => {
     const data = (typeof parseEditorJsonSafe === 'function') ? parseEditorJsonSafe() : null;
     if (!data) { showToast('error', 'Загрузите JSON перед сохранением.'); return; }
-    captureForm();
-    // Drop entries that are entirely empty so we don't store blank shells.
+
+    const title = (el('manifestTitle') ? el('manifestTitle').value : '').trim();
+    const body = sanitizeManifestHtml(editorEl() ? editorEl().innerHTML : '').trim();
+    if (!body) { showToast('error', 'Текст манифеста пуст.'); return; }
+
+    const manifest = Object.assign({}, data.manifest || {});
+    manifest[DEFAULT_LANG] = { title, body };
+
+    const targets = (typeof getTranslationLanguages === 'function' ? getTranslationLanguages(data) : [DEFAULT_LANG])
+      .filter((l) => l !== DEFAULT_LANG);
+
+    const canTranslate = (typeof translateRichText === 'function' && typeof translateText === 'function');
+    const label = applyBtn.textContent;
+    applyBtn.disabled = true;
+    const failed = [];
+    let done = 0;
+
+    if (canTranslate) {
+      for (const lang of targets) {
+        if (statusEl) statusEl.textContent = `Перевод: ${lang} (${done + 1}/${targets.length})…`;
+        applyBtn.textContent = `Перевожу… ${done + 1}/${targets.length}`;
+        try {
+          const tTitle = title ? await translateText(title, lang, DEFAULT_LANG) : '';
+          const tBody = await translateRichText(body, lang, DEFAULT_LANG);
+          manifest[lang] = { title: tTitle, body: tBody };
+          done++;
+        } catch (err) {
+          failed.push(lang);
+          // Keep whatever translation already existed rather than wiping it.
+          if (!manifest[lang]) manifest[lang] = { title, body };
+        }
+      }
+    }
+
+    // Drop entirely empty entries so we never store blank shells.
     const cleaned = {};
-    for (const [lang, entry] of Object.entries(_manifest || {})) {
-      const title = (entry && entry.title || '').trim();
-      const body = (entry && entry.body || '').trim();
-      if (title || body) cleaned[lang] = { title, body };
+    for (const [lang, entry] of Object.entries(manifest)) {
+      const t = (entry && entry.title || '').trim();
+      const b = (entry && entry.body || '').trim();
+      if (t || b) cleaned[lang] = { title: t, body: b };
     }
     data.manifest = cleaned;
     editor.value = JSON.stringify(data, null, 2);
     if (typeof updateEditorState === 'function') updateEditorState();
-    showToast('success', 'Манифест обновлён – нажмите общий «Сохранить», чтобы отправить на VPS.');
+
+    applyBtn.disabled = false;
+    applyBtn.textContent = label;
+    if (statusEl) statusEl.textContent = '';
+    if (!canTranslate) {
+      showToast('info', 'Сохранён только базовый язык (движок перевода недоступен). Нажмите общий «Сохранить».', 6000);
+    } else if (failed.length) {
+      showToast('info', `Готово. Не удалось перевести: ${failed.join(', ')} — можно повторить «Применить». Нажмите общий «Сохранить».`, 7000);
+    } else {
+      showToast('success', `Переведено на ${done} ${done === 1 ? 'язык' : 'языков'}. Нажмите общий «Сохранить», чтобы отправить на VPS.`);
+    }
   });
 })();
 

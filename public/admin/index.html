@@ -779,25 +779,38 @@
             <div class="studio-layout">
               <div class="card card-highlight">
                 <h2 class="card-title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 3h11l5 5v13H4z"/><polyline points="15 3 15 8 20 8"/></svg> Страница «Манифест»</h2>
-                <p class="card-desc">Контент страницы <strong>/manifest</strong>, свой для каждого языка. Заголовок и текст (можно с HTML: &lt;p&gt;, &lt;br&gt;, &lt;strong&gt;, &lt;em&gt;).</p>
+                <p class="card-desc">Редактируйте манифест как статью — прямо в тексте. Другие языки подтянутся автоматически при нажатии «Применить».</p>
                 <div class="studio-toolbar">
                   <a id="manifestOpenLink" href="../manifest" target="_blank" rel="noreferrer" class="btn btn-sm">Открыть ↗</a>
-                  <button id="manifestApplyBtn" class="btn btn-primary btn-sm" type="button">Применить</button>
+                  <button id="manifestApplyBtn" class="btn btn-primary btn-sm" type="button">Применить + перевести</button>
+                  <span id="manifestStatus" class="card-desc" style="align-self:center;margin:0"></span>
                 </div>
               </div>
               <div class="card">
                 <div class="form-grid">
-                  <label><span class="field-label">Язык</span>
-                    <select id="manifestLang"></select>
-                  </label>
                   <label class="full"><span class="field-label">Заголовок</span>
-                    <input id="manifestTitle" placeholder="Манифест" />
+                    <input id="manifestTitle" placeholder="The Manifesto" />
                   </label>
-                  <label class="full"><span class="field-label">Текст (HTML)</span>
-                    <textarea id="manifestBody" rows="16" placeholder="&lt;p&gt;Первый абзац…&lt;/p&gt;&lt;p&gt;Второй абзац…&lt;/p&gt;"></textarea>
-                  </label>
+                  <div class="full">
+                    <span class="field-label">Текст</span>
+                    <div class="manifest-fmtbar" id="manifestFmtBar">
+                      <button type="button" data-mfmt="p" title="Абзац">¶</button>
+                      <button type="button" data-mfmt="h2" title="Заголовок раздела (H2)">H2</button>
+                      <button type="button" data-mfmt="h3" title="Подзаголовок (H3)">H3</button>
+                      <button type="button" data-mfmt="h4" title="Мелкий подзаголовок (H4)">H4</button>
+                      <span class="manifest-fmtsep"></span>
+                      <button type="button" data-mfmt="ul" title="Список">• Список</button>
+                      <button type="button" data-mfmt="quote" title="Цитата">❝</button>
+                      <button type="button" data-mfmt="hr" title="Разделитель">—</button>
+                      <span class="manifest-fmtsep"></span>
+                      <button type="button" data-mfmt="bold" title="Жирный"><b>B</b></button>
+                      <button type="button" data-mfmt="italic" title="Курсив"><i>I</i></button>
+                      <button type="button" data-mfmt="link" title="Ссылка">🔗</button>
+                    </div>
+                    <div id="manifestBodyEditor" class="wys-rt manifest-editor" contenteditable="true" spellcheck="true"></div>
+                  </div>
                 </div>
-                <p class="card-desc" style="margin-top:10px">Переключение языка сохраняет введённый текст в память. После правок нажмите «Применить», затем общий «Сохранить», чтобы отправить на VPS.</p>
+                <p class="card-desc" style="margin-top:10px">Пишите прямо здесь, как в редакторе статьи. Нажмите «Применить + перевести» — текст переведётся на все языки сайта, затем общий «Сохранить», чтобы отправить на VPS.</p>
               </div>
             </div>
           </section>
