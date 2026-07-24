@@ -550,9 +550,31 @@ export function getContentForLanguage(lang: string): LanguageContent {
   const items = mergeLocalizedItems(bucket.items, liveBase(c.items));
   const libraryItems = mergeLocalizedArray(bucket.libraryItems, liveBase(c.libraryItems));
 
+  const liveArticles = isPreview() ? articles : articles.filter(isEntityLive);
+  const liveItems = isPreview() ? items : items.filter(isEntityLive);
+
+  // The homepage Gallery is a hand-curated collection, separate from Articles
+  // — publishing a new article never added it there, so it silently never
+  // showed on the homepage. Any article not already represented (by title)
+  // in the curated Gallery gets appended as a Gallery card, so every
+  // published article is reachable from the homepage without disturbing the
+  // curated ordering/featured slot at the front of the list.
+  const galleryTitles = new Set(liveItems.map((i) => (i.title || '').trim().toLowerCase()));
+  const articleGalleryItems: Item[] = liveArticles
+    .filter((a) => !galleryTitles.has((a.title || '').trim().toLowerCase()))
+    .map((a) => ({
+      id: 900000 + a.id,
+      title: a.title,
+      subtitle: a.category || '',
+      fig: `FIG. ${String(a.id).padStart(2, '0')}`,
+      description: a.excerpt,
+      imageSeed: a.imageSeed,
+      imageUrl: a.imageUrl,
+    }));
+
   return {
-    items: isPreview() ? items : items.filter(isEntityLive),
-    articles: isPreview() ? articles : articles.filter(isEntityLive),
+    items: [...liveItems, ...articleGalleryItems],
+    articles: liveArticles,
     reviews: isPreview() ? reviews : reviews.filter(isEntityLive),
     libraryItems: isPreview() ? libraryItems : libraryItems.filter(isEntityLive)
   };
