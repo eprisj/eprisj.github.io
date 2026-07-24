@@ -3143,7 +3143,11 @@
       "content": [
         {
           "type": "text",
-          "content": "Start with the strongest scene, fact, or observation. Keep this first block tight and specific."
+          "content": "<span>Contemporary Polish design has arrived at a moment of profound, quiet maturity. To walk through the studios of today’s leading architects and furniture designers is to encounter a language of rigorous minimalism, tactile raw materials, and a deliberate structural honesty. Yet, this modern clarity is not a rejection of the past—it is the culmination of a century-long dialogue regarding what it means to create with a national soul.</span>"
+        },
+        {
+          "type": "text",
+          "content": ""
         },
         {
           "type": "image",
