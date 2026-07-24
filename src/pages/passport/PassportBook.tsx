@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link2, Check, X } from 'lucide-react';
-import { PassportPreview, PassportPage, buildMRZ } from './PassportPreview';
+import { PassportPreview } from './PassportPreview';
 import type { PassportFields } from './passportRender';
 
 const COVER_SRC = '/passport-assets/passport-cover.jpg';
 const ENDPAPER_SRC = '/passport-assets/passport-endpaper.jpg';
-const COVER_RATIO = 776 / 1100; // 0.705 — cropped cover art (matches the 88/125 data card)
+const COVER_RATIO = 776 / 1100; // 0.705 — cropped cover art (closed booklet stays its own portrait shape)
 
 // Slim share row shown under the book once it's open. Sharing only — no Edit on
 // the public verification page.
@@ -44,7 +44,6 @@ export function PassportBook({
   qrDataUrl: string | null;
 }) {
   const [open, setOpen] = useState(false);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [vw, setVw] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
   const [bookH, setBookH] = useState(560);
   const rightRef = useRef<HTMLDivElement>(null);
@@ -56,12 +55,13 @@ export function PassportBook({
   }, []);
 
   const isMobile = vw < 768;
-  // Width of the interactive passport card (drives the whole book size).
-  // The book is the whole point of this page, so let it be large; a bit of
-  // page scroll on short windows is fine and expected for a feature like this.
-  const cardW = isMobile ? Math.min(vw - 56, 330) : Math.min(560, Math.max(340, Math.round(vw * 0.34)));
+  // Width of the interactive passport card (drives the whole reveal size).
+  // The card is now one combined sheet (observations on top, data page below,
+  // matching the reference specimen layout) rather than a two-page spread, so
+  // both breakpoints use the same "cover flips away in place" mechanic.
+  const cardW = isMobile ? Math.min(vw - 56, 330) : Math.min(620, Math.max(420, Math.round(vw * 0.4)));
 
-  // Measure the passport card's natural height → the book's page height.
+  // Measure the passport card's natural height so the cover art can match it.
   useEffect(() => {
     const el = rightRef.current;
     if (!el) return;
@@ -72,36 +72,25 @@ export function PassportBook({
     return () => ro.disconnect();
   }, [cardW]);
 
-  // The page width must match the card's own width exactly — `bookH` measures
-  // the whole PassportPreview node, tabs included, so deriving pageW from it
-  // (via the cover-art ratio) made the page noticeably wider than the card
-  // sitting inside it, reading as a wide empty margin/frame around the card.
-  const pageW = cardW;
   const shareText = `Check out my official EPRIS Digital Member Passport! (${fields.givenNames} ${fields.surname})`;
   const url = typeof window !== 'undefined' ? window.location.href : '';
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (open || isMobile) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
-    const y = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
-    setTilt({ x: -y * 8, y: x * 8 });
-  };
-  const handleMouseLeave = () => setTilt({ x: 0, y: 0 });
-
-  // The cover panel: leather front + rendered left page back, hinged on its left (spine).
-  // `origin`/`openTransform` differ per layout (desktop swings left around the
-  // spine; mobile turns in place and fades so it never overflows sideways).
-  const coverPanel = (
-    w: number, h: number,
-    { origin, openTransform, fade }: { origin: string; openTransform: string; fade: boolean },
-  ) => {
-    const mrz = buildMRZ(fields, code);
-    return (
-      <div
-        className="pp-float"
-        style={{ width: w, height: h, transformStyle: 'preserve-3d', animationPlayState: open ? 'paused' : 'running' }}
-      >
+  return (
+    <div className="w-full flex flex-col items-center" style={{ overflowX: 'clip' }}>
+      {/* Cover fades away in place to reveal the combined card underneath — a
+          plain crossfade, no floating/bobbing loop and no 3D flip (both read
+          as jittery rather than premium at this size). */}
+      <div style={{ position: 'relative', width: cardW, minHeight: bookH, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        {/* Endpaper texture behind the revealed card */}
+        <img
+          src={ENDPAPER_SRC} alt="" aria-hidden
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: open ? 0.16 : 0, filter: 'blur(2px)', transition: 'opacity 0.5s ease 0.15s', borderRadius: 16, pointerEvents: 'none' }}
+        />
+        {/* The passport card (observations + data, one combined sheet) */}
+        <div ref={rightRef} style={{ width: cardW, opacity: open ? 1 : 0, transform: open ? 'scale(1)' : 'scale(0.98)', transition: 'opacity 0.45s ease 0.15s, transform 0.45s ease 0.15s', pointerEvents: open ? 'auto' : 'none' }}>
+          <PassportPreview fields={fields} photoUrl={photoUrl} code={code} qrDataUrl={qrDataUrl} />
+        </div>
+        {/* Cover fades out in place to reveal the card */}
         <div
           onClick={() => !open && setOpen(true)}
           role="button"
@@ -109,86 +98,26 @@ export function PassportBook({
           aria-label="Open passport"
           onKeyDown={(e) => { if (!open && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); setOpen(true); } }}
           style={{
-            position: 'absolute', inset: 0,
-            transformStyle: 'preserve-3d',
-            transformOrigin: origin,
-            transform: open ? openTransform : 'rotateY(0deg)',
-            opacity: fade && open ? 0 : 1,
-            transition: 'transform 1.05s cubic-bezier(0.6, 0.04, 0.24, 1), opacity 0.7s ease 0.35s',
+            position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)',
+            width: cardW, height: Math.round(cardW / COVER_RATIO), zIndex: 10,
+            opacity: open ? 0 : 1,
+            transition: 'opacity 0.4s ease',
             cursor: open ? 'default' : 'pointer',
             pointerEvents: open ? 'none' : 'auto',
           }}
         >
-          {/* Front — leather cover */}
-          <div style={{ position: 'absolute', inset: 0, backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', borderRadius: 8, overflow: 'hidden', boxShadow: '0 26px 50px rgba(80,26,44,0.28), inset -3px 0 8px rgba(0,0,0,0.18)' }}>
+          <div style={{ position: 'absolute', inset: 0, borderRadius: 8, overflow: 'hidden', boxShadow: '0 26px 50px rgba(80,26,44,0.28)' }}>
             <img src={COVER_SRC} alt="EPRIS passport cover" draggable={false} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             {!open && (
               <div style={{ position: 'absolute', left: 0, right: 0, bottom: 18, display: 'flex', justifyContent: 'center' }}>
-                <span className="pp-hint" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(247,242,234,0.85)', background: 'rgba(36,16,22,0.35)', backdropFilter: 'blur(2px)', padding: '6px 14px', borderRadius: 999, border: '1px solid rgba(247,242,234,0.2)' }}>
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(247,242,234,0.85)', background: 'rgba(36,16,22,0.35)', backdropFilter: 'blur(2px)', padding: '6px 14px', borderRadius: 999, border: '1px solid rgba(247,242,234,0.2)' }}>
                   Tap to open
                 </span>
               </div>
             )}
           </div>
-          {/* Back — actual observations page (inside front cover) */}
-          <div style={{ position: 'absolute', inset: 0, backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', transform: 'rotateY(180deg)', borderRadius: 8, overflow: 'hidden', boxShadow: 'inset 3px 0 10px rgba(0,0,0,0.14)', background: 'var(--pp-cream)' }}>
-            <PassportPage fields={fields} photoUrl={photoUrl} code={code} qrDataUrl={qrDataUrl} mrz={mrz} page2={true} />
-          </div>
         </div>
       </div>
-    );
-  };
-
-  return (
-    <div className="w-full flex flex-col items-center" style={{ overflowX: 'clip' }}>
-      <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes ppFloat { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-9px); } }
-        .pp-float { animation: ppFloat 4.5s ease-in-out infinite; will-change: transform; }
-        @media (prefers-reduced-motion: reduce) { .pp-float { animation: none; } }
-      `}} />
-
-      {isMobile ? (
-        /* ── Mobile: single card; the cover flips away to reveal it ── */
-        <div style={{ perspective: 1600 }}>
-          <div style={{ position: 'relative', width: cardW, minHeight: bookH, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            {/* Endpaper texture behind the revealed card */}
-            <img
-              src={ENDPAPER_SRC} alt="" aria-hidden
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: open ? 0.16 : 0, filter: 'blur(2px)', transition: 'opacity 0.8s ease 0.35s', borderRadius: 16, pointerEvents: 'none' }}
-            />
-            {/* The passport data card */}
-            <div ref={rightRef} style={{ width: cardW, opacity: open ? 1 : 0, transform: open ? 'scale(1)' : 'scale(0.96)', transition: 'opacity 0.7s ease 0.35s, transform 0.7s ease 0.35s', pointerEvents: open ? 'auto' : 'none' }}>
-              <PassportPreview fields={fields} photoUrl={photoUrl} code={code} qrDataUrl={qrDataUrl} />
-            </div>
-            {/* Cover turns in place and fades to reveal the card */}
-            <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: cardW, height: Math.round(cardW / COVER_RATIO), zIndex: 10, pointerEvents: open ? 'none' : 'auto' }}>
-              {coverPanel(cardW, Math.round(cardW / COVER_RATIO), { origin: 'center', openTransform: 'rotateY(-92deg)', fade: true })}
-            </div>
-          </div>
-        </div>
-      ) : (
-        /* ── Desktop: the cover swings open into a two-page spread ── */
-        <div style={{ perspective: 2400 }} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
-          <div
-            style={{
-              position: 'relative', width: pageW * 2, height: bookH,
-              transform: open ? 'translateX(0)' : `translateX(-25%) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
-              transition: (open || (tilt.x === 0 && tilt.y === 0)) ? 'transform 1.05s cubic-bezier(0.6, 0.04, 0.24, 1)' : 'transform 0.15s ease-out',
-            }}
-          >
-            {/* Right page — the data page (revealed under the cover) */}
-            <div style={{ position: 'absolute', left: pageW, top: 0, width: pageW, height: bookH, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--pp-cream)', borderRadius: 8, boxShadow: open ? 'inset 10px 0 24px -12px rgba(80,26,44,0.22)' : 'none' }}>
-              <div ref={rightRef} style={{ width: cardW }}>
-                <PassportPreview fields={fields} photoUrl={photoUrl} code={code} qrDataUrl={qrDataUrl} />
-              </div>
-            </div>
-            {/* Cover (front leather / back endpaper) hinged at the spine (x = pageW) */}
-            <div style={{ position: 'absolute', left: pageW, top: 0, zIndex: 10 }}>
-              {coverPanel(pageW, bookH, { origin: 'left center', openTransform: 'rotateY(-178deg)', fade: false })}
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Actions — appear once the passport is open */}
       <div
