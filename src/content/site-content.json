@@ -3223,7 +3223,11 @@
         },
         {
           "type": "header",
-          "content": ""
+          "content": "<span>Ala Savashevich</span>"
+        },
+        {
+          "type": "text",
+          "content": "Ala Savashevich’s handwoven works operate as a stark, intellectual subversion of the tactile warmth we typically associate with loom-based traditions. While her choice of technique—the deliberate, rhythmic interlacing of threads—is deeply embedded in the lineage of Polish folk weaving, she systematically strips away the decorative joy of the craft to expose its underlying structural logic."
         },
         {
           "type": "image",
