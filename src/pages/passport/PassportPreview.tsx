@@ -5,140 +5,28 @@ import { buildMRZ } from '../../lib/mrz';
 
 export { buildMRZ };
 
-// ── Rich Guilloche ────────────────────────────────────────────────────────────
-// Three wave families with visible warm amber+cool teal palette like in real passports
-function Guilloche() {
-  const pathsA: string[] = [];
-  const pathsB: string[] = [];
-  const pathsC: string[] = [];
-
-  for (let i = 0; i <= 46; i++) {
-    const y = (i / 46) * 100;
-    const a = 2.0 + Math.sin(i * 0.44) * 1.4;
-    const f = 0.06 + Math.sin(i * 0.25) * 0.02;
-    let d = '';
-    for (let x = 0; x <= 100; x += 0.45) {
-      const yy = y + a * Math.sin(x * f * Math.PI * 2 + i * 0.68);
-      d += x === 0 ? `M${x},${yy.toFixed(2)}` : `L${x},${yy.toFixed(2)}`;
-    }
-    pathsA.push(d);
-  }
-  for (let i = 0; i <= 32; i++) {
-    const x = (i / 32) * 100;
-    const a = 1.5 + Math.cos(i * 0.58) * 1.0;
-    const f = 0.055 + Math.cos(i * 0.35) * 0.015;
-    let d = '';
-    for (let y = 0; y <= 100; y += 0.55) {
-      const xx = x + a * Math.sin(y * f * Math.PI * 2 + i * 0.5);
-      d += y === 0 ? `M${xx.toFixed(2)},${y}` : `L${xx.toFixed(2)},${y}`;
-    }
-    pathsB.push(d);
-  }
-  for (let i = 0; i <= 22; i++) {
-    const x = (i / 22) * 100;
-    const a = 0.9 + Math.sin(i * 0.8) * 0.5;
-    const f = 0.1 + Math.sin(i * 0.45) * 0.025;
-    let d = '';
-    for (let y = 0; y <= 100; y += 0.65) {
-      const xx = x + a * Math.cos(y * f * Math.PI * 2 + i * 0.35);
-      d += y === 0 ? `M${xx.toFixed(2)},${y}` : `L${xx.toFixed(2)},${y}`;
-    }
-    pathsC.push(d);
-  }
-
-  return (
-    <svg viewBox="0 0 100 100" preserveAspectRatio="none"
-      className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden>
-      <defs>
-        <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#8B5A2B"/>
-          <stop offset="50%" stopColor="#3d5a8a"/>
-          <stop offset="100%" stopColor="#5a3870"/>
-        </linearGradient>
-        <linearGradient id="gB" x1="1" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#2d6e5a"/>
-          <stop offset="100%" stopColor="#6e3d2d"/>
-        </linearGradient>
-      </defs>
-      <g stroke="url(#gA)" strokeWidth="0.22" fill="none" opacity="0.16" vectorEffect="non-scaling-stroke">
-        {pathsA.map((d, i) => <path key={`a${i}`} d={d}/>)}
-      </g>
-      <g stroke="url(#gB)" strokeWidth="0.18" fill="none" opacity="0.1" vectorEffect="non-scaling-stroke">
-        {pathsB.map((d, i) => <path key={`b${i}`} d={d}/>)}
-      </g>
-      <g stroke="#4a1728" strokeWidth="0.12" fill="none" opacity="0.08" vectorEffect="non-scaling-stroke">
-        {pathsC.map((d, i) => <path key={`c${i}`} d={d}/>)}
-      </g>
-    </svg>
-  );
-}
-
 // ── EPRIS Identity Backdrop ───────────────────────────────────────────────────
 // Real passport data pages are dominated by one continuous piece of national
-// artwork (a mountain photo, a landscape, a landmark) bleeding across both
-// pages, with fine engraved guilloche lines as a secondary security texture —
-// not the other way around. This is EPRIS's equivalent: an oversized compass
-// rosette + map-contour rings (echoing the endpaper art), bled off the edges,
-// extremely faint, so it reads as "this document's own world" rather than
-// generic security wallpaper. Same component on both pages -> the spread feels
-// continuous, exactly like the real passport's mountain art carrying across.
+// artwork (a mountain photo, a landscape) bleeding across both pages, with
+// guilloche lines as a secondary security texture on top of it — not the other
+// way around. This is EPRIS's own commissioned art (an engraved-mountain scene
+// in the site's cream/burgundy/gold palette, with a tree emblem and a
+// perforation motif standing in for a national one). It has a soft built-in
+// alpha vignette (transparent top/bottom, opaque middle band), so it's laid
+// over the shared warm base color rather than a hard-edged rectangle. Same
+// image on both pages -> the open spread reads as one continuous scene, the
+// way the real passport's mountain photo carries across its two pages.
+const IDENTITY_ART_SRC = '/passport-assets/passport-page-bg.png';
 function IdentityBackdrop() {
-  const rings = [96, 82, 68, 54, 40, 27, 15];
-  const spokes = Array.from({ length: 32 }, (_, i) => i * (360 / 32));
-  const contours = Array.from({ length: 9 }, (_, i) => 100 - i * 11);
   return (
-    <svg viewBox="0 0 100 141" preserveAspectRatio="xMidYMid slice"
-      className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden>
-      {/* Soft pastel wash — EPRIS's answer to a "sky" gradient: warm gold to dusty rose */}
-      <defs>
-        <radialGradient id="idWash" cx="50%" cy="18%" r="95%">
-          <stop offset="0%" stopColor="#f6ecd6" />
-          <stop offset="45%" stopColor="#efe0c4" />
-          <stop offset="100%" stopColor="#e6d2c1" />
-        </radialGradient>
-      </defs>
-      <rect x="0" y="0" width="100" height="141" fill="url(#idWash)" />
-
-      {/* Map contour lines, oversized, bled off both edges */}
-      <g stroke="#4a1728" strokeWidth="0.15" fill="none" opacity="0.05">
-        {contours.map((r, i) => (
-          <ellipse key={i} cx="50" cy="55" rx={r * 1.05} ry={r * 0.98} />
-        ))}
-      </g>
-
-      {/* Oversized compass rosette, centered, bleeding past the frame */}
-      <g transform="translate(50, 58)" opacity="0.07">
-        <circle r="46" fill="none" stroke="#4a1728" strokeWidth="0.35" />
-        <circle r="38" fill="none" stroke="#b8956e" strokeWidth="0.25" />
-        {rings.slice(2).map((r, i) => (
-          <circle key={i} r={r * 0.42} fill="none" stroke="#4a1728" strokeWidth="0.18" />
-        ))}
-        {spokes.map((deg, i) => {
-          const rad = (deg * Math.PI) / 180;
-          const long = i % 4 === 0;
-          const r1 = long ? 12 : 30, r2 = 46;
-          return (
-            <line key={i}
-              x1={r1 * Math.cos(rad)} y1={r1 * Math.sin(rad)}
-              x2={r2 * Math.cos(rad)} y2={r2 * Math.sin(rad)}
-              stroke="#4a1728" strokeWidth={long ? 0.3 : 0.15} />
-          );
-        })}
-        {/* Cardinal star */}
-        <polygon points="0,-46 4,-8 0,0 -4,-8" fill="#4a1728" />
-        <polygon points="0,46 4,8 0,0 -4,8" fill="#4a1728" opacity="0.6" />
-        <polygon points="-46,0 -8,4 0,0 -8,-4" fill="#4a1728" opacity="0.6" />
-        <polygon points="46,0 8,4 0,0 8,-4" fill="#4a1728" opacity="0.6" />
-      </g>
-
-      {/* Fine engraved contour field filling the remaining space, like paper security tint */}
-      <g stroke="#8B5A2B" strokeWidth="0.1" fill="none" opacity="0.045">
-        {Array.from({ length: 24 }, (_, i) => {
-          const y = (i / 23) * 141;
-          return <path key={i} d={`M0,${y} Q25,${y - 4} 50,${y} T100,${y}`} />;
-        })}
-      </g>
-    </svg>
+    <img
+      src={IDENTITY_ART_SRC}
+      alt=""
+      aria-hidden
+      draggable={false}
+      className="absolute inset-0 w-full h-full pointer-events-none select-none"
+      style={{ objectFit: 'cover', objectPosition: 'center 42%' }}
+    />
   );
 }
 
@@ -237,10 +125,14 @@ function CulturalSeal() {
 }
 
 // ── Field ─────────────────────────────────────────────────────────────────────
+// Real passport data pages stack the field label in every one of the issuing
+// country's official languages (Switzerland: DE/FR/IT/RM). EPRIS's equivalent
+// is EN + Ukrainian — `label2` renders as a second, slightly smaller line
+// under the English label, matching that bilingual-caption convention.
 function F({
-  label, value, big, mono,
+  label, label2, value, big, mono,
 }: {
-  label: string; value: string; big?: boolean; mono?: boolean;
+  label: string; label2?: string; value: string; big?: boolean; mono?: boolean;
 }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -250,9 +142,12 @@ function F({
         color: '#4a1728',
         opacity: 0.65,
         fontStyle: 'italic',
-        lineHeight: 1,
+        lineHeight: 1.35,
         letterSpacing: '0.02em',
-      }}>{label}</span>
+      }}>
+        {label}
+        {label2 && <><br /><span style={{ opacity: 0.82 }}>{label2}</span></>}
+      </span>
       <span style={{
         fontFamily: big
           ? '"Playfair Display", "PT Serif", serif'
@@ -311,9 +206,11 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
       className="relative w-full select-none overflow-hidden"
       style={{
         aspectRatio: '88 / 125',
-        // Soft pastel base — the IdentityBackdrop's wash sits on top of this,
-        // both pages share it so the open spread reads as one continuous scene.
-        background: '#efe2ca',
+        // Base color sampled from the identity art's own opaque band — the art
+        // has a soft built-in alpha vignette (transparent top/bottom), so this
+        // is what shows through there, and both pages share it so the open
+        // spread reads as one continuous scene.
+        background: '#e1dbd7',
         containerType: 'inline-size',
         // Layered shadow like a real document
         boxShadow: '0 2px 6px rgba(74,23,40,0.12), 0 8px 28px rgba(74,23,40,0.16), 0 20px 60px rgba(74,23,40,0.12)',
@@ -322,8 +219,13 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
     >
       {/* EPRIS identity artwork — the passport's "world", bleeding both pages */}
       <IdentityBackdrop />
-      {/* Fine engraved security lines on top of the identity art */}
-      <Guilloche />
+      {/* Colored security tint — cool gold at top through to teal at the base,
+          the same cross-page gradient wash real specimen pages use over their
+          photo art, in EPRIS's own palette instead of a national flag's. */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: 'linear-gradient(180deg, rgba(120,140,160,0.16) 0%, rgba(184,149,110,0.14) 38%, rgba(184,149,110,0.08) 55%, rgba(74,120,120,0.16) 78%, rgba(74,120,120,0.22) 100%)',
+        mixBlendMode: 'multiply',
+      }} />
 
       {/* EPRIS watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden" aria-hidden>
@@ -407,9 +309,9 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
           display: 'grid', gridTemplateColumns: '1fr 2fr 4fr',
           gap: '3%', alignItems: 'start',
         }}>
-          <F label="Type" value="P" />
-          <F label="Code" value="EPR" />
-          <F label="Member No." value={code} mono />
+          <F label="Type" label2="Тип" value="P" />
+          <F label="Code" label2="Код" value="EPR" />
+          <F label="Member No." label2="Номер" value={code} mono />
         </div>
       )}
 
@@ -421,10 +323,68 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
         }}/>
       )}
 
+      {/* ── OBSERVATIONS PAGE: page number + perforation border ──────────────── */}
+      {page2 && (
+        <>
+          {/* Big page number + small colored security glyph, top-right — a real
+              specimen page's most immediately recognizable feature. */}
+          <div style={{
+            position: 'absolute', top: '9%', right: '4%',
+            display: 'flex', alignItems: 'center', gap: '3%',
+          }}>
+            <span style={{
+              fontFamily: '"PT Sans", sans-serif', fontWeight: 300,
+              fontSize: 'clamp(20px, 5.5cqw, 40px)', color: '#1a0b10', opacity: 0.75, lineHeight: 1,
+            }}>01</span>
+            <div style={{
+              width: 'clamp(16px, 4cqw, 30px)', height: 'clamp(16px, 4cqw, 30px)',
+              background: '#4a1728', opacity: 0.85,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              clipPath: 'polygon(20% 0,80% 0,100% 20%,100% 80%,80% 100%,20% 100%,0 80%,0 20%)',
+            }}>
+              <span style={{ color: '#f5eddc', fontFamily: 'serif', fontWeight: 700, fontSize: 'clamp(7px, 1.8cqw, 13px)' }}>EJ</span>
+            </div>
+          </div>
+          {/* Dotted perforation line with small square ticks — matches a
+              specimen page's border-punch convention, above the observations text. */}
+          <div className="absolute pointer-events-none" style={{
+            top: '8%', left: '4%', right: '4%', height: '1px',
+            backgroundImage: 'repeating-linear-gradient(to right, rgba(74,23,40,0.4) 0 1.5px, transparent 1.5px 7px)',
+          }}/>
+          <div className="absolute flex pointer-events-none" style={{ top: 'calc(8% - 3px)', left: '4%', right: '4%', justifyContent: 'space-between' }}>
+            {Array.from({ length: 6 }, (_, i) => (
+              <div key={i} style={{ width: 6, height: 6, border: '0.6px solid rgba(74,23,40,0.35)' }} />
+            ))}
+          </div>
+        </>
+      )}
+
+      {/* ── VERTICAL SIDE TEXT (outer edge of each page) ──────────────────────── */}
+      <div className="absolute pointer-events-none overflow-hidden" style={{
+        top: '10%', bottom: '10%',
+        [page2 ? 'left' : 'right']: '1%',
+        width: 'clamp(8px, 1.8cqw, 14px)',
+      } as CSSProperties}>
+        <div style={{
+          position: 'absolute', top: '50%', left: '50%',
+          transform: 'translate(-50%,-50%) rotate(90deg)',
+          transformOrigin: 'center',
+          whiteSpace: 'nowrap',
+          fontFamily: '"PT Sans", sans-serif',
+          fontSize: 'clamp(5px, 1.1cqw, 8px)',
+          letterSpacing: '0.35em',
+          color: '#4a1728', opacity: 0.28,
+        }}>
+          {page2
+            ? 'ART · DESIGN · TRAVEL · CULTURE · TASTE · STUDIO · '.repeat(3)
+            : 'EPRIS · EPRIS · EPRIS · EPRIS · EPRIS · EPRIS · '.repeat(3)}
+        </div>
+      </div>
+
       {/* Light overlay on content area for legibility */}
       <div style={{
         position: 'absolute',
-        top: page2 ? '8.5%' : '16.5%',
+        top: page2 ? '14%' : '16.5%',
         left: '3%', right: '3%',
         bottom: page2 ? '5%' : '26%',
         background: 'rgba(245,237,220,0.38)',
@@ -434,7 +394,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
       {/* ── MAIN CONTENT AREA ─────────────────────────────────────────────────── */}
       <div style={{
         position: 'absolute',
-        top: page2 ? '8.5%' : '16.5%',
+        top: page2 ? '14%' : '16.5%',
         left: '3%', right: '3%',
         bottom: page2 ? '5%' : '26%',
         display: 'flex', gap: '3.5%',
@@ -519,45 +479,45 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
         }}>
           {!page2 ? (
             <>
-              <F label="Surname" value={fields.surname.toUpperCase()} big />
-              <F label="Given Names" value={fields.givenNames.toUpperCase()} big />
-              <F label="Nationality" value={`EPRIS · ${fields.country || '—'}`.toUpperCase()} />
+              <F label="Surname" label2="Прізвище" value={fields.surname.toUpperCase()} big />
+              <F label="Given Names" label2="Ім'я" value={fields.givenNames.toUpperCase()} big />
+              <F label="Nationality" label2="Громадянство" value={`EPRIS · ${fields.country || '—'}`.toUpperCase()} />
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
-                <F label="Date of birth" value={fields.dob || '—'} />
-                <F label="Record No." value={code} mono />
+                <F label="Date of birth" label2="Дата народження" value={fields.dob || '—'} />
+                <F label="Record No." label2="Номер запису" value={code} mono />
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
-                <F label="Sex" value={(fields.sex || 'X').toUpperCase()} />
-                <F label="City" value={fields.city || '—'} />
+                <F label="Sex" label2="Стать" value={(fields.sex || 'X').toUpperCase()} />
+                <F label="City" label2="Місто" value={fields.city || '—'} />
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
-                <F label="Date of issue" value={fields.issueDate || '—'} />
-                <F label="Authority" value="EPRIS J." />
+                <F label="Date of issue" label2="Дата видачі" value={fields.issueDate || '—'} />
+                <F label="Authority" label2="Орган видачі" value="EPRIS J." />
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
-                <F label="Date of expiry" value={fields.expiryDate || '—'} />
+                <F label="Date of expiry" label2="Дійсний до" value={fields.expiryDate || '—'} />
                 <div>
                   <div style={{
                     fontFamily: '"PT Sans",sans-serif',
                     fontSize: 'clamp(7px, 1.4cqw, 11px)', color: '#4a1728', opacity: 0.65,
-                    fontStyle: 'italic', lineHeight: 1, marginBottom: 4,
-                  }}>Holder's signature</div>
+                    fontStyle: 'italic', lineHeight: 1.35, marginBottom: 4,
+                  }}>Holder's signature<br /><span style={{ opacity: 0.82 }}>Підпис власника</span></div>
                   <div style={{ borderBottom: '0.8px solid #b8956e', width: '82%', height: 'clamp(8px, 1.8cqh, 18px)' }}/>
                 </div>
               </div>
-              <F label="Professional Field" value={(fields.field || '—').toUpperCase()} />
+              <F label="Professional Field" label2="Фахова галузь" value={(fields.field || '—').toUpperCase()} />
               <VerificationStamp />
             </>
           ) : (
             <>
-              <F label="Personal Motto" value={fields.motto || '—'} big />
-              <F label="Website · ORCID · Social" value={fields.link || '—'} />
+              <F label="Personal Motto" label2="Особисте гасло" value={fields.motto || '—'} big />
+              <F label="Website · ORCID · Social" label2="Сайт · ORCID · Соцмережі" value={fields.link || '—'} />
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
-                <F label="Membership Type" value={fields.membershipType || '—'} />
-                <F label="Verification" value={code} mono />
+                <F label="Membership Type" label2="Тип членства" value={fields.membershipType || '—'} />
+                <F label="Verification" label2="Верифікація" value={code} mono />
               </div>
-              <F label="Digital Signature" value={generateSignatureString(code, fields)} mono />
-              <F label="Scan to Verify" value={`eprisjournal.com/passport/${code}`} />
+              <F label="Digital Signature" label2="Цифровий підпис" value={generateSignatureString(code, fields)} mono />
+              <F label="Scan to Verify" label2="Скануйте для перевірки" value={`eprisjournal.com/passport/${code}`} />
 
               {/* Official observations — the required bilingual notice that this
                   is a cultural-membership document, not a travel/ID document. */}
@@ -645,49 +605,41 @@ export function PassportPage({ fields, photoUrl, code, mrz, page2, qrDataUrl }: 
         </>
       )}
 
-      {/* ── MRZ ZONE ──────────────────────────────────────────────────────────── */}
+      {/* ── MRZ ZONE ── printed directly on the page art, no boxed background,
+          matching a real specimen page's convention (bold OCR-B on the raw
+          document surface, not on a white patch). ──────────────────────── */}
       {!page2 && (
         <div style={{
           position: 'absolute',
-          bottom: '1.5%', left: '3%', right: '3%',
+          bottom: '2%', left: '3%', right: '3%',
         }}>
-          {/* MRZ label */}
+          {/* Faint scrim behind the text only, for contrast against the art —
+              not a boxed background, just enough to keep OCR-B readable. */}
+          <div className="absolute pointer-events-none" style={{
+            inset: '-6% -2%',
+            background: 'linear-gradient(180deg, transparent 0%, rgba(245,237,220,0.55) 30%, rgba(245,237,220,0.55) 100%)',
+          }}/>
           <div style={{
-            fontFamily: '"PT Sans", sans-serif',
-            fontSize: 'clamp(5px, 1cqw, 8px)',
-            color: '#4a1728', opacity: 0.5,
-            letterSpacing: '0.15em',
-            marginBottom: '0.8%',
-            textTransform: 'uppercase',
-          }}>Machine Readable Zone</div>
-          {/* MRZ background */}
-          <div style={{
-            background: 'rgba(255,255,255,0.85)',
-            border: '0.6px solid rgba(74,23,40,0.2)',
-            padding: '2% 2%',
-            boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.05)',
+            position: 'relative',
+            display: 'flex', justifyContent: 'space-between',
+            fontFamily: '"OCR-B 10 BT", "OCR-B", "Courier New", monospace',
+            fontSize: 'clamp(10px, 2.1cqw, 19px)',
+            fontWeight: 'bold',
+            color: '#1a0b10',
+            lineHeight: 1.25,
           }}>
-            <div style={{
-              display: 'flex', justifyContent: 'space-between',
-              fontFamily: '"OCR-B 10 BT", "OCR-B", "Courier New", monospace',
-              fontSize: 'clamp(10px, 2cqw, 18px)',
-              fontWeight: 'bold',
-              color: '#1a0b10', opacity: 0.9,
-              lineHeight: 1.2,
-            }}>
-              {mrz[0].split('').map((c, i) => <span key={i}>{c}</span>)}
-            </div>
-            <div style={{
-              display: 'flex', justifyContent: 'space-between',
-              fontFamily: '"OCR-B 10 BT", "OCR-B", "Courier New", monospace',
-              fontSize: 'clamp(10px, 2cqw, 18px)',
-              fontWeight: 'bold',
-              color: '#1a0b10', opacity: 0.9,
-              lineHeight: 1.2,
-              marginTop: '1%',
-            }}>
-              {mrz[1].split('').map((c, i) => <span key={i}>{c}</span>)}
-            </div>
+            {mrz[0].split('').map((c, i) => <span key={i}>{c}</span>)}
+          </div>
+          <div style={{
+            display: 'flex', justifyContent: 'space-between',
+            fontFamily: '"OCR-B 10 BT", "OCR-B", "Courier New", monospace',
+            fontSize: 'clamp(10px, 2.1cqw, 19px)',
+            fontWeight: 'bold',
+            color: '#1a0b10',
+            lineHeight: 1.25,
+            marginTop: '1.5%',
+          }}>
+            {mrz[1].split('').map((c, i) => <span key={i}>{c}</span>)}
           </div>
         </div>
       )}
