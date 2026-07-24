@@ -69,14 +69,14 @@ function F({
   label: string; label2?: string; value: string; big?: boolean; mono?: boolean;
 }) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
       <span style={{
         fontFamily: '"PT Sans", sans-serif',
-        fontSize: 'clamp(7px, 1.3cqw, 10px)',
+        fontSize: 'clamp(6px, 1.3cqw, 10px)',
         color: '#4a1728',
         opacity: 0.65,
         fontStyle: 'italic',
-        lineHeight: 1.25,
+        lineHeight: 1.1,
         letterSpacing: '0.02em',
       }}>
         {label}
@@ -89,11 +89,11 @@ function F({
             ? '"Courier New", monospace'
             : '"Playfair Display", "PT Serif", serif',
         fontSize: big
-          ? 'clamp(13px, 2.6cqw, 22px)'
-          : 'clamp(9.5px, 1.9cqw, 15px)',
+          ? 'clamp(11px, 2.6cqw, 22px)'
+          : 'clamp(8px, 1.9cqw, 15px)',
         fontWeight: big ? 700 : 600,
         color: '#1a0b10',
-        lineHeight: 1.05,
+        lineHeight: 1.02,
         letterSpacing: big ? '0.01em' : mono ? '0.04em' : '0.005em',
       }}>{value || '—'}</span>
     </div>
@@ -318,10 +318,10 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
               <F label="Date of expiry" label2="Data di scadenza" value={fields.expiryDate || '—'} />
               <div>
-                <div style={{ fontFamily: '"PT Sans",sans-serif', fontSize: 'clamp(6.5px, 1.25cqw, 10px)', color: '#4a1728', opacity: 0.65, fontStyle: 'italic', lineHeight: 1.3, marginBottom: 4 }}>
+                <div style={{ fontFamily: '"PT Sans",sans-serif', fontSize: 'clamp(5.5px, 1.25cqw, 10px)', color: '#4a1728', opacity: 0.65, fontStyle: 'italic', lineHeight: 1.1, marginBottom: 2 }}>
                   Holder's signature<br /><span style={{ opacity: 0.82 }}>Firma del titolare</span>
                 </div>
-                <div style={{ borderBottom: '0.8px solid #b8956e', width: '82%', height: 'clamp(7px, 1.6cqh, 15px)' }}/>
+                <div style={{ borderBottom: '0.8px solid #b8956e', width: '82%', height: 'clamp(4px, 1.6cqh, 15px)' }}/>
               </div>
             </div>
             <F label="Professional Field" label2="Campo professionale" value={(fields.field || '—').toUpperCase()} />
