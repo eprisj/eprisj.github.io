@@ -3308,7 +3308,11 @@
         },
         {
           "type": "gallery",
-          "content": [],
+          "content": [
+            "https://api.eprisjournal.com/uploads/mrz3l9r8jz5e93.jpg",
+            "https://api.eprisjournal.com/uploads/mrz3l9j246bffk.webp",
+            "https://api.eprisjournal.com/uploads/mrz3l9nstnn9yx.jpg"
+          ],
           "caption": ""
         },
         {
