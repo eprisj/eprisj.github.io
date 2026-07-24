@@ -3273,47 +3273,6 @@
         {
           "type": "text",
           "content": "This approach aligns with the broader trajectory of modern Polish design, which seeks to transcend mere decoration by imbuing functional objects with narrative depth and structural integrity. Much like the contemporary architects who redefine national identity through material honesty, Rusak’s work is driven by the conviction that the objects we cherish should transcend their utilitarian origins to represent the complexities of our time. Through his precise, artisanal processes, he transforms raw organic matter into enduring statements, proving that the most resonant design is that which acknowledges the fleeting, organic story of its origins while maintaining a disciplined, architectural authority.<br>"
-        },
-        {
-          "type": "image",
-          "content": "new-editorial-story-2",
-          "caption": "Lead image",
-          "align": "center"
-        },
-        {
-          "type": "quote",
-          "content": "Add a line worth remembering here."
-        },
-        {
-          "type": "note",
-          "content": "Editorial note, source context, or a short aside."
-        },
-        {
-          "type": "checklist",
-          "content": {
-            "items": [
-              "Context",
-              "Key detail",
-              "Human angle",
-              "What changes next"
-            ]
-          }
-        },
-        {
-          "type": "poll",
-          "content": {
-            "question": "What should we explore next?",
-            "options": [
-              {
-                "label": "More context",
-                "votes": 0
-              },
-              {
-                "label": "Practical guide",
-                "votes": 0
-              }
-            ]
-          }
         }
       ]
     }
