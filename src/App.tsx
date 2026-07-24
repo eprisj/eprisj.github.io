@@ -1575,15 +1575,23 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                             const gallerySource = resolveMediaSource(img, 400, 400);
                             if (!gallerySource) return null;
 
-                            const altText = (Array.isArray(block.alts) && block.alts[i]?.trim()) || `Gallery image ${i + 1}`;
+                            const rawAlt = Array.isArray(block.alts) ? block.alts[i]?.trim() : '';
+                            const altText = rawAlt || `Gallery image ${i + 1}`;
                             return (
-                              <div key={i} className="aspect-square bg-[#E8DED5] overflow-hidden cursor-pointer" onClick={() => onImageClick(gallerySource, altText)}>
-                                <img
-                                  src={gallerySource}
-                                  alt={altText}
-                                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                                  referrerPolicy="no-referrer"
-                                />
+                              <div key={i} className="flex flex-col gap-1.5">
+                                <div className="aspect-square bg-[#E8DED5] overflow-hidden cursor-pointer" onClick={() => onImageClick(gallerySource, altText)}>
+                                  <img
+                                    src={gallerySource}
+                                    alt={altText}
+                                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                                    referrerPolicy="no-referrer"
+                                  />
+                                </div>
+                                {rawAlt && (
+                                  <p className="font-mono text-[11px] leading-snug text-[rgb(var(--c-accent-rgb)_/_0.55)] px-0.5">
+                                    {rawAlt}
+                                  </p>
+                                )}
                               </div>
                             );
                           })}

@@ -10706,7 +10706,7 @@ async function flushModernEditor() {
         inner += `<div class="wys-gal-item${_galSelected.has(key) ? ' is-picked' : ''}" draggable="true" data-gal-i="${i}" data-gal-gi="${gi}">${s ? `<img src="${esc(s)}" referrerpolicy="no-referrer" alt="">` : ''}
           <label class="wys-gal-pick" title="Выбрать"><input type="checkbox" data-wys-act="gal-select-toggle" data-i="${i}" data-gi="${gi}" ${_galSelected.has(key) ? 'checked' : ''}></label>
           <button class="wys-gal-x" data-wys-act="gal-del" data-i="${i}" data-gi="${gi}" title="Удалить">×</button>
-          <button class="wys-gal-alt${hasAlt ? ' has-alt' : ''}" data-wys-act="gal-alt" data-i="${i}" data-gi="${gi}" title="${hasAlt ? esc(alts[gi]) : 'Добавить описание фото (для SEO и незрячих пользователей)'}">ℹ</button>
+          <button class="wys-gal-alt${hasAlt ? ' has-alt' : ''}" data-wys-act="gal-alt" data-i="${i}" data-gi="${gi}" title="${hasAlt ? esc(alts[gi]) : 'Подпись к этому фото — показывается на сайте под снимком, в лайтбоксе, и как alt-текст (SEO/для незрячих)'}">ℹ</button>
           ${gi > 0 ? `<button class="wys-gal-move wys-gal-move-l" data-wys-act="gal-move" data-i="${i}" data-gi="${gi}" data-dir="-1" title="Переместить влево">‹</button>` : ''}
           ${gi < items.length - 1 ? `<button class="wys-gal-move wys-gal-move-r" data-wys-act="gal-move" data-i="${i}" data-gi="${gi}" data-dir="1" title="Переместить вправо">›</button>` : ''}
         </div>`;
@@ -10847,7 +10847,7 @@ async function flushModernEditor() {
       const b = _model.content[i];
       if (!b) return;
       if (!Array.isArray(b.alts)) b.alts = [];
-      const v = prompt('Описание фото (alt-текст — для поисковиков и незрячих пользователей):', b.alts[gi] || '');
+      const v = prompt('Подпись к этому фото — покажется на сайте под снимком и в лайтбоксе (а также как alt-текст для поисковиков и незрячих):', b.alts[gi] || '');
       if (v === null) return; // cancelled
       b.alts[gi] = v.trim();
       render(); commit();
