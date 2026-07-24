@@ -76,11 +76,12 @@ function F({
         color: '#4a1728',
         opacity: 0.65,
         fontStyle: 'italic',
-        lineHeight: 1.1,
+        lineHeight: 1.15,
         letterSpacing: '0.02em',
+        whiteSpace: 'nowrap',
       }}>
         {label}
-        {label2 && <><br /><span style={{ opacity: 0.82 }}>{label2}</span></>}
+        {label2 && <span style={{ opacity: 0.82 }}> &middot; {label2}</span>}
       </span>
       <span style={{
         fontFamily: big
@@ -318,8 +319,8 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
               <F label="Date of expiry" label2="Data di scadenza" value={fields.expiryDate || '—'} />
               <div>
-                <div style={{ fontFamily: '"PT Sans",sans-serif', fontSize: 'clamp(5.5px, 1.25cqw, 10px)', color: '#4a1728', opacity: 0.65, fontStyle: 'italic', lineHeight: 1.1, marginBottom: 2 }}>
-                  Holder's signature<br /><span style={{ opacity: 0.82 }}>Firma del titolare</span>
+                <div style={{ fontFamily: '"PT Sans",sans-serif', fontSize: 'clamp(5.5px, 1.25cqw, 10px)', color: '#4a1728', opacity: 0.65, fontStyle: 'italic', lineHeight: 1.1, marginBottom: 2, whiteSpace: 'nowrap' }}>
+                  Holder's signature <span style={{ opacity: 0.82 }}>&middot; Firma del titolare</span>
                 </div>
                 <div style={{ borderBottom: '0.8px solid #b8956e', width: '82%', height: 'clamp(4px, 1.6cqh, 15px)' }}/>
               </div>
