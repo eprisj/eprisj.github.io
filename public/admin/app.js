@@ -1438,7 +1438,15 @@ function validateEntityShape(section, entity) {
   if (!entity || typeof entity !== 'object' || Array.isArray(entity)) return 'entity must be an object';
   const check = (spec, required) => {
     for (const [field, kind] of Object.entries(spec)) {
-      const present = Object.prototype.hasOwnProperty.call(entity, field);
+      // hasOwnProperty alone isn't enough: buildEntryFromVisualForm spreads
+      // `{ ...next, imageUrl: getOptionalString(...) }`, and an *unset*
+      // optional string produces `undefined` — object-spread still creates
+      // the key, so `hasOwnProperty` reports "present" for a field the user
+      // simply left blank. That made every empty optional field (imageUrl,
+      // link, verdict, meta, date...) fail its type check and silently block
+      // the save with an error the calling code never surfaced anywhere
+      // visible. Treat undefined/null the same as "not present" here.
+      const present = Object.prototype.hasOwnProperty.call(entity, field) && entity[field] != null;
       if (!present) { if (required) return `missing field: ${field}`; continue; }
       const v = entity[field];
       if (kind === 'id' && !(Number.isInteger(v) && v > 0)) return `${field} must be a positive integer`;
