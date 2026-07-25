@@ -3421,27 +3421,6 @@
         "Service lacks Mediterranean warmth",
         "Limited dining options"
       ]
-    },
-    {
-      "id": 4,
-      "title": "Test Review — CRUD check",
-      "subject": "New review",
-      "rating": 0,
-      "content": "Начните с первого впечатления — атмосфера, сервис, для кого это место. Затем конкретные детали, подтверждающие вывод.",
-      "author": "EPRIS Journal",
-      "category": "Food & Stay",
-      "verdict": "Одна чёткая строка — стоит ли идти.",
-      "pros": [
-        "Локация",
-        "Атмосфера",
-        "Соотношение цены и качества"
-      ],
-      "cons": [
-        "Один честный минус"
-      ],
-      "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
-      "date": "Jul 25, 2026",
-      "updatedAt": "2026-07-25T08:30:15.932Z"
     }
   ],
   "libraryItems": [
