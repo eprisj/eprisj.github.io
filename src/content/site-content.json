@@ -3421,15 +3421,6 @@
         "Service lacks Mediterranean warmth",
         "Limited dining options"
       ]
-    },
-    {
-      "id": 999,
-      "title": "Manual curl test",
-      "subject": "Manual curl test",
-      "rating": 5,
-      "content": "test",
-      "author": "test",
-      "updatedAt": "2026-07-25T08:27:36.281Z"
     }
   ],
   "libraryItems": [
