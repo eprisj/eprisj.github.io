@@ -1,7 +1,7 @@
 // ── ICAO 9303 TD3 Machine Readable Zone ──────────────────────────────────────
 // Single source of truth for the passport MRZ, shared by PassportPreview
-// (on-screen), PassportCardPDF (react-pdf export) and passportRender (canvas
-// PNG export) — previously each of those triplicated the same buggy generator.
+// (on-screen, and reused by passportRender for the PNG/PDF export) —
+// previously each render path triplicated the same buggy generator.
 //
 // TD3 (passport booklet) is two 44-character lines:
 //   Line 1: P< + issuing-state code (3) + name field (39) = 44

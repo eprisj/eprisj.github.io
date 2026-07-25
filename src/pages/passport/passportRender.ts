@@ -19,22 +19,31 @@ export interface PassportFields {
   sex: string;
 }
 
-// Portrait passport page: 88mm × 125mm at ~200dpi → 693×984 px per page
-// Export = two pages side by side (for print/download)
-const PAGE_W = 693;
-const PAGE_H = 984;
-const SPINE = 24;
-export const EXPORT_W = PAGE_W * 2 + SPINE;
-export const EXPORT_H = PAGE_H;
+// Single combined sheet (observations on top, data page below), matching the
+// on-screen PassportPage in PassportPreview.tsx — this used to be an entirely
+// separate, hand-drawn "vintage passport book" (guilloche patterns, a 2-page
+// spread with a spine) that had drifted far from that modern design. Ported
+// to canvas rather than photographing the live DOM (tried html-to-image:
+// its automatic @font-face inlining hung for a minute-plus on this page's
+// ~20 Google Fonts weights, and re-fetching the cross-origin uploaded photo
+// to embed it hit a 404/CORS dead end) — canvas drawing has neither problem
+// since cross-origin images are only ever drawn via loadImage()'s blob-URL
+// fetch below, which never taints the canvas.
+const W = 1200;
+const H = 1600; // 3:4, matches PassportPage's aspectRatio
+export const EXPORT_W = W;
+export const EXPORT_H = H;
 
 const C = {
-  cream:    '#f4eadb',
-  creamMid: '#ece0c6',
-  creamDeep:'#e4d5b5',
+  bg: '#e1dbd7',
   burgundy: '#4a1728',
-  sand:     '#b8956e',
-  ink:      '#1a0b10',
+  burgundyDark: '#36111d',
+  sand: '#b8956e',
+  ink: '#1a0b10',
+  cream: '#f5eddc',
 };
+
+const IDENTITY_ART_SRC = '/passport-assets/passport-page-bg.png';
 
 function loadImage(src: string): Promise<HTMLImageElement> {
   return new Promise(async (resolve, reject) => {
@@ -56,332 +65,86 @@ function loadImage(src: string): Promise<HTMLImageElement> {
   });
 }
 
-// MRZ generation lives in ../../lib/mrz (single shared ICAO 9303 implementation).
-
-// ── Guilloche ─────────────────────────────────────────────────────────────────
-function drawGuilloche(ctx: CanvasRenderingContext2D, ox: number, w: number, h: number) {
+function drawCover(ctx: CanvasRenderingContext2D, img: HTMLImageElement, x: number, y: number, w: number, h: number, focusY = 0.5) {
+  const scale = Math.max(w / img.width, h / img.height);
+  const dw = img.width * scale, dh = img.height * scale;
+  const dx = x + (w - dw) / 2;
+  const dy = y + (h - dh) * focusY;
   ctx.save();
-  ctx.lineWidth = 0.7;
-
-  // Family A — horizontal
-  ctx.globalAlpha = 0.13;
-  ctx.strokeStyle = '#3d5a8a';
-  for (let i = 0; i <= 52; i++) {
-    const yBase = (i / 52) * h, amp = 4 + Math.sin(i * 0.47) * 3;
-    const freq = (0.008 + Math.sin(i * 0.27) * 0.003) * Math.PI * 2, ph = i * 0.72;
-    ctx.beginPath();
-    for (let x = 0; x <= w; x += 2) {
-      const y = yBase + amp * Math.sin(x * freq + ph);
-      x === 0 ? ctx.moveTo(ox + x, y) : ctx.lineTo(ox + x, y);
-    }
-    ctx.stroke();
-  }
-
-  // Family B — diagonal
-  ctx.globalAlpha = 0.09;
-  ctx.strokeStyle = '#5a7a3a';
-  for (let i = 0; i <= 34; i++) {
-    const xBase = (i / 34) * w, amp = 3.5 + Math.cos(i * 0.6) * 2.5;
-    const freq = (0.007 + Math.cos(i * 0.37) * 0.002) * Math.PI * 2, ph = i * 0.55;
-    ctx.beginPath();
-    for (let y = 0; y <= h; y += 2) {
-      const x = xBase + amp * Math.sin(y * freq + ph);
-      y === 0 ? ctx.moveTo(ox + x, y) : ctx.lineTo(ox + x, y);
-    }
-    ctx.stroke();
-  }
-
+  ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip();
+  ctx.drawImage(img, dx, dy, dw, dh);
   ctx.restore();
 }
 
-// ── Watermark ─────────────────────────────────────────────────────────────────
-function drawWatermark(ctx: CanvasRenderingContext2D, cx: number, cy: number) {
-  ctx.save();
-  ctx.globalAlpha = 0.04;
-  ctx.fillStyle = C.burgundy;
-  ctx.font = `900 ${Math.round(PAGE_W * 0.38)}px serif`;
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.translate(cx, cy);
-  ctx.rotate(-0.3);
-  ctx.fillText('EPRIS', 0, 0);
-  ctx.restore();
-}
-
-// ── Microtext ─────────────────────────────────────────────────────────────────
-function drawMicrotext(ctx: CanvasRenderingContext2D, ox: number, w: number, y: number) {
-  const text = 'EPRIS JOURNAL · REVEAL THE INVISIBLE · ';
-  ctx.save();
-  ctx.font = '8px monospace'; ctx.fillStyle = C.burgundy; ctx.globalAlpha = 0.15;
-  const unit = ctx.measureText(text).width;
-  for (let x = 0; x < w; x += unit) ctx.fillText(text, ox + x, y);
-  ctx.restore();
-}
-
-// ── Emblem ────────────────────────────────────────────────────────────────────
-function drawEmblem(ctx: CanvasRenderingContext2D, cx: number, cy: number, r: number) {
-  ctx.save();
-  ctx.strokeStyle = C.burgundy;
-  // Outer ring
-  ctx.globalAlpha = 0.6; ctx.lineWidth = 1.5;
-  ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI*2); ctx.stroke();
-  ctx.globalAlpha = 0.32; ctx.lineWidth = 0.8;
-  ctx.beginPath(); ctx.arc(cx, cy, r*0.8, 0, Math.PI*2); ctx.stroke();
-  // Star
-  ctx.globalAlpha = 0.42;
-  const pts = Array.from({length:8}, (_,i) => {
-    const a=(i*45-90)*Math.PI/180, ro=i%2===0?r*0.9:r*0.55;
-    return [cx+ro*Math.cos(a), cy+ro*Math.sin(a)];
-  });
-  ctx.beginPath();
-  pts.forEach(([x,y],i)=> i===0?ctx.moveTo(x,y):ctx.lineTo(x,y));
-  ctx.closePath(); ctx.lineWidth=0.7; ctx.stroke();
-  // Diamond
-  ctx.globalAlpha=0.78; ctx.lineWidth=1.2;
-  ctx.beginPath();
-  ctx.moveTo(cx,cy-r*0.5); ctx.lineTo(cx+r*0.3,cy);
-  ctx.lineTo(cx,cy+r*0.5); ctx.lineTo(cx-r*0.3,cy);
-  ctx.closePath();
-  ctx.fillStyle=C.cream; ctx.fill();
-  ctx.strokeStyle=C.burgundy; ctx.stroke();
-  // Center
-  ctx.globalAlpha=0.7; ctx.fillStyle=C.burgundy;
-  ctx.beginPath(); ctx.arc(cx,cy,r*0.1,0,Math.PI*2); ctx.fill();
-  ctx.restore();
-}
-
-// ── Field helper ──────────────────────────────────────────────────────────────
+// ── Field (bilingual label + value, mirrors <F/> in PassportPreview) ─────────
 function fld(
   ctx: CanvasRenderingContext2D,
-  x: number, y: number,
-  label: string, value: string,
-  valSize: number, bold = false, mono = false,
+  x: number, y: number, maxW: number,
+  label: string, label2: string | undefined, value: string,
+  opts: { big?: boolean; mono?: boolean } = {},
 ) {
   ctx.save();
-  ctx.fillStyle = 'rgba(74,23,40,0.55)';
-  ctx.font = `italic 11px "PT Sans", sans-serif`;
-  ctx.fillText(label, x, y);
+  ctx.textAlign = 'left';
+  ctx.fillStyle = C.burgundy; ctx.globalAlpha = 0.65;
+  ctx.font = `italic 400 15px "PT Sans", sans-serif`;
+  const labelText = label2 ? `${label} · ${label2}` : label;
+  ctx.fillText(labelText, x, y, maxW);
+  ctx.globalAlpha = 1;
   ctx.fillStyle = C.ink;
-  ctx.font = bold
-    ? `700 ${valSize}px "Playfair Display", serif`
-    : mono
-      ? `500 ${valSize}px "Courier New", monospace`
-      : `600 ${valSize}px "PT Serif", serif`;
-  ctx.fillText(value || '—', x, y + valSize + 3);
+  const size = opts.big ? 30 : 19;
+  ctx.font = opts.mono
+    ? `500 ${size}px "Courier New", monospace`
+    : `${opts.big ? 700 : 600} ${size}px "Playfair Display", "PT Serif", serif`;
+  ctx.fillText(value || '—', x, y + size + 4, maxW);
   ctx.restore();
 }
 
-// ── Draw one passport page ────────────────────────────────────────────────────
-async function drawPage(
-  ctx: CanvasRenderingContext2D,
-  ox: number,
-  f: PassportFields,
-  photoDataUrl: string | null,
-  code: string,
-  page2: boolean,
-  qrDataUrl?: string,
-) {
-  const W = PAGE_W, H = PAGE_H;
-
-  // Background
-  const bg = ctx.createLinearGradient(ox, 0, ox + W, H);
-  bg.addColorStop(0, C.cream); bg.addColorStop(0.5, C.creamMid); bg.addColorStop(1, C.creamDeep);
-  ctx.fillStyle = bg; ctx.fillRect(ox, 0, W, H);
-
-  drawGuilloche(ctx, ox, W, H);
-  drawWatermark(ctx, ox + W/2, H/2);
-
-  // Double frame
-  ctx.strokeStyle = C.burgundy; ctx.lineWidth = 4; ctx.globalAlpha = 0.72;
-  ctx.strokeRect(ox+10, 10, W-20, H-20);
-  ctx.strokeStyle = C.sand; ctx.lineWidth = 1.2; ctx.globalAlpha = 0.5;
-  ctx.strokeRect(ox+17, 17, W-34, H-34);
-  ctx.globalAlpha = 1;
-
-  // Microtext
-  drawMicrotext(ctx, ox+24, W-48, 30);
-
-  const PAD = 26;
-
-  // ── Header ────────────────────────────────────────────────────────────────
-  const emblR = 18;
-  drawEmblem(ctx, ox + PAD + emblR + 2, 60, emblR);
-  drawEmblem(ctx, ox + W - PAD - emblR - 2, 60, emblR);
-
-  ctx.fillStyle = C.burgundy;
-  ctx.font = `700 ${page2?22:26}px "Playfair Display", serif`;
-  ctx.textAlign = 'center';
-  ctx.fillText(page2 ? 'OBSERVATIONS' : 'EPRIS JOURNAL', ox + W/2, 58);
-  ctx.fillStyle = 'rgba(74,23,40,0.55)';
-  ctx.font = '10px monospace';
-  ctx.fillText(
-    page2 ? 'MENTIONS SPÉCIALES' : 'DIGITAL MEMBER PASSPORT · PASSEPORT NUMÉRIQUE DE MEMBRE',
-    ox + W/2, 74,
-  );
-  ctx.textAlign = 'left';
-
-  // Divider
-  ctx.strokeStyle = C.burgundy; ctx.lineWidth = 1; ctx.globalAlpha = 0.2;
-  ctx.beginPath(); ctx.moveTo(ox+PAD, 88); ctx.lineTo(ox+W-PAD, 88); ctx.stroke();
-  ctx.globalAlpha = 1;
-
-  if (!page2) {
-    // ── Type / Code / Number row ─────────────────────────────────────────────
-    fld(ctx, ox+PAD, 100, 'Type', 'P', 17, true);
-    fld(ctx, ox+PAD+80, 100, 'Code', 'EPR', 17, true);
-    fld(ctx, ox+PAD+180, 100, 'Member No.', code, 16, false, true);
-
-    // Divider
-    ctx.strokeStyle = C.sand; ctx.lineWidth = 1; ctx.globalAlpha = 0.4;
-    ctx.beginPath(); ctx.moveTo(ox+PAD, 140); ctx.lineTo(ox+W-PAD, 140); ctx.stroke();
-    ctx.globalAlpha = 1;
-  }
-
-  // ── Content area ──────────────────────────────────────────────────────────
-  const contentTop = page2 ? 100 : 152;
-  const photoW = Math.round(W * 0.33);
-  const photoH = Math.round(photoW * 45/35);
-  const photoX = ox + PAD;
-  const photoY = contentTop;
-
-  // Photo/QR box
+function dottedLine(ctx: CanvasRenderingContext2D, x1: number, x2: number, y: number) {
   ctx.save();
-  ctx.fillStyle = '#ffffff';
-  ctx.strokeStyle = C.burgundy; ctx.lineWidth = 2;
-  ctx.fillRect(photoX, photoY, photoW, photoH);
-  ctx.strokeRect(photoX, photoY, photoW, photoH);
-  if (!page2 && photoDataUrl) {
-    try { const img = await loadImage(photoDataUrl); ctx.drawImage(img, photoX, photoY, photoW, photoH); ctx.strokeRect(photoX, photoY, photoW, photoH); } catch {}
-  } else if (page2 && qrDataUrl) {
-    try {
-      const pad = 18;
-      const qrSize = Math.min(photoW, photoH) - pad*2;
-      const img = await loadImage(qrDataUrl);
-      ctx.drawImage(img, photoX + (photoW-qrSize)/2, photoY + (photoH-qrSize)/2, qrSize, qrSize);
-    } catch {}
-  }
+  ctx.strokeStyle = C.burgundy; ctx.globalAlpha = 0.4; ctx.lineWidth = 1.5;
+  ctx.setLineDash([2, 6]);
+  ctx.beginPath(); ctx.moveTo(x1, y); ctx.lineTo(x2, y); ctx.stroke();
   ctx.restore();
+}
 
-  // Membership badge below photo (page 1 only)
-  if (!page2) {
-    const badgeY = photoY + photoH + 12;
-    ctx.save();
-    ctx.strokeStyle = C.sand; ctx.lineWidth = 0.8; ctx.globalAlpha = 0.5;
-    ctx.strokeRect(photoX, badgeY, photoW, 42);
-    ctx.globalAlpha = 1;
-    ctx.fillStyle = 'rgba(74,23,40,0.5)'; ctx.font = 'italic 9px monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText('MEMBERSHIP TYPE', photoX + photoW/2, badgeY + 13);
-    ctx.fillStyle = C.burgundy; ctx.font = `700 14px "PT Serif",serif`;
-    ctx.fillText(f.membershipType || 'Author', photoX + photoW/2, badgeY + 32);
-    ctx.textAlign = 'left';
-    ctx.restore();
-  }
+function emblem(ctx: CanvasRenderingContext2D, cx: number, cy: number, r: number) {
+  ctx.save();
+  ctx.strokeStyle = C.cream; ctx.globalAlpha = 0.85;
+  ctx.lineWidth = 1.4; ctx.beginPath(); ctx.arc(cx, cy, r * 0.96, 0, Math.PI * 2); ctx.stroke();
+  ctx.lineWidth = 0.7; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.arc(cx, cy, r * 0.82, 0, Math.PI * 2); ctx.stroke();
+  ctx.globalAlpha = 0.7;
+  const pts = Array.from({ length: 8 }, (_, i) => {
+    const a = (i * 45 - 90) * Math.PI / 180, ro = i % 2 === 0 ? r * 0.88 : r * 0.54;
+    return [cx + ro * Math.cos(a), cy + ro * Math.sin(a)];
+  });
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  pts.forEach(([x, y], i) => (i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y)));
+  ctx.closePath(); ctx.stroke();
+  ctx.globalAlpha = 0.92; ctx.fillStyle = '#ffffff';
+  ctx.beginPath();
+  ctx.moveTo(cx, cy - r * 0.5); ctx.lineTo(cx + r * 0.3, cy);
+  ctx.lineTo(cx, cy + r * 0.5); ctx.lineTo(cx - r * 0.3, cy);
+  ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
 
-  // ── Right column: fields ──────────────────────────────────────────────────
-  const colX = photoX + photoW + 22;
-  const colW = ox + W - PAD - colX;
-  const half = (colW - 10) / 2;
-
-  if (!page2) {
-    let ry = contentTop + 2;
-    const rg = 58;
-    fld(ctx, colX, ry, 'Surname', f.surname.toUpperCase(), 20, true); ry += rg;
-    fld(ctx, colX, ry, 'Given Names', f.givenNames.toUpperCase(), 20, true); ry += rg;
-    fld(ctx, colX, ry, 'Nationality', `EPRIS · ${f.country||'—'}`.toUpperCase(), 15); ry += rg;
-
-    fld(ctx, colX,          ry, 'Date of birth', f.dob||'—', 14);
-    fld(ctx, colX+half+10,  ry, 'Record No.', code, 13, false, true); ry += rg;
-
-    fld(ctx, colX,          ry, 'Sex', (f.sex || 'X').toUpperCase(), 14);
-    fld(ctx, colX+half+10,  ry, 'City', f.city||'—', 14); ry += rg;
-
-    fld(ctx, colX,          ry, 'Date of issue', f.issueDate||'—', 14);
-    fld(ctx, colX+half+10,  ry, 'Authority', 'EPRIS J.', 14); ry += rg;
-
-    fld(ctx, colX,          ry, 'Date of expiry', f.expiryDate||'—', 14);
-
-    // Signature line
-    ctx.save();
-    ctx.fillStyle = 'rgba(74,23,40,0.5)'; ctx.font = 'italic 9px monospace';
-    ctx.fillText("Holder's signature", colX+half+10, ry);
-    ctx.strokeStyle = C.sand; ctx.lineWidth = 1; ctx.globalAlpha = 0.45;
-    ctx.beginPath(); ctx.moveTo(colX+half+10, ry+24); ctx.lineTo(colX+half+10+colW*0.42, ry+24); ctx.stroke();
-    ctx.restore();
-
-    ry += rg;
-    fld(ctx, colX, ry, 'Professional Field', (f.field||'—').toUpperCase(), 14);
-
-    // ── Holographic strip ──────────────────────────────────────────────────
-    const holoY = H - 108;
-    const holoGrad = ctx.createLinearGradient(ox+PAD, 0, ox+W-PAD, 0);
-    holoGrad.addColorStop(0, 'transparent');
-    holoGrad.addColorStop(0.08, 'rgba(100,160,240,0.12)');
-    holoGrad.addColorStop(0.22, 'rgba(60,200,120,0.1)');
-    holoGrad.addColorStop(0.38, 'rgba(220,180,40,0.1)');
-    holoGrad.addColorStop(0.55, 'rgba(200,60,160,0.1)');
-    holoGrad.addColorStop(0.72, 'rgba(60,140,220,0.12)');
-    holoGrad.addColorStop(0.9, 'rgba(40,200,160,0.08)');
-    holoGrad.addColorStop(1, 'transparent');
-    ctx.fillStyle = holoGrad;
-    ctx.fillRect(ox+PAD, holoY, W-PAD*2, 7);
-
-    // ── MRZ zone ───────────────────────────────────────────────────────────
-    const mrz = buildMRZ(f, code);
-    const mrzY = H - 88;
-    ctx.save();
-    ctx.fillStyle = 'rgba(255,255,255,0.85)';
-    ctx.fillRect(ox+PAD, mrzY-6, W-PAD*2, 72);
-    ctx.strokeStyle = 'rgba(74,23,40,0.2)'; ctx.lineWidth=1;
-    ctx.strokeRect(ox+PAD, mrzY-6, W-PAD*2, 72);
-    ctx.fillStyle = 'rgba(26,11,16,0.85)';
-    ctx.font = 'bold 22px "Courier New", monospace';
-    
-    // Stretch to fill width perfectly
-    const mrzBoxW = W - PAD*2 - 20; // 10px padding on each side
-    const cW = mrzBoxW / 43; // 43 intervals between 44 chars
-    for (let i = 0; i < 44; i++) {
-      ctx.fillText(mrz[0][i], ox+PAD+10 + i*cW, mrzY+20);
-      ctx.fillText(mrz[1][i], ox+PAD+10 + i*cW, mrzY+50);
-    }
-    ctx.restore();
-
-  } else {
-    // Page 2 fields
-    let ry = contentTop + 2;
-    const rg = 58;
-    fld(ctx, colX, ry, 'Personal Motto', f.motto||'—', 17, true); ry += rg;
-    fld(ctx, colX, ry, 'Website · ORCID · Social', f.link||'—', 14); ry += rg;
-    fld(ctx, colX,         ry, "Membership Type", f.membershipType||'—', 14);
-    fld(ctx, colX+half+10, ry, 'Verification', code, 13, false, true); ry += rg;
-    fld(ctx, colX, ry, 'Digital Signature', generateSignatureString(code, f), 13, false, true); ry += rg;
-    fld(ctx, colX, ry, 'Scan to Verify', `eprisjournal.com/passport/${code}`, 14);
-
-    // Oval stamp
-    const stampCX = ox + W/2, stampCY = H - 160;
-    ctx.save(); ctx.globalAlpha = 0.07; ctx.strokeStyle = C.burgundy;
-    ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.ellipse(stampCX, stampCY, 160, 55, 0, 0, Math.PI*2); ctx.stroke();
-    ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.ellipse(stampCX, stampCY, 144, 45, 0, 0, Math.PI*2); ctx.stroke();
-    ctx.fillStyle = C.burgundy;
-    ctx.font = '700 22px serif'; ctx.textAlign = 'center';
-    ctx.fillText('EPRIS JOURNAL', stampCX, stampCY - 5);
-    ctx.font = '11px monospace';
-    ctx.fillText('REVEAL THE INVISIBLE', stampCX, stampCY + 15);
-    ctx.restore();
-
-    // Disclaimer
-    ctx.save(); ctx.fillStyle = 'rgba(74,23,40,0.22)'; ctx.font = '9px monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText('CULTURAL MEMBERSHIP · NOT A GOVERNMENT DOCUMENT · FICTIONAL MEMBER ID', ox + W/2, H-28);
-    ctx.restore();
-  }
-
-  // Page number
-  ctx.save(); ctx.fillStyle = 'rgba(74,23,40,0.28)'; ctx.font = '9px monospace';
-  ctx.textAlign = 'right';
-  ctx.fillText(`${page2?'3':'2'} / 32`, ox + W - PAD, H - 14);
+function verificationStamp(ctx: CanvasRenderingContext2D, cx: number, cy: number, r: number) {
+  const dateStr = new Date().toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' }).toUpperCase();
+  ctx.save();
+  ctx.translate(cx, cy); ctx.rotate(-15 * Math.PI / 180);
+  ctx.globalAlpha = 0.65; ctx.strokeStyle = '#b33939';
+  ctx.setLineDash([4, 3]); ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.arc(0, 0, r, 0, Math.PI * 2); ctx.stroke();
+  ctx.setLineDash([]); ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.arc(0, 0, r * 0.82, 0, Math.PI * 2); ctx.stroke();
+  ctx.fillStyle = '#b33939'; ctx.textAlign = 'center';
+  ctx.font = `bold ${r * 0.16}px monospace`;
+  ctx.fillText('VERIFIED', 0, -r * 0.15);
+  ctx.font = `bold ${r * 0.11}px monospace`;
+  ctx.fillText('EPRIS J.', 0, r * 0.1);
+  ctx.font = `${r * 0.09}px monospace`;
+  ctx.fillText(dateStr, 0, r * 0.3);
   ctx.restore();
 }
 
@@ -393,32 +156,238 @@ export async function renderPassportPNG(
   verifyUrl: string,
 ): Promise<string> {
   const canvas = document.createElement('canvas');
-  canvas.width = EXPORT_W; canvas.height = EXPORT_H;
+  canvas.width = W; canvas.height = H;
   const ctx = canvas.getContext('2d');
   if (!ctx) throw new Error('canvas unsupported');
 
-  // Fill background with white to avoid black backgrounds in JPEG
-  ctx.fillStyle = '#ffffff';
-  ctx.fillRect(0, 0, EXPORT_W, EXPORT_H);
+  const mrz = buildMRZ(fields, code);
 
-  await drawPage(ctx, 0, fields, photoDataUrl, code, false);
-  
-  // Draw Spine
-  const spineGrad = ctx.createLinearGradient(PAGE_W, 0, PAGE_W + SPINE, 0);
-  spineGrad.addColorStop(0, 'rgba(0,0,0,0.22)');
-  spineGrad.addColorStop(0.5, 'rgba(0,0,0,0.4)');
-  spineGrad.addColorStop(1, 'rgba(0,0,0,0.22)');
-  ctx.fillStyle = spineGrad;
-  ctx.fillRect(PAGE_W, 0, SPINE, PAGE_H);
-
-  // QR for page 2
-  let qrDataUrl: string | undefined;
+  let qrImg: HTMLImageElement | null = null;
   try {
-    qrDataUrl = await QRCode.toDataURL(verifyUrl, { margin:0, width:200, color:{ dark:C.ink, light:'#ffffff00' } });
-  } catch {}
+    const qrDataUrl = await QRCode.toDataURL(verifyUrl, { margin: 0, width: 240 });
+    qrImg = await loadImage(qrDataUrl);
+  } catch { /* renders without the QR if generation fails */ }
 
-  await drawPage(ctx, PAGE_W + SPINE, fields, photoDataUrl, code, true, qrDataUrl);
+  let identityArt: HTMLImageElement | null = null;
+  try { identityArt = await loadImage(IDENTITY_ART_SRC); } catch { /* falls back to flat background */ }
 
-  // Return JPEG to drastically reduce memory/data URI size for react-pdf
-  return canvas.toDataURL('image/jpeg', 0.92);
+  let photoImg: HTMLImageElement | null = null;
+  if (photoDataUrl) { try { photoImg = await loadImage(photoDataUrl); } catch { /* falls back to blank photo box */ } }
+
+  // ── Base ──────────────────────────────────────────────────────────────────
+  ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H);
+  if (identityArt) drawCover(ctx, identityArt, 0, 0, W, H, 0.42);
+
+  // Cool-gold-to-teal security tint, same cross-sheet wash as the on-screen page
+  const tint = ctx.createLinearGradient(0, 0, 0, H);
+  tint.addColorStop(0, 'rgba(120,140,160,0.16)');
+  tint.addColorStop(0.38, 'rgba(184,149,110,0.14)');
+  tint.addColorStop(0.55, 'rgba(184,149,110,0.08)');
+  tint.addColorStop(0.78, 'rgba(74,120,120,0.16)');
+  tint.addColorStop(1, 'rgba(74,120,120,0.22)');
+  ctx.save(); ctx.globalCompositeOperation = 'multiply'; ctx.fillStyle = tint; ctx.fillRect(0, 0, W, H); ctx.restore();
+
+  // Watermark
+  ctx.save();
+  ctx.globalAlpha = 0.042; ctx.fillStyle = C.burgundy;
+  ctx.font = `700 ${Math.round(W * 0.2)}px "Playfair Display", serif`;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.translate(W / 2, H / 2); ctx.rotate(-16 * Math.PI / 180);
+  ctx.fillText('EPRIS', 0, 0);
+  ctx.restore();
+  ctx.textBaseline = 'alphabetic';
+
+  // Single frame
+  const inset = W * 0.014;
+  ctx.save(); ctx.strokeStyle = C.burgundy; ctx.globalAlpha = 0.7; ctx.lineWidth = 2;
+  ctx.strokeRect(inset, inset, W - inset * 2, H - inset * 2);
+  ctx.restore();
+
+  const padX = W * 0.045;
+  const contentW = W - padX * 2;
+
+  // ══════════════════════ TOP HALF — OBSERVATIONS ══════════════════════════
+  const topY = H * 0.02;
+  const topH = H * 0.32;
+
+  ctx.textAlign = 'right';
+  ctx.fillStyle = C.ink; ctx.globalAlpha = 0.75;
+  ctx.font = `400 40px "PT Sans", sans-serif`;
+  ctx.fillText('01', W - padX - 34, topY + 32);
+  ctx.globalAlpha = 1;
+  const ejSize = 30;
+  ctx.save();
+  ctx.fillStyle = C.burgundy; ctx.globalAlpha = 0.85;
+  const ejX = W - padX - ejSize / 2, ejY = topY + 14;
+  ctx.beginPath();
+  const cut = ejSize * 0.2;
+  ctx.moveTo(ejX - ejSize / 2 + cut, ejY - ejSize / 2);
+  ctx.lineTo(ejX + ejSize / 2 - cut, ejY - ejSize / 2);
+  ctx.lineTo(ejX + ejSize / 2, ejY - ejSize / 2 + cut);
+  ctx.lineTo(ejX + ejSize / 2, ejY + ejSize / 2 - cut);
+  ctx.lineTo(ejX + ejSize / 2 - cut, ejY + ejSize / 2);
+  ctx.lineTo(ejX - ejSize / 2 + cut, ejY + ejSize / 2);
+  ctx.lineTo(ejX - ejSize / 2, ejY + ejSize / 2 - cut);
+  ctx.lineTo(ejX - ejSize / 2, ejY - ejSize / 2 + cut);
+  ctx.closePath(); ctx.fill();
+  ctx.fillStyle = C.cream; ctx.textAlign = 'center'; ctx.font = `700 13px serif`;
+  ctx.fillText('EJ', ejX, ejY + 5);
+  ctx.restore();
+  ctx.textAlign = 'left';
+
+  dottedLine(ctx, padX, W - padX, topY + topH * 0.18);
+
+  const topContentY = topY + topH * 0.22;
+  const topContentH = topY + topH - topContentY;
+  const qrSize = contentW * 0.26;
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(padX, topContentY, qrSize, qrSize);
+  if (qrImg) {
+    const pad = qrSize * 0.07;
+    ctx.drawImage(qrImg, padX + pad, topContentY + pad, qrSize - pad * 2, qrSize - pad * 2);
+  }
+
+  const fCol1X = padX + qrSize + contentW * 0.04;
+  const fColW = padX + contentW - fCol1X;
+  let ty = topContentY + 6;
+  fld(ctx, fCol1X, ty, fColW * 0.48, 'Membership Type', 'Tipo di appartenenza', fields.membershipType || '—');
+  fld(ctx, fCol1X + fColW * 0.5, ty, fColW * 0.48, 'Verification', 'Verifica', code, { mono: true });
+  ty += 56;
+  fld(ctx, fCol1X, ty, fColW, 'Digital Signature', 'Firma digitale', generateSignatureString(code, fields), { mono: true });
+  ty += 50;
+  fld(ctx, fCol1X, ty, fColW, 'Scan to Verify', 'Scansiona per verificare', `eprisjournal.com/passport/${code}`);
+  ty += 54;
+
+  ctx.save();
+  ctx.fillStyle = C.burgundy; ctx.globalAlpha = 0.55; ctx.font = `400 13px "PT Sans", sans-serif`;
+  ctx.fillText('OFFICIAL OBSERVATIONS · OSSERVAZIONI UFFICIALI', fCol1X, ty);
+  ctx.restore();
+  ty += 10;
+  ctx.strokeStyle = C.burgundy; ctx.globalAlpha = 0.25; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(fCol1X, ty); ctx.lineTo(fCol1X + fColW, ty); ctx.stroke(); ctx.globalAlpha = 1;
+  ty += 24;
+  ctx.save();
+  ctx.fillStyle = '#3a1520'; ctx.globalAlpha = 0.85; ctx.font = `italic 600 15px "Playfair Display", serif`;
+  const obs1 = 'This is not a travel document or a state-issued identification. It certifies membership in the EPRIS Journal cultural system only.';
+  const obs2 = "Questo non è un documento di viaggio né un documento d'identità statale. Certifica esclusivamente l'appartenenza al sistema culturale EPRIS Journal.";
+  wrapText(ctx, obs1, fCol1X, ty, fColW, 19);
+  wrapText(ctx, obs2, fCol1X, ty + 40, fColW, 19);
+  ctx.restore();
+
+  // ══════════════════════ DIVIDER ═══════════════════════════════════════════
+  dottedLine(ctx, W * 0.02, W - W * 0.02, H * 0.36);
+
+  // ══════════════════════ BOTTOM HALF — DATA PAGE ═══════════════════════════
+  const botY = H * 0.39;
+  const botH = H - H * 0.02 - botY;
+
+  const bandH = botH * 0.13;
+  const bandGrad = ctx.createLinearGradient(padX, 0, W - padX, 0);
+  bandGrad.addColorStop(0, 'rgba(74,23,40,0.92)');
+  bandGrad.addColorStop(0.5, 'rgba(90,28,48,0.88)');
+  bandGrad.addColorStop(1, 'rgba(74,23,40,0.92)');
+  ctx.fillStyle = bandGrad;
+  roundRect(ctx, padX - W * 0.01, botY, contentW + W * 0.02, bandH, 4); ctx.fill();
+  emblem(ctx, padX + 24, botY + bandH / 2, 20);
+  emblem(ctx, W - padX - 24, botY + bandH / 2, 20);
+  ctx.textAlign = 'center'; ctx.fillStyle = C.cream;
+  ctx.font = `700 24px "Playfair Display", serif`;
+  ctx.fillText('EPRIS JOURNAL', W / 2, botY + bandH * 0.44);
+  ctx.globalAlpha = 0.85; ctx.font = `400 11px "PT Sans", sans-serif`;
+  ctx.fillText('DIGITAL MEMBER PASSPORT', W / 2, botY + bandH * 0.44 + 18);
+  ctx.globalAlpha = 1; ctx.textAlign = 'left';
+
+  const typeRowY = botY + botH * 0.16;
+  fld(ctx, padX, typeRowY, contentW * 0.12, 'Type', 'Tipo', 'P');
+  fld(ctx, padX + contentW * 0.14, typeRowY, contentW * 0.2, 'Code', 'Codice', 'EPR');
+  fld(ctx, padX + contentW * 0.34, typeRowY, contentW * 0.5, 'Member No.', 'Numero', code, { mono: true });
+
+  ctx.strokeStyle = C.sand; ctx.globalAlpha = 0.5; ctx.lineWidth = 1;
+  const divY = botY + botH * 0.22;
+  ctx.beginPath(); ctx.moveTo(padX, divY); ctx.lineTo(padX + contentW, divY); ctx.stroke(); ctx.globalAlpha = 1;
+
+  const contentTop = botY + botH * 0.25;
+  const contentBottom = botY + botH * 0.85;
+  const photoW = contentW * 0.3;
+  const photoH = photoW * (45 / 35);
+
+  ctx.fillStyle = '#f8f4ed'; ctx.fillRect(padX, contentTop, photoW, photoH);
+  if (photoImg) {
+    ctx.save();
+    ctx.beginPath(); ctx.rect(padX, contentTop, photoW, photoH); ctx.clip();
+    drawCover(ctx, photoImg, padX, contentTop, photoW, photoH);
+    ctx.restore();
+  }
+  const badgeY = contentTop + photoH + photoH * 0.06;
+  ctx.fillStyle = 'rgba(74,23,40,0.06)';
+  ctx.fillRect(padX, badgeY, photoW, 56);
+  ctx.textAlign = 'center'; ctx.fillStyle = C.burgundy; ctx.globalAlpha = 0.6;
+  ctx.font = `400 11px "PT Sans", sans-serif`;
+  ctx.fillText('MEMBERSHIP TYPE', padX + photoW / 2, badgeY + 20);
+  ctx.globalAlpha = 1; ctx.font = `700 16px "Playfair Display", serif`;
+  ctx.fillText(fields.membershipType || 'Author', padX + photoW / 2, badgeY + 42);
+  ctx.textAlign = 'left';
+
+  const rCol1 = padX + photoW + contentW * 0.035;
+  const rColW = padX + contentW - rCol1;
+  const half = (rColW - rColW * 0.08) / 2;
+  let ry = contentTop + 4;
+  const rowGap = (contentBottom - contentTop) / 8.4;
+  fld(ctx, rCol1, ry, rColW, 'Surname', 'Cognome', fields.surname.toUpperCase(), { big: true }); ry += rowGap;
+  fld(ctx, rCol1, ry, rColW, 'Given Names', 'Nome', fields.givenNames.toUpperCase(), { big: true }); ry += rowGap;
+  fld(ctx, rCol1, ry, rColW, 'Nationality', 'Cittadinanza', `EPRIS · ${fields.country || '—'}`.toUpperCase()); ry += rowGap;
+  fld(ctx, rCol1, ry, half, 'Date of birth', 'Data di nascita', fields.dob || '—');
+  fld(ctx, rCol1 + half + rColW * 0.08, ry, half, 'Record No.', 'Numero di registro', code, { mono: true }); ry += rowGap;
+  fld(ctx, rCol1, ry, half, 'Sex', 'Sesso', (fields.sex || 'X').toUpperCase());
+  fld(ctx, rCol1 + half + rColW * 0.08, ry, half, 'City', 'Città', fields.city || '—'); ry += rowGap;
+  fld(ctx, rCol1, ry, half, 'Date of issue', 'Data di rilascio', fields.issueDate || '—');
+  fld(ctx, rCol1 + half + rColW * 0.08, ry, half, 'Authority', 'Autorità', 'EPRIS J.'); ry += rowGap;
+  fld(ctx, rCol1, ry, half, 'Date of expiry', 'Data di scadenza', fields.expiryDate || '—');
+  ctx.save();
+  const sigX = rCol1 + half + rColW * 0.08;
+  ctx.fillStyle = C.burgundy; ctx.globalAlpha = 0.65; ctx.font = `italic 400 13px "PT Sans", sans-serif`;
+  ctx.fillText("Holder's signature · Firma del titolare", sigX, ry);
+  ctx.strokeStyle = C.sand; ctx.globalAlpha = 0.45; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(sigX, ry + 20); ctx.lineTo(sigX + half * 0.82, ry + 20); ctx.stroke();
+  ctx.restore();
+  ry += rowGap;
+  fld(ctx, rCol1, ry, rColW, 'Professional Field', 'Campo professionale', (fields.field || '—').toUpperCase());
+
+  verificationStamp(ctx, padX + contentW - contentW * 0.08, contentBottom - (contentBottom - contentTop) * 0.05, contentW * 0.06);
+
+  // MRZ
+  const mrzY = botY + botH * 0.94;
+  ctx.font = `bold 26px "Courier New", monospace`;
+  ctx.fillStyle = C.ink; ctx.textAlign = 'left';
+  const cW = contentW / 43;
+  for (let i = 0; i < 44; i++) {
+    ctx.fillText(mrz[0][i] ?? '', padX + i * cW, mrzY);
+    ctx.fillText(mrz[1][i] ?? '', padX + i * cW, mrzY + 32);
+  }
+
+  return canvas.toDataURL('image/jpeg', 0.94);
+}
+
+function roundRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y, x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r);
+  ctx.arcTo(x, y, x + w, y, r);
+  ctx.closePath();
+}
+
+function wrapText(ctx: CanvasRenderingContext2D, text: string, x: number, y: number, maxW: number, lineH: number) {
+  const words = text.split(' ');
+  let line = '', cy = y;
+  for (const w of words) {
+    const test = line ? `${line} ${w}` : w;
+    if (ctx.measureText(test).width > maxW && line) {
+      ctx.fillText(line, x, cy);
+      line = w; cy += lineH;
+    } else {
+      line = test;
+    }
+  }
+  if (line) ctx.fillText(line, x, cy);
 }
