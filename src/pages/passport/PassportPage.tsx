@@ -381,8 +381,10 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
         import('@react-pdf/renderer'),
         import('react'),
       ]);
+      // Portrait 3:4 — matches the single-sheet PassportPage now that the
+      // download is a screenshot of it, not the old two-page book spread.
       const element = createElement(Document, null,
-        createElement(Page, { size: [507, 354] },
+        createElement(Page, { size: [400, 533.33] },
           createElement(Image, { src: dataUrl, style: { width: '100%', height: '100%' } })
         )
       );

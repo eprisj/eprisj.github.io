@@ -210,7 +210,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
         <div style={{ position: 'absolute', top: '22%', left: 0, right: 0, bottom: 0, display: 'flex', gap: '4%' }}>
           {/* QR box — mirrors the data page's photo box */}
           <div style={{ width: '26%', flexShrink: 0 }}>
-            <div style={{ width: '100%', aspectRatio: '1/1', border: '1.5px solid #4a1728', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', boxShadow: 'inset 0 0 0 1px rgba(74,23,40,0.08)' }}>
+            <div style={{ width: '100%', aspectRatio: '1/1', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
               {qrDataUrl
                 ? <img src={qrDataUrl} alt="QR" style={{ width: '86%', height: '86%', objectFit: 'contain' }}/>
                 : <span style={{ fontFamily: 'monospace', fontSize: 'clamp(5px, 1cqw, 8px)', color: '#4a1728', opacity: 0.3 }}>QR</span>}
@@ -275,7 +275,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
         <div style={{ position: 'absolute', top: '25%', left: 0, right: 0, bottom: '15%', display: 'flex', gap: '3.5%' }}>
           {/* Photo */}
           <div style={{ width: '30%', flexShrink: 0, display: 'flex', flexDirection: 'column', gap: '4%' }}>
-            <div style={{ position: 'relative', width: '100%', aspectRatio: '35/45', flexShrink: 0, border: '1.5px solid #4a1728', background: '#f8f4ed', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'visible', boxShadow: 'inset 0 0 0 1px rgba(74,23,40,0.08)' }}>
+            <div style={{ position: 'relative', width: '100%', aspectRatio: '35/45', flexShrink: 0, background: '#f8f4ed', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'visible' }}>
               <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
                 {photoUrl
                   ? <img src={photoUrl} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', mixBlendMode: 'multiply', filter: 'sepia(0.2) contrast(0.95)' }}/>

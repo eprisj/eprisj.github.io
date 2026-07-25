@@ -52,9 +52,18 @@ export function PassportBook({
   const rightRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const onResize = () => setVw(window.innerWidth);
+    // Mobile pinch-zoom / the on-screen keyboard opening can fire dozens of
+    // resize events per second. Setting state on every single one — each
+    // triggering a re-render of the whole cqw-clamp()-heavy PassportPage below
+    // — was jank severe enough to read as the tab freezing/crashing. Coalesce
+    // to at most one state update per animation frame.
+    let raf = 0;
+    const onResize = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => setVw(window.innerWidth));
+    };
     window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
+    return () => { window.removeEventListener('resize', onResize); cancelAnimationFrame(raf); };
   }, []);
 
   const isMobile = vw < 768;
@@ -65,15 +74,23 @@ export function PassportBook({
   const cardW = isMobile ? Math.min(vw - 56, 330) : Math.min(620, Math.max(420, Math.round(vw * 0.4)));
 
   // Measure the passport card's natural height so the cover art can match it.
+  // Subscribed once (not re-created per cardW change, and coalesced the same
+  // way as the resize listener above) — ResizeObserver already notices the
+  // element's own size changing when cardW changes its CSS width, so it
+  // doesn't need to be torn down and rebuilt on every render.
   useEffect(() => {
     const el = rightRef.current;
     if (!el) return;
-    const measure = () => setBookH(el.offsetHeight);
+    let raf = 0;
+    const measure = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => setBookH(el.offsetHeight));
+    };
     const ro = new ResizeObserver(measure);
     ro.observe(el);
     measure();
-    return () => ro.disconnect();
-  }, [cardW]);
+    return () => { ro.disconnect(); cancelAnimationFrame(raf); };
+  }, []);
 
   const shareText = `I just got my EPRIS Digital Member Passport \u2014 ${fields.membershipType || 'Member'} No. ${code}, issued to ${fields.givenNames} ${fields.surname}. Verify it here:`;
   const url = typeof window !== 'undefined' ? window.location.href : '';
