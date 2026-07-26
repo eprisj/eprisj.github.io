@@ -250,6 +250,9 @@ async function tryAutoLogin() {
     rememberTokenInput.checked = true;
     const rt = localStorage.getItem('epris_radio_admin_pw');
     if (rt) applyRadioToken(rt);
+    // No /token round-trip on this path, so the role is whatever the last
+    // real login stored — not re-derived, just re-applied.
+    applyRoleVisibility(getSessionRole());
     hideAuthOverlay();
     await initAfterLogin();
     return;
@@ -271,6 +274,8 @@ async function tryAutoLogin() {
         tokenInput.value = data.token;
         localStorage.setItem(AUTH_STORAGE_KEY, data.token);
         applyRadioToken(data.radio_token);
+        setSessionRole(data.role);
+        applyRoleVisibility(data.role);
         rememberTokenInput.checked = true;
         hideAuthOverlay();
         await initAfterLogin();
@@ -288,6 +293,67 @@ const authPasswordInput = byId('authPasswordInput');
 const authLoginPwBtn = byId('authLoginPwBtn');
 const authFormPassword = byId('authFormPassword');
 
+// ── Role: which tab is selected at login, and which role the server actually
+// granted. Two different things on purpose — the button is just what you
+// clicked; the server is what decides, based on the password you typed. ──
+const AUTH_ROLE_STORAGE_KEY = 'epris_admin_role';
+const authRoleToggle = byId('authRoleToggle');
+let selectedLoginRole = 'admin';
+
+authRoleToggle?.addEventListener('click', (e) => {
+  const btn = e.target.closest('.auth-role-btn');
+  if (!btn) return;
+  selectedLoginRole = btn.dataset.role;
+  authRoleToggle.querySelectorAll('.auth-role-btn').forEach((b) => {
+    const active = b === btn;
+    b.classList.toggle('is-active', active);
+    b.setAttribute('aria-pressed', String(active));
+  });
+});
+
+function getSessionRole() {
+  try { return localStorage.getItem(AUTH_ROLE_STORAGE_KEY) || ''; } catch { return ''; }
+}
+function setSessionRole(role) {
+  try {
+    if (role) localStorage.setItem(AUTH_ROLE_STORAGE_KEY, role);
+    else localStorage.removeItem(AUTH_ROLE_STORAGE_KEY);
+  } catch { /* */ }
+}
+// Tabs a plain editor password cannot act on, for two different reasons:
+//   - radio, passports: the server rejects these routes outright for a
+//     non-admin password (see resolveRole()/per-route checks in
+//     deploy-webhook.js) — an editor landing here would hit a wall of 401s.
+//   - the whole "Система" group (monitor, history, settings) PLUS
+//     appearance: settings' "Подключение к GitHub" card holds the raw
+//     GitHub PAT in a plain input. That token is shared across roles today
+//     (there is no separate, narrower editor credential to issue), so
+//     leaving Settings reachable would let an editor read out full
+//     repo-write access and use it directly with curl — completely
+//     outside anything the server-side role check can stop. Hiding the
+//     tab is the actual boundary here, not a courtesy. History (backups)
+//     and appearance (site-wide theme, not per-article content) are
+//     grouped in for the same "not an editor's job" reason even though
+//     history is also independently enforced server-side.
+const ADMIN_ONLY_TABS = ['radio', 'passports', 'appearance', 'monitor', 'history', 'settings'];
+function applyRoleVisibility(role) {
+  const isEditor = role === 'editor';
+  document.body.classList.toggle('role-editor', isEditor);
+  ADMIN_ONLY_TABS.forEach((key) => {
+    const btn = document.querySelector(`.tab-btn[data-tab="${key}"]`);
+    if (btn) btn.hidden = isEditor;
+    // If an editor session had one of these open from a prior admin
+    // session sharing the same browser, don't leave it selected-but-hidden.
+    if (isEditor && btn?.classList.contains('active')) {
+      document.querySelector('.tab-btn[data-tab="content"]')?.click();
+    }
+  });
+  // The media-library delete button (Upload tab, shared with the article
+  // image picker) is gated separately, at render time in renderGrid — that
+  // grid re-renders on every picker open, so a one-time sweep here wouldn't
+  // reach buttons drawn after login.
+}
+
 function applyRadioToken(rt) {
   if (!rt) return;
   try { localStorage.setItem('epris_radio_admin_pw', rt); } catch { /* */ }
@@ -304,11 +370,13 @@ async function handlePasswordLogin() {
     const res = await fetch(TOKEN_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ password: pw }),
+      body: JSON.stringify({ password: pw, role: selectedLoginRole }),
     });
     const data = await res.json();
     if (!data.ok || !data.token) throw new Error(data.error || 'Неверный пароль');
     applyRadioToken(data.radio_token);
+    setSessionRole(data.role);
+    applyRoleVisibility(data.role);
     // Password is already validated by the VPS — log in immediately. The
     // GitHub PAT is only carried along for optional GitHub-dependent features
     // (Monitoring tab), never required for the login itself.
@@ -325,7 +393,12 @@ async function handlePasswordLogin() {
     hideAuthOverlay();
     await initAfterLogin();
   } catch (e) {
-    showAuthError(e.message === 'Неверный пароль' || /invalid/i.test(e.message) || /fetch/i.test(e.message) ? 'Ошибка соединения или неверный пароль' : 'Ошибка входа: ' + e.message);
+    const roleLabel = selectedLoginRole === 'admin' ? 'Админ' : 'Редактор';
+    if (/not valid for the .* role/i.test(e.message)) {
+      showAuthError(`Этот пароль не подходит для роли «${roleLabel}» — проверьте выбор вкладки выше.`);
+    } else {
+      showAuthError(e.message === 'Неверный пароль' || /invalid/i.test(e.message) || /fetch/i.test(e.message) ? 'Ошибка соединения или неверный пароль' : 'Ошибка входа: ' + e.message);
+    }
   }
 }
 
@@ -333,6 +406,7 @@ function logout() {
   localStorage.removeItem(AUTH_STORAGE_KEY);
   localStorage.removeItem(AUTH_PW_STORAGE_KEY);
   localStorage.removeItem('epris_radio_admin_pw');
+  setSessionRole(null);
   window.location.reload();
 }
 
@@ -11249,7 +11323,15 @@ async function flushModernEditor() {
           ? usage.refs.map((r) => `${r.section}#${r.id} (${r.lang})`).join(', ')
           : 'Не используется в статьях, обзорах или галерее (Выпуски и Студия не проверяются)';
         const isSel = multi && selected.has(it.url);
-        return `<div class="wys-media-cell"><button type="button" class="wys-media-item${isSel ? ' is-selected' : ''}" data-url="${esc(it.url)}" title="${esc(it.name)}"><img src="${esc(it.thumbUrl || it.url)}" loading="lazy" referrerpolicy="no-referrer" alt=""><span class="wys-media-usage${usage.count ? '' : ' zero'}" title="${esc(badgeTitle)}">${badgeText}</span>${isSel ? '<span class="wys-media-check">✓</span>' : ''}</button><button type="button" class="wys-media-del" data-name="${esc(it.name)}" data-url="${esc(it.url)}" title="Удалить с сервера">×</button></div>`;
+        // /upload-delete is admin-only server-side (deploy-webhook.js resolveRole
+        // check) — an editor pressing this would just get a 401, so the button
+        // isn't offered. Checked per-cell at render time, not once at login,
+        // because this grid re-renders on every media-picker open.
+        const canDelete = getSessionRole() !== 'editor';
+        const delBtn = canDelete
+          ? `<button type="button" class="wys-media-del" data-name="${esc(it.name)}" data-url="${esc(it.url)}" title="Удалить с сервера">×</button>`
+          : '';
+        return `<div class="wys-media-cell"><button type="button" class="wys-media-item${isSel ? ' is-selected' : ''}" data-url="${esc(it.url)}" title="${esc(it.name)}"><img src="${esc(it.thumbUrl || it.url)}" loading="lazy" referrerpolicy="no-referrer" alt=""><span class="wys-media-usage${usage.count ? '' : ' zero'}" title="${esc(badgeTitle)}">${badgeText}</span>${isSel ? '<span class="wys-media-check">✓</span>' : ''}</button>${delBtn}</div>`;
       }).join('');
       grid.querySelectorAll('.wys-media-item').forEach((btn) => {
         btn.onclick = () => {
