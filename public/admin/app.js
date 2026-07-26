@@ -188,6 +188,7 @@ function byId(id) {
 // ===== AUTH GATE =====
 const AUTH_STORAGE_KEY    = 'epris_admin_token';
 const AUTH_PW_STORAGE_KEY = 'epris_admin_pw_saved';
+const AUTH_LOGIN_STORAGE_KEY = 'epris_admin_login_saved';
 
 // ── Content API: the VPS is the source of truth (instant publish, no rebuild) ──
 const CONTENT_API = 'https://api.eprisjournal.com/content';
@@ -265,9 +266,10 @@ async function tryAutoLogin() {
     setAuthBusy(true);
     try {
       const pw = atob(savedPwB64);
+      const login = localStorage.getItem(AUTH_LOGIN_STORAGE_KEY) || '';
       const res = await fetch(TOKEN_API, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password: pw }),
+        body: JSON.stringify({ login, password: pw }),
       });
       const data = await res.json();
       if (data.ok && data.token) {
@@ -290,6 +292,7 @@ async function tryAutoLogin() {
 // ── Password login (exchanges password → GitHub PAT + radio token) ──
 const TOKEN_API = 'https://api.eprisjournal.com/token';
 const authPasswordInput = byId('authPasswordInput');
+const authLoginInput = byId('authLoginInput');
 const authLoginPwBtn = byId('authLoginPwBtn');
 const authFormPassword = byId('authFormPassword');
 
@@ -362,7 +365,9 @@ function applyRadioToken(rt) {
 }
 
 async function handlePasswordLogin() {
+  const login = (authLoginInput?.value || '').trim();
   const pw = (authPasswordInput?.value || '').trim();
+  if (!login) { showAuthError('Введите логин'); return; }
   if (!pw) { showAuthError('Введите пароль'); return; }
   authError.hidden = true;
   setAuthBusy(true);
@@ -370,7 +375,7 @@ async function handlePasswordLogin() {
     const res = await fetch(TOKEN_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ password: pw, role: selectedLoginRole }),
+      body: JSON.stringify({ login, password: pw, role: selectedLoginRole }),
     });
     const data = await res.json();
     if (!data.ok || !data.token) throw new Error(data.error || 'Неверный пароль');
@@ -384,10 +389,12 @@ async function handlePasswordLogin() {
     if (authRememberCheck?.checked ?? true) {
       localStorage.setItem(AUTH_STORAGE_KEY, data.token);
       localStorage.setItem(AUTH_PW_STORAGE_KEY, btoa(pw));
+      localStorage.setItem(AUTH_LOGIN_STORAGE_KEY, login);
       rememberTokenInput.checked = true;
     } else {
       localStorage.removeItem(AUTH_STORAGE_KEY);
       localStorage.removeItem(AUTH_PW_STORAGE_KEY);
+      localStorage.removeItem(AUTH_LOGIN_STORAGE_KEY);
       rememberTokenInput.checked = false;
     }
     hideAuthOverlay();
@@ -396,6 +403,8 @@ async function handlePasswordLogin() {
     const roleLabel = selectedLoginRole === 'admin' ? 'Админ' : 'Редактор';
     if (/not valid for the .* role/i.test(e.message)) {
       showAuthError(`Этот пароль не подходит для роли «${roleLabel}» — проверьте выбор вкладки выше.`);
+    } else if (/invalid login or password/i.test(e.message)) {
+      showAuthError('Неверный логин или пароль');
     } else {
       showAuthError(e.message === 'Неверный пароль' || /invalid/i.test(e.message) || /fetch/i.test(e.message) ? 'Ошибка соединения или неверный пароль' : 'Ошибка входа: ' + e.message);
     }
@@ -405,6 +414,7 @@ async function handlePasswordLogin() {
 function logout() {
   localStorage.removeItem(AUTH_STORAGE_KEY);
   localStorage.removeItem(AUTH_PW_STORAGE_KEY);
+  localStorage.removeItem(AUTH_LOGIN_STORAGE_KEY);
   localStorage.removeItem('epris_radio_admin_pw');
   setSessionRole(null);
   window.location.reload();
@@ -412,13 +422,14 @@ function logout() {
 
 // Password login bound directly
 authLoginPwBtn?.addEventListener('click', handlePasswordLogin);
+authLoginInput?.addEventListener('keydown', (e) => { if (e.key === 'Enter') handlePasswordLogin(); });
 authPasswordInput?.addEventListener('keydown', (e) => { if (e.key === 'Enter') handlePasswordLogin(); });
 byId('logoutBtn')?.addEventListener('click', () => {
   if (confirm('Выйти из редакции? Потребуется снова ввести пароль.')) logout();
 });
 
 // Bootstrap: auth gate first, then init
-setTimeout(() => { if (!authOverlay.classList.contains('hidden')) authPasswordInput?.focus(); }, 200);
+setTimeout(() => { if (!authOverlay.classList.contains('hidden')) authLoginInput?.focus(); }, 200);
 // Deferred to a fresh task: tryAutoLogin's synchronous call chain reaches deep
 // into the file (init -> refreshVisualEditor -> renderContentCommand ->
 // buildSectionAudit -> getTranslationLanguages -> getTranslationTargetCode),
