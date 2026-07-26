@@ -1690,6 +1690,7 @@ code {
 .auth-subtitle { margin: 14px 0 28px; font-family: var(--font-mono); font-size: .58rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .14em; }
 .auth-form { display: grid; gap: 14px; text-align: left; }
 .auth-label { display: grid; gap: 5px; }
+.auth-label[hidden] { display: none; }
 .auth-remember { display: inline-flex; align-items: center; gap: 8px; font-size: .76rem; color: var(--text-muted); cursor: pointer; }
 .auth-login-btn { width: 100%; padding: 13px; font-size: .7rem; border-radius: var(--radius); }
 .auth-error {

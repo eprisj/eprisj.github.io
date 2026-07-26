@@ -293,6 +293,7 @@ async function tryAutoLogin() {
 const TOKEN_API = 'https://api.eprisjournal.com/token';
 const authPasswordInput = byId('authPasswordInput');
 const authLoginInput = byId('authLoginInput');
+const authLoginField = byId('authLoginField');
 const authLoginPwBtn = byId('authLoginPwBtn');
 const authFormPassword = byId('authFormPassword');
 
@@ -303,6 +304,12 @@ const AUTH_ROLE_STORAGE_KEY = 'epris_admin_role';
 const authRoleToggle = byId('authRoleToggle');
 let selectedLoginRole = 'admin';
 
+// Only editor accounts are named/shared enough to need a login — the admin
+// password is the owner's own credential, so that tab skips straight to
+// password-only, same as before editor accounts existed.
+function applyLoginFieldVisibility() {
+  if (authLoginField) authLoginField.hidden = selectedLoginRole !== 'editor';
+}
 authRoleToggle?.addEventListener('click', (e) => {
   const btn = e.target.closest('.auth-role-btn');
   if (!btn) return;
@@ -312,7 +319,9 @@ authRoleToggle?.addEventListener('click', (e) => {
     b.classList.toggle('is-active', active);
     b.setAttribute('aria-pressed', String(active));
   });
+  applyLoginFieldVisibility();
 });
+applyLoginFieldVisibility();
 
 function getSessionRole() {
   try { return localStorage.getItem(AUTH_ROLE_STORAGE_KEY) || ''; } catch { return ''; }
@@ -367,7 +376,7 @@ function applyRadioToken(rt) {
 async function handlePasswordLogin() {
   const login = (authLoginInput?.value || '').trim();
   const pw = (authPasswordInput?.value || '').trim();
-  if (!login) { showAuthError('Введите логин'); return; }
+  if (selectedLoginRole === 'editor' && !login) { showAuthError('Введите логин'); return; }
   if (!pw) { showAuthError('Введите пароль'); return; }
   authError.hidden = true;
   setAuthBusy(true);
