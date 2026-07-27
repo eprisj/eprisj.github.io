@@ -1842,22 +1842,6 @@
       "description": "Choosing a place to stay in a new destination means entrusting it with the significant moments of your life. Falling into bed after a long walk through unfamiliar streets, late-night talks filled with the thoughts and emotions of the day, planning the next breakfast at your newly favorite nearby boulangerie, sharing genuine smiles and the pure excitement of exploration.",
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/mro4ypcjfxlboi.webp"
-    },
-    {
-      "id": 5,
-      "title": "Siesta shadow",
-      "subtitle": "Seville, Spain",
-      "fig": "FIG. 05",
-      "description": "The slow passage of time on a hot afternoon.",
-      "imageSeed": "shadows-wall"
-    },
-    {
-      "id": 6,
-      "title": "Velvet night",
-      "subtitle": "Istanbul, Türkiye",
-      "fig": "FIG. 06",
-      "description": "Lights reflect in the Bosphorus as the city comes to life.",
-      "imageSeed": "istanbul-night"
     }
   ],
   "articles": [
@@ -3562,22 +3546,6 @@
           "imageSeed": "mountains"
         },
         {
-          "id": 5,
-          "title": "Сиеста Тени",
-          "subtitle": "Севилья, Испания",
-          "fig": "FIG. 05",
-          "description": "Медленное течение времени в жаркий полдень.",
-          "imageSeed": "shadows-wall"
-        },
-        {
-          "id": 6,
-          "title": "Бархатная ночь",
-          "subtitle": "Стамбул, Турция",
-          "fig": "FIG. 06",
-          "description": "Огни отражаются в Босфоре, город оживает.",
-          "imageSeed": "istanbul-night"
-        },
-        {
           "id": 7,
           "title": "Искусство, которое заставляет вас улыбаться",
           "subtitle": "Красочные и игривые предметы обладают уникальным качеством, которого нет у других: они привносят в комнату чистое счастье.",
@@ -5264,22 +5232,6 @@
           "fig": "FIG. 04",
           "description": "Чисте високогірне повітря і аромат соснових лісів.",
           "imageSeed": "mountains"
-        },
-        {
-          "id": 5,
-          "title": "Сієста Тіні",
-          "subtitle": "Севілья, Іспанія",
-          "fig": "FIG. 05",
-          "description": "Повільний плин часу спекотного полудня.",
-          "imageSeed": "shadows-wall"
-        },
-        {
-          "id": 6,
-          "title": "Оксамитова ніч",
-          "subtitle": "Стамбул, Туреччина",
-          "fig": "FIG. 06",
-          "description": "Вогні відбиваються на Босфорі, коли місто оживає.",
-          "imageSeed": "istanbul-night"
         },
         {
           "id": 7,
@@ -6970,22 +6922,6 @@
           "imageSeed": "mountains"
         },
         {
-          "id": 5,
-          "title": "Siesta-Schatten",
-          "subtitle": "Sevilla, Spanien",
-          "fig": "FIG. 05",
-          "description": "Das langsame Verstreichen der Zeit an einem heißen Nachmittag.",
-          "imageSeed": "shadows-wall"
-        },
-        {
-          "id": 6,
-          "title": "Samtnacht",
-          "subtitle": "Istanbul, Türkei",
-          "fig": "FIG. 06",
-          "description": "Lichter spiegeln sich im Bosporus, während die Stadt zum Leben erwacht.",
-          "imageSeed": "istanbul-night"
-        },
-        {
           "id": 7,
           "title": "Kunst, die Sie zum Lächeln bringt",
           "subtitle": "Bunte und verspielte Objekte besitzen eine einzigartige Qualität, die anderen fehlt – sie verleihen einem Raum pure Fröhlichkeit.",
@@ -8500,22 +8436,6 @@
           "imageSeed": "mountains"
         },
         {
-          "id": 5,
-          "title": "Sombras de siesta",
-          "subtitle": "Sevilla, España",
-          "fig": "FIG. 05",
-          "description": "El lento paso del tiempo durante una tarde calurosa.",
-          "imageSeed": "shadows-wall"
-        },
-        {
-          "id": 6,
-          "title": "Noche de terciopelo",
-          "subtitle": "Estambul, Turquía",
-          "fig": "FIG. 06",
-          "description": "Luces reflejándose en el Bósforo mientras la ciudad cobra vida.",
-          "imageSeed": "istanbul-night"
-        },
-        {
           "id": 7,
           "title": "Arte que te hace sonreír",
           "subtitle": "Los objetos coloridos y divertidos poseen una cualidad única de la que otros carecen: inyectan pura felicidad en una habitación.",
@@ -10028,22 +9948,6 @@
           "fig": "FIG. 04",
           "description": "Yaylaların temiz havası ve çam ormanlarının kokusu.",
           "imageSeed": "mountains"
-        },
-        {
-          "id": 5,
-          "title": "Siesta gölgeleri",
-          "subtitle": "Sevilla, İspanya",
-          "fig": "FIG. 05",
-          "description": "Sıcak bir öğleden sonra zamanın yavaş geçişi.",
-          "imageSeed": "shadows-wall"
-        },
-        {
-          "id": 6,
-          "title": "Kadife gece",
-          "subtitle": "İstanbul, Türkiye",
-          "fig": "FIG. 06",
-          "description": "Şehir canlanırken Boğaz'da yansıyan ışıklar.",
-          "imageSeed": "istanbul-night"
         },
         {
           "id": 7,
@@ -11732,22 +11636,6 @@
           "fig": "FIG. 04",
           "description": "L'aria fresca dell'altopiano e il profumo delle pinete.",
           "imageSeed": "mountains"
-        },
-        {
-          "id": 5,
-          "title": "Ombre della siesta",
-          "subtitle": "Siviglia, Spagna",
-          "fig": "FIG. 05",
-          "description": "Il lento scorrere del tempo in un pomeriggio caldo.",
-          "imageSeed": "shadows-wall"
-        },
-        {
-          "id": 6,
-          "title": "Notte di velluto",
-          "subtitle": "Istanbul, Turchia",
-          "fig": "FIG. 06",
-          "description": "Luci che si riflettono sul Bosforo mentre la città prende vita.",
-          "imageSeed": "istanbul-night"
         },
         {
           "id": 7,
