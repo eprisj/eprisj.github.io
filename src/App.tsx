@@ -787,10 +787,9 @@ function GalleryMasthead({ t }: { t: (key: string) => string }) {
   );
 }
 
-// Order the team is listed in on the About page (below the editor-in-chief).
-// Add an author's id here to give them a card in "The Team" — no other
-// wiring needed.
-const TEAM_AUTHOR_IDS = ['author-1785148692253-eva', 'author-1784732936927-kw554'];
+// Order the team is listed in on the About page. Add an author's id here to
+// give them a card in "The Team" — no other wiring needed.
+const TEAM_AUTHOR_IDS = ['author-1784896384236-4fokw', 'author-1785148692253-eva', 'author-1784732936927-kw554'];
 
 function TeamMemberCard({
   author,
@@ -799,7 +798,7 @@ function TeamMemberCard({
 }: {
   author: Author;
   roleLabel: string;
-  bioText?: string;
+  bioText?: ReactNode;
 }) {
   return (
     <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-12 max-w-2xl mx-auto">
@@ -814,7 +813,7 @@ function TeamMemberCard({
           {roleLabel}
         </div>
         {bioText && (
-          <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)] mb-4">{bioText}</p>
+          <div className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)] [&>p]:mb-4 last:[&>p]:mb-4">{bioText}</div>
         )}
         {(author.website || author.instagram) && (
           <div className="flex justify-center sm:justify-start gap-4 font-serif text-sm text-[var(--c-accent)]">
@@ -847,25 +846,43 @@ function AboutSection({ t }: { t: (key: string) => string }) {
   return (
     <div className="max-w-4xl mx-auto">
       {/*
-        Team leads the page, editor-in-chief follows below — both in the
-        same circular-photo card pattern so every profile here reads as
-        one consistent system. A link to the manifesto closes out the
-        "who we are" story with "what we believe".
+        One team, one list, one card pattern — Mariia isn't a separate
+        "editor-in-chief spread" bolted onto the team below her, she's the
+        first card in it. A link to the manifesto closes out the "who we
+        are" story with "what we believe".
       */}
       {team.length > 0 && (
         <Reveal>
-          <div className="mb-24">
+          <div className="mb-16">
             <h3 className="font-serif text-3xl md:text-4xl text-[var(--c-accent)] mb-12 text-center">{t('about.team')}</h3>
             <div className="flex flex-col gap-16 sm:gap-20">
               {team.map((member) => {
-                // The technical director's bio was localized under a fixed
-                // translation key before other team members existed; keep
-                // that behavior for him specifically, and fall back to the
-                // Author record's own fields for anyone added after.
+                const isEditor = member.id === 'author-1784896384236-4fokw';
                 const isTechDirector = member.id === 'author-1784732936927-kw554';
-                const roleLabel = isTechDirector ? t('about.techDirector.role') : (member.role || '');
-                const localizedBio = isTechDirector ? t('about.techDirector.bio') : '';
-                const bioText = localizedBio && localizedBio !== 'about.techDirector.bio' ? localizedBio : member.bio;
+
+                // Mariia's role/quote/bio and the tech director's role/bio were
+                // localized under fixed translation keys before this was a
+                // uniform list; keep that behavior for them specifically, and
+                // fall back to the Author record's own fields for anyone
+                // added after (currently English-only, e.g. Eva).
+                let roleLabel = member.role || '';
+                let bioText: ReactNode = member.bio;
+                if (isEditor) {
+                  roleLabel = t('editor');
+                  bioText = (
+                    <>
+                      <p>{t('about.quote1')}</p>
+                      <p>{t('about.bio')}</p>
+                    </>
+                  );
+                } else if (isTechDirector) {
+                  roleLabel = t('about.techDirector.role');
+                  const localizedBio = t('about.techDirector.bio');
+                  bioText = <p>{localizedBio !== 'about.techDirector.bio' ? localizedBio : member.bio}</p>;
+                } else if (member.bio) {
+                  bioText = <p>{member.bio}</p>;
+                }
+
                 return (
                   <TeamMemberCard key={member.id} author={member} roleLabel={roleLabel} bioText={bioText} />
                 );
@@ -876,42 +893,6 @@ function AboutSection({ t }: { t: (key: string) => string }) {
       )}
 
       <Reveal delay={0.15}>
-        <div className={team.length > 0 ? 'border-t border-[var(--c-accent)] pt-24' : ''}>
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-12 max-w-2xl mx-auto">
-            <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden shrink-0 border border-[rgb(var(--c-accent-rgb)_/_0.2)]">
-              <img
-                src="https://raw.githubusercontent.com/eprisj/eprisj.github.io/refs/heads/main/%D1%81over/mashapeut_1768216703_3808400198850843332_4043713819.jpg"
-                alt="Mariia Ivanova"
-                className="w-full h-full object-cover object-[50%_18%]"
-              />
-            </div>
-            <div className="text-center sm:text-left">
-              <div className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-4">
-                {t('editor')}
-              </div>
-              <h2 className="font-serif text-3xl sm:text-4xl text-[var(--c-accent)] mb-6">
-                Mariia Ivanova
-              </h2>
-              <div className="prose prose-lg prose-stone font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)]">
-                <p className="mb-6">
-                  {t('about.quote1')}
-                </p>
-                <p>
-                  {t('about.bio')}
-                </p>
-              </div>
-              <div className="mt-8 pt-6 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)]">
-                <div className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-1">{t('about.social')}</div>
-                <div className="flex justify-center sm:justify-start gap-4 font-serif text-lg text-[var(--c-accent)]">
-                  <a href="https://www.instagram.com/mashapeut/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--c-gold)] transition-colors">Instagram</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Reveal>
-
-      <Reveal delay={0.25}>
         <div className="border-t border-[var(--c-accent)] pt-16 mt-24 text-center">
           <a
             href="https://eprisjournal.com/manifest"
