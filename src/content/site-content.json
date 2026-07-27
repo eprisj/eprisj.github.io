@@ -1849,6 +1849,14 @@
       "fig": "FIG. 06",
       "description": "Lights reflect in the Bosphorus as the city comes to life.",
       "imageSeed": "istanbul-night"
+    },
+    {
+      "id": 9,
+      "title": "New gallery item",
+      "subtitle": "One-line context — replace me",
+      "fig": "FIG. 09",
+      "description": "One or two sentences describing this piece — replace with real copy before publishing.",
+      "imageSeed": "new-item-9"
     }
   ],
   "articles": [
@@ -3594,6 +3602,14 @@
           "fig": "FIG. 08",
           "description": "Одно или два предложения, описывающих эту статью. Перед публикацией замените реальной копией.",
           "imageSeed": "new-item-8"
+        },
+        {
+          "id": 9,
+          "title": "Новый элемент галереи",
+          "subtitle": "Однострочный контекст — замените меня",
+          "fig": "FIG. 09",
+          "description": "Одно или два предложения, описывающих эту статью. Перед публикацией замените реальной копией.",
+          "imageSeed": "new-item-9"
         }
       ],
       "articles": [
@@ -5269,6 +5285,14 @@
           "fig": "FIG. 08",
           "description": "Одне-два речення з описом цього твору — замініть на справжню копію перед публікацією.",
           "imageSeed": "new-item-8"
+        },
+        {
+          "id": 9,
+          "title": "Новий елемент галереї",
+          "subtitle": "Однорядковий контекст — замініть мене",
+          "fig": "FIG. 09",
+          "description": "Одне-два речення з описом цього твору — замініть на справжню копію перед публікацією.",
+          "imageSeed": "new-item-9"
         }
       ],
       "articles": [
@@ -6944,6 +6968,14 @@
           "fig": "FIG. 08",
           "description": "Ein oder zwei Sätze, die dieses Stück beschreiben – ersetzen Sie es vor der Veröffentlichung durch eine echte Kopie.",
           "imageSeed": "new-item-8"
+        },
+        {
+          "id": 9,
+          "title": "Neues Galerieelement",
+          "subtitle": "Einzeiliger Kontext – ersetze mich",
+          "fig": "FIG. 09",
+          "description": "Ein oder zwei Sätze, die dieses Stück beschreiben – ersetzen Sie es vor der Veröffentlichung durch eine echte Kopie.",
+          "imageSeed": "new-item-9"
         }
       ],
       "articles": [
@@ -8445,6 +8477,14 @@
           "fig": "FIG. 08",
           "description": "Una o dos oraciones que describan este artículo; reemplácelas con una copia real antes de publicarlo.",
           "imageSeed": "new-item-8"
+        },
+        {
+          "id": 9,
+          "title": "Nuevo elemento de la galería",
+          "subtitle": "Contexto de una línea: reemplázame",
+          "fig": "FIG. 09",
+          "description": "Una o dos oraciones que describan este artículo; reemplácelas con una copia real antes de publicarlo.",
+          "imageSeed": "new-item-9"
         }
       ],
       "articles": [
@@ -9946,6 +9986,14 @@
           "fig": "FIG. 08",
           "description": "Bu parçayı açıklayan bir veya iki cümle; yayınlamadan önce gerçek kopyayla değiştirin.",
           "imageSeed": "new-item-8"
+        },
+        {
+          "id": 9,
+          "title": "Yeni galeri öğesi",
+          "subtitle": "Tek satırlık bağlam — beni değiştir",
+          "fig": "FIG. 09",
+          "description": "Bu parçayı açıklayan bir veya iki cümle; yayınlamadan önce gerçek kopyayla değiştirin.",
+          "imageSeed": "new-item-9"
         }
       ],
       "articles": [
@@ -11621,6 +11669,14 @@
           "fig": "FIG. 08",
           "description": "Una o due frasi che descrivono questo pezzo: sostituisci con una copia reale prima di pubblicarla.",
           "imageSeed": "new-item-8"
+        },
+        {
+          "id": 9,
+          "title": "Nuovo elemento della galleria",
+          "subtitle": "Contesto di una riga: sostituiscimi",
+          "fig": "FIG. 09",
+          "description": "Una o due frasi che descrivono questo pezzo: sostituisci con una copia reale prima di pubblicarla.",
+          "imageSeed": "new-item-9"
         }
       ],
       "articles": [
