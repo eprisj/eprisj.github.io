@@ -847,13 +847,36 @@ function AboutSection({ t }: { t: (key: string) => string }) {
   return (
     <div className="max-w-4xl mx-auto">
       {/*
-        Editor-in-chief leads the page — her introduction is the "what this
-        publication is" answer. The team follows below, in one shared
-        circular-photo pattern (also used here for Mariia) so every profile
-        on this page reads as the same kind of card.
+        Team leads the page, editor-in-chief follows below — both in the
+        same circular-photo card pattern so every profile here reads as
+        one consistent system. A link to the manifesto closes out the
+        "who we are" story with "what we believe".
       */}
-      <Reveal>
-        <div className={team.length > 0 ? 'mb-24' : ''}>
+      {team.length > 0 && (
+        <Reveal>
+          <div className="mb-24">
+            <h3 className="font-serif text-3xl md:text-4xl text-[var(--c-accent)] mb-12 text-center">{t('about.team')}</h3>
+            <div className="flex flex-col gap-16 sm:gap-20">
+              {team.map((member) => {
+                // The technical director's bio was localized under a fixed
+                // translation key before other team members existed; keep
+                // that behavior for him specifically, and fall back to the
+                // Author record's own fields for anyone added after.
+                const isTechDirector = member.id === 'author-1784732936927-kw554';
+                const roleLabel = isTechDirector ? t('about.techDirector.role') : (member.role || '');
+                const localizedBio = isTechDirector ? t('about.techDirector.bio') : '';
+                const bioText = localizedBio && localizedBio !== 'about.techDirector.bio' ? localizedBio : member.bio;
+                return (
+                  <TeamMemberCard key={member.id} author={member} roleLabel={roleLabel} bioText={bioText} />
+                );
+              })}
+            </div>
+          </div>
+        </Reveal>
+      )}
+
+      <Reveal delay={0.15}>
+        <div className={team.length > 0 ? 'border-t border-[var(--c-accent)] pt-24' : ''}>
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-12 max-w-2xl mx-auto">
             <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden shrink-0 border border-[rgb(var(--c-accent-rgb)_/_0.2)]">
               <img
@@ -888,28 +911,21 @@ function AboutSection({ t }: { t: (key: string) => string }) {
         </div>
       </Reveal>
 
-      {team.length > 0 && (
-        <Reveal delay={0.15}>
-          <div className="border-t border-[var(--c-accent)] pt-24">
-            <h3 className="font-serif text-3xl md:text-4xl text-[var(--c-accent)] mb-12 text-center">{t('about.team')}</h3>
-            <div className="flex flex-col gap-16 sm:gap-20">
-              {team.map((member) => {
-                // The technical director's bio was localized under a fixed
-                // translation key before other team members existed; keep
-                // that behavior for him specifically, and fall back to the
-                // Author record's own fields for anyone added after.
-                const isTechDirector = member.id === 'author-1784732936927-kw554';
-                const roleLabel = isTechDirector ? t('about.techDirector.role') : (member.role || '');
-                const localizedBio = isTechDirector ? t('about.techDirector.bio') : '';
-                const bioText = localizedBio && localizedBio !== 'about.techDirector.bio' ? localizedBio : member.bio;
-                return (
-                  <TeamMemberCard key={member.id} author={member} roleLabel={roleLabel} bioText={bioText} />
-                );
-              })}
-            </div>
-          </div>
-        </Reveal>
-      )}
+      <Reveal delay={0.25}>
+        <div className="border-t border-[var(--c-accent)] pt-16 mt-24 text-center">
+          <a
+            href="https://eprisjournal.com/manifest"
+            className="inline-flex flex-col items-center gap-2 group"
+          >
+            <span className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)]">
+              {t('nav.manifest')}
+            </span>
+            <span className="font-serif text-2xl sm:text-3xl text-[var(--c-accent)] group-hover:text-[var(--c-gold)] transition-colors underline decoration-1 underline-offset-4 decoration-[rgb(var(--c-accent-rgb)_/_0.3)]">
+              Read our manifesto →
+            </span>
+          </a>
+        </div>
+      </Reveal>
     </div>
   );
 }
