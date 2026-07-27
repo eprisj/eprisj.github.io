@@ -2135,28 +2135,151 @@ function Sidebar({ t }: { t: (key: string) => string }) {
   );
 }
 
+// ── Search ────────────────────────────────────────────────────────────────
+// The old search was a single raw substring check across every article's raw
+// body text with no word boundaries — "ando" matched "abandoned", a query
+// like "design" (a word that turns up in passing in most captions) surfaced
+// nearly the entire article list in no particular order, and Gallery,
+// Reviews and Library weren't searched at all. Net effect: results looked
+// arbitrary, so the feature read as broken even though it "worked".
+//
+// Tokenize (Unicode-aware, so this holds up across every UI language) and
+// score whole-word / prefix matches per field, weighted by how much that
+// field says about relevance (title outweighs a stray mention in a content
+// block), then rank. Covers Articles, Gallery, Reviews and Library in one
+// pass so a search actually finds whatever the reader is looking for.
+function tokenize(text: string): string[] {
+  return (text.toLowerCase().match(/[\p{L}\p{N}]+/gu)) || [];
+}
+
+/** +weight if any query token exactly matches a field token, half that for a prefix match. */
+function scoreField(fieldTokens: string[], queryTokens: string[], weight: number): number {
+  if (fieldTokens.length === 0) return 0;
+  const fieldSet = new Set(fieldTokens);
+  let score = 0;
+  for (const qt of queryTokens) {
+    if (fieldSet.has(qt)) {
+      score += weight;
+    } else if (fieldTokens.some((ft) => ft.length > qt.length && ft.startsWith(qt))) {
+      score += weight * 0.4;
+    }
+  }
+  return score;
+}
+
+interface SearchHit {
+  key: string;
+  score: number;
+  kind: 'article' | 'item' | 'review' | 'library';
+  title: string;
+  meta: string;
+  excerpt: string;
+  imageUrl?: string;
+  onOpen: () => void;
+}
+
+function buildSearchIndex(
+  queryTokens: string[],
+  { articles, items, reviews, libraryItems }: { articles: Article[]; items: Item[]; reviews: Review[]; libraryItems: LibraryItem[] },
+  handlers: { onArticleClick: (a: Article) => void; onItemClick: (i: Item) => void; onGoToTab: (tab: string) => void },
+): SearchHit[] {
+  const hits: SearchHit[] = [];
+
+  for (const a of articles) {
+    const bodyText = (a.content || []).map((b) => (typeof b.content === 'string' ? b.content : '')).join(' ');
+    const score =
+      scoreField(tokenize(a.title), queryTokens, 10) +
+      scoreField(tokenize(a.category || ''), queryTokens, 6) +
+      scoreField(tokenize((a.tags || []).join(' ')), queryTokens, 6) +
+      scoreField(tokenize(a.author || ''), queryTokens, 4) +
+      scoreField(tokenize(a.excerpt || ''), queryTokens, 3) +
+      scoreField(tokenize(bodyText), queryTokens, 1);
+    if (score > 0) {
+      hits.push({
+        key: `article-${a.id}`, score, kind: 'article', title: a.title,
+        meta: [a.category, a.author].filter(Boolean).join(' · '),
+        excerpt: a.excerpt || '', imageUrl: a.imageUrl,
+        onOpen: () => handlers.onArticleClick(a),
+      });
+    }
+  }
+
+  for (const i of items) {
+    const score =
+      scoreField(tokenize(i.title), queryTokens, 10) +
+      scoreField(tokenize(i.subtitle || ''), queryTokens, 6) +
+      scoreField(tokenize(i.description || ''), queryTokens, 3);
+    if (score > 0) {
+      hits.push({
+        key: `item-${i.id}`, score, kind: 'item', title: i.title,
+        meta: i.subtitle || 'Gallery', excerpt: i.description || '', imageUrl: i.imageUrl,
+        onOpen: () => handlers.onItemClick(i),
+      });
+    }
+  }
+
+  for (const r of reviews) {
+    const score =
+      scoreField(tokenize(r.title), queryTokens, 10) +
+      scoreField(tokenize(r.subject || ''), queryTokens, 6) +
+      scoreField(tokenize(r.category || ''), queryTokens, 6) +
+      scoreField(tokenize(r.author || ''), queryTokens, 4) +
+      scoreField(tokenize(r.content || ''), queryTokens, 2);
+    if (score > 0) {
+      hits.push({
+        key: `review-${r.id}`, score, kind: 'review', title: r.title,
+        meta: [r.category, r.subject].filter(Boolean).join(' · '),
+        excerpt: r.verdict || r.content || '', imageUrl: r.imageUrl,
+        onOpen: () => handlers.onGoToTab('reviews'),
+      });
+    }
+  }
+
+  for (const l of libraryItems) {
+    const score =
+      scoreField(tokenize(l.title), queryTokens, 10) +
+      scoreField(tokenize(l.type || ''), queryTokens, 4);
+    if (score > 0) {
+      hits.push({
+        key: `library-${l.id}`, score, kind: 'library', title: l.title,
+        meta: [l.type, l.year].filter(Boolean).join(' · '), excerpt: '',
+        onOpen: () => handlers.onGoToTab('library'),
+      });
+    }
+  }
+
+  return hits.sort((a, b) => b.score - a.score);
+}
+
+const SEARCH_KIND_LABEL: Record<SearchHit['kind'], string> = {
+  article: 'Article', item: 'Gallery', review: 'Review', library: 'Library',
+};
+
 function SearchResults({
   query,
   articles,
+  items,
+  reviews,
+  libraryItems,
   onClear,
   onArticleClick,
-  t,
+  onItemClick,
+  onGoToTab,
 }: {
   query: string;
   articles: Article[];
+  items: Item[];
+  reviews: Review[];
+  libraryItems: LibraryItem[];
   onClear: () => void;
   onArticleClick: (article: Article) => void;
-  t: (key: string) => string;
+  onItemClick: (item: Item) => void;
+  onGoToTab: (tab: string) => void;
 }) {
-  const q = query.toLowerCase();
-  const results = articles.filter(a =>
-    a.title.toLowerCase().includes(q) ||
-    (a.excerpt || '').toLowerCase().includes(q) ||
-    (a.category || '').toLowerCase().includes(q) ||
-    (a.author || '').toLowerCase().includes(q) ||
-    (a.tags || []).some(tag => tag.toLowerCase().includes(q)) ||
-    (a.content || []).some(b => typeof b.content === 'string' && b.content.toLowerCase().includes(q))
-  );
+  const queryTokens = tokenize(query);
+  const results = queryTokens.length > 0
+    ? buildSearchIndex(queryTokens, { articles, items, reviews, libraryItems }, { onArticleClick, onItemClick, onGoToTab })
+    : [];
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -2180,7 +2303,36 @@ function SearchResults({
           <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.3)]">Nothing found</p>
         </div>
       ) : (
-        <ArticlesSection articles={results} onArticleClick={onArticleClick} t={t} />
+        <div className="flex flex-col gap-4">
+          {results.map((hit) => (
+            <button
+              key={hit.key}
+              type="button"
+              onClick={hit.onOpen}
+              className="flex items-center gap-5 text-left border border-[rgb(var(--c-accent-rgb)_/_0.2)] hover:border-[var(--c-accent)] transition-colors p-4 sm:p-5"
+            >
+              {hit.imageUrl ? (
+                <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-[#E8DED5] overflow-hidden">
+                  <img src={resolveMediaSource(hit.imageUrl, 160, 160)} alt="" className="w-full h-full object-cover" />
+                </div>
+              ) : (
+                <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-[#E8DED5] flex items-center justify-center">
+                  <BookOpen size={20} className="opacity-30" />
+                </div>
+              )}
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="font-mono text-[9px] uppercase tracking-widest text-[var(--c-gold)]">{SEARCH_KIND_LABEL[hit.kind]}</span>
+                  {hit.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{hit.meta}</span>}
+                </div>
+                <h3 className="font-serif text-lg sm:text-xl text-[var(--c-accent)] truncate">{hit.title}</h3>
+                {hit.excerpt && (
+                  <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.65)] line-clamp-1 mt-0.5">{hit.excerpt}</p>
+                )}
+              </div>
+            </button>
+          ))}
+        </div>
       )}
     </div>
   );
@@ -2489,9 +2641,13 @@ export default function App() {
                   <SearchResults
                     query={activeSearch}
                     articles={articles}
+                    items={items}
+                    reviews={reviews}
+                    libraryItems={libraryItems}
                     onClear={() => { setActiveSearch(''); navigate(activeTab === 'gallery' ? '/' : `/${activeTab}`); }}
                     onArticleClick={(article) => handleSelectArticle(article.id, article)}
-                    t={t}
+                    onItemClick={(item) => { setActiveSearch(''); handleSetTab('gallery'); setSelectedGalleryItem(item); }}
+                    onGoToTab={handleSetTab}
                   />
                 ) : (
                   <>
