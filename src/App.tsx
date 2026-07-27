@@ -13,6 +13,7 @@ const PassportPage = lazy(() => import('./pages/passport/PassportPage').then((m)
 const DesignPage = lazy(() => import('./design/DesignPage').then((m) => ({ default: m.DesignPage })));
 import {
   Article,
+  Author,
   ContentBlock,
   DEFAULT_LANGUAGE,
   getAvailableLanguages,
@@ -786,101 +787,125 @@ function GalleryMasthead({ t }: { t: (key: string) => string }) {
   );
 }
 
+// Order the team is listed in on the About page (below the editor-in-chief).
+// Add an author's id here to give them a card in "The Team" — no other
+// wiring needed.
+const TEAM_AUTHOR_IDS = ['author-1785148692253-eva', 'author-1784732936927-kw554'];
+
+function TeamMemberCard({
+  author,
+  roleLabel,
+  bioText,
+}: {
+  author: Author;
+  roleLabel: string;
+  bioText?: string;
+}) {
+  return (
+    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-12 max-w-2xl mx-auto">
+      {author.photoUrl && (
+        <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden shrink-0 border border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+          <img src={author.photoUrl} alt={author.name} className="w-full h-full object-cover" />
+        </div>
+      )}
+      <div className="text-center sm:text-left">
+        <h4 className="font-serif text-2xl md:text-3xl text-[var(--c-accent)] mb-1">{author.name}</h4>
+        <div className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-4">
+          {roleLabel}
+        </div>
+        {bioText && (
+          <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)] mb-4">{bioText}</p>
+        )}
+        {(author.website || author.instagram) && (
+          <div className="flex justify-center sm:justify-start gap-4 font-serif text-sm text-[var(--c-accent)]">
+            {author.website && (
+              <a href={author.website} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--c-gold)] transition-colors">
+                Website
+              </a>
+            )}
+            {author.instagram && (
+              <a
+                href={`https://instagram.com/${author.instagram.replace(/^@/, '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[var(--c-gold)] transition-colors"
+              >
+                Instagram
+              </a>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function AboutSection({ t }: { t: (key: string) => string }) {
-  const techDirector = getAuthors().find((a) => a.id === 'author-1784732936927-kw554');
+  const authorsById = new Map(getAuthors().map((a) => [a.id, a]));
+  const team = TEAM_AUTHOR_IDS.map((id) => authorsById.get(id)).filter((a): a is Author => Boolean(a));
+
   return (
     <div className="max-w-4xl mx-auto">
       {/*
-        Editor-in-chief and the team member below used to be two unrelated
-        layouts — a full-bleed 3:4 editorial photo here vs. a circular
-        portrait + centered text down in the team block. Same page, two
-        different "who is this person" patterns. Unified on the circular
-        card (the one already used for the team, matching the author's own
-        site) so both profiles read as the same kind of thing.
+        Editor-in-chief leads the page — her introduction is the "what this
+        publication is" answer. The team follows below, in one shared
+        circular-photo pattern (also used here for Mariia) so every profile
+        on this page reads as the same kind of card.
       */}
       <Reveal>
-        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-12 max-w-2xl mx-auto mb-24">
-          <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden shrink-0 border border-[rgb(var(--c-accent-rgb)_/_0.2)]">
-            <img
-              src="https://raw.githubusercontent.com/eprisj/eprisj.github.io/refs/heads/main/%D1%81over/mashapeut_1768216703_3808400198850843332_4043713819.jpg"
-              alt="Mariia Ivanova"
-              className="w-full h-full object-cover object-[50%_18%]"
-            />
-          </div>
-          <div className="text-center sm:text-left">
-            <div className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-4">
-              {t('editor')}
+        <div className={team.length > 0 ? 'mb-24' : ''}>
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-12 max-w-2xl mx-auto">
+            <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden shrink-0 border border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+              <img
+                src="https://raw.githubusercontent.com/eprisj/eprisj.github.io/refs/heads/main/%D1%81over/mashapeut_1768216703_3808400198850843332_4043713819.jpg"
+                alt="Mariia Ivanova"
+                className="w-full h-full object-cover object-[50%_18%]"
+              />
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--c-accent)] mb-6">
-              Mariia Ivanova
-            </h2>
-            <div className="prose prose-lg prose-stone font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)]">
-              <p className="mb-6">
-                {t('about.quote1')}
-              </p>
-              <p>
-                {t('about.bio')}
-              </p>
-            </div>
-            <div className="mt-8 pt-6 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)]">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-1">{t('about.social')}</div>
-              <div className="flex justify-center sm:justify-start gap-4 font-serif text-lg text-[var(--c-accent)]">
-                <a href="https://www.instagram.com/mashapeut/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--c-gold)] transition-colors">Instagram</a>
+            <div className="text-center sm:text-left">
+              <div className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-4">
+                {t('editor')}
+              </div>
+              <h2 className="font-serif text-3xl sm:text-4xl text-[var(--c-accent)] mb-6">
+                Mariia Ivanova
+              </h2>
+              <div className="prose prose-lg prose-stone font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)]">
+                <p className="mb-6">
+                  {t('about.quote1')}
+                </p>
+                <p>
+                  {t('about.bio')}
+                </p>
+              </div>
+              <div className="mt-8 pt-6 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+                <div className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-1">{t('about.social')}</div>
+                <div className="flex justify-center sm:justify-start gap-4 font-serif text-lg text-[var(--c-accent)]">
+                  <a href="https://www.instagram.com/mashapeut/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--c-gold)] transition-colors">Instagram</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </Reveal>
 
-      {techDirector && (
-        <Reveal delay={0.2}>
+      {team.length > 0 && (
+        <Reveal delay={0.15}>
           <div className="border-t border-[var(--c-accent)] pt-24">
             <h3 className="font-serif text-3xl md:text-4xl text-[var(--c-accent)] mb-12 text-center">{t('about.team')}</h3>
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-12 max-w-2xl mx-auto">
-              {techDirector.photoUrl && (
-                <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden shrink-0 border border-[rgb(var(--c-accent-rgb)_/_0.2)]">
-                  <img
-                    src={techDirector.photoUrl}
-                    alt={techDirector.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              )}
-              <div className="text-center sm:text-left">
-                <h4 className="font-serif text-2xl md:text-3xl text-[var(--c-accent)] mb-1">{techDirector.name}</h4>
-                <div className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-4">
-                  {t('about.techDirector.role')}
-                </div>
-                {(() => {
-                  // The Author record's bio is a single global string, so it
-                  // froze in one language. Prefer the localized translation key
-                  // and only fall back to the record's bio when it's unset.
-                  const bio = t('about.techDirector.bio');
-                  const text = bio === 'about.techDirector.bio' ? techDirector.bio : bio;
-                  return text ? (
-                    <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)] mb-4">{text}</p>
-                  ) : null;
-                })()}
-                {(techDirector.website || techDirector.instagram) && (
-                  <div className="flex justify-center sm:justify-start gap-4 font-serif text-sm text-[var(--c-accent)]">
-                    {techDirector.website && (
-                      <a href={techDirector.website} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--c-gold)] transition-colors">
-                        Website
-                      </a>
-                    )}
-                    {techDirector.instagram && (
-                      <a
-                        href={`https://instagram.com/${techDirector.instagram.replace(/^@/, '')}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-[var(--c-gold)] transition-colors"
-                      >
-                        Instagram
-                      </a>
-                    )}
-                  </div>
-                )}
-              </div>
+            <div className="flex flex-col gap-16 sm:gap-20">
+              {team.map((member) => {
+                // The technical director's bio was localized under a fixed
+                // translation key before other team members existed; keep
+                // that behavior for him specifically, and fall back to the
+                // Author record's own fields for anyone added after.
+                const isTechDirector = member.id === 'author-1784732936927-kw554';
+                const roleLabel = isTechDirector ? t('about.techDirector.role') : (member.role || '');
+                const localizedBio = isTechDirector ? t('about.techDirector.bio') : '';
+                const bioText = localizedBio && localizedBio !== 'about.techDirector.bio' ? localizedBio : member.bio;
+                return (
+                  <TeamMemberCard key={member.id} author={member} roleLabel={roleLabel} bioText={bioText} />
+                );
+              })}
             </div>
           </div>
         </Reveal>
