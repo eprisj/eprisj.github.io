@@ -1787,8 +1787,7 @@
       "fig": "FIG. 09",
       "description": "How Sensitivity to Cultural Heritage Shape Poland’s Design Scene",
       "imageSeed": "",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg",
-      "updatedAt": "2026-07-27T09:56:05.129Z"
+      "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg"
     },
     {
       "id": 8,
@@ -1843,22 +1842,6 @@
       "description": "Choosing a place to stay in a new destination means entrusting it with the significant moments of your life. Falling into bed after a long walk through unfamiliar streets, late-night talks filled with the thoughts and emotions of the day, planning the next breakfast at your newly favorite nearby boulangerie, sharing genuine smiles and the pure excitement of exploration.",
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/mro4ypcjfxlboi.webp"
-    },
-    {
-      "id": 5,
-      "title": "Siesta shadow",
-      "subtitle": "Seville, Spain",
-      "fig": "FIG. 05",
-      "description": "The slow passage of time on a hot afternoon.",
-      "imageSeed": "shadows-wall"
-    },
-    {
-      "id": 6,
-      "title": "Velvet night",
-      "subtitle": "Istanbul, Türkiye",
-      "fig": "FIG. 06",
-      "description": "Lights reflect in the Bosphorus as the city comes to life.",
-      "imageSeed": "istanbul-night"
     }
   ],
   "articles": [
@@ -3647,6 +3630,15 @@
           "fig": "FIG. 08",
           "description": "Одно или два предложения, описывающих эту статью. Перед публикацией замените реальной копией.",
           "imageSeed": "new-item-8"
+        },
+        {
+          "id": 9,
+          "title": "Польский дизайн: сотканный по памяти",
+          "subtitle": "Дизайн",
+          "fig": "FIG. 09",
+          "description": "Как чувствительность к культурному наследию влияет на дизайн-сцену в Польше",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg"
         }
       ],
       "articles": [
@@ -5364,6 +5356,15 @@
           "fig": "FIG. 08",
           "description": "Одне-два речення з описом цього твору — замініть на справжню копію перед публікацією.",
           "imageSeed": "new-item-8"
+        },
+        {
+          "id": 9,
+          "title": "Польський дизайн: зітканий з пам'яті",
+          "subtitle": "Дизайн",
+          "fig": "FIG. 09",
+          "description": "Як чутливість до культурної спадщини формує дизайнерську сцену Польщі",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg"
         }
       ],
       "articles": [
@@ -7081,6 +7082,15 @@
           "fig": "FIG. 08",
           "description": "Ein oder zwei Sätze, die dieses Stück beschreiben – ersetzen Sie es vor der Veröffentlichung durch eine echte Kopie.",
           "imageSeed": "new-item-8"
+        },
+        {
+          "id": 9,
+          "title": "Polnisches Design: Aus der Erinnerung gewebt",
+          "subtitle": "Design",
+          "fig": "FIG. 09",
+          "description": "Wie die Sensibilität für das kulturelle Erbe die polnische Designszene prägt",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg"
         }
       ],
       "articles": [
@@ -8624,6 +8634,15 @@
           "fig": "FIG. 08",
           "description": "Una o dos oraciones que describan este artículo; reemplácelas con una copia real antes de publicarlo.",
           "imageSeed": "new-item-8"
+        },
+        {
+          "id": 9,
+          "title": "Diseño polaco: tejido de memoria",
+          "subtitle": "Diseño",
+          "fig": "FIG. 09",
+          "description": "Cómo la sensibilidad hacia el patrimonio cultural da forma a la escena del diseño de Polonia",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg"
         }
       ],
       "articles": [
@@ -10167,6 +10186,15 @@
           "fig": "FIG. 08",
           "description": "Bu parçayı açıklayan bir veya iki cümle; yayınlamadan önce gerçek kopyayla değiştirin.",
           "imageSeed": "new-item-8"
+        },
+        {
+          "id": 9,
+          "title": "Polonya Tasarımı: Hafızadan Dokunmuş",
+          "subtitle": "Tasarım",
+          "fig": "FIG. 09",
+          "description": "Kültürel Mirasa Duyarlılık Polonya'nın Tasarım Ortamını Nasıl Şekillendiriyor?",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg"
         }
       ],
       "articles": [
@@ -11884,6 +11912,15 @@
           "fig": "FIG. 08",
           "description": "Una o due frasi che descrivono questo pezzo: sostituisci con una copia reale prima di pubblicarla.",
           "imageSeed": "new-item-8"
+        },
+        {
+          "id": 9,
+          "title": "Design polacco: tessuto dalla memoria",
+          "subtitle": "Progetto",
+          "fig": "FIG. 09",
+          "description": "Come la sensibilità al patrimonio culturale plasma la scena del design polacco",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg"
         }
       ],
       "articles": [
