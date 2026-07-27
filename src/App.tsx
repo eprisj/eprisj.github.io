@@ -790,20 +790,28 @@ function AboutSection({ t }: { t: (key: string) => string }) {
   const techDirector = getAuthors().find((a) => a.id === 'author-1784732936927-kw554');
   return (
     <div className="max-w-4xl mx-auto">
+      {/*
+        Editor-in-chief and the team member below used to be two unrelated
+        layouts — a full-bleed 3:4 editorial photo here vs. a circular
+        portrait + centered text down in the team block. Same page, two
+        different "who is this person" patterns. Unified on the circular
+        card (the one already used for the team, matching the author's own
+        site) so both profiles read as the same kind of thing.
+      */}
       <Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
-          <div className="aspect-[3/4] bg-[#E8DED5] relative overflow-hidden">
-             <img
-               src="https://raw.githubusercontent.com/eprisj/eprisj.github.io/refs/heads/main/%D1%81over/mashapeut_1768216703_3808400198850843332_4043713819.jpg"
-               alt="Mariia Ivanova"
-               className="w-full h-full object-cover object-[50%_18%] grayscale"
-             />
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-12 max-w-2xl mx-auto mb-24">
+          <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden shrink-0 border border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+            <img
+              src="https://raw.githubusercontent.com/eprisj/eprisj.github.io/refs/heads/main/%D1%81over/mashapeut_1768216703_3808400198850843332_4043713819.jpg"
+              alt="Mariia Ivanova"
+              className="w-full h-full object-cover object-[50%_18%]"
+            />
           </div>
-          <div>
+          <div className="text-center sm:text-left">
             <div className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-4">
               {t('editor')}
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl text-[var(--c-accent)] mb-6 sm:mb-8">
+            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--c-accent)] mb-6">
               Mariia Ivanova
             </h2>
             <div className="prose prose-lg prose-stone font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)]">
@@ -814,9 +822,9 @@ function AboutSection({ t }: { t: (key: string) => string }) {
                 {t('about.bio')}
               </p>
             </div>
-            <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+            <div className="mt-8 pt-6 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)]">
               <div className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-1">{t('about.social')}</div>
-              <div className="flex gap-4 font-serif text-lg text-[var(--c-accent)]">
+              <div className="flex justify-center sm:justify-start gap-4 font-serif text-lg text-[var(--c-accent)]">
                 <a href="https://www.instagram.com/mashapeut/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--c-gold)] transition-colors">Instagram</a>
               </div>
             </div>
