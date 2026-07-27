@@ -1785,7 +1785,7 @@
       "title": "Polish Design: Woven from Memory",
       "subtitle": "Design",
       "fig": "FIG. 09",
-      "description": "How Sensitivity to Cultural Heritage Shapes Poland's Design Scene",
+      "description": "Contemporary Polish design has arrived at a moment of profound, quiet maturity. To walk through the studios of today’s leading architects and furniture designers is to encounter a language of rigorous minimalism, tactile raw materials, and a deliberate structural honesty. Yet, this modern clarity is not a rejection of the past - it is the culmination of a century-long dialogue regarding what it means to create with a national soul.",
       "imageSeed": "new-item-9",
       "imageUrl": "https://api.eprisjournal.com/uploads/ms32cwwlzm4hw7.jpg"
     },
@@ -1842,6 +1842,22 @@
       "description": "Choosing a place to stay in a new destination means entrusting it with the significant moments of your life. Falling into bed after a long walk through unfamiliar streets, late-night talks filled with the thoughts and emotions of the day, planning the next breakfast at your newly favorite nearby boulangerie, sharing genuine smiles and the pure excitement of exploration.",
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/mro4ypcjfxlboi.webp"
+    },
+    {
+      "id": 5,
+      "title": "Siesta shadow",
+      "subtitle": "Seville, Spain",
+      "fig": "FIG. 05",
+      "description": "The slow passage of time on a hot afternoon.",
+      "imageSeed": "shadows-wall"
+    },
+    {
+      "id": 6,
+      "title": "Velvet night",
+      "subtitle": "Istanbul, Türkiye",
+      "fig": "FIG. 06",
+      "description": "Lights reflect in the Bosphorus as the city comes to life.",
+      "imageSeed": "istanbul-night"
     }
   ],
   "articles": [
