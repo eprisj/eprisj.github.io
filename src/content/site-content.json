@@ -1781,6 +1781,15 @@
   },
   "items": [
     {
+      "id": 9,
+      "title": "Polish Design: Woven from Memory",
+      "subtitle": "Design",
+      "fig": "FIG. 09",
+      "description": "How Sensitivity to Cultural Heritage Shapes Poland's Design Scene",
+      "imageSeed": "new-item-9",
+      "imageUrl": "https://api.eprisjournal.com/uploads/ms32cwwlzm4hw7.jpg"
+    },
+    {
       "id": 8,
       "title": "Tadao Ando: Decoding the Philosophy of Pure Design",
       "subtitle": "Architecture",
@@ -1849,14 +1858,6 @@
       "fig": "FIG. 06",
       "description": "Lights reflect in the Bosphorus as the city comes to life.",
       "imageSeed": "istanbul-night"
-    },
-    {
-      "id": 9,
-      "title": "Polish Design: Woven from Memory",
-      "subtitle": "Design",
-      "fig": "FIG. 09",
-      "description": "How Sensitivity to Cultural Heritage Shapes Poland's Design Scene",
-      "imageSeed": "new-item-9"
     }
   ],
   "articles": [
