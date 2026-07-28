@@ -478,6 +478,20 @@ function NavBar({
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
+  useEffect(() => {
+    if (!isSearchOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsSearchOpen(false);
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [isSearchOpen]);
+
   const tabs = [
     { id: 'gallery', label: t('nav.gallery') },
     { id: 'articles', label: t('nav.articles') },
@@ -624,6 +638,12 @@ function NavBar({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[60] bg-[rgb(var(--c-bg-rgb)_/_0.95)] backdrop-blur-sm flex items-center justify-center p-4"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="site-search-title"
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget) setIsSearchOpen(false);
+            }}
           >
             <button
               type="button"
@@ -634,14 +654,29 @@ function NavBar({
               <X size={24} />
             </button>
             <form onSubmit={handleSearch} className="w-full max-w-3xl">
+              <label id="site-search-title" htmlFor="site-search-input" className="sr-only">Search EPRIS Journal</label>
               <input 
-                type="text" 
+                id="site-search-input"
+                type="search"
                 placeholder={t('search.placeholder')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-transparent border-b-2 border-[var(--c-accent)] text-3xl md:text-5xl font-serif text-[var(--c-accent)] placeholder-[rgb(var(--c-accent-rgb)_/_0.2)] focus:outline-none py-4 text-center"
+                maxLength={120}
+                autoComplete="off"
+                enterKeyHint="search"
+                className="w-full bg-transparent border-b-2 border-[var(--c-accent)] text-3xl md:text-5xl font-serif text-[var(--c-accent)] placeholder-[rgb(var(--c-accent-rgb)_/_0.35)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c-gold)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--c-bg)] py-4 text-center"
                 autoFocus
               />
+              <div className="mt-6 flex items-center justify-center gap-4">
+                <span className="hidden sm:inline font-mono text-[10px] uppercase tracking-widest opacity-50">Enter to search · Esc to close</span>
+                <button
+                  type="submit"
+                  disabled={!searchQuery.trim()}
+                  className="min-h-11 px-6 rounded-full bg-[var(--c-accent)] text-[var(--c-bg)] font-mono text-xs uppercase tracking-widest disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c-gold)]"
+                >
+                  Search
+                </button>
+              </div>
             </form>
           </motion.div>
         )}
@@ -2148,23 +2183,62 @@ function Sidebar({ t }: { t: (key: string) => string }) {
 // field says about relevance (title outweighs a stray mention in a content
 // block), then rank. Covers Articles, Gallery, Reviews and Library in one
 // pass so a search actually finds whatever the reader is looking for.
-function tokenize(text: string): string[] {
-  return (text.toLowerCase().match(/[\p{L}\p{N}]+/gu)) || [];
+function normalizeSearchText(text: string): string {
+  return text
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLocaleLowerCase()
+    .replace(/[\u2018\u2019ʼ]/g, "'");
 }
 
-/** +weight if any query token exactly matches a field token, half that for a prefix match. */
-function scoreField(fieldTokens: string[], queryTokens: string[], weight: number): number {
-  if (fieldTokens.length === 0) return 0;
-  const fieldSet = new Set(fieldTokens);
-  let score = 0;
-  for (const qt of queryTokens) {
-    if (fieldSet.has(qt)) {
-      score += weight;
-    } else if (fieldTokens.some((ft) => ft.length > qt.length && ft.startsWith(qt))) {
-      score += weight * 0.4;
+function tokenize(text: string): string[] {
+  return normalizeSearchText(text).match(/[\p{L}\p{N}]+/gu) || [];
+}
+
+function editDistanceAtMostOne(a: string, b: string): boolean {
+  if (Math.abs(a.length - b.length) > 1) return false;
+  let i = 0;
+  let j = 0;
+  let edits = 0;
+  while (i < a.length && j < b.length) {
+    if (a[i] === b[j]) {
+      i += 1;
+      j += 1;
+      continue;
+    }
+    edits += 1;
+    if (edits > 1) return false;
+    if (a.length > b.length) i += 1;
+    else if (b.length > a.length) j += 1;
+    else {
+      i += 1;
+      j += 1;
     }
   }
+  return edits + Number(i < a.length || j < b.length) <= 1;
+}
+
+function tokenMatch(fieldToken: string, queryToken: string): number {
+  if (fieldToken === queryToken) return 1;
+  if (queryToken.length >= 2 && fieldToken.startsWith(queryToken)) return 0.62;
+  if (queryToken.length >= 4 && fieldToken.includes(queryToken)) return 0.34;
+  if (queryToken.length >= 5 && editDistanceAtMostOne(fieldToken, queryToken)) return 0.28;
+  return 0;
+}
+
+/** Score exact, prefix, partial and one-character typo matches within a field. */
+function scoreField(fieldTokens: string[], queryTokens: string[], weight: number): number {
+  if (fieldTokens.length === 0) return 0;
+  let score = 0;
+  for (const qt of queryTokens) {
+    const bestMatch = fieldTokens.reduce((best, ft) => Math.max(best, tokenMatch(ft, qt)), 0);
+    score += bestMatch * weight;
+  }
   return score;
+}
+
+function matchesEveryQueryToken(fieldTokens: string[], queryTokens: string[]): boolean {
+  return queryTokens.every((queryToken) => fieldTokens.some((fieldToken) => tokenMatch(fieldToken, queryToken) > 0));
 }
 
 interface SearchHit {
@@ -2187,6 +2261,7 @@ function buildSearchIndex(
 
   for (const a of articles) {
     const bodyText = (a.content || []).map((b) => (typeof b.content === 'string' ? b.content : '')).join(' ');
+    const allTokens = tokenize([a.title, a.category, (a.tags || []).join(' '), a.author, a.excerpt, bodyText].filter(Boolean).join(' '));
     const score =
       scoreField(tokenize(a.title), queryTokens, 10) +
       scoreField(tokenize(a.category || ''), queryTokens, 6) +
@@ -2194,7 +2269,7 @@ function buildSearchIndex(
       scoreField(tokenize(a.author || ''), queryTokens, 4) +
       scoreField(tokenize(a.excerpt || ''), queryTokens, 3) +
       scoreField(tokenize(bodyText), queryTokens, 1);
-    if (score > 0) {
+    if (score > 0 && matchesEveryQueryToken(allTokens, queryTokens)) {
       hits.push({
         key: `article-${a.id}`, score, kind: 'article', title: a.title,
         meta: [a.category, a.author].filter(Boolean).join(' · '),
@@ -2205,11 +2280,12 @@ function buildSearchIndex(
   }
 
   for (const i of items) {
+    const allTokens = tokenize([i.title, i.subtitle, i.description].filter(Boolean).join(' '));
     const score =
       scoreField(tokenize(i.title), queryTokens, 10) +
       scoreField(tokenize(i.subtitle || ''), queryTokens, 6) +
       scoreField(tokenize(i.description || ''), queryTokens, 3);
-    if (score > 0) {
+    if (score > 0 && matchesEveryQueryToken(allTokens, queryTokens)) {
       hits.push({
         key: `item-${i.id}`, score, kind: 'item', title: i.title,
         meta: i.subtitle || 'Gallery', excerpt: i.description || '', imageUrl: i.imageUrl,
@@ -2219,13 +2295,14 @@ function buildSearchIndex(
   }
 
   for (const r of reviews) {
+    const allTokens = tokenize([r.title, r.subject, r.category, r.author, r.content].filter(Boolean).join(' '));
     const score =
       scoreField(tokenize(r.title), queryTokens, 10) +
       scoreField(tokenize(r.subject || ''), queryTokens, 6) +
       scoreField(tokenize(r.category || ''), queryTokens, 6) +
       scoreField(tokenize(r.author || ''), queryTokens, 4) +
       scoreField(tokenize(r.content || ''), queryTokens, 2);
-    if (score > 0) {
+    if (score > 0 && matchesEveryQueryToken(allTokens, queryTokens)) {
       hits.push({
         key: `review-${r.id}`, score, kind: 'review', title: r.title,
         meta: [r.category, r.subject].filter(Boolean).join(' · '),
@@ -2236,10 +2313,11 @@ function buildSearchIndex(
   }
 
   for (const l of libraryItems) {
+    const allTokens = tokenize([l.title, l.type, l.year].filter(Boolean).join(' '));
     const score =
       scoreField(tokenize(l.title), queryTokens, 10) +
       scoreField(tokenize(l.type || ''), queryTokens, 4);
-    if (score > 0) {
+    if (score > 0 && matchesEveryQueryToken(allTokens, queryTokens)) {
       hits.push({
         key: `library-${l.id}`, score, kind: 'library', title: l.title,
         meta: [l.type, l.year].filter(Boolean).join(' · '), excerpt: '',
@@ -2248,7 +2326,7 @@ function buildSearchIndex(
     }
   }
 
-  return hits.sort((a, b) => b.score - a.score);
+  return hits.sort((a, b) => b.score - a.score || a.title.localeCompare(b.title)).slice(0, 100);
 }
 
 const SEARCH_KIND_LABEL: Record<SearchHit['kind'], string> = {
@@ -2265,6 +2343,7 @@ function SearchResults({
   onArticleClick,
   onItemClick,
   onGoToTab,
+  onSearch,
 }: {
   query: string;
   articles: Article[];
@@ -2275,15 +2354,47 @@ function SearchResults({
   onArticleClick: (article: Article) => void;
   onItemClick: (item: Item) => void;
   onGoToTab: (tab: string) => void;
+  onSearch: (query: string) => void;
 }) {
-  const queryTokens = tokenize(query);
+  const [draftQuery, setDraftQuery] = useState(query);
+  useEffect(() => setDraftQuery(query), [query]);
+  const queryTokens = Array.from(new Set(tokenize(query)));
   const results = queryTokens.length > 0
     ? buildSearchIndex(queryTokens, { articles, items, reviews, libraryItems }, { onArticleClick, onItemClick, onGoToTab })
     : [];
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="flex items-center justify-between mb-8 pb-6 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+      <form
+        role="search"
+        onSubmit={(event) => {
+          event.preventDefault();
+          const nextQuery = draftQuery.trim();
+          if (nextQuery) onSearch(nextQuery);
+        }}
+        className="flex flex-col sm:flex-row gap-3 mb-8"
+      >
+        <label htmlFor="results-search-input" className="sr-only">Search EPRIS Journal</label>
+        <input
+          id="results-search-input"
+          type="search"
+          value={draftQuery}
+          onChange={(event) => setDraftQuery(event.target.value)}
+          maxLength={120}
+          autoComplete="off"
+          enterKeyHint="search"
+          className="min-h-12 flex-1 bg-transparent border border-[rgb(var(--c-accent-rgb)_/_0.35)] px-4 font-serif text-lg placeholder:opacity-45 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c-gold)]"
+          placeholder="Search articles, authors, places and topics"
+        />
+        <button
+          type="submit"
+          disabled={!draftQuery.trim()}
+          className="min-h-12 px-6 bg-[var(--c-accent)] text-[var(--c-bg)] font-mono text-xs uppercase tracking-widest disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c-gold)]"
+        >
+          Search
+        </button>
+      </form>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5 mb-8 pb-6 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)]" aria-live="polite">
         <div>
           <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-1">Search results</p>
           <h2 className="font-serif text-2xl text-[var(--c-accent)]">
@@ -2293,14 +2404,16 @@ function SearchResults({
         <button
           type="button"
           onClick={onClear}
-          className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:text-[var(--c-accent)] transition-colors border border-[rgb(var(--c-accent-rgb)_/_0.2)] px-4 py-2 rounded-full"
+          className="min-h-11 flex items-center justify-center gap-2 font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.65)] hover:text-[var(--c-accent)] transition-colors border border-[rgb(var(--c-accent-rgb)_/_0.3)] px-4 py-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c-gold)]"
         >
           <X size={12} /> Clear
         </button>
       </div>
       {results.length === 0 ? (
         <div className="text-center py-24">
-          <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.3)]">Nothing found</p>
+          <Search size={28} className="mx-auto mb-5 opacity-30" aria-hidden="true" />
+          <p className="font-serif text-2xl mb-2">Nothing found for “{query}”</p>
+          <p className="font-mono text-xs tracking-wide text-[rgb(var(--c-accent-rgb)_/_0.55)]">Check the spelling, use fewer words, or search by author, place or topic.</p>
         </div>
       ) : (
         <div className="flex flex-col gap-4">
@@ -2309,11 +2422,11 @@ function SearchResults({
               key={hit.key}
               type="button"
               onClick={hit.onOpen}
-              className="flex items-center gap-5 text-left border border-[rgb(var(--c-accent-rgb)_/_0.2)] hover:border-[var(--c-accent)] transition-colors p-4 sm:p-5"
+              className="min-h-24 flex items-center gap-5 text-left border border-[rgb(var(--c-accent-rgb)_/_0.25)] hover:border-[var(--c-accent)] transition-colors p-4 sm:p-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c-gold)]"
             >
               {hit.imageUrl ? (
                 <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-[#E8DED5] overflow-hidden">
-                  <img src={resolveMediaSource(hit.imageUrl, 160, 160)} alt="" className="w-full h-full object-cover" />
+                  <img src={resolveMediaSource(hit.imageUrl, 160, 160)} alt="" loading="lazy" width="160" height="160" className="w-full h-full object-cover" />
                 </div>
               ) : (
                 <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-[#E8DED5] flex items-center justify-center">
@@ -2325,7 +2438,7 @@ function SearchResults({
                   <span className="font-mono text-[9px] uppercase tracking-widest text-[var(--c-gold)]">{SEARCH_KIND_LABEL[hit.kind]}</span>
                   {hit.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{hit.meta}</span>}
                 </div>
-                <h3 className="font-serif text-lg sm:text-xl text-[var(--c-accent)] truncate">{hit.title}</h3>
+                <h3 className="font-serif text-lg sm:text-xl text-[var(--c-accent)] line-clamp-2">{hit.title}</h3>
                 {hit.excerpt && (
                   <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.65)] line-clamp-1 mt-0.5">{hit.excerpt}</p>
                 )}
@@ -2379,9 +2492,13 @@ function findMatchingArticle(item: Item, articles: Article[]): Article | undefin
   return articles.find((a) => a.title && base(a.title) === itemBase);
 }
 
-function parsePath(pathname: string): { tab?: string; articleId?: number; passportCode?: string } {
+function parsePath(pathname: string, search = ''): { tab?: string; articleId?: number; passportCode?: string; searchQuery?: string } {
   const p = pathname.replace(/^\//, '').replace(/\/$/, '');
   if (!p) return {};
+  if (p === 'search') {
+    const query = new URLSearchParams(search).get('q')?.trim().slice(0, 120);
+    return { tab: 'gallery', searchQuery: query || undefined };
+  }
   const numericMatch = p.match(/^article\/(\d+)$/);
   if (numericMatch) return { tab: 'articles', articleId: parseInt(numericMatch[1], 10) };
   const slugMatch = p.match(/^article\/(.+)$/);
@@ -2395,7 +2512,22 @@ function parsePath(pathname: string): { tab?: string; articleId?: number; passpo
   return {};
 }
 
-function updateMetaTags(article: Article | null) {
+const ROUTE_META: Record<string, { title: string; description: string }> = {
+  gallery: { title: 'EPRIS Journal — Contemporary Art, Architecture & Interior Design', description: 'Independent international journal and cultural platform exploring contemporary art, architecture, interior design and cities in context.' },
+  articles: { title: 'Articles — EPRIS Journal', description: 'Editorial stories, interviews and research on contemporary art, architecture, interiors, design and cultural cities.' },
+  reviews: { title: 'Reviews — EPRIS Journal', description: 'Independent EPRIS reviews of exhibitions, books, design, architecture and contemporary visual culture.' },
+  library: { title: 'Library — EPRIS Journal', description: 'Explore the EPRIS cultural library and long-term digital archive.' },
+  about: { title: 'About EPRIS Journal', description: 'Meet EPRIS, an independent international journal and cultural platform for art, architecture and interior design.' },
+  manifest: { title: 'Manifesto — EPRIS Journal', description: 'The EPRIS declaration on meaningful modernity, cultural accessibility and independent editorial practice.' },
+  materie: { title: 'Materie — EPRIS Journal', description: 'EPRIS Materie explores materials, craft and the physical intelligence of contemporary design.' },
+  issue: { title: 'Current Issue — EPRIS Journal', description: 'Read the current digital issue of EPRIS Journal.' },
+  studio: { title: 'EPRIS Studio', description: 'Editorial, visual and cultural projects by EPRIS Studio.' },
+  design: { title: 'The Edit — EPRIS Design', description: 'A curated selection of contemporary furniture, objects and interior design by EPRIS.' },
+  radio: { title: 'EPRIS Radio', description: 'Listen to EPRIS Radio: sound, music and cultural programming.' },
+  podcasts: { title: 'EPRIS Podcasts', description: 'Conversations and audio stories about contemporary art, architecture, design and cities.' },
+};
+
+function updateMetaTags(article: Article | null, activeTab: string, activeSearch: string) {
   const setMeta = (property: string, content: string) => {
     let el = document.querySelector(`meta[property="${property}"]`) || document.querySelector(`meta[name="${property}"]`);
     if (!el) {
@@ -2409,46 +2541,78 @@ function updateMetaTags(article: Article | null) {
     }
     el.setAttribute('content', content);
   };
+  const setCanonical = (href: string) => {
+    let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+    canonical.href = href;
+  };
 
   if (article) {
     const imageUrl = resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 630);
+    const canonicalUrl = `https://eprisjournal.com/article/${getSlugForArticle(article)}`;
     document.title = `${article.title} — EPRIS Journal`;
     setMeta('og:title', article.title);
     setMeta('og:description', article.excerpt);
     setMeta('og:image', imageUrl);
     setMeta('og:type', 'article');
-    setMeta('og:url', window.location.href);
+    setMeta('og:url', canonicalUrl);
     setMeta('og:site_name', 'EPRIS Journal');
     setMeta('twitter:card', 'summary_large_image');
     setMeta('twitter:title', article.title);
     setMeta('twitter:description', article.excerpt);
     setMeta('twitter:image', imageUrl);
     setMeta('description', article.excerpt);
-  } else {
-    document.title = 'EPRIS Journal';
-    setMeta('og:title', 'EPRIS Journal');
-    setMeta('og:description', 'Your personal archive. The taste of life.');
-    setMeta('og:image', 'https://eprisj.github.io/images/featured.png');
+    setMeta('robots', 'index, follow, max-image-preview:large');
+    setCanonical(canonicalUrl);
+  } else if (activeSearch) {
+    const title = `Search: ${activeSearch} — EPRIS Journal`;
+    const description = `Search results for “${activeSearch}” across EPRIS Journal.`;
+    document.title = title;
+    setMeta('og:title', title);
+    setMeta('og:description', description);
+    setMeta('og:image', 'https://eprisjournal.com/images/featured.png');
     setMeta('og:type', 'website');
     setMeta('og:url', window.location.href);
+    setMeta('twitter:card', 'summary_large_image');
+    setMeta('twitter:title', title);
+    setMeta('twitter:description', description);
+    setMeta('twitter:image', 'https://eprisjournal.com/images/featured.png');
+    setMeta('description', description);
+    setMeta('robots', 'noindex, follow');
+    setCanonical('https://eprisjournal.com/search');
+  } else {
+    const routeMeta = ROUTE_META[activeTab] || ROUTE_META.gallery;
+    const canonicalUrl = activeTab === 'gallery' ? 'https://eprisjournal.com/' : `https://eprisjournal.com/${activeTab}`;
+    document.title = routeMeta.title;
+    setMeta('og:title', routeMeta.title);
+    setMeta('og:description', routeMeta.description);
+    setMeta('og:image', 'https://eprisjournal.com/images/featured.png');
+    setMeta('og:type', 'website');
+    setMeta('og:url', canonicalUrl);
     setMeta('og:site_name', 'EPRIS Journal');
     setMeta('twitter:card', 'summary_large_image');
-    setMeta('twitter:title', 'EPRIS Journal');
-    setMeta('twitter:description', 'Your personal archive. The taste of life.');
-    setMeta('twitter:image', 'https://eprisj.github.io/images/featured.png');
-    setMeta('description', 'Your personal archive. The taste of life.');
+    setMeta('twitter:title', routeMeta.title);
+    setMeta('twitter:description', routeMeta.description);
+    setMeta('twitter:image', 'https://eprisjournal.com/images/featured.png');
+    setMeta('description', routeMeta.description);
+    setMeta('robots', 'index, follow, max-image-preview:large');
+    setCanonical(canonicalUrl);
   }
 }
 
 export default function App() {
-  const initialRoute = parsePath(window.location.pathname);
+  const initialRoute = parsePath(window.location.pathname, window.location.search);
   const [activeTab, setActiveTab] = useState(initialRoute.tab || 'gallery');
   const [selectedArticleId, setSelectedArticleId] = useState<number | null>(initialRoute.articleId ?? null);
   const [passportCode, setPassportCode] = useState<string | undefined>(initialRoute.passportCode);
   const [currentLang, setCurrentLang] = useState(DEFAULT_LANGUAGE);
   const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
   const [selectedGalleryItem, setSelectedGalleryItem] = useState<Item | null>(null);
-  const [activeSearch, setActiveSearch] = useState('');
+  const [activeSearch, setActiveSearch] = useState(initialRoute.searchQuery || '');
   // Live content: fetch the latest from the VPS on mount and re-render when it
   // swaps in. Until then (or if the VPS is unreachable) the bundled JSON renders.
   const [, setContentVersion] = useState(0);
@@ -2509,8 +2673,8 @@ export default function App() {
   const t = (key: string) => getTranslation(currentLang, key);
 
   useEffect(() => {
-    updateMetaTags(selectedArticle);
-  }, [selectedArticle]);
+    updateMetaTags(selectedArticle, activeTab, activeSearch);
+  }, [selectedArticle, activeTab, activeSearch]);
 
   const handleImageClick = useCallback((src: string, alt: string) => {
     setLightboxImage({ src, alt });
@@ -2521,9 +2685,12 @@ export default function App() {
   }, []);
 
   const handleSearch = useCallback((q: string) => {
-    setActiveSearch(q);
+    const normalizedQuery = q.trim().replace(/\s+/g, ' ').slice(0, 120);
+    if (!normalizedQuery) return;
+    setActiveSearch(normalizedQuery);
     setSelectedArticleId(null);
-    navigate('/search');
+    setActiveTab('gallery');
+    navigate(`/search?q=${encodeURIComponent(normalizedQuery)}`);
   }, [navigate]);
 
   const handleSetTab = useCallback((tab: string) => {
@@ -2551,7 +2718,8 @@ export default function App() {
 
   useEffect(() => {
     const onPopState = () => {
-      const parsed = parsePath(window.location.pathname);
+      const parsed = parsePath(window.location.pathname, window.location.search);
+      setActiveSearch(parsed.searchQuery || '');
       if (parsed.articleId !== undefined) {
         setSelectedArticleId(parsed.articleId);
         setActiveTab('articles');
@@ -2648,6 +2816,7 @@ export default function App() {
                     onArticleClick={(article) => handleSelectArticle(article.id, article)}
                     onItemClick={(item) => { setActiveSearch(''); handleSetTab('gallery'); setSelectedGalleryItem(item); }}
                     onGoToTab={handleSetTab}
+                    onSearch={handleSearch}
                   />
                 ) : (
                   <>
