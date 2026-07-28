@@ -4857,3 +4857,189 @@ body.busy::after {
 
 .btn-danger { color: var(--danger); border-color: var(--danger); }
 .btn-danger:hover { background: var(--danger-soft); }
+
+/* Homepage / gallery and About / team editors */
+.homepage-admin-layout {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 24px 28px 40px;
+  display: grid;
+  gap: 16px;
+}
+.homepage-admin-hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 28px;
+}
+.homepage-admin-kicker {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.homepage-admin-actions,
+.team-admin-actions,
+.team-status-badges,
+.team-editor-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.homepage-admin-actions { justify-content: flex-end; }
+.homepage-admin-actions .btn,
+.homepage-gallery-controls .btn,
+.team-admin-actions .btn,
+.team-photo-editor .btn,
+.team-editor-options .checkbox-label {
+  min-height: 44px;
+}
+.homepage-gallery-meta {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: .68rem;
+}
+.homepage-gallery-list { display: grid; gap: 12px; }
+.homepage-gallery-card {
+  display: grid;
+  grid-template-columns: auto 144px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-xs);
+}
+.homepage-gallery-order {
+  width: 68px;
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+}
+.homepage-order-number {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: var(--text);
+}
+.homepage-featured-badge,
+.team-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: var(--gold-soft);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: .54rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.homepage-gallery-thumb {
+  height: 92px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  border-radius: calc(var(--radius) - 2px);
+  background: var(--bg-soft);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: .6rem;
+}
+.homepage-gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.homepage-gallery-copy { min-width: 0; }
+.homepage-gallery-copy h3 {
+  margin: 0 0 5px;
+  color: var(--text);
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+}
+.homepage-gallery-copy p {
+  margin: 0 0 7px;
+  overflow: hidden;
+  color: var(--text-muted);
+  font-size: .76rem;
+  line-height: 1.45;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.homepage-gallery-id {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: .56rem;
+}
+.homepage-gallery-controls { display: flex; gap: 6px; }
+.homepage-gallery-empty { text-align: center; color: var(--text-muted); }
+
+.team-admin-card { display: flex; gap: 16px; align-items: flex-start; }
+.team-admin-avatar {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #c9b7a8;
+  color: var(--accent);
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+}
+.team-admin-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.team-admin-copy { min-width: 0; flex: 1; }
+.team-admin-name { margin-bottom: 6px; font-weight: 700; }
+.team-admin-role { margin: 8px 0 5px; color: var(--text-muted); font-size: .8rem; }
+.team-admin-bio {
+  max-height: 3.2em;
+  overflow: hidden;
+  color: var(--text-muted);
+  font-size: .72rem;
+  line-height: 1.55;
+}
+.team-admin-actions { margin-top: 12px; }
+.team-badge.is-muted { background: var(--bg-soft); color: var(--text-muted); }
+.team-badge.is-hidden { background: var(--danger-soft); color: var(--danger); }
+.team-badge.is-active { background: rgba(44, 122, 84, .12); color: #2c7a54; }
+.team-photo-editor { display: flex; align-items: center; gap: 12px; }
+.team-photo-editor input { min-width: 0; }
+.team-editor-options {
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+}
+.team-editor-options .checkbox-label { padding: 0 8px; }
+.team-editor-progress {
+  align-self: center;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: .62rem;
+}
+
+@media (max-width: 820px) {
+  .homepage-admin-hero { flex-direction: column; }
+  .homepage-admin-actions { justify-content: flex-start; }
+  .homepage-gallery-card { grid-template-columns: auto 112px minmax(0, 1fr); }
+  .homepage-gallery-controls { grid-column: 2 / -1; }
+}
+
+@media (max-width: 620px) {
+  .homepage-admin-layout { padding: 18px 14px 32px; }
+  .homepage-admin-actions { display: grid; width: 100%; grid-template-columns: 1fr; }
+  .homepage-admin-actions .btn { width: 100%; justify-content: center; }
+  .homepage-gallery-card { grid-template-columns: auto minmax(0, 1fr); }
+  .homepage-gallery-thumb { grid-column: 1 / -1; grid-row: 2; height: 160px; }
+  .homepage-gallery-copy { grid-column: 1 / -1; }
+  .homepage-gallery-controls { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr auto auto; }
+  .homepage-gallery-controls .btn { justify-content: center; }
+  .team-admin-card { flex-direction: column; }
+  .team-photo-editor { align-items: stretch; flex-wrap: wrap; }
+  .team-photo-editor input { flex-basis: 100% !important; }
+  .team-editor-options { flex-direction: column; }
+}

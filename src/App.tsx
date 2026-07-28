@@ -822,9 +822,13 @@ function GalleryMasthead({ t }: { t: (key: string) => string }) {
   );
 }
 
-// Order the team is listed in on the About page. Add an author's id here to
-// give them a card in "The Team" — no other wiring needed.
-const TEAM_AUTHOR_IDS = ['author-1784896384236-4fokw', 'author-1785148692253-eva', 'author-1784732936927-kw554'];
+// Preserve the original order for existing records that predate the admin's
+// team controls. New and edited members receive an explicit teamOrder.
+const LEGACY_TEAM_ORDER = new Map([
+  ['author-1784896384236-4fokw', 1],
+  ['author-1785148692253-eva', 2],
+  ['author-1784732936927-kw554', 3],
+]);
 
 function TeamMemberCard({
   author,
@@ -877,8 +881,13 @@ function TeamMemberCard({
 }
 
 function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => string; currentLang: string; onOpenManifest: () => void }) {
-  const authorsById = new Map(getAuthors().map((a) => [a.id, a]));
-  const team = TEAM_AUTHOR_IDS.map((id) => authorsById.get(id)).filter((a): a is Author => Boolean(a));
+  const team = getAuthors()
+    .filter((author) => author.active !== false && author.showOnTeam !== false)
+    .sort((a, b) => {
+      const aOrder = a.teamOrder ?? LEGACY_TEAM_ORDER.get(a.id) ?? Number.MAX_SAFE_INTEGER;
+      const bOrder = b.teamOrder ?? LEGACY_TEAM_ORDER.get(b.id) ?? Number.MAX_SAFE_INTEGER;
+      return aOrder - bOrder || a.name.localeCompare(b.name);
+    });
 
   return (
     <div className="max-w-4xl mx-auto">

@@ -42,6 +42,10 @@ export interface Author {
   website?: string;
   instagram?: string;
   active?: boolean;
+  /** Controls whether the author appears in the public About / Team section. */
+  showOnTeam?: boolean;
+  /** Lower numbers appear first in the About / Team section. */
+  teamOrder?: number;
 }
 
 export interface Article {
