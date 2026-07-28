@@ -261,7 +261,7 @@ export function CollaborationPage() {
           </div>
 
           <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(310px,0.34fr)]">
-            <div className="pb-10 pt-10 sm:pb-14 sm:pt-14 lg:pb-20 lg:pr-12 lg:pt-20 xl:pr-20">
+            <div className="pb-10 pt-10 sm:pb-14 sm:pt-14 lg:pb-14 lg:pr-12 lg:pt-14 xl:pr-20">
               <p className="mb-6 flex items-center gap-3 font-mono text-[9px] uppercase tracking-[0.24em] text-[#9f4f42]">
                 <span className="h-px w-8 bg-current" aria-hidden="true" /> Open editorial registry
               </p>
@@ -271,12 +271,12 @@ export function CollaborationPage() {
               </h1>
             </div>
 
-            <div className="border-t border-[#28151b]/15 py-9 lg:flex lg:flex-col lg:justify-between lg:border-l lg:border-t-0 lg:py-20 lg:pl-9 xl:pl-12">
+            <div className="border-t border-[#28151b]/15 py-9 lg:flex lg:flex-col lg:justify-between lg:border-l lg:border-t-0 lg:py-14 lg:pl-9 xl:pl-12">
               <div>
                 <span className="font-serif text-5xl italic leading-none text-[#a34f42]" aria-hidden="true">“</span>
-                <p className="-mt-2 max-w-md font-serif text-xl leading-[1.45] text-[#4e3940] sm:text-2xl lg:text-[1.65rem]">A living shortlist of emerging architects, designers and artists for interviews, studio visits and editorial collaborations.</p>
+                <p className="-mt-2 max-w-md font-serif text-xl leading-[1.45] text-[#4e3940] sm:text-2xl lg:text-[1.45rem]">A living shortlist of emerging architects, designers and artists for interviews, studio visits and editorial collaborations.</p>
               </div>
-              <div className="mt-9 border-t border-[#28151b]/15 pt-5 lg:mt-14">
+              <div className="mt-9 border-t border-[#28151b]/15 pt-5 lg:mt-10">
                 <p className="font-mono text-[8px] uppercase leading-[1.8] tracking-[0.18em] text-[#725b63] sm:text-[9px]">
                   Public access / Open submissions<br />
                   Editorial review / EPRIS Journal
