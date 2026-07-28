@@ -654,7 +654,7 @@ function NavBar({
               <X size={24} />
             </button>
             <form onSubmit={handleSearch} className="w-full max-w-3xl">
-              <label id="site-search-title" htmlFor="site-search-input" className="sr-only">Search EPRIS Journal</label>
+              <label id="site-search-title" htmlFor="site-search-input" className="sr-only">{t('search.dialogTitle')}</label>
               <input 
                 id="site-search-input"
                 type="search"
@@ -668,13 +668,13 @@ function NavBar({
                 autoFocus
               />
               <div className="mt-6 flex items-center justify-center gap-4">
-                <span className="hidden sm:inline font-mono text-[10px] uppercase tracking-widest opacity-50">Enter to search · Esc to close</span>
+                <span className="hidden sm:inline font-mono text-[10px] uppercase tracking-widest opacity-50">{t('search.hint')}</span>
                 <button
                   type="submit"
                   disabled={!searchQuery.trim()}
                   className="min-h-11 px-6 rounded-full bg-[var(--c-accent)] text-[var(--c-bg)] font-mono text-xs uppercase tracking-widest disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c-gold)]"
                 >
-                  Search
+                  {t('search.submit')}
                 </button>
               </div>
             </form>
@@ -814,7 +814,7 @@ function GalleryMasthead({ t }: { t: (key: string) => string }) {
           variants={{ hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE, delay: 0.15 } } }}
           className="font-crimson italic text-sm sm:text-base tracking-wide text-[rgb(var(--c-accent-rgb)_/_0.75)]"
         >
-          explore our latest article
+          {t('hero.exploreLatest')}
         </motion.span>
         <motion.span variants={drawLine} className="h-px w-10 sm:w-16 bg-[rgb(var(--c-accent-rgb)_/_0.3)] origin-left" />
       </motion.div>
@@ -830,10 +830,12 @@ function TeamMemberCard({
   author,
   roleLabel,
   bioText,
+  websiteLabel,
 }: {
   author: Author;
   roleLabel: string;
   bioText?: ReactNode;
+  websiteLabel: string;
 }) {
   return (
     <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-12 max-w-2xl mx-auto">
@@ -854,7 +856,7 @@ function TeamMemberCard({
           <div className="flex justify-center sm:justify-start gap-4 font-serif text-sm text-[var(--c-accent)]">
             {author.website && (
               <a href={author.website} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--c-gold)] transition-colors">
-                Website
+                {websiteLabel}
               </a>
             )}
             {author.instagram && (
@@ -874,7 +876,7 @@ function TeamMemberCard({
   );
 }
 
-function AboutSection({ t }: { t: (key: string) => string }) {
+function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => string; currentLang: string; onOpenManifest: () => void }) {
   const authorsById = new Map(getAuthors().map((a) => [a.id, a]));
   const team = TEAM_AUTHOR_IDS.map((id) => authorsById.get(id)).filter((a): a is Author => Boolean(a));
 
@@ -900,7 +902,11 @@ function AboutSection({ t }: { t: (key: string) => string }) {
                 // uniform list; keep that behavior for them specifically, and
                 // fall back to the Author record's own fields for anyone
                 // added after (currently English-only, e.g. Eva).
-                let roleLabel = member.role || '';
+                const roleKey = `about.team.${member.id}.role`;
+                const bioKey = `about.team.${member.id}.bio`;
+                const translatedRole = t(roleKey);
+                const translatedBio = t(bioKey);
+                let roleLabel = translatedRole !== roleKey ? translatedRole : (translateRole(member.role, currentLang) || member.role || '');
                 let bioText: ReactNode = member.bio;
                 if (isEditor) {
                   roleLabel = t('editor');
@@ -914,12 +920,12 @@ function AboutSection({ t }: { t: (key: string) => string }) {
                   roleLabel = t('about.techDirector.role');
                   const localizedBio = t('about.techDirector.bio');
                   bioText = <p>{localizedBio !== 'about.techDirector.bio' ? localizedBio : member.bio}</p>;
-                } else if (member.bio) {
-                  bioText = <p>{member.bio}</p>;
+                } else if (translatedBio !== bioKey || member.bio) {
+                  bioText = <p>{translatedBio !== bioKey ? translatedBio : member.bio}</p>;
                 }
 
                 return (
-                  <TeamMemberCard key={member.id} author={member} roleLabel={roleLabel} bioText={bioText} />
+                  <TeamMemberCard key={member.id} author={member} roleLabel={roleLabel} bioText={bioText} websiteLabel={t('about.website')} />
                 );
               })}
             </div>
@@ -929,17 +935,18 @@ function AboutSection({ t }: { t: (key: string) => string }) {
 
       <Reveal delay={0.15}>
         <div className="border-t border-[var(--c-accent)] pt-16 mt-24 text-center">
-          <a
-            href="https://eprisjournal.com/manifest"
+          <button
+            type="button"
+            onClick={onOpenManifest}
             className="inline-flex flex-col items-center gap-2 group"
           >
             <span className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)]">
               {t('nav.manifest')}
             </span>
             <span className="font-serif text-2xl sm:text-3xl text-[var(--c-accent)] group-hover:text-[var(--c-gold)] transition-colors underline decoration-1 underline-offset-4 decoration-[rgb(var(--c-accent-rgb)_/_0.3)]">
-              Read our manifesto →
+              {t('about.readManifest')} →
             </span>
-          </a>
+          </button>
         </div>
       </Reveal>
     </div>
@@ -2329,8 +2336,8 @@ function buildSearchIndex(
   return hits.sort((a, b) => b.score - a.score || a.title.localeCompare(b.title)).slice(0, 100);
 }
 
-const SEARCH_KIND_LABEL: Record<SearchHit['kind'], string> = {
-  article: 'Article', item: 'Gallery', review: 'Review', library: 'Library',
+const SEARCH_KIND_KEY: Record<SearchHit['kind'], string> = {
+  article: 'search.kind.article', item: 'search.kind.gallery', review: 'search.kind.review', library: 'search.kind.library',
 };
 
 function SearchResults({
@@ -2344,6 +2351,7 @@ function SearchResults({
   onItemClick,
   onGoToTab,
   onSearch,
+  t,
 }: {
   query: string;
   articles: Article[];
@@ -2355,6 +2363,7 @@ function SearchResults({
   onItemClick: (item: Item) => void;
   onGoToTab: (tab: string) => void;
   onSearch: (query: string) => void;
+  t: (key: string) => string;
 }) {
   const [draftQuery, setDraftQuery] = useState(query);
   useEffect(() => setDraftQuery(query), [query]);
@@ -2374,7 +2383,7 @@ function SearchResults({
         }}
         className="flex flex-col sm:flex-row gap-3 mb-8"
       >
-        <label htmlFor="results-search-input" className="sr-only">Search EPRIS Journal</label>
+        <label htmlFor="results-search-input" className="sr-only">{t('search.dialogTitle')}</label>
         <input
           id="results-search-input"
           type="search"
@@ -2384,19 +2393,19 @@ function SearchResults({
           autoComplete="off"
           enterKeyHint="search"
           className="min-h-12 flex-1 bg-transparent border border-[rgb(var(--c-accent-rgb)_/_0.35)] px-4 font-serif text-lg placeholder:opacity-45 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c-gold)]"
-          placeholder="Search articles, authors, places and topics"
+          placeholder={t('search.inputHint')}
         />
         <button
           type="submit"
           disabled={!draftQuery.trim()}
           className="min-h-12 px-6 bg-[var(--c-accent)] text-[var(--c-bg)] font-mono text-xs uppercase tracking-widest disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c-gold)]"
         >
-          Search
+          {t('search.submit')}
         </button>
       </form>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5 mb-8 pb-6 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)]" aria-live="polite">
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-1">Search results</p>
+          <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-1">{t('search.results')}</p>
           <h2 className="font-serif text-2xl text-[var(--c-accent)]">
             "{query}" — <span className="text-[var(--c-gold)]">{results.length}</span>
           </h2>
@@ -2406,14 +2415,14 @@ function SearchResults({
           onClick={onClear}
           className="min-h-11 flex items-center justify-center gap-2 font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.65)] hover:text-[var(--c-accent)] transition-colors border border-[rgb(var(--c-accent-rgb)_/_0.3)] px-4 py-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c-gold)]"
         >
-          <X size={12} /> Clear
+          <X size={12} /> {t('search.clear')}
         </button>
       </div>
       {results.length === 0 ? (
         <div className="text-center py-24">
           <Search size={28} className="mx-auto mb-5 opacity-30" aria-hidden="true" />
-          <p className="font-serif text-2xl mb-2">Nothing found for “{query}”</p>
-          <p className="font-mono text-xs tracking-wide text-[rgb(var(--c-accent-rgb)_/_0.55)]">Check the spelling, use fewer words, or search by author, place or topic.</p>
+          <p className="font-serif text-2xl mb-2">{t('search.emptyTitle').replace('{query}', query)}</p>
+          <p className="font-mono text-xs tracking-wide text-[rgb(var(--c-accent-rgb)_/_0.55)]">{t('search.emptyHint')}</p>
         </div>
       ) : (
         <div className="flex flex-col gap-4">
@@ -2435,7 +2444,7 @@ function SearchResults({
               )}
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="font-mono text-[9px] uppercase tracking-widest text-[var(--c-gold)]">{SEARCH_KIND_LABEL[hit.kind]}</span>
+                  <span className="font-mono text-[9px] uppercase tracking-widest text-[var(--c-gold)]">{t(SEARCH_KIND_KEY[hit.kind])}</span>
                   {hit.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{hit.meta}</span>}
                 </div>
                 <h3 className="font-serif text-lg sm:text-xl text-[var(--c-accent)] line-clamp-2">{hit.title}</h3>
@@ -2609,7 +2618,14 @@ export default function App() {
   const [activeTab, setActiveTab] = useState(initialRoute.tab || 'gallery');
   const [selectedArticleId, setSelectedArticleId] = useState<number | null>(initialRoute.articleId ?? null);
   const [passportCode, setPassportCode] = useState<string | undefined>(initialRoute.passportCode);
-  const [currentLang, setCurrentLang] = useState(DEFAULT_LANGUAGE);
+  const [currentLang, setCurrentLang] = useState(() => {
+    try {
+      const stored = localStorage.getItem('epris_language');
+      return stored && getAvailableLanguages().includes(stored) ? stored : DEFAULT_LANGUAGE;
+    } catch {
+      return DEFAULT_LANGUAGE;
+    }
+  });
   const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
   const [selectedGalleryItem, setSelectedGalleryItem] = useState<Item | null>(null);
   const [activeSearch, setActiveSearch] = useState(initialRoute.searchQuery || '');
@@ -2630,6 +2646,11 @@ export default function App() {
     return unsubscribe;
   }, []);
   const languageOptions = getAvailableLanguages();
+  useEffect(() => {
+    try { localStorage.setItem('epris_language', currentLang); } catch { /* storage may be unavailable */ }
+    const languageTags: Record<string, string> = { EN: 'en', RU: 'ru', UA: 'uk', TR: 'tr', DE: 'de', IT: 'it', ES: 'es' };
+    document.documentElement.lang = languageTags[currentLang] || currentLang.toLowerCase();
+  }, [currentLang]);
   const { items, articles, reviews, libraryItems } = getContentForLanguage(currentLang);
   const issueArchive = getIssueArchive(currentLang);
   const studio = getStudio();
@@ -2817,6 +2838,7 @@ export default function App() {
                     onItemClick={(item) => { setActiveSearch(''); handleSetTab('gallery'); setSelectedGalleryItem(item); }}
                     onGoToTab={handleSetTab}
                     onSearch={handleSearch}
+                    t={t}
                   />
                 ) : (
                   <>
@@ -2826,7 +2848,7 @@ export default function App() {
                     {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
                     {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} />}
                     {activeTab === 'library' && <LibrarySection libraryItems={libraryItems} t={t} />}
-                    {activeTab === 'about' && <AboutSection t={t} />}
+                    {activeTab === 'about' && <AboutSection t={t} currentLang={currentLang} onOpenManifest={() => handleSetTab('manifest')} />}
                     {activeTab === 'manifest' && <ManifestPage t={t} currentLang={currentLang} />}
                   </>
                 )}
