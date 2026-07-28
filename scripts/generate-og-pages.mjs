@@ -123,6 +123,8 @@ const ROUTES = {
   design: 'Design',
   radio: 'Radio',
   podcasts: 'Podcasts',
+  collaboation: 'Collaboration Registry',
+  collaboration: 'Collaboration Registry',
 };
 
 const ROUTE_DESCRIPTIONS = {
@@ -137,6 +139,8 @@ const ROUTE_DESCRIPTIONS = {
   design: 'A curated selection of contemporary furniture, objects and interior design by EPRIS.',
   radio: 'Listen to EPRIS Radio: sound, music and cultural programming.',
   podcasts: 'Conversations and audio stories about contemporary art, architecture, design and cities.',
+  collaboation: 'Discover and suggest emerging architects, designers and artists for EPRIS Journal interviews and editorial collaborations.',
+  collaboration: 'Discover and suggest emerging architects, designers and artists for EPRIS Journal interviews and editorial collaborations.',
 };
 
 function routeHead(route, label) {

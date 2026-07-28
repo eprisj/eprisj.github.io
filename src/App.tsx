@@ -11,6 +11,7 @@ const RadioPage = lazy(() => import('./pages/RadioPage').then((m) => ({ default:
 const PodcastsPage = lazy(() => import('./pages/PodcastsPage').then((m) => ({ default: m.PodcastsPage })));
 const PassportPage = lazy(() => import('./pages/passport/PassportPage').then((m) => ({ default: m.PassportPage })));
 const DesignPage = lazy(() => import('./design/DesignPage').then((m) => ({ default: m.DesignPage })));
+const CollaborationPage = lazy(() => import('./pages/CollaborationPage').then((m) => ({ default: m.CollaborationPage })));
 import {
   Article,
   Author,
@@ -2694,6 +2695,9 @@ function updateMetaTags(article: Article | null, activeTab: string, activeSearch
 }
 
 export default function App() {
+  if (/^\/(?:collaboation|collaboration)\/?$/.test(window.location.pathname)) {
+    return <Suspense fallback={<div className="min-h-screen bg-[#f5f0ea]" />}><CollaborationPage /></Suspense>;
+  }
   const initialRoute = parsePath(window.location.pathname, window.location.search);
   const [activeTab, setActiveTab] = useState(initialRoute.tab || 'gallery');
   const [selectedArticleId, setSelectedArticleId] = useState<number | null>(initialRoute.articleId ?? null);
