@@ -454,6 +454,16 @@ const drawLine = {
   show: { scaleX: 1, opacity: 1, transition: { duration: 0.8, ease: EASE } },
 };
 
+const LANG_LABELS: Record<string, string> = {
+  EN: 'English',
+  RU: 'Русский',
+  UA: 'Українська',
+  TR: 'Türkçe',
+  DE: 'Deutsch',
+  IT: 'Italiano',
+  ES: 'Español'
+};
+
 function NavBar({
   activeTab,
   setActiveTab,
@@ -518,13 +528,13 @@ function NavBar({
 
   return (
     <>
-      {/* ── Mobile header: hamburger · EPRIS · ISSUE ── */}
-      <nav className="lg:hidden fixed top-0 left-0 w-full z-50 bg-[var(--c-bg)] border-b border-[rgb(var(--c-accent-rgb)_/_0.25)] h-16 grid grid-cols-[1fr_auto_1fr] items-center px-4">
+      {/* ── Mobile header: menu · centred wordmark · language + issue ── */}
+      <nav className="lg:hidden fixed top-0 left-0 w-full z-50 bg-[var(--c-bg)] border-b border-[rgb(var(--c-accent-rgb)_/_0.25)] h-16 flex items-center justify-between px-3">
         <button
           type="button"
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="justify-self-start text-[var(--c-accent)] p-1"
+          className="relative z-10 w-11 h-11 inline-flex items-center justify-center rounded-full text-[var(--c-accent)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.08)] active:scale-95 transition"
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -532,17 +542,32 @@ function NavBar({
           type="button"
           onClick={() => { setActiveTab('gallery'); setIsMenuOpen(false); }}
           aria-label="EPRIS — home"
-          className="justify-self-center leading-none font-mono"
+          className="absolute left-1/2 -translate-x-1/2 leading-none font-mono"
         >
-          <span className="text-xl tracking-[0.22em] text-[var(--c-accent)] pl-[0.22em]">EPRIS</span>
+          <span className="text-lg min-[360px]:text-xl tracking-[0.22em] text-[var(--c-accent)] pl-[0.22em]">EPRIS</span>
         </button>
-        <button
-          type="button"
-          onClick={() => { setActiveTab('issue'); setIsMenuOpen(false); }}
-          className="justify-self-end bg-[var(--c-accent)] text-[var(--c-bg)] rounded-full px-5 py-2.5 font-mono text-[11px] tracking-[0.18em] uppercase hover:bg-[#3d1421] transition-colors"
-        >
-          {t('nav.issue')}
-        </button>
+        <div className="relative z-10 flex items-center gap-1.5">
+          <button
+            type="button"
+            onClick={() => { setIsMenuOpen(false); setIsLangOpen(true); }}
+            aria-label={`${LANG_LABELS[currentLang] || currentLang}. Select language`}
+            aria-haspopup="dialog"
+            aria-expanded={isLangOpen}
+            className="h-11 min-w-14 px-3 inline-flex items-center justify-center gap-1.5 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.28)] bg-[rgb(var(--c-bg-rgb)_/_0.92)] font-mono text-[11px] font-bold tracking-[0.12em] uppercase hover:bg-[rgb(var(--c-accent-rgb)_/_0.08)] active:scale-95 transition"
+          >
+            <Globe size={14} aria-hidden="true" />
+            {currentLang}
+          </button>
+          <button
+            type="button"
+            onClick={() => { setActiveTab('issue'); setIsMenuOpen(false); }}
+            aria-label={t('nav.issue')}
+            title={t('nav.issue')}
+            className="hidden min-[360px]:inline-flex h-11 min-w-12 items-center justify-center bg-[var(--c-accent)] text-[var(--c-bg)] rounded-full px-3 font-mono text-[11px] tracking-[0.12em] uppercase hover:bg-[#3d1421] active:scale-95 transition"
+          >
+            Nº
+          </button>
+        </div>
       </nav>
 
       {/* ── Desktop header ── */}
@@ -630,6 +655,66 @@ function NavBar({
         </div>
       </nav>
 
+      {/* Mobile language sheet — reachable directly from the header, with
+          full language names and thumb-sized targets. */}
+      <AnimatePresence>
+        {isLangOpen && (
+          <div className="fixed inset-0 z-[80] lg:hidden" role="dialog" aria-modal="true" aria-label="Select language">
+            <motion.button
+              type="button"
+              aria-label="Close language selector"
+              className="absolute inset-0 w-full h-full bg-[rgb(var(--c-accent-rgb)_/_0.28)] backdrop-blur-[2px]"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsLangOpen(false)}
+            />
+            <motion.div
+              initial={{ y: '100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '100%' }}
+              transition={{ duration: 0.28, ease: EASE }}
+              className="absolute inset-x-0 bottom-0 max-h-[78dvh] overflow-y-auto rounded-t-[28px] border-t border-[rgb(var(--c-accent-rgb)_/_0.24)] bg-[var(--c-bg)] px-4 pt-3 pb-[calc(1rem+env(safe-area-inset-bottom))] shadow-2xl"
+            >
+              <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-[rgb(var(--c-accent-rgb)_/_0.22)]" aria-hidden="true" />
+              <div className="flex items-center justify-between gap-4 px-1 pb-3">
+                <div>
+                  <p className="font-serif text-xl leading-tight">Language</p>
+                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.16em] opacity-55">Choose edition</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsLangOpen(false)}
+                  aria-label="Close language selector"
+                  className="h-11 w-11 inline-flex items-center justify-center rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.25)] active:scale-95 transition"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+              <div className="grid grid-cols-1 min-[430px]:grid-cols-2 gap-2">
+                {languages.map(lang => {
+                  const active = currentLang === lang;
+                  return (
+                    <button
+                      type="button"
+                      key={lang}
+                      onClick={() => { setCurrentLang(lang); setIsLangOpen(false); }}
+                      aria-pressed={active}
+                      className={`min-h-14 px-4 rounded-2xl border flex items-center justify-between gap-4 text-left transition active:scale-[0.98] ${active ? 'bg-[var(--c-accent)] text-[var(--c-bg)] border-[var(--c-accent)]' : 'border-[rgb(var(--c-accent-rgb)_/_0.2)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.07)]'}`}
+                    >
+                      <span className="font-serif text-[17px]">{LANG_LABELS[lang] || lang}</span>
+                      <span className="flex items-center gap-2 font-mono text-[10px] font-bold tracking-[0.14em] opacity-70">
+                        {lang}{active && <Check size={16} aria-hidden="true" />}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
       {/* Search Overlay */}
       <AnimatePresence>
         {isSearchOpen && (
@@ -710,18 +795,14 @@ function NavBar({
             </div>
             
             <div className="mt-auto border-t border-[var(--c-accent)]">
-              <div className="grid grid-cols-3 sm:grid-cols-4 divide-x divide-[var(--c-accent)] border-b border-[var(--c-accent)]">
-                {languages.map(lang => (
-                  <button
-                    type="button"
-                    key={lang}
-                    onClick={() => setCurrentLang(lang)}
-                    className={`p-4 text-center hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] ${currentLang === lang ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : ''}`}
-                  >
-                    {lang}
-                  </button>
-                ))}
-              </div>
+              <button
+                type="button"
+                onClick={() => { setIsMenuOpen(false); setIsLangOpen(true); }}
+                className="w-full min-h-14 px-5 border-b border-[var(--c-accent)] flex items-center justify-between text-left"
+              >
+                <span className="flex items-center gap-3 font-serif text-lg"><Globe size={20} /> {LANG_LABELS[currentLang] || currentLang}</span>
+                <span className="font-mono text-xs font-bold tracking-widest">{currentLang}</span>
+              </button>
               <div className="p-4 flex justify-center gap-8">
                 <button type="button" aria-label="Open search" onClick={() => { setIsMenuOpen(false); setIsSearchOpen(true); }}>
                   <Search size={24} />
@@ -1336,16 +1417,6 @@ function NoteBlock({ content }: { content: string }) {
   );
 }
 
-const LANG_LABELS: Record<string, string> = {
-  EN: 'English',
-  RU: 'Русский',
-  UA: 'Українська',
-  TR: 'Türkçe',
-  DE: 'Deutsch',
-  IT: 'Italiano',
-  ES: 'Español'
-};
-
 function ArticleView({ article, related, onArticleClick, onTagClick, onClose, onImageClick, t, currentLang, setCurrentLang, languages }: { article: Article; related: Article[]; onArticleClick: (article: Article) => void; onTagClick: (tag: string) => void; onClose: () => void; onImageClick: (src: string, alt: string) => void; t: (key: string) => string; currentLang: string; setCurrentLang: (lang: string) => void; languages: string[] }) {
   const [isArticleLangOpen, setIsArticleLangOpen] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -1436,19 +1507,19 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
               type="button"
               onClick={() => setIsArticleLangOpen(!isArticleLangOpen)}
               aria-label="Select language"
-              className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] bg-[rgb(var(--c-bg-rgb)_/_0.8)] backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.1)] hover:opacity-60 transition-opacity"
+              className="min-h-11 flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] bg-[rgb(var(--c-bg-rgb)_/_0.8)] backdrop-blur-sm px-3 sm:px-4 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.18)] hover:opacity-60 transition-opacity"
             >
               <Globe size={14} />
               {currentLang}
             </button>
             {isArticleLangOpen && (
-              <div className="absolute top-full right-0 mt-1 bg-[var(--c-bg)] border border-[rgb(var(--c-accent-rgb)_/_0.2)] rounded-lg shadow-lg overflow-hidden min-w-[140px] z-50">
+              <div className="absolute top-full right-0 mt-1 bg-[var(--c-bg)] border border-[rgb(var(--c-accent-rgb)_/_0.2)] rounded-xl shadow-lg overflow-hidden min-w-[170px] max-h-[70dvh] overflow-y-auto z-50">
                 {languages.map(lang => (
                   <button
                     type="button"
                     key={lang}
                     onClick={() => { setCurrentLang(lang); setIsArticleLangOpen(false); }}
-                    className={`w-full px-4 py-2 text-left font-mono text-xs tracking-wider hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors flex items-center justify-between gap-3 ${currentLang === lang ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'text-[var(--c-accent)]'}`}
+                    className={`w-full min-h-11 px-4 py-2 text-left font-mono text-xs tracking-wider hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors flex items-center justify-between gap-3 ${currentLang === lang ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'text-[var(--c-accent)]'}`}
                   >
                     <span>{LANG_LABELS[lang] || lang}</span>
                     <span className="opacity-50">{lang}</span>
