@@ -252,17 +252,52 @@ export function CollaborationPage() {
     </header>
 
     <main>
-      <section className="border-b border-[#28151b]/10 px-4 pb-10 pt-12 sm:px-8 sm:pb-14 sm:pt-16 lg:px-12 lg:pb-20 lg:pt-24">
+      <section className="overflow-hidden border-b border-[#28151b]/15 px-4 pb-0 pt-8 sm:px-8 sm:pt-11 lg:px-12 lg:pt-14">
         <div className="mx-auto max-w-[1600px]">
-          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#9f4f42]">EPRIS / Open editorial registry</p>
-          <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-end">
-            <h1 className="max-w-5xl font-serif text-[clamp(3.2rem,8vw,8.8rem)] leading-[0.82] tracking-[-0.055em]">People worth<br /><em className="font-normal text-[#a34f42]">a conversation.</em></h1>
-            <div className="max-w-md lg:pb-2"><p className="font-serif text-lg leading-relaxed text-[#5f4a51] sm:text-xl">A living shortlist of emerging architects, designers and artists for interviews, studio visits and editorial collaborations.</p><p className="mt-5 font-mono text-[9px] uppercase leading-relaxed tracking-[0.14em] text-[#826d74]">Browse without an account · Suggest a name · Every public submission is reviewed</p></div>
+          <div className="flex items-center justify-between border-y border-[#28151b]/15 py-3 font-mono text-[8px] uppercase tracking-[0.23em] text-[#725b63] sm:text-[9px]">
+            <span><span className="text-[#a34f42]">EPRIS</span> / Collaboration index</span>
+            <span className="hidden sm:inline">Independent editorial register</span>
+            <span>No. 01 — 2026</span>
           </div>
-          <div className="mt-10 grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-[#28151b]/10 bg-[#28151b]/10 sm:mt-14 sm:max-w-2xl">
-            <div className="bg-[#fbf8f4] p-4 sm:p-5"><strong className="block font-serif text-2xl sm:text-4xl">{leads.length}</strong><span className="font-mono text-[8px] uppercase tracking-[0.15em] text-[#826d74] sm:text-[9px]">Voices</span></div>
-            <div className="bg-[#fbf8f4] p-4 sm:p-5"><strong className="block font-serif text-2xl sm:text-4xl">{countries.length}</strong><span className="font-mono text-[8px] uppercase tracking-[0.15em] text-[#826d74] sm:text-[9px]">Countries</span></div>
-            <div className="bg-[#fbf8f4] p-4 sm:p-5"><strong className="block font-serif text-2xl sm:text-4xl">{disciplines.length}</strong><span className="font-mono text-[8px] uppercase tracking-[0.15em] text-[#826d74] sm:text-[9px]">Disciplines</span></div>
+
+          <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(310px,0.34fr)]">
+            <div className="pb-10 pt-10 sm:pb-14 sm:pt-14 lg:pb-20 lg:pr-12 lg:pt-20 xl:pr-20">
+              <p className="mb-6 flex items-center gap-3 font-mono text-[9px] uppercase tracking-[0.24em] text-[#9f4f42]">
+                <span className="h-px w-8 bg-current" aria-hidden="true" /> Open editorial registry
+              </p>
+              <h1 className="max-w-6xl font-serif text-[clamp(3.55rem,8.9vw,9.4rem)] leading-[0.79] tracking-[-0.06em]">
+                People worth<br />
+                <em className="font-normal text-[#a34f42]">a conversation.</em>
+              </h1>
+            </div>
+
+            <div className="border-t border-[#28151b]/15 py-9 lg:flex lg:flex-col lg:justify-between lg:border-l lg:border-t-0 lg:py-20 lg:pl-9 xl:pl-12">
+              <div>
+                <span className="font-serif text-5xl italic leading-none text-[#a34f42]" aria-hidden="true">“</span>
+                <p className="-mt-2 max-w-md font-serif text-xl leading-[1.45] text-[#4e3940] sm:text-2xl lg:text-[1.65rem]">A living shortlist of emerging architects, designers and artists for interviews, studio visits and editorial collaborations.</p>
+              </div>
+              <div className="mt-9 border-t border-[#28151b]/15 pt-5 lg:mt-14">
+                <p className="font-mono text-[8px] uppercase leading-[1.8] tracking-[0.18em] text-[#725b63] sm:text-[9px]">
+                  Public access / Open submissions<br />
+                  Editorial review / EPRIS Journal
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-3 border-t border-[#28151b]/15">
+            {[
+              { value: leads.length, label: 'Voices', note: 'In the index' },
+              { value: countries.length, label: 'Countries', note: 'Across the world' },
+              { value: disciplines.length, label: 'Disciplines', note: 'Creative fields' },
+            ].map((stat, index) => (
+              <div key={stat.label} className={`relative py-5 sm:py-7 lg:py-9 ${index > 0 ? 'border-l border-[#28151b]/15 pl-4 sm:pl-7 lg:pl-10' : 'pr-3'}`}>
+                <span className="absolute right-2 top-3 font-mono text-[7px] tracking-[0.16em] text-[#9f4f42]/70 sm:right-4 sm:top-5 sm:text-[8px]">0{index + 1}</span>
+                <strong className="block font-serif text-[2.15rem] font-normal leading-none tabular-nums sm:text-5xl lg:text-7xl">{stat.value}</strong>
+                <span className="mt-2 block font-mono text-[8px] uppercase tracking-[0.18em] text-[#4e3940] sm:text-[9px]">{stat.label}</span>
+                <span className="mt-1 hidden font-serif text-sm italic text-[#826d74] sm:block">{stat.note}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
