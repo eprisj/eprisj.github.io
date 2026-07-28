@@ -13392,7 +13392,9 @@
       "photoUrl": "https://api.eprisjournal.com/uploads/mrw8auvtw5v16l.jpg",
       "website": "https://munister.com.ua/",
       "instagram": "@vmunister",
-      "active": true
+      "active": true,
+      "showOnTeam": true,
+      "teamOrder": 3
     },
     {
       "id": "author-1784896384236-4fokw",
@@ -13402,7 +13404,9 @@
       "photoUrl": "https://api.eprisjournal.com/uploads/mryymjle0m8gzo.webp",
       "website": "",
       "instagram": "@mashapeut",
-      "active": true
+      "active": true,
+      "showOnTeam": true,
+      "teamOrder": 1
     },
     {
       "id": "author-1785148692253-eva",
@@ -13412,7 +13416,9 @@
       "photoUrl": "https://api.eprisjournal.com/uploads/ms33qskx0weucv.jpg",
       "website": "",
       "instagram": "",
-      "active": true
+      "active": true,
+      "showOnTeam": true,
+      "teamOrder": 2
     }
   ],
   "manifest": {
