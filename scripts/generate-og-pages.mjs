@@ -106,7 +106,7 @@ for (const article of content.articles) {
 console.log(`\nGenerated OG pages for ${content.articles.length} articles.`);
 
 // ── SPA deep-link routes ─────────────────────────────────────────────────────
-// GitHub Pages has no SPA fallback: a direct hit on /studio, /materie, etc.
+// GitHub Pages has no SPA fallback: a direct hit on /studio, /issue, etc.
 // returns its own 404. We emit a static <route>/index.html (a copy of the app
 // shell) for every known tab route so deep-links resolve with HTTP 200, and a
 // catch-all 404.html so any other path still boots the SPA (client router then
@@ -114,10 +114,8 @@ console.log(`\nGenerated OG pages for ${content.articles.length} articles.`);
 const ROUTES = {
   articles: 'Articles',
   reviews: 'Reviews',
-  library: 'Library',
   about: 'About',
   manifest: 'Manifesto',
-  materie: 'Materie',
   studio: 'Studio',
   issue: 'Issue',
   design: 'Design',
@@ -130,10 +128,8 @@ const ROUTES = {
 const ROUTE_DESCRIPTIONS = {
   articles: 'Editorial stories, interviews and research on contemporary art, architecture, interiors, design and cultural cities.',
   reviews: 'Independent EPRIS reviews of exhibitions, books, design, architecture and contemporary visual culture.',
-  library: 'Explore the EPRIS cultural library and long-term digital archive.',
   about: 'Meet EPRIS, an independent international journal and cultural platform for art, architecture and interior design.',
   manifest: 'The EPRIS declaration on meaningful modernity, cultural accessibility and independent editorial practice.',
-  materie: 'EPRIS Materie explores materials, craft and the physical intelligence of contemporary design.',
   studio: 'Editorial, visual and cultural projects by EPRIS Studio.',
   issue: 'Read the current digital issue of EPRIS Journal.',
   design: 'A curated selection of contemporary furniture, objects and interior design by EPRIS.',
@@ -144,7 +140,8 @@ const ROUTE_DESCRIPTIONS = {
 };
 
 function routeHead(route, label) {
-  const url = route ? `${SITE_ORIGIN}/${route}` : `${SITE_ORIGIN}/`;
+  const canonicalRoute = route === 'collaboation' ? 'collaboration' : route;
+  const url = canonicalRoute ? `${SITE_ORIGIN}/${canonicalRoute}` : `${SITE_ORIGIN}/`;
   const description = ROUTE_DESCRIPTIONS[route] || 'Independent international journal and cultural platform exploring contemporary art, architecture, interior design and cities in context.';
   const schema = {
     '@context': 'https://schema.org',
@@ -156,7 +153,7 @@ function routeHead(route, label) {
   };
   return `<title>${label} — EPRIS Journal</title>
     <meta name="description" content="${escapeAttr(description)}" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="robots" content="${route === 'collaboation' ? 'noindex, follow' : 'index, follow, max-image-preview:large'}" />
     <link rel="canonical" href="${url}" />
     <meta property="og:title" content="${label} — EPRIS Journal" />
     <meta property="og:description" content="${escapeAttr(description)}" />
@@ -188,7 +185,7 @@ mkdirSync(searchDir, { recursive: true });
 writeFileSync(join(searchDir, 'index.html'), template.replace('<!--TITLE-->', searchHead));
 console.log('Generated: /search');
 
-const sitemapRoutes = ['', ...Object.keys(ROUTES)];
+const sitemapRoutes = ['', ...Object.keys(ROUTES).filter((route) => route !== 'collaboation')];
 const sitemapEntries = [
   ...sitemapRoutes.map((route) => ({ loc: route ? `${SITE_ORIGIN}/${route}` : `${SITE_ORIGIN}/`, priority: route ? '0.7' : '1.0', changefreq: route === 'articles' ? 'daily' : 'weekly' })),
   ...content.articles.map((article) => ({ loc: `${SITE_ORIGIN}/article/${generateSlug(article.title)}`, priority: '0.8', changefreq: 'monthly', lastmod: article.updatedAt || article.date || '' })),

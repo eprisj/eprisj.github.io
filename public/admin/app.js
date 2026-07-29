@@ -185,6 +185,325 @@ function byId(id) {
   }
 })();
 
+// ═══════════════════════════════════════════════════════════
+// ── PUBLIC VISIBILITY REGISTRY ─────────────────────────────
+// One non-destructive control plane for navigation, routes and individual
+// editorial records. Missing values always fall back to the established site
+// defaults, so older content JSON remains fully compatible.
+(() => {
+  const sectionRoot = document.getElementById('visibilitySections');
+  const entityTabsRoot = document.getElementById('visibilityEntityTabs');
+  const entityListRoot = document.getElementById('visibilityEntityList');
+  const summaryRoot = document.getElementById('visibilitySummary');
+  const searchInput = document.getElementById('visibilitySearch');
+  const publishBtn = document.getElementById('visibilityPublishBtn');
+  const showAllBtn = document.getElementById('visibilityShowAllBtn');
+  const hideAllBtn = document.getElementById('visibilityHideAllBtn');
+  const visibilityStatus = document.getElementById('visibilityStatus');
+  if (!sectionRoot || !entityTabsRoot || !entityListRoot || !summaryRoot) return;
+
+  const SECTION_DEFS = [
+    { key: 'gallery',  label: 'Главная / Галерея', path: '/',          page: true, navigation: true },
+    { key: 'articles', label: 'Статьи',             path: '/articles',  page: true, navigation: true },
+    { key: 'reviews',  label: 'Reviews',            path: '/reviews',   page: true, navigation: true },
+    { key: 'about',    label: 'About / Команда',    path: '/about',     page: true, navigation: true },
+    { key: 'manifest', label: 'Манифест',           path: '/manifest',  page: true, navigation: false },
+    { key: 'issue',    label: 'Текущий выпуск',     path: '/issue',     page: true, navigation: true },
+    { key: 'design',   label: 'Design',              path: '/design',    page: true, navigation: true },
+    { key: 'studio',   label: 'Studio',              path: '/studio',    page: true, navigation: false },
+    { key: 'radio',    label: 'Radio',               path: '/radio',     page: true, navigation: true },
+    { key: 'podcasts', label: 'Подкасты',            path: '/podcasts',  page: true, navigation: true },
+  ];
+  const ENTITY_DEFS = [
+    { key: 'articles', label: 'Статьи' },
+    { key: 'items', label: 'Главная' },
+    { key: 'reviews', label: 'Reviews' },
+    { key: 'authors', label: 'Команда' },
+    { key: 'studioProjects', label: 'Studio' },
+  ];
+
+  let activeEntityKey = 'articles';
+  let visibilityDirty = false;
+
+  function currentData() {
+    try { return JSON.parse(editor.value || '{}'); } catch { return null; }
+  }
+
+  function ensureConfig(data) {
+    if (!data.visibility || typeof data.visibility !== 'object' || Array.isArray(data.visibility)) data.visibility = {};
+    if (!data.visibility.sections || typeof data.visibility.sections !== 'object' || Array.isArray(data.visibility.sections)) data.visibility.sections = {};
+    if (!data.visibility.entities || typeof data.visibility.entities !== 'object' || Array.isArray(data.visibility.entities)) data.visibility.entities = {};
+    SECTION_DEFS.forEach((def) => {
+      const current = data.visibility.sections[def.key];
+      if (!current || typeof current !== 'object' || Array.isArray(current)) {
+        data.visibility.sections[def.key] = { page: def.page, navigation: def.navigation };
+      } else {
+        if (typeof current.page !== 'boolean') current.page = def.page;
+        if (typeof current.navigation !== 'boolean') current.navigation = def.navigation;
+      }
+    });
+    ENTITY_DEFS.forEach((def) => {
+      if (!data.visibility.entities[def.key] || typeof data.visibility.entities[def.key] !== 'object' || Array.isArray(data.visibility.entities[def.key])) {
+        data.visibility.entities[def.key] = {};
+      }
+    });
+    return data.visibility;
+  }
+
+  function sectionState(data, def) {
+    const state = data?.visibility?.sections?.[def.key];
+    return {
+      page: typeof state?.page === 'boolean' ? state.page : def.page,
+      navigation: typeof state?.navigation === 'boolean' ? state.navigation : def.navigation,
+    };
+  }
+
+  function entityEntries(data, key) {
+    if (!data) return [];
+    if (key === 'studioProjects') return Array.isArray(data.studio?.projects) ? data.studio.projects : [];
+    return Array.isArray(data[key]) ? data[key] : [];
+  }
+
+  function entityVisible(data, key, id) {
+    return data?.visibility?.entities?.[key]?.[String(id)] !== false;
+  }
+
+  function entityTitle(entry, key) {
+    if (key === 'authors') return entry.name || 'Без имени';
+    return entry.title || entry.name || `Запись #${entry.id ?? '—'}`;
+  }
+
+  function entityMeta(entry, key) {
+    const bits = [];
+    if (entry.id != null) bits.push(`#${entry.id}`);
+    if (key === 'articles') bits.push(entry.category, entry.date);
+    else if (key === 'items') bits.push(entry.subtitle, entry.fig);
+    else if (key === 'reviews') bits.push(entry.category, entry.subject);
+    else if (key === 'authors') bits.push(entry.role, entry.active === false ? 'неактивен' : 'активен');
+    else if (key === 'studioProjects') bits.push(entry.category, entry.year);
+    if (entry.draft) bits.push('черновик');
+    return bits.filter(Boolean).join(' · ');
+  }
+
+  function switchMarkup({ on, labelOn, labelOff, section, entity, field, disabled = false }) {
+    const attrs = [
+      section ? `data-visibility-section="${escapeHtml(section)}"` : '',
+      entity != null ? `data-visibility-entity="${escapeHtml(String(entity))}"` : '',
+      field ? `data-visibility-field="${escapeHtml(field)}"` : '',
+    ].filter(Boolean).join(' ');
+    return `<button type="button" class="visibility-switch${on ? ' is-on' : ''}" role="switch" aria-checked="${on}" ${attrs}${disabled ? ' disabled' : ''}>
+      <span class="visibility-switch-dot" aria-hidden="true"></span>
+      <span>${escapeHtml(on ? labelOn : labelOff)}</span>
+    </button>`;
+  }
+
+  function renderSections(data) {
+    sectionRoot.innerHTML = SECTION_DEFS.map((def) => {
+      const state = sectionState(data, def);
+      return `<div class="visibility-section-row${state.page ? '' : ' is-closed'}">
+        <div class="visibility-row-copy">
+          <div class="visibility-row-title">${escapeHtml(def.label)}</div>
+          <div class="visibility-row-meta">${escapeHtml(def.path)}${!state.page ? ' · прямая ссылка закрыта' : (!state.navigation ? ' · доступен только по ссылке' : '')}</div>
+        </div>
+        ${switchMarkup({ on: state.navigation && state.page, labelOn: 'В меню', labelOff: 'Не в меню', section: def.key, field: 'navigation', disabled: !state.page })}
+        ${switchMarkup({ on: state.page, labelOn: 'Страница', labelOff: 'Закрыта', section: def.key, field: 'page' })}
+      </div>`;
+    }).join('');
+  }
+
+  function renderEntityTabs(data) {
+    entityTabsRoot.innerHTML = ENTITY_DEFS.map((def) => {
+      const entries = entityEntries(data, def.key);
+      const visible = entries.filter((entry) => entityVisible(data, def.key, entry.id)).length;
+      return `<button type="button" class="visibility-entity-tab" role="tab" aria-selected="${activeEntityKey === def.key}" data-visibility-entity-tab="${def.key}">${escapeHtml(def.label)} · ${visible}/${entries.length}</button>`;
+    }).join('');
+  }
+
+  function renderEntities(data) {
+    const query = (searchInput?.value || '').trim().toLocaleLowerCase();
+    const entries = entityEntries(data, activeEntityKey).filter((entry) => {
+      if (!query) return true;
+      return `${entityTitle(entry, activeEntityKey)} ${entityMeta(entry, activeEntityKey)}`.toLocaleLowerCase().includes(query);
+    });
+    if (!entries.length) {
+      entityListRoot.innerHTML = `<div class="visibility-empty">${query ? 'По этому запросу ничего не найдено.' : 'В этом разделе пока нет записей.'}</div>`;
+      return;
+    }
+    entityListRoot.innerHTML = entries.map((entry) => {
+      const on = entityVisible(data, activeEntityKey, entry.id);
+      return `<div class="visibility-entity-row${on ? '' : ' is-hidden'}">
+        <div class="visibility-row-copy">
+          <div class="visibility-row-title">${escapeHtml(entityTitle(entry, activeEntityKey))}</div>
+          <div class="visibility-row-meta">${escapeHtml(entityMeta(entry, activeEntityKey))}</div>
+        </div>
+        ${switchMarkup({ on, labelOn: 'Показывается', labelOff: 'Скрыто', entity: entry.id, field: activeEntityKey })}
+      </div>`;
+    }).join('');
+  }
+
+  function renderSummary(data) {
+    const pageVisible = SECTION_DEFS.filter((def) => sectionState(data, def).page).length;
+    const navigationVisible = SECTION_DEFS.filter((def) => {
+      const state = sectionState(data, def);
+      return state.page && state.navigation;
+    }).length;
+    let total = 0;
+    let visible = 0;
+    ENTITY_DEFS.forEach((def) => {
+      const entries = entityEntries(data, def.key);
+      total += entries.length;
+      visible += entries.filter((entry) => entityVisible(data, def.key, entry.id)).length;
+    });
+    summaryRoot.innerHTML = [
+      { value: `${pageVisible}/${SECTION_DEFS.length}`, label: 'открытых разделов' },
+      { value: navigationVisible, label: 'пунктов в меню' },
+      { value: `${visible}/${total}`, label: 'видимых материалов' },
+    ].map((item) => `<div class="visibility-summary-card"><div class="visibility-summary-value">${item.value}</div><div class="visibility-summary-label">${item.label}</div></div>`).join('');
+  }
+
+  function render() {
+    const data = currentData();
+    if (!data || !Array.isArray(data.articles)) {
+      sectionRoot.innerHTML = '<div class="visibility-empty">Сначала загрузите контент с VPS.</div>';
+      entityTabsRoot.innerHTML = '';
+      entityListRoot.innerHTML = '<div class="visibility-empty">Контент не загружен.</div>';
+      summaryRoot.innerHTML = '';
+      if (publishBtn) publishBtn.disabled = true;
+      return;
+    }
+    if (publishBtn) publishBtn.disabled = false;
+    if (!isEditorDirty()) visibilityDirty = false;
+    renderSummary(data);
+    renderSections(data);
+    renderEntityTabs(data);
+    renderEntities(data);
+    if (visibilityStatus) visibilityStatus.textContent = visibilityDirty ? 'Изменения в локальном черновике' : 'Синхронизировано с контентом';
+  }
+
+  function commit(data, message) {
+    editor.value = JSON.stringify(data, null, 2);
+    visibilityDirty = true;
+    saveDraft();
+    updateStats(data);
+    updateEditorState();
+    try { renderDashboard(); } catch {}
+    render();
+    setStatus('info', message, { sticky: true });
+  }
+
+  sectionRoot.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-visibility-section]');
+    if (!button || button.disabled) return;
+    const data = currentData();
+    if (!data) return;
+    const visibility = ensureConfig(data);
+    const key = button.dataset.visibilitySection;
+    const field = button.dataset.visibilityField;
+    const state = visibility.sections[key];
+    if (!state || !['page', 'navigation'].includes(field)) return;
+
+    if (field === 'page' && state.page) {
+      const openCount = SECTION_DEFS.filter((def) => sectionState(data, def).page).length;
+      if (openCount <= 1) {
+        showToast('error', 'Нельзя закрыть последний доступный раздел сайта.');
+        return;
+      }
+    }
+    state[field] = !state[field];
+    if (field === 'page' && !state.page) state.navigation = false;
+    if (field === 'navigation' && state.navigation) state.page = true;
+    commit(data, `Видимость раздела «${SECTION_DEFS.find((def) => def.key === key)?.label || key}» изменена.`);
+  });
+
+  entityTabsRoot.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-visibility-entity-tab]');
+    if (!button) return;
+    activeEntityKey = button.dataset.visibilityEntityTab;
+    if (searchInput) searchInput.value = '';
+    render();
+  });
+
+  entityListRoot.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-visibility-entity]');
+    if (!button) return;
+    const data = currentData();
+    if (!data) return;
+    const visibility = ensureConfig(data);
+    const key = button.dataset.visibilityField;
+    const id = String(button.dataset.visibilityEntity);
+    const bucket = visibility.entities[key];
+    bucket[id] = bucket[id] === false;
+    commit(data, `${bucket[id] ? 'Показана' : 'Скрыта'} запись «${entityTitle(entityEntries(data, key).find((entry) => String(entry.id) === id) || {}, key)}».`);
+  });
+
+  searchInput?.addEventListener('input', () => renderEntities(currentData()));
+
+  showAllBtn?.addEventListener('click', () => {
+    const data = currentData();
+    if (!data) return;
+    const visibility = ensureConfig(data);
+    entityEntries(data, activeEntityKey).forEach((entry) => { visibility.entities[activeEntityKey][String(entry.id)] = true; });
+    commit(data, 'Все записи выбранного раздела будут показаны.');
+  });
+
+  hideAllBtn?.addEventListener('click', async () => {
+    const data = currentData();
+    if (!data) return;
+    const def = ENTITY_DEFS.find((item) => item.key === activeEntityKey);
+    const confirmed = await showConfirmModal(
+      `Скрыть все: ${def?.label || activeEntityKey}?`,
+      'Записи не удалятся и останутся в редакторе. На публичном сайте выбранный список станет пустым после публикации.',
+      'Скрыть все'
+    );
+    if (!confirmed) return;
+    const visibility = ensureConfig(data);
+    entityEntries(data, activeEntityKey).forEach((entry) => { visibility.entities[activeEntityKey][String(entry.id)] = false; });
+    commit(data, 'Все записи выбранного раздела будут скрыты.');
+  });
+
+  publishBtn?.addEventListener('click', async () => {
+    const data = currentData();
+    if (!data) { showToast('error', 'Сначала загрузите контент.'); return; }
+    const confirmed = await showConfirmModal(
+      'Опубликовать видимость?',
+      'Настройки видимости и остальные изменения текущего черновика будут сохранены на <strong>VPS</strong>. Сайт обновится сразу.',
+      'Опубликовать'
+    );
+    if (!confirmed) return;
+    const pw = getAdminPassword();
+    if (!pw) { showToast('error', 'Сессия истекла — войдите в админку заново.'); return; }
+    publishBtn.disabled = true;
+    if (visibilityStatus) visibilityStatus.textContent = 'Публикация…';
+    try {
+      validateShape(data);
+      const res = await fetch(CONTENT_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
+        body: JSON.stringify(data),
+      });
+      const result = await res.json().catch(() => ({}));
+      if (!res.ok || !result.ok) throw new Error(result.error || `VPS вернул статус ${res.status}`);
+      editor.value = JSON.stringify(data, null, 2);
+      setLastSyncedSnapshotFromText(editor.value);
+      localStorage.removeItem(DRAFT_KEY);
+      lastSyncedTime = new Date();
+      visibilityDirty = false;
+      updateLastSyncedBadge();
+      setStatus('success', 'Видимость опубликована — сайт обновлён мгновенно');
+      render();
+    } catch (error) {
+      showToast('error', getErrorMessage(error));
+      if (visibilityStatus) visibilityStatus.textContent = 'Ошибка публикации — изменения сохранены локально';
+    } finally {
+      publishBtn.disabled = false;
+    }
+  });
+
+  document.querySelector('[data-tab="visibility"]')?.addEventListener('click', () => setTimeout(render, 40));
+  window._renderVisibility = render;
+  setTimeout(render, 900);
+})();
+
 // ===== AUTH GATE =====
 const AUTH_STORAGE_KEY    = 'epris_admin_token';
 const AUTH_PW_STORAGE_KEY = 'epris_admin_pw_saved';
@@ -1509,6 +1828,10 @@ function validateShape(data) {
   ) {
     throw new Error('localizedCollections должен быть объектом.');
   }
+
+  if ('visibility' in data && (!data.visibility || typeof data.visibility !== 'object' || Array.isArray(data.visibility))) {
+    throw new Error('visibility должен быть объектом.');
+  }
 }
 
 // Mirrors the server's validateEntity() in deploy-webhook.js for instant
@@ -1601,7 +1924,6 @@ function updateStats(data) {
     ['Элементы галереи', Array.isArray(data.items) ? data.items.length : 0],
     ['Статьи', Array.isArray(data.articles) ? data.articles.length : 0],
     ['Обзоры', Array.isArray(data.reviews) ? data.reviews.length : 0],
-    ['Файлы библиотеки', Array.isArray(data.libraryItems) ? data.libraryItems.length : 0],
     ['Размер (байт)', bytes]
   ];
 
@@ -1615,7 +1937,6 @@ function updateStats(data) {
     const articlesCount = Array.isArray(data.articles) ? data.articles.length : 0;
     const reviewsCount = Array.isArray(data.reviews) ? data.reviews.length : 0;
     const itemsCount = Array.isArray(data.items) ? data.items.length : 0;
-    const libCount = Array.isArray(data.libraryItems) ? data.libraryItems.length : 0;
     const langCount = typeof data.translations === 'object' && data.translations ? Object.keys(data.translations).length : 0;
     const kbSize = Math.round(bytes / 1024);
 
@@ -1632,7 +1953,6 @@ function updateStats(data) {
       { label: 'С фото', value: articlesWithPhoto, sub: `из ${articlesCount} статей` },
       { label: 'Обзоры', value: reviewsCount, sub: 'записей' },
       { label: 'Галерея', value: itemsCount, sub: 'элементов' },
-      { label: 'Библиотека', value: libCount, sub: 'файлов' },
       { label: 'Языки UI', value: langCount, sub: `+ EN базовый` },
       { label: 'Размер', value: `${kbSize}`, sub: 'КБ' },
     ].map(({ label, value, sub }) =>
@@ -1752,8 +2072,7 @@ function runContentQualityChecks(data) {
   const sections = [
     ['items', 'Галерея'],
     ['articles', 'Статьи'],
-    ['reviews', 'Обзоры'],
-    ['libraryItems', 'Библиотека']
+    ['reviews', 'Обзоры']
   ];
 
   for (const [sectionKey, sectionLabel] of sections) {
@@ -2442,6 +2761,7 @@ function setEditorData(data, options = {}) {
   if (typeof renderPollResults === 'function') {
     try { renderPollResults(); } catch {}
   }
+  try { window._renderVisibility?.(); } catch {}
   // Re-seed Issue Builder + Translations from freshly loaded content
   if (typeof renderIssuesTab === 'function' && document.getElementById('issueArticlesList')) {
     _issues = null; // force resync of issue archive from reloaded content
@@ -2799,7 +3119,6 @@ function renderCreatorQuality(data, section, lang, entry) {
     addChip(entry.imageUrl || entry.imageSeed ? 'Фото' : 'Нет фото', Boolean(entry.imageUrl || entry.imageSeed));
   } else if (section === 'reviews') {
     addChip(entry.content ? 'Текст' : 'Нет текста', Boolean(entry.content));
-    addChip(Number(entry.rating) > 0 ? 'Рейтинг' : 'Нет рейтинга', Number(entry.rating) > 0);
   } else if (section === 'libraryItems') {
     addChip(entry.type ? 'Тип' : 'Нет типа', Boolean(entry.type));
     addChip(entry.year ? 'Год' : 'Нет года', Boolean(entry.year));
@@ -2981,7 +3300,7 @@ function getPreviewMeta(section, entry) {
     return [entry.fig, entry.subtitle].filter(Boolean).join(' · ');
   }
   if (section === 'reviews') {
-    return [entry.subject, entry.rating ? `${entry.rating}/5` : ''].filter(Boolean).join(' · ');
+    return [entry.subject, entry.category].filter(Boolean).join(' · ');
   }
   return [entry.type, entry.size, entry.year].filter(Boolean).join(' · ');
 }
@@ -3163,8 +3482,7 @@ function buildQualityEntryFromForm(section, fallback = {}) {
     return {
       ...base,
       title: getFieldValue('vf-title').trim(),
-      content: getFieldValue('vf-content').trim(),
-      rating: Number(getFieldValue('vf-rating'))
+      content: getFieldValue('vf-content').trim()
     };
   }
 
@@ -3733,7 +4051,6 @@ function renderVisualForm() {
     const revImg = (entry.imageUrl || '').trim();
     visualFormEl.innerHTML = `
       <label>ID<input id="vf-id" value="${escapeHtml(entry.id)}" disabled /></label>
-      <label>Рейтинг (0-5)<input id="vf-rating" type="number" min="0" max="5" step="0.1" value="${escapeHtml(entry.rating || 0)}" /></label>
       <label>Категория<input id="vf-category" value="${escapeHtml(entry.category || '')}" placeholder="Food / Books / Stay…" /></label>
       <label class="checkbox-label" style="align-self:end" for="vf-featured"><input id="vf-featured" type="checkbox" ${entry.featured ? 'checked' : ''} /> Главный обзор (featured)</label>
       <label class="full">Заголовок<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
@@ -3939,16 +4256,11 @@ function buildEntryFromVisualForm(section, current) {
     };
     applyDraftFieldsFromForm(next);
   } else if (section === 'reviews') {
-    const rating = Number(getFieldValue('vf-rating'));
-    if (Number.isNaN(rating)) {
-      throw new Error('Рейтинг должен быть числом.');
-    }
     const lines = (id) => getFieldValue(id).split('\n').map((s) => s.trim()).filter(Boolean);
     next = {
       ...next,
       title: getFieldValue('vf-title').trim(),
       subject: getFieldValue('vf-subject').trim(),
-      rating,
       content: getFieldValue('vf-content').trim(),
       author: getFieldValue('vf-author').trim(),
       category: getOptionalString(getFieldValue('vf-category')),
@@ -6984,7 +7296,6 @@ function renderDashboard() {
       { key: 'articles',     label: 'Статьи' },
       { key: 'reviews',      label: 'Обзоры' },
       { key: 'items',        label: 'Галерея' },
-      { key: 'libraryItems', label: 'Библиотека' },
     ];
     auditEl.innerHTML = sections.map(sec => {
       // Flat arrays (EN/default set) — same schema as the dashboard counts above.
@@ -10088,7 +10399,6 @@ async function autoSyncVisualToEditor() {
           ...next,
           title: getFieldValue('vf-title').trim(),
           subject: getFieldValue('vf-subject').trim(),
-          rating: Number(getFieldValue('vf-rating')),
           content: getFieldValue('vf-content').trim()
         };
     } else if (section === 'libraryItems') {
@@ -12132,11 +12442,6 @@ async function flushModernEditor() {
     h += '<span class="wys-hero-edit">✎ Обложка</span></div>';
 
     h += '<div class="wys-review-top">';
-    h += '<div class="wys-review-stars" data-wys-act="stars">';
-    for (let i = 0; i < 5; i++) {
-      h += `<button type="button" class="wys-star${i < Math.round(r.rating || 0) ? ' filled' : ''}" data-wys-act="star" data-val="${i + 1}" title="${i + 1} из 5">★</button>`;
-    }
-    h += '</div>';
     h += `<span class="wys-ce wys-kicker" contenteditable="true" data-wys="category" data-empty="Категория">${esc(r.category || '')}</span>`;
     h += '<label class="wys-review-featured"><input type="checkbox" data-wys-act="featured"' + (r.featured ? ' checked' : '') + '> Featured (главный обзор раздела)</label>';
     h += '</div>';
@@ -12214,7 +12519,6 @@ async function flushModernEditor() {
     const a = act.getAttribute('data-wys-act');
 
     if (a === 'hero') return window._wysOpenImagePicker?.((url) => { _model.imageUrl = url; render(); commit(); });
-    if (a === 'star') { _model.rating = Number(act.getAttribute('data-val')); render(); commit(); return; }
     if (a === 'pros-add') { _model.pros = _model.pros || []; _model.pros.push(''); render(); commit(); return; }
     if (a === 'cons-add') { _model.cons = _model.cons || []; _model.cons.push(''); render(); commit(); return; }
     if (a === 'pros-del') { const ci = Number(act.getAttribute('data-ci')); _model.pros?.splice(ci, 1); render(); commit(); return; }

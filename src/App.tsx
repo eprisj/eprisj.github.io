@@ -4,7 +4,6 @@ import { ReactNode, useState, useEffect, useCallback, useMemo, FormEvent, useRef
 // e.g. DesignPage alone carries a 244-item catalogue that has no business
 // loading for a reader who just opened an article. Each only downloads once
 // its tab is actually clicked.
-const MateriePage = lazy(() => import('./pages/MateriePage').then((m) => ({ default: m.MateriePage })));
 const IssuePage = lazy(() => import('./pages/IssuePage').then((m) => ({ default: m.IssuePage })));
 const StudioPage = lazy(() => import('./pages/StudioPage').then((m) => ({ default: m.StudioPage })));
 const RadioPage = lazy(() => import('./pages/RadioPage').then((m) => ({ default: m.RadioPage })));
@@ -26,16 +25,17 @@ import {
   resolveAuthor,
   translateRole,
   Item,
-  LibraryItem,
   Review,
   setPreviewOverride,
   getTranslations,
   getTheme,
+  isSectionEnabled,
+  isSectionInNavigation,
   loadLiveContent,
   subscribeContent
 } from './data';
-import type { SiteTheme } from './data';
-import { Search, Folder, Bookmark, Star, ArrowUpRight, Download, FileText, BookOpen, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
+import type { SiteTheme, VisibilitySectionKey } from './data';
+import { Search, ArrowUpRight, FileText, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
 
 // Issue-draft preview: when the admin opens /issue?preview=1, load the unsaved
 // content JSON it stashed in localStorage and override the data layer before any
@@ -306,7 +306,7 @@ function Reveal({ children, delay = 0, y = 28, className = '' }: { children: Rea
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-8%' }}
-      transition={{ duration: 0.7, delay: Math.min(delay, 0.35), ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.42, delay: Math.min(delay, 0.24), ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
       {children}
@@ -364,7 +364,7 @@ function VideoBlock({ content, caption }: { content: string; caption?: string })
   );
 }
 
-// Shown briefly while a code-split tab (materie/issue/design/studio/radio/
+// Shown briefly while a code-split tab (issue/design/studio/radio/
 // podcasts) downloads its chunk. On a warm cache this basically never shows.
 function TabLoadingFallback() {
   return (
@@ -437,23 +437,59 @@ function LazyTab({ children }: { children: ReactNode }) {
 // Stagger container for lists
 const staggerContainer = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
+  show: { transition: { staggerChildren: 0.055, delayChildren: 0.035 } },
 };
 const staggerItem = {
   hidden: { opacity: 0, y: 22 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.38, ease: [0.22, 1, 0.36, 1] } },
 };
 
 // Shared motion tokens so interactions read as one system.
 const EASE = [0.22, 1, 0.36, 1] as const;
 // Card hover-lift on desktop; press feedback on touch (no hover there).
-const cardHover = { y: -6, transition: { duration: 0.4, ease: EASE } };
+const cardHover = { y: -6, transition: { duration: 0.28, ease: EASE } };
 const cardTap = { scale: 0.985, transition: { duration: 0.15, ease: EASE } };
 // A hairline that draws itself in when scrolled into view.
 const drawLine = {
   hidden: { scaleX: 0, opacity: 0 },
-  show: { scaleX: 1, opacity: 1, transition: { duration: 0.8, ease: EASE } },
+  show: { scaleX: 1, opacity: 1, transition: { duration: 0.46, ease: EASE } },
 };
+
+const ROUTE_SEQUENCE = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'design', 'studio', 'radio', 'podcasts', 'passport'];
+const routeVariants = {
+  enter: (direction: number) => ({ opacity: 0, x: direction * 24, y: 8 }),
+  center: { opacity: 1, x: 0, y: 0 },
+  exit: (direction: number) => ({ opacity: 0, x: direction * -14, y: -4 }),
+};
+
+function routePosition(routeKey: string): number {
+  if (routeKey.startsWith('search-')) return 0.5;
+  const index = ROUTE_SEQUENCE.indexOf(routeKey);
+  return index === -1 ? 0 : index;
+}
+
+function RouteTransition({ routeKey, direction, children }: { routeKey: string; direction: number; children: ReactNode }) {
+  return (
+    <AnimatePresence initial={false} mode="wait" custom={direction}>
+      <motion.div
+        key={routeKey}
+        custom={direction}
+        variants={routeVariants}
+        initial="enter"
+        animate="center"
+        exit="exit"
+        transition={{
+          opacity: { duration: 0.22, ease: EASE },
+          x: { duration: 0.32, ease: EASE },
+          y: { duration: 0.28, ease: EASE },
+        }}
+        className="route-motion-surface min-h-[calc(100dvh-4rem)]"
+      >
+        {children}
+      </motion.div>
+    </AnimatePresence>
+  );
+}
 
 const LANG_LABELS: Record<string, string> = {
   EN: 'English',
@@ -472,7 +508,6 @@ function NavBar({
   setCurrentLang,
   t,
   languages,
-  libraryCount,
   onSearch,
 }: {
   activeTab: string;
@@ -481,7 +516,6 @@ function NavBar({
   setCurrentLang: (lang: string) => void;
   t: (key: string) => string;
   languages: string[];
-  libraryCount: number;
   onSearch: (q: string) => void;
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -490,32 +524,34 @@ function NavBar({
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    if (!isSearchOpen) return;
+    const locked = isSearchOpen || isMenuOpen || isLangOpen;
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setIsSearchOpen(false);
+      if (event.key !== 'Escape') return;
+      setIsSearchOpen(false);
+      setIsMenuOpen(false);
+      setIsLangOpen(false);
     };
     const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
+    if (locked) document.body.style.overflow = 'hidden';
     document.addEventListener('keydown', onKeyDown);
     return () => {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener('keydown', onKeyDown);
     };
-  }, [isSearchOpen]);
+  }, [isSearchOpen, isMenuOpen, isLangOpen]);
 
-  const tabs = [
+  const tabs: { id: VisibilitySectionKey; label: string }[] = [
     { id: 'gallery', label: t('nav.gallery') },
     { id: 'articles', label: t('nav.articles') },
     { id: 'reviews', label: t('nav.reviews') },
-    { id: 'library', label: t('nav.library') },
     { id: 'about', label: t('nav.about') },
-    { id: 'materie', label: t('nav.materie') },
+    { id: 'manifest', label: t('nav.manifest') },
     { id: 'issue', label: t('nav.issue') },
     { id: 'design', label: 'Design' },
     { id: 'studio', label: t('nav.studio') },
     { id: 'radio', label: t('nav.radio') },
     { id: 'podcasts', label: t('nav.podcasts') },
-  ];
+  ].filter((tab) => isSectionInNavigation(tab.id));
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
@@ -530,14 +566,25 @@ function NavBar({
   return (
     <>
       {/* ── Mobile header: menu · centred wordmark · language + issue ── */}
-      <nav className="lg:hidden fixed top-0 left-0 w-full z-50 bg-[var(--c-bg)] border-b border-[rgb(var(--c-accent-rgb)_/_0.25)] h-16 flex items-center justify-between px-3">
+      <nav className="lg:hidden fixed top-0 left-0 w-full z-50 bg-[rgb(var(--c-bg-rgb)_/_0.94)] border-b border-[rgb(var(--c-accent-rgb)_/_0.25)] h-16 flex items-center justify-between px-3 backdrop-blur-xl supports-[backdrop-filter]:bg-[rgb(var(--c-bg-rgb)_/_0.78)]">
         <button
           type="button"
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="relative z-10 w-11 h-11 inline-flex items-center justify-center rounded-full text-[var(--c-accent)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.08)] active:scale-95 transition"
         >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          <AnimatePresence initial={false} mode="wait">
+            <motion.span
+              key={isMenuOpen ? 'close' : 'menu'}
+              initial={{ opacity: 0, rotate: isMenuOpen ? -18 : 18, scale: 0.86 }}
+              animate={{ opacity: 1, rotate: 0, scale: 1 }}
+              exit={{ opacity: 0, rotate: isMenuOpen ? 18 : -18, scale: 0.86 }}
+              transition={{ duration: 0.16, ease: EASE }}
+              className="inline-flex"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </motion.span>
+          </AnimatePresence>
         </button>
         <button
           type="button"
@@ -559,7 +606,7 @@ function NavBar({
             <Globe size={14} aria-hidden="true" />
             {currentLang}
           </button>
-          <button
+          {isSectionInNavigation('issue') && <button
             type="button"
             onClick={() => { setActiveTab('issue'); setIsMenuOpen(false); }}
             aria-label={t('nav.issue')}
@@ -567,7 +614,7 @@ function NavBar({
             className="hidden min-[360px]:inline-flex h-11 min-w-12 items-center justify-center bg-[var(--c-accent)] text-[var(--c-bg)] rounded-full px-3 font-mono text-[11px] tracking-[0.12em] uppercase hover:bg-[#3d1421] active:scale-95 transition"
           >
             Nº
-          </button>
+          </button>}
         </div>
       </nav>
 
@@ -582,7 +629,10 @@ function NavBar({
 
         {/* Desktop Navigation */}
         <LayoutGroup id="nav-tabs">
-          <div className="grid flex-1 grid-cols-11 divide-x divide-[var(--c-accent)]">
+          <div
+            className="grid flex-1 divide-x divide-[var(--c-accent)]"
+            style={{ gridTemplateColumns: `repeat(${Math.max(tabs.length, 1)}, minmax(0, 1fr))` }}
+          >
             {tabs.map((tab) => (
               <button
                 type="button"
@@ -626,8 +676,15 @@ function NavBar({
             >
               {currentLang}
             </button>
+            <AnimatePresence>
             {isLangOpen && (
-              <div className="absolute top-full right-0 w-16 bg-[var(--c-bg)] border-x border-b border-[var(--c-accent)] z-50">
+              <motion.div
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -5 }}
+                transition={{ duration: 0.18, ease: EASE }}
+                className="absolute top-full right-0 w-16 bg-[var(--c-bg)] border-x border-b border-[var(--c-accent)] z-50"
+              >
                 {languages.filter(l => l !== currentLang).map(lang => (
                   <button
                     type="button"
@@ -638,21 +695,11 @@ function NavBar({
                     {lang}
                   </button>
                 ))}
-              </div>
+              </motion.div>
             )}
+            </AnimatePresence>
           </div>
 
-          <button
-            type="button"
-            onClick={() => setActiveTab('library')}
-            aria-label={`${t('files')} (${libraryCount})`}
-            title={`${t('files')} (${libraryCount})`}
-            className={`w-16 flex items-center justify-center transition-colors ${
-              activeTab === 'library' ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]'
-            }`}
-          >
-            <Bookmark size={16} />
-          </button>
         </div>
       </nav>
 
@@ -723,7 +770,8 @@ function NavBar({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-[rgb(var(--c-bg-rgb)_/_0.95)] backdrop-blur-sm flex items-center justify-center p-4"
+            transition={{ duration: 0.2, ease: EASE }}
+              className="fixed inset-0 z-[70] bg-[rgb(var(--c-bg-rgb)_/_0.96)] backdrop-blur-sm flex items-center justify-center p-4 pt-[calc(1rem+env(safe-area-inset-top))] pb-[calc(1rem+env(safe-area-inset-bottom))]"
             role="dialog"
             aria-modal="true"
             aria-labelledby="site-search-title"
@@ -735,11 +783,18 @@ function NavBar({
               type="button"
               onClick={() => setIsSearchOpen(false)}
               aria-label="Close search"
-              className="absolute top-8 right-8 p-2 hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] rounded-full transition-colors border border-[var(--c-accent)]"
+              className="absolute top-[calc(1rem+env(safe-area-inset-top))] right-4 sm:top-8 sm:right-8 h-11 w-11 inline-flex items-center justify-center hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] rounded-full transition-colors border border-[var(--c-accent)]"
             >
               <X size={24} />
             </button>
-            <form onSubmit={handleSearch} className="w-full max-w-3xl">
+            <motion.form
+              initial={{ opacity: 0, y: 22, scale: 0.985 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.99 }}
+              transition={{ duration: 0.28, ease: EASE }}
+              onSubmit={handleSearch}
+              className="w-full max-w-3xl rounded-[28px] border border-[rgb(var(--c-accent-rgb)_/_0.16)] bg-[rgb(var(--c-bg-rgb)_/_0.68)] p-5 shadow-[0_24px_80px_-52px_rgb(var(--c-accent-rgb)_/_0.72)] sm:p-8"
+            >
               <label id="site-search-title" htmlFor="site-search-input" className="sr-only">{t('search.dialogTitle')}</label>
               <input 
                 id="site-search-input"
@@ -763,7 +818,7 @@ function NavBar({
                   {t('search.submit')}
                 </button>
               </div>
-            </form>
+            </motion.form>
           </motion.div>
         )}
       </AnimatePresence>
@@ -772,28 +827,42 @@ function NavBar({
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -18 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed top-16 left-0 w-full h-[calc(100vh-4rem)] bg-[var(--c-bg)] z-40 flex flex-col lg:hidden overflow-y-auto"
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.24, ease: EASE }}
+            className="fixed top-16 left-0 w-full h-[calc(100dvh-4rem)] bg-[rgb(var(--c-bg-rgb)_/_0.98)] z-40 flex flex-col lg:hidden overflow-y-auto shadow-[0_28px_80px_-50px_rgb(var(--c-accent-rgb)_/_0.65)] backdrop-blur-xl pb-[env(safe-area-inset-bottom)]"
           >
-            <div className="flex flex-col divide-y divide-[var(--c-accent)] border-b border-[var(--c-accent)]">
+            <motion.div
+              initial="hidden"
+              animate="show"
+              exit="hidden"
+              variants={{
+                hidden: { transition: { staggerChildren: 0.018, staggerDirection: -1 } },
+                show: { transition: { delayChildren: 0.035, staggerChildren: 0.035 } },
+              }}
+              className="flex flex-col divide-y divide-[var(--c-accent)] border-b border-[var(--c-accent)]"
+            >
               {tabs.map((tab) => (
-                <button
+                <motion.button
                   type="button"
                   key={tab.id}
+                  variants={{
+                    hidden: { opacity: 0, x: -14 },
+                    show: { opacity: 1, x: 0, transition: { duration: 0.22, ease: EASE } },
+                  }}
                   onClick={() => {
                     setActiveTab(tab.id);
                     setIsMenuOpen(false);
                   }}
-                  className={`p-6 flex items-center justify-between text-left ${
+                  className={`min-h-[64px] px-6 py-4 flex items-center justify-between text-left transition-colors active:scale-[0.99] ${
                     activeTab === tab.id ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : ''
                   }`}
                 >
-                  <span className="font-bold text-lg">{tab.label}</span>
-                </button>
+                  <span className="font-serif font-normal text-xl leading-tight">{tab.label}</span>
+                </motion.button>
               ))}
-            </div>
+            </motion.div>
             
             <div className="mt-auto border-t border-[var(--c-accent)]">
               <button
@@ -804,12 +873,9 @@ function NavBar({
                 <span className="flex items-center gap-3 font-serif text-lg"><Globe size={20} /> {LANG_LABELS[currentLang] || currentLang}</span>
                 <span className="font-mono text-xs font-bold tracking-widest">{currentLang}</span>
               </button>
-              <div className="p-4 flex justify-center gap-8">
-                <button type="button" aria-label="Open search" onClick={() => { setIsMenuOpen(false); setIsSearchOpen(true); }}>
+              <div className="p-4 flex justify-center">
+                <button type="button" aria-label="Open search" className="h-12 min-w-12 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.25)] inline-flex items-center justify-center" onClick={() => { setIsMenuOpen(false); setIsSearchOpen(true); }}>
                   <Search size={24} />
-                </button>
-                <button type="button" aria-label="Open library" onClick={() => { setIsMenuOpen(false); setActiveTab('library'); }}>
-                  <Folder size={24} />
                 </button>
               </div>
             </div>
@@ -1082,7 +1148,7 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
     <div>
       {/* Featured article — offset corner-bracket frame, no card border */}
       <Reveal>
-        <div className="relative p-4 sm:p-5 mb-14 sm:mb-28">
+        <div className="relative -mx-4 sm:mx-0 sm:p-5 mb-14 sm:mb-28">
           <span className="absolute top-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-t border-l border-[var(--c-accent)]" />
           <span className="absolute top-0 right-0 w-6 h-6 sm:w-8 sm:h-8 border-t border-r border-[var(--c-accent)]" />
           <span className="absolute bottom-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-b border-l border-[var(--c-accent)]" />
@@ -1105,7 +1171,7 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
                 referrerPolicy="no-referrer"
               />
             </div>
-            <div className="flex flex-col justify-center py-2">
+            <div className="flex flex-col justify-center px-4 pt-5 pb-2 sm:px-0 sm:py-2">
               <h2 className="font-crimson text-2xl sm:text-3xl text-[var(--c-accent)] underline decoration-1 underline-offset-4 decoration-[rgb(var(--c-accent-rgb)_/_0.35)] group-hover:decoration-[var(--c-gold)] group-hover:text-[var(--c-gold)] transition-colors duration-300 mb-2">
                 {featured.title}
               </h2>
@@ -2037,20 +2103,6 @@ function ArticlesSection({
   );
 }
 
-function RatingStars({ rating, size = 16 }: { rating: number; size?: number }) {
-  return (
-    <div className="flex gap-1">
-      {[...Array(5)].map((_, i) => (
-        <Star
-          key={i}
-          size={size}
-          className={i < Math.round(rating) ? 'fill-[var(--c-accent)] text-[var(--c-accent)]' : 'text-[rgb(var(--c-accent-rgb)_/_0.2)]'}
-        />
-      ))}
-    </div>
-  );
-}
-
 function ProsCons({ pros, cons, t }: { pros?: string[]; cons?: string[]; t: (key: string) => string }) {
   if ((!pros || !pros.length) && (!cons || !cons.length)) return null;
   return (
@@ -2109,12 +2161,9 @@ function ReviewsSection({ reviews, t }: { reviews: Review[]; t: (key: string) =>
               </div>
             )}
             <div className="p-7 sm:p-10 md:p-12 bg-[#E8DED5] flex flex-col">
-              <div className="flex items-center justify-between mb-5">
-                <RatingStars rating={featured.rating} />
-                {featured.category && (
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)]">{featured.category}</span>
-                )}
-              </div>
+              {featured.category && (
+                <span className="mb-5 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)]">{featured.category}</span>
+              )}
               <h3 className="font-serif text-3xl md:text-4xl text-[var(--c-accent)] mb-1.5">{featured.title}</h3>
               <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-5">{featured.subject}</p>
               {featured.verdict && (
@@ -2169,12 +2218,9 @@ function ReviewsSection({ reviews, t }: { reviews: Review[]; t: (key: string) =>
                 </div>
               )}
               <div className="p-6 sm:p-8 flex flex-col flex-1">
-                <div className="flex justify-between items-start mb-4">
-                  <RatingStars rating={review.rating} />
-                  {!review.imageUrl && review.category && (
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--c-gold)]">{review.category}</span>
-                  )}
-                </div>
+                {!review.imageUrl && review.category && (
+                  <span className="mb-4 font-mono text-[10px] uppercase tracking-widest text-[var(--c-gold)]">{review.category}</span>
+                )}
                 <h3 className="font-serif text-2xl md:text-3xl text-[var(--c-accent)] mb-1.5">{review.title}</h3>
                 <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-4">{review.subject}</p>
                 {review.verdict && (
@@ -2197,54 +2243,16 @@ function ReviewsSection({ reviews, t }: { reviews: Review[]; t: (key: string) =>
   );
 }
 
-function LibrarySection({ libraryItems, t }: { libraryItems: LibraryItem[]; t: (key: string) => string }) {
-  return (
-    <div className="border border-[var(--c-accent)]">
-      <div className="grid grid-cols-12 border-b border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)] p-3 sm:p-4 font-mono text-[10px] sm:text-xs uppercase tracking-widest">
-        <div className="col-span-9 sm:col-span-8 md:col-span-5">{t('library.title')}</div>
-        <div className="col-span-2 hidden md:block">{t('library.type')}</div>
-        <div className="col-span-2 hidden md:block">{t('library.size')}</div>
-        <div className="col-span-2 hidden md:block">{t('library.year')}</div>
-        <div className="col-span-3 sm:col-span-4 md:col-span-1 text-right">{t('library.action')}</div>
-      </div>
-      {libraryItems.map((item, index) => (
-        <div key={item.id}>
-          <Reveal delay={index * 0.05}>
-            <div className="grid grid-cols-12 p-3 sm:p-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] items-center hover:bg-[#E8DED5] transition-colors group font-mono text-xs sm:text-sm text-[var(--c-accent)]">
-              <div className="col-span-9 sm:col-span-8 md:col-span-5 font-medium flex items-center gap-2 sm:gap-3 min-w-0">
-                <BookOpen size={16} className="text-[rgb(var(--c-accent-rgb)_/_0.4)] group-hover:text-[var(--c-accent)] shrink-0 hidden sm:block" />
-                <span className="truncate">{item.title}</span>
-              </div>
-              <div className="col-span-2 hidden md:block opacity-60">{item.type}</div>
-              <div className="col-span-2 hidden md:block opacity-60">{item.size}</div>
-              <div className="col-span-2 hidden md:block opacity-60">{item.year}</div>
-              <div className="col-span-3 sm:col-span-4 md:col-span-1 text-right">
-                <a
-                  href={item.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`Open ${item.title}`}
-                  className={`inline-flex items-center justify-center w-8 h-8 border border-[var(--c-accent)] rounded-full transition-colors ${
-                    item.url
-                      ? 'hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]'
-                      : 'pointer-events-none opacity-40'
-                  }`}
-                >
-                  <Download size={14} />
-                </a>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function Sidebar({ t }: { t: (key: string) => string }) {
   const labels = [t('sidebar.lifestyle'), t('sidebar.travel'), t('sidebar.taste'), t('sidebar.design'), t('sidebar.culture'), t('sidebar.lifestyle'), t('sidebar.travel')];
   return (
-    <aside className="hidden lg:flex w-12 border-l border-[var(--c-accent)] flex-col justify-between items-center py-8 fixed right-0 top-0 h-full bg-[var(--c-bg)] z-40 pt-24">
+    <motion.aside
+      initial={{ opacity: 0, x: 48 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 32 }}
+      transition={{ duration: 0.26, ease: EASE }}
+      className="hidden lg:flex w-12 border-l border-[var(--c-accent)] flex-col justify-between items-center py-8 fixed right-0 top-0 h-full bg-[var(--c-bg)] z-40 pt-24"
+    >
       <div className="h-full w-full relative">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-max h-full pt-4">
           <p className="writing-vertical-rl text-[10px] font-mono uppercase tracking-[0.3em] text-[rgb(var(--c-accent-rgb)_/_0.4)] flex gap-8 whitespace-nowrap">
@@ -2254,7 +2262,7 @@ function Sidebar({ t }: { t: (key: string) => string }) {
           </p>
         </div>
       </div>
-    </aside>
+    </motion.aside>
   );
 }
 
@@ -2262,14 +2270,14 @@ function Sidebar({ t }: { t: (key: string) => string }) {
 // The old search was a single raw substring check across every article's raw
 // body text with no word boundaries — "ando" matched "abandoned", a query
 // like "design" (a word that turns up in passing in most captions) surfaced
-// nearly the entire article list in no particular order, and Gallery,
-// Reviews and Library weren't searched at all. Net effect: results looked
+// nearly the entire article list in no particular order, and Gallery and
+// Reviews weren't searched at all. Net effect: results looked
 // arbitrary, so the feature read as broken even though it "worked".
 //
 // Tokenize (Unicode-aware, so this holds up across every UI language) and
 // score whole-word / prefix matches per field, weighted by how much that
 // field says about relevance (title outweighs a stray mention in a content
-// block), then rank. Covers Articles, Gallery, Reviews and Library in one
+// block), then rank. Covers Articles, Gallery and Reviews in one
 // pass so a search actually finds whatever the reader is looking for.
 function normalizeSearchText(text: string): string {
   return text
@@ -2332,7 +2340,7 @@ function matchesEveryQueryToken(fieldTokens: string[], queryTokens: string[]): b
 interface SearchHit {
   key: string;
   score: number;
-  kind: 'article' | 'item' | 'review' | 'library';
+  kind: 'article' | 'item' | 'review';
   title: string;
   meta: string;
   excerpt: string;
@@ -2342,7 +2350,7 @@ interface SearchHit {
 
 function buildSearchIndex(
   queryTokens: string[],
-  { articles, items, reviews, libraryItems }: { articles: Article[]; items: Item[]; reviews: Review[]; libraryItems: LibraryItem[] },
+  { articles, items, reviews }: { articles: Article[]; items: Item[]; reviews: Review[] },
   handlers: { onArticleClick: (a: Article) => void; onItemClick: (i: Item) => void; onGoToTab: (tab: string) => void },
 ): SearchHit[] {
   const hits: SearchHit[] = [];
@@ -2400,25 +2408,11 @@ function buildSearchIndex(
     }
   }
 
-  for (const l of libraryItems) {
-    const allTokens = tokenize([l.title, l.type, l.year].filter(Boolean).join(' '));
-    const score =
-      scoreField(tokenize(l.title), queryTokens, 10) +
-      scoreField(tokenize(l.type || ''), queryTokens, 4);
-    if (score > 0 && matchesEveryQueryToken(allTokens, queryTokens)) {
-      hits.push({
-        key: `library-${l.id}`, score, kind: 'library', title: l.title,
-        meta: [l.type, l.year].filter(Boolean).join(' · '), excerpt: '',
-        onOpen: () => handlers.onGoToTab('library'),
-      });
-    }
-  }
-
   return hits.sort((a, b) => b.score - a.score || a.title.localeCompare(b.title)).slice(0, 100);
 }
 
 const SEARCH_KIND_KEY: Record<SearchHit['kind'], string> = {
-  article: 'search.kind.article', item: 'search.kind.gallery', review: 'search.kind.review', library: 'search.kind.library',
+  article: 'search.kind.article', item: 'search.kind.gallery', review: 'search.kind.review',
 };
 
 function SearchResults({
@@ -2426,7 +2420,6 @@ function SearchResults({
   articles,
   items,
   reviews,
-  libraryItems,
   onClear,
   onArticleClick,
   onItemClick,
@@ -2438,7 +2431,6 @@ function SearchResults({
   articles: Article[];
   items: Item[];
   reviews: Review[];
-  libraryItems: LibraryItem[];
   onClear: () => void;
   onArticleClick: (article: Article) => void;
   onItemClick: (item: Item) => void;
@@ -2450,7 +2442,7 @@ function SearchResults({
   useEffect(() => setDraftQuery(query), [query]);
   const queryTokens = Array.from(new Set(tokenize(query)));
   const results = queryTokens.length > 0
-    ? buildSearchIndex(queryTokens, { articles, items, reviews, libraryItems }, { onArticleClick, onItemClick, onGoToTab })
+    ? buildSearchIndex(queryTokens, { articles, items, reviews }, { onArticleClick, onItemClick, onGoToTab })
     : [];
 
   return (
@@ -2520,7 +2512,7 @@ function SearchResults({
                 </div>
               ) : (
                 <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-[#E8DED5] flex items-center justify-center">
-                  <BookOpen size={20} className="opacity-30" />
+                  <FileText size={20} className="opacity-30" />
                 </div>
               )}
               <div className="min-w-0 flex-1">
@@ -2541,7 +2533,8 @@ function SearchResults({
   );
 }
 
-const VALID_TABS = ['gallery', 'articles', 'reviews', 'library', 'about', 'manifest', 'materie', 'issue', 'studio', 'radio', 'podcasts', 'design', 'passport'];
+const VALID_TABS = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'studio', 'radio', 'podcasts', 'design', 'passport'];
+const VISIBILITY_TABS: VisibilitySectionKey[] = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'design', 'studio', 'radio', 'podcasts'];
 
 function buildSlugMap(): Map<string, number> {
   const allArticles = getContentForLanguage(DEFAULT_LANGUAGE).articles;
@@ -2589,6 +2582,8 @@ function parsePath(pathname: string, search = ''): { tab?: string; articleId?: n
     const query = new URLSearchParams(search).get('q')?.trim().slice(0, 120);
     return { tab: 'gallery', searchQuery: query || undefined };
   }
+  // Keep old bookmarks useful after the public Library section was retired.
+  if (p === 'library' || p === 'materie') return { tab: 'articles' };
   const numericMatch = p.match(/^article\/(\d+)$/);
   if (numericMatch) return { tab: 'articles', articleId: parseInt(numericMatch[1], 10) };
   const slugMatch = p.match(/^article\/(.+)$/);
@@ -2606,10 +2601,8 @@ const ROUTE_META: Record<string, { title: string; description: string }> = {
   gallery: { title: 'EPRIS Journal — Contemporary Art, Architecture & Interior Design', description: 'Independent international journal and cultural platform exploring contemporary art, architecture, interior design and cities in context.' },
   articles: { title: 'Articles — EPRIS Journal', description: 'Editorial stories, interviews and research on contemporary art, architecture, interiors, design and cultural cities.' },
   reviews: { title: 'Reviews — EPRIS Journal', description: 'Independent EPRIS reviews of exhibitions, books, design, architecture and contemporary visual culture.' },
-  library: { title: 'Library — EPRIS Journal', description: 'Explore the EPRIS cultural library and long-term digital archive.' },
   about: { title: 'About EPRIS Journal', description: 'Meet EPRIS, an independent international journal and cultural platform for art, architecture and interior design.' },
   manifest: { title: 'Manifesto — EPRIS Journal', description: 'The EPRIS declaration on meaningful modernity, cultural accessibility and independent editorial practice.' },
-  materie: { title: 'Materie — EPRIS Journal', description: 'EPRIS Materie explores materials, craft and the physical intelligence of contemporary design.' },
   issue: { title: 'Current Issue — EPRIS Journal', description: 'Read the current digital issue of EPRIS Journal.' },
   studio: { title: 'EPRIS Studio', description: 'Editorial, visual and cultural projects by EPRIS Studio.' },
   design: { title: 'The Edit — EPRIS Design', description: 'A curated selection of contemporary furniture, objects and interior design by EPRIS.' },
@@ -2696,6 +2689,9 @@ function updateMetaTags(article: Article | null, activeTab: string, activeSearch
 
 export default function App() {
   if (/^\/(?:collaboation|collaboration)\/?$/.test(window.location.pathname)) {
+    if (/^\/collaboation\/?$/.test(window.location.pathname)) {
+      window.history.replaceState(null, '', '/collaboration');
+    }
     return <Suspense fallback={<div className="min-h-screen bg-[#f5f0ea]" />}><CollaborationPage /></Suspense>;
   }
   const initialRoute = parsePath(window.location.pathname, window.location.search);
@@ -2715,7 +2711,7 @@ export default function App() {
   const [activeSearch, setActiveSearch] = useState(initialRoute.searchQuery || '');
   // Live content: fetch the latest from the VPS on mount and re-render when it
   // swaps in. Until then (or if the VPS is unreachable) the bundled JSON renders.
-  const [, setContentVersion] = useState(0);
+  const [contentVersion, setContentVersion] = useState(0);
   // Fresh loads of /article/<slug> only have the bundled fallback articles to match
   // against until the live fetch resolves (SLUG_MAP at module scope is built once,
   // from that same stale bundle) — so any article published after the last deploy
@@ -2735,7 +2731,7 @@ export default function App() {
     const languageTags: Record<string, string> = { EN: 'en', RU: 'ru', UA: 'uk', TR: 'tr', DE: 'de', IT: 'it', ES: 'es' };
     document.documentElement.lang = languageTags[currentLang] || currentLang.toLowerCase();
   }, [currentLang]);
-  const { items, articles, reviews, libraryItems } = getContentForLanguage(currentLang);
+  const { items, articles, reviews } = getContentForLanguage(currentLang);
   const issueArchive = getIssueArchive(currentLang);
   const studio = getStudio();
   const defaultContent = getContentForLanguage(DEFAULT_LANGUAGE);
@@ -2776,6 +2772,7 @@ export default function App() {
         .slice(0, 3)
     : [];
   const t = (key: string) => getTranslation(currentLang, key);
+  const fallbackTab = VISIBILITY_TABS.find((tab) => isSectionEnabled(tab)) || 'gallery';
 
   useEffect(() => {
     updateMetaTags(selectedArticle, activeTab, activeSearch);
@@ -2799,12 +2796,14 @@ export default function App() {
   }, [navigate]);
 
   const handleSetTab = useCallback((tab: string) => {
-    setActiveTab(tab);
+    const managedTab = VISIBILITY_TABS.includes(tab as VisibilitySectionKey) ? tab as VisibilitySectionKey : null;
+    const target = managedTab && !isSectionEnabled(managedTab) ? fallbackTab : tab;
+    setActiveTab(target);
     setSelectedArticleId(null);
     setActiveSearch('');
     setPassportCode(undefined);
-    navigate(tab === 'gallery' ? '/' : `/${tab}`);
-  }, [navigate]);
+    navigate(target === 'gallery' ? '/' : `/${target}`);
+  }, [fallbackTab, navigate]);
 
   const handleSelectArticle = useCallback((id: number, article?: Article) => {
     setSelectedArticleId(id);
@@ -2824,6 +2823,9 @@ export default function App() {
   useEffect(() => {
     const onPopState = () => {
       const parsed = parsePath(window.location.pathname, window.location.search);
+      if (/^\/(?:library|materie)\/?$/.test(window.location.pathname)) {
+        window.history.replaceState(null, '', '/articles');
+      }
       setActiveSearch(parsed.searchQuery || '');
       if (parsed.articleId !== undefined) {
         setSelectedArticleId(parsed.articleId);
@@ -2840,6 +2842,9 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    if (/^\/(?:library|materie)\/?$/.test(window.location.pathname)) {
+      window.history.replaceState(null, '', '/articles');
+    }
     if (initialRoute.articleId !== undefined) {
       const slug = window.location.pathname.match(/\/article\/(\d+)$/);
       if (slug) {
@@ -2851,6 +2856,26 @@ export default function App() {
     }
   }, []);
 
+  // Visibility is loaded live from the CMS. If an editor disables the route
+  // currently open in a reader's browser, move to the first enabled section
+  // instead of leaving a blank or stale page behind.
+  useEffect(() => {
+    if (!VISIBILITY_TABS.includes(activeTab as VisibilitySectionKey)) return;
+    if (isSectionEnabled(activeTab as VisibilitySectionKey)) return;
+    setActiveTab(fallbackTab);
+    setSelectedArticleId(null);
+    setActiveSearch('');
+    setPassportCode(undefined);
+    window.history.replaceState(null, '', fallbackTab === 'gallery' ? '/' : `/${fallbackTab}`);
+  }, [activeTab, contentVersion, fallbackTab]);
+
+  const routeKey = activeSearch ? `search-${activeSearch}` : activeTab;
+  const previousRouteKey = useRef(routeKey);
+  const routeDirection = routePosition(routeKey) >= routePosition(previousRouteKey.current) ? 1 : -1;
+  useEffect(() => {
+    previousRouteKey.current = routeKey;
+  }, [routeKey]);
+
   return (
     <MotionConfig reducedMotion="user">
     <div className="min-h-screen bg-[var(--c-bg)] text-[var(--c-accent)] selection:bg-[var(--c-gold)] selection:text-white">
@@ -2861,22 +2886,16 @@ export default function App() {
         setCurrentLang={setCurrentLang}
         t={t}
         languages={languageOptions}
-        libraryCount={libraryItems.length}
         onSearch={handleSearch}
       />
       
+      <RouteTransition routeKey={routeKey} direction={routeDirection}>
       <div className={activeTab === 'gallery' ? '' : 'lg:pr-12'}>
         {activeTab === 'gallery' && !activeSearch && (
           <GalleryMasthead t={t} />
         )}
 
-        {activeTab === 'materie' ? (
-          <LazyTab>
-            <div className="pt-16">
-              <MateriePage t={t} />
-            </div>
-          </LazyTab>
-        ) : activeTab === 'issue' ? (
+        {activeTab === 'issue' ? (
           <LazyTab>
             <IssuePage archive={issueArchive} t={t} />
           </LazyTab>
@@ -2902,46 +2921,34 @@ export default function App() {
           </LazyTab>
         ) : (
           <main className="max-w-[1600px] mx-auto px-4 sm:px-8 md:px-16 py-8 sm:py-12 md:py-24">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeSearch ? `search-${activeSearch}` : activeTab}
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              >
-                {activeSearch ? (
-                  <SearchResults
-                    query={activeSearch}
-                    articles={articles}
-                    items={items}
-                    reviews={reviews}
-                    libraryItems={libraryItems}
-                    onClear={() => { setActiveSearch(''); navigate(activeTab === 'gallery' ? '/' : `/${activeTab}`); }}
-                    onArticleClick={(article) => handleSelectArticle(article.id, article)}
-                    onItemClick={(item) => { setActiveSearch(''); handleSetTab('gallery'); setSelectedGalleryItem(item); }}
-                    onGoToTab={handleSetTab}
-                    onSearch={handleSearch}
-                    t={t}
-                  />
-                ) : (
-                  <>
-                    {activeTab === 'gallery' && (
-                      <GallerySection items={items} onItemClick={setSelectedGalleryItem} />
-                    )}
-                    {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
-                    {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} />}
-                    {activeTab === 'library' && <LibrarySection libraryItems={libraryItems} t={t} />}
-                    {activeTab === 'about' && <AboutSection t={t} currentLang={currentLang} onOpenManifest={() => handleSetTab('manifest')} />}
-                    {activeTab === 'manifest' && <ManifestPage t={t} currentLang={currentLang} />}
-                  </>
+            {activeSearch ? (
+              <SearchResults
+                query={activeSearch}
+                articles={articles}
+                items={items}
+                reviews={reviews}
+                onClear={() => { setActiveSearch(''); navigate(activeTab === 'gallery' ? '/' : `/${activeTab}`); }}
+                onArticleClick={(article) => handleSelectArticle(article.id, article)}
+                onItemClick={(item) => { setActiveSearch(''); handleSetTab('gallery'); setSelectedGalleryItem(item); }}
+                onGoToTab={handleSetTab}
+                onSearch={handleSearch}
+                t={t}
+              />
+            ) : (
+              <>
+                {activeTab === 'gallery' && (
+                  <GallerySection items={items} onItemClick={setSelectedGalleryItem} />
                 )}
-              </motion.div>
-            </AnimatePresence>
+                {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
+                {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} />}
+                {activeTab === 'about' && <AboutSection t={t} currentLang={currentLang} onOpenManifest={() => handleSetTab('manifest')} />}
+                {activeTab === 'manifest' && <ManifestPage t={t} currentLang={currentLang} />}
+              </>
+            )}
           </main>
         )}
 
-        {activeTab !== 'materie' && activeTab !== 'issue' && activeTab !== 'design' && activeTab !== 'studio' && activeTab !== 'radio' && activeTab !== 'podcasts' && activeTab !== 'passport' && <footer className="border-t border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
+        {activeTab !== 'issue' && activeTab !== 'design' && activeTab !== 'studio' && activeTab !== 'radio' && activeTab !== 'podcasts' && activeTab !== 'passport' && <footer className="border-t border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
           <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center md:items-end gap-8 sm:gap-12 text-center md:text-left">
             <div>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-[#c2542f]">EPRIS JOURNAL</h2>
@@ -2957,8 +2964,11 @@ export default function App() {
           </div>
         </footer>}
       </div>
+      </RouteTransition>
       
-      {activeTab !== 'gallery' && <Sidebar t={t} />}
+      <AnimatePresence initial={false}>
+        {activeTab !== 'gallery' && <Sidebar key="section-sidebar" t={t} />}
+      </AnimatePresence>
 
       <AnimatePresence>
         {selectedArticle && (
