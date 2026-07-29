@@ -114,7 +114,6 @@ console.log(`\nGenerated OG pages for ${content.articles.length} articles.`);
 const ROUTES = {
   articles: 'Articles',
   reviews: 'Reviews',
-  library: 'Library',
   about: 'About',
   manifest: 'Manifesto',
   materie: 'Materie',
@@ -130,7 +129,6 @@ const ROUTES = {
 const ROUTE_DESCRIPTIONS = {
   articles: 'Editorial stories, interviews and research on contemporary art, architecture, interiors, design and cultural cities.',
   reviews: 'Independent EPRIS reviews of exhibitions, books, design, architecture and contemporary visual culture.',
-  library: 'Explore the EPRIS cultural library and long-term digital archive.',
   about: 'Meet EPRIS, an independent international journal and cultural platform for art, architecture and interior design.',
   manifest: 'The EPRIS declaration on meaningful modernity, cultural accessibility and independent editorial practice.',
   materie: 'EPRIS Materie explores materials, craft and the physical intelligence of contemporary design.',
