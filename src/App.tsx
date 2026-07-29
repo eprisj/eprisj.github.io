@@ -4,7 +4,6 @@ import { ReactNode, useState, useEffect, useCallback, useMemo, FormEvent, useRef
 // e.g. DesignPage alone carries a 244-item catalogue that has no business
 // loading for a reader who just opened an article. Each only downloads once
 // its tab is actually clicked.
-const MateriePage = lazy(() => import('./pages/MateriePage').then((m) => ({ default: m.MateriePage })));
 const IssuePage = lazy(() => import('./pages/IssuePage').then((m) => ({ default: m.IssuePage })));
 const StudioPage = lazy(() => import('./pages/StudioPage').then((m) => ({ default: m.StudioPage })));
 const RadioPage = lazy(() => import('./pages/RadioPage').then((m) => ({ default: m.RadioPage })));
@@ -363,7 +362,7 @@ function VideoBlock({ content, caption }: { content: string; caption?: string })
   );
 }
 
-// Shown briefly while a code-split tab (materie/issue/design/studio/radio/
+// Shown briefly while a code-split tab (issue/design/studio/radio/
 // podcasts) downloads its chunk. On a warm cache this basically never shows.
 function TabLoadingFallback() {
   return (
@@ -454,7 +453,7 @@ const drawLine = {
   show: { scaleX: 1, opacity: 1, transition: { duration: 0.46, ease: EASE } },
 };
 
-const ROUTE_SEQUENCE = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'materie', 'issue', 'design', 'studio', 'radio', 'podcasts', 'passport'];
+const ROUTE_SEQUENCE = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'design', 'studio', 'radio', 'podcasts', 'passport'];
 const routeVariants = {
   enter: (direction: number) => ({ opacity: 0, x: direction * 24, y: 8 }),
   center: { opacity: 1, x: 0, y: 0 },
@@ -541,10 +540,8 @@ function NavBar({
     { id: 'articles', label: t('nav.articles') },
     { id: 'reviews', label: t('nav.reviews') },
     { id: 'about', label: t('nav.about') },
-    { id: 'materie', label: t('nav.materie') },
     { id: 'issue', label: t('nav.issue') },
     { id: 'design', label: 'Design' },
-    { id: 'studio', label: t('nav.studio') },
     { id: 'radio', label: t('nav.radio') },
     { id: 'podcasts', label: t('nav.podcasts') },
   ];
@@ -625,7 +622,7 @@ function NavBar({
 
         {/* Desktop Navigation */}
         <LayoutGroup id="nav-tabs">
-          <div className="grid flex-1 grid-cols-10 divide-x divide-[var(--c-accent)]">
+          <div className="grid flex-1 grid-cols-8 divide-x divide-[var(--c-accent)]">
             {tabs.map((tab) => (
               <button
                 type="button"
@@ -852,7 +849,7 @@ function NavBar({
                     activeTab === tab.id ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : ''
                   }`}
                 >
-                  <span className="font-bold text-lg">{tab.label}</span>
+                  <span className="font-serif font-normal text-xl leading-tight">{tab.label}</span>
                 </motion.button>
               ))}
             </motion.div>
@@ -1141,7 +1138,7 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
     <div>
       {/* Featured article — offset corner-bracket frame, no card border */}
       <Reveal>
-        <div className="relative p-4 sm:p-5 mb-14 sm:mb-28">
+        <div className="relative -mx-4 sm:mx-0 sm:p-5 mb-14 sm:mb-28">
           <span className="absolute top-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-t border-l border-[var(--c-accent)]" />
           <span className="absolute top-0 right-0 w-6 h-6 sm:w-8 sm:h-8 border-t border-r border-[var(--c-accent)]" />
           <span className="absolute bottom-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-b border-l border-[var(--c-accent)]" />
@@ -1164,7 +1161,7 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
                 referrerPolicy="no-referrer"
               />
             </div>
-            <div className="flex flex-col justify-center py-2">
+            <div className="flex flex-col justify-center px-4 pt-5 pb-2 sm:px-0 sm:py-2">
               <h2 className="font-crimson text-2xl sm:text-3xl text-[var(--c-accent)] underline decoration-1 underline-offset-4 decoration-[rgb(var(--c-accent-rgb)_/_0.35)] group-hover:decoration-[var(--c-gold)] group-hover:text-[var(--c-gold)] transition-colors duration-300 mb-2">
                 {featured.title}
               </h2>
@@ -2526,7 +2523,7 @@ function SearchResults({
   );
 }
 
-const VALID_TABS = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'materie', 'issue', 'studio', 'radio', 'podcasts', 'design', 'passport'];
+const VALID_TABS = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'studio', 'radio', 'podcasts', 'design', 'passport'];
 
 function buildSlugMap(): Map<string, number> {
   const allArticles = getContentForLanguage(DEFAULT_LANGUAGE).articles;
@@ -2575,7 +2572,7 @@ function parsePath(pathname: string, search = ''): { tab?: string; articleId?: n
     return { tab: 'gallery', searchQuery: query || undefined };
   }
   // Keep old bookmarks useful after the public Library section was retired.
-  if (p === 'library') return { tab: 'articles' };
+  if (p === 'library' || p === 'materie') return { tab: 'articles' };
   const numericMatch = p.match(/^article\/(\d+)$/);
   if (numericMatch) return { tab: 'articles', articleId: parseInt(numericMatch[1], 10) };
   const slugMatch = p.match(/^article\/(.+)$/);
@@ -2595,7 +2592,6 @@ const ROUTE_META: Record<string, { title: string; description: string }> = {
   reviews: { title: 'Reviews — EPRIS Journal', description: 'Independent EPRIS reviews of exhibitions, books, design, architecture and contemporary visual culture.' },
   about: { title: 'About EPRIS Journal', description: 'Meet EPRIS, an independent international journal and cultural platform for art, architecture and interior design.' },
   manifest: { title: 'Manifesto — EPRIS Journal', description: 'The EPRIS declaration on meaningful modernity, cultural accessibility and independent editorial practice.' },
-  materie: { title: 'Materie — EPRIS Journal', description: 'EPRIS Materie explores materials, craft and the physical intelligence of contemporary design.' },
   issue: { title: 'Current Issue — EPRIS Journal', description: 'Read the current digital issue of EPRIS Journal.' },
   studio: { title: 'EPRIS Studio', description: 'Editorial, visual and cultural projects by EPRIS Studio.' },
   design: { title: 'The Edit — EPRIS Design', description: 'A curated selection of contemporary furniture, objects and interior design by EPRIS.' },
@@ -2810,7 +2806,7 @@ export default function App() {
   useEffect(() => {
     const onPopState = () => {
       const parsed = parsePath(window.location.pathname, window.location.search);
-      if (/^\/library\/?$/.test(window.location.pathname)) {
+      if (/^\/(?:library|materie)\/?$/.test(window.location.pathname)) {
         window.history.replaceState(null, '', '/articles');
       }
       setActiveSearch(parsed.searchQuery || '');
@@ -2829,7 +2825,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (/^\/library\/?$/.test(window.location.pathname)) {
+    if (/^\/(?:library|materie)\/?$/.test(window.location.pathname)) {
       window.history.replaceState(null, '', '/articles');
     }
     if (initialRoute.articleId !== undefined) {
@@ -2869,13 +2865,7 @@ export default function App() {
           <GalleryMasthead t={t} />
         )}
 
-        {activeTab === 'materie' ? (
-          <LazyTab>
-            <div className="pt-16">
-              <MateriePage t={t} />
-            </div>
-          </LazyTab>
-        ) : activeTab === 'issue' ? (
+        {activeTab === 'issue' ? (
           <LazyTab>
             <IssuePage archive={issueArchive} t={t} />
           </LazyTab>
@@ -2928,7 +2918,7 @@ export default function App() {
           </main>
         )}
 
-        {activeTab !== 'materie' && activeTab !== 'issue' && activeTab !== 'design' && activeTab !== 'studio' && activeTab !== 'radio' && activeTab !== 'podcasts' && activeTab !== 'passport' && <footer className="border-t border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
+        {activeTab !== 'issue' && activeTab !== 'design' && activeTab !== 'studio' && activeTab !== 'radio' && activeTab !== 'podcasts' && activeTab !== 'passport' && <footer className="border-t border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
           <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center md:items-end gap-8 sm:gap-12 text-center md:text-left">
             <div>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-[#c2542f]">EPRIS JOURNAL</h2>
