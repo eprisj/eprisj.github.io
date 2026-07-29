@@ -611,9 +611,10 @@ function NavBar({
             onClick={() => { setActiveTab('issue'); setIsMenuOpen(false); }}
             aria-label={t('nav.issue')}
             title={t('nav.issue')}
-            className="hidden min-[360px]:inline-flex h-11 min-w-12 items-center justify-center bg-[var(--c-accent)] text-[var(--c-bg)] rounded-full px-3 font-mono text-[11px] tracking-[0.12em] uppercase hover:bg-[#3d1421] active:scale-95 transition"
+            className="hidden min-[360px]:inline-flex h-11 min-w-[4.25rem] items-center justify-center gap-1.5 bg-[var(--c-accent)] text-[var(--c-bg)] rounded-full px-3 font-mono text-[10px] tracking-[0.12em] uppercase hover:bg-[#3d1421] active:scale-95 transition shadow-[0_10px_24px_-18px_rgb(var(--c-accent-rgb)_/_0.85)]"
           >
-            Nº
+            <FileText size={13} aria-hidden="true" />
+            Issue
           </button>}
         </div>
       </nav>
@@ -942,16 +943,16 @@ function SectionMasthead({ t, variant = 'photo' }: { t: (key: string) => string;
 
 function GalleryMasthead({ t }: { t: (key: string) => string }) {
   return (
-    <div className="bg-[var(--c-bg)] pt-10 sm:pt-16">
-      {/* Plain (photo-less) masthead — EPRIS journal lockup on the page background */}
-      <SectionMasthead t={t} variant="plain" />
+    <div className="bg-[var(--c-bg)] pt-16">
+      {/* Full-bleed masthead photo — no inset frame around the lead visual */}
+      <SectionMasthead t={t} variant="photo" />
 
       {/* Full-bleed dotted rule */}
       <div className="border-b border-dotted border-[rgb(var(--c-accent-rgb)_/_0.4)]" />
 
       {/* "explore our latest article" kicker */}
       <motion.div
-        className="flex items-center justify-center gap-4 sm:gap-6 py-6 sm:py-10 px-5"
+        className="flex items-center justify-center gap-4 sm:gap-6 py-6 sm:py-8 px-5"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: '-10%' }}
@@ -1146,15 +1147,11 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
 
   return (
     <div>
-      {/* Featured article — offset corner-bracket frame, no card border */}
+      {/* Featured article — true full-bleed editorial opener */}
       <Reveal>
-        <div className="relative -mx-4 sm:mx-0 sm:p-5 mb-14 sm:mb-28">
-          <span className="absolute top-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-t border-l border-[var(--c-accent)]" />
-          <span className="absolute top-0 right-0 w-6 h-6 sm:w-8 sm:h-8 border-t border-r border-[var(--c-accent)]" />
-          <span className="absolute bottom-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-b border-l border-[var(--c-accent)]" />
-          <span className="absolute bottom-0 right-0 w-6 h-6 sm:w-8 sm:h-8 border-b border-r border-[var(--c-accent)]" />
+        <div className="relative left-1/2 w-screen -translate-x-1/2 mb-16 sm:mb-24 border-y border-[rgb(var(--c-accent-rgb)_/_0.22)]">
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 group cursor-pointer"
+            className="group relative min-h-[520px] sm:min-h-[640px] md:min-h-[720px] cursor-pointer overflow-hidden bg-[#1a0812]"
             whileHover={cardHover}
             whileTap={cardTap}
             role="button"
@@ -1163,27 +1160,41 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
             onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onItemClick(featured)}
             aria-label={`View: ${featured.title}`}
           >
-            <div className="md:col-span-2 aspect-[4/3] overflow-hidden bg-[#E8DED5]">
-              <img
-                src={resolveMediaSource(featured.imageUrl || featured.imageSeed, 1000, 750)}
-                alt={featured.title}
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-            <div className="flex flex-col justify-center px-4 pt-5 pb-2 sm:px-0 sm:py-2">
-              <h2 className="font-crimson text-2xl sm:text-3xl text-[var(--c-accent)] underline decoration-1 underline-offset-4 decoration-[rgb(var(--c-accent-rgb)_/_0.35)] group-hover:decoration-[var(--c-gold)] group-hover:text-[var(--c-gold)] transition-colors duration-300 mb-2">
-                {featured.title}
-              </h2>
-              <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-5">
-                {featured.subtitle}
-              </p>
-              <p className="font-serif text-sm sm:text-base text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-6">
-                {featured.description}
-              </p>
-              <span className="inline-flex items-center self-start border border-[var(--c-accent)] rounded-full px-5 py-2.5 sm:py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors w-fit">
-                read
-              </span>
+            <img
+              src={resolveMediaSource(featured.imageUrl || featured.imageSeed, 1920, 1120)}
+              alt={featured.title}
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.035]"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,8,10,.08)_0%,rgba(15,8,10,.22)_48%,rgba(15,8,10,.72)_100%)]" />
+            <div
+              className="absolute inset-0 opacity-[0.18] mix-blend-overlay pointer-events-none"
+              style={{
+                backgroundImage:
+                  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.38'/%3E%3C/svg%3E\")",
+              }}
+            />
+            <div className="absolute inset-x-0 bottom-0 px-5 pb-8 sm:px-10 sm:pb-12 md:px-16 lg:px-24">
+              <div className="max-w-5xl">
+                <div className="mb-5 flex items-center gap-4 text-[#f7f1eb]">
+                  <span className="h-px w-12 bg-current opacity-50" />
+                  <span className="font-mono text-[10px] uppercase tracking-[0.26em] opacity-75">
+                    {featured.subtitle}
+                  </span>
+                </div>
+                <h2 className="max-w-4xl font-crimson text-[clamp(42px,7vw,104px)] leading-[0.9] text-[#f7f1eb] transition-colors duration-300 group-hover:text-[rgb(var(--c-gold-rgb)_/_0.98)]">
+                  {featured.title}
+                </h2>
+                {featured.description && (
+                  <p className="mt-5 max-w-xl font-serif text-base sm:text-lg leading-relaxed text-[rgb(247_241_235_/_0.76)]">
+                    {featured.description}
+                  </p>
+                )}
+                <span className="mt-7 inline-flex min-h-11 items-center gap-3 rounded-full border border-[rgb(247_241_235_/_0.55)] px-5 font-mono text-[10px] uppercase tracking-[0.22em] text-[#f7f1eb] transition-colors group-hover:border-[#f7f1eb] group-hover:bg-[#f7f1eb] group-hover:text-[var(--c-accent)]">
+                  read
+                  <ArrowUpRight size={13} aria-hidden="true" />
+                </span>
+              </div>
             </div>
           </motion.div>
         </div>
