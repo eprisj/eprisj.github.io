@@ -1601,7 +1601,6 @@ function updateStats(data) {
     ['Элементы галереи', Array.isArray(data.items) ? data.items.length : 0],
     ['Статьи', Array.isArray(data.articles) ? data.articles.length : 0],
     ['Обзоры', Array.isArray(data.reviews) ? data.reviews.length : 0],
-    ['Файлы библиотеки', Array.isArray(data.libraryItems) ? data.libraryItems.length : 0],
     ['Размер (байт)', bytes]
   ];
 
@@ -1615,7 +1614,6 @@ function updateStats(data) {
     const articlesCount = Array.isArray(data.articles) ? data.articles.length : 0;
     const reviewsCount = Array.isArray(data.reviews) ? data.reviews.length : 0;
     const itemsCount = Array.isArray(data.items) ? data.items.length : 0;
-    const libCount = Array.isArray(data.libraryItems) ? data.libraryItems.length : 0;
     const langCount = typeof data.translations === 'object' && data.translations ? Object.keys(data.translations).length : 0;
     const kbSize = Math.round(bytes / 1024);
 
@@ -1632,7 +1630,6 @@ function updateStats(data) {
       { label: 'С фото', value: articlesWithPhoto, sub: `из ${articlesCount} статей` },
       { label: 'Обзоры', value: reviewsCount, sub: 'записей' },
       { label: 'Галерея', value: itemsCount, sub: 'элементов' },
-      { label: 'Библиотека', value: libCount, sub: 'файлов' },
       { label: 'Языки UI', value: langCount, sub: `+ EN базовый` },
       { label: 'Размер', value: `${kbSize}`, sub: 'КБ' },
     ].map(({ label, value, sub }) =>
@@ -1752,8 +1749,7 @@ function runContentQualityChecks(data) {
   const sections = [
     ['items', 'Галерея'],
     ['articles', 'Статьи'],
-    ['reviews', 'Обзоры'],
-    ['libraryItems', 'Библиотека']
+    ['reviews', 'Обзоры']
   ];
 
   for (const [sectionKey, sectionLabel] of sections) {
@@ -2799,7 +2795,6 @@ function renderCreatorQuality(data, section, lang, entry) {
     addChip(entry.imageUrl || entry.imageSeed ? 'Фото' : 'Нет фото', Boolean(entry.imageUrl || entry.imageSeed));
   } else if (section === 'reviews') {
     addChip(entry.content ? 'Текст' : 'Нет текста', Boolean(entry.content));
-    addChip(Number(entry.rating) > 0 ? 'Рейтинг' : 'Нет рейтинга', Number(entry.rating) > 0);
   } else if (section === 'libraryItems') {
     addChip(entry.type ? 'Тип' : 'Нет типа', Boolean(entry.type));
     addChip(entry.year ? 'Год' : 'Нет года', Boolean(entry.year));
@@ -2981,7 +2976,7 @@ function getPreviewMeta(section, entry) {
     return [entry.fig, entry.subtitle].filter(Boolean).join(' · ');
   }
   if (section === 'reviews') {
-    return [entry.subject, entry.rating ? `${entry.rating}/5` : ''].filter(Boolean).join(' · ');
+    return [entry.subject, entry.category].filter(Boolean).join(' · ');
   }
   return [entry.type, entry.size, entry.year].filter(Boolean).join(' · ');
 }
@@ -3163,8 +3158,7 @@ function buildQualityEntryFromForm(section, fallback = {}) {
     return {
       ...base,
       title: getFieldValue('vf-title').trim(),
-      content: getFieldValue('vf-content').trim(),
-      rating: Number(getFieldValue('vf-rating'))
+      content: getFieldValue('vf-content').trim()
     };
   }
 
@@ -3733,7 +3727,6 @@ function renderVisualForm() {
     const revImg = (entry.imageUrl || '').trim();
     visualFormEl.innerHTML = `
       <label>ID<input id="vf-id" value="${escapeHtml(entry.id)}" disabled /></label>
-      <label>Рейтинг (0-5)<input id="vf-rating" type="number" min="0" max="5" step="0.1" value="${escapeHtml(entry.rating || 0)}" /></label>
       <label>Категория<input id="vf-category" value="${escapeHtml(entry.category || '')}" placeholder="Food / Books / Stay…" /></label>
       <label class="checkbox-label" style="align-self:end" for="vf-featured"><input id="vf-featured" type="checkbox" ${entry.featured ? 'checked' : ''} /> Главный обзор (featured)</label>
       <label class="full">Заголовок<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
@@ -3939,16 +3932,11 @@ function buildEntryFromVisualForm(section, current) {
     };
     applyDraftFieldsFromForm(next);
   } else if (section === 'reviews') {
-    const rating = Number(getFieldValue('vf-rating'));
-    if (Number.isNaN(rating)) {
-      throw new Error('Рейтинг должен быть числом.');
-    }
     const lines = (id) => getFieldValue(id).split('\n').map((s) => s.trim()).filter(Boolean);
     next = {
       ...next,
       title: getFieldValue('vf-title').trim(),
       subject: getFieldValue('vf-subject').trim(),
-      rating,
       content: getFieldValue('vf-content').trim(),
       author: getFieldValue('vf-author').trim(),
       category: getOptionalString(getFieldValue('vf-category')),
@@ -6984,7 +6972,6 @@ function renderDashboard() {
       { key: 'articles',     label: 'Статьи' },
       { key: 'reviews',      label: 'Обзоры' },
       { key: 'items',        label: 'Галерея' },
-      { key: 'libraryItems', label: 'Библиотека' },
     ];
     auditEl.innerHTML = sections.map(sec => {
       // Flat arrays (EN/default set) — same schema as the dashboard counts above.
@@ -10088,7 +10075,6 @@ async function autoSyncVisualToEditor() {
           ...next,
           title: getFieldValue('vf-title').trim(),
           subject: getFieldValue('vf-subject').trim(),
-          rating: Number(getFieldValue('vf-rating')),
           content: getFieldValue('vf-content').trim()
         };
     } else if (section === 'libraryItems') {
@@ -12132,11 +12118,6 @@ async function flushModernEditor() {
     h += '<span class="wys-hero-edit">✎ Обложка</span></div>';
 
     h += '<div class="wys-review-top">';
-    h += '<div class="wys-review-stars" data-wys-act="stars">';
-    for (let i = 0; i < 5; i++) {
-      h += `<button type="button" class="wys-star${i < Math.round(r.rating || 0) ? ' filled' : ''}" data-wys-act="star" data-val="${i + 1}" title="${i + 1} из 5">★</button>`;
-    }
-    h += '</div>';
     h += `<span class="wys-ce wys-kicker" contenteditable="true" data-wys="category" data-empty="Категория">${esc(r.category || '')}</span>`;
     h += '<label class="wys-review-featured"><input type="checkbox" data-wys-act="featured"' + (r.featured ? ' checked' : '') + '> Featured (главный обзор раздела)</label>';
     h += '</div>';
@@ -12214,7 +12195,6 @@ async function flushModernEditor() {
     const a = act.getAttribute('data-wys-act');
 
     if (a === 'hero') return window._wysOpenImagePicker?.((url) => { _model.imageUrl = url; render(); commit(); });
-    if (a === 'star') { _model.rating = Number(act.getAttribute('data-val')); render(); commit(); return; }
     if (a === 'pros-add') { _model.pros = _model.pros || []; _model.pros.push(''); render(); commit(); return; }
     if (a === 'cons-add') { _model.cons = _model.cons || []; _model.cons.push(''); render(); commit(); return; }
     if (a === 'pros-del') { const ci = Number(act.getAttribute('data-ci')); _model.pros?.splice(ci, 1); render(); commit(); return; }

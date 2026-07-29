@@ -142,8 +142,20 @@ img[loading="lazy"] {
   html { scroll-behavior: smooth; }
 }
 
-/* ── View transitions (Chrome 111+) ──────────────────────── */
-@view-transition { navigation: auto; }
+/* One lightweight, GPU-friendly surface for section changes. */
+.route-motion-surface {
+  transform-origin: center top;
+}
+
+/* CSS effects follow the same accessibility preference as Framer Motion. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 
 /* Rich inline text rendered from the admin editor (bold/italic/links/marker/underline) */
 .rich-text a { color: #501a2c; text-decoration: underline; text-underline-offset: 2px; transition: color .15s; }
