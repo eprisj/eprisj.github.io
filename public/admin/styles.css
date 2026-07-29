@@ -5297,3 +5297,172 @@ body.busy::after {
   .visibility-entity-row,
   .visibility-switch { transition: none; }
 }
+
+/* ── Mobile editorial workspace ──────────────────────────────────────────
+   The article canvas already saves locally first and publishes in the
+   background. On a phone the important part is therefore making the writing
+   surface, status and metadata immediately reachable — without introducing a
+   second publishing path that could get out of sync with the safe one. */
+@media (max-width: 760px) {
+  html, body, .admin-layout { height: 100dvh; }
+  .admin-layout { flex-direction: column; }
+
+  /* Turn the desktop sidebar into a calm, scrollable bottom dock. It keeps all
+     sections available without taking half of a narrow writing viewport. */
+  .sidebar {
+    order: 2;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: calc(68px + env(safe-area-inset-bottom));
+    min-height: calc(68px + env(safe-area-inset-bottom));
+    max-height: calc(68px + env(safe-area-inset-bottom));
+    flex-direction: row;
+    border-top: 1px solid rgba(201,166,144,.18);
+    border-right: 0;
+    overflow: hidden;
+  }
+  .sidebar-brand, .sidebar-bottom, .sidebar-nav-label { display: none; }
+  .sidebar-nav {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 5px 8px calc(5px + env(safe-area-inset-bottom));
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+  .sidebar-nav::-webkit-scrollbar { display: none; }
+  .sidebar-nav-group { display: contents; }
+  .tab-btn {
+    flex: 0 0 76px;
+    width: 76px;
+    min-height: 54px;
+    height: 54px;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3px;
+    padding: 5px 3px;
+    font-size: .47rem;
+    line-height: 1.12;
+    text-align: center;
+    white-space: normal;
+    scroll-snap-align: start;
+  }
+  .tab-btn svg { width: 17px !important; height: 17px !important; }
+  .tab-btn.active::before { top: auto; bottom: 3px; left: 50%; width: 22px; height: 2px; transform: translateX(-50%); }
+
+  .main-area { order: 1; width: 100%; min-height: 0; }
+  .topbar { height: 52px; padding: 0 12px; }
+  .topbar-status { display: none; }
+  .topbar-title { overflow: hidden; font-size: .94rem; text-overflow: ellipsis; white-space: nowrap; }
+  #copySiteBtn { min-width: 40px; padding-inline: 10px; font-size: 0; }
+  #copySiteBtn::before { content: 'URL'; font-size: .58rem; }
+  .content-layout { gap: 12px; padding: 12px 12px calc(20px + env(safe-area-inset-bottom)); }
+
+  /* Selection and publishing controls stay compact, but never become tiny. */
+  .entry-toolbar { gap: 10px; padding: 12px; border-radius: 12px; }
+  .toolbar-selects { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .toolbar-field, .toolbar-field-grow { min-width: 0; }
+  .toolbar-field:nth-child(3), .toolbar-field:nth-child(4) { grid-column: 1 / -1; }
+  .toolbar-field input, .toolbar-field select { min-height: 44px; max-width: 100%; }
+  .toolbar-buttons {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 2px;
+    margin: 0 -2px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+  }
+  .toolbar-buttons::-webkit-scrollbar { display: none; }
+  .toolbar-buttons .btn, .toolbar-buttons .toolbar-sync-panel { flex: 0 0 auto; scroll-snap-align: start; }
+  .toolbar-buttons .btn { min-height: 42px; }
+  .toolbar-buttons .toolbar-sep { flex: 0 0 1px; }
+  .toolbar-buttons #saveEntryBtn {
+    position: sticky;
+    right: 0;
+    box-shadow: -10px 0 14px var(--bg-card);
+  }
+
+  /* The active writing mode gets the visual priority. The top action strip is
+     a two-line dock: status first, controls second, all with 44px touch room. */
+  .wys-shell { margin-top: 2px; }
+  .wys-bar {
+    top: 8px;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 9px;
+    padding: 10px;
+    border-radius: 12px;
+  }
+  .wys-bar-left { width: 100%; min-height: 34px; justify-content: space-between; }
+  .wys-bar-right {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding: 1px 0 3px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .wys-bar-right::-webkit-scrollbar { display: none; }
+  .wys-bar-right .btn { flex: 0 0 auto; min-height: 42px; }
+  .wys-bar-right .toolbar-sep { flex: 0 0 1px; }
+  .wys-scroll { padding-bottom: calc(132px + env(safe-area-inset-bottom)); }
+  .wys-canvas, .wys-canvas.mobile { width: 100%; max-width: 100%; border-radius: 12px; padding-bottom: 26px; }
+  .wys-hero { aspect-ratio: 4 / 3; }
+  .wys-hero-edit { opacity: 1; }
+  .wys-article > *:not(.wys-hero), .wys-canvas.mobile .wys-article > *:not(.wys-hero) { padding-left: 18px; padding-right: 18px; }
+  .wys-title { font-size: clamp(30px, 9vw, 42px); }
+  .wys-p { font-size: 1.02rem; line-height: 1.72; }
+  .wys-block { scroll-margin-top: 118px; }
+  .wys-bc-btn { width: 36px; height: 36px; }
+  .wys-insert { height: 34px; }
+  .wys-insert-btn { width: 34px; height: 34px; opacity: 1; }
+
+  /* Metadata is a phone-native bottom sheet rather than a narrow desktop
+     drawer. The Draft/Scheduled controls are now reachable with one thumb. */
+  .wys-meta-drawer {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: none;
+    height: min(82dvh, 720px);
+    border-top: 1px solid var(--line-strong);
+    border-left: 0;
+    border-radius: 18px 18px 0 0;
+    animation: wysDrawerMobile .22s ease;
+  }
+  @keyframes wysDrawerMobile { from { transform: translateY(100%); } to { transform: translateY(0); } }
+  .wys-meta-drawer-head { min-height: 56px; padding: 14px 16px; }
+  .wys-meta-drawer-body { padding: 14px 16px calc(20px + env(safe-area-inset-bottom)); }
+  .wys-meta-field input { min-height: 44px; }
+  .wys-meta-check { min-height: 44px; }
+
+  /* The fallback/classic editor and its live preview remain useful on mobile
+     for older content types, so they stack instead of squeezing each other. */
+  .creator-grid, .visual-form { grid-template-columns: 1fr; }
+  .creator-field-wide { grid-column: auto; }
+  .creator-studio { padding: 14px 12px; }
+  .creator-actions {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 3px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .creator-actions .btn { flex: 0 0 auto; min-height: 42px; }
+  .editor-split { display: block; }
+  .editor-split.preview-open .editor-pane { max-height: none; overflow: visible; }
+  .preview-pane { position: relative; top: auto; height: auto; min-height: 440px; margin-top: 12px; }
+  .preview-pane-scroll { padding: 14px; }
+  .command-center { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 390px) {
+  .tab-btn { flex-basis: 70px; width: 70px; font-size: .44rem; }
+  .wys-article > *:not(.wys-hero), .wys-canvas.mobile .wys-article > *:not(.wys-hero) { padding-left: 15px; padding-right: 15px; }
+}

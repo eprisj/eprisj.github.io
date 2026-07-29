@@ -449,12 +449,6 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 // Card hover-lift on desktop; press feedback on touch (no hover there).
 const cardHover = { y: -6, transition: { duration: 0.28, ease: EASE } };
 const cardTap = { scale: 0.985, transition: { duration: 0.15, ease: EASE } };
-// A hairline that draws itself in when scrolled into view.
-const drawLine = {
-  hidden: { scaleX: 0, opacity: 0 },
-  show: { scaleX: 1, opacity: 1, transition: { duration: 0.46, ease: EASE } },
-};
-
 const ROUTE_SEQUENCE = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'design', 'studio', 'radio', 'podcasts', 'passport'];
 const routeVariants = {
   enter: (direction: number) => ({ opacity: 0, x: direction * 24, y: 8 }),
@@ -937,36 +931,6 @@ function SectionMasthead({ t, variant = 'photo' }: { t: (key: string) => string;
       <div className="absolute inset-x-0 bottom-0 px-5 sm:px-10 md:px-16 pb-5 sm:pb-8 flex items-end justify-between gap-4 sm:gap-8 text-[#F7F2EC]">
         {lockup}
       </div>
-    </div>
-  );
-}
-
-function GalleryMasthead({ t }: { t: (key: string) => string }) {
-  return (
-    <div className="bg-[var(--c-bg)] pt-16">
-      {/* Full-bleed masthead photo — no inset frame around the lead visual */}
-      <SectionMasthead t={t} variant="photo" />
-
-      {/* Full-bleed dotted rule */}
-      <div className="border-b border-dotted border-[rgb(var(--c-accent-rgb)_/_0.4)]" />
-
-      {/* "explore our latest article" kicker */}
-      <motion.div
-        className="flex items-center justify-center gap-4 sm:gap-6 py-6 sm:py-8 px-5"
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: '-10%' }}
-      >
-        <motion.span variants={drawLine} className="h-px w-10 sm:w-16 bg-[rgb(var(--c-accent-rgb)_/_0.3)] origin-right" />
-        <motion.span
-          initial={{ opacity: 0, y: 8 }}
-          variants={{ hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE, delay: 0.15 } } }}
-          className="font-crimson italic text-sm sm:text-base tracking-wide text-[rgb(var(--c-accent-rgb)_/_0.75)]"
-        >
-          {t('hero.exploreLatest')}
-        </motion.span>
-        <motion.span variants={drawLine} className="h-px w-10 sm:w-16 bg-[rgb(var(--c-accent-rgb)_/_0.3)] origin-left" />
-      </motion.div>
     </div>
   );
 }
@@ -1602,15 +1566,15 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
           <header className="mb-16">
             {/* Hero image first — matches Figma layout */}
             <div
-              className="aspect-[4/3] sm:aspect-[16/9] overflow-hidden bg-[#E8DED5] mb-8 sm:mb-12 cursor-pointer"
+              className="relative left-1/2 w-screen -translate-x-1/2 aspect-[4/3] sm:aspect-[16/8] lg:aspect-[21/8] overflow-hidden bg-[#E8DED5] mb-8 sm:mb-12 cursor-pointer"
               role="button"
               tabIndex={0}
               aria-label="View full image"
-              onClick={() => onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 675), article.title)}
-              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 675), article.title)}
+              onClick={() => onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143), article.title)}
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143), article.title)}
             >
               <img
-                src={resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 675)}
+                src={resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143)}
                 alt={article.title}
                 className="w-full h-full object-cover grayscale"
                 referrerPolicy="no-referrer"
@@ -2013,7 +1977,11 @@ function ArticlesSection({
 
   return (
     <div>
-      <SectionMasthead t={t} />
+      {/* The editorial masthead belongs to Articles, not Gallery. Pull it out
+          of the reading column so its photograph reaches both screen edges. */}
+      <div className="relative left-1/2 w-screen -translate-x-1/2 -mt-8 sm:-mt-12 md:-mt-24">
+        <SectionMasthead t={t} />
+      </div>
 
       <div className="max-w-4xl mx-auto px-5 sm:px-0 pt-8 sm:pt-10">
       <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-5%' }} className="space-y-10 sm:space-y-14">
@@ -2969,10 +2937,6 @@ export default function App() {
       
       <RouteTransition routeKey={routeKey} direction={routeDirection}>
       <div className={activeTab === 'gallery' ? '' : 'lg:pr-12'}>
-        {activeTab === 'gallery' && !activeSearch && (
-          <GalleryMasthead t={t} />
-        )}
-
         {activeTab === 'issue' ? (
           <LazyTab>
             <IssuePage archive={issueArchive} t={t} />
@@ -3026,16 +2990,16 @@ export default function App() {
           </main>
         )}
 
-        {activeTab !== 'issue' && activeTab !== 'design' && activeTab !== 'studio' && activeTab !== 'radio' && activeTab !== 'podcasts' && activeTab !== 'passport' && <footer className="border-t border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
+        {activeTab !== 'issue' && activeTab !== 'design' && activeTab !== 'studio' && activeTab !== 'radio' && activeTab !== 'podcasts' && activeTab !== 'passport' && <footer className="border-t border-[rgba(209,181,149,0.45)] bg-[#180D13] text-[#F7F2EC] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
           <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center md:items-end gap-8 sm:gap-12 text-center md:text-left">
             <div>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-[#c2542f]">EPRIS JOURNAL</h2>
-              <div className="font-mono text-xs uppercase tracking-widest opacity-60 max-w-xs mx-auto md:mx-0 leading-relaxed">
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-[#F7F2EC]">EPRIS JOURNAL</h2>
+              <div className="font-mono text-xs uppercase tracking-widest text-[#D9C7BA] max-w-xs mx-auto md:mx-0 leading-relaxed">
                 <p>{t('hero.subtitle2')}</p>
                 <p>{t('hero.subtitle1')}</p>
               </div>
             </div>
-            <div className="text-center md:text-right font-mono text-xs uppercase tracking-widest opacity-40">
+            <div className="text-center md:text-right font-mono text-xs uppercase tracking-widest text-[#BFAFA4]">
               <p>© 2026 Epris Journal</p>
               <p>{t('footer.rights')}</p>
             </div>
