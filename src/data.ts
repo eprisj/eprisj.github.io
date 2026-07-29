@@ -24,6 +24,14 @@ export interface ContentBlock {
   type: 'text' | 'header' | 'image' | 'quote' | 'map' | 'link' | 'video' | 'audio' | 'gallery' | 'checklist' | 'poll' | 'note' | 'mosaic';
   content: string | string[] | { question: string; options: { label: string; votes: number }[] } | { items: string[] };
   caption?: string;
+  /** Accessible description for a single editorial image. Falls back to caption. */
+  alt?: string;
+  /** Photographer, studio, archive or other image/video credit. */
+  credit?: string;
+  /** Optional source / rights link displayed next to the credit. */
+  sourceUrl?: string;
+  /** Poster image for Vimeo or self-hosted video. */
+  poster?: string;
   coordinates?: { lat: number; lng: number };
   url?: string;
   level?: number;
@@ -212,6 +220,19 @@ export interface SiteTheme {
   fontBody?: string;     // body font family name (Google Font)
 }
 
+/** Public-shell copy, contacts and default SEO set in the editorial admin. */
+export interface SiteSettings {
+  brandName?: string;
+  footerTitle?: string;
+  footerDescription?: string;
+  instagramUrl?: string;
+  contactEmail?: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  seoKeywords?: string;
+  ogImage?: string;
+}
+
 export type VisibilitySectionKey = 'gallery' | 'articles' | 'reviews' | 'about' | 'manifest' | 'issue' | 'design' | 'studio' | 'radio' | 'podcasts';
 export type VisibilityEntityKey = 'articles' | 'items' | 'reviews' | 'authors' | 'studioProjects';
 
@@ -230,6 +251,7 @@ export interface SiteVisibility {
 
 export interface SiteContent {
   theme?: SiteTheme;
+  site?: SiteSettings;
   visibility?: SiteVisibility;
   translations: Record<string, Record<string, string>>;
   items: Item[];
@@ -409,7 +431,7 @@ function hasLocalizedPayload(entry: unknown): boolean {
   if (isPlaceholderEntity(entry)) return false;
   if (!entry || typeof entry !== 'object') return false;
   const record = entry as Record<string, unknown>;
-  const textKeys = ['title', 'excerpt', 'content', 'subject', 'author', 'category', 'caption', 'description'];
+  const textKeys = ['title', 'excerpt', 'content', 'subject', 'author', 'category', 'caption', 'alt', 'credit', 'description'];
   return textKeys.some((key) => {
     const value = record[key];
     if (typeof value === 'string') return value.trim().length > 0;
@@ -450,6 +472,8 @@ function mergeContentBlock(base: ContentBlock, localized: ContentBlock | undefin
   if (!localized || base.type !== localized.type) return base;
   const merged: ContentBlock = { ...base };
   if (typeof localized.caption === 'string' && localized.caption.trim()) merged.caption = localized.caption;
+  if (typeof localized.alt === 'string' && localized.alt.trim()) merged.alt = localized.alt;
+  if (typeof localized.credit === 'string' && localized.credit.trim()) merged.credit = localized.credit;
   if (Array.isArray(localized.alts) && localized.alts.length) merged.alts = localized.alts;
 
   if (BLOCK_PROSE_TYPES.has(base.type)) {
@@ -687,6 +711,10 @@ export function getTranslations(): Record<string, Record<string, string>> {
 /** Site theme (colors/fonts) from content; empty object falls back to CSS defaults. */
 export function getTheme(): SiteTheme {
   return src().theme || {};
+}
+
+export function getSiteSettings(): SiteSettings {
+  return src().site || {};
 }
 
 const DEFAULT_ISSUE: Issue = {

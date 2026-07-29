@@ -29,12 +29,13 @@ import {
   setPreviewOverride,
   getTranslations,
   getTheme,
+  getSiteSettings,
   isSectionEnabled,
   isSectionInNavigation,
   loadLiveContent,
   subscribeContent
 } from './data';
-import type { SiteTheme, VisibilitySectionKey } from './data';
+import type { SiteSettings, SiteTheme, VisibilitySectionKey } from './data';
 import { Search, ArrowUpRight, FileText, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
 
 // Issue-draft preview: when the admin opens /issue?preview=1, load the unsaved
@@ -314,50 +315,96 @@ function Reveal({ children, delay = 0, y = 28, className = '' }: { children: Rea
   );
 }
 
-// Extracts an 11-char YouTube video id from watch/share/embed/shorts URLs.
+// Extracts a YouTube id from watch/share/embed/shorts URLs.
 function extractYouTubeId(url: string): string | null {
   const m = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
   return m ? m[1] : null;
 }
 
-// Click-to-play YouTube embed — shows the real thumbnail + play button, only
-// loads the YouTube iframe (and its trackers) once a reader actually clicks.
-function VideoBlock({ content, caption }: { content: string; caption?: string }) {
+function extractVimeoId(url: string): string | null {
+  const m = url.match(/vimeo\.com\/(?:.*\/)?(\d+)(?:$|[?#/])/i);
+  return m ? m[1] : null;
+}
+
+function isDirectVideoUrl(url: string): boolean {
+  return /\.(?:mp4|webm|ogv|ogg)(?:$|[?#])/i.test(url);
+}
+
+function safeExternalUrl(value?: string): string | null {
+  const url = String(value || '').trim();
+  return /^https?:\/\//i.test(url) ? url : null;
+}
+
+// Privacy-friendly click-to-play embeds for YouTube/Vimeo. Direct MP4/WebM
+// stays native, so it is fast, accessible and never needs a third-party player.
+function VideoBlock({ content, caption, poster, credit, sourceUrl }: { content: string; caption?: string; poster?: string; credit?: string; sourceUrl?: string }) {
   const [playing, setPlaying] = useState(false);
   const ytId = extractYouTubeId(content);
+  const vimeoId = extractVimeoId(content);
+  const directVideo = isDirectVideoUrl(content);
+  const embedUrl = ytId
+    ? `https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1`
+    : vimeoId
+      ? `https://player.vimeo.com/video/${vimeoId}?autoplay=1&dnt=1`
+      : null;
+  const provider = ytId ? 'YouTube' : vimeoId ? 'Vimeo' : directVideo ? 'Video' : 'Open video';
+  const cleanSource = safeExternalUrl(sourceUrl);
 
   return (
     <figure className="my-8 sm:my-12">
       <div className="aspect-video bg-black relative overflow-hidden">
-        {playing && ytId ? (
+        {directVideo ? (
+          <video className="w-full h-full object-cover" controls preload="metadata" poster={poster || undefined}>
+            <source src={content} />
+            Your browser does not support this video.
+          </video>
+        ) : playing && embedUrl ? (
           <iframe
-            src={`https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1`}
+            src={embedUrl}
             title={caption || 'Video'}
             className="w-full h-full"
-            allow="accelerated-video-playback; encrypted-media; picture-in-picture"
+            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
             allowFullScreen
           />
         ) : (
-          <button
-            type="button"
-            onClick={() => setPlaying(true)}
-            className="w-full h-full relative flex items-center justify-center group cursor-pointer"
-            aria-label={caption || 'Play video'}
-          >
-            {ytId && (
+          embedUrl ? (
+            <button
+              type="button"
+              onClick={() => setPlaying(true)}
+              className="w-full h-full relative flex items-center justify-center group cursor-pointer"
+              aria-label={caption || `Play ${provider} video`}
+            >
+              {(ytId || poster) && (
               <img
-                src={`https://img.youtube.com/vi/${ytId}/hqdefault.jpg`}
+                src={poster || `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`}
                 alt="" loading="lazy" referrerPolicy="no-referrer"
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-85 transition-opacity"
               />
-            )}
-            <Play size={48} className="relative text-white opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all" />
-          </button>
+              )}
+              {!ytId && !poster && <span className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,.12),transparent_58%)]" />}
+              <span className="relative inline-flex flex-col items-center gap-3 text-white">
+                <Play size={48} className="opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all" />
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em]">{provider}</span>
+              </span>
+            </button>
+          ) : (
+            <a
+              href={safeExternalUrl(content) || '#'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full h-full relative flex flex-col gap-3 items-center justify-center text-white hover:bg-white/10 transition-colors"
+              aria-label={caption || 'Open video'}
+            >
+              <ExternalLink size={28} />
+              <span className="font-mono text-[10px] uppercase tracking-[0.16em]">Open video</span>
+            </a>
+          )
         )}
       </div>
-      {caption && (
-        <figcaption className="text-center font-mono text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] mt-3 sm:mt-4 uppercase tracking-widest">
-          {caption}
+      {(caption || credit) && (
+        <figcaption className="text-center font-mono text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] mt-3 sm:mt-4 uppercase tracking-widest px-4">
+          {caption}{caption && credit ? ' · ' : ''}{credit}
+          {cleanSource && <a href={cleanSource} target="_blank" rel="noopener noreferrer" className="ml-2 underline underline-offset-4 hover:text-[var(--c-gold)] transition-colors">source</a>}
         </figcaption>
       )}
     </figure>
@@ -503,6 +550,7 @@ function NavBar({
   t,
   languages,
   onSearch,
+  brandName,
 }: {
   activeTab: string;
   setActiveTab: (tab: string) => void;
@@ -511,6 +559,7 @@ function NavBar({
   t: (key: string) => string;
   languages: string[];
   onSearch: (q: string) => void;
+  brandName: string;
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
@@ -583,10 +632,10 @@ function NavBar({
         <button
           type="button"
           onClick={() => { setActiveTab('gallery'); setIsMenuOpen(false); }}
-          aria-label="EPRIS — home"
+          aria-label={`${brandName} — home`}
           className="absolute left-1/2 -translate-x-1/2 leading-none font-mono"
         >
-          <span className="text-lg min-[360px]:text-xl tracking-[0.22em] text-[var(--c-accent)] pl-[0.22em]">EPRIS</span>
+          <span className="text-lg min-[360px]:text-xl tracking-[0.22em] text-[var(--c-accent)] pl-[0.22em]">{brandName}</span>
         </button>
         <div className="relative z-10 flex items-center gap-1.5">
           <button
@@ -618,7 +667,7 @@ function NavBar({
         {/* Logo Section */}
         <div className="w-64 border-r border-[var(--c-accent)] px-6 flex items-center shrink-0 bg-[var(--c-bg)] z-50">
           <button type="button" className="flex items-center font-mono" onClick={() => setActiveTab('gallery')} aria-label="Go to home">
-            <span className="text-xl tracking-[0.2em] text-[var(--c-accent)] pl-[0.2em] normal-case leading-none">EPRIS</span>
+            <span className="text-xl tracking-[0.2em] text-[var(--c-accent)] pl-[0.2em] normal-case leading-none">{brandName}</span>
           </button>
         </div>
 
@@ -881,11 +930,11 @@ function NavBar({
   );
 }
 
-function SectionMasthead({ t, variant = 'photo' }: { t: (key: string) => string; variant?: 'photo' | 'plain' }) {
+function SectionMasthead({ t, brandName = 'EPRIS', variant = 'photo' }: { t: (key: string) => string; brandName?: string; variant?: 'photo' | 'plain' }) {
   const lockup = (
     <>
       <div className="leading-none shrink-0 font-mono">
-        <div className="text-lg sm:text-2xl tracking-[0.18em]">EPRIS</div>
+        <div className="text-lg sm:text-2xl tracking-[0.18em]">{brandName}</div>
         <div className="font-mono text-[8px] sm:text-[9px] tracking-[0.3em] uppercase opacity-70 mt-1">journal</div>
       </div>
       <div className="hidden sm:flex items-center gap-4 flex-1 justify-center min-w-0">
@@ -1653,6 +1702,8 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                   const align = block.align || (stretched ? 'full' : 'center');
                   const imageSource = resolveMediaSource(block.content, stretched || align === 'full' ? 1600 : 800, stretched || align === 'full' ? 900 : 500);
                   if (!imageSource) return null;
+                  const imageAlt = block.alt?.trim() || block.caption || 'Article image';
+                  const sourceUrl = safeExternalUrl(block.sourceUrl);
                   const widthPct = block.width && block.width > 0 && block.width <= 100 ? block.width : undefined;
                   const figureClass =
                     stretched || align === 'full'
@@ -1667,14 +1718,15 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                     <figure key={index} className={figureClass} style={figureStyle}>
                       <img
                         src={imageSource}
-                        alt={block.caption || "Article image"}
+                        alt={imageAlt}
                         className="w-full h-auto grayscale cursor-pointer hover:opacity-90 transition-opacity"
                         referrerPolicy="no-referrer"
-                        onClick={() => onImageClick(imageSource, block.caption || 'Article image')}
+                        onClick={() => onImageClick(imageSource, imageAlt)}
                       />
-                      {block.caption && (
+                      {(block.caption || block.credit) && (
                         <figcaption className="text-center font-mono text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] mt-3 sm:mt-4 uppercase tracking-widest px-4 sm:px-0">
-                          {block.caption}
+                          {block.caption}{block.caption && block.credit ? ' · ' : ''}{block.credit}
+                          {sourceUrl && <a href={sourceUrl} target="_blank" rel="noopener noreferrer" className="ml-2 underline underline-offset-4 hover:text-[var(--c-gold)] transition-colors">source</a>}
                         </figcaption>
                       )}
                     </figure>
@@ -1730,7 +1782,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                   );
                 }
                 case 'video':
-                  return <VideoBlock key={index} content={typeof block.content === 'string' ? block.content : ''} caption={block.caption} />;
+                  return <VideoBlock key={index} content={typeof block.content === 'string' ? block.content : ''} caption={block.caption} poster={block.poster} credit={block.credit} sourceUrl={block.sourceUrl} />;
                 case 'audio':
                   return (
                     <figure key={index} className="my-8 sm:my-12 p-4 sm:p-6 bg-[#E8DED5] border border-[rgb(var(--c-accent-rgb)_/_0.2)] flex items-center gap-3 sm:gap-4">
@@ -1967,11 +2019,13 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
 function ArticlesSection({
   articles,
   onArticleClick,
-  t
+  t,
+  brandName,
 }: {
   articles: Article[];
   onArticleClick: (article: Article) => void;
   t: (key: string) => string;
+  brandName: string;
 }) {
   const filteredArticles = articles;
 
@@ -1980,7 +2034,7 @@ function ArticlesSection({
       {/* The editorial masthead belongs to Articles, not Gallery. Pull it out
           of the reading column so its photograph reaches both screen edges. */}
       <div className="relative left-1/2 w-screen -translate-x-1/2 -mt-8 sm:-mt-12 md:-mt-24">
-        <SectionMasthead t={t} />
+        <SectionMasthead t={t} brandName={brandName} />
       </div>
 
       <div className="max-w-4xl mx-auto px-5 sm:px-0 pt-8 sm:pt-10">
@@ -2579,7 +2633,7 @@ const ROUTE_META: Record<string, { title: string; description: string }> = {
   podcasts: { title: 'EPRIS Podcasts', description: 'Conversations and audio stories about contemporary art, architecture, design and cities.' },
 };
 
-function updateMetaTags(article: Article | null, activeTab: string, activeSearch: string) {
+function updateMetaTags(article: Article | null, activeTab: string, activeSearch: string, settings: SiteSettings) {
   const setMeta = (property: string, content: string) => {
     let el = document.querySelector(`meta[property="${property}"]`) || document.querySelector(`meta[name="${property}"]`);
     if (!el) {
@@ -2615,30 +2669,35 @@ function updateMetaTags(article: Article | null, activeTab: string, activeSearch
   const clearJsonLd = (id: string) => {
     document.querySelector<HTMLScriptElement>(`script[type="application/ld+json"][data-epris-id="${id}"]`)?.remove();
   };
+  const brandName = String(settings.brandName || 'EPRIS').trim() || 'EPRIS';
+  const publicationName = /journal/i.test(brandName) ? brandName : `${brandName} Journal`;
+  const defaultDescription = String(settings.seoDescription || '').trim();
+  const defaultKeywords = String(settings.seoKeywords || '').trim() || `${publicationName}, contemporary art, architecture, interior design, design journal, art interviews, design interviews, cultural journalism`;
+  const defaultOgImage = safeExternalUrl(settings.ogImage) || 'https://eprisjournal.com/images/featured.png';
   const siteNode = {
     '@type': 'WebSite',
-    name: 'EPRIS Journal',
+    name: publicationName,
     url: 'https://eprisjournal.com/',
-    publisher: { '@type': 'Organization', name: 'EPRIS Journal', url: 'https://eprisjournal.com/', logo: 'https://eprisjournal.com/images/featured.png' },
+    publisher: { '@type': 'Organization', name: publicationName, url: 'https://eprisjournal.com/', logo: defaultOgImage },
     potentialAction: {
       '@type': 'SearchAction',
       target: 'https://eprisjournal.com/search?q={search_term_string}',
       'query-input': 'required name=search_term_string',
     },
   };
-  const routeLabel = ROUTE_META[activeTab]?.title?.replace(/\s+—\s+EPRIS Journal$/, '') || 'EPRIS Journal';
+  const routeLabel = ROUTE_META[activeTab]?.title?.replace(/\s+—\s+EPRIS Journal$/, '') || publicationName;
 
   if (article) {
     const imageUrl = resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 630);
     const canonicalUrl = `https://eprisjournal.com/article/${getSlugForArticle(article)}`;
-    const keywords = Array.from(new Set([...(article.tags || []), article.category, article.subcategory, 'EPRIS Journal', 'architecture', 'design', 'contemporary art'].filter(Boolean))).join(', ');
-    document.title = `${article.title} — EPRIS Journal`;
+    const keywords = Array.from(new Set([...(article.tags || []), article.category, article.subcategory, publicationName, 'architecture', 'design', 'contemporary art'].filter(Boolean))).join(', ');
+    document.title = `${article.title} — ${publicationName}`;
     setMeta('og:title', article.title);
     setMeta('og:description', article.excerpt);
     setMeta('og:image', imageUrl);
     setMeta('og:type', 'article');
     setMeta('og:url', canonicalUrl);
-    setMeta('og:site_name', 'EPRIS Journal');
+    setMeta('og:site_name', publicationName);
     setMeta('twitter:card', 'summary_large_image');
     setMeta('twitter:title', article.title);
     setMeta('twitter:description', article.excerpt);
@@ -2675,39 +2734,41 @@ function updateMetaTags(article: Article | null, activeTab: string, activeSearch
       ],
     });
   } else if (activeSearch) {
-    const title = `Search: ${activeSearch} — EPRIS Journal`;
-    const description = `Search results for “${activeSearch}” across EPRIS Journal.`;
+    const title = `Search: ${activeSearch} — ${publicationName}`;
+    const description = `Search results for “${activeSearch}” across ${publicationName}.`;
     document.title = title;
     setMeta('og:title', title);
     setMeta('og:description', description);
-    setMeta('og:image', 'https://eprisjournal.com/images/featured.png');
+    setMeta('og:image', defaultOgImage);
     setMeta('og:type', 'website');
     setMeta('og:url', window.location.href);
     setMeta('twitter:card', 'summary_large_image');
     setMeta('twitter:title', title);
     setMeta('twitter:description', description);
-    setMeta('twitter:image', 'https://eprisjournal.com/images/featured.png');
+    setMeta('twitter:image', defaultOgImage);
     setMeta('description', description);
-    setMeta('keywords', 'EPRIS Journal search, art search, design search, architecture search');
+    setMeta('keywords', `${publicationName} search, art search, design search, architecture search`);
     setMeta('robots', 'noindex, follow');
     setCanonical('https://eprisjournal.com/search');
     clearJsonLd('runtime-seo');
   } else {
     const routeMeta = ROUTE_META[activeTab] || ROUTE_META.gallery;
+    const routeTitle = activeTab === 'gallery' && settings.seoTitle?.trim() ? settings.seoTitle.trim() : routeMeta.title;
+    const routeDescription = activeTab === 'gallery' && defaultDescription ? defaultDescription : routeMeta.description;
     const canonicalUrl = activeTab === 'gallery' ? 'https://eprisjournal.com/' : `https://eprisjournal.com/${activeTab}`;
-    document.title = routeMeta.title;
-    setMeta('og:title', routeMeta.title);
-    setMeta('og:description', routeMeta.description);
-    setMeta('og:image', 'https://eprisjournal.com/images/featured.png');
+    document.title = routeTitle;
+    setMeta('og:title', routeTitle);
+    setMeta('og:description', routeDescription);
+    setMeta('og:image', defaultOgImage);
     setMeta('og:type', 'website');
     setMeta('og:url', canonicalUrl);
-    setMeta('og:site_name', 'EPRIS Journal');
+    setMeta('og:site_name', publicationName);
     setMeta('twitter:card', 'summary_large_image');
-    setMeta('twitter:title', routeMeta.title);
-    setMeta('twitter:description', routeMeta.description);
-    setMeta('twitter:image', 'https://eprisjournal.com/images/featured.png');
-    setMeta('description', routeMeta.description);
-    setMeta('keywords', 'EPRIS Journal, contemporary art, architecture, interior design, design journal, art interviews, design interviews, cultural journalism');
+    setMeta('twitter:title', routeTitle);
+    setMeta('twitter:description', routeDescription);
+    setMeta('twitter:image', defaultOgImage);
+    setMeta('description', routeDescription);
+    setMeta('keywords', defaultKeywords);
     setMeta('robots', 'index, follow, max-image-preview:large');
     setCanonical(canonicalUrl);
     setJsonLd('runtime-seo', {
@@ -2716,8 +2777,8 @@ function updateMetaTags(article: Article | null, activeTab: string, activeSearch
         siteNode,
         {
           '@type': activeTab === 'gallery' ? 'WebPage' : 'CollectionPage',
-          name: routeMeta.title,
-          description: routeMeta.description,
+          name: routeTitle,
+          description: routeDescription,
           url: canonicalUrl,
           isPartOf: siteNode,
         },
@@ -2818,11 +2879,18 @@ export default function App() {
         .slice(0, 3)
     : [];
   const t = (key: string) => getTranslation(currentLang, key);
+  const siteSettings = getSiteSettings();
+  const brandName = String(siteSettings.brandName || 'EPRIS').trim().slice(0, 32) || 'EPRIS';
+  const publicationName = /journal/i.test(brandName) ? brandName : `${brandName} Journal`;
+  const footerTitle = String(siteSettings.footerTitle || publicationName).trim() || publicationName;
+  const footerDescription = String(siteSettings.footerDescription || '').trim();
+  const instagramUrl = safeExternalUrl(siteSettings.instagramUrl);
+  const contactEmail = String(siteSettings.contactEmail || '').trim();
   const fallbackTab = VISIBILITY_TABS.find((tab) => isSectionEnabled(tab)) || 'gallery';
 
   useEffect(() => {
-    updateMetaTags(selectedArticle, activeTab, activeSearch);
-  }, [selectedArticle, activeTab, activeSearch]);
+    updateMetaTags(selectedArticle, activeTab, activeSearch, siteSettings);
+  }, [selectedArticle, activeTab, activeSearch, contentVersion]);
 
   const handleImageClick = useCallback((src: string, alt: string) => {
     setLightboxImage({ src, alt });
@@ -2933,6 +3001,7 @@ export default function App() {
         t={t}
         languages={languageOptions}
         onSearch={handleSearch}
+        brandName={brandName}
       />
       
       <RouteTransition routeKey={routeKey} direction={routeDirection}>
@@ -2981,7 +3050,7 @@ export default function App() {
                 {activeTab === 'gallery' && (
                   <GallerySection items={items} onItemClick={setSelectedGalleryItem} />
                 )}
-                {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
+                {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} brandName={brandName} />}
                 {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} />}
                 {activeTab === 'about' && <AboutSection t={t} currentLang={currentLang} onOpenManifest={() => handleSetTab('manifest')} />}
                 {activeTab === 'manifest' && <ManifestPage t={t} currentLang={currentLang} />}
@@ -2993,15 +3062,18 @@ export default function App() {
         {activeTab !== 'issue' && activeTab !== 'design' && activeTab !== 'studio' && activeTab !== 'radio' && activeTab !== 'podcasts' && activeTab !== 'passport' && <footer className="border-t border-[rgba(209,181,149,0.45)] bg-[#180D13] text-[#F7F2EC] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
           <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center md:items-end gap-8 sm:gap-12 text-center md:text-left">
             <div>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-[#F7F2EC]">EPRIS JOURNAL</h2>
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-[#F7F2EC]">{footerTitle}</h2>
               <div className="font-mono text-xs uppercase tracking-widest text-[#D9C7BA] max-w-xs mx-auto md:mx-0 leading-relaxed">
-                <p>{t('hero.subtitle2')}</p>
-                <p>{t('hero.subtitle1')}</p>
+                {footerDescription ? <p>{footerDescription}</p> : <><p>{t('hero.subtitle2')}</p><p>{t('hero.subtitle1')}</p></>}
               </div>
             </div>
             <div className="text-center md:text-right font-mono text-xs uppercase tracking-widest text-[#BFAFA4]">
-              <p>© 2026 Epris Journal</p>
+              <p>© 2026 {publicationName}</p>
               <p>{t('footer.rights')}</p>
+              {(instagramUrl || contactEmail) && <div className="mt-4 flex flex-wrap justify-center md:justify-end gap-x-4 gap-y-2 text-[#D9C7BA]">
+                {instagramUrl && <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#F7F2EC] underline underline-offset-4 transition-colors">Instagram</a>}
+                {contactEmail && <a href={`mailto:${contactEmail}`} className="hover:text-[#F7F2EC] underline underline-offset-4 transition-colors">{contactEmail}</a>}
+              </div>}
             </div>
           </div>
         </footer>}

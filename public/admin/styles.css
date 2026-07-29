@@ -5466,3 +5466,74 @@ body.busy::after {
   .tab-btn { flex-basis: 70px; width: 70px; font-size: .44rem; }
   .wys-article > *:not(.wys-hero), .wys-canvas.mobile .wys-article > *:not(.wys-hero) { padding-left: 15px; padding-right: 15px; }
 }
+
+/* ── Media metadata + public site controls ─────────────────────────────── */
+.block-media-meta-grid,
+.wys-media-details-grid,
+.site-editor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.block-media-meta-grid { margin-top: 10px; }
+.block-media-meta-grid label,
+.wys-media-details-grid label,
+.site-editor-grid label {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+.block-media-meta-grid .full,
+.wys-media-details-wide,
+.site-editor-wide { grid-column: 1 / -1; }
+.wys-media-details {
+  margin-top: 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--bg-card) 76%, var(--accent) 3%);
+}
+.wys-media-details summary {
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  padding: 0 11px;
+  cursor: pointer;
+  font: 700 .58rem/1 var(--font-mono);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.wys-media-details-grid { padding: 0 11px 11px; }
+.wys-media-details-grid span {
+  font: 700 .56rem/1 var(--font-mono);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.site-editor-card { padding: 18px; }
+.site-editor-kicker {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--gold);
+  font: 700 .56rem/1 var(--font-mono);
+  letter-spacing: .12em;
+}
+.site-editor-card .card-title { margin-bottom: 5px; }
+.site-editor-card .card-desc { margin-bottom: 14px; }
+.site-editor-grid textarea { min-height: 82px; resize: vertical; }
+.site-editor-grid small { font-size: .78em; font-weight: 400; color: var(--text-muted); }
+
+@media (max-width: 760px) {
+  .appearance-layout { display: flex !important; flex-direction: column; padding: 14px 12px !important; gap: 12px !important; }
+  .appearance-controls { width: 100%; }
+  .appearance-preview-card { position: static !important; width: 100%; }
+  .block-media-meta-grid,
+  .wys-media-details-grid,
+  .site-editor-grid { grid-template-columns: 1fr; }
+  .block-media-meta-grid .full,
+  .wys-media-details-wide,
+  .site-editor-wide { grid-column: auto; }
+  .site-editor-grid input,
+  .site-editor-grid textarea { min-height: 44px; font-size: 16px; }
+  .site-editor-grid textarea { min-height: 92px; }
+}

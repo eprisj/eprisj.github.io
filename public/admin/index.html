@@ -12,7 +12,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=4.27" />
+    <link rel="stylesheet" href="./styles.css?v=4.28" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
@@ -1168,9 +1168,9 @@
 
           <!-- ===== APPEARANCE (site customizer) ===== -->
           <section class="tab-panel" id="tab-appearance">
-            <div style="padding:24px 28px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:minmax(0,360px) 1fr;gap:24px;align-items:start">
+            <div class="appearance-layout" style="padding:24px 28px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:minmax(0,360px) 1fr;gap:24px;align-items:start">
               <!-- Controls -->
-              <div style="display:flex;flex-direction:column;gap:16px">
+              <div class="appearance-controls" style="display:flex;flex-direction:column;gap:16px">
                 <div class="card">
                   <div class="card-title">Готовые темы</div>
                   <p class="card-desc">Выбери пресет — поля ниже заполнятся, останется опубликовать.</p>
@@ -1200,21 +1200,44 @@
                     <label style="display:grid;gap:5px"><span class="field-label">Основной текст</span><select id="apFontBody"></select></label>
                   </div>
                 </div>
+                <div class="card site-editor-card">
+                  <span class="site-editor-kicker">PUBLIC SHELL</span>
+                  <div class="card-title">Журнал и футер</div>
+                  <p class="card-desc">Управляйте тем, как журнал представляется посетителям. Меняется только публичный сайт, записи и медиа не затрагиваются.</p>
+                  <div class="site-editor-grid">
+                    <label><span class="field-label">Название в шапке</span><input id="apBrandName" class="form-input" maxlength="32" placeholder="EPRIS" /></label>
+                    <label><span class="field-label">Заголовок футера</span><input id="apFooterTitle" class="form-input" maxlength="56" placeholder="EPRIS JOURNAL" /></label>
+                    <label class="site-editor-wide"><span class="field-label">Текст футера</span><textarea id="apFooterDescription" class="form-input" rows="3" maxlength="220" placeholder="Коротко: о чём журнал и для кого он."></textarea></label>
+                    <label><span class="field-label">Instagram</span><input id="apInstagramUrl" class="form-input" type="url" inputmode="url" placeholder="https://instagram.com/…" /></label>
+                    <label><span class="field-label">Редакционный e-mail</span><input id="apContactEmail" class="form-input" type="email" inputmode="email" placeholder="hello@eprisjournal.com" /></label>
+                  </div>
+                </div>
+                <div class="card site-editor-card">
+                  <span class="site-editor-kicker">SEARCH &amp; SHARE</span>
+                  <div class="card-title">Главная в поиске</div>
+                  <p class="card-desc">Заголовок и описание попадут в Google и превью при публикации ссылки. Результат зависит от переобхода поисковой системы.</p>
+                  <div class="site-editor-grid">
+                    <label class="site-editor-wide"><span class="field-label">SEO-заголовок <small>до 70 символов</small></span><input id="apSeoTitle" class="form-input" maxlength="70" placeholder="EPRIS — design, art &amp; culture journal" /></label>
+                    <label class="site-editor-wide"><span class="field-label">SEO-описание <small>до 165 символов</small></span><textarea id="apSeoDescription" class="form-input" rows="3" maxlength="165" placeholder="Короткое понятное описание для поиска и соцсетей."></textarea></label>
+                    <label class="site-editor-wide"><span class="field-label">Ключевые темы</span><input id="apSeoKeywords" class="form-input" placeholder="design, architecture, art, culture" /></label>
+                    <label class="site-editor-wide"><span class="field-label">Изображение для предпросмотра</span><input id="apOgImage" class="form-input" type="url" inputmode="url" placeholder="https://…/share-image.jpg" /></label>
+                  </div>
+                </div>
                 <div class="card">
                   <div style="display:flex;gap:8px;flex-wrap:wrap">
-                    <button class="btn btn-primary" type="button" id="apPublishBtn">Опубликовать оформление</button>
+                    <button class="btn btn-primary" type="button" id="apPublishBtn">Опубликовать сайт</button>
                     <button class="btn" type="button" id="apResetBtn">Сбросить к классике</button>
                   </div>
                   <div id="apStatus" style="margin-top:10px;font-family:var(--font-mono);font-size:.62rem;color:var(--text-muted)"></div>
                 </div>
               </div>
               <!-- Live preview -->
-              <div class="card" style="padding:0;overflow:hidden;position:sticky;top:0">
+              <div class="card appearance-preview-card" style="padding:0;overflow:hidden;position:sticky;top:0">
                 <div style="padding:10px 16px;border-bottom:1px solid var(--line);font-family:var(--font-mono);font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted)">Предпросмотр</div>
                 <div id="apPreview" style="padding:0">
                   <div class="ap-pv-hero">
-                    <div class="ap-pv-kicker">A JOURNAL OF DESIGN</div>
-                    <div class="ap-pv-title">The Door Issue</div>
+                    <div class="ap-pv-kicker" id="apPreviewBrand">EPRIS</div>
+                    <div class="ap-pv-title" id="apPreviewTitle">EPRIS JOURNAL</div>
                   </div>
                   <div class="ap-pv-body">
                     <div class="ap-pv-tag">TRAVEL</div>
@@ -1411,7 +1434,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.26" type="module"></script>
+    <script src="./app.js?v=4.27" type="module"></script>
     <script>
       // Tab switching + page title update
       document.addEventListener('DOMContentLoaded', function () {
