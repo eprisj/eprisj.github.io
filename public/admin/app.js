@@ -11538,6 +11538,199 @@ async function flushModernEditor() {
     scheduleCommit();
   });
 
+  /* ── Enter starts a new paragraph ──────────────────────────────────────────
+
+     Every paragraph is already its own block in the model, but nothing was
+     listening for Enter, so the browser did what contentEditable does and put a
+     <div> INSIDE the block. __sanitizeInline keeps <br> and unwraps <div>/<p>,
+     which means the two halves came back glued together with nothing between
+     them. Writing a second paragraph was not possible without reaching for the
+     + button — the single biggest thing standing between this editor and being
+     pleasant to write in.
+
+     The split is done on the MODEL, not the DOM: take the HTML on either side
+     of the caret and open a new block with the tail. Ranges do that work, so
+     inline formatting survives on both sides of the cut, and a non-empty
+     selection is dropped by construction — the head ends where the selection
+     starts and the tail begins where it ends. */
+  const TEXTISH = new Set(['text', 'header', 'quote', 'note']);
+
+  function fragToHtml(frag) {
+    const d = document.createElement('div');
+    d.appendChild(frag);
+    /* A cut at the very edge of a formatted run takes the tag but none of its
+       text — pasting at the start of a bold word left <strong></strong> sitting
+       in front of it. Invisible, but it is saved with the article and builds up
+       over an editing session. Emptiness is measured exactly, not trimmed: a
+       bolded space is still a space, and removing it would eat the word gap. */
+    d.querySelectorAll('b,strong,i,em,u,s,mark,code,a,span').forEach((n) => {
+      if (n.textContent === '' && !n.querySelector('br')) n.remove();
+    });
+    return sanitizeInline(d.innerHTML);
+  }
+
+  // The caret, but only when it really is inside this block.
+  function caretIn(el) {
+    const s = window.getSelection();
+    if (!s || !s.rangeCount) return null;
+    const r = s.getRangeAt(0);
+    if (!el.contains(r.startContainer) || !el.contains(r.endContainer)) return null;
+    return r;
+  }
+
+  function splitRanges(el, r) {
+    const head = document.createRange();
+    head.selectNodeContents(el);
+    head.setEnd(r.startContainer, r.startOffset);
+    const tail = document.createRange();
+    tail.selectNodeContents(el);
+    tail.setStart(r.endContainer, r.endOffset);
+    return [head, tail];
+  }
+
+  /* Put the caret `offset` characters into block i, counting rendered text
+     rather than HTML — otherwise a bold word or an &amp; earlier in the
+     paragraph shifts the landing point. render() has just replaced the DOM, so
+     this waits a tick for the new nodes. */
+  function focusBlockAt(i, offset) {
+    setTimeout(() => {
+      const el = canvas.querySelector('.wys-block[data-i="' + i + '"] .wys-rt');
+      if (!el) return;
+      el.focus();
+      const range = document.createRange();
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      let node, seen = 0, hit = null, into = 0;
+      while ((node = walker.nextNode())) {
+        const len = node.textContent.length;
+        if (seen + len >= offset) { hit = node; into = offset - seen; break; }
+        seen += len;
+      }
+      if (hit) range.setStart(hit, Math.max(0, Math.min(into, hit.textContent.length)));
+      else { range.selectNodeContents(el); }
+      range.collapse(true);
+      const s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(range);
+    }, 30);
+  }
+
+  canvas.addEventListener('keydown', (e) => {
+    if (!_model) return;
+    const el = e.target.closest('.wys-rt[data-wys="block"]');
+    if (!el) return;
+    const i = Number(el.getAttribute('data-i'));
+    const block = _model.content[i];
+    if (!block || !TEXTISH.has(block.type)) return;
+
+    // Shift+Enter stays a soft line break — <br> is the one thing the
+    // sanitiser already keeps, and inside a pull-quote it is what you want.
+    if (e.key === 'Enter' && !e.shiftKey && !e.metaKey && !e.ctrlKey && !e.altKey) {
+      const r = caretIn(el);
+      if (!r) return;
+      e.preventDefault();
+
+      /* Enter on an empty quote or note leaves it, the way pressing Enter on an
+         empty list item ends the list. Without this the only way out of a
+         pull-quote is the block-type menu. */
+      if (block.type !== 'text' && !el.textContent.trim()) {
+        block.type = 'text';
+        block.content = '';
+        render(); commit(); focusBlockAt(i, 0);
+        return;
+      }
+
+      const parts = splitRanges(el, r);
+      block.content = fragToHtml(parts[0].cloneContents());
+      /* A heading is a one-line thing and what follows it is body text. A quote
+         or a marginal note usually runs on, so those continue as themselves. */
+      const nb = newBlock(block.type === 'header' ? 'text' : block.type);
+      nb.content = fragToHtml(parts[1].cloneContents());
+      _model.content.splice(i + 1, 0, nb);
+      render(); commit(); focusBlockAt(i + 1, 0);
+      return;
+    }
+
+    /* Backspace at the very start joins this block onto the one above, which is
+       how you undo an Enter. Without it the split is one-way and the only way
+       to remove a stray empty paragraph is the block's delete button. */
+    if (e.key === 'Backspace') {
+      const r = caretIn(el);
+      if (!r || !r.collapsed) return;
+      const before = document.createRange();
+      before.selectNodeContents(el);
+      before.setEnd(r.startContainer, r.startOffset);
+      if (before.toString().length) return;         // not at the start of the block
+      const prev = _model.content[i - 1];
+      if (!prev || !TEXTISH.has(prev.type)) return; // never swallow an image or a gallery
+      e.preventDefault();
+      const prevEl = canvas.querySelector('.wys-block[data-i="' + (i - 1) + '"] .wys-rt');
+      const joinAt = prevEl ? prevEl.textContent.length : 0;
+      prev.content = String(prev.content || '') + String(block.content || '');
+      _model.content.splice(i, 1);
+      render(); commit(); focusBlockAt(i - 1, joinAt);
+      return;
+    }
+  });
+
+  /* ── a pasted draft keeps its paragraphs ───────────────────────────────────
+
+     The canvas had no paste handling at all (__bindPlainPasteGuard is bound to
+     the classic block editor, not to this one), so a draft pasted from a
+     document arrived as one block for the same reason Enter did nothing.
+
+     Blank lines separate paragraphs where there are any. Where there are none
+     but there are single newlines, those are the separators — that is what
+     copying out of a plain-text editor gives you, and treating them as soft
+     wraps would collapse the whole draft into one paragraph, which is the bug
+     this is here to fix. */
+  canvas.addEventListener('paste', (e) => {
+    if (!_model) return;
+    const el = e.target.closest('.wys-rt[data-wys="block"]');
+    if (!el) return;
+    const i = Number(el.getAttribute('data-i'));
+    const block = _model.content[i];
+    if (!block || !TEXTISH.has(block.type)) return;
+
+    const cb = e.clipboardData || window.clipboardData;
+    const raw = cb ? cb.getData('text/plain') : '';
+    const text = typeof __normalizePastedText === 'function'
+      ? __normalizePastedText(raw)
+      : String(raw == null ? '' : raw).trim();
+    if (!text) return;
+
+    const r = caretIn(el);
+    if (!r) return;
+    e.preventDefault();
+
+    const blankSeparated = /\n\s*\n/.test(text);
+    const paras = (blankSeparated ? text.split(/\n{2,}/) : text.split(/\n/))
+      .map((x) => x.replace(/\s*\n\s*/g, ' ').trim())
+      .filter(Boolean);
+    if (!paras.length) return;
+
+    // One paragraph is an ordinary insert: execCommand keeps the browser's own
+    // undo stack intact, which a model rewrite would throw away.
+    if (paras.length === 1) {
+      document.execCommand('insertText', false, paras[0]);
+      return;
+    }
+
+    const parts = splitRanges(el, r);
+    const headHtml = fragToHtml(parts[0].cloneContents());
+    const tailHtml = fragToHtml(parts[1].cloneContents());
+
+    block.content = headHtml + esc(paras[0]);
+    const rest = paras.slice(1);
+    const made = rest.map((text2, k) => {
+      const nb = newBlock(block.type === 'header' ? 'text' : block.type);
+      nb.content = esc(text2) + (k === rest.length - 1 ? tailHtml : '');
+      return nb;
+    });
+    _model.content.splice.apply(_model.content, [i + 1, 0].concat(made));
+    render(); commit();
+    focusBlockAt(i + made.length, rest[rest.length - 1].length);
+  });
+
   // ── clicks: structural actions ────────────────────────────────────────────
   canvas.addEventListener('click', (e) => {
     const act = e.target.closest('[data-wys-act]');
