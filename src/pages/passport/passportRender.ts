@@ -1,6 +1,7 @@
 import QRCode from 'qrcode';
 import { generateSignatureString } from '../../lib/passportCode';
 import { buildMRZ } from '../../lib/mrz';
+import type { PassportStampSheetDefinition } from './passportPages';
 
 export interface PassportFields {
   surname: string;
@@ -187,6 +188,33 @@ export async function renderPassportPNG(
   tint.addColorStop(1, 'rgba(74,120,120,0.22)');
   ctx.save(); ctx.globalCompositeOperation = 'multiply'; ctx.fillStyle = tint; ctx.fillRect(0, 0, W, H); ctx.restore();
 
+  // EPRIS security mesh: fine registration grid, wave contours and microprint.
+  // These are decorative editorial marks, not replicas of government features.
+  ctx.save();
+  ctx.globalCompositeOperation = 'multiply';
+  ctx.strokeStyle = '#287983'; ctx.lineWidth = 0.7; ctx.globalAlpha = 0.14;
+  for (let x = 0; x <= W; x += 56) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+  for (let y = 0; y <= H; y += 56) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+  ctx.globalAlpha = 0.18;
+  for (let i = 0; i < 9; i++) {
+    const y = 360 + i * 78, amp = 45 + i * 5;
+    ctx.beginPath();
+    ctx.moveTo(-30, y);
+    ctx.bezierCurveTo(225, y - amp, 350, y + amp, 600, y);
+    ctx.bezierCurveTo(850, y - amp, 980, y + amp, W + 30, y);
+    ctx.stroke();
+  }
+  ctx.fillStyle = '#4a1728'; ctx.globalAlpha = 0.38;
+  ctx.font = '10px monospace'; ctx.letterSpacing = '2px';
+  ctx.fillText('SPECIMEN · EPRIS CULTURAL SYSTEM · EDITORIAL DOCUMENT · NOT VALID FOR TRAVEL', 64, 30);
+  ctx.save(); ctx.translate(24, H - 72); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('EPRIS JOURNAL · DESIGN · ART · ARCHITECTURE · CULTURE · 01', 0, 0); ctx.restore();
+  for (let i = 0; i < 22; i++) {
+    ctx.globalAlpha = i % 4 === 0 ? 0.12 : 0.42;
+    ctx.beginPath(); ctx.arc(W - 25 - (i % 3) * 5, H * 0.11 + i * 9, 1.5, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.restore();
+
   // Watermark
   ctx.save();
   ctx.globalAlpha = 0.042; ctx.fillStyle = C.burgundy;
@@ -363,6 +391,99 @@ export async function renderPassportPNG(
     ctx.fillText(mrz[0][i] ?? '', padX + i * cW, mrzY);
     ctx.fillText(mrz[1][i] ?? '', padX + i * cW, mrzY + 32);
   }
+
+  return canvas.toDataURL('image/jpeg', 0.94);
+}
+
+const STAMP_CANVAS_ACCENTS = {
+  teal: { line: '#267681', wash: '#a9d7d6', wash2: '#e6d58d' },
+  gold: { line: '#96713d', wash: '#e3ce91', wash2: '#a9d1d1' },
+  rose: { line: '#9a4f68', wash: '#dfb0bc', wash2: '#a5d0d2' },
+} as const;
+
+/** Render one two-page blank stamp sheet for the print-ready passport PDF. */
+export async function renderStampPagePNG(sheet: PassportStampSheetDefinition): Promise<string> {
+  const canvas = document.createElement('canvas');
+  canvas.width = W; canvas.height = H;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) throw new Error('canvas unsupported');
+  const colors = STAMP_CANVAS_ACCENTS[sheet.accent];
+
+  ctx.fillStyle = '#eee8df'; ctx.fillRect(0, 0, W, H);
+  let identityArt: HTMLImageElement | null = null;
+  try { identityArt = await loadImage(IDENTITY_ART_SRC); } catch { /* vector fallback below */ }
+  if (identityArt) {
+    ctx.save(); ctx.globalAlpha = 0.3; ctx.globalCompositeOperation = 'multiply';
+    drawCover(ctx, identityArt, 0, 0, W, H, 0.48); ctx.restore();
+  }
+
+  const wash = ctx.createLinearGradient(0, 0, W, H);
+  wash.addColorStop(0, colors.wash);
+  wash.addColorStop(0.48, 'rgba(249,244,231,.28)');
+  wash.addColorStop(1, colors.wash2);
+  ctx.save(); ctx.globalCompositeOperation = 'multiply'; ctx.globalAlpha = 0.32; ctx.fillStyle = wash; ctx.fillRect(0, 0, W, H); ctx.restore();
+
+  // Fine registration grid + flowing contours.
+  ctx.save(); ctx.globalCompositeOperation = 'multiply'; ctx.strokeStyle = colors.line; ctx.lineWidth = 0.7; ctx.globalAlpha = 0.16;
+  for (let x = 0; x <= W; x += 56) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+  for (let y = 0; y <= H; y += 56) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+  ctx.globalAlpha = 0.22;
+  for (let i = 0; i < 12; i++) {
+    ctx.beginPath();
+    ctx.ellipse(W * 0.5, H * 0.5, W * (0.2 + i * 0.025), H * (0.13 + i * 0.018), (i % 2 ? 14 : -14) * Math.PI / 180, 0, Math.PI * 2);
+    ctx.stroke();
+  }
+  for (let i = 0; i < 9; i++) {
+    const y = 315 + i * 105, amp = 45 + i * 4;
+    ctx.beginPath(); ctx.moveTo(-20, y);
+    ctx.bezierCurveTo(240, y - amp, 365, y + amp, 600, y);
+    ctx.bezierCurveTo(835, y - amp, 960, y + amp, W + 20, y); ctx.stroke();
+  }
+  ctx.restore();
+
+  // Watermark, microprint, outer registration frame.
+  ctx.save(); ctx.fillStyle = C.burgundy; ctx.globalAlpha = 0.045; ctx.textAlign = 'center';
+  ctx.font = '700 235px "Playfair Display", serif'; ctx.translate(W / 2, H / 2); ctx.rotate(-14 * Math.PI / 180); ctx.fillText('EPRIS', 0, 0); ctx.restore();
+  ctx.save(); ctx.strokeStyle = C.burgundy; ctx.globalAlpha = 0.62; ctx.lineWidth = 2; ctx.strokeRect(17, 17, W - 34, H - 34); ctx.restore();
+  ctx.save(); ctx.fillStyle = C.burgundy; ctx.globalAlpha = 0.44; ctx.font = '10px monospace';
+  ctx.fillText('EPRIS JOURNAL · CULTURAL MEMBERSHIP · EDITORIAL STAMP REGISTER', 58, 35);
+  ctx.textAlign = 'right'; ctx.fillText(`SHEET ${sheet.editionMark} · ${sheet.pageNumbers[0]}—${sheet.pageNumbers[1]}`, W - 58, 35); ctx.restore();
+
+  dottedLine(ctx, W * 0.025, W * 0.975, H * 0.5);
+  ctx.save(); ctx.strokeStyle = colors.line; ctx.globalAlpha = 0.28; ctx.lineWidth = 8;
+  const fold = ctx.createLinearGradient(W * 0.2, 0, W * 0.8, 0);
+  fold.addColorStop(0, 'transparent'); fold.addColorStop(0.5, colors.line); fold.addColorStop(1, 'transparent');
+  ctx.strokeStyle = fold; ctx.beginPath(); ctx.moveTo(W * 0.05, H * 0.5 + 5); ctx.lineTo(W * 0.95, H * 0.5 + 5); ctx.stroke(); ctx.restore();
+
+  const drawStampField = (x: number, y: number, w: number, h: number, label: string, align: CanvasTextAlign) => {
+    ctx.save(); ctx.strokeStyle = C.burgundy; ctx.globalAlpha = 0.24; ctx.lineWidth = 1.2; ctx.strokeRect(x, y, w, h);
+    ctx.beginPath(); ctx.ellipse(x + w / 2, y + h / 2, w * 0.38, h * 0.33, 0, 0, Math.PI * 2); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x + w * 0.08, y + h * 0.34); ctx.lineTo(x + w * 0.92, y + h * 0.66); ctx.stroke();
+    ctx.fillStyle = C.burgundy; ctx.globalAlpha = 0.42; ctx.textAlign = align; ctx.font = '10px monospace';
+    ctx.fillText(label.toUpperCase(), align === 'left' ? x + 18 : x + w - 18, y + h - 18); ctx.restore();
+  };
+
+  sheet.pageNumbers.forEach((page, side) => {
+    const top = side === 0 ? H * 0.035 : H * 0.522;
+    const height = H * 0.44;
+    const pad = W * 0.048;
+
+    ctx.save(); ctx.fillStyle = C.burgundy; ctx.globalAlpha = 0.55; ctx.font = '10px monospace'; ctx.fillText(`EPRIS JOURNAL · STAMP REGISTER ${sheet.editionMark}`, pad, top + 12); ctx.restore();
+    ctx.fillStyle = C.burgundyDark; ctx.font = '600 27px "Playfair Display", serif'; ctx.fillText(sheet.title, pad, top + 48);
+    ctx.save(); ctx.fillStyle = C.burgundy; ctx.globalAlpha = 0.48; ctx.font = '10px monospace'; ctx.fillText(sheet.subtitle.toUpperCase(), pad, top + 69); ctx.restore();
+    ctx.save(); ctx.fillStyle = C.ink; ctx.globalAlpha = 0.66; ctx.textAlign = 'right'; ctx.font = '400 44px "PT Sans", sans-serif'; ctx.fillText(page, W - pad - 45, top + 48); ctx.restore();
+    ctx.save(); ctx.fillStyle = colors.line; ctx.globalAlpha = 0.84; roundRect(ctx, W - pad - 32, top + 13, 32, 32, 4); ctx.fill();
+    ctx.fillStyle = C.cream; ctx.globalAlpha = 1; ctx.textAlign = 'center'; ctx.font = '700 12px monospace'; ctx.fillText(sheet.editionMark, W - pad - 16, top + 34); ctx.restore();
+
+    ctx.save(); ctx.strokeStyle = C.burgundy; ctx.globalAlpha = 0.28; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(pad, top + 82); ctx.lineTo(W - pad, top + 82); ctx.stroke(); ctx.restore();
+    const fieldsY = top + 100, fieldsH = height - 125, gap = 18;
+    const leftW = (W - pad * 2 - gap) * 0.56;
+    const rightW = W - pad * 2 - gap - leftW;
+    drawStampField(pad, fieldsY, leftW, fieldsH, 'Reserved for editorial mark', side === 0 ? 'left' : 'right');
+    drawStampField(pad + leftW + gap, fieldsY, rightW, (fieldsH - gap) / 2, 'Date · Place', 'right');
+    drawStampField(pad + leftW + gap, fieldsY + (fieldsH + gap) / 2, rightW, (fieldsH - gap) / 2, 'Signature · Note', 'right');
+    ctx.save(); ctx.fillStyle = C.burgundy; ctx.globalAlpha = 0.4; ctx.font = '9px monospace'; ctx.fillText('BLANK BY DESIGN · FUTURE STAMP FIELD', pad, top + height); ctx.textAlign = 'right'; ctx.fillText(`${sheet.key.toUpperCase()} / ${page}`, W - pad, top + height); ctx.restore();
+  });
 
   return canvas.toDataURL('image/jpeg', 0.94);
 }
