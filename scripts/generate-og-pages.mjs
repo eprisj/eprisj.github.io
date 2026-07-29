@@ -106,7 +106,7 @@ for (const article of content.articles) {
 console.log(`\nGenerated OG pages for ${content.articles.length} articles.`);
 
 // ── SPA deep-link routes ─────────────────────────────────────────────────────
-// GitHub Pages has no SPA fallback: a direct hit on /studio, /materie, etc.
+// GitHub Pages has no SPA fallback: a direct hit on /studio, /issue, etc.
 // returns its own 404. We emit a static <route>/index.html (a copy of the app
 // shell) for every known tab route so deep-links resolve with HTTP 200, and a
 // catch-all 404.html so any other path still boots the SPA (client router then
@@ -116,7 +116,6 @@ const ROUTES = {
   reviews: 'Reviews',
   about: 'About',
   manifest: 'Manifesto',
-  materie: 'Materie',
   studio: 'Studio',
   issue: 'Issue',
   design: 'Design',
@@ -131,7 +130,6 @@ const ROUTE_DESCRIPTIONS = {
   reviews: 'Independent EPRIS reviews of exhibitions, books, design, architecture and contemporary visual culture.',
   about: 'Meet EPRIS, an independent international journal and cultural platform for art, architecture and interior design.',
   manifest: 'The EPRIS declaration on meaningful modernity, cultural accessibility and independent editorial practice.',
-  materie: 'EPRIS Materie explores materials, craft and the physical intelligence of contemporary design.',
   studio: 'Editorial, visual and cultural projects by EPRIS Studio.',
   issue: 'Read the current digital issue of EPRIS Journal.',
   design: 'A curated selection of contemporary furniture, objects and interior design by EPRIS.',
