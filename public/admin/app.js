@@ -12777,7 +12777,9 @@ async function flushModernEditor() {
     h += `<h1 class="wys-title wys-ce" contenteditable="true" data-wys="title-plain" data-empty="Заголовок обзора…">${esc(r.title || '')}</h1>`;
     h += `<p class="wys-excerpt wys-ce" contenteditable="true" data-wys="subject-plain" data-empty="Что рецензируем — название заведения/продукта/книги…">${esc(r.subject || '')}</p>`;
     h += `<blockquote class="wys-review-verdict wys-ce" contenteditable="true" data-wys="verdict-plain" data-empty="Вердикт одной фразой (необязательно)…">${esc(r.verdict || '')}</blockquote>`;
-    h += `<div class="wys-p wys-ce" contenteditable="true" data-wys="content-plain" data-empty="Текст обзора…" style="margin:16px 0">${esc(r.content || '')}</div>`;
+    // esc() alone would put the newlines straight into the markup, where HTML
+    // collapses them — the break would vanish the moment the canvas re-rendered.
+    h += `<div class="wys-p wys-ce" contenteditable="true" data-wys="content-plain" data-empty="Текст обзора…" style="margin:16px 0">${esc(r.content || '').replace(/\n/g, '<br>')}</div>`;
 
     h += '<div class="wys-review-proscons">';
     h += renderChipList('pros', r.pros || [], 'Плюсы', '+');
@@ -12815,11 +12817,39 @@ async function flushModernEditor() {
   }
 
   // ── edits ────────────────────────────────────────────────────────────────
+  /* A review body is a single plain-text field, but it is a paragraph or three
+     of prose, so it has to be able to hold a line break. textContent cannot:
+     it glues <div>a</div><div>b</div> into "ab", which is exactly what pressing
+     Enter here produced — two paragraphs run together with not even a space
+     between them. Walk the node tree instead and turn <br>, and the edge of
+     every block the browser invented, into a real newline.
+
+     Only the body reads this way. A title or a date is one line by definition
+     and should keep collapsing anything pasted into it. */
+  function plainWithBreaks(el) {
+    let out = '';
+    const walk = (node) => {
+      node.childNodes.forEach((ch) => {
+        if (ch.nodeType === 3) { out += ch.textContent; return; }
+        if (ch.nodeType !== 1) return;
+        if (ch.tagName === 'BR') { out += '\n'; return; }
+        const isBlock = /^(DIV|P|LI|BLOCKQUOTE)$/.test(ch.tagName);
+        if (isBlock && out && !/\n$/.test(out)) out += '\n';
+        walk(ch);
+        if (isBlock && out && !/\n$/.test(out)) out += '\n';
+      });
+    };
+    walk(el);
+    return out.replace(/\n{3,}/g, '\n\n').replace(/[ \t]+\n/g, '\n').replace(/\s+$/, '');
+  }
+
   canvas.addEventListener('input', (e) => {
     const el = e.target.closest('[data-wys]');
     if (!el || !_model) return;
     const field = el.getAttribute('data-wys');
-    const val = el.tagName === 'INPUT' ? el.value : el.textContent;
+    const val = el.tagName === 'INPUT'
+      ? el.value
+      : (field === 'content-plain' ? plainWithBreaks(el) : el.textContent);
 
     if (field === 'title-plain') _model.title = val;
     else if (field === 'subject-plain') _model.subject = val;
@@ -12860,6 +12890,25 @@ async function flushModernEditor() {
   });
   document.querySelector('[data-tab="content"]')?.addEventListener('click', () => setTimeout(reload, 200));
   setTimeout(reload, 900);
+  /* Paste into the review body as plain text, keeping its line breaks. The
+     canvas has no paste guard of its own (the shared one is bound to the
+     classic block editor), so a paragraph copied out of a document arrived
+     with its source markup attached — fonts, colours and all — which the
+     reader above would then flatten anyway, minus the breaks. */
+  canvas.addEventListener('paste', (e) => {
+    if (!_model) return;
+    const el = e.target.closest('[data-wys="content-plain"]');
+    if (!el) return;
+    const cb = e.clipboardData || window.clipboardData;
+    const raw = cb ? cb.getData('text/plain') : '';
+    const text = typeof __normalizePastedText === 'function'
+      ? __normalizePastedText(raw)
+      : String(raw == null ? '' : raw).trim();
+    if (!text) return;
+    e.preventDefault();
+    document.execCommand('insertHTML', false, esc(text).replace(/\n/g, '<br>'));
+  });
+
   window._revReload = reload;
 })();
 

@@ -2266,7 +2266,23 @@ function ReviewsSection({ reviews, t }: { reviews: Review[]; t: (key: string) =>
                     {review.verdict}
                   </p>
                 )}
-                <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{review.content}</p>
+                {/* A review body is one plain-text field, and it used to be
+                    printed as one <p> — so a line break the editor let you type
+                    collapsed into a space here and the review ran on as a wall.
+                    Split it, and keep rendering a single paragraph when there
+                    are no breaks, which is what every review has today. */}
+                {String(review.content || '')
+                  .split(/\n{2,}|\n/)
+                  .map((para) => para.trim())
+                  .filter(Boolean)
+                  .map((para, pi) => (
+                    <p
+                      key={pi}
+                      className={`font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]${pi ? ' mt-3' : ''}`}
+                    >
+                      {para}
+                    </p>
+                  ))}
                 <ProsCons pros={review.pros} cons={review.cons} t={t} />
                 <div className="mt-auto pt-6 flex items-center justify-between gap-3">
                   {review.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{review.meta}</span>}
