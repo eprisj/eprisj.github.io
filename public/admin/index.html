@@ -12,7 +12,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=4.25" />
+    <link rel="stylesheet" href="./styles.css?v=4.26" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
@@ -90,6 +90,10 @@
             <button class="tab-btn" data-tab="homepage" type="button">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/><circle cx="15" cy="15" r="2.5"/></svg>
               Главная / Галерея
+            </button>
+            <button class="tab-btn" data-tab="visibility" type="button">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+              Видимость
             </button>
             <button class="tab-btn active" data-tab="content" type="button">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
@@ -288,6 +292,61 @@
             </div>
           </section>
 
+          <!-- ===== PUBLIC VISIBILITY ===== -->
+          <section class="tab-panel" id="tab-visibility">
+            <div class="visibility-admin">
+              <div class="visibility-hero card card-highlight">
+                <div>
+                  <span class="visibility-kicker">Публичный сайт</span>
+                  <h2 class="card-title">Управление видимостью</h2>
+                  <p class="card-desc">Скрывайте разделы из меню или полностью закрывайте прямую страницу. Ни одна запись не удаляется — её можно вернуть одним переключателем.</p>
+                </div>
+                <div class="visibility-hero-actions">
+                  <a class="btn" href="../" target="_blank" rel="noreferrer">Открыть сайт ↗</a>
+                  <button id="visibilityPublishBtn" class="btn btn-primary" type="button">Опубликовать видимость</button>
+                </div>
+              </div>
+
+              <div id="visibilitySummary" class="visibility-summary" aria-live="polite"></div>
+
+              <div class="visibility-grid">
+                <section class="card visibility-card" aria-labelledby="visibilitySectionsTitle">
+                  <div class="visibility-card-head">
+                    <div>
+                      <h3 id="visibilitySectionsTitle" class="card-title">Разделы сайта</h3>
+                      <p class="card-desc">«В меню» управляет навигацией. «Страница» управляет прямой ссылкой.</p>
+                    </div>
+                  </div>
+                  <div id="visibilitySections" class="visibility-section-list"></div>
+                </section>
+
+                <section class="card visibility-card" aria-labelledby="visibilityEntriesTitle">
+                  <div class="visibility-card-head visibility-card-head--stack">
+                    <div>
+                      <h3 id="visibilityEntriesTitle" class="card-title">Отдельные материалы</h3>
+                      <p class="card-desc">Центральный реестр для статей, карточек главной, Reviews, команды и проектов Studio.</p>
+                    </div>
+                    <div id="visibilityEntityTabs" class="visibility-entity-tabs" role="tablist" aria-label="Тип материала"></div>
+                  </div>
+                  <div class="visibility-tools">
+                    <label class="visibility-search-label" for="visibilitySearch">
+                      <span class="sr-only">Поиск материалов</span>
+                      <input id="visibilitySearch" type="search" placeholder="Найти по названию…" autocomplete="off" />
+                    </label>
+                    <button id="visibilityShowAllBtn" class="btn btn-sm" type="button">Показать все</button>
+                    <button id="visibilityHideAllBtn" class="btn btn-sm" type="button">Скрыть все</button>
+                  </div>
+                  <div id="visibilityEntityList" class="visibility-entity-list"></div>
+                </section>
+              </div>
+
+              <div class="visibility-note" role="note">
+                <strong>Важно:</strong> переключатели сначала меняют локальный черновик. Нажмите «Опубликовать видимость», чтобы изменения появились на сайте.
+                <span id="visibilityStatus">Нет несохранённых изменений</span>
+              </div>
+            </div>
+          </section>
+
           <!-- ===== CONTENT ===== -->
           <section class="tab-panel active" id="tab-content">
             <div id="overviewStrip" class="overview-strip" style="display:none"></div>
@@ -300,7 +359,6 @@
                       <option value="articles">Статьи</option>
                       <option value="reviews">Обзоры</option>
                       <option value="items">Галерея</option>
-                      <option value="libraryItems">Библиотека</option>
                     </select>
                   </label>
                   <label class="toolbar-field">
@@ -1353,7 +1411,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.24" type="module"></script>
+    <script src="./app.js?v=4.26" type="module"></script>
     <script>
       // Tab switching + page title update
       document.addEventListener('DOMContentLoaded', function () {
@@ -1365,6 +1423,7 @@
           issues: 'Выпуски',
           studio: 'Студия',
           homepage: 'Главная / Галерея',
+          visibility: 'Видимость сайта',
           authors: 'About / Команда',
           upload: 'Загрузка фото',
           translations: 'Переводы',

@@ -212,8 +212,25 @@ export interface SiteTheme {
   fontBody?: string;     // body font family name (Google Font)
 }
 
+export type VisibilitySectionKey = 'gallery' | 'articles' | 'reviews' | 'about' | 'manifest' | 'issue' | 'design' | 'studio' | 'radio' | 'podcasts';
+export type VisibilityEntityKey = 'articles' | 'items' | 'reviews' | 'authors' | 'studioProjects';
+
+export interface SectionVisibility {
+  /** Whether the route itself can be opened. */
+  page?: boolean;
+  /** Whether the route is listed in the public navigation. */
+  navigation?: boolean;
+}
+
+export interface SiteVisibility {
+  sections?: Partial<Record<VisibilitySectionKey, SectionVisibility>>;
+  /** Record ids are stringified so numeric articles and string author ids share one stable schema. */
+  entities?: Partial<Record<VisibilityEntityKey, Record<string, boolean>>>;
+}
+
 export interface SiteContent {
   theme?: SiteTheme;
+  visibility?: SiteVisibility;
   translations: Record<string, Record<string, string>>;
   items: Item[];
   articles: Article[];
@@ -291,6 +308,42 @@ function src(): SiteContent {
 }
 function isPreview(): boolean {
   return previewContent !== null;
+}
+
+const DEFAULT_SECTION_VISIBILITY: Record<VisibilitySectionKey, Required<SectionVisibility>> = {
+  gallery:   { page: true, navigation: true },
+  articles:  { page: true, navigation: true },
+  reviews:   { page: true, navigation: true },
+  about:     { page: true, navigation: true },
+  manifest:  { page: true, navigation: false },
+  issue:     { page: true, navigation: true },
+  design:    { page: true, navigation: true },
+  studio:    { page: true, navigation: false },
+  radio:     { page: true, navigation: true },
+  podcasts:  { page: true, navigation: true },
+};
+
+export function getSectionVisibility(key: VisibilitySectionKey): Required<SectionVisibility> {
+  const fallback = DEFAULT_SECTION_VISIBILITY[key];
+  const configured = src().visibility?.sections?.[key];
+  return {
+    page: typeof configured?.page === 'boolean' ? configured.page : fallback.page,
+    navigation: typeof configured?.navigation === 'boolean' ? configured.navigation : fallback.navigation,
+  };
+}
+
+export function isSectionEnabled(key: VisibilitySectionKey): boolean {
+  return getSectionVisibility(key).page;
+}
+
+export function isSectionInNavigation(key: VisibilitySectionKey): boolean {
+  const state = getSectionVisibility(key);
+  return state.page && state.navigation;
+}
+
+function isEntityVisible(collection: VisibilityEntityKey, id: string | number): boolean {
+  if (isPreview()) return true;
+  return src().visibility?.entities?.[collection]?.[String(id)] !== false;
 }
 
 // Admin "add new" seeds every collection with a blueprint stub whose fields are
@@ -554,8 +607,8 @@ export function getContentForLanguage(lang: string): LanguageContent {
   const items = mergeLocalizedItems(bucket.items, liveBase(c.items));
   const libraryItems = mergeLocalizedArray(bucket.libraryItems, liveBase(c.libraryItems));
 
-  const liveArticles = isPreview() ? articles : articles.filter(isEntityLive);
-  const liveItems = isPreview() ? items : items.filter(isEntityLive);
+  const liveArticles = isPreview() ? articles : articles.filter((entry) => isEntityLive(entry) && isEntityVisible('articles', entry.id));
+  const liveItems = isPreview() ? items : items.filter((entry) => isEntityLive(entry) && isEntityVisible('items', entry.id));
 
   // The homepage Gallery is a hand-curated collection, separate from Articles
   // — publishing a new article never added it there, so it silently never
@@ -579,14 +632,14 @@ export function getContentForLanguage(lang: string): LanguageContent {
   return {
     items: [...liveItems, ...articleGalleryItems],
     articles: liveArticles,
-    reviews: isPreview() ? reviews : reviews.filter(isEntityLive),
+    reviews: isPreview() ? reviews : reviews.filter((entry) => isEntityLive(entry) && isEntityVisible('reviews', entry.id)),
     libraryItems: isPreview() ? libraryItems : libraryItems.filter(isEntityLive)
   };
 }
 
 /** Live-aware authors list (preview → live → bundled). Only active authors are returned. */
 export function getAuthors(): Author[] {
-  return (src().authors || []).filter((a) => a && a.active !== false);
+  return (src().authors || []).filter((a) => a && a.active !== false && isEntityVisible('authors', a.id));
 }
 
 /**
@@ -722,7 +775,12 @@ const DEFAULT_STUDIO: Studio = {
  * Returns the design studio profile (bio/services/portfolio shown on /studio).
  */
 export function getStudio(): Studio {
-  return src().studio || DEFAULT_STUDIO;
+  const studio = src().studio || DEFAULT_STUDIO;
+  if (isPreview()) return studio;
+  return {
+    ...studio,
+    projects: (studio.projects || []).filter((project) => isEntityVisible('studioProjects', project.id)),
+  };
 }
 
 /**
