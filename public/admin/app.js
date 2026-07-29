@@ -5292,6 +5292,9 @@ function renderBlockBody(block, index) {
   if (t === 'image') {
     const src = typeof c === 'string' ? c : '';
     const cap = block.caption || '';
+    const alt = block.alt || '';
+    const credit = block.credit || '';
+    const sourceUrl = block.sourceUrl || '';
     const previewUrl = resolveBlockImageUrl(src);
     return `
       <div><span class="block-field-label">Источник (URL или seed)</span>
@@ -5304,19 +5307,26 @@ function renderBlockBody(block, index) {
         ${previewUrl ? '<img src="' + escapeHtml(previewUrl) + '" referrerpolicy="no-referrer" onerror="this.style.display=\'none\'" />' : '<div class="block-image-preview-empty">Нет превью</div>'}
       </div>
       <div><span class="block-field-label">Подпись</span>
-      <input data-block-field="caption" value="${escapeHtml(cap)}" placeholder="Подпись к фото" /></div>`;
+      <input data-block-field="caption" value="${escapeHtml(cap)}" placeholder="Подпись к фото" /></div>
+      <div class="block-media-meta-grid">
+        <label><span class="block-field-label">ALT-текст</span><input data-block-field="alt" value="${escapeHtml(alt)}" placeholder="Что изображено" /></label>
+        <label><span class="block-field-label">Автор / credit</span><input data-block-field="credit" value="${escapeHtml(credit)}" placeholder="Имя автора или студия" /></label>
+        <label class="full"><span class="block-field-label">Источник / права</span><input data-block-field="sourceUrl" value="${escapeHtml(sourceUrl)}" placeholder="https://…" /></label>
+      </div>`;
   }
 
   if (t === 'gallery') {
     const items = Array.isArray(c) ? c : [];
     const cap = block.caption || '';
+    const alts = Array.isArray(block.alts) ? block.alts : [];
     let html = '<span class="block-field-label">Элементы галереи (URL или seed)</span><div class="block-gallery-items" data-block-gallery="' + index + '">';
     items.forEach((item, gi) => {
-      html += `<div class="block-gallery-item" style="display:flex;gap:6px;align-items:center;width:100%;margin-bottom:4px;">
+      html += `<div class="block-gallery-item" style="display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:6px;align-items:center;width:100%;margin-bottom:8px;">
         <input data-gallery-item="${gi}" id="block-gallery-input-${index}-${gi}" value="${escapeHtml(item)}" placeholder="URL или seed" style="flex:1" />
         <button id="block-gallery-upload-btn-${index}-${gi}" class="btn btn-sm" type="button" title="Загрузить с ПК" onclick="triggerBlockGalleryUpload(${index}, ${gi})">📁</button>
         <input id="block-gallery-file-${index}-${gi}" type="file" accept="image/*" onchange="handleBlockGalleryUpload(${index}, ${gi})" hidden />
         <button type="button" class="block-action-btn danger" onclick="removeGalleryItem(${index}, ${gi})" title="Удалить"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+        <input data-gallery-alt="${gi}" value="${escapeHtml(alts[gi] || '')}" placeholder="ALT-текст / подпись к этому фото" style="grid-column:1 / -1" />
       </div>`;
     });
     html += '</div><button type="button" class="add-block-btn" onclick="addGalleryItem(' + index + ')">+ элемент</button>';
@@ -5346,11 +5356,20 @@ function renderBlockBody(block, index) {
   if (t === 'video') {
     const src = typeof c === 'string' ? c : '';
     const cap = block.caption || '';
+    const poster = block.poster || '';
+    const credit = block.credit || '';
+    const sourceUrl = block.sourceUrl || '';
     return `
-      <div><span class="block-field-label">Ссылка на YouTube</span>
-      <input data-block-field="content" value="${escapeHtml(src)}" placeholder="https://youtube.com/watch?v=..." /></div>
+      <div><span class="block-field-label">Ссылка на видео</span>
+      <input data-block-field="content" value="${escapeHtml(src)}" placeholder="YouTube, Vimeo или прямой .mp4/.webm URL" /></div>
+      <div><span class="block-field-label">Постер (необязательно)</span>
+      <input data-block-field="poster" value="${escapeHtml(poster)}" placeholder="https://…/cover.jpg" /></div>
       <div><span class="block-field-label">Подпись</span>
-      <input data-block-field="caption" value="${escapeHtml(cap)}" placeholder="Описание видео" /></div>`;
+      <input data-block-field="caption" value="${escapeHtml(cap)}" placeholder="Описание видео" /></div>
+      <div class="block-media-meta-grid">
+        <label><span class="block-field-label">Автор / credit</span><input data-block-field="credit" value="${escapeHtml(credit)}" placeholder="Автор или студия" /></label>
+        <label><span class="block-field-label">Источник / права</span><input data-block-field="sourceUrl" value="${escapeHtml(sourceUrl)}" placeholder="https://…" /></label>
+      </div>`;
   }
 
   if (t === 'link') {
@@ -5875,19 +5894,31 @@ function buildBlockFromDom(type, body) {
   if (type === 'image') {
     const src = body.querySelector('[data-block-field="content"]');
     const cap = body.querySelector('[data-block-field="caption"]');
+    const alt = body.querySelector('[data-block-field="alt"]');
+    const credit = body.querySelector('[data-block-field="credit"]');
+    const sourceUrl = body.querySelector('[data-block-field="sourceUrl"]');
     const block = { type: 'image', content: src ? src.value.trim() : '' };
     if (cap && cap.value.trim()) block.caption = cap.value.trim();
+    if (alt && alt.value.trim()) block.alt = alt.value.trim();
+    if (credit && credit.value.trim()) block.credit = credit.value.trim();
+    if (sourceUrl && sourceUrl.value.trim()) block.sourceUrl = sourceUrl.value.trim();
     return block;
   }
 
   if (type === 'gallery') {
     const items = [];
+    const alts = [];
     body.querySelectorAll('[data-gallery-item]').forEach((inp) => {
-      if (inp.value.trim()) items.push(inp.value.trim());
+      if (inp.value.trim()) {
+        items.push(inp.value.trim());
+        const alt = body.querySelector('[data-gallery-alt="' + inp.getAttribute('data-gallery-item') + '"]');
+        alts.push(alt && alt.value.trim() ? alt.value.trim() : '');
+      }
     });
     const cap = body.querySelector('[data-block-field="caption"]');
     const block = { type: 'gallery', content: items };
     if (cap && cap.value.trim()) block.caption = cap.value.trim();
+    if (alts.some(Boolean)) block.alts = alts;
     return block;
   }
 
@@ -5896,6 +5927,20 @@ function buildBlockFromDom(type, body) {
     const cap = body.querySelector('[data-block-field="caption"]');
     const block = { type: 'audio', content: src ? src.value.trim() : '' };
     if (cap && cap.value.trim()) block.caption = cap.value.trim();
+    return block;
+  }
+
+  if (type === 'video') {
+    const src = body.querySelector('[data-block-field="content"]');
+    const cap = body.querySelector('[data-block-field="caption"]');
+    const poster = body.querySelector('[data-block-field="poster"]');
+    const credit = body.querySelector('[data-block-field="credit"]');
+    const sourceUrl = body.querySelector('[data-block-field="sourceUrl"]');
+    const block = { type: 'video', content: src ? src.value.trim() : '' };
+    if (cap && cap.value.trim()) block.caption = cap.value.trim();
+    if (poster && poster.value.trim()) block.poster = poster.value.trim();
+    if (credit && credit.value.trim()) block.credit = credit.value.trim();
+    if (sourceUrl && sourceUrl.value.trim()) block.sourceUrl = sourceUrl.value.trim();
     return block;
   }
 
@@ -10661,8 +10706,18 @@ class EprisBlockTool {
     } else if (t === 'audio' || t === 'video') {
       this.fields.content = this._input(b.content || '');
       this.fields.caption = this._input(b.caption || '');
-      body.appendChild(this._mkRow('URL', this.fields.content));
+      body.appendChild(this._mkRow(t === 'video' ? 'URL видео (YouTube, Vimeo или .mp4/.webm)' : 'URL', this.fields.content));
+      if (t === 'video') {
+        this.fields.poster = this._input(b.poster || '');
+        this.fields.credit = this._input(b.credit || '');
+        this.fields.sourceUrl = this._input(b.sourceUrl || '');
+        body.appendChild(this._mkRow('Постер (необязательно)', this.fields.poster));
+      }
       body.appendChild(this._mkRow('Подпись', this.fields.caption));
+      if (t === 'video') {
+        body.appendChild(this._mkRow('Автор / credit', this.fields.credit));
+        body.appendChild(this._mkRow('Источник / права', this.fields.sourceUrl));
+      }
     } else if (t === 'poll') {
       const q = b.content && b.content.question ? b.content.question : '';
       this.fields.question = this._input(q);
@@ -10700,7 +10755,16 @@ class EprisBlockTool {
     if (t === 'link') return { type: 'link', content: f.content ? f.content.value.trim() : '', url: f.url ? f.url.value.trim() : '' };
     if (t === 'gallery') { const o = { type: 'gallery', content: (f.content ? f.content.value : '').split('\n').map((s) => s.trim()).filter(Boolean) }; if (f.caption && f.caption.value.trim()) o.caption = f.caption.value.trim(); return o; }
     if (t === 'map') return { type: 'map', content: f.content ? f.content.value.trim() : '', coordinates: { lat: parseFloat(f.lat ? f.lat.value : '') || 0, lng: parseFloat(f.lng ? f.lng.value : '') || 0 } };
-    if (t === 'audio' || t === 'video') { const o = { type: t, content: f.content ? f.content.value.trim() : '' }; if (f.caption && f.caption.value.trim()) o.caption = f.caption.value.trim(); return o; }
+    if (t === 'audio' || t === 'video') {
+      const o = { type: t, content: f.content ? f.content.value.trim() : '' };
+      if (f.caption && f.caption.value.trim()) o.caption = f.caption.value.trim();
+      if (t === 'video') {
+        if (f.poster && f.poster.value.trim()) o.poster = f.poster.value.trim();
+        if (f.credit && f.credit.value.trim()) o.credit = f.credit.value.trim();
+        if (f.sourceUrl && f.sourceUrl.value.trim()) o.sourceUrl = f.sourceUrl.value.trim();
+      }
+      return o;
+    }
     if (t === 'poll') return { type: 'poll', content: { question: f.question ? f.question.value.trim() : '', options: (f.options || []).map((r) => ({ label: r.label.value.trim(), votes: parseInt(r.votes.value, 10) || 0 })).filter((o) => o.label) } };
     if (f.raw) { try { return JSON.parse(f.raw.value); } catch (e) { return this.block; } }
     return this.block;
@@ -10831,6 +10895,10 @@ async function flushModernEditor() {
   const FONTS_DISPLAY = ['Playfair Display', 'Cormorant Garamond', 'EB Garamond', 'Libre Baskerville', 'Lora', 'Fraunces', 'Spectral', 'Bodoni Moda', 'Cinzel', 'Crimson Pro', 'Cardo'];
   const FONTS_BODY = ['Iowan Old Style', 'Lora', 'EB Garamond', 'Spectral', 'Source Serif 4', 'PT Serif', 'Inter', 'Work Sans', 'Karla', 'Nunito Sans', 'Mulish', 'Crimson Pro'];
   const DEF = { accent: '#111111', gold: '#c9a690', bg: '#f5f0eb', bgImage: '', fontDisplay: 'Playfair Display', fontBody: 'Iowan Old Style' };
+  const SITE_DEF = {
+    brandName: 'EPRIS', footerTitle: 'EPRIS JOURNAL', footerDescription: '',
+    instagramUrl: '', contactEmail: '', seoTitle: '', seoDescription: '', seoKeywords: '', ogImage: ''
+  };
   const PRESETS = [
     { name: 'Классика', accent: '#111111', gold: '#c9a690', bg: '#f5f0eb', fontDisplay: 'Playfair Display', fontBody: 'Iowan Old Style' },
     { name: 'Светлая', accent: '#2b2b2b', gold: '#b08d57', bg: '#ffffff', fontDisplay: 'EB Garamond', fontBody: 'Inter' },
@@ -10854,6 +10922,28 @@ async function flushModernEditor() {
   }
   function fillSelect(sel, arr, val) { if (sel) sel.innerHTML = arr.map((f) => '<option value="' + f + '"' + (f === val ? ' selected' : '') + '>' + f + '</option>').join(''); }
   function readTheme() { try { const j = JSON.parse($('editor').value || '{}'); return Object.assign({}, DEF, j.theme || {}); } catch (e) { return Object.assign({}, DEF); } }
+  function readSite() { try { const j = JSON.parse($('editor').value || '{}'); return Object.assign({}, SITE_DEF, j.site || {}); } catch (e) { return Object.assign({}, SITE_DEF); } }
+  function setValue(id, value) { const el = $(id); if (el) el.value = value == null ? '' : String(value); }
+  function readSiteControls() {
+    const clip = (id, max) => String($(id)?.value || '').trim().slice(0, max);
+    return {
+      brandName: clip('apBrandName', 32) || SITE_DEF.brandName,
+      footerTitle: clip('apFooterTitle', 56) || SITE_DEF.footerTitle,
+      footerDescription: clip('apFooterDescription', 220),
+      instagramUrl: clip('apInstagramUrl', 500),
+      contactEmail: clip('apContactEmail', 160),
+      seoTitle: clip('apSeoTitle', 70),
+      seoDescription: clip('apSeoDescription', 165),
+      seoKeywords: clip('apSeoKeywords', 300),
+      ogImage: clip('apOgImage', 500),
+    };
+  }
+  function validateSite(site) {
+    for (const [label, value] of [['Instagram', site.instagramUrl], ['Изображение для предпросмотра', site.ogImage]]) {
+      if (value && !/^https?:\/\//i.test(value)) throw new Error(label + ': укажите полный URL, начинающийся с https://');
+    }
+    if (site.contactEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(site.contactEmail)) throw new Error('Проверьте редакционный e-mail.');
+  }
   function syncPreview() {
     const pv = $('apPreview'); if (!pv) return;
     const fd = $('apFontDisplay').value, fb = $('apFontBody').value;
@@ -10865,6 +10955,10 @@ async function flushModernEditor() {
     pv.style.setProperty('--pv-bgimage', bgImg ? 'url("' + bgImg + '")' : 'none');
     pv.style.setProperty('--pv-display', "'" + fd + "', serif");
     pv.style.setProperty('--pv-body', "'" + fb + "', serif");
+    const site = readSiteControls();
+    const previewBrand = $('apPreviewBrand'), previewTitle = $('apPreviewTitle');
+    if (previewBrand) previewBrand.textContent = site.brandName || SITE_DEF.brandName;
+    if (previewTitle) previewTitle.textContent = site.footerTitle || SITE_DEF.footerTitle;
   }
   function setPair(colorId, hexId, v) { if ($(colorId)) $(colorId).value = v; if ($(hexId)) $(hexId).value = v; }
   function applyThemeToControls(t) {
@@ -10878,12 +10972,22 @@ async function flushModernEditor() {
   }
   function loadControls() {
     const t = readTheme();
+    const site = readSite();
     setPair('apAccent', 'apAccentHex', t.accent);
     setPair('apGold', 'apGoldHex', t.gold);
     setPair('apBg', 'apBgHex', t.bg);
     if ($('apBgImage')) $('apBgImage').value = t.bgImage || '';
     fillSelect($('apFontDisplay'), FONTS_DISPLAY, t.fontDisplay);
     fillSelect($('apFontBody'), FONTS_BODY, t.fontBody);
+    setValue('apBrandName', site.brandName);
+    setValue('apFooterTitle', site.footerTitle);
+    setValue('apFooterDescription', site.footerDescription);
+    setValue('apInstagramUrl', site.instagramUrl);
+    setValue('apContactEmail', site.contactEmail);
+    setValue('apSeoTitle', site.seoTitle);
+    setValue('apSeoDescription', site.seoDescription);
+    setValue('apSeoKeywords', site.seoKeywords);
+    setValue('apOgImage', site.ogImage);
     renderPresets();
     syncPreview();
   }
@@ -10916,6 +11020,8 @@ async function flushModernEditor() {
   $('apFontDisplay')?.addEventListener('change', syncPreview);
   $('apFontBody')?.addEventListener('change', syncPreview);
   $('apBgImage')?.addEventListener('input', syncPreview);
+  ['apBrandName', 'apFooterTitle', 'apFooterDescription', 'apInstagramUrl', 'apContactEmail', 'apSeoTitle', 'apSeoDescription', 'apSeoKeywords', 'apOgImage']
+    .forEach((id) => $(id)?.addEventListener('input', syncPreview));
   $('apBgImageClear')?.addEventListener('click', () => { if ($('apBgImage')) $('apBgImage').value = ''; syncPreview(); });
   document.querySelector('[data-tab="appearance"]')?.addEventListener('click', () => setTimeout(loadControls, 60));
   $('apResetBtn')?.addEventListener('click', () => {
@@ -10930,17 +11036,20 @@ async function flushModernEditor() {
         bgImage: ($('apBgImage') && $('apBgImage').value.trim()) || '',
         fontDisplay: $('apFontDisplay').value, fontBody: $('apFontBody').value
       };
+      const site = readSiteControls();
+      validateSite(site);
       const j = JSON.parse($('editor').value);
       j.theme = theme;
+      j.site = site;
       if (typeof setEditorData === 'function') setEditorData(j); else $('editor').value = JSON.stringify(j, null, 2);
-      st.textContent = 'Публикую…'; st.style.color = 'var(--text-muted)';
+      st.textContent = 'Публикую сайт…'; st.style.color = 'var(--text-muted)';
       const pw = (typeof getAdminPassword === 'function') ? getAdminPassword() : '';
       if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
       const res = await fetch(CONTENT_API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw }, body: JSON.stringify(j) });
       const d = await res.json().catch(() => ({}));
       if (!res.ok || !d.ok) throw new Error(d.error || ('VPS вернул ' + res.status));
       if (typeof setLastSyncedSnapshotFromText === 'function') setLastSyncedSnapshotFromText($('editor').value);
-      st.textContent = '✓ Оформление опубликовано — сайт обновлён мгновенно'; st.style.color = 'var(--ok)';
+      st.textContent = '✓ Настройки сайта опубликованы — публичная версия обновлена'; st.style.color = 'var(--ok)';
     } catch (e) { st.textContent = '✗ ' + e.message; st.style.color = 'var(--danger)'; }
   });
 })();
@@ -11296,8 +11405,16 @@ async function flushModernEditor() {
         ${align !== 'full' ? `<span class="wys-fig-width-wrap"><input type="range" min="30" max="100" step="5" value="${width}" class="wys-fig-width" data-wys="img-width" data-i="${i}"><span class="wys-fig-width-val">${width}%</span></span>` : ''}
       </div>
       <figure class="wys-fig wys-fig-align-${align}"${align !== 'full' && width !== 100 ? ` style="width:${width}%"` : ''}>
-        <div class="wys-fig-img" data-wys-act="img" data-i="${i}">${src ? `<img src="${esc(src)}" referrerpolicy="no-referrer" alt="">` : '<div class="wys-fig-empty">Нажмите, чтобы добавить фото</div>'}<span class="wys-fig-edit">✎</span></div>
+        <div class="wys-fig-img" data-wys-act="img" data-i="${i}">${src ? `<img src="${esc(src)}" referrerpolicy="no-referrer" alt="${esc(block.alt || block.caption || '')}">` : '<div class="wys-fig-empty">Нажмите, чтобы добавить фото</div>'}<span class="wys-fig-edit">✎</span></div>
         <figcaption class="wys-ce wys-figcap" contenteditable="true" data-wys="caption" data-i="${i}" data-empty="Подпись к фото">${esc(block.caption || '')}</figcaption>
+        <details class="wys-media-details">
+          <summary>Доступность и права</summary>
+          <div class="wys-media-details-grid">
+            <label><span>ALT-текст</span><input class="wys-inline-input" data-wys="alt" data-i="${i}" value="${esc(block.alt || '')}" placeholder="Что изображено — для поиска и скринридеров"></label>
+            <label><span>Автор / credit</span><input class="wys-inline-input" data-wys="credit" data-i="${i}" value="${esc(block.credit || '')}" placeholder="Фото: Имя / студия / архив"></label>
+            <label class="wys-media-details-wide"><span>Источник / права</span><input class="wys-inline-input" data-wys="source-url" data-i="${i}" value="${esc(block.sourceUrl || '')}" placeholder="https://…"></label>
+          </div>
+        </details>
       </figure>`;
     } else if (t === 'gallery') {
       const items = Array.isArray(c) ? c : [];
@@ -11320,6 +11437,9 @@ async function flushModernEditor() {
       inner += `<button class="wys-gal-add" data-wys-act="gal-add-multi" data-i="${i}">⇪ Загрузить с ПК (сразу несколько)</button></div>`;
       if (selCount > 0) inner += `<button class="wys-gal-bulk-del" data-wys-act="gal-del-selected" data-i="${i}">🗑 Удалить выбранные (${selCount})</button>`;
       inner += `<input class="wys-inline-input" data-wys="caption" data-i="${i}" value="${esc(block.caption || '')}" placeholder="Подпись к галерее">`;
+      if (items.length) {
+        inner += `<div class="wys-gallery-captions"><div class="wys-gallery-captions-title">Подписи к отдельным фотографиям</div>${items.map((_, gi) => `<label><span>${gi + 1}</span><input class="wys-inline-input" data-wys="gallery-alt" data-i="${i}" data-gi="${gi}" value="${esc(alts[gi] || '')}" placeholder="ALT и подпись под фото"></label>`).join('')}</div>`;
+      }
     } else if (t === 'checklist') {
       const items = (c && Array.isArray(c.items)) ? c.items : [];
       inner = `<input class="wys-inline-input wys-check-title" data-wys="caption" data-i="${i}" value="${esc(block.caption || '')}" placeholder="Заголовок чеклиста">`;
@@ -11333,13 +11453,19 @@ async function flushModernEditor() {
     } else if (t === 'video') {
       const url = typeof c === 'string' ? c : '';
       const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
-      const thumb = ytMatch ? `https://img.youtube.com/vi/${ytMatch[1]}/hqdefault.jpg` : '';
+      const vimeoMatch = url.match(/vimeo\.com\/(?:.*\/)?(\d+)(?:$|[?#/])/i);
+      const directMatch = /\.(?:mp4|webm|ogv|ogg)(?:$|[?#])/i.test(url);
+      const thumb = ytMatch ? `https://img.youtube.com/vi/${ytMatch[1]}/hqdefault.jpg` : (block.poster || '');
+      const provider = ytMatch ? 'YouTube' : vimeoMatch ? 'Vimeo' : directMatch ? 'MP4/WebM' : '';
       inner = `<div class="wys-video">
-        <div class="wys-video-thumb">${thumb ? `<img src="${esc(thumb)}" referrerpolicy="no-referrer" alt="">` : '<div class="wys-video-ph">▶</div>'}</div>
+        <div class="wys-video-thumb">${thumb ? `<img src="${esc(thumb)}" referrerpolicy="no-referrer" alt="">` : `<div class="wys-video-ph">${provider || '▶'}</div>`}</div>
         <div class="wys-video-fields">
-          <input class="wys-inline-input" data-wys="content-str" data-i="${i}" value="${esc(url)}" placeholder="Ссылка на YouTube — youtube.com/watch?v=…">
-          <input class="wys-inline-input" data-wys="caption" data-i="${i}" value="${esc(block.caption || '')}" placeholder="Подпись (необязательно)">
-          ${url && !ytMatch ? '<p class="wys-video-warn">Пока распознаётся только YouTube — на сайте покажется заглушка.</p>' : ''}
+          <input class="wys-inline-input" data-wys="content-str" data-i="${i}" value="${esc(url)}" placeholder="YouTube, Vimeo или прямой .mp4/.webm URL">
+          <input class="wys-inline-input" data-wys="poster" data-i="${i}" value="${esc(block.poster || '')}" placeholder="Постер для Vimeo/MP4 (необязательно)">
+          <input class="wys-inline-input" data-wys="caption" data-i="${i}" value="${esc(block.caption || '')}" placeholder="Подпись к видео">
+          <input class="wys-inline-input" data-wys="credit" data-i="${i}" value="${esc(block.credit || '')}" placeholder="Автор / credit">
+          <input class="wys-inline-input" data-wys="source-url" data-i="${i}" value="${esc(block.sourceUrl || '')}" placeholder="Источник / права (https://…)">
+          ${url && !provider ? '<p class="wys-video-warn">Поддерживаются YouTube, Vimeo и прямые MP4/WebM. Неизвестная ссылка останется кликабельной.</p>' : ''}
         </div>
       </div>`;
     } else if (t === 'poll') {
@@ -11385,6 +11511,15 @@ async function flushModernEditor() {
     else if (field === 'role') _model.role = val;
     else if (field === 'block') { if (_model.content[i]) _model.content[i].content = val; }
     else if (field === 'caption') { if (_model.content[i]) _model.content[i].caption = val; }
+    else if (field === 'alt') { if (_model.content[i]) _model.content[i].alt = val; }
+    else if (field === 'credit') { if (_model.content[i]) _model.content[i].credit = val; }
+    else if (field === 'source-url') { if (_model.content[i]) _model.content[i].sourceUrl = val; }
+    else if (field === 'poster') { if (_model.content[i]) _model.content[i].poster = val; }
+    else if (field === 'gallery-alt') {
+      const gi = Number(el.getAttribute('data-gi'));
+      const b = _model.content[i];
+      if (b && Number.isInteger(gi) && gi >= 0) { if (!Array.isArray(b.alts)) b.alts = []; b.alts[gi] = val; }
+    }
     else if (field === 'content-str') { if (_model.content[i]) _model.content[i].content = val; }
     else if (field === 'url') { if (_model.content[i]) _model.content[i].url = val; }
     else if (field === 'check-item') { const ci = Number(el.getAttribute('data-ci')); const b = _model.content[i]; if (b && b.content && b.content.items) b.content.items[ci] = val; }
