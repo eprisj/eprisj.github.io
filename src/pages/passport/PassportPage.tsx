@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState, type CSSProperties } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Upload, Download, FileText, Share2, Link2, Check, RotateCcw } from 'lucide-react';
+import { ArrowLeft, Upload, Download, FileText, Share2, Link2, Check, RotateCcw, Printer } from 'lucide-react';
 import QRCode from 'qrcode';
 import { PassportPreview, PassportStampContactSheet } from './PassportPreview';
 import { PassportBook } from './PassportBook';
@@ -8,7 +8,8 @@ import { generatePassportCode } from '../../lib/passportCode';
 import { publishPassport, fetchPassport, getSavedAdminPassword, saveAdminPassword, verifyAdminPassword } from './passportApi';
 import { renderPassportPNG, renderStampPagePNG, type PassportFields } from './passportRender';
 import { PhotoCropper } from './PhotoCropper';
-import { PASSPORT_STAMP_SHEETS } from './passportPages';
+import { PASSPORT_STAMP_SHEETS, type PassportStamp } from './passportPages';
+import { PassportStampEditor } from './PassportStampEditor';
 
 const MEMBERSHIP_TYPES = ['Author', 'Researcher', 'Editor', 'Reviewer', 'Contributor', 'Patron', 'Fellow'];
 
@@ -34,6 +35,32 @@ function emptyFields(): PassportFields {
     motto: '',
     sex: '',
   };
+}
+
+/** Keep the document at its designed scale on phones, scoped to /passport only. */
+function usePassportZoomLock() {
+  useEffect(() => {
+    const viewport = document.querySelector<HTMLMetaElement>('meta[name="viewport"]');
+    const previousViewport = viewport?.content || '';
+    if (viewport) viewport.content = 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover';
+
+    const preventGesture = (event: Event) => event.preventDefault();
+    const preventMultiTouch = (event: TouchEvent) => {
+      if (event.touches.length > 1) event.preventDefault();
+    };
+    document.addEventListener('gesturestart', preventGesture, { passive: false });
+    document.addEventListener('gesturechange', preventGesture, { passive: false });
+    document.addEventListener('touchmove', preventMultiTouch, { passive: false });
+    document.documentElement.classList.add('passport-scale-locked');
+
+    return () => {
+      if (viewport) viewport.content = previousViewport;
+      document.removeEventListener('gesturestart', preventGesture);
+      document.removeEventListener('gesturechange', preventGesture);
+      document.removeEventListener('touchmove', preventMultiTouch);
+      document.documentElement.classList.remove('passport-scale-locked');
+    };
+  }, []);
 }
 
 function Labeled({ label, children }: { label: string; children: React.ReactNode }) {
@@ -149,6 +176,7 @@ function VerifyView({ code }: { code: string }) {
   const [fields, setFieldsState] = useState<PassportFields | null>(null);
   const [photoUrl, setPhotoUrl] = useState<string | null>(null);
   const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
+  const [stamps, setStamps] = useState<PassportStamp[]>([]);
 
   useEffect(() => {
     let cancelled = false;
@@ -159,6 +187,7 @@ function VerifyView({ code }: { code: string }) {
         issueDate: '2026-07-29', expiryDate: '2031-07-29', motto: 'Reveal the invisible', sex: 'X',
       });
       setStatus('found');
+      setStamps([{ id: 'stamp-preview-02', page: '02', kind: 'visit', title: 'Vienna Design Week', place: 'Vienna, Austria', date: '2026-09-18', note: 'Editorial field visit and programme review.', ink: 'teal' }]);
       QRCode.toDataURL(window.location.href, { margin: 0, width: 200 }).then((d) => !cancelled && setQrDataUrl(d));
       return () => { cancelled = true; };
     }
@@ -167,6 +196,7 @@ function VerifyView({ code }: { code: string }) {
       if (res.ok && res.record) {
         setFieldsState(res.record.fields);
         setPhotoUrl(res.record.photoUrl);
+        setStamps(Array.isArray(res.record.stamps) ? res.record.stamps : []);
         setStatus('found');
         QRCode.toDataURL(window.location.href, { margin: 0, width: 200 }).then((d) => !cancelled && setQrDataUrl(d));
       } else {
@@ -198,7 +228,7 @@ function VerifyView({ code }: { code: string }) {
       `}} />
 
       {/* The passport as a book: closed cover → opens to the data page. */}
-      <PassportBook fields={fields} photoUrl={photoUrl} code={code} qrDataUrl={qrDataUrl} />
+      <PassportBook fields={fields} photoUrl={photoUrl} code={code} qrDataUrl={qrDataUrl} stamps={stamps} />
     </div>
   );
 }
@@ -214,6 +244,7 @@ function PassportAuthGate({ children }: { children: React.ReactNode }) {
   const [remember, setRemember] = useState(true);
   const [error, setError] = useState('');
   const [checking, setChecking] = useState(false);
+  const devBypass = import.meta.env.DEV && new URLSearchParams(window.location.search).get('dev-admin') === '1';
 
   useEffect(() => {
     const saved = getSavedAdminPassword();
@@ -228,14 +259,14 @@ function PassportAuthGate({ children }: { children: React.ReactNode }) {
     const valid = await verifyAdminPassword(pwInput);
     setChecking(false);
     if (valid) {
-      if (remember) saveAdminPassword(pwInput);
+      saveAdminPassword(pwInput, remember);
       setStatus('ok');
     } else {
       setError('Неверный пароль.');
     }
   }, [pwInput, remember]);
 
-  if (status === 'ok') return <>{children}</>;
+  if (status === 'ok' || devBypass) return <>{children}</>;
 
   return (
     <div className="min-h-screen w-full bg-[var(--pp-cream)] text-[var(--pp-ink)] flex items-center justify-center font-sans px-4" style={{ '--pp-burgundy': '#501a2c', '--pp-ink': '#241016', '--pp-cream': '#f7f2ea', '--pp-sand': '#c9a690' } as CSSProperties}>
@@ -280,6 +311,7 @@ function PassportAuthGate({ children }: { children: React.ReactNode }) {
 }
 
 export function PassportPage({ viewCode, onBack }: { viewCode: string | null; onBack: () => void }) {
+  usePassportZoomLock();
   const [fields, setFields] = useState<PassportFields>(emptyFields);
   const [photoDataUrl, setPhotoDataUrl] = useState<string | null>(null);
   const [cropFile, setCropFile] = useState<File | null>(null);
@@ -294,6 +326,8 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
   const [copyStatus, setCopyStatus] = useState<'idle' | 'copied'>('idle');
   const [mode, setMode] = useState<'create' | 'edit'>('create');
   const [existingPhotoUrl, setExistingPhotoUrl] = useState<string | null>(null);
+  const [stamps, setStamps] = useState<PassportStamp[]>([]);
+  const [printStatus, setPrintStatus] = useState<'idle' | 'loading' | 'ready' | 'error'>('idle');
   const isEditing = mode === 'edit';
 
   // Admin deep link only — never surfaced on the public verification page —
@@ -318,6 +352,7 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
         setIsPublic(true);
         setConsent(true);
         setMode('edit');
+        setStamps(Array.isArray(res.record.stamps) ? res.record.stamps : []);
         setAdminEditStatus('ready');
       } else {
         setAdminEditStatus('error');
@@ -325,6 +360,12 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
     });
     return () => { cancelled = true; };
   }, [isAdminEditRequest, viewCode]);
+
+  useEffect(() => {
+    if (adminEditStatus !== 'ready' || new URLSearchParams(window.location.search).get('stamp') !== '1') return;
+    const timer = window.setTimeout(() => document.getElementById('passport-stamp-editor')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 220);
+    return () => window.clearTimeout(timer);
+  }, [adminEditStatus]);
 
   const verifyUrl = useMemo(() => `${window.location.origin}/passport/${code}`, [code]);
   const displayMemberNumber = fields.memberNumber || code;
@@ -359,6 +400,8 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
     setConsent(false);
     setErrors({});
     setPublishStatus('idle');
+    setStamps([]);
+    setPrintStatus('idle');
     setMode('create');
     if (isAdminEditRequest) window.history.replaceState(null, '', window.location.pathname);
   }, [isAdminEditRequest]);
@@ -368,7 +411,6 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
     setPngStatus('loading');
     try {
       const dataUrl = await renderPassportPNG(previewFields, effectivePhotoUrl, code, verifyUrl);
-      const stampPages = await Promise.all(PASSPORT_STAMP_SHEETS.map((sheet) => renderStampPagePNG(sheet)));
       const a = document.createElement('a');
       a.href = dataUrl;
       a.download = `EPRIS-Passport-${code}.png`;
@@ -383,22 +425,28 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
     setTimeout(() => setPngStatus('idle'), 2500);
   }, [validate, previewFields, effectivePhotoUrl, code, verifyUrl]);
 
+  const renderBookletSheets = useCallback(async () => {
+    const identityPage = await renderPassportPNG(previewFields, effectivePhotoUrl, code, verifyUrl);
+    const stampPages = await Promise.all(PASSPORT_STAMP_SHEETS.map((sheet) => renderStampPagePNG(sheet, stamps)));
+    return [identityPage, ...stampPages];
+  }, [previewFields, effectivePhotoUrl, code, verifyUrl, stamps]);
+
   const handleDownloadPDF = useCallback(async () => {
     if (!validate()) return;
     setPdfStatus('loading');
     try {
-      const dataUrl = await renderPassportPNG(previewFields, effectivePhotoUrl, code, verifyUrl);
+      const sheets = await renderBookletSheets();
       const [{ pdf }, { Document, Page, Image }, { createElement }] = await Promise.all([
         import('@react-pdf/renderer'),
         import('@react-pdf/renderer'),
         import('react'),
       ]);
-      // Full four-sheet booklet: identity page + three blank stamp spreads.
+      // Full four-sheet booklet: identity page + three editorial stamp spreads.
       const element = createElement(Document, null,
         createElement(Page, { size: [400, 533.33] },
-          createElement(Image, { src: dataUrl, style: { width: '100%', height: '100%' } })
+          createElement(Image, { src: sheets[0], style: { width: '100%', height: '100%' } })
         ),
-        ...stampPages.map((src, index) => createElement(Page, { key: PASSPORT_STAMP_SHEETS[index].key, size: [400, 533.33] },
+        ...sheets.slice(1).map((src, index) => createElement(Page, { key: PASSPORT_STAMP_SHEETS[index].key, size: [400, 533.33] },
           createElement(Image, { src, style: { width: '100%', height: '100%' } })
         )),
       );
@@ -417,12 +465,39 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
       setPdfStatus('idle');
     }
     setTimeout(() => setPdfStatus('idle'), 2500);
-  }, [validate, previewFields, effectivePhotoUrl, code, verifyUrl, qrDataUrl]);
+  }, [validate, renderBookletSheets, code]);
+
+  const handlePrintBooklet = useCallback(async () => {
+    if (!validate()) return;
+    const printWindow = window.open('', '_blank', 'popup,width=920,height=980');
+    if (!printWindow) {
+      setPrintStatus('error');
+      setTimeout(() => setPrintStatus('idle'), 3500);
+      return;
+    }
+    setPrintStatus('loading');
+    printWindow.document.write('<!doctype html><title>EPRIS — preparing print</title><body style="margin:0;display:grid;place-items:center;min-height:100vh;background:#f7f2ea;color:#501a2c;font:14px monospace;letter-spacing:.12em">PREPARING BOOKLET…</body>');
+    try {
+      const sheets = await renderBookletSheets();
+      printWindow.document.open();
+      printWindow.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>EPRIS Passport ${code}</title><style>
+        :root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#ded8d1;color:#3a1520;font-family:Arial,sans-serif}.toolbar{position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;background:#501a2c;color:#fff;box-shadow:0 6px 24px #501a2c33}.toolbar strong{font:600 13px/1.3 Arial}.toolbar span{display:block;margin-top:3px;font:10px/1.3 monospace;letter-spacing:.1em;opacity:.68}.toolbar button{min-height:44px;border:1px solid #ffffff55;border-radius:999px;background:#fff;color:#501a2c;padding:0 22px;font:700 11px monospace;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}.stack{display:grid;gap:24px;justify-items:center;padding:28px}.sheet{display:grid;place-items:center;width:210mm;min-height:297mm;background:#fff;box-shadow:0 12px 38px #35151e22}.sheet img{display:block;width:120mm;height:160mm;object-fit:contain}.sheet small{position:absolute;transform:translateY(91mm);font:9px monospace;letter-spacing:.12em;color:#7a6870}@page{size:A4 portrait;margin:0}@media print{body{background:#fff}.toolbar{display:none}.stack{display:block;padding:0}.sheet{page-break-after:always;width:210mm;height:297mm;min-height:0;box-shadow:none}.sheet:last-child{page-break-after:auto}.sheet small{display:none}}
+      </style></head><body><header class="toolbar"><div><strong>EPRIS Passport · ${code}</strong><span>4 sheets · pages 01—07 · print size 120 × 160 mm</span></div><button type="button" onclick="window.print()">Print booklet</button></header><main class="stack">${sheets.map((src, index) => `<section class="sheet"><img src="${src}" alt="Passport print sheet ${index + 1}"><small>SHEET ${String(index + 1).padStart(2, '0')} / ${sheets.length}</small></section>`).join('')}</main></body></html>`);
+      printWindow.document.close();
+      printWindow.focus();
+      setPrintStatus('ready');
+    } catch (error) {
+      console.error('Print preparation failed:', error);
+      printWindow.close();
+      setPrintStatus('error');
+    }
+    setTimeout(() => setPrintStatus('idle'), 3500);
+  }, [validate, renderBookletSheets, code]);
 
   const handlePublish = useCallback(async () => {
     if (!validate() || !consent) return;
     setPublishStatus('loading');
-    const res = await publishPassport(code, previewFields, photoDataUrl, isEditing ? { overwrite: true, existingPhotoUrl } : {});
+    const res = await publishPassport(code, previewFields, photoDataUrl, stamps, isEditing ? { overwrite: true, existingPhotoUrl } : {});
     if (res.ok) {
       if (res.code && res.code !== code) setCode(res.code);
       if (photoDataUrl) setExistingPhotoUrl(photoDataUrl);
@@ -431,7 +506,7 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
     } else {
       setPublishStatus('error');
     }
-  }, [validate, consent, code, previewFields, photoDataUrl, isEditing, existingPhotoUrl]);
+  }, [validate, consent, code, previewFields, photoDataUrl, stamps, isEditing, existingPhotoUrl]);
 
   const handleCopyLink = useCallback(async () => {
     try {
@@ -517,12 +592,21 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
               <FileText size={15} /> {pdfStatus === 'loading' ? 'Rendering 4 sheets…' : pdfStatus === 'done' ? 'Booklet downloaded ✓' : 'Passport booklet PDF'}
             </button>
             <button
+              onClick={handlePrintBooklet}
+              disabled={printStatus === 'loading'}
+              className="col-span-1 sm:col-span-2 flex min-h-11 w-full items-center justify-center gap-2 rounded-lg border border-[var(--pp-burgundy)]/15 bg-[var(--pp-ink)] px-5 py-3 font-mono text-[11px] uppercase tracking-widest text-[var(--pp-cream)] shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 disabled:opacity-50 disabled:hover:translate-y-0"
+            >
+              <Printer size={15} /> {printStatus === 'loading' ? 'Preparing print proof…' : printStatus === 'ready' ? 'Print proof opened ✓' : printStatus === 'error' ? 'Allow pop-ups and retry' : 'Print booklet · 120 × 160 mm'}
+            </button>
+            <button
               onClick={handleReset}
               className="col-span-1 sm:col-span-2 flex justify-center items-center gap-2 font-mono text-[11px] uppercase tracking-widest px-4 py-3 rounded-lg text-[var(--pp-ink)]/50 hover:text-[var(--pp-ink)] hover:bg-[var(--pp-ink)]/5 active:scale-95 transition-all duration-300"
             >
               <RotateCcw size={15} /> Reset
             </button>
           </div>
+
+          <PassportStampEditor stamps={stamps} onChange={setStamps} />
 
           <div className="space-y-4 bg-white/40 p-6 rounded-xl border border-white/60 shadow-[0_4px_20px_rgba(80,26,44,0.03)] backdrop-blur-sm">
             <div className="flex items-center gap-2 mb-4 font-mono text-[11px] uppercase tracking-widest text-[var(--pp-burgundy)]">
@@ -599,7 +683,7 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
         <div className="order-2 lg:order-2 lg:sticky lg:top-20 h-fit">
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }}>
             <PassportPreview fields={previewFields} photoUrl={effectivePhotoUrl} code={code} qrDataUrl={qrDataUrl} />
-            <PassportStampContactSheet />
+            <PassportStampContactSheet stamps={stamps} />
           </motion.div>
           <p className="font-mono text-[9px] text-[var(--pp-ink)]/45 mt-3 leading-relaxed">
             This is a fictional cultural membership item created for EPRIS Journal. It is not a passport, visa, ID card or any government-issued document, and cannot be used as one.
