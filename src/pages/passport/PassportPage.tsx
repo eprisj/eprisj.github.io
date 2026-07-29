@@ -2,12 +2,13 @@ import { useCallback, useEffect, useMemo, useState, type CSSProperties } from 'r
 import { motion } from 'framer-motion';
 import { ArrowLeft, Upload, Download, FileText, Share2, Link2, Check, RotateCcw } from 'lucide-react';
 import QRCode from 'qrcode';
-import { PassportPreview } from './PassportPreview';
+import { PassportPreview, PassportStampContactSheet } from './PassportPreview';
 import { PassportBook } from './PassportBook';
 import { generatePassportCode } from '../../lib/passportCode';
 import { publishPassport, fetchPassport, getSavedAdminPassword, saveAdminPassword, verifyAdminPassword } from './passportApi';
-import { renderPassportPNG, type PassportFields } from './passportRender';
+import { renderPassportPNG, renderStampPagePNG, type PassportFields } from './passportRender';
 import { PhotoCropper } from './PhotoCropper';
+import { PASSPORT_STAMP_SHEETS } from './passportPages';
 
 const MEMBERSHIP_TYPES = ['Author', 'Researcher', 'Editor', 'Reviewer', 'Contributor', 'Patron', 'Fellow'];
 
@@ -151,6 +152,16 @@ function VerifyView({ code }: { code: string }) {
 
   useEffect(() => {
     let cancelled = false;
+    if (import.meta.env.DEV && code === 'preview') {
+      setFieldsState({
+        surname: 'Sample', givenNames: 'Epris Member', dob: '1995-08-01', country: 'International', city: 'Vienna',
+        field: 'Architecture & Editorial', membershipType: 'Contributor', memberNumber: 'EPR-PREVIEW', link: '',
+        issueDate: '2026-07-29', expiryDate: '2031-07-29', motto: 'Reveal the invisible', sex: 'X',
+      });
+      setStatus('found');
+      QRCode.toDataURL(window.location.href, { margin: 0, width: 200 }).then((d) => !cancelled && setQrDataUrl(d));
+      return () => { cancelled = true; };
+    }
     fetchPassport(code).then((res) => {
       if (cancelled) return;
       if (res.ok && res.record) {
@@ -161,7 +172,7 @@ function VerifyView({ code }: { code: string }) {
       } else {
         setStatus('missing');
       }
-    });
+    }).catch(() => { if (!cancelled) setStatus('missing'); });
     return () => { cancelled = true; };
   }, [code]);
 
@@ -357,6 +368,7 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
     setPngStatus('loading');
     try {
       const dataUrl = await renderPassportPNG(previewFields, effectivePhotoUrl, code, verifyUrl);
+      const stampPages = await Promise.all(PASSPORT_STAMP_SHEETS.map((sheet) => renderStampPagePNG(sheet)));
       const a = document.createElement('a');
       a.href = dataUrl;
       a.download = `EPRIS-Passport-${code}.png`;
@@ -381,12 +393,14 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
         import('@react-pdf/renderer'),
         import('react'),
       ]);
-      // Portrait 3:4 — matches the single-sheet PassportPage now that the
-      // download is a screenshot of it, not the old two-page book spread.
+      // Full four-sheet booklet: identity page + three blank stamp spreads.
       const element = createElement(Document, null,
         createElement(Page, { size: [400, 533.33] },
           createElement(Image, { src: dataUrl, style: { width: '100%', height: '100%' } })
-        )
+        ),
+        ...stampPages.map((src, index) => createElement(Page, { key: PASSPORT_STAMP_SHEETS[index].key, size: [400, 533.33] },
+          createElement(Image, { src, style: { width: '100%', height: '100%' } })
+        )),
       );
       const blob = await pdf(element as Parameters<typeof pdf>[0]).toBlob();
       const url = URL.createObjectURL(blob);
@@ -500,7 +514,7 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
               disabled={pdfStatus === 'loading'}
               className="flex justify-center items-center gap-2 bg-white/80 border border-[var(--pp-burgundy)]/20 text-[var(--pp-burgundy)] font-mono text-[11px] uppercase tracking-widest px-5 py-3.5 sm:py-3 rounded-lg shadow-sm hover:shadow-md hover:bg-white hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:hover:translate-y-0 transition-all duration-300 w-full"
             >
-              <FileText size={15} /> {pdfStatus === 'loading' ? 'Rendering…' : pdfStatus === 'done' ? 'Downloaded ✓' : 'Print-ready PDF'}
+              <FileText size={15} /> {pdfStatus === 'loading' ? 'Rendering 4 sheets…' : pdfStatus === 'done' ? 'Booklet downloaded ✓' : 'Passport booklet PDF'}
             </button>
             <button
               onClick={handleReset}
@@ -585,6 +599,7 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
         <div className="order-2 lg:order-2 lg:sticky lg:top-20 h-fit">
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }}>
             <PassportPreview fields={previewFields} photoUrl={effectivePhotoUrl} code={code} qrDataUrl={qrDataUrl} />
+            <PassportStampContactSheet />
           </motion.div>
           <p className="font-mono text-[9px] text-[var(--pp-ink)]/45 mt-3 leading-relaxed">
             This is a fictional cultural membership item created for EPRIS Journal. It is not a passport, visa, ID card or any government-issued document, and cannot be used as one.

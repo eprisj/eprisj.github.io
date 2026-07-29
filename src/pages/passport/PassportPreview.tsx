@@ -1,7 +1,8 @@
-import type { CSSProperties } from 'react';
+import { useId, type CSSProperties } from 'react';
 import type { PassportFields } from './passportRender';
 import { generateSignatureString } from '../../lib/passportCode';
 import { buildMRZ } from '../../lib/mrz';
+import { PASSPORT_STAMP_SHEETS, type PassportStampSheetDefinition } from './passportPages';
 
 export { buildMRZ };
 
@@ -27,6 +28,65 @@ function IdentityBackdrop() {
       className="absolute inset-0 w-full h-full pointer-events-none select-none"
       style={{ objectFit: 'cover', objectPosition: 'center 42%' }}
     />
+  );
+}
+
+// Fine vector security texture inspired by specimen passport graphics, but
+// built from EPRIS geometry and words so the object stays clearly editorial.
+function SecurityMesh({ accent = '#2b7680', opacity = 0.2 }: { accent?: string; opacity?: number }) {
+  const rawId = useId();
+  const id = rawId.replace(/:/g, '');
+  const gridId = `pp-grid-${id}`;
+  const glowId = `pp-glow-${id}`;
+  return (
+    <svg
+      className="absolute inset-0 w-full h-full pointer-events-none"
+      viewBox="0 0 600 800"
+      preserveAspectRatio="none"
+      aria-hidden
+      style={{ opacity, mixBlendMode: 'multiply' }}
+    >
+      <defs>
+        <pattern id={gridId} width="28" height="28" patternUnits="userSpaceOnUse">
+          <path d="M 28 0 L 0 0 0 28" fill="none" stroke={accent} strokeWidth="0.55" opacity="0.46" />
+          <circle cx="14" cy="14" r="1" fill="none" stroke={accent} strokeWidth="0.45" opacity="0.5" />
+        </pattern>
+        <radialGradient id={glowId} cx="50%" cy="48%" r="58%">
+          <stop offset="0" stopColor={accent} stopOpacity="0.24" />
+          <stop offset="1" stopColor={accent} stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <rect width="600" height="800" fill={`url(#${gridId})`} />
+      <ellipse cx="300" cy="400" rx="245" ry="190" fill={`url(#${glowId})`} />
+      {Array.from({ length: 9 }, (_, i) => {
+        const y = 178 + i * 38;
+        const amp = 25 + i * 2;
+        return <path key={i} d={`M-20 ${y} C115 ${y - amp}, 175 ${y + amp}, 300 ${y} S485 ${y - amp}, 620 ${y}`} fill="none" stroke={accent} strokeWidth="1" opacity={0.55 - i * 0.025} />;
+      })}
+      {Array.from({ length: 7 }, (_, i) => {
+        const x = 90 + i * 70;
+        return <ellipse key={i} cx={x} cy="408" rx={105 + i * 5} ry={250 - i * 8} fill="none" stroke={accent} strokeWidth="0.75" opacity="0.34" transform={`rotate(${i % 2 ? 18 : -18} ${x} 408)`} />;
+      })}
+      <path d="M36 92 H564 M36 708 H564" fill="none" stroke={accent} strokeWidth="1" strokeDasharray="2 8" opacity="0.7" />
+      <text x="300" y="111" textAnchor="middle" fill={accent} fontFamily="monospace" fontSize="7" letterSpacing="4" opacity="0.8">EPRIS · DESIGN · ART · ARCHITECTURE · CULTURE</text>
+      <text x="300" y="728" textAnchor="middle" fill={accent} fontFamily="monospace" fontSize="7" letterSpacing="3" opacity="0.8">EDITORIAL DOCUMENT · NOT VALID FOR TRAVEL</text>
+    </svg>
+  );
+}
+
+function MicroprintRails({ page }: { page: string }) {
+  return (
+    <>
+      <div aria-hidden style={{ position: 'absolute', top: '5%', bottom: '5%', left: '1.65%', writingMode: 'vertical-rl', transform: 'rotate(180deg)', fontFamily: 'monospace', fontSize: 'clamp(4px, .75cqw, 6px)', letterSpacing: '.2em', color: '#4a1728', opacity: 0.48, zIndex: 4 }}>
+        EPRIS JOURNAL · CULTURAL MEMBERSHIP · DESIGN ART ARCHITECTURE · {page}
+      </div>
+      <div aria-hidden style={{ position: 'absolute', top: '7%', bottom: '7%', right: '1.7%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', color: '#4a1728', opacity: 0.56, zIndex: 4 }}>
+        <span style={{ writingMode: 'vertical-rl', fontFamily: 'monospace', fontSize: 'clamp(4px, .75cqw, 6px)', letterSpacing: '.28em' }}>EPRIS · {page}</span>
+        <span style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 2px)', gap: 2 }}>
+          {Array.from({ length: 21 }, (_, i) => <i key={i} style={{ width: 2, height: 2, borderRadius: '50%', background: 'currentColor', opacity: i % 4 === 0 ? 0.25 : 1 }} />)}
+        </span>
+      </div>
+    </>
   );
 }
 
@@ -158,13 +218,19 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
     >
       {/* EPRIS identity artwork — the passport's "world" */}
       <IdentityBackdrop />
-      {/* Colored security tint — cool gold at top through to teal at the base,
-          the same cross-sheet gradient wash real specimen pages use over their
-          photo art, in EPRIS's own palette instead of a national flag's. */}
+      {/* Soft cyan / ochre / rose interference wash: recognisably passport-like
+          print depth, without borrowing any national colour system. */}
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: 'linear-gradient(180deg, rgba(120,140,160,0.16) 0%, rgba(184,149,110,0.14) 38%, rgba(184,149,110,0.08) 55%, rgba(74,120,120,0.16) 78%, rgba(74,120,120,0.22) 100%)',
+        background: 'linear-gradient(155deg, rgba(105,196,205,0.22) 0%, rgba(225,207,105,0.18) 34%, rgba(245,238,218,0.08) 51%, rgba(223,151,171,0.19) 76%, rgba(67,156,167,0.24) 100%)',
         mixBlendMode: 'multiply',
       }} />
+      <SecurityMesh accent="#287983" opacity={0.23} />
+      <MicroprintRails page="01" />
+
+      <div aria-hidden className="absolute pointer-events-none" style={{ top: '1.25%', left: '5%', right: '5%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: '#4a1728', opacity: 0.52, fontFamily: 'monospace', fontSize: 'clamp(4px, .78cqw, 6.5px)', letterSpacing: '.18em', zIndex: 4 }}>
+        <span>SPECIMEN · EPRIS CULTURAL SYSTEM</span>
+        <span>ISSUE 01 / VERIFIED EDITION</span>
+      </div>
 
       {/* EPRIS watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden" aria-hidden>
@@ -183,7 +249,8 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
 
       {/* Single frame — a doubled outer+inner border read as visual noise at
           this size, one clean line is enough to read as a document edge. */}
-      <div className="absolute pointer-events-none" style={{ inset: '1.4%', border: '1px solid #4a1728', opacity: 0.7 }}/>
+      <div className="absolute pointer-events-none" style={{ inset: '1.4%', border: '1px solid #4a1728', opacity: 0.7, zIndex: 3 }}/>
+      <div className="absolute pointer-events-none" aria-hidden style={{ top: '37.4%', left: '2.7%', right: '2.7%', height: '0.55%', background: 'linear-gradient(90deg, rgba(45,151,162,.75), rgba(226,191,79,.6) 35%, rgba(219,121,150,.64) 68%, rgba(45,151,162,.75))', mixBlendMode: 'multiply', opacity: 0.55, zIndex: 4 }} />
 
       {/* ══════════════════════════ TOP HALF — OBSERVATIONS ══════════════════════ */}
       <div style={{ position: 'absolute', top: '2%', left: '4.5%', right: '4.5%', height: '32%', overflow: 'hidden' }}>
@@ -339,6 +406,101 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
             {mrz[1].split('').map((c, i) => <span key={i}>{c}</span>)}
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+const STAMP_ACCENTS = {
+  teal: { line: '#267681', wash: 'rgba(70,167,176,.22)', second: 'rgba(218,188,82,.14)' },
+  gold: { line: '#96713d', wash: 'rgba(213,178,90,.2)', second: 'rgba(76,151,157,.15)' },
+  rose: { line: '#9a4f68', wash: 'rgba(207,123,151,.2)', second: 'rgba(75,158,167,.15)' },
+} as const;
+
+function StampField({ label, align = 'left' }: { label: string; align?: 'left' | 'right' }) {
+  return (
+    <div style={{ position: 'relative', width: '100%', height: '100%', minHeight: 0, border: '0.7px solid rgba(74,23,40,.25)', background: 'rgba(255,255,255,.12)', overflow: 'hidden' }}>
+      <div aria-hidden style={{ position: 'absolute', inset: '8%', border: '0.6px solid rgba(74,23,40,.12)', borderRadius: '50%' }} />
+      <div aria-hidden style={{ position: 'absolute', inset: '18% 10%', borderTop: '0.6px solid rgba(74,23,40,.13)', borderBottom: '0.6px solid rgba(74,23,40,.13)', transform: align === 'left' ? 'rotate(-7deg)' : 'rotate(7deg)' }} />
+      <span style={{ position: 'absolute', left: '8%', right: '8%', bottom: '8%', fontFamily: 'monospace', fontSize: 'clamp(4.5px, .85cqw, 7px)', letterSpacing: '.16em', textTransform: 'uppercase', color: '#4a1728', opacity: 0.38, textAlign: align }}>
+        {label}
+      </span>
+    </div>
+  );
+}
+
+/** Two intentionally blank booklet pages reserved for future editorial stamps. */
+export function PassportStampPage({ sheet }: { sheet: PassportStampSheetDefinition }) {
+  const colors = STAMP_ACCENTS[sheet.accent];
+  return (
+    <div
+      className="relative w-full select-none overflow-hidden"
+      style={{
+        aspectRatio: '3 / 4',
+        containerType: 'inline-size',
+        background: '#eee8df',
+        borderRadius: 8,
+        boxShadow: '0 2px 6px rgba(74,23,40,.1), 0 12px 38px rgba(74,23,40,.13)',
+      } as CSSProperties}
+      aria-label={`${sheet.title}, blank stamp pages ${sheet.pageNumbers[0]} and ${sheet.pageNumbers[1]}`}
+    >
+      <img src={IDENTITY_ART_SRC} alt="" aria-hidden draggable={false} className="absolute inset-0 w-full h-full pointer-events-none" style={{ objectFit: 'cover', objectPosition: 'center 48%', opacity: 0.3, mixBlendMode: 'multiply' }} />
+      <div aria-hidden className="absolute inset-0 pointer-events-none" style={{ background: `linear-gradient(145deg, ${colors.wash}, rgba(249,244,231,.34) 48%, ${colors.second})`, mixBlendMode: 'multiply' }} />
+      <SecurityMesh accent={colors.line} opacity={0.25} />
+      <MicroprintRails page={`${sheet.pageNumbers[0]}–${sheet.pageNumbers[1]}`} />
+
+      <div aria-hidden className="absolute pointer-events-none" style={{ inset: '1.4%', border: '1px solid rgba(74,23,40,.62)', zIndex: 3 }} />
+      <div aria-hidden className="absolute pointer-events-none" style={{ top: '49.8%', left: '2%', right: '2%', height: 1, backgroundImage: 'repeating-linear-gradient(to right, rgba(74,23,40,.48) 0 1.5px, transparent 1.5px 7px)', zIndex: 4 }} />
+      <div aria-hidden className="absolute pointer-events-none" style={{ top: '49.35%', left: '4.5%', right: '4.5%', height: '1%', background: `linear-gradient(90deg, transparent, ${colors.line}, transparent)`, opacity: 0.35, zIndex: 4 }} />
+
+      {[0, 1].map((side) => {
+        const top = side === 0 ? '3.4%' : '52.2%';
+        const page = sheet.pageNumbers[side];
+        return (
+          <section key={page} style={{ position: 'absolute', top, left: '4.8%', right: '4.8%', height: '44%', zIndex: 5 }}>
+            <header style={{ height: '17%', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', borderBottom: '0.6px solid rgba(74,23,40,.3)', paddingBottom: '2%' }}>
+              <div>
+                <p style={{ margin: 0, fontFamily: 'monospace', fontSize: 'clamp(4.5px, .8cqw, 6.5px)', letterSpacing: '.22em', color: '#4a1728', opacity: 0.55, textTransform: 'uppercase' }}>EPRIS Journal · Stamp Register {sheet.editionMark}</p>
+                <h2 style={{ margin: '1.8% 0 0', fontFamily: '"Playfair Display", serif', fontSize: 'clamp(10px, 2.5cqw, 20px)', color: '#3a1520', fontWeight: 600, lineHeight: 1 }}>{sheet.title}</h2>
+                <p style={{ margin: '1.8% 0 0', fontFamily: 'monospace', fontSize: 'clamp(4px, .72cqw, 6px)', letterSpacing: '.15em', color: '#4a1728', opacity: 0.48, textTransform: 'uppercase' }}>{sheet.subtitle}</p>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8%' }}>
+                <span style={{ fontFamily: '"PT Sans", sans-serif', fontSize: 'clamp(17px, 4cqw, 32px)', lineHeight: 1, color: '#1a0b10', opacity: 0.66 }}>{page}</span>
+                <span style={{ width: 'clamp(13px, 3cqw, 24px)', aspectRatio: '1', display: 'grid', placeItems: 'center', background: colors.line, color: '#f8f2e7', fontFamily: 'monospace', fontSize: 'clamp(5px, 1.1cqw, 8px)', clipPath: 'polygon(20% 0,80% 0,100% 20%,100% 80%,80% 100%,20% 100%,0 80%,0 20%)' }}>{sheet.editionMark}</span>
+              </div>
+            </header>
+            <div style={{ height: '76%', paddingTop: '3.5%', display: 'grid', gridTemplateColumns: '1.1fr .9fr', gridTemplateRows: '1fr 1fr', gap: '3%' }}>
+              <div style={{ gridRow: '1 / 3' }}><StampField label="Reserved for editorial mark" align={side ? 'right' : 'left'} /></div>
+              <StampField label="Date · Place" align="right" />
+              <StampField label="Signature · Note" align="right" />
+            </div>
+            <footer style={{ position: 'absolute', left: 0, right: 0, bottom: 0, display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'monospace', fontSize: 'clamp(4px, .68cqw, 5.5px)', letterSpacing: '.15em', textTransform: 'uppercase', color: '#4a1728', opacity: 0.46 }}>
+              <span>Blank by design · Future stamp field</span>
+              <span>{sheet.key.toUpperCase()} / {page}</span>
+            </footer>
+          </section>
+        );
+      })}
+    </div>
+  );
+}
+
+export function PassportStampContactSheet() {
+  return (
+    <div className="mt-5 rounded-xl border border-[var(--pp-burgundy)]/10 bg-white/35 p-3 sm:p-4">
+      <div className="mb-3 flex items-center justify-between gap-3">
+        <div>
+          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--pp-burgundy)]/55">Blank stamp archive</p>
+          <p className="mt-1 font-serif text-sm text-[var(--pp-ink)]/70">6 reserved pages · ready for future marks</p>
+        </div>
+        <span className="font-mono text-[9px] tabular-nums text-[var(--pp-burgundy)]/45">02—07</span>
+      </div>
+      <div className="grid grid-cols-3 gap-2 sm:gap-3">
+        {PASSPORT_STAMP_SHEETS.map((sheet) => (
+          <div key={sheet.key} className="overflow-hidden rounded-[4px] border border-[var(--pp-burgundy)]/10 bg-white shadow-sm">
+            <PassportStampPage sheet={sheet} />
+          </div>
+        ))}
       </div>
     </div>
   );

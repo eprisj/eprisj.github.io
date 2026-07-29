@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Link2, Check, X } from 'lucide-react';
-import { PassportPreview } from './PassportPreview';
+import { Link2, Check, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { PassportPreview, PassportStampPage } from './PassportPreview';
 import type { PassportFields } from './passportRender';
+import { PASSPORT_STAMP_SHEETS } from './passportPages';
 
 const COVER_SRC = '/passport-assets/passport-cover.jpg';
 const ENDPAPER_SRC = '/passport-assets/passport-endpaper.jpg';
@@ -19,7 +20,7 @@ function ShareRow({ shareText, url }: { shareText: string; url: string }) {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   }, [shareText, url]);
-  const btn = 'flex items-center justify-center w-9 h-9 rounded-full border border-[var(--pp-burgundy)]/15 text-[var(--pp-burgundy)]/70 hover:text-[var(--pp-burgundy)] hover:border-[var(--pp-burgundy)]/40 transition-colors duration-300';
+  const btn = 'flex items-center justify-center w-11 h-11 rounded-full border border-[var(--pp-burgundy)]/15 text-[var(--pp-burgundy)]/70 hover:text-[var(--pp-burgundy)] hover:border-[var(--pp-burgundy)]/40 transition-colors duration-300';
   return (
     <div className="flex items-center gap-2.5">
       <button onClick={copy} title="Copy caption + link" className={btn}>
@@ -47,6 +48,7 @@ export function PassportBook({
   qrDataUrl: string | null;
 }) {
   const [open, setOpen] = useState(false);
+  const [pageIndex, setPageIndex] = useState(0);
   const [vw, setVw] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
   const [bookH, setBookH] = useState(560);
   const rightRef = useRef<HTMLDivElement>(null);
@@ -94,6 +96,18 @@ export function PassportBook({
 
   const shareText = `I just got my EPRIS Digital Member Passport \u2014 ${fields.membershipType || 'Member'} No. ${code}, issued to ${fields.givenNames} ${fields.surname}. Verify it here:`;
   const url = typeof window !== 'undefined' ? window.location.href : '';
+  const pageCount = 1 + PASSPORT_STAMP_SHEETS.length;
+  const activeSheet = pageIndex > 0 ? PASSPORT_STAMP_SHEETS[pageIndex - 1] : null;
+  const pageLabel = activeSheet ? `${activeSheet.pageNumbers[0]}–${activeSheet.pageNumbers[1]}` : '01';
+
+  const goToPage = useCallback((next: number) => {
+    setPageIndex(Math.max(0, Math.min(pageCount - 1, next)));
+  }, [pageCount]);
+
+  const closeBook = useCallback(() => {
+    setOpen(false);
+    window.setTimeout(() => setPageIndex(0), 380);
+  }, []);
 
   return (
     <div className="w-full flex flex-col items-center" style={{ overflowX: 'clip' }}>
@@ -106,13 +120,27 @@ export function PassportBook({
           src={ENDPAPER_SRC} alt="" aria-hidden
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: open ? 0.16 : 0, filter: 'blur(2px)', transition: 'opacity 0.5s ease 0.15s', borderRadius: 16, pointerEvents: 'none' }}
         />
-        {/* The passport card (observations + data, one combined sheet) */}
-        <div ref={rightRef} style={{ width: cardW, opacity: open ? 1 : 0, transform: open ? 'scale(1)' : 'scale(0.98)', transition: 'opacity 0.45s ease 0.15s, transform 0.45s ease 0.15s', pointerEvents: open ? 'auto' : 'none' }}>
-          <PassportPreview fields={fields} photoUrl={photoUrl} code={code} qrDataUrl={qrDataUrl} />
+        {/* Identity sheet first, then three deliberately blank stamp spreads. */}
+        <div
+          ref={rightRef}
+          style={{ width: cardW, opacity: open ? 1 : 0, transform: open ? 'scale(1)' : 'scale(0.98)', transition: 'opacity 0.45s ease 0.15s, transform 0.45s ease 0.15s', pointerEvents: open ? 'auto' : 'none' }}
+          tabIndex={open ? 0 : -1}
+          aria-label={`EPRIS passport page ${pageLabel}`}
+          onKeyDown={(e) => {
+            if (e.key === 'ArrowLeft') { e.preventDefault(); goToPage(pageIndex - 1); }
+            if (e.key === 'ArrowRight') { e.preventDefault(); goToPage(pageIndex + 1); }
+          }}
+        >
+          <div key={pageIndex} className="passport-page-enter">
+            {activeSheet
+              ? <PassportStampPage sheet={activeSheet} />
+              : <PassportPreview fields={fields} photoUrl={photoUrl} code={code} qrDataUrl={qrDataUrl} />}
+          </div>
         </div>
         {/* Cover fades out in place to reveal the card */}
         <div
           onClick={() => !open && setOpen(true)}
+          className="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--pp-burgundy)]"
           role="button"
           tabIndex={open ? -1 : 0}
           aria-label="Open passport"
@@ -124,8 +152,6 @@ export function PassportBook({
             transition: 'opacity 0.4s ease',
             cursor: open ? 'default' : 'pointer',
             pointerEvents: open ? 'none' : 'auto',
-            outline: 'none', // it stays in the DOM (just faded) after opening, so a lingering
-                              // browser focus ring would render right on top of the revealed card
           }}
         >
           <div style={{ position: 'absolute', inset: 0, borderRadius: 8, overflow: 'hidden', boxShadow: '0 26px 50px rgba(80,26,44,0.28)' }}>
@@ -141,20 +167,69 @@ export function PassportBook({
         </div>
       </div>
 
-      {/* Actions — appear once the passport is open */}
+      {/* Booklet navigation and sharing — appear once the passport is open. */}
       <div
-        className="mt-8 flex items-center gap-4"
+        className="mt-6 flex w-full max-w-[560px] flex-col items-center gap-4"
         style={{ opacity: open ? 1 : 0, transform: open ? 'translateY(0)' : 'translateY(8px)', transition: 'opacity 0.6s ease 0.5s, transform 0.6s ease 0.5s', pointerEvents: open ? 'auto' : 'none' }}
       >
-        <ShareRow shareText={shareText} url={url} />
-        <span className="w-px h-5 bg-[var(--pp-burgundy)]/10" />
-        <button
-          onClick={() => setOpen(false)}
-          className="flex items-center gap-1.5 px-2 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--pp-burgundy)]/60 hover:text-[var(--pp-burgundy)] transition-colors duration-300"
-        >
-          <X size={12} /> Close
-        </button>
+        <div className="flex w-full items-center justify-between rounded-full border border-[var(--pp-burgundy)]/10 bg-white/45 p-1.5 shadow-[0_8px_30px_rgba(80,26,44,.05)] backdrop-blur-sm">
+          <button
+            type="button"
+            onClick={() => goToPage(pageIndex - 1)}
+            disabled={pageIndex === 0}
+            aria-label="Previous passport page"
+            className="flex h-11 w-11 items-center justify-center rounded-full text-[var(--pp-burgundy)] transition-colors hover:bg-[var(--pp-burgundy)]/5 disabled:cursor-not-allowed disabled:opacity-25"
+          >
+            <ChevronLeft size={18} />
+          </button>
+          <div className="min-w-0 px-2 text-center" aria-live="polite">
+            <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--pp-burgundy)]/50">
+              {activeSheet ? 'Blank stamp spread' : 'Identity & observations'}
+            </p>
+            <p className="mt-1 truncate font-serif text-sm text-[var(--pp-ink)]/80">
+              {activeSheet ? activeSheet.title : 'Member data page'} · {pageLabel}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => goToPage(pageIndex + 1)}
+            disabled={pageIndex === pageCount - 1}
+            aria-label="Next passport page"
+            className="flex h-11 w-11 items-center justify-center rounded-full text-[var(--pp-burgundy)] transition-colors hover:bg-[var(--pp-burgundy)]/5 disabled:cursor-not-allowed disabled:opacity-25"
+          >
+            <ChevronRight size={18} />
+          </button>
+        </div>
+        <div className="flex items-center gap-2" aria-label={`Passport section ${pageIndex + 1} of ${pageCount}`}>
+          {Array.from({ length: pageCount }, (_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => goToPage(i)}
+              aria-label={`Open passport section ${i + 1}`}
+              aria-current={i === pageIndex ? 'page' : undefined}
+              className="flex h-11 w-11 items-center justify-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--pp-burgundy)]"
+            >
+              <span className={`block h-1.5 rounded-full transition-all duration-200 ${i === pageIndex ? 'w-5 bg-[var(--pp-burgundy)]' : 'w-1.5 bg-[var(--pp-burgundy)]/20'}`} />
+            </button>
+          ))}
+        </div>
+        <div className="flex items-center gap-4">
+          <ShareRow shareText={shareText} url={url} />
+          <span className="w-px h-5 bg-[var(--pp-burgundy)]/10" />
+          <button
+            onClick={closeBook}
+            className="flex min-h-11 items-center gap-1.5 px-2 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--pp-burgundy)]/60 hover:text-[var(--pp-burgundy)] transition-colors duration-300"
+          >
+            <X size={12} /> Close
+          </button>
+        </div>
       </div>
+      <style>{`
+        @keyframes passportPageEnter { from { opacity: .15; transform: translateX(8px) scale(.995); } to { opacity: 1; transform: translateX(0) scale(1); } }
+        .passport-page-enter { animation: passportPageEnter .24s ease-out both; }
+        @media (prefers-reduced-motion: reduce) { .passport-page-enter { animation: none; } }
+      `}</style>
     </div>
   );
 }
