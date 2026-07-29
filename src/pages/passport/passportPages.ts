@@ -7,6 +7,21 @@ export interface PassportStampSheetDefinition {
   accent: 'teal' | 'gold' | 'rose';
 }
 
+export type PassportStampKind = 'visit' | 'interview' | 'collaboration' | 'event' | 'verified';
+export type PassportStampInk = 'burgundy' | 'teal' | 'gold' | 'navy';
+
+/** One editorial mark occupies one numbered page in the member booklet. */
+export interface PassportStamp {
+  id: string;
+  page: string;
+  kind: PassportStampKind;
+  title: string;
+  place: string;
+  date: string;
+  note: string;
+  ink: PassportStampInk;
+}
+
 /**
  * Blank editorial spreads reserved for future EPRIS stamps. Each sheet holds
  * two numbered booklet pages and is deliberately content-free at launch.
@@ -37,3 +52,5 @@ export const PASSPORT_STAMP_SHEETS: PassportStampSheetDefinition[] = [
     accent: 'rose',
   },
 ];
+
+export const PASSPORT_STAMP_PAGES = PASSPORT_STAMP_SHEETS.flatMap((sheet) => sheet.pageNumbers);

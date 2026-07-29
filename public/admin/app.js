@@ -12691,6 +12691,7 @@ async function flushModernEditor() {
   const photoMetaEl = document.getElementById('passportsPhotoMeta');
   const attentionMetaEl = document.getElementById('passportsAttentionMeta');
   const duplicateMetaEl = document.getElementById('passportsDuplicateMeta');
+  const stampMetaEl = document.getElementById('passportsStampMeta');
   const searchInput = document.getElementById('passportSearchInput');
   const filterSelect = document.getElementById('passportFilterSelect');
   const sortSelect = document.getElementById('passportSortSelect');
@@ -12737,6 +12738,12 @@ async function flushModernEditor() {
       dateOfIssue: String(fields.dateOfIssue || fields.issueDate || fields.issuedAt || ''),
       dateOfExpiry: String(fields.dateOfExpiry || fields.expiryDate || fields.expiresAt || fields.validUntil || '')
     };
+  }
+
+  function passportStamps(passport) {
+    if (!Array.isArray(passport?.stamps)) return [];
+    const pages = new Set(['02', '03', '04', '05', '06', '07']);
+    return passport.stamps.filter((stamp) => stamp && typeof stamp === 'object' && pages.has(String(stamp.page || '')) && String(stamp.title || '').trim());
   }
 
   function safeHttpUrl(value) {
@@ -12947,6 +12954,7 @@ async function flushModernEditor() {
     const fullName = passportFullName(passport);
     const publicUrl = passportPublicUrl(code);
     const quality = getPassportQuality(passport);
+    const stamps = passportStamps(passport);
     const initials = fullName.split(/\s+/).map((part) => part[0]).join('').slice(0, 2).toUpperCase() || 'EP';
     previewEl.innerHTML = `
       <div class="pp-preview-card">
@@ -12961,11 +12969,19 @@ async function flushModernEditor() {
             <li><b>Статус:</b> ${escapeHtml(quality.label)}</li>
             <li><b>Создан:</b> ${escapeHtml(formatPassportDate(passport?.createdAt))}</li>
             <li><b>Срок:</b> ${escapeHtml(quality.expiry.label)}</li>
+            <li><b>Штампы:</b> ${stamps.length} из 6 страниц</li>
             <li><b>Ссылка:</b> /passport/${escapeHtml(code)}</li>
           </ul>
+          <div class="pp-stamp-strip" aria-label="Редакционные отметки">
+            ${['02', '03', '04', '05', '06', '07'].map((page) => {
+              const stamp = stamps.find((item) => String(item.page) === page);
+              return `<span class="pp-stamp-slot${stamp ? ' is-filled' : ''}" title="${stamp ? escapeHtml(String(stamp.title || '')) : `Страница ${page} свободна`}"><b>${page}</b>${stamp ? '<i>●</i>' : '<i>○</i>'}</span>`;
+            }).join('')}
+          </div>
           <div class="pp-preview-actions">
             <a href="${escapeHtml(publicUrl)}" target="_blank" rel="noreferrer" class="btn btn-sm">Открыть</a>
             <a href="${escapeHtml(publicUrl)}?edit=1" target="_blank" rel="noreferrer" class="btn btn-sm">Редактировать</a>
+            <a href="${escapeHtml(publicUrl)}?edit=1&stamp=1" target="_blank" rel="noreferrer" class="btn btn-sm btn-primary">Штампы / печать</a>
             <button class="btn btn-sm" type="button" data-preview-copy="${escapeHtml(code)}">Скопировать</button>
             <button class="btn btn-sm btn-danger" type="button" data-preview-annul="${escapeHtml(code)}">Аннулировать</button>
           </div>
@@ -12986,7 +13002,7 @@ async function flushModernEditor() {
       showToast('info', 'Нет паспортов для экспорта');
       return;
     }
-    const header = ['code', 'name', 'country', 'city', 'membership_type', 'professional_level', 'created_at', 'expiry', 'has_photo', 'public_url', 'photo_url', 'quality'];
+    const header = ['code', 'name', 'country', 'city', 'membership_type', 'professional_level', 'created_at', 'expiry', 'has_photo', 'stamp_count', 'public_url', 'photo_url', 'quality'];
     const body = rows.map((passport) => {
       const fields = passportFields(passport);
       const code = passportCode(passport);
@@ -13001,6 +13017,7 @@ async function flushModernEditor() {
         passport?.createdAt || '',
         fields.dateOfExpiry || '',
         safeHttpUrl(passport?.photoUrl) ? 'yes' : 'no',
+        passportStamps(passport).length,
         passportPublicUrl(code),
         safeHttpUrl(passport?.photoUrl),
         quality.label
@@ -13042,6 +13059,8 @@ async function flushModernEditor() {
         if (filterMode === 'attention') return !quality.complete;
         if (filterMode === 'duplicates') return quality.duplicate;
         if (filterMode === 'expiring') return quality.expiry.state === 'expiring' || quality.expiry.state === 'expired';
+        if (filterMode === 'stamped') return passportStamps(passport).length > 0;
+        if (filterMode === 'unstamped') return passportStamps(passport).length === 0;
         return true;
       });
     }
@@ -13061,6 +13080,7 @@ async function flushModernEditor() {
     if (photoMetaEl) photoMetaEl.textContent = `${allPassports.filter((passport) => safeHttpUrl(passport?.photoUrl)).length} с фото`;
     if (attentionMetaEl) attentionMetaEl.textContent = `${allPassports.filter((passport) => !getPassportQuality(passport).complete).length} проверить`;
     if (duplicateMetaEl) duplicateMetaEl.textContent = `${duplicateCodes.size} дублей`;
+    if (stampMetaEl) stampMetaEl.textContent = `${allPassports.reduce((sum, passport) => sum + passportStamps(passport).length, 0)} отметок`;
 
     if (filtered.length === 0) {
       const hasQuery = Boolean(searchInput?.value.trim());
@@ -13082,6 +13102,7 @@ async function flushModernEditor() {
       const fullName = passportFullName(passport);
       const meta = [fields.country, fields.city, fields.membershipType].filter(Boolean).join(' · ') || 'Данные участника не заполнены';
       const quality = getPassportQuality(passport);
+      const stampCount = passportStamps(passport).length;
       const expiryBadge = quality.expiry.state === 'expired'
         ? '<span class="pp-status danger">срок истёк</span>'
         : quality.expiry.state === 'expiring'
@@ -13097,6 +13118,7 @@ async function flushModernEditor() {
           <div class="pp-person-meta">${escapeHtml(meta)}</div>
           <span class="pp-status ${quality.complete ? 'ok' : 'warn'}">${escapeHtml(quality.complete ? 'готов' : 'проверить')}</span>
           ${expiryBadge}${duplicateBadge}
+          ${stampCount ? `<span class="pp-status stamped">${stampCount} шт.</span>` : ''}
         </td>
         <td>
           ${photoUrl ? `<a class="pp-photo-link" href="${escapeHtml(photoUrl)}" target="_blank" rel="noreferrer" title="Открыть оригинал фото"><img class="pp-photo" src="${escapeHtml(photoUrl)}" width="40" height="40" loading="lazy" alt="Фото ${escapeHtml(fullName)}" /></a>` : '<span class="text-muted">Нет фото</span>'}
@@ -13106,6 +13128,7 @@ async function flushModernEditor() {
           <div class="pp-row-actions">
             <button class="btn btn-sm btn-copy-passport" type="button" data-url="${escapeHtml(publicUrl)}">Ссылка</button>
             <a href="${escapeHtml(publicUrl)}?edit=1" target="_blank" rel="noreferrer" class="btn btn-sm">Редактировать</a>
+            <a href="${escapeHtml(publicUrl)}?edit=1&stamp=1" target="_blank" rel="noreferrer" class="btn btn-sm">Штампы</a>
             <button class="btn btn-sm btn-danger btn-annul" type="button" data-code="${escapeHtml(code)}">Аннулировать</button>
             <a href="${escapeHtml(publicUrl)}" target="_blank" rel="noreferrer" class="btn btn-sm">Смотреть ↗</a>
           </div>

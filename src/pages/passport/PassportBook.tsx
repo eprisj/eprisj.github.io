@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link2, Check, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { PassportPreview, PassportStampPage } from './PassportPreview';
 import type { PassportFields } from './passportRender';
-import { PASSPORT_STAMP_SHEETS } from './passportPages';
+import { PASSPORT_STAMP_SHEETS, type PassportStamp } from './passportPages';
 
 const COVER_SRC = '/passport-assets/passport-cover.jpg';
 const ENDPAPER_SRC = '/passport-assets/passport-endpaper.jpg';
@@ -40,12 +40,13 @@ function ShareRow({ shareText, url }: { shareText: string; url: string }) {
 }
 
 export function PassportBook({
-  fields, photoUrl, code, qrDataUrl,
+  fields, photoUrl, code, qrDataUrl, stamps = [],
 }: {
   fields: PassportFields;
   photoUrl: string | null;
   code: string;
   qrDataUrl: string | null;
+  stamps?: PassportStamp[];
 }) {
   const [open, setOpen] = useState(false);
   const [pageIndex, setPageIndex] = useState(0);
@@ -110,11 +111,12 @@ export function PassportBook({
   }, []);
 
   return (
-    <div className="w-full flex flex-col items-center" style={{ overflowX: 'clip' }}>
+    <div className="passport-zoom-lock w-full flex flex-col items-center" style={{ overflowX: 'clip', touchAction: 'pan-y' }}>
       {/* Cover fades away in place to reveal the combined card underneath — a
           plain crossfade, no floating/bobbing loop and no 3D flip (both read
           as jittery rather than premium at this size). */}
       <div style={{ position: 'relative', width: cardW, minHeight: bookH, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div aria-hidden style={{ position: 'absolute', inset: '8px -5px -8px 5px', borderRadius: 10, border: '1px solid rgba(80,26,44,.1)', background: 'rgba(255,255,255,.34)', boxShadow: '0 18px 48px rgba(80,26,44,.1)', opacity: open ? 1 : 0, transition: 'opacity .35s ease .12s', pointerEvents: 'none' }} />
         {/* Endpaper texture behind the revealed card */}
         <img
           src={ENDPAPER_SRC} alt="" aria-hidden
@@ -133,7 +135,7 @@ export function PassportBook({
         >
           <div key={pageIndex} className="passport-page-enter">
             {activeSheet
-              ? <PassportStampPage sheet={activeSheet} />
+              ? <PassportStampPage sheet={activeSheet} stamps={stamps} />
               : <PassportPreview fields={fields} photoUrl={photoUrl} code={code} qrDataUrl={qrDataUrl} />}
           </div>
         </div>
@@ -214,6 +216,9 @@ export function PassportBook({
             </button>
           ))}
         </div>
+        <p className="-mt-2 font-mono text-[8px] uppercase tracking-[0.2em] text-[var(--pp-burgundy)]/40">
+          {stamps.length ? `${stamps.length} verified ${stamps.length === 1 ? 'mark' : 'marks'} · booklet 01—07` : 'Booklet 01—07 · editorial archive'}
+        </p>
         <div className="flex items-center gap-4">
           <ShareRow shareText={shareText} url={url} />
           <span className="w-px h-5 bg-[var(--pp-burgundy)]/10" />

@@ -2,7 +2,7 @@ import { useId, type CSSProperties } from 'react';
 import type { PassportFields } from './passportRender';
 import { generateSignatureString } from '../../lib/passportCode';
 import { buildMRZ } from '../../lib/mrz';
-import { PASSPORT_STAMP_SHEETS, type PassportStampSheetDefinition } from './passportPages';
+import { PASSPORT_STAMP_SHEETS, type PassportStamp, type PassportStampSheetDefinition } from './passportPages';
 
 export { buildMRZ };
 
@@ -417,7 +417,48 @@ const STAMP_ACCENTS = {
   rose: { line: '#9a4f68', wash: 'rgba(207,123,151,.2)', second: 'rgba(75,158,167,.15)' },
 } as const;
 
-function StampField({ label, align = 'left' }: { label: string; align?: 'left' | 'right' }) {
+const STAMP_INK_COLORS = {
+  burgundy: '#74213e',
+  teal: '#1f727a',
+  gold: '#896329',
+  navy: '#294968',
+} as const;
+
+const STAMP_KIND_LABELS = {
+  visit: 'Studio Visit',
+  interview: 'Interview',
+  collaboration: 'Collaboration',
+  event: 'Cultural Event',
+  verified: 'Editorial Verified',
+} as const;
+
+function EditorialStampMark({ stamp }: { stamp: PassportStamp }) {
+  const ink = STAMP_INK_COLORS[stamp.ink] || STAMP_INK_COLORS.burgundy;
+  const rotation = ((Number(stamp.page) % 5) - 2) * 2.2;
+  return (
+    <div
+      aria-label={`${STAMP_KIND_LABELS[stamp.kind]}: ${stamp.title}`}
+      style={{
+        position: 'absolute', left: '50%', top: '50%', width: '70%', aspectRatio: '1',
+        transform: `translate(-50%,-50%) rotate(${rotation}deg)`, border: `clamp(1.4px,.3cqw,2.8px) solid ${ink}`,
+        borderRadius: '50%', color: ink, opacity: 0.87, display: 'grid', placeItems: 'center',
+        filter: 'contrast(1.08)', mixBlendMode: 'multiply',
+      }}
+    >
+      <div aria-hidden style={{ position: 'absolute', inset: '5%', border: `clamp(.8px,.18cqw,1.6px) solid ${ink}`, borderRadius: '50%' }} />
+      <div style={{ width: '78%', textAlign: 'center', fontFamily: 'monospace', textTransform: 'uppercase' }}>
+        <span style={{ display: 'block', fontSize: 'clamp(4px,.72cqw,6.4px)', letterSpacing: '.18em', lineHeight: 1.15 }}>{STAMP_KIND_LABELS[stamp.kind]}</span>
+        <span aria-hidden style={{ display: 'block', height: 1, margin: '6% 0', background: ink, opacity: 0.8 }} />
+        <strong style={{ display: 'block', fontFamily: '"PT Sans", sans-serif', fontSize: 'clamp(6px,1.35cqw,11px)', lineHeight: 1.05, letterSpacing: '.04em' }}>{stamp.title}</strong>
+        <span style={{ display: 'block', marginTop: '6%', fontSize: 'clamp(4px,.68cqw,6px)', letterSpacing: '.08em', lineHeight: 1.1 }}>{stamp.place || 'EPRIS JOURNAL'}</span>
+        <span style={{ display: 'block', marginTop: '4%', fontSize: 'clamp(4px,.72cqw,6.5px)', fontWeight: 700, letterSpacing: '.12em' }}>{stamp.date || 'EDITORIAL RECORD'}</span>
+      </div>
+      <span aria-hidden style={{ position: 'absolute', left: '9%', right: '9%', top: '48%', borderTop: `1px solid ${ink}`, transform: 'rotate(-14deg)', opacity: 0.2 }} />
+    </div>
+  );
+}
+
+function StampField({ label, align = 'left', stamp }: { label: string; align?: 'left' | 'right'; stamp?: PassportStamp | null }) {
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%', minHeight: 0, border: '0.7px solid rgba(74,23,40,.25)', background: 'rgba(255,255,255,.12)', overflow: 'hidden' }}>
       <div aria-hidden style={{ position: 'absolute', inset: '8%', border: '0.6px solid rgba(74,23,40,.12)', borderRadius: '50%' }} />
@@ -425,12 +466,13 @@ function StampField({ label, align = 'left' }: { label: string; align?: 'left' |
       <span style={{ position: 'absolute', left: '8%', right: '8%', bottom: '8%', fontFamily: 'monospace', fontSize: 'clamp(4.5px, .85cqw, 7px)', letterSpacing: '.16em', textTransform: 'uppercase', color: '#4a1728', opacity: 0.38, textAlign: align }}>
         {label}
       </span>
+      {stamp && <EditorialStampMark stamp={stamp} />}
     </div>
   );
 }
 
-/** Two intentionally blank booklet pages reserved for future editorial stamps. */
-export function PassportStampPage({ sheet }: { sheet: PassportStampSheetDefinition }) {
+/** Two booklet pages reserved for editorial stamps and visit marks. */
+export function PassportStampPage({ sheet, stamps = [] }: { sheet: PassportStampSheetDefinition; stamps?: PassportStamp[] }) {
   const colors = STAMP_ACCENTS[sheet.accent];
   return (
     <div
@@ -442,7 +484,7 @@ export function PassportStampPage({ sheet }: { sheet: PassportStampSheetDefiniti
         borderRadius: 8,
         boxShadow: '0 2px 6px rgba(74,23,40,.1), 0 12px 38px rgba(74,23,40,.13)',
       } as CSSProperties}
-      aria-label={`${sheet.title}, blank stamp pages ${sheet.pageNumbers[0]} and ${sheet.pageNumbers[1]}`}
+      aria-label={`${sheet.title}, stamp pages ${sheet.pageNumbers[0]} and ${sheet.pageNumbers[1]}${stamps.length ? `, ${stamps.length} recorded` : ''}`}
     >
       <img src={IDENTITY_ART_SRC} alt="" aria-hidden draggable={false} className="absolute inset-0 w-full h-full pointer-events-none" style={{ objectFit: 'cover', objectPosition: 'center 48%', opacity: 0.3, mixBlendMode: 'multiply' }} />
       <div aria-hidden className="absolute inset-0 pointer-events-none" style={{ background: `linear-gradient(145deg, ${colors.wash}, rgba(249,244,231,.34) 48%, ${colors.second})`, mixBlendMode: 'multiply' }} />
@@ -456,6 +498,7 @@ export function PassportStampPage({ sheet }: { sheet: PassportStampSheetDefiniti
       {[0, 1].map((side) => {
         const top = side === 0 ? '3.4%' : '52.2%';
         const page = sheet.pageNumbers[side];
+        const stamp = stamps.find((item) => item.page === page);
         return (
           <section key={page} style={{ position: 'absolute', top, left: '4.8%', right: '4.8%', height: '44%', zIndex: 5 }}>
             <header style={{ height: '17%', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', borderBottom: '0.6px solid rgba(74,23,40,.3)', paddingBottom: '2%' }}>
@@ -470,12 +513,12 @@ export function PassportStampPage({ sheet }: { sheet: PassportStampSheetDefiniti
               </div>
             </header>
             <div style={{ height: '76%', paddingTop: '3.5%', display: 'grid', gridTemplateColumns: '1.1fr .9fr', gridTemplateRows: '1fr 1fr', gap: '3%' }}>
-              <div style={{ gridRow: '1 / 3' }}><StampField label="Reserved for editorial mark" align={side ? 'right' : 'left'} /></div>
-              <StampField label="Date · Place" align="right" />
-              <StampField label="Signature · Note" align="right" />
+              <div style={{ gridRow: '1 / 3' }}><StampField label={stamp ? 'Authenticated editorial mark' : 'Reserved for editorial mark'} align={side ? 'right' : 'left'} stamp={stamp} /></div>
+              <StampField label={stamp ? [stamp.date, stamp.place].filter(Boolean).join(' · ') : 'Date · Place'} align="right" />
+              <StampField label={stamp?.note || 'Signature · Note'} align="right" />
             </div>
             <footer style={{ position: 'absolute', left: 0, right: 0, bottom: 0, display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'monospace', fontSize: 'clamp(4px, .68cqw, 5.5px)', letterSpacing: '.15em', textTransform: 'uppercase', color: '#4a1728', opacity: 0.46 }}>
-              <span>Blank by design · Future stamp field</span>
+              <span>{stamp ? 'Recorded by EPRIS editorial desk' : 'Blank by design · Future stamp field'}</span>
               <span>{sheet.key.toUpperCase()} / {page}</span>
             </footer>
           </section>
@@ -485,20 +528,20 @@ export function PassportStampPage({ sheet }: { sheet: PassportStampSheetDefiniti
   );
 }
 
-export function PassportStampContactSheet() {
+export function PassportStampContactSheet({ stamps = [] }: { stamps?: PassportStamp[] }) {
   return (
     <div className="mt-5 rounded-xl border border-[var(--pp-burgundy)]/10 bg-white/35 p-3 sm:p-4">
       <div className="mb-3 flex items-center justify-between gap-3">
         <div>
           <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--pp-burgundy)]/55">Blank stamp archive</p>
-          <p className="mt-1 font-serif text-sm text-[var(--pp-ink)]/70">6 reserved pages · ready for future marks</p>
+          <p className="mt-1 font-serif text-sm text-[var(--pp-ink)]/70">{stamps.length ? `${stamps.length} editorial ${stamps.length === 1 ? 'mark' : 'marks'} · ${6 - stamps.length} pages available` : '6 reserved pages · ready for future marks'}</p>
         </div>
         <span className="font-mono text-[9px] tabular-nums text-[var(--pp-burgundy)]/45">02—07</span>
       </div>
       <div className="grid grid-cols-3 gap-2 sm:gap-3">
         {PASSPORT_STAMP_SHEETS.map((sheet) => (
           <div key={sheet.key} className="overflow-hidden rounded-[4px] border border-[var(--pp-burgundy)]/10 bg-white shadow-sm">
-            <PassportStampPage sheet={sheet} />
+            <PassportStampPage sheet={sheet} stamps={stamps} />
           </div>
         ))}
       </div>

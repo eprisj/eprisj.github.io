@@ -1,4 +1,5 @@
 import type { PassportFields } from './passportRender';
+import type { PassportStamp } from './passportPages';
 
 const API_BASE = 'https://api.eprisjournal.com';
 
@@ -6,8 +7,10 @@ const API_BASE = 'https://api.eprisjournal.com';
 // into either the admin panel or the passport creator unlocks both (shared
 // single sign-on via localStorage, same origin).
 const ADMIN_PW_STORAGE_KEY = 'epris_admin_pw_saved';
+let sessionAdminPassword = '';
 
 export function getSavedAdminPassword(): string {
+  if (sessionAdminPassword) return sessionAdminPassword;
   try {
     const b64 = localStorage.getItem(ADMIN_PW_STORAGE_KEY);
     return b64 ? atob(b64) : '';
@@ -16,7 +19,9 @@ export function getSavedAdminPassword(): string {
   }
 }
 
-export function saveAdminPassword(pw: string): void {
+export function saveAdminPassword(pw: string, persistent = true): void {
+  sessionAdminPassword = pw;
+  if (!persistent) return;
   try { localStorage.setItem(ADMIN_PW_STORAGE_KEY, btoa(pw)); } catch { /* localStorage unavailable */ }
 }
 
@@ -41,6 +46,8 @@ export interface PublishedPassport {
   fields: PassportFields;
   photoUrl: string | null;
   createdAt: string;
+  updatedAt?: string;
+  stamps?: PassportStamp[];
 }
 
 export interface PublishOptions {
@@ -56,6 +63,7 @@ export async function publishPassport(
   code: string,
   fields: PassportFields,
   photoDataUrl: string | null,
+  stamps: PassportStamp[] = [],
   opts: PublishOptions = {},
 ): Promise<{ ok: boolean; code?: string; url?: string; error?: string }> {
   let photoContentType: string | undefined;
@@ -64,16 +72,16 @@ export async function publishPassport(
     const m = photoDataUrl.match(/^data:([^;]+);base64,(.+)$/);
     if (m) { photoContentType = m[1]; photoData = m[2]; }
   }
-  const body: Record<string, unknown> = { code, fields, photoData, photoContentType };
+  const body: Record<string, unknown> = { code, fields, photoData, photoContentType, stamps };
   if (opts.overwrite) body.overwrite = true;
   // Only relevant when no new photo is uploaded: keep or clear the existing one.
   if (!photoData) {
     if (opts.clearPhoto) body.clearPhoto = true;
     else if (opts.existingPhotoUrl) body.existingPhotoUrl = opts.existingPhotoUrl;
   }
-  // Sent for when the API adds the same server-side check /passport-annul and
-  // /content already enforce — the UI-level gate (PassportAuthGate) is the
-  // actual protection today, since this endpoint doesn't validate it yet.
+  // The live API requires the same admin credential before it accepts either
+  // passport data or editorial stamps. The value also lives in memory when
+  // the editor chooses not to remember it between browser sessions.
   const pw = getSavedAdminPassword();
   const headers: Record<string, string> = { 'Content-Type': 'application/json' };
   if (pw) headers['X-Admin-Password'] = pw;

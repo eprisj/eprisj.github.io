@@ -1,7 +1,7 @@
 import QRCode from 'qrcode';
 import { generateSignatureString } from '../../lib/passportCode';
 import { buildMRZ } from '../../lib/mrz';
-import type { PassportStampSheetDefinition } from './passportPages';
+import type { PassportStamp, PassportStampSheetDefinition } from './passportPages';
 
 export interface PassportFields {
   surname: string;
@@ -401,8 +401,55 @@ const STAMP_CANVAS_ACCENTS = {
   rose: { line: '#9a4f68', wash: '#dfb0bc', wash2: '#a5d0d2' },
 } as const;
 
-/** Render one two-page blank stamp sheet for the print-ready passport PDF. */
-export async function renderStampPagePNG(sheet: PassportStampSheetDefinition): Promise<string> {
+const STAMP_CANVAS_INKS = {
+  burgundy: '#74213e',
+  teal: '#1f727a',
+  gold: '#896329',
+  navy: '#294968',
+} as const;
+
+const STAMP_CANVAS_KIND_LABELS = {
+  visit: 'STUDIO VISIT',
+  interview: 'INTERVIEW',
+  collaboration: 'COLLABORATION',
+  event: 'CULTURAL EVENT',
+  verified: 'EDITORIAL VERIFIED',
+} as const;
+
+function drawEditorialStamp(ctx: CanvasRenderingContext2D, stamp: PassportStamp, x: number, y: number, w: number, h: number) {
+  const ink = STAMP_CANVAS_INKS[stamp.ink] || STAMP_CANVAS_INKS.burgundy;
+  const radius = Math.min(w, h) * 0.34;
+  const rotation = (((Number(stamp.page) || 2) % 5) - 2) * 2.2 * Math.PI / 180;
+  ctx.save();
+  ctx.translate(x + w / 2, y + h / 2);
+  ctx.rotate(rotation);
+  ctx.globalAlpha = 0.88;
+  ctx.strokeStyle = ink;
+  ctx.fillStyle = ink;
+  ctx.lineWidth = 4.5;
+  ctx.beginPath(); ctx.arc(0, 0, radius, 0, Math.PI * 2); ctx.stroke();
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(0, 0, radius * 0.9, 0, Math.PI * 2); ctx.stroke();
+  ctx.textAlign = 'center';
+  ctx.font = '700 12px monospace';
+  ctx.letterSpacing = '2px';
+  ctx.fillText(STAMP_CANVAS_KIND_LABELS[stamp.kind], 0, -radius * 0.52);
+  ctx.letterSpacing = '0px';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(-radius * 0.68, -radius * 0.32); ctx.lineTo(radius * 0.68, -radius * 0.32); ctx.stroke();
+  ctx.font = '700 19px "PT Sans", sans-serif';
+  wrapText(ctx, stamp.title.toUpperCase(), 0, -5, radius * 1.35, 20);
+  ctx.font = '600 11px monospace';
+  ctx.fillText((stamp.place || 'EPRIS JOURNAL').toUpperCase().slice(0, 38), 0, radius * 0.42);
+  ctx.font = '700 12px monospace';
+  ctx.fillText((stamp.date || 'EDITORIAL RECORD').toUpperCase(), 0, radius * 0.62);
+  ctx.globalAlpha = 0.2;
+  ctx.beginPath(); ctx.moveTo(-radius * 0.72, radius * 0.08); ctx.lineTo(radius * 0.72, -radius * 0.16); ctx.stroke();
+  ctx.restore();
+}
+
+/** Render one two-page stamp sheet for the print-ready passport PDF. */
+export async function renderStampPagePNG(sheet: PassportStampSheetDefinition, stamps: PassportStamp[] = []): Promise<string> {
   const canvas = document.createElement('canvas');
   canvas.width = W; canvas.height = H;
   const ctx = canvas.getContext('2d');
@@ -479,10 +526,12 @@ export async function renderStampPagePNG(sheet: PassportStampSheetDefinition): P
     const fieldsY = top + 100, fieldsH = height - 125, gap = 18;
     const leftW = (W - pad * 2 - gap) * 0.56;
     const rightW = W - pad * 2 - gap - leftW;
-    drawStampField(pad, fieldsY, leftW, fieldsH, 'Reserved for editorial mark', side === 0 ? 'left' : 'right');
-    drawStampField(pad + leftW + gap, fieldsY, rightW, (fieldsH - gap) / 2, 'Date · Place', 'right');
-    drawStampField(pad + leftW + gap, fieldsY + (fieldsH + gap) / 2, rightW, (fieldsH - gap) / 2, 'Signature · Note', 'right');
-    ctx.save(); ctx.fillStyle = C.burgundy; ctx.globalAlpha = 0.4; ctx.font = '9px monospace'; ctx.fillText('BLANK BY DESIGN · FUTURE STAMP FIELD', pad, top + height); ctx.textAlign = 'right'; ctx.fillText(`${sheet.key.toUpperCase()} / ${page}`, W - pad, top + height); ctx.restore();
+    const stamp = stamps.find((item) => item.page === page);
+    drawStampField(pad, fieldsY, leftW, fieldsH, stamp ? 'Authenticated editorial mark' : 'Reserved for editorial mark', side === 0 ? 'left' : 'right');
+    drawStampField(pad + leftW + gap, fieldsY, rightW, (fieldsH - gap) / 2, stamp ? [stamp.date, stamp.place].filter(Boolean).join(' · ') : 'Date · Place', 'right');
+    drawStampField(pad + leftW + gap, fieldsY + (fieldsH + gap) / 2, rightW, (fieldsH - gap) / 2, stamp?.note || 'Signature · Note', 'right');
+    if (stamp) drawEditorialStamp(ctx, stamp, pad, fieldsY, leftW, fieldsH);
+    ctx.save(); ctx.fillStyle = C.burgundy; ctx.globalAlpha = 0.4; ctx.font = '9px monospace'; ctx.fillText(stamp ? 'RECORDED BY EPRIS EDITORIAL DESK' : 'BLANK BY DESIGN · FUTURE STAMP FIELD', pad, top + height); ctx.textAlign = 'right'; ctx.fillText(`${sheet.key.toUpperCase()} / ${page}`, W - pad, top + height); ctx.restore();
   });
 
   return canvas.toDataURL('image/jpeg', 0.94);
