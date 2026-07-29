@@ -771,7 +771,7 @@ function NavBar({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2, ease: EASE }}
-              className="fixed inset-0 z-[70] bg-[rgb(var(--c-bg-rgb)_/_0.96)] backdrop-blur-sm flex items-center justify-center p-4 pt-[calc(1rem+env(safe-area-inset-top))] pb-[calc(1rem+env(safe-area-inset-bottom))]"
+            className="fixed inset-0 z-[70] bg-[rgb(var(--c-bg-rgb)_/_0.96)] backdrop-blur-sm flex items-center justify-center p-4 pt-[calc(1rem+env(safe-area-inset-top))] pb-[calc(1rem+env(safe-area-inset-bottom))]"
             role="dialog"
             aria-modal="true"
             aria-labelledby="site-search-title"
