@@ -497,10 +497,30 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 const cardHover = { y: -6, transition: { duration: 0.28, ease: EASE } };
 const cardTap = { scale: 0.985, transition: { duration: 0.15, ease: EASE } };
 const ROUTE_SEQUENCE = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'design', 'studio', 'radio', 'podcasts', 'passport'];
+/* Route transitions run in mode="wait", so the old page leaves BEFORE the new
+   one arrives and the two durations add up. Symmetrical timings therefore read
+   as a lag, not as grace: the eye is waiting on nothing for the whole exit.
+   Leaving is quick and small, arriving is longer and does the expressive work —
+   which is also how it feels in print, where a page is turned away sharply and
+   the next one settles.
+
+   The scale is deliberately tiny. At 0.99 it reads as depth; anything more and
+   an editorial page looks like it is being thrown at the reader. */
 const routeVariants = {
-  enter: (direction: number) => ({ opacity: 0, x: direction * 24, y: 8 }),
-  center: { opacity: 1, x: 0, y: 0 },
-  exit: (direction: number) => ({ opacity: 0, x: direction * -14, y: -4 }),
+  enter: (direction: number) => ({ opacity: 0, x: direction * 20, y: 10, scale: 0.99 }),
+  center: {
+    opacity: 1, x: 0, y: 0, scale: 1,
+    transition: {
+      opacity: { duration: 0.3, ease: EASE },
+      x: { duration: 0.42, ease: EASE },
+      y: { duration: 0.42, ease: EASE },
+      scale: { duration: 0.42, ease: EASE },
+    },
+  },
+  exit: (direction: number) => ({
+    opacity: 0, x: direction * -10, y: -5, scale: 0.997,
+    transition: { duration: 0.16, ease: [0.4, 0, 1, 1] as const },
+  }),
 };
 
 function routePosition(routeKey: string): number {
@@ -519,11 +539,6 @@ function RouteTransition({ routeKey, direction, children }: { routeKey: string; 
         initial="enter"
         animate="center"
         exit="exit"
-        transition={{
-          opacity: { duration: 0.22, ease: EASE },
-          x: { duration: 0.32, ease: EASE },
-          y: { duration: 0.28, ease: EASE },
-        }}
         className="route-motion-surface min-h-[calc(100dvh-4rem)]"
       >
         {children}
@@ -637,28 +652,24 @@ function NavBar({
         >
           <span className="text-lg min-[360px]:text-xl tracking-[0.22em] text-[var(--c-accent)] pl-[0.22em]">{brandName}</span>
         </button>
-        <div className="relative z-10 flex items-center gap-1.5">
+        {/* Language is the only control that earns a place beside the wordmark
+            here. Issue used to sit next to it as a filled pill, which made the
+            header compete with the page: two buttons plus the mark, the loudest
+            of them a shortcut to one section among eleven — all of which the
+            menu already lists. The pill is small and quiet on purpose; the tap
+            target underneath it is not, hence the inset ::after. */}
+        <div className="relative z-10 flex items-center">
           <button
             type="button"
             onClick={() => { setIsMenuOpen(false); setIsLangOpen(true); }}
             aria-label={`${LANG_LABELS[currentLang] || currentLang}. Select language`}
             aria-haspopup="dialog"
             aria-expanded={isLangOpen}
-            className="h-11 min-w-14 px-3 inline-flex items-center justify-center gap-1.5 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.28)] bg-[rgb(var(--c-bg-rgb)_/_0.92)] font-mono text-[11px] font-bold tracking-[0.12em] uppercase hover:bg-[rgb(var(--c-accent-rgb)_/_0.08)] active:scale-95 transition"
+            className="relative h-9 px-2.5 inline-flex items-center justify-center gap-1 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.24)] font-mono text-[10px] font-bold tracking-[0.14em] uppercase text-[var(--c-accent)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.07)] active:scale-95 transition after:absolute after:-inset-1.5 after:content-['']"
           >
-            <Globe size={14} aria-hidden="true" />
+            <Globe size={12} aria-hidden="true" className="opacity-70" />
             {currentLang}
           </button>
-          {isSectionInNavigation('issue') && <button
-            type="button"
-            onClick={() => { setActiveTab('issue'); setIsMenuOpen(false); }}
-            aria-label={t('nav.issue')}
-            title={t('nav.issue')}
-            className="hidden min-[360px]:inline-flex h-11 min-w-[4.25rem] items-center justify-center gap-1.5 bg-[var(--c-accent)] text-[var(--c-bg)] rounded-full px-3 font-mono text-[10px] tracking-[0.12em] uppercase hover:bg-[#3d1421] active:scale-95 transition shadow-[0_10px_24px_-18px_rgb(var(--c-accent-rgb)_/_0.85)]"
-          >
-            <FileText size={13} aria-hidden="true" />
-            Issue
-          </button>}
         </div>
       </nav>
 
@@ -761,11 +772,15 @@ function NavBar({
               exit={{ opacity: 0 }}
               onClick={() => setIsLangOpen(false)}
             />
+            {/* A sheet the thumb pulls up should answer like a physical one, so
+                it arrives on a spring — damped hard enough not to wobble, which
+                on a serif magazine would read as a toy. It leaves on a tween:
+                springing away makes dismissal feel hesitant. */}
             <motion.div
               initial={{ y: '100%' }}
               animate={{ y: 0 }}
-              exit={{ y: '100%' }}
-              transition={{ duration: 0.28, ease: EASE }}
+              exit={{ y: '100%', transition: { duration: 0.2, ease: [0.4, 0, 1, 1] } }}
+              transition={{ type: 'spring', stiffness: 420, damping: 40, mass: 0.9 }}
               className="absolute inset-x-0 bottom-0 max-h-[78dvh] overflow-y-auto rounded-t-[28px] border-t border-[rgb(var(--c-accent-rgb)_/_0.24)] bg-[var(--c-bg)] px-4 pt-3 pb-[calc(1rem+env(safe-area-inset-bottom))] shadow-2xl"
             >
               <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-[rgb(var(--c-accent-rgb)_/_0.22)]" aria-hidden="true" />
