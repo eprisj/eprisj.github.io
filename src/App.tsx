@@ -29,10 +29,12 @@ import {
   setPreviewOverride,
   getTranslations,
   getTheme,
+  isSectionEnabled,
+  isSectionInNavigation,
   loadLiveContent,
   subscribeContent
 } from './data';
-import type { SiteTheme } from './data';
+import type { SiteTheme, VisibilitySectionKey } from './data';
 import { Search, ArrowUpRight, FileText, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
 
 // Issue-draft preview: when the admin opens /issue?preview=1, load the unsaved
@@ -535,16 +537,18 @@ function NavBar({
     };
   }, [isSearchOpen]);
 
-  const tabs = [
+  const tabs: { id: VisibilitySectionKey; label: string }[] = [
     { id: 'gallery', label: t('nav.gallery') },
     { id: 'articles', label: t('nav.articles') },
     { id: 'reviews', label: t('nav.reviews') },
     { id: 'about', label: t('nav.about') },
+    { id: 'manifest', label: t('nav.manifest') },
     { id: 'issue', label: t('nav.issue') },
     { id: 'design', label: 'Design' },
+    { id: 'studio', label: t('nav.studio') },
     { id: 'radio', label: t('nav.radio') },
     { id: 'podcasts', label: t('nav.podcasts') },
-  ];
+  ].filter((tab) => isSectionInNavigation(tab.id));
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
@@ -599,7 +603,7 @@ function NavBar({
             <Globe size={14} aria-hidden="true" />
             {currentLang}
           </button>
-          <button
+          {isSectionInNavigation('issue') && <button
             type="button"
             onClick={() => { setActiveTab('issue'); setIsMenuOpen(false); }}
             aria-label={t('nav.issue')}
@@ -607,7 +611,7 @@ function NavBar({
             className="hidden min-[360px]:inline-flex h-11 min-w-12 items-center justify-center bg-[var(--c-accent)] text-[var(--c-bg)] rounded-full px-3 font-mono text-[11px] tracking-[0.12em] uppercase hover:bg-[#3d1421] active:scale-95 transition"
           >
             Nº
-          </button>
+          </button>}
         </div>
       </nav>
 
@@ -622,7 +626,10 @@ function NavBar({
 
         {/* Desktop Navigation */}
         <LayoutGroup id="nav-tabs">
-          <div className="grid flex-1 grid-cols-8 divide-x divide-[var(--c-accent)]">
+          <div
+            className="grid flex-1 divide-x divide-[var(--c-accent)]"
+            style={{ gridTemplateColumns: `repeat(${Math.max(tabs.length, 1)}, minmax(0, 1fr))` }}
+          >
             {tabs.map((tab) => (
               <button
                 type="button"
@@ -2524,6 +2531,7 @@ function SearchResults({
 }
 
 const VALID_TABS = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'studio', 'radio', 'podcasts', 'design', 'passport'];
+const VISIBILITY_TABS: VisibilitySectionKey[] = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'design', 'studio', 'radio', 'podcasts'];
 
 function buildSlugMap(): Map<string, number> {
   const allArticles = getContentForLanguage(DEFAULT_LANGUAGE).articles;
@@ -2697,7 +2705,7 @@ export default function App() {
   const [activeSearch, setActiveSearch] = useState(initialRoute.searchQuery || '');
   // Live content: fetch the latest from the VPS on mount and re-render when it
   // swaps in. Until then (or if the VPS is unreachable) the bundled JSON renders.
-  const [, setContentVersion] = useState(0);
+  const [contentVersion, setContentVersion] = useState(0);
   // Fresh loads of /article/<slug> only have the bundled fallback articles to match
   // against until the live fetch resolves (SLUG_MAP at module scope is built once,
   // from that same stale bundle) — so any article published after the last deploy
@@ -2758,6 +2766,7 @@ export default function App() {
         .slice(0, 3)
     : [];
   const t = (key: string) => getTranslation(currentLang, key);
+  const fallbackTab = VISIBILITY_TABS.find((tab) => isSectionEnabled(tab)) || 'gallery';
 
   useEffect(() => {
     updateMetaTags(selectedArticle, activeTab, activeSearch);
@@ -2781,12 +2790,14 @@ export default function App() {
   }, [navigate]);
 
   const handleSetTab = useCallback((tab: string) => {
-    setActiveTab(tab);
+    const managedTab = VISIBILITY_TABS.includes(tab as VisibilitySectionKey) ? tab as VisibilitySectionKey : null;
+    const target = managedTab && !isSectionEnabled(managedTab) ? fallbackTab : tab;
+    setActiveTab(target);
     setSelectedArticleId(null);
     setActiveSearch('');
     setPassportCode(undefined);
-    navigate(tab === 'gallery' ? '/' : `/${tab}`);
-  }, [navigate]);
+    navigate(target === 'gallery' ? '/' : `/${target}`);
+  }, [fallbackTab, navigate]);
 
   const handleSelectArticle = useCallback((id: number, article?: Article) => {
     setSelectedArticleId(id);
@@ -2838,6 +2849,19 @@ export default function App() {
       }
     }
   }, []);
+
+  // Visibility is loaded live from the CMS. If an editor disables the route
+  // currently open in a reader's browser, move to the first enabled section
+  // instead of leaving a blank or stale page behind.
+  useEffect(() => {
+    if (!VISIBILITY_TABS.includes(activeTab as VisibilitySectionKey)) return;
+    if (isSectionEnabled(activeTab as VisibilitySectionKey)) return;
+    setActiveTab(fallbackTab);
+    setSelectedArticleId(null);
+    setActiveSearch('');
+    setPassportCode(undefined);
+    window.history.replaceState(null, '', fallbackTab === 'gallery' ? '/' : `/${fallbackTab}`);
+  }, [activeTab, contentVersion, fallbackTab]);
 
   const routeKey = activeSearch ? `search-${activeSearch}` : activeTab;
   const previousRouteKey = useRef(routeKey);
