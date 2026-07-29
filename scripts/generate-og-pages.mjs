@@ -8,6 +8,29 @@ const distDir = join(rootDir, 'dist');
 const contentPath = join(rootDir, 'src', 'content', 'site-content.json');
 const SITE_ORIGIN = 'https://eprisjournal.com';
 const DEFAULT_IMAGE = `${SITE_ORIGIN}/images/featured.png`;
+const SITE_NAME = 'EPRIS Journal';
+const SITE_DESCRIPTION = 'Independent international journal and cultural platform exploring contemporary art, architecture, interior design, artists, designers and cities in context.';
+const SITE_KEYWORDS = [
+  'EPRIS Journal',
+  'contemporary art',
+  'architecture',
+  'interior design',
+  'design journal',
+  'art interviews',
+  'design interviews',
+  'emerging architects',
+  'emerging artists',
+  'cultural journalism',
+];
+const HREFLANG = {
+  EN: 'en',
+  RU: 'ru',
+  UA: 'uk',
+  TR: 'tr',
+  DE: 'de',
+  IT: 'it',
+  ES: 'es',
+};
 
 function generateSlug(title) {
   return title
@@ -35,6 +58,63 @@ function safeJson(value) {
   return JSON.stringify(value).replace(/</g, '\\u003c');
 }
 
+function formatDate(value) {
+  if (!value) return undefined;
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return undefined;
+  return date.toISOString();
+}
+
+function stripHtml(value = '') {
+  return String(value)
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function blockText(block) {
+  if (!block || typeof block.content !== 'string') return '';
+  if (!['text', 'header', 'quote', 'note'].includes(block.type)) return '';
+  return stripHtml(block.content);
+}
+
+function articleBody(article) {
+  return (article.content || []).map(blockText).filter(Boolean).join('\n\n');
+}
+
+function articleKeywords(article) {
+  return Array.from(new Set([
+    ...(article.tags || []),
+    article.category,
+    article.subcategory,
+    'EPRIS Journal',
+    'architecture',
+    'design',
+    'contemporary art',
+  ].filter(Boolean))).join(', ');
+}
+
+function alternateLinks(url) {
+  const languages = Object.keys(content.translations || {}).filter((lang) => HREFLANG[lang]);
+  return [
+    ...languages.map((lang) => `<link rel="alternate" hreflang="${HREFLANG[lang]}" href="${url}" />`),
+    `<link rel="alternate" hreflang="x-default" href="${url}" />`,
+  ].join('\n    ');
+}
+
+function breadcrumbSchema(items) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+}
+
 const indexHtml = readFileSync(join(distDir, 'index.html'), 'utf-8');
 const content = JSON.parse(readFileSync(contentPath, 'utf-8'));
 
@@ -42,6 +122,7 @@ const content = JSON.parse(readFileSync(contentPath, 'utf-8'));
 let template = indexHtml
   .replace(/<title>[^<]*<\/title>/, '<!--TITLE-->')
   .replace(/<meta\s+(?:property|name)="(?:og:|twitter:|description)[^"]*"\s+content="[^"]*"\s*\/?>/g, '')
+  .replace(/<meta\s+name="keywords"\s+content="[^"]*"\s*\/?>/g, '')
   .replace(/<meta\s+name="robots"\s+content="[^"]*"\s*\/?>/g, '')
   .replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/g, '')
   .replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/g, '')
@@ -55,26 +136,38 @@ for (const article of content.articles) {
   const url = `${SITE_ORIGIN}/article/${slug}`;
   const articleSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'NewsArticle',
     headline: article.title,
+    alternativeHeadline: article.subcategory || undefined,
     description: article.excerpt || '',
     image: [imageUrl],
-    datePublished: article.date || undefined,
-    dateModified: article.updatedAt || article.date || undefined,
+    datePublished: formatDate(article.date),
+    dateModified: formatDate(article.updatedAt) || formatDate(article.date),
     author: { '@type': 'Person', name: article.author || 'EPRIS Editorial' },
+    articleSection: article.category || undefined,
+    keywords: articleKeywords(article),
+    wordCount: articleBody(article).split(/\s+/).filter(Boolean).length || undefined,
+    inLanguage: 'en',
     mainEntityOfPage: url,
     publisher: {
       '@type': 'Organization',
-      name: 'EPRIS Journal',
+      name: SITE_NAME,
       url: SITE_ORIGIN,
       logo: { '@type': 'ImageObject', url: DEFAULT_IMAGE },
     },
   };
+  const breadcrumbs = breadcrumbSchema([
+    { name: 'EPRIS Journal', url: `${SITE_ORIGIN}/` },
+    { name: 'Articles', url: `${SITE_ORIGIN}/articles` },
+    { name: article.title, url },
+  ]);
 
   const headBlock = `<title>${article.title} \u2014 EPRIS Journal</title>
     <meta name="description" content="${excerpt}" />
+    <meta name="keywords" content="${escapeAttr(articleKeywords(article))}" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="${url}" />
+    ${alternateLinks(url)}
     <meta property="og:title" content="${title}" />
     <meta property="og:description" content="${excerpt}" />
     <meta property="og:image" content="${imageUrl}" />
@@ -86,7 +179,8 @@ for (const article of content.articles) {
     <meta name="twitter:title" content="${title}" />
     <meta name="twitter:description" content="${excerpt}" />
     <meta name="twitter:image" content="${imageUrl}" />
-    <script type="application/ld+json">${safeJson(articleSchema)}</script>`;
+    <script type="application/ld+json">${safeJson(articleSchema)}</script>
+    <script type="application/ld+json">${safeJson(breadcrumbs)}</script>`;
 
   const pageHtml = template.replace('<!--TITLE-->', headBlock);
 
@@ -145,16 +239,31 @@ function routeHead(route, label) {
   const description = ROUTE_DESCRIPTIONS[route] || 'Independent international journal and cultural platform exploring contemporary art, architecture, interior design and cities in context.';
   const schema = {
     '@context': 'https://schema.org',
-    '@type': route ? 'CollectionPage' : 'WebSite',
+    '@type': route ? (route === 'issue' ? 'PublicationIssue' : 'CollectionPage') : 'WebSite',
     name: `${label} — EPRIS Journal`,
     url,
     description,
-    isPartOf: route ? { '@type': 'WebSite', name: 'EPRIS Journal', url: SITE_ORIGIN } : undefined,
+    isPartOf: route ? { '@type': 'WebSite', name: SITE_NAME, url: SITE_ORIGIN } : undefined,
+    publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_ORIGIN, logo: DEFAULT_IMAGE },
   };
+  const organizationSchema = !route ? {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE_NAME,
+    alternateName: 'EPRIS',
+    url: SITE_ORIGIN,
+    logo: DEFAULT_IMAGE,
+  } : null;
+  const breadcrumbs = route ? breadcrumbSchema([
+    { name: SITE_NAME, url: `${SITE_ORIGIN}/` },
+    { name: label, url },
+  ]) : null;
   return `<title>${label} — EPRIS Journal</title>
     <meta name="description" content="${escapeAttr(description)}" />
+    <meta name="keywords" content="${escapeAttr(SITE_KEYWORDS.join(', '))}" />
     <meta name="robots" content="${route === 'collaboation' ? 'noindex, follow' : 'index, follow, max-image-preview:large'}" />
     <link rel="canonical" href="${url}" />
+    ${alternateLinks(url)}
     <meta property="og:title" content="${label} — EPRIS Journal" />
     <meta property="og:description" content="${escapeAttr(description)}" />
     <meta property="og:image" content="${DEFAULT_IMAGE}" />
@@ -165,7 +274,9 @@ function routeHead(route, label) {
     <meta name="twitter:title" content="${label} — EPRIS Journal" />
     <meta name="twitter:description" content="${escapeAttr(description)}" />
     <meta name="twitter:image" content="${DEFAULT_IMAGE}" />
-    <script type="application/ld+json">${safeJson(schema)}</script>`;
+    <script type="application/ld+json">${safeJson(schema)}</script>
+    ${organizationSchema ? `<script type="application/ld+json">${safeJson(organizationSchema)}</script>` : ''}
+    ${breadcrumbs ? `<script type="application/ld+json">${safeJson(breadcrumbs)}</script>` : ''}`;
 }
 
 for (const [route, label] of Object.entries(ROUTES)) {
@@ -187,10 +298,10 @@ console.log('Generated: /search');
 
 const sitemapRoutes = ['', ...Object.keys(ROUTES).filter((route) => route !== 'collaboation')];
 const sitemapEntries = [
-  ...sitemapRoutes.map((route) => ({ loc: route ? `${SITE_ORIGIN}/${route}` : `${SITE_ORIGIN}/`, priority: route ? '0.7' : '1.0', changefreq: route === 'articles' ? 'daily' : 'weekly' })),
-  ...content.articles.map((article) => ({ loc: `${SITE_ORIGIN}/article/${generateSlug(article.title)}`, priority: '0.8', changefreq: 'monthly', lastmod: article.updatedAt || article.date || '' })),
+  ...sitemapRoutes.map((route) => ({ loc: route ? `${SITE_ORIGIN}/${route}` : `${SITE_ORIGIN}/`, priority: route ? '0.7' : '1.0', changefreq: route === 'articles' ? 'daily' : 'weekly', image: route ? '' : DEFAULT_IMAGE })),
+  ...content.articles.map((article) => ({ loc: `${SITE_ORIGIN}/article/${generateSlug(article.title)}`, priority: '0.8', changefreq: 'monthly', lastmod: formatDate(article.updatedAt) || formatDate(article.date) || '', image: resolveImage(article), imageTitle: article.title })),
 ];
-const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapEntries.map((entry) => `  <url>\n    <loc>${entry.loc}</loc>${entry.lastmod ? `\n    <lastmod>${String(entry.lastmod).slice(0, 10)}</lastmod>` : ''}\n    <changefreq>${entry.changefreq}</changefreq>\n    <priority>${entry.priority}</priority>\n  </url>`).join('\n')}\n</urlset>\n`;
+const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${sitemapEntries.map((entry) => `  <url>\n    <loc>${entry.loc}</loc>${entry.lastmod ? `\n    <lastmod>${String(entry.lastmod).slice(0, 10)}</lastmod>` : ''}${entry.image ? `\n    <image:image>\n      <image:loc>${escapeAttr(entry.image)}</image:loc>${entry.imageTitle ? `\n      <image:title>${escapeAttr(entry.imageTitle)}</image:title>` : ''}\n    </image:image>` : ''}\n    <changefreq>${entry.changefreq}</changefreq>\n    <priority>${entry.priority}</priority>\n  </url>`).join('\n')}\n</urlset>\n`;
 writeFileSync(join(distDir, 'sitemap.xml'), sitemapXml);
 console.log(`Generated: /sitemap.xml (${sitemapEntries.length} URLs)`);
 
