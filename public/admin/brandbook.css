@@ -1,0 +1,227 @@
+/* ══════════════════════════════════════════════════════════
+   БРЕНД-БУК — вкладка справочника дизайн-системы.
+   Все цвета берутся из переменных админки, поэтому раздел
+   одинаково живёт в светлой и тёмной теме. Исключение —
+   образцы самой палитры: там цвет и есть содержание.
+   ══════════════════════════════════════════════════════════ */
+
+.bb { max-width: 1080px; }
+
+/* ── шапка ───────────────────────────────────────────────── */
+.bb-hero {
+  position: relative;
+  overflow: hidden;
+  background: #1a0b10;
+  color: #f5f0eb;
+  padding: 38px 34px 32px;
+  border-radius: var(--radius);
+  margin-bottom: 22px;
+}
+.bb-hero::after {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(circle at 84% 16%, rgba(184,149,110,.24), transparent 46%),
+    radial-gradient(circle at 10% 84%, rgba(74,23,40,.6), transparent 52%);
+}
+.bb-hero > * { position: relative; z-index: 1; }
+.bb-kicker {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: .3em; text-transform: uppercase;
+  color: #b8956e; margin-bottom: 12px;
+}
+.bb-hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4.4vw, 42px); font-weight: 400;
+  line-height: 1.06; margin: 0 0 12px;
+}
+.bb-hero p {
+  font-family: var(--font-body);
+  font-size: 15px; line-height: 1.7; max-width: 620px;
+  color: rgba(245,240,235,.78); margin: 0;
+}
+.bb-hero code { font-family: var(--font-code); font-size: 12.5px; color: #dcc4ae; }
+.bb-stats { display: flex; flex-wrap: wrap; gap: 26px; margin-top: 24px; }
+.bb-stat-n { font-family: var(--font-serif); font-size: 26px; color: #b8956e; line-height: 1; }
+.bb-stat-l {
+  font-family: var(--font-mono); font-size: 9px; letter-spacing: .2em;
+  text-transform: uppercase; color: rgba(245,240,235,.5); margin-top: 5px;
+}
+
+/* ── навигация по разделам ───────────────────────────────── */
+.bb-nav {
+  position: sticky; top: 0; z-index: 5;
+  display: flex; gap: 5px; flex-wrap: nowrap; overflow-x: auto;
+  padding: 9px 0; margin-bottom: 20px;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+}
+.bb-nav button {
+  flex: 0 0 auto;
+  font-size: 11.5px; padding: 4px 11px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line-strong); background: transparent; color: var(--text-muted);
+  white-space: nowrap; transition: background .15s, color .15s, border-color .15s;
+}
+.bb-nav button:hover { color: var(--text); }
+.bb-nav button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* ── секции ──────────────────────────────────────────────── */
+.bb-section { margin-bottom: 46px; scroll-margin-top: 60px; }
+.bb-section-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+.bb-section-head .n { font-family: var(--font-code); font-size: 11px; color: var(--accent); }
+.bb-section-head h2 { font-size: 18px; font-weight: 700; margin: 0; color: var(--text); }
+.bb-section-head .rule { flex: 1; height: 1px; background: var(--line); }
+.bb-sub { font-size: 12.5px; color: var(--text-muted); line-height: 1.6; max-width: 680px; margin: 0 0 16px; }
+.bb-subtitle {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .26em;
+  text-transform: uppercase; color: var(--text-muted); margin: 24px 0 10px;
+}
+.bb-subtitle:first-child { margin-top: 0; }
+
+.bb-grid { display: grid; gap: 13px; }
+.bb-grid.c2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.bb-grid.c3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.bb-grid.c4 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+
+.bb-card {
+  border: 1px solid var(--line); background: var(--bg-card);
+  border-radius: var(--radius); overflow: hidden;
+}
+.bb-card-pad { padding: 15px 17px; }
+.bb-card h3 { font-size: 13px; font-weight: 600; margin: 0 0 7px; color: var(--text); }
+.bb-card p { font-size: 12.5px; line-height: 1.65; color: var(--text-muted); margin: 0; }
+.bb-card-head {
+  padding: 13px 17px; border-bottom: 1px solid var(--line);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+}
+.bb-row { padding: 11px 17px; border-top: 1px solid var(--line); font-size: 12.5px; line-height: 1.6; }
+.bb-row:first-child { border-top: 0; }
+
+.bb-note {
+  border: 1px solid var(--line); border-left: 3px solid var(--accent);
+  background: var(--accent-soft); border-radius: var(--radius);
+  padding: 12px 16px; font-size: 12.5px; line-height: 1.65; color: var(--text);
+}
+.bb-note code, .bb-inline-code {
+  font-family: var(--font-code); font-size: .92em; padding: 1px 5px;
+  border: 1px solid var(--line); border-radius: 3px; background: var(--bg-soft);
+}
+.bb-tag {
+  font-family: var(--font-code); font-size: 10px; padding: 2px 9px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent); white-space: nowrap;
+}
+
+/* ── палитра ─────────────────────────────────────────────── */
+.bb-swatch-btn {
+  display: block; width: 100%; height: 88px; border: 0; cursor: pointer;
+  text-align: left; padding: 0 16px; font-family: var(--font-code); font-size: 12px;
+}
+.bb-swatch-name { font-size: 13px; font-weight: 600; color: var(--text); }
+.bb-swatch-token { font-family: var(--font-code); font-size: 10.5px; color: var(--text-muted); margin-top: 3px; }
+.bb-swatch-role { font-size: 12px; color: var(--text-muted); margin-top: 7px; line-height: 1.55; }
+
+.bb-ramp { display: flex; flex-wrap: wrap; }
+.bb-ramp button {
+  flex: 1 1 140px; border: 0; cursor: pointer; padding: 24px 14px; text-align: left;
+  font-family: var(--font-code); font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+}
+
+.bb-chip {
+  display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--bg-soft);
+  border-radius: var(--radius); padding: 5px 10px 5px 5px;
+  font-family: var(--font-code); font-size: 11.5px; color: var(--text);
+}
+.bb-chip.target { border-color: var(--accent); }
+.bb-chip i { width: 22px; height: 22px; border-radius: 3px; border: 1px solid rgba(0,0,0,.12); display: block; }
+.bb-chip em { font-style: normal; font-size: 10.5px; color: var(--text-muted); }
+
+/* ── код ─────────────────────────────────────────────────── */
+.bb-code { border: 1px solid #2d1820; background: #1a0b10; border-radius: var(--radius); overflow: hidden; }
+.bb-code-head {
+  display: flex; align-items: center; gap: 10px; padding: 9px 14px; border-bottom: 1px solid #2d1820;
+}
+.bb-code-head span {
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .16em;
+  text-transform: uppercase; color: #b8956e;
+}
+.bb-code-head button {
+  margin-left: auto; background: none; border: 1px solid #3d1220; border-radius: 5px;
+  color: rgba(245,240,235,.6); font-size: 11px; padding: 3px 9px; cursor: pointer;
+}
+.bb-code pre {
+  margin: 0; padding: 14px 16px; overflow-x: auto;
+  font-family: var(--font-code); font-size: 11.5px; line-height: 1.65; color: rgba(245,240,235,.86);
+}
+
+/* ── типографика ─────────────────────────────────────────── */
+.bb-font-sample {
+  background: #f5f0eb; color: #4a1728; padding: 18px 20px;
+  border-radius: var(--radius); margin-bottom: 12px; overflow-x: auto; white-space: nowrap;
+}
+.bb-scale-row {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  padding: 12px 17px; border-top: 1px solid var(--line);
+}
+.bb-scale-row:first-child { border-top: 0; }
+.bb-scale-name { width: 78px; flex-shrink: 0; }
+.bb-scale-name b { display: block; font-size: 12.5px; color: var(--text); }
+.bb-scale-name span { font-family: var(--font-code); font-size: 10.5px; color: var(--text-muted); }
+.bb-scale-demo {
+  flex: 1 1 240px; min-width: 0; color: #4a1728;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+[data-theme="dark"] .bb-scale-demo { color: var(--accent); }
+.bb-scale-role { flex: 1 1 200px; font-size: 11.5px; color: var(--text-muted); line-height: 1.5; }
+.bb-scale-uses { width: 66px; text-align: right; font-family: var(--font-code); font-size: 10.5px; color: var(--text-muted); }
+
+/* ── матрица контраста ───────────────────────────────────── */
+.bb-matrix { width: 100%; min-width: 560px; border-collapse: collapse; }
+.bb-matrix th {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--text-muted); padding: 10px 12px; text-align: left; font-weight: 400;
+  border-bottom: 1px solid var(--line);
+}
+.bb-matrix td { padding: 10px 12px; border-bottom: 1px solid var(--line); font-size: 12px; vertical-align: top; }
+.bb-matrix .aa { font-family: var(--font-code); font-size: 10px; }
+.bb-verdict {
+  display: inline-block; font-family: var(--font-code); font-size: 9px; letter-spacing: .1em;
+  color: #fff; border-radius: 3px; padding: 1px 5px; margin-top: 4px;
+}
+
+/* ── прочее ──────────────────────────────────────────────── */
+.bb-plan { display: flex; flex-wrap: wrap; }
+.bb-plan-n {
+  width: 54px; flex-shrink: 0; background: var(--accent-soft);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-code); font-size: 15px; font-weight: 700; color: var(--accent);
+}
+.bb-plan-body { flex: 1 1 320px; min-width: 0; padding: 14px 18px; }
+.bb-risk {
+  font-family: var(--font-code); font-size: 10px; text-transform: uppercase; letter-spacing: .12em;
+  border-radius: 999px; padding: 2px 8px; white-space: nowrap;
+}
+.bb-ok { color: var(--ok); }
+.bb-bad { color: var(--danger); }
+.bb-stat-big { font-size: 30px; font-weight: 700; line-height: 1; }
+.bb-specimen {
+  background: #f5f0eb; border: 1px solid #4a1728; border-radius: var(--radius);
+  padding: 24px; margin-bottom: 18px;
+}
+.bb-pill {
+  border: 1px solid #4a1728; border-radius: 999px; padding: 7px 18px; background: transparent;
+  color: #4a1728; font-family: 'OCR-B 10 BT','Courier New',monospace; font-size: 10px;
+  letter-spacing: .2em; text-transform: uppercase; cursor: pointer;
+  transition: background .2s cubic-bezier(.22,.61,.36,1), color .2s;
+}
+.bb-pill:hover { background: #4a1728; color: #f5f0eb; }
+.bb-ref-url { font-family: var(--font-code); font-size: 10.5px; color: var(--text-muted); margin-top: 3px; word-break: break-all; }
+.bb-toast {
+  position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+  background: var(--accent); color: #fff; padding: 9px 16px; border-radius: var(--radius);
+  font-family: var(--font-code); font-size: 12.5px; box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 720px) {
+  .bb-hero { padding: 28px 20px 24px; }
+  .bb-matrix-wrap { overflow-x: auto; }
+}
