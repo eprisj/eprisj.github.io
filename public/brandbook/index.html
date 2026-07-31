@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Бренд-бук — EPRIS Journal</title>
+    <meta name="description" content="Как выглядит и звучит EPRIS Journal: цвет, шрифт, кадр, интонация. Открытый бренд-бук журнала." />
+    <!-- Ссылка рассчитана на то, что ею делятся адресно, а не находят в поиске
+         рядом с материалами журнала. -->
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="https://eprisjournal.com/brandbook/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Бренд-бук EPRIS Journal" />
+    <meta property="og:description" content="Цвет, шрифт, кадр, интонация — как собрать материал в фирменном виде." />
+    <meta property="og:url" content="https://eprisjournal.com/brandbook/" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <a class="skip" href="#bb-body">К содержанию</a>
+
+    <header class="hero">
+      <div class="wrap">
+        <p class="kicker">Epris Journal · Бренд-бук · MMXXVI</p>
+        <h1>Как выглядит<br />и звучит EPRIS</h1>
+        <p class="lede" id="bb-lede">Загружаем…</p>
+        <dl class="hero-meta">
+          <div><dt>Цвет</dt><dd>Бордо на бумаге</dd></div>
+          <div><dt>Шрифт</dt><dd>Playfair и PT Serif</dd></div>
+          <div><dt>Метки</dt><dd>OCR-B вразрядку</dd></div>
+          <div><dt>Форма</dt><dd>Прямой угол</dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <nav class="toc" aria-label="Разделы бренд-бука">
+      <div class="toc-inner wrap" id="bb-toc"></div>
+    </nav>
+
+    <main id="bb-body"></main>
+
+    <footer>
+      <div class="wrap">
+        <p>Epris Journal · <a href="/">eprisjournal.com</a></p>
+        <p class="updated" id="bb-updated"></p>
+      </div>
+    </footer>
+
+    <script src="./data.js"></script>
+    <script src="./render.js"></script>
+  </body>
+</html>

@@ -412,3 +412,17 @@
 @media (prefers-reduced-motion: reduce) {
   .bb *, .bb *::before, .bb *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+/* ── статус автосохранения и ссылка на публичную страницу ── */
+.bb-save-state { font-size: 13px; color: var(--text-muted); }
+.bb-save-state.ok { color: var(--ok); }
+.bb-save-state.warn { color: var(--warn); }
+.bb-save-state.bad { color: var(--danger); }
+.bb-public-link {
+  margin-left: auto; font-size: 13.5px; color: var(--accent); text-decoration: none;
+  border-bottom: 1px solid var(--line-strong); padding-bottom: 1px;
+}
+.bb-public-link:hover { border-color: var(--accent); }
+@media (max-width: 640px) {
+  .bb-public-link { margin-left: 0; }
+}
