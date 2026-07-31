@@ -13569,3 +13569,221 @@ async function flushModernEditor() {
   });
 
 })();
+
+// ═══════════════════════════════════════════════════════════════════════════
+// ──  ОБЗОРЫ: надстройка над визуальным редактором  ─────────────────────────
+//
+//  Канвас обзора (initReviewCanvas выше) правит поля. Здесь то, что нельзя
+//  выразить одним полем и что раньше приходилось держать в голове:
+//
+//   • featured эксклюзивен. Сайт берёт ПЕРВЫЙ обзор с featured, поэтому два
+//     флага молча означают «показывается старый». Ставим флаг — снимаем у
+//     остальных, и говорим, у кого сняли.
+//   • rating есть в схеме, но ни одна форма его не показывала: у новых
+//     обзоров поле просто отсутствовало. Теперь оно на виду — вместе с
+//     честной пометкой, что на сайте оно не выводится.
+//   • переводы: видно, на каких языках обзор уже существует.
+//   • проверки перед публикацией — длина вердикта, объём текста, обложка,
+//     подпись; ровно те, что делают карточку на сайте пустой или кривой.
+//
+//  Дублирование и удаление сюда не дублируются: они уже есть в тулбаре
+//  «Публикаций» и там корректно разводят базовую запись и переводы.
+// ═══════════════════════════════════════════════════════════════════════════
+(function initReviewTools() {
+  const shell = document.getElementById('revWysShell');
+  const sectionSelect = document.getElementById('visualSection');
+  const entrySelect = document.getElementById('visualEntry');
+  const langSelect = document.getElementById('visualLang');
+  if (!shell || !sectionSelect || !entrySelect) return;
+
+  const VERDICT_MAX = 120;   // на сайте вердикт — одна строка курсивом
+  const CONTENT_MIN = 25;    // ниже этого запись считается «тонкой» в аудите
+
+  const panel = document.createElement('div');
+  panel.id = 'revTools';
+  panel.className = 'rev-tools';
+  panel.hidden = true;
+  shell.appendChild(panel);
+
+  const currentId = () => Number(entrySelect.value);
+  const baseLang = (typeof DEFAULT_LANGUAGE === 'string' ? DEFAULT_LANGUAGE : 'EN');
+  const activeLang = () => (langSelect?.value || baseLang);
+
+  function readData() {
+    try { return JSON.parse(document.getElementById('editor').value || '{}'); } catch { return null; }
+  }
+
+  function writeData(data, message) {
+    const editorEl = document.getElementById('editor');
+    editorEl.value = JSON.stringify(data, null, 2);
+    try { updateStats(data); } catch {}
+    try { updateEditorState(); } catch {}
+    try { saveDraft(); } catch {}
+    if (message) showToast('success', message);
+    try { window._revReload && window._revReload(); } catch {}
+    render();
+  }
+
+  const baseReviews = (data) => (Array.isArray(data?.reviews) ? data.reviews : []);
+
+  function currentReview(data) {
+    return baseReviews(data).find((r) => Number(r.id) === currentId()) || null;
+  }
+
+  function translatedLangs(data, id) {
+    const buckets = data?.localizedCollections;
+    if (!buckets || typeof buckets !== 'object') return [];
+    return Object.keys(buckets).filter((lang) => {
+      const arr = buckets[lang]?.reviews;
+      return Array.isArray(arr) && arr.some((r) => Number(r.id) === Number(id));
+    });
+  }
+
+  // Сайт показывает первый featured, остальные молча становятся обычными
+  // карточками — поэтому флаг снимается у всех прочих, а не просто ставится.
+  function makeFeaturedExclusive() {
+    const data = readData();
+    if (!data) return;
+    const id = currentId();
+    const others = baseReviews(data).filter((r) => Number(r.id) !== id && r.featured);
+    if (!others.length) { render(); return; }
+    others.forEach((r) => { delete r.featured; });
+    const names = others.map((r) => `«${r.title || 'без названия'}»`).join(', ');
+    writeData(data, `Главным стал текущий обзор. Флаг снят у: ${names}`);
+  }
+
+  function setRating(value) {
+    const data = readData();
+    if (!data) return;
+    const review = currentReview(data);
+    if (!review) return;
+    review.rating = value;
+    writeData(data);
+  }
+
+  // Проверки — только те, что видно на сайте: пустая карточка, оборванный
+  // вердикт, отсутствующая подпись. Ничего про «стиль» и вкусовщину.
+  function checks(review, data) {
+    const out = [];
+    const words = String(review.content || '').trim().split(/\s+/).filter(Boolean).length;
+    const verdictLen = String(review.verdict || '').trim().length;
+
+    if (!String(review.title || '').trim()) out.push(['bad', 'Нет заголовка — карточка выйдет безымянной']);
+    if (!String(review.subject || '').trim()) out.push(['warn', 'Нет темы: под заголовком будет пусто']);
+    if (!words) out.push(['bad', 'Нет текста обзора']);
+    else if (words < CONTENT_MIN) out.push(['warn', `Текст короткий — ${words} ${plural(words, 'слово', 'слова', 'слов')}, аудит считает такую запись тонкой`]);
+    if (verdictLen > VERDICT_MAX) out.push(['warn', `Вердикт ${verdictLen} знаков: на сайте это одна строка курсивом, лучше до ${VERDICT_MAX}`]);
+    if (!String(review.author || '').trim()) out.push(['warn', 'Нет автора — подпись под карточкой будет обрезана']);
+    if (!String(review.imageUrl || '').trim()) out.push(['warn', 'Без обложки карточка теряет верхний блок 16:9']);
+    if (!String(review.category || '').trim()) out.push(['warn', 'Без категории обзор не попадёт в фильтры раздела']);
+
+    const featured = baseReviews(data).filter((r) => r.featured);
+    if (!featured.length) out.push(['warn', 'Ни один обзор не помечен главным — верхний блок раздела будет пуст']);
+    else if (featured.length > 1) out.push(['bad', `Главных обзоров ${featured.length}: сайт покажет «${featured[0].title || 'первый'}», остальные станут обычными`]);
+
+    return out;
+  }
+
+  function plural(n, one, few, many) {
+    const m10 = n % 10, m100 = n % 100;
+    if (m10 === 1 && m100 !== 11) return one;
+    if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return few;
+    return many;
+  }
+
+  function render() {
+    const onReviews = sectionSelect.value === 'reviews';
+    panel.hidden = !onReviews;
+    if (!onReviews) return;
+
+    const data = readData();
+    const review = data ? currentReview(data) : null;
+    if (!review) {
+      panel.innerHTML = '<p class="rev-tools-empty">Выберите обзор в списке сверху.</p>';
+      return;
+    }
+
+    const langs = translatedLangs(data, review.id);
+    const problems = checks(review, data);
+    const onBase = activeLang() === baseLang;
+    const rating = Number.isFinite(Number(review.rating)) ? Number(review.rating) : 0;
+
+    panel.innerHTML = `
+      <div class="rev-tools-row">
+        <div class="rev-tools-block">
+          <span class="rev-tools-label">Главный обзор</span>
+          ${review.featured
+            ? '<span class="rev-badge rev-badge-on">Показывается вверху раздела</span>'
+            : '<span class="rev-badge">Обычная карточка</span>'}
+          ${review.featured ? '<button class="btn btn-sm" type="button" data-rev="exclusive">Сделать единственным главным</button>' : ''}
+        </div>
+
+        <div class="rev-tools-block">
+          <span class="rev-tools-label">Оценка</span>
+          <input class="rev-rating" type="number" min="0" max="5" step="0.5" value="${rating}" data-rev="rating" ${onBase ? '' : 'disabled'}>
+          <span class="rev-tools-hint">хранится в данных, на сайте не выводится</span>
+        </div>
+
+        <div class="rev-tools-block">
+          <span class="rev-tools-label">Переводы</span>
+          ${langs.length
+            ? langs.map((l) => `<span class="rev-badge">${l}</span>`).join('')
+            : '<span class="rev-tools-hint">только базовый язык</span>'}
+        </div>
+
+      </div>
+
+      ${onBase ? '' : '<p class="rev-tools-hint rev-tools-note">Открыт перевод: оценка и флаг главного живут в базовой записи — переключитесь на базовый язык, чтобы их менять.</p>'}
+
+      ${problems.length ? `
+        <ul class="rev-checks">
+          ${problems.map(([kind, text]) => `<li class="rev-check rev-check-${kind}"><span aria-hidden="true">${kind === 'bad' ? '✕' : '!'}</span>${text}</li>`).join('')}
+        </ul>` : '<p class="rev-checks-ok">Проверки пройдены: карточка соберётся полностью.</p>'}
+    `;
+  }
+
+  panel.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-rev]');
+    if (!btn) return;
+    if (btn.dataset.rev === 'exclusive') makeFeaturedExclusive();
+  });
+
+  panel.addEventListener('change', (e) => {
+    const input = e.target.closest('[data-rev="rating"]');
+    if (!input) return;
+    const value = Math.max(0, Math.min(5, Number(input.value) || 0));
+    setRating(value);
+  });
+
+  // Канвас правит те же поля, поэтому проверки пересчитываем по факту
+  // изменений в общем JSON, а не по своему таймеру.
+  const editorEl = document.getElementById('editor');
+  let renderTimer = null;
+  const scheduleRender = () => { clearTimeout(renderTimer); renderTimer = setTimeout(render, 200); };
+  editorEl?.addEventListener('input', scheduleRender);
+  sectionSelect.addEventListener('change', scheduleRender);
+  entrySelect.addEventListener('change', scheduleRender);
+  langSelect?.addEventListener('change', scheduleRender);
+
+  // Свой пункт «Обзоры» в сайдбаре: открывает «Публикации» уже с выбранным
+  // разделом, чтобы не искать его в селекторе.
+  // Панель переключается общим обработчиком в index.html: он ищет
+  // #tab-<data-tab>, а у ярлыка своей панели нет. Поэтому раскрываем
+  // «Публикации» сами, в конце очереди — чтобы общий обработчик уже
+  // отработал и не снял активность обратно.
+  document.querySelector('.tab-btn[data-tab="reviews-shortcut"]')?.addEventListener('click', () => {
+    setTimeout(() => {
+      document.querySelectorAll('.tab-panel').forEach((p) => p.classList.remove('active'));
+      document.getElementById('tab-content')?.classList.add('active');
+      document.querySelectorAll('.tab-btn').forEach((b) => b.classList.remove('active'));
+      document.querySelector('.tab-btn[data-tab="reviews-shortcut"]')?.classList.add('active');
+      const title = document.getElementById('pageTitle');
+      if (title) title.textContent = 'Обзоры';
+      sectionSelect.value = 'reviews';
+      sectionSelect.dispatchEvent(new Event('change'));
+      scheduleRender();
+    }, 0);
+  });
+
+  render();
+})();
