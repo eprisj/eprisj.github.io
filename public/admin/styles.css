@@ -5564,3 +5564,42 @@ body.busy::after {
   .site-editor-grid textarea { min-height: 44px; font-size: 16px; }
   .site-editor-grid textarea { min-height: 92px; }
 }
+
+/* ── Обзоры: панель инструментов над визуальным редактором ──────────────── */
+.rev-tools {
+  border-top: 1px solid var(--line);
+  padding: 14px 18px 16px;
+  background: var(--bg-soft);
+}
+.rev-tools-row {
+  display: flex; flex-wrap: wrap; gap: 22px; align-items: flex-start;
+}
+.rev-tools-block { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.rev-tools-actions { margin-left: auto; }
+.rev-tools-label {
+  font-family: var(--font-code); font-size: 10px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--text-muted);
+}
+.rev-tools-hint { font-size: 12px; color: var(--text-muted); }
+.rev-tools-note { flex-basis: 100%; margin-top: 10px; }
+.rev-tools-empty { font-size: 13px; color: var(--text-muted); margin: 0; }
+.rev-badge {
+  font-size: 12px; padding: 3px 10px; border-radius: 999px;
+  background: var(--bg-card); border: 1px solid var(--line); color: var(--text-muted);
+}
+.rev-badge-on { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+.rev-rating {
+  width: 72px; padding: 5px 8px; border: 1px solid var(--line);
+  border-radius: var(--radius-sm); background: var(--bg-card); color: var(--text);
+}
+.rev-checks { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 6px; }
+.rev-check { display: flex; gap: 8px; font-size: 13px; line-height: 1.5; }
+.rev-check span { flex-shrink: 0; font-weight: 700; }
+.rev-check-warn { color: var(--warn); }
+.rev-check-bad { color: var(--danger); }
+.rev-checks-ok { font-size: 13px; color: var(--ok); margin: 12px 0 0; }
+
+@media (max-width: 720px) {
+  .rev-tools-row { gap: 14px; }
+  .rev-tools-actions { margin-left: 0; }
+}
