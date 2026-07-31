@@ -13,7 +13,7 @@
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css?v=4.28" />
-    <link rel="stylesheet" href="./brandbook.css?v=1" />
+    <link rel="stylesheet" href="./brandbook.css?v=2" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
@@ -148,13 +148,17 @@
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2a10 10 0 1 0 0 20 1.6 1.6 0 0 0 1.6-1.6c0-.4-.2-.8-.4-1.1-.2-.3-.4-.7-.4-1.1a1.6 1.6 0 0 1 1.6-1.6H16a6 6 0 0 0 6-6c0-5-4.5-9-10-9z"/></svg>
               Оформление
             </button>
-            <button class="tab-btn" data-tab="brandbook" type="button">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7"/><path d="M9 11h5"/></svg>
-              Бренд-бук
-            </button>
             <button class="tab-btn" data-tab="passports" type="button">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="9" r="2.5"/><path d="M8.5 16a3.5 3.5 0 0 1 7 0"/></svg>
               Паспорта
+            </button>
+          </div>
+
+          <div class="sidebar-nav-group">
+            <span class="sidebar-nav-label">Brand</span>
+            <button class="tab-btn" data-tab="brandbook" type="button">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7"/><path d="M9 11h5"/></svg>
+              Бренд-бук
             </button>
           </div>
 
@@ -1446,7 +1450,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
     <script src="./app.js?v=4.27" type="module"></script>
-    <script src="./brandbook.js?v=1"></script>
+    <script src="./brandbook.js?v=2"></script>
     <script>
       // Tab switching + page title update
       document.addEventListener('DOMContentLoaded', function () {
