@@ -3556,6 +3556,10 @@
         {
           "type": "text",
           "content": "A concise editorial recommendation."
+        },
+        {
+          "type": "text",
+          "content": "Новый абзац."
         }
       ],
       "author": "Elena K.",
