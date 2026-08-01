@@ -628,7 +628,14 @@ export function getContentForLanguage(lang: string): LanguageContent {
   const liveBase = <T,>(arr: T[]): T[] => isPreview() ? arr : arr.filter((e) => !isPlaceholderEntity(e));
 
   const articles = mergeLocalizedArray(bucket.articles, liveBase(c.articles));
-  const reviews = mergeLocalizedArray(bucket.reviews, liveBase(c.reviews));
+  // Reviews hit the same recycled-id trap the Gallery did: every locale still
+  // carries a translation of a deleted restaurant review on id 1, so readers of
+  // UA/RU/DE opened "Симфонія смаків / Ресторан «Олеа», Лімасол" sitting on top
+  // of the Le Dauphine body. The buckets also hold a "New review" stub and one
+  // entry more than the root. Both signals are exactly what mergeLocalizedItems
+  // screens for, so reviews get the same guard: an untrustworthy bucket falls
+  // back to the base language instead of mixing two different reviews together.
+  const reviews = mergeLocalizedItems(bucket.reviews, liveBase(c.reviews));
   const items = mergeLocalizedItems(bucket.items, liveBase(c.items));
   const libraryItems = mergeLocalizedArray(bucket.libraryItems, liveBase(c.libraryItems));
 

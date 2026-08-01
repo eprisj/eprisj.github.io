@@ -171,9 +171,22 @@ function GalleryItemView({ item, onClose, articles, onReadArticle }: { item: Ite
   );
 }
 
+// UI strings introduced in code, before the editable translation table on the
+// server has an entry for them. Content (site-content.json) is owned by the VPS
+// and re-snapshotted nightly, so a key added to the repo copy would be
+// overwritten; shipping the fallback here keeps new labels translated in every
+// locale until an editor overrides them in the admin.
+const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
+  'reviews.read': { EN: 'Read', RU: 'Читать', UA: 'Читати', DE: 'Lesen', IT: 'Leggi', ES: 'Leer', TR: 'Oku' },
+};
+
 function getTranslation(lang: string, key: string) {
   const tr = getTranslations();
-  return tr[lang]?.[key] || tr[DEFAULT_LANGUAGE]?.[key] || key;
+  return tr[lang]?.[key]
+    || tr[DEFAULT_LANGUAGE]?.[key]
+    || UI_STRING_FALLBACK[key]?.[lang]
+    || UI_STRING_FALLBACK[key]?.[DEFAULT_LANGUAGE]
+    || key;
 }
 
 function isCustomMediaReference(value: string): boolean {
@@ -2173,13 +2186,49 @@ function ProsCons({ pros, cons, t }: { pros?: string[]; cons?: string[]; t: (key
   );
 }
 
+// The review editor's "Structure" button appends a skeleton of section headers
+// with prompt text underneath ("FIRST IMPRESSION" / "What stays with you after
+// the first encounter?"). It is a writing aid, not content: on Le Dauphine it
+// was pressed twice and never filled in, so readers got eight lines of editor
+// instructions. A prompt still verbatim means that section was never written —
+// drop the header with it. Once an editor replaces the prompt, both stay.
+const REVIEW_SCAFFOLD_PROMPTS: Record<string, string> = {
+  'FIRST IMPRESSION': 'What stays with you after the first encounter?',
+  'DETAILS THAT MATTER': 'Describe the material, rhythm, service or object in concrete terms.',
+  'IN CONTEXT': 'Place the subject in its cultural or local context.',
+  'WHO IT IS FOR': 'A concise editorial recommendation.',
+};
+
+const norm = (value: unknown) => typeof value === 'string' ? value.trim().replace(/\s+/g, ' ') : '';
+
+function stripUnfilledScaffold(blocks: ContentBlock[]): ContentBlock[] {
+  const skip = new Set<number>();
+  blocks.forEach((block, i) => {
+    if (block.type !== 'header') return;
+    const prompt = REVIEW_SCAFFOLD_PROMPTS[norm(block.content).toUpperCase()];
+    if (!prompt) return;
+    const next = blocks[i + 1];
+    // A scaffold header on its own (nothing after it, or another header) is
+    // just as unwritten as one still carrying its prompt.
+    if (!next || next.type === 'header') { skip.add(i); return; }
+    if (next.type === 'text' && norm(next.content).toLowerCase() === prompt.toLowerCase()) {
+      skip.add(i);
+      skip.add(i + 1);
+    }
+  });
+  return skip.size ? blocks.filter((_, i) => !skip.has(i)) : blocks;
+}
+
+const reviewBlocks = (content: Review['content']): ContentBlock[] =>
+  Array.isArray(content) ? stripUnfilledScaffold(content) : [];
+
 const reviewPlainText = (content: Review['content']) => typeof content === 'string'
   ? content
-  : content.map(block => typeof block.content === 'string' ? block.content : block.type === 'checklist' && !Array.isArray(block.content) && 'items' in block.content ? block.content.items.join(' ') : '').filter(Boolean).join(' ');
+  : reviewBlocks(content).map(block => typeof block.content === 'string' ? block.content : block.type === 'checklist' && !Array.isArray(block.content) && 'items' in block.content ? block.content.items.join(' ') : '').filter(Boolean).join(' ');
 
 function ReviewBody({ content }: { content: Review['content'] }) {
   if (typeof content === 'string') return <p className="font-serif text-lg leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)] whitespace-pre-line">{content}</p>;
-  return <div className="space-y-7 sm:space-y-10">{content.map((block, index) => {
+  return <div className="space-y-7 sm:space-y-10">{reviewBlocks(content).map((block, index) => {
     const text = typeof block.content === 'string' ? block.content : '';
     if (block.type === 'header' && text) return <h2 key={index} className="font-serif text-3xl sm:text-4xl leading-tight">{text}</h2>;
     if (block.type === 'quote' && text) return <blockquote key={index} className="border-l-2 border-[var(--c-gold)] pl-5 font-serif text-2xl italic leading-snug">{text}</blockquote>;
@@ -2240,7 +2289,7 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
                 </p>
               )}
               <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{reviewPlainText(featured.content).slice(0, 260)}{reviewPlainText(featured.content).length > 260 ? '…' : ''}</p>
-              <button onClick={() => onReviewClick(featured)} className="mt-6 inline-flex min-h-11 items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest">Read full review <ArrowUpRight size={14} /></button>
+              <button onClick={() => onReviewClick(featured)} className="mt-6 inline-flex min-h-11 items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest">{t('reviews.read')} <ArrowUpRight size={14} /></button>
               <div className="mt-auto pt-6 flex items-center justify-between">
                 {featured.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{featured.meta}</span>}
                 <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] ml-auto">— {featured.author}</span>
@@ -2297,7 +2346,7 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
                   </p>
                 )}
                 <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{reviewPlainText(review.content).slice(0, 190)}{reviewPlainText(review.content).length > 190 ? '…' : ''}</p>
-                <button onClick={() => onReviewClick(review)} className="mt-6 inline-flex min-h-11 items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest">Read review <ArrowUpRight size={14} /></button>
+                <button onClick={() => onReviewClick(review)} className="mt-6 inline-flex min-h-11 items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest">{t('reviews.read')} <ArrowUpRight size={14} /></button>
                 <div className="mt-auto pt-6 flex items-center justify-between gap-3">
                   {review.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{review.meta}</span>}
                   <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] ml-auto">— {review.author}</span>
@@ -2621,6 +2670,27 @@ function getSlugForArticle(article: Article): string {
   return generateSlug(canonical?.title || article.title);
 }
 
+// Reviews used bare numeric URLs (/review/1) while articles have had readable
+// slugs for a while. Slugs come from the DEFAULT_LANGUAGE title so one review
+// keeps one canonical URL in every locale; a title with no latin characters
+// leaves an empty slug, in which case the id stays the address.
+function buildReviewSlugMap(): Map<string, number> {
+  const map = new Map<string, number>();
+  for (const r of getContentForLanguage(DEFAULT_LANGUAGE).reviews) {
+    const slug = generateSlug(r.title || '');
+    if (slug) map.set(slug, r.id);
+    map.set(String(r.id), r.id);
+  }
+  return map;
+}
+
+const REVIEW_SLUG_MAP = buildReviewSlugMap();
+
+function getSlugForReview(review: Review): string {
+  const canonical = getContentForLanguage(DEFAULT_LANGUAGE).reviews.find((r) => r.id === review.id);
+  return generateSlug(canonical?.title || review.title || '') || String(review.id);
+}
+
 // Gallery items and full Articles have no shared id/slug field — some Gallery
 // pieces happen to also exist as a full standalone Article (same title, its
 // own /article/<slug> page with more room for photos/blocks). Matching by
@@ -2650,8 +2720,15 @@ function parsePath(pathname: string, search = ''): { tab?: string; articleId?: n
     const query = new URLSearchParams(search).get('q')?.trim().slice(0, 120);
     return { tab: 'gallery', searchQuery: query || undefined };
   }
-  const reviewMatch = p.match(/^review\/(\d+)$/);
-  if (reviewMatch) return { tab: 'reviews', reviewId: parseInt(reviewMatch[1], 10) };
+  const reviewMatch = p.match(/^review\/(.+)$/);
+  if (reviewMatch) {
+    const id = REVIEW_SLUG_MAP.get(reviewMatch[1]);
+    if (id !== undefined) return { tab: 'reviews', reviewId: id };
+    // Old numeric bookmarks for a review that is no longer bundled locally:
+    // keep the id so live content can still resolve it.
+    if (/^\d+$/.test(reviewMatch[1])) return { tab: 'reviews', reviewId: parseInt(reviewMatch[1], 10) };
+    return { tab: 'reviews' };
+  }
   // Keep old bookmarks useful after the public Library section was retired.
   if (p === 'library' || p === 'materie') return { tab: 'articles' };
   const numericMatch = p.match(/^article\/(\d+)$/);
@@ -2989,7 +3066,7 @@ export default function App() {
     setSelectedArticleId(null);
     setSelectedReviewId(review.id);
     setActiveTab('reviews');
-    navigate(`/review/${review.id}`);
+    navigate(`/review/${getSlugForReview(review)}`);
   }, [navigate]);
   const handleCloseReview = useCallback(() => {
     setSelectedReviewId(null);
@@ -3030,6 +3107,11 @@ export default function App() {
           window.history.replaceState(null, '', `/article/${getSlugForArticle(a)}`);
         }
       }
+    }
+    // Same upgrade for the numeric review URLs that are already out there.
+    if (initialRoute.reviewId !== undefined && /\/review\/\d+$/.test(window.location.pathname)) {
+      const r = defaultContent.reviews.find((review) => review.id === initialRoute.reviewId);
+      if (r) window.history.replaceState(null, '', `/review/${getSlugForReview(r)}`);
     }
   }, []);
 
