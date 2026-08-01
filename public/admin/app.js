@@ -12584,6 +12584,9 @@ async function flushModernEditor() {
   const saveState = document.getElementById('revSaveState');
   const undoBtn   = document.getElementById('revUndoBtn');
   const redoBtn   = document.getElementById('revRedoBtn');
+  const structureBtn = document.getElementById('revStructureBtn');
+  const previewBtn = document.getElementById('revPreviewBtn');
+  const copyUrlBtn = document.getElementById('revCopyUrlBtn');
   const metaBtn   = document.getElementById('revMetaBtn');
   const drawer    = document.getElementById('revMetaDrawer');
   const drawerClose = document.getElementById('revMetaClose');
@@ -12702,6 +12705,25 @@ async function flushModernEditor() {
   });
   undoBtn?.addEventListener('click', undo);
   redoBtn?.addEventListener('click', redo);
+  structureBtn?.addEventListener('click', () => {
+    if (!_model) return;
+    const scaffold = 'FIRST IMPRESSION\n\nWhat stays with you after the first encounter?\n\nDETAILS THAT MATTER\n\nDescribe the material, rhythm, service or object in concrete terms.\n\nIN CONTEXT\n\nPlace the subject in its cultural or local context.\n\nWHO IT IS FOR\n\nA concise editorial recommendation.';
+    const current = String(_model.content || '').trim();
+    _model.content = current ? `${current}\n\n${scaffold}` : scaffold;
+    render(); commit();
+    const body = canvas.querySelector('[data-wys="content-plain"]');
+    body?.focus();
+  });
+  previewBtn?.addEventListener('click', () => {
+    if (!_model) return;
+    window.open(`/review/${_id}`, '_blank', 'noopener,noreferrer');
+  });
+  copyUrlBtn?.addEventListener('click', async () => {
+    if (!_model) return;
+    const url = `${window.location.origin}/review/${_id}`;
+    try { await navigator.clipboard.writeText(url); if (typeof showToast === 'function') showToast('Ссылка на обзор скопирована', 'success'); }
+    catch { window.prompt('Скопируйте ссылку:', url); }
+  });
 
   // ── commit / publish (same pattern as the article canvas) ─────────────────
   function scheduleCommit() { setSave('editing'); clearTimeout(_commitTimer); _commitTimer = setTimeout(commit, 450); }
