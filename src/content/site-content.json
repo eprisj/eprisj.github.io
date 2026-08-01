@@ -3553,6 +3553,78 @@
           "type": "image",
           "content": "",
           "caption": ""
+        },
+        {
+          "type": "header",
+          "content": "FIRST IMPRESSION",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "What stays with you after the first encounter?"
+        },
+        {
+          "type": "header",
+          "content": "DETAILS THAT MATTER",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Describe the material, rhythm, service or object in concrete terms."
+        },
+        {
+          "type": "header",
+          "content": "IN CONTEXT",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Place the subject in its cultural or local context."
+        },
+        {
+          "type": "header",
+          "content": "WHO IT IS FOR",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "A concise editorial recommendation."
+        },
+        {
+          "type": "header",
+          "content": "FIRST IMPRESSION",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "What stays with you after the first encounter?"
+        },
+        {
+          "type": "header",
+          "content": "DETAILS THAT MATTER",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Describe the material, rhythm, service or object in concrete terms."
+        },
+        {
+          "type": "header",
+          "content": "IN CONTEXT",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Place the subject in its cultural or local context."
+        },
+        {
+          "type": "header",
+          "content": "WHO IT IS FOR",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "A concise editorial recommendation."
         }
       ],
       "author": "Maria ivanova",
