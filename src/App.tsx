@@ -2757,7 +2757,7 @@ const ROUTE_META: Record<string, { title: string; description: string }> = {
   podcasts: { title: 'EPRIS Podcasts', description: 'Conversations and audio stories about contemporary art, architecture, design and cities.' },
 };
 
-function updateMetaTags(article: Article | null, activeTab: string, activeSearch: string, settings: SiteSettings) {
+function updateMetaTags(article: Article | null, review: Review | null, activeTab: string, activeSearch: string, settings: SiteSettings) {
   const setMeta = (property: string, content: string) => {
     let el = document.querySelector(`meta[property="${property}"]`) || document.querySelector(`meta[name="${property}"]`);
     if (!el) {
@@ -2853,6 +2853,50 @@ function updateMetaTags(article: Article | null, activeTab: string, activeSearch
             { '@type': 'ListItem', position: 1, name: 'EPRIS Journal', item: 'https://eprisjournal.com/' },
             { '@type': 'ListItem', position: 2, name: 'Articles', item: 'https://eprisjournal.com/articles' },
             { '@type': 'ListItem', position: 3, name: article.title, item: canonicalUrl },
+          ],
+        },
+      ],
+    });
+  } else if (review) {
+    // Without this the SPA overwrote the build-time review page's own title and
+    // canonical with the generic /reviews ones as soon as it booted.
+    const imageUrl = resolveMediaSource(review.imageUrl, 1200, 630);
+    const canonicalUrl = `https://eprisjournal.com/review/${getSlugForReview(review)}`;
+    const summary = review.verdict || reviewPlainText(review.content).slice(0, 200);
+    document.title = `${review.title} — ${publicationName}`;
+    setMeta('og:title', review.title);
+    setMeta('og:description', summary);
+    setMeta('og:image', imageUrl);
+    setMeta('og:type', 'article');
+    setMeta('og:url', canonicalUrl);
+    setMeta('og:site_name', publicationName);
+    setMeta('twitter:card', 'summary_large_image');
+    setMeta('twitter:title', review.title);
+    setMeta('twitter:description', summary);
+    setMeta('twitter:image', imageUrl);
+    setMeta('description', summary);
+    setMeta('robots', 'index, follow, max-image-preview:large');
+    setCanonical(canonicalUrl);
+    setJsonLd('runtime-seo', {
+      '@context': 'https://schema.org',
+      '@graph': [
+        siteNode,
+        {
+          '@type': 'Review',
+          name: review.title,
+          reviewBody: reviewPlainText(review.content),
+          itemReviewed: { '@type': 'Thing', name: review.subject || review.title },
+          author: { '@type': 'Person', name: review.author || 'EPRIS Editorial' },
+          image: [imageUrl],
+          publisher: siteNode.publisher,
+          mainEntityOfPage: canonicalUrl,
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'EPRIS Journal', item: 'https://eprisjournal.com/' },
+            { '@type': 'ListItem', position: 2, name: 'Reviews', item: 'https://eprisjournal.com/reviews' },
+            { '@type': 'ListItem', position: 3, name: review.title, item: canonicalUrl },
           ],
         },
       ],
@@ -3017,8 +3061,8 @@ export default function App() {
   const fallbackTab = VISIBILITY_TABS.find((tab) => isSectionEnabled(tab)) || 'gallery';
 
   useEffect(() => {
-    updateMetaTags(selectedArticle, activeTab, activeSearch, siteSettings);
-  }, [selectedArticle, activeTab, activeSearch, contentVersion]);
+    updateMetaTags(selectedArticle, selectedReview, activeTab, activeSearch, siteSettings);
+  }, [selectedArticle, selectedReview, activeTab, activeSearch, contentVersion]);
 
   const handleImageClick = useCallback((src: string, alt: string) => {
     setLightboxImage({ src, alt });
@@ -3109,7 +3153,9 @@ export default function App() {
       }
     }
     // Same upgrade for the numeric review URLs that are already out there.
-    if (initialRoute.reviewId !== undefined && /\/review\/\d+$/.test(window.location.pathname)) {
+    // The static landing pages are directories, so the server hands the reader
+    // /review/1/ with a trailing slash — match it or the address bar keeps the id.
+    if (initialRoute.reviewId !== undefined && /\/review\/\d+\/?$/.test(window.location.pathname)) {
       const r = defaultContent.reviews.find((review) => review.id === initialRoute.reviewId);
       if (r) window.history.replaceState(null, '', `/review/${getSlugForReview(r)}`);
     }
