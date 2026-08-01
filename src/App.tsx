@@ -226,6 +226,10 @@ const HEART_CELLS: [number, number][] = HEART_PATTERN.flatMap((row, r) =>
 // its text. Anchors keep a safe href only. Rebuilding the tree (rather than
 // regex-stripping) is what makes it XSS-safe.
 const RICH_ALLOWED_TAGS = new Set(['B', 'STRONG', 'I', 'EM', 'U', 'S', 'MARK', 'CODE', 'BR', 'A', 'SPAN', 'P', 'H2', 'H3', 'H4', 'UL', 'OL', 'LI', 'HR', 'BLOCKQUOTE']);
+// Editorial layout classes an article body may ask for. A closed list, because
+// the alternative — passing `class` through — would let stored content reach
+// into the app's own stylesheet. Anything not named here is dropped silently.
+const RICH_ALLOWED_CLASSES = new Set(['stats', 'stat-figure', 'stat-label', 'kicker', 'dek', 'sources']);
 function escapeTextNode(s: string): string {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
@@ -259,6 +263,8 @@ function sanitizeRichText(html: string): string {
               attrs = ` href="${href.replace(/"/g, '&quot;')}" target="_blank" rel="noopener noreferrer"`;
             }
           }
+          const kept = (el.getAttribute('class') || '').split(/\s+/).filter((c) => RICH_ALLOWED_CLASSES.has(c));
+          if (kept.length) attrs += ` class="${kept.join(' ')}"`;
           const t = tag.toLowerCase();
           out += `<${t}${attrs}>${walk(el)}</${t}>`;
         } else {
@@ -1709,7 +1715,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                   return (
                     <Tag
                       key={index}
-                      className={`font-bold text-[var(--c-accent)] mt-10 mb-4 ${lvl === 3 ? 'text-xl sm:text-2xl' : 'text-2xl sm:text-3xl'}`}
+                      className={`rich-text font-bold text-[var(--c-accent)] mt-10 mb-4 ${lvl === 3 ? 'text-xl sm:text-2xl' : 'text-2xl sm:text-3xl'}`}
                       style={{ fontFamily: "var(--font-display)" }}
                       dangerouslySetInnerHTML={{ __html: sanitizeRichText(block.content) }}
                     />
