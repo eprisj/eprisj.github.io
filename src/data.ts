@@ -84,7 +84,8 @@ export interface Review {
   title: string;
   subject: string;
   rating: number;
-  content: string;
+  /** Reviews use the same block model as articles; legacy plain text remains supported. */
+  content: string | ContentBlock[];
   author: string;
   category?: string;
   imageUrl?: string;
