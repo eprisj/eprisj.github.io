@@ -4305,10 +4305,111 @@ body.busy::after {
    REVIEW CANVAS — mirrors ReviewsSection's featured layout
    ══════════════════════════════════════════════════════════ */
 .wys-review-hero { aspect-ratio: 4/3; }
-.review-block-toolbar { position: sticky; top: 0; z-index: 8; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--bg-card) 94%, transparent); backdrop-filter: blur(10px); }
-.review-block-toolbar > span { margin-right: 4px; font-family: var(--font-mono); font-size: .58rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); }
-.review-block-toolbar button { min-height: 32px; padding: 0 10px; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); color: var(--text); font-family: var(--font-mono); font-size: .61rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; cursor: pointer; transition: .15s ease; }
-.review-block-toolbar button:hover, .review-block-toolbar button:focus-visible { border-color: var(--accent); background: var(--accent); color: #fff; outline: none; }
+
+/* A review uses the same narrow editorial canvas as an article. The controls
+   belong above that canvas, not beside it: keeping them a sibling inside a
+   flex row previously created a large, unusable blank column. */
+#revWysShell .wys-scroll {
+  display: block;
+  padding-bottom: 60px;
+}
+
+#revWysShell .wys-canvas {
+  margin-inline: auto;
+}
+
+.review-block-toolbar {
+  position: sticky;
+  top: 58px;
+  z-index: 8;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 10px 14px;
+  width: min(100%, 760px);
+  margin: 0 auto 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--bg-card) 94%, transparent);
+  box-shadow: var(--shadow-xs);
+  backdrop-filter: blur(10px);
+}
+
+.review-block-toolbar-label {
+  display: grid;
+  flex: 0 0 auto;
+  gap: 1px;
+  padding-right: 12px;
+  border-right: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.review-block-toolbar-kicker {
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.review-block-toolbar-label strong {
+  font-family: var(--font-serif);
+  font-size: .94rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.review-block-toolbar-group {
+  display: flex;
+  flex: 0 1 auto;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.review-block-toolbar-group + .review-block-toolbar-group {
+  padding-left: 12px;
+  border-left: 1px solid var(--line);
+}
+
+.review-block-toolbar button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 34px;
+  padding: 0 9px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: .59rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  cursor: pointer;
+  transition: transform .15s ease, border-color .15s ease, background .15s ease, color .15s ease;
+}
+
+.review-block-toolbar button b {
+  font-size: .86rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.review-block-toolbar button:hover,
+.review-block-toolbar button:focus-visible {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+  outline: none;
+}
+
+.review-block-toolbar button:hover b,
+.review-block-toolbar button:focus-visible b { color: inherit; }
 .wys-review-block { position: relative; margin: 14px 0; padding: 14px 16px 16px; border: 1px solid var(--line); background: var(--bg-card); }
 .wys-review-block-label { display: flex; justify-content: space-between; margin-bottom: 8px; font-family: var(--font-mono); font-size: .57rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); }
 .wys-review-block [contenteditable="true"] { min-height: 28px; outline: none; }
@@ -5449,6 +5550,29 @@ body.busy::after {
   .wys-bar-right .btn { flex: 0 0 auto; min-height: 42px; }
   .wys-bar-right .toolbar-sep { flex: 0 0 1px; }
   .wys-scroll { padding-bottom: calc(132px + env(safe-area-inset-bottom)); }
+
+  /* Reviews keep the add-block controls in the writing flow. On a phone they
+     stay as one calm, horizontally scrollable strip rather than wrapping into
+     multiple rows above the document. */
+  .review-block-toolbar {
+    top: 122px;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px 10px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .review-block-toolbar::-webkit-scrollbar { display: none; }
+  .review-block-toolbar-label,
+  .review-block-toolbar-group,
+  .review-block-toolbar-group + .review-block-toolbar-group { flex: 0 0 auto; }
+  .review-block-toolbar-label { padding-right: 9px; }
+  .review-block-toolbar-group + .review-block-toolbar-group { padding-left: 9px; }
+  .review-block-toolbar button { min-height: 40px; padding-inline: 11px; }
+
   .wys-canvas, .wys-canvas.mobile { width: 100%; max-width: 100%; border-radius: 12px; padding-bottom: 26px; }
   .wys-hero { aspect-ratio: 4 / 3; }
   .wys-hero-edit { opacity: 1; }
