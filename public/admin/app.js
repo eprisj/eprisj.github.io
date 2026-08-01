@@ -12609,6 +12609,33 @@ async function flushModernEditor() {
     if (typeof resolveBlockImageUrl === 'function') { const r = resolveBlockImageUrl(s); if (r) return r; }
     return s.startsWith('http') ? s : '';
   }
+  function newReviewBlock(type) {
+    if (type === 'header') return { type, content: 'Новый заголовок', level: 2 };
+    if (type === 'quote') return { type, content: 'Цитата или важное наблюдение.' };
+    if (type === 'image') return { type, content: '', caption: '' };
+    if (type === 'gallery') return { type, content: [], caption: '' };
+    if (type === 'video') return { type, content: '', caption: '' };
+    if (type === 'link') return { type, content: 'Название ссылки', url: '' };
+    if (type === 'checklist') return { type, content: { items: ['Новый пункт'] } };
+    return { type: 'text', content: 'Новый абзац.' };
+  }
+  function ensureReviewBlocks() {
+    if (!_model) return [];
+    if (Array.isArray(_model.content)) return _model.content;
+    const text = String(_model.content || '').trim();
+    _model.content = text ? text.split(/\n{2,}/).map((paragraph) => ({ type: 'text', content: paragraph.trim() })).filter((b) => b.content) : [];
+    return _model.content;
+  }
+  function renderReviewBlock(block, index) {
+    const type = block.type || 'text';
+    const label = ({ text: 'Текст', header: 'Заголовок', quote: 'Цитата', image: 'Фото', gallery: 'Галерея', video: 'Видео', link: 'Ссылка', checklist: 'Чек‑лист' })[type] || type;
+    const close = `<button type="button" class="wys-review-block-delete" data-wys-act="block-del" data-bi="${index}" title="Удалить блок">×</button>`;
+    if (type === 'image' || type === 'video') return `<section class="wys-review-block"><div class="wys-review-block-label"><span>${label}</span>${close}</div><input data-wys="block-media" data-bi="${index}" value="${esc(block.content || '')}" placeholder="Вставьте URL ${type === 'image' ? 'фото' : 'YouTube/Vimeo'}"><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Подпись (необязательно)" style="margin-top:7px"></section>`;
+    if (type === 'gallery') return `<section class="wys-review-block"><div class="wys-review-block-label"><span>${label}</span>${close}</div><textarea data-wys="block-gallery" data-bi="${index}" placeholder="По одному URL фото на строку">${esc(Array.isArray(block.content) ? block.content.join('\n') : '')}</textarea><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Общая подпись (необязательно)" style="margin-top:7px"></section>`;
+    if (type === 'link') return `<section class="wys-review-block"><div class="wys-review-block-label"><span>${label}</span>${close}</div><input data-wys="block-content" data-bi="${index}" value="${esc(block.content || '')}" placeholder="Текст ссылки"><input data-wys="block-url" data-bi="${index}" value="${esc(block.url || '')}" placeholder="https://…" style="margin-top:7px"></section>`;
+    if (type === 'checklist') return `<section class="wys-review-block"><div class="wys-review-block-label"><span>${label}</span>${close}</div><textarea data-wys="block-checklist" data-bi="${index}" placeholder="Один пункт на строку">${esc(block.content?.items?.join('\n') || '')}</textarea></section>`;
+    return `<section class="wys-review-block"><div class="wys-review-block-label"><span>${label}</span>${close}</div><div class="wys-ce" contenteditable="true" data-wys="block-content" data-bi="${index}" data-empty="Введите текст…">${esc(block.content || '')}</div></section>`;
+  }
 
   // ── load / show-hide ────────────────────────────────────────────────────
   function reload() {
@@ -12707,9 +12734,13 @@ async function flushModernEditor() {
   redoBtn?.addEventListener('click', redo);
   structureBtn?.addEventListener('click', () => {
     if (!_model) return;
-    const scaffold = 'FIRST IMPRESSION\n\nWhat stays with you after the first encounter?\n\nDETAILS THAT MATTER\n\nDescribe the material, rhythm, service or object in concrete terms.\n\nIN CONTEXT\n\nPlace the subject in its cultural or local context.\n\nWHO IT IS FOR\n\nA concise editorial recommendation.';
-    const current = String(_model.content || '').trim();
-    _model.content = current ? `${current}\n\n${scaffold}` : scaffold;
+    const blocks = ensureReviewBlocks();
+    blocks.push(
+      { type: 'header', content: 'FIRST IMPRESSION', level: 2 }, { type: 'text', content: 'What stays with you after the first encounter?' },
+      { type: 'header', content: 'DETAILS THAT MATTER', level: 2 }, { type: 'text', content: 'Describe the material, rhythm, service or object in concrete terms.' },
+      { type: 'header', content: 'IN CONTEXT', level: 2 }, { type: 'text', content: 'Place the subject in its cultural or local context.' },
+      { type: 'header', content: 'WHO IT IS FOR', level: 2 }, { type: 'text', content: 'A concise editorial recommendation.' },
+    );
     render(); commit();
     const body = canvas.querySelector('[data-wys="content-plain"]');
     body?.focus();
@@ -12799,9 +12830,10 @@ async function flushModernEditor() {
     h += `<h1 class="wys-title wys-ce" contenteditable="true" data-wys="title-plain" data-empty="Заголовок обзора…">${esc(r.title || '')}</h1>`;
     h += `<p class="wys-excerpt wys-ce" contenteditable="true" data-wys="subject-plain" data-empty="Что рецензируем — название заведения/продукта/книги…">${esc(r.subject || '')}</p>`;
     h += `<blockquote class="wys-review-verdict wys-ce" contenteditable="true" data-wys="verdict-plain" data-empty="Вердикт одной фразой (необязательно)…">${esc(r.verdict || '')}</blockquote>`;
-    // esc() alone would put the newlines straight into the markup, where HTML
-    // collapses them — the break would vanish the moment the canvas re-rendered.
-    h += `<div class="wys-p wys-ce" contenteditable="true" data-wys="content-plain" data-empty="Текст обзора…" style="margin:16px 0">${esc(r.content || '').replace(/\n/g, '<br>')}</div>`;
+    const blocks = Array.isArray(r.content) ? r.content : null;
+    h += blocks
+      ? `<div class="wys-review-blocks">${blocks.map((block, index) => renderReviewBlock(block, index)).join('')}</div>`
+      : `<div class="wys-p wys-ce" contenteditable="true" data-wys="content-plain" data-empty="Текст обзора…" style="margin:16px 0">${esc(r.content || '').replace(/\n/g, '<br>')}</div>`;
 
     h += '<div class="wys-review-proscons">';
     h += renderChipList('pros', r.pros || [], 'Плюсы', '+');
@@ -12881,6 +12913,12 @@ async function flushModernEditor() {
     else if (field === 'meta-plain') _model.meta = val;
     else if (field === 'author-plain') _model.author = val;
     else if (field === 'date-plain') _model.date = val;
+    else if (field === 'block-content') { const block = ensureReviewBlocks()[Number(el.getAttribute('data-bi'))]; if (block) block.content = val; }
+    else if (field === 'block-media') { const block = ensureReviewBlocks()[Number(el.getAttribute('data-bi'))]; if (block) block.content = val; }
+    else if (field === 'block-caption') { const block = ensureReviewBlocks()[Number(el.getAttribute('data-bi'))]; if (block) block.caption = val; }
+    else if (field === 'block-url') { const block = ensureReviewBlocks()[Number(el.getAttribute('data-bi'))]; if (block) block.url = val; }
+    else if (field === 'block-gallery') { const block = ensureReviewBlocks()[Number(el.getAttribute('data-bi'))]; if (block) block.content = val.split('\n').map((url) => url.trim()).filter(Boolean); }
+    else if (field === 'block-checklist') { const block = ensureReviewBlocks()[Number(el.getAttribute('data-bi'))]; if (block) block.content = { items: val.split('\n').map((item) => item.trim()).filter(Boolean) }; }
     else if (field === 'pros-item') { const ci = Number(el.getAttribute('data-ci')); if (_model.pros) _model.pros[ci] = val; }
     else if (field === 'cons-item') { const ci = Number(el.getAttribute('data-ci')); if (_model.cons) _model.cons[ci] = val; }
     scheduleCommit();
@@ -12903,7 +12941,17 @@ async function flushModernEditor() {
     if (a === 'cons-add') { _model.cons = _model.cons || []; _model.cons.push(''); render(); commit(); return; }
     if (a === 'pros-del') { const ci = Number(act.getAttribute('data-ci')); _model.pros?.splice(ci, 1); render(); commit(); return; }
     if (a === 'cons-del') { const ci = Number(act.getAttribute('data-ci')); _model.cons?.splice(ci, 1); render(); commit(); return; }
+    if (a === 'block-del') { ensureReviewBlocks().splice(Number(act.getAttribute('data-bi')), 1); render(); commit(); return; }
   });
+
+  shell.querySelectorAll('[data-rev-add]').forEach((btn) => btn.addEventListener('click', () => {
+    if (!_model) return;
+    const blocks = ensureReviewBlocks();
+    blocks.push(newReviewBlock(btn.getAttribute('data-rev-add')));
+    render(); commit();
+    const last = canvas.querySelector('.wys-review-block:last-child [data-wys]');
+    last?.focus();
+  }));
 
   closeBtn && (closeBtn.onclick = () => { shell.classList.remove('on'); classicEls().forEach((el) => (el.style.display = '')); });
 
