@@ -87,6 +87,10 @@ export interface Review {
   /** Reviews use the same block model as articles; legacy plain text remains supported. */
   content: string | ContentBlock[];
   author: string;
+  /** Optional link to the shared editorial author directory. */
+  authorId?: string;
+  /** Localized byline role, preferred over the global author-card role. */
+  role?: string;
   category?: string;
   imageUrl?: string;
   verdict?: string;

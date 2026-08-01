@@ -2194,11 +2194,38 @@ function ReviewBody({ content }: { content: Review['content'] }) {
 }
 
 function ReviewView({ review, t, onClose }: { review: Review; t: (key: string) => string; onClose: () => void }) {
+  const resolvedAuthor = resolveAuthor(review);
+  const authorName = resolvedAuthor?.name || review.author || 'EPRIS Editorial';
+  const authorRole = review.role || resolvedAuthor?.role;
   return <motion.article initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} className="fixed inset-0 z-[90] overflow-y-auto bg-[var(--c-bg)]">
     <div className="mx-auto max-w-5xl px-5 py-6 sm:px-10 sm:py-10"><button onClick={onClose} className="mb-12 inline-flex min-h-11 items-center gap-2 font-mono text-[10px] uppercase tracking-widest"><ArrowLeft size={15} /> {t('nav.reviews')}</button>
       {review.imageUrl && <img src={review.imageUrl} alt={review.title} className="mb-10 aspect-[16/8] w-full object-cover" />}
       <header className="mx-auto mb-12 max-w-3xl border-b border-[var(--c-accent)] pb-10"><p className="font-mono text-[10px] uppercase tracking-[.2em] text-[var(--c-gold)]">{review.category || 'Review'}</p><h1 className="mt-4 font-serif text-5xl leading-[.94] sm:text-7xl">{review.title}</h1><p className="mt-5 font-mono text-[11px] uppercase tracking-widest opacity-60">{review.subject}</p>{review.verdict && <p className="mt-8 border-l-2 border-[var(--c-gold)] pl-5 font-serif text-2xl italic leading-snug">{review.verdict}</p>}</header>
-      <div className="mx-auto max-w-3xl"><ReviewBody content={review.content} /><ProsCons pros={review.pros} cons={review.cons} t={t} /><footer className="mt-14 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-5 font-mono text-[10px] uppercase tracking-widest opacity-60">{review.meta && <span>{review.meta} · </span>}— {review.author}</footer></div>
+      <div className="mx-auto max-w-3xl">
+        <ReviewBody content={review.content} />
+        <ProsCons pros={review.pros} cons={review.cons} t={t} />
+        <footer className="mt-14 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-7">
+          <div className="flex items-start gap-4 sm:gap-5">
+            {resolvedAuthor?.photoUrl ? (
+              <img src={resolvedAuthor.photoUrl} alt={authorName} loading="lazy" className="h-12 w-12 shrink-0 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.2)] object-cover sm:h-16 sm:w-16" />
+            ) : (
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--c-accent)] font-serif text-lg text-[var(--c-bg)] sm:h-16 sm:w-16" aria-hidden="true">{authorName.charAt(0)}</span>
+            )}
+            <div className="min-w-0">
+              <p className="font-serif text-xl">{authorName}</p>
+              {authorRole && <p className="mt-1 font-mono text-[10px] uppercase tracking-widest opacity-60">{authorRole}</p>}
+              {resolvedAuthor?.bio && <p className="mt-3 max-w-xl font-serif text-sm leading-relaxed opacity-70">{resolvedAuthor.bio}</p>}
+              {(resolvedAuthor?.website || resolvedAuthor?.instagram) && (
+                <div className="mt-3 flex flex-wrap gap-4">
+                  {resolvedAuthor.website && <a href={resolvedAuthor.website} target="_blank" rel="noopener noreferrer" className="min-h-11 content-center font-mono text-[10px] uppercase tracking-widest underline underline-offset-4 hover:text-[var(--c-gold)]">Website</a>}
+                  {resolvedAuthor.instagram && <a href={`https://instagram.com/${resolvedAuthor.instagram.replace(/^@/, '')}`} target="_blank" rel="noopener noreferrer" className="min-h-11 content-center font-mono text-[10px] uppercase tracking-widest underline underline-offset-4 hover:text-[var(--c-gold)]">{resolvedAuthor.instagram}</a>}
+                </div>
+              )}
+            </div>
+          </div>
+          {(review.meta || review.date) && <p className="mt-5 font-mono text-[10px] uppercase tracking-widest opacity-50">{[review.meta, review.date].filter(Boolean).join(' · ')}</p>}
+        </footer>
+      </div>
     </div>
   </motion.article>;
 }

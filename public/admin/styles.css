@@ -4290,8 +4290,9 @@ body.busy::after {
 .wys-meta-drawer-body { padding: 16px; overflow-y: auto; display: grid; gap: 12px; }
 .wys-meta-field { display: grid; gap: 4px; }
 .wys-meta-field span { font-family: var(--font-mono); font-size: .58rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); }
-.wys-meta-field input { padding: 8px 11px; border: 1px solid var(--line); border-radius: 4px; font-size: .85rem; background: var(--bg); color: var(--text); }
-.wys-meta-field input:focus { outline: none; border-color: var(--accent); background: var(--bg-card); }
+.wys-meta-field input, .wys-meta-field select, .wys-meta-field textarea { box-sizing: border-box; width: 100%; min-height: 44px; padding: 9px 11px; border: 1px solid var(--line); border-radius: 4px; font-size: .85rem; background: var(--bg); color: var(--text); }
+.wys-meta-field textarea { min-height: 96px; resize: vertical; line-height: 1.55; }
+.wys-meta-field input:focus, .wys-meta-field select:focus, .wys-meta-field textarea:focus { outline: 2px solid color-mix(in srgb, var(--accent) 22%, transparent); outline-offset: 1px; border-color: var(--accent); background: var(--bg-card); }
 .wys-meta-views { padding: 8px 11px; border: 1px dashed var(--line); border-radius: 4px; font-family: var(--font-mono); font-size: .85rem; color: var(--text); }
 .wys-meta-check { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 4px 0; }
 .wys-meta-check input { accent-color: var(--accent); width: 15px; height: 15px; cursor: pointer; }
@@ -4361,6 +4362,18 @@ body.busy::after {
   color: var(--text);
 }
 
+.review-block-toolbar-metrics {
+  display: flex;
+  gap: 7px;
+  margin-top: 3px;
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  letter-spacing: .04em;
+  color: var(--text-muted);
+}
+
+.review-block-toolbar-metrics span + span::before { content: "·"; margin-right: 7px; }
+
 .review-block-toolbar-group {
   display: flex;
   flex: 0 1 auto;
@@ -4377,8 +4390,8 @@ body.busy::after {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  min-height: 34px;
-  padding: 0 9px;
+  min-height: 44px;
+  padding: 0 11px;
   border: 1px solid var(--line);
   border-radius: 5px;
   background: var(--bg);
@@ -4433,6 +4446,7 @@ body.busy::after {
 }
 .wys-review-block-grip,
 .wys-review-block-move,
+.wys-review-block-action,
 .wys-review-block-delete {
   display: inline-flex;
   align-items: center;
@@ -4450,11 +4464,14 @@ body.busy::after {
 .wys-review-block-grip { cursor: grab; font-size: 1.05rem; letter-spacing: -2px; }
 .wys-review-block-grip:active { cursor: grabbing; }
 .wys-review-block-move { font-size: .9rem; }
+.wys-review-block-action { font-size: .9rem; }
 .wys-review-block-delete { font-size: 1rem; }
 .wys-review-block-grip:hover,
 .wys-review-block-grip:focus-visible,
 .wys-review-block-move:hover,
-.wys-review-block-move:focus-visible {
+.wys-review-block-move:focus-visible,
+.wys-review-block-action:hover,
+.wys-review-block-action:focus-visible {
   border-color: var(--accent);
   background: var(--accent-soft);
   color: var(--accent);
@@ -4469,7 +4486,8 @@ body.busy::after {
 }
 .wys-review-block-move:disabled { opacity: .25; cursor: default; }
 .wys-review-block-number { font-size: .55rem; letter-spacing: .12em; color: var(--text-faint, var(--text-muted)); }
-.wys-review-block-name { font-size: .59rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.wys-review-block-type select { min-height: 34px; border: 0; background: transparent; color: var(--text); font-family: var(--font-mono); font-size: .59rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; cursor: pointer; }
+.wys-review-block-type select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
 .wys-review-block-spacer { flex: 1; }
 .wys-review-block.is-dragging { opacity: .42; transform: scale(.985); }
 .wys-review-block.drop-before,
@@ -4487,9 +4505,13 @@ body.busy::after {
 }
 .wys-review-block.drop-before::before { top: -9px; }
 .wys-review-block.drop-after::after { bottom: -9px; }
-.wys-review-block [contenteditable="true"] { min-height: 28px; outline: none; }
-.wys-review-block input, .wys-review-block textarea { width: 100%; box-sizing: border-box; border: 1px solid var(--line); background: var(--bg); padding: 9px 10px; color: var(--text); font: inherit; }
+.wys-review-block-body { padding: 6px 2px 2px; }
+.wys-review-block [contenteditable="true"] { min-height: 52px; outline: none; line-height: 1.65; }
+.wys-review-block input, .wys-review-block textarea { min-height: 44px; width: 100%; box-sizing: border-box; border: 1px solid var(--line); background: var(--bg); padding: 10px 12px; color: var(--text); font: inherit; }
+.wys-review-block input:focus, .wys-review-block textarea:focus { outline: 2px solid color-mix(in srgb, var(--accent) 22%, transparent); outline-offset: 1px; border-color: var(--accent); }
 .wys-review-block textarea { min-height: 74px; resize: vertical; }
+.wys-review-media-field { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+.wys-review-gallery-pick { min-height: 44px; margin-bottom: 8px; }
 .wys-review-top { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 22px; }
 .wys-review-stars { display: none !important; }
 .wys-star { border: none; background: none; cursor: pointer; font-size: 1.15rem; line-height: 1; color: var(--line-strong); padding: 2px; transition: color .12s, transform .1s; }
@@ -4526,6 +4548,49 @@ body.busy::after {
 .wys-review-pros .wys-review-chip-sign { color: #4A7C59; }
 .wys-review-cons .wys-review-chip-sign { color: #8B3A3A; }
 .wys-review-meta-row { display: flex; align-items: center; gap: 8px; margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--line); font-family: var(--font-mono); font-size: .68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; }
+
+.wys-review-author-card {
+  width: 100%; min-height: 84px; margin: 22px 0; padding: 12px 14px;
+  display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; align-items: center; gap: 12px;
+  position: relative; border: 1px solid var(--line); border-radius: 6px; background: var(--bg);
+  color: var(--text); text-align: left; cursor: pointer; transition: border-color .16s ease, background .16s ease;
+}
+.wys-review-author-card:hover, .wys-review-author-card:focus-visible { border-color: var(--accent); background: var(--accent-soft); outline: 2px solid color-mix(in srgb, var(--accent) 20%, transparent); outline-offset: 2px; }
+.wys-review-author-card img, .wys-review-author-avatar { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; grid-row: 1; grid-column: 1; }
+.wys-review-author-avatar { display: inline-flex; align-items: center; justify-content: center; background: var(--accent); color: #fff; font-family: var(--font-serif); font-size: 1.35rem; }
+.wys-review-author-label { position: absolute; top: -8px; left: 12px; padding: 1px 7px; background: var(--bg-card); color: var(--text-muted); font-family: var(--font-mono); font-size: .54rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.wys-review-author-copy { min-width: 0; display: grid; gap: 3px; }
+.wys-review-author-copy strong { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 600; }
+.wys-review-author-copy small { color: var(--text-muted); font-size: .76rem; overflow-wrap: anywhere; }
+.wys-review-author-edit { font-family: var(--font-mono); font-size: .58rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.wys-author-panel { display: grid; gap: 12px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.wys-author-panel-head { display: grid; gap: 2px; }
+.wys-author-panel-head strong { font-family: var(--font-serif); font-size: 1.15rem; }
+.wys-author-panel-kicker { font-family: var(--font-mono); font-size: .56rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+.wys-author-card { display: grid; grid-template-columns: 44px minmax(0,1fr) auto auto; align-items: center; gap: 8px; margin-top: 10px; padding: 9px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); }
+.wys-author-card img, .wys-author-card .wys-author-avatar, .wys-author-photo-row img, .wys-author-photo-row .wys-author-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+.wys-author-card-copy { min-width: 0; display: grid; gap: 2px; }
+.wys-author-card-copy strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wys-author-card-copy span { color: var(--text-muted); font-size: .72rem; }
+.wys-author-manual, .wys-author-editor { display: grid; gap: 10px; margin-top: 10px; }
+.wys-author-editor { padding: 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); }
+.wys-author-editor-head, .wys-author-photo-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+
+@media (max-width: 720px) {
+  .review-block-toolbar { position: static; align-items: stretch; flex-direction: column; padding: 12px; }
+  .review-block-toolbar-label { padding: 0 0 10px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .review-block-toolbar-group + .review-block-toolbar-group { padding-left: 0; border-left: 0; }
+  .review-block-toolbar button { flex: 1 1 calc(50% - 5px); justify-content: center; }
+  .wys-review-block { margin: 12px 0; padding-inline: 10px; }
+  .wys-review-block-controls { flex-wrap: wrap; }
+  .wys-review-block-spacer { display: none; }
+  .wys-review-block-type { flex: 1 1 110px; }
+  .wys-review-block-grip, .wys-review-block-move, .wys-review-block-action, .wys-review-block-delete { width: 44px; flex-basis: 44px; }
+  .wys-review-media-field { grid-template-columns: 1fr; }
+  .wys-review-author-card { grid-template-columns: 48px minmax(0,1fr); }
+  .wys-review-author-edit { grid-column: 2; }
+  .wys-review-proscons { grid-template-columns: 1fr; }
+}
 
 /* ── Toasts — showToast()/showToastWithAction() had no CSS at all until now ── */
 .toast-container { position: fixed; top: 16px; right: 16px; z-index: 900; display: flex; flex-direction: column; gap: 8px; max-width: 380px; }

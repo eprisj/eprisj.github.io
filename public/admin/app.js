@@ -4366,14 +4366,15 @@ async function applyVisualChanges() {
     const next = buildEntryFromVisualForm(section, current);
 
     entries[entryIndex] = next;
-    const syncedLangs = section === 'articles'
+    const syncAllLanguages = section === 'articles' || section === 'reviews';
+    const syncedLangs = syncAllLanguages
       ? await translateEntryToAllLanguages(data, section, lang, next, {
           statusPrefix: `Обновляю переводы #${selectedId}`
         })
       : await syncMissingEntryLanguages(data, section, lang, next);
     pendingVisualEntryId = selectedId;
     setEditorData(data);
-    const syncNote = section === 'articles'
+    const syncNote = syncAllLanguages
       ? formatLanguageSyncNote(syncedLangs, 'Языки обновлены')
       : formatLanguageSyncNote(syncedLangs, 'Недостающие языки созданы');
     const statusType = getLanguageSyncFailures(syncedLangs).length ? 'info' : 'success';
@@ -4514,7 +4515,8 @@ async function saveCurrentEntryOnly() {
     // quality audit, draft) stays in sync without a full reload.
     entries[entryIndex] = next;
     let syncedLangs = [];
-    if (section === 'articles') {
+    const syncAllLanguages = section === 'articles' || section === 'reviews';
+    if (syncAllLanguages) {
       syncedLangs = await translateEntryToAllLanguages(data, section, lang, next, {
         saveToServer: true,
         statusPrefix: `Сохраняю переводы #${selectedId}`
@@ -4524,7 +4526,7 @@ async function saveCurrentEntryOnly() {
     }
     pendingVisualEntryId = selectedId;
     setEditorData(data, { markSynced: true });
-    const syncNote = section === 'articles'
+    const syncNote = syncAllLanguages
       ? formatLanguageSyncNote(syncedLangs, 'Языки обновлены на VPS')
       : formatLanguageSyncNote(syncedLangs, 'Недостающие языки созданы');
     const statusType = getLanguageSyncFailures(syncedLangs).length ? 'info' : 'success';
@@ -4928,7 +4930,20 @@ async function translateEntryForSection(section, entry, targetLang, sourceLang =
   if (section === 'reviews') {
     next.title = await translateText(entry.title, targetLang, sourceLang);
     next.subject = await translateText(entry.subject, targetLang, sourceLang);
-    next.content = await translateText(entry.content, targetLang, sourceLang);
+    next.category = entry.category ? await translateText(entry.category, targetLang, sourceLang) : entry.category;
+    next.verdict = entry.verdict ? await translateRichText(entry.verdict, targetLang, sourceLang) : entry.verdict;
+    next.meta = entry.meta ? await translateText(entry.meta, targetLang, sourceLang) : entry.meta;
+    next.role = entry.role ? await translateText(entry.role, targetLang, sourceLang) : entry.role;
+    next.pros = await translateStringArray(entry.pros, targetLang, sourceLang);
+    next.cons = await translateStringArray(entry.cons, targetLang, sourceLang);
+    if (Array.isArray(entry.content)) {
+      next.content = [];
+      for (const block of entry.content) {
+        next.content.push(await translateArticleBlock(block, targetLang, sourceLang));
+      }
+    } else {
+      next.content = await translateRichText(entry.content, targetLang, sourceLang);
+    }
     return next;
   }
 
@@ -12631,6 +12646,7 @@ async function flushModernEditor() {
   let _commitTimer = null, _publishTimer = null, _reloadTimer = null, _suspendReload = false;
   let _publishing = false, _publishQueued = false, _errorRetries = 0;
   let _history = [], _historyIdx = -1, _restoringHistory = false;
+  let _translationDirty = false;
 
   function imgUrl(src) {
     if (!src) return '';
@@ -12656,23 +12672,31 @@ async function flushModernEditor() {
     _model.content = text ? text.split(/\n{2,}/).map((paragraph) => ({ type: 'text', content: paragraph.trim() })).filter((b) => b.content) : [];
     return _model.content;
   }
+  const REVIEW_ICON_GRIP = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="9" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>';
+  const REVIEW_ICON_UP = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>';
+  const REVIEW_ICON_DOWN = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+  const REVIEW_ICON_COPY = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+  const REVIEW_ICON_PLUS = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
+  const REVIEW_ICON_TRASH = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M19 6l-1 15H6L5 6"/></svg>';
   function renderReviewBlock(block, index) {
     const type = block.type || 'text';
     const label = ({ text: 'Текст', header: 'Заголовок', quote: 'Цитата', image: 'Фото', gallery: 'Галерея', video: 'Видео', link: 'Ссылка', checklist: 'Чек‑лист' })[type] || type;
     const controls = `<div class="wys-review-block-controls">
-      <button type="button" class="wys-review-block-grip" draggable="true" data-review-drag="${index}" aria-label="Перетащить блок ${index + 1}" title="Перетащить блок">⠿</button>
+      <button type="button" class="wys-review-block-grip" draggable="true" data-review-drag="${index}" aria-label="Перетащить блок ${index + 1}. Alt и стрелки также меняют порядок" title="Перетащить или Alt + стрелка">${REVIEW_ICON_GRIP}</button>
       <span class="wys-review-block-number">${String(index + 1).padStart(2, '0')}</span>
-      <span class="wys-review-block-name">${label}</span>
+      <label class="wys-review-block-type"><span class="sr-only">Тип блока</span><select data-wys="block-type" data-bi="${index}" aria-label="Тип блока ${index + 1}">${['text', 'header', 'quote', 'image', 'gallery', 'video', 'link', 'checklist'].map((value) => `<option value="${value}"${value === type ? ' selected' : ''}>${({ text: 'Текст', header: 'Заголовок', quote: 'Цитата', image: 'Фото', gallery: 'Галерея', video: 'Видео', link: 'Ссылка', checklist: 'Чек‑лист' })[value]}</option>`).join('')}</select></label>
       <span class="wys-review-block-spacer"></span>
-      <button type="button" class="wys-review-block-move" data-wys-act="block-up" data-bi="${index}" aria-label="Переместить выше" title="Выше" ${index === 0 ? 'disabled' : ''}>↑</button>
-      <button type="button" class="wys-review-block-move" data-wys-act="block-down" data-bi="${index}" aria-label="Переместить ниже" title="Ниже" ${index === ensureReviewBlocks().length - 1 ? 'disabled' : ''}>↓</button>
-      <button type="button" class="wys-review-block-delete" data-wys-act="block-del" data-bi="${index}" aria-label="Удалить блок" title="Удалить блок">×</button>
+      <button type="button" class="wys-review-block-move" data-wys-act="block-up" data-bi="${index}" aria-label="Переместить блок выше" title="Выше" ${index === 0 ? 'disabled' : ''}>${REVIEW_ICON_UP}</button>
+      <button type="button" class="wys-review-block-move" data-wys-act="block-down" data-bi="${index}" aria-label="Переместить блок ниже" title="Ниже" ${index === ensureReviewBlocks().length - 1 ? 'disabled' : ''}>${REVIEW_ICON_DOWN}</button>
+      <button type="button" class="wys-review-block-action" data-wys-act="block-add-after" data-bi="${index}" aria-label="Добавить текстовый блок после" title="Добавить после">${REVIEW_ICON_PLUS}</button>
+      <button type="button" class="wys-review-block-action" data-wys-act="block-copy" data-bi="${index}" aria-label="Дублировать блок" title="Дублировать">${REVIEW_ICON_COPY}</button>
+      <button type="button" class="wys-review-block-delete" data-wys-act="block-del" data-bi="${index}" aria-label="Удалить блок" title="Удалить блок">${REVIEW_ICON_TRASH}</button>
     </div>`;
-    if (type === 'image' || type === 'video') return `<section class="wys-review-block" data-review-block="${index}">${controls}<input data-wys="block-media" data-bi="${index}" value="${esc(block.content || '')}" placeholder="Вставьте URL ${type === 'image' ? 'фото' : 'YouTube/Vimeo'}"><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Подпись (необязательно)" style="margin-top:7px"></section>`;
-    if (type === 'gallery') return `<section class="wys-review-block" data-review-block="${index}">${controls}<textarea data-wys="block-gallery" data-bi="${index}" placeholder="По одному URL фото на строку">${esc(Array.isArray(block.content) ? block.content.join('\n') : '')}</textarea><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Общая подпись (необязательно)" style="margin-top:7px"></section>`;
-    if (type === 'link') return `<section class="wys-review-block" data-review-block="${index}">${controls}<input data-wys="block-content" data-bi="${index}" value="${esc(block.content || '')}" placeholder="Текст ссылки"><input data-wys="block-url" data-bi="${index}" value="${esc(block.url || '')}" placeholder="https://…" style="margin-top:7px"></section>`;
-    if (type === 'checklist') return `<section class="wys-review-block" data-review-block="${index}">${controls}<textarea data-wys="block-checklist" data-bi="${index}" placeholder="Один пункт на строку">${esc(block.content?.items?.join('\n') || '')}</textarea></section>`;
-    return `<section class="wys-review-block" data-review-block="${index}">${controls}<div class="wys-ce" contenteditable="true" data-wys="block-content" data-bi="${index}" data-empty="Введите текст…">${esc(block.content || '')}</div></section>`;
+    if (type === 'image' || type === 'video') return `<section class="wys-review-block" data-review-block="${index}">${controls}<div class="wys-review-block-body"><div class="wys-review-media-field"><input data-wys="block-media" data-bi="${index}" value="${esc(block.content || '')}" placeholder="Вставьте URL ${type === 'image' ? 'фото' : 'YouTube/Vimeo'}">${type === 'image' ? `<button type="button" class="btn btn-sm" data-wys-act="block-pick-media" data-bi="${index}">Медиатека</button>` : ''}</div><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Подпись (необязательно)" style="margin-top:7px"></div></section>`;
+    if (type === 'gallery') return `<section class="wys-review-block" data-review-block="${index}">${controls}<div class="wys-review-block-body"><button type="button" class="btn btn-sm wys-review-gallery-pick" data-wys-act="block-pick-gallery" data-bi="${index}">＋ Выбрать несколько фото</button><textarea data-wys="block-gallery" data-bi="${index}" placeholder="По одному URL фото на строку">${esc(Array.isArray(block.content) ? block.content.join('\n') : '')}</textarea><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Общая подпись (необязательно)" style="margin-top:7px"></div></section>`;
+    if (type === 'link') return `<section class="wys-review-block" data-review-block="${index}">${controls}<div class="wys-review-block-body"><input data-wys="block-content" data-bi="${index}" value="${esc(block.content || '')}" placeholder="Текст ссылки"><input data-wys="block-url" data-bi="${index}" value="${esc(block.url || '')}" placeholder="https://…" style="margin-top:7px"></div></section>`;
+    if (type === 'checklist') return `<section class="wys-review-block" data-review-block="${index}">${controls}<div class="wys-review-block-body"><textarea data-wys="block-checklist" data-bi="${index}" placeholder="Один пункт на строку">${esc(block.content?.items?.join('\n') || '')}</textarea></div></section>`;
+    return `<section class="wys-review-block" data-review-block="${index}">${controls}<div class="wys-review-block-body"><div class="wys-ce" contenteditable="true" data-wys="block-content" data-bi="${index}" data-empty="Введите текст…">${esc(block.content || '')}</div></div></section>`;
   }
 
   // ── load / show-hide ────────────────────────────────────────────────────
@@ -12690,6 +12714,7 @@ async function flushModernEditor() {
     if (!entry) { canvas.innerHTML = '<div class="wys-empty"><div class="wys-empty-icon">✦</div><p>Выберите обзор в списке сверху или создайте новый.</p></div>'; return; }
     _id = id;
     _model = clone(entry);
+    _translationDirty = false;
     render();
     resetHistory(_model);
     updateDraftBadge();
@@ -12698,12 +12723,11 @@ async function flushModernEditor() {
   const CLASSIC = ['creatorStudioWrap', 'editorSplit', 'commandCenter', 'stats'];
   const classicEls = () => CLASSIC.map((id) => document.getElementById(id)).filter(Boolean);
 
-  // ── metadata drawer (draft / scheduled publish) ────────────────────────────
-  // Reviews only need draft+publishAt here — category/author/etc are already
-  // inline-editable directly on the canvas, unlike articles.
+  // ── metadata drawer (author / draft / scheduled publish) ───────────────────
   function renderReviewDrawer() {
     if (!_model) return;
     drawerBody.innerHTML =
+      `<section class="wys-author-panel"><div class="wys-author-panel-head"><span class="wys-author-panel-kicker">Автор обзора</span><strong>Карточка и подпись</strong></div><div data-review-author-picker></div></section>` +
       `<label class="wys-meta-check"><input type="checkbox" data-mdraft ${_model.draft ? 'checked' : ''}><span>Черновик — скрыт с сайта</span></label>` +
       `<label class="wys-meta-field"><span>Отложенная публикация (скрыта до этого момента)</span><input type="datetime-local" data-mpublishat value="${esc(isoToLocalInput(_model.publishAt))}"></label>`;
     const draftInp = drawerBody.querySelector('[data-mdraft]');
@@ -12718,6 +12742,106 @@ async function flushModernEditor() {
       if (v) _model.publishAt = new Date(v).toISOString(); else delete _model.publishAt;
       updateDraftBadge();
       scheduleCommit();
+    });
+    renderReviewAuthorPicker();
+  }
+
+  function reviewAuthorsFromContent() {
+    const contentData = parseEditorJsonSafe();
+    return { contentData, authors: contentData && Array.isArray(contentData.authors) ? contentData.authors : [] };
+  }
+  function persistReviewAuthors(contentData) {
+    editor.value = JSON.stringify(contentData, null, 2);
+    try { updateEditorState(); } catch {}
+  }
+  function newReviewAuthorId() {
+    return 'author-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7);
+  }
+  function applyReviewAuthor(author) {
+    if (author) {
+      _model.authorId = author.id;
+      _model.author = author.name || '';
+      if (author.role) _model.role = author.role; else delete _model.role;
+    } else {
+      delete _model.authorId;
+    }
+    render();
+    commit();
+  }
+  function renderReviewAuthorPicker() {
+    const host = drawerBody.querySelector('[data-review-author-picker]');
+    if (!host || !_model) return;
+    const { authors } = reviewAuthorsFromContent();
+    const selected = _model.authorId ? authors.find((author) => author.id === _model.authorId) : null;
+    const options = ['<option value="">— Вручную, без карточки —</option>']
+      .concat(authors.map((author) => `<option value="${esc(author.id)}"${author.id === _model.authorId ? ' selected' : ''}>${esc(author.name || '(без имени)')}${author.active === false ? ' — скрыт' : ''}</option>`))
+      .join('');
+    host.innerHTML = `<label class="wys-meta-field"><span>Выбрать из команды</span><select data-review-author-select>${options}</select></label>` +
+      (selected
+        ? `<div class="wys-author-card">${selected.photoUrl ? `<img src="${esc(selected.photoUrl)}" alt="Фото ${esc(selected.name || 'автора')}">` : `<span class="wys-author-avatar" aria-hidden="true">${esc((selected.name || '?').charAt(0))}</span>`}<div class="wys-author-card-copy"><strong>${esc(selected.name || '')}</strong><span>${esc(selected.role || '')}</span></div><button type="button" class="btn btn-sm" data-review-author-edit>Изменить</button><button type="button" class="btn btn-sm" data-review-author-new aria-label="Создать нового автора">＋</button></div>`
+        : `<div class="wys-author-manual"><label class="wys-meta-field"><span>Имя автора</span><input data-review-author-name value="${esc(_model.author || '')}" placeholder="Имя и фамилия"></label><label class="wys-meta-field"><span>Роль / подпись</span><input data-review-author-role value="${esc(_model.role || '')}" placeholder="Редактор, автор, фотограф…"></label><button type="button" class="btn btn-sm" data-review-author-new>＋ Создать карточку автора</button></div>`);
+
+    host.querySelector('[data-review-author-select]')?.addEventListener('change', (event) => {
+      const author = authors.find((item) => item.id === event.target.value) || null;
+      applyReviewAuthor(author);
+      renderReviewDrawer();
+    });
+    host.querySelector('[data-review-author-name]')?.addEventListener('input', (event) => { _model.author = event.target.value; scheduleCommit(); });
+    host.querySelector('[data-review-author-role]')?.addEventListener('input', (event) => { _model.role = event.target.value; scheduleCommit(); });
+    host.querySelector('[data-review-author-edit]')?.addEventListener('click', () => openReviewAuthorEditor(selected));
+    host.querySelector('[data-review-author-new]')?.addEventListener('click', () => openReviewAuthorEditor(null));
+  }
+  function openReviewAuthorEditor(existing) {
+    const host = drawerBody.querySelector('[data-review-author-picker]');
+    if (!host) return;
+    const author = existing ? clone(existing) : { id: newReviewAuthorId(), name: '', role: '', bio: '', photoUrl: '', website: '', instagram: '', active: true };
+    const field = (label, key, placeholder = '') => `<label class="wys-meta-field"><span>${label}</span><input data-review-author-field="${key}" value="${esc(author[key] || '')}" placeholder="${placeholder}"></label>`;
+    host.innerHTML = `<div class="wys-author-editor"><div class="wys-author-editor-head"><strong>${existing ? 'Редактировать автора' : 'Новый автор'}</strong><button type="button" class="btn btn-sm" data-review-author-cancel>Отмена</button></div>` +
+      field('Имя', 'name', 'Имя автора') + field('Роль', 'role', 'Редактор / автор') +
+      `<label class="wys-meta-field"><span>Биография</span><textarea rows="4" data-review-author-field="bio" placeholder="Короткая биография">${esc(author.bio || '')}</textarea></label>` +
+      `<div class="wys-author-photo-row">${author.photoUrl ? `<img data-review-author-preview src="${esc(author.photoUrl)}" alt="">` : '<span data-review-author-preview class="wys-author-avatar"></span>'}<button type="button" class="btn btn-sm" data-review-author-upload>Загрузить фото</button></div>` +
+      field('URL фото', 'photoUrl', 'https://…') + field('Сайт', 'website', 'https://…') + field('Instagram', 'instagram', '@handle') +
+      `<label class="wys-meta-check"><input type="checkbox" data-review-author-active ${author.active !== false ? 'checked' : ''}><span>Показывать автора</span></label>` +
+      `<button type="button" class="btn btn-primary" data-review-author-save>Сохранить и выбрать автора</button></div>`;
+    host.querySelectorAll('[data-review-author-field]').forEach((input) => input.addEventListener('input', () => {
+      author[input.getAttribute('data-review-author-field')] = input.value;
+      if (input.getAttribute('data-review-author-field') === 'photoUrl') {
+        const preview = host.querySelector('[data-review-author-preview]');
+        if (preview && input.value) preview.outerHTML = `<img data-review-author-preview src="${esc(input.value)}" alt="">`;
+      }
+    }));
+    host.querySelector('[data-review-author-upload]')?.addEventListener('click', () => {
+      const fileInput = document.createElement('input');
+      fileInput.type = 'file'; fileInput.accept = 'image/*';
+      fileInput.onchange = async () => {
+        const file = fileInput.files && fileInput.files[0];
+        if (!file) return;
+        const button = host.querySelector('[data-review-author-upload]');
+        button.disabled = true; button.textContent = 'Загружаю…';
+        try {
+          author.photoUrl = await uploadImageReturnUrl(file);
+          const urlInput = host.querySelector('[data-review-author-field="photoUrl"]');
+          if (urlInput) urlInput.value = author.photoUrl;
+          const preview = host.querySelector('[data-review-author-preview]');
+          if (preview) preview.outerHTML = `<img data-review-author-preview src="${esc(author.photoUrl)}" alt="">`;
+        } catch (error) { alert('Не удалось загрузить фото: ' + getErrorMessage(error)); }
+        finally { button.disabled = false; button.textContent = 'Загрузить фото'; }
+      };
+      fileInput.click();
+    });
+    host.querySelector('[data-review-author-cancel]')?.addEventListener('click', renderReviewAuthorPicker);
+    host.querySelector('[data-review-author-save]')?.addEventListener('click', () => {
+      author.name = String(author.name || '').trim();
+      if (!author.name) { alert('Укажите имя автора.'); return; }
+      author.active = Boolean(host.querySelector('[data-review-author-active]')?.checked);
+      const { contentData } = reviewAuthorsFromContent();
+      if (!contentData) { alert('Не удалось прочитать контент.'); return; }
+      if (!Array.isArray(contentData.authors)) contentData.authors = [];
+      const index = contentData.authors.findIndex((item) => item.id === author.id);
+      if (index >= 0) contentData.authors[index] = author; else contentData.authors.push(author);
+      persistReviewAuthors(contentData);
+      applyReviewAuthor(author);
+      renderReviewDrawer();
     });
   }
   function updateDraftBadge() {
@@ -12795,8 +12919,8 @@ async function flushModernEditor() {
   });
 
   // ── commit / publish (same pattern as the article canvas) ─────────────────
-  function scheduleCommit() { setSave('editing'); clearTimeout(_commitTimer); _commitTimer = setTimeout(commit, 450); }
-  function commit() { if (!flushLocal()) return; _errorRetries = 0; armPublish(2600); setSave('saved'); pushHistory(); }
+  function scheduleCommit() { _translationDirty = true; setSave('editing'); clearTimeout(_commitTimer); _commitTimer = setTimeout(commit, 450); }
+  function commit() { _translationDirty = true; if (!flushLocal()) return; _errorRetries = 0; armPublish(2600); setSave('saved'); pushHistory(); }
   function flushLocal() {
     if (!_model) return false;
     const data = parseEditorJsonSafe();
@@ -12824,6 +12948,25 @@ async function flushModernEditor() {
     _publishing = true;
     setSave('publishing');
     try {
+      const sourceLang = visualLangSelect.value || DEFAULT_LANGUAGE;
+      const translatedFingerprint = JSON.stringify({
+        title: _model.title, subject: _model.subject, category: _model.category,
+        verdict: _model.verdict, content: _model.content, pros: _model.pros,
+        cons: _model.cons, meta: _model.meta, role: _model.role,
+      });
+      let syncResult = [];
+      if (_translationDirty) {
+        setSave('translating');
+        const contentData = parseEditorJsonSafe();
+        if (!contentData) throw new Error('Не удалось подготовить контент для перевода.');
+        const sourceEntries = getSectionArray(contentData, 'reviews', sourceLang, sourceLang !== DEFAULT_LANGUAGE);
+        const sourceReview = sourceEntries.find((entry) => Number(entry.id) === Number(_id)) || clone(_model);
+        syncResult = await translateEntryToAllLanguages(contentData, 'reviews', sourceLang, sourceReview, {
+          statusPrefix: `Перевожу обзор #${_id}`,
+        });
+        editor.value = JSON.stringify(contentData, null, 2);
+        try { updateEditorState(); } catch {}
+      }
       const res = await fetch(CONTENT_API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw }, body: editor.value });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.ok) throw new Error(data.error || ('VPS ' + res.status));
@@ -12831,6 +12974,21 @@ async function flushModernEditor() {
       try { localStorage.removeItem(DRAFT_KEY); } catch {}
       lastSyncedTime = new Date();
       try { updateLastSyncedBadge(); } catch {}
+      if (JSON.stringify({
+        title: _model.title, subject: _model.subject, category: _model.category,
+        verdict: _model.verdict, content: _model.content, pros: _model.pros,
+        cons: _model.cons, meta: _model.meta, role: _model.role,
+      }) === translatedFingerprint) _translationDirty = false;
+      if (syncResult.length || getLanguageSyncFailures(syncResult).length) {
+        showLanguageSyncReport({
+          selectedId: _id,
+          section: 'reviews',
+          sourceLang,
+          savedToServer: true,
+          syncResult,
+          actionLabel: 'Обзор и переводы опубликованы',
+        });
+      }
       setSave('published'); _errorRetries = 0;
     } catch (e) {
       _errorRetries += 1;
@@ -12844,7 +13002,7 @@ async function flushModernEditor() {
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && _model) publishSilently(); });
   function setSave(s) {
     if (!saveState) return;
-    const labels = { editing: 'Изменяю…', saved: 'Сохранено локально', publishing: 'Публикую на сайт…', published: 'Опубликовано ✓', error: 'Ошибка публикации — повторяю…', 'error-final': 'Не удалось опубликовать (сохранено локально)', nopw: 'Сохранено локально (нет пароля для публикации)' };
+    const labels = { editing: 'Изменяю…', saved: 'Сохранено локально', translating: 'Перевожу на языки…', publishing: 'Публикую на сайт…', published: 'Опубликовано и переведено ✓', error: 'Ошибка публикации — повторяю…', 'error-final': 'Не удалось опубликовать (сохранено локально)', nopw: 'Сохранено локально (нет пароля для публикации)' };
     saveState.textContent = labels[s] || labels.saved;
     saveState.className = 'wys-save-state ' + s;
   }
@@ -12873,6 +13031,8 @@ async function flushModernEditor() {
       ? `<div class="wys-review-blocks">${blocks.map((block, index) => renderReviewBlock(block, index)).join('')}</div>`
       : `<div class="wys-p wys-ce" contenteditable="true" data-wys="content-plain" data-empty="Текст обзора…" style="margin:16px 0">${esc(r.content || '').replace(/\n/g, '<br>')}</div>`;
 
+    h += renderReviewAuthorCard();
+
     h += '<div class="wys-review-proscons">';
     h += renderChipList('pros', r.pros || [], 'Плюсы', '+');
     h += renderChipList('cons', r.cons || [], 'Минусы', '−');
@@ -12881,14 +13041,47 @@ async function flushModernEditor() {
     h += '<div class="wys-review-meta-row">';
     h += `<span class="wys-ce wys-meta-item" contenteditable="true" data-wys="meta-plain" data-empty="Мета (напр. цена, сайт)">${esc(r.meta || '')}</span>`;
     h += '<span class="wys-meta-dot"></span>';
-    h += `<span class="wys-ce wys-meta-item" contenteditable="true" data-wys="author-plain" data-empty="Автор">${esc(r.author || '')}</span>`;
-    h += '<span class="wys-meta-dot"></span>';
     h += `<span class="wys-ce wys-meta-item" contenteditable="true" data-wys="date-plain" data-empty="Дата">${esc(r.date || '')}</span>`;
     h += '</div>';
 
     h += '</article>';
     canvas.innerHTML = h;
     applyEmptyStates();
+    updateReviewMetrics();
+  }
+
+  function renderReviewAuthorCard() {
+    const { authors } = reviewAuthorsFromContent();
+    const selected = _model.authorId ? authors.find((author) => author.id === _model.authorId) : null;
+    const name = selected?.name || _model.author || 'Добавить автора';
+    const role = selected?.role || _model.role || 'Выберите карточку или введите подпись вручную';
+    const portrait = selected?.photoUrl
+      ? `<img src="${esc(selected.photoUrl)}" alt="Фото ${esc(name)}">`
+      : `<span class="wys-review-author-avatar" aria-hidden="true">${esc(name.charAt(0) || '?')}</span>`;
+    return `<button type="button" class="wys-review-author-card" data-wys-act="author-card"><span class="wys-review-author-label">Автор обзора</span>${portrait}<span class="wys-review-author-copy"><strong>${esc(name)}</strong><small>${esc(role)}</small></span><span class="wys-review-author-edit">Изменить →</span></button>`;
+  }
+
+  function updateReviewMetrics() {
+    if (!_model) return;
+    // Metrics must stay read-only: opening a legacy text review should not
+    // silently convert its content before the editor explicitly adds a block.
+    const blocks = Array.isArray(_model.content) ? _model.content : [];
+    const values = [
+      _model.title, _model.subject, _model.verdict,
+      typeof _model.content === 'string' ? _model.content : '',
+      ...blocks.flatMap((block) => {
+        if (typeof block.content === 'string') return [block.content, block.caption];
+        if (Array.isArray(block.content)) return [block.caption];
+        if (Array.isArray(block.content?.items)) return block.content.items;
+        return [];
+      }),
+    ].filter(Boolean);
+    const words = values.join(' ').replace(/<[^>]+>/g, ' ').trim().split(/\s+/).filter(Boolean).length;
+    const visibleBlockCount = blocks.length || (typeof _model.content === 'string' && _model.content.trim() ? 1 : 0);
+    const countEl = document.getElementById('revBlockCount');
+    const wordsEl = document.getElementById('revWordCount');
+    if (countEl) countEl.textContent = `${visibleBlockCount} ${visibleBlockCount === 1 ? 'блок' : 'блоков'}`;
+    if (wordsEl) wordsEl.textContent = `${words} слов · ~${Math.max(1, Math.ceil(words / 180))} мин`;
   }
 
   function renderChipList(field, items, label, sign) {
@@ -12959,14 +13152,29 @@ async function flushModernEditor() {
     else if (field === 'block-checklist') { const block = ensureReviewBlocks()[Number(el.getAttribute('data-bi'))]; if (block) block.content = { items: val.split('\n').map((item) => item.trim()).filter(Boolean) }; }
     else if (field === 'pros-item') { const ci = Number(el.getAttribute('data-ci')); if (_model.pros) _model.pros[ci] = val; }
     else if (field === 'cons-item') { const ci = Number(el.getAttribute('data-ci')); if (_model.cons) _model.cons[ci] = val; }
+    updateReviewMetrics();
     scheduleCommit();
   });
 
   canvas.addEventListener('change', (e) => {
-    const el = e.target.closest('[data-wys-act="featured"]');
-    if (!el || !_model) return;
-    _model.featured = el.checked;
-    commit();
+    if (!_model) return;
+    const featured = e.target.closest('[data-wys-act="featured"]');
+    if (featured) {
+      _model.featured = featured.checked;
+      commit();
+      return;
+    }
+    const typeSelect = e.target.closest('[data-wys="block-type"]');
+    if (typeSelect) {
+      const index = Number(typeSelect.getAttribute('data-bi'));
+      const blocks = ensureReviewBlocks();
+      const previous = blocks[index];
+      const next = newReviewBlock(typeSelect.value);
+      if (typeof previous?.content === 'string' && ['text', 'header', 'quote', 'link'].includes(typeSelect.value)) next.content = previous.content;
+      if (previous?.caption && ['image', 'gallery', 'video'].includes(typeSelect.value)) next.caption = previous.caption;
+      blocks[index] = next;
+      render(); commit();
+    }
   });
 
   canvas.addEventListener('click', (e) => {
@@ -12975,6 +13183,7 @@ async function flushModernEditor() {
     const a = act.getAttribute('data-wys-act');
 
     if (a === 'hero') return window._wysOpenImagePicker?.((url) => { _model.imageUrl = url; render(); commit(); });
+    if (a === 'author-card') { renderReviewDrawer(); drawer.hidden = false; return; }
     if (a === 'pros-add') { _model.pros = _model.pros || []; _model.pros.push(''); render(); commit(); return; }
     if (a === 'cons-add') { _model.cons = _model.cons || []; _model.cons.push(''); render(); commit(); return; }
     if (a === 'pros-del') { const ci = Number(act.getAttribute('data-ci')); _model.pros?.splice(ci, 1); render(); commit(); return; }
@@ -12987,6 +13196,32 @@ async function flushModernEditor() {
       [blocks[from], blocks[to]] = [blocks[to], blocks[from]];
       render(); commit();
       canvas.querySelector(`[data-review-drag="${to}"]`)?.focus();
+      return;
+    }
+    if (a === 'block-add-after') {
+      const index = Number(act.getAttribute('data-bi'));
+      ensureReviewBlocks().splice(index + 1, 0, newReviewBlock('text'));
+      render(); commit();
+      canvas.querySelector(`[data-review-block="${index + 1}"] [data-wys="block-content"]`)?.focus();
+      return;
+    }
+    if (a === 'block-copy') {
+      const index = Number(act.getAttribute('data-bi'));
+      const blocks = ensureReviewBlocks();
+      if (!blocks[index]) return;
+      blocks.splice(index + 1, 0, clone(blocks[index]));
+      render(); commit();
+      canvas.querySelector(`[data-review-drag="${index + 1}"]`)?.focus();
+      return;
+    }
+    if (a === 'block-pick-media') {
+      const index = Number(act.getAttribute('data-bi'));
+      window._wysOpenImagePicker?.((url) => { const block = ensureReviewBlocks()[index]; if (!block) return; block.content = url; render(); commit(); });
+      return;
+    }
+    if (a === 'block-pick-gallery') {
+      const index = Number(act.getAttribute('data-bi'));
+      window._wysOpenImagePicker?.((urls) => { const block = ensureReviewBlocks()[index]; if (!block) return; block.content = Array.from(new Set([...(Array.isArray(block.content) ? block.content : []), ...urls])); render(); commit(); }, { multi: true });
       return;
     }
     if (a === 'block-del') { ensureReviewBlocks().splice(Number(act.getAttribute('data-bi')), 1); render(); commit(); return; }
