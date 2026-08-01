@@ -2173,7 +2173,37 @@ function ProsCons({ pros, cons, t }: { pros?: string[]; cons?: string[]; t: (key
   );
 }
 
-function ReviewsSection({ reviews, t }: { reviews: Review[]; t: (key: string) => string }) {
+const reviewPlainText = (content: Review['content']) => typeof content === 'string'
+  ? content
+  : content.map(block => typeof block.content === 'string' ? block.content : block.type === 'checklist' && !Array.isArray(block.content) && 'items' in block.content ? block.content.items.join(' ') : '').filter(Boolean).join(' ');
+
+function ReviewBody({ content }: { content: Review['content'] }) {
+  if (typeof content === 'string') return <p className="font-serif text-lg leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)] whitespace-pre-line">{content}</p>;
+  return <div className="space-y-7 sm:space-y-10">{content.map((block, index) => {
+    const text = typeof block.content === 'string' ? block.content : '';
+    if (block.type === 'header' && text) return <h2 key={index} className="font-serif text-3xl sm:text-4xl leading-tight">{text}</h2>;
+    if (block.type === 'quote' && text) return <blockquote key={index} className="border-l-2 border-[var(--c-gold)] pl-5 font-serif text-2xl italic leading-snug">{text}</blockquote>;
+    if (block.type === 'note' && text) return <aside key={index} className="border-y border-[rgb(var(--c-accent-rgb)_/_.18)] py-5 font-serif italic text-xl">{text}</aside>;
+    if (block.type === 'image' && text) return <figure key={index} className="space-y-2"><img src={text} alt={block.alt || block.caption || ''} className="w-full object-cover" />{block.caption && <figcaption className="font-mono text-[10px] uppercase tracking-widest opacity-60">{block.caption}</figcaption>}</figure>;
+    if (block.type === 'gallery' && Array.isArray(block.content)) return <figure key={index} className="grid grid-cols-2 gap-2">{block.content.map((src, i) => <img key={i} src={src} alt={block.alts?.[i] || ''} className="aspect-square w-full object-cover" />)}</figure>;
+    if (block.type === 'video' && text) return <div key={index} className="aspect-video bg-black"><iframe className="h-full w-full" src={text} title={block.caption || 'Review video'} allowFullScreen /></div>;
+    if (block.type === 'link' && text) return <a key={index} href={block.url || text} target="_blank" rel="noopener noreferrer" className="inline-flex border-b border-[var(--c-accent)] pb-1 font-mono text-xs uppercase tracking-widest">{text}<ArrowUpRight size={14} className="ml-2" /></a>;
+    if (block.type === 'checklist' && !Array.isArray(block.content) && 'items' in block.content) return <ul key={index} className="space-y-2 font-serif text-lg">{block.content.items.map((item, i) => <li key={i} className="flex gap-3"><Check size={16} className="mt-1 shrink-0 text-[var(--c-gold)]" />{item}</li>)}</ul>;
+    return text ? <p key={index} className="font-serif text-lg leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)] whitespace-pre-line">{text}</p> : null;
+  })}</div>;
+}
+
+function ReviewView({ review, t, onClose }: { review: Review; t: (key: string) => string; onClose: () => void }) {
+  return <motion.article initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} className="fixed inset-0 z-[90] overflow-y-auto bg-[var(--c-bg)]">
+    <div className="mx-auto max-w-5xl px-5 py-6 sm:px-10 sm:py-10"><button onClick={onClose} className="mb-12 inline-flex min-h-11 items-center gap-2 font-mono text-[10px] uppercase tracking-widest"><ArrowLeft size={15} /> {t('nav.reviews')}</button>
+      {review.imageUrl && <img src={review.imageUrl} alt={review.title} className="mb-10 aspect-[16/8] w-full object-cover" />}
+      <header className="mx-auto mb-12 max-w-3xl border-b border-[var(--c-accent)] pb-10"><p className="font-mono text-[10px] uppercase tracking-[.2em] text-[var(--c-gold)]">{review.category || 'Review'}</p><h1 className="mt-4 font-serif text-5xl leading-[.94] sm:text-7xl">{review.title}</h1><p className="mt-5 font-mono text-[11px] uppercase tracking-widest opacity-60">{review.subject}</p>{review.verdict && <p className="mt-8 border-l-2 border-[var(--c-gold)] pl-5 font-serif text-2xl italic leading-snug">{review.verdict}</p>}</header>
+      <div className="mx-auto max-w-3xl"><ReviewBody content={review.content} /><ProsCons pros={review.pros} cons={review.cons} t={t} /><footer className="mt-14 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-5 font-mono text-[10px] uppercase tracking-widest opacity-60">{review.meta && <span>{review.meta} · </span>}— {review.author}</footer></div>
+    </div>
+  </motion.article>;
+}
+
+function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (key: string) => string; onReviewClick: (review: Review) => void }) {
   const [activeCategory, setActiveCategory] = useState('__all');
   const categories = useMemo(() => {
     const set = Array.from(new Set(reviews.map((r) => r.category).filter((c): c is string => Boolean(c))));
@@ -2209,8 +2239,8 @@ function ReviewsSection({ reviews, t }: { reviews: Review[]; t: (key: string) =>
                   {featured.verdict}
                 </p>
               )}
-              <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{featured.content}</p>
-              <ProsCons pros={featured.pros} cons={featured.cons} t={t} />
+              <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{reviewPlainText(featured.content).slice(0, 260)}{reviewPlainText(featured.content).length > 260 ? '…' : ''}</p>
+              <button onClick={() => onReviewClick(featured)} className="mt-6 inline-flex min-h-11 items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest">Read full review <ArrowUpRight size={14} /></button>
               <div className="mt-auto pt-6 flex items-center justify-between">
                 {featured.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{featured.meta}</span>}
                 <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] ml-auto">— {featured.author}</span>
@@ -2266,24 +2296,8 @@ function ReviewsSection({ reviews, t }: { reviews: Review[]; t: (key: string) =>
                     {review.verdict}
                   </p>
                 )}
-                {/* A review body is one plain-text field, and it used to be
-                    printed as one <p> — so a line break the editor let you type
-                    collapsed into a space here and the review ran on as a wall.
-                    Split it, and keep rendering a single paragraph when there
-                    are no breaks, which is what every review has today. */}
-                {String(review.content || '')
-                  .split(/\n{2,}|\n/)
-                  .map((para) => para.trim())
-                  .filter(Boolean)
-                  .map((para, pi) => (
-                    <p
-                      key={pi}
-                      className={`font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]${pi ? ' mt-3' : ''}`}
-                    >
-                      {para}
-                    </p>
-                  ))}
-                <ProsCons pros={review.pros} cons={review.cons} t={t} />
+                <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{reviewPlainText(review.content).slice(0, 190)}{reviewPlainText(review.content).length > 190 ? '…' : ''}</p>
+                <button onClick={() => onReviewClick(review)} className="mt-6 inline-flex min-h-11 items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest">Read review <ArrowUpRight size={14} /></button>
                 <div className="mt-auto pt-6 flex items-center justify-between gap-3">
                   {review.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{review.meta}</span>}
                   <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] ml-auto">— {review.author}</span>
@@ -2629,13 +2643,15 @@ function findMatchingArticle(item: Item, articles: Article[]): Article | undefin
   return articles.find((a) => a.title && base(a.title) === itemBase);
 }
 
-function parsePath(pathname: string, search = ''): { tab?: string; articleId?: number; passportCode?: string; searchQuery?: string } {
+function parsePath(pathname: string, search = ''): { tab?: string; articleId?: number; reviewId?: number; passportCode?: string; searchQuery?: string } {
   const p = pathname.replace(/^\//, '').replace(/\/$/, '');
   if (!p) return {};
   if (p === 'search') {
     const query = new URLSearchParams(search).get('q')?.trim().slice(0, 120);
     return { tab: 'gallery', searchQuery: query || undefined };
   }
+  const reviewMatch = p.match(/^review\/(\d+)$/);
+  if (reviewMatch) return { tab: 'reviews', reviewId: parseInt(reviewMatch[1], 10) };
   // Keep old bookmarks useful after the public Library section was retired.
   if (p === 'library' || p === 'materie') return { tab: 'articles' };
   const numericMatch = p.match(/^article\/(\d+)$/);
@@ -2835,6 +2851,7 @@ export default function App() {
   const initialRoute = parsePath(window.location.pathname, window.location.search);
   const [activeTab, setActiveTab] = useState(initialRoute.tab || 'gallery');
   const [selectedArticleId, setSelectedArticleId] = useState<number | null>(initialRoute.articleId ?? null);
+  const [selectedReviewId, setSelectedReviewId] = useState<number | null>(initialRoute.reviewId ?? null);
   const [passportCode, setPassportCode] = useState<string | undefined>(initialRoute.passportCode);
   const [currentLang, setCurrentLang] = useState(() => {
     try {
@@ -2877,6 +2894,9 @@ export default function App() {
     ? articles.find((article) => article.id === selectedArticleId)
       || defaultContent.articles.find((article) => article.id === selectedArticleId)
       || null
+    : null;
+  const selectedReview = selectedReviewId !== null
+    ? reviews.find((review) => review.id === selectedReviewId) || defaultContent.reviews.find((review) => review.id === selectedReviewId) || null
     : null;
   // Retry resolving /article/<slug> against live articles once they load — the
   // synchronous initial parse only had the stale bundled SLUG_MAP to check against.
@@ -2945,6 +2965,7 @@ export default function App() {
     const target = managedTab && !isSectionEnabled(managedTab) ? fallbackTab : tab;
     setActiveTab(target);
     setSelectedArticleId(null);
+    setSelectedReviewId(null);
     setActiveSearch('');
     setPassportCode(undefined);
     navigate(target === 'gallery' ? '/' : `/${target}`);
@@ -2964,6 +2985,16 @@ export default function App() {
     setSelectedArticleId(null);
     navigate(activeTab === 'gallery' ? '/' : `/${activeTab}`);
   }, [activeTab, navigate]);
+  const handleSelectReview = useCallback((review: Review) => {
+    setSelectedArticleId(null);
+    setSelectedReviewId(review.id);
+    setActiveTab('reviews');
+    navigate(`/review/${review.id}`);
+  }, [navigate]);
+  const handleCloseReview = useCallback(() => {
+    setSelectedReviewId(null);
+    navigate('/reviews');
+  }, [navigate]);
 
   useEffect(() => {
     const onPopState = () => {
@@ -2978,6 +3009,7 @@ export default function App() {
         setPassportCode(undefined);
       } else {
         setSelectedArticleId(null);
+        setSelectedReviewId(parsed.reviewId ?? null);
         setActiveTab(parsed.tab || 'gallery');
         setPassportCode(parsed.passportCode);
       }
@@ -3082,7 +3114,7 @@ export default function App() {
                   <GallerySection items={items} onItemClick={setSelectedGalleryItem} />
                 )}
                 {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} brandName={brandName} />}
-                {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} />}
+                    {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} onReviewClick={handleSelectReview} />}
                 {activeTab === 'about' && <AboutSection t={t} currentLang={currentLang} onOpenManifest={() => handleSetTab('manifest')} />}
                 {activeTab === 'manifest' && <ManifestPage t={t} currentLang={currentLang} />}
               </>
@@ -3120,6 +3152,7 @@ export default function App() {
           <ArticleView article={selectedArticle} related={relatedArticles} onArticleClick={(a) => handleSelectArticle(a.id, a)} onTagClick={handleSearch} onClose={handleCloseArticle} onImageClick={handleImageClick} t={t} currentLang={currentLang} setCurrentLang={setCurrentLang} languages={languageOptions} />
         )}
       </AnimatePresence>
+      <AnimatePresence>{selectedReview && <ReviewView review={selectedReview} t={t} onClose={handleCloseReview} />}</AnimatePresence>
 
       <AnimatePresence>
         {articleSlugNotFound && (
