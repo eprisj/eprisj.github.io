@@ -4410,12 +4410,86 @@ body.busy::after {
 
 .review-block-toolbar button:hover b,
 .review-block-toolbar button:focus-visible b { color: inherit; }
-.wys-review-block { position: relative; margin: 14px 0; padding: 14px 16px 16px; border: 1px solid var(--line); background: var(--bg-card); }
-.wys-review-block-label { display: flex; justify-content: space-between; margin-bottom: 8px; font-family: var(--font-mono); font-size: .57rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); }
+.wys-review-block {
+  position: relative;
+  margin: 14px 0;
+  padding: 10px 16px 16px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg-card);
+  transition: opacity .16s ease, transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+.wys-review-block-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  margin: -4px -8px 8px;
+  padding: 4px 4px 7px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  user-select: none;
+}
+.wys-review-block-grip,
+.wys-review-block-move,
+.wys-review-block-delete {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.wys-review-block-grip { cursor: grab; font-size: 1.05rem; letter-spacing: -2px; }
+.wys-review-block-grip:active { cursor: grabbing; }
+.wys-review-block-move { font-size: .9rem; }
+.wys-review-block-delete { font-size: 1rem; }
+.wys-review-block-grip:hover,
+.wys-review-block-grip:focus-visible,
+.wys-review-block-move:hover,
+.wys-review-block-move:focus-visible {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+  outline: none;
+}
+.wys-review-block-delete:hover,
+.wys-review-block-delete:focus-visible {
+  border-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 10%, transparent);
+  color: var(--danger);
+  outline: none;
+}
+.wys-review-block-move:disabled { opacity: .25; cursor: default; }
+.wys-review-block-number { font-size: .55rem; letter-spacing: .12em; color: var(--text-faint, var(--text-muted)); }
+.wys-review-block-name { font-size: .59rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.wys-review-block-spacer { flex: 1; }
+.wys-review-block.is-dragging { opacity: .42; transform: scale(.985); }
+.wys-review-block.drop-before,
+.wys-review-block.drop-after { border-color: var(--accent); box-shadow: 0 8px 24px rgba(80,26,44,.10); }
+.wys-review-block.drop-before::before,
+.wys-review-block.drop-after::after {
+  content: "";
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--accent);
+  pointer-events: none;
+}
+.wys-review-block.drop-before::before { top: -9px; }
+.wys-review-block.drop-after::after { bottom: -9px; }
 .wys-review-block [contenteditable="true"] { min-height: 28px; outline: none; }
 .wys-review-block input, .wys-review-block textarea { width: 100%; box-sizing: border-box; border: 1px solid var(--line); background: var(--bg); padding: 9px 10px; color: var(--text); font: inherit; }
 .wys-review-block textarea { min-height: 74px; resize: vertical; }
-.wys-review-block-delete { border: 0; background: none; color: var(--text-muted); cursor: pointer; font-size: .9rem; }
 .wys-review-top { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 22px; }
 .wys-review-stars { display: none !important; }
 .wys-star { border: none; background: none; cursor: pointer; font-size: 1.15rem; line-height: 1; color: var(--line-strong); padding: 2px; transition: color .12s, transform .1s; }
