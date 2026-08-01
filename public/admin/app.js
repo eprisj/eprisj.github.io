@@ -185,6 +185,36 @@ function byId(id) {
   }
 })();
 
+// Keep editorial punctuation literal. macOS/iOS and some writing extensions can
+// silently turn a typed hyphen into an em dash; editors asked for the exact
+// character they entered. This affects new typing only and never rewrites
+// already published copy or pasted archival text.
+document.addEventListener('focusin', (event) => {
+  const field = event.target.closest('input, textarea, [contenteditable="true"]');
+  if (!field) return;
+  field.setAttribute('autocorrect', 'off');
+  field.setAttribute('autocapitalize', 'off');
+  field.setAttribute('spellcheck', 'false');
+  field.setAttribute('data-gramm', 'false');
+  field.setAttribute('data-gramm_editor', 'false');
+});
+document.addEventListener('beforeinput', (event) => {
+  if (!['insertText', 'insertReplacementText'].includes(event.inputType)) return;
+  if (!event.data || !event.data.includes('—')) return;
+  const field = event.target.closest('input, textarea, [contenteditable="true"]');
+  if (!field) return;
+  event.preventDefault();
+  const literal = event.data.replaceAll('—', '-');
+  if (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement) {
+    const start = field.selectionStart ?? field.value.length;
+    const end = field.selectionEnd ?? start;
+    field.setRangeText(literal, start, end, 'end');
+    field.dispatchEvent(new Event('input', { bubbles: true }));
+    return;
+  }
+  document.execCommand('insertText', false, literal);
+}, true);
+
 // ═══════════════════════════════════════════════════════════
 // ── PUBLIC VISIBILITY REGISTRY ─────────────────────────────
 // One non-destructive control plane for navigation, routes and individual
@@ -12629,12 +12659,20 @@ async function flushModernEditor() {
   function renderReviewBlock(block, index) {
     const type = block.type || 'text';
     const label = ({ text: 'Текст', header: 'Заголовок', quote: 'Цитата', image: 'Фото', gallery: 'Галерея', video: 'Видео', link: 'Ссылка', checklist: 'Чек‑лист' })[type] || type;
-    const close = `<button type="button" class="wys-review-block-delete" data-wys-act="block-del" data-bi="${index}" title="Удалить блок">×</button>`;
-    if (type === 'image' || type === 'video') return `<section class="wys-review-block"><div class="wys-review-block-label"><span>${label}</span>${close}</div><input data-wys="block-media" data-bi="${index}" value="${esc(block.content || '')}" placeholder="Вставьте URL ${type === 'image' ? 'фото' : 'YouTube/Vimeo'}"><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Подпись (необязательно)" style="margin-top:7px"></section>`;
-    if (type === 'gallery') return `<section class="wys-review-block"><div class="wys-review-block-label"><span>${label}</span>${close}</div><textarea data-wys="block-gallery" data-bi="${index}" placeholder="По одному URL фото на строку">${esc(Array.isArray(block.content) ? block.content.join('\n') : '')}</textarea><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Общая подпись (необязательно)" style="margin-top:7px"></section>`;
-    if (type === 'link') return `<section class="wys-review-block"><div class="wys-review-block-label"><span>${label}</span>${close}</div><input data-wys="block-content" data-bi="${index}" value="${esc(block.content || '')}" placeholder="Текст ссылки"><input data-wys="block-url" data-bi="${index}" value="${esc(block.url || '')}" placeholder="https://…" style="margin-top:7px"></section>`;
-    if (type === 'checklist') return `<section class="wys-review-block"><div class="wys-review-block-label"><span>${label}</span>${close}</div><textarea data-wys="block-checklist" data-bi="${index}" placeholder="Один пункт на строку">${esc(block.content?.items?.join('\n') || '')}</textarea></section>`;
-    return `<section class="wys-review-block"><div class="wys-review-block-label"><span>${label}</span>${close}</div><div class="wys-ce" contenteditable="true" data-wys="block-content" data-bi="${index}" data-empty="Введите текст…">${esc(block.content || '')}</div></section>`;
+    const controls = `<div class="wys-review-block-controls">
+      <button type="button" class="wys-review-block-grip" draggable="true" data-review-drag="${index}" aria-label="Перетащить блок ${index + 1}" title="Перетащить блок">⠿</button>
+      <span class="wys-review-block-number">${String(index + 1).padStart(2, '0')}</span>
+      <span class="wys-review-block-name">${label}</span>
+      <span class="wys-review-block-spacer"></span>
+      <button type="button" class="wys-review-block-move" data-wys-act="block-up" data-bi="${index}" aria-label="Переместить выше" title="Выше" ${index === 0 ? 'disabled' : ''}>↑</button>
+      <button type="button" class="wys-review-block-move" data-wys-act="block-down" data-bi="${index}" aria-label="Переместить ниже" title="Ниже" ${index === ensureReviewBlocks().length - 1 ? 'disabled' : ''}>↓</button>
+      <button type="button" class="wys-review-block-delete" data-wys-act="block-del" data-bi="${index}" aria-label="Удалить блок" title="Удалить блок">×</button>
+    </div>`;
+    if (type === 'image' || type === 'video') return `<section class="wys-review-block" data-review-block="${index}">${controls}<input data-wys="block-media" data-bi="${index}" value="${esc(block.content || '')}" placeholder="Вставьте URL ${type === 'image' ? 'фото' : 'YouTube/Vimeo'}"><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Подпись (необязательно)" style="margin-top:7px"></section>`;
+    if (type === 'gallery') return `<section class="wys-review-block" data-review-block="${index}">${controls}<textarea data-wys="block-gallery" data-bi="${index}" placeholder="По одному URL фото на строку">${esc(Array.isArray(block.content) ? block.content.join('\n') : '')}</textarea><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Общая подпись (необязательно)" style="margin-top:7px"></section>`;
+    if (type === 'link') return `<section class="wys-review-block" data-review-block="${index}">${controls}<input data-wys="block-content" data-bi="${index}" value="${esc(block.content || '')}" placeholder="Текст ссылки"><input data-wys="block-url" data-bi="${index}" value="${esc(block.url || '')}" placeholder="https://…" style="margin-top:7px"></section>`;
+    if (type === 'checklist') return `<section class="wys-review-block" data-review-block="${index}">${controls}<textarea data-wys="block-checklist" data-bi="${index}" placeholder="Один пункт на строку">${esc(block.content?.items?.join('\n') || '')}</textarea></section>`;
+    return `<section class="wys-review-block" data-review-block="${index}">${controls}<div class="wys-ce" contenteditable="true" data-wys="block-content" data-bi="${index}" data-empty="Введите текст…">${esc(block.content || '')}</div></section>`;
   }
 
   // ── load / show-hide ────────────────────────────────────────────────────
@@ -12941,7 +12979,79 @@ async function flushModernEditor() {
     if (a === 'cons-add') { _model.cons = _model.cons || []; _model.cons.push(''); render(); commit(); return; }
     if (a === 'pros-del') { const ci = Number(act.getAttribute('data-ci')); _model.pros?.splice(ci, 1); render(); commit(); return; }
     if (a === 'cons-del') { const ci = Number(act.getAttribute('data-ci')); _model.cons?.splice(ci, 1); render(); commit(); return; }
+    if (a === 'block-up' || a === 'block-down') {
+      const blocks = ensureReviewBlocks();
+      const from = Number(act.getAttribute('data-bi'));
+      const to = a === 'block-up' ? from - 1 : from + 1;
+      if (!Number.isInteger(from) || to < 0 || to >= blocks.length) return;
+      [blocks[from], blocks[to]] = [blocks[to], blocks[from]];
+      render(); commit();
+      canvas.querySelector(`[data-review-drag="${to}"]`)?.focus();
+      return;
+    }
     if (a === 'block-del') { ensureReviewBlocks().splice(Number(act.getAttribute('data-bi')), 1); render(); commit(); return; }
+  });
+
+  // Precise block reordering. Dragging starts only from the large grip, so text
+  // selection and editing inside a block never accidentally move the block.
+  let _dragBlockFrom = null;
+  let _dragBlockAfter = false;
+  function clearReviewDragState() {
+    _dragBlockFrom = null;
+    _dragBlockAfter = false;
+    canvas.querySelectorAll('.wys-review-block.is-dragging, .wys-review-block.drop-before, .wys-review-block.drop-after')
+      .forEach((el) => el.classList.remove('is-dragging', 'drop-before', 'drop-after'));
+  }
+  canvas.addEventListener('dragstart', (e) => {
+    const grip = e.target.closest('[data-review-drag]');
+    if (!grip || !_model) return;
+    _dragBlockFrom = Number(grip.getAttribute('data-review-drag'));
+    const block = grip.closest('[data-review-block]');
+    block?.classList.add('is-dragging');
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', String(_dragBlockFrom));
+    if (block) e.dataTransfer.setDragImage(block, Math.min(36, block.clientWidth / 2), 24);
+  });
+  canvas.addEventListener('dragover', (e) => {
+    if (_dragBlockFrom == null) return;
+    const target = e.target.closest('[data-review-block]');
+    if (!target || Number(target.getAttribute('data-review-block')) === _dragBlockFrom) return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    const rect = target.getBoundingClientRect();
+    _dragBlockAfter = e.clientY > rect.top + rect.height / 2;
+    canvas.querySelectorAll('.wys-review-block.drop-before, .wys-review-block.drop-after')
+      .forEach((el) => el.classList.remove('drop-before', 'drop-after'));
+    target.classList.add(_dragBlockAfter ? 'drop-after' : 'drop-before');
+  });
+  canvas.addEventListener('drop', (e) => {
+    if (_dragBlockFrom == null || !_model) return;
+    const target = e.target.closest('[data-review-block]');
+    if (!target) { clearReviewDragState(); return; }
+    e.preventDefault();
+    const blocks = ensureReviewBlocks();
+    const targetIndex = Number(target.getAttribute('data-review-block'));
+    const [moved] = blocks.splice(_dragBlockFrom, 1);
+    let insertAt = targetIndex + (_dragBlockAfter ? 1 : 0);
+    if (_dragBlockFrom < insertAt) insertAt -= 1;
+    insertAt = Math.max(0, Math.min(blocks.length, insertAt));
+    blocks.splice(insertAt, 0, moved);
+    clearReviewDragState();
+    render(); commit();
+    canvas.querySelector(`[data-review-drag="${insertAt}"]`)?.focus();
+  });
+  canvas.addEventListener('dragend', clearReviewDragState);
+  canvas.addEventListener('keydown', (e) => {
+    const grip = e.target.closest('[data-review-drag]');
+    if (!grip || !e.altKey || !['ArrowUp', 'ArrowDown'].includes(e.key)) return;
+    e.preventDefault();
+    const blocks = ensureReviewBlocks();
+    const from = Number(grip.getAttribute('data-review-drag'));
+    const to = e.key === 'ArrowUp' ? from - 1 : from + 1;
+    if (to < 0 || to >= blocks.length) return;
+    [blocks[from], blocks[to]] = [blocks[to], blocks[from]];
+    render(); commit();
+    canvas.querySelector(`[data-review-drag="${to}"]`)?.focus();
   });
 
   shell.querySelectorAll('[data-rev-add]').forEach((btn) => btn.addEventListener('click', () => {
