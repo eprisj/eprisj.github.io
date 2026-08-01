@@ -3530,7 +3530,8 @@
       "pros": [
         "Inventive island-sourced courses",
         "Faultless wine pairing",
-        "Warm, unhurried service"
+        "Warm, unhurried service",
+        ""
       ],
       "cons": [
         "Tables a touch close together"
@@ -5327,6 +5328,26 @@
             "Сервису не хватает средиземноморского тепла",
             "Скудный выбор еды"
           ]
+        },
+        {
+          "id": 4,
+          "title": "Новый обзор",
+          "subject": "Новый обзор",
+          "rating": 0,
+          "content": "С учетом первых впечатлений — атмосфера, сервис, для кого это место. Далее приведены детали, подтверждающие выводы.",
+          "author": "EPRIS Journal",
+          "category": "Food & Stay",
+          "verdict": "Одна чёткая строка — стоит ли идти.",
+          "pros": [
+            "Локация",
+            "Атмосфера",
+            "Соотношение цены и качества"
+          ],
+          "cons": [
+            "Один честный минус"
+          ],
+          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
+          "date": "Aug 1, 2026"
         }
       ],
       "libraryItems": [
@@ -7078,6 +7099,26 @@
             "Сервісу бракує середземноморського тепла",
             "Обмежений вибір їжі"
           ]
+        },
+        {
+          "id": 4,
+          "title": "Новий огляд",
+          "subject": "Новий огляд",
+          "rating": 0,
+          "content": "Начніте з першого враження — атмосфера, сервіс, для кого це місце. Потім конкретні деталі, що підтверджують висновок.",
+          "author": "EPRIS Journal",
+          "category": "Food & Stay",
+          "verdict": "Одна чёткая строка — стоит ли идти.",
+          "pros": [
+            "Локация",
+            "Атмосфера",
+            "Соотношение цены и качества"
+          ],
+          "cons": [
+            "Один честный минус"
+          ],
+          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
+          "date": "Aug 1, 2026"
         }
       ],
       "libraryItems": [
@@ -8655,6 +8696,26 @@
             "Service ohne mediterrane Wärme",
             "Wenig kulinarische Auswahl"
           ]
+        },
+        {
+          "id": 4,
+          "title": "Neue Rezension",
+          "subject": "Neue Rezension",
+          "rating": 0,
+          "content": "Kommen Sie mit der ersten Woche – Atmosphäre, Service, für diese Gegend. Die konkreten Details werden später angezeigt.",
+          "author": "EPRIS Journal",
+          "category": "Food & Stay",
+          "verdict": "Одна чёткая строка — стоит ли идти.",
+          "pros": [
+            "Локация",
+            "Атмосфера",
+            "Соотношение цены и качества"
+          ],
+          "cons": [
+            "Один честный минус"
+          ],
+          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
+          "date": "Aug 1, 2026"
         }
       ],
       "libraryItems": [
@@ -10232,6 +10293,26 @@
             "Al servicio le falta calidez mediterránea",
             "Oferta gastronómica limitada"
           ]
+        },
+        {
+          "id": 4,
+          "title": "Nueva reseña",
+          "subject": "Nueva reseña",
+          "rating": 0,
+          "content": "Начните с первого впечатления — атмосфера, сервис, для кого это место. Estos detalles concretos se pueden realizar.",
+          "author": "EPRIS Journal",
+          "category": "Food & Stay",
+          "verdict": "Одна чёткая строка — стоит ли идти.",
+          "pros": [
+            "Локация",
+            "Атмосфера",
+            "Соотношение цены и качества"
+          ],
+          "cons": [
+            "Один честный минус"
+          ],
+          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
+          "date": "Aug 1, 2026"
         }
       ],
       "libraryItems": [
@@ -11983,6 +12064,26 @@
             "Serviste Akdeniz sıcaklığı yok",
             "Sınırlı yemek seçeneği"
           ]
+        },
+        {
+          "id": 4,
+          "title": "Yeni inceleme",
+          "subject": "Yeni inceleme",
+          "rating": 0,
+          "content": "Çok iyi bir atmosfere sahip olmak - atmosfer, sunucu, benim için. Ayrıntıları kontrol edin, daha sonra satın alın.",
+          "author": "EPRIS Journal",
+          "category": "Food & Stay",
+          "verdict": "Одна чёткая строка — стоит ли идти.",
+          "pros": [
+            "Локация",
+            "Атмосфера",
+            "Соотношение цены и качества"
+          ],
+          "cons": [
+            "Один честный минус"
+          ],
+          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
+          "date": "Aug 1, 2026"
         }
       ],
       "libraryItems": [
@@ -13415,6 +13516,26 @@
             "Servizio senza calore mediterraneo",
             "Scelta gastronomica limitata"
           ]
+        },
+        {
+          "id": 4,
+          "title": "Nuova recensione",
+          "subject": "Nuova recensione",
+          "rating": 0,
+          "content": "Fare attenzione al primo controllo: atmosfera, servizio per tutto questo. Visualizzare i dettagli aggiuntivi dell'acqua.",
+          "author": "EPRIS Journal",
+          "category": "Food & Stay",
+          "verdict": "Одна чёткая строка — стоит ли идти.",
+          "pros": [
+            "Локация",
+            "Атмосфера",
+            "Соотношение цены и качества"
+          ],
+          "cons": [
+            "Один честный минус"
+          ],
+          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
+          "date": "Aug 1, 2026"
         }
       ],
       "libraryItems": [
