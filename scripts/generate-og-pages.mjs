@@ -199,6 +199,78 @@ for (const article of content.articles) {
 
 console.log(`\nGenerated OG pages for ${content.articles.length} articles.`);
 
+// ── Reviews ──────────────────────────────────────────────────────────────────
+// Reviews live at readable /review/<slug> URLs like articles do, so they get
+// the same real landing page: correct <title>, a share preview, and Review
+// schema. The numeric /review/<id> path stays as a redirect-free duplicate so
+// links handed out before slugs existed keep resolving.
+const reviewPlainBody = (review) => Array.isArray(review.content)
+  ? review.content.map(blockText).filter(Boolean).join('\n\n')
+  : String(review.content || '');
+
+for (const review of content.reviews || []) {
+  const slug = generateSlug(review.title || '');
+  const imageUrl = resolveImage(review);
+  const summary = review.verdict || reviewPlainBody(review).slice(0, 200);
+  const excerpt = escapeAttr(summary);
+  const title = escapeAttr(review.title || '');
+  const url = `${SITE_ORIGIN}/review/${slug || review.id}`;
+  const reviewSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Review',
+    name: review.title,
+    reviewBody: reviewPlainBody(review),
+    itemReviewed: { '@type': 'Thing', name: review.subject || review.title },
+    author: { '@type': 'Person', name: review.author || 'EPRIS Editorial' },
+    image: [imageUrl],
+    inLanguage: 'en',
+    mainEntityOfPage: url,
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: SITE_ORIGIN,
+      logo: { '@type': 'ImageObject', url: DEFAULT_IMAGE },
+    },
+  };
+  const breadcrumbs = breadcrumbSchema([
+    { name: 'EPRIS Journal', url: `${SITE_ORIGIN}/` },
+    { name: 'Reviews', url: `${SITE_ORIGIN}/reviews` },
+    { name: review.title, url },
+  ]);
+
+  const headBlock = `<title>${review.title} — EPRIS Journal</title>
+    <meta name="description" content="${excerpt}" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="${url}" />
+    ${alternateLinks(url)}
+    <meta property="og:title" content="${title}" />
+    <meta property="og:description" content="${excerpt}" />
+    <meta property="og:image" content="${imageUrl}" />
+    <meta property="og:image:alt" content="${title}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="${url}" />
+    <meta property="og:site_name" content="EPRIS Journal" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${title}" />
+    <meta name="twitter:description" content="${excerpt}" />
+    <meta name="twitter:image" content="${imageUrl}" />
+    <script type="application/ld+json">${safeJson(reviewSchema)}</script>
+    <script type="application/ld+json">${safeJson(breadcrumbs)}</script>`;
+
+  const pageHtml = template.replace('<!--TITLE-->', headBlock);
+
+  if (slug) {
+    const slugDir = join(distDir, 'review', slug);
+    mkdirSync(slugDir, { recursive: true });
+    writeFileSync(join(slugDir, 'index.html'), pageHtml);
+  }
+  const idDir = join(distDir, 'review', String(review.id));
+  mkdirSync(idDir, { recursive: true });
+  writeFileSync(join(idDir, 'index.html'), pageHtml);
+
+  console.log(`Generated: /review/${slug || review.id} (id=${review.id})`);
+}
+
 // ── SPA deep-link routes ─────────────────────────────────────────────────────
 // GitHub Pages has no SPA fallback: a direct hit on /studio, /issue, etc.
 // returns its own 404. We emit a static <route>/index.html (a copy of the app
@@ -300,6 +372,7 @@ const sitemapRoutes = ['', ...Object.keys(ROUTES).filter((route) => route !== 'c
 const sitemapEntries = [
   ...sitemapRoutes.map((route) => ({ loc: route ? `${SITE_ORIGIN}/${route}` : `${SITE_ORIGIN}/`, priority: route ? '0.7' : '1.0', changefreq: route === 'articles' ? 'daily' : 'weekly', image: route ? '' : DEFAULT_IMAGE })),
   ...content.articles.map((article) => ({ loc: `${SITE_ORIGIN}/article/${generateSlug(article.title)}`, priority: '0.8', changefreq: 'monthly', lastmod: formatDate(article.updatedAt) || formatDate(article.date) || '', image: resolveImage(article), imageTitle: article.title })),
+  ...(content.reviews || []).map((review) => ({ loc: `${SITE_ORIGIN}/review/${generateSlug(review.title || '') || review.id}`, priority: '0.7', changefreq: 'monthly', lastmod: formatDate(review.updatedAt) || formatDate(review.date) || '', image: resolveImage(review), imageTitle: review.title })),
 ];
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${sitemapEntries.map((entry) => `  <url>\n    <loc>${entry.loc}</loc>${entry.lastmod ? `\n    <lastmod>${String(entry.lastmod).slice(0, 10)}</lastmod>` : ''}${entry.image ? `\n    <image:image>\n      <image:loc>${escapeAttr(entry.image)}</image:loc>${entry.imageTitle ? `\n      <image:title>${escapeAttr(entry.imageTitle)}</image:title>` : ''}\n    </image:image>` : ''}\n    <changefreq>${entry.changefreq}</changefreq>\n    <priority>${entry.priority}</priority>\n  </url>`).join('\n')}\n</urlset>\n`;
 writeFileSync(join(distDir, 'sitemap.xml'), sitemapXml);
