@@ -3564,6 +3564,55 @@ function bindCreatorQualityInputs(fallback = {}) {
   });
 }
 
+// Publications (articles) and the homepage gallery (items) are separate
+// collections — a written article never landed on the homepage by itself,
+// so editors had to open the Homepage tab and click "＋ from article" by
+// hand for every single story, in every language, or it silently stayed
+// invisible on the front page and unlisted in this same tab. That manual
+// step is gone: this runs automatically the moment an article is created,
+// for every language bucket, positioned first so the newest story is the
+// featured one. The Homepage tab's own "＋ from article" button (see
+// initHomepageTab below) still exists for backfilling older articles that
+// predate this — it calls this exact function instead of duplicating it.
+function addGalleryCardForArticleData(data, articleId) {
+  const article = (data.articles || []).find((entry) => String(entry.id) === String(articleId));
+  if (!article) return false;
+
+  const existingIds = (Array.isArray(data.items) ? data.items : [])
+    .map((item) => Number(item.id))
+    .filter((id) => Number.isFinite(id));
+  const id = existingIds.length ? Math.max(...existingIds) + 1 : 1;
+
+  const cardFrom = (source, position) => ({
+    id,
+    title: String(source.title || '').trim(),
+    subtitle: source.category || source.subcategory || '',
+    fig: `FIG. ${String(position).padStart(2, '0')}`,
+    description: source.excerpt || '',
+    imageSeed: source.imageSeed || `item-${id}`,
+    imageUrl: source.imageUrl || '',
+  });
+
+  if (!Array.isArray(data.items)) data.items = [];
+  data.items.unshift(cardFrom(article, data.items.length + 1));
+
+  // Same card per language, or a localized homepage simply won't have it —
+  // text comes from the article's own translation when one already exists.
+  const buckets = data.localizedCollections && typeof data.localizedCollections === 'object'
+    ? data.localizedCollections
+    : {};
+  Object.keys(buckets).forEach((lang) => {
+    const bucket = buckets[lang];
+    if (!bucket || typeof bucket !== 'object' || !Array.isArray(bucket.items)) return;
+    const localizedArticle = Array.isArray(bucket.articles)
+      ? bucket.articles.find((entry) => String(entry.id) === String(articleId))
+      : null;
+    bucket.items.unshift(cardFrom(localizedArticle || article, bucket.items.length + 1));
+  });
+
+  return true;
+}
+
 async function createArticleFromBlueprint(kind) {
   try {
     setBusy(true);
@@ -3586,13 +3635,16 @@ async function createArticleFromBlueprint(kind) {
     entries.push(sourceArticle);
     setStatus('info', `Создаю языковые версии статьи #${nextId}...`);
     const syncedLangs = await syncMissingEntryLanguages(data, 'articles', sourceLang, sourceArticle);
+    // Translations are on the article now, so localized homepage cards below
+    // can already pull real text instead of the source language.
+    addGalleryCardForArticleData(data, nextId);
 
     visualSectionSelect.value = 'articles';
     visualLangSelect.value = sourceLang;
     pendingVisualEntryId = nextId;
     setEditorData(data);
     const syncNote = syncedLangs.length ? ` Языки: ${syncedLangs.join(', ')}.` : '';
-    setStatus('success', `Шаблон статьи #${nextId} создан.${syncNote}`);
+    setStatus('success', `Шаблон статьи #${nextId} создан и добавлен на главную первой карточкой.${syncNote}`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
@@ -6152,11 +6204,16 @@ async function addVisualEntry() {
     entries.push(entry);
     setStatus('info', `Создаю языковые версии записи #${nextId}...`);
     const syncedLangs = await syncMissingEntryLanguages(data, section, lang, entry);
+    // The "+" button also creates articles (not just reviews/items/etc.) when
+    // that section is selected — same rule as the blueprint flow: a new
+    // article always gets a homepage card, so it's never invisible on /.
+    const gotCard = section === 'articles' && addGalleryCardForArticleData(data, nextId);
 
     pendingVisualEntryId = nextId;
     setEditorData(data);
     const syncNote = syncedLangs.length ? ` Языки: ${syncedLangs.join(', ')}.` : '';
-    setStatus('success', `Добавлена новая запись #${nextId} (${getSectionLabel(section)} / ${lang}).${syncNote}`);
+    const cardNote = gotCard ? ' Добавлена первой карточкой на главную.' : '';
+    setStatus('success', `Добавлена новая запись #${nextId} (${getSectionLabel(section)} / ${lang}).${syncNote}${cardNote}`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
@@ -8224,6 +8281,7 @@ function bindStudioRowActions() {
       : 'В галерее пока нет карточек.';
     if (!items.length) {
       list.innerHTML = '<div class="card homepage-gallery-empty"><p>Добавьте первую карточку галереи.</p></div>';
+      renderMissingArticles();
       return;
     }
     list.innerHTML = items.map((item, index) => {
@@ -8254,6 +8312,71 @@ function bindStudioRowActions() {
       button.addEventListener('click', () => moveItem(button.getAttribute('data-home-up'), -1)));
     list.querySelectorAll('[data-home-down]').forEach((button) =>
       button.addEventListener('click', () => moveItem(button.getAttribute('data-home-down'), 1)));
+    renderMissingArticles();
+  }
+
+  // ── Статья → карточка галереи ─────────────────────────────────────────
+  // Публикации (articles) и галерея главной (items) — разные коллекции:
+  // написанная статья сама на главную не попадает, и редактор её там не
+  // находит. Сайт связывает карточку со статьёй по точному заголовку
+  // (findMatchingArticle в src/App.tsx), поэтому карточку собираем из
+  // самой статьи — заголовок в заголовок.
+  const baseTitle = (value) => String(value || '').split(':')[0].trim().toLowerCase();
+
+  function articlesWithoutCard(data) {
+    const articles = Array.isArray(data.articles) ? data.articles : [];
+    const items = Array.isArray(data.items) ? data.items : [];
+    const taken = new Set();
+    items.forEach((item) => {
+      const title = String(item.title || '').trim();
+      if (!title) return;
+      taken.add(title.toLowerCase());
+      taken.add(baseTitle(title));
+    });
+    return articles.filter((article) => {
+      const title = String(article.title || '').trim();
+      if (!title) return false;
+      return !taken.has(title.toLowerCase()) && !taken.has(baseTitle(title));
+    });
+  }
+
+  function addCardFromArticle(articleId) {
+    // For articles that predate addGalleryCardForArticleData (top of file) —
+    // new ones get this automatically now, this button stays for backfill.
+    const data = readContent();
+    if (!data) { showToast?.('error', 'Сначала загрузите контент.'); return; }
+    if (!addGalleryCardForArticleData(data, articleId)) {
+      showToast?.('error', 'Статья не найдена.');
+      return;
+    }
+
+    setEditorData(data);
+    renderHomepageTab();
+    showToast?.('success', 'Карточка добавлена первой — она стала главным материалом. Порядок меняется стрелками, затем «Опубликовать».');
+  }
+
+  function renderMissingArticles() {
+    const box = document.getElementById('homepageMissingArticles');
+    if (!box) return;
+    const data = readContent();
+    if (!data) { box.innerHTML = ''; return; }
+    const missing = articlesWithoutCard(data);
+    if (!missing.length) {
+      box.innerHTML = '<p class="form-hint">Все статьи представлены на главной.</p>';
+      return;
+    }
+    box.innerHTML = `
+      <div class="card homepage-missing-card">
+        <p class="card-desc"><strong>${missing.length}</strong> ${missing.length === 1 ? 'статья ещё не показана' : 'статей ещё не показано'} в галерее главной. Нажмите, чтобы собрать карточку из статьи.</p>
+        <div class="homepage-missing-list">
+          ${missing.map((article) => `
+            <button class="btn btn-sm" type="button" data-home-from-article="${esc(article.id)}">
+              ＋ ${esc(article.title || ('#' + article.id))}
+            </button>`).join('')}
+        </div>
+      </div>`;
+    box.querySelectorAll('[data-home-from-article]').forEach((button) =>
+      button.addEventListener('click', () => addCardFromArticle(button.getAttribute('data-home-from-article'))));
   }
 
   async function publishHomepage() {
@@ -8285,6 +8408,16 @@ function bindStudioRowActions() {
     setTimeout(() => addEntryBtn?.click(), 80);
   });
   document.getElementById('homepagePublishBtn')?.addEventListener('click', publishHomepage);
+  document.getElementById('homepageFromArticleBtn')?.addEventListener('click', () => {
+    const data = readContent();
+    if (!data) { showToast?.('error', 'Сначала загрузите контент.'); return; }
+    const missing = articlesWithoutCard(data);
+    if (!missing.length) { showToast?.('success', 'Все статьи уже есть на главной.'); return; }
+    if (missing.length === 1) { addCardFromArticle(missing[0].id); return; }
+    renderMissingArticles();
+    document.getElementById('homepageMissingArticles')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    showToast?.('info', 'Выберите статью в списке ниже.');
+  });
   window._renderHomepageTab = renderHomepageTab;
 })();
 
