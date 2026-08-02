@@ -2061,7 +2061,7 @@ function ArticlesSection({
   t: (key: string) => string;
   brandName: string;
 }) {
-  const filteredArticles = articles;
+  const filteredArticles = [...articles].reverse();
 
   return (
     <div>
@@ -2147,7 +2147,7 @@ function ArticlesSection({
                   {article.excerpt}
                 </p>
                 <span className="mt-auto inline-flex items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
-                  read
+                  {t('read.article') || 'read'}
                 </span>
               </div>
             </motion.article>

@@ -3613,8 +3613,8 @@ function buildQualityEntryFromForm(section, fallback = {}) {
   if (section === 'reviews') {
     return {
       ...base,
-      title: getFieldValue('vf-title').trim(),
-      content: getFieldValue('vf-content').trim()
+      title: getFieldValue('vf-title').trim()
+      // NOTE: content is managed by the WYSIWYG review canvas, not the classic form
     };
   }
 
@@ -4232,14 +4232,13 @@ function renderVisualForm() {
       <label class="full">Заголовок<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
       <label class="full">Подзаголовок<input id="vf-subtitle" value="${escapeHtml(entry.subtitle || '')}" /></label>
       <label class="full">Описание<textarea id="vf-description">${escapeHtml(entry.description || '')}</textarea></label>
-      <label class="full">URL фото — обложка (необязательно)<input id="vf-imageUrl" placeholder="https://..." value="${escapeHtml(entry.imageUrl || '')}" /></label>
-      <div class="full" style="display:flex;gap:8px;align-items:center;margin:-4px 0 4px">
-        <button id="vf-img-upload-btn" class="btn btn-sm" type="button">Загрузить фото</button>
+      <input type="hidden" id="vf-imageUrl" value="${escapeHtml(entry.imageUrl || '')}" />
+      <div class="full" style="margin-bottom:4px">
+        ${renderPhotoPreviewMarkup(previewSource)}
+        <button id="vf-img-upload-btn" class="btn btn-sm" type="button" style="margin-top:6px">📷 Загрузить фото обложки</button>
         <input id="vf-img-upload-input" type="file" accept="image/*" hidden />
-        <span class="form-hint" style="margin:0">или вставьте URL выше</span>
       </div>
       <label class="full">imageSeed (если URL пустой)<input id="vf-imageSeed" value="${escapeHtml(entry.imageSeed || '')}" /></label>
-      ${renderPhotoPreviewMarkup(previewSource)}
       <div class="full">
         <span class="toolbar-field-label" style="display:block;margin-bottom:6px;">Доп. фото для просмотра «read» (необязательно, с подписями)</span>
         <div id="vf-photos-repeater">${renderGalleryPhotosRepeaterMarkup(entry.images || [])}</div>
@@ -4265,21 +4264,19 @@ function renderVisualForm() {
       <label class="full">Заголовок<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
       <label class="full">Тема (что обозревается)<input id="vf-subject" value="${escapeHtml(entry.subject || '')}" /></label>
       <label class="full">Вердикт (одна строка-вывод)<input id="vf-verdict" value="${escapeHtml(entry.verdict || '')}" /></label>
-      <label class="full">Текст обзора<textarea id="vf-content">${escapeHtml(entry.content || '')}</textarea></label>
       <label class="full">Плюсы (по одному на строку)<textarea id="vf-pros">${escapeHtml(Array.isArray(entry.pros) ? entry.pros.join('\n') : '')}</textarea></label>
       <label class="full">Минусы (по одному на строку)<textarea id="vf-cons">${escapeHtml(Array.isArray(entry.cons) ? entry.cons.join('\n') : '')}</textarea></label>
       <label>Мета (локация/цена/год)<input id="vf-meta" value="${escapeHtml(entry.meta || '')}" /></label>
       <label>Ссылка (необязательно)<input id="vf-link" value="${escapeHtml(entry.link || '')}" placeholder="https://…" /></label>
       <label>Дата (необязательно)<input id="vf-date" value="${escapeHtml(entry.date || '')}" /></label>
-      <label class="full">URL фото<input id="vf-imageUrl" value="${escapeHtml(entry.imageUrl || '')}" placeholder="/images/… или https://…" /></label>
-      <div class="full" style="display:flex;gap:8px;align-items:center;margin:-4px 0 4px">
-        <button id="vf-rev-upload-btn" class="btn btn-sm" type="button">Загрузить фото</button>
+      <input type="hidden" id="vf-imageUrl" value="${escapeHtml(entry.imageUrl || '')}" />
+      <div class="full" style="margin-bottom:4px">
+        <div class="photo-preview" style="margin-bottom:8px">
+          <img id="vf-rev-preview" src="${revImg ? escapeHtml(revImg) : ''}" alt="Превью обложки" loading="lazy" referrerpolicy="no-referrer" ${revImg ? '' : 'hidden'} />
+          <div id="vf-rev-preview-empty" class="photo-preview-empty" ${revImg ? 'hidden' : ''}>Обложка не выбрана</div>
+        </div>
+        <button id="vf-rev-upload-btn" class="btn btn-sm" type="button">📷 Загрузить фото обложки</button>
         <input id="vf-rev-upload-input" type="file" accept="image/*" hidden />
-        <span class="form-hint" style="margin:0">или вставьте URL выше</span>
-      </div>
-      <div class="photo-preview full">
-        <img id="vf-rev-preview" src="${revImg ? escapeHtml(revImg) : ''}" alt="Превью" loading="lazy" referrerpolicy="no-referrer" ${revImg ? '' : 'hidden'} />
-        <div id="vf-rev-preview-empty" class="photo-preview-empty" ${revImg ? 'hidden' : ''}>Добавьте URL фото, чтобы увидеть превью.</div>
       </div>
       <label class="full">Автор<input id="vf-author" value="${escapeHtml(entry.author || '')}" /></label>
       ${renderDraftFieldsMarkup(entry)}
@@ -4466,11 +4463,12 @@ function buildEntryFromVisualForm(section, current) {
     applyDraftFieldsFromForm(next);
   } else if (section === 'reviews') {
     const lines = (id) => getFieldValue(id).split('\n').map((s) => s.trim()).filter(Boolean);
+    // NOTE: 'content' is managed by the WYSIWYG review canvas (initReviewCanvas),
+    // not by the classic form. We intentionally keep `next.content` from the spread.
     next = {
       ...next,
       title: getFieldValue('vf-title').trim(),
       subject: getFieldValue('vf-subject').trim(),
-      content: getFieldValue('vf-content').trim(),
       author: getFieldValue('vf-author').trim(),
       category: getOptionalString(getFieldValue('vf-category')),
       verdict: getOptionalString(getFieldValue('vf-verdict')),
@@ -4753,6 +4751,7 @@ function createDefaultEntry(section, nextId) {
   return buildArticleBlueprint('story', nextId);
 }
 
+// Removed legacy Google Translate chunking functions (translateText, translateRichText, etc.)
 async function duplicateVisualEntry() {
   try {
     setBusy(true);
@@ -5071,49 +5070,115 @@ async function translateArticleBlock(block, targetLang, sourceLang = DEFAULT_LAN
   return next;
 }
 
-async function translateArticleEntry(article, targetLang, sourceLang = DEFAULT_LANGUAGE) {
+async function aiTranslateObject(obj, targetLang, maxRetries = 3) {
+  if (!obj || typeof obj !== 'object') return obj;
+  
+  const prompt = `You are a translator for EPRIS Journal — a sophisticated magazine about design, art, travel, architecture.
+Translate all textual content values within this JSON structure to ${targetLang}. 
+Keep the JSON structure, keys, and array lengths exactly identical. Preserve all HTML tags (like <em> or <strong>) perfectly intact. 
+Do NOT translate URLs, IDs, image names, or keys.
+Return ONLY valid JSON.
+
+JSON to translate:
+${JSON.stringify(obj, null, 2)}`;
+
+  let lastError;
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      const result = await callOpenRouter(prompt);
+      let parsedText = extractJSON(result);
+      return JSON.parse(parsedText);
+    } catch (e) {
+      lastError = e;
+      console.warn(`AI translation attempt ${attempt} failed:`, e.message);
+      if (attempt < maxRetries) {
+        await new Promise(r => setTimeout(r, 2000)); // wait 2s before retry
+      }
+    }
+  }
+  throw new Error(`AI returned invalid JSON after ${maxRetries} attempts: ` + lastError.message);
+}
+
+async function translateArticleEntry(article, targetLang, sourceLang = DEFAULT_LANGUAGE, onProgress = null) {
   const next = deepClone(article);
 
-  next.title = await translateText(article.title, targetLang, sourceLang);
-  next.role = article.role ? await translateText(article.role, targetLang, sourceLang) : article.role;
-  next.date = article.date ? await translateText(article.date, targetLang, sourceLang) : article.date;
-  next.excerpt = await translateText(article.excerpt, targetLang, sourceLang);
-  next.category = await translateText(article.category, targetLang, sourceLang);
-  next.subcategory = article.subcategory ? await translateText(article.subcategory, targetLang, sourceLang) : article.subcategory;
-  next.tags = await translateStringArray(article.tags, targetLang, sourceLang);
+  const metaObj = {
+    title: next.title,
+    role: next.role,
+    date: next.date,
+    excerpt: next.excerpt,
+    category: next.category,
+    subcategory: next.subcategory,
+    tags: next.tags
+  };
+
+  if (onProgress) onProgress('metadata');
+  const translatedMeta = await aiTranslateObject(metaObj, targetLang);
+  Object.assign(next, translatedMeta || {});
 
   const blocks = Array.isArray(article.content) ? article.content : [];
   next.content = [];
-  for (const block of blocks) {
-    next.content.push(await translateArticleBlock(block, targetLang, sourceLang));
+  
+  const batchSize = 4;
+  const totalBatches = Math.ceil(blocks.length / batchSize);
+  for (let i = 0; i < blocks.length; i += batchSize) {
+    const batchIndex = Math.floor(i / batchSize) + 1;
+    if (onProgress) onProgress(`batch ${batchIndex} of ${totalBatches}`);
+    
+    const batch = blocks.slice(i, i + batchSize);
+    const translatedBatch = await aiTranslateObject(batch, targetLang);
+    if (Array.isArray(translatedBatch)) {
+      next.content.push(...translatedBatch);
+    } else {
+      next.content.push(...batch);
+    }
   }
 
   return next;
 }
 
-async function translateEntryForSection(section, entry, targetLang, sourceLang = DEFAULT_LANGUAGE) {
+async function translateEntryForSection(section, entry, targetLang, sourceLang = DEFAULT_LANGUAGE, onProgress = null) {
   if (section === 'articles') {
-    return translateArticleEntry(entry, targetLang, sourceLang);
+    return translateArticleEntry(entry, targetLang, sourceLang, onProgress);
   }
 
   const next = deepClone(entry);
   if (section === 'items') {
-    next.title = await translateText(entry.title, targetLang, sourceLang);
-    next.subtitle = await translateText(entry.subtitle, targetLang, sourceLang);
-    next.description = await translateText(entry.description, targetLang, sourceLang);
+    const obj = { title: entry.title, subtitle: entry.subtitle, description: entry.description };
+    const translated = await aiTranslateObject(obj, targetLang);
+    Object.assign(next, translated || {});
     return next;
   }
 
   if (section === 'reviews') {
-    next.title = await translateText(entry.title, targetLang, sourceLang);
-    next.subject = await translateText(entry.subject, targetLang, sourceLang);
-    next.content = await translateText(entry.content, targetLang, sourceLang);
+    const obj = { title: entry.title, subject: entry.subject, verdict: entry.verdict, pros: entry.pros, cons: entry.cons };
+    if (onProgress) onProgress('metadata');
+    const translated = await aiTranslateObject(obj, targetLang);
+    Object.assign(next, translated || {});
+    
+    if (Array.isArray(entry.content)) {
+      next.content = [];
+      const batchSize = 4;
+      const totalBatches = Math.ceil(entry.content.length / batchSize);
+      for (let i = 0; i < entry.content.length; i += batchSize) {
+        const batchIndex = Math.floor(i / batchSize) + 1;
+        if (onProgress) onProgress(`batch ${batchIndex} of ${totalBatches}`);
+        const batch = entry.content.slice(i, i + batchSize);
+        const translatedBatch = await aiTranslateObject(batch, targetLang);
+        if (Array.isArray(translatedBatch)) next.content.push(...translatedBatch);
+        else next.content.push(...batch);
+      }
+    } else if (typeof entry.content === 'string' && entry.content.trim()) {
+      const translatedStr = await aiTranslateObject({text: entry.content}, targetLang);
+      next.content = (translatedStr || {}).text || entry.content;
+    }
     return next;
   }
 
   if (section === 'libraryItems') {
-    next.title = await translateText(entry.title, targetLang, sourceLang);
-    next.type = await translateText(entry.type, targetLang, sourceLang);
+    const obj = { title: entry.title, type: entry.type };
+    const translated = await aiTranslateObject(obj, targetLang);
+    Object.assign(next, translated || {});
     return next;
   }
 
@@ -5170,8 +5235,11 @@ async function translateEntryToAllLanguages(data, section, sourceLang, sourceEnt
     if (options.statusPrefix) {
       setStatus('info', `${options.statusPrefix}: ${i + 1}/${total} ${sourceLang} → ${lang}`);
     }
+    const onProgress = options.statusPrefix ? (step) => {
+      setStatus('info', `${options.statusPrefix}: ${i + 1}/${total} ${sourceLang} → ${lang} (${step})`);
+    } : null;
     try {
-      const translated = await translateEntryForSection(section, sourceEntry, lang, sourceLang);
+      const translated = await translateEntryForSection(section, sourceEntry, lang, sourceLang, onProgress);
       if (options.saveToServer) {
         await saveEntityToServer(section, lang, translated);
       }
@@ -6679,6 +6747,15 @@ async function callOpenRouter(prompt) {
 function extractJSON(text) {
   const m = text.match(/```(?:json)?\s*([\s\S]*?)```/);
   if (m) return m[1].trim();
+  const arr = text.match(/\[[\s\S]*\]/);
+  if (arr) {
+    // If it looks like an array and there's an object match, pick whichever starts first to be safe, but usually array is what we want for batches.
+    const obj = text.match(/\{[\s\S]*\}/);
+    if (obj && text.indexOf(obj[0]) < text.indexOf(arr[0])) {
+      return obj[0];
+    }
+    return arr[0];
+  }
   const obj = text.match(/\{[\s\S]*\}/);
   return obj ? obj[0] : text;
 }
@@ -10708,8 +10785,8 @@ async function autoSyncVisualToEditor() {
         next = {
           ...next,
           title: getFieldValue('vf-title').trim(),
-          subject: getFieldValue('vf-subject').trim(),
-          content: getFieldValue('vf-content').trim()
+          subject: getFieldValue('vf-subject').trim()
+          // NOTE: content is managed by the WYSIWYG review canvas, not the classic form
         };
     } else if (section === 'libraryItems') {
         next = {
@@ -12903,7 +12980,8 @@ async function flushModernEditor() {
       <button type="button" class="wys-review-block-move" data-wys-act="block-down" data-bi="${index}" aria-label="Переместить ниже" title="Ниже" ${index === ensureReviewBlocks().length - 1 ? 'disabled' : ''}>↓</button>
       <button type="button" class="wys-review-block-delete" data-wys-act="block-del" data-bi="${index}" aria-label="Удалить блок" title="Удалить блок">×</button>
     </div>`;
-    if (type === 'image' || type === 'video') return `<section class="wys-review-block" data-review-block="${index}">${controls}<input data-wys="block-media" data-bi="${index}" value="${esc(block.content || '')}" placeholder="Вставьте URL ${type === 'image' ? 'фото' : 'YouTube/Vimeo'}"><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Подпись (необязательно)" style="margin-top:7px"></section>`;
+    if (type === 'image') return `<section class="wys-review-block" data-review-block="${index}">${controls}<div style="display:flex;gap:6px;align-items:center;margin-bottom:4px"><input data-wys="block-media" data-bi="${index}" value="${esc(block.content || '')}" placeholder="URL фото" style="flex:1"><button type="button" class="btn btn-sm" data-wys-act="block-img-upload" data-bi="${index}" style="white-space:nowrap">📷 Загрузить</button></div><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Подпись (необязательно)"></section>`;
+    if (type === 'video') return `<section class="wys-review-block" data-review-block="${index}">${controls}<input data-wys="block-media" data-bi="${index}" value="${esc(block.content || '')}" placeholder="URL YouTube/Vimeo"><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Подпись (необязательно)" style="margin-top:7px"></section>`;
     if (type === 'gallery') return `<section class="wys-review-block" data-review-block="${index}">${controls}<textarea data-wys="block-gallery" data-bi="${index}" placeholder="По одному URL фото на строку">${esc(Array.isArray(block.content) ? block.content.join('\n') : '')}</textarea><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Общая подпись (необязательно)" style="margin-top:7px"></section>`;
     if (type === 'link') return `<section class="wys-review-block" data-review-block="${index}">${controls}<input data-wys="block-content" data-bi="${index}" value="${esc(block.content || '')}" placeholder="Текст ссылки"><input data-wys="block-url" data-bi="${index}" value="${esc(block.url || '')}" placeholder="https://…" style="margin-top:7px"></section>`;
     if (type === 'checklist') return `<section class="wys-review-block" data-review-block="${index}">${controls}<textarea data-wys="block-checklist" data-bi="${index}" placeholder="Один пункт на строку">${esc(block.content?.items?.join('\n') || '')}</textarea></section>`;
@@ -13210,6 +13288,13 @@ async function flushModernEditor() {
     const a = act.getAttribute('data-wys-act');
 
     if (a === 'hero') return window._wysOpenImagePicker?.((url) => { _model.imageUrl = url; render(); commit(); });
+    if (a === 'block-img-upload') {
+      const bi = Number(act.getAttribute('data-bi'));
+      return window._wysOpenImagePicker?.((url) => {
+        const blocks = ensureReviewBlocks();
+        if (blocks[bi]) { blocks[bi].content = url; render(); commit(); }
+      });
+    }
     if (a === 'pros-add') { _model.pros = _model.pros || []; _model.pros.push(''); render(); commit(); return; }
     if (a === 'cons-add') { _model.cons = _model.cons || []; _model.cons.push(''); render(); commit(); return; }
     if (a === 'pros-del') { const ci = Number(act.getAttribute('data-ci')); _model.pros?.splice(ci, 1); render(); commit(); return; }
