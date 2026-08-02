@@ -2977,8 +2977,8 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
 }
 
 export default function App() {
-  if (/^\/(?:collaboation|collaboration)\/?$/.test(window.location.pathname)) {
-    if (/^\/collaboation\/?$/.test(window.location.pathname)) {
+  if (/^\/(?:collaboation|collaboration|collab)\/?$/.test(window.location.pathname)) {
+    if (!/^\/collaboration\/?$/.test(window.location.pathname)) {
       window.history.replaceState(null, '', '/collaboration');
     }
     return <Suspense fallback={<div className="min-h-screen bg-[#f5f0ea]" />}><CollaborationPage /></Suspense>;
