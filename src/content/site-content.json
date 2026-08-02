@@ -3929,6 +3929,11 @@
         },
         {
           "type": "image",
+          "content": "",
+          "caption": ""
+        },
+        {
+          "type": "image",
           "content": "https://api.eprisjournal.com/uploads/msbpjad387xo0q.webp",
           "caption": ""
         },
