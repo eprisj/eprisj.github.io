@@ -289,6 +289,7 @@ const ROUTES = {
   podcasts: 'Podcasts',
   collaboation: 'Collaboration Registry',
   collaboration: 'Collaboration Registry',
+  collab: 'Collaboration Registry',
 };
 
 const ROUTE_DESCRIPTIONS = {
@@ -303,10 +304,11 @@ const ROUTE_DESCRIPTIONS = {
   podcasts: 'Conversations and audio stories about contemporary art, architecture, design and cities.',
   collaboation: 'Discover and suggest emerging architects, designers and artists for EPRIS Journal interviews and editorial collaborations.',
   collaboration: 'Discover and suggest emerging architects, designers and artists for EPRIS Journal interviews and editorial collaborations.',
+  collab: 'Discover and suggest emerging architects, designers and artists for EPRIS Journal interviews and editorial collaborations.',
 };
 
 function routeHead(route, label) {
-  const canonicalRoute = route === 'collaboation' ? 'collaboration' : route;
+  const canonicalRoute = route === 'collaboation' || route === 'collab' ? 'collaboration' : route;
   const url = canonicalRoute ? `${SITE_ORIGIN}/${canonicalRoute}` : `${SITE_ORIGIN}/`;
   const description = ROUTE_DESCRIPTIONS[route] || 'Independent international journal and cultural platform exploring contemporary art, architecture, interior design and cities in context.';
   const schema = {
@@ -333,7 +335,7 @@ function routeHead(route, label) {
   return `<title>${label} — EPRIS Journal</title>
     <meta name="description" content="${escapeAttr(description)}" />
     <meta name="keywords" content="${escapeAttr(SITE_KEYWORDS.join(', '))}" />
-    <meta name="robots" content="${route === 'collaboation' ? 'noindex, follow' : 'index, follow, max-image-preview:large'}" />
+    <meta name="robots" content="${route === 'collaboation' || route === 'collab' ? 'noindex, follow' : 'index, follow, max-image-preview:large'}" />
     <link rel="canonical" href="${url}" />
     ${alternateLinks(url)}
     <meta property="og:title" content="${label} — EPRIS Journal" />
@@ -368,7 +370,7 @@ mkdirSync(searchDir, { recursive: true });
 writeFileSync(join(searchDir, 'index.html'), template.replace('<!--TITLE-->', searchHead));
 console.log('Generated: /search');
 
-const sitemapRoutes = ['', ...Object.keys(ROUTES).filter((route) => route !== 'collaboation')];
+const sitemapRoutes = ['', ...Object.keys(ROUTES).filter((route) => route !== 'collaboation' && route !== 'collab')];
 const sitemapEntries = [
   ...sitemapRoutes.map((route) => ({ loc: route ? `${SITE_ORIGIN}/${route}` : `${SITE_ORIGIN}/`, priority: route ? '0.7' : '1.0', changefreq: route === 'articles' ? 'daily' : 'weekly', image: route ? '' : DEFAULT_IMAGE })),
   ...content.articles.map((article) => ({ loc: `${SITE_ORIGIN}/article/${generateSlug(article.title)}`, priority: '0.8', changefreq: 'monthly', lastmod: formatDate(article.updatedAt) || formatDate(article.date) || '', image: resolveImage(article), imageTitle: article.title })),
