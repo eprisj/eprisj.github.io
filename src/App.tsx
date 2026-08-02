@@ -178,6 +178,13 @@ function GalleryItemView({ item, onClose, articles, onReadArticle }: { item: Ite
 // locale until an editor overrides them in the admin.
 const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
   'reviews.read': { EN: 'Read', RU: 'Читать', UA: 'Читати', DE: 'Lesen', IT: 'Leggi', ES: 'Leer', TR: 'Oku' },
+  'video.openVideo': { EN: 'Open video', RU: 'Открыть видео', UA: 'Відкрити відео', DE: 'Video öffnen', IT: 'Apri video', ES: 'Abrir vídeo', TR: 'Videoyu aç' },
+  'lang.title': { EN: 'Language', RU: 'Язык', UA: 'Мова', DE: 'Sprache', IT: 'Lingua', ES: 'Idioma', TR: 'Dil' },
+  'lang.chooseEdition': { EN: 'Choose edition', RU: 'Выберите версию', UA: 'Виберіть версію', DE: 'Ausgabe wählen', IT: 'Scegli edizione', ES: 'Elegir edición', TR: 'Baskı seç' },
+  'article.notFound': { EN: 'Article not found', RU: 'Статья не найдена', UA: 'Статтю не знайдено', DE: 'Artikel nicht gefunden', IT: 'Articolo non trovato', ES: 'Artículo no encontrado', TR: 'Makale bulunamadı' },
+  'article.notFound.body': { EN: 'This link may be broken, or the article has moved.', RU: 'Ссылка могла устареть, либо статья была перемещена.', UA: 'Посилання могло застаріти, або статтю було переміщено.', DE: 'Dieser Link ist möglicherweise defekt oder der Artikel wurde verschoben.', IT: 'Questo link potrebbe essere non valido o l\'articolo è stato spostato.', ES: 'Este enlace puede estar roto o el artículo se ha movido.', TR: 'Bu bağlantı bozuk olabilir veya makale taşınmış olabilir.' },
+  'article.backToArticles': { EN: 'Back to Articles', RU: 'Назад к статьям', UA: 'Назад до статей', DE: 'Zurück zu Artikeln', IT: 'Torna agli articoli', ES: 'Volver a artículos', TR: 'Makalelere dön' },
+  'article.related': { EN: 'Read also', RU: 'Читать также', UA: 'Читати також', DE: 'Auch lesen', IT: 'Leggi anche', ES: 'Leer también', TR: 'Ayrıca okuyun' },
 };
 
 function getTranslation(lang: string, key: string) {
@@ -356,7 +363,7 @@ function safeExternalUrl(value?: string): string | null {
 
 // Privacy-friendly click-to-play embeds for YouTube/Vimeo. Direct MP4/WebM
 // stays native, so it is fast, accessible and never needs a third-party player.
-function VideoBlock({ content, caption, poster, credit, sourceUrl }: { content: string; caption?: string; poster?: string; credit?: string; sourceUrl?: string }) {
+function VideoBlock({ content, caption, poster, credit, sourceUrl, t }: { content: string; caption?: string; poster?: string; credit?: string; sourceUrl?: string; t: (key: string) => string }) {
   const [playing, setPlaying] = useState(false);
   const ytId = extractYouTubeId(content);
   const vimeoId = extractVimeoId(content);
@@ -366,7 +373,8 @@ function VideoBlock({ content, caption, poster, credit, sourceUrl }: { content: 
     : vimeoId
       ? `https://player.vimeo.com/video/${vimeoId}?autoplay=1&dnt=1`
       : null;
-  const provider = ytId ? 'YouTube' : vimeoId ? 'Vimeo' : directVideo ? 'Video' : 'Open video';
+  const openVideoLabel = t('video.openVideo');
+  const provider = ytId ? 'YouTube' : vimeoId ? 'Vimeo' : directVideo ? 'Video' : openVideoLabel;
   const cleanSource = safeExternalUrl(sourceUrl);
 
   return (
@@ -412,10 +420,10 @@ function VideoBlock({ content, caption, poster, credit, sourceUrl }: { content: 
               target="_blank"
               rel="noopener noreferrer"
               className="w-full h-full relative flex flex-col gap-3 items-center justify-center text-white hover:bg-white/10 transition-colors"
-              aria-label={caption || 'Open video'}
+              aria-label={caption || openVideoLabel}
             >
               <ExternalLink size={28} />
-              <span className="font-mono text-[10px] uppercase tracking-[0.16em]">Open video</span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.16em]">{openVideoLabel}</span>
             </a>
           )
         )}
@@ -805,8 +813,8 @@ function NavBar({
               <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-[rgb(var(--c-accent-rgb)_/_0.22)]" aria-hidden="true" />
               <div className="flex items-center justify-between gap-4 px-1 pb-3">
                 <div>
-                  <p className="font-serif text-xl leading-tight">Language</p>
-                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.16em] opacity-55">Choose edition</p>
+                  <p className="font-serif text-xl leading-tight">{t('lang.title')}</p>
+                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.16em] opacity-55">{t('lang.chooseEdition')}</p>
                 </div>
                 <button
                   type="button"
@@ -1816,7 +1824,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                   );
                 }
                 case 'video':
-                  return <VideoBlock key={index} content={typeof block.content === 'string' ? block.content : ''} caption={block.caption} poster={block.poster} credit={block.credit} sourceUrl={block.sourceUrl} />;
+                  return <VideoBlock key={index} content={typeof block.content === 'string' ? block.content : ''} caption={block.caption} poster={block.poster} credit={block.credit} sourceUrl={block.sourceUrl} t={t} />;
                 case 'audio':
                   return (
                     <figure key={index} className="my-8 sm:my-12 p-4 sm:p-6 bg-[#E8DED5] border border-[rgb(var(--c-accent-rgb)_/_0.2)] flex items-center gap-3 sm:gap-4">
@@ -2018,7 +2026,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
           {related.length > 0 && (
             <section className="mt-12 sm:mt-20 pt-10 sm:pt-14 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)]">
               <h2 className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-8">
-                {t('article.related') === 'article.related' ? (currentLang === 'RU' ? 'Читать также' : 'Read also') : t('article.related')}
+                {t('article.related')}
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
                 {related.map((rel) => (
@@ -2147,7 +2155,7 @@ function ArticlesSection({
                   {article.excerpt}
                 </p>
                 <span className="mt-auto inline-flex items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
-                  {t('read.article') || 'read'}
+                  {t('reviews.read')}
                 </span>
               </div>
             </motion.article>
@@ -3298,14 +3306,14 @@ export default function App() {
           >
             <div className="text-center max-w-md">
               <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-4">404</p>
-              <h1 className="font-serif text-3xl sm:text-4xl text-[var(--c-accent)] mb-4">Article not found</h1>
-              <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.7)] mb-8">This link may be broken, or the article has moved.</p>
+              <h1 className="font-serif text-3xl sm:text-4xl text-[var(--c-accent)] mb-4">{t('article.notFound')}</h1>
+              <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.7)] mb-8">{t('article.notFound.body')}</p>
               <button
                 type="button"
                 onClick={() => { window.history.replaceState(null, '', '/articles'); setActiveTab('articles'); }}
                 className="font-mono text-xs uppercase tracking-widest border border-[var(--c-accent)] rounded-full px-6 py-3 hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors"
               >
-                Back to Articles
+                {t('article.backToArticles')}
               </button>
             </div>
           </motion.div>
