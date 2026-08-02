@@ -1900,6 +1900,15 @@
   },
   "items": [
     {
+      "id": 10,
+      "title": "Against the Right Angle",
+      "subtitle": "Architecture",
+      "fig": "FIG. 08",
+      "description": "Five buildings that talked their way out of the grid — and the software, the metal, the money and the sheer nerve it took to build them.",
+      "imageSeed": "item-10",
+      "imageUrl": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-guggenheim-river.jpg"
+    },
+    {
       "id": 9,
       "title": "Polish Design: Woven From Memory",
       "subtitle": "Design",
@@ -1961,6 +1970,15 @@
       "description": "Choosing a place to stay in a new destination means entrusting it with the significant moments of your life. Falling into bed after a long walk through unfamiliar streets, late-night talks filled with the thoughts and emotions of the day, planning the next breakfast at your newly favorite nearby boulangerie, sharing genuine smiles and the pure excitement of exploration.",
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/mro4ypcjfxlboi.webp"
+    },
+    {
+      "id": 11,
+      "title": "The Heart of EPRIS: Maria Is Now a Bachelor of Architecture",
+      "subtitle": "Culture",
+      "fig": "FIG. 09",
+      "description": "On July 7th, Mariia Ivanova, EPRIS's editor-in-chief, officially became a Bachelor of Architecture. To mark the day – a heart built from the architecture and art that inspire her.",
+      "imageSeed": "maria-graduation-heart",
+      "imageUrl": "/images/heart-hero.jpg"
     }
   ],
   "articles": [
@@ -3566,6 +3584,10 @@
         },
         {
           "type": "text",
+          "content": "The commission itself was decided in three weeks. Guggenheim director Thomas Krens shortlisted three architects — Gehry, Arata Isozaki, Coop Himmelblau — handed each ten thousand dollars, and asked for a concept. Isozaki sent sketches of an elliptical, four-storey block. Coop Himmelblau proposed transparent cubes. Gehry sent something that looked like nothing anyone had asked for, and got the job."
+        },
+        {
+          "type": "text",
           "content": "By every reasonable standard this should have ended in a public inquiry. Instead it became the most imitated urban gesture of the century, and the taxes it generated covered the construction bill inside three years."
         },
         {
@@ -3589,6 +3611,11 @@
           "content": "Then there is the skin, which is the finest story in twentieth-century cladding and almost nobody tells it properly. Gehry originally intended stainless steel. What stands there is 33,000 titanium sheets, four-tenths of a millimetre thick, sixty tonnes in total — titanium being an aerospace metal nobody had ever used on a building at that scale, for the excellent reason that it costs a fortune."
         },
         {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-titanium-detail.jpg",
+          "caption": "Titanium, close up — sub-millimetre sheets, each curved individually, overlapping like fish scales. Photo: Jules Verne Times Two, CC BY-SA 4.0, via Wikimedia Commons"
+        },
+        {
           "type": "text",
           "content": "Except that in the early 1990s, briefly, it didn’t. The Soviet Union had built the Alfa-class attack submarine with a titanium hull; when Russia decommissioned the last of them, the metal flooded the world market and the price collapsed, undercutting stainless steel at precisely the moment Gehry was choosing a material. Which means the most photographed building of the late twentieth century is wrapped in decommissioned Cold War submarine stock. That shimmer over the Nervión is the peace dividend, rolled to 0.4 mm and bolted to a museum. No architectural historian would have dared invent it."
         },
@@ -3599,6 +3626,11 @@
         {
           "type": "text",
           "content": "My favourite thing about the building is the doorman. Guarding the entrance is Jeff Koons’s Puppy: a twelve-metre West Highland terrier upholstered in live flowering plants, watered and gardened continuously so that it never goes bald. A titanium cathedral of the international avant-garde, defended by an enormous dog made of petunias. Bilbao understood the thing its imitators never did — the whole enterprise works far better when it declines to take itself entirely seriously."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-puppy.jpg",
+          "caption": "Jeff Koons's Puppy on duty at the entrance — the avant-garde's least serious doorman. Photo: Jules Verne Times Two, CC BY-SA 4.0, via Wikimedia Commons"
         },
         {
           "type": "header",
@@ -3636,12 +3668,26 @@
         },
         {
           "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/epris-curves-baku-interior-stairs.jpg",
+          "caption": "Inside the fold: stairs, balustrade and ceiling poured from the same continuous surface. Photo: Mahmoodrezamo, CC BY-SA 4.0, via Wikimedia Commons"
+        },
+        {
+          "type": "image",
           "content": "https://api.eprisjournal.com/uploads/epris-curves-heydar-aliyev-auditorium.jpg",
           "caption": "One thousand seats and not a right angle among them. Photo: Emin Allahverdi, CC BY-SA 4.0, via Wikimedia Commons"
         },
         {
           "type": "text",
           "content": "Now the paragraph the coffee-table books leave out. The building is named for the late president of Azerbaijan and was commissioned under the government of his son, who succeeded him in office. It belongs to a very old genre — the national culture palace as portrait of the ruling family — and it went up in a city being remade at speed, with residents in the wider redevelopment area reporting demolitions and evictions they had not agreed to. When London’s Design Museum gave it Design of the Year in 2014, the prize arrived with a public argument attached, and the argument was not about the roof."
+        },
+        {
+          "type": "text",
+          "content": "The swan-neck logic even extends to comfort. Tucked inside the folds are enclosed winter gardens several storeys tall, planted with real trees under glass, so the white curves have somewhere warm and green to land. It is an odd thing to grow indoors in a city built on oil rather than water — and it works precisely because nothing about the building apologises for the extravagance."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/epris-curves-baku-interior-garden.jpg",
+          "caption": "One of the enclosed winter gardens — real trees, under glass, inside the curve. Photo: Mahmoodrezamo, CC BY-SA 4.0, via Wikimedia Commons"
         },
         {
           "type": "text",
@@ -3659,6 +3705,11 @@
         {
           "type": "text",
           "content": "Same office, same year, entirely different client: SOHO China, the developer run by Zhang Xin, which buys architecture the way other people buy watches — visibly, expensively, and with a clear understanding of what the signature does for resale. The brief was offices and retail on a major artery in central Beijing. The answer was four rounded volumes fused by bridges at several levels: 330,000 square metres across eighteen floors, with the space between them shaped into flowing courtyards instead of the customary windswept nothing developers leave between towers."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/epris-curves-galaxy-soho-bridge.jpg",
+          "caption": "The bridges that fuse Galaxy SOHO's four volumes into one continuous route. Photo: Francesco Bini, CC BY-SA 4.0, via Wikimedia Commons"
         },
         {
           "type": "image",
@@ -3687,6 +3738,10 @@
           "content": "And it lands, because a continuous, self-resolving geometry is superbly equipped to ignore whatever it happens to stand beside. A building made entirely of curves has no edges with which to meet anybody. It does not argue with the street; it declines to concede that the street was speaking. You can admire the object and still grant the point — I do both — and then notice the detail that settles it: everything generous about Galaxy SOHO faces inward. The courtyards are lovely, and they are private. That is an accurate description of a great deal of twenty-first-century development, and it is not a compliment."
         },
         {
+          "type": "text",
+          "content": "None of which stopped Galaxy SOHO winning the RIBA International Award that same year — the letter and the trophy arrived within months of each other. International juries and municipal heritage bodies were, and still are, answering two entirely different questions."
+        },
+        {
           "type": "header",
           "level": 2,
           "content": "<span class=\"kicker\">04 · UNStudio</span>Mercedes-Benz Museum"
@@ -3698,6 +3753,15 @@
         {
           "type": "text",
           "content": "Ben van Berkel and Caroline Bos do not begin with a shape. They begin with a problem in movement, draw the problem, and let the form be the consequence — which is why the practice is called UNStudio rather than something with two surnames on the door, and why this is the least self-indulgent building in this essay by a comfortable margin."
+        },
+        {
+          "type": "text",
+          "content": "UNStudio won the competition for the site in 2001. The museum took five years to build — long enough that half of Stuttgart watched the trefoil rise out of a hole in the ground and had an opinion about it before a single car went on display."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/epris-curves-mercedes-blue-hour.jpg",
+          "caption": "Mercedes-Benz Museum at blue hour — the twist reads even better lit from inside. Photo: Julian Herzog, CC BY 4.0, via Wikimedia Commons"
         },
         {
           "type": "text",
@@ -3751,6 +3815,15 @@
           "content": "Consider the site. Harbin sits on the Songhua river in a province where winter is a six-month administrative fact, where the great annual festival is built from ice blocks sawn out of that same river, and where the temperature does things that make a Central European feel warmly towards his own miserable January. MAD gave it a low white mound in the wetland, clad entirely in white aluminium and read explicitly as a drift — a building at ease with snow because it is already shaped like snow. There are 470 parking spaces underneath it, because terrain is a metaphor and this is still China in 2015."
         },
         {
+          "type": "text",
+          "content": "MAD won the project the ordinary way, for once: an open international competition in 2010, for a masterplan covering roughly 180 hectares of wetland along the Songhua — not just the theatre. The opera house is the one building from that plan the world actually looks at, but it was never meant to stand alone. It's the punctuation mark on a much longer sentence about the river."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-exterior-2.jpg",
+          "caption": "Harbin Opera House by day: the aluminium reads as rock, ice or dune depending on the light. Photo: EditQ, CC BY-SA 4.0, via Wikimedia Commons"
+        },
+        {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-opera-house-panorama.jpg",
           "caption": "Harbin Opera House, MAD Architects, 2015. It settles into the wetland like weather that decided to stay. Photo: Jeremy Thompson, CC BY 2.0, via Wikimedia Commons",
@@ -3763,6 +3836,11 @@
         {
           "type": "text",
           "content": "That last figure is the one that earns my respect, and it isn’t a joke. A public path is carved into the façade and climbs the outside of the building to a rooftop plaza anyone may walk up: no ticket, no performance, no dress code, nobody at the top checking whether you belong there. An opera house — the single most status-anxious building type in existence, a typology whose entire architectural history consists of staircases designed to be seen ascending — hands its best view to people who will never buy a seat. Every other opera house on earth spends its budget teaching you that the foyer is not for you. This one gives away the roof and asks for nothing."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-exterior-3.jpg",
+          "caption": "The building's low, wind-carved profile against the Heilongjiang sky. Photo: EditQ, CC BY-SA 4.0, via Wikimedia Commons"
         },
         {
           "type": "image",
@@ -4095,6 +4173,15 @@
     "RU": {
       "items": [
         {
+          "id": 10,
+          "title": "Против прямого угла",
+          "subtitle": "Architecture",
+          "fig": "FIG. 08",
+          "description": "Пять зданий, которые выговорили себе свободу от сетки, — и софт, металл, деньги и чистая наглость, которые понадобились, чтобы их построить.",
+          "imageSeed": "item-10",
+          "imageUrl": ""
+        },
+        {
           "id": 1,
           "title": "Утренние ритуалы",
           "subtitle": "Каппадокия, Турция",
@@ -4137,19 +4224,28 @@
         },
         {
           "id": 8,
-          "title": "Новый элемент галереи",
-          "subtitle": "Однострочный контекст — замените меня",
+          "title": "Тадао Андо: расшифровка философии чистого дизайна",
+          "subtitle": "Архитектура",
           "fig": "FIG. 08",
-          "description": "Одно или два предложения, описывающих эту статью. Перед публикацией замените реальной копией.",
+          "description": "Тадао Андо — один из самых влиятельных архитекторов XXI века, бросающий вызов привычным границам архитектуры. Его подход переосмысляет традиционные японские принципы через смелые формы, материалы и организацию пространства. В статье — ключевые принципы его философии.",
           "imageSeed": "new-item-8"
         },
         {
           "id": 9,
-          "title": "Новый элемент галереи",
-          "subtitle": "Однострочный контекст — замените меня",
+          "title": "Польский дизайн: соткан из памяти",
+          "subtitle": "Дизайн",
           "fig": "FIG. 09",
-          "description": "Одно или два предложения, описывающих эту статью. Перед публикацией замените реальной копией.",
+          "description": "Современный польский дизайн переживает момент тихой зрелости. В студиях сегодняшних архитекторов и мебельщиков говорят на языке строгого минимализма, тактильных материалов и честной конструкции — итог векового диалога о том, что значит творить с национальной душой.",
           "imageSeed": "new-item-9"
+        },
+        {
+          "id": 11,
+          "title": "Сердце EPRIS: у Марии диплом архитектора",
+          "subtitle": "Culture",
+          "fig": "FIG. 09",
+          "description": "7 июля Мария Иванова, главный редактор EPRIS, официаль��о стала бакалавром архитектуры. В честь этого дня – сердце, собранное из архитектуры и искусства, которые её вдохновляют.",
+          "imageSeed": "maria-graduation-heart",
+          "imageUrl": "/images/heart-hero.jpg"
         }
       ],
       "articles": [
@@ -5707,6 +5803,10 @@
             },
             {
               "type": "text",
+              "content": "Сам конкурс решили за три недели. Директор Гуггенхайма Томас Кренс отобрал трёх архитекторов — Гери, Арату Исодзаки, Coop Himmelblau, — выдал каждому по десять тысяч долларов и попросил концепцию. Исодзаки прислал эскизы эллиптического четырёхэтажного блока. Coop Himmelblau предложили прозрачные кубы. Гери прислал нечто, совершенно не похожее на то, что у него просили, — и получил заказ."
+            },
+            {
+              "type": "text",
               "content": "По любым разумным меркам это должно было закончиться парламентским расследованием. Вместо этого получился самый копируемый городской жест века, а собранные налоги перекрыли стоимость стройки за три года."
             },
             {
@@ -5730,6 +5830,11 @@
               "content": "Отдельно — оболочка, лучшая история в облицовке XX века, которую почти никто толком не рассказывает. Гери изначально предполагал нержавеющую сталь. Стоит же там 33 000 титановых листов толщиной четыре десятых миллиметра, шестьдесят тонн в сумме, — титан при этом металл авиационный, и на здании такого масштаба его до тех пор не применял никто по прекрасной причине: он стоит целое состояние."
             },
             {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-titanium-detail.jpg",
+              "caption": "Титан крупным планом — листы тоньше миллиметра, каждый выгнут отдельно, уложены внахлёст, как рыбья чешуя. Фото: Jules Verne Times Two, CC BY-SA 4.0, via Wikimedia Commons"
+            },
+            {
               "type": "text",
               "content": "Кроме одного момента в начале девяностых, когда он вдруг перестал столько стоить. Советский Союз строил подводные лодки проекта «Альфа» с титановым корпусом; когда Россия вывела последние из них из эксплуатации, металл хлынул на мировой рынок и цена рухнула, оказавшись ниже нержавейки ровно тогда, когда Гери выбирал материал. Это значит, что самое фотографируемое здание конца XX века обшито списанным запасом холодной войны. Мерцание над Нервьоном — это мирный дивиденд, раскатанный до 0,4 мм и привинченный к музею. Ни один историк архитектуры не осмелился бы такое выдумать."
             },
@@ -5740,6 +5845,11 @@
             {
               "type": "text",
               "content": "Больше всего в этом здании я люблю швейцара. Вход охраняет «Puppy» Джеффа Кунса: двенадцатиметровый вест-хайленд-уайт-терьер, обитый живыми цветущими растениями, которые непрерывно поливают и подстригают, чтобы он не облысел. Титановый собор международного авангарда, охраняемый гигантской собакой из петуний. Бильбао понял то, чего так и не поняли подражатели: всё предприятие работает гораздо лучше, когда отказывается воспринимать себя абсолютно всерьёз."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-puppy.jpg",
+              "caption": "«Puppy» Джеффа Кунса на посту у входа — самый несерьёзный швейцар авангарда. Фото: Jules Verne Times Two, CC BY-SA 4.0, via Wikimedia Commons"
             },
             {
               "type": "header",
@@ -5777,12 +5887,26 @@
             },
             {
               "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-baku-interior-stairs.jpg",
+              "caption": "Внутри складки: лестница, поручень и потолок отлиты как одна непрерывная поверхность. Фото: Mahmoodrezamo, CC BY-SA 4.0, via Wikimedia Commons"
+            },
+            {
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-heydar-aliyev-auditorium.jpg",
               "caption": "Тысяча мест — и ни одного прямого угла среди них. Фото: Emin Allahverdi, CC BY-SA 4.0, via Wikimedia Commons"
             },
             {
               "type": "text",
               "content": "Теперь абзац, который выпускают подарочные альбомы. Здание названо в честь покойного президента Азербайджана и заказано при правительстве его сына, унаследовавшего должность. Оно принадлежит к очень старому жанру — дворец национальной культуры как портрет правящей семьи — и выросло в городе, который тогда переделывали на скорости, а жители зоны большой реконструкции сообщали о сносах и выселениях, на которые они не соглашались. Когда лондонский Design Museum присудил проекту Design of the Year 2014, премия пришла с публичным спором в комплекте, и спор был не про кровлю."
+            },
+            {
+              "type": "text",
+              "content": "Логика лебединой шеи распространяется даже на комфорт. Внутри складок спрятаны закрытые зимние сады высотой в несколько этажей, с настоящими деревьями под стеклом, — белым изгибам нужно было куда-то приземлиться в тепле и зелени. Странная затея для города, построенного на нефти, а не на воде, — и она работает именно потому, что здание ничуть не извиняется за расточительность."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-baku-interior-garden.jpg",
+              "caption": "Один из закрытых зимних садов — настоящие деревья под стеклом внутри изгиба. Фото: Mahmoodrezamo, CC BY-SA 4.0, via Wikimedia Commons"
             },
             {
               "type": "text",
@@ -5800,6 +5924,11 @@
             {
               "type": "text",
               "content": "То же бюро, тот же год, совершенно другой заказчик: SOHO China под управлением Чжан Синь — компания, покупающая архитектуру так, как другие покупают часы: заметно, дорого и с ясным пониманием того, что подпись автора делает с ценой перепродажи. Задание — офисы и торговля на крупной магистрали в центре Пекина. Ответ — четыре округлых объёма, сросшихся мостами на нескольких уровнях: 330 000 квадратных метров на восемнадцати этажах, а пространство между ними вылеплено в текучие дворы вместо привычного продуваемого ничего, которое застройщики оставляют между башнями."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-galaxy-soho-bridge.jpg",
+              "caption": "Мосты, сращивающие четыре объёма Galaxy SOHO в один непрерывный маршрут. Фото: Francesco Bini, CC BY-SA 4.0, via Wikimedia Commons"
             },
             {
               "type": "image",
@@ -5828,6 +5957,10 @@
               "content": "И претензия попадает, потому что непрерывная, самозамкнутая геометрия великолепно оснащена для того, чтобы не замечать, рядом с чем она стоит. У здания, целиком составленного из кривых, нет граней, которыми можно с кем-то встретиться. Оно не спорит с улицей — оно не признаёт, что улица что-то говорила. Можно восхищаться объектом и всё же признать этот довод — я делаю и то и другое — и заметить деталь, которая всё решает: всё щедрое в Galaxy SOHO обращено внутрь. Дворы прекрасны, и они частные. Это точное описание изрядной части застройки XXI века, и это не комплимент."
             },
             {
+              "type": "text",
+              "content": "Ничто из этого не помешало Galaxy SOHO в том же году получить International Award RIBA — письмо протеста и трофей пришли с разницей в несколько месяцев. Международное жюри и городской орган охраны наследия отвечали — и отвечают до сих пор — на два совершенно разных вопроса."
+            },
+            {
               "type": "header",
               "content": "<span class=\"kicker\">04 · UNStudio</span>Музей Mercedes-Benz",
               "level": 2
@@ -5839,6 +5972,15 @@
             {
               "type": "text",
               "content": "Бен ван Беркель и Каролина Бос начинают не с формы. Они начинают с задачи о движении, вычерчивают её и позволяют форме стать следствием — потому бюро и называется UNStudio, а не двумя фамилиями на двери, и потому это здание с большим отрывом наименее самолюбующееся в этом тексте."
+            },
+            {
+              "type": "text",
+              "content": "UNStudio выиграли конкурс на этот участок в 2001 году. Музей строили пять лет — достаточно долго, чтобы половина Штутгарта успела посмотреть, как трилистник поднимается из котлована, и составить об этом мнение ещё до того, как в зал въехала первая машина."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-mercedes-blue-hour.jpg",
+              "caption": "Музей Mercedes-Benz в синий час — скрутка читается ещё лучше, когда изнутри горит свет. Фото: Julian Herzog, CC BY 4.0, via Wikimedia Commons"
             },
             {
               "type": "text",
@@ -5892,6 +6034,15 @@
               "content": "Посмотрите на площадку. Харбин стоит на реке Сунгари, в провинции, где зима — шестимесячный административный факт, где главный годовой фестиваль строят из ледяных блоков, выпиленных из этой же реки, и где температура вытворяет вещи, от которых центральноевропеец начинает тепло вспоминать собственный тоскливый январь. MAD дали городу низкий белый холм посреди заболоченной поймы, целиком обшитый белым алюминием и прочитанный откровенно как нанос, — здание, которому уютно со снегом, потому что оно уже имеет форму снега. Под ним 470 парковочных мест, потому что рельеф — это метафора, а на дворе всё-таки Китай 2015 года."
             },
             {
+              "type": "text",
+              "content": "MAD получили проект обычным путём, что бывает редко: открытый международный конкурс 2010 года — на генплан, покрывающий около 180 гектаров заболоченной поймы вдоль Сунгари, а не только на театр. Оперный театр — единственное здание из этого плана, на которое действительно смотрит весь мир, но задумывалось оно не как одиночка. Это знак препинания в куда более длинном предложении о реке."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-exterior-2.jpg",
+              "caption": "Харбинский оперный театр днём: алюминий читается то как скала, то как лёд, то как дюна — смотря по свету. Фото: EditQ, CC BY-SA 4.0, via Wikimedia Commons"
+            },
+            {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-opera-house-panorama.jpg",
               "caption": "Харбинский оперный театр, MAD Architects, 2015. Он оседает в пойме, как погода, которая решила остаться. Фото: Jeremy Thompson, CC BY 2.0, via Wikimedia Commons",
@@ -5904,6 +6055,11 @@
             {
               "type": "text",
               "content": "Вот последняя цифра и есть то, что вызывает моё уважение, и это не шутка. В фасад врезана общественная тропа, которая поднимается по наружной стороне здания на кровельную площадку, куда может подняться кто угодно: без билета, без спектакля, без дресс-кода и без человека наверху, проверяющего, ваше ли здесь место. Оперный театр — самый статусно-тревожный тип здания на свете, типология, вся архитектурная история которой состоит из лестниц, спроектированных для того, чтобы вас видели по ним восходящим, — отдаёт лучший вид людям, которые никогда не купят место в зале. Любая другая опера на земле тратит бюджет на то, чтобы объяснить вам, что фойе не для вас. Эта отдаёт крышу и не просит ничего."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-exterior-3.jpg",
+              "caption": "Низкий, обточенный ветром силуэт здания на фоне неба над Хэйлунцзяном. Фото: EditQ, CC BY-SA 4.0, via Wikimedia Commons"
             },
             {
               "type": "image",
@@ -5951,7 +6107,16 @@
               "type": "text",
               "content": "<hr><h4>Источники</h4><ul class=\"sources\"><li><strong>Guggenheim Museum Bilbao</strong> — музей о собственном здании: площади, залы и титановая оболочка — <a href=\"https://www.guggenheim-bilbao.eus/en/the-building\">guggenheim-bilbao.eus</a></li><li><strong>Association for Project Management</strong> — экономика проекта и почему титан ненадолго стал дешевле стали — <a href=\"https://www.apm.org.uk/blog/guggenheim-museum-bilbao-why-was-it-such-a-stellar-project-success/\">apm.org.uk</a></li><li><strong>ArchDaily</strong> — Центр Гейдара Алиева — чертежи, конструкция и проектные данные — <a href=\"https://www.archdaily.com/448774/heydar-aliyev-center-zaha-hadid-architects\">archdaily.com</a></li><li><strong>Dezeen</strong> — открытое письмо пекинских градозащитников из-за номинации на премию Любеткина, 2013 — <a href=\"https://www.dezeen.com/2013/08/03/zaha-hadid-galaxy-soho-riba-award-lubetkin-prize-chinese-heritage/\">dezeen.com</a></li><li><strong>UNStudio</strong> — Музей Mercedes-Benz — план-трилистник и двойная спираль маршрутов, от авторов проекта — <a href=\"https://www.unstudio.com/projects/mercedes-benz-museum/\">unstudio.com</a></li><li><strong>MAD Architects</strong> — Харбинский оперный театр — площадь, вместимость залов и общественный маршрут по кровле — <a href=\"https://www.i-mad.com/projects/harbin-opera-house\">i-mad.com</a></li></ul><span class=\"dek\">Фотографии: свободные лицензии через Wikimedia Commons, автор указан в каждой подписи.</span>"
             }
-          ]
+          ],
+          "authorId": "author-1784732936927-kw554",
+          "role": "Автор",
+          "tags": [
+            "architecture",
+            "design",
+            "cities"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-guggenheim-river.jpg"
         }
       ],
       "reviews": [
@@ -6156,6 +6321,15 @@
     "UA": {
       "items": [
         {
+          "id": 10,
+          "title": "Проти прямого кута",
+          "subtitle": "Architecture",
+          "fig": "FIG. 08",
+          "description": "П’ять будівель, які виговорили собі свободу від сітки, — і софт, метал, гроші та чиста зухвалість, яких забракло б без них.",
+          "imageSeed": "item-10",
+          "imageUrl": ""
+        },
+        {
           "id": 1,
           "title": "Ранкові ритуали",
           "subtitle": "Каппадокія, Туреччина",
@@ -6198,19 +6372,28 @@
         },
         {
           "id": 8,
-          "title": "Новий елемент галереї",
-          "subtitle": "Однорядковий контекст — замініть мене",
+          "title": "Тадао Андо: розшифровка філософії чистого дизайну",
+          "subtitle": "Архітектура",
           "fig": "FIG. 08",
-          "description": "Одне-два речення з описом цього твору — замініть на справжню копію перед публікацією.",
+          "description": "Тадао Андо — один із найвпливовіших архітекторів XXI століття, який кидає виклик звичним межам архітектури. Його підхід переосмислює традиційні японські принципи через сміливі форми, матеріали та організацію простору. У статті — ключові принципи його філософії.",
           "imageSeed": "new-item-8"
         },
         {
           "id": 9,
-          "title": "Новий елемент галереї",
-          "subtitle": "Однорядковий контекст — замініть мене",
+          "title": "Польський дизайн: зітканий із пам’яті",
+          "subtitle": "Дизайн",
           "fig": "FIG. 09",
-          "description": "Одне-два речення з описом цього твору — замініть на справжню копію перед публікацією.",
+          "description": "Сучасний польський дизайн переживає момент тихої зрілості. У студіях сьогоднішніх архітекторів і меблярів говорять мовою суворого мінімалізму, тактильних матеріалів і чесної конструкції — підсумок столітнього діалогу про те, що означає творити з національною душею.",
           "imageSeed": "new-item-9"
+        },
+        {
+          "id": 11,
+          "title": "Серце EPRIS: у Марії диплом архітектора",
+          "subtitle": "Culture",
+          "fig": "FIG. 09",
+          "description": "7 липня Марія Іванова, головна редакторка EPRIS, офіційно стала бакалавром архітектури. На честь цього дня – серце, зібране з архітектури та мистецтва, що її надихають.",
+          "imageSeed": "maria-graduation-heart",
+          "imageUrl": "/images/heart-hero.jpg"
         }
       ],
       "articles": [
@@ -7768,6 +7951,10 @@
             },
             {
               "type": "text",
+              "content": "Сам конкурс вирішили за три тижні. Директор Гуггенхайма Томас Кренс відібрав трьох архітекторів — Гері, Арату Ісодзакі, Coop Himmelblau, — видав кожному по десять тисяч доларів і попросив концепцію. Ісодзакі надіслав ескізи еліптичного чотириповерхового блоку. Coop Himmelblau запропонували прозорі куби. Гері надіслав щось, зовсім не схоже на те, що в нього просили, — і отримав замовлення."
+            },
+            {
+              "type": "text",
               "content": "За будь-якими розумними мірками це мало б скінчитися парламентським розслідуванням. Натомість вийшов найкопійованіший міський жест століття, а зібрані податки перекрили вартість будівництва за три роки."
             },
             {
@@ -7791,6 +7978,11 @@
               "content": "Окремо — оболонка, найкраща історія в облицюванні XX століття, яку майже ніхто до пуття не розповідає. Гері спершу передбачав нержавіючу сталь. А стоїть там 33 000 титанових аркушів завтовшки чотири десятих міліметра, шістдесят тонн загалом, — титан при цьому метал авіаційний, і на будівлі такого масштабу його доти не застосовував ніхто з прекрасної причини: він коштує цілий статок."
             },
             {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-titanium-detail.jpg",
+              "caption": "Титан зблизька — листи тонші за міліметр, кожен вигнутий окремо, укладені внапуск, як риб’яча луска. Фото: Jules Verne Times Two, CC BY-SA 4.0, via Wikimedia Commons"
+            },
+            {
               "type": "text",
               "content": "Крім одного моменту на початку дев’яностих, коли він раптом перестав стільки коштувати. Радянський Союз будував підводні човни проєкту «Альфа» з титановим корпусом; коли Росія вивела останні з них з експлуатації, метал ринув на світовий ринок і ціна впала, опинившись нижчою за нержавійку саме тоді, коли Гері обирав матеріал. Це означає, що найбільш фотографована будівля кінця XX століття обшита списаним запасом холодної війни. Мерехтіння над Нервйоном — це мирний дивіденд, розкатаний до 0,4 мм і пригвинчений до музею. Жоден історик архітектури не наважився б таке вигадати."
             },
@@ -7801,6 +7993,11 @@
             {
               "type": "text",
               "content": "Найбільше в цій будівлі я люблю швейцара. Вхід охороняє «Puppy» Джеффа Кунса: дванадцятиметровий вест-хайленд-вайт-тер’єр, оббитий живими квітучими рослинами, які безперервно поливають і підстригають, щоб він не облисів. Титановий собор міжнародного авангарду, який охороняє велетенський пес із петуній. Більбао зрозуміло те, чого так і не зрозуміли наслідувачі: уся справа працює значно краще, коли відмовляється сприймати себе абсолютно серйозно."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-puppy.jpg",
+              "caption": "«Puppy» Джеффа Кунса на посту біля входу — найменш серйозний швейцар авангарду. Фото: Jules Verne Times Two, CC BY-SA 4.0, via Wikimedia Commons"
             },
             {
               "type": "header",
@@ -7838,12 +8035,26 @@
             },
             {
               "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-baku-interior-stairs.jpg",
+              "caption": "Усередині складки: сходи, поручень і стеля відлиті як одна безперервна поверхня. Фото: Mahmoodrezamo, CC BY-SA 4.0, via Wikimedia Commons"
+            },
+            {
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-heydar-aliyev-auditorium.jpg",
               "caption": "Тисяча місць — і жодного прямого кута серед них. Фото: Emin Allahverdi, CC BY-SA 4.0, via Wikimedia Commons"
             },
             {
               "type": "text",
               "content": "Тепер абзац, який пропускають подарункові альбоми. Будівлю названо на честь покійного президента Азербайджану й замовлено за уряду його сина, який успадкував посаду. Вона належить до дуже старого жанру — палац національної культури як портрет правлячої родини — і виросла в місті, яке тоді переробляли на швидкості, а мешканці зони великої реконструкції повідомляли про знесення й виселення, на які вони не погоджувалися. Коли лондонський Design Museum присудив проєкту Design of the Year 2014, премія прийшла з публічною суперечкою в комплекті, і суперечка була не про покрівлю."
+            },
+            {
+              "type": "text",
+              "content": "Логіка лебединої шиї поширюється навіть на комфорт. Усередині складок сховані закриті зимові сади заввишки в кілька поверхів, зі справжніми деревами під склом, — білим вигинам потрібно було десь приземлитися в теплі й зелені. Дивна витівка для міста, збудованого на нафті, а не на воді, — і вона працює саме тому, що будівля анітрохи не вибачається за марнотратність."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-baku-interior-garden.jpg",
+              "caption": "Один із закритих зимових садів — справжні дерева під склом усередині вигину. Фото: Mahmoodrezamo, CC BY-SA 4.0, via Wikimedia Commons"
             },
             {
               "type": "text",
@@ -7861,6 +8072,11 @@
             {
               "type": "text",
               "content": "Те саме бюро, той самий рік, цілком інший замовник: SOHO China під керівництвом Чжан Сінь — компанія, що купує архітектуру так, як інші купують годинники: помітно, дорого і з чітким розумінням того, що підпис автора робить із ціною перепродажу. Завдання — офіси й торгівля на великій магістралі в центрі Пекіна. Відповідь — чотири округлі об’єми, зрощені мостами на кількох рівнях: 330 000 квадратних метрів на вісімнадцяти поверхах, а простір між ними виліплено в текучі двори замість звичного продувного нічого, яке забудовники лишають між вежами."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-galaxy-soho-bridge.jpg",
+              "caption": "Мости, що зрощують чотири об’єми Galaxy SOHO в один безперервний маршрут. Фото: Francesco Bini, CC BY-SA 4.0, via Wikimedia Commons"
             },
             {
               "type": "image",
@@ -7889,6 +8105,10 @@
               "content": "І претензія влучає, бо безперервна, самозамкнена геометрія чудово оснащена для того, щоб не помічати, поруч із чим вона стоїть. У будівлі, цілком складеної з кривих, немає граней, якими можна з кимось зустрітися. Вона не сперечається з вулицею — вона не визнає, що вулиця щось казала. Можна захоплюватися об’єктом і все ж визнати цей доказ — я роблю і те, і те — і помітити деталь, яка все вирішує: усе щедре в Galaxy SOHO обернене всередину. Двори прекрасні, і вони приватні. Це точний опис неабиякої частини забудови XXI століття, і це не комплімент."
             },
             {
+              "type": "text",
+              "content": "Ніщо з цього не завадило Galaxy SOHO того ж року отримати International Award RIBA — лист протесту і трофей прийшли з різницею в кілька місяців. Міжнародне журі та міський орган охорони спадщини відповідали — і відповідають досі — на два цілком різні питання."
+            },
+            {
               "type": "header",
               "content": "<span class=\"kicker\">04 · UNStudio</span>Музей Mercedes-Benz",
               "level": 2
@@ -7900,6 +8120,15 @@
             {
               "type": "text",
               "content": "Бен ван Беркель і Кароліна Бос починають не з форми. Вони починають із задачі про рух, викреслюють її й дозволяють формі стати наслідком — тому бюро й називається UNStudio, а не двома прізвищами на дверях, і тому ця будівля з великим відривом найменш самозакохана в цьому тексті."
+            },
+            {
+              "type": "text",
+              "content": "UNStudio виграли конкурс на цю ділянку 2001 року. Музей будували п’ять років — достатньо довго, щоб половина Штутгарта встигла подивитися, як трилисник підіймається з котловану, і скласти про це думку ще до того, як до зали в’їхала перша машина."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-mercedes-blue-hour.jpg",
+              "caption": "Музей Mercedes-Benz у синю годину — скрутка читається ще краще, коли зсередини горить світло. Фото: Julian Herzog, CC BY 4.0, via Wikimedia Commons"
             },
             {
               "type": "text",
@@ -7953,6 +8182,15 @@
               "content": "Погляньте на майданчик. Харбін стоїть на річці Сунгарі, у провінції, де зима — шестимісячний адміністративний факт, де головний річний фестиваль будують із крижаних блоків, випиляних із цієї ж річки, і де температура витворяє речі, від яких центральноєвропеєць починає тепло згадувати власний тоскний січень. MAD дали місту низький білий пагорб посеред заболоченої заплави, цілком обшитий білим алюмінієм і прочитаний відверто як нанос, — будівлю, якій затишно зі снігом, бо вона вже має форму снігу. Під нею 470 паркувальних місць, бо рельєф — це метафора, а надворі все-таки Китай 2015 року."
             },
             {
+              "type": "text",
+              "content": "MAD отримали проєкт звичайним шляхом, що трапляється рідко: відкритий міжнародний конкурс 2010 року — на генплан, що покриває близько 180 гектарів заболоченої заплави вздовж Сунгарі, а не лише на театр. Оперний театр — єдина будівля з цього плану, на яку справді дивиться весь світ, але задумувалася вона не як одинак. Це розділовий знак у значно довшому реченні про річку."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-exterior-2.jpg",
+              "caption": "Харбінський оперний театр удень: алюміній читається то як скеля, то як лід, то як дюна — залежно від світла. Фото: EditQ, CC BY-SA 4.0, via Wikimedia Commons"
+            },
+            {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-opera-house-panorama.jpg",
               "caption": "Харбінський оперний театр, MAD Architects, 2015. Він осідає в заплаві, як погода, що вирішила залишитися. Фото: Jeremy Thompson, CC BY 2.0, via Wikimedia Commons",
@@ -7965,6 +8203,11 @@
             {
               "type": "text",
               "content": "Ось остання цифра і є тим, що викликає мою повагу, і це не жарт. У фасад врізано громадську стежку, яка піднімається зовнішнім боком будівлі на покрівельний майданчик, куди може піднятися будь-хто: без квитка, без вистави, без дрес-коду й без людини нагорі, яка перевіряє, чи ваше тут місце. Оперний театр — найбільш статусно-тривожний тип будівлі на світі, типологія, вся архітектурна історія якої складається зі сходів, спроєктованих для того, щоб вас бачили на них висхідним, — віддає найкращий краєвид людям, які ніколи не куплять місце в залі. Будь-яка інша опера на землі витрачає бюджет на те, щоб пояснити вам, що фойє не для вас. Ця віддає дах і не просить нічого."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-exterior-3.jpg",
+              "caption": "Низький, обточений вітром силует будівлі на тлі неба над Хейлунцзяном. Фото: EditQ, CC BY-SA 4.0, via Wikimedia Commons"
             },
             {
               "type": "image",
@@ -8012,7 +8255,16 @@
               "type": "text",
               "content": "<hr><h4>Джерела</h4><ul class=\"sources\"><li><strong>Guggenheim Museum Bilbao</strong> — музей про власну будівлю: площі, зали й титанова оболонка — <a href=\"https://www.guggenheim-bilbao.eus/en/the-building\">guggenheim-bilbao.eus</a></li><li><strong>Association for Project Management</strong> — економіка проєкту й чому титан ненадовго став дешевшим за сталь — <a href=\"https://www.apm.org.uk/blog/guggenheim-museum-bilbao-why-was-it-such-a-stellar-project-success/\">apm.org.uk</a></li><li><strong>ArchDaily</strong> — Центр Гейдара Алієва — креслення, конструкція та проєктні дані — <a href=\"https://www.archdaily.com/448774/heydar-aliyev-center-zaha-hadid-architects\">archdaily.com</a></li><li><strong>Dezeen</strong> — відкритий лист пекінських градозахисників через номінацію на премію Любеткіна, 2013 — <a href=\"https://www.dezeen.com/2013/08/03/zaha-hadid-galaxy-soho-riba-award-lubetkin-prize-chinese-heritage/\">dezeen.com</a></li><li><strong>UNStudio</strong> — Музей Mercedes-Benz — план-трилисник і подвійна спіраль маршрутів, від авторів проєкту — <a href=\"https://www.unstudio.com/projects/mercedes-benz-museum/\">unstudio.com</a></li><li><strong>MAD Architects</strong> — Харбінський оперний театр — площа, місткість залів і громадський маршрут по даху — <a href=\"https://www.i-mad.com/projects/harbin-opera-house\">i-mad.com</a></li></ul><span class=\"dek\">Світлини: вільні ліцензії через Wikimedia Commons, автора зазначено в кожному підписі.</span>"
             }
-          ]
+          ],
+          "authorId": "author-1784732936927-kw554",
+          "role": "Автор",
+          "tags": [
+            "architecture",
+            "design",
+            "cities"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-guggenheim-river.jpg"
         }
       ],
       "reviews": [
@@ -8217,6 +8469,15 @@
     "DE": {
       "items": [
         {
+          "id": 10,
+          "title": "Gegen den rechten Winkel",
+          "subtitle": "Architecture",
+          "fig": "FIG. 08",
+          "description": "Fünf Bauten, die sich aus dem Raster herausgeredet haben — und die Software, das Metall, das Geld und die schiere Frechheit, die es brauchte, um sie zu bauen.",
+          "imageSeed": "item-10",
+          "imageUrl": ""
+        },
+        {
           "id": 1,
           "title": "Morgenrituale",
           "subtitle": "Kappadokien, Türkei",
@@ -8259,19 +8520,28 @@
         },
         {
           "id": 8,
-          "title": "Neues Galerieelement",
-          "subtitle": "Einzeiliger Kontext – ersetze mich",
+          "title": "Tadao Ando: Die Philosophie des reinen Designs entschlüsselt",
+          "subtitle": "Architektur",
           "fig": "FIG. 08",
-          "description": "Ein oder zwei Sätze, die dieses Stück beschreiben – ersetzen Sie es vor der Veröffentlichung durch eine echte Kopie.",
+          "description": "Tadao Ando zählt zu den einflussreichsten Architekten des 21. Jahrhunderts und stellt die konventionellen Grenzen der Architektur infrage. Sein Ansatz denkt traditionelle japanische Prinzipien durch kühne Formen, Materialien und Raumorganisation neu. Der Artikel legt die Kernprinzipien seiner Philosophie offen.",
           "imageSeed": "new-item-8"
         },
         {
           "id": 9,
-          "title": "Neues Galerieelement",
-          "subtitle": "Einzeiliger Kontext – ersetze mich",
+          "title": "Polnisches Design: aus Erinnerung gewoben",
+          "subtitle": "Design",
           "fig": "FIG. 09",
-          "description": "Ein oder zwei Sätze, die dieses Stück beschreiben – ersetzen Sie es vor der Veröffentlichung durch eine echte Kopie.",
+          "description": "Das zeitgenössische polnische Design hat einen Moment stiller Reife erreicht. In den Studios der heutigen Architekten und Möbelgestalter begegnet man einer Sprache aus strengem Minimalismus, haptischen Materialien und ehrlicher Konstruktion — die Summe eines jahrhundertelangen Dialogs darüber, was es heißt, mit nationaler Seele zu gestalten.",
           "imageSeed": "new-item-9"
+        },
+        {
+          "id": 11,
+          "title": "Das Herz von EPRIS: Maria hat ihren Architektur-Abschluss",
+          "subtitle": "Culture",
+          "fig": "FIG. 09",
+          "description": "Am 7. Juli hat Mariia Ivanova, Chefredakteurin von EPRIS, offiziell ihren Bachelor in Architektur gemacht. Zu diesem Anlass – ein Herz aus der Architektur und Kunst, die sie inspirieren.",
+          "imageSeed": "maria-graduation-heart",
+          "imageUrl": "/images/heart-hero.jpg"
         }
       ],
       "articles": [
@@ -9003,66 +9273,241 @@
         },
         {
           "id": 13,
-          "title": "Neue redaktionelle Geschichte",
+          "title": "Kunst, die zum Lächeln bringt",
+          "excerpt": "Ich glaube, dass die Grenzen des Geistes erweitert werden, wenn man spielerische Objekte in eine Umgebung einbringt. Es gibt einem die nonverbale Erlaubnis, frei zu denken – nicht nur, sich gegen konventionelle Rahmen zu stellen, sondern zu vergessen, dass sie überhaupt existieren.",
+          "subcategory": "Feature",
           "author": "EPRIS Journal",
-          "role": "Redaktion",
-          "date": "17. Juli 2026",
-          "excerpt": "Ein fokussierter Eröffnungsabsatz für eine neue redaktionelle Geschichte.",
-          "category": "Kultur",
-          "subcategory": "Besonderheit",
+          "category": "art",
           "tags": [
-            "Geschichte",
-            "Kultur",
-            "Leitartikel"
+            "art",
+            "contemporary artists",
+            "lifestyle"
           ],
-          "imageSeed": "new-editorial-story",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrqbtqfza6qpnq.jpg",
           "content": [
             {
               "type": "text",
-              "content": "Beginnen Sie mit der stärksten Szene, Tatsache oder Beobachtung. Halten Sie diesen ersten Block eng und spezifisch."
+              "content": "Es gibt ein Vorurteil, dass das Vergnügen, das ein Kunstwerk bereitet, oder das Lächeln, das es hervorruft, seinen Wert irgendwie mindert und ihm den erhabenen Titel „Kunst“ nimmt. Das ist schlicht nicht wahr."
             },
             {
-              "type": "image",
-              "content": "new-editorial-story-2",
-              "caption": "Leitbild"
+              "type": "text",
+              "content": "Kunst kann laut sprechen, ganz ohne Worte, und wird damit zu einem unbestreitbaren Instrument, um Selbstreflexion zu materialisieren oder soziale und politische Anliegen anzusprechen. Betrachtet man jedoch die Etymologie des Wortes, ist „Kunst“ historisch nicht mit „Ernsthaftigkeit“ oder Ähnlichem verwandt; ihre Wurzeln liegen im handwerklichen Können, brillant gemeistert und ausgeführt. Dieser Ursprung enthebt die Kunst automatisch jeder zwingenden Verpflichtung und legitimiert ihr Recht, einfach zu sein."
+            },
+            {
+              "type": "text",
+              "content": "Wie bereits erwähnt, spiegelt Kunst soziale, politische, geschlechtliche oder andere Themen wider. Sie kann ein Medium für persönliche Introspektion sein oder ein Vehikel, um komplexe Ideen in verschiedensten Formen zu vermitteln. Doch ein Künstler kann auch spielerische Objekte erschaffen, einfach aus dem inneren Verlangen, Material zu spüren, mit Formen und Farben zu experimentieren, Techniken zu meistern und ein Stück Freude in den Alltag zu bringen. Und spielerisch zu sein ist kein Synonym<b> </b>für oberflächlich. Alle Objekte tragen den Hintergrund, die Überzeugungen, die Vision und die Anliegen ihrer Schöpfer in sich – sie werden nur durch eine andere Linse ausgedrückt."
+            },
+            {
+              "type": "text",
+              "content": "Alles zu ernst zu nehmen ist eine Sackgasse – und sollte Ihnen erst recht nicht in den Sinn kommen, wenn Sie ein neues Stück für Ihr Zuhause aussuchen. Am Ende zählt Ihr persönlicher Geschmack. Wenn Sie nur strenges Beige und Schwarz oder konventionelle Medien und Motive gutheißen, wunderbar! Meine einzige Sorge gilt jenen, die sich nicht einmal erlauben, ein Stück in Betracht zu ziehen, das einen Moment der Freude auslösen könnte. Wir hören ständig: „Das sieht so toll aus, das passt wunderbar zu meinen Wänden und meinen anderen Bildern.“ Aber fragen Sie sich das nächste Mal etwas anderes: Bringt es mich zum Lächeln? Farbenfrohe und verspielte Objekte besitzen eine einzigartige Qualität, die anderen fehlt – sie verleihen einem Raum pure Fröhlichkeit. Wir denken zu selten darüber nach und konzentrieren uns stattdessen darauf, wie angesagt ein Stück ist oder wie es unser Zuhause aussehen lässt. Aber wie fühlen wir uns dabei?"
             },
             {
               "type": "quote",
-              "content": "Fügen Sie hier eine Zeile hinzu, an die Sie sich erinnern sollten."
+              "content": "Farbenfrohe und verspielte Objekte besitzen eine einzigartige Qualität, die anderen fehlt – sie verleihen einem Raum pure Fröhlichkeit."
             },
             {
-              "type": "note",
-              "content": "Redaktionelle Anmerkung, Quellenkontext oder eine kurze Anmerkung."
+              "type": "text",
+              "content": "Innenarchitektur ist nicht nur ein Setting, ein statisches Bild, eine Komposition oder eine Farbpalette. Es ist eine lebendige Umgebung, die einen umarmt und einhüllt. Wir sind es gewohnt, ein Interieur als äußere Komponente unserer Existenz zu betrachten und uns selbst nur als Betrachter zu positionieren. In Wirklichkeit werden wir in dem Moment, in dem wir einen Raum betreten, von ihm aufgesogen, übernehmen unmerklich seine Stimmung und geben uns dem unwiderstehlichen Einfluss seiner Atmosphäre hin. Es gibt sogar einen eigenen Wissenschaftszweig – Neuroarchitektur –, der untersucht, wie die Umgebung unsere kognitive Leistungsfähigkeit sowie unser psychisches und physisches Wohlbefinden beeinflusst. Meist werden diese Effekte durch räumliche Eigenschaften, Farbpsychologie und die haptischen Eigenschaften von Materialien ausgelöst. Doch es gibt ein Element, das oft aus dieser wissenschaftlichen Liste herausfällt, aber dennoch großen Einfluss darauf hat, wie wir einen Raum erleben: <i>Details voller Ironie und Vergnügen.</i>"
             },
             {
-              "type": "checklist",
-              "caption": "Was abzudecken ist",
-              "content": {
-                "items": [
-                  "Kontext",
-                  "Wichtiges Detail",
-                  "Menschlicher Blickwinkel",
-                  "Was ändert sich als nächstes?"
-                ]
-              }
+              "type": "quote",
+              "content": "In Wirklichkeit werden wir in dem Moment, in dem wir einen Raum betreten, von ihm aufgesogen, übernehmen unmerklich seine Stimmung und geben uns dem unwiderstehlichen Einfluss seiner Atmosphäre hin."
             },
             {
-              "type": "poll",
-              "content": {
-                "question": "Was sollten wir als nächstes erkunden?",
-                "options": [
-                  {
-                    "label": "Mehr Kontext",
-                    "votes": 0
-                  },
-                  {
-                    "label": "Praktischer Leitfaden",
-                    "votes": 0
-                  }
-                ]
-              }
+              "type": "text",
+              "content": "Ich glaube, dass die Grenzen des Geistes erweitert werden, wenn man spielerische Objekte in eine Umgebung einbringt. Es gibt einem die nonverbale Erlaubnis, frei zu denken – nicht nur, sich gegen konventionelle Rahmen zu stellen, sondern zu vergessen, dass sie überhaupt existieren."
+            },
+            {
+              "type": "text",
+              "content": "Im Folgenden finden Sie eine Auswahl von Künstlern, deren Objekte garantiert ein unerwartetes Lächeln auf Ihr Gesicht zaubern."
+            },
+            {
+              "type": "header",
+              "content": "Lola Mayeras",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Die französische Designerin Lola Mayeras wuchs in Südfrankreich als Tochter eines Keramikkünstlers auf, sodass sich ihr künstlerisches Erbe und ihre Erkundung von Farben und Formen bereits in früher Kindheit zu formen begannen. Sie arbeitete als Modedesignerin, bevor sie 2020 ihr eigenes Designstudio gründete. Während des Lockdowns entdeckte sie die Werkstatt ihres Vaters in ihrer Heimatstadt wieder und folgte einem inneren Verlangen, in einem ihr seit der Jugend vertrauten Medium zu gestalten."
+            },
+            {
+              "type": "text",
+              "content": "Ihre Herkunft aus der Mode bewahrte ihre Liebe zum Drapieren, doch heute gelten ihre Zielobjekte Möbeln und Skulpturen. Ihr häufigstes Erkennungselement ist das Button-down-Hemd – es steht still in Form einer Vase, ist bescheiden zu einer Skulptur gestapelt oder fällt mühelos über die Ecke eines Holztisches. Letzteres ist mein persönlicher Favorit unter all ihren wunderbaren Stücken: eine zurückhaltende, natürliche Keramikmasse mit einem zerknitterten, azurblauen Hemd, das scheinbar zu Boden gleitet."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mrp9k2cicwn3z7.webp",
+                "https://api.eprisjournal.com/uploads/mrp9ktjlpkgayu.webp",
+                "https://api.eprisjournal.com/uploads/mrp9ki4th7mgl2.webp"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Lola Mayeras gelingt es auch, anthropomorphe Vasen mit Ohren und Ohrringen zu schaffen, die in jeder Hinsicht vollkommen natürlich wirken. Die Balance von Form und Maßstab ist so fein, dass man sich fragt, warum anderen Vasen diese symmetrischen Details fehlen. Es ist kühn und dennoch harmonisch."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrp9t34bnz37vq.webp",
+              "stretched": true
+            },
+            {
+              "type": "text",
+              "content": "Kürzlich hat sie ihre Praxis auf Metall und Textilien ausgeweitet. Wer auf der Suche nach einzigartiger Bettwäsche ist, kann das Set „It’s a Mess“ bestellen, mit einem Trompe-l’œil-Druck verstreuter Kleidung. Das unbeschwerte Wesen ihrer Objekte und die gewählte Farbpalette sind tief von ihrer Kindheit in Südfrankreich inspiriert, wo ein sonnendurchflutetes Leben zum Alltag gehörte."
+            },
+            {
+              "type": "quote",
+              "content": "Das unbeschwerte Wesen ihrer Objekte, zusammen mit der gewählten Farbpalette, ist tief von ihrer Kindheit in Südfrankreich inspiriert, wo ein sonnendurchflutetes Leben zum Alltag gehörte."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrp9xqom3fudfj.webp",
+              "stretched": true
+            },
+            {
+              "type": "header",
+              "content": "Erwin Wurm",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Erwin Wurms Werk ist ein Paradebeispiel für spielerische Ironie, die ernste gesellschaftliche Themen verbirgt – Botschaften, die auf den ersten Blick schwer zu entziffern sind, aber, einmal entdeckt, zu einem untrennbaren Teil der Erfahrung werden.<br>"
+            },
+            {
+              "type": "text",
+              "content": "Als Pionier des konzeptuellen Humors, der Kunstliebhaber weltweit für sich gewonnen hat, verleiht Wurm berühmterweise Taschen, Würsten, Pullovern und anderen Alltagsgegenständen Arme und Beine. Er ist der Schöpfer aufgeblasener Autos, geschwollener Häuser und anthropomorpher Gurken, allesamt neu gedacht durch einfache Formen und Handlungen. Diese Einfachheit sollte den Wert des Künstlers keineswegs schmälern; vielmehr spiegelt sie eine wahre Meisterschaft einer höchst lesbaren visuellen Sprache wider, die dann mit absoluter Unvorhersehbarkeit kollidiert."
+            },
+            {
+              "type": "text",
+              "content": "Letztlich dient das Absurde in Wurms Kunst als scharfe Antwort auf den Druck der zeitgenössischen Gesellschaft, etwa Überkonsum, das erdrückende Gewicht der öffentlichen Meinung und unsere Besessenheit von Selbstdarstellung durch das, was wir besitzen. Unter der fröhlichen Verpackung verbirgt sich ein tiefgründiger Kommentar zur modernen menschlichen Verfassung. Doch diese verborgene Tiefe schmälert nie den reinen, freudigen Anblick seiner Stücke – sie bleiben mühelos entzückende Objekte, zu denen man immer wieder zurückkehren möchte."
+            },
+            {
+              "type": "quote",
+              "content": "Doch diese verborgene Tiefe schmälert nie den reinen, freudigen Anblick seiner Stücke – sie bleiben mühelos entzückende Objekte, zu denen man immer wieder zurückkehren möchte."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mrpa6tqpmljolk.jpg",
+                "https://api.eprisjournal.com/uploads/mrpa77rpsjpc66.jpg",
+                "https://api.eprisjournal.com/uploads/mrpa7cthf6cyq0.jpg"
+              ]
+            },
+            {
+              "type": "header",
+              "content": "Fanny Ollas",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Die schwedische Designerin Fanny Ollas hat einen Hintergrund in Textil und Mode, der sich in ihren elegant verzierten Vasen widerspiegelt. Jedes Gefäß wirkt wie eine Märchenfigur, die mietfrei an Ihrer Seite lebt und jedes Recht dazu hat."
+            },
+            {
+              "type": "text",
+              "content": "Die sanften Farbtöne und die Einbindung von Kunstfell, Spitze, Strasssteinen und Perlen verleihen jedem Stück ein magisch klingendes Erscheinungsbild, tragen aber zugleich einen gewissen Zustand der Melancholie in sich. Ihre Arbeit kreist um Gedanken zu Verletzlichkeit, Körper, Ansprüchen, Ängsten, Beziehungen und dem, was sich hinter unseren Fassaden verbirgt."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mrpbmrcyhwinri.jpg",
+                "https://api.eprisjournal.com/uploads/mrpbmbhqhuj37n.jpg",
+                "https://api.eprisjournal.com/uploads/mrpbmh0b6r21y3.jpg"
+              ]
+            },
+            {
+              "type": "header",
+              "content": "Pablo Picasso",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Der legendäre spanische Künstler nannte sich selbst stets einen Experimentierer, und es gibt keine treffendere Beschreibung für die enorme Bandbreite seines Werks. Obwohl Ironie nicht sein zentrales Thema war, spiegeln die Gefäße, die er in großer Zahl im Atelier Madoura in Südfrankreich herstellte, das spielerische Element in seinem Œuvre perfekt wider."
+            },
+            {
+              "type": "text",
+              "content": "Gegen Ende des Zweiten Weltkriegs war Picasso bereits eine lebende Legende, ein gefeiertes Genie und Millionär. Doch dieser Erfolg hatte einen Rückschlageffekt – er wurde des Akademismus und der feierlich starren Haltung gegenüber der Kunst überdrüssig. Als er sich dem Ton zuwandte, schien er sich selbst zu erlauben, wieder Kind zu werden."
+            },
+            {
+              "type": "quote",
+              "content": "„Ich kann malen wie Raffael, aber es hat mich ein Leben lang gekostet, zu malen wie ein Kind“ – Pablo Picasso"
+            },
+            {
+              "type": "text",
+              "content": "Die komischen Gesichter, die er auf Krüge malte, waren ein Akt reinen Spiels und Ausdruck des absoluten Glücks, das er empfand, als er mit seiner jungen Muse Françoise Gilot an der sonnigen Küste lebte. Nach den Schrecken des Krieges, der Tragödie von Guernica und tiefen persönlichen Krisen wurde die Herstellung lebendigen, humorvollen Geschirrs für ihn zu einer Form der Kunsttherapie."
+            },
+            {
+              "type": "text",
+              "content": "Die komischen Gesichter, die er auf Krüge malte, waren ein Akt reinen Spiels und Ausdruck des absoluten Glücks, das er empfand, als er mit seiner jungen Muse Françoise Gilot an der sonnigen Küste lebte. Nach den Schrecken des Krieges, der Tragödie von Guernica und tiefen persönlichen Krisen wurde die Herstellung lebendigen, humorvollen Geschirrs für ihn zu einer Form der Kunsttherapie."
+            },
+            {
+              "type": "text",
+              "content": "Diese Krüge waren nie dazu gedacht, hinter Glas in verstaubten Museen zu stehen. Picasso wollte seine Keramiken ursprünglich erschwinglich und alltagstauglich wissen – zum Wein einschenken oder um Obst hineinzulegen –, damit die Menschen beim Frühstück über diese amüsanten, handbemalten Gesichter lächeln konnten."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mrpbv192ro00mb.jpg",
+                "https://api.eprisjournal.com/uploads/mrpbv7e9s4nxj4.jpg",
+                "https://api.eprisjournal.com/uploads/mrpbvw8tnfxixi.jpg"
+              ]
+            },
+            {
+              "type": "header",
+              "content": "Matthew Centeno",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Improvisation und ein offener Zugang stehen im Zentrum von Matthew Centenos kreativem Prozess. Mit äußerst detaillierter Handwerkskunst verwandelt er gewöhnliche Luftballons in fesselnde Formen, die direkt das innere Kind in jedem ansprechen. Sein oberstes Ziel ist es, die Monotonie des Alltags zu durchbrechen und das Publikum sanft dazu anzustoßen, seinen vergessenen Sinn für Neugier wiederzuentdecken."
+            },
+            {
+              "type": "text",
+              "content": "Während Folienballons das ultimative Zeichen für Feiern und Feiertage sind, sind sie von Natur aus vergänglich. Anders als Blumen, die längst zu einem festen Bestandteil der beiläufigen Wohndekoration geworden sind, gehören Ballons nach wie vor fest in die Kategorie der besonderen Anlässe. Centenos wandmontierter Porzellanballon mit lächelndem Gesicht dient als dauerhafte Erinnerung daran, dass jeder einzelne Tag besonders ist."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mrpcsa7el8zveu.jpg",
+                "https://api.eprisjournal.com/uploads/mrpcsht8an9mj0.jpg",
+                "https://api.eprisjournal.com/uploads/mrpcsmmdz5dcno.jpg"
+              ]
+            },
+            {
+              "type": "header",
+              "content": "Sébastien Gaudette",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Was könnte angenehmer sein als Klebezettel mit fröhlichen Botschaften, die einem jedes Mal ein warmes Gefühl geben, wenn man sie sieht? Sébastien Gaudette schafft Trompe-l’œil-Skulpturen aus Aluminium, die für immer an Ihrer Wand bleiben. Es ist die Art von Kunst, die nicht zu Ihrer Einrichtung passen muss, sondern vielmehr zu Ihrer Stimmung und Ihrem emotionalen Wohlbefinden beiträgt. Ich muss zugeben, dass die geringe Größe des Werks zum Reiz beiträgt, es zu entdecken – es ist wie ein kleines Stück Magie, dem man unerwartet begegnet, kurz innehält, um eine Sekunde zu lächeln, und dann zu seinen Besorgungen zurückkehrt."
+            },
+            {
+              "type": "text",
+              "content": "Der zentrale Pfeiler von Gaudettes Arbeit ist nicht die Beschriftung, sondern die Nachbildung von Papierfalten. Doch selbst innerhalb dieses Rahmens finden wir die Komponente vertrauter Freude gepaart mit kindlicher Begeisterung. Zum Beispiel die Papierflieger in verschiedenen Farben, gefaltet aus einem linierten Notizbuchblatt. Sie auf der Kommode oder dem Couchtisch zwischen Büchern und Vasen zu finden, wäre eine wunderbare Zeitmaschine zurück zur Sorglosigkeit der Jugend."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mrpd6ycjkdxx24.jpg",
+                "https://api.eprisjournal.com/uploads/mrpd80208jrdq9.webp",
+                "https://api.eprisjournal.com/uploads/mrpd73atqokur3.webp"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Es scheint, als hätten wir Angst davor, uns von der Kunst unterhalten zu lassen."
+            },
+            {
+              "type": "text",
+              "content": "Ob Sie Kunstsammler, -liebhaber, -enthusiast sind oder gerade erst die grenzenlose Welt der Kunst kennenlernen – beginnen Sie, auf jene Objekte zu achten, die nicht nur herausfordern, hinterfragen oder provozieren, sondern auch warme Erinnerungen wecken, neue schaffen oder Sie einfach fast grundlos zum Lächeln bringen können."
+            },
+            {
+              "type": "text",
+              "content": "Manchmal ist Ihre Freude das Ziel eines Künstlers – erliegen Sie ihrer Macht."
             }
-          ]
+          ],
+          "role": "Redaktion"
         },
         {
           "id": 14,
@@ -9655,6 +10100,10 @@
             },
             {
               "type": "text",
+              "content": "Der Auftrag selbst war in drei Wochen entschieden. Guggenheim-Direktor Thomas Krens wählte drei Architekten aus — Gehry, Arata Isozaki, Coop Himmelblau —, gab jedem zehntausend Dollar und bat um ein Konzept. Isozaki schickte Skizzen eines elliptischen, viergeschossigen Blocks. Coop Himmelblau schlug transparente Kuben vor. Gehry schickte etwas, das aussah wie nichts, was jemand verlangt hatte — und bekam den Zuschlag."
+            },
+            {
+              "type": "text",
               "content": "Nach jedem vernünftigen Maßstab hätte das in einem Untersuchungsausschuss enden müssen. Stattdessen wurde es die meistkopierte städtebauliche Geste des Jahrhunderts, und die erzeugten Steuern deckten die Baukosten innerhalb von drei Jahren."
             },
             {
@@ -9678,6 +10127,11 @@
               "content": "Dann die Haut, die beste Geschichte der Fassadenbekleidung des 20. Jahrhunderts, die fast niemand richtig erzählt. Gehry hatte ursprünglich Edelstahl vorgesehen. Dort stehen nun 33.000 Titanbleche, vier Zehntel Millimeter dünn, sechzig Tonnen insgesamt — Titan ist ein Luftfahrtmetall, das an einem Bau dieser Größe zuvor niemand verwendet hatte, aus dem hervorragenden Grund, dass es ein Vermögen kostet."
             },
             {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-titanium-detail.jpg",
+              "caption": "Titan aus der Nähe — Bleche unter einem Millimeter Stärke, jedes einzeln gekrümmt, überlappend wie Fischschuppen. Foto: Jules Verne Times Two, CC BY-SA 4.0, via Wikimedia Commons"
+            },
+            {
               "type": "text",
               "content": "Bis auf jenen kurzen Moment Anfang der Neunziger, als es das nicht tat. Die Sowjetunion hatte das Angriffs-U-Boot der Alfa-Klasse mit einem Titanrumpf gebaut; als Russland die letzten außer Dienst stellte, überschwemmte das Metall den Weltmarkt und der Preis brach ein — genau in dem Moment, in dem Gehry ein Material wählte, unterbot es Edelstahl. Das heißt: Das meistfotografierte Gebäude des späten 20. Jahrhunderts ist in ausgemustertem Bestand des Kalten Krieges eingewickelt. Das Schimmern über dem Nervión ist die Friedensdividende, auf 0,4 mm ausgewalzt und an ein Museum geschraubt. Kein Architekturhistoriker hätte gewagt, das zu erfinden."
             },
@@ -9688,6 +10142,11 @@
             {
               "type": "text",
               "content": "Am liebsten mag ich an diesem Gebäude den Türsteher. Den Eingang bewacht Jeff Koons’ „Puppy“: ein zwölf Meter hoher West Highland Terrier, gepolstert mit lebenden Blühpflanzen, die ununterbrochen gegossen und gestutzt werden, damit er keine kahlen Stellen bekommt. Eine Titankathedrale der internationalen Avantgarde, bewacht von einem riesigen Hund aus Petunien. Bilbao hat begriffen, was seine Nachahmer nie begriffen haben: Das Ganze funktioniert viel besser, wenn es sich weigert, sich vollkommen ernst zu nehmen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-puppy.jpg",
+              "caption": "Jeff Koons’ „Puppy“ im Dienst am Eingang — der am wenigsten ernste Türsteher der Avantgarde. Foto: Jules Verne Times Two, CC BY-SA 4.0, via Wikimedia Commons"
             },
             {
               "type": "header",
@@ -9725,12 +10184,26 @@
             },
             {
               "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-baku-interior-stairs.jpg",
+              "caption": "In der Falte: Treppe, Geländer und Decke aus derselben durchgehenden Fläche gegossen. Foto: Mahmoodrezamo, CC BY-SA 4.0, via Wikimedia Commons"
+            },
+            {
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-heydar-aliyev-auditorium.jpg",
               "caption": "Tausend Plätze — und kein einziger rechter Winkel darunter. Foto: Emin Allahverdi, CC BY-SA 4.0, via Wikimedia Commons"
             },
             {
               "type": "text",
               "content": "Nun der Absatz, den die Bildbände auslassen. Das Gebäude ist nach dem verstorbenen Präsidenten Aserbaidschans benannt und wurde unter der Regierung seines Sohnes beauftragt, der ihm im Amt folgte. Es gehört zu einer sehr alten Gattung — der nationale Kulturpalast als Porträt der herrschenden Familie — und entstand in einer Stadt, die damals im Eiltempo umgebaut wurde, wobei Bewohner des weiteren Sanierungsgebiets von Abrissen und Zwangsräumungen berichteten, denen sie nicht zugestimmt hatten. Als Londons Design Museum ihm 2014 den Design of the Year zusprach, kam der Preis mit einer öffentlichen Auseinandersetzung im Paket, und die drehte sich nicht ums Dach."
+            },
+            {
+              "type": "text",
+              "content": "Das Schwanenhals-Prinzip erstreckt sich sogar auf den Komfort. In den Falten verborgen liegen mehrere Stockwerke hohe, geschlossene Wintergärten mit echten Bäumen unter Glas — die weißen Kurven brauchten irgendwo einen warmen, grünen Landeplatz. Ein seltsames Vorhaben für eine Stadt, die auf Öl gebaut ist statt auf Wasser — und es funktioniert genau deshalb, weil sich das Gebäude für nichts an dieser Verschwendung entschuldigt."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-baku-interior-garden.jpg",
+              "caption": "Einer der geschlossenen Wintergärten — echte Bäume unter Glas, mitten in der Kurve. Foto: Mahmoodrezamo, CC BY-SA 4.0, via Wikimedia Commons"
             },
             {
               "type": "text",
@@ -9748,6 +10221,11 @@
             {
               "type": "text",
               "content": "Dasselbe Büro, dasselbe Jahr, ein völlig anderer Auftraggeber: SOHO China unter Zhang Xin, ein Entwickler, der Architektur kauft, wie andere Uhren kaufen — sichtbar, teuer und mit klarem Verständnis dafür, was die Signatur mit dem Wiederverkaufswert macht. Die Aufgabe: Büros und Einzelhandel an einer großen Verkehrsachse im Zentrum Pekings. Die Antwort: vier gerundete Volumen, auf mehreren Ebenen durch Brücken verschmolzen, 330.000 Quadratmeter auf achtzehn Geschossen, und der Raum dazwischen zu fließenden Höfen geformt statt zum üblichen zugigen Nichts, das Entwickler zwischen Türmen zurücklassen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-galaxy-soho-bridge.jpg",
+              "caption": "Die Brücken, die Galaxy SOHOs vier Baukörper zu einer durchgehenden Route verschmelzen. Foto: Francesco Bini, CC BY-SA 4.0, via Wikimedia Commons"
             },
             {
               "type": "image",
@@ -9776,6 +10254,10 @@
               "content": "Und der Einwand trifft, denn eine durchgehende, in sich aufgehende Geometrie ist hervorragend ausgestattet, um zu ignorieren, was neben ihr steht. Ein Gebäude, das ganz aus Kurven besteht, hat keine Kanten, mit denen es jemandem begegnen könnte. Es streitet nicht mit der Straße; es räumt nicht ein, dass die Straße gesprochen hat. Man kann das Objekt bewundern und den Punkt trotzdem zugestehen — ich tue beides — und dann das Detail bemerken, das die Sache entscheidet: Alles Großzügige an Galaxy SOHO zeigt nach innen. Die Höfe sind wunderbar, und sie sind privat. Das ist eine zutreffende Beschreibung eines Großteils der Bebauung des 21. Jahrhunderts, und es ist kein Kompliment."
             },
             {
+              "type": "text",
+              "content": "Nichts davon hinderte Galaxy SOHO daran, im selben Jahr den RIBA International Award zu gewinnen — der Protestbrief und die Trophäe trafen im Abstand weniger Monate ein. Internationale Jurys und städtische Denkmalbehörden beantworteten damals, und beantworten bis heute, zwei völlig verschiedene Fragen."
+            },
+            {
               "type": "header",
               "content": "<span class=\"kicker\">04 · UNStudio</span>Mercedes-Benz Museum",
               "level": 2
@@ -9787,6 +10269,15 @@
             {
               "type": "text",
               "content": "Ben van Berkel und Caroline Bos beginnen nicht mit einer Form. Sie beginnen mit einem Bewegungsproblem, zeichnen das Problem und lassen die Form die Folge sein — weshalb das Büro UNStudio heißt und nicht zwei Nachnamen an der Tür trägt, und weshalb dies mit Abstand das am wenigsten selbstverliebte Gebäude dieses Textes ist."
+            },
+            {
+              "type": "text",
+              "content": "UNStudio gewann den Wettbewerb für das Grundstück 2001. Der Bau des Museums dauerte fünf Jahre — lange genug, dass halb Stuttgart zusah, wie das Kleeblatt aus einer Baugrube wuchs, und sich eine Meinung dazu bildete, bevor auch nur ein einziges Auto ausgestellt war."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-mercedes-blue-hour.jpg",
+              "caption": "Mercedes-Benz Museum zur blauen Stunde — die Drehung liest sich noch besser, von innen beleuchtet. Foto: Julian Herzog, CC BY 4.0, via Wikimedia Commons"
             },
             {
               "type": "text",
@@ -9840,6 +10331,15 @@
               "content": "Betrachten Sie den Ort. Harbin liegt am Songhua, in einer Provinz, in der der Winter eine sechsmonatige Verwaltungstatsache ist, wo das große Jahresfest aus Eisblöcken gebaut wird, die aus eben diesem Fluss gesägt werden, und wo die Temperatur Dinge tut, die einen Mitteleuropäer warm an seinen eigenen trostlosen Januar denken lassen. MAD gaben der Stadt einen niedrigen weißen Hügel in der Feuchtwiese, vollständig mit weißem Aluminium bekleidet und ausdrücklich als Verwehung zu lesen — ein Gebäude, dem mit Schnee wohl ist, weil es bereits die Form von Schnee hat. Darunter liegen 470 Parkplätze, denn Gelände ist eine Metapher, und wir sind immer noch im China des Jahres 2015."
             },
             {
+              "type": "text",
+              "content": "MAD bekam das Projekt auf die für einmal gewöhnliche Art: einen offenen internationalen Wettbewerb 2011, für einen Masterplan über rund 180 Hektar Feuchtgebiet entlang des Songhua — nicht nur für das Theater. Das Opernhaus ist das einzige Gebäude aus diesem Plan, das die Welt tatsächlich ansieht, aber es war nie als Solitär gedacht. Es ist das Satzzeichen in einem viel längeren Satz über den Fluss."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-exterior-2.jpg",
+              "caption": "Opernhaus Harbin bei Tag: Das Aluminium liest sich je nach Licht als Fels, Eis oder Düne. Foto: EditQ, CC BY-SA 4.0, via Wikimedia Commons"
+            },
+            {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-opera-house-panorama.jpg",
               "caption": "Opernhaus Harbin, MAD Architects, 2015. Es setzt sich in die Feuchtwiese wie Wetter, das beschlossen hat zu bleiben. Foto: Jeremy Thompson, CC BY 2.0, via Wikimedia Commons",
@@ -9852,6 +10352,11 @@
             {
               "type": "text",
               "content": "Diese letzte Zahl ist es, die meinen Respekt verdient, und sie ist kein Witz. In die Fassade ist ein öffentlicher Weg geschnitten, der außen am Gebäude hinauf zu einer Dachterrasse führt, die jeder betreten darf: kein Ticket, keine Vorstellung, kein Dresscode, niemand oben, der prüft, ob Sie dazugehören. Ein Opernhaus — der statusängstlichste Bautyp überhaupt, eine Gattung, deren gesamte Architekturgeschichte aus Treppen besteht, die dafür entworfen wurden, dass man beim Hinaufsteigen gesehen wird — verschenkt seine beste Aussicht an Leute, die nie einen Sitzplatz kaufen werden. Jedes andere Opernhaus der Welt gibt sein Budget dafür aus, Ihnen beizubringen, dass das Foyer nicht für Sie ist. Dieses verschenkt das Dach und verlangt nichts."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-exterior-3.jpg",
+              "caption": "Das niedrige, windgeformte Profil des Gebäudes vor dem Himmel über Heilongjiang. Foto: EditQ, CC BY-SA 4.0, via Wikimedia Commons"
             },
             {
               "type": "image",
@@ -9899,7 +10404,16 @@
               "type": "text",
               "content": "<hr><h4>Quellen</h4><ul class=\"sources\"><li><strong>Guggenheim Museum Bilbao</strong> — das Museum über den eigenen Bau: Flächen, Säle und die Titanhaut — <a href=\"https://www.guggenheim-bilbao.eus/en/the-building\">guggenheim-bilbao.eus</a></li><li><strong>Association for Project Management</strong> — die Projektökonomie und warum Titan kurzzeitig billiger war als Stahl — <a href=\"https://www.apm.org.uk/blog/guggenheim-museum-bilbao-why-was-it-such-a-stellar-project-success/\">apm.org.uk</a></li><li><strong>ArchDaily</strong> — Heydar-Aliyev-Zentrum — Zeichnungen, Konstruktion und Projektdaten — <a href=\"https://www.archdaily.com/448774/heydar-aliyev-center-zaha-hadid-architects\">archdaily.com</a></li><li><strong>Dezeen</strong> — der offene Brief der Pekinger Denkmalinstanz zur Lubetkin-Nominierung, 2013 — <a href=\"https://www.dezeen.com/2013/08/03/zaha-hadid-galaxy-soho-riba-award-lubetkin-prize-chinese-heritage/\">dezeen.com</a></li><li><strong>UNStudio</strong> — Mercedes-Benz Museum — Kleeblattgrundriss und Doppelhelix, von den Architekten — <a href=\"https://www.unstudio.com/projects/mercedes-benz-museum/\">unstudio.com</a></li><li><strong>MAD Architects</strong> — Opernhaus Harbin — Fläche, Platzzahlen und der öffentliche Weg über das Dach — <a href=\"https://www.i-mad.com/projects/harbin-opera-house\">i-mad.com</a></li></ul><span class=\"dek\">Fotografien: frei lizenziert über Wikimedia Commons, jeweils in der Bildunterschrift nachgewiesen.</span>"
             }
-          ]
+          ],
+          "authorId": "author-1784732936927-kw554",
+          "role": "Autor",
+          "tags": [
+            "architecture",
+            "design",
+            "cities"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-guggenheim-river.jpg"
         }
       ],
       "reviews": [
@@ -10104,6 +10618,15 @@
     "ES": {
       "items": [
         {
+          "id": 10,
+          "title": "Contra el ángulo recto",
+          "subtitle": "Architecture",
+          "fig": "FIG. 08",
+          "description": "Cinco edificios que se libraron de la retícula a base de argumentos — y el software, el metal, el dinero y el descaro que hicieron falta para construirlos.",
+          "imageSeed": "item-10",
+          "imageUrl": ""
+        },
+        {
           "id": 1,
           "title": "Rituales matutinos",
           "subtitle": "Capadocia, Turquía",
@@ -10146,19 +10669,28 @@
         },
         {
           "id": 8,
-          "title": "Nuevo elemento de la galería",
-          "subtitle": "Contexto de una línea: reemplázame",
+          "title": "Tadao Ando: descifrando la filosofía del diseño puro",
+          "subtitle": "Arquitectura",
           "fig": "FIG. 08",
-          "description": "Una o dos oraciones que describan este artículo; reemplácelas con una copia real antes de publicarlo.",
+          "description": "Tadao Ando es uno de los arquitectos más influyentes del siglo XXI, y desafía las fronteras convencionales de la arquitectura. Su enfoque replantea los principios tradicionales japoneses mediante formas audaces, materiales y organización espacial. El artículo revela los principios clave de su filosofía.",
           "imageSeed": "new-item-8"
         },
         {
           "id": 9,
-          "title": "Nuevo elemento de la galería",
-          "subtitle": "Contexto de una línea: reemplázame",
+          "title": "Diseño polaco: tejido a partir de la memoria",
+          "subtitle": "Diseño",
           "fig": "FIG. 09",
-          "description": "Una o dos oraciones que describan este artículo; reemplácelas con una copia real antes de publicarlo.",
+          "description": "El diseño polaco contemporáneo ha alcanzado un momento de madurez serena. En los estudios de sus arquitectos y diseñadores de mobiliario actuales se habla un lenguaje de minimalismo riguroso, materiales táctiles y honestidad estructural: la culminación de un diálogo centenario sobre qué significa crear con alma nacional.",
           "imageSeed": "new-item-9"
+        },
+        {
+          "id": 11,
+          "title": "El corazón de EPRIS: Maria ya es licenciada en Arquitectura",
+          "subtitle": "Culture",
+          "fig": "FIG. 09",
+          "description": "El 7 de julio, Mariia Ivanova, redactora jefa de EPRIS, se licenció oficialmente en Arquitectura. Para celebrarlo – un corazón hecho de la arquitectura y el arte que la inspiran.",
+          "imageSeed": "maria-graduation-heart",
+          "imageUrl": "/images/heart-hero.jpg"
         }
       ],
       "articles": [
@@ -10890,66 +11422,241 @@
         },
         {
           "id": 13,
-          "title": "Nueva historia editorial",
+          "title": "Arte que te hace sonreír",
+          "excerpt": "Creo que introducir objetos lúdicos en un espacio expande los límites de la mente. Te da permiso no verbal para pensar con libertad — no solo para oponerte a los marcos convencionales, sino para olvidar que existen siquiera.",
+          "subcategory": "Feature",
           "author": "EPRIS Journal",
-          "role": "Escritorio editorial",
-          "date": "17 de julio de 2026",
-          "excerpt": "Un párrafo inicial centrado en una nueva historia editorial.",
-          "category": "Cultura",
-          "subcategory": "Característica",
+          "category": "art",
           "tags": [
-            "historia",
-            "cultura",
-            "editorial"
+            "art",
+            "contemporary artists",
+            "lifestyle"
           ],
-          "imageSeed": "new-editorial-story",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrqbtqfza6qpnq.jpg",
           "content": [
             {
               "type": "text",
-              "content": "Comience con la escena, hecho u observación más fuerte. Mantenga este primer bloque estricto y específico."
+              "content": "Existe el prejuicio de que el placer que produce una obra de arte, o la sonrisa que provoca, rebaja de algún modo su valor y la despoja del gran título de «Arte». Sencillamente, no es cierto."
             },
             {
-              "type": "image",
-              "content": "new-editorial-story-2",
-              "caption": "imagen principal"
+              "type": "text",
+              "content": "El arte puede hablar alto sin palabras, convirtiéndose en un instrumento indiscutible para materializar la introspección o abordar inquietudes sociales y políticas. Sin embargo, si atendemos a la etimología de la palabra, «arte» no está históricamente ligada a la «seriedad» ni a nada parecido; sus raíces están en el oficio manual, magistralmente dominado y ejecutado. Ese origen libera automáticamente al arte de cualquier obligación imperativa y legitima su derecho a simplemente ser."
+            },
+            {
+              "type": "text",
+              "content": "Como se ha mencionado, el arte refleja cuestiones sociales, políticas, de género u otras. Puede ser un medio de introspección personal o un vehículo para transmitir ideas complejas en formas diversas. Pero un artista también puede crear objetos lúdicos siguiendo un deseo intrínseco de sentir el material, experimentar con formas y colores, dominar técnicas y aportar un poco de alegría a la vida cotidiana. Y ser lúdico no es sinónimo<b> </b>de ser superficial. Todos los objetos llevan consigo el trasfondo, las creencias, la visión y las inquietudes de quienes los crean — solo que expresados a través de otro lente."
+            },
+            {
+              "type": "text",
+              "content": "Tomárselo todo demasiado en serio es un callejón sin salida — y desde luego no debería pasarte por la cabeza al elegir una pieza nueva para tu casa. Al final, lo que cuenta es tu gusto personal. Si solo aprueban las formas estrictas en beige y negro, o los soportes y motivos convencionales, ¡estupendo! Mi única preocupación aparece cuando la gente ni siquiera se permite considerar una pieza que pudiera despertar un momento de alegría. Oímos constantemente: «Queda genial, combinará perfecto con mis paredes y mis otros cuadros». Pero la próxima vez, prueba a preguntarte otra cosa: ¿me hace sonreír? Los objetos coloridos y lúdicos poseen una cualidad única que los demás no tienen — inyectan felicidad pura en una habitación. No pensamos en esto lo suficiente, centrados en cambio en lo de moda que está una pieza o en cómo hace lucir la casa. Pero ¿cómo nos hace sentir?"
             },
             {
               "type": "quote",
-              "content": "Agregue una línea que valga la pena recordar aquí."
+              "content": "Los objetos coloridos y lúdicos poseen una cualidad única que los demás no tienen — inyectan felicidad pura en una habitación."
             },
             {
-              "type": "note",
-              "content": "Nota editorial, contexto fuente o breve comentario."
+              "type": "text",
+              "content": "El interiorismo no es solo un decorado, una imagen estática, una composición o una paleta de color. Es un entorno vivo que te envuelve y te acoge. Solemos considerar un interior como un componente externo de nuestra existencia, situándonos meramente como espectadores. En realidad, en el instante en que entramos en un espacio, este nos absorbe, adoptamos invisiblemente su ánimo y cedemos a la influencia irresistible de su atmósfera. Existe incluso una rama científica específica — la neuroarquitectura — que estudia cómo el entorno afecta a nuestro rendimiento cognitivo, así como a nuestro bienestar psicológico y físico. En su mayoría, estos efectos los desencadenan las características espaciales, la psicología del color y las propiedades táctiles de los materiales. Sin embargo, hay un elemento que a menudo se cae de esa lista científica pero que tiene un gran impacto en cómo experimentamos un espacio: <i>los detalles cargados de ironía y diversión.</i>"
             },
             {
-              "type": "checklist",
-              "caption": "que cubrir",
-              "content": {
-                "items": [
-                  "Contexto",
-                  "Detalle clave",
-                  "ángulo humano",
-                  "¿Qué cambia a continuación?"
-                ]
-              }
+              "type": "quote",
+              "content": "En realidad, en el instante en que entramos en un espacio, este nos absorbe, adoptamos invisiblemente su ánimo y cedemos a la influencia irresistible de su atmósfera."
             },
             {
-              "type": "poll",
-              "content": {
-                "question": "¿Qué deberíamos explorar a continuación?",
-                "options": [
-                  {
-                    "label": "Más contexto",
-                    "votes": 0
-                  },
-                  {
-                    "label": "guía practica",
-                    "votes": 0
-                  }
-                ]
-              }
+              "type": "text",
+              "content": "Creo que introducir objetos lúdicos en un espacio expande los límites de la mente. Te da permiso no verbal para pensar con libertad — no solo para oponerte a los marcos convencionales, sino para olvidar que existen siquiera."
+            },
+            {
+              "type": "text",
+              "content": "A continuación encontrarás una selección de artistas cuyos objetos garantizan una sonrisa inesperada."
+            },
+            {
+              "type": "header",
+              "content": "Lola Mayeras",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La diseñadora francesa Lola Mayeras creció en el sur de Francia con un padre ceramista, así que su herencia artística y su exploración de colores y formas comenzaron a formarse desde la primera infancia. Trabajó como diseñadora de moda antes de abrir su propio estudio de diseño en 2020. Durante el confinamiento redescubrió el taller de su padre en su ciudad natal y siguió un deseo interior de crear en un medio que le era familiar desde la juventud."
+            },
+            {
+              "type": "text",
+              "content": "Su formación en moda conservó su amor por el drapeado, pero hoy sus objetos son mobiliario y esculturas. Su elemento distintivo más frecuente es la camisa de botones — inmóvil en forma de jarrón, apilada con modestia en una escultura, o caída sin esfuerzo sobre la esquina de una mesa de madera. Esta última es mi favorita personal entre todas sus piezas maravillosas: una masa cerámica natural y contenida, con una camisa azul cielo arrugada que parece deslizarse hacia el suelo."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mrp9k2cicwn3z7.webp",
+                "https://api.eprisjournal.com/uploads/mrp9ktjlpkgayu.webp",
+                "https://api.eprisjournal.com/uploads/mrp9ki4th7mgl2.webp"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Lola Mayeras también logra crear jarrones antropomorfos con orejas y pendientes que resultan perfectamente naturales en todos los sentidos. El equilibrio de forma y escala es tan fino que hace preguntarse por qué a otros jarrones les faltan estos detalles simétricos. Es atrevido y a la vez armonioso."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrp9t34bnz37vq.webp",
+              "stretched": true
+            },
+            {
+              "type": "text",
+              "content": "Recientemente ha ampliado su práctica trabajando con metal y textiles. Si buscas ropa de cama única, puedes encargar el set «It's a Mess», con una estampación trampantojo de ropa esparcida. La esencia desenfadada de sus objetos, junto con la paleta de color elegida, está profundamente inspirada en su infancia en el sur de Francia, donde disfrutar de una vida bañada de sol era la rutina diaria."
+            },
+            {
+              "type": "quote",
+              "content": "La esencia desenfadada de sus objetos, junto con la paleta de color elegida, está profundamente inspirada en su infancia en el sur de Francia, donde disfrutar de una vida bañada de sol era la rutina diaria."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrp9xqom3fudfj.webp",
+              "stretched": true
+            },
+            {
+              "type": "header",
+              "content": "Erwin Wurm",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La obra de Erwin Wurm es un ejemplo perfecto de ironía lúdica que enmascara temas sociales serios — mensajes difíciles de leer a primera vista, pero que se vuelven parte inseparable de la experiencia una vez descubiertos.<br>"
+            },
+            {
+              "type": "text",
+              "content": "Como pionero del humor conceptual que ha conquistado a amantes del arte en todo el mundo, Wurm regala célebremente brazos y piernas a bolsos, salchichas, jerséis y otros objetos cotidianos. Es el creador de coches hinchados, casas abultadas y pepinillos antropomorfos, todos repensados a través de formas y acciones simples. Esta sencillez no debe en absoluto restar valor al artista; más bien refleja un dominio genuino de un lenguaje visual sumamente legible, que después choca con una imprevisibilidad absoluta."
+            },
+            {
+              "type": "text",
+              "content": "En última instancia, lo absurdo en el arte de Wurm sirve como respuesta afilada a las presiones de la sociedad contemporánea, como el sobreconsumo, el peso abrumador de la opinión pública y nuestra obsesión por la autorrepresentación a través de lo que poseemos. Bajo el envoltorio alegre se esconde un comentario profundo sobre la condición humana moderna. Y sin embargo, esa profundidad oculta nunca compromete el aspecto puro y gozoso de sus piezas — siguen siendo objetos delicosos a los que apetece volver una y otra vez."
+            },
+            {
+              "type": "quote",
+              "content": "Y sin embargo, esa profundidad oculta nunca compromete el aspecto puro y gozoso de sus piezas — siguen siendo objetos deliciosos a los que apetece volver una y otra vez."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mrpa6tqpmljolk.jpg",
+                "https://api.eprisjournal.com/uploads/mrpa77rpsjpc66.jpg",
+                "https://api.eprisjournal.com/uploads/mrpa7cthf6cyq0.jpg"
+              ]
+            },
+            {
+              "type": "header",
+              "content": "Fanny Ollas",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La diseñadora sueca Fanny Ollas tiene formación en textil y moda, que se refleja en sus jarrones elegantemente ornamentados. Cada recipiente parece un personaje de cuento, que vive a tu lado sin pagar alquiler y con todo el derecho a hacerlo."
+            },
+            {
+              "type": "text",
+              "content": "Los tonos suaves y la integración de pelo sintético, encaje, strass y perlas dan a cada pieza una apariencia de tintineo mágico, aunque también arrastran cierto estado de melancolía. Su trabajo gira en torno a la vulnerabilidad, el cuerpo, las exigencias, los miedos, las relaciones y lo que se esconde tras nuestras fachadas."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mrpbmrcyhwinri.jpg",
+                "https://api.eprisjournal.com/uploads/mrpbmbhqhuj37n.jpg",
+                "https://api.eprisjournal.com/uploads/mrpbmh0b6r21y3.jpg"
+              ]
+            },
+            {
+              "type": "header",
+              "content": "Pablo Picasso",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "El legendario artista español siempre se llamó a sí mismo un experimentador, y no hay descripción más certera para la enorme amplitud de su obra. Aunque no situó la ironía como tema central, las vasijas que produjo en gran cantidad en el sur de Francia, en el Atelier Madoura, reflejan a la perfección el componente lúdico de su producción."
+            },
+            {
+              "type": "text",
+              "content": "Hacia el final de la Segunda Guerra Mundial, Picasso ya era una leyenda viva, un genio consagrado y millonario. Pero ese éxito tuvo un efecto de rebote — se cansó del academicismo y de la actitud solemne y rígida hacia el arte. Al volcarse en la arcilla, pareció concederse permiso para volver a ser niño."
+            },
+            {
+              "type": "quote",
+              "content": "«Sé dibujar como Rafael, pero me ha llevado toda una vida aprender a dibujar como un niño» — Pablo Picasso"
+            },
+            {
+              "type": "text",
+              "content": "Las caras cómicas que pintaba en las jarras eran un acto de puro juego y la expresión de la felicidad absoluta que sentía viviendo en la costa soleada con su joven musa, Françoise Gilot. Tras los horrores de la guerra, la tragedia de Guernica y profundas crisis personales, crear vajilla vibrante y humorística se convirtió para él en una forma de arteterapia."
+            },
+            {
+              "type": "text",
+              "content": "Las caras cómicas que pintaba en las jarras eran un acto de puro juego y la expresión de la felicidad absoluta que sentía viviendo en la costa soleada con su joven musa, Françoise Gilot. Tras los horrores de la guerra, la tragedia de Guernica y profundas crisis personales, crear vajilla vibrante y humorística se convirtió para él en una forma de arteterapia."
+            },
+            {
+              "type": "text",
+              "content": "Estas jarras nunca estuvieron pensadas para quedarse tras un cristal en museos polvorientos. Picasso quería originalmente que sus cerámicas fueran asequibles y de uso cotidiano — para servir vino o guardar fruta — de modo que la gente pudiera sonreír ante esas caras divertidas pintadas a mano durante el desayuno."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mrpbv192ro00mb.jpg",
+                "https://api.eprisjournal.com/uploads/mrpbv7e9s4nxj4.jpg",
+                "https://api.eprisjournal.com/uploads/mrpbvw8tnfxixi.jpg"
+              ]
+            },
+            {
+              "type": "header",
+              "content": "Matthew Centeno",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La improvisación y una actitud abierta son el corazón del proceso creativo de Matthew Centeno. Con una artesanía sumamente detallada, transforma globos comunes en formas cautivadoras que hablan directamente al niño interior de cada persona. Su objetivo último es romper la monotonía de la vida diaria, empujando suavemente al público a redescubrir su curiosidad olvidada."
+            },
+            {
+              "type": "text",
+              "content": "Aunque los globos de papel de aluminio son el indicador supremo de celebraciones y festejos, son por naturaleza efímeros. A diferencia de las flores, que ya son un elemento habitual de la decoración informal del hogar, los globos siguen perteneciendo firmemente a la categoría de las ocasiones especiales. El globo de porcelana de pared con cara sonriente de Centeno sirve como recordatorio permanente de que cada día es especial."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mrpcsa7el8zveu.jpg",
+                "https://api.eprisjournal.com/uploads/mrpcsht8an9mj0.jpg",
+                "https://api.eprisjournal.com/uploads/mrpcsmmdz5dcno.jpg"
+              ]
+            },
+            {
+              "type": "header",
+              "content": "Sébastien Gaudette",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "¿Qué puede ser más agradable que las notas adhesivas con inscripciones alegres, que te reconfortan cada vez que las ves? Sébastien Gaudette crea esculturas trampantojo en aluminio, que se quedarán en tu pared para siempre. Es el tipo de arte que no tiene que combinar con tu decoración, sino contribuir a tu ánimo y bienestar emocional. Debo admitir que el pequeño tamaño de la obra añade la chispa de descubrirla por sorpresa — es como un pedacito de magia con el que te topas inesperadamente, te detienes un instante a sonreír y vuelves a tus tareas."
+            },
+            {
+              "type": "text",
+              "content": "El pilar central del trabajo de Gaudette no son las inscripciones, sino la recreación del plegado de papel. Sin embargo, incluso dentro de ese marco, encontramos el componente de una familiaridad encantadora combinada con la emoción infantil. Por ejemplo, los aviones de papel de distintos colores, hechos de una hoja de cuaderno rayado. Encontrarlo sobre la cómoda o la mesa de centro, entre libros y jarrones, sería una máquina del tiempo maravillosa hacia la despreocupación de la juventud."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mrpd6ycjkdxx24.jpg",
+                "https://api.eprisjournal.com/uploads/mrpd80208jrdq9.webp",
+                "https://api.eprisjournal.com/uploads/mrpd73atqokur3.webp"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Parece que tenemos miedo de dejar que el arte nos entretenga."
+            },
+            {
+              "type": "text",
+              "content": "Ya seas coleccionista, amante o entusiasta del arte, o estés apenas comenzando a conocer este mundo sin fronteras, empieza a fijarte en los objetos que no solo te desafían, cuestionan o provocan, sino que también pueden evocar recuerdos cálidos, crear otros nuevos o simplemente hacerte sonreír casi sin motivo."
+            },
+            {
+              "type": "text",
+              "content": "A veces tu alegría es la meta de un artista — entrégate a su poder."
             }
-          ]
+          ],
+          "role": "Escritorio editorial"
         },
         {
           "id": 14,
@@ -11542,6 +12249,10 @@
             },
             {
               "type": "text",
+              "content": "El encargo en sí se decidió en tres semanas. El director del Guggenheim, Thomas Krens, preseleccionó a tres arquitectos — Gehry, Arata Isozaki, Coop Himmelblau —, dio a cada uno diez mil dólares y pidió un concepto. Isozaki envió bocetos de un bloque elíptico de cuatro plantas. Coop Himmelblau propuso cubos transparentes. Gehry envió algo que no se parecía a nada de lo que nadie había pedido, y se llevó el encargo."
+            },
+            {
+              "type": "text",
               "content": "Según cualquier criterio razonable, aquello debería haber terminado en una comisión de investigación. En cambio se convirtió en el gesto urbano más imitado del siglo, y los impuestos que generó cubrieron el coste de la obra en tres años."
             },
             {
@@ -11565,6 +12276,11 @@
               "content": "Y luego está la piel, la mejor historia del revestimiento del siglo XX y que casi nadie cuenta bien. Gehry había previsto acero inoxidable. Lo que hay allí son 33.000 láminas de titanio de cuatro décimas de milímetro de espesor, sesenta toneladas en total — y el titanio es un metal aeronáutico que nadie había usado en un edificio de esa escala, por la excelente razón de que cuesta una fortuna."
             },
             {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-titanium-detail.jpg",
+              "caption": "Titanio de cerca — láminas de menos de un milímetro, cada una curvada individualmente, superpuestas como escamas de pez. Foto: Jules Verne Times Two, CC BY-SA 4.0, vía Wikimedia Commons"
+            },
+            {
               "type": "text",
               "content": "Salvo que a principios de los noventa, brevemente, dejó de costarla. La Unión Soviética había construido el submarino de ataque de la clase Alfa con casco de titanio; cuando Rusia retiró del servicio los últimos, el metal inundó el mercado mundial y el precio se desplomó, quedando por debajo del acero inoxidable justo cuando Gehry elegía material. Es decir: el edificio más fotografiado de finales del siglo XX está envuelto en excedente desguazado de la Guerra Fría. Ese brillo sobre el Nervión es el dividendo de la paz, laminado a 0,4 mm y atornillado a un museo. Ningún historiador de la arquitectura se habría atrevido a inventarlo."
             },
@@ -11575,6 +12291,11 @@
             {
               "type": "text",
               "content": "Lo que más me gusta del edificio es el portero. Guardando la entrada está «Puppy», de Jeff Koons: un West Highland terrier de doce metros tapizado con plantas vivas en flor, regado y podado sin descanso para que nunca se quede calvo. Una catedral de titanio de la vanguardia internacional, custodiada por un perro enorme hecho de petunias. Bilbao entendió lo que sus imitadores nunca entendieron: todo el asunto funciona mucho mejor cuando se niega a tomarse completamente en serio."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-puppy.jpg",
+              "caption": "El Puppy de Jeff Koons de guardia en la entrada — el portero menos serio de la vanguardia. Foto: Jules Verne Times Two, CC BY-SA 4.0, vía Wikimedia Commons"
             },
             {
               "type": "header",
@@ -11612,12 +12333,26 @@
             },
             {
               "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-baku-interior-stairs.jpg",
+              "caption": "Dentro del pliegue: escalera, barandilla y techo vaciados como una misma superficie continua. Foto: Mahmoodrezamo, CC BY-SA 4.0, vía Wikimedia Commons"
+            },
+            {
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-heydar-aliyev-auditorium.jpg",
               "caption": "Mil butacas y ni un solo ángulo recto entre ellas. Foto: Emin Allahverdi, CC BY-SA 4.0, vía Wikimedia Commons"
             },
             {
               "type": "text",
               "content": "Ahora el párrafo que los libros de mesa de centro se saltan. El edificio lleva el nombre del difunto presidente de Azerbaiyán y se encargó bajo el gobierno de su hijo, que le sucedió en el cargo. Pertenece a un género muy antiguo — el palacio de cultura nacional como retrato de la familia gobernante — y se levantó en una ciudad que entonces se rehacía a toda velocidad, con vecinos del área de remodelación denunciando derribos y desalojos que no habían aceptado. Cuando el Design Museum de Londres le dio el Design of the Year en 2014, el premio vino con una discusión pública incluida, y la discusión no iba sobre la cubierta."
+            },
+            {
+              "type": "text",
+              "content": "La lógica del cuello de cisne se extiende incluso a la comodidad. Escondidos entre los pliegues hay jardines de invierno cerrados de varias plantas de altura, con árboles reales bajo cristal, porque las curvas blancas necesitaban un sitio cálido y verde donde aterrizar. Es una cosa rara de cultivar bajo techo en una ciudad construida sobre petróleo y no sobre agua — y funciona precisamente porque el edificio no pide disculpas por el derroche."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-baku-interior-garden.jpg",
+              "caption": "Uno de los jardines de invierno cerrados — árboles reales bajo cristal, dentro de la curva. Foto: Mahmoodrezamo, CC BY-SA 4.0, vía Wikimedia Commons"
             },
             {
               "type": "text",
@@ -11635,6 +12370,11 @@
             {
               "type": "text",
               "content": "El mismo estudio, el mismo año, un cliente completamente distinto: SOHO China, la promotora dirigida por Zhang Xin, que compra arquitectura como otros compran relojes — de forma visible, cara y con una idea muy clara de lo que la firma del autor le hace al precio de reventa. El encargo eran oficinas y comercio en una gran arteria del centro de Pekín. La respuesta fueron cuatro volúmenes redondeados fundidos por puentes en varios niveles: 330.000 metros cuadrados en dieciocho plantas, con el espacio intermedio moldeado en patios fluidos en lugar de la habitual nada ventosa que las promotoras dejan entre torres."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-galaxy-soho-bridge.jpg",
+              "caption": "Los puentes que funden los cuatro volúmenes de Galaxy SOHO en un recorrido continuo. Foto: Francesco Bini, CC BY-SA 4.0, vía Wikimedia Commons"
             },
             {
               "type": "image",
@@ -11663,6 +12403,10 @@
               "content": "Y la queja acierta, porque una geometría continua que se resuelve sola está espléndidamente equipada para ignorar aquello junto a lo que se encuentra. Un edificio hecho enteramente de curvas no tiene aristas con las que encontrarse con nadie. No discute con la calle: se niega a admitir que la calle estuviera hablando. Puedes admirar el objeto y conceder el punto — yo hago las dos cosas — y fijarte entonces en el detalle que lo zanja: todo lo generoso de Galaxy SOHO mira hacia dentro. Los patios son preciosos, y son privados. Esa es una descripción exacta de buena parte de la promoción inmobiliaria del siglo XXI, y no es un cumplido."
             },
             {
+              "type": "text",
+              "content": "Nada de eso impidió que Galaxy SOHO ganara el RIBA International Award ese mismo año — la carta y el trofeo llegaron con meses de diferencia. Los jurados internacionales y los organismos municipales de patrimonio estaban, y siguen estando, respondiendo a dos preguntas completamente distintas."
+            },
+            {
               "type": "header",
               "content": "<span class=\"kicker\">04 · UNStudio</span>Museo Mercedes-Benz",
               "level": 2
@@ -11674,6 +12418,15 @@
             {
               "type": "text",
               "content": "Ben van Berkel y Caroline Bos no empiezan por una forma. Empiezan por un problema de movimiento, lo dibujan y dejan que la forma sea la consecuencia — por eso el estudio se llama UNStudio y no lleva dos apellidos en la puerta, y por eso este es, con diferencia, el edificio menos autocomplaciente de este texto."
+            },
+            {
+              "type": "text",
+              "content": "UNStudio ganó el concurso para el solar en 2001. El museo tardó cinco años en construirse — el tiempo suficiente para que media Stuttgart viera cómo el trébol salía de un agujero en el suelo y se formara una opinión al respecto antes de que se expusiera un solo coche."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-mercedes-blue-hour.jpg",
+              "caption": "Museo Mercedes-Benz en la hora azul — el giro se lee aún mejor iluminado desde dentro. Foto: Julian Herzog, CC BY 4.0, vía Wikimedia Commons"
             },
             {
               "type": "text",
@@ -11727,6 +12480,15 @@
               "content": "Piensa en el lugar. Harbin está sobre el río Songhua, en una provincia donde el invierno es un hecho administrativo de seis meses, donde el gran festival anual se construye con bloques de hielo serrados de ese mismo río y donde la temperatura hace cosas que llevan a un centroeuropeo a recordar con cariño su propio enero miserable. MAD le dieron un montículo blanco y bajo en el humedal, revestido enteramente de aluminio blanco y leído explícitamente como una acumulación de nieve: un edificio a gusto con la nieve porque ya tiene forma de nieve. Debajo hay 470 plazas de aparcamiento, porque el terreno es una metáfora y esto sigue siendo la China de 2015."
             },
             {
+              "type": "text",
+              "content": "MAD consiguió el proyecto por la vía normal, por una vez: un concurso internacional abierto en 2010, para un plan maestro que cubría unas 180 hectáreas de humedal a lo largo del Songhua, no solo el teatro. La ópera es el único edificio de ese plan que el mundo realmente mira, pero nunca se pensó para estar sola. Es el signo de puntuación de una frase mucho más larga sobre el río."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-exterior-2.jpg",
+              "caption": "Ópera de Harbin de día: el aluminio se lee como roca, hielo o duna según la luz. Foto: EditQ, CC BY-SA 4.0, vía Wikimedia Commons"
+            },
+            {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-opera-house-panorama.jpg",
               "caption": "Ópera de Harbin, MAD Architects, 2015. No se posa sobre el humedal: se asienta en él, como un tiempo atmosférico que decidió quedarse. Foto: Jeremy Thompson, CC BY 2.0, vía Wikimedia Commons",
@@ -11739,6 +12501,11 @@
             {
               "type": "text",
               "content": "Esa última cifra es la que se gana mi respeto, y no es una broma. En la fachada hay tallado un camino público que sube por el exterior del edificio hasta una plaza en cubierta a la que puede subir cualquiera: sin entrada, sin función, sin código de vestimenta y sin nadie arriba comprobando si perteneces al sitio. Una ópera — el tipo edificatorio con más ansiedad de estatus que existe, una tipología cuya historia arquitectónica entera consiste en escaleras diseñadas para que te vean subirlas — regala su mejor vista a gente que nunca comprará una butaca. Cualquier otra ópera del mundo gasta su presupuesto en enseñarte que el vestíbulo no es para ti. Esta regala la cubierta y no pide nada."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-exterior-3.jpg",
+              "caption": "El perfil bajo y tallado por el viento del edificio contra el cielo de Heilongjiang. Foto: EditQ, CC BY-SA 4.0, vía Wikimedia Commons"
             },
             {
               "type": "image",
@@ -11786,7 +12553,16 @@
               "type": "text",
               "content": "<hr><h4>Fuentes</h4><ul class=\"sources\"><li><strong>Guggenheim Museum Bilbao</strong> — el museo sobre su propio edificio: superficies, salas y la piel de titanio — <a href=\"https://www.guggenheim-bilbao.eus/en/the-building\">guggenheim-bilbao.eus</a></li><li><strong>Association for Project Management</strong> — la economía del proyecto y por qué el titanio fue brevemente más barato que el acero — <a href=\"https://www.apm.org.uk/blog/guggenheim-museum-bilbao-why-was-it-such-a-stellar-project-success/\">apm.org.uk</a></li><li><strong>ArchDaily</strong> — Centro Heydar Aliyev — planos, estructura y datos del proyecto — <a href=\"https://www.archdaily.com/448774/heydar-aliyev-center-zaha-hadid-architects\">archdaily.com</a></li><li><strong>Dezeen</strong> — la carta abierta del organismo de patrimonio de Pekín por la nominación al Lubetkin, 2013 — <a href=\"https://www.dezeen.com/2013/08/03/zaha-hadid-galaxy-soho-riba-award-lubetkin-prize-chinese-heritage/\">dezeen.com</a></li><li><strong>UNStudio</strong> — Museo Mercedes-Benz — planta en trébol y circulación en doble hélice, según los autores — <a href=\"https://www.unstudio.com/projects/mercedes-benz-museum/\">unstudio.com</a></li><li><strong>MAD Architects</strong> — Ópera de Harbin — superficie, aforo y el recorrido público por la cubierta — <a href=\"https://www.i-mad.com/projects/harbin-opera-house\">i-mad.com</a></li></ul><span class=\"dek\">Fotografías: con licencia libre a través de Wikimedia Commons, acreditadas en cada pie de foto.</span>"
             }
-          ]
+          ],
+          "authorId": "author-1784732936927-kw554",
+          "role": "Autor",
+          "tags": [
+            "architecture",
+            "design",
+            "cities"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-guggenheim-river.jpg"
         }
       ],
       "reviews": [
@@ -11991,6 +12767,15 @@
     "TR": {
       "items": [
         {
+          "id": 10,
+          "title": "Dik Açıya Karşı",
+          "subtitle": "Architecture",
+          "fig": "FIG. 08",
+          "description": "Kendini ızgaradan konuşarak kurtaran beş yapı — ve onları inşa etmek için gereken yazılım, metal, para ve düpedüz cesaret.",
+          "imageSeed": "item-10",
+          "imageUrl": ""
+        },
+        {
           "id": 1,
           "title": "Sabah ritüelleri",
           "subtitle": "Kapadokya, Türkiye",
@@ -12033,19 +12818,28 @@
         },
         {
           "id": 8,
-          "title": "Yeni galeri öğesi",
-          "subtitle": "Tek satırlık bağlam — beni değiştir",
+          "title": "Tadao Ando: Saf Tasarım Felsefesinin Şifresini Çözmek",
+          "subtitle": "Mimarlık",
           "fig": "FIG. 08",
-          "description": "Bu parçayı açıklayan bir veya iki cümle; yayınlamadan önce gerçek kopyayla değiştirin.",
+          "description": "Tadao Ando, mimarlığın alışılmış sınırlarına meydan okuyan, 21. yüzyılın en etkili mimarlarından biridir. Yaklaşımı, geleneksel Japon ilkelerini cesur biçimler, malzemeler ve mekân kurgusuyla yeniden düşünür. Yazı, felsefesinin temel ilkelerini ortaya koyuyor.",
           "imageSeed": "new-item-8"
         },
         {
           "id": 9,
-          "title": "Yeni galeri öğesi",
-          "subtitle": "Tek satırlık bağlam — beni değiştir",
+          "title": "Polonya Tasarımı: Bellekten Dokunmuş",
+          "subtitle": "Tasarım",
           "fig": "FIG. 09",
-          "description": "Bu parçayı açıklayan bir veya iki cümle; yayınlamadan önce gerçek kopyayla değiştirin.",
+          "description": "Çağdaş Polonya tasarımı sessiz bir olgunluk anına ulaştı. Bugünün mimarlarının ve mobilya tasarımcılarının atölyelerinde katı minimalizmin, dokunsal malzemelerin ve dürüst yapının dili konuşuluyor — ulusal bir ruhla yaratmanın ne anlama geldiğine dair yüzyıllık bir diyaloğun sonucu.",
           "imageSeed": "new-item-9"
+        },
+        {
+          "id": 11,
+          "title": "EPRIS'in Kalbi: Maria Artık Mimarlık Lisansı Sahibi",
+          "subtitle": "Culture",
+          "fig": "FIG. 09",
+          "description": "7 Temmuz'da EPRIS'in baş editörü Mariia Ivanova resmen Mimarlık lisansını aldı. Bu günü kutlamak için – ona ilham veren mimari ve sanattan oluşan bir kalp.",
+          "imageSeed": "maria-graduation-heart",
+          "imageUrl": "/images/heart-hero.jpg"
         }
       ],
       "articles": [
@@ -13603,6 +14397,10 @@
             },
             {
               "type": "text",
+              "content": "Görevlendirmenin kendisi üç haftada karara bağlandı. Guggenheim direktörü Thomas Krens üç mimarı kısa listeye aldı — Gehry, Arata Isozaki, Coop Himmelblau — her birine on bin dolar verdi ve bir konsept istedi. Isozaki, eliptik, dört katlı bir bloğun eskizlerini gönderdi. Coop Himmelblau saydam küpler önerdi. Gehry, kimsenin istemediği bir şeye benzeyen bir şey gönderdi ve işi aldı."
+            },
+            {
+              "type": "text",
               "content": "Her makul ölçüte göre bunun bir meclis soruşturmasıyla bitmesi gerekirdi. Bunun yerine yüzyılın en çok taklit edilen kentsel jesti oldu ve ürettiği vergiler inşaat maliyetini üç yıl içinde karşıladı."
             },
             {
@@ -13626,6 +14424,11 @@
               "content": "Bir de kabuk var: yirminci yüzyıl cephe kaplamasının en iyi hikâyesi ve neredeyse kimse doğru dürüst anlatmıyor. Gehry başlangıçta paslanmaz çelik öngörmüştü. Orada duran ise dört onda bir milimetre kalınlığında 33.000 titanyum levha, toplam altmış ton — titanyum ise bu ölçekte bir binada daha önce kimsenin kullanmadığı bir havacılık metalidir, gayet mükemmel bir nedenle: bir servete mal olur."
             },
             {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-titanium-detail.jpg",
+              "caption": "Yakından titanyum — milimetrenin altında levhalar, her biri ayrı ayrı eğilmiş, balık pulu gibi üst üste binmiş. Fotoğraf: Jules Verne Times Two, CC BY-SA 4.0, Wikimedia Commons üzerinden"
+            },
+            {
               "type": "text",
               "content": "Doksanların başında, kısa bir süreliğine, olmadığı zaman dışında. Sovyetler Birliği Alfa sınıfı saldırı denizaltısını titanyum gövdeyle inşa etmişti; Rusya sonuncularını hizmetten çıkardığında metal dünya piyasasına aktı ve fiyat çakıldı, tam Gehry malzeme seçerken paslanmaz çeliğin altına indi. Yani yirminci yüzyıl sonunun en çok fotoğraflanan binası, hizmet dışı bırakılmış Soğuk Savaş stoğuna sarılıdır. Nervión üzerindeki o parıltı, 0,4 mm’ye haddelenip bir müzeye cıvatalanmış barış temettüsüdür. Hiçbir mimarlık tarihçisi bunu uydurmaya cesaret edemezdi."
             },
@@ -13636,6 +14439,11 @@
             {
               "type": "text",
               "content": "Bu binada en sevdiğim şey kapı görevlisi. Girişi Jeff Koons’un “Puppy”si bekliyor: on iki metrelik, canlı çiçeklerle döşenmiş, kelleşmesin diye sürekli sulanıp budanan bir West Highland teriyeri. Uluslararası avangardın titanyum katedrali, petunyalardan yapılmış devasa bir köpek tarafından korunuyor. Bilbao, taklitçilerinin hiç anlamadığı şeyi anladı: bütün mesele, kendini tümüyle ciddiye almayı reddettiğinde çok daha iyi işliyor."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-puppy.jpg",
+              "caption": "Jeff Koons’un Puppy’si girişte nöbette — avangardın en az ciddi kapıcısı. Fotoğraf: Jules Verne Times Two, CC BY-SA 4.0, Wikimedia Commons üzerinden"
             },
             {
               "type": "header",
@@ -13673,12 +14481,26 @@
             },
             {
               "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-baku-interior-stairs.jpg",
+              "caption": "Kıvrımın içinde: merdiven, korkuluk ve tavan aynı sürekli yüzeyden dökülmüş. Fotoğraf: Mahmoodrezamo, CC BY-SA 4.0, Wikimedia Commons üzerinden"
+            },
+            {
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-heydar-aliyev-auditorium.jpg",
               "caption": "Bin koltuk ve aralarında tek bir dik açı yok. Fotoğraf: Emin Allahverdi, CC BY-SA 4.0, Wikimedia Commons üzerinden"
             },
             {
               "type": "text",
               "content": "Şimdi lüks albümlerin atladığı paragraf. Bina, Azerbaycan’ın müteveffa cumhurbaşkanının adını taşıyor ve görevde onun yerine geçen oğlunun hükümeti döneminde ısmarlandı. Çok eski bir türe ait — iktidardaki ailenin portresi olarak ulusal kültür sarayı — ve o dönemde hızla yeniden yapılan bir kentte yükseldi; geniş dönüşüm alanındaki sakinler, onay vermedikleri yıkımları ve tahliyeleri bildirdi. Londra Design Museum 2014 Yılın Tasarımı ödülünü verdiğinde, ödül paketin içinde kamusal bir tartışmayla geldi ve tartışma çatıyla ilgili değildi."
+            },
+            {
+              "type": "text",
+              "content": "Kuğu boynu mantığı konfora bile uzanıyor. Kıvrımların içinde, cam altında gerçek ağaçlarla dikilmiş, birkaç kat yüksekliğinde kapalı kış bahçeleri saklı — beyaz eğrilerin sıcak ve yeşil bir yere konması gerekiyordu. Petrol üzerine kurulu bir kentte, su üzerine değil, kapalı alanda bir şey yetiştirmek tuhaf bir girişim — ve tam olarak işe yaramasının nedeni de bina bu savurganlık için hiç özür dilemiyor olması."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-baku-interior-garden.jpg",
+              "caption": "Kapalı kış bahçelerinden biri — kıvrımın içinde, cam altında gerçek ağaçlar. Fotoğraf: Mahmoodrezamo, CC BY-SA 4.0, Wikimedia Commons üzerinden"
             },
             {
               "type": "text",
@@ -13696,6 +14518,11 @@
             {
               "type": "text",
               "content": "Aynı ofis, aynı yıl, tamamen farklı bir işveren: Zhang Xin’in yönettiği SOHO China — mimarlığı başkalarının saat aldığı gibi alan bir geliştirici: görünür biçimde, pahalıya ve imzanın yeniden satış fiyatına ne yaptığını net bilerek. İş tanımı Pekin merkezinde büyük bir arter üzerinde ofis ve perakendeydi. Yanıt, birkaç kotta köprülerle kaynaşmış dört yuvarlatılmış kütle oldu: on sekiz katta 330.000 metrekare ve aralarındaki boşluk, geliştiricilerin kuleler arasında bıraktığı alışıldık rüzgârlı hiçliğin yerine akışkan avlulara biçimlendirildi."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-galaxy-soho-bridge.jpg",
+              "caption": "Galaxy SOHO’nun dört kütlesini tek bir sürekli güzergâha kaynaştıran köprüler. Fotoğraf: Francesco Bini, CC BY-SA 4.0, Wikimedia Commons üzerinden"
             },
             {
               "type": "image",
@@ -13724,6 +14551,10 @@
               "content": "Ve itiraz yerini buluyor, çünkü sürekli, kendi içinde çözülen bir geometri, yanında ne durduğunu görmezden gelmek için muhteşem donanımlıdır. Tümüyle eğrilerden yapılmış bir binanın, biriyle karşılaşabileceği kenarı yoktur. Sokakla tartışmaz; sokağın konuştuğunu kabul etmeyi reddeder. Nesneye hayran olup yine de bu noktayı teslim edebilirsiniz — ben ikisini de yapıyorum — ve sonra meseleyi bitiren ayrıntıyı fark edersiniz: Galaxy SOHO’daki cömert olan her şey içeriye bakıyor. Avlular çok güzel ve özel mülk. Bu, yirmi birinci yüzyıl yapılaşmasının büyük bölümünün doğru bir tarifi ve bir iltifat değil."
             },
             {
+              "type": "text",
+              "content": "Bunların hiçbiri Galaxy SOHO’nun aynı yıl RIBA International Award’ı kazanmasına engel olmadı — protesto mektubu ve ödül birkaç ay arayla geldi. Uluslararası jüriler ile kentin koruma kurumu o zaman da, hâlâ da, tamamen farklı iki soruyu yanıtlıyordu."
+            },
+            {
               "type": "header",
               "content": "<span class=\"kicker\">04 · UNStudio</span>Mercedes-Benz Müzesi",
               "level": 2
@@ -13735,6 +14566,15 @@
             {
               "type": "text",
               "content": "Ben van Berkel ve Caroline Bos bir biçimle başlamazlar. Bir hareket problemiyle başlar, problemi çizer ve biçimin sonuç olmasına izin verirler — ofisin adının kapıda iki soyadı yerine UNStudio olmasının nedeni bu ve bu yapının bu yazıdaki açık ara en az kendine hayran bina olmasının nedeni de bu."
+            },
+            {
+              "type": "text",
+              "content": "UNStudio, arsa için düzenlenen yarışmayı 2001’de kazandı. Müzenin inşası beş yıl sürdü — Stuttgart’ın yarısının yonca planın bir çukurdan yükselişini izleyip tek bir araba sergilenmeden önce hakkında bir fikir edinmesine yetecek kadar uzun bir süre."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-mercedes-blue-hour.jpg",
+              "caption": "Mavi saatte Mercedes-Benz Müzesi — içeriden aydınlatılınca burgu daha da iyi okunuyor. Fotoğraf: Julian Herzog, CC BY 4.0, Wikimedia Commons üzerinden"
             },
             {
               "type": "text",
@@ -13788,6 +14628,15 @@
               "content": "Araziye bakın. Harbin, kışın altı aylık idari bir gerçek olduğu, büyük yıllık festivalin aynı nehirden kesilen buz bloklarıyla kurulduğu ve sıcaklığın bir Orta Avrupalıya kendi zavallı ocak ayını sevgiyle andıracak şeyler yaptığı bir eyalette, Songhua nehri üzerinde yer alıyor. MAD kente sulak alanda alçak, beyaz bir tümsek verdi; tümüyle beyaz alüminyumla kaplı ve açıkça bir kar birikintisi olarak okunuyor — karla arası iyi bir bina, çünkü zaten karın biçiminde. Altında 470 otopark yeri var, çünkü arazi bir metafor ve burası hâlâ 2015 Çin’i."
             },
             {
+              "type": "text",
+              "content": "MAD, projeyi bu kez alışılmış yoldan aldı: 2010’da açık uluslararası bir yarışmayla — yalnızca tiyatro için değil, Sunghua boyunca yaklaşık 180 hektarlık sulak alanı kapsayan bir ana plan için. Opera binası, o plandan dünyanın gerçekten baktığı tek yapı, ama hiçbir zaman tek başına durması amaçlanmadı. Nehir hakkında çok daha uzun bir cümlenin noktalama işareti o."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-exterior-2.jpg",
+              "caption": "Gündüz Harbin Opera Binası: alüminyum ışığa göre kaya, buz ya da kum tepesi gibi okunuyor. Fotoğraf: EditQ, CC BY-SA 4.0, Wikimedia Commons üzerinden"
+            },
+            {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-opera-house-panorama.jpg",
               "caption": "Harbin Opera Binası, MAD Architects, 2015. Sulak alanın üzerine konmuyor; kalmaya karar vermiş bir hava durumu gibi içine yerleşiyor. Fotoğraf: Jeremy Thompson, CC BY 2.0, Wikimedia Commons üzerinden",
@@ -13800,6 +14649,11 @@
             {
               "type": "text",
               "content": "Saygımı kazanan şey işte bu son rakam ve bu bir şaka değil. Cepheye oyulmuş bir kamusal yol, binanın dışından yukarı, herkesin çıkabileceği bir çatı meydanına tırmanıyor: bilet yok, gösteri yok, kılık kıyafet kuralı yok ve yukarıda oraya ait olup olmadığınızı denetleyen kimse yok. Bir opera binası — var olan en statü kaygılı yapı türü, tüm mimarlık tarihi çıkarken görülmeniz için tasarlanmış merdivenlerden oluşan bir tipoloji — en iyi manzarasını asla koltuk satın almayacak insanlara bağışlıyor. Dünyadaki her opera binası bütçesini fuayenin size ait olmadığını öğretmeye harcar. Bu, çatıyı veriyor ve karşılığında hiçbir şey istemiyor."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-exterior-3.jpg",
+              "caption": "Binanın Heilongjiang gökyüzüne karşı alçak, rüzgârın yonttuğu silueti. Fotoğraf: EditQ, CC BY-SA 4.0, Wikimedia Commons üzerinden"
             },
             {
               "type": "image",
@@ -13847,7 +14701,16 @@
               "type": "text",
               "content": "<hr><h4>Kaynaklar</h4><ul class=\"sources\"><li><strong>Guggenheim Museum Bilbao</strong> — müzenin kendi binası üzerine: alanlar, galeriler ve titanyum kabuk — <a href=\"https://www.guggenheim-bilbao.eus/en/the-building\">guggenheim-bilbao.eus</a></li><li><strong>Association for Project Management</strong> — projenin ekonomisi ve titanyumun neden kısa süre çelikten ucuz olduğu — <a href=\"https://www.apm.org.uk/blog/guggenheim-museum-bilbao-why-was-it-such-a-stellar-project-success/\">apm.org.uk</a></li><li><strong>ArchDaily</strong> — Haydar Aliyev Merkezi — çizimler, taşıyıcı sistem ve proje verileri — <a href=\"https://www.archdaily.com/448774/heydar-aliyev-center-zaha-hadid-architects\">archdaily.com</a></li><li><strong>Dezeen</strong> — Pekin koruma kurumunun Lubetkin adaylığına dair açık mektubu, 2013 — <a href=\"https://www.dezeen.com/2013/08/03/zaha-hadid-galaxy-soho-riba-award-lubetkin-prize-chinese-heritage/\">dezeen.com</a></li><li><strong>UNStudio</strong> — Mercedes-Benz Müzesi — yonca planı ve çift sarmal dolaşım, mimarlarından — <a href=\"https://www.unstudio.com/projects/mercedes-benz-museum/\">unstudio.com</a></li><li><strong>MAD Architects</strong> — Harbin Opera Binası — alan, koltuk sayıları ve çatıdaki kamusal güzergâh — <a href=\"https://www.i-mad.com/projects/harbin-opera-house\">i-mad.com</a></li></ul><span class=\"dek\">Fotoğraflar: Wikimedia Commons üzerinden özgür lisanslı, her biri alt yazısında künyelendirilmiş.</span>"
             }
-          ]
+          ],
+          "authorId": "author-1784732936927-kw554",
+          "role": "Yazar",
+          "tags": [
+            "architecture",
+            "design",
+            "cities"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-guggenheim-river.jpg"
         }
       ],
       "reviews": [
@@ -14052,6 +14915,15 @@
     "IT": {
       "items": [
         {
+          "id": 10,
+          "title": "Contro l’angolo retto",
+          "subtitle": "Architecture",
+          "fig": "FIG. 08",
+          "description": "Cinque edifici che si sono parlati fuori dalla griglia — e il software, il metallo, i soldi e la faccia tosta che ci sono voluti per costruirli.",
+          "imageSeed": "item-10",
+          "imageUrl": ""
+        },
+        {
           "id": 1,
           "title": "Rituali mattutini",
           "subtitle": "Cappadocia, Turchia",
@@ -14094,19 +14966,28 @@
         },
         {
           "id": 8,
-          "title": "Nuovo elemento della galleria",
-          "subtitle": "Contesto di una riga: sostituiscimi",
+          "title": "Tadao Ando: decifrare la filosofia del design puro",
+          "subtitle": "Architettura",
           "fig": "FIG. 08",
-          "description": "Una o due frasi che descrivono questo pezzo: sostituisci con una copia reale prima di pubblicarla.",
+          "description": "Tadao Ando è tra gli architetti più influenti del XXI secolo e sfida i confini convenzionali dell’architettura. Il suo approccio ripensa i principi tradizionali giapponesi attraverso forme audaci, materiali e organizzazione dello spazio. L’articolo svela i principi chiave della sua filosofia.",
           "imageSeed": "new-item-8"
         },
         {
           "id": 9,
-          "title": "Nuovo elemento della galleria",
-          "subtitle": "Contesto di una riga: sostituiscimi",
+          "title": "Design polacco: tessuto dalla memoria",
+          "subtitle": "Design",
           "fig": "FIG. 09",
-          "description": "Una o due frasi che descrivono questo pezzo: sostituisci con una copia reale prima di pubblicarla.",
+          "description": "Il design polacco contemporaneo ha raggiunto un momento di quieta maturità. Negli studi dei suoi architetti e progettisti d’arredo di oggi si parla un linguaggio di minimalismo rigoroso, materiali tattili e onestà costruttiva — l’esito di un dialogo secolare su cosa significhi creare con un’anima nazionale.",
           "imageSeed": "new-item-9"
+        },
+        {
+          "id": 11,
+          "title": "Il cuore di EPRIS: Maria è ora laureata in Architettura",
+          "subtitle": "Culture",
+          "fig": "FIG. 09",
+          "description": "Il 7 luglio, Mariia Ivanova, caporedattrice di EPRIS, si è laureata ufficialmente in Architettura. Per festeggiare – un cuore fatto dell'architettura e dell'arte che la ispirano.",
+          "imageSeed": "maria-graduation-heart",
+          "imageUrl": "/images/heart-hero.jpg"
         }
       ],
       "articles": [
@@ -14838,66 +15719,241 @@
         },
         {
           "id": 13,
-          "title": "Nuova storia editoriale",
+          "title": "L’arte che ti fa sorridere",
+          "excerpt": "Credo che introdurre oggetti giocosi in un ambiente allarghi i confini della mente. Dà il permesso non verbale di pensare liberamente — non solo di opporsi agli schemi convenzionali, ma di dimenticare che esistano affatto.",
+          "subcategory": "Feature",
           "author": "EPRIS Journal",
-          "role": "Scrivania editoriale",
-          "date": "17 luglio 2026",
-          "excerpt": "Un paragrafo di apertura mirato per una nuova storia editoriale.",
-          "category": "Cultura",
-          "subcategory": "Caratteristica",
+          "category": "art",
           "tags": [
-            "storia",
-            "cultura",
-            "editoriale"
+            "art",
+            "contemporary artists",
+            "lifestyle"
           ],
-          "imageSeed": "new-editorial-story",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrqbtqfza6qpnq.jpg",
           "content": [
             {
               "type": "text",
-              "content": "Inizia con la scena, il fatto o l'osservazione più forte. Mantieni questo primo blocco stretto e specifico."
+              "content": "C’è un pregiudizio secondo cui il piacere che si prova davanti a un’opera d’arte, o il sorriso che essa suscita, ne sminuisca in qualche modo il valore, privandola del grande titolo di “Arte”. Semplicemente non è vero."
             },
             {
-              "type": "image",
-              "content": "new-editorial-story-2",
-              "caption": "Immagine principale"
+              "type": "text",
+              "content": "L’arte può parlare forte senza parole, diventando uno strumento indiscutibile per materializzare l’introspezione o affrontare questioni sociali e politiche. Eppure, guardando all’etimologia della parola, “arte” non ha storicamente nulla a che vedere con la “serietà”; le sue radici affondano nell’artigianato manuale, magistralmente padroneggiato ed eseguito. Questa origine libera automaticamente l’arte da qualsiasi obbligo tassativo e ne legittima il diritto di semplicemente esistere."
+            },
+            {
+              "type": "text",
+              "content": "Come già detto, l’arte riflette questioni sociali, politiche, di genere o di altro tipo. Può essere un mezzo di introspezione personale o un veicolo per trasmettere idee complesse in forme diverse. Ma un artista può comunque creare oggetti giocosi seguendo un desiderio intrinseco di sentire il materiale, sperimentare forme e colori, padroneggiare tecniche e portare un po’ di gioia nella vita quotidiana. Ed essere giocosi non è sinonimo<b> </b>di essere superficiali. Tutti gli oggetti portano con sé il background, le convinzioni, la visione e le preoccupazioni dei loro creatori — semplicemente espressi attraverso una lente diversa."
+            },
+            {
+              "type": "text",
+              "content": "Prendere tutto troppo sul serio è un vicolo cieco — e di certo non dovrebbe sfiorarvi la mente quando scegliete un nuovo pezzo per la vostra casa. Alla fine, ciò che conta è la vostra preferenza personale. Se apprezzate solo forme rigorose in beige e nero, o supporti e soggetti convenzionali, meraviglioso! La mia unica preoccupazione è quando le persone non si concedono nemmeno di considerare un pezzo che potrebbe suscitare un momento di gioia. Sentiamo continuamente: “È bellissimo, starà benissimo con le mie pareti e gli altri quadri.” Ma la prossima volta provate a chiedervi altro: mi fa sorridere? Gli oggetti colorati e giocosi possiedono una qualità unica che agli altri manca — iniettano pura felicità in una stanza. Non ci pensiamo abbastanza spesso, concentrandoci invece su quanto un pezzo sia di tendenza o su come faccia apparire la casa. Ma come ci fa sentire?"
             },
             {
               "type": "quote",
-              "content": "Aggiungi una riga che vale la pena ricordare qui."
+              "content": "Gli oggetti colorati e giocosi possiedono una qualità unica che agli altri manca — iniettano pura felicità in una stanza."
             },
             {
-              "type": "note",
-              "content": "Nota editoriale, contesto della fonte o una breve nota."
+              "type": "text",
+              "content": "Il design d’interni non è solo un’ambientazione, un’immagine statica, una composizione o una palette di colori. È un ambiente vivo che vi abbraccia e vi avvolge. Siamo abituati a considerare un interno come una componente esterna della nostra esistenza, posizionandoci semplicemente come spettatori. In realtà, nel momento in cui entriamo in uno spazio ne veniamo assorbiti, adottandone invisibilmente l’umore e cedendo all’influenza irresistibile della sua atmosfera. Esiste persino un ramo scientifico specifico — la neuroarchitettura — che studia come l’ambiente influisca sulle nostre prestazioni cognitive, oltre che sul nostro benessere psicologico e fisico. Perlopiù questi effetti sono innescati da caratteristiche spaziali, psicologia del colore e proprietà tattili dei materiali. Tuttavia c’è un elemento che spesso resta fuori da questo elenco scientifico ma ha comunque un impatto notevole su come viviamo uno spazio: <i>i dettagli carichi di ironia e divertimento.</i>"
             },
             {
-              "type": "checklist",
-              "caption": "Cosa coprire",
-              "content": {
-                "items": [
-                  "Contesto",
-                  "Dettaglio chiave",
-                  "Angolo umano",
-                  "Cosa cambia dopo"
-                ]
-              }
+              "type": "quote",
+              "content": "In realtà, nel momento in cui entriamo in uno spazio ne veniamo assorbiti, adottandone invisibilmente l’umore e cedendo all’influenza irresistibile della sua atmosfera."
             },
             {
-              "type": "poll",
-              "content": {
-                "question": "Cosa dovremmo esplorare dopo?",
-                "options": [
-                  {
-                    "label": "Più contesto",
-                    "votes": 0
-                  },
-                  {
-                    "label": "Guida pratica",
-                    "votes": 0
-                  }
-                ]
-              }
+              "type": "text",
+              "content": "Credo che introdurre oggetti giocosi in un ambiente allarghi i confini della mente. Dà il permesso non verbale di pensare liberamente — non solo di opporsi agli schemi convenzionali, ma di dimenticare che esistano affatto."
+            },
+            {
+              "type": "text",
+              "content": "Di seguito troverete una selezione di artisti i cui oggetti sono garantiti per strapparvi un sorriso inaspettato."
+            },
+            {
+              "type": "header",
+              "content": "Lola Mayeras",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La designer francese Lola Mayeras è cresciuta nel sud della Francia con un padre ceramista, quindi la sua eredità artistica e l’esplorazione di colori e forme hanno iniziato a formarsi fin dalla prima infanzia. Ha lavorato come stilista di moda prima di aprire il proprio studio di design nel 2020. Durante il lockdown ha riscoperto il laboratorio del padre nella sua città natale e ha seguito un desiderio interiore di creare in un medium a lei familiare fin dalla giovinezza."
+            },
+            {
+              "type": "text",
+              "content": "Il suo background nella moda ha preservato il suo amore per il drappeggio, ma oggi i suoi oggetti d’elezione sono mobili e sculture. Il suo elemento distintivo più frequente è la camicia button-down — ferma nella forma di un vaso, impilata con modestia in una scultura, o adagiata senza sforzo sull’angolo di un tavolo di legno. Quest’ultimo è il mio preferito tra tutti i suoi meravigliosi pezzi: una massa ceramica naturale e sobria, con una camicia blu azzurro increspata che sembra scivolare a terra."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mrp9k2cicwn3z7.webp",
+                "https://api.eprisjournal.com/uploads/mrp9ktjlpkgayu.webp",
+                "https://api.eprisjournal.com/uploads/mrp9ki4th7mgl2.webp"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Lola Mayeras riesce anche a creare vasi antropomorfi con orecchie e orecchini che appaiono perfettamente naturali sotto ogni aspetto. L’equilibrio tra forma e scala è così fine da far chiedere perché agli altri vasi manchino questi dettagli simmetrici. È audace eppure armonioso."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrp9t34bnz37vq.webp",
+              "stretched": true
+            },
+            {
+              "type": "text",
+              "content": "Di recente ha ampliato la sua pratica lavorando con metallo e tessuti. Chi è alla ricerca di biancheria da letto unica può ordinare il set “It’s a Mess”, con una stampa trompe-l’œil di abiti sparsi. L’essenza spensierata dei suoi oggetti, insieme alla palette di colori scelta, è profondamente ispirata alla sua infanzia nel sud della Francia, dove godersi una vita piena di sole era la routine quotidiana."
+            },
+            {
+              "type": "quote",
+              "content": "L’essenza spensierata dei suoi oggetti, insieme alla palette di colori scelta, è profondamente ispirata alla sua infanzia nel sud della Francia, dove godersi una vita piena di sole era la routine quotidiana."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrp9xqom3fudfj.webp",
+              "stretched": true
+            },
+            {
+              "type": "header",
+              "content": "Erwin Wurm",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Il lavoro di Erwin Wurm è un esempio perfetto di ironia giocosa che maschera temi sociali seri — messaggi difficili da cogliere a prima vista, ma che diventano parte inseparabile dell’esperienza una volta scoperti.<br>"
+            },
+            {
+              "type": "text",
+              "content": "Pioniere dell’umorismo concettuale che ha conquistato gli amanti dell’arte in tutto il mondo, Wurm dona notoriamente braccia e gambe a borse, salsicce, maglioni e altri oggetti quotidiani. È il creatore di auto gonfiate, case rigonfie e cetriolini antropomorfi, tutti ripensati attraverso forme e gesti semplici. Questa semplicità non deve in alcun modo sminuire il valore dell’artista; riflette piuttosto una vera padronanza di un linguaggio visivo estremamente leggibile, che poi si scontra con l’assoluta imprevedibilità."
+            },
+            {
+              "type": "text",
+              "content": "In definitiva, l’assurdo nell’arte di Wurm è una risposta tagliente alle pressioni della società contemporanea, come l’iperconsumo, il peso schiacciante dell’opinione pubblica e la nostra ossessione per l’autorappresentazione attraverso ciò che possediamo. Sotto l’involucro allegro si nasconde un commento profondo sulla condizione umana moderna. Eppure questa profondità nascosta non compromette mai l’aspetto puro e gioioso delle sue opere — restano oggetti deliziosi a cui si desidera tornare più e più volte."
+            },
+            {
+              "type": "quote",
+              "content": "Eppure questa profondità nascosta non compromette mai l’aspetto puro e gioioso delle sue opere — restano oggetti deliziosi a cui si desidera tornare più e più volte."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mrpa6tqpmljolk.jpg",
+                "https://api.eprisjournal.com/uploads/mrpa77rpsjpc66.jpg",
+                "https://api.eprisjournal.com/uploads/mrpa7cthf6cyq0.jpg"
+              ]
+            },
+            {
+              "type": "header",
+              "content": "Fanny Ollas",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La designer svedese Fanny Ollas ha un background nel tessile e nella moda, che si riflette nei suoi vasi elegantemente ornati. Ogni recipiente sembra un personaggio fiabesco, che vive al vostro fianco senza pagare affitto e ne ha pieno diritto."
+            },
+            {
+              "type": "text",
+              "content": "I toni delicati e l’integrazione di pelliccia sintetica, merletti, strass e perle conferiscono a ogni pezzo un aspetto magicamente tintinnante, pur portando con sé un certo stato di malinconia. Il suo lavoro ruota attorno a pensieri sulla vulnerabilità, il corpo, le pretese, le paure, le relazioni e ciò che si nasconde dietro le nostre facciate."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mrpbmrcyhwinri.jpg",
+                "https://api.eprisjournal.com/uploads/mrpbmbhqhuj37n.jpg",
+                "https://api.eprisjournal.com/uploads/mrpbmh0b6r21y3.jpg"
+              ]
+            },
+            {
+              "type": "header",
+              "content": "Pablo Picasso",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Il leggendario artista spagnolo si è sempre definito uno sperimentatore, e non esiste descrizione più accurata per l’ampiezza sterminata della sua opera. Sebbene non abbia posto l’ironia al centro del suo lavoro, i vasi prodotti in grande quantità nel sud della Francia presso l’Atelier Madoura riflettono perfettamente la componente giocosa della sua produzione."
+            },
+            {
+              "type": "text",
+              "content": "Verso la fine della Seconda guerra mondiale, Picasso era già una leggenda vivente, un genio acclamato e un milionario. Ma questo successo ebbe un effetto contrario — si stancò dell’accademismo e dell’atteggiamento solenne e rigido verso l’arte. Rivolgendosi alla ceramica, sembrò concedersi il permesso di tornare bambino."
+            },
+            {
+              "type": "quote",
+              "content": "“So disegnare come Raffaello, ma ci ho messo una vita a imparare a disegnare come un bambino” — Pablo Picasso"
+            },
+            {
+              "type": "text",
+              "content": "I volti comici che dipingeva sui bricchi erano un puro atto di gioco e l’espressione della felicità assoluta che provava vivendo sulla costa assolata con la sua giovane musa, Françoise Gilot. Dopo gli orrori della guerra, la tragedia di Guernica e profonde crisi personali, creare stoviglie vivaci e umoristiche divenne per lui una forma di arteterapia."
+            },
+            {
+              "type": "text",
+              "content": "I volti comici che dipingeva sui bricchi erano un puro atto di gioco e l’espressione della felicità assoluta che provava vivendo sulla costa assolata con la sua giovane musa, Françoise Gilot. Dopo gli orrori della guerra, la tragedia di Guernica e profonde crisi personali, creare stoviglie vivaci e umoristiche divenne per lui una forma di arteterapia."
+            },
+            {
+              "type": "text",
+              "content": "Questi bricchi non erano mai stati pensati per stare dietro una vetrina in musei polverosi. Picasso intendeva originariamente che le sue ceramiche fossero accessibili e usate nella vita quotidiana — per versare il vino o contenere la frutta — così che le persone potessero sorridere davanti a quei volti buffi dipinti a mano durante la colazione."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mrpbv192ro00mb.jpg",
+                "https://api.eprisjournal.com/uploads/mrpbv7e9s4nxj4.jpg",
+                "https://api.eprisjournal.com/uploads/mrpbvw8tnfxixi.jpg"
+              ]
+            },
+            {
+              "type": "header",
+              "content": "Matthew Centeno",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Improvvisazione e apertura mentale sono al centro del processo creativo di Matthew Centeno. Con una maestria artigianale estremamente dettagliata, trasforma comuni palloncini in forme accattivanti che parlano direttamente al bambino interiore di ognuno. Il suo obiettivo ultimo è rompere la monotonia della vita quotidiana, spingendo delicatamente il pubblico a riscoprire il proprio senso di curiosità dimenticato."
+            },
+            {
+              "type": "text",
+              "content": "Se i palloncini in mylar sono l’indicatore per eccellenza di feste e ricorrenze, sono per loro natura effimeri. A differenza dei fiori, ormai elemento fisso dell’arredamento domestico informale, i palloncini appartengono ancora saldamente alla categoria delle occasioni speciali. Il palloncino di porcellana a parete con il volto sorridente di Centeno funge da promemoria permanente che ogni singolo giorno è speciale."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mrpcsa7el8zveu.jpg",
+                "https://api.eprisjournal.com/uploads/mrpcsht8an9mj0.jpg",
+                "https://api.eprisjournal.com/uploads/mrpcsmmdz5dcno.jpg"
+              ]
+            },
+            {
+              "type": "header",
+              "content": "Sébastien Gaudette",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Cosa può essere più piacevole dei foglietti adesivi con scritte allegre, che scaldano il cuore ogni volta che li vedete? Sébastien Gaudette crea sculture trompe-l’œil in alluminio, destinate a restare per sempre sulla vostra parete. È il tipo di arte che non deve necessariamente intonarsi al vostro arredamento, ma piuttosto contribuire al vostro umore e al vostro benessere emotivo. Devo ammettere che le piccole dimensioni dell’opera aggiungono la scintilla della scoperta — è come un pezzo di magia in cui ci si imbatte inaspettatamente, ci si ferma un istante a sorridere e si torna alle proprie faccende."
+            },
+            {
+              "type": "text",
+              "content": "Il pilastro centrale del lavoro di Gaudette non sono le scritte, ma la ricreazione della piega della carta. Eppure, anche entro questo schema, ritroviamo la componente di una familiarità deliziosa unita all’entusiasmo infantile. Ad esempio, gli aeroplanini di carta di colori diversi, piegati da un foglio di quaderno a righe. Trovarli sul cassettone o sul tavolino tra libri e vasi sarebbe una meravigliosa macchina del tempo verso la spensieratezza della giovinezza."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mrpd6ycjkdxx24.jpg",
+                "https://api.eprisjournal.com/uploads/mrpd80208jrdq9.webp",
+                "https://api.eprisjournal.com/uploads/mrpd73atqokur3.webp"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Sembra che abbiamo paura di lasciarci intrattenere dall’arte."
+            },
+            {
+              "type": "text",
+              "content": "Che siate collezionisti, amanti, appassionati d’arte o vi affacciate ora sul suo mondo sconfinato, iniziate a notare gli oggetti che non solo vi sfidano, interrogano o provocano, ma sanno anche evocare ricordi caldi, crearne di nuovi o semplicemente farvi sorridere quasi senza motivo."
+            },
+            {
+              "type": "text",
+              "content": "A volte la vostra gioia è l’obiettivo di un artista — arrendetevi al suo potere."
             }
-          ]
+          ],
+          "role": "Scrivania editoriale"
         },
         {
           "id": 14,
@@ -14964,66 +16020,205 @@
         },
         {
           "id": 15,
-          "title": "Nuova storia editoriale",
+          "title": "Tadao Ando",
+          "excerpt": "L’architettura sotto la superficie tangibile",
+          "subcategory": "Feature",
           "author": "EPRIS Journal",
-          "role": "Scrivania editoriale",
-          "date": "19 luglio 2026",
-          "excerpt": "Un paragrafo di apertura mirato per una nuova storia editoriale.",
-          "category": "Cultura",
-          "subcategory": "Caratteristica",
-          "tags": [
-            "storia",
-            "cultura",
-            "editoriale"
-          ],
-          "imageSeed": "new-editorial-story",
+          "category": "Architecture",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrt4jakod3agex.jpg",
           "content": [
             {
-              "type": "text",
-              "content": "Inizia con la scena, il fatto o l'osservazione più forte. Mantieni questo primo blocco stretto e specifico."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrt3zzweaxc7gh.jpg",
+              "align": "left",
+              "width": 30
             },
             {
-              "type": "image",
-              "content": "new-editorial-story-2",
-              "caption": "Immagine principale"
+              "type": "text",
+              "content": "Tadao Ando è uno degli architetti più influenti del XXI secolo, capace di sfidare la definizione convenzionale e i confini stessi dell’architettura. Il suo approccio unico ha mostrato una rilettura dei principi tradizionali giapponesi attraverso forme audaci, materiali e organizzazioni spaziali. In questo articolo riveleremo i principi cardine della sua filosofia e le sue fonti."
+            },
+            {
+              "type": "header",
+              "content": "Formazione e influenze",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Tadao Ando nacque a Osaka (un tempo chiamata la “Città dell’Acqua”) nel 1941. Nacque come primo di due gemelli, ma i genitori decisero poi di separarli. Tadao Ando fu cresciuto dalla nonna materna in un quartiere semplice, popolato da artigiani, falegnami e altri lavoratori manuali. Trascorreva le giornate nelle loro botteghe, lavorando i materiali, costruendo aeroplani e navi. È giusto dire che questo ambiente costituì il fondamento dell’apprendimento continuo che il celebre architetto avrebbe perseguito per tutta la vita."
+            },
+            {
+              "type": "text",
+              "content": "Dai 17 anni, influenzato dal fratello gemello, Ando iniziò a praticare il pugilato. Questo sport forgiò il suo spirito combattivo, che lo avrebbe aiutato nella vita successiva."
+            },
+            {
+              "type": "text",
+              "content": "Agli inizi dei suoi vent’anni, tra il 1962 e il 1969, dopo la revoca del divieto giapponese ai viaggi, Tadao Ando intraprese un viaggio in Europa, Stati Uniti e Africa. Prese una nave dal Giappone all’Unione Sovietica, dove raggiunse Mosca con una settimana di Transiberiana. Durante quel viaggio vide molti paesi e visse un’esperienza architettonica indiscutibile, che sarebbe poi diventata la base della sua celebre citazione:"
             },
             {
               "type": "quote",
-              "content": "Aggiungi una riga che vale la pena ricordare qui."
+              "content": "“L’architettura racchiude cose che non possono essere catturate attraverso i media. Per questo gli architetti devono viaggiare; gli architetti si formano viaggiando”"
             },
             {
-              "type": "note",
-              "content": "Nota editoriale, contesto della fonte o una breve nota."
+              "type": "text",
+              "content": "Nonostante la conoscenza di numerosi edifici in diversi paesi, la meta desiderata di questo viaggio era l’eredità di Le Corbusier, che aveva nutrito il suo interesse per l’architettura."
             },
             {
-              "type": "checklist",
-              "caption": "Cosa coprire",
-              "content": {
-                "items": [
-                  "Contesto",
-                  "Dettaglio chiave",
-                  "Angolo umano",
-                  "Cosa cambia dopo"
-                ]
-              }
+              "type": "text",
+              "content": "Conobbe l’iconico architetto francese per caso, trovando il suo manoscritto in una vecchia libreria dell’usato. Il valore di quel libro non risiede nel prezzo, ma interamente nell’impronta che lasciò sulla vita e la carriera di Tadao Ando. L’architetto rimase affascinato dai progetti e ricordava di aver ricalcato gli schizzi giovanili di Le Corbusier così tante volte che la carta era diventata quasi nera. Ammise inoltre che, pensando ai propri progetti, si chiede sempre cosa avrebbe detto Le Corbusier a riguardo e come li avrebbe giudicati."
             },
             {
-              "type": "poll",
-              "content": {
-                "question": "Cosa dovremmo esplorare dopo?",
-                "options": [
-                  {
-                    "label": "Più contesto",
-                    "votes": 0
-                  },
-                  {
-                    "label": "Guida pratica",
-                    "votes": 0
-                  }
-                ]
-              }
+              "type": "text",
+              "content": "Tadao Ando non ricevette una formazione ufficiale in nessun campo, ma aprì il proprio studio, “Tadao Ando Architect & Associates”, nel 1969 a Osaka, dopo essere tornato dal suo lungo “studio sul campo” in vari paesi, che, insieme alla filosofia spaziale giapponese e ai libri di architettura, plasmò il suo modo di pensare. Ando non seguì un percorso empirico come allievo di altri architetti, poiché la sua testardaggine e il suo temperamento portavano sempre al licenziamento."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrt41vsy86q9zs.jpg",
+              "stretched": true
+            },
+            {
+              "type": "text",
+              "content": "I primi tentativi nel design furono piccole case in legno, interni e mobili. Tuttavia passarono sei anni di pratica prima che completasse la Row House (Casa Azuma), che gli valse elogi e riconoscimento attraverso il premio dell’Associazione Architettonica Giapponese."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mrt47rwzfga3cn.jpg",
+                "https://api.eprisjournal.com/uploads/mrt489ocgjozyx.jpg",
+                "https://api.eprisjournal.com/uploads/mrt48qw4rf26l2.jpg"
+              ],
+              "caption": "Row House, 1976"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrt4d5ef1m1idz.jpg",
+              "caption": "Rokko Housing, 1981-1998",
+              "align": "left",
+              "width": 45
+            },
+            {
+              "type": "text",
+              "content": "Un altro progetto realizzato alla fine degli anni Settanta, il complesso residenziale Rokko Housing, fu ampiamente pubblicato e ne sottolineò l’importanza nel campo architettonico ben oltre il contesto locale. È inserito in un pendio ai piedi dei monti Rokko, offrendo viste panoramiche. Pur restando fedele alla griglia rigida e alla geometria, Tadao Ando lavorò qui in una forma e composizione più elaborate, dimostrando che la semplicità è <i>una scelta consapevole, ma non limitante, della sua incarnazione filosofica.</i>"
+            },
+            {
+              "type": "text",
+              "content": "I progetti successivi rafforzarono la tendenza a un riconoscimento oltre i confini nazionali. Edifici come la Church on the Water (1988) a Tomamu, Hokkaido, o la Church of the Light (1988-89) a Ibaraki, Osaka, promossero il loro autore come un architetto dotato di una profonda comprensione spirituale dello spazio e del legame con la natura. Nonostante il Giappone fosse, alla fine degli anni Ottanta, l’unico paese a ospitare i suoi progetti, l’influenza aveva già cambiato lo stato delle cose, e nel 1991 il Museum of Modern Art dedicò una mostra a Tadao Ando, definendolo indirettamente “uno dei più eminenti architetti viventi al mondo”."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrt4lpc2fr80ye.jpg",
+              "caption": "Church on the Water (1988)",
+              "stretched": true
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrt5ophk1v5q4j.webp",
+              "caption": "Church of the Light (1988-89)",
+              "stretched": true
+            },
+            {
+              "type": "text",
+              "content": "Nel corso dell’intera carriera, fino a oggi, Tadao Ando ha progettato oltre 300 opere realizzate in tutto il mondo."
+            },
+            {
+              "type": "text",
+              "content": "<b>Possiamo individuare tre pilastri principali del suo approccio, plasmati dal suo background:</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b><i><u>L’architettura tradizionale giapponese.</u></i></b> Crescere in Giappone in comuni abitazioni residenziali influenza inevitabilmente la percezione e l’idea iniziale su determinati aspetti. Tuttavia, secondo le parole di Tadao Ando in un’intervista con Toshio Okumura, egli non utilizza alcun elemento architettonico tradizionale, ma desidera evocarne la sensazione attraverso l’adattamento di una sensibilità emotiva, più che attraverso elementi fisici diretti. Questi ultimi sono un’aggiunta artificiale all’edificio, che pur mantenendolo standardizzato non accresce la profondità percettiva e il significato racchiusi tra la presenza evidente degli elementi. L’approccio non è mimesi della forma, ma mimesi della sensazione."
+            },
+            {
+              "type": "text",
+              "content": "<b><i><u>L’effimero e l’intangibile sul fisico.</u></i></b> Tadao Ando tende ad assegnare un ruolo predominante agli elementi effimeri dell’architettura, comunemente considerata materia solida e strutturale. Tuttavia, la presenza costante e la monumentalità fungono da sfondo per fattori importanti, come la luce, che agiscono attraverso una sensibilità sottile. Con ogni probabilità, questa intenzione è guidata dall’esperienza a cui l’architetto si espose da adolescente: verso i 15 anni andò a studiare le vecchie case rurali per imprimersi lo spazio tradizionale giapponese."
+            },
+            {
+              "type": "text",
+              "content": "<b><i><u>Studio dell’architettura attraverso il viaggio e l’esperienza dello spazio.</u></i></b> Poiché costituì gran parte della sua formazione architettonica da autodidatta, l’attenzione alla sensazione e alle emozioni mantiene la stessa importanza nei suoi stessi progetti."
+            },
+            {
+              "type": "header",
+              "content": "Filosofia architettonica e principi di progettazione",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i><b><u>“Tensione nell’accettazione”</u></b></i>"
+            },
+            {
+              "type": "text",
+              "content": "Esiste una forte convinzione che permea l’impianto dell’architettura giapponese, riguardante la fusione tra l’ambiente esterno e lo spazio interno. I confini tra queste due definizioni contrapposte sono destinati ad ammorbidirsi, fondendosi visivamente e fisicamente l’una nell’altra per evitare una divisione rigida. Questa idea di coesistenza armoniosa tra spazi antagonisti trova il proprio fondamento nella filosofia e nel rapporto storico con la natura, ed è sostenuta da molte strategie nel Nippon Koku."
+            },
+            {
+              "type": "text",
+              "content": "Tadao Ando ha però direttamente definito, sia a parole sia nei suoi progetti, che la sua mentalità è occupata dall’idea della necessità del rifiuto. Secondo le sue parole, accettare significa abbassare le proprie difese, permettendo un afflusso eccessivo verso l’interno, che in questo modo perde la propria certezza. <i>La ragione risiede nell’assenza di tensione nell’atto del rifiuto.</i> Così, il celebre architetto è convinto che la tensione debba essere parte indiscutibile anche dell’accettazione, così come nel contesto architettonico la tensione indica il confronto tra esterno e interno, sottolineando l’importanza dei luoghi di un edificio nel loro contendersi lo spazio."
+            },
+            {
+              "type": "text",
+              "content": "I muri, in quanto confine più forte tra l’intrinseco e l’estrinseco, svolgono un ruolo significativo nell’approccio di Tadao Ando — egli lavora con materialità sottili e, tramite posizioni specifiche a intervalli, crea aperture che permettono alla struttura di accettare anche nell’atto stesso del rifiuto primario. I muri sono percepiti come una “spada”, che taglia il paesaggio, il cielo, il vento e la luce del sole per favorire una nuova rivelazione. Questo atto di manifestazione non è visto come una crudeltà verso l’esterno, ma come un gesto cerimoniale e sacro, che assimila la natura come parte alla pari dell’architettura."
+            },
+            {
+              "type": "text",
+              "content": "<b><i><u>“Gli elementi essenziali della vita umana”</u></i></b>"
+            },
+            {
+              "type": "text",
+              "content": "Tadao Ando è noto per il suo approccio minimalista, riflesso nell’audacia e nella lucida chiarezza delle sue idee. Ciò riguarda i muri e la disposizione spaziale. Tuttavia, la semplicità dei muri e delle loro forme e finiture grezze non si fonda su mere considerazioni estetiche; il suo fondamento affonda profondamente nella filosofia di vita di Ando. Egli crede che la cultura contemporanea sia caratterizzata da un ciclo di desideri insaziabili e senza fine da soddisfare, e per questo ha sollevato una domanda silenziosa su cosa contribuisca alla ricchezza della vita e cosa sia essenziale. Attraverso i suoi progetti, offre una presunta risposta il cui significato profondo è la vera abbondanza, tradotta in semplificazione, eliminazione della decorazione superficiale e impiego di composizioni simmetriche."
+            },
+            {
+              "type": "text",
+              "content": "<b><i><u>Silenzio architettonico</u></i></b>"
+            },
+            {
+              "type": "text",
+              "content": "La sorprendente quiete dei progetti dell’architetto è definita dalla sua convinzione che l’architettura debba restare silenziosa e lasciare che la presenza della natura mutevole sia dominante, mostrandosi tollerante al passare del tempo, alle trasformazioni orarie, giornaliere e stagionali, che nutrono nell’uomo una sensibilità più raffinata."
+            },
+            {
+              "type": "text",
+              "content": "<b><i><u>Rivitalizzazione del legame con la natura</u></i></b>"
+            },
+            {
+              "type": "text",
+              "content": "Secondo Tadao Ando, la crescita demografica e l’urbanizzazione seguite alla Seconda guerra mondiale hanno reso impossibile preservare il nucleo fondante dell’architettura residenziale tradizionale giapponese — il legame con la natura e l’apertura verso di essa. Nei suoi progetti, questo principio va oltre il semplice omaggio al valore storico, e viene invece impiegato come principale elemento costruttore del concetto, della forma e della distribuzione delle masse."
+            },
+            {
+              "type": "text",
+              "content": "<b><i><u>“I vuoti come parte dell’architettura”</u></i></b>"
+            },
+            {
+              "type": "text",
+              "content": "Se l’architettura può essere paragonata alla scultura, è lecito stabilire una correlazione con il rapporto tra vuoto e massa. Anche se il confronto tra questi due mezzi espressivi può apparire irrilevante, aiuta a ridurre la scala della struttura dell’edificio e a iniziare a percepirla principalmente in termini di masse. Tadao Ando era fermamente convinto che fosse essenziale lasciare spazi vuoti nella progettazione, dotandoli della stessa importanza dell’intervento costruito dall’uomo. Gli interstizi dovrebbero portare una propria logica intrinseca all’interno della struttura, e questo approccio accresce il valore e l’individualità dell’architettura."
+            },
+            {
+              "type": "text",
+              "content": "<b><i><u>La luce come fattore spaziale di controllo</u></i></b>"
+            },
+            {
+              "type": "text",
+              "content": "Tadao Ando pone un’attenzione centrale sul ruolo della luce nell’ambiente costruito. Ritiene che l’architettura non riguardi muri, pavimento e soffitto, ma il mondo racchiuso all’esterno. Questo spazio può essere modificato non solo attraverso la forma, ma anche mediante la luce diretta. Se si vuole tracciare un parallelo più concreto, <i>il modo in cui la luce definisce il carattere degli ambienti ricorda il camino di una casa tradizionale.</i> La luce può essere manipolata in modi diversi per creare un ambiente delicato per chi lo abita."
+            },
+            {
+              "type": "text",
+              "content": "<i><u><b>Vocabolario ristretto</b></u></i>"
+            },
+            {
+              "type": "text",
+              "content": "Questo principio delle opere di Tadao Ando viene percepito direttamente da ogni osservatore, anche da chi non ha alcuna esperienza in architettura o in campi affini. Il paradosso dell’uso limitato nelle diverse categorie della struttura costruita sta nella correlazione tra il livello di limitazione e l’effetto visivo e sensoriale. Una tavolozza di materiali moderata, il rigore delle forme e la dignitosa semplicità delle relazioni spaziali danno vita a un oggetto visivamente accattivante, anche per la sua differenza rispetto all’ambiente naturale e a quello costruito dall’uomo."
+            },
+            {
+              "type": "text",
+              "content": "Uno degli esempi più notevoli che, secondo le parole dell’architetto, racchiude tutti i suoi principi ed esprime l’essenza dell’intera opera è la Row House Sumiyoshi (Casa Azuma) a Osaka, in Giappone, costruita nel 1976. Il modulo residenziale si trova in un ambiente urbano denso, e la sua forma rettangolare è divisa in tre parti uguali, dove quella centrale è dedicata a un cortile aperto, che collega gli abitanti alla natura, esponendoli alle condizioni meteorologiche mutevoli ogni volta che vogliono spostarsi da una parte all’altra della casa, e sottolineando la priorità della natura anche in condizioni impegnative. L’equivalenza tra la parte aperta e la sua funzione di collegamento obbligata racchiude l’approccio di Tadao Ando all’incorporazione del vuoto."
+            },
+            {
+              "type": "text",
+              "content": "Il materiale scelto è il cemento a vista, anch’esso caratteristica sostanziale del celebre architetto. Crea un aspetto sobrio della casa, senza tentare di evocare sensazioni più calde, ma restando piuttosto fedele al materiale e spostando l’attenzione verso i valori e i significati intrinseci. <i>L’involucro della Casa Azuma non è progettato per impressionare; le facciate degli edifici di Tadao Ando non rispondono alle moderne aspettative di soddisfazione superficiale in ogni aspetto.</i>"
+            },
+            {
+              "type": "text",
+              "content": "La filosofia di Tadao Ando è unica, e non può essere trasmessa in modo più accurato che attraverso le sue stesse parole. Nel suo saggio “A Wedge in Circumstances”, ha spiegato il suo approccio allo spazio residenziale — la casa è un palcoscenico per vivere, perciò il modo di accogliere gli ospiti e i percorsi sono molto importanti. È convinto che la pianta architettonica non debba essere percepita dall’interno — una volta che un visitatore mette piede nello spazio, non è importante per lui comprenderne la disposizione, quanto piuttosto comprendere cognitivamente lo spazio che lo avvolge. Questa è la ragione delle relazioni spaziali asimmetriche, variabili e imprevedibili nei suoi progetti."
             }
-          ]
+          ],
+          "role": "Scrivania editoriale"
         },
         {
           "id": 16,
@@ -15345,6 +16540,10 @@
             },
             {
               "type": "text",
+              "content": "L’incarico stesso fu deciso in tre settimane. Il direttore del Guggenheim, Thomas Krens, selezionò tre architetti — Gehry, Arata Isozaki, Coop Himmelblau —, diede a ciascuno diecimila dollari e chiese un concept. Isozaki inviò schizzi di un blocco ellittico di quattro piani. Coop Himmelblau propose cubi trasparenti. Gehry inviò qualcosa che non somigliava a nulla di quanto richiesto, e si aggiudicò l’incarico."
+            },
+            {
+              "type": "text",
               "content": "Secondo qualsiasi criterio ragionevole la cosa sarebbe dovuta finire in una commissione d’inchiesta. È diventata invece il gesto urbano più imitato del secolo, e le tasse che ha generato hanno coperto il costo dei lavori in tre anni."
             },
             {
@@ -15368,6 +16567,11 @@
               "content": "Poi c’è la pelle, la storia migliore del rivestimento del Novecento, che quasi nessuno racconta per bene. Gehry aveva previsto acciaio inox. Lì sopra ci sono 33.000 lastre di titanio spesse quattro decimi di millimetro, sessanta tonnellate in tutto — e il titanio è un metallo aeronautico che nessuno aveva mai usato su un edificio di quella scala, per l’ottima ragione che costa una fortuna."
             },
             {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-titanium-detail.jpg",
+              "caption": "Titanio da vicino — lamine sotto il millimetro, ciascuna curvata singolarmente, sovrapposte come squame di pesce. Foto: Jules Verne Times Two, CC BY-SA 4.0, via Wikimedia Commons"
+            },
+            {
               "type": "text",
               "content": "Salvo che all’inizio degli anni Novanta, per un attimo, ha smesso di costarla. L’Unione Sovietica aveva costruito il sottomarino d’attacco classe Alfa con lo scafo in titanio; quando la Russia ha dismesso gli ultimi, il metallo ha inondato il mercato mondiale e il prezzo è crollato, finendo sotto quello dell’acciaio inox proprio mentre Gehry sceglieva il materiale. Significa che l’edificio più fotografato del tardo Novecento è avvolto in giacenze dismesse della Guerra fredda. Quel luccichio sul Nervión è il dividendo della pace, laminato a 0,4 mm e imbullonato a un museo. Nessuno storico dell’architettura avrebbe osato inventarlo."
             },
@@ -15378,6 +16582,11 @@
             {
               "type": "text",
               "content": "La cosa che preferisco di questo edificio è il portiere. A guardia dell’ingresso c’è «Puppy» di Jeff Koons: un West Highland terrier di dodici metri tappezzato di piante fiorite vive, innaffiate e potate di continuo perché non gli venga la calvizie. Una cattedrale di titanio dell’avanguardia internazionale, sorvegliata da un cane enorme fatto di petunie. Bilbao ha capito quello che i suoi imitatori non hanno mai capito: tutta la faccenda funziona molto meglio quando si rifiuta di prendersi completamente sul serio."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-puppy.jpg",
+              "caption": "Il Puppy di Jeff Koons di guardia all’ingresso — il portiere meno serio dell’avanguardia. Foto: Jules Verne Times Two, CC BY-SA 4.0, via Wikimedia Commons"
             },
             {
               "type": "header",
@@ -15415,12 +16624,26 @@
             },
             {
               "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-baku-interior-stairs.jpg",
+              "caption": "Dentro la piega: scala, balaustra e soffitto gettati come un’unica superficie continua. Foto: Mahmoodrezamo, CC BY-SA 4.0, via Wikimedia Commons"
+            },
+            {
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-heydar-aliyev-auditorium.jpg",
               "caption": "Mille posti e nemmeno un angolo retto tra loro. Foto: Emin Allahverdi, CC BY-SA 4.0, via Wikimedia Commons"
             },
             {
               "type": "text",
               "content": "Ora il paragrafo che i libri da salotto saltano. L’edificio porta il nome del defunto presidente dell’Azerbaigian ed è stato commissionato sotto il governo di suo figlio, che gli è succeduto nella carica. Appartiene a un genere molto antico — il palazzo della cultura nazionale come ritratto della famiglia al potere — ed è sorto in una città allora rifatta a velocità elevata, con abitanti dell’area di riqualificazione che denunciavano demolizioni e sgomberi mai accettati. Quando il Design Museum di Londra gli ha dato il Design of the Year 2014, il premio è arrivato con una polemica pubblica in dotazione, e la polemica non riguardava il tetto."
+            },
+            {
+              "type": "text",
+              "content": "La logica del collo di cigno si estende persino al comfort. Nascosti nelle pieghe ci sono giardini d’inverno chiusi, alti diversi piani, con alberi veri sotto vetro: le curve bianche avevano bisogno di un posto caldo e verde dove atterrare. È una cosa strana da coltivare al chiuso in una città costruita sul petrolio e non sull’acqua — e funziona proprio perché l’edificio non si scusa affatto per lo sperpero."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-baku-interior-garden.jpg",
+              "caption": "Uno dei giardini d’inverno chiusi — alberi veri sotto vetro, dentro la curva. Foto: Mahmoodrezamo, CC BY-SA 4.0, via Wikimedia Commons"
             },
             {
               "type": "text",
@@ -15438,6 +16661,11 @@
             {
               "type": "text",
               "content": "Stesso studio, stesso anno, committente completamente diverso: SOHO China, la società guidata da Zhang Xin, che compra architettura come altri comprano orologi — in modo visibile, costoso e con la chiara consapevolezza di cosa faccia la firma al valore di rivendita. Il tema erano uffici e commercio su una grande arteria del centro di Pechino. La risposta sono stati quattro volumi arrotondati fusi da ponti su più livelli: 330.000 metri quadrati su diciotto piani, con lo spazio intermedio modellato in corti fluide invece del solito nulla ventoso che i costruttori lasciano tra le torri."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-galaxy-soho-bridge.jpg",
+              "caption": "I ponti che fondono i quattro volumi di Galaxy SOHO in un unico percorso continuo. Foto: Francesco Bini, CC BY-SA 4.0, via Wikimedia Commons"
             },
             {
               "type": "image",
@@ -15466,6 +16694,10 @@
               "content": "E il rilievo coglie nel segno, perché una geometria continua che si risolve da sé è splendidamente attrezzata per ignorare ciò accanto a cui si trova. Un edificio fatto interamente di curve non ha spigoli con cui incontrare nessuno. Non discute con la strada: si rifiuta di ammettere che la strada stesse parlando. Si può ammirare l’oggetto e concedere comunque il punto — io faccio entrambe le cose — e notare poi il dettaglio che chiude la questione: tutto ciò che di generoso ha Galaxy SOHO guarda all’interno. Le corti sono bellissime, e sono private. È una descrizione esatta di gran parte dell’edilizia del XXI secolo, e non è un complimento."
             },
             {
+              "type": "text",
+              "content": "Nulla di tutto ciò ha impedito a Galaxy SOHO di vincere il RIBA International Award quello stesso anno — la lettera e il trofeo sono arrivati a pochi mesi di distanza. Le giurie internazionali e gli enti comunali per il patrimonio rispondevano, e rispondono tuttora, a due domande completamente diverse."
+            },
+            {
               "type": "header",
               "content": "<span class=\"kicker\">04 · UNStudio</span>Museo Mercedes-Benz",
               "level": 2
@@ -15477,6 +16709,15 @@
             {
               "type": "text",
               "content": "Ben van Berkel e Caroline Bos non partono da una forma. Partono da un problema di movimento, lo disegnano e lasciano che la forma sia la conseguenza — ecco perché lo studio si chiama UNStudio e non porta due cognomi sulla porta, ed ecco perché questo è di gran lunga l’edificio meno autoindulgente di questo testo."
+            },
+            {
+              "type": "text",
+              "content": "UNStudio vinse il concorso per il sito nel 2001. Il museo impiegò cinque anni a essere costruito — abbastanza a lungo perché metà di Stoccarda vedesse il trifoglio sorgere da una buca nel terreno e si facesse un’opinione ancor prima che vi fosse esposta una sola automobile."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-mercedes-blue-hour.jpg",
+              "caption": "Museo Mercedes-Benz nell’ora blu — la torsione si legge ancora meglio illuminata dall’interno. Foto: Julian Herzog, CC BY 4.0, via Wikimedia Commons"
             },
             {
               "type": "text",
@@ -15530,6 +16771,15 @@
               "content": "Guardate il sito. Harbin sta sul fiume Songhua, in una provincia dove l’inverno è un fatto amministrativo lungo sei mesi, dove il grande festival annuale si costruisce con blocchi di ghiaccio segati da quello stesso fiume e dove la temperatura fa cose che inducono un centroeuropeo a pensare con affetto al proprio miserabile gennaio. MAD hanno dato alla città un basso tumulo bianco nella zona umida, interamente rivestito in alluminio bianco e leggibile esplicitamente come un accumulo di neve: un edificio a proprio agio con la neve perché ha già la forma della neve. Sotto ci sono 470 posti auto, perché il terreno è una metafora e siamo pur sempre nella Cina del 2015."
             },
             {
+              "type": "text",
+              "content": "MAD ottenne il progetto nel modo consueto, per una volta: un concorso internazionale aperto nel 2010, per un masterplan che copriva circa 180 ettari di zona umida lungo il Songhua, non solo il teatro. Il teatro dell’opera è l’unico edificio di quel piano che il mondo guarda davvero, ma non era pensato per stare da solo. È il segno di punteggiatura di una frase molto più lunga sul fiume."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-exterior-2.jpg",
+              "caption": "Teatro dell’Opera di Harbin di giorno: l’alluminio si legge come roccia, ghiaccio o duna a seconda della luce. Foto: EditQ, CC BY-SA 4.0, via Wikimedia Commons"
+            },
+            {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-opera-house-panorama.jpg",
               "caption": "Teatro dell’Opera di Harbin, MAD Architects, 2015. Non si posa sulla zona umida: vi si adagia, come un tempo atmosferico che ha deciso di restare. Foto: Jeremy Thompson, CC BY 2.0, via Wikimedia Commons",
@@ -15542,6 +16792,11 @@
             {
               "type": "text",
               "content": "È quest’ultima cifra a guadagnarsi il mio rispetto, e non è una battuta. Nella facciata è intagliato un percorso pubblico che sale all’esterno dell’edificio fino a una piazza in copertura dove può salire chiunque: nessun biglietto, nessuno spettacolo, nessun codice di abbigliamento e nessuno lassù che controlli se siete al posto giusto. Un teatro d’opera — il tipo edilizio più ansioso di status che esista, una tipologia la cui intera storia architettonica consiste in scale progettate perché vi si veda salire — regala la vista migliore a gente che non comprerà mai un posto. Ogni altro teatro d’opera al mondo spende il proprio bilancio per insegnarvi che il foyer non è per voi. Questo regala il tetto e non chiede nulla."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-exterior-3.jpg",
+              "caption": "Il profilo basso, scolpito dal vento, dell’edificio contro il cielo dello Heilongjiang. Foto: EditQ, CC BY-SA 4.0, via Wikimedia Commons"
             },
             {
               "type": "image",
@@ -15589,7 +16844,16 @@
               "type": "text",
               "content": "<hr><h4>Fonti</h4><ul class=\"sources\"><li><strong>Guggenheim Museum Bilbao</strong> — il museo sul proprio edificio: superfici, sale e la pelle in titanio — <a href=\"https://www.guggenheim-bilbao.eus/en/the-building\">guggenheim-bilbao.eus</a></li><li><strong>Association for Project Management</strong> — l’economia del progetto e perché il titanio fu per poco più economico dell’acciaio — <a href=\"https://www.apm.org.uk/blog/guggenheim-museum-bilbao-why-was-it-such-a-stellar-project-success/\">apm.org.uk</a></li><li><strong>ArchDaily</strong> — Centro Heydar Aliyev — disegni, struttura e dati di progetto — <a href=\"https://www.archdaily.com/448774/heydar-aliyev-center-zaha-hadid-architects\">archdaily.com</a></li><li><strong>Dezeen</strong> — la lettera aperta dell’ente per il patrimonio di Pechino sulla candidatura al Lubetkin, 2013 — <a href=\"https://www.dezeen.com/2013/08/03/zaha-hadid-galaxy-soho-riba-award-lubetkin-prize-chinese-heritage/\">dezeen.com</a></li><li><strong>UNStudio</strong> — Museo Mercedes-Benz — pianta a trifoglio e percorsi a doppia elica, dagli architetti — <a href=\"https://www.unstudio.com/projects/mercedes-benz-museum/\">unstudio.com</a></li><li><strong>MAD Architects</strong> — Teatro dell’Opera di Harbin — superficie, capienza e il percorso pubblico in copertura — <a href=\"https://www.i-mad.com/projects/harbin-opera-house\">i-mad.com</a></li></ul><span class=\"dek\">Fotografie: a licenza libera tramite Wikimedia Commons, accreditate in ogni didascalia.</span>"
             }
-          ]
+          ],
+          "authorId": "author-1784732936927-kw554",
+          "role": "Autore",
+          "tags": [
+            "architecture",
+            "design",
+            "cities"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-guggenheim-river.jpg"
         }
       ],
       "reviews": [
