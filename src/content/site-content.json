@@ -3571,12 +3571,12 @@
         },
         {
           "type": "header",
-          "level": 2,
-          "content": "<span class=\"kicker\">01 · Frank Gehry</span>Guggenheim Museum Bilbao"
+          "content": "01 · Frank GehryGuggenheim Museum Bilbao",
+          "level": 2
         },
         {
           "type": "text",
-          "content": "<span class=\"dek\">Bilbao · opened 18 October 1997 · the sculpture that ate a city’s reputation</span>"
+          "content": "Bilbao · opened 18 October 1997 · the sculpture that ate a city’s reputation"
         },
         {
           "type": "text",
@@ -3592,7 +3592,7 @@
         },
         {
           "type": "text",
-          "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">$89m</span><span class=\"stat-label\">construction cost</span></li><li><span class=\"stat-figure\">€100m</span><span class=\"stat-label\">in taxes, first three years</span></li><li><span class=\"stat-figure\">4 million</span><span class=\"stat-label\">visitors, first three years</span></li><li><span class=\"stat-figure\">1.3 million</span><span class=\"stat-label\">visitors in 2025</span></li></ul>"
+          "content": "$89mconstruction cost€100min taxes, first three years4 millionvisitors, first three years1.3 millionvisitors in 2025"
         },
         {
           "type": "text",
@@ -3613,7 +3613,8 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-titanium-detail.jpg",
-          "caption": "Titanium, close up — sub-millimetre sheets, each curved individually, overlapping like fish scales. Photo: Jules Verne Times Two, CC BY-SA 4.0, via Wikimedia Commons"
+          "caption": "Titanium, close up — sub-millimetre sheets, each curved individually, overlapping like fish scales. Photo: Jules Verne Times Two, CC BY-SA 4.0, via Wikimedia Commons",
+          "align": "center"
         },
         {
           "type": "text",
@@ -3630,16 +3631,17 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-puppy.jpg",
-          "caption": "Jeff Koons's Puppy on duty at the entrance — the avant-garde's least serious doorman. Photo: Jules Verne Times Two, CC BY-SA 4.0, via Wikimedia Commons"
+          "caption": "Jeff Koons's Puppy on duty at the entrance — the avant-garde's least serious doorman. Photo: Jules Verne Times Two, CC BY-SA 4.0, via Wikimedia Commons",
+          "align": "center"
         },
         {
           "type": "header",
-          "level": 2,
-          "content": "<span class=\"kicker\">02 · Zaha Hadid Architects</span>Heydar Aliyev Center"
+          "content": "02 · Zaha Hadid ArchitectsHeydar Aliyev Center",
+          "level": 2
         },
         {
           "type": "text",
-          "content": "<span class=\"dek\">Baku · opened 10 May 2012 · the floor that ran away up the wall</span>"
+          "content": "Baku · opened 10 May 2012 · the floor that ran away up the wall"
         },
         {
           "type": "text",
@@ -3652,11 +3654,12 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/epris-curves-heydar-aliyev-night.jpg",
-          "caption": "Heydar Aliyev Center, Zaha Hadid Architects, 2012. Locate the wall — there isn’t one. Photo: lumoplank, CC0, via Wikimedia Commons"
+          "caption": "Heydar Aliyev Center, Zaha Hadid Architects, 2012. Locate the wall — there isn’t one. Photo: lumoplank, CC0, via Wikimedia Commons",
+          "align": "center"
         },
         {
           "type": "text",
-          "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">57,500 m²</span><span class=\"stat-label\">floor area over eight levels</span></li><li><span class=\"stat-figure\">74 m</span><span class=\"stat-label\">at the crest of the fold</span></li><li><span class=\"stat-figure\">1,000</span><span class=\"stat-label\">seats in the auditorium</span></li><li><span class=\"stat-figure\">~$250m</span><span class=\"stat-label\">estimated cost</span></li></ul>"
+          "content": "57,500 m²floor area over eight levels74 mat the crest of the fold1,000seats in the auditorium~$250mestimated cost"
         },
         {
           "type": "text",
@@ -3669,12 +3672,14 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/epris-curves-baku-interior-stairs.jpg",
-          "caption": "Inside the fold: stairs, balustrade and ceiling poured from the same continuous surface. Photo: Mahmoodrezamo, CC BY-SA 4.0, via Wikimedia Commons"
+          "caption": "Inside the fold: stairs, balustrade and ceiling poured from the same continuous surface. Photo: Mahmoodrezamo, CC BY-SA 4.0, via Wikimedia Commons",
+          "align": "center"
         },
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/epris-curves-heydar-aliyev-auditorium.jpg",
-          "caption": "One thousand seats and not a right angle among them. Photo: Emin Allahverdi, CC BY-SA 4.0, via Wikimedia Commons"
+          "caption": "One thousand seats and not a right angle among them. Photo: Emin Allahverdi, CC BY-SA 4.0, via Wikimedia Commons",
+          "align": "center"
         },
         {
           "type": "text",
@@ -3687,7 +3692,8 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/epris-curves-baku-interior-garden.jpg",
-          "caption": "One of the enclosed winter gardens — real trees, under glass, inside the curve. Photo: Mahmoodrezamo, CC BY-SA 4.0, via Wikimedia Commons"
+          "caption": "One of the enclosed winter gardens — real trees, under glass, inside the curve. Photo: Mahmoodrezamo, CC BY-SA 4.0, via Wikimedia Commons",
+          "align": "center"
         },
         {
           "type": "text",
@@ -3695,12 +3701,12 @@
         },
         {
           "type": "header",
-          "level": 2,
-          "content": "<span class=\"kicker\">03 · Zaha Hadid Architects</span>Galaxy SOHO"
+          "content": "03 · Zaha Hadid ArchitectsGalaxy SOHO",
+          "level": 2
         },
         {
           "type": "text",
-          "content": "<span class=\"dek\">Beijing · completed 2012 · four moons over the second ring road</span>"
+          "content": "Beijing · completed 2012 · four moons over the second ring road"
         },
         {
           "type": "text",
@@ -3709,16 +3715,18 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/epris-curves-galaxy-soho-bridge.jpg",
-          "caption": "The bridges that fuse Galaxy SOHO's four volumes into one continuous route. Photo: Francesco Bini, CC BY-SA 4.0, via Wikimedia Commons"
+          "caption": "The bridges that fuse Galaxy SOHO's four volumes into one continuous route. Photo: Francesco Bini, CC BY-SA 4.0, via Wikimedia Commons",
+          "align": "center"
         },
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/epris-curves-galaxy-soho-courtyard.jpg",
-          "caption": "Galaxy SOHO, 2012. The gap between buildings — normally where the bins live — promoted to principal room. Photo: HoweyYuan, CC BY-SA 4.0, via Wikimedia Commons"
+          "caption": "Galaxy SOHO, 2012. The gap between buildings — normally where the bins live — promoted to principal room. Photo: HoweyYuan, CC BY-SA 4.0, via Wikimedia Commons",
+          "align": "center"
         },
         {
           "type": "text",
-          "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">330,000 m²</span><span class=\"stat-label\">floor area — near six Heydar Aliyev Centers</span></li><li><span class=\"stat-figure\">18</span><span class=\"stat-label\">floors</span></li><li><span class=\"stat-figure\">67 m</span><span class=\"stat-label\">height</span></li><li><span class=\"stat-figure\">4</span><span class=\"stat-label\">fused volumes, bridged at several levels</span></li></ul>"
+          "content": "330,000 m²floor area — near six Heydar Aliyev Centers18floors67 mheight4fused volumes, bridged at several levels"
         },
         {
           "type": "text",
@@ -3727,7 +3735,8 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/epris-curves-galaxy-soho-atrium.jpg",
-          "caption": "Continuous bands rather than stacked floors: there is nowhere for your eye to sit down. Photo: Francesco Bini, CC BY-SA 4.0, via Wikimedia Commons"
+          "caption": "Continuous bands rather than stacked floors: there is nowhere for your eye to sit down. Photo: Francesco Bini, CC BY-SA 4.0, via Wikimedia Commons",
+          "align": "center"
         },
         {
           "type": "text",
@@ -3743,12 +3752,12 @@
         },
         {
           "type": "header",
-          "level": 2,
-          "content": "<span class=\"kicker\">04 · UNStudio</span>Mercedes-Benz Museum"
+          "content": "04 · UNStudioMercedes-Benz Museum",
+          "level": 2
         },
         {
           "type": "text",
-          "content": "<span class=\"dek\">Stuttgart · opened 19 May 2006 · the traffic diagram that grew a skin</span>"
+          "content": "Stuttgart · opened 19 May 2006 · the traffic diagram that grew a skin"
         },
         {
           "type": "text",
@@ -3761,7 +3770,8 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/epris-curves-mercedes-blue-hour.jpg",
-          "caption": "Mercedes-Benz Museum at blue hour — the twist reads even better lit from inside. Photo: Julian Herzog, CC BY 4.0, via Wikimedia Commons"
+          "caption": "Mercedes-Benz Museum at blue hour — the twist reads even better lit from inside. Photo: Julian Herzog, CC BY 4.0, via Wikimedia Commons",
+          "align": "center"
         },
         {
           "type": "text",
@@ -3778,11 +3788,12 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/epris-curves-mercedes-benz-museum.jpg",
-          "caption": "Mercedes-Benz Museum, UNStudio, 2006. It looks like that because of how you walk through it. Photo: Ank Kumar, CC BY-SA 4.0, via Wikimedia Commons"
+          "caption": "Mercedes-Benz Museum, UNStudio, 2006. It looks like that because of how you walk through it. Photo: Ank Kumar, CC BY-SA 4.0, via Wikimedia Commons",
+          "align": "center"
         },
         {
           "type": "text",
-          "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">16,500 m²</span><span class=\"stat-label\">of exhibition space</span></li><li><span class=\"stat-figure\">4,800 m²</span><span class=\"stat-label\">the footprint it stands on</span></li><li><span class=\"stat-figure\">160+</span><span class=\"stat-label\">vehicles on display</span></li><li><span class=\"stat-figure\">800,245</span><span class=\"stat-label\">visitors in 2023</span></li></ul>"
+          "content": "16,500 m²of exhibition space4,800 m²the footprint it stands on160+vehicles on display800,245visitors in 2023"
         },
         {
           "type": "text",
@@ -3791,7 +3802,8 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/epris-curves-mercedes-benz-museum-facade.jpg",
-          "caption": "Every band on the outside is a ramp on the inside, wearing a coat. Photo: Alexander Migl, CC BY-SA 4.0, via Wikimedia Commons"
+          "caption": "Every band on the outside is a ramp on the inside, wearing a coat. Photo: Alexander Migl, CC BY-SA 4.0, via Wikimedia Commons",
+          "align": "center"
         },
         {
           "type": "text",
@@ -3799,12 +3811,12 @@
         },
         {
           "type": "header",
-          "level": 2,
-          "content": "<span class=\"kicker\">05 · MAD Architects</span>Harbin Opera House"
+          "content": "05 · MAD ArchitectsHarbin Opera House",
+          "level": 2
         },
         {
           "type": "text",
-          "content": "<span class=\"dek\">Harbin · broke ground 2011, opened 2015 · a snowdrift you can buy tickets for</span>"
+          "content": "Harbin · broke ground 2011, opened 2015 · a snowdrift you can buy tickets for"
         },
         {
           "type": "text",
@@ -3821,7 +3833,8 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-exterior-2.jpg",
-          "caption": "Harbin Opera House by day: the aluminium reads as rock, ice or dune depending on the light. Photo: EditQ, CC BY-SA 4.0, via Wikimedia Commons"
+          "caption": "Harbin Opera House by day: the aluminium reads as rock, ice or dune depending on the light. Photo: EditQ, CC BY-SA 4.0, via Wikimedia Commons",
+          "align": "center"
         },
         {
           "type": "image",
@@ -3831,7 +3844,7 @@
         },
         {
           "type": "text",
-          "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">1,600+</span><span class=\"stat-label\">seats in the grand theatre</span></li><li><span class=\"stat-figure\">400</span><span class=\"stat-label\">seats in the studio theatre</span></li><li><span class=\"stat-figure\">~79,000 m²</span><span class=\"stat-label\">building area</span></li><li><span class=\"stat-figure\">0</span><span class=\"stat-label\">tickets required for the roof</span></li></ul>"
+          "content": "1,600+seats in the grand theatre400seats in the studio theatre~79,000 m²building area0tickets required for the roof"
         },
         {
           "type": "text",
@@ -3840,12 +3853,14 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-exterior-3.jpg",
-          "caption": "The building's low, wind-carved profile against the Heilongjiang sky. Photo: EditQ, CC BY-SA 4.0, via Wikimedia Commons"
+          "caption": "The building's low, wind-carved profile against the Heilongjiang sky. Photo: EditQ, CC BY-SA 4.0, via Wikimedia Commons",
+          "align": "center"
         },
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-opera-house.jpg",
-          "caption": "The public ramp rises along the right-hand volume and carries straight over the top. Photo: EditQ, CC BY-SA 4.0, via Wikimedia Commons"
+          "caption": "The public ramp rises along the right-hand volume and carries straight over the top. Photo: EditQ, CC BY-SA 4.0, via Wikimedia Commons",
+          "align": "center"
         },
         {
           "type": "text",
@@ -3857,8 +3872,8 @@
         },
         {
           "type": "header",
-          "level": 2,
-          "content": "<span class=\"kicker\">Afterword</span>what the curve costs"
+          "content": "Afterwordwhat the curve costs",
+          "level": 2
         },
         {
           "type": "text",
@@ -3886,9 +3901,10 @@
         },
         {
           "type": "text",
-          "content": "<hr><h4>Sources</h4><ul class=\"sources\"><li><strong>Guggenheim Museum Bilbao</strong> — the museum on its own building: areas, galleries and the titanium skin — <a href=\"https://www.guggenheim-bilbao.eus/en/the-building\">guggenheim-bilbao.eus</a></li><li><strong>Association for Project Management</strong> — the project economics, and why titanium was briefly cheaper than steel — <a href=\"https://www.apm.org.uk/blog/guggenheim-museum-bilbao-why-was-it-such-a-stellar-project-success/\">apm.org.uk</a></li><li><strong>ArchDaily</strong> — Heydar Aliyev Center — drawings, structure and project data — <a href=\"https://www.archdaily.com/448774/heydar-aliyev-center-zaha-hadid-architects\">archdaily.com</a></li><li><strong>Dezeen</strong> — the open letter from Beijing’s heritage body over the Lubetkin nomination, 2013 — <a href=\"https://www.dezeen.com/2013/08/03/zaha-hadid-galaxy-soho-riba-award-lubetkin-prize-chinese-heritage/\">dezeen.com</a></li><li><strong>UNStudio</strong> — Mercedes-Benz Museum — the trefoil plan and double-helix circulation, from the architects — <a href=\"https://www.unstudio.com/projects/mercedes-benz-museum/\">unstudio.com</a></li><li><strong>MAD Architects</strong> — Harbin Opera House — building area, seating and the public rooftop route — <a href=\"https://www.i-mad.com/projects/harbin-opera-house\">i-mad.com</a></li></ul><span class=\"dek\">Photographs: freely licensed via Wikimedia Commons, each credited in its caption.</span>"
+          "content": "SourcesGuggenheim Museum Bilbao — the museum on its own building: areas, galleries and the titanium skin — <a href=\"https://www.guggenheim-bilbao.eus/en/the-building\">guggenheim-bilbao.eus</a>Association for Project Management — the project economics, and why titanium was briefly cheaper than steel — <a href=\"https://www.apm.org.uk/blog/guggenheim-museum-bilbao-why-was-it-such-a-stellar-project-success/\">apm.org.uk</a>ArchDaily — Heydar Aliyev Center — drawings, structure and project data — <a href=\"https://www.archdaily.com/448774/heydar-aliyev-center-zaha-hadid-architects\">archdaily.com</a>Dezeen — the open letter from Beijing’s heritage body over the Lubetkin nomination, 2013 — <a href=\"https://www.dezeen.com/2013/08/03/zaha-hadid-galaxy-soho-riba-award-lubetkin-prize-chinese-heritage/\">dezeen.com</a>UNStudio — Mercedes-Benz Museum — the trefoil plan and double-helix circulation, from the architects — <a href=\"https://www.unstudio.com/projects/mercedes-benz-museum/\">unstudio.com</a>MAD Architects — Harbin Opera House — building area, seating and the public rooftop route — <a href=\"https://www.i-mad.com/projects/harbin-opera-house\">i-mad.com</a>Photographs: freely licensed via Wikimedia Commons, each credited in its caption."
         }
-      ]
+      ],
+      "updatedAt": "2026-08-02T07:54:08.048Z"
     }
   ],
   "reviews": [
