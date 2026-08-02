@@ -9969,361 +9969,377 @@
         {
           "id": 18,
           "title": "Gegen den rechten Winkel",
-          "excerpt": "Fünf Bauten, die sich aus dem Raster herausgeredet haben — und die Software, das Metall, das Geld und die schiere Frechheit, die es brauchte, um sie zu bauen.",
           "author": "Viacheslav Munister",
-          "category": "Architecture",
-          "subcategory": "Essay",
-          "date": "Aug 2, 2026",
+          "authorId": "author-1784732936927-kw554",
+          "role": "Autor",
+          "date": "2. August 2026",
+          "excerpt": "Fünf Gebäude, die sich aus dem Raster geredet haben – und die Software, das Metall, das Geld und die Nerven, die es brauchte, um sie zu bauen.",
+          "category": "Architektur",
+          "subcategory": "Aufsatz",
+          "tags": [
+            "Architektur",
+            "Design",
+            "Städte"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-cover-v2.jpg",
           "content": [
             {
               "type": "text",
-              "content": "Jedem Architekturstudenten wird beigebracht, den rechten Winkel zu verehren, und jeder Architekturstudent bemerkt irgendwann, dass außerhalb des Ateliers nichts im Neunzig-Grad-Winkel steht. Nicht die Küstenlinie, nicht der Brustkorb, nicht der Fluss, nicht die Art, wie Menschen einen Platz überqueren: Sie schneiden die Ecke ab, immer, weshalb der Rasen auf jedem Campus diagonal abstirbt, bevor er irgendwo sonst abstirbt. Das Raster ist keine Natur. Das Raster ist ein Ablagesystem. Es hat gewonnen, weil es billig mit der Reißschiene zu zeichnen, billig pro Quadratmeter zu kalkulieren und billig vor einem Bauausschuss zu verteidigen war, der ohnehin längst nicht mehr zuhörte."
+              "content": "Jedem Architekturstudenten wird beigebracht, den rechten Winkel zu respektieren, und jedem Architekturstudenten fällt irgendwann auf, dass außerhalb des Studios nichts einen Winkel von neunzig Grad hat. Nicht die Küste, nicht der Brustkorb, nicht der Fluss, nicht die Art und Weise, wie Menschen einen Platz überqueren – sie schneiden immer die Ecke ab, weshalb das Gras auf jedem Campus diagonal abstirbt, bevor es irgendwo anders abstirbt. Das Gitter ist nicht die Natur. Das Raster ist ein Ablagesystem. Es hat gewonnen, weil es günstig war, mit einem T-Quadrat zu zeichnen, günstig pro Quadratmeter zu bepreisen und günstig in einer Planungsbesprechung vor einem Ausschuss zu verteidigen, der bereits nicht mehr zugehört hatte."
             },
             {
               "type": "text",
-              "content": "Ein Jahrhundert lang war die Kurve also etwas, für das man draufzahlte und sich anschließend schriftlich rechtfertigte. Gekrümmte Wand, Sonderschalung, ein Bauunternehmer, der durch die Zähne atmet, und ein Kalkulator mit dem Gesichtsausdruck eines Mannes, der eine Krankenhausrechnung in fremder Währung liest. Genau eine war erlaubt — im Foyer, wo Besucher sie sehen und Investoren sie spüren — und danach kehrte das Gebäude zu seiner Rolle als Aktenschrank mit Fenstern zurück, mit hübschem Empfangstresen und einer Kaffeemaschine, die in keinem Raumprogramm stand."
+              "content": "Ein Jahrhundert lang war die Kurve also etwas, für das man extra bezahlte und das man dann schriftlich begründete. Gekrümmte Wand, maßgeschneiderte Schalung, ein Bauunternehmer, der durch die Zähne atmet, und ein Mengengutachter mit dem Gesichtsausdruck eines Mannes, der eine Krankenhausrechnung in einer Fremdwährung liest. Man durfte genau eins haben – in der Lobby, wo Besucher es sehen und Investoren es spüren konnten – und dann wurde das Gebäude wieder zu einem Aktenschrank mit Fenstern, einem schönen Empfangstresen und einer Kaffeemaschine, die niemand näher bezeichnet hatte."
             },
             {
               "type": "text",
-              "content": "Beendet wurde diese Übereinkunft nicht von einem Manifest. Manifeste gab es seit 1919, und gebaut hatten sie fast nichts. Es war Arithmetik. Zwischen etwa 1990 und 2015 wurde Software von Leuten, die Flugzeuge und Autos bauen, gut genug, um eine doppelt gekrümmte Fläche so präzise zu beschreiben, dass man sie zuschneiden, kalkulieren, versichern und — das unglamouröse Wunder am Grund dieser ganzen Geschichte — einen Zulieferer in einer Halle bei Saragossa dazu bringen konnte, Paneel Nr. 3417 so zu fertigen, dass es an einem verregneten Dienstag im Oktober auf Paneel Nr. 3418 trifft, mit einer Toleranz in Millimetern und einem Polier, dem Ihr Konzept herzlich egal ist."
+              "content": "Was die Vereinbarung beendete, war kein Manifest. Manifeste waren seit 1919 verfügbar und hatten fast nichts gebaut. Es war Arithmetik. Etwa zwischen 1990 und 2015 wurde Software, die von Leuten übernommen wurde, die Flugzeuge und Autos herstellen, so gut, dass sie eine doppelt gekrümmte Oberfläche präzise genug beschreiben konnte, um sie zu schneiden, zu kalkulieren, zu versichern und – das unscheinbare Wunder hinter dieser ganzen Geschichte – einen Hersteller in einer Halle außerhalb von Saragossa dazu zu bringen, die Platte 3.417 so zu produzieren, dass sie an einem nassen Dienstag im Oktober mit der Platte 3.418 übereinstimmt, mit einer in Millimetern gemessenen Toleranz und einem Vorarbeiter Wer kümmert sich nicht um Ihr Konzept?"
             },
             {
               "type": "text",
-              "content": "Die fünf Bauten unten fallen genau in dieses Fenster, und man legt sie gewohnheitsmäßig unter Wörtern ab, die das Nachdenken verhindern sollen: Blob, parametrisch, organisch, ikonisch — Letzteres fast ausschließlich von Leuten benutzt, die Ihre Unterschrift wollen. Sieht man genauer hin, stimmen sie in gar nichts überein. Eines ist eine Skulptur, in der zufällig ein Museum steckt. Eines ist eine Landschaft, die ein Gebäude imitiert. Eines ist ein Einkaufszentrum in der Sinnkrise, auf 330.000 Quadratmetern. Eines ist ein Verkehrsdiagramm, dem eine Haut und ein Mercedesstern gewachsen sind. Eines ist eine Schneewehe mit ausgezeichneter Akustik und einem kostenlosen Dach."
+              "content": "Die fünf Gebäude unten befinden sich alle in diesem Fenster, und sie sind üblicherweise unter Wörtern zusammengefasst, die das Nachdenken verhindern sollen: Klecks, parametrisch, organisch, ikonisch – das letzte wird fast ausschließlich von Leuten verwendet, die Ihre Unterschrift auf etwas haben möchten. Schauen Sie genauer hin und sie sind sich in überhaupt nichts einig. Eine davon ist eine Skulptur, die zufällig ein Museum beherbergt. Eine davon ist eine Landschaft, die den Eindruck eines Gebäudes vermittelt. Das eine ist ein Einkaufszentrum mit einer Fläche von 330.000 Quadratmetern, das in einer existenziellen Krise steckt. Eines ist ein Verkehrsdiagramm, aus dem ein Skin und ein Mercedes-Emblem entstanden sind. Eine davon ist eine Schneeverwehung mit hervorragender Akustik und freiem Dach."
             },
             {
               "type": "text",
-              "content": "In jedem Fall ist die Form das Argument, nicht das Geschenkpapier. Die interessante Arbeit — der Teil, der das Foto überlebt — besteht darin, herauszufinden, wofür jedes einzelne argumentiert, wer das Argument bezahlt hat und was es gekostet hat, nachdem das Band durchschnitten war. Denn alle fünf kamen mit einer Rechnung, und nur einige waren es wert, beglichen zu werden."
+              "content": "In jedem Fall ist die Form das Argument, nicht das Geschenkpapier. Die interessante Arbeit – der Teil, der auf dem Foto erhalten bleibt – besteht darin, herauszufinden, wofür jeder argumentiert, wer für den Streit bezahlt hat und was es gekostet hat, nachdem das Band durchschnitten wurde. Denn alle fünf kamen mit einer Rechnung an und nur einige davon waren es wert, beglichen zu werden."
             },
             {
               "type": "header",
-              "content": "<span class=\"kicker\">01 · Frank Gehry</span>Guggenheim-Museum Bilbao",
+              "content": "01 · Frank GehryGuggenheim Museum Bilbao",
               "level": 2
             },
             {
               "type": "text",
-              "content": "<span class=\"dek\">Bilbao · eröffnet am 18. Oktober 1997 · die Skulptur, die den Ruf einer Stadt gefressen hat</span>"
+              "content": "Bilbao · eröffnet am 18. Oktober 1997 · die Skulptur, die den Ruf einer Stadt zerstörte"
             },
             {
               "type": "text",
-              "content": "Rekonstruieren wir kurz jene Besprechung. Frühe Neunziger. Bilbao ist eine Hafenstadt mit sterbenden Werften, einem vergifteten Fluss, ernsthafter Arbeitslosigkeit und einer Sicherheitslage, die Touristen zuverlässig anderswohin lenkte. Die baskischen Behörden schlagen als Heilmittel eine Dependance eines New Yorker Museums vor, auf den verfallenen Docks, entworfen von einem Kalifornier, international bekannt für Maschendrahtästhetik und eine ungeklärte persönliche Sache mit Fischen. Und sie zahlen selbst: neunundachtzig Millionen Dollar."
+              "content": "Rekonstruieren Sie für einen Moment das Pitch-Meeting. Es ist Anfang der neunziger Jahre. Bilbao ist eine Hafenstadt mit sterbenden Werften, einem vergifteten Fluss, hoher Arbeitslosigkeit und einer Sicherheitslage, die den Tourismus zuverlässig anderswo hielt. Die baskischen Behörden gehen davon aus, dass es sich bei der Lösung um eine Franchise eines New Yorker Museums handelt, das auf den verlassenen Docks errichtet wurde und von einem Kalifornier entworfen wurde, der international für Maschendrahtzäune und eine ungeklärte persönliche Angelegenheit mit Fisch bekannt ist. Und sie werden es selbst bezahlen: 89 Millionen Dollar."
             },
             {
               "type": "text",
-              "content": "Der Auftrag selbst war in drei Wochen entschieden. Guggenheim-Direktor Thomas Krens wählte drei Architekten aus — Gehry, Arata Isozaki, Coop Himmelblau —, gab jedem zehntausend Dollar und bat um ein Konzept. Isozaki schickte Skizzen eines elliptischen, viergeschossigen Blocks. Coop Himmelblau schlug transparente Kuben vor. Gehry schickte etwas, das aussah wie nichts, was jemand verlangt hatte — und bekam den Zuschlag."
+              "content": "Die Kommission selbst wurde in drei Wochen beschlossen. Guggenheim-Direktor Thomas Krens wählte drei Architekten – Gehry, Arata Isozaki und Coop Himmelblau – in die engere Auswahl, überreichte jedem zehntausend Dollar und bat um ein Konzept. Isozaki schickte Skizzen eines elliptischen, vierstöckigen Blocks. Coop Himmelblau schlug transparente Würfel vor. Gehry schickte etwas, das so aussah, als hätte niemand danach gefragt, und bekam den Auftrag."
             },
             {
               "type": "text",
-              "content": "Nach jedem vernünftigen Maßstab hätte das in einem Untersuchungsausschuss enden müssen. Stattdessen wurde es die meistkopierte städtebauliche Geste des Jahrhunderts, und die erzeugten Steuern deckten die Baukosten innerhalb von drei Jahren."
+              "content": "Nach allen vernünftigen Maßstäben hätte dies mit einer öffentlichen Untersuchung enden müssen. Stattdessen wurde es zur am meisten nachgeahmten städtischen Geste des Jahrhunderts, und die damit verbundenen Steuern deckten die Baukosten innerhalb von drei Jahren."
             },
             {
               "type": "text",
-              "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">89 Mio. $</span><span class=\"stat-label\">Baukosten</span></li><li><span class=\"stat-figure\">100 Mio. €</span><span class=\"stat-label\">Steuern in den ersten drei Jahren</span></li><li><span class=\"stat-figure\">4 Mio.</span><span class=\"stat-label\">Besucher in den ersten drei Jahren</span></li><li><span class=\"stat-figure\">1,3 Mio.</span><span class=\"stat-label\">Besucher im Jahr 2025</span></li></ul>"
+              "content": "89 Millionen US-Dollar Baukosten, 100 Millionen Euro Steuern, in den ersten drei Jahren 4 Millionen Besucher, in den ersten drei Jahren 1,3 Millionen Besucher im Jahr 2025"
             },
             {
               "type": "text",
-              "content": "Lesen Sie diese vier Zahlen hintereinander, denn sie sind der gesamte Grund, warum seither jeder Bürgermeister der Welt ein seltsames Gebäude will. Innerhalb von drei Jahren hatte das Museum geschätzte 500 Mio. € an Wirtschaftsleistung und rund 100 Mio. € an Steuern erzeugt — das Haus bezahlte sich selbst und begann dann, Geld nach Hause zu schicken. Kaum ein öffentlicher Bau der Geschichte kann diese Quittung vorlegen. Daher stammt der Ausdruck „Bilbao-Effekt“, und daher rührt auch, dass er ungefähr einmal im Monat falsch angewendet wird."
+              "content": "Lesen Sie diese vier Zahlen der Reihe nach, denn sie sind der Grund, warum sich seitdem jeder Bürgermeister auf der Welt ein seltsames Gebäude gewünscht hat. Innerhalb von drei Jahren generierte das Museum schätzungsweise 500 Millionen Euro an wirtschaftlicher Aktivität und etwa 100 Millionen Euro an Steuern – das Gebäude amortisierte sich und begann dann, Geld nach Hause zu schicken. Fast kein öffentliches Bauwerk in der Geschichte kann diesen Beleg vorweisen. Aus diesem Grund gibt es den Ausdruck „der Bilbao-Effekt“ und warum er seitdem etwa einmal im Monat falsch angewendet wird."
             },
             {
               "type": "text",
-              "content": "Der Entwurfsmythos — Gehry zerknüllt Papier, reicht es einem Ingenieur, Ingenieur weint — kehrt die Fahrtrichtung genau um. Sein Büro arbeitete tatsächlich besessen mit physischen Modellen. Dass daraus ein Gebäude wurde und keine Klage, liegt an CATIA: Software aus der Luft- und Raumfahrt, von seinem Team angepasst, um das Modell zu digitalisieren und den Herstellern Flächen zu übergeben, die sie wirklich produzieren können. Jedes Paneel ist ein nummeriertes, toleranzgeprüftes Objekt mit einem festen Platz. Das Gebäude sieht aus, als sei es im Streit zusammengesetzt worden. Tatsächlich ist es eines der diszipliniertesten Objekte seines Jahrzehnts: ein Jazzsolo, das neun Monate lang auskomponiert wurde."
+              "content": "Der Designmythos – Gehry zerknüllt Papier, gibt es einem Ingenieur, der Ingenieur weint – gibt die Fahrtrichtung genau rückwärts an. Sein Büro arbeitete wie besessen mit physischen Modellen. Der Grund dafür, dass diese Modelle zu einem Gebäude und nicht zu einem Rechtsstreit wurden, ist CATIA, eine Software, die für die Luft- und Raumfahrtindustrie geschrieben und von seinem Team angepasst wurde, um die Modell- und Handarbeitsoberflächen zu digitalisieren, die sie tatsächlich herstellen konnten. Jedes Paneel ist ein nummeriertes, toleranzgeprüftes Objekt, das irgendwo sein soll. Das Gebäude sieht aus, als wäre es während eines Streits zusammengebaut worden. Tatsächlich gehört es zu den diszipliniertesten Werken seines Jahrzehnts: ein Jazz-Solo, dessen vollständige Ausarbeitung neun Monate dauerte."
             },
             {
               "type": "quote",
-              "content": "Es sieht improvisiert aus. Es ist das disziplinierteste Ding am Fluss."
+              "content": "Es sieht improvisiert aus. Es ist die disziplinierteste Sache auf dem Fluss."
             },
             {
               "type": "text",
-              "content": "Dann die Haut, die beste Geschichte der Fassadenbekleidung des 20. Jahrhunderts, die fast niemand richtig erzählt. Gehry hatte ursprünglich Edelstahl vorgesehen. Dort stehen nun 33.000 Titanbleche, vier Zehntel Millimeter dünn, sechzig Tonnen insgesamt — Titan ist ein Luftfahrtmetall, das an einem Bau dieser Größe zuvor niemand verwendet hatte, aus dem hervorragenden Grund, dass es ein Vermögen kostet."
+              "content": "Dann ist da noch die Haut, die schönste Geschichte der Fassadenverkleidung des 20. Jahrhunderts, und fast niemand erzählt sie richtig. Gehry meinte ursprünglich Edelstahl. Was dort steht, sind 33.000 Titanbleche, vier Zehntel Millimeter dick, insgesamt sechzig Tonnen – Titan ist ein Luft- und Raumfahrtmetall, das noch nie für ein Gebäude dieser Größenordnung verwendet wurde, und zwar aus dem guten Grund, dass es ein Vermögen kostet."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-titanium-detail.jpg",
-              "caption": "Titan aus der Nähe — Bleche unter einem Millimeter Stärke, jedes einzeln gekrümmt, überlappend wie Fischschuppen. Foto: Jules Verne Times Two, CC BY-SA 4.0, via Wikimedia Commons"
+              "caption": "Titan, Nahaufnahme – Sub-Millimeter-Platten, jede einzeln gebogen, überlappend wie Fischschuppen. Foto: Jules Verne Times Two, CC BY-SA 4.0, über Wikimedia Commons",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Bis auf jenen kurzen Moment Anfang der Neunziger, als es das nicht tat. Die Sowjetunion hatte das Angriffs-U-Boot der Alfa-Klasse mit einem Titanrumpf gebaut; als Russland die letzten außer Dienst stellte, überschwemmte das Metall den Weltmarkt und der Preis brach ein — genau in dem Moment, in dem Gehry ein Material wählte, unterbot es Edelstahl. Das heißt: Das meistfotografierte Gebäude des späten 20. Jahrhunderts ist in ausgemustertem Bestand des Kalten Krieges eingewickelt. Das Schimmern über dem Nervión ist die Friedensdividende, auf 0,4 mm ausgewalzt und an ein Museum geschraubt. Kein Architekturhistoriker hätte gewagt, das zu erfinden."
+              "content": "Nur dass dies in den frühen 1990er-Jahren für kurze Zeit nicht der Fall war. Die Sowjetunion hatte das Angriffs-U-Boot der Alfa-Klasse mit einem Titanrumpf gebaut; Als Russland die letzten von ihnen stilllegte, überschwemmte das Metall den Weltmarkt und der Preis brach ein und unterbot Edelstahl genau in dem Moment, als Gehry sich für ein Material entschied. Das bedeutet, dass das meistfotografierte Gebäude des späten 20. Jahrhunderts in ausgemusterte U-Boote aus dem Kalten Krieg gehüllt ist. Dieser Schimmer über dem Nervión ist die Friedensdividende, auf 0,4 mm gerollt und an ein Museum geschraubt. Kein Architekturhistoriker hätte es gewagt, es zu erfinden."
             },
             {
               "type": "text",
-              "content": "Was Bilbao tatsächlich bewies, ist weit vorsichtiger als die Exportfassung zugibt. Die Stadt baute außerdem die Metro neu, reinigte den Fluss, verlagerte Hafenfunktionen flussabwärts und betrieb einen langen, langweiligen, ordentlich finanzierten Regionalplan, in den das Museum als fotogener Teil eingesetzt wurde. Städte, die die Skulptur ohne die begleitenden zwanzig Jahre Arbeit bestellten, bekamen eine Skulptur. Einige bekamen eine sehr teure leere Skulptur — eine Lektion, die gratis zu haben ist und fast nie angenommen wird."
+              "content": "Was Bilbao tatsächlich bewiesen hat, ist qualifizierter, als die Exportausgabe zugibt. Die Stadt baute auch ihre U-Bahn wieder auf, reinigte den Fluss, verlegte die Hafenfunktionen flussabwärts und führte einen langen, langweiligen, gut finanzierten Regionalplan durch, in den das Museum als fotogener Bestandteil eingefügt wurde. Städte, die die Skulptur ohne die begleitende zwanzigjährige Arbeit bestellten, erhielten eine Skulptur. Mehrere erhielten eine sehr teure leere Skulptur – eine Lektion, die kostenlos zur Verfügung stand und fast nie in Anspruch genommen wurde."
             },
             {
               "type": "text",
-              "content": "Am liebsten mag ich an diesem Gebäude den Türsteher. Den Eingang bewacht Jeff Koons’ „Puppy“: ein zwölf Meter hoher West Highland Terrier, gepolstert mit lebenden Blühpflanzen, die ununterbrochen gegossen und gestutzt werden, damit er keine kahlen Stellen bekommt. Eine Titankathedrale der internationalen Avantgarde, bewacht von einem riesigen Hund aus Petunien. Bilbao hat begriffen, was seine Nachahmer nie begriffen haben: Das Ganze funktioniert viel besser, wenn es sich weigert, sich vollkommen ernst zu nehmen."
+              "content": "Was mir an dem Gebäude am besten gefällt, ist der Portier. Den Eingang bewacht Jeff Koons‘ Welpe: ein zwölf Meter langer West Highland Terrier, der mit lebenden blühenden Pflanzen gepolstert ist und ständig bewässert und gepflegt wird, damit er nie kahl wird. Eine Titankathedrale der internationalen Avantgarde, verteidigt von einem riesigen Hund aus Petunien. Bilbao hat verstanden, was seine Nachahmer nie verstanden haben: Das ganze Unternehmen funktioniert viel besser, wenn es sich weigert, sich selbst völlig ernst zu nehmen."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-puppy.jpg",
-              "caption": "Jeff Koons’ „Puppy“ im Dienst am Eingang — der am wenigsten ernste Türsteher der Avantgarde. Foto: Jules Verne Times Two, CC BY-SA 4.0, via Wikimedia Commons"
+              "caption": "Jeff Koons‘ Welpe im Dienst am Eingang – der unbedeutendste Türsteher der Avantgarde. Foto: Jules Verne Times Two, CC BY-SA 4.0, über Wikimedia Commons",
+              "align": "center"
             },
             {
               "type": "header",
-              "content": "<span class=\"kicker\">02 · Zaha Hadid Architects</span>Heydar-Aliyev-Zentrum",
+              "content": "02 · Zaha Hadid ArchitectsHeydar Aliyev Center",
               "level": 2
             },
             {
               "type": "text",
-              "content": "<span class=\"dek\">Baku · eröffnet am 10. Mai 2012 · der Boden, der die Wand hinaufgelaufen ist</span>"
+              "content": "Baku · eröffnet am 10. Mai 2012 · der Boden, der an der Wand entlanglief"
             },
             {
               "type": "text",
-              "content": "Die ersten zwei Jahrzehnte ihres Ruhms verbrachte Zaha Hadid als berühmteste lebende Architektin mit fast nichts Gebautem. 1983 gewann sie den Wettbewerb für The Peak in Hongkong mit Bildern, die aussahen wie Glassplitter im Flug; nicht gebaut. Mitte der Neunziger gewann sie das Opernhaus in Cardiff Bay und sah zu, wie sich die Finanzierung unter einer Kampagne auflöste, die sehr viel über ihren schwierigen Charakter zu sagen hatte und nichts Kluges über den Entwurf. Jahrelang war sie das designierte Genie in Wartestellung: brillant, unbaubar, ausländisch, weiblich — suchen Sie sich aus, wogegen die Gremien tatsächlich etwas hatten."
+              "content": "Zaha Hadid verbrachte die ersten zwei Jahrzehnte ihres Ruhms als berühmteste Architektin fast ohne Bestand. Sie gewann 1983 den Peak-Wettbewerb in Hongkong mit Gemälden, die aussahen wie zerbrochenes Glas, das im Flug gefangen wurde; unbebaut. Sie gewann Mitte der Neunzigerjahre das Cardiff Bay Opera House und musste mit ansehen, wie sich die Finanzierung im Zuge einer Kampagne auflöste, in der viel darüber zu lesen war, dass sie schwierig sei, und nichts Intelligentes über den Entwurf zu sagen war. Jahrelang war sie das erwartete Genie des Berufsstandes: brillant, unbaubar, fremdartig, weiblich – wählen Sie aus, gegen welche davon die Komitees tatsächlich Einwände hatten."
             },
             {
               "type": "text",
-              "content": "Baku ist, was passiert, wenn man dieser Vorstellungskraft endlich einen Hang und eine Viertelmilliarde Dollar in die Hand gibt."
+              "content": "Baku ist das, was passiert, wenn dieser Fantasie endlich eine Viertelmilliarde Dollar eingeräumt wird."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-heydar-aliyev-night.jpg",
-              "caption": "Heydar-Aliyev-Zentrum, Zaha Hadid Architects, 2012. Finden Sie die Wand — es gibt keine. Foto: lumoplank, CC0, via Wikimedia Commons"
+              "caption": "Heydar Aliyev Center, Zaha Hadid Architects, 2012. Suchen Sie die Wand – es gibt keine. Foto: Lumoplank, CC0, über Wikimedia Commons",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">57.500 m²</span><span class=\"stat-label\">Geschossfläche auf acht Ebenen</span></li><li><span class=\"stat-figure\">74 m</span><span class=\"stat-label\">am Scheitel der Falte</span></li><li><span class=\"stat-figure\">1.000</span><span class=\"stat-label\">Plätze im Saal</span></li><li><span class=\"stat-figure\">~250 Mio. $</span><span class=\"stat-label\">geschätzte Kosten</span></li></ul>"
+              "content": "57.500 m² Grundfläche auf acht Ebenen, 74 Matten bis zum Scheitelpunkt, 1.000 Sitzplätze im Auditorium, geschätzte Kosten: 250 US-Dollar"
             },
             {
               "type": "text",
-              "content": "Der Zug ist einzig und absolut: den Boden nehmen, anheben, über Saal und Bibliothek falten, wieder herunterführen. Platz, Fassade und Dach sind eine durchgehende Fläche, und das Gebäude weigert sich strikt zu verraten, wo davon irgendetwas beginnt. Nichts vollführt sichtbare Heldentaten: Die Konstruktion ist ein Raumfachwerk, verborgen hinter der weißen Haut, das still schwitzt, während die Architektur vorn behauptet, all das habe keinerlei Mühe gekostet. Das Schwanenprinzip, ausgeführt auf 57.500 Quadratmetern."
+              "content": "Die Bewegung ist einfach und absolut: Nehmen Sie den Boden, heben Sie ihn an, falten Sie ihn über das Auditorium und die Bibliothek und senken Sie ihn wieder ab. Plaza, Fassade und Dach sind eine durchgehende Fläche und das Gebäude weigert sich rundweg zu sagen, wo sie beginnen. Nichts vollbringt sichtbare Heldentaten – die Struktur ist ein Raumfachwerk, das sich hinter der weißen Haut verbirgt und leise schwitzt, während die Architektur an der Vorderseite behauptet, dass dies keine Anstrengung erforderte. Es ist das Schwanenprinzip, umgesetzt auf 57.500 Quadratmetern."
             },
             {
               "type": "text",
-              "content": "Und dann geht man hinein — genau hier fliegen die Nachahmer auf. Außen zu krümmen ist heute leicht; die Probe ist, ob die Geometrie die Eingangstür überlebt oder ob man einen rechteckigen Raum mit abgehängter Decke und Fluchtwegschild bekommt. Hier ist der Saal aus derselben Logik geschnitten: Eiche fließt von der Balustrade zur Decke, und keine Fuge gesteht irgendwo, dass mehrere verschiedene Gewerke beteiligt waren. Hadid hatte solche Räume seit den Achtzigern gemalt, als sie nur als Leinwände in Gruppenausstellungen existierten. In Baku sind Bild und Gebäude dasselbe Objekt, und das konnten in der Geschichte sehr wenige Architekten von sich sagen."
+              "content": "Dann geht man hinein, wo die Nachahmer entlarvt werden. Das Biegen der Außenseite ist jetzt einfach; Entscheidend ist, ob die Geometrie die Eingangstür überdauert oder ob Ihnen ein rechteckiger Raum mit abgehängter Decke und einem Notausgangsschild übergeben wird. Hier ist das Auditorium von der gleichen Logik geprägt – Eichenholz, das vom Balkon bis zur Decke reicht und nirgends eine Verbindung aufweist, was darauf hinweist, dass mehrere verschiedene Gewerke beteiligt waren. Hadid malte solche Räume schon seit den 1980er Jahren, als sie nur als Leinwände in Gruppenausstellungen existierten. In Baku sind das Gemälde und das Gebäude dasselbe Objekt, was nur sehr wenige Architekten in der Geschichte zu sagen haben."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-baku-interior-stairs.jpg",
-              "caption": "In der Falte: Treppe, Geländer und Decke aus derselben durchgehenden Fläche gegossen. Foto: Mahmoodrezamo, CC BY-SA 4.0, via Wikimedia Commons"
+              "caption": "Innerhalb der Falte: Treppen, Balustrade und Decke aus derselben durchgehenden Fläche gegossen. Foto: Mahmoodrezamo, CC BY-SA 4.0, über Wikimedia Commons",
+              "align": "center"
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-heydar-aliyev-auditorium.jpg",
-              "caption": "Tausend Plätze — und kein einziger rechter Winkel darunter. Foto: Emin Allahverdi, CC BY-SA 4.0, via Wikimedia Commons"
+              "caption": "Tausend Sitze und kein rechter Winkel dazwischen. Foto: Emin Allahverdi, CC BY-SA 4.0, über Wikimedia Commons",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Nun der Absatz, den die Bildbände auslassen. Das Gebäude ist nach dem verstorbenen Präsidenten Aserbaidschans benannt und wurde unter der Regierung seines Sohnes beauftragt, der ihm im Amt folgte. Es gehört zu einer sehr alten Gattung — der nationale Kulturpalast als Porträt der herrschenden Familie — und entstand in einer Stadt, die damals im Eiltempo umgebaut wurde, wobei Bewohner des weiteren Sanierungsgebiets von Abrissen und Zwangsräumungen berichteten, denen sie nicht zugestimmt hatten. Als Londons Design Museum ihm 2014 den Design of the Year zusprach, kam der Preis mit einer öffentlichen Auseinandersetzung im Paket, und die drehte sich nicht ums Dach."
+              "content": "Nun der Absatz, den die Bildbände weglassen. Das Gebäude ist nach dem verstorbenen Präsidenten Aserbaidschans benannt und wurde unter der Regierung seines Sohnes in Auftrag gegeben, der sein Amt antrat. Es gehört zu einem sehr alten Genre – dem nationalen Kulturpalast als Porträt der herrschenden Familie – und es entstand in einer Stadt, die rasant neu gestaltet wurde, wobei Bewohner im weiteren Sanierungsgebiet von Abrissen und Räumungen berichteten, denen sie nicht zugestimmt hatten. Als ihm das Londoner Design Museum 2014 die Auszeichnung „Design des Jahres“ verlieh, war dem Preis eine öffentliche Argumentation beigefügt, bei der es nicht um das Dach ging."
             },
             {
               "type": "text",
-              "content": "Das Schwanenhals-Prinzip erstreckt sich sogar auf den Komfort. In den Falten verborgen liegen mehrere Stockwerke hohe, geschlossene Wintergärten mit echten Bäumen unter Glas — die weißen Kurven brauchten irgendwo einen warmen, grünen Landeplatz. Ein seltsames Vorhaben für eine Stadt, die auf Öl gebaut ist statt auf Wasser — und es funktioniert genau deshalb, weil sich das Gebäude für nichts an dieser Verschwendung entschuldigt."
+              "content": "Die Schwanenhals-Logik erstreckt sich sogar auf den Komfort. In den Falten verbergen sich umzäunte Wintergärten, die mehrere Stockwerke hoch sind und mit echten Bäumen unter Glas bepflanzt sind, sodass die weißen Kurven einen warmen und grünen Ort zum Landen haben. Es ist eine seltsame Sache, drinnen in einer Stadt anzubauen, die auf Öl und nicht auf Wasser basiert – und es funktioniert genau deshalb, weil nichts an dem Gebäude die Extravaganz entschuldigt."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-baku-interior-garden.jpg",
-              "caption": "Einer der geschlossenen Wintergärten — echte Bäume unter Glas, mitten in der Kurve. Foto: Mahmoodrezamo, CC BY-SA 4.0, via Wikimedia Commons"
+              "caption": "Einer der umzäunten Wintergärten – echte Bäume, unter Glas, in der Kurve. Foto: Mahmoodrezamo, CC BY-SA 4.0, über Wikimedia Commons",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Beides ist gleichzeitig wahr, und das Unbehagen ist die ehrliche Reaktion, nicht ein Versagen der Kritik. Es ist ein Meisterwerk der Flächengeometrie, wahrscheinlich der reinste gebaute Ausdruck dessen, was Hadid dreißig Jahre lang gezeichnet hat. Es ist zugleich ein Denkmal, von einem Ölstaat für den Vater seines amtierenden Präsidenten bezahlt. Ein Magazin, das nur den ersten Satz druckt, veröffentlicht keine Kritik, sondern eine Broschüre — und das Gebäude ist stark genug, eine genaue Beschreibung zu überleben, was man von den meisten Denkmälern nicht sagen kann."
+              "content": "Beide Dinge sind gleichzeitig wahr, und das Unbehagen ist eher die ehrliche Reaktion als das Scheitern der Kritik. Es ist ein Meisterwerk der Oberflächengeometrie, wahrscheinlich der reinste gebaute Ausdruck all dessen, was Hadid dreißig Jahre lang gezeichnet hat. Es ist auch ein von einem Ölstaat finanziertes Denkmal für den Vater seines amtierenden Präsidenten. Eine Zeitschrift, die nur den ersten Satz abdruckt, veröffentlicht keine Kritik, sondern eine Broschüre – und das Gebäude ist stark genug, um einer genauen Beschreibung standzuhalten, was mehr ist, als die meisten Denkmäler schaffen."
             },
             {
               "type": "header",
-              "content": "<span class=\"kicker\">03 · Zaha Hadid Architects</span>Galaxy SOHO",
+              "content": "03 · Zaha Hadid ArchitectsGalaxy SOHO",
               "level": 2
             },
             {
               "type": "text",
-              "content": "<span class=\"dek\">Peking · fertiggestellt 2012 · vier Monde über dem zweiten Ring</span>"
+              "content": "Peking · fertiggestellt 2012 · vier Monde über der zweiten Ringstraße"
             },
             {
               "type": "text",
-              "content": "Dasselbe Büro, dasselbe Jahr, ein völlig anderer Auftraggeber: SOHO China unter Zhang Xin, ein Entwickler, der Architektur kauft, wie andere Uhren kaufen — sichtbar, teuer und mit klarem Verständnis dafür, was die Signatur mit dem Wiederverkaufswert macht. Die Aufgabe: Büros und Einzelhandel an einer großen Verkehrsachse im Zentrum Pekings. Die Antwort: vier gerundete Volumen, auf mehreren Ebenen durch Brücken verschmolzen, 330.000 Quadratmeter auf achtzehn Geschossen, und der Raum dazwischen zu fließenden Höfen geformt statt zum üblichen zugigen Nichts, das Entwickler zwischen Türmen zurücklassen."
+              "content": "Gleiches Büro, gleiches Jahr, ganz anderer Kunde: SOHO China, der von Zhang Der Auftrag umfasste Büros und Einzelhandel an einer Hauptverkehrsader im Zentrum von Peking. Die Antwort waren vier runde Baukörper, die durch Brücken auf mehreren Ebenen miteinander verbunden waren: 330.000 Quadratmeter auf achtzehn Stockwerken, wobei der Raum dazwischen zu fließenden Innenhöfen geformt war, statt zu dem üblichen windgepeitschten Nichts, das die Entwickler zwischen den Türmen ließen."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-galaxy-soho-bridge.jpg",
-              "caption": "Die Brücken, die Galaxy SOHOs vier Baukörper zu einer durchgehenden Route verschmelzen. Foto: Francesco Bini, CC BY-SA 4.0, via Wikimedia Commons"
+              "caption": "Die Brücken, die die vier Bände des Galaxy SOHO zu einer durchgehenden Route verschmelzen. Foto: Francesco Bini, CC BY-SA 4.0, über Wikimedia Commons",
+              "align": "center"
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-galaxy-soho-courtyard.jpg",
-              "caption": "Galaxy SOHO, 2012. Die Lücke zwischen den Gebäuden — normalerweise dort, wo die Mülltonnen wohnen — zum Hauptraum befördert. Foto: HoweyYuan, CC BY-SA 4.0, via Wikimedia Commons"
+              "caption": "Galaxy SOHO, 2012. Der Raum zwischen Gebäuden – normalerweise dort, wo die Mülleimer stehen – wurde zum Hauptraum. Foto: HoweyYuan, CC BY-SA 4.0, über Wikimedia Commons",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">330.000 m²</span><span class=\"stat-label\">Fläche — fast sechs Heydar-Aliyev-Zentren</span></li><li><span class=\"stat-figure\">18</span><span class=\"stat-label\">Geschosse</span></li><li><span class=\"stat-figure\">67 m</span><span class=\"stat-label\">Höhe</span></li><li><span class=\"stat-figure\">4</span><span class=\"stat-label\">verschmolzene Volumen, mehrfach verbrückt</span></li></ul>"
+              "content": "330.000 m² Grundfläche – in der Nähe von sechs Heydar Aliyev-Zentren, 18 Stockwerke, 67 m Höhe, 4 verschmolzene Volumen, über mehrere Ebenen hinweg überbrückt"
             },
             {
               "type": "text",
-              "content": "Die Innenräume sind die eigentliche Leistung und zugleich das leise Unheimlichste in diesem Text. Balkone rauschen in ununterbrochenen Bändern aneinander vorbei; nichts endet in einer Ecke; dem Auge wird nirgends eine Ecke gegeben, in der es anhalten und ausruhen könnte. Stellen Sie sich auf die dritte Ebene, und Ihr Blick gleitet um das Atrium wie Wasser in einer Wanne, und die Füße folgen, weil Körper genau das tun, wenn die Geometrie nicht aufhört, sich zu bewegen. Es ist wirklich schön. Und es ist, einzelhandelstechnisch, eine Maschine, die verhindern soll, dass Sie lange genug stillstehen, um zu entscheiden, dass Sie lieber nach Hause fahren."
+              "content": "Die Innenräume sind die eigentliche Errungenschaft und auch das leiseste Unheimlichste an diesem Aufsatz. Balkone ziehen in ununterbrochenen Bändern aneinander vorbei; nichts stimmt überein; Dem Auge wird nie eine Ecke gegeben, in der es anhalten und ausruhen kann. Stellen Sie sich auf die dritte Ebene und Ihr Blick gleitet durch das Atrium wie Wasser in einer Badewanne, und Ihre Füße folgen ihm, denn genau das tun Körper, wenn die Geometrie in Bewegung bleibt. Es ist wirklich schön. Im Einzelhandel handelt es sich außerdem um eine Maschine, die so konstruiert ist, dass sie Sie daran hindert, lange genug stillzustehen, bis Sie entscheiden, lieber nach Hause zu gehen."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-galaxy-soho-atrium.jpg",
-              "caption": "Durchgehende Bänder statt gestapelter Geschosse: Das Auge findet nirgends einen Sitzplatz. Foto: Francesco Bini, CC BY-SA 4.0, via Wikimedia Commons"
+              "caption": "Durchgehende Bänder statt gestapelter Böden: Hier kann sich das Auge nicht hinsetzen. Foto: Francesco Bini, CC BY-SA 4.0, über Wikimedia Commons",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Womit wir beim Streit wären, und der war echt. Als das Gebäude 2013 für den Lubetkin-Preis des RIBA nominiert wurde, widersprach das Beijing Cultural Heritage Protection Centre öffentlich: Die Entwicklung habe „großen Schaden an der Bewahrung des alten Pekinger Straßenbildes, der ursprünglichen Stadtplanung, der traditionellen Hutongs und Hofhäuser, der Landschaftsbildung sowie an Stil und Farbklang der einzigartigen volkstümlichen Architektur Pekings angerichtet“. Das ist keine Geschmacksfrage. Das ist eine Frage der Umgangsformen — eine Denkmalbehörde teilt einer internationalen Jury mit, dass das gefeierte Objekt die Debatte planiert statt gewonnen hat."
+              "content": "Das bringt uns zum Kampf, und es war ein echter. Als das Gebäude 2013 für den Lubetkin-Preis des RIBA nominiert wurde, erhob das Beijing Cultural Heritage Protection Center öffentlich Einspruch und argumentierte, dass die Entwicklung „der Erhaltung des alten Pekinger Straßenbilds, des ursprünglichen Stadtplans, der traditionellen Hutong- und Hofhäuser, der Landschaftsgestaltung sowie des Stils und der Farbgebung der einzigartigen Volksarchitektur Pekings großen Schaden zugefügt“ habe. Das ist keine Geschmacksbeschwerde. Es handelt sich um eine Beschwerde über die guten Sitten – eine Kulturerbebehörde teilt einer internationalen Jury mit, dass das Objekt, um das es geht, den Streit eher zunichte gemacht als gewonnen hat."
             },
             {
               "type": "text",
-              "content": "Und der Einwand trifft, denn eine durchgehende, in sich aufgehende Geometrie ist hervorragend ausgestattet, um zu ignorieren, was neben ihr steht. Ein Gebäude, das ganz aus Kurven besteht, hat keine Kanten, mit denen es jemandem begegnen könnte. Es streitet nicht mit der Straße; es räumt nicht ein, dass die Straße gesprochen hat. Man kann das Objekt bewundern und den Punkt trotzdem zugestehen — ich tue beides — und dann das Detail bemerken, das die Sache entscheidet: Alles Großzügige an Galaxy SOHO zeigt nach innen. Die Höfe sind wunderbar, und sie sind privat. Das ist eine zutreffende Beschreibung eines Großteils der Bebauung des 21. Jahrhunderts, und es ist kein Kompliment."
+              "content": "Und es landet, weil eine kontinuierliche, sich selbst auflösende Geometrie hervorragend dafür gerüstet ist, alles zu ignorieren, was gerade daneben steht. Ein Gebäude, das vollständig aus Kurven besteht, hat keine Kanten, mit denen man irgendjemandem begegnen könnte. Es streitet nicht mit der Straße; es weigert sich zuzugeben, dass die Straße sprach. Sie können das Objekt bewundern und trotzdem dem Punkt zustimmen – ich mache beides – und dann das Detail bemerken, das die Sache ausmacht: Alles Großzügige am Galaxy SOHO ist nach innen gerichtet. Die Innenhöfe sind wunderschön und privat. Das ist eine zutreffende Beschreibung eines Großteils der Entwicklung des 21. Jahrhunderts und kein Kompliment."
             },
             {
               "type": "text",
-              "content": "Nichts davon hinderte Galaxy SOHO daran, im selben Jahr den RIBA International Award zu gewinnen — der Protestbrief und die Trophäe trafen im Abstand weniger Monate ein. Internationale Jurys und städtische Denkmalbehörden beantworteten damals, und beantworten bis heute, zwei völlig verschiedene Fragen."
+              "content": "Nichts davon hielt Galaxy SOHO davon ab, im selben Jahr den RIBA International Award zu gewinnen – der Brief und die Trophäe kamen nur wenige Monate nacheinander an. Internationale Jurys und kommunale Denkmalschutzgremien beantworteten und beantworten zwei völlig unterschiedliche Fragen."
             },
             {
               "type": "header",
-              "content": "<span class=\"kicker\">04 · UNStudio</span>Mercedes-Benz Museum",
+              "content": "04 · UNStudioMercedes-Benz Museum",
               "level": 2
             },
             {
               "type": "text",
-              "content": "<span class=\"dek\">Stuttgart · eröffnet am 19. Mai 2006 · das Verkehrsdiagramm, dem eine Haut wuchs</span>"
+              "content": "Stuttgart · eröffnet am 19. Mai 2006 · das Verkehrsdiagramm, dem eine Haut gewachsen ist"
             },
             {
               "type": "text",
-              "content": "Ben van Berkel und Caroline Bos beginnen nicht mit einer Form. Sie beginnen mit einem Bewegungsproblem, zeichnen das Problem und lassen die Form die Folge sein — weshalb das Büro UNStudio heißt und nicht zwei Nachnamen an der Tür trägt, und weshalb dies mit Abstand das am wenigsten selbstverliebte Gebäude dieses Textes ist."
+              "content": "Ben van Berkel und Caroline Bos beginnen nicht mit einer Form. Sie beginnen mit einem Bewegungsproblem, zeichnen das Problem und lassen die Form zur Konsequenz werden – weshalb die Praxis UNStudio heißt und nicht etwas mit zwei Nachnamen an der Tür, und warum dies mit Abstand das am wenigsten selbstgefällige Gebäude in diesem Aufsatz ist."
             },
             {
               "type": "text",
-              "content": "UNStudio gewann den Wettbewerb für das Grundstück 2001. Der Bau des Museums dauerte fünf Jahre — lange genug, dass halb Stuttgart zusah, wie das Kleeblatt aus einer Baugrube wuchs, und sich eine Meinung dazu bildete, bevor auch nur ein einziges Auto ausgestellt war."
+              "content": "UNStudio gewann 2001 den Wettbewerb für den Standort. Der Bau des Museums dauerte fünf Jahre – lange genug, dass halb Stuttgart zusah, wie das Kleeblatt aus einem Loch im Boden auftauchte, und sich eine Meinung dazu bildete, bevor ein einziges Auto ausgestellt wurde."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-mercedes-blue-hour.jpg",
-              "caption": "Mercedes-Benz Museum zur blauen Stunde — die Drehung liest sich noch besser, von innen beleuchtet. Foto: Julian Herzog, CC BY 4.0, via Wikimedia Commons"
+              "caption": "Mercedes-Benz Museum zur blauen Stunde – von innen beleuchtet ist die Wendung noch besser. Foto: Julian Herzog, CC BY 4.0, über Wikimedia Commons",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Das Problem: Mercedes-Benz will zwei Geschichten gleichzeitig erzählen. Die chronologische — hier ist 1886, hier das erste Automobil, gehen Sie weiter durch ein Jahrhundert — und die thematische, in der Rennwagen bei Rennwagen und Lastwagen bei Lastwagen wohnen. Zwei Erzählungen, ein Volumen und ein Besucher, der zu Recht wütend wird, wenn er die erste zweimal ablaufen muss, um zur zweiten zu gelangen."
+              "content": "Das Problem: Mercedes-Benz möchte zwei Geschichten auf einmal erzählen. Die chronologische – hier ist 1886, hier ist das erste Automobil, gehen Sie weiter durch ein Jahrhundert – und die thematische, in der Rennwagen mit Rennwagen und Lieferwagen mit Lieferwagen leben. Zwei Erzählungen, ein Band und ein Besucher, der zu Recht wütend sein wird, wenn er zweimal über den ersten Weg gehen muss, um den zweiten zu erreichen."
             },
             {
               "type": "text",
-              "content": "Die Antwort ist eine Doppelhelix. Zwei Rampen winden sich um einen zentralen Luftraum durch das Haus nach unten, ohne sich je zu treffen, jede trägt eine der Geschichten, und auf jeder Ebene gibt es Übergänge. Man fährt nach oben und geht hinab. Man kann Vollständigkeitsfanatiker sein und das Jahrhundert der Reihe nach nehmen oder jederzeit zu den Lastwagen desertieren — in beiden Fällen geht es immer bergab und man verirrt sich nie. Der Grundriss ist ein Kleeblatt aus drei sich überlagernden Kreisen mit herausgeschnittener Mitte, und das dabei entstehende dreieckige Atrium hat, ganz bewusst, die Form eines Wankel-Kreiskolbenmotors."
+              "content": "Die Antwort ist eine Doppelhelix. Zwei Rampen schlängeln sich durch das Gebäude um einen zentralen Hohlraum herum, ohne sich zu treffen, und tragen jeweils ein Stockwerk, mit Kreuzungen auf jeder Ebene. Du fährst nach oben und steigst ab. Sie können ein Komplettist sein und das Jahrhundert in Ordnung bringen oder zu den Lastwagen wechseln, wann immer Ihnen danach ist, und so oder so geht es immer bergab und Sie haben nie verloren. Der Grundriss besteht aus einem Kleeblatt aus drei überlappenden Kreisen, wobei die Mitte entfernt wurde – und das entstehende dreieckige Atrium hat ganz bewusst die Form eines Wankel-Rotationsmotors."
             },
             {
               "type": "quote",
-              "content": "Ein Schrein für den Motor, in Form eines Motors, organisiert als Doppelhelix. Konzernarchitektur ist selten so belesen über sich selbst."
+              "content": "Ein Schrein für den Motor, in Form eines Motors, organisiert als Doppelhelix. Unternehmensarchitektur ist selten so gebildet über sich selbst."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-mercedes-benz-museum.jpg",
-              "caption": "Mercedes-Benz Museum, UNStudio, 2006. Es sieht so aus, weil man so hindurchgeht. Foto: Ank Kumar, CC BY-SA 4.0, via Wikimedia Commons"
+              "caption": "Mercedes-Benz Museum, UNStudio, 2006. Es sieht so aus, weil man durch es geht. Foto: Ank Kumar, CC BY-SA 4.0, über Wikimedia Commons",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">16.500 m²</span><span class=\"stat-label\">Ausstellungsfläche</span></li><li><span class=\"stat-figure\">4.800 m²</span><span class=\"stat-label\">Grundfläche, auf der es steht</span></li><li><span class=\"stat-figure\">160+</span><span class=\"stat-label\">Fahrzeuge in der Ausstellung</span></li><li><span class=\"stat-figure\">800.245</span><span class=\"stat-label\">Besucher im Jahr 2023</span></li></ul>"
+              "content": "16.500 m² Ausstellungsfläche, 4.800 m² Standfläche, über 160 ausgestellte Fahrzeuge, 800.245 Besucher im Jahr 2023"
             },
             {
               "type": "text",
-              "content": "Halten Sie die ersten beiden Zahlen nebeneinander, denn darin steckt der ganze Trick: 16.500 Quadratmeter Ausstellung stehen auf 4.800 Quadratmetern Grundfläche. Das Gebäude ist fast dreieinhalbmal größer als der Boden, den es belegt, und schafft das nicht durch das Stapeln flacher Platten, sondern indem eine durchgehende Rampe durch die Luft gewickelt wird, sodass Erschließung und Ausstellung derselbe zweimal genutzte Quadratmeter sind. Es gibt darin keinen einzigen vergeudeten Korridor. In einem Museum voller Objekte, die so viel wiegen wie kleine Häuser, heißt das außerdem, dass der verdrehte Beton spannen muss, ohne einem Bus etwas in den Weg zu stellen."
+              "content": "Man kann die ersten beiden Zahlen gegeneinander halten, denn sie beinhalten den ganzen Trick: 16.500 Quadratmeter Ausstellungsfläche auf einer Grundfläche von 4.800. Das Gebäude ist fast dreieinhalb Mal größer als das Gelände, das es einnimmt, und das gelingt ihm nicht durch das Stapeln flacher Platten, sondern dadurch, dass es eine durchgehende Rampe durch die Luft schlängelt, sodass Zirkulation und Ausstellung denselben Quadratmeter zweimal nutzen. Es gibt nirgendwo darin einen verschwendeten Korridor. In einem Museum voller Objekte, die so viel wiegen wie kleine Gebäude, bedeutet das auch, dass der sich windende Beton fast nichts im Weg haben muss, was einem Bus im Weg steht."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-mercedes-benz-museum-facade.jpg",
-              "caption": "Jedes Band außen ist innen eine Rampe, die einen Mantel trägt. Foto: Alexander Migl, CC BY-SA 4.0, via Wikimedia Commons"
+              "caption": "Jedes Band außen ist eine Rampe innen, die einen Mantel trägt. Foto: Alexander Migl, CC BY-SA 4.0, über Wikimedia Commons",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Damit ist dies technisch das schwierigste Objekt der Gruppe und das einzige, dessen Schwierigkeit vollkommen unsichtbar bleibt. Die ganze Schau ging in die Konstruktion und kein Tropfen ins Foto, weshalb es vermutlich nie die Zeitschriftenkarriere von Bilbao oder Baku hatte — und, wie ich vermute, genau so wollten es die Ingenieure. Achthunderttausend Menschen im Jahr gehen hinab, ohne sich ein einziges Mal zu fragen, wie das Haus steht. Das ist kein Versagen der Architektur. Das ist das höchste Lob, das die Disziplin zu vergeben hat."
+              "content": "Technisch gesehen ist dies also das schwierigste Objekt in der Gruppe und das einzige, dessen Schwierigkeit völlig unsichtbar ist. Der Effekt steckte in der Struktur und nichts davon im Foto, was vermutlich der Grund dafür ist, dass es nie die Zeitschriftenkarriere von Bilbao oder Baku hatte und – ich vermute – genau so, wie die Ingenieure es wollten. 800.000 Menschen pro Jahr gehen daran entlang, ohne sich auch nur ein einziges Mal zu wundern, wie es steht. Das ist kein Versagen der Architektur. Das ist das höchste Kompliment, das die Disziplin machen kann."
             },
             {
               "type": "header",
-              "content": "<span class=\"kicker\">05 · MAD Architects</span>Opernhaus Harbin",
+              "content": "05 · MAD ArchitectsHarbin Opera House",
               "level": 2
             },
             {
               "type": "text",
-              "content": "<span class=\"dek\">Harbin · Baubeginn 2011, Eröffnung 2015 · eine Schneewehe, für die man Karten kaufen kann</span>"
+              "content": "Harbin · Spatenstich 2011, Eröffnung 2015 · eine Schneewehe, für die Sie Tickets kaufen können"
             },
             {
               "type": "text",
-              "content": "Ma Yansong arbeitete in Hadids Büro, bevor er MAD gründete, und das Erbe ist in jeder Fläche lesbar. Hinzugefügt hat er ein Argument darüber, woher die Kurven kommen. MADs wiederkehrende These heißt shanshui — Berg-Wasser: Die chinesische Bautradition handle von Landschaft und nicht vom Objekt, und Architektur solle sich wie Gelände verhalten, statt wie eine Trophäe darauf zu stehen. Das ist im Interview leicht gesagt und in Aluminium schwer zu beweisen. Harbin ist der Beweis."
+              "content": "Ma Yansong arbeitete vor der Gründung von MAD in Hadids Büro, und das Erbe ist auf jeder Oberfläche lesbar. Was er hinzufügte, ist ein Streit darüber, woher die Kurven kommen. Die wiederkehrende Behauptung von MAD ist Shanshui – Bergwasser –, dass es in der chinesischen Bautradition eher um Landschaft als um Objekte geht und dass sich Architektur wie Gelände verhalten sollte, anstatt wie eine Trophäe darauf zu stehen. Das lässt sich in einem Vorstellungsgespräch leicht sagen, aber bei Aluminium ist es schwer, es zu beweisen. Harbin ist der Beweis."
             },
             {
               "type": "text",
-              "content": "Betrachten Sie den Ort. Harbin liegt am Songhua, in einer Provinz, in der der Winter eine sechsmonatige Verwaltungstatsache ist, wo das große Jahresfest aus Eisblöcken gebaut wird, die aus eben diesem Fluss gesägt werden, und wo die Temperatur Dinge tut, die einen Mitteleuropäer warm an seinen eigenen trostlosen Januar denken lassen. MAD gaben der Stadt einen niedrigen weißen Hügel in der Feuchtwiese, vollständig mit weißem Aluminium bekleidet und ausdrücklich als Verwehung zu lesen — ein Gebäude, dem mit Schnee wohl ist, weil es bereits die Form von Schnee hat. Darunter liegen 470 Parkplätze, denn Gelände ist eine Metapher, und wir sind immer noch im China des Jahres 2015."
+              "content": "Betrachten Sie die Website. Harbin liegt am Songhua-Fluss in einer Provinz, in der der Winter ein sechsmonatiges Verwaltungsfest ist, wo das große jährliche Fest aus Eisblöcken errichtet wird, die aus demselben Fluss gesägt wurden, und wo die Temperatur Dinge bewirkt, die einem Mitteleuropäer ein warmes Gefühl für seinen eigenen miserablen Januar bereiten. MAD gab ihm einen niedrigen weißen Hügel im Feuchtgebiet, der vollständig mit weißem Aluminium verkleidet war und explizit als Schneewehe gelesen wurde – ein Gebäude, das sich mit Schnee wohlfühlt, weil es bereits die Form von Schnee hat. Darunter befinden sich 470 Parkplätze, denn Gelände ist eine Metapher und das ist immer noch China im Jahr 2015."
             },
             {
               "type": "text",
-              "content": "MAD bekam das Projekt auf die für einmal gewöhnliche Art: einen offenen internationalen Wettbewerb 2011, für einen Masterplan über rund 180 Hektar Feuchtgebiet entlang des Songhua — nicht nur für das Theater. Das Opernhaus ist das einzige Gebäude aus diesem Plan, das die Welt tatsächlich ansieht, aber es war nie als Solitär gedacht. Es ist das Satzzeichen in einem viel längeren Satz über den Fluss."
+              "content": "MAD gewann das Projekt ausnahmsweise auf ganz normale Weise: 2010 bei einem offenen internationalen Wettbewerb für einen Masterplan, der rund 180 Hektar Feuchtgebiet entlang des Songhua umfasste – nicht nur das Theater. Das Opernhaus ist das einzige Gebäude nach diesem Plan, auf das die Welt tatsächlich blickt, aber es war nie dazu gedacht, allein zu stehen. Es ist das Satzzeichen in einem viel längeren Satz über den Fluss."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-exterior-2.jpg",
-              "caption": "Opernhaus Harbin bei Tag: Das Aluminium liest sich je nach Licht als Fels, Eis oder Düne. Foto: EditQ, CC BY-SA 4.0, via Wikimedia Commons"
+              "caption": "Das Opernhaus von Harbin bei Tag: Das Aluminium sieht je nach Lichteinfall wie Fels, Eis oder Düne aus. Foto: EditQ, CC BY-SA 4.0, über Wikimedia Commons",
+              "align": "center"
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-opera-house-panorama.jpg",
-              "caption": "Opernhaus Harbin, MAD Architects, 2015. Es setzt sich in die Feuchtwiese wie Wetter, das beschlossen hat zu bleiben. Foto: Jeremy Thompson, CC BY 2.0, via Wikimedia Commons",
+              "caption": "Harbin Opera House, MAD Architects, 2015. Es fügt sich in das Feuchtgebiet ein wie das Wetter, das sich entschieden hat zu bleiben. Foto: Jeremy Thompson, CC BY 2.0, über Wikimedia Commons",
               "stretched": true
             },
             {
               "type": "text",
-              "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">1.600+</span><span class=\"stat-label\">Plätze im großen Saal</span></li><li><span class=\"stat-figure\">400</span><span class=\"stat-label\">Plätze im Studiosaal</span></li><li><span class=\"stat-figure\">~79.000 m²</span><span class=\"stat-label\">Gebäudefläche</span></li><li><span class=\"stat-figure\">0</span><span class=\"stat-label\">Eintrittskarten für das Dach</span></li></ul>"
+              "content": "Über 1.600 Sitzplätze im großen Theater, 400 Sitzplätze im Studiotheater, ca. 79.000 m² Gebäudefläche, 0 Eintrittskarten für das Dach erforderlich"
             },
             {
               "type": "text",
-              "content": "Diese letzte Zahl ist es, die meinen Respekt verdient, und sie ist kein Witz. In die Fassade ist ein öffentlicher Weg geschnitten, der außen am Gebäude hinauf zu einer Dachterrasse führt, die jeder betreten darf: kein Ticket, keine Vorstellung, kein Dresscode, niemand oben, der prüft, ob Sie dazugehören. Ein Opernhaus — der statusängstlichste Bautyp überhaupt, eine Gattung, deren gesamte Architekturgeschichte aus Treppen besteht, die dafür entworfen wurden, dass man beim Hinaufsteigen gesehen wird — verschenkt seine beste Aussicht an Leute, die nie einen Sitzplatz kaufen werden. Jedes andere Opernhaus der Welt gibt sein Budget dafür aus, Ihnen beizubringen, dass das Foyer nicht für Sie ist. Dieses verschenkt das Dach und verlangt nichts."
+              "content": "Die letzte Zahl verdient meinen Respekt, und sie ist kein Scherz. Ein öffentlicher Weg ist in die Fassade gehauen und führt an der Außenseite des Gebäudes zu einem Platz auf dem Dach, den jeder betreten kann: keine Eintrittskarte, keine Vorstellung, keine Kleiderordnung, niemand oben überprüft, ob man dorthin gehört. Ein Opernhaus – der statuskritischste Gebäudetyp, den es gibt, eine Typologie, deren gesamte Architekturgeschichte aus Treppen besteht, die man beim Aufsteigen sehen kann – bietet den Menschen, die sich niemals einen Sitzplatz kaufen würden, die beste Aussicht. Jedes andere Opernhaus auf der Welt gibt sein Budget dafür aus, Ihnen beizubringen, dass das Foyer nichts für Sie ist. Dieser verschenkt das Dach und verlangt nichts."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-exterior-3.jpg",
-              "caption": "Das niedrige, windgeformte Profil des Gebäudes vor dem Himmel über Heilongjiang. Foto: EditQ, CC BY-SA 4.0, via Wikimedia Commons"
+              "caption": "Das niedrige, vom Wind geformte Profil des Gebäudes vor dem Himmel von Heilongjiang. Foto: EditQ, CC BY-SA 4.0, über Wikimedia Commons",
+              "align": "center"
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-opera-house.jpg",
-              "caption": "Die öffentliche Rampe steigt entlang des rechten Volumens und führt direkt über die Kuppe. Foto: EditQ, CC BY-SA 4.0, via Wikimedia Commons"
+              "caption": "Die öffentliche Rampe steigt entlang des rechten Volumens an und führt direkt über die Oberseite. Foto: EditQ, CC BY-SA 4.0, über Wikimedia Commons",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Dann tritt man ein, und die Temperatur der Architektur wechselt vollständig. Der Hauptsaal ist mit Mandschurischer Esche ausgekleidet, zu Flächen gefräst, die eher erodiert als zusammengebaut wirken; MAD beschrieben das Leitbild als einen von Hand ausgehöhlten Holzblock. Nach all dem arktischen Aluminium tut der Schritt in diese warme Maserung etwas beinahe Körperliches: Die Pupillen stellen sich um, die Schultern sinken. Eis draußen, Herdfeuer drinnen. Es ist der älteste Griff der nördlichen Architektur, ausgeführt im Maßstab eines Saals mit 1.600 Plätzen und mit einer CNC-Fräse."
+              "content": "Dann tritt man ein und die Temperatur der Architektur verändert sich komplett. Die Haupthalle ist mit mandschurischer Asche ausgekleidet, deren Oberflächen eher erodiert als zusammengesetzt wirken; MAD hat das Leitbild als einen von Hand ausgehöhlten Holzblock beschrieben. Nach all dem arktischen Aluminium bewirkt das Betreten dieser warmen Maserung etwas fast Körperliches – die Pupillen passen sich an, die Schultern sinken. Draußen Eis, drinnen Feuerstelle. Es handelt sich um den ältesten Schritt in der Architektur des Nordens, der im Maßstab eines Theaters mit 1.600 Sitzplätzen und einer CNC-Fräse durchgeführt wird."
             },
             {
               "type": "text",
-              "content": "Diese Arbeitsteilung ist es, zu der ich immer wieder zurückkehre. Außen ist Krümmung Klima. Innen ist Krümmung Akustik und Wärme. Nirgends im Haus ist Krümmung bloß Krümmung, weil sie sich gut fotografieren lässt — und nach zwei Jahrzehnten voller Gebäude, die genau das waren, ist der Unterschied alles andere als subtil. Es ist der Unterschied zwischen einer Form mit einem Grund und einer Form mit einem Pressesprecher."
+              "content": "Auf diese Arbeitsteilung komme ich immer wieder zurück. Draußen ist Krümmung Klima. Im Inneren steht die Krümmung für Akustik und Wärme. Nirgendwo im Gebäude ist die Krümmung einfach nur Krümmung, weil sie sich gut fotografieren lässt – und nach zwei Jahrzehnten voller Gebäude, die genau das waren, ist der Unterschied nicht subtil. Es ist der Unterschied zwischen einem Formular mit Begründung und einem Formular mit Publizist."
             },
             {
               "type": "header",
-              "content": "<span class=\"kicker\">Nachwort</span>was die Kurve kostet",
+              "content": "Afterwordwhat the curve costs",
               "level": 2
             },
             {
               "type": "text",
-              "content": "Fünfundzwanzig Jahre später hat die Technik gewonnen und die Rhetorik ist sauer geworden wie Milch. Niemand sagt „Parametrizismus“ mehr laut ohne ein kleines entschuldigendes Hüsteln. Doppelt gekrümmte Flächen sind gewöhnliche Industrieware; ein solides mittelgroßes Büro modelliert, kalkuliert und beschafft eine vor der Mittagspause. Die Revolution ist so vollständig gelungen, dass sie aufgehört hat, interessant zu sein — das übliche Schicksal gelungener Revolutionen."
+              "content": "25 Jahre später siegte die Technologie und die Rhetorik alterte wie Milch. Niemand sagt mehr laut „Parametrismus“, ohne ein kleines entschuldigendes Husten. Doppelt gekrümmte Oberflächen sind gewöhnliche Industrieprodukte; Eine kompetente mittelständische Praxis kann vor dem Mittagessen ein Modell erstellen, Kosten berechnen und beschaffen. Die Revolution war so erfolgreich, dass sie nicht mehr interessant war, was das übliche Schicksal erfolgreicher Revolutionen ist."
             },
             {
               "type": "text",
-              "content": "Nicht gewöhnlich geworden ist etwas anderes: das Ergebnis am Leben zu halten. Eine Paneelhaut besteht aus Tausenden Fugen, und Fugen sind der Ort, an dem das Wasser zu arbeiten beginnt. Die Standzeit von Dichtstoff misst sich in Jahren, nicht in Jahrhunderten, und 33.000 Paneele bedeuten 33.000 Gelegenheiten, falsch zu liegen. Mauerwerk versagt langsam und lesbar: ein Fleck, ein Riss, ein Gespräch mit einem Maurer. Eine gekrümmte Verbundhaut versagt unsichtbar, dann plötzlich, dann teuer. Diese Rechnung erscheint nie neben den Renderings, und sie ist das verlässlichste Verschweigen des Architekturjournalismus."
+              "content": "Was nicht alltäglich geworden ist, ist die Aufrechterhaltung der Ergebnisse. Eine plattenförmige Haut besteht aus Tausenden von Gelenken, und in diesen Gelenken wirkt Wasser. Die Lebensdauer von Dichtstoffen wird in Jahren und nicht in Jahrhunderten gemessen, und 33.000 Platten bedeuten 33.000 Gelegenheiten, einen Fehler zu machen. Mauerwerk versagt langsam und deutlich erkennbar – ein Fleck, ein Riss, ein Gespräch mit einem Maurer. Eine gebogene Verbundhaut versagt unsichtbar, dann plötzlich, dann teuer. Diese Rechnung erscheint nie neben den Darstellungen und ist die zuverlässigste Auslassung im Architekturverlag."
             },
             {
               "type": "quote",
-              "content": "Stein altert öffentlich. Fassadenbekleidung hört einfach still auf, wasserdicht zu sein."
+              "content": "Steinzeit in der Öffentlichkeit. Die Verkleidung ist einfach nicht mehr wasserdicht."
             },
             {
               "type": "text",
-              "content": "Die zweite Rechnung ist städtisch und viel größer. Eine durchgehende Fläche ist ein geschlossenes Argument: Sie löst sich in sich selbst auf und lässt der Straße fast nichts zum Festhalten. Bilbao kommt damit durch, weil es eine Uferzone verankert, die sonst nichts hatte, und seine Baukosten binnen drei Jahren über Steuern zurückzahlte. Harbin kommt damit durch, weil es das Dach hergibt. Galaxy SOHO — nach dem Befund des Viertels, in dem es gelandet ist, und nach dem Einspruch, den die eigene Denkmalinstanz öffentlich einlegte — kommt nicht damit durch. Krümmung ist an sich weder großzügig noch feindselig. Die einzige Frage, auf die es je ankam, lautet, ob die Geometrie der Stadt irgendwo etwas gelassen hat, woran sie sie anfassen kann."
+              "content": "Der zweite Schein ist städtisch und viel größer. Eine durchgehende Fläche ist ein geschlossenes Argument: Sie löst sich intern auf und hinterlässt der Straße nahezu nichts, woran sie sich festhalten kann. Bilbao kommt damit durch, indem es eine Uferpromenade verankert, an der es sonst nichts gab, und die eigenen Baukosten innerhalb von drei Jahren durch Steuern zurückzahlt. Harbin kommt ungeschoren davon, indem er das Dach übergibt. Galaxy SOHO – aufgrund der Beweise aus der Nachbarschaft, in der es gelandet ist, und des Einspruchs, den seine eigene Denkmalschutzbehörde öffentlich eingereicht hat – nicht. Krümmung ist nicht von Natur aus großzügig oder feindselig. Die einzige Frage, die jemals von Bedeutung war, ist, ob die Geometrie irgendwo übrig geblieben ist, damit die Stadt sie berühren kann."
             },
             {
               "type": "text",
-              "content": "Also eine Wette darauf, welche dieser fünf das Jahr 2100 mit intaktem Ruf erreicht. Stuttgart, weil zwei Geschichten sich wirklich ein Volumen teilen mussten und die Helix darauf die ehrliche Antwort ist — das einzige Haus hier, dessen Form sich nicht gegen eine andere tauschen ließe. Harbin, weil ein kostenloses öffentliches Dach in einer so kalten Stadt ein Geschenk ist und keine Geste. Bilbao überlebt durch seine Quittungen und seinen Hund. Die anderen beiden sind großartig, und Großartigkeit kommt, wie Ihnen jeder Objektverwalter sagen wird, mit einem Wartungsplan und einem Fugenbauer auf Kurzwahl."
+              "content": "Also wetten Sie darauf, welcher dieser fünf mit intaktem Ruf 2100 erreicht. Stuttgart, weil eigentlich zwei Stockwerke ein Volumen teilen mussten und eine Helix die ehrliche Antwort ist – das einzige Gebäude hier, dessen Form nicht gegen eine andere ausgetauscht werden konnte. Harbin, weil ein kostenloses öffentliches Dach in einer so kalten Stadt eher ein Geschenk als eine Geste ist. Bilbao lebt von seinen Einnahmen und seinem Hund. Die anderen beiden sind großartig, und wie Ihnen jeder Facility Manager sagen wird, ist „Pracht“ mit einem Wartungsplan und einem Dichtmittelunternehmer auf der Kurzwahl ausgestattet."
             },
             {
               "type": "text",
-              "content": "Nichts davon ist ein Argument für die Rückkehr zum Aktenschrank. Es ist ein Argument dafür, die Frage zu stellen, die zwischen 1997 und 2015 fast niemand stellte, im Rausch der Entdeckung, dass die Software einen alles zeichnen ließ: Wozu ist die Kurve da? Beantworten Sie sie ehrlich, und Sie bekommen Harbin, wo die Form das Wetter ist und das Dach allen gehört. Beantworten Sie sie nicht, und Sie bekommen ein spektakuläres Foto, ein Leck im dritten Obergeschoss und ein Gebäude, das besser war, bevor es fertig wurde."
+              "content": "Nichts davon ist ein Argument dafür, in den Aktenschrank zurückzukehren. Es ist ein Argument dafür, die Frage zu stellen, die zwischen 1997 und 2015 fast niemand gestellt hat, in der Euphorie über die Entdeckung, dass man mit der Software überhaupt alles zeichnen kann: Wozu dient die Kurve? Beantworten Sie die Frage ehrlich und Sie erhalten Harbin, wo die Form das Wetter ist und das Dach allen gehört. Geschieht dies nicht, erhalten Sie ein spektakuläres Foto, ein Leck im dritten Stock und ein Gebäude, das vor seiner Fertigstellung besser war."
             },
             {
               "type": "text",
-              "content": "<hr><h4>Quellen</h4><ul class=\"sources\"><li><strong>Guggenheim Museum Bilbao</strong> — das Museum über den eigenen Bau: Flächen, Säle und die Titanhaut — <a href=\"https://www.guggenheim-bilbao.eus/en/the-building\">guggenheim-bilbao.eus</a></li><li><strong>Association for Project Management</strong> — die Projektökonomie und warum Titan kurzzeitig billiger war als Stahl — <a href=\"https://www.apm.org.uk/blog/guggenheim-museum-bilbao-why-was-it-such-a-stellar-project-success/\">apm.org.uk</a></li><li><strong>ArchDaily</strong> — Heydar-Aliyev-Zentrum — Zeichnungen, Konstruktion und Projektdaten — <a href=\"https://www.archdaily.com/448774/heydar-aliyev-center-zaha-hadid-architects\">archdaily.com</a></li><li><strong>Dezeen</strong> — der offene Brief der Pekinger Denkmalinstanz zur Lubetkin-Nominierung, 2013 — <a href=\"https://www.dezeen.com/2013/08/03/zaha-hadid-galaxy-soho-riba-award-lubetkin-prize-chinese-heritage/\">dezeen.com</a></li><li><strong>UNStudio</strong> — Mercedes-Benz Museum — Kleeblattgrundriss und Doppelhelix, von den Architekten — <a href=\"https://www.unstudio.com/projects/mercedes-benz-museum/\">unstudio.com</a></li><li><strong>MAD Architects</strong> — Opernhaus Harbin — Fläche, Platzzahlen und der öffentliche Weg über das Dach — <a href=\"https://www.i-mad.com/projects/harbin-opera-house\">i-mad.com</a></li></ul><span class=\"dek\">Fotografien: frei lizenziert über Wikimedia Commons, jeweils in der Bildunterschrift nachgewiesen.</span>"
+              "content": "QuellenGuggenheim Museum Bilbao – das Museum in seinem eigenen Gebäude: Bereiche, Galerien und die Titanhaut – <a href=\"https://www.guggenheim-bilbao.eus/en/the-building\" rel=\"noopener noreferrer\">guggenheim-bilbao.eus</a>Association for Project Management – ​​die Projektökonomie und warum Titan kurzzeitig billiger als Stahl war – <a href=\"https://www.apm.org.uk/blog/guggenheim-museum-bilbao-why-was-it-such-a-stellar-project-success/\" rel=\"noopener noreferrer\">apm.org.uk</a>ArchDaily — Heydar Aliyev Center — Zeichnungen, Struktur und Projektdaten — <a href=\"https://www.archdaily.com/448774/heydar-aliyev-center-zaha-hadid-architects\" rel=\"noopener noreferrer\">archdaily.com</a>Dezeen – der offene Brief der Pekinger Kulturerbebehörde zur Lubetkin-Nominierung, 2013 – <a href=\"https://www.dezeen.com/2013/08/03/zaha-hadid-galaxy-soho-riba-award-lubetkin-prize-chinese-heritage/\" rel=\"noopener noreferrer\">dezeen.com</a>UNStudio – Mercedes-Benz Museum – der Kleeblattplan und die Doppelhelix-Umlaufbahn, von den Architekten – <a href=\"https://www.unstudio.com/projects/mercedes-benz-museum/\" rel=\"noopener noreferrer\">unstudio.com</a>MAD Architects – Harbin Opera House – Gebäudebereich, Sitzplätze und die öffentliche Route auf dem Dach – <a href=\"https://www.i-mad.com/projects/harbin-opera-house\" rel=\"noopener noreferrer\">i-mad.com</a>Fotos: frei lizenziert über Wikimedia Commons, jeweils mit Quellenangabe in der Bildunterschrift."
             }
           ],
-          "authorId": "author-1784732936927-kw554",
-          "role": "Autor",
-          "tags": [
-            "architecture",
-            "design",
-            "cities"
-          ],
-          "imageSeed": "",
-          "imageUrl": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-cover-v2.jpg"
+          "updatedAt": "2026-08-02T07:55:34.707Z"
         }
       ],
       "reviews": [
