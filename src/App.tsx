@@ -203,7 +203,7 @@ function resolveMediaSource(value: string | undefined, width: number, height: nu
     return normalized;
   }
 
-  return `https://picsum.photos/seed/${encodeURIComponent(normalized)}/${width}/${height}?grayscale`;
+  return `https://picsum.photos/seed/${encodeURIComponent(normalized)}/${width}/${height}`;
 }
 
 // Pixel-heart silhouette for the 'mosaic' content block — each 'X' becomes one photo tile.
@@ -1659,7 +1659,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
               <img
                 src={resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143)}
                 alt={article.title}
-                className="w-full h-full object-cover grayscale"
+                className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -1753,7 +1753,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                       <img
                         src={imageSource}
                         alt={imageAlt}
-                        className="w-full h-auto grayscale cursor-pointer hover:opacity-90 transition-opacity"
+                        className="w-full h-auto cursor-pointer hover:opacity-90 transition-opacity"
                         referrerPolicy="no-referrer"
                         onClick={() => onImageClick(imageSource, imageAlt)}
                       />
@@ -1782,7 +1782,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                             title={block.content}
                             width="100%"
                             height="100%"
-                            style={{ border: 0, filter: 'grayscale(100%) contrast(1.1)' }}
+                            style={{ border: 0 }}
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
                             src={`https://www.openstreetmap.org/export/embed.html?bbox=${lng - 0.02}%2C${lat - 0.01}%2C${lng + 0.02}%2C${lat + 0.01}&layer=mapnik&marker=${lat}%2C${lng}`}
@@ -1853,7 +1853,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                                   <img
                                     src={gallerySource}
                                     alt={altText}
-                                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                                    className="w-full h-full object-cover transition-all duration-500"
                                     referrerPolicy="no-referrer"
                                   />
                                 </div>
@@ -1898,7 +1898,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                               <img
                                 src={tileSource}
                                 alt=""
-                                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                                className="w-full h-full object-cover transition-all duration-500"
                                 referrerPolicy="no-referrer"
                               />
                             </div>
@@ -2034,7 +2034,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                         alt={rel.title}
                         loading="lazy"
                         referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
                       />
                     </div>
                     <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--c-gold)] mb-2">{rel.category}</p>

@@ -3885,7 +3885,7 @@ function resolvePreviewImageSource(imageUrl, imageSeed) {
     return normalizedSeed;
   }
 
-  return `https://picsum.photos/seed/${encodeURIComponent(normalizedSeed)}/900/520?grayscale`;
+  return `https://picsum.photos/seed/${encodeURIComponent(normalizedSeed)}/900/520`;
 }
 
 // Scans the currently loaded content (all languages) for references to a
@@ -5356,7 +5356,7 @@ function resolveBlockImageUrl(src) {
   const s = src.trim();
   if (!s) return '';
   if (/^(https?:)?\/\//i.test(s) || s.startsWith('/') || s.startsWith('./') || s.startsWith('data:')) return s;
-  return 'https://picsum.photos/seed/' + encodeURIComponent(s) + '/400/250?grayscale';
+  return 'https://picsum.photos/seed/' + encodeURIComponent(s) + '/400/250';
 }
 
 function renderBlockBody(block, index) {
