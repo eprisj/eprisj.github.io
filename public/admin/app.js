@@ -2169,6 +2169,41 @@ function runLocalizationHealthCheck(data) {
     }
   }
 
+  // Per-entry content-shape divergence — the "recycled id" variant of the
+  // same family of bug. Review #1 lived this on 2026-08-02: its base entry
+  // was rewritten from a short string review into a 14-block photo essay,
+  // but every locale's entry.content was still the OLD string from whatever
+  // review used to sit under this id. Content itself is safe — a type/length
+  // mismatch makes mergeContentBlocks fall back to base — but title/subject/
+  // verdict/pros/cons overlay onto the merge regardless, so readers saw the
+  // right photos and body text captioned with a completely different
+  // restaurant's name and verdict. No stub phrase involved, so the
+  // placeholder check above can't see it; a shape mismatch is the only cheap,
+  // reliable proxy that something here is a frozen snapshot, not a
+  // translation of what the base entry actually is now.
+  for (const [lang, bucket] of Object.entries(localized)) {
+    if (!bucket || typeof bucket !== 'object') continue;
+    for (const [sectionKey] of POISON_SECTIONS) {
+      const baseEntries = Array.isArray(data[sectionKey]) ? data[sectionKey] : [];
+      const locEntries = Array.isArray(bucket[sectionKey]) ? bucket[sectionKey] : [];
+      for (const loc of locEntries) {
+        const base = baseEntries.find((b) => Number(b && b.id) === Number(loc && loc.id));
+        if (!base || !('content' in base) || !('content' in loc)) continue;
+        const baseIsArr = Array.isArray(base.content);
+        const locIsArr = Array.isArray(loc.content);
+        if (baseIsArr !== locIsArr) {
+          warnings.push(
+            `${lang}/${sectionKey} #${loc.id}: content другого типа (в базе ${baseIsArr ? 'массив блоков' : typeof base.content}, в ${lang} — ${locIsArr ? 'массив блоков' : typeof loc.content}) — похоже на замороженный перевод от старой версии записи. Заголовок/подзаголовок всё равно накладываются поверх, проверьте вручную.`
+          );
+        } else if (baseIsArr && base.content.length !== loc.content.length) {
+          warnings.push(
+            `${lang}/${sectionKey} #${loc.id}: content другой длины (в базе ${base.content.length} блоков, в ${lang} — ${loc.content.length}) — вероятно, устаревший перевод.`
+          );
+        }
+      }
+    }
+  }
+
   const missingCards = getArticlesMissingHomepageCard(data);
   if (missingCards.length) {
     const list = missingCards.map((a) => `#${a.id} «${a.title}»`).join(', ');
