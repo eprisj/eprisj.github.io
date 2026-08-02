@@ -64,6 +64,7 @@ const downloadOriginalsText = byId('downloadOriginalsText');
 const downloadAllOriginalsText = byId('downloadAllOriginalsText');
 const mediaExportMeta = byId('mediaExportMeta');
 const mediaExportProgress = byId('mediaExportProgress');
+const languageSyncProgress = byId('languageSyncProgress');
 const languageSyncScope = byId('languageSyncScope');
 const applyEntryBtn = byId('applyEntryBtn');
 const saveEntryBtn = byId('saveEntryBtn');
@@ -2637,6 +2638,16 @@ function setMediaExportProgress({ active, percent = null, label = '' }) {
   const bar = mediaExportProgress.querySelector('span');
   if (bar) bar.style.width = percent === null ? '32%' : `${Math.max(0, Math.min(100, percent))}%`;
   if (label) mediaExportMeta.textContent = label;
+}
+
+function setLanguageSyncProgress({ active, percent = null, label = '' }) {
+  if (!languageSyncProgress) return;
+  languageSyncProgress.hidden = !active;
+  languageSyncProgress.classList.toggle('indeterminate', active && percent === null);
+  languageSyncProgress.setAttribute('aria-hidden', active ? 'false' : 'true');
+  const bar = languageSyncProgress.querySelector('span');
+  if (bar) bar.style.width = percent === null ? '32%' : `${Math.max(0, Math.min(100, percent))}%`;
+  if (label && languageSyncScope) languageSyncScope.textContent = label;
 }
 
 async function responseBlobWithProgress(response) {
@@ -5296,13 +5307,20 @@ async function translateEntryToAllLanguages(data, section, sourceLang, sourceEnt
   const failures = [];
   const total = targetLangs.length;
 
+  if (options.statusPrefix && total) {
+    setLanguageSyncProgress({ active: true, percent: 0, label: `0/${total}` });
+  }
+
   for (let i = 0; i < targetLangs.length; i += 1) {
     const lang = targetLangs[i];
+    const langPercent = Math.round((i / total) * 100);
     if (options.statusPrefix) {
       setStatus('info', `${options.statusPrefix}: ${i + 1}/${total} ${sourceLang} → ${lang}`);
+      setLanguageSyncProgress({ active: true, percent: langPercent, label: `${lang}: ${i + 1}/${total}` });
     }
     const onProgress = options.statusPrefix ? (step) => {
       setStatus('info', `${options.statusPrefix}: ${i + 1}/${total} ${sourceLang} → ${lang} (${step})`);
+      setLanguageSyncProgress({ active: true, percent: langPercent, label: `${lang}: ${step}` });
     } : null;
     try {
       const translated = await translateEntryForSection(section, sourceEntry, lang, sourceLang, onProgress);
@@ -5318,6 +5336,11 @@ async function translateEntryToAllLanguages(data, section, sourceLang, sourceEnt
         setStatus('info', `${options.statusPrefix}: ${lang} не обновлен – ${message}`);
       }
     }
+  }
+
+  if (options.statusPrefix && total) {
+    setLanguageSyncProgress({ active: false });
+    updateAdminToolbarContext();
   }
 
   updatedLangs.failures = failures;

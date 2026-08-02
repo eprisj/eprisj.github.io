@@ -843,6 +843,7 @@ textarea {
 .toolbar-buttons { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
 .toolbar-sep { width: 1px; height: 20px; background: var(--line); margin: 0 4px; }
 .toolbar-sync-panel {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -927,6 +928,12 @@ textarea {
 }
 .media-export-progress.indeterminate > span {
   animation: media-export-loading 1.1s ease-in-out infinite;
+}
+.toolbar-sync-panel .media-export-progress {
+  background: rgba(80,26,44,.12);
+}
+.toolbar-sync-panel .media-export-progress > span {
+  background: var(--accent);
 }
 @keyframes media-export-loading {
   0% { transform: translateX(-110%); }
