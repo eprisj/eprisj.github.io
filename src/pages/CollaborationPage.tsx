@@ -227,6 +227,15 @@ export function CollaborationPage() {
 
   const countries = useMemo(() => [...new Set(leads.map((lead) => lead.country).filter(Boolean) as string[])].sort((a, b) => a.localeCompare(b)), [leads]);
   const disciplines = useMemo(() => [...new Set(leads.map((lead) => lead.discipline).filter(Boolean) as string[])].sort((a, b) => a.localeCompare(b)), [leads]);
+  const disciplineTabs = useMemo(() => {
+    const counts = new Map<string, number>();
+    leads.forEach((lead) => { if (lead.discipline) counts.set(lead.discipline, (counts.get(lead.discipline) || 0) + 1); });
+    const pinned = 'Сет-дизайн';
+    const ranked = [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([name]) => name);
+    const rest = ranked.filter((name) => name !== pinned).slice(0, 6);
+    const ordered = counts.has(pinned) ? [pinned, ...rest.filter((name) => name !== pinned)] : rest;
+    return ordered.slice(0, 7).map((name) => ({ name, count: counts.get(name) || 0 }));
+  }, [leads]);
   const filtered = useMemo(() => {
     const needle = query.trim().toLocaleLowerCase();
     const result = leads.filter((lead) => {
@@ -304,6 +313,28 @@ export function CollaborationPage() {
 
       <section className="px-4 py-8 sm:px-8 lg:px-12 lg:py-12">
         <div className="mx-auto max-w-[1600px]">
+          {disciplineTabs.length > 0 && (
+            <nav aria-label="Discipline sub-sections" className="mb-5 flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => setDiscipline('All disciplines')}
+                className={`inline-flex min-h-9 items-center rounded-full border px-4 font-mono text-[9px] uppercase tracking-[0.15em] transition-colors ${discipline === 'All disciplines' ? 'border-[#28151b] bg-[#28151b] text-white' : 'border-[#28151b]/15 bg-white text-[#4e3940] hover:bg-[#eee7df]'}`}
+              >
+                All disciplines
+              </button>
+              {disciplineTabs.map((tab) => (
+                <button
+                  key={tab.name}
+                  type="button"
+                  onClick={() => setDiscipline((current) => (current === tab.name ? 'All disciplines' : tab.name))}
+                  className={`inline-flex min-h-9 items-center gap-2 rounded-full border px-4 font-mono text-[9px] uppercase tracking-[0.15em] transition-colors ${discipline === tab.name ? 'border-[#a34f42] bg-[#a34f42] text-white' : 'border-[#28151b]/15 bg-white text-[#4e3940] hover:bg-[#eee7df]'}`}
+                >
+                  {tab.name}
+                  <span className={`rounded-full px-1.5 py-0.5 text-[8px] ${discipline === tab.name ? 'bg-white/20' : 'bg-[#28151b]/8'}`}>{tab.count}</span>
+                </button>
+              ))}
+            </nav>
+          )}
           <div className="grid gap-3 lg:grid-cols-[minmax(260px,1fr)_220px_220px_170px]">
             <label className="relative block"><span className="sr-only">Search candidates</span><Search className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#806b72]" size={17} /><input value={query} onChange={(e) => setQuery(e.target.value)} className={`${inputClass} pl-11`} placeholder="Search name, place, discipline…" /></label>
             <button type="button" onClick={() => setFiltersOpen((value) => !value)} className="flex min-h-12 items-center justify-between rounded-xl border border-[#28151b]/15 bg-white px-4 text-left text-sm lg:hidden"><span className="flex items-center gap-2"><Filter size={16} /> Filters {activeFilterCount ? `(${activeFilterCount})` : ''}</span><ChevronDown size={16} className={filtersOpen ? 'rotate-180' : ''} /></button>
