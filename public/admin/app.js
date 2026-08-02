@@ -2091,6 +2091,100 @@ function collectDuplicateIdIssues(entries, sectionLabel) {
   return [`${sectionLabel}: дубли ID (${Array.from(duplicates).join(', ')})`];
 }
 
+// Mirrors isPlaceholderEntity() in src/data.ts — an entry left as an unedited
+// blueprint stub. Kept in sync by hand; the public site is the source of truth.
+const AUDIT_PLACEHOLDER_TITLES = new Set([
+  'new editorial story', 'new practical guide', 'new photo essay',
+  'new review', 'new gallery item', 'new file',
+  'neues galerieelement', 'nuevo elemento de la galería', 'yeni galeri öğesi',
+  'nuovo elemento della galleria', 'новый элемент галереи', 'новий елемент галереї',
+  'neue redaktionelle geschichte', 'nueva historia editorial', 'yeni editoryal hikaye',
+  'nuova storia editoriale', 'новая редакционная история', 'нова редакційна історія',
+]);
+const AUDIT_PLACEHOLDER_PHRASES = [
+  'replace me', 'replace with real copy before publishing',
+  'замініть мене', 'замініть на справжню копію',
+  'замените меня', 'замените реальной копией',
+  'ersetze mich', 'reemplázame', 'beni değiştir', 'sostituiscimi',
+];
+function isAuditPlaceholderEntity(entry) {
+  if (!entry || typeof entry !== 'object') return false;
+  const title = String(entry.title || '').trim().toLowerCase();
+  if (title && AUDIT_PLACEHOLDER_TITLES.has(title)) return true;
+  const haystack = [entry.subtitle, entry.description, entry.excerpt]
+    .filter((v) => typeof v === 'string').join(' ').toLowerCase();
+  return AUDIT_PLACEHOLDER_PHRASES.some((p) => haystack.includes(p));
+}
+
+// The single worst failure mode in this content model: getContentForLanguage()
+// discards a WHOLE locale bucket (items/articles/reviews/libraryItems) back to
+// English the moment *any one* entry in it is still an unfilled stub — see the
+// long comment above mergeLocalizedItems in src/data.ts. One forgotten "New
+// gallery item" is invisible in the editor (it just looks like a draft card
+// sitting in a list) but silently un-translates every OTHER card in that
+// language too. That is exactly what happened to the homepage gallery before
+// this check existed: id 8 and 9 sat unfilled for months and every non-English
+// reader saw an all-English homepage with no error anywhere. This check is the
+// only thing that surfaces it.
+function runLocalizationHealthCheck(data) {
+  if (!data) {
+    return createMonitorResult('warn', 'Локализация и главная', 'Проверка ограничена, пока JSON невалиден.', []);
+  }
+
+  const errors = [];
+  const warnings = [];
+  // `strict: true` sections go through mergeLocalizedItems in src/data.ts,
+  // which discards the WHOLE bucket back to English if any one entry is a
+  // stub. `strict: false` sections go through mergeLocalizedArray, which
+  // only skips the one stub entry — its siblings translate fine. Keep this
+  // list in sync with the const article/reviews/items/libraryItems lines in
+  // getContentForLanguage(); getting it backwards makes this check cry wolf
+  // (or worse, miss a real whole-bucket poisoning).
+  const POISON_SECTIONS = [
+    ['items', 'Галерея', true],
+    ['reviews', 'Обзоры', true],
+    ['articles', 'Статьи', false],
+    ['libraryItems', 'Библиотека', false],
+  ];
+
+  const localized = data.localizedCollections && typeof data.localizedCollections === 'object'
+    ? data.localizedCollections : {};
+  for (const [lang, bucket] of Object.entries(localized)) {
+    if (!bucket || typeof bucket !== 'object') continue;
+    for (const [sectionKey, sectionLabel, strict] of POISON_SECTIONS) {
+      const entries = bucket[sectionKey];
+      if (!Array.isArray(entries)) continue;
+      const stubs = entries.filter(isAuditPlaceholderEntity);
+      if (!stubs.length) continue;
+      const ids = stubs.map((e) => `#${e?.id ?? '?'}`).join(', ');
+      if (strict) {
+        errors.push(
+          `${lang}/${sectionLabel}: незаполненная заготовка (${ids}) — из-за неё ВЕСЬ ${sectionLabel.toLowerCase()} на ${lang} читатели видят по-английски, не только эту карточку. Заполните или удалите.`
+        );
+      } else {
+        warnings.push(
+          `${lang}/${sectionLabel}: незаполненная заготовка (${ids}) — эта карточка останется на английском для читателей ${lang}, соседние записи не пострадают. Заполните или удалите, когда дойдут руки.`
+        );
+      }
+    }
+  }
+
+  const missingCards = getArticlesMissingHomepageCard(data);
+  if (missingCards.length) {
+    const list = missingCards.map((a) => `#${a.id} «${a.title}»`).join(', ');
+    warnings.push(`Без карточки на главной: ${list}. Откройте вкладку «Главная» → «＋ Из статьи».`);
+  }
+
+  const level = errors.length > 0 ? 'error' : warnings.length > 0 ? 'warn' : 'ok';
+  const detail = level === 'error'
+    ? 'Незаполненная заготовка глушит перевод целого раздела — это ошибка, не предупреждение.'
+    : level === 'warn'
+      ? 'Есть статьи без карточки на главной.'
+      : 'Ни одной заглушки в локалях, все статьи представлены на главной.';
+
+  return createMonitorResult(level, 'Локализация и главная', detail, [...errors, ...warnings].slice(0, 10));
+}
+
 function runContentQualityChecks(data) {
   if (!data) {
     return createMonitorResult('error', 'Качество контента', 'JSON некорректный. Сначала исправьте структуру.', []);
@@ -2368,7 +2462,8 @@ async function runMonitoringChecks(options = {}) {
   try {
     const localResults = [
       runContentQualityChecks(content),
-      runMediaQualityChecks(content)
+      runMediaQualityChecks(content),
+      runLocalizationHealthCheck(content)
     ];
 
     let remoteResults = [];
@@ -3574,6 +3669,31 @@ function bindCreatorQualityInputs(fallback = {}) {
 // featured one. The Homepage tab's own "＋ from article" button (see
 // initHomepageTab below) still exists for backfilling older articles that
 // predate this — it calls this exact function instead of duplicating it.
+function galleryCardBaseTitle(value) {
+  return String(value || '').split(':')[0].trim().toLowerCase();
+}
+
+// Articles the homepage gallery has no card for — same title-matching rule
+// the public site uses to link a Gallery card back to its Article
+// (findMatchingArticle in src/App.tsx). Used by the Homepage tab's backfill
+// button and by the audit dashboard's "Публикации без карточки" check.
+function getArticlesMissingHomepageCard(data) {
+  const articles = Array.isArray(data.articles) ? data.articles : [];
+  const items = Array.isArray(data.items) ? data.items : [];
+  const taken = new Set();
+  items.forEach((item) => {
+    const title = String(item.title || '').trim();
+    if (!title) return;
+    taken.add(title.toLowerCase());
+    taken.add(galleryCardBaseTitle(title));
+  });
+  return articles.filter((article) => {
+    const title = String(article.title || '').trim();
+    if (!title) return false;
+    return !taken.has(title.toLowerCase()) && !taken.has(galleryCardBaseTitle(title));
+  });
+}
+
 function addGalleryCardForArticleData(data, articleId) {
   const article = (data.articles || []).find((entry) => String(entry.id) === String(articleId));
   if (!article) return false;
@@ -8315,31 +8435,6 @@ function bindStudioRowActions() {
     renderMissingArticles();
   }
 
-  // ── Статья → карточка галереи ─────────────────────────────────────────
-  // Публикации (articles) и галерея главной (items) — разные коллекции:
-  // написанная статья сама на главную не попадает, и редактор её там не
-  // находит. Сайт связывает карточку со статьёй по точному заголовку
-  // (findMatchingArticle в src/App.tsx), поэтому карточку собираем из
-  // самой статьи — заголовок в заголовок.
-  const baseTitle = (value) => String(value || '').split(':')[0].trim().toLowerCase();
-
-  function articlesWithoutCard(data) {
-    const articles = Array.isArray(data.articles) ? data.articles : [];
-    const items = Array.isArray(data.items) ? data.items : [];
-    const taken = new Set();
-    items.forEach((item) => {
-      const title = String(item.title || '').trim();
-      if (!title) return;
-      taken.add(title.toLowerCase());
-      taken.add(baseTitle(title));
-    });
-    return articles.filter((article) => {
-      const title = String(article.title || '').trim();
-      if (!title) return false;
-      return !taken.has(title.toLowerCase()) && !taken.has(baseTitle(title));
-    });
-  }
-
   function addCardFromArticle(articleId) {
     // For articles that predate addGalleryCardForArticleData (top of file) —
     // new ones get this automatically now, this button stays for backfill.
@@ -8360,7 +8455,7 @@ function bindStudioRowActions() {
     if (!box) return;
     const data = readContent();
     if (!data) { box.innerHTML = ''; return; }
-    const missing = articlesWithoutCard(data);
+    const missing = getArticlesMissingHomepageCard(data);
     if (!missing.length) {
       box.innerHTML = '<p class="form-hint">Все статьи представлены на главной.</p>';
       return;
@@ -8411,7 +8506,7 @@ function bindStudioRowActions() {
   document.getElementById('homepageFromArticleBtn')?.addEventListener('click', () => {
     const data = readContent();
     if (!data) { showToast?.('error', 'Сначала загрузите контент.'); return; }
-    const missing = articlesWithoutCard(data);
+    const missing = getArticlesMissingHomepageCard(data);
     if (!missing.length) { showToast?.('success', 'Все статьи уже есть на главной.'); return; }
     if (missing.length === 1) { addCardFromArticle(missing[0].id); return; }
     renderMissingArticles();
