@@ -2735,6 +2735,13 @@ async function saveToGitHub() {
     lastSyncedTime = new Date();
     updateLastSyncedBadge();
     setStatus('success', 'Опубликовано на VPS — сайт обновлён мгновенно');
+    // Server-side echo of the same "Локализация и главная" check (see
+    // runLocalizationHealthCheck) — surfaced here too so a stub that just
+    // went live is impossible to miss even by an editor who never opens
+    // the Monitoring tab.
+    if (Array.isArray(data.localizationWarnings) && data.localizationWarnings.length) {
+      showToast?.('error', `После публикации: ${data.localizationWarnings.length} предупреждений по локализации. Смотрите вкладку «Мониторинг».`);
+    }
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
