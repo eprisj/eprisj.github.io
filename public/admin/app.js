@@ -5070,12 +5070,40 @@ async function translateArticleBlock(block, targetLang, sourceLang = DEFAULT_LAN
   return next;
 }
 
+// Catches the failure mode retries alone can't: the model returns valid JSON
+// that parses fine but silently dropped a batch item or a metadata key (free
+// models truncate/summarize under load far more often than they outright
+// break JSON). A shorter array means lost content blocks; a missing key means
+// a field silently reverts to whatever the caller had before Object.assign —
+// both used to sail through the old `try { JSON.parse } catch` unnoticed.
+// Returns a description string on mismatch, or null when the shape holds.
+function translationShapeMismatch(original, translated) {
+  if (Array.isArray(original)) {
+    if (!Array.isArray(translated)) return `expected an array of ${original.length}, got ${typeof translated}`;
+    if (translated.length !== original.length) return `expected ${original.length} items, got ${translated.length}`;
+    return null;
+  }
+  if (original && typeof original === 'object') {
+    if (!translated || typeof translated !== 'object' || Array.isArray(translated)) {
+      return `expected an object, got ${Array.isArray(translated) ? 'array' : typeof translated}`;
+    }
+    // Only keys that actually had a value survive JSON.stringify into the
+    // prompt — an original `undefined` field (e.g. article.role on an entry
+    // that has none) never appears there, so the model can't be faulted for
+    // omitting it back.
+    const missing = Object.keys(original).filter((k) => original[k] !== undefined && !(k in translated));
+    if (missing.length) return `missing keys: ${missing.join(', ')}`;
+    return null;
+  }
+  return null;
+}
+
 async function aiTranslateObject(obj, targetLang, maxRetries = 3) {
   if (!obj || typeof obj !== 'object') return obj;
-  
+
   const prompt = `You are a translator for EPRIS Journal — a sophisticated magazine about design, art, travel, architecture.
-Translate all textual content values within this JSON structure to ${targetLang}. 
-Keep the JSON structure, keys, and array lengths exactly identical. Preserve all HTML tags (like <em> or <strong>) perfectly intact. 
+Translate all textual content values within this JSON structure to ${targetLang}.
+Keep the JSON structure, keys, and array lengths exactly identical. Preserve all HTML tags (like <em> or <strong>) perfectly intact.
 Do NOT translate URLs, IDs, image names, or keys.
 Return ONLY valid JSON.
 
@@ -5087,7 +5115,10 @@ ${JSON.stringify(obj, null, 2)}`;
     try {
       const result = await callOpenRouter(prompt);
       let parsedText = extractJSON(result);
-      return JSON.parse(parsedText);
+      const parsed = JSON.parse(parsedText);
+      const mismatch = translationShapeMismatch(obj, parsed);
+      if (mismatch) throw new Error(`shape mismatch — ${mismatch}`);
+      return parsed;
     } catch (e) {
       lastError = e;
       console.warn(`AI translation attempt ${attempt} failed:`, e.message);
