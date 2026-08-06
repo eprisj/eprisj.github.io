@@ -23,6 +23,9 @@ export interface Work {
   discipline?: string;
   medium?: string;
   author: string;
+  /** Хто ще стоїть за роботою: керівник команди, співавтори, установа-замовник.
+   *  Заповнюється редакцією з джерела — у формі подачі цього поля немає. */
+  credits?: string;
   authorInstagram?: string;
   portfolio?: string;
   country?: string;
