@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { ArrowLeft, ArrowUpRight, Plus, Trash2 } from 'lucide-react';
 import { PlanView } from './PlanView';
 import { SectionView } from './SectionView';
@@ -11,6 +11,9 @@ import {
   type ObjectKind,
   type Scene,
 } from './sceneModel';
+
+// three/fiber — отдельный чанк, грузится только когда открыли вкладку «Volume».
+const Scene3D = lazy(() => import('./Scene3D').then((m) => ({ default: m.Scene3D })));
 
 const INK = '#1a0b10';
 
@@ -58,6 +61,8 @@ function NumberField({ label, value, step = 0.1, onChange }: { label: string; va
 export function StagePage() {
   const [scene, setScene] = useState<Scene>(() => emptyScene());
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [volumeOpen, setVolumeOpen] = useState(false);
+  const [eyeView, setEyeView] = useState(false);
   const selected = scene.objects.find((o) => o.id === selectedId) || null;
 
   function handleAdd(kind: ObjectKind) {
@@ -90,7 +95,7 @@ export function StagePage() {
         </p>
 
         <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_280px]">
-          <div className="space-y-8">
+          <div className="min-w-0 space-y-8">
             <div>
               <p className="mb-2 font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/45">Plan</p>
               <div className="border border-[#f5f0eb]/12">
@@ -103,9 +108,46 @@ export function StagePage() {
                 <SectionView scene={scene} selectedId={selectedId} />
               </div>
             </div>
+
+            <div>
+              <div className="mb-2 flex items-center justify-between">
+                <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/45">Volume</p>
+                <div className="flex gap-2">
+                  {volumeOpen && (
+                    <button
+                      type="button"
+                      onClick={() => setEyeView((v) => !v)}
+                      className="font-sans text-[9px] uppercase tracking-[0.14em] text-[#f5f0eb]/50 hover:text-[#f5f0eb]"
+                    >
+                      {eyeView ? 'Orbit view' : "Viewer's eye"}
+                    </button>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => setVolumeOpen((v) => !v)}
+                    className="font-sans text-[9px] uppercase tracking-[0.14em] text-[#f5f0eb]/50 hover:text-[#f5f0eb]"
+                  >
+                    {volumeOpen ? 'Hide' : 'Show'}
+                  </button>
+                </div>
+              </div>
+              {volumeOpen && (
+                <div className="h-[420px] border border-[#f5f0eb]/12">
+                  <Suspense
+                    fallback={
+                      <div className="flex h-full items-center justify-center font-sans text-[10px] uppercase tracking-[0.14em] text-[#f5f0eb]/30">
+                        Loading volume…
+                      </div>
+                    }
+                  >
+                    <Scene3D scene={scene} fromViewerEye={eyeView} />
+                  </Suspense>
+                </div>
+              )}
+            </div>
           </div>
 
-          <aside className="space-y-8">
+          <aside className="min-w-0 space-y-8">
             <div>
               <p className="mb-3 font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/45">Add</p>
               <div className="flex flex-wrap gap-2">
