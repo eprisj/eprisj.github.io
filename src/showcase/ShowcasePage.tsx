@@ -12,7 +12,7 @@ const PAGE_SIZE = 24;
 const ALL_DISCIPLINES = 'All disciplines';
 const ALL_COUNTRIES = 'All countries';
 
-const inputClass = 'min-h-12 w-full rounded-xl border border-[#2d1820]/15 bg-white px-4 text-[15px] text-[#28151b] outline-none transition-shadow placeholder:text-[#8d7d82] focus:border-[#9f4f42] focus:ring-2 focus:ring-[#9f4f42]/20';
+const inputClass = 'min-h-12 w-full rounded-xl border border-[#1a1a1a]/15 bg-white px-4 text-[15px] text-[#1a1a1a] outline-none transition-shadow placeholder:text-[#a3a3a3] focus:border-[#8c2f24] focus:ring-2 focus:ring-[#8c2f24]/20';
 
 function ModalShell({ title, onClose, children, wide = false }: { title: string; onClose: () => void; children: React.ReactNode; wide?: boolean }) {
   useEffect(() => {
@@ -24,11 +24,11 @@ function ModalShell({ title, onClose, children, wide = false }: { title: string;
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 z-[120] flex items-end justify-center bg-[#160d10]/55 p-0 backdrop-blur-sm sm:items-center sm:p-6" role="dialog" aria-modal="true" aria-label={title} onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
-      <div className={`max-h-[94dvh] w-full overflow-y-auto rounded-t-[28px] bg-[#f5f0ea] shadow-2xl sm:rounded-[28px] ${wide ? 'sm:max-w-4xl' : 'sm:max-w-xl'}`}>
-        <div className="sticky top-0 z-10 flex min-h-16 items-center justify-between border-b border-[#2d1820]/10 bg-[#f5f0ea]/95 px-5 backdrop-blur-md sm:px-7">
-          <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[#6d4b57]">{title}</p>
-          <button type="button" onClick={onClose} className="grid h-11 w-11 place-items-center rounded-full border border-[#2d1820]/15 transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9f4f42]" aria-label="Close">
+    <div className="fixed inset-0 z-[120] flex items-end justify-center bg-[#1a1a1a]/55 p-0 backdrop-blur-sm sm:items-center sm:p-6" role="dialog" aria-modal="true" aria-label={title} onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
+      <div className={`max-h-[94dvh] w-full overflow-y-auto rounded-t-[28px] bg-[#faf9f7] shadow-2xl sm:rounded-[28px] ${wide ? 'sm:max-w-4xl' : 'sm:max-w-xl'}`}>
+        <div className="sticky top-0 z-10 flex min-h-16 items-center justify-between border-b border-[#1a1a1a]/10 bg-[#faf9f7]/95 px-5 backdrop-blur-md sm:px-7">
+          <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[#6b6b6b]">{title}</p>
+          <button type="button" onClick={onClose} className="grid h-11 w-11 place-items-center rounded-full border border-[#1a1a1a]/15 transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8c2f24]" aria-label="Close">
             <X size={19} />
           </button>
         </div>
@@ -43,13 +43,13 @@ function ModalShell({ title, onClose, children, wide = false }: { title: string;
 function WorkPlate({ work, index, className = '' }: { work: Work; index: number; className?: string }) {
   const [failed, setFailed] = useState(false);
   const image = work.images?.[0];
-  const tint = ['#e6ddd2', '#e9e0da', '#e3dcd4', '#ece2d8', '#e0d8d2'][index % 5];
+  const tint = ['#eeece8', '#ebe9e5', '#e8e6e2', '#f2f0ec', '#e4e2de'][index % 5];
 
   if (!image?.url || failed) {
     return (
       <div className={`flex flex-col items-center justify-center gap-3 ${className}`} style={{ backgroundColor: tint }}>
-        <ImageOff size={22} className="text-[#28151b]/25" aria-hidden="true" />
-        <p className="max-w-[70%] text-center font-serif text-base italic leading-snug text-[#28151b]/45">{work.title}</p>
+        <ImageOff size={22} className="text-[#1a1a1a]/25" aria-hidden="true" />
+        <p className="max-w-[70%] text-center font-serif text-base italic leading-snug text-[#1a1a1a]/45">{work.title}</p>
       </div>
     );
   }
@@ -76,52 +76,52 @@ function WorkDetail({ work, onClose }: { work: Work; onClose: () => void }) {
   return (
     <ModalShell title={work.discipline || 'Work'} onClose={onClose} wide>
       <div className="p-5 sm:p-8">
-        <div className="overflow-hidden rounded-2xl bg-[#e6ddd2]">
+        <div className="overflow-hidden rounded-2xl bg-[#eeece8]">
           {current ? (
             <img src={current.url} alt={current.caption || work.title} className="max-h-[62dvh] w-full object-contain" />
           ) : (
-            <div className="grid aspect-[4/3] place-items-center text-[#28151b]/30"><ImageOff size={28} /></div>
+            <div className="grid aspect-[4/3] place-items-center text-[#1a1a1a]/30"><ImageOff size={28} /></div>
           )}
         </div>
         {images.length > 1 && (
           <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
             {images.map((image, index) => (
-              <button key={`${image.url}-${index}`} type="button" onClick={() => setActive(index)} className={`h-16 w-16 shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${index === active ? 'border-[#a34f42]' : 'border-transparent opacity-70 hover:opacity-100'}`} aria-label={`Image ${index + 1}`}>
+              <button key={`${image.url}-${index}`} type="button" onClick={() => setActive(index)} className={`h-16 w-16 shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${index === active ? 'border-[#1a1a1a]' : 'border-transparent opacity-70 hover:opacity-100'}`} aria-label={`Image ${index + 1}`}>
                 <img src={image.url} alt="" className="h-full w-full object-cover" />
               </button>
             ))}
           </div>
         )}
-        {current?.credit && <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.16em] text-[#8a747b]">Photo — {current.credit}</p>}
+        {current?.credit && <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.16em] text-[#8a8a8a]">Photo — {current.credit}</p>}
 
         <div className="mt-7 flex flex-wrap items-start justify-between gap-5">
           <div className="min-w-0">
-            <h2 className="font-serif text-3xl leading-[1.05] text-[#28151b] sm:text-5xl">{work.title}</h2>
-            <p className="mt-3 font-serif text-xl italic text-[#7a3027]">{work.author}{work.year ? `, ${work.year}` : ''}</p>
-            <p className="mt-3 flex items-center gap-2 text-sm text-[#735f66]"><MapPin size={15} /> {[work.venue, work.city, work.country].filter(Boolean).join(', ') || 'Location not specified'}</p>
+            <h2 className="font-serif text-3xl leading-[1.05] text-[#1a1a1a] sm:text-5xl">{work.title}</h2>
+            <p className="mt-3 font-serif text-xl italic text-[#8c2f24]">{work.author}{work.year ? `, ${work.year}` : ''}</p>
+            <p className="mt-3 flex items-center gap-2 text-sm text-[#6b6b6b]"><MapPin size={15} /> {[work.venue, work.city, work.country].filter(Boolean).join(', ') || 'Location not specified'}</p>
           </div>
           <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-white text-3xl shadow-sm" aria-hidden="true">{flag(work.countryCode)}</span>
         </div>
 
-        <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-[#2d1820]/10 bg-[#2d1820]/10 sm:grid-cols-3">
-          <div className="bg-[#fbf8f4] p-4"><p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8a747b]">Discipline</p><p className="mt-2 font-serif text-lg">{work.discipline || '—'}</p></div>
-          <div className="bg-[#fbf8f4] p-4"><p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8a747b]">Medium</p><p className="mt-2 font-serif text-lg">{work.medium || '—'}</p></div>
-          <div className="bg-[#fbf8f4] p-4"><p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8a747b]">Added</p><p className="mt-2 font-serif text-lg">{work.addedAt ? new Date(work.addedAt).toLocaleDateString('en-GB') : '—'}</p></div>
+        <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-[#1a1a1a]/10 bg-[#1a1a1a]/10 sm:grid-cols-3">
+          <div className="bg-[#ffffff] p-4"><p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8a8a8a]">Discipline</p><p className="mt-2 font-serif text-lg">{work.discipline || '—'}</p></div>
+          <div className="bg-[#ffffff] p-4"><p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8a8a8a]">Medium</p><p className="mt-2 font-serif text-lg">{work.medium || '—'}</p></div>
+          <div className="bg-[#ffffff] p-4"><p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8a8a8a]">Added</p><p className="mt-2 font-serif text-lg">{work.addedAt ? new Date(work.addedAt).toLocaleDateString('en-GB') : '—'}</p></div>
         </div>
 
         {work.statement && <section className="mt-8">
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#9f4f42]">Statement</p>
-          <p className="mt-3 font-serif text-xl leading-relaxed text-[#3b272d] sm:text-2xl">{work.statement}</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#8c2f24]">Statement</p>
+          <p className="mt-3 font-serif text-xl leading-relaxed text-[#2b2b2b] sm:text-2xl">{work.statement}</p>
         </section>}
 
         {!!work.tags?.length && <div className="mt-7 flex flex-wrap gap-2">
-          {work.tags.map((tag) => <span key={tag} className="rounded-full bg-[#eee6de] px-3 py-1.5 font-mono text-[8px] uppercase tracking-[0.12em] text-[#4e3940]">{tag}</span>)}
+          {work.tags.map((tag) => <span key={tag} className="rounded-full bg-[#f0efec] px-3 py-1.5 font-mono text-[8px] uppercase tracking-[0.12em] text-[#3d3d3d]">{tag}</span>)}
         </div>}
 
         <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-          {handle && <a href={`https://www.instagram.com/${encodeURIComponent(handle)}/`} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#28151b] px-6 font-mono text-[10px] uppercase tracking-[0.18em] text-white transition-transform hover:-translate-y-0.5"><Instagram size={16} /> @{handle}</a>}
-          {work.portfolio && <a href={externalUrl(work.portfolio)} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#28151b]/20 px-6 font-mono text-[10px] uppercase tracking-[0.18em] transition-colors hover:bg-white">Portfolio <ArrowUpRight size={15} /></a>}
-          {work.sourceUrl && work.sourceUrl !== work.portfolio && <a href={externalUrl(work.sourceUrl)} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#28151b]/20 px-6 font-mono text-[10px] uppercase tracking-[0.18em] transition-colors hover:bg-white">Source <ArrowUpRight size={15} /></a>}
+          {handle && <a href={`https://www.instagram.com/${encodeURIComponent(handle)}/`} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#1a1a1a] px-6 font-mono text-[10px] uppercase tracking-[0.18em] text-white transition-transform hover:-translate-y-0.5"><Instagram size={16} /> @{handle}</a>}
+          {work.portfolio && <a href={externalUrl(work.portfolio)} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#1a1a1a]/20 px-6 font-mono text-[10px] uppercase tracking-[0.18em] transition-colors hover:bg-white">Portfolio <ArrowUpRight size={15} /></a>}
+          {work.sourceUrl && work.sourceUrl !== work.portfolio && <a href={externalUrl(work.sourceUrl)} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#1a1a1a]/20 px-6 font-mono text-[10px] uppercase tracking-[0.18em] transition-colors hover:bg-white">Source <ArrowUpRight size={15} /></a>}
         </div>
       </div>
     </ModalShell>
@@ -129,7 +129,7 @@ function WorkDetail({ work, onClose }: { work: Work; onClose: () => void }) {
 }
 
 function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
-  return <label className="block"><span className="mb-2 block font-mono text-[10px] uppercase tracking-[0.16em] text-[#69525a]">{label}{required && <span className="text-[#a4493d]"> *</span>}</span>{children}</label>;
+  return <label className="block"><span className="mb-2 block font-mono text-[10px] uppercase tracking-[0.16em] text-[#6b6b6b]">{label}{required && <span className="text-[#8c2f24]"> *</span>}</span>{children}</label>;
 }
 
 function SubmitWork({ onClose, onAdded }: { onClose: () => void; onAdded: (work: Work) => void }) {
@@ -155,8 +155,8 @@ function SubmitWork({ onClose, onAdded }: { onClose: () => void; onAdded: (work:
   return <ModalShell title="Submit a work" onClose={onClose} wide>
     <form onSubmit={submit} className="p-5 sm:p-8">
       <div className="mb-7 max-w-xl">
-        <h2 className="font-serif text-3xl text-[#28151b] sm:text-4xl">Show us what you built</h2>
-        <p className="mt-3 text-sm leading-relaxed text-[#715f65]">Sets, scenography, installations and conceptual pieces. Submissions appear with “Under review” status — the EPRIS editorial team verifies authorship and credits before publishing.</p>
+        <h2 className="font-serif text-3xl text-[#1a1a1a] sm:text-4xl">Show us what you built</h2>
+        <p className="mt-3 text-sm leading-relaxed text-[#6b6b6b]">Sets, scenography, installations and conceptual pieces. Submissions appear with “Under review” status — the EPRIS editorial team verifies authorship and credits before publishing.</p>
       </div>
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Work title" required><input className={inputClass} value={draft.title} onChange={(e) => set('title', e.target.value)} maxLength={140} required autoFocus /></Field>
@@ -177,8 +177,8 @@ function SubmitWork({ onClose, onAdded }: { onClose: () => void; onAdded: (work:
       </div>
       {message && <div role="status" className={`mt-6 rounded-xl border p-4 text-sm ${state === 'success' ? 'border-emerald-200 bg-emerald-50 text-emerald-900' : 'border-red-200 bg-red-50 text-red-900'}`}>{state === 'success' && <Check size={16} className="mr-2 inline" />}{message}</div>}
       <div className="mt-7 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
-        <button type="button" onClick={onClose} className="min-h-12 rounded-full border border-[#28151b]/20 px-6 font-mono text-[10px] uppercase tracking-[0.18em] hover:bg-white">{state === 'success' ? 'Close' : 'Cancel'}</button>
-        {state !== 'success' && <button type="submit" disabled={state === 'sending'} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#a34f42] px-7 font-mono text-[10px] uppercase tracking-[0.18em] text-white disabled:opacity-60">{state === 'sending' ? <Loader2 size={16} className="animate-spin" /> : <Plus size={16} />} Submit work</button>}
+        <button type="button" onClick={onClose} className="min-h-12 rounded-full border border-[#1a1a1a]/20 px-6 font-mono text-[10px] uppercase tracking-[0.18em] hover:bg-white">{state === 'success' ? 'Close' : 'Cancel'}</button>
+        {state !== 'success' && <button type="submit" disabled={state === 'sending'} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#1a1a1a] px-7 font-mono text-[10px] uppercase tracking-[0.18em] text-white disabled:opacity-60">{state === 'sending' ? <Loader2 size={16} className="animate-spin" /> : <Plus size={16} />} Submit work</button>}
       </div>
     </form>
   </ModalShell>;
@@ -259,36 +259,36 @@ export function ShowcasePage() {
   const activeFilterCount = Number(country !== ALL_COUNTRIES) + Number(discipline !== ALL_DISCIPLINES) + Number(withImageOnly) + Number(recentOnly);
   const resetFilters = () => { setCountry(ALL_COUNTRIES); setDiscipline(ALL_DISCIPLINES); setWithImageOnly(false); setRecentOnly(false); };
 
-  return <div className="min-h-screen bg-[#f5f0ea] text-[#28151b] selection:bg-[#a34f42] selection:text-white">
-    <p className="bg-[#28151b] px-4 py-2.5 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#f0e4dc] sm:text-[9px]">
+  return <div className="min-h-screen bg-[#faf9f7] text-[#1a1a1a] selection:bg-[#1a1a1a] selection:text-white">
+    <p className="bg-[#1a1a1a] px-4 py-2.5 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#f0efec] sm:text-[9px]">
       Open call — set design &amp; conceptual art · Worldwide · Reviewed by EPRIS editorial
     </p>
 
-    <header className="sticky top-0 z-40 border-b border-[#28151b]/10 bg-[#f5f0ea]/95 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-[#1a1a1a]/10 bg-[#faf9f7]/95 backdrop-blur-xl">
       <div className="mx-auto grid min-h-16 max-w-[1600px] grid-cols-[1fr_auto_1fr] items-center gap-4 px-4 sm:px-8 lg:px-12">
         <label className="relative hidden sm:block">
           <span className="sr-only">Search works</span>
-          <Search className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-[#806b72]" size={15} />
-          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="SEARCH" className="min-h-11 w-40 border-0 bg-transparent pl-6 font-mono text-[9px] uppercase tracking-[0.2em] text-[#28151b] outline-none placeholder:text-[#806b72] focus:w-56" />
+          <Search className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-[#8a8a8a]" size={15} />
+          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="SEARCH" className="min-h-11 w-40 border-0 bg-transparent pl-6 font-mono text-[9px] uppercase tracking-[0.2em] text-[#1a1a1a] outline-none placeholder:text-[#8a8a8a] focus:w-56" />
         </label>
         <span className="sm:hidden" />
-        <a href="/" className="inline-flex min-h-11 items-center justify-center gap-3 rounded-full px-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9f4f42]" aria-label="EPRIS Journal home">
+        <a href="/" className="inline-flex min-h-11 items-center justify-center gap-3 rounded-full px-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8c2f24]" aria-label="EPRIS Journal home">
           <span className="font-serif text-xl tracking-[0.18em] sm:text-2xl">EPRIS</span>
-          <span className="hidden h-5 w-px bg-[#28151b]/20 sm:block" />
-          <span className="hidden font-mono text-[9px] uppercase tracking-[0.2em] text-[#725b63] sm:block">Showcase</span>
+          <span className="hidden h-5 w-px bg-[#1a1a1a]/20 sm:block" />
+          <span className="hidden font-mono text-[9px] uppercase tracking-[0.2em] text-[#8a8a8a] sm:block">Showcase</span>
         </a>
         <div className="flex items-center justify-end">
-          <button type="button" onClick={() => setSubmitting(true)} aria-label="Submit work" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#28151b] px-4 font-mono text-[9px] uppercase tracking-[0.16em] text-white transition-transform hover:-translate-y-0.5 sm:px-5">
+          <button type="button" onClick={() => setSubmitting(true)} aria-label="Submit work" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#1a1a1a] px-4 font-mono text-[9px] uppercase tracking-[0.16em] text-white transition-transform hover:-translate-y-0.5 sm:px-5">
             <Plus size={15} /><span className="hidden sm:inline">Submit work</span><span className="sm:hidden">Add</span>
           </button>
         </div>
       </div>
 
-      <nav aria-label="Disciplines" className="border-t border-[#28151b]/10">
+      <nav aria-label="Disciplines" className="border-t border-[#1a1a1a]/10">
         <div className="mx-auto flex max-w-[1600px] items-center gap-6 overflow-x-auto px-4 py-3 font-mono text-[9px] uppercase tracking-[0.18em] sm:justify-center sm:px-8 lg:px-12">
-          <button type="button" onClick={() => setDiscipline(ALL_DISCIPLINES)} className={`whitespace-nowrap transition-colors ${discipline === ALL_DISCIPLINES ? 'text-[#28151b]' : 'text-[#8a747b] hover:text-[#28151b]'}`}>All works</button>
+          <button type="button" onClick={() => setDiscipline(ALL_DISCIPLINES)} className={`whitespace-nowrap transition-colors ${discipline === ALL_DISCIPLINES ? 'text-[#1a1a1a]' : 'text-[#8a8a8a] hover:text-[#1a1a1a]'}`}>All works</button>
           {disciplineTabs.map((tab) => (
-            <button key={tab.name} type="button" onClick={() => setDiscipline((current) => (current === tab.name ? ALL_DISCIPLINES : tab.name))} className={`whitespace-nowrap transition-colors ${discipline === tab.name ? 'text-[#a34f42]' : 'text-[#8a747b] hover:text-[#28151b]'}`}>
+            <button key={tab.name} type="button" onClick={() => setDiscipline((current) => (current === tab.name ? ALL_DISCIPLINES : tab.name))} className={`whitespace-nowrap transition-colors ${discipline === tab.name ? 'text-[#1a1a1a]' : 'text-[#8a8a8a] hover:text-[#1a1a1a]'}`}>
               {tab.name}
             </button>
           ))}
@@ -297,32 +297,32 @@ export function ShowcasePage() {
     </header>
 
     <main>
-      <section className="border-b border-[#28151b]/15 px-4 pt-8 sm:px-8 sm:pt-11 lg:px-12 lg:pt-14">
+      <section className="border-b border-[#1a1a1a]/15 px-4 pt-8 sm:px-8 sm:pt-11 lg:px-12 lg:pt-14">
         <div className="mx-auto max-w-[1600px]">
-          <div className="flex items-center justify-between border-y border-[#28151b]/15 py-3 font-mono text-[8px] uppercase tracking-[0.23em] text-[#725b63] sm:text-[9px]">
-            <span><span className="text-[#a34f42]">EPRIS</span> / Showcase</span>
+          <div className="flex items-center justify-between border-y border-[#1a1a1a]/15 py-3 font-mono text-[8px] uppercase tracking-[0.23em] text-[#8a8a8a] sm:text-[9px]">
+            <span><span className="text-[#1a1a1a]">EPRIS</span> / Showcase</span>
             <span className="hidden sm:inline">Set design · Scenography · Conceptual art</span>
             <span>No. 01 — 2026</span>
           </div>
 
           <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(310px,0.34fr)]">
             <div className="pb-10 pt-10 sm:pb-14 sm:pt-14 lg:pb-14 lg:pr-12 lg:pt-14 xl:pr-20">
-              <p className="mb-6 flex items-center gap-3 font-mono text-[9px] uppercase tracking-[0.24em] text-[#9f4f42]">
+              <p className="mb-6 flex items-center gap-3 font-mono text-[9px] uppercase tracking-[0.24em] text-[#8c2f24]">
                 <span className="h-px w-8 bg-current" aria-hidden="true" /> Open vitrine
               </p>
               <h1 className="max-w-6xl font-serif text-[clamp(3.55rem,8.9vw,9.4rem)] leading-[0.79] tracking-[-0.06em]">
                 Rooms built<br />
-                <em className="font-normal text-[#a34f42]">for an idea.</em>
+                <em className="font-normal text-[#1a1a1a]">for an idea.</em>
               </h1>
             </div>
 
-            <div className="border-t border-[#28151b]/15 py-9 lg:flex lg:flex-col lg:justify-between lg:border-l lg:border-t-0 lg:py-14 lg:pl-9 xl:pl-12">
+            <div className="border-t border-[#1a1a1a]/15 py-9 lg:flex lg:flex-col lg:justify-between lg:border-l lg:border-t-0 lg:py-14 lg:pl-9 xl:pl-12">
               <div>
-                <span className="font-serif text-5xl italic leading-none text-[#a34f42]" aria-hidden="true">“</span>
-                <p className="-mt-2 max-w-md font-serif text-xl leading-[1.45] text-[#4e3940] sm:text-2xl lg:text-[1.45rem]">Sets, scenography and conceptual pieces by authors the institutions have not caught up with yet — collected work by work, from everywhere.</p>
+                <span className="font-serif text-5xl italic leading-none text-[#1a1a1a]" aria-hidden="true">“</span>
+                <p className="-mt-2 max-w-md font-serif text-xl leading-[1.45] text-[#3d3d3d] sm:text-2xl lg:text-[1.45rem]">Sets, scenography and conceptual pieces by authors the institutions have not caught up with yet — collected work by work, from everywhere.</p>
               </div>
-              <div className="mt-9 border-t border-[#28151b]/15 pt-5 lg:mt-10">
-                <p className="font-mono text-[8px] uppercase leading-[1.8] tracking-[0.18em] text-[#725b63] sm:text-[9px]">
+              <div className="mt-9 border-t border-[#1a1a1a]/15 pt-5 lg:mt-10">
+                <p className="font-mono text-[8px] uppercase leading-[1.8] tracking-[0.18em] text-[#8a8a8a] sm:text-[9px]">
                   Open submissions / Editorial review<br />
                   Credits verified / EPRIS Journal
                 </p>
@@ -330,17 +330,17 @@ export function ShowcasePage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-3 border-t border-[#28151b]/15">
+          <div className="grid grid-cols-3 border-t border-[#1a1a1a]/15">
             {[
               { value: works.length, label: 'Works', note: 'In the vitrine' },
               { value: new Set(works.map((work) => work.author)).size, label: 'Authors', note: 'Across the world' },
               { value: countries.length, label: 'Countries', note: 'Represented' },
             ].map((stat, index) => (
-              <div key={stat.label} className={`relative py-5 sm:py-7 lg:py-9 ${index > 0 ? 'border-l border-[#28151b]/15 pl-4 sm:pl-7 lg:pl-10' : 'pr-3'}`}>
-                <span className="absolute right-2 top-3 font-mono text-[7px] tracking-[0.16em] text-[#9f4f42]/70 sm:right-4 sm:top-5 sm:text-[8px]">0{index + 1}</span>
+              <div key={stat.label} className={`relative py-5 sm:py-7 lg:py-9 ${index > 0 ? 'border-l border-[#1a1a1a]/15 pl-4 sm:pl-7 lg:pl-10' : 'pr-3'}`}>
+                <span className="absolute right-2 top-3 font-mono text-[7px] tracking-[0.16em] text-[#8c2f24]/70 sm:right-4 sm:top-5 sm:text-[8px]">0{index + 1}</span>
                 <strong className="block font-serif text-[2.15rem] font-normal leading-none tabular-nums sm:text-5xl lg:text-7xl">{stat.value}</strong>
-                <span className="mt-2 block font-mono text-[8px] uppercase tracking-[0.18em] text-[#4e3940] sm:text-[9px]">{stat.label}</span>
-                <span className="mt-1 hidden font-serif text-sm italic text-[#826d74] sm:block">{stat.note}</span>
+                <span className="mt-2 block font-mono text-[8px] uppercase tracking-[0.18em] text-[#3d3d3d] sm:text-[9px]">{stat.label}</span>
+                <span className="mt-1 hidden font-serif text-sm italic text-[#8a8a8a] sm:block">{stat.note}</span>
               </div>
             ))}
           </div>
@@ -350,7 +350,7 @@ export function ShowcasePage() {
       <section className="px-4 py-8 sm:px-8 lg:px-12 lg:py-12">
         <div className="mx-auto grid max-w-[1600px] gap-8 lg:grid-cols-[210px_minmax(0,1fr)] lg:gap-10">
           <aside className="lg:sticky lg:top-32 lg:self-start">
-            <button type="button" onClick={() => setFiltersOpen((value) => !value)} className="flex min-h-12 w-full items-center justify-between rounded-xl border border-[#28151b]/15 bg-white px-4 text-left text-sm lg:hidden">
+            <button type="button" onClick={() => setFiltersOpen((value) => !value)} className="flex min-h-12 w-full items-center justify-between rounded-xl border border-[#1a1a1a]/15 bg-white px-4 text-left text-sm lg:hidden">
               <span className="flex items-center gap-2"><SlidersHorizontal size={16} /> Filters {activeFilterCount ? `(${activeFilterCount})` : ''}</span>
               <ChevronDown size={16} className={filtersOpen ? 'rotate-180' : ''} />
             </button>
@@ -358,7 +358,7 @@ export function ShowcasePage() {
             <div className={`${filtersOpen ? 'block' : 'hidden'} mt-4 space-y-7 lg:mt-0 lg:block`}>
               <label className="relative block lg:hidden">
                 <span className="sr-only">Search works</span>
-                <Search className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#806b72]" size={17} />
+                <Search className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#8a8a8a]" size={17} />
                 <input value={query} onChange={(event) => setQuery(event.target.value)} className={`${inputClass} pl-11`} placeholder="Search title, author, place…" />
               </label>
 
@@ -368,29 +368,29 @@ export function ShowcasePage() {
                   { label: 'Last two years', value: recentOnly, toggle: () => setRecentOnly((value) => !value) },
                 ].map((row) => (
                   <button key={row.label} type="button" role="switch" aria-checked={row.value} onClick={row.toggle} className="flex min-h-11 w-full items-center justify-between gap-3 text-left">
-                    <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#4e3940]">{row.label}</span>
-                    <span className={`relative h-5 w-9 shrink-0 rounded-full transition-colors ${row.value ? 'bg-[#a34f42]' : 'bg-[#28151b]/15'}`}>
+                    <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#3d3d3d]">{row.label}</span>
+                    <span className={`relative h-5 w-9 shrink-0 rounded-full transition-colors ${row.value ? 'bg-[#1a1a1a]' : 'bg-[#1a1a1a]/15'}`}>
                       <span className={`absolute top-0.5 h-4 w-4 rounded-full bg-white transition-transform ${row.value ? 'translate-x-[18px]' : 'translate-x-0.5'}`} />
                     </span>
                   </button>
                 ))}
               </div>
 
-              <div className="border-t border-[#28151b]/12 pt-6">
-                <p className="mb-4 font-mono text-[9px] uppercase tracking-[0.2em] text-[#28151b]">Disciplines</p>
+              <div className="border-t border-[#1a1a1a]/12 pt-6">
+                <p className="mb-4 font-mono text-[9px] uppercase tracking-[0.2em] text-[#1a1a1a]">Disciplines</p>
                 <ul className="space-y-2.5">
-                  <li><button type="button" onClick={() => setDiscipline(ALL_DISCIPLINES)} className={`min-h-8 text-left text-sm transition-colors ${discipline === ALL_DISCIPLINES ? 'text-[#a34f42]' : 'text-[#6d5860] hover:text-[#28151b]'}`}>All disciplines</button></li>
+                  <li><button type="button" onClick={() => setDiscipline(ALL_DISCIPLINES)} className={`min-h-8 text-left text-sm transition-colors ${discipline === ALL_DISCIPLINES ? 'text-[#1a1a1a]' : 'text-[#6b6b6b] hover:text-[#1a1a1a]'}`}>All disciplines</button></li>
                   {disciplineTabs.map((tab) => (
                     <li key={tab.name} className="flex items-baseline justify-between gap-2">
-                      <button type="button" onClick={() => setDiscipline((current) => (current === tab.name ? ALL_DISCIPLINES : tab.name))} className={`min-h-8 text-left text-sm transition-colors ${discipline === tab.name ? 'text-[#a34f42]' : 'text-[#6d5860] hover:text-[#28151b]'}`}>{tab.name}</button>
-                      <span className="font-mono text-[9px] text-[#9b858c]">{tab.count}</span>
+                      <button type="button" onClick={() => setDiscipline((current) => (current === tab.name ? ALL_DISCIPLINES : tab.name))} className={`min-h-8 text-left text-sm transition-colors ${discipline === tab.name ? 'text-[#1a1a1a]' : 'text-[#6b6b6b] hover:text-[#1a1a1a]'}`}>{tab.name}</button>
+                      <span className="font-mono text-[9px] text-[#a3a3a3]">{tab.count}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="border-t border-[#28151b]/12 pt-6">
-                <p className="mb-4 font-mono text-[9px] uppercase tracking-[0.2em] text-[#28151b]">Country</p>
+              <div className="border-t border-[#1a1a1a]/12 pt-6">
+                <p className="mb-4 font-mono text-[9px] uppercase tracking-[0.2em] text-[#1a1a1a]">Country</p>
                 <label className="relative block">
                   <span className="sr-only">Country</span>
                   <select className={`${inputClass} appearance-none pr-10`} value={country} onChange={(event) => setCountry(event.target.value)}>
@@ -402,31 +402,31 @@ export function ShowcasePage() {
               </div>
 
               {activeFilterCount > 0 && (
-                <button type="button" onClick={resetFilters} className="min-h-11 font-mono text-[9px] uppercase tracking-[0.15em] text-[#9f4f42]">Clear filters</button>
+                <button type="button" onClick={resetFilters} className="min-h-11 font-mono text-[9px] uppercase tracking-[0.15em] text-[#8c2f24]">Clear filters</button>
               )}
             </div>
           </aside>
 
           <div>
-            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#28151b]/10 pb-4">
-              <p className="font-mono text-[9px] uppercase tracking-[0.17em] text-[#826d74]">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#1a1a1a]/10 pb-4">
+              <p className="font-mono text-[9px] uppercase tracking-[0.17em] text-[#8a8a8a]">
                 {loading ? 'Loading vitrine…' : `${rangeStart}–${rangeEnd} of ${filtered.length}`}
               </p>
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[9px] uppercase tracking-[0.15em]">
-                <span className="text-[#826d74]">Sort:</span>
+                <span className="text-[#8a8a8a]">Sort:</span>
                 {[
                   { value: 'newest', label: 'Newest first' },
                   { value: 'oldest', label: 'Oldest first' },
                   { value: 'author', label: 'Author A–Z' },
                   { value: 'title', label: 'Title A–Z' },
                 ].map((option) => (
-                  <button key={option.value} type="button" onClick={() => setSort(option.value)} className={`transition-colors ${sort === option.value ? 'text-[#28151b] underline underline-offset-4' : 'text-[#8a747b] hover:text-[#28151b]'}`}>{option.label}</button>
+                  <button key={option.value} type="button" onClick={() => setSort(option.value)} className={`transition-colors ${sort === option.value ? 'text-[#1a1a1a] underline underline-offset-4' : 'text-[#8a8a8a] hover:text-[#1a1a1a]'}`}>{option.label}</button>
                 ))}
               </div>
             </div>
 
             {loading ? (
-              <div className="grid min-h-80 place-items-center"><div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-[#826d74]"><Loader2 className="animate-spin" size={19} /> Loading works</div></div>
+              <div className="grid min-h-80 place-items-center"><div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-[#8a8a8a]"><Loader2 className="animate-spin" size={19} /> Loading works</div></div>
             ) : error ? (
               <div className="my-12 rounded-2xl border border-red-200 bg-red-50 p-7 text-red-900">
                 <p>{error}</p>
@@ -435,12 +435,12 @@ export function ShowcasePage() {
             ) : visible.length === 0 ? (
               <div className="grid min-h-[26rem] place-items-center px-6 text-center">
                 <div className="max-w-md">
-                  <Search size={26} className="mx-auto text-[#9b858c]" />
+                  <Search size={26} className="mx-auto text-[#a3a3a3]" />
                   <p className="mt-5 font-serif text-3xl leading-tight">{works.length === 0 ? 'The vitrine is being assembled.' : 'No works match these filters.'}</p>
-                  <p className="mt-4 text-sm leading-relaxed text-[#715f65]">{works.length === 0 ? 'Submissions are open — the first works are under editorial review. Send yours and it goes into the queue.' : 'Try clearing a filter or widening the search.'}</p>
+                  <p className="mt-4 text-sm leading-relaxed text-[#6b6b6b]">{works.length === 0 ? 'Submissions are open — the first works are under editorial review. Send yours and it goes into the queue.' : 'Try clearing a filter or widening the search.'}</p>
                   <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-                    {works.length > 0 && activeFilterCount > 0 && <button type="button" onClick={resetFilters} className="min-h-12 rounded-full border border-[#28151b]/20 px-6 font-mono text-[10px] uppercase tracking-[0.18em] hover:bg-white">Clear filters</button>}
-                    <button type="button" onClick={() => setSubmitting(true)} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#a34f42] px-7 font-mono text-[10px] uppercase tracking-[0.18em] text-white"><Plus size={16} /> Submit work</button>
+                    {works.length > 0 && activeFilterCount > 0 && <button type="button" onClick={resetFilters} className="min-h-12 rounded-full border border-[#1a1a1a]/20 px-6 font-mono text-[10px] uppercase tracking-[0.18em] hover:bg-white">Clear filters</button>}
+                    <button type="button" onClick={() => setSubmitting(true)} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#1a1a1a] px-7 font-mono text-[10px] uppercase tracking-[0.18em] text-white"><Plus size={16} /> Submit work</button>
                   </div>
                 </div>
               </div>
@@ -448,18 +448,18 @@ export function ShowcasePage() {
               <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-9 sm:gap-x-6 lg:grid-cols-3 xl:grid-cols-4">
                 {visible.map((work, index) => (
                   <button key={work.id} type="button" onClick={() => setSelected(work)} aria-label={`${work.title} — ${work.author}`} className="group text-left">
-                    <div className="relative aspect-[3/4] overflow-hidden bg-[#e6ddd2]">
+                    <div className="relative aspect-[3/4] overflow-hidden bg-[#eeece8]">
                       <WorkPlate work={work} index={index} className="absolute inset-0 h-full w-full" />
                       {work.status === 'Under review' && (
-                        <span className="absolute left-3 top-3 rounded-full bg-[#f5f0ea]/90 px-2.5 py-1 font-mono text-[7px] uppercase tracking-[0.14em] text-[#7a3027]">Under review</span>
+                        <span className="absolute left-3 top-3 rounded-full bg-[#faf9f7]/90 px-2.5 py-1 font-mono text-[7px] uppercase tracking-[0.14em] text-[#8c2f24]">Under review</span>
                       )}
                       <span className="absolute right-3 top-3 text-lg opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true">{flag(work.countryCode)}</span>
                     </div>
                     <div className="mt-3">
-                      <p className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#8a747b]">{work.discipline || 'Work'}</p>
-                      <h2 className="mt-1.5 font-serif text-lg leading-tight transition-colors group-hover:text-[#a34f42]">{work.title}</h2>
-                      <p className="mt-1 text-sm text-[#6d5860]">{work.author}{work.year ? `, ${work.year}` : ''}</p>
-                      <p className="mt-0.5 font-mono text-[8px] uppercase tracking-[0.14em] text-[#9b858c]">{[work.city, work.country].filter(Boolean).join(' · ')}</p>
+                      <p className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#8a8a8a]">{work.discipline || 'Work'}</p>
+                      <h2 className="mt-1.5 font-serif text-lg leading-tight transition-colors group-hover:text-[#1a1a1a]">{work.title}</h2>
+                      <p className="mt-1 text-sm text-[#6b6b6b]">{work.author}{work.year ? `, ${work.year}` : ''}</p>
+                      <p className="mt-0.5 font-mono text-[8px] uppercase tracking-[0.14em] text-[#a3a3a3]">{[work.city, work.country].filter(Boolean).join(' · ')}</p>
                     </div>
                   </button>
                 ))}
@@ -467,28 +467,28 @@ export function ShowcasePage() {
             )}
 
             {!loading && !error && filtered.length > PAGE_SIZE && (
-              <nav className="mt-12 flex items-center justify-between border-t border-[#28151b]/10 pt-6" aria-label="Work pages">
-                <button type="button" onClick={() => { setPage((value) => Math.max(1, value - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }} disabled={page === 1} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[#28151b]/15 px-4 font-mono text-[9px] uppercase tracking-[0.15em] disabled:opacity-30"><ArrowLeft size={14} /> Previous</button>
-                <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#826d74]">{page} / {pages}</span>
-                <button type="button" onClick={() => { setPage((value) => Math.min(pages, value + 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }} disabled={page === pages} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[#28151b]/15 px-4 font-mono text-[9px] uppercase tracking-[0.15em] disabled:opacity-30">Next <ArrowRight size={14} /></button>
+              <nav className="mt-12 flex items-center justify-between border-t border-[#1a1a1a]/10 pt-6" aria-label="Work pages">
+                <button type="button" onClick={() => { setPage((value) => Math.max(1, value - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }} disabled={page === 1} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[#1a1a1a]/15 px-4 font-mono text-[9px] uppercase tracking-[0.15em] disabled:opacity-30"><ArrowLeft size={14} /> Previous</button>
+                <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#8a8a8a]">{page} / {pages}</span>
+                <button type="button" onClick={() => { setPage((value) => Math.min(pages, value + 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }} disabled={page === pages} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[#1a1a1a]/15 px-4 font-mono text-[9px] uppercase tracking-[0.15em] disabled:opacity-30">Next <ArrowRight size={14} /></button>
               </nav>
             )}
           </div>
         </div>
       </section>
 
-      <section className="border-t border-[#28151b]/10 bg-[#28151b] px-4 py-16 text-[#f5f0ea] sm:px-8 sm:py-24 lg:px-12">
+      <section className="border-t border-[#1a1a1a]/10 bg-[#1a1a1a] px-4 py-16 text-[#faf9f7] sm:px-8 sm:py-24 lg:px-12">
         <div className="mx-auto grid max-w-[1600px] gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
-            <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[#d39a88]">Built something worth seeing?</p>
+            <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[#c9b8b2]">Built something worth seeing?</p>
             <h2 className="mt-5 max-w-4xl font-serif text-4xl leading-none sm:text-6xl lg:text-7xl">The vitrine is open to authors, not to CVs.</h2>
           </div>
-          <button type="button" onClick={() => setSubmitting(true)} className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#f5f0ea] px-7 font-mono text-[10px] uppercase tracking-[0.18em] text-[#28151b] hover:bg-white"><Plus size={17} /> Submit work</button>
+          <button type="button" onClick={() => setSubmitting(true)} className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#faf9f7] px-7 font-mono text-[10px] uppercase tracking-[0.18em] text-[#1a1a1a] hover:bg-white"><Plus size={17} /> Submit work</button>
         </div>
       </section>
     </main>
 
-    <footer className="border-t border-white/10 bg-[#28151b] px-4 py-7 text-[#f5f0ea] sm:px-8 lg:px-12">
+    <footer className="border-t border-white/10 bg-[#1a1a1a] px-4 py-7 text-[#faf9f7] sm:px-8 lg:px-12">
       <div className="mx-auto flex max-w-[1600px] flex-col gap-3 font-mono text-[8px] uppercase tracking-[0.16em] text-white/45 sm:flex-row sm:items-center sm:justify-between">
         <span>© 2026 EPRIS Journal</span>
         <a href="/" className="inline-flex min-h-11 items-center gap-2 text-white/70 hover:text-white">Return to journal <ArrowUpRight size={13} /></a>
