@@ -7,6 +7,7 @@
 // можно честно проставить масштаб.
 //
 // Лист печатный: тёмная краска по белому, а не тёмная тема интерфейса.
+import { isCut } from './drafting';
 import type { Reading } from './moves';
 import type { Scene } from './sceneModel';
 
@@ -111,18 +112,21 @@ export async function exportSpec({ scene, moveTitle, readings = [] }: SpecInput)
   doc.setLineWidth(0.4);
   doc.rect(planX(0), planY(0), room.w * scale, room.d * scale, 'S');
 
-  doc.setLineWidth(0.25);
-  for (const object of scene.objects) {
-    doc.setFillColor(...FILL);
+  /* Поше и веса — те же, что на экране: рассечённое заливается и обводится
+     жирным, стоящее в поле зрения остаётся тонким контуром. */
+  scene.objects.forEach((object) => {
+    const cut = isCut(object.kind);
+    doc.setLineWidth(cut ? 0.5 : 0.25);
+    if (cut) doc.setFillColor(...INK);
+    else doc.setFillColor(...FILL);
     polygon(doc, planCorners(object).map(([x, z]) => [planX(x), planY(z)] as Point), 'FD');
-  }
+  });
+  // Номер, а не название: подписи наезжали друг на друга, а номер отсылает
+  // к строке ведомости, где стоят все размеры.
   doc.setFontSize(5);
-  for (const object of scene.objects) {
-    doc.text(object.label, planX(object.x + object.w / 2), planY(object.z + object.d / 2), {
-      align: 'center',
-      baseline: 'middle',
-    });
-  }
+  scene.objects.forEach((object, index) => {
+    doc.text(String(index + 1).padStart(2, '0'), planX(object.x) - 1, planY(object.z) - 1, { align: 'right' });
+  });
 
   // Глаз зрителя — на плане это точка, ради которой сцена и строится.
   doc.setFillColor(...INK);
@@ -148,11 +152,14 @@ export async function exportSpec({ scene, moveTitle, readings = [] }: SpecInput)
   doc.setLineWidth(0.6);
   doc.line(sectX(0), floorY, sectX(room.d), floorY);
 
-  doc.setLineWidth(0.25);
-  for (const object of scene.objects) {
-    doc.setFillColor(...FILL);
+  scene.objects.forEach((object, index) => {
+    const cut = isCut(object.kind);
+    doc.setLineWidth(cut ? 0.5 : 0.25);
+    doc.setFillColor(...(cut ? INK : FILL));
     doc.rect(sectX(object.z), sectY(object.y + object.h), object.d * scale, object.h * scale, 'FD');
-  }
+    doc.setFontSize(5);
+    doc.text(String(index + 1).padStart(2, '0'), sectX(object.z) - 1, sectY(object.y + object.h) - 1, { align: 'right' });
+  });
 
   doc.setFillColor(...INK);
   doc.circle(sectX(scene.viewer.z), sectY(scene.viewer.eyeHeight), 1, 'F');
@@ -176,7 +183,8 @@ export async function exportSpec({ scene, moveTitle, readings = [] }: SpecInput)
   doc.line(MARGIN, 23, PAGE_W - MARGIN, 23);
 
   const columns: { label: string; x: number; align?: 'right' }[] = [
-    { label: 'ELEMENT', x: MARGIN },
+    { label: '#', x: MARGIN },
+    { label: 'ELEMENT', x: MARGIN + 10 },
     { label: 'TYPE', x: MARGIN + 55 },
     { label: 'X', x: MARGIN + 95, align: 'right' },
     { label: 'Z', x: MARGIN + 115, align: 'right' },
@@ -196,7 +204,7 @@ export async function exportSpec({ scene, moveTitle, readings = [] }: SpecInput)
   let y = 34;
   doc.setFontSize(7);
   let totalVolume = 0;
-  for (const object of scene.objects) {
+  scene.objects.forEach((object, index) => {
     if (y > PAGE_H - MARGIN - 30) {
       doc.addPage();
       y = 20;
@@ -204,6 +212,7 @@ export async function exportSpec({ scene, moveTitle, readings = [] }: SpecInput)
     const volume = object.w * object.d * object.h;
     totalVolume += volume;
     const cells = [
+      String(index + 1).padStart(2, '0'),
       object.label,
       object.kind,
       object.x.toFixed(2),
@@ -215,12 +224,12 @@ export async function exportSpec({ scene, moveTitle, readings = [] }: SpecInput)
       `${object.rotation}°`,
       `${volume.toFixed(2)} m³`,
     ];
-    cells.forEach((cell, index) => {
-      const column = columns[index];
-      doc.text(cell, column.x, y, column.align ? { align: column.align } : undefined);
+    cells.forEach((cell, column) => {
+      const spec = columns[column];
+      doc.text(cell, spec.x, y, spec.align ? { align: spec.align } : undefined);
     });
     y += 5;
-  }
+  });
 
   if (!scene.objects.length) {
     doc.setFontSize(7);

@@ -230,10 +230,15 @@ export function StagePage() {
 
       <div className="mx-auto max-w-[1600px] px-4 py-8 sm:px-8 lg:px-12">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-          <p className="max-w-[52ch] font-sans text-[13px] leading-relaxed text-[#f5f0eb]/60">
-            Коробка сцены в метрах. План и разрез читают одну модель — подвинь объект
-            в плане, он подвинется и в разрезе.
-          </p>
+          <div>
+            <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/40">
+              Drawing set · metres · {scene.room.w} × {scene.room.d} × {scene.room.h}
+            </p>
+            <p className="mt-2 max-w-[52ch] font-sans text-[13px] leading-relaxed text-[#f5f0eb]/60">
+              One model, read three ways. Move an element in the plan and the section
+              follows it — they cannot disagree.
+            </p>
+          </div>
           <div className="flex shrink-0 flex-wrap gap-2">
             <button
               type="button"
@@ -357,11 +362,40 @@ export function StagePage() {
                 <NumberField label="Height" value={selected.h} onChange={(v) => setScene((p) => updateObject(p, selected.id, { h: v }))} />
                 <NumberField label="Rotation" step={5} value={selected.rotation} onChange={(v) => setScene((p) => updateObject(p, selected.id, { rotation: v }))} />
               </div>
-            ) : (
-              <div className="border-t border-[#f5f0eb]/12 pt-6">
-                <p className="font-sans text-[11px] text-[#f5f0eb]/40">Select an object to edit it.</p>
-              </div>
-            )}
+            ) : null}
+
+            {/* Ведомость: то, к чему отсылают номера на чертеже. Без неё метка
+                «03» ничего не значит, а с ней рисунок и список — один документ. */}
+            <div className="border-t border-[#f5f0eb]/12 pt-6">
+              <p className="mb-3 font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/45">
+                Schedule
+              </p>
+              {scene.objects.length ? (
+                <ul className="divide-y divide-[#f5f0eb]/8 border-y border-[#f5f0eb]/8">
+                  {displayed.objects.map((object, index) => (
+                    <li key={object.id}>
+                      <button
+                        type="button"
+                        onClick={() => setSelectedId(object.generatedBy ? null : object.id)}
+                        className={`flex w-full items-baseline gap-2.5 py-2 text-left font-sans transition-colors ${
+                          object.id === selectedId ? 'text-[#b8956e]' : 'text-[#f5f0eb]/70 hover:text-[#f5f0eb]'
+                        }`}
+                      >
+                        <span className="w-5 shrink-0 text-[10px] tabular-nums opacity-60">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <span className="min-w-0 flex-1 truncate text-[12px]">{object.label}</span>
+                        <span className="shrink-0 text-[10px] tabular-nums opacity-55">
+                          {object.w.toFixed(2)}×{object.d.toFixed(2)}×{object.h.toFixed(2)}
+                        </span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="font-sans text-[11px] text-[#f5f0eb]/40">The box is empty.</p>
+              )}
+            </div>
 
             <div className="space-y-3 border-t border-[#f5f0eb]/12 pt-6">
               <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/45">Room</p>
