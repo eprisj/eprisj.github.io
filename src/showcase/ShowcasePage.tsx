@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useMemo, useState } from 'react';
 import {
   ArrowLeft, ArrowRight, ArrowUpRight, Check, ChevronDown, ImageOff,
-  Instagram, Loader2, MapPin, Plus, Search, SlidersHorizontal, X,
+  Instagram, Loader2, Plus, Search, SlidersHorizontal, X,
 } from 'lucide-react';
 import {
   DISCIPLINES, EMPTY_WORK_DRAFT, Work, WorkDraft,
@@ -25,7 +25,7 @@ function ModalShell({ title, onClose, children, wide = false }: { title: string;
 
   return (
     <div className="fixed inset-0 z-[120] flex items-end justify-center bg-[#4a1728]/55 p-0 backdrop-blur-sm sm:items-center sm:p-6" role="dialog" aria-modal="true" aria-label={title} onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
-      <div className={`max-h-[94dvh] w-full overflow-y-auto rounded-t-[28px] bg-[#f5f0eb] shadow-2xl sm:rounded-[28px] ${wide ? 'sm:max-w-4xl' : 'sm:max-w-xl'}`}>
+      <div className={`max-h-[94dvh] w-full overflow-y-auto rounded-t-[20px] bg-[#f5f0eb] shadow-xl sm:rounded-none sm:border sm:border-[#4a1728]/15 ${wide ? 'sm:max-w-4xl' : 'sm:max-w-xl'}`}>
         <div className="sticky top-0 z-10 flex min-h-16 items-center justify-between border-b border-[#4a1728]/10 bg-[#f5f0eb]/95 px-5 backdrop-blur-md sm:px-7">
           <p className="font-sans text-[11px] uppercase tracking-[0.22em] text-[#4a1728]/65">{title}</p>
           <button type="button" onClick={onClose} className="grid h-11 w-11 place-items-center rounded-full border border-[#4a1728]/15 transition-colors hover:bg-[#fdfaf6] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b8956e]" aria-label="Close">
@@ -76,17 +76,19 @@ function WorkDetail({ work, onClose }: { work: Work; onClose: () => void }) {
   return (
     <ModalShell title={work.discipline || 'Work'} onClose={onClose} wide>
       <div className="p-5 sm:p-8">
-        <div className="overflow-hidden rounded-2xl bg-[#e9dece]">
+        {/* Works come in every proportion; a dark ground turns the leftover
+            space into a mount instead of an accidental margin. */}
+        <div className="overflow-hidden bg-[#2b0d18]">
           {current ? (
-            <img src={current.url} alt={current.caption || work.title} className="max-h-[62dvh] w-full object-contain" />
+            <img src={current.url} alt={current.caption || work.title} className="mx-auto max-h-[68dvh] w-auto max-w-full object-contain" />
           ) : (
-            <div className="grid aspect-[4/3] place-items-center text-[#4a1728]/30"><ImageOff size={28} /></div>
+            <div className="grid aspect-[4/3] place-items-center text-[#f5f0eb]/30"><ImageOff size={28} /></div>
           )}
         </div>
         {images.length > 1 && (
           <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
             {images.map((image, index) => (
-              <button key={`${image.url}-${index}`} type="button" onClick={() => setActive(index)} className={`h-16 w-16 shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${index === active ? 'border-[#4a1728]' : 'border-transparent opacity-70 hover:opacity-100'}`} aria-label={`Image ${index + 1}`}>
+              <button key={`${image.url}-${index}`} type="button" onClick={() => setActive(index)} className={`h-16 w-16 shrink-0 overflow-hidden border transition-opacity ${index === active ? 'border-[#4a1728]' : 'border-[#4a1728]/15 opacity-60 hover:opacity-100'}`} aria-label={`Image ${index + 1}`}>
                 <img src={image.url} alt="" className="h-full w-full object-cover" />
               </button>
             ))}
@@ -98,12 +100,14 @@ function WorkDetail({ work, onClose }: { work: Work; onClose: () => void }) {
           <div className="min-w-0">
             <h2 className="font-display text-3xl leading-[1.05] text-[#4a1728] sm:text-5xl">{work.title}</h2>
             <p className="mt-3 font-display text-xl italic text-[#b8956e]">{work.author}{work.year ? `, ${work.year}` : ''}</p>
-            <p className="mt-3 flex items-center gap-2 text-sm text-[#4a1728]/65"><MapPin size={15} /> {[work.venue, work.city, work.country].filter(Boolean).join(', ') || 'Location not specified'}</p>
+            <p className="mt-4 border-t border-[#4a1728]/15 pt-3 font-sans text-[10px] uppercase tracking-[0.18em] text-[#4a1728]/60">{[work.venue, work.city, work.country].filter(Boolean).join(' · ') || 'Location not stated'}</p>
           </div>
-          <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-[#fdfaf6] text-3xl shadow-sm" aria-hidden="true">{flag(work.countryCode)}</span>
+          {work.country && (
+            <p className="shrink-0 font-sans text-[9px] uppercase tracking-[0.2em] text-[#4a1728]/45">{work.country}</p>
+          )}
         </div>
 
-        <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-[#4a1728]/10 bg-[#4a1728]/10 sm:grid-cols-3">
+        <div className="mt-8 grid gap-px overflow-hidden border-y border-[#4a1728]/15 bg-[#4a1728]/12 sm:grid-cols-3">
           <div className="bg-[#fdfaf6] p-4"><p className="font-sans text-[9px] uppercase tracking-[0.18em] text-[#4a1728]/55">Discipline</p><p className="mt-2 font-display text-lg">{work.discipline || '—'}</p></div>
           <div className="bg-[#fdfaf6] p-4"><p className="font-sans text-[9px] uppercase tracking-[0.18em] text-[#4a1728]/55">Medium</p><p className="mt-2 font-display text-lg">{work.medium || '—'}</p></div>
           <div className="bg-[#fdfaf6] p-4"><p className="font-sans text-[9px] uppercase tracking-[0.18em] text-[#4a1728]/55">Added</p><p className="mt-2 font-display text-lg">{work.addedAt ? new Date(work.addedAt).toLocaleDateString('en-GB') : '—'}</p></div>
@@ -115,7 +119,7 @@ function WorkDetail({ work, onClose }: { work: Work; onClose: () => void }) {
         </section>}
 
         {!!work.tags?.length && <div className="mt-7 flex flex-wrap gap-2">
-          {work.tags.map((tag) => <span key={tag} className="rounded-full bg-[#ece2d5] px-3 py-1.5 font-sans text-[8px] uppercase tracking-[0.12em] text-[#4a1728]/80">{tag}</span>)}
+          {work.tags.map((tag) => <span key={tag} className="border border-[#4a1728]/15 bg-[#ece2d5] px-3 py-1.5 font-sans text-[8px] uppercase tracking-[0.12em] text-[#4a1728]/80">{tag}</span>)}
         </div>}
 
         <div className="mt-9 flex flex-col gap-3 sm:flex-row">
