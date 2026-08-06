@@ -12,6 +12,7 @@ const PassportPage = lazy(() => import('./pages/passport/PassportPage').then((m)
 const DesignPage = lazy(() => import('./design/DesignPage').then((m) => ({ default: m.DesignPage })));
 const CollaborationPage = lazy(() => import('./pages/CollaborationPage').then((m) => ({ default: m.CollaborationPage })));
 const ShowcasePage = lazy(() => import('./showcase/ShowcasePage').then((m) => ({ default: m.ShowcasePage })));
+const BureauPage = lazy(() => import('./showcase/BureauPage').then((m) => ({ default: m.BureauPage })));
 import {
   Article,
   Author,
@@ -2983,6 +2984,11 @@ export default function App() {
       window.history.replaceState(null, '', '/collaboration');
     }
     return <Suspense fallback={<div className="min-h-screen bg-[#f5f0ea]" />}><CollaborationPage /></Suspense>;
+  }
+  /* Бюро — і список, і окремий розбір. Глибокі адреси віддає SPA-заглушка
+     404.html, тож посилання на конкретний розбір працює напряму. */
+  if (/^\/bureau(?:\/[^/]+)?\/?$/.test(window.location.pathname)) {
+    return <Suspense fallback={<div className="min-h-screen bg-[#1a0b10]" />}><BureauPage /></Suspense>;
   }
   if (/^\/(?:showcase|works|set)\/?$/.test(window.location.pathname)) {
     if (!/^\/showcase\/?$/.test(window.location.pathname)) {
