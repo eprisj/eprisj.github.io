@@ -12,7 +12,7 @@ const PAGE_SIZE = 24;
 const ALL_DISCIPLINES = 'All disciplines';
 const ALL_COUNTRIES = 'All countries';
 
-const inputClass = 'min-h-12 w-full rounded-xl border border-[#1a1a1a]/15 bg-white px-4 text-[15px] text-[#1a1a1a] outline-none transition-shadow placeholder:text-[#a3a3a3] focus:border-[#8c2f24] focus:ring-2 focus:ring-[#8c2f24]/20';
+const inputClass = 'min-h-12 w-full rounded-xl border border-[#4a1728]/15 bg-[#fdfaf6] px-4 text-[15px] text-[#4a1728] outline-none transition-shadow placeholder:text-[#4a1728]/40 focus:border-[#b8956e] focus:ring-2 focus:ring-[#b8956e]/20';
 
 function ModalShell({ title, onClose, children, wide = false }: { title: string; onClose: () => void; children: React.ReactNode; wide?: boolean }) {
   useEffect(() => {
@@ -24,11 +24,11 @@ function ModalShell({ title, onClose, children, wide = false }: { title: string;
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 z-[120] flex items-end justify-center bg-[#1a1a1a]/55 p-0 backdrop-blur-sm sm:items-center sm:p-6" role="dialog" aria-modal="true" aria-label={title} onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
-      <div className={`max-h-[94dvh] w-full overflow-y-auto rounded-t-[28px] bg-[#faf9f7] shadow-2xl sm:rounded-[28px] ${wide ? 'sm:max-w-4xl' : 'sm:max-w-xl'}`}>
-        <div className="sticky top-0 z-10 flex min-h-16 items-center justify-between border-b border-[#1a1a1a]/10 bg-[#faf9f7]/95 px-5 backdrop-blur-md sm:px-7">
-          <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[#6b6b6b]">{title}</p>
-          <button type="button" onClick={onClose} className="grid h-11 w-11 place-items-center rounded-full border border-[#1a1a1a]/15 transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8c2f24]" aria-label="Close">
+    <div className="fixed inset-0 z-[120] flex items-end justify-center bg-[#4a1728]/55 p-0 backdrop-blur-sm sm:items-center sm:p-6" role="dialog" aria-modal="true" aria-label={title} onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
+      <div className={`max-h-[94dvh] w-full overflow-y-auto rounded-t-[28px] bg-[#f5f0eb] shadow-2xl sm:rounded-[28px] ${wide ? 'sm:max-w-4xl' : 'sm:max-w-xl'}`}>
+        <div className="sticky top-0 z-10 flex min-h-16 items-center justify-between border-b border-[#4a1728]/10 bg-[#f5f0eb]/95 px-5 backdrop-blur-md sm:px-7">
+          <p className="font-sans text-[11px] uppercase tracking-[0.22em] text-[#4a1728]/65">{title}</p>
+          <button type="button" onClick={onClose} className="grid h-11 w-11 place-items-center rounded-full border border-[#4a1728]/15 transition-colors hover:bg-[#fdfaf6] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b8956e]" aria-label="Close">
             <X size={19} />
           </button>
         </div>
@@ -43,13 +43,13 @@ function ModalShell({ title, onClose, children, wide = false }: { title: string;
 function WorkPlate({ work, index, className = '' }: { work: Work; index: number; className?: string }) {
   const [failed, setFailed] = useState(false);
   const image = work.images?.[0];
-  const tint = ['#eeece8', '#ebe9e5', '#e8e6e2', '#f2f0ec', '#e4e2de'][index % 5];
+  const tint = ['#e9dece', '#e5d8c6', '#e2d4c0', '#efe7dc', '#ddccb5'][index % 5];
 
   if (!image?.url || failed) {
     return (
       <div className={`flex flex-col items-center justify-center gap-3 ${className}`} style={{ backgroundColor: tint }}>
-        <ImageOff size={22} className="text-[#1a1a1a]/25" aria-hidden="true" />
-        <p className="max-w-[70%] text-center font-display text-base italic leading-snug text-[#1a1a1a]/45">{work.title}</p>
+        <ImageOff size={22} className="text-[#4a1728]/25" aria-hidden="true" />
+        <p className="max-w-[70%] text-center font-display text-base italic leading-snug text-[#4a1728]/45">{work.title}</p>
       </div>
     );
   }
@@ -76,52 +76,52 @@ function WorkDetail({ work, onClose }: { work: Work; onClose: () => void }) {
   return (
     <ModalShell title={work.discipline || 'Work'} onClose={onClose} wide>
       <div className="p-5 sm:p-8">
-        <div className="overflow-hidden rounded-2xl bg-[#eeece8]">
+        <div className="overflow-hidden rounded-2xl bg-[#e9dece]">
           {current ? (
             <img src={current.url} alt={current.caption || work.title} className="max-h-[62dvh] w-full object-contain" />
           ) : (
-            <div className="grid aspect-[4/3] place-items-center text-[#1a1a1a]/30"><ImageOff size={28} /></div>
+            <div className="grid aspect-[4/3] place-items-center text-[#4a1728]/30"><ImageOff size={28} /></div>
           )}
         </div>
         {images.length > 1 && (
           <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
             {images.map((image, index) => (
-              <button key={`${image.url}-${index}`} type="button" onClick={() => setActive(index)} className={`h-16 w-16 shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${index === active ? 'border-[#1a1a1a]' : 'border-transparent opacity-70 hover:opacity-100'}`} aria-label={`Image ${index + 1}`}>
+              <button key={`${image.url}-${index}`} type="button" onClick={() => setActive(index)} className={`h-16 w-16 shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${index === active ? 'border-[#4a1728]' : 'border-transparent opacity-70 hover:opacity-100'}`} aria-label={`Image ${index + 1}`}>
                 <img src={image.url} alt="" className="h-full w-full object-cover" />
               </button>
             ))}
           </div>
         )}
-        {current?.credit && <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.16em] text-[#8a8a8a]">Photo — {current.credit}</p>}
+        {current?.credit && <p className="mt-3 font-sans text-[9px] uppercase tracking-[0.16em] text-[#4a1728]/55">Photo — {current.credit}</p>}
 
         <div className="mt-7 flex flex-wrap items-start justify-between gap-5">
           <div className="min-w-0">
-            <h2 className="font-display text-3xl leading-[1.05] text-[#1a1a1a] sm:text-5xl">{work.title}</h2>
-            <p className="mt-3 font-display text-xl italic text-[#8c2f24]">{work.author}{work.year ? `, ${work.year}` : ''}</p>
-            <p className="mt-3 flex items-center gap-2 text-sm text-[#6b6b6b]"><MapPin size={15} /> {[work.venue, work.city, work.country].filter(Boolean).join(', ') || 'Location not specified'}</p>
+            <h2 className="font-display text-3xl leading-[1.05] text-[#4a1728] sm:text-5xl">{work.title}</h2>
+            <p className="mt-3 font-display text-xl italic text-[#b8956e]">{work.author}{work.year ? `, ${work.year}` : ''}</p>
+            <p className="mt-3 flex items-center gap-2 text-sm text-[#4a1728]/65"><MapPin size={15} /> {[work.venue, work.city, work.country].filter(Boolean).join(', ') || 'Location not specified'}</p>
           </div>
-          <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-white text-3xl shadow-sm" aria-hidden="true">{flag(work.countryCode)}</span>
+          <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-[#fdfaf6] text-3xl shadow-sm" aria-hidden="true">{flag(work.countryCode)}</span>
         </div>
 
-        <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-[#1a1a1a]/10 bg-[#1a1a1a]/10 sm:grid-cols-3">
-          <div className="bg-[#ffffff] p-4"><p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8a8a8a]">Discipline</p><p className="mt-2 font-display text-lg">{work.discipline || '—'}</p></div>
-          <div className="bg-[#ffffff] p-4"><p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8a8a8a]">Medium</p><p className="mt-2 font-display text-lg">{work.medium || '—'}</p></div>
-          <div className="bg-[#ffffff] p-4"><p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8a8a8a]">Added</p><p className="mt-2 font-display text-lg">{work.addedAt ? new Date(work.addedAt).toLocaleDateString('en-GB') : '—'}</p></div>
+        <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-[#4a1728]/10 bg-[#4a1728]/10 sm:grid-cols-3">
+          <div className="bg-[#fdfaf6] p-4"><p className="font-sans text-[9px] uppercase tracking-[0.18em] text-[#4a1728]/55">Discipline</p><p className="mt-2 font-display text-lg">{work.discipline || '—'}</p></div>
+          <div className="bg-[#fdfaf6] p-4"><p className="font-sans text-[9px] uppercase tracking-[0.18em] text-[#4a1728]/55">Medium</p><p className="mt-2 font-display text-lg">{work.medium || '—'}</p></div>
+          <div className="bg-[#fdfaf6] p-4"><p className="font-sans text-[9px] uppercase tracking-[0.18em] text-[#4a1728]/55">Added</p><p className="mt-2 font-display text-lg">{work.addedAt ? new Date(work.addedAt).toLocaleDateString('en-GB') : '—'}</p></div>
         </div>
 
         {work.statement && <section className="mt-8">
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#8c2f24]">Statement</p>
-          <p className="mt-3 font-display text-xl leading-relaxed text-[#2b2b2b] sm:text-2xl">{work.statement}</p>
+          <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#b8956e]">Statement</p>
+          <p className="mt-3 font-display text-xl leading-relaxed text-[#4a1728]/85 sm:text-2xl">{work.statement}</p>
         </section>}
 
         {!!work.tags?.length && <div className="mt-7 flex flex-wrap gap-2">
-          {work.tags.map((tag) => <span key={tag} className="rounded-full bg-[#f0efec] px-3 py-1.5 font-mono text-[8px] uppercase tracking-[0.12em] text-[#3d3d3d]">{tag}</span>)}
+          {work.tags.map((tag) => <span key={tag} className="rounded-full bg-[#ece2d5] px-3 py-1.5 font-sans text-[8px] uppercase tracking-[0.12em] text-[#4a1728]/80">{tag}</span>)}
         </div>}
 
         <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-          {handle && <a href={`https://www.instagram.com/${encodeURIComponent(handle)}/`} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#1a1a1a] px-6 font-mono text-[10px] uppercase tracking-[0.18em] text-white transition-transform hover:-translate-y-0.5"><Instagram size={16} /> @{handle}</a>}
-          {work.portfolio && <a href={externalUrl(work.portfolio)} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#1a1a1a]/20 px-6 font-mono text-[10px] uppercase tracking-[0.18em] transition-colors hover:bg-white">Portfolio <ArrowUpRight size={15} /></a>}
-          {work.sourceUrl && work.sourceUrl !== work.portfolio && <a href={externalUrl(work.sourceUrl)} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#1a1a1a]/20 px-6 font-mono text-[10px] uppercase tracking-[0.18em] transition-colors hover:bg-white">Source <ArrowUpRight size={15} /></a>}
+          {handle && <a href={`https://www.instagram.com/${encodeURIComponent(handle)}/`} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#4a1728] px-6 font-sans text-[10px] uppercase tracking-[0.18em] text-white transition-transform hover:-translate-y-0.5"><Instagram size={16} /> @{handle}</a>}
+          {work.portfolio && <a href={externalUrl(work.portfolio)} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#4a1728]/20 px-6 font-sans text-[10px] uppercase tracking-[0.18em] transition-colors hover:bg-[#fdfaf6]">Portfolio <ArrowUpRight size={15} /></a>}
+          {work.sourceUrl && work.sourceUrl !== work.portfolio && <a href={externalUrl(work.sourceUrl)} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#4a1728]/20 px-6 font-sans text-[10px] uppercase tracking-[0.18em] transition-colors hover:bg-[#fdfaf6]">Source <ArrowUpRight size={15} /></a>}
         </div>
       </div>
     </ModalShell>
@@ -129,7 +129,7 @@ function WorkDetail({ work, onClose }: { work: Work; onClose: () => void }) {
 }
 
 function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
-  return <label className="block"><span className="mb-2 block font-mono text-[10px] uppercase tracking-[0.16em] text-[#6b6b6b]">{label}{required && <span className="text-[#8c2f24]"> *</span>}</span>{children}</label>;
+  return <label className="block"><span className="mb-2 block font-sans text-[10px] uppercase tracking-[0.16em] text-[#4a1728]/65">{label}{required && <span className="text-[#b8956e]"> *</span>}</span>{children}</label>;
 }
 
 function SubmitWork({ onClose, onAdded }: { onClose: () => void; onAdded: (work: Work) => void }) {
@@ -155,8 +155,8 @@ function SubmitWork({ onClose, onAdded }: { onClose: () => void; onAdded: (work:
   return <ModalShell title="Submit a work" onClose={onClose} wide>
     <form onSubmit={submit} className="p-5 sm:p-8">
       <div className="mb-7 max-w-xl">
-        <h2 className="font-display text-3xl text-[#1a1a1a] sm:text-4xl">Show us what you built</h2>
-        <p className="mt-3 text-sm leading-relaxed text-[#6b6b6b]">Sets, scenography, installations and conceptual pieces. Submissions appear with “Under review” status — the EPRIS editorial team verifies authorship and credits before publishing.</p>
+        <h2 className="font-display text-3xl text-[#4a1728] sm:text-4xl">Show us what you built</h2>
+        <p className="mt-3 text-sm leading-relaxed text-[#4a1728]/65">Sets, scenography, installations and conceptual pieces. Submissions appear with “Under review” status — the EPRIS editorial team verifies authorship and credits before publishing.</p>
       </div>
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Work title" required><input className={inputClass} value={draft.title} onChange={(e) => set('title', e.target.value)} maxLength={140} required autoFocus /></Field>
@@ -177,8 +177,8 @@ function SubmitWork({ onClose, onAdded }: { onClose: () => void; onAdded: (work:
       </div>
       {message && <div role="status" className={`mt-6 rounded-xl border p-4 text-sm ${state === 'success' ? 'border-emerald-200 bg-emerald-50 text-emerald-900' : 'border-red-200 bg-red-50 text-red-900'}`}>{state === 'success' && <Check size={16} className="mr-2 inline" />}{message}</div>}
       <div className="mt-7 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
-        <button type="button" onClick={onClose} className="min-h-12 rounded-full border border-[#1a1a1a]/20 px-6 font-mono text-[10px] uppercase tracking-[0.18em] hover:bg-white">{state === 'success' ? 'Close' : 'Cancel'}</button>
-        {state !== 'success' && <button type="submit" disabled={state === 'sending'} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#1a1a1a] px-7 font-mono text-[10px] uppercase tracking-[0.18em] text-white disabled:opacity-60">{state === 'sending' ? <Loader2 size={16} className="animate-spin" /> : <Plus size={16} />} Submit work</button>}
+        <button type="button" onClick={onClose} className="min-h-12 rounded-full border border-[#4a1728]/20 px-6 font-sans text-[10px] uppercase tracking-[0.18em] hover:bg-[#fdfaf6]">{state === 'success' ? 'Close' : 'Cancel'}</button>
+        {state !== 'success' && <button type="submit" disabled={state === 'sending'} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#4a1728] px-7 font-sans text-[10px] uppercase tracking-[0.18em] text-white disabled:opacity-60">{state === 'sending' ? <Loader2 size={16} className="animate-spin" /> : <Plus size={16} />} Submit work</button>}
       </div>
     </form>
   </ModalShell>;
@@ -280,36 +280,36 @@ export function ShowcasePage() {
   const activeFilterCount = Number(country !== ALL_COUNTRIES) + Number(discipline !== ALL_DISCIPLINES) + Number(Boolean(author)) + Number(withImageOnly) + Number(recentOnly);
   const resetFilters = () => { setCountry(ALL_COUNTRIES); setDiscipline(ALL_DISCIPLINES); setAuthor(''); setWithImageOnly(false); setRecentOnly(false); };
 
-  return <div className="min-h-screen bg-[#faf9f7] text-[#1a1a1a] selection:bg-[#1a1a1a] selection:text-white">
-    <p className="bg-[#1a1a1a] px-4 py-2.5 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#f0efec] sm:text-[9px]">
+  return <div className="min-h-screen bg-[#f5f0eb] text-[#4a1728] selection:bg-[#4a1728] selection:text-white">
+    <p className="bg-[#4a1728] px-4 py-2.5 text-center font-sans text-[8px] uppercase tracking-[0.22em] text-[#ece2d5] sm:text-[9px]">
       Open call — set design &amp; conceptual art · Worldwide · Reviewed by EPRIS editorial
     </p>
 
-    <header className="sticky top-0 z-40 border-b border-[#1a1a1a]/10 bg-[#faf9f7]/95 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-[#4a1728]/10 bg-[#f5f0eb]/95 backdrop-blur-xl">
       <div className="mx-auto grid min-h-16 max-w-[1600px] grid-cols-[1fr_auto_1fr] items-center gap-4 px-4 sm:px-8 lg:px-12">
         <label className="relative hidden sm:block">
           <span className="sr-only">Search works</span>
-          <Search className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-[#8a8a8a]" size={15} />
-          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="SEARCH" className="min-h-11 w-40 border-0 bg-transparent pl-6 font-mono text-[9px] uppercase tracking-[0.2em] text-[#1a1a1a] outline-none placeholder:text-[#8a8a8a] focus:w-56" />
+          <Search className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-[#4a1728]/55" size={15} />
+          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="SEARCH" className="min-h-11 w-40 border-0 bg-transparent pl-6 font-sans text-[9px] uppercase tracking-[0.2em] text-[#4a1728] outline-none placeholder:text-[#4a1728]/55 focus:w-56" />
         </label>
         <span className="sm:hidden" />
-        <a href="/" className="inline-flex min-h-11 items-center justify-center gap-3 rounded-full px-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8c2f24]" aria-label="EPRIS Journal home">
+        <a href="/" className="inline-flex min-h-11 items-center justify-center gap-3 rounded-full px-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b8956e]" aria-label="EPRIS Journal home">
           <span className="font-display text-xl tracking-[0.18em] sm:text-2xl">EPRIS</span>
-          <span className="hidden h-5 w-px bg-[#1a1a1a]/20 sm:block" />
-          <span className="hidden font-mono text-[9px] uppercase tracking-[0.2em] text-[#8a8a8a] sm:block">Showcase</span>
+          <span className="hidden h-5 w-px bg-[#4a1728]/20 sm:block" />
+          <span className="hidden font-sans text-[9px] uppercase tracking-[0.2em] text-[#4a1728]/55 sm:block">Showcase</span>
         </a>
         <div className="flex items-center justify-end">
-          <button type="button" onClick={() => setSubmitting(true)} aria-label="Submit work" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#1a1a1a] px-4 font-mono text-[9px] uppercase tracking-[0.16em] text-white transition-transform hover:-translate-y-0.5 sm:px-5">
+          <button type="button" onClick={() => setSubmitting(true)} aria-label="Submit work" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#4a1728] px-4 font-sans text-[9px] uppercase tracking-[0.16em] text-white transition-transform hover:-translate-y-0.5 sm:px-5">
             <Plus size={15} /><span className="hidden sm:inline">Submit work</span><span className="sm:hidden">Add</span>
           </button>
         </div>
       </div>
 
-      <nav aria-label="Disciplines" className="border-t border-[#1a1a1a]/10">
-        <div className="mx-auto flex max-w-[1600px] items-center gap-6 overflow-x-auto px-4 py-3 font-mono text-[9px] uppercase tracking-[0.18em] sm:justify-center sm:px-8 lg:px-12">
-          <button type="button" onClick={() => setDiscipline(ALL_DISCIPLINES)} className={`whitespace-nowrap transition-colors ${discipline === ALL_DISCIPLINES ? 'text-[#1a1a1a]' : 'text-[#8a8a8a] hover:text-[#1a1a1a]'}`}>All works</button>
+      <nav aria-label="Disciplines" className="border-t border-[#4a1728]/10">
+        <div className="mx-auto flex max-w-[1600px] items-center gap-6 overflow-x-auto px-4 py-3 font-sans text-[9px] uppercase tracking-[0.18em] sm:justify-center sm:px-8 lg:px-12">
+          <button type="button" onClick={() => setDiscipline(ALL_DISCIPLINES)} className={`whitespace-nowrap transition-colors ${discipline === ALL_DISCIPLINES ? 'text-[#4a1728]' : 'text-[#4a1728]/55 hover:text-[#4a1728]'}`}>All works</button>
           {disciplineTabs.map((tab) => (
-            <button key={tab.name} type="button" onClick={() => setDiscipline((current) => (current === tab.name ? ALL_DISCIPLINES : tab.name))} className={`whitespace-nowrap transition-colors ${discipline === tab.name ? 'text-[#1a1a1a]' : 'text-[#8a8a8a] hover:text-[#1a1a1a]'}`}>
+            <button key={tab.name} type="button" onClick={() => setDiscipline((current) => (current === tab.name ? ALL_DISCIPLINES : tab.name))} className={`whitespace-nowrap transition-colors ${discipline === tab.name ? 'text-[#4a1728]' : 'text-[#4a1728]/55 hover:text-[#4a1728]'}`}>
               {tab.name}
             </button>
           ))}
@@ -322,13 +322,13 @@ export function ShowcasePage() {
           the segment row — no editorial hero in front of the goods. */}
       <section className="px-4 pt-6 sm:px-8 lg:px-12 lg:pt-9">
         <div className="mx-auto max-w-[1600px]">
-          <nav aria-label="Breadcrumb" className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8a8a8a]">
-            <a href="/" className="hover:text-[#1a1a1a]">Journal</a> / <span className="text-[#1a1a1a]">Showcase</span>
+          <nav aria-label="Breadcrumb" className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#4a1728]/55">
+            <a href="/" className="hover:text-[#4a1728]">Journal</a> / <span className="text-[#4a1728]">Showcase</span>
           </nav>
 
           <div className="mt-5 flex flex-wrap items-baseline gap-x-5 gap-y-2">
             <h1 className="font-display text-4xl leading-none sm:text-5xl">{selectedSegment}</h1>
-            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8a8a8a]">
+            <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#4a1728]/55">
               {loading ? 'Loading…' : `${filtered.length} ${filtered.length === 1 ? 'work' : 'works'}`}
             </p>
           </div>
@@ -341,7 +341,7 @@ export function ShowcasePage() {
                   key={segment.label}
                   type="button"
                   onClick={() => setDiscipline(segment.value)}
-                  className={`inline-flex min-h-10 items-center rounded-full border px-5 font-mono text-[9px] uppercase tracking-[0.16em] transition-colors ${active ? 'border-[#1a1a1a] bg-[#1a1a1a] text-white' : 'border-[#1a1a1a]/15 bg-white text-[#3d3d3d] hover:border-[#1a1a1a]/40'}`}
+                  className={`inline-flex min-h-10 items-center rounded-full border px-5 font-sans text-[9px] uppercase tracking-[0.16em] transition-colors ${active ? 'border-[#4a1728] bg-[#4a1728] text-white' : 'border-[#4a1728]/15 bg-[#fdfaf6] text-[#4a1728]/80 hover:border-[#4a1728]/40'}`}
                 >
                   {segment.label}
                 </button>
@@ -354,7 +354,7 @@ export function ShowcasePage() {
       <section className="px-4 py-8 sm:px-8 lg:px-12 lg:py-12">
         <div className="mx-auto grid max-w-[1600px] gap-8 lg:grid-cols-[210px_minmax(0,1fr)] lg:gap-10">
           <aside className="lg:sticky lg:top-32 lg:self-start">
-            <button type="button" onClick={() => setFiltersOpen((value) => !value)} className="flex min-h-12 w-full items-center justify-between rounded-xl border border-[#1a1a1a]/15 bg-white px-4 text-left text-sm lg:hidden">
+            <button type="button" onClick={() => setFiltersOpen((value) => !value)} className="flex min-h-12 w-full items-center justify-between rounded-xl border border-[#4a1728]/15 bg-[#fdfaf6] px-4 text-left text-sm lg:hidden">
               <span className="flex items-center gap-2"><SlidersHorizontal size={16} /> Filters {activeFilterCount ? `(${activeFilterCount})` : ''}</span>
               <ChevronDown size={16} className={filtersOpen ? 'rotate-180' : ''} />
             </button>
@@ -362,7 +362,7 @@ export function ShowcasePage() {
             <div className={`${filtersOpen ? 'block' : 'hidden'} mt-4 space-y-7 lg:mt-0 lg:block`}>
               <label className="relative block lg:hidden">
                 <span className="sr-only">Search works</span>
-                <Search className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#8a8a8a]" size={17} />
+                <Search className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#4a1728]/55" size={17} />
                 <input value={query} onChange={(event) => setQuery(event.target.value)} className={`${inputClass} pl-11`} placeholder="Search title, author, place…" />
               </label>
 
@@ -372,43 +372,43 @@ export function ShowcasePage() {
                   { label: 'Last two years', value: recentOnly, toggle: () => setRecentOnly((value) => !value) },
                 ].map((row) => (
                   <button key={row.label} type="button" role="switch" aria-checked={row.value} onClick={row.toggle} className="flex min-h-11 w-full items-center justify-between gap-3 text-left">
-                    <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#3d3d3d]">{row.label}</span>
-                    <span className={`relative h-5 w-9 shrink-0 rounded-full transition-colors ${row.value ? 'bg-[#1a1a1a]' : 'bg-[#1a1a1a]/15'}`}>
-                      <span className={`absolute top-0.5 h-4 w-4 rounded-full bg-white transition-transform ${row.value ? 'translate-x-[18px]' : 'translate-x-0.5'}`} />
+                    <span className="font-sans text-[9px] uppercase tracking-[0.15em] text-[#4a1728]/80">{row.label}</span>
+                    <span className={`relative h-5 w-9 shrink-0 rounded-full transition-colors ${row.value ? 'bg-[#4a1728]' : 'bg-[#4a1728]/15'}`}>
+                      <span className={`absolute top-0.5 h-4 w-4 rounded-full bg-[#fdfaf6] transition-transform ${row.value ? 'translate-x-[18px]' : 'translate-x-0.5'}`} />
                     </span>
                   </button>
                 ))}
               </div>
 
-              <div className="border-t border-[#1a1a1a]/12 pt-6">
-                <p className="mb-4 font-mono text-[9px] uppercase tracking-[0.2em] text-[#1a1a1a]">Disciplines</p>
+              <div className="border-t border-[#4a1728]/12 pt-6">
+                <p className="mb-4 font-sans text-[9px] uppercase tracking-[0.2em] text-[#4a1728]">Disciplines</p>
                 <ul className="space-y-2.5">
-                  <li><button type="button" onClick={() => setDiscipline(ALL_DISCIPLINES)} className={`min-h-8 text-left text-sm transition-colors ${discipline === ALL_DISCIPLINES ? 'text-[#1a1a1a]' : 'text-[#6b6b6b] hover:text-[#1a1a1a]'}`}>All disciplines</button></li>
+                  <li><button type="button" onClick={() => setDiscipline(ALL_DISCIPLINES)} className={`min-h-8 text-left text-sm transition-colors ${discipline === ALL_DISCIPLINES ? 'text-[#4a1728]' : 'text-[#4a1728]/65 hover:text-[#4a1728]'}`}>All disciplines</button></li>
                   {disciplineTabs.map((tab) => (
                     <li key={tab.name} className="flex items-baseline justify-between gap-2">
-                      <button type="button" onClick={() => setDiscipline((current) => (current === tab.name ? ALL_DISCIPLINES : tab.name))} className={`min-h-8 text-left text-sm transition-colors ${discipline === tab.name ? 'text-[#1a1a1a]' : 'text-[#6b6b6b] hover:text-[#1a1a1a]'}`}>{tab.name}</button>
-                      <span className="font-mono text-[9px] text-[#a3a3a3]">{tab.count}</span>
+                      <button type="button" onClick={() => setDiscipline((current) => (current === tab.name ? ALL_DISCIPLINES : tab.name))} className={`min-h-8 text-left text-sm transition-colors ${discipline === tab.name ? 'text-[#4a1728]' : 'text-[#4a1728]/65 hover:text-[#4a1728]'}`}>{tab.name}</button>
+                      <span className="font-sans text-[9px] text-[#4a1728]/40">{tab.count}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
               {authorList.length > 0 && (
-                <div className="border-t border-[#1a1a1a]/12 pt-6">
-                  <p className="mb-4 font-mono text-[9px] uppercase tracking-[0.2em] text-[#1a1a1a]">Authors</p>
+                <div className="border-t border-[#4a1728]/12 pt-6">
+                  <p className="mb-4 font-sans text-[9px] uppercase tracking-[0.2em] text-[#4a1728]">Authors</p>
                   <ul className="max-h-72 space-y-2.5 overflow-y-auto pr-1">
                     {authorList.map((entry) => (
                       <li key={entry.name} className="flex items-baseline justify-between gap-2">
-                        <button type="button" onClick={() => setAuthor((current) => (current === entry.name ? '' : entry.name))} className={`min-h-8 text-left text-sm leading-snug transition-colors ${author === entry.name ? 'text-[#1a1a1a] underline underline-offset-4' : 'text-[#6b6b6b] hover:text-[#1a1a1a]'}`}>{entry.name}</button>
-                        <span className="font-mono text-[9px] text-[#a3a3a3]">{entry.count}</span>
+                        <button type="button" onClick={() => setAuthor((current) => (current === entry.name ? '' : entry.name))} className={`min-h-8 text-left text-sm leading-snug transition-colors ${author === entry.name ? 'text-[#4a1728] underline underline-offset-4' : 'text-[#4a1728]/65 hover:text-[#4a1728]'}`}>{entry.name}</button>
+                        <span className="font-sans text-[9px] text-[#4a1728]/40">{entry.count}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
               )}
 
-              <div className="border-t border-[#1a1a1a]/12 pt-6">
-                <p className="mb-4 font-mono text-[9px] uppercase tracking-[0.2em] text-[#1a1a1a]">Country</p>
+              <div className="border-t border-[#4a1728]/12 pt-6">
+                <p className="mb-4 font-sans text-[9px] uppercase tracking-[0.2em] text-[#4a1728]">Country</p>
                 <label className="relative block">
                   <span className="sr-only">Country</span>
                   <select className={`${inputClass} appearance-none pr-10`} value={country} onChange={(event) => setCountry(event.target.value)}>
@@ -420,7 +420,7 @@ export function ShowcasePage() {
               </div>
 
               {activeFilterCount > 0 && (
-                <button type="button" onClick={resetFilters} className="min-h-11 font-mono text-[9px] uppercase tracking-[0.15em] text-[#8c2f24]">Clear filters</button>
+                <button type="button" onClick={resetFilters} className="min-h-11 font-sans text-[9px] uppercase tracking-[0.15em] text-[#b8956e]">Clear filters</button>
               )}
             </div>
           </aside>
@@ -435,49 +435,49 @@ export function ShowcasePage() {
                       key={entry.name}
                       type="button"
                       onClick={() => setAuthor(active ? '' : entry.name)}
-                      className={`inline-flex min-h-9 shrink-0 items-center gap-2 rounded-full border px-4 font-mono text-[9px] uppercase tracking-[0.14em] transition-colors ${active ? 'border-[#1a1a1a] bg-[#1a1a1a] text-white' : 'border-[#1a1a1a]/15 bg-white text-[#3d3d3d] hover:border-[#1a1a1a]/40'}`}
+                      className={`inline-flex min-h-9 shrink-0 items-center gap-2 rounded-full border px-4 font-sans text-[9px] uppercase tracking-[0.14em] transition-colors ${active ? 'border-[#4a1728] bg-[#4a1728] text-white' : 'border-[#4a1728]/15 bg-[#fdfaf6] text-[#4a1728]/80 hover:border-[#4a1728]/40'}`}
                     >
                       {entry.name}
-                      <span className={active ? 'text-white/60' : 'text-[#a3a3a3]'}>{entry.count}</span>
+                      <span className={active ? 'text-white/60' : 'text-[#4a1728]/40'}>{entry.count}</span>
                     </button>
                   );
                 })}
               </div>
             )}
 
-            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#1a1a1a]/10 pb-4">
-              <p className="font-mono text-[9px] uppercase tracking-[0.17em] text-[#8a8a8a]">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#4a1728]/10 pb-4">
+              <p className="font-sans text-[9px] uppercase tracking-[0.17em] text-[#4a1728]/55">
                 {loading ? 'Loading vitrine…' : `${rangeStart}–${rangeEnd} of ${filtered.length}`}
               </p>
-              <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[9px] uppercase tracking-[0.15em]">
-                <span className="text-[#8a8a8a]">Sort:</span>
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-sans text-[9px] uppercase tracking-[0.15em]">
+                <span className="text-[#4a1728]/55">Sort:</span>
                 {[
                   { value: 'newest', label: 'Newest first' },
                   { value: 'oldest', label: 'Oldest first' },
                   { value: 'author', label: 'Author A–Z' },
                   { value: 'title', label: 'Title A–Z' },
                 ].map((option) => (
-                  <button key={option.value} type="button" onClick={() => setSort(option.value)} className={`transition-colors ${sort === option.value ? 'text-[#1a1a1a] underline underline-offset-4' : 'text-[#8a8a8a] hover:text-[#1a1a1a]'}`}>{option.label}</button>
+                  <button key={option.value} type="button" onClick={() => setSort(option.value)} className={`transition-colors ${sort === option.value ? 'text-[#4a1728] underline underline-offset-4' : 'text-[#4a1728]/55 hover:text-[#4a1728]'}`}>{option.label}</button>
                 ))}
               </div>
             </div>
 
             {loading ? (
-              <div className="grid min-h-80 place-items-center"><div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-[#8a8a8a]"><Loader2 className="animate-spin" size={19} /> Loading works</div></div>
+              <div className="grid min-h-80 place-items-center"><div className="flex items-center gap-3 font-sans text-[10px] uppercase tracking-[0.18em] text-[#4a1728]/55"><Loader2 className="animate-spin" size={19} /> Loading works</div></div>
             ) : error ? (
               <div className="my-12 rounded-2xl border border-red-200 bg-red-50 p-7 text-red-900">
                 <p>{error}</p>
-                <button type="button" onClick={() => window.location.reload()} className="mt-4 min-h-11 rounded-full border border-red-300 px-5 font-mono text-[9px] uppercase tracking-[0.15em]">Try again</button>
+                <button type="button" onClick={() => window.location.reload()} className="mt-4 min-h-11 rounded-full border border-red-300 px-5 font-sans text-[9px] uppercase tracking-[0.15em]">Try again</button>
               </div>
             ) : visible.length === 0 ? (
               <div className="grid min-h-[26rem] place-items-center px-6 text-center">
                 <div className="max-w-md">
-                  <Search size={26} className="mx-auto text-[#a3a3a3]" />
+                  <Search size={26} className="mx-auto text-[#4a1728]/40" />
                   <p className="mt-5 font-display text-3xl leading-tight">{works.length === 0 ? 'The vitrine is being assembled.' : 'No works match these filters.'}</p>
-                  <p className="mt-4 text-sm leading-relaxed text-[#6b6b6b]">{works.length === 0 ? 'Submissions are open — the first works are under editorial review. Send yours and it goes into the queue.' : 'Try clearing a filter or widening the search.'}</p>
+                  <p className="mt-4 text-sm leading-relaxed text-[#4a1728]/65">{works.length === 0 ? 'Submissions are open — the first works are under editorial review. Send yours and it goes into the queue.' : 'Try clearing a filter or widening the search.'}</p>
                   <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-                    {works.length > 0 && activeFilterCount > 0 && <button type="button" onClick={resetFilters} className="min-h-12 rounded-full border border-[#1a1a1a]/20 px-6 font-mono text-[10px] uppercase tracking-[0.18em] hover:bg-white">Clear filters</button>}
-                    <button type="button" onClick={() => setSubmitting(true)} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#1a1a1a] px-7 font-mono text-[10px] uppercase tracking-[0.18em] text-white"><Plus size={16} /> Submit work</button>
+                    {works.length > 0 && activeFilterCount > 0 && <button type="button" onClick={resetFilters} className="min-h-12 rounded-full border border-[#4a1728]/20 px-6 font-sans text-[10px] uppercase tracking-[0.18em] hover:bg-[#fdfaf6]">Clear filters</button>}
+                    <button type="button" onClick={() => setSubmitting(true)} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#4a1728] px-7 font-sans text-[10px] uppercase tracking-[0.18em] text-white"><Plus size={16} /> Submit work</button>
                   </div>
                 </div>
               </div>
@@ -485,12 +485,12 @@ export function ShowcasePage() {
               <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-9 sm:gap-x-6 lg:grid-cols-3 xl:grid-cols-4">
                 {visible.map((work, index) => (
                   <button key={work.id} type="button" onClick={() => setSelected(work)} aria-label={`${work.title} — ${work.author}`} className="group flex flex-col text-left">
-                    <div className="relative aspect-[3/4] overflow-hidden bg-[#eeece8]">
+                    <div className="relative aspect-[3/4] overflow-hidden bg-[#e9dece]">
                       <WorkPlate work={work} index={index} className="absolute inset-0 h-full w-full" />
                       {work.status === 'Under review' && (
-                        <span className="absolute left-3 top-3 rounded-full bg-[#faf9f7]/90 px-2.5 py-1 font-mono text-[7px] uppercase tracking-[0.14em] text-[#8c2f24]">Under review</span>
+                        <span className="absolute left-3 top-3 rounded-full bg-[#f5f0eb]/90 px-2.5 py-1 font-sans text-[7px] uppercase tracking-[0.14em] text-[#b8956e]">Under review</span>
                       )}
-                      <span className="pointer-events-none absolute inset-x-3 bottom-3 hidden justify-center rounded-full bg-white/95 py-2.5 font-mono text-[9px] uppercase tracking-[0.16em] text-[#1a1a1a] opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:flex">
+                      <span className="pointer-events-none absolute inset-x-3 bottom-3 hidden justify-center rounded-full bg-[#fdfaf6]/95 py-2.5 font-sans text-[9px] uppercase tracking-[0.16em] text-[#4a1728] opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:flex">
                         View work
                       </span>
                     </div>
@@ -499,14 +499,14 @@ export function ShowcasePage() {
                         block is a fixed three-row rhythm — label, title, byline
                         — and the row of cards keeps its baseline. */}
                     <div className="mt-4 flex flex-1 flex-col">
-                      <p className="font-mono text-[8px] uppercase tracking-[0.18em] text-[#a3a3a3]">
+                      <p className="font-sans text-[8px] uppercase tracking-[0.18em] text-[#4a1728]/40">
                         {work.discipline || 'Work'}{work.year ? ` · ${work.year}` : ''}
                       </p>
-                      <h2 className="mt-2 line-clamp-2 min-h-[2.6em] font-display text-[1.0625rem] leading-[1.3] text-[#1a1a1a] decoration-[#1a1a1a]/30 underline-offset-4 group-hover:underline">
+                      <h2 className="mt-2 line-clamp-2 min-h-[2.6em] font-display text-[1.0625rem] leading-[1.3] text-[#4a1728] decoration-[#4a1728]/30 underline-offset-4 group-hover:underline">
                         {work.title}
                       </h2>
-                      <p className="mt-auto pt-2 text-[13px] leading-snug text-[#3d3d3d]">{work.author}</p>
-                      <p className="mt-1 flex items-center gap-1.5 font-mono text-[8px] uppercase tracking-[0.14em] text-[#a3a3a3]">
+                      <p className="mt-auto pt-2 text-[13px] leading-snug text-[#4a1728]/80">{work.author}</p>
+                      <p className="mt-1 flex items-center gap-1.5 font-sans text-[8px] uppercase tracking-[0.14em] text-[#4a1728]/40">
                         <span aria-hidden="true">{flag(work.countryCode)}</span>
                         {[work.city, work.country].filter(Boolean).join(', ')}
                       </p>
@@ -517,29 +517,29 @@ export function ShowcasePage() {
             )}
 
             {!loading && !error && filtered.length > PAGE_SIZE && (
-              <nav className="mt-12 flex items-center justify-between border-t border-[#1a1a1a]/10 pt-6" aria-label="Work pages">
-                <button type="button" onClick={() => { setPage((value) => Math.max(1, value - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }} disabled={page === 1} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[#1a1a1a]/15 px-4 font-mono text-[9px] uppercase tracking-[0.15em] disabled:opacity-30"><ArrowLeft size={14} /> Previous</button>
-                <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#8a8a8a]">{page} / {pages}</span>
-                <button type="button" onClick={() => { setPage((value) => Math.min(pages, value + 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }} disabled={page === pages} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[#1a1a1a]/15 px-4 font-mono text-[9px] uppercase tracking-[0.15em] disabled:opacity-30">Next <ArrowRight size={14} /></button>
+              <nav className="mt-12 flex items-center justify-between border-t border-[#4a1728]/10 pt-6" aria-label="Work pages">
+                <button type="button" onClick={() => { setPage((value) => Math.max(1, value - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }} disabled={page === 1} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[#4a1728]/15 px-4 font-sans text-[9px] uppercase tracking-[0.15em] disabled:opacity-30"><ArrowLeft size={14} /> Previous</button>
+                <span className="font-sans text-[9px] uppercase tracking-[0.16em] text-[#4a1728]/55">{page} / {pages}</span>
+                <button type="button" onClick={() => { setPage((value) => Math.min(pages, value + 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }} disabled={page === pages} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[#4a1728]/15 px-4 font-sans text-[9px] uppercase tracking-[0.15em] disabled:opacity-30">Next <ArrowRight size={14} /></button>
               </nav>
             )}
           </div>
         </div>
       </section>
 
-      <section className="border-t border-[#1a1a1a]/10 bg-[#1a1a1a] px-4 py-16 text-[#faf9f7] sm:px-8 sm:py-24 lg:px-12">
+      <section className="border-t border-[#4a1728]/10 bg-[#4a1728] px-4 py-16 text-[#f5f0eb] sm:px-8 sm:py-24 lg:px-12">
         <div className="mx-auto grid max-w-[1600px] gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
-            <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[#c9b8b2]">Built something worth seeing?</p>
+            <p className="font-sans text-[9px] uppercase tracking-[0.22em] text-[#c9b199]">Built something worth seeing?</p>
             <h2 className="mt-5 max-w-4xl font-display text-4xl leading-none sm:text-6xl lg:text-7xl">The vitrine is open to authors, not to CVs.</h2>
           </div>
-          <button type="button" onClick={() => setSubmitting(true)} className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#faf9f7] px-7 font-mono text-[10px] uppercase tracking-[0.18em] text-[#1a1a1a] hover:bg-white"><Plus size={17} /> Submit work</button>
+          <button type="button" onClick={() => setSubmitting(true)} className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#f5f0eb] px-7 font-sans text-[10px] uppercase tracking-[0.18em] text-[#4a1728] hover:bg-[#fdfaf6]"><Plus size={17} /> Submit work</button>
         </div>
       </section>
     </main>
 
-    <footer className="border-t border-white/10 bg-[#1a1a1a] px-4 py-7 text-[#faf9f7] sm:px-8 lg:px-12">
-      <div className="mx-auto flex max-w-[1600px] flex-col gap-3 font-mono text-[8px] uppercase tracking-[0.16em] text-white/45 sm:flex-row sm:items-center sm:justify-between">
+    <footer className="border-t border-white/10 bg-[#4a1728] px-4 py-7 text-[#f5f0eb] sm:px-8 lg:px-12">
+      <div className="mx-auto flex max-w-[1600px] flex-col gap-3 font-sans text-[8px] uppercase tracking-[0.16em] text-white/45 sm:flex-row sm:items-center sm:justify-between">
         <span>© 2026 EPRIS Journal</span>
         <a href="/" className="inline-flex min-h-11 items-center gap-2 text-white/70 hover:text-white">Return to journal <ArrowUpRight size={13} /></a>
       </div>
