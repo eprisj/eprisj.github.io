@@ -290,7 +290,12 @@ const ROUTES = {
   collaboation: 'Collaboration Registry',
   collaboration: 'Collaboration Registry',
   collab: 'Collaboration Registry',
+  showcase: 'Showcase — Set Design & Conceptual Art',
+  works: 'Showcase — Set Design & Conceptual Art',
+  set: 'Showcase — Set Design & Conceptual Art',
 };
+
+const SHOWCASE_DESCRIPTION = 'A vitrine of set design, scenography and conceptual art by emerging authors worldwide, curated and open for submissions by EPRIS Journal.';
 
 const ROUTE_DESCRIPTIONS = {
   articles: 'Editorial stories, interviews and research on contemporary art, architecture, interiors, design and cultural cities.',
@@ -305,10 +310,16 @@ const ROUTE_DESCRIPTIONS = {
   collaboation: 'Discover and suggest emerging architects, designers and artists for EPRIS Journal interviews and editorial collaborations.',
   collaboration: 'Discover and suggest emerging architects, designers and artists for EPRIS Journal interviews and editorial collaborations.',
   collab: 'Discover and suggest emerging architects, designers and artists for EPRIS Journal interviews and editorial collaborations.',
+  showcase: SHOWCASE_DESCRIPTION,
+  works: SHOWCASE_DESCRIPTION,
+  set: SHOWCASE_DESCRIPTION,
 };
 
+// Aliases that must not compete with their canonical route in search results.
+const ALIAS_ROUTES = { collaboation: 'collaboration', collab: 'collaboration', works: 'showcase', set: 'showcase' };
+
 function routeHead(route, label) {
-  const canonicalRoute = route === 'collaboation' || route === 'collab' ? 'collaboration' : route;
+  const canonicalRoute = ALIAS_ROUTES[route] || route;
   const url = canonicalRoute ? `${SITE_ORIGIN}/${canonicalRoute}` : `${SITE_ORIGIN}/`;
   const description = ROUTE_DESCRIPTIONS[route] || 'Independent international journal and cultural platform exploring contemporary art, architecture, interior design and cities in context.';
   const schema = {
@@ -335,7 +346,7 @@ function routeHead(route, label) {
   return `<title>${label} — EPRIS Journal</title>
     <meta name="description" content="${escapeAttr(description)}" />
     <meta name="keywords" content="${escapeAttr(SITE_KEYWORDS.join(', '))}" />
-    <meta name="robots" content="${route === 'collaboation' || route === 'collab' ? 'noindex, follow' : 'index, follow, max-image-preview:large'}" />
+    <meta name="robots" content="${ALIAS_ROUTES[route] ? 'noindex, follow' : 'index, follow, max-image-preview:large'}" />
     <link rel="canonical" href="${url}" />
     ${alternateLinks(url)}
     <meta property="og:title" content="${label} — EPRIS Journal" />
@@ -370,7 +381,7 @@ mkdirSync(searchDir, { recursive: true });
 writeFileSync(join(searchDir, 'index.html'), template.replace('<!--TITLE-->', searchHead));
 console.log('Generated: /search');
 
-const sitemapRoutes = ['', ...Object.keys(ROUTES).filter((route) => route !== 'collaboation' && route !== 'collab')];
+const sitemapRoutes = ['', ...Object.keys(ROUTES).filter((route) => !ALIAS_ROUTES[route])];
 const sitemapEntries = [
   ...sitemapRoutes.map((route) => ({ loc: route ? `${SITE_ORIGIN}/${route}` : `${SITE_ORIGIN}/`, priority: route ? '0.7' : '1.0', changefreq: route === 'articles' ? 'daily' : 'weekly', image: route ? '' : DEFAULT_IMAGE })),
   ...content.articles.map((article) => ({ loc: `${SITE_ORIGIN}/article/${generateSlug(article.title)}`, priority: '0.8', changefreq: 'monthly', lastmod: formatDate(article.updatedAt) || formatDate(article.date) || '', image: resolveImage(article), imageTitle: article.title })),

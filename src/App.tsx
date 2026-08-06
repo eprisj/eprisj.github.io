@@ -11,6 +11,7 @@ const PodcastsPage = lazy(() => import('./pages/PodcastsPage').then((m) => ({ de
 const PassportPage = lazy(() => import('./pages/passport/PassportPage').then((m) => ({ default: m.PassportPage })));
 const DesignPage = lazy(() => import('./design/DesignPage').then((m) => ({ default: m.DesignPage })));
 const CollaborationPage = lazy(() => import('./pages/CollaborationPage').then((m) => ({ default: m.CollaborationPage })));
+const ShowcasePage = lazy(() => import('./showcase/ShowcasePage').then((m) => ({ default: m.ShowcasePage })));
 import {
   Article,
   Author,
@@ -2982,6 +2983,12 @@ export default function App() {
       window.history.replaceState(null, '', '/collaboration');
     }
     return <Suspense fallback={<div className="min-h-screen bg-[#f5f0ea]" />}><CollaborationPage /></Suspense>;
+  }
+  if (/^\/(?:showcase|works|set)\/?$/.test(window.location.pathname)) {
+    if (!/^\/showcase\/?$/.test(window.location.pathname)) {
+      window.history.replaceState(null, '', '/showcase');
+    }
+    return <Suspense fallback={<div className="min-h-screen bg-[#f5f0ea]" />}><ShowcasePage /></Suspense>;
   }
   const initialRoute = parsePath(window.location.pathname, window.location.search);
   const [activeTab, setActiveTab] = useState(initialRoute.tab || 'gallery');
