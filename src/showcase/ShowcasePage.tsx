@@ -196,7 +196,7 @@ function SubmitWork({ onClose, onAdded }: { onClose: () => void; onAdded: (work:
       </div>
       {message && <div role="status" className={`mt-6 rounded-xl border p-4 text-sm ${state === 'success' ? 'border-emerald-200 bg-emerald-50 text-emerald-900' : 'border-red-200 bg-red-50 text-red-900'}`}>{state === 'success' && <Check size={16} className="mr-2 inline" />}{message}</div>}
       <div className="mt-7 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
-        <button type="button" onClick={onClose} className="min-h-12 rounded-full border border-[#4a1728]/20 px-6 font-sans text-[10px] uppercase tracking-[0.18em] hover:bg-[#fdfaf6]">{state === 'success' ? 'Close' : 'Cancel'}</button>
+        <button type="button" onClick={onClose} className="min-h-12 border border-[#1a0b10]/20 px-6 font-sans text-[10px] uppercase tracking-[0.18em] transition-colors hover:border-[#1a0b10]/45">{state === 'success' ? 'Close' : 'Cancel'}</button>
         {state !== 'success' && <button type="submit" disabled={state === 'sending'} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#4a1728] px-7 font-sans text-[10px] uppercase tracking-[0.18em] text-white disabled:opacity-60">{state === 'sending' ? <Loader2 size={16} className="animate-spin" /> : <Plus size={16} />} Submit work</button>}
       </div>
     </form>
@@ -324,7 +324,7 @@ export function ShowcasePage() {
           <span className="hidden font-sans text-[9px] uppercase tracking-[0.2em] text-[#4a1728]/55 sm:block">Showcase</span>
         </a>
         <div className="flex items-center justify-end">
-          <button type="button" onClick={() => setSubmitting(true)} aria-label="Submit work" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#4a1728] px-4 font-sans text-[9px] uppercase tracking-[0.16em] text-white transition-transform hover:-translate-y-0.5 sm:px-5">
+          <button type="button" onClick={() => setSubmitting(true)} aria-label="Submit work" className="inline-flex min-h-11 items-center gap-2 bg-[#1a0b10] px-4 font-sans text-[9px] uppercase tracking-[0.16em] text-[#f5f0eb] transition-colors hover:bg-[#4a1728] sm:px-5">
             <Plus size={15} /><span className="hidden sm:inline">Submit work</span><span className="sm:hidden">Add</span>
           </button>
         </div>
@@ -423,7 +423,7 @@ export function ShowcasePage() {
           </nav>
 
           <div className="mt-5 flex flex-wrap items-baseline gap-x-5 gap-y-2">
-            <h1 className="font-display text-4xl leading-none sm:text-5xl">{selectedSegment}</h1>
+            <h1 className="font-sans text-[13vw] font-bold lowercase leading-[0.85] tracking-[-0.04em] sm:text-[7vw] lg:text-[4.6vw]">{selectedSegment}</h1>
             <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#4a1728]/55">
               {loading ? 'Loading…' : `${filtered.length} ${filtered.length === 1 ? 'work' : 'works'}`}
             </p>
@@ -437,7 +437,7 @@ export function ShowcasePage() {
                   key={segment.label}
                   type="button"
                   onClick={() => setDiscipline(segment.value)}
-                  className={`inline-flex min-h-10 items-center border px-5 font-sans text-[9px] uppercase tracking-[0.16em] transition-colors ${active ? 'border-[#4a1728] bg-[#4a1728] text-white' : 'border-[#4a1728]/15 bg-[#fdfaf6] text-[#4a1728]/80 hover:border-[#4a1728]/40'}`}
+                  className={`inline-flex min-h-10 items-center border px-5 font-sans text-[9px] uppercase tracking-[0.16em] transition-colors ${active ? 'border-[#1a0b10] bg-[#1a0b10] text-[#f5f0eb]' : 'border-[#1a0b10]/15 bg-transparent text-[#1a0b10]/70 hover:border-[#1a0b10]/45'}`}
                 >
                   {segment.label}
                 </button>
@@ -569,11 +569,11 @@ export function ShowcasePage() {
               <div className="grid min-h-[26rem] place-items-center px-6 text-center">
                 <div className="max-w-md">
                   <Search size={26} className="mx-auto text-[#4a1728]/40" />
-                  <p className="mt-5 font-display text-3xl leading-tight">{works.length === 0 ? 'The vitrine is being assembled.' : 'No works match these filters.'}</p>
+                  <p className="mt-5 font-sans text-[2rem] font-bold lowercase leading-[0.95] tracking-[-0.03em]">{works.length === 0 ? 'The vitrine is being assembled.' : 'No works match these filters.'}</p>
                   <p className="mt-4 text-sm leading-relaxed text-[#4a1728]/65">{works.length === 0 ? 'Submissions are open — the first works are under editorial review. Send yours and it goes into the queue.' : 'Try clearing a filter or widening the search.'}</p>
                   <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
                     {works.length > 0 && activeFilterCount > 0 && <button type="button" onClick={resetFilters} className="min-h-12 rounded-full border border-[#4a1728]/20 px-6 font-sans text-[10px] uppercase tracking-[0.18em] hover:bg-[#fdfaf6]">Clear filters</button>}
-                    <button type="button" onClick={() => setSubmitting(true)} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#4a1728] px-7 font-sans text-[10px] uppercase tracking-[0.18em] text-white"><Plus size={16} /> Submit work</button>
+                    <button type="button" onClick={() => setSubmitting(true)} className="inline-flex min-h-12 items-center justify-center gap-2 bg-[#1a0b10] px-7 font-sans text-[10px] uppercase tracking-[0.18em] text-[#f5f0eb]"><Plus size={16} /> Submit work</button>
                   </div>
                 </div>
               </div>
@@ -599,7 +599,7 @@ export function ShowcasePage() {
                       <p className="font-sans text-[8px] uppercase tracking-[0.18em] text-[#4a1728]/40">
                         {work.discipline || 'Work'}{work.year ? ` · ${work.year}` : ''}
                       </p>
-                      <h2 className="mt-2 line-clamp-2 min-h-[2.6em] font-display text-[1.25rem] leading-[1.28] text-[#4a1728] decoration-[#4a1728]/30 underline-offset-4 group-hover:underline">
+                      <h2 className="mt-2 line-clamp-2 min-h-[2.6em] font-sans text-[1.05rem] leading-[1.3] tracking-[-0.01em] text-[#1a0b10] decoration-[#1a0b10]/30 underline-offset-4 group-hover:underline">
                         {work.title}
                       </h2>
                       <p className="mt-auto pt-2 text-[13px] leading-snug text-[#4a1728]/80">{work.author}</p>
@@ -618,27 +618,29 @@ export function ShowcasePage() {
 
             {!loading && !error && filtered.length > PAGE_SIZE && (
               <nav className="mt-12 flex items-center justify-between border-t border-[#4a1728]/10 pt-6" aria-label="Work pages">
-                <button type="button" onClick={() => { setPage((value) => Math.max(1, value - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }} disabled={page === 1} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[#4a1728]/15 px-4 font-sans text-[9px] uppercase tracking-[0.15em] disabled:opacity-30"><ArrowLeft size={14} /> Previous</button>
+                <button type="button" onClick={() => { setPage((value) => Math.max(1, value - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }} disabled={page === 1} className="inline-flex min-h-11 items-center gap-2 border border-[#1a0b10]/15 px-5 font-sans text-[9px] uppercase tracking-[0.15em] transition-colors hover:border-[#1a0b10]/45 disabled:opacity-30"><ArrowLeft size={14} /> Previous</button>
                 <span className="font-sans text-[9px] uppercase tracking-[0.16em] text-[#4a1728]/55">{page} / {pages}</span>
-                <button type="button" onClick={() => { setPage((value) => Math.min(pages, value + 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }} disabled={page === pages} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[#4a1728]/15 px-4 font-sans text-[9px] uppercase tracking-[0.15em] disabled:opacity-30">Next <ArrowRight size={14} /></button>
+                <button type="button" onClick={() => { setPage((value) => Math.min(pages, value + 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }} disabled={page === pages} className="inline-flex min-h-11 items-center gap-2 border border-[#1a0b10]/15 px-5 font-sans text-[9px] uppercase tracking-[0.15em] transition-colors hover:border-[#1a0b10]/45 disabled:opacity-30">Next <ArrowRight size={14} /></button>
               </nav>
             )}
           </div>
         </div>
       </section>
 
-      <section className="border-t border-[#4a1728]/10 bg-[#4a1728] px-4 py-16 text-[#f5f0eb] sm:px-8 sm:py-24 lg:px-12">
+      <section className="relative isolate border-t border-[#4a1728]/10 bg-[#1a0b10] px-4 py-16 text-[#f5f0eb] sm:px-8 sm:py-24 lg:px-12">
+        <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-[8%] hidden w-px bg-[#f5f0eb]/12 lg:block" />
+        <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-[8%] hidden w-px bg-[#f5f0eb]/12 lg:block" />
         <div className="mx-auto grid max-w-[1600px] gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
             <p className="font-sans text-[9px] uppercase tracking-[0.22em] text-[#c9b199]">Built something worth seeing?</p>
-            <h2 className="mt-5 max-w-4xl font-display text-4xl leading-none sm:text-6xl lg:text-7xl">The vitrine is open to authors, not to CVs.</h2>
+            <h2 className="mt-5 max-w-4xl font-sans text-[11vw] font-bold lowercase leading-[0.85] tracking-[-0.04em] sm:text-[7vw] lg:text-[5vw]">the vitrine is open to authors, not to CVs</h2>
           </div>
-          <button type="button" onClick={() => setSubmitting(true)} className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#f5f0eb] px-7 font-sans text-[10px] uppercase tracking-[0.18em] text-[#4a1728] hover:bg-[#fdfaf6]"><Plus size={17} /> Submit work</button>
+          <button type="button" onClick={() => setSubmitting(true)} className="inline-flex min-h-14 items-center justify-center gap-3 bg-[#f5f0eb] px-8 font-sans text-[10px] uppercase tracking-[0.18em] text-[#1a0b10] transition-colors hover:bg-white"><Plus size={17} /> Submit work</button>
         </div>
       </section>
     </main>
 
-    <footer className="border-t border-white/10 bg-[#4a1728] px-4 py-7 text-[#f5f0eb] sm:px-8 lg:px-12">
+    <footer className="border-t border-white/10 bg-[#1a0b10] px-4 py-7 text-[#f5f0eb] sm:px-8 lg:px-12">
       <div className="mx-auto flex max-w-[1600px] flex-col gap-3 font-sans text-[8px] uppercase tracking-[0.16em] text-white/45 sm:flex-row sm:items-center sm:justify-between">
         <span>© 2026 EPRIS Journal</span>
         <a href="/" className="inline-flex min-h-11 items-center gap-2 text-white/70 hover:text-white">Return to journal <ArrowUpRight size={13} /></a>
