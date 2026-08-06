@@ -49,7 +49,7 @@ function WorkPlate({ work, index, className = '' }: { work: Work; index: number;
     return (
       <div className={`flex flex-col items-center justify-center gap-3 ${className}`} style={{ backgroundColor: tint }}>
         <ImageOff size={22} className="text-[#1a1a1a]/25" aria-hidden="true" />
-        <p className="max-w-[70%] text-center font-serif text-base italic leading-snug text-[#1a1a1a]/45">{work.title}</p>
+        <p className="max-w-[70%] text-center font-display text-base italic leading-snug text-[#1a1a1a]/45">{work.title}</p>
       </div>
     );
   }
@@ -96,22 +96,22 @@ function WorkDetail({ work, onClose }: { work: Work; onClose: () => void }) {
 
         <div className="mt-7 flex flex-wrap items-start justify-between gap-5">
           <div className="min-w-0">
-            <h2 className="font-serif text-3xl leading-[1.05] text-[#1a1a1a] sm:text-5xl">{work.title}</h2>
-            <p className="mt-3 font-serif text-xl italic text-[#8c2f24]">{work.author}{work.year ? `, ${work.year}` : ''}</p>
+            <h2 className="font-display text-3xl leading-[1.05] text-[#1a1a1a] sm:text-5xl">{work.title}</h2>
+            <p className="mt-3 font-display text-xl italic text-[#8c2f24]">{work.author}{work.year ? `, ${work.year}` : ''}</p>
             <p className="mt-3 flex items-center gap-2 text-sm text-[#6b6b6b]"><MapPin size={15} /> {[work.venue, work.city, work.country].filter(Boolean).join(', ') || 'Location not specified'}</p>
           </div>
           <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-white text-3xl shadow-sm" aria-hidden="true">{flag(work.countryCode)}</span>
         </div>
 
         <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-[#1a1a1a]/10 bg-[#1a1a1a]/10 sm:grid-cols-3">
-          <div className="bg-[#ffffff] p-4"><p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8a8a8a]">Discipline</p><p className="mt-2 font-serif text-lg">{work.discipline || '—'}</p></div>
-          <div className="bg-[#ffffff] p-4"><p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8a8a8a]">Medium</p><p className="mt-2 font-serif text-lg">{work.medium || '—'}</p></div>
-          <div className="bg-[#ffffff] p-4"><p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8a8a8a]">Added</p><p className="mt-2 font-serif text-lg">{work.addedAt ? new Date(work.addedAt).toLocaleDateString('en-GB') : '—'}</p></div>
+          <div className="bg-[#ffffff] p-4"><p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8a8a8a]">Discipline</p><p className="mt-2 font-display text-lg">{work.discipline || '—'}</p></div>
+          <div className="bg-[#ffffff] p-4"><p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8a8a8a]">Medium</p><p className="mt-2 font-display text-lg">{work.medium || '—'}</p></div>
+          <div className="bg-[#ffffff] p-4"><p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8a8a8a]">Added</p><p className="mt-2 font-display text-lg">{work.addedAt ? new Date(work.addedAt).toLocaleDateString('en-GB') : '—'}</p></div>
         </div>
 
         {work.statement && <section className="mt-8">
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#8c2f24]">Statement</p>
-          <p className="mt-3 font-serif text-xl leading-relaxed text-[#2b2b2b] sm:text-2xl">{work.statement}</p>
+          <p className="mt-3 font-display text-xl leading-relaxed text-[#2b2b2b] sm:text-2xl">{work.statement}</p>
         </section>}
 
         {!!work.tags?.length && <div className="mt-7 flex flex-wrap gap-2">
@@ -155,7 +155,7 @@ function SubmitWork({ onClose, onAdded }: { onClose: () => void; onAdded: (work:
   return <ModalShell title="Submit a work" onClose={onClose} wide>
     <form onSubmit={submit} className="p-5 sm:p-8">
       <div className="mb-7 max-w-xl">
-        <h2 className="font-serif text-3xl text-[#1a1a1a] sm:text-4xl">Show us what you built</h2>
+        <h2 className="font-display text-3xl text-[#1a1a1a] sm:text-4xl">Show us what you built</h2>
         <p className="mt-3 text-sm leading-relaxed text-[#6b6b6b]">Sets, scenography, installations and conceptual pieces. Submissions appear with “Under review” status — the EPRIS editorial team verifies authorship and credits before publishing.</p>
       </div>
       <div className="grid gap-5 sm:grid-cols-2">
@@ -294,7 +294,7 @@ export function ShowcasePage() {
         </label>
         <span className="sm:hidden" />
         <a href="/" className="inline-flex min-h-11 items-center justify-center gap-3 rounded-full px-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8c2f24]" aria-label="EPRIS Journal home">
-          <span className="font-serif text-xl tracking-[0.18em] sm:text-2xl">EPRIS</span>
+          <span className="font-display text-xl tracking-[0.18em] sm:text-2xl">EPRIS</span>
           <span className="hidden h-5 w-px bg-[#1a1a1a]/20 sm:block" />
           <span className="hidden font-mono text-[9px] uppercase tracking-[0.2em] text-[#8a8a8a] sm:block">Showcase</span>
         </a>
@@ -327,7 +327,7 @@ export function ShowcasePage() {
           </nav>
 
           <div className="mt-5 flex flex-wrap items-baseline gap-x-5 gap-y-2">
-            <h1 className="font-serif text-4xl leading-none sm:text-5xl">{selectedSegment}</h1>
+            <h1 className="font-display text-4xl leading-none sm:text-5xl">{selectedSegment}</h1>
             <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8a8a8a]">
               {loading ? 'Loading…' : `${filtered.length} ${filtered.length === 1 ? 'work' : 'works'}`}
             </p>
@@ -473,7 +473,7 @@ export function ShowcasePage() {
               <div className="grid min-h-[26rem] place-items-center px-6 text-center">
                 <div className="max-w-md">
                   <Search size={26} className="mx-auto text-[#a3a3a3]" />
-                  <p className="mt-5 font-serif text-3xl leading-tight">{works.length === 0 ? 'The vitrine is being assembled.' : 'No works match these filters.'}</p>
+                  <p className="mt-5 font-display text-3xl leading-tight">{works.length === 0 ? 'The vitrine is being assembled.' : 'No works match these filters.'}</p>
                   <p className="mt-4 text-sm leading-relaxed text-[#6b6b6b]">{works.length === 0 ? 'Submissions are open — the first works are under editorial review. Send yours and it goes into the queue.' : 'Try clearing a filter or widening the search.'}</p>
                   <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
                     {works.length > 0 && activeFilterCount > 0 && <button type="button" onClick={resetFilters} className="min-h-12 rounded-full border border-[#1a1a1a]/20 px-6 font-mono text-[10px] uppercase tracking-[0.18em] hover:bg-white">Clear filters</button>}
@@ -484,22 +484,32 @@ export function ShowcasePage() {
             ) : (
               <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-9 sm:gap-x-6 lg:grid-cols-3 xl:grid-cols-4">
                 {visible.map((work, index) => (
-                  <button key={work.id} type="button" onClick={() => setSelected(work)} aria-label={`${work.title} — ${work.author}`} className="group text-left">
+                  <button key={work.id} type="button" onClick={() => setSelected(work)} aria-label={`${work.title} — ${work.author}`} className="group flex flex-col text-left">
                     <div className="relative aspect-[3/4] overflow-hidden bg-[#eeece8]">
                       <WorkPlate work={work} index={index} className="absolute inset-0 h-full w-full" />
                       {work.status === 'Under review' && (
                         <span className="absolute left-3 top-3 rounded-full bg-[#faf9f7]/90 px-2.5 py-1 font-mono text-[7px] uppercase tracking-[0.14em] text-[#8c2f24]">Under review</span>
                       )}
-                      <span className="absolute right-3 top-3 text-lg opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true">{flag(work.countryCode)}</span>
                       <span className="pointer-events-none absolute inset-x-3 bottom-3 hidden justify-center rounded-full bg-white/95 py-2.5 font-mono text-[9px] uppercase tracking-[0.16em] text-[#1a1a1a] opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:flex">
                         View work
                       </span>
                     </div>
-                    <div className="mt-3">
-                      <p className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#8a8a8a]">{work.discipline || 'Work'}</p>
-                      <h2 className="mt-1.5 font-serif text-lg leading-tight transition-colors group-hover:text-[#1a1a1a]">{work.title}</h2>
-                      <p className="mt-1 text-sm text-[#6b6b6b]">{work.author}{work.year ? `, ${work.year}` : ''}</p>
-                      <p className="mt-0.5 font-mono text-[8px] uppercase tracking-[0.14em] text-[#a3a3a3]">{[work.city, work.country].filter(Boolean).join(' · ')}</p>
+
+                    {/* Titles run to wildly different lengths, so the caption
+                        block is a fixed three-row rhythm — label, title, byline
+                        — and the row of cards keeps its baseline. */}
+                    <div className="mt-4 flex flex-1 flex-col">
+                      <p className="font-mono text-[8px] uppercase tracking-[0.18em] text-[#a3a3a3]">
+                        {work.discipline || 'Work'}{work.year ? ` · ${work.year}` : ''}
+                      </p>
+                      <h2 className="mt-2 line-clamp-2 min-h-[2.6em] font-display text-[1.0625rem] leading-[1.3] text-[#1a1a1a] decoration-[#1a1a1a]/30 underline-offset-4 group-hover:underline">
+                        {work.title}
+                      </h2>
+                      <p className="mt-auto pt-2 text-[13px] leading-snug text-[#3d3d3d]">{work.author}</p>
+                      <p className="mt-1 flex items-center gap-1.5 font-mono text-[8px] uppercase tracking-[0.14em] text-[#a3a3a3]">
+                        <span aria-hidden="true">{flag(work.countryCode)}</span>
+                        {[work.city, work.country].filter(Boolean).join(', ')}
+                      </p>
                     </div>
                   </button>
                 ))}
@@ -521,7 +531,7 @@ export function ShowcasePage() {
         <div className="mx-auto grid max-w-[1600px] gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
             <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[#c9b8b2]">Built something worth seeing?</p>
-            <h2 className="mt-5 max-w-4xl font-serif text-4xl leading-none sm:text-6xl lg:text-7xl">The vitrine is open to authors, not to CVs.</h2>
+            <h2 className="mt-5 max-w-4xl font-display text-4xl leading-none sm:text-6xl lg:text-7xl">The vitrine is open to authors, not to CVs.</h2>
           </div>
           <button type="button" onClick={() => setSubmitting(true)} className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#faf9f7] px-7 font-mono text-[10px] uppercase tracking-[0.18em] text-[#1a1a1a] hover:bg-white"><Plus size={17} /> Submit work</button>
         </div>
