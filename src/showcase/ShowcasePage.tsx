@@ -615,9 +615,21 @@ export function ShowcasePage() {
             ) : (
               <>
               <div className="mt-10 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-                {gridWorks.map((work, index) => (
-                  <button key={work.id} type="button" onClick={() => setSelected(work)} aria-label={`${work.title} — ${work.author}`} className={`group flex flex-col text-left ${index % 4 === 3 ? "sm:col-span-2" : ""}`}>
-                    <div className="relative aspect-[4/5] overflow-hidden bg-[#e9dece]">
+                {gridWorks.map((work, index) => {
+                  /* Один кадр із п'яти йде на дві колонки — щоб ряд не читався
+                     як таблиця. Період саме 5, а не 4: у трьох колонках це
+                     3 + (широка + вузька) = два повні ряди. При періоді 4
+                     широкій не вистачало місця в ряду, вона переносилась і
+                     лишала дірку в третій колонці.
+
+                     Пропорція широкої теж інша. З вертикальними 4:5 вона при
+                     859px ставала 1208px заввишки, сусідня лишалась 651 — і під
+                     нею зяяло пів екрана порожнечі. 5:3 дає ту саму висоту, що
+                     й у вузьких сусідів. */
+                  const wide = index % 5 === 3;
+                  return (
+                  <button key={work.id} type="button" onClick={() => setSelected(work)} aria-label={`${work.title} — ${work.author}`} className={`group flex flex-col text-left ${wide ? "sm:col-span-2" : ""}`}>
+                    <div className={`relative overflow-hidden bg-[#e9dece] ${wide ? "aspect-[4/5] sm:aspect-[5/3]" : "aspect-[4/5]"}`}>
                       <WorkPlate work={work} index={index} className="absolute inset-0 h-full w-full" />
                       {work.status === 'Under review' && (
                         <span className="absolute left-3 top-3 rounded-full bg-[#f5f0eb]/90 px-2.5 py-1 font-sans text-[7px] uppercase tracking-[0.14em] text-[#b8956e]">Under review</span>
@@ -646,7 +658,8 @@ export function ShowcasePage() {
                       </p>
                     </div>
                   </button>
-                ))}
+                  );
+                })}
               </div>
               </>
             )}
