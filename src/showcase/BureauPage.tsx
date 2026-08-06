@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { fetchCase, fetchCases, type BureauCase } from './bureauApi';
+import { PLAYABLE_SLUGS } from '../stage/moves';
 
 /**
  * Бюро — мастерская журнала: не «что показали», а «как это устроено».
@@ -40,9 +41,14 @@ function Header() {
         <a href="/bureau" className="inline-flex min-h-11 items-center font-sans text-[13px] font-bold lowercase tracking-[-0.02em] text-[#f5f0eb] sm:text-[15px]">
           epris bureau
         </a>
-        <a href="/" className="inline-flex min-h-11 items-center gap-2 font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/60 hover:text-[#f5f0eb]">
-          Journal <ArrowUpRight size={13} />
-        </a>
+        <span className="inline-flex items-center gap-5">
+          <a href="/stage" className="inline-flex min-h-11 items-center font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/60 hover:text-[#f5f0eb]">
+            Stage
+          </a>
+          <a href="/" className="inline-flex min-h-11 items-center gap-2 font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/60 hover:text-[#f5f0eb]">
+            Journal <ArrowUpRight size={13} />
+          </a>
+        </span>
       </div>
     </header>
   );
@@ -78,6 +84,26 @@ function CaseDetail({ item }: { item: BureauCase }) {
           </div>
         ))}
       </dl>
+
+      {/* Разбор объясняет приём, Stage даёт его покрутить. Ход предлагается
+          только там, где оператор действительно есть: обещать «попробовать»
+          и открыть пустую коробку хуже, чем не звать вовсе. */}
+      {PLAYABLE_SLUGS.includes(item.slug) && (
+        <a
+          href="/stage"
+          className="group mt-12 flex items-center justify-between gap-6 border-t border-[#f5f0eb]/12 pt-6 hover:border-[#f5f0eb]/40"
+        >
+          <span>
+            <span className="block font-sans text-[9px] uppercase tracking-[0.22em] text-[#f5f0eb]/45">Try it</span>
+            <span className="mt-1.5 block font-sans text-[17px] lowercase text-[#f5f0eb]">
+              turn this move on a box of your own
+            </span>
+          </span>
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[#f5f0eb]/30 text-[#f5f0eb] transition-transform group-hover:translate-x-1">
+            <ArrowUpRight size={18} />
+          </span>
+        </a>
+      )}
 
       {!!item.examples?.length && (
         <section className="mt-14 border-t border-[#f5f0eb]/12 pt-8">

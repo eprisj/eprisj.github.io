@@ -356,3 +356,7 @@ export const MOVES: Move[] = [objectInEmptiness, borrowedObject, clothAsWall, ma
 export function moveBySlug(slug: string): Move | undefined {
   return MOVES.find((m) => m.slug === slug);
 }
+
+/** Для Бюро: у каких разборов вообще есть чем покрутить. Список, а не сами
+ *  операторы, чтобы страница разбора не тащила за собой геометрию. */
+export const PLAYABLE_SLUGS: readonly string[] = MOVES.map((m) => m.slug);

@@ -1,7 +1,9 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
-import { ArrowLeft, ArrowUpRight, Check, FileDown, Link2, Plus, Trash2 } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, Check, FileDown, Link2, Plus, Trash2 } from 'lucide-react';
 import { sceneFromLocation, sceneShareUrl } from './sceneUrl';
 import { exportSpec } from './exportSpec';
+import { HeroPlan } from './HeroPlan';
+import { demoScene } from './demoScene';
 import { fetchCases, type BureauCase } from '../showcase/bureauApi';
 import { PlanView } from './PlanView';
 import { SectionView } from './SectionView';
@@ -67,6 +69,11 @@ export function StagePage() {
   // Сцена из адреса важнее пустой коробки: по ссылке человек пришёл смотреть
   // именно её, и мелькнувший перед этим пустой пол читался бы как поломка.
   const [scene, setScene] = useState<Scene>(() => sceneFromLocation() || emptyScene());
+  /* Вход отмечается ОТДЕЛЬНЫМ признаком, а не пустотой сцены: «начать с
+     пустого» — тоже вход, и заглавная после него висеть не должна. Пришедший
+     по ссылке пропускает её сразу. */
+  const [entered, setEntered] = useState(() => !!sceneFromLocation());
+  const [heroScene] = useState(demoScene);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [volumeOpen, setVolumeOpen] = useState(false);
   const [eyeView, setEyeView] = useState(false);
@@ -164,9 +171,63 @@ export function StagePage() {
     setSelectedId(null);
   }
 
+
   return (
     <div className="min-h-screen bg-[#1a0b10] pb-24">
       <Header />
+
+      {!entered && (
+        <section className="relative isolate flex min-h-[88vh] flex-col justify-between overflow-hidden bg-[#1a0b10]">
+          <HeroPlan scene={heroScene} />
+          {/* Скрим легче, чем на витрине: там он гасит фотографию, а здесь под
+              ним чертёж, который сам по себе тихий. */}
+          <div className="absolute inset-0 bg-[#0d0508]/25" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0d0508]/80 via-transparent to-[#0d0508]/35" />
+
+          <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-[8%] hidden w-px bg-[#f5f0eb]/12 lg:block" />
+          <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-[8%] hidden w-px bg-[#f5f0eb]/12 lg:block" />
+
+          <div className="relative z-10 px-6 pt-10 sm:px-10 lg:px-14 lg:pt-14">
+            <h1 className="font-sans font-bold lowercase leading-[0.82] tracking-[-0.04em] text-[#f5f0eb]">
+              <span className="block text-[15vw] sm:text-[11vw] lg:text-[8.5vw]">epris</span>
+              <span className="block pl-[0.06em] text-[10vw] font-normal sm:text-[7vw] lg:text-[5.4vw]">stage</span>
+            </h1>
+          </div>
+
+          <div className="relative z-10 flex flex-wrap items-end justify-between gap-6 px-6 pb-10 sm:px-10 lg:px-14 lg:pb-14">
+            <div>
+              <span aria-hidden="true" className="mb-4 grid h-12 w-12 border-b border-l border-[#f5f0eb]/60 text-[#f5f0eb]">
+                <ArrowUpRight size={26} className="justify-self-end" />
+              </span>
+              <p className="max-w-md font-sans text-[13px] lowercase leading-relaxed text-[#f5f0eb]/85 sm:text-[15px]">
+                a box in metres, read in plan, section and volume at once — and the
+                moves from the bureau tried on it
+              </p>
+            </div>
+
+            {/* Заглавная не декорация: та самая сцена, что нарисована фоном,
+                кладётся в редактор — начинают не с пустого пола. */}
+            <div className="flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={() => { setScene(demoScene()); setEntered(true); }}
+                className="group inline-flex min-h-11 items-center gap-2 border border-[#f5f0eb]/30 px-4 font-sans text-[10px] uppercase tracking-[0.16em] text-[#f5f0eb] hover:border-[#f5f0eb]"
+              >
+                Open this scene
+                <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+              </button>
+              <button
+                type="button"
+                onClick={() => setEntered(true)}
+                className="inline-flex min-h-11 items-center border border-[#f5f0eb]/15 px-4 font-sans text-[10px] uppercase tracking-[0.16em] text-[#f5f0eb]/60 hover:border-[#f5f0eb]/50 hover:text-[#f5f0eb]"
+              >
+                Start empty
+              </button>
+            </div>
+          </div>
+        </section>
+      )}
+
       <div className="mx-auto max-w-[1600px] px-4 py-8 sm:px-8 lg:px-12">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <p className="max-w-[52ch] font-sans text-[13px] leading-relaxed text-[#f5f0eb]/60">
