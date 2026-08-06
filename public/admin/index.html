@@ -168,6 +168,10 @@
 
           <div class="sidebar-nav-group">
             <span class="sidebar-nav-label">System</span>
+            <button class="tab-btn" data-tab="showcase" type="button">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              Витрина
+            </button>
             <button class="tab-btn" data-tab="monitor" type="button">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
               Мониторинг
@@ -718,6 +722,20 @@
           </section>
 
           <!-- ===== MONITOR ===== -->
+          <section class="tab-panel" id="tab-showcase">
+            <div class="card">
+              <div class="monitor-head">
+                <div>
+                  <h2 class="card-title" style="margin-bottom:4px">Заявки в витрину</h2>
+                  <p class="card-desc">Работы, присланные через «Submit work», и всё, что нашёл сборщик. Публикация выводит работу на eprisjournal.com/showcase</p>
+                </div>
+                <button id="showcaseReloadBtn" class="btn btn-primary" type="button">Обновить</button>
+              </div>
+              <p id="showcaseStatus" class="card-desc" style="margin-top:12px"></p>
+              <div id="showcaseQueue" style="margin-top:16px"></div>
+            </div>
+          </section>
+
           <section class="tab-panel" id="tab-monitor">
             <div class="monitor-layout">
               <div class="card">
