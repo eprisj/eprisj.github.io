@@ -15,6 +15,14 @@ export interface SceneObject {
   d: number;
   h: number;
   rotation: number; // градусы вокруг вертикали
+  /* Ниже — следы приёма Бюро, наложенного поверх сцены. Базовая сцена их не
+     содержит: их ставит оператор в moves.ts, и держатся они только пока приём
+     выбран (или пока его не «запекли»). */
+  /** Slug приёма, который породил объект: по нему видно, что не ваше. */
+  generatedBy?: string;
+  /** Ткань, а не стена — объём рисует её прозрачной. */
+  soft?: boolean;
+  opacity?: number;
 }
 
 export interface SceneLight {
@@ -63,7 +71,11 @@ export function emptyScene(): Scene {
   };
 }
 
-export function addObject(scene: Scene, kind: ObjectKind): Scene {
+/* Отдельно от addObject, потому что вызывающему нужен сам объект — чтобы
+   выделить его сразу и при этом класть в сцену функциональным обновлением.
+   Иначе два быстрых клика подряд читают одно и то же состояние из замыкания,
+   и второй объект молча теряется. */
+export function createObject(room: Room, kind: ObjectKind): SceneObject {
   const defaults: Record<ObjectKind, Pick<SceneObject, 'w' | 'd' | 'h' | 'label'>> = {
     block: { w: 1.5, d: 1.5, h: 1.5, label: 'Object' },
     wall: { w: 3, d: 0.2, h: 3, label: 'Wall' },
@@ -72,16 +84,19 @@ export function addObject(scene: Scene, kind: ObjectKind): Scene {
     seating: { w: 0.6, d: 0.6, h: 0.45, label: 'Seat' },
   };
   const base = defaults[kind];
-  const object: SceneObject = {
+  return {
     id: newId('obj'),
     kind,
-    x: scene.room.w / 2 - base.w / 2,
-    z: scene.room.d / 2 - base.d / 2,
+    x: room.w / 2 - base.w / 2,
+    z: room.d / 2 - base.d / 2,
     y: 0,
     rotation: 0,
     ...base,
   };
-  return { ...scene, objects: [...scene.objects, object] };
+}
+
+export function addObject(scene: Scene, kind: ObjectKind): Scene {
+  return { ...scene, objects: [...scene.objects, createObject(scene.room, kind)] };
 }
 
 export function updateObject(scene: Scene, id: string, patch: Partial<SceneObject>): Scene {

@@ -1,10 +1,13 @@
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import { ArrowLeft, ArrowUpRight, Plus, Trash2 } from 'lucide-react';
+import { fetchCases, type BureauCase } from '../showcase/bureauApi';
 import { PlanView } from './PlanView';
 import { SectionView } from './SectionView';
+import { MovesPanel } from './MovesPanel';
+import { MOVES, defaultParams, moveBySlug, type Params } from './moves';
 import {
-  addObject,
   clampToRoom,
+  createObject,
   emptyScene,
   removeObject,
   updateObject,
@@ -63,12 +66,57 @@ export function StagePage() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [volumeOpen, setVolumeOpen] = useState(false);
   const [eyeView, setEyeView] = useState(false);
+  const [cases, setCases] = useState<BureauCase[]>([]);
+  const [activeSlug, setActiveSlug] = useState<string | null>(null);
+  const [moveParams, setMoveParams] = useState<Params>({});
   const selected = scene.objects.find((o) => o.id === selectedId) || null;
 
+  useEffect(() => {
+    const controller = new AbortController();
+    // Разборы приходят из живого Бюро: панель приёмов — то же содержимое, что
+    // и статьи, а не вторая его копия в коде инструмента.
+    fetchCases(controller.signal)
+      .then(setCases)
+      .catch(() => setCases([]));
+    return () => controller.abort();
+  }, []);
+
+  const activeMove = activeSlug ? moveBySlug(activeSlug) : undefined;
+
+  /* Приём — линза над базовой сценой, а не правка её. Поэтому ползунок можно
+     возить туда-обратно: каждый кадр приём применяется к исходной сцене
+     заново, и сдвиг не накапливается. */
+  const displayed = useMemo(
+    () => (activeMove ? activeMove.apply(scene, moveParams, selectedId) : scene),
+    [activeMove, scene, moveParams, selectedId],
+  );
+
+  const readings = useMemo(
+    () => (activeMove ? activeMove.read(scene, moveParams, selectedId) : []),
+    [activeMove, scene, moveParams, selectedId],
+  );
+
+  function handlePickMove(slug: string | null) {
+    setActiveSlug(slug);
+    const move = slug ? moveBySlug(slug) : undefined;
+    setMoveParams(move ? defaultParams(move) : {});
+  }
+
+  function handleBake() {
+    // Запекание переносит результат в базу и снимает линзу: следы приёма
+    // становятся вашими объектами, и пунктир с них уходит.
+    setScene({ ...displayed, objects: displayed.objects.map(({ generatedBy: _drop, ...rest }) => rest) });
+    setActiveSlug(null);
+    setMoveParams({});
+  }
+
   function handleAdd(kind: ObjectKind) {
-    const next = addObject(scene, kind);
-    setScene(next);
-    setSelectedId(next.objects[next.objects.length - 1].id);
+    // Объект делается заранее, а кладётся функциональным обновлением: иначе
+    // два клика в одном тике читают одну и ту же сцену, и второй объект
+    // пропадает.
+    const object = createObject(scene.room, kind);
+    setScene((prev) => ({ ...prev, objects: [...prev.objects, object] }));
+    setSelectedId(object.id);
   }
 
   function handleDrag(id: string, x: number, z: number) {
@@ -99,13 +147,13 @@ export function StagePage() {
             <div>
               <p className="mb-2 font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/45">Plan</p>
               <div className="border border-[#f5f0eb]/12">
-                <PlanView scene={scene} selectedId={selectedId} onSelect={setSelectedId} onDrag={handleDrag} />
+                <PlanView scene={displayed} selectedId={selectedId} onSelect={setSelectedId} onDrag={handleDrag} />
               </div>
             </div>
             <div>
               <p className="mb-2 font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/45">Section</p>
               <div className="border border-[#f5f0eb]/12">
-                <SectionView scene={scene} selectedId={selectedId} />
+                <SectionView scene={displayed} selectedId={selectedId} />
               </div>
             </div>
 
@@ -140,7 +188,7 @@ export function StagePage() {
                       </div>
                     }
                   >
-                    <Scene3D scene={scene} fromViewerEye={eyeView} />
+                    <Scene3D scene={displayed} fromViewerEye={eyeView} />
                   </Suspense>
                 </div>
               )}
@@ -163,6 +211,17 @@ export function StagePage() {
                 ))}
               </div>
             </div>
+
+            <MovesPanel
+              cases={cases}
+              moves={MOVES}
+              activeSlug={activeSlug}
+              params={moveParams}
+              readings={readings}
+              onPick={handlePickMove}
+              onParam={(key, value) => setMoveParams((prev) => ({ ...prev, [key]: value }))}
+              onBake={handleBake}
+            />
 
             {selected ? (
               <div className="space-y-3 border-t border-[#f5f0eb]/12 pt-6">
