@@ -626,6 +626,7 @@ async function tryAutoLogin() {
         tokenInput.value = data.token;
         localStorage.setItem(AUTH_STORAGE_KEY, data.token);
         applyRadioToken(data.radio_token);
+        applyShowcaseToken(data.showcase_token);
         setSessionRole(data.role);
         applyRoleVisibility(data.role);
         rememberTokenInput.checked = true;
@@ -697,7 +698,7 @@ function setSessionRole(role) {
 //     and appearance (site-wide theme, not per-article content) are
 //     grouped in for the same "not an editor's job" reason even though
 //     history is also independently enforced server-side.
-const ADMIN_ONLY_TABS = ['radio', 'passports', 'appearance', 'monitor', 'history', 'settings'];
+const ADMIN_ONLY_TABS = ['radio', 'passports', 'appearance', 'monitor', 'history', 'settings', 'showcase'];
 function applyRoleVisibility(role) {
   const isEditor = role === 'editor';
   document.body.classList.toggle('role-editor', isEditor);
@@ -739,6 +740,7 @@ async function handlePasswordLogin() {
     const data = await res.json();
     if (!data.ok || !data.token) throw new Error(data.error || 'Неверный пароль');
     applyRadioToken(data.radio_token);
+    applyShowcaseToken(data.showcase_token);
     setSessionRole(data.role);
     applyRoleVisibility(data.role);
     // Password is already validated by the VPS — log in immediately. The
@@ -14376,3 +14378,107 @@ async function flushModernEditor() {
 
   render();
 })();
+
+/* ─── Витрина: заявки «Submit work» ──────────────────────────────────────────
+   До этого присланную работу можно было увидеть только зайдя на сервер и
+   запустив review.js. Заявка лежала в очереди, и никто о ней не знал.
+
+   Токен приходит из /token тем же путём, что и радийный, и только админу:
+   у редактора его нет, а без него раздел даже не покажется. */
+const SHOWCASE_API = 'https://api.eprisjournal.com/showcase';
+const SHOWCASE_TOKEN_KEY = 'epris_showcase_token';
+
+function applyShowcaseToken(token) {
+  if (!token) return;
+  try { localStorage.setItem(SHOWCASE_TOKEN_KEY, token); } catch { /* */ }
+}
+function showcaseToken() {
+  try { return localStorage.getItem(SHOWCASE_TOKEN_KEY) || ''; } catch { return ''; }
+}
+
+const SHOWCASE_STATUS_LABEL = {
+  'Under review': 'На модерации',
+  Published: 'На сайте',
+  Archived: 'В архиве',
+};
+
+function showcaseCard(work) {
+  const photo = (work.images || [])[0]?.url || '';
+  const place = [work.venue, work.city, work.country].filter(Boolean).join(' · ');
+  const meta = [work.discipline, work.year].filter(Boolean).join(' · ');
+  // holdReason — причина, по которой сборщик не смог атрибутировать работу
+  // сам. Это самое полезное, что редактор может увидеть перед решением.
+  const hold = work.holdReason
+    ? `<p style="margin:8px 0 0;color:#b8860b;font-size:12px">⚠ ${escapeHtml(work.holdReason)}</p>`
+    : '';
+  return `
+    <article class="card" style="display:flex;gap:16px;align-items:flex-start;margin-bottom:12px">
+      ${photo ? `<img src="${escapeHtml(photo)}" alt="" style="width:120px;height:150px;object-fit:cover;flex:none;background:#eee">` : ''}
+      <div style="flex:1;min-width:0">
+        <p class="card-desc" style="margin:0">${escapeHtml(SHOWCASE_STATUS_LABEL[work.status] || work.status)}${meta ? ' · ' + escapeHtml(meta) : ''}</p>
+        <h3 style="margin:6px 0 2px;font-size:16px">${escapeHtml(work.title || '—')}</h3>
+        <p style="margin:0;font-size:14px">${escapeHtml(work.author || 'автор не указан')}</p>
+        ${place ? `<p class="card-desc" style="margin:4px 0 0">${escapeHtml(place)}</p>` : ''}
+        ${work.statement ? `<p style="margin:8px 0 0;font-size:13px;line-height:1.5;opacity:.8">${escapeHtml(work.statement.slice(0, 260))}</p>` : ''}
+        ${hold}
+        <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+          ${work.status !== 'Published' ? `<button class="btn btn-primary" data-showcase-act="Published" data-showcase-id="${escapeHtml(work.id)}" type="button">Опубликовать</button>` : ''}
+          ${work.status !== 'Archived' ? `<button class="btn" data-showcase-act="Archived" data-showcase-id="${escapeHtml(work.id)}" type="button">В архив</button>` : ''}
+          ${work.status !== 'Under review' ? `<button class="btn" data-showcase-act="Under review" data-showcase-id="${escapeHtml(work.id)}" type="button">Вернуть в очередь</button>` : ''}
+          ${work.sourceUrl ? `<a class="btn" href="${escapeHtml(work.sourceUrl)}" target="_blank" rel="noreferrer">Источник</a>` : ''}
+        </div>
+      </div>
+    </article>`;
+}
+
+async function loadShowcaseQueue() {
+  const box = byId('showcaseQueue');
+  const status = byId('showcaseStatus');
+  if (!box) return;
+  const token = showcaseToken();
+  if (!token) {
+    status.textContent = 'Нет ключа витрины — войдите заново как админ.';
+    box.innerHTML = '';
+    return;
+  }
+  status.textContent = 'Загрузка…';
+  try {
+    const res = await fetch(`${SHOWCASE_API}/works?status=all`, { headers: { 'X-Showcase-Token': token }, cache: 'no-store' });
+    if (!res.ok) throw new Error(`сервер ответил ${res.status}`);
+    const data = await res.json();
+    const works = data.works || [];
+    // Очередь вперёд: это то, ради чего сюда заходят.
+    const order = { 'Under review': 0, Published: 1, Archived: 2 };
+    works.sort((a, b) => (order[a.status] ?? 3) - (order[b.status] ?? 3) || String(b.addedAt || '').localeCompare(String(a.addedAt || '')));
+    const queued = works.filter((w) => w.status === 'Under review').length;
+    status.textContent = `${queued} в очереди · ${works.filter((w) => w.status === 'Published').length} на сайте · ${works.filter((w) => w.status === 'Archived').length} в архиве`;
+    box.innerHTML = works.length ? works.map(showcaseCard).join('') : '<p class="card-desc">Пока пусто.</p>';
+  } catch (error) {
+    status.textContent = `Не удалось загрузить: ${error.message}`;
+    box.innerHTML = '';
+  }
+}
+
+async function showcaseSetStatus(id, next) {
+  const token = showcaseToken();
+  if (!token) return;
+  const res = await fetch(`${SHOWCASE_API}/works/${encodeURIComponent(id)}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', 'X-Showcase-Token': token },
+    body: JSON.stringify({ status: next }),
+  });
+  if (!res.ok) {
+    const detail = await res.text();
+    alert(`Не получилось: ${res.status} ${detail.slice(0, 120)}`);
+    return;
+  }
+  await loadShowcaseQueue();
+}
+
+document.addEventListener('click', (event) => {
+  const btn = event.target.closest('[data-showcase-act]');
+  if (btn) { showcaseSetStatus(btn.dataset.showcaseId, btn.dataset.showcaseAct); return; }
+  if (event.target.closest('#showcaseReloadBtn')) loadShowcaseQueue();
+  const tab = event.target.closest('.tab-btn[data-tab="showcase"]');
+  if (tab) loadShowcaseQueue();
+});
