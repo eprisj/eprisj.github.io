@@ -341,7 +341,7 @@ export function ShowcasePage() {
                   key={segment.label}
                   type="button"
                   onClick={() => setDiscipline(segment.value)}
-                  className={`inline-flex min-h-10 items-center rounded-full border px-5 font-sans text-[9px] uppercase tracking-[0.16em] transition-colors ${active ? 'border-[#4a1728] bg-[#4a1728] text-white' : 'border-[#4a1728]/15 bg-[#fdfaf6] text-[#4a1728]/80 hover:border-[#4a1728]/40'}`}
+                  className={`inline-flex min-h-10 items-center border px-5 font-sans text-[9px] uppercase tracking-[0.16em] transition-colors ${active ? 'border-[#4a1728] bg-[#4a1728] text-white' : 'border-[#4a1728]/15 bg-[#fdfaf6] text-[#4a1728]/80 hover:border-[#4a1728]/40'}`}
                 >
                   {segment.label}
                 </button>
@@ -435,7 +435,7 @@ export function ShowcasePage() {
                       key={entry.name}
                       type="button"
                       onClick={() => setAuthor(active ? '' : entry.name)}
-                      className={`inline-flex min-h-9 shrink-0 items-center gap-2 rounded-full border px-4 font-sans text-[9px] uppercase tracking-[0.14em] transition-colors ${active ? 'border-[#4a1728] bg-[#4a1728] text-white' : 'border-[#4a1728]/15 bg-[#fdfaf6] text-[#4a1728]/80 hover:border-[#4a1728]/40'}`}
+                      className={`inline-flex min-h-9 shrink-0 items-center gap-2 border px-4 font-sans text-[9px] uppercase tracking-[0.14em] transition-colors ${active ? 'border-[#4a1728] bg-[#4a1728] text-white' : 'border-[#4a1728]/15 bg-[#fdfaf6] text-[#4a1728]/80 hover:border-[#4a1728]/40'}`}
                     >
                       {entry.name}
                       <span className={active ? 'text-white/60' : 'text-[#4a1728]/40'}>{entry.count}</span>
@@ -482,32 +482,31 @@ export function ShowcasePage() {
                 </div>
               </div>
             ) : (
-              <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-9 sm:gap-x-6 lg:grid-cols-3 xl:grid-cols-4">
+              <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
                 {visible.map((work, index) => (
                   <button key={work.id} type="button" onClick={() => setSelected(work)} aria-label={`${work.title} — ${work.author}`} className="group flex flex-col text-left">
-                    <div className="relative aspect-[3/4] overflow-hidden bg-[#e9dece]">
+                    <div className="relative aspect-[4/5] overflow-hidden bg-[#e9dece]">
                       <WorkPlate work={work} index={index} className="absolute inset-0 h-full w-full" />
                       {work.status === 'Under review' && (
                         <span className="absolute left-3 top-3 rounded-full bg-[#f5f0eb]/90 px-2.5 py-1 font-sans text-[7px] uppercase tracking-[0.14em] text-[#b8956e]">Under review</span>
                       )}
-                      <span className="pointer-events-none absolute inset-x-3 bottom-3 hidden justify-center rounded-full bg-[#fdfaf6]/95 py-2.5 font-sans text-[9px] uppercase tracking-[0.16em] text-[#4a1728] opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:flex">
-                        View work
-                      </span>
+                      {/* The journal never covers a picture with a button —
+                          the image itself answers the hover. */}
+                      <span className="pointer-events-none absolute inset-0 bg-[#4a1728]/0 transition-colors duration-300 group-hover:bg-[#4a1728]/8" />
                     </div>
 
                     {/* Titles run to wildly different lengths, so the caption
                         block is a fixed three-row rhythm — label, title, byline
                         — and the row of cards keeps its baseline. */}
-                    <div className="mt-4 flex flex-1 flex-col">
+                    <div className="mt-4 flex flex-1 flex-col border-t border-[#4a1728]/15 pt-3">
                       <p className="font-sans text-[8px] uppercase tracking-[0.18em] text-[#4a1728]/40">
                         {work.discipline || 'Work'}{work.year ? ` · ${work.year}` : ''}
                       </p>
-                      <h2 className="mt-2 line-clamp-2 min-h-[2.6em] font-display text-[1.0625rem] leading-[1.3] text-[#4a1728] decoration-[#4a1728]/30 underline-offset-4 group-hover:underline">
+                      <h2 className="mt-2 line-clamp-2 min-h-[2.6em] font-display text-[1.25rem] leading-[1.28] text-[#4a1728] decoration-[#4a1728]/30 underline-offset-4 group-hover:underline">
                         {work.title}
                       </h2>
                       <p className="mt-auto pt-2 text-[13px] leading-snug text-[#4a1728]/80">{work.author}</p>
-                      <p className="mt-1 flex items-center gap-1.5 font-sans text-[8px] uppercase tracking-[0.14em] text-[#4a1728]/40">
-                        <span aria-hidden="true">{flag(work.countryCode)}</span>
+                      <p className="mt-1 font-sans text-[8px] uppercase tracking-[0.14em] text-[#4a1728]/40">
                         {[work.city, work.country].filter(Boolean).join(', ')}
                       </p>
                     </div>
