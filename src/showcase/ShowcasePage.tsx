@@ -278,6 +278,10 @@ export function ShowcasePage() {
   const rangeStart = filtered.length === 0 ? 0 : (page - 1) * PAGE_SIZE + 1;
   const rangeEnd = Math.min(page * PAGE_SIZE, filtered.length);
   const activeFilterCount = Number(country !== ALL_COUNTRIES) + Number(discipline !== ALL_DISCIPLINES) + Number(Boolean(author)) + Number(withImageOnly) + Number(recentOnly);
+  // One work opens the page at full width — but only on the plain, unfiltered
+  // view, where there is no question the reader is already trying to answer.
+  const leadWork = page === 1 && activeFilterCount === 0 && sort === 'newest' && visible.length > 3 ? visible[0] : null;
+  const gridWorks = leadWork ? visible.slice(1) : visible;
   const resetFilters = () => { setCountry(ALL_COUNTRIES); setDiscipline(ALL_DISCIPLINES); setAuthor(''); setWithImageOnly(false); setRecentOnly(false); };
 
   return <div className="min-h-screen bg-[#f5f0eb] text-[#4a1728] selection:bg-[#4a1728] selection:text-white">
@@ -482,8 +486,38 @@ export function ShowcasePage() {
                 </div>
               </div>
             ) : (
-              <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-                {visible.map((work, index) => (
+              <>
+              {leadWork && (
+                <button
+                  type="button"
+                  onClick={() => setSelected(leadWork)}
+                  aria-label={`${leadWork.title} — ${leadWork.author}`}
+                  className="group mt-8 block w-full text-left"
+                >
+                  <div className="relative aspect-[16/9] overflow-hidden bg-[#e9dece]">
+                    <WorkPlate work={leadWork} index={0} className="absolute inset-0 h-full w-full" />
+                    <span className="pointer-events-none absolute inset-0 transition-colors duration-300 group-hover:bg-[#4a1728]/8" />
+                  </div>
+                  <div className="mt-4 flex flex-col gap-2 border-t border-[#4a1728]/15 pt-4 sm:flex-row sm:items-end sm:justify-between">
+                    <div>
+                      <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#4a1728]/40">
+                        {leadWork.discipline || 'Work'}{leadWork.year ? ` · ${leadWork.year}` : ''}
+                      </p>
+                      <h2 className="mt-2 max-w-3xl font-display text-[1.9rem] leading-[1.12] text-[#4a1728] decoration-[#4a1728]/30 underline-offset-[6px] group-hover:underline sm:text-[2.4rem]">
+                        {leadWork.title}
+                      </h2>
+                    </div>
+                    <div className="sm:text-right">
+                      <p className="text-[15px] text-[#4a1728]/80">{leadWork.author}</p>
+                      <p className="mt-1 font-sans text-[9px] uppercase tracking-[0.16em] text-[#4a1728]/40">
+                        {[leadWork.venue, leadWork.city, leadWork.country].filter(Boolean).join(' · ')}
+                      </p>
+                    </div>
+                  </div>
+                </button>
+              )}
+              <div className="mt-10 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+                {gridWorks.map((work, index) => (
                   <button key={work.id} type="button" onClick={() => setSelected(work)} aria-label={`${work.title} — ${work.author}`} className="group flex flex-col text-left">
                     <div className="relative aspect-[4/5] overflow-hidden bg-[#e9dece]">
                       <WorkPlate work={work} index={index} className="absolute inset-0 h-full w-full" />
@@ -513,6 +547,7 @@ export function ShowcasePage() {
                   </button>
                 ))}
               </div>
+              </>
             )}
 
             {!loading && !error && filtered.length > PAGE_SIZE && (
