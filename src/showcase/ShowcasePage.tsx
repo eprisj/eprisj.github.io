@@ -43,6 +43,7 @@ function ModalShell({ title, onClose, children, wide = false }: { title: string;
 function WorkPlate({ work, index, className = '' }: { work: Work; index: number; className?: string }) {
   const [failed, setFailed] = useState(false);
   const image = work.images?.[0];
+  const second = work.images?.[1];
   const tint = ['#e9dece', '#e5d8c6', '#e2d4c0', '#efe7dc', '#ddccb5'][index % 5];
 
   if (!image?.url || failed) {
@@ -55,15 +56,29 @@ function WorkPlate({ work, index, className = '' }: { work: Work; index: number;
   }
 
   return (
-    <img
-      src={image.url}
-      alt={image.caption || `${work.title} — ${work.author}`}
-      loading="lazy"
-      decoding="async"
-      onError={() => setFailed(true)}
-      className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04] ${className}`}
-      style={{ backgroundColor: tint }}
-    />
+    <>
+      <img
+        src={image.url}
+        alt={image.caption || `${work.title} — ${work.author}`}
+        loading="lazy"
+        decoding="async"
+        onError={() => setFailed(true)}
+        className={`h-full w-full object-cover transition-[transform,opacity] duration-700 group-hover:scale-[1.04] ${second ? 'group-hover:opacity-0' : ''} ${className}`}
+        style={{ backgroundColor: tint }}
+      />
+      {/* The second frame is the only honest way to say "there is more inside"
+          without hanging a badge on the picture. */}
+      {second && (
+        <img
+          src={second.url}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          className={`pointer-events-none absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-700 group-hover:opacity-100 ${className}`}
+        />
+      )}
+    </>
   );
 }
 
@@ -546,7 +561,7 @@ export function ShowcasePage() {
               <>
               <div className="mt-10 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
                 {gridWorks.map((work, index) => (
-                  <button key={work.id} type="button" onClick={() => setSelected(work)} aria-label={`${work.title} — ${work.author}`} className="group flex flex-col text-left">
+                  <button key={work.id} type="button" onClick={() => setSelected(work)} aria-label={`${work.title} — ${work.author}`} className={`group flex flex-col text-left ${index % 4 === 3 ? "sm:col-span-2" : ""}`}>
                     <div className="relative aspect-[4/5] overflow-hidden bg-[#e9dece]">
                       <WorkPlate work={work} index={index} className="absolute inset-0 h-full w-full" />
                       {work.status === 'Under review' && (
@@ -569,7 +584,10 @@ export function ShowcasePage() {
                       </h2>
                       <p className="mt-auto pt-2 text-[13px] leading-snug text-[#4a1728]/80">{work.author}</p>
                       <p className="mt-1 font-sans text-[8px] uppercase tracking-[0.14em] text-[#4a1728]/40">
-                        {[work.city, work.country].filter(Boolean).join(', ')}
+                        {[
+                          [work.city, work.country].filter(Boolean).join(', '),
+                          (work.images || []).length > 1 ? `${(work.images || []).length} frames` : '',
+                        ].filter(Boolean).join(' · ')}
                       </p>
                     </div>
                   </button>
