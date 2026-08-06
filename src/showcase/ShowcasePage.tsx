@@ -191,6 +191,7 @@ export function ShowcasePage() {
   const [query, setQuery] = useState('');
   const [country, setCountry] = useState(ALL_COUNTRIES);
   const [discipline, setDiscipline] = useState(ALL_DISCIPLINES);
+  const [author, setAuthor] = useState('');
   const [withImageOnly, setWithImageOnly] = useState(false);
   const [recentOnly, setRecentOnly] = useState(false);
   const [sort, setSort] = useState('newest');
@@ -222,6 +223,25 @@ export function ShowcasePage() {
   }, []);
 
   const countries = useMemo(() => [...new Set(works.map((work) => work.country).filter(Boolean) as string[])].sort((a, b) => a.localeCompare(b)), [works]);
+
+  /* Authors stand in for the shop's brand column: the same ranked list with a
+     count each, and the same chip rail above the grid. */
+  const authorList = useMemo(() => {
+    const counts = new Map<string, number>();
+    works.forEach((work) => { if (work.author) counts.set(work.author, (counts.get(work.author) || 0) + 1); });
+    return [...counts.entries()]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .map(([name, count]) => ({ name, count }));
+  }, [works]);
+
+  const segments = useMemo(() => [
+    { label: 'All works', value: ALL_DISCIPLINES },
+    ...['Set design', 'Scenography', 'Installation', 'Conceptual art']
+      .filter((name) => works.some((work) => work.discipline === name))
+      .map((name) => ({ label: name, value: name })),
+  ], [works]);
+
+  const selectedSegment = discipline === ALL_DISCIPLINES ? 'All works' : discipline;
   const disciplineTabs = useMemo(() => {
     const counts = new Map<string, number>();
     works.forEach((work) => { if (work.discipline) counts.set(work.discipline, (counts.get(work.discipline) || 0) + 1); });
@@ -238,6 +258,7 @@ export function ShowcasePage() {
       const haystack = [work.title, work.author, work.country, work.city, work.venue, work.discipline, work.medium, work.statement, ...(work.tags || [])].join(' ').toLocaleLowerCase();
       if (needle && !haystack.includes(needle)) return false;
       if (country !== ALL_COUNTRIES && work.country !== country) return false;
+      if (author && work.author !== author) return false;
       if (discipline !== ALL_DISCIPLINES && work.discipline !== discipline) return false;
       if (withImageOnly && !work.images?.some((image) => image?.url)) return false;
       if (recentOnly && !(work.year && work.year >= recentCutoff)) return false;
@@ -249,15 +270,15 @@ export function ShowcasePage() {
       if (sort === 'oldest') return String(a.addedAt || '').localeCompare(String(b.addedAt || ''));
       return String(b.addedAt || '').localeCompare(String(a.addedAt || ''));
     });
-  }, [works, query, country, discipline, withImageOnly, recentOnly, sort]);
+  }, [works, query, country, discipline, author, withImageOnly, recentOnly, sort]);
 
-  useEffect(() => setPage(1), [query, country, discipline, withImageOnly, recentOnly, sort]);
+  useEffect(() => setPage(1), [query, country, discipline, author, withImageOnly, recentOnly, sort]);
   const pages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const visible = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
   const rangeStart = filtered.length === 0 ? 0 : (page - 1) * PAGE_SIZE + 1;
   const rangeEnd = Math.min(page * PAGE_SIZE, filtered.length);
-  const activeFilterCount = Number(country !== ALL_COUNTRIES) + Number(discipline !== ALL_DISCIPLINES) + Number(withImageOnly) + Number(recentOnly);
-  const resetFilters = () => { setCountry(ALL_COUNTRIES); setDiscipline(ALL_DISCIPLINES); setWithImageOnly(false); setRecentOnly(false); };
+  const activeFilterCount = Number(country !== ALL_COUNTRIES) + Number(discipline !== ALL_DISCIPLINES) + Number(Boolean(author)) + Number(withImageOnly) + Number(recentOnly);
+  const resetFilters = () => { setCountry(ALL_COUNTRIES); setDiscipline(ALL_DISCIPLINES); setAuthor(''); setWithImageOnly(false); setRecentOnly(false); };
 
   return <div className="min-h-screen bg-[#faf9f7] text-[#1a1a1a] selection:bg-[#1a1a1a] selection:text-white">
     <p className="bg-[#1a1a1a] px-4 py-2.5 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#f0efec] sm:text-[9px]">
@@ -297,52 +318,35 @@ export function ShowcasePage() {
     </header>
 
     <main>
-      <section className="border-b border-[#1a1a1a]/15 px-4 pt-8 sm:px-8 sm:pt-11 lg:px-12 lg:pt-14">
+      {/* Catalogue head, in the shop's order: crumb, title with a count, then
+          the segment row — no editorial hero in front of the goods. */}
+      <section className="px-4 pt-6 sm:px-8 lg:px-12 lg:pt-9">
         <div className="mx-auto max-w-[1600px]">
-          <div className="flex items-center justify-between border-y border-[#1a1a1a]/15 py-3 font-mono text-[8px] uppercase tracking-[0.23em] text-[#8a8a8a] sm:text-[9px]">
-            <span><span className="text-[#1a1a1a]">EPRIS</span> / Showcase</span>
-            <span className="hidden sm:inline">Set design · Scenography · Conceptual art</span>
-            <span>No. 01 — 2026</span>
+          <nav aria-label="Breadcrumb" className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8a8a8a]">
+            <a href="/" className="hover:text-[#1a1a1a]">Journal</a> / <span className="text-[#1a1a1a]">Showcase</span>
+          </nav>
+
+          <div className="mt-5 flex flex-wrap items-baseline gap-x-5 gap-y-2">
+            <h1 className="font-serif text-4xl leading-none sm:text-5xl">{selectedSegment}</h1>
+            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8a8a8a]">
+              {loading ? 'Loading…' : `${filtered.length} ${filtered.length === 1 ? 'work' : 'works'}`}
+            </p>
           </div>
 
-          <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(310px,0.34fr)]">
-            <div className="pb-10 pt-10 sm:pb-14 sm:pt-14 lg:pb-14 lg:pr-12 lg:pt-14 xl:pr-20">
-              <p className="mb-6 flex items-center gap-3 font-mono text-[9px] uppercase tracking-[0.24em] text-[#8c2f24]">
-                <span className="h-px w-8 bg-current" aria-hidden="true" /> Open vitrine
-              </p>
-              <h1 className="max-w-6xl font-serif text-[clamp(3.55rem,8.9vw,9.4rem)] leading-[0.79] tracking-[-0.06em]">
-                Rooms built<br />
-                <em className="font-normal text-[#1a1a1a]">for an idea.</em>
-              </h1>
-            </div>
-
-            <div className="border-t border-[#1a1a1a]/15 py-9 lg:flex lg:flex-col lg:justify-between lg:border-l lg:border-t-0 lg:py-14 lg:pl-9 xl:pl-12">
-              <div>
-                <span className="font-serif text-5xl italic leading-none text-[#1a1a1a]" aria-hidden="true">“</span>
-                <p className="-mt-2 max-w-md font-serif text-xl leading-[1.45] text-[#3d3d3d] sm:text-2xl lg:text-[1.45rem]">Sets, scenography and conceptual pieces by authors the institutions have not caught up with yet — collected work by work, from everywhere.</p>
-              </div>
-              <div className="mt-9 border-t border-[#1a1a1a]/15 pt-5 lg:mt-10">
-                <p className="font-mono text-[8px] uppercase leading-[1.8] tracking-[0.18em] text-[#8a8a8a] sm:text-[9px]">
-                  Open submissions / Editorial review<br />
-                  Credits verified / EPRIS Journal
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-3 border-t border-[#1a1a1a]/15">
-            {[
-              { value: works.length, label: 'Works', note: 'In the vitrine' },
-              { value: new Set(works.map((work) => work.author)).size, label: 'Authors', note: 'Across the world' },
-              { value: countries.length, label: 'Countries', note: 'Represented' },
-            ].map((stat, index) => (
-              <div key={stat.label} className={`relative py-5 sm:py-7 lg:py-9 ${index > 0 ? 'border-l border-[#1a1a1a]/15 pl-4 sm:pl-7 lg:pl-10' : 'pr-3'}`}>
-                <span className="absolute right-2 top-3 font-mono text-[7px] tracking-[0.16em] text-[#8c2f24]/70 sm:right-4 sm:top-5 sm:text-[8px]">0{index + 1}</span>
-                <strong className="block font-serif text-[2.15rem] font-normal leading-none tabular-nums sm:text-5xl lg:text-7xl">{stat.value}</strong>
-                <span className="mt-2 block font-mono text-[8px] uppercase tracking-[0.18em] text-[#3d3d3d] sm:text-[9px]">{stat.label}</span>
-                <span className="mt-1 hidden font-serif text-sm italic text-[#8a8a8a] sm:block">{stat.note}</span>
-              </div>
-            ))}
+          <div className="mt-6 flex flex-wrap gap-2">
+            {segments.map((segment) => {
+              const active = discipline === segment.value;
+              return (
+                <button
+                  key={segment.label}
+                  type="button"
+                  onClick={() => setDiscipline(segment.value)}
+                  className={`inline-flex min-h-10 items-center rounded-full border px-5 font-mono text-[9px] uppercase tracking-[0.16em] transition-colors ${active ? 'border-[#1a1a1a] bg-[#1a1a1a] text-white' : 'border-[#1a1a1a]/15 bg-white text-[#3d3d3d] hover:border-[#1a1a1a]/40'}`}
+                >
+                  {segment.label}
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -389,6 +393,20 @@ export function ShowcasePage() {
                 </ul>
               </div>
 
+              {authorList.length > 0 && (
+                <div className="border-t border-[#1a1a1a]/12 pt-6">
+                  <p className="mb-4 font-mono text-[9px] uppercase tracking-[0.2em] text-[#1a1a1a]">Authors</p>
+                  <ul className="max-h-72 space-y-2.5 overflow-y-auto pr-1">
+                    {authorList.map((entry) => (
+                      <li key={entry.name} className="flex items-baseline justify-between gap-2">
+                        <button type="button" onClick={() => setAuthor((current) => (current === entry.name ? '' : entry.name))} className={`min-h-8 text-left text-sm leading-snug transition-colors ${author === entry.name ? 'text-[#1a1a1a] underline underline-offset-4' : 'text-[#6b6b6b] hover:text-[#1a1a1a]'}`}>{entry.name}</button>
+                        <span className="font-mono text-[9px] text-[#a3a3a3]">{entry.count}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               <div className="border-t border-[#1a1a1a]/12 pt-6">
                 <p className="mb-4 font-mono text-[9px] uppercase tracking-[0.2em] text-[#1a1a1a]">Country</p>
                 <label className="relative block">
@@ -408,6 +426,25 @@ export function ShowcasePage() {
           </aside>
 
           <div>
+            {authorList.length > 1 && (
+              <div className="mb-5 flex gap-2 overflow-x-auto pb-1">
+                {authorList.slice(0, 24).map((entry) => {
+                  const active = author === entry.name;
+                  return (
+                    <button
+                      key={entry.name}
+                      type="button"
+                      onClick={() => setAuthor(active ? '' : entry.name)}
+                      className={`inline-flex min-h-9 shrink-0 items-center gap-2 rounded-full border px-4 font-mono text-[9px] uppercase tracking-[0.14em] transition-colors ${active ? 'border-[#1a1a1a] bg-[#1a1a1a] text-white' : 'border-[#1a1a1a]/15 bg-white text-[#3d3d3d] hover:border-[#1a1a1a]/40'}`}
+                    >
+                      {entry.name}
+                      <span className={active ? 'text-white/60' : 'text-[#a3a3a3]'}>{entry.count}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#1a1a1a]/10 pb-4">
               <p className="font-mono text-[9px] uppercase tracking-[0.17em] text-[#8a8a8a]">
                 {loading ? 'Loading vitrine…' : `${rangeStart}–${rangeEnd} of ${filtered.length}`}
@@ -454,6 +491,9 @@ export function ShowcasePage() {
                         <span className="absolute left-3 top-3 rounded-full bg-[#faf9f7]/90 px-2.5 py-1 font-mono text-[7px] uppercase tracking-[0.14em] text-[#8c2f24]">Under review</span>
                       )}
                       <span className="absolute right-3 top-3 text-lg opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true">{flag(work.countryCode)}</span>
+                      <span className="pointer-events-none absolute inset-x-3 bottom-3 hidden justify-center rounded-full bg-white/95 py-2.5 font-mono text-[9px] uppercase tracking-[0.16em] text-[#1a1a1a] opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:flex">
+                        View work
+                      </span>
                     </div>
                     <div className="mt-3">
                       <p className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#8a8a8a]">{work.discipline || 'Work'}</p>
