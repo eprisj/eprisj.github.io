@@ -299,8 +299,10 @@ export function ShowcasePage() {
   const activeFilterCount = Number(country !== ALL_COUNTRIES) + Number(discipline !== ALL_DISCIPLINES) + Number(Boolean(author)) + Number(withImageOnly) + Number(recentOnly);
   // One work opens the page at full width — but only on the plain, unfiltered
   // view, where there is no question the reader is already trying to answer.
-  const leadWork = page === 1 && activeFilterCount === 0 && sort === 'newest' && visible.length > 3 ? visible[0] : null;
-  const gridWorks = leadWork ? visible.slice(1) : visible;
+  const leadWork = page === 1 && activeFilterCount === 0 && sort === 'newest' && visible.length > 3
+    ? (visible.find((w) => (w.images || []).length > 1) || visible[0])
+    : null;
+  const gridWorks = leadWork ? visible.filter((w) => w !== leadWork) : visible;
   const resetFilters = () => { setCountry(ALL_COUNTRIES); setDiscipline(ALL_DISCIPLINES); setAuthor(''); setWithImageOnly(false); setRecentOnly(false); };
 
   return <div className="min-h-screen bg-[#f5f0eb] text-[#4a1728] selection:bg-[#4a1728] selection:text-white">
@@ -346,50 +348,68 @@ export function ShowcasePage() {
           already looking for something and a full screen of picture is in the
           way. */}
       {leadWork && (
-        <section className="relative isolate flex min-h-[78vh] items-end overflow-hidden bg-[#4a1728]">
+        <section className="relative isolate flex min-h-[92vh] flex-col justify-between overflow-hidden bg-[#1a0b10]">
           <WorkPlate work={leadWork} index={0} className="absolute inset-0 h-full w-full object-cover" />
-          {/* Burgundy rather than black: the scrim has to belong to the journal
-              even when it is doing the work of a photograph's shadow. */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#2b0d18]/90 via-[#2b0d18]/60 to-[#2b0d18]/30 sm:from-[#2b0d18]/80 sm:via-[#2b0d18]/30 sm:to-[#2b0d18]/10" />
-          {/* A second, sideways wash: the type sits bottom-left, and a bright
-              photograph will swallow small caps there without it. */}
-          <div className="absolute inset-0 hidden bg-gradient-to-r from-[#2b0d18]/75 via-[#2b0d18]/15 to-transparent sm:block" />
+          {/* Their scrim is near-black and even; the photograph carries the
+              whole frame rather than sitting behind a burgundy wash. */}
+          <div className="absolute inset-0 bg-[#0d0508]/45" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0d0508]/80 via-transparent to-[#0d0508]/35" />
 
-          {/* The journal frames its hero image with corner brackets; the same
-              mark here ties the vitrine to the front page. */}
-          <span aria-hidden="true" className="pointer-events-none absolute left-6 top-6 h-10 w-10 border-l border-t border-[#f5f0eb]/45 sm:left-10 sm:top-10" />
-          <span aria-hidden="true" className="pointer-events-none absolute right-6 top-6 h-10 w-10 border-r border-t border-[#f5f0eb]/45 sm:right-10 sm:top-10" />
-          <span aria-hidden="true" className="pointer-events-none absolute bottom-6 left-6 h-10 w-10 border-b border-l border-[#f5f0eb]/45 sm:bottom-10 sm:left-10" />
-          <span aria-hidden="true" className="pointer-events-none absolute bottom-6 right-6 h-10 w-10 border-b border-r border-[#f5f0eb]/45 sm:bottom-10 sm:right-10" />
+          {/* Hairline rules down the frame, as on their page. */}
+          <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-[8%] hidden w-px bg-[#f5f0eb]/12 lg:block" />
+          <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-[8%] hidden w-px bg-[#f5f0eb]/12 lg:block" />
 
-          <div className="relative z-10 w-full px-6 pb-12 sm:px-12 lg:px-16 lg:pb-16">
-            <div className="mx-auto max-w-[1600px]">
-              <p className="font-sans text-[10px] uppercase tracking-[0.32em] text-[#f5f0eb]/70">
-                EPRIS Journal — open call
+          {/* The wordmark: two lines, lowercase, set as large as the frame
+              allows — the one element their page is built around. */}
+          <div className="relative z-10 px-6 pt-10 sm:px-10 lg:px-14 lg:pt-14">
+            <h1 className="font-sans font-bold lowercase leading-[0.82] tracking-[-0.04em] text-[#f5f0eb]">
+              <span className="block text-[15vw] sm:text-[11vw] lg:text-[8.5vw]">epris</span>
+              <span className="block pl-[0.06em] text-[10vw] font-normal sm:text-[7vw] lg:text-[5.4vw]">showcase</span>
+            </h1>
+          </div>
+
+          {/* The inset card, floated right and overlapping the frame, opening
+              the featured work. */}
+          {leadWork.images?.[1] && (
+            <button
+              type="button"
+              onClick={() => setSelected(leadWork)}
+              aria-label={`Open ${leadWork.title}`}
+              className="group absolute right-0 top-1/2 z-10 hidden w-[38vw] max-w-[520px] -translate-y-1/3 overflow-hidden rounded-l-[18px] shadow-2xl md:block"
+            >
+              <img src={leadWork.images[1].url} alt="" className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+              <span className="absolute bottom-4 left-4 grid h-11 w-11 place-items-center rounded-full bg-[#f5f0eb] text-[#1a0b10] transition-transform group-hover:translate-x-1">
+                <ArrowRight size={18} />
+              </span>
+            </button>
+          )}
+
+          <div className="relative z-10 flex flex-wrap items-end justify-between gap-6 px-6 pb-10 sm:px-10 lg:px-14 lg:pb-14">
+            <div>
+              {/* Their corner glyph: a bare diagonal arrow over two rules. */}
+              <span aria-hidden="true" className="mb-4 grid h-12 w-12 border-b border-l border-[#f5f0eb]/60 text-[#f5f0eb]">
+                <ArrowUpRight size={26} className="justify-self-end" />
+              </span>
+              <p className="max-w-md font-sans text-[13px] lowercase leading-relaxed text-[#f5f0eb]/85 sm:text-[15px]">
+                set design and conceptual art, reviewed by the epris editorial
               </p>
-              <h1 className="mt-4 font-display text-[3.2rem] leading-[0.95] text-[#f5f0eb] sm:text-[5rem] lg:text-[6.5rem]">
-                Showcase
-              </h1>
-              <p className="mt-5 max-w-xl font-sans text-[11px] uppercase leading-relaxed tracking-[0.2em] text-[#f5f0eb]/75">
-                Set design &amp; conceptual art, reviewed by the editorial
-              </p>
-
-              <button
-                type="button"
-                onClick={() => setSelected(leadWork)}
-                className="group mt-10 block max-w-2xl border-t border-[#f5f0eb]/30 pt-4 text-left"
-              >
-                <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/60">
-                  {leadWork.discipline || 'Work'}{leadWork.year ? ` · ${leadWork.year}` : ''}
-                </p>
-                <p className="mt-2 font-display text-2xl leading-tight text-[#f5f0eb] underline-offset-[6px] group-hover:underline sm:text-3xl">
-                  {leadWork.title}
-                </p>
-                <p className="mt-2 font-sans text-[9px] uppercase tracking-[0.16em] text-[#f5f0eb]/60">
-                  {[leadWork.author, leadWork.venue, leadWork.city].filter(Boolean).join(' · ')}
-                </p>
-              </button>
             </div>
+
+            <button
+              type="button"
+              onClick={() => setSelected(leadWork)}
+              className="group max-w-sm border-t border-[#f5f0eb]/30 pt-3 text-left"
+            >
+              <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/60">
+                {leadWork.discipline || 'Work'}{leadWork.year ? ` · ${leadWork.year}` : ''}
+              </p>
+              <p className="mt-1.5 font-sans text-lg leading-tight text-[#f5f0eb] underline-offset-4 group-hover:underline">
+                {leadWork.title}
+              </p>
+              <p className="mt-1 font-sans text-[9px] uppercase tracking-[0.16em] text-[#f5f0eb]/60">
+                {[leadWork.author, leadWork.city].filter(Boolean).join(' · ')}
+              </p>
+            </button>
           </div>
         </section>
       )}
