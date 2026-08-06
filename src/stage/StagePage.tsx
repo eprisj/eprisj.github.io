@@ -1,5 +1,7 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
-import { ArrowLeft, ArrowUpRight, Plus, Trash2 } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Check, FileDown, Link2, Plus, Trash2 } from 'lucide-react';
+import { sceneFromLocation, sceneShareUrl } from './sceneUrl';
+import { exportSpec } from './exportSpec';
 import { fetchCases, type BureauCase } from '../showcase/bureauApi';
 import { PlanView } from './PlanView';
 import { SectionView } from './SectionView';
@@ -62,14 +64,19 @@ function NumberField({ label, value, step = 0.1, onChange }: { label: string; va
 }
 
 export function StagePage() {
-  const [scene, setScene] = useState<Scene>(() => emptyScene());
+  // Сцена из адреса важнее пустой коробки: по ссылке человек пришёл смотреть
+  // именно её, и мелькнувший перед этим пустой пол читался бы как поломка.
+  const [scene, setScene] = useState<Scene>(() => sceneFromLocation() || emptyScene());
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [volumeOpen, setVolumeOpen] = useState(false);
   const [eyeView, setEyeView] = useState(false);
   const [cases, setCases] = useState<BureauCase[]>([]);
   const [activeSlug, setActiveSlug] = useState<string | null>(null);
   const [moveParams, setMoveParams] = useState<Params>({});
+  const [shareState, setShareState] = useState<'idle' | 'copied' | 'in-address-bar'>('idle');
+  const [exporting, setExporting] = useState(false);
   const selected = scene.objects.find((o) => o.id === selectedId) || null;
+  const activeCaseTitle = cases.find((item) => item.slug === activeSlug)?.title ?? null;
 
   useEffect(() => {
     const controller = new AbortController();
@@ -110,6 +117,30 @@ export function StagePage() {
     setMoveParams({});
   }
 
+  async function handleShare() {
+    // Делимся тем, что человек ВИДИТ: если приём включён, ссылка должна
+    // открыться той же сценой, а не исходной коробкой под ней.
+    const url = sceneShareUrl(displayed);
+    window.history.replaceState(null, '', url);
+    try {
+      await navigator.clipboard.writeText(url);
+      setShareState('copied');
+    } catch {
+      // Буфер может быть закрыт политикой — адрес уже в строке, его видно.
+      setShareState('in-address-bar');
+    }
+    window.setTimeout(() => setShareState('idle'), 2500);
+  }
+
+  async function handleExport() {
+    setExporting(true);
+    try {
+      await exportSpec({ scene: displayed, moveTitle: activeCaseTitle, readings });
+    } finally {
+      setExporting(false);
+    }
+  }
+
   function handleAdd(kind: ObjectKind) {
     // Объект делается заранее, а кладётся функциональным обновлением: иначе
     // два клика в одном тике читают одну и ту же сцену, и второй объект
@@ -137,10 +168,32 @@ export function StagePage() {
     <div className="min-h-screen bg-[#1a0b10] pb-24">
       <Header />
       <div className="mx-auto max-w-[1600px] px-4 py-8 sm:px-8 lg:px-12">
-        <p className="max-w-[52ch] font-sans text-[13px] leading-relaxed text-[#f5f0eb]/60">
-          Коробка сцены в метрах. План и разрез читают одну модель — подвинь объект
-          в плане, он подвинется и в разрезе.
-        </p>
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <p className="max-w-[52ch] font-sans text-[13px] leading-relaxed text-[#f5f0eb]/60">
+            Коробка сцены в метрах. План и разрез читают одну модель — подвинь объект
+            в плане, он подвинется и в разрезе.
+          </p>
+          <div className="flex shrink-0 flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={handleShare}
+              className="inline-flex min-h-9 items-center gap-1.5 border border-[#f5f0eb]/20 px-3 font-sans text-[10px] uppercase tracking-[0.12em] text-[#f5f0eb]/75 hover:border-[#f5f0eb]/60 hover:text-[#f5f0eb]"
+            >
+              {shareState === 'idle' ? <Link2 size={12} /> : <Check size={12} />}
+              {shareState === 'idle' && 'Copy link'}
+              {shareState === 'copied' && 'Link copied'}
+              {shareState === 'in-address-bar' && 'In address bar'}
+            </button>
+            <button
+              type="button"
+              onClick={handleExport}
+              disabled={exporting}
+              className="inline-flex min-h-9 items-center gap-1.5 border border-[#f5f0eb]/20 px-3 font-sans text-[10px] uppercase tracking-[0.12em] text-[#f5f0eb]/75 hover:border-[#f5f0eb]/60 hover:text-[#f5f0eb] disabled:opacity-40"
+            >
+              <FileDown size={12} /> {exporting ? 'Drawing…' : 'Spec PDF'}
+            </button>
+          </div>
+        </div>
 
         <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_280px]">
           <div className="min-w-0 space-y-8">
