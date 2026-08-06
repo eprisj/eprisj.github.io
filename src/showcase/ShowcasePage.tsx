@@ -322,9 +322,62 @@ export function ShowcasePage() {
     </header>
 
     <main>
+      {/* The opening spread: one work at the width of the window, the section
+          named over it. Only on the plain view — under a filter the reader is
+          already looking for something and a full screen of picture is in the
+          way. */}
+      {leadWork && (
+        <section className="relative isolate flex min-h-[78vh] items-end overflow-hidden bg-[#4a1728]">
+          <WorkPlate work={leadWork} index={0} className="absolute inset-0 h-full w-full object-cover" />
+          {/* Burgundy rather than black: the scrim has to belong to the journal
+              even when it is doing the work of a photograph's shadow. */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#2b0d18]/90 via-[#2b0d18]/60 to-[#2b0d18]/30 sm:from-[#2b0d18]/80 sm:via-[#2b0d18]/30 sm:to-[#2b0d18]/10" />
+          {/* A second, sideways wash: the type sits bottom-left, and a bright
+              photograph will swallow small caps there without it. */}
+          <div className="absolute inset-0 hidden bg-gradient-to-r from-[#2b0d18]/75 via-[#2b0d18]/15 to-transparent sm:block" />
+
+          {/* The journal frames its hero image with corner brackets; the same
+              mark here ties the vitrine to the front page. */}
+          <span aria-hidden="true" className="pointer-events-none absolute left-6 top-6 h-10 w-10 border-l border-t border-[#f5f0eb]/45 sm:left-10 sm:top-10" />
+          <span aria-hidden="true" className="pointer-events-none absolute right-6 top-6 h-10 w-10 border-r border-t border-[#f5f0eb]/45 sm:right-10 sm:top-10" />
+          <span aria-hidden="true" className="pointer-events-none absolute bottom-6 left-6 h-10 w-10 border-b border-l border-[#f5f0eb]/45 sm:bottom-10 sm:left-10" />
+          <span aria-hidden="true" className="pointer-events-none absolute bottom-6 right-6 h-10 w-10 border-b border-r border-[#f5f0eb]/45 sm:bottom-10 sm:right-10" />
+
+          <div className="relative z-10 w-full px-6 pb-12 sm:px-12 lg:px-16 lg:pb-16">
+            <div className="mx-auto max-w-[1600px]">
+              <p className="font-sans text-[10px] uppercase tracking-[0.32em] text-[#f5f0eb]/70">
+                EPRIS Journal — open call
+              </p>
+              <h1 className="mt-4 font-display text-[3.2rem] leading-[0.95] text-[#f5f0eb] sm:text-[5rem] lg:text-[6.5rem]">
+                Showcase
+              </h1>
+              <p className="mt-5 max-w-xl font-sans text-[11px] uppercase leading-relaxed tracking-[0.2em] text-[#f5f0eb]/75">
+                Set design &amp; conceptual art, reviewed by the editorial
+              </p>
+
+              <button
+                type="button"
+                onClick={() => setSelected(leadWork)}
+                className="group mt-10 block max-w-2xl border-t border-[#f5f0eb]/30 pt-4 text-left"
+              >
+                <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/60">
+                  {leadWork.discipline || 'Work'}{leadWork.year ? ` · ${leadWork.year}` : ''}
+                </p>
+                <p className="mt-2 font-display text-2xl leading-tight text-[#f5f0eb] underline-offset-[6px] group-hover:underline sm:text-3xl">
+                  {leadWork.title}
+                </p>
+                <p className="mt-2 font-sans text-[9px] uppercase tracking-[0.16em] text-[#f5f0eb]/60">
+                  {[leadWork.author, leadWork.venue, leadWork.city].filter(Boolean).join(' · ')}
+                </p>
+              </button>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Catalogue head, in the shop's order: crumb, title with a count, then
           the segment row — no editorial hero in front of the goods. */}
-      <section className="px-4 pt-6 sm:px-8 lg:px-12 lg:pt-9">
+      <section className="px-4 pt-10 sm:px-8 lg:px-12 lg:pt-14">
         <div className="mx-auto max-w-[1600px]">
           <nav aria-label="Breadcrumb" className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#4a1728]/55">
             <a href="/" className="hover:text-[#4a1728]">Journal</a> / <span className="text-[#4a1728]">Showcase</span>
@@ -356,8 +409,8 @@ export function ShowcasePage() {
       </section>
 
       <section className="px-4 py-8 sm:px-8 lg:px-12 lg:py-12">
-        <div className="mx-auto grid max-w-[1600px] gap-8 lg:grid-cols-[210px_minmax(0,1fr)] lg:gap-10">
-          <aside className="lg:sticky lg:top-32 lg:self-start">
+        <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-8 lg:grid-cols-[210px_minmax(0,1fr)] lg:gap-10">
+          <aside className="min-w-0 lg:sticky lg:top-32 lg:self-start">
             <button type="button" onClick={() => setFiltersOpen((value) => !value)} className="flex min-h-12 w-full items-center justify-between rounded-xl border border-[#4a1728]/15 bg-[#fdfaf6] px-4 text-left text-sm lg:hidden">
               <span className="flex items-center gap-2"><SlidersHorizontal size={16} /> Filters {activeFilterCount ? `(${activeFilterCount})` : ''}</span>
               <ChevronDown size={16} className={filtersOpen ? 'rotate-180' : ''} />
@@ -429,7 +482,7 @@ export function ShowcasePage() {
             </div>
           </aside>
 
-          <div>
+          <div className="min-w-0">
             {authorList.length > 1 && (
               <div className="mb-5 flex gap-2 overflow-x-auto pb-1">
                 {authorList.slice(0, 24).map((entry) => {
@@ -487,35 +540,6 @@ export function ShowcasePage() {
               </div>
             ) : (
               <>
-              {leadWork && (
-                <button
-                  type="button"
-                  onClick={() => setSelected(leadWork)}
-                  aria-label={`${leadWork.title} — ${leadWork.author}`}
-                  className="group mt-8 block w-full text-left"
-                >
-                  <div className="relative aspect-[16/9] overflow-hidden bg-[#e9dece]">
-                    <WorkPlate work={leadWork} index={0} className="absolute inset-0 h-full w-full" />
-                    <span className="pointer-events-none absolute inset-0 transition-colors duration-300 group-hover:bg-[#4a1728]/8" />
-                  </div>
-                  <div className="mt-4 flex flex-col gap-2 border-t border-[#4a1728]/15 pt-4 sm:flex-row sm:items-end sm:justify-between">
-                    <div>
-                      <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#4a1728]/40">
-                        {leadWork.discipline || 'Work'}{leadWork.year ? ` · ${leadWork.year}` : ''}
-                      </p>
-                      <h2 className="mt-2 max-w-3xl font-display text-[1.9rem] leading-[1.12] text-[#4a1728] decoration-[#4a1728]/30 underline-offset-[6px] group-hover:underline sm:text-[2.4rem]">
-                        {leadWork.title}
-                      </h2>
-                    </div>
-                    <div className="sm:text-right">
-                      <p className="text-[15px] text-[#4a1728]/80">{leadWork.author}</p>
-                      <p className="mt-1 font-sans text-[9px] uppercase tracking-[0.16em] text-[#4a1728]/40">
-                        {[leadWork.venue, leadWork.city, leadWork.country].filter(Boolean).join(' · ')}
-                      </p>
-                    </div>
-                  </div>
-                </button>
-              )}
               <div className="mt-10 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
                 {gridWorks.map((work, index) => (
                   <button key={work.id} type="button" onClick={() => setSelected(work)} aria-label={`${work.title} — ${work.author}`} className="group flex flex-col text-left">
