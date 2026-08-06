@@ -40,6 +40,7 @@ export function SectionView({ scene, selectedId }: Props) {
             fill={isSelected ? `${PAPER}30` : `${PAPER}18`}
             stroke={isSelected ? PAPER : `${PAPER}70`}
             strokeWidth={isSelected ? 1.5 : 1}
+            strokeDasharray={object.generatedBy ? '4 3' : undefined}
           />
         );
       })}

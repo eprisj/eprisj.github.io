@@ -97,8 +97,11 @@ export function PlanView({ scene, selectedId, onSelect, onDrag }: Props) {
               fill={isSelected ? `${PAPER}30` : `${PAPER}18`}
               stroke={isSelected ? PAPER : `${PAPER}70`}
               strokeWidth={isSelected ? 1.5 : 1}
-              style={{ cursor: 'grab' }}
-              onPointerDown={(e) => startDrag(object, e)}
+              /* Пунктир — то, что поставил приём, а не вы: пока приём не
+                 «запечён», эти объекты исчезнут вместе с ним. */
+              strokeDasharray={object.generatedBy ? '4 3' : undefined}
+              style={{ cursor: object.generatedBy ? 'default' : 'grab' }}
+              onPointerDown={(e) => (object.generatedBy ? undefined : startDrag(object, e))}
             />
             <text
               x={PAD + toPx(object.x + object.w / 2)}

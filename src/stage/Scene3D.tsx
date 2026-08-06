@@ -1,6 +1,6 @@
 import { Suspense, useMemo } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { BoxGeometry } from 'three';
+import { BoxGeometry, DoubleSide, FrontSide } from 'three';
 import type { Scene } from './sceneModel';
 
 // Собственный чанк — three и fiber тяжелее ~150 КБ gzip, и на главную журнала
@@ -38,7 +38,16 @@ function Objects({ scene }: { scene: Scene }) {
           rotation={[0, (-object.rotation * Math.PI) / 180, 0]}
         >
           <boxGeometry args={[object.w, object.h, object.d]} />
-          <meshStandardMaterial color={PAPER} opacity={0.85} transparent />
+          {/* Ткань светится на просвет и не даёт тени — иначе приём «cloth as
+              wall» ничем не отличался бы от обычной стены. */}
+          <meshStandardMaterial
+            color={PAPER}
+            opacity={object.opacity ?? 0.85}
+            transparent
+            emissive={object.soft ? PAPER : 0x000000}
+            emissiveIntensity={object.soft ? 0.35 : 0}
+            side={object.soft ? DoubleSide : FrontSide}
+          />
         </mesh>
       ))}
     </>
