@@ -82,6 +82,54 @@ function WorkPlate({ work, index, className = '' }: { work: Work; index: number;
   );
 }
 
+/* The breakdown a set designer actually wants: what the thing is made of,
+   where it stood, when, whose it is, and what it does — one line each, in the
+   opening spread's register.
+
+   Every row is a field a human filled in from the source article. A row with
+   nothing behind it says so rather than guessing: an empty "material" is
+   information too, and inventing one would put words in the author's mouth. */
+function Decomposition({ work }: { work: Work }) {
+  const rows = [
+    { key: 'material', value: work.medium },
+    { key: 'place', value: [work.venue, work.city, work.country].filter(Boolean).join(' · ') },
+    { key: 'moment', value: [work.year, work.discipline].filter(Boolean).join(' · ') },
+    { key: 'authorship', value: [work.author, work.credits].filter(Boolean).join(' — ') },
+    { key: 'reading', value: work.statement },
+  ];
+
+  return (
+    <section className="relative isolate mt-9 bg-[#1a0b10] px-5 py-8 text-[#f5f0eb] sm:px-8 sm:py-10">
+      <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-[6%] hidden w-px bg-[#f5f0eb]/12 sm:block" />
+      <h3 className="font-sans text-[9vw] font-bold lowercase leading-[0.85] tracking-[-0.04em] sm:text-[3.4rem]">decomposition</h3>
+
+      <dl className="mt-7 divide-y divide-[#f5f0eb]/12 border-t border-[#f5f0eb]/12">
+        {rows.map((row, index) => (
+          <div key={row.key} className="grid grid-cols-[2.2rem_1fr] gap-x-4 py-4 sm:grid-cols-[3rem_7rem_1fr] sm:gap-x-6">
+            <span className="font-sans text-[9px] tabular-nums tracking-[0.16em] text-[#f5f0eb]/35">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <dt className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/45 max-sm:col-start-2">
+              {row.key}
+            </dt>
+            <dd className={`max-sm:col-start-2 max-sm:mt-1.5 font-sans leading-snug ${row.value ? 'text-[#f5f0eb]' : 'text-[#f5f0eb]/30'} ${row.key === 'reading' ? 'text-[15px] leading-relaxed sm:text-[17px]' : 'text-[15px] sm:text-[16px]'}`}>
+              {row.value || 'not stated in the source'}
+            </dd>
+          </div>
+        ))}
+      </dl>
+
+      {!!work.tags?.length && (
+        <div className="mt-7 flex flex-wrap gap-2 border-t border-[#f5f0eb]/12 pt-6">
+          {work.tags.map((tag) => (
+            <span key={tag} className="border border-[#f5f0eb]/20 px-3 py-1.5 font-sans text-[8px] uppercase tracking-[0.12em] text-[#f5f0eb]/70">{tag}</span>
+          ))}
+        </div>
+      )}
+    </section>
+  );
+}
+
 function WorkDetail({ work, onClose }: { work: Work; onClose: () => void }) {
   const [active, setActive] = useState(0);
   const handle = normalizeInstagram(work.authorInstagram);
@@ -113,7 +161,7 @@ function WorkDetail({ work, onClose }: { work: Work; onClose: () => void }) {
 
         <div className="mt-7 flex flex-wrap items-start justify-between gap-5">
           <div className="min-w-0">
-            <h2 className="font-display text-3xl leading-[1.05] text-[#4a1728] sm:text-5xl">{work.title}</h2>
+            <h2 className="font-sans text-[2rem] font-bold leading-[0.95] tracking-[-0.03em] text-[#1a0b10] sm:text-[2.9rem]">{work.title}</h2>
             <p className="mt-3 font-display text-xl italic text-[#b8956e]">{work.author}{work.year ? `, ${work.year}` : ''}</p>
             <p className="mt-4 border-t border-[#4a1728]/15 pt-3 font-sans text-[10px] uppercase tracking-[0.18em] text-[#4a1728]/60">{[work.venue, work.city, work.country].filter(Boolean).join(' · ') || 'Location not stated'}</p>
           </div>
@@ -122,20 +170,7 @@ function WorkDetail({ work, onClose }: { work: Work; onClose: () => void }) {
           )}
         </div>
 
-        <div className="mt-8 grid gap-px overflow-hidden border-y border-[#4a1728]/15 bg-[#4a1728]/12 sm:grid-cols-3">
-          <div className="bg-[#fdfaf6] p-4"><p className="font-sans text-[9px] uppercase tracking-[0.18em] text-[#4a1728]/55">Discipline</p><p className="mt-2 font-display text-lg">{work.discipline || '—'}</p></div>
-          <div className="bg-[#fdfaf6] p-4"><p className="font-sans text-[9px] uppercase tracking-[0.18em] text-[#4a1728]/55">Medium</p><p className="mt-2 font-display text-lg">{work.medium || '—'}</p></div>
-          <div className="bg-[#fdfaf6] p-4"><p className="font-sans text-[9px] uppercase tracking-[0.18em] text-[#4a1728]/55">Added</p><p className="mt-2 font-display text-lg">{work.addedAt ? new Date(work.addedAt).toLocaleDateString('en-GB') : '—'}</p></div>
-        </div>
-
-        {work.statement && <section className="mt-8">
-          <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#b8956e]">Statement</p>
-          <p className="mt-3 font-display text-xl leading-relaxed text-[#4a1728]/85 sm:text-2xl">{work.statement}</p>
-        </section>}
-
-        {!!work.tags?.length && <div className="mt-7 flex flex-wrap gap-2">
-          {work.tags.map((tag) => <span key={tag} className="border border-[#4a1728]/15 bg-[#ece2d5] px-3 py-1.5 font-sans text-[8px] uppercase tracking-[0.12em] text-[#4a1728]/80">{tag}</span>)}
-        </div>}
+        <Decomposition work={work} />
 
         <div className="mt-9 flex flex-col gap-3 sm:flex-row">
           {handle && <a href={`https://www.instagram.com/${encodeURIComponent(handle)}/`} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#4a1728] px-6 font-sans text-[10px] uppercase tracking-[0.18em] text-white transition-transform hover:-translate-y-0.5"><Instagram size={16} /> @{handle}</a>}
