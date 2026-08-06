@@ -13,6 +13,7 @@ const DesignPage = lazy(() => import('./design/DesignPage').then((m) => ({ defau
 const CollaborationPage = lazy(() => import('./pages/CollaborationPage').then((m) => ({ default: m.CollaborationPage })));
 const ShowcasePage = lazy(() => import('./showcase/ShowcasePage').then((m) => ({ default: m.ShowcasePage })));
 const BureauPage = lazy(() => import('./showcase/BureauPage').then((m) => ({ default: m.BureauPage })));
+const StagePage = lazy(() => import('./stage/StagePage').then((m) => ({ default: m.StagePage })));
 import {
   Article,
   Author,
@@ -2989,6 +2990,9 @@ export default function App() {
      404.html, тож посилання на конкретний розбір працює напряму. */
   if (/^\/bureau(?:\/[^/]+)?\/?$/.test(window.location.pathname)) {
     return <Suspense fallback={<div className="min-h-screen bg-[#1a0b10]" />}><BureauPage /></Suspense>;
+  }
+  if (/^\/stage\/?$/.test(window.location.pathname)) {
+    return <Suspense fallback={<div className="min-h-screen bg-[#1a0b10]" />}><StagePage /></Suspense>;
   }
   if (/^\/(?:showcase|works|set)\/?$/.test(window.location.pathname)) {
     if (!/^\/showcase\/?$/.test(window.location.pathname)) {
