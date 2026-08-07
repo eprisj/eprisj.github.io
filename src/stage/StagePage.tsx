@@ -1,6 +1,8 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
-import { ArrowLeft, ArrowRight, ArrowUpRight, Check, FileDown, Link2, Plus, Trash2 } from 'lucide-react';
-import { sceneFromLocation, sceneShareUrl } from './sceneUrl';
+import { ArrowLeft, ArrowRight, ArrowUpRight, Check, Copy, FileDown, Link2, Plus, Redo2, Trash2, Undo2 } from 'lucide-react';
+import { decodeScene, encodeScene, sceneFromLocation, sceneShareUrl } from './sceneUrl';
+import { useSceneHistory } from './useSceneHistory';
+import { snapObject, toStep } from './snapping';
 import { exportSpec } from './exportSpec';
 import { HeroPlan } from './HeroPlan';
 import { demoScene } from './demoScene';
@@ -13,11 +15,26 @@ import {
   clampToRoom,
   createObject,
   emptyScene,
+  newId,
   removeObject,
   updateObject,
   type ObjectKind,
   type Scene,
 } from './sceneModel';
+
+/* Работа переживает перезагрузку. Хранится тем же компактным видом, что и в
+   ссылке, поэтому формат один и чинить его надо в одном месте. */
+const SAVE_KEY = 'epris-stage-scene';
+
+function loadSaved(): Scene | null {
+  try {
+    const raw = window.localStorage.getItem(SAVE_KEY);
+    return raw ? decodeScene(raw) : null;
+  } catch {
+    // Приватный режим запрещает хранилище — это не повод не открыть редактор.
+    return null;
+  }
+}
 
 // three/fiber — отдельный чанк, грузится только когда открыли вкладку «Volume».
 const Scene3D = lazy(() => import('./Scene3D').then((m) => ({ default: m.Scene3D })));
@@ -66,13 +83,15 @@ function NumberField({ label, value, step = 0.1, onChange }: { label: string; va
 }
 
 export function StagePage() {
-  // Сцена из адреса важнее пустой коробки: по ссылке человек пришёл смотреть
-  // именно её, и мелькнувший перед этим пустой пол читался бы как поломка.
-  const [scene, setScene] = useState<Scene>(() => sceneFromLocation() || emptyScene());
-  /* Вход отмечается ОТДЕЛЬНЫМ признаком, а не пустотой сцены: «начать с
-     пустого» — тоже вход, и заглавная после него висеть не должна. Пришедший
-     по ссылке пропускает её сразу. */
-  const [entered, setEntered] = useState(() => !!sceneFromLocation());
+  /* Порядок источников: адрес важнее сохранённого, сохранённое важнее пустого.
+     По ссылке пришли смотреть КОНКРЕТНУЮ сцену, и подсовывать вместо неё вчерашнюю
+     работу нельзя; но вернувшись на голый /stage, работу терять тоже нельзя. */
+  const restored = useMemo(() => sceneFromLocation() || loadSaved(), []);
+  const history = useSceneHistory(restored || emptyScene());
+  const { scene } = history;
+  const setScene = history.commit;
+  const [entered, setEntered] = useState(() => !!restored);
+  const [guide, setGuide] = useState<{ x: number | null; z: number | null }>({ x: null, z: null });
   const [heroScene] = useState(demoScene);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [volumeOpen, setVolumeOpen] = useState(false);
@@ -94,6 +113,15 @@ export function StagePage() {
       .catch(() => setCases([]));
     return () => controller.abort();
   }, []);
+
+  useEffect(() => {
+    if (!entered) return;
+    try {
+      window.localStorage.setItem(SAVE_KEY, encodeScene(scene));
+    } catch {
+      /* переполнено или запрещено — молча, терять редактор из-за этого нельзя */
+    }
+  }, [scene, entered]);
 
   const activeMove = activeSlug ? moveBySlug(activeSlug) : undefined;
 
@@ -157,14 +185,72 @@ export function StagePage() {
     setSelectedId(object.id);
   }
 
-  function handleDrag(id: string, x: number, z: number) {
-    setScene((prev) => {
+  function handleDrag(id: string, x: number, z: number, free: boolean) {
+    // `set`, а не `commit`: запись в историю уже сделана на pointerdown, иначе
+    // одно перетаскивание оставило бы десятки шагов отмены.
+    history.set((prev) => {
       const object = prev.objects.find((o) => o.id === id);
       if (!object) return prev;
-      const moved = clampToRoom(prev, { ...object, x, z });
+      const snapped = snapObject(prev, object, x, z, free);
+      const moved = clampToRoom(prev, { ...object, x: snapped.x, z: snapped.z });
+      setGuide({ x: snapped.guideX, z: snapped.guideZ });
       return updateObject(prev, id, { x: moved.x, z: moved.z });
     });
   }
+
+  function handleDuplicate(id: string) {
+    const object = scene.objects.find((o) => o.id === id);
+    if (!object) return;
+    // Копия смещается на полшага, иначе она ложится точно под оригинал и
+    // выглядит как «ничего не произошло».
+    const copy = { ...object, id: newId('obj'), x: toStep(object.x + 0.5), z: toStep(object.z + 0.5) };
+    setScene((prev) => ({ ...prev, objects: [...prev.objects, clampToRoom(prev, copy)] }));
+    setSelectedId(copy.id);
+  }
+
+  function nudge(dx: number, dz: number) {
+    if (!selectedId) return;
+    setScene((prev) => {
+      const object = prev.objects.find((o) => o.id === selectedId);
+      if (!object) return prev;
+      const moved = clampToRoom(prev, { ...object, x: toStep(object.x + dx), z: toStep(object.z + dz) });
+      return updateObject(prev, selectedId, { x: moved.x, z: moved.z });
+    });
+  }
+
+  /* Клавиатура — то, чем практик пользуется не глядя. Поля ввода исключены:
+     Delete внутри числа должен стирать цифру, а не элемент сцены. */
+  useEffect(() => {
+    function onKey(event: KeyboardEvent) {
+      const target = event.target as HTMLElement | null;
+      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) return;
+
+      const mod = event.metaKey || event.ctrlKey;
+      if (mod && event.key.toLowerCase() === 'z') {
+        event.preventDefault();
+        if (event.shiftKey) history.redo();
+        else history.undo();
+        return;
+      }
+      if (mod && event.key.toLowerCase() === 'd') {
+        event.preventDefault();
+        if (selectedId) handleDuplicate(selectedId);
+        return;
+      }
+      if ((event.key === 'Backspace' || event.key === 'Delete') && selectedId) {
+        event.preventDefault();
+        handleRemove(selectedId);
+        return;
+      }
+      const step = event.shiftKey ? 0.5 : 0.05;
+      if (event.key === 'ArrowLeft') { event.preventDefault(); nudge(-step, 0); }
+      else if (event.key === 'ArrowRight') { event.preventDefault(); nudge(step, 0); }
+      else if (event.key === 'ArrowUp') { event.preventDefault(); nudge(0, -step); }
+      else if (event.key === 'ArrowDown') { event.preventDefault(); nudge(0, step); }
+    }
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  });
 
   function handleRemove(id: string) {
     setScene((prev) => removeObject(prev, id));
@@ -242,6 +328,24 @@ export function StagePage() {
           <div className="flex shrink-0 flex-wrap gap-2">
             <button
               type="button"
+              onClick={history.undo}
+              disabled={!history.canUndo}
+              title="Undo (⌘Z)"
+              className="inline-flex min-h-9 items-center gap-1.5 border border-[#f5f0eb]/20 px-3 font-sans text-[10px] uppercase tracking-[0.12em] text-[#f5f0eb]/75 hover:border-[#f5f0eb]/60 hover:text-[#f5f0eb] disabled:opacity-25 disabled:hover:border-[#f5f0eb]/20"
+            >
+              <Undo2 size={12} /> Undo
+            </button>
+            <button
+              type="button"
+              onClick={history.redo}
+              disabled={!history.canRedo}
+              title="Redo (⇧⌘Z)"
+              className="inline-flex min-h-9 items-center gap-1.5 border border-[#f5f0eb]/20 px-3 font-sans text-[10px] uppercase tracking-[0.12em] text-[#f5f0eb]/75 hover:border-[#f5f0eb]/60 hover:text-[#f5f0eb] disabled:opacity-25 disabled:hover:border-[#f5f0eb]/20"
+            >
+              <Redo2 size={12} /> Redo
+            </button>
+            <button
+              type="button"
               onClick={handleShare}
               className="inline-flex min-h-9 items-center gap-1.5 border border-[#f5f0eb]/20 px-3 font-sans text-[10px] uppercase tracking-[0.12em] text-[#f5f0eb]/75 hover:border-[#f5f0eb]/60 hover:text-[#f5f0eb]"
             >
@@ -266,7 +370,16 @@ export function StagePage() {
             <div>
               <p className="mb-2 font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/45">Plan</p>
               <div className="border border-[#f5f0eb]/12">
-                <PlanView scene={displayed} selectedId={selectedId} onSelect={setSelectedId} onDrag={handleDrag} />
+                <PlanView
+                  scene={displayed}
+                  selectedId={selectedId}
+                  onSelect={setSelectedId}
+                  onDrag={handleDrag}
+                  onDragStart={history.snapshot}
+                  onDragEnd={() => setGuide({ x: null, z: null })}
+                  guideX={guide.x}
+                  guideZ={guide.z}
+                />
               </div>
             </div>
             <div>
@@ -346,13 +459,24 @@ export function StagePage() {
               <div className="space-y-3 border-t border-[#f5f0eb]/12 pt-6">
                 <div className="flex items-center justify-between">
                   <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/45">{selected.label}</p>
-                  <button
-                    type="button"
-                    onClick={() => handleRemove(selected.id)}
-                    className="inline-flex min-h-8 items-center gap-1.5 font-sans text-[9px] uppercase tracking-[0.12em] text-[#f5f0eb]/45 hover:text-[#f5f0eb]"
-                  >
-                    <Trash2 size={12} /> Remove
-                  </button>
+                  <span className="flex items-center gap-4">
+                    <button
+                      type="button"
+                      onClick={() => handleDuplicate(selected.id)}
+                      title="Duplicate (⌘D)"
+                      className="inline-flex min-h-8 items-center gap-1.5 font-sans text-[9px] uppercase tracking-[0.12em] text-[#f5f0eb]/45 hover:text-[#f5f0eb]"
+                    >
+                      <Copy size={12} /> Copy
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleRemove(selected.id)}
+                      title="Delete (⌫)"
+                      className="inline-flex min-h-8 items-center gap-1.5 font-sans text-[9px] uppercase tracking-[0.12em] text-[#f5f0eb]/45 hover:text-[#f5f0eb]"
+                    >
+                      <Trash2 size={12} /> Remove
+                    </button>
+                  </span>
                 </div>
                 <NumberField label="X" value={selected.x} onChange={(v) => setScene((p) => updateObject(p, selected.id, { x: v }))} />
                 <NumberField label="Z" value={selected.z} onChange={(v) => setScene((p) => updateObject(p, selected.id, { z: v }))} />

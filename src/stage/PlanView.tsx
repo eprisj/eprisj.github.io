@@ -17,7 +17,14 @@ interface Props {
   scene: Scene;
   selectedId: string | null;
   onSelect: (id: string | null) => void;
-  onDrag: (id: string, x: number, z: number) => void;
+  /** `free` — зажат Alt: тянуть мимо привязок. */
+  onDrag: (id: string, x: number, z: number, free: boolean) => void;
+  /** Начало и конец жеста: по ним пишется одна запись в историю на всё
+   *  перетаскивание, а не на каждый его кадр. */
+  onDragStart: () => void;
+  onDragEnd: () => void;
+  guideX: number | null;
+  guideZ: number | null;
 }
 
 /** Подпись пролёта: целые метры без хвоста, дробные — с одним знаком. */
@@ -100,7 +107,7 @@ function DimensionChain({
   );
 }
 
-export function PlanView({ scene, selectedId, onSelect, onDrag }: Props) {
+export function PlanView({ scene, selectedId, onSelect, onDrag, onDragStart, onDragEnd, guideX, guideZ }: Props) {
   const width = scene.room.w * PX_PER_M + PAD_L + PAD_R;
   const height = scene.room.d * PX_PER_M + PAD_T + PAD_B;
   const px = (m: number) => PAD_L + m * PX_PER_M;
@@ -111,6 +118,7 @@ export function PlanView({ scene, selectedId, onSelect, onDrag }: Props) {
     onSelect(object.id);
     const svg = e.currentTarget.ownerSVGElement;
     if (!svg) return;
+    onDragStart();
     const point = svg.createSVGPoint();
     const move = (ev: PointerEvent) => {
       point.x = ev.clientX;
@@ -118,11 +126,17 @@ export function PlanView({ scene, selectedId, onSelect, onDrag }: Props) {
       const ctm = svg.getScreenCTM();
       if (!ctm) return;
       const local = point.matrixTransform(ctm.inverse());
-      onDrag(object.id, (local.x - PAD_L) / PX_PER_M - object.w / 2, (local.y - PAD_T) / PX_PER_M - object.d / 2);
+      onDrag(
+        object.id,
+        (local.x - PAD_L) / PX_PER_M - object.w / 2,
+        (local.y - PAD_T) / PX_PER_M - object.d / 2,
+        ev.altKey,
+      );
     };
     const up = () => {
       window.removeEventListener('pointermove', move);
       window.removeEventListener('pointerup', up);
+      onDragEnd();
     };
     window.addEventListener('pointermove', move);
     window.addEventListener('pointerup', up);
@@ -237,6 +251,15 @@ export function PlanView({ scene, selectedId, onSelect, onDrag }: Props) {
 
       <DimensionChain from={px(0)} to={px(scene.room.w)} offset={py(scene.room.d) + 22} total={scene.room.w} vertical={false} />
       <DimensionChain from={py(0)} to={py(scene.room.d)} offset={px(0) - 22} total={scene.room.d} vertical />
+
+      {/* Линии привязки: показывают, с чем именно совпала кромка. Живут только
+          во время жеста. */}
+      {guideX !== null && (
+        <line x1={px(guideX)} y1={py(0)} x2={px(guideX)} y2={py(scene.room.d)} stroke={GOLD} strokeOpacity={0.85} strokeWidth={WEIGHT.hairline} />
+      )}
+      {guideZ !== null && (
+        <line x1={px(0)} y1={py(guideZ)} x2={px(scene.room.w)} y2={py(guideZ)} stroke={GOLD} strokeOpacity={0.85} strokeWidth={WEIGHT.hairline} />
+      )}
 
       {/* Масштабная линейка: без неё чертёж не читается вне экрана. */}
       <g>
