@@ -83,9 +83,6 @@ function workImage(work?: Work): string {
 
 function BureauProductionIntro({ works }: { works: Work[] }) {
   const hero = works[0];
-  const second = works[2] || works[1] || hero;
-  const third = works[4] || works[3] || second;
-  const heroRefs = [hero, second, third].filter(Boolean);
 
   return (
     <section className="relative overflow-hidden border-b border-[#f5f0eb]/12 bg-[#14090d]">
@@ -132,16 +129,11 @@ function BureauProductionIntro({ works }: { works: Work[] }) {
                 <span className="font-sans text-[10px] uppercase tracking-normal text-[#1a0b10]/52">{hero?.discipline || 'set'} / {hero?.city || hero?.country || 'site'}</span>
               </figcaption>
             </figure>
-            <div className="mt-3 grid gap-3 sm:grid-cols-3">
-              {heroRefs.map((work, index) => (
-                <div key={work.id} className="border border-[#1a0b10]/12 bg-[#fffaf2] p-3">
-                  <p className="font-sans text-[9px] uppercase tracking-normal text-[#7b613a]">0{index + 1}</p>
-                  <p className="mt-8 font-display text-[1.9rem] lowercase leading-[0.9] text-[#1a0b10]">
-                    {index === 0 ? 'arrival image' : index === 1 ? 'object scale' : 'material light'}
-                  </p>
-                </div>
-              ))}
-            </div>
+            {/* Здесь стояли три плитки «arrival image / object scale /
+                material light». Подписи были захардкожены по индексу, а works[0],
+                works[2] и works[4] брались из ленты просто по порядку — то есть
+                надпись «object scale» не имела отношения к работе, под номером
+                которой стояла. Три пустые коробки с выдуманными ярлыками. */}
           </div>
         </div>
       </div>
