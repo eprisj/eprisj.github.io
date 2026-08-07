@@ -40,6 +40,10 @@ export interface Work {
   sourceUrl?: string;
   score?: number;
   addedAt?: string;
+  /* Set by the editorial, not derived: this work's first frame can carry the
+     opening screen. Nothing here can tell whether a photograph survives being
+     stretched full-bleed, so the vitrine is told rather than guessing. */
+  featured?: boolean;
 }
 
 export interface WorkDraft {
