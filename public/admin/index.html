@@ -726,13 +726,23 @@
             <div class="card">
               <div class="monitor-head">
                 <div>
-                  <h2 class="card-title" style="margin-bottom:4px">Заявки в витрину</h2>
-                  <p class="card-desc">Работы, присланные через «Submit work», и всё, что нашёл сборщик. Публикация выводит работу на eprisjournal.com/showcase</p>
+                  <h2 class="card-title" style="margin-bottom:4px">Витрина и бюро</h2>
+                  <p class="card-desc">Модерация работ из «Submit work» и прием заявок в EPRIS Bureau.</p>
                 </div>
                 <button id="showcaseReloadBtn" class="btn btn-primary" type="button">Обновить</button>
               </div>
-              <p id="showcaseStatus" class="card-desc" style="margin-top:12px"></p>
-              <div id="showcaseQueue" style="margin-top:16px"></div>
+              <div class="monitor-grid" style="margin-top:16px">
+                <div>
+                  <h3 class="card-title" style="font-size:16px;margin-bottom:4px">Работы в витрину</h3>
+                  <p id="showcaseStatus" class="card-desc"></p>
+                  <div id="showcaseQueue" style="margin-top:12px"></div>
+                </div>
+                <div>
+                  <h3 class="card-title" style="font-size:16px;margin-bottom:4px">Заявки бюро</h3>
+                  <p id="showcaseEnquiryStatus" class="card-desc"></p>
+                  <div id="showcaseEnquiries" style="margin-top:12px"></div>
+                </div>
+              </div>
             </div>
           </section>
 
