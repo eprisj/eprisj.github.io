@@ -86,18 +86,19 @@ function BureauProductionIntro({ works }: { works: Work[] }) {
   const hero = works[0];
   const second = works[2] || works[1] || hero;
   const third = works[4] || works[3] || second;
+  const heroRefs = [hero, second, third].filter(Boolean);
 
   return (
     <section className="relative overflow-hidden border-b border-[#f5f0eb]/12 bg-[#14090d]">
       <div className="absolute inset-0 opacity-[0.11]" style={{ backgroundImage: 'linear-gradient(90deg,#f5f0eb 1px,transparent 1px),linear-gradient(#f5f0eb 1px,transparent 1px)', backgroundSize: '8.333vw 88px' }} />
       <div className="absolute inset-0 bg-[linear-gradient(108deg,#14090d_0%,#14090d_49%,#2d1217_72%,#4a1728_100%)]" />
-      <div className="absolute bottom-0 right-[6%] top-0 w-[24%] skew-x-[-13deg] border-x border-[#d7b46a]/18 bg-[#d7b46a]/10" />
-      <div className="absolute bottom-[8%] right-[12%] h-px w-[42%] bg-[#d7b46a]/50" />
-      <div className="mx-auto grid min-h-[86dvh] max-w-[1700px] lg:grid-cols-[minmax(0,0.78fr)_minmax(480px,0.62fr)]">
-        <div className="relative z-10 flex flex-col justify-between px-5 py-12 sm:px-8 lg:px-12 xl:px-16">
+      <div className="absolute bottom-0 right-[6%] top-0 hidden w-[24%] skew-x-[-13deg] border-x border-[#d7b46a]/18 bg-[#d7b46a]/10 lg:block" />
+      <div className="absolute bottom-[8%] right-[12%] hidden h-px w-[42%] bg-[#d7b46a]/50 lg:block" />
+      <div className="mx-auto grid max-w-[1700px] lg:min-h-[86dvh] lg:grid-cols-[minmax(0,0.78fr)_minmax(470px,0.62fr)]">
+        <div className="relative z-10 flex flex-col justify-between px-5 py-12 sm:px-8 sm:py-14 lg:px-12 xl:px-16">
           <div>
             <p className="font-sans text-[10px] uppercase tracking-normal text-[#d7b46a]">EPRIS Bureau / spatial image studio</p>
-            <h1 className="mt-5 max-w-[9ch] font-display text-[clamp(4.4rem,12vw,11rem)] lowercase leading-[0.74] tracking-normal text-[#f5f0eb]">
+            <h1 className="mt-5 max-w-[9ch] font-display text-[clamp(3.8rem,11vw,11rem)] lowercase leading-[0.78] tracking-normal text-[#f5f0eb] lg:leading-[0.74]">
               set design for things that need a scene
             </h1>
           </div>
@@ -116,30 +117,23 @@ function BureauProductionIntro({ works }: { works: Work[] }) {
           </div>
         </div>
 
-        <div className="relative min-h-[640px] px-5 py-10 sm:px-8 lg:min-h-[86dvh] lg:px-12">
-          <div className="absolute left-[12%] right-[6%] top-[10%] h-[76%] border border-[#f5f0eb]/14 bg-[#f5f0eb]/[0.035] shadow-[0_42px_120px_rgba(0,0,0,.38)] backdrop-blur-[1px]" />
-          <div className="absolute left-[8%] top-[8%] h-[76%] w-[19%] border-l border-[#d7b46a]/45" />
-          <div className="absolute left-[18%] top-[18%] h-[56%] w-[28%] bg-[#f5f0eb] p-3 shadow-[26px_38px_90px_rgba(0,0,0,.44)] sm:p-4">
-            {workImage(hero) ? (
-              <img src={workImage(hero)} alt={hero?.title || ''} loading="lazy" className="h-full w-full object-cover saturate-[.82]" />
-            ) : (
-              <>
-                <div className="absolute inset-4 bg-[#c7b498]" />
-                <div className="absolute bottom-4 left-4 right-4 h-[36%] bg-[#1a0b10]" />
-              </>
-            )}
-          </div>
-          <div className="absolute left-[42%] top-[27%] h-[44%] w-[34%] bg-[#4a1728] p-3 shadow-[34px_46px_110px_rgba(0,0,0,.5)] sm:p-4">
-            {workImage(second) ? <img src={workImage(second)} alt={second?.title || ''} loading="lazy" className="h-full w-full object-cover opacity-[.78] mix-blend-luminosity" /> : null}
-            <div className="absolute inset-5 border border-[#f5f0eb]/18" />
-            <div className="absolute bottom-5 left-5 h-[42%] w-[44%] bg-[#d7b46a]/82 mix-blend-multiply" />
-          </div>
-          <div className="absolute right-[15%] top-[18%] h-[28%] w-[18%] border border-[#f5f0eb]/24 bg-[#f5f0eb]/10 p-2 shadow-[18px_24px_70px_rgba(0,0,0,.34)]">
-            {workImage(third) ? <img src={workImage(third)} alt={third?.title || ''} loading="lazy" className="h-full w-full object-cover opacity-[.86]" /> : null}
-          </div>
-          <div className="absolute right-[9%] top-[14%] h-[68%] w-px rotate-[18deg] bg-[#d7b46a]" />
-          <div className="absolute left-[50%] top-[7%] h-[74%] w-[18%] rotate-[18deg] bg-[#d7b46a]/24 shadow-[22px_0_70px_rgba(215,180,106,.22)]" />
-          <div className="absolute bottom-[12%] left-[14%] right-[10%] z-10 grid gap-5 border-t border-[#f5f0eb]/18 pt-5 text-[#f5f0eb] sm:grid-cols-[1fr_auto] sm:items-end">
+        <div className="relative z-10 px-5 pb-12 sm:px-8 lg:flex lg:min-h-[86dvh] lg:items-center lg:px-12 lg:py-12">
+          <div className="w-full border border-[#f5f0eb]/14 bg-[#14090d]/45 p-3 shadow-[0_34px_110px_rgba(0,0,0,.36)] sm:p-4">
+            <div className="grid gap-3 sm:grid-cols-5 sm:grid-rows-[260px_190px] lg:grid-rows-[minmax(300px,42vh)_220px]">
+              {heroRefs.map((work, index) => {
+                const image = workImage(work);
+                const placement = index === 0 ? 'sm:col-span-3 sm:row-span-2' : index === 1 ? 'sm:col-span-2' : 'sm:col-span-2';
+                return (
+                  <figure key={work.id} className={`relative min-h-[220px] overflow-hidden bg-[#f5f0eb] p-2 shadow-[16px_22px_60px_rgba(0,0,0,.24)] ${placement}`}>
+                    {image ? <img src={image} alt={work.title} loading="lazy" className="h-full w-full object-cover saturate-[.86]" /> : <div className="h-full bg-[#c7b498]" />}
+                    <figcaption className="absolute bottom-2 left-2 right-2 bg-[#14090d]/76 px-3 py-2 font-sans text-[9px] uppercase tracking-normal text-[#f5f0eb]/72">
+                      {work.discipline || 'reference'} / {work.city || work.country || 'site'}
+                    </figcaption>
+                  </figure>
+                );
+              })}
+            </div>
+            <div className="mt-5 grid gap-5 border-t border-[#f5f0eb]/18 pt-5 text-[#f5f0eb] sm:grid-cols-[1fr_auto] sm:items-end">
             <div>
               <p className="font-sans text-[10px] uppercase tracking-normal text-[#d7b46a]">production language</p>
               <p className="mt-2 max-w-[22rem] font-display text-[clamp(2.2rem,5vw,4.6rem)] lowercase leading-[0.82]">light, shadow, surface, route</p>
@@ -149,6 +143,7 @@ function BureauProductionIntro({ works }: { works: Work[] }) {
                 <span key={item} className="border-r border-[#f5f0eb]/12 px-3 py-3 text-center font-sans text-[10px] uppercase tracking-normal text-[#f5f0eb]/66 last:border-r-0">{item}</span>
               ))}
             </div>
+            </div>
           </div>
         </div>
       </div>
@@ -157,12 +152,12 @@ function BureauProductionIntro({ works }: { works: Work[] }) {
 }
 
 function BureauReferenceRoom({ works }: { works: Work[] }) {
-  const refs = works.filter((work) => workImage(work)).slice(0, 9);
+  const refs = works.filter((work) => workImage(work)).slice(0, 6);
 
   return (
     <section className="relative overflow-hidden border-b border-[#f5f0eb]/12 bg-[#0f0709] text-[#f5f0eb]">
       <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: 'linear-gradient(90deg,#f5f0eb 1px,transparent 1px),linear-gradient(#f5f0eb 1px,transparent 1px)', backgroundSize: '12.5vw 96px' }} />
-      <div className="mx-auto grid max-w-[1700px] lg:grid-cols-[minmax(0,0.56fr)_minmax(0,1fr)]">
+      <div className="mx-auto grid max-w-[1700px] lg:grid-cols-[minmax(0,0.48fr)_minmax(0,1fr)]">
         <div className="relative z-10 border-b border-[#f5f0eb]/12 px-5 py-12 sm:px-8 lg:border-b-0 lg:border-r lg:px-12 xl:px-16">
           <p className="font-sans text-[10px] uppercase tracking-normal text-[#d7b46a]">real references / object thinking</p>
           <h2 className="mt-5 max-w-[8ch] font-display text-[clamp(3.8rem,8vw,8rem)] lowercase leading-[0.78] tracking-normal">
@@ -176,37 +171,25 @@ function BureauReferenceRoom({ works }: { works: Work[] }) {
           </a>
         </div>
 
-        <div className="relative z-10 min-h-[720px] px-5 py-10 sm:px-8 lg:px-12">
-          <div className="absolute bottom-10 left-5 right-5 h-[42%] bg-[#211014] shadow-[0_42px_120px_rgba(0,0,0,.42)] sm:left-8 sm:right-8 lg:left-12 lg:right-12" />
-          <div className="relative grid min-h-[640px] grid-cols-6 grid-rows-[repeat(6,minmax(74px,1fr))] gap-3">
+        <div className="relative z-10 px-5 py-10 sm:px-8 lg:px-12">
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {refs.map((work, index) => {
-              const placements = [
-                'col-span-3 row-span-3',
-                'col-span-2 row-span-2 col-start-4',
-                'col-span-2 row-span-3 col-start-1 row-start-4',
-                'col-span-2 row-span-2 col-start-3 row-start-4',
-                'col-span-2 row-span-4 col-start-5 row-start-3',
-                'col-span-1 row-span-2 col-start-6 row-start-1',
-                'col-span-2 row-span-1 col-start-3 row-start-6',
-                'col-span-1 row-span-1 col-start-5 row-start-1',
-                'col-span-1 row-span-1 col-start-6 row-start-6',
-              ];
+              const large = index === 0 || index === 3;
               return (
-                <a key={work.id} href="/showcase" className={`group relative overflow-hidden border border-[#f5f0eb]/14 bg-[#261116] shadow-[18px_24px_70px_rgba(0,0,0,.28)] ${placements[index] || 'col-span-2 row-span-2'}`}>
+                <a key={work.id} href="/showcase" className={`group relative overflow-hidden border border-[#f5f0eb]/14 bg-[#261116] shadow-[18px_24px_70px_rgba(0,0,0,.22)] ${large ? 'aspect-[4/5]' : 'aspect-[5/4]'}`}>
                   <img src={workImage(work)} alt={work.title} loading="lazy" className="h-full w-full object-cover opacity-[.84] transition duration-300 group-hover:scale-[1.035] group-hover:opacity-100" />
-                  <span className="absolute inset-x-0 bottom-0 bg-[#0f0709]/78 px-3 py-2 font-sans text-[9px] uppercase tracking-normal text-[#f5f0eb]/72">
-                    {work.discipline || 'reference'} / {work.city || work.country || 'site'}
+                  <span className="absolute inset-x-0 bottom-0 bg-[#0f0709]/82 px-3 py-2">
+                    <span className="block font-display text-[1.35rem] lowercase leading-[0.92] text-[#f5f0eb]">{work.title}</span>
+                    <span className="mt-1 block font-sans text-[9px] uppercase tracking-normal text-[#d7b46a]">{work.discipline || 'reference'} / {work.city || work.country || 'site'}</span>
                   </span>
                 </a>
               );
             })}
-            <div className="absolute bottom-[17%] left-[13%] h-[15%] w-[28%] bg-[#d7b46a] shadow-[22px_28px_80px_rgba(215,180,106,.26)]" />
-            <div className="absolute bottom-[12%] right-[15%] h-[32%] w-px rotate-[18deg] bg-[#d7b46a]" />
-            <div className="absolute bottom-[8%] left-[8%] right-[8%] flex flex-wrap gap-2 border-t border-[#f5f0eb]/18 pt-4">
-              {MATERIALS.map((item) => (
-                <span key={item} className="border border-[#f5f0eb]/18 bg-[#0f0709]/68 px-3 py-2 font-sans text-[10px] uppercase tracking-normal text-[#f5f0eb]/66">{item}</span>
-              ))}
-            </div>
+          </div>
+          <div className="mt-7 flex flex-wrap gap-2 border-t border-[#f5f0eb]/18 pt-5">
+            {MATERIALS.map((item) => (
+              <span key={item} className="border border-[#f5f0eb]/18 bg-[#0f0709]/68 px-3 py-2 font-sans text-[10px] uppercase tracking-normal text-[#f5f0eb]/66">{item}</span>
+            ))}
           </div>
         </div>
       </div>
@@ -230,15 +213,12 @@ function BureauObjectLibrary() {
           </p>
         </div>
 
-        <div className="mt-12 grid border-l border-t border-[#1a0b10]/12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="mt-12 grid border-t border-[#1a0b10]/12 lg:grid-cols-2">
           {OBJECT_LIBRARY.map(([num, title, text]) => (
-            <article key={title} className="group min-h-[240px] border-b border-r border-[#1a0b10]/12 bg-[#f5f0eb] p-5 transition-colors hover:bg-[#eee6da] sm:p-6">
-              <div className="flex items-start justify-between gap-5">
-                <span className="font-display text-[2.6rem] leading-none text-[#b8956e]">{num}</span>
-                <span className="h-14 w-14 border border-[#1a0b10]/14 bg-[#1a0b10]/5 shadow-[12px_16px_36px_rgba(26,11,16,.08)] transition-transform group-hover:-translate-y-1" />
-              </div>
-              <h3 className="mt-10 font-display text-[2.2rem] lowercase leading-[0.88] tracking-normal text-[#1a0b10]">{title}</h3>
-              <p className="mt-4 max-w-[23rem] font-sans text-[14px] leading-relaxed text-[#4a1728]/70">{text}</p>
+            <article key={title} className="grid gap-4 border-b border-[#1a0b10]/12 py-5 sm:grid-cols-[4rem_12rem_1fr] sm:items-start sm:gap-6">
+              <span className="font-display text-[2.2rem] leading-none text-[#b8956e]">{num}</span>
+              <h3 className="font-display text-[2rem] lowercase leading-[0.88] tracking-normal text-[#1a0b10]">{title}</h3>
+              <p className="max-w-[28rem] font-sans text-[14px] leading-relaxed text-[#4a1728]/70">{text}</p>
             </article>
           ))}
         </div>
