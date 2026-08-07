@@ -13,6 +13,7 @@ const DesignPage = lazy(() => import('./design/DesignPage').then((m) => ({ defau
 const CollaborationPage = lazy(() => import('./pages/CollaborationPage').then((m) => ({ default: m.CollaborationPage })));
 const ShowcasePage = lazy(() => import('./showcase/ShowcasePage').then((m) => ({ default: m.ShowcasePage })));
 const BureauPage = lazy(() => import('./showcase/BureauPage').then((m) => ({ default: m.BureauPage })));
+const ShowcaseTeaser = lazy(() => import('./showcase/ShowcaseTeaser').then((m) => ({ default: m.ShowcaseTeaser })));
 const StagePage = lazy(() => import('./stage/StagePage').then((m) => ({ default: m.StagePage })));
 import {
   Article,
@@ -716,7 +717,7 @@ function NavBar({
         <LayoutGroup id="nav-tabs">
           <div
             className="grid flex-1 divide-x divide-[var(--c-accent)]"
-            style={{ gridTemplateColumns: `repeat(${Math.max(tabs.length, 1)}, minmax(0, 1fr))` }}
+            style={{ gridTemplateColumns: `repeat(${Math.max(tabs.length + 1, 2)}, minmax(0, 1fr))` }}
           >
             {tabs.map((tab) => (
               <button
@@ -738,6 +739,14 @@ function NavBar({
                 )}
               </button>
             ))}
+            {/* Ссылка, а не вкладка: /showcase — собственный маршрут вне
+                управляемого набора секций, поэтому и переход обычный. */}
+            <a
+              href="/showcase"
+              className="relative flex flex-col items-center justify-center group h-full overflow-hidden text-[var(--c-accent)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.08)] transition-colors duration-200"
+            >
+              <span className="font-bold relative z-10">Showcase</span>
+            </a>
           </div>
         </LayoutGroup>
 
@@ -951,6 +960,17 @@ function NavBar({
                   <span className="font-serif font-normal text-xl leading-tight">{tab.label}</span>
                 </motion.button>
               ))}
+              <motion.a
+                href="/showcase"
+                variants={{
+                  hidden: { opacity: 0, x: -14 },
+                  show: { opacity: 1, x: 0, transition: { duration: 0.22, ease: EASE } },
+                }}
+                onClick={() => setIsMenuOpen(false)}
+                className="min-h-[64px] px-6 py-4 flex items-center justify-between text-left transition-colors active:scale-[0.99]"
+              >
+                <span className="font-serif font-normal text-xl leading-tight">Showcase</span>
+              </motion.a>
             </motion.div>
             
             <div className="mt-auto border-t border-[var(--c-accent)]">
@@ -3270,7 +3290,13 @@ export default function App() {
             ) : (
               <>
                 {activeTab === 'gallery' && (
-                  <GallerySection items={items} onItemClick={setSelectedGalleryItem} />
+                  <>
+                    <GallerySection items={items} onItemClick={setSelectedGalleryItem} />
+                    {/* Витрина жила отдельным маршрутом, на который с сайта не
+                        вело ни одной ссылки. Suspense без запасного экрана:
+                        блок не должен ничего занимать, пока грузится. */}
+                    <Suspense fallback={null}><ShowcaseTeaser /></Suspense>
+                  </>
                 )}
                 {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} brandName={brandName} />}
                     {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} onReviewClick={handleSelectReview} />}
