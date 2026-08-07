@@ -24,8 +24,17 @@ export function MovesPanel({ cases, moves, activeSlug, params, readings, onPick,
     <div className="space-y-4 border-t border-[#f5f0eb]/12 pt-6">
       <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/45">Move</p>
 
-      {!playable.length && (
+      {/* Различаем два разных состояния. Раньше оба показывали «Bureau is
+          unavailable», и при отданных запасных разборах страница одновременно
+          показывала их и утверждала, что Бюро недоступно. */}
+      {!cases.length && (
         <p className="font-sans text-[11px] text-[#f5f0eb]/40">Bureau is unavailable, so the moves are not loaded.</p>
+      )}
+
+      {cases.length > 0 && !playable.length && (
+        <p className="font-sans text-[11px] text-[#f5f0eb]/40">
+          These breakdowns have no operator yet — they read in the Bureau, but there is nothing to turn on your own box.
+        </p>
       )}
 
       <div className="flex flex-col gap-1.5">
