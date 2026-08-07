@@ -43,10 +43,16 @@ function ModalShell({ title, onClose, children, wide = false }: { title: string;
 
 /* The vitrine is image-first, so a broken or missing photograph must still read
    as a designed tile rather than a hole in the grid. */
-function WorkPlate({ work, index, className = '' }: { work: Work; index: number; className?: string }) {
+/* `single` отключает подмену кадра на ховере. В первом экране она не просто
+   лишняя: второй кадр там лежал поверх первого с непрозрачностью 1 — класс
+   opacity-0 в разметке есть, а вычисленное значение 1, — и полотно во всю
+   ширину показывало ту же фотографию, что и врезка рядом с ним. Одна работа,
+   две одинаковые картинки в одном экране. Герою подмена и не нужна: «внутри
+   есть ещё» там говорит сама врезка. */
+function WorkPlate({ work, index, className = '', single = false }: { work: Work; index: number; className?: string; single?: boolean }) {
   const [failed, setFailed] = useState(false);
   const image = work.images?.[0];
-  const second = work.images?.[1];
+  const second = single ? undefined : work.images?.[1];
   const tint = ['#e9dece', '#e5d8c6', '#e2d4c0', '#efe7dc', '#ddccb5'][index % 5];
 
   if (!image?.url || failed) {
@@ -381,7 +387,7 @@ export function ShowcasePage() {
           way. */}
       {leadWork && (
         <section className="relative isolate flex min-h-[92vh] flex-col justify-between overflow-hidden bg-[#1a0b10]">
-          <WorkPlate work={leadWork} index={0} className="absolute inset-0 h-full w-full object-cover" />
+          <WorkPlate work={leadWork} index={0} single className="absolute inset-0 h-full w-full object-cover" />
           {/* Their scrim is near-black and even; the photograph carries the
               whole frame rather than sitting behind a burgundy wash. */}
           <div className="absolute inset-0 bg-[#0d0508]/45" />
