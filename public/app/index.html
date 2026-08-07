@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EPRIS для iPhone — застосунок, політика конфіденційності та підтримка</title>
-<meta name="description" content="Застосунок EPRIS Journal для iPhone: журнал, статті та рецензії з читанням офлайн. Політика конфіденційності та контакти підтримки.">
+<title>EPRIS for iPhone — the journal, offline. Coming to the App Store</title>
+<meta name="description" content="EPRIS Journal is coming to iPhone. Articles and reviews read natively and stay readable offline. Screenshots, privacy policy and support.">
 <link rel="canonical" href="https://eprisjournal.com/app/">
-<meta property="og:title" content="EPRIS для iPhone">
-<meta property="og:description" content="Журнал, статті та рецензії у застосунку. Читання офлайн.">
-<meta property="og:image" content="https://eprisjournal.com/images/app/01-journal.webp">
+<meta property="og:type" content="website">
+<meta property="og:title" content="EPRIS for iPhone">
+<meta property="og:description" content="The journal in your pocket — and readable without a signal. Coming to the App Store.">
+<meta property="og:image" content="https://eprisjournal.com/images/app/01-gallery.webp">
 <meta property="og:url" content="https://eprisjournal.com/app/">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
   :root {
@@ -17,6 +19,7 @@
     --bg: #f5f0eb;
     --dark: #180D13;
     --cream: #F7F2EC;
+    --line: rgb(74 23 40 / .16);
   }
   * { box-sizing: border-box; }
   body {
@@ -27,69 +30,83 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
   a { color: inherit; }
 
-  header.top {
-    border-bottom: 1px solid rgb(74 23 40 / .18);
-    padding: 22px 0;
-  }
+  header.top { border-bottom: 1px solid var(--line); padding: 22px 0; }
   header.top .wrap { display: flex; justify-content: space-between; align-items: center; }
   .brand { font-family: Georgia, "PT Serif", serif; letter-spacing: .5em; font-size: 18px; text-decoration: none; }
   .back { font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; opacity: .7; }
   .back:hover { opacity: 1; }
 
-  .hero { padding: 72px 0 40px; }
-  .kicker { font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; opacity: .6; margin: 0 0 18px; }
-  h1 { font-family: Georgia, "PT Serif", serif; font-weight: 400; font-size: clamp(38px, 7vw, 68px); line-height: 1.05; margin: 0 0 22px; }
-  .lede { font-size: clamp(16px, 2.2vw, 19px); max-width: 60ch; opacity: .85; margin: 0 0 26px; }
-  .status {
-    display: inline-block; font-family: ui-monospace, monospace; font-size: 11px;
-    letter-spacing: .16em; text-transform: uppercase;
-    border: 1px solid rgb(74 23 40 / .35); padding: 9px 16px;
+  .hero { padding: 78px 0 34px; }
+  .kicker {
+    font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: .24em;
+    text-transform: uppercase; opacity: .6; margin: 0 0 20px;
   }
+  h1 {
+    font-family: Georgia, "PT Serif", serif; font-weight: 400;
+    font-size: clamp(40px, 7.5vw, 76px); line-height: 1.03;
+    letter-spacing: -.015em; margin: 0 0 24px; max-width: 16ch;
+  }
+  .lede { font-size: clamp(16px, 2.2vw, 20px); max-width: 58ch; opacity: .85; margin: 0 0 30px; }
+  .status {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: ui-monospace, monospace; font-size: 11px;
+    letter-spacing: .16em; text-transform: uppercase;
+    border: 1px solid rgb(74 23 40 / .35); padding: 10px 18px;
+  }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: .7; }
 
-  .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 18px; padding: 26px 0 64px; }
+  .shots {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px; padding: 34px 0 72px;
+  }
   .shot { margin: 0; }
   .shot img {
     width: 100%; height: auto; display: block;
-    border: 1px solid rgb(74 23 40 / .16);
-    background: #fff;
+    border: 1px solid var(--line); background: #fff;
   }
   .shot figcaption {
     font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: .16em;
-    text-transform: uppercase; opacity: .55; margin-top: 10px;
+    text-transform: uppercase; opacity: .55; margin-top: 11px;
   }
 
-  section.band { background: var(--dark); color: var(--cream); padding: 64px 0; }
+  section.band { background: var(--dark); color: var(--cream); padding: 72px 0; }
   section.band h2, section.band h3 { color: var(--cream); }
-  h2 { font-family: Georgia, "PT Serif", serif; font-weight: 400; font-size: clamp(26px, 4vw, 38px); margin: 0 0 22px; }
+  h2 {
+    font-family: Georgia, "PT Serif", serif; font-weight: 400;
+    font-size: clamp(28px, 4.2vw, 42px); margin: 0 0 26px;
+  }
   h3 { font-family: Georgia, "PT Serif", serif; font-weight: 400; font-size: 20px; margin: 30px 0 10px; }
 
-  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 28px; }
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; }
   .features h3 { margin-top: 0; }
   .features p { opacity: .8; margin: 0; font-size: 15px; }
 
-  section.plain { padding: 64px 0; }
+  section.plain { padding: 72px 0; }
   .prose { max-width: 68ch; }
   .prose p, .prose li { opacity: .88; }
   .prose ul { padding-left: 20px; }
   .prose li { margin-bottom: 8px; }
-  .updated { font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; opacity: .55; }
+  .updated {
+    font-family: ui-monospace, monospace; font-size: 11px;
+    letter-spacing: .14em; text-transform: uppercase; opacity: .55;
+  }
+  code { font-size: .92em; }
 
-  footer.bottom {
-    border-top: 1px solid rgb(74 23 40 / .18);
-    padding: 34px 0 56px;
+  footer.bottom { border-top: 1px solid var(--line); padding: 34px 0 60px; }
+  footer.bottom .wrap {
+    display: flex; flex-wrap: wrap; gap: 18px; justify-content: space-between;
     font-family: ui-monospace, monospace; font-size: 11px;
     letter-spacing: .14em; text-transform: uppercase; opacity: .65;
-    display: flex; flex-wrap: wrap; gap: 18px; justify-content: space-between;
   }
 
   @media (prefers-color-scheme: dark) {
+    :root { --line: rgb(240 230 222 / .18); }
     body { background: #140b10; color: #F0E6DE; }
-    header.top, footer.bottom { border-color: rgb(240 230 222 / .18); }
     .status { border-color: rgb(240 230 222 / .35); }
-    .shot img { border-color: rgb(240 230 222 / .18); background: #1e1218; }
+    .shot img { background: #1e1218; }
   }
 </style>
 </head>
@@ -98,62 +115,62 @@
 <header class="top">
   <div class="wrap">
     <a class="brand" href="/">EPRIS</a>
-    <a class="back" href="/">← до журналу</a>
+    <a class="back" href="/">← back to the journal</a>
   </div>
 </header>
 
 <main>
   <div class="wrap hero">
-    <p class="kicker">EPRIS для iPhone</p>
-    <h1>Журнал, який читається без мережі</h1>
+    <p class="kicker">EPRIS for iPhone</p>
+    <h1>The journal, readable without a signal</h1>
     <p class="lede">
-      Застосунок EPRIS Journal приносить статті, рецензії та випуски на iPhone.
-      Матеріали зберігаються на пристрої: відкриті раніше тексти читаються
-      в літаку, метро й будь-де без зв'язку.
+      EPRIS is coming to iPhone. Articles and reviews are rendered natively, in the
+      typography of the journal — and once loaded, they stay on the device. Read them
+      on a plane, on the metro, anywhere the signal gives up.
     </p>
-    <p class="status">Готується до випуску в App Store</p>
+    <p class="status"><span class="dot"></span> Coming to the App Store</p>
   </div>
 
   <div class="wrap">
     <div class="shots">
       <figure class="shot">
-        <img src="/images/app/01-journal.webp" alt="Головний екран застосунку EPRIS зі статтею про архітектуру" loading="lazy" width="414" height="900">
-        <figcaption>Журнал</figcaption>
+        <img src="/images/app/01-gallery.webp" alt="EPRIS app home screen showing a feature on architecture" loading="lazy" width="414" height="900">
+        <figcaption>Gallery</figcaption>
       </figure>
       <figure class="shot">
-        <img src="/images/app/02-articles.webp" alt="Стрічка статей у застосунку EPRIS" loading="lazy" width="414" height="900">
-        <figcaption>Статті</figcaption>
+        <img src="/images/app/02-articles.webp" alt="Article feed in the EPRIS app" loading="lazy" width="414" height="900">
+        <figcaption>Articles</figcaption>
       </figure>
       <figure class="shot">
-        <img src="/images/app/03-reader.webp" alt="Читання статті у застосунку EPRIS" loading="lazy" width="414" height="900">
-        <figcaption>Читання</figcaption>
+        <img src="/images/app/03-reader.webp" alt="Reading a long-form article in the EPRIS app" loading="lazy" width="414" height="900">
+        <figcaption>Reading</figcaption>
       </figure>
       <figure class="shot">
-        <img src="/images/app/04-review.webp" alt="Рецензія з оцінкою, аргументами за і проти та вердиктом" loading="lazy" width="414" height="900">
-        <figcaption>Рецензії</figcaption>
+        <img src="/images/app/04-review.webp" alt="A review with rating, pros and cons, and a verdict" loading="lazy" width="414" height="900">
+        <figcaption>Reviews</figcaption>
       </figure>
     </div>
   </div>
 
   <section class="band">
     <div class="wrap">
-      <h2>Що всередині</h2>
+      <h2>What's inside</h2>
       <div class="features">
         <div>
-          <h3>Читання офлайн</h3>
-          <p>Матеріали кешуються на пристрої. Без мережі застосунок показує збережену копію й повідомляє про це.</p>
+          <h3>Reads offline</h3>
+          <p>The journal is cached on the device. With no connection the app serves the saved copy and says so plainly, instead of failing.</p>
         </div>
         <div>
-          <h3>Статті та рецензії</h3>
-          <p>Рідні екрани з типографікою журналу: цитати, галереї, оцінки, аргументи за і проти, вердикт.</p>
+          <h3>Articles and reviews, natively</h3>
+          <p>Quotes, galleries, pull-outs, ratings, pros and cons, verdicts — laid out in the journal's own typography, not a page in a frame.</p>
         </div>
         <div>
-          <h3>Розмір тексту</h3>
-          <p>Типографіка підлаштовується під системний розмір шрифту, включно з великими значеннями.</p>
+          <h3>Seven languages</h3>
+          <p>The app follows your device language and picks up the journal's own translations, including Ukrainian.</p>
         </div>
         <div>
-          <h3>Нічого зайвого</h3>
-          <p>Без реєстрації, реклами та стеження. Застосунок не просить доступу до камери, мікрофона чи фото.</p>
+          <h3>Nothing extra</h3>
+          <p>No account, no ads, no tracking. The app asks for no permissions at all — not the camera, microphone, or photos.</p>
         </div>
       </div>
     </div>
@@ -161,90 +178,86 @@
 
   <section class="plain" id="privacy">
     <div class="wrap prose">
-      <h2>Політика конфіденційності</h2>
-      <p class="updated">Оновлено 7 серпня 2026</p>
+      <h2>Privacy policy</h2>
+      <p class="updated">Updated 7 August 2026</p>
 
       <p>
-        Застосунок EPRIS Journal для iOS (далі — «застосунок») не збирає, не зберігає
-        і не передає персональні дані. Ця політика описує, як застосунок поводиться з інформацією.
+        The EPRIS Journal app for iOS (the "app") collects no personal data, stores none,
+        and sends none. This policy sets out exactly how the app handles information.
       </p>
 
-      <h3>Які дані ми збираємо</h3>
+      <h3>What we collect</h3>
       <p>
-        Жодних. У застосунку немає реєстрації та облікових записів. Ми не збираємо ім'я,
-        адресу електронної пошти, контакти, місцеперебування, ідентифікатори пристрою
-        та інші персональні дані.
+        Nothing. The app has no sign-up and no accounts. We do not collect your name,
+        email address, contacts, location, device identifiers, or any other personal data.
       </p>
 
-      <h3>Відстеження та реклама</h3>
+      <h3>Tracking and advertising</h3>
       <p>
-        Застосунок не відстежує вас у застосунках і на сайтах інших компаній, не показує
-        реклами й не містить сторонніх аналітичних чи рекламних комплектів розробки.
+        The app does not track you across other companies' apps and websites, shows no
+        advertising, and contains no third-party analytics or advertising SDKs.
       </p>
 
-      <h3>Що зберігається на вашому пристрої</h3>
+      <h3>What stays on your device</h3>
       <ul>
-        <li>копія матеріалів журналу — щоб їх можна було читати без мережі;</li>
-        <li>технічна позначка версії контенту, щоб не завантажувати те, що не змінилося;</li>
-        <li>дані веб-перегляду для розділів, які відкриваються з сайту.</li>
+        <li>a copy of the journal's content, so it can be read without a connection;</li>
+        <li>a technical marker of the content version, so unchanged content isn't downloaded again;</li>
+        <li>web view data for the sections that are served from the site.</li>
       </ul>
       <p>
-        Ці дані залишаються на пристрої, нам не надсилаються й повністю видаляються
-        разом із застосунком.
+        This data stays on your device, is never sent to us, and is removed completely
+        when the app is deleted.
       </p>
 
-      <h3>Мережеві запити</h3>
+      <h3>Network requests</h3>
       <p>
-        Щоб показати матеріали, застосунок звертається до наших серверів
-        (<code>eprisjournal.com</code> та <code>api.eprisjournal.com</code>). Як і будь-який
-        веб-запит, він містить IP-адресу та тип застосунку — це технічно необхідно для
-        доставлення відповіді. Ми не використовуємо ці записи для профілювання
-        й не поєднуємо їх з особою користувача.
+        To show the journal, the app contacts our servers (<code>eprisjournal.com</code> and
+        <code>api.eprisjournal.com</code>). As with any web request, this includes an IP address
+        and the app type — technically necessary to deliver a response. We do not use these
+        records for profiling and do not tie them to an individual.
       </p>
 
-      <h3>Діти</h3>
+      <h3>Children</h3>
+      <p>The app is not directed at children and collects no data about them.</p>
+
+      <h3>Changes</h3>
       <p>
-        Застосунок не призначений для дітей і не збирає жодних даних про них.
+        If this policy changes, the updated version will appear on this page along with its date.
       </p>
 
-      <h3>Зміни</h3>
+      <h3>Contact</h3>
       <p>
-        Якщо політика зміниться, оновлена версія з'явиться на цій сторінці разом із датою.
-      </p>
-
-      <h3>Контакт</h3>
-      <p>
-        Питання щодо конфіденційності — <a href="mailto:munister@outlook.com">munister@outlook.com</a>.
+        Privacy questions: <a href="mailto:munister@outlook.com">munister@outlook.com</a>.
       </p>
     </div>
   </section>
 
   <section class="band" id="support">
     <div class="wrap prose">
-      <h2>Підтримка</h2>
+      <h2>Support</h2>
       <p>
-        Не працює завантаження, зникли матеріали, застосунок закривається сам —
-        напишіть, і ми розберемося.
+        Content won't load, articles have vanished, the app quits on its own — write to us
+        and we'll sort it out.
       </p>
       <p>
-        Пошта: <a href="mailto:munister@outlook.com">munister@outlook.com</a><br>
-        Відповідаємо протягом кількох робочих днів.
+        Email: <a href="mailto:munister@outlook.com">munister@outlook.com</a><br>
+        We reply within a few working days.
       </p>
       <p>
-        Щоб нам було швидше: вкажіть модель iPhone, версію iOS і що саме відбувалося
-        перед збоєм.
+        It helps to include your iPhone model, your iOS version, and what you were doing
+        just before things went wrong.
       </p>
     </div>
   </section>
 </main>
 
 <footer class="bottom">
-  <div class="wrap" style="display:flex; flex-wrap:wrap; gap:18px; justify-content:space-between; width:100%;">
+  <div class="wrap">
     <span>© 2026 EPRIS Journal</span>
     <span>
-      <a href="#privacy">Конфіденційність</a> ·
-      <a href="#support">Підтримка</a> ·
-      <a href="/">Журнал</a>
+      <a href="#privacy">Privacy</a> ·
+      <a href="#support">Support</a> ·
+      <a href="/">Journal</a>
     </span>
   </div>
 </footer>
