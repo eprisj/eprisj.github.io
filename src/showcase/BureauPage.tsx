@@ -203,36 +203,12 @@ function BureauReferenceRoom({ works }: { works: Work[] }) {
   );
 }
 
-function BureauObjectLibrary() {
-  return (
-    <section className="border-b border-[#1a0b10]/12 bg-[#f0e7d9] text-[#1a0b10]">
-      <div className="mx-auto max-w-[1700px] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 xl:px-16">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.6fr)_minmax(0,1fr)]">
-          <div>
-            <p className="font-sans text-[10px] uppercase tracking-normal text-[#4a1728]/56">object library</p>
-            <h2 className="mt-5 max-w-[7ch] font-display text-[clamp(2.6rem,5.2vw,4.4rem)] lowercase leading-[0.78] tracking-normal">
-              the useful beautiful things
-            </h2>
-          </div>
-          <p className="max-w-[42rem] self-end border-l border-[#4a1728] pl-5 font-sans text-[17px] leading-relaxed text-[#4a1728]/72">
-            The page needed more real design matter, so the Bureau now names the objects it actually works with: plinths, rails, glass, captions, fabric, floor marks, night light and shadows.
-          </p>
-        </div>
-
-        <div className="mt-12 grid border-t border-[#1a0b10]/12 lg:grid-cols-2">
-          {OBJECT_LIBRARY.map(([num, title, text]) => (
-            <article key={title} className="grid gap-4 border-b border-[#1a0b10]/12 py-5 sm:grid-cols-[4rem_12rem_1fr] sm:items-start sm:gap-6">
-              <span className="font-display text-[2.2rem] leading-none text-[#b8956e]">{num}</span>
-              <h3 className="font-display text-[2rem] lowercase leading-[0.88] tracking-normal text-[#1a0b10]">{title}</h3>
-              <p className="max-w-[28rem] font-sans text-[14px] leading-relaxed text-[#4a1728]/70">{text}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
+/* Раньше это были две светлые секции подряд: «designed to be built» и
+   «the useful beautiful things». Обе — список названных существительных под
+   собственным заголовком в 4.4rem, разделённые только тем, что одна про
+   услуги, а другая про предметы. Читались как один длинный перечень, дважды
+   объявленный. Теперь один экран: что бюро отдаёт — крупно, чем оно при этом
+   работает — строкой снизу, потому что второе есть подробность первого. */
 function BureauServices() {
   return (
     <section id="bureau-services" className="border-b border-[#f5f0eb]/12 bg-[#f0e7d9] text-[#1a0b10]">
@@ -245,6 +221,19 @@ function BureauServices() {
           <p className="mt-7 max-w-[34rem] text-[17px] leading-relaxed text-[#4a1728]/72">
             Not moodboards for decoration. A visual system that can become a window, room, route, launch set or exhibition script.
           </p>
+
+          <div className="mt-10 border-t border-[#1a0b10]/12 pt-6">
+            <p className="font-sans text-[10px] uppercase tracking-normal text-[#4a1728]/56">the objects we work with</p>
+            <dl className="mt-5 divide-y divide-[#1a0b10]/10">
+              {OBJECT_LIBRARY.map(([num, title, text]) => (
+                <div key={title} className="grid grid-cols-[2rem_1fr] gap-x-4 py-3 sm:grid-cols-[2rem_9rem_1fr] sm:gap-x-5">
+                  <span className="font-sans text-[10px] tabular-nums text-[#b8956e]">{num}</span>
+                  <dt className="font-sans text-[13px] lowercase text-[#1a0b10] max-sm:col-start-2">{title}</dt>
+                  <dd className="font-sans text-[13px] leading-relaxed text-[#4a1728]/62 max-sm:col-start-2 max-sm:mt-1">{text}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </div>
         <div className="grid border-t border-[#1a0b10]/12 sm:grid-cols-2 lg:border-l lg:border-t-0">
           {BUREAU_SERVICES.map((item) => {
@@ -353,7 +342,6 @@ function CaseList({ items, works }: { items: BureauCase[]; works: Work[] }) {
       <BureauProductionIntro works={works} />
       <BureauReferenceRoom works={works} />
       <BureauServices />
-      <BureauObjectLibrary />
       <div className="mx-auto max-w-[1600px] px-5 py-12 sm:px-8 sm:py-16 lg:px-12">
         <p className="font-sans text-[10px] uppercase tracking-normal text-[#d7b46a]">case studies</p>
         <h2 className="mt-4 max-w-[9ch] font-display text-[clamp(2.6rem,5.2vw,4.4rem)] lowercase leading-[0.78] tracking-normal text-[#f5f0eb]">
