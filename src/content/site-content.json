@@ -17430,5 +17430,24 @@
       "authors": {},
       "studioProjects": {}
     }
+  },
+  "theme": {
+    "accent": "#111111",
+    "gold": "#c9a690",
+    "bg": "#ffffff",
+    "bgImage": "",
+    "fontDisplay": "Playfair Display",
+    "fontBody": "Iowan Old Style"
+  },
+  "site": {
+    "brandName": "EPRIS",
+    "footerTitle": "EPRIS JOURNAL",
+    "footerDescription": "",
+    "instagramUrl": "",
+    "contactEmail": "",
+    "seoTitle": "",
+    "seoDescription": "",
+    "seoKeywords": "",
+    "ogImage": ""
   }
 }
