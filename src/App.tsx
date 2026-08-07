@@ -3318,10 +3318,12 @@ export default function App() {
             <div className="text-center md:text-right font-mono text-xs uppercase tracking-widest text-[#BFAFA4]">
               <p>© 2026 {publicationName}</p>
               <p>{t('footer.rights')}</p>
-              {(instagramUrl || contactEmail) && <div className="mt-4 flex flex-wrap justify-center md:justify-end gap-x-4 gap-y-2 text-[#D9C7BA]">
+              <div className="mt-4 flex flex-wrap justify-center md:justify-end gap-x-4 gap-y-2 text-[#D9C7BA]">
                 {instagramUrl && <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#F7F2EC] underline underline-offset-4 transition-colors">Instagram</a>}
                 {contactEmail && <a href={`mailto:${contactEmail}`} className="hover:text-[#F7F2EC] underline underline-offset-4 transition-colors">{contactEmail}</a>}
-              </div>}
+                {/* Статическая страница в public/app — nginx отдаёт файл раньше SPA-роутера. */}
+                <a href="/app/" className="hover:text-[#F7F2EC] underline underline-offset-4 transition-colors">iOS app</a>
+              </div>
             </div>
           </div>
         </footer>}
