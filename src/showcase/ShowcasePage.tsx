@@ -331,8 +331,18 @@ export function ShowcasePage() {
   const activeFilterCount = Number(country !== ALL_COUNTRIES) + Number(discipline !== ALL_DISCIPLINES) + Number(Boolean(author)) + Number(withImageOnly) + Number(recentOnly);
   // One work opens the page at full width — but only on the plain, unfiltered
   // view, where there is no question the reader is already trying to answer.
+  //
+  // Which work that is, is an editorial decision and cannot be inferred here.
+  // The rule used to be "newest work that has a gallery", so the opening frame
+  // was simply whatever was added last: a photograph chosen for the grid, where
+  // it is cropped to 4:5 and read at 400px, got stretched across the whole
+  // window. A picture in which the work sits small behind a tree survives that
+  // crop and dies full-bleed. So the server marks the works whose first frame
+  // can carry a screen, and only those are eligible.
   const leadWork = page === 1 && activeFilterCount === 0 && sort === 'newest' && visible.length > 3
-    ? (visible.find((w) => (w.images || []).length > 1) || visible[0])
+    ? (visible.find((w) => w.featured && (w.images || []).length > 1)
+      || visible.find((w) => w.featured)
+      || null)
     : null;
   const gridWorks = leadWork ? visible.filter((w) => w !== leadWork) : visible;
   const resetFilters = () => { setCountry(ALL_COUNTRIES); setDiscipline(ALL_DISCIPLINES); setAuthor(''); setWithImageOnly(false); setRecentOnly(false); };
