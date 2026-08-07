@@ -14401,6 +14401,14 @@ const SHOWCASE_STATUS_LABEL = {
   Published: 'На сайте',
   Archived: 'В архиве',
 };
+const SHOWCASE_ENQUIRY_STATUS_LABEL = {
+  New: 'Новая',
+  Contacted: 'Контакт установлен',
+  'In progress': 'В работе',
+  Won: 'Взяли в проект',
+  Lost: 'Не подошло',
+  Archived: 'Архив',
+};
 
 function showcaseCard(work) {
   const photo = (work.images || [])[0]?.url || '';
@@ -14412,7 +14420,7 @@ function showcaseCard(work) {
     ? `<p style="margin:8px 0 0;color:#b8860b;font-size:12px">⚠ ${escapeHtml(work.holdReason)}</p>`
     : '';
   return `
-    <article class="card" style="display:flex;gap:16px;align-items:flex-start;margin-bottom:12px">
+    <article style="display:flex;gap:16px;align-items:flex-start;margin-bottom:12px;padding:14px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.72)">
       ${photo ? `<img src="${escapeHtml(photo)}" alt="" style="width:120px;height:150px;object-fit:cover;flex:none;background:#eee">` : ''}
       <div style="flex:1;min-width:0">
         <p class="card-desc" style="margin:0">${escapeHtml(SHOWCASE_STATUS_LABEL[work.status] || work.status)}${meta ? ' · ' + escapeHtml(meta) : ''}</p>
@@ -14427,6 +14435,35 @@ function showcaseCard(work) {
           ${work.status !== 'Under review' ? `<button class="btn" data-showcase-act="Under review" data-showcase-id="${escapeHtml(work.id)}" type="button">Вернуть в очередь</button>` : ''}
           ${work.sourceUrl ? `<a class="btn" href="${escapeHtml(work.sourceUrl)}" target="_blank" rel="noreferrer">Источник</a>` : ''}
         </div>
+      </div>
+    </article>`;
+}
+
+function showcaseEnquiryCard(enquiry) {
+  const details = [
+    enquiry.organisation,
+    enquiry.kind,
+    enquiry.place,
+    enquiry.when,
+    enquiry.budget,
+  ].filter(Boolean).join(' · ');
+  const contactHref = String(enquiry.contact || '').includes('@')
+    ? `mailto:${enquiry.contact}`
+    : (String(enquiry.contact || '').startsWith('http') ? enquiry.contact : '');
+  const status = SHOWCASE_ENQUIRY_STATUS_LABEL[enquiry.status] || enquiry.status || 'Новая';
+  return `
+    <article style="margin-bottom:12px;padding:14px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.72)">
+      <p class="card-desc" style="margin:0">${escapeHtml(status)}${enquiry.addedAt ? ' · ' + escapeHtml(new Date(enquiry.addedAt).toLocaleDateString('ru-RU')) : ''}</p>
+      <h3 style="margin:6px 0 2px;font-size:16px">${escapeHtml(enquiry.name || '—')}</h3>
+      ${details ? `<p class="card-desc" style="margin:4px 0 0">${escapeHtml(details)}</p>` : ''}
+      ${enquiry.contact ? `<p style="margin:8px 0 0;font-size:13px">${contactHref ? `<a href="${escapeHtml(contactHref)}">${escapeHtml(enquiry.contact)}</a>` : escapeHtml(enquiry.contact)}</p>` : ''}
+      ${enquiry.brief ? `<p style="margin:8px 0 0;font-size:13px;line-height:1.5;opacity:.84">${escapeHtml(enquiry.brief.slice(0, 420))}</p>` : ''}
+      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+        ${enquiry.status !== 'Contacted' ? `<button class="btn btn-primary" data-showcase-enquiry-act="Contacted" data-showcase-enquiry-id="${escapeHtml(enquiry.id)}" type="button">Связались</button>` : ''}
+        ${enquiry.status !== 'In progress' ? `<button class="btn" data-showcase-enquiry-act="In progress" data-showcase-enquiry-id="${escapeHtml(enquiry.id)}" type="button">В работу</button>` : ''}
+        ${enquiry.status !== 'Won' ? `<button class="btn" data-showcase-enquiry-act="Won" data-showcase-enquiry-id="${escapeHtml(enquiry.id)}" type="button">В проект</button>` : ''}
+        ${enquiry.status !== 'Lost' ? `<button class="btn" data-showcase-enquiry-act="Lost" data-showcase-enquiry-id="${escapeHtml(enquiry.id)}" type="button">Не подходит</button>` : ''}
+        ${enquiry.status !== 'Archived' ? `<button class="btn" data-showcase-enquiry-act="Archived" data-showcase-enquiry-id="${escapeHtml(enquiry.id)}" type="button">Архив</button>` : ''}
       </div>
     </article>`;
 }
@@ -14459,6 +14496,37 @@ async function loadShowcaseQueue() {
   }
 }
 
+async function loadShowcaseEnquiries() {
+  const box = byId('showcaseEnquiries');
+  const status = byId('showcaseEnquiryStatus');
+  if (!box) return;
+  const token = showcaseToken();
+  if (!token) {
+    status.textContent = 'Нет ключа бюро — войдите заново как админ.';
+    box.innerHTML = '';
+    return;
+  }
+  status.textContent = 'Загрузка…';
+  try {
+    const res = await fetch(`${SHOWCASE_API}/enquiries`, { headers: { 'X-Showcase-Token': token }, cache: 'no-store' });
+    if (!res.ok) throw new Error(`сервер ответил ${res.status}`);
+    const data = await res.json();
+    const enquiries = data.enquiries || [];
+    const order = { New: 0, Contacted: 1, 'In progress': 2, Won: 3, Lost: 4, Archived: 5 };
+    enquiries.sort((a, b) => (order[a.status] ?? 6) - (order[b.status] ?? 6) || String(b.addedAt || '').localeCompare(String(a.addedAt || '')));
+    const active = enquiries.filter((item) => !['Won', 'Lost', 'Archived'].includes(item.status)).length;
+    status.textContent = `${active} активных · ${enquiries.filter((item) => item.status === 'Won').length} в проекте · ${enquiries.filter((item) => item.status === 'Archived').length} в архиве`;
+    box.innerHTML = enquiries.length ? enquiries.map(showcaseEnquiryCard).join('') : '<p class="card-desc">Пока пусто.</p>';
+  } catch (error) {
+    status.textContent = `Не удалось загрузить: ${error.message}`;
+    box.innerHTML = '';
+  }
+}
+
+async function loadShowcaseAdmin() {
+  await Promise.all([loadShowcaseQueue(), loadShowcaseEnquiries()]);
+}
+
 async function showcaseSetStatus(id, next) {
   const token = showcaseToken();
   if (!token) return;
@@ -14475,10 +14543,28 @@ async function showcaseSetStatus(id, next) {
   await loadShowcaseQueue();
 }
 
+async function showcaseSetEnquiryStatus(id, next) {
+  const token = showcaseToken();
+  if (!token) return;
+  const res = await fetch(`${SHOWCASE_API}/enquiries/${encodeURIComponent(id)}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', 'X-Showcase-Token': token },
+    body: JSON.stringify({ status: next }),
+  });
+  if (!res.ok) {
+    const detail = await res.text();
+    alert(`Не получилось: ${res.status} ${detail.slice(0, 120)}`);
+    return;
+  }
+  await loadShowcaseEnquiries();
+}
+
 document.addEventListener('click', (event) => {
   const btn = event.target.closest('[data-showcase-act]');
   if (btn) { showcaseSetStatus(btn.dataset.showcaseId, btn.dataset.showcaseAct); return; }
-  if (event.target.closest('#showcaseReloadBtn')) loadShowcaseQueue();
+  const enquiryBtn = event.target.closest('[data-showcase-enquiry-act]');
+  if (enquiryBtn) { showcaseSetEnquiryStatus(enquiryBtn.dataset.showcaseEnquiryId, enquiryBtn.dataset.showcaseEnquiryAct); return; }
+  if (event.target.closest('#showcaseReloadBtn')) loadShowcaseAdmin();
   const tab = event.target.closest('.tab-btn[data-tab="showcase"]');
-  if (tab) loadShowcaseQueue();
+  if (tab) loadShowcaseAdmin();
 });
