@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, Layers3, Lightbulb, Ruler, Sparkle
 import { FALLBACK_CASES, fetchCase, fetchCases, type BureauCase } from './bureauApi';
 import { FALLBACK_WORKS, fetchWorks, type Work } from './showcaseApi';
 import { PLAYABLE_SLUGS } from '../stage/moves';
+import { btnGhost, btnSolid } from './ui';
 
 /**
  * Бюро — мастерская журнала: не «что показали», а «как это устроено».
@@ -24,19 +25,17 @@ const BUREAU_SERVICES = [
   { icon: Sparkles, title: 'Launch image', text: 'hero frame, social crop, invitation mood and editorial caption language' },
 ];
 
+/* Было двенадцать пунктов — целый экран текстового списка, где каждый пункт
+   набран антиквой в 2rem. Шесть держат ту же мысль и не превращают раздел в
+   оглавление: остальные шесть были вариациями этих же (полка/подиум/рейка —
+   одно и то же решение с разной фурнитурой). */
 const OBJECT_LIBRARY = [
   ['01', 'low plinth', 'a quiet platform that gives the object gravity before any text explains it'],
   ['02', 'mirror edge', 'a controlled reflection that doubles a gesture without turning the room into noise'],
   ['03', 'translucent curtain', 'soft depth, partial reveal, shadow readable from both sides'],
   ['04', 'backlit volume', 'a box that behaves like a window after dark'],
-  ['05', 'metal rail', 'thin industrial line for hanging, measuring and making the route legible'],
-  ['06', 'paper wall', 'warm matte surface for photographs, captions and projection bleed'],
-  ['07', 'glass shelf', 'a levitating plane for fragile objects, bottles, books, garments or maquettes'],
-  ['08', 'floor mark', 'the visitor route made physical: tape, stone inset, carpet edge or brass line'],
-  ['09', 'object shadow', 'the cheapest luxury: one hard shadow placed exactly where the camera wants it'],
-  ['10', 'arrival frame', 'an entrance image that gives the project its first memory'],
-  ['11', 'caption block', 'editorial language printed as part of the room, not pasted after it'],
-  ['12', 'night state', 'the second life of the installation when the street becomes the audience'],
+  ['05', 'floor mark', 'the visitor route made physical: tape, stone inset, carpet edge or brass line'],
+  ['06', 'night state', 'the second life of the installation when the street becomes the audience'],
 ];
 
 const MATERIALS = ['brushed steel', 'smoked glass', 'cream paper', 'wine lacquer', 'raw linen', 'warm LED', 'stone grey', 'black mirror'];
@@ -105,10 +104,10 @@ function BureauProductionIntro({ works }: { works: Work[] }) {
               We design visual situations for culture and brands: vitrines, sets, exhibition rooms, launch scenes and editorial environments where object, light and visitor route work as one image.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#bureau-services" className="inline-flex min-h-12 items-center gap-3 bg-[#f5f0eb] px-5 font-sans text-[10px] uppercase tracking-normal text-[#1a0b10] hover:bg-[#d7b46a]">
+              <a href="#bureau-services" className={btnSolid('ink')}>
                 What we make <ArrowRight size={15} />
               </a>
-              <a href="/showcase" className="inline-flex min-h-12 items-center gap-3 border border-[#f5f0eb]/22 px-5 font-sans text-[10px] uppercase tracking-normal text-[#f5f0eb]/82 hover:border-[#d7b46a] hover:text-[#f5f0eb]">
+              <a href="/showcase" className={btnGhost('ink')}>
                 Source vitrine <ArrowUpRight size={15} />
               </a>
             </div>
@@ -160,7 +159,7 @@ function BureauReferenceRoom({ works }: { works: Work[] }) {
         <div className="relative z-10 grid gap-8 border-b border-[#f5f0eb]/12 pb-10 lg:grid-cols-[minmax(0,0.62fr)_minmax(0,0.9fr)] lg:items-end">
           <div>
           <p className="font-sans text-[10px] uppercase tracking-normal text-[#d7b46a]">real references / object thinking</p>
-          <h2 className="mt-5 max-w-[11ch] font-display text-[clamp(3.2rem,7vw,6.8rem)] lowercase leading-[0.84] tracking-normal">
+          <h2 className="mt-5 max-w-[11ch] font-display text-[clamp(2.6rem,5.2vw,4.4rem)] lowercase leading-[0.84] tracking-normal">
             reference room
           </h2>
           </div>
@@ -168,7 +167,7 @@ function BureauReferenceRoom({ works }: { works: Work[] }) {
           <p className="max-w-[43rem] border-l border-[#d7b46a] pl-5 font-sans text-[17px] leading-relaxed text-[#f5f0eb]/72">
             Bureau starts with actual works and visible things: surfaces, shadows, shelves, curtains, podiums, frames, routes. The references below become decisions a fabricator, photographer and curator can all understand.
           </p>
-          <a href="/showcase" className="mt-8 inline-flex min-h-12 items-center gap-3 bg-[#f5f0eb] px-5 font-sans text-[10px] uppercase tracking-normal text-[#1a0b10] transition-colors hover:bg-[#d7b46a]">
+          <a href="/showcase" className={`${btnSolid('ink')} mt-8`}>
             Browse the source vitrine <ArrowUpRight size={15} />
           </a>
           </div>
@@ -206,12 +205,12 @@ function BureauReferenceRoom({ works }: { works: Work[] }) {
 
 function BureauObjectLibrary() {
   return (
-    <section className="border-b border-[#1a0b10]/12 bg-[#f5f0eb] text-[#1a0b10]">
+    <section className="border-b border-[#1a0b10]/12 bg-[#f0e7d9] text-[#1a0b10]">
       <div className="mx-auto max-w-[1700px] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 xl:px-16">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.6fr)_minmax(0,1fr)]">
           <div>
             <p className="font-sans text-[10px] uppercase tracking-normal text-[#4a1728]/56">object library</p>
-            <h2 className="mt-5 max-w-[7ch] font-display text-[clamp(3.6rem,8vw,7.6rem)] lowercase leading-[0.78] tracking-normal">
+            <h2 className="mt-5 max-w-[7ch] font-display text-[clamp(2.6rem,5.2vw,4.4rem)] lowercase leading-[0.78] tracking-normal">
               the useful beautiful things
             </h2>
           </div>
@@ -240,7 +239,7 @@ function BureauServices() {
       <div className="mx-auto grid max-w-[1700px] lg:grid-cols-[minmax(0,0.74fr)_minmax(0,1fr)]">
         <div className="px-5 py-12 sm:px-8 lg:px-12 xl:px-16">
           <p className="font-sans text-[10px] uppercase tracking-normal text-[#4a1728]/58">Bureau output</p>
-          <h2 className="mt-5 max-w-[8ch] font-display text-[clamp(3.6rem,8vw,7.4rem)] lowercase leading-[0.78] tracking-normal">
+          <h2 className="mt-5 max-w-[8ch] font-display text-[clamp(2.6rem,5.2vw,4.4rem)] lowercase leading-[0.78] tracking-normal">
             designed to be built
           </h2>
           <p className="mt-7 max-w-[34rem] text-[17px] leading-relaxed text-[#4a1728]/72">
@@ -357,7 +356,7 @@ function CaseList({ items, works }: { items: BureauCase[]; works: Work[] }) {
       <BureauObjectLibrary />
       <div className="mx-auto max-w-[1600px] px-5 py-12 sm:px-8 sm:py-16 lg:px-12">
         <p className="font-sans text-[10px] uppercase tracking-normal text-[#d7b46a]">case studies</p>
-        <h2 className="mt-4 max-w-[9ch] font-display text-[clamp(3.4rem,8vw,7rem)] lowercase leading-[0.78] tracking-normal text-[#f5f0eb]">
+        <h2 className="mt-4 max-w-[9ch] font-display text-[clamp(2.6rem,5.2vw,4.4rem)] lowercase leading-[0.78] tracking-normal text-[#f5f0eb]">
           breakdowns
         </h2>
         <p className="mt-6 max-w-[54ch] font-sans text-[15px] leading-relaxed text-[#f5f0eb]/70 sm:text-[17px]">

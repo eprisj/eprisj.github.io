@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { encodeScene } from '../stage/sceneUrl';
 import { newId, type Scene } from '../stage/sceneModel';
 import type { Work } from './showcaseApi';
+import { btnGhost, btnQuiet, btnSolid } from './ui';
 
 type AtlasMode = {
   id: string;
@@ -73,7 +74,6 @@ const PROJECT_TYPES = [
 ];
 
 const ATLAS_LABEL = 'font-sans text-[10px] uppercase tracking-normal text-[#f8f3ea]/52';
-const ATLAS_BUTTON = 'inline-flex min-h-12 items-center justify-center gap-2 border border-[#f8f3ea]/22 px-4 font-sans text-[10px] uppercase tracking-normal text-[#f8f3ea]/82 transition-colors hover:border-[#d7b46a] hover:text-[#f8f3ea] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d7b46a]';
 
 type AtlasNode = {
   work: Work;
@@ -302,7 +302,7 @@ function RouteImageWall({ route, active, onPick }: { route: AtlasNode[]; active?
   const supporting = route.filter((node) => node.work.id !== hero?.id).slice(0, 4);
 
   return (
-    <div className="relative min-h-[640px] overflow-hidden border-y border-[#f8f3ea]/14 lg:min-h-[calc(100dvh-7rem)] lg:border-y-0 lg:border-l lg:border-[#f8f3ea]/14">
+    <div className="relative min-h-[520px] overflow-hidden border-y border-[#f8f3ea]/14 lg:min-h-[70vh] lg:border-y-0 lg:border-l lg:border-[#f8f3ea]/14">
       <div className="absolute inset-0 bg-[#12090b]" />
       {heroImage ? (
         <img
@@ -346,7 +346,7 @@ function RouteImageWall({ route, active, onPick }: { route: AtlasNode[]; active?
           onClick={() => hero && onPick(hero)}
           className="group mt-4 block max-w-[44rem] text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d7b46a]"
         >
-          <h3 className="font-display text-[clamp(3rem,7vw,7.8rem)] lowercase leading-[0.78] tracking-normal text-[#f8f3ea] decoration-[#d7b46a] underline-offset-[10px] group-hover:underline">
+          <h3 className="font-display text-[clamp(2.4rem,5vw,4.8rem)] lowercase leading-[0.78] tracking-normal text-[#f8f3ea] decoration-[#d7b46a] underline-offset-[10px] group-hover:underline">
             {hero?.title || 'the vitrine is being assembled'}
           </h3>
           {hero && (
@@ -360,101 +360,7 @@ function RouteImageWall({ route, active, onPick }: { route: AtlasNode[]; active?
   );
 }
 
-function BureauSetDesignSection({ route, stageHref, onCommission, onPick }: { route: AtlasNode[]; stageHref: string; onCommission: () => void; onPick: (work: Work) => void }) {
-  const hero = route[1]?.work || route[0]?.work;
-  const second = route[2]?.work || route[0]?.work;
-  const third = route[3]?.work || route[1]?.work || route[0]?.work;
-  const services = [
-    ['01', 'set design', 'temporary rooms, stages, backdrops and product scenes'],
-    ['02', 'window vitrine', 'one exact street-facing image with light, depth and threshold'],
-    ['03', 'exhibition script', 'route, wall rhythm, object hierarchy and visitor pace'],
-    ['04', 'visual system', 'materials, palette, signage, photo angles and launch assets'],
-  ];
-
-  return (
-    <section className="relative overflow-hidden bg-[#eee6da] text-[#1a0b10]">
-      <div className="mx-auto grid max-w-[1900px] border-t border-[#1a0b10]/12 lg:grid-cols-[minmax(0,0.96fr)_minmax(420px,0.54fr)]">
-        <div className="relative min-h-[760px] px-5 py-10 sm:px-8 lg:min-h-[860px] lg:px-12 xl:px-16">
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(26,11,16,.08)_1px,transparent_1px),linear-gradient(rgba(26,11,16,.06)_1px,transparent_1px)] bg-[size:8.333%_88px]" />
-          <div className="absolute left-[8%] top-24 h-[560px] w-[58%] bg-[#d7b46a]/20 blur-3xl" aria-hidden="true" />
-          <div className="relative z-10">
-            <p className="font-sans text-[10px] uppercase tracking-normal text-[#4a1728]/56">EPRIS Bureau / production design</p>
-            <h2 className="mt-5 max-w-[8ch] font-display text-[clamp(4rem,10vw,9.5rem)] lowercase leading-[0.78] tracking-normal text-[#1a0b10]">
-              we build the set
-            </h2>
-            <p className="mt-7 max-w-[39rem] border-l border-[#4a1728] pl-5 font-sans text-[17px] leading-relaxed text-[#4a1728]/72 sm:text-[19px]">
-              Bureau turns a cultural idea into a physical-looking scene: vitrines, pop-up rooms, editorial sets, launch displays and exhibition routes with light, shadow, material and camera logic.
-            </p>
-          </div>
-
-          <div className="relative z-10 mt-12 h-[520px] sm:h-[620px]">
-            <div className="absolute bottom-0 left-[2%] h-[52%] w-[84%] origin-bottom -skew-x-6 bg-[#211014] shadow-[42px_54px_90px_rgba(26,11,16,.32)]" />
-            <div className="absolute bottom-[13%] left-[10%] h-[62%] w-[29%] bg-[#f8f3ea] p-3 shadow-[18px_30px_70px_rgba(26,11,16,.32)] sm:p-4">
-              {workImage(hero) ? (
-                <button type="button" onClick={() => hero && onPick(hero)} className="group h-full w-full overflow-hidden bg-[#241016] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#4a1728]">
-                  <img src={workImage(hero)} alt={hero?.title || ''} loading="lazy" className="h-full w-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-[1.035]" />
-                </button>
-              ) : <div className="grid h-full place-items-center bg-[#241016] text-[#f8f3ea]/35"><Box size={28} /></div>}
-            </div>
-            <div className="absolute bottom-[24%] left-[39%] h-[49%] w-[36%] bg-[#4a1728] p-3 shadow-[26px_36px_80px_rgba(26,11,16,.35)] sm:p-4">
-              {workImage(second) ? <img src={workImage(second)} alt={second?.title || ''} loading="lazy" className="h-full w-full object-cover mix-blend-luminosity opacity-[.86]" /> : null}
-              <div className="absolute inset-0 bg-[linear-gradient(120deg,transparent_0%,rgba(248,243,234,.34)_42%,transparent_58%)]" />
-            </div>
-            <div className="absolute bottom-[7%] right-[4%] h-[38%] w-[24%] bg-[#c8cfd0] p-2 shadow-[16px_24px_62px_rgba(26,11,16,.25)] sm:p-3">
-              {workImage(third) ? <img src={workImage(third)} alt={third?.title || ''} loading="lazy" className="h-full w-full object-cover opacity-[.88] saturate-[.75]" /> : null}
-            </div>
-            <div className="absolute left-[6%] top-[6%] h-px w-[82%] bg-[#1a0b10]/20" />
-            <div className="absolute left-[6%] top-[6%] h-[72%] w-px bg-[#1a0b10]/20" />
-            <div className="absolute right-[18%] top-[2%] h-[44%] w-px rotate-[24deg] bg-[#d7b46a]" />
-            <div className="absolute left-[46%] top-[14%] h-[70%] w-[18%] rotate-[19deg] bg-[#d7b46a]/28 shadow-[0_0_60px_rgba(215,180,106,.42)]" />
-            <div className="absolute bottom-[4%] left-[10%] right-[7%] flex items-end justify-between gap-6 text-[#f8f3ea]">
-              <div>
-                <p className="font-sans text-[10px] uppercase tracking-normal text-[#f8f3ea]/58">light study</p>
-                <p className="mt-2 max-w-[18rem] font-display text-[2.5rem] lowercase leading-[0.85]">shadow, threshold, object, route</p>
-              </div>
-              <a href="/bureau" className="hidden min-h-12 items-center gap-2 border border-[#f8f3ea]/30 px-4 font-sans text-[10px] uppercase tracking-normal hover:bg-[#f8f3ea] hover:text-[#1a0b10] sm:inline-flex">
-                Bureau <ArrowRight size={14} />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <aside className="border-t border-[#1a0b10]/12 px-5 py-9 sm:px-8 lg:border-l lg:border-t-0 lg:px-10 xl:px-12">
-          <p className="font-sans text-[10px] uppercase tracking-normal text-[#4a1728]/56">what we design</p>
-          <div className="mt-7 divide-y divide-[#1a0b10]/12 border-y border-[#1a0b10]/12">
-            {services.map(([num, title, text]) => (
-              <div key={title} className="group grid grid-cols-[3.2rem_1fr] gap-5 py-5 transition-colors hover:bg-[#1a0b10]/[0.025]">
-                <span className="font-display text-[2.15rem] leading-none text-[#b8956e]">{num}</span>
-                <span>
-                  <span className="block font-display text-[2rem] lowercase leading-[0.9] text-[#1a0b10] decoration-[#b8956e] underline-offset-4 group-hover:underline">{title}</span>
-                  <span className="mt-2 block font-sans text-[15px] leading-relaxed text-[#4a1728]/68">{text}</span>
-                </span>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 bg-[#1a0b10] p-5 text-[#f8f3ea] shadow-[0_28px_80px_rgba(26,11,16,.28)] sm:p-6">
-            <p className="font-sans text-[10px] uppercase tracking-normal text-[#d7b46a]">from vitrine to buildable scene</p>
-            <p className="mt-4 font-sans text-[15px] leading-relaxed text-[#f8f3ea]/72">
-              We take references from the showcase, define the visual grammar, then deliver a set direction: plan, material mood, lighting logic, photo positions and a clear production brief.
-            </p>
-            <div className="mt-6 grid gap-3">
-              <button type="button" onClick={onCommission} className="inline-flex min-h-12 items-center justify-center gap-3 bg-[#f8f3ea] px-5 font-sans text-[10px] uppercase tracking-normal text-[#1a0b10] transition-colors hover:bg-[#d7b46a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d7b46a]">
-                Start a Bureau brief
-                <ArrowRight size={15} />
-              </button>
-              <a href={stageHref} className="inline-flex min-h-12 items-center justify-center gap-2 border border-[#f8f3ea]/20 px-4 font-sans text-[10px] uppercase tracking-normal text-[#f8f3ea]/82 hover:border-[#d7b46a] hover:text-[#f8f3ea]">
-                Open as production board
-              </a>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-  );
-}
-
-export function ShowcaseAtlas({ works, loading, onOpenWork, onCommission }: { works: Work[]; loading: boolean; onOpenWork: (work: Work) => void; onCommission: () => void }) {
+export function ShowcaseAtlas({ works, loading, onOpenWork }: { works: Work[]; loading: boolean; onOpenWork: (work: Work) => void }) {
   const [modeId, setModeId] = useState(MODES[0].id);
   const [projectId, setProjectId] = useState(PROJECT_TYPES[0].id);
   const [copyState, setCopyState] = useState<'idle' | 'copied'>('idle');
@@ -501,7 +407,7 @@ export function ShowcaseAtlas({ works, loading, onOpenWork, onCommission }: { wo
       <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'linear-gradient(90deg, #f8f3ea 1px, transparent 1px)', backgroundSize: '9.2vw 100%' }} />
       <div className="relative mx-auto max-w-[1900px]">
         <div className="grid lg:grid-cols-[minmax(340px,0.78fr)_minmax(0,1.22fr)]">
-          <div className="relative z-10 flex min-h-[540px] flex-col justify-between px-5 py-6 sm:px-8 sm:py-8 lg:min-h-[calc(100dvh-5rem)] lg:px-10 xl:px-14">
+          <div className="relative z-10 flex min-h-[480px] flex-col justify-between px-5 py-8 sm:px-8 lg:min-h-[70vh] lg:px-10 xl:px-14">
             <div>
               <div className="flex items-center justify-between gap-4">
                 <p className={ATLAS_LABEL}>{loading ? 'Reading API' : `${nodes.length} staged works`}</p>
@@ -518,13 +424,13 @@ export function ShowcaseAtlas({ works, loading, onOpenWork, onCommission }: { wo
                 className="mt-14"
               >
                 <p className="font-sans text-[11px] uppercase tracking-normal text-[#d7b46a]">{mode.label} / {project.label}</p>
-                <h2 className="mt-5 max-w-[8.8ch] font-display text-[clamp(4.2rem,11.2vw,10rem)] lowercase leading-[0.76] tracking-normal text-[#f8f3ea]">
+                <h2 className="mt-5 max-w-[8.8ch] font-display text-[clamp(3.2rem,7.4vw,6.4rem)] lowercase leading-[0.76] tracking-normal text-[#f8f3ea]">
                   references become rooms
                 </h2>
                 <p className="mt-8 max-w-[31rem] border-l border-[#d7b46a] pl-5 font-sans text-[17px] leading-relaxed text-[#f8f3ea]/76">
                   {mode.thesis} Use the vitrine as a source library, then move the strongest visual logic into a Bureau brief.
                 </p>
-                <a href="/bureau" className="mt-7 inline-flex min-h-12 items-center gap-3 border border-[#f8f3ea]/24 px-5 font-sans text-[10px] uppercase tracking-normal text-[#f8f3ea]/86 transition-colors hover:border-[#d7b46a] hover:bg-[#f8f3ea] hover:text-[#12090b]">
+                <a href="/bureau" className={`${btnGhost('ink')} mt-7`}>
                   Take references to Bureau <ArrowRight size={15} />
                 </a>
               </motion.div>
@@ -563,23 +469,26 @@ export function ShowcaseAtlas({ works, loading, onOpenWork, onCommission }: { wo
         </div>
 
         <div className="grid border-t border-[#f8f3ea]/14 lg:grid-cols-[minmax(0,1fr)_minmax(400px,0.42fr)]">
-          <div className="px-5 py-7 sm:px-8 lg:px-10">
+          {/* self-start обязателен: соседняя колонка — маршрут на пять пунктов,
+              и без него эта растягивалась под её высоту, оставляя под абзацем
+              пустой полуэкран. */}
+          <div className="px-5 py-7 sm:px-8 lg:self-start lg:px-10">
             <div className="flex items-center gap-2">
               <Layers3 size={16} className="text-[#d7b46a]" />
               <p className={ATLAS_LABEL}>Reference lens</p>
             </div>
-            <div className="mt-5 grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
+            {/* Ряд табов, а не четыре высоких плитки: после того как из них
+                убрали density-число, в блоке min-h-14 осталась одна строка в
+                12px, и кнопки читались как пустые поля ввода. */}
+            <div className="mt-4 flex flex-wrap gap-2">
               {PROJECT_TYPES.map((item) => (
                 <button
                   key={item.id}
                   type="button"
                   onClick={() => setProjectId(item.id)}
-                  className={`flex min-h-14 items-center border px-4 text-left transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d7b46a] ${item.id === project.id ? 'border-[#f8f3ea] bg-[#f8f3ea] text-[#12090b]' : 'border-[#f8f3ea]/14 text-[#f8f3ea]/72 hover:border-[#d7b46a]'}`}
+                  className={`inline-flex min-h-11 items-center border px-4 font-sans text-[11px] uppercase tracking-normal transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d7b46a] ${item.id === project.id ? 'border-[#f8f3ea] bg-[#f8f3ea] text-[#12090b]' : 'border-[#f8f3ea]/14 text-[#f8f3ea]/72 hover:border-[#d7b46a] hover:text-[#f8f3ea]'}`}
                 >
-                  {/* Раньше здесь стояло Math.round(density*100) — 72, 90, 115, 82.
-                      density задаёт шаг расстановки объектов в собираемой сцене;
-                      крупной антиквой рядом с названием он читался как оценка. */}
-                  <span className="font-sans text-[12px] uppercase tracking-normal">{item.label}</span>
+                  {item.label}
                 </button>
               ))}
             </div>
@@ -609,20 +518,22 @@ export function ShowcaseAtlas({ works, loading, onOpenWork, onCommission }: { wo
               ))}
             </ol>
 
-            <div className="mt-6 grid grid-cols-2 gap-3">
-              <button type="button" onClick={handleCopyDossier} className={ATLAS_BUTTON}>
-                {copyState === 'copied' ? <Check size={14} /> : <Copy size={14} />}
-                {copyState === 'copied' ? 'Copied' : 'Copy brief'}
-              </button>
-              <button type="button" onClick={handleExportDossier} disabled={exporting || !route.length} className={`${ATLAS_BUTTON} disabled:opacity-40`}>
+            {/* Две равновесные кнопки читались как выбор из двух незнакомых
+                действий. Досье — то, что человек уносит с собой; копирование
+                текста в буфер — служебный дубль того же, и стоит тише. */}
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <button type="button" onClick={handleExportDossier} disabled={exporting || !route.length} className={`${btnSolid('ink')} disabled:opacity-40`}>
                 {exporting ? <Loader2 size={14} className="animate-spin" /> : <FileDown size={14} />}
                 Dossier PDF
+              </button>
+              <button type="button" onClick={handleCopyDossier} className={btnQuiet('ink')}>
+                {copyState === 'copied' ? <Check size={14} /> : <Copy size={14} />}
+                {copyState === 'copied' ? 'Copied' : 'Copy as text'}
               </button>
             </div>
           </aside>
         </div>
       </div>
-      <BureauSetDesignSection route={route} stageHref={stageHref} onCommission={onCommission} onPick={(work) => { setActiveId(work.id); onOpenWork(work); }} />
     </section>
   );
 }

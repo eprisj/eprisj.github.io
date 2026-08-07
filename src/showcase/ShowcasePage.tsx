@@ -8,6 +8,7 @@ import {
   externalUrl, fetchWorks, flag, normalizeInstagram, submitWork,
 } from './showcaseApi';
 import { Commission } from './Commission';
+import { btnGhost, btnSolid } from './ui';
 import { ShowcaseAtlas } from './ShowcaseAtlas';
 
 const PAGE_SIZE = 24;
@@ -175,9 +176,9 @@ function WorkDetail({ work, onClose }: { work: Work; onClose: () => void }) {
         <Decomposition work={work} />
 
         <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-          {handle && <a href={`https://www.instagram.com/${encodeURIComponent(handle)}/`} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#4a1728] px-6 font-sans text-[10px] uppercase tracking-[0.18em] text-white transition-transform hover:-translate-y-0.5"><Instagram size={16} /> @{handle}</a>}
-          {work.portfolio && <a href={externalUrl(work.portfolio)} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#4a1728]/20 px-6 font-sans text-[10px] uppercase tracking-[0.18em] transition-colors hover:bg-[#fdfaf6]">Portfolio <ArrowUpRight size={15} /></a>}
-          {work.sourceUrl && work.sourceUrl !== work.portfolio && <a href={externalUrl(work.sourceUrl)} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#4a1728]/20 px-6 font-sans text-[10px] uppercase tracking-[0.18em] transition-colors hover:bg-[#fdfaf6]">Source <ArrowUpRight size={15} /></a>}
+          {handle && <a href={`https://www.instagram.com/${encodeURIComponent(handle)}/`} target="_blank" rel="noreferrer" className={btnSolid('bone')}><Instagram size={16} /> @{handle}</a>}
+          {work.portfolio && <a href={externalUrl(work.portfolio)} target="_blank" rel="noreferrer" className={btnGhost('bone')}>Portfolio <ArrowUpRight size={15} /></a>}
+          {work.sourceUrl && work.sourceUrl !== work.portfolio && <a href={externalUrl(work.sourceUrl)} target="_blank" rel="noreferrer" className={btnGhost('bone')}>Source <ArrowUpRight size={15} /></a>}
         </div>
       </div>
     </ModalShell>
@@ -233,8 +234,8 @@ function SubmitWork({ onClose, onAdded }: { onClose: () => void; onAdded: (work:
       </div>
       {message && <div role="status" className={`mt-6 rounded-xl border p-4 text-sm ${state === 'success' ? 'border-emerald-200 bg-emerald-50 text-emerald-900' : 'border-red-200 bg-red-50 text-red-900'}`}>{state === 'success' && <Check size={16} className="mr-2 inline" />}{message}</div>}
       <div className="mt-7 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
-        <button type="button" onClick={onClose} className="min-h-12 border border-[#1a0b10]/20 px-6 font-sans text-[10px] uppercase tracking-[0.18em] transition-colors hover:border-[#1a0b10]/45">{state === 'success' ? 'Close' : 'Cancel'}</button>
-        {state !== 'success' && <button type="submit" disabled={state === 'sending'} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#4a1728] px-7 font-sans text-[10px] uppercase tracking-[0.18em] text-white disabled:opacity-60">{state === 'sending' ? <Loader2 size={16} className="animate-spin" /> : <Plus size={16} />} Submit work</button>}
+        <button type="button" onClick={onClose} className={btnGhost('bone')}>{state === 'success' ? 'Close' : 'Cancel'}</button>
+        {state !== 'success' && <button type="submit" disabled={state === 'sending'} className={`${btnSolid('bone')} disabled:opacity-60`}>{state === 'sending' ? <Loader2 size={16} className="animate-spin" /> : <Plus size={16} />} Submit work</button>}
       </div>
     </form>
   </ModalShell>;
@@ -290,13 +291,6 @@ export function ShowcasePage() {
       .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
       .map(([name, count]) => ({ name, count }));
   }, [works]);
-
-  const segments = useMemo(() => [
-    { label: 'Sources of inspiration', value: ALL_DISCIPLINES },
-    ...['Set design', 'Scenography', 'Installation', 'Conceptual art']
-      .filter((name) => works.some((work) => work.discipline === name))
-      .map((name) => ({ label: name, value: name })),
-  ], [works]);
 
   const selectedSegment = discipline === ALL_DISCIPLINES ? 'sources of inspiration' : discipline;
   const disciplineTabs = useMemo(() => {
@@ -368,16 +362,6 @@ export function ShowcasePage() {
         </div>
       </div>
 
-      <nav aria-label="Disciplines" className="border-t border-[#4a1728]/10">
-        <div className="mx-auto flex max-w-[1600px] items-center gap-6 overflow-x-auto px-4 py-3 font-sans text-[9px] uppercase tracking-[0.18em] sm:justify-center sm:px-8 lg:px-12">
-          <button type="button" onClick={() => setDiscipline(ALL_DISCIPLINES)} className={`whitespace-nowrap transition-colors ${discipline === ALL_DISCIPLINES ? 'text-[#4a1728]' : 'text-[#4a1728]/55 hover:text-[#4a1728]'}`}>Inspiration sources</button>
-          {disciplineTabs.map((tab) => (
-            <button key={tab.name} type="button" onClick={() => setDiscipline((current) => (current === tab.name ? ALL_DISCIPLINES : tab.name))} className={`whitespace-nowrap transition-colors ${discipline === tab.name ? 'text-[#4a1728]' : 'text-[#4a1728]/55 hover:text-[#4a1728]'}`}>
-              {tab.name}
-            </button>
-          ))}
-        </div>
-      </nav>
     </header>
 
     <main>
@@ -456,11 +440,12 @@ export function ShowcasePage() {
         works={filtered.length ? filtered : works}
         loading={loading}
         onOpenWork={setSelected}
-        onCommission={() => setCommissioning(true)}
       />
 
-      {/* Catalogue head, in the shop's order: crumb, title with a count, then
-          the segment row — no editorial hero in front of the goods. */}
+      {/* Catalogue head: crumb, name of the current cut, count. Дисциплины
+          отсюда убраны — тот же список стоит в сайдбаре в трёх сантиметрах
+          ниже, и две копии одного фильтра расходились по состоянию на глазах
+          у читателя. Заголовок здесь h2: h1 на странице один, в первом кадре. */}
       <section className="px-4 pt-10 sm:px-8 lg:px-12 lg:pt-14">
         <div className="mx-auto max-w-[1600px]">
           <nav aria-label="Breadcrumb" className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#4a1728]/55">
@@ -469,7 +454,7 @@ export function ShowcasePage() {
 
           <div className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
             <div className="min-w-0">
-              <h1 className="font-display text-[clamp(3.8rem,10.6vw,8rem)] lowercase leading-[0.82] tracking-normal">{selectedSegment}</h1>
+              <h2 className="font-display text-[clamp(2.6rem,6vw,4.6rem)] lowercase leading-[0.86] tracking-normal">{selectedSegment}</h2>
               <p className="mt-4 max-w-[48rem] font-sans text-[15px] leading-relaxed text-[#4a1728]/64 sm:text-[17px]">
                 A curated reference shelf for rooms, windows, sets and exhibition moves. Save the visual language here, then take it into Bureau when the idea needs a built scene.
               </p>
@@ -478,26 +463,10 @@ export function ShowcasePage() {
               <p className="border border-[#4a1728]/12 px-4 py-3 font-sans text-[9px] uppercase tracking-[0.16em] text-[#4a1728]/55">
                 {loading ? 'Loading…' : `${filtered.length} ${filtered.length === 1 ? 'reference' : 'references'}`}
               </p>
-              <a href="/bureau" className="inline-flex min-h-12 items-center gap-3 bg-[#1a0b10] px-5 font-sans text-[10px] uppercase tracking-normal text-[#f5f0eb] transition-colors hover:bg-[#4a1728]">
+              <a href="/bureau" className={btnSolid('bone')}>
                 Open Bureau <ArrowUpRight size={15} />
               </a>
             </div>
-          </div>
-
-          <div className="mt-6 flex flex-wrap gap-2">
-            {segments.map((segment) => {
-              const active = discipline === segment.value;
-              return (
-                <button
-                  key={segment.label}
-                  type="button"
-                  onClick={() => setDiscipline(segment.value)}
-                  className={`inline-flex min-h-10 items-center border px-5 font-sans text-[9px] uppercase tracking-[0.16em] transition-colors ${active ? 'border-[#1a0b10] bg-[#1a0b10] text-[#f5f0eb]' : 'border-[#1a0b10]/15 bg-transparent text-[#1a0b10]/70 hover:border-[#1a0b10]/45'}`}
-                >
-                  {segment.label}
-                </button>
-              );
-            })}
           </div>
         </div>
       </section>
@@ -577,23 +546,14 @@ export function ShowcasePage() {
           </aside>
 
           <div className="min-w-0">
-            {authorList.length > 1 && (
-              <div className="mb-5 flex gap-2 overflow-x-auto pb-1">
-                {authorList.slice(0, 24).map((entry) => {
-                  const active = author === entry.name;
-                  return (
-                    <button
-                      key={entry.name}
-                      type="button"
-                      onClick={() => setAuthor(active ? '' : entry.name)}
-                      className={`inline-flex min-h-9 shrink-0 items-center gap-2 border px-4 font-sans text-[9px] uppercase tracking-[0.14em] transition-colors ${active ? 'border-[#4a1728] bg-[#4a1728] text-white' : 'border-[#4a1728]/15 bg-[#fdfaf6] text-[#4a1728]/80 hover:border-[#4a1728]/40'}`}
-                    >
-                      {entry.name}
-                      <span className={active ? 'text-white/60' : 'text-[#4a1728]/40'}>{entry.count}</span>
-                    </button>
-                  );
-                })}
-              </div>
+            {/* Ряд чипсов авторов стоял здесь вторым способом выбрать автора —
+                при том, что первый (список в сайдбаре) виден в том же экране.
+                Осталось активное состояние: что фильтр включён, видно по
+                строке ниже и по кнопке сброса. */}
+            {author && (
+              <button type="button" onClick={() => setAuthor('')} className="mb-5 inline-flex min-h-11 items-center gap-2 border border-[#4a1728] bg-[#4a1728] px-4 font-sans text-[9px] uppercase tracking-[0.14em] text-white">
+                {author} <X size={13} />
+              </button>
             )}
 
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#4a1728]/10 pb-4">
@@ -618,7 +578,7 @@ export function ShowcasePage() {
             ) : error ? (
               <div className="my-12 rounded-2xl border border-red-200 bg-red-50 p-7 text-red-900">
                 <p>{error}</p>
-                <button type="button" onClick={() => window.location.reload()} className="mt-4 min-h-11 rounded-full border border-red-300 px-5 font-sans text-[9px] uppercase tracking-[0.15em]">Try again</button>
+                <button type="button" onClick={() => window.location.reload()} className={`${btnGhost('bone')} mt-4 border-red-300 text-red-900`}>Try again</button>
               </div>
             ) : visible.length === 0 ? (
               <div className="grid min-h-[26rem] place-items-center px-6 text-center">
@@ -627,8 +587,8 @@ export function ShowcasePage() {
                   <p className="mt-5 font-display text-[clamp(2.6rem,7vw,5rem)] lowercase leading-[0.84] tracking-normal">{works.length === 0 ? 'The vitrine is being assembled.' : 'No works match these filters.'}</p>
                   <p className="mt-4 text-sm leading-relaxed text-[#4a1728]/65">{works.length === 0 ? 'Submissions are open — the first works are under editorial review. Send yours and it goes into the queue.' : 'Try clearing a filter or widening the search.'}</p>
                   <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-                    {works.length > 0 && activeFilterCount > 0 && <button type="button" onClick={resetFilters} className="min-h-12 rounded-full border border-[#4a1728]/20 px-6 font-sans text-[10px] uppercase tracking-[0.18em] hover:bg-[#fdfaf6]">Clear filters</button>}
-                    <button type="button" onClick={() => setSubmitting(true)} className="inline-flex min-h-12 items-center justify-center gap-2 bg-[#1a0b10] px-7 font-sans text-[10px] uppercase tracking-[0.18em] text-[#f5f0eb]"><Plus size={16} /> Submit work</button>
+                    {works.length > 0 && activeFilterCount > 0 && <button type="button" onClick={resetFilters} className={btnGhost('bone')}>Clear filters</button>}
+                    <button type="button" onClick={() => setSubmitting(true)} className={btnSolid('bone')}><Plus size={16} /> Submit work</button>
                   </div>
                 </div>
               </div>
@@ -648,7 +608,10 @@ export function ShowcasePage() {
                      й у вузьких сусідів. */
                   const wide = index % 5 === 3;
                   return (
-                  <button key={work.id} type="button" onClick={() => setSelected(work)} aria-label={`${work.title} — ${work.author}`} className={`group flex flex-col text-left ${wide ? "sm:col-span-2" : ""}`}>
+                  /* Карточка кликабельна целиком, но настоящая кнопка на ней
+                     одна — «read». Обёртка поэтому div, а не button: кнопка в
+                     кнопке — невалидная разметка, и клавиатура в ней теряется. */
+                  <div key={work.id} onClick={() => setSelected(work)} className={`group flex cursor-pointer flex-col text-left ${wide ? "sm:col-span-2" : ""}`}>
                     <div className={`relative overflow-hidden border border-[#4a1728]/10 bg-[#e9dece] shadow-[0_18px_42px_rgba(74,23,40,.08)] transition-[box-shadow,transform,border-color] duration-300 group-hover:-translate-y-1 group-hover:border-[#4a1728]/24 group-hover:shadow-[0_34px_82px_rgba(74,23,40,.16)] ${wide ? "aspect-[4/5] sm:aspect-[5/3]" : "aspect-[4/5]"}`}>
                       <WorkPlate work={work} index={index} className="absolute inset-0 h-full w-full" />
                       {work.status === 'Under review' && (
@@ -676,8 +639,16 @@ export function ShowcasePage() {
                           (work.images || []).length > 1 ? `${(work.images || []).length} frames` : '',
                         ].filter(Boolean).join(' · ')}
                       </p>
+                      <button
+                        type="button"
+                        onClick={(event) => { event.stopPropagation(); setSelected(work); }}
+                        aria-label={`Read ${work.title} — ${work.author}`}
+                        className="mt-4 inline-flex min-h-11 w-fit items-center gap-2 border border-[#1a0b10]/20 px-4 font-sans text-[9px] uppercase tracking-[0.16em] text-[#1a0b10] transition-colors group-hover:border-[#1a0b10]/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4a1728]"
+                      >
+                        Read <ArrowRight size={13} />
+                      </button>
                     </div>
-                  </button>
+                  </div>
                   );
                 })}
               </div>
@@ -686,9 +657,9 @@ export function ShowcasePage() {
 
             {!loading && !error && filtered.length > PAGE_SIZE && (
               <nav className="mt-12 flex items-center justify-between border-t border-[#4a1728]/10 pt-6" aria-label="Work pages">
-                <button type="button" onClick={() => { setPage((value) => Math.max(1, value - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }} disabled={page === 1} className="inline-flex min-h-11 items-center gap-2 border border-[#1a0b10]/15 px-5 font-sans text-[9px] uppercase tracking-[0.15em] transition-colors hover:border-[#1a0b10]/45 disabled:opacity-30"><ArrowLeft size={14} /> Previous</button>
+                <button type="button" onClick={() => { setPage((value) => Math.max(1, value - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }} disabled={page === 1} className={`${btnGhost('bone')} disabled:opacity-30`}><ArrowLeft size={14} /> Previous</button>
                 <span className="font-sans text-[9px] uppercase tracking-[0.16em] text-[#4a1728]/55">{page} / {pages}</span>
-                <button type="button" onClick={() => { setPage((value) => Math.min(pages, value + 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }} disabled={page === pages} className="inline-flex min-h-11 items-center gap-2 border border-[#1a0b10]/15 px-5 font-sans text-[9px] uppercase tracking-[0.15em] transition-colors hover:border-[#1a0b10]/45 disabled:opacity-30">Next <ArrowRight size={14} /></button>
+                <button type="button" onClick={() => { setPage((value) => Math.min(pages, value + 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }} disabled={page === pages} className={`${btnGhost('bone')} disabled:opacity-30`}>Next <ArrowRight size={14} /></button>
               </nav>
             )}
           </div>
@@ -709,11 +680,11 @@ export function ShowcasePage() {
           <button
             type="button"
             onClick={() => setCommissioning(true)}
-            className="group flex flex-col justify-between gap-10 px-4 py-16 text-left transition-colors hover:bg-[#f5f0eb]/[0.04] sm:px-8 sm:py-20 lg:px-12"
+            className="group flex flex-col justify-between gap-8 px-4 py-12 text-left transition-colors hover:bg-[#f5f0eb]/[0.04] sm:px-8 sm:py-14 lg:px-12"
           >
             <div>
               <p className="font-sans text-[9px] uppercase tracking-[0.22em] text-[#c9b199]">Have a space that has to do something?</p>
-              <h2 className="mt-5 font-display text-[clamp(3.4rem,8vw,6.8rem)] lowercase leading-[0.82] tracking-normal">
+              <h2 className="mt-5 max-w-[16ch] font-display text-[clamp(2.4rem,4.6vw,3.6rem)] lowercase leading-[0.86] tracking-normal">
                 commission the bureau
               </h2>
               <p className="mt-5 max-w-[42ch] font-sans text-[14px] leading-relaxed text-[#f5f0eb]/60">
@@ -732,11 +703,11 @@ export function ShowcasePage() {
           <button
             type="button"
             onClick={() => setSubmitting(true)}
-            className="group flex flex-col justify-between gap-10 px-4 py-16 text-left transition-colors hover:bg-[#f5f0eb]/[0.04] sm:px-8 sm:py-20 lg:px-12"
+            className="group flex flex-col justify-between gap-8 px-4 py-12 text-left transition-colors hover:bg-[#f5f0eb]/[0.04] sm:px-8 sm:py-14 lg:px-12"
           >
             <div>
               <p className="font-sans text-[9px] uppercase tracking-[0.22em] text-[#c9b199]">Built something worth seeing?</p>
-              <h2 className="mt-5 font-display text-[clamp(3.4rem,8vw,6.8rem)] lowercase leading-[0.82] tracking-normal">
+              <h2 className="mt-5 max-w-[16ch] font-display text-[clamp(2.4rem,4.6vw,3.6rem)] lowercase leading-[0.86] tracking-normal">
                 the vitrine is open to authors, not to CVs
               </h2>
               <p className="mt-5 max-w-[42ch] font-sans text-[14px] leading-relaxed text-[#f5f0eb]/60">
