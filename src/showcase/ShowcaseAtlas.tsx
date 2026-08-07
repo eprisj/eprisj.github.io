@@ -533,9 +533,9 @@ export function ShowcaseAtlas({ works, loading, onOpenWork, onCommission }: { wo
             <div className="mt-12">
               <div className="grid grid-cols-3 border-y border-[#f8f3ea]/14">
                 {[
-                  ['works', nodes.length],
+                  [nodes.length === 1 ? 'work' : 'works', nodes.length],
                   ['in route', route.length],
-                  ['disciplines', disciplines],
+                  [disciplines === 1 ? 'discipline' : 'disciplines', disciplines],
                 ].map(([label, value]) => (
                   <div key={label} className="border-r border-[#f8f3ea]/12 py-4 pr-4 last:border-r-0">
                     <p className="font-display text-[2.5rem] leading-none text-[#d7b46a]">{value}</p>
@@ -574,10 +574,12 @@ export function ShowcaseAtlas({ works, loading, onOpenWork, onCommission }: { wo
                   key={item.id}
                   type="button"
                   onClick={() => setProjectId(item.id)}
-                  className={`grid min-h-14 grid-cols-[1fr_auto] items-center border px-4 text-left transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d7b46a] ${item.id === project.id ? 'border-[#f8f3ea] bg-[#f8f3ea] text-[#12090b]' : 'border-[#f8f3ea]/14 text-[#f8f3ea]/72 hover:border-[#d7b46a]'}`}
+                  className={`flex min-h-14 items-center border px-4 text-left transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d7b46a] ${item.id === project.id ? 'border-[#f8f3ea] bg-[#f8f3ea] text-[#12090b]' : 'border-[#f8f3ea]/14 text-[#f8f3ea]/72 hover:border-[#d7b46a]'}`}
                 >
+                  {/* Раньше здесь стояло Math.round(density*100) — 72, 90, 115, 82.
+                      density задаёт шаг расстановки объектов в собираемой сцене;
+                      крупной антиквой рядом с названием он читался как оценка. */}
                   <span className="font-sans text-[12px] uppercase tracking-normal">{item.label}</span>
-                  <span className="font-display text-xl leading-none">{Math.round(item.density * 100)}</span>
                 </button>
               ))}
             </div>
