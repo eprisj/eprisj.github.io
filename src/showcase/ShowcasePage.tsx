@@ -356,7 +356,7 @@ export function ShowcasePage() {
           <span className="hidden font-sans text-[9px] uppercase tracking-[0.2em] text-[#4a1728]/55 sm:block">Showcase</span>
         </a>
         <div className="flex items-center justify-end">
-          <button type="button" onClick={() => setSubmitting(true)} aria-label="Submit work" className="inline-flex min-h-11 items-center gap-2 bg-[#1a0b10] px-4 font-sans text-[9px] uppercase tracking-[0.16em] text-[#f5f0eb] transition-colors hover:bg-[#4a1728] sm:px-5">
+          <button type="button" onClick={() => setSubmitting(true)} aria-label="Submit work" className={btnSolid('bone')}>
             <Plus size={15} /><span className="hidden sm:inline">Submit work</span><span className="sm:hidden">Add</span>
           </button>
         </div>
