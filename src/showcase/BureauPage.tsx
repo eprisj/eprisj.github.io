@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Layers3, Lightbulb, Ruler, Sparkles } from 'lucide-react';
 import { fetchCase, fetchCases, type BureauCase } from './bureauApi';
-import { fetchWorks, type Work } from './showcaseApi';
+import { FALLBACK_WORKS, fetchWorks, type Work } from './showcaseApi';
 import { PLAYABLE_SLUGS } from '../stage/moves';
 
 /**
@@ -90,19 +90,17 @@ function BureauProductionIntro({ works }: { works: Work[] }) {
 
   return (
     <section className="relative overflow-hidden border-b border-[#f5f0eb]/12 bg-[#14090d]">
-      <div className="absolute inset-0 opacity-[0.11]" style={{ backgroundImage: 'linear-gradient(90deg,#f5f0eb 1px,transparent 1px),linear-gradient(#f5f0eb 1px,transparent 1px)', backgroundSize: '8.333vw 88px' }} />
-      <div className="absolute inset-0 bg-[linear-gradient(108deg,#14090d_0%,#14090d_49%,#2d1217_72%,#4a1728_100%)]" />
-      <div className="absolute bottom-0 right-[6%] top-0 hidden w-[24%] skew-x-[-13deg] border-x border-[#d7b46a]/18 bg-[#d7b46a]/10 lg:block" />
-      <div className="absolute bottom-[8%] right-[12%] hidden h-px w-[42%] bg-[#d7b46a]/50 lg:block" />
-      <div className="mx-auto grid max-w-[1700px] lg:min-h-[86dvh] lg:grid-cols-[minmax(0,0.78fr)_minmax(470px,0.62fr)]">
-        <div className="relative z-10 flex flex-col justify-between px-5 py-12 sm:px-8 sm:py-14 lg:px-12 xl:px-16">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(215,180,106,.18),transparent_28%),linear-gradient(118deg,#14090d_0%,#14090d_54%,#281116_100%)]" />
+      <div className="absolute inset-0 opacity-[0.055]" style={{ backgroundImage: 'linear-gradient(90deg,#f5f0eb 1px,transparent 1px),linear-gradient(#f5f0eb 1px,transparent 1px)', backgroundSize: '120px 120px' }} />
+      <div className="mx-auto grid max-w-[1700px] gap-8 px-5 py-12 sm:px-8 sm:py-16 lg:min-h-[86dvh] lg:grid-cols-[minmax(0,0.9fr)_minmax(420px,0.7fr)] lg:items-center lg:px-12 xl:px-16">
+        <div className="relative z-10">
           <div>
             <p className="font-sans text-[10px] uppercase tracking-normal text-[#d7b46a]">EPRIS Bureau / spatial image studio</p>
-            <h1 className="mt-5 max-w-[9ch] font-display text-[clamp(3.8rem,11vw,11rem)] lowercase leading-[0.78] tracking-normal text-[#f5f0eb] lg:leading-[0.74]">
+            <h1 className="mt-5 max-w-[10ch] font-display text-[clamp(3.5rem,8.6vw,8.6rem)] lowercase leading-[0.82] tracking-normal text-[#f5f0eb]">
               set design for things that need a scene
             </h1>
           </div>
-          <div className="mt-10 max-w-[43rem]">
+          <div className="mt-10 max-w-[46rem]">
             <p className="border-l border-[#d7b46a] pl-5 font-sans text-[17px] leading-relaxed text-[#f5f0eb]/78 sm:text-[20px]">
               We design visual situations for culture and brands: vitrines, sets, exhibition rooms, launch scenes and editorial environments where object, light and visitor route work as one image.
             </p>
@@ -117,32 +115,33 @@ function BureauProductionIntro({ works }: { works: Work[] }) {
           </div>
         </div>
 
-        <div className="relative z-10 px-5 pb-12 sm:px-8 lg:flex lg:min-h-[86dvh] lg:items-center lg:px-12 lg:py-12">
-          <div className="w-full border border-[#f5f0eb]/14 bg-[#14090d]/45 p-3 shadow-[0_34px_110px_rgba(0,0,0,.36)] sm:p-4">
-            <div className="grid gap-3 sm:grid-cols-5 sm:grid-rows-[260px_190px] lg:grid-rows-[minmax(300px,42vh)_220px]">
-              {heroRefs.map((work, index) => {
-                const image = workImage(work);
-                const placement = index === 0 ? 'sm:col-span-3 sm:row-span-2' : index === 1 ? 'sm:col-span-2' : 'sm:col-span-2';
-                return (
-                  <figure key={work.id} className={`relative min-h-[220px] overflow-hidden bg-[#f5f0eb] p-2 shadow-[16px_22px_60px_rgba(0,0,0,.24)] ${placement}`}>
-                    {image ? <img src={image} alt={work.title} loading="lazy" className="h-full w-full object-cover saturate-[.86]" /> : <div className="h-full bg-[#c7b498]" />}
-                    <figcaption className="absolute bottom-2 left-2 right-2 bg-[#14090d]/76 px-3 py-2 font-sans text-[9px] uppercase tracking-normal text-[#f5f0eb]/72">
-                      {work.discipline || 'reference'} / {work.city || work.country || 'site'}
-                    </figcaption>
-                  </figure>
-                );
-              })}
-            </div>
-            <div className="mt-5 grid gap-5 border-t border-[#f5f0eb]/18 pt-5 text-[#f5f0eb] sm:grid-cols-[1fr_auto] sm:items-end">
-            <div>
-              <p className="font-sans text-[10px] uppercase tracking-normal text-[#d7b46a]">production language</p>
-              <p className="mt-2 max-w-[22rem] font-display text-[clamp(2.2rem,5vw,4.6rem)] lowercase leading-[0.82]">light, shadow, surface, route</p>
-            </div>
-            <div className="grid grid-cols-3 border border-[#f5f0eb]/16 bg-[#14090d]/68">
-              {['glass', 'metal', 'fabric'].map((item) => (
-                <span key={item} className="border-r border-[#f5f0eb]/12 px-3 py-3 text-center font-sans text-[10px] uppercase tracking-normal text-[#f5f0eb]/66 last:border-r-0">{item}</span>
+        <div className="relative z-10">
+          <div className="border border-[#f5f0eb]/18 bg-[#f4eadc] p-3 text-[#1a0b10] shadow-[0_34px_120px_rgba(0,0,0,.42)] sm:p-4">
+            <figure className="relative aspect-[4/5] overflow-hidden bg-[#d5cabd] sm:aspect-[5/4] lg:aspect-[4/5]">
+              {workImage(hero) ? (
+                <img src={workImage(hero)} alt={hero.title} loading="eager" className="h-full w-full object-cover saturate-[.86]" />
+              ) : (
+                <div className="h-full w-full bg-[#c7b498]" />
+              )}
+              <figcaption className="absolute bottom-0 left-0 right-0 grid gap-3 bg-[#f4eadc]/92 p-4 backdrop-blur-sm sm:grid-cols-[1fr_auto] sm:items-end">
+                <span>
+                  <span className="block font-sans text-[9px] uppercase tracking-normal text-[#7b613a]">reference surface</span>
+                  <span className="mt-1 block font-display text-[2.1rem] lowercase leading-[0.88] text-[#1a0b10] sm:text-[2.7rem]">
+                    {hero?.title || 'room prototype'}
+                  </span>
+                </span>
+                <span className="font-sans text-[10px] uppercase tracking-normal text-[#1a0b10]/52">{hero?.discipline || 'set'} / {hero?.city || hero?.country || 'site'}</span>
+              </figcaption>
+            </figure>
+            <div className="mt-3 grid gap-3 sm:grid-cols-3">
+              {heroRefs.map((work, index) => (
+                <div key={work.id} className="border border-[#1a0b10]/12 bg-[#fffaf2] p-3">
+                  <p className="font-sans text-[9px] uppercase tracking-normal text-[#7b613a]">0{index + 1}</p>
+                  <p className="mt-8 font-display text-[1.9rem] lowercase leading-[0.9] text-[#1a0b10]">
+                    {index === 0 ? 'arrival image' : index === 1 ? 'object scale' : 'material light'}
+                  </p>
+                </div>
               ))}
-            </div>
             </div>
           </div>
         </div>
@@ -156,31 +155,39 @@ function BureauReferenceRoom({ works }: { works: Work[] }) {
 
   return (
     <section className="relative overflow-hidden border-b border-[#f5f0eb]/12 bg-[#0f0709] text-[#f5f0eb]">
-      <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: 'linear-gradient(90deg,#f5f0eb 1px,transparent 1px),linear-gradient(#f5f0eb 1px,transparent 1px)', backgroundSize: '12.5vw 96px' }} />
-      <div className="mx-auto grid max-w-[1700px] lg:grid-cols-[minmax(0,0.48fr)_minmax(0,1fr)]">
-        <div className="relative z-10 border-b border-[#f5f0eb]/12 px-5 py-12 sm:px-8 lg:border-b-0 lg:border-r lg:px-12 xl:px-16">
+      <div className="absolute inset-0 opacity-[0.045]" style={{ backgroundImage: 'linear-gradient(90deg,#f5f0eb 1px,transparent 1px),linear-gradient(#f5f0eb 1px,transparent 1px)', backgroundSize: '128px 128px' }} />
+      <div className="mx-auto max-w-[1700px] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 xl:px-16">
+        <div className="relative z-10 grid gap-8 border-b border-[#f5f0eb]/12 pb-10 lg:grid-cols-[minmax(0,0.62fr)_minmax(0,0.9fr)] lg:items-end">
+          <div>
           <p className="font-sans text-[10px] uppercase tracking-normal text-[#d7b46a]">real references / object thinking</p>
-          <h2 className="mt-5 max-w-[8ch] font-display text-[clamp(3.8rem,8vw,8rem)] lowercase leading-[0.78] tracking-normal">
-            not a moodboard, a room test
+          <h2 className="mt-5 max-w-[11ch] font-display text-[clamp(3.2rem,7vw,6.8rem)] lowercase leading-[0.84] tracking-normal">
+            reference room
           </h2>
-          <p className="mt-7 max-w-[35rem] border-l border-[#d7b46a] pl-5 font-sans text-[17px] leading-relaxed text-[#f5f0eb]/72">
+          </div>
+          <div>
+          <p className="max-w-[43rem] border-l border-[#d7b46a] pl-5 font-sans text-[17px] leading-relaxed text-[#f5f0eb]/72">
             Bureau starts with actual works and visible things: surfaces, shadows, shelves, curtains, podiums, frames, routes. The references below become decisions a fabricator, photographer and curator can all understand.
           </p>
           <a href="/showcase" className="mt-8 inline-flex min-h-12 items-center gap-3 bg-[#f5f0eb] px-5 font-sans text-[10px] uppercase tracking-normal text-[#1a0b10] transition-colors hover:bg-[#d7b46a]">
             Browse the source vitrine <ArrowUpRight size={15} />
           </a>
+          </div>
         </div>
 
-        <div className="relative z-10 px-5 py-10 sm:px-8 lg:px-12">
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="relative z-10 pt-8">
+          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
             {refs.map((work, index) => {
-              const large = index === 0 || index === 3;
               return (
-                <a key={work.id} href="/showcase" className={`group relative overflow-hidden border border-[#f5f0eb]/14 bg-[#261116] shadow-[18px_24px_70px_rgba(0,0,0,.22)] ${large ? 'aspect-[4/5]' : 'aspect-[5/4]'}`}>
-                  <img src={workImage(work)} alt={work.title} loading="lazy" className="h-full w-full object-cover opacity-[.84] transition duration-300 group-hover:scale-[1.035] group-hover:opacity-100" />
-                  <span className="absolute inset-x-0 bottom-0 bg-[#0f0709]/82 px-3 py-2">
-                    <span className="block font-display text-[1.35rem] lowercase leading-[0.92] text-[#f5f0eb]">{work.title}</span>
-                    <span className="mt-1 block font-sans text-[9px] uppercase tracking-normal text-[#d7b46a]">{work.discipline || 'reference'} / {work.city || work.country || 'site'}</span>
+                <a key={work.id} href="/showcase" className="group block border border-[#f5f0eb]/14 bg-[#1d0d12] p-3 shadow-[0_22px_70px_rgba(0,0,0,.24)] transition-colors hover:border-[#d7b46a]/60">
+                  <span className="block aspect-[4/3] overflow-hidden bg-[#261116]">
+                    <img src={workImage(work)} alt={work.title} loading="lazy" className="h-full w-full object-cover opacity-[.9] transition duration-300 group-hover:scale-[1.035] group-hover:opacity-100" />
+                  </span>
+                  <span className="grid min-h-[118px] grid-cols-[2.5rem_1fr] gap-4 border-t border-[#f5f0eb]/12 pt-4">
+                    <span className="font-display text-[2rem] leading-none text-[#d7b46a]/70">{String(index + 1).padStart(2, '0')}</span>
+                    <span>
+                      <span className="block font-display text-[1.8rem] lowercase leading-[0.92] text-[#f5f0eb]">{work.title}</span>
+                      <span className="mt-2 block font-sans text-[9px] uppercase tracking-normal text-[#d7b46a]">{work.discipline || 'reference'} / {work.city || work.country || 'site'}</span>
+                    </span>
                   </span>
                 </a>
               );
@@ -400,10 +407,22 @@ export function BureauPage() {
 
   useEffect(() => {
     const controller = new AbortController();
-    const load = slug
-      ? Promise.all([fetchCase(slug, controller.signal).then(setItem), fetchWorks(controller.signal).then(setWorks)])
-      : Promise.all([fetchCases(controller.signal).then(setItems), fetchWorks(controller.signal).then(setWorks)]);
-    load
+    const load = async () => {
+      if (slug) {
+        await Promise.all([fetchCase(slug, controller.signal).then(setItem), fetchWorks(controller.signal).then(setWorks)]);
+        return;
+      }
+
+      const [caseResult, workResult] = await Promise.allSettled([
+        fetchCases(controller.signal),
+        fetchWorks(controller.signal),
+      ]);
+      if (caseResult.status === 'fulfilled') setItems(caseResult.value);
+      if (workResult.status === 'fulfilled') setWorks(workResult.value);
+      if (workResult.status === 'rejected') setWorks(FALLBACK_WORKS);
+    };
+
+    load()
       .catch((cause) => { if (cause.name !== 'AbortError') setError(String(cause.message || cause)); })
       .finally(() => setLoading(false));
     return () => controller.abort();

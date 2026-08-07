@@ -28,10 +28,15 @@ export interface BureauCase {
 }
 
 export async function fetchCases(signal?: AbortSignal): Promise<BureauCase[]> {
-  const response = await fetch(`${API_BASE}/cases`, { signal, cache: 'no-store' });
-  if (!response.ok) throw new Error(`Bureau is unavailable (${response.status})`);
-  const payload = await response.json();
-  return Array.isArray(payload.cases) ? payload.cases : [];
+  try {
+    const response = await fetch(`${API_BASE}/cases`, { signal, cache: 'no-store' });
+    if (!response.ok) throw new Error(`Bureau is unavailable (${response.status})`);
+    const payload = await response.json();
+    return Array.isArray(payload.cases) ? payload.cases : [];
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') throw error;
+    return [];
+  }
 }
 
 export async function fetchCase(slug: string, signal?: AbortSignal): Promise<BureauCase | null> {

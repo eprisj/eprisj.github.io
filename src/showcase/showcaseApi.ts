@@ -79,7 +79,7 @@ export const DISCIPLINES = [
   'Multidisciplinary',
 ];
 
-const FALLBACK_WORKS: Work[] = [
+export const FALLBACK_WORKS: Work[] = [
   {
     id: 'fallback-prada-marfa',
     title: 'Prada Marfa',
