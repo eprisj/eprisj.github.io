@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Layers3, Lightbulb, Ruler, Sparkles } from 'lucide-react';
-import { fetchCase, fetchCases, type BureauCase } from './bureauApi';
+import { FALLBACK_CASES, fetchCase, fetchCases, type BureauCase } from './bureauApi';
 import { FALLBACK_WORKS, fetchWorks, type Work } from './showcaseApi';
 import { PLAYABLE_SLUGS } from '../stage/moves';
 
@@ -346,6 +346,9 @@ function CaseDetail({ item }: { item: BureauCase }) {
 }
 
 function CaseList({ items, works }: { items: BureauCase[]; works: Work[] }) {
+  const cases = items.length ? items : FALLBACK_CASES;
+  const workById = new Map(works.map((work) => [work.id, work]));
+
   return (
     <>
       <BureauProductionIntro works={works} />
@@ -361,37 +364,27 @@ function CaseList({ items, works }: { items: BureauCase[]; works: Work[] }) {
           how the work in the vitrine is actually put together: the move, what holds it up, where it breaks
         </p>
 
-        {items.length === 0 ? (
-          <p className="mt-16 border-t border-[#f5f0eb]/12 pt-8 font-sans text-[14px] leading-relaxed text-[#f5f0eb]/45">
-            The first breakdowns are being written. Nothing is published here yet.
-          </p>
-        ) : (
-          <ul className="mt-14 divide-y divide-[#f5f0eb]/12 border-t border-[#f5f0eb]/12">
-            {items.map((item, index) => (
-              <li key={item.id}>
-                <a href={`/bureau/${item.slug}`} className="group grid grid-cols-[2.4rem_1fr] gap-x-4 py-8 sm:grid-cols-[4rem_1fr_auto] sm:gap-x-8">
-                  <span className="font-sans text-[9px] tabular-nums tracking-[0.16em] text-[#f5f0eb]/35">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <span className="max-sm:col-start-2">
-                    {item.kind && (
-                      <span className="block font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/45">{item.kind}</span>
-                    )}
-                    <span className="mt-2 block font-display text-[clamp(2.2rem,4.8vw,4.8rem)] lowercase leading-[0.84] tracking-normal text-[#f5f0eb] underline-offset-[6px] group-hover:underline">
-                      {item.title}
-                    </span>
-                    {item.summary && (
-                      <span className="mt-3 block max-w-[58ch] font-sans text-[14px] leading-relaxed text-[#f5f0eb]/65">
-                        {item.summary}
-                      </span>
-                    )}
-                  </span>
-                  <ArrowUpRight size={20} className="mt-2 hidden self-start text-[#f5f0eb]/40 transition-transform group-hover:translate-x-1 sm:block" />
-                </a>
-              </li>
-            ))}
-          </ul>
-        )}
+        <div className="mt-14 grid gap-px border border-[#f5f0eb]/14 bg-[#f5f0eb]/14 sm:grid-cols-2 xl:grid-cols-4">
+          {cases.map((item, index) => {
+            const leadWork = item.examples?.map((example) => workById.get(example.workId)).find(Boolean);
+            const image = leadWork ? workImage(leadWork) : '';
+            return (
+              <a key={item.id} href={`/bureau/${item.slug}`} className="group flex min-h-[460px] flex-col bg-[#160a0e] p-4 transition-colors hover:bg-[#241118] sm:p-5">
+                <div className="relative aspect-[4/3] overflow-hidden bg-[#2b171c]">
+                  {image ? <img src={image} alt={leadWork?.title || item.title} loading="lazy" className="h-full w-full object-cover opacity-75 transition duration-500 group-hover:scale-[1.04] group-hover:opacity-100" /> : <div className="h-full w-full bg-[#2b171c]" />}
+                  <span className="absolute left-3 top-3 border border-[#f5f0eb]/30 bg-[#160a0e]/70 px-2 py-1 font-sans text-[9px] uppercase tracking-[0.16em] text-[#f5f0eb]/75">{String(index + 1).padStart(2, '0')}</span>
+                  <ArrowUpRight size={18} className="absolute bottom-3 right-3 text-[#f5f0eb]/75 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                </div>
+                <span className="mt-5 flex flex-1 flex-col">
+                  <span className="font-sans text-[9px] uppercase tracking-[0.16em] text-[#d7b46a]">{item.kind || 'Editorial breakdown'}</span>
+                  <span className="mt-3 font-display text-[clamp(2rem,3vw,3rem)] lowercase leading-[0.86] text-[#f5f0eb]">{item.title}</span>
+                  <span className="mt-4 line-clamp-3 font-sans text-[14px] leading-relaxed text-[#f5f0eb]/62">{item.summary}</span>
+                  <span className="mt-auto border-t border-[#f5f0eb]/14 pt-4 font-sans text-[9px] uppercase tracking-[0.16em] text-[#f5f0eb]/46">Read the breakdown</span>
+                </span>
+              </a>
+            );
+          })}
+        </div>
       </div>
     </>
   );
