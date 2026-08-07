@@ -8,6 +8,7 @@ import {
   externalUrl, fetchWorks, flag, normalizeInstagram, submitWork,
 } from './showcaseApi';
 import { Commission } from './Commission';
+import { ShowcaseAtlas } from './ShowcaseAtlas';
 
 const PAGE_SIZE = 24;
 const ALL_DISCIPLINES = 'All disciplines';
@@ -102,7 +103,7 @@ function Decomposition({ work }: { work: Work }) {
   return (
     <section className="relative isolate mt-9 bg-[#1a0b10] px-5 py-8 text-[#f5f0eb] sm:px-8 sm:py-10">
       <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-[6%] hidden w-px bg-[#f5f0eb]/12 sm:block" />
-      <h3 className="font-sans text-[9vw] font-bold lowercase leading-[0.85] tracking-[-0.04em] sm:text-[3.4rem]">decomposition</h3>
+      <h3 className="font-display text-[clamp(3rem,9vw,5.6rem)] lowercase leading-[0.82] tracking-normal">decomposition</h3>
 
       <dl className="mt-7 divide-y divide-[#f5f0eb]/12 border-t border-[#f5f0eb]/12">
         {rows.map((row, index) => (
@@ -162,7 +163,7 @@ function WorkDetail({ work, onClose }: { work: Work; onClose: () => void }) {
 
         <div className="mt-7 flex flex-wrap items-start justify-between gap-5">
           <div className="min-w-0">
-            <h2 className="font-sans text-[2rem] font-bold leading-[0.95] tracking-[-0.03em] text-[#1a0b10] sm:text-[2.9rem]">{work.title}</h2>
+            <h2 className="font-display text-[clamp(2.2rem,5vw,4rem)] leading-[0.86] tracking-normal text-[#1a0b10]">{work.title}</h2>
             <p className="mt-3 font-display text-xl italic text-[#b8956e]">{work.author}{work.year ? `, ${work.year}` : ''}</p>
             <p className="mt-4 border-t border-[#4a1728]/15 pt-3 font-sans text-[10px] uppercase tracking-[0.18em] text-[#4a1728]/60">{[work.venue, work.city, work.country].filter(Boolean).join(' · ') || 'Location not stated'}</p>
           </div>
@@ -291,13 +292,13 @@ export function ShowcasePage() {
   }, [works]);
 
   const segments = useMemo(() => [
-    { label: 'All works', value: ALL_DISCIPLINES },
+    { label: 'Sources of inspiration', value: ALL_DISCIPLINES },
     ...['Set design', 'Scenography', 'Installation', 'Conceptual art']
       .filter((name) => works.some((work) => work.discipline === name))
       .map((name) => ({ label: name, value: name })),
   ], [works]);
 
-  const selectedSegment = discipline === ALL_DISCIPLINES ? 'All works' : discipline;
+  const selectedSegment = discipline === ALL_DISCIPLINES ? 'sources of inspiration' : discipline;
   const disciplineTabs = useMemo(() => {
     const counts = new Map<string, number>();
     works.forEach((work) => { if (work.discipline) counts.set(work.discipline, (counts.get(work.discipline) || 0) + 1); });
@@ -369,7 +370,7 @@ export function ShowcasePage() {
 
       <nav aria-label="Disciplines" className="border-t border-[#4a1728]/10">
         <div className="mx-auto flex max-w-[1600px] items-center gap-6 overflow-x-auto px-4 py-3 font-sans text-[9px] uppercase tracking-[0.18em] sm:justify-center sm:px-8 lg:px-12">
-          <button type="button" onClick={() => setDiscipline(ALL_DISCIPLINES)} className={`whitespace-nowrap transition-colors ${discipline === ALL_DISCIPLINES ? 'text-[#4a1728]' : 'text-[#4a1728]/55 hover:text-[#4a1728]'}`}>All works</button>
+          <button type="button" onClick={() => setDiscipline(ALL_DISCIPLINES)} className={`whitespace-nowrap transition-colors ${discipline === ALL_DISCIPLINES ? 'text-[#4a1728]' : 'text-[#4a1728]/55 hover:text-[#4a1728]'}`}>Inspiration sources</button>
           {disciplineTabs.map((tab) => (
             <button key={tab.name} type="button" onClick={() => setDiscipline((current) => (current === tab.name ? ALL_DISCIPLINES : tab.name))} className={`whitespace-nowrap transition-colors ${discipline === tab.name ? 'text-[#4a1728]' : 'text-[#4a1728]/55 hover:text-[#4a1728]'}`}>
               {tab.name}
@@ -399,7 +400,7 @@ export function ShowcasePage() {
           {/* The wordmark: two lines, lowercase, set as large as the frame
               allows — the one element their page is built around. */}
           <div className="relative z-10 px-6 pt-10 sm:px-10 lg:px-14 lg:pt-14">
-            <h1 className="font-sans font-bold lowercase leading-[0.82] tracking-[-0.04em] text-[#f5f0eb]">
+            <h1 className="font-display lowercase leading-[0.82] tracking-normal text-[#f5f0eb]">
               <span className="block text-[15vw] sm:text-[11vw] lg:text-[8.5vw]">epris</span>
               <span className="block pl-[0.06em] text-[10vw] font-normal sm:text-[7vw] lg:text-[5.4vw]">showcase</span>
             </h1>
@@ -451,6 +452,13 @@ export function ShowcasePage() {
         </section>
       )}
 
+      <ShowcaseAtlas
+        works={filtered.length ? filtered : works}
+        loading={loading}
+        onOpenWork={setSelected}
+        onCommission={() => setCommissioning(true)}
+      />
+
       {/* Catalogue head, in the shop's order: crumb, title with a count, then
           the segment row — no editorial hero in front of the goods. */}
       <section className="px-4 pt-10 sm:px-8 lg:px-12 lg:pt-14">
@@ -459,11 +467,21 @@ export function ShowcasePage() {
             <a href="/" className="hover:text-[#4a1728]">Journal</a> / <span className="text-[#4a1728]">Showcase</span>
           </nav>
 
-          <div className="mt-5 flex flex-wrap items-baseline gap-x-5 gap-y-2">
-            <h1 className="font-sans text-[13vw] font-bold lowercase leading-[0.85] tracking-[-0.04em] sm:text-[7vw] lg:text-[4.6vw]">{selectedSegment}</h1>
-            <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#4a1728]/55">
-              {loading ? 'Loading…' : `${filtered.length} ${filtered.length === 1 ? 'work' : 'works'}`}
-            </p>
+          <div className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+            <div className="min-w-0">
+              <h1 className="font-display text-[clamp(3.8rem,10.6vw,8rem)] lowercase leading-[0.82] tracking-normal">{selectedSegment}</h1>
+              <p className="mt-4 max-w-[48rem] font-sans text-[15px] leading-relaxed text-[#4a1728]/64 sm:text-[17px]">
+                A curated reference shelf for rooms, windows, sets and exhibition moves. Save the visual language here, then take it into Bureau when the idea needs a built scene.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-3 lg:justify-end">
+              <p className="border border-[#4a1728]/12 px-4 py-3 font-sans text-[9px] uppercase tracking-[0.16em] text-[#4a1728]/55">
+                {loading ? 'Loading…' : `${filtered.length} ${filtered.length === 1 ? 'reference' : 'references'}`}
+              </p>
+              <a href="/bureau" className="inline-flex min-h-12 items-center gap-3 bg-[#1a0b10] px-5 font-sans text-[10px] uppercase tracking-normal text-[#f5f0eb] transition-colors hover:bg-[#4a1728]">
+                Open Bureau <ArrowUpRight size={15} />
+              </a>
+            </div>
           </div>
 
           <div className="mt-6 flex flex-wrap gap-2">
@@ -516,7 +534,7 @@ export function ShowcasePage() {
               <div className="border-t border-[#4a1728]/12 pt-6">
                 <p className="mb-4 font-sans text-[9px] uppercase tracking-[0.2em] text-[#4a1728]">Disciplines</p>
                 <ul className="space-y-2.5">
-                  <li><button type="button" onClick={() => setDiscipline(ALL_DISCIPLINES)} className={`min-h-8 text-left text-sm transition-colors ${discipline === ALL_DISCIPLINES ? 'text-[#4a1728]' : 'text-[#4a1728]/65 hover:text-[#4a1728]'}`}>All disciplines</button></li>
+                  <li><button type="button" onClick={() => setDiscipline(ALL_DISCIPLINES)} className={`min-h-8 text-left text-sm transition-colors ${discipline === ALL_DISCIPLINES ? 'text-[#4a1728]' : 'text-[#4a1728]/65 hover:text-[#4a1728]'}`}>All inspiration sources</button></li>
                   {disciplineTabs.map((tab) => (
                     <li key={tab.name} className="flex items-baseline justify-between gap-2">
                       <button type="button" onClick={() => setDiscipline((current) => (current === tab.name ? ALL_DISCIPLINES : tab.name))} className={`min-h-8 text-left text-sm transition-colors ${discipline === tab.name ? 'text-[#4a1728]' : 'text-[#4a1728]/65 hover:text-[#4a1728]'}`}>{tab.name}</button>
@@ -606,7 +624,7 @@ export function ShowcasePage() {
               <div className="grid min-h-[26rem] place-items-center px-6 text-center">
                 <div className="max-w-md">
                   <Search size={26} className="mx-auto text-[#4a1728]/40" />
-                  <p className="mt-5 font-sans text-[2rem] font-bold lowercase leading-[0.95] tracking-[-0.03em]">{works.length === 0 ? 'The vitrine is being assembled.' : 'No works match these filters.'}</p>
+                  <p className="mt-5 font-display text-[clamp(2.6rem,7vw,5rem)] lowercase leading-[0.84] tracking-normal">{works.length === 0 ? 'The vitrine is being assembled.' : 'No works match these filters.'}</p>
                   <p className="mt-4 text-sm leading-relaxed text-[#4a1728]/65">{works.length === 0 ? 'Submissions are open — the first works are under editorial review. Send yours and it goes into the queue.' : 'Try clearing a filter or widening the search.'}</p>
                   <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
                     {works.length > 0 && activeFilterCount > 0 && <button type="button" onClick={resetFilters} className="min-h-12 rounded-full border border-[#4a1728]/20 px-6 font-sans text-[10px] uppercase tracking-[0.18em] hover:bg-[#fdfaf6]">Clear filters</button>}
@@ -631,7 +649,7 @@ export function ShowcasePage() {
                   const wide = index % 5 === 3;
                   return (
                   <button key={work.id} type="button" onClick={() => setSelected(work)} aria-label={`${work.title} — ${work.author}`} className={`group flex flex-col text-left ${wide ? "sm:col-span-2" : ""}`}>
-                    <div className={`relative overflow-hidden bg-[#e9dece] ${wide ? "aspect-[4/5] sm:aspect-[5/3]" : "aspect-[4/5]"}`}>
+                    <div className={`relative overflow-hidden border border-[#4a1728]/10 bg-[#e9dece] shadow-[0_18px_42px_rgba(74,23,40,.08)] transition-[box-shadow,transform,border-color] duration-300 group-hover:-translate-y-1 group-hover:border-[#4a1728]/24 group-hover:shadow-[0_34px_82px_rgba(74,23,40,.16)] ${wide ? "aspect-[4/5] sm:aspect-[5/3]" : "aspect-[4/5]"}`}>
                       <WorkPlate work={work} index={index} className="absolute inset-0 h-full w-full" />
                       {work.status === 'Under review' && (
                         <span className="absolute left-3 top-3 rounded-full bg-[#f5f0eb]/90 px-2.5 py-1 font-sans text-[7px] uppercase tracking-[0.14em] text-[#b8956e]">Under review</span>
@@ -644,11 +662,11 @@ export function ShowcasePage() {
                     {/* Titles run to wildly different lengths, so the caption
                         block is a fixed three-row rhythm — label, title, byline
                         — and the row of cards keeps its baseline. */}
-                    <div className="mt-4 flex flex-1 flex-col border-t border-[#4a1728]/15 pt-3">
+                    <div className="mt-4 flex flex-1 flex-col border-t border-[#4a1728]/15 pt-4">
                       <p className="font-sans text-[8px] uppercase tracking-[0.18em] text-[#4a1728]/40">
                         {work.discipline || 'Work'}{work.year ? ` · ${work.year}` : ''}
                       </p>
-                      <h2 className="mt-2 line-clamp-2 min-h-[2.6em] font-sans text-[1.05rem] leading-[1.3] tracking-[-0.01em] text-[#1a0b10] decoration-[#1a0b10]/30 underline-offset-4 group-hover:underline">
+                      <h2 className="mt-2 line-clamp-2 min-h-[2.45em] font-display text-[1.35rem] leading-[1.05] tracking-normal text-[#1a0b10] decoration-[#1a0b10]/30 underline-offset-4 group-hover:underline sm:text-[1.55rem]">
                         {work.title}
                       </h2>
                       <p className="mt-auto pt-2 text-[13px] leading-snug text-[#4a1728]/80">{work.author}</p>
@@ -695,7 +713,7 @@ export function ShowcasePage() {
           >
             <div>
               <p className="font-sans text-[9px] uppercase tracking-[0.22em] text-[#c9b199]">Have a space that has to do something?</p>
-              <h2 className="mt-5 font-sans text-[11vw] font-bold lowercase leading-[0.85] tracking-[-0.04em] sm:text-[6vw] lg:text-[3.4vw]">
+              <h2 className="mt-5 font-display text-[clamp(3.4rem,8vw,6.8rem)] lowercase leading-[0.82] tracking-normal">
                 commission the bureau
               </h2>
               <p className="mt-5 max-w-[42ch] font-sans text-[14px] leading-relaxed text-[#f5f0eb]/60">
@@ -718,7 +736,7 @@ export function ShowcasePage() {
           >
             <div>
               <p className="font-sans text-[9px] uppercase tracking-[0.22em] text-[#c9b199]">Built something worth seeing?</p>
-              <h2 className="mt-5 font-sans text-[11vw] font-bold lowercase leading-[0.85] tracking-[-0.04em] sm:text-[6vw] lg:text-[3.4vw]">
+              <h2 className="mt-5 font-display text-[clamp(3.4rem,8vw,6.8rem)] lowercase leading-[0.82] tracking-normal">
                 the vitrine is open to authors, not to CVs
               </h2>
               <p className="mt-5 max-w-[42ch] font-sans text-[14px] leading-relaxed text-[#f5f0eb]/60">
