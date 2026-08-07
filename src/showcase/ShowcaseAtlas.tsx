@@ -318,7 +318,10 @@ function RouteImageWall({ route, active, onPick }: { route: AtlasNode[]; active?
       )}
       <div className="absolute inset-0 bg-[linear-gradient(90deg,#12090b_0%,rgba(18,9,11,.9)_22%,rgba(18,9,11,.38)_56%,rgba(18,9,11,.12)_100%)]" />
       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-[linear-gradient(0deg,#12090b_0%,rgba(18,9,11,.68)_38%,transparent_100%)]" />
-      <div className="absolute left-5 top-5 flex max-w-[calc(100%-2.5rem)] flex-wrap gap-2 sm:left-8 sm:top-8">
+      {/* Сетка с фиксированным шагом, а не flex-wrap со сдвигом через одну:
+          при переносе строки сдвиг наезжал на следующий ряд, и номер плитки
+          оказывался под соседней картинкой. */}
+      <div className="absolute left-5 top-5 grid max-w-[calc(100%-2.5rem)] grid-cols-2 gap-2 sm:left-8 sm:top-8 sm:grid-cols-4">
         {supporting.map((node, index) => {
           const src = workImage(node.work);
           return (
@@ -327,7 +330,6 @@ function RouteImageWall({ route, active, onPick }: { route: AtlasNode[]; active?
               type="button"
               onClick={() => onPick(node.work)}
               className="group relative h-28 w-20 overflow-hidden border border-[#f8f3ea]/22 bg-[#261116] text-left transition-transform hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d7b46a] sm:h-36 sm:w-28"
-              style={{ transform: `translateY(${index % 2 ? 18 : 0}px)` }}
             >
               {src ? <img src={src} alt="" loading="lazy" className="h-full w-full object-cover opacity-[.78] transition-opacity group-hover:opacity-100" /> : <Box size={20} className="m-4 text-[#f8f3ea]/35" />}
               <span className="absolute bottom-2 left-2 bg-[#12090b]/78 px-2 py-1 font-display text-lg leading-none text-[#d7b46a]">
@@ -469,8 +471,15 @@ export function ShowcaseAtlas({ works, loading, onOpenWork, onCommission }: { wo
     return `/stage#s=${encodeScene(buildStageScene(nodes, mode, project))}`;
   }, [nodes, mode, project]);
   const absoluteStageHref = typeof window === 'undefined' ? stageHref : `${window.location.origin}${stageHref}`;
-  const complexity = Math.min(99, Math.round((route.length * 11) + (nodes.reduce((sum, node) => sum + node.height, 0) / Math.max(nodes.length, 1)) * 18 + project.density * 16));
-  const imageFrames = route.reduce((sum, node) => sum + (node.work.images || []).length, 0);
+  // Считаем только то, что действительно знаем о работах. Прежний "production
+  // score" складывался из высоты узла в раскладке и положения ползунка density,
+  // упирался в потолок min(99, ...) и потому во всех режимах показывал 99 —
+  // выдуманная величина с видом измерения. Витрина не реконструирует того,
+  // чего не знает: бюджетов и сроков этих постановок у нас нет.
+  const disciplines = useMemo(
+    () => new Set(route.map((node) => node.work.discipline).filter(Boolean)).size,
+    [route],
+  );
 
   async function handleCopyDossier() {
     await copyText(dossierText(mode, project, route));
@@ -525,8 +534,8 @@ export function ShowcaseAtlas({ works, loading, onOpenWork, onCommission }: { wo
               <div className="grid grid-cols-3 border-y border-[#f8f3ea]/14">
                 {[
                   ['works', nodes.length],
-                  ['route', route.length],
-                  ['frames', imageFrames],
+                  ['in route', route.length],
+                  ['disciplines', disciplines],
                 ].map(([label, value]) => (
                   <div key={label} className="border-r border-[#f8f3ea]/12 py-4 pr-4 last:border-r-0">
                     <p className="font-display text-[2.5rem] leading-none text-[#d7b46a]">{value}</p>
@@ -581,7 +590,7 @@ export function ShowcaseAtlas({ works, loading, onOpenWork, onCommission }: { wo
                 <Route size={16} className="text-[#d7b46a]" />
                 <p className={ATLAS_LABEL}>Curatorial route</p>
               </span>
-              <p className="font-sans text-[10px] uppercase tracking-normal text-[#d7b46a]">{complexity} production score</p>
+              <p className="font-sans text-[10px] uppercase tracking-normal text-[#d7b46a]">{route.length} anchors</p>
             </div>
 
             <ol className="mt-5 divide-y divide-[#f8f3ea]/12 border-y border-[#f8f3ea]/12">
