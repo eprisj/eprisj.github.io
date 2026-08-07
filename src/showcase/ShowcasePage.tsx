@@ -7,6 +7,7 @@ import {
   DISCIPLINES, EMPTY_WORK_DRAFT, Work, WorkDraft,
   externalUrl, fetchWorks, flag, normalizeInstagram, submitWork,
 } from './showcaseApi';
+import { Commission } from './Commission';
 
 const PAGE_SIZE = 24;
 const ALL_DISCIPLINES = 'All disciplines';
@@ -252,6 +253,7 @@ export function ShowcasePage() {
   const [page, setPage] = useState(1);
   const [selected, setSelected] = useState<Work | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [commissioning, setCommissioning] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
   useEffect(() => {
@@ -675,15 +677,62 @@ export function ShowcasePage() {
         </div>
       </section>
 
-      <section className="relative isolate border-t border-[#4a1728]/10 bg-[#1a0b10] px-4 py-16 text-[#f5f0eb] sm:px-8 sm:py-24 lg:px-12">
+      {/* ДВЕ двери, а не одна. Раньше все призывы на странице просили отдать
+          нам работу — то есть страница умела только брать. Человеку, который
+          хочет нанять бюро, идти было решительно некуда, и это была не
+          недоделка оформления, а отсутствие коммерческого хода как такового. */}
+      <section className="relative isolate border-t border-[#4a1728]/10 bg-[#1a0b10] text-[#f5f0eb]">
         <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-[8%] hidden w-px bg-[#f5f0eb]/12 lg:block" />
         <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-[8%] hidden w-px bg-[#f5f0eb]/12 lg:block" />
-        <div className="mx-auto grid max-w-[1600px] gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
-          <div>
-            <p className="font-sans text-[9px] uppercase tracking-[0.22em] text-[#c9b199]">Built something worth seeing?</p>
-            <h2 className="mt-5 max-w-4xl font-sans text-[11vw] font-bold lowercase leading-[0.85] tracking-[-0.04em] sm:text-[7vw] lg:text-[5vw]">the vitrine is open to authors, not to CVs</h2>
-          </div>
-          <button type="button" onClick={() => setSubmitting(true)} className="inline-flex min-h-14 items-center justify-center gap-3 bg-[#f5f0eb] px-8 font-sans text-[10px] uppercase tracking-[0.18em] text-[#1a0b10] transition-colors hover:bg-white"><Plus size={17} /> Submit work</button>
+        <div className="mx-auto grid max-w-[1600px] divide-y divide-[#f5f0eb]/12 lg:grid-cols-2 lg:divide-x lg:divide-y-0">
+
+          {/* Заказчик идёт первым: он и есть тот, ради кого витрина показывает
+              работы. Автор — второй дверью, но не тише. */}
+          <button
+            type="button"
+            onClick={() => setCommissioning(true)}
+            className="group flex flex-col justify-between gap-10 px-4 py-16 text-left transition-colors hover:bg-[#f5f0eb]/[0.04] sm:px-8 sm:py-20 lg:px-12"
+          >
+            <div>
+              <p className="font-sans text-[9px] uppercase tracking-[0.22em] text-[#c9b199]">Have a space that has to do something?</p>
+              <h2 className="mt-5 font-sans text-[11vw] font-bold lowercase leading-[0.85] tracking-[-0.04em] sm:text-[6vw] lg:text-[3.4vw]">
+                commission the bureau
+              </h2>
+              <p className="mt-5 max-w-[42ch] font-sans text-[14px] leading-relaxed text-[#f5f0eb]/60">
+                Scenography, exhibitions, installations and windows. Send the room, the date
+                and a sentence — a person reads it.
+              </p>
+            </div>
+            <span className="inline-flex items-center gap-3 font-sans text-[10px] uppercase tracking-[0.18em] text-[#f5f0eb]">
+              Send a brief
+              <span className="grid h-11 w-11 place-items-center rounded-full border border-[#f5f0eb]/40 transition-transform group-hover:translate-x-1">
+                <ArrowRight size={17} />
+              </span>
+            </span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setSubmitting(true)}
+            className="group flex flex-col justify-between gap-10 px-4 py-16 text-left transition-colors hover:bg-[#f5f0eb]/[0.04] sm:px-8 sm:py-20 lg:px-12"
+          >
+            <div>
+              <p className="font-sans text-[9px] uppercase tracking-[0.22em] text-[#c9b199]">Built something worth seeing?</p>
+              <h2 className="mt-5 font-sans text-[11vw] font-bold lowercase leading-[0.85] tracking-[-0.04em] sm:text-[6vw] lg:text-[3.4vw]">
+                the vitrine is open to authors, not to CVs
+              </h2>
+              <p className="mt-5 max-w-[42ch] font-sans text-[14px] leading-relaxed text-[#f5f0eb]/60">
+                One work, one photograph you have the right to show. The editorial reads every
+                submission before anything appears.
+              </p>
+            </div>
+            <span className="inline-flex items-center gap-3 font-sans text-[10px] uppercase tracking-[0.18em] text-[#f5f0eb]">
+              Submit work
+              <span className="grid h-11 w-11 place-items-center rounded-full border border-[#f5f0eb]/40 transition-transform group-hover:translate-x-1">
+                <Plus size={17} />
+              </span>
+            </span>
+          </button>
         </div>
       </section>
     </main>
@@ -697,5 +746,6 @@ export function ShowcasePage() {
 
     {selected && <WorkDetail work={selected} onClose={() => setSelected(null)} />}
     {submitting && <SubmitWork onClose={() => setSubmitting(false)} onAdded={(work) => setWorks((current) => [work, ...current])} />}
+    {commissioning && <Commission onClose={() => setCommissioning(false)} />}
   </div>;
 }
