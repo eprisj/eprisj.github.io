@@ -1,4 +1,5 @@
 import type { Scene, SceneObject } from './sceneModel';
+import { seatsOf, type Sightlines } from './sightlines';
 import {
   GOLD,
   PAD_B,
@@ -25,6 +26,8 @@ interface Props {
   onDragEnd: () => void;
   guideX: number | null;
   guideZ: number | null;
+  /** Расчёт видимости; null — анализ выключен. */
+  sightlines: Sightlines | null;
 }
 
 /** Подпись пролёта: целые метры без хвоста, дробные — с одним знаком. */
@@ -107,7 +110,7 @@ function DimensionChain({
   );
 }
 
-export function PlanView({ scene, selectedId, onSelect, onDrag, onDragStart, onDragEnd, guideX, guideZ }: Props) {
+export function PlanView({ scene, selectedId, onSelect, onDrag, onDragStart, onDragEnd, guideX, guideZ, sightlines }: Props) {
   const width = scene.room.w * PX_PER_M + PAD_L + PAD_R;
   const height = scene.room.d * PX_PER_M + PAD_T + PAD_B;
   const px = (m: number) => PAD_L + m * PX_PER_M;
@@ -175,6 +178,24 @@ export function PlanView({ scene, selectedId, onSelect, onDrag, onDragStart, onD
           strokeWidth={i % 5 === 0 ? WEIGHT.gridMajor : WEIGHT.grid}
         />
       ))}
+
+      {/* Мёртвая зона: чем от большего числа кресел точка закрыта, тем плотнее
+          заливка. Лежит ПОД элементами — это подложка к чертежу, а не поверх. */}
+      {sightlines && (
+        <g>
+          {sightlines.cells.map((cell, index) => (
+            <rect
+              key={index}
+              x={px(cell.x - sightlines.step / 2)}
+              y={py(cell.z - sightlines.step / 2)}
+              width={sightlines.step * PX_PER_M + 0.5}
+              height={sightlines.step * PX_PER_M + 0.5}
+              fill="#8c2f24"
+              fillOpacity={cell.blocked === sightlines.seats ? 0.5 : 0.16}
+            />
+          ))}
+        </g>
+      )}
 
       {/* Оболочка зала — тоже разрез, поэтому самый жирный контур на листе. */}
       <rect
@@ -251,6 +272,24 @@ export function PlanView({ scene, selectedId, onSelect, onDrag, onDragStart, onD
 
       <DimensionChain from={px(0)} to={px(scene.room.w)} offset={py(scene.room.d) + 22} total={scene.room.w} vertical={false} />
       <DimensionChain from={py(0)} to={py(scene.room.d)} offset={px(0) - 22} total={scene.room.d} vertical />
+
+      {/* Кресла, по которым считалась видимость: без них цифры мёртвой зоны
+          повисают в воздухе — непонятно, откуда смотрели. */}
+      {sightlines &&
+        seatsOf(scene).map((seat) => (
+          <g key={seat.label}>
+            <line
+              x1={px(seat.x)}
+              y1={py(seat.z)}
+              x2={px(seat.x)}
+              y2={py(0)}
+              stroke={GOLD}
+              strokeOpacity={0.14}
+              strokeWidth={WEIGHT.hairline}
+            />
+            <circle cx={px(seat.x)} cy={py(seat.z)} r={2.5} fill={GOLD} fillOpacity={0.9} />
+          </g>
+        ))}
 
       {/* Линии привязки: показывают, с чем именно совпала кромка. Живут только
           во время жеста. */}
