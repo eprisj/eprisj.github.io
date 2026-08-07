@@ -111,3 +111,35 @@ export function externalUrl(value?: string) {
   if (!value) return '';
   return /^https?:\/\//i.test(value) ? value : `https://${value}`;
 }
+
+/* Заявка бюро. До неё витрина умела принимать только чужие РАБОТЫ: все призывы
+   на странице просили отдать нам труд, и человеку, который хочет НАНЯТЬ бюро,
+   идти было некуда. Это вторая дверь.
+
+   Ответ намеренно пустой: заявка не становится ничем публичным, её читает
+   редакция. Показывать в ответе сохранённые контакты было бы приглашением
+   выкачать чужие. */
+export interface Enquiry {
+  name: string;
+  contact: string;
+  organisation?: string;
+  kind?: string;
+  place?: string;
+  when?: string;
+  budget?: string;
+  brief: string;
+  /** Ловушка для ботов: живой человек это поле не видит и не заполняет. */
+  website?: string;
+}
+
+export async function sendEnquiry(enquiry: Enquiry): Promise<void> {
+  const response = await fetch(`${API_BASE}/enquiries`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(enquiry),
+  });
+  if (!response.ok) {
+    const payload = await response.json().catch(() => ({}));
+    throw new Error(payload.error || `Could not send the enquiry (${response.status})`);
+  }
+}
