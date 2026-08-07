@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Layers3, Lightbulb, Ruler, Sparkles } from 'lucide-react';
 import { fetchCase, fetchCases, type BureauCase } from './bureauApi';
+import { fetchWorks, type Work } from './showcaseApi';
 import { PLAYABLE_SLUGS } from '../stage/moves';
 
 /**
@@ -22,6 +23,23 @@ const BUREAU_SERVICES = [
   { icon: Ruler, title: 'Production board', text: 'materials, measurements, route, vendor notes and a brief a build team can read' },
   { icon: Sparkles, title: 'Launch image', text: 'hero frame, social crop, invitation mood and editorial caption language' },
 ];
+
+const OBJECT_LIBRARY = [
+  ['01', 'low plinth', 'a quiet platform that gives the object gravity before any text explains it'],
+  ['02', 'mirror edge', 'a controlled reflection that doubles a gesture without turning the room into noise'],
+  ['03', 'translucent curtain', 'soft depth, partial reveal, shadow readable from both sides'],
+  ['04', 'backlit volume', 'a box that behaves like a window after dark'],
+  ['05', 'metal rail', 'thin industrial line for hanging, measuring and making the route legible'],
+  ['06', 'paper wall', 'warm matte surface for photographs, captions and projection bleed'],
+  ['07', 'glass shelf', 'a levitating plane for fragile objects, bottles, books, garments or maquettes'],
+  ['08', 'floor mark', 'the visitor route made physical: tape, stone inset, carpet edge or brass line'],
+  ['09', 'object shadow', 'the cheapest luxury: one hard shadow placed exactly where the camera wants it'],
+  ['10', 'arrival frame', 'an entrance image that gives the project its first memory'],
+  ['11', 'caption block', 'editorial language printed as part of the room, not pasted after it'],
+  ['12', 'night state', 'the second life of the installation when the street becomes the audience'],
+];
+
+const MATERIALS = ['brushed steel', 'smoked glass', 'cream paper', 'wine lacquer', 'raw linen', 'warm LED', 'stone grey', 'black mirror'];
 
 function slugFromPath(): string | null {
   const match = window.location.pathname.match(/^\/bureau\/([^/]+)\/?$/);
@@ -60,7 +78,15 @@ function Header() {
   );
 }
 
-function BureauProductionIntro() {
+function workImage(work?: Work): string {
+  return work?.images?.find((image) => image?.url)?.url || '';
+}
+
+function BureauProductionIntro({ works }: { works: Work[] }) {
+  const hero = works[0];
+  const second = works[2] || works[1] || hero;
+  const third = works[4] || works[3] || second;
+
   return (
     <section className="relative overflow-hidden border-b border-[#f5f0eb]/12 bg-[#14090d]">
       <div className="absolute inset-0 opacity-[0.11]" style={{ backgroundImage: 'linear-gradient(90deg,#f5f0eb 1px,transparent 1px),linear-gradient(#f5f0eb 1px,transparent 1px)', backgroundSize: '8.333vw 88px' }} />
@@ -93,13 +119,23 @@ function BureauProductionIntro() {
         <div className="relative min-h-[640px] px-5 py-10 sm:px-8 lg:min-h-[86dvh] lg:px-12">
           <div className="absolute left-[12%] right-[6%] top-[10%] h-[76%] border border-[#f5f0eb]/14 bg-[#f5f0eb]/[0.035] shadow-[0_42px_120px_rgba(0,0,0,.38)] backdrop-blur-[1px]" />
           <div className="absolute left-[8%] top-[8%] h-[76%] w-[19%] border-l border-[#d7b46a]/45" />
-          <div className="absolute left-[18%] top-[18%] h-[56%] w-[28%] bg-[#f5f0eb] shadow-[26px_38px_90px_rgba(0,0,0,.44)]">
-            <div className="absolute inset-4 bg-[#c7b498]" />
-            <div className="absolute bottom-4 left-4 right-4 h-[36%] bg-[#1a0b10]" />
+          <div className="absolute left-[18%] top-[18%] h-[56%] w-[28%] bg-[#f5f0eb] p-3 shadow-[26px_38px_90px_rgba(0,0,0,.44)] sm:p-4">
+            {workImage(hero) ? (
+              <img src={workImage(hero)} alt={hero?.title || ''} loading="lazy" className="h-full w-full object-cover saturate-[.82]" />
+            ) : (
+              <>
+                <div className="absolute inset-4 bg-[#c7b498]" />
+                <div className="absolute bottom-4 left-4 right-4 h-[36%] bg-[#1a0b10]" />
+              </>
+            )}
           </div>
-          <div className="absolute left-[42%] top-[27%] h-[44%] w-[34%] bg-[#4a1728] shadow-[34px_46px_110px_rgba(0,0,0,.5)]">
+          <div className="absolute left-[42%] top-[27%] h-[44%] w-[34%] bg-[#4a1728] p-3 shadow-[34px_46px_110px_rgba(0,0,0,.5)] sm:p-4">
+            {workImage(second) ? <img src={workImage(second)} alt={second?.title || ''} loading="lazy" className="h-full w-full object-cover opacity-[.78] mix-blend-luminosity" /> : null}
             <div className="absolute inset-5 border border-[#f5f0eb]/18" />
-            <div className="absolute bottom-5 left-5 h-[42%] w-[44%] bg-[#d7b46a]" />
+            <div className="absolute bottom-5 left-5 h-[42%] w-[44%] bg-[#d7b46a]/82 mix-blend-multiply" />
+          </div>
+          <div className="absolute right-[15%] top-[18%] h-[28%] w-[18%] border border-[#f5f0eb]/24 bg-[#f5f0eb]/10 p-2 shadow-[18px_24px_70px_rgba(0,0,0,.34)]">
+            {workImage(third) ? <img src={workImage(third)} alt={third?.title || ''} loading="lazy" className="h-full w-full object-cover opacity-[.86]" /> : null}
           </div>
           <div className="absolute right-[9%] top-[14%] h-[68%] w-px rotate-[18deg] bg-[#d7b46a]" />
           <div className="absolute left-[50%] top-[7%] h-[74%] w-[18%] rotate-[18deg] bg-[#d7b46a]/24 shadow-[22px_0_70px_rgba(215,180,106,.22)]" />
@@ -114,6 +150,97 @@ function BureauProductionIntro() {
               ))}
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BureauReferenceRoom({ works }: { works: Work[] }) {
+  const refs = works.filter((work) => workImage(work)).slice(0, 9);
+
+  return (
+    <section className="relative overflow-hidden border-b border-[#f5f0eb]/12 bg-[#0f0709] text-[#f5f0eb]">
+      <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: 'linear-gradient(90deg,#f5f0eb 1px,transparent 1px),linear-gradient(#f5f0eb 1px,transparent 1px)', backgroundSize: '12.5vw 96px' }} />
+      <div className="mx-auto grid max-w-[1700px] lg:grid-cols-[minmax(0,0.56fr)_minmax(0,1fr)]">
+        <div className="relative z-10 border-b border-[#f5f0eb]/12 px-5 py-12 sm:px-8 lg:border-b-0 lg:border-r lg:px-12 xl:px-16">
+          <p className="font-sans text-[10px] uppercase tracking-normal text-[#d7b46a]">real references / object thinking</p>
+          <h2 className="mt-5 max-w-[8ch] font-display text-[clamp(3.8rem,8vw,8rem)] lowercase leading-[0.78] tracking-normal">
+            not a moodboard, a room test
+          </h2>
+          <p className="mt-7 max-w-[35rem] border-l border-[#d7b46a] pl-5 font-sans text-[17px] leading-relaxed text-[#f5f0eb]/72">
+            Bureau starts with actual works and visible things: surfaces, shadows, shelves, curtains, podiums, frames, routes. The references below become decisions a fabricator, photographer and curator can all understand.
+          </p>
+          <a href="/showcase" className="mt-8 inline-flex min-h-12 items-center gap-3 bg-[#f5f0eb] px-5 font-sans text-[10px] uppercase tracking-normal text-[#1a0b10] transition-colors hover:bg-[#d7b46a]">
+            Browse the source vitrine <ArrowUpRight size={15} />
+          </a>
+        </div>
+
+        <div className="relative z-10 min-h-[720px] px-5 py-10 sm:px-8 lg:px-12">
+          <div className="absolute bottom-10 left-5 right-5 h-[42%] bg-[#211014] shadow-[0_42px_120px_rgba(0,0,0,.42)] sm:left-8 sm:right-8 lg:left-12 lg:right-12" />
+          <div className="relative grid min-h-[640px] grid-cols-6 grid-rows-[repeat(6,minmax(74px,1fr))] gap-3">
+            {refs.map((work, index) => {
+              const placements = [
+                'col-span-3 row-span-3',
+                'col-span-2 row-span-2 col-start-4',
+                'col-span-2 row-span-3 col-start-1 row-start-4',
+                'col-span-2 row-span-2 col-start-3 row-start-4',
+                'col-span-2 row-span-4 col-start-5 row-start-3',
+                'col-span-1 row-span-2 col-start-6 row-start-1',
+                'col-span-2 row-span-1 col-start-3 row-start-6',
+                'col-span-1 row-span-1 col-start-5 row-start-1',
+                'col-span-1 row-span-1 col-start-6 row-start-6',
+              ];
+              return (
+                <a key={work.id} href="/showcase" className={`group relative overflow-hidden border border-[#f5f0eb]/14 bg-[#261116] shadow-[18px_24px_70px_rgba(0,0,0,.28)] ${placements[index] || 'col-span-2 row-span-2'}`}>
+                  <img src={workImage(work)} alt={work.title} loading="lazy" className="h-full w-full object-cover opacity-[.84] transition duration-300 group-hover:scale-[1.035] group-hover:opacity-100" />
+                  <span className="absolute inset-x-0 bottom-0 bg-[#0f0709]/78 px-3 py-2 font-sans text-[9px] uppercase tracking-normal text-[#f5f0eb]/72">
+                    {work.discipline || 'reference'} / {work.city || work.country || 'site'}
+                  </span>
+                </a>
+              );
+            })}
+            <div className="absolute bottom-[17%] left-[13%] h-[15%] w-[28%] bg-[#d7b46a] shadow-[22px_28px_80px_rgba(215,180,106,.26)]" />
+            <div className="absolute bottom-[12%] right-[15%] h-[32%] w-px rotate-[18deg] bg-[#d7b46a]" />
+            <div className="absolute bottom-[8%] left-[8%] right-[8%] flex flex-wrap gap-2 border-t border-[#f5f0eb]/18 pt-4">
+              {MATERIALS.map((item) => (
+                <span key={item} className="border border-[#f5f0eb]/18 bg-[#0f0709]/68 px-3 py-2 font-sans text-[10px] uppercase tracking-normal text-[#f5f0eb]/66">{item}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BureauObjectLibrary() {
+  return (
+    <section className="border-b border-[#1a0b10]/12 bg-[#f5f0eb] text-[#1a0b10]">
+      <div className="mx-auto max-w-[1700px] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 xl:px-16">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.6fr)_minmax(0,1fr)]">
+          <div>
+            <p className="font-sans text-[10px] uppercase tracking-normal text-[#4a1728]/56">object library</p>
+            <h2 className="mt-5 max-w-[7ch] font-display text-[clamp(3.6rem,8vw,7.6rem)] lowercase leading-[0.78] tracking-normal">
+              the useful beautiful things
+            </h2>
+          </div>
+          <p className="max-w-[42rem] self-end border-l border-[#4a1728] pl-5 font-sans text-[17px] leading-relaxed text-[#4a1728]/72">
+            The page needed more real design matter, so the Bureau now names the objects it actually works with: plinths, rails, glass, captions, fabric, floor marks, night light and shadows.
+          </p>
+        </div>
+
+        <div className="mt-12 grid border-l border-t border-[#1a0b10]/12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {OBJECT_LIBRARY.map(([num, title, text]) => (
+            <article key={title} className="group min-h-[240px] border-b border-r border-[#1a0b10]/12 bg-[#f5f0eb] p-5 transition-colors hover:bg-[#eee6da] sm:p-6">
+              <div className="flex items-start justify-between gap-5">
+                <span className="font-display text-[2.6rem] leading-none text-[#b8956e]">{num}</span>
+                <span className="h-14 w-14 border border-[#1a0b10]/14 bg-[#1a0b10]/5 shadow-[12px_16px_36px_rgba(26,11,16,.08)] transition-transform group-hover:-translate-y-1" />
+              </div>
+              <h3 className="mt-10 font-display text-[2.2rem] lowercase leading-[0.88] tracking-normal text-[#1a0b10]">{title}</h3>
+              <p className="mt-4 max-w-[23rem] font-sans text-[14px] leading-relaxed text-[#4a1728]/70">{text}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -231,11 +358,13 @@ function CaseDetail({ item }: { item: BureauCase }) {
   );
 }
 
-function CaseList({ items }: { items: BureauCase[] }) {
+function CaseList({ items, works }: { items: BureauCase[]; works: Work[] }) {
   return (
     <>
-      <BureauProductionIntro />
+      <BureauProductionIntro works={works} />
+      <BureauReferenceRoom works={works} />
       <BureauServices />
+      <BureauObjectLibrary />
       <div className="mx-auto max-w-[1600px] px-5 py-12 sm:px-8 sm:py-16 lg:px-12">
         <p className="font-sans text-[10px] uppercase tracking-normal text-[#d7b46a]">case studies</p>
         <h2 className="mt-4 max-w-[9ch] font-display text-[clamp(3.4rem,8vw,7rem)] lowercase leading-[0.78] tracking-normal text-[#f5f0eb]">
@@ -284,6 +413,7 @@ function CaseList({ items }: { items: BureauCase[] }) {
 export function BureauPage() {
   const [slug] = useState<string | null>(() => slugFromPath());
   const [items, setItems] = useState<BureauCase[]>([]);
+  const [works, setWorks] = useState<Work[]>([]);
   const [item, setItem] = useState<BureauCase | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -291,8 +421,8 @@ export function BureauPage() {
   useEffect(() => {
     const controller = new AbortController();
     const load = slug
-      ? fetchCase(slug, controller.signal).then(setItem)
-      : fetchCases(controller.signal).then(setItems);
+      ? Promise.all([fetchCase(slug, controller.signal).then(setItem), fetchWorks(controller.signal).then(setWorks)])
+      : Promise.all([fetchCases(controller.signal).then(setItems), fetchWorks(controller.signal).then(setWorks)]);
     load
       .catch((cause) => { if (cause.name !== 'AbortError') setError(String(cause.message || cause)); })
       .finally(() => setLoading(false));
@@ -321,7 +451,7 @@ export function BureauPage() {
           </div>
         )}
         {!loading && !error && slug && item && <CaseDetail item={item} />}
-        {!loading && !error && !slug && <CaseList items={items} />}
+        {!loading && !error && !slug && <CaseList items={items} works={works} />}
       </main>
     </div>
   );
