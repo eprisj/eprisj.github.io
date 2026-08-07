@@ -639,13 +639,17 @@ export function ShowcasePage() {
                           (work.images || []).length > 1 ? `${(work.images || []).length} frames` : '',
                         ].filter(Boolean).join(' · ')}
                       </p>
+                      {/* Ход в работу нужен и с клавиатуры, но обведённая
+                          коробка под каждой плиткой превращала сетку в панель
+                          управления: тридцать семь рамок на экран. Тихая
+                          строка делает ту же работу и не спорит с картинкой. */}
                       <button
                         type="button"
                         onClick={(event) => { event.stopPropagation(); setSelected(work); }}
                         aria-label={`Read ${work.title} — ${work.author}`}
-                        className="mt-4 inline-flex min-h-11 w-fit items-center gap-2 border border-[#1a0b10]/20 px-4 font-sans text-[9px] uppercase tracking-[0.16em] text-[#1a0b10] transition-colors group-hover:border-[#1a0b10]/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4a1728]"
+                        className="mt-3 inline-flex min-h-9 w-fit items-center gap-1.5 font-sans text-[9px] uppercase tracking-[0.16em] text-[#4a1728]/55 underline-offset-4 transition-colors group-hover:text-[#1a0b10] group-hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4a1728]"
                       >
-                        Read <ArrowRight size={13} />
+                        Read <ArrowRight size={12} />
                       </button>
                     </div>
                   </div>

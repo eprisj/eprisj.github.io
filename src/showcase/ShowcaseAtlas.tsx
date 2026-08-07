@@ -377,16 +377,6 @@ export function ShowcaseAtlas({ works, loading, onOpenWork }: { works: Work[]; l
     return `/stage#s=${encodeScene(buildStageScene(nodes, mode, project))}`;
   }, [nodes, mode, project]);
   const absoluteStageHref = typeof window === 'undefined' ? stageHref : `${window.location.origin}${stageHref}`;
-  // Считаем только то, что действительно знаем о работах. Прежний "production
-  // score" складывался из высоты узла в раскладке и положения ползунка density,
-  // упирался в потолок min(99, ...) и потому во всех режимах показывал 99 —
-  // выдуманная величина с видом измерения. Витрина не реконструирует того,
-  // чего не знает: бюджетов и сроков этих постановок у нас нет.
-  const disciplines = useMemo(
-    () => new Set(route.map((node) => node.work.discipline).filter(Boolean)).size,
-    [route],
-  );
-
   async function handleCopyDossier() {
     await copyText(dossierText(mode, project, route));
     setCopyState('copied');
@@ -437,19 +427,13 @@ export function ShowcaseAtlas({ works, loading, onOpenWork }: { works: Work[]; l
             </div>
 
             <div className="mt-12">
-              <div className="grid grid-cols-3 border-y border-[#f8f3ea]/14">
-                {[
-                  [nodes.length === 1 ? 'work' : 'works', nodes.length],
-                  ['in route', route.length],
-                  [disciplines === 1 ? 'discipline' : 'disciplines', disciplines],
-                ].map(([label, value]) => (
-                  <div key={label} className="border-r border-[#f8f3ea]/12 py-4 pr-4 last:border-r-0">
-                    <p className="font-display text-[2.5rem] leading-none text-[#d7b46a]">{value}</p>
-                    <p className="mt-1 font-sans text-[10px] uppercase tracking-normal text-[#f8f3ea]/48">{label}</p>
-                  </div>
-                ))}
-              </div>
-
+              {/* Строка «18 works / 5 in route / 3 disciplines» убрана.
+                  Ни одно из трёх чисел не про работы: 18 — это потолок среза
+                  атласа (slice(0,18)), 5 — длина маршрута, зашитая константой
+                  в curatedRoute, 3 — сколько дисциплин попало в эти пять. То
+                  есть счётчики считали собственный UI и на трёх линзах из
+                  четырёх не менялись вовсе. Тот же дефект, что и у «99
+                  production score», который отсюда уже убирали. */}
               <div className="mt-6 flex flex-wrap gap-2">
                 {MODES.map((item) => (
                   <button
