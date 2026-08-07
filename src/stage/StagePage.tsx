@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, Check, Copy, FileDown, Link2, Plus
 import { decodeScene, encodeScene, sceneFromLocation, sceneShareUrl } from './sceneUrl';
 import { useSceneHistory } from './useSceneHistory';
 import { snapObject, toStep } from './snapping';
+import { computeSightlines, TARGET_HEIGHT } from './sightlines';
 import { exportSpec } from './exportSpec';
 import { HeroPlan } from './HeroPlan';
 import { demoScene } from './demoScene';
@@ -101,6 +102,7 @@ export function StagePage() {
   const [moveParams, setMoveParams] = useState<Params>({});
   const [shareState, setShareState] = useState<'idle' | 'copied' | 'in-address-bar'>('idle');
   const [exporting, setExporting] = useState(false);
+  const [sightOn, setSightOn] = useState(true);
   const selected = scene.objects.find((o) => o.id === selectedId) || null;
   const activeCaseTitle = cases.find((item) => item.slug === activeSlug)?.title ?? null;
 
@@ -131,6 +133,13 @@ export function StagePage() {
   const displayed = useMemo(
     () => (activeMove ? activeMove.apply(scene, moveParams, selectedId) : scene),
     [activeMove, scene, moveParams, selectedId],
+  );
+
+  /* Считается по ПОКАЗАННОЙ сцене: если приём что-то передвинул, видимость
+     должна отвечать за увиденное, а не за исходную расстановку. */
+  const sightlines = useMemo(
+    () => (sightOn ? computeSightlines(displayed) : null),
+    [sightOn, displayed],
   );
 
   const readings = useMemo(
@@ -368,7 +377,27 @@ export function StagePage() {
         <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_280px]">
           <div className="min-w-0 space-y-8">
             <div>
-              <p className="mb-2 font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/45">Plan</p>
+              <div className="mb-2 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/45">Plan</p>
+                <div className="flex items-baseline gap-4">
+                  {sightlines && (
+                    <p className="font-sans text-[10px] tabular-nums text-[#f5f0eb]/55">
+                      <span className="text-[#8c2f24]">■</span> {sightlines.deadArea.toFixed(1)} m² dead
+                      <span className="mx-1.5 opacity-40">·</span>
+                      {sightlines.partialArea.toFixed(1)} m² lost from a seat
+                      <span className="mx-1.5 opacity-40">·</span>
+                      {Math.round((sightlines.deadArea / Math.max(sightlines.stageArea, 0.01)) * 100)}% of the stage
+                    </p>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => setSightOn((v) => !v)}
+                    className="font-sans text-[9px] uppercase tracking-[0.14em] text-[#f5f0eb]/50 hover:text-[#f5f0eb]"
+                  >
+                    {sightOn ? 'Hide sightlines' : 'Sightlines'}
+                  </button>
+                </div>
+              </div>
               <div className="border border-[#f5f0eb]/12">
                 <PlanView
                   scene={displayed}
@@ -379,9 +408,18 @@ export function StagePage() {
                   onDragEnd={() => setGuide({ x: null, z: null })}
                   guideX={guide.x}
                   guideZ={guide.z}
+                  sightlines={sightlines}
                 />
               </div>
             </div>
+            {sightOn && (
+              <p className="-mt-5 font-sans text-[10px] leading-relaxed text-[#f5f0eb]/40">
+                Masked ground: where a face at {TARGET_HEIGHT} m cannot be seen. Solid — hidden
+                from every seat in the row; faint — hidden from one or two. Measured from three
+                seats, the ends included, because a set falls apart at the ends, not in the middle.
+              </p>
+            )}
+
             <div>
               <p className="mb-2 font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/45">Section</p>
               <div className="border border-[#f5f0eb]/12">
