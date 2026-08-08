@@ -3498,7 +3498,7 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/msjmgso0atp099.jpg",
-          "caption": "Emily Kraus, Each in the other what each has to give, 2026, oil on canvas, 137.75 × 212.5 inches.Lead image",
+          "caption": "Emily Kraus, Each in the other what each has to give, 2026. Photo by Ollie Hammick",
           "sourceUrl": "",
           "credit": "Ollie Hammick"
         },
@@ -3532,10 +3532,13 @@
           "content": [
             "https://api.eprisjournal.com/uploads/msjmlmp1yo7kfr.jpg",
             "https://api.eprisjournal.com/uploads/msjmln6mxu4ycf.jpg",
-            "https://api.eprisjournal.com/uploads/msjmmyamb6ai3j.jpg",
-            "https://api.eprisjournal.com/uploads/msjmn075gsuih9.webp"
+            "https://api.eprisjournal.com/uploads/msjmmyamb6ai3j.jpg"
           ],
           "caption": ""
+        },
+        {
+          "type": "text",
+          "content": ""
         }
       ],
       "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
