@@ -15119,6 +15119,16 @@
           "description": "Il 7 luglio, Mariia Ivanova, caporedattrice di EPRIS, si è laureata ufficialmente in Architettura. Per festeggiare – un cuore fatto dell'architettura e dell'arte che la ispirano.",
           "imageSeed": "maria-graduation-heart",
           "imageUrl": "/images/heart-hero.jpg"
+        },
+        {
+          "id": 12,
+          "title": "Come Emily Kraus reinventa l’atto della pittura",
+          "subtitle": "Arte contemporanea",
+          "fig": "FIG. 10",
+          "description": "All’interno del cubo di tela, Emily Kraus dipinge il ritmo del momento presente",
+          "imageSeed": "item-12",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg",
+          "updatedAt": "2026-08-08T18:54:26.888Z"
         }
       ],
       "articles": [
