@@ -836,16 +836,19 @@ function bindEvents() {
   copySiteBtn.addEventListener('click', copyPagesUrl);
 
   visualSectionSelect.addEventListener('change', () => {
+    if (isAdminBusy()) return;
     pendingVisualEntryId = null;
     refreshVisualEditor();
   });
 
   visualLangSelect.addEventListener('change', () => {
+    if (isAdminBusy()) return;
     pendingVisualEntryId = null;
     refreshVisualEditor();
   });
 
   visualEntrySelect.addEventListener('change', () => {
+    if (isAdminBusy()) return;
     pendingVisualEntryId = null;
     renderVisualForm();
     // Auto-collapse creator studio when editing an existing entry
@@ -1774,9 +1777,25 @@ async function githubRequest(url, options = {}) {
   throw new Error(message);
 }
 
+// Долгие операции (сохранение записи, перевод на шесть языков) работают со
+// СНИМКОМ документа и в конце кладут его целиком через setEditorData. Пока они
+// идут, кнопки блокировались, а вот три селектора — раздел, язык, запись — нет:
+// переключение на середине перерисовывало редактор, и результат уходившего
+// сохранения молча терялся. Ловилось это на «сохранил и сразу переключил язык»:
+// запись выглядела сохранённой, но на VPS её не было. Блокируем и селекторы.
+let adminBusy = false;
+
+function isAdminBusy() {
+  return adminBusy;
+}
+
 function setBusy(value) {
+  adminBusy = Boolean(value);
   for (const button of interactiveButtons) {
     button.disabled = value;
+  }
+  for (const select of [visualSectionSelect, visualLangSelect, visualEntrySelect]) {
+    if (select) select.disabled = value;
   }
   loadingBarEl.classList.toggle('active', value);
   if (!value && typeof updateAdminToolbarContext === 'function') {
