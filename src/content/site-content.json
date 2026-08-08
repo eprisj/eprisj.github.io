@@ -4684,37 +4684,37 @@
         },
         {
           "id": 11,
+          "title": "Сердце EPRIS: Мария теперь бакалавр архитектуры",
           "author": "EPRIS Journal",
+          "role": "Редакционный отдел",
           "date": "Jul 7, 2026",
-          "category": "Culture",
-          "imageUrl": "/images/heart-hero.jpg",
-          "imageSeed": "maria-graduation-heart",
-          "draft": false,
-          "role": "Редакция",
-          "title": "Сердце EPRIS: у Марии диплом архитектора",
-          "excerpt": "7 июля Мария Иванова, главный редактор EPRIS, официаль��о стала бакалавром архитектуры. В честь этого дня – сердце, собранное из архитектуры и искусства, которые её вдохновляют.",
+          "excerpt": "7 июля Мария Иванова, главный редактор EPRIS, официально получила степень бакалавра архитектуры. Чтобы отметить этот день – сердце, построенное из архитектуры и искусства, которые ее вдохновляют.",
+          "category": "Культура",
           "subcategory": "От редакции",
           "tags": [
             "архитектура",
-            "мария иванова",
+            "Мария Иванова",
             "праздник"
           ],
+          "imageUrl": "/images/heart-hero.jpg",
+          "imageSeed": "maria-graduation-heart",
+          "draft": false,
           "content": [
             {
               "type": "text",
-              "content": "Вчера, 7 июля 2026 года, в жизни редакции EPRIS произошло особенное событие. Мария Иванова – наш главный редактор и человек, чьим детищем является этот журнал, – официально стала бакалавром архитектуры. Годы черчения, макетов и бессонных ночей перед защитой дипломного проекта остались позади. Начинается новая глава – и мы не могли не отметить её здесь, на страницах EPRIS."
+              "content": "Вчера, 7 июля 2026 года, в жизни редакции ЭПРИС произошло нечто особенное. Мария Иванова – наш главный редактор и человек, чьим детищем является этот журнал, – официально стала бакалавром архитектуры. Годы черчения, моделей и бессонных ночей перед защитой диссертации остались позади. Начинается новая глава – и мы не могли пройти мимо, не отметив ее здесь, на страницах ЭПРИС."
             },
             {
               "type": "text",
-              "content": "Не секрет, что взгляд архитектора чувствуется в каждом выпуске EPRIS – в том, как мы говорим о пространстве, свете и деталях. Сегодня этот взгляд получил официальное подтверждение."
+              "content": "Ни для кого не секрет, что взгляд архитектора просматривает каждый выпуск EPRIS – так же, как мы говорим о пространстве, свете и деталях. Сегодня этот глаз получил свои официальные полномочия."
             },
             {
               "type": "text",
-              "content": "Те, кто работал с ней над этим номером, хорошо знают этот ритуал: свет в мастерской допоздна, калька, испещрённая правками, остывший кофе рядом с макетом, который она пересобирала снова и снова, пока не становилось по-настоящему хорошо. Та же неуспокоенность – нежелание довольствоваться «и так сойдёт» – формирует этот журнал с самой первой страницы."
+              "content": "Те, кто вместе с ней работал над этим вопросом, хорошо знают этот ритуал: свет в студии горит до поздней ночи, калька покрыта исправлениями, остывшая чашка кофе рядом с моделью, которую она продолжала восстанавливать, пока она, наконец, не показалась правильной. То же самое беспокойство – отказ довольствоваться «достаточно хорошим» – является тем, что сформировало этот журнал с самой первой страницы."
             },
             {
               "type": "header",
-              "content": "Сердце из того, что её вдохновляет",
+              "content": "A Heart Made of What Inspired Her",
               "level": 3
             },
             {
@@ -4768,21 +4768,22 @@
                 "/images/heart-tiles/tile-46.jpg",
                 "/images/heart-tiles/tile-47.jpg"
               ],
-              "caption": "Сорок семь мест и произведений искусства, которые сформировали то, как Мария видит мир – от собора Саграда Фамилия до микеланджеловского Давида. Частичка каждого из них есть в любом номере EPRIS."
+              "caption": "Сорок семь мест и произведений искусства, которые сформировали взгляд Марии на мир – от Храма Святого Семейства до Давида Микеланджело. Немного каждого из них можно найти в каждом выпуске EPRIS."
             },
             {
               "type": "text",
-              "content": "Какие-то из этих зданий она видела своими глазами, с блокнотом для набросков в руках. Другие – только на фотографиях. Мы желаем ей однажды увидеть их все – вживую, своими глазами."
+              "content": "Некоторые из этих зданий она посетила лично, с альбомом для рисования в руке. Других она видела только на фотографиях. Мы надеемся, что однажды она увидит каждого из них своими глазами."
             },
             {
               "type": "quote",
-              "content": "Архитектура научила меня видеть конструкцию за красотой. EPRIS – р��ссказывать об этом другим. Для меня это два языка одного и того же чувства."
+              "content": "Архитектура научила меня видеть за красотой структуру. ЭПРИС научил меня рассказывать об этом другим. Для меня это два языка одного и того же чувства."
             },
             {
               "type": "note",
-              "content": "Редакция EPRIS поздравляет Марию с дипломом и благодарит за вдохновение, которое живёт в каждом номере журнала. С этим дипломом – новая глава, и, кажется, не последняя, которую стоит отмечать. Мы рады, что вы читаете её вместе с нами."
+              "content": "Редакция ЭПРИС поздравляет Марию с получением ученой степени и благодарит ее за вдохновение, которое живет в каждом номере журнала. Этот диплом знаменует собой новую главу – и мы подозреваем, что она будет не последней, которую стоит праздновать. Мы рады, что вы читаете это вместе с нами."
             }
-          ]
+          ],
+          "updatedAt": "2026-08-08T20:25:17.414Z"
         },
         {
           "id": 12,
@@ -15668,37 +15669,37 @@
         },
         {
           "id": 11,
+          "title": "Il cuore di EPRIS: Maria è ora laureata in architettura",
           "author": "EPRIS Journal",
+          "role": "Scrivania editoriale",
           "date": "Jul 7, 2026",
-          "category": "Culture",
+          "excerpt": "Il 7 luglio Mariia Ivanova, caporedattrice di EPRIS, è diventata ufficialmente laureata in Architettura. Per celebrare la giornata: un cuore costruito dall'architettura e dall'arte che la ispirano.",
+          "category": "Cultura",
+          "subcategory": "Dagli editori",
+          "tags": [
+            "architettura",
+            "Maria Ivanova",
+            "celebrazione"
+          ],
           "imageUrl": "/images/heart-hero.jpg",
           "imageSeed": "maria-graduation-heart",
           "draft": false,
-          "role": "Redazione",
-          "title": "Il cuore di EPRIS: Maria è ora laureata in Architettura",
-          "excerpt": "Il 7 luglio, Mariia Ivanova, caporedattrice di EPRIS, si è laureata ufficialmente in Architettura. Per festeggiare – un cuore fatto dell'architettura e dell'arte che la ispirano.",
-          "subcategory": "Dalla redazione",
-          "tags": [
-            "architettura",
-            "mariia ivanova",
-            "celebrazione"
-          ],
           "content": [
             {
               "type": "text",
-              "content": "Ieri, 7 luglio 2026, è successo qualcosa di speciale nella vita della redazione di EPRIS. Mariia Ivanova – la nostra caporedattrice e la persona di cui questa rivista è la creatura – si è laureata ufficialmente in Architettura. Anni di disegno tecnico, modelli e notti insonni prima della discussione della tesi sono ormai alle spalle. Inizia un nuovo capitolo – e non potevamo non celebrarlo qui, sulle pagine di EPRIS."
+              "content": "Ieri, 7 luglio 2026, è successo qualcosa di speciale nella vita della redazione di EPRIS. Mariia Ivanova – la nostra caporedattrice e la persona da cui nasce questa rivista – è diventata ufficialmente una laurea in architettura. Anni di redazioni, modelli e notti insonni prima della difesa della sua tesi sono ormai alle spalle. Inizia un nuovo capitolo – e non potevamo lasciarlo passare senza segnalarlo qui, sulle pagine di EPRIS."
             },
             {
               "type": "text",
-              "content": "Non è un segreto che lo sguardo di un'architetta attraversi ogni numero di EPRIS – nel modo in cui parliamo di spazio, luce e dettagli. Oggi quello sguardo ha ricevuto la sua conferma ufficiale."
+              "content": "Non è un segreto che l'occhio di un architetto percorre ogni numero di EPRIS, nel modo in cui parliamo di spazio, luce e dettaglio. Oggi quell’occhio ha guadagnato le sue credenziali ufficiali."
             },
             {
               "type": "text",
-              "content": "Chi ha lavorato con lei a questo numero conosce bene il rituale: le luci dello studio accese fino a tardi, carta da lucido coperta di correzioni, un caffè ormai freddo accanto al modellino che continuava a rifare finché non era davvero giusto. Quella stessa irrequietezza – il rifiuto di accontentarsi del “abbastanza buono” – è ciò che plasma questa rivista fin dalla sua primissima pagina."
+              "content": "Coloro che hanno lavorato al suo fianco su questo tema conoscono bene il rituale: luci dello studio accese fino a tarda notte, carta da lucido ricoperta di revisioni, una tazza di caffè raffreddata accanto al modello che ha continuato a ricostruire finché non le è sembrato giusto. Quella stessa irrequietezza – il rifiuto di accontentarsi di “abbastanza buono” – è ciò che ha plasmato questa rivista sin dalla sua prima pagina."
             },
             {
               "type": "header",
-              "content": "Un cuore fatto di ciò che la ispira",
+              "content": "A Heart Made of What Inspired Her",
               "level": 3
             },
             {
@@ -15752,21 +15753,22 @@
                 "/images/heart-tiles/tile-46.jpg",
                 "/images/heart-tiles/tile-47.jpg"
               ],
-              "caption": "Quarantasette luoghi e opere d'arte che hanno plasmato il modo in cui Mariia vede il mondo – dalla Sagrada Família al David di Michelangelo. Un pezzo di ciascuno vive in ogni numero di EPRIS."
+              "caption": "Quarantasette luoghi e opere d'arte che hanno plasmato il modo in cui Mariia vede il mondo, dalla Sagrada Família al David di Michelangelo. Un po' di ciascuno di essi trova spazio in ogni numero di EPRIS."
             },
             {
               "type": "text",
-              "content": "Alcuni di questi edifici li ha visitati di persona, taccuino di schizzi alla mano. Altri li ha visti solo in fotografia. Le auguriamo che un giorno possa vederli tutti con i propri occhi."
+              "content": "Alcuni di questi edifici li ha visitati di persona, con l'album da disegno in mano. Altri li ha visti solo in fotografia. Speriamo che un giorno possa vederli tutti con i suoi occhi."
             },
             {
               "type": "quote",
-              "content": "L'architettura mi ha insegnato a vedere la struttura dietro la bellezza. EPRIS mi ha insegnato a raccontarla agli altri. Per me sono due lingue per lo stesso sentimento."
+              "content": "L'architettura mi ha insegnato a vedere la struttura dietro la bellezza. EPRIS mi ha insegnato a raccontarlo agli altri. Per me sono due linguaggi per la stessa sensazione."
             },
             {
               "type": "note",
-              "content": "La redazione di EPRIS si congratula con Mariia per la laurea e la ringrazia per l'ispirazione che vive in ogni numero della rivista. Questo diploma segna un nuovo capitolo – e sospettiamo non sarà l'ultimo da festeggiare. Siamo felici che lo leggiate insieme a noi."
+              "content": "La redazione di EPRIS si congratula con Mariia per la sua laurea e la ringrazia per l'ispirazione che vive in ogni numero della rivista. Questo diploma segna un nuovo capitolo e sospettiamo che non sarà l'ultimo degno di essere celebrato. Siamo lieti che tu lo stia leggendo con noi."
             }
-          ]
+          ],
+          "updatedAt": "2026-08-08T20:25:11.273Z"
         },
         {
           "id": 12,
