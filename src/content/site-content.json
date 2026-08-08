@@ -11322,49 +11322,92 @@
           "title": "Cinco habitaciones, una firma",
           "author": "EPRIS Journal",
           "role": "Escritorio editorial",
-          "date": "11 de julio de 2026",
-          "excerpt": "Un cono, un hexágono, una cuadrícula de puntos y una larga diagonal que atraviesa los tres: la geometría de la esquina de un dormitorio individual, funcionó correctamente.",
+          "date": "Jul 11, 2026",
+          "excerpt": "Un punto dálmata, un trozo de nudo, tres retratos del mismo perro pintado y un pequeño cono que sigue reapareciendo donde menos lo esperas: el vocabulario disciplinado que un apartamento utiliza de cinco maneras diferentes sin repetirse jamás.",
           "category": "Cultura",
           "subcategory": "Estudio de diseño",
           "tags": [
             "Diseño",
-            "Geometría",
-            "Materiales"
+            "Patrón",
+            "Materiales",
+            "Interior"
           ],
           "imageSeed": "",
+          "imageUrl": "https://eprisjournal.com/images/article-polkadot-bedroom.jpg",
           "content": [
             {
               "type": "text",
-              "content": "Cuatro formas hacen todo el trabajo en este marco y ninguna de ellas es accidental. Un cono (el sólido más simple posible, una superficie continua barrida alrededor de un solo eje) se estrecha desde una base ancha hasta un punto sin costura, sin faceta, sin nada donde la vista se detenga. Debajo, un hexágono: dos prismas apilados, de seis planos cada uno, el mismo ángulo se repite hasta cerrarse sobre sí mismo. Detrás de ambos, una cuadrícula: puntos a intervalos fijos, filas y columnas, la única geometría bidimensional verdadera de la habitación. Y cortando en diagonal todo ello, el brazo de la lámpara, la única línea del marco que se niega a ser vertical u horizontal."
+              "content": "Camina por este apartamento una vez y verás los lunares, el revestimiento de nudos y el par de perros pintados que miran desde tres paredes diferentes. Revíselo dos veces y notará que ninguno de ellos aparece de la misma manera dos veces: el punto cambia de escala en cada superficie en la que aterriza, el revestimiento va desde la mesa hasta el frente del gabinete hasta un solo cuadrado enmarcado del tamaño de una postal, y los perros cambian de gris a blanco y negro a un solo retrato azul recortado, como si la misma idea se tradujera en lugar de repetirse. Ese es el verdadero tema aquí: no una mirada, sino un conjunto pequeño y disciplinado de decisiones que una casa aparentemente puede sostener en cinco habitaciones muy diferentes sin repetirse nunca por completo."
             },
             {
               "type": "image",
-              "content": "https://eprisjournal.com/images/article-polkadot-bedroom-detail-cone.jpg",
-              "caption": "Una superficie reglada: cada línea desde la punta hasta la base es recta; la curva que ves es una ilusión construida a partir de infinitas rectas."
+              "content": "https://api.eprisjournal.com/uploads/mrgg0dfmpqmyrg.jpg",
+              "caption": "El punto en su escala más grande: una sección completa, tapizada de borde a borde, el patrón se lee casi como textura antes de leerse como patrón.",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "El cono y el hexágono son opuestos disfrazados de vecinos. Un cono se genera mediante rotación: gira una línea recta alrededor de un eje y obtienes simetría total, sin esquinas, sin dirección \"incorrecta\". Un hexágono se genera por repetición: el mismo ángulo de 120 grados, seis veces, y solo se cierra porque seis es el número exacto que divide 360 ​​sin resto. Una forma no tiene ningún borde; el otro es casi nada más que bordes. Coloque la punta del cono directamente encima del centro del hexágono y el objeto se leerá como una idea continua, aunque estructuralmente se trata de dos familias de geometría no relacionadas apiladas una encima de la otra."
+              "content": "De cerca, esto no es un lunar impreso: está dibujado, cada marca es una mancha irregular con su propio peso y borde, el tipo de variación que ocurre cuando una mano repite un gesto en lugar de una máquina repitiendo un troquelado. A escala de sofá, esa irregularidad funciona realmente: un punto perfectamente regular de este tamaño se interpretaría como una tela de tapicería que se comporta como papel tapiz, decorativo y ligeramente barato. Uno irregular se lee como textura: más cerca del pelaje que claramente cita que de una impresión. La mesa de café con faldón debajo, en el mismo punto en una escala más pequeña y más densa, es el único mueble de la habitación vestido en lugar de tapizado: un disco de madera sobre una enagua de tela, algo deliberadamente extraño para colocarlo junto a una sección tan arquitectónica. Sobre esa mesa, junto a una pila de libros, hay un pequeño cono de metal: la misma silueta que la lámpara del dormitorio repite más tarde, en una escala completamente diferente, en un material completamente diferente, aunque nada en esta habitación lo anuncia todavía."
             },
             {
               "type": "quote",
-              "content": "Nada en esta habitación es redondo excepto una forma que nunca tendrá esquinas."
+              "content": "La misma idea, traducida cinco veces, es una colección. La misma idea, copiada cinco veces, es un tema."
             },
             {
               "type": "image",
-              "content": "https://eprisjournal.com/images/article-polkadot-bedroom-detail-grain.jpg",
-              "caption": "El grano del nudo no tiene ninguna geometría, razón por la cual necesitaba un hexágono debajo, no otra curva."
+              "content": "https://api.eprisjournal.com/uploads/mrgg0dpaojhrg2.jpg",
+              "caption": "El mismo revestimiento de nudos de tres formas en una sola toma: un aparador bajo, un estante flotante, un único cuadrado enmarcado que sostiene una fotografía en lugar de una vista.",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "El papel tapiz es el único elemento que funciona en dos dimensiones en lugar de tres, y es la geometría más estricta de la habitación: una cuadrícula fija, el mismo intervalo en todas las direcciones, ningún punto más importante que su vecino. Todo lo sólido o respeta esa grilla o lucha contra ella. La mesita de noche se encuentra cuadrada en su interior, con los bordes paralelos a las filas. La lámpara no lo hace: su brazo cruza la rejilla aproximadamente a veinte grados, la única diagonal en una habitación construida a partir de verticales, horizontales y una curva ininterrumpida. Esa diagonal hace más trabajo compositivo que cualquier objeto debajo de ella: es la línea que el ojo sigue primero, precisamente porque es lo único en el encuadre que no obedece a la cuadrícula detrás de ella."
+              "content": "Burl es madera en su forma menos geométrica: el patrón proviene de la respuesta al estrés de un árbol, un nudo alrededor del cual intentó y no logró crecer, por lo que nunca se pueden combinar dos paneles de él como lo hace la chapa de fibra recta. Usar esa cantidad, a tantas escalas, sólo funciona porque todo lo que lo toca es muy sencillo: un aparador de líneas limpias, un estante en voladizo sin soporte visible, un sillón floral con brazos suaves y de aspecto deshuesado. Esa silla es el único objeto curvo y estampado que se deja entrar en una habitación construida con bordes rectos y una veta salvaje e irrepetible: el mismo truco que hace el lunar junto a la mesita de noche de madera del dormitorio, solo que en un material diferente. Aquí también aparece un segundo cono que refleja la luz en la misma mesa baja y redonda: lo suficientemente pequeño como para pasar desapercibido, lo suficientemente insistente como para que una vez que lo hayas visto una vez, comiences a buscarlo en todas partes del departamento."
+            },
+            {
+              "type": "quote",
+              "content": "Repite un objeto suficientes veces, en diferentes tamaños y diferentes materiales, y deja de ser decoración y pasa a ser una firma."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrgg0dj90g3ij9.jpg",
+              "caption": "Un tercer perro, un tercer registro: blanco y negro en lugar de gris azulado, posado en lugar de atrapado en medio de una vuelta, colgado sobre una consola de madera de abeto en lugar de una pared con paneles de madera.",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Tres pinturas del mismo tema, tres tratamientos de color diferentes, y ninguna de ellas colgada como un conjunto a juego: eso es lo que indica que se trata de una colección construida a ojo, no ordenada como un tríptico. Las sillas aquí hacen el mismo trabajo silencioso que el punto del sofá: una tela floral, azul sobre blanco, envuelta alrededor de un marco casi sin ángulos rectos, por lo que el patrón se lee como movimiento en lugar de tapicería. Debajo, la misma losa de madera de la sala de estar reaparece como el borde de una mesa, lo suficientemente gruesa como para leerse como madera maciza en lugar de chapa de madera contrachapada: el único lugar del apartamento donde el material llega a ser el objeto completo en lugar de una superficie encima de uno. Las patas de la mesa están pulidas hasta obtener un espejo completo, lo que hace algo que el burl no puede: duplica la habitación en lugar de simplemente decorarla, doblando las sillas y su tela floral hacia el reflejo como un segundo comedor ligeramente más azul debajo del real."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrgg0dn3pl70qq.jpg",
+              "caption": "El punto en la escala de la ropa de cama, de nuevo más denso y más pequeño, con la cortina detrás como una cuarta escala todavía.",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Esta es la misma lógica de tela que el sofá, recorrida a través de una gama completa de escalas en una sola habitación: un punto en la cortina, un punto de diferente peso en la colcha, una tercera escala enteramente en la franja tejida debajo y un cuarto perro en tonos azules que vigila todo desde un solo retrato recortado en lugar de una pose completa. Nada aquí intenta coincidir: el punto de la cortina y el punto de la ropa de cama están lo suficientemente cerca como para pertenecer a la misma familia y lo suficientemente diferentes como para que el ojo siga trabajando para ubicarlos, razón por la cual la habitación se lee en capas en lugar de temática. Al retroceder, la cama misma hace el mismo truco de capas que la habitación que la rodea: una manta marrón acanalada, una manta tipo gofre a rayas y la colcha de puntos encima, tres texturas diferentes apiladas de la misma manera que los tres retratos de perros están apilados en tres habitaciones diferentes: repetición disfrazada de variedad, o tal vez al revés."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrgg0dhfp07cpi.jpg",
+              "caption": "El único rincón del apartamento donde todo el vocabulario se colapsa en una única y pequeña composición: punto, nudo, madera, una diagonal deliberada.",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Un cono se estrecha hasta un punto sin costura, generado nada más que por una línea recta que gira alrededor de un eje. Debajo, un hexágono construido a partir de dos prismas apilados, de seis planos cada uno, que se cierra sobre sí mismo porque seis es el único número menor de diez que divide 360 ​​sin resto. Una forma no tiene ningún borde; el otro no es más que bordes, y establecer el punto del cono directamente sobre el centro del hexágono es lo que permite que dos familias de geometría no relacionadas se lean como un solo objeto. Detrás de ambos, la cuadrícula de puntos es la geometría más estricta del departamento, un intervalo fijo, ningún punto más importante que su vecino, excepto que de cerca cada marca está dibujada, no estampada, la misma irregularidad disciplinada que mantiene unida toda la casa en cada escala que aparece. Para cuando el cono llega a esta mesa de noche, ya ha aparecido dos veces como un objeto pequeño en dos mesas de café diferentes, lo que significa que la lámpara no está introduciendo una nueva forma en el apartamento sino que finalmente le está dando a una de sus formas recurrentes un lugar serio donde colocarse. La lámpara es la única línea en el marco que rechaza la cuadrícula: su pantalla se inclina hacia la almohada en casi exactamente el ángulo en el que una persona se inclina para decir una última cosa antes de que la habitación se oscurezca: el único objeto aquí al que se le permite comportarse como si tuviera que estar en algún lugar."
+            },
+            {
+              "type": "quote",
+              "content": "Tres conos de mesa de café y una lámpara no son una coincidencia. Son lo más parecido que tiene este apartamento a una firma."
             },
             {
               "type": "note",
-              "content": "La geometría no explica por qué una habitación se siente tranquila en lugar de escenificada: la proporción y la moderación sí lo hacen. Pero nombrar las formas es un buen lugar para empezar a notar por qué algunas combinaciones \"en conflicto\" se mantienen unidas y la mayoría no."
+              "content": "Nada de esto explica por qué el apartamento se siente tranquilo en lugar de elegante: la moderación logra eso, al igual que resistir la tentación de combinar cualquier cosa exactamente. Pero contar cuántas veces el mismo punto, el mismo nudo, el mismo cono y el mismo perro pintado aparecen en cinco habitaciones, en cinco escalas diferentes, es una forma decente de empezar a notar por qué algunas casas se consideran recopiladas y la mayoría simplemente decoradas."
             }
           ],
-          "imageUrl": "https://eprisjournal.com/images/article-polkadot-bedroom.jpg"
+          "updatedAt": "2026-08-08T21:20:12.764Z",
+          "order": 7
         },
         {
           "id": 11,
