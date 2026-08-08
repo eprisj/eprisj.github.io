@@ -1907,6 +1907,15 @@
   },
   "items": [
     {
+      "id": 12,
+      "title": "How Emily Kraus Reinvents the Act of Painting",
+      "subtitle": "Contemporary Art",
+      "fig": "FIG. 10",
+      "description": "Inside the Canvas Cube, Emily Kraus Paints the Rhythm of the Present Moment",
+      "imageSeed": "item-12",
+      "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
+    },
+    {
       "id": 10,
       "title": "Against the Right Angle",
       "subtitle": "Architecture",
@@ -3477,66 +3486,87 @@
     },
     {
       "id": 17,
-      "title": "New editorial story",
+      "title": "How Emily Kraus Reinvents the Act of Painting",
       "author": "EPRIS Journal",
-      "role": "Editorial Desk",
+      "role": "mariia ivanova",
       "date": "Jul 30, 2026",
-      "excerpt": "A focused opening paragraph for a new editorial story.",
-      "category": "Culture",
+      "excerpt": "Inside the Canvas Cube, Emily Kraus Paints the Rhythm of the Present Moment",
+      "category": "contemporary art",
       "subcategory": "Feature",
       "tags": [
-        "story",
-        "culture",
-        "editorial"
+        "art",
+        "contemporary art"
       ],
-      "imageSeed": "new-editorial-story",
+      "imageSeed": "",
       "content": [
         {
           "type": "text",
-          "content": "Start with the strongest scene, fact, or observation. Keep this first block tight and specific."
+          "content": "When the art is a part of the artist's mind, body and soul - you can feel it from the intermost dedication to the practice. That form of connection can be compared to the billions of invisible thinest threads, that remain unbroken between the artist and the artwork, even when they are far apart. They are mutually nourishing and wil never be independent again."
         },
         {
           "type": "image",
-          "content": "new-editorial-story-2",
-          "caption": "Lead image",
-          "align": "center"
+          "content": "https://api.eprisjournal.com/uploads/msjmgso0atp099.jpg",
+          "caption": "Emily Kraus, Each in the other what each has to give, 2026. Photo by Ollie Hammick",
+          "sourceUrl": "",
+          "credit": ""
         },
         {
-          "type": "quote",
-          "content": "Add a line worth remembering here."
+          "type": "text",
+          "content": "When you look at the painting and can almost physically feel the presence of the author - that's when the purest form of revelation is unfolding in front of you."
         },
         {
-          "type": "note",
-          "content": "Editorial note, source context, or a short aside."
+          "type": "text",
+          "content": "Emily Kraus (New York, 1995) works left me unbothered by anything externally existing. I am freezed, trapped and stunned by the unidentified. Its almost like falling in love - ypu were not prepared, you didnt ask for it, yet its one of the best feelings that can happen to the humanbeing."
         },
         {
-          "type": "checklist",
-          "content": {
-            "items": [
-              "Context",
-              "Key detail",
-              "Human angle",
-              "What changes next"
-            ]
-          }
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/msjmzzvhzg92s2.webp",
+          "caption": "Emily Kraus, Stochastic 20, 2023. Photo by Ollie Hammick"
         },
         {
-          "type": "poll",
-          "content": {
-            "question": "What should we explore next?",
-            "options": [
-              {
-                "label": "More context",
-                "votes": 0
-              },
-              {
-                "label": "Practical guide",
-                "votes": 0
-              }
-            ]
-          }
+          "type": "text",
+          "content": "The first glance was not followed by the question \"How?\". I was too occupied dealing with uptight jitters. The second one will bring me to the conscious, ready to be curious about how was it achieved."
+        },
+        {
+          "type": "text",
+          "content": "Lack of immediate curiosity about technic corresponds to the artists belief that the work should live on its own - the communication with the viewer relies on the individual reflection as the clearest translator of visuals."
+        },
+        {
+          "type": "text",
+          "content": "Emily Kraus works in tandem with apparatus - self-invented structure, made of a scaffold with planks and rotating poles, on which the canvas is stretched. This approach gives a unique opportunity to rotate the surface and at the same time creates a cube-like enclosed space. From inside artist is applyuing the oil paints, and then rotate the canvas before the paint dries- coming through the poles, paint gets smudged. The repeated steps result in the glitchy signature visual code."
+        },
+        {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/msjmlmp1yo7kfr.jpg",
+            "https://api.eprisjournal.com/uploads/msjmln6mxu4ycf.jpg",
+            "https://api.eprisjournal.com/uploads/msjmmyamb6ai3j.jpg"
+          ],
+          "caption": ""
+        },
+        {
+          "type": "text",
+          "content": "As the canvas is geometrically structured, the result of the whole image is unknown till the end of the work - which takes approximately one mounth"
+        },
+        {
+          "type": "text",
+          "content": "There is a beauty in uncontrollable. The nature of each painting is not in the desire to pursuation of visual appeal, but in moment decision, weather the following gesture belongs to this emerging artwork or not. Throught this solid significance of the process, based purely on the artist's feelings, painting accumulates powerful, spiritual memory."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/msjmraxbowmo4w.webp",
+          "caption": "Emily Kraus, Fwooooop, 2024"
+        },
+        {
+          "type": "text",
+          "content": "This mechanism was influenced by the time, when Kraus was studing in the second year of Royal College of Art, that coincidence with the COVID19 anf lockdown. She was assigned with a cube studio 2.5 by 2.5 metres. The limimted area of the room hampered with the Kraus' intention to paint with large gestures, experimenting with the body and the space. To expand the practice possibilities in existing conditions, she stretched the canvas along all the walls using shower poles and wooden brackets. The canvas could be rotated, erasing boundaries of a contained space."
+        },
+        {
+          "type": "text",
+          "content": "As Lucien Freud stated - \"Everything is a self-portrait\". These words cant be more accurate in the talks on art. The sublime essence of Emily Kraus's oeuvre is definitive, rather than chaotically formed - she holds the BA in Religious Studies from Kenyon College. That was influenced by Kraus's self-questioning of the meaning of life."
         }
-      ]
+      ],
+      "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
     },
     {
       "id": 18,
@@ -5662,69 +5692,6 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg"
         },
         {
-          "id": 17,
-          "title": "Новая редакционная история",
-          "author": "EPRIS Journal",
-          "role": "Редакционный стол",
-          "date": "30 июля 2026",
-          "excerpt": "Сфокусированный вводный абзац для новой редакционной истории.",
-          "category": "Культура",
-          "subcategory": "Особенность",
-          "tags": [
-            "история",
-            "культура",
-            "редакционный"
-          ],
-          "imageSeed": "new-editorial-story",
-          "content": [
-            {
-              "type": "text",
-              "content": "Начните с самой сильной сцены, факта или наблюдения. Сделайте этот первый блок плотным и конкретным."
-            },
-            {
-              "type": "image",
-              "content": "new-editorial-story-2",
-              "caption": "Главное изображение",
-              "align": "center"
-            },
-            {
-              "type": "quote",
-              "content": "Добавьте здесь строку, которую стоит запомнить."
-            },
-            {
-              "type": "note",
-              "content": "Редакционная заметка, контекст источника или короткое дополнение."
-            },
-            {
-              "type": "checklist",
-              "content": {
-                "items": [
-                  "Контекст",
-                  "Ключевая деталь",
-                  "Человеческий аспект",
-                  "Что меняется дальше"
-                ]
-              }
-            },
-            {
-              "type": "poll",
-              "content": {
-                "question": "Что нам стоит исследовать дальше?",
-                "options": [
-                  {
-                    "label": "Больше контекста",
-                    "votes": 0
-                  },
-                  {
-                    "label": "Практическое руководство",
-                    "votes": 0
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
           "id": 18,
           "title": "Против прямого угла",
           "excerpt": "Пять зданий, которые выговорили себе свободу от сетки, — и софт, металл, деньги и чистая наглость, которые понадобились, чтобы их построить.",
@@ -6082,6 +6049,90 @@
           ],
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-guggenheim-river.jpg"
+        },
+        {
+          "id": 17,
+          "title": "Как Эмилия Краус переизобретает акт живописи",
+          "author": "EPRIS Journal",
+          "role": "mariia ivanova",
+          "date": "Jul 30, 2026",
+          "excerpt": "Внутри куба холста, Эмилия Краус пишет ритм настоящего момента",
+          "category": "contemporary art",
+          "subcategory": "Feature",
+          "tags": [
+            "art",
+            "contemporary art"
+          ],
+          "imageSeed": "",
+          "content": [
+            {
+              "type": "text",
+              "content": "Когда искусство является частью разума, тела и души художника — вы можете почувствовать это из самых глубин преданности практике. Такая форма связи может быть сравнена с миллиардами невидимых самых тонких нитей, которые остаются неразрывными между художником и произведением искусства, даже когда они находятся далеко друг от друга. Они взаимно питаются и никогда больше не будут независимы."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msjmgso0atp099.jpg",
+              "caption": "Emily Kraus, Each in the other what each has to give, 2026. Photo by Ollie Hammick",
+              "sourceUrl": "",
+              "credit": ""
+            },
+            {
+              "type": "text",
+              "content": "Когда вы смотрите на картину и почти физически чувствуете присутствие автора — тогда раскрывается самая чистая форма откровения перед вами."
+            },
+            {
+              "type": "text",
+              "content": "Эмили Краус (Нью-Йорк, 1995) оставила меня равнодушным ко всему внешне существующему. Я замер, оказался в ловушке и потрясен неустановленным. Это почти как влюбиться — вы не были готовы, вы не просили об этом, но это одно из лучших чувств, которые могут случиться с человеком."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msjmzzvhzg92s2.webp",
+              "caption": "Emily Kraus, Stochastic 20, 2023. Photo by Ollie Hammick"
+            },
+            {
+              "type": "text",
+              "content": "Первый взгляд не был сопровождён вопросом \"Как?\". Я был слишком занят, справляясь с напряжённым волнением. Второй взгляд привёл меня к осознанному состоянию, готовому быть любопытным о том, как этого удалось достичь."
+            },
+            {
+              "type": "text",
+              "content": "Отсутствие немедленного любопытства относительно техники соответствует убеждению художника, что работа должна существовать сама по себе - общение со зрителем полагается на индивидуальное размышление как самый чёткий переводчик визуального."
+            },
+            {
+              "type": "text",
+              "content": "Эмилия Краус работает в тандеме с аппаратом - самодельной конструкцией, сделанной из лесов с досками и вращающимися полюсами, на которых натянут холст. Этот подход даёт уникальную возможность вращать поверхность и одновременно создаёт кубоподобное замкнутое пространство. Изнутри художник applyuing масляные краски, а затем вращает холст до высыхания краски - проходя через полюса, краска размазывается. Повторяющиеся шаги приводят к глитчному сигнатурному визуальному коду."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/msjmlmp1yo7kfr.jpg",
+                "https://api.eprisjournal.com/uploads/msjmln6mxu4ycf.jpg",
+                "https://api.eprisjournal.com/uploads/msjmmyamb6ai3j.jpg"
+              ],
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Как холст геометрически структурирован, результат всего изображения неизвестен до конца работы, которая занимает примерно один месяц."
+            },
+            {
+              "type": "text",
+              "content": "Есть красота в неуправляемом. Природа каждой картины заключается не в стремлении к визуальной привлекательности, а в мгновенном решении: относится ли следующий жест к этому возникающему произведению или нет. Благодаря этой твёрдой значимости процесса, основанной исключительно на чувствах художника, картина накапливает мощную духовную память."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msjmraxbowmo4w.webp",
+              "caption": "Emily Kraus, Fwooooop, 2024"
+            },
+            {
+              "type": "text",
+              "content": "Этот механизм был вдохновлён временем, когда Kraus была на втором году обучения в Royal College of Art, совпавшим с COVID19 anf lockdown. Ей была назначена кубическая студия 2.5 на 2.5 метра. Ограниченная площадь помещения помешала намерению Kraus' рисовать большими жестами, экспериментируя с телом и пространством. Чтобы расширить возможности практики в существующих условиях, она натянула холст вдоль всех стен, используя душевые стойки и деревянные скобы. Холст можно было вращать, стирая границы ограниченного пространства."
+            },
+            {
+              "type": "text",
+              "content": "Как заявил Люсьен Фрейд - \"Всё является автопортретом\". Эти слова не могут быть более точными в разговорах об искусстве. Сублимная сущность творчества Эмили Краус является определённой, а не хаотично сформированной - она имеет степень BA в Religious Studies из Kenyon College. Это было обусловлено самокопанием Kraus относительно смысла жизни."
+            }
+          ],
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
         }
       ],
       "reviews": [
@@ -7810,69 +7861,6 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg"
         },
         {
-          "id": 17,
-          "title": "Нова редакційна історія",
-          "author": "EPRIS Journal",
-          "role": "Редакційний стіл",
-          "date": "30 липня 2026",
-          "excerpt": "Фокусований вступний абзац для нової редакційної історії.",
-          "category": "Культура",
-          "subcategory": "Особливість",
-          "tags": [
-            "історія",
-            "культура",
-            "редакційний"
-          ],
-          "imageSeed": "new-editorial-story",
-          "content": [
-            {
-              "type": "text",
-              "content": "Почніть з найсильнішої сцени, факту чи спостереження. Залиште цей перший блок стислим і конкретним."
-            },
-            {
-              "type": "image",
-              "content": "new-editorial-story-2",
-              "caption": "Головне зображення",
-              "align": "center"
-            },
-            {
-              "type": "quote",
-              "content": "Додайте рядок, який варто запам'ятати тут."
-            },
-            {
-              "type": "note",
-              "content": "Редакційна примітка, контекст джерела або коротка примітка."
-            },
-            {
-              "type": "checklist",
-              "content": {
-                "items": [
-                  "Контекст",
-                  "Ключовий пункт",
-                  "Людський аспект",
-                  "Що зміниться далі"
-                ]
-              }
-            },
-            {
-              "type": "poll",
-              "content": {
-                "question": "Що нам слід дослідити далі?",
-                "options": [
-                  {
-                    "label": "Більше контексту",
-                    "votes": 0
-                  },
-                  {
-                    "label": "Практичний посібник",
-                    "votes": 0
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
           "id": 18,
           "title": "Проти прямого кута",
           "excerpt": "П’ять будівель, які виговорили собі свободу від сітки, — і софт, метал, гроші та чиста зухвалість, яких забракло б без них.",
@@ -8230,6 +8218,90 @@
           ],
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-guggenheim-river.jpg"
+        },
+        {
+          "id": 17,
+          "title": "Як Емілі Краус переосмислює акт малювання",
+          "author": "EPRIS Journal",
+          "role": "mariia ivanova",
+          "date": "Jul 30, 2026",
+          "excerpt": "Всередині Canvas Cube, Емілі Краус малює ритм поточного моменту",
+          "category": "contemporary art",
+          "subcategory": "Feature",
+          "tags": [
+            "art",
+            "contemporary art"
+          ],
+          "imageSeed": "",
+          "content": [
+            {
+              "type": "text",
+              "content": "Коли мистецтво є частиною розуму, тіла та душі художника, ви можете почути це від найглибокшої відданості практиці. Такий зв’язок можна порівняти з мільярдами неймовірно тонких, невидимих ниток, які залишаються непорваними між художником та його творінням, навіть коли вони знаходяться далеко один від одного. Вони взаємно годують один одного і ніколи вже не будуть незалежними."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msjmgso0atp099.jpg",
+              "caption": "Emily Kraus, Each in the other what each has to give, 2026. Photo by Ollie Hammick",
+              "sourceUrl": "",
+              "credit": ""
+            },
+            {
+              "type": "text",
+              "content": "Коли ви дивитеся на картину і майже фізично відчуваєте присутність автора — це момент, коли найчистіша форма об’явлення розкривається перед вами."
+            },
+            {
+              "type": "text",
+              "content": "Твори Емілі Краус (Нью-Йорк, 1995) залишили мене спокійним перед будь-яким зовнішнім існуванням. Я замерз, застряг і оболонений нерозпізнаним. Це майже так само, як закохання: ви не були готові, ви не просили це, а це одне з найкращих почуттів, яке може статися людям."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msjmzzvhzg92s2.webp",
+              "caption": "Emily Kraus, Stochastic 20, 2023. Photo by Ollie Hammick"
+            },
+            {
+              "type": "text",
+              "content": "Перший погляд не був слідом за запитанням \"Як?\". Я був зайнятий обробкою напружених тривог. Другий погляд приведе мене до свідомого стану, готового бути любким про те, якце було досягнуто."
+            },
+            {
+              "type": "text",
+              "content": "Відсутність негайного цікавства про техніку відповідає переконанню художника, що робота повинна існувати самостійно - комунікація зі глядачем покладається на індивідуальну рефлексію як найчіткіший перекладач візуального."
+            },
+            {
+              "type": "text",
+              "content": "Емілі Краус працює в тандемі з апаратом — самовинайдена конструкція, зроблена з леґаря дошки та обертаючих полюсів, на якій розтягнуто полотно. Цей підхід дає унікальну можливість обертати поверхню і одночасно створює закрите простір кубічної форми. Всередині художник наносить олійні фарби, а потім обертає полотно до того, як фарба висихає- проходячи крізь полюси, фарба розмивається. Повторення цих кроків призводить до глитч-подібного підпису візуального коду."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/msjmlmp1yo7kfr.jpg",
+                "https://api.eprisjournal.com/uploads/msjmln6mxu4ycf.jpg",
+                "https://api.eprisjournal.com/uploads/msjmmyamb6ai3j.jpg"
+              ],
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Оскільки полотно має геометричну структуру, результат зображення невідомий до кінця роботи, що триває приблизно один місяць."
+            },
+            {
+              "type": "text",
+              "content": "Є краса в непередбачумости. Природа кожної картини не в бажанні досягти визуальної привабливості, а в миттєвому рішенні про те, чи належить наступний жест цій виникальній твори чи ні. Через цій твердої значимості процесу, заснованої виключно на відчуттях художника, картина накопичує потужну, духовну пам’ять."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msjmraxbowmo4w.webp",
+              "caption": "Emily Kraus, Fwooooop, 2024"
+            },
+            {
+              "type": "text",
+              "content": "Цей механізм був впливаний часом, коли Краус навчалася на другому курсі Королевського коледжу мистецтв, що збігся з пандемією COVID-19 та карантином. їй був призначений кубістичний студія розміром 2,5 на 2,5 метри. Обмежена площа приміщення перешкоджала наміру Краус малювати широкими жестами, експериментуючи з тілом і простором. Щоб розширити можливості практики в існуючих умовах, вона розтягнула полотно по всіх стінах, використовуючи душові стійки та дерев підтрижки. Полотно можна було обертати, стираючи межі обмеженого простору."
+            },
+            {
+              "type": "text",
+              "content": "Як Lucien Freud сказав: «Все — це автопортрет». Ці слова не могли бути більш точними в розмовах про мистецтво. Возвишена суть творості Емілі Краус є визначною, а не хаотично сформованою — вона має BA у галузі релігійних досліджень з Kenyon College. Це було вплинуто її самопиттання про сенс života."
+            }
+          ],
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
         }
       ],
       "reviews": [
@@ -9959,69 +10031,6 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg"
         },
         {
-          "id": 17,
-          "title": "Neue redaktionelle Geschichte",
-          "author": "EPRIS Journal",
-          "role": "Redaktion",
-          "date": "30. Juli 2026",
-          "excerpt": "Ein fokussierter Eröffnungsabsatz für eine neue redaktionelle Geschichte.",
-          "category": "Kultur",
-          "subcategory": "Besonderheit",
-          "tags": [
-            "Geschichte",
-            "Kultur",
-            "Leitartikel"
-          ],
-          "imageSeed": "new-editorial-story",
-          "content": [
-            {
-              "type": "text",
-              "content": "Beginnen Sie mit der stärksten Szene, Tatsache oder Beobachtung. Halten Sie diesen ersten Block eng und spezifisch."
-            },
-            {
-              "type": "image",
-              "content": "new-editorial-story-2",
-              "caption": "Leitbild"
-            },
-            {
-              "type": "quote",
-              "content": "Fügen Sie hier eine Zeile hinzu, an die Sie sich erinnern sollten."
-            },
-            {
-              "type": "note",
-              "content": "Redaktionelle Anmerkung, Quellenkontext oder eine kurze Anmerkung."
-            },
-            {
-              "type": "checklist",
-              "caption": "Was abzudecken ist",
-              "content": {
-                "items": [
-                  "Kontext",
-                  "Wichtiges Detail",
-                  "Menschlicher Blickwinkel",
-                  "Was ändert sich als nächstes?"
-                ]
-              }
-            },
-            {
-              "type": "poll",
-              "content": {
-                "question": "Was sollten wir als nächstes erkunden?",
-                "options": [
-                  {
-                    "label": "Mehr Kontext",
-                    "votes": 0
-                  },
-                  {
-                    "label": "Praktischer Leitfaden",
-                    "votes": 0
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
           "id": 18,
           "title": "Gegen den rechten Winkel",
           "excerpt": "Fünf Bauten, die sich aus dem Raster herausgeredet haben — und die Software, das Metall, das Geld und die schiere Frechheit, die es brauchte, um sie zu bauen.",
@@ -10379,6 +10388,90 @@
           ],
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-guggenheim-river.jpg"
+        },
+        {
+          "id": 17,
+          "title": "Wie Emily Kraus das Malen neu erfindet",
+          "author": "EPRIS Journal",
+          "role": "mariia ivanova",
+          "date": "Jul 30, 2026",
+          "excerpt": "Im Canvas Cube malt Emily Kraus den Rhythmus des Augenblicks",
+          "category": "contemporary art",
+          "subcategory": "Feature",
+          "tags": [
+            "art",
+            "contemporary art"
+          ],
+          "imageSeed": "",
+          "content": [
+            {
+              "type": "text",
+              "content": "Wenn die Kunst ein Teil des Geistes, Körpers und der Seele des Künstlers ist – kannst du sie aus der innigsten Hingabe an die Praxis spüren. Diese Form der Verbindung kann mit den Milliarden unsichtbarer feinster Fäden verglichen werden, die zwischen Künstler und Kunstwerk ungebrochen bleiben, selbst wenn sie weit voneinander entfernt sind. Sie nähren sich gegenseitig und werden niemals voneinander unabhängig sein."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msjmgso0atp099.jpg",
+              "caption": "Emily Kraus, Each in the other what each has to give, 2026. Photo by Ollie Hammick",
+              "sourceUrl": "",
+              "credit": ""
+            },
+            {
+              "type": "text",
+              "content": "Wenn du das Gemälde ansiehst und die Anwesenheit des Künstlers fast körperlich spürst – dann entfaltet sich die reinste Form der Offenbarung vor dir."
+            },
+            {
+              "type": "text",
+              "content": "Emily Kraus (New York, 1995) hat mich mit ihrer Arbeit völlig unbeeindruckt von allem Externen zurückgelassen. Ich bin eingefroren, gefangen und überwältigt vom Unbekannten. Es ist fast wie beim Verlieben – du warst nicht vorbereitet, du hast danach nicht gefragt, doch es ist eines der besten Gefühle, das einem Menschen passieren kann."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msjmzzvhzg92s2.webp",
+              "caption": "Emily Kraus, Stochastic 20, 2023. Photo by Ollie Hammick"
+            },
+            {
+              "type": "text",
+              "content": "Der erste Blick wurde nicht von der Frage \"Wie?\" gefolgt. Ich war zu beschäftigt, mit angespannten Zittern umzugehen. Der zweite Blick wird mich ins Bewusste bringen, bereit, neugierig zu sein, wie es erreicht wurde."
+            },
+            {
+              "type": "text",
+              "content": "Das Fehlen unmittelbarer Neugierde gegenüber der Technik entspricht dem Glauben des Künstlers, dass das Werk für sich selbst bestehen sollte – die Kommunikation mit dem Betrachter beruht auf der individuellen Reflexion als klarstem Übersetzer des Visuellen."
+            },
+            {
+              "type": "text",
+              "content": "Emily Kraus arbeitet im Tandem mit dem Apparat – einer selbst erfundenen Konstruktion, bestehend aus einem Gerüst mit Brettern und drehbaren Polen, auf der die Leinwand gespannt ist. Dieser Ansatz bietet die einzigartige Möglichkeit, die Oberfläche zu drehen und gleichzeitig einen würfelartigen geschlossenen Raum zu schaffen. Von innen trägt die Künstlerin Ölfarben auf und dreht anschließend die Leinwand, bevor die Farbe trocknet – dabei verläuft die Farbe durch die Polen und wird verschmiert. Die wiederholten Schritte ergeben den charakteristischen visuellen Code mit Glitch-Effekt."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/msjmlmp1yo7kfr.jpg",
+                "https://api.eprisjournal.com/uploads/msjmln6mxu4ycf.jpg",
+                "https://api.eprisjournal.com/uploads/msjmmyamb6ai3j.jpg"
+              ],
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Da die Leinwand geometrisch strukturiert ist, ist das Ergebnis des gesamten Bildes erst am Ende der Arbeit unbekannt – was etwa einen Monat dauert."
+            },
+            {
+              "type": "text",
+              "content": "Es gibt eine Schönheit im Unkontrollierbaren. Die Natur jedes Gemäldes liegt nicht im Wunsch nach visueller Anziehungskraft, sondern im Augenblick der Entscheidung, ob die folgende Geste zu diesem entstehenden Kunstwerk gehört oder nicht. Durch diese feste Bedeutung des Prozesses, der ausschließlich auf den Gefühlen des Künstlers beruht, sammelt das Gemälde eine potente, spirituelle Erinnerung."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msjmraxbowmo4w.webp",
+              "caption": "Emily Kraus, Fwooooop, 2024"
+            },
+            {
+              "type": "text",
+              "content": "Dieser Mechanismus wurde beeinflusst von der Zeit, als Kraus im zweiten Jahr am Royal College of Art studierte, was mit dem Zufall zusammenfiel, der mit COVID-19 und dem Lockdown zusammenfiel. Ihr wurde ein Würfelstudio von 2,5 mal 2,5 Metern zugewiesen. Der begrenzte Bereich des Raums behinderte Kraus' Absicht, mit großen Gesten zu malen, während sie mit Körper und Raum experimentierte. Um die Praxis-Möglichkeiten unter den gegebenen Bedingungen zu erweitern, spannte sie die Leinwand entlang aller Wände mit Duschstangen und Holzhalterungen. Die Leinwand konnte gedreht werden, wodurch die Grenzen eines begrenzten Raums verwischt wurden."
+            },
+            {
+              "type": "text",
+              "content": "Wie Lucien Freud sagte: \"Everything is a self-portrait\". Diese Worte könnten nicht treffender sein in den Gesprächen über Kunst. Das erhabene Wesen von Emily Kraus' Werk ist definitiv, anstatt chaotisch gebildet zu sein – sie hat einen BA in Religionswissenschaften vom Kenyon College erworben. Dies wurde durch Kraus' Selbstbefragung über den Sinn des Lebens beeinflusst."
+            }
+          ],
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
         }
       ],
       "reviews": [
@@ -12108,69 +12201,6 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg"
         },
         {
-          "id": 17,
-          "title": "Nueva historia editorial",
-          "author": "EPRIS Journal",
-          "role": "Mesa Editorial",
-          "date": "30 de julio de 2026",
-          "excerpt": "Un párrafo de apertura enfocado para una nueva historia editorial.",
-          "category": "Cultura",
-          "subcategory": "Destacado",
-          "tags": [
-            "historia",
-            "cultura",
-            "editorial"
-          ],
-          "imageSeed": "new-editorial-story",
-          "content": [
-            {
-              "type": "text",
-              "content": "Comienza con la escena, hecho o observación más fuerte. Mantén este primer bloque compacto y específico."
-            },
-            {
-              "type": "image",
-              "content": "new-editorial-story-2",
-              "caption": "Imagen principal",
-              "align": "center"
-            },
-            {
-              "type": "quote",
-              "content": "Añade una línea que valga la pena recordar aquí."
-            },
-            {
-              "type": "note",
-              "content": "Nota editorial, contexto de la fuente o un breve comentario."
-            },
-            {
-              "type": "checklist",
-              "content": {
-                "items": [
-                  "Contexto",
-                  "Detalle clave",
-                  "Ángulo humano",
-                  "Qué cambia a continuación"
-                ]
-              }
-            },
-            {
-              "type": "poll",
-              "content": {
-                "question": "¿Qué deberíamos explorar a continuación?",
-                "options": [
-                  {
-                    "label": "Más contexto",
-                    "votes": 0
-                  },
-                  {
-                    "label": "Guía práctica",
-                    "votes": 0
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
           "id": 18,
           "title": "Contra el ángulo recto",
           "excerpt": "Cinco edificios que se libraron de la retícula a base de argumentos — y el software, el metal, el dinero y el descaro que hicieron falta para construirlos.",
@@ -12528,6 +12558,90 @@
           ],
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-guggenheim-river.jpg"
+        },
+        {
+          "id": 17,
+          "title": "Cómo Emily Kraus reinventa el acto de pintar",
+          "author": "EPRIS Journal",
+          "role": "mariia ivanova",
+          "date": "Jul 30, 2026",
+          "excerpt": "Dentro del Canvas Cube, Emily Kraus pinta el ritmo del momento presente",
+          "category": "contemporary art",
+          "subcategory": "Feature",
+          "tags": [
+            "art",
+            "contemporary art"
+          ],
+          "imageSeed": "",
+          "content": [
+            {
+              "type": "text",
+              "content": "Cuando el arte es parte de la mente, el cuerpo y el alma del artista, puedes sentirlo desde la más profunda dedicación a la práctica. Esa forma de conexión puede compararse con los miles de millones de hilos invisibles y más delgados, que permanecen intactos entre el artista y la obra de arte, incluso cuando están lejos. Se nutren mutuamente y nunca volverán a ser independientes."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msjmgso0atp099.jpg",
+              "caption": "Emily Kraus, Each in the other what each has to give, 2026. Photo by Ollie Hammick",
+              "sourceUrl": "",
+              "credit": ""
+            },
+            {
+              "type": "text",
+              "content": "Cuando miras la pintura y casi puedes sentir físicamente la presencia del autor, ese es el momento en que la forma más pura de revelación se está desplegando frente a ti."
+            },
+            {
+              "type": "text",
+              "content": "Emily Kraus (Nueva York, 1995) sus obras me dejaron indiferente ante cualquier cosa que existiera externamente. Estoy congelado, atrapado y atónito por lo desconocido. Es casi como enamorarse: no estabas preparado, no lo pediste, pero es uno de los mejores sentimientos que pueden ocurrirle a un ser humano."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msjmzzvhzg92s2.webp",
+              "caption": "Emily Kraus, Stochastic 20, 2023. Photo by Ollie Hammick"
+            },
+            {
+              "type": "text",
+              "content": "La primera mirada no fue seguida por la pregunta \"¿Cómo?\". Estaba demasiado ocupada lidiando con los nervios tensos. El segundo me llevará a estar consciente, listo para ser curioso acerca de cómo se logró."
+            },
+            {
+              "type": "text",
+              "content": "La falta de curiosidad inmediata sobre la técnica corresponde a la creencia del artista de que la obra debe vivir por sí misma - la comunicación con el espectador se basa en la reflexión individual como el traductor más claro de lo visual."
+            },
+            {
+              "type": "text",
+              "content": "Emily Kraus trabaja en conjunto con el aparato - una estructura autoconstruida, hecha de un andamio con tablas y postes giratorios, sobre la cual se tensa el lienzo. Este enfoque brinda una oportunidad única para rotar la superficie y, al mismo tiempo, crea un espacio cerrado parecido a un cubo. Desde adentro, la artista aplica la pintura al óleo y luego rota el lienzo antes de que se seque la pintura; al pasar por los postes, la pintura se emborrona. Los pasos repetidos resultan en el código visual característico de fallos."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/msjmlmp1yo7kfr.jpg",
+                "https://api.eprisjournal.com/uploads/msjmln6mxu4ycf.jpg",
+                "https://api.eprisjournal.com/uploads/msjmmyamb6ai3j.jpg"
+              ],
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "A medida que el lienzo está estructurado geométricamente, el resultado de toda la imagen es desconocido hasta el final del trabajo - que toma aproximadamente un mes"
+            },
+            {
+              "type": "text",
+              "content": "Hay una belleza en lo incontrolable. La naturaleza de cada pintura no está en el deseo de buscar el atractivo visual, sino en la decisión del momento, ya sea si el gesto siguiente pertenece a esta obra emergente o no. A través de este sólido significado del proceso, basado puramente en los sentimientos del artista, la pintura acumula una poderosa memoria espiritual."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msjmraxbowmo4w.webp",
+              "caption": "Emily Kraus, Fwooooop, 2024"
+            },
+            {
+              "type": "text",
+              "content": "Este mecanismo fue influenciado por el momento en que Kraus estaba estudiando en el segundo año del Royal College of Art, coincidiendo con el COVID-19 y el confinamiento. Le asignaron un estudio cúbico de 2.5 por 2.5 metros. El área limitada de la habitación dificultó la intención de Kraus de pintar con gestos amplios, experimentando con el cuerpo y el espacio. Para ampliar las posibilidades de práctica en las condiciones existentes, estiró el lienzo a lo largo de todas las paredes usando postes de ducha y soportes de madera. El lienzo podía girarse, borrando los límites de un espacio contenido."
+            },
+            {
+              "type": "text",
+              "content": "Como declaró Lucien Freud - \"Todo es un autorretrato\". Estas palabras no pueden ser más precisas en las conversaciones sobre arte. La esencia sublime de la obra de Emily Kraus es definitiva, más que caóticamente formada - posee una licenciatura en Estudios Religiosos del Kenyon College. Eso fue influenciado por la autointerrogación de Kraus sobre el significado de la vida."
+            }
+          ],
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
         }
       ],
       "reviews": [
@@ -14254,69 +14368,6 @@
             }
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg"
-        },
-        {
-          "id": 17,
-          "title": "Yeni editöryal hikaye",
-          "author": "EPRIS Journal",
-          "role": "Editöryal masası",
-          "date": "30 Temmuz 2026",
-          "excerpt": "Yeni bir editöryal hikaye için odaklanmış açılış paragrafı.",
-          "category": "Kültür",
-          "subcategory": "Öne Çıkan",
-          "tags": [
-            "hikaye",
-            "kültür",
-            "editöryal"
-          ],
-          "imageSeed": "new-editorial-story",
-          "content": [
-            {
-              "type": "text",
-              "content": "En güçlü sahne, gerçek veya gözlemle başlayın. Bu ilk bloğu sık ve öz tutun."
-            },
-            {
-              "type": "image",
-              "content": "new-editorial-story-2",
-              "caption": "Öne çıkan görsel",
-              "align": "center"
-            },
-            {
-              "type": "quote",
-              "content": "Burada hatırlanması değerinde bir satır ekleyin."
-            },
-            {
-              "type": "note",
-              "content": "Editör notu, kaynak bağlamı veya kısa bir parantez."
-            },
-            {
-              "type": "checklist",
-              "content": {
-                "items": [
-                  "Bağlam",
-                  "Önemli ayrıntı",
-                  "İnsan açısı",
-                  "Sonraki ne değişecek?"
-                ]
-              }
-            },
-            {
-              "type": "poll",
-              "content": {
-                "question": "Sonraki neleri keşfetmeliyiz?",
-                "options": [
-                  {
-                    "label": "Daha fazla bağlam",
-                    "votes": 0
-                  },
-                  {
-                    "label": "Pratik kılavuz",
-                    "votes": 0
-                  }
-                ]
-              }
-            }
-          ]
         },
         {
           "id": 18,
@@ -16397,69 +16448,6 @@
             }
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg"
-        },
-        {
-          "id": 17,
-          "title": "Nuova storia editoriale",
-          "author": "EPRIS Journal",
-          "role": "Ufficio Editoriale",
-          "date": "30 luglio 2026",
-          "excerpt": "Un paragrafo introduttivo focalizzato per una nuova storia editoriale.",
-          "category": "Cultura",
-          "subcategory": "Caratteristica",
-          "tags": [
-            "storia",
-            "cultura",
-            "editoriale"
-          ],
-          "imageSeed": "new-editorial-story",
-          "content": [
-            {
-              "type": "text",
-              "content": "Inizia con la scena, il fatto o l'osservazione più forte. Mantieni questo primo blocco conciso e specifico."
-            },
-            {
-              "type": "image",
-              "content": "new-editorial-story-2",
-              "caption": "Immagine principale",
-              "align": "center"
-            },
-            {
-              "type": "quote",
-              "content": "Aggiungi una frase che valga la pena ricordare qui."
-            },
-            {
-              "type": "note",
-              "content": "Nota editoriale, contesto della fonte, o una breve digressione."
-            },
-            {
-              "type": "checklist",
-              "content": {
-                "items": [
-                  "Contesto",
-                  "Dettaglio chiave",
-                  "Angolo umano",
-                  "Cosa cambia successivamente"
-                ]
-              }
-            },
-            {
-              "type": "poll",
-              "content": {
-                "question": "Cosa dovremmo esplorare successivamente?",
-                "options": [
-                  {
-                    "label": "Maggior contesto",
-                    "votes": 0
-                  },
-                  {
-                    "label": "Guida pratica",
-                    "votes": 0
-                  }
-                ]
-              }
-            }
-          ]
         },
         {
           "id": 18,
