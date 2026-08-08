@@ -4051,6 +4051,7 @@ function refreshVisualEditor() {
 
   updateAdminToolbarContext();
   renderVisualForm();
+  noteGalleryInheritance(data, section, lang, Number(visualEntrySelect.value));
   // Setting .value programmatically fires no 'change' event, so the WYSIWYG
   // and Review live-canvases (which reload only on that event) would keep
   // showing whatever entry was open before — e.g. after "create new article"
@@ -4062,6 +4063,26 @@ function refreshVisualEditor() {
   // programmatic section change (e.g. createReviewFromBlueprint switching
   // to 'reviews') must also refresh which button set is visible.
   updateCreatorStudioForSection();
+}
+
+// Карточка Галереи без своего перевода берёт текст из связанной статьи —
+// переводить её отдельно не нужно (см. getGalleryArticleLinks в data.ts).
+// Предупреждаем об этом прямо в редакторе, иначе редактор тратит силы и
+// внешний переводчик на текст, который и так приедет из статьи.
+function noteGalleryInheritance(data, section, lang, entryId) {
+  if (section !== 'items' || lang === DEFAULT_LANGUAGE || !entryId) return;
+  const localized = getSectionArray(data, section, lang, false) || [];
+  if (localized.some((entry) => Number(entry.id) === entryId)) return;
+  const baseEntries = getSectionArray(data, section, DEFAULT_LANGUAGE, false) || [];
+  const baseItem = baseEntries.find((entry) => Number(entry.id) === entryId);
+  const baseTitle = String(baseItem?.title || '').trim();
+  if (!baseTitle) return;
+  const key = (value) => String(value || '').split(':')[0].trim().toLowerCase();
+  const articles = getSectionArray(data, 'articles', DEFAULT_LANGUAGE, false) || [];
+  const article = articles.find((a) => String(a.title || '').trim() === baseTitle)
+    || (key(baseTitle).length >= 4 ? articles.find((a) => key(a.title) === key(baseTitle)) : undefined);
+  if (!article) return;
+  setVisualNotice(`Перевод не нужен: карточка возьмёт заголовок, категорию и описание из статьи #${article.id} на языке ${lang}. Заполните поля только если тексты должны отличаться от статьи.`, 'info');
 }
 
 function setVisualNotice(message, type) {
