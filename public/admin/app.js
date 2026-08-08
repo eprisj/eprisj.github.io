@@ -3825,7 +3825,9 @@ async function createArticleFromBlueprint(kind) {
       if (categoryOverride) sourceArticle.category = categoryOverride;
     }
 
-    entries.push(sourceArticle);
+    // Новая запись — в начало: лента сортируется по дате, но у свежей
+    // заготовки даты ещё нет, и в хвосте её никто бы не нашёл.
+    entries.unshift(sourceArticle);
     setStatus('info', `Создаю языковые версии статьи #${nextId}...`);
     const syncedLangs = await syncMissingEntryLanguages(data, 'articles', sourceLang, sourceArticle);
     // Translations are on the article now, so localized homepage cards below
@@ -3864,7 +3866,7 @@ async function createReviewFromBlueprint(kind) {
       if (categoryOverride) sourceReview.category = categoryOverride;
     }
 
-    entries.push(sourceReview);
+    entries.unshift(sourceReview);
     setStatus('info', `Создаю языковые версии обзора #${nextId}...`);
     const syncedLangs = await syncMissingEntryLanguages(data, 'reviews', sourceLang, sourceReview);
 
@@ -6505,7 +6507,7 @@ async function addVisualEntry() {
       entry = await translateEntryForSection(section, entry, lang, DEFAULT_LANGUAGE);
     }
 
-    entries.push(entry);
+    entries.unshift(entry);
     setStatus('info', `Создаю языковые версии записи #${nextId}...`);
     const syncedLangs = await syncMissingEntryLanguages(data, section, lang, entry);
     // The "+" button also creates articles (not just reviews/items/etc.) when
