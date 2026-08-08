@@ -3203,7 +3203,8 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mrgg0dfmpqmyrg.jpg",
-          "caption": "The dot at its largest scale: a full sectional, upholstered edge to edge, the pattern reading almost as texture before it reads as pattern."
+          "caption": "The dot at its largest scale: a full sectional, upholstered edge to edge, the pattern reading almost as texture before it reads as pattern.",
+          "align": "center"
         },
         {
           "type": "text",
@@ -3216,7 +3217,8 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mrgg0dpaojhrg2.jpg",
-          "caption": "The same burl veneer three ways in one shot: a low credenza, a floating shelf, a single framed square holding a photograph instead of a view."
+          "caption": "The same burl veneer three ways in one shot: a low credenza, a floating shelf, a single framed square holding a photograph instead of a view.",
+          "align": "center"
         },
         {
           "type": "text",
@@ -3229,7 +3231,8 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mrgg0dj90g3ij9.jpg",
-          "caption": "A third dog, a third register: black and white instead of blue-grey, posed instead of caught mid-turn, hung above a burl console instead of a wood-panelled wall."
+          "caption": "A third dog, a third register: black and white instead of blue-grey, posed instead of caught mid-turn, hung above a burl console instead of a wood-panelled wall.",
+          "align": "center"
         },
         {
           "type": "text",
@@ -3238,7 +3241,8 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mrgg0dn3pl70qq.jpg",
-          "caption": "The dot at bedding scale, denser and smaller again, with the curtain behind it as a fourth scale still."
+          "caption": "The dot at bedding scale, denser and smaller again, with the curtain behind it as a fourth scale still.",
+          "align": "center"
         },
         {
           "type": "text",
@@ -3247,7 +3251,8 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mrgg0dhfp07cpi.jpg",
-          "caption": "The one corner of the apartment where the whole vocabulary collapses into a single, small composition: dot, burl, wood, one deliberate diagonal."
+          "caption": "The one corner of the apartment where the whole vocabulary collapses into a single, small composition: dot, burl, wood, one deliberate diagonal.",
+          "align": "center"
         },
         {
           "type": "text",
@@ -3262,7 +3267,7 @@
           "content": "None of this explains why the apartment feels calm rather than styled — restraint does that, and so does resisting the urge to match anything exactly. But counting how many times the same dot, the same burl, the same cone, and the same painted dog show up in five rooms, at five different scales, is a decent way to start noticing why some homes read as collected and most just read as decorated."
         }
       ],
-      "updatedAt": "2026-07-11T14:55:42.162Z",
+      "updatedAt": "2026-08-08T21:19:43.447Z",
       "order": 7
     },
     {
