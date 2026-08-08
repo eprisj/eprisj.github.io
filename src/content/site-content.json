@@ -6881,37 +6881,37 @@
         },
         {
           "id": 11,
+          "title": "Серце EPRIS: Марія тепер бакалавр архітектури",
           "author": "EPRIS Journal",
+          "role": "Редакційний стіл",
           "date": "Jul 7, 2026",
-          "category": "Culture",
-          "imageUrl": "/images/heart-hero.jpg",
-          "imageSeed": "maria-graduation-heart",
-          "draft": false,
-          "role": "Редакція",
-          "title": "Серце EPRIS: у Марії диплом архітектора",
-          "excerpt": "7 липня Марія Іванова, головна редакторка EPRIS, офіційно стала бакалавром архітектури. На честь цього дня – серце, зібране з архітектури та мистецтва, що її надихають.",
+          "excerpt": "7 липня Марія Іванова, головний редактор ЕПРІС, офіційно стала бакалавром архітектури. Щоб відзначити цей день – серце, створене з архітектури та мистецтва, які її надихають.",
+          "category": "Культура",
           "subcategory": "Від редакції",
           "tags": [
             "архітектура",
             "марія іванова",
-            "свято"
+            "святкування"
           ],
+          "imageUrl": "/images/heart-hero.jpg",
+          "imageSeed": "maria-graduation-heart",
+          "draft": false,
           "content": [
             {
               "type": "text",
-              "content": "Вчора, 7 липня 2026 року, у житті редакції EPRIS сталася особлива подія. Марія Іванова – наша головна редакторка і людина, чиїм дітищем є цей журнал, – офіційно стала бакалавром архітектури. Роки креслення, макетів і безсонних ночей перед захистом дипломного проєкту залишилися позаду. Починається новий розділ – і ми не могли не відзначити його тут, на сторінках EPRIS."
+              "content": "Вчора, 7 липня 2026 року, в житті редакції ЕПРІС відбулося щось особливе. Марія Іванова – наш шеф-редактор, ідея якого є творцем цього журналу – офіційно стала бакалавром архітектури. Роки малювання, моделі та безсонні ночі перед захистом дипломної роботи вже позаду. Починається новий розділ – і ми не могли пропустити його, не відзначивши це тут, на сторінках EPRIS."
             },
             {
               "type": "text",
-              "content": "Не секрет, що погляд архітектора відчувається в кожному випуску EPRIS – у тому, як ми говоримо про простір, світло й деталі. Сьогодні цей погляд отримав офіційне підтвердження."
+              "content": "Ні для кого не секрет, що погляд архітектора пробігає кожен номер ЕПРІС – у тому, як ми говоримо про простір, світло та деталі. Сьогодні це око заслужило свої офіційні повноваження."
             },
             {
               "type": "text",
-              "content": "Ті, хто працював з нею над цим номером, добре знають цей ритуал: світло в майстерні допізна, калька, вкрита правками, охолола кава біля макета, який вона перезбирала знову й знову, поки не ставало по-справжньому добре. Та сама невгамовність – небажання задовольнятися «і так зійде» – формує цей журнал від першої сторінки."
+              "content": "Ті, хто працював разом з нею над цією проблемою, добре знають цей ритуал: світло в студії горить до пізньої ночі, калька, вкрита редакціями, чашка охолодженої кави біля моделі, яку вона продовжувала відновлювати, поки вона нарешті не відчула, що потрібно. Та сама неспокійність – відмова погоджуватися на «досить добре» – ось що формувало цей журнал з першої сторінки."
             },
             {
               "type": "header",
-              "content": "Серце з того, що її надихає",
+              "content": "A Heart Made of What Inspired Her",
               "level": 3
             },
             {
@@ -6965,21 +6965,22 @@
                 "/images/heart-tiles/tile-46.jpg",
                 "/images/heart-tiles/tile-47.jpg"
               ],
-              "caption": "Сорок сім місць і творів мистецтва, які сформували те, як Марія бачить світ – від собору Саграда Фамілія до мікеланджелівського Давида. Частинка кожного з них є в будь-якому номері EPRIS."
+              "caption": "Сорок сім місць і творів мистецтва, які сформували погляд Марії на світ – від Храму Святого Сімейства до Давида Мікеланджело. Кожна з них трохи потрапляє в кожен випуск ЕПРІС."
             },
             {
               "type": "text",
-              "content": "Деякі з цих будівель вона бачила на власні очі, зі скетчбуком у руках. Інші – лише на фотографіях. Ми бажаємо їй одного дня побачити їх усі – наживо, на власні очі."
+              "content": "Деякі з цих будівель вона відвідала особисто, тримаючи в руках етюдник. Інших вона бачила лише на фотографіях. Ми сподіваємося, що одного разу вона зможе побачити кожного з них на власні очі."
             },
             {
               "type": "quote",
-              "content": "Архітектура навчила мене бачити конструкцію за красою. EPRIS – розповідати про це іншим. Для мене це дві мови одного й того самого почуття."
+              "content": "Архітектура навчила мене бачити структуру за красою. EPRIS навчив мене розповідати про це іншим. Для мене це дві мови для однакових почуттів."
             },
             {
               "type": "note",
-              "content": "Редакція EPRIS вітає Марію з дипломом і дякує за натхнення, яке живе в кожному номері журналу. З цим дипломом – новий розділ, і, здається, не останній, який варто відзначити. Ми раді, що ви читаєте його разом з нами."
+              "content": "Редакція ЕПРІС вітає Марію з дипломом і дякує за натхнення, яке живе в кожному номері журналу. Цей диплом відкриває нову главу – і ми підозрюємо, що вона не буде останньою, яку варто відзначати. Ми раді, що ви читаєте його разом з нами."
             }
-          ]
+          ],
+          "updatedAt": "2026-08-08T20:25:32.995Z"
         },
         {
           "id": 12,
@@ -13473,37 +13474,37 @@
         },
         {
           "id": 11,
+          "title": "EPRIS'in Kalbi: Maria Artık Mimarlık Lisans Diplomasına Sahip",
           "author": "EPRIS Journal",
+          "role": "Editör Masası",
           "date": "Jul 7, 2026",
-          "category": "Culture",
+          "excerpt": "7 Temmuz'da EPRIS'in genel yayın yönetmeni Mariia Ivanova resmi olarak Mimarlık Lisansı unvanını aldı. Günü kutlamak için ona ilham veren mimari ve sanattan yapılmış bir kalp.",
+          "category": "Kültür",
+          "subcategory": "Editörlerden",
+          "tags": [
+            "mimari",
+            "maria ivanova",
+            "kutlama"
+          ],
           "imageUrl": "/images/heart-hero.jpg",
           "imageSeed": "maria-graduation-heart",
           "draft": false,
-          "role": "Editörler",
-          "title": "EPRIS'in Kalbi: Maria Artık Mimarlık Lisansı Sahibi",
-          "excerpt": "7 Temmuz'da EPRIS'in baş editörü Mariia Ivanova resmen Mimarlık lisansını aldı. Bu günü kutlamak için – ona ilham veren mimari ve sanattan oluşan bir kalp.",
-          "subcategory": "Editörlerden",
-          "tags": [
-            "mimarlık",
-            "mariia ivanova",
-            "kutlama"
-          ],
           "content": [
             {
               "type": "text",
-              "content": "Dün, 7 Temmuz 2026'da, EPRIS editör ekibinin hayatında özel bir şey oldu. Baş editörümüz ve bu derginin gerçek yaratıcısı olan Mariia Ivanova, resmen Mimarlık lisansı sahibi oldu. Yıllarca süren çizim, maketler ve tez savunmasından önceki uykusuz geceler artık geride kaldı. Yeni bir bölüm başlıyor – ve bunu EPRIS sayfalarında kutlamadan geçemezdik."
+              "content": "Dün, 7 Temmuz 2026'da EPRIS editör ekibinin hayatında özel bir şey oldu. Baş editörümüz ve bu derginin fikir babası olan Mariia Ivanova, resmi olarak Mimarlık Lisansı unvanını aldı. Tez savunması öncesinde yıllar süren taslaklar, modeller ve uykusuz geceler artık geride kaldı. Yeni bir bölüm başlıyor – ve onu burada, EPRIS'in sayfalarında işaretlemeden geçemezdik."
             },
             {
               "type": "text",
-              "content": "Bir mimarın bakış açısının EPRIS'in her sayısında hissedildiği bir sır değil – mekân, ışık ve detaylar hakkında konuşma şeklimizde. Bugün bu bakış açısı resmi bir onay kazandı."
+              "content": "Bir mimarın gözünün EPRIS'in her sayısında, mekan, ışık ve detay hakkında konuşma şeklimizde dolaştığı bir sır değil. Bugün o göz resmi itibarını kazandı."
             },
             {
               "type": "text",
-              "content": "Bu sayıda onunla birlikte çalışanlar bu ritüeli iyi bilir: geç saatlere kadar yanan stüdyo ışıkları, düzeltmelerle dolu aydınger kağıdı, tam istediği gibi olana kadar tekrar tekrar yeniden kurduğu maketin yanında soğuyan bir kahve. Aynı huzursuzluk – “yeterince iyi”yle yetinmeyi reddetmesi – bu dergiyi ilk sayfasından beri şekillendiren şey."
+              "content": "Bu konuda onunla birlikte çalışanlar ritüeli iyi biliyor: Stüdyo ışıkları gece geç saatlere kadar açık, revizyonlarla kaplı aydınger kağıdı, sonunda doğru olduğunu hissedene kadar yeniden inşa etmeye devam ettiği modelin yanında soğumuş bir fincan kahve. Aynı huzursuzluk - 'yeterince iyi' ile yetinmeyi reddetmek - bu dergiyi ilk sayfasından beri şekillendiren şeydir."
             },
             {
               "type": "header",
-              "content": "Ona İlham Verenlerden Oluşan Bir Kalp",
+              "content": "A Heart Made of What Inspired Her",
               "level": 3
             },
             {
@@ -13557,21 +13558,22 @@
                 "/images/heart-tiles/tile-46.jpg",
                 "/images/heart-tiles/tile-47.jpg"
               ],
-              "caption": "Mariia'nın dünyayı görme biçimini şekillendiren kırk yedi yer ve sanat eseri – Sagrada Família'dan Michelangelo'nun David'ine kadar. Her birinden bir parça, EPRIS'in her sayısında yaşıyor."
+              "caption": "Sagrada Familia'dan Michelangelo'nun Davut Heykeli'ne kadar Mariia'nın dünyaya bakışını şekillendiren kırk yedi yer ve sanat eseri. EPRIS'in her sayısında her birinden biraz yer buluyor."
             },
             {
               "type": "text",
-              "content": "Bu binaların bazılarını elinde eskiz defteriyle bizzat gezdi. Bazılarını ise yalnızca fotoğraflarda gördü. Bir gün hepsini kendi gözleriyle görmesini diliyoruz."
+              "content": "Bu yapılardan bazılarını elinde eskiz defteriyle bizzat ziyaret etti. Diğerlerini ise yalnızca fotoğraflarda görmüştü. Umarız bir gün her birini kendi gözleriyle görebilir."
             },
             {
               "type": "quote",
-              "content": "Mimarlık bana güzelliğin ardındaki yapıyı görmeyi öğretti. EPRIS bana bunu başkalarına anlatmayı öğretti. Bence bunlar aynı duygunun iki dili."
+              "content": "Mimarlık bana güzelliğin ardındaki yapıyı görmeyi öğretti. EPRIS bana bunu başkalarına anlatmayı öğretti. Bana göre bunlar aynı duyguyu anlatan iki dil."
             },
             {
               "type": "note",
-              "content": "EPRIS editör ekibi, Mariia'yı diploması için tebrik eder ve derginin her sayısında yaşayan ilham için ona teşekkür eder. Bu diploma yeni bir bölümü işaret ediyor – ve sanırız kutlanacak son bölüm olmayacak. Bunu bizimle birlikte okuduğunuz için mutluyuz."
+              "content": "EPRIS editör ekibi Mariia'yı diplomasından dolayı tebrik ediyor ve derginin her sayısında yaşayan ilham için ona teşekkür ediyor. Bu diploma yeni bir döneme işaret ediyor ve bunun kutlanmaya değer son bölüm olmayacağından şüpheleniyoruz. Bizimle okuduğunuza sevindik."
             }
-          ]
+          ],
+          "updatedAt": "2026-08-08T20:25:24.186Z"
         },
         {
           "id": 12,
