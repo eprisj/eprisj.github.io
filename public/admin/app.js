@@ -1904,9 +1904,9 @@ const ENTITY_REQUIRED_FIELDS = {
   libraryItems: { id: 'id', title: 'string', type: 'string', size: 'string', year: 'string' },
 };
 const ENTITY_OPTIONAL_FIELDS = {
-  articles:     { role: 'string', subcategory: 'string', imageUrl: 'string', draft: 'boolean', publishAt: 'isoDate' },
+  articles:     { role: 'string', subcategory: 'string', imageUrl: 'string', draft: 'boolean', publishAt: 'isoDate', order: 'number' },
   reviews:      { category: 'string', imageUrl: 'string', verdict: 'string', pros: 'array', cons: 'array', meta: 'string', link: 'string', date: 'string', featured: 'boolean', draft: 'boolean', publishAt: 'isoDate' },
-  items:        { imageUrl: 'string', draft: 'boolean', publishAt: 'isoDate' },
+  items:        { imageUrl: 'string', draft: 'boolean', publishAt: 'isoDate', articleId: 'id', order: 'number' },
   libraryItems: { url: 'string', draft: 'boolean', publishAt: 'isoDate' },
 };
 function validateEntityShape(section, entity) {
@@ -1926,6 +1926,7 @@ function validateEntityShape(section, entity) {
       if (!present) { if (required) return `missing field: ${field}`; continue; }
       const v = entity[field];
       if (kind === 'id' && !(Number.isInteger(v) && v > 0)) return `${field} must be a positive integer`;
+      if (kind === 'number' && typeof v !== 'number') return `${field} must be a number`;
       if (kind === 'string' && typeof v !== 'string') return `${field} must be a string`;
       if (kind === 'stringOrArray' && typeof v !== 'string' && !Array.isArray(v)) return `${field} must be a string or array`;
       if (kind === 'array' && !Array.isArray(v)) return `${field} must be an array`;
@@ -3814,6 +3815,10 @@ function addGalleryCardForArticleData(data, articleId) {
 
   const cardFrom = (source, position) => ({
     id,
+    // Явная привязка к статье: заголовок карточки потом может разойтись со
+    // статьёй (её переименуют), а id — нет. На нём держатся и кнопка
+    // «читать статью», и наследование перевода.
+    articleId: Number(article.id),
     title: String(source.title || '').trim(),
     subtitle: source.category || source.subcategory || '',
     fig: `FIG. ${String(position).padStart(2, '0')}`,
@@ -4240,6 +4245,43 @@ function bindPhotoPreviewInputs() {
 // row values straight from the DOM before every add/remove so in-progress
 // edits in other rows survive the redraw, same pattern as the block editor's
 // gallery/checklist/poll repeaters.
+// Карточка Галереи — обложка статьи: от этой связи зависят кнопка «читать
+// статью» и наследование перевода. Раньше она угадывалась по совпадению
+// заголовков и рвалась при каждом переименовании статьи, молча. Теперь связь
+// хранится явно (articleId), а совпадение по заголовку осталось только
+// подсказкой для старых карточек, у которых поля ещё нет.
+function guessArticleIdByTitle(data, entry) {
+  const articles = Array.isArray(data.articles) ? data.articles : [];
+  const title = String(entry.title || '').trim();
+  if (!title) return null;
+  const exact = articles.find((a) => String(a.title || '').trim() === title);
+  if (exact) return Number(exact.id);
+  const base = (value) => String(value || '').split(':')[0].trim().toLowerCase();
+  if (base(title).length < 4) return null;
+  const loose = articles.find((a) => base(a.title) === base(title));
+  return loose ? Number(loose.id) : null;
+}
+
+function renderGalleryArticleLinkMarkup(data, entry) {
+  const articles = Array.isArray(data.articles) ? data.articles : [];
+  const explicit = Number(entry.articleId) || null;
+  const guessed = explicit ? null : guessArticleIdByTitle(data, entry);
+  const selected = explicit || guessed || 0;
+  const options = [`<option value="0">— не связана со статьёй —</option>`]
+    .concat(articles.map((a) => {
+      const label = `#${a.id} · ${String(a.title || '').slice(0, 60)}`;
+      return `<option value="${a.id}"${Number(a.id) === selected ? ' selected' : ''}>${escapeHtml(label)}</option>`;
+    }))
+    .join('');
+  const note = explicit
+    ? 'Связь закреплена: переименование статьи её не сломает.'
+    : guessed
+      ? 'Связь пока только угадана по заголовку — сохраните карточку, чтобы закрепить её.'
+      : 'Не связана: в просмотре не будет кнопки «читать статью», перевод не наследуется.';
+  return `<select id="vf-articleId">${options}</select>
+      <span class="toolbar-field-label" style="display:block;margin-top:4px;">${escapeHtml(note)}</span>`;
+}
+
 function renderGalleryPhotosRepeaterMarkup(photos) {
   if (!photos.length) {
     return '<p class="form-hint">Доп. фото нет — в просмотре покажется только обложка.</p>';
@@ -4366,6 +4408,7 @@ function renderVisualForm() {
       <label>ID<input id="vf-id" value="${escapeHtml(entry.id)}" disabled /></label>
       <label>FIG<input id="vf-fig" value="${escapeHtml(entry.fig || '')}" /></label>
       <label class="full">Заголовок<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
+      <label class="full">Статья карточки${renderGalleryArticleLinkMarkup(data, entry)}</label>
       <label class="full">Подзаголовок<input id="vf-subtitle" value="${escapeHtml(entry.subtitle || '')}" /></label>
       <label class="full">Описание<textarea id="vf-description">${escapeHtml(entry.description || '')}</textarea></label>
       <input type="hidden" id="vf-imageUrl" value="${escapeHtml(entry.imageUrl || '')}" />
@@ -4594,7 +4637,8 @@ function buildEntryFromVisualForm(section, current) {
       description: getFieldValue('vf-description').trim(),
       imageSeed: getFieldValue('vf-imageSeed').trim(),
       imageUrl: getOptionalString(getFieldValue('vf-imageUrl')),
-      images: photos.length ? photos : undefined
+      images: photos.length ? photos : undefined,
+      articleId: Number(getFieldValue('vf-articleId')) || undefined
     };
     applyDraftFieldsFromForm(next);
   } else if (section === 'reviews') {

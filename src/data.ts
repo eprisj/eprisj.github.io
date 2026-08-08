@@ -20,6 +20,13 @@ export interface Item {
   updatedAt?: string;
   /** Manual display position set in the admin (1 = first). Unset entries keep the default order, after the ordered ones. */
   order?: number;
+  /**
+   * Явная привязка карточки к статье. Раньше связь угадывалась по совпадению
+   * заголовков — и рвалась каждый раз, когда статью переименовывали: кнопка
+   * «читать статью» молча исчезала, а перевод переставал наследоваться.
+   * Заголовок — не идентификатор; id переживает и переименование, и перевод.
+   */
+  articleId?: number;
 }
 
 export interface ContentBlock {
@@ -638,7 +645,13 @@ const galleryBaseTitle = (value?: string): string => (value || '').split(':')[0]
 export function getGalleryArticleLinks(): Map<number, number> {
   const c = src();
   const links = new Map<number, number>();
+  const articleIds = new Set((c.articles || []).map((a) => a.id));
   for (const item of c.items || []) {
+    // Явная привязка — единственная, которая переживает переименование статьи.
+    if (typeof item.articleId === 'number' && articleIds.has(item.articleId)) {
+      links.set(item.id, item.articleId);
+      continue;
+    }
     const title = (item.title || '').trim();
     if (!title) continue;
     const exact = (c.articles || []).find((a) => a.title?.trim() === title);
