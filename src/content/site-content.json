@@ -9089,52 +9089,95 @@
         },
         {
           "id": 10,
-          "title": "Fünf Räume, eine Handschrift",
+          "title": "Fünf Räume, eine Signatur",
           "author": "EPRIS Journal",
           "role": "Redaktion",
-          "date": "11. Juli 2026",
-          "excerpt": "Ein Kegel, ein Sechseck, ein Punktgitter und eine lange Diagonale, die alle drei durchschneidet – die Geometrie einer einzelnen Schlafzimmerecke, richtig ausgearbeitet.",
+          "date": "Jul 11, 2026",
+          "excerpt": "Ein dalmatinischer Punkt, ein Stück Wurzelholz, drei Porträts desselben gemalten Hundes und ein kleiner Kegel, der immer wieder dort auftaucht, wo man es am wenigsten erwartet – das disziplinierte Vokabular, das eine Wohnung auf fünf verschiedene Arten verwendet, ohne sich jemals zu wiederholen.",
           "category": "Kultur",
           "subcategory": "Designstudie",
           "tags": [
             "Design",
-            "Geometrie",
-            "Materialien"
+            "Muster",
+            "Materialien",
+            "Innere"
           ],
           "imageSeed": "",
+          "imageUrl": "https://eprisjournal.com/images/article-polkadot-bedroom.jpg",
           "content": [
             {
               "type": "text",
-              "content": "Vier Formen erledigen die ganze Arbeit in diesem Rahmen, und keine davon ist zufällig. Ein Kegel – der einfachste mögliche Körper, eine durchgehende Oberfläche, die um eine einzige Achse geschwenkt wird – verjüngt sich von einer breiten Basis zu einer Spitze ohne Naht, ohne Facette, ohne nichts, woran das Auge hängen bleiben könnte. Darunter ein Sechseck: zwei gestapelte Prismen, jeweils sechs flache Ebenen, derselbe Winkel wiederholt sich, bis er sich in sich selbst schließt. Hinter beiden ein Gitter – Punkte in einem festen Abstand, Zeilen und Spalten, die einzig wahre zweidimensionale Geometrie im Raum. Und diagonal durch das Ganze geschnitten, der Lampenarm, die einzige Linie im Rahmen, die sich weigert, vertikal oder horizontal zu sein."
+              "content": "Gehen Sie einmal durch diese Wohnung und Sie werden den Polka Dot, das Wurzelholzfurnier und das Paar bemalter Hunde sehen, die von drei verschiedenen Wänden aus zuschauen. Wenn Sie es zweimal durchgehen, werden Sie feststellen, dass keiner von ihnen jemals zweimal auf die gleiche Weise erscheint – der Punkt ändert auf jeder Oberfläche, auf der er landet, den Maßstab, das Furnier geht von der Tischplatte über die Schrankfront zu einem einzelnen gerahmten Quadrat in der Größe einer Postkarte über, und die Hunde wechseln von Grau zu Schwarzweiß und zu einem einzelnen beschnittenen blauen Porträt, als würde dieselbe Idee immer wieder übersetzt und nicht wiederholt. Das ist hier das eigentliche Thema: kein Blick, sondern eine kleine, disziplinierte Reihe von Entscheidungen, die ein Haus offenbar in fünf sehr unterschiedlichen Räumen durchhalten kann, ohne dass es sich jemals völlig wiederholt."
             },
             {
               "type": "image",
-              "content": "https://eprisjournal.com/images/article-polkadot-bedroom-detail-cone.jpg",
-              "caption": "Eine Regelfläche: Jede Linie von der Spitze bis zur Basis ist gerade – die Kurve, die Sie sehen, ist eine Illusion, die aus unendlichen Geraden besteht."
+              "content": "https://api.eprisjournal.com/uploads/mrgg0dfmpqmyrg.jpg",
+              "caption": "Der Punkt im größten Maßstab: ein kompletter Schnitt, gepolstert von Kante zu Kante, wobei das Muster fast wie eine Textur aussieht, bevor es sich als Muster liest.",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Der Kegel und das Sechseck sind als Nachbarn getarnte Gegensätze. Ein Kegel wird durch Drehung erzeugt. Drehen Sie eine gerade Linie um eine Achse, und Sie erhalten vollständige Symmetrie, keine Ecken und keine „falsche“ Richtung. Ein Sechseck entsteht durch Wiederholung – derselbe 120-Grad-Winkel, sechsmal, und er schließt sich nur, weil sechs die genaue Zahl ist, die 360 ​​ohne Rest teilt. Eine Form hat überhaupt keine Kanten; das andere besteht fast nur aus Kanten. Wenn Sie die Spitze des Kegels direkt über die Mitte des Sechsecks setzen, wird das Objekt als eine zusammenhängende Idee gelesen, auch wenn es sich strukturell um zwei übereinander gestapelte Geometriefamilien handelt, die nichts miteinander zu tun haben."
+              "content": "Aus der Nähe betrachtet handelt es sich nicht um einen gedruckten Tupfen – er ist gezeichnet, wobei jeder Punkt einen unregelmäßigen Fleck mit seinem eigenen Gewicht und seiner eigenen Kante markiert, die Art von Variation, die auftritt, wenn eine Hand eine Geste wiederholt und nicht eine Maschine, die einen Stanzschnitt wiederholt. Im Sofamaßstab leistet diese Unregelmäßigkeit echte Wirkung: Ein vollkommen regelmäßiger Punkt dieser Größe würde als Polsterstoff gelten, der sich wie eine Tapete verhält, dekorativ und leicht billig. Eine unregelmäßige Struktur liest sich als Textur – sie erinnert eher an das Fell, das sie deutlich zitiert, als an einen Druck. Der umrandete Couchtisch darunter, im gleichen Punkt in einem kleineren, dichteren Maßstab, ist das einzige Möbelstück im Raum, das eher gekleidet als gepolstert ist – eine Holzscheibe auf einem Unterrock aus Stoff, ein absichtlich seltsames Ding neben einem Möbelstück dieser Architektur. Auf dem Tisch neben einem Stapel Bücher steht ein kleiner Metallkegel – dieselbe Silhouette, die die Schlafzimmerlampe später wiederholt, in einem völlig anderen Maßstab, in einem völlig anderen Material, obwohl noch nichts an diesem Raum darauf schließen lässt."
             },
             {
               "type": "quote",
-              "content": "Nichts in diesem Raum ist rund, außer der einen Form, die niemals Ecken haben sollte."
+              "content": "Die gleiche Idee, fünfmal übersetzt, ist eine Sammlung. Die gleiche Idee, fünfmal kopiert, ist ein Thema."
             },
             {
               "type": "image",
-              "content": "https://eprisjournal.com/images/article-polkadot-bedroom-detail-grain.jpg",
-              "caption": "Masermaserung hat überhaupt keine Geometrie – genau deshalb brauchte sie ein Sechseck darunter und keine weitere Kurve."
+              "content": "https://api.eprisjournal.com/uploads/mrgg0dpaojhrg2.jpg",
+              "caption": "Dasselbe Wurzelholzfurnier auf drei Arten in einer Aufnahme: eine niedrige Anrichte, ein schwebendes Regal, ein einzelnes gerahmtes Quadrat, auf dem ein Foto statt einer Ansicht zu sehen ist.",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Die Tapete ist das einzige Element, das zweidimensional und nicht dreidimensional funktioniert, und es ist die strengste Geometrie im Raum: ein festes Raster, der gleiche Abstand in alle Richtungen, kein Punkt ist wichtiger als sein Nachbar. Alles Feste respektiert entweder dieses Raster oder bekämpft es. Der Nachttisch steht quadratisch darin, die Kanten verlaufen parallel zu den Reihen. Bei der Lampe ist das nicht der Fall – ihr Arm kreuzt das Gitter in etwa zwanzig Grad, der einzigen Diagonale in einem Raum, der ansonsten aus Vertikalen, Horizontalen und einer ununterbrochenen Kurve besteht. Diese Diagonale leistet mehr kompositorische Arbeit als jedes Objekt darunter: Sie ist die Linie, der das Auge zuerst folgt, gerade weil sie das Einzige im Bild ist, das dem Raster dahinter nicht folgt."
+              "content": "Wurzelholz ist zumindest geometrisch ein Holz – das Muster entsteht durch die Stressreaktion eines Baumes, einen Knoten, den er zu umwachsen versuchte, aber scheiterte, sodass keine zwei Platten davon jemals so buchmäßig aufeinander abgestimmt werden können wie Furnier mit gerader Maserung. So viel davon in so vielen Maßstäben zu verwenden, funktioniert nur, weil alles, was damit in Berührung kommt, so schlicht ist: eine geradlinige Anrichte, ein freitragendes Regal ohne sichtbare Halterung, ein geblümter Sessel mit weichen, knochenlos wirkenden Armlehnen. Dieser Stuhl ist das einzige geschwungene, gemusterte Objekt, das in einen Raum passt, der ansonsten aus geraden Kanten und einer wilden, unwiederholbaren Maserung besteht – der gleiche Trick, den der Tupfen neben dem Wurzelholz-Nachttisch im Schlafzimmer zeigt, nur aus einem anderen Material. Auch hier taucht ein zweiter Kegel auf, der das Licht auf dem gleichen niedrigen runden Tisch einfängt – klein genug, um ihn zu übersehen, so eindringlich, dass man, wenn man ihn einmal gesehen hat, überall in der Wohnung danach sucht."
+            },
+            {
+              "type": "quote",
+              "content": "Wiederholen Sie ein Objekt oft genug, in verschiedenen Größen und aus unterschiedlichen Materialien, und es ist keine Dekoration mehr, sondern ein Markenzeichen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrgg0dj90g3ij9.jpg",
+              "caption": "Ein dritter Hund, ein drittes Register: schwarz-weiß statt blaugrau, posiert statt mitten in der Drehung gefangen, hing über einer Wurzelholzkonsole statt einer holzgetäfelten Wand.",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Drei Gemälde desselben Themas, drei unterschiedliche Farbbehandlungen und keines davon als passendes Set aufgehängt – das ist der Beweis dafür, dass es sich um eine Sammlung handelt, die nach Augenmaß zusammengestellt und nicht als Triptychon geordnet ist. Die Stühle hier leisten die gleiche stille Arbeit wie der Punkt auf dem Sofa: ein floraler Stoff, blau auf weiß, um einen Rahmen gewickelt, der fast keine rechten Winkel aufweist, sodass das Muster eher als Bewegung denn als Polsterung wahrgenommen wird. Darunter taucht die gleiche Wurzelholzplatte aus dem Wohnzimmer als Tischkante wieder auf, dick genug, um als Massivholz statt als Furnier auf Sperrholz zu lesen – der einzige Ort in der Wohnung, an dem das Material das gesamte Objekt darstellt und nicht eine Oberfläche darauf. Die Beine des Tisches sind zu einem Vollspiegel poliert, was etwas bewirkt, was das Wurzelholz nicht kann: Es verdoppelt den Raum, anstatt ihn nur zu schmücken, und faltet die Stühle und ihren floralen Stoff zurück ins Spiegelbild wie ein zweites, etwas blaueres Esszimmer unter dem echten."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrgg0dn3pl70qq.jpg",
+              "caption": "Der Punkt auf der Bettungsskala, wieder dichter und kleiner, mit dem Vorhang dahinter als noch vierter Skala.",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Dabei handelt es sich um die gleiche Stofflogik wie beim Sofa, das in einem einzigen Raum eine ganze Reihe von Maßstäben durchläuft: ein Punkt auf dem Vorhang, ein Punkt mit unterschiedlichem Gewicht auf der Bettdecke, eine dritte Maßeinheit, die vollständig im gewebten Streifen darunter liegt, und ein vierter blau getönter Hund, der alles von einem einzelnen ausgeschnittenen Porträt aus und nicht von einer vollständigen Pose aus überwacht. Hier versucht nichts zusammenzupassen – der Punkt des Vorhangs und der Punkt der Bettwäsche liegen nah genug beieinander, um zur gleichen Familie zu gehören, und so unterschiedlich, dass das Auge sie immer wieder anordnen muss, was der Hauptgrund dafür ist, dass der Raum als mehrschichtig und nicht thematisch wirkt. Ziehen Sie sich zurück und das Bett selbst führt den gleichen Schichttrick aus wie der Raum um es herum: eine gerippte braune Decke, ein gestreifter Waffelüberwurf und die gepunktete Bettdecke darüber, drei verschiedene Texturen gestapelt, so wie die drei Hundeporträts in drei verschiedenen Räumen gestapelt sind – Wiederholung getarnt als Abwechslung, oder vielleicht auch umgekehrt."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrgg0dhfp07cpi.jpg",
+              "caption": "Die eine Ecke der Wohnung, in der das gesamte Vokabular in einer einzigen, kleinen Komposition zusammenfällt: Punkt, Wurzelholz, Holz, eine bewusste Diagonale.",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Ein Kegel verjüngt sich zu einer Spitze ohne Naht, die durch nichts weiter als eine gerade Linie erzeugt wird, die um eine Achse gedreht wird. Darunter ein Sechseck, das aus zwei gestapelten Prismen mit jeweils sechs flachen Ebenen besteht und sich in sich selbst schließt, weil sechs die einzige Zahl unter zehn ist, die 360 ​​ohne Rest teilt. Eine Form hat überhaupt keine Kanten; das andere besteht fast nur aus Kanten – und wenn man die Spitze des Kegels direkt über der Mitte des Sechsecks platziert, lassen sich zwei nicht miteinander verbundene Geometriefamilien als ein einziges Objekt lesen. Hinter beiden ist das Punktraster die strengste Geometrie in der Wohnung, ein fester Abstand, kein Punkt ist wichtiger als sein Nachbar – außer dass aus der Nähe jede Markierung gezeichnet und nicht eingeprägt ist und die gleiche disziplinierte Unregelmäßigkeit das ganze Haus in jedem Maßstab, in dem sie erscheint, zusammenhält. Als der Kegel diesen Nachttisch erreicht, ist er bereits zweimal als kleines Objekt auf zwei verschiedenen Couchtischen aufgetaucht – was bedeutet, dass die Lampe weniger eine neue Form in die Wohnung bringt, als dass sie einer ihrer wiederkehrenden Formen endlich einen ernstzunehmenden Platz gibt. Die Lampe ist die einzige Linie im Rahmen, die sich dem Raster verweigert: Ihr Schirm neigt sich fast genau in dem Winkel zum Kissen, in dem sich eine Person vorbeugt, um noch etwas zu sagen, bevor ein Raum dunkel wird – das einzige Objekt, das sich hier so verhalten darf, als ob es irgendwo sein müsste."
+            },
+            {
+              "type": "quote",
+              "content": "Drei Couchtischkegel und eine Lampe sind kein Zufall. Sie kommen einer Unterschrift in dieser Wohnung am nächsten."
             },
             {
               "type": "note",
-              "content": "Die Geometrie erklärt nicht, warum ein Raum eher ruhig als inszeniert wirkt – Proportionen und Zurückhaltung tun das. Aber die Benennung der Formen ist ein guter Ausgangspunkt, um herauszufinden, warum einige „kollidierende“ Kombinationen zusammenhalten und die meisten nicht."
+              "content": "Nichts davon erklärt, warum sich die Wohnung eher ruhig als stilvoll anfühlt – Zurückhaltung tut das, ebenso wie der Widerstand gegen den Drang, alles genau zusammenzubringen. Aber wenn man zählt, wie oft derselbe Punkt, die gleiche Maser, derselbe Kegel und derselbe bemalte Hund in fünf Räumen und in fünf verschiedenen Maßstäben auftauchen, ist das ein guter Ansatz, um zu erkennen, warum manche Häuser als gesammelt und die meisten nur als dekoriert gelesen werden."
             }
           ],
-          "imageUrl": "https://eprisjournal.com/images/article-polkadot-bedroom.jpg"
+          "updatedAt": "2026-08-08T21:19:58.610Z",
+          "order": 7
         },
         {
           "id": 11,
