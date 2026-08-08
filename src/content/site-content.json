@@ -14727,6 +14727,90 @@
           ],
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-guggenheim-river.jpg"
+        },
+        {
+          "id": 17,
+          "title": "Emily Kraus Resim Sanatını Nasıl Yeniden Keşfediyor?",
+          "author": "EPRIS Journal",
+          "role": "mariia ivanova",
+          "date": "Jul 30, 2026",
+          "excerpt": "Kanvas Küpün İçinde Emily Kraus Şimdiki Anın Ritmini Boyuyor",
+          "category": "contemporary art",
+          "subcategory": "Feature",
+          "tags": [
+            "art",
+            "contemporary art"
+          ],
+          "imageSeed": "",
+          "content": [
+            {
+              "type": "text",
+              "content": "Sanat, sanatçının zihninin, bedeninin ve ruhunun bir parçası olduğunda, onu uygulamaya olan bağlılığınızdan hissedebilirsiniz. Bu bağlantı biçimi, sanatçı ile sanat eseri arasında, birbirinden uzak olsalar bile kopmayan milyarlarca görünmez en ince iplikle karşılaştırılabilir. Birbirlerini beslerler ve bir daha asla bağımsız olamazlar."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msjmgso0atp099.jpg",
+              "caption": "Emily Kraus, Each in the other what each has to give, 2026. Photo by Ollie Hammick",
+              "sourceUrl": "",
+              "credit": ""
+            },
+            {
+              "type": "text",
+              "content": "Resme baktığınızda ve neredeyse fiziksel olarak yazarın varlığını hissedebildiğinizde - işte o zaman en saf vahiy biçimi önünüzde ortaya çıkıyor."
+            },
+            {
+              "type": "text",
+              "content": "Emily Kraus (New York, 1995) çalışmaları beni harici olarak var olan herhangi bir şeyden rahatsız etmedi. Tanımlanamayanlar tarafından donduruldum, tuzağa düşürüldüm ve sersemletildim. Neredeyse aşık olmak gibi - hazır değildiniz, bunu istemediniz, ama yine de insanın başına gelebilecek en iyi duygulardan biri."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msjmzzvhzg92s2.webp",
+              "caption": "Emily Kraus, Stochastic 20, 2023. Photo by Ollie Hammick"
+            },
+            {
+              "type": "text",
+              "content": "İlk bakışta “Nasıl ?” Gergin gerginliklerle uğraşmakla çok meşguldüm. İkincisi beni bilince götürecek, nasıl başarıldığını merak etmeye hazır olacak."
+            },
+            {
+              "type": "text",
+              "content": "Teknik hakkında ani bir merak eksikliği, sanatçıların eserin kendi başına yaşaması gerektiğine olan inancına karşılık gelir - izleyici ile iletişim, görsellerin en net çevirmeni olarak bireysel yansımaya dayanır."
+            },
+            {
+              "type": "text",
+              "content": "Emily Kraus, üzerine tuvalin gerildiği kalaslı ve döner direkli bir iskeleden yapılmış, aparatlarla birlikte çalışır - kendinden icat edilmiş yapı. Bu yaklaşım, yüzeyi döndürmek için eşsiz bir fırsat sunar ve aynı zamanda küp benzeri kapalı bir alan yaratır. Sanatçı içeriden yağlı boyaları uygular ve daha sonra boya kurumadan tuvali döndürür - direklerden geçerek boya lekelenir. Tekrarlanan adımlar, hatalı imza görsel kodu ile sonuçlanır."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/msjmlmp1yo7kfr.jpg",
+                "https://api.eprisjournal.com/uploads/msjmln6mxu4ycf.jpg",
+                "https://api.eprisjournal.com/uploads/msjmmyamb6ai3j.jpg"
+              ],
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Tuval geometrik olarak yapılandırıldığından, tüm görüntünün sonucu eserin sonuna kadar bilinmemektedir - bu da yaklaşık bir ay sürer"
+            },
+            {
+              "type": "text",
+              "content": "Kontrol edilemeyen bir güzellik var. Her resmin doğası, görsel çekiciliğin peşinde koşma arzusunda değildir, ancak anlık kararda, aşağıdaki jest ortaya çıkan bu sanat eserine aittir. Tamamen sanatçının duygularına dayanan sürecin bu sağlam önemi düşünüldüğünde, resim güçlü, manevi bir hafıza biriktirir."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msjmraxbowmo4w.webp",
+              "caption": "Emily Kraus, Fwooooop, 2024"
+            },
+            {
+              "type": "text",
+              "content": "QUERY LENGTH LIMIT EXCEEDED. MAX ALLOWED QUERY : 500 CHARS"
+            },
+            {
+              "type": "text",
+              "content": "Lucien Freud'un belirttiği gibi - \"Her şey bir otoportredir \". Sanatla ilgili konuşmalarda bu sözler daha doğru olamaz. Emily Kraus'un eserlerinin yüce özü, kaotik bir şekilde oluşmaktan ziyade belirleyicidir - Kenyon Koleji'nden Dini Çalışmalar alanında lisans derecesine sahiptir. Bu, Kraus'un hayatın anlamını kendi kendine sorgulamasından etkilenmiştir."
+            }
+          ],
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
         }
       ],
       "reviews": [
@@ -16807,6 +16891,90 @@
           ],
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-guggenheim-river.jpg"
+        },
+        {
+          "id": 17,
+          "title": "Come Emily Kraus reinventa l'atto della pittura",
+          "author": "EPRIS Journal",
+          "role": "mariia ivanova",
+          "date": "Jul 30, 2026",
+          "excerpt": "All'interno del cubo di tela, Emily Kraus dipinge il ritmo del momento presente",
+          "category": "contemporary art",
+          "subcategory": "Feature",
+          "tags": [
+            "art",
+            "contemporary art"
+          ],
+          "imageSeed": "",
+          "content": [
+            {
+              "type": "text",
+              "content": "Quando l'arte fa parte della mente, del corpo e dell'anima dell'artista, puoi sentirla dalla dedizione intermittente alla pratica. Quella forma di connessione può essere paragonata ai miliardi di fili invisibili più sottili, che rimangono ininterrotti tra l'artista e l'opera d'arte, anche quando sono distanti. Si nutrono a vicenda e non saranno mai più indipendenti."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msjmgso0atp099.jpg",
+              "caption": "Emily Kraus, Each in the other what each has to give, 2026. Photo by Ollie Hammick",
+              "sourceUrl": "",
+              "credit": ""
+            },
+            {
+              "type": "text",
+              "content": "Quando guardi il dipinto e riesci quasi a sentire fisicamente la presenza dell'autore, è allora che la forma più pura di rivelazione si sta dispiegando davanti a te."
+            },
+            {
+              "type": "text",
+              "content": "Emily Kraus (New York, 1995) le opere mi hanno lasciato indifferente a tutto ciò che esiste esternamente. Sono congelato, intrappolato e stordito dai non identificati. È quasi come innamorarsi: non eri preparato, non l'hai chiesto, eppure è uno dei migliori sentimenti che possono accadere all'essere umano."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msjmzzvhzg92s2.webp",
+              "caption": "Emily Kraus, Stochastic 20, 2023. Photo by Ollie Hammick"
+            },
+            {
+              "type": "text",
+              "content": "Al primo sguardo non seguì la domanda “Come?”. Ero troppo occupato a gestire i nervosismi rigidi. Il secondo mi porterà al conscio, pronto ad essere curioso di sapere come è stato raggiunto."
+            },
+            {
+              "type": "text",
+              "content": "La mancanza di curiosità immediata sulla tecnica corrisponde alla convinzione dell'artista che l'opera dovrebbe vivere da sola - la comunicazione con lo spettatore si basa sulla riflessione individuale come il traduttore più chiaro delle immagini."
+            },
+            {
+              "type": "text",
+              "content": "Emily Kraus lavora in tandem con apparato - struttura auto-inventata, costituita da un'impalcatura con assi e pali rotanti, su cui viene tesa la tela. Questo approccio offre un'opportunità unica per ruotare la superficie e allo stesso tempo crea uno spazio chiuso a forma di cubo. Dall'interno l'artista applica le vernici ad olio, quindi ruota la tela prima che la vernice si asciughi: passando attraverso i pali, la vernice si sbavatura. I passaggi ripetuti determinano il codice visivo della firma difettosa."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/msjmlmp1yo7kfr.jpg",
+                "https://api.eprisjournal.com/uploads/msjmln6mxu4ycf.jpg",
+                "https://api.eprisjournal.com/uploads/msjmmyamb6ai3j.jpg"
+              ],
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Poiché la tela è strutturata geometricamente, il risultato dell'intera immagine è sconosciuto fino alla fine del lavoro, che richiede circa un mese"
+            },
+            {
+              "type": "text",
+              "content": "C'è una bellezza nell'incontrollabile. La natura di ogni dipinto non è nel desiderio di perseguire il fascino visivo, ma nella decisione momentanea, il seguente gesto appartiene o meno a questa opera d'arte emergente. Attraverso questo solido significato del processo, basato esclusivamente sui sentimenti dell'artista, la pittura accumula una potente memoria spirituale."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msjmraxbowmo4w.webp",
+              "caption": "Emily Kraus, Fwooooop, 2024"
+            },
+            {
+              "type": "text",
+              "content": "QUERY LENGTH LIMIT EXCEEDED. MAX ALLOWED QUERY : 500 CHARS"
+            },
+            {
+              "type": "text",
+              "content": "Come ha affermato Lucien Freud - \"Tutto è un autoritratto\". Queste parole non possono essere più accurate nei discorsi sull'arte. L'essenza sublime dell'opera di Emily Kraus è definitiva, piuttosto che formata in modo caotico: ha conseguito la laurea in Studi religiosi presso il Kenyon College. Ciò è stato influenzato dall'auto-interrogazione di Kraus sul significato della vita."
+            }
+          ],
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
         }
       ],
       "reviews": [
