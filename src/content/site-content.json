@@ -2059,7 +2059,7 @@
           "alts": [
             "https://hopperprize.org/emily-kraus-interview/",
             "https://hopperprize.org/emily-kraus-interview/",
-            "https://plusmagazine.net/emily-kraus/"
+            "https://plusmagazine.net/emily-kraus/ "
           ]
         },
         {
@@ -4061,26 +4061,6 @@
         "Service lacks Mediterranean warmth",
         "Limited dining options"
       ]
-    },
-    {
-      "id": 4,
-      "title": "New review",
-      "subject": "New review",
-      "rating": 0,
-      "content": "Taking into account first impressions - atmosphere, service, who this place is for. The following are details that support the findings.",
-      "author": "EPRIS Journal",
-      "category": "Food & Stay",
-      "verdict": "One clear line - is it worth going?",
-      "pros": [
-        "Location",
-        "Atmosphere",
-        "Value for money"
-      ],
-      "cons": [
-        "One honest minus"
-      ],
-      "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
-      "date": "Aug 1, 2026"
     }
   ],
   "libraryItems": [
@@ -4274,15 +4254,6 @@
           "description": "7 июля Мария Иванова, главный редактор EPRIS, официаль��о стала бакалавром архитектуры. В честь этого дня – сердце, собранное из архитектуры и искусства, которые её вдохновляют.",
           "imageSeed": "maria-graduation-heart",
           "imageUrl": "/images/heart-hero.jpg"
-        },
-        {
-          "id": 12,
-          "title": "Как Эмили Краус заново изобретает живопись",
-          "subtitle": "Современное искусство",
-          "fig": "FIG. 10",
-          "description": "Внутри холстового куба Эмили Краус рисует ритм настоящего момента",
-          "imageSeed": "item-12",
-          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
         }
       ],
       "articles": [
@@ -4705,7 +4676,7 @@
           "draft": false,
           "role": "Редакция",
           "title": "Сердце EPRIS: у Марии диплом архитектора",
-          "excerpt": "7 июля Мария Иванова, главный редактор EPRIS, официально стала бакалавром архитектуры. В честь этого дня – сердце, собранное из архитектуры и искусства, которые её вдохновляют.",
+          "excerpt": "7 июля Мария Иванова, главный редактор EPRIS, официаль��о стала бакалавром архитектуры. В честь этого дня – сердце, собранное из архитектуры и искусства, которые её вдохновляют.",
           "subcategory": "От редакции",
           "tags": [
             "архитектура",
@@ -6452,15 +6423,6 @@
           "description": "7 липня Марія Іванова, головна редакторка EPRIS, офіційно стала бакалавром архітектури. На честь цього дня – серце, зібране з архітектури та мистецтва, що її надихають.",
           "imageSeed": "maria-graduation-heart",
           "imageUrl": "/images/heart-hero.jpg"
-        },
-        {
-          "id": 12,
-          "title": "Як Емілі Краус заново винаходить акт малювання",
-          "subtitle": "Сучасне мистецтво",
-          "fig": "FIG. 10",
-          "description": "Всередині Canvas Cube Емілі Краус малює ритм теперішнього моменту",
-          "imageSeed": "item-12",
-          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
         }
       ],
       "articles": [
@@ -8630,15 +8592,6 @@
           "description": "Am 7. Juli hat Mariia Ivanova, Chefredakteurin von EPRIS, offiziell ihren Bachelor in Architektur gemacht. Zu diesem Anlass – ein Herz aus der Architektur und Kunst, die sie inspirieren.",
           "imageSeed": "maria-graduation-heart",
           "imageUrl": "/images/heart-hero.jpg"
-        },
-        {
-          "id": 12,
-          "title": "Wie Emily Kraus den Akt der Malerei neu erfindet",
-          "subtitle": "Zeitgenössische Kunst",
-          "fig": "FIG. 10",
-          "description": "Im Canvas Cube malt Emily Kraus den Rhythmus des gegenwärtigen Augenblicks",
-          "imageSeed": "item-12",
-          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
         }
       ],
       "articles": [
@@ -10809,15 +10762,6 @@
           "description": "El 7 de julio, Mariia Ivanova, redactora jefa de EPRIS, se licenció oficialmente en Arquitectura. Para celebrarlo – un corazón hecho de la arquitectura y el arte que la inspiran.",
           "imageSeed": "maria-graduation-heart",
           "imageUrl": "/images/heart-hero.jpg"
-        },
-        {
-          "id": 12,
-          "title": "Cómo Emily Kraus reinventa el acto de pintar",
-          "subtitle": "Arte Contemporáneo",
-          "fig": "FIG. 10",
-          "description": "Dentro del Canvas Cube, Emily Kraus pinta el ritmo del momento presente",
-          "imageSeed": "item-12",
-          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
         }
       ],
       "articles": [
@@ -12988,15 +12932,6 @@
           "description": "7 Temmuz'da EPRIS'in baş editörü Mariia Ivanova resmen Mimarlık lisansını aldı. Bu günü kutlamak için – ona ilham veren mimari ve sanattan oluşan bir kalp.",
           "imageSeed": "maria-graduation-heart",
           "imageUrl": "/images/heart-hero.jpg"
-        },
-        {
-          "id": 12,
-          "title": "Emily Kraus Resim Yapma Eylemini Nasıl Yeniden Keşfediyor?",
-          "subtitle": "Çağdaş Sanat",
-          "fig": "FIG. 10",
-          "description": "Kanvas Küpün İçinde Emily Kraus Şimdiki Anın Ritimini Boyadı",
-          "imageSeed": "item-12",
-          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
         }
       ],
       "articles": [
@@ -15166,15 +15101,6 @@
           "description": "Il 7 luglio, Mariia Ivanova, caporedattrice di EPRIS, si è laureata ufficialmente in Architettura. Per festeggiare – un cuore fatto dell'architettura e dell'arte che la ispirano.",
           "imageSeed": "maria-graduation-heart",
           "imageUrl": "/images/heart-hero.jpg"
-        },
-        {
-          "id": 12,
-          "title": "Come Emily Kraus reinventa l'atto della pittura",
-          "subtitle": "Arte Contemporanea",
-          "fig": "FIG. 10",
-          "description": "All'interno del cubo di tela, Emily Kraus dipinge il ritmo del momento presente",
-          "imageSeed": "item-12",
-          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
         }
       ],
       "articles": [
