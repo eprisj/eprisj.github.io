@@ -3529,7 +3529,10 @@
         },
         {
           "type": "gallery",
-          "content": [],
+          "content": [
+            "https://api.eprisjournal.com/uploads/msjmlmp1yo7kfr.jpg",
+            "https://api.eprisjournal.com/uploads/msjmln6mxu4ycf.jpg"
+          ],
           "caption": ""
         }
       ],
