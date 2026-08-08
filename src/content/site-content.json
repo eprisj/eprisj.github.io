@@ -7401,15 +7401,15 @@
         },
         {
           "id": 14,
-          "title": "Нова редакційна історія",
+          "title": "Димовий тест перекладу 08.08.2026",
           "author": "EPRIS Journal",
-          "role": "Редакційний стіл",
-          "date": "18 липня 2026 р",
+          "role": "Редакція",
+          "date": "July 18, 2026",
           "excerpt": "Цілеспрямований початковий абзац для нової редакційної статті.",
-          "category": "Культура",
+          "category": "культури",
           "subcategory": "Особливість",
           "tags": [
-            "історія",
+            "Розповідь",
             "культури",
             "редакційна"
           ],
@@ -7417,30 +7417,30 @@
           "content": [
             {
               "type": "text",
-              "content": "Почніть із найсильнішої сцени, факту чи спостереження. Тримайте цей перший блок щільним і конкретним."
+              "content": "Почніть із найсильнішої сцени, факту чи спостереження. Зберігайте цей перший блок вузьким і конкретним."
             },
             {
               "type": "image",
               "content": "new-editorial-story-2",
-              "caption": "Головне зображення"
+              "caption": "Заява місії",
+              "align": "center"
             },
             {
               "type": "quote",
-              "content": "Додайте тут рядок, який варто запам’ятати."
+              "content": "Додайте тут рядок для запам’ятовування."
             },
             {
               "type": "note",
-              "content": "Редакційна примітка, контекст джерела або короткий відступ."
+              "content": "Редакційна примітка, контекст джерела або коротка примітка."
             },
             {
               "type": "checklist",
-              "caption": "Що покривати",
               "content": {
                 "items": [
-                  "Контекст",
-                  "Ключова деталь",
-                  "Людський ракурс",
-                  "Що зміниться далі"
+                  "контекст",
+                  "Важлива деталь",
+                  "Людська перспектива",
+                  "Що зміниться далі?"
                 ]
               }
             },
@@ -7460,7 +7460,8 @@
                 ]
               }
             }
-          ]
+          ],
+          "updatedAt": "2026-08-08T19:44:12.137Z"
         },
         {
           "id": 15,
@@ -13942,15 +13943,15 @@
         },
         {
           "id": 14,
-          "title": "Yeni editoryal hikaye",
+          "title": "Çeviri duman testi 2026-08-08",
           "author": "EPRIS Journal",
-          "role": "Editör Masası",
-          "date": "18 Temmuz 2026",
+          "role": "Editör ekibi",
+          "date": "July 18, 2026",
           "excerpt": "Yeni bir editoryal hikaye için odaklanmış bir açılış paragrafı.",
-          "category": "Kültür",
-          "subcategory": "Özellik",
+          "category": "kültür",
+          "subcategory": "Özel özellik",
           "tags": [
-            "hikaye",
+            "Hikaye",
             "kültür",
             "editoryal"
           ],
@@ -13958,30 +13959,30 @@
           "content": [
             {
               "type": "text",
-              "content": "En güçlü sahne, gerçek veya gözlemle başlayın. Bu ilk bloğu sıkı ve spesifik tutun."
+              "content": "En güçlü sahne, gerçek veya gözlemle başlayın. Bu ilk bloğu dar ve spesifik tutun."
             },
             {
               "type": "image",
               "content": "new-editorial-story-2",
-              "caption": "Potansiyel müşteri resmi"
+              "caption": "Misyon bildirimi",
+              "align": "center"
             },
             {
               "type": "quote",
-              "content": "Buraya hatırlamaya değer bir satır ekleyin."
+              "content": "Hatırlamak için buraya bir satır ekleyin."
             },
             {
               "type": "note",
-              "content": "Editoryal not, kaynak bağlamı veya kısa bir özet."
+              "content": "Editoryal not, kaynak bağlamı veya kısa bir not."
             },
             {
               "type": "checklist",
-              "caption": "Neyi kapsamalı",
               "content": {
                 "items": [
-                  "Bağlam",
-                  "Önemli ayrıntı",
-                  "İnsan açısı",
-                  "Bundan sonra ne değişecek?"
+                  "bağlam",
+                  "Önemli detay",
+                  "İnsan bakış açısı",
+                  "Bundan sonra ne gibi değişiklikler olacak?"
                 ]
               }
             },
@@ -14001,7 +14002,8 @@
                 ]
               }
             }
-          ]
+          ],
+          "updatedAt": "2026-08-08T19:44:04.017Z"
         },
         {
           "id": 15,
