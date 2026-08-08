@@ -5221,15 +5221,15 @@
         },
         {
           "id": 14,
-          "title": "Новая редакционная история",
+          "title": "Дым-тест перевода 08.08.2026",
           "author": "EPRIS Journal",
-          "role": "Редакционный отдел",
-          "date": "18 июля 2026 г.",
+          "role": "Редакция",
+          "date": "July 18, 2026",
           "excerpt": "Целенаправленный вступительный абзац для новой редакционной статьи.",
-          "category": "Культура",
-          "subcategory": "Особенность",
+          "category": "культура",
+          "subcategory": "Специальная функция",
           "tags": [
-            "история",
+            "История",
             "культура",
             "редакционная статья"
           ],
@@ -5237,30 +5237,30 @@
           "content": [
             {
               "type": "text",
-              "content": "Начните с самой яркой сцены, факта или наблюдения. Пусть этот первый блок будет четким и конкретным."
+              "content": "Начните с самой яркой сцены, факта или наблюдения. Пусть этот первый блок будет узким и конкретным."
             },
             {
               "type": "image",
               "content": "new-editorial-story-2",
-              "caption": "Ведущее изображение"
+              "caption": "Заявление о миссии",
+              "align": "center"
             },
             {
               "type": "quote",
-              "content": "Добавьте сюда строку, которую стоит запомнить."
+              "content": "Добавьте сюда строку, чтобы запомнить."
             },
             {
               "type": "note",
-              "content": "Редакционное примечание, контекст источника или небольшое отступление."
+              "content": "Редакционное примечание, контекст источника или краткое примечание."
             },
             {
               "type": "checklist",
-              "caption": "Что покрыть",
               "content": {
                 "items": [
-                  "Контекст",
-                  "Ключевая деталь",
-                  "Человеческий угол",
-                  "Что изменится дальше"
+                  "контекст",
+                  "Важная деталь",
+                  "Человеческая точка зрения",
+                  "Что изменится дальше?"
                 ]
               }
             },
@@ -5280,7 +5280,8 @@
                 ]
               }
             }
-          ]
+          ],
+          "updatedAt": "2026-08-08T19:43:56.665Z"
         },
         {
           "id": 15,
@@ -16121,15 +16122,15 @@
         },
         {
           "id": 14,
-          "title": "Nuova storia editoriale",
+          "title": "Test del fumo di traduzione 2026-08-08",
           "author": "EPRIS Journal",
-          "role": "Scrivania editoriale",
-          "date": "18 luglio 2026",
+          "role": "Redazione",
+          "date": "July 18, 2026",
           "excerpt": "Un paragrafo di apertura mirato per una nuova storia editoriale.",
-          "category": "Cultura",
-          "subcategory": "Caratteristica",
+          "category": "cultura",
+          "subcategory": "Caratteristica speciale",
           "tags": [
-            "storia",
+            "Storia",
             "cultura",
             "editoriale"
           ],
@@ -16142,25 +16143,25 @@
             {
               "type": "image",
               "content": "new-editorial-story-2",
-              "caption": "Immagine principale"
+              "caption": "Dichiarazione di missione",
+              "align": "center"
             },
             {
               "type": "quote",
-              "content": "Aggiungi una riga che vale la pena ricordare qui."
+              "content": "Aggiungi una riga qui per ricordare."
             },
             {
               "type": "note",
-              "content": "Nota editoriale, contesto della fonte o una breve nota."
+              "content": "Nota editoriale, contesto della fonte o breve nota."
             },
             {
               "type": "checklist",
-              "caption": "Cosa coprire",
               "content": {
                 "items": [
-                  "Contesto",
-                  "Dettaglio chiave",
-                  "Angolo umano",
-                  "Cosa cambia dopo"
+                  "contesto",
+                  "Dettaglio importante",
+                  "Prospettiva umana",
+                  "Cosa cambia dopo?"
                 ]
               }
             },
@@ -16180,7 +16181,8 @@
                 ]
               }
             }
-          ]
+          ],
+          "updatedAt": "2026-08-08T19:43:51.329Z"
         },
         {
           "id": 15,
