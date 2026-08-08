@@ -3501,42 +3501,6 @@
           "caption": "Emily Kraus, Each in the other what each has to give, 2026, oil on canvas, 137.75 × 212.5 inches.Lead image",
           "sourceUrl": "",
           "credit": "Ollie Hammick"
-        },
-        {
-          "type": "quote",
-          "content": "Add a line worth remembering here."
-        },
-        {
-          "type": "note",
-          "content": "Editorial note, source context, or a short aside."
-        },
-        {
-          "type": "checklist",
-          "caption": "What to cover",
-          "content": {
-            "items": [
-              "Context",
-              "Key detail",
-              "Human angle",
-              "What changes next"
-            ]
-          }
-        },
-        {
-          "type": "poll",
-          "content": {
-            "question": "What should we explore next?",
-            "options": [
-              {
-                "label": "More context",
-                "votes": 0
-              },
-              {
-                "label": "Practical guide",
-                "votes": 0
-              }
-            ]
-          }
         }
       ],
       "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
