@@ -1895,7 +1895,11 @@ function validateShape(data) {
 // no-build-step admin bundle, so this is intentionally duplicated).
 const ENTITY_REQUIRED_FIELDS = {
   articles:     { id: 'id', title: 'string', author: 'string', date: 'string', excerpt: 'string', category: 'string', imageSeed: 'string', tags: 'array', content: 'array' },
-  reviews:      { id: 'id', title: 'string', subject: 'string', rating: 'rating', content: 'string', author: 'string' },
+  // content у обзоров — строка ИЛИ массив блоков, ровно как на сервере
+  // (ENTITY_REQUIRED_FIELDS в deploy-webhook.js). Здесь стояло 'string', и
+  // любой блочный обзор — а Le Dauphine именно такой, 14 блоков — не мог
+  // сохраниться вообще: сохранение падало на «content must be a string».
+  reviews:      { id: 'id', title: 'string', subject: 'string', rating: 'rating', content: 'stringOrArray', author: 'string' },
   items:        { id: 'id', title: 'string', subtitle: 'string', fig: 'string', description: 'string', imageSeed: 'string' },
   libraryItems: { id: 'id', title: 'string', type: 'string', size: 'string', year: 'string' },
 };
@@ -1923,6 +1927,7 @@ function validateEntityShape(section, entity) {
       const v = entity[field];
       if (kind === 'id' && !(Number.isInteger(v) && v > 0)) return `${field} must be a positive integer`;
       if (kind === 'string' && typeof v !== 'string') return `${field} must be a string`;
+      if (kind === 'stringOrArray' && typeof v !== 'string' && !Array.isArray(v)) return `${field} must be a string or array`;
       if (kind === 'array' && !Array.isArray(v)) return `${field} must be an array`;
       if (kind === 'boolean' && typeof v !== 'boolean') return `${field} must be a boolean`;
       if (kind === 'rating' && !(typeof v === 'number' && v >= 0 && v <= 5)) return 'rating must be a number 0-5';
