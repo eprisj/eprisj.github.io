@@ -1,0 +1,16 @@
+{
+  "$comment": "Манифест версий приложения EPRIS для iPhone. Приложение читает его при возврате из фона (не чаще раза в сутки) и предлагает обновиться, если своя версия ниже latest. Правится вручную при каждом релизе.",
+  "latest": "1.0",
+  "build": 1,
+  "minimum": "1.0",
+  "url": "https://eprisjournal.com/app/",
+  "notes": {
+    "EN": "Articles and reviews now read offline, with the journal's own typography.",
+    "UA": "Статті та рецензії тепер читаються офлайн, у типографіці журналу.",
+    "RU": "Статьи и рецензии теперь читаются офлайн, в типографике журнала.",
+    "DE": "Artikel und Rezensionen lassen sich jetzt offline lesen.",
+    "IT": "Articoli e recensioni ora si leggono offline.",
+    "ES": "Los artículos y reseñas ahora se leen sin conexión.",
+    "TR": "Makaleler ve incelemeler artık çevrimdışı okunabiliyor."
+  }
+}
