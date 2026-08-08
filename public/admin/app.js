@@ -53,6 +53,7 @@ const visualSearchInput = byId('visualSearch');
 const addEntryBtn = byId('addEntryBtn');
 const moveEntryUpBtn = byId('moveEntryUpBtn');
 const moveEntryDownBtn = byId('moveEntryDownBtn');
+const sortByDateBtn = byId('sortByDateBtn');
 const duplicateEntryBtn = byId('duplicateEntryBtn');
 const deleteEntryBtn = byId('deleteEntryBtn');
 const copyFromEnBtn = byId('copyFromEnBtn');
@@ -124,6 +125,7 @@ const interactiveButtons = [
   addEntryBtn,
   moveEntryUpBtn,
   moveEntryDownBtn,
+  sortByDateBtn,
   duplicateEntryBtn,
   deleteEntryBtn,
   copyFromEnBtn,
@@ -864,6 +866,7 @@ function bindEvents() {
   addEntryBtn.addEventListener('click', addVisualEntry);
   moveEntryUpBtn.addEventListener('click', () => moveVisualEntry(-1));
   moveEntryDownBtn.addEventListener('click', () => moveVisualEntry(1));
+  sortByDateBtn.addEventListener('click', sortVisualEntriesByDate);
   duplicateEntryBtn.addEventListener('click', duplicateVisualEntry);
   deleteEntryBtn.addEventListener('click', deleteVisualEntry);
   copyFromEnBtn.addEventListener('click', copyFromEnglishEntry);
@@ -2623,6 +2626,15 @@ function updateAdminToolbarContext() {
   if (downloadAllOriginalsText) {
     downloadAllOriginalsText.textContent = `Все статьи · ${totalCount}`;
   }
+  // «По дате» осмысленна только там, где порядок ручной.
+  if (sortByDateBtn) {
+    const orderable = MANUALLY_ORDERED_SECTIONS.has(section);
+    sortByDateBtn.disabled = !orderable;
+    sortByDateBtn.title = orderable
+      ? 'Сбросить ручной порядок раздела: свежие сверху'
+      : 'Ручной порядок есть только у разделов «Статьи» и «Галерея»';
+  }
+
   downloadOriginalsBtn.disabled = !canDownloadSelected;
   downloadAllOriginalsBtn.disabled = totalCount === 0;
   if (mediaExportMeta && mediaExportProgress?.hidden !== false) {
@@ -3942,6 +3954,12 @@ function renderVisualLanguageOptions(data) {
   }
 }
 
+// Список записей в «Статьях» и «Галерее» идёт ровно в том порядке, в каком их
+// увидит читатель, — иначе кнопки ↑/↓ и номера позиций врут.
+function orderedForSection(section, entries) {
+  return MANUALLY_ORDERED_SECTIONS.has(section) ? sortEntriesLikeSite(section, entries) : entries;
+}
+
 function refreshVisualEditor() {
   const data = getVisualData();
   if (!data) {
@@ -3957,7 +3975,7 @@ function refreshVisualEditor() {
   // For non-EN languages, build dropdown from ALL EN entries so untranslated ones are visible
   let dropdownEntries;
   if (lang !== DEFAULT_LANGUAGE) {
-    const enEntries = getSectionArray(data, section, DEFAULT_LANGUAGE, false);
+    const enEntries = orderedForSection(section, getSectionArray(data, section, DEFAULT_LANGUAGE, false));
     const localizedIds = new Set(entries.map(e => Number(e.id)));
     dropdownEntries = enEntries.map(enEntry => {
       const localizedEntry = entries.find(le => Number(le.id) === Number(enEntry.id));
@@ -3969,7 +3987,7 @@ function refreshVisualEditor() {
       };
     });
   } else {
-    dropdownEntries = entries.map(entry => ({
+    dropdownEntries = orderedForSection(section, entries).map(entry => ({
       id: entry.id,
       _entry: entry,
       _hasTranslation: true,
@@ -3995,7 +4013,12 @@ function refreshVisualEditor() {
       const e = item._entry || {};
       if (e.draft) label += ' 📝 ЧЕРНОВИК';
       else if (e.publishAt && Date.parse(e.publishAt) > Date.now()) label += ' ⏳ ОТЛОЖЕНО';
-      return `<option value="${id}">#${id} - ${escapeHtml(label)}</option>`;
+      // В «Статьях» и «Галерее» список идёт в том же порядке, что и сайт, —
+      // показываем номер позиции, иначе кнопки ↑/↓ двигают вслепую.
+      const position = MANUALLY_ORDERED_SECTIONS.has(section)
+        ? `${dropdownEntries.findIndex((d) => Number(d.id) === id) + 1}. `
+        : '';
+      return `<option value="${id}">${position}#${id} - ${escapeHtml(label)}</option>`;
     })
     .join('');
 
@@ -6507,6 +6530,15 @@ async function addVisualEntry() {
       entry = await translateEntryForSection(section, entry, lang, DEFAULT_LANGUAGE);
     }
 
+    // Раздел с ручной раскладкой: без своего `order` новая запись уехала бы в
+    // самый низ (за всеми расставленными). Ставим её первой — как и раньше.
+    if (MANUALLY_ORDERED_SECTIONS.has(section)) {
+      const positions = entries
+        .map((e) => (typeof e?.order === 'number' && Number.isFinite(e.order) ? e.order : null))
+        .filter((value) => value !== null);
+      if (positions.length) entry.order = Math.min(...positions) - 1;
+    }
+
     entries.unshift(entry);
     setStatus('info', `Создаю языковые версии записи #${nextId}...`);
     const syncedLangs = await syncMissingEntryLanguages(data, section, lang, entry);
@@ -6532,15 +6564,55 @@ async function addVisualEntry() {
 // first entry in 'items' is what renders as the featured card. Reviews and
 // Library render in array order too. Previously the only way to change this
 // was to hand-edit the raw JSON — this gives every section an in-UI reorder.
+//
+// Для Галереи и Статей одного порядка массива мало:
+//  • статьи сайт раскладывал по дате, и перестановка тут ничего не меняла;
+//  • перевод хранится отдельным массивом, порядок берётся из базового.
+// Поэтому переставляем ВСЕГДА базовый (EN) массив и проставляем всем записям
+// секции числовой `order` — его сайт и читает (см. byManualOrder в data.ts).
+const MANUALLY_ORDERED_SECTIONS = new Set(['articles', 'items']);
+
+// Тот же порядок, что показывает сайт (data.ts: byManualOrder + newestFirst):
+// сначала расставленные вручную по `order`, следом остальные — статьи свежими
+// сверху, Галерея как лежит в массиве. Пока раздел не трогали кнопками, массив
+// статей и лента на сайте расходятся, и нумерация в списке врала бы.
+function sortEntriesLikeSite(section, entries) {
+  const time = (value) => {
+    const parsed = value ? Date.parse(value) : NaN;
+    return Number.isNaN(parsed) ? 0 : parsed;
+  };
+  const pos = (entry) => (typeof entry?.order === 'number' && Number.isFinite(entry.order)
+    ? entry.order
+    : Number.POSITIVE_INFINITY);
+  const list = section === 'articles'
+    ? [...entries].sort((a, b) => time(b && b.date) - time(a && a.date))
+    : [...entries];
+  return list.sort((a, b) => pos(a) - pos(b));
+}
+
+function renumberSectionOrder(entries) {
+  entries.forEach((entry, index) => {
+    if (entry && typeof entry === 'object') entry.order = index + 1;
+  });
+}
+
 function moveVisualEntry(direction) {
   try {
     const data = parseEditorJson();
     const section = visualSectionSelect.value;
     const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
-    const entries = getSectionArray(data, section, lang, lang !== DEFAULT_LANGUAGE);
+    // Порядок на сайте задаёт базовый массив, каким бы языком ни любовались.
+    const orderLang = MANUALLY_ORDERED_SECTIONS.has(section) ? DEFAULT_LANGUAGE : lang;
+    const entries = getSectionArray(data, section, orderLang, orderLang !== DEFAULT_LANGUAGE);
 
     if (!entries.length) {
       throw new Error('Нет записей для перемещения.');
+    }
+
+    // Первое же перемещение фиксирует раскладку: приводим массив к тому виду,
+    // который читатель уже видит, и дальше двигаем внутри него.
+    if (MANUALLY_ORDERED_SECTIONS.has(section)) {
+      entries.splice(0, entries.length, ...sortEntriesLikeSite(section, entries));
     }
 
     const selectedId = Number(visualEntrySelect.value);
@@ -6556,13 +6628,44 @@ function moveVisualEntry(direction) {
 
     const [moved] = entries.splice(entryIndex, 1);
     entries.splice(targetIndex, 0, moved);
+    if (MANUALLY_ORDERED_SECTIONS.has(section)) renumberSectionOrder(entries);
 
     pendingVisualEntryId = selectedId;
     setEditorData(data);
     const note = section === 'items' && targetIndex === 0
       ? ' Теперь это featured-запись Галереи.'
       : '';
-    setStatus('success', `Запись #${selectedId} перемещена ${direction < 0 ? 'выше' : 'ниже'}.${note}`);
+    const langNote = orderLang !== lang
+      ? ' Порядок общий для всех языков — переставлен базовый список.'
+      : '';
+    setStatus('success', `Запись #${selectedId} перемещена ${direction < 0 ? 'выше' : 'ниже'}: позиция ${targetIndex + 1} из ${entries.length}.${note}${langNote}`);
+  } catch (error) {
+    setStatus('error', getErrorMessage(error));
+  }
+}
+
+// Сброс ручной раскладки: статьи — свежие сверху, Галерея — как лежит в базе.
+// Нужен после того, как порядок перетасовали и захотели вернуть «как было».
+function sortVisualEntriesByDate() {
+  try {
+    const data = parseEditorJson();
+    const section = visualSectionSelect.value;
+    if (!MANUALLY_ORDERED_SECTIONS.has(section)) {
+      throw new Error('Порядком управляют только разделы "Статьи" и "Галерея".');
+    }
+    const entries = getSectionArray(data, section, DEFAULT_LANGUAGE, false);
+    if (!entries.length) throw new Error('Нет записей для сортировки.');
+
+    const time = (value) => {
+      const parsed = value ? Date.parse(value) : NaN;
+      return Number.isNaN(parsed) ? 0 : parsed;
+    };
+    entries.sort((a, b) => time(b && b.date) - time(a && a.date));
+    entries.forEach((entry) => { if (entry && typeof entry === 'object') delete entry.order; });
+
+    pendingVisualEntryId = Number(visualEntrySelect.value) || null;
+    setEditorData(data);
+    setStatus('success', `Порядок сброшен: ${getSectionLabel(section)} — свежие сверху (${entries.length}).`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   }

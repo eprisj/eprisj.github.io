@@ -2738,9 +2738,7 @@ function getSlugForReview(review: Review): string {
 // exact title is the only signal the data model offers; when it doesn't
 // match anything, no link renders — deliberately conservative so this can't
 // point at the wrong piece.
-function findMatchingArticle(item: Item, articles: Article[]): Article | undefined {
-  const title = item.title?.trim();
-  if (!title) return undefined;
+function matchArticleByTitle(title: string, articles: Article[]): Article | undefined {
   // Exact title is the strongest signal.
   const exact = articles.find((a) => a.title?.trim() === title);
   if (exact) return exact;
@@ -2752,6 +2750,26 @@ function findMatchingArticle(item: Item, articles: Article[]): Article | undefin
   const itemBase = base(title);
   if (itemBase.length < 4) return undefined;
   return articles.find((a) => a.title && base(a.title) === itemBase);
+}
+
+function findMatchingArticle(item: Item, articles: Article[]): Article | undefined {
+  const title = item.title?.trim();
+  if (!title) return undefined;
+  const direct = matchArticleByTitle(title, articles);
+  if (direct) return direct;
+  // Title matching breaks down as soon as one side is translated and the other
+  // isn't: the featured Gallery card had no RU/UA/DE translation, so it kept
+  // its English headline while the articles around it were localized, and the
+  // "read the full article" button silently vanished in every language but EN.
+  // Titles only ever line up reliably in the base language, so re-run the match
+  // there and carry the result back by id — the id is the same in every locale.
+  const baseContent = getContentForLanguage(DEFAULT_LANGUAGE);
+  const baseItem = baseContent.items.find((i) => i.id === item.id);
+  const baseTitle = baseItem?.title?.trim();
+  if (!baseTitle) return undefined;
+  const baseArticle = matchArticleByTitle(baseTitle, baseContent.articles);
+  if (!baseArticle) return undefined;
+  return articles.find((a) => a.id === baseArticle.id);
 }
 
 function parsePath(pathname: string, search = ''): { tab?: string; articleId?: number; reviewId?: number; passportCode?: string; searchQuery?: string } {
