@@ -3572,8 +3572,9 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/msk9ahc8128c3m.jpg",
-          "caption": "Emily Kraus in the Studio. Photo by Giovanni Canova",
-          "sourceUrl": "https://fondazionebonollo.com/en/projects/444-days/"
+          "caption": "Emily Kraus in the Studio",
+          "sourceUrl": "https://fondazionebonollo.com/en/projects/444-days/",
+          "credit": "Giovanni Canova"
         }
       ],
       "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
