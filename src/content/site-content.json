@@ -8600,6 +8600,16 @@
           "description": "Am 7. Juli hat Mariia Ivanova, Chefredakteurin von EPRIS, offiziell ihren Bachelor in Architektur gemacht. Zu diesem Anlass – ein Herz aus der Architektur und Kunst, die sie inspirieren.",
           "imageSeed": "maria-graduation-heart",
           "imageUrl": "/images/heart-hero.jpg"
+        },
+        {
+          "id": 12,
+          "title": "Wie Emily Kraus das Malen neu erfindet",
+          "subtitle": "Zeitgenössische Kunst",
+          "fig": "FIG. 10",
+          "description": "Im Canvas Cube malt Emily Kraus den Rhythmus des gegenwärtigen Augenblicks",
+          "imageSeed": "item-12",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg",
+          "updatedAt": "2026-08-08T18:53:48.119Z"
         }
       ],
       "articles": [
