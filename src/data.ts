@@ -269,6 +269,22 @@ export interface SiteContent {
 
 const content = rawContent as SiteContent;
 
+// Свежие статьи сверху. Порядок массива в документе ручной — он зависит от
+// того, куда админка вставила запись, и на дату не смотрит.
+//
+// Сортируем ИМЕННО базовые записи, до наложения переводов: в переводах дата
+// записана словами на своём языке ("14 березня 2026 р"), Date.parse её не
+// понимает, и половина ленты уезжала в конец. Базовые даты приходят в двух
+// видах ("Jul 24, 2026" и "July 18, 2026") — оба разбираются. Порядок после
+// merge сохраняется: mergeLocalizedArray проходит по базовому массиву.
+const entryTime = (value?: string): number => {
+  const parsed = value ? Date.parse(value) : NaN;
+  return Number.isNaN(parsed) ? 0 : parsed;
+};
+
+const newestFirst = <T extends { date?: string }>(list: T[]): T[] =>
+  [...list].sort((a, b) => entryTime(b.date) - entryTime(a.date));
+
 // ── Live content layer (VPS is the source of truth) ──────────────────────────
 // The admin saves content to the VPS API, and the public site fetches it live
 // on startup via loadLiveContent(). The bundled `content` above is the offline
@@ -627,7 +643,7 @@ export function getContentForLanguage(lang: string): LanguageContent {
   // preview keeps everything so stubs remain visible for editing.
   const liveBase = <T,>(arr: T[]): T[] => isPreview() ? arr : arr.filter((e) => !isPlaceholderEntity(e));
 
-  const articles = mergeLocalizedArray(bucket.articles, liveBase(c.articles));
+  const articles = mergeLocalizedArray(bucket.articles, newestFirst(liveBase(c.articles)));
   // Reviews hit the same recycled-id trap the Gallery did: every locale still
   // carries a translation of a deleted restaurant review on id 1, so readers of
   // UA/RU/DE opened "Симфонія смаків / Ресторан «Олеа», Лімасол" sitting on top
@@ -639,21 +655,7 @@ export function getContentForLanguage(lang: string): LanguageContent {
   const items = mergeLocalizedItems(bucket.items, liveBase(c.items));
   const libraryItems = mergeLocalizedArray(bucket.libraryItems, liveBase(c.libraryItems));
 
-  // Свежие статьи сверху. Порядок массива в документе ручной: он зависит от
-  // того, куда админка вставила запись, и на дату не смотрит — из-за этого
-  // новая статья могла оказаться в середине ленты. Даты приходят в двух
-  // видах ("Jul 24, 2026" и "July 18, 2026"), Date.parse понимает оба;
-  // запись без разбираемой даты не всплывает наверх, а остаётся в конце,
-  // сохраняя свой относительный порядок (сортировка стабильна).
-  const entryTime = (value?: string): number => {
-    const parsed = value ? Date.parse(value) : NaN;
-    return Number.isNaN(parsed) ? 0 : parsed;
-  };
-  const newestFirst = <T extends { date?: string }>(list: T[]): T[] =>
-    [...list].sort((a, b) => entryTime(b.date) - entryTime(a.date));
-
-  const liveArticlesRaw = isPreview() ? articles : articles.filter((entry) => isEntityLive(entry) && isEntityVisible('articles', entry.id));
-  const liveArticles = newestFirst(liveArticlesRaw);
+  const liveArticles = isPreview() ? articles : articles.filter((entry) => isEntityLive(entry) && isEntityVisible('articles', entry.id));
   const liveItems = isPreview() ? items : items.filter((entry) => isEntityLive(entry) && isEntityVisible('items', entry.id));
 
   // The homepage Gallery is a hand-curated collection, separate from Articles
