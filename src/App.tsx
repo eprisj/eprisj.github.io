@@ -2092,7 +2092,11 @@ function ArticlesSection({
   t: (key: string) => string;
   brandName: string;
 }) {
-  const filteredArticles = [...articles].reverse();
+  // Список уже отсортирован по дате (новые первыми) в getContentForLanguage.
+  // Здесь раньше стоял reverse(): он подменял сортировку, пока порядок брался
+  // из массива как есть, — а поверх настоящей сортировки переворачивал ленту
+  // и уводил свежие статьи в конец.
+  const filteredArticles = articles;
 
   return (
     <div>
