@@ -5242,38 +5242,40 @@ ${JSON.stringify(obj, null, 2)}`;
   throw new Error(`AI returned invalid JSON after ${maxRetries} attempts: ` + lastError.message);
 }
 
+// Статья переводится ПОБЛОЧНО и БЕЗ моделей: каждое текстовое поле уходит в
+// обычный переводчик строк, структура блоков не пересобирается вообще.
+//
+// Раньше блоки пачками по 4 скармливались модели с просьбой вернуть такой же
+// JSON — и это упиралось в дневную квоту (типичная статья на 6 языков стоила
+// 66–78 запросов при лимите 50 в сутки), а заодно требовало сторожа
+// translationShapeMismatch, потому что модель под нагрузкой умела молча
+// проглотить блок или ключ. Здесь терять нечего: цикл идёт по исходным
+// блокам, тип и порядок берутся из оригинала, переводится только текст внутри.
 async function translateArticleEntry(article, targetLang, sourceLang = DEFAULT_LANGUAGE, onProgress = null) {
   const next = deepClone(article);
 
-  const metaObj = {
-    title: next.title,
-    role: next.role,
-    date: next.date,
-    excerpt: next.excerpt,
-    category: next.category,
-    subcategory: next.subcategory,
-    tags: next.tags
-  };
-
   if (onProgress) onProgress('metadata');
-  const translatedMeta = await aiTranslateObject(metaObj, targetLang);
-  Object.assign(next, translatedMeta || {});
+  for (const field of ['title', 'role', 'excerpt', 'category', 'subcategory']) {
+    if (typeof next[field] === 'string' && next[field].trim()) {
+      next[field] = await translateText(next[field], targetLang, sourceLang);
+    }
+  }
+  if (Array.isArray(next.tags)) {
+    next.tags = await translateStringArray(next.tags, targetLang, sourceLang);
+  }
+  // Дату не трогаем: перевод превращал её в слова на своём языке, и лента
+  // разъезжалась — сортировка живёт на базовой дате (см. data.ts).
 
   const blocks = Array.isArray(article.content) ? article.content : [];
   next.content = [];
-  
-  const batchSize = 4;
-  const totalBatches = Math.ceil(blocks.length / batchSize);
-  for (let i = 0; i < blocks.length; i += batchSize) {
-    const batchIndex = Math.floor(i / batchSize) + 1;
-    if (onProgress) onProgress(`batch ${batchIndex} of ${totalBatches}`);
-    
-    const batch = blocks.slice(i, i + batchSize);
-    const translatedBatch = await aiTranslateObject(batch, targetLang);
-    if (Array.isArray(translatedBatch)) {
-      next.content.push(...translatedBatch);
-    } else {
-      next.content.push(...batch);
+  for (let i = 0; i < blocks.length; i += 1) {
+    if (onProgress) onProgress(`block ${i + 1} of ${blocks.length}`);
+    try {
+      next.content.push(await translateArticleBlock(blocks[i], targetLang, sourceLang));
+    } catch (error) {
+      // Один упавший блок не должен обрушить всю статью: оставляем оригинал.
+      console.warn('[translate] block', i + 1, getErrorMessage(error));
+      next.content.push(deepClone(blocks[i]));
     }
   }
 
@@ -5287,41 +5289,48 @@ async function translateEntryForSection(section, entry, targetLang, sourceLang =
 
   const next = deepClone(entry);
   if (section === 'items') {
-    const obj = { title: entry.title, subtitle: entry.subtitle, description: entry.description };
-    const translated = await aiTranslateObject(obj, targetLang);
-    Object.assign(next, translated || {});
+    for (const field of ['title', 'subtitle', 'description']) {
+      if (typeof next[field] === 'string' && next[field].trim()) {
+        next[field] = await translateText(next[field], targetLang, sourceLang);
+      }
+    }
     return next;
   }
 
   if (section === 'reviews') {
-    const obj = { title: entry.title, subject: entry.subject, verdict: entry.verdict, pros: entry.pros, cons: entry.cons };
     if (onProgress) onProgress('metadata');
-    const translated = await aiTranslateObject(obj, targetLang);
-    Object.assign(next, translated || {});
-    
+    for (const field of ['title', 'subject', 'verdict']) {
+      if (typeof next[field] === 'string' && next[field].trim()) {
+        next[field] = await translateText(next[field], targetLang, sourceLang);
+      }
+    }
+    for (const field of ['pros', 'cons']) {
+      if (Array.isArray(next[field])) next[field] = await translateStringArray(next[field], targetLang, sourceLang);
+    }
+
     if (Array.isArray(entry.content)) {
       next.content = [];
-      const batchSize = 4;
-      const totalBatches = Math.ceil(entry.content.length / batchSize);
-      for (let i = 0; i < entry.content.length; i += batchSize) {
-        const batchIndex = Math.floor(i / batchSize) + 1;
-        if (onProgress) onProgress(`batch ${batchIndex} of ${totalBatches}`);
-        const batch = entry.content.slice(i, i + batchSize);
-        const translatedBatch = await aiTranslateObject(batch, targetLang);
-        if (Array.isArray(translatedBatch)) next.content.push(...translatedBatch);
-        else next.content.push(...batch);
+      for (let i = 0; i < entry.content.length; i += 1) {
+        if (onProgress) onProgress(`block ${i + 1} of ${entry.content.length}`);
+        try {
+          next.content.push(await translateArticleBlock(entry.content[i], targetLang, sourceLang));
+        } catch (error) {
+          console.warn('[translate] review block', i + 1, getErrorMessage(error));
+          next.content.push(deepClone(entry.content[i]));
+        }
       }
     } else if (typeof entry.content === 'string' && entry.content.trim()) {
-      const translatedStr = await aiTranslateObject({text: entry.content}, targetLang);
-      next.content = (translatedStr || {}).text || entry.content;
+      next.content = await translateRichText(entry.content, targetLang, sourceLang);
     }
     return next;
   }
 
   if (section === 'libraryItems') {
-    const obj = { title: entry.title, type: entry.type };
-    const translated = await aiTranslateObject(obj, targetLang);
-    Object.assign(next, translated || {});
+    for (const field of ['title', 'type']) {
+      if (typeof next[field] === 'string' && next[field].trim()) {
+        next[field] = await translateText(next[field], targetLang, sourceLang);
+      }
+    }
     return next;
   }
 
