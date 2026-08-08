@@ -4177,31 +4177,6 @@
           "imageUrl": ""
         },
         {
-          "id": 9,
-          "title": "Польский дизайн: соткан из памяти",
-          "subtitle": "Дизайн",
-          "fig": "FIG. 09",
-          "description": "Современный польский дизайн переживает момент тихой зрелости. В студиях сегодняшних архитекторов и мебельщиков говорят на языке строгого минимализма, тактильных материалов и честной конструкции — итог векового диалога о том, что значит творить с национальной душой.",
-          "imageSeed": "new-item-9"
-        },
-        {
-          "id": 8,
-          "title": "Тадао Андо: расшифровка философии чистого дизайна",
-          "subtitle": "Архитектура",
-          "fig": "FIG. 08",
-          "description": "Тадао Андо — один из самых влиятельных архитекторов XXI века, бросающий вызов привычным границам архитектуры. Его подход переосмысляет традиционные японские принципы через смелые формы, материалы и организацию пространства. В статье — ключевые принципы его философии.",
-          "imageSeed": "new-item-8"
-        },
-        {
-          "id": 7,
-          "title": "Искусство, которое заставляет вас улыбаться",
-          "subtitle": "Красочные и игривые предметы обладают уникальным качеством, которого нет у других: они привносят в комнату чистое счастье.",
-          "fig": "FIG. 07",
-          "description": "Я считаю, что когда вы вводите в окружающую среду игровые предметы, это расширяет границы разума. Это дает вам невербальное разрешение мыслить свободно – не только отвергать общепринятые рамки, но и забывать о их существовании.",
-          "imageSeed": "new-item-7",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
-        },
-        {
           "id": 1,
           "title": "Утренние ритуалы",
           "subtitle": "Каппадокия, Турция",
@@ -4232,6 +4207,31 @@
           "fig": "FIG. 04",
           "description": "Свежий воздух высокогорья и аромат соснового леса.",
           "imageSeed": "mountains"
+        },
+        {
+          "id": 7,
+          "title": "Искусство, которое заставляет вас улыбаться",
+          "subtitle": "Красочные и игривые предметы обладают уникальным качеством, которого нет у других: они привносят в комнату чистое счастье.",
+          "fig": "FIG. 07",
+          "description": "Я считаю, что когда вы вводите в окружающую среду игровые предметы, это расширяет границы разума. Это дает вам невербальное разрешение мыслить свободно – не только отвергать общепринятые рамки, но и забывать о их существовании.",
+          "imageSeed": "new-item-7",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
+        },
+        {
+          "id": 8,
+          "title": "Тадао Андо: расшифровка философии чистого дизайна",
+          "subtitle": "Архитектура",
+          "fig": "FIG. 08",
+          "description": "Тадао Андо — один из самых влиятельных архитекторов XXI века, бросающий вызов привычным границам архитектуры. Его подход переосмысляет традиционные японские принципы через смелые формы, материалы и организацию пространства. В статье — ключевые принципы его философии.",
+          "imageSeed": "new-item-8"
+        },
+        {
+          "id": 9,
+          "title": "Польский дизайн: соткан из памяти",
+          "subtitle": "Дизайн",
+          "fig": "FIG. 09",
+          "description": "Современный польский дизайн переживает момент тихой зрелости. В студиях сегодняшних архитекторов и мебельщиков говорят на языке строгого минимализма, тактильных материалов и честной конструкции — итог векового диалога о том, что значит творить с национальной душой.",
+          "imageSeed": "new-item-9"
         },
         {
           "id": 11,
@@ -6346,31 +6346,6 @@
           "imageUrl": ""
         },
         {
-          "id": 9,
-          "title": "Польський дизайн: зітканий із пам’яті",
-          "subtitle": "Дизайн",
-          "fig": "FIG. 09",
-          "description": "Сучасний польський дизайн переживає момент тихої зрілості. У студіях сьогоднішніх архітекторів і меблярів говорять мовою суворого мінімалізму, тактильних матеріалів і чесної конструкції — підсумок столітнього діалогу про те, що означає творити з національною душею.",
-          "imageSeed": "new-item-9"
-        },
-        {
-          "id": 8,
-          "title": "Тадао Андо: розшифровка філософії чистого дизайну",
-          "subtitle": "Архітектура",
-          "fig": "FIG. 08",
-          "description": "Тадао Андо — один із найвпливовіших архітекторів XXI століття, який кидає виклик звичним межам архітектури. Його підхід переосмислює традиційні японські принципи через сміливі форми, матеріали та організацію простору. У статті — ключові принципи його філософії.",
-          "imageSeed": "new-item-8"
-        },
-        {
-          "id": 7,
-          "title": "Мистецтво, яке змушує посміхатися",
-          "subtitle": "Барвисті та грайливі об’єкти володіють унікальною властивістю, якої не вистачає іншим – вони дарують кімнаті справжнє щастя.",
-          "fig": "FIG. 07",
-          "description": "Я вважаю, що коли ви вводите ігрові об’єкти в середовище, це розширює межі розуму. Це дає вам невербальний дозвіл мислити вільно - не просто протистояти звичайним рамкам, але й забути про їх існування.",
-          "imageSeed": "new-item-7",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
-        },
-        {
           "id": 1,
           "title": "Ранкові ритуали",
           "subtitle": "Каппадокія, Туреччина",
@@ -6401,6 +6376,31 @@
           "fig": "FIG. 04",
           "description": "Чисте високогірне повітря і аромат соснових лісів.",
           "imageSeed": "mountains"
+        },
+        {
+          "id": 7,
+          "title": "Мистецтво, яке змушує посміхатися",
+          "subtitle": "Барвисті та грайливі об’єкти володіють унікальною властивістю, якої не вистачає іншим – вони дарують кімнаті справжнє щастя.",
+          "fig": "FIG. 07",
+          "description": "Я вважаю, що коли ви вводите ігрові об’єкти в середовище, це розширює межі розуму. Це дає вам невербальний дозвіл мислити вільно - не просто протистояти звичайним рамкам, але й забути про їх існування.",
+          "imageSeed": "new-item-7",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
+        },
+        {
+          "id": 8,
+          "title": "Тадао Андо: розшифровка філософії чистого дизайну",
+          "subtitle": "Архітектура",
+          "fig": "FIG. 08",
+          "description": "Тадао Андо — один із найвпливовіших архітекторів XXI століття, який кидає виклик звичним межам архітектури. Його підхід переосмислює традиційні японські принципи через сміливі форми, матеріали та організацію простору. У статті — ключові принципи його філософії.",
+          "imageSeed": "new-item-8"
+        },
+        {
+          "id": 9,
+          "title": "Польський дизайн: зітканий із пам’яті",
+          "subtitle": "Дизайн",
+          "fig": "FIG. 09",
+          "description": "Сучасний польський дизайн переживає момент тихої зрілості. У студіях сьогоднішніх архітекторів і меблярів говорять мовою суворого мінімалізму, тактильних матеріалів і чесної конструкції — підсумок столітнього діалогу про те, що означає творити з національною душею.",
+          "imageSeed": "new-item-9"
         },
         {
           "id": 11,
@@ -8515,31 +8515,6 @@
           "imageUrl": ""
         },
         {
-          "id": 9,
-          "title": "Polnisches Design: aus Erinnerung gewoben",
-          "subtitle": "Design",
-          "fig": "FIG. 09",
-          "description": "Das zeitgenössische polnische Design hat einen Moment stiller Reife erreicht. In den Studios der heutigen Architekten und Möbelgestalter begegnet man einer Sprache aus strengem Minimalismus, haptischen Materialien und ehrlicher Konstruktion — die Summe eines jahrhundertelangen Dialogs darüber, was es heißt, mit nationaler Seele zu gestalten.",
-          "imageSeed": "new-item-9"
-        },
-        {
-          "id": 8,
-          "title": "Tadao Ando: Die Philosophie des reinen Designs entschlüsselt",
-          "subtitle": "Architektur",
-          "fig": "FIG. 08",
-          "description": "Tadao Ando zählt zu den einflussreichsten Architekten des 21. Jahrhunderts und stellt die konventionellen Grenzen der Architektur infrage. Sein Ansatz denkt traditionelle japanische Prinzipien durch kühne Formen, Materialien und Raumorganisation neu. Der Artikel legt die Kernprinzipien seiner Philosophie offen.",
-          "imageSeed": "new-item-8"
-        },
-        {
-          "id": 7,
-          "title": "Kunst, die Sie zum Lächeln bringt",
-          "subtitle": "Bunte und verspielte Objekte besitzen eine einzigartige Qualität, die anderen fehlt – sie verleihen einem Raum pure Fröhlichkeit.",
-          "fig": "FIG. 07",
-          "description": "Ich glaube, dass die Grenzen des Geistes erweitert werden, wenn man spielerische Objekte in eine Umgebung einbringt. Es gibt Ihnen die nonverbale Erlaubnis, frei zu denken – nicht nur, sich gegen konventionelle Rahmen zu stellen, sondern zu vergessen, dass sie überhaupt existieren.",
-          "imageSeed": "new-item-7",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
-        },
-        {
           "id": 1,
           "title": "Morgenrituale",
           "subtitle": "Kappadokien, Türkei",
@@ -8570,6 +8545,31 @@
           "fig": "FIG. 04",
           "description": "Die frische Luft des Hochlands und der Duft der Kiefernwälder.",
           "imageSeed": "mountains"
+        },
+        {
+          "id": 7,
+          "title": "Kunst, die Sie zum Lächeln bringt",
+          "subtitle": "Bunte und verspielte Objekte besitzen eine einzigartige Qualität, die anderen fehlt – sie verleihen einem Raum pure Fröhlichkeit.",
+          "fig": "FIG. 07",
+          "description": "Ich glaube, dass die Grenzen des Geistes erweitert werden, wenn man spielerische Objekte in eine Umgebung einbringt. Es gibt Ihnen die nonverbale Erlaubnis, frei zu denken – nicht nur, sich gegen konventionelle Rahmen zu stellen, sondern zu vergessen, dass sie überhaupt existieren.",
+          "imageSeed": "new-item-7",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
+        },
+        {
+          "id": 8,
+          "title": "Tadao Ando: Die Philosophie des reinen Designs entschlüsselt",
+          "subtitle": "Architektur",
+          "fig": "FIG. 08",
+          "description": "Tadao Ando zählt zu den einflussreichsten Architekten des 21. Jahrhunderts und stellt die konventionellen Grenzen der Architektur infrage. Sein Ansatz denkt traditionelle japanische Prinzipien durch kühne Formen, Materialien und Raumorganisation neu. Der Artikel legt die Kernprinzipien seiner Philosophie offen.",
+          "imageSeed": "new-item-8"
+        },
+        {
+          "id": 9,
+          "title": "Polnisches Design: aus Erinnerung gewoben",
+          "subtitle": "Design",
+          "fig": "FIG. 09",
+          "description": "Das zeitgenössische polnische Design hat einen Moment stiller Reife erreicht. In den Studios der heutigen Architekten und Möbelgestalter begegnet man einer Sprache aus strengem Minimalismus, haptischen Materialien und ehrlicher Konstruktion — die Summe eines jahrhundertelangen Dialogs darüber, was es heißt, mit nationaler Seele zu gestalten.",
+          "imageSeed": "new-item-9"
         },
         {
           "id": 11,
@@ -10685,31 +10685,6 @@
           "imageUrl": ""
         },
         {
-          "id": 9,
-          "title": "Diseño polaco: tejido a partir de la memoria",
-          "subtitle": "Diseño",
-          "fig": "FIG. 09",
-          "description": "El diseño polaco contemporáneo ha alcanzado un momento de madurez serena. En los estudios de sus arquitectos y diseñadores de mobiliario actuales se habla un lenguaje de minimalismo riguroso, materiales táctiles y honestidad estructural: la culminación de un diálogo centenario sobre qué significa crear con alma nacional.",
-          "imageSeed": "new-item-9"
-        },
-        {
-          "id": 8,
-          "title": "Tadao Ando: descifrando la filosofía del diseño puro",
-          "subtitle": "Arquitectura",
-          "fig": "FIG. 08",
-          "description": "Tadao Ando es uno de los arquitectos más influyentes del siglo XXI, y desafía las fronteras convencionales de la arquitectura. Su enfoque replantea los principios tradicionales japoneses mediante formas audaces, materiales y organización espacial. El artículo revela los principios clave de su filosofía.",
-          "imageSeed": "new-item-8"
-        },
-        {
-          "id": 7,
-          "title": "Arte que te hace sonreír",
-          "subtitle": "Los objetos coloridos y divertidos poseen una cualidad única de la que otros carecen: inyectan pura felicidad en una habitación.",
-          "fig": "FIG. 07",
-          "description": "Creo que cuando introduces objetos divertidos en un entorno, se expanden los límites de la mente. Te da permiso no verbal para pensar libremente, no sólo para ir contra los marcos convencionales, sino para olvidar que incluso existen.",
-          "imageSeed": "new-item-7",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
-        },
-        {
           "id": 1,
           "title": "Rituales matutinos",
           "subtitle": "Capadocia, Turquía",
@@ -10740,6 +10715,31 @@
           "fig": "FIG. 04",
           "description": "El aire fresco de las tierras altas y el aroma de los bosques de pinos.",
           "imageSeed": "mountains"
+        },
+        {
+          "id": 7,
+          "title": "Arte que te hace sonreír",
+          "subtitle": "Los objetos coloridos y divertidos poseen una cualidad única de la que otros carecen: inyectan pura felicidad en una habitación.",
+          "fig": "FIG. 07",
+          "description": "Creo que cuando introduces objetos divertidos en un entorno, se expanden los límites de la mente. Te da permiso no verbal para pensar libremente, no sólo para ir contra los marcos convencionales, sino para olvidar que incluso existen.",
+          "imageSeed": "new-item-7",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
+        },
+        {
+          "id": 8,
+          "title": "Tadao Ando: descifrando la filosofía del diseño puro",
+          "subtitle": "Arquitectura",
+          "fig": "FIG. 08",
+          "description": "Tadao Ando es uno de los arquitectos más influyentes del siglo XXI, y desafía las fronteras convencionales de la arquitectura. Su enfoque replantea los principios tradicionales japoneses mediante formas audaces, materiales y organización espacial. El artículo revela los principios clave de su filosofía.",
+          "imageSeed": "new-item-8"
+        },
+        {
+          "id": 9,
+          "title": "Diseño polaco: tejido a partir de la memoria",
+          "subtitle": "Diseño",
+          "fig": "FIG. 09",
+          "description": "El diseño polaco contemporáneo ha alcanzado un momento de madurez serena. En los estudios de sus arquitectos y diseñadores de mobiliario actuales se habla un lenguaje de minimalismo riguroso, materiales táctiles y honestidad estructural: la culminación de un diálogo centenario sobre qué significa crear con alma nacional.",
+          "imageSeed": "new-item-9"
         },
         {
           "id": 11,
@@ -12855,31 +12855,6 @@
           "imageUrl": ""
         },
         {
-          "id": 9,
-          "title": "Polonya Tasarımı: Bellekten Dokunmuş",
-          "subtitle": "Tasarım",
-          "fig": "FIG. 09",
-          "description": "Çağdaş Polonya tasarımı sessiz bir olgunluk anına ulaştı. Bugünün mimarlarının ve mobilya tasarımcılarının atölyelerinde katı minimalizmin, dokunsal malzemelerin ve dürüst yapının dili konuşuluyor — ulusal bir ruhla yaratmanın ne anlama geldiğine dair yüzyıllık bir diyaloğun sonucu.",
-          "imageSeed": "new-item-9"
-        },
-        {
-          "id": 8,
-          "title": "Tadao Ando: Saf Tasarım Felsefesinin Şifresini Çözmek",
-          "subtitle": "Mimarlık",
-          "fig": "FIG. 08",
-          "description": "Tadao Ando, mimarlığın alışılmış sınırlarına meydan okuyan, 21. yüzyılın en etkili mimarlarından biridir. Yaklaşımı, geleneksel Japon ilkelerini cesur biçimler, malzemeler ve mekân kurgusuyla yeniden düşünür. Yazı, felsefesinin temel ilkelerini ortaya koyuyor.",
-          "imageSeed": "new-item-8"
-        },
-        {
-          "id": 7,
-          "title": "Seni gülümseten sanat",
-          "subtitle": "Renkli ve eğlenceli nesneler, diğerlerinde bulunmayan benzersiz bir kaliteye sahiptir; bir odaya saf mutluluk aşılarlar.",
-          "fig": "FIG. 07",
-          "description": "Bir ortama eğlenceli nesneler kattığınızda zihnin sınırlarını genişlettiğine inanıyorum. Size sözlü olmayan özgür düşünme izni verir; sadece geleneksel çerçevelere karşı çıkmak için değil, aynı zamanda bunların var olduğunu bile unutmak için.",
-          "imageSeed": "new-item-7",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
-        },
-        {
           "id": 1,
           "title": "Sabah ritüelleri",
           "subtitle": "Kapadokya, Türkiye",
@@ -12910,6 +12885,31 @@
           "fig": "FIG. 04",
           "description": "Yaylaların temiz havası ve çam ormanlarının kokusu.",
           "imageSeed": "mountains"
+        },
+        {
+          "id": 7,
+          "title": "Seni gülümseten sanat",
+          "subtitle": "Renkli ve eğlenceli nesneler, diğerlerinde bulunmayan benzersiz bir kaliteye sahiptir; bir odaya saf mutluluk aşılarlar.",
+          "fig": "FIG. 07",
+          "description": "Bir ortama eğlenceli nesneler kattığınızda zihnin sınırlarını genişlettiğine inanıyorum. Size sözlü olmayan özgür düşünme izni verir; sadece geleneksel çerçevelere karşı çıkmak için değil, aynı zamanda bunların var olduğunu bile unutmak için.",
+          "imageSeed": "new-item-7",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
+        },
+        {
+          "id": 8,
+          "title": "Tadao Ando: Saf Tasarım Felsefesinin Şifresini Çözmek",
+          "subtitle": "Mimarlık",
+          "fig": "FIG. 08",
+          "description": "Tadao Ando, mimarlığın alışılmış sınırlarına meydan okuyan, 21. yüzyılın en etkili mimarlarından biridir. Yaklaşımı, geleneksel Japon ilkelerini cesur biçimler, malzemeler ve mekân kurgusuyla yeniden düşünür. Yazı, felsefesinin temel ilkelerini ortaya koyuyor.",
+          "imageSeed": "new-item-8"
+        },
+        {
+          "id": 9,
+          "title": "Polonya Tasarımı: Bellekten Dokunmuş",
+          "subtitle": "Tasarım",
+          "fig": "FIG. 09",
+          "description": "Çağdaş Polonya tasarımı sessiz bir olgunluk anına ulaştı. Bugünün mimarlarının ve mobilya tasarımcılarının atölyelerinde katı minimalizmin, dokunsal malzemelerin ve dürüst yapının dili konuşuluyor — ulusal bir ruhla yaratmanın ne anlama geldiğine dair yüzyıllık bir diyaloğun sonucu.",
+          "imageSeed": "new-item-9"
         },
         {
           "id": 11,
@@ -15024,31 +15024,6 @@
           "imageUrl": ""
         },
         {
-          "id": 9,
-          "title": "Design polacco: tessuto dalla memoria",
-          "subtitle": "Design",
-          "fig": "FIG. 09",
-          "description": "Il design polacco contemporaneo ha raggiunto un momento di quieta maturità. Negli studi dei suoi architetti e progettisti d’arredo di oggi si parla un linguaggio di minimalismo rigoroso, materiali tattili e onestà costruttiva — l’esito di un dialogo secolare su cosa significhi creare con un’anima nazionale.",
-          "imageSeed": "new-item-9"
-        },
-        {
-          "id": 8,
-          "title": "Tadao Ando: decifrare la filosofia del design puro",
-          "subtitle": "Architettura",
-          "fig": "FIG. 08",
-          "description": "Tadao Ando è tra gli architetti più influenti del XXI secolo e sfida i confini convenzionali dell’architettura. Il suo approccio ripensa i principi tradizionali giapponesi attraverso forme audaci, materiali e organizzazione dello spazio. L’articolo svela i principi chiave della sua filosofia.",
-          "imageSeed": "new-item-8"
-        },
-        {
-          "id": 7,
-          "title": "L'arte che fa sorridere",
-          "subtitle": "Gli oggetti colorati e giocosi possiedono una qualità unica che manca ad altri: infonderanno pura felicità in una stanza.",
-          "fig": "FIG. 07",
-          "description": "Credo che quando si introducono oggetti giocosi in un ambiente, si espandono i confini della mente. Ti dà il permesso non verbale di pensare liberamente, non solo di opporti ai frame convenzionali, ma di dimenticare che addirittura esistono.",
-          "imageSeed": "new-item-7",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
-        },
-        {
           "id": 1,
           "title": "Rituali mattutini",
           "subtitle": "Cappadocia, Turchia",
@@ -15079,6 +15054,31 @@
           "fig": "FIG. 04",
           "description": "L'aria fresca dell'altopiano e il profumo delle pinete.",
           "imageSeed": "mountains"
+        },
+        {
+          "id": 7,
+          "title": "L'arte che fa sorridere",
+          "subtitle": "Gli oggetti colorati e giocosi possiedono una qualità unica che manca ad altri: infonderanno pura felicità in una stanza.",
+          "fig": "FIG. 07",
+          "description": "Credo che quando si introducono oggetti giocosi in un ambiente, si espandono i confini della mente. Ti dà il permesso non verbale di pensare liberamente, non solo di opporti ai frame convenzionali, ma di dimenticare che addirittura esistono.",
+          "imageSeed": "new-item-7",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
+        },
+        {
+          "id": 8,
+          "title": "Tadao Ando: decifrare la filosofia del design puro",
+          "subtitle": "Architettura",
+          "fig": "FIG. 08",
+          "description": "Tadao Ando è tra gli architetti più influenti del XXI secolo e sfida i confini convenzionali dell’architettura. Il suo approccio ripensa i principi tradizionali giapponesi attraverso forme audaci, materiali e organizzazione dello spazio. L’articolo svela i principi chiave della sua filosofia.",
+          "imageSeed": "new-item-8"
+        },
+        {
+          "id": 9,
+          "title": "Design polacco: tessuto dalla memoria",
+          "subtitle": "Design",
+          "fig": "FIG. 09",
+          "description": "Il design polacco contemporaneo ha raggiunto un momento di quieta maturità. Negli studi dei suoi architetti e progettisti d’arredo di oggi si parla un linguaggio di minimalismo rigoroso, materiali tattili e onestà costruttiva — l’esito di un dialogo secolare su cosa significhi creare con un’anima nazionale.",
+          "imageSeed": "new-item-9"
         },
         {
           "id": 11,
