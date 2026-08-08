@@ -3547,7 +3547,11 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/msjmraxbowmo4w.webp",
-          "caption": "Emily Kraus, Fwooooop"
+          "caption": "Emily Kraus, Fwooooop, 2024"
+        },
+        {
+          "type": "text",
+          "content": ""
         }
       ],
       "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
