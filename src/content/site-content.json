@@ -11819,53 +11819,54 @@
         {
           "id": 13,
           "title": "Arte que te hace sonreír",
-          "excerpt": "Creo que introducir objetos lúdicos en un espacio expande los límites de la mente. Te da permiso no verbal para pensar con libertad — no solo para oponerte a los marcos convencionales, sino para olvidar que existen siquiera.",
-          "subcategory": "Feature",
           "author": "EPRIS Journal",
-          "category": "art",
+          "role": "maria ivanova",
+          "date": "Jul 17, 2026",
+          "excerpt": "Creo que cuando introduces objetos divertidos en un entorno, se expanden los límites de la mente. Te da permiso no verbal para pensar libremente, no sólo para ir contra los marcos convencionales, sino para olvidar que incluso existen.",
+          "category": "arte",
+          "subcategory": "Característica",
           "tags": [
-            "art",
-            "contemporary artists",
-            "lifestyle"
+            "arte",
+            "artistas contemporáneos",
+            "estilo de vida"
           ],
           "imageSeed": "",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrqbtqfza6qpnq.jpg",
           "content": [
             {
               "type": "text",
-              "content": "Existe el prejuicio de que el placer que produce una obra de arte, o la sonrisa que provoca, rebaja de algún modo su valor y la despoja del gran título de «Arte». Sencillamente, no es cierto."
+              "content": "Existe la idea preconcebida de que el placer derivado de una obra de arte, o la sonrisa que evoca, de alguna manera reduce su valor y la despoja del gran título de “Arte”. Sin embargo, esto simplemente no es cierto."
             },
             {
               "type": "text",
-              "content": "El arte puede hablar alto sin palabras, convirtiéndose en un instrumento indiscutible para materializar la introspección o abordar inquietudes sociales y políticas. Sin embargo, si atendemos a la etimología de la palabra, «arte» no está históricamente ligada a la «seriedad» ni a nada parecido; sus raíces están en el oficio manual, magistralmente dominado y ejecutado. Ese origen libera automáticamente al arte de cualquier obligación imperativa y legitima su derecho a simplemente ser."
+              "content": "El arte puede hablar en voz alta sin palabras, lo que lo convierte en un instrumento indiscutible para materializar la autorreflexión o abordar preocupaciones sociales y políticas. Sin embargo, si nos fijamos en la etimología de la palabra, “arte” no está históricamente relacionado con “seriedad” ni nada por el estilo; tiene sus raíces en la artesanía hecha a mano, brillantemente dominada y ejecutada. Este origen priva automáticamente al arte de cualquier obligación obligatoria y legitima su derecho a ser justo."
             },
             {
               "type": "text",
-              "content": "Como se ha mencionado, el arte refleja cuestiones sociales, políticas, de género u otras. Puede ser un medio de introspección personal o un vehículo para transmitir ideas complejas en formas diversas. Pero un artista también puede crear objetos lúdicos siguiendo un deseo intrínseco de sentir el material, experimentar con formas y colores, dominar técnicas y aportar un poco de alegría a la vida cotidiana. Y ser lúdico no es sinónimo<b> </b>de ser superficial. Todos los objetos llevan consigo el trasfondo, las creencias, la visión y las inquietudes de quienes los crean — solo que expresados a través de otro lente."
+              "content": "Como se mencionó, el arte sirve como reflejo de cuestiones sociales, políticas, de género u otras. Puede ser un medio para la introspección personal o un vehículo para expresar ideas complejas en diversas formas. Pero un artista aún puede crear objetos lúdicos siguiendo un deseo intrínseco de sentir el material, experimentar con formas y colores, dominar técnicas y aportar un poco de alegría a la vida cotidiana. Y ser juguetón no es sinónimo<b> </b>con ser superficial. Todos los objetos transmiten los antecedentes, las creencias, la visión, las intenciones y las preocupaciones de sus creadores; simplemente se expresan a través de una lente diferente."
             },
             {
               "type": "text",
-              "content": "Tomárselo todo demasiado en serio es un callejón sin salida — y desde luego no debería pasarte por la cabeza al elegir una pieza nueva para tu casa. Al final, lo que cuenta es tu gusto personal. Si solo aprueban las formas estrictas en beige y negro, o los soportes y motivos convencionales, ¡estupendo! Mi única preocupación aparece cuando la gente ni siquiera se permite considerar una pieza que pudiera despertar un momento de alegría. Oímos constantemente: «Queda genial, combinará perfecto con mis paredes y mis otros cuadros». Pero la próxima vez, prueba a preguntarte otra cosa: ¿me hace sonreír? Los objetos coloridos y lúdicos poseen una cualidad única que los demás no tienen — inyectan felicidad pura en una habitación. No pensamos en esto lo suficiente, centrados en cambio en lo de moda que está una pieza o en cómo hace lucir la casa. Pero ¿cómo nos hace sentir?"
+              "content": "Tomarse todo demasiado en serio es un callejón sin salida, y ciertamente no debería pasar por su mente cuando elige una nueva pieza para su hogar. En última instancia, la línea de base es su preferencia personal. Si sólo apruebas las estrictas formas beige y negras, o los medios y temas convencionales, ¡es maravilloso! Mi única preocupación es cuando la gente ni siquiera se permite considerar una pieza que pueda provocar un momento de deleite. Escuchamos constantemente: \"Se ve tan bien que combinará maravillosamente con mis paredes y mis otras pinturas\". Pero la próxima vez intenta hacerte una pregunta diferente: ¿Me hace sonreír? Los objetos coloridos y divertidos poseen una cualidad única de la que otros carecen: inyectan pura felicidad en una habitación. No pensamos en esto con suficiente frecuencia, sino que nos centramos en qué tan de moda está una pieza o cómo hace que se vea nuestra casa. Pero ¿cómo nos hace sentir?"
             },
             {
               "type": "quote",
-              "content": "Los objetos coloridos y lúdicos poseen una cualidad única que los demás no tienen — inyectan felicidad pura en una habitación."
+              "content": "Los objetos coloridos y divertidos poseen una cualidad única de la que otros carecen: inyectan pura felicidad en una habitación."
             },
             {
               "type": "text",
-              "content": "El interiorismo no es solo un decorado, una imagen estática, una composición o una paleta de color. Es un entorno vivo que te envuelve y te acoge. Solemos considerar un interior como un componente externo de nuestra existencia, situándonos meramente como espectadores. En realidad, en el instante en que entramos en un espacio, este nos absorbe, adoptamos invisiblemente su ánimo y cedemos a la influencia irresistible de su atmósfera. Existe incluso una rama científica específica — la neuroarquitectura — que estudia cómo el entorno afecta a nuestro rendimiento cognitivo, así como a nuestro bienestar psicológico y físico. En su mayoría, estos efectos los desencadenan las características espaciales, la psicología del color y las propiedades táctiles de los materiales. Sin embargo, hay un elemento que a menudo se cae de esa lista científica pero que tiene un gran impacto en cómo experimentamos un espacio: <i>los detalles cargados de ironía y diversión.</i>"
+              "content": "El diseño de interiores no es sólo un escenario, una imagen estática, una composición o una paleta de colores. Es un entorno de vida que te abraza y envuelve. Estamos acostumbrados a considerar el interior como un componente externo de nuestra existencia, posicionándonos simplemente como espectadores. En realidad, en el momento en que entramos en un espacio, somos absorbidos por él, adoptando invisiblemente su estado de ánimo y cediendo a la influencia irresistible de su atmósfera. Incluso existe una rama específica de la ciencia, la neuroarquitectura, que estudia cómo el entorno afecta a nuestro rendimiento cognitivo, así como a nuestro bienestar psicológico y físico. En su mayoría, estos efectos son provocados por las características espaciales, la psicología del color y las propiedades táctiles de los materiales. Sin embargo, hay un elemento que a menudo queda fuera de esta lista científica pero que aún tiene un impacto importante en cómo experimentamos un espacio: <i>Detalles llenos de ironía y diversión.</i>"
             },
             {
               "type": "quote",
-              "content": "En realidad, en el instante en que entramos en un espacio, este nos absorbe, adoptamos invisiblemente su ánimo y cedemos a la influencia irresistible de su atmósfera."
+              "content": " En realidad, en el momento en que entramos en un espacio, somos absorbidos por él, adoptando invisiblemente su estado de ánimo y cediendo a la influencia irresistible de su atmósfera."
             },
             {
               "type": "text",
-              "content": "Creo que introducir objetos lúdicos en un espacio expande los límites de la mente. Te da permiso no verbal para pensar con libertad — no solo para oponerte a los marcos convencionales, sino para olvidar que existen siquiera."
+              "content": "Creo que cuando introduces objetos divertidos en un entorno, se expanden los límites de la mente. Te da permiso no verbal para pensar libremente, no sólo para ir contra los marcos convencionales, sino para olvidar que incluso existen."
             },
             {
               "type": "text",
-              "content": "A continuación encontrarás una selección de artistas cuyos objetos garantizan una sonrisa inesperada."
+              "content": "A continuación encontrará una selección de artistas cuyos objetos seguramente le harán sonreír inesperadamente."
             },
             {
               "type": "header",
@@ -11874,11 +11875,11 @@
             },
             {
               "type": "text",
-              "content": "La diseñadora francesa Lola Mayeras creció en el sur de Francia con un padre ceramista, así que su herencia artística y su exploración de colores y formas comenzaron a formarse desde la primera infancia. Trabajó como diseñadora de moda antes de abrir su propio estudio de diseño en 2020. Durante el confinamiento redescubrió el taller de su padre en su ciudad natal y siguió un deseo interior de crear en un medio que le era familiar desde la juventud."
+              "content": "La diseñadora francesa Lola Mayeras creció en el sur de Francia con un padre ceramista, por lo que su herencia artística y su exploración de colores y formas comenzaron a formarse en la primera infancia. Trabajó como diseñadora de moda antes de abrir su propio estudio de diseño en 2020. Durante el encierro, redescubrió el taller de su padre en su ciudad natal y siguió un deseo interior de crear en un medio que le era familiar desde la juventud."
             },
             {
               "type": "text",
-              "content": "Su formación en moda conservó su amor por el drapeado, pero hoy sus objetos son mobiliario y esculturas. Su elemento distintivo más frecuente es la camisa de botones — inmóvil en forma de jarrón, apilada con modestia en una escultura, o caída sin esfuerzo sobre la esquina de una mesa de madera. Esta última es mi favorita personal entre todas sus piezas maravillosas: una masa cerámica natural y contenida, con una camisa azul cielo arrugada que parece deslizarse hacia el suelo."
+              "content": "Su experiencia en la moda preservó su amor por los drapeados, pero ahora sus objetos objetivo son muebles y esculturas. Su elemento característico más frecuente es la camisa con botones: se mantiene quieta en forma de jarrón, se apila modestamente en una escultura o se coloca sin esfuerzo sobre la esquina de una mesa de madera. Esta última es mi favorita entre todas sus increíbles piezas: una masa de cerámica natural y sobria con una camisa azul celeste arrugada que parece caer al suelo."
             },
             {
               "type": "gallery",
@@ -11890,7 +11891,7 @@
             },
             {
               "type": "text",
-              "content": "Lola Mayeras también logra crear jarrones antropomorfos con orejas y pendientes que resultan perfectamente naturales en todos los sentidos. El equilibrio de forma y escala es tan fino que hace preguntarse por qué a otros jarrones les faltan estos detalles simétricos. Es atrevido y a la vez armonioso."
+              "content": "Lola Mayeras también logra crear jarrones antropomorfos con orejas y aretes que lucen perfectamente naturales para todos los sentidos. El equilibrio entre forma y escala es tan fino que uno se pregunta por qué otros jarrones carecen de estos detalles simétricos. Es audaz pero en armonía."
             },
             {
               "type": "image",
@@ -11899,11 +11900,11 @@
             },
             {
               "type": "text",
-              "content": "Recientemente ha ampliado su práctica trabajando con metal y textiles. Si buscas ropa de cama única, puedes encargar el set «It's a Mess», con una estampación trampantojo de ropa esparcida. La esencia desenfadada de sus objetos, junto con la paleta de color elegida, está profundamente inspirada en su infancia en el sur de Francia, donde disfrutar de una vida bañada de sol era la rutina diaria."
+              "content": "Recientemente, ha ampliado su práctica para trabajar con metal y textiles. Si busca ropa de cama única, puede pedir el juego \"It's a Mess\", que presenta un estampado trompe-l'œil de ropa dispersa. La esencia alegre de sus objetos, junto con la paleta de colores elegida, está profundamente inspirada en su infancia en el sur de Francia, donde disfrutar de una vida llena de sol era una rutina diaria."
             },
             {
               "type": "quote",
-              "content": "La esencia desenfadada de sus objetos, junto con la paleta de color elegida, está profundamente inspirada en su infancia en el sur de Francia, donde disfrutar de una vida bañada de sol era la rutina diaria."
+              "content": "La esencia alegre de sus objetos, junto con la paleta de colores elegida, está profundamente inspirada en su infancia en el sur de Francia, donde disfrutar de una vida llena de sol era una rutina diaria."
             },
             {
               "type": "image",
@@ -11917,19 +11918,19 @@
             },
             {
               "type": "text",
-              "content": "La obra de Erwin Wurm es un ejemplo perfecto de ironía lúdica que enmascara temas sociales serios — mensajes difíciles de leer a primera vista, pero que se vuelven parte inseparable de la experiencia una vez descubiertos.<br>"
+              "content": "El trabajo de Erwin Wurm es un excelente ejemplo de ironía lúdica que enmascara temas sociales serios: mensajes que son difíciles de leer a primera vista, pero que se convierten en una parte inseparable de la experiencia una vez descubiertos.<br>"
             },
             {
               "type": "text",
-              "content": "Como pionero del humor conceptual que ha conquistado a amantes del arte en todo el mundo, Wurm regala célebremente brazos y piernas a bolsos, salchichas, jerséis y otros objetos cotidianos. Es el creador de coches hinchados, casas abultadas y pepinillos antropomorfos, todos repensados a través de formas y acciones simples. Esta sencillez no debe en absoluto restar valor al artista; más bien refleja un dominio genuino de un lenguaje visual sumamente legible, que después choca con una imprevisibilidad absoluta."
+              "content": "Como pionero del humor conceptual que se ha ganado los corazones de los amantes del arte en todo el mundo, Wurm regala bolsas, salchichas, suéteres y otros artículos cotidianos con brazos y piernas. Es el creador de coches inflados, casas infladas y pepinillos antropomórficos, todos reconsiderados a través de formas y acciones simples. Esta sencillez no debería en modo alguno disminuir el valor del artista; más bien, refleja un dominio genuino de un lenguaje visual altamente legible, que luego choca con la absoluta imprevisibilidad."
             },
             {
               "type": "text",
-              "content": "En última instancia, lo absurdo en el arte de Wurm sirve como respuesta afilada a las presiones de la sociedad contemporánea, como el sobreconsumo, el peso abrumador de la opinión pública y nuestra obsesión por la autorrepresentación a través de lo que poseemos. Bajo el envoltorio alegre se esconde un comentario profundo sobre la condición humana moderna. Y sin embargo, esa profundidad oculta nunca compromete el aspecto puro y gozoso de sus piezas — siguen siendo objetos delicosos a los que apetece volver una y otra vez."
+              "content": "En última instancia, lo absurdo del arte de Wurm sirve como una aguda respuesta a las presiones de la sociedad contemporánea, como el consumo excesivo, el peso abrumador de la opinión pública y nuestra obsesión por la autorrepresentación a través de las cosas que poseemos. Debajo del alegre embalaje se esconde un profundo comentario sobre la condición humana moderna. Sin embargo, la presencia de esta profundidad oculta nunca compromete el aspecto puro y alegre de sus piezas: siguen siendo objetos encantadores y sin esfuerzo a los que querrás volver una y otra vez."
             },
             {
               "type": "quote",
-              "content": "Y sin embargo, esa profundidad oculta nunca compromete el aspecto puro y gozoso de sus piezas — siguen siendo objetos deliciosos a los que apetece volver una y otra vez."
+              "content": "Sin embargo, la presencia de esta profundidad oculta nunca compromete el aspecto puro y alegre de sus piezas: siguen siendo objetos encantadores y sin esfuerzo a los que querrás volver una y otra vez."
             },
             {
               "type": "gallery",
@@ -11941,16 +11942,16 @@
             },
             {
               "type": "header",
-              "content": "Fanny Ollas",
+              "content": "Funny Ollas",
               "level": 2
             },
             {
               "type": "text",
-              "content": "La diseñadora sueca Fanny Ollas tiene formación en textil y moda, que se refleja en sus jarrones elegantemente ornamentados. Cada recipiente parece un personaje de cuento, que vive a tu lado sin pagar alquiler y con todo el derecho a hacerlo."
+              "content": "La diseñadora sueca Fanny Ollas tiene experiencia en textiles y moda, lo que se refleja en sus jarrones elegantemente ornamentados. Cada barco parece un personaje de hadas, que vive a tu lado sin pagar alquiler y tiene todos los derechos para hacerlo. "
             },
             {
               "type": "text",
-              "content": "Los tonos suaves y la integración de pelo sintético, encaje, strass y perlas dan a cada pieza una apariencia de tintineo mágico, aunque también arrastran cierto estado de melancolía. Su trabajo gira en torno a la vulnerabilidad, el cuerpo, las exigencias, los miedos, las relaciones y lo que se esconde tras nuestras fachadas."
+              "content": "Los tonos suaves y la integración de piel sintética, cordones, strass y perlas dan forma a la apariencia mágica y tintineante de cada pieza, pero transmiten un cierto estado de melancolía. Su trabajo gira en torno a pensamientos sobre la vulnerabilidad, el cuerpo, las exigencias, los miedos, las relaciones y lo que se esconde detrás de nuestras fachadas."
             },
             {
               "type": "gallery",
@@ -11967,27 +11968,27 @@
             },
             {
               "type": "text",
-              "content": "El legendario artista español siempre se llamó a sí mismo un experimentador, y no hay descripción más certera para la enorme amplitud de su obra. Aunque no situó la ironía como tema central, las vasijas que produjo en gran cantidad en el sur de Francia, en el Atelier Madoura, reflejan a la perfección el componente lúdico de su producción."
+              "content": "El legendario artista español siempre se llamó a sí mismo un experimentador, y no puede haber una descripción más precisa de la enorme amplitud de su obra. Aunque no se centró en la ironía como tema central, las vasijas que produjo en grandes cantidades en el sur de Francia en el Atelier Madoura son un reflejo perfecto del componente lúdico de la obra del artista."
             },
             {
               "type": "text",
-              "content": "Hacia el final de la Segunda Guerra Mundial, Picasso ya era una leyenda viva, un genio consagrado y millonario. Pero ese éxito tuvo un efecto de rebote — se cansó del academicismo y de la actitud solemne y rígida hacia el arte. Al volcarse en la arcilla, pareció concederse permiso para volver a ser niño."
+              "content": "Al final de la Segunda Guerra Mundial, Picasso ya era una leyenda viva, un genio aclamado y millonario. Pero este éxito tuvo un efecto contraproducente: se cansó del academicismo y de la actitud solemne y rígida hacia el arte. Al convertirse en arcilla, pareció permitirse volver a ser un niño."
             },
             {
               "type": "quote",
-              "content": "«Sé dibujar como Rafael, pero me ha llevado toda una vida aprender a dibujar como un niño» — Pablo Picasso"
+              "content": "\"Puedo dibujar como Rafael, pero me llevó toda la vida aprender a dibujar como un niño\" - Pablo Picasso"
             },
             {
               "type": "text",
-              "content": "Las caras cómicas que pintaba en las jarras eran un acto de puro juego y la expresión de la felicidad absoluta que sentía viviendo en la costa soleada con su joven musa, Françoise Gilot. Tras los horrores de la guerra, la tragedia de Guernica y profundas crisis personales, crear vajilla vibrante y humorística se convirtió para él en una forma de arteterapia."
+              "content": "Las caras cómicas que pintó en los cántaros eran un acto de puro juego y una expresión de la felicidad absoluta que sentía mientras vivía en la soleada costa con su joven musa, Françoise Gilot. Después de los horrores de la guerra, la tragedia de Guernica y las profundas crisis personales, crear vajillas vibrantes y divertidas se convirtió para él en una forma de arteterapia."
             },
             {
               "type": "text",
-              "content": "Las caras cómicas que pintaba en las jarras eran un acto de puro juego y la expresión de la felicidad absoluta que sentía viviendo en la costa soleada con su joven musa, Françoise Gilot. Tras los horrores de la guerra, la tragedia de Guernica y profundas crisis personales, crear vajilla vibrante y humorística se convirtió para él en una forma de arteterapia."
+              "content": "Las caras cómicas que pintó en los cántaros eran un acto de puro juego y una expresión de la felicidad absoluta que sentía mientras vivía en la soleada costa con su joven musa, Françoise Gilot. Después de los horrores de la guerra, la tragedia de Guernica y las profundas crisis personales, crear vajillas vibrantes y divertidas se convirtió para él en una forma de arteterapia."
             },
             {
               "type": "text",
-              "content": "Estas jarras nunca estuvieron pensadas para quedarse tras un cristal en museos polvorientos. Picasso quería originalmente que sus cerámicas fueran asequibles y de uso cotidiano — para servir vino o guardar fruta — de modo que la gente pudiera sonreír ante esas caras divertidas pintadas a mano durante el desayuno."
+              "content": "Estas jarras nunca debieron estar detrás de un cristal en museos polvorientos. Originalmente, Picasso pretendía que sus cerámicas fueran asequibles y se usaran en la vida cotidiana (para servir vino o sostener fruta) para que la gente pudiera sonreír ante esas caras divertidas pintadas a mano durante el desayuno."
             },
             {
               "type": "gallery",
@@ -12004,11 +12005,11 @@
             },
             {
               "type": "text",
-              "content": "La improvisación y una actitud abierta son el corazón del proceso creativo de Matthew Centeno. Con una artesanía sumamente detallada, transforma globos comunes en formas cautivadoras que hablan directamente al niño interior de cada persona. Su objetivo último es romper la monotonía de la vida diaria, empujando suavemente al público a redescubrir su curiosidad olvidada."
+              "content": "La improvisación y un enfoque de mente abierta son el corazón del proceso creativo de Matthew Centeno. A través de una artesanía muy detallada, transforma globos comunes en formas cautivadoras que instantáneamente hablan directamente al niño interior que todos llevamos dentro. Su objetivo final es romper con la monotonía de la vida cotidiana, empujando al público a redescubrir su olvidado sentido de la curiosidad."
             },
             {
               "type": "text",
-              "content": "Aunque los globos de papel de aluminio son el indicador supremo de celebraciones y festejos, son por naturaleza efímeros. A diferencia de las flores, que ya son un elemento habitual de la decoración informal del hogar, los globos siguen perteneciendo firmemente a la categoría de las ocasiones especiales. El globo de porcelana de pared con cara sonriente de Centeno sirve como recordatorio permanente de que cada día es especial."
+              "content": "Si bien los globos de aluminio son los indicadores definitivos de celebraciones y días festivos, son inherentemente temporales. A diferencia de las flores, que ya se han convertido en un elemento básico de la decoración informal del hogar, los globos todavía pertenecen firmemente a la categoría de ocasiones especiales. El globo de porcelana de pared de Centeno con una cara sonriente sirve como un recordatorio permanente de que cada día es especial."
             },
             {
               "type": "gallery",
@@ -12020,16 +12021,16 @@
             },
             {
               "type": "header",
-              "content": "Sébastien Gaudette",
+              "content": "Sébastien Gaudette ",
               "level": 2
             },
             {
               "type": "text",
-              "content": "¿Qué puede ser más agradable que las notas adhesivas con inscripciones alegres, que te reconfortan cada vez que las ves? Sébastien Gaudette crea esculturas trampantojo en aluminio, que se quedarán en tu pared para siempre. Es el tipo de arte que no tiene que combinar con tu decoración, sino contribuir a tu ánimo y bienestar emocional. Debo admitir que el pequeño tamaño de la obra añade la chispa de descubrirla por sorpresa — es como un pedacito de magia con el que te topas inesperadamente, te detienes un instante a sonreír y vuelves a tus tareas."
+              "content": "¿Qué puede ser más agradable que las notas adhesivas con inscripciones alegres, que te hacen sentir cálido cada vez que las ves? Sebastien Gaudette crea esculturas trampantojo de aluminio que permanecerán en su pared para siempre. Es el tipo de arte que no tiene por qué adaptarse a su interior, sino contribuir a su estado de ánimo y bienestar emocional. Debo admitir que el pequeño tamaño de la obra aumenta la chispa de descubrirla: es como una pieza de magia con la que te topas inesperadamente y te congelas por un momento para sonreír por un segundo y volver a hacer los recados."
             },
             {
               "type": "text",
-              "content": "El pilar central del trabajo de Gaudette no son las inscripciones, sino la recreación del plegado de papel. Sin embargo, incluso dentro de ese marco, encontramos el componente de una familiaridad encantadora combinada con la emoción infantil. Por ejemplo, los aviones de papel de distintos colores, hechos de una hoja de cuaderno rayado. Encontrarlo sobre la cómoda o la mesa de centro, entre libros y jarrones, sería una máquina del tiempo maravillosa hacia la despreocupación de la juventud."
+              "content": "El pilar central de la obra de Gaudet no son las inscripciones sino la recreación del plegado del papel. Sin embargo, incluso dentro de este marco encontramos el componente de deliciosa familiaridad combinado con la emoción infantil. Por ejemplo los aviones de papel de diferentes colores, hechos a partir de una hoja de cuaderno rayada. Encontrarlo en la cómoda o en la mesa del café, entre libros y jarrones, sería una maravillosa máquina del tiempo para la despreocupación de la juventud."
             },
             {
               "type": "gallery",
@@ -12041,18 +12042,20 @@
             },
             {
               "type": "text",
-              "content": "Parece que tenemos miedo de dejar que el arte nos entretenga."
+              "content": "Parece que tenemos miedo de dejar que el arte nos entretenga. "
             },
             {
               "type": "text",
-              "content": "Ya seas coleccionista, amante o entusiasta del arte, o estés apenas comenzando a conocer este mundo sin fronteras, empieza a fijarte en los objetos que no solo te desafían, cuestionan o provocan, sino que también pueden evocar recuerdos cálidos, crear otros nuevos o simplemente hacerte sonreír casi sin motivo."
+              "content": "Si usted es un coleccionista de arte, un amante, un entusiasta o simplemente está comenzando a conocer el mundo del arte sin límites, comience a notar los objetos que no solo lo desafían, lo cuestionan o lo provocan, sino que también pueden evocar recuerdos cálidos, crear uno nuevo o simplemente hacerlo sonreír casi sin razón."
             },
             {
               "type": "text",
-              "content": "A veces tu alegría es la meta de un artista — entrégate a su poder."
+              "content": " A veces tu alegría es el objetivo de un artista: ríndete a su poder. "
             }
           ],
-          "role": "Escritorio editorial"
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrqbtqfza6qpnq.jpg",
+          "order": 6,
+          "updatedAt": "2026-08-08T21:22:34.321Z"
         },
         {
           "id": 14,
