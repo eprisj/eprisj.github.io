@@ -18,6 +18,8 @@ export interface Item {
   publishAt?: string;
   /** Server-stamped on every /content/entity save — see mergeLocalizedArray. */
   updatedAt?: string;
+  /** Manual display position set in the admin (1 = first). Unset entries keep the default order, after the ordered ones. */
+  order?: number;
 }
 
 export interface ContentBlock {
@@ -77,6 +79,8 @@ export interface Article {
   publishAt?: string;
   /** Server-stamped on every /content/entity save — see mergeLocalizedArray. */
   updatedAt?: string;
+  /** Manual display position set in the admin (1 = first). Unset entries stay in date order, after the ordered ones. */
+  order?: number;
 }
 
 export interface Review {
@@ -284,6 +288,21 @@ const entryTime = (value?: string): number => {
 
 const newestFirst = <T extends { date?: string }>(list: T[]): T[] =>
   [...list].sort((a, b) => entryTime(b.date) - entryTime(a.date));
+
+// Ручной порядок из админки. Кнопки ↑/↓ проставляют записям числовой `order`
+// (1 = первая), и он перебивает порядок по умолчанию: дату у статей и порядок
+// массива у Галереи. Записи без `order` остаются как были, но уходят ПОСЛЕ
+// расставленных вручную — иначе новая статья без номера втискивалась бы в
+// середину чужой раскладки. Сортируем базовые записи, до наложения переводов:
+// `order` живёт только в базе, mergeLocalizedArray идёт по базовому массиву.
+const entryOrder = (value?: number): number =>
+  typeof value === 'number' && Number.isFinite(value) ? value : Number.POSITIVE_INFINITY;
+
+const byManualOrder = <T extends { order?: number }>(list: T[]): T[] => {
+  if (!list.some((entry) => entryOrder(entry.order) !== Number.POSITIVE_INFINITY)) return list;
+  // Array.prototype.sort стабильна — записи без `order` сохраняют свой порядок.
+  return [...list].sort((a, b) => entryOrder(a.order) - entryOrder(b.order));
+};
 
 // ── Live content layer (VPS is the source of truth) ──────────────────────────
 // The admin saves content to the VPS API, and the public site fetches it live
@@ -643,7 +662,7 @@ export function getContentForLanguage(lang: string): LanguageContent {
   // preview keeps everything so stubs remain visible for editing.
   const liveBase = <T,>(arr: T[]): T[] => isPreview() ? arr : arr.filter((e) => !isPlaceholderEntity(e));
 
-  const articles = mergeLocalizedArray(bucket.articles, newestFirst(liveBase(c.articles)));
+  const articles = mergeLocalizedArray(bucket.articles, byManualOrder(newestFirst(liveBase(c.articles))));
   // Reviews hit the same recycled-id trap the Gallery did: every locale still
   // carries a translation of a deleted restaurant review on id 1, so readers of
   // UA/RU/DE opened "Симфонія смаків / Ресторан «Олеа», Лімасол" sitting on top
@@ -652,7 +671,7 @@ export function getContentForLanguage(lang: string): LanguageContent {
   // screens for, so reviews get the same guard: an untrustworthy bucket falls
   // back to the base language instead of mixing two different reviews together.
   const reviews = mergeLocalizedItems(bucket.reviews, liveBase(c.reviews));
-  const items = mergeLocalizedItems(bucket.items, liveBase(c.items));
+  const items = mergeLocalizedItems(bucket.items, byManualOrder(liveBase(c.items)));
   const libraryItems = mergeLocalizedArray(bucket.libraryItems, liveBase(c.libraryItems));
 
   const liveArticles = isPreview() ? articles : articles.filter((entry) => isEntityLive(entry) && isEntityVisible('articles', entry.id));
