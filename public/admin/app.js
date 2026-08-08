@@ -3142,6 +3142,24 @@ function getNextEntryId(data, section) {
   return ids.length ? Math.max(...ids) + 1 : 1;
 }
 
+// Сверяет свободный id с сервером. Считать max(id)+1 только по документу
+// в редакторе опасно: вкладка, открытая до появления новых записей, выдаёт
+// уже занятый id, и новая запись встаёт поверх чужой. Так 08.08.2026
+// шаблон затёр статью «How Emily Kraus Reinvents the Act of Painting».
+// Сеть недоступна — молча откатываемся к локальному расчёту: помешать
+// созданию записи хуже, чем изредка не свериться.
+async function getNextEntryIdChecked(data, section) {
+  const local = getNextEntryId(data, section);
+  try {
+    const res = await fetch(CONTENT_API, { cache: 'no-store' });
+    if (!res.ok) return local;
+    const live = await res.json();
+    return Math.max(local, getNextEntryId(live, section));
+  } catch {
+    return local;
+  }
+}
+
 function slugifySeed(value, fallback) {
   const slug = String(value || '')
     .toLowerCase()
@@ -3794,7 +3812,7 @@ async function createArticleFromBlueprint(kind) {
     const data = parseEditorJson();
     const sourceLang = visualLangSelect.value || DEFAULT_LANGUAGE;
     const entries = getSectionArray(data, 'articles', sourceLang, sourceLang !== DEFAULT_LANGUAGE);
-    const nextId = getNextEntryId(data, 'articles');
+    const nextId = await getNextEntryIdChecked(data, 'articles');
     const baseArticle = buildArticleBlueprint(kind, nextId);
     let sourceArticle = baseArticle;
 
@@ -3833,7 +3851,7 @@ async function createReviewFromBlueprint(kind) {
     const data = parseEditorJson();
     const sourceLang = visualLangSelect.value || DEFAULT_LANGUAGE;
     const entries = getSectionArray(data, 'reviews', sourceLang, sourceLang !== DEFAULT_LANGUAGE);
-    const nextId = getNextEntryId(data, 'reviews');
+    const nextId = await getNextEntryIdChecked(data, 'reviews');
     const baseReview = buildReviewBlueprint(kind, nextId);
     let sourceReview = baseReview;
 
@@ -4818,7 +4836,7 @@ async function duplicateVisualEntry() {
       throw new Error('Не найдена выбранная запись.');
     }
 
-    const nextId = getNextEntryId(data, section);
+    const nextId = await getNextEntryIdChecked(data, section);
     const duplicate = deepClone(entries[entryIndex]);
     duplicate.id = nextId;
     if (typeof duplicate.title === 'string') {
@@ -6479,7 +6497,7 @@ async function addVisualEntry() {
     const section = visualSectionSelect.value;
     const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
     const entries = getSectionArray(data, section, lang, lang !== DEFAULT_LANGUAGE);
-    const nextId = getNextEntryId(data, section);
+    const nextId = await getNextEntryIdChecked(data, section);
     let entry = createDefaultEntry(section, nextId);
 
     if (lang !== DEFAULT_LANGUAGE) {
