@@ -11274,37 +11274,37 @@
         },
         {
           "id": 11,
+          "title": "El corazón de EPRIS: María es ahora licenciada en arquitectura",
           "author": "EPRIS Journal",
+          "role": "Escritorio editorial",
           "date": "Jul 7, 2026",
-          "category": "Culture",
+          "excerpt": "El 7 de julio, Mariia Ivanova, editora jefe de EPRIS, obtuvo oficialmente el título de Licenciada en Arquitectura. Para conmemorar el día: un corazón construido a partir de la arquitectura y el arte que la inspiran.",
+          "category": "Cultura",
+          "subcategory": "De los editores",
+          "tags": [
+            "arquitectura",
+            "maria ivanova",
+            "celebración"
+          ],
           "imageUrl": "/images/heart-hero.jpg",
           "imageSeed": "maria-graduation-heart",
           "draft": false,
-          "role": "Redacción",
-          "title": "El corazón de EPRIS: Maria ya es licenciada en Arquitectura",
-          "excerpt": "El 7 de julio, Mariia Ivanova, redactora jefa de EPRIS, se licenció oficialmente en Arquitectura. Para celebrarlo – un corazón hecho de la arquitectura y el arte que la inspiran.",
-          "subcategory": "Desde la redacción",
-          "tags": [
-            "arquitectura",
-            "mariia ivanova",
-            "celebración"
-          ],
           "content": [
             {
               "type": "text",
-              "content": "Ayer, 7 de julio de 2026, ocurrió algo especial en la vida del equipo editorial de EPRIS. Mariia Ivanova – nuestra redactora jefa y la persona cuya creación es esta revista – se licenció oficialmente en Arquitectura. Años de dibujo técnico, maquetas y noches sin dormir antes de defender su proyecto de fin de carrera quedaron atrás. Comienza un nuevo capítulo – y no podíamos dejar de celebrarlo aquí, en las páginas de EPRIS."
+              "content": "Ayer, 7 de julio de 2026, sucedió algo especial en la vida de la redacción de EPRIS. Mariia Ivanova, nuestra editora en jefe y la persona que creó esta revista, se graduó oficialmente como Licenciada en Arquitectura. Años de redacción, modelos y noches de insomnio antes de la defensa de su tesis han quedado atrás. Comienza un nuevo capítulo y no podíamos dejarlo pasar sin marcarlo aquí, en las páginas de EPRIS."
             },
             {
               "type": "text",
-              "content": "No es ningún secreto que la mirada de una arquitecta recorre cada número de EPRIS – en la forma en que hablamos del espacio, la luz y los detalles. Hoy, esa mirada obtuvo su reconocimiento oficial."
+              "content": "No es ningún secreto que la mirada de un arquitecto recorre cada número de EPRIS, en la forma en que hablamos sobre el espacio, la luz y los detalles. Hoy, ese ojo obtuvo sus credenciales oficiales."
             },
             {
               "type": "text",
-              "content": "Quienes trabajaron con ella en este número conocen bien el ritual: la luz del estudio encendida hasta tarde, papel vegetal cubierto de correcciones, un café ya frío junto a la maqueta que ella volvía a rehacer una y otra vez hasta que por fin quedaba bien. Esa misma inquietud – la negativa a conformarse con lo “suficientemente bueno” – es lo que ha dado forma a esta revista desde su primerísima página."
+              "content": "Quienes trabajaron junto a ella en este tema conocen bien el ritual: luces del estudio encendidas hasta altas horas de la noche, papel de calco cubierto de revisiones, una taza de café enfriada junto al modelo que siguió reconstruyendo hasta que finalmente se sintió bien. Esa misma inquietud –la negativa a conformarse con lo “suficientemente bueno”- es lo que ha dado forma a esta revista desde su primera página."
             },
             {
               "type": "header",
-              "content": "Un corazón hecho de lo que la inspira",
+              "content": "A Heart Made of What Inspired Her",
               "level": 3
             },
             {
@@ -11358,21 +11358,22 @@
                 "/images/heart-tiles/tile-46.jpg",
                 "/images/heart-tiles/tile-47.jpg"
               ],
-              "caption": "Cuarenta y siete lugares y obras de arte que han moldeado la manera en que Mariia ve el mundo – desde la Sagrada Família hasta el David de Miguel Ángel. Un poco de cada uno aparece en todos los números de EPRIS."
+              "caption": "Cuarenta y siete lugares y obras de arte que han dado forma a la forma en que Mariia ve el mundo, desde la Sagrada Familia hasta el David de Miguel Ángel. Un poco de cada uno de ellos aparece en cada número de EPRIS."
             },
             {
               "type": "text",
-              "content": "Algunos de estos edificios los ha visitado en persona, cuaderno de bocetos en mano. Otros solo los ha visto en fotografías. Le deseamos que algún día pueda verlos todos con sus propios ojos."
+              "content": "Algunos de estos edificios los ha visitado en persona, cuaderno de bocetos en mano. A otros sólo los ha visto en fotografías. Esperamos que algún día pueda ver cada uno de ellos con sus propios ojos."
             },
             {
               "type": "quote",
-              "content": "La arquitectura me enseñó a ver la estructura detrás de la belleza. EPRIS me enseñó a contárselo a los demás. Para mí son dos idiomas para el mismo sentimiento."
+              "content": "La arquitectura me enseñó a ver la estructura detrás de la belleza. EPRIS me enseñó a contárselo a otros. Para mí son dos lenguajes para el mismo sentimiento."
             },
             {
               "type": "note",
-              "content": "El equipo editorial de EPRIS felicita a Mariia por su título y le agradece la inspiración que vive en cada número de la revista. Este diploma marca un nuevo capítulo – y sospechamos que no será el último que merezca celebrarse. Nos alegra que lo leáis con nosotros."
+              "content": "El equipo editorial de EPRIS felicita a Mariia por su título y le agradece la inspiración que vive en cada número de la revista. Este diploma marca un nuevo capítulo y sospechamos que no será el último que valga la pena celebrar. Nos alegra que lo leas con nosotros."
             }
-          ]
+          ],
+          "updatedAt": "2026-08-08T20:24:59.613Z"
         },
         {
           "id": 12,
