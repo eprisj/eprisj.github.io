@@ -6421,6 +6421,16 @@
           "description": "7 липня Марія Іванова, головна редакторка EPRIS, офіційно стала бакалавром архітектури. На честь цього дня – серце, зібране з архітектури та мистецтва, що її надихають.",
           "imageSeed": "maria-graduation-heart",
           "imageUrl": "/images/heart-hero.jpg"
+        },
+        {
+          "id": 12,
+          "title": "Як Ємілі Краус переосмислює акт малювання",
+          "subtitle": "Сучасне мистецтво",
+          "fig": "FIG. 10",
+          "description": "Усередині полотняного куба Ємілі Краус малює ритм теперішньої миті",
+          "imageSeed": "item-12",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg",
+          "updatedAt": "2026-08-08T18:53:17.388Z"
         }
       ],
       "articles": [
