@@ -14492,362 +14492,378 @@
         },
         {
           "id": 18,
-          "title": "Dik Açıya Karşı",
-          "excerpt": "Kendini ızgaradan konuşarak kurtaran beş yapı — ve onları inşa etmek için gereken yazılım, metal, para ve düpedüz cesaret.",
+          "title": "Doğru Açıya Karşı",
           "author": "Viacheslav Munister",
-          "category": "Architecture",
-          "subcategory": "Essay",
+          "authorId": "author-1784732936927-kw554",
+          "role": "Yazar",
           "date": "Aug 2, 2026",
+          "excerpt": "Izgaradan çıkmayı başaran beş bina ve onları inşa etmek için gereken yazılım, metal, para ve cesaret.",
+          "category": "Mimarlık",
+          "subcategory": "Makale",
+          "tags": [
+            "mimari",
+            "tasarım",
+            "şehirler"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-guggenheim-river.jpg",
           "content": [
             {
               "type": "text",
-              "content": "Her mimarlık öğrencisine dik açıya saygı duyması öğretilir ve her mimarlık öğrencisi er ya da geç stüdyonun dışında hiçbir şeyin doksan derece olmadığını fark eder. Ne kıyı çizgisi, ne göğüs kafesi, ne nehir, ne de insanların bir meydanı geçme biçimi: köşeyi keserler, hep, ve bu yüzden herhangi bir kampüsteki çim önce çapraz olarak ölür. Izgara doğa değildir. Izgara bir dosyalama sistemidir. Kazandı, çünkü T cetveliyle çizmesi ucuzdu, metrekareyle fiyatlandırması ucuzdu ve çoktan dinlemeyi bırakmış bir imar komisyonunun önünde savunması ucuzdu."
+              "content": "Her mimarlık öğrencisine doğru açıya saygı duyması öğretilir ve her mimarlık öğrencisi sonunda stüdyonun dışındaki hiçbir şeyin doksan derecede olmadığını fark eder. Sahil şeridi değil, göğüs kafesi değil, nehir değil, insanların bir meydandan geçme şekli değil; her zaman köşeyi keserler, bu yüzden herhangi bir kampüsteki çimler başka herhangi bir yerde ölmeden önce çapraz olarak ölür. Izgara doğa değildir. Izgara bir dosyalama sistemidir. Kazandı çünkü T-kare ile çizim yapmak ucuzdu, metrekare bazında fiyatlandırmak ucuzdu ve bir planlama toplantısında zaten dinlemeyi bırakmış bir komiteye karşı savunmak ucuzdu."
             },
             {
               "type": "text",
-              "content": "Böylece bir yüzyıl boyunca eğri, fazladan para ödediğiniz ve sonra yazılı olarak gerekçelendirdiğiniz bir şey oldu. Eğri duvar, özel kalıp, dişlerinin arasından nefes alan bir müteahhit ve yabancı para biriminde bir hastane faturası okuyan adamın yüz ifadesine sahip bir metraj uzmanı. Tam olarak bir taneye izin verilirdi — fuayede, ziyaretçilerin göreceği ve yatırımcıların hissedeceği yerde — ve sonra bina yeniden pencereli bir dosya dolabı olurdu: hoş bir resepsiyon bankosu ve hiçbir ihtiyaç programında yer almayan bir kahve makinesiyle."
+              "content": "Yani bir yüzyıl boyunca eğri, fazladan para ödediğiniz ve daha sonra yazılı olarak gerekçelendirdiğiniz bir şeydi. Kavisli duvar, özel kalıp, dişlerinin arasından nefes alan bir müteahhit ve yabancı para cinsinden hastane faturasını okuyan bir adamın ifadesini taşıyan bir miktar araştırmacısı. Ziyaretçilerin görebileceği ve yatırımcıların hissedebileceği lobide tam olarak bir taneye izin verildi ve sonra bina pencereli bir dosya dolabına, güzel bir resepsiyon masasına ve kimsenin belirtmediği bir kahve makinesine dönüştü."
             },
             {
               "type": "text",
-              "content": "Bu düzeni bitiren bir manifesto değildi. Manifestolar 1919’dan beri ortadaydı ve neredeyse hiçbir şey inşa etmemişlerdi. Aritmetikti. Kabaca 1990 ile 2015 arasında, uçak ve otomobil yapan insanlardan ödünç alınan yazılım, çift eğrilikli bir yüzeyi kesecek, maliyetlendirecek, sigortalayacak kadar hassas biçimde tanımlayabilir hale geldi — ve bütün bu hikâyenin dibindeki gösterişsiz mucize: Zaragoza dışındaki bir atölyeye 3.417 numaralı paneli, ekimin yağmurlu bir salı günü 3.418 numaralı panelle buluşacak şekilde ürettirmek; milimetreyle ölçülen bir toleransla ve sizin konseptinizi hiç umursamayan bir şantiye şefiyle."
+              "content": "Düzenlemeyi sona erdiren şey bir manifesto değildi. Manifestolar 1919'dan beri mevcuttu ve neredeyse hiçbir şey inşa etmemişti. Aritmetikti. Yaklaşık 1990 ile 2015 yılları arasında, uçak ve araba üreten insanlardan ödünç alınan yazılım, çift kavisli bir yüzeyi kesecek, maliyetlendirecek, sigortalayacak ve - tüm hikayenin temelindeki o göz kamaştırıcı mucize - bir imalatçının Zaragoza dışındaki bir barakada 3.417 numaralı paneli üretmesini sağlayacak kadar iyi hale geldi ve bu panel 3.418 numaralı paneli Ekim ayının ıslak bir Salı gününde milimetre cinsinden ölçülen bir toleransla karşılayacak ve bunu yapan bir ustabaşı da vardı. konseptiniz umurumda değil."
             },
             {
               "type": "text",
-              "content": "Aşağıdaki beş yapı tam da bu pencerenin içinde duruyor ve alışkanlıkla düşünmeyi engellemek için tasarlanmış sözcüklerin altına dosyalanıyorlar: blob, parametrik, organik, ikonik — sonuncusu neredeyse yalnızca imzanızı isteyenler tarafından kullanılır. Yakından bakın, hiçbir konuda anlaşmıyorlar. Biri, içinde tesadüfen bir müze bulunan bir heykel. Biri, bina taklidi yapan bir peyzaj. Biri, 330.000 metrekarelik bir varoluş krizi içindeki alışveriş merkezi. Biri, deri ve bir Mercedes yıldızı bağlamış bir dolaşım şeması. Biri de mükemmel akustiği ve bedava çatısı olan bir kar yığını."
+              "content": "Aşağıdaki beş bina da o pencerenin içinde yer alıyor ve bunlar düşünceyi engellemek için tasarlanmış sözcükler altında bir araya getiriliyor: damla, parametrik, organik, ikonik; sonuncusu neredeyse yalnızca bir şeye imzanızı isteyen kişiler tarafından konuşlandırılıyor. Daha yakından bakın ve hiçbir konuda aynı fikirde değiller. Bunlardan biri içinde müze bulunan bir heykel. Bunlardan biri, bir bina izlenimi veren bir manzara. Biri 330 bin metrekarelik varoluşsal kriz yaşayan bir alışveriş merkezi. Bunlardan biri, bir görünüm ve bir Mercedes rozeti içeren bir trafik diyagramıdır. Bunlardan biri, mükemmel akustiğe ve serbest çatıya sahip bir rüzgârla oluşan kar yığınıdır."
             },
             {
               "type": "text",
-              "content": "Her durumda biçim, ambalaj kâğıdı değil savın kendisidir. Asıl ilginç iş — fotoğraftan sağ çıkan kısım — her birinin neyin lehine sav ürettiğini, bu savın parasını kimin ödediğini ve kurdele kesildikten sonra neye mal olduğunu saptamaktır. Çünkü beşi de bir faturayla geldi ve yalnızca bazıları ödenmeye değerdi."
+              "content": "Her durumda argüman ambalaj kağıdı değil şekildir. İlginç olan, fotoğraftan günümüze kalan kısım, her birinin neyi tartıştığını, tartışmanın bedelini kimin ödediğini ve kurdele kesildikten sonra maliyetin ne kadar olduğunu tespit etmektir. Çünkü beşi de faturayla geldi ve sadece bazıları ödemeye değerdi."
             },
             {
               "type": "header",
-              "content": "<span class=\"kicker\">01 · Frank Gehry</span>Bilbao Guggenheim Müzesi",
+              "content": "01 · Frank GehryGuggenheim Museum Bilbao",
               "level": 2
             },
             {
               "type": "text",
-              "content": "<span class=\"dek\">Bilbao · 18 Ekim 1997’de açıldı · bir kentin itibarını yiyen heykel</span>"
+              "content": "Bilbao · 18 Ekim 1997'de açıldı · bir şehrin itibarını yiyip bitiren heykel"
             },
             {
               "type": "text",
-              "content": "O toplantıyı bir an için yeniden kuralım. Doksanların başı. Bilbao, ölmekte olan tersaneleri, zehirlenmiş bir nehri, ciddi bir işsizliği ve turizmi güvenilir biçimde başka yerlere yollayan bir güvenlik durumu olan bir liman kenti. Bask yönetimi çareyi terk edilmiş rıhtımlarda bir New York müzesinin şubesinde buluyor; projesi, uluslararası ölçekte tel örgü estetiğiyle ve balıklara dair çözülmemiş kişisel bir meseleyle tanınan bir Kaliforniyalıya ait. Ve parasını kendileri ödeyecekler: seksen dokuz milyon dolar."
+              "content": "Bir an için saha toplantısını yeniden düzenleyin. Doksanlı yılların başıdır. Bilbao, ölmekte olan tersaneleri, zehirli bir nehri, ciddi işsizliği ve turizmi başka yerlerde güvenilir bir şekilde ayakta tutan güvenlik durumuyla dolu bir liman kentidir. Bask makamları, çarenin, tel örgülerle uluslararası alanda tanınan bir Kaliforniyalı ve balıklarla ilgili çözülmemiş kişisel bir mesele tarafından tasarlanan, terk edilmiş rıhtım üzerine inşa edilmiş bir New York müzesinin franchise'ı olduğunu öne sürüyor. Ve bunun bedelini de kendileri ödeyecekler: Seksen dokuz milyon dolar."
             },
             {
               "type": "text",
-              "content": "Görevlendirmenin kendisi üç haftada karara bağlandı. Guggenheim direktörü Thomas Krens üç mimarı kısa listeye aldı — Gehry, Arata Isozaki, Coop Himmelblau — her birine on bin dolar verdi ve bir konsept istedi. Isozaki, eliptik, dört katlı bir bloğun eskizlerini gönderdi. Coop Himmelblau saydam küpler önerdi. Gehry, kimsenin istemediği bir şeye benzeyen bir şey gönderdi ve işi aldı."
+              "content": "Komisyonun kendisi üç hafta içinde kararlaştırıldı. Guggenheim direktörü Thomas Krens üç mimarı (Gehry, Arata Isozaki, Coop Himmelblau) kısa listeye aldı ve her birine on bin dolar verdi ve bir konsept istedi. Isozaki eliptik, dört katlı bir bloğun çizimlerini gönderdi. Coop Himmelblau şeffaf küpler önerdi. Gehry kimsenin istemediği bir şey gönderdi ve işi aldı."
             },
             {
               "type": "text",
-              "content": "Her makul ölçüte göre bunun bir meclis soruşturmasıyla bitmesi gerekirdi. Bunun yerine yüzyılın en çok taklit edilen kentsel jesti oldu ve ürettiği vergiler inşaat maliyetini üç yıl içinde karşıladı."
+              "content": "Her türlü makul standarda göre bunun kamuya açık bir soruşturmayla sonuçlanması gerekirdi. Bunun yerine yüzyılın en çok taklit edilen kentsel hareketi haline geldi ve yarattığı vergiler üç yıl içinde inşaat faturasını karşıladı."
             },
             {
               "type": "text",
-              "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">89 milyon $</span><span class=\"stat-label\">inşaat maliyeti</span></li><li><span class=\"stat-figure\">100 milyon €</span><span class=\"stat-label\">ilk üç yılda vergi</span></li><li><span class=\"stat-figure\">4 milyon</span><span class=\"stat-label\">ilk üç yılda ziyaretçi</span></li><li><span class=\"stat-figure\">1,3 milyon</span><span class=\"stat-label\">2025’te ziyaretçi</span></li></ul>"
+              "content": "89 milyon dolar inşaat maliyeti 100 dakika vergi, ilk üç yıl 4 milyon ziyaretçi, ilk üç yıl 2025'te 1,3 milyon ziyaretçi"
             },
             {
               "type": "text",
-              "content": "Bu dört rakamı arka arkaya okuyun, çünkü o günden beri dünyadaki her belediye başkanının neden tuhaf bir bina istediğinin tüm nedeni bunlar. Üç yıl içinde müze tahminen 500 milyon € ekonomik etkinlik ve yaklaşık 100 milyon € vergi üretmişti: bina kendi parasını çıkardı ve sonra eve para göndermeye başladı. Tarihte hiçbir kamu yapısı neredeyse bu makbuzu sunamaz. “Bilbao etkisi” deyimi buradan gelir; ayda bir kez yanlış yere uygulanması da buradan."
+              "content": "Bu dört rakamı sırayla okuyun, çünkü o zamandan beri dünyadaki her belediye başkanının tuhaf bir bina istemesinin asıl nedeni bunlardır. Üç yıl içinde müze tahmini olarak 500 milyon Avroluk bir ekonomik faaliyet ve yaklaşık 100 milyon Avroluk vergi elde etti; bina kendi masrafını karşıladı ve ardından eve para göndermeye başladı. Tarihte neredeyse hiçbir kamusal mimari eser bu makbuzu üretemez. “Bilbao etkisi” deyiminin var olmasının ve o zamandan bu yana neredeyse ayda bir kez yanlış uygulanmasının nedeni budur."
             },
             {
               "type": "text",
-              "content": "Tasarım efsanesi — Gehry kâğıdı buruşturur, mühendise uzatır, mühendis ağlar — yönü tam tersine çevirir. Ofisi gerçekten de fiziksel maketlerle takıntılı biçimde çalıştı. O maketlerin bir davaya değil bir binaya dönüşmesinin nedeni CATIA: havacılık sanayisi için yazılmış, ekibi tarafından maketi sayısallaştırmak ve üreticilere gerçekten üretebilecekleri yüzeyler vermek üzere uyarlanmış bir yazılım. Her panel numaralanmış, toleransı denetlenmiş ve gideceği yeri belli bir nesne. Bina bir kavga sırasında monte edilmiş gibi görünür. Aslında on yılın en disiplinli nesnelerinden biridir: dokuz ay boyunca baştan sona notaya dökülmüş bir caz solosu."
+              "content": "Tasarım efsanesi - Gehry kağıdı buruşturur, onu bir mühendise verir, mühendis ağlar - seyahat yönünü tam olarak geriye doğru alır. Ofisi takıntılı bir şekilde fiziksel modeller üzerinde çalışıyordu. Bu modellerin bir dava olmaktan ziyade bir bina haline gelmesinin nedeni, havacılık endüstrisi için yazılmış ve ekibi tarafından modeli dijitalleştirmek ve imalatçıların gerçekten üretebilecekleri yüzeyleri elle uyarlamak için uyarlanan yazılım olan CATIA'dır. Her panel, olması gereken bir yer olan, numaralandırılmış, toleransı kontrol edilmiş bir nesnedir. Bina bir tartışma sırasında monte edilmiş gibi görünüyor. Aslında bu on yılın en disiplinli objeleri arasında yer alıyor: Tamamını yazması dokuz ay süren bir caz solosu."
             },
             {
               "type": "quote",
-              "content": "Doğaçlama gibi görünüyor. Nehir kıyısındaki en disiplinli şey."
+              "content": "Doğaçlama görünüyor. Nehirdeki en disiplinli şeydir."
             },
             {
               "type": "text",
-              "content": "Bir de kabuk var: yirminci yüzyıl cephe kaplamasının en iyi hikâyesi ve neredeyse kimse doğru dürüst anlatmıyor. Gehry başlangıçta paslanmaz çelik öngörmüştü. Orada duran ise dört onda bir milimetre kalınlığında 33.000 titanyum levha, toplam altmış ton — titanyum ise bu ölçekte bir binada daha önce kimsenin kullanmadığı bir havacılık metalidir, gayet mükemmel bir nedenle: bir servete mal olur."
+              "content": "Bir de yirminci yüzyıl kaplamasının en güzel hikayesi olan ve neredeyse hiç kimsenin bunu doğru dürüst anlatamadığı deri var. Gehry başlangıçta paslanmaz çeliği tasarladı. Orada 33.000 titanyum levha var, milimetrenin onda dördü kalınlığında, toplamda altmış ton - titanyum, bir servete mal olması nedeniyle şimdiye kadar kimsenin bu ölçekte bir binada kullanmadığı bir havacılık metali."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-titanium-detail.jpg",
-              "caption": "Yakından titanyum — milimetrenin altında levhalar, her biri ayrı ayrı eğilmiş, balık pulu gibi üst üste binmiş. Fotoğraf: Jules Verne Times Two, CC BY-SA 4.0, Wikimedia Commons üzerinden"
+              "caption": "Titanyum, yakından - her biri ayrı ayrı kavisli, balık pulu gibi üst üste binen milimetreden küçük tabakalar. Fotoğraf: Jules Verne Times Two, CC BY-SA 4.0, Wikimedia Commons aracılığıyla",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Doksanların başında, kısa bir süreliğine, olmadığı zaman dışında. Sovyetler Birliği Alfa sınıfı saldırı denizaltısını titanyum gövdeyle inşa etmişti; Rusya sonuncularını hizmetten çıkardığında metal dünya piyasasına aktı ve fiyat çakıldı, tam Gehry malzeme seçerken paslanmaz çeliğin altına indi. Yani yirminci yüzyıl sonunun en çok fotoğraflanan binası, hizmet dışı bırakılmış Soğuk Savaş stoğuna sarılıdır. Nervión üzerindeki o parıltı, 0,4 mm’ye haddelenip bir müzeye cıvatalanmış barış temettüsüdür. Hiçbir mimarlık tarihçisi bunu uydurmaya cesaret edemezdi."
+              "content": "Ancak 1990'ların başında kısaca öyle olmadı. Sovyetler Birliği, titanyum gövdeli Alfa sınıfı saldırı denizaltısını inşa etmişti; Rusya sonuncuyu hizmetten çıkardığında, metal dünya piyasasını doldurdu ve fiyat düştü; tam da Gehry'nin malzeme seçtiği anda paslanmaz çeliğin fiyatı düştü. Bu, yirminci yüzyılın sonlarının en çok fotoğraflanan binasının Soğuk Savaş döneminden kalma denizaltı stokuyla sarıldığı anlamına geliyor. Nervión'un üzerindeki bu ışıltı, barışın temettüsüdür, 0,4 mm'ye yuvarlanır ve bir müzeye cıvatalanır. Hiçbir mimarlık tarihçisi onu icat etmeye cesaret edemezdi."
             },
             {
               "type": "text",
-              "content": "Bilbao’nun gerçekte kanıtladığı şey, ihracat sürümünün kabul ettiğinden çok daha ihtiyatlıdır. Kent ayrıca metrosunu yeniledi, nehri temizledi, liman işlevlerini akıntı aşağı taşıdı ve müzenin fotojenik parça olarak yerleştirildiği uzun, sıkıcı, düzgün finanse edilmiş bir bölge planı yürüttü. Heykeli, eşlik eden yirmi yıllık çalışma olmadan sipariş eden kentler bir heykel aldılar. Birkaçı çok pahalı ve boş bir heykel aldı — bedava sunulan ve neredeyse hiç kabul edilmeyen bir ders."
+              "content": "Bilbao'nun gerçekte kanıtladığı şey, ihracat baskısının kabul ettiğinden daha niteliklidir. Şehir ayrıca metrosunu yeniden inşa etti, nehri temizledi, liman fonksiyonlarını nehrin aşağısına taşıdı ve müzenin fotojenik bileşen olarak dahil edildiği uzun, sıkıcı, uygun şekilde finanse edilen bir bölgesel plan yürüttü. Yirmi yıllık çalışma olmadan heykel siparişi veren şehirler heykel aldı. Birçoğuna çok pahalı, boş bir heykel verildi; ücretsiz olarak sunulan ve neredeyse hiç alınmayan bir ders."
             },
             {
               "type": "text",
-              "content": "Bu binada en sevdiğim şey kapı görevlisi. Girişi Jeff Koons’un “Puppy”si bekliyor: on iki metrelik, canlı çiçeklerle döşenmiş, kelleşmesin diye sürekli sulanıp budanan bir West Highland teriyeri. Uluslararası avangardın titanyum katedrali, petunyalardan yapılmış devasa bir köpek tarafından korunuyor. Bilbao, taklitçilerinin hiç anlamadığı şeyi anladı: bütün mesele, kendini tümüyle ciddiye almayı reddettiğinde çok daha iyi işliyor."
+              "content": "Binanın en sevdiğim yanı kapıcı. Girişte Jeff Koons'un Köpek Yavrusu duruyor: canlı çiçekli bitkilerle kaplı, asla kel kalmasın diye sürekli sulanan ve bahçeyle bakımı yapılan on iki metrelik bir West Highland terrier. Petunyalardan yapılmış devasa bir köpek tarafından savunulan, uluslararası avangardın titanyum katedrali. Bilbao, taklitçilerinin asla anlamadığı şeyi anladı; kendisini tamamen ciddiye almayı reddettiği zaman tüm kuruluş çok daha iyi çalışıyor."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-puppy.jpg",
-              "caption": "Jeff Koons’un Puppy’si girişte nöbette — avangardın en az ciddi kapıcısı. Fotoğraf: Jules Verne Times Two, CC BY-SA 4.0, Wikimedia Commons üzerinden"
+              "caption": "Jeff Koons'un Köpek Yavrusu girişte görev başında; avangardın en az ciddi kapıcısı. Fotoğraf: Jules Verne Times Two, CC BY-SA 4.0, Wikimedia Commons aracılığıyla",
+              "align": "center"
             },
             {
               "type": "header",
-              "content": "<span class=\"kicker\">02 · Zaha Hadid Architects</span>Haydar Aliyev Merkezi",
+              "content": "02 · Zaha Hadid ArchitectsHeydar Aliyev Center",
               "level": 2
             },
             {
               "type": "text",
-              "content": "<span class=\"dek\">Bakü · 10 Mayıs 2012’de açıldı · duvara doğru kaçan zemin</span>"
+              "content": "Bakü · 10 Mayıs 2012'de açıldı · duvara doğru uzanan zemin"
             },
             {
               "type": "text",
-              "content": "Zaha Hadid, ününün ilk yirmi yılını neredeyse hiçbir şeyi inşa edilmemiş, yaşayan en ünlü mimar olarak geçirdi. 1983’te Hong Kong’daki The Peak yarışmasını, uçuş halinde kırık cam gibi görünen resimlerle kazandı; inşa edilmedi. Doksanların ortasında Cardiff Bay Opera Binası’nı kazandı ve finansmanın, onun zor bir insan olduğuna dair söyleyecek çok şeyi, tasarım hakkında ise akıllıca söyleyecek hiçbir şeyi olmayan bir kampanya altında eridiğini izledi. Yıllarca mesleğin bekleyen dâhisi ilan edildi: parlak, inşa edilemez, yabancı, kadın — komitelerin gerçekte hangisine itiraz ettiğini siz seçin."
+              "content": "Zaha Hadid şöhretinin ilk yirmi yılını hayatta kalan en ünlü mimar olarak neredeyse hiçbir şey ayakta kalmadan geçirdi. 1983'te Hong Kong's Peak yarışmasını, uçuş sırasında yakalanan kırık camlara benzeyen resimlerle kazandı; inşa edilmemiş. Doksanlı yılların ortasında Cardiff Bay Opera Binası'nı kazandı ve onun zor olduğu konusunda söylenecek çok şey olan ve tasarım hakkında söylenecek akıllıca hiçbir şey olmayan bir kampanya altında finansmanın erimesini izledi. Yıllarca mesleğin bekleyen dehası olarak belirlenmişti: zeki, inşa edilemez, yabancı, kadın - komitelerin gerçekte hangisine itiraz ettiğini seçin."
             },
             {
               "type": "text",
-              "content": "Bakü, bu hayal gücüne nihayet bir yamaç ve çeyrek milyar dolar verildiğinde olan şeydir."
+              "content": "Bakü, bu hayal gücüne nihayet bir tepe ve çeyrek milyar dolar verildiğinde olan şeydir."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-heydar-aliyev-night.jpg",
-              "caption": "Haydar Aliyev Merkezi, Zaha Hadid Architects, 2012. Duvarı bulun — yok. Fotoğraf: lumoplank, CC0, Wikimedia Commons üzerinden"
+              "caption": "Haydar Aliyev Merkezi, Zaha Hadid Architects, 2012. Duvarın yerini tespit edin; duvar yok. Fotoğraf: lumoplank, CC0, Wikimedia Commons aracılığıyla",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">57.500 m²</span><span class=\"stat-label\">sekiz kotta taban alanı</span></li><li><span class=\"stat-figure\">74 m</span><span class=\"stat-label\">kıvrımın tepesinde</span></li><li><span class=\"stat-figure\">1.000</span><span class=\"stat-label\">salonda koltuk</span></li><li><span class=\"stat-figure\">~250 milyon $</span><span class=\"stat-label\">tahmini maliyet</span></li></ul>"
+              "content": "Sekiz kat üzerinde 57.500 m² taban alanı74 katın tepe noktasında oditoryumda 1.000 koltuk~250$tahmini maliyet"
             },
             {
               "type": "text",
-              "content": "Hamle tek ve mutlak: zemini al, kaldır, salonun ve kütüphanenin üstüne katla, tekrar aşağı indir. Meydan, cephe ve çatı tek bir sürekli yüzey ve bina bunların hangisinin nerede başladığını söylemeyi kesinlikle reddediyor. Hiçbir şey görünür kahramanlık yapmıyor: taşıyıcı sistem beyaz kabuğun ardına gizlenmiş, sessizce terleyen bir uzay kafes; öndeki mimarlık ise bunların hiçbirinin çaba gerektirmediğini iddia ediyor. 57.500 metrekarede uygulanmış kuğu ilkesi."
+              "content": "Hareket tek ve mutlaktır: Yeri alın, kaldırın, oditoryumun ve kütüphanenin üzerine katlayın, geri indirin. Plaza, cephe ve çatı kesintisiz bir yüzeydir ve bina bunların herhangi birinin nerede başladığını söylemeyi açıkça reddeder. Hiçbir şey gözle görülür bir kahramanlık sergileyemez; yapı, beyaz derinin arkasına gizlenmiş, sessizce terleyen bir uzay çerçevesidir; ön taraftaki mimari ise bunların hiçbirinin çaba gerektirmediğini iddia eder. Bu, 57.500 metrekarede uygulanan kuğu prensibidir."
             },
             {
               "type": "text",
-              "content": "Sonra içeri giriyorsunuz ve taklitçiler tam burada ele veriyor. Dışarıyı eğriltmek bugün kolay; asıl sınav, geometrinin giriş kapısından sağ çıkıp çıkmadığı, yoksa size asma tavanlı ve yangın çıkış tabelalı dikdörtgen bir oda mı verildiği. Burada salon aynı mantıkla oyulmuş: meşe, balkondan tavana akıyor ve hiçbir derz, işin içinde birkaç farklı ekibin olduğunu hiçbir yerde itiraf etmiyor. Hadid böyle mekânları seksenlerden beri resmediyordu; o zamanlar yalnızca karma sergilerdeki tuvaller olarak vardılar. Bakü’de resim ile bina aynı nesne, ki bunu tarih boyunca çok az mimar söyleyebilmiştir."
+              "content": "Sonra içeri giriyorsunuz, orası taklitçilerin açığa çıktığı yer. Dış tarafı kıvırmak artık çok kolay; Geometrinin ön kapıya dayanıp dayanmayacağı ya da size asma tavanı ve yangın merdiveni işareti bulunan dikdörtgen bir odanın verilip verilmediği anlatılır. Burada oditoryum aynı mantıkla oyulmuştur; meşe balkondan tavana akmaktadır ve hiçbir yerde ek yeri yoktur, bu da birkaç farklı işin söz konusu olduğunu itiraf etmektedir. Hadid, 1980'lerden bu yana bu tür odaları boyuyor, o zamanlar bu odalar yalnızca grup sergilerinde tuval olarak mevcuttu. Bakü'de tablo ve bina, tarihte çok az mimarın söyleyebildiği aynı nesnedir."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-baku-interior-stairs.jpg",
-              "caption": "Kıvrımın içinde: merdiven, korkuluk ve tavan aynı sürekli yüzeyden dökülmüş. Fotoğraf: Mahmoodrezamo, CC BY-SA 4.0, Wikimedia Commons üzerinden"
+              "caption": "Katlamanın içi: merdivenler, korkuluk ve tavan aynı sürekli yüzeyden dökülmüştür. Fotoğraf: Mahmoodrezamo, CC BY-SA 4.0, Wikimedia Commons aracılığıyla",
+              "align": "center"
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-heydar-aliyev-auditorium.jpg",
-              "caption": "Bin koltuk ve aralarında tek bir dik açı yok. Fotoğraf: Emin Allahverdi, CC BY-SA 4.0, Wikimedia Commons üzerinden"
+              "caption": "Bin koltuk var ve aralarında dik açı yok. Fotoğraf: Emin Allahverdi, CC BY-SA 4.0, Wikimedia Commons aracılığıyla",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Şimdi lüks albümlerin atladığı paragraf. Bina, Azerbaycan’ın müteveffa cumhurbaşkanının adını taşıyor ve görevde onun yerine geçen oğlunun hükümeti döneminde ısmarlandı. Çok eski bir türe ait — iktidardaki ailenin portresi olarak ulusal kültür sarayı — ve o dönemde hızla yeniden yapılan bir kentte yükseldi; geniş dönüşüm alanındaki sakinler, onay vermedikleri yıkımları ve tahliyeleri bildirdi. Londra Design Museum 2014 Yılın Tasarımı ödülünü verdiğinde, ödül paketin içinde kamusal bir tartışmayla geldi ve tartışma çatıyla ilgili değildi."
+              "content": "Şimdi sehpa kitaplarının dışarıda bıraktığı paragraf. Bina, adını Azerbaycan'ın merhum cumhurbaşkanının onuruna almıştır ve kendisinden sonra gelen oğlunun yönetimi altında yaptırılmıştır. Bu, çok eski bir türe (yönetici ailenin portresi olarak ulusal kültür sarayı) ait ve hızla yeniden yapılanmakta olan bir şehirde ortaya çıktı; daha geniş yeniden yapılanma bölgesindeki sakinler, kabul etmedikleri yıkım ve tahliyeleri bildirdiler. Londra Tasarım Müzesi 2014'te Yılın Tasarımı'nı verdiğinde, ödül kamuoyuna açık bir tartışmayla birlikte geldi ve tartışma çatıyla ilgili değildi."
             },
             {
               "type": "text",
-              "content": "Kuğu boynu mantığı konfora bile uzanıyor. Kıvrımların içinde, cam altında gerçek ağaçlarla dikilmiş, birkaç kat yüksekliğinde kapalı kış bahçeleri saklı — beyaz eğrilerin sıcak ve yeşil bir yere konması gerekiyordu. Petrol üzerine kurulu bir kentte, su üzerine değil, kapalı alanda bir şey yetiştirmek tuhaf bir girişim — ve tam olarak işe yaramasının nedeni de bina bu savurganlık için hiç özür dilemiyor olması."
+              "content": "Kuğu boynu mantığı rahatlığı da kapsar. Kıvrımların arasına sıkışmış, birkaç kat yüksekliğinde, cam altında gerçek ağaçlarla dikilmiş kapalı kış bahçeleri var, böylece beyaz kıvrımların inebileceği sıcak ve yeşil bir yer var. Su yerine petrol üzerine inşa edilmiş bir şehirde kapalı alanda büyümek tuhaf bir şey ve bu tam olarak işe yarıyor çünkü binadaki hiçbir şey aşırılıktan dolayı özür dilemiyor."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-baku-interior-garden.jpg",
-              "caption": "Kapalı kış bahçelerinden biri — kıvrımın içinde, cam altında gerçek ağaçlar. Fotoğraf: Mahmoodrezamo, CC BY-SA 4.0, Wikimedia Commons üzerinden"
+              "caption": "Kapalı kış bahçelerinden biri; kavisli, camın altında gerçek ağaçlar. Fotoğraf: Mahmoodrezamo, CC BY-SA 4.0, Wikimedia Commons aracılığıyla",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "İki şey aynı anda doğru ve rahatsızlık, eleştirinin başarısızlığı değil dürüst tepkidir. Bu, yüzey geometrisinin bir başyapıtı; muhtemelen Hadid’in otuz yıl boyunca çizdiği her şeyin en saf inşa edilmiş ifadesi. Aynı zamanda bir petrol devletinin, görevdeki cumhurbaşkanının babasına ödediği bir anıt. Yalnızca ilk cümleyi basan bir dergi eleştiri değil broşür yayımlar — ve bina, doğru biçimde tarif edilmeye dayanacak kadar güçlü; bunu anıtların çoğu için söyleyemezsiniz."
+              "content": "Her ikisi de aynı anda doğrudur ve rahatsızlık, eleştirinin başarısızlığından ziyade dürüst bir tepkidir. Bu, yüzey geometrisinin bir başyapıtıdır ve muhtemelen Hadid'in otuz yıl boyunca çizdiği her şeyin en saf yapılı ifadesidir. Aynı zamanda bir petrol devleti tarafından finanse edilen ve görevdeki başkanın babasına dikilen bir anıttır. Yalnızca ilk cümleyi basan bir dergi eleştiri yayınlamıyor, bir broşür yayınlıyor - ve bina doğru bir şekilde tanımlandığında hayatta kalacak kadar güçlü ki bu da çoğu anıtın başarabildiğinden daha fazla."
             },
             {
               "type": "header",
-              "content": "<span class=\"kicker\">03 · Zaha Hadid Architects</span>Galaxy SOHO",
+              "content": "03 · Zaha Hadid ArchitectsGalaxy SOHO",
               "level": 2
             },
             {
               "type": "text",
-              "content": "<span class=\"dek\">Pekin · 2012’de tamamlandı · ikinci çevre yolunun üstünde dört ay</span>"
+              "content": "Pekin · 2012'yi tamamladı · ikinci çevre yolunda dört ay geçti"
             },
             {
               "type": "text",
-              "content": "Aynı ofis, aynı yıl, tamamen farklı bir işveren: Zhang Xin’in yönettiği SOHO China — mimarlığı başkalarının saat aldığı gibi alan bir geliştirici: görünür biçimde, pahalıya ve imzanın yeniden satış fiyatına ne yaptığını net bilerek. İş tanımı Pekin merkezinde büyük bir arter üzerinde ofis ve perakendeydi. Yanıt, birkaç kotta köprülerle kaynaşmış dört yuvarlatılmış kütle oldu: on sekiz katta 330.000 metrekare ve aralarındaki boşluk, geliştiricilerin kuleler arasında bıraktığı alışıldık rüzgârlı hiçliğin yerine akışkan avlulara biçimlendirildi."
+              "content": "Aynı ofis, aynı yıl, tamamen farklı müşteri: Zhang Xin tarafından yönetilen geliştirici SOHO Çin, diğer insanların saat satın alması gibi mimariyi de satın alıyor - gözle görülür, pahalı bir şekilde ve imzanın yeniden satışta ne işe yaradığını net bir şekilde anlayarak. Özet, Pekin'in merkezindeki büyük bir arterdeki ofisler ve perakende satışlardı. Cevap, köprülerle çeşitli seviyelerde kaynaştırılan dört yuvarlak hacimdi: on sekiz kata yayılan 330.000 metrekare; aralarındaki boşluk, geliştiricilerin kuleler arasında bıraktıkları alışılagelmiş rüzgarlı hiçbir şey yerine akan avlular şeklinde şekillendi."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-galaxy-soho-bridge.jpg",
-              "caption": "Galaxy SOHO’nun dört kütlesini tek bir sürekli güzergâha kaynaştıran köprüler. Fotoğraf: Francesco Bini, CC BY-SA 4.0, Wikimedia Commons üzerinden"
+              "caption": "Galaxy SOHO'nun dört cildini tek bir sürekli rotada birleştiren köprüler. Fotoğraf: Francesco Bini, CC BY-SA 4.0, Wikimedia Commons aracılığıyla",
+              "align": "center"
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-galaxy-soho-courtyard.jpg",
-              "caption": "Galaxy SOHO, 2012. Binalar arasındaki boşluk — normalde çöp konteynerlerinin yaşadığı yer — baş salona terfi ettirilmiş. Fotoğraf: HoweyYuan, CC BY-SA 4.0, Wikimedia Commons üzerinden"
+              "caption": "Galaxy SOHO, 2012. Binalar arasındaki boşluk (normalde çöp kutularının bulunduğu yer) ana odaya yükseltildi. Fotoğraf: HoweyYuan, CC BY-SA 4.0, Wikimedia Commons aracılığıyla",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">330.000 m²</span><span class=\"stat-label\">alan — neredeyse altı Haydar Aliyev Merkezi</span></li><li><span class=\"stat-figure\">18</span><span class=\"stat-label\">kat</span></li><li><span class=\"stat-figure\">67 m</span><span class=\"stat-label\">yükseklik</span></li><li><span class=\"stat-figure\">4</span><span class=\"stat-label\">köprülenmiş kaynaşmış kütle</span></li></ul>"
+              "content": "330.000 m² taban alanı — altı Haydar Aliyev Merkezi yakınında18kat67 myükseklik4birleşik hacimler, çeşitli seviyelerde köprülenmiş"
             },
             {
               "type": "text",
-              "content": "İç mekânlar buradaki asıl başarı ve aynı zamanda bu yazının en sessiz ürkütücü şeyi. Balkonlar kesintisiz şeritler halinde birbirinin yanından geçiyor; hiçbir şey köşeyle bitmiyor; göze hiçbir yerde durup dinlenebileceği bir köşe verilmiyor. Üçüncü kotta durun; bakışınız atriyumun çevresinde küvette dönen su gibi kayar, ayaklar da peşinden gider, çünkü geometri hareket etmeyi bırakmadığında bedenler tam olarak bunu yapar. Gerçekten güzel. Ve perakende diliyle, eve gitmeyi tercih ettiğinize karar verecek kadar uzun süre kıpırdamadan durmanızı engellemek için tasarlanmış bir makine."
+              "content": "İç mekanlar bu makaledeki gerçek başarı ve aynı zamanda en sessizce uğursuz şeydir. Balkonlar kesintisiz şeritler halinde birbirinin yanından geçiyor; hiçbir şey yolunda gitmiyor; göze hiçbir zaman durup dinlenebileceği bir köşe bırakılmaz. Üçüncü katta durun ve bakışlarınız suyun banyoda dolaşması gibi atriyumun etrafında kayar ve ayaklarınız onu takip eder, çünkü geometri hareket etmeye devam ettiğinde bedenler bunu yapar. Gerçekten çok güzel. Aynı zamanda, perakende açısından bakıldığında, eve gitmeyi tercih edeceğinize karar verecek kadar uzun süre hareketsiz durmanızı engellemek üzere tasarlanmış bir makinedir."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-galaxy-soho-atrium.jpg",
-              "caption": "Üst üste yığılmış katlar yerine sürekli şeritler: gözün oturacak yeri yok. Fotoğraf: Francesco Bini, CC BY-SA 4.0, Wikimedia Commons üzerinden"
+              "caption": "Yığılmış zeminler yerine sürekli bantlar: gözünüzün oturacağı hiçbir yer yok. Fotoğraf: Francesco Bini, CC BY-SA 4.0, Wikimedia Commons aracılığıyla",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Bu da bizi kavgaya getiriyor ve kavga gerçekti. 2013’te bina RIBA’nın Lubetkin Ödülü’ne aday gösterildiğinde, Pekin Kültürel Miras Koruma Merkezi kamuoyu önünde itiraz etti: projenin “eski Pekin sokak siluetinin korunmasına, özgün kent planına, geleneksel hutonglara ve avlulu evlere, peyzaj oluşumuna ve Pekin’in benzersiz yerel mimarisinin üslubuna ve renk düzenine büyük zarar verdiğini” savundu. Bu bir beğeni şikâyeti değil. Bu bir görgü şikâyeti: bir koruma kurumu, uluslararası bir jüriye kutlanan nesnenin tartışmayı kazanmak yerine dozerle düzlediğini bildiriyor."
+              "content": "Bu da bizi kavgaya getiriyor ve bu gerçek bir kavgaydı. 2013 yılında bina RIBA'nın Lubetkin Ödülü'ne aday gösterildiğinde, Pekin Kültürel Mirası Koruma Merkezi, bu gelişmenin \"eski Pekin sokak manzarasının, orijinal şehir planının, geleneksel hutong ve avlulu evlerin, peyzaj formasyonunun ve Pekin'in benzersiz yerel mimarisinin stil ve renk şemasının korunmasına büyük zarar verdiğini\" öne sürerek kamuya açık bir şekilde itiraz etti. Bu lezzetle ilgili bir şikayet değil. Bu, görgü kurallarıyla ilgili bir şikayettir; bir miras organı, uluslararası bir jüriye, kutlanan nesnenin tartışmayı kazanmak yerine yerle bir ettiğini bildirmektedir."
             },
             {
               "type": "text",
-              "content": "Ve itiraz yerini buluyor, çünkü sürekli, kendi içinde çözülen bir geometri, yanında ne durduğunu görmezden gelmek için muhteşem donanımlıdır. Tümüyle eğrilerden yapılmış bir binanın, biriyle karşılaşabileceği kenarı yoktur. Sokakla tartışmaz; sokağın konuştuğunu kabul etmeyi reddeder. Nesneye hayran olup yine de bu noktayı teslim edebilirsiniz — ben ikisini de yapıyorum — ve sonra meseleyi bitiren ayrıntıyı fark edersiniz: Galaxy SOHO’daki cömert olan her şey içeriye bakıyor. Avlular çok güzel ve özel mülk. Bu, yirmi birinci yüzyıl yapılaşmasının büyük bölümünün doğru bir tarifi ve bir iltifat değil."
+              "content": "Ve yere iner çünkü sürekli, kendi kendini çözen bir geometri, yanında duran her şeyi görmezden gelecek şekilde mükemmel bir donanıma sahiptir. Tamamen eğrilerden oluşan bir binanın kimseyi karşılayacak kenarları yoktur. Sokakla tartışmaz; sokağın konuştuğunu kabul etmeyi reddediyor. Nesneye hayranlık duyabilir ve yine de asıl noktayı kabul edebilirsiniz - ben ikisini de yapıyorum - ve sonra onu çözümleyen ayrıntıyı fark edebilirsiniz: Galaxy SOHO'daki cömert her şey içe dönüktür. Avlular çok hoş ve özeldir. Bu, yirmi birinci yüzyıldaki gelişmelerin büyük bir kısmının doğru bir tanımıdır ve bir iltifat değildir."
             },
             {
               "type": "text",
-              "content": "Bunların hiçbiri Galaxy SOHO’nun aynı yıl RIBA International Award’ı kazanmasına engel olmadı — protesto mektubu ve ödül birkaç ay arayla geldi. Uluslararası jüriler ile kentin koruma kurumu o zaman da, hâlâ da, tamamen farklı iki soruyu yanıtlıyordu."
+              "content": "Bunların hiçbiri Galaxy SOHO'nun aynı yıl RIBA Uluslararası Ödülü'nü kazanmasını engellemedi; mektup ve ödül birkaç ay arayla geldi. Uluslararası jüriler ve belediye miras kuruluşları tamamen farklı iki soruyu yanıtlıyordu ve hâlâ da yanıtlıyor."
             },
             {
               "type": "header",
-              "content": "<span class=\"kicker\">04 · UNStudio</span>Mercedes-Benz Müzesi",
+              "content": "04 · UNStudioMercedes-Benz Museum",
               "level": 2
             },
             {
               "type": "text",
-              "content": "<span class=\"dek\">Stuttgart · 19 Mayıs 2006’da açıldı · deri bağlamış dolaşım şeması</span>"
+              "content": "Stuttgart · 19 Mayıs 2006'da açıldı · deriyi büyüten trafik diyagramı"
             },
             {
               "type": "text",
-              "content": "Ben van Berkel ve Caroline Bos bir biçimle başlamazlar. Bir hareket problemiyle başlar, problemi çizer ve biçimin sonuç olmasına izin verirler — ofisin adının kapıda iki soyadı yerine UNStudio olmasının nedeni bu ve bu yapının bu yazıdaki açık ara en az kendine hayran bina olmasının nedeni de bu."
+              "content": "Ben van Berkel ve Caroline Bos bir şekille başlamıyorlar. Hareketteki bir sorunla başlıyorlar, sorunu çiziyorlar ve biçimin sonuç olmasına izin veriyorlar - işte bu yüzden kapısında iki soyadı olan bir şey yerine uygulamaya UNStudio adı veriliyor ve neden bu makaledeki rahat bir farkla en az rahatına düşkün bina bu."
             },
             {
               "type": "text",
-              "content": "UNStudio, arsa için düzenlenen yarışmayı 2001’de kazandı. Müzenin inşası beş yıl sürdü — Stuttgart’ın yarısının yonca planın bir çukurdan yükselişini izleyip tek bir araba sergilenmeden önce hakkında bir fikir edinmesine yetecek kadar uzun bir süre."
+              "content": "UNStudio 2001 yılında alan için yapılan yarışmayı kazandı. Müzenin inşası beş yıl sürdü; bu, Stuttgart'ın yarısının yerdeki bir delikten yoncanın yükselişini izlemesine ve tek bir araba sergilenmeden önce onun hakkında fikir sahibi olmasına yetecek kadar sürdü."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-mercedes-blue-hour.jpg",
-              "caption": "Mavi saatte Mercedes-Benz Müzesi — içeriden aydınlatılınca burgu daha da iyi okunuyor. Fotoğraf: Julian Herzog, CC BY 4.0, Wikimedia Commons üzerinden"
+              "caption": "Mavi saatte Mercedes-Benz Müzesi – bu değişiklik içeriden daha da iyi aydınlatılıyor. Fotoğraf: Julian Herzog, CC BY 4.0, Wikimedia Commons aracılığıyla",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Problem: Mercedes-Benz iki hikâyeyi aynı anda anlatmak istiyor. Kronolojik olan — işte 1886, işte ilk otomobil, bir yüzyıl boyunca yürümeye devam edin — ve tematik olan; yarış arabalarının yarış arabalarıyla, kamyonların kamyonlarla yaşadığı hikâye. İki anlatı, tek bir kütle ve ikinciye ulaşmak için birinciyi iki kez yürümek zorunda kalırsa haklı olarak öfkelenecek bir ziyaretçi."
+              "content": "Sorun: Mercedes-Benz aynı anda iki hikaye anlatmak istiyor. Kronolojik olanı - işte 1886, işte ilk otomobil, bir yüzyıl boyunca yürümeye devam ediyoruz - ve tematik olanı, yarış arabalarının yarış arabalarıyla ve teslimat kamyonlarının teslimat kamyonlarıyla birlikte yaşadığı. İki anlatı, bir cilt ve ikinciye ulaşmak için ilkini iki kez yürümek zorunda bırakıldığında haklı olarak öfkelenecek bir ziyaretçi."
             },
             {
               "type": "text",
-              "content": "Yanıt bir çift sarmal. İki rampa, merkezî bir boşluğun çevresinde binanın içinden aşağı doğru dönüyor, hiç kesişmiyor, her biri hikâyelerden birini taşıyor ve her kotta geçişler var. Yukarı çıkıp aşağı iniyorsunuz. Tamamlayıcı olup yüzyılı sırayla gezebilir ya da canınız istediği anda kamyonlara kaçabilirsiniz; her iki durumda da hep yokuş aşağı gidersiniz ve asla kaybolmazsınız. Plan, ortası çıkarılmış üç örtüşen daireden oluşan bir yonca ve bunun ürettiği üçgen atriyum, gayet bilinçli biçimde bir Wankel döner motorunun biçimindedir."
+              "content": "Cevap çift sarmaldır. İki rampa, merkezi bir boşluğun etrafında binanın içinden aşağıya doğru kıvrılıyor, hiç karşılaşmıyor, her biri katlardan birini taşıyor ve her seviyede geçişler var. Zirveye çıkıyorsunuz ve iniyorsunuz. Tamamlayıcı olabilirsiniz ve yüzyılı sırayla alabilirsiniz ya da canınız istediğinde kamyonlara sığınabilirsiniz ve her iki durumda da daima yokuş aşağı gidersiniz ve asla kaybolmazsınız. Plan, ortası çıkarılmış, üst üste binen üç daireden oluşan bir yonca yaprağından oluşuyor ve ortaya çıkan üçgen atrium, bilinçli olarak Wankel döner motorunun şekline dönüştürülüyor."
             },
             {
               "type": "quote",
-              "content": "Motora adanmış bir tapınak, motor biçiminde, çift sarmal olarak örgütlenmiş. Kurumsal mimarlık kendisi hakkında nadiren bu kadar okumuştur."
+              "content": "Motor şeklinde, çift sarmal şeklinde düzenlenmiş, motor için bir türbe. Kurumsal mimari nadiren kendisi hakkında bu kadar bilgilidir."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-mercedes-benz-museum.jpg",
-              "caption": "Mercedes-Benz Müzesi, UNStudio, 2006. Böyle görünmesinin nedeni, içinden nasıl yürüdüğünüz. Fotoğraf: Ank Kumar, CC BY-SA 4.0, Wikimedia Commons üzerinden"
+              "caption": "Mercedes-Benz Müzesi, UNStudio, 2006. İçinden geçme şekliniz nedeniyle böyle görünüyor. Fotoğraf: Ank Kumar, CC BY-SA 4.0, Wikimedia Commons aracılığıyla",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">16.500 m²</span><span class=\"stat-label\">sergi alanı</span></li><li><span class=\"stat-figure\">4.800 m²</span><span class=\"stat-label\">üzerinde durduğu oturum alanı</span></li><li><span class=\"stat-figure\">160+</span><span class=\"stat-label\">sergilenen araç</span></li><li><span class=\"stat-figure\">800.245</span><span class=\"stat-label\">2023’te ziyaretçi</span></li></ul>"
+              "content": "16.500 m² sergi alanı4.800 m² üzerinde durduğu kapladığı alan160+ araç sergileniyor 2023'te 800.245ziyaretçi"
             },
             {
               "type": "text",
-              "content": "İlk iki rakamı yan yana tutun, çünkü bütün numara orada: 4.800 metrekarelik bir oturum alanının üzerinde duran 16.500 metrekare sergi. Bina, kapladığı zeminden neredeyse üç buçuk kat büyük ve bunu düz plakaları üst üste yığarak değil, havada sürekli bir rampa sararak başarıyor; böylece dolaşım ile sergi, iki kez kullanılmış aynı metrekare oluyor. İçinde israf edilmiş tek bir koridor yok. Küçük binalar ağırlığında nesnelerle dolu bir müzede bu ayrıca, burkulmuş betonun bir otobüsün yoluna hiçbir şey koymadan açıklık geçmesi gerektiği anlamına geliyor."
+              "content": "İlk iki rakamı birbirine karşı tutun, çünkü tüm püf noktasını içeriyorlar: 4.800 metrekarelik bir alan üzerinde duran 16.500 metrekarelik sergi. Bina, bulunduğu yerden neredeyse üç buçuk kat daha büyük ve bunu düz levhaları üst üste koyarak değil, hava boyunca sürekli bir rampa sararak başarıyor, böylece dolaşım ve sergileme aynı metrekarenin iki kez kullanılmasıyla sağlanıyor. Hiçbir yerinde boş koridor yok. Küçük binalar kadar ağırlığa sahip nesnelerle dolu bir müzede, bu aynı zamanda bükülmüş betonun bir otobüsün önünde neredeyse hiçbir şey olmadan uzanması gerektiği anlamına da geliyor."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-mercedes-benz-museum-facade.jpg",
-              "caption": "Dışarıdaki her şerit, içeride palto giymiş bir rampa. Fotoğraf: Alexander Migl, CC BY-SA 4.0, Wikimedia Commons üzerinden"
+              "caption": "Dışarıdaki her bant içeride bir rampa, bir palto giyiyor. Fotoğraf: Alexander Migl, CC BY-SA 4.0, Wikimedia Commons aracılığıyla",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Yani bu, teknik olarak gruptaki en zor nesne ve zorluğu tümüyle görünmez olan tek yapı. Bütün gösteri taşıyıcı sisteme gitti, fotoğrafa bir damla bile kalmadı; muhtemelen bu yüzden Bilbao ya da Bakü’nün dergi kariyerine hiç sahip olmadı ve — sanıyorum — mühendisler tam olarak bunu istiyordu. Yılda sekiz yüz bin kişi, binanın nasıl ayakta durduğunu bir kez bile merak etmeden bu rampadan iniyor. Bu, mimarlığın başarısızlığı değil. Disiplinin verebileceği en yüksek övgü."
+              "content": "Yani bu, teknik olarak gruptaki en sert nesnedir ve zorluğu tamamen görünmez olan tek nesnedir. Şovmenlik yapının içine girdi ama fotoğrafa hiçbiri girmedi, muhtemelen bu yüzden hiçbir zaman Bilbao ya da Bakü'deki dergi kariyerine sahip olmadı ve -sanırım- mühendislerin tam olarak istediği gibi. Yılda sekiz yüz bin kişi onun nasıl ayakta durduğunu bir kez bile merak etmeden aşağı iniyor. Bu mimarinin başarısızlığı değil. Bu disiplinin verebileceği en büyük iltifattır."
             },
             {
               "type": "header",
-              "content": "<span class=\"kicker\">05 · MAD Architects</span>Harbin Opera Binası",
+              "content": "05 · MAD ArchitectsHarbin Opera House",
               "level": 2
             },
             {
               "type": "text",
-              "content": "<span class=\"dek\">Harbin · 2011’de temel atıldı, 2015’te açıldı · bilet satılan bir kar yığını</span>"
+              "content": "Harbin · 2011'de çığır açtı, 2015'te açıldı · bilet satın alabileceğiniz bir rüzgârla oluşan kar yığını"
             },
             {
               "type": "text",
-              "content": "Ma Yansong, MAD’i kurmadan önce Hadid’in ofisinde çalıştı ve miras her yüzeyde okunuyor. Eklediği şey, eğrilerin nereden geldiğine dair bir sav. MAD’in tekrarlanan tezi shanshui — dağ-su —: Çin yapı geleneği nesneyle değil peyzajla ilgilidir ve mimarlık, üzerinde bir kupa gibi durmak yerine arazi gibi davranmalıdır. Bunu bir röportajda söylemek kolay, alüminyumda kanıtlamak zordur. Harbin, kanıtı."
+              "content": "Ma Yansong, MAD'i kurmadan önce Hadid'in ofisinde çalışıyordu ve miras her yüzeyde okunabiliyor. Eklediği şey, eğrilerin nereden geldiğine dair bir tartışmaydı. MAD'in yinelenen iddiası, Çin inşaat geleneğinin nesneden ziyade manzarayla ilgili olduğu ve mimarinin bir ganimet gibi onun üzerinde durmak yerine arazi gibi davranması gerektiği yönündeki Shanshui (dağ suyu) yönünde. Bu bir röportajda söylenmesi kolay, alüminyumda kanıtlanması zor bir şeydir. Harbin bunun kanıtıdır."
             },
             {
               "type": "text",
-              "content": "Araziye bakın. Harbin, kışın altı aylık idari bir gerçek olduğu, büyük yıllık festivalin aynı nehirden kesilen buz bloklarıyla kurulduğu ve sıcaklığın bir Orta Avrupalıya kendi zavallı ocak ayını sevgiyle andıracak şeyler yaptığı bir eyalette, Songhua nehri üzerinde yer alıyor. MAD kente sulak alanda alçak, beyaz bir tümsek verdi; tümüyle beyaz alüminyumla kaplı ve açıkça bir kar birikintisi olarak okunuyor — karla arası iyi bir bina, çünkü zaten karın biçiminde. Altında 470 otopark yeri var, çünkü arazi bir metafor ve burası hâlâ 2015 Çin’i."
+              "content": "Siteyi düşünün. Harbin, Songhua nehrinin kıyısında, kışın altı aylık bir idari olgu olduğu, her yıl düzenlenen büyük festivalin aynı nehirden kesilen buz bloklarından yapıldığı ve sıcaklığın bir Orta Avrupalının kendi sefil Ocak ayına karşı sıcak hissetmesini sağlayacak şeyler yaptığı bir ilde yer alıyor. MAD, ona sulak alanda alçak beyaz bir tümsek verdi, tamamen beyaz alüminyumla kaplandı ve açıkça bir sürüklenme olarak okundu - zaten kar şeklinde olduğu için karla rahat bir bina. Altında 470 park yeri var çünkü arazi bir metafor ve burası 2015 yılındaki Çin'i gösteriyor."
             },
             {
               "type": "text",
-              "content": "MAD, projeyi bu kez alışılmış yoldan aldı: 2010’da açık uluslararası bir yarışmayla — yalnızca tiyatro için değil, Sunghua boyunca yaklaşık 180 hektarlık sulak alanı kapsayan bir ana plan için. Opera binası, o plandan dünyanın gerçekten baktığı tek yapı, ama hiçbir zaman tek başına durması amaçlanmadı. Nehir hakkında çok daha uzun bir cümlenin noktalama işareti o."
+              "content": "MAD, projeyi bir kez olsun olağan yoldan kazandı: 2010 yılında sadece tiyatro alanını değil, Songhua boyunca yaklaşık 180 hektarlık sulak alanı kapsayan bir ana plan için düzenlenen uluslararası açık yarışma. Opera binası, dünyanın aslında bu plandan baktığı tek binadır, ancak hiçbir zaman tek başına ayakta kalması amaçlanmamıştır. Nehirle ilgili çok daha uzun bir cümlenin üzerindeki noktalama işareti."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-exterior-2.jpg",
-              "caption": "Gündüz Harbin Opera Binası: alüminyum ışığa göre kaya, buz ya da kum tepesi gibi okunuyor. Fotoğraf: EditQ, CC BY-SA 4.0, Wikimedia Commons üzerinden"
+              "caption": "Gündüz Harbin Opera Binası: Alüminyum, ışığa bağlı olarak kaya, buz veya kumul olarak okunuyor. Fotoğraf: EditQ, CC BY-SA 4.0, Wikimedia Commons aracılığıyla",
+              "align": "center"
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-opera-house-panorama.jpg",
-              "caption": "Harbin Opera Binası, MAD Architects, 2015. Sulak alanın üzerine konmuyor; kalmaya karar vermiş bir hava durumu gibi içine yerleşiyor. Fotoğraf: Jeremy Thompson, CC BY 2.0, Wikimedia Commons üzerinden",
+              "caption": "Harbin Opera Binası, MAD Architects, 2015. Sulak alana, kalmaya karar vermiş hava gibi yerleşiyor. Fotoğraf: Jeremy Thompson, CC BY 2.0, Wikimedia Commons aracılığıyla",
               "stretched": true
             },
             {
               "type": "text",
-              "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">1.600+</span><span class=\"stat-label\">büyük salonda koltuk</span></li><li><span class=\"stat-figure\">400</span><span class=\"stat-label\">stüdyo salonunda koltuk</span></li><li><span class=\"stat-figure\">~79.000 m²</span><span class=\"stat-label\">bina alanı</span></li><li><span class=\"stat-figure\">0</span><span class=\"stat-label\">çatı için gereken bilet</span></li></ul>"
+              "content": "Büyük tiyatroda 1.600+koltukStüdyo tiyatrosunda 400koltuk~79.000 m²inşaat alanı0çatı için bilet gerekli"
             },
             {
               "type": "text",
-              "content": "Saygımı kazanan şey işte bu son rakam ve bu bir şaka değil. Cepheye oyulmuş bir kamusal yol, binanın dışından yukarı, herkesin çıkabileceği bir çatı meydanına tırmanıyor: bilet yok, gösteri yok, kılık kıyafet kuralı yok ve yukarıda oraya ait olup olmadığınızı denetleyen kimse yok. Bir opera binası — var olan en statü kaygılı yapı türü, tüm mimarlık tarihi çıkarken görülmeniz için tasarlanmış merdivenlerden oluşan bir tipoloji — en iyi manzarasını asla koltuk satın almayacak insanlara bağışlıyor. Dünyadaki her opera binası bütçesini fuayenin size ait olmadığını öğretmeye harcar. Bu, çatıyı veriyor ve karşılığında hiçbir şey istemiyor."
+              "content": "Bu son rakam saygımı kazanan rakam ve bu bir şaka değil. Cepheye halka açık bir yol oyulmuş ve binanın dışından herkesin yürüyebileceği bir çatı plazasına tırmanıyor: bilet yok, performans yok, kıyafet kuralı yok, tepede hiç kimse oraya ait olup olmadığınızı kontrol etmiyor. Tüm mimari geçmişi yukarı çıkarken görülebilecek şekilde tasarlanmış merdivenlerden oluşan bir tipoloji olan, var olan tek statü kaygısı taşıyan bina türü olan bir opera binası, en iyi manzarasını asla bir koltuk satın almayacak insanlara sunar. Dünyadaki her opera binası, bütçesini size fuayenin size göre olmadığını öğreterek harcıyor. Bu çatıyı veriyor ve hiçbir şey istemiyor."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-exterior-3.jpg",
-              "caption": "Binanın Heilongjiang gökyüzüne karşı alçak, rüzgârın yonttuğu silueti. Fotoğraf: EditQ, CC BY-SA 4.0, Wikimedia Commons üzerinden"
+              "caption": "Binanın Heilongjiang gökyüzüne bakan alçak, rüzgârla oyulmuş profili. Fotoğraf: EditQ, CC BY-SA 4.0, Wikimedia Commons aracılığıyla",
+              "align": "center"
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-curves-harbin-opera-house.jpg",
-              "caption": "Kamusal rampa sağdaki kütle boyunca yükseliyor ve doğrudan tepenin üzerinden geçiyor. Fotoğraf: EditQ, CC BY-SA 4.0, Wikimedia Commons üzerinden"
+              "caption": "Halka açık rampa sağ taraftaki hacim boyunca yükselir ve doğrudan tepeye doğru uzanır. Fotoğraf: EditQ, CC BY-SA 4.0, Wikimedia Commons aracılığıyla",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Sonra içeri giriyorsunuz ve mimarlığın sıcaklığı tümüyle değişiyor. Ana salon Mançurya dişbudağıyla kaplı; monte edilmiş değil aşınmış gibi okunan yüzeylere frezelenmiş. MAD yol gösterici imgeyi elde oyulmuş bir ahşap blok olarak tarif etti. Onca arktik alüminyumdan sonra o sıcak damara adım atmak neredeyse fiziksel bir şey yapıyor: gözbebekleri ayarlanıyor, omuzlar düşüyor. Dışarıda buz, içeride ocak. Bu, kuzey mimarlığının en eski hamlesi; 1.600 koltukluk bir salon ölçeğinde ve CNC tezgâhıyla uygulanmış."
+              "content": "Daha sonra içeri giriyorsunuz ve mimarinin sıcaklığı tamamen değişiyor. Ana salon, Mançurya külüyle kaplı, bir araya getirilmiş olmaktan ziyade aşınmış gibi görünen yüzeylere frezelenmiş; MAD, yol gösterici görüntüyü elle oyulmuş bir tahta blok olarak tanımladı. Bütün bu arktik alüminyumdan sonra, o sıcak tahılın içine yürümek neredeyse fiziksel bir şey yapıyor; gözbebekleri alışıyor, omuzlar düşüyor. Dışarıda buz, içeride ocak. 1.600 kişilik CNC değirmenli bir tiyatro ölçeğinde gerçekleştirilen, kuzey mimarisindeki en eski hamledir."
             },
             {
               "type": "text",
-              "content": "Sürekli döndüğüm şey bu iş bölümü. Dışarıda eğrilik iklimdir. İçeride eğrilik akustik ve sıcaklıktır. Binanın hiçbir yerinde eğrilik, yalnızca fotoğrafta iyi çıktığı için eğrilik değil — ve tam da bu olan yirmi yıllık binalardan sonra fark hiç de ince değil. Bu, nedeni olan bir biçimle basın danışmanı olan bir biçim arasındaki farktır."
+              "content": "Bu işbölümü, sürekli dönüp durduğum konu. Dışarıda eğrilik iklimdir. İçeride eğrilik akustik ve sıcaklıktır. Binanın hiçbir yerinde eğrilik yalnızca eğrilik değildir, çünkü iyi fotoğraf çeker ve tam da bu şekilde olan yirmi yıllık binalardan sonra, fark çok da hafif değildir. Sebepli bir form ile reklamcılı bir form arasındaki farktır."
             },
             {
               "type": "header",
-              "content": "<span class=\"kicker\">Sonsöz</span>eğrinin bedeli",
+              "content": "Afterwordwhat the curve costs",
               "level": 2
             },
             {
               "type": "text",
-              "content": "Yirmi beş yıl sonra teknoloji kazandı ve retorik süt gibi ekşidi. Artık kimse “parametrisizm” sözcüğünü küçük bir özür öksürüğü olmadan yüksek sesle söylemiyor. Çift eğrilikli yüzeyler sıradan endüstriyel üretim; yetkin, orta ölçekli bir ofis öğle yemeğinden önce modelleyip maliyetlendirip ihale eder. Devrim öyle eksiksiz başarıya ulaştı ki ilginç olmaktan çıktı — başarılı devrimlerin alışıldık kaderi."
+              "content": "Yirmi beş yıl sonra teknoloji kazandı ve retorik süt gibi yaşlandı. Artık kimse küçük bir özür dilercesine öksürmeden \"parametrikçilik\" diyemiyor. Çift kavisli yüzeyler sıradan endüstriyel çıktılardır; Yetkili bir orta ölçekli muayenehane öğle yemeğinden önce bir tane modelleyebilir, maliyetlendirebilir ve tedarik edebilir. Devrim o kadar başarılı oldu ki, başarılı devrimlerin alışılagelmiş kaderi olan ilgi çekici olmaktan çıktı."
             },
             {
               "type": "text",
-              "content": "Sıradanlaşmayan şey ise sonucu hayatta tutmak. Panel bir kabuk, binlerce derz demektir ve derzler suyun işe koyulduğu yerdir. Mastiğin servis ömrü yüzyıllarla değil yıllarla ölçülür ve 33.000 panel, yanılmak için 33.000 fırsat demektir. Yığma duvar yavaş ve okunaklı biçimde çöker: bir leke, bir çatlak, bir duvar ustasıyla sohbet. Eğri bir kompozit kabuk görünmez biçimde, sonra aniden, sonra pahalı biçimde çöker. Bu fatura render’ların yanında asla görünmez ve mimarlık yayıncılığının en güvenilir suskunluğudur."
+              "content": "Sıradan hale gelmeyen ise sonuçları canlı tutmaktır. Panelize bir cilt binlerce eklemden oluşur ve eklemler suyun işe yaradığı yerdir. Mastiğin hizmet ömrü yüzyıllarla değil yıllarla ölçülür ve 33.000 panel, 33.000 yanılma fırsatı anlamına gelir. Duvarcılık yavaş ve okunaklı bir şekilde başarısız olur; bir leke, bir çatlak, bir duvar ustasıyla yapılan bir konuşma. Kavisli bir kompozit kaplama önce görünmez bir şekilde, sonra aniden, sonra da pahalı bir şekilde arızalanır. Bu fatura hiçbir zaman görsellerin yanında görünmez ve mimari yayıncılıkta en güvenilir ihmaldir."
             },
             {
               "type": "quote",
-              "content": "Taş alenen yaşlanır. Kaplama ise sessizce su geçirmez olmayı bırakır."
+              "content": "Halk arasında taş devri. Kaplama su geçirmez olmayı sessizce bırakır."
             },
             {
               "type": "text",
-              "content": "İkinci fatura kentseldir ve çok daha büyüktür. Sürekli bir yüzey kapalı bir savdır: kendi içinde çözülür ve sokağa tutunacak neredeyse hiçbir şey bırakmaz. Bilbao bundan sıyrılır, çünkü başka hiçbir şeyi olmayan bir kıyıyı çıpalar ve kendi inşaat maliyetini üç yılda vergiyle geri öder. Harbin sıyrılır, çünkü çatısını verir. Galaxy SOHO — indiği mahallenin durumuna ve kendi koruma kurumunun kamuoyu önünde sunduğu itiraza bakılırsa — sıyrılamaz. Eğrilik kendiliğinden ne cömerttir ne düşman. Şimdiye dek önemli olan tek soru, geometrinin kente ona dokunabileceği bir yer bırakıp bırakmadığıdır."
+              "content": "İkinci yasa tasarısı kentsel ve çok daha büyük. Sürekli bir yüzey kapalı bir tartışmadır: içsel olarak çözülür ve sokağa tutunacak neredeyse hiçbir şey bırakmaz. Bilbao, başka hiçbir şeyi olmayan bir sahile demir atarak ve üç yıl içinde kendi inşaat maliyetini vergi olarak ödeyerek bu durumdan sıyrılıyor. Harbin çatıyı devrederek bundan kurtulur. Galaxy SOHO, bulunduğu mahalleye ilişkin kanıtlara ve kendi miras kurumunun kamuya açık yaptığı itiraza göre, bunu yapmıyor. Eğrilik doğası gereği cömert veya düşmanca değildir. Önemli olan tek soru, geometrinin şehrin ona dokunabileceği bir yer bırakıp bırakmadığıdır."
             },
             {
               "type": "text",
-              "content": "O halde bu beşinden hangilerinin 2100’e itibarı sağlam ulaşacağına dair bir bahis. Stuttgart, çünkü iki hikâyenin gerçekten tek bir kütleyi paylaşması gerekiyordu ve sarmal bunun dürüst yanıtı: biçimi bir başkasıyla değiştirilemeyecek buradaki tek bina. Harbin, çünkü o soğuktaki bir kentte ücretsiz kamusal bir çatı, jest değil armağandır. Bilbao makbuzları ve köpeğiyle ayakta kalır. Diğer ikisi muhteşem ve muhteşemlik, herhangi bir tesis yöneticisinin size söyleyeceği gibi, bir bakım takvimi ve hızlı aramada bir mastik ustasıyla birlikte gelir."
+              "content": "Yani, bu beş kişiden hangisinin itibarı bozulmadan 2100'e ulaşacağına dair bir bahis. Stuttgart, çünkü bir cildi ve bir sarmalı paylaşmak için gerçekten iki hikayeye ihtiyaç vardı, dürüst cevap bu; buradaki şekli farklı bir binayla değiştirilemeyecek tek bina. Harbin, çünkü bu kadar soğuk bir şehirde halka açık ücretsiz bir çatı bir jestten ziyade bir armağandır. Bilbao, makbuzlarıyla ve köpeğiyle hayatta kalıyor. Diğer ikisi muhteşemdir ve herhangi bir tesis yöneticisinin size söyleyeceği gibi ihtişam, bir bakım programı ve hızlı arama yapan bir sızdırmazlık maddesi yüklenicisi ile birlikte gelir."
             },
             {
               "type": "text",
-              "content": "Bunların hiçbiri dosya dolabına dönmek için bir sav değil. 1997 ile 2015 arasında, yazılımın her şeyi çizdirdiğini keşfetmenin sarhoşluğu içinde neredeyse kimsenin sormadığı soruyu sormak için bir sav: bu eğri ne işe yarıyor? Dürüstçe yanıtlayın, Harbin çıkar; biçim havadır ve çatı herkesindir. Yanıtlamayın, muhteşem bir fotoğraf, üçüncü katta bir su sızıntısı ve bitmeden önce daha iyi olan bir bina çıkar."
+              "content": "Bunların hiçbiri dosya dolabına geri dönmek için bir argüman değil. Bu, 1997 ile 2015 yılları arasında neredeyse hiç kimsenin sormadığı soruyu, yazılımın herhangi bir şey çizmenize izin vereceğini keşfetmenin coşkusuyla sormaya yönelik bir argümandır: Eğri ne işe yarar? Dürüstçe cevap verirseniz, şeklin havanın olduğu ve çatının herkese ait olduğu Harbin'i elde edersiniz. Başarısız olursanız muhteşem bir fotoğraf, üçüncü katta bir sızıntı ve tamamlanmadan önce daha iyi bir bina elde edersiniz."
             },
             {
               "type": "text",
-              "content": "<hr><h4>Kaynaklar</h4><ul class=\"sources\"><li><strong>Guggenheim Museum Bilbao</strong> — müzenin kendi binası üzerine: alanlar, galeriler ve titanyum kabuk — <a href=\"https://www.guggenheim-bilbao.eus/en/the-building\">guggenheim-bilbao.eus</a></li><li><strong>Association for Project Management</strong> — projenin ekonomisi ve titanyumun neden kısa süre çelikten ucuz olduğu — <a href=\"https://www.apm.org.uk/blog/guggenheim-museum-bilbao-why-was-it-such-a-stellar-project-success/\">apm.org.uk</a></li><li><strong>ArchDaily</strong> — Haydar Aliyev Merkezi — çizimler, taşıyıcı sistem ve proje verileri — <a href=\"https://www.archdaily.com/448774/heydar-aliyev-center-zaha-hadid-architects\">archdaily.com</a></li><li><strong>Dezeen</strong> — Pekin koruma kurumunun Lubetkin adaylığına dair açık mektubu, 2013 — <a href=\"https://www.dezeen.com/2013/08/03/zaha-hadid-galaxy-soho-riba-award-lubetkin-prize-chinese-heritage/\">dezeen.com</a></li><li><strong>UNStudio</strong> — Mercedes-Benz Müzesi — yonca planı ve çift sarmal dolaşım, mimarlarından — <a href=\"https://www.unstudio.com/projects/mercedes-benz-museum/\">unstudio.com</a></li><li><strong>MAD Architects</strong> — Harbin Opera Binası — alan, koltuk sayıları ve çatıdaki kamusal güzergâh — <a href=\"https://www.i-mad.com/projects/harbin-opera-house\">i-mad.com</a></li></ul><span class=\"dek\">Fotoğraflar: Wikimedia Commons üzerinden özgür lisanslı, her biri alt yazısında künyelendirilmiş.</span>"
+              "content": "KaynaklarGuggenheim Müzesi Bilbao — kendi binasındaki müze: alanlar, galeriler ve titanyum kaplama — <a href=\"https://www.guggenheim-bilbao.eus/en/the-building\" rel=\"noopener noreferrer\">guggenheim-bilbao.eus</a>Proje Yönetimi Derneği - proje ekonomisi ve titanyumun neden kısa süreliğine çelikten daha ucuz olduğu - <a href=\"https://www.apm.org.uk/blog/guggenheim-museum-bilbao-why-was-it-such-a-stellar-project-success/\" rel=\"noopener noreferrer\">apm.org.uk</a>ArchDaily — Haydar Aliyev Merkezi — çizimler, yapı ve proje verileri — <a href=\"https://www.archdaily.com/448774/heydar-aliyev-center-zaha-hadid-architects\" rel=\"noopener noreferrer\">archdaily.com</a>Dezeen - Pekin'in miras kurumunun Lubetkin adaylığıyla ilgili açık mektubu, 2013 - <a href=\"https://www.dezeen.com/2013/08/03/zaha-hadid-galaxy-soho-riba-award-lubetkin-prize-chinese-heritage/\" rel=\"noopener noreferrer\">dezeen.com</a>UNStudio - Mercedes-Benz Müzesi - mimarlardan yonca planı ve çift sarmal sirkülasyon - <a href=\"https://www.unstudio.com/projects/mercedes-benz-museum/\" rel=\"noopener noreferrer\">unstudio.com</a>MAD Architects — Harbin Opera Binası — inşaat alanı, oturma yerleri ve halka açık çatı güzergahı — <a href=\"https://www.i-mad.com/projects/harbin-opera-house\" rel=\"noopener noreferrer\">i-mad.com</a>Fotoğraflar: Wikimedia Commons aracılığıyla serbestçe lisanslanmıştır, her biri kendi başlığında belirtilmiştir."
             }
           ],
-          "authorId": "author-1784732936927-kw554",
-          "role": "Yazar",
-          "tags": [
-            "architecture",
-            "design",
-            "cities"
-          ],
-          "imageSeed": "",
-          "imageUrl": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-guggenheim-river.jpg"
+          "updatedAt": "2026-08-08T20:01:29.889Z"
         },
         {
           "id": 17,
