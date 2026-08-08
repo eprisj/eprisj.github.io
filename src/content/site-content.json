@@ -1907,12 +1907,12 @@
   },
   "items": [
     {
-      "id": 12,
-      "title": "How Emily Kraus Reinvents the Act of Painting",
-      "subtitle": "Contemporary Art",
-      "fig": "FIG. 10",
+      "id": 13,
+      "title": "Emily Kraus: Rhythm of the Moment",
+      "subtitle": "contemporary art",
+      "fig": "FIG. 11",
       "description": "Inside the Canvas Cube, Emily Kraus Paints the Rhythm of the Present Moment",
-      "imageSeed": "item-12",
+      "imageSeed": "item-13",
       "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
     },
     {
@@ -4207,6 +4207,15 @@
     "RU": {
       "items": [
         {
+          "id": 13,
+          "title": "Эмили Краус: Ритм момента",
+          "subtitle": "современное искусство",
+          "fig": "FIG. 11",
+          "description": "Внутри холстового куба Эмили Краус рисует ритм настоящего момента",
+          "imageSeed": "item-13",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
+        },
+        {
           "id": 10,
           "title": "Против прямого угла",
           "subtitle": "Architecture",
@@ -6451,6 +6460,15 @@
     "UA": {
       "items": [
         {
+          "id": 13,
+          "title": "Емілі Краус: Ритм моменту",
+          "subtitle": "сучасне мистецтво",
+          "fig": "FIG. 11",
+          "description": "Всередині Canvas Cube Емілі Краус малює ритм теперішнього моменту",
+          "imageSeed": "item-13",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
+        },
+        {
           "id": 10,
           "title": "Проти прямого кута",
           "subtitle": "Architecture",
@@ -8636,6 +8654,15 @@
     },
     "DE": {
       "items": [
+        {
+          "id": 13,
+          "title": "Emily Kraus: Rhythmus des Augenblicks",
+          "subtitle": "zeitgenössische Kunst",
+          "fig": "FIG. 11",
+          "description": "Im Canvas Cube malt Emily Kraus den Rhythmus des gegenwärtigen Augenblicks",
+          "imageSeed": "item-13",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
+        },
         {
           "id": 10,
           "title": "Gegen den rechten Winkel",
@@ -10824,6 +10851,15 @@
     "ES": {
       "items": [
         {
+          "id": 13,
+          "title": "Emily Kraus: ritmo del momento",
+          "subtitle": "arte contemporáneo",
+          "fig": "FIG. 11",
+          "description": "Dentro del Canvas Cube, Emily Kraus pinta el ritmo del momento presente",
+          "imageSeed": "item-13",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
+        },
+        {
           "id": 10,
           "title": "Contra el ángulo recto",
           "subtitle": "Architecture",
@@ -13011,6 +13047,15 @@
     "TR": {
       "items": [
         {
+          "id": 13,
+          "title": "Emily Kraus: Anın Ritmi",
+          "subtitle": "çağdaş sanat",
+          "fig": "FIG. 11",
+          "description": "Kanvas Küpün İçinde Emily Kraus Şimdiki Anın Ritimini Boyadı",
+          "imageSeed": "item-13",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
+        },
+        {
           "id": 10,
           "title": "Dik Açıya Karşı",
           "subtitle": "Architecture",
@@ -15196,6 +15241,15 @@
     },
     "IT": {
       "items": [
+        {
+          "id": 13,
+          "title": "Emily Kraus: il ritmo del momento",
+          "subtitle": "arte contemporanea",
+          "fig": "FIG. 11",
+          "description": "All'interno del cubo di tela, Emily Kraus dipinge il ritmo del momento presente",
+          "imageSeed": "item-13",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
+        },
         {
           "id": 10,
           "title": "Contro l’angolo retto",
