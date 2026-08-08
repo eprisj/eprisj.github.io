@@ -11381,16 +11381,16 @@
         },
         {
           "id": 12,
-          "title": "Ver Sacrum: retrato de la Secesión de Viena",
+          "title": "La primavera sagrada: un retrato de la secesión de Viena",
           "author": "Viacheslav Munister",
-          "role": "Arts Desk",
+          "role": "Escritorio de artes",
           "date": "Jul 8, 2026",
-          "excerpt": "En 1897, un puñado de artistas vieneses rompió con el establishment, levantó un templo blanco coronado por una cúpula de hojas doradas y le anunció a una ciudad atónita que cada época merece un arte propio. Esta es la historia de la Secesión – y de las personas inquietas y brillantes que la hicieron.",
-          "category": "Culture",
+          "excerpt": "En 1897, un puñado de artistas vieneses abandonaron el establecimiento, levantaron un templo blanco coronado con una cúpula de hojas doradas y declararon ante una ciudad sorprendida que cada época merece un arte propio. Esta es la historia de la Secesión y de las personas inquietas y brillantes que la lograron.",
+          "category": "Cultura",
           "subcategory": "La lectura larga",
           "tags": [
             "secesión de viena",
-            "modernismo",
+            "art nouveau",
             "gustav klimt",
             "arquitectura",
             "historia"
@@ -11401,39 +11401,39 @@
           "content": [
             {
               "type": "text",
-              "content": "Imaginen Viena en los últimos años del siglo diecinueve: una ciudad ebria de su propio reflejo. La Ringstrasse relucía de palacios vestidos con una historia prestada – aquí un parlamento griego, allá un ayuntamiento gótico, en medio una ópera renacentista. Era magnífica, y estaba agotada. Tras el oropel, toda una generación de jóvenes pintores y arquitectos empezaba a sospechar que su ciudad construía museos a un pasado que nunca le había pertenecido del todo, mientras el presente – eléctrico, ansioso, vivo – quedaba sin pintar."
+              "content": "Imaginemos la Viena de los últimos años del siglo XIX: una ciudad ebria de su propio reflejo. La Ringstrasse brillaba con palacios vestidos con historia prestada: un parlamento griego aquí, un ayuntamiento gótico allá, una ópera renacentista en el medio. Era magnífico y estaba agotado. Detrás del dorado, toda una generación de jóvenes pintores y arquitectos había comenzado a sospechar que su ciudad estaba construyendo museos para un pasado que nunca le había pertenecido del todo, mientras que el presente –eléctrico, ansioso, vivo– permanecía sin pintar."
             },
             {
               "type": "text",
-              "content": "El tres de abril de 1897 dejaron de esperar permiso. Encabezados por un pintor de treinta y cuatro años llamado Gustav Klimt, renunciaron en bloque a la Künstlerhaus, la asociación oficial de artistas que controlaba toda exposición importante de la ciudad. A su nuevo movimiento lo llamaron Unión de Artistas Plásticos de Austria, pero la historia los recuerda por la palabra que eligieron para la ruptura misma: Secesión."
+              "content": "El 3 de abril de 1897, un grupo de ellos se detuvo esperando permiso. Dirigidos por un pintor de treinta y cuatro años llamado Gustav Klimt, dimitieron en conjunto de la Künstlerhaus, la asociación oficial de artistas que controlaba todas las exposiciones importantes de la ciudad. Llamaron a su nuevo movimiento Vereinigung bildender Künstler Österreichs (Unión de Artistas Austriacos), pero la historia los recuerda por la palabra que eligieron para la ruptura misma: Secesión."
             },
             {
               "type": "text",
-              "content": "No eran una escuela. No compartían un estilo único, ni un manifiesto común de técnica. Lo que los unía era una convicción – feroz, sencilla e imposible de negociar – y la grabaron en oro sobre la puerta del edificio que pronto levantarían. Decía: a cada época su arte, al arte su libertad."
+              "content": "No eran una escuela. No compartían ningún estilo único, ningún manifiesto técnico común. Lo que los unía era una convicción (feroz, simple e imposible de transigir) y la grabaron en oro sobre la puerta del edificio que pronto levantarían. Decía: a cada época su arte, al arte su libertad."
             },
             {
               "type": "header",
-              "content": "A cada época su arte",
+              "content": "To Every Age Its Art",
               "level": 3
             },
             {
               "type": "text",
-              "content": "La Secesión se anunció como un trueno anuncia la tormenta: con un cartel. Para la primera exposición de 1898, Klimt dibujó a Teseo dando muerte al Minotauro – el joven héroe de un arte nuevo pasando a espada al viejo monstruo – mientras Palas Atenea, diosa de la sabiduría y de la guerra justa, montaba guardia al margen. Los censores lo obligaron a añadir un velo de árboles para ocultar la desnudez de Teseo. Fue la primera de muchas peleas que la Secesión buscaría con un público que aún no sabía que quería ser provocado."
+              "content": "La Secesión se anunció como un trueno anuncia una tormenta: con un cartel. Para la primera exposición en 1898, Klimt dibujó a Teseo matando al Minotauro, el joven héroe de un nuevo arte que pasaba a espada al viejo monstruo, mientras Palas Atenea, diosa de la sabiduría y la guerra justa, montaba guardia al margen. Los censores le hicieron añadir una pantalla de árboles para ocultar la desnudez de Teseo. Fue la primera de muchas disputas que la Secesión iniciaría con un público que aún no sabía que quería ser provocado."
             },
             {
               "type": "image",
               "content": "/images/secession/klimt-poster.jpg",
-              "caption": "Cartel de Gustav Klimt para la primera exposición de la Secesión, 1898. Teseo se enfrenta al Minotauro; a la derecha, Atenea monta guardia.",
+              "caption": "Cartel de Gustav Klimt para la primera exposición de la Secesión, 1898. Teseo se enfrenta al Minotauro; Atenea hace guardia a la derecha.",
               "align": "full"
             },
             {
               "type": "text",
-              "content": "Su credo también tenía nombre – Ver Sacrum, la «primavera sagrada». En la antigua Italia era el rito por el cual un pueblo, en tiempos de crisis, consagraba a la generación venidera a un nuevo comienzo. Los secesionistas tomaron prestada la expresión para su revista, una publicación cuadrada y exquisita donde texto e imagen se diseñaban como una sola superficie viva. Abrir un número de Ver Sacrum era sostener en las manos la filosofía del movimiento: que una copa de vino, una tipografía, una silla y un cuadro son todos arte, y todos igualmente dignos de perfección."
+              "content": "Su credo también tenía un nombre: Ver Sacrum, la 'fuente sagrada'. En la antigua Italia era el rito mediante el cual un pueblo, en tiempos de crisis, dedicaba a la próxima generación a un nuevo comienzo. Los secesionistas tomaron prestada la frase para su revista, un diario cuadrado y exquisito en el que el texto y la imagen se diseñaron como una sola superficie viva. Abrir un número de Ver Sacrum era tener en las manos la filosofía del movimiento: que una copa de vino, una tipografía, una silla y una pintura eran arte y todos merecían ser perfeccionados por igual."
             },
             {
               "type": "image",
               "content": "/images/secession/versacrum.jpg",
-              "caption": "El primer número de Ver Sacrum, enero de 1898 – la revista del movimiento, y su manifiesto impreso.",
+              "caption": "Primer número de Ver Sacrum, enero de 1898: la revista del movimiento y su manifiesto impreso.",
               "align": "full"
             },
             {
@@ -11442,31 +11442,31 @@
             },
             {
               "type": "header",
-              "content": "El templo blanco",
+              "content": "The White Temple",
               "level": 3
             },
             {
               "type": "text",
-              "content": "Un movimiento necesita un hogar, y la Secesión construyó uno como Viena no había visto. El encargo recayó en Joseph Maria Olbrich, de apenas treinta años, discípulo del gran Otto Wagner. Lo que creó en 1898 fue menos un edificio que una declaración: un templo cúbico de muros blancos y geometría pura, despojado de todo ornamento histórico, coronado por una cúpula calada de tres mil hojas de laurel doradas. Viena, entre escandalizada y encantada, lo apodó «el repollo dorado»."
+              "content": "Un movimiento necesita un hogar, y la Secesión construyó uno diferente a todo lo que Viena había visto. El encargo recayó en Joseph Maria Olbrich, de apenas treinta años, alumno del gran Otto Wagner. Lo que produjo en 1898 fue menos un edificio que una declaración: un templo cúbico, de paredes blancas, de pura geometría, despojado de todo ornamento histórico, coronado con una cúpula calada de tres mil hojas de laurel doradas. Viena, medio escandalizada y medio encantada, la apodó \"la col dorada\"."
             },
             {
               "type": "text",
-              "content": "Miren de cerca la fachada y hallarán el espíritu del movimiento escrito en el yeso: tres búhos solemnes, aves sagradas de Atenea, y sobre la entrada aquellas desafiantes palabras doradas. Hasta los detalles decorativos los diseñaron miembros del grupo – los búhos y el follaje son de Koloman Moser –, de modo que el propio edificio se volvió una obra de arte total, un Gesamtkunstwerk, donde arquitectura, escultura y ornamento hablan una sola lengua."
+              "content": "Mire de cerca la fachada y encontrará el espíritu del movimiento escrito en yeso: tres búhos solemnes, sagrados para Atenas, y sobre la entrada esas desafiantes palabras doradas. Incluso los detalles decorativos fueron diseñados por miembros del grupo (los búhos y el follaje de Koloman Moser), de modo que el edificio en sí se convirtió en una obra de arte total, una Gesamtkunstwerk, en la que arquitectura, escultura y ornamentación hablaban un solo idioma."
             },
             {
               "type": "image",
               "content": "/images/secession/hero.jpg",
-              "caption": "Los búhos y el laurel de Koloman Moser en la fachada de la Secesión – las aves de Atenea, guardianas de un templo de arte nuevo.",
+              "caption": "Los búhos y el laurel de Koloman Moser en la fachada de la Secesión: los pájaros de Atenas que custodian un templo del arte nuevo.",
               "align": "full"
             },
             {
               "type": "header",
-              "content": "Las personas",
+              "content": "The People",
               "level": 3
             },
             {
               "type": "text",
-              "content": "La Secesión nunca fue el movimiento de un solo hombre, pero comenzó, inconfundiblemente, con uno. Gustav Klimt era hijo de un grabador de oro, y el oro no abandonaría jamás su obra. Se había hecho un nombre – y una fortuna – pintando decorosas alegorías en los techos de esos mismos palacios de la Ringstrasse contra los que la Secesión se rebelaría. Entonces, en la cima de su respetabilidad, giró. Su arte se volvió extraño, erótico, ornamental y sin miedo; sus mecenas se pusieron nerviosos; y Klimt, sereno, siguió adelante."
+              "content": "La Secesión nunca fue un movimiento de un solo hombre, pero comenzó, sin lugar a dudas, con un solo hombre. Gustav Klimt era hijo de un grabador de oro y el oro nunca abandonaría su trabajo. Se había hecho un nombre (y una fortuna) pintando decorosas alegorías en los techos de los mismos palacios de la Ringstrasse contra los que se rebelaría la Secesión. Luego, en el apogeo de su respetabilidad, se volvió. Su arte se volvió extraño, erótico, ornamental y atrevido; sus clientes se pusieron nerviosos; y Klimt, serenamente, siguió adelante."
             },
             {
               "type": "image",
@@ -11476,123 +11476,124 @@
             },
             {
               "type": "text",
-              "content": "En la Palas Atenea de 1898 ya se ve llegar el futuro. La diosa está acorazada en oro repujado, su mirada fría y frontal, y en la mano sostiene una diminuta figura desnuda – Nuda Veritas, la verdad desnuda, que alza un espejo ante una sociedad que prefería no mirar. Era el lema privado de Klimt hecho visible: el artista no le debe a la época halago, sino honestidad."
+              "content": "En Palas Atenea de 1898 ya se ve llegar el futuro. La diosa está armada con oro martillado, su mirada fría y frontal, y en su mano sostiene una pequeña figura desnuda: Nuda Veritas, la verdad desnuda, sosteniendo un espejo ante una sociedad que prefería no mirar. Fue el lema privado de Klimt el que se hizo visible: el artista no debe a su época halagos, sino honestidad."
             },
             {
               "type": "image",
               "content": "/images/secession/pallas.jpg",
-              "caption": "Klimt, Palas Atenea, 1898 – la diosa en oro repujado, sosteniendo a la Verdad desnuda en la palma.",
+              "caption": "Klimt, Palas Atenea, 1898: la diosa vestida de oro batido, sosteniendo la Verdad desnuda en la palma de su mano.",
               "align": "full"
             },
             {
               "type": "text",
-              "content": "Si Klimt era el corazón del movimiento, Otto Wagner era su conciencia vuelta piedra y hierro. Ya famoso, ya pasados los cincuenta, el profesor podría haberse deslizado hacia una cómoda vejez neobarroca. En cambio, se puso del lado de sus propios alumnos, declarando que «algo impráctico no puede ser bello» y que la arquitectura de una época nueva debía nacer de una vida nueva, materiales nuevos, necesidades nuevas."
+              "content": "Si Klimt era el corazón del movimiento, Otto Wagner era su conciencia convertida en piedra y hierro. Ya famoso, con más de cincuenta años, el profesor podría haber llegado a una cómoda vejez de encargos neobarrocos. En lugar de ello, se unió a sus propios estudiantes, declarando que \"algo poco práctico no puede ser hermoso\" y que la arquitectura de una nueva era debe nacer de nueva vida, nuevos materiales, nuevas necesidades."
             },
             {
               "type": "image",
               "content": "/images/secession/wagner-portrait.jpg",
-              "caption": "Otto Wagner – el maestro veterano que eligió el bando de los jóvenes.",
+              "caption": "Otto Wagner: el maestro mayor que eligió el lado de los jóvenes.",
               "align": "full"
             },
             {
               "type": "text",
-              "content": "Los edificios de Wagner aún asombran. En la Linke Wienzeile revistió toda una casa de vecindad con azulejos de mayólica florecidos – flores que trepan cinco pisos hacia el cielo vienés, prácticas, resistentes a la intemperie y gloriosamente vivas. Y en la Karlsplatz construyó un par de pabellones de ferrocarril tan elegantes que los pasajeros de la ciudad cruzaban cada día por obras de arte, hierro verde y mármol blanco cosidos con girasoles de oro."
+              "content": "Los edificios de Wagner todavía sorprenden. En Linke Wienzeile revistió todo un edificio de apartamentos con florecientes azulejos de mayólica, flores que treparon cinco pisos hacia el cielo vienés: prácticas, resistentes a la intemperie y gloriosamente vivas. Y en Karlsplatz construyó un par de pabellones ferroviarios tan elegantes que los viajeros de la ciudad pasaban cada día entre obras de arte, hierro verde y mármol blanco bordado con girasoles dorados."
             },
             {
               "type": "image",
               "content": "/images/secession/wagner-majolica.jpg",
-              "caption": "La Casa de la Mayólica de Wagner (1898) – un bloque de viviendas vestido de azulejos florecidos.",
+              "caption": "Casa de mayólica de Wagner (1898): un bloque de apartamentos revestido con azulejos de cerámica con flores.",
               "align": "full"
             },
             {
               "type": "image",
               "content": "/images/secession/wagner-station.jpg",
-              "caption": "El pabellón del Stadtbahn de Karlsplatz (1898) – una estación de tren como joya verde y dorada.",
+              "caption": "El pabellón Karlsplatz Stadtbahn (1898): una estación de tren como una joya verde y dorada.",
               "align": "full"
             },
             {
               "type": "text",
-              "content": "Koloman Moser era el universo callado del movimiento. Formado como pintor, lo diseñaba todo: sellos postales, vidrieras, cubiertas de libros, muebles, los búhos del muro de la Secesión, las páginas mismas de Ver Sacrum. Si la Secesión creía que el arte debía saturar la vida ordinaria, Moser era la prueba – un hombre capaz de hacer un buzón tan hermoso como un retablo."
+              "content": "Koloman Moser era el universo tranquilo del movimiento. Formado como pintor, lo diseñó todo: sellos postales, vidrieras, cubiertas de libros, muebles, los búhos en el muro de la Secesión, las mismas páginas de Ver Sacrum. Si la Secesión creía que el arte debería saturar la vida cotidiana, Moser era la prueba: un hombre que podía hacer un buzón tan hermoso como un retablo."
             },
             {
               "type": "image",
               "content": "/images/secession/moser.jpg",
-              "caption": "Koloman Moser – pintor, genio gráfico y el hombre que diseñó casi todo.",
+              "caption": "Koloman Moser: pintor, genio gráfico y el hombre que diseñó casi todo.",
               "align": "full"
             },
             {
               "type": "text",
-              "content": "Josef Hoffmann tomó esa creencia y construyó un imperio sobre ella. En 1903, con Moser y el banquero Fritz Wärndorfer, fundó la Wiener Werkstätte – los Talleres de Viena –, una cooperativa de artesanos decidida a crear objetos de calidad total, desde los cubiertos hasta casas enteras. Sus retículas y cuadrados eran tan rigurosos que sus colegas lo apodaron «Quadratl-Hoffmann», Hoffmann Cuadradito. El apodo era una broma; la influencia no. La pureza de su línea atraviesa todo el siglo veinte hasta el lenguaje del diseño en el que aún vivimos."
+              "content": "Josef Hoffmann tomó esa creencia y construyó un imperio sobre ella. En 1903, junto con Moser y el banquero Fritz Wärndorfer, fundó Wiener Werkstätte –los Talleres de Viena–, una cooperativa de artesanos decididos a fabricar objetos de calidad total, desde cubiertos hasta casas enteras. Sus cuadrículas y cuadrados eran tan rigurosos que sus colegas lo apodaron 'Quadratl-Hoffmann', Little-Square Hoffmann. El apodo era una broma; la influencia no lo fue. Su pureza de líneas recorre el siglo XX hasta llegar al lenguaje de diseño en el que todavía vivimos."
             },
             {
               "type": "image",
               "content": "/images/secession/hoffmann.jpg",
-              "caption": "Josef Hoffmann – cofundador de la Wiener Werkstätte, apóstol del cuadrado perfecto.",
+              "caption": "Josef Hoffmann – cofundador de Wiener Werkstätte, apóstol del cuadrado perfecto.",
               "align": "full"
             },
             {
               "type": "text",
-              "content": "Y Joseph Maria Olbrich, el joven arquitecto del templo mismo, le dio al movimiento su rostro. No permaneció mucho en Viena – el gran duque de Hesse lo llamó a Darmstadt para levantar de la nada toda una colonia de artistas –, pero la cúpula dorada que dejó atrás sigue coronando la ciudad y sigue cumpliendo su promesa, ciento veinticinco años después."
+              "content": "Y Joseph Maria Olbrich, el joven arquitecto del templo, dio rostro al movimiento. No permaneció mucho tiempo en Viena (el Gran Duque de Hesse lo llamó a Darmstadt para construir desde cero toda una colonia de artistas), pero la cúpula dorada que dejó todavía corona la ciudad y mantiene su promesa, un siglo y cuarto después."
             },
             {
               "type": "image",
               "content": "/images/secession/olbrich.jpg",
-              "caption": "Joseph Maria Olbrich – el arquitecto que apenas tenía treinta años cuando levantó el templo de la Secesión.",
+              "caption": "Joseph Maria Olbrich, el arquitecto que apenas tenía treinta años cuando construyó el templo de la Secesión.",
               "align": "full"
             },
             {
               "type": "header",
-              "content": "La exposición Beethoven",
+              "content": "The Beethoven Exhibition",
               "level": 3
             },
             {
               "type": "text",
-              "content": "Todo aquello en lo que creía la Secesión se reunió, una vez, en una sola sala. En 1902 la decimocuarta exposición se concibió como un templo dentro del templo: un santuario a Ludwig van Beethoven, el artista como héroe y profeta. En su centro se alzaba la estatua policromada del compositor de Max Klinger, entronizado como un dios; en torno a los muros, veintiún miembros aportaron obras pensadas para verse juntas, como un solo acto de devoción. Y a lo largo de tres paredes Klimt pintó el Friso de Beethoven – treinta y cuatro metros de anhelo, sufrimiento y redención."
+              "content": "Todo lo que creía la Secesión se reunió, una vez, en una sola habitación. En 1902, la decimocuarta exposición fue concebida como un templo dentro del templo: un santuario dedicado a Ludwig van Beethoven, el artista como héroe y profeta. En el centro se encontraba la estatua policromada del compositor entronizado como un dios, obra de Max Klinger; Alrededor de las paredes, veintiún miembros contribuyeron con obras destinadas a ser vistas juntas, como un único acto de devoción. Y a lo largo de tres paredes, Klimt pintó el friso de Beethoven: treinta y cuatro metros de anhelo, sufrimiento y liberación."
             },
             {
               "type": "text",
-              "content": "Comienza con el anhelo de la humanidad, deriva por las tentaciones y los terrores del mundo – el gigante Tifón, un mono monstruoso y las Gorgonas de la enfermedad, la locura y la muerte – y se resuelve, al fin, en el arte y el amor. El friso se pintó directamente sobre el muro, destinado a ser destruido al cerrar la muestra. Sobrevivió por accidente y hoy es uno de los logros supremos de la pintura europea."
+              "content": "Comienza con el anhelo de la humanidad, navega a través de las tentaciones y los terrores del mundo (el gigante Tifeo, un simio monstruoso y las Gorgonas de la enfermedad, la locura y la muerte) y finalmente se resuelve en el arte y el amor. El friso fue pintado directamente en la pared, destinado a ser destruido cuando cerrara la exposición. Sobrevivió por accidente y hoy es uno de los logros supremos de la pintura europea."
             },
             {
               "type": "image",
               "content": "/images/secession/beethoven-frieze.jpg",
-              "caption": "El Friso de Beethoven, 1902 – «Las fuerzas hostiles»: el gigante Tifón y las Gorgonas de la enfermedad, la locura y la muerte.",
+              "caption": "El friso de Beethoven, 1902 – 'Los poderes hostiles': el gigante Tifeo y las Gorgonas de la enfermedad, la locura y la muerte.",
               "align": "full"
             },
             {
               "type": "text",
-              "content": "Pero el friso no termina en la oscuridad. Asciende hacia un coro de ángeles y cierra con un abrazo – una pareja desnuda entrelazada bajo un cielo dorado, y sobre ellos las palabras de Schiller que Beethoven puso en música en su Novena Sinfonía: este beso para el mundo entero. Es la creencia más profunda de la Secesión, pintada en grande: que el arte, al final, es una forma del amor, y el amor una forma de redención."
+              "content": "Pero el friso no termina en la oscuridad. Sube hacia un coro de ángeles y se cierra en un abrazo: una pareja desnuda encerrada bajo un cielo dorado, y sobre ellos las palabras de Schiller que Beethoven musicalizó en su Novena Sinfonía: este beso al mundo entero. Es la creencia más profunda de la Secesión, resumida en grande: que el arte, al final, es una forma de amor, y el amor una forma de liberación."
             },
             {
               "type": "image",
               "content": "/images/secession/beethoven-kiss.jpg",
-              "caption": "El final del friso – el coro del paraíso y el abrazo: «este beso para el mundo entero».",
+              "caption": "El final del friso: el coro del paraíso y el abrazo: \"Este beso al mundo entero\".",
               "align": "full"
             },
             {
               "type": "header",
-              "content": "La ruptura y el oro",
+              "content": "The Break, and the Gold",
               "level": 3
             },
             {
               "type": "text",
-              "content": "Los movimientos son mortales, y la unidad de la Secesión no sobrevivió a su éxito. Hacia 1905 se había abierto una brecha entre los «estilistas» en torno a Klimt, que querían fundir por completo arte, oficio y comercio, y los «naturalistas», que temían que el movimiento se volviera una tienda. Klimt y su círculo – Moser, Hoffmann, Wagner entre ellos – renunciaron. El grupo que habían fundado ocho años antes siguió sin ellos; y ellos, gloriosamente, también siguieron."
+              "content": "Los movimientos son mortales y la unidad de la Secesión no sobrevivió a su éxito. En 1905 se había abierto una brecha entre los \"estilistas\" que rodeaban a Klimt, que querían que el arte, la artesanía y el comercio se fusionaran por completo, y los \"naturalistas\" que temían que el movimiento se estuviera convirtiendo en una tienda. Klimt y su círculo (Moser, Hoffmann, Wagner entre ellos) dimitieron. El grupo que habían fundado ocho años antes seguía sin ellos; y ellos también lo hicieron gloriosamente."
             },
             {
               "type": "text",
-              "content": "Pues fue en los años inmediatamente posteriores a la ruptura cuando Klimt entró en su fase dorada y pintó el cuadro que eclipsaría a todos los demás – El beso. Dos figuras se arrodillan al borde de un prado florido, envueltas en un solo manto de oro reluciente, los patrones del hombre duros y rectangulares, los de la mujer suaves y circulares, el mundo entero disuelto en ornamento a su alrededor. Todo lo que la Secesión había defendido – la unión de pintura y decoración, la valentía ante la belleza, el oro heredado del taller de un padre – llega aquí, completo."
+              "content": "Porque fue en los años inmediatamente posteriores a la ruptura cuando Klimt entró en su fase dorada y pintó el cuadro que eclipsaría todo lo demás: El Beso. Dos figuras se arrodillan al borde de un prado florido, envueltas en una única túnica de oro reluciente, los patrones del hombre duros y rectangulares, los de la mujer suaves y circulares, el mundo entero disuelto en adornos a su alrededor. Todo lo que había defendido la Secesión –la unión de la pintura y la decoración, la valentía ante la belleza, el oro heredado del taller de un padre– llega aquí completo."
             },
             {
               "type": "image",
               "content": "/images/secession/klimt-kiss.jpg",
-              "caption": "Gustav Klimt, El beso, 1907–1908 – la cumbre dorada de todo lo que la Secesión puso en marcha.",
+              "caption": "Gustav Klimt, El beso, 1907-1908: la cumbre dorada de todo lo que la Secesión puso en marcha.",
               "align": "full"
             },
             {
               "type": "note",
-              "content": "El edificio de la Secesión sigue en pie en la Friedrichstrasse, su cúpula sigue dorada y en el sótano sigue brillando el Friso de Beethoven. Las palabras sobre la puerta no han cambiado en ciento veintiocho años: a cada época su arte, al arte su libertad. Sigue siendo, quizá, la promesa más hermosa que un grupo de jóvenes artistas se atrevió jamás a hacer, y una de las poquísimas que el mundo llegó a cumplir."
+              "content": "El Palacio de la Secesión todavía se encuentra en la Friedrichstrasse, su cúpula aún está dorada y el friso de Beethoven aún brilla en el sótano. Las palabras sobre la puerta no han cambiado en ciento veintiocho años: a cada época su arte, al arte su libertad. Sigue siendo, quizás, lo mejor que un grupo de jóvenes artistas se haya atrevido a prometer, y una de las pocas promesas de este tipo que el mundo cumplió."
             }
-          ]
+          ],
+          "updatedAt": "2026-08-08T20:27:06.281Z"
         },
         {
           "id": 13,
