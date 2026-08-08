@@ -3058,7 +3058,8 @@
           "type": "note",
           "content": "The EPRIS editorial team congratulates Mariia on her degree, and thanks her for the inspiration that lives in every issue of the journal. This diploma marks a new chapter – and we suspect it won't be the last one worth celebrating. We're glad you're reading it with us."
         }
-      ]
+      ],
+      "updatedAt": "2026-08-08T20:24:38.617Z"
     },
     {
       "id": 10,
@@ -9075,37 +9076,37 @@
         },
         {
           "id": 11,
+          "title": "Das Herz von EPRIS: Maria ist jetzt Bachelor of Architecture",
           "author": "EPRIS Journal",
+          "role": "Redaktion",
           "date": "Jul 7, 2026",
-          "category": "Culture",
+          "excerpt": "Am 7. Juli erlangte Mariia Ivanova, Chefredakteurin von EPRIS, offiziell ihren Bachelor of Architecture. Zum Gedenken an diesen Tag – ein Herz, das aus der Architektur und der Kunst besteht, die sie inspirieren.",
+          "category": "Kultur",
+          "subcategory": "Von den Herausgebern",
+          "tags": [
+            "Architektur",
+            "Maria Iwanowa",
+            "Feier"
+          ],
           "imageUrl": "/images/heart-hero.jpg",
           "imageSeed": "maria-graduation-heart",
           "draft": false,
-          "role": "Redaktion",
-          "title": "Das Herz von EPRIS: Maria hat ihren Architektur-Abschluss",
-          "excerpt": "Am 7. Juli hat Mariia Ivanova, Chefredakteurin von EPRIS, offiziell ihren Bachelor in Architektur gemacht. Zu diesem Anlass – ein Herz aus der Architektur und Kunst, die sie inspirieren.",
-          "subcategory": "Von der Redaktion",
-          "tags": [
-            "architektur",
-            "mariia ivanova",
-            "feier"
-          ],
           "content": [
             {
               "type": "text",
-              "content": "Gestern, am 7. Juli 2026, ist der Redaktion von EPRIS etwas Besonderes widerfahren. Mariia Ivanova – unsere Chefredakteurin und die Person, deren Herzensprojekt dieses Magazin ist – hat offiziell ihren Bachelor in Architektur gemacht. Jahre des Zeichnens, der Modelle und der schlaflosen Nächte vor der Verteidigung ihrer Abschlussarbeit liegen nun hinter ihr. Ein neues Kapitel beginnt – und wir konnten es uns nicht nehmen lassen, das hier auf den Seiten von EPRIS festzuhalten."
+              "content": "Gestern, am 7. Juli 2026, geschah etwas Besonderes im Leben der EPRIS-Redaktion. Mariia Ivanova – unsere Chefredakteurin und die Person, die diese Zeitschrift ins Leben gerufen hat – wurde offiziell Bachelor of Architecture. Jahre des Zeichnens, Modellierens und schlafloser Nächte vor der Verteidigung ihrer Dissertation liegen nun hinter ihr. Ein neues Kapitel beginnt – und wir konnten es nicht passieren lassen, ohne es hier auf den Seiten von EPRIS zu markieren."
             },
             {
               "type": "text",
-              "content": "Es ist kein Geheimnis, dass sich der Blick einer Architektin durch jede Ausgabe von EPRIS zieht – in der Art, wie wir über Raum, Licht und Details sprechen. Heute hat dieser Blick seine offizielle Bestätigung erhalten."
+              "content": "Es ist kein Geheimnis, dass sich der Blick eines Architekten durch jede Ausgabe von EPRIS zieht – in der Art und Weise, wie wir über Raum, Licht und Details sprechen. Heute hat dieses Auge seine offizielle Anerkennung erhalten."
             },
             {
               "type": "text",
-              "content": "Wer mit ihr an dieser Ausgabe gearbeitet hat, kennt das Ritual gut: das Licht im Studio, das bis spät in die Nacht brennt, Transparentpapier voller Korrekturen, ein kalt gewordener Kaffee neben dem Modell, das sie immer wieder neu baute, bis es endlich stimmte. Genau diese Rastlosigkeit – die Weigerung, sich mit „gut genug“ zufriedenzugeben – prägt dieses Magazin seit der allerersten Seite."
+              "content": "Diejenigen, die mit ihr an diesem Thema gearbeitet haben, kennen das Ritual gut: Bis spät in die Nacht brennt das Studiolicht, mit Überarbeitungen bedecktes Pauspapier, eine Tasse kalt gewordener Kaffee neben dem Modell, das sie immer wieder neu aufbaute, bis es sich schließlich richtig anfühlte. Dieselbe Unruhe – die Weigerung, sich mit „gut genug“ zufrieden zu geben – ist es, die dieses Magazin seit seiner ersten Seite geprägt hat."
             },
             {
               "type": "header",
-              "content": "Ein Herz aus dem, was sie inspiriert",
+              "content": "A Heart Made of What Inspired Her",
               "level": 3
             },
             {
@@ -9159,21 +9160,22 @@
                 "/images/heart-tiles/tile-46.jpg",
                 "/images/heart-tiles/tile-47.jpg"
               ],
-              "caption": "Siebenundvierzig Orte und Kunstwerke, die geprägt haben, wie Mariia die Welt sieht – von der Sagrada Família bis zu Michelangelos David. Ein Stück von jedem findet sich in jeder Ausgabe von EPRIS wieder."
+              "caption": "Siebenundvierzig Orte und Kunstwerke, die die Art und Weise geprägt haben, wie Mariia die Welt sieht – von der Sagrada Família bis zu Michelangelos David. Ein kleiner Teil davon findet sich in jeder Ausgabe von EPRIS wieder."
             },
             {
               "type": "text",
-              "content": "Manche dieser Bauwerke hat sie mit eigenen Augen gesehen, Skizzenbuch in der Hand. Andere kennt sie nur von Fotografien. Wir wünschen ihr, dass sie eines Tages jedes einzelne von ihnen mit eigenen Augen sehen wird."
+              "content": "Einige dieser Gebäude hat sie persönlich mit dem Skizzenbuch in der Hand besichtigt. Andere hat sie bisher nur auf Fotos gesehen. Wir hoffen, dass sie eines Tages jeden einzelnen von ihnen mit eigenen Augen sehen kann."
             },
             {
               "type": "quote",
-              "content": "Architektur hat mich gelehrt, die Struktur hinter der Schönheit zu sehen. EPRIS hat mich gelehrt, davon zu erzählen. Für mich sind das zwei Sprachen für dasselbe Gefühl."
+              "content": "Die Architektur hat mich gelehrt, die Struktur hinter der Schönheit zu sehen. EPRIS hat mir beigebracht, anderen davon zu erzählen. Für mich sind das zwei Sprachen für das gleiche Gefühl."
             },
             {
               "type": "note",
-              "content": "Die Redaktion von EPRIS gratuliert Mariia zu ihrem Abschluss und dankt ihr für die Inspiration, die in jeder Ausgabe des Magazins lebt. Dieses Diplom markiert ein neues Kapitel – und vermutlich nicht das letzte, das es zu feiern gilt. Wir freuen uns, dass Sie es gemeinsam mit uns lesen."
+              "content": "Das EPRIS-Redaktionsteam gratuliert Mariia zu ihrem Abschluss und dankt ihr für die Inspiration, die in jeder Ausgabe der Zeitschrift steckt. Dieses Diplom markiert ein neues Kapitel – und wir vermuten, dass es nicht das letzte sein wird, das es wert ist, gefeiert zu werden. Wir freuen uns, dass Sie es mit uns lesen."
             }
-          ]
+          ],
+          "updatedAt": "2026-08-08T20:24:48.655Z"
         },
         {
           "id": 12,
