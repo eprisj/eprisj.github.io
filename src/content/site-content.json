@@ -10780,6 +10780,16 @@
           "description": "El 7 de julio, Mariia Ivanova, redactora jefa de EPRIS, se licenció oficialmente en Arquitectura. Para celebrarlo – un corazón hecho de la arquitectura y el arte que la inspiran.",
           "imageSeed": "maria-graduation-heart",
           "imageUrl": "/images/heart-hero.jpg"
+        },
+        {
+          "id": 12,
+          "title": "Cómo Emily Kraus reinventa el acto de pintar",
+          "subtitle": "Arte contemporáneo",
+          "fig": "FIG. 10",
+          "description": "Dentro del Canvas Cube, Emily Kraus pinta el ritmo del momento presente",
+          "imageSeed": "item-12",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg",
+          "updatedAt": "2026-08-08T18:55:00.874Z"
         }
       ],
       "articles": [
