@@ -5041,7 +5041,7 @@ function isLikelyMediaOrUrl(value) {
   );
 }
 
-function splitTextForTranslation(text, maxLength = 1700) {
+function splitTextForTranslation(text, maxLength = 900) {
   const source = String(text || '');
   if (source.length <= maxLength) {
     return [source];
@@ -5074,6 +5074,49 @@ function splitTextForTranslation(text, maxLength = 1700) {
   return chunks;
 }
 
+// Сервис перевода изредка возвращает текст с «дырой»: одна буква посреди
+// слова заменена на U+FFFD («двойств�нность», «в�трины»). Молча сохранённая,
+// такая дыра живёт в статье месяцами — именно её мы сегодня вычищали по всему
+// контенту. Считаем ответ с U+FFFD негодным: пробуем тот же кусок помельче, а
+// если и это не помогло — оставляем исходный текст. Лучше абзац по-английски,
+// чем изуродованный перевод.
+const TRANSLATION_DAMAGE = '\uFFFD';
+
+async function requestTranslation(chunk, sourceCode, targetCode) {
+  const url = new URL('https://translate.googleapis.com/translate_a/single');
+  url.searchParams.set('client', 'gtx');
+  url.searchParams.set('sl', sourceCode);
+  url.searchParams.set('tl', targetCode);
+  url.searchParams.set('dt', 't');
+  url.searchParams.set('q', chunk);
+
+  const response = await fetch(url.toString(), { cache: 'no-store' });
+  if (!response.ok) {
+    throw new Error(`Сервис перевода ответил HTTP ${response.status}. Попробуйте позже.`);
+  }
+  const payload = await response.json();
+  return readGoogleTranslatePayload(payload) || '';
+}
+
+async function translateChunkGuarded(chunk, sourceCode, targetCode, depth = 0) {
+  const translated = await requestTranslation(chunk, sourceCode, targetCode);
+  if (translated && !translated.includes(TRANSLATION_DAMAGE)) return translated;
+  if (!translated) return chunk;
+
+  // Дробим пополам по границе слова и переводим половинки отдельно: короткий
+  // запрос почти всегда приходит целым.
+  if (depth < 2 && chunk.length > 120) {
+    const middle = chunk.lastIndexOf(' ', Math.floor(chunk.length / 2)) + 1 || Math.floor(chunk.length / 2);
+    const left = await translateChunkGuarded(chunk.slice(0, middle), sourceCode, targetCode, depth + 1);
+    const right = await translateChunkGuarded(chunk.slice(middle), sourceCode, targetCode, depth + 1);
+    const joined = `${left}${left.endsWith(' ') || right.startsWith(' ') ? '' : ' '}${right}`;
+    if (!joined.includes(TRANSLATION_DAMAGE)) return joined;
+  }
+
+  console.warn('[translate] повреждённый ответ, оставляю оригинал:', chunk.slice(0, 60));
+  return chunk;
+}
+
 function readGoogleTranslatePayload(payload) {
   if (!Array.isArray(payload) || !Array.isArray(payload[0])) {
     return '';
@@ -5104,20 +5147,7 @@ async function translateText(value, targetLang, sourceLang = DEFAULT_LANGUAGE) {
 
   const translatedParts = [];
   for (const chunk of splitTextForTranslation(text)) {
-    const url = new URL('https://translate.googleapis.com/translate_a/single');
-    url.searchParams.set('client', 'gtx');
-    url.searchParams.set('sl', sourceCode);
-    url.searchParams.set('tl', targetCode);
-    url.searchParams.set('dt', 't');
-    url.searchParams.set('q', chunk);
-
-    const response = await fetch(url.toString(), { cache: 'no-store' });
-    if (!response.ok) {
-      throw new Error(`Сервис перевода ответил HTTP ${response.status}. Попробуйте позже.`);
-    }
-
-    const payload = await response.json();
-    translatedParts.push(readGoogleTranslatePayload(payload) || chunk);
+    translatedParts.push(await translateChunkGuarded(chunk, sourceCode, targetCode));
   }
 
   const translated = translatedParts.join('');
