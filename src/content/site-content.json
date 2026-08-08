@@ -4242,6 +4242,16 @@
           "description": "7 июля Мария Иванова, главный редактор EPRIS, официаль��о стала бакалавром архитектуры. В честь этого дня – сердце, собранное из архитектуры и искусства, которые её вдохновляют.",
           "imageSeed": "maria-graduation-heart",
           "imageUrl": "/images/heart-hero.jpg"
+        },
+        {
+          "id": 12,
+          "title": "Как Эмилия Краус переизобретает акт живописи",
+          "subtitle": "Современное искусство",
+          "fig": "FIG. 10",
+          "description": "Внутри холщового куба Эмилия Краус пишет ритм настоящего момента",
+          "imageSeed": "item-12",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg",
+          "updatedAt": "2026-08-08T18:52:30.964Z"
         }
       ],
       "articles": [
