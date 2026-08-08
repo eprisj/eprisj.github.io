@@ -620,6 +620,37 @@ function mergeLocalizedItems<T extends { id: number }>(value: T[] | undefined, f
   return mergeLocalizedArray(value, fallback);
 }
 
+// ── Gallery card ↔ Article ───────────────────────────────────────────────────
+// Каждая карточка Галереи — обложка своей статьи: заголовок, категория и
+// описание у них совпадают слово в слово. Раньше этот текст лежал в карточке
+// отдельной копией, да ещё и переведённой на шесть языков, — шестьдесят
+// записей, целиком выводимых из статьи. Копии расходились (карточка без
+// перевода показывала английский заголовок посреди русской ленты), и на каждую
+// новую карточку тратился внешний переводчик.
+//
+// Теперь связь считается ОДИН раз в базовом языке — только там заголовки
+// совпадают надёжно, — и дальше карточка берёт текст из своей статьи на нужном
+// языке. Собственный текст карточки (если редактор его вписал и перевёл) главнее
+// унаследованного: пустое поле наследует, заполненное — нет.
+const galleryBaseTitle = (value?: string): string => (value || '').split(':')[0].trim().toLowerCase();
+
+/** itemId → articleId, посчитано по базовому языку. */
+export function getGalleryArticleLinks(): Map<number, number> {
+  const c = src();
+  const links = new Map<number, number>();
+  for (const item of c.items || []) {
+    const title = (item.title || '').trim();
+    if (!title) continue;
+    const exact = (c.articles || []).find((a) => a.title?.trim() === title);
+    if (exact) { links.set(item.id, exact.id); continue; }
+    const base = galleryBaseTitle(title);
+    if (base.length < 4) continue;
+    const loose = (c.articles || []).find((a) => a.title && galleryBaseTitle(a.title) === base);
+    if (loose) links.set(item.id, loose.id);
+  }
+  return links;
+}
+
 export function getAvailableLanguages(): string[] {
   const allLangs = Object.keys(src().translations);
   if (!allLangs.includes(DEFAULT_LANGUAGE)) {
@@ -675,7 +706,27 @@ export function getContentForLanguage(lang: string): LanguageContent {
   const libraryItems = mergeLocalizedArray(bucket.libraryItems, liveBase(c.libraryItems));
 
   const liveArticles = isPreview() ? articles : articles.filter((entry) => isEntityLive(entry) && isEntityVisible('articles', entry.id));
-  const liveItems = isPreview() ? items : items.filter((entry) => isEntityLive(entry) && isEntityVisible('items', entry.id));
+  const mergedItems = items.filter((entry) => isPreview() || (isEntityLive(entry) && isEntityVisible('items', entry.id)));
+
+  // Карточка без собственного перевода на этот язык берёт текст из своей статьи
+  // — та переведена и так. Базовый язык не трогаем: там текст карточки и есть
+  // оригинал. Свой перевод карточки, если он сохранён, остаётся главнее.
+  const translatedItemIds = new Set((bucket.items || []).map((entry) => entry.id));
+  const liveItems = lang === DEFAULT_LANGUAGE
+    ? mergedItems
+    : mergedItems.map((item) => {
+        if (translatedItemIds.has(item.id)) return item;
+        const articleId = getGalleryArticleLinks().get(item.id);
+        if (articleId === undefined) return item;
+        const article = liveArticles.find((a) => a.id === articleId);
+        if (!article) return item;
+        return {
+          ...item,
+          title: article.title || item.title,
+          subtitle: article.category || item.subtitle,
+          description: article.excerpt || item.description
+        };
+      });
 
   // The homepage Gallery is a hand-curated collection, separate from Articles
   // — publishing a new article never added it there, so it silently never

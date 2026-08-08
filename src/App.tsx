@@ -24,6 +24,7 @@ import {
   getAuthors,
   getManifest,
   getContentForLanguage,
+  getGalleryArticleLinks,
   getIssueArchive,
   getStudio,
   resolveAuthor,
@@ -2753,23 +2754,18 @@ function matchArticleByTitle(title: string, articles: Article[]): Article | unde
 }
 
 function findMatchingArticle(item: Item, articles: Article[]): Article | undefined {
+  // Связь считается в базовом языке и переносится по id: заголовки совпадают
+  // надёжно только там (карточка без перевода осталась бы английской посреди
+  // русской ленты, и кнопка "читать статью" молча исчезала). Карточки, которые
+  // сама лента достроила из статей, несут её id со сдвигом в 900000.
+  const linked = getGalleryArticleLinks().get(item.id) ?? (item.id >= 900000 ? item.id - 900000 : undefined);
+  if (linked !== undefined) {
+    const byId = articles.find((a) => a.id === linked);
+    if (byId) return byId;
+  }
   const title = item.title?.trim();
   if (!title) return undefined;
-  const direct = matchArticleByTitle(title, articles);
-  if (direct) return direct;
-  // Title matching breaks down as soon as one side is translated and the other
-  // isn't: the featured Gallery card had no RU/UA/DE translation, so it kept
-  // its English headline while the articles around it were localized, and the
-  // "read the full article" button silently vanished in every language but EN.
-  // Titles only ever line up reliably in the base language, so re-run the match
-  // there and carry the result back by id — the id is the same in every locale.
-  const baseContent = getContentForLanguage(DEFAULT_LANGUAGE);
-  const baseItem = baseContent.items.find((i) => i.id === item.id);
-  const baseTitle = baseItem?.title?.trim();
-  if (!baseTitle) return undefined;
-  const baseArticle = matchArticleByTitle(baseTitle, baseContent.articles);
-  if (!baseArticle) return undefined;
-  return articles.find((a) => a.id === baseArticle.id);
+  return matchArticleByTitle(title, articles);
 }
 
 function parsePath(pathname: string, search = ''): { tab?: string; articleId?: number; reviewId?: number; passportCode?: string; searchQuery?: string } {
