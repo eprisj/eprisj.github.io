@@ -3508,7 +3508,7 @@
     },
     {
       "id": 14,
-      "title": "New editorial story",
+      "title": "Translation smoke test 2026-08-08",
       "author": "EPRIS Journal",
       "role": "Editorial team",
       "date": "July 18, 2026",
@@ -3529,7 +3529,8 @@
         {
           "type": "image",
           "content": "new-editorial-story-2",
-          "caption": "Mission statement"
+          "caption": "Mission statement",
+          "align": "center"
         },
         {
           "type": "quote",
@@ -3541,7 +3542,6 @@
         },
         {
           "type": "checklist",
-          "caption": "What to cover",
           "content": {
             "items": [
               "context",
@@ -3567,7 +3567,8 @@
             ]
           }
         }
-      ]
+      ],
+      "updatedAt": "2026-08-08T19:43:18.488Z"
     },
     {
       "id": 18,
@@ -9579,10 +9580,10 @@
         },
         {
           "id": 14,
-          "title": "Neue redaktionelle Geschichte",
+          "title": "Übersetzung Rauchtest 08.08.2026",
           "author": "EPRIS Journal",
-          "role": "Redaktion",
-          "date": "18. Juli 2026",
+          "role": "Redaktionsteam",
+          "date": "July 18, 2026",
           "excerpt": "Ein fokussierter Eröffnungsabsatz für eine neue redaktionelle Geschichte.",
           "category": "Kultur",
           "subcategory": "Besonderheit",
@@ -9600,24 +9601,24 @@
             {
               "type": "image",
               "content": "new-editorial-story-2",
-              "caption": "Leitbild"
+              "caption": "Leitbild",
+              "align": "center"
             },
             {
               "type": "quote",
-              "content": "Fügen Sie hier eine Zeile hinzu, an die Sie sich erinnern sollten."
+              "content": "Fügen Sie hier eine Zeile zur Erinnerung ein."
             },
             {
               "type": "note",
-              "content": "Redaktionelle Anmerkung, Quellenkontext oder eine kurze Anmerkung."
+              "content": "Redaktioneller Hinweis, Quellenkontext oder eine kurze Notiz."
             },
             {
               "type": "checklist",
-              "caption": "Was abzudecken ist",
               "content": {
                 "items": [
                   "Kontext",
                   "Wichtiges Detail",
-                  "Menschlicher Blickwinkel",
+                  "Menschliche Perspektive",
                   "Was ändert sich als nächstes?"
                 ]
               }
@@ -9638,7 +9639,8 @@
                 ]
               }
             }
-          ]
+          ],
+          "updatedAt": "2026-08-08T19:43:27.262Z"
         },
         {
           "id": 15,
