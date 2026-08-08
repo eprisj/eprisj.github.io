@@ -3482,14 +3482,14 @@
       "role": "Editorial Desk",
       "date": "Jul 30, 2026",
       "excerpt": "A focused opening paragraph for a new editorial story.",
-      "category": "Culture",
+      "category": "contemporary",
       "subcategory": "Feature",
       "tags": [
         "story",
         "culture",
         "editorial"
       ],
-      "imageSeed": "new-editorial-story",
+      "imageSeed": "",
       "content": [
         {
           "type": "text",
@@ -3536,7 +3536,8 @@
             ]
           }
         }
-      ]
+      ],
+      "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
     },
     {
       "id": 18,
