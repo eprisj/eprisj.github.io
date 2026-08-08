@@ -3477,87 +3477,66 @@
     },
     {
       "id": 17,
-      "title": "How Emily Kraus Reinvents the Act of Painting",
+      "title": "New editorial story",
       "author": "EPRIS Journal",
-      "role": "mariia ivanova",
+      "role": "Editorial Desk",
       "date": "Jul 30, 2026",
-      "excerpt": "Inside the Canvas Cube, Emily Kraus Paints the Rhythm of the Present Moment",
-      "category": "contemporary art",
+      "excerpt": "A focused opening paragraph for a new editorial story.",
+      "category": "Culture",
       "subcategory": "Feature",
       "tags": [
-        "art",
-        "contemporary art"
+        "story",
+        "culture",
+        "editorial"
       ],
-      "imageSeed": "",
+      "imageSeed": "new-editorial-story",
       "content": [
         {
           "type": "text",
-          "content": "When the art is a part of the artist's mind, body and soul - you can feel it from the intermost dedication to the practice. That form of connection can be compared to the billions of invisible thinest threads, that remain unbroken between the artist and the artwork, even when they are far apart. They are mutually nourishing and wil never be independent again."
+          "content": "Start with the strongest scene, fact, or observation. Keep this first block tight and specific."
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/msjmgso0atp099.jpg",
-          "caption": "Emily Kraus, Each in the other what each has to give, 2026. Photo by Ollie Hammick",
-          "sourceUrl": "",
-          "credit": ""
+          "content": "new-editorial-story-2",
+          "caption": "Lead image",
+          "align": "center"
         },
         {
-          "type": "text",
-          "content": "When you look at the painting and can almost physically feel the presence of the author - that's when the purest form of revelation is unfolding in front of you."
+          "type": "quote",
+          "content": "Add a line worth remembering here."
         },
         {
-          "type": "text",
-          "content": "Emily Kraus (New York, 1995) works left me unbothered by anything externally existing. I am freezed, trapped and stunned by the unidentified. Its almost like falling in love - ypu were not prepared, you didnt ask for it, yet its one of the best feelings that can happen to the humanbeing."
+          "type": "note",
+          "content": "Editorial note, source context, or a short aside."
         },
         {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/msjmzzvhzg92s2.webp",
-          "caption": "Emily Kraus, Stochastic 20, 2023. Photo by Ollie Hammick"
+          "type": "checklist",
+          "content": {
+            "items": [
+              "Context",
+              "Key detail",
+              "Human angle",
+              "What changes next"
+            ]
+          }
         },
         {
-          "type": "text",
-          "content": "The first glance was not followed by the question \"How?\". I was too occupied dealing with uptight jitters. The second one will bring me to the conscious, ready to be curious about how was it achieved."
-        },
-        {
-          "type": "text",
-          "content": "Lack of immediate curiosity about technic corresponds to the artists belief that the work should live on its own - the communication with the viewer relies on the individual reflection as the clearest translator of visuals."
-        },
-        {
-          "type": "text",
-          "content": "Emily Kraus works in tandem with apparatus - self-invented structure, made of a scaffold with planks and rotating poles, on which the canvas is stretched. This approach gives a unique opportunity to rotate the surface and at the same time creates a cube-like enclosed space. From inside artist is applyuing the oil paints, and then rotate the canvas before the paint dries- coming through the poles, paint gets smudged. The repeated steps result in the glitchy signature visual code."
-        },
-        {
-          "type": "gallery",
-          "content": [
-            "https://api.eprisjournal.com/uploads/msjmlmp1yo7kfr.jpg",
-            "https://api.eprisjournal.com/uploads/msjmln6mxu4ycf.jpg",
-            "https://api.eprisjournal.com/uploads/msjmmyamb6ai3j.jpg"
-          ],
-          "caption": ""
-        },
-        {
-          "type": "text",
-          "content": "As the canvas is geometrically structured, the result of the whole image is unknown till the end of the work - which takes approximately one mounth"
-        },
-        {
-          "type": "text",
-          "content": "There is a beauty in uncontrollable. The nature of each painting is not in the desire to pursuation of visual appeal, but in moment decision, weather the following gesture belongs to this emerging artwork or not. Throught this solid significance of the process, based purely on the artist's feelings, painting accumulates powerful, spiritual memory."
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/msjmraxbowmo4w.webp",
-          "caption": "Emily Kraus, Fwooooop, 2024"
-        },
-        {
-          "type": "text",
-          "content": "This mechanism was influenced by the time, when Kraus was studing in the second year of Royal College of Art, that coincidence with the COVID19 anf lockdown. She was assigned with a cube studio 2.5 by 2.5 metres. The limimted area of the room hampered with the Kraus' intention to paint with large gestures, experimenting with the body and the space. To expand the practice possibilities in existing conditions, she stretched the canvas along all the walls using shower poles and wooden brackets. The canvas could be rotated, erasing boundaries of a contained space."
-        },
-        {
-          "type": "text",
-          "content": "As Lucien Freud stated - \"Everything is a self-portrait\". These words cant be more accurate in the talks on art. The sublime essence of Emily Kraus's oeuvre is definitive, rather than chaotically formed - she holds the BA in Religious Studies from Kenyon College. That was influenced by Kraus's self-questioning of the meaning of life."
+          "type": "poll",
+          "content": {
+            "question": "What should we explore next?",
+            "options": [
+              {
+                "label": "More context",
+                "votes": 0
+              },
+              {
+                "label": "Practical guide",
+                "votes": 0
+              }
+            ]
+          }
         }
-      ],
-      "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
+      ]
     },
     {
       "id": 18,
@@ -5686,51 +5665,51 @@
           "id": 17,
           "title": "Новая редакционная история",
           "author": "EPRIS Journal",
-          "role": "Редакционный отдел",
-          "date": "30 июля 2026 г.",
-          "excerpt": "Целенаправленный вступительный абзац для новой редакционной статьи.",
+          "role": "Редакционный стол",
+          "date": "30 июля 2026",
+          "excerpt": "Сфокусированный вводный абзац для новой редакционной истории.",
           "category": "Культура",
           "subcategory": "Особенность",
           "tags": [
             "история",
             "культура",
-            "редакционная статья"
+            "редакционный"
           ],
           "imageSeed": "new-editorial-story",
           "content": [
             {
               "type": "text",
-              "content": "Начните с самой яркой сцены, факта или наблюдения. Пусть этот первый блок будет четким и конкретным."
+              "content": "Начните с самой сильной сцены, факта или наблюдения. Сделайте этот первый блок плотным и конкретным."
             },
             {
               "type": "image",
               "content": "new-editorial-story-2",
-              "caption": "Ведущее изображение"
+              "caption": "Главное изображение",
+              "align": "center"
             },
             {
               "type": "quote",
-              "content": "Добавьте сюда строку, которую стоит запомнить."
+              "content": "Добавьте здесь строку, которую стоит запомнить."
             },
             {
               "type": "note",
-              "content": "Редакционное примечание, контекст источника или небольшое отступление."
+              "content": "Редакционная заметка, контекст источника или короткое дополнение."
             },
             {
               "type": "checklist",
-              "caption": "Что покрыть",
               "content": {
                 "items": [
                   "Контекст",
                   "Ключевая деталь",
-                  "Человеческий угол",
-                  "Что изменится дальше"
+                  "Человеческий аспект",
+                  "Что меняется дальше"
                 ]
               }
             },
             {
               "type": "poll",
               "content": {
-                "question": "Что нам следует изучить дальше?",
+                "question": "Что нам стоит исследовать дальше?",
                 "options": [
                   {
                     "label": "Больше контекста",
@@ -7835,42 +7814,42 @@
           "title": "Нова редакційна історія",
           "author": "EPRIS Journal",
           "role": "Редакційний стіл",
-          "date": "30 липня 2026 р",
-          "excerpt": "Цілеспрямований початковий абзац для нової редакційної статті.",
+          "date": "30 липня 2026",
+          "excerpt": "Фокусований вступний абзац для нової редакційної історії.",
           "category": "Культура",
           "subcategory": "Особливість",
           "tags": [
             "історія",
-            "культури",
-            "редакційна"
+            "культура",
+            "редакційний"
           ],
           "imageSeed": "new-editorial-story",
           "content": [
             {
               "type": "text",
-              "content": "Почніть із найсильнішої сцени, факту чи спостереження. Тримайте цей перший блок щільним і конкретним."
+              "content": "Почніть з найсильнішої сцени, факту чи спостереження. Залиште цей перший блок стислим і конкретним."
             },
             {
               "type": "image",
               "content": "new-editorial-story-2",
-              "caption": "Головне зображення"
+              "caption": "Головне зображення",
+              "align": "center"
             },
             {
               "type": "quote",
-              "content": "Додайте тут рядок, який варто запам’ятати."
+              "content": "Додайте рядок, який варто запам'ятати тут."
             },
             {
               "type": "note",
-              "content": "Редакційна примітка, контекст джерела або короткий відступ."
+              "content": "Редакційна примітка, контекст джерела або коротка примітка."
             },
             {
               "type": "checklist",
-              "caption": "Що покривати",
               "content": {
                 "items": [
                   "Контекст",
-                  "Ключова деталь",
-                  "Людський ракурс",
+                  "Ключовий пункт",
+                  "Людський аспект",
                   "Що зміниться далі"
                 ]
               }
@@ -12132,11 +12111,11 @@
           "id": 17,
           "title": "Nueva historia editorial",
           "author": "EPRIS Journal",
-          "role": "Escritorio editorial",
+          "role": "Mesa Editorial",
           "date": "30 de julio de 2026",
-          "excerpt": "Un párrafo inicial centrado en una nueva historia editorial.",
+          "excerpt": "Un párrafo de apertura enfocado para una nueva historia editorial.",
           "category": "Cultura",
-          "subcategory": "Característica",
+          "subcategory": "Destacado",
           "tags": [
             "historia",
             "cultura",
@@ -12146,30 +12125,30 @@
           "content": [
             {
               "type": "text",
-              "content": "Comience con la escena, hecho u observación más fuerte. Mantenga este primer bloque estricto y específico."
+              "content": "Comienza con la escena, hecho o observación más fuerte. Mantén este primer bloque compacto y específico."
             },
             {
               "type": "image",
               "content": "new-editorial-story-2",
-              "caption": "imagen principal"
+              "caption": "Imagen principal",
+              "align": "center"
             },
             {
               "type": "quote",
-              "content": "Agregue una línea que valga la pena recordar aquí."
+              "content": "Añade una línea que valga la pena recordar aquí."
             },
             {
               "type": "note",
-              "content": "Nota editorial, contexto fuente o breve comentario."
+              "content": "Nota editorial, contexto de la fuente o un breve comentario."
             },
             {
               "type": "checklist",
-              "caption": "que cubrir",
               "content": {
                 "items": [
                   "Contexto",
                   "Detalle clave",
-                  "ángulo humano",
-                  "¿Qué cambia a continuación?"
+                  "Ángulo humano",
+                  "Qué cambia a continuación"
                 ]
               }
             },
@@ -12183,7 +12162,7 @@
                     "votes": 0
                   },
                   {
-                    "label": "guía practica",
+                    "label": "Guía práctica",
                     "votes": 0
                   }
                 ]
@@ -14278,53 +14257,53 @@
         },
         {
           "id": 17,
-          "title": "Yeni editoryal hikaye",
+          "title": "Yeni editöryal hikaye",
           "author": "EPRIS Journal",
-          "role": "Editör Masası",
+          "role": "Editöryal masası",
           "date": "30 Temmuz 2026",
-          "excerpt": "Yeni bir editoryal hikaye için odaklanmış bir açılış paragrafı.",
+          "excerpt": "Yeni bir editöryal hikaye için odaklanmış açılış paragrafı.",
           "category": "Kültür",
-          "subcategory": "Özellik",
+          "subcategory": "Öne Çıkan",
           "tags": [
             "hikaye",
             "kültür",
-            "editoryal"
+            "editöryal"
           ],
           "imageSeed": "new-editorial-story",
           "content": [
             {
               "type": "text",
-              "content": "En güçlü sahne, gerçek veya gözlemle başlayın. Bu ilk bloğu sıkı ve spesifik tutun."
+              "content": "En güçlü sahne, gerçek veya gözlemle başlayın. Bu ilk bloğu sık ve öz tutun."
             },
             {
               "type": "image",
               "content": "new-editorial-story-2",
-              "caption": "Potansiyel müşteri resmi"
+              "caption": "Öne çıkan görsel",
+              "align": "center"
             },
             {
               "type": "quote",
-              "content": "Buraya hatırlamaya değer bir satır ekleyin."
+              "content": "Burada hatırlanması değerinde bir satır ekleyin."
             },
             {
               "type": "note",
-              "content": "Editoryal not, kaynak bağlamı veya kısa bir özet."
+              "content": "Editör notu, kaynak bağlamı veya kısa bir parantez."
             },
             {
               "type": "checklist",
-              "caption": "Neyi kapsamalı",
               "content": {
                 "items": [
                   "Bağlam",
                   "Önemli ayrıntı",
                   "İnsan açısı",
-                  "Bundan sonra ne değişecek?"
+                  "Sonraki ne değişecek?"
                 ]
               }
             },
             {
               "type": "poll",
               "content": {
-                "question": "Bundan sonra neyi keşfetmemiz gerekiyor?",
+                "question": "Sonraki neleri keşfetmeliyiz?",
                 "options": [
                   {
                     "label": "Daha fazla bağlam",
@@ -16423,9 +16402,9 @@
           "id": 17,
           "title": "Nuova storia editoriale",
           "author": "EPRIS Journal",
-          "role": "Scrivania editoriale",
+          "role": "Ufficio Editoriale",
           "date": "30 luglio 2026",
-          "excerpt": "Un paragrafo di apertura mirato per una nuova storia editoriale.",
+          "excerpt": "Un paragrafo introduttivo focalizzato per una nuova storia editoriale.",
           "category": "Cultura",
           "subcategory": "Caratteristica",
           "tags": [
@@ -16437,40 +16416,40 @@
           "content": [
             {
               "type": "text",
-              "content": "Inizia con la scena, il fatto o l'osservazione più forte. Mantieni questo primo blocco stretto e specifico."
+              "content": "Inizia con la scena, il fatto o l'osservazione più forte. Mantieni questo primo blocco conciso e specifico."
             },
             {
               "type": "image",
               "content": "new-editorial-story-2",
-              "caption": "Immagine principale"
+              "caption": "Immagine principale",
+              "align": "center"
             },
             {
               "type": "quote",
-              "content": "Aggiungi una riga che vale la pena ricordare qui."
+              "content": "Aggiungi una frase che valga la pena ricordare qui."
             },
             {
               "type": "note",
-              "content": "Nota editoriale, contesto della fonte o una breve nota."
+              "content": "Nota editoriale, contesto della fonte, o una breve digressione."
             },
             {
               "type": "checklist",
-              "caption": "Cosa coprire",
               "content": {
                 "items": [
                   "Contesto",
                   "Dettaglio chiave",
                   "Angolo umano",
-                  "Cosa cambia dopo"
+                  "Cosa cambia successivamente"
                 ]
               }
             },
             {
               "type": "poll",
               "content": {
-                "question": "Cosa dovremmo esplorare dopo?",
+                "question": "Cosa dovremmo esplorare successivamente?",
                 "options": [
                   {
-                    "label": "Più contesto",
+                    "label": "Maggior contesto",
                     "votes": 0
                   },
                   {
