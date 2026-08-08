@@ -10505,54 +10505,54 @@
         },
         {
           "id": 17,
-          "title": "Wie Emily Kraus das Malen neu erfindet",
+          "title": "Emily Kraus: Rhythmus des Augenblicks",
           "author": "EPRIS Journal",
-          "role": "mariia ivanova",
+          "role": "Maria Iwanowa",
           "date": "Jul 30, 2026",
-          "excerpt": "Im Canvas Cube malt Emily Kraus den Rhythmus des Augenblicks",
-          "category": "contemporary art",
-          "subcategory": "Feature",
+          "excerpt": "Im Canvas Cube malt Emily Kraus den Rhythmus des gegenwärtigen Augenblicks",
+          "category": "zeitgenössische Kunst",
+          "subcategory": "Besonderheit",
           "tags": [
-            "art",
-            "contemporary art"
+            "Kunst",
+            "zeitgenössische Kunst"
           ],
           "imageSeed": "",
           "content": [
             {
               "type": "text",
-              "content": "Wenn die Kunst ein Teil des Geistes, Körpers und der Seele des Künstlers ist – kannst du sie aus der innigsten Hingabe an die Praxis spüren. Diese Form der Verbindung kann mit den Milliarden unsichtbarer feinster Fäden verglichen werden, die zwischen Künstler und Kunstwerk ungebrochen bleiben, selbst wenn sie weit voneinander entfernt sind. Sie nähren sich gegenseitig und werden niemals voneinander unabhängig sein."
+              "content": "Die Arbeiten von Emily Kraus (New York, 1995) ließen mich von allem, was äußerlich existierte, unberührt. Ich bin erstarrt, gefangen und fassungslos angesichts des Unbekannten. Es ist fast so, als würde man sich verlieben – man war nicht darauf vorbereitet, man hat nicht darum gebeten, und doch ist es eines der besten Gefühle, die einem Menschen passieren können."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msjmgso0atp099.jpg",
-              "caption": "Emily Kraus, Each in the other what each has to give, 2026. Photo by Ollie Hammick",
-              "sourceUrl": "",
-              "credit": ""
+              "caption": "Emily Kraus, Jeder im anderen, was jeder zu geben hat, 2026. Foto von Ollie Hammick",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Wenn du das Gemälde ansiehst und die Anwesenheit des Künstlers fast körperlich spürst – dann entfaltet sich die reinste Form der Offenbarung vor dir."
+              "content": "Wenn die Kunst ein Teil des Geistes, des Körpers und der Seele des Künstlers ist, kann man es aus der innersten Hingabe an die Praxis spüren. Diese Form der Verbindung kann mit den Milliarden unsichtbarer, dünnster Fäden verglichen werden, die zwischen dem Künstler und dem Kunstwerk ununterbrochen bleiben, auch wenn sie weit voneinander entfernt sind. Sie nähren sich gegenseitig und werden nie wieder unabhängig sein."
             },
             {
               "type": "text",
-              "content": "Emily Kraus (New York, 1995) hat mich mit ihrer Arbeit völlig unbeeindruckt von allem Externen zurückgelassen. Ich bin eingefroren, gefangen und überwältigt vom Unbekannten. Es ist fast wie beim Verlieben – du warst nicht vorbereitet, du hast danach nicht gefragt, doch es ist eines der besten Gefühle, das einem Menschen passieren kann."
+              "content": "Wenn Sie das Gemälde betrachten und die Anwesenheit des Autors fast körperlich spüren können, dann entfaltet sich vor Ihnen die reinste Form der Offenbarung."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msjmzzvhzg92s2.webp",
-              "caption": "Emily Kraus, Stochastic 20, 2023. Photo by Ollie Hammick"
+              "caption": "Emily Kraus, Stochastic 20, 2023. Foto von Ollie Hammick",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Der erste Blick wurde nicht von der Frage \"Wie?\" gefolgt. Ich war zu beschäftigt, mit angespannten Zittern umzugehen. Der zweite Blick wird mich ins Bewusste bringen, bereit, neugierig zu sein, wie es erreicht wurde."
+              "content": "Auf den ersten Blick folgte nicht die Frage „Wie?“. Ich war zu sehr mit Nervosität beschäftigt. Der zweite brachte mich wieder zu Bewusstsein und war bereit, neugierig zu sein, wie es zustande kam."
             },
             {
               "type": "text",
-              "content": "Das Fehlen unmittelbarer Neugierde gegenüber der Technik entspricht dem Glauben des Künstlers, dass das Werk für sich selbst bestehen sollte – die Kommunikation mit dem Betrachter beruht auf der individuellen Reflexion als klarstem Übersetzer des Visuellen."
+              "content": "Das Fehlen unmittelbarer Neugier auf die Technik entspricht der Überzeugung des Künstlers, dass das Werk für sich selbst leben sollte – die Kommunikation mit dem Betrachter beruht auf einer individuellen Reflexion als klarstem Übersetzer von Bildern."
             },
             {
               "type": "text",
-              "content": "Emily Kraus arbeitet im Tandem mit dem Apparat – einer selbst erfundenen Konstruktion, bestehend aus einem Gerüst mit Brettern und drehbaren Polen, auf der die Leinwand gespannt ist. Dieser Ansatz bietet die einzigartige Möglichkeit, die Oberfläche zu drehen und gleichzeitig einen würfelartigen geschlossenen Raum zu schaffen. Von innen trägt die Künstlerin Ölfarben auf und dreht anschließend die Leinwand, bevor die Farbe trocknet – dabei verläuft die Farbe durch die Polen und wird verschmiert. Die wiederholten Schritte ergeben den charakteristischen visuellen Code mit Glitch-Effekt."
+              "content": "Emily Kraus arbeitet mit einer selbst erfundenen Struktur zusammen, die aus einem Gerüst mit Brettern und rotierenden Stangen besteht, auf die die Leinwand gespannt ist. Dieser Ansatz bietet die einzigartige Möglichkeit, die Oberfläche zu drehen und gleichzeitig einen würfelartig umschlossenen Raum zu schaffen. Von innen trägt der Künstler die Ölfarben auf und dreht dann die Leinwand, bevor die Farbe trocknet – während sie sich durch die Stangen bewegt, verschmiert die Farbe. Die wiederholten Schritte führen zu dem fehlerhaften visuellen Signaturcode."
             },
             {
               "type": "gallery",
@@ -10560,32 +10560,41 @@
                 "https://api.eprisjournal.com/uploads/msjmlmp1yo7kfr.jpg",
                 "https://api.eprisjournal.com/uploads/msjmln6mxu4ycf.jpg",
                 "https://api.eprisjournal.com/uploads/msjmmyamb6ai3j.jpg"
-              ],
-              "caption": ""
+              ]
             },
             {
               "type": "text",
-              "content": "Da die Leinwand geometrisch strukturiert ist, ist das Ergebnis des gesamten Bildes erst am Ende der Arbeit unbekannt – was etwa einen Monat dauert."
+              "content": "Da die Leinwand geometrisch strukturiert ist, ist das Ergebnis des Gesamtbildes bis zum Abschluss der Arbeit, die etwa einen Monat dauert, unbekannt."
             },
             {
               "type": "text",
-              "content": "Es gibt eine Schönheit im Unkontrollierbaren. Die Natur jedes Gemäldes liegt nicht im Wunsch nach visueller Anziehungskraft, sondern im Augenblick der Entscheidung, ob die folgende Geste zu diesem entstehenden Kunstwerk gehört oder nicht. Durch diese feste Bedeutung des Prozesses, der ausschließlich auf den Gefühlen des Künstlers beruht, sammelt das Gemälde eine potente, spirituelle Erinnerung."
+              "content": "Im Unkontrollierbaren liegt eine Schönheit. Das Wesen jedes Gemäldes liegt nicht im Streben nach visueller Attraktivität, sondern in einer momentanen Entscheidung, ob die folgende Geste zu diesem entstehenden Kunstwerk gehört oder nicht. Durch diese tiefe Bedeutung des Prozesses, der ausschließlich auf den Gefühlen des Künstlers basiert, sammelt das Gemälde eine kraftvolle, spirituelle Erinnerung."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msjmraxbowmo4w.webp",
-              "caption": "Emily Kraus, Fwooooop, 2024"
+              "caption": "Emily Kraus, Fwooooop, 2024",
+              "align": "center"
             },
             {
               "type": "text",
-              "content": "Dieser Mechanismus wurde beeinflusst von der Zeit, als Kraus im zweiten Jahr am Royal College of Art studierte, was mit dem Zufall zusammenfiel, der mit COVID-19 und dem Lockdown zusammenfiel. Ihr wurde ein Würfelstudio von 2,5 mal 2,5 Metern zugewiesen. Der begrenzte Bereich des Raums behinderte Kraus' Absicht, mit großen Gesten zu malen, während sie mit Körper und Raum experimentierte. Um die Praxis-Möglichkeiten unter den gegebenen Bedingungen zu erweitern, spannte sie die Leinwand entlang aller Wände mit Duschstangen und Holzhalterungen. Die Leinwand konnte gedreht werden, wodurch die Grenzen eines begrenzten Raums verwischt wurden."
+              "content": "Dieser Mechanismus wurde durch die Zeit beeinflusst, als Kraus in ihrem zweiten Jahr am Royal College of Art studierte, was mit COVID-19 und dem Lockdown zusammenfiel. Ihr wurde ein Würfelstudio mit den Maßen 2,5 mal 2,5 Meter zugewiesen. Die begrenzte Raumfläche behinderte Kraus‘ Absicht, mit großen Gesten zu malen und mit ihrem Körper und Raum zu experimentieren. Um die Möglichkeiten ihrer Praxis unter den bestehenden Bedingungen zu erweitern, spannte sie die Leinwand mit Duschstangen und Holzklammern entlang aller Wände. Die Leinwand konnte gedreht werden, wodurch die Grenzen des enthaltenen Raums gelöscht wurden."
             },
             {
               "type": "text",
-              "content": "Wie Lucien Freud sagte: \"Everything is a self-portrait\". Diese Worte könnten nicht treffender sein in den Gesprächen über Kunst. Das erhabene Wesen von Emily Kraus' Werk ist definitiv, anstatt chaotisch gebildet zu sein – sie hat einen BA in Religionswissenschaften vom Kenyon College erworben. Dies wurde durch Kraus' Selbstbefragung über den Sinn des Lebens beeinflusst."
+              "content": "Das Konzept der Eingrenzung als Teil einer umfassenderen Raumwahrnehmung stand bereits zuvor auf der Agenda des Künstlers. Emily Kraus erforschte die Grenzen von Objekten, Orten und die Beziehungen zwischen ihnen. Darüber hinaus praktizierte sie Meditation, die letztendlich die gesamte existierende Welt neu konfiguriert und sie nahtlos erweitert und gleichzeitig ermöglicht, sich vollständig in den eigenen Geist einzufügen. Die Anhäufung von Reflexionen und einem kleinen Atelierraum wirft die Frage auf, wie man Freiheit finden kann, wenn man körperlich eingeschränkt ist, und wie der Raum uns nicht aus dem Käfig des Geistes befreien kann."
+            },
+            {
+              "type": "text",
+              "content": "Wie Lucian Freud sagte: „Alles ist ein Selbstporträt.“ Diese Worte könnten nicht treffender sein, wenn es um Kunst geht. Die erhabene Essenz des Oeuvres von Emily Kraus ist definitiv und nicht chaotisch geformt – sie hat einen BA in Religionswissenschaft vom Kenyon College. Die Wahl wurde von Kraus‘ Selbstbefragung über den Sinn des Lebens beeinflusst."
+            },
+            {
+              "type": "text",
+              "content": "Der tiefgreifende Einfluss von Emily Kraus auf die Welt der zeitgenössischen Kunst wird durch die Anerkennung durch große Institutionen verstärkt: Als eine der Artsy Vanguard 2026, Empfängerin des Hopper-Preises und in die engere Auswahl sowohl des Hopper-Preises als auch des John Moores Painting Prize, macht sie weiterhin Entdeckungen in jedem neuen Werk und begründet ihren starken Weg."
             }
           ],
-          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg",
+          "updatedAt": "2026-08-08T21:09:20.240Z"
         }
       ],
       "reviews": [
