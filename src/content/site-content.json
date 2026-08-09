@@ -14359,66 +14359,80 @@
         },
         {
           "id": 14,
-          "title": "Yeni editoryal hikaye",
+          "title": "Sandra Kantanen: Geleneksel Fotoğrafın Objektifinin Ötesinde",
           "author": "EPRIS Journal",
-          "role": "Editör Masası",
-          "date": "18 Temmuz 2026",
+          "role": "Editör ekibi",
+          "date": "July 18, 2026",
           "excerpt": "Yeni bir editoryal hikaye için odaklanmış bir açılış paragrafı.",
-          "category": "Kültür",
-          "subcategory": "Özellik",
+          "category": "sanat",
+          "subcategory": "Özel özellik",
           "tags": [
-            "hikaye",
-            "kültür",
-            "editoryal"
+            "fotoğrafçılık"
           ],
-          "imageSeed": "new-editorial-story",
+          "imageSeed": "",
           "content": [
             {
               "type": "text",
-              "content": "En güçlü sahne, gerçek veya gözlemle başlayın. Bu ilk bloğu sıkı ve spesifik tutun."
+              "content": "Finlandiyalı sanatçı Sandra Kantanen, fotoğrafçılığa nesnel gerçekliği yakalamanın bir aracı olmaktan çok, hayal edilene açılan bir kapı olarak yaklaşıyor. Çalışmaları, aracı merceğin sınırlarının ötesine iten, izleyiciyi fotoğrafın nerede bittiğini ve resmin nerede başladığını sorgulamaya zorlayan benzersiz, sınırsız bir teknik felsefeyi ortaya koyuyor."
+            },
+            {
+              "type": "text",
+              "content": "İlk bakışta, onun ruhani manzaralarının karışık yağlı boyalar ve geleneksel katmanlamanın sonucu olduğu düşünülebilir. Gerçekte bunlar, memleketi Finlandiya'nın ormanlarından Asya dağlarına kadar derin dijital ve fiziksel manipülasyona maruz kalan doğal ortamların fotoğraflarıdır."
             },
             {
               "type": "image",
-              "content": "new-editorial-story-2",
-              "caption": "Potansiyel müşteri resmi"
+              "content": "https://api.eprisjournal.com/uploads/msma9wvbe77qf8.jpg",
+              "caption": "Sandra Kantanen, Natürmort (Çiçekler 3), 2020",
+              "align": "center"
             },
             {
-              "type": "quote",
-              "content": "Buraya hatırlamaya değer bir satır ekleyin."
+              "type": "text",
+              "content": "1974 yılında Helsinki'de doğan Sandra Kantanen, uluslararası üne sahip Helsinki Fotoğrafçılık Okulu'nda önemli bir figür olarak ortaya çıktı. Akademik temeli, Helsinki'deki Aalto Üniversitesi Sanat, Tasarım ve Mimarlık Okulu'nda kuruldu, ancak sanatsal yörüngesindeki en önemli değişim, değişim öğrencisi olarak Çin'e taşındığı 2000 yılı civarında gerçekleşti."
             },
             {
-              "type": "note",
-              "content": "Editoryal not, kaynak bağlamı veya kısa bir özet."
+              "type": "text",
+              "content": "Pekin'deki Merkez Güzel Sanatlar Akademisi'nde geleneksel Çin manzara resmi okuyan Kantanen, Doğu felsefesinden derinden etkilendi. Eski ustaların manzarayı belgelemeyi değil, onu idealleştirmeyi ve yüceltmeyi amaçlamaları onu şaşırtmıştı."
             },
             {
-              "type": "checklist",
-              "caption": "Neyi kapsamalı",
-              "content": {
-                "items": [
-                  "Bağlam",
-                  "Önemli ayrıntı",
-                  "İnsan açısı",
-                  "Bundan sonra ne değişecek?"
-                ]
-              }
+              "type": "text",
+              "content": "Çin'in kutsal dağlarında yaptığı seyahatler sırasında, antik ipek tomarlarda tasvir edilen bozulmamış, ruhsallaştırılmış doğa ile modern endüstriyel kirlilik ve turizmin sert gerçekleri arasındaki keskin gerilime tanık oldu. Bu uyumsuzluk onun pratiğinin katalizörü oldu: \"İmkansız\" bir manzarayı, hafıza, mit ve optik çarpıtma arasında bir yerde var olan bir alanı yakalamaya yönelik ömür boyu süren bir arayış."
             },
             {
-              "type": "poll",
-              "content": {
-                "question": "Bundan sonra neyi keşfetmemiz gerekiyor?",
-                "options": [
-                  {
-                    "label": "Daha fazla bağlam",
-                    "votes": 0
-                  },
-                  {
-                    "label": "Pratik kılavuz",
-                    "votes": 0
-                  }
-                ]
-              }
+              "type": "text",
+              "content": "Pikselleri bozuk manzaralar onun en ünlü imzası olsa da, Kantanen'in daha geniş fotoğrafçılık pratiği oldukça çeşitlidir. Tek bir teknik numaraya güvenmiyor; bunun yerine farklı seriler üzerinde denemeler yapıyor ve bir fotografik görüntünün nasıl davranabileceğini sürekli olarak yeniden tanımlıyor:"
+            },
+            {
+              "type": "text",
+              "content": "Duman İşleri &amp; Piksel Manipülasyonu: Kantanen, en ünlü serisinde, daha deklanşöre basmadan doğaya fiziksel olarak müdahale ediyor. Finlandiya'nın Hango kentindeki evinin yakınındaki ormanlar gibi uzak ormanlara renkli sis bombaları atarak, sıradan manzarayı bozan gerçeküstü, saykodelik bir atmosfer yaratıyor. Daha sonra bu dijital dosyaları alıyor ve onları derin manipülasyonlara tabi tutuyor: ufukları bulanıklaştırıyor, verileri genişletiyor ve fotoğrafın sıvı boyanın akışkanlığını taklit etmesi için pikselleri manuel olarak akmaya zorluyor."
+            },
+            {
+              "type": "text",
+              "content": "Botanik Çalışmaları ve Tarayıcılar: Geniş manzaralardan uzaklaşan ve pikselleri tamamen genişleten çiçekli natürmortları ve botanik çalışmaları, organik çürümeyi yakından araştırıyor. Bunlar için geleneksel kamera lensleri yerine sıklıkla büyük ölçekli formatları, uzun pozlamaları ve hatta düz yataklı tarayıcıları kullanıyor. Bu yöntemler, doğadaki samimi dokulara ve zamanın yavaş geçişine odaklanarak Hollanda Altın Çağı resminin zengin, alegorik derinliğini çağrıştırıyor."
+            },
+            {
+              "type": "text",
+              "content": "Erken ve Düz Fotoğrafçılık: Asya'daki seyahat projeleri de dahil olmak üzere kariyerinin ilk aşamalarında yaklaşımı düz fotoğrafçılığa çok daha yakındı. Antik gelenekler ile modern kentsel tecavüz arasındaki gerçek sürtüşmeyi belgeleyerek teknik ustalığının klasik fotografik gözlemin sağlam bir temeli üzerine kurulduğunu kanıtladı."
+            },
+            {
+              "type": "text",
+              "content": "Kantanen, fiziksel sahneleme, tarayıcı sanatı, düz yakalama ve dijital distorsiyon arasında akıcı bir şekilde hareket ederek, bir fotoğrafın ne olabileceğine dair algımızı sürekli olarak istikrarsızlaştırıyor."
+            },
+            {
+              "type": "text",
+              "content": "Yirmi yılı aşkın bir kariyere sahip olan Sandra Kantanen, çağdaş görsel sanatlara yaptığı yenilikçi katkılardan dolayı uluslararası alanda geniş çapta beğeni topladı."
+            },
+            {
+              "type": "text",
+              "content": "Çalışmaları, Londra'daki Purdy Hicks Gallery, Paris Photo gibi mekanlarda büyük sergilerle ve Turku Sanat Müzesi'nde kapsamlı bir retrospektifle dünya çapında sergilendi."
+            },
+            {
+              "type": "text",
+              "content": "Kantanen'in etkisi, Los Angeles'taki J. Paul Getty Müzesi, Brooklyn Müzesi, Los Angeles County Sanat Müzesi (LACMA) ve Helsinki'deki Kiasma Çağdaş Sanat Müzesi dahil olmak üzere dünyanın en saygın kurumlarından bazılarının kalıcı koleksiyonlarına dahil edilmesiyle pekişmiştir. Hatje Cantz tarafından yayınlanan monografileri, teknolojiyi yalnızca kullanmakla kalmayıp onu güzelliğin ebedi hizmetine sunan bir sanatçının vasiyeti olarak hizmet ediyor."
             }
-          ]
+          ],
+          "order": 1,
+          "imageUrl": "https://api.eprisjournal.com/uploads/msm9xi2uysm3fm.jpg",
+          "updatedAt": "2026-08-09T21:47:50.889Z"
         },
         {
           "id": 15,
