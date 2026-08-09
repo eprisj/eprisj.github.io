@@ -12123,12 +12123,14 @@ async function flushModernEditor() {
   const ICON_DOWN   = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>';
   const ICON_REPEAT = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>';
   const ICON_TRASH  = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>';
+  const ICON_DUP    = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>';
   const ICON_GRIP   = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>';
 
   function blockControls(i) {
     return `<div class="wys-bc">
       <button class="wys-bc-btn" data-wys-act="up"   data-i="${i}" title="Вверх">${ICON_UP}</button>
       <button class="wys-bc-btn" data-wys-act="down" data-i="${i}" title="Вниз">${ICON_DOWN}</button>
+      <button class="wys-bc-btn" data-wys-act="dup"  data-i="${i}" title="Дублировать блок">${ICON_DUP}</button>
       <button class="wys-bc-btn" data-wys-act="type" data-i="${i}" title="Сменить тип блока">${ICON_REPEAT}</button>
       <button class="wys-bc-btn danger" data-wys-act="del" data-i="${i}" title="Удалить блок">${ICON_TRASH}</button>
     </div>
@@ -12510,6 +12512,12 @@ async function flushModernEditor() {
     if (a === 'type') return openTypeMenu(act, (type) => { changeBlockType(i, type); render(); commit(); });
     if (a === 'up')   { if (i > 0) { swap(i, i - 1); _galSelected.clear(); render(); commit(); } return; }
     if (a === 'down') { if (i < _model.content.length - 1) { swap(i, i + 1); _galSelected.clear(); render(); commit(); } return; }
+    if (a === 'dup')  {
+      const clone = JSON.parse(JSON.stringify(_model.content[i]));
+      _model.content.splice(i + 1, 0, clone);
+      _galSelected.clear(); render(); commit(); focusBlock(i + 1);
+      return;
+    }
     if (a === 'del')  { _model.content.splice(i, 1); _galSelected.clear(); render(); commit(); return; }
     if (a === 'tag-add') { const t = prompt('Новый тег:'); if (t && t.trim()) { _model.tags = _model.tags || []; _model.tags.push(t.trim()); render(); commit(); } return; }
     if (a === 'tag-del') { _model.tags.splice(i, 1); render(); commit(); return; }
