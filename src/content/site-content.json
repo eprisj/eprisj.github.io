@@ -2009,6 +2009,70 @@
   ],
   "articles": [
     {
+      "id": 14,
+      "title": "New editorial story",
+      "author": "EPRIS Journal",
+      "role": "Editorial team",
+      "date": "July 18, 2026",
+      "excerpt": "A focused opening paragraph for a new editorial story.",
+      "category": "culture",
+      "subcategory": "Special feature",
+      "tags": [
+        "Story",
+        "culture",
+        "editorial"
+      ],
+      "imageSeed": "new-editorial-story",
+      "content": [
+        {
+          "type": "text",
+          "content": "Start with the strongest scene, fact, or observation. Keep this first block narrow and specific."
+        },
+        {
+          "type": "image",
+          "content": "new-editorial-story-2",
+          "caption": "Mission statement"
+        },
+        {
+          "type": "quote",
+          "content": "Add a line here to remember."
+        },
+        {
+          "type": "note",
+          "content": "Editorial note, source context, or a brief note."
+        },
+        {
+          "type": "checklist",
+          "caption": "What to cover",
+          "content": {
+            "items": [
+              "context",
+              "Important detail",
+              "Human perspective",
+              "What changes next?"
+            ]
+          }
+        },
+        {
+          "type": "poll",
+          "content": {
+            "question": "What should we explore next?",
+            "options": [
+              {
+                "label": "More context",
+                "votes": 0
+              },
+              {
+                "label": "Practical guide",
+                "votes": 0
+              }
+            ]
+          }
+        }
+      ],
+      "order": 1
+    },
+    {
       "id": 17,
       "title": "Emily Kraus: Rhythm of the Moment",
       "author": "EPRIS Journal",
@@ -2099,7 +2163,7 @@
         }
       ],
       "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg",
-      "order": 1
+      "order": 2
     },
     {
       "id": 18,
@@ -2459,7 +2523,7 @@
           "content": "<hr><h4>Sources</h4><ul class=\"sources\"><li><strong>Guggenheim Museum Bilbao</strong> — the museum on its own building: areas, galleries and the titanium skin — <a href=\"https://www.guggenheim-bilbao.eus/en/the-building\">guggenheim-bilbao.eus</a></li><li><strong>Association for Project Management</strong> — the project economics, and why titanium was briefly cheaper than steel — <a href=\"https://www.apm.org.uk/blog/guggenheim-museum-bilbao-why-was-it-such-a-stellar-project-success/\">apm.org.uk</a></li><li><strong>ArchDaily</strong> — Heydar Aliyev Center — drawings, structure and project data — <a href=\"https://www.archdaily.com/448774/heydar-aliyev-center-zaha-hadid-architects\">archdaily.com</a></li><li><strong>Dezeen</strong> — the open letter from Beijing’s heritage body over the Lubetkin nomination, 2013 — <a href=\"https://www.dezeen.com/2013/08/03/zaha-hadid-galaxy-soho-riba-award-lubetkin-prize-chinese-heritage/\">dezeen.com</a></li><li><strong>UNStudio</strong> — Mercedes-Benz Museum — the trefoil plan and double-helix circulation, from the architects — <a href=\"https://www.unstudio.com/projects/mercedes-benz-museum/\">unstudio.com</a></li><li><strong>MAD Architects</strong> — Harbin Opera House — building area, seating and the public rooftop route — <a href=\"https://www.i-mad.com/projects/harbin-opera-house\">i-mad.com</a></li></ul><span class=\"dek\">Photographs: freely licensed via Wikimedia Commons, each credited in its caption.</span>"
         }
       ],
-      "order": 2
+      "order": 3
     },
     {
       "id": 16,
@@ -2673,7 +2737,7 @@
         }
       ],
       "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg",
-      "order": 3
+      "order": 4
     },
     {
       "id": 15,
@@ -2882,70 +2946,6 @@
         }
       ],
       "imageUrl": "https://api.eprisjournal.com/uploads/mrt4jakod3agex.jpg",
-      "order": 4
-    },
-    {
-      "id": 14,
-      "title": "New editorial story",
-      "author": "EPRIS Journal",
-      "role": "Editorial team",
-      "date": "July 18, 2026",
-      "excerpt": "A focused opening paragraph for a new editorial story.",
-      "category": "culture",
-      "subcategory": "Special feature",
-      "tags": [
-        "Story",
-        "culture",
-        "editorial"
-      ],
-      "imageSeed": "new-editorial-story",
-      "content": [
-        {
-          "type": "text",
-          "content": "Start with the strongest scene, fact, or observation. Keep this first block narrow and specific."
-        },
-        {
-          "type": "image",
-          "content": "new-editorial-story-2",
-          "caption": "Mission statement"
-        },
-        {
-          "type": "quote",
-          "content": "Add a line here to remember."
-        },
-        {
-          "type": "note",
-          "content": "Editorial note, source context, or a brief note."
-        },
-        {
-          "type": "checklist",
-          "caption": "What to cover",
-          "content": {
-            "items": [
-              "context",
-              "Important detail",
-              "Human perspective",
-              "What changes next?"
-            ]
-          }
-        },
-        {
-          "type": "poll",
-          "content": {
-            "question": "What should we explore next?",
-            "options": [
-              {
-                "label": "More context",
-                "votes": 0
-              },
-              {
-                "label": "Practical guide",
-                "votes": 0
-              }
-            ]
-          }
-        }
-      ],
       "order": 5
     },
     {
