@@ -2022,7 +2022,7 @@
         "culture",
         "editorial"
       ],
-      "imageSeed": "new-editorial-story",
+      "imageSeed": "",
       "content": [
         {
           "type": "text",
@@ -2030,11 +2030,11 @@
         },
         {
           "type": "text",
-          "content": "At first glance, one might assume her ethereal landscapes are the result of mixed oil paints and traditional layering. In reality, these are photographs of natural environments-ranging from the forests of her native Finland to the mountains of Asia-subjected to profound digital and physical manipulation."
+          "content": "At first glance, one might assume her ethereal landscapes are the result of mixed oil paints and traditional layering. In reality, these are photographs of natural environments - from the forests of Finland to the mountains of Asia - subjected to profound digital and physical manipulation."
         },
         {
           "type": "image",
-          "content": "new-editorial-story-2",
+          "content": "https://api.eprisjournal.com/uploads/mslqrmgjkeekpy.jpg",
           "caption": "Mission statement"
         },
         {
@@ -2074,7 +2074,8 @@
           }
         }
       ],
-      "order": 1
+      "order": 1,
+      "imageUrl": "https://api.eprisjournal.com/uploads/mslqsbgcahhxon.jpg"
     },
     {
       "id": 17,
