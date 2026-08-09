@@ -2000,7 +2000,7 @@
   "articles": [
     {
       "id": 17,
-      "title": "Emily Kraus: The Rhythm of the Moment",
+      "title": "Emily Kraus: Rhythm of the Moment",
       "author": "EPRIS Journal",
       "role": "mariia ivanova",
       "date": "Jul 30, 2026",
@@ -6198,8 +6198,7 @@
             }
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg",
-          "order": 1,
-          "updatedAt": "2026-08-09T08:41:33.340Z"
+          "order": 1
         }
       ],
       "reviews": [
@@ -8453,8 +8452,7 @@
             }
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg",
-          "order": 1,
-          "updatedAt": "2026-08-09T08:41:33.996Z"
+          "order": 1
         }
       ],
       "reviews": [
@@ -15044,8 +15042,7 @@
             }
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg",
-          "order": 1,
-          "updatedAt": "2026-08-09T08:41:33.661Z"
+          "order": 1
         }
       ],
       "reviews": [
