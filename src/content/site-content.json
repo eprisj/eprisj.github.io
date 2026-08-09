@@ -2035,7 +2035,8 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mslqu1zc3433os.jpg",
-          "caption": "Mission statement"
+          "caption": "Mission statement",
+          "sourceUrl": "https://sandrakantanen.com/works/"
         },
         {
           "type": "quote",
