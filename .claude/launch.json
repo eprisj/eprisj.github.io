@@ -11,6 +11,17 @@
       "port": 5173
     },
     {
+      "name": "eprisjournal-verify",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "vite",
+        "--port",
+        "5174",
+        "--force"
+      ],
+      "port": 5174
+    },
+    {
       "name": "epris-admin-static",
       "runtimeExecutable": "python3",
       "runtimeArgs": [

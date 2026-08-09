@@ -18,6 +18,15 @@ export interface Item {
   publishAt?: string;
   /** Server-stamped on every /content/entity save — see mergeLocalizedArray. */
   updatedAt?: string;
+  /** Manual display position set in the admin (1 = first). Unset entries keep the default order, after the ordered ones. */
+  order?: number;
+  /**
+   * Явная привязка карточки к статье. Раньше связь угадывалась по совпадению
+   * заголовков — и рвалась каждый раз, когда статью переименовывали: кнопка
+   * «читать статью» молча исчезала, а перевод переставал наследоваться.
+   * Заголовок — не идентификатор; id переживает и переименование, и перевод.
+   */
+  articleId?: number;
 }
 
 export interface ContentBlock {
@@ -77,6 +86,8 @@ export interface Article {
   publishAt?: string;
   /** Server-stamped on every /content/entity save — see mergeLocalizedArray. */
   updatedAt?: string;
+  /** Manual display position set in the admin (1 = first). Unset entries stay in date order, after the ordered ones. */
+  order?: number;
 }
 
 export interface Review {
@@ -272,6 +283,37 @@ export interface SiteContent {
 }
 
 const content = rawContent as SiteContent;
+
+// Свежие статьи сверху. Порядок массива в документе ручной — он зависит от
+// того, куда админка вставила запись, и на дату не смотрит.
+//
+// Сортируем ИМЕННО базовые записи, до наложения переводов: в переводах дата
+// записана словами на своём языке ("14 березня 2026 р"), Date.parse её не
+// понимает, и половина ленты уезжала в конец. Базовые даты приходят в двух
+// видах ("Jul 24, 2026" и "July 18, 2026") — оба разбираются. Порядок после
+// merge сохраняется: mergeLocalizedArray проходит по базовому массиву.
+const entryTime = (value?: string): number => {
+  const parsed = value ? Date.parse(value) : NaN;
+  return Number.isNaN(parsed) ? 0 : parsed;
+};
+
+const newestFirst = <T extends { date?: string }>(list: T[]): T[] =>
+  [...list].sort((a, b) => entryTime(b.date) - entryTime(a.date));
+
+// Ручной порядок из админки. Кнопки ↑/↓ проставляют записям числовой `order`
+// (1 = первая), и он перебивает порядок по умолчанию: дату у статей и порядок
+// массива у Галереи. Записи без `order` остаются как были, но уходят ПОСЛЕ
+// расставленных вручную — иначе новая статья без номера втискивалась бы в
+// середину чужой раскладки. Сортируем базовые записи, до наложения переводов:
+// `order` живёт только в базе, mergeLocalizedArray идёт по базовому массиву.
+const entryOrder = (value?: number): number =>
+  typeof value === 'number' && Number.isFinite(value) ? value : Number.POSITIVE_INFINITY;
+
+const byManualOrder = <T extends { order?: number }>(list: T[]): T[] => {
+  if (!list.some((entry) => entryOrder(entry.order) !== Number.POSITIVE_INFINITY)) return list;
+  // Array.prototype.sort стабильна — записи без `order` сохраняют свой порядок.
+  return [...list].sort((a, b) => entryOrder(a.order) - entryOrder(b.order));
+};
 
 // ── Live content layer (VPS is the source of truth) ──────────────────────────
 // The admin saves content to the VPS API, and the public site fetches it live
@@ -589,6 +631,43 @@ function mergeLocalizedItems<T extends { id: number }>(value: T[] | undefined, f
   return mergeLocalizedArray(value, fallback);
 }
 
+// ── Gallery card ↔ Article ───────────────────────────────────────────────────
+// Каждая карточка Галереи — обложка своей статьи: заголовок, категория и
+// описание у них совпадают слово в слово. Раньше этот текст лежал в карточке
+// отдельной копией, да ещё и переведённой на шесть языков, — шестьдесят
+// записей, целиком выводимых из статьи. Копии расходились (карточка без
+// перевода показывала английский заголовок посреди русской ленты), и на каждую
+// новую карточку тратился внешний переводчик.
+//
+// Теперь связь считается ОДИН раз в базовом языке — только там заголовки
+// совпадают надёжно, — и дальше карточка берёт текст из своей статьи на нужном
+// языке. Собственный текст карточки (если редактор его вписал и перевёл) главнее
+// унаследованного: пустое поле наследует, заполненное — нет.
+const galleryBaseTitle = (value?: string): string => (value || '').split(':')[0].trim().toLowerCase();
+
+/** itemId → articleId, посчитано по базовому языку. */
+export function getGalleryArticleLinks(): Map<number, number> {
+  const c = src();
+  const links = new Map<number, number>();
+  const articleIds = new Set((c.articles || []).map((a) => a.id));
+  for (const item of c.items || []) {
+    // Явная привязка — единственная, которая переживает переименование статьи.
+    if (typeof item.articleId === 'number' && articleIds.has(item.articleId)) {
+      links.set(item.id, item.articleId);
+      continue;
+    }
+    const title = (item.title || '').trim();
+    if (!title) continue;
+    const exact = (c.articles || []).find((a) => a.title?.trim() === title);
+    if (exact) { links.set(item.id, exact.id); continue; }
+    const base = galleryBaseTitle(title);
+    if (base.length < 4) continue;
+    const loose = (c.articles || []).find((a) => a.title && galleryBaseTitle(a.title) === base);
+    if (loose) links.set(item.id, loose.id);
+  }
+  return links;
+}
+
 export function getAvailableLanguages(): string[] {
   const allLangs = Object.keys(src().translations);
   if (!allLangs.includes(DEFAULT_LANGUAGE)) {
@@ -631,13 +710,40 @@ export function getContentForLanguage(lang: string): LanguageContent {
   // preview keeps everything so stubs remain visible for editing.
   const liveBase = <T,>(arr: T[]): T[] => isPreview() ? arr : arr.filter((e) => !isPlaceholderEntity(e));
 
-  const articles = mergeLocalizedArray(bucket.articles, liveBase(c.articles));
-  const reviews = mergeLocalizedArray(bucket.reviews, liveBase(c.reviews));
-  const items = mergeLocalizedItems(bucket.items, liveBase(c.items));
+  const articles = mergeLocalizedArray(bucket.articles, byManualOrder(newestFirst(liveBase(c.articles))));
+  // Reviews hit the same recycled-id trap the Gallery did: every locale still
+  // carries a translation of a deleted restaurant review on id 1, so readers of
+  // UA/RU/DE opened "Симфонія смаків / Ресторан «Олеа», Лімасол" sitting on top
+  // of the Le Dauphine body. The buckets also hold a "New review" stub and one
+  // entry more than the root. Both signals are exactly what mergeLocalizedItems
+  // screens for, so reviews get the same guard: an untrustworthy bucket falls
+  // back to the base language instead of mixing two different reviews together.
+  const reviews = mergeLocalizedItems(bucket.reviews, liveBase(c.reviews));
+  const items = mergeLocalizedItems(bucket.items, byManualOrder(liveBase(c.items)));
   const libraryItems = mergeLocalizedArray(bucket.libraryItems, liveBase(c.libraryItems));
 
   const liveArticles = isPreview() ? articles : articles.filter((entry) => isEntityLive(entry) && isEntityVisible('articles', entry.id));
-  const liveItems = isPreview() ? items : items.filter((entry) => isEntityLive(entry) && isEntityVisible('items', entry.id));
+  const mergedItems = items.filter((entry) => isPreview() || (isEntityLive(entry) && isEntityVisible('items', entry.id)));
+
+  // Карточка без собственного перевода на этот язык берёт текст из своей статьи
+  // — та переведена и так. Базовый язык не трогаем: там текст карточки и есть
+  // оригинал. Свой перевод карточки, если он сохранён, остаётся главнее.
+  const translatedItemIds = new Set((bucket.items || []).map((entry) => entry.id));
+  const liveItems = lang === DEFAULT_LANGUAGE
+    ? mergedItems
+    : mergedItems.map((item) => {
+        if (translatedItemIds.has(item.id)) return item;
+        const articleId = getGalleryArticleLinks().get(item.id);
+        if (articleId === undefined) return item;
+        const article = liveArticles.find((a) => a.id === articleId);
+        if (!article) return item;
+        return {
+          ...item,
+          title: article.title || item.title,
+          subtitle: article.category || item.subtitle,
+          description: article.excerpt || item.description
+        };
+      });
 
   // The homepage Gallery is a hand-curated collection, separate from Articles
   // — publishing a new article never added it there, so it silently never

@@ -168,6 +168,10 @@
 
           <div class="sidebar-nav-group">
             <span class="sidebar-nav-label">System</span>
+            <button class="tab-btn" data-tab="showcase" type="button">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              Витрина
+            </button>
             <button class="tab-btn" data-tab="monitor" type="button">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
               Мониторинг
@@ -295,12 +299,14 @@
                 </div>
                 <div class="homepage-admin-actions">
                   <button id="homepageAddBtn" class="btn btn-primary" type="button">＋ Новая карточка</button>
+                  <button id="homepageFromArticleBtn" class="btn" type="button" title="Собрать карточку галереи из уже написанной статьи">＋ Из статьи</button>
                   <button id="homepageOpenEditorBtn" class="btn" type="button">Полный редактор</button>
                   <a class="btn" href="../" target="_blank" rel="noreferrer">Открыть сайт ↗</a>
                   <button id="homepagePublishBtn" class="btn btn-primary" type="button">Опубликовать</button>
                 </div>
               </div>
               <div id="homepageGalleryMeta" class="homepage-gallery-meta" aria-live="polite"></div>
+              <div id="homepageMissingArticles" class="homepage-missing" aria-live="polite"></div>
               <div id="homepageGalleryList" class="homepage-gallery-list"></div>
             </div>
           </section>
@@ -393,8 +399,9 @@
                     Живой редактор
                   </button>
                   <button id="addEntryBtn" class="btn btn-sm" type="button">+ Добавить</button>
-                  <button id="moveEntryUpBtn" class="btn btn-sm" type="button" title="Переместить выше (влияет на порядок на сайте — для Галереи первая запись становится featured)">↑</button>
+                  <button id="moveEntryUpBtn" class="btn btn-sm" type="button" title="Переместить выше. Порядок в разделах «Статьи» и «Галерея» задаётся вручную и общий для всех языков; первая запись Галереи становится featured">↑</button>
                   <button id="moveEntryDownBtn" class="btn btn-sm" type="button" title="Переместить ниже">↓</button>
+                  <button id="sortByDateBtn" class="btn btn-sm" type="button" title="Сбросить ручной порядок раздела: свежие сверху">По дате</button>
                   <button id="duplicateEntryBtn" class="btn btn-sm" type="button">Дублировать</button>
                   <button id="deleteEntryBtn" class="btn btn-sm btn-danger-text" type="button">Удалить</button>
                   <span class="toolbar-sync-panel" aria-label="Синхронизация языков">
@@ -403,6 +410,7 @@
                     <button id="copyFromEnBtn" class="btn btn-sm" type="button" title="Создать этот язык как копию английской записи">Копия из EN</button>
                     <button id="translateEntryBtn" class="btn btn-sm btn-sync" type="button" title="Взять текущий язык за основу, обновить все переводы и сохранить их на VPS">Синхронизировать</button>
                     <button id="translateAllArticlesBtn" class="btn btn-sm" type="button" title="Проверить переводы всего выбранного раздела">Весь раздел</button>
+                    <span id="languageSyncProgress" class="media-export-progress" hidden aria-hidden="true"><span></span></span>
                   </span>
                   <span class="toolbar-sync-panel toolbar-media-panel" aria-label="Оригиналы изображений">
                     <span class="toolbar-sync-label">Медиа</span>
@@ -715,6 +723,30 @@
           </section>
 
           <!-- ===== MONITOR ===== -->
+          <section class="tab-panel" id="tab-showcase">
+            <div class="card">
+              <div class="monitor-head">
+                <div>
+                  <h2 class="card-title" style="margin-bottom:4px">Витрина и бюро</h2>
+                  <p class="card-desc">Модерация работ из «Submit work» и прием заявок в EPRIS Bureau.</p>
+                </div>
+                <button id="showcaseReloadBtn" class="btn btn-primary" type="button">Обновить</button>
+              </div>
+              <div class="monitor-grid" style="margin-top:16px">
+                <div>
+                  <h3 class="card-title" style="font-size:16px;margin-bottom:4px">Работы в витрину</h3>
+                  <p id="showcaseStatus" class="card-desc"></p>
+                  <div id="showcaseQueue" style="margin-top:12px"></div>
+                </div>
+                <div>
+                  <h3 class="card-title" style="font-size:16px;margin-bottom:4px">Заявки бюро</h3>
+                  <p id="showcaseEnquiryStatus" class="card-desc"></p>
+                  <div id="showcaseEnquiries" style="margin-top:12px"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <section class="tab-panel" id="tab-monitor">
             <div class="monitor-layout">
               <div class="card">
