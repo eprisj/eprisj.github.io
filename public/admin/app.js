@@ -13096,6 +13096,49 @@ async function flushModernEditor() {
   document.addEventListener('mouseup', () => setTimeout(updateSelTool, 0));
 
   // ── metadata drawer ───────────────────────────────────────────────────────
+  function applyQuickPublicationAction(action) {
+    if (!_model) return;
+    const data = parseEditorJsonSafe();
+    if (!data) return;
+
+    const hidden = action === 'hide';
+    const visibleNow = !hidden;
+    const applyState = (entry) => {
+      if (!entry) return;
+      if (hidden) {
+        entry.draft = true;
+        delete entry.publishAt;
+      } else {
+        delete entry.draft;
+        delete entry.publishAt;
+      }
+    };
+
+    // Keep the open language in sync for the local editor, while the EN source
+    // remains authoritative for the public site's shared visibility state.
+    const currentEntries = getSectionArray(data, _ctx.section, _ctx.lang, false);
+    applyState(currentEntries.find((entry) => Number(entry.id) === _ctx.id));
+    applyState(_model);
+    const sourceEntries = getSectionArray(data, 'articles', DEFAULT_LANGUAGE, false);
+    applyState(sourceEntries.find((entry) => Number(entry.id) === _ctx.id));
+
+    if (!data.visibility || typeof data.visibility !== 'object' || Array.isArray(data.visibility)) data.visibility = {};
+    if (!data.visibility.entities || typeof data.visibility.entities !== 'object' || Array.isArray(data.visibility.entities)) data.visibility.entities = {};
+    if (!data.visibility.entities.articles || typeof data.visibility.entities.articles !== 'object' || Array.isArray(data.visibility.entities.articles)) data.visibility.entities.articles = {};
+    if (visibleNow) delete data.visibility.entities.articles[String(_ctx.id)];
+    else data.visibility.entities.articles[String(_ctx.id)] = false;
+
+    editor.value = JSON.stringify(data, null, 2);
+    updateEditorState();
+    saveDraft();
+    updateDraftBadge();
+    renderDrawer();
+    render();
+    setSave('editing');
+    armPublish(300);
+    setStatus('success', hidden ? `Статья #${_ctx.id} скрыта с сайта.` : `Статья #${_ctx.id} опубликована на сайте.`);
+  }
+
   function renderDrawer() {
     if (!_model) return;
     const row = (label, field, val, ph) => `<label class="wys-meta-field"><span>${label}</span><input data-mfield="${field}" value="${esc(val || '')}" placeholder="${ph || ''}"></label>`;
@@ -13107,9 +13150,21 @@ async function flushModernEditor() {
       row('imageSeed', 'imageSeed', _model.imageSeed, 'если URL пустой') +
       row('URL обложки', 'imageUrl', _model.imageUrl, 'https://…') +
       `<label class="wys-meta-field"><span>Теги (через запятую)</span><input data-mfield="tags" value="${esc((_model.tags || []).join(', '))}"></label>` +
+      `<section class="wys-publication-actions" aria-label="Действия публикации">` +
+        `<div class="wys-publication-actions-head"><span>Публикация</span><strong>${_model.draft ? 'Скрыта с сайта' : (_model.publishAt && Date.parse(_model.publishAt) > Date.now() ? 'Отложена' : 'Опубликована')}</strong></div>` +
+        `<div class="wys-publication-actions-grid">` +
+          `<button type="button" class="btn btn-sm wys-publication-hide" data-article-publication-action="hide">Сделать невидимой</button>` +
+          `<button type="button" class="btn btn-sm" data-article-publication-action="show">Показать на сайте</button>` +
+          `<button type="button" class="btn btn-primary btn-sm" data-article-publication-action="publish">Опубликовать сейчас</button>` +
+        `</div>` +
+        `<span class="wys-publication-hint">Кнопки действуют сразу для статьи и её общей видимости во всех языках.</span>` +
+      `</section>` +
       `<label class="wys-meta-check"><input type="checkbox" data-mdraft ${_model.draft ? 'checked' : ''}><span>Черновик — скрыт с сайта</span></label>` +
       `<label class="wys-meta-field"><span>Отложенная публикация (скрыта до этого момента)</span><input type="datetime-local" data-mpublishat value="${esc(isoToLocalInput(_model.publishAt))}"></label>` +
       `<div class="wys-meta-field"><span>Просмотры</span><div class="wys-meta-views" data-views>…</div></div>`;
+    drawerBody.querySelectorAll('[data-article-publication-action]').forEach((button) => {
+      button.addEventListener('click', () => applyQuickPublicationAction(button.getAttribute('data-article-publication-action')));
+    });
     const viewsEl = drawerBody.querySelector('[data-views]');
     if (viewsEl) fetchViewsMap().then((v) => { viewsEl.textContent = String(v[_model && _model.id] || 0); });
     drawerBody.querySelectorAll('input[data-mfield]').forEach((inp) => {
