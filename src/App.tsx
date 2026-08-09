@@ -103,7 +103,7 @@ function ImageLightbox({ src, alt, onClose }: { src: string; alt: string; onClos
   );
 }
 
-function GalleryItemView({ item, onClose, articles, onReadArticle }: { item: Item; onClose: () => void; articles: Article[]; onReadArticle: (article: Article) => void }) {
+function GalleryItemView({ item, onClose, articles, onReadArticle, t }: { item: Item; onClose: () => void; articles: Article[]; onReadArticle: (article: Article) => void; t: (key: string) => string }) {
   const photos = item.images && item.images.length > 0
     ? item.images
     : [{ url: resolveMediaSource(item.imageUrl || item.imageSeed, 1000, 750) }];
@@ -149,7 +149,7 @@ function GalleryItemView({ item, onClose, articles, onReadArticle }: { item: Ite
             onClick={() => onReadArticle(matchedArticle)}
             className="inline-flex items-center gap-2 mb-12 border border-[var(--c-accent)] rounded-full px-5 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors"
           >
-            Read the full article →
+            {t('article.readFull')} →
           </button>
         )}
         <div className="space-y-10">
@@ -182,6 +182,7 @@ function GalleryItemView({ item, onClose, articles, onReadArticle }: { item: Ite
 // overwritten; shipping the fallback here keeps new labels translated in every
 // locale until an editor overrides them in the admin.
 const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
+  'article.readFull': { EN: 'Read the full article', RU: 'Читать полностью', UA: 'Читати повністю', DE: 'Artikel vollständig lesen', IT: 'Leggi l’articolo completo', ES: 'Leer el artículo completo', TR: 'Makalenin tamamını oku' },
   'reviews.read': { EN: 'Read', RU: 'Читать', UA: 'Читати', DE: 'Lesen', IT: 'Leggi', ES: 'Leer', TR: 'Oku' },
   'video.openVideo': { EN: 'Open video', RU: 'Открыть видео', UA: 'Відкрити відео', DE: 'Video öffnen', IT: 'Apri video', ES: 'Abrir vídeo', TR: 'Videoyu aç' },
   'lang.title': { EN: 'Language', RU: 'Язык', UA: 'Мова', DE: 'Sprache', IT: 'Lingua', ES: 'Idioma', TR: 'Dil' },
@@ -1220,9 +1221,10 @@ function ManifestPage({ t, currentLang }: { t: (key: string) => string; currentL
   );
 }
 
-function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (item: Item) => void }) {
+function GallerySection({ items, articles, onItemClick, onReadArticle, t }: { items: Item[]; articles: Article[]; onItemClick: (item: Item) => void; onReadArticle: (article: Article) => void; t: (key: string) => string }) {
   if (items.length === 0) return null;
   const [featured, ...rest] = items;
+  const featuredArticle = findMatchingArticle(featured, articles);
 
   return (
     <div>
@@ -1261,9 +1263,19 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
               <p className="font-serif text-sm sm:text-base text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-6">
                 {featured.description}
               </p>
-              <span className="inline-flex items-center self-start border border-[var(--c-accent)] rounded-full px-5 py-2.5 sm:py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors w-fit">
-                read
-              </span>
+              {featuredArticle ? (
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); onReadArticle(featuredArticle); }}
+                  className="inline-flex items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-5 py-2.5 sm:py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors w-fit"
+                >
+                  {t('article.readFull')} <ArrowUpRight size={13} />
+                </button>
+              ) : (
+                <span className="inline-flex items-center self-start border border-[var(--c-accent)] rounded-full px-5 py-2.5 sm:py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors w-fit">
+                  {t('reviews.read')}
+                </span>
+              )}
             </div>
           </motion.div>
         </div>
@@ -2148,6 +2160,13 @@ function ArticlesSection({
                 <p className="font-serif text-base text-[rgb(var(--c-accent-rgb)_/_0.8)] leading-relaxed">
                   {article.excerpt}
                 </p>
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); onArticleClick(article); }}
+                  className="mt-6 inline-flex items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors"
+                >
+                  {t('article.readFull')} <ArrowUpRight size={13} />
+                </button>
               </div>
             </motion.article>
           ) : (
@@ -3336,7 +3355,7 @@ export default function App() {
               <>
                 {activeTab === 'gallery' && (
                   <>
-                    <GallerySection items={items} onItemClick={setSelectedGalleryItem} />
+                    <GallerySection items={items} articles={articles} onItemClick={setSelectedGalleryItem} onReadArticle={(article) => handleSelectArticle(article.id, article)} t={t} />
                     {/* Витрина жила отдельным маршрутом, на который с сайта не
                         вело ни одной ссылки. Suspense без запасного экрана:
                         блок не должен ничего занимать, пока грузится. */}
@@ -3427,6 +3446,7 @@ export default function App() {
             onClose={() => setSelectedGalleryItem(null)}
             articles={articles}
             onReadArticle={(a) => { setSelectedGalleryItem(null); handleSelectArticle(a.id, a); }}
+            t={t}
           />
         )}
       </AnimatePresence>

@@ -289,16 +289,22 @@ const content = rawContent as SiteContent;
 //
 // Сортируем ИМЕННО базовые записи, до наложения переводов: в переводах дата
 // записана словами на своём языке ("14 березня 2026 р"), Date.parse её не
-// понимает, и половина ленты уезжала в конец. Базовые даты приходят в двух
-// видах ("Jul 24, 2026" и "July 18, 2026") — оба разбираются. Порядок после
-// merge сохраняется: mergeLocalizedArray проходит по базовому массиву.
+// понимает, и половина ленты уезжала в конец. Серверный updatedAt надёжнее
+// редакционной даты: после сохранения новой статьи он помечает её как свежую,
+// даже если автор оставил старую дату публикации. Базовые даты приходят в
+// двух видах ("Jul 24, 2026" и "July 18, 2026") — оба разбираются. Порядок
+// после merge сохраняется: mergeLocalizedArray проходит по базовому массиву.
 const entryTime = (value?: string): number => {
   const parsed = value ? Date.parse(value) : NaN;
   return Number.isNaN(parsed) ? 0 : parsed;
 };
 
-const newestFirst = <T extends { date?: string }>(list: T[]): T[] =>
-  [...list].sort((a, b) => entryTime(b.date) - entryTime(a.date));
+const newestFirst = <T extends { date?: string; updatedAt?: string }>(list: T[]): T[] =>
+  [...list].sort((a, b) => {
+    const aTime = entryTime(a.updatedAt) || entryTime(a.date);
+    const bTime = entryTime(b.updatedAt) || entryTime(b.date);
+    return bTime - aTime;
+  });
 
 // Ручной порядок из админки. Кнопки ↑/↓ проставляют записям числовой `order`
 // (1 = первая), и он перебивает порядок по умолчанию: дату у статей и порядок
@@ -710,7 +716,15 @@ export function getContentForLanguage(lang: string): LanguageContent {
   // preview keeps everything so stubs remain visible for editing.
   const liveBase = <T,>(arr: T[]): T[] => isPreview() ? arr : arr.filter((e) => !isPlaceholderEntity(e));
 
-  const articles = mergeLocalizedArray(bucket.articles, byManualOrder(newestFirst(liveBase(c.articles))));
+  // The newest published article is the public front-page lead. Manual order
+  // still controls the rest of the archive, but it must never strand a fresh
+  // article below an older curated entry.
+  const articleBaseByOrder = byManualOrder(newestFirst(liveBase(c.articles)));
+  const newestArticle = newestFirst(liveBase(c.articles))[0];
+  const articleBase = newestArticle
+    ? [newestArticle, ...articleBaseByOrder.filter((entry) => entry.id !== newestArticle.id)]
+    : articleBaseByOrder;
+  const articles = mergeLocalizedArray(bucket.articles, articleBase);
   // Reviews hit the same recycled-id trap the Gallery did: every locale still
   // carries a translation of a deleted restaurant review on id 1, so readers of
   // UA/RU/DE opened "Симфонія смаків / Ресторан «Олеа», Лімасол" sitting on top
@@ -756,6 +770,7 @@ export function getContentForLanguage(lang: string): LanguageContent {
     .filter((a) => !galleryTitles.has((a.title || '').trim().toLowerCase()))
     .map((a) => ({
       id: 900000 + a.id,
+      articleId: a.id,
       title: a.title,
       subtitle: a.category || '',
       fig: `FIG. ${String(a.id).padStart(2, '0')}`,
@@ -764,8 +779,32 @@ export function getContentForLanguage(lang: string): LanguageContent {
       imageUrl: a.imageUrl,
     }));
 
+  // Always lead the homepage with the newest article. If the editor already
+  // created a matching Gallery card, move that card; otherwise use the
+  // generated article card above. This keeps the homepage fresh without
+  // disturbing the curated order of everything that follows it.
+  const newestArticleId = newestArticle?.id;
+  const galleryArticleLinks = getGalleryArticleLinks();
+  const existingNewestItemId = newestArticleId === undefined
+    ? undefined
+    : [...galleryArticleLinks.entries()].find(([, articleId]) => articleId === newestArticleId)?.[0];
+  const existingNewestItem = existingNewestItemId === undefined
+    ? undefined
+    : liveItems.find((item) => item.id === existingNewestItemId);
+  const generatedNewestItem = newestArticleId === undefined
+    ? undefined
+    : articleGalleryItems.find((item) => item.articleId === newestArticleId);
+  const homepageLead = existingNewestItem || generatedNewestItem;
+  const homepageItems = homepageLead
+    ? [
+        homepageLead,
+        ...liveItems.filter((item) => item.id !== homepageLead.id),
+        ...articleGalleryItems.filter((item) => item.id !== homepageLead.id),
+      ]
+    : [...liveItems, ...articleGalleryItems];
+
   return {
-    items: [...liveItems, ...articleGalleryItems],
+    items: homepageItems,
     articles: liveArticles,
     reviews: isPreview() ? reviews : reviews.filter((entry) => isEntityLive(entry) && isEntityVisible('reviews', entry.id)),
     libraryItems: isPreview() ? libraryItems : libraryItems.filter(isEntityLive)
