@@ -5082,6 +5082,14 @@ function splitTextForTranslation(text, maxLength = 900) {
 // чем изуродованный перевод.
 const TRANSLATION_DAMAGE = '\uFFFD';
 
+// Создание одной статьи на 6 языков — это до сотни таких запросов подряд
+// (по чанку на блок × 6 языков). Раньше первая же сетевая осечка (обрыв,
+// временный rate-limit, браузерная блокировка трекеров на googleapis.com)
+// падала как есть и обрывала СОЗДАНИЕ ВСЕЙ СТАТЬИ с «Failed to fetch» —
+// даже когда 99 запросов из 100 прошли нормально. Три попытки с паузой
+// покрывают разовую сетевую осечку; если и после них не отвечает — молча
+// возвращаем пустую строку, и вызывающий код (translateChunkGuarded)
+// оставляет оригинальный текст чанка вместо того, чтобы рушить всю статью.
 async function requestTranslation(chunk, sourceCode, targetCode) {
   const url = new URL('https://translate.googleapis.com/translate_a/single');
   url.searchParams.set('client', 'gtx');
@@ -5090,12 +5098,23 @@ async function requestTranslation(chunk, sourceCode, targetCode) {
   url.searchParams.set('dt', 't');
   url.searchParams.set('q', chunk);
 
-  const response = await fetch(url.toString(), { cache: 'no-store' });
-  if (!response.ok) {
-    throw new Error(`Сервис перевода ответил HTTP ${response.status}. Попробуйте позже.`);
+  let lastError = null;
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    if (attempt > 0) await new Promise((r) => setTimeout(r, 350 * attempt));
+    try {
+      const response = await fetch(url.toString(), { cache: 'no-store' });
+      if (!response.ok) {
+        lastError = new Error(`Сервис перевода ответил HTTP ${response.status}`);
+        continue;
+      }
+      const payload = await response.json();
+      return readGoogleTranslatePayload(payload) || '';
+    } catch (error) {
+      lastError = error;
+    }
   }
-  const payload = await response.json();
-  return readGoogleTranslatePayload(payload) || '';
+  console.warn('[translate] сеть недоступна после 3 попыток, оставляю оригинал:', getErrorMessage(lastError));
+  return '';
 }
 
 async function translateChunkGuarded(chunk, sourceCode, targetCode, depth = 0) {
