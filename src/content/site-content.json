@@ -2071,7 +2071,8 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mslr8cbqa2v7xu.webp",
-          "caption": "Sandra Kantanen, Untitled (Forest 8), 2018"
+          "caption": "Sandra Kantanen, Untitled (Forest 8), 2018",
+          "sourceUrl": "https://sandrakantanen.com/works/forest/"
         }
       ],
       "order": 1,
