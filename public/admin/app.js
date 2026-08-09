@@ -3344,6 +3344,27 @@ function renderCreatorQuality(data, section, lang, entry) {
 
     addChip(entry.excerpt ? 'Лид' : 'Нет лида', Boolean(entry.excerpt));
     addChip(hasMedia ? 'Обложка' : 'Нет фото', hasMedia);
+
+    // «Обложка» выше проверяет только, что фото ЕСТЬ — не что у него есть
+    // ALT. Статья с десятком фото и пустым alt на каждом проходила эту
+    // проверку зелёной, а для скринридера и Google Картинок такая статья
+    // не отличается от статьи без единой подписи к фото.
+    let imagesWithAlt = 0;
+    let imagesTotal = 0;
+    for (const block of blocks) {
+      if (block?.type === 'image') {
+        imagesTotal += 1;
+        if (String(block.alt || '').trim()) imagesWithAlt += 1;
+      } else if (block?.type === 'gallery' && Array.isArray(block.content)) {
+        const alts = Array.isArray(block.alts) ? block.alts : [];
+        block.content.forEach((_, i) => {
+          imagesTotal += 1;
+          if (String(alts[i] || '').trim()) imagesWithAlt += 1;
+        });
+      }
+    }
+    if (imagesTotal > 0) addChip(`ALT: ${imagesWithAlt}/${imagesTotal}`, imagesWithAlt === imagesTotal);
+
     addChip(`${blocks.length} блоков`, blocks.length >= 3);
     addChip(`${words} слов`, words >= 80);
     if (words > 0) addChip(`~${Math.max(1, Math.round(words / 200))} мин чтения`, true);
