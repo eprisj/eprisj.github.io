@@ -509,7 +509,7 @@ document.addEventListener('beforeinput', (event) => {
     if (visibilityStatus) visibilityStatus.textContent = 'Публикация…';
     try {
       validateShape(data);
-      const res = await fetch(CONTENT_API, {
+      const res = await fetchNetworkRetry(CONTENT_API, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
         body: JSON.stringify(data),
@@ -1811,7 +1811,10 @@ async function loadFromGitHub() {
     setStatus('info', 'Загружаю контент с VPS...');
     saveSettings();
 
-    const res = await fetch(CONTENT_API, { cache: 'no-store' });
+    // Это первый запрос при открытии админки (autoLoadOnStart) — сетевая
+    // осечка тут означает пустой редактор вместо контента, а не просто
+    // неудобство. GET, повтор безопасен всегда.
+    const res = await fetchNetworkRetry(CONTENT_API, { cache: 'no-store' });
     if (!res.ok) throw new Error('VPS вернул статус ' + res.status);
     const parsed = await res.json();
     validateShape(parsed);
@@ -2806,7 +2809,7 @@ async function saveToGitHub() {
     const pw = getAdminPassword();
     if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
 
-    const res = await fetch(CONTENT_API, {
+    const res = await fetchNetworkRetry(CONTENT_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
       body: JSON.stringify(parsed)
@@ -9224,7 +9227,7 @@ function bindStudioRowActions() {
     const btn = document.getElementById('authorsApplyBtn');
     if (btn) { btn.disabled = true; btn.textContent = 'Публикую…'; }
     try {
-      const res = await fetch(CONTENT_API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw }, body: editor.value });
+      const res = await fetchNetworkRetry(CONTENT_API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw }, body: editor.value });
       const d = await res.json().catch(() => ({}));
       if (!res.ok || !d.ok) throw new Error(d.error || ('VPS вернул ' + res.status));
       if (typeof setLastSyncedSnapshotFromText === 'function') setLastSyncedSnapshotFromText(editor.value);
@@ -11800,7 +11803,7 @@ async function flushModernEditor() {
       st.textContent = 'Публикую сайт…'; st.style.color = 'var(--text-muted)';
       const pw = (typeof getAdminPassword === 'function') ? getAdminPassword() : '';
       if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
-      const res = await fetch(CONTENT_API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw }, body: JSON.stringify(j) });
+      const res = await fetchNetworkRetry(CONTENT_API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw }, body: JSON.stringify(j) });
       const d = await res.json().catch(() => ({}));
       if (!res.ok || !d.ok) throw new Error(d.error || ('VPS вернул ' + res.status));
       if (typeof setLastSyncedSnapshotFromText === 'function') setLastSyncedSnapshotFromText($('editor').value);
