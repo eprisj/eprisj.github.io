@@ -2052,7 +2052,11 @@
         },
         {
           "type": "text",
-          "content": "Botanical Studies and Scanners: Shifting away from vast landscapes and pixel-stretching entirely, her floral still lifes and botanical works explore organic decay up close. For these, she often utilizes large-scale formats, long exposures, or even flatbed scanners instead of traditional camera lenses. These methods evoke the rich, allegorical depth of Dutch Golden Age painting, focusing on the intimate textures and slow passage of time in nature. Early and Straight Photography: In earlier stages of her career, including her travel projects in Asia, her approach was much closer to straight photography. She documented the literal friction between ancient traditions and modern urban encroachment, proving that her technical mastery is built upon a solid foundation of classic photographic observation."
+          "content": "Botanical Studies and Scanners: Shifting away from vast landscapes and pixel-stretching entirely, her floral still lifes and botanical works explore organic decay up close. For these, she often utilizes large-scale formats, long exposures, or even flatbed scanners instead of traditional camera lenses. These methods evoke the rich, allegorical depth of Dutch Golden Age painting, focusing on the intimate textures and slow passage of time in nature. "
+        },
+        {
+          "type": "text",
+          "content": "Early and Straight Photography: In earlier stages of her career, including her travel projects in Asia, her approach was much closer to straight photography. She documented the literal friction between ancient traditions and modern urban encroachment, proving that her technical mastery is built upon a solid foundation of classic photographic observation."
         },
         {
           "type": "text",
@@ -2061,47 +2065,6 @@
         {
           "type": "text",
           "content": "Over a career spanning more than two decades, Sandra Kantanen has earned widespread international acclaim for her innovative contributions to contemporary visual arts."
-        },
-        {
-          "type": "image",
-          "content": "new-editorial-story-2",
-          "caption": "Mission statement",
-          "align": "center"
-        },
-        {
-          "type": "quote",
-          "content": "Add a line here to remember."
-        },
-        {
-          "type": "note",
-          "content": "Editorial note, source context, or a brief note."
-        },
-        {
-          "type": "checklist",
-          "content": {
-            "items": [
-              "context",
-              "Important detail",
-              "Human perspective",
-              "What changes next?"
-            ]
-          }
-        },
-        {
-          "type": "poll",
-          "content": {
-            "question": "What should we explore next?",
-            "options": [
-              {
-                "label": "More context",
-                "votes": 0
-              },
-              {
-                "label": "Practical guide",
-                "votes": 0
-              }
-            ]
-          }
         }
       ],
       "order": 1,
