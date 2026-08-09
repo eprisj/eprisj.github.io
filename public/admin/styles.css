@@ -4300,6 +4300,14 @@ body.busy::after {
 .wys-meta-field input { padding: 8px 11px; border: 1px solid var(--line); border-radius: 4px; font-size: .85rem; background: var(--bg); color: var(--text); }
 .wys-meta-field input:focus { outline: none; border-color: var(--accent); background: var(--bg-card); }
 .wys-meta-views { padding: 8px 11px; border: 1px dashed var(--line); border-radius: 4px; font-family: var(--font-mono); font-size: .85rem; color: var(--text); }
+.wys-publication-actions { display: grid; gap: 9px; padding: 12px; border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--line)); border-radius: 6px; background: color-mix(in srgb, var(--accent) 5%, var(--bg-card)); }
+.wys-publication-actions-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; font-family: var(--font-mono); font-size: .62rem; text-transform: uppercase; letter-spacing: .06em; }
+.wys-publication-actions-head span { color: var(--text-muted); }
+.wys-publication-actions-head strong { color: var(--accent); text-align: right; }
+.wys-publication-actions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.wys-publication-actions-grid button:last-child { grid-column: 1 / -1; }
+.wys-publication-hide { color: var(--danger); border-color: color-mix(in srgb, var(--danger) 38%, var(--line)); }
+.wys-publication-hint { font-size: .67rem; line-height: 1.45; color: var(--text-muted); }
 .wys-meta-check { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 4px 0; }
 .wys-meta-check input { accent-color: var(--accent); width: 15px; height: 15px; cursor: pointer; }
 .wys-meta-check span { font-family: var(--font-mono); font-size: .62rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--warn); }
