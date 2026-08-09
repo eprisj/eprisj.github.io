@@ -4755,14 +4755,32 @@ async function applyVisualChanges() {
 // Reviews' classic-form fallback). Fetches the current version right before
 // writing so a stale save surfaces as a clear "someone else saved" message
 // instead of silently losing an edit.
+// Ретрай только сетевых осечек (fetch бросил исключение до ответа сервера —
+// обрыв, DNS, временная недоступность), не HTTP-статусов: 409 и 5xx — это
+// содержательные ответы сервера, ретраить их вслепую нельзя, ими занимается
+// вызывающий код (см. 409 ниже). Тот же принцип, что и в requestTranslation
+// для перевода — здесь он защищает сам факт сохранения записи на VPS.
+async function fetchNetworkRetry(url, options, attempts = 3) {
+  let lastError = null;
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
+    if (attempt > 0) await new Promise((r) => setTimeout(r, 350 * attempt));
+    try {
+      return await fetch(url, options);
+    } catch (error) {
+      lastError = error;
+    }
+  }
+  throw lastError;
+}
+
 const CONTENT_META_API = 'https://api.eprisjournal.com/content/meta';
 const CONTENT_ENTITY_API = 'https://api.eprisjournal.com/content/entity';
 async function saveEntityToServer(section, lang, entity) {
   const pw = getAdminPassword();
   if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
-  const metaRes = await fetch(CONTENT_META_API, { cache: 'no-store' });
+  const metaRes = await fetchNetworkRetry(CONTENT_META_API, { cache: 'no-store' });
   const meta = await metaRes.json().catch(() => ({}));
-  const res = await fetch(CONTENT_ENTITY_API, {
+  const res = await fetchNetworkRetry(CONTENT_ENTITY_API, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
     body: JSON.stringify({ section, id: entity.id, entity, lang, expectedVersion: meta.version }),
