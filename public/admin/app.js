@@ -7881,7 +7881,9 @@ const historyTimestampEl = byId('historyTimestamp');
 async function fetchVersionHistory() {
   const pw = getAdminPassword();
   if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
-  const res = await fetch(CONTENT_HISTORY_API, { headers: { 'X-Admin-Password': pw }, cache: 'no-store' });
+  // Список версий открывают чаще всего именно когда что-то уже сломалось —
+  // худший момент для «Failed to fetch» без единой попытки повтора.
+  const res = await fetchNetworkRetry(CONTENT_HISTORY_API, { headers: { 'X-Admin-Password': pw }, cache: 'no-store' });
   const data = await res.json().catch(() => ({}));
   if (!res.ok || !data.ok) throw new Error(data.error || ('VPS вернул статус ' + res.status));
   return data.backups || [];
@@ -7935,21 +7937,30 @@ async function refreshVersionHistory() {
   }
 }
 
+// historyRefreshBtn и кнопки .history-restore-btn не входят в общий список
+// interactiveButtons (создаются заново при каждом рендере списка), поэтому
+// setBusy(true) их не блокирует. Без этого флага быстрый повторный клик —
+// по той же кнопке или по кнопке другой версии, пока первый запрос ещё
+// летит — отправлял бы два restore одновременно.
+let _restoreInFlight = false;
+
 async function restoreVersion(filename, timestamp) {
-  if (!filename) return;
+  if (!filename || _restoreInFlight) return;
   showConfirmModal(
     'Восстановить версию?',
     `Весь документ будет заменён на версию от <strong>${escapeHtml(formatHistoryTimestamp(timestamp))}</strong>. Текущее состояние перед этим будет сохранено как новая резервная копия (само восстановление тоже можно отменить).`,
     'Восстановить'
   ).then(async (confirmed) => {
-    if (!confirmed) return;
+    if (!confirmed || _restoreInFlight) return;
+    _restoreInFlight = true;
+    historyListEl?.querySelectorAll('.history-restore-btn').forEach((btn) => { btn.disabled = true; });
     try {
       setBusy(true);
       const pw = getAdminPassword();
       if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
-      const metaRes = await fetch(CONTENT_META_API, { cache: 'no-store' });
+      const metaRes = await fetchNetworkRetry(CONTENT_META_API, { cache: 'no-store' });
       const meta = await metaRes.json().catch(() => ({}));
-      const res = await fetch(CONTENT_RESTORE_API, {
+      const res = await fetchNetworkRetry(CONTENT_RESTORE_API, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
         body: JSON.stringify({ filename, expectedVersion: meta.version }),
@@ -7964,6 +7975,8 @@ async function restoreVersion(filename, timestamp) {
       setStatus('error', getErrorMessage(error));
     } finally {
       setBusy(false);
+      _restoreInFlight = false;
+      historyListEl?.querySelectorAll('.history-restore-btn').forEach((btn) => { btn.disabled = false; });
     }
   });
 }
