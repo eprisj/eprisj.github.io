@@ -2015,7 +2015,7 @@
       "role": "Editorial team",
       "date": "July 18, 2026",
       "excerpt": "A focused opening paragraph for a new editorial story.",
-      "category": "art ",
+      "category": "art",
       "subcategory": "Special feature",
       "tags": [
         "photography"
@@ -2033,7 +2033,8 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/msma9wvbe77qf8.jpg",
-          "caption": "Sandra Kantanen, Still life (Flowers 3), 2020"
+          "caption": "Sandra Kantanen, Still life (Flowers 3), 2020",
+          "align": "center"
         },
         {
           "type": "text",
@@ -2053,7 +2054,7 @@
         },
         {
           "type": "text",
-          "content": "The Smoke Works &amp; Pixel Manipulation: In her most renowned series, Kantanen physically intervenes in nature before the shutter even clicks. By releasing colored smoke bombs into remote forests—such as those near her home in Hango, Finland-she creates a surreal, psychedelic atmosphere that disrupts the mundane scenery. She then takes these digital files and subjects them to deep manipulation: blurring horizons, stretching data, and manually forcing pixels to flow so that the photograph mimics the fluidity of liquid paint."
+          "content": "The Smoke Works &amp;amp; Pixel Manipulation: In her most renowned series, Kantanen physically intervenes in nature before the shutter even clicks. By releasing colored smoke bombs into remote forests—such as those near her home in Hango, Finland-she creates a surreal, psychedelic atmosphere that disrupts the mundane scenery. She then takes these digital files and subjects them to deep manipulation: blurring horizons, stretching data, and manually forcing pixels to flow so that the photograph mimics the fluidity of liquid paint."
         },
         {
           "type": "text",
@@ -2081,7 +2082,8 @@
         }
       ],
       "order": 1,
-      "imageUrl": "https://api.eprisjournal.com/uploads/msm9xi2uysm3fm.jpg"
+      "imageUrl": "https://api.eprisjournal.com/uploads/msm9xi2uysm3fm.jpg",
+      "updatedAt": "2026-08-09T21:46:34.207Z"
     },
     {
       "id": 17,
