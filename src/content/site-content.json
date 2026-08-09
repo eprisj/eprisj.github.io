@@ -16577,66 +16577,80 @@
         },
         {
           "id": 14,
-          "title": "Nuova storia editoriale",
+          "title": "Sandra Kantanen: oltre l'obiettivo della fotografia tradizionale",
           "author": "EPRIS Journal",
-          "role": "Scrivania editoriale",
-          "date": "18 luglio 2026",
+          "role": "Redazione",
+          "date": "July 18, 2026",
           "excerpt": "Un paragrafo di apertura mirato per una nuova storia editoriale.",
-          "category": "Cultura",
-          "subcategory": "Caratteristica",
+          "category": "arte",
+          "subcategory": "Caratteristica speciale",
           "tags": [
-            "storia",
-            "cultura",
-            "editoriale"
+            "fotografia"
           ],
-          "imageSeed": "new-editorial-story",
+          "imageSeed": "",
           "content": [
             {
               "type": "text",
-              "content": "Inizia con la scena, il fatto o l'osservazione più forte. Mantieni questo primo blocco stretto e specifico."
+              "content": "L'artista finlandese Sandra Kantanen si avvicina alla fotografia come una porta verso l'immaginario, piuttosto che come uno strumento per catturare la realtà oggettiva. Il suo lavoro rivela una filosofia tecnica unica e senza confini, che spinge il mezzo oltre i vincoli dell'obiettivo, sfidando lo spettatore a chiedersi dove finisce la fotografia e inizia il dipinto."
+            },
+            {
+              "type": "text",
+              "content": "A prima vista, si potrebbe supporre che i suoi paesaggi eterei siano il risultato di colori ad olio misti e stratificazioni tradizionali. In realtà, si tratta di fotografie di ambienti naturali, che vanno dalle foreste della sua nativa Finlandia alle montagne dell'Asia, sottoposte a una profonda manipolazione digitale e fisica."
             },
             {
               "type": "image",
-              "content": "new-editorial-story-2",
-              "caption": "Immagine principale"
+              "content": "https://api.eprisjournal.com/uploads/msma9wvbe77qf8.jpg",
+              "caption": "Sandra Kantanen, Natura morta (Fiori 3), 2020",
+              "align": "center"
             },
             {
-              "type": "quote",
-              "content": "Aggiungi una riga che vale la pena ricordare qui."
+              "type": "text",
+              "content": "Nata a Helsinki nel 1974, Sandra Kantanen è emersa come una figura chiave all'interno della Scuola di Fotografia di Helsinki, celebrata a livello internazionale. La sua fondazione accademica è stata costruita presso la Aalto University School of Arts, Design and Architecture di Helsinki, ma il cambiamento cruciale nella sua traiettoria artistica è avvenuto intorno al 2000, quando si è trasferita in Cina come studentessa di scambio."
             },
             {
-              "type": "note",
-              "content": "Nota editoriale, contesto della fonte o una breve nota."
+              "type": "text",
+              "content": "Studiando la pittura paesaggistica tradizionale cinese presso l'Accademia Centrale di Belle Arti di Pechino, Kantanen fu profondamente influenzato dalla filosofia orientale. È rimasta colpita da come i maestri antichi non mirassero a documentare il paesaggio, ma a idealizzarlo e sublimarlo."
             },
             {
-              "type": "checklist",
-              "caption": "Cosa coprire",
-              "content": {
-                "items": [
-                  "Contesto",
-                  "Dettaglio chiave",
-                  "Angolo umano",
-                  "Cosa cambia dopo"
-                ]
-              }
+              "type": "text",
+              "content": "Durante i suoi viaggi attraverso le montagne sacre della Cina, è stata testimone della forte tensione tra la natura incontaminata e spiritualizzata raffigurata negli antichi rotoli di seta e la dura realtà del moderno inquinamento industriale e del turismo. Questa dissonanza è diventata il catalizzatore della sua pratica: una ricerca permanente per catturare un paesaggio \"impossibile\", uno spazio che esiste da qualche parte tra memoria, mito e distorsione ottica."
             },
             {
-              "type": "poll",
-              "content": {
-                "question": "Cosa dovremmo esplorare dopo?",
-                "options": [
-                  {
-                    "label": "Più contesto",
-                    "votes": 0
-                  },
-                  {
-                    "label": "Guida pratica",
-                    "votes": 0
-                  }
-                ]
-              }
+              "type": "text",
+              "content": "Sebbene i paesaggi distorti dai pixel siano la sua firma più famosa, la pratica fotografica più ampia di Kantanen è notevolmente diversificata. Non si affida ad un solo trucco tecnico; piuttosto, sperimenta attraverso diverse serie, ridefinendo costantemente il modo in cui un'immagine fotografica può comportarsi:"
+            },
+            {
+              "type": "text",
+              "content": "Il fumo funziona &amp; Manipolazione dei pixel: nella sua serie più famosa, Kantanen interviene fisicamente nella natura prima ancora che l'otturatore scatti. Rilasciando fumogeni colorati nelle foreste remote, come quelle vicino a casa sua a Hango, in Finlandia, crea un'atmosfera surreale e psichedelica che sconvolge lo scenario mondano. Quindi prende questi file digitali e li sottopone a una profonda manipolazione: sfocatura degli orizzonti, allungamento dei dati e forzatura manuale dei pixel a fluire in modo che la fotografia imiti la fluidità della vernice liquida."
+            },
+            {
+              "type": "text",
+              "content": "Studi botanici e scanner: allontanandosi dai vasti paesaggi e dall'allungamento totale dei pixel, le sue nature morte floreali e le opere botaniche esplorano da vicino il decadimento organico. Per questi, utilizza spesso formati su larga scala, lunghe esposizioni o persino scanner piani invece dei tradizionali obiettivi fotografici. Questi metodi evocano la ricca profondità allegorica della pittura olandese dell'età dell'oro, concentrandosi sulle trame intime e sul lento scorrere del tempo nella natura."
+            },
+            {
+              "type": "text",
+              "content": "Fotografia esotica e diretta: nelle prime fasi della sua carriera, compresi i suoi progetti di viaggio in Asia, il suo approccio era molto più vicino alla fotografia diretta. Ha documentato l'attrito tra le antiche tradizioni e la moderna invasione urbana, dimostrando che la sua maestria tecnica è costruita su solide basi dell'osservazione fotografica classica."
+            },
+            {
+              "type": "text",
+              "content": "Muovendosi fluidamente tra la messa in scena fisica, l'arte dello scanner, l'acquisizione diretta e la distorsione digitale, Kantanen destabilizza costantemente la nostra percezione di ciò che può essere una fotografia."
+            },
+            {
+              "type": "text",
+              "content": "Nel corso di una carriera che dura da più di due decenni, Sandra Kantanen ha guadagnato ampi consensi internazionali per i suoi contributi innovativi alle arti visive contemporanee."
+            },
+            {
+              "type": "text",
+              "content": "Il suo lavoro è stato presentato in tutto il mondo, con importanti mostre in luoghi come la Purdy Hicks Gallery di Londra, Paris Photo e un'ampia retrospettiva al Turku Art Museum."
+            },
+            {
+              "type": "text",
+              "content": "L'influenza di Kantanen è consolidata dalla sua inclusione nelle collezioni permanenti di alcune delle istituzioni più rispettate al mondo, tra cui il J. Paul Getty Museum di Los Angeles, il Brooklyn Museum, il Los Angeles County Museum of Art (LACMA) e il Kiasma Museum of Contemporary Art di Helsinki. Le sue monografie, pubblicate da Hatje Cantz, testimoniano un'artista che non si limita a utilizzare la tecnologia, ma la piega al servizio eterno della bellezza."
             }
-          ]
+          ],
+          "order": 1,
+          "imageUrl": "https://api.eprisjournal.com/uploads/msm9xi2uysm3fm.jpg",
+          "updatedAt": "2026-08-09T21:47:25.026Z"
         },
         {
           "id": 15,
