@@ -7274,9 +7274,11 @@ async function deployVPS() {
   btn.textContent = '⏳ Деплой...';
   showToast('Запускаю деплой VPS...', 'info');
   try {
+    const password = getAdminPassword();
+    if (!password) throw new Error('Нет пароля редакции — войдите заново.');
     const res = await fetch(`${EPRIS_API}/deploy`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'X-Admin-Password': password },
       body: JSON.stringify({ secret: 'epris-deploy-2026' }),
     });
     const data = await res.json();
