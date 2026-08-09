@@ -9853,67 +9853,80 @@
         },
         {
           "id": 14,
-          "title": "Neue redaktionelle Geschichte",
+          "title": "Sandra Kantanen: Jenseits der Linse der traditionellen Fotografie",
           "author": "EPRIS Journal",
           "role": "Redaktionsteam",
           "date": "July 18, 2026",
           "excerpt": "Ein fokussierter Eröffnungsabsatz für eine neue redaktionelle Geschichte.",
-          "category": "Kultur",
+          "category": "Kunst",
           "subcategory": "Besonderheit",
           "tags": [
-            "Geschichte",
-            "Kultur",
-            "Leitartikel"
+            "Fotografie"
           ],
-          "imageSeed": "new-editorial-story",
+          "imageSeed": "",
           "content": [
             {
               "type": "text",
-              "content": "Beginnen Sie mit der stärksten Szene, Tatsache oder Beobachtung. Halten Sie diesen ersten Block eng und spezifisch."
+              "content": "Die finnische Künstlerin Sandra Kantanen betrachtet die Fotografie als Tor zum Imaginären und nicht als Werkzeug zur Erfassung der objektiven Realität. Ihre Arbeit offenbart eine einzigartige, grenzenlose technische Philosophie, die das Medium über die Beschränkungen des Objektivs hinaus treibt und den Betrachter herausfordert, sich zu fragen, wo das Foto endet und das Gemälde beginnt."
+            },
+            {
+              "type": "text",
+              "content": "Auf den ersten Blick könnte man annehmen, dass ihre ätherischen Landschaften das Ergebnis gemischter Ölfarben und traditioneller Schichtungen sind. In Wirklichkeit handelt es sich um Fotografien natürlicher Umgebungen – von den Wäldern ihrer Heimat Finnland bis zu den Bergen Asiens –, die tiefgreifenden digitalen und physischen Manipulationen unterzogen wurden."
             },
             {
               "type": "image",
-              "content": "new-editorial-story-2",
-              "caption": "Leitbild",
+              "content": "https://api.eprisjournal.com/uploads/msma9wvbe77qf8.jpg",
+              "caption": "Sandra Kantanen, Stillleben (Blumen 3), 2020",
               "align": "center"
             },
             {
-              "type": "quote",
-              "content": "Fügen Sie hier eine Zeile zur Erinnerung ein."
+              "type": "text",
+              "content": "Sandra Kantanen wurde 1974 in Helsinki geboren und entwickelte sich zu einer Schlüsselfigur der international gefeierten Helsinki School of Photography. Ihr akademisches Fundament legte sie an der Aalto University School of Arts, Design and Architecture in Helsinki, doch der entscheidende Wandel in ihrer künstlerischen Laufbahn erfolgte um das Jahr 2000, als sie als Austauschstudentin nach China zog."
             },
             {
-              "type": "note",
-              "content": "Redaktioneller Hinweis, Quellenkontext oder eine kurze Notiz."
+              "type": "text",
+              "content": "Kantanen studierte traditionelle chinesische Landschaftsmalerei an der Zentralakademie der Schönen Künste in Peking und wurde stark von der östlichen Philosophie beeinflusst. Sie war beeindruckt davon, dass es den alten Meistern nicht darum ging, die Landschaft zu dokumentieren, sondern sie zu idealisieren und zu sublimieren."
             },
             {
-              "type": "checklist",
-              "content": {
-                "items": [
-                  "Kontext",
-                  "Wichtiges Detail",
-                  "Menschliche Perspektive",
-                  "Was ändert sich als nächstes?"
-                ]
-              }
+              "type": "text",
+              "content": "Während ihrer Reisen durch Chinas heilige Berge wurde sie Zeuge der starken Spannung zwischen der unberührten, vergeistigten Natur, die in alten Seidenrollen dargestellt wird, und der harten Realität der modernen industriellen Umweltverschmutzung und des Tourismus. Diese Dissonanz wurde zum Katalysator für ihre Praxis: ein lebenslanges Streben nach der Erfassung einer „unmöglichen“ Landschaft – eines Raums, der irgendwo zwischen Erinnerung, Mythos und optischer Verzerrung existiert."
             },
             {
-              "type": "poll",
-              "content": {
-                "question": "Was sollten wir als nächstes erkunden?",
-                "options": [
-                  {
-                    "label": "Mehr Kontext",
-                    "votes": 0
-                  },
-                  {
-                    "label": "Praktischer Leitfaden",
-                    "votes": 0
-                  }
-                ]
-              }
+              "type": "text",
+              "content": "Während pixelverzerrte Landschaften ihr bekanntestes Markenzeichen sind, ist Kantanens umfassendere fotografische Praxis bemerkenswert vielfältig. Sie verlässt sich nicht auf einen einzigen technischen Trick; Vielmehr experimentiert sie serienübergreifend und definiert immer wieder neu, wie sich ein fotografisches Bild verhalten kann:"
+            },
+            {
+              "type": "text",
+              "content": "The Smoke Works &amp; Pixelmanipulation: In ihrer berühmtesten Serie greift Kantanen physisch in die Natur ein, bevor der Auslöser überhaupt klickt. Indem sie farbige Rauchbomben in abgelegenen Wäldern abfeuert – etwa in der Nähe ihres Hauses in Hango, Finnland –, schafft sie eine surreale, psychedelische Atmosphäre, die die alltägliche Szenerie durcheinander bringt. Anschließend nimmt sie diese digitalen Dateien und unterzieht sie tiefgreifenden Manipulationen: Sie verwischt Horizonte, dehnt Daten aus und zwingt Pixel manuell zum Fließen, sodass das Foto die Fließfähigkeit flüssiger Farbe nachahmt."
+            },
+            {
+              "type": "text",
+              "content": "Botanische Studien und Scanner: In ihren Blumenstillleben und botanischen Werken geht sie weit weg von weiten Landschaften und Pixeldehnungen und untersucht den organischen Verfall aus nächster Nähe. Dabei nutzt sie häufig Großformate, Langzeitbelichtungen oder sogar Flachbettscanner anstelle herkömmlicher Kameraobjektive. Diese Methoden erinnern an die reiche, allegorische Tiefe der niederländischen Malerei des Goldenen Zeitalters und konzentrieren sich auf die intimen Texturen und den langsamen Zeitablauf in der Natur."
+            },
+            {
+              "type": "text",
+              "content": "Frühe und direkte Fotografie: In früheren Phasen ihrer Karriere, einschließlich ihrer Reiseprojekte in Asien, war ihr Ansatz viel näher an der reinen Fotografie. Sie dokumentierte die buchstäbliche Reibung zwischen alten Traditionen und modernen städtischen Eingriffen und bewies, dass ihre technische Meisterschaft auf einer soliden Grundlage klassischer fotografischer Beobachtung aufbaut."
+            },
+            {
+              "type": "text",
+              "content": "Durch den fließenden Wechsel zwischen physischer Inszenierung, Scannerkunst, direkter Erfassung und digitaler Verzerrung destabilisiert Kantanen ständig unsere Wahrnehmung dessen, was ein Foto sein kann."
+            },
+            {
+              "type": "text",
+              "content": "Im Laufe ihrer mehr als zwei Jahrzehnte dauernden Karriere hat sich Sandra Kantanen große internationale Anerkennung für ihre innovativen Beiträge zur zeitgenössischen bildenden Kunst erworben."
+            },
+            {
+              "type": "text",
+              "content": "Ihre Arbeiten wurden weltweit präsentiert, mit großen Ausstellungen an Orten wie der Purdy Hicks Gallery in London, Paris Photo und einer umfassenden Retrospektive im Turku Art Museum."
+            },
+            {
+              "type": "text",
+              "content": "Kantanens Einfluss wird durch ihre Aufnahme in die ständigen Sammlungen einiger der angesehensten Institutionen der Welt untermauert, darunter das J. Paul Getty Museum in Los Angeles, das Brooklyn Museum, das Los Angeles County Museum of Art (LACMA) und das Kiasma Museum of Contemporary Art in Helsinki. Ihre von Hatje Cantz herausgegebenen Monographien sind Zeugnis einer Künstlerin, die Technologie nicht nur nutzt, sondern sie in den ewigen Dienst der Schönheit stellt."
             }
           ],
-          "order": 1
+          "order": 1,
+          "imageUrl": "https://api.eprisjournal.com/uploads/msm9xi2uysm3fm.jpg",
+          "updatedAt": "2026-08-09T21:46:50.782Z"
         },
         {
           "id": 15,
