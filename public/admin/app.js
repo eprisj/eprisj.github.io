@@ -53,6 +53,7 @@ const visualSearchInput = byId('visualSearch');
 const addEntryBtn = byId('addEntryBtn');
 const moveEntryUpBtn = byId('moveEntryUpBtn');
 const moveEntryDownBtn = byId('moveEntryDownBtn');
+const sortByDateBtn = byId('sortByDateBtn');
 const duplicateEntryBtn = byId('duplicateEntryBtn');
 const deleteEntryBtn = byId('deleteEntryBtn');
 const copyFromEnBtn = byId('copyFromEnBtn');
@@ -64,6 +65,7 @@ const downloadOriginalsText = byId('downloadOriginalsText');
 const downloadAllOriginalsText = byId('downloadAllOriginalsText');
 const mediaExportMeta = byId('mediaExportMeta');
 const mediaExportProgress = byId('mediaExportProgress');
+const languageSyncProgress = byId('languageSyncProgress');
 const languageSyncScope = byId('languageSyncScope');
 const applyEntryBtn = byId('applyEntryBtn');
 const saveEntryBtn = byId('saveEntryBtn');
@@ -123,6 +125,7 @@ const interactiveButtons = [
   addEntryBtn,
   moveEntryUpBtn,
   moveEntryDownBtn,
+  sortByDateBtn,
   duplicateEntryBtn,
   deleteEntryBtn,
   copyFromEnBtn,
@@ -506,7 +509,7 @@ document.addEventListener('beforeinput', (event) => {
     if (visibilityStatus) visibilityStatus.textContent = 'Публикация…';
     try {
       validateShape(data);
-      const res = await fetch(CONTENT_API, {
+      const res = await fetchNetworkRetry(CONTENT_API, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
         body: JSON.stringify(data),
@@ -625,6 +628,7 @@ async function tryAutoLogin() {
         tokenInput.value = data.token;
         localStorage.setItem(AUTH_STORAGE_KEY, data.token);
         applyRadioToken(data.radio_token);
+        applyShowcaseToken(data.showcase_token);
         setSessionRole(data.role);
         applyRoleVisibility(data.role);
         rememberTokenInput.checked = true;
@@ -696,7 +700,7 @@ function setSessionRole(role) {
 //     and appearance (site-wide theme, not per-article content) are
 //     grouped in for the same "not an editor's job" reason even though
 //     history is also independently enforced server-side.
-const ADMIN_ONLY_TABS = ['radio', 'passports', 'appearance', 'monitor', 'history', 'settings'];
+const ADMIN_ONLY_TABS = ['radio', 'passports', 'appearance', 'monitor', 'history', 'settings', 'showcase'];
 function applyRoleVisibility(role) {
   const isEditor = role === 'editor';
   document.body.classList.toggle('role-editor', isEditor);
@@ -738,6 +742,7 @@ async function handlePasswordLogin() {
     const data = await res.json();
     if (!data.ok || !data.token) throw new Error(data.error || 'Неверный пароль');
     applyRadioToken(data.radio_token);
+    applyShowcaseToken(data.showcase_token);
     setSessionRole(data.role);
     applyRoleVisibility(data.role);
     // Password is already validated by the VPS — log in immediately. The
@@ -831,16 +836,19 @@ function bindEvents() {
   copySiteBtn.addEventListener('click', copyPagesUrl);
 
   visualSectionSelect.addEventListener('change', () => {
+    if (isAdminBusy()) return;
     pendingVisualEntryId = null;
     refreshVisualEditor();
   });
 
   visualLangSelect.addEventListener('change', () => {
+    if (isAdminBusy()) return;
     pendingVisualEntryId = null;
     refreshVisualEditor();
   });
 
   visualEntrySelect.addEventListener('change', () => {
+    if (isAdminBusy()) return;
     pendingVisualEntryId = null;
     renderVisualForm();
     // Auto-collapse creator studio when editing an existing entry
@@ -861,6 +869,7 @@ function bindEvents() {
   addEntryBtn.addEventListener('click', addVisualEntry);
   moveEntryUpBtn.addEventListener('click', () => moveVisualEntry(-1));
   moveEntryDownBtn.addEventListener('click', () => moveVisualEntry(1));
+  sortByDateBtn.addEventListener('click', sortVisualEntriesByDate);
   duplicateEntryBtn.addEventListener('click', duplicateVisualEntry);
   deleteEntryBtn.addEventListener('click', deleteVisualEntry);
   copyFromEnBtn.addEventListener('click', copyFromEnglishEntry);
@@ -1768,9 +1777,25 @@ async function githubRequest(url, options = {}) {
   throw new Error(message);
 }
 
+// Долгие операции (сохранение записи, перевод на шесть языков) работают со
+// СНИМКОМ документа и в конце кладут его целиком через setEditorData. Пока они
+// идут, кнопки блокировались, а вот три селектора — раздел, язык, запись — нет:
+// переключение на середине перерисовывало редактор, и результат уходившего
+// сохранения молча терялся. Ловилось это на «сохранил и сразу переключил язык»:
+// запись выглядела сохранённой, но на VPS её не было. Блокируем и селекторы.
+let adminBusy = false;
+
+function isAdminBusy() {
+  return adminBusy;
+}
+
 function setBusy(value) {
+  adminBusy = Boolean(value);
   for (const button of interactiveButtons) {
     button.disabled = value;
+  }
+  for (const select of [visualSectionSelect, visualLangSelect, visualEntrySelect]) {
+    if (select) select.disabled = value;
   }
   loadingBarEl.classList.toggle('active', value);
   if (!value && typeof updateAdminToolbarContext === 'function') {
@@ -1786,7 +1811,10 @@ async function loadFromGitHub() {
     setStatus('info', 'Загружаю контент с VPS...');
     saveSettings();
 
-    const res = await fetch(CONTENT_API, { cache: 'no-store' });
+    // Это первый запрос при открытии админки (autoLoadOnStart) — сетевая
+    // осечка тут означает пустой редактор вместо контента, а не просто
+    // неудобство. GET, повтор безопасен всегда.
+    const res = await fetchNetworkRetry(CONTENT_API, { cache: 'no-store' });
     if (!res.ok) throw new Error('VPS вернул статус ' + res.status);
     const parsed = await res.json();
     validateShape(parsed);
@@ -1870,14 +1898,18 @@ function validateShape(data) {
 // no-build-step admin bundle, so this is intentionally duplicated).
 const ENTITY_REQUIRED_FIELDS = {
   articles:     { id: 'id', title: 'string', author: 'string', date: 'string', excerpt: 'string', category: 'string', imageSeed: 'string', tags: 'array', content: 'array' },
-  reviews:      { id: 'id', title: 'string', subject: 'string', rating: 'rating', content: 'string', author: 'string' },
+  // content у обзоров — строка ИЛИ массив блоков, ровно как на сервере
+  // (ENTITY_REQUIRED_FIELDS в deploy-webhook.js). Здесь стояло 'string', и
+  // любой блочный обзор — а Le Dauphine именно такой, 14 блоков — не мог
+  // сохраниться вообще: сохранение падало на «content must be a string».
+  reviews:      { id: 'id', title: 'string', subject: 'string', rating: 'rating', content: 'stringOrArray', author: 'string' },
   items:        { id: 'id', title: 'string', subtitle: 'string', fig: 'string', description: 'string', imageSeed: 'string' },
   libraryItems: { id: 'id', title: 'string', type: 'string', size: 'string', year: 'string' },
 };
 const ENTITY_OPTIONAL_FIELDS = {
-  articles:     { role: 'string', subcategory: 'string', imageUrl: 'string', draft: 'boolean', publishAt: 'isoDate' },
+  articles:     { role: 'string', subcategory: 'string', imageUrl: 'string', draft: 'boolean', publishAt: 'isoDate', order: 'number' },
   reviews:      { category: 'string', imageUrl: 'string', verdict: 'string', pros: 'array', cons: 'array', meta: 'string', link: 'string', date: 'string', featured: 'boolean', draft: 'boolean', publishAt: 'isoDate' },
-  items:        { imageUrl: 'string', draft: 'boolean', publishAt: 'isoDate' },
+  items:        { imageUrl: 'string', draft: 'boolean', publishAt: 'isoDate', articleId: 'id', order: 'number' },
   libraryItems: { url: 'string', draft: 'boolean', publishAt: 'isoDate' },
 };
 function validateEntityShape(section, entity) {
@@ -1897,7 +1929,9 @@ function validateEntityShape(section, entity) {
       if (!present) { if (required) return `missing field: ${field}`; continue; }
       const v = entity[field];
       if (kind === 'id' && !(Number.isInteger(v) && v > 0)) return `${field} must be a positive integer`;
+      if (kind === 'number' && typeof v !== 'number') return `${field} must be a number`;
       if (kind === 'string' && typeof v !== 'string') return `${field} must be a string`;
+      if (kind === 'stringOrArray' && typeof v !== 'string' && !Array.isArray(v)) return `${field} must be a string or array`;
       if (kind === 'array' && !Array.isArray(v)) return `${field} must be an array`;
       if (kind === 'boolean' && typeof v !== 'boolean') return `${field} must be a boolean`;
       if (kind === 'rating' && !(typeof v === 'number' && v >= 0 && v <= 5)) return 'rating must be a number 0-5';
@@ -2089,6 +2123,135 @@ function collectDuplicateIdIssues(entries, sectionLabel) {
   }
 
   return [`${sectionLabel}: дубли ID (${Array.from(duplicates).join(', ')})`];
+}
+
+// Mirrors isPlaceholderEntity() in src/data.ts — an entry left as an unedited
+// blueprint stub. Kept in sync by hand; the public site is the source of truth.
+const AUDIT_PLACEHOLDER_TITLES = new Set([
+  'new editorial story', 'new practical guide', 'new photo essay',
+  'new review', 'new gallery item', 'new file',
+  'neues galerieelement', 'nuevo elemento de la galería', 'yeni galeri öğesi',
+  'nuovo elemento della galleria', 'новый элемент галереи', 'новий елемент галереї',
+  'neue redaktionelle geschichte', 'nueva historia editorial', 'yeni editoryal hikaye',
+  'nuova storia editoriale', 'новая редакционная история', 'нова редакційна історія',
+]);
+const AUDIT_PLACEHOLDER_PHRASES = [
+  'replace me', 'replace with real copy before publishing',
+  'замініть мене', 'замініть на справжню копію',
+  'замените меня', 'замените реальной копией',
+  'ersetze mich', 'reemplázame', 'beni değiştir', 'sostituiscimi',
+];
+function isAuditPlaceholderEntity(entry) {
+  if (!entry || typeof entry !== 'object') return false;
+  const title = String(entry.title || '').trim().toLowerCase();
+  if (title && AUDIT_PLACEHOLDER_TITLES.has(title)) return true;
+  const haystack = [entry.subtitle, entry.description, entry.excerpt]
+    .filter((v) => typeof v === 'string').join(' ').toLowerCase();
+  return AUDIT_PLACEHOLDER_PHRASES.some((p) => haystack.includes(p));
+}
+
+// The single worst failure mode in this content model: getContentForLanguage()
+// discards a WHOLE locale bucket (items/articles/reviews/libraryItems) back to
+// English the moment *any one* entry in it is still an unfilled stub — see the
+// long comment above mergeLocalizedItems in src/data.ts. One forgotten "New
+// gallery item" is invisible in the editor (it just looks like a draft card
+// sitting in a list) but silently un-translates every OTHER card in that
+// language too. That is exactly what happened to the homepage gallery before
+// this check existed: id 8 and 9 sat unfilled for months and every non-English
+// reader saw an all-English homepage with no error anywhere. This check is the
+// only thing that surfaces it.
+function runLocalizationHealthCheck(data) {
+  if (!data) {
+    return createMonitorResult('warn', 'Локализация и главная', 'Проверка ограничена, пока JSON невалиден.', []);
+  }
+
+  const errors = [];
+  const warnings = [];
+  // `strict: true` sections go through mergeLocalizedItems in src/data.ts,
+  // which discards the WHOLE bucket back to English if any one entry is a
+  // stub. `strict: false` sections go through mergeLocalizedArray, which
+  // only skips the one stub entry — its siblings translate fine. Keep this
+  // list in sync with the const article/reviews/items/libraryItems lines in
+  // getContentForLanguage(); getting it backwards makes this check cry wolf
+  // (or worse, miss a real whole-bucket poisoning).
+  const POISON_SECTIONS = [
+    ['items', 'Галерея', true],
+    ['reviews', 'Обзоры', true],
+    ['articles', 'Статьи', false],
+    ['libraryItems', 'Библиотека', false],
+  ];
+
+  const localized = data.localizedCollections && typeof data.localizedCollections === 'object'
+    ? data.localizedCollections : {};
+  for (const [lang, bucket] of Object.entries(localized)) {
+    if (!bucket || typeof bucket !== 'object') continue;
+    for (const [sectionKey, sectionLabel, strict] of POISON_SECTIONS) {
+      const entries = bucket[sectionKey];
+      if (!Array.isArray(entries)) continue;
+      const stubs = entries.filter(isAuditPlaceholderEntity);
+      if (!stubs.length) continue;
+      const ids = stubs.map((e) => `#${e?.id ?? '?'}`).join(', ');
+      if (strict) {
+        errors.push(
+          `${lang}/${sectionLabel}: незаполненная заготовка (${ids}) — из-за неё ВЕСЬ ${sectionLabel.toLowerCase()} на ${lang} читатели видят по-английски, не только эту карточку. Заполните или удалите.`
+        );
+      } else {
+        warnings.push(
+          `${lang}/${sectionLabel}: незаполненная заготовка (${ids}) — эта карточка останется на английском для читателей ${lang}, соседние записи не пострадают. Заполните или удалите, когда дойдут руки.`
+        );
+      }
+    }
+  }
+
+  // Per-entry content-shape divergence — the "recycled id" variant of the
+  // same family of bug. Review #1 lived this on 2026-08-02: its base entry
+  // was rewritten from a short string review into a 14-block photo essay,
+  // but every locale's entry.content was still the OLD string from whatever
+  // review used to sit under this id. Content itself is safe — a type/length
+  // mismatch makes mergeContentBlocks fall back to base — but title/subject/
+  // verdict/pros/cons overlay onto the merge regardless, so readers saw the
+  // right photos and body text captioned with a completely different
+  // restaurant's name and verdict. No stub phrase involved, so the
+  // placeholder check above can't see it; a shape mismatch is the only cheap,
+  // reliable proxy that something here is a frozen snapshot, not a
+  // translation of what the base entry actually is now.
+  for (const [lang, bucket] of Object.entries(localized)) {
+    if (!bucket || typeof bucket !== 'object') continue;
+    for (const [sectionKey] of POISON_SECTIONS) {
+      const baseEntries = Array.isArray(data[sectionKey]) ? data[sectionKey] : [];
+      const locEntries = Array.isArray(bucket[sectionKey]) ? bucket[sectionKey] : [];
+      for (const loc of locEntries) {
+        const base = baseEntries.find((b) => Number(b && b.id) === Number(loc && loc.id));
+        if (!base || !('content' in base) || !('content' in loc)) continue;
+        const baseIsArr = Array.isArray(base.content);
+        const locIsArr = Array.isArray(loc.content);
+        if (baseIsArr !== locIsArr) {
+          warnings.push(
+            `${lang}/${sectionKey} #${loc.id}: content другого типа (в базе ${baseIsArr ? 'массив блоков' : typeof base.content}, в ${lang} — ${locIsArr ? 'массив блоков' : typeof loc.content}) — похоже на замороженный перевод от старой версии записи. Заголовок/подзаголовок всё равно накладываются поверх, проверьте вручную.`
+          );
+        } else if (baseIsArr && base.content.length !== loc.content.length) {
+          warnings.push(
+            `${lang}/${sectionKey} #${loc.id}: content другой длины (в базе ${base.content.length} блоков, в ${lang} — ${loc.content.length}) — вероятно, устаревший перевод.`
+          );
+        }
+      }
+    }
+  }
+
+  const missingCards = getArticlesMissingHomepageCard(data);
+  if (missingCards.length) {
+    const list = missingCards.map((a) => `#${a.id} «${a.title}»`).join(', ');
+    warnings.push(`Без карточки на главной: ${list}. Откройте вкладку «Главная» → «＋ Из статьи».`);
+  }
+
+  const level = errors.length > 0 ? 'error' : warnings.length > 0 ? 'warn' : 'ok';
+  const detail = level === 'error'
+    ? 'Незаполненная заготовка глушит перевод целого раздела — это ошибка, не предупреждение.'
+    : level === 'warn'
+      ? 'Есть статьи без карточки на главной.'
+      : 'Ни одной заглушки в локалях, все статьи представлены на главной.';
+
+  return createMonitorResult(level, 'Локализация и главная', detail, [...errors, ...warnings].slice(0, 10));
 }
 
 function runContentQualityChecks(data) {
@@ -2368,7 +2531,8 @@ async function runMonitoringChecks(options = {}) {
   try {
     const localResults = [
       runContentQualityChecks(content),
-      runMediaQualityChecks(content)
+      runMediaQualityChecks(content),
+      runLocalizationHealthCheck(content)
     ];
 
     let remoteResults = [];
@@ -2490,6 +2654,15 @@ function updateAdminToolbarContext() {
   if (downloadAllOriginalsText) {
     downloadAllOriginalsText.textContent = `Все статьи · ${totalCount}`;
   }
+  // «По дате» осмысленна только там, где порядок ручной.
+  if (sortByDateBtn) {
+    const orderable = MANUALLY_ORDERED_SECTIONS.has(section);
+    sortByDateBtn.disabled = !orderable;
+    sortByDateBtn.title = orderable
+      ? 'Сбросить ручной порядок раздела: свежие сверху'
+      : 'Ручной порядок есть только у разделов «Статьи» и «Галерея»';
+  }
+
   downloadOriginalsBtn.disabled = !canDownloadSelected;
   downloadAllOriginalsBtn.disabled = totalCount === 0;
   if (mediaExportMeta && mediaExportProgress?.hidden !== false) {
@@ -2507,6 +2680,16 @@ function setMediaExportProgress({ active, percent = null, label = '' }) {
   const bar = mediaExportProgress.querySelector('span');
   if (bar) bar.style.width = percent === null ? '32%' : `${Math.max(0, Math.min(100, percent))}%`;
   if (label) mediaExportMeta.textContent = label;
+}
+
+function setLanguageSyncProgress({ active, percent = null, label = '' }) {
+  if (!languageSyncProgress) return;
+  languageSyncProgress.hidden = !active;
+  languageSyncProgress.classList.toggle('indeterminate', active && percent === null);
+  languageSyncProgress.setAttribute('aria-hidden', active ? 'false' : 'true');
+  const bar = languageSyncProgress.querySelector('span');
+  if (bar) bar.style.width = percent === null ? '32%' : `${Math.max(0, Math.min(100, percent))}%`;
+  if (label && languageSyncScope) languageSyncScope.textContent = label;
 }
 
 async function responseBlobWithProgress(response) {
@@ -2626,7 +2809,7 @@ async function saveToGitHub() {
     const pw = getAdminPassword();
     if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
 
-    const res = await fetch(CONTENT_API, {
+    const res = await fetchNetworkRetry(CONTENT_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
       body: JSON.stringify(parsed)
@@ -2640,6 +2823,13 @@ async function saveToGitHub() {
     lastSyncedTime = new Date();
     updateLastSyncedBadge();
     setStatus('success', 'Опубликовано на VPS — сайт обновлён мгновенно');
+    // Server-side echo of the same "Локализация и главная" check (see
+    // runLocalizationHealthCheck) — surfaced here too so a stub that just
+    // went live is impossible to miss even by an editor who never opens
+    // the Monitoring tab.
+    if (Array.isArray(data.localizationWarnings) && data.localizationWarnings.length) {
+      showToast?.('error', `После публикации: ${data.localizationWarnings.length} предупреждений по локализации. Смотрите вкладку «Мониторинг».`);
+    }
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
@@ -2992,6 +3182,24 @@ function getNextEntryId(data, section) {
   return ids.length ? Math.max(...ids) + 1 : 1;
 }
 
+// Сверяет свободный id с сервером. Считать max(id)+1 только по документу
+// в редакторе опасно: вкладка, открытая до появления новых записей, выдаёт
+// уже занятый id, и новая запись встаёт поверх чужой. Так 08.08.2026
+// шаблон затёр статью «How Emily Kraus Reinvents the Act of Painting».
+// Сеть недоступна — молча откатываемся к локальному расчёту: помешать
+// созданию записи хуже, чем изредка не свериться.
+async function getNextEntryIdChecked(data, section) {
+  const local = getNextEntryId(data, section);
+  try {
+    const res = await fetch(CONTENT_API, { cache: 'no-store' });
+    if (!res.ok) return local;
+    const live = await res.json();
+    return Math.max(local, getNextEntryId(live, section));
+  } catch {
+    return local;
+  }
+}
+
 function slugifySeed(value, fallback) {
   const slug = String(value || '')
     .toLowerCase()
@@ -3139,6 +3347,27 @@ function renderCreatorQuality(data, section, lang, entry) {
 
     addChip(entry.excerpt ? 'Лид' : 'Нет лида', Boolean(entry.excerpt));
     addChip(hasMedia ? 'Обложка' : 'Нет фото', hasMedia);
+
+    // «Обложка» выше проверяет только, что фото ЕСТЬ — не что у него есть
+    // ALT. Статья с десятком фото и пустым alt на каждом проходила эту
+    // проверку зелёной, а для скринридера и Google Картинок такая статья
+    // не отличается от статьи без единой подписи к фото.
+    let imagesWithAlt = 0;
+    let imagesTotal = 0;
+    for (const block of blocks) {
+      if (block?.type === 'image') {
+        imagesTotal += 1;
+        if (String(block.alt || '').trim()) imagesWithAlt += 1;
+      } else if (block?.type === 'gallery' && Array.isArray(block.content)) {
+        const alts = Array.isArray(block.alts) ? block.alts : [];
+        block.content.forEach((_, i) => {
+          imagesTotal += 1;
+          if (String(alts[i] || '').trim()) imagesWithAlt += 1;
+        });
+      }
+    }
+    if (imagesTotal > 0) addChip(`ALT: ${imagesWithAlt}/${imagesTotal}`, imagesWithAlt === imagesTotal);
+
     addChip(`${blocks.length} блоков`, blocks.length >= 3);
     addChip(`${words} слов`, words >= 80);
     if (words > 0) addChip(`~${Math.max(1, Math.round(words / 200))} мин чтения`, true);
@@ -3511,8 +3740,8 @@ function buildQualityEntryFromForm(section, fallback = {}) {
   if (section === 'reviews') {
     return {
       ...base,
-      title: getFieldValue('vf-title').trim(),
-      content: getFieldValue('vf-content').trim()
+      title: getFieldValue('vf-title').trim()
+      // NOTE: content is managed by the WYSIWYG review canvas, not the classic form
     };
   }
 
@@ -3564,13 +3793,91 @@ function bindCreatorQualityInputs(fallback = {}) {
   });
 }
 
+// Publications (articles) and the homepage gallery (items) are separate
+// collections — a written article never landed on the homepage by itself,
+// so editors had to open the Homepage tab and click "＋ from article" by
+// hand for every single story, in every language, or it silently stayed
+// invisible on the front page and unlisted in this same tab. That manual
+// step is gone: this runs automatically the moment an article is created,
+// for every language bucket, positioned first so the newest story is the
+// featured one. The Homepage tab's own "＋ from article" button (see
+// initHomepageTab below) still exists for backfilling older articles that
+// predate this — it calls this exact function instead of duplicating it.
+function galleryCardBaseTitle(value) {
+  return String(value || '').split(':')[0].trim().toLowerCase();
+}
+
+// Articles the homepage gallery has no card for — same title-matching rule
+// the public site uses to link a Gallery card back to its Article
+// (findMatchingArticle in src/App.tsx). Used by the Homepage tab's backfill
+// button and by the audit dashboard's "Публикации без карточки" check.
+function getArticlesMissingHomepageCard(data) {
+  const articles = Array.isArray(data.articles) ? data.articles : [];
+  const items = Array.isArray(data.items) ? data.items : [];
+  const taken = new Set();
+  items.forEach((item) => {
+    const title = String(item.title || '').trim();
+    if (!title) return;
+    taken.add(title.toLowerCase());
+    taken.add(galleryCardBaseTitle(title));
+  });
+  return articles.filter((article) => {
+    const title = String(article.title || '').trim();
+    if (!title) return false;
+    return !taken.has(title.toLowerCase()) && !taken.has(galleryCardBaseTitle(title));
+  });
+}
+
+function addGalleryCardForArticleData(data, articleId) {
+  const article = (data.articles || []).find((entry) => String(entry.id) === String(articleId));
+  if (!article) return false;
+
+  const existingIds = (Array.isArray(data.items) ? data.items : [])
+    .map((item) => Number(item.id))
+    .filter((id) => Number.isFinite(id));
+  const id = existingIds.length ? Math.max(...existingIds) + 1 : 1;
+
+  const cardFrom = (source, position) => ({
+    id,
+    // Явная привязка к статье: заголовок карточки потом может разойтись со
+    // статьёй (её переименуют), а id — нет. На нём держатся и кнопка
+    // «читать статью», и наследование перевода.
+    articleId: Number(article.id),
+    title: String(source.title || '').trim(),
+    subtitle: source.category || source.subcategory || '',
+    fig: `FIG. ${String(position).padStart(2, '0')}`,
+    description: source.excerpt || '',
+    imageSeed: source.imageSeed || `item-${id}`,
+    imageUrl: source.imageUrl || '',
+  });
+
+  if (!Array.isArray(data.items)) data.items = [];
+  data.items.unshift(cardFrom(article, data.items.length + 1));
+
+  // Same card per language, or a localized homepage simply won't have it —
+  // text comes from the article's own translation when one already exists.
+  const buckets = data.localizedCollections && typeof data.localizedCollections === 'object'
+    ? data.localizedCollections
+    : {};
+  Object.keys(buckets).forEach((lang) => {
+    const bucket = buckets[lang];
+    if (!bucket || typeof bucket !== 'object' || !Array.isArray(bucket.items)) return;
+    const localizedArticle = Array.isArray(bucket.articles)
+      ? bucket.articles.find((entry) => String(entry.id) === String(articleId))
+      : null;
+    bucket.items.unshift(cardFrom(localizedArticle || article, bucket.items.length + 1));
+  });
+
+  return true;
+}
+
 async function createArticleFromBlueprint(kind) {
   try {
     setBusy(true);
     const data = parseEditorJson();
     const sourceLang = visualLangSelect.value || DEFAULT_LANGUAGE;
     const entries = getSectionArray(data, 'articles', sourceLang, sourceLang !== DEFAULT_LANGUAGE);
-    const nextId = getNextEntryId(data, 'articles');
+    const nextId = await getNextEntryIdChecked(data, 'articles');
     const baseArticle = buildArticleBlueprint(kind, nextId);
     let sourceArticle = baseArticle;
 
@@ -3583,16 +3890,21 @@ async function createArticleFromBlueprint(kind) {
       if (categoryOverride) sourceArticle.category = categoryOverride;
     }
 
-    entries.push(sourceArticle);
+    // Новая запись — в начало: лента сортируется по дате, но у свежей
+    // заготовки даты ещё нет, и в хвосте её никто бы не нашёл.
+    entries.unshift(sourceArticle);
     setStatus('info', `Создаю языковые версии статьи #${nextId}...`);
     const syncedLangs = await syncMissingEntryLanguages(data, 'articles', sourceLang, sourceArticle);
+    // Translations are on the article now, so localized homepage cards below
+    // can already pull real text instead of the source language.
+    addGalleryCardForArticleData(data, nextId);
 
     visualSectionSelect.value = 'articles';
     visualLangSelect.value = sourceLang;
     pendingVisualEntryId = nextId;
     setEditorData(data);
     const syncNote = syncedLangs.length ? ` Языки: ${syncedLangs.join(', ')}.` : '';
-    setStatus('success', `Шаблон статьи #${nextId} создан.${syncNote}`);
+    setStatus('success', `Шаблон статьи #${nextId} создан и добавлен на главную первой карточкой.${syncNote}`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
@@ -3606,7 +3918,7 @@ async function createReviewFromBlueprint(kind) {
     const data = parseEditorJson();
     const sourceLang = visualLangSelect.value || DEFAULT_LANGUAGE;
     const entries = getSectionArray(data, 'reviews', sourceLang, sourceLang !== DEFAULT_LANGUAGE);
-    const nextId = getNextEntryId(data, 'reviews');
+    const nextId = await getNextEntryIdChecked(data, 'reviews');
     const baseReview = buildReviewBlueprint(kind, nextId);
     let sourceReview = baseReview;
 
@@ -3619,7 +3931,7 @@ async function createReviewFromBlueprint(kind) {
       if (categoryOverride) sourceReview.category = categoryOverride;
     }
 
-    entries.push(sourceReview);
+    entries.unshift(sourceReview);
     setStatus('info', `Создаю языковые версии обзора #${nextId}...`);
     const syncedLangs = await syncMissingEntryLanguages(data, 'reviews', sourceLang, sourceReview);
 
@@ -3695,6 +4007,12 @@ function renderVisualLanguageOptions(data) {
   }
 }
 
+// Список записей в «Статьях» и «Галерее» идёт ровно в том порядке, в каком их
+// увидит читатель, — иначе кнопки ↑/↓ и номера позиций врут.
+function orderedForSection(section, entries) {
+  return MANUALLY_ORDERED_SECTIONS.has(section) ? sortEntriesLikeSite(section, entries) : entries;
+}
+
 function refreshVisualEditor() {
   const data = getVisualData();
   if (!data) {
@@ -3710,7 +4028,7 @@ function refreshVisualEditor() {
   // For non-EN languages, build dropdown from ALL EN entries so untranslated ones are visible
   let dropdownEntries;
   if (lang !== DEFAULT_LANGUAGE) {
-    const enEntries = getSectionArray(data, section, DEFAULT_LANGUAGE, false);
+    const enEntries = orderedForSection(section, getSectionArray(data, section, DEFAULT_LANGUAGE, false));
     const localizedIds = new Set(entries.map(e => Number(e.id)));
     dropdownEntries = enEntries.map(enEntry => {
       const localizedEntry = entries.find(le => Number(le.id) === Number(enEntry.id));
@@ -3722,7 +4040,7 @@ function refreshVisualEditor() {
       };
     });
   } else {
-    dropdownEntries = entries.map(entry => ({
+    dropdownEntries = orderedForSection(section, entries).map(entry => ({
       id: entry.id,
       _entry: entry,
       _hasTranslation: true,
@@ -3748,7 +4066,12 @@ function refreshVisualEditor() {
       const e = item._entry || {};
       if (e.draft) label += ' 📝 ЧЕРНОВИК';
       else if (e.publishAt && Date.parse(e.publishAt) > Date.now()) label += ' ⏳ ОТЛОЖЕНО';
-      return `<option value="${id}">#${id} - ${escapeHtml(label)}</option>`;
+      // В «Статьях» и «Галерее» список идёт в том же порядке, что и сайт, —
+      // показываем номер позиции, иначе кнопки ↑/↓ двигают вслепую.
+      const position = MANUALLY_ORDERED_SECTIONS.has(section)
+        ? `${dropdownEntries.findIndex((d) => Number(d.id) === id) + 1}. `
+        : '';
+      return `<option value="${id}">${position}#${id} - ${escapeHtml(label)}</option>`;
     })
     .join('');
 
@@ -3781,6 +4104,7 @@ function refreshVisualEditor() {
 
   updateAdminToolbarContext();
   renderVisualForm();
+  noteGalleryInheritance(data, section, lang, Number(visualEntrySelect.value));
   // Setting .value programmatically fires no 'change' event, so the WYSIWYG
   // and Review live-canvases (which reload only on that event) would keep
   // showing whatever entry was open before — e.g. after "create new article"
@@ -3792,6 +4116,26 @@ function refreshVisualEditor() {
   // programmatic section change (e.g. createReviewFromBlueprint switching
   // to 'reviews') must also refresh which button set is visible.
   updateCreatorStudioForSection();
+}
+
+// Карточка Галереи без своего перевода берёт текст из связанной статьи —
+// переводить её отдельно не нужно (см. getGalleryArticleLinks в data.ts).
+// Предупреждаем об этом прямо в редакторе, иначе редактор тратит силы и
+// внешний переводчик на текст, который и так приедет из статьи.
+function noteGalleryInheritance(data, section, lang, entryId) {
+  if (section !== 'items' || lang === DEFAULT_LANGUAGE || !entryId) return;
+  const localized = getSectionArray(data, section, lang, false) || [];
+  if (localized.some((entry) => Number(entry.id) === entryId)) return;
+  const baseEntries = getSectionArray(data, section, DEFAULT_LANGUAGE, false) || [];
+  const baseItem = baseEntries.find((entry) => Number(entry.id) === entryId);
+  const baseTitle = String(baseItem?.title || '').trim();
+  if (!baseTitle) return;
+  const key = (value) => String(value || '').split(':')[0].trim().toLowerCase();
+  const articles = getSectionArray(data, 'articles', DEFAULT_LANGUAGE, false) || [];
+  const article = articles.find((a) => String(a.title || '').trim() === baseTitle)
+    || (key(baseTitle).length >= 4 ? articles.find((a) => key(a.title) === key(baseTitle)) : undefined);
+  if (!article) return;
+  setVisualNotice(`Перевод не нужен: карточка возьмёт заголовок, категорию и описание из статьи #${article.id} на языке ${lang}. Заполните поля только если тексты должны отличаться от статьи.`, 'info');
 }
 
 function setVisualNotice(message, type) {
@@ -3833,7 +4177,7 @@ function resolvePreviewImageSource(imageUrl, imageSeed) {
     return normalizedSeed;
   }
 
-  return `https://picsum.photos/seed/${encodeURIComponent(normalizedSeed)}/900/520?grayscale`;
+  return `https://picsum.photos/seed/${encodeURIComponent(normalizedSeed)}/900/520`;
 }
 
 // Scans the currently loaded content (all languages) for references to a
@@ -3925,6 +4269,43 @@ function bindPhotoPreviewInputs() {
 // row values straight from the DOM before every add/remove so in-progress
 // edits in other rows survive the redraw, same pattern as the block editor's
 // gallery/checklist/poll repeaters.
+// Карточка Галереи — обложка статьи: от этой связи зависят кнопка «читать
+// статью» и наследование перевода. Раньше она угадывалась по совпадению
+// заголовков и рвалась при каждом переименовании статьи, молча. Теперь связь
+// хранится явно (articleId), а совпадение по заголовку осталось только
+// подсказкой для старых карточек, у которых поля ещё нет.
+function guessArticleIdByTitle(data, entry) {
+  const articles = Array.isArray(data.articles) ? data.articles : [];
+  const title = String(entry.title || '').trim();
+  if (!title) return null;
+  const exact = articles.find((a) => String(a.title || '').trim() === title);
+  if (exact) return Number(exact.id);
+  const base = (value) => String(value || '').split(':')[0].trim().toLowerCase();
+  if (base(title).length < 4) return null;
+  const loose = articles.find((a) => base(a.title) === base(title));
+  return loose ? Number(loose.id) : null;
+}
+
+function renderGalleryArticleLinkMarkup(data, entry) {
+  const articles = Array.isArray(data.articles) ? data.articles : [];
+  const explicit = Number(entry.articleId) || null;
+  const guessed = explicit ? null : guessArticleIdByTitle(data, entry);
+  const selected = explicit || guessed || 0;
+  const options = [`<option value="0">— не связана со статьёй —</option>`]
+    .concat(articles.map((a) => {
+      const label = `#${a.id} · ${String(a.title || '').slice(0, 60)}`;
+      return `<option value="${a.id}"${Number(a.id) === selected ? ' selected' : ''}>${escapeHtml(label)}</option>`;
+    }))
+    .join('');
+  const note = explicit
+    ? 'Связь закреплена: переименование статьи её не сломает.'
+    : guessed
+      ? 'Связь пока только угадана по заголовку — сохраните карточку, чтобы закрепить её.'
+      : 'Не связана: в просмотре не будет кнопки «читать статью», перевод не наследуется.';
+  return `<select id="vf-articleId">${options}</select>
+      <span class="toolbar-field-label" style="display:block;margin-top:4px;">${escapeHtml(note)}</span>`;
+}
+
 function renderGalleryPhotosRepeaterMarkup(photos) {
   if (!photos.length) {
     return '<p class="form-hint">Доп. фото нет — в просмотре покажется только обложка.</p>';
@@ -4051,16 +4432,16 @@ function renderVisualForm() {
       <label>ID<input id="vf-id" value="${escapeHtml(entry.id)}" disabled /></label>
       <label>FIG<input id="vf-fig" value="${escapeHtml(entry.fig || '')}" /></label>
       <label class="full">Заголовок<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
+      <label class="full">Статья карточки${renderGalleryArticleLinkMarkup(data, entry)}</label>
       <label class="full">Подзаголовок<input id="vf-subtitle" value="${escapeHtml(entry.subtitle || '')}" /></label>
       <label class="full">Описание<textarea id="vf-description">${escapeHtml(entry.description || '')}</textarea></label>
-      <label class="full">URL фото — обложка (необязательно)<input id="vf-imageUrl" placeholder="https://..." value="${escapeHtml(entry.imageUrl || '')}" /></label>
-      <div class="full" style="display:flex;gap:8px;align-items:center;margin:-4px 0 4px">
-        <button id="vf-img-upload-btn" class="btn btn-sm" type="button">Загрузить фото</button>
+      <input type="hidden" id="vf-imageUrl" value="${escapeHtml(entry.imageUrl || '')}" />
+      <div class="full" style="margin-bottom:4px">
+        ${renderPhotoPreviewMarkup(previewSource)}
+        <button id="vf-img-upload-btn" class="btn btn-sm" type="button" style="margin-top:6px">📷 Загрузить фото обложки</button>
         <input id="vf-img-upload-input" type="file" accept="image/*" hidden />
-        <span class="form-hint" style="margin:0">или вставьте URL выше</span>
       </div>
       <label class="full">imageSeed (если URL пустой)<input id="vf-imageSeed" value="${escapeHtml(entry.imageSeed || '')}" /></label>
-      ${renderPhotoPreviewMarkup(previewSource)}
       <div class="full">
         <span class="toolbar-field-label" style="display:block;margin-bottom:6px;">Доп. фото для просмотра «read» (необязательно, с подписями)</span>
         <div id="vf-photos-repeater">${renderGalleryPhotosRepeaterMarkup(entry.images || [])}</div>
@@ -4086,21 +4467,19 @@ function renderVisualForm() {
       <label class="full">Заголовок<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
       <label class="full">Тема (что обозревается)<input id="vf-subject" value="${escapeHtml(entry.subject || '')}" /></label>
       <label class="full">Вердикт (одна строка-вывод)<input id="vf-verdict" value="${escapeHtml(entry.verdict || '')}" /></label>
-      <label class="full">Текст обзора<textarea id="vf-content">${escapeHtml(entry.content || '')}</textarea></label>
       <label class="full">Плюсы (по одному на строку)<textarea id="vf-pros">${escapeHtml(Array.isArray(entry.pros) ? entry.pros.join('\n') : '')}</textarea></label>
       <label class="full">Минусы (по одному на строку)<textarea id="vf-cons">${escapeHtml(Array.isArray(entry.cons) ? entry.cons.join('\n') : '')}</textarea></label>
       <label>Мета (локация/цена/год)<input id="vf-meta" value="${escapeHtml(entry.meta || '')}" /></label>
       <label>Ссылка (необязательно)<input id="vf-link" value="${escapeHtml(entry.link || '')}" placeholder="https://…" /></label>
       <label>Дата (необязательно)<input id="vf-date" value="${escapeHtml(entry.date || '')}" /></label>
-      <label class="full">URL фото<input id="vf-imageUrl" value="${escapeHtml(entry.imageUrl || '')}" placeholder="/images/… или https://…" /></label>
-      <div class="full" style="display:flex;gap:8px;align-items:center;margin:-4px 0 4px">
-        <button id="vf-rev-upload-btn" class="btn btn-sm" type="button">Загрузить фото</button>
+      <input type="hidden" id="vf-imageUrl" value="${escapeHtml(entry.imageUrl || '')}" />
+      <div class="full" style="margin-bottom:4px">
+        <div class="photo-preview" style="margin-bottom:8px">
+          <img id="vf-rev-preview" src="${revImg ? escapeHtml(revImg) : ''}" alt="Превью обложки" loading="lazy" referrerpolicy="no-referrer" ${revImg ? '' : 'hidden'} />
+          <div id="vf-rev-preview-empty" class="photo-preview-empty" ${revImg ? 'hidden' : ''}>Обложка не выбрана</div>
+        </div>
+        <button id="vf-rev-upload-btn" class="btn btn-sm" type="button">📷 Загрузить фото обложки</button>
         <input id="vf-rev-upload-input" type="file" accept="image/*" hidden />
-        <span class="form-hint" style="margin:0">или вставьте URL выше</span>
-      </div>
-      <div class="photo-preview full">
-        <img id="vf-rev-preview" src="${revImg ? escapeHtml(revImg) : ''}" alt="Превью" loading="lazy" referrerpolicy="no-referrer" ${revImg ? '' : 'hidden'} />
-        <div id="vf-rev-preview-empty" class="photo-preview-empty" ${revImg ? 'hidden' : ''}>Добавьте URL фото, чтобы увидеть превью.</div>
       </div>
       <label class="full">Автор<input id="vf-author" value="${escapeHtml(entry.author || '')}" /></label>
       ${renderDraftFieldsMarkup(entry)}
@@ -4282,16 +4661,18 @@ function buildEntryFromVisualForm(section, current) {
       description: getFieldValue('vf-description').trim(),
       imageSeed: getFieldValue('vf-imageSeed').trim(),
       imageUrl: getOptionalString(getFieldValue('vf-imageUrl')),
-      images: photos.length ? photos : undefined
+      images: photos.length ? photos : undefined,
+      articleId: Number(getFieldValue('vf-articleId')) || undefined
     };
     applyDraftFieldsFromForm(next);
   } else if (section === 'reviews') {
     const lines = (id) => getFieldValue(id).split('\n').map((s) => s.trim()).filter(Boolean);
+    // NOTE: 'content' is managed by the WYSIWYG review canvas (initReviewCanvas),
+    // not by the classic form. We intentionally keep `next.content` from the spread.
     next = {
       ...next,
       title: getFieldValue('vf-title').trim(),
       subject: getFieldValue('vf-subject').trim(),
-      content: getFieldValue('vf-content').trim(),
       author: getFieldValue('vf-author').trim(),
       category: getOptionalString(getFieldValue('vf-category')),
       verdict: getOptionalString(getFieldValue('vf-verdict')),
@@ -4399,14 +4780,32 @@ async function applyVisualChanges() {
 // Reviews' classic-form fallback). Fetches the current version right before
 // writing so a stale save surfaces as a clear "someone else saved" message
 // instead of silently losing an edit.
+// Ретрай только сетевых осечек (fetch бросил исключение до ответа сервера —
+// обрыв, DNS, временная недоступность), не HTTP-статусов: 409 и 5xx — это
+// содержательные ответы сервера, ретраить их вслепую нельзя, ими занимается
+// вызывающий код (см. 409 ниже). Тот же принцип, что и в requestTranslation
+// для перевода — здесь он защищает сам факт сохранения записи на VPS.
+async function fetchNetworkRetry(url, options, attempts = 3) {
+  let lastError = null;
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
+    if (attempt > 0) await new Promise((r) => setTimeout(r, 350 * attempt));
+    try {
+      return await fetch(url, options);
+    } catch (error) {
+      lastError = error;
+    }
+  }
+  throw lastError;
+}
+
 const CONTENT_META_API = 'https://api.eprisjournal.com/content/meta';
 const CONTENT_ENTITY_API = 'https://api.eprisjournal.com/content/entity';
 async function saveEntityToServer(section, lang, entity) {
   const pw = getAdminPassword();
   if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
-  const metaRes = await fetch(CONTENT_META_API, { cache: 'no-store' });
+  const metaRes = await fetchNetworkRetry(CONTENT_META_API, { cache: 'no-store' });
   const meta = await metaRes.json().catch(() => ({}));
-  const res = await fetch(CONTENT_ENTITY_API, {
+  const res = await fetchNetworkRetry(CONTENT_ENTITY_API, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
     body: JSON.stringify({ section, id: entity.id, entity, lang, expectedVersion: meta.version }),
@@ -4576,6 +4975,7 @@ function createDefaultEntry(section, nextId) {
   return buildArticleBlueprint('story', nextId);
 }
 
+// Removed legacy Google Translate chunking functions (translateText, translateRichText, etc.)
 async function duplicateVisualEntry() {
   try {
     setBusy(true);
@@ -4594,7 +4994,7 @@ async function duplicateVisualEntry() {
       throw new Error('Не найдена выбранная запись.');
     }
 
-    const nextId = getNextEntryId(data, section);
+    const nextId = await getNextEntryIdChecked(data, section);
     const duplicate = deepClone(entries[entryIndex]);
     duplicate.id = nextId;
     if (typeof duplicate.title === 'string') {
@@ -4685,7 +5085,7 @@ function isLikelyMediaOrUrl(value) {
   );
 }
 
-function splitTextForTranslation(text, maxLength = 1700) {
+function splitTextForTranslation(text, maxLength = 900) {
   const source = String(text || '');
   if (source.length <= maxLength) {
     return [source];
@@ -4718,6 +5118,68 @@ function splitTextForTranslation(text, maxLength = 1700) {
   return chunks;
 }
 
+// Сервис перевода изредка возвращает текст с «дырой»: одна буква посреди
+// слова заменена на U+FFFD («двойств�нность», «в�трины»). Молча сохранённая,
+// такая дыра живёт в статье месяцами — именно её мы сегодня вычищали по всему
+// контенту. Считаем ответ с U+FFFD негодным: пробуем тот же кусок помельче, а
+// если и это не помогло — оставляем исходный текст. Лучше абзац по-английски,
+// чем изуродованный перевод.
+const TRANSLATION_DAMAGE = '\uFFFD';
+
+// Создание одной статьи на 6 языков — это до сотни таких запросов подряд
+// (по чанку на блок × 6 языков). Раньше первая же сетевая осечка (обрыв,
+// временный rate-limit, браузерная блокировка трекеров на googleapis.com)
+// падала как есть и обрывала СОЗДАНИЕ ВСЕЙ СТАТЬИ с «Failed to fetch» —
+// даже когда 99 запросов из 100 прошли нормально. Три попытки с паузой
+// покрывают разовую сетевую осечку; если и после них не отвечает — молча
+// возвращаем пустую строку, и вызывающий код (translateChunkGuarded)
+// оставляет оригинальный текст чанка вместо того, чтобы рушить всю статью.
+async function requestTranslation(chunk, sourceCode, targetCode) {
+  const url = new URL('https://translate.googleapis.com/translate_a/single');
+  url.searchParams.set('client', 'gtx');
+  url.searchParams.set('sl', sourceCode);
+  url.searchParams.set('tl', targetCode);
+  url.searchParams.set('dt', 't');
+  url.searchParams.set('q', chunk);
+
+  let lastError = null;
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    if (attempt > 0) await new Promise((r) => setTimeout(r, 350 * attempt));
+    try {
+      const response = await fetch(url.toString(), { cache: 'no-store' });
+      if (!response.ok) {
+        lastError = new Error(`Сервис перевода ответил HTTP ${response.status}`);
+        continue;
+      }
+      const payload = await response.json();
+      return readGoogleTranslatePayload(payload) || '';
+    } catch (error) {
+      lastError = error;
+    }
+  }
+  console.warn('[translate] сеть недоступна после 3 попыток, оставляю оригинал:', getErrorMessage(lastError));
+  return '';
+}
+
+async function translateChunkGuarded(chunk, sourceCode, targetCode, depth = 0) {
+  const translated = await requestTranslation(chunk, sourceCode, targetCode);
+  if (translated && !translated.includes(TRANSLATION_DAMAGE)) return translated;
+  if (!translated) return chunk;
+
+  // Дробим пополам по границе слова и переводим половинки отдельно: короткий
+  // запрос почти всегда приходит целым.
+  if (depth < 2 && chunk.length > 120) {
+    const middle = chunk.lastIndexOf(' ', Math.floor(chunk.length / 2)) + 1 || Math.floor(chunk.length / 2);
+    const left = await translateChunkGuarded(chunk.slice(0, middle), sourceCode, targetCode, depth + 1);
+    const right = await translateChunkGuarded(chunk.slice(middle), sourceCode, targetCode, depth + 1);
+    const joined = `${left}${left.endsWith(' ') || right.startsWith(' ') ? '' : ' '}${right}`;
+    if (!joined.includes(TRANSLATION_DAMAGE)) return joined;
+  }
+
+  console.warn('[translate] повреждённый ответ, оставляю оригинал:', chunk.slice(0, 60));
+  return chunk;
+}
+
 function readGoogleTranslatePayload(payload) {
   if (!Array.isArray(payload) || !Array.isArray(payload[0])) {
     return '';
@@ -4748,20 +5210,7 @@ async function translateText(value, targetLang, sourceLang = DEFAULT_LANGUAGE) {
 
   const translatedParts = [];
   for (const chunk of splitTextForTranslation(text)) {
-    const url = new URL('https://translate.googleapis.com/translate_a/single');
-    url.searchParams.set('client', 'gtx');
-    url.searchParams.set('sl', sourceCode);
-    url.searchParams.set('tl', targetCode);
-    url.searchParams.set('dt', 't');
-    url.searchParams.set('q', chunk);
-
-    const response = await fetch(url.toString(), { cache: 'no-store' });
-    if (!response.ok) {
-      throw new Error(`Сервис перевода ответил HTTP ${response.status}. Попробуйте позже.`);
-    }
-
-    const payload = await response.json();
-    translatedParts.push(readGoogleTranslatePayload(payload) || chunk);
+    translatedParts.push(await translateChunkGuarded(chunk, sourceCode, targetCode));
   }
 
   const translated = translatedParts.join('');
@@ -4894,62 +5343,158 @@ async function translateArticleBlock(block, targetLang, sourceLang = DEFAULT_LAN
   return next;
 }
 
-async function translateArticleEntry(article, targetLang, sourceLang = DEFAULT_LANGUAGE) {
+// Catches the failure mode retries alone can't: the model returns valid JSON
+// that parses fine but silently dropped a batch item or a metadata key (free
+// models truncate/summarize under load far more often than they outright
+// break JSON). A shorter array means lost content blocks; a missing key means
+// a field silently reverts to whatever the caller had before Object.assign —
+// both used to sail through the old `try { JSON.parse } catch` unnoticed.
+// Returns a description string on mismatch, or null when the shape holds.
+function translationShapeMismatch(original, translated) {
+  if (Array.isArray(original)) {
+    if (!Array.isArray(translated)) return `expected an array of ${original.length}, got ${typeof translated}`;
+    if (translated.length !== original.length) return `expected ${original.length} items, got ${translated.length}`;
+    return null;
+  }
+  if (original && typeof original === 'object') {
+    if (!translated || typeof translated !== 'object' || Array.isArray(translated)) {
+      return `expected an object, got ${Array.isArray(translated) ? 'array' : typeof translated}`;
+    }
+    // Only keys that actually had a value survive JSON.stringify into the
+    // prompt — an original `undefined` field (e.g. article.role on an entry
+    // that has none) never appears there, so the model can't be faulted for
+    // omitting it back.
+    const missing = Object.keys(original).filter((k) => original[k] !== undefined && !(k in translated));
+    if (missing.length) return `missing keys: ${missing.join(', ')}`;
+    return null;
+  }
+  return null;
+}
+
+async function aiTranslateObject(obj, targetLang, maxRetries = 3) {
+  if (!obj || typeof obj !== 'object') return obj;
+
+  const prompt = `You are a translator for EPRIS Journal — a sophisticated magazine about design, art, travel, architecture.
+Translate all textual content values within this JSON structure to ${targetLang}.
+Keep the JSON structure, keys, and array lengths exactly identical. Preserve all HTML tags (like <em> or <strong>) perfectly intact.
+Do NOT translate URLs, IDs, image names, or keys.
+Return ONLY valid JSON.
+
+JSON to translate:
+${JSON.stringify(obj, null, 2)}`;
+
+  let lastError;
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      const result = await callOpenRouter(prompt);
+      let parsedText = extractJSON(result);
+      const parsed = JSON.parse(parsedText);
+      const mismatch = translationShapeMismatch(obj, parsed);
+      if (mismatch) throw new Error(`shape mismatch — ${mismatch}`);
+      return parsed;
+    } catch (e) {
+      lastError = e;
+      console.warn(`AI translation attempt ${attempt} failed:`, e.message);
+      if (attempt < maxRetries) {
+        await new Promise(r => setTimeout(r, 2000)); // wait 2s before retry
+      }
+    }
+  }
+  throw new Error(`AI returned invalid JSON after ${maxRetries} attempts: ` + lastError.message);
+}
+
+// Статья переводится ПОБЛОЧНО и БЕЗ моделей: каждое текстовое поле уходит в
+// обычный переводчик строк, структура блоков не пересобирается вообще.
+//
+// Раньше блоки пачками по 4 скармливались модели с просьбой вернуть такой же
+// JSON — и это упиралось в дневную квоту (типичная статья на 6 языков стоила
+// 66–78 запросов при лимите 50 в сутки), а заодно требовало сторожа
+// translationShapeMismatch, потому что модель под нагрузкой умела молча
+// проглотить блок или ключ. Здесь терять нечего: цикл идёт по исходным
+// блокам, тип и порядок берутся из оригинала, переводится только текст внутри.
+async function translateArticleEntry(article, targetLang, sourceLang = DEFAULT_LANGUAGE, onProgress = null) {
   const next = deepClone(article);
 
-  next.title = await translateText(article.title, targetLang, sourceLang);
-  next.role = article.role ? await translateText(article.role, targetLang, sourceLang) : article.role;
-  next.date = article.date ? await translateText(article.date, targetLang, sourceLang) : article.date;
-  next.excerpt = await translateText(article.excerpt, targetLang, sourceLang);
-  next.category = await translateText(article.category, targetLang, sourceLang);
-  next.subcategory = article.subcategory ? await translateText(article.subcategory, targetLang, sourceLang) : article.subcategory;
-  next.tags = await translateStringArray(article.tags, targetLang, sourceLang);
+  if (onProgress) onProgress('metadata');
+  for (const field of ['title', 'role', 'excerpt', 'category', 'subcategory']) {
+    if (typeof next[field] === 'string' && next[field].trim()) {
+      next[field] = await translateText(next[field], targetLang, sourceLang);
+    }
+  }
+  if (Array.isArray(next.tags)) {
+    next.tags = await translateStringArray(next.tags, targetLang, sourceLang);
+  }
+  // Дату не трогаем: перевод превращал её в слова на своём языке, и лента
+  // разъезжалась — сортировка живёт на базовой дате (см. data.ts).
 
   const blocks = Array.isArray(article.content) ? article.content : [];
   next.content = [];
-  for (const block of blocks) {
-    next.content.push(await translateArticleBlock(block, targetLang, sourceLang));
+  for (let i = 0; i < blocks.length; i += 1) {
+    if (onProgress) onProgress(`block ${i + 1} of ${blocks.length}`);
+    try {
+      next.content.push(await translateArticleBlock(blocks[i], targetLang, sourceLang));
+    } catch (error) {
+      // Один упавший блок не должен обрушить всю статью: оставляем оригинал.
+      console.warn('[translate] block', i + 1, getErrorMessage(error));
+      next.content.push(deepClone(blocks[i]));
+    }
   }
 
   return next;
 }
 
-async function translateEntryForSection(section, entry, targetLang, sourceLang = DEFAULT_LANGUAGE) {
+async function translateEntryForSection(section, entry, targetLang, sourceLang = DEFAULT_LANGUAGE, onProgress = null) {
   if (section === 'articles') {
-    return translateArticleEntry(entry, targetLang, sourceLang);
+    return translateArticleEntry(entry, targetLang, sourceLang, onProgress);
   }
 
   const next = deepClone(entry);
   if (section === 'items') {
-    next.title = await translateText(entry.title, targetLang, sourceLang);
-    next.subtitle = await translateText(entry.subtitle, targetLang, sourceLang);
-    next.description = await translateText(entry.description, targetLang, sourceLang);
+    for (const field of ['title', 'subtitle', 'description']) {
+      if (typeof next[field] === 'string' && next[field].trim()) {
+        next[field] = await translateText(next[field], targetLang, sourceLang);
+      }
+    }
     return next;
   }
 
   if (section === 'reviews') {
-    next.title = await translateText(entry.title, targetLang, sourceLang);
-    next.subject = await translateText(entry.subject, targetLang, sourceLang);
-    next.category = entry.category ? await translateText(entry.category, targetLang, sourceLang) : entry.category;
-    next.verdict = entry.verdict ? await translateRichText(entry.verdict, targetLang, sourceLang) : entry.verdict;
-    next.meta = entry.meta ? await translateText(entry.meta, targetLang, sourceLang) : entry.meta;
-    next.role = entry.role ? await translateText(entry.role, targetLang, sourceLang) : entry.role;
-    next.pros = await translateStringArray(entry.pros, targetLang, sourceLang);
-    next.cons = await translateStringArray(entry.cons, targetLang, sourceLang);
+    if (onProgress) onProgress('metadata');
+    for (const field of ['title', 'subject', 'category', 'meta', 'role']) {
+      if (typeof next[field] === 'string' && next[field].trim()) {
+        next[field] = await translateText(next[field], targetLang, sourceLang);
+      }
+    }
+    if (typeof next.verdict === 'string' && next.verdict.trim()) {
+      next.verdict = await translateRichText(next.verdict, targetLang, sourceLang);
+    }
+    for (const field of ['pros', 'cons']) {
+      if (Array.isArray(next[field])) next[field] = await translateStringArray(next[field], targetLang, sourceLang);
+    }
+
     if (Array.isArray(entry.content)) {
       next.content = [];
-      for (const block of entry.content) {
-        next.content.push(await translateArticleBlock(block, targetLang, sourceLang));
+      for (let i = 0; i < entry.content.length; i += 1) {
+        if (onProgress) onProgress(`block ${i + 1} of ${entry.content.length}`);
+        try {
+          next.content.push(await translateArticleBlock(entry.content[i], targetLang, sourceLang));
+        } catch (error) {
+          console.warn('[translate] review block', i + 1, getErrorMessage(error));
+          next.content.push(deepClone(entry.content[i]));
+        }
       }
-    } else {
+    } else if (typeof entry.content === 'string' && entry.content.trim()) {
       next.content = await translateRichText(entry.content, targetLang, sourceLang);
     }
     return next;
   }
 
   if (section === 'libraryItems') {
-    next.title = await translateText(entry.title, targetLang, sourceLang);
-    next.type = await translateText(entry.type, targetLang, sourceLang);
+    for (const field of ['title', 'type']) {
+      if (typeof next[field] === 'string' && next[field].trim()) {
+        next[field] = await translateText(next[field], targetLang, sourceLang);
+      }
+    }
     return next;
   }
 
@@ -5001,13 +5546,23 @@ async function translateEntryToAllLanguages(data, section, sourceLang, sourceEnt
   const failures = [];
   const total = targetLangs.length;
 
+  if (options.statusPrefix && total) {
+    setLanguageSyncProgress({ active: true, percent: 0, label: `0/${total}` });
+  }
+
   for (let i = 0; i < targetLangs.length; i += 1) {
     const lang = targetLangs[i];
+    const langPercent = Math.round((i / total) * 100);
     if (options.statusPrefix) {
       setStatus('info', `${options.statusPrefix}: ${i + 1}/${total} ${sourceLang} → ${lang}`);
+      setLanguageSyncProgress({ active: true, percent: langPercent, label: `${lang}: ${i + 1}/${total}` });
     }
+    const onProgress = options.statusPrefix ? (step) => {
+      setStatus('info', `${options.statusPrefix}: ${i + 1}/${total} ${sourceLang} → ${lang} (${step})`);
+      setLanguageSyncProgress({ active: true, percent: langPercent, label: `${lang}: ${step}` });
+    } : null;
     try {
-      const translated = await translateEntryForSection(section, sourceEntry, lang, sourceLang);
+      const translated = await translateEntryForSection(section, sourceEntry, lang, sourceLang, onProgress);
       if (options.saveToServer) {
         await saveEntityToServer(section, lang, translated);
       }
@@ -5020,6 +5575,11 @@ async function translateEntryToAllLanguages(data, section, sourceLang, sourceEnt
         setStatus('info', `${options.statusPrefix}: ${lang} не обновлен – ${message}`);
       }
     }
+  }
+
+  if (options.statusPrefix && total) {
+    setLanguageSyncProgress({ active: false });
+    updateAdminToolbarContext();
   }
 
   updatedLangs.failures = failures;
@@ -5319,7 +5879,7 @@ function resolveBlockImageUrl(src) {
   const s = src.trim();
   if (!s) return '';
   if (/^(https?:)?\/\//i.test(s) || s.startsWith('/') || s.startsWith('./') || s.startsWith('data:')) return s;
-  return 'https://picsum.photos/seed/' + encodeURIComponent(s) + '/400/250?grayscale';
+  return 'https://picsum.photos/seed/' + encodeURIComponent(s) + '/400/250';
 }
 
 function renderBlockBody(block, index) {
@@ -6156,7 +6716,7 @@ async function addVisualEntry() {
     const section = visualSectionSelect.value;
     const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
     const entries = getSectionArray(data, section, lang, lang !== DEFAULT_LANGUAGE);
-    const nextId = getNextEntryId(data, section);
+    const nextId = await getNextEntryIdChecked(data, section);
     let entry = createDefaultEntry(section, nextId);
 
     if (lang !== DEFAULT_LANGUAGE) {
@@ -6164,14 +6724,28 @@ async function addVisualEntry() {
       entry = await translateEntryForSection(section, entry, lang, DEFAULT_LANGUAGE);
     }
 
-    entries.push(entry);
+    // Раздел с ручной раскладкой: без своего `order` новая запись уехала бы в
+    // самый низ (за всеми расставленными). Ставим её первой — как и раньше.
+    if (MANUALLY_ORDERED_SECTIONS.has(section)) {
+      const positions = entries
+        .map((e) => (typeof e?.order === 'number' && Number.isFinite(e.order) ? e.order : null))
+        .filter((value) => value !== null);
+      if (positions.length) entry.order = Math.min(...positions) - 1;
+    }
+
+    entries.unshift(entry);
     setStatus('info', `Создаю языковые версии записи #${nextId}...`);
     const syncedLangs = await syncMissingEntryLanguages(data, section, lang, entry);
+    // The "+" button also creates articles (not just reviews/items/etc.) when
+    // that section is selected — same rule as the blueprint flow: a new
+    // article always gets a homepage card, so it's never invisible on /.
+    const gotCard = section === 'articles' && addGalleryCardForArticleData(data, nextId);
 
     pendingVisualEntryId = nextId;
     setEditorData(data);
     const syncNote = syncedLangs.length ? ` Языки: ${syncedLangs.join(', ')}.` : '';
-    setStatus('success', `Добавлена новая запись #${nextId} (${getSectionLabel(section)} / ${lang}).${syncNote}`);
+    const cardNote = gotCard ? ' Добавлена первой карточкой на главную.' : '';
+    setStatus('success', `Добавлена новая запись #${nextId} (${getSectionLabel(section)} / ${lang}).${syncNote}${cardNote}`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
@@ -6184,15 +6758,55 @@ async function addVisualEntry() {
 // first entry in 'items' is what renders as the featured card. Reviews and
 // Library render in array order too. Previously the only way to change this
 // was to hand-edit the raw JSON — this gives every section an in-UI reorder.
+//
+// Для Галереи и Статей одного порядка массива мало:
+//  • статьи сайт раскладывал по дате, и перестановка тут ничего не меняла;
+//  • перевод хранится отдельным массивом, порядок берётся из базового.
+// Поэтому переставляем ВСЕГДА базовый (EN) массив и проставляем всем записям
+// секции числовой `order` — его сайт и читает (см. byManualOrder в data.ts).
+const MANUALLY_ORDERED_SECTIONS = new Set(['articles', 'items']);
+
+// Тот же порядок, что показывает сайт (data.ts: byManualOrder + newestFirst):
+// сначала расставленные вручную по `order`, следом остальные — статьи свежими
+// сверху, Галерея как лежит в массиве. Пока раздел не трогали кнопками, массив
+// статей и лента на сайте расходятся, и нумерация в списке врала бы.
+function sortEntriesLikeSite(section, entries) {
+  const time = (value) => {
+    const parsed = value ? Date.parse(value) : NaN;
+    return Number.isNaN(parsed) ? 0 : parsed;
+  };
+  const pos = (entry) => (typeof entry?.order === 'number' && Number.isFinite(entry.order)
+    ? entry.order
+    : Number.POSITIVE_INFINITY);
+  const list = section === 'articles'
+    ? [...entries].sort((a, b) => time(b && b.date) - time(a && a.date))
+    : [...entries];
+  return list.sort((a, b) => pos(a) - pos(b));
+}
+
+function renumberSectionOrder(entries) {
+  entries.forEach((entry, index) => {
+    if (entry && typeof entry === 'object') entry.order = index + 1;
+  });
+}
+
 function moveVisualEntry(direction) {
   try {
     const data = parseEditorJson();
     const section = visualSectionSelect.value;
     const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
-    const entries = getSectionArray(data, section, lang, lang !== DEFAULT_LANGUAGE);
+    // Порядок на сайте задаёт базовый массив, каким бы языком ни любовались.
+    const orderLang = MANUALLY_ORDERED_SECTIONS.has(section) ? DEFAULT_LANGUAGE : lang;
+    const entries = getSectionArray(data, section, orderLang, orderLang !== DEFAULT_LANGUAGE);
 
     if (!entries.length) {
       throw new Error('Нет записей для перемещения.');
+    }
+
+    // Первое же перемещение фиксирует раскладку: приводим массив к тому виду,
+    // который читатель уже видит, и дальше двигаем внутри него.
+    if (MANUALLY_ORDERED_SECTIONS.has(section)) {
+      entries.splice(0, entries.length, ...sortEntriesLikeSite(section, entries));
     }
 
     const selectedId = Number(visualEntrySelect.value);
@@ -6208,13 +6822,44 @@ function moveVisualEntry(direction) {
 
     const [moved] = entries.splice(entryIndex, 1);
     entries.splice(targetIndex, 0, moved);
+    if (MANUALLY_ORDERED_SECTIONS.has(section)) renumberSectionOrder(entries);
 
     pendingVisualEntryId = selectedId;
     setEditorData(data);
     const note = section === 'items' && targetIndex === 0
       ? ' Теперь это featured-запись Галереи.'
       : '';
-    setStatus('success', `Запись #${selectedId} перемещена ${direction < 0 ? 'выше' : 'ниже'}.${note}`);
+    const langNote = orderLang !== lang
+      ? ' Порядок общий для всех языков — переставлен базовый список.'
+      : '';
+    setStatus('success', `Запись #${selectedId} перемещена ${direction < 0 ? 'выше' : 'ниже'}: позиция ${targetIndex + 1} из ${entries.length}.${note}${langNote}`);
+  } catch (error) {
+    setStatus('error', getErrorMessage(error));
+  }
+}
+
+// Сброс ручной раскладки: статьи — свежие сверху, Галерея — как лежит в базе.
+// Нужен после того, как порядок перетасовали и захотели вернуть «как было».
+function sortVisualEntriesByDate() {
+  try {
+    const data = parseEditorJson();
+    const section = visualSectionSelect.value;
+    if (!MANUALLY_ORDERED_SECTIONS.has(section)) {
+      throw new Error('Порядком управляют только разделы "Статьи" и "Галерея".');
+    }
+    const entries = getSectionArray(data, section, DEFAULT_LANGUAGE, false);
+    if (!entries.length) throw new Error('Нет записей для сортировки.');
+
+    const time = (value) => {
+      const parsed = value ? Date.parse(value) : NaN;
+      return Number.isNaN(parsed) ? 0 : parsed;
+    };
+    entries.sort((a, b) => time(b && b.date) - time(a && a.date));
+    entries.forEach((entry) => { if (entry && typeof entry === 'object') delete entry.order; });
+
+    pendingVisualEntryId = Number(visualEntrySelect.value) || null;
+    setEditorData(data);
+    setStatus('success', `Порядок сброшен: ${getSectionLabel(section)} — свежие сверху (${entries.length}).`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   }
@@ -6510,6 +7155,15 @@ async function callOpenRouter(prompt) {
 function extractJSON(text) {
   const m = text.match(/```(?:json)?\s*([\s\S]*?)```/);
   if (m) return m[1].trim();
+  const arr = text.match(/\[[\s\S]*\]/);
+  if (arr) {
+    // If it looks like an array and there's an object match, pick whichever starts first to be safe, but usually array is what we want for batches.
+    const obj = text.match(/\{[\s\S]*\}/);
+    if (obj && text.indexOf(obj[0]) < text.indexOf(arr[0])) {
+      return obj[0];
+    }
+    return arr[0];
+  }
   const obj = text.match(/\{[\s\S]*\}/);
   return obj ? obj[0] : text;
 }
@@ -7235,7 +7889,9 @@ const historyTimestampEl = byId('historyTimestamp');
 async function fetchVersionHistory() {
   const pw = getAdminPassword();
   if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
-  const res = await fetch(CONTENT_HISTORY_API, { headers: { 'X-Admin-Password': pw }, cache: 'no-store' });
+  // Список версий открывают чаще всего именно когда что-то уже сломалось —
+  // худший момент для «Failed to fetch» без единой попытки повтора.
+  const res = await fetchNetworkRetry(CONTENT_HISTORY_API, { headers: { 'X-Admin-Password': pw }, cache: 'no-store' });
   const data = await res.json().catch(() => ({}));
   if (!res.ok || !data.ok) throw new Error(data.error || ('VPS вернул статус ' + res.status));
   return data.backups || [];
@@ -7289,21 +7945,30 @@ async function refreshVersionHistory() {
   }
 }
 
+// historyRefreshBtn и кнопки .history-restore-btn не входят в общий список
+// interactiveButtons (создаются заново при каждом рендере списка), поэтому
+// setBusy(true) их не блокирует. Без этого флага быстрый повторный клик —
+// по той же кнопке или по кнопке другой версии, пока первый запрос ещё
+// летит — отправлял бы два restore одновременно.
+let _restoreInFlight = false;
+
 async function restoreVersion(filename, timestamp) {
-  if (!filename) return;
+  if (!filename || _restoreInFlight) return;
   showConfirmModal(
     'Восстановить версию?',
     `Весь документ будет заменён на версию от <strong>${escapeHtml(formatHistoryTimestamp(timestamp))}</strong>. Текущее состояние перед этим будет сохранено как новая резервная копия (само восстановление тоже можно отменить).`,
     'Восстановить'
   ).then(async (confirmed) => {
-    if (!confirmed) return;
+    if (!confirmed || _restoreInFlight) return;
+    _restoreInFlight = true;
+    historyListEl?.querySelectorAll('.history-restore-btn').forEach((btn) => { btn.disabled = true; });
     try {
       setBusy(true);
       const pw = getAdminPassword();
       if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
-      const metaRes = await fetch(CONTENT_META_API, { cache: 'no-store' });
+      const metaRes = await fetchNetworkRetry(CONTENT_META_API, { cache: 'no-store' });
       const meta = await metaRes.json().catch(() => ({}));
-      const res = await fetch(CONTENT_RESTORE_API, {
+      const res = await fetchNetworkRetry(CONTENT_RESTORE_API, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
         body: JSON.stringify({ filename, expectedVersion: meta.version }),
@@ -7318,6 +7983,8 @@ async function restoreVersion(filename, timestamp) {
       setStatus('error', getErrorMessage(error));
     } finally {
       setBusy(false);
+      _restoreInFlight = false;
+      historyListEl?.querySelectorAll('.history-restore-btn').forEach((btn) => { btn.disabled = false; });
     }
   });
 }
@@ -8239,6 +8906,7 @@ function bindStudioRowActions() {
       : 'В галерее пока нет карточек.';
     if (!items.length) {
       list.innerHTML = '<div class="card homepage-gallery-empty"><p>Добавьте первую карточку галереи.</p></div>';
+      renderMissingArticles();
       return;
     }
     list.innerHTML = items.map((item, index) => {
@@ -8269,6 +8937,46 @@ function bindStudioRowActions() {
       button.addEventListener('click', () => moveItem(button.getAttribute('data-home-up'), -1)));
     list.querySelectorAll('[data-home-down]').forEach((button) =>
       button.addEventListener('click', () => moveItem(button.getAttribute('data-home-down'), 1)));
+    renderMissingArticles();
+  }
+
+  function addCardFromArticle(articleId) {
+    // For articles that predate addGalleryCardForArticleData (top of file) —
+    // new ones get this automatically now, this button stays for backfill.
+    const data = readContent();
+    if (!data) { showToast?.('error', 'Сначала загрузите контент.'); return; }
+    if (!addGalleryCardForArticleData(data, articleId)) {
+      showToast?.('error', 'Статья не найдена.');
+      return;
+    }
+
+    setEditorData(data);
+    renderHomepageTab();
+    showToast?.('success', 'Карточка добавлена первой — она стала главным материалом. Порядок меняется стрелками, затем «Опубликовать».');
+  }
+
+  function renderMissingArticles() {
+    const box = document.getElementById('homepageMissingArticles');
+    if (!box) return;
+    const data = readContent();
+    if (!data) { box.innerHTML = ''; return; }
+    const missing = getArticlesMissingHomepageCard(data);
+    if (!missing.length) {
+      box.innerHTML = '<p class="form-hint">Все статьи представлены на главной.</p>';
+      return;
+    }
+    box.innerHTML = `
+      <div class="card homepage-missing-card">
+        <p class="card-desc"><strong>${missing.length}</strong> ${missing.length === 1 ? 'статья ещё не показана' : 'статей ещё не показано'} в галерее главной. Нажмите, чтобы собрать карточку из статьи.</p>
+        <div class="homepage-missing-list">
+          ${missing.map((article) => `
+            <button class="btn btn-sm" type="button" data-home-from-article="${esc(article.id)}">
+              ＋ ${esc(article.title || ('#' + article.id))}
+            </button>`).join('')}
+        </div>
+      </div>`;
+    box.querySelectorAll('[data-home-from-article]').forEach((button) =>
+      button.addEventListener('click', () => addCardFromArticle(button.getAttribute('data-home-from-article'))));
   }
 
   async function publishHomepage() {
@@ -8300,6 +9008,16 @@ function bindStudioRowActions() {
     setTimeout(() => addEntryBtn?.click(), 80);
   });
   document.getElementById('homepagePublishBtn')?.addEventListener('click', publishHomepage);
+  document.getElementById('homepageFromArticleBtn')?.addEventListener('click', () => {
+    const data = readContent();
+    if (!data) { showToast?.('error', 'Сначала загрузите контент.'); return; }
+    const missing = getArticlesMissingHomepageCard(data);
+    if (!missing.length) { showToast?.('success', 'Все статьи уже есть на главной.'); return; }
+    if (missing.length === 1) { addCardFromArticle(missing[0].id); return; }
+    renderMissingArticles();
+    document.getElementById('homepageMissingArticles')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    showToast?.('info', 'Выберите статью в списке ниже.');
+  });
   window._renderHomepageTab = renderHomepageTab;
 })();
 
@@ -8514,7 +9232,7 @@ function bindStudioRowActions() {
     const btn = document.getElementById('authorsApplyBtn');
     if (btn) { btn.disabled = true; btn.textContent = 'Публикую…'; }
     try {
-      const res = await fetch(CONTENT_API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw }, body: editor.value });
+      const res = await fetchNetworkRetry(CONTENT_API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw }, body: editor.value });
       const d = await res.json().catch(() => ({}));
       if (!res.ok || !d.ok) throw new Error(d.error || ('VPS вернул ' + res.status));
       if (typeof setLastSyncedSnapshotFromText === 'function') setLastSyncedSnapshotFromText(editor.value);
@@ -10488,8 +11206,8 @@ async function autoSyncVisualToEditor() {
         next = {
           ...next,
           title: getFieldValue('vf-title').trim(),
-          subject: getFieldValue('vf-subject').trim(),
-          content: getFieldValue('vf-content').trim()
+          subject: getFieldValue('vf-subject').trim()
+          // NOTE: content is managed by the WYSIWYG review canvas, not the classic form
         };
     } else if (section === 'libraryItems') {
         next = {
@@ -11090,7 +11808,7 @@ async function flushModernEditor() {
       st.textContent = 'Публикую сайт…'; st.style.color = 'var(--text-muted)';
       const pw = (typeof getAdminPassword === 'function') ? getAdminPassword() : '';
       if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
-      const res = await fetch(CONTENT_API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw }, body: JSON.stringify(j) });
+      const res = await fetchNetworkRetry(CONTENT_API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw }, body: JSON.stringify(j) });
       const d = await res.json().catch(() => ({}));
       if (!res.ok || !d.ok) throw new Error(d.error || ('VPS вернул ' + res.status));
       if (typeof setLastSyncedSnapshotFromText === 'function') setLastSyncedSnapshotFromText($('editor').value);
@@ -11410,12 +12128,14 @@ async function flushModernEditor() {
   const ICON_DOWN   = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>';
   const ICON_REPEAT = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>';
   const ICON_TRASH  = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>';
+  const ICON_DUP    = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>';
   const ICON_GRIP   = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>';
 
   function blockControls(i) {
     return `<div class="wys-bc">
       <button class="wys-bc-btn" data-wys-act="up"   data-i="${i}" title="Вверх">${ICON_UP}</button>
       <button class="wys-bc-btn" data-wys-act="down" data-i="${i}" title="Вниз">${ICON_DOWN}</button>
+      <button class="wys-bc-btn" data-wys-act="dup"  data-i="${i}" title="Дублировать блок">${ICON_DUP}</button>
       <button class="wys-bc-btn" data-wys-act="type" data-i="${i}" title="Сменить тип блока">${ICON_REPEAT}</button>
       <button class="wys-bc-btn danger" data-wys-act="del" data-i="${i}" title="Удалить блок">${ICON_TRASH}</button>
     </div>
@@ -11797,6 +12517,12 @@ async function flushModernEditor() {
     if (a === 'type') return openTypeMenu(act, (type) => { changeBlockType(i, type); render(); commit(); });
     if (a === 'up')   { if (i > 0) { swap(i, i - 1); _galSelected.clear(); render(); commit(); } return; }
     if (a === 'down') { if (i < _model.content.length - 1) { swap(i, i + 1); _galSelected.clear(); render(); commit(); } return; }
+    if (a === 'dup')  {
+      const clone = JSON.parse(JSON.stringify(_model.content[i]));
+      _model.content.splice(i + 1, 0, clone);
+      _galSelected.clear(); render(); commit(); focusBlock(i + 1);
+      return;
+    }
     if (a === 'del')  { _model.content.splice(i, 1); _galSelected.clear(); render(); commit(); return; }
     if (a === 'tag-add') { const t = prompt('Новый тег:'); if (t && t.trim()) { _model.tags = _model.tags || []; _model.tags.push(t.trim()); render(); commit(); } return; }
     if (a === 'tag-del') { _model.tags.splice(i, 1); render(); commit(); return; }
@@ -14202,3 +14928,193 @@ async function flushModernEditor() {
 
   render();
 })();
+
+/* ─── Витрина: заявки «Submit work» ──────────────────────────────────────────
+   До этого присланную работу можно было увидеть только зайдя на сервер и
+   запустив review.js. Заявка лежала в очереди, и никто о ней не знал.
+
+   Токен приходит из /token тем же путём, что и радийный, и только админу:
+   у редактора его нет, а без него раздел даже не покажется. */
+const SHOWCASE_API = 'https://api.eprisjournal.com/showcase';
+const SHOWCASE_TOKEN_KEY = 'epris_showcase_token';
+
+function applyShowcaseToken(token) {
+  if (!token) return;
+  try { localStorage.setItem(SHOWCASE_TOKEN_KEY, token); } catch { /* */ }
+}
+function showcaseToken() {
+  try { return localStorage.getItem(SHOWCASE_TOKEN_KEY) || ''; } catch { return ''; }
+}
+
+const SHOWCASE_STATUS_LABEL = {
+  'Under review': 'На модерации',
+  Published: 'На сайте',
+  Archived: 'В архиве',
+};
+const SHOWCASE_ENQUIRY_STATUS_LABEL = {
+  New: 'Новая',
+  Contacted: 'Контакт установлен',
+  'In progress': 'В работе',
+  Won: 'Взяли в проект',
+  Lost: 'Не подошло',
+  Archived: 'Архив',
+};
+
+function showcaseCard(work) {
+  const photo = (work.images || [])[0]?.url || '';
+  const place = [work.venue, work.city, work.country].filter(Boolean).join(' · ');
+  const meta = [work.discipline, work.year].filter(Boolean).join(' · ');
+  // holdReason — причина, по которой сборщик не смог атрибутировать работу
+  // сам. Это самое полезное, что редактор может увидеть перед решением.
+  const hold = work.holdReason
+    ? `<p style="margin:8px 0 0;color:#b8860b;font-size:12px">⚠ ${escapeHtml(work.holdReason)}</p>`
+    : '';
+  return `
+    <article style="display:flex;gap:16px;align-items:flex-start;margin-bottom:12px;padding:14px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.72)">
+      ${photo ? `<img src="${escapeHtml(photo)}" alt="" style="width:120px;height:150px;object-fit:cover;flex:none;background:#eee">` : ''}
+      <div style="flex:1;min-width:0">
+        <p class="card-desc" style="margin:0">${escapeHtml(SHOWCASE_STATUS_LABEL[work.status] || work.status)}${meta ? ' · ' + escapeHtml(meta) : ''}</p>
+        <h3 style="margin:6px 0 2px;font-size:16px">${escapeHtml(work.title || '—')}</h3>
+        <p style="margin:0;font-size:14px">${escapeHtml(work.author || 'автор не указан')}</p>
+        ${place ? `<p class="card-desc" style="margin:4px 0 0">${escapeHtml(place)}</p>` : ''}
+        ${work.statement ? `<p style="margin:8px 0 0;font-size:13px;line-height:1.5;opacity:.8">${escapeHtml(work.statement.slice(0, 260))}</p>` : ''}
+        ${hold}
+        <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+          ${work.status !== 'Published' ? `<button class="btn btn-primary" data-showcase-act="Published" data-showcase-id="${escapeHtml(work.id)}" type="button">Опубликовать</button>` : ''}
+          ${work.status !== 'Archived' ? `<button class="btn" data-showcase-act="Archived" data-showcase-id="${escapeHtml(work.id)}" type="button">В архив</button>` : ''}
+          ${work.status !== 'Under review' ? `<button class="btn" data-showcase-act="Under review" data-showcase-id="${escapeHtml(work.id)}" type="button">Вернуть в очередь</button>` : ''}
+          ${work.sourceUrl ? `<a class="btn" href="${escapeHtml(work.sourceUrl)}" target="_blank" rel="noreferrer">Источник</a>` : ''}
+        </div>
+      </div>
+    </article>`;
+}
+
+function showcaseEnquiryCard(enquiry) {
+  const details = [
+    enquiry.organisation,
+    enquiry.kind,
+    enquiry.place,
+    enquiry.when,
+    enquiry.budget,
+  ].filter(Boolean).join(' · ');
+  const contactHref = String(enquiry.contact || '').includes('@')
+    ? `mailto:${enquiry.contact}`
+    : (String(enquiry.contact || '').startsWith('http') ? enquiry.contact : '');
+  const status = SHOWCASE_ENQUIRY_STATUS_LABEL[enquiry.status] || enquiry.status || 'Новая';
+  return `
+    <article style="margin-bottom:12px;padding:14px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.72)">
+      <p class="card-desc" style="margin:0">${escapeHtml(status)}${enquiry.addedAt ? ' · ' + escapeHtml(new Date(enquiry.addedAt).toLocaleDateString('ru-RU')) : ''}</p>
+      <h3 style="margin:6px 0 2px;font-size:16px">${escapeHtml(enquiry.name || '—')}</h3>
+      ${details ? `<p class="card-desc" style="margin:4px 0 0">${escapeHtml(details)}</p>` : ''}
+      ${enquiry.contact ? `<p style="margin:8px 0 0;font-size:13px">${contactHref ? `<a href="${escapeHtml(contactHref)}">${escapeHtml(enquiry.contact)}</a>` : escapeHtml(enquiry.contact)}</p>` : ''}
+      ${enquiry.brief ? `<p style="margin:8px 0 0;font-size:13px;line-height:1.5;opacity:.84">${escapeHtml(enquiry.brief.slice(0, 420))}</p>` : ''}
+      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+        ${enquiry.status !== 'Contacted' ? `<button class="btn btn-primary" data-showcase-enquiry-act="Contacted" data-showcase-enquiry-id="${escapeHtml(enquiry.id)}" type="button">Связались</button>` : ''}
+        ${enquiry.status !== 'In progress' ? `<button class="btn" data-showcase-enquiry-act="In progress" data-showcase-enquiry-id="${escapeHtml(enquiry.id)}" type="button">В работу</button>` : ''}
+        ${enquiry.status !== 'Won' ? `<button class="btn" data-showcase-enquiry-act="Won" data-showcase-enquiry-id="${escapeHtml(enquiry.id)}" type="button">В проект</button>` : ''}
+        ${enquiry.status !== 'Lost' ? `<button class="btn" data-showcase-enquiry-act="Lost" data-showcase-enquiry-id="${escapeHtml(enquiry.id)}" type="button">Не подходит</button>` : ''}
+        ${enquiry.status !== 'Archived' ? `<button class="btn" data-showcase-enquiry-act="Archived" data-showcase-enquiry-id="${escapeHtml(enquiry.id)}" type="button">Архив</button>` : ''}
+      </div>
+    </article>`;
+}
+
+async function loadShowcaseQueue() {
+  const box = byId('showcaseQueue');
+  const status = byId('showcaseStatus');
+  if (!box) return;
+  const token = showcaseToken();
+  if (!token) {
+    status.textContent = 'Нет ключа витрины — войдите заново как админ.';
+    box.innerHTML = '';
+    return;
+  }
+  status.textContent = 'Загрузка…';
+  try {
+    const res = await fetch(`${SHOWCASE_API}/works?status=all`, { headers: { 'X-Showcase-Token': token }, cache: 'no-store' });
+    if (!res.ok) throw new Error(`сервер ответил ${res.status}`);
+    const data = await res.json();
+    const works = data.works || [];
+    // Очередь вперёд: это то, ради чего сюда заходят.
+    const order = { 'Under review': 0, Published: 1, Archived: 2 };
+    works.sort((a, b) => (order[a.status] ?? 3) - (order[b.status] ?? 3) || String(b.addedAt || '').localeCompare(String(a.addedAt || '')));
+    const queued = works.filter((w) => w.status === 'Under review').length;
+    status.textContent = `${queued} в очереди · ${works.filter((w) => w.status === 'Published').length} на сайте · ${works.filter((w) => w.status === 'Archived').length} в архиве`;
+    box.innerHTML = works.length ? works.map(showcaseCard).join('') : '<p class="card-desc">Пока пусто.</p>';
+  } catch (error) {
+    status.textContent = `Не удалось загрузить: ${error.message}`;
+    box.innerHTML = '';
+  }
+}
+
+async function loadShowcaseEnquiries() {
+  const box = byId('showcaseEnquiries');
+  const status = byId('showcaseEnquiryStatus');
+  if (!box) return;
+  const token = showcaseToken();
+  if (!token) {
+    status.textContent = 'Нет ключа бюро — войдите заново как админ.';
+    box.innerHTML = '';
+    return;
+  }
+  status.textContent = 'Загрузка…';
+  try {
+    const res = await fetch(`${SHOWCASE_API}/enquiries`, { headers: { 'X-Showcase-Token': token }, cache: 'no-store' });
+    if (!res.ok) throw new Error(`сервер ответил ${res.status}`);
+    const data = await res.json();
+    const enquiries = data.enquiries || [];
+    const order = { New: 0, Contacted: 1, 'In progress': 2, Won: 3, Lost: 4, Archived: 5 };
+    enquiries.sort((a, b) => (order[a.status] ?? 6) - (order[b.status] ?? 6) || String(b.addedAt || '').localeCompare(String(a.addedAt || '')));
+    const active = enquiries.filter((item) => !['Won', 'Lost', 'Archived'].includes(item.status)).length;
+    status.textContent = `${active} активных · ${enquiries.filter((item) => item.status === 'Won').length} в проекте · ${enquiries.filter((item) => item.status === 'Archived').length} в архиве`;
+    box.innerHTML = enquiries.length ? enquiries.map(showcaseEnquiryCard).join('') : '<p class="card-desc">Пока пусто.</p>';
+  } catch (error) {
+    status.textContent = `Не удалось загрузить: ${error.message}`;
+    box.innerHTML = '';
+  }
+}
+
+async function loadShowcaseAdmin() {
+  await Promise.all([loadShowcaseQueue(), loadShowcaseEnquiries()]);
+}
+
+async function showcaseSetStatus(id, next) {
+  const token = showcaseToken();
+  if (!token) return;
+  const res = await fetch(`${SHOWCASE_API}/works/${encodeURIComponent(id)}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', 'X-Showcase-Token': token },
+    body: JSON.stringify({ status: next }),
+  });
+  if (!res.ok) {
+    const detail = await res.text();
+    alert(`Не получилось: ${res.status} ${detail.slice(0, 120)}`);
+    return;
+  }
+  await loadShowcaseQueue();
+}
+
+async function showcaseSetEnquiryStatus(id, next) {
+  const token = showcaseToken();
+  if (!token) return;
+  const res = await fetch(`${SHOWCASE_API}/enquiries/${encodeURIComponent(id)}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', 'X-Showcase-Token': token },
+    body: JSON.stringify({ status: next }),
+  });
+  if (!res.ok) {
+    const detail = await res.text();
+    alert(`Не получилось: ${res.status} ${detail.slice(0, 120)}`);
+    return;
+  }
+  await loadShowcaseEnquiries();
+}
+
+document.addEventListener('click', (event) => {
+  const btn = event.target.closest('[data-showcase-act]');
+  if (btn) { showcaseSetStatus(btn.dataset.showcaseId, btn.dataset.showcaseAct); return; }
+  const enquiryBtn = event.target.closest('[data-showcase-enquiry-act]');
+  if (enquiryBtn) { showcaseSetEnquiryStatus(enquiryBtn.dataset.showcaseEnquiryId, enquiryBtn.dataset.showcaseEnquiryAct); return; }
+  if (event.target.closest('#showcaseReloadBtn')) loadShowcaseAdmin();
+  const tab = event.target.closest('.tab-btn[data-tab="showcase"]');
+  if (tab) loadShowcaseAdmin();
+});

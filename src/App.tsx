@@ -11,6 +11,10 @@ const PodcastsPage = lazy(() => import('./pages/PodcastsPage').then((m) => ({ de
 const PassportPage = lazy(() => import('./pages/passport/PassportPage').then((m) => ({ default: m.PassportPage })));
 const DesignPage = lazy(() => import('./design/DesignPage').then((m) => ({ default: m.DesignPage })));
 const CollaborationPage = lazy(() => import('./pages/CollaborationPage').then((m) => ({ default: m.CollaborationPage })));
+const ShowcasePage = lazy(() => import('./showcase/ShowcasePage').then((m) => ({ default: m.ShowcasePage })));
+const BureauPage = lazy(() => import('./showcase/BureauPage').then((m) => ({ default: m.BureauPage })));
+const ShowcaseTeaser = lazy(() => import('./showcase/ShowcaseTeaser').then((m) => ({ default: m.ShowcaseTeaser })));
+const StagePage = lazy(() => import('./stage/StagePage').then((m) => ({ default: m.StagePage })));
 import {
   Article,
   Author,
@@ -20,6 +24,7 @@ import {
   getAuthors,
   getManifest,
   getContentForLanguage,
+  getGalleryArticleLinks,
   getIssueArchive,
   getStudio,
   resolveAuthor,
@@ -171,9 +176,29 @@ function GalleryItemView({ item, onClose, articles, onReadArticle }: { item: Ite
   );
 }
 
+// UI strings introduced in code, before the editable translation table on the
+// server has an entry for them. Content (site-content.json) is owned by the VPS
+// and re-snapshotted nightly, so a key added to the repo copy would be
+// overwritten; shipping the fallback here keeps new labels translated in every
+// locale until an editor overrides them in the admin.
+const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
+  'reviews.read': { EN: 'Read', RU: 'Читать', UA: 'Читати', DE: 'Lesen', IT: 'Leggi', ES: 'Leer', TR: 'Oku' },
+  'video.openVideo': { EN: 'Open video', RU: 'Открыть видео', UA: 'Відкрити відео', DE: 'Video öffnen', IT: 'Apri video', ES: 'Abrir vídeo', TR: 'Videoyu aç' },
+  'lang.title': { EN: 'Language', RU: 'Язык', UA: 'Мова', DE: 'Sprache', IT: 'Lingua', ES: 'Idioma', TR: 'Dil' },
+  'lang.chooseEdition': { EN: 'Choose edition', RU: 'Выберите версию', UA: 'Виберіть версію', DE: 'Ausgabe wählen', IT: 'Scegli edizione', ES: 'Elegir edición', TR: 'Baskı seç' },
+  'article.notFound': { EN: 'Article not found', RU: 'Статья не найдена', UA: 'Статтю не знайдено', DE: 'Artikel nicht gefunden', IT: 'Articolo non trovato', ES: 'Artículo no encontrado', TR: 'Makale bulunamadı' },
+  'article.notFound.body': { EN: 'This link may be broken, or the article has moved.', RU: 'Ссылка могла устареть, либо статья была перемещена.', UA: 'Посилання могло застаріти, або статтю було переміщено.', DE: 'Dieser Link ist möglicherweise defekt oder der Artikel wurde verschoben.', IT: 'Questo link potrebbe essere non valido o l\'articolo è stato spostato.', ES: 'Este enlace puede estar roto o el artículo se ha movido.', TR: 'Bu bağlantı bozuk olabilir veya makale taşınmış olabilir.' },
+  'article.backToArticles': { EN: 'Back to Articles', RU: 'Назад к статьям', UA: 'Назад до статей', DE: 'Zurück zu Artikeln', IT: 'Torna agli articoli', ES: 'Volver a artículos', TR: 'Makalelere dön' },
+  'article.related': { EN: 'Read also', RU: 'Читать также', UA: 'Читати також', DE: 'Auch lesen', IT: 'Leggi anche', ES: 'Leer también', TR: 'Ayrıca okuyun' },
+};
+
 function getTranslation(lang: string, key: string) {
   const tr = getTranslations();
-  return tr[lang]?.[key] || tr[DEFAULT_LANGUAGE]?.[key] || key;
+  return tr[lang]?.[key]
+    || tr[DEFAULT_LANGUAGE]?.[key]
+    || UI_STRING_FALLBACK[key]?.[lang]
+    || UI_STRING_FALLBACK[key]?.[DEFAULT_LANGUAGE]
+    || key;
 }
 
 function isCustomMediaReference(value: string): boolean {
@@ -190,7 +215,7 @@ function resolveMediaSource(value: string | undefined, width: number, height: nu
     return normalized;
   }
 
-  return `https://picsum.photos/seed/${encodeURIComponent(normalized)}/${width}/${height}?grayscale`;
+  return `https://picsum.photos/seed/${encodeURIComponent(normalized)}/${width}/${height}`;
 }
 
 // Pixel-heart silhouette for the 'mosaic' content block — each 'X' becomes one photo tile.
@@ -213,6 +238,10 @@ const HEART_CELLS: [number, number][] = HEART_PATTERN.flatMap((row, r) =>
 // its text. Anchors keep a safe href only. Rebuilding the tree (rather than
 // regex-stripping) is what makes it XSS-safe.
 const RICH_ALLOWED_TAGS = new Set(['B', 'STRONG', 'I', 'EM', 'U', 'S', 'MARK', 'CODE', 'BR', 'A', 'SPAN', 'P', 'H2', 'H3', 'H4', 'UL', 'OL', 'LI', 'HR', 'BLOCKQUOTE']);
+// Editorial layout classes an article body may ask for. A closed list, because
+// the alternative — passing `class` through — would let stored content reach
+// into the app's own stylesheet. Anything not named here is dropped silently.
+const RICH_ALLOWED_CLASSES = new Set(['stats', 'stat-figure', 'stat-label', 'kicker', 'dek', 'sources']);
 function escapeTextNode(s: string): string {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
@@ -246,6 +275,8 @@ function sanitizeRichText(html: string): string {
               attrs = ` href="${href.replace(/"/g, '&quot;')}" target="_blank" rel="noopener noreferrer"`;
             }
           }
+          const kept = (el.getAttribute('class') || '').split(/\s+/).filter((c) => RICH_ALLOWED_CLASSES.has(c));
+          if (kept.length) attrs += ` class="${kept.join(' ')}"`;
           const t = tag.toLowerCase();
           out += `<${t}${attrs}>${walk(el)}</${t}>`;
         } else {
@@ -337,7 +368,7 @@ function safeExternalUrl(value?: string): string | null {
 
 // Privacy-friendly click-to-play embeds for YouTube/Vimeo. Direct MP4/WebM
 // stays native, so it is fast, accessible and never needs a third-party player.
-function VideoBlock({ content, caption, poster, credit, sourceUrl }: { content: string; caption?: string; poster?: string; credit?: string; sourceUrl?: string }) {
+function VideoBlock({ content, caption, poster, credit, sourceUrl, t }: { content: string; caption?: string; poster?: string; credit?: string; sourceUrl?: string; t: (key: string) => string }) {
   const [playing, setPlaying] = useState(false);
   const ytId = extractYouTubeId(content);
   const vimeoId = extractVimeoId(content);
@@ -347,7 +378,8 @@ function VideoBlock({ content, caption, poster, credit, sourceUrl }: { content: 
     : vimeoId
       ? `https://player.vimeo.com/video/${vimeoId}?autoplay=1&dnt=1`
       : null;
-  const provider = ytId ? 'YouTube' : vimeoId ? 'Vimeo' : directVideo ? 'Video' : 'Open video';
+  const openVideoLabel = t('video.openVideo');
+  const provider = ytId ? 'YouTube' : vimeoId ? 'Vimeo' : directVideo ? 'Video' : openVideoLabel;
   const cleanSource = safeExternalUrl(sourceUrl);
 
   return (
@@ -393,10 +425,10 @@ function VideoBlock({ content, caption, poster, credit, sourceUrl }: { content: 
               target="_blank"
               rel="noopener noreferrer"
               className="w-full h-full relative flex flex-col gap-3 items-center justify-center text-white hover:bg-white/10 transition-colors"
-              aria-label={caption || 'Open video'}
+              aria-label={caption || openVideoLabel}
             >
               <ExternalLink size={28} />
-              <span className="font-mono text-[10px] uppercase tracking-[0.16em]">Open video</span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.16em]">{openVideoLabel}</span>
             </a>
           )
         )}
@@ -686,7 +718,7 @@ function NavBar({
         <LayoutGroup id="nav-tabs">
           <div
             className="grid flex-1 divide-x divide-[var(--c-accent)]"
-            style={{ gridTemplateColumns: `repeat(${Math.max(tabs.length, 1)}, minmax(0, 1fr))` }}
+            style={{ gridTemplateColumns: `repeat(${Math.max(tabs.length + 1, 2)}, minmax(0, 1fr))` }}
           >
             {tabs.map((tab) => (
               <button
@@ -708,6 +740,14 @@ function NavBar({
                 )}
               </button>
             ))}
+            {/* Ссылка, а не вкладка: /showcase — собственный маршрут вне
+                управляемого набора секций, поэтому и переход обычный. */}
+            <a
+              href="/showcase"
+              className="relative flex flex-col items-center justify-center group h-full overflow-hidden text-[var(--c-accent)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.08)] transition-colors duration-200"
+            >
+              <span className="font-bold relative z-10">Showcase</span>
+            </a>
           </div>
         </LayoutGroup>
 
@@ -786,8 +826,8 @@ function NavBar({
               <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-[rgb(var(--c-accent-rgb)_/_0.22)]" aria-hidden="true" />
               <div className="flex items-center justify-between gap-4 px-1 pb-3">
                 <div>
-                  <p className="font-serif text-xl leading-tight">Language</p>
-                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.16em] opacity-55">Choose edition</p>
+                  <p className="font-serif text-xl leading-tight">{t('lang.title')}</p>
+                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.16em] opacity-55">{t('lang.chooseEdition')}</p>
                 </div>
                 <button
                   type="button"
@@ -921,6 +961,17 @@ function NavBar({
                   <span className="font-serif font-normal text-xl leading-tight">{tab.label}</span>
                 </motion.button>
               ))}
+              <motion.a
+                href="/showcase"
+                variants={{
+                  hidden: { opacity: 0, x: -14 },
+                  show: { opacity: 1, x: 0, transition: { duration: 0.22, ease: EASE } },
+                }}
+                onClick={() => setIsMenuOpen(false)}
+                className="min-h-[64px] px-6 py-4 flex items-center justify-between text-left transition-colors active:scale-[0.99]"
+              >
+                <span className="font-serif font-normal text-xl leading-tight">Showcase</span>
+              </motion.a>
             </motion.div>
             
             <div className="mt-auto border-t border-[var(--c-accent)]">
@@ -1640,7 +1691,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
               <img
                 src={resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143)}
                 alt={article.title}
-                className="w-full h-full object-cover grayscale"
+                className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -1696,7 +1747,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                   return (
                     <Tag
                       key={index}
-                      className={`font-bold text-[var(--c-accent)] mt-10 mb-4 ${lvl === 3 ? 'text-xl sm:text-2xl' : 'text-2xl sm:text-3xl'}`}
+                      className={`rich-text font-bold text-[var(--c-accent)] mt-10 mb-4 ${lvl === 3 ? 'text-xl sm:text-2xl' : 'text-2xl sm:text-3xl'}`}
                       style={{ fontFamily: "var(--font-display)" }}
                       dangerouslySetInnerHTML={{ __html: sanitizeRichText(block.content) }}
                     />
@@ -1734,7 +1785,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                       <img
                         src={imageSource}
                         alt={imageAlt}
-                        className="w-full h-auto grayscale cursor-pointer hover:opacity-90 transition-opacity"
+                        className="w-full h-auto cursor-pointer hover:opacity-90 transition-opacity"
                         referrerPolicy="no-referrer"
                         onClick={() => onImageClick(imageSource, imageAlt)}
                       />
@@ -1763,7 +1814,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                             title={block.content}
                             width="100%"
                             height="100%"
-                            style={{ border: 0, filter: 'grayscale(100%) contrast(1.1)' }}
+                            style={{ border: 0 }}
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
                             src={`https://www.openstreetmap.org/export/embed.html?bbox=${lng - 0.02}%2C${lat - 0.01}%2C${lng + 0.02}%2C${lat + 0.01}&layer=mapnik&marker=${lat}%2C${lng}`}
@@ -1797,7 +1848,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                   );
                 }
                 case 'video':
-                  return <VideoBlock key={index} content={typeof block.content === 'string' ? block.content : ''} caption={block.caption} poster={block.poster} credit={block.credit} sourceUrl={block.sourceUrl} />;
+                  return <VideoBlock key={index} content={typeof block.content === 'string' ? block.content : ''} caption={block.caption} poster={block.poster} credit={block.credit} sourceUrl={block.sourceUrl} t={t} />;
                 case 'audio':
                   return (
                     <figure key={index} className="my-8 sm:my-12 p-4 sm:p-6 bg-[#E8DED5] border border-[rgb(var(--c-accent-rgb)_/_0.2)] flex items-center gap-3 sm:gap-4">
@@ -1834,7 +1885,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                                   <img
                                     src={gallerySource}
                                     alt={altText}
-                                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                                    className="w-full h-full object-cover transition-all duration-500"
                                     referrerPolicy="no-referrer"
                                   />
                                 </div>
@@ -1879,7 +1930,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                               <img
                                 src={tileSource}
                                 alt=""
-                                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                                className="w-full h-full object-cover transition-all duration-500"
                                 referrerPolicy="no-referrer"
                               />
                             </div>
@@ -1999,7 +2050,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
           {related.length > 0 && (
             <section className="mt-12 sm:mt-20 pt-10 sm:pt-14 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)]">
               <h2 className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-8">
-                {t('article.related') === 'article.related' ? (currentLang === 'RU' ? 'Читать также' : 'Read also') : t('article.related')}
+                {t('article.related')}
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
                 {related.map((rel) => (
@@ -2015,7 +2066,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                         alt={rel.title}
                         loading="lazy"
                         referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
                       />
                     </div>
                     <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--c-gold)] mb-2">{rel.category}</p>
@@ -2042,6 +2093,10 @@ function ArticlesSection({
   t: (key: string) => string;
   brandName: string;
 }) {
+  // Список уже отсортирован по дате (новые первыми) в getContentForLanguage.
+  // Здесь раньше стоял reverse(): он подменял сортировку, пока порядок брался
+  // из массива как есть, — а поверх настоящей сортировки переворачивал ленту
+  // и уводил свежие статьи в конец.
   const filteredArticles = articles;
 
   return (
@@ -2128,7 +2183,7 @@ function ArticlesSection({
                   {article.excerpt}
                 </p>
                 <span className="mt-auto inline-flex items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
-                  read
+                  {t('reviews.read')}
                 </span>
               </div>
             </motion.article>
@@ -2173,13 +2228,49 @@ function ProsCons({ pros, cons, t }: { pros?: string[]; cons?: string[]; t: (key
   );
 }
 
+// The review editor's "Structure" button appends a skeleton of section headers
+// with prompt text underneath ("FIRST IMPRESSION" / "What stays with you after
+// the first encounter?"). It is a writing aid, not content: on Le Dauphine it
+// was pressed twice and never filled in, so readers got eight lines of editor
+// instructions. A prompt still verbatim means that section was never written —
+// drop the header with it. Once an editor replaces the prompt, both stay.
+const REVIEW_SCAFFOLD_PROMPTS: Record<string, string> = {
+  'FIRST IMPRESSION': 'What stays with you after the first encounter?',
+  'DETAILS THAT MATTER': 'Describe the material, rhythm, service or object in concrete terms.',
+  'IN CONTEXT': 'Place the subject in its cultural or local context.',
+  'WHO IT IS FOR': 'A concise editorial recommendation.',
+};
+
+const norm = (value: unknown) => typeof value === 'string' ? value.trim().replace(/\s+/g, ' ') : '';
+
+function stripUnfilledScaffold(blocks: ContentBlock[]): ContentBlock[] {
+  const skip = new Set<number>();
+  blocks.forEach((block, i) => {
+    if (block.type !== 'header') return;
+    const prompt = REVIEW_SCAFFOLD_PROMPTS[norm(block.content).toUpperCase()];
+    if (!prompt) return;
+    const next = blocks[i + 1];
+    // A scaffold header on its own (nothing after it, or another header) is
+    // just as unwritten as one still carrying its prompt.
+    if (!next || next.type === 'header') { skip.add(i); return; }
+    if (next.type === 'text' && norm(next.content).toLowerCase() === prompt.toLowerCase()) {
+      skip.add(i);
+      skip.add(i + 1);
+    }
+  });
+  return skip.size ? blocks.filter((_, i) => !skip.has(i)) : blocks;
+}
+
+const reviewBlocks = (content: Review['content']): ContentBlock[] =>
+  Array.isArray(content) ? stripUnfilledScaffold(content) : [];
+
 const reviewPlainText = (content: Review['content']) => typeof content === 'string'
   ? content
-  : content.map(block => typeof block.content === 'string' ? block.content : block.type === 'checklist' && !Array.isArray(block.content) && 'items' in block.content ? block.content.items.join(' ') : '').filter(Boolean).join(' ');
+  : reviewBlocks(content).map(block => typeof block.content === 'string' ? block.content : block.type === 'checklist' && !Array.isArray(block.content) && 'items' in block.content ? block.content.items.join(' ') : '').filter(Boolean).join(' ');
 
 function ReviewBody({ content }: { content: Review['content'] }) {
   if (typeof content === 'string') return <p className="font-serif text-lg leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)] whitespace-pre-line">{content}</p>;
-  return <div className="space-y-7 sm:space-y-10">{content.map((block, index) => {
+  return <div className="space-y-7 sm:space-y-10">{reviewBlocks(content).map((block, index) => {
     const text = typeof block.content === 'string' ? block.content : '';
     if (block.type === 'header' && text) return <h2 key={index} className="font-serif text-3xl sm:text-4xl leading-tight">{text}</h2>;
     if (block.type === 'quote' && text) return <blockquote key={index} className="border-l-2 border-[var(--c-gold)] pl-5 font-serif text-2xl italic leading-snug">{text}</blockquote>;
@@ -2267,7 +2358,7 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
                 </p>
               )}
               <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{reviewPlainText(featured.content).slice(0, 260)}{reviewPlainText(featured.content).length > 260 ? '…' : ''}</p>
-              <button onClick={() => onReviewClick(featured)} className="mt-6 inline-flex min-h-11 items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest">Read full review <ArrowUpRight size={14} /></button>
+              <button onClick={() => onReviewClick(featured)} className="mt-6 inline-flex min-h-11 items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest">{t('reviews.read')} <ArrowUpRight size={14} /></button>
               <div className="mt-auto pt-6 flex items-center justify-between">
                 {featured.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{featured.meta}</span>}
                 <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] ml-auto">— {featured.author}</span>
@@ -2324,7 +2415,7 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
                   </p>
                 )}
                 <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{reviewPlainText(review.content).slice(0, 190)}{reviewPlainText(review.content).length > 190 ? '…' : ''}</p>
-                <button onClick={() => onReviewClick(review)} className="mt-6 inline-flex min-h-11 items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest">Read review <ArrowUpRight size={14} /></button>
+                <button onClick={() => onReviewClick(review)} className="mt-6 inline-flex min-h-11 items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest">{t('reviews.read')} <ArrowUpRight size={14} /></button>
                 <div className="mt-auto pt-6 flex items-center justify-between gap-3">
                   {review.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{review.meta}</span>}
                   <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] ml-auto">— {review.author}</span>
@@ -2648,15 +2739,34 @@ function getSlugForArticle(article: Article): string {
   return generateSlug(canonical?.title || article.title);
 }
 
+// Reviews used bare numeric URLs (/review/1) while articles have had readable
+// slugs for a while. Slugs come from the DEFAULT_LANGUAGE title so one review
+// keeps one canonical URL in every locale; a title with no latin characters
+// leaves an empty slug, in which case the id stays the address.
+function buildReviewSlugMap(): Map<string, number> {
+  const map = new Map<string, number>();
+  for (const r of getContentForLanguage(DEFAULT_LANGUAGE).reviews) {
+    const slug = generateSlug(r.title || '');
+    if (slug) map.set(slug, r.id);
+    map.set(String(r.id), r.id);
+  }
+  return map;
+}
+
+const REVIEW_SLUG_MAP = buildReviewSlugMap();
+
+function getSlugForReview(review: Review): string {
+  const canonical = getContentForLanguage(DEFAULT_LANGUAGE).reviews.find((r) => r.id === review.id);
+  return generateSlug(canonical?.title || review.title || '') || String(review.id);
+}
+
 // Gallery items and full Articles have no shared id/slug field — some Gallery
 // pieces happen to also exist as a full standalone Article (same title, its
 // own /article/<slug> page with more room for photos/blocks). Matching by
 // exact title is the only signal the data model offers; when it doesn't
 // match anything, no link renders — deliberately conservative so this can't
 // point at the wrong piece.
-function findMatchingArticle(item: Item, articles: Article[]): Article | undefined {
-  const title = item.title?.trim();
-  if (!title) return undefined;
+function matchArticleByTitle(title: string, articles: Article[]): Article | undefined {
   // Exact title is the strongest signal.
   const exact = articles.find((a) => a.title?.trim() === title);
   if (exact) return exact;
@@ -2670,6 +2780,21 @@ function findMatchingArticle(item: Item, articles: Article[]): Article | undefin
   return articles.find((a) => a.title && base(a.title) === itemBase);
 }
 
+function findMatchingArticle(item: Item, articles: Article[]): Article | undefined {
+  // Связь считается в базовом языке и переносится по id: заголовки совпадают
+  // надёжно только там (карточка без перевода осталась бы английской посреди
+  // русской ленты, и кнопка "читать статью" молча исчезала). Карточки, которые
+  // сама лента достроила из статей, несут её id со сдвигом в 900000.
+  const linked = getGalleryArticleLinks().get(item.id) ?? (item.id >= 900000 ? item.id - 900000 : undefined);
+  if (linked !== undefined) {
+    const byId = articles.find((a) => a.id === linked);
+    if (byId) return byId;
+  }
+  const title = item.title?.trim();
+  if (!title) return undefined;
+  return matchArticleByTitle(title, articles);
+}
+
 function parsePath(pathname: string, search = ''): { tab?: string; articleId?: number; reviewId?: number; passportCode?: string; searchQuery?: string } {
   const p = pathname.replace(/^\//, '').replace(/\/$/, '');
   if (!p) return {};
@@ -2677,8 +2802,15 @@ function parsePath(pathname: string, search = ''): { tab?: string; articleId?: n
     const query = new URLSearchParams(search).get('q')?.trim().slice(0, 120);
     return { tab: 'gallery', searchQuery: query || undefined };
   }
-  const reviewMatch = p.match(/^review\/(\d+)$/);
-  if (reviewMatch) return { tab: 'reviews', reviewId: parseInt(reviewMatch[1], 10) };
+  const reviewMatch = p.match(/^review\/(.+)$/);
+  if (reviewMatch) {
+    const id = REVIEW_SLUG_MAP.get(reviewMatch[1]);
+    if (id !== undefined) return { tab: 'reviews', reviewId: id };
+    // Old numeric bookmarks for a review that is no longer bundled locally:
+    // keep the id so live content can still resolve it.
+    if (/^\d+$/.test(reviewMatch[1])) return { tab: 'reviews', reviewId: parseInt(reviewMatch[1], 10) };
+    return { tab: 'reviews' };
+  }
   // Keep old bookmarks useful after the public Library section was retired.
   if (p === 'library' || p === 'materie') return { tab: 'articles' };
   const numericMatch = p.match(/^article\/(\d+)$/);
@@ -2707,7 +2839,7 @@ const ROUTE_META: Record<string, { title: string; description: string }> = {
   podcasts: { title: 'EPRIS Podcasts', description: 'Conversations and audio stories about contemporary art, architecture, design and cities.' },
 };
 
-function updateMetaTags(article: Article | null, activeTab: string, activeSearch: string, settings: SiteSettings) {
+function updateMetaTags(article: Article | null, review: Review | null, activeTab: string, activeSearch: string, settings: SiteSettings) {
   const setMeta = (property: string, content: string) => {
     let el = document.querySelector(`meta[property="${property}"]`) || document.querySelector(`meta[name="${property}"]`);
     if (!el) {
@@ -2807,6 +2939,50 @@ function updateMetaTags(article: Article | null, activeTab: string, activeSearch
         },
       ],
     });
+  } else if (review) {
+    // Without this the SPA overwrote the build-time review page's own title and
+    // canonical with the generic /reviews ones as soon as it booted.
+    const imageUrl = resolveMediaSource(review.imageUrl, 1200, 630);
+    const canonicalUrl = `https://eprisjournal.com/review/${getSlugForReview(review)}`;
+    const summary = review.verdict || reviewPlainText(review.content).slice(0, 200);
+    document.title = `${review.title} — ${publicationName}`;
+    setMeta('og:title', review.title);
+    setMeta('og:description', summary);
+    setMeta('og:image', imageUrl);
+    setMeta('og:type', 'article');
+    setMeta('og:url', canonicalUrl);
+    setMeta('og:site_name', publicationName);
+    setMeta('twitter:card', 'summary_large_image');
+    setMeta('twitter:title', review.title);
+    setMeta('twitter:description', summary);
+    setMeta('twitter:image', imageUrl);
+    setMeta('description', summary);
+    setMeta('robots', 'index, follow, max-image-preview:large');
+    setCanonical(canonicalUrl);
+    setJsonLd('runtime-seo', {
+      '@context': 'https://schema.org',
+      '@graph': [
+        siteNode,
+        {
+          '@type': 'Review',
+          name: review.title,
+          reviewBody: reviewPlainText(review.content),
+          itemReviewed: { '@type': 'Thing', name: review.subject || review.title },
+          author: { '@type': 'Person', name: review.author || 'EPRIS Editorial' },
+          image: [imageUrl],
+          publisher: siteNode.publisher,
+          mainEntityOfPage: canonicalUrl,
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'EPRIS Journal', item: 'https://eprisjournal.com/' },
+            { '@type': 'ListItem', position: 2, name: 'Reviews', item: 'https://eprisjournal.com/reviews' },
+            { '@type': 'ListItem', position: 3, name: review.title, item: canonicalUrl },
+          ],
+        },
+      ],
+    });
   } else if (activeSearch) {
     const title = `Search: ${activeSearch} — ${publicationName}`;
     const description = `Search results for “${activeSearch}” across ${publicationName}.`;
@@ -2869,11 +3045,25 @@ function updateMetaTags(article: Article | null, activeTab: string, activeSearch
 }
 
 export default function App() {
-  if (/^\/(?:collaboation|collaboration)\/?$/.test(window.location.pathname)) {
-    if (/^\/collaboation\/?$/.test(window.location.pathname)) {
+  if (/^\/(?:collaboation|collaboration|collab)\/?$/.test(window.location.pathname)) {
+    if (!/^\/collaboration\/?$/.test(window.location.pathname)) {
       window.history.replaceState(null, '', '/collaboration');
     }
     return <Suspense fallback={<div className="min-h-screen bg-[#f5f0ea]" />}><CollaborationPage /></Suspense>;
+  }
+  /* Бюро — і список, і окремий розбір. Глибокі адреси віддає SPA-заглушка
+     404.html, тож посилання на конкретний розбір працює напряму. */
+  if (/^\/bureau(?:\/[^/]+)?\/?$/.test(window.location.pathname)) {
+    return <Suspense fallback={<div className="min-h-screen bg-[#1a0b10]" />}><BureauPage /></Suspense>;
+  }
+  if (/^\/stage\/?$/.test(window.location.pathname)) {
+    return <Suspense fallback={<div className="min-h-screen bg-[#1a0b10]" />}><StagePage /></Suspense>;
+  }
+  if (/^\/(?:showcase|works|set)\/?$/.test(window.location.pathname)) {
+    if (!/^\/showcase\/?$/.test(window.location.pathname)) {
+      window.history.replaceState(null, '', '/showcase');
+    }
+    return <Suspense fallback={<div className="min-h-screen bg-[#f5f0ea]" />}><ShowcasePage /></Suspense>;
   }
   const initialRoute = parsePath(window.location.pathname, window.location.search);
   const [activeTab, setActiveTab] = useState(initialRoute.tab || 'gallery');
@@ -2967,8 +3157,8 @@ export default function App() {
   const fallbackTab = VISIBILITY_TABS.find((tab) => isSectionEnabled(tab)) || 'gallery';
 
   useEffect(() => {
-    updateMetaTags(selectedArticle, activeTab, activeSearch, siteSettings);
-  }, [selectedArticle, activeTab, activeSearch, contentVersion]);
+    updateMetaTags(selectedArticle, selectedReview, activeTab, activeSearch, siteSettings);
+  }, [selectedArticle, selectedReview, activeTab, activeSearch, contentVersion]);
 
   const handleImageClick = useCallback((src: string, alt: string) => {
     setLightboxImage({ src, alt });
@@ -3016,7 +3206,7 @@ export default function App() {
     setSelectedArticleId(null);
     setSelectedReviewId(review.id);
     setActiveTab('reviews');
-    navigate(`/review/${review.id}`);
+    navigate(`/review/${getSlugForReview(review)}`);
   }, [navigate]);
   const handleCloseReview = useCallback(() => {
     setSelectedReviewId(null);
@@ -3057,6 +3247,13 @@ export default function App() {
           window.history.replaceState(null, '', `/article/${getSlugForArticle(a)}`);
         }
       }
+    }
+    // Same upgrade for the numeric review URLs that are already out there.
+    // The static landing pages are directories, so the server hands the reader
+    // /review/1/ with a trailing slash — match it or the address bar keeps the id.
+    if (initialRoute.reviewId !== undefined && /\/review\/\d+\/?$/.test(window.location.pathname)) {
+      const r = defaultContent.reviews.find((review) => review.id === initialRoute.reviewId);
+      if (r) window.history.replaceState(null, '', `/review/${getSlugForReview(r)}`);
     }
   }, []);
 
@@ -3138,7 +3335,13 @@ export default function App() {
             ) : (
               <>
                 {activeTab === 'gallery' && (
-                  <GallerySection items={items} onItemClick={setSelectedGalleryItem} />
+                  <>
+                    <GallerySection items={items} onItemClick={setSelectedGalleryItem} />
+                    {/* Витрина жила отдельным маршрутом, на который с сайта не
+                        вело ни одной ссылки. Suspense без запасного экрана:
+                        блок не должен ничего занимать, пока грузится. */}
+                    <Suspense fallback={null}><ShowcaseTeaser /></Suspense>
+                  </>
                 )}
                 {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} brandName={brandName} />}
                     {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} onReviewClick={handleSelectReview} />}
@@ -3160,10 +3363,12 @@ export default function App() {
             <div className="text-center md:text-right font-mono text-xs uppercase tracking-widest text-[#BFAFA4]">
               <p>© 2026 {publicationName}</p>
               <p>{t('footer.rights')}</p>
-              {(instagramUrl || contactEmail) && <div className="mt-4 flex flex-wrap justify-center md:justify-end gap-x-4 gap-y-2 text-[#D9C7BA]">
+              <div className="mt-4 flex flex-wrap justify-center md:justify-end gap-x-4 gap-y-2 text-[#D9C7BA]">
                 {instagramUrl && <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#F7F2EC] underline underline-offset-4 transition-colors">Instagram</a>}
                 {contactEmail && <a href={`mailto:${contactEmail}`} className="hover:text-[#F7F2EC] underline underline-offset-4 transition-colors">{contactEmail}</a>}
-              </div>}
+                {/* Статическая страница в public/app — nginx отдаёт файл раньше SPA-роутера. */}
+                <a href="/app/" className="hover:text-[#F7F2EC] underline underline-offset-4 transition-colors">iOS app</a>
+              </div>
             </div>
           </div>
         </footer>}
@@ -3191,14 +3396,14 @@ export default function App() {
           >
             <div className="text-center max-w-md">
               <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-4">404</p>
-              <h1 className="font-serif text-3xl sm:text-4xl text-[var(--c-accent)] mb-4">Article not found</h1>
-              <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.7)] mb-8">This link may be broken, or the article has moved.</p>
+              <h1 className="font-serif text-3xl sm:text-4xl text-[var(--c-accent)] mb-4">{t('article.notFound')}</h1>
+              <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.7)] mb-8">{t('article.notFound.body')}</p>
               <button
                 type="button"
                 onClick={() => { window.history.replaceState(null, '', '/articles'); setActiveTab('articles'); }}
                 className="font-mono text-xs uppercase tracking-widest border border-[var(--c-accent)] rounded-full px-6 py-3 hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors"
               >
-                Back to Articles
+                {t('article.backToArticles')}
               </button>
             </div>
           </motion.div>
