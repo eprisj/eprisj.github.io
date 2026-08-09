@@ -12074,13 +12074,13 @@
           "id": 14,
           "title": "Nueva historia editorial",
           "author": "EPRIS Journal",
-          "role": "Escritorio editorial",
-          "date": "18 de julio de 2026",
+          "role": "equipo editorial",
+          "date": "July 18, 2026",
           "excerpt": "Un párrafo inicial centrado en una nueva historia editorial.",
-          "category": "Cultura",
-          "subcategory": "Característica",
+          "category": "cultura",
+          "subcategory": "Característica especial",
           "tags": [
-            "historia",
+            "Historia",
             "cultura",
             "editorial"
           ],
@@ -12088,50 +12088,52 @@
           "content": [
             {
               "type": "text",
-              "content": "Comience con la escena, hecho u observación más fuerte. Mantenga este primer bloque estricto y específico."
+              "content": "Comience con la escena, hecho u observación más fuerte. Mantenga este primer bloque limitado y específico."
             },
             {
               "type": "image",
               "content": "new-editorial-story-2",
-              "caption": "imagen principal"
+              "caption": "Declaración de misión",
+              "align": "center"
             },
             {
               "type": "quote",
-              "content": "Agregue una línea que valga la pena recordar aquí."
+              "content": "Agregue una línea aquí para recordar."
             },
             {
               "type": "note",
-              "content": "Nota editorial, contexto fuente o breve comentario."
+              "content": "Editorial note, source context, or a brief note."
             },
             {
               "type": "checklist",
-              "caption": "que cubrir",
               "content": {
                 "items": [
-                  "Contexto",
-                  "Detalle clave",
-                  "ángulo humano",
-                  "¿Qué cambia a continuación?"
+                  "context",
+                  "Important detail",
+                  "Human perspective",
+                  "What changes next?"
                 ]
               }
             },
             {
               "type": "poll",
               "content": {
-                "question": "¿Qué deberíamos explorar a continuación?",
+                "question": "What should we explore next?",
                 "options": [
                   {
-                    "label": "Más contexto",
+                    "label": "More context",
                     "votes": 0
                   },
                   {
-                    "label": "guía practica",
+                    "label": "Practical guide",
                     "votes": 0
                   }
                 ]
               }
             }
-          ]
+          ],
+          "order": 1,
+          "updatedAt": "2026-08-09T17:26:01.089Z"
         },
         {
           "id": 15,
