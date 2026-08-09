@@ -9843,8 +9843,8 @@
           "id": 14,
           "title": "Neue redaktionelle Geschichte",
           "author": "EPRIS Journal",
-          "role": "Redaktion",
-          "date": "18. Juli 2026",
+          "role": "Redaktionsteam",
+          "date": "July 18, 2026",
           "excerpt": "Ein fokussierter Eröffnungsabsatz für eine neue redaktionelle Geschichte.",
           "category": "Kultur",
           "subcategory": "Besonderheit",
@@ -9862,24 +9862,24 @@
             {
               "type": "image",
               "content": "new-editorial-story-2",
-              "caption": "Leitbild"
+              "caption": "Leitbild",
+              "align": "center"
             },
             {
               "type": "quote",
-              "content": "Fügen Sie hier eine Zeile hinzu, an die Sie sich erinnern sollten."
+              "content": "Fügen Sie hier eine Zeile zur Erinnerung ein."
             },
             {
               "type": "note",
-              "content": "Redaktionelle Anmerkung, Quellenkontext oder eine kurze Anmerkung."
+              "content": "Redaktioneller Hinweis, Quellenkontext oder eine kurze Notiz."
             },
             {
               "type": "checklist",
-              "caption": "Was abzudecken ist",
               "content": {
                 "items": [
                   "Kontext",
                   "Wichtiges Detail",
-                  "Menschlicher Blickwinkel",
+                  "Menschliche Perspektive",
                   "Was ändert sich als nächstes?"
                 ]
               }
@@ -9900,7 +9900,9 @@
                 ]
               }
             }
-          ]
+          ],
+          "order": 1,
+          "updatedAt": "2026-08-09T17:16:21.212Z"
         },
         {
           "id": 15,
