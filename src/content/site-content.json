@@ -2039,40 +2039,8 @@
           "sourceUrl": "https://sandrakantanen.com/works/"
         },
         {
-          "type": "quote",
-          "content": "Add a line here to remember."
-        },
-        {
-          "type": "note",
-          "content": "Editorial note, source context, or a brief note."
-        },
-        {
-          "type": "checklist",
-          "caption": "What to cover",
-          "content": {
-            "items": [
-              "context",
-              "Important detail",
-              "Human perspective",
-              "What changes next?"
-            ]
-          }
-        },
-        {
-          "type": "poll",
-          "content": {
-            "question": "What should we explore next?",
-            "options": [
-              {
-                "label": "More context",
-                "votes": 0
-              },
-              {
-                "label": "Practical guide",
-                "votes": 0
-              }
-            ]
-          }
+          "type": "text",
+          "content": ""
         }
       ],
       "order": 1,
