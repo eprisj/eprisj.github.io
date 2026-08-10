@@ -244,6 +244,26 @@ export interface SiteTheme {
   fontBody?: string;     // body font family name (Google Font)
 }
 
+/** Homepage feature controls edited from the admin's Homepage tab. */
+export interface HomepageShowcaseSettings {
+  mode?: 'auto' | 'manual';
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+  ctaLabel?: string;
+  ctaUrl?: string;
+  /** Showcase work ids, in the order used by the four-card teaser. */
+  featuredWorkIds?: string[];
+}
+
+export interface HomepageSettings {
+  /** Select the three newest live cards or use the explicit homeSlot values. */
+  picsOfWeek?: { mode?: 'auto' | 'manual' };
+  /** When enabled, safe homepage edits are pushed after a short debounce. */
+  autoPublish?: boolean;
+  showcase?: HomepageShowcaseSettings;
+}
+
 /** Public-shell copy, contacts and default SEO set in the editorial admin. */
 export interface SiteSettings {
   brandName?: string;
@@ -276,6 +296,7 @@ export interface SiteVisibility {
 export interface SiteContent {
   theme?: SiteTheme;
   site?: SiteSettings;
+  homepage?: HomepageSettings;
   visibility?: SiteVisibility;
   translations: Record<string, Record<string, string>>;
   items: Item[];
@@ -747,6 +768,10 @@ export function getTheme(): SiteTheme {
 
 export function getSiteSettings(): SiteSettings {
   return src().site || {};
+}
+
+export function getHomepageSettings(): HomepageSettings {
+  return src().homepage || {};
 }
 
 /** Published weekly homepage snapshots, newest first. */

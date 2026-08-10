@@ -8535,9 +8535,81 @@ function bindStudioRowActions() {
 
   const HOME_SLOTS = ['left', 'center', 'right'];
   const HOME_SLOT_LABELS = { left: '№3 · слева', center: '№1 · центр', right: '№2 · справа' };
+  const HOMEPAGE_AUTO_PREFS_KEY = 'epris_homepage_auto_prefs_v1';
+  let homepageRefreshTimer = null;
+  let homepageRefreshBusy = false;
+  let homepageAutoPublishTimer = null;
+  let homepagePublishBusy = false;
+  let homepagePublishQueued = false;
+  let pendingRemoteHomepageData = null;
+
+  function ensureHomepageSettings(data) {
+    if (!data.homepage || typeof data.homepage !== 'object' || Array.isArray(data.homepage)) data.homepage = {};
+    if (!data.homepage.picsOfWeek || typeof data.homepage.picsOfWeek !== 'object' || Array.isArray(data.homepage.picsOfWeek)) data.homepage.picsOfWeek = {};
+    if (!data.homepage.showcase || typeof data.homepage.showcase !== 'object' || Array.isArray(data.homepage.showcase)) data.homepage.showcase = {};
+    return data.homepage;
+  }
+
+  function readHomepageAutoPrefs() {
+    const defaults = { enabled: true, interval: 60 };
+    try {
+      const saved = JSON.parse(localStorage.getItem(HOMEPAGE_AUTO_PREFS_KEY) || '{}');
+      const interval = Number(saved.interval);
+      return { enabled: saved.enabled !== false, interval: [30, 60, 120, 300].includes(interval) ? interval : defaults.interval };
+    } catch { return defaults; }
+  }
+
+  function saveHomepageAutoPrefs(prefs) {
+    try { localStorage.setItem(HOMEPAGE_AUTO_PREFS_KEY, JSON.stringify(prefs)); } catch { /* storage unavailable */ }
+  }
+
+  function setHomepageRemoteNotice(message, state = 'warn', show = true) {
+    const notice = document.getElementById('homepageRemoteNotice');
+    if (!notice) return;
+    notice.hidden = !show;
+    notice.classList.toggle('is-ok', state === 'ok');
+    notice.innerHTML = message;
+  }
+
+  function commitHomepageLocal(data, message = 'Изменения главной сохранены в локальный черновик.') {
+    editor.value = JSON.stringify(data, null, 2);
+    updateStats(data);
+    updateEditorState();
+    saveDraft();
+    setStatus('info', message, { sticky: true });
+  }
+
+  function scheduleHomepageAutoPublish() {
+    clearTimeout(homepageAutoPublishTimer);
+    const data = readContent();
+    if (!data?.homepage?.autoPublish) return;
+    homepageAutoPublishTimer = setTimeout(() => publishHomepage({ silent: true }), 2200);
+  }
+
+  function restartHomepageRefreshTimer() {
+    clearInterval(homepageRefreshTimer);
+    homepageRefreshTimer = null;
+    const prefs = readHomepageAutoPrefs();
+    const badge = document.getElementById('homepageRefreshState');
+    if (badge) badge.textContent = prefs.enabled ? `Автообновление · ${prefs.interval}с` : 'Автообновление выключено';
+    if (!prefs.enabled) return;
+    homepageRefreshTimer = setInterval(() => {
+      if (document.visibilityState === 'visible') refreshHomepageFromVps({ silent: true });
+    }, prefs.interval * 1000);
+  }
 
   function homepageSlots(data) {
     const items = Array.isArray(data?.items) ? data.items : [];
+    if (data?.homepage?.picsOfWeek?.mode === 'auto') {
+      const liveItems = items.filter((item) => !item?.draft && (!item?.publishAt || Number.isNaN(Date.parse(item.publishAt)) || Date.parse(item.publishAt) <= Date.now()));
+      const stamp = (item) => {
+        const value = item?.updatedAt || item?.publishAt;
+        const parsed = value ? Date.parse(value) : Number.NaN;
+        return Number.isFinite(parsed) ? parsed : 0;
+      };
+      const newest = liveItems.slice().sort((a, b) => stamp(b) - stamp(a) || Number(b?.id || 0) - Number(a?.id || 0)).slice(0, 3);
+      return { center: newest[0] || null, right: newest[1] || null, left: newest[2] || null };
+    }
     const used = new Set();
     const slots = { left: null, center: null, right: null };
     HOME_SLOTS.forEach((slot) => {
@@ -8628,16 +8700,95 @@ function bindStudioRowActions() {
     const data = readContent();
     if (!data || !Array.isArray(data.items) || !HOME_SLOTS.includes(slot)) return;
     const item = data.items.find((entry) => String(entry.id) === String(itemId));
-    if (!item) return;
+    if (!item && itemId) return;
     // A card can occupy one slot only. Assigning it here removes the old
     // explicit placement and clears whichever card used this slot before it.
     data.items.forEach((entry) => {
-      if (String(entry.id) === String(item.id) || entry.homeSlot === slot) delete entry.homeSlot;
+      if ((item && String(entry.id) === String(item.id)) || entry.homeSlot === slot) delete entry.homeSlot;
     });
-    item.homeSlot = slot;
+    if (item) item.homeSlot = slot;
     setEditorData(data);
     renderHomepageTab();
+    scheduleHomepageAutoPublish();
     showToast?.('success', `${HOME_SLOT_LABELS[slot]} обновлён. Нажмите «Опубликовать».`);
+  }
+
+  function renderHomepageControls(data) {
+    const prefs = readHomepageAutoPrefs();
+    const home = data?.homepage || {};
+    const pics = home.picsOfWeek || {};
+    const showcase = home.showcase || {};
+    const autoRefresh = document.getElementById('homepageAutoRefresh');
+    const refreshInterval = document.getElementById('homepageRefreshInterval');
+    const autoPublish = document.getElementById('homepageAutoPublish');
+    const picsMode = document.getElementById('homepagePicsMode');
+    if (autoRefresh) autoRefresh.checked = prefs.enabled;
+    if (refreshInterval) refreshInterval.value = String(prefs.interval);
+    if (autoPublish) autoPublish.checked = home.autoPublish === true;
+    if (picsMode) picsMode.value = pics.mode === 'auto' ? 'auto' : 'manual';
+    const setValue = (id, value) => { const el = document.getElementById(id); if (el && document.activeElement !== el) el.value = value || ''; };
+    setValue('homepageShowcaseMode', showcase.mode === 'manual' ? 'manual' : 'auto');
+    setValue('homepageShowcaseIds', Array.isArray(showcase.featuredWorkIds) ? showcase.featuredWorkIds.join(', ') : '');
+    setValue('homepageShowcaseEyebrow', showcase.eyebrow);
+    setValue('homepageShowcaseTitle', showcase.title);
+    setValue('homepageShowcaseDescription', showcase.description);
+    setValue('homepageShowcaseCtaLabel', showcase.ctaLabel);
+    setValue('homepageShowcaseCtaUrl', showcase.ctaUrl);
+    const showcaseStatus = document.getElementById('homepageShowcaseStatus');
+    if (showcaseStatus) {
+      const ids = Array.isArray(showcase.featuredWorkIds) ? showcase.featuredWorkIds.filter(Boolean) : [];
+      showcaseStatus.textContent = showcase.mode === 'manual'
+        ? (ids.length >= 4 ? `Ручной порядок активен: ${ids.length} работы будут показаны по заданным ID.` : 'Ручной режим включён — укажите минимум четыре ID работ.')
+        : 'Автоматический режим: блок подхватывает первые опубликованные работы из витрины.';
+    }
+    restartHomepageRefreshTimer();
+  }
+
+  function updateHomepageSettings(mutator, message) {
+    const data = readContent();
+    if (!data) { showToast?.('error', 'Сначала загрузите контент.'); return; }
+    const home = ensureHomepageSettings(data);
+    mutator(home);
+    commitHomepageLocal(data, message);
+    renderHomepageTab();
+    scheduleHomepageAutoPublish();
+  }
+
+  async function refreshHomepageFromVps({ silent = false } = {}) {
+    if (homepageRefreshBusy) return;
+    homepageRefreshBusy = true;
+    const button = document.getElementById('homepageRefreshBtn');
+    if (button) { button.disabled = true; button.textContent = '↻ Проверяю…'; }
+    try {
+      const response = await fetch(CONTENT_API, { cache: 'no-store' });
+      if (!response.ok) throw new Error(`VPS вернул статус ${response.status}`);
+      const parsed = await response.json();
+      validateShape(parsed);
+      const remoteText = normalizeJsonText(JSON.stringify(parsed));
+      if (remoteText === lastSyncedSnapshot) {
+        pendingRemoteHomepageData = null;
+        setHomepageRemoteNotice('Главная и витрина уже используют свежую версию VPS.', 'ok', true);
+        if (!silent) showToast?.('success', 'Главная уже обновлена.');
+        return;
+      }
+      if (isEditorDirty()) {
+        pendingRemoteHomepageData = parsed;
+        setHomepageRemoteNotice('На VPS есть более свежая версия. Локальный черновик сохранён. <button type="button" class="btn btn-sm" data-homepage-accept-remote>Загрузить свежую версию</button>', 'warn', true);
+        if (!silent) showToast?.('info', 'Найдена новая версия VPS — локальные правки не перезаписаны.');
+        return;
+      }
+      setEditorData(parsed, { markSynced: true, clearDraft: true });
+      lastSyncedTime = new Date();
+      pendingRemoteHomepageData = null;
+      setHomepageRemoteNotice('Свежая версия VPS загружена без перезагрузки страницы.', 'ok', true);
+      if (!silent) showToast?.('success', 'Контент главной и витрины обновлён.');
+    } catch (error) {
+      setHomepageRemoteNotice(`Автообновление не удалось: ${esc(getErrorMessage(error))}`, 'warn', true);
+      if (!silent) showToast?.('error', getErrorMessage(error));
+    } finally {
+      homepageRefreshBusy = false;
+      if (button) { button.disabled = false; button.textContent = '↻ Получить свежую версию'; }
+    }
   }
 
   function renderHomepageComposer(data) {
@@ -8651,6 +8802,7 @@ function bindStudioRowActions() {
     if (!preview || !auditEl || !data) return;
     const items = Array.isArray(data.items) ? data.items : [];
     const slots = homepageSlots(data);
+    const autoMode = data?.homepage?.picsOfWeek?.mode === 'auto';
     const audit = homepageAudit(data, slots);
     const selectedCount = HOME_SLOTS.filter((slot) => slots[slot]).length;
     if (countEl) countEl.textContent = `${selectedCount} / 3 слота`;
@@ -8672,7 +8824,7 @@ function bindStudioRowActions() {
         <div class="homepage-slot-head"><span>${esc(HOME_SLOT_LABELS[slot])}</span><span class="homepage-slot-marker">${item ? '●' : '○'}</span></div>
         <div class="homepage-slot-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : '<span>Нет фото</span>'}</div>
         <label class="homepage-slot-label" for="homepage-slot-${slot}">Материал</label>
-        <select id="homepage-slot-${slot}" class="homepage-slot-select" data-home-slot="${slot}">${options}</select>
+        <select id="homepage-slot-${slot}" class="homepage-slot-select" data-home-slot="${slot}" ${autoMode ? 'disabled' : ''}>${options}</select>
         <div class="homepage-slot-title">${esc(item?.title || 'Слот пуст')}</div>
         <button type="button" class="btn btn-sm homepage-slot-edit" data-home-edit-slot="${item ? esc(item.id) : ''}" ${item ? '' : 'disabled'}>Редактировать</button>
       </article>`;
@@ -8682,7 +8834,7 @@ function bindStudioRowActions() {
     auditEl.innerHTML = [
       ...audit.errors.map((message) => `<div class="homepage-audit-item is-error"><span aria-hidden="true">!</span>${esc(message)}</div>`),
       ...audit.warnings.map((message) => `<div class="homepage-audit-item is-warn"><span aria-hidden="true">△</span>${esc(message)}</div>`),
-      ...(!audit.errors.length && !audit.warnings.length ? ['<div class="homepage-audit-item is-ok"><span aria-hidden="true">✓</span>Критических проблем не найдено.</div>'] : [])
+      ...(!audit.errors.length && !audit.warnings.length ? [`<div class="homepage-audit-item is-ok"><span aria-hidden="true">✓</span>${autoMode ? 'Автоматический режим выбрал три самые новые карточки.' : 'Критических проблем не найдено.'}</div>`] : [])
     ].join('');
   }
 
@@ -8711,6 +8863,7 @@ function bindStudioRowActions() {
     reorderLocalizedItems(data);
     setEditorData(data);
     renderHomepageTab();
+    scheduleHomepageAutoPublish();
     showToast?.('success', 'Порядок обновлён. Нажмите «Опубликовать», чтобы применить на сайте.');
   }
 
@@ -8729,6 +8882,7 @@ function bindStudioRowActions() {
     const items = Array.isArray(data.items) ? data.items : [];
     const slots = homepageSlots(data);
     const audit = homepageAudit(data, slots);
+    renderHomepageControls(data);
     meta.textContent = items.length
       ? `${items.length} ${items.length === 1 ? 'карточка' : 'карточек'} · ${HOME_SLOTS.filter((slot) => slots[slot]).length}/3 слота собраны · центр — главный материал`
       : 'В галерее пока нет карточек.';
@@ -8792,6 +8946,7 @@ function bindStudioRowActions() {
 
     setEditorData(data);
     renderHomepageTab();
+    scheduleHomepageAutoPublish();
     showToast?.('success', 'Карточка добавлена первой — она стала главным материалом. Порядок меняется стрелками, затем «Опубликовать».');
   }
 
@@ -8819,17 +8974,18 @@ function bindStudioRowActions() {
       button.addEventListener('click', () => addCardFromArticle(button.getAttribute('data-home-from-article'))));
   }
 
-  async function publishHomepage() {
-    if (!editor.value) { showToast?.('error', 'Сначала загрузите контент.'); return; }
+  async function publishHomepage({ silent = false } = {}) {
+    if (homepagePublishBusy) { homepagePublishQueued = true; return; }
+    if (!editor.value) { if (!silent) showToast?.('error', 'Сначала загрузите контент.'); return; }
     const data = readContent();
     const audit = data ? homepageAudit(data, homepageSlots(data)) : { errors: ['Контент не загружен.'], warnings: [] };
     if (audit.errors.length) {
-      showToast?.('error', `Нельзя опубликовать главную: ${audit.errors[0]}`);
+      if (!silent) showToast?.('error', `Нельзя опубликовать главную: ${audit.errors[0]}`);
       renderHomepageTab();
       return;
     }
     const pw = typeof getAdminPassword === 'function' ? getAdminPassword() : '';
-    if (!pw) { showToast?.('error', 'Нет пароля редакции — войдите заново.'); return; }
+    if (!pw) { if (!silent) showToast?.('error', 'Нет пароля редакции — войдите заново.'); return; }
     // Freeze the current three-card composition into the archive as part of the
     // same payload. Re-publishing an unchanged composition does not create a
     // duplicate entry, so the archive remains a useful editorial record.
@@ -8851,7 +9007,8 @@ function bindStudioRowActions() {
     publishData.homepageArchive = archive.slice(0, 24);
     const publishPayload = JSON.stringify(publishData, null, 2);
     const button = document.getElementById('homepagePublishBtn');
-    if (button) { button.disabled = true; button.textContent = 'Публикую…'; }
+    homepagePublishBusy = true;
+    if (button) { button.disabled = true; button.textContent = silent ? 'Автовыталкиваю…' : 'Публикую…'; }
     try {
       const response = await fetch(CONTENT_API, {
         method: 'POST',
@@ -8866,11 +9023,14 @@ function bindStudioRowActions() {
       if (lastEl) lastEl.textContent = `Опубликовано ${new Date().toLocaleString('ru-RU', { dateStyle: 'short', timeStyle: 'short' })}`;
       const titleEl = document.getElementById('homepageStatusTitle');
       if (titleEl) titleEl.textContent = 'Главная опубликована';
-      showToast?.('success', '✓ Главная и галерея опубликованы.');
+      if (!silent) showToast?.('success', '✓ Главная и витрина опубликованы.');
     } catch (error) {
-      showToast?.('error', 'Не удалось опубликовать: ' + error.message);
+      if (!silent) showToast?.('error', 'Не удалось опубликовать: ' + error.message);
+      setHomepageRemoteNotice(`Выталкивание не удалось: ${esc(error.message)}`, 'warn', true);
     } finally {
+      homepagePublishBusy = false;
       if (button) { button.disabled = false; button.textContent = 'Опубликовать'; }
+      if (homepagePublishQueued) { homepagePublishQueued = false; scheduleHomepageAutoPublish(); }
     }
   }
 
@@ -8890,6 +9050,54 @@ function bindStudioRowActions() {
     document.getElementById('homepageMissingArticles')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     showToast?.('info', 'Выберите статью в списке ниже.');
   });
+
+  document.getElementById('homepageRefreshBtn')?.addEventListener('click', () => refreshHomepageFromVps({ silent: false }));
+  document.getElementById('homepageAutoRefresh')?.addEventListener('change', (event) => {
+    const prefs = readHomepageAutoPrefs();
+    prefs.enabled = event.target.checked;
+    saveHomepageAutoPrefs(prefs);
+    restartHomepageRefreshTimer();
+    setHomepageRemoteNotice(prefs.enabled ? `Автообновление включено: проверка каждые ${prefs.interval} секунд.` : 'Автообновление выключено. Свежую версию можно получить вручную.', 'ok', true);
+  });
+  document.getElementById('homepageRefreshInterval')?.addEventListener('change', (event) => {
+    const prefs = readHomepageAutoPrefs();
+    prefs.interval = Number(event.target.value) || 60;
+    saveHomepageAutoPrefs(prefs);
+    restartHomepageRefreshTimer();
+  });
+  document.getElementById('homepagePicsMode')?.addEventListener('change', (event) => {
+    updateHomepageSettings((home) => { home.picsOfWeek.mode = event.target.value === 'auto' ? 'auto' : 'manual'; }, 'Режим Pics of the week обновлён.');
+  });
+  document.getElementById('homepageAutoPublish')?.addEventListener('change', (event) => {
+    updateHomepageSettings((home) => { home.autoPublish = event.target.checked; }, event.target.checked ? 'Автовыталкивание включено.' : 'Автовыталкивание выключено.');
+  });
+
+  const showcaseFields = {
+    homepageShowcaseMode: 'mode',
+    homepageShowcaseEyebrow: 'eyebrow',
+    homepageShowcaseTitle: 'title',
+    homepageShowcaseDescription: 'description',
+    homepageShowcaseCtaLabel: 'ctaLabel',
+    homepageShowcaseCtaUrl: 'ctaUrl',
+  };
+  Object.entries(showcaseFields).forEach(([id, key]) => {
+    const eventName = key === 'mode' ? 'change' : 'input';
+    document.getElementById(id)?.addEventListener(eventName, (event) => {
+      updateHomepageSettings((home) => { home.showcase[key] = event.target.value; }, 'Настройки витрины обновлены.');
+    });
+  });
+  document.getElementById('homepageShowcaseIds')?.addEventListener('input', (event) => {
+    updateHomepageSettings((home) => {
+      home.showcase.featuredWorkIds = String(event.target.value || '').split(',').map((id) => id.trim()).filter(Boolean).slice(0, 4);
+    }, 'Порядок работ витрины сохранён в черновик.');
+  });
+  document.getElementById('homepageRemoteNotice')?.addEventListener('click', (event) => {
+    if (!event.target.closest('[data-homepage-accept-remote]') || !pendingRemoteHomepageData) return;
+    setEditorData(pendingRemoteHomepageData, { markSynced: true, clearDraft: true });
+    pendingRemoteHomepageData = null;
+    setHomepageRemoteNotice('Свежая версия VPS загружена. Локальный черновик заменён по вашему выбору.', 'ok', true);
+  });
+  restartHomepageRefreshTimer();
   window._renderHomepageTab = renderHomepageTab;
 })();
 
