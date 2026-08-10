@@ -12,7 +12,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=4.32" />
+    <link rel="stylesheet" href="./styles.css?v=4.33" />
     <link rel="stylesheet" href="./brandbook.css?v=3" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -306,6 +306,25 @@
                   <button id="homepagePublishBtn" class="btn btn-primary" type="button">Опубликовать</button>
                 </div>
               </div>
+              <section class="homepage-quickstart" aria-labelledby="homepageQuickstartTitle">
+                <div class="homepage-quickstart-head">
+                  <div>
+                    <span class="homepage-admin-kicker">Быстрый маршрут</span>
+                    <h3 id="homepageQuickstartTitle">Как изменить фото и текст</h3>
+                  </div>
+                  <span class="homepage-quickstart-note">Одна карточка = фото + подпись + описание</span>
+                </div>
+                <ol class="homepage-quickstart-steps">
+                  <li><span>1</span><div><strong>Выберите слот</strong><small>В Pics of the week нажмите «Фото + текст» у нужной категории.</small></div></li>
+                  <li><span>2</span><div><strong>Обновите запись</strong><small>В редакторе замените URL или загрузите файл, затем заполните подпись и краткое описание.</small></div></li>
+                  <li><span>3</span><div><strong>Синхронизируйте и опубликуйте</strong><small>Нажмите «Синхронизировать» для 7 языков, проверьте preview и нажмите «Опубликовать».</small></div></li>
+                </ol>
+                <div class="homepage-quick-links" aria-label="Быстрые ссылки разделов">
+                  <a class="homepage-quick-link" href="../" target="_blank" rel="noreferrer"><span>Главная</span><code>/</code><span aria-hidden="true">↗</span></a>
+                  <a class="homepage-quick-link" href="../showcase/" target="_blank" rel="noreferrer"><span>A vitrine of set design and conceptual art</span><code>/showcase/</code><span aria-hidden="true">↗</span></a>
+                  <a class="homepage-quick-link" href="../articles/" target="_blank" rel="noreferrer"><span>Статьи</span><code>/articles/</code><span aria-hidden="true">↗</span></a>
+                </div>
+              </section>
               <div class="homepage-admin-status" id="homepageAdminStatus" aria-live="polite">
                 <div class="homepage-admin-status-main">
                   <span class="homepage-status-dot" data-state="idle" aria-hidden="true"></span>
@@ -399,7 +418,14 @@
                     <h3 id="homepageShowcaseEditorTitle" class="card-title">A vitrine of set design and conceptual art</h3>
                     <p class="card-desc">Автоматический режим собирает витрину по редакционному рейтингу: избранное, кураторские работы, полнота описания и оценка. Ручной режим позволяет зафиксировать свой порядок.</p>
                   </div>
-                  <span class="homepage-preview-badge">Homepage teaser</span>
+                  <div class="homepage-section-head-actions">
+                    <span class="homepage-preview-badge">Homepage teaser</span>
+                    <a class="btn btn-sm" href="../showcase/" target="_blank" rel="noreferrer">Открыть витрину ↗</a>
+                  </div>
+                </div>
+                <div class="homepage-public-link" role="note">
+                  <div><span class="homepage-public-link-label">Публичный адрес раздела</span><code id="homepageShowcasePublicUrl">https://eprisjournal.com/showcase/</code></div>
+                  <button id="homepageShowcaseCopyLink" class="btn btn-sm" type="button">Скопировать ссылку</button>
                 </div>
                 <div class="homepage-showcase-grid">
                   <label class="homepage-toggle-field homepage-showcase-wide"><input id="homepageShowcaseEnabled" type="checkbox" checked><span>Показывать Showcase на главной<small>Отключает только анонс — сами работы и страница /showcase остаются доступными.</small></span></label>
@@ -1691,7 +1717,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.32" type="module"></script>
+    <script src="./app.js?v=4.33" type="module"></script>
     <script src="../brandbook/data.js?v=1"></script>
     <script src="./brandbook.js?v=3"></script>
     <script>

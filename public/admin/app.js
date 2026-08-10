@@ -9073,7 +9073,7 @@ function bindStudioRowActions() {
     if (!editorEl || !data) return;
     const categories = homepageCategories(data);
     const languages = typeof getTranslationLanguages === 'function' ? getTranslationLanguages(data) : ['EN', 'RU', 'UA', 'DE', 'IT', 'ES', 'TR'];
-    editorEl.innerHTML = categories.map((category, index) => `
+    editorEl.innerHTML = `<div class="homepage-category-editor-head"><strong>Названия и авторазбор</strong><span>Название показывается на сайте. Ключевые слова помогают автоматически разложить новые фото; подписи ниже — отдельные переводы для 7 языков.</span></div>${categories.map((category, index) => `
       <div class="homepage-category-row">
         <span class="homepage-category-index">0${index + 1}</span>
         <label class="homepage-field"><span>Название категории</span><input data-home-category-label="${esc(category.id)}" value="${esc(category.label)}"></label>
@@ -9083,7 +9083,7 @@ function bindStudioRowActions() {
           const value = category.labels?.[lang] || fallback;
           return `<label><small>${esc(lang)}</small><input data-home-category-label-lang="${esc(category.id)}" data-home-category-lang="${esc(lang)}" value="${esc(value)}"></label>`;
         }).join('')}</div></div>
-      </div>`).join('');
+      </div>`).join('')}`;
     editorEl.querySelectorAll('[data-home-category-label], [data-home-category-matches], [data-home-category-label-lang]').forEach((input) => input.addEventListener('change', (event) => {
       const id = event.target.dataset.homeCategoryLabel || event.target.dataset.homeCategoryMatches || event.target.dataset.homeCategoryLabelLang;
       const isLabel = Boolean(event.target.dataset.homeCategoryLabel);
@@ -9134,12 +9134,12 @@ function bindStudioRowActions() {
       return `<article class="homepage-slot-card homepage-slot-card--${esc(group.id)}">
         <div class="homepage-slot-head"><span>${esc(group.label)}</span><span class="homepage-slot-marker">${item ? '●' : '○'}</span></div>
         <div class="homepage-slot-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : '<span>Нет фото</span>'}</div>
-        <div class="homepage-slot-caption"><span>${esc(group.label)}</span><strong>${esc(item?.homeTitle || item?.title || 'Категория пока пустая')}</strong><p>${esc(item?.homeDescription || item?.description || item?.homeSubtitle || item?.subtitle || 'Добавьте короткое описание работы в редакторе.')}</p></div>
+        <div class="homepage-slot-caption"><span>${esc(group.label)}</span><strong>${esc(item?.homeTitle || item?.title || 'Категория пока пустая')}</strong><p>${esc(item?.homeDescription || item?.description || item?.homeSubtitle || item?.subtitle || 'Добавьте короткое описание работы в редакторе.')}</p>${item ? `<small class="homepage-slot-source">${item.imageUrl ? 'URL / загруженный файл' : 'Визуальный seed'} · ID ${esc(item.id)}</small>` : ''}</div>
         <label class="homepage-slot-label" for="homepage-category-${esc(group.id)}">Главное изображение категории</label>
         <select id="homepage-category-${esc(group.id)}" class="homepage-slot-select" data-home-category="${esc(group.id)}" ${autoMode ? 'disabled' : ''}>${options}</select>
         <small class="homepage-category-count">${group.items.length} изображений · LIFO ${data?.homepage?.picsOfWeek?.ordering === 'manual' ? 'выкл.' : 'вкл.'}</small>
         <div class="homepage-slot-actions">
-          <button type="button" class="btn btn-sm homepage-slot-edit" data-home-edit-slot="${item ? esc(item.id) : ''}" ${item ? '' : 'disabled'}>✎ Редактировать</button>
+          <button type="button" class="btn btn-sm homepage-slot-edit" data-home-edit-slot="${item ? esc(item.id) : ''}" title="Фото, подпись, описание и переводы" ${item ? '' : 'disabled'}>✎ Фото + текст</button>
           <button type="button" class="btn btn-sm homepage-slot-add" data-home-add-slot="${esc(group.id)}">＋ ${item ? 'Добавить ещё' : 'Добавить фото'}</button>
         </div>
       </article>`;
@@ -9228,7 +9228,7 @@ function bindStudioRowActions() {
           <span class="homepage-gallery-id">ID ${esc(item.id)}</span>
         </div>
         <div class="homepage-gallery-controls">
-          <button class="btn btn-sm" type="button" data-home-edit="${esc(item.id)}">Редактировать</button>
+          <button class="btn btn-sm" type="button" data-home-edit="${esc(item.id)}">Фото + текст</button>
           <button class="btn btn-sm" type="button" data-home-up="${esc(item.id)}" ${index === 0 ? 'disabled' : ''} aria-label="Поднять карточку">↑</button>
           <button class="btn btn-sm" type="button" data-home-down="${esc(item.id)}" ${index === items.length - 1 ? 'disabled' : ''} aria-label="Опустить карточку">↓</button>
         </div>
@@ -9378,6 +9378,18 @@ function bindStudioRowActions() {
   });
   document.getElementById('homepageShowcaseEnabled')?.addEventListener('change', (event) => {
     updateHomepageSettings((home) => { home.showcase.enabled = event.target.checked; }, event.target.checked ? 'Анонс витрины включён.' : 'Анонс витрины скрыт с главной.');
+  });
+  document.getElementById('homepageShowcaseCopyLink')?.addEventListener('click', async (event) => {
+    const button = event.currentTarget;
+    const url = document.getElementById('homepageShowcasePublicUrl')?.textContent?.trim() || 'https://eprisjournal.com/showcase/';
+    try {
+      await navigator.clipboard.writeText(url);
+      button.textContent = 'Скопировано ✓';
+      setTimeout(() => { button.textContent = 'Скопировать ссылку'; }, 1600);
+      showToast?.('success', 'Ссылка витрины скопирована.');
+    } catch {
+      showToast?.('info', `Ссылка витрины: ${url}`);
+    }
   });
   document.getElementById('homepageShowcaseMinScore')?.addEventListener('input', (event) => {
     updateHomepageSettings((home) => { home.showcase.minScore = Math.max(0, Math.min(10000, Number(event.target.value) || 0)); }, 'Порог рейтинга витрины сохранён в черновик.');
