@@ -236,17 +236,19 @@ select {
   transition: opacity .22s ease, transform .22s ease;
 }
 
-/* Desktop side cards stay image-led. Their caption returns with the card when
-   it becomes the selected centre position. */
+/* Every desktop card keeps its editorial context visible: category, title and
+   short description belong to the image, not only to the selected centre
+   position. The cards remain image-led through their smaller scale, while
+   the caption prevents a row of anonymous thumbnails. */
 .home-carousel-card--side .home-carousel-caption {
-  visibility: hidden;
-  min-height: 0;
-  height: 0;
-  padding-top: 0;
-  border-bottom: 0;
-  opacity: 0;
-  transform: translateY(-.35rem);
-  overflow: hidden;
+  visibility: visible;
+  min-height: 9rem;
+  height: auto;
+  padding-top: .9rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--c-accent) 18%, transparent);
+  opacity: 1;
+  transform: none;
+  overflow: visible;
 }
 
 .home-carousel-card--center .home-carousel-caption {
