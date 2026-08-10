@@ -2046,7 +2046,10 @@
         },
         {
           "type": "gallery",
-          "content": [],
+          "content": [
+            "https://api.eprisjournal.com/uploads/msng2e11f1ygrd.jpg",
+            "https://api.eprisjournal.com/uploads/msng2nwle8sctg.jpg"
+          ],
           "caption": ""
         },
         {
