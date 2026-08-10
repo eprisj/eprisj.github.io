@@ -182,7 +182,6 @@ function GalleryItemView({ item, onClose, articles, onReadArticle }: { item: Ite
 // overwritten; shipping the fallback here keeps new labels translated in every
 // locale until an editor overrides them in the admin.
 const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
-  'nav.home': { EN: 'Home', RU: 'Главная', UA: 'Головна', DE: 'Startseite', IT: 'Home', ES: 'Inicio', TR: 'Ana sayfa' },
   'reviews.read': { EN: 'Read', RU: 'Читать', UA: 'Читати', DE: 'Lesen', IT: 'Leggi', ES: 'Leer', TR: 'Oku' },
   'video.openVideo': { EN: 'Open video', RU: 'Открыть видео', UA: 'Відкрити відео', DE: 'Video öffnen', IT: 'Apri video', ES: 'Abrir vídeo', TR: 'Videoyu aç' },
   'lang.title': { EN: 'Language', RU: 'Язык', UA: 'Мова', DE: 'Sprache', IT: 'Lingua', ES: 'Idioma', TR: 'Dil' },
@@ -632,7 +631,6 @@ function NavBar({
   }, [isSearchOpen, isMenuOpen, isLangOpen]);
 
   const tabs: { id: VisibilitySectionKey; label: string }[] = [
-    { id: 'gallery', label: t('nav.home') },
     { id: 'articles', label: t('nav.articles') },
     { id: 'reviews', label: t('nav.reviews') },
     { id: 'about', label: t('nav.about') },
