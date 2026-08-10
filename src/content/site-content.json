@@ -1907,6 +1907,18 @@
   },
   "items": [
     {
+      "id": 14,
+      "title": "Sandra Kantanen: Beyond the Lens of Traditional Photography",
+      "subtitle": "Photography",
+      "fig": "FIG. 11",
+      "description": "A photograph can be a threshold rather than a record — Sandra Kantanen turns landscape into a space between memory, myth and optical distortion.",
+      "imageSeed": "photography-sandra-kantanen",
+      "imageUrl": "https://api.eprisjournal.com/uploads/msma9wvbe77qf8.jpg",
+      "articleId": 14,
+      "homeCategory": "photography",
+      "homeLabel": "Photography"
+    },
+    {
       "id": 12,
       "title": "How Emily Kraus Reinvents the Act of Painting",
       "subtitle": "Contemporary Art",
@@ -1914,7 +1926,9 @@
       "description": "Inside the Canvas Cube, Emily Kraus Paints the Rhythm of the Present Moment",
       "imageSeed": "item-12",
       "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg",
-      "articleId": 17
+      "articleId": 17,
+      "homeCategory": "painting",
+      "homeLabel": "Painting"
     },
     {
       "id": 10,
@@ -1924,7 +1938,9 @@
       "description": "Five buildings that talked their way out of the grid — and the software, the metal, the money and the sheer nerve it took to build them.",
       "imageSeed": "item-10",
       "imageUrl": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-guggenheim-river.jpg",
-      "articleId": 18
+      "articleId": 18,
+      "homeCategory": "architecture",
+      "homeLabel": "Architecture"
     },
     {
       "id": 9,
@@ -1934,7 +1950,9 @@
       "description": "Contemporary Polish design has arrived at a moment of profound, quiet maturity. To walk through the studios of today’s leading architects and furniture designers is to encounter a language of rigorous minimalism, tactile raw materials, and a deliberate structural honesty. Yet, this modern clarity is not a rejection of the past - it is the culmination of a century-long dialogue regarding what it means to create with a national soul.",
       "imageSeed": "new-item-9",
       "imageUrl": "https://api.eprisjournal.com/uploads/ms32cwwlzm4hw7.jpg",
-      "articleId": 16
+      "articleId": 16,
+      "homeCategory": "design",
+      "homeLabel": "Design"
     },
     {
       "id": 8,
@@ -1954,7 +1972,9 @@
       "description": "I believe that when you introduce playful objects into an environment, it expands the boundaries of the mind. It gives you non-verbal permission to think freely - not just to push against conventional frames, but to forget they even exist.",
       "imageSeed": "new-item-7",
       "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg",
-      "articleId": 13
+      "articleId": 13,
+      "homeCategory": "sculpture",
+      "homeLabel": "Sculpture"
     },
     {
       "id": 1,
@@ -18202,6 +18222,75 @@
       "reviews": {},
       "authors": {},
       "studioProjects": {}
+    }
+  },
+  "homepage": {
+    "picsOfWeek": {
+      "mode": "manual",
+      "ordering": "lifo",
+      "categories": [
+        {
+          "id": "sculpture",
+          "label": "Sculpture",
+          "matches": [
+            "sculpture",
+            "sculptural",
+            "statue",
+            "object",
+            "installation",
+            "ceramic",
+            "vase"
+          ]
+        },
+        {
+          "id": "painting",
+          "label": "Painting",
+          "matches": [
+            "painting",
+            "paint",
+            "canvas",
+            "portrait",
+            "art",
+            "culture",
+            "history",
+            "restoration"
+          ]
+        },
+        {
+          "id": "architecture",
+          "label": "Architecture",
+          "matches": [
+            "architecture",
+            "building",
+            "urban",
+            "space",
+            "city"
+          ]
+        },
+        {
+          "id": "design",
+          "label": "Design",
+          "matches": [
+            "design",
+            "interior",
+            "furniture",
+            "travel",
+            "material"
+          ]
+        },
+        {
+          "id": "photography",
+          "label": "Photography",
+          "matches": [
+            "photography",
+            "photograph",
+            "photo",
+            "lens",
+            "camera",
+            "visual"
+          ]
+        }
+      ]
     }
   },
   "theme": {
