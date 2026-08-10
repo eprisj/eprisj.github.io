@@ -4909,6 +4909,13 @@ async function saveCurrentEntryOnly() {
     const data = parseEditorJson();
     const section = visualSectionSelect.value;
     const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
+    if (section === 'articles' && window.__eprisArticlePreflightActive?.()) {
+      const report = window.__eprisArticlePreflight();
+      if (report.blocking) {
+        window.__openEprisArticlePreflight?.();
+        throw new Error(`Публикация остановлена: ${report.blocking} критических ошибок. Исправьте их в проверке.`);
+      }
+    }
     const entries = getSectionArray(data, section, lang, lang !== DEFAULT_LANGUAGE);
 
     if (!entries.length) throw new Error('Нет записей для редактирования.');
@@ -11893,6 +11900,203 @@ async function flushModernEditor() {
   let _restoringHistory = false;
   const undoBtn = document.getElementById('wysUndoBtn');
   const redoBtn = document.getElementById('wysRedoBtn');
+  const preflightBtn = document.getElementById('wysPreflightBtn');
+  const versionsBtn = document.getElementById('wysVersionsBtn');
+
+  // The in-memory undo stack is intentionally short-lived.  This second,
+  // bounded store survives refreshes and catches the failure mode where a
+  // saved article unexpectedly falls back to a template.  It is local to the
+  // current browser for now; the UI says so explicitly instead of implying a
+  // server-side audit trail that does not exist yet.
+  const VERSION_PREFIX = 'epris-article-versions-v1:';
+  const VERSION_CAP = 20;
+  const versionKey = () => `${VERSION_PREFIX}${_ctx.section}:${_ctx.lang}:${_ctx.id}`;
+  function readVersions() {
+    try {
+      const raw = localStorage.getItem(versionKey());
+      const parsed = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed) ? parsed.filter((item) => item && item.model) : [];
+    } catch { return []; }
+  }
+  function writeVersions(list) {
+    try { localStorage.setItem(versionKey(), JSON.stringify(list.slice(0, VERSION_CAP))); } catch {
+      // Quota errors should never prevent editing.  Drop the oldest half and
+      // retry once so a large gallery cannot disable the editor.
+      try { localStorage.setItem(versionKey(), JSON.stringify(list.slice(0, Math.max(4, Math.floor(VERSION_CAP / 2))))); } catch {}
+    }
+  }
+  function versionSignature(model) {
+    try { return JSON.stringify(model); } catch { return ''; }
+  }
+  function persistVersion(reason = 'Автосохранение') {
+    if (!_model) return;
+    const model = clone(_model);
+    const signature = versionSignature(model);
+    if (!signature) return;
+    const versions = readVersions();
+    if (versions[0]?.signature === signature) return;
+    versions.unshift({
+      id: `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+      at: Date.now(),
+      reason,
+      signature,
+      model,
+    });
+    writeVersions(versions);
+  }
+  function seedVersionHistory() {
+    if (!readVersions().length) persistVersion('Исходная версия');
+  }
+  function versionTime(value) {
+    try { return new Date(value).toLocaleString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }); }
+    catch { return ''; }
+  }
+
+  // ── publication preflight ────────────────────────────────────────────────
+  // This is deliberately deterministic and local: an editor can run it while
+  // offline, and every warning points back to a concrete field/block.
+  function plainBlockText(block) {
+    const value = block?.content;
+    if (typeof value === 'string') return value.replace(/<[^>]+>/g, ' ');
+    if (value && typeof value === 'object') {
+      return [value.question, ...(Array.isArray(value.options) ? value.options.map((item) => item?.label) : []), ...(Array.isArray(value.items) ? value.items : [])].filter(Boolean).join(' ');
+    }
+    return '';
+  }
+  function preflightUrlValid(value) {
+    if (!value || typeof value !== 'string') return false;
+    try { return Boolean(new URL(value, window.location.origin)); } catch { return false; }
+  }
+  function buildPreflight(model = _model) {
+    const checks = [];
+    const add = (kind, label, detail, target) => checks.push({ kind, label, detail, target });
+    if (!model) return { checks: [{ kind: 'error', label: 'Статья не выбрана', detail: 'Выберите запись перед проверкой.' }], blocking: 1, warnings: 0 };
+    const title = String(model.title || '').trim();
+    const excerpt = String(model.excerpt || '').trim();
+    const blocks = Array.isArray(model.content) ? model.content : [];
+    const words = typeof getEntryWordCount === 'function' ? getEntryWordCount('articles', model) : 0;
+    const normalized = [title, excerpt, ...blocks.map(plainBlockText)].join(' ').toLowerCase();
+    const placeholder = /lorem ipsum|replace me|new editorial|текст абзаца|заголовок статьи|добавьте блок|one or two sentences/.test(normalized);
+
+    title ? add(title.length < 8 ? 'warn' : 'ok', 'Заголовок', title.length < 8 ? 'Заголовок очень короткий — проверьте смысл и подачу.' : `${title.length} символов`, 'title') : add('error', 'Заголовок', 'Без заголовка публикация остановлена.', 'title');
+    if (!excerpt) add('error', 'Краткое описание', 'Нужен лид для карточек главной и разделов.', 'excerpt');
+    else if (excerpt.length > EXCERPT_PREVIEW_LIMIT) add('warn', 'Краткое описание', `${excerpt.length}/${EXCERPT_PREVIEW_LIMIT}: на карточках текст обрежется.`, 'excerpt');
+    else add('ok', 'Краткое описание', `${excerpt.length}/${EXCERPT_PREVIEW_LIMIT}`, 'excerpt');
+    blocks.length ? add('ok', 'Контент', `${blocks.length} блоков · ${words} слов`, 'body') : add('error', 'Контент', 'Добавьте хотя бы один блок текста.', 'body');
+    if (blocks.length && words < 80) add('warn', 'Объём', `${words} слов — статья выглядит очень короткой.`, 'body');
+    else if (blocks.length) add('ok', 'Объём', `${words} слов`, 'body');
+    model.author ? add('ok', 'Автор', model.author, 'author') : add('warn', 'Автор', 'Укажите автора или оставьте осознанно пустым.', 'author');
+    model.category ? add('ok', 'Категория', model.category, 'category') : add('warn', 'Категория', 'Без категории материал сложнее найти в разделе.', 'category');
+    model.date ? add('ok', 'Дата', model.date, 'date') : add('warn', 'Дата', 'Дата нужна для корректной хронологии.', 'date');
+
+    const hasCover = Boolean(model.imageUrl || model.imageSeed || blocks.some((block) => block?.type === 'image' && block.content));
+    if (model.showCover === false || hasCover) add('ok', 'Обложка', model.showCover === false ? 'Показ обложки отключён.' : 'Источник изображения задан.', 'hero');
+    else add('warn', 'Обложка', 'Добавьте изображение или отключите её показ в метаданных.', 'hero');
+
+    let mediaMissingAlt = 0;
+    let invalidLinks = 0;
+    let invalidPolls = 0;
+    let emptyBlocks = 0;
+    blocks.forEach((block) => {
+      if (['text', 'header', 'quote', 'note'].includes(block?.type) && !plainBlockText(block).trim()) emptyBlocks += 1;
+      if (block?.type === 'image' && block.content && !(block.alt || block.caption)) mediaMissingAlt += 1;
+      if (block?.type === 'gallery' && Array.isArray(block.content)) {
+        block.content.forEach((url, index) => { if (url && !(block.alts?.[index])) mediaMissingAlt += 1; });
+      }
+      if (block?.type === 'link' && (!block.content || !preflightUrlValid(block.url))) invalidLinks += 1;
+      if (block?.type === 'poll') {
+        const options = Array.isArray(block.content?.options) ? block.content.options.filter((item) => item?.label?.trim()) : [];
+        if (!block.content?.question?.trim() || options.length < 2) invalidPolls += 1;
+      }
+    });
+    mediaMissingAlt ? add('warn', 'Доступность медиа', `${mediaMissingAlt} изображений без ALT или подписи.`, 'media') : add('ok', 'Доступность медиа', 'ALT/подписи заполнены у всех изображений.', 'media');
+    invalidLinks ? add('error', 'Ссылки', `${invalidLinks} ссылок без корректного URL.`, 'body') : add('ok', 'Ссылки', 'Блочные ссылки выглядят корректно.', 'body');
+    invalidPolls ? add('warn', 'Опросы', `${invalidPolls} опросов требуют вопрос и минимум 2 варианта.`, 'body') : null;
+    emptyBlocks ? add('warn', 'Пустые блоки', `${emptyBlocks} текстовых блоков пусты — они не попадут в материал.`, 'body') : null;
+    placeholder ? add('warn', 'Шаблонный текст', 'Найдена фраза-заглушка. Проверьте, не остался ли текст шаблона.', 'body') : add('ok', 'Шаблонный текст', 'Заглушки не найдены.', 'body');
+
+    const data = parseEditorJsonSafe();
+    if (data && typeof hasConcreteEntryForLanguage === 'function' && typeof getTranslationLanguages === 'function') {
+      const missing = getTranslationLanguages(data).filter((lang) => !hasConcreteEntryForLanguage(data, 'articles', lang, _ctx.id));
+      missing.length ? add('warn', 'Переводы', `Нет версии: ${missing.join(', ')}.`, 'translations') : add('ok', 'Переводы', 'Версии присутствуют во всех языках.', 'translations');
+    }
+    return {
+      checks,
+      blocking: checks.filter((item) => item.kind === 'error').length,
+      warnings: checks.filter((item) => item.kind === 'warn').length,
+    };
+  }
+  function updatePreflightButton(report) {
+    if (!preflightBtn) return;
+    preflightBtn.classList.toggle('has-errors', report.blocking > 0);
+    preflightBtn.classList.toggle('has-warnings', !report.blocking && report.warnings > 0);
+    preflightBtn.textContent = report.blocking ? `! Проверка · ${report.blocking}` : (report.warnings ? `! Проверка · ${report.warnings}` : '✓ Проверка');
+  }
+  function jumpToPreflightTarget(target) {
+    closePopovers();
+    const selectors = { title: '[data-wys="title"]', excerpt: '[data-wys="excerpt"]', author: '[data-wys="author"]', category: '[data-wys="category"]', date: '[data-wys="date"]', hero: '.wys-hero', body: '.wys-body', media: '.wys-media-details', translations: '#languageSyncScope' };
+    const el = document.querySelector(selectors[target] || selectors.body) || document.getElementById('wysMetaBtn');
+    el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (el?.focus) el.focus({ preventScroll: true });
+  }
+  function openPreflight() {
+    closePopovers();
+    const report = buildPreflight();
+    updatePreflightButton(report);
+    const pop = document.createElement('div');
+    pop.className = 'wys-pop wys-preflight-pop';
+    pop.setAttribute('role', 'dialog');
+    pop.setAttribute('aria-modal', 'true');
+    const summary = report.blocking
+      ? `<span class="error">${report.blocking} ошибки — публикация остановится</span>`
+      : report.warnings
+        ? `<span class="warn">${report.warnings} предупреждения</span>`
+        : '<span class="ok">Готово к публикации</span>';
+    pop.innerHTML = `<div class="wys-preflight-head"><div><strong>Проверка перед публикацией</strong><span class="wys-preflight-sub">Проверка текущей версии #${esc(_ctx.id)} · ${esc(_ctx.lang)}. Исправьте ошибки, предупреждения остаются на ваше усмотрение.</span></div><button type="button" class="wys-panel-close" data-close aria-label="Закрыть проверку">×</button></div><div class="wys-preflight-summary">${summary}<span class="ok">${report.checks.filter((item) => item.kind === 'ok').length} проверок пройдено</span></div><div class="wys-preflight-list">${report.checks.map((item) => `<div class="wys-preflight-row ${item.kind}"><span class="wys-preflight-icon">${item.kind === 'error' ? '!' : item.kind === 'warn' ? '△' : '✓'}</span><div><strong class="wys-preflight-label">${esc(item.label)}</strong><span class="wys-preflight-detail">${esc(item.detail)}</span></div>${item.target ? `<button type="button" class="wys-preflight-jump" data-target="${esc(item.target)}">Перейти</button>` : ''}</div>`).join('')}</div><div class="wys-preflight-foot"><button type="button" class="btn btn-primary btn-sm" data-close>Закрыть</button></div>`;
+    document.body.appendChild(pop);
+    positionCenter(pop);
+    const close = () => { document.removeEventListener('mousedown', outside); pop.remove(); };
+    const outside = (event) => { if (!pop.contains(event.target)) close(); };
+    pop.querySelectorAll('[data-close]').forEach((button) => button.addEventListener('click', close));
+    pop.querySelectorAll('[data-target]').forEach((button) => button.addEventListener('click', () => jumpToPreflightTarget(button.getAttribute('data-target'))));
+    pop._outside = outside;
+    setTimeout(() => document.addEventListener('mousedown', outside), 0);
+  }
+
+  async function restoreVersion(index) {
+    const version = readVersions()[index];
+    if (!version?.model) return;
+    const confirmed = await showConfirmModal('Восстановить версию?', `Статья вернётся к состоянию от <strong>${escapeHtml(versionTime(version.at))}</strong>. Текущее состояние останется в истории.`, 'Восстановить');
+    if (!confirmed) return;
+    _model = clone(version.model);
+    _galSelected.clear();
+    render();
+    commit('Восстановление версии');
+    closePopovers();
+    showToast('success', `Версия от ${versionTime(version.at)} восстановлена.`);
+  }
+  function openVersions() {
+    closePopovers();
+    const versions = readVersions();
+    const pop = document.createElement('div');
+    pop.className = 'wys-pop wys-history-pop';
+    pop.setAttribute('role', 'dialog');
+    pop.setAttribute('aria-modal', 'true');
+    pop.innerHTML = `<div class="wys-history-head"><div><strong>История версий</strong><span class="wys-history-sub">Последние ${versions.length} состояний · хранится в этом браузере</span></div><button type="button" class="wys-panel-close" data-close aria-label="Закрыть историю">×</button></div>${versions.length ? `<div class="wys-history-list">${versions.map((item, index) => `<div class="wys-history-item"><div class="wys-history-meta"><strong>${esc(item.reason || 'Автосохранение')}</strong><span>${esc(versionTime(item.at))} · ${esc(String(getEntryWordCount('articles', item.model)))} слов · ${esc(String(Array.isArray(item.model.content) ? item.model.content.length : 0))} блоков</span></div><button type="button" class="wys-history-restore" data-version="${index}">Восстановить</button></div>`).join('')}</div>` : '<div class="wys-history-empty">Снимки появятся после первого изменения. Исходная версия сохраняется автоматически при открытии статьи.</div>'}`;
+    document.body.appendChild(pop);
+    positionCenter(pop);
+    const close = () => { document.removeEventListener('mousedown', outside); pop.remove(); };
+    const outside = (event) => { if (!pop.contains(event.target)) close(); };
+    pop.querySelectorAll('[data-close]').forEach((button) => button.addEventListener('click', close));
+    pop.querySelectorAll('[data-version]').forEach((button) => button.addEventListener('click', () => restoreVersion(Number(button.getAttribute('data-version')))));
+    pop._outside = outside;
+    setTimeout(() => document.addEventListener('mousedown', outside), 0);
+  }
+  preflightBtn?.addEventListener('click', openPreflight);
+  versionsBtn?.addEventListener('click', openVersions);
+  window.__eprisArticlePreflightActive = () => shell.classList.contains('on') && _ctx.section === 'articles' && Boolean(_model);
+  window.__eprisArticlePreflight = () => buildPreflight(_model);
+  window.__openEprisArticlePreflight = openPreflight;
 
   function resetHistory(model) {
     _history = [clone(model)];
@@ -11987,6 +12191,8 @@ async function flushModernEditor() {
     if (!Array.isArray(_model.content)) _model.content = [];
     render();
     resetHistory(_model);
+    seedVersionHistory();
+    updatePreflightButton(buildPreflight(_model));
     updateDraftBadge();
   }
   function scheduleReload() { clearTimeout(_reloadTimer); _reloadTimer = setTimeout(reload, 140); }
@@ -12004,12 +12210,14 @@ async function flushModernEditor() {
   // debounce, so nothing needs to remember to call it separately. `commit()`
   // only flushes to the local textarea; `armPublish()` is a distinct step so
   // publishSilently() can re-flush without re-arming itself into a loop.
-  function commit() {
+  function commit(reason = 'Автосохранение') {
     if (!flushLocal()) return;
     _errorRetries = 0;
     armPublish(2600);
     setSave('saved');
     pushHistory();
+    persistVersion(reason);
+    updatePreflightButton(buildPreflight(_model));
   }
   function flushLocal() {
     if (!_model) return false;
@@ -12036,6 +12244,13 @@ async function flushModernEditor() {
     if (!_model) return;
     clearTimeout(_commitTimer);
     flushLocal(); // make sure the very latest keystrokes are in editor.value first
+    const preflight = buildPreflight(_model);
+    updatePreflightButton(preflight);
+    if (!_model.draft && preflight.blocking) {
+      setSave('blocked');
+      return;
+    }
+    persistVersion('Перед публикацией');
     if (_publishing) { _publishQueued = true; return; }
     const pw = (typeof getAdminPassword === 'function') ? getAdminPassword() : '';
     if (!pw) { setSave('nopw'); return; } // no password on file — stays local-only, no spam
@@ -12077,6 +12292,7 @@ async function flushModernEditor() {
       error: 'Ошибка публикации — повторяю…',
       'error-final': 'Не удалось опубликовать (сохранено локально)',
       nopw: 'Сохранено локально (нет пароля для публикации)',
+      blocked: 'Есть ошибки — публикация остановлена',
     };
     saveState.textContent = labels[s] || labels.saved;
     saveState.className = 'wys-save-state ' + s;
