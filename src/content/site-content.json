@@ -2084,8 +2084,13 @@
         },
         {
           "type": "gallery",
-          "content": [],
-          "caption": ""
+          "content": [
+            "https://api.eprisjournal.com/uploads/msngeewiyj0mpq.jpg"
+          ],
+          "caption": "",
+          "alts": [
+            "Untitled (Distortion 9)”, 2016"
+          ]
         },
         {
           "type": "text",
