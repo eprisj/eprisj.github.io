@@ -1,5 +1,5 @@
 import { motion, AnimatePresence, LayoutGroup, MotionConfig } from 'framer-motion';
-import { ReactNode, useState, useEffect, useCallback, useMemo, FormEvent, MouseEvent, CSSProperties, useRef, Suspense, lazy, Component } from 'react';
+import { ReactNode, useState, useEffect, useCallback, useMemo, FormEvent, MouseEvent, TouchEvent as ReactTouchEvent, CSSProperties, useRef, Suspense, lazy, Component } from 'react';
 // Heavy, rarely-visited tabs are code-split out of the critical bundle —
 // e.g. DesignPage alone carries a 244-item catalogue that has no business
 // loading for a reader who just opened an article. Each only downloads once
@@ -1317,6 +1317,8 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
   const [centerIndex, setCenterIndex] = useState(defaultCenterIndex);
   const itemCount = featuredItems.length;
   const safeCenterIndex = itemCount ? ((centerIndex % itemCount) + itemCount) % itemCount : 0;
+  const gestureStartRef = useRef<{ x: number; y: number } | null>(null);
+  const suppressCardClickRef = useRef(false);
   const centeredItems = itemCount
     ? Array.from({ length: itemCount }, (_, position) => featuredItems[(safeCenterIndex + position - 2 + itemCount) % itemCount])
     : [];
@@ -1342,6 +1344,37 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
     if (!itemCount) return;
     setCenterIndex((current) => (current + direction + itemCount) % itemCount);
   };
+  const handleCarouselTouchStart = (event: ReactTouchEvent<HTMLDivElement>) => {
+    if (event.touches.length !== 1) {
+      gestureStartRef.current = null;
+      return;
+    }
+    const touch = event.touches[0];
+    gestureStartRef.current = { x: touch.clientX, y: touch.clientY };
+  };
+  const handleCarouselTouchEnd = (event: ReactTouchEvent<HTMLDivElement>) => {
+    const start = gestureStartRef.current;
+    gestureStartRef.current = null;
+    if (!start || event.changedTouches.length !== 1) return;
+    const touch = event.changedTouches[0];
+    const deltaX = touch.clientX - start.x;
+    const deltaY = touch.clientY - start.y;
+    const horizontalSwipe = Math.abs(deltaX) >= 44 && Math.abs(deltaX) > Math.abs(deltaY) * 1.15;
+    if (!horizontalSwipe) return;
+
+    // Native scrolling remains enabled, but the selected work is also moved
+    // into the centre so a swipe and an arrow tap share the same state.
+    suppressCardClickRef.current = true;
+    moveCarousel(deltaX < 0 ? 1 : -1);
+    window.setTimeout(() => { suppressCardClickRef.current = false; }, 450);
+  };
+  const handleCarouselCardClick = (src: string, alt: string) => {
+    if (suppressCardClickRef.current) {
+      suppressCardClickRef.current = false;
+      return;
+    }
+    onImageClick(src, alt);
+  };
   const centerScale = Math.max(0.96, Math.min(1.14, Number(picsSettings.centerScale) || 1));
   const sideScale = Math.max(0.72, Math.min(0.94, Number(picsSettings.sideScale) || 0.88));
   const carouselGap = Math.max(12, Math.min(40, Number(picsSettings.gap) || 24));
@@ -1361,7 +1394,21 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
             <button type="button" onClick={() => moveCarousel(1)} className="home-carousel-arrow" aria-label={t('homepage.next')}><ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" /></button>
           </div>
         </div>
-        <div ref={viewportRef} style={carouselStyle} className="home-carousel" tabIndex={0} aria-label={t('homepage.carouselLabel')} onKeyDown={(event) => { if (event.key === 'ArrowLeft') moveCarousel(-1); if (event.key === 'ArrowRight') moveCarousel(1); }}>
+        <div
+          ref={viewportRef}
+          style={carouselStyle}
+          className="home-carousel"
+          tabIndex={0}
+          aria-label={t('homepage.carouselLabel')}
+          onKeyDown={(event) => {
+            if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') event.preventDefault();
+            if (event.key === 'ArrowLeft') moveCarousel(-1);
+            if (event.key === 'ArrowRight') moveCarousel(1);
+          }}
+          onTouchStart={handleCarouselTouchStart}
+          onTouchEnd={handleCarouselTouchEnd}
+          onTouchCancel={() => { gestureStartRef.current = null; }}
+        >
           {centeredItems.map(({ category, item }, position) => item ? (() => {
               const categoryLabel = localizedHomepageCategoryLabel(category, currentLang);
               const title = homepageItemTitle(item);
@@ -1374,7 +1421,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
               className={`home-carousel-card group ${isCenter ? 'home-carousel-card--center' : 'home-carousel-card--side'}`}
               role="button"
               tabIndex={0}
-              onClick={() => onImageClick(resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${title}`)}
+              onClick={() => handleCarouselCardClick(resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${title}`)}
               onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onImageClick(resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${title}`); }}
               aria-label={`${t('homepage.openImage')}: ${categoryLabel}`}
             >

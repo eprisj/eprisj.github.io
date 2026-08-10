@@ -130,7 +130,9 @@ select {
   scroll-behavior: smooth;
   scroll-padding-inline: 0.25rem;
   scroll-snap-type: x mandatory;
-  touch-action: pan-x pinch-zoom;
+  /* Allow both directions: a vertical finger drag must keep scrolling the
+     page, while a predominantly horizontal drag can advance the carousel. */
+  touch-action: pan-x pan-y pinch-zoom;
   padding: 0.25rem 0.25rem 1rem;
   cursor: grab;
   scrollbar-width: none;
@@ -336,6 +338,12 @@ select {
   .home-carousel-card.home-carousel-card--center {
     flex-basis: 76%;
     transform: scale(var(--home-carousel-center-scale, 1));
+  }
+
+  .home-carousel-arrow {
+    width: 2.6rem;
+    height: 2.6rem;
+    min-width: 2.6rem;
   }
 
   /* Side cards are visual peeks on a phone. Their title/excerpt would be
