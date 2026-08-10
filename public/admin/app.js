@@ -166,6 +166,7 @@ const interactiveButtons = [
 let currentSha = '';
 let lastSyncedSnapshot = '';
 let pendingVisualEntryId = null;
+let pendingHomepageCategory = null;
 let visualRefreshTimer = null;
 let draftSaveTimer = null;
 let monitorTimer = null;
@@ -845,16 +846,19 @@ function bindEvents() {
 
   visualSectionSelect.addEventListener('change', () => {
     pendingVisualEntryId = null;
+    pendingHomepageCategory = null;
     refreshVisualEditor();
   });
 
   visualLangSelect.addEventListener('change', () => {
     pendingVisualEntryId = null;
+    pendingHomepageCategory = null;
     refreshVisualEditor();
   });
 
   visualEntrySelect.addEventListener('change', () => {
     pendingVisualEntryId = null;
+    pendingHomepageCategory = null;
     renderVisualForm();
     // Auto-collapse creator studio when editing an existing entry
     const wrap = document.getElementById('creatorStudioWrap');
@@ -868,16 +872,19 @@ function bindEvents() {
 
   visualSearchInput.addEventListener('input', () => {
     pendingVisualEntryId = null;
+    pendingHomepageCategory = null;
     refreshVisualEditor();
   });
 
   visualStatusFilter.addEventListener('change', () => {
     pendingVisualEntryId = null;
+    pendingHomepageCategory = null;
     refreshVisualEditor();
   });
 
   visualSort.addEventListener('change', () => {
     pendingVisualEntryId = null;
+    pendingHomepageCategory = null;
     refreshVisualEditor();
   });
 
@@ -6556,6 +6563,11 @@ async function addVisualEntry() {
       entry = await translateEntryForSection(section, entry, lang, DEFAULT_LANGUAGE);
     }
 
+    if (section === 'items' && pendingHomepageCategory) {
+      entry.homeCategory = pendingHomepageCategory;
+      pendingHomepageCategory = null;
+    }
+
     entries.push(entry);
     setStatus('info', `Создаю языковые версии записи #${nextId}...`);
     const syncedLangs = await syncMissingEntryLanguages(data, section, lang, entry);
@@ -8588,10 +8600,11 @@ function bindStudioRowActions() {
     return typeof parseEditorJsonSafe === 'function' ? parseEditorJsonSafe() : null;
   }
 
-  function openGalleryEditor(itemId) {
+  function openGalleryEditor(itemId, categoryId = null) {
     visualSectionSelect.value = 'items';
     visualLangSelect.value = DEFAULT_LANGUAGE;
     pendingVisualEntryId = itemId == null ? null : itemId;
+    pendingHomepageCategory = categoryId ? String(categoryId) : null;
     document.querySelector('.tab-btn[data-tab="content"]')?.click();
     refreshVisualEditor();
   }
@@ -8816,6 +8829,41 @@ function bindStudioRowActions() {
     showToast?.('success', `Категория ${HOME_CATEGORY_LABELS[categoryId] || categoryId} обновлена. Нажмите «Опубликовать».`);
   }
 
+  function fillEmptyHomepageSlots() {
+    const data = readContent();
+    if (!data) { showToast?.('error', 'Сначала загрузите контент.'); return; }
+    const groups = homepageCategoryGroups(data);
+    const emptyGroups = groups.filter((group) => !group.items.length);
+    if (!emptyGroups.length) {
+      showToast?.('info', 'Все пять категорий уже заполнены.');
+      return;
+    }
+
+    const usedIds = new Set(groups.flatMap((group) => group.items.slice(0, 1).map((item) => String(item.id))));
+    const candidates = homepagePhotoItems(data)
+      .filter((item) => !usedIds.has(String(item.id)))
+      .sort((a, b) => {
+        const stamp = (item) => Date.parse(item?.updatedAt || item?.publishAt || '') || 0;
+        return stamp(b) - stamp(a) || Number(b?.id || 0) - Number(a?.id || 0);
+      });
+
+    let filled = 0;
+    emptyGroups.forEach((group, index) => {
+      const candidate = candidates[index];
+      if (!candidate) return;
+      candidate.homeCategory = group.id;
+      filled++;
+    });
+    if (!filled) {
+      showToast?.('warn', 'Нет свободных фотографий для дозаполнения. Добавьте новое фото или снимите лишнее назначение.');
+      return;
+    }
+    setEditorData(data);
+    renderHomepageTab();
+    scheduleHomepageAutoPublish();
+    showToast?.('success', `Дозаполнено категорий: ${filled}. Проверьте превью и нажмите «Опубликовать».`);
+  }
+
   function renderHomepageControls(data) {
     const prefs = readHomepageAutoPrefs();
     const home = data?.homepage || {};
@@ -8981,11 +9029,18 @@ function bindStudioRowActions() {
         <label class="homepage-slot-label" for="homepage-category-${esc(group.id)}">Главное изображение категории</label>
         <select id="homepage-category-${esc(group.id)}" class="homepage-slot-select" data-home-category="${esc(group.id)}" ${autoMode ? 'disabled' : ''}>${options}</select>
         <small class="homepage-category-count">${group.items.length} изображений · LIFO ${data?.homepage?.picsOfWeek?.ordering === 'manual' ? 'выкл.' : 'вкл.'}</small>
-        <button type="button" class="btn btn-sm homepage-slot-edit" data-home-edit-slot="${item ? esc(item.id) : ''}" ${item ? '' : 'disabled'}>Редактировать</button>
+        <div class="homepage-slot-actions">
+          <button type="button" class="btn btn-sm homepage-slot-edit" data-home-edit-slot="${item ? esc(item.id) : ''}" ${item ? '' : 'disabled'}>✎ Редактировать</button>
+          <button type="button" class="btn btn-sm homepage-slot-add" data-home-add-slot="${esc(group.id)}">＋ ${item ? 'Добавить ещё' : 'Добавить фото'}</button>
+        </div>
       </article>`;
     }).join('');
     preview.querySelectorAll('[data-home-category]').forEach((select) => select.addEventListener('change', () => setHomepageCategory(select.dataset.homeCategory, select.value)));
     preview.querySelectorAll('[data-home-edit-slot]').forEach((button) => button.addEventListener('click', () => openGalleryEditor(button.dataset.homeEditSlot)));
+    preview.querySelectorAll('[data-home-add-slot]').forEach((button) => button.addEventListener('click', () => {
+      openGalleryEditor(null, button.dataset.homeAddSlot);
+      setTimeout(() => addEntryBtn?.click(), 80);
+    }));
     renderHomepageCategoryEditor(data);
     auditEl.innerHTML = [
       ...audit.errors.map((message) => `<div class="homepage-audit-item is-error"><span aria-hidden="true">!</span>${esc(message)}</div>`),
@@ -9146,6 +9201,7 @@ function bindStudioRowActions() {
     openGalleryEditor(null);
     setTimeout(() => addEntryBtn?.click(), 80);
   });
+  document.getElementById('homepageFillBtn')?.addEventListener('click', fillEmptyHomepageSlots);
   document.getElementById('homepagePublishBtn')?.addEventListener('click', publishHomepage);
   document.getElementById('homepageRefreshBtn')?.addEventListener('click', () => refreshHomepageFromVps({ silent: false }));
   document.getElementById('homepageAutoRefresh')?.addEventListener('change', (event) => {

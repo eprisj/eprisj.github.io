@@ -737,8 +737,8 @@ function NavBar({
       {/* ── Desktop header ── */}
       <nav className="hidden lg:flex fixed top-0 left-0 w-full z-50 bg-[var(--c-bg)] border-b border-[var(--c-accent)] text-xs font-mono uppercase tracking-widest text-[var(--c-accent)] h-16">
         {/* Logo Section */}
-        <div className="w-64 border-r border-[var(--c-accent)] px-6 flex items-center shrink-0 z-50 bg-[var(--c-bg)] text-[var(--c-accent)]">
-          <a href="/" className="flex items-center font-mono" onClick={(event) => { event.preventDefault(); onHome(); }} aria-label={`${brandName} — home`} aria-current={activeTab === 'gallery' ? 'page' : undefined}>
+        <div className={`w-64 border-r border-[var(--c-accent)] px-6 flex items-center shrink-0 z-50 ${activeTab === 'gallery' ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'bg-[var(--c-bg)] text-[var(--c-accent)]'} transition-colors duration-200`}>
+          <a href="/" className="flex items-center font-mono text-current" onClick={(event) => { event.preventDefault(); onHome(); }} aria-label={`${brandName} — home`} aria-current={activeTab === 'gallery' ? 'page' : undefined}>
             <span className="text-xl tracking-[0.2em] pl-[0.2em] normal-case leading-none">{brandName}</span>
           </a>
         </div>
@@ -1395,10 +1395,6 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
       <Reveal>
         <div className="mb-7 flex items-center justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-4">
           <h1 id="pics-of-week-title" className="font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">{t('homepage.picsTitle')}</h1>
-          <div className="home-carousel-arrow-controls flex shrink-0 gap-2">
-            <button type="button" onClick={() => moveCarousel(-1)} className="home-carousel-arrow" aria-label={t('homepage.previous')}><ArrowLeft size={16} strokeWidth={1.5} aria-hidden="true" /></button>
-            <button type="button" onClick={() => moveCarousel(1)} className="home-carousel-arrow" aria-label={t('homepage.next')}><ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" /></button>
-          </div>
         </div>
         <div className="home-carousel-mobile-controls" aria-label={t('homepage.carouselLabel')}>
           <span className="home-carousel-mobile-count" aria-hidden="true">
@@ -1425,21 +1421,23 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
           </div>
           <span className="home-carousel-mobile-swipe" aria-hidden="true">↔</span>
         </div>
-        <div
-          ref={viewportRef}
-          style={carouselStyle}
-          className="home-carousel"
-          tabIndex={0}
-          aria-label={t('homepage.carouselLabel')}
-          onKeyDown={(event) => {
-            if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') event.preventDefault();
-            if (event.key === 'ArrowLeft') moveCarousel(-1);
-            if (event.key === 'ArrowRight') moveCarousel(1);
-          }}
-          onTouchStart={handleCarouselTouchStart}
-          onTouchEnd={handleCarouselTouchEnd}
-          onTouchCancel={() => { gestureStartRef.current = null; }}
-        >
+        <div className="home-carousel-frame">
+          <button type="button" onClick={() => moveCarousel(-1)} className="home-carousel-edge-arrow home-carousel-edge-arrow--prev" aria-label={t('homepage.previous')}><ArrowLeft size={17} strokeWidth={1.5} aria-hidden="true" /></button>
+          <div
+            ref={viewportRef}
+            style={carouselStyle}
+            className="home-carousel"
+            tabIndex={0}
+            aria-label={t('homepage.carouselLabel')}
+            onKeyDown={(event) => {
+              if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') event.preventDefault();
+              if (event.key === 'ArrowLeft') moveCarousel(-1);
+              if (event.key === 'ArrowRight') moveCarousel(1);
+            }}
+            onTouchStart={handleCarouselTouchStart}
+            onTouchEnd={handleCarouselTouchEnd}
+            onTouchCancel={() => { gestureStartRef.current = null; }}
+          >
           {centeredItems.map(({ category, item }, position) => item ? (() => {
               const categoryLabel = localizedHomepageCategoryLabel(category, currentLang);
               const title = homepageItemTitle(item);
@@ -1468,6 +1466,8 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
             </motion.article>
               );
             })() : <div key={`${category.id}-${safeCenterIndex}`} className="home-carousel-empty"><span className="font-mono text-[10px] uppercase tracking-[0.2em]">{localizedHomepageCategoryLabel(category, currentLang)}</span><p>{t('homepage.descriptionUnavailable')}</p></div>)}
+          </div>
+          <button type="button" onClick={() => moveCarousel(1)} className="home-carousel-edge-arrow home-carousel-edge-arrow--next" aria-label={t('homepage.next')}><ArrowRight size={17} strokeWidth={1.5} aria-hidden="true" /></button>
         </div>
       </Reveal>
     </section>
