@@ -122,6 +122,9 @@ select {
 
 .home-carousel-frame {
   position: relative;
+  /* Reserve a quiet gutter for the controls. The arrows should frame the
+     gallery, never sit on top of the first or last photograph. */
+  padding-inline: clamp(3.5rem, 4.5vw, 4.5rem);
 }
 
 .home-carousel-edge-arrow {
@@ -141,8 +144,8 @@ select {
   transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
 }
 
-.home-carousel-edge-arrow--prev { left: 0; }
-.home-carousel-edge-arrow--next { right: 0; }
+.home-carousel-edge-arrow--prev { left: .45rem; }
+.home-carousel-edge-arrow--next { right: .45rem; }
 .home-carousel-edge-arrow:hover {
   border-color: var(--c-accent);
   background: var(--c-accent);
@@ -156,24 +159,25 @@ select {
   align-items: flex-start;
   justify-content: center;
   gap: var(--home-carousel-gap, clamp(1rem, 1.8vw, 1.5rem));
-  overflow-x: auto;
+  overflow: hidden;
   overscroll-behavior-x: contain;
-  scroll-behavior: smooth;
-  scroll-padding-inline: 0.25rem;
-  scroll-snap-type: x mandatory;
-  /* Allow both directions: a vertical finger drag must keep scrolling the
-     page, while a predominantly horizontal drag can advance the carousel. */
-  touch-action: pan-x pan-y pinch-zoom;
+  /* Movement is state-driven; native scroll and snap would compete with the
+     FLIP layout transition and create the visible jump on each selection. */
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+  touch-action: pan-y pinch-zoom;
   padding: 0.25rem 0.25rem 1rem;
   cursor: grab;
   scrollbar-width: none;
+  user-select: none;
 }
 
 .home-carousel::-webkit-scrollbar {
   display: none;
 }
 
-.home-carousel:active {
+.home-carousel:active,
+.home-carousel.is-dragging {
   cursor: grabbing;
 }
 
@@ -184,13 +188,11 @@ select {
 
 .home-carousel-card {
   flex: 0 0 15%;
-  scroll-snap-align: center;
-  scroll-snap-stop: always;
   cursor: pointer;
   opacity: .8;
   transform: scale(var(--home-carousel-side-scale, .88));
   transform-origin: center top;
-  transition: flex-basis .35s ease, opacity .35s ease, transform .35s ease;
+  will-change: transform, opacity;
 }
 
 .home-carousel-card.home-carousel-card--center {
@@ -231,7 +233,7 @@ select {
   border-bottom: 1px solid color-mix(in srgb, var(--c-accent) 18%, transparent);
   opacity: 1;
   transform: translateY(0);
-  transition: opacity .28s ease, transform .28s ease, height .28s ease, padding .28s ease;
+  transition: opacity .22s ease, transform .22s ease;
 }
 
 /* Desktop side cards stay image-led. Their caption returns with the card when
@@ -378,6 +380,11 @@ select {
 }
 
 @media (max-width: 639px) {
+  .home-carousel-frame {
+    padding-inline: 0;
+    overflow: hidden;
+  }
+
   .home-carousel {
     gap: .85rem;
     margin-inline: -.25rem;
