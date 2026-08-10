@@ -2155,6 +2155,17 @@
       "imageSeed": "maria-graduation-heart",
       "imageUrl": "/images/heart-hero.jpg",
       "articleId": 11
+    },
+    {
+      "id": 15,
+      "title": "New gallery item",
+      "subtitle": "One-line context — replace me",
+      "fig": "FIG. 15",
+      "description": "One or two sentences describing this piece — replace with real copy before publishing.",
+      "imageSeed": "new-item-15",
+      "homeTitle": "New gallery item",
+      "homeSubtitle": "One-line context — replace me",
+      "homeDescription": "One or two sentences describing this piece — replace with real copy before publishing."
     }
   ],
   "articles": [
@@ -4551,6 +4562,17 @@
           "homeCategory": "painting",
           "homeLabel": "Хильма аф Клинт · 1907 · темпера на бумаге",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 15,
+          "title": "Новый элемент галереи",
+          "subtitle": "Однострочный контекст — замените меня",
+          "fig": "FIG. 15",
+          "description": "Одно или два предложения, описывающие этот объект — замените на реальный текст перед публикацией.",
+          "imageSeed": "new-item-15",
+          "homeTitle": "Новый элемент галереи",
+          "homeSubtitle": "Однострочный контекст — замените меня",
+          "homeDescription": "Одно или два предложения, описывающие этот объект — замените на реальный текст перед публикацией."
         }
       ],
       "articles": [
@@ -6899,6 +6921,17 @@
           "homeCategory": "painting",
           "homeLabel": "Гільма аф Клінт · 1907 · темпера на папері",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 15,
+          "title": "Новий елемент галереї",
+          "subtitle": "Однолінійний контекст — заміни мене",
+          "fig": "FIG. 15",
+          "description": "Один або два речення, що описують цей об’єкт — замініть на реальний текст перед публікацією.",
+          "imageSeed": "new-item-15",
+          "homeTitle": "Новий елемент галереї",
+          "homeSubtitle": "Однолінійний контекст — заміни мене",
+          "homeDescription": "Один або два речення, що описують цей об’єкт — замініть на реальний текст перед публікацією."
         }
       ],
       "articles": [
@@ -9189,6 +9222,17 @@
           "homeCategory": "painting",
           "homeLabel": "Hilma af Klint · 1907 · Tempera auf Papier",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 15,
+          "title": "Neues Galerieobjekt",
+          "subtitle": "Einzeiliger Kontext — ersetze mich",
+          "fig": "FIG. 15",
+          "description": "Ein oder zwei Sätze, die dieses Stück beschreiben — ersetze mit echtem Text vor der Veröffentlichung.",
+          "imageSeed": "new-item-15",
+          "homeTitle": "Neues Galerieobjekt",
+          "homeSubtitle": "Einzeiliger Kontext — ersetze mich",
+          "homeDescription": "Ein oder zwei Sätze, die dieses Stück beschreiben — ersetze mit echtem Text vor der Veröffentlichung."
         }
       ],
       "articles": [
@@ -11479,6 +11523,17 @@
           "homeCategory": "painting",
           "homeLabel": "Hilma af Klint · 1907 · temple sobre papel",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 15,
+          "title": "Nuevo elemento de galería",
+          "subtitle": "Contexto de una línea — reemplazarme",
+          "fig": "FIG. 15",
+          "description": "Una o dos frases describiendo esta pieza — reemplazar con copia real antes de publicar.",
+          "imageSeed": "new-item-15",
+          "homeTitle": "Nuevo elemento de galería",
+          "homeSubtitle": "Contexto de una línea — reemplazarme",
+          "homeDescription": "Una o dos frases describiendo esta pieza — reemplazar con copia real antes de publicar."
         }
       ],
       "articles": [
@@ -13769,6 +13824,17 @@
           "homeCategory": "painting",
           "homeLabel": "Hilma af Klint · 1907 · kâğıt üzerine tempera",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 15,
+          "title": "Yeni galeri öğesi",
+          "subtitle": "Tek satırlık bağlam — beni değiştir",
+          "fig": "FIG. 15",
+          "description": "Bu parçayı tanımlayan bir veya iki cümle — yayınlamadan önce gerçek kopyayla değiştirin.",
+          "imageSeed": "new-item-15",
+          "homeTitle": "Yeni galeri öğesi",
+          "homeSubtitle": "Tek satırlık bağlam — beni değiştir",
+          "homeDescription": "Bu parçayı tanımlayan bir veya iki cümle — yayınlamadan önce gerçek kopyayla değiştirin."
         }
       ],
       "articles": [
@@ -16059,6 +16125,17 @@
           "homeCategory": "painting",
           "homeLabel": "Hilma af Klint · 1907 · tempera su carta",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 15,
+          "title": "Nuovo elemento della galleria",
+          "subtitle": "Contesto su una riga — sostituiscimi",
+          "fig": "FIG. 15",
+          "description": "Una o due frasi che descrivono questo pezzo — sostituire con copia reale prima della pubblicazione.",
+          "imageSeed": "new-item-15",
+          "homeTitle": "Nuovo elemento della galleria",
+          "homeSubtitle": "Contesto su una riga — sostituiscimi",
+          "homeDescription": "Una o due frasi che descrivono questo pezzo — sostituire con copia reale prima della pubblicazione."
         }
       ],
       "articles": [
