@@ -1400,6 +1400,31 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
             <button type="button" onClick={() => moveCarousel(1)} className="home-carousel-arrow" aria-label={t('homepage.next')}><ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" /></button>
           </div>
         </div>
+        <div className="home-carousel-mobile-controls" aria-label={t('homepage.carouselLabel')}>
+          <span className="home-carousel-mobile-count" aria-hidden="true">
+            {String(safeCenterIndex + 1).padStart(2, '0')} / {String(Math.max(itemCount, 1)).padStart(2, '0')}
+          </span>
+          <div className="home-carousel-mobile-dots" role="tablist" aria-label={t('homepage.carouselLabel')}>
+            {featuredItems.map(({ category }, index) => {
+              const label = localizedHomepageCategoryLabel(category, currentLang);
+              const isActive = index === safeCenterIndex;
+              return (
+                <button
+                  key={category.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-label={`${label} ${index + 1}`}
+                  className={`home-carousel-mobile-dot${isActive ? ' is-active' : ''}`}
+                  onClick={() => setCenterIndex(index)}
+                >
+                  <span aria-hidden="true" />
+                </button>
+              );
+            })}
+          </div>
+          <span className="home-carousel-mobile-swipe" aria-hidden="true">↔</span>
+        </div>
         <div
           ref={viewportRef}
           style={carouselStyle}
@@ -1443,31 +1468,6 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
             </motion.article>
               );
             })() : <div key={`${category.id}-${safeCenterIndex}`} className="home-carousel-empty"><span className="font-mono text-[10px] uppercase tracking-[0.2em]">{localizedHomepageCategoryLabel(category, currentLang)}</span><p>{t('homepage.descriptionUnavailable')}</p></div>)}
-        </div>
-        <div className="home-carousel-mobile-controls" aria-label={t('homepage.carouselLabel')}>
-          <span className="home-carousel-mobile-count" aria-hidden="true">
-            {String(safeCenterIndex + 1).padStart(2, '0')} / {String(Math.max(itemCount, 1)).padStart(2, '0')}
-          </span>
-          <div className="home-carousel-mobile-dots" role="tablist" aria-label={t('homepage.carouselLabel')}>
-            {featuredItems.map(({ category }, index) => {
-              const label = localizedHomepageCategoryLabel(category, currentLang);
-              const isActive = index === safeCenterIndex;
-              return (
-                <button
-                  key={category.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={isActive}
-                  aria-label={`${label} ${index + 1}`}
-                  className={`home-carousel-mobile-dot${isActive ? ' is-active' : ''}`}
-                  onClick={() => setCenterIndex(index)}
-                >
-                  <span aria-hidden="true" />
-                </button>
-              );
-            })}
-          </div>
-          <span className="home-carousel-mobile-swipe" aria-hidden="true">↔</span>
         </div>
       </Reveal>
     </section>
