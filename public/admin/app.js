@@ -4639,14 +4639,14 @@ async function applyVisualChanges() {
     const next = buildEntryFromVisualForm(section, current);
 
     entries[entryIndex] = next;
-    const syncedLangs = section === 'articles'
+    const syncedLangs = section === 'articles' || section === 'items'
       ? await translateEntryToAllLanguages(data, section, lang, next, {
           statusPrefix: `Обновляю переводы #${selectedId}`
         })
       : await syncMissingEntryLanguages(data, section, lang, next);
     pendingVisualEntryId = selectedId;
     setEditorData(data);
-    const syncNote = section === 'articles'
+    const syncNote = section === 'articles' || section === 'items'
       ? formatLanguageSyncNote(syncedLangs, 'Языки обновлены')
       : formatLanguageSyncNote(syncedLangs, 'Недостающие языки созданы');
     const statusType = getLanguageSyncFailures(syncedLangs).length ? 'info' : 'success';
@@ -4787,7 +4787,7 @@ async function saveCurrentEntryOnly() {
     // quality audit, draft) stays in sync without a full reload.
     entries[entryIndex] = next;
     let syncedLangs = [];
-    if (section === 'articles') {
+    if (section === 'articles' || section === 'items') {
       syncedLangs = await translateEntryToAllLanguages(data, section, lang, next, {
         saveToServer: true,
         statusPrefix: `Сохраняю переводы #${selectedId}`
@@ -4797,7 +4797,7 @@ async function saveCurrentEntryOnly() {
     }
     pendingVisualEntryId = selectedId;
     setEditorData(data, { markSynced: true });
-    const syncNote = section === 'articles'
+    const syncNote = section === 'articles' || section === 'items'
       ? formatLanguageSyncNote(syncedLangs, 'Языки обновлены на VPS')
       : formatLanguageSyncNote(syncedLangs, 'Недостающие языки созданы');
     const statusType = getLanguageSyncFailures(syncedLangs).length ? 'info' : 'success';
@@ -8582,6 +8582,13 @@ function bindStudioRowActions() {
     { id: 'design', label: 'Design', matches: ['design', 'interior', 'furniture', 'travel', 'material'] },
     { id: 'photography', label: 'Photography', matches: ['photography', 'photograph', 'photo', 'lens', 'camera', 'visual'] },
   ];
+  const DEFAULT_HOME_CATEGORY_LABELS = {
+    sculpture: { EN: 'Sculpture', RU: 'Скульптура', UA: 'Скульптура', DE: 'Skulptur', IT: 'Scultura', ES: 'Escultura', TR: 'Heykel' },
+    painting: { EN: 'Painting', RU: 'Живопись', UA: 'Живопис', DE: 'Malerei', IT: 'Pittura', ES: 'Pintura', TR: 'Resim' },
+    architecture: { EN: 'Architecture', RU: 'Архитектура', UA: 'Архітектура', DE: 'Architektur', IT: 'Architettura', ES: 'Arquitectura', TR: 'Mimarlık' },
+    design: { EN: 'Design', RU: 'Дизайн', UA: 'Дизайн', DE: 'Design', IT: 'Design', ES: 'Diseño', TR: 'Tasarım' },
+    photography: { EN: 'Photography', RU: 'Фотография', UA: 'Фотографія', DE: 'Fotografie', IT: 'Fotografia', ES: 'Fotografía', TR: 'Fotoğraf' },
+  };
   const HOME_CATEGORY_LABELS = Object.fromEntries(DEFAULT_HOME_CATEGORIES.map((category) => [category.id, category.label]));
   const HOMEPAGE_AUTO_PREFS_KEY = 'epris_homepage_auto_prefs_v1';
   let homepageRefreshTimer = null;
@@ -8709,9 +8716,18 @@ function bindStudioRowActions() {
         return;
       }
       if (!String(item.title || '').trim()) warnings.push(`${group.label}: у первого изображения нет названия.`);
+      if (!String(item.description || '').trim()) errors.push(`${group.label}: добавьте краткое описание под изображением.`);
       if (!String(item.imageUrl || item.imageSeed || '').trim()) errors.push(`${group.label}: у первого изображения нет файла или URL.`);
       if (item.draft) warnings.push(`${group.label}: первое изображение — черновик.`);
       if (item.publishAt && Date.parse(item.publishAt) > Date.now()) warnings.push(`${group.label}: первое изображение запланировано на будущее.`);
+      const localized = data?.localizedCollections && typeof data.localizedCollections === 'object' ? data.localizedCollections : {};
+      const missingDescriptions = (typeof getTranslationLanguages === 'function' ? getTranslationLanguages(data) : ['EN', 'RU', 'UA', 'DE', 'IT', 'ES', 'TR'])
+        .filter((lang) => {
+          if (lang === DEFAULT_LANG) return !String(item.description || '').trim();
+          const localizedItem = Array.isArray(localized[lang]?.items) ? localized[lang].items.find((candidate) => Number(candidate?.id) === Number(item.id)) : null;
+          return !String(localizedItem?.description || '').trim();
+        });
+      if (missingDescriptions.length) errors.push(`${group.label}: нет описания на языках ${missingDescriptions.join(', ')} — нажмите «Синхронизировать».`);
     });
     return { errors, warnings };
   }
@@ -8758,6 +8774,7 @@ function bindStudioRowActions() {
             return `<div class="homepage-archive-thumb">
               <div class="homepage-archive-thumb-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : '—'}</div>
               <span class="homepage-archive-thumb-title">${esc(card?.categoryLabel || card?.category || 'Фото')}</span>
+              <p class="homepage-archive-thumb-description">${esc(card?.description || 'Краткое описание не заполнено.')}</p>
             </div>`;
           }).join('')}
         </div>
@@ -8869,20 +8886,29 @@ function bindStudioRowActions() {
     const editorEl = document.getElementById('homepageCategoryEditor');
     if (!editorEl || !data) return;
     const categories = homepageCategories(data);
+    const languages = typeof getTranslationLanguages === 'function' ? getTranslationLanguages(data) : ['EN', 'RU', 'UA', 'DE', 'IT', 'ES', 'TR'];
     editorEl.innerHTML = categories.map((category, index) => `
       <div class="homepage-category-row">
         <span class="homepage-category-index">0${index + 1}</span>
         <label class="homepage-field"><span>Название категории</span><input data-home-category-label="${esc(category.id)}" value="${esc(category.label)}"></label>
         <label class="homepage-field homepage-category-keywords"><span>Ключевые слова для авторазбора</span><input data-home-category-matches="${esc(category.id)}" value="${esc(category.matches.join(', '))}"></label>
+        <div class="homepage-category-locales"><span>Подписи на 7 языках</span><div class="homepage-category-locale-grid">${languages.map((lang) => {
+          const fallback = DEFAULT_HOME_CATEGORY_LABELS[category.id]?.[lang] || category.label;
+          const value = category.labels?.[lang] || fallback;
+          return `<label><small>${esc(lang)}</small><input data-home-category-label-lang="${esc(category.id)}" data-home-category-lang="${esc(lang)}" value="${esc(value)}"></label>`;
+        }).join('')}</div></div>
       </div>`).join('');
-    editorEl.querySelectorAll('[data-home-category-label], [data-home-category-matches]').forEach((input) => input.addEventListener('change', (event) => {
-      const id = event.target.dataset.homeCategoryLabel || event.target.dataset.homeCategoryMatches;
+    editorEl.querySelectorAll('[data-home-category-label], [data-home-category-matches], [data-home-category-label-lang]').forEach((input) => input.addEventListener('change', (event) => {
+      const id = event.target.dataset.homeCategoryLabel || event.target.dataset.homeCategoryMatches || event.target.dataset.homeCategoryLabelLang;
       const isLabel = Boolean(event.target.dataset.homeCategoryLabel);
+      const locale = event.target.dataset.homeCategoryLang;
       updateHomepageSettings((home) => {
-        const categoriesNow = homepageCategories(data).map((category) => ({ ...category, matches: category.matches.slice() }));
+        const categoriesNow = homepageCategories(data).map((category) => ({ ...category, matches: category.matches.slice(), labels: { ...(category.labels || {}) } }));
         const category = categoriesNow.find((candidate) => candidate.id === id);
+        const localeCategory = locale ? categoriesNow.find((candidate) => candidate.id === event.target.dataset.homeCategoryLabelLang) : null;
         if (!category) return;
-        if (isLabel) category.label = String(event.target.value || '').trim() || category.label;
+        if (localeCategory && locale) localeCategory.labels[locale] = String(event.target.value || '').trim() || localeCategory.labels[locale] || localeCategory.label;
+        else if (isLabel) category.label = String(event.target.value || '').trim() || category.label;
         else category.matches = String(event.target.value || '').split(',').map((match) => match.trim()).filter(Boolean);
         home.picsOfWeek.categories = categoriesNow;
       }, 'Категории Pics of the week сохранены в черновик.');

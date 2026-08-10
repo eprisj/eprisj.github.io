@@ -273,6 +273,8 @@ export interface HomepageShowcaseSettings {
 export interface HomepagePicsCategory {
   id: string;
   label: string;
+  /** Optional per-locale category labels; standard categories also have code fallbacks. */
+  labels?: Record<string, string>;
   /** Words used by the safe fallback classifier when an item has no explicit category. */
   matches?: string[];
 }
