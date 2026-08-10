@@ -1,5 +1,5 @@
 import { motion, AnimatePresence, LayoutGroup, MotionConfig } from 'framer-motion';
-import { ReactNode, useState, useEffect, useCallback, useMemo, FormEvent, MouseEvent, TouchEvent as ReactTouchEvent, CSSProperties, useRef, Suspense, lazy, Component } from 'react';
+import { ReactNode, useState, useEffect, useCallback, useMemo, FormEvent, MouseEvent, PointerEvent as ReactPointerEvent, CSSProperties, useRef, Suspense, lazy, Component } from 'react';
 // Heavy, rarely-visited tabs are code-split out of the critical bundle —
 // e.g. DesignPage alone carries a 244-item catalogue that has no business
 // loading for a reader who just opened an article. Each only downloads once
@@ -1327,7 +1327,6 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
     category,
     item: category.items[0] || null,
   }));
-  const viewportRef = useRef<HTMLDivElement>(null);
   // Keep the selected work in the visual centre (position 3) while the
   // surrounding four works stay smaller. Wrapping the order makes the arrows
   // feel continuous instead of running into an artificial end.
@@ -1338,8 +1337,9 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
   const previousConfiguredCenterIndexRef = useRef(configuredCenterIndex);
   const itemCount = featuredItems.length;
   const safeCenterIndex = itemCount ? ((centerIndex % itemCount) + itemCount) % itemCount : 0;
-  const gestureStartRef = useRef<{ x: number; y: number } | null>(null);
+  const dragStateRef = useRef<{ pointerId: number; x: number; y: number; moved: boolean } | null>(null);
   const suppressCardClickRef = useRef(false);
+  const [isDragging, setIsDragging] = useState(false);
   const centeredItems = itemCount
     ? Array.from({ length: itemCount }, (_, position) => featuredItems[(safeCenterIndex + position - 2 + itemCount) % itemCount])
     : [];
@@ -1358,41 +1358,38 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
     if (centerIndex !== safeCenterIndex) setCenterIndex(safeCenterIndex);
   }, [centerIndex, itemCount, safeCenterIndex]);
 
-  useEffect(() => {
-    const viewport = viewportRef.current;
-    const centerCard = viewport?.querySelector<HTMLElement>('[data-carousel-position="center"]');
-    if (!viewport || !centerCard) return;
-    const target = centerCard.offsetLeft + centerCard.offsetWidth / 2 - viewport.clientWidth / 2;
-    viewport.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
-  }, [safeCenterIndex, itemCount]);
-
   const moveCarousel = (direction: -1 | 1) => {
     if (!itemCount) return;
     setCenterIndex((current) => (current + direction + itemCount) % itemCount);
   };
-  const handleCarouselTouchStart = (event: ReactTouchEvent<HTMLDivElement>) => {
-    if (event.touches.length !== 1) {
-      gestureStartRef.current = null;
-      return;
-    }
-    const touch = event.touches[0];
-    gestureStartRef.current = { x: touch.clientX, y: touch.clientY };
-  };
-  const handleCarouselTouchEnd = (event: ReactTouchEvent<HTMLDivElement>) => {
-    const start = gestureStartRef.current;
-    gestureStartRef.current = null;
-    if (!start || event.changedTouches.length !== 1) return;
-    const touch = event.changedTouches[0];
-    const deltaX = touch.clientX - start.x;
-    const deltaY = touch.clientY - start.y;
-    const horizontalSwipe = Math.abs(deltaX) >= 44 && Math.abs(deltaX) > Math.abs(deltaY) * 1.15;
-    if (!horizontalSwipe) return;
-
-    // Native scrolling remains enabled, but the selected work is also moved
-    // into the centre so a swipe and an arrow tap share the same state.
+  const suppressNextCardClick = () => {
     suppressCardClickRef.current = true;
-    moveCarousel(deltaX < 0 ? 1 : -1);
-    window.setTimeout(() => { suppressCardClickRef.current = false; }, 450);
+    window.setTimeout(() => { suppressCardClickRef.current = false; }, 500);
+  };
+  const handleCarouselPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if ((event.pointerType === 'mouse' && event.button !== 0) || event.isPrimary === false) return;
+    dragStateRef.current = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, moved: false };
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+    setIsDragging(true);
+  };
+  const handleCarouselPointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const drag = dragStateRef.current;
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    if (Math.hypot(event.clientX - drag.x, event.clientY - drag.y) > 8) drag.moved = true;
+  };
+  const handleCarouselPointerEnd = (event: ReactPointerEvent<HTMLDivElement>, cancelled = false) => {
+    const drag = dragStateRef.current;
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    dragStateRef.current = null;
+    setIsDragging(false);
+    try { event.currentTarget.releasePointerCapture?.(event.pointerId); } catch { /* capture may already be released */ }
+    if (cancelled) return;
+
+    const deltaX = event.clientX - drag.x;
+    const deltaY = event.clientY - drag.y;
+    const horizontalSwipe = Math.abs(deltaX) >= 44 && Math.abs(deltaX) > Math.abs(deltaY) * 1.15;
+    if (drag.moved) suppressNextCardClick();
+    if (horizontalSwipe) moveCarousel(deltaX < 0 ? 1 : -1);
   };
   const handleCarouselCardClick = (src: string, alt: string) => {
     if (suppressCardClickRef.current) {
@@ -1444,9 +1441,8 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
         <div className="home-carousel-frame">
           <button type="button" onClick={() => moveCarousel(-1)} className="home-carousel-edge-arrow home-carousel-edge-arrow--prev" aria-label={t('homepage.previous')}><ArrowLeft size={17} strokeWidth={1.5} aria-hidden="true" /></button>
           <div
-            ref={viewportRef}
             style={carouselStyle}
-            className="home-carousel"
+            className={`home-carousel${isDragging ? ' is-dragging' : ''}`}
             tabIndex={0}
             aria-label={t('homepage.carouselLabel')}
             onKeyDown={(event) => {
@@ -1454,9 +1450,10 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
               if (event.key === 'ArrowLeft') moveCarousel(-1);
               if (event.key === 'ArrowRight') moveCarousel(1);
             }}
-            onTouchStart={handleCarouselTouchStart}
-            onTouchEnd={handleCarouselTouchEnd}
-            onTouchCancel={() => { gestureStartRef.current = null; }}
+            onPointerDown={handleCarouselPointerDown}
+            onPointerMove={handleCarouselPointerMove}
+            onPointerUp={handleCarouselPointerEnd}
+            onPointerCancel={(event) => handleCarouselPointerEnd(event, true)}
           >
           {centeredItems.map(({ category, item }, position) => item ? (() => {
               const categoryLabel = localizedHomepageCategoryLabel(category, currentLang);
@@ -1466,6 +1463,12 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
               return (
             <motion.article
               key={item.id}
+              layout
+              transition={{
+                layout: { type: 'spring', stiffness: 320, damping: 34, mass: 0.8 },
+                opacity: { duration: 0.22, ease: [0.22, 1, 0.36, 1] },
+                default: { duration: 0.34, ease: [0.22, 1, 0.36, 1] },
+              }}
               data-carousel-position={isCenter ? 'center' : 'side'}
               className={`home-carousel-card group ${isCenter ? 'home-carousel-card--center' : 'home-carousel-card--side'}`}
               role="button"
