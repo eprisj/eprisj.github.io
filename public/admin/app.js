@@ -4334,7 +4334,7 @@ function renderVisualForm() {
       <label>Метка на изображении<input id="vf-homeLabel" value="${escapeHtml(entry.homeLabel || '')}" placeholder="Например: week 32" /></label>
       <label class="full">Описание<textarea id="vf-description">${escapeHtml(entry.description || '')}</textarea></label>
       <div class="full homepage-work-fields">
-        <div class="homepage-work-fields-head"><strong>Самостоятельная работа для Pics of the week</strong><span>Эти поля не меняют заголовок статьи. Они используются только в подборке изображений и синхронизируются на 7 языков.</span></div>
+        <div class="homepage-work-fields-head"><strong>Самостоятельная работа для Pics of the week</strong><span>Эти поля не меняют заголовок статьи. Они используются только в подборке изображений и синхронизируются на 7 языков. Пустые поля всегда наследуют заголовок, подзаголовок и описание сверху.</span></div>
         <label>Название работы<input id="vf-homeTitle" value="${escapeHtml(entry.homeTitle || '')}" placeholder="Например: Unique Forms of Continuity in Space" /></label>
         <label>Короткая строка<input id="vf-homeSubtitle" value="${escapeHtml(entry.homeSubtitle || '')}" placeholder="Автор · год · материал" /></label>
         <label class="full">Описание работы<textarea id="vf-homeDescription" placeholder="Короткое описание именно изображения, не статьи">${escapeHtml(entry.homeDescription || '')}</textarea></label>
@@ -4547,6 +4547,18 @@ function applyDraftFieldsFromForm(next) {
   if (pv) next.publishAt = new Date(pv).toISOString(); else delete next.publishAt;
 }
 
+// Pics of the week keeps its own editorial fields, but an empty field should
+// never leave a card without a title or description. Store the inherited value
+// explicitly so new cards, translated copies and archive snapshots all keep the
+// same source-of-truth even when the homepage is edited later.
+function inheritHomepageFields(next) {
+  if (!next || typeof next !== 'object') return next;
+  if (!String(next.homeTitle || '').trim()) next.homeTitle = String(next.title || '').trim();
+  if (!String(next.homeSubtitle || '').trim()) next.homeSubtitle = String(next.subtitle || '').trim();
+  if (!String(next.homeDescription || '').trim()) next.homeDescription = String(next.description || '').trim();
+  return next;
+}
+
 // Reads the current classic-form fields into a full replacement entity for
 // `section`, based on `current` (spread first so untouched fields survive).
 // Shared by applyVisualChanges() (writes into the whole-document textarea)
@@ -4577,6 +4589,7 @@ function buildEntryFromVisualForm(section, current) {
       images: photos.length ? photos : undefined
     };
     applyDraftFieldsFromForm(next);
+    inheritHomepageFields(next);
   } else if (section === 'reviews') {
     const lines = (id) => getFieldValue(id).split('\n').map((s) => s.trim()).filter(Boolean);
     // NOTE: 'content' is managed by the WYSIWYG review canvas (initReviewCanvas),
@@ -6567,6 +6580,7 @@ async function addVisualEntry() {
       entry.homeCategory = pendingHomepageCategory;
       pendingHomepageCategory = null;
     }
+    if (section === 'items') inheritHomepageFields(entry);
 
     entries.push(entry);
     setStatus('info', `Создаю языковые версии записи #${nextId}...`);
@@ -8630,11 +8644,13 @@ function bindStudioRowActions() {
   let homepageAutoPublishTimer = null;
   let homepagePublishBusy = false;
   let homepagePublishQueued = false;
+  let homepageArticlesSyncBusy = false;
   let pendingRemoteHomepageData = null;
 
   function ensureHomepageSettings(data) {
     if (!data.homepage || typeof data.homepage !== 'object' || Array.isArray(data.homepage)) data.homepage = {};
     if (!data.homepage.picsOfWeek || typeof data.homepage.picsOfWeek !== 'object' || Array.isArray(data.homepage.picsOfWeek)) data.homepage.picsOfWeek = {};
+    if (!data.homepage.articles || typeof data.homepage.articles !== 'object' || Array.isArray(data.homepage.articles)) data.homepage.articles = {};
     if (!data.homepage.showcase || typeof data.homepage.showcase !== 'object' || Array.isArray(data.homepage.showcase)) data.homepage.showcase = {};
     return data.homepage;
   }
@@ -8864,18 +8880,43 @@ function bindStudioRowActions() {
     showToast?.('success', `Дозаполнено категорий: ${filled}. Проверьте превью и нажмите «Опубликовать».`);
   }
 
+  function inheritEmptyHomepageFields() {
+    const data = readContent();
+    if (!data) { showToast?.('error', 'Сначала загрузите контент.'); return; }
+    const items = Array.isArray(data.items) ? data.items : [];
+    let changed = 0;
+    items.forEach((item) => {
+      const before = JSON.stringify([item.homeTitle, item.homeSubtitle, item.homeDescription]);
+      inheritHomepageFields(item);
+      if (before !== JSON.stringify([item.homeTitle, item.homeSubtitle, item.homeDescription])) changed += 1;
+    });
+    if (!changed) {
+      showToast?.('info', 'Все карточки уже используют заполненные поля или собственные подписи.');
+      return;
+    }
+    setEditorData(data);
+    renderHomepageTab();
+    scheduleHomepageAutoPublish();
+    showToast?.('success', `Наследование применено к карточкам: ${changed}. Проверьте превью и нажмите «Опубликовать».`);
+  }
+
   function renderHomepageControls(data) {
     const prefs = readHomepageAutoPrefs();
     const home = data?.homepage || {};
     const pics = home.picsOfWeek || {};
+    const articles = home.articles || {};
     const showcase = home.showcase || {};
     const autoRefresh = document.getElementById('homepageAutoRefresh');
     const refreshInterval = document.getElementById('homepageRefreshInterval');
     const autoPublish = document.getElementById('homepageAutoPublish');
     const picsMode = document.getElementById('homepagePicsMode');
+    const articlesAutoSync = document.getElementById('homepageArticlesAutoSync');
+    const articlesLimit = document.getElementById('homepageArticlesLimit');
     if (autoRefresh) autoRefresh.checked = prefs.enabled;
     if (refreshInterval) refreshInterval.value = String(prefs.interval);
     if (autoPublish) autoPublish.checked = home.autoPublish === true;
+    if (articlesAutoSync) articlesAutoSync.checked = articles.autoSync !== false;
+    if (articlesLimit) articlesLimit.value = ['0', '3', '5', '8', '12'].includes(String(articles.limit ?? 0)) ? String(articles.limit ?? 0) : '0';
     if (picsMode) picsMode.value = pics.mode === 'auto' ? 'auto' : 'manual';
     const picsOrdering = document.getElementById('homepageOrdering');
     if (picsOrdering) picsOrdering.value = pics.ordering === 'manual' ? 'manual' : 'lifo';
@@ -8907,8 +8948,12 @@ function bindStudioRowActions() {
         ? 'Анонс скрыт на главной. Настройки сохранены и будут готовы к следующему включению.'
         : showcase.mode === 'manual'
         ? (ids.length >= (Number(showcase.limit) || 4) ? `Ручной порядок активен: ${Math.min(ids.length, Number(showcase.limit) || 4)} работ будут показаны по заданным ID.` : `Ручной режим включён — укажите минимум ${Number(showcase.limit) || 4} ID работ.`)
-        : `Автоматический режим: редакционный рейтинг отбирает до ${Number(showcase.limit) || 4} опубликованных работ с фото.`;
+      : `Автоматический режим: редакционный рейтинг отбирает до ${Number(showcase.limit) || 4} опубликованных работ с фото.`;
     }
+    const articleStatus = document.getElementById('homepageArticlesSyncStatus');
+    if (articleStatus) articleStatus.textContent = articles.autoSync === false
+      ? `Автоподгрузка новых статей выключена · на главной закреплены ${Number(articles.limit) > 0 ? `последние ${Number(articles.limit)}` : 'все'} тексты.`
+      : `Автоподгрузка включена · на главной показываются ${Number(articles.limit) > 0 ? `последние ${Number(articles.limit)}` : 'все новые'} опубликованные статьи. Поля и переводы наследуются из редакционного источника.`;
     restartHomepageRefreshTimer();
   }
 
@@ -8956,6 +9001,70 @@ function bindStudioRowActions() {
     } finally {
       homepageRefreshBusy = false;
       if (button) { button.disabled = false; button.textContent = '↻ Получить свежую версию'; }
+    }
+  }
+
+  async function syncNewHomepageArticles({ silent = false } = {}) {
+    if (homepageArticlesSyncBusy) return;
+    const local = readContent();
+    if (!local) { if (!silent) showToast?.('error', 'Сначала загрузите контент.'); return; }
+    homepageArticlesSyncBusy = true;
+    const button = document.getElementById('homepageArticlesSyncBtn');
+    const status = document.getElementById('homepageArticlesSyncStatus');
+    const wasDirty = isEditorDirty();
+    if (button) { button.disabled = true; button.textContent = '↻ Синхронизирую…'; }
+    if (status) status.textContent = 'Проверяю общую ленту публикаций…';
+    try {
+      const response = await fetch(CONTENT_API, { cache: 'no-store' });
+      if (!response.ok) throw new Error(`VPS вернул статус ${response.status}`);
+      const remote = await response.json();
+      validateShape(remote);
+      if (!Array.isArray(local.articles)) local.articles = [];
+      const knownIds = new Set(local.articles.map((article) => String(article.id)));
+      const freshArticles = (Array.isArray(remote.articles) ? remote.articles : [])
+        .filter((article) => !knownIds.has(String(article.id)));
+      if (!freshArticles.length) {
+        if (status) status.textContent = 'Новых статей нет — лента уже актуальна.';
+        if (!silent) showToast?.('info', 'Новых статей для добавления не найдено.');
+        return;
+      }
+
+      const remoteCollections = remote.localizedCollections && typeof remote.localizedCollections === 'object'
+        ? remote.localizedCollections
+        : {};
+      const freshIds = new Set(freshArticles.map((article) => String(article.id)));
+      if (!wasDirty) {
+        // With no local edits, accept the complete remote snapshot so existing
+        // article edits are not accidentally hidden behind an old admin copy.
+        setEditorData(remote, { markSynced: true, clearDraft: true });
+      } else {
+        // A dirty homepage keeps its local fields; only genuinely new article
+        // ids and their translated overlays are merged into that draft.
+        local.articles.push(...deepClone(freshArticles));
+        if (!local.localizedCollections || typeof local.localizedCollections !== 'object' || Array.isArray(local.localizedCollections)) local.localizedCollections = {};
+        Object.entries(remoteCollections).forEach(([lang, remoteBucket]) => {
+          const remoteEntries = Array.isArray(remoteBucket?.articles) ? remoteBucket.articles : [];
+          if (!remoteEntries.length) return;
+          if (!local.localizedCollections[lang] || typeof local.localizedCollections[lang] !== 'object' || Array.isArray(local.localizedCollections[lang])) local.localizedCollections[lang] = {};
+          if (!Array.isArray(local.localizedCollections[lang].articles)) local.localizedCollections[lang].articles = [];
+          const localIds = new Set(local.localizedCollections[lang].articles.map((article) => String(article.id)));
+          local.localizedCollections[lang].articles.push(...deepClone(remoteEntries.filter((article) => freshIds.has(String(article.id)) && !localIds.has(String(article.id)))));
+        });
+        setEditorData(local);
+      }
+      renderHomepageTab();
+      const message = `Подтянуто новых статей: ${freshArticles.length}. ${wasDirty ? 'Локальный черновик главной сохранён — проверьте и опубликуйте.' : 'Главная уже увидит их после публикации.'}`;
+      if (status) status.textContent = message;
+      setHomepageRemoteNotice(message, wasDirty ? 'warn' : 'ok', true);
+      if (!silent) showToast?.('success', message);
+    } catch (error) {
+      const message = `Синхронизация статей не удалась: ${getErrorMessage(error)}`;
+      if (status) status.textContent = message;
+      setHomepageRemoteNotice(message, 'warn', true);
+      if (!silent) showToast?.('error', message);
+    } finally {
+      homepageArticlesSyncBusy = false;
+      if (button) { button.disabled = false; button.textContent = '↻ Синхронизировать новые статьи'; }
     }
   }
 
@@ -9202,8 +9311,16 @@ function bindStudioRowActions() {
     setTimeout(() => addEntryBtn?.click(), 80);
   });
   document.getElementById('homepageFillBtn')?.addEventListener('click', fillEmptyHomepageSlots);
+  document.getElementById('homepageInheritBtn')?.addEventListener('click', inheritEmptyHomepageFields);
   document.getElementById('homepagePublishBtn')?.addEventListener('click', publishHomepage);
   document.getElementById('homepageRefreshBtn')?.addEventListener('click', () => refreshHomepageFromVps({ silent: false }));
+  document.getElementById('homepageArticlesSyncBtn')?.addEventListener('click', () => syncNewHomepageArticles({ silent: false }));
+  document.getElementById('homepageArticlesAutoSync')?.addEventListener('change', (event) => {
+    updateHomepageSettings((home) => { home.articles.autoSync = event.target.checked; }, event.target.checked ? 'Автоподгрузка новых статей включена.' : 'Автоподгрузка новых статей выключена.');
+  });
+  document.getElementById('homepageArticlesLimit')?.addEventListener('change', (event) => {
+    updateHomepageSettings((home) => { home.articles.limit = Math.max(0, Number(event.target.value) || 0); }, event.target.value === '0' ? 'На главной будут показываться все новые статьи.' : `На главной оставлены ${event.target.value} самых новых статей.`);
+  });
   document.getElementById('homepageAutoRefresh')?.addEventListener('change', (event) => {
     const prefs = readHomepageAutoPrefs();
     prefs.enabled = event.target.checked;

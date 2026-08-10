@@ -307,6 +307,14 @@ export interface HomepageSettings {
     sideScale?: number;
     gap?: number;
   };
+  /** Homepage editorial feed. New published articles are included by default. */
+  articles?: {
+    enabled?: boolean;
+    /** Keep the homepage feed live while a reader leaves the page open. */
+    autoSync?: boolean;
+    /** 0 means all published articles, otherwise show the newest N. */
+    limit?: number;
+  };
   /** When enabled, safe homepage edits are pushed after a short debounce. */
   autoPublish?: boolean;
   showcase?: HomepageShowcaseSettings;
@@ -609,6 +617,7 @@ function mergeContentBlocks(base: ContentBlock[], localized: unknown): ContentBl
 function mergeEntryTextOntoBase<T extends { id: number }>(base: T, localized: T): T {
   const merged: Record<string, unknown> = { ...base };
   const baseRec = base as Record<string, unknown>;
+  const localizedRec = localized as Record<string, unknown>;
   for (const [key, value] of Object.entries(localized as Record<string, unknown>)) {
     if (BASE_AUTHORITATIVE_FIELDS.has(key)) continue;
 
@@ -631,6 +640,19 @@ function mergeEntryTextOntoBase<T extends { id: number }>(base: T, localized: T)
     if (typeof value === 'string') { if (value.trim()) merged[key] = value; }
     else if (Array.isArray(value)) { if (value.length) merged[key] = value; }
     else if (value && typeof value === 'object') { if (Object.keys(value).length) merged[key] = value; }
+  }
+  // Homepage artwork fields inherit from the localized editorial source when
+  // an older translation snapshot has no dedicated home copy. This keeps the
+  // always-inherited card metadata multilingual instead of leaking EN values
+  // into RU/UA/DE/IT/ES/TR until somebody manually opens every card.
+  if (!String(localizedRec.homeTitle || '').trim() && typeof localizedRec.title === 'string' && localizedRec.title.trim()) {
+    merged.homeTitle = localizedRec.title;
+  }
+  if (!String(localizedRec.homeSubtitle || '').trim() && typeof localizedRec.subtitle === 'string' && localizedRec.subtitle.trim()) {
+    merged.homeSubtitle = localizedRec.subtitle;
+  }
+  if (!String(localizedRec.homeDescription || '').trim() && typeof localizedRec.description === 'string' && localizedRec.description.trim()) {
+    merged.homeDescription = localizedRec.description;
   }
   return merged as T;
 }
