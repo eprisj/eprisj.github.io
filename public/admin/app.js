@@ -10522,6 +10522,8 @@ function bindStudioRowActions() {
   const pane      = document.getElementById('previewPane');
   const closeBtn  = document.getElementById('closePreviewBtn');
   const deviceBtn = document.getElementById('previewDeviceToggle');
+  const languageSelect = document.getElementById('previewLanguageSelect');
+  const viewportSelect = document.getElementById('previewViewportSelect');
   const wrap      = document.getElementById('previewDeviceWrap');
   const previewEl = document.getElementById('articleLivePreview');
   const liveDot   = document.getElementById('previewLiveDot');
@@ -10529,7 +10531,8 @@ function bindStudioRowActions() {
   if (!toggleBtn || !split || !pane || !previewEl) return;
 
   let _previewOpen = false;
-  let _mobileMode  = false;
+  let _viewportMode = viewportSelect?.value || 'desktop';
+  let _previewLanguage = languageSelect?.value || 'current';
   let _refreshTimer = null;
   let _lastHash = '';
 
@@ -10551,13 +10554,24 @@ function bindStudioRowActions() {
   closeBtn.addEventListener('click', closePreview);
   document.addEventListener('keydown', (e) => { if (e.altKey && e.key === 'p') { e.preventDefault(); _previewOpen ? closePreview() : openPreview(); } });
 
-  // ── device toggle ──────────────────────────────────────
-  deviceBtn.addEventListener('click', () => {
-    _mobileMode = !_mobileMode;
-    wrap.classList.toggle('mobile', _mobileMode);
-    deviceBtn.textContent = _mobileMode ? '🖥️' : '📱';
-    deviceBtn.title = _mobileMode ? 'Переключить на десктоп' : 'Переключить на мобильный';
+  // ── device + language controls ─────────────────────────
+  function applyViewport(mode) {
+    _viewportMode = ['desktop', 'tablet', 'mobile'].includes(mode) ? mode : 'desktop';
+    wrap.classList.toggle('tablet', _viewportMode === 'tablet');
+    wrap.classList.toggle('mobile', _viewportMode === 'mobile');
+    if (viewportSelect) viewportSelect.value = _viewportMode;
+    if (deviceBtn) {
+      deviceBtn.textContent = _viewportMode === 'mobile' ? '🖥️' : (_viewportMode === 'tablet' ? '▣' : '📱');
+      deviceBtn.title = _viewportMode === 'mobile' ? 'Переключить на десктоп' : 'Переключить на мобильный';
+    }
+  }
+  deviceBtn?.addEventListener('click', () => {
+    const next = { desktop: 'mobile', mobile: 'tablet', tablet: 'desktop' }[_viewportMode] || 'desktop';
+    applyViewport(next);
   });
+  viewportSelect?.addEventListener('change', () => { applyViewport(viewportSelect.value); schedulePreviewRefresh(0); });
+  languageSelect?.addEventListener('change', () => { _previewLanguage = languageSelect.value || 'current'; _lastHash = ''; schedulePreviewRefresh(0); });
+  applyViewport(_viewportMode);
 
   // ── schedule debounced refresh ─────────────────────────
   function schedulePreviewRefresh(delay = 220) {
@@ -10589,6 +10603,38 @@ function bindStudioRowActions() {
     };
   }
 
+  function articleFromData(data, section, lang, id) {
+    if (!data || section !== 'articles') return null;
+    const entries = getSectionArray(data, section, lang, false);
+    const entry = entries.find(item => Number(item.id) === Number(id));
+    if (!entry) return null;
+    return {
+      id: Number(entry.id) || 0,
+      title: entry.title || '',
+      author: entry.author || '',
+      role: entry.role || '',
+      date: entry.date || '',
+      category: entry.category || '',
+      subcategory: entry.subcategory || '',
+      excerpt: entry.excerpt || '',
+      tags: Array.isArray(entry.tags) ? entry.tags : [],
+      imageUrl: entry.imageUrl || '',
+      imageSeed: entry.imageSeed || '',
+      content: Array.isArray(entry.content) ? entry.content : []
+    };
+  }
+
+  function previewLanguageOptions() {
+    const data = parseEditorJsonSafe();
+    const langs = data ? getLanguageOptions(data) : [DEFAULT_LANGUAGE];
+    if (!languageSelect) return langs;
+    const current = languageSelect.value || _previewLanguage || 'current';
+    languageSelect.innerHTML = `<option value="current">Текущий (${escapeHtml(document.getElementById('visualLang')?.value || DEFAULT_LANGUAGE)})</option><option value="all">Все языки</option>${langs.map(lang => `<option value="${escapeHtml(lang)}">${escapeHtml(lang)}</option>`).join('')}`;
+    languageSelect.value = ['current', 'all', ...langs].includes(current) ? current : 'current';
+    _previewLanguage = languageSelect.value;
+    return langs;
+  }
+
   function captureBlocksFromEditor() {
     try {
       // collectBlockEditorContent is defined in the main app.js scope
@@ -10609,8 +10655,17 @@ function bindStudioRowActions() {
       return;
     }
 
-    const article = snapshotArticle();
-    const hash = JSON.stringify(article);
+    const langs = previewLanguageOptions();
+    const data = parseEditorJsonSafe();
+    const selectedId = Number(document.getElementById('visualEntry')?.value || 0);
+    const selectedLang = document.getElementById('visualLang')?.value || DEFAULT_LANGUAGE;
+    const article = _previewLanguage === 'current'
+      ? snapshotArticle()
+      : articleFromData(data, section, _previewLanguage, selectedId);
+    const previewArticles = _previewLanguage === 'all'
+      ? langs.map(lang => lang === selectedLang ? snapshotArticle() : articleFromData(data, section, lang, selectedId)).filter(Boolean)
+      : [article].filter(Boolean);
+    const hash = JSON.stringify({ previewArticles, _viewportMode, _previewLanguage });
     // Always render on first open or when content changed
     if (hash === _lastHash) { if (liveDot) liveDot.classList.remove('refreshing'); return; }
     _lastHash = hash;
@@ -10618,7 +10673,9 @@ function bindStudioRowActions() {
     // Fade out → update → fade in (no RAF to avoid context issues)
     previewEl.style.opacity = '0.35';
     previewEl.style.transition = 'opacity .1s ease';
-    const html = renderArticleHTML(article);
+    const html = previewArticles.length > 1
+      ? `<div class="preview-all-grid">${previewArticles.map((item, index) => `<section class="preview-language-card"><header><strong>${escapeHtml(langs[index] || DEFAULT_LANGUAGE)}</strong><span class="entry-history-badge">${escapeHtml(publicationStateLabel(getPublicationState(data, section, item)))}</span></header>${renderArticleHTML(item)}</section>`).join('')}</div>`
+      : renderArticleHTML(article);
     setTimeout(() => {
       previewEl.innerHTML = html;
       previewEl.style.opacity = '1';
@@ -15118,3 +15175,166 @@ document.addEventListener('click', (event) => {
   const tab = event.target.closest('.tab-btn[data-tab="showcase"]');
   if (tab) loadShowcaseAdmin();
 });
+
+// ═══════════════════════════════════════════════════════════
+// EDITORIAL WORKBENCH — queue + local entry versions
+// ═══════════════════════════════════════════════════════════
+(function initEditorialWorkbench() {
+  const queueList = document.getElementById('editorialQueueList');
+  const queueSummary = document.getElementById('editorialQueueSummary');
+  const queueRefresh = document.getElementById('editorialQueueRefreshBtn');
+  const historyList = document.getElementById('entryHistoryList');
+  const historyClear = document.getElementById('entryHistoryClearBtn');
+  if (!queueList || !queueSummary || !historyList) return;
+
+  const HISTORY_KEY = 'epris-admin-entry-history-v1';
+  const MAX_VERSIONS = 30;
+  let lastWorkbenchHash = '';
+
+  function readHistory() {
+    try {
+      const parsed = JSON.parse(localStorage.getItem(HISTORY_KEY) || '{}');
+      return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
+    } catch { return {}; }
+  }
+  function writeHistory(value) {
+    try { localStorage.setItem(HISTORY_KEY, JSON.stringify(value)); } catch { /* private mode/quota */ }
+  }
+  function selectedContext(data = parseEditorJsonSafe()) {
+    if (!data) return null;
+    const section = visualSectionSelect.value;
+    const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
+    const id = Number(visualEntrySelect.value);
+    if (!section || !id) return null;
+    const entries = getSectionArray(data, section, lang, false);
+    const entry = entries.find(item => Number(item.id) === id);
+    if (!entry) return null;
+    return { data, section, lang, id, entry };
+  }
+  function contextKey(ctx) { return ctx ? `${ctx.section}:${ctx.lang}:${ctx.id}` : ''; }
+  function recordVersion(reason = 'Сохранение', data = parseEditorJsonSafe()) {
+    const ctx = selectedContext(data);
+    if (!ctx) return;
+    const store = readHistory();
+    const key = contextKey(ctx);
+    const snapshot = JSON.stringify(ctx.entry);
+    const existing = Array.isArray(store[key]) ? store[key] : [];
+    if (existing[0] && JSON.stringify(existing[0].entry) === snapshot) {
+      existing[0].reason = reason;
+      existing[0].savedAt = new Date().toISOString();
+    } else {
+      existing.unshift({ savedAt: new Date().toISOString(), reason, entry: deepClone(ctx.entry) });
+    }
+    store[key] = existing.slice(0, MAX_VERSIONS);
+    writeHistory(store);
+    renderEntryHistory();
+  }
+  function formatLocalDate(value) {
+    const date = new Date(value);
+    return Number.isNaN(date.getTime()) ? '—' : date.toLocaleString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+  }
+  function diffSummary(current, previous) {
+    const keys = new Set([...Object.keys(current || {}), ...Object.keys(previous || {})]);
+    const changed = [...keys].filter(key => JSON.stringify(current?.[key]) !== JSON.stringify(previous?.[key]));
+    return changed.length ? changed.slice(0, 5).join(', ') + (changed.length > 5 ? ` +${changed.length - 5}` : '') : 'без изменений';
+  }
+  function renderEntryHistory() {
+    const ctx = selectedContext();
+    if (!ctx) {
+      historyList.innerHTML = '<p class="entry-history-empty">Выберите запись, чтобы увидеть её локальные версии.</p>';
+      return;
+    }
+    const versions = readHistory()[contextKey(ctx)] || [];
+    if (!versions.length) {
+      historyList.innerHTML = `<p class="entry-history-empty">Для «${escapeHtml(getEntryTitle(ctx.section, ctx.entry))}» версий пока нет. Они появятся после первого сохранения.</p>`;
+      return;
+    }
+    historyList.innerHTML = versions.map((version, index) => `
+      <div class="entry-history-row">
+        <div class="entry-history-main">
+          <div class="entry-history-title"><span class="entry-history-badge">${index === 0 ? 'Последняя' : `v${versions.length - index}`}</span> ${escapeHtml(formatLocalDate(version.savedAt))}</div>
+          <div class="entry-history-meta">${escapeHtml(version.reason || 'Сохранение')} · ${escapeHtml(diffSummary(ctx.entry, version.entry))}</div>
+        </div>
+        <div class="entry-history-actions">
+          <button class="btn btn-sm" type="button" data-entry-history-diff="${index}">Сравнить</button>
+          <button class="btn btn-sm" type="button" data-entry-history-restore="${index}">Откатить</button>
+        </div>
+      </div>`).join('');
+  }
+  function renderEditorialQueue() {
+    const data = parseEditorJsonSafe();
+    if (!data) { queueList.innerHTML = '<p class="entry-history-empty">Загрузите контент.</p>'; queueSummary.innerHTML = ''; return; }
+    const source = Object.keys(SECTION_CONFIG).flatMap(section => getSectionArray(data, section, DEFAULT_LANGUAGE, false).map(entry => ({ section, entry })));
+    const counts = { draft: 0, scheduled: 0, hidden: 0, live: 0 };
+    const rows = source.map(item => ({ ...item, state: getPublicationState(data, item.section, item.entry) })).map(item => { counts[item.state] = (counts[item.state] || 0) + 1; return item; });
+    const stateOrder = { draft: 0, scheduled: 1, hidden: 2, live: 3 };
+    rows.sort((a, b) => stateOrder[a.state] - stateOrder[b.state] || publicationTimestamp(b.entry) - publicationTimestamp(a.entry) || Number(b.entry.id) - Number(a.entry.id));
+    queueSummary.innerHTML = ['draft', 'scheduled', 'hidden', 'live'].map(state => `<span class="editorial-queue-chip ${state}">${publicationStateIcon(state)} ${counts[state] || 0} ${publicationStateLabel(state).toLowerCase()}</span>`).join('');
+    const visible = rows.slice(0, 12);
+    queueList.innerHTML = visible.length ? visible.map(item => `
+      <button class="editorial-queue-row" type="button" data-queue-section="${escapeHtml(item.section)}" data-queue-id="${escapeHtml(String(item.entry.id))}">
+        <span class="editorial-queue-state ${item.state}" aria-hidden="true"></span>
+        <span class="editorial-queue-main"><span class="editorial-queue-title">${escapeHtml(getEntryTitle(item.section, item.entry))}</span><span class="editorial-queue-meta">${escapeHtml(getSectionLabel(item.section))} · #${escapeHtml(String(item.entry.id))} · ${escapeHtml(publicationStateLabel(item.state))}</span></span>
+        <span class="editorial-queue-open" aria-hidden="true">↗</span>
+      </button>`).join('') : '<p class="entry-history-empty">Очередь пуста.</p>';
+  }
+  function openQueueEntry(section, id) {
+    visualSectionSelect.value = section;
+    visualLangSelect.value = DEFAULT_LANGUAGE;
+    visualStatusFilter.value = 'all';
+    pendingVisualEntryId = Number(id);
+    refreshVisualEditor();
+    document.getElementById('editorSplit')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  queueRefresh.addEventListener('click', () => { renderEditorialQueue(); renderEntryHistory(); showToast('info', 'Очередь обновлена.'); });
+  historyClear.addEventListener('click', async () => {
+    const ctx = selectedContext();
+    if (!ctx) return;
+    const ok = await showConfirmModal('Очистить локальные версии?', `Удалить историю только для «${escapeHtml(getEntryTitle(ctx.section, ctx.entry))}»? Данные на VPS не изменятся.`, 'Очистить');
+    if (!ok) return;
+    const store = readHistory(); delete store[contextKey(ctx)]; writeHistory(store); renderEntryHistory();
+  });
+  document.addEventListener('click', async (event) => {
+    const queueRow = event.target.closest('[data-queue-section][data-queue-id]');
+    if (queueRow) { openQueueEntry(queueRow.dataset.queueSection, queueRow.dataset.queueId); return; }
+    const diffBtn = event.target.closest('[data-entry-history-diff]');
+    const restoreBtn = event.target.closest('[data-entry-history-restore]');
+    if (!diffBtn && !restoreBtn) return;
+    const ctx = selectedContext();
+    if (!ctx) return;
+    const versions = readHistory()[contextKey(ctx)] || [];
+    const index = Number((diffBtn || restoreBtn).dataset.entryHistoryDiff ?? (diffBtn || restoreBtn).dataset.entryHistoryRestore);
+    const version = versions[index];
+    if (!version) return;
+    if (diffBtn) {
+      showToast('info', `Изменённые поля: ${diffSummary(ctx.entry, version.entry)}.`, 7000);
+      return;
+    }
+    const ok = await showConfirmModal('Откатить локально?', `Заменить форму версией от <strong>${escapeHtml(formatLocalDate(version.savedAt))}</strong>? Перед откатом текущая версия будет сохранена здесь. На VPS изменения попадут только после «Сохранить запись».`, 'Откатить');
+    if (!ok) return;
+    recordVersion('Перед откатом', ctx.data);
+    const entries = getSectionArray(ctx.data, ctx.section, ctx.lang, ctx.lang !== DEFAULT_LANGUAGE);
+    const indexCurrent = entries.findIndex(item => Number(item.id) === ctx.id);
+    if (indexCurrent < 0) return;
+    entries[indexCurrent] = deepClone(version.entry);
+    pendingVisualEntryId = ctx.id;
+    setEditorData(ctx.data);
+    renderEntryHistory();
+    setStatus('info', 'Версия восстановлена локально. Проверьте форму и нажмите «Сохранить запись».', { sticky: true });
+  });
+
+  // Capture the pre-save state before any existing save handler mutates it.
+  [saveEntryBtn, applyEntryBtn, visualPublishBtn, visualDraftBtn, visualHideBtn].forEach((button) => {
+    button?.addEventListener('click', () => recordVersion(button === applyEntryBtn ? 'Перед применением' : 'Перед сохранением'), true);
+  });
+  saveBtn?.addEventListener('click', () => recordVersion('Перед общим сохранением'), true);
+  [visualSectionSelect, visualLangSelect, visualEntrySelect].forEach(el => el?.addEventListener('change', () => { setTimeout(() => { renderEntryHistory(); renderEditorialQueue(); }, 0); }));
+  setInterval(() => {
+    const data = parseEditorJsonSafe();
+    const hash = data ? `${visualSectionSelect.value}:${visualLangSelect.value}:${visualEntrySelect.value}:${editor.value.length}:${queueList.childElementCount}` : 'empty';
+    if (hash !== lastWorkbenchHash) { lastWorkbenchHash = hash; renderEditorialQueue(); renderEntryHistory(); }
+  }, 1200);
+  renderEditorialQueue();
+  renderEntryHistory();
+})();
