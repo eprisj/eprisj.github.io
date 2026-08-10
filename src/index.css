@@ -120,6 +120,37 @@ select {
   margin-bottom: clamp(4rem, 5vw, 5rem);
 }
 
+.home-carousel-frame {
+  position: relative;
+}
+
+.home-carousel-edge-arrow {
+  position: absolute;
+  top: 31%;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  border: 1px solid color-mix(in srgb, var(--c-accent) 28%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--c-bg) 94%, transparent);
+  color: var(--c-accent);
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--c-accent) 9%, transparent);
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
+}
+
+.home-carousel-edge-arrow--prev { left: 0; }
+.home-carousel-edge-arrow--next { right: 0; }
+.home-carousel-edge-arrow:hover {
+  border-color: var(--c-accent);
+  background: var(--c-accent);
+  color: var(--c-bg);
+  transform: scale(1.04);
+}
+.home-carousel-edge-arrow:active { transform: scale(.95); }
+
 .home-carousel {
   display: flex;
   align-items: flex-start;
@@ -356,7 +387,7 @@ select {
     touch-action: pan-y pinch-zoom;
   }
 
-  .home-carousel-arrow-controls {
+  .home-carousel-edge-arrow {
     display: none;
   }
 
