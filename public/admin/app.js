@@ -4328,23 +4328,24 @@ function renderVisualForm() {
     visualFormEl.innerHTML = `
       <label>ID<input id="vf-id" value="${escapeHtml(entry.id)}" disabled /></label>
       <label>FIG<input id="vf-fig" value="${escapeHtml(entry.fig || '')}" /></label>
-      <label class="full">Заголовок<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
-      <label class="full">Подзаголовок<input id="vf-subtitle" value="${escapeHtml(entry.subtitle || '')}" /></label>
+      <label class="full">Заголовок исходной записи<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
+      <label class="full">Подзаголовок исходной записи<input id="vf-subtitle" value="${escapeHtml(entry.subtitle || '')}" /></label>
       <label>Категория Pics of the week<select id="vf-homeCategory"><option value="">Авторазбор по ключевым словам</option>${homepageCategoryOptions}</select></label>
       <label>Метка на изображении<input id="vf-homeLabel" value="${escapeHtml(entry.homeLabel || '')}" placeholder="Например: week 32" /></label>
-      <label class="full">Описание<textarea id="vf-description">${escapeHtml(entry.description || '')}</textarea></label>
+      <label class="full">Описание исходной записи<textarea id="vf-description">${escapeHtml(entry.description || '')}</textarea></label>
       <div class="full homepage-work-fields">
-        <div class="homepage-work-fields-head"><strong>Самостоятельная работа для Pics of the week</strong><span>Эти поля не меняют заголовок статьи. Они используются только в подборке изображений и синхронизируются на 7 языков. Пустые поля всегда наследуют заголовок, подзаголовок и описание сверху.</span></div>
+        <div class="homepage-work-fields-head"><strong>Текст карточки на главной · Pics of the week</strong><span>Эти поля меняют только подпись под фото на главной, а не исходную запись. Пустое поле наследует значение сверху. После правки нажмите «Синхронизировать» — подписи уйдут на 7 языков.</span></div>
         <label>Название работы<input id="vf-homeTitle" value="${escapeHtml(entry.homeTitle || '')}" placeholder="Например: Unique Forms of Continuity in Space" /></label>
         <label>Короткая строка<input id="vf-homeSubtitle" value="${escapeHtml(entry.homeSubtitle || '')}" placeholder="Автор · год · материал" /></label>
         <label class="full">Описание работы<textarea id="vf-homeDescription" placeholder="Короткое описание именно изображения, не статьи">${escapeHtml(entry.homeDescription || '')}</textarea></label>
         <label>Автор / источник<input id="vf-homeCredit" value="${escapeHtml(entry.homeCredit || '')}" placeholder="Artist · museum / archive" /></label>
         <label>Источник изображения<input id="vf-homeSourceUrl" value="${escapeHtml(entry.homeSourceUrl || '')}" placeholder="https://…" /></label>
       </div>
-      <input type="hidden" id="vf-imageUrl" value="${escapeHtml(entry.imageUrl || '')}" />
-      <div class="full" style="margin-bottom:4px">
+      <div class="full homepage-image-editor" style="margin-bottom:4px">
+        <div class="homepage-work-fields-head"><strong>Главное фото карточки</strong><span>Это изображение увидит посетитель в Pics of the week. Вставьте URL или загрузите файл — превью обновится сразу.</span></div>
         ${renderPhotoPreviewMarkup(previewSource)}
-        <button id="vf-img-upload-btn" class="btn btn-sm" type="button" style="margin-top:6px">📷 Загрузить фото обложки</button>
+        <label class="homepage-image-url-field">URL фото<input id="vf-imageUrl" value="${escapeHtml(entry.imageUrl || '')}" placeholder="https://… или /images/…" /></label>
+        <div class="homepage-image-editor-actions"><button id="vf-img-upload-btn" class="btn btn-sm" type="button">📷 Загрузить файл</button><a class="btn btn-sm" href="../" target="_blank" rel="noreferrer">Проверить на главной ↗</a></div>
         <input id="vf-img-upload-input" type="file" accept="image/*" hidden />
       </div>
       <label class="full">imageSeed (если URL пустой)<input id="vf-imageSeed" value="${escapeHtml(entry.imageSeed || '')}" /></label>

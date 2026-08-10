@@ -5372,6 +5372,11 @@ body.busy::after {
 .homepage-work-fields-head strong { color: var(--text); font-size: .78rem; }
 .homepage-work-fields-head span { color: var(--text-muted); font-size: .64rem; line-height: 1.45; }
 .homepage-work-fields .full { grid-column: 1 / -1; }
+.homepage-image-editor { display: grid; gap: 10px; padding: 12px; border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line)); border-radius: var(--radius-sm); background: var(--bg-soft); }
+.homepage-image-url-field { display: grid; gap: 6px; color: var(--text-muted); font-size: .66rem; font-weight: 700; }
+.homepage-image-url-field input { width: 100%; min-height: 44px; padding: 9px 11px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--bg-card); color: var(--text); font: inherit; font-weight: 400; }
+.homepage-image-editor-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.homepage-image-editor-actions .btn { min-height: 42px; }
 .homepage-composer-audit { display: grid; gap: 6px; margin-top: 14px; }
 .homepage-audit-item { display: flex; gap: 8px; align-items: flex-start; padding: 8px 10px; border-radius: var(--radius-sm); font-size: .7rem; line-height: 1.4; }
 .homepage-audit-item span { flex: 0 0 auto; font-weight: 800; }
