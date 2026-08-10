@@ -698,6 +698,21 @@
                       Live Preview
                     </span>
                     <div class="preview-pane-tools">
+                      <label class="preview-pane-select" title="Язык предпросмотра">
+                        <span class="sr-only">Язык</span>
+                        <select id="previewLanguageSelect" aria-label="Язык предпросмотра">
+                          <option value="current">Текущий язык</option>
+                          <option value="all">Все языки</option>
+                        </select>
+                      </label>
+                      <label class="preview-pane-select" title="Размер экрана">
+                        <span class="sr-only">Размер экрана</span>
+                        <select id="previewViewportSelect" aria-label="Размер экрана">
+                          <option value="desktop">Десктоп</option>
+                          <option value="tablet">Планшет</option>
+                          <option value="mobile">Мобильный</option>
+                        </select>
+                      </label>
                       <button id="previewDeviceToggle" class="btn btn-sm" type="button" title="Мобильный/десктоп">📱</button>
                       <button id="closePreviewBtn" class="btn btn-sm" type="button">✕</button>
                     </div>
@@ -728,6 +743,32 @@
                   <div id="contentAuditMetrics" class="audit-metrics" aria-live="polite"></div>
                 </section>
                 <section id="entryPreview" class="entry-preview" aria-label="Предпросмотр записи" aria-live="polite"></section>
+              </div>
+
+              <div class="editorial-workbench-grid">
+                <section class="card editorial-queue-card" id="editorialQueueCard" aria-label="Редакционная очередь">
+                  <div class="panel-head">
+                    <div>
+                      <p class="panel-kicker">Рабочий поток</p>
+                      <h3>Редакционная очередь</h3>
+                    </div>
+                    <button id="editorialQueueRefreshBtn" class="btn btn-sm" type="button">Обновить</button>
+                  </div>
+                  <p class="card-desc">Сначала показываем черновики и отложенные записи, затем свежие публикации. Клик открывает запись в редакторе.</p>
+                  <div id="editorialQueueSummary" class="editorial-queue-summary" aria-live="polite"></div>
+                  <div id="editorialQueueList" class="editorial-queue-list"></div>
+                </section>
+                <section class="card entry-history-card" id="entryHistoryCard" aria-label="Версии выбранной записи">
+                  <div class="panel-head">
+                    <div>
+                      <p class="panel-kicker">Страховка редактора</p>
+                      <h3>Версии выбранной записи</h3>
+                    </div>
+                    <button id="entryHistoryClearBtn" class="btn btn-sm" type="button">Очистить</button>
+                  </div>
+                  <p class="card-desc">Локальная история в этом браузере. Перед откатом текущая версия тоже сохраняется.</p>
+                  <div id="entryHistoryList" class="entry-history-list"></div>
+                </section>
               </div>
 
               <div id="stats" class="stats"></div>
