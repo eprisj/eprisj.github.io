@@ -1308,10 +1308,6 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
                 <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={item.title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.035]" loading="lazy" referrerPolicy="no-referrer" />
                 <span className="absolute left-3 top-3 bg-[var(--c-bg)]/90 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--c-accent)]">{item.homeLabel || categorized.find((category) => category.id === activeCategory)?.label}</span>
               </div>
-              <div className="pt-3">
-                <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{item.subtitle || activeCategory}</p>
-                <h2 className="mt-1 font-crimson text-xl leading-tight text-[var(--c-accent)] group-hover:text-[var(--c-gold)] transition-colors">{item.title}</h2>
-              </div>
             </motion.article>
           )) : (
             <div className="home-carousel-empty"><span className="font-mono text-[10px] uppercase tracking-[0.2em]">{categorized.find((category) => category.id === activeCategory)?.label} · coming soon</span><p>Здесь появятся новые изображения.</p></div>
