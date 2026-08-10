@@ -24,7 +24,7 @@ import {
   getAuthors,
   getManifest,
   getContentForLanguage,
-  getGalleryArticleLinks,
+  getHomepageArchive,
   getIssueArchive,
   getStudio,
   resolveAuthor,
@@ -40,7 +40,7 @@ import {
   loadLiveContent,
   subscribeContent
 } from './data';
-import type { SiteSettings, SiteTheme, VisibilitySectionKey } from './data';
+import type { HomepageArchiveEntry, SiteSettings, SiteTheme, VisibilitySectionKey } from './data';
 import { Search, ArrowUpRight, FileText, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
 
 // Issue-draft preview: when the admin opens /issue?preview=1, load the unsaved
@@ -103,7 +103,7 @@ function ImageLightbox({ src, alt, onClose }: { src: string; alt: string; onClos
   );
 }
 
-function GalleryItemView({ item, onClose, articles, onReadArticle, t }: { item: Item; onClose: () => void; articles: Article[]; onReadArticle: (article: Article) => void; t: (key: string) => string }) {
+function GalleryItemView({ item, onClose, articles, onReadArticle }: { item: Item; onClose: () => void; articles: Article[]; onReadArticle: (article: Article) => void }) {
   const photos = item.images && item.images.length > 0
     ? item.images
     : [{ url: resolveMediaSource(item.imageUrl || item.imageSeed, 1000, 750) }];
@@ -149,7 +149,7 @@ function GalleryItemView({ item, onClose, articles, onReadArticle, t }: { item: 
             onClick={() => onReadArticle(matchedArticle)}
             className="inline-flex items-center gap-2 mb-12 border border-[var(--c-accent)] rounded-full px-5 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors"
           >
-            {t('article.readFull')} →
+            Read the full article →
           </button>
         )}
         <div className="space-y-10">
@@ -182,7 +182,6 @@ function GalleryItemView({ item, onClose, articles, onReadArticle, t }: { item: 
 // overwritten; shipping the fallback here keeps new labels translated in every
 // locale until an editor overrides them in the admin.
 const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
-  'article.readFull': { EN: 'Read the full article', RU: 'Читать полностью', UA: 'Читати повністю', DE: 'Artikel vollständig lesen', IT: 'Leggi l’articolo completo', ES: 'Leer el artículo completo', TR: 'Makalenin tamamını oku' },
   'reviews.read': { EN: 'Read', RU: 'Читать', UA: 'Читати', DE: 'Lesen', IT: 'Leggi', ES: 'Leer', TR: 'Oku' },
   'video.openVideo': { EN: 'Open video', RU: 'Открыть видео', UA: 'Відкрити відео', DE: 'Video öffnen', IT: 'Apri video', ES: 'Abrir vídeo', TR: 'Videoyu aç' },
   'lang.title': { EN: 'Language', RU: 'Язык', UA: 'Мова', DE: 'Sprache', IT: 'Lingua', ES: 'Idioma', TR: 'Dil' },
@@ -191,18 +190,6 @@ const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
   'article.notFound.body': { EN: 'This link may be broken, or the article has moved.', RU: 'Ссылка могла устареть, либо статья была перемещена.', UA: 'Посилання могло застаріти, або статтю було переміщено.', DE: 'Dieser Link ist möglicherweise defekt oder der Artikel wurde verschoben.', IT: 'Questo link potrebbe essere non valido o l\'articolo è stato spostato.', ES: 'Este enlace puede estar roto o el artículo se ha movido.', TR: 'Bu bağlantı bozuk olabilir veya makale taşınmış olabilir.' },
   'article.backToArticles': { EN: 'Back to Articles', RU: 'Назад к статьям', UA: 'Назад до статей', DE: 'Zurück zu Artikeln', IT: 'Torna agli articoli', ES: 'Volver a artículos', TR: 'Makalelere dön' },
   'article.related': { EN: 'Read also', RU: 'Читать также', UA: 'Читати також', DE: 'Auch lesen', IT: 'Leggi anche', ES: 'Leer también', TR: 'Ayrıca okuyun' },
-  'reviews.homeKicker': { EN: 'From the review desk', RU: 'Из редакции обзоров', UA: 'З редакції оглядів', DE: 'Aus der Review-Redaktion', IT: 'Dalla redazione recensioni', ES: 'De la mesa de reseñas', TR: 'İnceleme masasından' },
-  'reviews.homeTitle': { EN: 'A closer look', RU: 'Взгляд ближе', UA: 'Погляд ближче', DE: 'Ein genauerer Blick', IT: 'Uno sguardo più vicino', ES: 'Una mirada más cercana', TR: 'Daha yakından' },
-  'reviews.homeDescription': { EN: 'Short, considered notes on places, objects, books and the ideas behind them.', RU: 'Короткие вдумчивые заметки о местах, предметах, книгах и идеях за ними.', UA: 'Короткі вдумливі нотатки про місця, предмети, книжки та ідеї за ними.', DE: 'Kurze, sorgfältige Notizen zu Orten, Objekten, Büchern und ihren Ideen.', IT: 'Note brevi e attente su luoghi, oggetti, libri e sulle idee che li muovono.', ES: 'Notas breves y cuidadas sobre lugares, objetos, libros y las ideas que hay detrás.', TR: 'Mekânlar, nesneler, kitaplar ve ardındaki fikirler üzerine kısa, özenli notlar.' },
-  'reviews.homeViewAll': { EN: 'View all reviews', RU: 'Все обзоры', UA: 'Усі огляди', DE: 'Alle Reviews', IT: 'Tutte le recensioni', ES: 'Ver todas las reseñas', TR: 'Tüm incelemeler' },
-  'reviews.pageKicker': { EN: 'The review desk', RU: 'Редакция обзоров', UA: 'Редакція оглядів', DE: 'Die Review-Redaktion', IT: 'La redazione recensioni', ES: 'La mesa de reseñas', TR: 'İnceleme masası' },
-  'reviews.pageTitle': { EN: 'Reviews', RU: 'Обзоры', UA: 'Огляди', DE: 'Reviews', IT: 'Recensioni', ES: 'Reseñas', TR: 'İncelemeler' },
-  'reviews.pageDescription': { EN: 'Thoughtful notes on places, objects, books and the ideas behind them.', RU: 'Вдумчивые заметки о местах, предметах, книгах и идеях за ними.', UA: 'Вдумливі нотатки про місця, предмети, книжки та ідеї за ними.', DE: 'Sorgfältige Notizen zu Orten, Objekten, Büchern und ihren Ideen.', IT: 'Note attente su luoghi, oggetti, libri e sulle idee che li muovono.', ES: 'Notas cuidadas sobre lugares, objetos, libros y las ideas que hay detrás.', TR: 'Mekânlar, nesneler, kitaplar ve ardındaki fikirler üzerine özenli notlar.' },
-  'reviews.pageCount': { EN: '{count} reviews', RU: '{count} обзоров', UA: '{count} оглядів', DE: '{count} Reviews', IT: '{count} recensioni', ES: '{count} reseñas', TR: '{count} inceleme' },
-  'reviews.filterLabel': { EN: 'Filter reviews by category', RU: 'Фильтр обзоров по категории', UA: 'Фільтр оглядів за категорією', DE: 'Reviews nach Kategorie filtern', IT: 'Filtra le recensioni per categoria', ES: 'Filtrar reseñas por categoría', TR: 'İncelemeleri kategoriye göre filtrele' },
-  'reviews.readTime': { EN: '{minutes} min read', RU: '{minutes} мин чтения', UA: '{minutes} хв читання', DE: '{minutes} Min. Lesezeit', IT: '{minutes} min di lettura', ES: '{minutes} min de lectura', TR: '{minutes} dk okuma' },
-  'reviews.empty': { EN: 'No reviews in this category yet.', RU: 'В этой категории пока нет обзоров.', UA: 'У цій категорії ще немає оглядів.', DE: 'In dieser Kategorie gibt es noch keine Reviews.', IT: 'Non ci sono ancora recensioni in questa categoria.', ES: 'Aún no hay reseñas en esta categoría.', TR: 'Bu kategoride henüz inceleme yok.' },
-  'reviews.clearFilter': { EN: 'Show all reviews', RU: 'Показать все обзоры', UA: 'Показати всі огляди', DE: 'Alle Reviews zeigen', IT: 'Mostra tutte le recensioni', ES: 'Mostrar todas las reseñas', TR: 'Tüm incelemeleri göster' },
 };
 
 function getTranslation(lang: string, key: string) {
@@ -1233,63 +1220,97 @@ function ManifestPage({ t, currentLang }: { t: (key: string) => string; currentL
   );
 }
 
-function GallerySection({ items, articles, onItemClick, onReadArticle, t }: { items: Item[]; articles: Article[]; onItemClick: (item: Item) => void; onReadArticle: (article: Article) => void; t: (key: string) => string }) {
+function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (item: Item) => void }) {
   if (items.length === 0) return null;
-  const [featured, ...rest] = items;
-  const featuredArticle = findMatchingArticle(featured, articles);
+  // The homepage can now be curated explicitly from the admin composer. Older
+  // content has no homeSlot metadata, so keep a deterministic fallback:
+  // first item is the centre piece, then right, then left. This makes the
+  // rollout backwards compatible while allowing Maria's asymmetric layout.
+  const used = new Set<number>();
+  const take = (slot: Item['homeSlot'], fallbackIndex: number): Item | null => {
+    const explicit = slot ? items.find((item) => item.homeSlot === slot && !used.has(item.id)) : undefined;
+    const fallback = items.find((item, index) => index === fallbackIndex && !used.has(item.id));
+    const item = explicit || fallback || items.find((candidate) => !used.has(candidate.id));
+    if (item) used.add(item.id);
+    return item || null;
+  };
+  const center = take('center', 0);
+  const right = take('right', 1);
+  const left = take('left', 2);
+  const homeCards: { item: Item; slot: 'left' | 'center' | 'right' }[] = [
+    left ? { item: left, slot: 'left' } : null,
+    center ? { item: center, slot: 'center' } : null,
+    right ? { item: right, slot: 'right' } : null,
+  ].filter(Boolean) as { item: Item; slot: 'left' | 'center' | 'right' }[];
+  const rest = items.filter((item) => !used.has(item.id));
+
+  const slotClass: Record<'left' | 'center' | 'right', string> = {
+    // Desktop: #3 left, #1 centre, #2 right. Mobile: #1, #2, #3.
+    left: 'order-3 md:order-1 md:col-span-3',
+    center: 'order-1 md:order-2 md:col-span-6',
+    right: 'order-2 md:order-3 md:col-span-3',
+  };
+
+  const renderHomeCard = ({ item, slot }: { item: Item; slot: 'left' | 'center' | 'right' }) => {
+    const primary = slot === 'center';
+    return (
+      <motion.article
+        key={`${slot}-${item.id}`}
+        className={`group cursor-pointer ${slotClass[slot]}`}
+        whileHover={cardHover}
+        whileTap={cardTap}
+        role="button"
+        tabIndex={0}
+        onClick={() => onItemClick(item)}
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onItemClick(item)}
+        aria-label={`View: ${item.title}`}
+      >
+        <div className={`relative overflow-hidden bg-[#E8DED5] ${primary ? 'aspect-[4/3]' : 'aspect-[4/5]'}`}>
+          <img
+            src={resolveMediaSource(item.imageUrl || item.imageSeed, primary ? 1100 : 620, primary ? 825 : 775)}
+            alt={item.title}
+            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.025]"
+            loading={primary ? 'eager' : 'lazy'}
+            referrerPolicy="no-referrer"
+          />
+          <span className="absolute top-3 left-3 bg-[var(--c-bg)]/90 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--c-accent)]">
+            {item.homeLabel || 'week'}
+          </span>
+        </div>
+        <div className={`${primary ? 'pt-5 sm:pt-6' : 'pt-4'} flex flex-col gap-2`}>
+          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">
+            {item.subtitle || 'EPRIS'}
+          </p>
+          <h2 className={`${primary ? 'text-2xl sm:text-3xl' : 'text-xl sm:text-2xl'} font-crimson leading-tight text-[var(--c-accent)] group-hover:text-[var(--c-gold)] transition-colors duration-200`}>
+            {item.title}
+          </h2>
+          {item.description && (
+            <p className={`${primary ? 'line-clamp-3 text-sm sm:text-base' : 'line-clamp-2 text-sm'} font-serif leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.72)]`}>
+              {item.description}
+            </p>
+          )}
+          <span className="mt-1 inline-flex min-h-11 w-fit items-center border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-accent)] group-hover:text-[var(--c-gold)] group-hover:border-[var(--c-gold)] transition-colors">
+            {primary ? 'read full' : 'read'} <ArrowUpRight size={14} className="ml-2" aria-hidden="true" />
+          </span>
+        </div>
+      </motion.article>
+    );
+  };
 
   return (
     <div>
-      {/* Featured article — offset corner-bracket frame, no card border */}
+      {/* Maria's three-card weekly composition: one strong centre image with
+          two quieter side pieces on desktop; the same priority becomes a
+          natural one-column reading order on mobile. */}
       <Reveal>
-        <div className="relative -mx-4 sm:mx-0 sm:p-5 mb-14 sm:mb-28">
-          <span className="absolute top-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-t border-l border-[var(--c-accent)]" />
-          <span className="absolute top-0 right-0 w-6 h-6 sm:w-8 sm:h-8 border-t border-r border-[var(--c-accent)]" />
-          <span className="absolute bottom-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-b border-l border-[var(--c-accent)]" />
-          <span className="absolute bottom-0 right-0 w-6 h-6 sm:w-8 sm:h-8 border-b border-r border-[var(--c-accent)]" />
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 group cursor-pointer"
-            whileHover={cardHover}
-            whileTap={cardTap}
-            role="button"
-            tabIndex={0}
-            onClick={() => onItemClick(featured)}
-            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onItemClick(featured)}
-            aria-label={`View: ${featured.title}`}
-          >
-            <div className="md:col-span-2 aspect-[4/3] overflow-hidden bg-[#E8DED5]">
-              <img
-                src={resolveMediaSource(featured.imageUrl || featured.imageSeed, 1000, 750)}
-                alt={featured.title}
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-            <div className="flex flex-col justify-center px-4 pt-5 pb-2 sm:px-0 sm:py-2">
-              <h2 className="font-crimson text-2xl sm:text-3xl text-[var(--c-accent)] underline decoration-1 underline-offset-4 decoration-[rgb(var(--c-accent-rgb)_/_0.35)] group-hover:decoration-[var(--c-gold)] group-hover:text-[var(--c-gold)] transition-colors duration-300 mb-2">
-                {featured.title}
-              </h2>
-              <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-5">
-                {featured.subtitle}
-              </p>
-              <p className="font-serif text-sm sm:text-base text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-6">
-                {featured.description}
-              </p>
-              {featuredArticle ? (
-                <button
-                  type="button"
-                  onClick={(e) => { e.stopPropagation(); onReadArticle(featuredArticle); }}
-                  className="inline-flex items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-5 py-2.5 sm:py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors w-fit"
-                >
-                  {t('article.readFull')} <ArrowUpRight size={13} />
-                </button>
-              ) : (
-                <span className="inline-flex items-center self-start border border-[var(--c-accent)] rounded-full px-5 py-2.5 sm:py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors w-fit">
-                  {t('reviews.read')}
-                </span>
-              )}
-            </div>
-          </motion.div>
+        <div className="relative -mx-4 sm:mx-0 mb-16 sm:mb-28">
+          <div className="mb-8 flex items-end justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-4">
+            <h1 className="font-crimson text-3xl sm:text-4xl text-[var(--c-accent)]">Pics of the week</h1>
+            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">EPRIS / gallery</span>
+          </div>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-start md:gap-6 lg:gap-10">
+            {homeCards.map(renderHomeCard)}
+          </div>
         </div>
       </Reveal>
 
@@ -1350,6 +1371,53 @@ function GallerySection({ items, articles, onItemClick, onReadArticle, t }: { it
         })}
       </motion.div>
     </div>
+  );
+}
+
+function DailyPicksArchive({ archive, items }: { archive: HomepageArchiveEntry[]; items: Item[] }) {
+  if (!archive.length) return null;
+  const currentById = new Map(items.map((item) => [Number(item.id), item]));
+  const formatDate = (value: string) => {
+    const date = new Date(value);
+    return Number.isNaN(date.getTime()) ? value : date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+  };
+
+  return (
+    <section id="daily-picks" className="border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-12 sm:pt-16 md:pt-24" aria-labelledby="daily-picks-title">
+      <div className="flex flex-col gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-5 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">Archive</p>
+          <h2 id="daily-picks-title" className="mt-2 font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">Daily picks</h2>
+        </div>
+        <p className="max-w-[38ch] font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)] sm:text-right">
+          Every weekly composition stays here after the next one takes its place.
+        </p>
+      </div>
+      <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {archive.slice(0, 12).map((entry) => (
+          <article key={entry.id} className="group min-w-0">
+            <div className="mb-3 flex items-center justify-between gap-3">
+              <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.58)]">{entry.label || 'week'}</span>
+              <time dateTime={entry.publishedAt} className="font-mono text-[9px] uppercase tracking-[0.12em] text-[rgb(var(--c-accent-rgb)_/_0.45)]">{formatDate(entry.publishedAt)}</time>
+            </div>
+            <div className="grid grid-cols-3 gap-2">
+              {entry.cards.slice(0, 3).map((card) => {
+                const localized = currentById.get(Number(card.id));
+                const image = localized?.imageUrl || localized?.imageSeed || card.imageUrl || card.imageSeed;
+                return (
+                  <div key={`${entry.id}-${card.id}`} className="min-w-0">
+                    <div className="aspect-[4/5] overflow-hidden bg-[#E8DED5]">
+                      {image ? <img src={resolveMediaSource(image, 360, 450)} alt={localized?.title || card.title} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" referrerPolicy="no-referrer" /> : <span className="flex h-full items-center justify-center font-mono text-[9px] text-[rgb(var(--c-accent-rgb)_/_0.45)]">No image</span>}
+                    </div>
+                    <p className="mt-2 line-clamp-2 font-serif text-sm leading-tight text-[var(--c-accent)]">{localized?.title || card.title}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -1703,25 +1771,22 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
 
         <article className="mt-12">
           <header className="mb-16">
-            {/* Hero image first — matches Figma layout. Editors may hide the
-                cover while keeping it available for cards and social previews. */}
-            {article.showCover !== false && (
-              <div
-                className="relative left-1/2 w-screen -translate-x-1/2 aspect-[4/3] sm:aspect-[16/8] lg:aspect-[21/8] overflow-hidden bg-[#E8DED5] mb-8 sm:mb-12 cursor-pointer"
-                role="button"
-                tabIndex={0}
-                aria-label="View full image"
-                onClick={() => onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143), article.title)}
-                onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143), article.title)}
-              >
-                <img
-                  src={resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143)}
-                  alt={article.title}
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-            )}
+            {/* Hero image first — matches Figma layout */}
+            <div
+              className="relative left-1/2 w-screen -translate-x-1/2 aspect-[4/3] sm:aspect-[16/8] lg:aspect-[21/8] overflow-hidden bg-[#E8DED5] mb-8 sm:mb-12 cursor-pointer"
+              role="button"
+              tabIndex={0}
+              aria-label="View full image"
+              onClick={() => onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143), article.title)}
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143), article.title)}
+            >
+              <img
+                src={resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143)}
+                alt={article.title}
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+            </div>
             <div className="text-center">
               <div className="flex items-center justify-center gap-2 md:gap-4 font-mono text-[10px] md:text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] uppercase tracking-widest mb-6 flex-wrap">
                 <span>{article.date}</span>
@@ -2120,11 +2185,7 @@ function ArticlesSection({
   t: (key: string) => string;
   brandName: string;
 }) {
-  // Список уже отсортирован по дате (новые первыми) в getContentForLanguage.
-  // Здесь раньше стоял reverse(): он подменял сортировку, пока порядок брался
-  // из массива как есть, — а поверх настоящей сортировки переворачивал ленту
-  // и уводил свежие статьи в конец.
-  const filteredArticles = articles;
+  const filteredArticles = [...articles].reverse();
 
   return (
     <div>
@@ -2175,13 +2236,6 @@ function ArticlesSection({
                 <p className="font-serif text-base text-[rgb(var(--c-accent-rgb)_/_0.8)] leading-relaxed">
                   {article.excerpt}
                 </p>
-                <button
-                  type="button"
-                  onClick={(e) => { e.stopPropagation(); onArticleClick(article); }}
-                  className="mt-6 inline-flex items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors"
-                >
-                  {t('article.readFull')} <ArrowUpRight size={13} />
-                </button>
               </div>
             </motion.article>
           ) : (
@@ -2302,8 +2356,6 @@ const reviewPlainText = (content: Review['content']) => typeof content === 'stri
   ? content
   : reviewBlocks(content).map(block => typeof block.content === 'string' ? block.content : block.type === 'checklist' && !Array.isArray(block.content) && 'items' in block.content ? block.content.items.join(' ') : '').filter(Boolean).join(' ');
 
-const reviewReadMinutes = (content: Review['content']) => Math.max(1, Math.ceil(reviewPlainText(content).trim().split(/\s+/).filter(Boolean).length / 200));
-
 function ReviewBody({ content }: { content: Review['content'] }) {
   if (typeof content === 'string') return <p className="font-serif text-lg leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)] whitespace-pre-line">{content}</p>;
   return <div className="space-y-7 sm:space-y-10">{reviewBlocks(content).map((block, index) => {
@@ -2321,94 +2373,13 @@ function ReviewBody({ content }: { content: Review['content'] }) {
 }
 
 function ReviewView({ review, t, onClose }: { review: Review; t: (key: string) => string; onClose: () => void }) {
-  const resolvedAuthor = resolveAuthor(review);
-  const authorName = resolvedAuthor?.name || review.author || 'EPRIS Editorial';
-  const authorRole = review.role || resolvedAuthor?.role;
   return <motion.article initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} className="fixed inset-0 z-[90] overflow-y-auto bg-[var(--c-bg)]">
     <div className="mx-auto max-w-5xl px-5 py-6 sm:px-10 sm:py-10"><button onClick={onClose} className="mb-12 inline-flex min-h-11 items-center gap-2 font-mono text-[10px] uppercase tracking-widest"><ArrowLeft size={15} /> {t('nav.reviews')}</button>
       {review.imageUrl && <img src={review.imageUrl} alt={review.title} className="mb-10 aspect-[16/8] w-full object-cover" />}
       <header className="mx-auto mb-12 max-w-3xl border-b border-[var(--c-accent)] pb-10"><p className="font-mono text-[10px] uppercase tracking-[.2em] text-[var(--c-gold)]">{review.category || 'Review'}</p><h1 className="mt-4 font-serif text-5xl leading-[.94] sm:text-7xl">{review.title}</h1><p className="mt-5 font-mono text-[11px] uppercase tracking-widest opacity-60">{review.subject}</p>{review.verdict && <p className="mt-8 border-l-2 border-[var(--c-gold)] pl-5 font-serif text-2xl italic leading-snug">{review.verdict}</p>}</header>
-      <div className="mx-auto max-w-3xl">
-        <ReviewBody content={review.content} />
-        <ProsCons pros={review.pros} cons={review.cons} t={t} />
-        <footer className="mt-14 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-7">
-          <div className="flex items-start gap-4 sm:gap-5">
-            {resolvedAuthor?.photoUrl ? (
-              <img src={resolvedAuthor.photoUrl} alt={authorName} loading="lazy" className="h-12 w-12 shrink-0 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.2)] object-cover sm:h-16 sm:w-16" />
-            ) : (
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--c-accent)] font-serif text-lg text-[var(--c-bg)] sm:h-16 sm:w-16" aria-hidden="true">{authorName.charAt(0)}</span>
-            )}
-            <div className="min-w-0">
-              <p className="font-serif text-xl">{authorName}</p>
-              {authorRole && <p className="mt-1 font-mono text-[10px] uppercase tracking-widest opacity-60">{authorRole}</p>}
-              {resolvedAuthor?.bio && <p className="mt-3 max-w-xl font-serif text-sm leading-relaxed opacity-70">{resolvedAuthor.bio}</p>}
-              {(resolvedAuthor?.website || resolvedAuthor?.instagram) && (
-                <div className="mt-3 flex flex-wrap gap-4">
-                  {resolvedAuthor.website && <a href={resolvedAuthor.website} target="_blank" rel="noopener noreferrer" className="min-h-11 content-center font-mono text-[10px] uppercase tracking-widest underline underline-offset-4 hover:text-[var(--c-gold)]">Website</a>}
-                  {resolvedAuthor.instagram && <a href={`https://instagram.com/${resolvedAuthor.instagram.replace(/^@/, '')}`} target="_blank" rel="noopener noreferrer" className="min-h-11 content-center font-mono text-[10px] uppercase tracking-widest underline underline-offset-4 hover:text-[var(--c-gold)]">{resolvedAuthor.instagram}</a>}
-                </div>
-              )}
-            </div>
-          </div>
-          {(review.meta || review.date) && <p className="mt-5 font-mono text-[10px] uppercase tracking-widest opacity-50">{[review.meta, review.date].filter(Boolean).join(' · ')}</p>}
-        </footer>
-      </div>
+      <div className="mx-auto max-w-3xl"><ReviewBody content={review.content} /><ProsCons pros={review.pros} cons={review.cons} t={t} /><footer className="mt-14 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-5 font-mono text-[10px] uppercase tracking-widest opacity-60">{review.meta && <span>{review.meta} · </span>}— {review.author}</footer></div>
     </div>
   </motion.article>;
-}
-
-function HomeReviewsTeaser({ reviews, t, onReviewClick, onViewAll }: { reviews: Review[]; t: (key: string) => string; onReviewClick: (review: Review) => void; onViewAll: () => void }) {
-  const selected = [...reviews]
-    .filter((review) => review.homeFeatured || review.featured)
-    .sort((a, b) => (a.homeOrder ?? Number.MAX_SAFE_INTEGER) - (b.homeOrder ?? Number.MAX_SAFE_INTEGER))
-    .concat(reviews.filter((review) => !review.homeFeatured && !review.featured))
-    .filter((review, index, all) => all.findIndex((candidate) => candidate.id === review.id) === index)
-    .slice(0, 3);
-
-  if (!selected.length) return null;
-
-  return (
-    <section className="border-t border-[rgb(var(--c-accent-rgb)_/_0.25)] bg-[#E8DED5] px-4 py-16 sm:px-8 md:px-16 md:py-24">
-      <div className="mx-auto max-w-[1600px]">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)]">{t('reviews.homeKicker')}</p>
-            <h2 className="mt-4 max-w-[16ch] font-serif text-3xl leading-tight text-[var(--c-accent)] sm:text-4xl md:text-5xl">{t('reviews.homeTitle')}</h2>
-            <p className="mt-5 max-w-[52ch] font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.72)] sm:text-lg">{t('reviews.homeDescription')}</p>
-          </div>
-          <button
-            type="button"
-            onClick={onViewAll}
-            className="inline-flex min-h-12 w-fit shrink-0 items-center gap-3 border border-[rgb(var(--c-accent-rgb)_/_0.35)] px-6 font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] transition-colors hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--c-accent)]"
-          >
-            {t('reviews.homeViewAll')} <ArrowUpRight size={15} />
-          </button>
-        </div>
-
-        <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6">
-          {selected.map((review, index) => {
-            const summary = review.verdict || reviewPlainText(review.content);
-            return (
-              <article key={review.id} className={`flex h-full flex-col border border-[var(--c-accent)] bg-[var(--c-bg)] ${index === 0 ? 'md:col-span-2 md:grid md:grid-cols-2' : ''}`}>
-                {review.imageUrl && (
-                  <button type="button" onClick={() => onReviewClick(review)} className={`group block w-full overflow-hidden text-left ${index === 0 ? 'aspect-[4/3] md:aspect-auto' : 'aspect-[4/3]'}`} aria-label={review.title}>
-                    <img src={review.imageUrl} alt={review.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
-                  </button>
-                )}
-                <div className="flex flex-1 flex-col p-6 sm:p-8">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)]">{review.category || 'Review'}</p>
-                  <h3 className="mt-3 font-serif text-2xl leading-tight text-[var(--c-accent)] sm:text-3xl">{review.title}</h3>
-                  {review.subject && <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)]">{review.subject}</p>}
-                  {summary && <p className="mt-5 line-clamp-4 font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.74)]">{summary}</p>}
-                  <button type="button" onClick={() => onReviewClick(review)} className="mt-auto inline-flex min-h-11 w-fit items-center gap-2 pt-7 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] underline decoration-[var(--c-gold)] underline-offset-4">{t('reviews.read')} <ArrowUpRight size={14} /></button>
-                </div>
-              </article>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
 }
 
 function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (key: string) => string; onReviewClick: (review: Review) => void }) {
@@ -2417,42 +2388,20 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
     const set = Array.from(new Set(reviews.map((r) => r.category).filter((c): c is string => Boolean(c))));
     return ['__all', ...set];
   }, [reviews]);
-  const categoryCounts = useMemo(() => {
-    const counts = new Map<string, number>([['__all', reviews.length]]);
-    reviews.forEach((review) => {
-      if (review.category) counts.set(review.category, (counts.get(review.category) || 0) + 1);
-    });
-    return counts;
-  }, [reviews]);
 
   const featured = reviews.find((r) => r.featured);
   const rest = reviews.filter((r) => r.id !== (featured?.id ?? -1));
-  const showFeatured = Boolean(featured && (activeCategory === '__all' || featured.category === activeCategory));
   const filtered = activeCategory === '__all' ? rest : rest.filter((r) => r.category === activeCategory);
-  const visibleCount = filtered.length + Number(showFeatured);
 
   return (
     <div>
-      <header className="mb-10 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-8 pt-8 sm:mb-14 sm:pb-10 sm:pt-4 md:pt-0">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{t('reviews.pageKicker')}</p>
-            <h1 className="mt-4 max-w-[10ch] font-serif text-[clamp(3.2rem,8vw,6.6rem)] leading-[0.84] text-[var(--c-accent)]">{t('reviews.pageTitle')}</h1>
-            <p className="mt-5 max-w-[48ch] font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.72)] sm:text-lg">{t('reviews.pageDescription')}</p>
-          </div>
-          <p className="shrink-0 border-l-2 border-[var(--c-gold)] pl-4 font-mono text-[10px] uppercase tracking-[0.18em] text-[rgb(var(--c-accent-rgb)_/_0.55)] sm:mb-1">
-            {t('reviews.pageCount').replace('{count}', String(reviews.length))}
-          </p>
-        </div>
-      </header>
-
       {/* Featured review */}
-      {showFeatured && featured && (
+      {featured && (
         <Reveal>
           <div className="mb-12 md:mb-16 border border-[var(--c-accent)] grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
             {featured.imageUrl && (
-              <div className="group relative aspect-[4/3] lg:aspect-auto bg-[#1a0812] overflow-hidden">
-                <img src={featured.imageUrl} alt={featured.title} loading="eager" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03] motion-reduce:transition-none" />
+              <div className="relative aspect-[4/3] lg:aspect-auto bg-[#1a0812] overflow-hidden">
+                <img src={featured.imageUrl} alt={featured.title} className="w-full h-full object-cover" />
                 <span className="absolute top-4 left-4 bg-[rgb(var(--c-bg-rgb)_/_0.9)] text-[var(--c-accent)] font-mono text-[9px] uppercase tracking-[0.2em] px-3 py-1.5">
                   {t('reviews.featured')}
                 </span>
@@ -2470,9 +2419,9 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
                 </p>
               )}
               <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{reviewPlainText(featured.content).slice(0, 260)}{reviewPlainText(featured.content).length > 260 ? '…' : ''}</p>
-              <button type="button" onClick={() => onReviewClick(featured)} aria-label={`${t('reviews.read')} — ${featured.title}`} className="mt-6 inline-flex min-h-11 w-fit items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest transition-colors hover:border-[var(--c-gold)] hover:text-[var(--c-gold)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--c-accent)]">{t('reviews.read')} <ArrowUpRight size={14} /></button>
+              <button onClick={() => onReviewClick(featured)} className="mt-6 inline-flex min-h-11 items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest">{t('reviews.read')} <ArrowUpRight size={14} /></button>
               <div className="mt-auto pt-6 flex items-center justify-between">
-                <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{[featured.meta, t('reviews.readTime').replace('{minutes}', String(reviewReadMinutes(featured.content)))].filter(Boolean).join(' · ')}</span>
+                {featured.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{featured.meta}</span>}
                 <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] ml-auto">— {featured.author}</span>
               </div>
             </div>
@@ -2482,74 +2431,61 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
 
       {/* Category filter */}
       {categories.length > 2 && (
-        <div className="mb-8 flex flex-wrap items-center justify-between gap-4 border-y border-[rgb(var(--c-accent-rgb)_/_0.14)] py-4">
-          <div role="group" aria-label={t('reviews.filterLabel')} className="flex flex-wrap gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setActiveCategory(cat)}
-                aria-pressed={activeCategory === cat}
-                aria-label={`${cat === '__all' ? t('reviews.all') : cat}, ${categoryCounts.get(cat) || 0}`}
-                className={`min-h-11 border px-4 font-mono text-[10px] uppercase tracking-widest transition-colors ${
-                  activeCategory === cat
-                    ? 'bg-[var(--c-accent)] text-[var(--c-bg)] border-[var(--c-accent)]'
-                    : 'text-[var(--c-accent)] border-[rgb(var(--c-accent-rgb)_/_0.3)] hover:border-[var(--c-accent)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.05)]'
-                }`}
-              >
-                <span>{cat === '__all' ? t('reviews.all') : cat}</span>
-                <span aria-hidden="true" className="ml-2 opacity-60">{categoryCounts.get(cat) || 0}</span>
-              </button>
-            ))}
-          </div>
-          <span aria-live="polite" className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{visibleCount} / {reviews.length}</span>
+        <div className="flex flex-wrap gap-2 mb-8">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => setActiveCategory(cat)}
+              className={`px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest border transition-colors ${
+                activeCategory === cat
+                  ? 'bg-[var(--c-accent)] text-[var(--c-bg)] border-[var(--c-accent)]'
+                  : 'text-[var(--c-accent)] border-[rgb(var(--c-accent-rgb)_/_0.3)] hover:border-[var(--c-accent)]'
+              }`}
+            >
+              {cat === '__all' ? t('reviews.all') : cat}
+            </button>
+          ))}
         </div>
       )}
 
       {/* Review grid */}
-      {visibleCount === 0 ? (
-        <div className="border border-dashed border-[rgb(var(--c-accent-rgb)_/_0.28)] px-6 py-16 text-center sm:py-24">
-          <p className="font-serif text-3xl text-[var(--c-accent)]">{t('reviews.empty')}</p>
-          <button type="button" onClick={() => setActiveCategory('__all')} className="mt-6 inline-flex min-h-11 items-center border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest transition-colors hover:text-[var(--c-gold)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--c-accent)]">{t('reviews.clearFilter')}</button>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2">
-          {filtered.map((review, index) => (
-            <Reveal key={review.id} delay={(index % 2) * 0.08}>
-              <div className="bg-[#E8DED5] border border-[var(--c-accent)] h-full flex flex-col overflow-hidden">
-                {review.imageUrl && (
-                  <div className="group relative aspect-[16/9] bg-[#1a0812] overflow-hidden">
-                    <img src={review.imageUrl} alt={review.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03] motion-reduce:transition-none" />
-                    {review.category && (
-                      <span className="absolute top-3 left-3 bg-[rgb(var(--c-bg-rgb)_/_0.9)] text-[var(--c-accent)] font-mono text-[8px] uppercase tracking-[0.2em] px-2.5 py-1">
-                        {review.category}
-                      </span>
-                    )}
-                  </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        {filtered.map((review, index) => (
+          <Reveal key={review.id} delay={(index % 2) * 0.08}>
+            <div className="bg-[#E8DED5] border border-[var(--c-accent)] h-full flex flex-col overflow-hidden">
+              {review.imageUrl && (
+                <div className="relative aspect-[16/9] bg-[#1a0812] overflow-hidden">
+                  <img src={review.imageUrl} alt={review.title} className="w-full h-full object-cover" />
+                  {review.category && (
+                    <span className="absolute top-3 left-3 bg-[rgb(var(--c-bg-rgb)_/_0.9)] text-[var(--c-accent)] font-mono text-[8px] uppercase tracking-[0.2em] px-2.5 py-1">
+                      {review.category}
+                    </span>
+                  )}
+                </div>
+              )}
+              <div className="p-6 sm:p-8 flex flex-col flex-1">
+                {!review.imageUrl && review.category && (
+                  <span className="mb-4 font-mono text-[10px] uppercase tracking-widest text-[var(--c-gold)]">{review.category}</span>
                 )}
-                <div className="p-6 sm:p-8 flex flex-col flex-1">
-                  {!review.imageUrl && review.category && (
-                    <span className="mb-4 font-mono text-[10px] uppercase tracking-widest text-[var(--c-gold)]">{review.category}</span>
-                  )}
-                  <h3 className="font-serif text-2xl md:text-3xl text-[var(--c-accent)] mb-1.5">{review.title}</h3>
-                  <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-4">{review.subject}</p>
-                  {review.verdict && (
-                    <p className="font-serif text-lg italic text-[var(--c-accent)] leading-snug mb-4 border-l-2 border-[var(--c-gold)] pl-3">
-                      {review.verdict}
-                    </p>
-                  )}
-                  <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{reviewPlainText(review.content).slice(0, 190)}{reviewPlainText(review.content).length > 190 ? '…' : ''}</p>
-                  <button type="button" onClick={() => onReviewClick(review)} aria-label={`${t('reviews.read')} — ${review.title}`} className="mt-6 inline-flex min-h-11 w-fit items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest transition-colors hover:border-[var(--c-gold)] hover:text-[var(--c-gold)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--c-accent)]">{t('reviews.read')} <ArrowUpRight size={14} /></button>
-                  <div className="mt-auto pt-6 flex items-center justify-between gap-3">
-                    <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{[review.meta, t('reviews.readTime').replace('{minutes}', String(reviewReadMinutes(review.content)))].filter(Boolean).join(' · ')}</span>
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] ml-auto">— {review.author}</span>
-                  </div>
+                <h3 className="font-serif text-2xl md:text-3xl text-[var(--c-accent)] mb-1.5">{review.title}</h3>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-4">{review.subject}</p>
+                {review.verdict && (
+                  <p className="font-serif text-lg italic text-[var(--c-accent)] leading-snug mb-4 border-l-2 border-[var(--c-gold)] pl-3">
+                    {review.verdict}
+                  </p>
+                )}
+                <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{reviewPlainText(review.content).slice(0, 190)}{reviewPlainText(review.content).length > 190 ? '…' : ''}</p>
+                <button onClick={() => onReviewClick(review)} className="mt-6 inline-flex min-h-11 items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest">{t('reviews.read')} <ArrowUpRight size={14} /></button>
+                <div className="mt-auto pt-6 flex items-center justify-between gap-3">
+                  {review.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{review.meta}</span>}
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] ml-auto">— {review.author}</span>
                 </div>
               </div>
-            </Reveal>
-          ))}
-        </div>
-      )}
+            </div>
+          </Reveal>
+        ))}
+      </div>
     </div>
   );
 }
@@ -2891,7 +2827,9 @@ function getSlugForReview(review: Review): string {
 // exact title is the only signal the data model offers; when it doesn't
 // match anything, no link renders — deliberately conservative so this can't
 // point at the wrong piece.
-function matchArticleByTitle(title: string, articles: Article[]): Article | undefined {
+function findMatchingArticle(item: Item, articles: Article[]): Article | undefined {
+  const title = item.title?.trim();
+  if (!title) return undefined;
   // Exact title is the strongest signal.
   const exact = articles.find((a) => a.title?.trim() === title);
   if (exact) return exact;
@@ -2903,21 +2841,6 @@ function matchArticleByTitle(title: string, articles: Article[]): Article | unde
   const itemBase = base(title);
   if (itemBase.length < 4) return undefined;
   return articles.find((a) => a.title && base(a.title) === itemBase);
-}
-
-function findMatchingArticle(item: Item, articles: Article[]): Article | undefined {
-  // Связь считается в базовом языке и переносится по id: заголовки совпадают
-  // надёжно только там (карточка без перевода осталась бы английской посреди
-  // русской ленты, и кнопка "читать статью" молча исчезала). Карточки, которые
-  // сама лента достроила из статей, несут её id со сдвигом в 900000.
-  const linked = getGalleryArticleLinks().get(item.id) ?? (item.id >= 900000 ? item.id - 900000 : undefined);
-  if (linked !== undefined) {
-    const byId = articles.find((a) => a.id === linked);
-    if (byId) return byId;
-  }
-  const title = item.title?.trim();
-  if (!title) return undefined;
-  return matchArticleByTitle(title, articles);
 }
 
 function parsePath(pathname: string, search = ''): { tab?: string; articleId?: number; reviewId?: number; passportCode?: string; searchQuery?: string } {
@@ -3229,6 +3152,7 @@ export default function App() {
     document.documentElement.lang = languageTags[currentLang] || currentLang.toLowerCase();
   }, [currentLang]);
   const { items, articles, reviews } = getContentForLanguage(currentLang);
+  const homepageArchive = getHomepageArchive();
   const issueArchive = getIssueArchive(currentLang);
   const studio = getStudio();
   const defaultContent = getContentForLanguage(DEFAULT_LANGUAGE);
@@ -3461,13 +3385,8 @@ export default function App() {
               <>
                 {activeTab === 'gallery' && (
                   <>
-                    <GallerySection items={items} articles={articles} onItemClick={setSelectedGalleryItem} onReadArticle={(article) => handleSelectArticle(article.id, article)} t={t} />
-                    <HomeReviewsTeaser
-                      reviews={reviews}
-                      t={t}
-                      onReviewClick={handleSelectReview}
-                      onViewAll={() => handleSetTab('reviews')}
-                    />
+                    <GallerySection items={items} onItemClick={setSelectedGalleryItem} />
+                    <DailyPicksArchive archive={homepageArchive} items={items} />
                     {/* Витрина жила отдельным маршрутом, на который с сайта не
                         вело ни одной ссылки. Suspense без запасного экрана:
                         блок не должен ничего занимать, пока грузится. */}
@@ -3494,12 +3413,10 @@ export default function App() {
             <div className="text-center md:text-right font-mono text-xs uppercase tracking-widest text-[#BFAFA4]">
               <p>© 2026 {publicationName}</p>
               <p>{t('footer.rights')}</p>
-              <div className="mt-4 flex flex-wrap justify-center md:justify-end gap-x-4 gap-y-2 text-[#D9C7BA]">
+              {(instagramUrl || contactEmail) && <div className="mt-4 flex flex-wrap justify-center md:justify-end gap-x-4 gap-y-2 text-[#D9C7BA]">
                 {instagramUrl && <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#F7F2EC] underline underline-offset-4 transition-colors">Instagram</a>}
                 {contactEmail && <a href={`mailto:${contactEmail}`} className="hover:text-[#F7F2EC] underline underline-offset-4 transition-colors">{contactEmail}</a>}
-                {/* Статическая страница в public/app — nginx отдаёт файл раньше SPA-роутера. */}
-                <a href="/app/" className="hover:text-[#F7F2EC] underline underline-offset-4 transition-colors">iOS app</a>
-              </div>
+              </div>}
             </div>
           </div>
         </footer>}
@@ -3558,7 +3475,6 @@ export default function App() {
             onClose={() => setSelectedGalleryItem(null)}
             articles={articles}
             onReadArticle={(a) => { setSelectedGalleryItem(null); handleSelectArticle(a.id, a); }}
-            t={t}
           />
         )}
       </AnimatePresence>

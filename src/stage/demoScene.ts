@@ -25,14 +25,14 @@ export function demoScene(): Scene {
     room: { w: 14, d: 10, h: 6 },
     viewer: { x: 7, z: 9, eyeHeight: 1.6 },
     objects: [
-      wall('Back', 3, 3, 8, 0.15),
-      wall('Front', 3, 6.85, 8, 0.15),
-      wall('Left', 3, 3, 0.15, 4),
-      wall('Right', 10.85, 3, 0.15, 4),
+      wall('Задняя стена', 3, 3, 8, 0.15),
+      wall('Передняя стена', 3, 6.85, 8, 0.15),
+      wall('Левая стена', 3, 3, 0.15, 4),
+      wall('Правая стена', 10.85, 3, 0.15, 4),
       {
         id: newId('obj'),
         kind: 'platform',
-        label: 'Platform',
+        label: 'Подиум',
         x: 5.5,
         z: 4.2,
         y: 0,
@@ -44,7 +44,7 @@ export function demoScene(): Scene {
       {
         id: newId('obj'),
         kind: 'block',
-        label: 'Subject',
+        label: 'Фигура',
         x: 6.6,
         z: 4.7,
         y: 0.35,
@@ -54,6 +54,6 @@ export function demoScene(): Scene {
         rotation: 0,
       },
     ],
-    lights: [{ id: newId('light'), kind: 'key', label: 'Key', x: 7, z: 1.5, y: 5, angle: 200 }],
+    lights: [{ id: newId('light'), kind: 'key', label: 'Основной свет', x: 7, z: 1.5, y: 5, angle: 200 }],
   };
 }

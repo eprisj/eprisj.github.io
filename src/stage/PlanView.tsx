@@ -1,6 +1,7 @@
 import type { Scene, SceneObject } from './sceneModel';
 import { seatsOf, type Sightlines } from './sightlines';
 import {
+  type ElementStyle,
   GOLD,
   PAD_B,
   PAD_L,
@@ -106,6 +107,74 @@ function DimensionChain({
           </g>
         );
       })}
+    </g>
+  );
+}
+
+function ObjectFootprint({
+  object,
+  x,
+  y,
+  width,
+  height,
+  style,
+  onPointerDown,
+}: {
+  object: SceneObject;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  style: ElementStyle;
+  onPointerDown: (event: React.PointerEvent<SVGGElement>) => void;
+}) {
+  const common = {
+    fill: style.fill,
+    fillOpacity: style.fillOpacity,
+    stroke: style.stroke,
+    strokeWidth: style.strokeWidth,
+    strokeDasharray: object.generatedBy ? '5 3' : undefined,
+  };
+  const cx = x + width / 2;
+  const cy = y + height / 2;
+  const inner = Math.max(2, Math.min(width, height) * 0.22);
+
+  return (
+    <g
+      onPointerDown={onPointerDown}
+      style={{ cursor: object.generatedBy ? 'default' : 'grab' }}
+      className="touch-manipulation"
+    >
+      {object.kind === 'wall' && <rect x={x} y={y} width={width} height={height} {...common} />}
+      {object.kind === 'platform' && (
+        <>
+          <rect x={x} y={y} width={width} height={height} {...common} />
+          <rect x={x + inner} y={y + inner} width={Math.max(0, width - inner * 2)} height={Math.max(0, height - inner * 2)} fill="none" stroke={style.stroke} strokeOpacity={0.55} strokeWidth={WEIGHT.hairline} />
+          <line x1={x + inner} y1={y + inner} x2={x + width - inner} y2={y + height - inner} stroke={style.stroke} strokeOpacity={0.3} strokeWidth={WEIGHT.hairline} />
+          <line x1={x + width - inner} y1={y + inner} x2={x + inner} y2={y + height - inner} stroke={style.stroke} strokeOpacity={0.3} strokeWidth={WEIGHT.hairline} />
+        </>
+      )}
+      {object.kind === 'block' && (
+        <>
+          <rect x={x} y={y} width={width} height={height} {...common} />
+          <path d={`M ${x + inner} ${y + height - inner} L ${cx} ${y + inner} L ${x + width - inner} ${y + height - inner} Z`} fill="none" stroke={style.stroke} strokeOpacity={0.65} strokeWidth={WEIGHT.hairline} />
+        </>
+      )}
+      {object.kind === 'practical' && (
+        <>
+          <circle cx={cx} cy={cy} r={Math.max(2.5, Math.min(width, height) * 0.44)} {...common} />
+          <circle cx={cx} cy={cy} r={Math.max(1.5, Math.min(width, height) * 0.16)} fill={style.stroke} fillOpacity={0.78} stroke="none" />
+          <line x1={cx - width * 0.28} y1={cy} x2={cx + width * 0.28} y2={cy} stroke={style.stroke} strokeOpacity={0.55} strokeWidth={WEIGHT.hairline} />
+          <line x1={cx} y1={cy - height * 0.28} x2={cx} y2={cy + height * 0.28} stroke={style.stroke} strokeOpacity={0.55} strokeWidth={WEIGHT.hairline} />
+        </>
+      )}
+      {object.kind === 'seating' && (
+        <>
+          <rect x={x} y={y} width={width} height={height} {...common} />
+          <rect x={x + inner * 0.7} y={y + inner * 0.7} width={Math.max(0, width - inner * 1.4)} height={Math.max(0, height * 0.45)} fill="none" stroke={style.stroke} strokeOpacity={0.72} strokeWidth={WEIGHT.hairline} />
+          <line x1={x + inner * 0.6} y1={y + height - inner * 0.65} x2={x + width - inner * 0.6} y2={y + height - inner * 0.65} stroke={style.stroke} strokeOpacity={0.72} strokeWidth={WEIGHT.hairline} />
+        </>
+      )}
     </g>
   );
 }
@@ -216,18 +285,14 @@ export function PlanView({ scene, selectedId, onSelect, onDrag, onDragStart, onD
         const cy = py(object.z + object.d / 2);
         return (
           <g key={object.id} transform={`rotate(${object.rotation} ${cx} ${cy})`}>
-            <rect
+            <ObjectFootprint
+              object={object}
               x={px(object.x)}
               y={py(object.z)}
               width={object.w * PX_PER_M}
               height={object.d * PX_PER_M}
-              fill={style.fill}
-              fillOpacity={style.fillOpacity}
-              stroke={style.stroke}
-              strokeWidth={style.strokeWidth}
-              strokeDasharray={object.generatedBy ? '5 3' : undefined}
-              style={{ cursor: object.generatedBy ? 'default' : 'grab' }}
-              onPointerDown={(e) => (object.generatedBy ? undefined : startDrag(object, e))}
+              style={style}
+              onPointerDown={(e) => { if (!object.generatedBy) startDrag(object, e); }}
             />
             {/* Номер вместо названия: метка не наезжает на соседнюю и отсылает
                 к строке ведомости, где стоят все размеры. */}
