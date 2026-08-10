@@ -4032,6 +4032,9 @@ body.busy::after {
 .wys-save-state.published { color: var(--ok); }
 .wys-save-state.error { color: var(--danger); }
 .wys-save-state.error-final { color: var(--danger); }
+.wys-save-state.blocked { color: var(--danger); font-weight: 700; }
+.wys-preflight-btn.has-errors { border-color: var(--danger); color: var(--danger); }
+.wys-preflight-btn.has-warnings { border-color: var(--warn); color: var(--warn); }
 .wys-save-state.nopw { color: var(--warn); }
 
 .wys-scroll { display: flex; justify-content: center; padding: 0 0 60px; }
@@ -4279,6 +4282,52 @@ body.busy::after {
 .wys-type-item { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border: none; background: none; color: var(--text); cursor: pointer; border-radius: 5px; font-size: .82rem; text-align: left; }
 .wys-type-item:hover { background: var(--accent-soft); color: var(--accent); }
 .wys-type-ic { width: 20px; text-align: center; color: var(--gold); font-size: .95rem; }
+
+/* Publication safety and local revision history panels.  They are deliberately
+   compact and keyboard-friendly: the editor remains the primary workspace,
+   while the audit is a progressive-disclosure layer. */
+.wys-preflight-pop, .wys-history-pop { width: min(520px, calc(100vw - 28px)); max-height: min(76vh, 720px); overflow: auto; padding: 0; }
+.wys-preflight-head, .wys-history-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 16px 18px 12px; border-bottom: 1px solid var(--line); }
+.wys-preflight-head strong, .wys-history-head strong { display: block; font-family: var(--font-serif); font-size: 1.15rem; color: var(--text); }
+.wys-preflight-sub, .wys-history-sub { display: block; margin-top: 4px; font-size: .7rem; line-height: 1.45; color: var(--text-muted); }
+.wys-panel-close { width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--text-muted); cursor: pointer; font-size: 1rem; flex: 0 0 auto; }
+.wys-panel-close:hover, .wys-panel-close:focus-visible { border-color: var(--accent); color: var(--accent); outline: none; }
+.wys-preflight-summary { display: flex; flex-wrap: wrap; gap: 7px; padding: 12px 18px 4px; }
+.wys-preflight-summary span { display: inline-flex; align-items: center; min-height: 28px; padding: 4px 9px; border-radius: 999px; font-family: var(--font-mono); font-size: .62rem; font-weight: 700; }
+.wys-preflight-summary .ok { background: var(--ok-soft); color: var(--ok); }
+.wys-preflight-summary .warn { background: var(--warn-soft); color: var(--warn); }
+.wys-preflight-summary .error { background: var(--danger-soft); color: var(--danger); }
+.wys-preflight-list { display: grid; gap: 7px; padding: 10px 18px 16px; }
+.wys-preflight-row { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; align-items: start; gap: 9px; padding: 9px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); }
+.wys-preflight-row.error { border-color: color-mix(in srgb, var(--danger) 38%, var(--line)); background: color-mix(in srgb, var(--danger-soft) 48%, var(--bg)); }
+.wys-preflight-row.warn { border-color: color-mix(in srgb, var(--warn) 38%, var(--line)); background: color-mix(in srgb, var(--warn-soft) 42%, var(--bg)); }
+.wys-preflight-row.ok { background: color-mix(in srgb, var(--ok-soft) 34%, var(--bg)); }
+.wys-preflight-icon { font-family: var(--font-mono); font-weight: 800; text-align: center; }
+.wys-preflight-row.error .wys-preflight-icon { color: var(--danger); }
+.wys-preflight-row.warn .wys-preflight-icon { color: var(--warn); }
+.wys-preflight-row.ok .wys-preflight-icon { color: var(--ok); }
+.wys-preflight-label { font-size: .78rem; font-weight: 700; color: var(--text); }
+.wys-preflight-detail { display: block; margin-top: 3px; font-size: .7rem; line-height: 1.45; color: var(--text-muted); }
+.wys-preflight-jump { min-height: 36px; padding: 4px 8px; border: 1px solid var(--line); border-radius: 5px; background: var(--bg-card); color: var(--accent); font-family: var(--font-mono); font-size: .6rem; cursor: pointer; }
+.wys-preflight-jump:hover, .wys-preflight-jump:focus-visible { border-color: var(--accent); outline: none; }
+.wys-preflight-foot { display: flex; align-items: center; justify-content: flex-end; gap: 8px; padding: 0 18px 16px; }
+.wys-history-list { display: grid; gap: 7px; padding: 12px 18px 18px; }
+.wys-history-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); }
+.wys-history-item:hover { border-color: var(--line-strong); background: var(--bg-soft); }
+.wys-history-meta { min-width: 0; }
+.wys-history-meta strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .78rem; color: var(--text); }
+.wys-history-meta span { display: block; margin-top: 3px; font-family: var(--font-mono); font-size: .6rem; color: var(--text-muted); }
+.wys-history-restore { min-height: 40px; padding: 5px 10px; border: 1px solid var(--accent); border-radius: 5px; background: var(--accent-soft); color: var(--accent); font-family: var(--font-mono); font-size: .62rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+.wys-history-restore:hover, .wys-history-restore:focus-visible { background: var(--accent); color: #fff; outline: none; }
+.wys-history-empty { padding: 24px 18px 28px; color: var(--text-muted); font-size: .8rem; line-height: 1.5; }
+@media (max-width: 760px) {
+  .wys-bar { align-items: flex-start; flex-direction: column; }
+  .wys-bar-right { width: 100%; flex-wrap: wrap; }
+  .wys-bar-right .toolbar-sep { display: none; }
+  .wys-preflight-pop, .wys-history-pop { max-height: 82vh; }
+  .wys-preflight-row { grid-template-columns: 24px minmax(0, 1fr); }
+  .wys-preflight-jump { grid-column: 2; justify-self: start; }
+}
 
 /* ── Inline selection toolbar ── */
 .wys-seltool { position: absolute; z-index: 1001; display: none; align-items: center; gap: 1px; background: #1a1013; border-radius: 7px; padding: 3px; box-shadow: 0 6px 24px rgba(0,0,0,.3); }
