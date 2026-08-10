@@ -2423,7 +2423,7 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
 
   return (
     <div>
-      <header className="mb-10 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-8 sm:mb-14 sm:pb-10">
+      <header className="mb-10 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-8 pt-8 sm:mb-14 sm:pb-10 sm:pt-4 md:pt-0">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{t('reviews.pageKicker')}</p>
