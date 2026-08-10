@@ -3828,7 +3828,7 @@
         "Urban Memory"
       ],
       "imageSeed": "",
-      "imageUrl": "/images/threshold-hero.jpg",
+      "imageUrl": "https://eprisjournal.com/images/article-striped-kitchen.jpg",
       "content": [
         {
           "type": "text",
@@ -4045,8 +4045,7 @@
           "url": "https://www.fondazionearsetlabor.org/main-door-of-palazzo-negri/?lang=en"
         }
       ],
-      "order": 10,
-      "updatedAt": "2026-08-10T21:50:18.568Z"
+      "order": 10
     },
     {
       "id": 8,
