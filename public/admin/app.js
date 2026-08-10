@@ -50,6 +50,12 @@ const visualSectionSelect = byId('visualSection');
 const visualLangSelect = byId('visualLang');
 const visualEntrySelect = byId('visualEntry');
 const visualSearchInput = byId('visualSearch');
+const visualStatusFilter = byId('visualStatusFilter');
+const visualSort = byId('visualSort');
+const visualPublicationSummary = byId('visualPublicationSummary');
+const visualPublishBtn = byId('visualPublishBtn');
+const visualDraftBtn = byId('visualDraftBtn');
+const visualHideBtn = byId('visualHideBtn');
 const addEntryBtn = byId('addEntryBtn');
 const moveEntryUpBtn = byId('moveEntryUpBtn');
 const moveEntryDownBtn = byId('moveEntryDownBtn');
@@ -122,6 +128,9 @@ const interactiveButtons = [
   resetSettingsBtn,
   copySiteBtn,
   addEntryBtn,
+  visualPublishBtn,
+  visualDraftBtn,
+  visualHideBtn,
   moveEntryUpBtn,
   moveEntryDownBtn,
   duplicateEntryBtn,
@@ -861,6 +870,16 @@ function bindEvents() {
     refreshVisualEditor();
   });
 
+  visualStatusFilter.addEventListener('change', () => {
+    pendingVisualEntryId = null;
+    refreshVisualEditor();
+  });
+
+  visualSort.addEventListener('change', () => {
+    pendingVisualEntryId = null;
+    refreshVisualEditor();
+  });
+
   addEntryBtn.addEventListener('click', addVisualEntry);
   moveEntryUpBtn.addEventListener('click', () => moveVisualEntry(-1));
   moveEntryDownBtn.addEventListener('click', () => moveVisualEntry(1));
@@ -873,6 +892,9 @@ function bindEvents() {
   downloadAllOriginalsBtn.addEventListener('click', () => downloadArticleOriginals(true));
   applyEntryBtn.addEventListener('click', applyVisualChanges);
   saveEntryBtn.addEventListener('click', saveCurrentEntryOnly);
+  visualPublishBtn.addEventListener('click', () => updateSelectedPublicationState('live'));
+  visualDraftBtn.addEventListener('click', () => updateSelectedPublicationState('draft'));
+  visualHideBtn.addEventListener('click', () => updateSelectedPublicationState('hidden'));
   storyBlueprintBtn.addEventListener('click', () => createArticleFromBlueprint('story'));
   guideBlueprintBtn.addEventListener('click', () => createArticleFromBlueprint('guide'));
   photoEssayBlueprintBtn.addEventListener('click', () => createArticleFromBlueprint('photoEssay'));
@@ -2611,6 +2633,13 @@ function updateAdminToolbarContext() {
   const articles = Array.isArray(data.articles) ? data.articles : [];
   const selectedId = Number(visualEntrySelect.value);
   const selectedArticle = articles.find((article) => Number(article.id) === selectedId);
+  const selectedEntries = getSectionArray(data, section, DEFAULT_LANGUAGE, false);
+  const selectedEntry = selectedEntries.find((entry) => Number(entry.id) === selectedId);
+  const selectedState = getPublicationState(data, section, selectedEntry);
+  if (visualPublishBtn) visualPublishBtn.disabled = !selectedEntry || selectedState === 'live';
+  if (visualDraftBtn) visualDraftBtn.disabled = !selectedEntry || selectedState === 'draft';
+  if (visualHideBtn) visualHideBtn.disabled = !selectedEntry || selectedState === 'hidden';
+  if (visualPublishBtn) visualPublishBtn.textContent = selectedState === 'hidden' ? 'Показать и опубликовать' : 'Опубликовать';
   const selectedCount = countArticleOriginals(selectedArticle);
   const totalCount = articles.reduce((sum, article) => sum + countArticleOriginals(article), 0);
   const canDownloadSelected = section === 'articles' && Boolean(selectedArticle) && selectedCount > 0;
@@ -3042,6 +3071,84 @@ function getEntryTitle(section, entry) {
   }
 
   return `ID ${entry.id || '-'}`;
+}
+
+// One status vocabulary for the editor, visibility registry and public site.
+// A manual visibility switch is intentionally separate from `draft`: editors
+// can hide a live article without losing its publication state, then restore
+// it with one click. Scheduled entries stay hidden until their timestamp.
+function getPublicationState(data, section, entry) {
+  if (!entry || typeof entry !== 'object') return 'draft';
+  if (entry.draft) return 'draft';
+  const publishAt = entry.publishAt ? Date.parse(entry.publishAt) : NaN;
+  if (Number.isFinite(publishAt) && publishAt > Date.now()) return 'scheduled';
+  if (data?.visibility?.entities?.[section]?.[String(entry.id)] === false) return 'hidden';
+  return 'live';
+}
+
+function publicationStateLabel(state) {
+  return {
+    live: 'Опубликовано',
+    draft: 'Черновик',
+    scheduled: 'Отложено',
+    hidden: 'Скрыто'
+  }[state] || 'Черновик';
+}
+
+function publicationStateIcon(state) {
+  return { live: '●', draft: '✎', scheduled: '◷', hidden: '⊘' }[state] || '✎';
+}
+
+function publicationTimestamp(entry) {
+  const values = [entry?.updatedAt, entry?.publishAt, entry?.date];
+  for (const value of values) {
+    const stamp = value ? Date.parse(value) : NaN;
+    if (Number.isFinite(stamp)) return stamp;
+  }
+  return 0;
+}
+
+function renderPublicationSummary(data, section) {
+  if (!visualPublicationSummary) return;
+  const entries = getSectionArray(data, section, DEFAULT_LANGUAGE, false);
+  const counts = entries.reduce((result, entry) => {
+    const state = getPublicationState(data, section, entry);
+    result[state] = (result[state] || 0) + 1;
+    return result;
+  }, { live: 0, draft: 0, scheduled: 0, hidden: 0 });
+  visualPublicationSummary.innerHTML = `<strong>${entries.length}</strong> записей · <span>${publicationStateIcon('live')} ${counts.live} опубликовано</span> · <span>${publicationStateIcon('draft')} ${counts.draft} черновиков</span> · <span>${publicationStateIcon('scheduled')} ${counts.scheduled} отложено</span> · <span>${publicationStateIcon('hidden')} ${counts.hidden} скрыто</span>`;
+}
+
+function updateSelectedPublicationState(nextState) {
+  const data = parseEditorJsonSafe();
+  if (!data) { setStatus('error', 'Сначала загрузите корректный контент.'); return; }
+  const section = visualSectionSelect.value;
+  const selectedId = Number(visualEntrySelect.value);
+  const entries = getSectionArray(data, section, DEFAULT_LANGUAGE, false);
+  const entry = entries.find((item) => Number(item.id) === selectedId);
+  if (!entry) { setStatus('error', 'Выберите запись.'); return; }
+
+  if (!data.visibility || typeof data.visibility !== 'object' || Array.isArray(data.visibility)) data.visibility = {};
+  if (!data.visibility.entities || typeof data.visibility.entities !== 'object' || Array.isArray(data.visibility.entities)) data.visibility.entities = {};
+  if (!data.visibility.entities[section] || typeof data.visibility.entities[section] !== 'object' || Array.isArray(data.visibility.entities[section])) data.visibility.entities[section] = {};
+
+  if (nextState === 'live') {
+    delete entry.draft;
+    delete entry.publishAt;
+    data.visibility.entities[section][String(entry.id)] = true;
+  } else if (nextState === 'draft') {
+    entry.draft = true;
+    delete entry.publishAt;
+    data.visibility.entities[section][String(entry.id)] = true;
+  } else if (nextState === 'hidden') {
+    delete entry.draft;
+    data.visibility.entities[section][String(entry.id)] = false;
+  }
+
+  setEditorData(data);
+  pendingVisualEntryId = selectedId;
+  refreshVisualEditor();
+  setStatus('info', `Статус «${getEntryTitle(section, entry)}» изменён на «${publicationStateLabel(nextState)}». Нажмите «Сохранить запись», чтобы отправить на VPS.`, { sticky: true });
 }
 
 const ARTICLE_BLUEPRINTS = {
@@ -3934,6 +4041,9 @@ function refreshVisualEditor() {
   const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
   const entries = getSectionArray(data, section, lang, false);
   const search = visualSearchInput.value.trim().toLowerCase();
+  const statusFilter = visualStatusFilter?.value || 'all';
+  const sortMode = visualSort?.value || 'updated';
+  renderPublicationSummary(data, section);
 
   // For non-EN languages, build dropdown from ALL EN entries so untranslated ones are visible
   let dropdownEntries;
@@ -3958,24 +4068,36 @@ function refreshVisualEditor() {
     }));
   }
 
-  const visibleDropdown = !search
-    ? dropdownEntries
-    : dropdownEntries.filter((item) => {
-        const idText = String(item.id || '').toLowerCase();
-        const title = getEntryTitle(section, item._entry).toLowerCase();
-        const enTitle = item._enTitle.toLowerCase();
-        return idText.includes(search) || title.includes(search) || enTitle.includes(search);
-      });
+  const filteredDropdown = dropdownEntries.filter((item) => {
+      const publicationState = getPublicationState(data, section, item._entry);
+      if (statusFilter !== 'all' && publicationState !== statusFilter) return false;
+      if (!search) return true;
+      const idText = String(item.id || '').toLowerCase();
+      const title = getEntryTitle(section, item._entry).toLowerCase();
+      const enTitle = item._enTitle.toLowerCase();
+      return idText.includes(search) || title.includes(search) || enTitle.includes(search);
+  });
+  const visibleDropdown = filteredDropdown.slice().sort((a, b) => {
+    if (sortMode === 'title') return getEntryTitle(section, a._entry).localeCompare(getEntryTitle(section, b._entry));
+    if (sortMode === 'id') return Number(a.id) - Number(b.id);
+    if (sortMode === 'status') {
+      const order = { draft: 0, scheduled: 1, hidden: 2, live: 3 };
+      return (order[getPublicationState(data, section, a._entry)] ?? 9) - (order[getPublicationState(data, section, b._entry)] ?? 9)
+        || publicationTimestamp(b._entry) - publicationTimestamp(a._entry);
+    }
+    return publicationTimestamp(b._entry) - publicationTimestamp(a._entry)
+      || Number(b.id) - Number(a.id);
+  });
 
   const optionsHtml = visibleDropdown
     .map((item) => {
       const id = Number(item.id);
+      const publicationState = getPublicationState(data, section, item._entry);
       let label = item._hasTranslation
         ? getEntryTitle(section, item._entry)
         : item._enTitle + ' (не переведено)';
       const e = item._entry || {};
-      if (e.draft) label += ' 📝 ЧЕРНОВИК';
-      else if (e.publishAt && Date.parse(e.publishAt) > Date.now()) label += ' ⏳ ОТЛОЖЕНО';
+      label += ` ${publicationStateIcon(publicationState)} ${publicationStateLabel(publicationState).toUpperCase()}`;
       return `<option value="${id}">#${id} - ${escapeHtml(label)}</option>`;
     })
     .join('');

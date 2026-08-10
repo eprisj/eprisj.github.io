@@ -468,6 +468,7 @@
                       <option value="articles">Статьи</option>
                       <option value="reviews">Обзоры</option>
                       <option value="items">Галерея</option>
+                      <option value="libraryItems">Библиотека</option>
                     </select>
                   </label>
                   <label class="toolbar-field">
@@ -482,6 +483,31 @@
                     <span class="toolbar-field-label">Поиск</span>
                     <input id="visualSearch" placeholder="Поиск по названию или #id..." />
                   </label>
+                  <label class="toolbar-field">
+                    <span class="toolbar-field-label">Статус</span>
+                    <select id="visualStatusFilter">
+                      <option value="all">Все</option>
+                      <option value="live">Опубликовано</option>
+                      <option value="draft">Черновики</option>
+                      <option value="scheduled">Отложенные</option>
+                      <option value="hidden">Скрытые</option>
+                    </select>
+                  </label>
+                  <label class="toolbar-field">
+                    <span class="toolbar-field-label">Сортировка</span>
+                    <select id="visualSort">
+                      <option value="updated">Последние изменения</option>
+                      <option value="title">По названию</option>
+                      <option value="status">По статусу</option>
+                      <option value="id">По ID</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="toolbar-publication-row">
+                  <span id="visualPublicationSummary" class="toolbar-publication-summary" aria-live="polite"></span>
+                  <button id="visualPublishBtn" class="btn btn-sm btn-primary" type="button" title="Снять черновик и открыть запись на сайте">Опубликовать</button>
+                  <button id="visualDraftBtn" class="btn btn-sm" type="button" title="Скрыть запись как черновик">В черновик</button>
+                  <button id="visualHideBtn" class="btn btn-sm" type="button" title="Скрыть запись без удаления">Скрыть</button>
                 </div>
                 <div class="toolbar-buttons">
                   <button id="wysToggleBtn" class="btn btn-sm btn-wys-toggle active" type="button" title="Живой WYSIWYG-редактор">
