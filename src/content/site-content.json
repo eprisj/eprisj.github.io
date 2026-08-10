@@ -2017,11 +2017,16 @@
       "subtitle": "Photography",
       "fig": "FIG. 11",
       "description": "A photograph can be a threshold rather than a record — Sandra Kantanen turns landscape into a space between memory, myth and optical distortion.",
-      "imageSeed": "photography-sandra-kantanen",
-      "imageUrl": "https://api.eprisjournal.com/uploads/msma9wvbe77qf8.jpg",
+      "imageSeed": "epris-pick-photography",
+      "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt8ytd6vu1.jpg",
       "articleId": 14,
       "homeCategory": "photography",
-      "homeLabel": "Photography"
+      "homeLabel": "Fedora E. D. Brown · c. 1908 · silver gelatin print",
+      "homeTitle": "Landscape",
+      "homeSubtitle": "Fedora E. D. Brown · c. 1908 · silver gelatin print",
+      "homeDescription": "A path dissolves into haze and trees, making the landscape feel like a memory still finding its focus.",
+      "homeCredit": "Fedora E. D. Brown · public-domain photograph / Wikimedia Commons",
+      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Landscape_by_Fedora_E.D._Brown.jpg"
     },
     {
       "id": 12,
@@ -2029,11 +2034,16 @@
       "subtitle": "Contemporary Art",
       "fig": "FIG. 10",
       "description": "Inside the Canvas Cube, Emily Kraus Paints the Rhythm of the Present Moment",
-      "imageSeed": "item-12",
-      "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg",
+      "imageSeed": "epris-pick-painting",
+      "imageUrl": "https://api.eprisjournal.com/uploads/msnlvsz8ir8omt.jpg",
       "articleId": 17,
       "homeCategory": "painting",
-      "homeLabel": "Painting"
+      "homeLabel": "Hilma af Klint · 1907 · tempera on paper",
+      "homeTitle": "The Ten Largest No. 6",
+      "homeSubtitle": "Hilma af Klint · 1907 · tempera on paper",
+      "homeDescription": "Lilac fields, solar diagrams and a dark central seed make the canvas feel less painted than grown from an invisible cosmos.",
+      "homeCredit": "Hilma af Klint · public-domain work / Wikimedia Commons",
+      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
     },
     {
       "id": 10,
@@ -2041,11 +2051,16 @@
       "subtitle": "Architecture",
       "fig": "FIG. 08",
       "description": "Five buildings that talked their way out of the grid — and the software, the metal, the money and the sheer nerve it took to build them.",
-      "imageSeed": "item-10",
-      "imageUrl": "https://api.eprisjournal.com/uploads/epris-curves-bilbao-guggenheim-river.jpg",
+      "imageSeed": "epris-pick-architecture",
+      "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt45l8hv6y.jpg",
       "articleId": 18,
       "homeCategory": "architecture",
-      "homeLabel": "Architecture"
+      "homeLabel": "Lekeboy54 · 2025 · architectural photograph",
+      "homeTitle": "Modernist Concrete Study",
+      "homeSubtitle": "Lekeboy54 · 2025 · architectural photograph",
+      "homeDescription": "A quiet concrete frame turns weather, repetition and a low horizon into one measured composition.",
+      "homeCredit": "Lekeboy54 · CC0 / Wikimedia Commons",
+      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Modern_Architectural_Design_of_Concrete_Building.jpg"
     },
     {
       "id": 9,
@@ -2053,11 +2068,16 @@
       "subtitle": "Design",
       "fig": "FIG. 09",
       "description": "Contemporary Polish design has arrived at a moment of profound, quiet maturity. To walk through the studios of today’s leading architects and furniture designers is to encounter a language of rigorous minimalism, tactile raw materials, and a deliberate structural honesty. Yet, this modern clarity is not a rejection of the past - it is the culmination of a century-long dialogue regarding what it means to create with a national soul.",
-      "imageSeed": "new-item-9",
-      "imageUrl": "https://api.eprisjournal.com/uploads/ms32cwwlzm4hw7.jpg",
+      "imageSeed": "epris-pick-design",
+      "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt6jsxpm2n.jpg",
       "articleId": 16,
       "homeCategory": "design",
-      "homeLabel": "Design"
+      "homeLabel": "Frank Gehry · 1972 · corrugated cardboard",
+      "homeTitle": "Wiggle Side Chair",
+      "homeSubtitle": "Frank Gehry · 1972 · corrugated cardboard",
+      "homeDescription": "A simple sheet becomes a sinuous seat: an everyday material pushed into a sculptural, surprisingly generous form.",
+      "homeCredit": "Frank Gehry · photo CC0 / Wikimedia Commons",
+      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Wiggle_Side_Chair,_designed_by_Frank_Gehry,_manufactured_by_Easy_Edges_and_Vitra,_1972,_corrugated_cardboard_-_Design_Museum,_Kensington_-_London_-_DSC01592.jpg"
     },
     {
       "id": 8,
@@ -2075,11 +2095,16 @@
       "subtitle": "ART & DESIGN",
       "fig": "FIG. 07",
       "description": "I believe that when you introduce playful objects into an environment, it expands the boundaries of the mind. It gives you non-verbal permission to think freely - not just to push against conventional frames, but to forget they even exist.",
-      "imageSeed": "new-item-7",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg",
+      "imageSeed": "epris-pick-sculpture",
+      "imageUrl": "https://api.eprisjournal.com/uploads/msnluv70lwze6y.jpg",
       "articleId": 13,
       "homeCategory": "sculpture",
-      "homeLabel": "Sculpture"
+      "homeLabel": "Umberto Boccioni · 1913 · bronze",
+      "homeTitle": "Unique Forms of Continuity in Space",
+      "homeSubtitle": "Umberto Boccioni · 1913 · bronze",
+      "homeDescription": "A body becomes velocity: Boccioni turns the figure into a single aerodynamic gesture, caught between sculpture and flight.",
+      "homeCredit": "Umberto Boccioni · public-domain work / Wikimedia Commons",
+      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:%27Unique_Forms_of_Continuity_in_Space%27,_1913_bronze_by_Umberto_Boccioni.jpg"
     },
     {
       "id": 1,
@@ -4404,7 +4429,15 @@
           "subtitle": "Фотография",
           "description": "Фотография может быть порогом, а не записью — Сандра Кантанен превращает пейзаж в пространство между памятью, мифом и оптическим искажением.",
           "fig": "FIG. 11",
-          "imageSeed": "photography-sandra-kantanen"
+          "imageSeed": "epris-pick-photography",
+          "homeTitle": "Пейзаж",
+          "homeSubtitle": "Федора Э. Д. Браун · около 1908 · желатино-серебряный отпечаток",
+          "homeDescription": "Тропа растворяется в дымке и деревьях, превращая пейзаж в память, которая ещё наводит резкость.",
+          "homeCredit": "Федора Э. Д. Браун · общественное достояние / Wikimedia Commons",
+          "homeCategory": "photography",
+          "homeLabel": "Федора Э. Д. Браун · около 1908 · желатино-серебряный отпечаток",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Landscape_by_Fedora_E.D._Brown.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt8ytd6vu1.jpg"
         },
         {
           "id": 10,
@@ -4412,8 +4445,15 @@
           "subtitle": "Architecture",
           "fig": "FIG. 08",
           "description": "Пять зданий, которые выговорили себе свободу от сетки, — и софт, металл, деньги и чистая наглость, которые понадобились, чтобы их построить.",
-          "imageSeed": "item-10",
-          "imageUrl": ""
+          "imageSeed": "epris-pick-architecture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt45l8hv6y.jpg",
+          "homeTitle": "Исследование модернистского бетона",
+          "homeSubtitle": "Lekeboy54 · 2025 · архитектурная фотография",
+          "homeDescription": "Тихий бетонный каркас превращает погоду, повторение и низкий горизонт в одну выверенную композицию.",
+          "homeCredit": "Lekeboy54 · CC0 / Wikimedia Commons",
+          "homeCategory": "architecture",
+          "homeLabel": "Lekeboy54 · 2025 · архитектурная фотография",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Modern_Architectural_Design_of_Concrete_Building.jpg"
         },
         {
           "id": 1,
@@ -4453,8 +4493,15 @@
           "subtitle": "Красочные и игривые предметы обладают уникальным качеством, которого нет у других: они привносят в комнату чистое счастье.",
           "fig": "FIG. 07",
           "description": "Я считаю, что когда вы вводите в окружающую среду игровые предметы, это расширяет границы разума. Это дает вам невербальное разрешение мыслить свободно – не только отвергать общепринятые рамки, но и забывать о их существовании.",
-          "imageSeed": "new-item-7",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
+          "imageSeed": "epris-pick-sculpture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnluv70lwze6y.jpg",
+          "homeTitle": "Уникальные формы непрерывности в пространстве",
+          "homeSubtitle": "Умберто Боччони · 1913 · бронза",
+          "homeDescription": "Тело становится скоростью: Боччони превращает фигуру в единый аэродинамический жест между скульптурой и полётом.",
+          "homeCredit": "Умберто Боччони · общественное достояние / Wikimedia Commons",
+          "homeCategory": "sculpture",
+          "homeLabel": "Умберто Боччони · 1913 · бронза",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:%27Unique_Forms_of_Continuity_in_Space%27,_1913_bronze_by_Umberto_Boccioni.jpg"
         },
         {
           "id": 8,
@@ -4470,7 +4517,15 @@
           "subtitle": "Дизайн",
           "fig": "FIG. 09",
           "description": "Современный польский дизайн переживает момент тихой зрелости. В студиях сегодняшних архитекторов и мебельщиков говорят на языке строгого минимализма, тактильных материалов и честной конструкции — итог векового диалога о том, что значит творить с национальной душой.",
-          "imageSeed": "new-item-9"
+          "imageSeed": "epris-pick-design",
+          "homeTitle": "Стул Wiggle",
+          "homeSubtitle": "Фрэнк Гери · 1972 · гофрокартон",
+          "homeDescription": "Простой лист становится плавным сиденьем: повседневный материал превращается в скульптурную и удивительно щедрую форму.",
+          "homeCredit": "Фрэнк Гери · фото CC0 / Wikimedia Commons",
+          "homeCategory": "design",
+          "homeLabel": "Фрэнк Гери · 1972 · гофрокартон",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Wiggle_Side_Chair,_designed_by_Frank_Gehry,_manufactured_by_Easy_Edges_and_Vitra,_1972,_corrugated_cardboard_-_Design_Museum,_Kensington_-_London_-_DSC01592.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt6jsxpm2n.jpg"
         },
         {
           "id": 11,
@@ -4487,8 +4542,15 @@
           "subtitle": "Современное искусство",
           "fig": "FIG. 10",
           "description": "Внутри холстового куба Эмили Краус рисует ритм настоящего момента",
-          "imageSeed": "item-12",
-          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
+          "imageSeed": "epris-pick-painting",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvsz8ir8omt.jpg",
+          "homeTitle": "Самые большие № 6",
+          "homeSubtitle": "Хильма аф Клинт · 1907 · темпера на бумаге",
+          "homeDescription": "Сиреневые поля, солнечные диаграммы и тёмное семя в центре делают картину похожей не на холст, а на рост из невидимого космоса.",
+          "homeCredit": "Хильма аф Клинт · общественное достояние / Wikimedia Commons",
+          "homeCategory": "painting",
+          "homeLabel": "Хильма аф Клинт · 1907 · темпера на бумаге",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
         }
       ],
       "articles": [
@@ -6715,7 +6777,15 @@
           "subtitle": "Фотографія",
           "description": "Фотографія може бути порогом, а не записом — Сандра Кантанен перетворює пейзаж на простір між пам’яттю, міфом та оптичним викривленням.",
           "fig": "FIG. 11",
-          "imageSeed": "photography-sandra-kantanen"
+          "imageSeed": "epris-pick-photography",
+          "homeTitle": "Пейзаж",
+          "homeSubtitle": "Федора Е. Д. Браун · близько 1908 · желатино-срібний відбиток",
+          "homeDescription": "Стежка розчиняється в імлі та деревах, перетворюючи пейзаж на пам’ять, яка ще наводить різкість.",
+          "homeCredit": "Федора Е. Д. Браун · суспільне надбання / Wikimedia Commons",
+          "homeCategory": "photography",
+          "homeLabel": "Федора Е. Д. Браун · близько 1908 · желатино-срібний відбиток",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Landscape_by_Fedora_E.D._Brown.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt8ytd6vu1.jpg"
         },
         {
           "id": 10,
@@ -6723,8 +6793,15 @@
           "subtitle": "Architecture",
           "fig": "FIG. 08",
           "description": "П’ять будівель, які виговорили собі свободу від сітки, — і софт, метал, гроші та чиста зухвалість, яких забракло б без них.",
-          "imageSeed": "item-10",
-          "imageUrl": ""
+          "imageSeed": "epris-pick-architecture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt45l8hv6y.jpg",
+          "homeTitle": "Дослідження модерністського бетону",
+          "homeSubtitle": "Lekeboy54 · 2025 · архітектурна фотографія",
+          "homeDescription": "Тихий бетонний каркас перетворює погоду, повторення та низький горизонт на одну вивірену композицію.",
+          "homeCredit": "Lekeboy54 · CC0 / Wikimedia Commons",
+          "homeCategory": "architecture",
+          "homeLabel": "Lekeboy54 · 2025 · архітектурна фотографія",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Modern_Architectural_Design_of_Concrete_Building.jpg"
         },
         {
           "id": 1,
@@ -6764,8 +6841,15 @@
           "subtitle": "Барвисті та грайливі об’єкти володіють унікальною властивістю, якої не вистачає іншим – вони дарують кімнаті справжнє щастя.",
           "fig": "FIG. 07",
           "description": "Я вважаю, що коли ви вводите ігрові об’єкти в середовище, це розширює межі розуму. Це дає вам невербальний дозвіл мислити вільно - не просто протистояти звичайним рамкам, але й забути про їх існування.",
-          "imageSeed": "new-item-7",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
+          "imageSeed": "epris-pick-sculpture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnluv70lwze6y.jpg",
+          "homeTitle": "Унікальні форми неперервності у просторі",
+          "homeSubtitle": "Умберто Боччоні · 1913 · бронза",
+          "homeDescription": "Тіло стає швидкістю: Боччоні перетворює фігуру на єдиний аеродинамічний жест між скульптурою та польотом.",
+          "homeCredit": "Умберто Боччоні · суспільне надбання / Wikimedia Commons",
+          "homeCategory": "sculpture",
+          "homeLabel": "Умберто Боччоні · 1913 · бронза",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:%27Unique_Forms_of_Continuity_in_Space%27,_1913_bronze_by_Umberto_Boccioni.jpg"
         },
         {
           "id": 8,
@@ -6781,7 +6865,15 @@
           "subtitle": "Дизайн",
           "fig": "FIG. 09",
           "description": "Сучасний польський дизайн переживає момент тихої зрілості. У студіях сьогоднішніх архітекторів і меблярів говорять мовою суворого мінімалізму, тактильних матеріалів і чесної конструкції — підсумок столітнього діалогу про те, що означає творити з національною душею.",
-          "imageSeed": "new-item-9"
+          "imageSeed": "epris-pick-design",
+          "homeTitle": "Стілець Wiggle",
+          "homeSubtitle": "Френк Гері · 1972 · гофрокартон",
+          "homeDescription": "Простий аркуш стає плавним сидінням: повсякденний матеріал перетворюється на скульптурну й напрочуд щедру форму.",
+          "homeCredit": "Френк Гері · фото CC0 / Wikimedia Commons",
+          "homeCategory": "design",
+          "homeLabel": "Френк Гері · 1972 · гофрокартон",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Wiggle_Side_Chair,_designed_by_Frank_Gehry,_manufactured_by_Easy_Edges_and_Vitra,_1972,_corrugated_cardboard_-_Design_Museum,_Kensington_-_London_-_DSC01592.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt6jsxpm2n.jpg"
         },
         {
           "id": 11,
@@ -6798,8 +6890,15 @@
           "subtitle": "Сучасне мистецтво",
           "fig": "FIG. 10",
           "description": "Всередині Canvas Cube Емілі Краус малює ритм теперішнього моменту",
-          "imageSeed": "item-12",
-          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
+          "imageSeed": "epris-pick-painting",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvsz8ir8omt.jpg",
+          "homeTitle": "Найбільші № 6",
+          "homeSubtitle": "Гільма аф Клінт · 1907 · темпера на папері",
+          "homeDescription": "Бузкові поля, сонячні діаграми й темне зерно в центрі роблять картину схожою не на полотно, а на ріст із невидимого космосу.",
+          "homeCredit": "Гільма аф Клінт · суспільне надбання / Wikimedia Commons",
+          "homeCategory": "painting",
+          "homeLabel": "Гільма аф Клінт · 1907 · темпера на папері",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
         }
       ],
       "articles": [
@@ -8968,7 +9067,15 @@
           "subtitle": "Fotografie",
           "description": "Ein Foto kann eine Schwelle statt eines Protokolls sein — Sandra Kantanen verwandelt Landschaft in einen Raum zwischen Erinnerung, Mythos und optischer Verzerrung.",
           "fig": "FIG. 11",
-          "imageSeed": "photography-sandra-kantanen"
+          "imageSeed": "epris-pick-photography",
+          "homeTitle": "Landschaft",
+          "homeSubtitle": "Fedora E. D. Brown · um 1908 · Silbergelatineabzug",
+          "homeDescription": "Ein Weg löst sich in Dunst und Bäumen auf – die Landschaft wirkt wie eine Erinnerung, die noch scharf stellt.",
+          "homeCredit": "Fedora E. D. Brown · gemeinfreies Foto / Wikimedia Commons",
+          "homeCategory": "photography",
+          "homeLabel": "Fedora E. D. Brown · um 1908 · Silbergelatineabzug",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Landscape_by_Fedora_E.D._Brown.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt8ytd6vu1.jpg"
         },
         {
           "id": 10,
@@ -8976,8 +9083,15 @@
           "subtitle": "Architecture",
           "fig": "FIG. 08",
           "description": "Fünf Bauten, die sich aus dem Raster herausgeredet haben — und die Software, das Metall, das Geld und die schiere Frechheit, die es brauchte, um sie zu bauen.",
-          "imageSeed": "item-10",
-          "imageUrl": ""
+          "imageSeed": "epris-pick-architecture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt45l8hv6y.jpg",
+          "homeTitle": "Modernistische Betonstudie",
+          "homeSubtitle": "Lekeboy54 · 2025 · Architekturfotografie",
+          "homeDescription": "Ein stiller Betonrahmen macht Wetter, Wiederholung und Horizont zu einer präzisen Komposition.",
+          "homeCredit": "Lekeboy54 · CC0 / Wikimedia Commons",
+          "homeCategory": "architecture",
+          "homeLabel": "Lekeboy54 · 2025 · Architekturfotografie",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Modern_Architectural_Design_of_Concrete_Building.jpg"
         },
         {
           "id": 1,
@@ -9017,8 +9131,15 @@
           "subtitle": "Bunte und verspielte Objekte besitzen eine einzigartige Qualität, die anderen fehlt – sie verleihen einem Raum pure Fröhlichkeit.",
           "fig": "FIG. 07",
           "description": "Ich glaube, dass die Grenzen des Geistes erweitert werden, wenn man spielerische Objekte in eine Umgebung einbringt. Es gibt Ihnen die nonverbale Erlaubnis, frei zu denken – nicht nur, sich gegen konventionelle Rahmen zu stellen, sondern zu vergessen, dass sie überhaupt existieren.",
-          "imageSeed": "new-item-7",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
+          "imageSeed": "epris-pick-sculpture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnluv70lwze6y.jpg",
+          "homeTitle": "Einzigartige Formen der Kontinuität im Raum",
+          "homeSubtitle": "Umberto Boccioni · 1913 · Bronze",
+          "homeDescription": "Ein Körper wird zu Geschwindigkeit: Boccioni verwandelt die Figur in eine aerodynamische Geste zwischen Skulptur und Flug.",
+          "homeCredit": "Umberto Boccioni · gemeinfrei / Wikimedia Commons",
+          "homeCategory": "sculpture",
+          "homeLabel": "Umberto Boccioni · 1913 · Bronze",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:%27Unique_Forms_of_Continuity_in_Space%27,_1913_bronze_by_Umberto_Boccioni.jpg"
         },
         {
           "id": 8,
@@ -9034,7 +9155,15 @@
           "subtitle": "Design",
           "fig": "FIG. 09",
           "description": "Das zeitgenössische polnische Design hat einen Moment stiller Reife erreicht. In den Studios der heutigen Architekten und Möbelgestalter begegnet man einer Sprache aus strengem Minimalismus, haptischen Materialien und ehrlicher Konstruktion — die Summe eines jahrhundertelangen Dialogs darüber, was es heißt, mit nationaler Seele zu gestalten.",
-          "imageSeed": "new-item-9"
+          "imageSeed": "epris-pick-design",
+          "homeTitle": "Wiggle Side Chair",
+          "homeSubtitle": "Frank Gehry · 1972 · Wellpappe",
+          "homeDescription": "Ein einfaches Blatt wird zum geschwungenen Sitz: Alltagsmaterial als großzügige, skulpturale Form.",
+          "homeCredit": "Frank Gehry · Foto CC0 / Wikimedia Commons",
+          "homeCategory": "design",
+          "homeLabel": "Frank Gehry · 1972 · Wellpappe",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Wiggle_Side_Chair,_designed_by_Frank_Gehry,_manufactured_by_Easy_Edges_and_Vitra,_1972,_corrugated_cardboard_-_Design_Museum,_Kensington_-_London_-_DSC01592.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt6jsxpm2n.jpg"
         },
         {
           "id": 11,
@@ -9051,8 +9180,15 @@
           "subtitle": "Zeitgenössische Kunst",
           "fig": "FIG. 10",
           "description": "Im Canvas Cube malt Emily Kraus den Rhythmus des gegenwärtigen Augenblicks",
-          "imageSeed": "item-12",
-          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
+          "imageSeed": "epris-pick-painting",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvsz8ir8omt.jpg",
+          "homeTitle": "Die zehn Größten Nr. 6",
+          "homeSubtitle": "Hilma af Klint · 1907 · Tempera auf Papier",
+          "homeDescription": "Fliederfelder, Sonnendiagramme und ein dunkler Kern lassen das Bild eher gewachsen als gemalt erscheinen.",
+          "homeCredit": "Hilma af Klint · gemeinfrei / Wikimedia Commons",
+          "homeCategory": "painting",
+          "homeLabel": "Hilma af Klint · 1907 · Tempera auf Papier",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
         }
       ],
       "articles": [
@@ -11221,7 +11357,15 @@
           "subtitle": "Fotografía",
           "description": "Una fotografía puede ser un umbral y no un registro: Sandra Kantanen convierte el paisaje en un espacio entre memoria, mito y distorsión óptica.",
           "fig": "FIG. 11",
-          "imageSeed": "photography-sandra-kantanen"
+          "imageSeed": "epris-pick-photography",
+          "homeTitle": "Paisaje",
+          "homeSubtitle": "Fedora E. D. Brown · c. 1908 · gelatina de plata",
+          "homeDescription": "Un sendero se disuelve entre la bruma y los árboles, como un recuerdo que todavía busca el enfoque.",
+          "homeCredit": "Fedora E. D. Brown · fotografía de dominio público / Wikimedia Commons",
+          "homeCategory": "photography",
+          "homeLabel": "Fedora E. D. Brown · c. 1908 · gelatina de plata",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Landscape_by_Fedora_E.D._Brown.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt8ytd6vu1.jpg"
         },
         {
           "id": 10,
@@ -11229,8 +11373,15 @@
           "subtitle": "Architecture",
           "fig": "FIG. 08",
           "description": "Cinco edificios que se libraron de la retícula a base de argumentos — y el software, el metal, el dinero y el descaro que hicieron falta para construirlos.",
-          "imageSeed": "item-10",
-          "imageUrl": ""
+          "imageSeed": "epris-pick-architecture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt45l8hv6y.jpg",
+          "homeTitle": "Estudio modernista de hormigón",
+          "homeSubtitle": "Lekeboy54 · 2025 · fotografía de arquitectura",
+          "homeDescription": "Un marco de hormigón convierte el clima, la repetición y el horizonte bajo en una composición medida.",
+          "homeCredit": "Lekeboy54 · CC0 / Wikimedia Commons",
+          "homeCategory": "architecture",
+          "homeLabel": "Lekeboy54 · 2025 · fotografía de arquitectura",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Modern_Architectural_Design_of_Concrete_Building.jpg"
         },
         {
           "id": 1,
@@ -11270,8 +11421,15 @@
           "subtitle": "Los objetos coloridos y divertidos poseen una cualidad única de la que otros carecen: inyectan pura felicidad en una habitación.",
           "fig": "FIG. 07",
           "description": "Creo que cuando introduces objetos divertidos en un entorno, se expanden los límites de la mente. Te da permiso no verbal para pensar libremente, no sólo para ir contra los marcos convencionales, sino para olvidar que incluso existen.",
-          "imageSeed": "new-item-7",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
+          "imageSeed": "epris-pick-sculpture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnluv70lwze6y.jpg",
+          "homeTitle": "Formas únicas de continuidad en el espacio",
+          "homeSubtitle": "Umberto Boccioni · 1913 · bronce",
+          "homeDescription": "El cuerpo se convierte en velocidad: Boccioni transforma la figura en un gesto aerodinámico entre escultura y vuelo.",
+          "homeCredit": "Umberto Boccioni · dominio público / Wikimedia Commons",
+          "homeCategory": "sculpture",
+          "homeLabel": "Umberto Boccioni · 1913 · bronce",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:%27Unique_Forms_of_Continuity_in_Space%27,_1913_bronze_by_Umberto_Boccioni.jpg"
         },
         {
           "id": 8,
@@ -11287,7 +11445,15 @@
           "subtitle": "Diseño",
           "fig": "FIG. 09",
           "description": "El diseño polaco contemporáneo ha alcanzado un momento de madurez serena. En los estudios de sus arquitectos y diseñadores de mobiliario actuales se habla un lenguaje de minimalismo riguroso, materiales táctiles y honestidad estructural: la culminación de un diálogo centenario sobre qué significa crear con alma nacional.",
-          "imageSeed": "new-item-9"
+          "imageSeed": "epris-pick-design",
+          "homeTitle": "Wiggle Side Chair",
+          "homeSubtitle": "Frank Gehry · 1972 · cartón corrugado",
+          "homeDescription": "Una simple lámina se convierte en un asiento ondulante: un material cotidiano llevado a una forma escultórica y generosa.",
+          "homeCredit": "Frank Gehry · foto CC0 / Wikimedia Commons",
+          "homeCategory": "design",
+          "homeLabel": "Frank Gehry · 1972 · cartón corrugado",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Wiggle_Side_Chair,_designed_by_Frank_Gehry,_manufactured_by_Easy_Edges_and_Vitra,_1972,_corrugated_cardboard_-_Design_Museum,_Kensington_-_London_-_DSC01592.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt6jsxpm2n.jpg"
         },
         {
           "id": 11,
@@ -11304,8 +11470,15 @@
           "subtitle": "Arte Contemporáneo",
           "fig": "FIG. 10",
           "description": "Dentro del Canvas Cube, Emily Kraus pinta el ritmo del momento presente",
-          "imageSeed": "item-12",
-          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
+          "imageSeed": "epris-pick-painting",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvsz8ir8omt.jpg",
+          "homeTitle": "Las diez más grandes n.º 6",
+          "homeSubtitle": "Hilma af Klint · 1907 · temple sobre papel",
+          "homeDescription": "Campos lilas, diagramas solares y una semilla oscura hacen que la obra parezca crecer desde un cosmos invisible.",
+          "homeCredit": "Hilma af Klint · dominio público / Wikimedia Commons",
+          "homeCategory": "painting",
+          "homeLabel": "Hilma af Klint · 1907 · temple sobre papel",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
         }
       ],
       "articles": [
@@ -13474,7 +13647,15 @@
           "subtitle": "Fotoğraf",
           "description": "Bir fotoğraf kayıttan çok bir eşik olabilir — Sandra Kantanen manzarayı bellek, mit ve optik bozulma arasındaki bir alana dönüştürüyor.",
           "fig": "FIG. 11",
-          "imageSeed": "photography-sandra-kantanen"
+          "imageSeed": "epris-pick-photography",
+          "homeTitle": "Manzara",
+          "homeSubtitle": "Fedora E. D. Brown · yaklaşık 1908 · gümüş jelatin baskı",
+          "homeDescription": "Bir patika sis ve ağaçların içinde erir; manzara hâlâ odağını arayan bir anıya dönüşür.",
+          "homeCredit": "Fedora E. D. Brown · kamu malı fotoğraf / Wikimedia Commons",
+          "homeCategory": "photography",
+          "homeLabel": "Fedora E. D. Brown · yaklaşık 1908 · gümüş jelatin baskı",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Landscape_by_Fedora_E.D._Brown.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt8ytd6vu1.jpg"
         },
         {
           "id": 10,
@@ -13482,8 +13663,15 @@
           "subtitle": "Architecture",
           "fig": "FIG. 08",
           "description": "Kendini ızgaradan konuşarak kurtaran beş yapı — ve onları inşa etmek için gereken yazılım, metal, para ve düpedüz cesaret.",
-          "imageSeed": "item-10",
-          "imageUrl": ""
+          "imageSeed": "epris-pick-architecture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt45l8hv6y.jpg",
+          "homeTitle": "Modernist Beton Çalışması",
+          "homeSubtitle": "Lekeboy54 · 2025 · mimari fotoğraf",
+          "homeDescription": "Sessiz bir beton çerçeve, hava durumunu, tekrarı ve alçak ufku ölçülü bir kompozisyona dönüştürür.",
+          "homeCredit": "Lekeboy54 · CC0 / Wikimedia Commons",
+          "homeCategory": "architecture",
+          "homeLabel": "Lekeboy54 · 2025 · mimari fotoğraf",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Modern_Architectural_Design_of_Concrete_Building.jpg"
         },
         {
           "id": 1,
@@ -13523,8 +13711,15 @@
           "subtitle": "Renkli ve eğlenceli nesneler, diğerlerinde bulunmayan benzersiz bir kaliteye sahiptir; bir odaya saf mutluluk aşılarlar.",
           "fig": "FIG. 07",
           "description": "Bir ortama eğlenceli nesneler kattığınızda zihnin sınırlarını genişlettiğine inanıyorum. Size sözlü olmayan özgür düşünme izni verir; sadece geleneksel çerçevelere karşı çıkmak için değil, aynı zamanda bunların var olduğunu bile unutmak için.",
-          "imageSeed": "new-item-7",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
+          "imageSeed": "epris-pick-sculpture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnluv70lwze6y.jpg",
+          "homeTitle": "Uzayda Sürekliliğin Eşsiz Biçimleri",
+          "homeSubtitle": "Umberto Boccioni · 1913 · bronz",
+          "homeDescription": "Beden hıza dönüşür: Boccioni figürü heykel ile uçuş arasında tek bir aerodinamik harekete çevirir.",
+          "homeCredit": "Umberto Boccioni · kamu malı / Wikimedia Commons",
+          "homeCategory": "sculpture",
+          "homeLabel": "Umberto Boccioni · 1913 · bronz",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:%27Unique_Forms_of_Continuity_in_Space%27,_1913_bronze_by_Umberto_Boccioni.jpg"
         },
         {
           "id": 8,
@@ -13540,7 +13735,15 @@
           "subtitle": "Tasarım",
           "fig": "FIG. 09",
           "description": "Çağdaş Polonya tasarımı sessiz bir olgunluk anına ulaştı. Bugünün mimarlarının ve mobilya tasarımcılarının atölyelerinde katı minimalizmin, dokunsal malzemelerin ve dürüst yapının dili konuşuluyor — ulusal bir ruhla yaratmanın ne anlama geldiğine dair yüzyıllık bir diyaloğun sonucu.",
-          "imageSeed": "new-item-9"
+          "imageSeed": "epris-pick-design",
+          "homeTitle": "Wiggle Side Chair",
+          "homeSubtitle": "Frank Gehry · 1972 · oluklu mukavva",
+          "homeDescription": "Basit bir levha kıvrımlı bir oturağa dönüşür: gündelik malzeme heykelsi ve cömert bir forma ulaşır.",
+          "homeCredit": "Frank Gehry · fotoğraf CC0 / Wikimedia Commons",
+          "homeCategory": "design",
+          "homeLabel": "Frank Gehry · 1972 · oluklu mukavva",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Wiggle_Side_Chair,_designed_by_Frank_Gehry,_manufactured_by_Easy_Edges_and_Vitra,_1972,_corrugated_cardboard_-_Design_Museum,_Kensington_-_London_-_DSC01592.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt6jsxpm2n.jpg"
         },
         {
           "id": 11,
@@ -13557,8 +13760,15 @@
           "subtitle": "Çağdaş Sanat",
           "fig": "FIG. 10",
           "description": "Kanvas Küpün İçinde Emily Kraus Şimdiki Anın Ritimini Boyadı",
-          "imageSeed": "item-12",
-          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
+          "imageSeed": "epris-pick-painting",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvsz8ir8omt.jpg",
+          "homeTitle": "En Büyükler No. 6",
+          "homeSubtitle": "Hilma af Klint · 1907 · kâğıt üzerine tempera",
+          "homeDescription": "Leylak tarlaları, güneş diyagramları ve karanlık merkez, resmi görünmez bir kozmostan büyümüş gibi hissettirir.",
+          "homeCredit": "Hilma af Klint · kamu malı / Wikimedia Commons",
+          "homeCategory": "painting",
+          "homeLabel": "Hilma af Klint · 1907 · kâğıt üzerine tempera",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
         }
       ],
       "articles": [
@@ -15727,7 +15937,15 @@
           "subtitle": "Fotografia",
           "description": "Una fotografia può essere una soglia, non una registrazione — Sandra Kantanen trasforma il paesaggio in uno spazio tra memoria, mito e distorsione ottica.",
           "fig": "FIG. 11",
-          "imageSeed": "photography-sandra-kantanen"
+          "imageSeed": "epris-pick-photography",
+          "homeTitle": "Paesaggio",
+          "homeSubtitle": "Fedora E. D. Brown · circa 1908 · stampa alla gelatina d’argento",
+          "homeDescription": "Un sentiero svanisce nella foschia e negli alberi, trasformando il paesaggio in un ricordo ancora da mettere a fuoco.",
+          "homeCredit": "Fedora E. D. Brown · fotografia di pubblico dominio / Wikimedia Commons",
+          "homeCategory": "photography",
+          "homeLabel": "Fedora E. D. Brown · circa 1908 · stampa alla gelatina d’argento",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Landscape_by_Fedora_E.D._Brown.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt8ytd6vu1.jpg"
         },
         {
           "id": 10,
@@ -15735,8 +15953,15 @@
           "subtitle": "Architecture",
           "fig": "FIG. 08",
           "description": "Cinque edifici che si sono parlati fuori dalla griglia — e il software, il metallo, i soldi e la faccia tosta che ci sono voluti per costruirli.",
-          "imageSeed": "item-10",
-          "imageUrl": ""
+          "imageSeed": "epris-pick-architecture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt45l8hv6y.jpg",
+          "homeTitle": "Studio modernista del cemento",
+          "homeSubtitle": "Lekeboy54 · 2025 · fotografia d’architettura",
+          "homeDescription": "Una struttura silenziosa di cemento trasforma clima, ripetizione e orizzonte in una composizione misurata.",
+          "homeCredit": "Lekeboy54 · CC0 / Wikimedia Commons",
+          "homeCategory": "architecture",
+          "homeLabel": "Lekeboy54 · 2025 · fotografia d’architettura",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Modern_Architectural_Design_of_Concrete_Building.jpg"
         },
         {
           "id": 1,
@@ -15776,8 +16001,15 @@
           "subtitle": "Gli oggetti colorati e giocosi possiedono una qualità unica che manca ad altri: infonderanno pura felicità in una stanza.",
           "fig": "FIG. 07",
           "description": "Credo che quando si introducono oggetti giocosi in un ambiente, si espandono i confini della mente. Ti dà il permesso non verbale di pensare liberamente, non solo di opporti ai frame convenzionali, ma di dimenticare che addirittura esistono.",
-          "imageSeed": "new-item-7",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrsbv6w6wkqee4.jpg"
+          "imageSeed": "epris-pick-sculpture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnluv70lwze6y.jpg",
+          "homeTitle": "Forme uniche della continuità nello spazio",
+          "homeSubtitle": "Umberto Boccioni · 1913 · bronzo",
+          "homeDescription": "Un corpo diventa velocità: Boccioni trasforma la figura in un gesto aerodinamico tra scultura e volo.",
+          "homeCredit": "Umberto Boccioni · pubblico dominio / Wikimedia Commons",
+          "homeCategory": "sculpture",
+          "homeLabel": "Umberto Boccioni · 1913 · bronzo",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:%27Unique_Forms_of_Continuity_in_Space%27,_1913_bronze_by_Umberto_Boccioni.jpg"
         },
         {
           "id": 8,
@@ -15793,7 +16025,15 @@
           "subtitle": "Design",
           "fig": "FIG. 09",
           "description": "Il design polacco contemporaneo ha raggiunto un momento di quieta maturità. Negli studi dei suoi architetti e progettisti d’arredo di oggi si parla un linguaggio di minimalismo rigoroso, materiali tattili e onestà costruttiva — l’esito di un dialogo secolare su cosa significhi creare con un’anima nazionale.",
-          "imageSeed": "new-item-9"
+          "imageSeed": "epris-pick-design",
+          "homeTitle": "Wiggle Side Chair",
+          "homeSubtitle": "Frank Gehry · 1972 · cartone ondulato",
+          "homeDescription": "Un semplice foglio diventa una seduta sinuosa: un materiale quotidiano spinto verso una forma scultorea e generosa.",
+          "homeCredit": "Frank Gehry · foto CC0 / Wikimedia Commons",
+          "homeCategory": "design",
+          "homeLabel": "Frank Gehry · 1972 · cartone ondulato",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Wiggle_Side_Chair,_designed_by_Frank_Gehry,_manufactured_by_Easy_Edges_and_Vitra,_1972,_corrugated_cardboard_-_Design_Museum,_Kensington_-_London_-_DSC01592.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt6jsxpm2n.jpg"
         },
         {
           "id": 11,
@@ -15810,8 +16050,15 @@
           "subtitle": "Arte Contemporanea",
           "fig": "FIG. 10",
           "description": "All'interno del cubo di tela, Emily Kraus dipinge il ritmo del momento presente",
-          "imageSeed": "item-12",
-          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
+          "imageSeed": "epris-pick-painting",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvsz8ir8omt.jpg",
+          "homeTitle": "Le dieci più grandi n. 6",
+          "homeSubtitle": "Hilma af Klint · 1907 · tempera su carta",
+          "homeDescription": "Campi lilla, diagrammi solari e un seme scuro al centro fanno sembrare la tela cresciuta da un cosmo invisibile.",
+          "homeCredit": "Hilma af Klint · pubblico dominio / Wikimedia Commons",
+          "homeCategory": "painting",
+          "homeLabel": "Hilma af Klint · 1907 · tempera su carta",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
         }
       ],
       "articles": [
@@ -18385,7 +18632,6 @@
         {
           "id": "sculpture",
           "label": "Sculpture",
-          "labels": { "EN": "Sculpture", "RU": "Скульптура", "UA": "Скульптура", "DE": "Skulptur", "IT": "Scultura", "ES": "Escultura", "TR": "Heykel" },
           "matches": [
             "sculpture",
             "sculptural",
@@ -18408,7 +18654,6 @@
         {
           "id": "painting",
           "label": "Painting",
-          "labels": { "EN": "Painting", "RU": "Живопись", "UA": "Живопис", "DE": "Malerei", "IT": "Pittura", "ES": "Pintura", "TR": "Resim" },
           "matches": [
             "painting",
             "paint",
@@ -18432,7 +18677,6 @@
         {
           "id": "architecture",
           "label": "Architecture",
-          "labels": { "EN": "Architecture", "RU": "Архитектура", "UA": "Архітектура", "DE": "Architektur", "IT": "Architettura", "ES": "Arquitectura", "TR": "Mimarlık" },
           "matches": [
             "architecture",
             "building",
@@ -18453,7 +18697,6 @@
         {
           "id": "design",
           "label": "Design",
-          "labels": { "EN": "Design", "RU": "Дизайн", "UA": "Дизайн", "DE": "Design", "IT": "Design", "ES": "Diseño", "TR": "Tasarım" },
           "matches": [
             "design",
             "interior",
@@ -18474,7 +18717,6 @@
         {
           "id": "photography",
           "label": "Photography",
-          "labels": { "EN": "Photography", "RU": "Фотография", "UA": "Фотографія", "DE": "Fotografie", "IT": "Fotografia", "ES": "Fotografía", "TR": "Fotoğraf" },
           "matches": [
             "photography",
             "photograph",
