@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Layers3, Lightbulb, Ruler, Sparkles } from 'lucide-react';
 import { FALLBACK_CASES, fetchCase, fetchCases, type BureauCase } from './bureauApi';
 import { FALLBACK_WORKS, fetchWorks, type Work } from './showcaseApi';
-import { PLAYABLE_SLUGS } from '../stage/moves';
 import { btnGhost, btnSolid } from './ui';
 
 /**
@@ -57,7 +56,7 @@ function Rules() {
 function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-[#f5f0eb]/12 bg-[#1a0b10]/95 backdrop-blur-xl">
-      <div className="mx-auto flex min-h-16 max-w-[1600px] items-center justify-between gap-4 px-4 sm:px-8 lg:px-12">
+      <div className="mx-auto flex min-h-20 max-w-[1600px] items-center justify-between gap-4 px-4 sm:px-8 lg:px-12">
         <a href="/showcase" className="inline-flex min-h-11 items-center gap-2 font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/60 hover:text-[#f5f0eb]">
           <ArrowLeft size={14} /> Showcase
         </a>
@@ -88,19 +87,19 @@ function BureauProductionIntro({ works }: { works: Work[] }) {
     <section className="relative overflow-hidden border-b border-[#f5f0eb]/12 bg-[#14090d]">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(215,180,106,.18),transparent_28%),linear-gradient(118deg,#14090d_0%,#14090d_54%,#281116_100%)]" />
       <div className="absolute inset-0 opacity-[0.055]" style={{ backgroundImage: 'linear-gradient(90deg,#f5f0eb 1px,transparent 1px),linear-gradient(#f5f0eb 1px,transparent 1px)', backgroundSize: '120px 120px' }} />
-      <div className="mx-auto grid max-w-[1700px] gap-8 px-5 py-12 sm:px-8 sm:py-16 lg:min-h-[86dvh] lg:grid-cols-[minmax(0,0.9fr)_minmax(420px,0.7fr)] lg:items-center lg:px-12 xl:px-16">
+      <div className="mx-auto grid max-w-[1700px] gap-10 px-5 py-16 sm:px-8 sm:py-20 lg:min-h-[86dvh] lg:grid-cols-[minmax(0,0.9fr)_minmax(420px,0.7fr)] lg:items-center lg:gap-14 lg:px-12 xl:px-16">
         <div className="relative z-10">
           <div>
-            <p className="font-sans text-[10px] uppercase tracking-normal text-[#d7b46a]">EPRIS Bureau / spatial image studio</p>
-            <h1 className="mt-5 max-w-[10ch] font-display text-[clamp(3.5rem,8.6vw,8.6rem)] lowercase leading-[0.82] tracking-normal text-[#f5f0eb]">
+            <p className="font-sans text-[10px] uppercase tracking-[0.16em] text-[#d7b46a]">EPRIS Bureau / spatial image studio</p>
+            <h1 className="mt-6 max-w-[11ch] font-display text-[clamp(3.35rem,8.2vw,8.2rem)] lowercase leading-[0.87] tracking-normal text-[#f5f0eb]">
               set design for things that need a scene
             </h1>
           </div>
-          <div className="mt-10 max-w-[46rem]">
-            <p className="border-l border-[#d7b46a] pl-5 font-sans text-[17px] leading-relaxed text-[#f5f0eb]/78 sm:text-[20px]">
+          <div className="mt-12 max-w-[46rem]">
+            <p className="border-l border-[#d7b46a] pl-5 font-sans text-[16px] leading-[1.65] text-[#f5f0eb]/78 sm:text-[19px]">
               We design visual situations for culture and brands: vitrines, sets, exhibition rooms, launch scenes and editorial environments where object, light and visitor route work as one image.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-9 flex flex-wrap gap-4">
               <a href="#bureau-services" className={btnSolid('ink')}>
                 What we make <ArrowRight size={15} />
               </a>
@@ -112,10 +111,10 @@ function BureauProductionIntro({ works }: { works: Work[] }) {
         </div>
 
         <div className="relative z-10">
-          <div className="border border-[#f5f0eb]/18 bg-[#f4eadc] p-3 text-[#1a0b10] shadow-[0_34px_120px_rgba(0,0,0,.42)] sm:p-4">
+          <div className="group border border-[#f5f0eb]/18 bg-[#f4eadc] p-3 text-[#1a0b10] shadow-[0_34px_120px_rgba(0,0,0,.42)] transition-[box-shadow,transform] duration-500 hover:-translate-y-1 hover:shadow-[0_42px_130px_rgba(0,0,0,.5)] sm:p-4">
             <figure className="relative aspect-[4/5] overflow-hidden bg-[#d5cabd] sm:aspect-[5/4] lg:aspect-[4/5]">
               {workImage(hero) ? (
-                <img src={workImage(hero)} alt={hero.title} loading="eager" className="h-full w-full object-cover saturate-[.86]" />
+                <img src={workImage(hero)} alt={hero.title} loading="eager" className="h-full w-full object-cover saturate-[.86] transition-transform duration-700 group-hover:scale-[1.02]" />
               ) : (
                 <div className="h-full w-full bg-[#c7b498]" />
               )}
@@ -148,15 +147,15 @@ function BureauReferenceRoom({ works }: { works: Work[] }) {
     <section className="relative overflow-hidden border-b border-[#f5f0eb]/12 bg-[#0f0709] text-[#f5f0eb]">
       <div className="absolute inset-0 opacity-[0.045]" style={{ backgroundImage: 'linear-gradient(90deg,#f5f0eb 1px,transparent 1px),linear-gradient(#f5f0eb 1px,transparent 1px)', backgroundSize: '128px 128px' }} />
       <div className="mx-auto max-w-[1700px] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 xl:px-16">
-        <div className="relative z-10 grid gap-8 border-b border-[#f5f0eb]/12 pb-10 lg:grid-cols-[minmax(0,0.62fr)_minmax(0,0.9fr)] lg:items-end">
+        <div className="relative z-10 grid gap-10 border-b border-[#f5f0eb]/12 pb-12 lg:grid-cols-[minmax(0,0.62fr)_minmax(0,0.9fr)] lg:items-end">
           <div>
-          <p className="font-sans text-[10px] uppercase tracking-normal text-[#d7b46a]">real references / object thinking</p>
-          <h2 className="mt-5 max-w-[11ch] font-display text-[clamp(2.6rem,5.2vw,4.4rem)] lowercase leading-[0.84] tracking-normal">
+          <p className="font-sans text-[10px] uppercase tracking-[0.16em] text-[#d7b46a]">real references / object thinking</p>
+          <h2 className="mt-6 max-w-[11ch] font-display text-[clamp(2.6rem,5.2vw,4.4rem)] lowercase leading-[0.88] tracking-normal">
             reference room
           </h2>
           </div>
           <div>
-          <p className="max-w-[43rem] border-l border-[#d7b46a] pl-5 font-sans text-[17px] leading-relaxed text-[#f5f0eb]/72">
+          <p className="max-w-[43rem] border-l border-[#d7b46a] pl-5 font-sans text-[16px] leading-[1.65] text-[#f5f0eb]/72 sm:text-[17px]">
             Bureau starts with actual works and visible things: surfaces, shadows, shelves, curtains, podiums, frames, routes. The references below become decisions a fabricator, photographer and curator can all understand.
           </p>
           <a href="/showcase" className={`${btnSolid('ink')} mt-8`}>
@@ -165,26 +164,26 @@ function BureauReferenceRoom({ works }: { works: Work[] }) {
           </div>
         </div>
 
-        <div className="relative z-10 pt-8">
-          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="relative z-10 pt-10">
+          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {refs.map((work, index) => {
               return (
-                <a key={work.id} href="/showcase" className="group block border border-[#f5f0eb]/14 bg-[#1d0d12] p-3 shadow-[0_22px_70px_rgba(0,0,0,.24)] transition-colors hover:border-[#d7b46a]/60">
+                <a key={work.id} href="/showcase" className="group block border border-[#f5f0eb]/14 bg-[#1d0d12] p-3 shadow-[0_22px_70px_rgba(0,0,0,.24)] transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-[#d7b46a]/60 hover:shadow-[0_28px_80px_rgba(0,0,0,.3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d7b46a]">
                   <span className="block aspect-[4/3] overflow-hidden bg-[#261116]">
                     <img src={workImage(work)} alt={work.title} loading="lazy" className="h-full w-full object-cover opacity-[.9] transition duration-300 group-hover:scale-[1.035] group-hover:opacity-100" />
                   </span>
-                  <span className="grid min-h-[118px] grid-cols-[2.5rem_1fr] gap-4 border-t border-[#f5f0eb]/12 pt-4">
+                  <span className="grid min-h-[128px] grid-cols-[2.5rem_1fr] gap-4 border-t border-[#f5f0eb]/12 pt-5">
                     <span className="font-display text-[2rem] leading-none text-[#d7b46a]/70">{String(index + 1).padStart(2, '0')}</span>
                     <span>
                       <span className="block font-display text-[1.8rem] lowercase leading-[0.92] text-[#f5f0eb]">{work.title}</span>
-                      <span className="mt-2 block font-sans text-[9px] uppercase tracking-normal text-[#d7b46a]">{work.discipline || 'reference'} / {work.city || work.country || 'site'}</span>
+                      <span className="mt-3 block font-sans text-[9px] uppercase tracking-[0.14em] text-[#d7b46a]">{work.discipline || 'reference'} / {work.city || work.country || 'site'}</span>
                     </span>
                   </span>
                 </a>
               );
             })}
           </div>
-          <div className="mt-7 flex flex-wrap gap-2 border-t border-[#f5f0eb]/18 pt-5">
+          <div className="mt-9 flex flex-wrap gap-2 border-t border-[#f5f0eb]/18 pt-6">
             {MATERIALS.map((item) => (
               <span key={item} className="border border-[#f5f0eb]/18 bg-[#0f0709]/68 px-3 py-2 font-sans text-[10px] uppercase tracking-normal text-[#f5f0eb]/66">{item}</span>
             ))}
@@ -205,12 +204,12 @@ function BureauServices() {
   return (
     <section id="bureau-services" className="border-b border-[#f5f0eb]/12 bg-[#f0e7d9] text-[#1a0b10]">
       <div className="mx-auto grid max-w-[1700px] lg:grid-cols-[minmax(0,0.74fr)_minmax(0,1fr)]">
-        <div className="px-5 py-12 sm:px-8 lg:px-12 xl:px-16">
-          <p className="font-sans text-[10px] uppercase tracking-normal text-[#4a1728]/58">Bureau output</p>
-          <h2 className="mt-5 max-w-[8ch] font-display text-[clamp(2.6rem,5.2vw,4.4rem)] lowercase leading-[0.78] tracking-normal">
+        <div className="px-5 py-16 sm:px-8 sm:py-20 lg:px-12 xl:px-16">
+          <p className="font-sans text-[10px] uppercase tracking-[0.16em] text-[#4a1728]/58">Bureau output</p>
+          <h2 className="mt-6 max-w-[8ch] font-display text-[clamp(2.6rem,5.2vw,4.4rem)] lowercase leading-[0.86] tracking-normal">
             designed to be built
           </h2>
-          <p className="mt-7 max-w-[34rem] text-[17px] leading-relaxed text-[#4a1728]/72">
+          <p className="mt-8 max-w-[34rem] text-[16px] leading-[1.65] text-[#4a1728]/72 sm:text-[17px]">
             Not moodboards for decoration. A visual system that can become a window, room, route, launch set or exhibition script.
           </p>
 
@@ -218,7 +217,7 @@ function BureauServices() {
             <p className="font-sans text-[10px] uppercase tracking-normal text-[#4a1728]/56">the objects we work with</p>
             <dl className="mt-5 divide-y divide-[#1a0b10]/10">
               {OBJECT_LIBRARY.map(([num, title, text]) => (
-                <div key={title} className="grid grid-cols-[2rem_1fr] gap-x-4 py-3 sm:grid-cols-[2rem_9rem_1fr] sm:gap-x-5">
+                <div key={title} className="grid grid-cols-[2rem_1fr] gap-x-4 py-4 sm:grid-cols-[2rem_9rem_1fr] sm:gap-x-5">
                   <span className="font-sans text-[10px] tabular-nums text-[#b8956e]">{num}</span>
                   <dt className="font-sans text-[13px] lowercase text-[#1a0b10] max-sm:col-start-2">{title}</dt>
                   <dd className="font-sans text-[13px] leading-relaxed text-[#4a1728]/62 max-sm:col-start-2 max-sm:mt-1">{text}</dd>
@@ -231,10 +230,10 @@ function BureauServices() {
           {BUREAU_SERVICES.map((item) => {
             const Icon = item.icon;
             return (
-              <article key={item.title} className="min-h-[260px] border-b border-[#1a0b10]/12 p-5 sm:border-r sm:p-7 lg:p-8">
+            <article key={item.title} className="min-h-[280px] border-b border-[#1a0b10]/12 p-6 transition-[background-color,box-shadow,transform] duration-400 hover:-translate-y-1 hover:bg-[#f7eee2] hover:shadow-[0_18px_46px_rgba(26,11,16,.1)] sm:border-r sm:p-8 lg:p-9">
                 <Icon size={20} className="text-[#4a1728]" />
-                <h3 className="mt-10 font-display text-[2.4rem] lowercase leading-[0.86] text-[#1a0b10]">{item.title}</h3>
-                <p className="mt-4 max-w-[25rem] text-[15px] leading-relaxed text-[#4a1728]/70">{item.text}</p>
+                <h3 className="mt-12 font-display text-[2.25rem] lowercase leading-[0.9] text-[#1a0b10]">{item.title}</h3>
+                <p className="mt-5 max-w-[25rem] text-[15px] leading-[1.6] text-[#4a1728]/70">{item.text}</p>
               </article>
             );
           })}
@@ -275,18 +274,17 @@ function CaseDetail({ item }: { item: BureauCase }) {
         ))}
       </dl>
 
-      {/* Разбор объясняет приём, Stage даёт его покрутить. Ход предлагается
-          только там, где оператор действительно есть: обещать «попробовать»
-          и открыть пустую коробку хуже, чем не звать вовсе. */}
-      {PLAYABLE_SLUGS.includes(item.slug) && (
+      {/* Stage больше не симулирует работу конструктора: он собирает живые
+          референсы и способы их читать, поэтому открыт для каждого разбора. */}
+      {(
         <a
           href="/stage"
           className="group mt-12 flex items-center justify-between gap-6 border-t border-[#f5f0eb]/12 pt-6 hover:border-[#f5f0eb]/40"
         >
           <span>
-            <span className="block font-sans text-[9px] uppercase tracking-[0.22em] text-[#f5f0eb]/45">Try it</span>
+            <span className="block font-sans text-[9px] uppercase tracking-[0.22em] text-[#f5f0eb]/45">Stage</span>
             <span className="mt-1.5 block font-sans text-[17px] lowercase text-[#f5f0eb]">
-              turn this move on a box of your own
+              place this idea beside real references
             </span>
           </span>
           <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[#f5f0eb]/30 text-[#f5f0eb] transition-transform group-hover:translate-x-1">
@@ -334,31 +332,31 @@ function CaseList({ items, works }: { items: BureauCase[]; works: Work[] }) {
       <BureauProductionIntro works={works} />
       <BureauReferenceRoom works={works} />
       <BureauServices />
-      <div className="mx-auto max-w-[1600px] px-5 py-12 sm:px-8 sm:py-16 lg:px-12">
-        <p className="font-sans text-[10px] uppercase tracking-normal text-[#d7b46a]">case studies</p>
-        <h2 className="mt-4 max-w-[9ch] font-display text-[clamp(2.6rem,5.2vw,4.4rem)] lowercase leading-[0.78] tracking-normal text-[#f5f0eb]">
+      <div className="mx-auto max-w-[1600px] px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
+        <p className="font-sans text-[10px] uppercase tracking-[0.16em] text-[#d7b46a]">case studies</p>
+        <h2 className="mt-5 max-w-[9ch] font-display text-[clamp(2.6rem,5.2vw,4.4rem)] lowercase leading-[0.86] tracking-normal text-[#f5f0eb]">
           breakdowns
         </h2>
-        <p className="mt-6 max-w-[54ch] font-sans text-[15px] leading-relaxed text-[#f5f0eb]/70 sm:text-[17px]">
+        <p className="mt-7 max-w-[54ch] font-sans text-[15px] leading-[1.65] text-[#f5f0eb]/70 sm:text-[17px]">
           how the work in the vitrine is actually put together: the move, what holds it up, where it breaks
         </p>
 
-        <div className="mt-14 grid gap-px border border-[#f5f0eb]/14 bg-[#f5f0eb]/14 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-16 grid gap-px border border-[#f5f0eb]/14 bg-[#f5f0eb]/14 sm:grid-cols-2 xl:grid-cols-4">
           {cases.map((item, index) => {
             const leadWork = item.examples?.map((example) => workById.get(example.workId)).find(Boolean);
             const image = leadWork ? workImage(leadWork) : '';
             return (
-              <a key={item.id} href={`/bureau/${item.slug}`} className="group flex min-h-[460px] flex-col bg-[#160a0e] p-4 transition-colors hover:bg-[#241118] sm:p-5">
+              <a key={item.id} href={`/bureau/${item.slug}`} className="group flex min-h-[460px] flex-col bg-[#160a0e] p-4 shadow-[0_18px_48px_rgba(0,0,0,.18)] transition-[background-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:bg-[#241118] hover:shadow-[0_28px_72px_rgba(0,0,0,.28)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d7b46a] sm:p-5">
                 <div className="relative aspect-[4/3] overflow-hidden bg-[#2b171c]">
                   {image ? <img src={image} alt={leadWork?.title || item.title} loading="lazy" className="h-full w-full object-cover opacity-75 transition duration-500 group-hover:scale-[1.04] group-hover:opacity-100" /> : <div className="h-full w-full bg-[#2b171c]" />}
                   <span className="absolute left-3 top-3 border border-[#f5f0eb]/30 bg-[#160a0e]/70 px-2 py-1 font-sans text-[9px] uppercase tracking-[0.16em] text-[#f5f0eb]/75">{String(index + 1).padStart(2, '0')}</span>
                   <ArrowUpRight size={18} className="absolute bottom-3 right-3 text-[#f5f0eb]/75 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </div>
-                <span className="mt-5 flex flex-1 flex-col">
-                  <span className="font-sans text-[9px] uppercase tracking-[0.16em] text-[#d7b46a]">{item.kind || 'Editorial breakdown'}</span>
-                  <span className="mt-3 font-display text-[clamp(2rem,3vw,3rem)] lowercase leading-[0.86] text-[#f5f0eb]">{item.title}</span>
-                  <span className="mt-4 line-clamp-3 font-sans text-[14px] leading-relaxed text-[#f5f0eb]/62">{item.summary}</span>
-                  <span className="mt-auto border-t border-[#f5f0eb]/14 pt-4 font-sans text-[9px] uppercase tracking-[0.16em] text-[#f5f0eb]/46">Read the breakdown</span>
+                  <span className="mt-6 flex flex-1 flex-col">
+                  <span className="font-sans text-[10px] uppercase tracking-[0.14em] text-[#d7b46a]">{item.kind || 'Editorial breakdown'}</span>
+                  <span className="mt-3 font-display text-[clamp(2rem,3vw,3rem)] lowercase leading-[0.9] text-[#f5f0eb]">{item.title}</span>
+                  <span className="mt-5 line-clamp-3 font-sans text-[14px] leading-[1.6] text-[#f5f0eb]/62">{item.summary}</span>
+                  <span className="mt-auto border-t border-[#f5f0eb]/14 pt-5 font-sans text-[10px] uppercase tracking-[0.14em] text-[#f5f0eb]/52">Read the breakdown</span>
                 </span>
               </a>
             );

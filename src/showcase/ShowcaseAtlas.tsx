@@ -1,8 +1,6 @@
 import { ArrowRight, Box, Check, Copy, FileDown, Layers3, Loader2, Route, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useEffect, useMemo, useState } from 'react';
-import { encodeScene } from '../stage/sceneUrl';
-import { newId, type Scene } from '../stage/sceneModel';
 import type { Work } from './showcaseApi';
 import { btnGhost, btnQuiet, btnSolid } from './ui';
 
@@ -150,34 +148,6 @@ function curatedRoute(nodes: AtlasNode[], project: ProjectType): AtlasNode[] {
   return ordered.slice(0, 5);
 }
 
-function buildStageScene(nodes: AtlasNode[], mode: AtlasMode, project: ProjectType): Scene {
-  const density = project.density;
-  return {
-    room: { w: 16, d: 11, h: 6 },
-    viewer: { x: 8, z: 10, eyeHeight: 1.6 },
-    objects: [
-      { id: newId('obj'), kind: 'wall', label: `${mode.label} back wall`, x: 1.2, z: 1.1, y: 0, w: 13.6, d: 0.18, h: 3.4, rotation: 0 },
-      { id: newId('obj'), kind: 'platform', label: `${project.label} runway`, x: 2.2, z: 4.3, y: 0, w: 11.6, d: 1.1 * density, h: 0.18, rotation: 0 },
-      ...nodes.slice(0, 10).map((node, index) => ({
-        id: newId('obj'),
-        kind: index % 3 === 0 ? 'platform' as const : 'block' as const,
-        label: node.work.title.slice(0, 38) || `Work ${index + 1}`,
-        x: 2 + (index % 5) * (2.55 / density),
-        z: 2.2 + Math.floor(index / 5) * (2.4 / Math.min(density, 1)),
-        y: index % 3 === 0 ? 0 : 0.18,
-        w: node.width + 0.55,
-        d: node.depth + 0.45,
-        h: node.height,
-        rotation: index % 2 ? 8 : -6,
-      })),
-    ],
-    lights: [
-      { id: newId('light'), kind: 'key', label: `${mode.label} key`, x: 4, z: 1.6, y: 5.2, angle: 210 },
-      { id: newId('light'), kind: 'fill', label: 'Editorial fill', x: 12.5, z: 3.2, y: 4.4, angle: 145 },
-    ],
-  };
-}
-
 function dossierText(mode: AtlasMode, project: ProjectType, route: AtlasNode[]) {
   const works = route.map((node, index) => `${index + 1}. ${node.work.title} - ${node.work.author}`).join('\n');
   return [
@@ -302,17 +272,17 @@ function RouteImageWall({ route, active, onPick }: { route: AtlasNode[]; active?
   const supporting = route.filter((node) => node.work.id !== hero?.id).slice(0, 4);
 
   return (
-    <div className="relative min-h-[520px] overflow-hidden border-y border-[#f8f3ea]/14 lg:min-h-[70vh] lg:border-y-0 lg:border-l lg:border-[#f8f3ea]/14">
+    <div className="relative min-h-[440px] overflow-hidden border-y border-[#f8f3ea]/14 sm:min-h-[520px] lg:min-h-[70vh] lg:border-y-0 lg:border-l lg:border-[#f8f3ea]/14">
       <div className="absolute inset-0 bg-[#12090b]" />
       {heroImage ? (
         <img
           src={heroImage}
           alt={hero?.title || 'Selected showcase work'}
           loading="lazy"
-          className="absolute inset-y-0 right-0 h-full w-[78%] object-cover opacity-[.82] grayscale-[18%] contrast-[1.04] saturate-[.82] sm:w-[68%]"
+          className="absolute inset-y-0 right-0 h-full w-full object-cover object-[center_42%] opacity-[.82] grayscale-[18%] contrast-[1.04] saturate-[.82] sm:w-[68%] sm:object-center"
         />
       ) : (
-        <div className="absolute inset-y-0 right-0 grid h-full w-[68%] place-items-center bg-[#221015] text-[#f8f3ea]/28">
+        <div className="absolute inset-y-0 right-0 grid h-full w-full place-items-center bg-[#221015] text-[#f8f3ea]/28 sm:w-[68%]">
           <Box size={38} />
         </div>
       )}
@@ -332,7 +302,7 @@ function RouteImageWall({ route, active, onPick }: { route: AtlasNode[]; active?
               className="group relative h-28 w-20 overflow-hidden border border-[#f8f3ea]/22 bg-[#261116] text-left transition-transform hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d7b46a] sm:h-36 sm:w-28"
             >
               {src ? <img src={src} alt="" loading="lazy" className="h-full w-full object-cover opacity-[.78] transition-opacity group-hover:opacity-100" /> : <Box size={20} className="m-4 text-[#f8f3ea]/35" />}
-              <span className="absolute bottom-2 left-2 bg-[#12090b]/78 px-2 py-1 font-display text-lg leading-none text-[#d7b46a]">
+                <span className="absolute bottom-2 left-2 bg-[#12090b]/78 px-2 py-1 font-display text-lg leading-none text-[#d7b46a]">
                 {String(index + 2).padStart(2, '0')}
               </span>
             </button>
@@ -372,10 +342,7 @@ export function ShowcaseAtlas({ works, loading, onOpenWork }: { works: Work[]; l
   const [activeId, setActiveId] = useState<string | undefined>();
   const active = nodes.find((node) => node.work.id === activeId)?.work || nodes[0]?.work;
   const route = useMemo(() => curatedRoute(nodes, project), [nodes, project]);
-  const stageHref = useMemo(() => {
-    if (!nodes.length) return '/stage';
-    return `/stage#s=${encodeScene(buildStageScene(nodes, mode, project))}`;
-  }, [nodes, mode, project]);
+  const stageHref = '/stage';
   const absoluteStageHref = typeof window === 'undefined' ? stageHref : `${window.location.origin}${stageHref}`;
   async function handleCopyDossier() {
     await copyText(dossierText(mode, project, route));

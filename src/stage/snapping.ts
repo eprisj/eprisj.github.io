@@ -25,7 +25,7 @@ export interface SnapResult {
   guide: number | null;
 }
 
-function snapAxis(lead: number, size: number, targets: number[]): SnapResult {
+function snapAxis(lead: number, size: number, targets: number[], step: number): SnapResult {
   let best: { value: number; guide: number; distance: number } | null = null;
 
   for (const target of targets) {
@@ -41,7 +41,7 @@ function snapAxis(lead: number, size: number, targets: number[]): SnapResult {
   }
 
   if (best) return { value: best.value, guide: best.guide };
-  return { value: clean(Math.round(lead / SNAP_STEP) * SNAP_STEP), guide: null };
+  return { value: clean(Math.round(lead / step) * step), guide: null };
 }
 
 function targetsAlong(scene: Scene, moving: SceneObject, axis: 'x' | 'z'): number[] {
@@ -65,14 +65,14 @@ export interface Snapped {
 
 /** `free` — перетаскивание с зажатым Alt: привязки временно отключены, потому
  *  что иногда нужно именно «не по сетке». */
-export function snapObject(scene: Scene, moving: SceneObject, x: number, z: number, free = false): Snapped {
+export function snapObject(scene: Scene, moving: SceneObject, x: number, z: number, free = false, step = SNAP_STEP): Snapped {
   if (free) return { x, z, guideX: null, guideZ: null };
-  const sx = snapAxis(x, moving.w, targetsAlong(scene, moving, 'x'));
-  const sz = snapAxis(z, moving.d, targetsAlong(scene, moving, 'z'));
+  const sx = snapAxis(x, moving.w, targetsAlong(scene, moving, 'x'), step);
+  const sz = snapAxis(z, moving.d, targetsAlong(scene, moving, 'z'), step);
   return { x: sx.value, z: sz.value, guideX: sx.guide, guideZ: sz.guide };
 }
 
 /** Округление для полей ввода и клавиатурного сдвига — тот же шаг, что у мыши. */
-export function toStep(value: number): number {
-  return clean(Math.round(value / SNAP_STEP) * SNAP_STEP);
+export function toStep(value: number, step = SNAP_STEP): number {
+  return clean(Math.round(value / step) * step);
 }

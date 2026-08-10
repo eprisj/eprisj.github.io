@@ -16,7 +16,7 @@
   --bg-image: none;          /* optional page background image (admin Appearance) */
 
   font-family: var(--font-body);
-  line-height: 1.5;
+  line-height: 1.55;
   font-weight: 400;
   color: var(--c-accent);
   background-color: var(--c-bg);
@@ -57,9 +57,25 @@ body {
   background-repeat: no-repeat;
   color: var(--c-accent);
   font-family: var(--font-body);
+  letter-spacing: 0.005em;
   overflow-x: hidden;
   touch-action: manipulation;
   overscroll-behavior-y: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.font-display {
+  font-kerning: normal;
 }
 
 button,

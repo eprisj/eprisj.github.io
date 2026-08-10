@@ -53,7 +53,6 @@ const visualSearchInput = byId('visualSearch');
 const addEntryBtn = byId('addEntryBtn');
 const moveEntryUpBtn = byId('moveEntryUpBtn');
 const moveEntryDownBtn = byId('moveEntryDownBtn');
-const sortByDateBtn = byId('sortByDateBtn');
 const duplicateEntryBtn = byId('duplicateEntryBtn');
 const deleteEntryBtn = byId('deleteEntryBtn');
 const copyFromEnBtn = byId('copyFromEnBtn');
@@ -125,7 +124,6 @@ const interactiveButtons = [
   addEntryBtn,
   moveEntryUpBtn,
   moveEntryDownBtn,
-  sortByDateBtn,
   duplicateEntryBtn,
   deleteEntryBtn,
   copyFromEnBtn,
@@ -509,7 +507,7 @@ document.addEventListener('beforeinput', (event) => {
     if (visibilityStatus) visibilityStatus.textContent = 'Публикация…';
     try {
       validateShape(data);
-      const res = await fetchNetworkRetry(CONTENT_API, {
+      const res = await fetch(CONTENT_API, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
         body: JSON.stringify(data),
@@ -836,19 +834,16 @@ function bindEvents() {
   copySiteBtn.addEventListener('click', copyPagesUrl);
 
   visualSectionSelect.addEventListener('change', () => {
-    if (isAdminBusy()) return;
     pendingVisualEntryId = null;
     refreshVisualEditor();
   });
 
   visualLangSelect.addEventListener('change', () => {
-    if (isAdminBusy()) return;
     pendingVisualEntryId = null;
     refreshVisualEditor();
   });
 
   visualEntrySelect.addEventListener('change', () => {
-    if (isAdminBusy()) return;
     pendingVisualEntryId = null;
     renderVisualForm();
     // Auto-collapse creator studio when editing an existing entry
@@ -869,7 +864,6 @@ function bindEvents() {
   addEntryBtn.addEventListener('click', addVisualEntry);
   moveEntryUpBtn.addEventListener('click', () => moveVisualEntry(-1));
   moveEntryDownBtn.addEventListener('click', () => moveVisualEntry(1));
-  sortByDateBtn.addEventListener('click', sortVisualEntriesByDate);
   duplicateEntryBtn.addEventListener('click', duplicateVisualEntry);
   deleteEntryBtn.addEventListener('click', deleteVisualEntry);
   copyFromEnBtn.addEventListener('click', copyFromEnglishEntry);
@@ -1777,25 +1771,9 @@ async function githubRequest(url, options = {}) {
   throw new Error(message);
 }
 
-// Долгие операции (сохранение записи, перевод на шесть языков) работают со
-// СНИМКОМ документа и в конце кладут его целиком через setEditorData. Пока они
-// идут, кнопки блокировались, а вот три селектора — раздел, язык, запись — нет:
-// переключение на середине перерисовывало редактор, и результат уходившего
-// сохранения молча терялся. Ловилось это на «сохранил и сразу переключил язык»:
-// запись выглядела сохранённой, но на VPS её не было. Блокируем и селекторы.
-let adminBusy = false;
-
-function isAdminBusy() {
-  return adminBusy;
-}
-
 function setBusy(value) {
-  adminBusy = Boolean(value);
   for (const button of interactiveButtons) {
     button.disabled = value;
-  }
-  for (const select of [visualSectionSelect, visualLangSelect, visualEntrySelect]) {
-    if (select) select.disabled = value;
   }
   loadingBarEl.classList.toggle('active', value);
   if (!value && typeof updateAdminToolbarContext === 'function') {
@@ -1811,10 +1789,7 @@ async function loadFromGitHub() {
     setStatus('info', 'Загружаю контент с VPS...');
     saveSettings();
 
-    // Это первый запрос при открытии админки (autoLoadOnStart) — сетевая
-    // осечка тут означает пустой редактор вместо контента, а не просто
-    // неудобство. GET, повтор безопасен всегда.
-    const res = await fetchNetworkRetry(CONTENT_API, { cache: 'no-store' });
+    const res = await fetch(CONTENT_API, { cache: 'no-store' });
     if (!res.ok) throw new Error('VPS вернул статус ' + res.status);
     const parsed = await res.json();
     validateShape(parsed);
@@ -1898,18 +1873,14 @@ function validateShape(data) {
 // no-build-step admin bundle, so this is intentionally duplicated).
 const ENTITY_REQUIRED_FIELDS = {
   articles:     { id: 'id', title: 'string', author: 'string', date: 'string', excerpt: 'string', category: 'string', imageSeed: 'string', tags: 'array', content: 'array' },
-  // content у обзоров — строка ИЛИ массив блоков, ровно как на сервере
-  // (ENTITY_REQUIRED_FIELDS в deploy-webhook.js). Здесь стояло 'string', и
-  // любой блочный обзор — а Le Dauphine именно такой, 14 блоков — не мог
-  // сохраниться вообще: сохранение падало на «content must be a string».
-  reviews:      { id: 'id', title: 'string', subject: 'string', rating: 'rating', content: 'stringOrArray', author: 'string' },
+  reviews:      { id: 'id', title: 'string', subject: 'string', rating: 'rating', content: 'string', author: 'string' },
   items:        { id: 'id', title: 'string', subtitle: 'string', fig: 'string', description: 'string', imageSeed: 'string' },
   libraryItems: { id: 'id', title: 'string', type: 'string', size: 'string', year: 'string' },
 };
 const ENTITY_OPTIONAL_FIELDS = {
-  articles:     { role: 'string', subcategory: 'string', imageUrl: 'string', showCover: 'boolean', draft: 'boolean', publishAt: 'isoDate', order: 'number' },
-  reviews:      { category: 'string', imageUrl: 'string', verdict: 'string', pros: 'array', cons: 'array', meta: 'string', link: 'string', date: 'string', featured: 'boolean', homeFeatured: 'boolean', homeOrder: 'number', draft: 'boolean', publishAt: 'isoDate' },
-  items:        { imageUrl: 'string', draft: 'boolean', publishAt: 'isoDate', articleId: 'id', order: 'number' },
+  articles:     { role: 'string', subcategory: 'string', imageUrl: 'string', draft: 'boolean', publishAt: 'isoDate' },
+  reviews:      { category: 'string', imageUrl: 'string', verdict: 'string', pros: 'array', cons: 'array', meta: 'string', link: 'string', date: 'string', featured: 'boolean', draft: 'boolean', publishAt: 'isoDate' },
+  items:        { imageUrl: 'string', draft: 'boolean', publishAt: 'isoDate' },
   libraryItems: { url: 'string', draft: 'boolean', publishAt: 'isoDate' },
 };
 function validateEntityShape(section, entity) {
@@ -1929,9 +1900,7 @@ function validateEntityShape(section, entity) {
       if (!present) { if (required) return `missing field: ${field}`; continue; }
       const v = entity[field];
       if (kind === 'id' && !(Number.isInteger(v) && v > 0)) return `${field} must be a positive integer`;
-      if (kind === 'number' && typeof v !== 'number') return `${field} must be a number`;
       if (kind === 'string' && typeof v !== 'string') return `${field} must be a string`;
-      if (kind === 'stringOrArray' && typeof v !== 'string' && !Array.isArray(v)) return `${field} must be a string or array`;
       if (kind === 'array' && !Array.isArray(v)) return `${field} must be an array`;
       if (kind === 'boolean' && typeof v !== 'boolean') return `${field} must be a boolean`;
       if (kind === 'rating' && !(typeof v === 'number' && v >= 0 && v <= 5)) return 'rating must be a number 0-5';
@@ -2654,15 +2623,6 @@ function updateAdminToolbarContext() {
   if (downloadAllOriginalsText) {
     downloadAllOriginalsText.textContent = `Все статьи · ${totalCount}`;
   }
-  // «По дате» осмысленна только там, где порядок ручной.
-  if (sortByDateBtn) {
-    const orderable = MANUALLY_ORDERED_SECTIONS.has(section);
-    sortByDateBtn.disabled = !orderable;
-    sortByDateBtn.title = orderable
-      ? 'Сбросить ручной порядок раздела: свежие сверху'
-      : 'Ручной порядок есть только у разделов «Статьи» и «Галерея»';
-  }
-
   downloadOriginalsBtn.disabled = !canDownloadSelected;
   downloadAllOriginalsBtn.disabled = totalCount === 0;
   if (mediaExportMeta && mediaExportProgress?.hidden !== false) {
@@ -2809,7 +2769,7 @@ async function saveToGitHub() {
     const pw = getAdminPassword();
     if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
 
-    const res = await fetchNetworkRetry(CONTENT_API, {
+    const res = await fetch(CONTENT_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
       body: JSON.stringify(parsed)
@@ -2982,6 +2942,7 @@ function setEditorData(data, options = {}) {
     try { renderPollResults(); } catch {}
   }
   try { window._renderVisibility?.(); } catch {}
+  try { window._renderHomepageTab?.(); } catch {}
   // Re-seed Issue Builder + Translations from freshly loaded content
   if (typeof renderIssuesTab === 'function' && document.getElementById('issueArticlesList')) {
     _issues = null; // force resync of issue archive from reloaded content
@@ -3182,24 +3143,6 @@ function getNextEntryId(data, section) {
   return ids.length ? Math.max(...ids) + 1 : 1;
 }
 
-// Сверяет свободный id с сервером. Считать max(id)+1 только по документу
-// в редакторе опасно: вкладка, открытая до появления новых записей, выдаёт
-// уже занятый id, и новая запись встаёт поверх чужой. Так 08.08.2026
-// шаблон затёр статью «How Emily Kraus Reinvents the Act of Painting».
-// Сеть недоступна — молча откатываемся к локальному расчёту: помешать
-// созданию записи хуже, чем изредка не свериться.
-async function getNextEntryIdChecked(data, section) {
-  const local = getNextEntryId(data, section);
-  try {
-    const res = await fetch(CONTENT_API, { cache: 'no-store' });
-    if (!res.ok) return local;
-    const live = await res.json();
-    return Math.max(local, getNextEntryId(live, section));
-  } catch {
-    return local;
-  }
-}
-
 function slugifySeed(value, fallback) {
   const slug = String(value || '')
     .toLowerCase()
@@ -3347,27 +3290,6 @@ function renderCreatorQuality(data, section, lang, entry) {
 
     addChip(entry.excerpt ? 'Лид' : 'Нет лида', Boolean(entry.excerpt));
     addChip(hasMedia ? 'Обложка' : 'Нет фото', hasMedia);
-
-    // «Обложка» выше проверяет только, что фото ЕСТЬ — не что у него есть
-    // ALT. Статья с десятком фото и пустым alt на каждом проходила эту
-    // проверку зелёной, а для скринридера и Google Картинок такая статья
-    // не отличается от статьи без единой подписи к фото.
-    let imagesWithAlt = 0;
-    let imagesTotal = 0;
-    for (const block of blocks) {
-      if (block?.type === 'image') {
-        imagesTotal += 1;
-        if (String(block.alt || '').trim()) imagesWithAlt += 1;
-      } else if (block?.type === 'gallery' && Array.isArray(block.content)) {
-        const alts = Array.isArray(block.alts) ? block.alts : [];
-        block.content.forEach((_, i) => {
-          imagesTotal += 1;
-          if (String(alts[i] || '').trim()) imagesWithAlt += 1;
-        });
-      }
-    }
-    if (imagesTotal > 0) addChip(`ALT: ${imagesWithAlt}/${imagesTotal}`, imagesWithAlt === imagesTotal);
-
     addChip(`${blocks.length} блоков`, blocks.length >= 3);
     addChip(`${words} слов`, words >= 80);
     if (words > 0) addChip(`~${Math.max(1, Math.round(words / 200))} мин чтения`, true);
@@ -3740,9 +3662,7 @@ function buildQualityEntryFromForm(section, fallback = {}) {
   if (section === 'reviews') {
     return {
       ...base,
-      title: getFieldValue('vf-title').trim(),
-      homeFeatured: Boolean(document.getElementById('vf-homeFeatured')?.checked),
-      homeOrder: Number(getFieldValue('vf-homeOrder')) > 0 ? Number(getFieldValue('vf-homeOrder')) : undefined
+      title: getFieldValue('vf-title').trim()
       // NOTE: content is managed by the WYSIWYG review canvas, not the classic form
     };
   }
@@ -3765,7 +3685,6 @@ function buildQualityEntryFromForm(section, fallback = {}) {
     tags: getFieldValue('vf-tags').split(',').map((tag) => tag.trim()).filter(Boolean),
     imageSeed: getFieldValue('vf-imageSeed').trim(),
     imageUrl: getFieldValue('vf-imageUrl').trim(),
-    showCover: document.getElementById('vf-showCover')?.checked !== false,
     content: collectBlockEditorContent()
   };
 }
@@ -3842,10 +3761,6 @@ function addGalleryCardForArticleData(data, articleId) {
 
   const cardFrom = (source, position) => ({
     id,
-    // Явная привязка к статье: заголовок карточки потом может разойтись со
-    // статьёй (её переименуют), а id — нет. На нём держатся и кнопка
-    // «читать статью», и наследование перевода.
-    articleId: Number(article.id),
     title: String(source.title || '').trim(),
     subtitle: source.category || source.subcategory || '',
     fig: `FIG. ${String(position).padStart(2, '0')}`,
@@ -3880,7 +3795,7 @@ async function createArticleFromBlueprint(kind) {
     const data = parseEditorJson();
     const sourceLang = visualLangSelect.value || DEFAULT_LANGUAGE;
     const entries = getSectionArray(data, 'articles', sourceLang, sourceLang !== DEFAULT_LANGUAGE);
-    const nextId = await getNextEntryIdChecked(data, 'articles');
+    const nextId = getNextEntryId(data, 'articles');
     const baseArticle = buildArticleBlueprint(kind, nextId);
     let sourceArticle = baseArticle;
 
@@ -3893,9 +3808,7 @@ async function createArticleFromBlueprint(kind) {
       if (categoryOverride) sourceArticle.category = categoryOverride;
     }
 
-    // Новая запись — в начало: лента сортируется по дате, но у свежей
-    // заготовки даты ещё нет, и в хвосте её никто бы не нашёл.
-    entries.unshift(sourceArticle);
+    entries.push(sourceArticle);
     setStatus('info', `Создаю языковые версии статьи #${nextId}...`);
     const syncedLangs = await syncMissingEntryLanguages(data, 'articles', sourceLang, sourceArticle);
     // Translations are on the article now, so localized homepage cards below
@@ -3921,7 +3834,7 @@ async function createReviewFromBlueprint(kind) {
     const data = parseEditorJson();
     const sourceLang = visualLangSelect.value || DEFAULT_LANGUAGE;
     const entries = getSectionArray(data, 'reviews', sourceLang, sourceLang !== DEFAULT_LANGUAGE);
-    const nextId = await getNextEntryIdChecked(data, 'reviews');
+    const nextId = getNextEntryId(data, 'reviews');
     const baseReview = buildReviewBlueprint(kind, nextId);
     let sourceReview = baseReview;
 
@@ -3934,7 +3847,7 @@ async function createReviewFromBlueprint(kind) {
       if (categoryOverride) sourceReview.category = categoryOverride;
     }
 
-    entries.unshift(sourceReview);
+    entries.push(sourceReview);
     setStatus('info', `Создаю языковые версии обзора #${nextId}...`);
     const syncedLangs = await syncMissingEntryLanguages(data, 'reviews', sourceLang, sourceReview);
 
@@ -4010,12 +3923,6 @@ function renderVisualLanguageOptions(data) {
   }
 }
 
-// Список записей в «Статьях» и «Галерее» идёт ровно в том порядке, в каком их
-// увидит читатель, — иначе кнопки ↑/↓ и номера позиций врут.
-function orderedForSection(section, entries) {
-  return MANUALLY_ORDERED_SECTIONS.has(section) ? sortEntriesLikeSite(section, entries) : entries;
-}
-
 function refreshVisualEditor() {
   const data = getVisualData();
   if (!data) {
@@ -4031,7 +3938,7 @@ function refreshVisualEditor() {
   // For non-EN languages, build dropdown from ALL EN entries so untranslated ones are visible
   let dropdownEntries;
   if (lang !== DEFAULT_LANGUAGE) {
-    const enEntries = orderedForSection(section, getSectionArray(data, section, DEFAULT_LANGUAGE, false));
+    const enEntries = getSectionArray(data, section, DEFAULT_LANGUAGE, false);
     const localizedIds = new Set(entries.map(e => Number(e.id)));
     dropdownEntries = enEntries.map(enEntry => {
       const localizedEntry = entries.find(le => Number(le.id) === Number(enEntry.id));
@@ -4043,7 +3950,7 @@ function refreshVisualEditor() {
       };
     });
   } else {
-    dropdownEntries = orderedForSection(section, entries).map(entry => ({
+    dropdownEntries = entries.map(entry => ({
       id: entry.id,
       _entry: entry,
       _hasTranslation: true,
@@ -4069,12 +3976,7 @@ function refreshVisualEditor() {
       const e = item._entry || {};
       if (e.draft) label += ' 📝 ЧЕРНОВИК';
       else if (e.publishAt && Date.parse(e.publishAt) > Date.now()) label += ' ⏳ ОТЛОЖЕНО';
-      // В «Статьях» и «Галерее» список идёт в том же порядке, что и сайт, —
-      // показываем номер позиции, иначе кнопки ↑/↓ двигают вслепую.
-      const position = MANUALLY_ORDERED_SECTIONS.has(section)
-        ? `${dropdownEntries.findIndex((d) => Number(d.id) === id) + 1}. `
-        : '';
-      return `<option value="${id}">${position}#${id} - ${escapeHtml(label)}</option>`;
+      return `<option value="${id}">#${id} - ${escapeHtml(label)}</option>`;
     })
     .join('');
 
@@ -4107,7 +4009,6 @@ function refreshVisualEditor() {
 
   updateAdminToolbarContext();
   renderVisualForm();
-  noteGalleryInheritance(data, section, lang, Number(visualEntrySelect.value));
   // Setting .value programmatically fires no 'change' event, so the WYSIWYG
   // and Review live-canvases (which reload only on that event) would keep
   // showing whatever entry was open before — e.g. after "create new article"
@@ -4119,26 +4020,6 @@ function refreshVisualEditor() {
   // programmatic section change (e.g. createReviewFromBlueprint switching
   // to 'reviews') must also refresh which button set is visible.
   updateCreatorStudioForSection();
-}
-
-// Карточка Галереи без своего перевода берёт текст из связанной статьи —
-// переводить её отдельно не нужно (см. getGalleryArticleLinks в data.ts).
-// Предупреждаем об этом прямо в редакторе, иначе редактор тратит силы и
-// внешний переводчик на текст, который и так приедет из статьи.
-function noteGalleryInheritance(data, section, lang, entryId) {
-  if (section !== 'items' || lang === DEFAULT_LANGUAGE || !entryId) return;
-  const localized = getSectionArray(data, section, lang, false) || [];
-  if (localized.some((entry) => Number(entry.id) === entryId)) return;
-  const baseEntries = getSectionArray(data, section, DEFAULT_LANGUAGE, false) || [];
-  const baseItem = baseEntries.find((entry) => Number(entry.id) === entryId);
-  const baseTitle = String(baseItem?.title || '').trim();
-  if (!baseTitle) return;
-  const key = (value) => String(value || '').split(':')[0].trim().toLowerCase();
-  const articles = getSectionArray(data, 'articles', DEFAULT_LANGUAGE, false) || [];
-  const article = articles.find((a) => String(a.title || '').trim() === baseTitle)
-    || (key(baseTitle).length >= 4 ? articles.find((a) => key(a.title) === key(baseTitle)) : undefined);
-  if (!article) return;
-  setVisualNotice(`Перевод не нужен: карточка возьмёт заголовок, категорию и описание из статьи #${article.id} на языке ${lang}. Заполните поля только если тексты должны отличаться от статьи.`, 'info');
 }
 
 function setVisualNotice(message, type) {
@@ -4272,43 +4153,6 @@ function bindPhotoPreviewInputs() {
 // row values straight from the DOM before every add/remove so in-progress
 // edits in other rows survive the redraw, same pattern as the block editor's
 // gallery/checklist/poll repeaters.
-// Карточка Галереи — обложка статьи: от этой связи зависят кнопка «читать
-// статью» и наследование перевода. Раньше она угадывалась по совпадению
-// заголовков и рвалась при каждом переименовании статьи, молча. Теперь связь
-// хранится явно (articleId), а совпадение по заголовку осталось только
-// подсказкой для старых карточек, у которых поля ещё нет.
-function guessArticleIdByTitle(data, entry) {
-  const articles = Array.isArray(data.articles) ? data.articles : [];
-  const title = String(entry.title || '').trim();
-  if (!title) return null;
-  const exact = articles.find((a) => String(a.title || '').trim() === title);
-  if (exact) return Number(exact.id);
-  const base = (value) => String(value || '').split(':')[0].trim().toLowerCase();
-  if (base(title).length < 4) return null;
-  const loose = articles.find((a) => base(a.title) === base(title));
-  return loose ? Number(loose.id) : null;
-}
-
-function renderGalleryArticleLinkMarkup(data, entry) {
-  const articles = Array.isArray(data.articles) ? data.articles : [];
-  const explicit = Number(entry.articleId) || null;
-  const guessed = explicit ? null : guessArticleIdByTitle(data, entry);
-  const selected = explicit || guessed || 0;
-  const options = [`<option value="0">— не связана со статьёй —</option>`]
-    .concat(articles.map((a) => {
-      const label = `#${a.id} · ${String(a.title || '').slice(0, 60)}`;
-      return `<option value="${a.id}"${Number(a.id) === selected ? ' selected' : ''}>${escapeHtml(label)}</option>`;
-    }))
-    .join('');
-  const note = explicit
-    ? 'Связь закреплена: переименование статьи её не сломает.'
-    : guessed
-      ? 'Связь пока только угадана по заголовку — сохраните карточку, чтобы закрепить её.'
-      : 'Не связана: в просмотре не будет кнопки «читать статью», перевод не наследуется.';
-  return `<select id="vf-articleId">${options}</select>
-      <span class="toolbar-field-label" style="display:block;margin-top:4px;">${escapeHtml(note)}</span>`;
-}
-
 function renderGalleryPhotosRepeaterMarkup(photos) {
   if (!photos.length) {
     return '<p class="form-hint">Доп. фото нет — в просмотре покажется только обложка.</p>';
@@ -4435,7 +4279,6 @@ function renderVisualForm() {
       <label>ID<input id="vf-id" value="${escapeHtml(entry.id)}" disabled /></label>
       <label>FIG<input id="vf-fig" value="${escapeHtml(entry.fig || '')}" /></label>
       <label class="full">Заголовок<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
-      <label class="full">Статья карточки${renderGalleryArticleLinkMarkup(data, entry)}</label>
       <label class="full">Подзаголовок<input id="vf-subtitle" value="${escapeHtml(entry.subtitle || '')}" /></label>
       <label class="full">Описание<textarea id="vf-description">${escapeHtml(entry.description || '')}</textarea></label>
       <input type="hidden" id="vf-imageUrl" value="${escapeHtml(entry.imageUrl || '')}" />
@@ -4467,8 +4310,6 @@ function renderVisualForm() {
       <label>ID<input id="vf-id" value="${escapeHtml(entry.id)}" disabled /></label>
       <label>Категория<input id="vf-category" value="${escapeHtml(entry.category || '')}" placeholder="Food / Books / Stay…" /></label>
       <label class="checkbox-label" style="align-self:end" for="vf-featured"><input id="vf-featured" type="checkbox" ${entry.featured ? 'checked' : ''} /> Главный обзор (featured)</label>
-      <label class="checkbox-label" style="align-self:end" for="vf-homeFeatured"><input id="vf-homeFeatured" type="checkbox" ${entry.homeFeatured ? 'checked' : ''} /> Показывать на главной</label>
-      <label>Порядок на главной<input id="vf-homeOrder" type="number" min="1" step="1" value="${escapeHtml(entry.homeOrder ?? '')}" placeholder="1" /></label>
       <label class="full">Заголовок<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
       <label class="full">Тема (что обозревается)<input id="vf-subject" value="${escapeHtml(entry.subject || '')}" /></label>
       <label class="full">Вердикт (одна строка-вывод)<input id="vf-verdict" value="${escapeHtml(entry.verdict || '')}" /></label>
@@ -4538,7 +4379,7 @@ function renderVisualForm() {
         <textarea id="vf-excerpt" class="canvas-excerpt" placeholder="Введите краткое описание (лид) статьи...">${escapeHtml(entry.excerpt || '')}</textarea>
         <div class="block-editor" id="vf-block-editor"></div>
       </div>
-      
+
       <!-- META SIDEBAR -->
       <div class="editor-meta-sidebar">
         <!-- Cover Preview Box -->
@@ -4549,7 +4390,7 @@ function renderVisualForm() {
             <span>Нет обложки</span>
           </div>
         </div>
-        
+
         <div class="meta-field-group">
           <label>URL обложки</label>
           <div style="display:flex;gap:4px;">
@@ -4564,11 +4405,6 @@ function renderVisualForm() {
           <input id="vf-imageSeed" value="${escapeHtml(entry.imageSeed || '')}" placeholder="visual-seed..." />
         </div>
 
-        <label class="meta-field-group cover-visibility-toggle">
-          <span>Обложка статьи</span>
-          <span class="checkbox-label"><input id="vf-showCover" type="checkbox" ${entry.showCover !== false ? 'checked' : ''} /> Показывать на странице статьи</span>
-        </label>
-
         <div style="display:flex;gap:12px;width:100%;">
           <div class="meta-field-group" style="width:60px;">
             <label>ID</label>
@@ -4579,17 +4415,17 @@ function renderVisualForm() {
             <input id="vf-date" value="${escapeHtml(entry.date || '')}" placeholder="Mar 14, 2026" />
           </div>
         </div>
-        
+
         <div class="meta-field-group">
           <label>Категория</label>
           <input id="vf-category" value="${escapeHtml(entry.category || '')}" placeholder="Culture, Travel..." />
         </div>
-        
+
         <div class="meta-field-group">
           <label>Подкатегория</label>
           <input id="vf-subcategory" value="${escapeHtml(entry.subcategory || '')}" placeholder="Essay..." />
         </div>
-        
+
         <div class="meta-field-group">
           <label>Автор из базы</label>
           <select id="vf-authorId">
@@ -4671,8 +4507,7 @@ function buildEntryFromVisualForm(section, current) {
       description: getFieldValue('vf-description').trim(),
       imageSeed: getFieldValue('vf-imageSeed').trim(),
       imageUrl: getOptionalString(getFieldValue('vf-imageUrl')),
-      images: photos.length ? photos : undefined,
-      articleId: Number(getFieldValue('vf-articleId')) || undefined
+      images: photos.length ? photos : undefined
     };
     applyDraftFieldsFromForm(next);
   } else if (section === 'reviews') {
@@ -4692,9 +4527,7 @@ function buildEntryFromVisualForm(section, current) {
       link: getOptionalString(getFieldValue('vf-link')),
       date: getOptionalString(getFieldValue('vf-date')),
       imageUrl: getOptionalString(getFieldValue('vf-imageUrl')),
-      featured: Boolean(document.getElementById('vf-featured')?.checked),
-      homeFeatured: Boolean(document.getElementById('vf-homeFeatured')?.checked),
-      homeOrder: Number(getFieldValue('vf-homeOrder')) > 0 ? Number(getFieldValue('vf-homeOrder')) : undefined
+      featured: Boolean(document.getElementById('vf-featured')?.checked)
     };
     applyDraftFieldsFromForm(next);
   } else if (section === 'libraryItems') {
@@ -4728,7 +4561,6 @@ function buildEntryFromVisualForm(section, current) {
       tags,
       imageSeed: getFieldValue('vf-imageSeed').trim(),
       imageUrl: getOptionalString(getFieldValue('vf-imageUrl')),
-      showCover: document.getElementById('vf-showCover')?.checked !== false,
       content: parsedContent
     };
   }
@@ -4760,15 +4592,14 @@ async function applyVisualChanges() {
     const next = buildEntryFromVisualForm(section, current);
 
     entries[entryIndex] = next;
-    const syncAllLanguages = section === 'articles' || section === 'reviews';
-    const syncedLangs = syncAllLanguages
+    const syncedLangs = section === 'articles'
       ? await translateEntryToAllLanguages(data, section, lang, next, {
           statusPrefix: `Обновляю переводы #${selectedId}`
         })
       : await syncMissingEntryLanguages(data, section, lang, next);
     pendingVisualEntryId = selectedId;
     setEditorData(data);
-    const syncNote = syncAllLanguages
+    const syncNote = section === 'articles'
       ? formatLanguageSyncNote(syncedLangs, 'Языки обновлены')
       : formatLanguageSyncNote(syncedLangs, 'Недостающие языки созданы');
     const statusType = getLanguageSyncFailures(syncedLangs).length ? 'info' : 'success';
@@ -4793,32 +4624,14 @@ async function applyVisualChanges() {
 // Reviews' classic-form fallback). Fetches the current version right before
 // writing so a stale save surfaces as a clear "someone else saved" message
 // instead of silently losing an edit.
-// Ретрай только сетевых осечек (fetch бросил исключение до ответа сервера —
-// обрыв, DNS, временная недоступность), не HTTP-статусов: 409 и 5xx — это
-// содержательные ответы сервера, ретраить их вслепую нельзя, ими занимается
-// вызывающий код (см. 409 ниже). Тот же принцип, что и в requestTranslation
-// для перевода — здесь он защищает сам факт сохранения записи на VPS.
-async function fetchNetworkRetry(url, options, attempts = 3) {
-  let lastError = null;
-  for (let attempt = 0; attempt < attempts; attempt += 1) {
-    if (attempt > 0) await new Promise((r) => setTimeout(r, 350 * attempt));
-    try {
-      return await fetch(url, options);
-    } catch (error) {
-      lastError = error;
-    }
-  }
-  throw lastError;
-}
-
 const CONTENT_META_API = 'https://api.eprisjournal.com/content/meta';
 const CONTENT_ENTITY_API = 'https://api.eprisjournal.com/content/entity';
 async function saveEntityToServer(section, lang, entity) {
   const pw = getAdminPassword();
   if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
-  const metaRes = await fetchNetworkRetry(CONTENT_META_API, { cache: 'no-store' });
+  const metaRes = await fetch(CONTENT_META_API, { cache: 'no-store' });
   const meta = await metaRes.json().catch(() => ({}));
-  const res = await fetchNetworkRetry(CONTENT_ENTITY_API, {
+  const res = await fetch(CONTENT_ENTITY_API, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
     body: JSON.stringify({ section, id: entity.id, entity, lang, expectedVersion: meta.version }),
@@ -4909,13 +4722,6 @@ async function saveCurrentEntryOnly() {
     const data = parseEditorJson();
     const section = visualSectionSelect.value;
     const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
-    if (section === 'articles' && window.__eprisArticlePreflightActive?.()) {
-      const report = window.__eprisArticlePreflight();
-      if (report.blocking) {
-        window.__openEprisArticlePreflight?.();
-        throw new Error(`Публикация остановлена: ${report.blocking} критических ошибок. Исправьте их в проверке.`);
-      }
-    }
     const entries = getSectionArray(data, section, lang, lang !== DEFAULT_LANGUAGE);
 
     if (!entries.length) throw new Error('Нет записей для редактирования.');
@@ -4934,8 +4740,7 @@ async function saveCurrentEntryOnly() {
     // quality audit, draft) stays in sync without a full reload.
     entries[entryIndex] = next;
     let syncedLangs = [];
-    const syncAllLanguages = section === 'articles' || section === 'reviews';
-    if (syncAllLanguages) {
+    if (section === 'articles') {
       syncedLangs = await translateEntryToAllLanguages(data, section, lang, next, {
         saveToServer: true,
         statusPrefix: `Сохраняю переводы #${selectedId}`
@@ -4945,7 +4750,7 @@ async function saveCurrentEntryOnly() {
     }
     pendingVisualEntryId = selectedId;
     setEditorData(data, { markSynced: true });
-    const syncNote = syncAllLanguages
+    const syncNote = section === 'articles'
       ? formatLanguageSyncNote(syncedLangs, 'Языки обновлены на VPS')
       : formatLanguageSyncNote(syncedLangs, 'Недостающие языки созданы');
     const statusType = getLanguageSyncFailures(syncedLangs).length ? 'info' : 'success';
@@ -5014,7 +4819,7 @@ async function duplicateVisualEntry() {
       throw new Error('Не найдена выбранная запись.');
     }
 
-    const nextId = await getNextEntryIdChecked(data, section);
+    const nextId = getNextEntryId(data, section);
     const duplicate = deepClone(entries[entryIndex]);
     duplicate.id = nextId;
     if (typeof duplicate.title === 'string') {
@@ -5105,7 +4910,7 @@ function isLikelyMediaOrUrl(value) {
   );
 }
 
-function splitTextForTranslation(text, maxLength = 900) {
+function splitTextForTranslation(text, maxLength = 1700) {
   const source = String(text || '');
   if (source.length <= maxLength) {
     return [source];
@@ -5138,68 +4943,6 @@ function splitTextForTranslation(text, maxLength = 900) {
   return chunks;
 }
 
-// Сервис перевода изредка возвращает текст с «дырой»: одна буква посреди
-// слова заменена на U+FFFD («двойств�нность», «в�трины»). Молча сохранённая,
-// такая дыра живёт в статье месяцами — именно её мы сегодня вычищали по всему
-// контенту. Считаем ответ с U+FFFD негодным: пробуем тот же кусок помельче, а
-// если и это не помогло — оставляем исходный текст. Лучше абзац по-английски,
-// чем изуродованный перевод.
-const TRANSLATION_DAMAGE = '\uFFFD';
-
-// Создание одной статьи на 6 языков — это до сотни таких запросов подряд
-// (по чанку на блок × 6 языков). Раньше первая же сетевая осечка (обрыв,
-// временный rate-limit, браузерная блокировка трекеров на googleapis.com)
-// падала как есть и обрывала СОЗДАНИЕ ВСЕЙ СТАТЬИ с «Failed to fetch» —
-// даже когда 99 запросов из 100 прошли нормально. Три попытки с паузой
-// покрывают разовую сетевую осечку; если и после них не отвечает — молча
-// возвращаем пустую строку, и вызывающий код (translateChunkGuarded)
-// оставляет оригинальный текст чанка вместо того, чтобы рушить всю статью.
-async function requestTranslation(chunk, sourceCode, targetCode) {
-  const url = new URL('https://translate.googleapis.com/translate_a/single');
-  url.searchParams.set('client', 'gtx');
-  url.searchParams.set('sl', sourceCode);
-  url.searchParams.set('tl', targetCode);
-  url.searchParams.set('dt', 't');
-  url.searchParams.set('q', chunk);
-
-  let lastError = null;
-  for (let attempt = 0; attempt < 3; attempt += 1) {
-    if (attempt > 0) await new Promise((r) => setTimeout(r, 350 * attempt));
-    try {
-      const response = await fetch(url.toString(), { cache: 'no-store' });
-      if (!response.ok) {
-        lastError = new Error(`Сервис перевода ответил HTTP ${response.status}`);
-        continue;
-      }
-      const payload = await response.json();
-      return readGoogleTranslatePayload(payload) || '';
-    } catch (error) {
-      lastError = error;
-    }
-  }
-  console.warn('[translate] сеть недоступна после 3 попыток, оставляю оригинал:', getErrorMessage(lastError));
-  return '';
-}
-
-async function translateChunkGuarded(chunk, sourceCode, targetCode, depth = 0) {
-  const translated = await requestTranslation(chunk, sourceCode, targetCode);
-  if (translated && !translated.includes(TRANSLATION_DAMAGE)) return translated;
-  if (!translated) return chunk;
-
-  // Дробим пополам по границе слова и переводим половинки отдельно: короткий
-  // запрос почти всегда приходит целым.
-  if (depth < 2 && chunk.length > 120) {
-    const middle = chunk.lastIndexOf(' ', Math.floor(chunk.length / 2)) + 1 || Math.floor(chunk.length / 2);
-    const left = await translateChunkGuarded(chunk.slice(0, middle), sourceCode, targetCode, depth + 1);
-    const right = await translateChunkGuarded(chunk.slice(middle), sourceCode, targetCode, depth + 1);
-    const joined = `${left}${left.endsWith(' ') || right.startsWith(' ') ? '' : ' '}${right}`;
-    if (!joined.includes(TRANSLATION_DAMAGE)) return joined;
-  }
-
-  console.warn('[translate] повреждённый ответ, оставляю оригинал:', chunk.slice(0, 60));
-  return chunk;
-}
-
 function readGoogleTranslatePayload(payload) {
   if (!Array.isArray(payload) || !Array.isArray(payload[0])) {
     return '';
@@ -5230,7 +4973,20 @@ async function translateText(value, targetLang, sourceLang = DEFAULT_LANGUAGE) {
 
   const translatedParts = [];
   for (const chunk of splitTextForTranslation(text)) {
-    translatedParts.push(await translateChunkGuarded(chunk, sourceCode, targetCode));
+    const url = new URL('https://translate.googleapis.com/translate_a/single');
+    url.searchParams.set('client', 'gtx');
+    url.searchParams.set('sl', sourceCode);
+    url.searchParams.set('tl', targetCode);
+    url.searchParams.set('dt', 't');
+    url.searchParams.set('q', chunk);
+
+    const response = await fetch(url.toString(), { cache: 'no-store' });
+    if (!response.ok) {
+      throw new Error(`Сервис перевода ответил HTTP ${response.status}. Попробуйте позже.`);
+    }
+
+    const payload = await response.json();
+    translatedParts.push(readGoogleTranslatePayload(payload) || chunk);
   }
 
   const translated = translatedParts.join('');
@@ -5423,40 +5179,38 @@ ${JSON.stringify(obj, null, 2)}`;
   throw new Error(`AI returned invalid JSON after ${maxRetries} attempts: ` + lastError.message);
 }
 
-// Статья переводится ПОБЛОЧНО и БЕЗ моделей: каждое текстовое поле уходит в
-// обычный переводчик строк, структура блоков не пересобирается вообще.
-//
-// Раньше блоки пачками по 4 скармливались модели с просьбой вернуть такой же
-// JSON — и это упиралось в дневную квоту (типичная статья на 6 языков стоила
-// 66–78 запросов при лимите 50 в сутки), а заодно требовало сторожа
-// translationShapeMismatch, потому что модель под нагрузкой умела молча
-// проглотить блок или ключ. Здесь терять нечего: цикл идёт по исходным
-// блокам, тип и порядок берутся из оригинала, переводится только текст внутри.
 async function translateArticleEntry(article, targetLang, sourceLang = DEFAULT_LANGUAGE, onProgress = null) {
   const next = deepClone(article);
 
+  const metaObj = {
+    title: next.title,
+    role: next.role,
+    date: next.date,
+    excerpt: next.excerpt,
+    category: next.category,
+    subcategory: next.subcategory,
+    tags: next.tags
+  };
+
   if (onProgress) onProgress('metadata');
-  for (const field of ['title', 'role', 'excerpt', 'category', 'subcategory']) {
-    if (typeof next[field] === 'string' && next[field].trim()) {
-      next[field] = await translateText(next[field], targetLang, sourceLang);
-    }
-  }
-  if (Array.isArray(next.tags)) {
-    next.tags = await translateStringArray(next.tags, targetLang, sourceLang);
-  }
-  // Дату не трогаем: перевод превращал её в слова на своём языке, и лента
-  // разъезжалась — сортировка живёт на базовой дате (см. data.ts).
+  const translatedMeta = await aiTranslateObject(metaObj, targetLang);
+  Object.assign(next, translatedMeta || {});
 
   const blocks = Array.isArray(article.content) ? article.content : [];
   next.content = [];
-  for (let i = 0; i < blocks.length; i += 1) {
-    if (onProgress) onProgress(`block ${i + 1} of ${blocks.length}`);
-    try {
-      next.content.push(await translateArticleBlock(blocks[i], targetLang, sourceLang));
-    } catch (error) {
-      // Один упавший блок не должен обрушить всю статью: оставляем оригинал.
-      console.warn('[translate] block', i + 1, getErrorMessage(error));
-      next.content.push(deepClone(blocks[i]));
+
+  const batchSize = 4;
+  const totalBatches = Math.ceil(blocks.length / batchSize);
+  for (let i = 0; i < blocks.length; i += batchSize) {
+    const batchIndex = Math.floor(i / batchSize) + 1;
+    if (onProgress) onProgress(`batch ${batchIndex} of ${totalBatches}`);
+
+    const batch = blocks.slice(i, i + batchSize);
+    const translatedBatch = await aiTranslateObject(batch, targetLang);
+    if (Array.isArray(translatedBatch)) {
+      next.content.push(...translatedBatch);
+    } else {
+      next.content.push(...batch);
     }
   }
 
@@ -5470,51 +5224,41 @@ async function translateEntryForSection(section, entry, targetLang, sourceLang =
 
   const next = deepClone(entry);
   if (section === 'items') {
-    for (const field of ['title', 'subtitle', 'description']) {
-      if (typeof next[field] === 'string' && next[field].trim()) {
-        next[field] = await translateText(next[field], targetLang, sourceLang);
-      }
-    }
+    const obj = { title: entry.title, subtitle: entry.subtitle, description: entry.description };
+    const translated = await aiTranslateObject(obj, targetLang);
+    Object.assign(next, translated || {});
     return next;
   }
 
   if (section === 'reviews') {
+    const obj = { title: entry.title, subject: entry.subject, verdict: entry.verdict, pros: entry.pros, cons: entry.cons };
     if (onProgress) onProgress('metadata');
-    for (const field of ['title', 'subject', 'category', 'meta', 'role']) {
-      if (typeof next[field] === 'string' && next[field].trim()) {
-        next[field] = await translateText(next[field], targetLang, sourceLang);
-      }
-    }
-    if (typeof next.verdict === 'string' && next.verdict.trim()) {
-      next.verdict = await translateRichText(next.verdict, targetLang, sourceLang);
-    }
-    for (const field of ['pros', 'cons']) {
-      if (Array.isArray(next[field])) next[field] = await translateStringArray(next[field], targetLang, sourceLang);
-    }
+    const translated = await aiTranslateObject(obj, targetLang);
+    Object.assign(next, translated || {});
 
     if (Array.isArray(entry.content)) {
       next.content = [];
-      for (let i = 0; i < entry.content.length; i += 1) {
-        if (onProgress) onProgress(`block ${i + 1} of ${entry.content.length}`);
-        try {
-          next.content.push(await translateArticleBlock(entry.content[i], targetLang, sourceLang));
-        } catch (error) {
-          console.warn('[translate] review block', i + 1, getErrorMessage(error));
-          next.content.push(deepClone(entry.content[i]));
-        }
+      const batchSize = 4;
+      const totalBatches = Math.ceil(entry.content.length / batchSize);
+      for (let i = 0; i < entry.content.length; i += batchSize) {
+        const batchIndex = Math.floor(i / batchSize) + 1;
+        if (onProgress) onProgress(`batch ${batchIndex} of ${totalBatches}`);
+        const batch = entry.content.slice(i, i + batchSize);
+        const translatedBatch = await aiTranslateObject(batch, targetLang);
+        if (Array.isArray(translatedBatch)) next.content.push(...translatedBatch);
+        else next.content.push(...batch);
       }
     } else if (typeof entry.content === 'string' && entry.content.trim()) {
-      next.content = await translateRichText(entry.content, targetLang, sourceLang);
+      const translatedStr = await aiTranslateObject({text: entry.content}, targetLang);
+      next.content = (translatedStr || {}).text || entry.content;
     }
     return next;
   }
 
   if (section === 'libraryItems') {
-    for (const field of ['title', 'type']) {
-      if (typeof next[field] === 'string' && next[field].trim()) {
-        next[field] = await translateText(next[field], targetLang, sourceLang);
-      }
-    }
+    const obj = { title: entry.title, type: entry.type };
+    const translated = await aiTranslateObject(obj, targetLang);
+    Object.assign(next, translated || {});
     return next;
   }
 
@@ -6110,25 +5854,25 @@ function renderBlockEditor(blocks) {
       if (w > 0) html += '<span class="block-word-count">' + w + ' сл.</span>';
     }
     html += '<div class="block-actions">';
-    
+
     // Collapse/Expand Icon
-    const collapseIcon = isCollapsed 
+    const collapseIcon = isCollapsed
       ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>'
       : '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>';
     html += '<button type="button" class="block-action-btn collapse-btn" onclick="toggleBlockCollapse(' + i + ')" title="' + (isCollapsed ? 'Развернуть' : 'Свернуть') + '">' + collapseIcon + '</button>';
-    
+
     // Duplicate Icon
     html += '<button type="button" class="block-action-btn" onclick="duplicateBlock(' + i + ')" title="Дублировать"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></button>';
-    
+
     // Move Up Icon
     html += '<button type="button" class="block-action-btn" onclick="moveBlock(' + i + ', -1)" title="Вверх" ' + (i === 0 ? 'disabled' : '') + '><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg></button>';
-    
+
     // Move Down Icon
     html += '<button type="button" class="block-action-btn" onclick="moveBlock(' + i + ', 1)" title="Вниз" ' + (i === blocks.length - 1 ? 'disabled' : '') + '><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>';
-    
+
     // Remove Icon
     html += '<button type="button" class="block-action-btn danger" onclick="removeBlock(' + i + ')" title="Удалить блок"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>';
-    
+
     html += '</div>';
     html += '</div>';
     html += '<div class="block-card-body">' + renderBlockBody(block, i) + '</div>';
@@ -6164,7 +5908,7 @@ function bindBlockEditorEvents() {
     editorEl.querySelectorAll('textarea[data-block-field="content"]').forEach(ta => {
       const idx = ta.getAttribute('data-block-index');
       if (!idx) return;
-      
+
       const mde = new EasyMDE({
         element: ta,
         spellChecker: false,
@@ -6185,7 +5929,7 @@ function bindBlockEditorEvents() {
           }
         }
       });
-      
+
       mde.codemirror.on('change', () => {
         const val = mde.value();
         if (typeof scheduleVisualAutoSync === 'function') scheduleVisualAutoSync();
@@ -6197,7 +5941,7 @@ function bindBlockEditorEvents() {
         }
         if (typeof window._schedulePreviewRefresh === 'function') window._schedulePreviewRefresh(80);
       });
-      
+
       window.mdeInstances[idx] = mde;
     });
   }
@@ -6352,12 +6096,12 @@ window.refreshBlockGalleryPreview = function(index) {
   if (!container) return;
   const inputs = Array.from(container.querySelectorAll('input[data-block-gallery-field="url"]'));
   const urls = inputs.map(i => resolveBlockImageUrl(i.value)).filter(Boolean);
-  
+
   let previewDiv = container.nextElementSibling;
   while (previewDiv && previewDiv.tagName === 'BUTTON') {
     previewDiv = previewDiv.nextElementSibling;
   }
-  
+
   if (!previewDiv || !previewDiv.classList.contains('block-gallery-preview')) {
     const addBtn = container.nextElementSibling;
     const newPreview = document.createElement('div');
@@ -6365,12 +6109,12 @@ window.refreshBlockGalleryPreview = function(index) {
     addBtn.parentNode.insertBefore(newPreview, addBtn.nextSibling);
     previewDiv = newPreview;
   }
-  
+
   if (urls.length === 0) {
     previewDiv.innerHTML = '';
     return;
   }
-  
+
   previewDiv.innerHTML = urls.map(url => `<img src="${escapeHtml(url)}" referrerpolicy="no-referrer" onerror="this.style.display='none'" />`).join('');
 };
 
@@ -6736,7 +6480,7 @@ async function addVisualEntry() {
     const section = visualSectionSelect.value;
     const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
     const entries = getSectionArray(data, section, lang, lang !== DEFAULT_LANGUAGE);
-    const nextId = await getNextEntryIdChecked(data, section);
+    const nextId = getNextEntryId(data, section);
     let entry = createDefaultEntry(section, nextId);
 
     if (lang !== DEFAULT_LANGUAGE) {
@@ -6744,16 +6488,7 @@ async function addVisualEntry() {
       entry = await translateEntryForSection(section, entry, lang, DEFAULT_LANGUAGE);
     }
 
-    // Раздел с ручной раскладкой: без своего `order` новая запись уехала бы в
-    // самый низ (за всеми расставленными). Ставим её первой — как и раньше.
-    if (MANUALLY_ORDERED_SECTIONS.has(section)) {
-      const positions = entries
-        .map((e) => (typeof e?.order === 'number' && Number.isFinite(e.order) ? e.order : null))
-        .filter((value) => value !== null);
-      if (positions.length) entry.order = Math.min(...positions) - 1;
-    }
-
-    entries.unshift(entry);
+    entries.push(entry);
     setStatus('info', `Создаю языковые версии записи #${nextId}...`);
     const syncedLangs = await syncMissingEntryLanguages(data, section, lang, entry);
     // The "+" button also creates articles (not just reviews/items/etc.) when
@@ -6778,55 +6513,15 @@ async function addVisualEntry() {
 // first entry in 'items' is what renders as the featured card. Reviews and
 // Library render in array order too. Previously the only way to change this
 // was to hand-edit the raw JSON — this gives every section an in-UI reorder.
-//
-// Для Галереи и Статей одного порядка массива мало:
-//  • статьи сайт раскладывал по дате, и перестановка тут ничего не меняла;
-//  • перевод хранится отдельным массивом, порядок берётся из базового.
-// Поэтому переставляем ВСЕГДА базовый (EN) массив и проставляем всем записям
-// секции числовой `order` — его сайт и читает (см. byManualOrder в data.ts).
-const MANUALLY_ORDERED_SECTIONS = new Set(['articles', 'items']);
-
-// Тот же порядок, что показывает сайт (data.ts: byManualOrder + newestFirst):
-// сначала расставленные вручную по `order`, следом остальные — статьи свежими
-// сверху, Галерея как лежит в массиве. Пока раздел не трогали кнопками, массив
-// статей и лента на сайте расходятся, и нумерация в списке врала бы.
-function sortEntriesLikeSite(section, entries) {
-  const time = (value) => {
-    const parsed = value ? Date.parse(value) : NaN;
-    return Number.isNaN(parsed) ? 0 : parsed;
-  };
-  const pos = (entry) => (typeof entry?.order === 'number' && Number.isFinite(entry.order)
-    ? entry.order
-    : Number.POSITIVE_INFINITY);
-  const list = section === 'articles'
-    ? [...entries].sort((a, b) => time(b && b.date) - time(a && a.date))
-    : [...entries];
-  return list.sort((a, b) => pos(a) - pos(b));
-}
-
-function renumberSectionOrder(entries) {
-  entries.forEach((entry, index) => {
-    if (entry && typeof entry === 'object') entry.order = index + 1;
-  });
-}
-
 function moveVisualEntry(direction) {
   try {
     const data = parseEditorJson();
     const section = visualSectionSelect.value;
     const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
-    // Порядок на сайте задаёт базовый массив, каким бы языком ни любовались.
-    const orderLang = MANUALLY_ORDERED_SECTIONS.has(section) ? DEFAULT_LANGUAGE : lang;
-    const entries = getSectionArray(data, section, orderLang, orderLang !== DEFAULT_LANGUAGE);
+    const entries = getSectionArray(data, section, lang, lang !== DEFAULT_LANGUAGE);
 
     if (!entries.length) {
       throw new Error('Нет записей для перемещения.');
-    }
-
-    // Первое же перемещение фиксирует раскладку: приводим массив к тому виду,
-    // который читатель уже видит, и дальше двигаем внутри него.
-    if (MANUALLY_ORDERED_SECTIONS.has(section)) {
-      entries.splice(0, entries.length, ...sortEntriesLikeSite(section, entries));
     }
 
     const selectedId = Number(visualEntrySelect.value);
@@ -6842,44 +6537,13 @@ function moveVisualEntry(direction) {
 
     const [moved] = entries.splice(entryIndex, 1);
     entries.splice(targetIndex, 0, moved);
-    if (MANUALLY_ORDERED_SECTIONS.has(section)) renumberSectionOrder(entries);
 
     pendingVisualEntryId = selectedId;
     setEditorData(data);
     const note = section === 'items' && targetIndex === 0
       ? ' Теперь это featured-запись Галереи.'
       : '';
-    const langNote = orderLang !== lang
-      ? ' Порядок общий для всех языков — переставлен базовый список.'
-      : '';
-    setStatus('success', `Запись #${selectedId} перемещена ${direction < 0 ? 'выше' : 'ниже'}: позиция ${targetIndex + 1} из ${entries.length}.${note}${langNote}`);
-  } catch (error) {
-    setStatus('error', getErrorMessage(error));
-  }
-}
-
-// Сброс ручной раскладки: статьи — свежие сверху, Галерея — как лежит в базе.
-// Нужен после того, как порядок перетасовали и захотели вернуть «как было».
-function sortVisualEntriesByDate() {
-  try {
-    const data = parseEditorJson();
-    const section = visualSectionSelect.value;
-    if (!MANUALLY_ORDERED_SECTIONS.has(section)) {
-      throw new Error('Порядком управляют только разделы "Статьи" и "Галерея".');
-    }
-    const entries = getSectionArray(data, section, DEFAULT_LANGUAGE, false);
-    if (!entries.length) throw new Error('Нет записей для сортировки.');
-
-    const time = (value) => {
-      const parsed = value ? Date.parse(value) : NaN;
-      return Number.isNaN(parsed) ? 0 : parsed;
-    };
-    entries.sort((a, b) => time(b && b.date) - time(a && a.date));
-    entries.forEach((entry) => { if (entry && typeof entry === 'object') delete entry.order; });
-
-    pendingVisualEntryId = Number(visualEntrySelect.value) || null;
-    setEditorData(data);
-    setStatus('success', `Порядок сброшен: ${getSectionLabel(section)} — свежие сверху (${entries.length}).`);
+    setStatus('success', `Запись #${selectedId} перемещена ${direction < 0 ? 'выше' : 'ниже'}.${note}`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   }
@@ -7294,11 +6958,9 @@ async function deployVPS() {
   btn.textContent = '⏳ Деплой...';
   showToast('Запускаю деплой VPS...', 'info');
   try {
-    const password = getAdminPassword();
-    if (!password) throw new Error('Нет пароля редакции — войдите заново.');
     const res = await fetch(`${EPRIS_API}/deploy`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-Admin-Password': password },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ secret: 'epris-deploy-2026' }),
     });
     const data = await res.json();
@@ -7911,9 +7573,7 @@ const historyTimestampEl = byId('historyTimestamp');
 async function fetchVersionHistory() {
   const pw = getAdminPassword();
   if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
-  // Список версий открывают чаще всего именно когда что-то уже сломалось —
-  // худший момент для «Failed to fetch» без единой попытки повтора.
-  const res = await fetchNetworkRetry(CONTENT_HISTORY_API, { headers: { 'X-Admin-Password': pw }, cache: 'no-store' });
+  const res = await fetch(CONTENT_HISTORY_API, { headers: { 'X-Admin-Password': pw }, cache: 'no-store' });
   const data = await res.json().catch(() => ({}));
   if (!res.ok || !data.ok) throw new Error(data.error || ('VPS вернул статус ' + res.status));
   return data.backups || [];
@@ -7967,30 +7627,21 @@ async function refreshVersionHistory() {
   }
 }
 
-// historyRefreshBtn и кнопки .history-restore-btn не входят в общий список
-// interactiveButtons (создаются заново при каждом рендере списка), поэтому
-// setBusy(true) их не блокирует. Без этого флага быстрый повторный клик —
-// по той же кнопке или по кнопке другой версии, пока первый запрос ещё
-// летит — отправлял бы два restore одновременно.
-let _restoreInFlight = false;
-
 async function restoreVersion(filename, timestamp) {
-  if (!filename || _restoreInFlight) return;
+  if (!filename) return;
   showConfirmModal(
     'Восстановить версию?',
     `Весь документ будет заменён на версию от <strong>${escapeHtml(formatHistoryTimestamp(timestamp))}</strong>. Текущее состояние перед этим будет сохранено как новая резервная копия (само восстановление тоже можно отменить).`,
     'Восстановить'
   ).then(async (confirmed) => {
-    if (!confirmed || _restoreInFlight) return;
-    _restoreInFlight = true;
-    historyListEl?.querySelectorAll('.history-restore-btn').forEach((btn) => { btn.disabled = true; });
+    if (!confirmed) return;
     try {
       setBusy(true);
       const pw = getAdminPassword();
       if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
-      const metaRes = await fetchNetworkRetry(CONTENT_META_API, { cache: 'no-store' });
+      const metaRes = await fetch(CONTENT_META_API, { cache: 'no-store' });
       const meta = await metaRes.json().catch(() => ({}));
-      const res = await fetchNetworkRetry(CONTENT_RESTORE_API, {
+      const res = await fetch(CONTENT_RESTORE_API, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
         body: JSON.stringify({ filename, expectedVersion: meta.version }),
@@ -8005,8 +7656,6 @@ async function restoreVersion(filename, timestamp) {
       setStatus('error', getErrorMessage(error));
     } finally {
       setBusy(false);
-      _restoreInFlight = false;
-      historyListEl?.querySelectorAll('.history-restore-btn').forEach((btn) => { btn.disabled = false; });
     }
   });
 }
@@ -8884,6 +8533,159 @@ function bindStudioRowActions() {
     refreshVisualEditor();
   }
 
+  const HOME_SLOTS = ['left', 'center', 'right'];
+  const HOME_SLOT_LABELS = { left: '№3 · слева', center: '№1 · центр', right: '№2 · справа' };
+
+  function homepageSlots(data) {
+    const items = Array.isArray(data?.items) ? data.items : [];
+    const used = new Set();
+    const slots = { left: null, center: null, right: null };
+    HOME_SLOTS.forEach((slot) => {
+      const match = items.find((item) => item && item.homeSlot === slot && !used.has(String(item.id)));
+      if (match) { slots[slot] = match; used.add(String(match.id)); }
+    });
+    // Backwards-compatible migration view: old lists become centre/right/left
+    // without mutating the JSON until the editor explicitly assigns a slot.
+    [['center', 0], ['right', 1], ['left', 2]].forEach(([slot, index]) => {
+      if (slots[slot]) return;
+      const fallback = items[index] && !used.has(String(items[index].id))
+        ? items[index]
+        : items.find((item) => item && !used.has(String(item.id)));
+      if (fallback) { slots[slot] = fallback; used.add(String(fallback.id)); }
+    });
+    return slots;
+  }
+
+  function homepageAudit(data, slots) {
+    const errors = [];
+    const warnings = [];
+    const selected = HOME_SLOTS.map((slot) => slots[slot]).filter(Boolean);
+    const ids = selected.map((item) => String(item.id));
+    if (selected.length !== 3) errors.push(`Нужно выбрать 3 карточки, сейчас ${selected.length}.`);
+    if (!slots.center) errors.push('Центральный слот обязателен — он становится главным материалом.');
+    if (new Set(ids).size !== ids.length) errors.push('Одна карточка назначена более одного раза.');
+    HOME_SLOTS.forEach((slot) => {
+      const item = slots[slot];
+      if (!item) return;
+      if (!String(item.title || '').trim()) errors.push(`${HOME_SLOT_LABELS[slot]}: нет заголовка.`);
+      if (!String(item.imageUrl || item.imageSeed || '').trim()) errors.push(`${HOME_SLOT_LABELS[slot]}: нет изображения.`);
+      if (item.draft) errors.push(`${HOME_SLOT_LABELS[slot]}: материал помечен как черновик.`);
+      if (item.publishAt && Date.parse(item.publishAt) > Date.now()) warnings.push(`${HOME_SLOT_LABELS[slot]}: запланирован на будущее.`);
+      if (!String(item.description || '').trim()) warnings.push(`${HOME_SLOT_LABELS[slot]}: нет короткого описания.`);
+    });
+    return { errors, warnings };
+  }
+
+  function homepageArchiveCards(slots) {
+    return HOME_SLOTS.map((slot) => slots[slot]).filter(Boolean).map((item) => ({
+      id: Number(item.id),
+      title: String(item.title || ''),
+      subtitle: String(item.subtitle || ''),
+      description: String(item.description || ''),
+      imageSeed: String(item.imageSeed || ''),
+      imageUrl: String(item.imageUrl || ''),
+    }));
+  }
+
+  function homepageArchiveSignature(cards) {
+    return cards.map((card) => String(card.id)).join('|');
+  }
+
+  function homepageArchiveDate(value) {
+    const date = new Date(value);
+    return Number.isNaN(date.getTime()) ? String(value || '') : date.toLocaleDateString('ru-RU', { dateStyle: 'medium' });
+  }
+
+  function renderHomepageArchive(data) {
+    const list = document.getElementById('homepageArchiveList');
+    const count = document.getElementById('homepageArchiveCount');
+    if (!list || !data) return;
+    const archive = Array.isArray(data.homepageArchive) ? data.homepageArchive.slice().sort((a, b) => String(b?.publishedAt || '').localeCompare(String(a?.publishedAt || ''))) : [];
+    if (count) count.textContent = `${archive.length} ${archive.length === 1 ? 'выпуск' : 'выпусков'}`;
+    if (!archive.length) {
+      list.innerHTML = '<p class="homepage-archive-empty">Архив появится после первой успешной публикации недельной композиции.</p>';
+      return;
+    }
+    list.innerHTML = archive.slice(0, 12).map((entry) => {
+      const cards = Array.isArray(entry?.cards) ? entry.cards.slice(0, 3) : [];
+      return `<article class="homepage-archive-entry">
+        <div class="homepage-archive-entry-meta"><strong>${esc(entry?.label || 'week')}</strong><span>${esc(homepageArchiveDate(entry?.publishedAt))}</span></div>
+        <div class="homepage-archive-thumbs">
+          ${cards.map((card) => {
+            const image = card?.imageUrl || card?.imageSeed || '';
+            return `<div class="homepage-archive-thumb">
+              <div class="homepage-archive-thumb-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : '—'}</div>
+              <span class="homepage-archive-thumb-title">${esc(card?.title || `#${card?.id || ''}`)}</span>
+            </div>`;
+          }).join('')}
+        </div>
+        <span class="homepage-gallery-id">ID ${esc(entry?.id || '')}</span>
+      </article>`;
+    }).join('');
+  }
+
+  function setHomepageSlot(slot, itemId) {
+    const data = readContent();
+    if (!data || !Array.isArray(data.items) || !HOME_SLOTS.includes(slot)) return;
+    const item = data.items.find((entry) => String(entry.id) === String(itemId));
+    if (!item) return;
+    // A card can occupy one slot only. Assigning it here removes the old
+    // explicit placement and clears whichever card used this slot before it.
+    data.items.forEach((entry) => {
+      if (String(entry.id) === String(item.id) || entry.homeSlot === slot) delete entry.homeSlot;
+    });
+    item.homeSlot = slot;
+    setEditorData(data);
+    renderHomepageTab();
+    showToast?.('success', `${HOME_SLOT_LABELS[slot]} обновлён. Нажмите «Опубликовать».`);
+  }
+
+  function renderHomepageComposer(data) {
+    const preview = document.getElementById('homepageComposerPreview');
+    const auditEl = document.getElementById('homepageComposerAudit');
+    const countEl = document.getElementById('homepageSlotCount');
+    const statusTitle = document.getElementById('homepageStatusTitle');
+    const statusDetail = document.getElementById('homepageStatusDetail');
+    const lastPublishedEl = document.getElementById('homepageLastPublished');
+    const dot = document.querySelector('#homepageAdminStatus .homepage-status-dot');
+    if (!preview || !auditEl || !data) return;
+    const items = Array.isArray(data.items) ? data.items : [];
+    const slots = homepageSlots(data);
+    const audit = homepageAudit(data, slots);
+    const selectedCount = HOME_SLOTS.filter((slot) => slots[slot]).length;
+    if (countEl) countEl.textContent = `${selectedCount} / 3 слота`;
+    const state = audit.errors.length ? 'error' : audit.warnings.length ? 'warn' : 'ok';
+    if (dot) dot.dataset.state = state;
+    if (statusTitle) statusTitle.textContent = audit.errors.length ? 'Нужна проверка' : audit.warnings.length ? 'Можно публиковать с предупреждениями' : 'Главная готова';
+    if (statusDetail) statusDetail.textContent = audit.errors[0] || audit.warnings[0] || 'Три карточки собраны и готовы к preview.';
+    if (lastPublishedEl) {
+      try {
+        const stamp = localStorage.getItem('epris_homepage_last_published');
+        if (stamp) lastPublishedEl.textContent = `Опубликовано ${new Date(stamp).toLocaleString('ru-RU', { dateStyle: 'short', timeStyle: 'short' })}`;
+      } catch { /* storage unavailable */ }
+    }
+    preview.innerHTML = HOME_SLOTS.map((slot) => {
+      const item = slots[slot];
+      const image = item?.imageUrl || item?.imageSeed || '';
+      const options = [`<option value="">— Не выбрано —</option>`, ...items.map((candidate) => `<option value="${esc(candidate.id)}" ${item && String(candidate.id) === String(item.id) ? 'selected' : ''}>${esc(candidate.title || `#${candidate.id}`)}</option>`)].join('');
+      return `<article class="homepage-slot-card homepage-slot-card--${slot}">
+        <div class="homepage-slot-head"><span>${esc(HOME_SLOT_LABELS[slot])}</span><span class="homepage-slot-marker">${item ? '●' : '○'}</span></div>
+        <div class="homepage-slot-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : '<span>Нет фото</span>'}</div>
+        <label class="homepage-slot-label" for="homepage-slot-${slot}">Материал</label>
+        <select id="homepage-slot-${slot}" class="homepage-slot-select" data-home-slot="${slot}">${options}</select>
+        <div class="homepage-slot-title">${esc(item?.title || 'Слот пуст')}</div>
+        <button type="button" class="btn btn-sm homepage-slot-edit" data-home-edit-slot="${item ? esc(item.id) : ''}" ${item ? '' : 'disabled'}>Редактировать</button>
+      </article>`;
+    }).join('');
+    preview.querySelectorAll('[data-home-slot]').forEach((select) => select.addEventListener('change', () => setHomepageSlot(select.dataset.homeSlot, select.value)));
+    preview.querySelectorAll('[data-home-edit-slot]').forEach((button) => button.addEventListener('click', () => openGalleryEditor(button.dataset.homeEditSlot)));
+    auditEl.innerHTML = [
+      ...audit.errors.map((message) => `<div class="homepage-audit-item is-error"><span aria-hidden="true">!</span>${esc(message)}</div>`),
+      ...audit.warnings.map((message) => `<div class="homepage-audit-item is-warn"><span aria-hidden="true">△</span>${esc(message)}</div>`),
+      ...(!audit.errors.length && !audit.warnings.length ? ['<div class="homepage-audit-item is-ok"><span aria-hidden="true">✓</span>Критических проблем не найдено.</div>'] : [])
+    ].join('');
+  }
+
   function reorderLocalizedItems(data) {
     const order = new Map((data.items || []).map((item, index) => [String(item.id), index]));
     const buckets = data.localizedCollections && typeof data.localizedCollections === 'object'
@@ -8920,12 +8722,18 @@ function bindStudioRowActions() {
     if (!data) {
       meta.textContent = 'Контент ещё не загружен.';
       list.innerHTML = '<div class="card"><p class="form-hint">Откройте «Публикации» и нажмите «Загрузить», затем вернитесь сюда.</p></div>';
+      const preview = document.getElementById('homepageComposerPreview');
+      if (preview) preview.innerHTML = '<p class="form-hint">Загрузите контент, чтобы собрать расстановку.</p>';
       return;
     }
     const items = Array.isArray(data.items) ? data.items : [];
+    const slots = homepageSlots(data);
+    const audit = homepageAudit(data, slots);
     meta.textContent = items.length
-      ? `${items.length} ${items.length === 1 ? 'карточка' : 'карточек'} · первая карточка показывается как главный материал`
+      ? `${items.length} ${items.length === 1 ? 'карточка' : 'карточек'} · ${HOME_SLOTS.filter((slot) => slots[slot]).length}/3 слота собраны · центр — главный материал`
       : 'В галерее пока нет карточек.';
+    renderHomepageComposer(data);
+    renderHomepageArchive(data);
     if (!items.length) {
       list.innerHTML = '<div class="card homepage-gallery-empty"><p>Добавьте первую карточку галереи.</p></div>';
       renderMissingArticles();
@@ -8936,7 +8744,7 @@ function bindStudioRowActions() {
       return `<article class="homepage-gallery-card">
         <div class="homepage-gallery-order">
           <span class="homepage-order-number">${index + 1}</span>
-          ${index === 0 ? '<span class="homepage-featured-badge">Featured</span>' : ''}
+          ${item.homeSlot ? `<span class="homepage-featured-badge">${esc(HOME_SLOT_LABELS[item.homeSlot] || item.homeSlot)}</span>` : (index === 0 ? '<span class="homepage-featured-badge">Fallback center</span>' : '')}
         </div>
         <div class="homepage-gallery-thumb">${imageUrl
           ? `<img src="${esc(imageUrl)}" alt="" loading="lazy">`
@@ -8959,6 +8767,9 @@ function bindStudioRowActions() {
       button.addEventListener('click', () => moveItem(button.getAttribute('data-home-up'), -1)));
     list.querySelectorAll('[data-home-down]').forEach((button) =>
       button.addEventListener('click', () => moveItem(button.getAttribute('data-home-down'), 1)));
+    if (audit.errors.length) {
+      showToast?.('info', `Главная требует внимания: ${audit.errors[0]}`);
+    }
     renderMissingArticles();
   }
 
@@ -8971,6 +8782,13 @@ function bindStudioRowActions() {
       showToast?.('error', 'Статья не найдена.');
       return;
     }
+
+    // A backfilled article is intentionally promoted to the centre slot, even
+    // when an older explicit centre already exists. The old centre falls back
+    // into the remaining pool and can be assigned from the composer.
+    const newest = data.items[0];
+    data.items.forEach((entry) => { if (entry !== newest && entry.homeSlot === 'center') delete entry.homeSlot; });
+    if (newest) { newest.homeSlot = 'center'; newest.homeLabel = newest.homeLabel || 'week'; }
 
     setEditorData(data);
     renderHomepageTab();
@@ -9003,19 +8821,51 @@ function bindStudioRowActions() {
 
   async function publishHomepage() {
     if (!editor.value) { showToast?.('error', 'Сначала загрузите контент.'); return; }
+    const data = readContent();
+    const audit = data ? homepageAudit(data, homepageSlots(data)) : { errors: ['Контент не загружен.'], warnings: [] };
+    if (audit.errors.length) {
+      showToast?.('error', `Нельзя опубликовать главную: ${audit.errors[0]}`);
+      renderHomepageTab();
+      return;
+    }
     const pw = typeof getAdminPassword === 'function' ? getAdminPassword() : '';
     if (!pw) { showToast?.('error', 'Нет пароля редакции — войдите заново.'); return; }
+    // Freeze the current three-card composition into the archive as part of the
+    // same payload. Re-publishing an unchanged composition does not create a
+    // duplicate entry, so the archive remains a useful editorial record.
+    const publishData = deepClone(data);
+    const publishSlots = homepageSlots(publishData);
+    const archiveCards = homepageArchiveCards(publishSlots);
+    const archive = Array.isArray(publishData.homepageArchive) ? publishData.homepageArchive.slice() : [];
+    const signature = homepageArchiveSignature(archiveCards);
+    if (archiveCards.length === 3 && !archive.some((entry) => String(entry?.signature || homepageArchiveSignature(Array.isArray(entry?.cards) ? entry.cards : [])) === signature)) {
+      const now = new Date().toISOString();
+      archive.unshift({
+        id: `home-${Date.now()}`,
+        label: publishSlots.center?.homeLabel || 'week',
+        publishedAt: now,
+        signature,
+        cards: archiveCards,
+      });
+    }
+    publishData.homepageArchive = archive.slice(0, 24);
+    const publishPayload = JSON.stringify(publishData, null, 2);
     const button = document.getElementById('homepagePublishBtn');
     if (button) { button.disabled = true; button.textContent = 'Публикую…'; }
     try {
       const response = await fetch(CONTENT_API, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
-        body: editor.value,
+        body: publishPayload,
       });
       const payload = await response.json().catch(() => ({}));
       if (!response.ok || !payload.ok) throw new Error(payload.error || `VPS вернул ${response.status}`);
-      setLastSyncedSnapshotFromText?.(editor.value);
+      setEditorData(publishData, { markSynced: true });
+      try { localStorage.setItem('epris_homepage_last_published', new Date().toISOString()); } catch { /* storage unavailable */ }
+      const lastEl = document.getElementById('homepageLastPublished');
+      if (lastEl) lastEl.textContent = `Опубликовано ${new Date().toLocaleString('ru-RU', { dateStyle: 'short', timeStyle: 'short' })}`;
+      const titleEl = document.getElementById('homepageStatusTitle');
+      if (titleEl) titleEl.textContent = 'Главная опубликована';
       showToast?.('success', '✓ Главная и галерея опубликованы.');
     } catch (error) {
       showToast?.('error', 'Не удалось опубликовать: ' + error.message);
@@ -9254,7 +9104,7 @@ function bindStudioRowActions() {
     const btn = document.getElementById('authorsApplyBtn');
     if (btn) { btn.disabled = true; btn.textContent = 'Публикую…'; }
     try {
-      const res = await fetchNetworkRetry(CONTENT_API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw }, body: editor.value });
+      const res = await fetch(CONTENT_API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw }, body: editor.value });
       const d = await res.json().catch(() => ({}));
       if (!res.ok || !d.ok) throw new Error(d.error || ('VPS вернул ' + res.status));
       if (typeof setLastSyncedSnapshotFromText === 'function') setLastSyncedSnapshotFromText(editor.value);
@@ -10387,7 +10237,6 @@ function bindStudioRowActions() {
       tags,
       imageUrl: v('vf-imageUrl'),
       imageSeed: v('vf-imageSeed'),
-      showCover: document.getElementById('vf-showCover')?.checked !== false,
       content: blocks,
     };
   }
@@ -10444,17 +10293,15 @@ function bindStudioRowActions() {
 
     let html = '<article>';
 
-    // Hero image — the editor mirrors the public "show cover" switch.
-    if (a.showCover !== false) {
-      const heroSrc = resolveImgSrc(a.imageUrl, a.imageSeed, 800, 600);
-      html += '<div class="alp-hero">';
-      if (heroSrc) {
-        html += `<img src="${escapeHtml(heroSrc)}" alt="" referrerpolicy="no-referrer" loading="eager" />`;
-      } else {
-        html += `<div class="alp-hero-placeholder">Нет обложки</div>`;
-      }
-      html += '</div>';
+    // Hero image
+    const heroSrc = resolveImgSrc(a.imageUrl, a.imageSeed, 800, 600);
+    html += '<div class="alp-hero">';
+    if (heroSrc) {
+      html += `<img src="${escapeHtml(heroSrc)}" alt="" referrerpolicy="no-referrer" loading="eager" />`;
+    } else {
+      html += `<div class="alp-hero-placeholder">Нет обложки</div>`;
     }
+    html += '</div>';
 
     // Meta
     const parts = [];
@@ -10978,7 +10825,7 @@ globalTextareaObserver.observe(document.body, { childList: true, subtree: true }
       const end = currentTa.selectionEnd;
       const text = currentTa.value.substring(start, end);
       let newText = text;
-      
+
       if (cmd === 'bold') newText = `**${text}**`;
       else if (cmd === 'italic') newText = `*${text}*`;
       else if (cmd === 'link') {
@@ -11032,7 +10879,7 @@ globalTextareaObserver.observe(document.body, { childList: true, subtree: true }
         cmdkModal.style.display = 'none';
       }
     });
-    
+
     cmdkModal.addEventListener('click', (e) => {
       if (e.target === cmdkModal) cmdkModal.style.display = 'none';
     });
@@ -11043,11 +10890,11 @@ globalTextareaObserver.observe(document.body, { childList: true, subtree: true }
         cmdkResults.innerHTML = '<div class="cmdk-empty">Введіть текст для пошуку</div>';
         return;
       }
-      
+
       let resHtml = '';
       let siteData = {};
       try { siteData = JSON.parse(document.getElementById('editor').value || '{}'); } catch(e) {}
-      
+
       // Search Articles
       if (Array.isArray(siteData.articles)) {
         siteData.articles.forEach(a => {
@@ -11059,7 +10906,7 @@ globalTextareaObserver.observe(document.body, { childList: true, subtree: true }
           }
         });
       }
-      
+
       // Search Issues (magazines)
       if (typeof window._issues !== 'undefined') {
         window._issues.forEach(iss => {
@@ -11071,7 +10918,7 @@ globalTextareaObserver.observe(document.body, { childList: true, subtree: true }
           }
         });
       }
-      
+
       // Search Podcasts
       if (typeof window._podcasts !== 'undefined') {
         window._podcasts.forEach(p => {
@@ -11083,7 +10930,7 @@ globalTextareaObserver.observe(document.body, { childList: true, subtree: true }
           }
         });
       }
-      
+
       if (!resHtml) {
         resHtml = '<div class="cmdk-empty">Нічого не знайдено</div>';
       }
@@ -11109,7 +10956,7 @@ globalTextareaObserver.observe(document.body, { childList: true, subtree: true }
       e.target.style.border = '';
       const file = e.dataTransfer.files[0];
       if (!file || !String(file.type || '').startsWith('image/')) return;
-      
+
       const ta = e.target;
       const start = ta.selectionStart;
       const placeholder = `![Завантаження ${file.name}...]()`;
@@ -11210,7 +11057,7 @@ async function autoSyncVisualToEditor() {
     const lang = visualLangSelect.value || 'ru';
     const entries = getSectionArray(data, section, lang, false);
     if (!entries || !entries.length) return;
-    
+
     const selectedId = Number(visualEntrySelect.value);
     const entryIndex = entries.findIndex((item) => Number(item.id) === selectedId);
     if (entryIndex === -1) return;
@@ -11231,9 +11078,7 @@ async function autoSyncVisualToEditor() {
         next = {
           ...next,
           title: getFieldValue('vf-title').trim(),
-          subject: getFieldValue('vf-subject').trim(),
-          homeFeatured: Boolean(document.getElementById('vf-homeFeatured')?.checked),
-          homeOrder: Number(getFieldValue('vf-homeOrder')) > 0 ? Number(getFieldValue('vf-homeOrder')) : undefined
+          subject: getFieldValue('vf-subject').trim()
           // NOTE: content is managed by the WYSIWYG review canvas, not the classic form
         };
     } else if (section === 'libraryItems') {
@@ -11253,7 +11098,6 @@ async function autoSyncVisualToEditor() {
           tags: getFieldValue('vf-tags').split(',').map((tag) => tag.trim()).filter(Boolean),
           imageSeed: getFieldValue('vf-imageSeed').trim(),
           imageUrl: getFieldValue('vf-imageUrl').trim() || undefined,
-          showCover: document.getElementById('vf-showCover')?.checked !== false,
           content: collectBlockEditorContent()
         };
     }
@@ -11262,7 +11106,7 @@ async function autoSyncVisualToEditor() {
     // Update the textarea silently
     editor.value = JSON.stringify(data, null, 2);
     updateEditorState();
-    
+
     // Save to localStorage
     if (editor.value.trim()) {
       localStorage.setItem('epris-site-draft', editor.value);
@@ -11836,7 +11680,7 @@ async function flushModernEditor() {
       st.textContent = 'Публикую сайт…'; st.style.color = 'var(--text-muted)';
       const pw = (typeof getAdminPassword === 'function') ? getAdminPassword() : '';
       if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
-      const res = await fetchNetworkRetry(CONTENT_API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw }, body: JSON.stringify(j) });
+      const res = await fetch(CONTENT_API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw }, body: JSON.stringify(j) });
       const d = await res.json().catch(() => ({}));
       if (!res.ok || !d.ok) throw new Error(d.error || ('VPS вернул ' + res.status));
       if (typeof setLastSyncedSnapshotFromText === 'function') setLastSyncedSnapshotFromText($('editor').value);
@@ -11900,203 +11744,6 @@ async function flushModernEditor() {
   let _restoringHistory = false;
   const undoBtn = document.getElementById('wysUndoBtn');
   const redoBtn = document.getElementById('wysRedoBtn');
-  const preflightBtn = document.getElementById('wysPreflightBtn');
-  const versionsBtn = document.getElementById('wysVersionsBtn');
-
-  // The in-memory undo stack is intentionally short-lived.  This second,
-  // bounded store survives refreshes and catches the failure mode where a
-  // saved article unexpectedly falls back to a template.  It is local to the
-  // current browser for now; the UI says so explicitly instead of implying a
-  // server-side audit trail that does not exist yet.
-  const VERSION_PREFIX = 'epris-article-versions-v1:';
-  const VERSION_CAP = 20;
-  const versionKey = () => `${VERSION_PREFIX}${_ctx.section}:${_ctx.lang}:${_ctx.id}`;
-  function readVersions() {
-    try {
-      const raw = localStorage.getItem(versionKey());
-      const parsed = raw ? JSON.parse(raw) : [];
-      return Array.isArray(parsed) ? parsed.filter((item) => item && item.model) : [];
-    } catch { return []; }
-  }
-  function writeVersions(list) {
-    try { localStorage.setItem(versionKey(), JSON.stringify(list.slice(0, VERSION_CAP))); } catch {
-      // Quota errors should never prevent editing.  Drop the oldest half and
-      // retry once so a large gallery cannot disable the editor.
-      try { localStorage.setItem(versionKey(), JSON.stringify(list.slice(0, Math.max(4, Math.floor(VERSION_CAP / 2))))); } catch {}
-    }
-  }
-  function versionSignature(model) {
-    try { return JSON.stringify(model); } catch { return ''; }
-  }
-  function persistVersion(reason = 'Автосохранение') {
-    if (!_model) return;
-    const model = clone(_model);
-    const signature = versionSignature(model);
-    if (!signature) return;
-    const versions = readVersions();
-    if (versions[0]?.signature === signature) return;
-    versions.unshift({
-      id: `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
-      at: Date.now(),
-      reason,
-      signature,
-      model,
-    });
-    writeVersions(versions);
-  }
-  function seedVersionHistory() {
-    if (!readVersions().length) persistVersion('Исходная версия');
-  }
-  function versionTime(value) {
-    try { return new Date(value).toLocaleString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }); }
-    catch { return ''; }
-  }
-
-  // ── publication preflight ────────────────────────────────────────────────
-  // This is deliberately deterministic and local: an editor can run it while
-  // offline, and every warning points back to a concrete field/block.
-  function plainBlockText(block) {
-    const value = block?.content;
-    if (typeof value === 'string') return value.replace(/<[^>]+>/g, ' ');
-    if (value && typeof value === 'object') {
-      return [value.question, ...(Array.isArray(value.options) ? value.options.map((item) => item?.label) : []), ...(Array.isArray(value.items) ? value.items : [])].filter(Boolean).join(' ');
-    }
-    return '';
-  }
-  function preflightUrlValid(value) {
-    if (!value || typeof value !== 'string') return false;
-    try { return Boolean(new URL(value, window.location.origin)); } catch { return false; }
-  }
-  function buildPreflight(model = _model) {
-    const checks = [];
-    const add = (kind, label, detail, target) => checks.push({ kind, label, detail, target });
-    if (!model) return { checks: [{ kind: 'error', label: 'Статья не выбрана', detail: 'Выберите запись перед проверкой.' }], blocking: 1, warnings: 0 };
-    const title = String(model.title || '').trim();
-    const excerpt = String(model.excerpt || '').trim();
-    const blocks = Array.isArray(model.content) ? model.content : [];
-    const words = typeof getEntryWordCount === 'function' ? getEntryWordCount('articles', model) : 0;
-    const normalized = [title, excerpt, ...blocks.map(plainBlockText)].join(' ').toLowerCase();
-    const placeholder = /lorem ipsum|replace me|new editorial|текст абзаца|заголовок статьи|добавьте блок|one or two sentences/.test(normalized);
-
-    title ? add(title.length < 8 ? 'warn' : 'ok', 'Заголовок', title.length < 8 ? 'Заголовок очень короткий — проверьте смысл и подачу.' : `${title.length} символов`, 'title') : add('error', 'Заголовок', 'Без заголовка публикация остановлена.', 'title');
-    if (!excerpt) add('error', 'Краткое описание', 'Нужен лид для карточек главной и разделов.', 'excerpt');
-    else if (excerpt.length > EXCERPT_PREVIEW_LIMIT) add('warn', 'Краткое описание', `${excerpt.length}/${EXCERPT_PREVIEW_LIMIT}: на карточках текст обрежется.`, 'excerpt');
-    else add('ok', 'Краткое описание', `${excerpt.length}/${EXCERPT_PREVIEW_LIMIT}`, 'excerpt');
-    blocks.length ? add('ok', 'Контент', `${blocks.length} блоков · ${words} слов`, 'body') : add('error', 'Контент', 'Добавьте хотя бы один блок текста.', 'body');
-    if (blocks.length && words < 80) add('warn', 'Объём', `${words} слов — статья выглядит очень короткой.`, 'body');
-    else if (blocks.length) add('ok', 'Объём', `${words} слов`, 'body');
-    model.author ? add('ok', 'Автор', model.author, 'author') : add('warn', 'Автор', 'Укажите автора или оставьте осознанно пустым.', 'author');
-    model.category ? add('ok', 'Категория', model.category, 'category') : add('warn', 'Категория', 'Без категории материал сложнее найти в разделе.', 'category');
-    model.date ? add('ok', 'Дата', model.date, 'date') : add('warn', 'Дата', 'Дата нужна для корректной хронологии.', 'date');
-
-    const hasCover = Boolean(model.imageUrl || model.imageSeed || blocks.some((block) => block?.type === 'image' && block.content));
-    if (model.showCover === false || hasCover) add('ok', 'Обложка', model.showCover === false ? 'Показ обложки отключён.' : 'Источник изображения задан.', 'hero');
-    else add('warn', 'Обложка', 'Добавьте изображение или отключите её показ в метаданных.', 'hero');
-
-    let mediaMissingAlt = 0;
-    let invalidLinks = 0;
-    let invalidPolls = 0;
-    let emptyBlocks = 0;
-    blocks.forEach((block) => {
-      if (['text', 'header', 'quote', 'note'].includes(block?.type) && !plainBlockText(block).trim()) emptyBlocks += 1;
-      if (block?.type === 'image' && block.content && !(block.alt || block.caption)) mediaMissingAlt += 1;
-      if (block?.type === 'gallery' && Array.isArray(block.content)) {
-        block.content.forEach((url, index) => { if (url && !(block.alts?.[index])) mediaMissingAlt += 1; });
-      }
-      if (block?.type === 'link' && (!block.content || !preflightUrlValid(block.url))) invalidLinks += 1;
-      if (block?.type === 'poll') {
-        const options = Array.isArray(block.content?.options) ? block.content.options.filter((item) => item?.label?.trim()) : [];
-        if (!block.content?.question?.trim() || options.length < 2) invalidPolls += 1;
-      }
-    });
-    mediaMissingAlt ? add('warn', 'Доступность медиа', `${mediaMissingAlt} изображений без ALT или подписи.`, 'media') : add('ok', 'Доступность медиа', 'ALT/подписи заполнены у всех изображений.', 'media');
-    invalidLinks ? add('error', 'Ссылки', `${invalidLinks} ссылок без корректного URL.`, 'body') : add('ok', 'Ссылки', 'Блочные ссылки выглядят корректно.', 'body');
-    invalidPolls ? add('warn', 'Опросы', `${invalidPolls} опросов требуют вопрос и минимум 2 варианта.`, 'body') : null;
-    emptyBlocks ? add('warn', 'Пустые блоки', `${emptyBlocks} текстовых блоков пусты — они не попадут в материал.`, 'body') : null;
-    placeholder ? add('warn', 'Шаблонный текст', 'Найдена фраза-заглушка. Проверьте, не остался ли текст шаблона.', 'body') : add('ok', 'Шаблонный текст', 'Заглушки не найдены.', 'body');
-
-    const data = parseEditorJsonSafe();
-    if (data && typeof hasConcreteEntryForLanguage === 'function' && typeof getTranslationLanguages === 'function') {
-      const missing = getTranslationLanguages(data).filter((lang) => !hasConcreteEntryForLanguage(data, 'articles', lang, _ctx.id));
-      missing.length ? add('warn', 'Переводы', `Нет версии: ${missing.join(', ')}.`, 'translations') : add('ok', 'Переводы', 'Версии присутствуют во всех языках.', 'translations');
-    }
-    return {
-      checks,
-      blocking: checks.filter((item) => item.kind === 'error').length,
-      warnings: checks.filter((item) => item.kind === 'warn').length,
-    };
-  }
-  function updatePreflightButton(report) {
-    if (!preflightBtn) return;
-    preflightBtn.classList.toggle('has-errors', report.blocking > 0);
-    preflightBtn.classList.toggle('has-warnings', !report.blocking && report.warnings > 0);
-    preflightBtn.textContent = report.blocking ? `! Проверка · ${report.blocking}` : (report.warnings ? `! Проверка · ${report.warnings}` : '✓ Проверка');
-  }
-  function jumpToPreflightTarget(target) {
-    closePopovers();
-    const selectors = { title: '[data-wys="title"]', excerpt: '[data-wys="excerpt"]', author: '[data-wys="author"]', category: '[data-wys="category"]', date: '[data-wys="date"]', hero: '.wys-hero', body: '.wys-body', media: '.wys-media-details', translations: '#languageSyncScope' };
-    const el = document.querySelector(selectors[target] || selectors.body) || document.getElementById('wysMetaBtn');
-    el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    if (el?.focus) el.focus({ preventScroll: true });
-  }
-  function openPreflight() {
-    closePopovers();
-    const report = buildPreflight();
-    updatePreflightButton(report);
-    const pop = document.createElement('div');
-    pop.className = 'wys-pop wys-preflight-pop';
-    pop.setAttribute('role', 'dialog');
-    pop.setAttribute('aria-modal', 'true');
-    const summary = report.blocking
-      ? `<span class="error">${report.blocking} ошибки — публикация остановится</span>`
-      : report.warnings
-        ? `<span class="warn">${report.warnings} предупреждения</span>`
-        : '<span class="ok">Готово к публикации</span>';
-    pop.innerHTML = `<div class="wys-preflight-head"><div><strong>Проверка перед публикацией</strong><span class="wys-preflight-sub">Проверка текущей версии #${esc(_ctx.id)} · ${esc(_ctx.lang)}. Исправьте ошибки, предупреждения остаются на ваше усмотрение.</span></div><button type="button" class="wys-panel-close" data-close aria-label="Закрыть проверку">×</button></div><div class="wys-preflight-summary">${summary}<span class="ok">${report.checks.filter((item) => item.kind === 'ok').length} проверок пройдено</span></div><div class="wys-preflight-list">${report.checks.map((item) => `<div class="wys-preflight-row ${item.kind}"><span class="wys-preflight-icon">${item.kind === 'error' ? '!' : item.kind === 'warn' ? '△' : '✓'}</span><div><strong class="wys-preflight-label">${esc(item.label)}</strong><span class="wys-preflight-detail">${esc(item.detail)}</span></div>${item.target ? `<button type="button" class="wys-preflight-jump" data-target="${esc(item.target)}">Перейти</button>` : ''}</div>`).join('')}</div><div class="wys-preflight-foot"><button type="button" class="btn btn-primary btn-sm" data-close>Закрыть</button></div>`;
-    document.body.appendChild(pop);
-    positionCenter(pop);
-    const close = () => { document.removeEventListener('mousedown', outside); pop.remove(); };
-    const outside = (event) => { if (!pop.contains(event.target)) close(); };
-    pop.querySelectorAll('[data-close]').forEach((button) => button.addEventListener('click', close));
-    pop.querySelectorAll('[data-target]').forEach((button) => button.addEventListener('click', () => jumpToPreflightTarget(button.getAttribute('data-target'))));
-    pop._outside = outside;
-    setTimeout(() => document.addEventListener('mousedown', outside), 0);
-  }
-
-  async function restoreVersion(index) {
-    const version = readVersions()[index];
-    if (!version?.model) return;
-    const confirmed = await showConfirmModal('Восстановить версию?', `Статья вернётся к состоянию от <strong>${escapeHtml(versionTime(version.at))}</strong>. Текущее состояние останется в истории.`, 'Восстановить');
-    if (!confirmed) return;
-    _model = clone(version.model);
-    _galSelected.clear();
-    render();
-    commit('Восстановление версии');
-    closePopovers();
-    showToast('success', `Версия от ${versionTime(version.at)} восстановлена.`);
-  }
-  function openVersions() {
-    closePopovers();
-    const versions = readVersions();
-    const pop = document.createElement('div');
-    pop.className = 'wys-pop wys-history-pop';
-    pop.setAttribute('role', 'dialog');
-    pop.setAttribute('aria-modal', 'true');
-    pop.innerHTML = `<div class="wys-history-head"><div><strong>История версий</strong><span class="wys-history-sub">Последние ${versions.length} состояний · хранится в этом браузере</span></div><button type="button" class="wys-panel-close" data-close aria-label="Закрыть историю">×</button></div>${versions.length ? `<div class="wys-history-list">${versions.map((item, index) => `<div class="wys-history-item"><div class="wys-history-meta"><strong>${esc(item.reason || 'Автосохранение')}</strong><span>${esc(versionTime(item.at))} · ${esc(String(getEntryWordCount('articles', item.model)))} слов · ${esc(String(Array.isArray(item.model.content) ? item.model.content.length : 0))} блоков</span></div><button type="button" class="wys-history-restore" data-version="${index}">Восстановить</button></div>`).join('')}</div>` : '<div class="wys-history-empty">Снимки появятся после первого изменения. Исходная версия сохраняется автоматически при открытии статьи.</div>'}`;
-    document.body.appendChild(pop);
-    positionCenter(pop);
-    const close = () => { document.removeEventListener('mousedown', outside); pop.remove(); };
-    const outside = (event) => { if (!pop.contains(event.target)) close(); };
-    pop.querySelectorAll('[data-close]').forEach((button) => button.addEventListener('click', close));
-    pop.querySelectorAll('[data-version]').forEach((button) => button.addEventListener('click', () => restoreVersion(Number(button.getAttribute('data-version')))));
-    pop._outside = outside;
-    setTimeout(() => document.addEventListener('mousedown', outside), 0);
-  }
-  preflightBtn?.addEventListener('click', openPreflight);
-  versionsBtn?.addEventListener('click', openVersions);
-  window.__eprisArticlePreflightActive = () => shell.classList.contains('on') && _ctx.section === 'articles' && Boolean(_model);
-  window.__eprisArticlePreflight = () => buildPreflight(_model);
-  window.__openEprisArticlePreflight = openPreflight;
 
   function resetHistory(model) {
     _history = [clone(model)];
@@ -12191,8 +11838,6 @@ async function flushModernEditor() {
     if (!Array.isArray(_model.content)) _model.content = [];
     render();
     resetHistory(_model);
-    seedVersionHistory();
-    updatePreflightButton(buildPreflight(_model));
     updateDraftBadge();
   }
   function scheduleReload() { clearTimeout(_reloadTimer); _reloadTimer = setTimeout(reload, 140); }
@@ -12210,14 +11855,12 @@ async function flushModernEditor() {
   // debounce, so nothing needs to remember to call it separately. `commit()`
   // only flushes to the local textarea; `armPublish()` is a distinct step so
   // publishSilently() can re-flush without re-arming itself into a loop.
-  function commit(reason = 'Автосохранение') {
+  function commit() {
     if (!flushLocal()) return;
     _errorRetries = 0;
     armPublish(2600);
     setSave('saved');
     pushHistory();
-    persistVersion(reason);
-    updatePreflightButton(buildPreflight(_model));
   }
   function flushLocal() {
     if (!_model) return false;
@@ -12244,13 +11887,6 @@ async function flushModernEditor() {
     if (!_model) return;
     clearTimeout(_commitTimer);
     flushLocal(); // make sure the very latest keystrokes are in editor.value first
-    const preflight = buildPreflight(_model);
-    updatePreflightButton(preflight);
-    if (!_model.draft && preflight.blocking) {
-      setSave('blocked');
-      return;
-    }
-    persistVersion('Перед публикацией');
     if (_publishing) { _publishQueued = true; return; }
     const pw = (typeof getAdminPassword === 'function') ? getAdminPassword() : '';
     if (!pw) { setSave('nopw'); return; } // no password on file — stays local-only, no spam
@@ -12292,7 +11928,6 @@ async function flushModernEditor() {
       error: 'Ошибка публикации — повторяю…',
       'error-final': 'Не удалось опубликовать (сохранено локально)',
       nopw: 'Сохранено локально (нет пароля для публикации)',
-      blocked: 'Есть ошибки — публикация остановлена',
     };
     saveState.textContent = labels[s] || labels.saved;
     saveState.className = 'wys-save-state ' + s;
@@ -12365,14 +12000,12 @@ async function flushModernEditor() {
   const ICON_DOWN   = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>';
   const ICON_REPEAT = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>';
   const ICON_TRASH  = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>';
-  const ICON_DUP    = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>';
   const ICON_GRIP   = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>';
 
   function blockControls(i) {
     return `<div class="wys-bc">
       <button class="wys-bc-btn" data-wys-act="up"   data-i="${i}" title="Вверх">${ICON_UP}</button>
       <button class="wys-bc-btn" data-wys-act="down" data-i="${i}" title="Вниз">${ICON_DOWN}</button>
-      <button class="wys-bc-btn" data-wys-act="dup"  data-i="${i}" title="Дублировать блок">${ICON_DUP}</button>
       <button class="wys-bc-btn" data-wys-act="type" data-i="${i}" title="Сменить тип блока">${ICON_REPEAT}</button>
       <button class="wys-bc-btn danger" data-wys-act="del" data-i="${i}" title="Удалить блок">${ICON_TRASH}</button>
     </div>
@@ -12754,12 +12387,6 @@ async function flushModernEditor() {
     if (a === 'type') return openTypeMenu(act, (type) => { changeBlockType(i, type); render(); commit(); });
     if (a === 'up')   { if (i > 0) { swap(i, i - 1); _galSelected.clear(); render(); commit(); } return; }
     if (a === 'down') { if (i < _model.content.length - 1) { swap(i, i + 1); _galSelected.clear(); render(); commit(); } return; }
-    if (a === 'dup')  {
-      const clone = JSON.parse(JSON.stringify(_model.content[i]));
-      _model.content.splice(i + 1, 0, clone);
-      _galSelected.clear(); render(); commit(); focusBlock(i + 1);
-      return;
-    }
     if (a === 'del')  { _model.content.splice(i, 1); _galSelected.clear(); render(); commit(); return; }
     if (a === 'tag-add') { const t = prompt('Новый тег:'); if (t && t.trim()) { _model.tags = _model.tags || []; _model.tags.push(t.trim()); render(); commit(); } return; }
     if (a === 'tag-del') { _model.tags.splice(i, 1); render(); commit(); return; }
@@ -13336,49 +12963,6 @@ async function flushModernEditor() {
   document.addEventListener('mouseup', () => setTimeout(updateSelTool, 0));
 
   // ── metadata drawer ───────────────────────────────────────────────────────
-  function applyQuickPublicationAction(action) {
-    if (!_model) return;
-    const data = parseEditorJsonSafe();
-    if (!data) return;
-
-    const hidden = action === 'hide';
-    const visibleNow = !hidden;
-    const applyState = (entry) => {
-      if (!entry) return;
-      if (hidden) {
-        entry.draft = true;
-        delete entry.publishAt;
-      } else {
-        delete entry.draft;
-        delete entry.publishAt;
-      }
-    };
-
-    // Keep the open language in sync for the local editor, while the EN source
-    // remains authoritative for the public site's shared visibility state.
-    const currentEntries = getSectionArray(data, _ctx.section, _ctx.lang, false);
-    applyState(currentEntries.find((entry) => Number(entry.id) === _ctx.id));
-    applyState(_model);
-    const sourceEntries = getSectionArray(data, 'articles', DEFAULT_LANGUAGE, false);
-    applyState(sourceEntries.find((entry) => Number(entry.id) === _ctx.id));
-
-    if (!data.visibility || typeof data.visibility !== 'object' || Array.isArray(data.visibility)) data.visibility = {};
-    if (!data.visibility.entities || typeof data.visibility.entities !== 'object' || Array.isArray(data.visibility.entities)) data.visibility.entities = {};
-    if (!data.visibility.entities.articles || typeof data.visibility.entities.articles !== 'object' || Array.isArray(data.visibility.entities.articles)) data.visibility.entities.articles = {};
-    if (visibleNow) delete data.visibility.entities.articles[String(_ctx.id)];
-    else data.visibility.entities.articles[String(_ctx.id)] = false;
-
-    editor.value = JSON.stringify(data, null, 2);
-    updateEditorState();
-    saveDraft();
-    updateDraftBadge();
-    renderDrawer();
-    render();
-    setSave('editing');
-    armPublish(300);
-    setStatus('success', hidden ? `Статья #${_ctx.id} скрыта с сайта.` : `Статья #${_ctx.id} опубликована на сайте.`);
-  }
-
   function renderDrawer() {
     if (!_model) return;
     const row = (label, field, val, ph) => `<label class="wys-meta-field"><span>${label}</span><input data-mfield="${field}" value="${esc(val || '')}" placeholder="${ph || ''}"></label>`;
@@ -13390,21 +12974,9 @@ async function flushModernEditor() {
       row('imageSeed', 'imageSeed', _model.imageSeed, 'если URL пустой') +
       row('URL обложки', 'imageUrl', _model.imageUrl, 'https://…') +
       `<label class="wys-meta-field"><span>Теги (через запятую)</span><input data-mfield="tags" value="${esc((_model.tags || []).join(', '))}"></label>` +
-      `<section class="wys-publication-actions" aria-label="Действия публикации">` +
-        `<div class="wys-publication-actions-head"><span>Публикация</span><strong>${_model.draft ? 'Скрыта с сайта' : (_model.publishAt && Date.parse(_model.publishAt) > Date.now() ? 'Отложена' : 'Опубликована')}</strong></div>` +
-        `<div class="wys-publication-actions-grid">` +
-          `<button type="button" class="btn btn-sm wys-publication-hide" data-article-publication-action="hide">Сделать невидимой</button>` +
-          `<button type="button" class="btn btn-sm" data-article-publication-action="show">Показать на сайте</button>` +
-          `<button type="button" class="btn btn-primary btn-sm" data-article-publication-action="publish">Опубликовать сейчас</button>` +
-        `</div>` +
-        `<span class="wys-publication-hint">Кнопки действуют сразу для статьи и её общей видимости во всех языках.</span>` +
-      `</section>` +
       `<label class="wys-meta-check"><input type="checkbox" data-mdraft ${_model.draft ? 'checked' : ''}><span>Черновик — скрыт с сайта</span></label>` +
       `<label class="wys-meta-field"><span>Отложенная публикация (скрыта до этого момента)</span><input type="datetime-local" data-mpublishat value="${esc(isoToLocalInput(_model.publishAt))}"></label>` +
       `<div class="wys-meta-field"><span>Просмотры</span><div class="wys-meta-views" data-views>…</div></div>`;
-    drawerBody.querySelectorAll('[data-article-publication-action]').forEach((button) => {
-      button.addEventListener('click', () => applyQuickPublicationAction(button.getAttribute('data-article-publication-action')));
-    });
     const viewsEl = drawerBody.querySelector('[data-views]');
     if (viewsEl) fetchViewsMap().then((v) => { viewsEl.textContent = String(v[_model && _model.id] || 0); });
     drawerBody.querySelectorAll('input[data-mfield]').forEach((inp) => {
@@ -13664,7 +13236,6 @@ async function flushModernEditor() {
   let _commitTimer = null, _publishTimer = null, _reloadTimer = null, _suspendReload = false;
   let _publishing = false, _publishQueued = false, _errorRetries = 0;
   let _history = [], _historyIdx = -1, _restoringHistory = false;
-  let _translationDirty = false;
 
   function imgUrl(src) {
     if (!src) return '';
@@ -13690,31 +13261,24 @@ async function flushModernEditor() {
     _model.content = text ? text.split(/\n{2,}/).map((paragraph) => ({ type: 'text', content: paragraph.trim() })).filter((b) => b.content) : [];
     return _model.content;
   }
-  const REVIEW_ICON_GRIP = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="9" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>';
-  const REVIEW_ICON_UP = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>';
-  const REVIEW_ICON_DOWN = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
-  const REVIEW_ICON_COPY = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
-  const REVIEW_ICON_PLUS = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
-  const REVIEW_ICON_TRASH = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M19 6l-1 15H6L5 6"/></svg>';
   function renderReviewBlock(block, index) {
     const type = block.type || 'text';
     const label = ({ text: 'Текст', header: 'Заголовок', quote: 'Цитата', image: 'Фото', gallery: 'Галерея', video: 'Видео', link: 'Ссылка', checklist: 'Чек‑лист' })[type] || type;
     const controls = `<div class="wys-review-block-controls">
-      <button type="button" class="wys-review-block-grip" draggable="true" data-review-drag="${index}" aria-label="Перетащить блок ${index + 1}. Alt и стрелки также меняют порядок" title="Перетащить или Alt + стрелка">${REVIEW_ICON_GRIP}</button>
+      <button type="button" class="wys-review-block-grip" draggable="true" data-review-drag="${index}" aria-label="Перетащить блок ${index + 1}" title="Перетащить блок">⠿</button>
       <span class="wys-review-block-number">${String(index + 1).padStart(2, '0')}</span>
-      <label class="wys-review-block-type"><span class="sr-only">Тип блока</span><select data-wys="block-type" data-bi="${index}" aria-label="Тип блока ${index + 1}">${['text', 'header', 'quote', 'image', 'gallery', 'video', 'link', 'checklist'].map((value) => `<option value="${value}"${value === type ? ' selected' : ''}>${({ text: 'Текст', header: 'Заголовок', quote: 'Цитата', image: 'Фото', gallery: 'Галерея', video: 'Видео', link: 'Ссылка', checklist: 'Чек‑лист' })[value]}</option>`).join('')}</select></label>
+      <span class="wys-review-block-name">${label}</span>
       <span class="wys-review-block-spacer"></span>
-      <button type="button" class="wys-review-block-move" data-wys-act="block-up" data-bi="${index}" aria-label="Переместить блок выше" title="Выше" ${index === 0 ? 'disabled' : ''}>${REVIEW_ICON_UP}</button>
-      <button type="button" class="wys-review-block-move" data-wys-act="block-down" data-bi="${index}" aria-label="Переместить блок ниже" title="Ниже" ${index === ensureReviewBlocks().length - 1 ? 'disabled' : ''}>${REVIEW_ICON_DOWN}</button>
-      <button type="button" class="wys-review-block-action" data-wys-act="block-add-after" data-bi="${index}" aria-label="Добавить текстовый блок после" title="Добавить после">${REVIEW_ICON_PLUS}</button>
-      <button type="button" class="wys-review-block-action" data-wys-act="block-copy" data-bi="${index}" aria-label="Дублировать блок" title="Дублировать">${REVIEW_ICON_COPY}</button>
-      <button type="button" class="wys-review-block-delete" data-wys-act="block-del" data-bi="${index}" aria-label="Удалить блок" title="Удалить блок">${REVIEW_ICON_TRASH}</button>
+      <button type="button" class="wys-review-block-move" data-wys-act="block-up" data-bi="${index}" aria-label="Переместить выше" title="Выше" ${index === 0 ? 'disabled' : ''}>↑</button>
+      <button type="button" class="wys-review-block-move" data-wys-act="block-down" data-bi="${index}" aria-label="Переместить ниже" title="Ниже" ${index === ensureReviewBlocks().length - 1 ? 'disabled' : ''}>↓</button>
+      <button type="button" class="wys-review-block-delete" data-wys-act="block-del" data-bi="${index}" aria-label="Удалить блок" title="Удалить блок">×</button>
     </div>`;
-    if (type === 'image' || type === 'video') return `<section class="wys-review-block" data-review-block="${index}">${controls}<div class="wys-review-block-body"><div class="wys-review-media-field"><input data-wys="block-media" data-bi="${index}" value="${esc(block.content || '')}" placeholder="Вставьте URL ${type === 'image' ? 'фото' : 'YouTube/Vimeo'}">${type === 'image' ? `<button type="button" class="btn btn-sm" data-wys-act="block-pick-media" data-bi="${index}">Медиатека</button>` : ''}</div><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Подпись (необязательно)" style="margin-top:7px"></div></section>`;
-    if (type === 'gallery') return `<section class="wys-review-block" data-review-block="${index}">${controls}<div class="wys-review-block-body"><button type="button" class="btn btn-sm wys-review-gallery-pick" data-wys-act="block-pick-gallery" data-bi="${index}">＋ Выбрать несколько фото</button><textarea data-wys="block-gallery" data-bi="${index}" placeholder="По одному URL фото на строку">${esc(Array.isArray(block.content) ? block.content.join('\n') : '')}</textarea><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Общая подпись (необязательно)" style="margin-top:7px"></div></section>`;
-    if (type === 'link') return `<section class="wys-review-block" data-review-block="${index}">${controls}<div class="wys-review-block-body"><input data-wys="block-content" data-bi="${index}" value="${esc(block.content || '')}" placeholder="Текст ссылки"><input data-wys="block-url" data-bi="${index}" value="${esc(block.url || '')}" placeholder="https://…" style="margin-top:7px"></div></section>`;
-    if (type === 'checklist') return `<section class="wys-review-block" data-review-block="${index}">${controls}<div class="wys-review-block-body"><textarea data-wys="block-checklist" data-bi="${index}" placeholder="Один пункт на строку">${esc(block.content?.items?.join('\n') || '')}</textarea></div></section>`;
-    return `<section class="wys-review-block" data-review-block="${index}">${controls}<div class="wys-review-block-body"><div class="wys-ce" contenteditable="true" data-wys="block-content" data-bi="${index}" data-empty="Введите текст…">${esc(block.content || '')}</div></div></section>`;
+    if (type === 'image') return `<section class="wys-review-block" data-review-block="${index}">${controls}<div style="display:flex;gap:6px;align-items:center;margin-bottom:4px"><input data-wys="block-media" data-bi="${index}" value="${esc(block.content || '')}" placeholder="URL фото" style="flex:1"><button type="button" class="btn btn-sm" data-wys-act="block-img-upload" data-bi="${index}" style="white-space:nowrap">📷 Загрузить</button></div><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Подпись (необязательно)"></section>`;
+    if (type === 'video') return `<section class="wys-review-block" data-review-block="${index}">${controls}<input data-wys="block-media" data-bi="${index}" value="${esc(block.content || '')}" placeholder="URL YouTube/Vimeo"><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Подпись (необязательно)" style="margin-top:7px"></section>`;
+    if (type === 'gallery') return `<section class="wys-review-block" data-review-block="${index}">${controls}<textarea data-wys="block-gallery" data-bi="${index}" placeholder="По одному URL фото на строку">${esc(Array.isArray(block.content) ? block.content.join('\n') : '')}</textarea><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Общая подпись (необязательно)" style="margin-top:7px"></section>`;
+    if (type === 'link') return `<section class="wys-review-block" data-review-block="${index}">${controls}<input data-wys="block-content" data-bi="${index}" value="${esc(block.content || '')}" placeholder="Текст ссылки"><input data-wys="block-url" data-bi="${index}" value="${esc(block.url || '')}" placeholder="https://…" style="margin-top:7px"></section>`;
+    if (type === 'checklist') return `<section class="wys-review-block" data-review-block="${index}">${controls}<textarea data-wys="block-checklist" data-bi="${index}" placeholder="Один пункт на строку">${esc(block.content?.items?.join('\n') || '')}</textarea></section>`;
+    return `<section class="wys-review-block" data-review-block="${index}">${controls}<div class="wys-ce" contenteditable="true" data-wys="block-content" data-bi="${index}" data-empty="Введите текст…">${esc(block.content || '')}</div></section>`;
   }
 
   // ── load / show-hide ────────────────────────────────────────────────────
@@ -13732,7 +13296,6 @@ async function flushModernEditor() {
     if (!entry) { canvas.innerHTML = '<div class="wys-empty"><div class="wys-empty-icon">✦</div><p>Выберите обзор в списке сверху или создайте новый.</p></div>'; return; }
     _id = id;
     _model = clone(entry);
-    _translationDirty = false;
     render();
     resetHistory(_model);
     updateDraftBadge();
@@ -13741,11 +13304,12 @@ async function flushModernEditor() {
   const CLASSIC = ['creatorStudioWrap', 'editorSplit', 'commandCenter', 'stats'];
   const classicEls = () => CLASSIC.map((id) => document.getElementById(id)).filter(Boolean);
 
-  // ── metadata drawer (author / draft / scheduled publish) ───────────────────
+  // ── metadata drawer (draft / scheduled publish) ────────────────────────────
+  // Reviews only need draft+publishAt here — category/author/etc are already
+  // inline-editable directly on the canvas, unlike articles.
   function renderReviewDrawer() {
     if (!_model) return;
     drawerBody.innerHTML =
-      `<section class="wys-author-panel"><div class="wys-author-panel-head"><span class="wys-author-panel-kicker">Автор обзора</span><strong>Карточка и подпись</strong></div><div data-review-author-picker></div></section>` +
       `<label class="wys-meta-check"><input type="checkbox" data-mdraft ${_model.draft ? 'checked' : ''}><span>Черновик — скрыт с сайта</span></label>` +
       `<label class="wys-meta-field"><span>Отложенная публикация (скрыта до этого момента)</span><input type="datetime-local" data-mpublishat value="${esc(isoToLocalInput(_model.publishAt))}"></label>`;
     const draftInp = drawerBody.querySelector('[data-mdraft]');
@@ -13760,106 +13324,6 @@ async function flushModernEditor() {
       if (v) _model.publishAt = new Date(v).toISOString(); else delete _model.publishAt;
       updateDraftBadge();
       scheduleCommit();
-    });
-    renderReviewAuthorPicker();
-  }
-
-  function reviewAuthorsFromContent() {
-    const contentData = parseEditorJsonSafe();
-    return { contentData, authors: contentData && Array.isArray(contentData.authors) ? contentData.authors : [] };
-  }
-  function persistReviewAuthors(contentData) {
-    editor.value = JSON.stringify(contentData, null, 2);
-    try { updateEditorState(); } catch {}
-  }
-  function newReviewAuthorId() {
-    return 'author-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7);
-  }
-  function applyReviewAuthor(author) {
-    if (author) {
-      _model.authorId = author.id;
-      _model.author = author.name || '';
-      if (author.role) _model.role = author.role; else delete _model.role;
-    } else {
-      delete _model.authorId;
-    }
-    render();
-    commit();
-  }
-  function renderReviewAuthorPicker() {
-    const host = drawerBody.querySelector('[data-review-author-picker]');
-    if (!host || !_model) return;
-    const { authors } = reviewAuthorsFromContent();
-    const selected = _model.authorId ? authors.find((author) => author.id === _model.authorId) : null;
-    const options = ['<option value="">— Вручную, без карточки —</option>']
-      .concat(authors.map((author) => `<option value="${esc(author.id)}"${author.id === _model.authorId ? ' selected' : ''}>${esc(author.name || '(без имени)')}${author.active === false ? ' — скрыт' : ''}</option>`))
-      .join('');
-    host.innerHTML = `<label class="wys-meta-field"><span>Выбрать из команды</span><select data-review-author-select>${options}</select></label>` +
-      (selected
-        ? `<div class="wys-author-card">${selected.photoUrl ? `<img src="${esc(selected.photoUrl)}" alt="Фото ${esc(selected.name || 'автора')}">` : `<span class="wys-author-avatar" aria-hidden="true">${esc((selected.name || '?').charAt(0))}</span>`}<div class="wys-author-card-copy"><strong>${esc(selected.name || '')}</strong><span>${esc(selected.role || '')}</span></div><button type="button" class="btn btn-sm" data-review-author-edit>Изменить</button><button type="button" class="btn btn-sm" data-review-author-new aria-label="Создать нового автора">＋</button></div>`
-        : `<div class="wys-author-manual"><label class="wys-meta-field"><span>Имя автора</span><input data-review-author-name value="${esc(_model.author || '')}" placeholder="Имя и фамилия"></label><label class="wys-meta-field"><span>Роль / подпись</span><input data-review-author-role value="${esc(_model.role || '')}" placeholder="Редактор, автор, фотограф…"></label><button type="button" class="btn btn-sm" data-review-author-new>＋ Создать карточку автора</button></div>`);
-
-    host.querySelector('[data-review-author-select]')?.addEventListener('change', (event) => {
-      const author = authors.find((item) => item.id === event.target.value) || null;
-      applyReviewAuthor(author);
-      renderReviewDrawer();
-    });
-    host.querySelector('[data-review-author-name]')?.addEventListener('input', (event) => { _model.author = event.target.value; scheduleCommit(); });
-    host.querySelector('[data-review-author-role]')?.addEventListener('input', (event) => { _model.role = event.target.value; scheduleCommit(); });
-    host.querySelector('[data-review-author-edit]')?.addEventListener('click', () => openReviewAuthorEditor(selected));
-    host.querySelector('[data-review-author-new]')?.addEventListener('click', () => openReviewAuthorEditor(null));
-  }
-  function openReviewAuthorEditor(existing) {
-    const host = drawerBody.querySelector('[data-review-author-picker]');
-    if (!host) return;
-    const author = existing ? clone(existing) : { id: newReviewAuthorId(), name: '', role: '', bio: '', photoUrl: '', website: '', instagram: '', active: true };
-    const field = (label, key, placeholder = '') => `<label class="wys-meta-field"><span>${label}</span><input data-review-author-field="${key}" value="${esc(author[key] || '')}" placeholder="${placeholder}"></label>`;
-    host.innerHTML = `<div class="wys-author-editor"><div class="wys-author-editor-head"><strong>${existing ? 'Редактировать автора' : 'Новый автор'}</strong><button type="button" class="btn btn-sm" data-review-author-cancel>Отмена</button></div>` +
-      field('Имя', 'name', 'Имя автора') + field('Роль', 'role', 'Редактор / автор') +
-      `<label class="wys-meta-field"><span>Биография</span><textarea rows="4" data-review-author-field="bio" placeholder="Короткая биография">${esc(author.bio || '')}</textarea></label>` +
-      `<div class="wys-author-photo-row">${author.photoUrl ? `<img data-review-author-preview src="${esc(author.photoUrl)}" alt="">` : '<span data-review-author-preview class="wys-author-avatar"></span>'}<button type="button" class="btn btn-sm" data-review-author-upload>Загрузить фото</button></div>` +
-      field('URL фото', 'photoUrl', 'https://…') + field('Сайт', 'website', 'https://…') + field('Instagram', 'instagram', '@handle') +
-      `<label class="wys-meta-check"><input type="checkbox" data-review-author-active ${author.active !== false ? 'checked' : ''}><span>Показывать автора</span></label>` +
-      `<button type="button" class="btn btn-primary" data-review-author-save>Сохранить и выбрать автора</button></div>`;
-    host.querySelectorAll('[data-review-author-field]').forEach((input) => input.addEventListener('input', () => {
-      author[input.getAttribute('data-review-author-field')] = input.value;
-      if (input.getAttribute('data-review-author-field') === 'photoUrl') {
-        const preview = host.querySelector('[data-review-author-preview]');
-        if (preview && input.value) preview.outerHTML = `<img data-review-author-preview src="${esc(input.value)}" alt="">`;
-      }
-    }));
-    host.querySelector('[data-review-author-upload]')?.addEventListener('click', () => {
-      const fileInput = document.createElement('input');
-      fileInput.type = 'file'; fileInput.accept = 'image/*';
-      fileInput.onchange = async () => {
-        const file = fileInput.files && fileInput.files[0];
-        if (!file) return;
-        const button = host.querySelector('[data-review-author-upload]');
-        button.disabled = true; button.textContent = 'Загружаю…';
-        try {
-          author.photoUrl = await uploadImageReturnUrl(file);
-          const urlInput = host.querySelector('[data-review-author-field="photoUrl"]');
-          if (urlInput) urlInput.value = author.photoUrl;
-          const preview = host.querySelector('[data-review-author-preview]');
-          if (preview) preview.outerHTML = `<img data-review-author-preview src="${esc(author.photoUrl)}" alt="">`;
-        } catch (error) { alert('Не удалось загрузить фото: ' + getErrorMessage(error)); }
-        finally { button.disabled = false; button.textContent = 'Загрузить фото'; }
-      };
-      fileInput.click();
-    });
-    host.querySelector('[data-review-author-cancel]')?.addEventListener('click', renderReviewAuthorPicker);
-    host.querySelector('[data-review-author-save]')?.addEventListener('click', () => {
-      author.name = String(author.name || '').trim();
-      if (!author.name) { alert('Укажите имя автора.'); return; }
-      author.active = Boolean(host.querySelector('[data-review-author-active]')?.checked);
-      const { contentData } = reviewAuthorsFromContent();
-      if (!contentData) { alert('Не удалось прочитать контент.'); return; }
-      if (!Array.isArray(contentData.authors)) contentData.authors = [];
-      const index = contentData.authors.findIndex((item) => item.id === author.id);
-      if (index >= 0) contentData.authors[index] = author; else contentData.authors.push(author);
-      persistReviewAuthors(contentData);
-      applyReviewAuthor(author);
-      renderReviewDrawer();
     });
   }
   function updateDraftBadge() {
@@ -13937,8 +13401,8 @@ async function flushModernEditor() {
   });
 
   // ── commit / publish (same pattern as the article canvas) ─────────────────
-  function scheduleCommit() { _translationDirty = true; setSave('editing'); clearTimeout(_commitTimer); _commitTimer = setTimeout(commit, 450); }
-  function commit() { _translationDirty = true; if (!flushLocal()) return; _errorRetries = 0; armPublish(2600); setSave('saved'); pushHistory(); }
+  function scheduleCommit() { setSave('editing'); clearTimeout(_commitTimer); _commitTimer = setTimeout(commit, 450); }
+  function commit() { if (!flushLocal()) return; _errorRetries = 0; armPublish(2600); setSave('saved'); pushHistory(); }
   function flushLocal() {
     if (!_model) return false;
     const data = parseEditorJsonSafe();
@@ -13966,25 +13430,6 @@ async function flushModernEditor() {
     _publishing = true;
     setSave('publishing');
     try {
-      const sourceLang = visualLangSelect.value || DEFAULT_LANGUAGE;
-      const translatedFingerprint = JSON.stringify({
-        title: _model.title, subject: _model.subject, category: _model.category,
-        verdict: _model.verdict, content: _model.content, pros: _model.pros,
-        cons: _model.cons, meta: _model.meta, role: _model.role,
-      });
-      let syncResult = [];
-      if (_translationDirty) {
-        setSave('translating');
-        const contentData = parseEditorJsonSafe();
-        if (!contentData) throw new Error('Не удалось подготовить контент для перевода.');
-        const sourceEntries = getSectionArray(contentData, 'reviews', sourceLang, sourceLang !== DEFAULT_LANGUAGE);
-        const sourceReview = sourceEntries.find((entry) => Number(entry.id) === Number(_id)) || clone(_model);
-        syncResult = await translateEntryToAllLanguages(contentData, 'reviews', sourceLang, sourceReview, {
-          statusPrefix: `Перевожу обзор #${_id}`,
-        });
-        editor.value = JSON.stringify(contentData, null, 2);
-        try { updateEditorState(); } catch {}
-      }
       const res = await fetch(CONTENT_API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw }, body: editor.value });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.ok) throw new Error(data.error || ('VPS ' + res.status));
@@ -13992,21 +13437,6 @@ async function flushModernEditor() {
       try { localStorage.removeItem(DRAFT_KEY); } catch {}
       lastSyncedTime = new Date();
       try { updateLastSyncedBadge(); } catch {}
-      if (JSON.stringify({
-        title: _model.title, subject: _model.subject, category: _model.category,
-        verdict: _model.verdict, content: _model.content, pros: _model.pros,
-        cons: _model.cons, meta: _model.meta, role: _model.role,
-      }) === translatedFingerprint) _translationDirty = false;
-      if (syncResult.length || getLanguageSyncFailures(syncResult).length) {
-        showLanguageSyncReport({
-          selectedId: _id,
-          section: 'reviews',
-          sourceLang,
-          savedToServer: true,
-          syncResult,
-          actionLabel: 'Обзор и переводы опубликованы',
-        });
-      }
       setSave('published'); _errorRetries = 0;
     } catch (e) {
       _errorRetries += 1;
@@ -14020,7 +13450,7 @@ async function flushModernEditor() {
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && _model) publishSilently(); });
   function setSave(s) {
     if (!saveState) return;
-    const labels = { editing: 'Изменяю…', saved: 'Сохранено локально', translating: 'Перевожу на языки…', publishing: 'Публикую на сайт…', published: 'Опубликовано и переведено ✓', error: 'Ошибка публикации — повторяю…', 'error-final': 'Не удалось опубликовать (сохранено локально)', nopw: 'Сохранено локально (нет пароля для публикации)' };
+    const labels = { editing: 'Изменяю…', saved: 'Сохранено локально', publishing: 'Публикую на сайт…', published: 'Опубликовано ✓', error: 'Ошибка публикации — повторяю…', 'error-final': 'Не удалось опубликовать (сохранено локально)', nopw: 'Сохранено локально (нет пароля для публикации)' };
     saveState.textContent = labels[s] || labels.saved;
     saveState.className = 'wys-save-state ' + s;
   }
@@ -14049,8 +13479,6 @@ async function flushModernEditor() {
       ? `<div class="wys-review-blocks">${blocks.map((block, index) => renderReviewBlock(block, index)).join('')}</div>`
       : `<div class="wys-p wys-ce" contenteditable="true" data-wys="content-plain" data-empty="Текст обзора…" style="margin:16px 0">${esc(r.content || '').replace(/\n/g, '<br>')}</div>`;
 
-    h += renderReviewAuthorCard();
-
     h += '<div class="wys-review-proscons">';
     h += renderChipList('pros', r.pros || [], 'Плюсы', '+');
     h += renderChipList('cons', r.cons || [], 'Минусы', '−');
@@ -14059,47 +13487,14 @@ async function flushModernEditor() {
     h += '<div class="wys-review-meta-row">';
     h += `<span class="wys-ce wys-meta-item" contenteditable="true" data-wys="meta-plain" data-empty="Мета (напр. цена, сайт)">${esc(r.meta || '')}</span>`;
     h += '<span class="wys-meta-dot"></span>';
+    h += `<span class="wys-ce wys-meta-item" contenteditable="true" data-wys="author-plain" data-empty="Автор">${esc(r.author || '')}</span>`;
+    h += '<span class="wys-meta-dot"></span>';
     h += `<span class="wys-ce wys-meta-item" contenteditable="true" data-wys="date-plain" data-empty="Дата">${esc(r.date || '')}</span>`;
     h += '</div>';
 
     h += '</article>';
     canvas.innerHTML = h;
     applyEmptyStates();
-    updateReviewMetrics();
-  }
-
-  function renderReviewAuthorCard() {
-    const { authors } = reviewAuthorsFromContent();
-    const selected = _model.authorId ? authors.find((author) => author.id === _model.authorId) : null;
-    const name = selected?.name || _model.author || 'Добавить автора';
-    const role = selected?.role || _model.role || 'Выберите карточку или введите подпись вручную';
-    const portrait = selected?.photoUrl
-      ? `<img src="${esc(selected.photoUrl)}" alt="Фото ${esc(name)}">`
-      : `<span class="wys-review-author-avatar" aria-hidden="true">${esc(name.charAt(0) || '?')}</span>`;
-    return `<button type="button" class="wys-review-author-card" data-wys-act="author-card"><span class="wys-review-author-label">Автор обзора</span>${portrait}<span class="wys-review-author-copy"><strong>${esc(name)}</strong><small>${esc(role)}</small></span><span class="wys-review-author-edit">Изменить →</span></button>`;
-  }
-
-  function updateReviewMetrics() {
-    if (!_model) return;
-    // Metrics must stay read-only: opening a legacy text review should not
-    // silently convert its content before the editor explicitly adds a block.
-    const blocks = Array.isArray(_model.content) ? _model.content : [];
-    const values = [
-      _model.title, _model.subject, _model.verdict,
-      typeof _model.content === 'string' ? _model.content : '',
-      ...blocks.flatMap((block) => {
-        if (typeof block.content === 'string') return [block.content, block.caption];
-        if (Array.isArray(block.content)) return [block.caption];
-        if (Array.isArray(block.content?.items)) return block.content.items;
-        return [];
-      }),
-    ].filter(Boolean);
-    const words = values.join(' ').replace(/<[^>]+>/g, ' ').trim().split(/\s+/).filter(Boolean).length;
-    const visibleBlockCount = blocks.length || (typeof _model.content === 'string' && _model.content.trim() ? 1 : 0);
-    const countEl = document.getElementById('revBlockCount');
-    const wordsEl = document.getElementById('revWordCount');
-    if (countEl) countEl.textContent = `${visibleBlockCount} ${visibleBlockCount === 1 ? 'блок' : 'блоков'}`;
-    if (wordsEl) wordsEl.textContent = `${words} слов · ~${Math.max(1, Math.ceil(words / 180))} мин`;
   }
 
   function renderChipList(field, items, label, sign) {
@@ -14170,29 +13565,14 @@ async function flushModernEditor() {
     else if (field === 'block-checklist') { const block = ensureReviewBlocks()[Number(el.getAttribute('data-bi'))]; if (block) block.content = { items: val.split('\n').map((item) => item.trim()).filter(Boolean) }; }
     else if (field === 'pros-item') { const ci = Number(el.getAttribute('data-ci')); if (_model.pros) _model.pros[ci] = val; }
     else if (field === 'cons-item') { const ci = Number(el.getAttribute('data-ci')); if (_model.cons) _model.cons[ci] = val; }
-    updateReviewMetrics();
     scheduleCommit();
   });
 
   canvas.addEventListener('change', (e) => {
-    if (!_model) return;
-    const featured = e.target.closest('[data-wys-act="featured"]');
-    if (featured) {
-      _model.featured = featured.checked;
-      commit();
-      return;
-    }
-    const typeSelect = e.target.closest('[data-wys="block-type"]');
-    if (typeSelect) {
-      const index = Number(typeSelect.getAttribute('data-bi'));
-      const blocks = ensureReviewBlocks();
-      const previous = blocks[index];
-      const next = newReviewBlock(typeSelect.value);
-      if (typeof previous?.content === 'string' && ['text', 'header', 'quote', 'link'].includes(typeSelect.value)) next.content = previous.content;
-      if (previous?.caption && ['image', 'gallery', 'video'].includes(typeSelect.value)) next.caption = previous.caption;
-      blocks[index] = next;
-      render(); commit();
-    }
+    const el = e.target.closest('[data-wys-act="featured"]');
+    if (!el || !_model) return;
+    _model.featured = el.checked;
+    commit();
   });
 
   canvas.addEventListener('click', (e) => {
@@ -14201,7 +13581,13 @@ async function flushModernEditor() {
     const a = act.getAttribute('data-wys-act');
 
     if (a === 'hero') return window._wysOpenImagePicker?.((url) => { _model.imageUrl = url; render(); commit(); });
-    if (a === 'author-card') { renderReviewDrawer(); drawer.hidden = false; return; }
+    if (a === 'block-img-upload') {
+      const bi = Number(act.getAttribute('data-bi'));
+      return window._wysOpenImagePicker?.((url) => {
+        const blocks = ensureReviewBlocks();
+        if (blocks[bi]) { blocks[bi].content = url; render(); commit(); }
+      });
+    }
     if (a === 'pros-add') { _model.pros = _model.pros || []; _model.pros.push(''); render(); commit(); return; }
     if (a === 'cons-add') { _model.cons = _model.cons || []; _model.cons.push(''); render(); commit(); return; }
     if (a === 'pros-del') { const ci = Number(act.getAttribute('data-ci')); _model.pros?.splice(ci, 1); render(); commit(); return; }
@@ -14214,32 +13600,6 @@ async function flushModernEditor() {
       [blocks[from], blocks[to]] = [blocks[to], blocks[from]];
       render(); commit();
       canvas.querySelector(`[data-review-drag="${to}"]`)?.focus();
-      return;
-    }
-    if (a === 'block-add-after') {
-      const index = Number(act.getAttribute('data-bi'));
-      ensureReviewBlocks().splice(index + 1, 0, newReviewBlock('text'));
-      render(); commit();
-      canvas.querySelector(`[data-review-block="${index + 1}"] [data-wys="block-content"]`)?.focus();
-      return;
-    }
-    if (a === 'block-copy') {
-      const index = Number(act.getAttribute('data-bi'));
-      const blocks = ensureReviewBlocks();
-      if (!blocks[index]) return;
-      blocks.splice(index + 1, 0, clone(blocks[index]));
-      render(); commit();
-      canvas.querySelector(`[data-review-drag="${index + 1}"]`)?.focus();
-      return;
-    }
-    if (a === 'block-pick-media') {
-      const index = Number(act.getAttribute('data-bi'));
-      window._wysOpenImagePicker?.((url) => { const block = ensureReviewBlocks()[index]; if (!block) return; block.content = url; render(); commit(); });
-      return;
-    }
-    if (a === 'block-pick-gallery') {
-      const index = Number(act.getAttribute('data-bi'));
-      window._wysOpenImagePicker?.((urls) => { const block = ensureReviewBlocks()[index]; if (!block) return; block.content = Array.from(new Set([...(Array.isArray(block.content) ? block.content : []), ...urls])); render(); commit(); }, { multi: true });
       return;
     }
     if (a === 'block-del') { ensureReviewBlocks().splice(Number(act.getAttribute('data-bi')), 1); render(); commit(); return; }
@@ -15310,109 +14670,6 @@ function showcaseEnquiryCard(enquiry) {
     </article>`;
 }
 
-let showcaseDailyWorksCache = [];
-let showcaseDailyMode = 'manual';
-
-function showcaseLocalDate() {
-  const now = new Date();
-  return [now.getFullYear(), String(now.getMonth() + 1).padStart(2, '0'), String(now.getDate()).padStart(2, '0')].join('-');
-}
-
-function showcaseDailyDate() {
-  return byId('showcaseDailyDate')?.value || showcaseLocalDate();
-}
-
-function renderShowcaseDailyWorks(works, selectedIds = []) {
-  const box = byId('showcaseDailyWorks');
-  if (!box) return;
-  const selected = new Set(selectedIds);
-  const published = works.filter((work) => work.status === 'Published' && (work.images || []).some((image) => image?.url));
-  showcaseDailyWorksCache = published;
-  box.innerHTML = published.length ? published.map((work) => {
-    const photo = work.images?.[0]?.url || '';
-    return `<label style="display:flex;gap:10px;align-items:center;padding:9px;border:1px solid var(--line);border-radius:7px;background:var(--paper);cursor:pointer">
-      <input type="checkbox" data-showcase-daily-work="${escapeHtml(work.id)}" ${selected.has(work.id) ? 'checked' : ''}>
-      ${photo ? `<img src="${escapeHtml(photo)}" alt="" style="width:42px;height:52px;object-fit:cover;flex:none">` : ''}
-      <span style="min-width:0"><strong style="display:block;font-size:13px;line-height:1.25">${escapeHtml(work.title || '—')}</strong><span class="card-desc">${escapeHtml(work.author || '')}</span></span>
-    </label>`;
-  }).join('') : '<p class="card-desc">Нет опубликованных работ с изображением.</p>';
-}
-
-function renderShowcaseDailyArchive(archive) {
-  const box = byId('showcaseDailyArchive');
-  if (!box) return;
-  const rows = (archive || []).slice(0, 12);
-  box.innerHTML = rows.length
-    ? `<p class="card-desc" style="margin-bottom:8px">Архив дней · ${rows.length}</p><div style="display:flex;gap:6px;flex-wrap:wrap">${rows.map((entry) => `<button class="btn" type="button" data-showcase-daily-date="${escapeHtml(entry.date || '')}">${escapeHtml(entry.date || '—')} · ${(entry.works || []).length} работ</button>`).join('')}</div>`
-    : '<p class="card-desc">Архив пока пуст — он создастся после первого показа дня.</p>';
-}
-
-async function loadShowcaseDaily(date = showcaseDailyDate()) {
-  const status = byId('showcaseDailyStatus');
-  const token = showcaseToken();
-  if (!status) return;
-  if (!token) { status.textContent = 'Нет ключа витрины — войдите заново как админ.'; return; }
-  status.textContent = 'Загрузка дня…';
-  try {
-    const [dailyRes, worksRes] = await Promise.all([
-      fetch(`${SHOWCASE_API}/daily?date=${encodeURIComponent(date)}`, { cache: 'no-store' }),
-      fetch(`${SHOWCASE_API}/works?status=all`, { headers: { 'X-Showcase-Token': token }, cache: 'no-store' }),
-    ]);
-    if (!dailyRes.ok || !worksRes.ok) throw new Error('сервер ответил с ошибкой');
-    const dailyData = await dailyRes.json();
-    const worksData = await worksRes.json();
-    const archiveRes = await fetch(`${SHOWCASE_API}/daily/archive`, { cache: 'no-store' });
-    if (!archiveRes.ok) throw new Error('архив не загрузился');
-    const archiveData = await archiveRes.json();
-    const daily = dailyData.daily || {};
-    showcaseDailyMode = daily.mode === 'automatic' ? 'automatic' : 'manual';
-    byId('showcaseDailyDate').value = daily.date || date;
-    byId('showcaseDailyTitle').value = daily.title || '';
-    byId('showcaseDailyDescription').value = daily.description || '';
-    renderShowcaseDailyWorks(worksData.works || [], (daily.works || []).map((work) => work.id));
-    renderShowcaseDailyArchive(archiveData.archive || []);
-    status.textContent = `${daily.mode === 'manual' ? 'Редакционный день' : 'Автоматический день'} · ${(daily.works || []).length} работ`;
-  } catch (error) {
-    status.textContent = `Не удалось загрузить: ${error.message}`;
-  }
-}
-
-async function saveShowcaseDaily(mode = 'manual') {
-  const token = showcaseToken();
-  const date = showcaseDailyDate();
-  const status = byId('showcaseDailyStatus');
-  if (!token || !date) return;
-  const selectedIds = mode === 'automatic'
-    ? []
-    : [...document.querySelectorAll('[data-showcase-daily-work]:checked')].map((input) => input.dataset.showcaseDailyWork);
-  if (mode !== 'automatic' && selectedIds.length > 4) {
-    if (status) status.textContent = 'Можно выбрать не больше четырёх работ.';
-    return;
-  }
-  if (status) status.textContent = 'Сохраняю…';
-  try {
-    const res = await fetch(`${SHOWCASE_API}/daily/${encodeURIComponent(date)}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json', 'X-Showcase-Token': token },
-      body: JSON.stringify({
-        mode,
-        workIds: selectedIds,
-        title: byId('showcaseDailyTitle')?.value || '',
-        description: byId('showcaseDailyDescription')?.value || '',
-      }),
-    });
-    const result = await res.json();
-    if (!res.ok || !result.ok) throw new Error(result.error || `сервер ответил ${res.status}`);
-    const daily = result.daily || {};
-    renderShowcaseDailyWorks(showcaseDailyWorksCache, (daily.works || []).map((work) => work.id));
-    if (status) status.textContent = `${daily.mode === 'manual' ? 'Редакционный день' : 'Автоматический день'} сохранён · ${(daily.works || []).length} работ`;
-    const archiveRes = await fetch(`${SHOWCASE_API}/daily/archive`, { cache: 'no-store' });
-    if (archiveRes.ok) renderShowcaseDailyArchive((await archiveRes.json()).archive || []);
-  } catch (error) {
-    if (status) status.textContent = `Не удалось сохранить: ${error.message}`;
-  }
-}
-
 async function loadShowcaseQueue() {
   const box = byId('showcaseQueue');
   const status = byId('showcaseStatus');
@@ -15469,7 +14726,7 @@ async function loadShowcaseEnquiries() {
 }
 
 async function loadShowcaseAdmin() {
-  await Promise.all([loadShowcaseQueue(), loadShowcaseEnquiries(), loadShowcaseDaily()]);
+  await Promise.all([loadShowcaseQueue(), loadShowcaseEnquiries()]);
 }
 
 async function showcaseSetStatus(id, next) {
@@ -15510,20 +14767,6 @@ document.addEventListener('click', (event) => {
   const enquiryBtn = event.target.closest('[data-showcase-enquiry-act]');
   if (enquiryBtn) { showcaseSetEnquiryStatus(enquiryBtn.dataset.showcaseEnquiryId, enquiryBtn.dataset.showcaseEnquiryAct); return; }
   if (event.target.closest('#showcaseReloadBtn')) loadShowcaseAdmin();
-  if (event.target.closest('#showcaseDailyLoadBtn')) loadShowcaseDaily();
-  if (event.target.closest('#showcaseDailyAutoBtn')) {
-    showcaseDailyMode = 'automatic';
-    document.querySelectorAll('[data-showcase-daily-work]').forEach((input) => { input.checked = false; });
-    const status = byId('showcaseDailyStatus');
-    if (status) status.textContent = 'Автоматический режим выбран — нажмите «Сохранить день». Работы подберутся по дате.';
-  }
-  if (event.target.closest('#showcaseDailySaveBtn')) saveShowcaseDaily(showcaseDailyMode);
-  const dayButton = event.target.closest('[data-showcase-daily-date]');
-  if (dayButton) loadShowcaseDaily(dayButton.dataset.showcaseDailyDate);
   const tab = event.target.closest('.tab-btn[data-tab="showcase"]');
   if (tab) loadShowcaseAdmin();
-});
-
-document.addEventListener('change', (event) => {
-  if (event.target.closest?.('[data-showcase-daily-work]')) showcaseDailyMode = 'manual';
 });

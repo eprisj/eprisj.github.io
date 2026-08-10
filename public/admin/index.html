@@ -295,7 +295,7 @@
                 <div>
                   <span class="homepage-admin-kicker">Главная страница</span>
                   <h2 class="card-title">Галерея EPRIS</h2>
-                  <p class="card-desc">Здесь задаётся порядок карточек на главной. Первая карточка — главный featured-материал. Кнопка «Редактировать» откроет фото, заголовок, описание и переводы.</p>
+                  <p class="card-desc">Здесь собирается недельная композиция главной: слева №3, в центре №1, справа №2. Выберите материалы, проверьте хвосты и только затем публикуйте.</p>
                 </div>
                 <div class="homepage-admin-actions">
                   <button id="homepageAddBtn" class="btn btn-primary" type="button">＋ Новая карточка</button>
@@ -305,9 +305,57 @@
                   <button id="homepagePublishBtn" class="btn btn-primary" type="button">Опубликовать</button>
                 </div>
               </div>
+              <div class="homepage-admin-status" id="homepageAdminStatus" aria-live="polite">
+                <div class="homepage-admin-status-main">
+                  <span class="homepage-status-dot" data-state="idle" aria-hidden="true"></span>
+                  <div>
+                    <strong id="homepageStatusTitle">Черновик главной</strong>
+                    <span id="homepageStatusDetail">Выберите три материала для недельной композиции.</span>
+                  </div>
+                </div>
+                <div class="homepage-admin-status-meta">
+                  <span id="homepageSlotCount">0 / 3 слота</span>
+                  <span id="homepageLastPublished">Не опубликовано</span>
+                </div>
+              </div>
+              <div class="homepage-composer-grid">
+                <section class="card homepage-composer" aria-labelledby="homepageComposerTitle">
+                  <div class="homepage-section-head">
+                    <div>
+                      <span class="homepage-admin-kicker">Редакционная расстановка</span>
+                      <h3 id="homepageComposerTitle" class="card-title">Pics of the week</h3>
+                      <p class="card-desc">Центр — главный материал. На телефоне порядок станет: центр → справа → слева.</p>
+                    </div>
+                    <span class="homepage-preview-badge">Live layout</span>
+                  </div>
+                  <div id="homepageComposerPreview" class="homepage-composer-preview" aria-live="polite"></div>
+                  <div id="homepageComposerAudit" class="homepage-composer-audit" aria-live="polite"></div>
+                </section>
+                <aside class="card homepage-composer-help">
+                  <span class="homepage-admin-kicker">Проверка перед публикацией</span>
+                  <h3 class="card-title">Хвосты под контролем</h3>
+                  <ul class="homepage-check-list">
+                    <li>ровно три слота и один центр;</li>
+                    <li>у каждой карточки фото, заголовок и ссылка;</li>
+                    <li>нет повторов и скрытых материалов;</li>
+                    <li>старые записи сохраняют прежнее поведение.</li>
+                  </ul>
+                </aside>
+              </div>
               <div id="homepageGalleryMeta" class="homepage-gallery-meta" aria-live="polite"></div>
               <div id="homepageMissingArticles" class="homepage-missing" aria-live="polite"></div>
               <div id="homepageGalleryList" class="homepage-gallery-list"></div>
+              <section class="card homepage-archive-admin" aria-labelledby="homepageArchiveTitle">
+                <div class="homepage-section-head">
+                  <div>
+                    <span class="homepage-admin-kicker">История подборок</span>
+                    <h3 id="homepageArchiveTitle" class="card-title">Daily Picks archive</h3>
+                    <p class="card-desc">Каждая успешная публикация сохраняет снимок трёх карточек. Следующая неделя не стирает предыдущую.</p>
+                  </div>
+                  <span id="homepageArchiveCount" class="homepage-preview-badge">0 выпусков</span>
+                </div>
+                <div id="homepageArchiveList" class="homepage-archive-list" aria-live="polite"></div>
+              </section>
             </div>
           </section>
 
@@ -399,9 +447,8 @@
                     Живой редактор
                   </button>
                   <button id="addEntryBtn" class="btn btn-sm" type="button">+ Добавить</button>
-                  <button id="moveEntryUpBtn" class="btn btn-sm" type="button" title="Переместить выше. Порядок в разделах «Статьи» и «Галерея» задаётся вручную и общий для всех языков; первая запись Галереи становится featured">↑</button>
+                  <button id="moveEntryUpBtn" class="btn btn-sm" type="button" title="Переместить выше (влияет на порядок на сайте — для Галереи первая запись становится featured)">↑</button>
                   <button id="moveEntryDownBtn" class="btn btn-sm" type="button" title="Переместить ниже">↓</button>
-                  <button id="sortByDateBtn" class="btn btn-sm" type="button" title="Сбросить ручной порядок раздела: свежие сверху">По дате</button>
                   <button id="duplicateEntryBtn" class="btn btn-sm" type="button">Дублировать</button>
                   <button id="deleteEntryBtn" class="btn btn-sm btn-danger-text" type="button">Удалить</button>
                   <span class="toolbar-sync-panel" aria-label="Синхронизация языков">
@@ -447,9 +494,6 @@
                     <button id="wysUndoBtn" class="btn btn-sm" type="button" title="Отменить (Ctrl+Z)" disabled>↺</button>
                     <button id="wysRedoBtn" class="btn btn-sm" type="button" title="Повторить (Ctrl+Shift+Z)" disabled>↻</button>
                     <span class="toolbar-sep"></span>
-                    <button id="wysPreflightBtn" class="btn btn-sm wys-preflight-btn" type="button" title="Проверить статью перед публикацией">✓ Проверка</button>
-                    <button id="wysVersionsBtn" class="btn btn-sm" type="button" title="История версий этой статьи">↺ Версии</button>
-                    <span class="toolbar-sep"></span>
                     <button id="wysMetaBtn" class="btn btn-sm" type="button" title="Метаданные">⚙ Мета</button>
                     <button id="wysDeviceBtn" class="btn btn-sm" type="button" title="Мобильный/десктоп">📱</button>
                     <button id="wysCloseBtn" class="btn btn-sm" type="button" title="Классический редактор">✕ Классика</button>
@@ -489,7 +533,7 @@
                 </div>
                 <div class="wys-scroll">
                   <div class="review-block-toolbar" role="toolbar" aria-label="Добавить блок в обзор">
-                    <div class="review-block-toolbar-label"><span class="review-block-toolbar-kicker">Содержание</span><strong>Добавить блок</strong><span class="review-block-toolbar-metrics"><span id="revBlockCount">0 блоков</span><span id="revWordCount">0 слов</span></span></div>
+                    <div class="review-block-toolbar-label"><span class="review-block-toolbar-kicker">Содержание</span><strong>Добавить блок</strong></div>
                     <div class="review-block-toolbar-group" aria-label="Текстовые блоки">
                       <button type="button" data-rev-add="text"><b>¶</b>Текст</button>
                       <button type="button" data-rev-add="header"><b>H</b>Заголовок</button>
@@ -734,27 +778,6 @@
                   <p class="card-desc">Модерация работ из «Submit work» и прием заявок в EPRIS Bureau.</p>
                 </div>
                 <button id="showcaseReloadBtn" class="btn btn-primary" type="button">Обновить</button>
-              </div>
-              <div style="margin-top:18px;padding:16px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.52)">
-                <div class="monitor-head" style="align-items:flex-start">
-                  <div>
-                    <h3 class="card-title" style="font-size:16px;margin-bottom:4px">Daily showcase</h3>
-                    <p class="card-desc">Выберите до четырёх опубликованных работ для превью на главной. Если ничего не выбрать, день соберётся автоматически.</p>
-                  </div>
-                  <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end">
-                    <label class="card-desc" style="display:flex;align-items:center;gap:6px">Дата <input id="showcaseDailyDate" type="date" style="min-height:36px;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--paper)"></label>
-                    <button id="showcaseDailyLoadBtn" class="btn" type="button">Загрузить</button>
-                    <button id="showcaseDailyAutoBtn" class="btn" type="button">Собрать автоматически</button>
-                    <button id="showcaseDailySaveBtn" class="btn btn-primary" type="button">Сохранить день</button>
-                  </div>
-                </div>
-                <div style="display:grid;gap:10px;margin-top:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
-                  <label class="card-desc">Заголовок<input id="showcaseDailyTitle" type="text" maxlength="120" placeholder="Daily selection" style="display:block;width:100%;margin-top:5px;min-height:38px;padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--paper)"></label>
-                  <label class="card-desc">Описание<input id="showcaseDailyDescription" type="text" maxlength="320" placeholder="A changing shelf of visual references…" style="display:block;width:100%;margin-top:5px;min-height:38px;padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--paper)"></label>
-                </div>
-                <p id="showcaseDailyStatus" class="card-desc" style="margin:12px 0 0"></p>
-                <div id="showcaseDailyWorks" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin-top:12px"></div>
-                <div id="showcaseDailyArchive" style="margin-top:14px"></div>
               </div>
               <div class="monitor-grid" style="margin-top:16px">
                 <div>
@@ -1528,7 +1551,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.30" type="module"></script>
+    <script src="./app.js?v=4.31" type="module"></script>
     <script src="../brandbook/data.js?v=1"></script>
     <script src="./brandbook.js?v=3"></script>
     <script>

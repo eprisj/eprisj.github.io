@@ -18,15 +18,29 @@ export interface Item {
   publishAt?: string;
   /** Server-stamped on every /content/entity save — see mergeLocalizedArray. */
   updatedAt?: string;
-  /** Manual display position set in the admin (1 = first). Unset entries keep the default order, after the ordered ones. */
-  order?: number;
-  /**
-   * Явная привязка карточки к статье. Раньше связь угадывалась по совпадению
-   * заголовков — и рвалась каждый раз, когда статью переименовывали: кнопка
-   * «читать статью» молча исчезала, а перевод переставал наследоваться.
-   * Заголовок — не идентификатор; id переживает и переименование, и перевод.
-   */
-  articleId?: number;
+  /** Optional editorial placement on the homepage's three-card weekly grid. */
+  homeSlot?: 'left' | 'center' | 'right';
+  /** Optional short label shown below a homepage card (for example "week 32"). */
+  homeLabel?: string;
+}
+
+/** A frozen snapshot of one published "Pics of the week" composition. */
+export interface HomepageArchiveCard {
+  id: number;
+  title: string;
+  subtitle?: string;
+  description?: string;
+  imageSeed?: string;
+  imageUrl?: string;
+}
+
+export interface HomepageArchiveEntry {
+  id: string;
+  label?: string;
+  publishedAt: string;
+  /** Stable card-id signature prevents duplicate entries on repeated publish. */
+  signature?: string;
+  cards: HomepageArchiveCard[];
 }
 
 export interface ContentBlock {
@@ -79,8 +93,6 @@ export interface Article {
   tags: string[];
   imageSeed: string;
   imageUrl?: string;
-  /** Keep the cover asset for cards/SEO, but allow the article reader to hide the hero image. */
-  showCover?: boolean;
   content: ContentBlock[];
   /** Hidden from the public site until unset. */
   draft?: boolean;
@@ -88,8 +100,6 @@ export interface Article {
   publishAt?: string;
   /** Server-stamped on every /content/entity save — see mergeLocalizedArray. */
   updatedAt?: string;
-  /** Manual display position set in the admin (1 = first). Unset entries stay in date order, after the ordered ones. */
-  order?: number;
 }
 
 export interface Review {
@@ -100,10 +110,6 @@ export interface Review {
   /** Reviews use the same block model as articles; legacy plain text remains supported. */
   content: string | ContentBlock[];
   author: string;
-  /** Optional link to the shared editorial author directory. */
-  authorId?: string;
-  /** Localized byline role, preferred over the global author-card role. */
-  role?: string;
   category?: string;
   imageUrl?: string;
   verdict?: string;
@@ -113,9 +119,6 @@ export interface Review {
   link?: string;
   date?: string;
   featured?: boolean;
-  /** Explicit homepage placement, separate from the featured review on /reviews. */
-  homeFeatured?: boolean;
-  homeOrder?: number;
   /** Hidden from the public site until unset. */
   draft?: boolean;
   /** ISO datetime; hidden from the public site until this moment passes. */
@@ -276,6 +279,7 @@ export interface SiteContent {
   visibility?: SiteVisibility;
   translations: Record<string, Record<string, string>>;
   items: Item[];
+  homepageArchive?: HomepageArchiveEntry[];
   articles: Article[];
   reviews: Review[];
   libraryItems: LibraryItem[];
@@ -288,43 +292,6 @@ export interface SiteContent {
 }
 
 const content = rawContent as SiteContent;
-
-// Свежие статьи сверху. Порядок массива в документе ручной — он зависит от
-// того, куда админка вставила запись, и на дату не смотрит.
-//
-// Сортируем ИМЕННО базовые записи, до наложения переводов: в переводах дата
-// записана словами на своём языке ("14 березня 2026 р"), Date.parse её не
-// понимает, и половина ленты уезжала в конец. Серверный updatedAt надёжнее
-// редакционной даты: после сохранения новой статьи он помечает её как свежую,
-// даже если автор оставил старую дату публикации. Базовые даты приходят в
-// двух видах ("Jul 24, 2026" и "July 18, 2026") — оба разбираются. Порядок
-// после merge сохраняется: mergeLocalizedArray проходит по базовому массиву.
-const entryTime = (value?: string): number => {
-  const parsed = value ? Date.parse(value) : NaN;
-  return Number.isNaN(parsed) ? 0 : parsed;
-};
-
-const newestFirst = <T extends { date?: string; updatedAt?: string }>(list: T[]): T[] =>
-  [...list].sort((a, b) => {
-    const aTime = entryTime(a.updatedAt) || entryTime(a.date);
-    const bTime = entryTime(b.updatedAt) || entryTime(b.date);
-    return bTime - aTime;
-  });
-
-// Ручной порядок из админки. Кнопки ↑/↓ проставляют записям числовой `order`
-// (1 = первая), и он перебивает порядок по умолчанию: дату у статей и порядок
-// массива у Галереи. Записи без `order` остаются как были, но уходят ПОСЛЕ
-// расставленных вручную — иначе новая статья без номера втискивалась бы в
-// середину чужой раскладки. Сортируем базовые записи, до наложения переводов:
-// `order` живёт только в базе, mergeLocalizedArray идёт по базовому массиву.
-const entryOrder = (value?: number): number =>
-  typeof value === 'number' && Number.isFinite(value) ? value : Number.POSITIVE_INFINITY;
-
-const byManualOrder = <T extends { order?: number }>(list: T[]): T[] => {
-  if (!list.some((entry) => entryOrder(entry.order) !== Number.POSITIVE_INFINITY)) return list;
-  // Array.prototype.sort стабильна — записи без `order` сохраняют свой порядок.
-  return [...list].sort((a, b) => entryOrder(a.order) - entryOrder(b.order));
-};
 
 // ── Live content layer (VPS is the source of truth) ──────────────────────────
 // The admin saves content to the VPS API, and the public site fetches it live
@@ -512,8 +479,8 @@ function hasLocalizedPayload(entry: unknown): boolean {
 // text fields are overlaid from the localized copy. These fields are structure/
 // media/state/links — never translated prose — so they always come from base.
 const BASE_AUTHORITATIVE_FIELDS = new Set([
-  'id', 'imageSeed', 'imageUrl', 'showCover', 'authorId', 'draft', 'publishAt', 'updatedAt',
-  'url', 'link', 'rating', 'featured', 'homeFeatured', 'homeOrder', 'coordinates',
+  'id', 'imageSeed', 'imageUrl', 'authorId', 'draft', 'publishAt', 'updatedAt',
+  'url', 'link', 'rating', 'featured', 'coordinates',
 ]);
 
 // Content-block types whose `content` field is translatable prose (a string).
@@ -642,43 +609,6 @@ function mergeLocalizedItems<T extends { id: number }>(value: T[] | undefined, f
   return mergeLocalizedArray(value, fallback);
 }
 
-// ── Gallery card ↔ Article ───────────────────────────────────────────────────
-// Каждая карточка Галереи — обложка своей статьи: заголовок, категория и
-// описание у них совпадают слово в слово. Раньше этот текст лежал в карточке
-// отдельной копией, да ещё и переведённой на шесть языков, — шестьдесят
-// записей, целиком выводимых из статьи. Копии расходились (карточка без
-// перевода показывала английский заголовок посреди русской ленты), и на каждую
-// новую карточку тратился внешний переводчик.
-//
-// Теперь связь считается ОДИН раз в базовом языке — только там заголовки
-// совпадают надёжно, — и дальше карточка берёт текст из своей статьи на нужном
-// языке. Собственный текст карточки (если редактор его вписал и перевёл) главнее
-// унаследованного: пустое поле наследует, заполненное — нет.
-const galleryBaseTitle = (value?: string): string => (value || '').split(':')[0].trim().toLowerCase();
-
-/** itemId → articleId, посчитано по базовому языку. */
-export function getGalleryArticleLinks(): Map<number, number> {
-  const c = src();
-  const links = new Map<number, number>();
-  const articleIds = new Set((c.articles || []).map((a) => a.id));
-  for (const item of c.items || []) {
-    // Явная привязка — единственная, которая переживает переименование статьи.
-    if (typeof item.articleId === 'number' && articleIds.has(item.articleId)) {
-      links.set(item.id, item.articleId);
-      continue;
-    }
-    const title = (item.title || '').trim();
-    if (!title) continue;
-    const exact = (c.articles || []).find((a) => a.title?.trim() === title);
-    if (exact) { links.set(item.id, exact.id); continue; }
-    const base = galleryBaseTitle(title);
-    if (base.length < 4) continue;
-    const loose = (c.articles || []).find((a) => a.title && galleryBaseTitle(a.title) === base);
-    if (loose) links.set(item.id, loose.id);
-  }
-  return links;
-}
-
 export function getAvailableLanguages(): string[] {
   const allLangs = Object.keys(src().translations);
   if (!allLangs.includes(DEFAULT_LANGUAGE)) {
@@ -721,15 +651,7 @@ export function getContentForLanguage(lang: string): LanguageContent {
   // preview keeps everything so stubs remain visible for editing.
   const liveBase = <T,>(arr: T[]): T[] => isPreview() ? arr : arr.filter((e) => !isPlaceholderEntity(e));
 
-  // The newest published article is the public front-page lead. Manual order
-  // still controls the rest of the archive, but it must never strand a fresh
-  // article below an older curated entry.
-  const articleBaseByOrder = byManualOrder(newestFirst(liveBase(c.articles)));
-  const newestArticle = newestFirst(liveBase(c.articles))[0];
-  const articleBase = newestArticle
-    ? [newestArticle, ...articleBaseByOrder.filter((entry) => entry.id !== newestArticle.id)]
-    : articleBaseByOrder;
-  const articles = mergeLocalizedArray(bucket.articles, articleBase);
+  const articles = mergeLocalizedArray(bucket.articles, liveBase(c.articles));
   // Reviews hit the same recycled-id trap the Gallery did: every locale still
   // carries a translation of a deleted restaurant review on id 1, so readers of
   // UA/RU/DE opened "Симфонія смаків / Ресторан «Олеа», Лімасол" sitting on top
@@ -738,31 +660,11 @@ export function getContentForLanguage(lang: string): LanguageContent {
   // screens for, so reviews get the same guard: an untrustworthy bucket falls
   // back to the base language instead of mixing two different reviews together.
   const reviews = mergeLocalizedItems(bucket.reviews, liveBase(c.reviews));
-  const items = mergeLocalizedItems(bucket.items, byManualOrder(liveBase(c.items)));
+  const items = mergeLocalizedItems(bucket.items, liveBase(c.items));
   const libraryItems = mergeLocalizedArray(bucket.libraryItems, liveBase(c.libraryItems));
 
   const liveArticles = isPreview() ? articles : articles.filter((entry) => isEntityLive(entry) && isEntityVisible('articles', entry.id));
-  const mergedItems = items.filter((entry) => isPreview() || (isEntityLive(entry) && isEntityVisible('items', entry.id)));
-
-  // Карточка без собственного перевода на этот язык берёт текст из своей статьи
-  // — та переведена и так. Базовый язык не трогаем: там текст карточки и есть
-  // оригинал. Свой перевод карточки, если он сохранён, остаётся главнее.
-  const translatedItemIds = new Set((bucket.items || []).map((entry) => entry.id));
-  const liveItems = lang === DEFAULT_LANGUAGE
-    ? mergedItems
-    : mergedItems.map((item) => {
-        if (translatedItemIds.has(item.id)) return item;
-        const articleId = getGalleryArticleLinks().get(item.id);
-        if (articleId === undefined) return item;
-        const article = liveArticles.find((a) => a.id === articleId);
-        if (!article) return item;
-        return {
-          ...item,
-          title: article.title || item.title,
-          subtitle: article.category || item.subtitle,
-          description: article.excerpt || item.description
-        };
-      });
+  const liveItems = isPreview() ? items : items.filter((entry) => isEntityLive(entry) && isEntityVisible('items', entry.id));
 
   // The homepage Gallery is a hand-curated collection, separate from Articles
   // — publishing a new article never added it there, so it silently never
@@ -775,7 +677,6 @@ export function getContentForLanguage(lang: string): LanguageContent {
     .filter((a) => !galleryTitles.has((a.title || '').trim().toLowerCase()))
     .map((a) => ({
       id: 900000 + a.id,
-      articleId: a.id,
       title: a.title,
       subtitle: a.category || '',
       fig: `FIG. ${String(a.id).padStart(2, '0')}`,
@@ -784,32 +685,8 @@ export function getContentForLanguage(lang: string): LanguageContent {
       imageUrl: a.imageUrl,
     }));
 
-  // Always lead the homepage with the newest article. If the editor already
-  // created a matching Gallery card, move that card; otherwise use the
-  // generated article card above. This keeps the homepage fresh without
-  // disturbing the curated order of everything that follows it.
-  const newestArticleId = newestArticle?.id;
-  const galleryArticleLinks = getGalleryArticleLinks();
-  const existingNewestItemId = newestArticleId === undefined
-    ? undefined
-    : [...galleryArticleLinks.entries()].find(([, articleId]) => articleId === newestArticleId)?.[0];
-  const existingNewestItem = existingNewestItemId === undefined
-    ? undefined
-    : liveItems.find((item) => item.id === existingNewestItemId);
-  const generatedNewestItem = newestArticleId === undefined
-    ? undefined
-    : articleGalleryItems.find((item) => item.articleId === newestArticleId);
-  const homepageLead = existingNewestItem || generatedNewestItem;
-  const homepageItems = homepageLead
-    ? [
-        homepageLead,
-        ...liveItems.filter((item) => item.id !== homepageLead.id),
-        ...articleGalleryItems.filter((item) => item.id !== homepageLead.id),
-      ]
-    : [...liveItems, ...articleGalleryItems];
-
   return {
-    items: homepageItems,
+    items: [...liveItems, ...articleGalleryItems],
     articles: liveArticles,
     reviews: isPreview() ? reviews : reviews.filter((entry) => isEntityLive(entry) && isEntityVisible('reviews', entry.id)),
     libraryItems: isPreview() ? libraryItems : libraryItems.filter(isEntityLive)
@@ -870,6 +747,15 @@ export function getTheme(): SiteTheme {
 
 export function getSiteSettings(): SiteSettings {
   return src().site || {};
+}
+
+/** Published weekly homepage snapshots, newest first. */
+export function getHomepageArchive(): HomepageArchiveEntry[] {
+  const archive = Array.isArray(src().homepageArchive) ? src().homepageArchive : [];
+  return archive
+    .filter((entry): entry is HomepageArchiveEntry => Boolean(entry && Array.isArray(entry.cards) && entry.cards.length))
+    .slice()
+    .sort((a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || ''));
 }
 
 const DEFAULT_ISSUE: Issue = {

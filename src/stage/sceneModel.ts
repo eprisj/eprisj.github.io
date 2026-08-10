@@ -77,11 +77,11 @@ export function emptyScene(): Scene {
    и второй объект молча теряется. */
 export function createObject(room: Room, kind: ObjectKind): SceneObject {
   const defaults: Record<ObjectKind, Pick<SceneObject, 'w' | 'd' | 'h' | 'label'>> = {
-    block: { w: 1.5, d: 1.5, h: 1.5, label: 'Object' },
-    wall: { w: 3, d: 0.2, h: 3, label: 'Wall' },
-    platform: { w: 2.5, d: 2.5, h: 0.4, label: 'Platform' },
-    practical: { w: 0.4, d: 0.4, h: 1.8, label: 'Practical' },
-    seating: { w: 0.6, d: 0.6, h: 0.45, label: 'Seat' },
+    block: { w: 1.5, d: 1.5, h: 1.5, label: 'Декорация' },
+    wall: { w: 3, d: 0.2, h: 3, label: 'Перегородка' },
+    platform: { w: 2.5, d: 2.5, h: 0.4, label: 'Подиум' },
+    practical: { w: 0.4, d: 0.4, h: 1.8, label: 'Реквизит' },
+    seating: { w: 0.6, d: 0.6, h: 0.45, label: 'Место зрителя' },
   };
   const base = defaults[kind];
   return {
