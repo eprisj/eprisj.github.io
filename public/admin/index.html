@@ -295,7 +295,7 @@
                 <div>
                   <span class="homepage-admin-kicker">Главная страница</span>
                   <h2 class="card-title">Галерея EPRIS</h2>
-                  <p class="card-desc">Здесь собирается недельная композиция главной: слева №3, в центре №1, справа №2. Выберите материалы, проверьте хвосты и только затем публикуйте.</p>
+                  <p class="card-desc">Здесь собирается Pics of the week: пять независимых направлений — Painting, Sculpture, Architecture, Design и Photography. Пустая категория допустима, а новые изображения поднимаются по принципу LIFO.</p>
                 </div>
                 <div class="homepage-admin-actions">
                   <button id="homepageAddBtn" class="btn btn-primary" type="button">＋ Новая карточка</button>
@@ -331,7 +331,8 @@
                   <label class="homepage-toggle-field"><input id="homepageAutoRefresh" type="checkbox" checked><span><strong>Автообновление</strong><small>Проверять свежий контент на VPS</small></span></label>
                   <label class="homepage-field"><span>Интервал проверки</span><select id="homepageRefreshInterval"><option value="30">Каждые 30 секунд</option><option value="60" selected>Каждую минуту</option><option value="120">Каждые 2 минуты</option><option value="300">Каждые 5 минут</option></select></label>
                   <button id="homepageRefreshBtn" class="btn" type="button">↻ Получить свежую версию</button>
-                  <label class="homepage-field"><span>Режим Pics of the week</span><select id="homepagePicsMode"><option value="manual">Вручную — слоты редактора</option><option value="auto">Автоматически — самые новые</option></select></label>
+                  <label class="homepage-field"><span>Режим Pics of the week</span><select id="homepagePicsMode"><option value="manual">Вручную — категории редактора</option><option value="auto">Автоматически — самые новые</option></select></label>
+                  <label class="homepage-field"><span>Порядок обновления</span><select id="homepageOrdering"><option value="lifo">LIFO — свежие сверху</option><option value="manual">Ручной порядок</option></select></label>
                   <label class="homepage-toggle-field"><input id="homepageAutoPublish" type="checkbox"><span><strong>Автовыталкивание</strong><small>Публиковать безопасные правки после паузы</small></span></label>
                 </div>
                 <div id="homepageRemoteNotice" class="homepage-remote-notice" role="status" aria-live="polite" hidden></div>
@@ -342,10 +343,11 @@
                     <div>
                       <span class="homepage-admin-kicker">Редакционная расстановка</span>
                       <h3 id="homepageComposerTitle" class="card-title">Pics of the week</h3>
-                      <p class="card-desc">Центр — главный материал. На телефоне порядок станет: центр → справа → слева.</p>
+                      <p class="card-desc">Каждая категория может быть пустой. Выберите главное изображение в карточке или назначьте категорию прямо в редакторе изображения.</p>
                     </div>
                     <span class="homepage-preview-badge">Live layout</span>
                   </div>
+                  <div id="homepageCategoryEditor" class="homepage-category-editor" aria-label="Настройки пяти категорий"></div>
                   <div id="homepageComposerPreview" class="homepage-composer-preview" aria-live="polite"></div>
                   <div id="homepageComposerAudit" class="homepage-composer-audit" aria-live="polite"></div>
                 </section>
@@ -353,10 +355,10 @@
                   <span class="homepage-admin-kicker">Проверка перед публикацией</span>
                   <h3 class="card-title">Хвосты под контролем</h3>
                   <ul class="homepage-check-list">
-                    <li>ровно три слота и один центр;</li>
-                    <li>у каждой карточки фото, заголовок и ссылка;</li>
-                    <li>нет повторов и скрытых материалов;</li>
-                    <li>старые записи сохраняют прежнее поведение.</li>
+                    <li>пять категорий с редактируемыми названиями и ключевыми словами;</li>
+                    <li>новые изменения идут сверху по LIFO;</li>
+                    <li>пустые категории не блокируют публикацию;</li>
+                    <li>старые карточки получают безопасную категорию автоматически.</li>
                   </ul>
                 </aside>
               </div>

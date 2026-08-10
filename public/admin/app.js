@@ -4398,11 +4398,14 @@ function renderVisualForm() {
 
   if (section === 'items') {
     const previewSource = resolvePreviewImageSource(entry.imageUrl, entry.imageSeed);
+    const homepageCategoryOptions = (window._homepageCategories ? window._homepageCategories(data) : []).map((category) => `<option value="${escapeHtml(category.id)}" ${entry.homeCategory === category.id ? 'selected' : ''}>${escapeHtml(category.label)}</option>`).join('');
     visualFormEl.innerHTML = `
       <label>ID<input id="vf-id" value="${escapeHtml(entry.id)}" disabled /></label>
       <label>FIG<input id="vf-fig" value="${escapeHtml(entry.fig || '')}" /></label>
       <label class="full">Заголовок<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
       <label class="full">Подзаголовок<input id="vf-subtitle" value="${escapeHtml(entry.subtitle || '')}" /></label>
+      <label>Категория Pics of the week<select id="vf-homeCategory"><option value="">Авторазбор по ключевым словам</option>${homepageCategoryOptions}</select></label>
+      <label>Метка на изображении<input id="vf-homeLabel" value="${escapeHtml(entry.homeLabel || '')}" placeholder="Например: week 32" /></label>
       <label class="full">Описание<textarea id="vf-description">${escapeHtml(entry.description || '')}</textarea></label>
       <input type="hidden" id="vf-imageUrl" value="${escapeHtml(entry.imageUrl || '')}" />
       <div class="full" style="margin-bottom:4px">
@@ -4630,6 +4633,8 @@ function buildEntryFromVisualForm(section, current) {
       description: getFieldValue('vf-description').trim(),
       imageSeed: getFieldValue('vf-imageSeed').trim(),
       imageUrl: getOptionalString(getFieldValue('vf-imageUrl')),
+      homeCategory: getOptionalString(getFieldValue('vf-homeCategory')),
+      homeLabel: getOptionalString(getFieldValue('vf-homeLabel')),
       images: photos.length ? photos : undefined
     };
     applyDraftFieldsFromForm(next);
@@ -8656,8 +8661,14 @@ function bindStudioRowActions() {
     refreshVisualEditor();
   }
 
-  const HOME_SLOTS = ['left', 'center', 'right'];
-  const HOME_SLOT_LABELS = { left: '№3 · слева', center: '№1 · центр', right: '№2 · справа' };
+  const DEFAULT_HOME_CATEGORIES = [
+    { id: 'painting', label: 'Painting', matches: ['painting', 'paint', 'canvas', 'portrait', 'art', 'culture', 'history', 'restoration'] },
+    { id: 'sculpture', label: 'Sculpture', matches: ['sculpture', 'sculptural', 'statue', 'object', 'installation', 'ceramic', 'vase'] },
+    { id: 'architecture', label: 'Architecture', matches: ['architecture', 'building', 'urban', 'space', 'city'] },
+    { id: 'design', label: 'Design', matches: ['design', 'interior', 'furniture', 'travel', 'material'] },
+    { id: 'photography', label: 'Photography', matches: ['photography', 'photograph', 'photo', 'lens', 'camera', 'visual'] },
+  ];
+  const HOME_CATEGORY_LABELS = Object.fromEntries(DEFAULT_HOME_CATEGORIES.map((category) => [category.id, category.label]));
   const HOMEPAGE_AUTO_PREFS_KEY = 'epris_homepage_auto_prefs_v1';
   let homepageRefreshTimer = null;
   let homepageRefreshBusy = false;
@@ -8671,6 +8682,52 @@ function bindStudioRowActions() {
     if (!data.homepage.picsOfWeek || typeof data.homepage.picsOfWeek !== 'object' || Array.isArray(data.homepage.picsOfWeek)) data.homepage.picsOfWeek = {};
     if (!data.homepage.showcase || typeof data.homepage.showcase !== 'object' || Array.isArray(data.homepage.showcase)) data.homepage.showcase = {};
     return data.homepage;
+  }
+
+  function homepageCategories(data) {
+    const configured = Array.isArray(data?.homepage?.picsOfWeek?.categories) ? data.homepage.picsOfWeek.categories : [];
+    const source = [...configured, ...DEFAULT_HOME_CATEGORIES];
+    const seen = new Set();
+    return source.filter((category) => {
+      const id = String(category?.id || '').trim();
+      if (!id || seen.has(id)) return false;
+      seen.add(id);
+      return true;
+    }).slice(0, 5).map((category, index) => {
+      const fallback = DEFAULT_HOME_CATEGORIES.find((candidate) => candidate.id === category.id) || DEFAULT_HOME_CATEGORIES[index] || DEFAULT_HOME_CATEGORIES[0];
+      return {
+        ...fallback,
+        ...category,
+        id: String(category.id).trim(),
+        label: String(category.label || fallback.label).trim(),
+        matches: Array.isArray(category.matches) && category.matches.length
+          ? category.matches.map((match) => String(match).trim()).filter(Boolean)
+          : fallback.matches.slice(),
+      };
+    });
+  }
+
+  function homepageCategoryGroups(data) {
+    const categories = homepageCategories(data);
+    const items = Array.isArray(data?.items) ? data.items : [];
+    const pics = data?.homepage?.picsOfWeek || {};
+    const useLifo = pics.ordering !== 'manual';
+    const stamp = (item) => {
+      const value = item?.updatedAt || item?.publishAt;
+      const parsed = value ? Date.parse(value) : Number.NaN;
+      return Number.isFinite(parsed) ? parsed : 0;
+    };
+    const classify = (item) => {
+      const explicit = String(item?.homeCategory || '').trim();
+      if (explicit && categories.some((category) => category.id === explicit)) return explicit;
+      const text = `${item?.subtitle || ''} ${item?.title || ''}`.toLowerCase();
+      return categories.find((category) => category.matches.some((match) => text.includes(String(match).toLowerCase())))?.id || categories[0]?.id;
+    };
+    return categories.map((category) => {
+      const categoryItems = items.filter((item) => classify(item) === category.id);
+      if (useLifo) categoryItems.sort((a, b) => stamp(b) - stamp(a) || Number(b?.id || 0) - Number(a?.id || 0));
+      return { ...category, items: categoryItems };
+    });
   }
 
   function readHomepageAutoPrefs() {
@@ -8721,59 +8778,29 @@ function bindStudioRowActions() {
     }, prefs.interval * 1000);
   }
 
-  function homepageSlots(data) {
-    const items = Array.isArray(data?.items) ? data.items : [];
-    if (data?.homepage?.picsOfWeek?.mode === 'auto') {
-      const liveItems = items.filter((item) => !item?.draft && (!item?.publishAt || Number.isNaN(Date.parse(item.publishAt)) || Date.parse(item.publishAt) <= Date.now()));
-      const stamp = (item) => {
-        const value = item?.updatedAt || item?.publishAt;
-        const parsed = value ? Date.parse(value) : Number.NaN;
-        return Number.isFinite(parsed) ? parsed : 0;
-      };
-      const newest = liveItems.slice().sort((a, b) => stamp(b) - stamp(a) || Number(b?.id || 0) - Number(a?.id || 0)).slice(0, 3);
-      return { center: newest[0] || null, right: newest[1] || null, left: newest[2] || null };
-    }
-    const used = new Set();
-    const slots = { left: null, center: null, right: null };
-    HOME_SLOTS.forEach((slot) => {
-      const match = items.find((item) => item && item.homeSlot === slot && !used.has(String(item.id)));
-      if (match) { slots[slot] = match; used.add(String(match.id)); }
-    });
-    // Backwards-compatible migration view: old lists become centre/right/left
-    // without mutating the JSON until the editor explicitly assigns a slot.
-    [['center', 0], ['right', 1], ['left', 2]].forEach(([slot, index]) => {
-      if (slots[slot]) return;
-      const fallback = items[index] && !used.has(String(items[index].id))
-        ? items[index]
-        : items.find((item) => item && !used.has(String(item.id)));
-      if (fallback) { slots[slot] = fallback; used.add(String(fallback.id)); }
-    });
-    return slots;
-  }
-
-  function homepageAudit(data, slots) {
+  function homepageAudit(data, groups) {
     const errors = [];
     const warnings = [];
-    const selected = HOME_SLOTS.map((slot) => slots[slot]).filter(Boolean);
-    const ids = selected.map((item) => String(item.id));
-    if (selected.length !== 3) errors.push(`Нужно выбрать 3 карточки, сейчас ${selected.length}.`);
-    if (!slots.center) errors.push('Центральный слот обязателен — он становится главным материалом.');
-    if (new Set(ids).size !== ids.length) errors.push('Одна карточка назначена более одного раза.');
-    HOME_SLOTS.forEach((slot) => {
-      const item = slots[slot];
-      if (!item) return;
-      if (!String(item.title || '').trim()) errors.push(`${HOME_SLOT_LABELS[slot]}: нет заголовка.`);
-      if (!String(item.imageUrl || item.imageSeed || '').trim()) errors.push(`${HOME_SLOT_LABELS[slot]}: нет изображения.`);
-      if (item.draft) errors.push(`${HOME_SLOT_LABELS[slot]}: материал помечен как черновик.`);
-      if (item.publishAt && Date.parse(item.publishAt) > Date.now()) warnings.push(`${HOME_SLOT_LABELS[slot]}: запланирован на будущее.`);
-      if (!String(item.description || '').trim()) warnings.push(`${HOME_SLOT_LABELS[slot]}: нет короткого описания.`);
+    if (!groups?.length) errors.push('Не настроены категории Pics of the week.');
+    groups.forEach((group) => {
+      const item = group.items[0];
+      if (!item) {
+        warnings.push(`${group.label}: пока нет изображения — категория останется пустой.`);
+        return;
+      }
+      if (!String(item.title || '').trim()) warnings.push(`${group.label}: у первого изображения нет названия.`);
+      if (!String(item.imageUrl || item.imageSeed || '').trim()) errors.push(`${group.label}: у первого изображения нет файла или URL.`);
+      if (item.draft) warnings.push(`${group.label}: первое изображение — черновик.`);
+      if (item.publishAt && Date.parse(item.publishAt) > Date.now()) warnings.push(`${group.label}: первое изображение запланировано на будущее.`);
     });
     return { errors, warnings };
   }
 
-  function homepageArchiveCards(slots) {
-    return HOME_SLOTS.map((slot) => slots[slot]).filter(Boolean).map((item) => ({
+  function homepageArchiveCards(groups) {
+    return groups.map((group) => group.items[0] ? { category: group.id, categoryLabel: group.label, item: group.items[0] } : null).filter(Boolean).map(({ category, categoryLabel, item }) => ({
       id: Number(item.id),
+      category,
+      categoryLabel,
       title: String(item.title || ''),
       subtitle: String(item.subtitle || ''),
       description: String(item.description || ''),
@@ -8783,7 +8810,7 @@ function bindStudioRowActions() {
   }
 
   function homepageArchiveSignature(cards) {
-    return cards.map((card) => String(card.id)).join('|');
+    return cards.map((card) => `${card.category || ''}:${card.id}`).join('|');
   }
 
   function homepageArchiveDate(value) {
@@ -8802,7 +8829,7 @@ function bindStudioRowActions() {
       return;
     }
     list.innerHTML = archive.slice(0, 12).map((entry) => {
-      const cards = Array.isArray(entry?.cards) ? entry.cards.slice(0, 3) : [];
+      const cards = Array.isArray(entry?.cards) ? entry.cards.slice(0, 5) : [];
       return `<article class="homepage-archive-entry">
         <div class="homepage-archive-entry-meta"><strong>${esc(entry?.label || 'week')}</strong><span>${esc(homepageArchiveDate(entry?.publishedAt))}</span></div>
         <div class="homepage-archive-thumbs">
@@ -8819,21 +8846,16 @@ function bindStudioRowActions() {
     }).join('');
   }
 
-  function setHomepageSlot(slot, itemId) {
+  function setHomepageCategory(categoryId, itemId) {
     const data = readContent();
-    if (!data || !Array.isArray(data.items) || !HOME_SLOTS.includes(slot)) return;
+    if (!data || !Array.isArray(data.items) || !homepageCategories(data).some((category) => category.id === categoryId)) return;
     const item = data.items.find((entry) => String(entry.id) === String(itemId));
     if (!item && itemId) return;
-    // A card can occupy one slot only. Assigning it here removes the old
-    // explicit placement and clears whichever card used this slot before it.
-    data.items.forEach((entry) => {
-      if ((item && String(entry.id) === String(item.id)) || entry.homeSlot === slot) delete entry.homeSlot;
-    });
-    if (item) item.homeSlot = slot;
+    if (item) item.homeCategory = categoryId;
     setEditorData(data);
     renderHomepageTab();
     scheduleHomepageAutoPublish();
-    showToast?.('success', `${HOME_SLOT_LABELS[slot]} обновлён. Нажмите «Опубликовать».`);
+    showToast?.('success', `Категория ${HOME_CATEGORY_LABELS[categoryId] || categoryId} обновлена. Нажмите «Опубликовать».`);
   }
 
   function renderHomepageControls(data) {
@@ -8849,6 +8871,8 @@ function bindStudioRowActions() {
     if (refreshInterval) refreshInterval.value = String(prefs.interval);
     if (autoPublish) autoPublish.checked = home.autoPublish === true;
     if (picsMode) picsMode.value = pics.mode === 'auto' ? 'auto' : 'manual';
+    const picsOrdering = document.getElementById('homepageOrdering');
+    if (picsOrdering) picsOrdering.value = pics.ordering === 'manual' ? 'manual' : 'lifo';
     const setValue = (id, value) => { const el = document.getElementById(id); if (el && document.activeElement !== el) el.value = value == null ? '' : String(value); };
     const showcaseEnabled = document.getElementById('homepageShowcaseEnabled');
     if (showcaseEnabled && document.activeElement !== showcaseEnabled) showcaseEnabled.checked = showcase.enabled !== false;
@@ -8921,6 +8945,30 @@ function bindStudioRowActions() {
     }
   }
 
+  function renderHomepageCategoryEditor(data) {
+    const editorEl = document.getElementById('homepageCategoryEditor');
+    if (!editorEl || !data) return;
+    const categories = homepageCategories(data);
+    editorEl.innerHTML = categories.map((category, index) => `
+      <div class="homepage-category-row">
+        <span class="homepage-category-index">0${index + 1}</span>
+        <label class="homepage-field"><span>Название категории</span><input data-home-category-label="${esc(category.id)}" value="${esc(category.label)}"></label>
+        <label class="homepage-field homepage-category-keywords"><span>Ключевые слова для авторазбора</span><input data-home-category-matches="${esc(category.id)}" value="${esc(category.matches.join(', '))}"></label>
+      </div>`).join('');
+    editorEl.querySelectorAll('[data-home-category-label], [data-home-category-matches]').forEach((input) => input.addEventListener('change', (event) => {
+      const id = event.target.dataset.homeCategoryLabel || event.target.dataset.homeCategoryMatches;
+      const isLabel = Boolean(event.target.dataset.homeCategoryLabel);
+      updateHomepageSettings((home) => {
+        const categoriesNow = homepageCategories(data).map((category) => ({ ...category, matches: category.matches.slice() }));
+        const category = categoriesNow.find((candidate) => candidate.id === id);
+        if (!category) return;
+        if (isLabel) category.label = String(event.target.value || '').trim() || category.label;
+        else category.matches = String(event.target.value || '').split(',').map((match) => match.trim()).filter(Boolean);
+        home.picsOfWeek.categories = categoriesNow;
+      }, 'Категории Pics of the week сохранены в черновик.');
+    }));
+  }
+
   function renderHomepageComposer(data) {
     const preview = document.getElementById('homepageComposerPreview');
     const auditEl = document.getElementById('homepageComposerAudit');
@@ -8931,40 +8979,43 @@ function bindStudioRowActions() {
     const dot = document.querySelector('#homepageAdminStatus .homepage-status-dot');
     if (!preview || !auditEl || !data) return;
     const items = Array.isArray(data.items) ? data.items : [];
-    const slots = homepageSlots(data);
+    const groups = homepageCategoryGroups(data);
     const autoMode = data?.homepage?.picsOfWeek?.mode === 'auto';
-    const audit = homepageAudit(data, slots);
-    const selectedCount = HOME_SLOTS.filter((slot) => slots[slot]).length;
-    if (countEl) countEl.textContent = `${selectedCount} / 3 слота`;
+    const audit = homepageAudit(data, groups);
+    const selectedCount = groups.filter((group) => group.items.length).length;
+    const imageCount = groups.reduce((total, group) => total + group.items.length, 0);
+    if (countEl) countEl.textContent = `${selectedCount} / ${groups.length} категорий · ${imageCount} изображений`;
     const state = audit.errors.length ? 'error' : audit.warnings.length ? 'warn' : 'ok';
     if (dot) dot.dataset.state = state;
     if (statusTitle) statusTitle.textContent = audit.errors.length ? 'Нужна проверка' : audit.warnings.length ? 'Можно публиковать с предупреждениями' : 'Главная готова';
-    if (statusDetail) statusDetail.textContent = audit.errors[0] || audit.warnings[0] || 'Три карточки собраны и готовы к preview.';
+    if (statusDetail) statusDetail.textContent = audit.errors[0] || audit.warnings[0] || 'Пять категорий готовы к preview. LIFO держит свежие изображения сверху.';
     if (lastPublishedEl) {
       try {
         const stamp = localStorage.getItem('epris_homepage_last_published');
         if (stamp) lastPublishedEl.textContent = `Опубликовано ${new Date(stamp).toLocaleString('ru-RU', { dateStyle: 'short', timeStyle: 'short' })}`;
       } catch { /* storage unavailable */ }
     }
-    preview.innerHTML = HOME_SLOTS.map((slot) => {
-      const item = slots[slot];
+    preview.innerHTML = groups.map((group) => {
+      const item = group.items[0];
       const image = item?.imageUrl || item?.imageSeed || '';
-      const options = [`<option value="">— Не выбрано —</option>`, ...items.map((candidate) => `<option value="${esc(candidate.id)}" ${item && String(candidate.id) === String(item.id) ? 'selected' : ''}>${esc(candidate.title || `#${candidate.id}`)}</option>`)].join('');
-      return `<article class="homepage-slot-card homepage-slot-card--${slot}">
-        <div class="homepage-slot-head"><span>${esc(HOME_SLOT_LABELS[slot])}</span><span class="homepage-slot-marker">${item ? '●' : '○'}</span></div>
+      const options = [`<option value="">— Выбрать изображение —</option>`, ...items.map((candidate) => `<option value="${esc(candidate.id)}" ${item && String(candidate.id) === String(item.id) ? 'selected' : ''}>${esc(candidate.title || `#${candidate.id}`)}</option>`)].join('');
+      return `<article class="homepage-slot-card homepage-slot-card--${esc(group.id)}">
+        <div class="homepage-slot-head"><span>${esc(group.label)}</span><span class="homepage-slot-marker">${item ? '●' : '○'}</span></div>
         <div class="homepage-slot-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : '<span>Нет фото</span>'}</div>
-        <label class="homepage-slot-label" for="homepage-slot-${slot}">Материал</label>
-        <select id="homepage-slot-${slot}" class="homepage-slot-select" data-home-slot="${slot}" ${autoMode ? 'disabled' : ''}>${options}</select>
-        <div class="homepage-slot-title">${esc(item?.title || 'Слот пуст')}</div>
+        <label class="homepage-slot-label" for="homepage-category-${esc(group.id)}">Главное изображение категории</label>
+        <select id="homepage-category-${esc(group.id)}" class="homepage-slot-select" data-home-category="${esc(group.id)}" ${autoMode ? 'disabled' : ''}>${options}</select>
+        <div class="homepage-slot-title">${esc(item?.title || 'Категория пока пустая')}</div>
+        <small class="homepage-category-count">${group.items.length} изображений · LIFO ${data?.homepage?.picsOfWeek?.ordering === 'manual' ? 'выкл.' : 'вкл.'}</small>
         <button type="button" class="btn btn-sm homepage-slot-edit" data-home-edit-slot="${item ? esc(item.id) : ''}" ${item ? '' : 'disabled'}>Редактировать</button>
       </article>`;
     }).join('');
-    preview.querySelectorAll('[data-home-slot]').forEach((select) => select.addEventListener('change', () => setHomepageSlot(select.dataset.homeSlot, select.value)));
+    preview.querySelectorAll('[data-home-category]').forEach((select) => select.addEventListener('change', () => setHomepageCategory(select.dataset.homeCategory, select.value)));
     preview.querySelectorAll('[data-home-edit-slot]').forEach((button) => button.addEventListener('click', () => openGalleryEditor(button.dataset.homeEditSlot)));
+    renderHomepageCategoryEditor(data);
     auditEl.innerHTML = [
       ...audit.errors.map((message) => `<div class="homepage-audit-item is-error"><span aria-hidden="true">!</span>${esc(message)}</div>`),
       ...audit.warnings.map((message) => `<div class="homepage-audit-item is-warn"><span aria-hidden="true">△</span>${esc(message)}</div>`),
-      ...(!audit.errors.length && !audit.warnings.length ? [`<div class="homepage-audit-item is-ok"><span aria-hidden="true">✓</span>${autoMode ? 'Автоматический режим выбрал три самые новые карточки.' : 'Критических проблем не найдено.'}</div>`] : [])
+      ...(!audit.errors.length && !audit.warnings.length ? [`<div class="homepage-audit-item is-ok"><span aria-hidden="true">✓</span>${autoMode ? 'Автоматический LIFO выбрал самые свежие изображения в пяти категориях.' : 'Категории собраны, критических проблем не найдено.'}</div>`] : [])
     ].join('');
   }
 
@@ -9010,11 +9061,11 @@ function bindStudioRowActions() {
       return;
     }
     const items = Array.isArray(data.items) ? data.items : [];
-    const slots = homepageSlots(data);
-    const audit = homepageAudit(data, slots);
+    const groups = homepageCategoryGroups(data);
+    const audit = homepageAudit(data, groups);
     renderHomepageControls(data);
     meta.textContent = items.length
-      ? `${items.length} ${items.length === 1 ? 'карточка' : 'карточек'} · ${HOME_SLOTS.filter((slot) => slots[slot]).length}/3 слота собраны · центр — главный материал`
+      ? `${items.length} ${items.length === 1 ? 'карточка' : 'карточек'} · ${groups.filter((group) => group.items.length).length}/${groups.length} категорий заполнено · режим ${data.homepage?.picsOfWeek?.ordering === 'manual' ? 'ручной' : 'LIFO'}`
       : 'В галерее пока нет карточек.';
     renderHomepageComposer(data);
     renderHomepageArchive(data);
@@ -9028,7 +9079,7 @@ function bindStudioRowActions() {
       return `<article class="homepage-gallery-card">
         <div class="homepage-gallery-order">
           <span class="homepage-order-number">${index + 1}</span>
-          ${item.homeSlot ? `<span class="homepage-featured-badge">${esc(HOME_SLOT_LABELS[item.homeSlot] || item.homeSlot)}</span>` : (index === 0 ? '<span class="homepage-featured-badge">Fallback center</span>' : '')}
+          <span class="homepage-featured-badge">${esc(item.homeCategory ? (homepageCategories(data).find((category) => category.id === item.homeCategory)?.label || item.homeCategory) : 'Авторазбор')}</span>
         </div>
         <div class="homepage-gallery-thumb">${imageUrl
           ? `<img src="${esc(imageUrl)}" alt="" loading="lazy">`
@@ -9067,17 +9118,19 @@ function bindStudioRowActions() {
       return;
     }
 
-    // A backfilled article is intentionally promoted to the centre slot, even
-    // when an older explicit centre already exists. The old centre falls back
-    // into the remaining pool and can be assigned from the composer.
+    // A backfilled article is intentionally put at the top of its inferred
+    // category. The default LIFO ordering makes it the first image there.
     const newest = data.items[0];
-    data.items.forEach((entry) => { if (entry !== newest && entry.homeSlot === 'center') delete entry.homeSlot; });
-    if (newest) { newest.homeSlot = 'center'; newest.homeLabel = newest.homeLabel || 'week'; }
+    if (newest) {
+      const inferred = homepageCategoryGroups(data).find((group) => group.items.some((item) => String(item.id) === String(newest.id)));
+      newest.homeCategory = newest.homeCategory || inferred?.id || homepageCategories(data)[0]?.id;
+      newest.homeLabel = newest.homeLabel || inferred?.label || 'week';
+    }
 
     setEditorData(data);
     renderHomepageTab();
     scheduleHomepageAutoPublish();
-    showToast?.('success', 'Карточка добавлена первой — она стала главным материалом. Порядок меняется стрелками, затем «Опубликовать».');
+    showToast?.('success', 'Карточка добавлена первой в категорию по принципу LIFO. Нажмите «Опубликовать».');
   }
 
   function renderMissingArticles() {
@@ -9108,7 +9161,7 @@ function bindStudioRowActions() {
     if (homepagePublishBusy) { homepagePublishQueued = true; return; }
     if (!editor.value) { if (!silent) showToast?.('error', 'Сначала загрузите контент.'); return; }
     const data = readContent();
-    const audit = data ? homepageAudit(data, homepageSlots(data)) : { errors: ['Контент не загружен.'], warnings: [] };
+    const audit = data ? homepageAudit(data, homepageCategoryGroups(data)) : { errors: ['Контент не загружен.'], warnings: [] };
     if (audit.errors.length) {
       if (!silent) showToast?.('error', `Нельзя опубликовать главную: ${audit.errors[0]}`);
       renderHomepageTab();
@@ -9116,19 +9169,19 @@ function bindStudioRowActions() {
     }
     const pw = typeof getAdminPassword === 'function' ? getAdminPassword() : '';
     if (!pw) { if (!silent) showToast?.('error', 'Нет пароля редакции — войдите заново.'); return; }
-    // Freeze the current three-card composition into the archive as part of the
+    // Freeze the current five-category composition into the archive as part of the
     // same payload. Re-publishing an unchanged composition does not create a
     // duplicate entry, so the archive remains a useful editorial record.
     const publishData = deepClone(data);
-    const publishSlots = homepageSlots(publishData);
-    const archiveCards = homepageArchiveCards(publishSlots);
+    const publishGroups = homepageCategoryGroups(publishData);
+    const archiveCards = homepageArchiveCards(publishGroups);
     const archive = Array.isArray(publishData.homepageArchive) ? publishData.homepageArchive.slice() : [];
     const signature = homepageArchiveSignature(archiveCards);
-    if (archiveCards.length === 3 && !archive.some((entry) => String(entry?.signature || homepageArchiveSignature(Array.isArray(entry?.cards) ? entry.cards : [])) === signature)) {
+    if (archiveCards.length && !archive.some((entry) => String(entry?.signature || homepageArchiveSignature(Array.isArray(entry?.cards) ? entry.cards : [])) === signature)) {
       const now = new Date().toISOString();
       archive.unshift({
         id: `home-${Date.now()}`,
-        label: publishSlots.center?.homeLabel || 'week',
+        label: 'Pics of the week',
         publishedAt: now,
         signature,
         cards: archiveCards,
@@ -9198,6 +9251,9 @@ function bindStudioRowActions() {
   document.getElementById('homepagePicsMode')?.addEventListener('change', (event) => {
     updateHomepageSettings((home) => { home.picsOfWeek.mode = event.target.value === 'auto' ? 'auto' : 'manual'; }, 'Режим Pics of the week обновлён.');
   });
+  document.getElementById('homepageOrdering')?.addEventListener('change', (event) => {
+    updateHomepageSettings((home) => { home.picsOfWeek.ordering = event.target.value === 'manual' ? 'manual' : 'lifo'; }, event.target.value === 'manual' ? 'Ручной порядок включён.' : 'LIFO-порядок включён: свежие изображения будут сверху.');
+  });
   document.getElementById('homepageAutoPublish')?.addEventListener('change', (event) => {
     updateHomepageSettings((home) => { home.autoPublish = event.target.checked; }, event.target.checked ? 'Автовыталкивание включено.' : 'Автовыталкивание выключено.');
   });
@@ -9238,6 +9294,7 @@ function bindStudioRowActions() {
     setHomepageRemoteNotice('Свежая версия VPS загружена. Локальный черновик заменён по вашему выбору.', 'ok', true);
   });
   restartHomepageRefreshTimer();
+  window._homepageCategories = homepageCategories;
   window._renderHomepageTab = renderHomepageTab;
 })();
 
