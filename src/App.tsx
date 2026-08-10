@@ -182,6 +182,7 @@ function GalleryItemView({ item, onClose, articles, onReadArticle }: { item: Ite
 // overwritten; shipping the fallback here keeps new labels translated in every
 // locale until an editor overrides them in the admin.
 const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
+  'nav.home': { EN: 'Home', RU: 'Главная', UA: 'Головна', DE: 'Startseite', IT: 'Home', ES: 'Inicio', TR: 'Ana sayfa' },
   'reviews.read': { EN: 'Read', RU: 'Читать', UA: 'Читати', DE: 'Lesen', IT: 'Leggi', ES: 'Leer', TR: 'Oku' },
   'video.openVideo': { EN: 'Open video', RU: 'Открыть видео', UA: 'Відкрити відео', DE: 'Video öffnen', IT: 'Apri video', ES: 'Abrir vídeo', TR: 'Videoyu aç' },
   'lang.title': { EN: 'Language', RU: 'Язык', UA: 'Мова', DE: 'Sprache', IT: 'Lingua', ES: 'Idioma', TR: 'Dil' },
@@ -631,7 +632,7 @@ function NavBar({
   }, [isSearchOpen, isMenuOpen, isLangOpen]);
 
   const tabs: { id: VisibilitySectionKey; label: string }[] = [
-    { id: 'gallery', label: t('nav.gallery') },
+    { id: 'gallery', label: t('nav.home') },
     { id: 'articles', label: t('nav.articles') },
     { id: 'reviews', label: t('nav.reviews') },
     { id: 'about', label: t('nav.about') },
@@ -676,14 +677,14 @@ function NavBar({
             </motion.span>
           </AnimatePresence>
         </button>
-        <button
-          type="button"
-          onClick={() => { setActiveTab('gallery'); setIsMenuOpen(false); }}
+        <a
+          href="/"
+          onClick={(event) => { event.preventDefault(); setActiveTab('gallery'); setIsMenuOpen(false); }}
           aria-label={`${brandName} — home`}
           className="absolute left-1/2 -translate-x-1/2 leading-none font-mono"
         >
           <span className="text-lg min-[360px]:text-xl tracking-[0.22em] text-[var(--c-accent)] pl-[0.22em]">{brandName}</span>
-        </button>
+        </a>
         {/* Language is the only control that earns a place beside the wordmark
             here. Issue used to sit next to it as a filled pill, which made the
             header compete with the page: two buttons plus the mark, the loudest
@@ -709,9 +710,9 @@ function NavBar({
       <nav className="hidden lg:flex fixed top-0 left-0 w-full z-50 bg-[var(--c-bg)] border-b border-[var(--c-accent)] text-xs font-mono uppercase tracking-widest text-[var(--c-accent)] h-16">
         {/* Logo Section */}
         <div className="w-64 border-r border-[var(--c-accent)] px-6 flex items-center shrink-0 bg-[var(--c-bg)] z-50">
-          <button type="button" className="flex items-center font-mono" onClick={() => setActiveTab('gallery')} aria-label="Go to home">
+          <a href="/" className="flex items-center font-mono" onClick={(event) => { event.preventDefault(); setActiveTab('gallery'); }} aria-label={`${brandName} — home`}>
             <span className="text-xl tracking-[0.2em] text-[var(--c-accent)] pl-[0.2em] normal-case leading-none">{brandName}</span>
-          </button>
+          </a>
         </div>
 
         {/* Desktop Navigation */}
@@ -1242,8 +1243,6 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
     center ? { item: center, slot: 'center' } : null,
     right ? { item: right, slot: 'right' } : null,
   ].filter(Boolean) as { item: Item; slot: 'left' | 'center' | 'right' }[];
-  const rest = items.filter((item) => !used.has(item.id));
-
   const slotClass: Record<'left' | 'center' | 'right', string> = {
     // Desktop: #3 left, #1 centre, #2 right. Mobile: #1, #2, #3.
     left: 'order-3 md:order-1 md:col-span-3',
@@ -1314,64 +1313,23 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
         </div>
       </Reveal>
 
-      {/* Article list — thumbnail / title / kicker+read, no borders, generous whitespace */}
-      <motion.div
-        className="flex flex-col gap-14 sm:gap-20"
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: '-6%' }}
-      >
-        {rest.map((item) => {
-          return (
-          <motion.div
-            key={item.id}
-            variants={staggerItem}
-            whileHover={cardHover}
-            whileTap={cardTap}
-            className="group cursor-pointer flex flex-col sm:flex-row gap-5 sm:gap-8"
-            role="button"
-            tabIndex={0}
-            onClick={() => onItemClick(item)}
-            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onItemClick(item)}
-            aria-label={`View: ${item.title}`}
-          >
-            <div className="w-full sm:w-44 md:w-48 aspect-square overflow-hidden bg-[#E8DED5] shrink-0">
-              <motion.img
-                src={resolveMediaSource(item.imageUrl || item.imageSeed, 400, 400)}
-                alt={item.title}
-                className="w-full h-full object-cover"
-                whileHover={{ scale: 1.04 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                referrerPolicy="no-referrer"
-              />
-            </div>
-            <div className="flex-1 flex flex-col sm:flex-row justify-between gap-4 sm:gap-10">
-              <div className="flex flex-col gap-2 max-w-md self-start">
-                <h3 className="font-crimson text-xl sm:text-2xl text-[var(--c-accent)] leading-snug group-hover:text-[var(--c-gold)] transition-colors duration-300">
-                  {item.title}
-                </h3>
-                {item.description && (
-                  <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed line-clamp-3">
-                    {item.description}
-                  </p>
-                )}
-              </div>
-              <div className="flex sm:flex-col items-start sm:items-end justify-between shrink-0 gap-2">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)]">
-                  {item.subtitle}
-                </span>
-                <span className="inline-flex items-center border border-[var(--c-accent)] rounded-full px-4 py-2 sm:py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
-                  read
-                </span>
-              </div>
-            </div>
-          </motion.div>
-          );
-        })}
-      </motion.div>
     </div>
   );
+}
+
+function articlePublishedTimestamp(article: Pick<Article, 'date' | 'updatedAt'>): number {
+  for (const value of [article.date, article.updatedAt]) {
+    const timestamp = value ? Date.parse(value) : Number.NaN;
+    if (Number.isFinite(timestamp)) return timestamp;
+  }
+  return 0;
+}
+
+function sortArticlesNewestFirst(articles: Article[]): Article[] {
+  return [...articles].sort((a, b) => {
+    const byDate = articlePublishedTimestamp(b) - articlePublishedTimestamp(a);
+    return byDate || b.id - a.id;
+  });
 }
 
 function DailyPicksArchive({ archive, items }: { archive: HomepageArchiveEntry[]; items: Item[] }) {
@@ -2185,7 +2143,7 @@ function ArticlesSection({
   t: (key: string) => string;
   brandName: string;
 }) {
-  const filteredArticles = [...articles].reverse();
+  const filteredArticles = sortArticlesNewestFirst(articles);
 
   return (
     <div>
