@@ -1509,6 +1509,14 @@ function sortArticlesNewestFirst(articles: Article[]): Article[] {
   });
 }
 
+function homepageArticleFeed(articles: Article[]): Article[] {
+  const settings = getHomepageSettings().articles || {};
+  if (settings.enabled === false) return [];
+  const sorted = sortArticlesNewestFirst(articles);
+  const limit = Number(settings.limit);
+  return Number.isFinite(limit) && limit > 0 ? sorted.slice(0, Math.max(1, Math.floor(limit))) : sorted;
+}
+
 function DailyPicksArchive({ archive, items, onImageClick, currentLang, t }: { archive: HomepageArchiveEntry[]; items: Item[]; onImageClick: (src: string, alt: string) => void; currentLang: string; t: (key: string) => string }) {
   if (!archive.length) return null;
   const currentById = new Map(items.map((item) => [Number(item.id), item]));
@@ -3318,6 +3326,24 @@ export default function App() {
     loadLiveContent().then(() => { applySiteTheme(getTheme()); setContentLoadAttempted(true); });
     return unsubscribe;
   }, []);
+  // Keep the homepage editorial feed live when a reader leaves it open. The
+  // first load above remains the fast path; this lightweight refresh only runs
+  // on Home, pauses in hidden tabs, and respects the admin's auto-sync switch.
+  useEffect(() => {
+    if (activeTab !== 'gallery' || getHomepageSettings().articles?.autoSync === false) return;
+    const refresh = () => {
+      if (document.visibilityState === 'visible') void loadLiveContent(5000);
+    };
+    const onVisibility = () => { if (document.visibilityState === 'visible') refresh(); };
+    const timer = window.setInterval(refresh, 60_000);
+    window.addEventListener('visibilitychange', onVisibility);
+    window.addEventListener('focus', refresh);
+    return () => {
+      window.clearInterval(timer);
+      window.removeEventListener('visibilitychange', onVisibility);
+      window.removeEventListener('focus', refresh);
+    };
+  }, [activeTab, contentVersion]);
   const languageOptions = getAvailableLanguages();
   useEffect(() => {
     try { localStorage.setItem('epris_language', currentLang); } catch { /* storage may be unavailable */ }
@@ -3326,6 +3352,7 @@ export default function App() {
   }, [currentLang]);
   const { items, articles, reviews } = getContentForLanguage(currentLang);
   const homepageArchive = getHomepageArchive();
+  const homepageArticles = homepageArticleFeed(articles);
   const issueArchive = getIssueArchive(currentLang);
   const studio = getStudio();
   const defaultContent = getContentForLanguage(DEFAULT_LANGUAGE);
@@ -3580,7 +3607,7 @@ export default function App() {
                 {activeTab === 'gallery' && (
                   <>
                     <GallerySection items={items} onImageClick={handleImageClick} currentLang={currentLang} t={t} />
-                    <section className="homepage-articles mt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-10 sm:mt-16 sm:pt-12" aria-labelledby="homepage-articles-title">
+                    {homepageArticles.length > 0 && <section className="homepage-articles mt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-10 sm:mt-16 sm:pt-12" aria-labelledby="homepage-articles-title">
                       <div className="mb-8 flex flex-col gap-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-5 sm:flex-row sm:items-end sm:justify-between">
                         <div>
                           <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t('homepage.articlesEyebrow')}</p>
@@ -3588,8 +3615,8 @@ export default function App() {
                         </div>
                         <p className="max-w-[34ch] font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)] sm:text-right">{t('homepage.articlesDescription')}</p>
                       </div>
-                      <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} onArticlePreview={handlePreviewArticle} t={t} />
-                    </section>
+                      <ArticlesSection articles={homepageArticles} onArticleClick={(article) => handleSelectArticle(article.id, article)} onArticlePreview={handlePreviewArticle} t={t} />
+                    </section>}
                     <DailyPicksArchive archive={homepageArchive} items={items} onImageClick={handleImageClick} currentLang={currentLang} t={t} />
                     {/* Витрина жила отдельным маршрутом, на который с сайта не
                         вело ни одной ссылки. Suspense без запасного экрана:
