@@ -1305,7 +1305,7 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
         <div className="relative -mx-4 sm:mx-0 mb-16 sm:mb-28">
           <div className="mb-8 flex items-end justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-4">
             <h1 className="font-crimson text-3xl sm:text-4xl text-[var(--c-accent)]">Pics of the week</h1>
-            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">EPRIS / gallery</span>
+            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">EPRIS / home</span>
           </div>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-start md:gap-6 lg:gap-10">
             {homeCards.map(renderHomeCard)}
