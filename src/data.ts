@@ -300,6 +300,12 @@ export interface HomepageSettings {
     mode?: 'auto' | 'manual';
     ordering?: 'lifo' | 'manual';
     categories?: HomepagePicsCategory[];
+    /** Category shown in the centre of the five-card carousel. */
+    centerCategory?: string;
+    /** Visual tuning values edited in the homepage admin controls. */
+    centerScale?: number;
+    sideScale?: number;
+    gap?: number;
   };
   /** When enabled, safe homepage edits are pushed after a short debounce. */
   autoPublish?: boolean;

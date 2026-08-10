@@ -124,7 +124,7 @@ select {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: clamp(1rem, 1.8vw, 1.5rem);
+  gap: var(--home-carousel-gap, clamp(1rem, 1.8vw, 1.5rem));
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-behavior: smooth;
@@ -155,7 +155,7 @@ select {
   scroll-snap-stop: always;
   cursor: pointer;
   opacity: .8;
-  transform: scale(.88);
+  transform: scale(var(--home-carousel-side-scale, .88));
   transform-origin: center top;
   transition: flex-basis .35s ease, opacity .35s ease, transform .35s ease;
 }
@@ -163,21 +163,16 @@ select {
 .home-carousel-card.home-carousel-card--center {
   flex-basis: 30%;
   opacity: 1;
-  transform: scale(1);
+  transform: scale(var(--home-carousel-center-scale, 1));
   z-index: 1;
 }
 
 .home-carousel-card--center:hover {
-  transform: scale(1.02);
+  opacity: .98;
 }
 
 .home-carousel-card--side:hover {
   opacity: .96;
-  transform: scale(.92);
-}
-
-.home-carousel-card:active {
-  transform: scale(.86);
 }
 
 .home-carousel-card:focus-visible {
@@ -337,12 +332,24 @@ select {
 
   .home-carousel-card {
     flex-basis: 16%;
-    transform: scale(.88);
+    transform: scale(var(--home-carousel-side-scale, .88));
   }
 
   .home-carousel-card.home-carousel-card--center {
     flex-basis: 76%;
-    transform: scale(1);
+    transform: scale(var(--home-carousel-center-scale, 1));
+  }
+
+  /* Side cards are visual peeks on a phone. Their title/excerpt would be
+     unreadable at that width; the full caption returns as soon as the work is
+     moved into the centre position. */
+  .home-carousel-card--side .home-carousel-caption {
+    visibility: hidden;
+    min-height: 0;
+    height: 0;
+    padding: 0;
+    border-bottom: 0;
+    overflow: hidden;
   }
 
 }

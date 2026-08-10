@@ -8832,6 +8832,14 @@ function bindStudioRowActions() {
     const picsOrdering = document.getElementById('homepageOrdering');
     if (picsOrdering) picsOrdering.value = pics.ordering === 'manual' ? 'manual' : 'lifo';
     const setValue = (id, value) => { const el = document.getElementById(id); if (el && document.activeElement !== el) el.value = value == null ? '' : String(value); };
+    const categories = homepageCategories(data);
+    const centerCategory = categories.some((category) => category.id === pics.centerCategory) ? pics.centerCategory : (categories[2]?.id || 'architecture');
+    setValue('homepageCarouselCenterCategory', centerCategory);
+    setValue('homepageCarouselCenterScale', [0.98, 1, 1.06, 1.12].includes(Number(pics.centerScale)) ? Number(pics.centerScale) : 1);
+    setValue('homepageCarouselSideScale', [0.76, 0.82, 0.88, 0.92].includes(Number(pics.sideScale)) ? Number(pics.sideScale) : 0.88);
+    setValue('homepageCarouselGap', [16, 24, 32, 40].includes(Number(pics.gap)) ? Number(pics.gap) : 24);
+    const layoutStatus = document.getElementById('homepageCarouselLayoutStatus');
+    if (layoutStatus) layoutStatus.textContent = `В центре: ${categories.find((category) => category.id === centerCategory)?.label || centerCategory} · боковые превью ${Math.round((Number(pics.sideScale) || 0.88) * 100)}% · зазор ${Number(pics.gap) || 24}px`;
     const showcaseEnabled = document.getElementById('homepageShowcaseEnabled');
     if (showcaseEnabled && document.activeElement !== showcaseEnabled) showcaseEnabled.checked = showcase.enabled !== false;
     setValue('homepageShowcaseMode', showcase.mode === 'manual' ? 'manual' : 'auto');
@@ -9158,6 +9166,18 @@ function bindStudioRowActions() {
   });
   document.getElementById('homepageOrdering')?.addEventListener('change', (event) => {
     updateHomepageSettings((home) => { home.picsOfWeek.ordering = event.target.value === 'manual' ? 'manual' : 'lifo'; }, event.target.value === 'manual' ? 'Ручной порядок включён.' : 'LIFO-порядок включён: свежие изображения будут сверху.');
+  });
+  document.getElementById('homepageCarouselCenterCategory')?.addEventListener('change', (event) => {
+    updateHomepageSettings((home) => { home.picsOfWeek.centerCategory = String(event.target.value || 'architecture'); }, 'Центральная категория карусели сохранена в черновик.');
+  });
+  document.getElementById('homepageCarouselCenterScale')?.addEventListener('change', (event) => {
+    updateHomepageSettings((home) => { home.picsOfWeek.centerScale = Number(event.target.value) || 1; }, 'Масштаб центральной карточки сохранён в черновик.');
+  });
+  document.getElementById('homepageCarouselSideScale')?.addEventListener('change', (event) => {
+    updateHomepageSettings((home) => { home.picsOfWeek.sideScale = Number(event.target.value) || 0.88; }, 'Масштаб боковых карточек сохранён в черновик.');
+  });
+  document.getElementById('homepageCarouselGap')?.addEventListener('change', (event) => {
+    updateHomepageSettings((home) => { home.picsOfWeek.gap = Number(event.target.value) || 24; }, 'Расстояние между карточками сохранено в черновик.');
   });
   document.getElementById('homepageAutoPublish')?.addEventListener('change', (event) => {
     updateHomepageSettings((home) => { home.autoPublish = event.target.checked; }, event.target.checked ? 'Автовыталкивание включено.' : 'Автовыталкивание выключено.');

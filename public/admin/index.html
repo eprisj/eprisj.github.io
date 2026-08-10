@@ -336,6 +336,29 @@
                 </div>
                 <div id="homepageRemoteNotice" class="homepage-remote-notice" role="status" aria-live="polite" hidden></div>
               </section>
+              <section class="card homepage-carousel-layout-card" aria-labelledby="homepageCarouselLayoutTitle">
+                <div class="homepage-section-head">
+                  <div>
+                    <span class="homepage-admin-kicker">Композиция карусели</span>
+                    <h3 id="homepageCarouselLayoutTitle" class="card-title">Центр, масштаб и воздух</h3>
+                    <p class="card-desc">Третья позиция всегда остаётся главным изображением. Настройте, какая категория будет в центре, насколько заметны боковые превью и сколько воздуха между ними.</p>
+                  </div>
+                  <span class="homepage-preview-badge">Desktop + mobile</span>
+                </div>
+                <div class="homepage-carousel-layout-grid">
+                  <label class="homepage-field"><span>Центральная категория</span><select id="homepageCarouselCenterCategory">
+                    <option value="sculpture">Sculpture</option>
+                    <option value="painting">Painting</option>
+                    <option value="architecture" selected>Architecture</option>
+                    <option value="design">Design</option>
+                    <option value="photography">Photography</option>
+                  </select></label>
+                  <label class="homepage-field"><span>Масштаб центра</span><select id="homepageCarouselCenterScale"><option value="0.98">Спокойный</option><option value="1" selected>Баланс</option><option value="1.06">Выразительный</option><option value="1.12">Фокус</option></select></label>
+                  <label class="homepage-field"><span>Масштаб боковых фото</span><select id="homepageCarouselSideScale"><option value="0.76">Миниатюрный</option><option value="0.82">Компактный</option><option value="0.88" selected>Баланс</option><option value="0.92">Заметный</option></select></label>
+                  <label class="homepage-field"><span>Расстояние между фото</span><select id="homepageCarouselGap"><option value="16">Плотно</option><option value="24" selected>Баланс</option><option value="32">Воздушно</option><option value="40">Максимум воздуха</option></select></label>
+                </div>
+                <div id="homepageCarouselLayoutStatus" class="homepage-layout-status" role="status" aria-live="polite"></div>
+              </section>
               <div class="homepage-composer-grid">
                 <section class="card homepage-composer" aria-labelledby="homepageComposerTitle">
                   <div class="homepage-section-head">

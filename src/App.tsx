@@ -1,5 +1,5 @@
 import { motion, AnimatePresence, LayoutGroup, MotionConfig } from 'framer-motion';
-import { ReactNode, useState, useEffect, useCallback, useMemo, FormEvent, MouseEvent, useRef, Suspense, lazy, Component } from 'react';
+import { ReactNode, useState, useEffect, useCallback, useMemo, FormEvent, MouseEvent, CSSProperties, useRef, Suspense, lazy, Component } from 'react';
 // Heavy, rarely-visited tabs are code-split out of the critical bundle —
 // e.g. DesignPage alone carries a 244-item catalogue that has no business
 // loading for a reader who just opened an article. Each only downloads once
@@ -1311,12 +1311,19 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
   // Keep the selected work in the visual centre (position 3) while the
   // surrounding four works stay smaller. Wrapping the order makes the arrows
   // feel continuous instead of running into an artificial end.
-  const [centerIndex, setCenterIndex] = useState(2);
+  const configuredCenterCategory = String(picsSettings.centerCategory || '').trim();
+  const configuredCenterIndex = categories.findIndex((category) => category.id === configuredCenterCategory);
+  const defaultCenterIndex = configuredCenterIndex >= 0 ? configuredCenterIndex : Math.min(2, Math.max(0, featuredItems.length - 1));
+  const [centerIndex, setCenterIndex] = useState(defaultCenterIndex);
   const itemCount = featuredItems.length;
   const safeCenterIndex = itemCount ? ((centerIndex % itemCount) + itemCount) % itemCount : 0;
   const centeredItems = itemCount
     ? Array.from({ length: itemCount }, (_, position) => featuredItems[(safeCenterIndex + position - 2 + itemCount) % itemCount])
     : [];
+
+  useEffect(() => {
+    if (configuredCenterIndex >= 0 && configuredCenterIndex !== centerIndex) setCenterIndex(configuredCenterIndex);
+  }, [configuredCenterIndex, centerIndex]);
 
   useEffect(() => {
     if (!itemCount) return;
@@ -1335,6 +1342,14 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
     if (!itemCount) return;
     setCenterIndex((current) => (current + direction + itemCount) % itemCount);
   };
+  const centerScale = Math.max(0.96, Math.min(1.14, Number(picsSettings.centerScale) || 1));
+  const sideScale = Math.max(0.72, Math.min(0.94, Number(picsSettings.sideScale) || 0.88));
+  const carouselGap = Math.max(12, Math.min(40, Number(picsSettings.gap) || 24));
+  const carouselStyle = {
+    '--home-carousel-gap': `${carouselGap}px`,
+    '--home-carousel-center-scale': String(centerScale),
+    '--home-carousel-side-scale': String(sideScale),
+  } as CSSProperties;
 
   return (
     <section className="home-pics-section" aria-labelledby="pics-of-week-title">
@@ -1346,7 +1361,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
             <button type="button" onClick={() => moveCarousel(1)} className="home-carousel-arrow" aria-label={t('homepage.next')}><ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" /></button>
           </div>
         </div>
-        <div ref={viewportRef} className="home-carousel" tabIndex={0} aria-label={t('homepage.carouselLabel')} onKeyDown={(event) => { if (event.key === 'ArrowLeft') moveCarousel(-1); if (event.key === 'ArrowRight') moveCarousel(1); }}>
+        <div ref={viewportRef} style={carouselStyle} className="home-carousel" tabIndex={0} aria-label={t('homepage.carouselLabel')} onKeyDown={(event) => { if (event.key === 'ArrowLeft') moveCarousel(-1); if (event.key === 'ArrowRight') moveCarousel(1); }}>
           {centeredItems.map(({ category, item }, position) => item ? (() => {
               const categoryLabel = localizedHomepageCategoryLabel(category, currentLang);
               const title = homepageItemTitle(item);
