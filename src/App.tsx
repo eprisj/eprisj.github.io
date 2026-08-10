@@ -200,6 +200,7 @@ const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
   'reviews.pageDescription': { EN: 'Thoughtful notes on places, objects, books and the ideas behind them.', RU: 'Вдумчивые заметки о местах, предметах, книгах и идеях за ними.', UA: 'Вдумливі нотатки про місця, предмети, книжки та ідеї за ними.', DE: 'Sorgfältige Notizen zu Orten, Objekten, Büchern und ihren Ideen.', IT: 'Note attente su luoghi, oggetti, libri e sulle idee che li muovono.', ES: 'Notas cuidadas sobre lugares, objetos, libros y las ideas que hay detrás.', TR: 'Mekânlar, nesneler, kitaplar ve ardındaki fikirler üzerine özenli notlar.' },
   'reviews.pageCount': { EN: '{count} reviews', RU: '{count} обзоров', UA: '{count} оглядів', DE: '{count} Reviews', IT: '{count} recensioni', ES: '{count} reseñas', TR: '{count} inceleme' },
   'reviews.filterLabel': { EN: 'Filter reviews by category', RU: 'Фильтр обзоров по категории', UA: 'Фільтр оглядів за категорією', DE: 'Reviews nach Kategorie filtern', IT: 'Filtra le recensioni per categoria', ES: 'Filtrar reseñas por categoría', TR: 'İncelemeleri kategoriye göre filtrele' },
+  'reviews.readTime': { EN: '{minutes} min read', RU: '{minutes} мин чтения', UA: '{minutes} хв читання', DE: '{minutes} Min. Lesezeit', IT: '{minutes} min di lettura', ES: '{minutes} min de lectura', TR: '{minutes} dk okuma' },
   'reviews.empty': { EN: 'No reviews in this category yet.', RU: 'В этой категории пока нет обзоров.', UA: 'У цій категорії ще немає оглядів.', DE: 'In dieser Kategorie gibt es noch keine Reviews.', IT: 'Non ci sono ancora recensioni in questa categoria.', ES: 'Aún no hay reseñas en esta categoría.', TR: 'Bu kategoride henüz inceleme yok.' },
   'reviews.clearFilter': { EN: 'Show all reviews', RU: 'Показать все обзоры', UA: 'Показати всі огляди', DE: 'Alle Reviews zeigen', IT: 'Mostra tutte le recensioni', ES: 'Mostrar todas las reseñas', TR: 'Tüm incelemeleri göster' },
 };
@@ -2301,6 +2302,8 @@ const reviewPlainText = (content: Review['content']) => typeof content === 'stri
   ? content
   : reviewBlocks(content).map(block => typeof block.content === 'string' ? block.content : block.type === 'checklist' && !Array.isArray(block.content) && 'items' in block.content ? block.content.items.join(' ') : '').filter(Boolean).join(' ');
 
+const reviewReadMinutes = (content: Review['content']) => Math.max(1, Math.ceil(reviewPlainText(content).trim().split(/\s+/).filter(Boolean).length / 200));
+
 function ReviewBody({ content }: { content: Review['content'] }) {
   if (typeof content === 'string') return <p className="font-serif text-lg leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)] whitespace-pre-line">{content}</p>;
   return <div className="space-y-7 sm:space-y-10">{reviewBlocks(content).map((block, index) => {
@@ -2414,6 +2417,13 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
     const set = Array.from(new Set(reviews.map((r) => r.category).filter((c): c is string => Boolean(c))));
     return ['__all', ...set];
   }, [reviews]);
+  const categoryCounts = useMemo(() => {
+    const counts = new Map<string, number>([['__all', reviews.length]]);
+    reviews.forEach((review) => {
+      if (review.category) counts.set(review.category, (counts.get(review.category) || 0) + 1);
+    });
+    return counts;
+  }, [reviews]);
 
   const featured = reviews.find((r) => r.featured);
   const rest = reviews.filter((r) => r.id !== (featured?.id ?? -1));
@@ -2441,8 +2451,8 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
         <Reveal>
           <div className="mb-12 md:mb-16 border border-[var(--c-accent)] grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
             {featured.imageUrl && (
-              <div className="relative aspect-[4/3] lg:aspect-auto bg-[#1a0812] overflow-hidden">
-                <img src={featured.imageUrl} alt={featured.title} loading="eager" decoding="async" className="w-full h-full object-cover" />
+              <div className="group relative aspect-[4/3] lg:aspect-auto bg-[#1a0812] overflow-hidden">
+                <img src={featured.imageUrl} alt={featured.title} loading="eager" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03] motion-reduce:transition-none" />
                 <span className="absolute top-4 left-4 bg-[rgb(var(--c-bg-rgb)_/_0.9)] text-[var(--c-accent)] font-mono text-[9px] uppercase tracking-[0.2em] px-3 py-1.5">
                   {t('reviews.featured')}
                 </span>
@@ -2462,7 +2472,7 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
               <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{reviewPlainText(featured.content).slice(0, 260)}{reviewPlainText(featured.content).length > 260 ? '…' : ''}</p>
               <button type="button" onClick={() => onReviewClick(featured)} aria-label={`${t('reviews.read')} — ${featured.title}`} className="mt-6 inline-flex min-h-11 w-fit items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest transition-colors hover:border-[var(--c-gold)] hover:text-[var(--c-gold)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--c-accent)]">{t('reviews.read')} <ArrowUpRight size={14} /></button>
               <div className="mt-auto pt-6 flex items-center justify-between">
-                {featured.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{featured.meta}</span>}
+                <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{[featured.meta, t('reviews.readTime').replace('{minutes}', String(reviewReadMinutes(featured.content)))].filter(Boolean).join(' · ')}</span>
                 <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] ml-auto">— {featured.author}</span>
               </div>
             </div>
@@ -2486,11 +2496,12 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
                     : 'text-[var(--c-accent)] border-[rgb(var(--c-accent-rgb)_/_0.3)] hover:border-[var(--c-accent)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.05)]'
                 }`}
               >
-                {cat === '__all' ? t('reviews.all') : cat}
+                <span>{cat === '__all' ? t('reviews.all') : cat}</span>
+                <span className="ml-2 opacity-60">{categoryCounts.get(cat) || 0}</span>
               </button>
             ))}
           </div>
-          <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{visibleCount} / {reviews.length}</span>
+          <span aria-live="polite" className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{visibleCount} / {reviews.length}</span>
         </div>
       )}
 
@@ -2506,8 +2517,8 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
             <Reveal key={review.id} delay={(index % 2) * 0.08}>
               <div className="bg-[#E8DED5] border border-[var(--c-accent)] h-full flex flex-col overflow-hidden">
                 {review.imageUrl && (
-                  <div className="relative aspect-[16/9] bg-[#1a0812] overflow-hidden">
-                    <img src={review.imageUrl} alt={review.title} loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                  <div className="group relative aspect-[16/9] bg-[#1a0812] overflow-hidden">
+                    <img src={review.imageUrl} alt={review.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03] motion-reduce:transition-none" />
                     {review.category && (
                       <span className="absolute top-3 left-3 bg-[rgb(var(--c-bg-rgb)_/_0.9)] text-[var(--c-accent)] font-mono text-[8px] uppercase tracking-[0.2em] px-2.5 py-1">
                         {review.category}
@@ -2529,7 +2540,7 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
                   <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{reviewPlainText(review.content).slice(0, 190)}{reviewPlainText(review.content).length > 190 ? '…' : ''}</p>
                   <button type="button" onClick={() => onReviewClick(review)} aria-label={`${t('reviews.read')} — ${review.title}`} className="mt-6 inline-flex min-h-11 w-fit items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest transition-colors hover:border-[var(--c-gold)] hover:text-[var(--c-gold)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--c-accent)]">{t('reviews.read')} <ArrowUpRight size={14} /></button>
                   <div className="mt-auto pt-6 flex items-center justify-between gap-3">
-                    {review.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{review.meta}</span>}
+                    <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{[review.meta, t('reviews.readTime').replace('{minutes}', String(reviewReadMinutes(review.content)))].filter(Boolean).join(' · ')}</span>
                     <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] ml-auto">— {review.author}</span>
                   </div>
                 </div>
