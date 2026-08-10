@@ -5,7 +5,7 @@ import {
 } from 'lucide-react';
 import {
   DISCIPLINES, EMPTY_WORK_DRAFT, Work, WorkDraft,
-  externalUrl, fetchWorks, flag, normalizeInstagram, submitWork,
+  DailyShowcase, externalUrl, fetchDailyArchive, fetchDailyShowcase, fetchWorks, flag, normalizeInstagram, submitWork,
 } from './showcaseApi';
 import { Commission } from './Commission';
 import { btnGhost, btnSolid } from './ui';
@@ -247,8 +247,73 @@ function SubmitWork({ onClose, onAdded }: { onClose: () => void; onAdded: (work:
   </ModalShell>;
 }
 
+function DailyShowcaseSection({ daily, archive, onOpenWork }: { daily: DailyShowcase | null; archive: DailyShowcase[]; onOpenWork: (work: Work) => void }) {
+  if (!daily?.works?.length) return null;
+  const formatDate = (value: string | null) => {
+    if (!value) return '';
+    const parsed = new Date(`${value}T12:00:00Z`);
+    return Number.isNaN(parsed.getTime()) ? value : new Intl.DateTimeFormat('en', { dateStyle: 'long', timeZone: 'Europe/Kyiv' }).format(parsed);
+  };
+  const archived = archive.filter((entry) => entry.date && entry.date !== daily.date).slice(0, 12);
+
+  return (
+    <section id="daily" className="border-y border-[#4a1728]/12 bg-[#e9dece]/45 px-4 py-14 sm:px-8 sm:py-20 lg:px-12">
+      <div className="mx-auto max-w-[1600px]">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.72fr)] lg:items-end">
+          <div>
+            <p className="font-sans text-[9px] uppercase tracking-[0.22em] text-[#4a1728]/55">Daily showcase · {formatDate(daily.date)}</p>
+            <h2 className="mt-5 max-w-[12ch] font-display text-[clamp(3rem,7vw,6rem)] lowercase leading-[0.82] tracking-normal text-[#1a0b10]">{daily.title}</h2>
+          </div>
+          <p className="max-w-[46ch] justify-self-end font-sans text-[15px] leading-relaxed text-[#4a1728]/70">{daily.description}</p>
+        </div>
+
+        <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
+          {daily.works.slice(0, 4).map((work, index) => (
+            <button key={work.id} type="button" onClick={() => onOpenWork(work)} className="group text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#4a1728]">
+              <span className="relative block aspect-[4/5] overflow-hidden border border-[#4a1728]/10 bg-[#e5d8c6]">
+                <WorkPlate work={work} index={index} className="absolute inset-0 h-full w-full" />
+              </span>
+              <span className="mt-3 block font-display text-[1.2rem] leading-tight text-[#1a0b10] underline-offset-4 group-hover:underline sm:text-[1.45rem]">{work.title}</span>
+              <span className="mt-1 block font-sans text-[9px] uppercase tracking-[0.15em] text-[#4a1728]/50">{work.author}</span>
+            </button>
+          ))}
+        </div>
+
+        {archived.length > 0 && (
+          <div className="mt-16 border-t border-[#4a1728]/15 pt-7">
+            <div className="flex flex-wrap items-baseline justify-between gap-4">
+              <h3 className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#4a1728]">Daily archive</h3>
+              <p className="font-sans text-[10px] uppercase tracking-[0.16em] text-[#4a1728]/45">Every selection stays credited</p>
+            </div>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {archived.map((entry) => (
+                <div key={entry.date} className="border border-[#4a1728]/12 bg-[#f5f0eb] p-4">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <p className="font-display text-xl text-[#1a0b10]">{formatDate(entry.date)}</p>
+                    <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#4a1728]/45">{entry.mode === 'manual' ? 'Editorial' : 'Automatic'}</span>
+                  </div>
+                  <p className="mt-2 line-clamp-2 font-sans text-[12px] leading-relaxed text-[#4a1728]/60">{entry.description}</p>
+                  <div className="mt-4 flex gap-2 overflow-hidden">
+                    {entry.works.slice(0, 4).map((work, index) => (
+                      <button key={work.id} type="button" onClick={() => onOpenWork(work)} className="group relative h-16 w-14 shrink-0 overflow-hidden bg-[#e5d8c6] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4a1728]" aria-label={`Open ${work.title}`}>
+                        <WorkPlate work={work} index={index} className="absolute inset-0 h-full w-full" />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
 export function ShowcasePage() {
   const [works, setWorks] = useState<Work[]>([]);
+  const [daily, setDaily] = useState<DailyShowcase | null>(null);
+  const [dailyArchive, setDailyArchive] = useState<DailyShowcase[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [query, setQuery] = useState('');
@@ -283,6 +348,17 @@ export function ShowcasePage() {
       .then(setWorks)
       .catch((reason) => { if (reason.name !== 'AbortError') setError('The showcase could not be loaded. Please try again.'); })
       .finally(() => setLoading(false));
+    return () => controller.abort();
+  }, []);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    Promise.all([fetchDailyShowcase(controller.signal), fetchDailyArchive(controller.signal)])
+      .then(([today, archive]) => {
+        setDaily(today);
+        setDailyArchive(archive);
+      })
+      .catch((reason) => { if (reason.name !== 'AbortError') setDailyArchive([]); });
     return () => controller.abort();
   }, []);
 
@@ -451,6 +527,8 @@ export function ShowcasePage() {
           </div>
         </section>
       )}
+
+      <DailyShowcaseSection daily={daily} archive={dailyArchive} onOpenWork={setSelected} />
 
       <ShowcaseAtlas
         works={filtered.length ? filtered : works}

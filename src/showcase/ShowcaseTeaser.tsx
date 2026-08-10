@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
-import { fetchWorks, type Work } from './showcaseApi';
+import { fetchDailyShowcase, type DailyShowcase } from './showcaseApi';
 
 /**
  * Витрина на главной журнала.
@@ -14,20 +14,18 @@ import { fetchWorks, type Work } from './showcaseApi';
  * витрины, — на главной она гость и должна читаться как часть номера.
  */
 export function ShowcaseTeaser() {
-  const [works, setWorks] = useState<Work[]>([]);
+  const [daily, setDaily] = useState<DailyShowcase | null>(null);
 
   useEffect(() => {
     const controller = new AbortController();
-    // fetchWorks сам отдаёт запасной набор, если API недоступен, и никогда не
-    // отклоняется — кроме отмены. Поэтому главная не может сломаться из-за
-    // витрины: в худшем случае блок покажет запасные работы.
-    fetchWorks(controller.signal)
-      .then((result) => setWorks(result.filter((work) => work.images?.[0]?.url).slice(0, 4)))
+    fetchDailyShowcase(controller.signal)
+      .then(setDaily)
       .catch(() => undefined);
     return () => controller.abort();
   }, []);
 
-  if (works.length < 4) return null;
+  const works = daily?.works?.filter((work) => work.images?.[0]?.url).slice(0, 4) || [];
+  if (!daily || works.length < 4) return null;
 
   return (
     <section className="border-t border-[rgb(var(--c-accent-rgb)_/_0.25)] bg-[var(--c-bg)] px-4 py-16 sm:px-8 md:px-16 md:py-24">
@@ -35,21 +33,20 @@ export function ShowcaseTeaser() {
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)]">
-              Showcase
+              Daily showcase{daily.date ? ` · ${daily.date}` : ''}
             </p>
             <h2 className="mt-4 max-w-[16ch] font-serif text-3xl leading-tight text-[var(--c-accent)] sm:text-4xl md:text-5xl">
-              A vitrine of set design and conceptual art
+              {daily.title || 'A vitrine of set design and conceptual art'}
             </h2>
             <p className="mt-5 max-w-[52ch] font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.72)] sm:text-lg">
-              Rooms, windows, stages and installations by authors worldwide — read from the
-              source, credited, and open for submissions.
+              {daily.description || 'Rooms, windows, stages and installations by authors worldwide — read from the source, credited, and open for submissions.'}
             </p>
           </div>
           <a
             href="/showcase"
             className="inline-flex min-h-12 w-fit shrink-0 items-center gap-3 border border-[rgb(var(--c-accent-rgb)_/_0.35)] px-6 font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] transition-colors hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--c-accent)]"
           >
-            Open the vitrine <ArrowUpRight size={15} />
+            Open the archive <ArrowUpRight size={15} />
           </a>
         </div>
 

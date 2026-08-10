@@ -732,6 +732,27 @@
                 </div>
                 <button id="showcaseReloadBtn" class="btn btn-primary" type="button">Обновить</button>
               </div>
+              <div style="margin-top:18px;padding:16px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.52)">
+                <div class="monitor-head" style="align-items:flex-start">
+                  <div>
+                    <h3 class="card-title" style="font-size:16px;margin-bottom:4px">Daily showcase</h3>
+                    <p class="card-desc">Выберите до четырёх опубликованных работ для превью на главной. Если ничего не выбрать, день соберётся автоматически.</p>
+                  </div>
+                  <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end">
+                    <label class="card-desc" style="display:flex;align-items:center;gap:6px">Дата <input id="showcaseDailyDate" type="date" style="min-height:36px;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--paper)"></label>
+                    <button id="showcaseDailyLoadBtn" class="btn" type="button">Загрузить</button>
+                    <button id="showcaseDailyAutoBtn" class="btn" type="button">Собрать автоматически</button>
+                    <button id="showcaseDailySaveBtn" class="btn btn-primary" type="button">Сохранить день</button>
+                  </div>
+                </div>
+                <div style="display:grid;gap:10px;margin-top:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+                  <label class="card-desc">Заголовок<input id="showcaseDailyTitle" type="text" maxlength="120" placeholder="Daily selection" style="display:block;width:100%;margin-top:5px;min-height:38px;padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--paper)"></label>
+                  <label class="card-desc">Описание<input id="showcaseDailyDescription" type="text" maxlength="320" placeholder="A changing shelf of visual references…" style="display:block;width:100%;margin-top:5px;min-height:38px;padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--paper)"></label>
+                </div>
+                <p id="showcaseDailyStatus" class="card-desc" style="margin:12px 0 0"></p>
+                <div id="showcaseDailyWorks" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin-top:12px"></div>
+                <div id="showcaseDailyArchive" style="margin-top:14px"></div>
+              </div>
               <div class="monitor-grid" style="margin-top:16px">
                 <div>
                   <h3 class="card-title" style="font-size:16px;margin-bottom:4px">Работы в витрину</h3>

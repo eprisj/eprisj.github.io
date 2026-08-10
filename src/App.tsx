@@ -191,6 +191,10 @@ const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
   'article.notFound.body': { EN: 'This link may be broken, or the article has moved.', RU: 'Ссылка могла устареть, либо статья была перемещена.', UA: 'Посилання могло застаріти, або статтю було переміщено.', DE: 'Dieser Link ist möglicherweise defekt oder der Artikel wurde verschoben.', IT: 'Questo link potrebbe essere non valido o l\'articolo è stato spostato.', ES: 'Este enlace puede estar roto o el artículo se ha movido.', TR: 'Bu bağlantı bozuk olabilir veya makale taşınmış olabilir.' },
   'article.backToArticles': { EN: 'Back to Articles', RU: 'Назад к статьям', UA: 'Назад до статей', DE: 'Zurück zu Artikeln', IT: 'Torna agli articoli', ES: 'Volver a artículos', TR: 'Makalelere dön' },
   'article.related': { EN: 'Read also', RU: 'Читать также', UA: 'Читати також', DE: 'Auch lesen', IT: 'Leggi anche', ES: 'Leer también', TR: 'Ayrıca okuyun' },
+  'reviews.homeKicker': { EN: 'From the review desk', RU: 'Из редакции обзоров', UA: 'З редакції оглядів', DE: 'Aus der Review-Redaktion', IT: 'Dalla redazione recensioni', ES: 'De la mesa de reseñas', TR: 'İnceleme masasından' },
+  'reviews.homeTitle': { EN: 'A closer look', RU: 'Взгляд ближе', UA: 'Погляд ближче', DE: 'Ein genauerer Blick', IT: 'Uno sguardo più vicino', ES: 'Una mirada más cercana', TR: 'Daha yakından' },
+  'reviews.homeDescription': { EN: 'Short, considered notes on places, objects, books and the ideas behind them.', RU: 'Короткие вдумчивые заметки о местах, предметах, книгах и идеях за ними.', UA: 'Короткі вдумливі нотатки про місця, предмети, книжки та ідеї за ними.', DE: 'Kurze, sorgfältige Notizen zu Orten, Objekten, Büchern und ihren Ideen.', IT: 'Note brevi e attente su luoghi, oggetti, libri e sulle idee che li muovono.', ES: 'Notas breves y cuidadas sobre lugares, objetos, libros y las ideas que hay detrás.', TR: 'Mekânlar, nesneler, kitaplar ve ardındaki fikirler üzerine kısa, özenli notlar.' },
+  'reviews.homeViewAll': { EN: 'View all reviews', RU: 'Все обзоры', UA: 'Усі огляди', DE: 'Alle Reviews', IT: 'Tutte le recensioni', ES: 'Ver todas las reseñas', TR: 'Tüm incelemeler' },
 };
 
 function getTranslation(lang: string, key: string) {
@@ -1691,22 +1695,25 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
 
         <article className="mt-12">
           <header className="mb-16">
-            {/* Hero image first — matches Figma layout */}
-            <div
-              className="relative left-1/2 w-screen -translate-x-1/2 aspect-[4/3] sm:aspect-[16/8] lg:aspect-[21/8] overflow-hidden bg-[#E8DED5] mb-8 sm:mb-12 cursor-pointer"
-              role="button"
-              tabIndex={0}
-              aria-label="View full image"
-              onClick={() => onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143), article.title)}
-              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143), article.title)}
-            >
-              <img
-                src={resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143)}
-                alt={article.title}
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-            </div>
+            {/* Hero image first — matches Figma layout. Editors may hide the
+                cover while keeping it available for cards and social previews. */}
+            {article.showCover !== false && (
+              <div
+                className="relative left-1/2 w-screen -translate-x-1/2 aspect-[4/3] sm:aspect-[16/8] lg:aspect-[21/8] overflow-hidden bg-[#E8DED5] mb-8 sm:mb-12 cursor-pointer"
+                role="button"
+                tabIndex={0}
+                aria-label="View full image"
+                onClick={() => onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143), article.title)}
+                onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143), article.title)}
+              >
+                <img
+                  src={resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143)}
+                  alt={article.title}
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            )}
             <div className="text-center">
               <div className="flex items-center justify-center gap-2 md:gap-4 font-mono text-[10px] md:text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] uppercase tracking-widest mb-6 flex-wrap">
                 <span>{article.date}</span>
@@ -2338,6 +2345,60 @@ function ReviewView({ review, t, onClose }: { review: Review; t: (key: string) =
       </div>
     </div>
   </motion.article>;
+}
+
+function HomeReviewsTeaser({ reviews, t, onReviewClick, onViewAll }: { reviews: Review[]; t: (key: string) => string; onReviewClick: (review: Review) => void; onViewAll: () => void }) {
+  const selected = [...reviews]
+    .filter((review) => review.homeFeatured || review.featured)
+    .sort((a, b) => (a.homeOrder ?? Number.MAX_SAFE_INTEGER) - (b.homeOrder ?? Number.MAX_SAFE_INTEGER))
+    .concat(reviews.filter((review) => !review.homeFeatured && !review.featured))
+    .filter((review, index, all) => all.findIndex((candidate) => candidate.id === review.id) === index)
+    .slice(0, 3);
+
+  if (!selected.length) return null;
+
+  return (
+    <section className="border-t border-[rgb(var(--c-accent-rgb)_/_0.25)] bg-[#E8DED5] px-4 py-16 sm:px-8 md:px-16 md:py-24">
+      <div className="mx-auto max-w-[1600px]">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)]">{t('reviews.homeKicker')}</p>
+            <h2 className="mt-4 max-w-[16ch] font-serif text-3xl leading-tight text-[var(--c-accent)] sm:text-4xl md:text-5xl">{t('reviews.homeTitle')}</h2>
+            <p className="mt-5 max-w-[52ch] font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.72)] sm:text-lg">{t('reviews.homeDescription')}</p>
+          </div>
+          <button
+            type="button"
+            onClick={onViewAll}
+            className="inline-flex min-h-12 w-fit shrink-0 items-center gap-3 border border-[rgb(var(--c-accent-rgb)_/_0.35)] px-6 font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] transition-colors hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--c-accent)]"
+          >
+            {t('reviews.homeViewAll')} <ArrowUpRight size={15} />
+          </button>
+        </div>
+
+        <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6">
+          {selected.map((review, index) => {
+            const summary = review.verdict || reviewPlainText(review.content);
+            return (
+              <article key={review.id} className={`flex h-full flex-col border border-[var(--c-accent)] bg-[var(--c-bg)] ${index === 0 ? 'md:col-span-2 md:grid md:grid-cols-2' : ''}`}>
+                {review.imageUrl && (
+                  <button type="button" onClick={() => onReviewClick(review)} className={`group block w-full overflow-hidden text-left ${index === 0 ? 'aspect-[4/3] md:aspect-auto' : 'aspect-[4/3]'}`} aria-label={review.title}>
+                    <img src={review.imageUrl} alt={review.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+                  </button>
+                )}
+                <div className="flex flex-1 flex-col p-6 sm:p-8">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)]">{review.category || 'Review'}</p>
+                  <h3 className="mt-3 font-serif text-2xl leading-tight text-[var(--c-accent)] sm:text-3xl">{review.title}</h3>
+                  {review.subject && <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)]">{review.subject}</p>}
+                  {summary && <p className="mt-5 line-clamp-4 font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.74)]">{summary}</p>}
+                  <button type="button" onClick={() => onReviewClick(review)} className="mt-auto inline-flex min-h-11 w-fit items-center gap-2 pt-7 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] underline decoration-[var(--c-gold)] underline-offset-4">{t('reviews.read')} <ArrowUpRight size={14} /></button>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (key: string) => string; onReviewClick: (review: Review) => void }) {
@@ -3356,6 +3417,12 @@ export default function App() {
                 {activeTab === 'gallery' && (
                   <>
                     <GallerySection items={items} articles={articles} onItemClick={setSelectedGalleryItem} onReadArticle={(article) => handleSelectArticle(article.id, article)} t={t} />
+                    <HomeReviewsTeaser
+                      reviews={reviews}
+                      t={t}
+                      onReviewClick={handleSelectReview}
+                      onViewAll={() => handleSetTab('reviews')}
+                    />
                     {/* Витрина жила отдельным маршрутом, на который с сайта не
                         вело ни одной ссылки. Suspense без запасного экрана:
                         блок не должен ничего занимать, пока грузится. */}
