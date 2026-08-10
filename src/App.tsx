@@ -1257,8 +1257,12 @@ function localizedHomepageCategoryLabel(category: HomepagePicsCategory, lang: st
     || category.label;
 }
 
+function homepageItemTitle(item: Item): string {
+  return item.homeTitle?.trim() || item.title?.trim() || '';
+}
+
 function homepageItemDescription(item: Item, fallback: string): string {
-  return item.description?.trim() || item.subtitle?.trim() || item.title?.trim() || fallback;
+  return item.homeDescription?.trim() || item.description?.trim() || item.homeSubtitle?.trim() || item.subtitle?.trim() || homepageItemTitle(item) || fallback;
 }
 
 function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]; onImageClick: (src: string, alt: string) => void; currentLang: string; t: (key: string) => string }) {
@@ -1317,6 +1321,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
         <div ref={viewportRef} className="home-carousel" tabIndex={0} aria-label={t('homepage.carouselLabel')} onKeyDown={(event) => { if (event.key === 'ArrowLeft') scrollCarousel(-1); if (event.key === 'ArrowRight') scrollCarousel(1); }}>
           {featuredItems.map(({ category, item }) => item ? (() => {
               const categoryLabel = localizedHomepageCategoryLabel(category, currentLang);
+              const title = homepageItemTitle(item);
               const description = homepageItemDescription(item, t('homepage.descriptionUnavailable'));
               return (
             <motion.article
@@ -1326,17 +1331,17 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
               whileTap={cardTap}
               role="button"
               tabIndex={0}
-              onClick={() => onImageClick(resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${item.title}`)}
-              onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onImageClick(resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${item.title}`); }}
+              onClick={() => onImageClick(resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${title}`)}
+              onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onImageClick(resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${title}`); }}
               aria-label={`${t('homepage.openImage')}: ${categoryLabel}`}
             >
               <div className="home-carousel-media relative aspect-[4/5] overflow-hidden bg-[#E8DED5]">
-                <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={item.title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.035]" loading="lazy" referrerPolicy="no-referrer" />
+                <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.035]" loading="lazy" referrerPolicy="no-referrer" />
                 <span className="home-carousel-category">{categoryLabel}</span>
               </div>
               <div className="home-carousel-caption">
                 <span className="home-carousel-caption-category">{categoryLabel}</span>
-                <h2>{item.title}</h2>
+                <h2>{title}</h2>
                 <p>{description}</p>
               </div>
             </motion.article>
@@ -1398,6 +1403,7 @@ function DailyPicksArchive({ archive, items, onImageClick, currentLang, t }: { a
                   ? localizedHomepageCategoryLabel({ id: localized.homeCategory, label: localized.homeCategory }, currentLang)
                   : card.categoryLabel || entry.label || 'Pics';
                 const description = homepageItemDescription(localized || ({ id: Number(card.id), title: card.title || category, subtitle: card.subtitle || '', fig: '', description: card.description || '', imageSeed: card.imageSeed || '' } as Item), t('homepage.descriptionUnavailable'));
+                const title = localized ? homepageItemTitle(localized) : (card.title || category);
                 return (
                   <div
                     key={`${entry.id}-${card.id}`}
@@ -1405,8 +1411,8 @@ function DailyPicksArchive({ archive, items, onImageClick, currentLang, t }: { a
                     role="button"
                     tabIndex={image ? 0 : -1}
                     aria-label={`${t('homepage.openImage')}: ${category}`}
-                    onClick={() => image && onImageClick(resolveMediaSource(image, 2000, 1400), `${category}: ${localized?.title || card.title || ''}`)}
-                    onKeyDown={(event) => { if (image && (event.key === 'Enter' || event.key === ' ')) onImageClick(resolveMediaSource(image, 2000, 1400), `${category}: ${localized?.title || card.title || ''}`); }}
+                    onClick={() => image && onImageClick(resolveMediaSource(image, 2000, 1400), `${category}: ${title}`)}
+                    onKeyDown={(event) => { if (image && (event.key === 'Enter' || event.key === ' ')) onImageClick(resolveMediaSource(image, 2000, 1400), `${category}: ${title}`); }}
                   >
                     <div className="relative aspect-[4/5] overflow-hidden bg-[#E8DED5]">
                       {image ? <img src={resolveMediaSource(image, 360, 450)} alt={category} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" referrerPolicy="no-referrer" /> : <span className="flex h-full items-center justify-center font-mono text-[9px] text-[rgb(var(--c-accent-rgb)_/_0.45)]">{t('homepage.descriptionUnavailable')}</span>}
@@ -1414,6 +1420,7 @@ function DailyPicksArchive({ archive, items, onImageClick, currentLang, t }: { a
                     </div>
                     <div className="home-carousel-caption home-carousel-caption--archive">
                       <span className="home-carousel-caption-category">{category}</span>
+                      <h3>{title}</h3>
                       <p>{description}</p>
                     </div>
                   </div>

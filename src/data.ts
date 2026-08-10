@@ -26,6 +26,12 @@ export interface Item {
   homeCategory?: string;
   /** Optional short label shown below a homepage card (for example "week 32"). */
   homeLabel?: string;
+  /** Standalone artwork metadata used by Pics of the week; keeps article metadata separate. */
+  homeTitle?: string;
+  homeSubtitle?: string;
+  homeDescription?: string;
+  homeCredit?: string;
+  homeSourceUrl?: string;
 }
 
 /** A frozen snapshot of one published "Pics of the week" composition. */

@@ -183,6 +183,14 @@ select {
   line-height: 1.2;
 }
 
+.home-carousel-caption h3 {
+  margin: 0 0 .35rem;
+  color: var(--c-accent);
+  font-family: var(--font-display);
+  font-size: .98rem;
+  line-height: 1.2;
+}
+
 .home-carousel-caption p {
   display: -webkit-box;
   margin: 0;

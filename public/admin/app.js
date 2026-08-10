@@ -4326,6 +4326,14 @@ function renderVisualForm() {
       <label>Категория Pics of the week<select id="vf-homeCategory"><option value="">Авторазбор по ключевым словам</option>${homepageCategoryOptions}</select></label>
       <label>Метка на изображении<input id="vf-homeLabel" value="${escapeHtml(entry.homeLabel || '')}" placeholder="Например: week 32" /></label>
       <label class="full">Описание<textarea id="vf-description">${escapeHtml(entry.description || '')}</textarea></label>
+      <div class="full homepage-work-fields">
+        <div class="homepage-work-fields-head"><strong>Самостоятельная работа для Pics of the week</strong><span>Эти поля не меняют заголовок статьи. Они используются только в подборке изображений и синхронизируются на 7 языков.</span></div>
+        <label>Название работы<input id="vf-homeTitle" value="${escapeHtml(entry.homeTitle || '')}" placeholder="Например: Unique Forms of Continuity in Space" /></label>
+        <label>Короткая строка<input id="vf-homeSubtitle" value="${escapeHtml(entry.homeSubtitle || '')}" placeholder="Автор · год · материал" /></label>
+        <label class="full">Описание работы<textarea id="vf-homeDescription" placeholder="Короткое описание именно изображения, не статьи">${escapeHtml(entry.homeDescription || '')}</textarea></label>
+        <label>Автор / источник<input id="vf-homeCredit" value="${escapeHtml(entry.homeCredit || '')}" placeholder="Artist · museum / archive" /></label>
+        <label>Источник изображения<input id="vf-homeSourceUrl" value="${escapeHtml(entry.homeSourceUrl || '')}" placeholder="https://…" /></label>
+      </div>
       <input type="hidden" id="vf-imageUrl" value="${escapeHtml(entry.imageUrl || '')}" />
       <div class="full" style="margin-bottom:4px">
         ${renderPhotoPreviewMarkup(previewSource)}
@@ -4554,6 +4562,11 @@ function buildEntryFromVisualForm(section, current) {
       imageUrl: getOptionalString(getFieldValue('vf-imageUrl')),
       homeCategory: getOptionalString(getFieldValue('vf-homeCategory')),
       homeLabel: getOptionalString(getFieldValue('vf-homeLabel')),
+      homeTitle: getOptionalString(getFieldValue('vf-homeTitle')),
+      homeSubtitle: getOptionalString(getFieldValue('vf-homeSubtitle')),
+      homeDescription: getOptionalString(getFieldValue('vf-homeDescription')),
+      homeCredit: getOptionalString(getFieldValue('vf-homeCredit')),
+      homeSourceUrl: getOptionalString(getFieldValue('vf-homeSourceUrl')),
       images: photos.length ? photos : undefined
     };
     applyDraftFieldsFromForm(next);
@@ -5271,7 +5284,15 @@ async function translateEntryForSection(section, entry, targetLang, sourceLang =
 
   const next = deepClone(entry);
   if (section === 'items') {
-    const obj = { title: entry.title, subtitle: entry.subtitle, description: entry.description };
+    const obj = {
+      title: entry.title,
+      subtitle: entry.subtitle,
+      description: entry.description,
+      homeTitle: entry.homeTitle,
+      homeSubtitle: entry.homeSubtitle,
+      homeDescription: entry.homeDescription,
+      homeCredit: entry.homeCredit,
+    };
     const translated = await aiTranslateObject(obj, targetLang);
     Object.assign(next, translated || {});
     return next;
@@ -8715,8 +8736,8 @@ function bindStudioRowActions() {
         warnings.push(`${group.label}: пока нет изображения — категория останется пустой.`);
         return;
       }
-      if (!String(item.title || '').trim()) warnings.push(`${group.label}: у первого изображения нет названия.`);
-      if (!String(item.description || '').trim()) errors.push(`${group.label}: добавьте краткое описание под изображением.`);
+      if (!String(item.homeTitle || item.title || '').trim()) warnings.push(`${group.label}: у первого изображения нет названия.`);
+      if (!String(item.homeDescription || item.description || '').trim()) errors.push(`${group.label}: добавьте краткое описание под изображением.`);
       if (!String(item.imageUrl || item.imageSeed || '').trim()) errors.push(`${group.label}: у первого изображения нет файла или URL.`);
       if (item.draft) warnings.push(`${group.label}: первое изображение — черновик.`);
       if (item.publishAt && Date.parse(item.publishAt) > Date.now()) warnings.push(`${group.label}: первое изображение запланировано на будущее.`);
@@ -8725,7 +8746,7 @@ function bindStudioRowActions() {
         .filter((lang) => {
           if (lang === DEFAULT_LANG) return !String(item.description || '').trim();
           const localizedItem = Array.isArray(localized[lang]?.items) ? localized[lang].items.find((candidate) => Number(candidate?.id) === Number(item.id)) : null;
-          return !String(localizedItem?.description || '').trim();
+          return !String(localizedItem?.homeDescription || localizedItem?.description || '').trim();
         });
       if (missingDescriptions.length) errors.push(`${group.label}: нет описания на языках ${missingDescriptions.join(', ')} — нажмите «Синхронизировать».`);
     });
@@ -8737,9 +8758,9 @@ function bindStudioRowActions() {
       id: Number(item.id),
       category,
       categoryLabel,
-      title: String(item.title || ''),
-      subtitle: String(item.subtitle || ''),
-      description: String(item.description || ''),
+      title: String(item.homeTitle || item.title || ''),
+      subtitle: String(item.homeSubtitle || item.subtitle || ''),
+      description: String(item.homeDescription || item.description || ''),
       imageSeed: String(item.imageSeed || ''),
       imageUrl: String(item.imageUrl || ''),
     }));
@@ -8948,7 +8969,7 @@ function bindStudioRowActions() {
       return `<article class="homepage-slot-card homepage-slot-card--${esc(group.id)}">
         <div class="homepage-slot-head"><span>${esc(group.label)}</span><span class="homepage-slot-marker">${item ? '●' : '○'}</span></div>
         <div class="homepage-slot-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : '<span>Нет фото</span>'}</div>
-        <div class="homepage-slot-caption"><span>${esc(group.label)}</span><strong>${esc(item?.title || 'Категория пока пустая')}</strong><p>${esc(item?.description || item?.subtitle || 'Добавьте короткое описание в редакторе.')}</p></div>
+        <div class="homepage-slot-caption"><span>${esc(group.label)}</span><strong>${esc(item?.homeTitle || item?.title || 'Категория пока пустая')}</strong><p>${esc(item?.homeDescription || item?.description || item?.homeSubtitle || item?.subtitle || 'Добавьте короткое описание работы в редакторе.')}</p></div>
         <label class="homepage-slot-label" for="homepage-category-${esc(group.id)}">Главное изображение категории</label>
         <select id="homepage-category-${esc(group.id)}" class="homepage-slot-select" data-home-category="${esc(group.id)}" ${autoMode ? 'disabled' : ''}>${options}</select>
         <small class="homepage-category-count">${group.items.length} изображений · LIFO ${data?.homepage?.picsOfWeek?.ordering === 'manual' ? 'выкл.' : 'вкл.'}</small>
@@ -9030,8 +9051,8 @@ function bindStudioRowActions() {
           ? `<img src="${esc(imageUrl)}" alt="" loading="lazy">`
           : '<span>Нет фото</span>'}</div>
         <div class="homepage-gallery-copy">
-          <h3>${esc(item.title || '(без заголовка)')}</h3>
-          <p>${esc(item.subtitle || item.description || 'Описание не заполнено')}</p>
+          <h3>${esc(item.homeTitle || item.title || '(без заголовка)')}</h3>
+          <p>${esc(item.homeDescription || item.description || item.homeSubtitle || item.subtitle || 'Описание не заполнено')}</p>
           <span class="homepage-gallery-id">ID ${esc(item.id)}</span>
         </div>
         <div class="homepage-gallery-controls">
