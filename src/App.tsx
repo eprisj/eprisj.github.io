@@ -593,6 +593,7 @@ const LANG_LABELS: Record<string, string> = {
 function NavBar({
   activeTab,
   setActiveTab,
+  onHome,
   currentLang,
   setCurrentLang,
   t,
@@ -602,6 +603,7 @@ function NavBar({
 }: {
   activeTab: string;
   setActiveTab: (tab: string) => void;
+  onHome: () => void;
   currentLang: string;
   setCurrentLang: (lang: string) => void;
   t: (key: string) => string;
@@ -678,7 +680,7 @@ function NavBar({
         </button>
         <a
           href="/"
-          onClick={(event) => { event.preventDefault(); setActiveTab('gallery'); setIsMenuOpen(false); }}
+          onClick={(event) => { event.preventDefault(); onHome(); setIsMenuOpen(false); }}
           aria-label={`${brandName} — home`}
           className="absolute left-1/2 -translate-x-1/2 leading-none font-mono"
         >
@@ -709,7 +711,7 @@ function NavBar({
       <nav className="hidden lg:flex fixed top-0 left-0 w-full z-50 bg-[var(--c-bg)] border-b border-[var(--c-accent)] text-xs font-mono uppercase tracking-widest text-[var(--c-accent)] h-16">
         {/* Logo Section */}
         <div className="w-64 border-r border-[var(--c-accent)] px-6 flex items-center shrink-0 bg-[var(--c-bg)] z-50">
-          <a href="/" className="flex items-center font-mono" onClick={(event) => { event.preventDefault(); setActiveTab('gallery'); }} aria-label={`${brandName} — home`}>
+          <a href="/" className="flex items-center font-mono" onClick={(event) => { event.preventDefault(); onHome(); }} aria-label={`${brandName} — home`}>
             <span className="text-xl tracking-[0.2em] text-[var(--c-accent)] pl-[0.2em] normal-case leading-none">{brandName}</span>
           </a>
         </div>
@@ -2146,23 +2148,15 @@ function ArticlesSection({
   articles,
   onArticleClick,
   t,
-  brandName,
 }: {
   articles: Article[];
   onArticleClick: (article: Article) => void;
   t: (key: string) => string;
-  brandName: string;
 }) {
   const filteredArticles = sortArticlesNewestFirst(articles);
 
   return (
     <div>
-      {/* The editorial masthead belongs to Articles, not Gallery. Pull it out
-          of the reading column so its photograph reaches both screen edges. */}
-      <div className="relative left-1/2 w-screen -translate-x-1/2 -mt-8 sm:-mt-12 md:-mt-24">
-        <SectionMasthead t={t} brandName={brandName} />
-      </div>
-
       <div className="max-w-4xl mx-auto px-5 sm:px-0 pt-8 sm:pt-10">
       <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-5%' }} className="space-y-10 sm:space-y-14">
       {filteredArticles.map((article, index) => (
@@ -3086,6 +3080,7 @@ export default function App() {
   const [selectedArticleId, setSelectedArticleId] = useState<number | null>(initialRoute.articleId ?? null);
   const [selectedReviewId, setSelectedReviewId] = useState<number | null>(initialRoute.reviewId ?? null);
   const [passportCode, setPassportCode] = useState<string | undefined>(initialRoute.passportCode);
+  const [homeTransitionKey, setHomeTransitionKey] = useState(0);
   const [currentLang, setCurrentLang] = useState(() => {
     try {
       const stored = localStorage.getItem('epris_language');
@@ -3205,6 +3200,12 @@ export default function App() {
     navigate(target === 'gallery' ? '/' : `/${target}`);
   }, [fallbackTab, navigate]);
 
+  const handleHome = useCallback(() => {
+    setHomeTransitionKey((key) => key + 1);
+    handleSetTab('gallery');
+    window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }, [handleSetTab]);
+
   const handleSelectArticle = useCallback((id: number, article?: Article) => {
     setSelectedArticleId(id);
     if (article) {
@@ -3300,6 +3301,7 @@ export default function App() {
       <NavBar
         activeTab={activeTab}
         setActiveTab={handleSetTab}
+        onHome={handleHome}
         currentLang={currentLang}
         setCurrentLang={setCurrentLang}
         t={t}
@@ -3307,6 +3309,22 @@ export default function App() {
         onSearch={handleSearch}
         brandName={brandName}
       />
+
+      <AnimatePresence>
+        {homeTransitionKey > 0 && (
+          <motion.div
+            key={homeTransitionKey}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 0.94, 0.94, 0] }}
+            transition={{ duration: 0.72, times: [0, 0.22, 0.56, 1], ease: [0.22, 1, 0.36, 1] }}
+            onAnimationComplete={() => setHomeTransitionKey((key) => key === homeTransitionKey ? 0 : key)}
+            className="pointer-events-none fixed inset-0 z-[90] flex items-center justify-center bg-black"
+            aria-hidden="true"
+          >
+            <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-white/80">EPRIS / HOME</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
       
       <RouteTransition routeKey={routeKey} direction={routeDirection}>
       <div className={activeTab === 'gallery' ? '' : 'lg:pr-12'}>
@@ -3361,7 +3379,7 @@ export default function App() {
                     <Suspense fallback={null}><ShowcaseTeaser /></Suspense>
                   </>
                 )}
-                {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} brandName={brandName} />}
+                {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
                     {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} onReviewClick={handleSelectReview} />}
                 {activeTab === 'about' && <AboutSection t={t} currentLang={currentLang} onOpenManifest={() => handleSetTab('manifest')} />}
                 {activeTab === 'manifest' && <ManifestPage t={t} currentLang={currentLang} />}
