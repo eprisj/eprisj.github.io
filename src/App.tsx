@@ -195,6 +195,13 @@ const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
   'reviews.homeTitle': { EN: 'A closer look', RU: 'Взгляд ближе', UA: 'Погляд ближче', DE: 'Ein genauerer Blick', IT: 'Uno sguardo più vicino', ES: 'Una mirada más cercana', TR: 'Daha yakından' },
   'reviews.homeDescription': { EN: 'Short, considered notes on places, objects, books and the ideas behind them.', RU: 'Короткие вдумчивые заметки о местах, предметах, книгах и идеях за ними.', UA: 'Короткі вдумливі нотатки про місця, предмети, книжки та ідеї за ними.', DE: 'Kurze, sorgfältige Notizen zu Orten, Objekten, Büchern und ihren Ideen.', IT: 'Note brevi e attente su luoghi, oggetti, libri e sulle idee che li muovono.', ES: 'Notas breves y cuidadas sobre lugares, objetos, libros y las ideas que hay detrás.', TR: 'Mekânlar, nesneler, kitaplar ve ardındaki fikirler üzerine kısa, özenli notlar.' },
   'reviews.homeViewAll': { EN: 'View all reviews', RU: 'Все обзоры', UA: 'Усі огляди', DE: 'Alle Reviews', IT: 'Tutte le recensioni', ES: 'Ver todas las reseñas', TR: 'Tüm incelemeler' },
+  'reviews.pageKicker': { EN: 'The review desk', RU: 'Редакция обзоров', UA: 'Редакція оглядів', DE: 'Die Review-Redaktion', IT: 'La redazione recensioni', ES: 'La mesa de reseñas', TR: 'İnceleme masası' },
+  'reviews.pageTitle': { EN: 'Reviews', RU: 'Обзоры', UA: 'Огляди', DE: 'Reviews', IT: 'Recensioni', ES: 'Reseñas', TR: 'İncelemeler' },
+  'reviews.pageDescription': { EN: 'Thoughtful notes on places, objects, books and the ideas behind them.', RU: 'Вдумчивые заметки о местах, предметах, книгах и идеях за ними.', UA: 'Вдумливі нотатки про місця, предмети, книжки та ідеї за ними.', DE: 'Sorgfältige Notizen zu Orten, Objekten, Büchern und ihren Ideen.', IT: 'Note attente su luoghi, oggetti, libri e sulle idee che li muovono.', ES: 'Notas cuidadas sobre lugares, objetos, libros y las ideas que hay detrás.', TR: 'Mekânlar, nesneler, kitaplar ve ardındaki fikirler üzerine özenli notlar.' },
+  'reviews.pageCount': { EN: '{count} reviews', RU: '{count} обзоров', UA: '{count} оглядів', DE: '{count} Reviews', IT: '{count} recensioni', ES: '{count} reseñas', TR: '{count} inceleme' },
+  'reviews.filterLabel': { EN: 'Filter reviews by category', RU: 'Фильтр обзоров по категории', UA: 'Фільтр оглядів за категорією', DE: 'Reviews nach Kategorie filtern', IT: 'Filtra le recensioni per categoria', ES: 'Filtrar reseñas por categoría', TR: 'İncelemeleri kategoriye göre filtrele' },
+  'reviews.empty': { EN: 'No reviews in this category yet.', RU: 'В этой категории пока нет обзоров.', UA: 'У цій категорії ще немає оглядів.', DE: 'In dieser Kategorie gibt es noch keine Reviews.', IT: 'Non ci sono ancora recensioni in questa categoria.', ES: 'Aún no hay reseñas en esta categoría.', TR: 'Bu kategoride henüz inceleme yok.' },
+  'reviews.clearFilter': { EN: 'Show all reviews', RU: 'Показать все обзоры', UA: 'Показати всі огляди', DE: 'Alle Reviews zeigen', IT: 'Mostra tutte le recensioni', ES: 'Mostrar todas las reseñas', TR: 'Tüm incelemeleri göster' },
 };
 
 function getTranslation(lang: string, key: string) {
@@ -2410,17 +2417,32 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
 
   const featured = reviews.find((r) => r.featured);
   const rest = reviews.filter((r) => r.id !== (featured?.id ?? -1));
+  const showFeatured = Boolean(featured && (activeCategory === '__all' || featured.category === activeCategory));
   const filtered = activeCategory === '__all' ? rest : rest.filter((r) => r.category === activeCategory);
+  const visibleCount = filtered.length + Number(showFeatured);
 
   return (
     <div>
+      <header className="mb-10 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-8 sm:mb-14 sm:pb-10">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{t('reviews.pageKicker')}</p>
+            <h1 className="mt-4 max-w-[10ch] font-serif text-[clamp(3.2rem,8vw,6.6rem)] leading-[0.84] text-[var(--c-accent)]">{t('reviews.pageTitle')}</h1>
+            <p className="mt-5 max-w-[48ch] font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.72)] sm:text-lg">{t('reviews.pageDescription')}</p>
+          </div>
+          <p className="shrink-0 border-l-2 border-[var(--c-gold)] pl-4 font-mono text-[10px] uppercase tracking-[0.18em] text-[rgb(var(--c-accent-rgb)_/_0.55)] sm:mb-1">
+            {t('reviews.pageCount').replace('{count}', String(reviews.length))}
+          </p>
+        </div>
+      </header>
+
       {/* Featured review */}
-      {featured && (
+      {showFeatured && featured && (
         <Reveal>
           <div className="mb-12 md:mb-16 border border-[var(--c-accent)] grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
             {featured.imageUrl && (
               <div className="relative aspect-[4/3] lg:aspect-auto bg-[#1a0812] overflow-hidden">
-                <img src={featured.imageUrl} alt={featured.title} className="w-full h-full object-cover" />
+                <img src={featured.imageUrl} alt={featured.title} loading="eager" decoding="async" className="w-full h-full object-cover" />
                 <span className="absolute top-4 left-4 bg-[rgb(var(--c-bg-rgb)_/_0.9)] text-[var(--c-accent)] font-mono text-[9px] uppercase tracking-[0.2em] px-3 py-1.5">
                   {t('reviews.featured')}
                 </span>
@@ -2438,7 +2460,7 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
                 </p>
               )}
               <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{reviewPlainText(featured.content).slice(0, 260)}{reviewPlainText(featured.content).length > 260 ? '…' : ''}</p>
-              <button onClick={() => onReviewClick(featured)} className="mt-6 inline-flex min-h-11 items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest">{t('reviews.read')} <ArrowUpRight size={14} /></button>
+              <button type="button" onClick={() => onReviewClick(featured)} aria-label={`${t('reviews.read')} — ${featured.title}`} className="mt-6 inline-flex min-h-11 w-fit items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest transition-colors hover:border-[var(--c-gold)] hover:text-[var(--c-gold)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--c-accent)]">{t('reviews.read')} <ArrowUpRight size={14} /></button>
               <div className="mt-auto pt-6 flex items-center justify-between">
                 {featured.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{featured.meta}</span>}
                 <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] ml-auto">— {featured.author}</span>
@@ -2450,61 +2472,72 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
 
       {/* Category filter */}
       {categories.length > 2 && (
-        <div className="flex flex-wrap gap-2 mb-8">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              type="button"
-              onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest border transition-colors ${
-                activeCategory === cat
-                  ? 'bg-[var(--c-accent)] text-[var(--c-bg)] border-[var(--c-accent)]'
-                  : 'text-[var(--c-accent)] border-[rgb(var(--c-accent-rgb)_/_0.3)] hover:border-[var(--c-accent)]'
-              }`}
-            >
-              {cat === '__all' ? t('reviews.all') : cat}
-            </button>
-          ))}
+        <div className="mb-8 flex flex-wrap items-center justify-between gap-4 border-y border-[rgb(var(--c-accent-rgb)_/_0.14)] py-4">
+          <div role="group" aria-label={t('reviews.filterLabel')} className="flex flex-wrap gap-2">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => setActiveCategory(cat)}
+                aria-pressed={activeCategory === cat}
+                className={`min-h-11 border px-4 font-mono text-[10px] uppercase tracking-widest transition-colors ${
+                  activeCategory === cat
+                    ? 'bg-[var(--c-accent)] text-[var(--c-bg)] border-[var(--c-accent)]'
+                    : 'text-[var(--c-accent)] border-[rgb(var(--c-accent-rgb)_/_0.3)] hover:border-[var(--c-accent)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.05)]'
+                }`}
+              >
+                {cat === '__all' ? t('reviews.all') : cat}
+              </button>
+            ))}
+          </div>
+          <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{visibleCount} / {reviews.length}</span>
         </div>
       )}
 
       {/* Review grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-        {filtered.map((review, index) => (
-          <Reveal key={review.id} delay={(index % 2) * 0.08}>
-            <div className="bg-[#E8DED5] border border-[var(--c-accent)] h-full flex flex-col overflow-hidden">
-              {review.imageUrl && (
-                <div className="relative aspect-[16/9] bg-[#1a0812] overflow-hidden">
-                  <img src={review.imageUrl} alt={review.title} className="w-full h-full object-cover" />
-                  {review.category && (
-                    <span className="absolute top-3 left-3 bg-[rgb(var(--c-bg-rgb)_/_0.9)] text-[var(--c-accent)] font-mono text-[8px] uppercase tracking-[0.2em] px-2.5 py-1">
-                      {review.category}
-                    </span>
+      {visibleCount === 0 ? (
+        <div className="border border-dashed border-[rgb(var(--c-accent-rgb)_/_0.28)] px-6 py-16 text-center sm:py-24">
+          <p className="font-serif text-3xl text-[var(--c-accent)]">{t('reviews.empty')}</p>
+          <button type="button" onClick={() => setActiveCategory('__all')} className="mt-6 inline-flex min-h-11 items-center border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest transition-colors hover:text-[var(--c-gold)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--c-accent)]">{t('reviews.clearFilter')}</button>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2">
+          {filtered.map((review, index) => (
+            <Reveal key={review.id} delay={(index % 2) * 0.08}>
+              <div className="bg-[#E8DED5] border border-[var(--c-accent)] h-full flex flex-col overflow-hidden">
+                {review.imageUrl && (
+                  <div className="relative aspect-[16/9] bg-[#1a0812] overflow-hidden">
+                    <img src={review.imageUrl} alt={review.title} loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                    {review.category && (
+                      <span className="absolute top-3 left-3 bg-[rgb(var(--c-bg-rgb)_/_0.9)] text-[var(--c-accent)] font-mono text-[8px] uppercase tracking-[0.2em] px-2.5 py-1">
+                        {review.category}
+                      </span>
+                    )}
+                  </div>
+                )}
+                <div className="p-6 sm:p-8 flex flex-col flex-1">
+                  {!review.imageUrl && review.category && (
+                    <span className="mb-4 font-mono text-[10px] uppercase tracking-widest text-[var(--c-gold)]">{review.category}</span>
                   )}
-                </div>
-              )}
-              <div className="p-6 sm:p-8 flex flex-col flex-1">
-                {!review.imageUrl && review.category && (
-                  <span className="mb-4 font-mono text-[10px] uppercase tracking-widest text-[var(--c-gold)]">{review.category}</span>
-                )}
-                <h3 className="font-serif text-2xl md:text-3xl text-[var(--c-accent)] mb-1.5">{review.title}</h3>
-                <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-4">{review.subject}</p>
-                {review.verdict && (
-                  <p className="font-serif text-lg italic text-[var(--c-accent)] leading-snug mb-4 border-l-2 border-[var(--c-gold)] pl-3">
-                    {review.verdict}
-                  </p>
-                )}
-                <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{reviewPlainText(review.content).slice(0, 190)}{reviewPlainText(review.content).length > 190 ? '…' : ''}</p>
-                <button onClick={() => onReviewClick(review)} className="mt-6 inline-flex min-h-11 items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest">{t('reviews.read')} <ArrowUpRight size={14} /></button>
-                <div className="mt-auto pt-6 flex items-center justify-between gap-3">
-                  {review.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{review.meta}</span>}
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] ml-auto">— {review.author}</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-[var(--c-accent)] mb-1.5">{review.title}</h3>
+                  <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-4">{review.subject}</p>
+                  {review.verdict && (
+                    <p className="font-serif text-lg italic text-[var(--c-accent)] leading-snug mb-4 border-l-2 border-[var(--c-gold)] pl-3">
+                      {review.verdict}
+                    </p>
+                  )}
+                  <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{reviewPlainText(review.content).slice(0, 190)}{reviewPlainText(review.content).length > 190 ? '…' : ''}</p>
+                  <button type="button" onClick={() => onReviewClick(review)} aria-label={`${t('reviews.read')} — ${review.title}`} className="mt-6 inline-flex min-h-11 w-fit items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest transition-colors hover:border-[var(--c-gold)] hover:text-[var(--c-gold)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--c-accent)]">{t('reviews.read')} <ArrowUpRight size={14} /></button>
+                  <div className="mt-auto pt-6 flex items-center justify-between gap-3">
+                    {review.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{review.meta}</span>}
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] ml-auto">— {review.author}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Reveal>
-        ))}
-      </div>
+            </Reveal>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
