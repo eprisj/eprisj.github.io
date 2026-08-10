@@ -258,6 +258,7 @@ document.addEventListener('beforeinput', (event) => {
     { key: 'articles', label: 'Статьи' },
     { key: 'items', label: 'Главная' },
     { key: 'reviews', label: 'Reviews' },
+    { key: 'libraryItems', label: 'Библиотека' },
     { key: 'authors', label: 'Команда' },
     { key: 'studioProjects', label: 'Studio' },
   ];

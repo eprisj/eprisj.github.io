@@ -286,7 +286,7 @@ export interface SiteSettings {
 }
 
 export type VisibilitySectionKey = 'gallery' | 'articles' | 'reviews' | 'about' | 'manifest' | 'issue' | 'design' | 'studio' | 'radio' | 'podcasts';
-export type VisibilityEntityKey = 'articles' | 'items' | 'reviews' | 'authors' | 'studioProjects';
+export type VisibilityEntityKey = 'articles' | 'items' | 'reviews' | 'libraryItems' | 'authors' | 'studioProjects';
 
 export interface SectionVisibility {
   /** Whether the route itself can be opened. */
@@ -718,7 +718,7 @@ export function getContentForLanguage(lang: string): LanguageContent {
     items: [...liveItems, ...articleGalleryItems],
     articles: liveArticles,
     reviews: isPreview() ? reviews : reviews.filter((entry) => isEntityLive(entry) && isEntityVisible('reviews', entry.id)),
-    libraryItems: isPreview() ? libraryItems : libraryItems.filter(isEntityLive)
+    libraryItems: isPreview() ? libraryItems : libraryItems.filter((entry) => isEntityLive(entry) && isEntityVisible('libraryItems', entry.id))
   };
 }
 
