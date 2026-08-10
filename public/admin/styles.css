@@ -5348,9 +5348,12 @@ body.busy::after {
 .homepage-composer-help { display: grid; gap: 8px; }
 .homepage-check-list { display: grid; gap: 8px; margin: 4px 0 0; padding: 0 0 0 17px; color: var(--text-muted); font-size: .72rem; line-height: 1.45; }
 .homepage-control-card,
-.homepage-showcase-editor { display: grid; gap: 14px; }
+.homepage-showcase-editor,
+.homepage-carousel-layout-card { display: grid; gap: 14px; }
 .homepage-control-grid,
-.homepage-showcase-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-items: end; }
+.homepage-showcase-grid,
+.homepage-carousel-layout-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-items: end; }
+.homepage-layout-status { min-height: 1.2em; color: var(--text-muted); font-family: var(--font-mono); font-size: .62rem; letter-spacing: .04em; text-transform: uppercase; }
 .homepage-field { display: grid; gap: 6px; min-width: 0; color: var(--text-muted); font-size: .66rem; font-weight: 700; }
 .homepage-field > span { text-transform: uppercase; letter-spacing: .06em; }
 .homepage-field input,
@@ -5437,7 +5440,8 @@ body.busy::after {
   .homepage-category-locales { grid-column: 2; }
   .homepage-category-locale-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .homepage-control-grid,
-  .homepage-showcase-grid { grid-template-columns: 1fr; }
+  .homepage-showcase-grid,
+  .homepage-carousel-layout-grid { grid-template-columns: 1fr; }
   .homepage-showcase-wide { grid-column: auto; }
 }
 
@@ -5454,7 +5458,8 @@ body.busy::after {
   .homepage-admin-status-meta { justify-content: flex-start; }
   .homepage-composer-preview { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .homepage-control-grid,
-  .homepage-showcase-grid { grid-template-columns: 1fr; }
+  .homepage-showcase-grid,
+  .homepage-carousel-layout-grid { grid-template-columns: 1fr; }
   .homepage-slot-card--sculpture { order: -1; }
   .homepage-category-row { grid-template-columns: 1fr; }
   .homepage-category-row .homepage-category-index { display: none; }
