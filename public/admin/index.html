@@ -365,13 +365,17 @@
                   <div>
                     <span class="homepage-admin-kicker">Редакционная витрина</span>
                     <h3 id="homepageShowcaseEditorTitle" class="card-title">A vitrine of set design and conceptual art</h3>
-                    <p class="card-desc">Автоматический режим берёт первые опубликованные работы из витрины. В ручном режиме укажите ID работ в нужном порядке.</p>
+                    <p class="card-desc">Автоматический режим собирает витрину по редакционному рейтингу: избранное, кураторские работы, полнота описания и оценка. Ручной режим позволяет зафиксировать свой порядок.</p>
                   </div>
                   <span class="homepage-preview-badge">Homepage teaser</span>
                 </div>
                 <div class="homepage-showcase-grid">
-                  <label class="homepage-field"><span>Режим</span><select id="homepageShowcaseMode"><option value="auto">Автоматически</option><option value="manual">Вручную</option></select></label>
-                  <label class="homepage-field homepage-showcase-wide"><span>Порядок работ (ID через запятую)</span><input id="homepageShowcaseIds" type="text" placeholder="work-id-1, work-id-2, work-id-3, work-id-4"><small>Для ручного режима. ID можно взять во вкладке «Витрина».</small></label>
+                  <label class="homepage-toggle-field homepage-showcase-wide"><input id="homepageShowcaseEnabled" type="checkbox" checked><span>Показывать Showcase на главной<small>Отключает только анонс — сами работы и страница /showcase остаются доступными.</small></span></label>
+                  <label class="homepage-field"><span>Режим выбора</span><select id="homepageShowcaseMode"><option value="auto">Автоматически</option><option value="manual">Вручную</option></select></label>
+                  <label class="homepage-field"><span>Сортировка</span><select id="homepageShowcaseSort"><option value="editorial">Редакционный рейтинг</option><option value="score">Оценка редакции</option><option value="newest">Новые первыми</option><option value="oldest">Старые первыми</option></select></label>
+                  <label class="homepage-field"><span>Минимальный рейтинг</span><input id="homepageShowcaseMinScore" type="number" min="0" max="10000" step="10" placeholder="0"><small>0 — не отсеивать; рейтинг строится из качества карточки.</small></label>
+                  <label class="homepage-field"><span>Карточек в анонсе</span><select id="homepageShowcaseLimit"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></label>
+                  <label class="homepage-field homepage-showcase-wide"><span>Ручной порядок (ID через запятую)</span><input id="homepageShowcaseIds" type="text" placeholder="work-id-1, work-id-2, work-id-3, work-id-4"><small>Работает в ручном режиме. ID можно взять во вкладке «Витрина».</small></label>
                   <label class="homepage-field"><span>Надзаголовок</span><input id="homepageShowcaseEyebrow" type="text" placeholder="Showcase"></label>
                   <label class="homepage-field homepage-showcase-wide"><span>Заголовок</span><input id="homepageShowcaseTitle" type="text" placeholder="A vitrine of set design and conceptual art"></label>
                   <label class="homepage-field homepage-showcase-wide"><span>Описание</span><textarea id="homepageShowcaseDescription" rows="3" placeholder="Короткое описание витрины"></textarea></label>

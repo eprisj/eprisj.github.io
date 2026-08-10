@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
-import { fetchWorks, type Work } from './showcaseApi';
+import { fetchWorks, rankShowcaseWorks, type Work } from './showcaseApi';
 import { getHomepageSettings } from '../data';
 
 /**
@@ -17,31 +17,41 @@ import { getHomepageSettings } from '../data';
 export function ShowcaseTeaser() {
   const [works, setWorks] = useState<Work[]>([]);
   const showcaseSettings = getHomepageSettings().showcase || {};
+  const enabled = showcaseSettings.enabled !== false;
   const mode = showcaseSettings.mode === 'manual' ? 'manual' : 'auto';
+  const sortMode = ['editorial', 'score', 'newest', 'oldest'].includes(String(showcaseSettings.sort))
+    ? showcaseSettings.sort as 'editorial' | 'score' | 'newest' | 'oldest'
+    : 'editorial';
+  const minScore = Math.max(0, Number(showcaseSettings.minScore) || 0);
+  const limit = Math.max(2, Math.min(6, Math.floor(Number(showcaseSettings.limit) || 4)));
   const featuredWorkIds = Array.isArray(showcaseSettings.featuredWorkIds)
     ? showcaseSettings.featuredWorkIds.map((id) => String(id).trim()).filter(Boolean)
     : [];
-  const featuredKey = featuredWorkIds.join('|');
+  const featuredKey = `${featuredWorkIds.join('|')}|${enabled}|${sortMode}|${minScore}|${limit}`;
 
   useEffect(() => {
     const controller = new AbortController();
+    if (!enabled) {
+      setWorks([]);
+      return () => controller.abort();
+    }
     // fetchWorks сам отдаёт запасной набор, если API недоступен, и никогда не
     // отклоняется — кроме отмены. Поэтому главная не может сломаться из-за
     // витрины: в худшем случае блок покажет запасные работы.
     fetchWorks(controller.signal)
       .then((result) => {
-        const available = result.filter((work) => work.images?.[0]?.url && (!work.status || work.status === 'Published'));
+        const available = rankShowcaseWorks(result, { sortMode, minScore });
         if (mode !== 'manual' || featuredWorkIds.length === 0) {
-          setWorks(available.slice(0, 4));
+          setWorks(available.slice(0, limit));
           return;
         }
         const byId = new Map(available.map((work) => [String(work.id), work]));
         const selected = featuredWorkIds.map((id) => byId.get(id)).filter(Boolean) as Work[];
-        setWorks(selected.slice(0, 4));
+        setWorks(selected.slice(0, limit));
       })
       .catch(() => undefined);
     return () => controller.abort();
-  }, [mode, featuredKey]);
+  }, [enabled, mode, sortMode, minScore, limit, featuredKey]);
 
   const eyebrow = showcaseSettings.eyebrow || 'Showcase';
   const title = showcaseSettings.title || 'A vitrine of set design and conceptual art';
@@ -50,7 +60,7 @@ export function ShowcaseTeaser() {
   const requestedCtaUrl = String(showcaseSettings.ctaUrl || '').trim();
   const ctaUrl = /^(?:https?:\/\/|\/)/i.test(requestedCtaUrl) ? requestedCtaUrl : '/showcase';
 
-  if (works.length < 4) return null;
+  if (!enabled || works.length < 2) return null;
 
   return (
     <section className="border-t border-[rgb(var(--c-accent-rgb)_/_0.25)] bg-[var(--c-bg)] px-4 py-16 sm:px-8 md:px-16 md:py-24">
