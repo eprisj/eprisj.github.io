@@ -47,7 +47,8 @@ export function ShowcaseTeaser() {
   const title = showcaseSettings.title || 'A vitrine of set design and conceptual art';
   const description = showcaseSettings.description || 'Rooms, windows, stages and installations by authors worldwide — read from the source, credited, and open for submissions.';
   const ctaLabel = showcaseSettings.ctaLabel || 'Open the vitrine';
-  const ctaUrl = showcaseSettings.ctaUrl || '/showcase';
+  const requestedCtaUrl = String(showcaseSettings.ctaUrl || '').trim();
+  const ctaUrl = /^(?:https?:\/\/|\/)/i.test(requestedCtaUrl) ? requestedCtaUrl : '/showcase';
 
   if (works.length < 4) return null;
 
