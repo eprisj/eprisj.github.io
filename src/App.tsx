@@ -1447,7 +1447,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
               const isCenter = position === 2;
               return (
             <motion.article
-              key={`${item.id}-${safeCenterIndex}`}
+              key={item.id}
               data-carousel-position={isCenter ? 'center' : 'side'}
               className={`home-carousel-card group ${isCenter ? 'home-carousel-card--center' : 'home-carousel-card--side'}`}
               role="button"
