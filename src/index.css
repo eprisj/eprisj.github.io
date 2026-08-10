@@ -276,6 +276,10 @@ select {
   transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
 }
 
+.home-carousel-mobile-controls {
+  display: none;
+}
+
 .home-carousel-arrow:hover {
   background: var(--c-accent);
   border-color: var(--c-accent);
@@ -328,27 +332,85 @@ select {
     margin-inline: -.25rem;
     padding-inline: .25rem;
     justify-content: flex-start;
+    overflow-x: hidden;
+    touch-action: pan-y pinch-zoom;
+  }
+
+  .home-carousel-arrow-controls {
+    display: none;
   }
 
   .home-carousel-card {
-    flex-basis: 16%;
-    transform: scale(var(--home-carousel-side-scale, .88));
+    display: none;
   }
 
   .home-carousel-card.home-carousel-card--center {
-    flex-basis: 76%;
-    transform: scale(var(--home-carousel-center-scale, 1));
+    display: block;
+    flex: 0 0 100%;
+    transform: none;
+    opacity: 1;
   }
 
-  .home-carousel-arrow {
-    width: 2.6rem;
-    height: 2.6rem;
-    min-width: 2.6rem;
+  .home-carousel-mobile-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+    margin-top: .85rem;
+    padding: 0 .25rem;
+  }
+
+  .home-carousel-mobile-count,
+  .home-carousel-mobile-swipe {
+    min-width: 3rem;
+    color: color-mix(in srgb, var(--c-accent) 56%, transparent);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: .58rem;
+    letter-spacing: .14em;
+    line-height: 1;
+  }
+
+  .home-carousel-mobile-swipe {
+    text-align: right;
+    font-size: .95rem;
+    letter-spacing: 0;
+  }
+
+  .home-carousel-mobile-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .25rem;
+    flex: 1;
+  }
+
+  .home-carousel-mobile-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.5rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .home-carousel-mobile-dot span {
+    display: block;
+    width: .35rem;
+    height: .35rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--c-accent) 26%, transparent);
+    transition: width .2s ease, background-color .2s ease;
+  }
+
+  .home-carousel-mobile-dot.is-active span {
+    width: 1.25rem;
+    background: var(--c-accent);
   }
 
   /* Side cards are visual peeks on a phone. Their title/excerpt would be
-     unreadable at that width; the full caption returns as soon as the work is
-     moved into the centre position. */
+     unreadable at that width; only the selected work is rendered on mobile. */
   .home-carousel-card--side .home-carousel-caption {
     visibility: hidden;
     min-height: 0;

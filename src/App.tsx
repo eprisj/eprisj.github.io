@@ -1315,6 +1315,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
   const configuredCenterIndex = categories.findIndex((category) => category.id === configuredCenterCategory);
   const defaultCenterIndex = configuredCenterIndex >= 0 ? configuredCenterIndex : Math.min(2, Math.max(0, featuredItems.length - 1));
   const [centerIndex, setCenterIndex] = useState(defaultCenterIndex);
+  const previousConfiguredCenterIndexRef = useRef(configuredCenterIndex);
   const itemCount = featuredItems.length;
   const safeCenterIndex = itemCount ? ((centerIndex % itemCount) + itemCount) % itemCount : 0;
   const gestureStartRef = useRef<{ x: number; y: number } | null>(null);
@@ -1324,8 +1325,13 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
     : [];
 
   useEffect(() => {
-    if (configuredCenterIndex >= 0 && configuredCenterIndex !== centerIndex) setCenterIndex(configuredCenterIndex);
-  }, [configuredCenterIndex, centerIndex]);
+    // The admin value is the starting centre, not a lock. Readers must still
+    // be able to move through every work with a swipe, dot, or arrow.
+    if (previousConfiguredCenterIndexRef.current !== configuredCenterIndex) {
+      previousConfiguredCenterIndexRef.current = configuredCenterIndex;
+      if (configuredCenterIndex >= 0) setCenterIndex(configuredCenterIndex);
+    }
+  }, [configuredCenterIndex]);
 
   useEffect(() => {
     if (!itemCount) return;
@@ -1389,7 +1395,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
       <Reveal>
         <div className="mb-7 flex items-center justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-4">
           <h1 id="pics-of-week-title" className="font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">{t('homepage.picsTitle')}</h1>
-          <div className="flex shrink-0 gap-2">
+          <div className="home-carousel-arrow-controls flex shrink-0 gap-2">
             <button type="button" onClick={() => moveCarousel(-1)} className="home-carousel-arrow" aria-label={t('homepage.previous')}><ArrowLeft size={16} strokeWidth={1.5} aria-hidden="true" /></button>
             <button type="button" onClick={() => moveCarousel(1)} className="home-carousel-arrow" aria-label={t('homepage.next')}><ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" /></button>
           </div>
@@ -1437,6 +1443,31 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
             </motion.article>
               );
             })() : <div key={`${category.id}-${safeCenterIndex}`} className="home-carousel-empty"><span className="font-mono text-[10px] uppercase tracking-[0.2em]">{localizedHomepageCategoryLabel(category, currentLang)}</span><p>{t('homepage.descriptionUnavailable')}</p></div>)}
+        </div>
+        <div className="home-carousel-mobile-controls" aria-label={t('homepage.carouselLabel')}>
+          <span className="home-carousel-mobile-count" aria-hidden="true">
+            {String(safeCenterIndex + 1).padStart(2, '0')} / {String(Math.max(itemCount, 1)).padStart(2, '0')}
+          </span>
+          <div className="home-carousel-mobile-dots" role="tablist" aria-label={t('homepage.carouselLabel')}>
+            {featuredItems.map(({ category }, index) => {
+              const label = localizedHomepageCategoryLabel(category, currentLang);
+              const isActive = index === safeCenterIndex;
+              return (
+                <button
+                  key={category.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-label={`${label} ${index + 1}`}
+                  className={`home-carousel-mobile-dot${isActive ? ' is-active' : ''}`}
+                  onClick={() => setCenterIndex(index)}
+                >
+                  <span aria-hidden="true" />
+                </button>
+              );
+            })}
+          </div>
+          <span className="home-carousel-mobile-swipe" aria-hidden="true">↔</span>
         </div>
       </Reveal>
     </section>
