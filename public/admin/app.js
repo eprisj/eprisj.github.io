@@ -2230,18 +2230,12 @@ function runLocalizationHealthCheck(data) {
     }
   }
 
-  const missingCards = getArticlesMissingHomepageCard(data);
-  if (missingCards.length) {
-    const list = missingCards.map((a) => `#${a.id} «${a.title}»`).join(', ');
-    warnings.push(`Без карточки на главной: ${list}. Откройте вкладку «Главная» → «＋ Из статьи».`);
-  }
-
   const level = errors.length > 0 ? 'error' : warnings.length > 0 ? 'warn' : 'ok';
   const detail = level === 'error'
     ? 'Незаполненная заготовка глушит перевод целого раздела — это ошибка, не предупреждение.'
     : level === 'warn'
-      ? 'Есть статьи без карточки на главной.'
-      : 'Ни одной заглушки в локалях, все статьи представлены на главной.';
+      ? 'Есть предупреждения по локалям или медиаданным.'
+      : 'Локали синхронизированы, а фотоподборка отделена от статей.';
 
   return createMonitorResult(level, 'Локализация и главная', detail, [...errors, ...warnings].slice(0, 10));
 }
@@ -3823,80 +3817,9 @@ function bindCreatorQualityInputs(fallback = {}) {
   });
 }
 
-// Publications (articles) and the homepage gallery (items) are separate
-// collections — a written article never landed on the homepage by itself,
-// so editors had to open the Homepage tab and click "＋ from article" by
-// hand for every single story, in every language, or it silently stayed
-// invisible on the front page and unlisted in this same tab. That manual
-// step is gone: this runs automatically the moment an article is created,
-// for every language bucket, positioned first so the newest story is the
-// featured one. The Homepage tab's own "＋ from article" button (see
-// initHomepageTab below) still exists for backfilling older articles that
-// predate this — it calls this exact function instead of duplicating it.
-function galleryCardBaseTitle(value) {
-  return String(value || '').split(':')[0].trim().toLowerCase();
-}
-
-// Articles the homepage gallery has no card for — same title-matching rule
-// the public site uses to link a Gallery card back to its Article
-// (findMatchingArticle in src/App.tsx). Used by the Homepage tab's backfill
-// button and by the audit dashboard's "Публикации без карточки" check.
-function getArticlesMissingHomepageCard(data) {
-  const articles = Array.isArray(data.articles) ? data.articles : [];
-  const items = Array.isArray(data.items) ? data.items : [];
-  const taken = new Set();
-  items.forEach((item) => {
-    const title = String(item.title || '').trim();
-    if (!title) return;
-    taken.add(title.toLowerCase());
-    taken.add(galleryCardBaseTitle(title));
-  });
-  return articles.filter((article) => {
-    const title = String(article.title || '').trim();
-    if (!title) return false;
-    return !taken.has(title.toLowerCase()) && !taken.has(galleryCardBaseTitle(title));
-  });
-}
-
-function addGalleryCardForArticleData(data, articleId) {
-  const article = (data.articles || []).find((entry) => String(entry.id) === String(articleId));
-  if (!article) return false;
-
-  const existingIds = (Array.isArray(data.items) ? data.items : [])
-    .map((item) => Number(item.id))
-    .filter((id) => Number.isFinite(id));
-  const id = existingIds.length ? Math.max(...existingIds) + 1 : 1;
-
-  const cardFrom = (source, position) => ({
-    id,
-    title: String(source.title || '').trim(),
-    subtitle: source.category || source.subcategory || '',
-    fig: `FIG. ${String(position).padStart(2, '0')}`,
-    description: source.excerpt || '',
-    imageSeed: source.imageSeed || `item-${id}`,
-    imageUrl: source.imageUrl || '',
-  });
-
-  if (!Array.isArray(data.items)) data.items = [];
-  data.items.unshift(cardFrom(article, data.items.length + 1));
-
-  // Same card per language, or a localized homepage simply won't have it —
-  // text comes from the article's own translation when one already exists.
-  const buckets = data.localizedCollections && typeof data.localizedCollections === 'object'
-    ? data.localizedCollections
-    : {};
-  Object.keys(buckets).forEach((lang) => {
-    const bucket = buckets[lang];
-    if (!bucket || typeof bucket !== 'object' || !Array.isArray(bucket.items)) return;
-    const localizedArticle = Array.isArray(bucket.articles)
-      ? bucket.articles.find((entry) => String(entry.id) === String(articleId))
-      : null;
-    bucket.items.unshift(cardFrom(localizedArticle || article, bucket.items.length + 1));
-  });
-
-  return true;
-}
-
+// Articles and Pics of the week are separate editorial collections. The
+// homepage strip accepts only explicitly curated image records; writing an
+// article never creates a homepage photo automatically.
 async function createArticleFromBlueprint(kind) {
   try {
     setBusy(true);
@@ -3919,16 +3842,12 @@ async function createArticleFromBlueprint(kind) {
     entries.push(sourceArticle);
     setStatus('info', `Создаю языковые версии статьи #${nextId}...`);
     const syncedLangs = await syncMissingEntryLanguages(data, 'articles', sourceLang, sourceArticle);
-    // Translations are on the article now, so localized homepage cards below
-    // can already pull real text instead of the source language.
-    addGalleryCardForArticleData(data, nextId);
-
     visualSectionSelect.value = 'articles';
     visualLangSelect.value = sourceLang;
     pendingVisualEntryId = nextId;
     setEditorData(data);
     const syncNote = syncedLangs.length ? ` Языки: ${syncedLangs.join(', ')}.` : '';
-    setStatus('success', `Шаблон статьи #${nextId} создан и добавлен на главную первой карточкой.${syncNote}`);
+    setStatus('success', `Шаблон статьи #${nextId} создан. Для Pics of the week добавьте отдельное фото в разделе «Главная».${syncNote}`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
@@ -6619,16 +6538,11 @@ async function addVisualEntry() {
     entries.push(entry);
     setStatus('info', `Создаю языковые версии записи #${nextId}...`);
     const syncedLangs = await syncMissingEntryLanguages(data, section, lang, entry);
-    // The "+" button also creates articles (not just reviews/items/etc.) when
-    // that section is selected — same rule as the blueprint flow: a new
-    // article always gets a homepage card, so it's never invisible on /.
-    const gotCard = section === 'articles' && addGalleryCardForArticleData(data, nextId);
 
     pendingVisualEntryId = nextId;
     setEditorData(data);
     const syncNote = syncedLangs.length ? ` Языки: ${syncedLangs.join(', ')}.` : '';
-    const cardNote = gotCard ? ' Добавлена первой карточкой на главную.' : '';
-    setStatus('success', `Добавлена новая запись #${nextId} (${getSectionLabel(section)} / ${lang}).${syncNote}${cardNote}`);
+    setStatus('success', `Добавлена новая запись #${nextId} (${getSectionLabel(section)} / ${lang}).${syncNote}`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
@@ -8707,9 +8621,15 @@ function bindStudioRowActions() {
     });
   }
 
+  function homepagePhotoItems(data) {
+    return (Array.isArray(data?.items) ? data.items : []).filter((item) =>
+      Boolean(String(item?.imageUrl || item?.imageSeed || '').trim())
+    );
+  }
+
   function homepageCategoryGroups(data) {
     const categories = homepageCategories(data);
-    const items = Array.isArray(data?.items) ? data.items : [];
+    const items = homepagePhotoItems(data);
     const pics = data?.homepage?.picsOfWeek || {};
     const useLifo = pics.ordering !== 'manual';
     const stamp = (item) => {
@@ -8837,7 +8757,7 @@ function bindStudioRowActions() {
             const image = card?.imageUrl || card?.imageSeed || '';
             return `<div class="homepage-archive-thumb">
               <div class="homepage-archive-thumb-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : '—'}</div>
-              <span class="homepage-archive-thumb-title">${esc(card?.title || `#${card?.id || ''}`)}</span>
+              <span class="homepage-archive-thumb-title">${esc(card?.categoryLabel || card?.category || 'Фото')}</span>
             </div>`;
           }).join('')}
         </div>
@@ -8978,7 +8898,7 @@ function bindStudioRowActions() {
     const lastPublishedEl = document.getElementById('homepageLastPublished');
     const dot = document.querySelector('#homepageAdminStatus .homepage-status-dot');
     if (!preview || !auditEl || !data) return;
-    const items = Array.isArray(data.items) ? data.items : [];
+    const items = homepagePhotoItems(data);
     const groups = homepageCategoryGroups(data);
     const autoMode = data?.homepage?.picsOfWeek?.mode === 'auto';
     const audit = homepageAudit(data, groups);
@@ -8998,7 +8918,7 @@ function bindStudioRowActions() {
     preview.innerHTML = groups.map((group) => {
       const item = group.items[0];
       const image = item?.imageUrl || item?.imageSeed || '';
-      const options = [`<option value="">— Выбрать изображение —</option>`, ...items.map((candidate) => `<option value="${esc(candidate.id)}" ${item && String(candidate.id) === String(item.id) ? 'selected' : ''}>${esc(candidate.title || `#${candidate.id}`)}</option>`)].join('');
+      const options = [`<option value="">— Выбрать фото —</option>`, ...items.map((candidate) => `<option value="${esc(candidate.id)}" ${item && String(candidate.id) === String(item.id) ? 'selected' : ''}>${esc(candidate.title || `Фото #${candidate.id}`)}</option>`)].join('');
       return `<article class="homepage-slot-card homepage-slot-card--${esc(group.id)}">
         <div class="homepage-slot-head"><span>${esc(group.label)}</span><span class="homepage-slot-marker">${item ? '●' : '○'}</span></div>
         <div class="homepage-slot-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : '<span>Нет фото</span>'}</div>
@@ -9065,13 +8985,12 @@ function bindStudioRowActions() {
     const audit = homepageAudit(data, groups);
     renderHomepageControls(data);
     meta.textContent = items.length
-      ? `${items.length} ${items.length === 1 ? 'карточка' : 'карточек'} · ${groups.filter((group) => group.items.length).length}/${groups.length} категорий заполнено · режим ${data.homepage?.picsOfWeek?.ordering === 'manual' ? 'ручной' : 'LIFO'}`
-      : 'В галерее пока нет карточек.';
+      ? `${items.length} фото · ${groups.filter((group) => group.items.length).length}/${groups.length} категорий заполнено · режим ${data.homepage?.picsOfWeek?.ordering === 'manual' ? 'ручной' : 'LIFO'}`
+      : 'В фотоподборке пока нет изображений.';
     renderHomepageComposer(data);
     renderHomepageArchive(data);
     if (!items.length) {
-      list.innerHTML = '<div class="card homepage-gallery-empty"><p>Добавьте первую карточку галереи.</p></div>';
-      renderMissingArticles();
+      list.innerHTML = '<div class="card homepage-gallery-empty"><p>Добавьте первое изображение.</p></div>';
       return;
     }
     list.innerHTML = items.map((item, index) => {
@@ -9105,56 +9024,6 @@ function bindStudioRowActions() {
     if (audit.errors.length) {
       showToast?.('info', `Главная требует внимания: ${audit.errors[0]}`);
     }
-    renderMissingArticles();
-  }
-
-  function addCardFromArticle(articleId) {
-    // For articles that predate addGalleryCardForArticleData (top of file) —
-    // new ones get this automatically now, this button stays for backfill.
-    const data = readContent();
-    if (!data) { showToast?.('error', 'Сначала загрузите контент.'); return; }
-    if (!addGalleryCardForArticleData(data, articleId)) {
-      showToast?.('error', 'Статья не найдена.');
-      return;
-    }
-
-    // A backfilled article is intentionally put at the top of its inferred
-    // category. The default LIFO ordering makes it the first image there.
-    const newest = data.items[0];
-    if (newest) {
-      const inferred = homepageCategoryGroups(data).find((group) => group.items.some((item) => String(item.id) === String(newest.id)));
-      newest.homeCategory = newest.homeCategory || inferred?.id || homepageCategories(data)[0]?.id;
-      newest.homeLabel = newest.homeLabel || inferred?.label || 'week';
-    }
-
-    setEditorData(data);
-    renderHomepageTab();
-    scheduleHomepageAutoPublish();
-    showToast?.('success', 'Карточка добавлена первой в категорию по принципу LIFO. Нажмите «Опубликовать».');
-  }
-
-  function renderMissingArticles() {
-    const box = document.getElementById('homepageMissingArticles');
-    if (!box) return;
-    const data = readContent();
-    if (!data) { box.innerHTML = ''; return; }
-    const missing = getArticlesMissingHomepageCard(data);
-    if (!missing.length) {
-      box.innerHTML = '<p class="form-hint">Все статьи представлены на главной.</p>';
-      return;
-    }
-    box.innerHTML = `
-      <div class="card homepage-missing-card">
-        <p class="card-desc"><strong>${missing.length}</strong> ${missing.length === 1 ? 'статья ещё не показана' : 'статей ещё не показано'} в галерее главной. Нажмите, чтобы собрать карточку из статьи.</p>
-        <div class="homepage-missing-list">
-          ${missing.map((article) => `
-            <button class="btn btn-sm" type="button" data-home-from-article="${esc(article.id)}">
-              ＋ ${esc(article.title || ('#' + article.id))}
-            </button>`).join('')}
-        </div>
-      </div>`;
-    box.querySelectorAll('[data-home-from-article]').forEach((button) =>
-      button.addEventListener('click', () => addCardFromArticle(button.getAttribute('data-home-from-article'))));
   }
 
   async function publishHomepage({ silent = false } = {}) {
@@ -9223,17 +9092,6 @@ function bindStudioRowActions() {
     setTimeout(() => addEntryBtn?.click(), 80);
   });
   document.getElementById('homepagePublishBtn')?.addEventListener('click', publishHomepage);
-  document.getElementById('homepageFromArticleBtn')?.addEventListener('click', () => {
-    const data = readContent();
-    if (!data) { showToast?.('error', 'Сначала загрузите контент.'); return; }
-    const missing = getArticlesMissingHomepageCard(data);
-    if (!missing.length) { showToast?.('success', 'Все статьи уже есть на главной.'); return; }
-    if (missing.length === 1) { addCardFromArticle(missing[0].id); return; }
-    renderMissingArticles();
-    document.getElementById('homepageMissingArticles')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    showToast?.('info', 'Выберите статью в списке ниже.');
-  });
-
   document.getElementById('homepageRefreshBtn')?.addEventListener('click', () => refreshHomepageFromVps({ silent: false }));
   document.getElementById('homepageAutoRefresh')?.addEventListener('change', (event) => {
     const prefs = readHomepageAutoPrefs();
