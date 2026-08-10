@@ -682,9 +682,10 @@ function NavBar({
           href="/"
           onClick={(event) => { event.preventDefault(); onHome(); setIsMenuOpen(false); }}
           aria-label={`${brandName} — home`}
-          className="absolute left-1/2 -translate-x-1/2 leading-none font-mono"
+          aria-current={activeTab === 'gallery' ? 'page' : undefined}
+          className={`absolute left-1/2 -translate-x-1/2 leading-none font-mono px-3 py-2 transition-colors duration-200 ${activeTab === 'gallery' ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'text-[var(--c-accent)]'}`}
         >
-          <span className="text-lg min-[360px]:text-xl tracking-[0.22em] text-[var(--c-accent)] pl-[0.22em]">{brandName}</span>
+          <span className="text-lg min-[360px]:text-xl tracking-[0.22em] pl-[0.22em]">{brandName}</span>
         </a>
         {/* Language is the only control that earns a place beside the wordmark
             here. Issue used to sit next to it as a filled pill, which made the
@@ -710,9 +711,9 @@ function NavBar({
       {/* ── Desktop header ── */}
       <nav className="hidden lg:flex fixed top-0 left-0 w-full z-50 bg-[var(--c-bg)] border-b border-[var(--c-accent)] text-xs font-mono uppercase tracking-widest text-[var(--c-accent)] h-16">
         {/* Logo Section */}
-        <div className="w-64 border-r border-[var(--c-accent)] px-6 flex items-center shrink-0 bg-[var(--c-bg)] z-50">
-          <a href="/" className="flex items-center font-mono" onClick={(event) => { event.preventDefault(); onHome(); }} aria-label={`${brandName} — home`}>
-            <span className="text-xl tracking-[0.2em] text-[var(--c-accent)] pl-[0.2em] normal-case leading-none">{brandName}</span>
+        <div className={`w-64 border-r border-[var(--c-accent)] px-6 flex items-center shrink-0 z-50 transition-colors duration-200 ${activeTab === 'gallery' ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'bg-[var(--c-bg)] text-[var(--c-accent)]'}`}>
+          <a href="/" className="flex items-center font-mono" onClick={(event) => { event.preventDefault(); onHome(); }} aria-label={`${brandName} — home`} aria-current={activeTab === 'gallery' ? 'page' : undefined}>
+            <span className="text-xl tracking-[0.2em] pl-[0.2em] normal-case leading-none">{brandName}</span>
           </a>
         </div>
 
@@ -1223,14 +1224,9 @@ function ManifestPage({ t, currentLang }: { t: (key: string) => string; currentL
 }
 
 function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (item: Item) => void }) {
-  if (items.length === 0) return null;
-  // The homepage can now be curated explicitly from the admin composer. Older
-  // content has no homeSlot metadata, so keep a deterministic fallback:
-  // first item is the centre piece, then right, then left. This makes the
-  // rollout backwards compatible while allowing Maria's asymmetric layout.
   const homepageSettings = getHomepageSettings();
   const picksMode = homepageSettings.picsOfWeek?.mode === 'auto' ? 'auto' : 'manual';
-  const autoItems = picksMode === 'auto'
+  const orderedItems = picksMode === 'auto'
     ? [...items].sort((a, b) => {
         const stamp = (value?: string) => {
           const parsed = value ? Date.parse(value) : Number.NaN;
@@ -1239,93 +1235,90 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
         return stamp(b.updatedAt || b.publishAt) - stamp(a.updatedAt || a.publishAt) || b.id - a.id;
       })
     : items;
-  const used = new Set<number>();
-  const take = (slot: Item['homeSlot'], fallbackIndex: number): Item | null => {
-    const explicit = picksMode === 'manual' && slot ? autoItems.find((item) => item.homeSlot === slot && !used.has(item.id)) : undefined;
-    const fallback = autoItems.find((item, index) => index === fallbackIndex && !used.has(item.id));
-    const item = explicit || fallback || autoItems.find((candidate) => !used.has(candidate.id));
-    if (item) used.add(item.id);
-    return item || null;
+  const categories = [
+    { id: 'art', label: 'Art', matches: ['art', 'culture', 'history', 'restoration'] },
+    { id: 'architecture', label: 'Architecture', matches: ['architecture', 'building', 'urban'] },
+    { id: 'design', label: 'Design', matches: ['design', 'interior', 'travel'] },
+  ];
+  const classify = (item: Item) => {
+    const text = `${item.subtitle || ''} ${item.title || ''}`.toLowerCase();
+    return categories.find((category) => category.matches.some((match) => text.includes(match)))?.id || 'art';
   };
-  const center = take('center', 0);
-  const right = take('right', 1);
-  const left = take('left', 2);
-  const homeCards: { item: Item; slot: 'left' | 'center' | 'right' }[] = [
-    left ? { item: left, slot: 'left' } : null,
-    center ? { item: center, slot: 'center' } : null,
-    right ? { item: right, slot: 'right' } : null,
-  ].filter(Boolean) as { item: Item; slot: 'left' | 'center' | 'right' }[];
-  const slotClass: Record<'left' | 'center' | 'right', string> = {
-    // Desktop: #3 left, #1 centre, #2 right. Mobile: #1, #2, #3.
-    left: 'order-3 md:order-1 md:col-span-3',
-    center: 'order-1 md:order-2 md:col-span-6',
-    right: 'order-2 md:order-3 md:col-span-3',
-  };
+  const categorized = categories.map((category) => ({
+    ...category,
+    items: orderedItems.filter((item) => classify(item) === category.id),
+  }));
+  const [activeCategory, setActiveCategory] = useState(categories[0].id);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const activeItems = categorized.find((category) => category.id === activeCategory)?.items || [];
 
-  const renderHomeCard = ({ item, slot }: { item: Item; slot: 'left' | 'center' | 'right' }) => {
-    const primary = slot === 'center';
-    return (
-      <motion.article
-        key={`${slot}-${item.id}`}
-        className={`group cursor-pointer ${slotClass[slot]}`}
-        whileHover={cardHover}
-        whileTap={cardTap}
-        role="button"
-        tabIndex={0}
-        onClick={() => onItemClick(item)}
-        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onItemClick(item)}
-        aria-label={`View: ${item.title}`}
-      >
-        <div className={`relative overflow-hidden bg-[#E8DED5] ${primary ? 'aspect-[4/3]' : 'aspect-[4/5]'}`}>
-          <img
-            src={resolveMediaSource(item.imageUrl || item.imageSeed, primary ? 1100 : 620, primary ? 825 : 775)}
-            alt={item.title}
-            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.025]"
-            loading={primary ? 'eager' : 'lazy'}
-            referrerPolicy="no-referrer"
-          />
-          <span className="absolute top-3 left-3 bg-[var(--c-bg)]/90 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--c-accent)]">
-            {item.homeLabel || 'week'}
-          </span>
-        </div>
-        <div className={`${primary ? 'pt-5 sm:pt-6' : 'pt-4'} flex flex-col gap-2`}>
-          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">
-            {item.subtitle || 'EPRIS'}
-          </p>
-          <h2 className={`${primary ? 'text-2xl sm:text-3xl' : 'text-xl sm:text-2xl'} font-crimson leading-tight text-[var(--c-accent)] group-hover:text-[var(--c-gold)] transition-colors duration-200`}>
-            {item.title}
-          </h2>
-          {item.description && (
-            <p className={`${primary ? 'line-clamp-3 text-sm sm:text-base' : 'line-clamp-2 text-sm'} font-serif leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.72)]`}>
-              {item.description}
-            </p>
-          )}
-          <span className="mt-1 inline-flex min-h-11 w-fit items-center border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-accent)] group-hover:text-[var(--c-gold)] group-hover:border-[var(--c-gold)] transition-colors">
-            {primary ? 'read full' : 'read'} <ArrowUpRight size={14} className="ml-2" aria-hidden="true" />
-          </span>
-        </div>
-      </motion.article>
-    );
+  const scrollCarousel = (direction: -1 | 1) => {
+    viewportRef.current?.scrollBy({ left: direction * Math.max(viewportRef.current.clientWidth * 0.82, 260), behavior: 'smooth' });
   };
 
   return (
-    <div>
-      {/* Maria's three-card weekly composition: one strong centre image with
-          two quieter side pieces on desktop; the same priority becomes a
-          natural one-column reading order on mobile. */}
+    <section className="home-pics-section" aria-labelledby="pics-of-week-title">
       <Reveal>
-        <div className="relative -mx-4 sm:mx-0 mb-16 sm:mb-28">
-          <div className="mb-8 flex items-end justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-4">
-            <h1 className="font-crimson text-3xl sm:text-4xl text-[var(--c-accent)]">Pics of the week</h1>
-            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">EPRIS / home</span>
+        <div className="mb-7 flex flex-col gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">EPRIS / home</p>
+            <h1 id="pics-of-week-title" className="mt-2 font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">Pics of the week</h1>
           </div>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-start md:gap-6 lg:gap-10">
-            {homeCards.map(renderHomeCard)}
+          <p className="max-w-[34ch] font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)] sm:text-right">Images first. Three editorial directions, browsed one frame at a time.</p>
+        </div>
+        <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex min-w-0 gap-2 overflow-x-auto pb-1" role="tablist" aria-label="Pics of the week categories">
+            {categorized.map((category) => (
+              <button
+                type="button"
+                key={category.id}
+                role="tab"
+                aria-selected={activeCategory === category.id}
+                onClick={() => {
+                  setActiveCategory(category.id);
+                  requestAnimationFrame(() => {
+                    if (viewportRef.current) viewportRef.current.scrollLeft = 0;
+                  });
+                }}
+                className={`min-h-10 shrink-0 border px-4 font-mono text-[10px] uppercase tracking-[0.16em] transition-colors ${activeCategory === category.id ? 'border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)]' : 'border-[rgb(var(--c-accent-rgb)_/_0.22)] text-[rgb(var(--c-accent-rgb)_/_0.65)] hover:border-[var(--c-accent)] hover:text-[var(--c-accent)]'}`}
+              >
+                {category.label} <span className="ml-1 opacity-60">{category.items.length}</span>
+              </button>
+            ))}
+          </div>
+          <div className="flex shrink-0 gap-2 self-end sm:self-auto">
+            <button type="button" onClick={() => scrollCarousel(-1)} className="home-carousel-arrow" aria-label="Previous images">←</button>
+            <button type="button" onClick={() => scrollCarousel(1)} className="home-carousel-arrow" aria-label="Next images">→</button>
           </div>
         </div>
+        <div ref={viewportRef} className="home-carousel" tabIndex={0} aria-label={`${activeCategory} images`} onKeyDown={(event) => { if (event.key === 'ArrowLeft') scrollCarousel(-1); if (event.key === 'ArrowRight') scrollCarousel(1); }}>
+          {activeItems.length ? activeItems.map((item) => (
+            <motion.article
+              key={item.id}
+              className="home-carousel-card group"
+              whileHover={cardHover}
+              whileTap={cardTap}
+              role="button"
+              tabIndex={0}
+              onClick={() => onItemClick(item)}
+              onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onItemClick(item); }}
+              aria-label={`View: ${item.title}`}
+            >
+              <div className="relative aspect-[4/5] overflow-hidden bg-[#E8DED5]">
+                <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={item.title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.035]" loading="lazy" referrerPolicy="no-referrer" />
+                <span className="absolute left-3 top-3 bg-[var(--c-bg)]/90 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--c-accent)]">{item.homeLabel || categorized.find((category) => category.id === activeCategory)?.label}</span>
+              </div>
+              <div className="pt-3">
+                <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{item.subtitle || activeCategory}</p>
+                <h2 className="mt-1 font-crimson text-xl leading-tight text-[var(--c-accent)] group-hover:text-[var(--c-gold)] transition-colors">{item.title}</h2>
+              </div>
+            </motion.article>
+          )) : (
+            <div className="home-carousel-empty"><span className="font-mono text-[10px] uppercase tracking-[0.2em]">{categorized.find((category) => category.id === activeCategory)?.label} · coming soon</span><p>Здесь появятся новые изображения.</p></div>
+          )}
+        </div>
       </Reveal>
-
-    </div>
+    </section>
   );
 }
 
@@ -3372,6 +3365,16 @@ export default function App() {
                 {activeTab === 'gallery' && (
                   <>
                     <GallerySection items={items} onItemClick={setSelectedGalleryItem} />
+                    <section className="homepage-articles mt-16 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-12 sm:mt-24 sm:pt-16" aria-labelledby="homepage-articles-title">
+                      <div className="mb-8 flex flex-col gap-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-5 sm:flex-row sm:items-end sm:justify-between">
+                        <div>
+                          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">EPRIS / editorial</p>
+                          <h2 id="homepage-articles-title" className="mt-2 font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">Articles</h2>
+                        </div>
+                        <p className="max-w-[34ch] font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)] sm:text-right">The latest writing from the journal, newest first.</p>
+                      </div>
+                      <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />
+                    </section>
                     <DailyPicksArchive archive={homepageArchive} items={items} />
                     {/* Витрина жила отдельным маршрутом, на который с сайта не
                         вело ни одной ссылки. Suspense без запасного экрана:
