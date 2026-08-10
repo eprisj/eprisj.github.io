@@ -4399,6 +4399,14 @@
     "RU": {
       "items": [
         {
+          "id": 14,
+          "title": "Сандра Кантанен: за пределами традиционной фотографии",
+          "subtitle": "Фотография",
+          "description": "Фотография может быть порогом, а не записью — Сандра Кантанен превращает пейзаж в пространство между памятью, мифом и оптическим искажением.",
+          "fig": "FIG. 11",
+          "imageSeed": "photography-sandra-kantanen"
+        },
+        {
           "id": 10,
           "title": "Против прямого угла",
           "subtitle": "Architecture",
@@ -6710,6 +6718,14 @@
     "UA": {
       "items": [
         {
+          "id": 14,
+          "title": "Сандра Кантанен: за межами традиційної фотографії",
+          "subtitle": "Фотографія",
+          "description": "Фотографія може бути порогом, а не записом — Сандра Кантанен перетворює пейзаж на простір між пам’яттю, міфом та оптичним викривленням.",
+          "fig": "FIG. 11",
+          "imageSeed": "photography-sandra-kantanen"
+        },
+        {
           "id": 10,
           "title": "Проти прямого кута",
           "subtitle": "Architecture",
@@ -8962,6 +8978,14 @@
     },
     "DE": {
       "items": [
+        {
+          "id": 14,
+          "title": "Sandra Kantanen: Jenseits der traditionellen Fotografie",
+          "subtitle": "Fotografie",
+          "description": "Ein Foto kann eine Schwelle statt eines Protokolls sein — Sandra Kantanen verwandelt Landschaft in einen Raum zwischen Erinnerung, Mythos und optischer Verzerrung.",
+          "fig": "FIG. 11",
+          "imageSeed": "photography-sandra-kantanen"
+        },
         {
           "id": 10,
           "title": "Gegen den rechten Winkel",
@@ -11216,6 +11240,14 @@
     "ES": {
       "items": [
         {
+          "id": 14,
+          "title": "Sandra Kantanen: más allá de la fotografía tradicional",
+          "subtitle": "Fotografía",
+          "description": "Una fotografía puede ser un umbral y no un registro: Sandra Kantanen convierte el paisaje en un espacio entre memoria, mito y distorsión óptica.",
+          "fig": "FIG. 11",
+          "imageSeed": "photography-sandra-kantanen"
+        },
+        {
           "id": 10,
           "title": "Contra el ángulo recto",
           "subtitle": "Architecture",
@@ -13469,6 +13501,14 @@
     "TR": {
       "items": [
         {
+          "id": 14,
+          "title": "Sandra Kantanen: Geleneksel Fotoğrafın Ötesinde",
+          "subtitle": "Fotoğraf",
+          "description": "Bir fotoğraf kayıttan çok bir eşik olabilir — Sandra Kantanen manzarayı bellek, mit ve optik bozulma arasındaki bir alana dönüştürüyor.",
+          "fig": "FIG. 11",
+          "imageSeed": "photography-sandra-kantanen"
+        },
+        {
           "id": 10,
           "title": "Dik Açıya Karşı",
           "subtitle": "Architecture",
@@ -15721,6 +15761,14 @@
     },
     "IT": {
       "items": [
+        {
+          "id": 14,
+          "title": "Sandra Kantanen: oltre l’obiettivo della fotografia tradizionale",
+          "subtitle": "Fotografia",
+          "description": "Una fotografia può essere una soglia, non una registrazione — Sandra Kantanen trasforma il paesaggio in uno spazio tra memoria, mito e distorsione ottica.",
+          "fig": "FIG. 11",
+          "imageSeed": "photography-sandra-kantanen"
+        },
         {
           "id": 10,
           "title": "Contro l’angolo retto",
@@ -18394,7 +18442,16 @@
             "installation",
             "ceramic",
             "vase"
-          ]
+          ],
+          "labels": {
+            "EN": "Sculpture",
+            "RU": "Скульптура",
+            "UA": "Скульптура",
+            "DE": "Skulptur",
+            "IT": "Scultura",
+            "ES": "Escultura",
+            "TR": "Heykel"
+          }
         },
         {
           "id": "painting",
@@ -18409,7 +18466,16 @@
             "culture",
             "history",
             "restoration"
-          ]
+          ],
+          "labels": {
+            "EN": "Painting",
+            "RU": "Живопись",
+            "UA": "Живопис",
+            "DE": "Malerei",
+            "IT": "Pittura",
+            "ES": "Pintura",
+            "TR": "Resim"
+          }
         },
         {
           "id": "architecture",
@@ -18421,7 +18487,16 @@
             "urban",
             "space",
             "city"
-          ]
+          ],
+          "labels": {
+            "EN": "Architecture",
+            "RU": "Архитектура",
+            "UA": "Архітектура",
+            "DE": "Architektur",
+            "IT": "Architettura",
+            "ES": "Arquitectura",
+            "TR": "Mimarlık"
+          }
         },
         {
           "id": "design",
@@ -18433,7 +18508,16 @@
             "furniture",
             "travel",
             "material"
-          ]
+          ],
+          "labels": {
+            "EN": "Design",
+            "RU": "Дизайн",
+            "UA": "Дизайн",
+            "DE": "Design",
+            "IT": "Design",
+            "ES": "Diseño",
+            "TR": "Tasarım"
+          }
         },
         {
           "id": "photography",
@@ -18446,7 +18530,16 @@
             "lens",
             "camera",
             "visual"
-          ]
+          ],
+          "labels": {
+            "EN": "Photography",
+            "RU": "Фотография",
+            "UA": "Фотографія",
+            "DE": "Fotografie",
+            "IT": "Fotografia",
+            "ES": "Fotografía",
+            "TR": "Fotoğraf"
+          }
         }
       ]
     }
