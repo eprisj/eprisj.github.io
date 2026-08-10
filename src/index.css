@@ -124,6 +124,11 @@ select {
   touch-action: pan-x pinch-zoom;
   padding: 0.25rem 0.25rem 1rem;
   cursor: grab;
+  scrollbar-width: none;
+}
+
+.home-carousel::-webkit-scrollbar {
+  display: none;
 }
 
 .home-carousel:active {
@@ -145,6 +150,16 @@ select {
 .home-carousel-card:focus-visible {
   outline: 2px solid var(--c-accent);
   outline-offset: 4px;
+}
+
+.home-carousel-caption {
+  min-height: 12.5rem;
+  padding: .9rem .2rem .35rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--c-accent) 22%, transparent);
+}
+
+.home-carousel-caption h2 {
+  text-wrap: balance;
 }
 
 .home-carousel-arrow {
@@ -192,13 +207,31 @@ select {
 
 @media (min-width: 640px) {
   .home-carousel-card {
-    flex-basis: min(46vw, 24rem);
+    flex-basis: min(46vw, 22rem);
   }
 }
 
 @media (min-width: 1024px) {
   .home-carousel-card {
     flex-basis: calc((100% - 2rem) / 3);
+  }
+}
+
+@media (min-width: 1280px) {
+  .home-carousel-card {
+    flex-basis: calc((100% - 4rem) / 5);
+  }
+}
+
+@media (max-width: 639px) {
+  .home-carousel {
+    gap: .85rem;
+    margin-inline: -.25rem;
+    padding-inline: .25rem;
+  }
+
+  .home-carousel-caption {
+    min-height: 13rem;
   }
 }
 

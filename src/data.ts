@@ -4,6 +4,8 @@ export const DEFAULT_LANGUAGE = 'EN';
 
 export interface Item {
   id: number;
+  /** Article linked to this gallery card; prevents a duplicate auto-card on the homepage. */
+  articleId?: number;
   title: string;
   subtitle: string;
   fig: string;
@@ -277,8 +279,8 @@ export interface HomepagePicsCategory {
 
 /** Stable public defaults; the admin can rename the labels and keywords without a code deploy. */
 export const DEFAULT_HOMEPAGE_PICS_CATEGORIES: HomepagePicsCategory[] = [
-  { id: 'painting', label: 'Painting', matches: ['painting', 'paint', 'canvas', 'portrait', 'art', 'culture', 'history', 'restoration'] },
   { id: 'sculpture', label: 'Sculpture', matches: ['sculpture', 'sculptural', 'statue', 'object', 'installation', 'ceramic', 'vase'] },
+  { id: 'painting', label: 'Painting', matches: ['painting', 'paint', 'canvas', 'portrait', 'art', 'culture', 'history', 'restoration'] },
   { id: 'architecture', label: 'Architecture', matches: ['architecture', 'building', 'urban', 'space', 'city'] },
   { id: 'design', label: 'Design', matches: ['design', 'interior', 'furniture', 'travel', 'material'] },
   { id: 'photography', label: 'Photography', matches: ['photography', 'photograph', 'photo', 'lens', 'camera', 'visual'] },
@@ -726,8 +728,9 @@ export function getContentForLanguage(lang: string): LanguageContent {
   // published article is reachable from the homepage without disturbing the
   // curated ordering/featured slot at the front of the list.
   const galleryTitles = new Set(liveItems.map((i) => (i.title || '').trim().toLowerCase()));
+  const galleryArticleIds = new Set(liveItems.map((i) => Number(i.articleId)).filter((id) => Number.isFinite(id)));
   const articleGalleryItems: Item[] = liveArticles
-    .filter((a) => !galleryTitles.has((a.title || '').trim().toLowerCase()))
+    .filter((a) => !galleryTitles.has((a.title || '').trim().toLowerCase()) && !galleryArticleIds.has(Number(a.id)))
     .map((a) => ({
       id: 900000 + a.id,
       title: a.title,

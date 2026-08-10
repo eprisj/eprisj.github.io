@@ -8662,8 +8662,8 @@ function bindStudioRowActions() {
   }
 
   const DEFAULT_HOME_CATEGORIES = [
-    { id: 'painting', label: 'Painting', matches: ['painting', 'paint', 'canvas', 'portrait', 'art', 'culture', 'history', 'restoration'] },
     { id: 'sculpture', label: 'Sculpture', matches: ['sculpture', 'sculptural', 'statue', 'object', 'installation', 'ceramic', 'vase'] },
+    { id: 'painting', label: 'Painting', matches: ['painting', 'paint', 'canvas', 'portrait', 'art', 'culture', 'history', 'restoration'] },
     { id: 'architecture', label: 'Architecture', matches: ['architecture', 'building', 'urban', 'space', 'city'] },
     { id: 'design', label: 'Design', matches: ['design', 'interior', 'furniture', 'travel', 'material'] },
     { id: 'photography', label: 'Photography', matches: ['photography', 'photograph', 'photo', 'lens', 'camera', 'visual'] },
@@ -9002,9 +9002,9 @@ function bindStudioRowActions() {
       return `<article class="homepage-slot-card homepage-slot-card--${esc(group.id)}">
         <div class="homepage-slot-head"><span>${esc(group.label)}</span><span class="homepage-slot-marker">${item ? '●' : '○'}</span></div>
         <div class="homepage-slot-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : '<span>Нет фото</span>'}</div>
+        <div class="homepage-slot-caption"><span>${esc(group.label)}</span><strong>${esc(item?.title || 'Категория пока пустая')}</strong><p>${esc(item?.description || item?.subtitle || 'Добавьте короткое описание в редакторе.')}</p></div>
         <label class="homepage-slot-label" for="homepage-category-${esc(group.id)}">Главное изображение категории</label>
         <select id="homepage-category-${esc(group.id)}" class="homepage-slot-select" data-home-category="${esc(group.id)}" ${autoMode ? 'disabled' : ''}>${options}</select>
-        <div class="homepage-slot-title">${esc(item?.title || 'Категория пока пустая')}</div>
         <small class="homepage-category-count">${group.items.length} изображений · LIFO ${data?.homepage?.picsOfWeek?.ordering === 'manual' ? 'выкл.' : 'вкл.'}</small>
         <button type="button" class="btn btn-sm homepage-slot-edit" data-home-edit-slot="${item ? esc(item.id) : ''}" ${item ? '' : 'disabled'}>Редактировать</button>
       </article>`;
