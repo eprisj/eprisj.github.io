@@ -160,7 +160,7 @@ select {
   transition: flex-basis .35s ease, opacity .35s ease, transform .35s ease;
 }
 
-.home-carousel-card--center {
+.home-carousel-card.home-carousel-card--center {
   flex-basis: 30%;
   opacity: 1;
   transform: scale(1);
@@ -340,7 +340,7 @@ select {
     transform: scale(.88);
   }
 
-  .home-carousel-card--center {
+  .home-carousel-card.home-carousel-card--center {
     flex-basis: 76%;
     transform: scale(1);
   }
