@@ -108,9 +108,16 @@ select {
   writing-mode: vertical-rl;
 }
 
+/* The navigation is fixed, so the page canvas must always reserve its full
+   height before the first editorial heading.  The old mobile 2rem top pad put
+   the Pics heading and arrows underneath the 4rem header. */
+.site-main {
+  padding-top: max(6rem, calc(4rem + env(safe-area-inset-top)));
+}
+
 /* ── Home image gallery ───────────────────────────────────── */
 .home-pics-section {
-  margin-bottom: clamp(3.5rem, 8vw, 8rem);
+  margin-bottom: clamp(4rem, 5vw, 5rem);
 }
 
 .home-carousel {
@@ -158,6 +165,12 @@ select {
   box-shadow: 0 10px 28px color-mix(in srgb, var(--c-accent) 7%, transparent);
 }
 
+.home-carousel-media img {
+  /* A restrained editorial grade keeps the five source photographs from
+     competing by saturation while preserving the work's original character. */
+  filter: saturate(.9) contrast(1.03);
+}
+
 .home-carousel-caption {
   min-height: 9rem;
   padding: .9rem .15rem 0;
@@ -177,6 +190,7 @@ select {
 
 .home-carousel-caption h2 {
   margin: 0 0 .45rem;
+  min-height: 2.4em;
   color: var(--c-accent);
   font-family: var(--font-display);
   font-size: 1.1rem;
@@ -228,7 +242,7 @@ select {
 
 .home-carousel-arrow {
   width: 3rem;
-  height: 2.5rem;
+  height: 3rem;
   min-width: 3rem;
   display: inline-flex;
   align-items: center;

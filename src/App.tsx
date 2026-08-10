@@ -1,5 +1,5 @@
 import { motion, AnimatePresence, LayoutGroup, MotionConfig } from 'framer-motion';
-import { ReactNode, useState, useEffect, useCallback, useMemo, FormEvent, useRef, Suspense, lazy, Component } from 'react';
+import { ReactNode, useState, useEffect, useCallback, useMemo, FormEvent, MouseEvent, useRef, Suspense, lazy, Component } from 'react';
 // Heavy, rarely-visited tabs are code-split out of the critical bundle —
 // e.g. DesignPage alone carries a 244-item catalogue that has no business
 // loading for a reader who just opened an article. Each only downloads once
@@ -665,6 +665,15 @@ function NavBar({
     { id: 'podcasts', label: t('nav.podcasts') },
   ].filter((tab) => isSectionInNavigation(tab.id));
 
+  const tabHref = (tab: string) => tab === 'gallery' ? '/' : `/${tab}`;
+  const handleTabLink = (event: MouseEvent<HTMLAnchorElement>, tab: string) => {
+    // Keep native link behaviour for Cmd/Ctrl-click, middle click and new-tab
+    // gestures while making ordinary navigation instant inside the SPA.
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    setActiveTab(tab);
+  };
+
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
     const q = searchQuery.trim();
@@ -720,7 +729,7 @@ function NavBar({
             aria-label={`${LANG_LABELS[currentLang] || currentLang}. Select language`}
             aria-haspopup="dialog"
             aria-expanded={isLangOpen}
-            className="relative h-9 px-2.5 inline-flex items-center justify-center gap-1 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.24)] font-mono text-[10px] font-bold tracking-[0.14em] uppercase text-[var(--c-accent)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.07)] active:scale-95 transition after:absolute after:-inset-1.5 after:content-['']"
+            className="relative h-11 px-2.5 inline-flex items-center justify-center gap-1 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.24)] font-mono text-[10px] font-bold tracking-[0.14em] uppercase text-[var(--c-accent)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.07)] active:scale-95 transition after:absolute after:-inset-1.5 after:content-['']"
           >
             <Globe size={12} aria-hidden="true" className="opacity-70" />
             {currentLang}
@@ -744,10 +753,11 @@ function NavBar({
             style={{ gridTemplateColumns: `repeat(${Math.max(tabs.length + 1, 2)}, minmax(0, 1fr))` }}
           >
             {tabs.map((tab) => (
-              <button
-                type="button"
+              <a
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
+                href={tabHref(tab.id)}
+                onClick={(event) => handleTabLink(event, tab.id)}
+                aria-current={activeTab === tab.id ? 'page' : undefined}
                 className={`relative flex flex-col items-center justify-center group h-full overflow-hidden ${
                   activeTab === tab.id ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'hover:bg-[rgb(var(--c-accent-rgb)_/_0.08)] text-[var(--c-accent)]'
                 } transition-colors duration-200`}
@@ -761,7 +771,7 @@ function NavBar({
                     transition={{ type: 'spring', bounce: 0.18, duration: 0.55 }}
                   />
                 )}
-              </button>
+              </a>
             ))}
             {/* Ссылка, а не вкладка: /showcase — собственный маршрут вне
                 управляемого набора секций, поэтому и переход обычный. */}
@@ -966,23 +976,21 @@ function NavBar({
               className="flex flex-col divide-y divide-[var(--c-accent)] border-b border-[var(--c-accent)]"
             >
               {tabs.map((tab) => (
-                <motion.button
-                  type="button"
+                <motion.a
                   key={tab.id}
+                  href={tabHref(tab.id)}
                   variants={{
                     hidden: { opacity: 0, x: -14 },
                     show: { opacity: 1, x: 0, transition: { duration: 0.22, ease: EASE } },
                   }}
-                  onClick={() => {
-                    setActiveTab(tab.id);
-                    setIsMenuOpen(false);
-                  }}
+                  onClick={(event) => { handleTabLink(event, tab.id); if (event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) setIsMenuOpen(false); }}
+                  aria-current={activeTab === tab.id ? 'page' : undefined}
                   className={`min-h-[64px] px-6 py-4 flex items-center justify-between text-left transition-colors active:scale-[0.99] ${
                     activeTab === tab.id ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : ''
                   }`}
                 >
                   <span className="font-serif font-normal text-xl leading-tight">{tab.label}</span>
-                </motion.button>
+                </motion.a>
               ))}
               <motion.a
                 href="/showcase"
@@ -2275,14 +2283,13 @@ function ArticlesSection({
       {filteredArticles.map((article, index) => (
         <motion.div key={article.id} variants={staggerItem}>
           {index === 0 ? (
-            // Featured (first) article — larger side-by-side card, whole card is the link
-            <motion.article
-              className="border border-[var(--c-accent)] group cursor-pointer grid grid-cols-1 md:grid-cols-[64%_1fr] items-stretch overflow-hidden"
+            // Featured (first) article — a single button keeps the whole card
+            // tappable without nesting a second button inside it.
+            <motion.button
+              type="button"
+              className="w-full border border-[var(--c-accent)] bg-transparent p-0 text-left group cursor-pointer grid grid-cols-1 md:grid-cols-[64%_1fr] items-stretch overflow-hidden"
               onClick={() => openArticle(article)}
-              tabIndex={0}
-              role="button"
               aria-label={`${t('articles.readPreview')}: ${article.title}`}
-              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && openArticle(article)}
               whileHover={{ x: 4 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
@@ -2311,24 +2318,22 @@ function ArticlesSection({
                 <p className="font-serif text-base text-[rgb(var(--c-accent-rgb)_/_0.8)] leading-relaxed">
                   {article.excerpt}
                 </p>
-                <button
-                  type="button"
-                  onClick={(event) => { event.stopPropagation(); openArticle(article); }}
+                <span
                   className="mt-7 inline-flex min-h-11 items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors"
                 >
                   {t('articles.readPreview')} <ArrowUpRight size={14} />
-                </button>
+                </span>
               </div>
-            </motion.article>
+            </motion.button>
           ) : (
-            // Rest of the list — same card family, compact: landscape thumb, category + title + excerpt + read button
-            <motion.article
-              className="border border-[var(--c-accent)] group cursor-pointer grid grid-cols-1 sm:grid-cols-[45%_1fr] items-stretch overflow-hidden"
+            // Rest of the list — same card family, compact. It remains one
+            // interactive surface so screen readers do not encounter nested
+            // buttons or duplicate click targets.
+            <motion.button
+              type="button"
+              className="w-full border border-[var(--c-accent)] bg-transparent p-0 text-left group cursor-pointer grid grid-cols-1 sm:grid-cols-[45%_1fr] items-stretch overflow-hidden"
               onClick={() => openArticle(article)}
-              tabIndex={0}
-              role="button"
               aria-label={`${t('articles.readPreview')}: ${article.title}`}
-              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && openArticle(article)}
               whileHover={{ x: 4 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
@@ -2356,7 +2361,7 @@ function ArticlesSection({
                   {t('articles.readPreview')} <ArrowUpRight size={14} />
                 </span>
               </div>
-            </motion.article>
+            </motion.button>
           )}
         </motion.div>
       ))}
@@ -3489,7 +3494,7 @@ export default function App() {
             <PassportPage viewCode={passportCode ?? null} onBack={() => handleSetTab('gallery')} />
           </LazyTab>
         ) : (
-          <main className="max-w-[1600px] mx-auto px-4 sm:px-8 md:px-16 py-8 sm:py-12 md:py-24">
+          <main className="site-main max-w-[1600px] mx-auto px-4 sm:px-8 md:px-16 pb-8 sm:pb-12 md:pb-24">
             {activeSearch ? (
               <SearchResults
                 query={activeSearch}
@@ -3508,7 +3513,7 @@ export default function App() {
                 {activeTab === 'gallery' && (
                   <>
                     <GallerySection items={items} onImageClick={handleImageClick} currentLang={currentLang} t={t} />
-                    <section className="homepage-articles mt-16 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-12 sm:mt-24 sm:pt-16" aria-labelledby="homepage-articles-title">
+                    <section className="homepage-articles mt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-10 sm:mt-16 sm:pt-12" aria-labelledby="homepage-articles-title">
                       <div className="mb-8 flex flex-col gap-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-5 sm:flex-row sm:items-end sm:justify-between">
                         <div>
                           <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t('homepage.articlesEyebrow')}</p>
