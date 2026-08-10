@@ -270,7 +270,22 @@
       "search.kind.gallery": "Gallery",
       "search.kind.review": "Review",
       "search.kind.library": "Library",
-      "articles.newArticle": "New article"
+      "articles.newArticle": "New article",
+      "homepage.picsTitle": "Pics of the week",
+      "homepage.previous": "Previous images",
+      "homepage.next": "Next images",
+      "homepage.openImage": "Open image",
+      "homepage.carouselLabel": "Pics of the week categories",
+      "homepage.descriptionUnavailable": "Short description coming soon.",
+      "homepage.archiveEyebrow": "Archive",
+      "homepage.archiveTitle": "Daily picks",
+      "homepage.archiveDescription": "Every weekly composition stays here after the next one takes its place.",
+      "homepage.articlesEyebrow": "EPRIS / editorial",
+      "homepage.articlesTitle": "Articles",
+      "homepage.articlesDescription": "The latest writing from the journal, newest first.",
+      "articles.readPreview": "Read preview",
+      "articles.readFull": "Read full article",
+      "articles.closePreview": "Close preview"
     },
     "RU": {
       "nav.gallery": "Галерея",
@@ -542,7 +557,22 @@
       "search.kind.gallery": "Галерея",
       "search.kind.review": "Обзор",
       "search.kind.library": "Библиотека",
-      "articles.newArticle": "Новая статья"
+      "articles.newArticle": "Новая статья",
+      "homepage.picsTitle": "Фото недели",
+      "homepage.previous": "Предыдущие изображения",
+      "homepage.next": "Следующие изображения",
+      "homepage.openImage": "Открыть изображение",
+      "homepage.carouselLabel": "Категории фото недели",
+      "homepage.descriptionUnavailable": "Краткое описание появится скоро.",
+      "homepage.archiveEyebrow": "Архив",
+      "homepage.archiveTitle": "Ежедневный выбор",
+      "homepage.archiveDescription": "Каждая недельная композиция остаётся здесь после выхода следующей.",
+      "homepage.articlesEyebrow": "EPRIS / редакция",
+      "homepage.articlesTitle": "Статьи",
+      "homepage.articlesDescription": "Свежие тексты журнала — сначала самые новые.",
+      "articles.readPreview": "Читать превью",
+      "articles.readFull": "Читать полностью",
+      "articles.closePreview": "Закрыть превью"
     },
     "UA": {
       "nav.gallery": "Галерея",
@@ -814,7 +844,22 @@
       "search.kind.gallery": "Галерея",
       "search.kind.review": "Огляд",
       "search.kind.library": "Бібліотека",
-      "articles.newArticle": "Нова стаття"
+      "articles.newArticle": "Нова стаття",
+      "homepage.picsTitle": "Фото тижня",
+      "homepage.previous": "Попередні зображення",
+      "homepage.next": "Наступні зображення",
+      "homepage.openImage": "Відкрити зображення",
+      "homepage.carouselLabel": "Категорії фото тижня",
+      "homepage.descriptionUnavailable": "Короткий опис з’явиться незабаром.",
+      "homepage.archiveEyebrow": "Архів",
+      "homepage.archiveTitle": "Щоденний вибір",
+      "homepage.archiveDescription": "Кожна тижнева композиція залишається тут після виходу наступної.",
+      "homepage.articlesEyebrow": "EPRIS / редакція",
+      "homepage.articlesTitle": "Статті",
+      "homepage.articlesDescription": "Свіжі тексти журналу — спочатку найновіші.",
+      "articles.readPreview": "Читати прев’ю",
+      "articles.readFull": "Читати повністю",
+      "articles.closePreview": "Закрити прев’ю"
     },
     "TR": {
       "nav.gallery": "Galeri",
@@ -1086,7 +1131,22 @@
       "search.kind.gallery": "Galeri",
       "search.kind.review": "İnceleme",
       "search.kind.library": "Kütüphane",
-      "articles.newArticle": "Yeni makale"
+      "articles.newArticle": "Yeni makale",
+      "homepage.picsTitle": "Haftanın fotoğrafları",
+      "homepage.previous": "Önceki görseller",
+      "homepage.next": "Sonraki görseller",
+      "homepage.openImage": "Görseli aç",
+      "homepage.carouselLabel": "Haftanın fotoğraf kategorileri",
+      "homepage.descriptionUnavailable": "Kısa açıklama yakında eklenecek.",
+      "homepage.archiveEyebrow": "Arşiv",
+      "homepage.archiveTitle": "Günün seçkisi",
+      "homepage.archiveDescription": "Bir sonraki yayınlandığında her haftalık kompozisyon burada kalır.",
+      "homepage.articlesEyebrow": "EPRIS / editoryal",
+      "homepage.articlesTitle": "Makaleler",
+      "homepage.articlesDescription": "Derginin en yeni yazıları, en yeniler önce.",
+      "articles.readPreview": "Önizlemeyi oku",
+      "articles.readFull": "Makalenin tamamını oku",
+      "articles.closePreview": "Önizlemeyi kapat"
     },
     "DE": {
       "nav.gallery": "Galerie",
@@ -1358,7 +1418,22 @@
       "search.kind.gallery": "Galerie",
       "search.kind.review": "Rezension",
       "search.kind.library": "Bibliothek",
-      "articles.newArticle": "Neuer Artikel"
+      "articles.newArticle": "Neuer Artikel",
+      "homepage.picsTitle": "Bilder der Woche",
+      "homepage.previous": "Vorherige Bilder",
+      "homepage.next": "Nächste Bilder",
+      "homepage.openImage": "Bild öffnen",
+      "homepage.carouselLabel": "Kategorien der Bilder der Woche",
+      "homepage.descriptionUnavailable": "Eine kurze Beschreibung folgt in Kürze.",
+      "homepage.archiveEyebrow": "Archiv",
+      "homepage.archiveTitle": "Tägliche Auswahl",
+      "homepage.archiveDescription": "Jede Wochenkomposition bleibt hier, wenn die nächste erscheint.",
+      "homepage.articlesEyebrow": "EPRIS / Redaktion",
+      "homepage.articlesTitle": "Artikel",
+      "homepage.articlesDescription": "Die neuesten Texte des Journals, zuerst die aktuellsten.",
+      "articles.readPreview": "Vorschau lesen",
+      "articles.readFull": "Vollständigen Artikel lesen",
+      "articles.closePreview": "Vorschau schließen"
     },
     "IT": {
       "nav.gallery": "Galleria",
@@ -1630,7 +1705,22 @@
       "search.kind.gallery": "Galleria",
       "search.kind.review": "Recensione",
       "search.kind.library": "Biblioteca",
-      "articles.newArticle": "Nuovo articolo"
+      "articles.newArticle": "Nuovo articolo",
+      "homepage.picsTitle": "Foto della settimana",
+      "homepage.previous": "Immagini precedenti",
+      "homepage.next": "Immagini successive",
+      "homepage.openImage": "Apri immagine",
+      "homepage.carouselLabel": "Categorie delle foto della settimana",
+      "homepage.descriptionUnavailable": "Una breve descrizione arriverà presto.",
+      "homepage.archiveEyebrow": "Archivio",
+      "homepage.archiveTitle": "Scelte quotidiane",
+      "homepage.archiveDescription": "Ogni composizione settimanale resta qui quando arriva la successiva.",
+      "homepage.articlesEyebrow": "EPRIS / redazione",
+      "homepage.articlesTitle": "Articoli",
+      "homepage.articlesDescription": "Gli ultimi testi del journal, dal più recente.",
+      "articles.readPreview": "Leggi anteprima",
+      "articles.readFull": "Leggi l’articolo completo",
+      "articles.closePreview": "Chiudi anteprima"
     },
     "ES": {
       "nav.gallery": "Galería",
@@ -1902,7 +1992,22 @@
       "search.kind.gallery": "Galería",
       "search.kind.review": "Reseña",
       "search.kind.library": "Biblioteca",
-      "articles.newArticle": "Nuevo artículo"
+      "articles.newArticle": "Nuevo artículo",
+      "homepage.picsTitle": "Fotos de la semana",
+      "homepage.previous": "Imágenes anteriores",
+      "homepage.next": "Imágenes siguientes",
+      "homepage.openImage": "Abrir imagen",
+      "homepage.carouselLabel": "Categorías de fotos de la semana",
+      "homepage.descriptionUnavailable": "La breve descripción llegará pronto.",
+      "homepage.archiveEyebrow": "Archivo",
+      "homepage.archiveTitle": "Selección diaria",
+      "homepage.archiveDescription": "Cada composición semanal permanece aquí cuando llega la siguiente.",
+      "homepage.articlesEyebrow": "EPRIS / editorial",
+      "homepage.articlesTitle": "Artículos",
+      "homepage.articlesDescription": "Los textos más recientes de la revista, primero los nuevos.",
+      "articles.readPreview": "Leer vista previa",
+      "articles.readFull": "Leer el artículo completo",
+      "articles.closePreview": "Cerrar vista previa"
     }
   },
   "items": [
@@ -4294,6 +4399,14 @@
     "RU": {
       "items": [
         {
+          "id": 14,
+          "title": "Сандра Кантанен: за пределами традиционной фотографии",
+          "subtitle": "Фотография",
+          "description": "Фотография может быть порогом, а не записью — Сандра Кантанен превращает пейзаж в пространство между памятью, мифом и оптическим искажением.",
+          "fig": "FIG. 11",
+          "imageSeed": "photography-sandra-kantanen"
+        },
+        {
           "id": 10,
           "title": "Против прямого угла",
           "subtitle": "Architecture",
@@ -6597,6 +6710,14 @@
     "UA": {
       "items": [
         {
+          "id": 14,
+          "title": "Сандра Кантанен: за межами традиційної фотографії",
+          "subtitle": "Фотографія",
+          "description": "Фотографія може бути порогом, а не записом — Сандра Кантанен перетворює пейзаж на простір між пам’яттю, міфом та оптичним викривленням.",
+          "fig": "FIG. 11",
+          "imageSeed": "photography-sandra-kantanen"
+        },
+        {
           "id": 10,
           "title": "Проти прямого кута",
           "subtitle": "Architecture",
@@ -8841,6 +8962,14 @@
     },
     "DE": {
       "items": [
+        {
+          "id": 14,
+          "title": "Sandra Kantanen: Jenseits der traditionellen Fotografie",
+          "subtitle": "Fotografie",
+          "description": "Ein Foto kann eine Schwelle statt eines Protokolls sein — Sandra Kantanen verwandelt Landschaft in einen Raum zwischen Erinnerung, Mythos und optischer Verzerrung.",
+          "fig": "FIG. 11",
+          "imageSeed": "photography-sandra-kantanen"
+        },
         {
           "id": 10,
           "title": "Gegen den rechten Winkel",
@@ -11087,6 +11216,14 @@
     "ES": {
       "items": [
         {
+          "id": 14,
+          "title": "Sandra Kantanen: más allá de la fotografía tradicional",
+          "subtitle": "Fotografía",
+          "description": "Una fotografía puede ser un umbral y no un registro: Sandra Kantanen convierte el paisaje en un espacio entre memoria, mito y distorsión óptica.",
+          "fig": "FIG. 11",
+          "imageSeed": "photography-sandra-kantanen"
+        },
+        {
           "id": 10,
           "title": "Contra el ángulo recto",
           "subtitle": "Architecture",
@@ -13332,6 +13469,14 @@
     "TR": {
       "items": [
         {
+          "id": 14,
+          "title": "Sandra Kantanen: Geleneksel Fotoğrafın Ötesinde",
+          "subtitle": "Fotoğraf",
+          "description": "Bir fotoğraf kayıttan çok bir eşik olabilir — Sandra Kantanen manzarayı bellek, mit ve optik bozulma arasındaki bir alana dönüştürüyor.",
+          "fig": "FIG. 11",
+          "imageSeed": "photography-sandra-kantanen"
+        },
+        {
           "id": 10,
           "title": "Dik Açıya Karşı",
           "subtitle": "Architecture",
@@ -15576,6 +15721,14 @@
     },
     "IT": {
       "items": [
+        {
+          "id": 14,
+          "title": "Sandra Kantanen: oltre l’obiettivo della fotografia tradizionale",
+          "subtitle": "Fotografia",
+          "description": "Una fotografia può essere una soglia, non una registrazione — Sandra Kantanen trasforma il paesaggio in uno spazio tra memoria, mito e distorsione ottica.",
+          "fig": "FIG. 11",
+          "imageSeed": "photography-sandra-kantanen"
+        },
         {
           "id": 10,
           "title": "Contro l’angolo retto",
@@ -18240,7 +18393,16 @@
             "installation",
             "ceramic",
             "vase"
-          ]
+          ],
+          "labels": {
+            "EN": "Sculpture",
+            "RU": "Скульптура",
+            "UA": "Скульптура",
+            "DE": "Skulptur",
+            "IT": "Scultura",
+            "ES": "Escultura",
+            "TR": "Heykel"
+          }
         },
         {
           "id": "painting",
@@ -18254,7 +18416,16 @@
             "culture",
             "history",
             "restoration"
-          ]
+          ],
+          "labels": {
+            "EN": "Painting",
+            "RU": "Живопись",
+            "UA": "Живопис",
+            "DE": "Malerei",
+            "IT": "Pittura",
+            "ES": "Pintura",
+            "TR": "Resim"
+          }
         },
         {
           "id": "architecture",
@@ -18265,7 +18436,16 @@
             "urban",
             "space",
             "city"
-          ]
+          ],
+          "labels": {
+            "EN": "Architecture",
+            "RU": "Архитектура",
+            "UA": "Архітектура",
+            "DE": "Architektur",
+            "IT": "Architettura",
+            "ES": "Arquitectura",
+            "TR": "Mimarlık"
+          }
         },
         {
           "id": "design",
@@ -18276,7 +18456,16 @@
             "furniture",
             "travel",
             "material"
-          ]
+          ],
+          "labels": {
+            "EN": "Design",
+            "RU": "Дизайн",
+            "UA": "Дизайн",
+            "DE": "Design",
+            "IT": "Design",
+            "ES": "Diseño",
+            "TR": "Tasarım"
+          }
         },
         {
           "id": "photography",
@@ -18288,7 +18477,16 @@
             "lens",
             "camera",
             "visual"
-          ]
+          ],
+          "labels": {
+            "EN": "Photography",
+            "RU": "Фотография",
+            "UA": "Фотографія",
+            "DE": "Fotografie",
+            "IT": "Fotografia",
+            "ES": "Fotografía",
+            "TR": "Fotoğraf"
+          }
         }
       ]
     }
