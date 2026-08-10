@@ -2490,6 +2490,7 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
                 type="button"
                 onClick={() => setActiveCategory(cat)}
                 aria-pressed={activeCategory === cat}
+                aria-label={`${cat === '__all' ? t('reviews.all') : cat}, ${categoryCounts.get(cat) || 0}`}
                 className={`min-h-11 border px-4 font-mono text-[10px] uppercase tracking-widest transition-colors ${
                   activeCategory === cat
                     ? 'bg-[var(--c-accent)] text-[var(--c-bg)] border-[var(--c-accent)]'
@@ -2497,7 +2498,7 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
                 }`}
               >
                 <span>{cat === '__all' ? t('reviews.all') : cat}</span>
-                <span className="ml-2 opacity-60">{categoryCounts.get(cat) || 0}</span>
+                <span aria-hidden="true" className="ml-2 opacity-60">{categoryCounts.get(cat) || 0}</span>
               </button>
             ))}
           </div>
