@@ -1257,12 +1257,11 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
     ...category,
     items: orderedItems.filter((item) => classify(item) === category.id),
   }));
-  const [activeCategory, setActiveCategory] = useState(categories[0].id);
-  useEffect(() => {
-    if (!categories.some((category) => category.id === activeCategory)) setActiveCategory(categories[0]?.id || '');
-  }, [activeCategory, categories]);
+  const featuredItems = categorized.map((category) => ({
+    category,
+    item: category.items[0] || null,
+  }));
   const viewportRef = useRef<HTMLDivElement>(null);
-  const activeItems = categorized.find((category) => category.id === activeCategory)?.items || [];
 
   const scrollCarousel = (direction: -1 | 1) => {
     viewportRef.current?.scrollBy({ left: direction * Math.max(viewportRef.current.clientWidth * 0.82, 260), behavior: 'smooth' });
@@ -1271,40 +1270,15 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
   return (
     <section className="home-pics-section" aria-labelledby="pics-of-week-title">
       <Reveal>
-        <div className="mb-7 flex flex-col gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">EPRIS / home</p>
-            <h1 id="pics-of-week-title" className="mt-2 font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">Pics of the week</h1>
-          </div>
-          <p className="max-w-[34ch] font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)] sm:text-right">Images first. Five editorial directions, browsed one frame at a time.</p>
+        <div className="mb-7 flex items-end justify-between border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-4">
+          <h1 id="pics-of-week-title" className="font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">Pics of the week</h1>
         </div>
-        <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex min-w-0 gap-2 overflow-x-auto pb-1" role="tablist" aria-label="Pics of the week categories">
-            {categorized.map((category) => (
-              <button
-                type="button"
-                key={category.id}
-                role="tab"
-                aria-selected={activeCategory === category.id}
-                onClick={() => {
-                  setActiveCategory(category.id);
-                  requestAnimationFrame(() => {
-                    if (viewportRef.current) viewportRef.current.scrollLeft = 0;
-                  });
-                }}
-                className={`min-h-10 shrink-0 border px-4 font-mono text-[10px] uppercase tracking-[0.16em] transition-colors ${activeCategory === category.id ? 'border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)]' : 'border-[rgb(var(--c-accent-rgb)_/_0.22)] text-[rgb(var(--c-accent-rgb)_/_0.65)] hover:border-[var(--c-accent)] hover:text-[var(--c-accent)]'}`}
-              >
-                {category.label} <span className="ml-1 opacity-60">{category.items.length}</span>
-              </button>
-            ))}
-          </div>
-          <div className="flex shrink-0 gap-2 self-end sm:self-auto">
-            <button type="button" onClick={() => scrollCarousel(-1)} className="home-carousel-arrow" aria-label="Previous images">←</button>
-            <button type="button" onClick={() => scrollCarousel(1)} className="home-carousel-arrow" aria-label="Next images">→</button>
-          </div>
+        <div className="mb-5 flex justify-end gap-2">
+          <button type="button" onClick={() => scrollCarousel(-1)} className="home-carousel-arrow" aria-label="Previous images">←</button>
+          <button type="button" onClick={() => scrollCarousel(1)} className="home-carousel-arrow" aria-label="Next images">→</button>
         </div>
-        <div ref={viewportRef} className="home-carousel" tabIndex={0} aria-label={`${activeCategory} images`} onKeyDown={(event) => { if (event.key === 'ArrowLeft') scrollCarousel(-1); if (event.key === 'ArrowRight') scrollCarousel(1); }}>
-          {activeItems.length ? activeItems.map((item) => (
+        <div ref={viewportRef} className="home-carousel" tabIndex={0} aria-label="Five Pics of the week categories" onKeyDown={(event) => { if (event.key === 'ArrowLeft') scrollCarousel(-1); if (event.key === 'ArrowRight') scrollCarousel(1); }}>
+          {featuredItems.map(({ category, item }) => item ? (
             <motion.article
               key={item.id}
               className="home-carousel-card group"
@@ -1314,16 +1288,19 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
               tabIndex={0}
               onClick={() => onItemClick(item)}
               onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onItemClick(item); }}
-              aria-label={`View: ${item.title}`}
+              aria-label={`View ${category.label}: ${item.title}`}
             >
               <div className="relative aspect-[4/5] overflow-hidden bg-[#E8DED5]">
                 <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={item.title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.035]" loading="lazy" referrerPolicy="no-referrer" />
-                <span className="absolute left-3 top-3 bg-[var(--c-bg)]/90 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--c-accent)]">{item.homeLabel || categorized.find((category) => category.id === activeCategory)?.label}</span>
+              </div>
+              <div className="home-carousel-caption">
+                <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{category.label}</span>
+                <h2 className="mt-2 font-crimson text-xl leading-tight text-[var(--c-accent)]">{item.title}</h2>
+                <p className="mt-2 line-clamp-3 font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.66)]">{(() => { const summary = (item.description || item.subtitle || '').replace(/\s+/g, ' ').trim(); return summary.length > 155 ? `${summary.slice(0, 152)}…` : summary; })()}</p>
+                <span className="mt-4 inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--c-accent)]">View story <ArrowUpRight size={12} aria-hidden="true" /></span>
               </div>
             </motion.article>
-          )) : (
-            <div className="home-carousel-empty"><span className="font-mono text-[10px] uppercase tracking-[0.2em]">{categorized.find((category) => category.id === activeCategory)?.label} · coming soon</span><p>Здесь появятся новые изображения.</p></div>
-          )}
+          ) : <div key={category.id} className="home-carousel-empty"><span className="font-mono text-[10px] uppercase tracking-[0.2em]">{category.label}</span><p>New image coming soon.</p></div>)}
         </div>
       </Reveal>
     </section>
