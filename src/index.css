@@ -122,7 +122,9 @@ select {
 
 .home-carousel {
   display: flex;
-  gap: 1rem;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(1rem, 1.8vw, 1.5rem);
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-behavior: smooth;
@@ -148,10 +150,34 @@ select {
 }
 
 .home-carousel-card {
-  flex: 0 0 min(78vw, 22rem);
-  scroll-snap-align: start;
+  flex: 0 0 15%;
+  scroll-snap-align: center;
   scroll-snap-stop: always;
   cursor: pointer;
+  opacity: .8;
+  transform: scale(.88);
+  transform-origin: center top;
+  transition: flex-basis .35s ease, opacity .35s ease, transform .35s ease;
+}
+
+.home-carousel-card--center {
+  flex-basis: 30%;
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+.home-carousel-card--center:hover {
+  transform: scale(1.02);
+}
+
+.home-carousel-card--side:hover {
+  opacity: .96;
+  transform: scale(.92);
+}
+
+.home-carousel-card:active {
+  transform: scale(.86);
 }
 
 .home-carousel-card:focus-visible {
@@ -285,19 +311,19 @@ select {
 
 @media (min-width: 640px) {
   .home-carousel-card {
-    flex-basis: min(46vw, 22rem);
+    flex-basis: 15%;
   }
 }
 
 @media (min-width: 1024px) {
   .home-carousel-card {
-    flex-basis: calc((100% - 2rem) / 3);
+    flex-basis: 15%;
   }
 }
 
 @media (min-width: 1280px) {
   .home-carousel-card {
-    flex-basis: calc((100% - 4rem) / 5);
+    flex-basis: 15%;
   }
 }
 
@@ -306,6 +332,17 @@ select {
     gap: .85rem;
     margin-inline: -.25rem;
     padding-inline: .25rem;
+    justify-content: flex-start;
+  }
+
+  .home-carousel-card {
+    flex-basis: 16%;
+    transform: scale(.88);
+  }
+
+  .home-carousel-card--center {
+    flex-basis: 76%;
+    transform: scale(1);
   }
 
 }

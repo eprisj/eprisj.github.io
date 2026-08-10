@@ -546,9 +546,6 @@ const staggerItem = {
 
 // Shared motion tokens so interactions read as one system.
 const EASE = [0.22, 1, 0.36, 1] as const;
-// Card hover-lift on desktop; press feedback on touch (no hover there).
-const cardHover = { y: -6, transition: { duration: 0.28, ease: EASE } };
-const cardTap = { scale: 0.985, transition: { duration: 0.15, ease: EASE } };
 const ROUTE_SEQUENCE = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'design', 'studio', 'radio', 'podcasts', 'passport'];
 /* Route transitions run in mode="wait", so the old page leaves BEFORE the new
    one arrives and the two durations add up. Symmetrical timings therefore read
@@ -712,7 +709,7 @@ function NavBar({
           onClick={(event) => { event.preventDefault(); onHome(); setIsMenuOpen(false); }}
           aria-label={`${brandName} — home`}
           aria-current={activeTab === 'gallery' ? 'page' : undefined}
-          className={`absolute left-1/2 -translate-x-1/2 leading-none font-mono px-3 py-2 transition-colors duration-200 ${activeTab === 'gallery' ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'text-[var(--c-accent)]'}`}
+          className="absolute left-1/2 -translate-x-1/2 leading-none font-mono px-3 py-2 text-[var(--c-accent)]"
         >
           <span className="text-lg min-[360px]:text-xl tracking-[0.22em] pl-[0.22em]">{brandName}</span>
         </a>
@@ -740,7 +737,7 @@ function NavBar({
       {/* ── Desktop header ── */}
       <nav className="hidden lg:flex fixed top-0 left-0 w-full z-50 bg-[var(--c-bg)] border-b border-[var(--c-accent)] text-xs font-mono uppercase tracking-widest text-[var(--c-accent)] h-16">
         {/* Logo Section */}
-        <div className={`w-64 border-r border-[var(--c-accent)] px-6 flex items-center shrink-0 z-50 transition-colors duration-200 ${activeTab === 'gallery' ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'bg-[var(--c-bg)] text-[var(--c-accent)]'}`}>
+        <div className="w-64 border-r border-[var(--c-accent)] px-6 flex items-center shrink-0 z-50 bg-[var(--c-bg)] text-[var(--c-accent)]">
           <a href="/" className="flex items-center font-mono" onClick={(event) => { event.preventDefault(); onHome(); }} aria-label={`${brandName} — home`} aria-current={activeTab === 'gallery' ? 'page' : undefined}>
             <span className="text-xl tracking-[0.2em] pl-[0.2em] normal-case leading-none">{brandName}</span>
           </a>
@@ -1311,9 +1308,32 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
     item: category.items[0] || null,
   }));
   const viewportRef = useRef<HTMLDivElement>(null);
+  // Keep the selected work in the visual centre (position 3) while the
+  // surrounding four works stay smaller. Wrapping the order makes the arrows
+  // feel continuous instead of running into an artificial end.
+  const [centerIndex, setCenterIndex] = useState(2);
+  const itemCount = featuredItems.length;
+  const safeCenterIndex = itemCount ? ((centerIndex % itemCount) + itemCount) % itemCount : 0;
+  const centeredItems = itemCount
+    ? Array.from({ length: itemCount }, (_, position) => featuredItems[(safeCenterIndex + position - 2 + itemCount) % itemCount])
+    : [];
 
-  const scrollCarousel = (direction: -1 | 1) => {
-    viewportRef.current?.scrollBy({ left: direction * Math.max(viewportRef.current.clientWidth * 0.82, 260), behavior: 'smooth' });
+  useEffect(() => {
+    if (!itemCount) return;
+    if (centerIndex !== safeCenterIndex) setCenterIndex(safeCenterIndex);
+  }, [centerIndex, itemCount, safeCenterIndex]);
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    const centerCard = viewport?.querySelector<HTMLElement>('[data-carousel-position="center"]');
+    if (!viewport || !centerCard) return;
+    const target = centerCard.offsetLeft + centerCard.offsetWidth / 2 - viewport.clientWidth / 2;
+    viewport.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
+  }, [safeCenterIndex, itemCount]);
+
+  const moveCarousel = (direction: -1 | 1) => {
+    if (!itemCount) return;
+    setCenterIndex((current) => (current + direction + itemCount) % itemCount);
   };
 
   return (
@@ -1322,21 +1342,21 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
         <div className="mb-7 flex items-center justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-4">
           <h1 id="pics-of-week-title" className="font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">{t('homepage.picsTitle')}</h1>
           <div className="flex shrink-0 gap-2">
-            <button type="button" onClick={() => scrollCarousel(-1)} className="home-carousel-arrow" aria-label={t('homepage.previous')}><ArrowLeft size={16} strokeWidth={1.5} aria-hidden="true" /></button>
-            <button type="button" onClick={() => scrollCarousel(1)} className="home-carousel-arrow" aria-label={t('homepage.next')}><ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" /></button>
+            <button type="button" onClick={() => moveCarousel(-1)} className="home-carousel-arrow" aria-label={t('homepage.previous')}><ArrowLeft size={16} strokeWidth={1.5} aria-hidden="true" /></button>
+            <button type="button" onClick={() => moveCarousel(1)} className="home-carousel-arrow" aria-label={t('homepage.next')}><ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" /></button>
           </div>
         </div>
-        <div ref={viewportRef} className="home-carousel" tabIndex={0} aria-label={t('homepage.carouselLabel')} onKeyDown={(event) => { if (event.key === 'ArrowLeft') scrollCarousel(-1); if (event.key === 'ArrowRight') scrollCarousel(1); }}>
-          {featuredItems.map(({ category, item }) => item ? (() => {
+        <div ref={viewportRef} className="home-carousel" tabIndex={0} aria-label={t('homepage.carouselLabel')} onKeyDown={(event) => { if (event.key === 'ArrowLeft') moveCarousel(-1); if (event.key === 'ArrowRight') moveCarousel(1); }}>
+          {centeredItems.map(({ category, item }, position) => item ? (() => {
               const categoryLabel = localizedHomepageCategoryLabel(category, currentLang);
               const title = homepageItemTitle(item);
               const description = homepageItemDescription(item, t('homepage.descriptionUnavailable'));
+              const isCenter = position === 2;
               return (
             <motion.article
-              key={item.id}
-              className="home-carousel-card group"
-              whileHover={cardHover}
-              whileTap={cardTap}
+              key={`${item.id}-${safeCenterIndex}`}
+              data-carousel-position={isCenter ? 'center' : 'side'}
+              className={`home-carousel-card group ${isCenter ? 'home-carousel-card--center' : 'home-carousel-card--side'}`}
               role="button"
               tabIndex={0}
               onClick={() => onImageClick(resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${title}`)}
@@ -1354,7 +1374,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
               </div>
             </motion.article>
               );
-            })() : <div key={category.id} className="home-carousel-empty"><span className="font-mono text-[10px] uppercase tracking-[0.2em]">{localizedHomepageCategoryLabel(category, currentLang)}</span><p>{t('homepage.descriptionUnavailable')}</p></div>)}
+            })() : <div key={`${category.id}-${safeCenterIndex}`} className="home-carousel-empty"><span className="font-mono text-[10px] uppercase tracking-[0.2em]">{localizedHomepageCategoryLabel(category, currentLang)}</span><p>{t('homepage.descriptionUnavailable')}</p></div>)}
         </div>
       </Reveal>
     </section>
@@ -3206,7 +3226,6 @@ export default function App() {
   const [previewArticleId, setPreviewArticleId] = useState<number | null>(null);
   const [selectedReviewId, setSelectedReviewId] = useState<number | null>(initialRoute.reviewId ?? null);
   const [passportCode, setPassportCode] = useState<string | undefined>(initialRoute.passportCode);
-  const [homeTransitionKey, setHomeTransitionKey] = useState(0);
   const [currentLang, setCurrentLang] = useState(() => {
     try {
       const stored = localStorage.getItem('epris_language');
@@ -3334,7 +3353,6 @@ export default function App() {
   }, [fallbackTab, navigate]);
 
   const handleHome = useCallback(() => {
-    setHomeTransitionKey((key) => key + 1);
     handleSetTab('gallery');
     window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }, [handleSetTab]);
@@ -3451,22 +3469,6 @@ export default function App() {
         brandName={brandName}
       />
 
-      <AnimatePresence>
-        {homeTransitionKey > 0 && (
-          <motion.div
-            key={homeTransitionKey}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0.94, 0.94, 0] }}
-            transition={{ duration: 0.72, times: [0, 0.22, 0.56, 1], ease: [0.22, 1, 0.36, 1] }}
-            onAnimationComplete={() => setHomeTransitionKey((key) => key === homeTransitionKey ? 0 : key)}
-            className="pointer-events-none fixed inset-0 z-[90] flex items-center justify-center bg-black"
-            aria-hidden="true"
-          >
-            <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-white/80">EPRIS / HOME</span>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      
       <RouteTransition routeKey={routeKey} direction={routeDirection}>
       <div className={activeTab === 'gallery' ? '' : 'lg:pr-12'}>
         {activeTab === 'issue' ? (
