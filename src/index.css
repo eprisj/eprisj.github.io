@@ -198,6 +198,26 @@ select {
   min-height: 9rem;
   padding: .9rem .15rem 0;
   border-bottom: 1px solid color-mix(in srgb, var(--c-accent) 18%, transparent);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .28s ease, transform .28s ease, height .28s ease, padding .28s ease;
+}
+
+/* Desktop side cards stay image-led. Their caption returns with the card when
+   it becomes the selected centre position. */
+.home-carousel-card--side .home-carousel-caption {
+  visibility: hidden;
+  min-height: 0;
+  height: 0;
+  padding-top: 0;
+  border-bottom: 0;
+  opacity: 0;
+  transform: translateY(-.35rem);
+  overflow: hidden;
+}
+
+.home-carousel-card--center .home-carousel-caption {
+  visibility: visible;
 }
 
 .home-carousel-caption-category {
@@ -412,12 +432,9 @@ select {
   /* Side cards are visual peeks on a phone. Their title/excerpt would be
      unreadable at that width; only the selected work is rendered on mobile. */
   .home-carousel-card--side .home-carousel-caption {
-    visibility: hidden;
     min-height: 0;
     height: 0;
     padding: 0;
-    border-bottom: 0;
-    overflow: hidden;
   }
 
 }
