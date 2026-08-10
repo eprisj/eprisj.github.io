@@ -5308,18 +5308,22 @@ body.busy::after {
 .homepage-section-head { justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
 .homepage-section-head > div { min-width: 0; }
 .homepage-preview-badge { flex: 0 0 auto; padding: 5px 8px; border-radius: 999px; background: var(--gold-soft); color: var(--accent); font-family: var(--font-mono); font-size: .54rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
-.homepage-composer-preview { display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 10px; align-items: stretch; }
+.homepage-category-editor { display: grid; gap: 8px; margin-bottom: 14px; padding: 12px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--bg-soft); }
+.homepage-category-row { display: grid; grid-template-columns: 28px minmax(150px, .7fr) minmax(220px, 1.3fr); gap: 10px; align-items: end; }
+.homepage-category-index { align-self: center; color: var(--gold); font-family: var(--font-mono); font-size: .66rem; font-weight: 700; }
+.homepage-category-keywords { min-width: 0; }
+.homepage-composer-preview { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; align-items: stretch; }
 .homepage-slot-card { display: grid; gap: 8px; min-width: 0; padding: 10px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--bg-soft); }
-.homepage-slot-card--center { border-color: var(--accent); background: var(--gold-soft); }
+.homepage-slot-card--painting { border-color: var(--accent); background: var(--gold-soft); }
 .homepage-slot-head { justify-content: space-between; color: var(--text-muted); font-family: var(--font-mono); font-size: .56rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
 .homepage-slot-marker { color: var(--ok); }
 .homepage-slot-media { aspect-ratio: 4 / 3; overflow: hidden; display: grid; place-items: center; border-radius: calc(var(--radius-sm) - 2px); background: var(--bg-card); color: var(--text-muted); font-family: var(--font-mono); font-size: .58rem; }
-.homepage-slot-card--left .homepage-slot-media,
-.homepage-slot-card--right .homepage-slot-media { aspect-ratio: 4 / 5; }
+.homepage-slot-card .homepage-slot-media { aspect-ratio: 4 / 5; }
 .homepage-slot-media img { width: 100%; height: 100%; object-fit: cover; }
 .homepage-slot-label { color: var(--text-muted); font-size: .62rem; }
 .homepage-slot-select { width: 100%; min-height: 44px; padding: 7px 8px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--bg-card); color: var(--text); font-size: .72rem; }
 .homepage-slot-title { min-height: 2.6em; overflow: hidden; color: var(--text); font-family: var(--font-serif); font-size: .95rem; line-height: 1.3; }
+.homepage-category-count { color: var(--text-muted); font-family: var(--font-mono); font-size: .56rem; letter-spacing: .04em; text-transform: uppercase; }
 .homepage-slot-edit { justify-content: center; }
 .homepage-composer-audit { display: grid; gap: 6px; margin-top: 14px; }
 .homepage-audit-item { display: flex; gap: 8px; align-items: flex-start; padding: 8px 10px; border-radius: var(--radius-sm); font-size: .7rem; line-height: 1.4; }
@@ -5354,7 +5358,7 @@ body.busy::after {
 .homepage-archive-entry-meta { display: grid; gap: 3px; min-width: 88px; }
 .homepage-archive-entry-meta strong { color: var(--text); font-family: var(--font-serif); font-size: .95rem; }
 .homepage-archive-entry-meta span { color: var(--text-muted); font-family: var(--font-mono); font-size: .56rem; letter-spacing: .06em; text-transform: uppercase; }
-.homepage-archive-thumbs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; min-width: 0; }
+.homepage-archive-thumbs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; min-width: 0; }
 .homepage-archive-thumb { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 8px; align-items: center; min-width: 0; }
 .homepage-archive-thumb-media { width: 40px; height: 48px; overflow: hidden; display: grid; place-items: center; border-radius: 3px; background: var(--bg-card); color: var(--text-muted); font-family: var(--font-mono); font-size: .5rem; }
 .homepage-archive-thumb-media img { width: 100%; height: 100%; object-fit: cover; }
@@ -5412,7 +5416,9 @@ body.busy::after {
   .homepage-gallery-card { grid-template-columns: auto 112px minmax(0, 1fr); }
   .homepage-gallery-controls { grid-column: 2 / -1; }
   .homepage-composer-grid { grid-template-columns: 1fr; }
-  .homepage-composer-preview { grid-template-columns: 1fr 1.25fr 1fr; }
+  .homepage-composer-preview { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .homepage-category-row { grid-template-columns: 28px minmax(0, 1fr); }
+  .homepage-category-row .homepage-category-keywords { grid-column: 2; }
   .homepage-control-grid,
   .homepage-showcase-grid { grid-template-columns: 1fr; }
   .homepage-showcase-wide { grid-column: auto; }
@@ -5429,13 +5435,13 @@ body.busy::after {
   .homepage-gallery-controls .btn { justify-content: center; }
   .homepage-admin-status { align-items: flex-start; flex-direction: column; }
   .homepage-admin-status-meta { justify-content: flex-start; }
-  .homepage-composer-preview { grid-template-columns: 1fr; }
+  .homepage-composer-preview { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .homepage-control-grid,
   .homepage-showcase-grid { grid-template-columns: 1fr; }
-  .homepage-slot-card--center { order: -1; }
-  .homepage-slot-card--center .homepage-slot-media { aspect-ratio: 4 / 3; }
-  .homepage-slot-card--left .homepage-slot-media,
-  .homepage-slot-card--right .homepage-slot-media { aspect-ratio: 16 / 9; }
+  .homepage-slot-card--painting { order: -1; }
+  .homepage-category-row { grid-template-columns: 1fr; }
+  .homepage-category-row .homepage-category-index { display: none; }
+  .homepage-category-row .homepage-category-keywords { grid-column: auto; }
   .homepage-archive-entry { grid-template-columns: 1fr; gap: 10px; }
   .homepage-archive-entry-meta { display: flex; align-items: baseline; justify-content: space-between; }
   .homepage-archive-thumbs { grid-template-columns: 1fr; }

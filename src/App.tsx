@@ -41,7 +41,8 @@ import {
   loadLiveContent,
   subscribeContent
 } from './data';
-import type { HomepageArchiveEntry, SiteSettings, SiteTheme, VisibilitySectionKey } from './data';
+import { DEFAULT_HOMEPAGE_PICS_CATEGORIES } from './data';
+import type { HomepageArchiveEntry, HomepagePicsCategory, SiteSettings, SiteTheme, VisibilitySectionKey } from './data';
 import { Search, ArrowUpRight, FileText, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
 
 // Issue-draft preview: when the admin opens /issue?preview=1, load the unsaved
@@ -1225,8 +1226,10 @@ function ManifestPage({ t, currentLang }: { t: (key: string) => string; currentL
 
 function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (item: Item) => void }) {
   const homepageSettings = getHomepageSettings();
-  const picksMode = homepageSettings.picsOfWeek?.mode === 'auto' ? 'auto' : 'manual';
-  const orderedItems = picksMode === 'auto'
+  const picsSettings = homepageSettings.picsOfWeek || {};
+  const picksMode = picsSettings.mode === 'auto' ? 'auto' : 'manual';
+  const useLifo = picsSettings.ordering !== 'manual';
+  const orderedItems = picksMode === 'auto' || useLifo
     ? [...items].sort((a, b) => {
         const stamp = (value?: string) => {
           const parsed = value ? Date.parse(value) : Number.NaN;
@@ -1235,20 +1238,29 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
         return stamp(b.updatedAt || b.publishAt) - stamp(a.updatedAt || a.publishAt) || b.id - a.id;
       })
     : items;
-  const categories = [
-    { id: 'art', label: 'Art', matches: ['art', 'culture', 'history', 'restoration'] },
-    { id: 'architecture', label: 'Architecture', matches: ['architecture', 'building', 'urban'] },
-    { id: 'design', label: 'Design', matches: ['design', 'interior', 'travel'] },
-  ];
+  const configuredCategories = Array.isArray(picsSettings.categories) ? picsSettings.categories : [];
+  const categories = [...configuredCategories, ...DEFAULT_HOMEPAGE_PICS_CATEGORIES]
+    .filter((category, index, all) => category && category.id && all.findIndex((candidate) => candidate?.id === category.id) === index)
+    .slice(0, 5)
+    .map((category, index) => ({
+      ...(DEFAULT_HOMEPAGE_PICS_CATEGORIES.find((fallback) => fallback.id === category.id) || DEFAULT_HOMEPAGE_PICS_CATEGORIES[index]),
+      ...category,
+      matches: Array.isArray(category.matches) && category.matches.length ? category.matches : (DEFAULT_HOMEPAGE_PICS_CATEGORIES[index]?.matches || []),
+    })) as HomepagePicsCategory[];
   const classify = (item: Item) => {
     const text = `${item.subtitle || ''} ${item.title || ''}`.toLowerCase();
-    return categories.find((category) => category.matches.some((match) => text.includes(match)))?.id || 'art';
+    return item.homeCategory && categories.some((category) => category.id === item.homeCategory)
+      ? item.homeCategory
+      : categories.find((category) => (category.matches || []).some((match) => text.includes(String(match).toLowerCase())))?.id || categories[0]?.id;
   };
   const categorized = categories.map((category) => ({
     ...category,
     items: orderedItems.filter((item) => classify(item) === category.id),
   }));
   const [activeCategory, setActiveCategory] = useState(categories[0].id);
+  useEffect(() => {
+    if (!categories.some((category) => category.id === activeCategory)) setActiveCategory(categories[0]?.id || '');
+  }, [activeCategory, categories]);
   const viewportRef = useRef<HTMLDivElement>(null);
   const activeItems = categorized.find((category) => category.id === activeCategory)?.items || [];
 
@@ -1264,7 +1276,7 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
             <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">EPRIS / home</p>
             <h1 id="pics-of-week-title" className="mt-2 font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">Pics of the week</h1>
           </div>
-          <p className="max-w-[34ch] font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)] sm:text-right">Images first. Three editorial directions, browsed one frame at a time.</p>
+          <p className="max-w-[34ch] font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)] sm:text-right">Images first. Five editorial directions, browsed one frame at a time.</p>
         </div>
         <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex min-w-0 gap-2 overflow-x-auto pb-1" role="tablist" aria-label="Pics of the week categories">
@@ -1359,8 +1371,8 @@ function DailyPicksArchive({ archive, items }: { archive: HomepageArchiveEntry[]
               <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.58)]">{entry.label || 'week'}</span>
               <time dateTime={entry.publishedAt} className="font-mono text-[9px] uppercase tracking-[0.12em] text-[rgb(var(--c-accent-rgb)_/_0.45)]">{formatDate(entry.publishedAt)}</time>
             </div>
-            <div className="grid grid-cols-3 gap-2">
-              {entry.cards.slice(0, 3).map((card) => {
+            <div className="grid grid-cols-3 gap-2 md:grid-cols-5">
+              {entry.cards.slice(0, 5).map((card) => {
                 const localized = currentById.get(Number(card.id));
                 const image = localized?.imageUrl || localized?.imageSeed || card.imageUrl || card.imageSeed;
                 return (

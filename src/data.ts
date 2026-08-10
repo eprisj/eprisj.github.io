@@ -18,8 +18,10 @@ export interface Item {
   publishAt?: string;
   /** Server-stamped on every /content/entity save — see mergeLocalizedArray. */
   updatedAt?: string;
-  /** Optional editorial placement on the homepage's three-card weekly grid. */
+  /** Legacy placement retained for backwards-compatible content imports. */
   homeSlot?: 'left' | 'center' | 'right';
+  /** Homepage Pics of the week category id (for example "sculpture"). */
+  homeCategory?: string;
   /** Optional short label shown below a homepage card (for example "week 32"). */
   homeLabel?: string;
 }
@@ -27,6 +29,8 @@ export interface Item {
 /** A frozen snapshot of one published "Pics of the week" composition. */
 export interface HomepageArchiveCard {
   id: number;
+  category?: string;
+  categoryLabel?: string;
   title: string;
   subtitle?: string;
   description?: string;
@@ -264,9 +268,29 @@ export interface HomepageShowcaseSettings {
   featuredWorkIds?: string[];
 }
 
+export interface HomepagePicsCategory {
+  id: string;
+  label: string;
+  /** Words used by the safe fallback classifier when an item has no explicit category. */
+  matches?: string[];
+}
+
+/** Stable public defaults; the admin can rename the labels and keywords without a code deploy. */
+export const DEFAULT_HOMEPAGE_PICS_CATEGORIES: HomepagePicsCategory[] = [
+  { id: 'painting', label: 'Painting', matches: ['painting', 'paint', 'canvas', 'portrait', 'art', 'culture', 'history', 'restoration'] },
+  { id: 'sculpture', label: 'Sculpture', matches: ['sculpture', 'sculptural', 'statue', 'object', 'installation', 'ceramic', 'vase'] },
+  { id: 'architecture', label: 'Architecture', matches: ['architecture', 'building', 'urban', 'space', 'city'] },
+  { id: 'design', label: 'Design', matches: ['design', 'interior', 'furniture', 'travel', 'material'] },
+  { id: 'photography', label: 'Photography', matches: ['photography', 'photograph', 'photo', 'lens', 'camera', 'visual'] },
+];
+
 export interface HomepageSettings {
-  /** Select the three newest live cards or use the explicit homeSlot values. */
-  picsOfWeek?: { mode?: 'auto' | 'manual' };
+  /** Select newest items using LIFO or preserve the explicit items order. */
+  picsOfWeek?: {
+    mode?: 'auto' | 'manual';
+    ordering?: 'lifo' | 'manual';
+    categories?: HomepagePicsCategory[];
+  };
   /** When enabled, safe homepage edits are pushed after a short debounce. */
   autoPublish?: boolean;
   showcase?: HomepageShowcaseSettings;
