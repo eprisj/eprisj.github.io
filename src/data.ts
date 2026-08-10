@@ -246,7 +246,15 @@ export interface SiteTheme {
 
 /** Homepage feature controls edited from the admin's Homepage tab. */
 export interface HomepageShowcaseSettings {
+  /** Hide the homepage teaser without removing its editorial configuration. */
+  enabled?: boolean;
   mode?: 'auto' | 'manual';
+  /** Ordering used by automatic selection and by the full Showcase route. */
+  sort?: 'editorial' | 'score' | 'newest' | 'oldest';
+  /** Minimum editorial score. Zero keeps every published, image-backed work. */
+  minScore?: number;
+  /** Number of cards in the homepage teaser (2–6 in the admin). */
+  limit?: number;
   eyebrow?: string;
   title?: string;
   description?: string;

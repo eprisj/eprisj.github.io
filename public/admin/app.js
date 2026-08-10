@@ -8726,8 +8726,13 @@ function bindStudioRowActions() {
     if (refreshInterval) refreshInterval.value = String(prefs.interval);
     if (autoPublish) autoPublish.checked = home.autoPublish === true;
     if (picsMode) picsMode.value = pics.mode === 'auto' ? 'auto' : 'manual';
-    const setValue = (id, value) => { const el = document.getElementById(id); if (el && document.activeElement !== el) el.value = value || ''; };
+    const setValue = (id, value) => { const el = document.getElementById(id); if (el && document.activeElement !== el) el.value = value == null ? '' : String(value); };
+    const showcaseEnabled = document.getElementById('homepageShowcaseEnabled');
+    if (showcaseEnabled && document.activeElement !== showcaseEnabled) showcaseEnabled.checked = showcase.enabled !== false;
     setValue('homepageShowcaseMode', showcase.mode === 'manual' ? 'manual' : 'auto');
+    setValue('homepageShowcaseSort', ['editorial', 'score', 'newest', 'oldest'].includes(String(showcase.sort)) ? showcase.sort : 'editorial');
+    setValue('homepageShowcaseMinScore', Number.isFinite(Number(showcase.minScore)) ? Math.max(0, Number(showcase.minScore)) : 0);
+    setValue('homepageShowcaseLimit', [2, 3, 4, 5, 6].includes(Number(showcase.limit)) ? Number(showcase.limit) : 4);
     setValue('homepageShowcaseIds', Array.isArray(showcase.featuredWorkIds) ? showcase.featuredWorkIds.join(', ') : '');
     setValue('homepageShowcaseEyebrow', showcase.eyebrow);
     setValue('homepageShowcaseTitle', showcase.title);
@@ -8737,9 +8742,11 @@ function bindStudioRowActions() {
     const showcaseStatus = document.getElementById('homepageShowcaseStatus');
     if (showcaseStatus) {
       const ids = Array.isArray(showcase.featuredWorkIds) ? showcase.featuredWorkIds.filter(Boolean) : [];
-      showcaseStatus.textContent = showcase.mode === 'manual'
-        ? (ids.length >= 4 ? `Ручной порядок активен: ${ids.length} работы будут показаны по заданным ID.` : 'Ручной режим включён — укажите минимум четыре ID работ.')
-        : 'Автоматический режим: блок подхватывает первые опубликованные работы из витрины.';
+      showcaseStatus.textContent = showcase.enabled === false
+        ? 'Анонс скрыт на главной. Настройки сохранены и будут готовы к следующему включению.'
+        : showcase.mode === 'manual'
+        ? (ids.length >= (Number(showcase.limit) || 4) ? `Ручной порядок активен: ${Math.min(ids.length, Number(showcase.limit) || 4)} работ будут показаны по заданным ID.` : `Ручной режим включён — укажите минимум ${Number(showcase.limit) || 4} ID работ.`)
+        : `Автоматический режим: редакционный рейтинг отбирает до ${Number(showcase.limit) || 4} опубликованных работ с фото.`;
     }
     restartHomepageRefreshTimer();
   }
@@ -9074,6 +9081,7 @@ function bindStudioRowActions() {
 
   const showcaseFields = {
     homepageShowcaseMode: 'mode',
+    homepageShowcaseSort: 'sort',
     homepageShowcaseEyebrow: 'eyebrow',
     homepageShowcaseTitle: 'title',
     homepageShowcaseDescription: 'description',
@@ -9081,7 +9089,7 @@ function bindStudioRowActions() {
     homepageShowcaseCtaUrl: 'ctaUrl',
   };
   Object.entries(showcaseFields).forEach(([id, key]) => {
-    const eventName = key === 'mode' ? 'change' : 'input';
+    const eventName = key === 'mode' || key === 'sort' ? 'change' : 'input';
     document.getElementById(id)?.addEventListener(eventName, (event) => {
       updateHomepageSettings((home) => { home.showcase[key] = event.target.value; }, 'Настройки витрины обновлены.');
     });
@@ -9090,6 +9098,15 @@ function bindStudioRowActions() {
     updateHomepageSettings((home) => {
       home.showcase.featuredWorkIds = String(event.target.value || '').split(',').map((id) => id.trim()).filter(Boolean).slice(0, 4);
     }, 'Порядок работ витрины сохранён в черновик.');
+  });
+  document.getElementById('homepageShowcaseEnabled')?.addEventListener('change', (event) => {
+    updateHomepageSettings((home) => { home.showcase.enabled = event.target.checked; }, event.target.checked ? 'Анонс витрины включён.' : 'Анонс витрины скрыт с главной.');
+  });
+  document.getElementById('homepageShowcaseMinScore')?.addEventListener('input', (event) => {
+    updateHomepageSettings((home) => { home.showcase.minScore = Math.max(0, Math.min(10000, Number(event.target.value) || 0)); }, 'Порог рейтинга витрины сохранён в черновик.');
+  });
+  document.getElementById('homepageShowcaseLimit')?.addEventListener('change', (event) => {
+    updateHomepageSettings((home) => { home.showcase.limit = Math.max(2, Math.min(6, Number(event.target.value) || 4)); }, 'Количество карточек витрины обновлено.');
   });
   document.getElementById('homepageRemoteNotice')?.addEventListener('click', (event) => {
     if (!event.target.closest('[data-homepage-accept-remote]') || !pendingRemoteHomepageData) return;

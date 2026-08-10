@@ -46,6 +46,72 @@ export interface Work {
   featured?: boolean;
 }
 
+export type ShowcaseSortMode = 'editorial' | 'score' | 'newest' | 'oldest';
+
+/**
+ * A deterministic editorial order for the public vitrine.
+ *
+ * The API's insertion order is useful for an import log, but it is not a
+ * useful reading order: a newly imported, barely described record can jump
+ * ahead of a fully documented work.  This score deliberately rewards signals
+ * the editor can verify (featured flag, curated source, source link, images,
+ * statement and location) and only uses recency as a tie-breaker.  It is not a
+ * claim about artistic value; it is a safe way to keep incomplete records out
+ * of the opening frame until an editor promotes them.
+ */
+export function showcaseEditorialScore(work: Work): number {
+  const imageCount = (work.images || []).filter((image) => Boolean(image?.url)).length;
+  const statementLength = String(work.statement || '').trim().length;
+  const tags = Array.isArray(work.tags) ? work.tags.filter(Boolean).length : 0;
+  let score = 0;
+  if (work.featured) score += 10000;
+  if (work.source === 'curated') score += 1800;
+  if (work.source === 'editorial') score += 700;
+  score += Math.min(5, imageCount) * 65;
+  if (statementLength >= 160) score += 280;
+  else if (statementLength >= 80) score += 140;
+  if (work.sourceUrl) score += 120;
+  if (work.venue) score += 80;
+  if (work.medium) score += 60;
+  if (work.author) score += 45;
+  if (work.year) score += 25;
+  score += Math.min(5, tags) * 12;
+  return score + Math.max(0, Number(work.score) || 0) * 8;
+}
+
+function workTimestamp(work: Work): number {
+  const stamp = Date.parse(String(work.addedAt || ''));
+  return Number.isFinite(stamp) ? stamp : 0;
+}
+
+/** Return published/image-backed works in an intentional display order. */
+export function rankShowcaseWorks(
+  works: Work[],
+  options: { sortMode?: ShowcaseSortMode; minScore?: number; limit?: number } = {},
+): Work[] {
+  const sortMode = options.sortMode || 'editorial';
+  const minScore = Math.max(0, Number(options.minScore) || 0);
+  const eligible = works.filter((work) =>
+    Boolean(work && work.images?.some((image) => image?.url))
+    && (!work.status || work.status === 'Published'),
+  ).filter((work) => minScore === 0 || showcaseEditorialScore(work) >= minScore);
+
+  const sorted = eligible.slice().sort((a, b) => {
+    if (sortMode === 'score') {
+      return (Number(b.score) || 0) - (Number(a.score) || 0)
+        || showcaseEditorialScore(b) - showcaseEditorialScore(a);
+    }
+    if (sortMode === 'newest') return workTimestamp(b) - workTimestamp(a);
+    if (sortMode === 'oldest') return workTimestamp(a) - workTimestamp(b);
+    return showcaseEditorialScore(b) - showcaseEditorialScore(a)
+      || workTimestamp(b) - workTimestamp(a)
+      || String(a.title || '').localeCompare(String(b.title || ''))
+      || String(a.id || '').localeCompare(String(b.id || ''));
+  });
+  const limit = Number(options.limit);
+  return Number.isFinite(limit) && limit > 0 ? sorted.slice(0, Math.min(24, Math.floor(limit))) : sorted;
+}
+
 export interface WorkDraft {
   title: string;
   year: string;

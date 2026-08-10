@@ -5,8 +5,9 @@ import {
 } from 'lucide-react';
 import {
   DISCIPLINES, EMPTY_WORK_DRAFT, Work, WorkDraft,
-  externalUrl, fetchWorks, flag, normalizeInstagram, submitWork,
+  externalUrl, fetchWorks, flag, normalizeInstagram, rankShowcaseWorks, submitWork,
 } from './showcaseApi';
+import { getHomepageSettings } from '../data';
 import { Commission } from './Commission';
 import { btnGhost, btnSolid } from './ui';
 import { ShowcaseAtlas } from './ShowcaseAtlas';
@@ -248,6 +249,11 @@ function SubmitWork({ onClose, onAdded }: { onClose: () => void; onAdded: (work:
 }
 
 export function ShowcasePage() {
+  const homepageShowcase = getHomepageSettings().showcase || {};
+  const configuredSort = ['editorial', 'score', 'newest', 'oldest'].includes(String(homepageShowcase.sort))
+    ? homepageShowcase.sort as 'editorial' | 'score' | 'newest' | 'oldest'
+    : 'editorial';
+  const configuredMinScore = Math.max(0, Number(homepageShowcase.minScore) || 0);
   const [works, setWorks] = useState<Work[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -257,7 +263,7 @@ export function ShowcasePage() {
   const [author, setAuthor] = useState('');
   const [withImageOnly, setWithImageOnly] = useState(false);
   const [recentOnly, setRecentOnly] = useState(false);
-  const [sort, setSort] = useState('newest');
+  const [sort, setSort] = useState(configuredSort);
   const [page, setPage] = useState(1);
   const [selected, setSelected] = useState<Work | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -321,13 +327,13 @@ export function ShowcasePage() {
       if (recentOnly && !(work.year && work.year >= recentCutoff)) return false;
       return true;
     });
-    return [...result].sort((a, b) => {
-      if (sort === 'title') return a.title.localeCompare(b.title);
-      if (sort === 'author') return a.author.localeCompare(b.author);
-      if (sort === 'oldest') return String(a.addedAt || '').localeCompare(String(b.addedAt || ''));
-      return String(b.addedAt || '').localeCompare(String(a.addedAt || ''));
+    if (sort === 'title') return result.slice().sort((a, b) => a.title.localeCompare(b.title));
+    if (sort === 'author') return result.slice().sort((a, b) => a.author.localeCompare(b.author));
+    return rankShowcaseWorks(result, {
+      sortMode: sort as 'editorial' | 'score' | 'newest' | 'oldest',
+      minScore: configuredMinScore,
     });
-  }, [works, query, country, discipline, author, withImageOnly, recentOnly, sort]);
+  }, [works, query, country, discipline, author, withImageOnly, recentOnly, sort, configuredMinScore]);
 
   useEffect(() => setPage(1), [query, country, discipline, author, withImageOnly, recentOnly, sort]);
   const pages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
@@ -345,7 +351,7 @@ export function ShowcasePage() {
   // window. A picture in which the work sits small behind a tree survives that
   // crop and dies full-bleed. So the server marks the works whose first frame
   // can carry a screen, and only those are eligible.
-  const leadWork = page === 1 && activeFilterCount === 0 && sort === 'newest' && visible.length > 3
+  const leadWork = page === 1 && activeFilterCount === 0 && (sort === 'editorial' || sort === 'newest') && visible.length > 3
     ? (visible.find((w) => w.featured && (w.images || []).length > 1)
       || visible.find((w) => w.featured)
       || null)
@@ -579,6 +585,7 @@ export function ShowcasePage() {
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-sans text-[9px] uppercase tracking-[0.15em]">
                 <span className="text-[#4a1728]/55">Sort:</span>
                 {[
+                  { value: 'editorial', label: 'Editorial picks' },
                   { value: 'newest', label: 'Newest first' },
                   { value: 'oldest', label: 'Oldest first' },
                   { value: 'author', label: 'Author A–Z' },
