@@ -46,6 +46,14 @@ export interface Work {
   featured?: boolean;
 }
 
+export interface DailyShowcase {
+  date: string | null;
+  mode: 'automatic' | 'manual' | null;
+  title: string;
+  description: string;
+  works: Work[];
+}
+
 export interface WorkDraft {
   title: string;
   year: string;
@@ -228,6 +236,50 @@ export async function fetchWorks(signal?: AbortSignal): Promise<Work[]> {
   } catch (error) {
     if (error instanceof DOMException && error.name === 'AbortError') throw error;
     return FALLBACK_WORKS;
+  }
+}
+
+function showcaseDateKey() {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Kyiv', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).formatToParts(new Date()).reduce<Record<string, string>>((result, part) => {
+    if (part.type !== 'literal') result[part.type] = part.value;
+    return result;
+  }, {});
+  return `${parts.year}-${parts.month}-${parts.day}`;
+}
+
+const FALLBACK_DAILY: DailyShowcase = {
+  date: showcaseDateKey(),
+  mode: 'automatic',
+  title: 'Daily selection',
+  description: 'A changing shelf of visual references, selected from the EPRIS Showcase.',
+  works: FALLBACK_WORKS.slice(0, 4),
+};
+
+export async function fetchDailyShowcase(signal?: AbortSignal, date?: string): Promise<DailyShowcase> {
+  try {
+    const query = date ? `?date=${encodeURIComponent(date)}` : '';
+    const response = await fetch(`${API_BASE}/daily${query}`, { signal, cache: 'no-store' });
+    const result = await response.json();
+    if (!response.ok || !result.ok) throw new Error(result.error || 'Daily showcase unavailable');
+    return (result.daily || FALLBACK_DAILY) as DailyShowcase;
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') throw error;
+    if (date && date !== FALLBACK_DAILY.date) return { ...FALLBACK_DAILY, date, works: FALLBACK_DAILY.works };
+    return FALLBACK_DAILY;
+  }
+}
+
+export async function fetchDailyArchive(signal?: AbortSignal): Promise<DailyShowcase[]> {
+  try {
+    const response = await fetch(`${API_BASE}/daily/archive`, { signal, cache: 'no-store' });
+    const result = await response.json();
+    if (!response.ok || !result.ok) throw new Error(result.error || 'Daily archive unavailable');
+    return Array.isArray(result.archive) ? result.archive as DailyShowcase[] : [];
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') throw error;
+    return [];
   }
 }
 

@@ -79,6 +79,8 @@ export interface Article {
   tags: string[];
   imageSeed: string;
   imageUrl?: string;
+  /** Keep the cover asset for cards/SEO, but allow the article reader to hide the hero image. */
+  showCover?: boolean;
   content: ContentBlock[];
   /** Hidden from the public site until unset. */
   draft?: boolean;
@@ -111,6 +113,9 @@ export interface Review {
   link?: string;
   date?: string;
   featured?: boolean;
+  /** Explicit homepage placement, separate from the featured review on /reviews. */
+  homeFeatured?: boolean;
+  homeOrder?: number;
   /** Hidden from the public site until unset. */
   draft?: boolean;
   /** ISO datetime; hidden from the public site until this moment passes. */
@@ -507,8 +512,8 @@ function hasLocalizedPayload(entry: unknown): boolean {
 // text fields are overlaid from the localized copy. These fields are structure/
 // media/state/links — never translated prose — so they always come from base.
 const BASE_AUTHORITATIVE_FIELDS = new Set([
-  'id', 'imageSeed', 'imageUrl', 'authorId', 'draft', 'publishAt', 'updatedAt',
-  'url', 'link', 'rating', 'featured', 'coordinates',
+  'id', 'imageSeed', 'imageUrl', 'showCover', 'authorId', 'draft', 'publishAt', 'updatedAt',
+  'url', 'link', 'rating', 'featured', 'homeFeatured', 'homeOrder', 'coordinates',
 ]);
 
 // Content-block types whose `content` field is translatable prose (a string).

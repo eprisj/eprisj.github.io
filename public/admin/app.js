@@ -1907,8 +1907,8 @@ const ENTITY_REQUIRED_FIELDS = {
   libraryItems: { id: 'id', title: 'string', type: 'string', size: 'string', year: 'string' },
 };
 const ENTITY_OPTIONAL_FIELDS = {
-  articles:     { role: 'string', subcategory: 'string', imageUrl: 'string', draft: 'boolean', publishAt: 'isoDate', order: 'number' },
-  reviews:      { category: 'string', imageUrl: 'string', verdict: 'string', pros: 'array', cons: 'array', meta: 'string', link: 'string', date: 'string', featured: 'boolean', draft: 'boolean', publishAt: 'isoDate' },
+  articles:     { role: 'string', subcategory: 'string', imageUrl: 'string', showCover: 'boolean', draft: 'boolean', publishAt: 'isoDate', order: 'number' },
+  reviews:      { category: 'string', imageUrl: 'string', verdict: 'string', pros: 'array', cons: 'array', meta: 'string', link: 'string', date: 'string', featured: 'boolean', homeFeatured: 'boolean', homeOrder: 'number', draft: 'boolean', publishAt: 'isoDate' },
   items:        { imageUrl: 'string', draft: 'boolean', publishAt: 'isoDate', articleId: 'id', order: 'number' },
   libraryItems: { url: 'string', draft: 'boolean', publishAt: 'isoDate' },
 };
@@ -3740,7 +3740,9 @@ function buildQualityEntryFromForm(section, fallback = {}) {
   if (section === 'reviews') {
     return {
       ...base,
-      title: getFieldValue('vf-title').trim()
+      title: getFieldValue('vf-title').trim(),
+      homeFeatured: Boolean(document.getElementById('vf-homeFeatured')?.checked),
+      homeOrder: Number(getFieldValue('vf-homeOrder')) > 0 ? Number(getFieldValue('vf-homeOrder')) : undefined
       // NOTE: content is managed by the WYSIWYG review canvas, not the classic form
     };
   }
@@ -3763,6 +3765,7 @@ function buildQualityEntryFromForm(section, fallback = {}) {
     tags: getFieldValue('vf-tags').split(',').map((tag) => tag.trim()).filter(Boolean),
     imageSeed: getFieldValue('vf-imageSeed').trim(),
     imageUrl: getFieldValue('vf-imageUrl').trim(),
+    showCover: document.getElementById('vf-showCover')?.checked !== false,
     content: collectBlockEditorContent()
   };
 }
@@ -4464,6 +4467,8 @@ function renderVisualForm() {
       <label>ID<input id="vf-id" value="${escapeHtml(entry.id)}" disabled /></label>
       <label>Категория<input id="vf-category" value="${escapeHtml(entry.category || '')}" placeholder="Food / Books / Stay…" /></label>
       <label class="checkbox-label" style="align-self:end" for="vf-featured"><input id="vf-featured" type="checkbox" ${entry.featured ? 'checked' : ''} /> Главный обзор (featured)</label>
+      <label class="checkbox-label" style="align-self:end" for="vf-homeFeatured"><input id="vf-homeFeatured" type="checkbox" ${entry.homeFeatured ? 'checked' : ''} /> Показывать на главной</label>
+      <label>Порядок на главной<input id="vf-homeOrder" type="number" min="1" step="1" value="${escapeHtml(entry.homeOrder ?? '')}" placeholder="1" /></label>
       <label class="full">Заголовок<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
       <label class="full">Тема (что обозревается)<input id="vf-subject" value="${escapeHtml(entry.subject || '')}" /></label>
       <label class="full">Вердикт (одна строка-вывод)<input id="vf-verdict" value="${escapeHtml(entry.verdict || '')}" /></label>
@@ -4558,6 +4563,11 @@ function renderVisualForm() {
           <label>imageSeed (если URL пуст)</label>
           <input id="vf-imageSeed" value="${escapeHtml(entry.imageSeed || '')}" placeholder="visual-seed..." />
         </div>
+
+        <label class="meta-field-group cover-visibility-toggle">
+          <span>Обложка статьи</span>
+          <span class="checkbox-label"><input id="vf-showCover" type="checkbox" ${entry.showCover !== false ? 'checked' : ''} /> Показывать на странице статьи</span>
+        </label>
 
         <div style="display:flex;gap:12px;width:100%;">
           <div class="meta-field-group" style="width:60px;">
@@ -4682,7 +4692,9 @@ function buildEntryFromVisualForm(section, current) {
       link: getOptionalString(getFieldValue('vf-link')),
       date: getOptionalString(getFieldValue('vf-date')),
       imageUrl: getOptionalString(getFieldValue('vf-imageUrl')),
-      featured: Boolean(document.getElementById('vf-featured')?.checked)
+      featured: Boolean(document.getElementById('vf-featured')?.checked),
+      homeFeatured: Boolean(document.getElementById('vf-homeFeatured')?.checked),
+      homeOrder: Number(getFieldValue('vf-homeOrder')) > 0 ? Number(getFieldValue('vf-homeOrder')) : undefined
     };
     applyDraftFieldsFromForm(next);
   } else if (section === 'libraryItems') {
@@ -4716,6 +4728,7 @@ function buildEntryFromVisualForm(section, current) {
       tags,
       imageSeed: getFieldValue('vf-imageSeed').trim(),
       imageUrl: getOptionalString(getFieldValue('vf-imageUrl')),
+      showCover: document.getElementById('vf-showCover')?.checked !== false,
       content: parsedContent
     };
   }
@@ -10367,6 +10380,7 @@ function bindStudioRowActions() {
       tags,
       imageUrl: v('vf-imageUrl'),
       imageSeed: v('vf-imageSeed'),
+      showCover: document.getElementById('vf-showCover')?.checked !== false,
       content: blocks,
     };
   }
@@ -10423,15 +10437,17 @@ function bindStudioRowActions() {
 
     let html = '<article>';
 
-    // Hero image
-    const heroSrc = resolveImgSrc(a.imageUrl, a.imageSeed, 800, 600);
-    html += '<div class="alp-hero">';
-    if (heroSrc) {
-      html += `<img src="${escapeHtml(heroSrc)}" alt="" referrerpolicy="no-referrer" loading="eager" />`;
-    } else {
-      html += `<div class="alp-hero-placeholder">Нет обложки</div>`;
+    // Hero image — the editor mirrors the public "show cover" switch.
+    if (a.showCover !== false) {
+      const heroSrc = resolveImgSrc(a.imageUrl, a.imageSeed, 800, 600);
+      html += '<div class="alp-hero">';
+      if (heroSrc) {
+        html += `<img src="${escapeHtml(heroSrc)}" alt="" referrerpolicy="no-referrer" loading="eager" />`;
+      } else {
+        html += `<div class="alp-hero-placeholder">Нет обложки</div>`;
+      }
+      html += '</div>';
     }
-    html += '</div>';
 
     // Meta
     const parts = [];
@@ -11208,7 +11224,9 @@ async function autoSyncVisualToEditor() {
         next = {
           ...next,
           title: getFieldValue('vf-title').trim(),
-          subject: getFieldValue('vf-subject').trim()
+          subject: getFieldValue('vf-subject').trim(),
+          homeFeatured: Boolean(document.getElementById('vf-homeFeatured')?.checked),
+          homeOrder: Number(getFieldValue('vf-homeOrder')) > 0 ? Number(getFieldValue('vf-homeOrder')) : undefined
           // NOTE: content is managed by the WYSIWYG review canvas, not the classic form
         };
     } else if (section === 'libraryItems') {
@@ -11228,6 +11246,7 @@ async function autoSyncVisualToEditor() {
           tags: getFieldValue('vf-tags').split(',').map((tag) => tag.trim()).filter(Boolean),
           imageSeed: getFieldValue('vf-imageSeed').trim(),
           imageUrl: getFieldValue('vf-imageUrl').trim() || undefined,
+          showCover: document.getElementById('vf-showCover')?.checked !== false,
           content: collectBlockEditorContent()
         };
     }
@@ -15075,6 +15094,109 @@ function showcaseEnquiryCard(enquiry) {
     </article>`;
 }
 
+let showcaseDailyWorksCache = [];
+let showcaseDailyMode = 'manual';
+
+function showcaseLocalDate() {
+  const now = new Date();
+  return [now.getFullYear(), String(now.getMonth() + 1).padStart(2, '0'), String(now.getDate()).padStart(2, '0')].join('-');
+}
+
+function showcaseDailyDate() {
+  return byId('showcaseDailyDate')?.value || showcaseLocalDate();
+}
+
+function renderShowcaseDailyWorks(works, selectedIds = []) {
+  const box = byId('showcaseDailyWorks');
+  if (!box) return;
+  const selected = new Set(selectedIds);
+  const published = works.filter((work) => work.status === 'Published' && (work.images || []).some((image) => image?.url));
+  showcaseDailyWorksCache = published;
+  box.innerHTML = published.length ? published.map((work) => {
+    const photo = work.images?.[0]?.url || '';
+    return `<label style="display:flex;gap:10px;align-items:center;padding:9px;border:1px solid var(--line);border-radius:7px;background:var(--paper);cursor:pointer">
+      <input type="checkbox" data-showcase-daily-work="${escapeHtml(work.id)}" ${selected.has(work.id) ? 'checked' : ''}>
+      ${photo ? `<img src="${escapeHtml(photo)}" alt="" style="width:42px;height:52px;object-fit:cover;flex:none">` : ''}
+      <span style="min-width:0"><strong style="display:block;font-size:13px;line-height:1.25">${escapeHtml(work.title || '—')}</strong><span class="card-desc">${escapeHtml(work.author || '')}</span></span>
+    </label>`;
+  }).join('') : '<p class="card-desc">Нет опубликованных работ с изображением.</p>';
+}
+
+function renderShowcaseDailyArchive(archive) {
+  const box = byId('showcaseDailyArchive');
+  if (!box) return;
+  const rows = (archive || []).slice(0, 12);
+  box.innerHTML = rows.length
+    ? `<p class="card-desc" style="margin-bottom:8px">Архив дней · ${rows.length}</p><div style="display:flex;gap:6px;flex-wrap:wrap">${rows.map((entry) => `<button class="btn" type="button" data-showcase-daily-date="${escapeHtml(entry.date || '')}">${escapeHtml(entry.date || '—')} · ${(entry.works || []).length} работ</button>`).join('')}</div>`
+    : '<p class="card-desc">Архив пока пуст — он создастся после первого показа дня.</p>';
+}
+
+async function loadShowcaseDaily(date = showcaseDailyDate()) {
+  const status = byId('showcaseDailyStatus');
+  const token = showcaseToken();
+  if (!status) return;
+  if (!token) { status.textContent = 'Нет ключа витрины — войдите заново как админ.'; return; }
+  status.textContent = 'Загрузка дня…';
+  try {
+    const [dailyRes, worksRes] = await Promise.all([
+      fetch(`${SHOWCASE_API}/daily?date=${encodeURIComponent(date)}`, { cache: 'no-store' }),
+      fetch(`${SHOWCASE_API}/works?status=all`, { headers: { 'X-Showcase-Token': token }, cache: 'no-store' }),
+    ]);
+    if (!dailyRes.ok || !worksRes.ok) throw new Error('сервер ответил с ошибкой');
+    const dailyData = await dailyRes.json();
+    const worksData = await worksRes.json();
+    const archiveRes = await fetch(`${SHOWCASE_API}/daily/archive`, { cache: 'no-store' });
+    if (!archiveRes.ok) throw new Error('архив не загрузился');
+    const archiveData = await archiveRes.json();
+    const daily = dailyData.daily || {};
+    showcaseDailyMode = daily.mode === 'automatic' ? 'automatic' : 'manual';
+    byId('showcaseDailyDate').value = daily.date || date;
+    byId('showcaseDailyTitle').value = daily.title || '';
+    byId('showcaseDailyDescription').value = daily.description || '';
+    renderShowcaseDailyWorks(worksData.works || [], (daily.works || []).map((work) => work.id));
+    renderShowcaseDailyArchive(archiveData.archive || []);
+    status.textContent = `${daily.mode === 'manual' ? 'Редакционный день' : 'Автоматический день'} · ${(daily.works || []).length} работ`;
+  } catch (error) {
+    status.textContent = `Не удалось загрузить: ${error.message}`;
+  }
+}
+
+async function saveShowcaseDaily(mode = 'manual') {
+  const token = showcaseToken();
+  const date = showcaseDailyDate();
+  const status = byId('showcaseDailyStatus');
+  if (!token || !date) return;
+  const selectedIds = mode === 'automatic'
+    ? []
+    : [...document.querySelectorAll('[data-showcase-daily-work]:checked')].map((input) => input.dataset.showcaseDailyWork);
+  if (mode !== 'automatic' && selectedIds.length > 4) {
+    if (status) status.textContent = 'Можно выбрать не больше четырёх работ.';
+    return;
+  }
+  if (status) status.textContent = 'Сохраняю…';
+  try {
+    const res = await fetch(`${SHOWCASE_API}/daily/${encodeURIComponent(date)}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', 'X-Showcase-Token': token },
+      body: JSON.stringify({
+        mode,
+        workIds: selectedIds,
+        title: byId('showcaseDailyTitle')?.value || '',
+        description: byId('showcaseDailyDescription')?.value || '',
+      }),
+    });
+    const result = await res.json();
+    if (!res.ok || !result.ok) throw new Error(result.error || `сервер ответил ${res.status}`);
+    const daily = result.daily || {};
+    renderShowcaseDailyWorks(showcaseDailyWorksCache, (daily.works || []).map((work) => work.id));
+    if (status) status.textContent = `${daily.mode === 'manual' ? 'Редакционный день' : 'Автоматический день'} сохранён · ${(daily.works || []).length} работ`;
+    const archiveRes = await fetch(`${SHOWCASE_API}/daily/archive`, { cache: 'no-store' });
+    if (archiveRes.ok) renderShowcaseDailyArchive((await archiveRes.json()).archive || []);
+  } catch (error) {
+    if (status) status.textContent = `Не удалось сохранить: ${error.message}`;
+  }
+}
+
 async function loadShowcaseQueue() {
   const box = byId('showcaseQueue');
   const status = byId('showcaseStatus');
@@ -15131,7 +15253,7 @@ async function loadShowcaseEnquiries() {
 }
 
 async function loadShowcaseAdmin() {
-  await Promise.all([loadShowcaseQueue(), loadShowcaseEnquiries()]);
+  await Promise.all([loadShowcaseQueue(), loadShowcaseEnquiries(), loadShowcaseDaily()]);
 }
 
 async function showcaseSetStatus(id, next) {
@@ -15172,6 +15294,20 @@ document.addEventListener('click', (event) => {
   const enquiryBtn = event.target.closest('[data-showcase-enquiry-act]');
   if (enquiryBtn) { showcaseSetEnquiryStatus(enquiryBtn.dataset.showcaseEnquiryId, enquiryBtn.dataset.showcaseEnquiryAct); return; }
   if (event.target.closest('#showcaseReloadBtn')) loadShowcaseAdmin();
+  if (event.target.closest('#showcaseDailyLoadBtn')) loadShowcaseDaily();
+  if (event.target.closest('#showcaseDailyAutoBtn')) {
+    showcaseDailyMode = 'automatic';
+    document.querySelectorAll('[data-showcase-daily-work]').forEach((input) => { input.checked = false; });
+    const status = byId('showcaseDailyStatus');
+    if (status) status.textContent = 'Автоматический режим выбран — нажмите «Сохранить день». Работы подберутся по дате.';
+  }
+  if (event.target.closest('#showcaseDailySaveBtn')) saveShowcaseDaily(showcaseDailyMode);
+  const dayButton = event.target.closest('[data-showcase-daily-date]');
+  if (dayButton) loadShowcaseDaily(dayButton.dataset.showcaseDailyDate);
   const tab = event.target.closest('.tab-btn[data-tab="showcase"]');
   if (tab) loadShowcaseAdmin();
+});
+
+document.addEventListener('change', (event) => {
+  if (event.target.closest?.('[data-showcase-daily-work]')) showcaseDailyMode = 'manual';
 });
