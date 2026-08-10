@@ -318,6 +318,24 @@
                   <span id="homepageLastPublished">Не опубликовано</span>
                 </div>
               </div>
+              <section class="card homepage-control-card" aria-labelledby="homepageControlTitle">
+                <div class="homepage-section-head">
+                  <div>
+                    <span class="homepage-admin-kicker">Автопилот и ручной контроль</span>
+                    <h3 id="homepageControlTitle" class="card-title">Обновление и выталкивание</h3>
+                    <p class="card-desc">Админка проверяет VPS без перезагрузки. Локальные правки не перезаписываются — сначала появится предупреждение о новой версии.</p>
+                  </div>
+                  <span id="homepageRefreshState" class="homepage-preview-badge">Автообновление включено</span>
+                </div>
+                <div class="homepage-control-grid">
+                  <label class="homepage-toggle-field"><input id="homepageAutoRefresh" type="checkbox" checked><span><strong>Автообновление</strong><small>Проверять свежий контент на VPS</small></span></label>
+                  <label class="homepage-field"><span>Интервал проверки</span><select id="homepageRefreshInterval"><option value="30">Каждые 30 секунд</option><option value="60" selected>Каждую минуту</option><option value="120">Каждые 2 минуты</option><option value="300">Каждые 5 минут</option></select></label>
+                  <button id="homepageRefreshBtn" class="btn" type="button">↻ Получить свежую версию</button>
+                  <label class="homepage-field"><span>Режим Pics of the week</span><select id="homepagePicsMode"><option value="manual">Вручную — слоты редактора</option><option value="auto">Автоматически — самые новые</option></select></label>
+                  <label class="homepage-toggle-field"><input id="homepageAutoPublish" type="checkbox"><span><strong>Автовыталкивание</strong><small>Публиковать безопасные правки после паузы</small></span></label>
+                </div>
+                <div id="homepageRemoteNotice" class="homepage-remote-notice" role="status" aria-live="polite" hidden></div>
+              </section>
               <div class="homepage-composer-grid">
                 <section class="card homepage-composer" aria-labelledby="homepageComposerTitle">
                   <div class="homepage-section-head">
@@ -342,6 +360,26 @@
                   </ul>
                 </aside>
               </div>
+              <section class="card homepage-showcase-editor" aria-labelledby="homepageShowcaseEditorTitle">
+                <div class="homepage-section-head">
+                  <div>
+                    <span class="homepage-admin-kicker">Редакционная витрина</span>
+                    <h3 id="homepageShowcaseEditorTitle" class="card-title">A vitrine of set design and conceptual art</h3>
+                    <p class="card-desc">Автоматический режим берёт первые опубликованные работы из витрины. В ручном режиме укажите ID работ в нужном порядке.</p>
+                  </div>
+                  <span class="homepage-preview-badge">Homepage teaser</span>
+                </div>
+                <div class="homepage-showcase-grid">
+                  <label class="homepage-field"><span>Режим</span><select id="homepageShowcaseMode"><option value="auto">Автоматически</option><option value="manual">Вручную</option></select></label>
+                  <label class="homepage-field homepage-showcase-wide"><span>Порядок работ (ID через запятую)</span><input id="homepageShowcaseIds" type="text" placeholder="work-id-1, work-id-2, work-id-3, work-id-4"><small>Для ручного режима. ID можно взять во вкладке «Витрина».</small></label>
+                  <label class="homepage-field"><span>Надзаголовок</span><input id="homepageShowcaseEyebrow" type="text" placeholder="Showcase"></label>
+                  <label class="homepage-field homepage-showcase-wide"><span>Заголовок</span><input id="homepageShowcaseTitle" type="text" placeholder="A vitrine of set design and conceptual art"></label>
+                  <label class="homepage-field homepage-showcase-wide"><span>Описание</span><textarea id="homepageShowcaseDescription" rows="3" placeholder="Короткое описание витрины"></textarea></label>
+                  <label class="homepage-field"><span>Текст кнопки</span><input id="homepageShowcaseCtaLabel" type="text" placeholder="Open the vitrine"></label>
+                  <label class="homepage-field"><span>Ссылка кнопки</span><input id="homepageShowcaseCtaUrl" type="url" placeholder="/showcase"></label>
+                </div>
+                <p id="homepageShowcaseStatus" class="homepage-showcase-status" role="status" aria-live="polite">Изменения сохраняются в черновик.</p>
+              </section>
               <div id="homepageGalleryMeta" class="homepage-gallery-meta" aria-live="polite"></div>
               <div id="homepageMissingArticles" class="homepage-missing" aria-live="polite"></div>
               <div id="homepageGalleryList" class="homepage-gallery-list"></div>

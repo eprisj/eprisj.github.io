@@ -27,6 +27,7 @@ import {
   getHomepageArchive,
   getIssueArchive,
   getStudio,
+  getHomepageSettings,
   resolveAuthor,
   translateRole,
   Item,
@@ -1225,11 +1226,22 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
   // content has no homeSlot metadata, so keep a deterministic fallback:
   // first item is the centre piece, then right, then left. This makes the
   // rollout backwards compatible while allowing Maria's asymmetric layout.
+  const homepageSettings = getHomepageSettings();
+  const picksMode = homepageSettings.picsOfWeek?.mode === 'auto' ? 'auto' : 'manual';
+  const autoItems = picksMode === 'auto'
+    ? [...items].sort((a, b) => {
+        const stamp = (value?: string) => {
+          const parsed = value ? Date.parse(value) : Number.NaN;
+          return Number.isFinite(parsed) ? parsed : 0;
+        };
+        return stamp(b.updatedAt || b.publishAt) - stamp(a.updatedAt || a.publishAt) || b.id - a.id;
+      })
+    : items;
   const used = new Set<number>();
   const take = (slot: Item['homeSlot'], fallbackIndex: number): Item | null => {
-    const explicit = slot ? items.find((item) => item.homeSlot === slot && !used.has(item.id)) : undefined;
-    const fallback = items.find((item, index) => index === fallbackIndex && !used.has(item.id));
-    const item = explicit || fallback || items.find((candidate) => !used.has(candidate.id));
+    const explicit = picksMode === 'manual' && slot ? autoItems.find((item) => item.homeSlot === slot && !used.has(item.id)) : undefined;
+    const fallback = autoItems.find((item, index) => index === fallbackIndex && !used.has(item.id));
+    const item = explicit || fallback || autoItems.find((candidate) => !used.has(candidate.id));
     if (item) used.add(item.id);
     return item || null;
   };

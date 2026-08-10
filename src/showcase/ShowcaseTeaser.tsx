@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { fetchWorks, type Work } from './showcaseApi';
+import { getHomepageSettings } from '../data';
 
 /**
  * Витрина на главной журнала.
@@ -15,6 +16,12 @@ import { fetchWorks, type Work } from './showcaseApi';
  */
 export function ShowcaseTeaser() {
   const [works, setWorks] = useState<Work[]>([]);
+  const showcaseSettings = getHomepageSettings().showcase || {};
+  const mode = showcaseSettings.mode === 'manual' ? 'manual' : 'auto';
+  const featuredWorkIds = Array.isArray(showcaseSettings.featuredWorkIds)
+    ? showcaseSettings.featuredWorkIds.map((id) => String(id).trim()).filter(Boolean)
+    : [];
+  const featuredKey = featuredWorkIds.join('|');
 
   useEffect(() => {
     const controller = new AbortController();
@@ -22,10 +29,25 @@ export function ShowcaseTeaser() {
     // отклоняется — кроме отмены. Поэтому главная не может сломаться из-за
     // витрины: в худшем случае блок покажет запасные работы.
     fetchWorks(controller.signal)
-      .then((result) => setWorks(result.filter((work) => work.images?.[0]?.url).slice(0, 4)))
+      .then((result) => {
+        const available = result.filter((work) => work.images?.[0]?.url && (!work.status || work.status === 'Published'));
+        if (mode !== 'manual' || featuredWorkIds.length === 0) {
+          setWorks(available.slice(0, 4));
+          return;
+        }
+        const byId = new Map(available.map((work) => [String(work.id), work]));
+        const selected = featuredWorkIds.map((id) => byId.get(id)).filter(Boolean) as Work[];
+        setWorks(selected.slice(0, 4));
+      })
       .catch(() => undefined);
     return () => controller.abort();
-  }, []);
+  }, [mode, featuredKey]);
+
+  const eyebrow = showcaseSettings.eyebrow || 'Showcase';
+  const title = showcaseSettings.title || 'A vitrine of set design and conceptual art';
+  const description = showcaseSettings.description || 'Rooms, windows, stages and installations by authors worldwide — read from the source, credited, and open for submissions.';
+  const ctaLabel = showcaseSettings.ctaLabel || 'Open the vitrine';
+  const ctaUrl = showcaseSettings.ctaUrl || '/showcase';
 
   if (works.length < 4) return null;
 
@@ -35,21 +57,20 @@ export function ShowcaseTeaser() {
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)]">
-              Showcase
+              {eyebrow}
             </p>
             <h2 className="mt-4 max-w-[16ch] font-serif text-3xl leading-tight text-[var(--c-accent)] sm:text-4xl md:text-5xl">
-              A vitrine of set design and conceptual art
+              {title}
             </h2>
             <p className="mt-5 max-w-[52ch] font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.72)] sm:text-lg">
-              Rooms, windows, stages and installations by authors worldwide — read from the
-              source, credited, and open for submissions.
+              {description}
             </p>
           </div>
           <a
-            href="/showcase"
+            href={ctaUrl}
             className="inline-flex min-h-12 w-fit shrink-0 items-center gap-3 border border-[rgb(var(--c-accent-rgb)_/_0.35)] px-6 font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] transition-colors hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--c-accent)]"
           >
-            Open the vitrine <ArrowUpRight size={15} />
+            {ctaLabel} <ArrowUpRight size={15} />
           </a>
         </div>
 
