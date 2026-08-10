@@ -188,6 +188,7 @@ function GalleryItemView({ item, onClose, articles, onReadArticle }: { item: Ite
 // overwritten; shipping the fallback here keeps new labels translated in every
 // locale until an editor overrides them in the admin.
 const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
+  'nav.home': { EN: 'Home', RU: 'Главная', UA: 'Головна', DE: 'Startseite', IT: 'Home', ES: 'Inicio', TR: 'Ana sayfa' },
   'reviews.read': { EN: 'Read', RU: 'Читать', UA: 'Читати', DE: 'Lesen', IT: 'Leggi', ES: 'Leer', TR: 'Oku' },
   'homepage.picsTitle': { EN: 'Pics of the week', RU: 'Фото недели', UA: 'Фото тижня', DE: 'Bilder der Woche', IT: 'Foto della settimana', ES: 'Fotos de la semana', TR: 'Haftanın fotoğrafları' },
   'homepage.previous': { EN: 'Previous images', RU: 'Предыдущие изображения', UA: 'Попередні зображення', DE: 'Vorherige Bilder', IT: 'Immagini precedenti', ES: 'Imágenes anteriores', TR: 'Önceki görseller' },
@@ -972,6 +973,25 @@ function NavBar({
               }}
               className="flex flex-col divide-y divide-[var(--c-accent)] border-b border-[var(--c-accent)]"
             >
+              <motion.a
+                href={tabHref('gallery')}
+                variants={{
+                  hidden: { opacity: 0, x: -14 },
+                  show: { opacity: 1, x: 0, transition: { duration: 0.22, ease: EASE } },
+                }}
+                onClick={(event) => {
+                  if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                  event.preventDefault();
+                  onHome();
+                  setIsMenuOpen(false);
+                }}
+                aria-current={activeTab === 'gallery' ? 'page' : undefined}
+                className={`min-h-[64px] px-6 py-4 flex items-center justify-between text-left transition-colors active:scale-[0.99] ${
+                  activeTab === 'gallery' ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : ''
+                }`}
+              >
+                <span className="font-serif font-normal text-xl leading-tight">{t('nav.home')}</span>
+              </motion.a>
               {tabs.map((tab) => (
                 <motion.a
                   key={tab.id}
