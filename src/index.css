@@ -108,6 +108,100 @@ select {
   writing-mode: vertical-rl;
 }
 
+/* ── Home image gallery ───────────────────────────────────── */
+.home-pics-section {
+  margin-bottom: clamp(3.5rem, 8vw, 8rem);
+}
+
+.home-carousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  scroll-padding-inline: 0.25rem;
+  scroll-snap-type: x mandatory;
+  touch-action: pan-x pinch-zoom;
+  padding: 0.25rem 0.25rem 1rem;
+  cursor: grab;
+}
+
+.home-carousel:active {
+  cursor: grabbing;
+}
+
+.home-carousel:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--c-accent) 60%, transparent);
+  outline-offset: 4px;
+}
+
+.home-carousel-card {
+  flex: 0 0 min(78vw, 22rem);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  cursor: pointer;
+}
+
+.home-carousel-card:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 4px;
+}
+
+.home-carousel-arrow {
+  width: 2.75rem;
+  height: 2.75rem;
+  min-width: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid color-mix(in srgb, var(--c-accent) 55%, transparent);
+  background: var(--c-bg);
+  color: var(--c-accent);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: background-color .2s ease, color .2s ease, transform .2s ease;
+}
+
+.home-carousel-arrow:hover {
+  background: var(--c-accent);
+  color: var(--c-bg);
+}
+
+.home-carousel-arrow:active {
+  transform: scale(.94);
+}
+
+.home-carousel-empty {
+  flex: 1 0 100%;
+  min-height: clamp(16rem, 34vw, 24rem);
+  display: grid;
+  place-content: center;
+  gap: .55rem;
+  border: 1px dashed color-mix(in srgb, var(--c-accent) 30%, transparent);
+  color: color-mix(in srgb, var(--c-accent) 65%, transparent);
+  text-align: center;
+}
+
+.home-carousel-empty p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: .9rem;
+  color: color-mix(in srgb, var(--c-accent) 52%, transparent);
+}
+
+@media (min-width: 640px) {
+  .home-carousel-card {
+    flex-basis: min(46vw, 24rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-carousel-card {
+    flex-basis: calc((100% - 2rem) / 3);
+  }
+}
+
 /* ── Aurora hero blobs ─────────────────────────────────────── */
 @keyframes aurora-1 {
   0%,100% { transform: translate(0,0) scale(1); }
