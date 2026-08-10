@@ -2315,89 +2315,41 @@ function ArticlesSection({
     <div>
       <div className="max-w-4xl mx-auto px-5 sm:px-0 pt-8 sm:pt-10">
       <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-5%' }} className="space-y-10 sm:space-y-14">
-      {filteredArticles.map((article, index) => (
+      {filteredArticles.map((article) => (
         <motion.div key={article.id} variants={staggerItem}>
-          {index === 0 ? (
-            // Featured (first) article — a single button keeps the whole card
-            // tappable without nesting a second button inside it.
-            <motion.button
-              type="button"
-              className="w-full border border-[var(--c-accent)] bg-transparent p-0 text-left group cursor-pointer grid grid-cols-1 md:grid-cols-[64%_1fr] items-stretch overflow-hidden"
-              onClick={() => openArticle(article)}
-              aria-label={`${t('articles.readPreview')}: ${article.title}`}
-              whileHover={{ x: 4 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <div className="aspect-[3/2] md:aspect-auto overflow-hidden bg-[#E8DED5]">
-                <motion.img
-                  src={resolveMediaSource(article.imageUrl || article.imageSeed, 800, 520)}
-                  alt={article.title}
-                  className="w-full h-full object-cover"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="flex flex-col p-6 sm:p-8">
-                <span className="inline-block border border-[var(--c-accent)] px-2 py-0.5 mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--c-accent)] w-fit">
-                  {t('articles.newArticle') === 'articles.newArticle' ? 'New article' : t('articles.newArticle')}
+          <motion.button
+            type="button"
+            className="w-full border border-[var(--c-accent)] bg-transparent p-0 text-left group cursor-pointer grid grid-cols-1 sm:grid-cols-[45%_1fr] items-stretch overflow-hidden"
+            onClick={() => openArticle(article)}
+            aria-label={`${t('articles.readPreview')}: ${article.title}`}
+            whileHover={{ x: 4 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="aspect-square overflow-hidden bg-[#E8DED5]">
+              <motion.img
+                src={resolveMediaSource(article.imageUrl || article.imageSeed, 480, 480)}
+                alt={article.title}
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            <div className="flex flex-col p-4 sm:p-6">
+              {article.category && (
+                <span className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.55)] uppercase tracking-widest mb-1">
+                  {article.category}
                 </span>
-                <h2 className="font-crimson text-2xl sm:text-[32px] text-[var(--c-accent)] underline decoration-1 underline-offset-4 decoration-[rgb(var(--c-accent-rgb)_/_0.35)] group-hover:decoration-[var(--c-gold)] group-hover:text-[var(--c-gold)] transition-colors duration-300">
-                  {article.title}
-                </h2>
-                {article.category && (
-                  <p className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.55)] uppercase tracking-widest mt-1 mb-4">
-                    {article.category}
-                  </p>
-                )}
-                <p className="font-serif text-base text-[rgb(var(--c-accent-rgb)_/_0.8)] leading-relaxed">
-                  {article.excerpt}
-                </p>
-                <span
-                  className="mt-7 inline-flex min-h-11 items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors"
-                >
-                  {t('articles.readPreview')} <ArrowUpRight size={14} />
-                </span>
-              </div>
-            </motion.button>
-          ) : (
-            // Rest of the list — same card family, compact. It remains one
-            // interactive surface so screen readers do not encounter nested
-            // buttons or duplicate click targets.
-            <motion.button
-              type="button"
-              className="w-full border border-[var(--c-accent)] bg-transparent p-0 text-left group cursor-pointer grid grid-cols-1 sm:grid-cols-[45%_1fr] items-stretch overflow-hidden"
-              onClick={() => openArticle(article)}
-              aria-label={`${t('articles.readPreview')}: ${article.title}`}
-              whileHover={{ x: 4 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <div className="aspect-square overflow-hidden bg-[#E8DED5]">
-                <motion.img
-                  src={resolveMediaSource(article.imageUrl || article.imageSeed, 480, 480)}
-                  alt={article.title}
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="flex flex-col p-4 sm:p-6">
-                {article.category && (
-                  <span className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.55)] uppercase tracking-widest mb-1">
-                    {article.category}
-                  </span>
-                )}
-                <h3 className="font-crimson text-lg sm:text-xl text-[var(--c-accent)] mb-2 group-hover:text-[var(--c-gold)] transition-colors duration-300">
-                  {article.title}
-                </h3>
-                <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-4 line-clamp-3">
-                  {article.excerpt}
-                </p>
-                <span className="mt-auto inline-flex items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
-                  {t('articles.readPreview')} <ArrowUpRight size={14} />
-                </span>
-              </div>
-            </motion.button>
-          )}
+              )}
+              <h3 className="font-crimson text-lg sm:text-xl text-[var(--c-accent)] mb-2 group-hover:text-[var(--c-gold)] transition-colors duration-300">
+                {article.title}
+              </h3>
+              <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-4">
+                {article.excerpt}
+              </p>
+              <span className="mt-auto inline-flex items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
+                {t('articles.readPreview')} <ArrowUpRight size={14} />
+              </span>
+            </div>
+          </motion.button>
         </motion.div>
       ))}
       </motion.div>

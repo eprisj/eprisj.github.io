@@ -227,15 +227,13 @@ select {
 }
 
 .home-carousel-caption p {
-  display: -webkit-box;
+  display: block;
   margin: 0;
-  overflow: hidden;
+  overflow: visible;
   color: color-mix(in srgb, var(--c-accent) 68%, transparent);
   font-family: var(--font-body);
   font-size: .86rem;
   line-height: 1.45;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
 }
 
 .home-carousel-caption--archive {
@@ -244,7 +242,7 @@ select {
 }
 
 .home-carousel-caption--archive p {
-  -webkit-line-clamp: 3;
+  overflow: visible;
 }
 
 .home-carousel-category {
