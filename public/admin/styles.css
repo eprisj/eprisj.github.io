@@ -6001,14 +6001,3 @@ body.busy::after {
   .rev-tools-row { gap: 14px; }
   .rev-tools-actions { margin-left: 0; }
 }
-
-/* Статьи, которых ещё нет в галерее главной (вкладка «Главная») */
-.homepage-missing { margin-top: 4px; }
-.homepage-missing-card { display: flex; flex-direction: column; gap: 12px; }
-.homepage-missing-list { display: flex; flex-wrap: wrap; gap: 8px; }
-.homepage-missing-list .btn {
-  max-width: 100%;
-  white-space: normal;
-  text-align: left;
-  line-height: 1.3;
-}

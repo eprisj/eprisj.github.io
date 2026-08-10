@@ -152,14 +152,24 @@ select {
   outline-offset: 4px;
 }
 
-.home-carousel-caption {
-  min-height: 12.5rem;
-  padding: .9rem .2rem .35rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--c-accent) 22%, transparent);
+.home-carousel-media {
+  border: 1px solid color-mix(in srgb, var(--c-accent) 24%, transparent);
+  background: color-mix(in srgb, var(--c-accent) 5%, var(--c-bg));
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--c-accent) 7%, transparent);
 }
 
-.home-carousel-caption h2 {
-  text-wrap: balance;
+.home-carousel-category {
+  position: absolute;
+  left: .75rem;
+  bottom: .75rem;
+  padding: .35rem .5rem;
+  background: color-mix(in srgb, var(--c-bg) 92%, transparent);
+  color: var(--c-accent);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .55rem;
+  letter-spacing: .16em;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .home-carousel-arrow {
@@ -230,9 +240,6 @@ select {
     padding-inline: .25rem;
   }
 
-  .home-carousel-caption {
-    min-height: 13rem;
-  }
 }
 
 /* ── Aurora hero blobs ─────────────────────────────────────── */

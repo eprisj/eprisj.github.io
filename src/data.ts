@@ -4,7 +4,7 @@ export const DEFAULT_LANGUAGE = 'EN';
 
 export interface Item {
   id: number;
-  /** Article linked to this gallery card; prevents a duplicate auto-card on the homepage. */
+  /** Optional editorial source reference retained for archive and attribution. */
   articleId?: number;
   title: string;
   subtitle: string;
@@ -12,7 +12,7 @@ export interface Item {
   description: string;
   imageSeed: string;
   imageUrl?: string;
-  /** Extra photos shown in the "read" detail view, each with its own caption. Falls back to just imageUrl/imageSeed when absent. */
+  /** Optional additional photos for contexts that support a detail view. */
   images?: { url: string; caption?: string }[];
   /** Hidden from the public site until unset. */
   draft?: boolean;
@@ -721,28 +721,11 @@ export function getContentForLanguage(lang: string): LanguageContent {
   const liveArticles = isPreview() ? articles : articles.filter((entry) => isEntityLive(entry) && isEntityVisible('articles', entry.id));
   const liveItems = isPreview() ? items : items.filter((entry) => isEntityLive(entry) && isEntityVisible('items', entry.id));
 
-  // The homepage Gallery is a hand-curated collection, separate from Articles
-  // — publishing a new article never added it there, so it silently never
-  // showed on the homepage. Any article not already represented (by title)
-  // in the curated Gallery gets appended as a Gallery card, so every
-  // published article is reachable from the homepage without disturbing the
-  // curated ordering/featured slot at the front of the list.
-  const galleryTitles = new Set(liveItems.map((i) => (i.title || '').trim().toLowerCase()));
-  const galleryArticleIds = new Set(liveItems.map((i) => Number(i.articleId)).filter((id) => Number.isFinite(id)));
-  const articleGalleryItems: Item[] = liveArticles
-    .filter((a) => !galleryTitles.has((a.title || '').trim().toLowerCase()) && !galleryArticleIds.has(Number(a.id)))
-    .map((a) => ({
-      id: 900000 + a.id,
-      title: a.title,
-      subtitle: a.category || '',
-      fig: `FIG. ${String(a.id).padStart(2, '0')}`,
-      description: a.excerpt,
-      imageSeed: a.imageSeed,
-      imageUrl: a.imageUrl,
-    }));
-
   return {
-    items: [...liveItems, ...articleGalleryItems],
+    // Pics of the week is a photo-only editorial collection. Articles remain
+    // available in the Articles section below the gallery, but are never
+    // promoted into this image strip automatically.
+    items: liveItems,
     articles: liveArticles,
     reviews: isPreview() ? reviews : reviews.filter((entry) => isEntityLive(entry) && isEntityVisible('reviews', entry.id)),
     libraryItems: isPreview() ? libraryItems : libraryItems.filter((entry) => isEntityLive(entry) && isEntityVisible('libraryItems', entry.id))

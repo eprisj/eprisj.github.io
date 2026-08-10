@@ -87,18 +87,22 @@ function ImageLightbox({ src, alt, onClose }: { src: string; alt: string; onClos
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
       className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-label={alt || 'Image preview'}
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 p-2 text-white/80 hover:bg-white/10 rounded-full transition-colors z-10"
+        className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/25 p-2 text-white/80 transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+        aria-label="Close image preview"
       >
         <X size={24} />
       </button>
       <img
         src={src}
         alt={alt}
-        className="max-w-full max-h-full object-contain select-none"
+        className="max-h-[90vh] max-w-[92vw] object-contain select-none shadow-2xl"
         referrerPolicy="no-referrer"
       />
     </motion.div>
@@ -1224,7 +1228,7 @@ function ManifestPage({ t, currentLang }: { t: (key: string) => string; currentL
   );
 }
 
-function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (item: Item) => void }) {
+function GallerySection({ items, onImageClick }: { items: Item[]; onImageClick: (src: string, alt: string) => void }) {
   const homepageSettings = getHomepageSettings();
   const picsSettings = homepageSettings.picsOfWeek || {};
   const picksMode = picsSettings.mode === 'auto' ? 'auto' : 'manual';
@@ -1270,12 +1274,12 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
   return (
     <section className="home-pics-section" aria-labelledby="pics-of-week-title">
       <Reveal>
-        <div className="mb-7 flex items-end justify-between border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-4">
+        <div className="mb-7 flex items-center justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-4">
           <h1 id="pics-of-week-title" className="font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">Pics of the week</h1>
-        </div>
-        <div className="mb-5 flex justify-end gap-2">
-          <button type="button" onClick={() => scrollCarousel(-1)} className="home-carousel-arrow" aria-label="Previous images">←</button>
-          <button type="button" onClick={() => scrollCarousel(1)} className="home-carousel-arrow" aria-label="Next images">→</button>
+          <div className="flex shrink-0 gap-2">
+            <button type="button" onClick={() => scrollCarousel(-1)} className="home-carousel-arrow" aria-label="Previous images">←</button>
+            <button type="button" onClick={() => scrollCarousel(1)} className="home-carousel-arrow" aria-label="Next images">→</button>
+          </div>
         </div>
         <div ref={viewportRef} className="home-carousel" tabIndex={0} aria-label="Five Pics of the week categories" onKeyDown={(event) => { if (event.key === 'ArrowLeft') scrollCarousel(-1); if (event.key === 'ArrowRight') scrollCarousel(1); }}>
           {featuredItems.map(({ category, item }) => item ? (
@@ -1286,18 +1290,13 @@ function GallerySection({ items, onItemClick }: { items: Item[]; onItemClick: (i
               whileTap={cardTap}
               role="button"
               tabIndex={0}
-              onClick={() => onItemClick(item)}
-              onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onItemClick(item); }}
-              aria-label={`View ${category.label}: ${item.title}`}
+              onClick={() => onImageClick(resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${category.label}: ${item.title}`)}
+              onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onImageClick(resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${category.label}: ${item.title}`); }}
+              aria-label={`Open image: ${category.label}`}
             >
-              <div className="relative aspect-[4/5] overflow-hidden bg-[#E8DED5]">
+              <div className="home-carousel-media relative aspect-[4/5] overflow-hidden bg-[#E8DED5]">
                 <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={item.title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.035]" loading="lazy" referrerPolicy="no-referrer" />
-              </div>
-              <div className="home-carousel-caption">
-                <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{category.label}</span>
-                <h2 className="mt-2 font-crimson text-xl leading-tight text-[var(--c-accent)]">{item.title}</h2>
-                <p className="mt-2 line-clamp-3 font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.66)]">{(() => { const summary = (item.description || item.subtitle || '').replace(/\s+/g, ' ').trim(); return summary.length > 155 ? `${summary.slice(0, 152)}…` : summary; })()}</p>
-                <span className="mt-4 inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--c-accent)]">View story <ArrowUpRight size={12} aria-hidden="true" /></span>
+                <span className="home-carousel-category">{category.label}</span>
               </div>
             </motion.article>
           ) : <div key={category.id} className="home-carousel-empty"><span className="font-mono text-[10px] uppercase tracking-[0.2em]">{category.label}</span><p>New image coming soon.</p></div>)}
@@ -1322,7 +1321,7 @@ function sortArticlesNewestFirst(articles: Article[]): Article[] {
   });
 }
 
-function DailyPicksArchive({ archive, items }: { archive: HomepageArchiveEntry[]; items: Item[] }) {
+function DailyPicksArchive({ archive, items, onImageClick }: { archive: HomepageArchiveEntry[]; items: Item[]; onImageClick: (src: string, alt: string) => void }) {
   if (!archive.length) return null;
   const currentById = new Map(items.map((item) => [Number(item.id), item]));
   const formatDate = (value: string) => {
@@ -1353,11 +1352,19 @@ function DailyPicksArchive({ archive, items }: { archive: HomepageArchiveEntry[]
                 const localized = currentById.get(Number(card.id));
                 const image = localized?.imageUrl || localized?.imageSeed || card.imageUrl || card.imageSeed;
                 return (
-                  <div key={`${entry.id}-${card.id}`} className="min-w-0">
-                    <div className="aspect-[4/5] overflow-hidden bg-[#E8DED5]">
-                      {image ? <img src={resolveMediaSource(image, 360, 450)} alt={localized?.title || card.title} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" referrerPolicy="no-referrer" /> : <span className="flex h-full items-center justify-center font-mono text-[9px] text-[rgb(var(--c-accent-rgb)_/_0.45)]">No image</span>}
+                  <div
+                    key={`${entry.id}-${card.id}`}
+                    className="group relative min-w-0 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--c-accent)] focus-visible:outline-offset-2"
+                    role="button"
+                    tabIndex={image ? 0 : -1}
+                    aria-label={`Open archived image: ${card.categoryLabel || entry.label || 'Pics of the week'}`}
+                    onClick={() => image && onImageClick(resolveMediaSource(image, 2000, 1400), `${card.categoryLabel || entry.label || 'Pics of the week'}: ${localized?.title || card.title || ''}`)}
+                    onKeyDown={(event) => { if (image && (event.key === 'Enter' || event.key === ' ')) onImageClick(resolveMediaSource(image, 2000, 1400), `${card.categoryLabel || entry.label || 'Pics of the week'}: ${localized?.title || card.title || ''}`); }}
+                  >
+                    <div className="relative aspect-[4/5] overflow-hidden bg-[#E8DED5]">
+                      {image ? <img src={resolveMediaSource(image, 360, 450)} alt={card.categoryLabel || localized?.title || card.title} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" referrerPolicy="no-referrer" /> : <span className="flex h-full items-center justify-center font-mono text-[9px] text-[rgb(var(--c-accent-rgb)_/_0.45)]">No image</span>}
+                      <span className="home-carousel-category">{card.categoryLabel || entry.label || 'Pics'}</span>
                     </div>
-                    <p className="mt-2 line-clamp-2 font-serif text-sm leading-tight text-[var(--c-accent)]">{localized?.title || card.title}</p>
                   </div>
                 );
               })}
@@ -3349,7 +3356,7 @@ export default function App() {
               <>
                 {activeTab === 'gallery' && (
                   <>
-                    <GallerySection items={items} onItemClick={setSelectedGalleryItem} />
+                    <GallerySection items={items} onImageClick={handleImageClick} />
                     <section className="homepage-articles mt-16 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-12 sm:mt-24 sm:pt-16" aria-labelledby="homepage-articles-title">
                       <div className="mb-8 flex flex-col gap-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-5 sm:flex-row sm:items-end sm:justify-between">
                         <div>
@@ -3360,7 +3367,7 @@ export default function App() {
                       </div>
                       <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />
                     </section>
-                    <DailyPicksArchive archive={homepageArchive} items={items} />
+                    <DailyPicksArchive archive={homepageArchive} items={items} onImageClick={handleImageClick} />
                     {/* Витрина жила отдельным маршрутом, на который с сайта не
                         вело ни одной ссылки. Suspense без запасного экрана:
                         блок не должен ничего занимать, пока грузится. */}
