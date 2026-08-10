@@ -43,7 +43,7 @@ import {
 } from './data';
 import { DEFAULT_HOMEPAGE_PICS_CATEGORIES } from './data';
 import type { HomepageArchiveEntry, HomepagePicsCategory, SiteSettings, SiteTheme, VisibilitySectionKey } from './data';
-import { Search, ArrowUpRight, FileText, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
+import { Search, ArrowUpRight, FileText, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, ArrowRight, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
 
 // Issue-draft preview: when the admin opens /issue?preview=1, load the unsaved
 // content JSON it stashed in localStorage and override the data layer before any
@@ -189,6 +189,21 @@ function GalleryItemView({ item, onClose, articles, onReadArticle }: { item: Ite
 // locale until an editor overrides them in the admin.
 const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
   'reviews.read': { EN: 'Read', RU: 'Читать', UA: 'Читати', DE: 'Lesen', IT: 'Leggi', ES: 'Leer', TR: 'Oku' },
+  'homepage.picsTitle': { EN: 'Pics of the week', RU: 'Фото недели', UA: 'Фото тижня', DE: 'Bilder der Woche', IT: 'Foto della settimana', ES: 'Fotos de la semana', TR: 'Haftanın fotoğrafları' },
+  'homepage.previous': { EN: 'Previous images', RU: 'Предыдущие изображения', UA: 'Попередні зображення', DE: 'Vorherige Bilder', IT: 'Immagini precedenti', ES: 'Imágenes anteriores', TR: 'Önceki görseller' },
+  'homepage.next': { EN: 'Next images', RU: 'Следующие изображения', UA: 'Наступні зображення', DE: 'Nächste Bilder', IT: 'Immagini successive', ES: 'Imágenes siguientes', TR: 'Sonraki görseller' },
+  'homepage.openImage': { EN: 'Open image', RU: 'Открыть изображение', UA: 'Відкрити зображення', DE: 'Bild öffnen', IT: 'Apri immagine', ES: 'Abrir imagen', TR: 'Görseli aç' },
+  'homepage.carouselLabel': { EN: 'Pics of the week categories', RU: 'Категории фото недели', UA: 'Категорії фото тижня', DE: 'Kategorien der Bilder der Woche', IT: 'Categorie delle foto della settimana', ES: 'Categorías de fotos de la semana', TR: 'Haftanın fotoğraf kategorileri' },
+  'homepage.archiveEyebrow': { EN: 'Archive', RU: 'Архив', UA: 'Архів', DE: 'Archiv', IT: 'Archivio', ES: 'Archivo', TR: 'Arşiv' },
+  'homepage.archiveTitle': { EN: 'Daily picks', RU: 'Ежедневный выбор', UA: 'Щоденний вибір', DE: 'Tägliche Auswahl', IT: 'Scelte quotidiane', ES: 'Selección diaria', TR: 'Günün seçkisi' },
+  'homepage.archiveDescription': { EN: 'Every weekly composition stays here after the next one takes its place.', RU: 'Каждая недельная композиция остаётся здесь после выхода следующей.', UA: 'Кожна тижнева композиція залишається тут після виходу наступної.', DE: 'Jede Wochenkomposition bleibt hier, wenn die nächste erscheint.', IT: 'Ogni composizione settimanale resta qui quando arriva la successiva.', ES: 'Cada composición semanal permanece aquí cuando llega la siguiente.', TR: 'Bir sonraki yayınlandığında her haftalık kompozisyon burada kalır.' },
+  'homepage.descriptionUnavailable': { EN: 'Short description coming soon.', RU: 'Краткое описание появится скоро.', UA: 'Короткий опис з’явиться незабаром.', DE: 'Eine kurze Beschreibung folgt in Kürze.', IT: 'Una breve descrizione arriverà presto.', ES: 'La breve descripción llegará pronto.', TR: 'Kısa açıklama yakında eklenecek.' },
+  'homepage.articlesEyebrow': { EN: 'EPRIS / editorial', RU: 'EPRIS / редакция', UA: 'EPRIS / редакція', DE: 'EPRIS / Redaktion', IT: 'EPRIS / redazione', ES: 'EPRIS / editorial', TR: 'EPRIS / editoryal' },
+  'homepage.articlesTitle': { EN: 'Articles', RU: 'Статьи', UA: 'Статті', DE: 'Artikel', IT: 'Articoli', ES: 'Artículos', TR: 'Makaleler' },
+  'homepage.articlesDescription': { EN: 'The latest writing from the journal, newest first.', RU: 'Свежие тексты журнала — сначала самые новые.', UA: 'Свіжі тексти журналу — спочатку найновіші.', DE: 'Die neuesten Texte des Journals, zuerst die aktuellsten.', IT: 'Gli ultimi testi del journal, dal più recente.', ES: 'Los textos más recientes de la revista, primero los nuevos.', TR: 'Derginin en yeni yazıları, en yeniler önce.' },
+  'articles.readPreview': { EN: 'Read preview', RU: 'Читать превью', UA: 'Читати прев’ю', DE: 'Vorschau lesen', IT: 'Leggi anteprima', ES: 'Leer vista previa', TR: 'Önizlemeyi oku' },
+  'articles.readFull': { EN: 'Read full article', RU: 'Читать полностью', UA: 'Читати повністю', DE: 'Vollständigen Artikel lesen', IT: 'Leggi l’articolo completo', ES: 'Leer el artículo completo', TR: 'Makalenin tamamını oku' },
+  'articles.closePreview': { EN: 'Close preview', RU: 'Закрыть превью', UA: 'Закрити прев’ю', DE: 'Vorschau schließen', IT: 'Chiudi anteprima', ES: 'Cerrar vista previa', TR: 'Önizlemeyi kapat' },
   'video.openVideo': { EN: 'Open video', RU: 'Открыть видео', UA: 'Відкрити відео', DE: 'Video öffnen', IT: 'Apri video', ES: 'Abrir vídeo', TR: 'Videoyu aç' },
   'lang.title': { EN: 'Language', RU: 'Язык', UA: 'Мова', DE: 'Sprache', IT: 'Lingua', ES: 'Idioma', TR: 'Dil' },
   'lang.chooseEdition': { EN: 'Choose edition', RU: 'Выберите версию', UA: 'Виберіть версію', DE: 'Ausgabe wählen', IT: 'Scegli edizione', ES: 'Elegir edición', TR: 'Baskı seç' },
@@ -201,8 +216,8 @@ const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
 function getTranslation(lang: string, key: string) {
   const tr = getTranslations();
   return tr[lang]?.[key]
-    || tr[DEFAULT_LANGUAGE]?.[key]
     || UI_STRING_FALLBACK[key]?.[lang]
+    || tr[DEFAULT_LANGUAGE]?.[key]
     || UI_STRING_FALLBACK[key]?.[DEFAULT_LANGUAGE]
     || key;
 }
@@ -1228,7 +1243,25 @@ function ManifestPage({ t, currentLang }: { t: (key: string) => string; currentL
   );
 }
 
-function GallerySection({ items, onImageClick }: { items: Item[]; onImageClick: (src: string, alt: string) => void }) {
+const HOMEPAGE_CATEGORY_LABEL_TRANSLATIONS: Record<string, Record<string, string>> = {
+  sculpture: { EN: 'Sculpture', RU: 'Скульптура', UA: 'Скульптура', DE: 'Skulptur', IT: 'Scultura', ES: 'Escultura', TR: 'Heykel' },
+  painting: { EN: 'Painting', RU: 'Живопись', UA: 'Живопис', DE: 'Malerei', IT: 'Pittura', ES: 'Pintura', TR: 'Resim' },
+  architecture: { EN: 'Architecture', RU: 'Архитектура', UA: 'Архітектура', DE: 'Architektur', IT: 'Architettura', ES: 'Arquitectura', TR: 'Mimarlık' },
+  design: { EN: 'Design', RU: 'Дизайн', UA: 'Дизайн', DE: 'Design', IT: 'Design', ES: 'Diseño', TR: 'Tasarım' },
+  photography: { EN: 'Photography', RU: 'Фотография', UA: 'Фотографія', DE: 'Fotografie', IT: 'Fotografia', ES: 'Fotografía', TR: 'Fotoğraf' },
+};
+
+function localizedHomepageCategoryLabel(category: HomepagePicsCategory, lang: string): string {
+  return category.labels?.[lang]?.trim()
+    || HOMEPAGE_CATEGORY_LABEL_TRANSLATIONS[category.id]?.[lang]
+    || category.label;
+}
+
+function homepageItemDescription(item: Item, fallback: string): string {
+  return item.description?.trim() || item.subtitle?.trim() || item.title?.trim() || fallback;
+}
+
+function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]; onImageClick: (src: string, alt: string) => void; currentLang: string; t: (key: string) => string }) {
   const homepageSettings = getHomepageSettings();
   const picsSettings = homepageSettings.picsOfWeek || {};
   const picksMode = picsSettings.mode === 'auto' ? 'auto' : 'manual';
@@ -1275,14 +1308,17 @@ function GallerySection({ items, onImageClick }: { items: Item[]; onImageClick: 
     <section className="home-pics-section" aria-labelledby="pics-of-week-title">
       <Reveal>
         <div className="mb-7 flex items-center justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-4">
-          <h1 id="pics-of-week-title" className="font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">Pics of the week</h1>
+          <h1 id="pics-of-week-title" className="font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">{t('homepage.picsTitle')}</h1>
           <div className="flex shrink-0 gap-2">
-            <button type="button" onClick={() => scrollCarousel(-1)} className="home-carousel-arrow" aria-label="Previous images">←</button>
-            <button type="button" onClick={() => scrollCarousel(1)} className="home-carousel-arrow" aria-label="Next images">→</button>
+            <button type="button" onClick={() => scrollCarousel(-1)} className="home-carousel-arrow" aria-label={t('homepage.previous')}><ArrowLeft size={16} strokeWidth={1.5} aria-hidden="true" /></button>
+            <button type="button" onClick={() => scrollCarousel(1)} className="home-carousel-arrow" aria-label={t('homepage.next')}><ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" /></button>
           </div>
         </div>
-        <div ref={viewportRef} className="home-carousel" tabIndex={0} aria-label="Five Pics of the week categories" onKeyDown={(event) => { if (event.key === 'ArrowLeft') scrollCarousel(-1); if (event.key === 'ArrowRight') scrollCarousel(1); }}>
-          {featuredItems.map(({ category, item }) => item ? (
+        <div ref={viewportRef} className="home-carousel" tabIndex={0} aria-label={t('homepage.carouselLabel')} onKeyDown={(event) => { if (event.key === 'ArrowLeft') scrollCarousel(-1); if (event.key === 'ArrowRight') scrollCarousel(1); }}>
+          {featuredItems.map(({ category, item }) => item ? (() => {
+              const categoryLabel = localizedHomepageCategoryLabel(category, currentLang);
+              const description = homepageItemDescription(item, t('homepage.descriptionUnavailable'));
+              return (
             <motion.article
               key={item.id}
               className="home-carousel-card group"
@@ -1290,16 +1326,22 @@ function GallerySection({ items, onImageClick }: { items: Item[]; onImageClick: 
               whileTap={cardTap}
               role="button"
               tabIndex={0}
-              onClick={() => onImageClick(resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${category.label}: ${item.title}`)}
-              onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onImageClick(resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${category.label}: ${item.title}`); }}
-              aria-label={`Open image: ${category.label}`}
+              onClick={() => onImageClick(resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${item.title}`)}
+              onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onImageClick(resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${item.title}`); }}
+              aria-label={`${t('homepage.openImage')}: ${categoryLabel}`}
             >
               <div className="home-carousel-media relative aspect-[4/5] overflow-hidden bg-[#E8DED5]">
                 <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={item.title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.035]" loading="lazy" referrerPolicy="no-referrer" />
-                <span className="home-carousel-category">{category.label}</span>
+                <span className="home-carousel-category">{categoryLabel}</span>
+              </div>
+              <div className="home-carousel-caption">
+                <span className="home-carousel-caption-category">{categoryLabel}</span>
+                <h2>{item.title}</h2>
+                <p>{description}</p>
               </div>
             </motion.article>
-          ) : <div key={category.id} className="home-carousel-empty"><span className="font-mono text-[10px] uppercase tracking-[0.2em]">{category.label}</span><p>New image coming soon.</p></div>)}
+              );
+            })() : <div key={category.id} className="home-carousel-empty"><span className="font-mono text-[10px] uppercase tracking-[0.2em]">{localizedHomepageCategoryLabel(category, currentLang)}</span><p>{t('homepage.descriptionUnavailable')}</p></div>)}
         </div>
       </Reveal>
     </section>
@@ -1321,23 +1363,24 @@ function sortArticlesNewestFirst(articles: Article[]): Article[] {
   });
 }
 
-function DailyPicksArchive({ archive, items, onImageClick }: { archive: HomepageArchiveEntry[]; items: Item[]; onImageClick: (src: string, alt: string) => void }) {
+function DailyPicksArchive({ archive, items, onImageClick, currentLang, t }: { archive: HomepageArchiveEntry[]; items: Item[]; onImageClick: (src: string, alt: string) => void; currentLang: string; t: (key: string) => string }) {
   if (!archive.length) return null;
   const currentById = new Map(items.map((item) => [Number(item.id), item]));
+  const languageTags: Record<string, string> = { EN: 'en', RU: 'ru', UA: 'uk', TR: 'tr', DE: 'de', IT: 'it', ES: 'es' };
   const formatDate = (value: string) => {
     const date = new Date(value);
-    return Number.isNaN(date.getTime()) ? value : date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+    return Number.isNaN(date.getTime()) ? value : date.toLocaleDateString(languageTags[currentLang] || 'en', { day: '2-digit', month: 'short', year: 'numeric' });
   };
 
   return (
     <section id="daily-picks" className="border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-12 sm:pt-16 md:pt-24" aria-labelledby="daily-picks-title">
       <div className="flex flex-col gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-5 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">Archive</p>
-          <h2 id="daily-picks-title" className="mt-2 font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">Daily picks</h2>
+          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{t('homepage.archiveEyebrow')}</p>
+          <h2 id="daily-picks-title" className="mt-2 font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">{t('homepage.archiveTitle')}</h2>
         </div>
         <p className="max-w-[38ch] font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)] sm:text-right">
-          Every weekly composition stays here after the next one takes its place.
+          {t('homepage.archiveDescription')}
         </p>
       </div>
       <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -1351,19 +1394,27 @@ function DailyPicksArchive({ archive, items, onImageClick }: { archive: Homepage
               {entry.cards.slice(0, 5).map((card) => {
                 const localized = currentById.get(Number(card.id));
                 const image = localized?.imageUrl || localized?.imageSeed || card.imageUrl || card.imageSeed;
+                const category = localized?.homeCategory
+                  ? localizedHomepageCategoryLabel({ id: localized.homeCategory, label: localized.homeCategory }, currentLang)
+                  : card.categoryLabel || entry.label || 'Pics';
+                const description = homepageItemDescription(localized || ({ id: Number(card.id), title: card.title || category, subtitle: card.subtitle || '', fig: '', description: card.description || '', imageSeed: card.imageSeed || '' } as Item), t('homepage.descriptionUnavailable'));
                 return (
                   <div
                     key={`${entry.id}-${card.id}`}
                     className="group relative min-w-0 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--c-accent)] focus-visible:outline-offset-2"
                     role="button"
                     tabIndex={image ? 0 : -1}
-                    aria-label={`Open archived image: ${card.categoryLabel || entry.label || 'Pics of the week'}`}
-                    onClick={() => image && onImageClick(resolveMediaSource(image, 2000, 1400), `${card.categoryLabel || entry.label || 'Pics of the week'}: ${localized?.title || card.title || ''}`)}
-                    onKeyDown={(event) => { if (image && (event.key === 'Enter' || event.key === ' ')) onImageClick(resolveMediaSource(image, 2000, 1400), `${card.categoryLabel || entry.label || 'Pics of the week'}: ${localized?.title || card.title || ''}`); }}
+                    aria-label={`${t('homepage.openImage')}: ${category}`}
+                    onClick={() => image && onImageClick(resolveMediaSource(image, 2000, 1400), `${category}: ${localized?.title || card.title || ''}`)}
+                    onKeyDown={(event) => { if (image && (event.key === 'Enter' || event.key === ' ')) onImageClick(resolveMediaSource(image, 2000, 1400), `${category}: ${localized?.title || card.title || ''}`); }}
                   >
                     <div className="relative aspect-[4/5] overflow-hidden bg-[#E8DED5]">
-                      {image ? <img src={resolveMediaSource(image, 360, 450)} alt={card.categoryLabel || localized?.title || card.title} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" referrerPolicy="no-referrer" /> : <span className="flex h-full items-center justify-center font-mono text-[9px] text-[rgb(var(--c-accent-rgb)_/_0.45)]">No image</span>}
-                      <span className="home-carousel-category">{card.categoryLabel || entry.label || 'Pics'}</span>
+                      {image ? <img src={resolveMediaSource(image, 360, 450)} alt={category} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" referrerPolicy="no-referrer" /> : <span className="flex h-full items-center justify-center font-mono text-[9px] text-[rgb(var(--c-accent-rgb)_/_0.45)]">{t('homepage.descriptionUnavailable')}</span>}
+                      <span className="home-carousel-category">{category}</span>
+                    </div>
+                    <div className="home-carousel-caption home-carousel-caption--archive">
+                      <span className="home-carousel-caption-category">{category}</span>
+                      <p>{description}</p>
                     </div>
                   </div>
                 );
@@ -2129,16 +2180,86 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   );
 }
 
+function ArticlePreviewDialog({ article, onClose, onReadFull, onImageClick, t }: { article: Article; onClose: () => void; onReadFull: () => void; onImageClick: (src: string, alt: string) => void; t: (key: string) => string }) {
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[70] flex items-center justify-center bg-black/65 p-4 sm:p-8"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="article-preview-title"
+      onClick={(event) => { if (event.target === event.currentTarget) onClose(); }}
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 18, scale: .985 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 12, scale: .985 }}
+        transition={{ duration: .24, ease: [0.22, 1, 0.36, 1] }}
+        className="relative max-h-[min(90dvh,48rem)] w-full max-w-3xl overflow-y-auto bg-[var(--c-bg)] text-[var(--c-accent)] shadow-2xl"
+      >
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label={t('articles.closePreview')}
+          className="absolute right-3 top-3 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.22)] bg-[rgb(var(--c-bg-rgb)_/_0.84)] text-[var(--c-accent)] backdrop-blur-sm transition hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--c-accent)]"
+        >
+          <X size={18} />
+        </button>
+        <button
+          type="button"
+          onClick={() => onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143), article.title)}
+          className="group block w-full cursor-zoom-in text-left"
+          aria-label={`${t('homepage.openImage')}: ${article.title}`}
+        >
+          <div className="aspect-[16/8] overflow-hidden bg-[#E8DED5]">
+            <img src={resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 600)} alt={article.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]" referrerPolicy="no-referrer" />
+          </div>
+        </button>
+        <div className="px-6 pb-8 pt-7 sm:px-10 sm:pb-10 sm:pt-8">
+          <div className="mb-4 flex flex-wrap items-center gap-3 font-mono text-[9px] uppercase tracking-[0.18em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">
+            {article.category && <span>{article.category}</span>}
+            {article.date && <><span className="h-1 w-1 rounded-full bg-[rgb(var(--c-accent-rgb)_/_0.35)]" /><span>{article.date}</span></>}
+          </div>
+          <h2 id="article-preview-title" className="max-w-2xl font-crimson text-3xl leading-tight sm:text-5xl">{article.title}</h2>
+          <p className="mt-5 max-w-2xl font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.76)] sm:text-lg">{article.excerpt}</p>
+          <div className="mt-8 flex justify-center border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] pt-7">
+            <button
+              type="button"
+              onClick={onReadFull}
+              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--c-accent)] px-6 py-2.5 font-mono text-[10px] uppercase tracking-[0.16em] transition hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--c-accent)]"
+            >
+              {t('articles.readFull')} <ArrowUpRight size={15} />
+            </button>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 function ArticlesSection({
   articles,
   onArticleClick,
+  onArticlePreview,
   t,
 }: {
   articles: Article[];
   onArticleClick: (article: Article) => void;
+  onArticlePreview?: (article: Article) => void;
   t: (key: string) => string;
 }) {
   const filteredArticles = sortArticlesNewestFirst(articles);
+  const openArticle = onArticlePreview || onArticleClick;
 
   return (
     <div>
@@ -2150,11 +2271,11 @@ function ArticlesSection({
             // Featured (first) article — larger side-by-side card, whole card is the link
             <motion.article
               className="border border-[var(--c-accent)] group cursor-pointer grid grid-cols-1 md:grid-cols-[64%_1fr] items-stretch overflow-hidden"
-              onClick={() => onArticleClick(article)}
+              onClick={() => openArticle(article)}
               tabIndex={0}
               role="button"
-              aria-label={`Read article: ${article.title}`}
-              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onArticleClick(article)}
+              aria-label={`${t('articles.readPreview')}: ${article.title}`}
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && openArticle(article)}
               whileHover={{ x: 4 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
@@ -2183,17 +2304,24 @@ function ArticlesSection({
                 <p className="font-serif text-base text-[rgb(var(--c-accent-rgb)_/_0.8)] leading-relaxed">
                   {article.excerpt}
                 </p>
+                <button
+                  type="button"
+                  onClick={(event) => { event.stopPropagation(); openArticle(article); }}
+                  className="mt-7 inline-flex min-h-11 items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors"
+                >
+                  {t('articles.readPreview')} <ArrowUpRight size={14} />
+                </button>
               </div>
             </motion.article>
           ) : (
             // Rest of the list — same card family, compact: landscape thumb, category + title + excerpt + read button
             <motion.article
               className="border border-[var(--c-accent)] group cursor-pointer grid grid-cols-1 sm:grid-cols-[45%_1fr] items-stretch overflow-hidden"
-              onClick={() => onArticleClick(article)}
+              onClick={() => openArticle(article)}
               tabIndex={0}
               role="button"
-              aria-label={`Read article: ${article.title}`}
-              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onArticleClick(article)}
+              aria-label={`${t('articles.readPreview')}: ${article.title}`}
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && openArticle(article)}
               whileHover={{ x: 4 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
@@ -2218,7 +2346,7 @@ function ArticlesSection({
                   {article.excerpt}
                 </p>
                 <span className="mt-auto inline-flex items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
-                  {t('reviews.read')}
+                  {t('articles.readPreview')} <ArrowUpRight size={14} />
                 </span>
               </div>
             </motion.article>
@@ -3063,6 +3191,7 @@ export default function App() {
   const initialRoute = parsePath(window.location.pathname, window.location.search);
   const [activeTab, setActiveTab] = useState(initialRoute.tab || 'gallery');
   const [selectedArticleId, setSelectedArticleId] = useState<number | null>(initialRoute.articleId ?? null);
+  const [previewArticleId, setPreviewArticleId] = useState<number | null>(null);
   const [selectedReviewId, setSelectedReviewId] = useState<number | null>(initialRoute.reviewId ?? null);
   const [passportCode, setPassportCode] = useState<string | undefined>(initialRoute.passportCode);
   const [homeTransitionKey, setHomeTransitionKey] = useState(0);
@@ -3107,6 +3236,11 @@ export default function App() {
   const selectedArticle = selectedArticleId !== null
     ? articles.find((article) => article.id === selectedArticleId)
       || defaultContent.articles.find((article) => article.id === selectedArticleId)
+      || null
+    : null;
+  const previewArticle = previewArticleId !== null
+    ? articles.find((article) => article.id === previewArticleId)
+      || defaultContent.articles.find((article) => article.id === previewArticleId)
       || null
     : null;
   const selectedReview = selectedReviewId !== null
@@ -3170,6 +3304,7 @@ export default function App() {
     if (!normalizedQuery) return;
     setActiveSearch(normalizedQuery);
     setSelectedArticleId(null);
+    setPreviewArticleId(null);
     setActiveTab('gallery');
     navigate(`/search?q=${encodeURIComponent(normalizedQuery)}`);
   }, [navigate]);
@@ -3179,6 +3314,7 @@ export default function App() {
     const target = managedTab && !isSectionEnabled(managedTab) ? fallbackTab : tab;
     setActiveTab(target);
     setSelectedArticleId(null);
+    setPreviewArticleId(null);
     setSelectedReviewId(null);
     setActiveSearch('');
     setPassportCode(undefined);
@@ -3192,6 +3328,7 @@ export default function App() {
   }, [handleSetTab]);
 
   const handleSelectArticle = useCallback((id: number, article?: Article) => {
+    setPreviewArticleId(null);
     setSelectedArticleId(id);
     if (article) {
       navigate(`/article/${getSlugForArticle(article)}`);
@@ -3205,7 +3342,14 @@ export default function App() {
     setSelectedArticleId(null);
     navigate(activeTab === 'gallery' ? '/' : `/${activeTab}`);
   }, [activeTab, navigate]);
+  const handlePreviewArticle = useCallback((article: Article) => {
+    setPreviewArticleId(article.id);
+  }, []);
+  const handleCloseArticlePreview = useCallback(() => {
+    setPreviewArticleId(null);
+  }, []);
   const handleSelectReview = useCallback((review: Review) => {
+    setPreviewArticleId(null);
     setSelectedArticleId(null);
     setSelectedReviewId(review.id);
     setActiveTab('reviews');
@@ -3356,18 +3500,18 @@ export default function App() {
               <>
                 {activeTab === 'gallery' && (
                   <>
-                    <GallerySection items={items} onImageClick={handleImageClick} />
+                    <GallerySection items={items} onImageClick={handleImageClick} currentLang={currentLang} t={t} />
                     <section className="homepage-articles mt-16 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-12 sm:mt-24 sm:pt-16" aria-labelledby="homepage-articles-title">
                       <div className="mb-8 flex flex-col gap-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-5 sm:flex-row sm:items-end sm:justify-between">
                         <div>
-                          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">EPRIS / editorial</p>
-                          <h2 id="homepage-articles-title" className="mt-2 font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">Articles</h2>
+                          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t('homepage.articlesEyebrow')}</p>
+                          <h2 id="homepage-articles-title" className="mt-2 font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">{t('homepage.articlesTitle')}</h2>
                         </div>
-                        <p className="max-w-[34ch] font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)] sm:text-right">The latest writing from the journal, newest first.</p>
+                        <p className="max-w-[34ch] font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)] sm:text-right">{t('homepage.articlesDescription')}</p>
                       </div>
-                      <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />
+                      <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} onArticlePreview={handlePreviewArticle} t={t} />
                     </section>
-                    <DailyPicksArchive archive={homepageArchive} items={items} onImageClick={handleImageClick} />
+                    <DailyPicksArchive archive={homepageArchive} items={items} onImageClick={handleImageClick} currentLang={currentLang} t={t} />
                     {/* Витрина жила отдельным маршрутом, на который с сайта не
                         вело ни одной ссылки. Suspense без запасного экрана:
                         блок не должен ничего занимать, пока грузится. */}
@@ -3406,6 +3550,18 @@ export default function App() {
       
       <AnimatePresence initial={false}>
         {activeTab !== 'gallery' && <Sidebar key="section-sidebar" t={t} />}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {previewArticle && (
+          <ArticlePreviewDialog
+            article={previewArticle}
+            onClose={handleCloseArticlePreview}
+            onReadFull={() => handleSelectArticle(previewArticle.id, previewArticle)}
+            onImageClick={handleImageClick}
+            t={t}
+          />
+        )}
       </AnimatePresence>
 
       <AnimatePresence>
