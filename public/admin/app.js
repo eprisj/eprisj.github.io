@@ -3864,6 +3864,41 @@ function bindCreatorQualityInputs(fallback = {}) {
   });
 }
 
+// Every new record is born in the EN collection first. EN is the canonical
+// source used by the public site, the localisation audit and the translation
+// pass; creating only inside the currently open language used to leave a
+// record that disappeared as soon as the editor reloaded its source list.
+// Translation is deliberately a separate, explicit action. Creating empty
+// language copies made the interface claim that a record already existed in
+// seven languages, even though only the English draft had been saved. It also
+// let a stale localized list win over the new canonical record on reload.
+function stageCanonicalDraft(data, section, entry) {
+  const canonical = getSectionArray(data, section, DEFAULT_LANGUAGE, false);
+  if (canonical.some((item) => Number(item.id) === Number(entry.id))) {
+    throw new Error(`Запись #${entry.id} уже существует.`);
+  }
+
+  const draft = { ...entry, draft: true, updatedAt: new Date().toISOString() };
+  canonical.push(draft);
+
+  // A new draft must never be hidden by the previous search/status filter.
+  visualSectionSelect.value = section;
+  visualLangSelect.value = DEFAULT_LANGUAGE;
+  if (visualSearchInput) visualSearchInput.value = '';
+  if (visualStatusFilter) visualStatusFilter.value = 'all';
+  if (visualSort) visualSort.value = 'updated';
+  pendingVisualEntryId = Number(draft.id);
+  setEditorData(data);
+  return { draft, seededLangs: [] };
+}
+
+async function persistNewCanonicalDraft(section, entry) {
+  // One protected, versioned entity write is enough to make creation durable.
+  // It replaces the former whole-document background POST that could arrive
+  // after a newer edit and make a just-created draft vanish.
+  await saveEntityToServer(section, DEFAULT_LANGUAGE, entry);
+}
+
 // Articles and Pics of the week are separate editorial collections. The
 // homepage strip accepts only explicitly curated image records; writing an
 // article never creates a homepage photo automatically.
@@ -3871,30 +3906,11 @@ async function createArticleFromBlueprint(kind) {
   try {
     setBusy(true);
     const data = parseEditorJson();
-    const sourceLang = visualLangSelect.value || DEFAULT_LANGUAGE;
-    const entries = getSectionArray(data, 'articles', sourceLang, sourceLang !== DEFAULT_LANGUAGE);
     const nextId = getNextEntryId(data, 'articles');
-    const baseArticle = buildArticleBlueprint(kind, nextId);
-    const sourceArticle = baseArticle;
-
-    // A blueprint must appear immediately. Translating an empty template into
-    // six locales used to make this button wait for a long chain of AI calls.
-    // The editor will translate the actual text explicitly on first save.
-    if (sourceLang !== DEFAULT_LANGUAGE) {
-      const titleOverride = getCreatorInputValue(creatorTitleInput);
-      const categoryOverride = getCreatorInputValue(creatorCategoryInput);
-      if (titleOverride) sourceArticle.title = titleOverride;
-      if (categoryOverride) sourceArticle.category = categoryOverride;
-    }
-
-    entries.push(sourceArticle);
-    const seededLangs = seedMissingEntryLanguages(data, 'articles', sourceLang, sourceArticle);
-    visualSectionSelect.value = 'articles';
-    visualLangSelect.value = sourceLang;
-    pendingVisualEntryId = nextId;
-    setEditorData(data);
-    const localeNote = seededLangs.length ? ` Вкладки ${seededLangs.join(', ')} готовы; перевод появится при «Сохранить + 6 языков».` : '';
-    setStatus('success', `Шаблон статьи #${nextId} создан мгновенно как черновик.${localeNote}`);
+    const { draft } = stageCanonicalDraft(data, 'articles', buildArticleBlueprint(kind, nextId));
+    setStatus('info', `Создаю черновик статьи #${nextId} на VPS…`);
+    await persistNewCanonicalDraft('articles', draft);
+    setStatus('success', `Черновик статьи #${nextId} создан, открыт в редакторе и сохранён на VPS. Переводы появятся только после явной команды «Синхронизировать».`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
@@ -3906,28 +3922,11 @@ async function createReviewFromBlueprint(kind) {
   try {
     setBusy(true);
     const data = parseEditorJson();
-    const sourceLang = visualLangSelect.value || DEFAULT_LANGUAGE;
-    const entries = getSectionArray(data, 'reviews', sourceLang, sourceLang !== DEFAULT_LANGUAGE);
     const nextId = getNextEntryId(data, 'reviews');
-    const baseReview = buildReviewBlueprint(kind, nextId);
-    const sourceReview = baseReview;
-
-    if (sourceLang !== DEFAULT_LANGUAGE) {
-      const titleOverride = getCreatorInputValue(creatorTitleInput);
-      const categoryOverride = getCreatorInputValue(creatorCategoryInput);
-      if (titleOverride) sourceReview.title = titleOverride;
-      if (categoryOverride) sourceReview.category = categoryOverride;
-    }
-
-    entries.push(sourceReview);
-    const seededLangs = seedMissingEntryLanguages(data, 'reviews', sourceLang, sourceReview);
-
-    visualSectionSelect.value = 'reviews';
-    visualLangSelect.value = sourceLang;
-    pendingVisualEntryId = nextId;
-    setEditorData(data);
-    const localeNote = seededLangs.length ? ` Вкладки ${seededLangs.join(', ')} готовы; перевод появится при сохранении.` : '';
-    setStatus('success', `Шаблон обзора #${nextId} создан мгновенно как черновик.${localeNote}`);
+    const { draft } = stageCanonicalDraft(data, 'reviews', buildReviewBlueprint(kind, nextId));
+    setStatus('info', `Создаю черновик обзора #${nextId} на VPS…`);
+    await persistNewCanonicalDraft('reviews', draft);
+    setStatus('success', `Черновик обзора #${nextId} создан, открыт в редакторе и сохранён на VPS. Переводы появятся только после явной команды «Синхронизировать».`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
@@ -4695,11 +4694,27 @@ function buildEntryFromVisualForm(section, current) {
   return next;
 }
 
+// Article and review canvases are the actual editing surfaces. The old hidden
+// form remains only as a compatibility fallback for the remaining sections.
+// Reading that hidden form after somebody has typed in a live canvas was the
+// source of an especially damaging failure: a click on "Save" could put the
+// previous values back into a new record. Flush the active canvas first and
+// then save the entry which is already in the canonical editor JSON.
+async function flushActiveEditorialCanvas() {
+  if (window.__modernEditorActive) await flushModernEditor();
+  if (typeof window._wysFlush === 'function') window._wysFlush();
+  if (typeof window._revFlush === 'function') window._revFlush();
+}
+
+function usesLiveEditorialCanvas(section) {
+  return (section === 'articles' && window.__wysEditorActive === true)
+    || (section === 'reviews' && window.__reviewEditorActive === true);
+}
+
 async function applyVisualChanges() {
   try {
     setBusy(true);
-    // Ensure the modern editor's latest content is flushed into the cache first.
-    if (window.__modernEditorActive) await flushModernEditor();
+    await flushActiveEditorialCanvas();
     const data = parseEditorJson();
     const section = visualSectionSelect.value;
     const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
@@ -4716,7 +4731,9 @@ async function applyVisualChanges() {
     }
 
     const current = entries[entryIndex];
-    const next = buildEntryFromVisualForm(section, current);
+    const next = usesLiveEditorialCanvas(section)
+      ? deepClone(current)
+      : buildEntryFromVisualForm(section, current);
 
     entries[entryIndex] = next;
     const syncedLangs = section === 'articles' || section === 'items'
@@ -4753,20 +4770,33 @@ async function applyVisualChanges() {
 // instead of silently losing an edit.
 const CONTENT_META_API = 'https://api.eprisjournal.com/content/meta';
 const CONTENT_ENTITY_API = 'https://api.eprisjournal.com/content/entity';
-async function saveEntityToServer(section, lang, entity) {
+async function saveEntityToServer(section, lang, entity, options = {}) {
   const pw = getAdminPassword();
   if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
-  const metaRes = await fetch(CONTENT_META_API, { cache: 'no-store' });
-  const meta = await metaRes.json().catch(() => ({}));
-  const res = await fetch(CONTENT_ENTITY_API, {
-    method: 'PATCH',
-    headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
-    body: JSON.stringify({ section, id: entity.id, entity, lang, expectedVersion: meta.version }),
-  });
-  const data = await res.json().catch(() => ({}));
-  if (res.status === 409) throw new Error('Кто-то ещё сохранил изменения. Нажмите «Загрузить», затем повторите.');
-  if (!res.ok || !data.ok) throw new Error(data.error || ('VPS вернул статус ' + res.status));
-  return data;
+  const retries = Number.isInteger(options.retries) ? options.retries : 2;
+
+  // The live article/review canvas and the toolbar can both save legitimately
+  // within one second. Retry a fresh version check instead of treating this
+  // ordinary race as a lost record. The entity itself is immutable for the
+  // duration of this call, so retrying never merges two different edits.
+  for (let attempt = 0; attempt <= retries; attempt += 1) {
+    const metaRes = await fetch(CONTENT_META_API, { cache: 'no-store' });
+    const meta = await metaRes.json().catch(() => ({}));
+    if (!metaRes.ok || !meta.version) throw new Error('Не удалось получить актуальную версию контента на VPS.');
+
+    const res = await fetch(CONTENT_ENTITY_API, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
+      body: JSON.stringify({ section, id: entity.id, entity, lang, expectedVersion: meta.version }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (res.status === 409 && attempt < retries) continue;
+    if (res.status === 409) throw new Error('Контент изменился несколько раз подряд. Нажмите «Загрузить» и повторите сохранение.');
+    if (!res.ok || !data.ok) throw new Error(data.error || ('VPS вернул статус ' + res.status));
+    return data;
+  }
+
+  throw new Error('Не удалось сохранить запись на VPS.');
 }
 
 function getLanguageSyncFailures(syncResult) {
@@ -4823,10 +4853,12 @@ function renderSyncReportMarkup({ title, sourceLang, savedToServer, updated = []
   `;
 }
 
-function showLanguageSyncReport({ selectedId, section, sourceLang, savedToServer, syncResult, actionLabel }) {
+function showLanguageSyncReport({ selectedId, section, sourceLang, savedToServer, syncResult, actionLabel, translationDeferred = false }) {
   const updated = Array.isArray(syncResult) ? syncResult : [];
   const failures = getLanguageSyncFailures(syncResult);
-  const nextStep = failures.length
+  const nextStep = translationDeferred
+    ? 'Исходная запись уже сохранена на VPS. Когда текст готов, нажмите «Синхронизировать» — тогда будут созданы и сохранены все языковые версии.'
+    : failures.length
     ? 'Часть языков не обновилась. Откройте язык из списка, проверьте текст и повторите «Синхронизировать».'
     : (savedToServer
         ? 'Готово: исходная запись и все переводы сохранены на VPS. Копировать блоки вручную больше не нужно.'
@@ -4845,7 +4877,7 @@ function showLanguageSyncReport({ selectedId, section, sourceLang, savedToServer
 async function saveCurrentEntryOnly() {
   try {
     setBusy(true);
-    if (window.__modernEditorActive) await flushModernEditor();
+    await flushActiveEditorialCanvas();
     const data = parseEditorJson();
     const section = visualSectionSelect.value;
     const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
@@ -4857,7 +4889,9 @@ async function saveCurrentEntryOnly() {
     if (entryIndex === -1) throw new Error('Не найдена выбранная запись.');
 
     const current = entries[entryIndex];
-    const next = buildEntryFromVisualForm(section, current);
+    const next = usesLiveEditorialCanvas(section)
+      ? deepClone(current)
+      : buildEntryFromVisualForm(section, current);
     const entityErr = validateEntityShape(section, next);
     if (entityErr) throw new Error(entityErr);
 
@@ -4866,29 +4900,23 @@ async function saveCurrentEntryOnly() {
     // Reflect the save locally too, so the rest of the admin (dropdown badges,
     // quality audit, draft) stays in sync without a full reload.
     entries[entryIndex] = next;
-    let syncedLangs = [];
-    if (section === 'articles' || section === 'items') {
-      syncedLangs = await translateEntryToAllLanguages(data, section, lang, next, {
-        saveToServer: true,
-        statusPrefix: `Сохраняю переводы #${selectedId}`
-      });
-    } else {
-      syncedLangs = await syncMissingEntryLanguages(data, section, lang, next);
-    }
+    // “Save” has exactly one responsibility: persist the record currently
+    // open in the editor. Translation is a separate deliberate action. This
+    // keeps a newly-created review/article fast and prevents a six-language
+    // network job from looking like a broken save button.
+    const syncedLangs = [];
     pendingVisualEntryId = selectedId;
     setEditorData(data, { markSynced: true });
-    const syncNote = section === 'articles' || section === 'items'
-      ? formatLanguageSyncNote(syncedLangs, 'Языки обновлены на VPS')
-      : formatLanguageSyncNote(syncedLangs, 'Недостающие языки созданы');
-    const statusType = getLanguageSyncFailures(syncedLangs).length ? 'info' : 'success';
-    setStatus(statusType, `Запись #${selectedId} сохранена на VPS (${getSectionLabel(section)} / ${lang}).${syncNote}`);
+    const syncNote = ' Переводы не создаются автоматически: когда исходник готов, нажмите «Синхронизировать» для 7 языков.';
+    setStatus('success', `Запись #${selectedId} сохранена на VPS (${getSectionLabel(section)} / ${lang}).${syncNote}`);
     showLanguageSyncReport({
       selectedId,
       section,
       sourceLang: lang,
       savedToServer: true,
       syncResult: syncedLangs,
-      actionLabel: 'Запись сохранена'
+      actionLabel: 'Запись сохранена',
+      translationDeferred: true
     });
   } catch (error) {
     setStatus('error', getErrorMessage(error));
@@ -4947,19 +4975,22 @@ async function duplicateVisualEntry() {
     }
 
     const nextId = getNextEntryId(data, section);
-    const duplicate = deepClone(entries[entryIndex]);
+    // Duplicate from the canonical source whenever it exists. Otherwise a
+    // copy made while viewing RU/UA could again live only in that locale and
+    // disappear from the main selector on the next refresh.
+    const canonicalSource = getSectionArray(data, section, DEFAULT_LANGUAGE, false)
+      .find((item) => Number(item.id) === selectedId) || entries[entryIndex];
+    const duplicate = deepClone(canonicalSource);
     duplicate.id = nextId;
     duplicate.draft = true;
     if (typeof duplicate.title === 'string') {
       duplicate.title = `${duplicate.title} (копия)`;
     }
 
-    entries.splice(entryIndex + 1, 0, duplicate);
-    const seededLangs = seedMissingEntryLanguages(data, section, lang, duplicate);
-    pendingVisualEntryId = nextId;
-    setEditorData(data);
-    const localeNote = seededLangs.length ? ` Языковые вкладки подготовлены: ${seededLangs.join(', ')}.` : '';
-    setStatus('success', `Запись #${selectedId} дублирована в черновик #${nextId}.${localeNote}`);
+    const { draft } = stageCanonicalDraft(data, section, duplicate);
+    setStatus('info', `Создаю копию #${nextId} на VPS…`);
+    await persistNewCanonicalDraft(section, draft);
+    setStatus('success', `Запись #${selectedId} дублирована в черновик #${nextId} и сохранена на VPS.`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
@@ -5601,7 +5632,7 @@ function requireSourceEntry(data, section, preferredSourceLang, selectedId) {
 async function translateSelectedEntryToAvailableLanguages() {
   try {
     setBusy(true);
-    if (window.__modernEditorActive) await flushModernEditor();
+    await flushActiveEditorialCanvas();
 
     const data = parseEditorJson();
     const section = visualSectionSelect.value;
@@ -5613,7 +5644,9 @@ async function translateSelectedEntryToAvailableLanguages() {
     let sourceEntry;
 
     if (visibleIndex !== -1) {
-      sourceEntry = buildEntryFromVisualForm(section, visibleEntries[visibleIndex]);
+      sourceEntry = usesLiveEditorialCanvas(section)
+        ? deepClone(visibleEntries[visibleIndex])
+        : buildEntryFromVisualForm(section, visibleEntries[visibleIndex]);
       const entityErr = validateEntityShape(section, sourceEntry);
       if (entityErr) throw new Error(entityErr);
       visibleEntries[visibleIndex] = sourceEntry;
@@ -6631,8 +6664,6 @@ async function addVisualEntry() {
     setBusy(true);
     const data = parseEditorJson();
     const section = visualSectionSelect.value;
-    const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
-    const entries = getSectionArray(data, section, lang, lang !== DEFAULT_LANGUAGE);
     const nextId = getNextEntryId(data, section);
     const entry = { ...createDefaultEntry(section, nextId), draft: true };
 
@@ -6642,15 +6673,14 @@ async function addVisualEntry() {
     }
     if (section === 'items') inheritHomepageFields(entry);
 
-    entries.push(entry);
-    // Creation must never wait for six serial AI requests. We create safe
-    // local locale shells immediately; the real translation happens when the
-    // editor explicitly saves the filled-in entry.
-    const seededLangs = seedMissingEntryLanguages(data, section, lang, entry);
-
-    pendingVisualEntryId = nextId;
-    setEditorData(data);
-    const localeNote = seededLangs.length ? ` Вкладки ${seededLangs.join(', ')} уже созданы; нажмите «Сохранить + 6 языков» после заполнения текста.` : '';
+    // One path for every “create” action: put a real EN draft in the canonical
+    // collection, open it, then persist that very entity. The older path
+    // created a local record in whichever language happened to be selected;
+    // the dropdown only reads canonical EN records and immediately jumped back
+    // to a previous published entry.
+    const { draft } = stageCanonicalDraft(data, section, entry);
+    setStatus('info', `Создаю черновик #${nextId} на VPS…`);
+    await persistNewCanonicalDraft(section, draft);
     const createdMessage = section === 'articles'
       ? 'Создана статья'
       : section === 'reviews'
@@ -6658,7 +6688,7 @@ async function addVisualEntry() {
         : section === 'items'
           ? 'Создана фото-карточка'
           : 'Создана запись';
-    setStatus('success', `${createdMessage} #${nextId} мгновенно как черновик (${getSectionLabel(section)} / ${lang}).${localeNote}`);
+    setStatus('success', `${createdMessage} #${nextId} как черновик в EN и сохранена на VPS. Для всех 7 языков используйте «Синхронизировать» после заполнения.`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
@@ -12683,9 +12713,16 @@ window.scheduleVisualAutoSync = function() {
 
 async function autoSyncVisualToEditor() {
   try {
+    const activeSection = visualSectionSelect.value;
+    // The live canvases already own their model. Reading the hidden legacy
+    // fields here rewrote a current article/review with stale form values.
+    if (usesLiveEditorialCanvas(activeSection)) {
+      await flushActiveEditorialCanvas();
+      return;
+    }
     const data = parseEditorJsonSafe();
     if (!data) return;
-    const section = visualSectionSelect.value;
+    const section = activeSection;
     const lang = visualLangSelect.value || 'ru';
     const entries = getSectionArray(data, section, lang, false);
     if (!entries || !entries.length) return;
@@ -13340,6 +13377,7 @@ async function flushModernEditor() {
   const drawerBody  = document.getElementById('wysMetaBody');
   const saveState = document.getElementById('wysSaveState');
   if (!shell || !canvas || !toggleBtn) return;
+  window.__wysEditorActive = false;
 
   const esc = (s) => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   const sanitizeInline = (h) => (typeof __sanitizeInline === 'function' ? __sanitizeInline(h) : esc(h));
@@ -13434,12 +13472,14 @@ async function flushModernEditor() {
 
   function showWys() {
     shell.classList.add('on');
+    window.__wysEditorActive = true;
     contentTab?.classList.add('is-live-editor');
     classicEls().forEach((el) => (el.style.display = 'none'));
     toggleBtn.classList.add('active');
   }
   function showClassic() {
     shell.classList.remove('on');
+    window.__wysEditorActive = false;
     contentTab?.classList.remove('is-live-editor');
     classicEls().forEach((el) => (el.style.display = ''));
     toggleBtn.classList.remove('active');
@@ -13463,7 +13503,7 @@ async function flushModernEditor() {
     // ours and leave classic alone; only items/libraryItems (no custom canvas
     // yet) should fall back to the classic form.
     if (!_enabled || section !== 'articles') {
-      if (section === 'reviews') { shell.classList.remove('on'); return; }
+      if (section === 'reviews') { shell.classList.remove('on'); window.__wysEditorActive = false; return; }
       showClassic();
       return;
     }
@@ -13477,7 +13517,11 @@ async function flushModernEditor() {
       entry = en.find((e) => Number(e.id) === id);
     }
     showWys();
-    if (!entry) { canvas.innerHTML = '<div class="wys-empty"><div class="wys-empty-icon">✦</div><p>Выберите статью в списке сверху или создайте новую.</p></div>'; return; }
+    if (!entry) {
+      window.__wysEditorActive = false;
+      canvas.innerHTML = '<div class="wys-empty"><div class="wys-empty-icon">✦</div><p>Выберите статью в списке сверху или создайте новую.</p></div>';
+      return;
+    }
     _ctx = { section, lang, id };
     _model = clone(entry);
     if (!Array.isArray(_model.content)) _model.content = [];
@@ -13528,25 +13572,23 @@ async function flushModernEditor() {
   let _publishing = false;
   let _publishQueued = false;
   let _errorRetries = 0;
-  async function publishSilently() {
-    if (!_model) return;
-    clearTimeout(_commitTimer);
-    flushLocal(); // make sure the very latest keystrokes are in editor.value first
-    if (_publishing) { _publishQueued = true; return; }
+  async function publishSilently(snapshot = null, context = null) {
+    if (!snapshot) {
+      if (!_model) return;
+      clearTimeout(_commitTimer);
+      flushLocal(); // make sure the latest keystrokes are in the local recovery draft
+      snapshot = clone(_model);
+      context = { ..._ctx };
+    }
+    if (_publishing) { _publishQueued = { snapshot, context }; return; }
     const pw = (typeof getAdminPassword === 'function') ? getAdminPassword() : '';
     if (!pw) { setSave('nopw'); return; } // no password on file — stays local-only, no spam
     _publishing = true;
     setSave('publishing');
     try {
-      const res = await fetch(CONTENT_API, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
-        body: editor.value,
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok || !data.ok) throw new Error(data.error || ('VPS ' + res.status));
-      try { setLastSyncedSnapshotFromText(editor.value); } catch {}
-      try { localStorage.removeItem(DRAFT_KEY); } catch {}
+      // Never POST the full editor JSON from the live canvas. An old delayed
+      // POST could overwrite a just-created draft with a previous document.
+      await saveEntityToServer(context.section, context.lang, snapshot);
       lastSyncedTime = new Date();
       try { updateLastSyncedBadge(); } catch {}
       setSave('published');
@@ -13557,7 +13599,11 @@ async function flushModernEditor() {
       else { setSave('error-final'); } // stop hammering the VPS; next edit resets the counter
     } finally {
       _publishing = false;
-      if (_publishQueued) { _publishQueued = false; publishSilently(); }
+      if (_publishQueued) {
+        const queued = _publishQueued;
+        _publishQueued = false;
+        publishSilently(queued.snapshot, queued.context);
+      }
     }
   }
   // Flush on tab close / hide so a fast edit-then-leave is never lost.
@@ -13568,11 +13614,11 @@ async function flushModernEditor() {
     const labels = {
       editing: 'Изменяю…',
       saved: 'Сохранено локально',
-      publishing: 'Публикую на сайт…',
-      published: 'Опубликовано ✓',
-      error: 'Ошибка публикации — повторяю…',
-      'error-final': 'Не удалось опубликовать (сохранено локально)',
-      nopw: 'Сохранено локально (нет пароля для публикации)',
+      publishing: 'Сохраняю на VPS…',
+      published: 'Сохранено на VPS ✓',
+      error: 'Ошибка сохранения — повторяю…',
+      'error-final': 'Не удалось сохранить на VPS (есть локальная копия)',
+      nopw: 'Сохранено локально (нет пароля редакции)',
     };
     saveState.textContent = labels[s] || labels.saved;
     saveState.className = 'wys-save-state ' + s;
@@ -13643,14 +13689,19 @@ async function flushModernEditor() {
 
   const ICON_UP     = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>';
   const ICON_DOWN   = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>';
+  const ICON_TOP    = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="m18 11-6-6-6 6"/><path d="m18 17-6-6-6 6"/></svg>';
+  const ICON_BOTTOM = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 13 6 6 6-6"/><path d="m6 7 6 6 6-6"/></svg>';
   const ICON_REPEAT = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>';
   const ICON_TRASH  = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>';
   const ICON_GRIP   = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>';
 
   function blockControls(i) {
+    const last = Math.max(0, (_model?.content?.length || 1) - 1);
     return `<div class="wys-bc">
-      <button class="wys-bc-btn" data-wys-act="up"   data-i="${i}" title="Вверх">${ICON_UP}</button>
-      <button class="wys-bc-btn" data-wys-act="down" data-i="${i}" title="Вниз">${ICON_DOWN}</button>
+      <button class="wys-bc-btn" data-wys-act="top" data-i="${i}" title="В начало" aria-label="Переместить блок в начало" ${i === 0 ? 'disabled' : ''}>${ICON_TOP}</button>
+      <button class="wys-bc-btn" data-wys-act="up" data-i="${i}" title="Выше (Alt + ↑)" aria-label="Переместить блок выше" ${i === 0 ? 'disabled' : ''}>${ICON_UP}</button>
+      <button class="wys-bc-btn" data-wys-act="down" data-i="${i}" title="Ниже (Alt + ↓)" aria-label="Переместить блок ниже" ${i === last ? 'disabled' : ''}>${ICON_DOWN}</button>
+      <button class="wys-bc-btn" data-wys-act="bottom" data-i="${i}" title="В конец" aria-label="Переместить блок в конец" ${i === last ? 'disabled' : ''}>${ICON_BOTTOM}</button>
       <button class="wys-bc-btn" data-wys-act="type" data-i="${i}" title="Сменить тип блока">${ICON_REPEAT}</button>
       <button class="wys-bc-btn danger" data-wys-act="del" data-i="${i}" title="Удалить блок">${ICON_TRASH}</button>
     </div>
@@ -13896,6 +13947,16 @@ async function flushModernEditor() {
 
   canvas.addEventListener('keydown', (e) => {
     if (!_model) return;
+    const host = e.target.closest('.wys-block[data-i]');
+    if (host && e.altKey && ['ArrowUp', 'ArrowDown', 'Home', 'End'].includes(e.key)) {
+      e.preventDefault();
+      const from = Number(host.getAttribute('data-i'));
+      const to = e.key === 'Home' ? 0
+        : e.key === 'End' ? _model.content.length - 1
+          : e.key === 'ArrowUp' ? from - 1 : from + 1;
+      moveArticleBlock(from, to);
+      return;
+    }
     const el = e.target.closest('.wys-rt[data-wys="block"]');
     if (!el) return;
     const i = Number(el.getAttribute('data-i'));
@@ -14030,8 +14091,10 @@ async function flushModernEditor() {
     }
     if (a === 'insert') { const pos = Number(act.getAttribute('data-pos')); return openTypeMenu(act, (type) => { _model.content.splice(pos, 0, newBlock(type)); render(); commit(); focusBlock(pos); }); }
     if (a === 'type') return openTypeMenu(act, (type) => { changeBlockType(i, type); render(); commit(); });
-    if (a === 'up')   { if (i > 0) { swap(i, i - 1); _galSelected.clear(); render(); commit(); } return; }
-    if (a === 'down') { if (i < _model.content.length - 1) { swap(i, i + 1); _galSelected.clear(); render(); commit(); } return; }
+    if (a === 'top') { moveArticleBlock(i, 0); return; }
+    if (a === 'up') { moveArticleBlock(i, i - 1); return; }
+    if (a === 'down') { moveArticleBlock(i, i + 1); return; }
+    if (a === 'bottom') { moveArticleBlock(i, _model.content.length - 1); return; }
     if (a === 'del')  { _model.content.splice(i, 1); _galSelected.clear(); render(); commit(); return; }
     if (a === 'tag-add') { const t = prompt('Новый тег:'); if (t && t.trim()) { _model.tags = _model.tags || []; _model.tags.push(t.trim()); render(); commit(); } return; }
     if (a === 'tag-del') { _model.tags.splice(i, 1); render(); commit(); return; }
@@ -14117,6 +14180,20 @@ async function flushModernEditor() {
   });
 
   function swap(a, b) { const arr = _model.content; const t = arr[a]; arr[a] = arr[b]; arr[b] = t; }
+  function moveArticleBlock(from, to) {
+    const blocks = _model?.content || [];
+    if (!Number.isInteger(from) || !Number.isInteger(to) || from < 0 || to < 0 || from >= blocks.length || to >= blocks.length || from === to) return false;
+    const [moved] = blocks.splice(from, 1);
+    blocks.splice(to, 0, moved);
+    _galSelected.clear();
+    render();
+    commit();
+    const block = canvas.querySelector(`.wys-block[data-i="${to}"]`);
+    block?.classList.add('is-just-moved');
+    window.setTimeout(() => block?.classList.remove('is-just-moved'), 520);
+    focusBlock(to);
+    return true;
+  }
 
   // Gallery photos and their optional per-photo alt text (block.alts) are two
   // parallel arrays that must stay index-aligned — any splice/swap on one
@@ -14848,6 +14925,14 @@ async function flushModernEditor() {
   // initial + when content tab shown
   document.querySelector('[data-tab="content"]')?.addEventListener('click', () => setTimeout(reload, 200));
   setTimeout(reload, 900);
+  // The global toolbar needs this exact canvas flush before it touches the
+  // canonical JSON. Returning false when the canvas is inactive prevents a
+  // review or classic entry from being overwritten by an unrelated model.
+  window._wysFlush = () => {
+    if (!shell.classList.contains('on') || visualSectionSelect.value !== 'articles' || _ctx.section !== 'articles') return false;
+    clearTimeout(_commitTimer);
+    return flushLocal();
+  };
   window._wysReload = reload;
   // Shared with initReviewCanvas below — same media library, same picker UX.
   window._wysOpenImagePicker = openImagePicker;
@@ -14875,12 +14960,14 @@ async function flushModernEditor() {
   const drawerClose = document.getElementById('revMetaClose');
   const drawerBody  = document.getElementById('revMetaBody');
   if (!shell || !canvas) return;
+  window.__reviewEditorActive = false;
 
   const esc = (s) => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   const clone = (o) => JSON.parse(JSON.stringify(o));
 
   let _model = null;
   let _id = 0;
+  let _lang = DEFAULT_LANGUAGE;
   let _commitTimer = null, _publishTimer = null, _reloadTimer = null, _suspendReload = false;
   let _publishing = false, _publishQueued = false, _errorRetries = 0;
   let _history = [], _historyIdx = -1, _restoringHistory = false;
@@ -14912,13 +14999,18 @@ async function flushModernEditor() {
   function renderReviewBlock(block, index) {
     const type = block.type || 'text';
     const label = ({ text: 'Текст', header: 'Заголовок', quote: 'Цитата', image: 'Фото', gallery: 'Галерея', video: 'Видео', link: 'Ссылка', checklist: 'Чек‑лист' })[type] || type;
+    const total = ensureReviewBlocks().length;
     const controls = `<div class="wys-review-block-controls">
       <button type="button" class="wys-review-block-grip" draggable="true" data-review-drag="${index}" aria-label="Перетащить блок ${index + 1}" title="Перетащить блок">⠿</button>
       <span class="wys-review-block-number">${String(index + 1).padStart(2, '0')}</span>
       <span class="wys-review-block-name">${label}</span>
       <span class="wys-review-block-spacer"></span>
-      <button type="button" class="wys-review-block-move" data-wys-act="block-up" data-bi="${index}" aria-label="Переместить выше" title="Выше" ${index === 0 ? 'disabled' : ''}>↑</button>
-      <button type="button" class="wys-review-block-move" data-wys-act="block-down" data-bi="${index}" aria-label="Переместить ниже" title="Ниже" ${index === ensureReviewBlocks().length - 1 ? 'disabled' : ''}>↓</button>
+      <span class="wys-review-block-move-group" aria-label="Порядок блока">
+        <button type="button" class="wys-review-block-move" data-wys-act="block-top" data-bi="${index}" aria-label="Переместить в начало" title="В начало" ${index === 0 ? 'disabled' : ''}>⇡</button>
+        <button type="button" class="wys-review-block-move" data-wys-act="block-up" data-bi="${index}" aria-label="Переместить выше" title="Выше (Alt + ↑)" ${index === 0 ? 'disabled' : ''}>↑</button>
+        <button type="button" class="wys-review-block-move" data-wys-act="block-down" data-bi="${index}" aria-label="Переместить ниже" title="Ниже (Alt + ↓)" ${index === total - 1 ? 'disabled' : ''}>↓</button>
+        <button type="button" class="wys-review-block-move" data-wys-act="block-bottom" data-bi="${index}" aria-label="Переместить в конец" title="В конец" ${index === total - 1 ? 'disabled' : ''}>⇣</button>
+      </span>
       <button type="button" class="wys-review-block-delete" data-wys-act="block-del" data-bi="${index}" aria-label="Удалить блок" title="Удалить блок">×</button>
     </div>`;
     if (type === 'image') return `<section class="wys-review-block" data-review-block="${index}">${controls}<div style="display:flex;gap:6px;align-items:center;margin-bottom:4px"><input data-wys="block-media" data-bi="${index}" value="${esc(block.content || '')}" placeholder="URL фото" style="flex:1"><button type="button" class="btn btn-sm" data-wys-act="block-img-upload" data-bi="${index}" style="white-space:nowrap">${adminIcon('upload')}<span class="btn-label">Загрузить</span></button></div><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Подпись (необязательно)"></section>`;
@@ -14933,18 +15025,25 @@ async function flushModernEditor() {
   function reload() {
     if (_suspendReload) return;
     const section = visualSectionSelect.value;
-    if (section !== 'reviews') { shell.classList.remove('on'); return; }
+    if (section !== 'reviews') { shell.classList.remove('on'); window.__reviewEditorActive = false; return; }
     const data = parseEditorJsonSafe();
-    if (!data) { shell.classList.remove('on'); return; }
-    const arr = getSectionArray(data, section, visualLangSelect.value || DEFAULT_LANGUAGE, false);
+    if (!data) { shell.classList.remove('on'); window.__reviewEditorActive = false; return; }
+    const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
+    const arr = getSectionArray(data, section, lang, false);
     const id = Number(visualEntrySelect.value);
     const entry = arr.find((e) => Number(e.id) === id);
     shell.classList.add('on');
     contentTab?.classList.add('is-live-editor');
     if (!classicEls().every((el) => el.style.display === 'none')) classicEls().forEach((el) => (el.style.display = 'none'));
-    if (!entry) { canvas.innerHTML = '<div class="wys-empty"><div class="wys-empty-icon">✦</div><p>Выберите обзор в списке сверху или создайте новый.</p></div>'; return; }
+    if (!entry) {
+      window.__reviewEditorActive = false;
+      canvas.innerHTML = '<div class="wys-empty"><div class="wys-empty-icon">✦</div><p>Выберите обзор в списке сверху или создайте новый.</p></div>';
+      return;
+    }
     _id = id;
+    _lang = lang;
     _model = clone(entry);
+    window.__reviewEditorActive = true;
     render();
     resetHistory(_model);
     updateDraftBadge();
@@ -15057,7 +15156,7 @@ async function flushModernEditor() {
     if (!_model) return false;
     const data = parseEditorJsonSafe();
     if (!data) return false;
-    const arr = getSectionArray(data, 'reviews', visualLangSelect.value || DEFAULT_LANGUAGE, (visualLangSelect.value || DEFAULT_LANGUAGE) !== DEFAULT_LANGUAGE);
+    const arr = getSectionArray(data, 'reviews', _lang, _lang !== DEFAULT_LANGUAGE);
     const idx = arr.findIndex((e) => Number(e.id) === _id);
     const clean = clone(_model);
     if (idx >= 0) arr[idx] = clean; else arr.push(clean);
@@ -15070,21 +15169,21 @@ async function flushModernEditor() {
     return true;
   }
   function armPublish(delay) { clearTimeout(_publishTimer); _publishTimer = setTimeout(publishSilently, delay); }
-  async function publishSilently() {
-    if (!_model) return;
-    clearTimeout(_commitTimer);
-    flushLocal();
-    if (_publishing) { _publishQueued = true; return; }
+  async function publishSilently(snapshot = null, context = null) {
+    if (!snapshot) {
+      if (!_model) return;
+      clearTimeout(_commitTimer);
+      flushLocal();
+      snapshot = clone(_model);
+      context = { section: 'reviews', lang: _lang, id: _id };
+    }
+    if (_publishing) { _publishQueued = { snapshot, context }; return; }
     const pw = (typeof getAdminPassword === 'function') ? getAdminPassword() : '';
     if (!pw) { setSave('nopw'); return; }
     _publishing = true;
     setSave('publishing');
     try {
-      const res = await fetch(CONTENT_API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw }, body: editor.value });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok || !data.ok) throw new Error(data.error || ('VPS ' + res.status));
-      try { setLastSyncedSnapshotFromText(editor.value); } catch {}
-      try { localStorage.removeItem(DRAFT_KEY); } catch {}
+      await saveEntityToServer(context.section, context.lang, snapshot);
       lastSyncedTime = new Date();
       try { updateLastSyncedBadge(); } catch {}
       setSave('published'); _errorRetries = 0;
@@ -15094,13 +15193,17 @@ async function flushModernEditor() {
       else { setSave('error-final'); }
     } finally {
       _publishing = false;
-      if (_publishQueued) { _publishQueued = false; publishSilently(); }
+      if (_publishQueued) {
+        const queued = _publishQueued;
+        _publishQueued = false;
+        publishSilently(queued.snapshot, queued.context);
+      }
     }
   }
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && _model) publishSilently(); });
   function setSave(s) {
     if (!saveState) return;
-    const labels = { editing: 'Изменяю…', saved: 'Сохранено локально', publishing: 'Публикую на сайт…', published: 'Опубликовано ✓', error: 'Ошибка публикации — повторяю…', 'error-final': 'Не удалось опубликовать (сохранено локально)', nopw: 'Сохранено локально (нет пароля для публикации)' };
+    const labels = { editing: 'Изменяю…', saved: 'Сохранено локально', publishing: 'Сохраняю на VPS…', published: 'Сохранено на VPS ✓', error: 'Ошибка сохранения — повторяю…', 'error-final': 'Не удалось сохранить на VPS (есть локальная копия)', nopw: 'Сохранено локально (нет пароля редакции)' };
     saveState.textContent = labels[s] || labels.saved;
     saveState.className = 'wys-save-state ' + s;
   }
@@ -15242,14 +15345,13 @@ async function flushModernEditor() {
     if (a === 'cons-add') { _model.cons = _model.cons || []; _model.cons.push(''); render(); commit(); return; }
     if (a === 'pros-del') { const ci = Number(act.getAttribute('data-ci')); _model.pros?.splice(ci, 1); render(); commit(); return; }
     if (a === 'cons-del') { const ci = Number(act.getAttribute('data-ci')); _model.cons?.splice(ci, 1); render(); commit(); return; }
-    if (a === 'block-up' || a === 'block-down') {
+    if (['block-top', 'block-up', 'block-down', 'block-bottom'].includes(a)) {
       const blocks = ensureReviewBlocks();
       const from = Number(act.getAttribute('data-bi'));
-      const to = a === 'block-up' ? from - 1 : from + 1;
-      if (!Number.isInteger(from) || to < 0 || to >= blocks.length) return;
-      [blocks[from], blocks[to]] = [blocks[to], blocks[from]];
-      render(); commit();
-      canvas.querySelector(`[data-review-drag="${to}"]`)?.focus();
+      const to = a === 'block-top' ? 0
+        : a === 'block-bottom' ? blocks.length - 1
+          : a === 'block-up' ? from - 1 : from + 1;
+      moveReviewBlock(from, to);
       return;
     }
     if (a === 'block-del') { ensureReviewBlocks().splice(Number(act.getAttribute('data-bi')), 1); render(); commit(); return; }
@@ -15259,6 +15361,20 @@ async function flushModernEditor() {
   // selection and editing inside a block never accidentally move the block.
   let _dragBlockFrom = null;
   let _dragBlockAfter = false;
+  function moveReviewBlock(from, to) {
+    const blocks = ensureReviewBlocks();
+    if (!Number.isInteger(from) || !Number.isInteger(to) || from < 0 || from >= blocks.length || to < 0 || to >= blocks.length || from === to) return false;
+    const [moved] = blocks.splice(from, 1);
+    blocks.splice(to, 0, moved);
+    render();
+    commit();
+    const grip = canvas.querySelector(`[data-review-drag="${to}"]`);
+    const block = grip?.closest('[data-review-block]');
+    block?.classList.add('is-just-moved');
+    window.setTimeout(() => block?.classList.remove('is-just-moved'), 520);
+    grip?.focus();
+    return true;
+  }
   function clearReviewDragState() {
     _dragBlockFrom = null;
     _dragBlockAfter = false;
@@ -15292,29 +15408,26 @@ async function flushModernEditor() {
     const target = e.target.closest('[data-review-block]');
     if (!target) { clearReviewDragState(); return; }
     e.preventDefault();
+    const from = _dragBlockFrom;
     const blocks = ensureReviewBlocks();
     const targetIndex = Number(target.getAttribute('data-review-block'));
-    const [moved] = blocks.splice(_dragBlockFrom, 1);
     let insertAt = targetIndex + (_dragBlockAfter ? 1 : 0);
-    if (_dragBlockFrom < insertAt) insertAt -= 1;
-    insertAt = Math.max(0, Math.min(blocks.length, insertAt));
-    blocks.splice(insertAt, 0, moved);
+    if (from < insertAt) insertAt -= 1;
+    insertAt = Math.max(0, Math.min(blocks.length - 1, insertAt));
     clearReviewDragState();
-    render(); commit();
-    canvas.querySelector(`[data-review-drag="${insertAt}"]`)?.focus();
+    moveReviewBlock(from, insertAt);
   });
   canvas.addEventListener('dragend', clearReviewDragState);
   canvas.addEventListener('keydown', (e) => {
     const grip = e.target.closest('[data-review-drag]');
-    if (!grip || !e.altKey || !['ArrowUp', 'ArrowDown'].includes(e.key)) return;
+    if (!grip || !e.altKey || !['ArrowUp', 'ArrowDown', 'Home', 'End'].includes(e.key)) return;
     e.preventDefault();
     const blocks = ensureReviewBlocks();
     const from = Number(grip.getAttribute('data-review-drag'));
-    const to = e.key === 'ArrowUp' ? from - 1 : from + 1;
-    if (to < 0 || to >= blocks.length) return;
-    [blocks[from], blocks[to]] = [blocks[to], blocks[from]];
-    render(); commit();
-    canvas.querySelector(`[data-review-drag="${to}"]`)?.focus();
+    const to = e.key === 'Home' ? 0
+      : e.key === 'End' ? blocks.length - 1
+        : e.key === 'ArrowUp' ? from - 1 : from + 1;
+    moveReviewBlock(from, to);
   });
 
   shell.querySelectorAll('[data-rev-add]').forEach((btn) => btn.addEventListener('click', () => {
@@ -15350,6 +15463,11 @@ async function flushModernEditor() {
     document.execCommand('insertHTML', false, esc(text).replace(/\n/g, '<br>'));
   });
 
+  window._revFlush = () => {
+    if (!shell.classList.contains('on') || visualSectionSelect.value !== 'reviews') return false;
+    clearTimeout(_commitTimer);
+    return flushLocal();
+  };
   window._revReload = reload;
 })();
 

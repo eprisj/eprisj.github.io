@@ -4341,6 +4341,8 @@ body.busy::after {
 }
 .wys-bc-btn:hover { background: var(--accent-soft); color: var(--accent); transform: translateY(-1px); }
 .wys-bc-btn:active { transform: translateY(0); }
+.wys-bc-btn:disabled { opacity: .28; cursor: default; transform: none; }
+.wys-bc-btn:disabled:hover { background: transparent; color: var(--text-muted); transform: none; }
 .wys-bc-btn.danger:hover { background: var(--danger-soft); color: var(--danger); }
 
 /* Drag handle + reorder feedback */
@@ -4359,6 +4361,7 @@ body.busy::after {
 .wys-block.dragging { opacity: .35; }
 .wys-block.drop-before { box-shadow: 0 -2px 0 0 var(--accent); }
 .wys-block.drop-after  { box-shadow: 0 2px 0 0 var(--accent); }
+.wys-block.is-just-moved { background: color-mix(in srgb, var(--accent-soft) 78%, transparent); }
 
 /* Block content styles (magazine look) */
 .wys-p { font-family: var(--font-body); font-size: 1.12rem; line-height: 1.75; margin: 0; padding: 6px; min-height: 1.6em; }
@@ -6451,15 +6454,32 @@ body.busy::after {
 }
 .wys-review-block:focus-within { box-shadow: none; }
 .wys-review-block-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
   min-height: 26px;
   margin: 0 0 6px;
   padding: 0 2px 5px;
-  border-bottom: 1px solid transparent;
-  opacity: 0;
-  transition: opacity .16s ease, border-color .16s ease;
+  border-bottom: 1px solid var(--line);
+  opacity: 1;
+  transition: border-color .16s ease;
 }
 .wys-review-block:hover .wys-review-block-controls,
 .wys-review-block:focus-within .wys-review-block-controls { opacity: 1; border-color: var(--line); }
+.wys-review-block-move-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--bg-card);
+}
+.wys-review-block.is-just-moved {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 14%, transparent);
+}
 
 @media (max-width: 760px) {
   #tab-content.is-live-editor .toolbar-buttons { overflow: visible; }
