@@ -4328,7 +4328,7 @@
           }
         }
       ],
-      "updatedAt": "2026-08-11T13:02:45.314Z",
+      "updatedAt": "2026-08-11T13:02:59.909Z",
       "draft": true
     }
   ],
@@ -4519,7 +4519,8 @@
       "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
       "date": "Aug 1, 2026",
       "imageUrl": "https://api.eprisjournal.com/uploads/msnluv70lwze6y.jpg",
-      "updatedAt": "2026-08-11T12:54:15.670Z"
+      "draft": true,
+      "updatedAt": "2026-08-11T13:03:00.031Z"
     }
   ],
   "libraryItems": [
