@@ -205,6 +205,7 @@ const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
   'articles.readPreview': { EN: 'Read preview', RU: 'Читать превью', UA: 'Читати прев’ю', DE: 'Vorschau lesen', IT: 'Leggi anteprima', ES: 'Leer vista previa', TR: 'Önizlemeyi oku' },
   'articles.readFull': { EN: 'Read full article', RU: 'Читать полностью', UA: 'Читати повністю', DE: 'Vollständigen Artikel lesen', IT: 'Leggi l’articolo completo', ES: 'Leer el artículo completo', TR: 'Makalenin tamamını oku' },
   'articles.closePreview': { EN: 'Close preview', RU: 'Закрыть превью', UA: 'Закрити прев’ю', DE: 'Vorschau schließen', IT: 'Chiudi anteprima', ES: 'Cerrar vista previa', TR: 'Önizlemeyi kapat' },
+  'articles.by': { EN: 'By', RU: 'Автор', UA: 'Автор', DE: 'Von', IT: 'Di', ES: 'Por', TR: 'Yazan' },
   'video.openVideo': { EN: 'Open video', RU: 'Открыть видео', UA: 'Відкрити відео', DE: 'Video öffnen', IT: 'Apri video', ES: 'Abrir vídeo', TR: 'Videoyu aç' },
   'lang.title': { EN: 'Language', RU: 'Язык', UA: 'Мова', DE: 'Sprache', IT: 'Lingua', ES: 'Idioma', TR: 'Dil' },
   'lang.chooseEdition': { EN: 'Choose edition', RU: 'Выберите версию', UA: 'Виберіть версію', DE: 'Ausgabe wählen', IT: 'Scegli edizione', ES: 'Elegir edición', TR: 'Baskı seç' },
@@ -1290,6 +1291,14 @@ function homepageItemDescription(item: Item, fallback: string): string {
   return item.homeDescription?.trim() || item.description?.trim() || item.homeSubtitle?.trim() || item.subtitle?.trim() || homepageItemTitle(item) || fallback;
 }
 
+// Editorial pieces that were entered as "EPRIS Journal" are authored by the
+// editor-in-chief in the reader-facing byline. Keep named guest/contributor
+// credits intact while making the latest-articles cards and article view agree.
+function displayArticleAuthor(article: Pick<Article, 'author'>): string {
+  const author = (article.author || '').trim();
+  return !author || /^epris\s+journal$/i.test(author) ? 'Mariia Ivanova' : author;
+}
+
 function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]; onImageClick: (src: string, alt: string) => void; currentLang: string; t: (key: string) => string }) {
   const homepageSettings = getHomepageSettings();
   const picsSettings = homepageSettings.picsOfWeek || {};
@@ -1470,12 +1479,14 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
               return (
             <motion.article
               key={item.id}
-              layout
               transition={{
-                layout: { type: 'spring', stiffness: 320, damping: 34, mass: 0.8 },
-                opacity: { duration: 0.22, ease: [0.22, 1, 0.36, 1] },
-                default: { duration: 0.34, ease: [0.22, 1, 0.36, 1] },
+                layout: { type: 'tween', duration: 0.48, ease: [0.22, 1, 0.36, 1] },
+                scale: { type: 'tween', duration: 0.44, ease: [0.22, 1, 0.36, 1] },
+                opacity: { duration: 0.34, ease: [0.22, 1, 0.36, 1] },
               }}
+              layout="position"
+              initial={false}
+              animate={{ scale: isCenter ? centerScale : sideScale, opacity: isCenter ? 1 : 0.8 }}
               data-carousel-position={isCenter ? 'center' : 'side'}
               className={`home-carousel-card group ${isCenter ? 'home-carousel-card--center' : 'home-carousel-card--side'}`}
               role="button"
@@ -1836,7 +1847,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   // Resolve the linked author record (by authorId or name) so the byline can
   // show a real photo + bio; falls back to the plain author/role strings.
   const resolvedAuthor = resolveAuthor(article);
-  const authorName = resolvedAuthor?.name || article.author;
+  const authorName = resolvedAuthor?.name || displayArticleAuthor(article);
   // article.role is per-language (each locale bucket carries its own translated
   // string, e.g. "Arts Desk" vs "Arts Desk" translated); the Author record's
   // role is a single global string entered once in the admin, so it can only
@@ -1963,7 +1974,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
               <div className="flex items-center justify-center gap-2 md:gap-4 font-mono text-[10px] md:text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] uppercase tracking-widest mb-6 flex-wrap">
                 <span>{article.date}</span>
                 <span className="w-1 h-1 bg-[rgb(var(--c-accent-rgb)_/_0.4)] rounded-full" />
-                <span>{article.author}</span>
+                <span>{authorName}</span>
                 {article.role && (
                   <>
                     <span className="w-1 h-1 bg-[rgb(var(--c-accent-rgb)_/_0.4)] rounded-full" />
@@ -2474,6 +2485,9 @@ function ArticlesSection({
               {showDescription && <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-4">
                 {article.excerpt}
               </p>}
+              <div className="mt-auto border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] pt-3 font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.58)]">
+                {t('articles.by')} {displayArticleAuthor(article)}
+              </div>
               {showReadAll && <span className="mt-auto inline-flex items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
                 {showPreview ? t('articles.readPreview') : t('articles.readFull')} <ArrowUpRight size={14} />
               </span>}
