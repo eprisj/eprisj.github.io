@@ -9316,12 +9316,13 @@ function bindStudioRowActions() {
     const autoMode = data?.homepage?.picsOfWeek?.mode === 'auto';
     const audit = homepageAudit(data, groups);
     const selectedCount = groups.filter((group) => group.items.length).length;
+    const emptyCount = groups.length - selectedCount;
     const imageCount = groups.reduce((total, group) => total + group.items.length, 0);
     if (countEl) countEl.textContent = `${selectedCount} / ${groups.length} категорий · ${imageCount} изображений`;
     const state = audit.errors.length ? 'error' : audit.warnings.length ? 'warn' : 'ok';
     if (dot) dot.dataset.state = state;
-    if (statusTitle) statusTitle.textContent = audit.errors.length ? 'Нужна проверка' : audit.warnings.length ? 'Можно публиковать с предупреждениями' : 'Главная готова';
-    if (statusDetail) statusDetail.textContent = audit.errors[0] || audit.warnings[0] || 'Пять категорий готовы к preview. LIFO держит свежие изображения сверху.';
+    if (statusTitle) statusTitle.textContent = audit.errors.length ? 'Нужна проверка' : emptyCount ? 'Готово частично' : 'Главная готова';
+    if (statusDetail) statusDetail.textContent = audit.errors[0] || (emptyCount ? `Пустых карточек: ${emptyCount}. Их можно заполнить позже.` : 'Пять карточек готовы к проверке и публикации.');
     if (lastPublishedEl) {
       try {
         const stamp = localStorage.getItem('epris_homepage_last_published');
@@ -9332,17 +9333,21 @@ function bindStudioRowActions() {
       const item = group.items[0];
       const image = item?.imageUrl || item?.imageSeed || '';
       const options = [`<option value="">— Выбрать фото —</option>`, ...items.map((candidate) => `<option value="${esc(candidate.id)}" ${item && String(candidate.id) === String(item.id) ? 'selected' : ''}>${esc(candidate.title || `Фото #${candidate.id}`)}</option>`)].join('');
-      return `<article class="homepage-slot-card homepage-slot-card--${esc(group.id)}">
-        <div class="homepage-slot-head"><span>${esc(group.label)}</span><span class="homepage-slot-marker">${item ? '●' : '○'}</span></div>
-        <div class="homepage-slot-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : '<span>Нет фото</span>'}</div>
-        <div class="homepage-slot-caption"><span>${esc(group.label)}</span><strong>${esc(item?.homeTitle || item?.title || 'Категория пока пустая')}</strong><p>${esc(item?.homeDescription || item?.description || item?.homeSubtitle || item?.subtitle || 'Добавьте короткое описание работы в редакторе.')}</p>${item ? `<small class="homepage-slot-source">${item.imageUrl ? 'URL / загруженный файл' : 'Визуальный seed'} · ID ${esc(item.id)}</small>` : ''}</div>
-        <label class="homepage-slot-label" for="homepage-category-${esc(group.id)}">Главное изображение категории</label>
-        <select id="homepage-category-${esc(group.id)}" class="homepage-slot-select" data-home-category="${esc(group.id)}" ${autoMode ? 'disabled' : ''}>${options}</select>
-        <small class="homepage-category-count">${group.items.length} изображений · LIFO ${data?.homepage?.picsOfWeek?.ordering === 'manual' ? 'выкл.' : 'вкл.'}</small>
+      const emptyState = !item;
+      return `<article class="homepage-slot-card homepage-slot-card--${esc(group.id)}${emptyState ? ' is-empty' : ''}">
+        <div class="homepage-slot-head"><span>${esc(group.label)}</span><span class="homepage-slot-state">${item ? 'Заполнено' : 'Пусто'}</span></div>
+        <div class="homepage-slot-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : '<span>Добавьте фото</span>'}</div>
+        <div class="homepage-slot-caption"><span>${esc(group.label)}</span><strong>${esc(item?.homeTitle || item?.title || 'Добавьте фото')}</strong><p>${esc(item?.homeDescription || item?.description || item?.homeSubtitle || item?.subtitle || 'После добавления здесь появятся подпись и краткое описание.')}</p></div>
         <div class="homepage-slot-actions">
-          <button type="button" class="btn btn-sm homepage-slot-edit" data-home-edit-slot="${item ? esc(item.id) : ''}" title="Фото, подпись, описание и переводы" ${item ? '' : 'disabled'}>${adminIcon('edit')}<span class="btn-label">Фото + текст</span></button>
-          <button type="button" class="btn btn-sm homepage-slot-add" data-home-add-slot="${esc(group.id)}">${adminIcon('plus')}<span class="btn-label">${item ? 'Добавить ещё' : 'Добавить фото'}</span></button>
+          ${item ? `<button type="button" class="btn btn-sm homepage-slot-edit" data-home-edit-slot="${esc(item.id)}" title="Изменить фото, подпись и описание">${adminIcon('edit')}<span class="btn-label">Изменить карточку</span></button>` : ''}
+          <button type="button" class="btn btn-sm homepage-slot-add${emptyState ? ' btn-primary' : ''}" data-home-add-slot="${esc(group.id)}">${adminIcon('plus')}<span class="btn-label">${item ? 'Добавить ещё фото' : 'Добавить фото'}</span></button>
         </div>
+        <details class="homepage-slot-extra">
+          <summary>${autoMode ? 'Выбор фото включён автоматически' : 'Выбрать фото из архива'}</summary>
+          <label class="homepage-slot-label" for="homepage-category-${esc(group.id)}">Фото для ${esc(group.label)}</label>
+          <select id="homepage-category-${esc(group.id)}" class="homepage-slot-select" data-home-category="${esc(group.id)}" ${autoMode ? 'disabled' : ''}>${options}</select>
+          <small class="homepage-category-count">${group.items.length ? `${group.items.length} фото в этом направлении` : 'В архиве пока нет фото этого направления'}</small>
+        </details>
       </article>`;
     }).join('');
     preview.querySelectorAll('[data-home-category]').forEach((select) => select.addEventListener('change', () => setHomepageCategory(select.dataset.homeCategory, select.value)));
@@ -9356,7 +9361,7 @@ function bindStudioRowActions() {
     if (!auditMessages.length) {
       auditEl.innerHTML = `<div class="homepage-audit-item is-ok"><span aria-hidden="true">✓</span>${autoMode ? 'Автоматически выбраны самые свежие изображения.' : 'Категории собраны, критических проблем нет.'}</div>`;
     } else {
-      const issueLabel = audit.errors.length ? `Нужно проверить: ${auditMessages.length}` : `Есть подсказки: ${auditMessages.length}`;
+      const issueLabel = audit.errors.length ? `Нужно проверить: ${audit.errors.length}` : emptyCount ? `Пустые карточки: ${emptyCount}` : `Есть подсказки: ${auditMessages.length}`;
       auditEl.innerHTML = `<details class="homepage-audit-details"><summary><span class="homepage-audit-summary-label"><span aria-hidden="true">${audit.errors.length ? '!' : '△'}</span>${issueLabel}</span><span class="homepage-audit-summary-action">Показать детали <b aria-hidden="true">+</b></span></summary><div class="homepage-audit-details-body">${auditMessages.map((message) => `<div class="homepage-audit-item ${audit.errors.includes(message) ? 'is-error' : 'is-warn'}"><span aria-hidden="true">${audit.errors.includes(message) ? '!' : '△'}</span>${esc(message)}</div>`).join('')}</div></details>`;
     }
   }
