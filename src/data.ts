@@ -687,6 +687,23 @@ function mergeEntryTextOntoBase<T extends { id: number }>(base: T, localized: T)
   return merged as T;
 }
 
+// A localized snapshot with a different content shape belongs to an older
+// version of the record. Never let its title/metadata overlay the current
+// entry: that is how a recycled review id ended up showing the Olea title on
+// top of the Le Dauphine photo essay. The current base remains the safe,
+// structure-authoritative fallback until the locale is repaired.
+function hasContentShapeMismatch<T extends { id: number }>(base: T, localized: T): boolean {
+  const baseRec = base as Record<string, unknown>;
+  const localizedRec = localized as Record<string, unknown>;
+  if (!('content' in baseRec) || !('content' in localizedRec)) return false;
+  const baseContent = baseRec.content;
+  const localizedContent = localizedRec.content;
+  if (Array.isArray(baseContent) !== Array.isArray(localizedContent)) return true;
+  return Array.isArray(baseContent)
+    && Array.isArray(localizedContent)
+    && baseContent.length !== localizedContent.length;
+}
+
 function mergeLocalizedArray<T extends { id: number }>(value: T[] | undefined, fallback: T[]): T[] {
   if (!Array.isArray(value)) {
     return fallback;
@@ -702,6 +719,7 @@ function mergeLocalizedArray<T extends { id: number }>(value: T[] | undefined, f
     const localized = localizedById.get(Number(entry.id));
     if (!localized) return entry;
     if (!hasLocalizedPayload(localized)) return entry;
+    if (hasContentShapeMismatch(entry, localized)) return entry;
     return mergeEntryTextOntoBase(entry, localized);
   });
 }
@@ -727,6 +745,10 @@ function mergeLocalizedArray<T extends { id: number }>(value: T[] | undefined, f
 function mergeLocalizedItems<T extends { id: number }>(value: T[] | undefined, fallback: T[]): T[] {
   if (Array.isArray(value) && value.length !== fallback.length) return fallback;
   if (Array.isArray(value) && value.some(isPlaceholderEntity)) return fallback;
+  if (Array.isArray(value) && value.some((localized) => {
+    const base = fallback.find((entry) => Number(entry.id) === Number(localized.id));
+    return Boolean(base && hasContentShapeMismatch(base, localized));
+  })) return fallback;
   return mergeLocalizedArray(value, fallback);
 }
 
