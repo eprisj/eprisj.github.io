@@ -320,11 +320,11 @@
                 <div>
                   <span class="homepage-admin-kicker">Главная страница</span>
                   <h2 class="card-title">Галерея EPRIS</h2>
-                  <p class="card-desc">Здесь собираются пять карточек для главной. Выберите фото, добавьте подпись и короткое описание, затем нажмите «Опубликовать».</p>
+                  <p class="card-desc">Работайте выпусками: читатели всегда видят только текущую пятёрку. Новый выпуск готовится отдельно и не меняет сайт до публикации.</p>
                 </div>
                 <div class="homepage-admin-actions">
-                  <button id="homepageAddBtn" class="btn btn-primary" type="button"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span class="btn-label">Новое фото</span></button>
-                  <button id="homepagePublishBtn" class="btn btn-primary" type="button">Опубликовать</button>
+                  <button id="homepageAddBtn" class="btn btn-primary" type="button"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span class="btn-label">Создать новый выпуск</span></button>
+                  <button id="homepagePublishBtn" class="btn btn-primary" type="button">Опубликовать выпуск</button>
                   <span id="homepagePublishFeedback" class="homepage-publish-feedback" data-state="ready" role="status" aria-live="polite">Готово к публикации</span>
                 </div>
               </div>
@@ -332,16 +332,16 @@
                 <summary>Настройки и служебные действия</summary>
                 <div class="homepage-secondary-tools-actions">
                   <button id="homepageLoadLatestBtn" class="btn btn-sm" type="button">Загрузить текущую версию</button>
-                  <button id="homepageFillBtn" class="btn btn-sm" type="button">Дозаполнить пустые категории</button>
+                  <button id="homepageFillBtn" class="btn btn-sm" type="button">Проверить пустые слоты</button>
                   <button id="homepageInheritBtn" class="btn btn-sm" type="button">Заполнить наследуемые поля</button>
                   <button id="homepageComplexityToggle" class="btn btn-sm" type="button" aria-controls="tab-homepage" aria-expanded="false">Показать расширенные настройки</button>
                   <a class="btn btn-sm" href="../" target="_blank" rel="noreferrer">Открыть сайт ↗</a>
                 </div>
-                <p>Эти действия не нужны для обычной замены фото: выберите карточку ниже, отредактируйте её и опубликуйте подборку.</p>
+                  <p>Для обычной недели достаточно: «Создать новый выпуск» → выбрать пять новых фото → «Опубликовать выпуск».</p>
               </details>
               <section class="homepage-published-now" aria-labelledby="homepagePublishedTitle">
                 <div class="homepage-published-head">
-                  <div><span class="homepage-admin-kicker">ЧТО ВИДЯТ ЧИТАТЕЛИ СЕЙЧАС</span><h3 id="homepagePublishedTitle">Опубликовано на главной</h3><p>Это текущий снимок с VPS. Нажмите «Редактировать карточку», чтобы изменить одно фото для следующей недели.</p></div>
+                  <div><span class="homepage-admin-kicker">ЧТО ВИДЯТ ЧИТАТЕЛИ СЕЙЧАС</span><h3 id="homepagePublishedTitle">Текущий выпуск на главной</h3><p>Это независимый снимок с VPS. Чтобы не менять его случайно, создайте новый выпуск ниже — он будет отдельным черновиком.</p></div>
                   <span id="homepagePublishedMeta" class="homepage-preview-badge">Проверяю VPS…</span>
                 </div>
                 <div id="homepagePublishedCards" class="homepage-published-cards" aria-live="polite"></div>
@@ -387,18 +387,19 @@
                 </div>
               </section>
               <section class="homepage-publishing-flow" aria-labelledby="homepageFlowTitle">
-                <div class="homepage-publishing-flow-copy"><span class="homepage-admin-kicker">СЛЕДУЮЩАЯ НЕДЕЛЯ</span><h3 id="homepageFlowTitle">Как выпустить новую подборку</h3><p>Новая публикация не стирает предыдущую: после «Опубликовать» пять карточек, которые были на сайте, автоматически переходят в архив.</p></div>
-                <ol class="homepage-publishing-flow-steps"><li><b>1</b><span>Измените слот</span><small>Фото, категория, подпись и описание.</small></li><li><b>2</b><span>Проверьте 7 языков</span><small>Пустые переводы наследуют базовый текст.</small></li><li><b>3</b><span>Опубликуйте</span><small>Главная обновится, прежняя неделя сохранится.</small></li></ol>
+                <div class="homepage-publishing-flow-copy"><span class="homepage-admin-kicker">НЕДЕЛЬНЫЙ ЦИКЛ</span><h3 id="homepageFlowTitle">Новый выпуск без риска для главной</h3><p>Создание черновика не меняет сайт. При публикации новая пятёрка становится текущей, а прежняя автоматически фиксируется в истории.</p></div>
+                <ol class="homepage-publishing-flow-steps"><li><b>1</b><span>Создайте выпуск</span><small>Появятся пять пустых слотов — по одному на категорию.</small></li><li><b>2</b><span>Заполните фото</span><small>Изображение, подпись и описание; затем — 7 языков.</small></li><li><b>3</b><span>Опубликуйте</span><small>Новая неделя на сайте, старая — в архиве автоматически.</small></li></ol>
               </section>
               <section class="card homepage-archive-admin" aria-labelledby="homepageArchiveTitle">
                 <div class="homepage-section-head">
                   <div>
                     <span class="homepage-admin-kicker">ИСТОРИЯ НЕДЕЛЬ</span>
                     <h3 id="homepageArchiveTitle" class="card-title">Архив подборок</h3>
-                    <p class="card-desc">Каждый выпуск хранит все пять фото, подписи и описания. Откройте прошлую неделю, чтобы посмотреть состав; «Собрать копию» создаст отдельный черновик следующей недели и не изменит то, что сейчас видят читатели.</p>
+                    <p class="card-desc">История создаётся автоматически. Здесь всегда есть текущая пятёрка и все прошлые выпуски с зафиксированными фото, подписями и описаниями.</p>
                   </div>
                   <span id="homepageArchiveCount" class="homepage-preview-badge">0 выпусков</span>
                 </div>
+                <label class="homepage-toggle-field homepage-archive-visibility-toggle"><input id="homepageArchivePublic" type="checkbox" checked><span><strong>Показывать прошлые выпуски читателям</strong><small>При публикации новой недели прежняя останется в Daily picks archive. Если выключить — она сохранится только в редакции.</small></span></label>
                 <div id="homepageArchiveList" class="homepage-archive-list" aria-live="polite"></div>
               </section>
               <section class="homepage-quickstart" aria-labelledby="homepageQuickstartTitle">
@@ -540,8 +541,8 @@
                   <div class="homepage-section-head">
                     <div>
                       <span class="homepage-admin-kicker">Карточки на главной</span>
-                      <h3 id="homepageComposerTitle" class="card-title">Подготовка следующей недели</h3>
-                      <p class="card-desc">Здесь собирается будущая подборка из пяти фото. Опубликованная версия выше не изменится, пока вы не нажмёте «Опубликовать».</p>
+                      <h3 id="homepageComposerTitle" class="card-title">Следующий выпуск</h3>
+                      <p class="card-desc">Сначала создайте новый выпуск. В нём будут пять новых фото — опубликованная версия выше не изменится до отдельной публикации.</p>
                     </div>
                     <span class="homepage-preview-badge">Вид на главной</span>
                   </div>
