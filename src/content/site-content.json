@@ -4463,52 +4463,7 @@
       "title": "New review",
       "subject": "New review",
       "rating": 0,
-      "content": [
-        {
-          "type": "header",
-          "content": "DETAILS THAT MATTER",
-          "level": 2
-        },
-        {
-          "type": "text",
-          "content": "Taking into account first impressions - atmosphere, service, who this place is for. The following are details that support the findings."
-        },
-        {
-          "type": "text",
-          "content": "Новый абзац.ммм"
-        },
-        {
-          "type": "header",
-          "content": "FIRST IMPRESSION",
-          "level": 2
-        },
-        {
-          "type": "text",
-          "content": "What stays with you after the first encounter?"
-        },
-        {
-          "type": "text",
-          "content": "Describe the material, rhythm, service or object in concrete terms."
-        },
-        {
-          "type": "header",
-          "content": "IN CONTEXT",
-          "level": 2
-        },
-        {
-          "type": "text",
-          "content": "Place the subject in its cultural or local context."
-        },
-        {
-          "type": "header",
-          "content": "WHO IT IS FOR",
-          "level": 2
-        },
-        {
-          "type": "text",
-          "content": "A concise editorial recommendation."
-        }
-      ],
+      "content": "DETAILS THAT MATTER\n\nTaking into account first impressions - atmosphere, service, who this place is for. The following are details that support the findings.\n\nНовый абзац.ммм\n\nFIRST IMPRESSION\n\nWhat stays with you after the first encounter?\n\nDescribe the material, rhythm, service or object in concrete terms.\n\nIN CONTEXT\n\nPlace the subject in its cultural or local context.\n\nWHO IT IS FOR\n\nA concise editorial recommendation.",
       "author": "EPRIS Journal",
       "category": "Food & Stay",
       "verdict": "One clear line - is it worth going?",
@@ -4524,7 +4479,7 @@
       "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
       "date": "Aug 1, 2026",
       "imageUrl": "https://api.eprisjournal.com/uploads/msnluv70lwze6y.jpg",
-      "updatedAt": "2026-08-11T13:04:44.140Z"
+      "updatedAt": "2026-08-11T13:25:26.283Z"
     },
     {
       "id": 5,
