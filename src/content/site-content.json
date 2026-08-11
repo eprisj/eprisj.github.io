@@ -4393,7 +4393,16 @@
       "title": "New review",
       "subject": "New review",
       "rating": 0,
-      "content": "Taking into account first impressions - atmosphere, service, who this place is for. The following are details that support the findings.",
+      "content": [
+        {
+          "type": "text",
+          "content": "Taking into account first impressions - atmosphere, service, who this place is for. The following are details that support the findings."
+        },
+        {
+          "type": "text",
+          "content": "Новый абзац."
+        }
+      ],
       "author": "EPRIS Journal",
       "category": "Food & Stay",
       "verdict": "One clear line - is it worth going?",
