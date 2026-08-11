@@ -8709,6 +8709,7 @@ function bindStudioRowActions() {
     const sectionsEl = document.getElementById('homepageLayoutSections');
     const copyEl = document.getElementById('homepageLayoutCopyEditor');
     const previewEl = document.getElementById('homepageLayoutPreview');
+    const visualPreviewEl = document.getElementById('homepageLayoutVisualPreview');
     if (!sectionsEl || !copyEl || !previewEl || !data) return;
     const layout = homepageLayout(data);
     const isVisible = (key) => layout.visibility?.[key] !== false;
@@ -8734,8 +8735,38 @@ function bindStudioRowActions() {
       if (!def) return '';
       return `<div class="homepage-layout-preview-item${isVisible(key) ? '' : ' is-hidden'}"><span>${String(index + 1).padStart(2, '0')}</span>${esc(def.label)}${isVisible(key) ? '' : ' · скрыта'}</div>`;
     }).join('');
+    if (visualPreviewEl) {
+      const groups = homepageCategoryGroups(data);
+      const centerCategory = String(data?.homepage?.picsOfWeek?.centerCategory || 'architecture');
+      const visualBlocks = layout.sectionOrder.filter(isVisible).map((key) => {
+        if (key === 'pics') {
+          return `<div class="homepage-layout-visual-block"><span class="homepage-layout-visual-kicker">Pics of the week · 5 slots</span><div class="homepage-layout-visual-pics">${groups.map((group) => {
+            const item = group.items[0];
+            const image = item?.imageUrl || item?.imageSeed || '';
+            return `<div class="homepage-layout-visual-pic${group.id === centerCategory ? ' is-center' : ''}"><div class="homepage-layout-visual-pic-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : 'Пусто'}</div><span>${esc(group.label)}</span></div>`;
+          }).join('')}</div></div>`;
+        }
+        if (key === 'articles') {
+          const latest = (Array.isArray(data.articles) ? data.articles : []).slice().sort((a, b) => String(b?.updatedAt || b?.date || '').localeCompare(String(a?.updatedAt || a?.date || ''))).slice(0, 2);
+          return `<div class="homepage-layout-visual-block"><span class="homepage-layout-visual-kicker">Articles · ${latest.length ? 'новейшие сверху' : 'пока пусто'}</span>${latest.length ? `<div class="homepage-layout-visual-articles">${latest.map((article) => `<div class="homepage-layout-visual-article"><strong>${esc(article.title || 'Без заголовка')}</strong><span>${esc(article.category || 'EPRIS / editorial')}</span></div>`).join('')}</div>` : '<div class="homepage-layout-visual-placeholder">Новые статьи будут наследоваться из общей публикационной ленты.</div>'}</div>`;
+        }
+        if (key === 'showcase') return `<div class="homepage-layout-visual-block"><span class="homepage-layout-visual-kicker">Showcase</span><div class="homepage-layout-visual-placeholder">A vitrine of set design and conceptual art · ${data?.homepage?.showcase?.enabled === false ? 'анонс скрыт' : 'анонс включён'}</div></div>`;
+        const archiveCount = Array.isArray(data.homepageArchive) ? data.homepageArchive.length : 0;
+        return `<div class="homepage-layout-visual-block"><span class="homepage-layout-visual-kicker">Daily picks archive</span><div class="homepage-layout-visual-placeholder">${archiveCount ? `${archiveCount} выпусков накоплено` : 'Архив появится после первой публикации.'}</div></div>`;
+      });
+      visualPreviewEl.innerHTML = visualBlocks.join('') || '<div class="homepage-layout-visual-placeholder">Все секции скрыты. Включите хотя бы один блок перед публикацией.</div>';
+    }
     const state = document.getElementById('homepageLayoutState');
-    if (state) state.textContent = `${layout.sectionOrder.filter(isVisible).length} секций · черновик`;
+    const visibleSections = layout.sectionOrder.filter(isVisible).length;
+    if (state) state.textContent = `${visibleSections} секций · черновик`;
+    const previewTitle = document.getElementById('homepageLayoutPreviewTitle');
+    if (previewTitle) previewTitle.textContent = `Главная · ${visibleSections} видимых блоков`;
+    const audit = homepageAudit(data, homepageCategoryGroups(data));
+    const auditEl = document.getElementById('homepageLayoutAudit');
+    const auditIcon = document.getElementById('homepageLayoutAuditIcon');
+    const auditNote = audit.errors[0] || audit.warnings[0] || 'Структура собрана. Проверьте превью и нажмите «Опубликовать» сверху.';
+    if (auditEl) auditEl.textContent = auditNote;
+    if (auditIcon) auditIcon.textContent = audit.errors.length ? '!' : audit.warnings.length ? '△' : '✓';
     sectionsEl.querySelectorAll('[data-home-layout-visible]').forEach((input) => input.addEventListener('change', (event) => {
       const key = event.target.dataset.homeLayoutVisible;
       updateHomepageSettings((home) => { home.layout.visibility[key] = event.target.checked; }, `${event.target.checked ? 'Секция включена' : 'Секция скрыта'}: ${key}.`);
@@ -8856,6 +8887,9 @@ function bindStudioRowActions() {
   function homepageAudit(data, groups) {
     const errors = [];
     const warnings = [];
+    if (data?.homepage?.layout?.visibility?.pics === false) {
+      return { errors, warnings: ['Pics of the week скрыт в сценарии главной — изображения сохранены в редакторе.'] };
+    }
     if (!groups?.length) errors.push('Не настроены категории Pics of the week.');
     groups.forEach((group) => {
       const item = group.items[0];
@@ -9363,6 +9397,10 @@ function bindStudioRowActions() {
     if (!editor.value) { if (!silent) showToast?.('error', 'Сначала загрузите контент.'); return; }
     const data = readContent();
     const audit = data ? homepageAudit(data, homepageCategoryGroups(data)) : { errors: ['Контент не загружен.'], warnings: [] };
+    if (data) {
+      const layout = homepageLayout(data);
+      if (!layout.sectionOrder.some((key) => layout.visibility?.[key] !== false)) audit.errors.unshift('Все секции главной скрыты — включите хотя бы один блок перед публикацией.');
+    }
     if (audit.errors.length) {
       if (!silent) showToast?.('error', `Нельзя опубликовать главную: ${audit.errors[0]}`);
       renderHomepageTab();
@@ -9475,6 +9513,28 @@ function bindStudioRowActions() {
       home.layout.visibility = {};
     }, 'Структура главной сброшена к безопасному порядку по умолчанию.');
   });
+  function applyHomepagePreset(preset) {
+    updateHomepageSettings((home) => {
+      const visibility = {};
+      if (preset === 'magazine') {
+        home.layout.sectionOrder = ['pics', 'articles', 'showcase', 'archive'];
+        home.layout.pics = { ...home.layout.pics, captionPlacement: 'below', showDescriptions: true, showCategory: true, showNavigation: true, mobileMode: 'single', cardStyle: 'compact' };
+        home.layout.articles = { ...home.layout.articles, showDescription: true, showPreview: true, showReadAll: true, columns: 2 };
+      } else if (preset === 'image-first') {
+        home.layout.sectionOrder = ['pics', 'showcase', 'articles', 'archive'];
+        home.layout.pics = { ...home.layout.pics, captionPlacement: 'below', showDescriptions: true, showCategory: true, showNavigation: true, mobileMode: 'single', cardStyle: 'editorial' };
+        home.layout.articles = { ...home.layout.articles, showDescription: true, showPreview: true, showReadAll: true, columns: 1 };
+      } else {
+        home.layout.sectionOrder = HOMEPAGE_SECTION_ORDER_DEFAULT.slice();
+        home.layout.pics = { ...home.layout.pics, captionPlacement: 'below', showDescriptions: true, showCategory: true, showNavigation: true, mobileMode: 'single', cardStyle: 'editorial' };
+        home.layout.articles = { ...home.layout.articles, showDescription: true, showPreview: true, showReadAll: true, columns: 1 };
+      }
+      home.layout.visibility = visibility;
+    }, `Пресет «${preset === 'magazine' ? 'Magazine grid' : preset === 'image-first' ? 'Image first' : 'Editorial'}» применён в черновик.`);
+  }
+  document.getElementById('homepagePresetEditorial')?.addEventListener('click', () => applyHomepagePreset('editorial'));
+  document.getElementById('homepagePresetMagazine')?.addEventListener('click', () => applyHomepagePreset('magazine'));
+  document.getElementById('homepagePresetImageFirst')?.addEventListener('click', () => applyHomepagePreset('image-first'));
   const homepageLayoutSelects = {
     homepagePicsCaptionPlacement: (home, value) => { home.layout.pics.captionPlacement = value === 'overlay' ? 'overlay' : 'below'; },
     homepagePicsMobileMode: (home, value) => { home.layout.pics.mobileMode = value === 'peek' ? 'peek' : 'single'; },
