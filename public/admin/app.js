@@ -1964,6 +1964,37 @@ function validateEntityShape(section, entity) {
   return check(ENTITY_REQUIRED_FIELDS[section], true) || check(ENTITY_OPTIONAL_FIELDS[section], false);
 }
 
+// Reviews are edited as structured blocks in the live canvas, while the
+// entity endpoint still accepts the original plain-text contract. Keep that
+// compatibility concern at the API boundary so the editor and public reader
+// can continue to work with either representation.
+function reviewContentToPlainText(content) {
+  if (typeof content === 'string') return content;
+  if (!Array.isArray(content)) return '';
+  return content.map((block) => {
+    if (!block || typeof block !== 'object') return '';
+    if (Array.isArray(block.content)) return block.content.filter(Boolean).join('\n');
+    if (block.content && typeof block.content === 'object') {
+      if (Array.isArray(block.content.items)) return block.content.items.filter(Boolean).join('\n');
+      if (Array.isArray(block.content.options)) {
+        const question = block.content.question || '';
+        const options = block.content.options.map((option) => option?.label || '').filter(Boolean).join(' / ');
+        return [question, options].filter(Boolean).join('\n');
+      }
+      return '';
+    }
+    const text = String(block.content == null ? '' : block.content).trim();
+    const caption = String(block.caption == null ? '' : block.caption).trim();
+    return [text, caption].filter(Boolean).join('\n');
+  }).filter(Boolean).join('\n\n').trim();
+}
+
+function normalizeEntityForServer(section, entity) {
+  if (section !== 'reviews' || !entity || typeof entity !== 'object') return entity;
+  if (typeof entity.content === 'string') return entity;
+  return { ...entity, content: reviewContentToPlainText(entity.content) };
+}
+
 function validateJson() {
   try {
     const parsed = parseEditorJson();
@@ -4773,6 +4804,7 @@ const CONTENT_ENTITY_API = 'https://api.eprisjournal.com/content/entity';
 async function saveEntityToServer(section, lang, entity, options = {}) {
   const pw = getAdminPassword();
   if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
+  const serverEntity = normalizeEntityForServer(section, entity);
   const retries = Number.isInteger(options.retries) ? options.retries : 2;
 
   // The live article/review canvas and the toolbar can both save legitimately
@@ -4787,7 +4819,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     const res = await fetch(CONTENT_ENTITY_API, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
-      body: JSON.stringify({ section, id: entity.id, entity, lang, expectedVersion: meta.version }),
+      body: JSON.stringify({ section, id: serverEntity.id, entity: serverEntity, lang, expectedVersion: meta.version }),
     });
     const data = await res.json().catch(() => ({}));
     if (res.status === 409 && attempt < retries) continue;
@@ -4892,7 +4924,7 @@ async function saveCurrentEntryOnly() {
     const next = usesLiveEditorialCanvas(section)
       ? deepClone(current)
       : buildEntryFromVisualForm(section, current);
-    const entityErr = validateEntityShape(section, next);
+    const entityErr = validateEntityShape(section, normalizeEntityForServer(section, next));
     if (entityErr) throw new Error(entityErr);
 
     await saveEntityToServer(section, lang, next);
@@ -5647,7 +5679,7 @@ async function translateSelectedEntryToAvailableLanguages() {
       sourceEntry = usesLiveEditorialCanvas(section)
         ? deepClone(visibleEntries[visibleIndex])
         : buildEntryFromVisualForm(section, visibleEntries[visibleIndex]);
-      const entityErr = validateEntityShape(section, sourceEntry);
+      const entityErr = validateEntityShape(section, normalizeEntityForServer(section, sourceEntry));
       if (entityErr) throw new Error(entityErr);
       visibleEntries[visibleIndex] = sourceEntry;
     } else {
