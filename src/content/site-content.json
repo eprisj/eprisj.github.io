@@ -4520,6 +4520,28 @@
       "date": "Aug 1, 2026",
       "imageUrl": "https://api.eprisjournal.com/uploads/msnluv70lwze6y.jpg",
       "updatedAt": "2026-08-11T13:04:44.140Z"
+    },
+    {
+      "id": 5,
+      "draft": true,
+      "title": "New review",
+      "subject": "New review",
+      "rating": 0,
+      "content": "Начните с первого впечатления — атмосфера, сервис, для кого это место. Затем конкретные детали, подтверждающие вывод.",
+      "author": "EPRIS Journal",
+      "category": "Food & Stay",
+      "verdict": "Одна чёткая строка — стоит ли идти.",
+      "pros": [
+        "Локация",
+        "Атмосфера",
+        "Соотношение цены и качества"
+      ],
+      "cons": [
+        "Один честный минус"
+      ],
+      "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
+      "date": "Aug 11, 2026",
+      "updatedAt": "2026-08-11T13:23:56.882Z"
     }
   ],
   "libraryItems": [
