@@ -1,5 +1,5 @@
 import { motion, AnimatePresence, LayoutGroup, MotionConfig } from 'framer-motion';
-import { ReactNode, useState, useEffect, useCallback, useMemo, FormEvent, MouseEvent, PointerEvent as ReactPointerEvent, CSSProperties, useRef, Suspense, lazy, Component } from 'react';
+import { ReactNode, useState, useEffect, useCallback, useMemo, FormEvent, MouseEvent, PointerEvent as ReactPointerEvent, TouchEvent as ReactTouchEvent, CSSProperties, useRef, Suspense, lazy, Component } from 'react';
 // Heavy, rarely-visited tabs are code-split out of the critical bundle —
 // e.g. DesignPage alone carries a 244-item catalogue that has no business
 // loading for a reader who just opened an article. Each only downloads once
@@ -1365,6 +1365,11 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
   const itemCount = featuredItems.length;
   const safeCenterIndex = itemCount ? ((centerIndex % itemCount) + itemCount) % itemCount : 0;
   const dragStateRef = useRef<{ pointerId: number; x: number; y: number; moved: boolean } | null>(null);
+  const touchStateRef = useRef<{ x: number; y: number; moved: boolean } | null>(null);
+  // Safari/WebViews can expose Pointer Events inconsistently. Whichever input
+  // stream starts first owns this gesture; the other becomes a harmless
+  // fallback rather than advancing the carousel twice.
+  const gestureSourceRef = useRef<{ source: 'pointer' | 'touch'; startedAt: number } | null>(null);
   const suppressCardClickRef = useRef(false);
   const [isDragging, setIsDragging] = useState(false);
   const centeredItems = itemCount
@@ -1394,30 +1399,74 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
     suppressCardClickRef.current = true;
     window.setTimeout(() => { suppressCardClickRef.current = false; }, 500);
   };
+  const finishCarouselGesture = (drag: { x: number; y: number; moved: boolean }, clientX: number, clientY: number, cancelled = false) => {
+    if (cancelled) return;
+    const deltaX = clientX - drag.x;
+    const deltaY = clientY - drag.y;
+    const horizontalSwipe = Math.abs(deltaX) >= 36 && Math.abs(deltaX) > Math.abs(deltaY) * 1.15;
+    if (drag.moved) suppressNextCardClick();
+    if (horizontalSwipe) moveCarousel(deltaX < 0 ? 1 : -1);
+  };
   const handleCarouselPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    // iOS/WebViews may dispatch Pointer Events and Touch Events for the same
+    // finger. Let the dedicated touch path own every touch gesture: it keeps
+    // working even when Safari sends pointercancel during a normal swipe.
+    if (event.pointerType === 'touch') return;
     if ((event.pointerType === 'mouse' && event.button !== 0) || event.isPrimary === false) return;
+    const activeGesture = gestureSourceRef.current;
+    if (activeGesture?.source === 'touch' && Date.now() - activeGesture.startedAt < 1200) return;
+    gestureSourceRef.current = { source: 'pointer', startedAt: Date.now() };
     dragStateRef.current = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, moved: false };
-    event.currentTarget.setPointerCapture?.(event.pointerId);
+    // Pointer capture is useful for a mouse drag, but can swallow a touch-end
+    // in some iOS WebViews. Touch has its own explicit fallback below.
+    if (event.pointerType === 'mouse') {
+      try { event.currentTarget.setPointerCapture?.(event.pointerId); } catch { /* capture is optional */ }
+    }
     setIsDragging(true);
   };
   const handleCarouselPointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === 'touch') return;
     const drag = dragStateRef.current;
     if (!drag || drag.pointerId !== event.pointerId) return;
     if (Math.hypot(event.clientX - drag.x, event.clientY - drag.y) > 8) drag.moved = true;
   };
   const handleCarouselPointerEnd = (event: ReactPointerEvent<HTMLDivElement>, cancelled = false) => {
+    if (event.pointerType === 'touch') return;
     const drag = dragStateRef.current;
     if (!drag || drag.pointerId !== event.pointerId) return;
     dragStateRef.current = null;
+    if (gestureSourceRef.current?.source === 'pointer') gestureSourceRef.current = null;
     setIsDragging(false);
-    try { event.currentTarget.releasePointerCapture?.(event.pointerId); } catch { /* capture may already be released */ }
-    if (cancelled) return;
-
-    const deltaX = event.clientX - drag.x;
-    const deltaY = event.clientY - drag.y;
-    const horizontalSwipe = Math.abs(deltaX) >= 44 && Math.abs(deltaX) > Math.abs(deltaY) * 1.15;
-    if (drag.moved) suppressNextCardClick();
-    if (horizontalSwipe) moveCarousel(deltaX < 0 ? 1 : -1);
+    if (event.pointerType === 'mouse') {
+      try { event.currentTarget.releasePointerCapture?.(event.pointerId); } catch { /* capture may already be released */ }
+    }
+    finishCarouselGesture(drag, event.clientX, event.clientY, cancelled);
+  };
+  const handleCarouselTouchStart = (event: ReactTouchEvent<HTMLDivElement>) => {
+    const activeGesture = gestureSourceRef.current;
+    if (activeGesture?.source === 'pointer' && Date.now() - activeGesture.startedAt < 1200) return;
+    const touch = event.touches[0];
+    if (!touch) return;
+    gestureSourceRef.current = { source: 'touch', startedAt: Date.now() };
+    touchStateRef.current = { x: touch.clientX, y: touch.clientY, moved: false };
+    setIsDragging(true);
+  };
+  const handleCarouselTouchMove = (event: ReactTouchEvent<HTMLDivElement>) => {
+    if (gestureSourceRef.current?.source !== 'touch') return;
+    const drag = touchStateRef.current;
+    const touch = event.touches[0];
+    if (!drag || !touch) return;
+    if (Math.hypot(touch.clientX - drag.x, touch.clientY - drag.y) > 8) drag.moved = true;
+  };
+  const handleCarouselTouchEnd = (event: ReactTouchEvent<HTMLDivElement>, cancelled = false) => {
+    if (gestureSourceRef.current?.source !== 'touch') return;
+    const drag = touchStateRef.current;
+    const touch = event.changedTouches[0];
+    touchStateRef.current = null;
+    gestureSourceRef.current = null;
+    setIsDragging(false);
+    if (!drag || !touch) return;
+    finishCarouselGesture(drag, touch.clientX, touch.clientY, cancelled);
   };
   const handleCarouselCardClick = (position: number, src: string, alt: string) => {
     if (suppressCardClickRef.current) {
@@ -1452,32 +1501,39 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
           <h1 id="pics-of-week-title" className="font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">{t('homepage.picsTitle')}</h1>
         </div>
         {showNavigation && <div className="home-carousel-mobile-controls" aria-label={t('homepage.carouselLabel')}>
-          <span className="home-carousel-mobile-count" aria-hidden="true">
-            {String(safeCenterIndex + 1).padStart(2, '0')} / {String(Math.max(itemCount, 1)).padStart(2, '0')}
-          </span>
-          <div className="home-carousel-mobile-dots" role="tablist" aria-label={t('homepage.carouselLabel')}>
-            {featuredItems.map(({ category }, index) => {
-              const label = localizedHomepageCategoryLabel(category, currentLang);
-              const isActive = index === safeCenterIndex;
-              return (
-                <button
-                  key={category.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={isActive}
-                  aria-label={`${label} ${index + 1}`}
-                  className={`home-carousel-mobile-dot${isActive ? ' is-active' : ''}`}
-                  onClick={() => {
-                    setCarouselDirection(index >= safeCenterIndex ? 1 : -1);
-                    setCenterIndex(index);
-                  }}
-                >
-                  <span aria-hidden="true" />
-                </button>
-              );
-            })}
+          <button type="button" onClick={() => moveCarousel(-1)} className="home-carousel-mobile-arrow" aria-label={t('homepage.previous')}>
+            <ArrowLeft size={18} strokeWidth={1.5} aria-hidden="true" />
+          </button>
+          <div className="home-carousel-mobile-status">
+            <span className="home-carousel-mobile-count" aria-hidden="true">
+              {String(safeCenterIndex + 1).padStart(2, '0')} / {String(Math.max(itemCount, 1)).padStart(2, '0')}
+            </span>
+            <div className="home-carousel-mobile-dots" role="tablist" aria-label={t('homepage.carouselLabel')}>
+              {featuredItems.map(({ category }, index) => {
+                const label = localizedHomepageCategoryLabel(category, currentLang);
+                const isActive = index === safeCenterIndex;
+                return (
+                  <button
+                    key={category.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    aria-label={`${label} ${index + 1}`}
+                    className={`home-carousel-mobile-dot${isActive ? ' is-active' : ''}`}
+                    onClick={() => {
+                      setCarouselDirection(index >= safeCenterIndex ? 1 : -1);
+                      setCenterIndex(index);
+                    }}
+                  >
+                    <span aria-hidden="true" />
+                  </button>
+                );
+              })}
+            </div>
           </div>
-          <span className="home-carousel-mobile-swipe" aria-hidden="true">↔</span>
+          <button type="button" onClick={() => moveCarousel(1)} className="home-carousel-mobile-arrow" aria-label={t('homepage.next')}>
+            <ArrowRight size={18} strokeWidth={1.5} aria-hidden="true" />
+          </button>
         </div>}
         <div className="home-carousel-frame">
           {showNavigation && <button type="button" onClick={() => moveCarousel(-1)} className="home-carousel-edge-arrow home-carousel-edge-arrow--prev" aria-label={t('homepage.previous')}><ArrowLeft size={17} strokeWidth={1.5} aria-hidden="true" /></button>}
@@ -1495,6 +1551,10 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
             onPointerMove={handleCarouselPointerMove}
             onPointerUp={handleCarouselPointerEnd}
             onPointerCancel={(event) => handleCarouselPointerEnd(event, true)}
+            onTouchStart={handleCarouselTouchStart}
+            onTouchMove={handleCarouselTouchMove}
+            onTouchEnd={handleCarouselTouchEnd}
+            onTouchCancel={(event) => handleCarouselTouchEnd(event, true)}
           >
           {centeredItems.map(({ category, item }, position) => {
             const isCenter = position === 2;
@@ -1528,7 +1588,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
                     title={isCenter ? t('homepage.openImage') : undefined}
                   >
                     <div className="home-carousel-media relative aspect-[4/5] overflow-hidden bg-[#E8DED5]">
-                      <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" loading="lazy" referrerPolicy="no-referrer" />
+                      <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" loading="lazy" referrerPolicy="no-referrer" draggable={false} />
                     </div>
                     <div className="home-carousel-caption">
                       {showCategory && <span className="home-carousel-caption-category">{categoryLabel}</span>}

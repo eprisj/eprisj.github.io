@@ -170,6 +170,7 @@ select {
   cursor: grab;
   scrollbar-width: none;
   user-select: none;
+  -webkit-user-select: none;
 }
 
 /* Keep five editorial positions stable while the work inside each position
@@ -246,6 +247,8 @@ select {
   /* A restrained editorial grade keeps the five source photographs from
      competing by saturation while preserving the work's original character. */
   filter: saturate(.9) contrast(1.03);
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 .home-carousel-caption {
@@ -379,6 +382,11 @@ select {
   display: none;
 }
 
+.home-carousel-mobile-arrow,
+.home-carousel-mobile-status {
+  display: none;
+}
+
 .home-carousel-arrow:hover {
   background: var(--c-accent);
   border-color: var(--c-accent);
@@ -479,14 +487,50 @@ select {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: .75rem;
+    gap: .55rem;
     margin-top: .85rem;
     padding: 0 .25rem;
   }
 
-  .home-carousel-mobile-count,
-  .home-carousel-mobile-swipe {
-    min-width: 3rem;
+  /* A phone gets explicit previous/next controls as well as swipe. They live
+     in the navigation line rather than on the artwork, so they never cover a
+     photograph or compete with its tap-to-expand action. */
+  .home-carousel-mobile-arrow {
+    display: inline-flex;
+    flex: 0 0 2.75rem;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border: 1px solid color-mix(in srgb, var(--c-accent) 26%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--c-bg) 96%, transparent);
+    color: var(--c-accent);
+    box-shadow: 0 5px 16px color-mix(in srgb, var(--c-accent) 7%, transparent);
+    touch-action: manipulation;
+    transition: color .18s ease, background-color .18s ease, border-color .18s ease, transform .18s ease;
+  }
+
+  .home-carousel-mobile-arrow:active {
+    transform: scale(.94);
+    background: var(--c-accent);
+    border-color: var(--c-accent);
+    color: var(--c-bg);
+  }
+
+  .home-carousel-mobile-status {
+    display: flex;
+    flex: 1 1 auto;
+    min-width: 0;
+    align-items: center;
+    justify-content: center;
+    gap: .45rem;
+  }
+
+  .home-carousel-mobile-count {
+    flex: 0 0 auto;
+    min-width: 3.3rem;
     color: color-mix(in srgb, var(--c-accent) 56%, transparent);
     font-family: 'IBM Plex Mono', monospace;
     font-size: .58rem;
@@ -494,18 +538,12 @@ select {
     line-height: 1;
   }
 
-  .home-carousel-mobile-swipe {
-    text-align: right;
-    font-size: .95rem;
-    letter-spacing: 0;
-  }
-
   .home-carousel-mobile-dots {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: .25rem;
-    flex: 1;
+    flex: 0 1 auto;
   }
 
   .home-carousel-mobile-dot {
