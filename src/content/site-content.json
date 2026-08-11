@@ -4268,7 +4268,6 @@
     },
     {
       "id": 19,
-      "draft": true,
       "title": "New editorial story",
       "author": "EPRIS Journal",
       "role": "Editorial Desk",
@@ -4329,7 +4328,8 @@
           }
         }
       ],
-      "updatedAt": "2026-08-11T12:54:15.495Z"
+      "updatedAt": "2026-08-11T13:02:45.314Z",
+      "draft": true
     }
   ],
   "reviews": [
