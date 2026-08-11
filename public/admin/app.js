@@ -9686,7 +9686,7 @@ function bindStudioRowActions() {
           <div class="team-admin-role">${esc(a.role || 'Роль не заполнена')}</div>
           ${a.bio ? `<div class="team-admin-bio">${esc(a.bio)}</div>` : ''}
           <div class="team-admin-actions">
-            <button class="btn btn-sm" type="button" data-author-edit="${esc(a.id)}">✎ Редактировать</button>
+            <button class="btn btn-sm" type="button" data-author-edit="${esc(a.id)}">${adminIcon('edit')}<span class="btn-label">Редактировать</span></button>
             <button class="btn btn-sm btn-danger-text" type="button" data-author-del="${esc(a.id)}">🗑 Удалить</button>
           </div>
         </div>
@@ -14078,7 +14078,7 @@ async function flushModernEditor() {
       <button type="button" class="wys-review-block-move" data-wys-act="block-down" data-bi="${index}" aria-label="Переместить ниже" title="Ниже" ${index === ensureReviewBlocks().length - 1 ? 'disabled' : ''}>↓</button>
       <button type="button" class="wys-review-block-delete" data-wys-act="block-del" data-bi="${index}" aria-label="Удалить блок" title="Удалить блок">×</button>
     </div>`;
-    if (type === 'image') return `<section class="wys-review-block" data-review-block="${index}">${controls}<div style="display:flex;gap:6px;align-items:center;margin-bottom:4px"><input data-wys="block-media" data-bi="${index}" value="${esc(block.content || '')}" placeholder="URL фото" style="flex:1"><button type="button" class="btn btn-sm" data-wys-act="block-img-upload" data-bi="${index}" style="white-space:nowrap">📷 Загрузить</button></div><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Подпись (необязательно)"></section>`;
+    if (type === 'image') return `<section class="wys-review-block" data-review-block="${index}">${controls}<div style="display:flex;gap:6px;align-items:center;margin-bottom:4px"><input data-wys="block-media" data-bi="${index}" value="${esc(block.content || '')}" placeholder="URL фото" style="flex:1"><button type="button" class="btn btn-sm" data-wys-act="block-img-upload" data-bi="${index}" style="white-space:nowrap">${adminIcon('upload')}<span class="btn-label">Загрузить</span></button></div><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Подпись (необязательно)"></section>`;
     if (type === 'video') return `<section class="wys-review-block" data-review-block="${index}">${controls}<input data-wys="block-media" data-bi="${index}" value="${esc(block.content || '')}" placeholder="URL YouTube/Vimeo"><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Подпись (необязательно)" style="margin-top:7px"></section>`;
     if (type === 'gallery') return `<section class="wys-review-block" data-review-block="${index}">${controls}<textarea data-wys="block-gallery" data-bi="${index}" placeholder="По одному URL фото на строку">${esc(Array.isArray(block.content) ? block.content.join('\n') : '')}</textarea><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Общая подпись (необязательно)" style="margin-top:7px"></section>`;
     if (type === 'link') return `<section class="wys-review-block" data-review-block="${index}">${controls}<input data-wys="block-content" data-bi="${index}" value="${esc(block.content || '')}" placeholder="Текст ссылки"><input data-wys="block-url" data-bi="${index}" value="${esc(block.url || '')}" placeholder="https://…" style="margin-top:7px"></section>`;
