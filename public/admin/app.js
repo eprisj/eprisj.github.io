@@ -7667,7 +7667,10 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     if (btn.dataset.tab === 'translations') setTimeout(renderTranslationsTab, 50);
     if (btn.dataset.tab === 'dashboard') setTimeout(renderDashboard, 50);
     if (btn.dataset.tab === 'studio') setTimeout(renderStudioTab, 50);
-    if (btn.dataset.tab === 'homepage') setTimeout(() => window._renderHomepageTab && window._renderHomepageTab(), 50);
+    if (btn.dataset.tab === 'homepage') setTimeout(() => {
+      window._renderHomepageTab && window._renderHomepageTab();
+      refreshHomepageFromVps({ silent: true });
+    }, 50);
     if (btn.dataset.tab === 'manifest') setTimeout(() => window._renderManifestTab && window._renderManifestTab(), 50);
     if (btn.dataset.tab === 'authors') setTimeout(() => window._renderAuthorsTab && window._renderAuthorsTab(), 50);
     if (btn.dataset.tab === 'history') setTimeout(refreshVersionHistory, 50);
@@ -9161,7 +9164,7 @@ function bindStudioRowActions() {
     scheduleHomepageAutoPublish();
   }
 
-  async function refreshHomepageFromVps({ silent = false } = {}) {
+  async function refreshHomepageFromVps({ silent = false, force = false } = {}) {
     if (homepageRefreshBusy) return;
     homepageRefreshBusy = true;
     const button = document.getElementById('homepageRefreshBtn');
@@ -9178,7 +9181,7 @@ function bindStudioRowActions() {
         if (!silent) showToast?.('success', 'Главная уже обновлена.');
         return;
       }
-      if (isEditorDirty()) {
+      if (!force && isEditorDirty()) {
         pendingRemoteHomepageData = parsed;
         setHomepageRemoteNotice('На VPS есть более свежая версия. Локальный черновик сохранён. <button type="button" class="btn btn-sm" data-homepage-accept-remote>Загрузить свежую версию</button>', 'warn', true);
         if (!silent) showToast?.('info', 'Найдена новая версия VPS — локальные правки не перезаписаны.');
@@ -9196,6 +9199,14 @@ function bindStudioRowActions() {
       homepageRefreshBusy = false;
       if (button) { button.disabled = false; setButtonLabel(button, 'Получить свежую версию'); }
     }
+  }
+
+  async function loadHomepageLatest() {
+    if (isEditorDirty()) {
+      const confirmed = window.confirm('В админке есть локальные изменения. Загрузить текущую версию с сайта и заменить этот черновик?');
+      if (!confirmed) return;
+    }
+    await refreshHomepageFromVps({ silent: false, force: true });
   }
 
   async function syncNewHomepageArticles({ silent = false } = {}) {
@@ -9518,6 +9529,7 @@ function bindStudioRowActions() {
   }
 
   document.getElementById('homepageOpenEditorBtn')?.addEventListener('click', () => openGalleryEditor(null));
+  document.getElementById('homepageLoadLatestBtn')?.addEventListener('click', loadHomepageLatest);
   document.getElementById('homepageComplexityToggle')?.addEventListener('click', () => {
     const root = document.querySelector('#tab-homepage .homepage-admin-layout');
     setHomepageSimpleMode(!root?.classList.contains('is-simple'));
@@ -9677,7 +9689,10 @@ function bindStudioRowActions() {
   // registered and the editor used to remain as an empty static card. Render
   // once now; setEditorData() will render again when the VPS payload arrives.
   if (document.querySelector('.tab-btn[data-tab="homepage"].active') || document.getElementById('tab-homepage')?.classList.contains('active')) {
-    setTimeout(renderHomepageTab, 0);
+    setTimeout(() => {
+      renderHomepageTab();
+      refreshHomepageFromVps({ silent: true });
+    }, 0);
   }
 })();
 

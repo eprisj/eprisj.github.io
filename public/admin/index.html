@@ -12,7 +12,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=4.40" />
+    <link rel="stylesheet" href="./styles.css?v=4.41" />
     <link rel="stylesheet" href="./brandbook.css?v=3" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -323,6 +323,7 @@
                   <p class="card-desc">Здесь собираются пять карточек для главной. Выберите фото, добавьте подпись и короткое описание, затем нажмите «Опубликовать».</p>
                 </div>
                 <div class="homepage-admin-actions">
+                  <button id="homepageLoadLatestBtn" class="btn" type="button"><span class="btn-label">Загрузить текущие</span></button>
                   <button id="homepageAddBtn" class="btn btn-primary" type="button"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span class="btn-label">Новое фото</span></button>
                   <button id="homepageFillBtn" class="btn" type="button"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.6 5.2L19 10l-5.4 1.8L12 17l-1.6-5.2L5 10l5.4-1.8L12 3Z"></path><path d="m19 15 .7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7L19 15Z"></path></svg><span class="btn-label">Дозаполнить пустые</span></button>
                   <button id="homepageInheritBtn" class="btn" type="button"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13"></path><path d="m13 6 6 6-6 6"></path><path d="M5 6v12"></path></svg><span class="btn-label">Заполнить наследуемые поля</span></button>
@@ -364,6 +365,7 @@
                   <span id="homepageLastPublished">Не опубликовано</span>
                 </div>
               </div>
+              <div id="homepageRemoteNotice" class="homepage-remote-notice" role="status" aria-live="polite" hidden></div>
               <section class="card homepage-control-card homepage-advanced" aria-labelledby="homepageControlTitle">
                 <div class="homepage-section-head">
                   <div>
@@ -385,7 +387,6 @@
                   <label class="homepage-toggle-field"><input id="homepageAutoPublish" type="checkbox"><span><strong>Автовыталкивание</strong><small>Публиковать безопасные правки после паузы</small></span></label>
                 </div>
                 <div id="homepageArticlesSyncStatus" class="homepage-layout-status" role="status" aria-live="polite">Новые статьи наследуются из общей ленты публикаций.</div>
-                <div id="homepageRemoteNotice" class="homepage-remote-notice" role="status" aria-live="polite" hidden></div>
               </section>
               <section class="card homepage-layout-editor homepage-advanced" aria-labelledby="homepageLayoutEditorTitle">
                 <div class="homepage-section-head">
@@ -1791,7 +1792,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.40" type="module"></script>
+    <script src="./app.js?v=4.41" type="module"></script>
     <script src="../brandbook/data.js?v=1"></script>
     <script src="./brandbook.js?v=3"></script>
     <script>
