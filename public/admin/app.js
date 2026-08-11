@@ -8817,6 +8817,7 @@ function bindStudioMediaActions() {
   let homepagePublishQueued = false;
   let homepageArticlesSyncBusy = false;
   let pendingRemoteHomepageData = null;
+  let homepagePublishedData = null;
 
   const HOMEPAGE_SECTION_DEFS = [
     { id: 'pics', label: 'Pics of the week', hint: 'Пять категорий изображений, центральный кадр и подписи.' },
@@ -9004,6 +9005,29 @@ function bindStudioMediaActions() {
       if (useLifo) categoryItems.sort((a, b) => stamp(b) - stamp(a) || Number(b?.id || 0) - Number(a?.id || 0));
       return { ...category, items: categoryItems };
     });
+  }
+
+  function renderPublishedHomepage(data, source = 'vps') {
+    const cardsEl = document.getElementById('homepagePublishedCards');
+    const metaEl = document.getElementById('homepagePublishedMeta');
+    if (!cardsEl || !data) return;
+    const groups = homepageCategoryGroups(data);
+    const filled = groups.filter((group) => group.items.length).length;
+    if (metaEl) metaEl.textContent = source === 'vps' ? `VPS · ${filled} / ${groups.length} слотов` : `Черновик редактора · ${filled} / ${groups.length}`;
+    cardsEl.innerHTML = groups.map((group) => {
+      const item = group.items[0];
+      const image = item?.imageUrl || item?.imageSeed || '';
+      return `<article class="homepage-published-card${item ? '' : ' is-empty'}">
+        <div class="homepage-published-card-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : '<span>Слот пуст</span>'}</div>
+        <span class="homepage-published-card-category">${esc(group.label)}</span>
+        <strong class="homepage-published-card-title">${esc(item?.homeTitle || item?.title || 'Добавить фото')}</strong>
+        <div class="homepage-published-card-meta"><span>${item ? `ID ${esc(item.id)}` : 'Новая неделя'}</span>${item ? '<span>Опубликовано</span>' : ''}</div>
+        <button class="btn btn-sm${item ? '' : ' btn-primary'}" type="button" data-home-published-edit="${item ? esc(item.id) : ''}" data-home-published-category="${esc(group.id)}">${item ? 'Изменить' : 'Добавить фото'}</button>
+      </article>`;
+    }).join('');
+    cardsEl.querySelectorAll('[data-home-published-edit]').forEach((button) => button.addEventListener('click', () => {
+      openGalleryEditor(button.dataset.homePublishedEdit || null, button.dataset.homePublishedCategory || null);
+    }));
   }
 
   function readHomepageAutoPrefs() {
@@ -9317,6 +9341,8 @@ function bindStudioMediaActions() {
       if (!response.ok) throw new Error(`VPS вернул статус ${response.status}`);
       const parsed = await response.json();
       validateShape(parsed);
+      homepagePublishedData = parsed;
+      renderPublishedHomepage(parsed, 'vps');
       const remoteText = normalizeJsonText(JSON.stringify(parsed));
       if (remoteText === lastSyncedSnapshot) {
         pendingRemoteHomepageData = null;
@@ -9561,6 +9587,7 @@ function bindStudioMediaActions() {
       if (preview) preview.innerHTML = '<p class="form-hint">Загрузите контент, чтобы собрать расстановку.</p>';
       return;
     }
+    renderPublishedHomepage(homepagePublishedData || data, homepagePublishedData ? 'vps' : 'draft');
     const items = Array.isArray(data.items) ? data.items : [];
     const groups = homepageCategoryGroups(data);
     const audit = homepageAudit(data, groups);
@@ -9655,6 +9682,8 @@ function bindStudioMediaActions() {
       const payload = await response.json().catch(() => ({}));
       if (!response.ok || !payload.ok) throw new Error(payload.error || `VPS вернул ${response.status}`);
       setEditorData(publishData, { markSynced: true });
+      homepagePublishedData = publishData;
+      renderPublishedHomepage(publishData, 'vps');
       try { localStorage.setItem('epris_homepage_last_published', new Date().toISOString()); } catch { /* storage unavailable */ }
       const lastEl = document.getElementById('homepageLastPublished');
       if (lastEl) lastEl.textContent = `Опубликовано ${new Date().toLocaleString('ru-RU', { dateStyle: 'short', timeStyle: 'short' })}`;
