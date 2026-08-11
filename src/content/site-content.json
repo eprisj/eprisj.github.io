@@ -2156,6 +2156,17 @@
       "imageSeed": "maria-graduation-heart",
       "imageUrl": "/images/heart-hero.jpg",
       "articleId": 11
+    },
+    {
+      "id": 15,
+      "title": "New gallery item",
+      "subtitle": "One-line context — replace me",
+      "fig": "FIG. 15",
+      "description": "One or two sentences describing this piece — replace with real copy before publishing.",
+      "imageSeed": "new-item-15",
+      "homeTitle": "New gallery item",
+      "homeSubtitle": "One-line context — replace me",
+      "homeDescription": "One or two sentences describing this piece — replace with real copy before publishing."
     }
   ],
   "articles": [
@@ -4553,6 +4564,17 @@
           "homeCategory": "painting",
           "homeLabel": "Хильма аф Клинт · 1907 · темпера на бумаге",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 15,
+          "title": "Новый элемент галереи",
+          "subtitle": "Однострочный контекст — замените меня",
+          "fig": "FIG. 15",
+          "description": "Одно или два предложения, описывающие этот объект — замените на реальный текст перед публикацией.",
+          "imageSeed": "new-item-15",
+          "homeTitle": "Новый элемент галереи",
+          "homeSubtitle": "Однострочный контекст — замените меня",
+          "homeDescription": "Одно или два предложения, описывающие этот объект — замените на реальный текст перед публикацией."
         }
       ],
       "articles": [
@@ -5636,28 +5658,6 @@
             {
               "type": "text",
               "content": "Влияние Кантанен закреплено ее включением в постоянные коллекции некоторых из самых уважаемых учреждений мира, включая Музей Дж. Пола Гетти в Лос-Анджелесе, Бруклинский музей, Музей искусств округа Лос-Анджелес (LACMA) и Музей современного искусства Киасма в Хельсинки. Ее монографии, опубликованные Хатье Канц, служат свидетельством художника, который не просто использует технологии, но и подчиняет их вечному служению красоте."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msngme9x0lctgn.jpg",
-              "caption": "Sandra Kantanen, “Horizon”, 2005"
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msngn7mg1xk589.jpg",
-              "caption": "Sandra Kantanen, “Rain”, 2005"
-            },
-            {
-              "type": "text",
-              "content": "Over a career spanning more than two decades, Sandra Kantanen has earned widespread international acclaim for her innovative contributions to contemporary visual arts."
-            },
-            {
-              "type": "text",
-              "content": "Her work has been showcased globally, with major exhibitions at venues like the Purdy Hicks Gallery in London, Paris Photo, and a comprehensive retrospective at the Turku Art Museum."
-            },
-            {
-              "type": "text",
-              "content": "Kantanen's influence is cemented by her inclusion in the permanent collections of some of the world's most respected institutions, including the J. Paul Getty Museum in Los Angeles, the Brooklyn Museum, the Los Angeles County Museum of Art (LACMA), and the Kiasma Museum of Contemporary Art in Helsinki. Her monographs, published by Hatje Cantz, serve as a testament to an artist who does not merely use technology, but bends it to the eternal service of beauty."
             }
           ],
           "order": 1,
@@ -6923,6 +6923,17 @@
           "homeCategory": "painting",
           "homeLabel": "Гільма аф Клінт · 1907 · темпера на папері",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 15,
+          "title": "Новий елемент галереї",
+          "subtitle": "Однолінійний контекст — заміни мене",
+          "fig": "FIG. 15",
+          "description": "Один або два речення, що описують цей об’єкт — замініть на реальний текст перед публікацією.",
+          "imageSeed": "new-item-15",
+          "homeTitle": "Новий елемент галереї",
+          "homeSubtitle": "Однолінійний контекст — заміни мене",
+          "homeDescription": "Один або два речення, що описують цей об’єкт — замініть на реальний текст перед публікацією."
         }
       ],
       "articles": [
@@ -8006,28 +8017,6 @@
             {
               "type": "text",
               "content": "Вплив Кантанен зміцнюється завдяки включенню її до постійних колекцій деяких найповажніших установ світу, включаючи Музей Дж. Пола Гетті в Лос-Анджелесі, Бруклінський музей, Музей мистецтв округу Лос-Анджелес (LACMA) і Музей сучасного мистецтва Кіасма в Гельсінкі. Її монографії, опубліковані Hatje Cantz, служать свідченням митця, який не просто використовує технології, але використовує їх для вічного служіння красі."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msngme9x0lctgn.jpg",
-              "caption": "Sandra Kantanen, “Horizon”, 2005"
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msngn7mg1xk589.jpg",
-              "caption": "Sandra Kantanen, “Rain”, 2005"
-            },
-            {
-              "type": "text",
-              "content": "Over a career spanning more than two decades, Sandra Kantanen has earned widespread international acclaim for her innovative contributions to contemporary visual arts."
-            },
-            {
-              "type": "text",
-              "content": "Her work has been showcased globally, with major exhibitions at venues like the Purdy Hicks Gallery in London, Paris Photo, and a comprehensive retrospective at the Turku Art Museum."
-            },
-            {
-              "type": "text",
-              "content": "Kantanen's influence is cemented by her inclusion in the permanent collections of some of the world's most respected institutions, including the J. Paul Getty Museum in Los Angeles, the Brooklyn Museum, the Los Angeles County Museum of Art (LACMA), and the Kiasma Museum of Contemporary Art in Helsinki. Her monographs, published by Hatje Cantz, serve as a testament to an artist who does not merely use technology, but bends it to the eternal service of beauty."
             }
           ],
           "order": 1,
@@ -8909,82 +8898,24 @@
       "reviews": [
         {
           "id": 1,
-          "title": "Le Dauphine",
-          "subject": "131 Avenue Parmentier, Paris",
+          "title": "Симфонія смаків",
+          "subject": "Ресторан «Олеа», Лімасол",
           "rating": 4.5,
-          "content": [
-            {
-              "type": "text",
-              "content": "Quality bistronomy. Le Dauphine, located in the 11th arrondissement of Paris, is an exposed, rather than a hidden gem of the city. Thanks to the architects Rem Koolhaas and Clément Blanchet, who worked on the restoration of the dining space, the entrance of the shiny and tiny restaurant features a massive white frame, embracing the glass facade and providing an open view of the magnificent interior."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpdtwm8fm1zc.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "The duo of star chefs — Fred Péneau and Inaki Aizpitarte — commissioned the OMA bureau and Clément Blanchet to transform less than 60 square meters into a quality bistro-gastronomy space. In 2010, Le Dauphine opened its doors, immediately gaining the attention and love of the public, both for its design and cuisine. "
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpfodp7mc2k6.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "Surprisingly, the architects saw the place through the lens of an ancient temple — characterized by strong hierarchy and functions, which were borrowed and delicately implemented. The Naos is typified by the central bar counter — the heart of the space, covered in oak wood. Four encircled pillars amplify its relation to the ancient temple. The central counter is the heart, whose warmth contrasts with the total marble covering of the walls. The material usually associated with bathrooms defies the conventions of dining interiors and accomplishes it with great success. The whole space — from ceiling to floor — is laid in large-scale stone slabs with restrained graphic veins. Simplistic but chic — that’s a perfect background for a tasteful lunch on the rush, or an unhurried dinner, when the Parisian street lights transmute the exterior into an homage to one of Edouard Leon Cortes’s paintings."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpw1txo5dnn1.webp",
-              "caption": ""
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpjad387xo0q.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "The exterior frame, described in the beginning, continues the storyline of the Hellenistic Sanctuary with due honor. Serving as the transition between the exalted interior and the street, it contains the magic of an immersive experience. To stop from the mundane to the sanctuary of tastes — where every deliberate choice elevates your experience of quality — is to reinterpret the classical pronaos, separating the external world from the sacral."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpuvht9d8y4o.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "Despite the modest area, the restaurant doesn’t feel compressed — the walls are not perceived restrictively by virtue of mirror panels reflecting the bright marble, tables, and happy guests who share the delight of being in a modern urban sanctuary."
-            },
-            {
-              "type": "text",
-              "content": "The most distinctive element adopted from the Hellenistic Temple is the feeling of monumentality — the interior exudes a solid confidence in its own independence of time and trends."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbptvabvc2ngx.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "It has proven to be true — 16 years after its opening in 2010, you can still visit Le Dauphine and join the joy at the center counter on a bar stool, or reserve a table for a cozy, modern bohemian dinner with your closest one."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpxbq4cbdynt.webp",
-              "caption": ""
-            }
-          ],
-          "author": "Maria ivanova",
-          "imageUrl": "https://api.eprisjournal.com/uploads/ms7zbp2w1tw6jx.webp",
+          "content": "Дегустаційне меню представляло собою подорож історією острова. Кожна страва розповідала історію завоювань і торгівлі.",
+          "author": "Elena K.",
+          "imageUrl": "/images/mediterranean-feast.png",
           "featured": true,
-          "category": "Food",
-          "verdict": "",
-          "meta": "paris · restaurant · €€€",
-          "pros": [],
-          "cons": []
+          "category": "Їжа",
+          "verdict": "Дегустаційне меню читає острів, наче книгу з історії.",
+          "meta": "париж · ресторан · €€€",
+          "pros": [
+            "Винахідливі страви з місцевих продуктів",
+            "Бездоганні винні пари",
+            "Тепле, неквапливе обслуговування"
+          ],
+          "cons": [
+            "Столи трохи тіснувато"
+          ]
         },
         {
           "id": 2,
@@ -9293,6 +9224,17 @@
           "homeCategory": "painting",
           "homeLabel": "Hilma af Klint · 1907 · Tempera auf Papier",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 15,
+          "title": "Neues Galerieobjekt",
+          "subtitle": "Einzeiliger Kontext — ersetze mich",
+          "fig": "FIG. 15",
+          "description": "Ein oder zwei Sätze, die dieses Stück beschreiben — ersetze mit echtem Text vor der Veröffentlichung.",
+          "imageSeed": "new-item-15",
+          "homeTitle": "Neues Galerieobjekt",
+          "homeSubtitle": "Einzeiliger Kontext — ersetze mich",
+          "homeDescription": "Ein oder zwei Sätze, die dieses Stück beschreiben — ersetze mit echtem Text vor der Veröffentlichung."
         }
       ],
       "articles": [
@@ -10376,28 +10318,6 @@
             {
               "type": "text",
               "content": "Kantanens Einfluss wird durch ihre Aufnahme in die ständigen Sammlungen einiger der angesehensten Institutionen der Welt untermauert, darunter das J. Paul Getty Museum in Los Angeles, das Brooklyn Museum, das Los Angeles County Museum of Art (LACMA) und das Kiasma Museum of Contemporary Art in Helsinki. Ihre von Hatje Cantz herausgegebenen Monographien sind Zeugnis einer Künstlerin, die Technologie nicht nur nutzt, sondern sie in den ewigen Dienst der Schönheit stellt."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msngme9x0lctgn.jpg",
-              "caption": "Sandra Kantanen, “Horizon”, 2005"
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msngn7mg1xk589.jpg",
-              "caption": "Sandra Kantanen, “Rain”, 2005"
-            },
-            {
-              "type": "text",
-              "content": "Over a career spanning more than two decades, Sandra Kantanen has earned widespread international acclaim for her innovative contributions to contemporary visual arts."
-            },
-            {
-              "type": "text",
-              "content": "Her work has been showcased globally, with major exhibitions at venues like the Purdy Hicks Gallery in London, Paris Photo, and a comprehensive retrospective at the Turku Art Museum."
-            },
-            {
-              "type": "text",
-              "content": "Kantanen's influence is cemented by her inclusion in the permanent collections of some of the world's most respected institutions, including the J. Paul Getty Museum in Los Angeles, the Brooklyn Museum, the Los Angeles County Museum of Art (LACMA), and the Kiasma Museum of Contemporary Art in Helsinki. Her monographs, published by Hatje Cantz, serve as a testament to an artist who does not merely use technology, but bends it to the eternal service of beauty."
             }
           ],
           "order": 1,
@@ -11279,82 +11199,24 @@
       "reviews": [
         {
           "id": 1,
-          "title": "Le Dauphine",
-          "subject": "131 Avenue Parmentier, Paris",
+          "title": "Eine Symphonie der Aromen",
+          "subject": "Restaurant 'Olea', Limassol",
           "rating": 4.5,
-          "content": [
-            {
-              "type": "text",
-              "content": "Quality bistronomy. Le Dauphine, located in the 11th arrondissement of Paris, is an exposed, rather than a hidden gem of the city. Thanks to the architects Rem Koolhaas and Clément Blanchet, who worked on the restoration of the dining space, the entrance of the shiny and tiny restaurant features a massive white frame, embracing the glass facade and providing an open view of the magnificent interior."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpdtwm8fm1zc.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "The duo of star chefs — Fred Péneau and Inaki Aizpitarte — commissioned the OMA bureau and Clément Blanchet to transform less than 60 square meters into a quality bistro-gastronomy space. In 2010, Le Dauphine opened its doors, immediately gaining the attention and love of the public, both for its design and cuisine. "
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpfodp7mc2k6.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "Surprisingly, the architects saw the place through the lens of an ancient temple — characterized by strong hierarchy and functions, which were borrowed and delicately implemented. The Naos is typified by the central bar counter — the heart of the space, covered in oak wood. Four encircled pillars amplify its relation to the ancient temple. The central counter is the heart, whose warmth contrasts with the total marble covering of the walls. The material usually associated with bathrooms defies the conventions of dining interiors and accomplishes it with great success. The whole space — from ceiling to floor — is laid in large-scale stone slabs with restrained graphic veins. Simplistic but chic — that’s a perfect background for a tasteful lunch on the rush, or an unhurried dinner, when the Parisian street lights transmute the exterior into an homage to one of Edouard Leon Cortes’s paintings."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpw1txo5dnn1.webp",
-              "caption": ""
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpjad387xo0q.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "The exterior frame, described in the beginning, continues the storyline of the Hellenistic Sanctuary with due honor. Serving as the transition between the exalted interior and the street, it contains the magic of an immersive experience. To stop from the mundane to the sanctuary of tastes — where every deliberate choice elevates your experience of quality — is to reinterpret the classical pronaos, separating the external world from the sacral."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpuvht9d8y4o.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "Despite the modest area, the restaurant doesn’t feel compressed — the walls are not perceived restrictively by virtue of mirror panels reflecting the bright marble, tables, and happy guests who share the delight of being in a modern urban sanctuary."
-            },
-            {
-              "type": "text",
-              "content": "The most distinctive element adopted from the Hellenistic Temple is the feeling of monumentality — the interior exudes a solid confidence in its own independence of time and trends."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbptvabvc2ngx.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "It has proven to be true — 16 years after its opening in 2010, you can still visit Le Dauphine and join the joy at the center counter on a bar stool, or reserve a table for a cozy, modern bohemian dinner with your closest one."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpxbq4cbdynt.webp",
-              "caption": ""
-            }
-          ],
-          "author": "Maria ivanova",
-          "imageUrl": "https://api.eprisjournal.com/uploads/ms7zbp2w1tw6jx.webp",
+          "content": "Das Degustationsmenü war eine Reise durch die Geschichte der Insel. Jedes Gericht erzählte eine Geschichte von Eroberung und Handel.",
+          "author": "Elena K.",
+          "imageUrl": "/images/mediterranean-feast.png",
           "featured": true,
-          "category": "Food",
-          "verdict": "",
-          "meta": "paris · restaurant · €€€",
-          "pros": [],
-          "cons": []
+          "category": "Essen",
+          "verdict": "Ein Degustationsmenü, das die Insel wie ein Geschichtsbuch liest.",
+          "meta": "Limassol · Degustation · €€€",
+          "pros": [
+            "Erfindungsreiche, regionale Gänge",
+            "Tadellose Weinbegleitung",
+            "Warmer, unaufgeregter Service"
+          ],
+          "cons": [
+            "Tische etwas eng"
+          ]
         },
         {
           "id": 2,
@@ -11663,6 +11525,17 @@
           "homeCategory": "painting",
           "homeLabel": "Hilma af Klint · 1907 · temple sobre papel",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 15,
+          "title": "Nuevo elemento de galería",
+          "subtitle": "Contexto de una línea — reemplazarme",
+          "fig": "FIG. 15",
+          "description": "Una o dos frases describiendo esta pieza — reemplazar con copia real antes de publicar.",
+          "imageSeed": "new-item-15",
+          "homeTitle": "Nuevo elemento de galería",
+          "homeSubtitle": "Contexto de una línea — reemplazarme",
+          "homeDescription": "Una o dos frases describiendo esta pieza — reemplazar con copia real antes de publicar."
         }
       ],
       "articles": [
@@ -12746,28 +12619,6 @@
             {
               "type": "text",
               "content": "La influencia de Kantanen está cimentada por su inclusión en las colecciones permanentes de algunas de las instituciones más respetadas del mundo, incluido el Museo J. Paul Getty de Los Ángeles, el Museo de Brooklyn, el Museo de Arte del Condado de Los Ángeles (LACMA) y el Museo Kiasma de Arte Contemporáneo de Helsinki. Sus monografías, publicadas por Hatje Cantz, sirven como testimonio de una artista que no se limita a utilizar la tecnología, sino que la pone al servicio eterno de la belleza."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msngme9x0lctgn.jpg",
-              "caption": "Sandra Kantanen, “Horizon”, 2005"
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msngn7mg1xk589.jpg",
-              "caption": "Sandra Kantanen, “Rain”, 2005"
-            },
-            {
-              "type": "text",
-              "content": "Over a career spanning more than two decades, Sandra Kantanen has earned widespread international acclaim for her innovative contributions to contemporary visual arts."
-            },
-            {
-              "type": "text",
-              "content": "Her work has been showcased globally, with major exhibitions at venues like the Purdy Hicks Gallery in London, Paris Photo, and a comprehensive retrospective at the Turku Art Museum."
-            },
-            {
-              "type": "text",
-              "content": "Kantanen's influence is cemented by her inclusion in the permanent collections of some of the world's most respected institutions, including the J. Paul Getty Museum in Los Angeles, the Brooklyn Museum, the Los Angeles County Museum of Art (LACMA), and the Kiasma Museum of Contemporary Art in Helsinki. Her monographs, published by Hatje Cantz, serve as a testament to an artist who does not merely use technology, but bends it to the eternal service of beauty."
             }
           ],
           "order": 1,
@@ -13649,82 +13500,24 @@
       "reviews": [
         {
           "id": 1,
-          "title": "Le Dauphine",
-          "subject": "131 Avenue Parmentier, Paris",
+          "title": "Una sinfonía de sabores",
+          "subject": "Restaurante 'Olea', Limassol",
           "rating": 4.5,
-          "content": [
-            {
-              "type": "text",
-              "content": "Quality bistronomy. Le Dauphine, located in the 11th arrondissement of Paris, is an exposed, rather than a hidden gem of the city. Thanks to the architects Rem Koolhaas and Clément Blanchet, who worked on the restoration of the dining space, the entrance of the shiny and tiny restaurant features a massive white frame, embracing the glass facade and providing an open view of the magnificent interior."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpdtwm8fm1zc.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "The duo of star chefs — Fred Péneau and Inaki Aizpitarte — commissioned the OMA bureau and Clément Blanchet to transform less than 60 square meters into a quality bistro-gastronomy space. In 2010, Le Dauphine opened its doors, immediately gaining the attention and love of the public, both for its design and cuisine. "
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpfodp7mc2k6.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "Surprisingly, the architects saw the place through the lens of an ancient temple — characterized by strong hierarchy and functions, which were borrowed and delicately implemented. The Naos is typified by the central bar counter — the heart of the space, covered in oak wood. Four encircled pillars amplify its relation to the ancient temple. The central counter is the heart, whose warmth contrasts with the total marble covering of the walls. The material usually associated with bathrooms defies the conventions of dining interiors and accomplishes it with great success. The whole space — from ceiling to floor — is laid in large-scale stone slabs with restrained graphic veins. Simplistic but chic — that’s a perfect background for a tasteful lunch on the rush, or an unhurried dinner, when the Parisian street lights transmute the exterior into an homage to one of Edouard Leon Cortes’s paintings."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpw1txo5dnn1.webp",
-              "caption": ""
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpjad387xo0q.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "The exterior frame, described in the beginning, continues the storyline of the Hellenistic Sanctuary with due honor. Serving as the transition between the exalted interior and the street, it contains the magic of an immersive experience. To stop from the mundane to the sanctuary of tastes — where every deliberate choice elevates your experience of quality — is to reinterpret the classical pronaos, separating the external world from the sacral."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpuvht9d8y4o.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "Despite the modest area, the restaurant doesn’t feel compressed — the walls are not perceived restrictively by virtue of mirror panels reflecting the bright marble, tables, and happy guests who share the delight of being in a modern urban sanctuary."
-            },
-            {
-              "type": "text",
-              "content": "The most distinctive element adopted from the Hellenistic Temple is the feeling of monumentality — the interior exudes a solid confidence in its own independence of time and trends."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbptvabvc2ngx.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "It has proven to be true — 16 years after its opening in 2010, you can still visit Le Dauphine and join the joy at the center counter on a bar stool, or reserve a table for a cozy, modern bohemian dinner with your closest one."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpxbq4cbdynt.webp",
-              "caption": ""
-            }
-          ],
-          "author": "Maria ivanova",
-          "imageUrl": "https://api.eprisjournal.com/uploads/ms7zbp2w1tw6jx.webp",
+          "content": "El menú degustación fue un viaje a través de la historia de la isla. Cada plato contaba una historia de conquista y comercio.",
+          "author": "Elena K.",
+          "imageUrl": "/images/mediterranean-feast.png",
           "featured": true,
-          "category": "Food",
-          "verdict": "",
-          "meta": "paris · restaurant · €€€",
-          "pros": [],
-          "cons": []
+          "category": "Gastronomía",
+          "verdict": "Un menú degustación que lee la isla como un libro de historia.",
+          "meta": "Limasol · Degustación · €€€",
+          "pros": [
+            "Platos locales e inventivos",
+            "Maridaje impecable",
+            "Servicio cálido y sin prisas"
+          ],
+          "cons": [
+            "Mesas algo juntas"
+          ]
         },
         {
           "id": 2,
@@ -14033,6 +13826,17 @@
           "homeCategory": "painting",
           "homeLabel": "Hilma af Klint · 1907 · kâğıt üzerine tempera",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 15,
+          "title": "Yeni galeri öğesi",
+          "subtitle": "Tek satırlık bağlam — beni değiştir",
+          "fig": "FIG. 15",
+          "description": "Bu parçayı tanımlayan bir veya iki cümle — yayınlamadan önce gerçek kopyayla değiştirin.",
+          "imageSeed": "new-item-15",
+          "homeTitle": "Yeni galeri öğesi",
+          "homeSubtitle": "Tek satırlık bağlam — beni değiştir",
+          "homeDescription": "Bu parçayı tanımlayan bir veya iki cümle — yayınlamadan önce gerçek kopyayla değiştirin."
         }
       ],
       "articles": [
@@ -15116,28 +14920,6 @@
             {
               "type": "text",
               "content": "Kantanen'in etkisi, Los Angeles'taki J. Paul Getty Müzesi, Brooklyn Müzesi, Los Angeles County Sanat Müzesi (LACMA) ve Helsinki'deki Kiasma Çağdaş Sanat Müzesi dahil olmak üzere dünyanın en saygın kurumlarından bazılarının kalıcı koleksiyonlarına dahil edilmesiyle pekişmiştir. Hatje Cantz tarafından yayınlanan monografileri, teknolojiyi yalnızca kullanmakla kalmayıp onu güzelliğin ebedi hizmetine sunan bir sanatçının vasiyeti olarak hizmet ediyor."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msngme9x0lctgn.jpg",
-              "caption": "Sandra Kantanen, “Horizon”, 2005"
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msngn7mg1xk589.jpg",
-              "caption": "Sandra Kantanen, “Rain”, 2005"
-            },
-            {
-              "type": "text",
-              "content": "Over a career spanning more than two decades, Sandra Kantanen has earned widespread international acclaim for her innovative contributions to contemporary visual arts."
-            },
-            {
-              "type": "text",
-              "content": "Her work has been showcased globally, with major exhibitions at venues like the Purdy Hicks Gallery in London, Paris Photo, and a comprehensive retrospective at the Turku Art Museum."
-            },
-            {
-              "type": "text",
-              "content": "Kantanen's influence is cemented by her inclusion in the permanent collections of some of the world's most respected institutions, including the J. Paul Getty Museum in Los Angeles, the Brooklyn Museum, the Los Angeles County Museum of Art (LACMA), and the Kiasma Museum of Contemporary Art in Helsinki. Her monographs, published by Hatje Cantz, serve as a testament to an artist who does not merely use technology, but bends it to the eternal service of beauty."
             }
           ],
           "order": 1,
@@ -16019,82 +15801,24 @@
       "reviews": [
         {
           "id": 1,
-          "title": "Le Dauphine",
-          "subject": "131 Avenue Parmentier, Paris",
+          "title": "Tatların senfonisi",
+          "subject": "Restoran 'Olea', Limassol",
           "rating": 4.5,
-          "content": [
-            {
-              "type": "text",
-              "content": "Quality bistronomy. Le Dauphine, located in the 11th arrondissement of Paris, is an exposed, rather than a hidden gem of the city. Thanks to the architects Rem Koolhaas and Clément Blanchet, who worked on the restoration of the dining space, the entrance of the shiny and tiny restaurant features a massive white frame, embracing the glass facade and providing an open view of the magnificent interior."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpdtwm8fm1zc.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "The duo of star chefs — Fred Péneau and Inaki Aizpitarte — commissioned the OMA bureau and Clément Blanchet to transform less than 60 square meters into a quality bistro-gastronomy space. In 2010, Le Dauphine opened its doors, immediately gaining the attention and love of the public, both for its design and cuisine. "
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpfodp7mc2k6.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "Surprisingly, the architects saw the place through the lens of an ancient temple — characterized by strong hierarchy and functions, which were borrowed and delicately implemented. The Naos is typified by the central bar counter — the heart of the space, covered in oak wood. Four encircled pillars amplify its relation to the ancient temple. The central counter is the heart, whose warmth contrasts with the total marble covering of the walls. The material usually associated with bathrooms defies the conventions of dining interiors and accomplishes it with great success. The whole space — from ceiling to floor — is laid in large-scale stone slabs with restrained graphic veins. Simplistic but chic — that’s a perfect background for a tasteful lunch on the rush, or an unhurried dinner, when the Parisian street lights transmute the exterior into an homage to one of Edouard Leon Cortes’s paintings."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpw1txo5dnn1.webp",
-              "caption": ""
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpjad387xo0q.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "The exterior frame, described in the beginning, continues the storyline of the Hellenistic Sanctuary with due honor. Serving as the transition between the exalted interior and the street, it contains the magic of an immersive experience. To stop from the mundane to the sanctuary of tastes — where every deliberate choice elevates your experience of quality — is to reinterpret the classical pronaos, separating the external world from the sacral."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpuvht9d8y4o.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "Despite the modest area, the restaurant doesn’t feel compressed — the walls are not perceived restrictively by virtue of mirror panels reflecting the bright marble, tables, and happy guests who share the delight of being in a modern urban sanctuary."
-            },
-            {
-              "type": "text",
-              "content": "The most distinctive element adopted from the Hellenistic Temple is the feeling of monumentality — the interior exudes a solid confidence in its own independence of time and trends."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbptvabvc2ngx.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "It has proven to be true — 16 years after its opening in 2010, you can still visit Le Dauphine and join the joy at the center counter on a bar stool, or reserve a table for a cozy, modern bohemian dinner with your closest one."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpxbq4cbdynt.webp",
-              "caption": ""
-            }
-          ],
-          "author": "Maria ivanova",
-          "imageUrl": "https://api.eprisjournal.com/uploads/ms7zbp2w1tw6jx.webp",
+          "content": "Tadım menüsü adanın tarihine bir yolculuktu. Her yemek fetih ve ticaretin hikayesini anlatıyordu.",
+          "author": "Elena K.",
+          "imageUrl": "/images/mediterranean-feast.png",
           "featured": true,
-          "category": "Food",
-          "verdict": "",
-          "meta": "paris · restaurant · €€€",
-          "pros": [],
-          "cons": []
+          "category": "Yemek",
+          "verdict": "Adayı bir tarih kitabı gibi okuyan bir tadım menüsü.",
+          "meta": "Limasol · Tadım menüsü · €€€",
+          "pros": [
+            "Yaratıcı, yerel ürünlü tabaklar",
+            "Kusursuz şarap eşleşmesi",
+            "Sıcak, telaşsız servis"
+          ],
+          "cons": [
+            "Masalar biraz sıkışık"
+          ]
         },
         {
           "id": 2,
@@ -16403,6 +16127,17 @@
           "homeCategory": "painting",
           "homeLabel": "Hilma af Klint · 1907 · tempera su carta",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 15,
+          "title": "Nuovo elemento della galleria",
+          "subtitle": "Contesto su una riga — sostituiscimi",
+          "fig": "FIG. 15",
+          "description": "Una o due frasi che descrivono questo pezzo — sostituire con copia reale prima della pubblicazione.",
+          "imageSeed": "new-item-15",
+          "homeTitle": "Nuovo elemento della galleria",
+          "homeSubtitle": "Contesto su una riga — sostituiscimi",
+          "homeDescription": "Una o due frasi che descrivono questo pezzo — sostituire con copia reale prima della pubblicazione."
         }
       ],
       "articles": [
@@ -17486,28 +17221,6 @@
             {
               "type": "text",
               "content": "L'influenza di Kantanen è consolidata dalla sua inclusione nelle collezioni permanenti di alcune delle istituzioni più rispettate al mondo, tra cui il J. Paul Getty Museum di Los Angeles, il Brooklyn Museum, il Los Angeles County Museum of Art (LACMA) e il Kiasma Museum of Contemporary Art di Helsinki. Le sue monografie, pubblicate da Hatje Cantz, testimoniano un'artista che non si limita a utilizzare la tecnologia, ma la piega al servizio eterno della bellezza."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msngme9x0lctgn.jpg",
-              "caption": "Sandra Kantanen, “Horizon”, 2005"
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msngn7mg1xk589.jpg",
-              "caption": "Sandra Kantanen, “Rain”, 2005"
-            },
-            {
-              "type": "text",
-              "content": "Over a career spanning more than two decades, Sandra Kantanen has earned widespread international acclaim for her innovative contributions to contemporary visual arts."
-            },
-            {
-              "type": "text",
-              "content": "Her work has been showcased globally, with major exhibitions at venues like the Purdy Hicks Gallery in London, Paris Photo, and a comprehensive retrospective at the Turku Art Museum."
-            },
-            {
-              "type": "text",
-              "content": "Kantanen's influence is cemented by her inclusion in the permanent collections of some of the world's most respected institutions, including the J. Paul Getty Museum in Los Angeles, the Brooklyn Museum, the Los Angeles County Museum of Art (LACMA), and the Kiasma Museum of Contemporary Art in Helsinki. Her monographs, published by Hatje Cantz, serve as a testament to an artist who does not merely use technology, but bends it to the eternal service of beauty."
             }
           ],
           "order": 1,
@@ -18383,82 +18096,24 @@
       "reviews": [
         {
           "id": 1,
-          "title": "Le Dauphine",
-          "subject": "131 Avenue Parmentier, Paris",
+          "title": "Una sinfonia di sapori",
+          "subject": "Ristorante 'Olea', Limassol",
           "rating": 4.5,
-          "content": [
-            {
-              "type": "text",
-              "content": "Quality bistronomy. Le Dauphine, located in the 11th arrondissement of Paris, is an exposed, rather than a hidden gem of the city. Thanks to the architects Rem Koolhaas and Clément Blanchet, who worked on the restoration of the dining space, the entrance of the shiny and tiny restaurant features a massive white frame, embracing the glass facade and providing an open view of the magnificent interior."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpdtwm8fm1zc.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "The duo of star chefs — Fred Péneau and Inaki Aizpitarte — commissioned the OMA bureau and Clément Blanchet to transform less than 60 square meters into a quality bistro-gastronomy space. In 2010, Le Dauphine opened its doors, immediately gaining the attention and love of the public, both for its design and cuisine. "
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpfodp7mc2k6.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "Surprisingly, the architects saw the place through the lens of an ancient temple — characterized by strong hierarchy and functions, which were borrowed and delicately implemented. The Naos is typified by the central bar counter — the heart of the space, covered in oak wood. Four encircled pillars amplify its relation to the ancient temple. The central counter is the heart, whose warmth contrasts with the total marble covering of the walls. The material usually associated with bathrooms defies the conventions of dining interiors and accomplishes it with great success. The whole space — from ceiling to floor — is laid in large-scale stone slabs with restrained graphic veins. Simplistic but chic — that’s a perfect background for a tasteful lunch on the rush, or an unhurried dinner, when the Parisian street lights transmute the exterior into an homage to one of Edouard Leon Cortes’s paintings."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpw1txo5dnn1.webp",
-              "caption": ""
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpjad387xo0q.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "The exterior frame, described in the beginning, continues the storyline of the Hellenistic Sanctuary with due honor. Serving as the transition between the exalted interior and the street, it contains the magic of an immersive experience. To stop from the mundane to the sanctuary of tastes — where every deliberate choice elevates your experience of quality — is to reinterpret the classical pronaos, separating the external world from the sacral."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpuvht9d8y4o.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "Despite the modest area, the restaurant doesn’t feel compressed — the walls are not perceived restrictively by virtue of mirror panels reflecting the bright marble, tables, and happy guests who share the delight of being in a modern urban sanctuary."
-            },
-            {
-              "type": "text",
-              "content": "The most distinctive element adopted from the Hellenistic Temple is the feeling of monumentality — the interior exudes a solid confidence in its own independence of time and trends."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbptvabvc2ngx.webp",
-              "caption": ""
-            },
-            {
-              "type": "text",
-              "content": "It has proven to be true — 16 years after its opening in 2010, you can still visit Le Dauphine and join the joy at the center counter on a bar stool, or reserve a table for a cozy, modern bohemian dinner with your closest one."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/msbpxbq4cbdynt.webp",
-              "caption": ""
-            }
-          ],
-          "author": "Maria ivanova",
-          "imageUrl": "https://api.eprisjournal.com/uploads/ms7zbp2w1tw6jx.webp",
+          "content": "Il menu degustazione è stato un viaggio attraverso la storia dell'isola. Ogni piatto raccontava una storia di conquista e commercio.",
+          "author": "Elena K.",
+          "imageUrl": "/images/mediterranean-feast.png",
           "featured": true,
-          "category": "Food",
-          "verdict": "",
-          "meta": "paris · restaurant · €€€",
-          "pros": [],
-          "cons": []
+          "category": "Cibo",
+          "verdict": "Un menu degustazione che legge l’isola come un libro di storia.",
+          "meta": "Limassol · Degustazione · €€€",
+          "pros": [
+            "Portate locali e inventive",
+            "Abbinamento vini impeccabile",
+            "Servizio caldo e senza fretta"
+          ],
+          "cons": [
+            "Tavoli un po’ ravvicinati"
+          ]
         },
         {
           "id": 2,
