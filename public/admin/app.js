@@ -2639,10 +2639,10 @@ function updateAdminToolbarContext() {
   // “Add” was easy to miss and, worse, made it unclear whether it added a
   // block, a translation, a photo, or an entirely new article.
   const createAction = {
-    articles: { label: '+ Создать статью', title: 'Создать новую статью как черновик' },
-    reviews: { label: '+ Создать обзор', title: 'Создать новый обзор как черновик' },
-    items: { label: '+ Добавить фото', title: 'Создать новую фото-карточку как черновик' },
-    libraryItems: { label: '+ Добавить файл', title: 'Создать новую запись библиотеки как черновик' }
+    articles: { label: '+ Создать статью', title: 'Создать черновик сразу; перевод запускается при сохранении' },
+    reviews: { label: '+ Создать обзор', title: 'Создать черновик сразу; перевод запускается при сохранении' },
+    items: { label: '+ Добавить фото', title: 'Создать карточку сразу; перевод запускается при сохранении' },
+    libraryItems: { label: '+ Добавить файл', title: 'Создать запись сразу; перевод запускается при сохранении' }
   }[section] || { label: '+ Создать запись', title: 'Создать новую запись как черновик' };
   if (addEntryBtn) {
     addEntryBtn.textContent = createAction.label;
