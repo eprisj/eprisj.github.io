@@ -843,7 +843,14 @@ export function getAvailableLanguages(): string[] {
 export function isEntityLive(e: { draft?: boolean; publishAt?: string }): boolean {
   if (e.draft) return false;
   const publishTimestamp = e.publishAt ? Date.parse(e.publishAt) : NaN;
-  const explicitlyPublished = Number.isFinite(publishTimestamp) && publishTimestamp <= Date.now();
+  // Before the instant-publish fix the admin represented a published entry by
+  // removing its `draft` field. Keep that durable legacy signal valid: an
+  // entry born as draft:true can only become draft-less through Publish, while
+  // all long-standing records without a draft flag are already public.
+  const hasDraftFlag = Object.prototype.hasOwnProperty.call(e, 'draft');
+  const explicitlyPublished = e.draft === false
+    || !hasDraftFlag
+    || (Number.isFinite(publishTimestamp) && publishTimestamp <= Date.now());
   // A seed draft stays hidden by default. The explicit «Опубликовать» action
   // writes a past publishAt timestamp, which is unambiguous editorial intent:
   // it must become public immediately even if the editor has not renamed the
@@ -872,8 +879,9 @@ export function getContentForLanguage(lang: string): LanguageContent {
   // preview keeps everything so stubs remain visible for editing.
   const liveBase = <T,>(arr: T[]): T[] => isPreview() ? arr : arr.filter((e) => {
     if (!isPlaceholderEntity(e)) return true;
-    const publishAt = (e as { publishAt?: unknown }).publishAt;
-    const stamp = typeof publishAt === 'string' ? Date.parse(publishAt) : NaN;
+    const entry = e as { draft?: unknown; publishAt?: unknown };
+    if (entry.draft === false || !Object.prototype.hasOwnProperty.call(entry, 'draft')) return true;
+    const stamp = typeof entry.publishAt === 'string' ? Date.parse(entry.publishAt) : NaN;
     return Number.isFinite(stamp) && stamp <= Date.now();
   });
 
