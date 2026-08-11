@@ -323,16 +323,21 @@
                   <p class="card-desc">Здесь собираются пять карточек для главной. Выберите фото, добавьте подпись и короткое описание, затем нажмите «Опубликовать».</p>
                 </div>
                 <div class="homepage-admin-actions">
-                  <button id="homepageLoadLatestBtn" class="btn" type="button"><span class="btn-label">Загрузить текущие</span></button>
                   <button id="homepageAddBtn" class="btn btn-primary" type="button"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span class="btn-label">Новое фото</span></button>
-                  <button id="homepageFillBtn" class="btn" type="button"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.6 5.2L19 10l-5.4 1.8L12 17l-1.6-5.2L5 10l5.4-1.8L12 3Z"></path><path d="m19 15 .7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7L19 15Z"></path></svg><span class="btn-label">Дозаполнить пустые</span></button>
-                  <button id="homepageInheritBtn" class="btn" type="button"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13"></path><path d="m13 6 6 6-6 6"></path><path d="M5 6v12"></path></svg><span class="btn-label">Заполнить наследуемые поля</span></button>
-                  <button id="homepageOpenEditorBtn" class="btn" type="button">Полный редактор</button>
-                  <button id="homepageComplexityToggle" class="btn" type="button" aria-controls="tab-homepage" aria-expanded="false">Все настройки</button>
-                  <a class="btn" href="../" target="_blank" rel="noreferrer"><span class="btn-label">Открыть сайт</span><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5"></path><path d="M10 14 19 5"></path><path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4"></path></svg></a>
                   <button id="homepagePublishBtn" class="btn btn-primary" type="button">Опубликовать</button>
                 </div>
               </div>
+              <details class="homepage-secondary-tools">
+                <summary>Настройки и служебные действия</summary>
+                <div class="homepage-secondary-tools-actions">
+                  <button id="homepageLoadLatestBtn" class="btn btn-sm" type="button">Загрузить текущую версию</button>
+                  <button id="homepageFillBtn" class="btn btn-sm" type="button">Дозаполнить пустые категории</button>
+                  <button id="homepageInheritBtn" class="btn btn-sm" type="button">Заполнить наследуемые поля</button>
+                  <button id="homepageComplexityToggle" class="btn btn-sm" type="button" aria-controls="tab-homepage" aria-expanded="false">Показать расширенные настройки</button>
+                  <a class="btn btn-sm" href="../" target="_blank" rel="noreferrer">Открыть сайт ↗</a>
+                </div>
+                <p>Эти действия не нужны для обычной замены фото: выберите карточку ниже, отредактируйте её и опубликуйте подборку.</p>
+              </details>
               <section class="homepage-published-now" aria-labelledby="homepagePublishedTitle">
                 <div class="homepage-published-head">
                   <div><span class="homepage-admin-kicker">ЧТО ВИДЯТ ЧИТАТЕЛИ СЕЙЧАС</span><h3 id="homepagePublishedTitle">Опубликовано на главной</h3><p>Это текущий снимок с VPS. Нажмите «Редактировать карточку», чтобы изменить одно фото для следующей недели.</p></div>
