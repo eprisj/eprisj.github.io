@@ -8800,6 +8800,189 @@ function bindStudioMediaActions() {
     refreshVisualEditor();
   }
 
+  // A homepage card is a photo, not an article. Keep its quick edit flow
+  // separate from the full content editor so the published overview leads to
+  // one clear, safe form.
+  function homepageDraftForCard(itemId = null) {
+    let data = readContent();
+    const remoteHasCards = homepagePublishedData && homepagePhotoItems(homepagePublishedData).length > 0;
+    const localHasRequested = itemId == null || Array.isArray(data?.items) && data.items.some((item) => String(item.id) === String(itemId));
+    if (remoteHasCards && (!data || homepagePhotoItems(data).length === 0 || !localHasRequested)) {
+      setEditorData(deepClone(homepagePublishedData), { markSynced: true, clearDraft: true });
+      data = readContent();
+    }
+    return data;
+  }
+
+  function homepageCardField(id) {
+    return document.getElementById(id);
+  }
+
+  function renderHomepageCardImagePreview(url) {
+    const preview = homepageCardField('homepageCardImagePreview');
+    if (!preview) return;
+    const normalized = String(url || '').trim();
+    preview.innerHTML = normalized
+      ? `<img src="${esc(normalized)}" alt="Предпросмотр выбранного фото">`
+      : '<span>Фото не выбрано</span>';
+  }
+
+  function closeHomepageCardEditor() {
+    const modal = homepageCardField('homepageCardEditor');
+    if (modal) modal.hidden = true;
+    homepageCardEditId = null;
+    homepageCardEditCategory = null;
+  }
+
+  function openHomepageCardEditor(itemId = null, categoryId = null) {
+    let data = homepageDraftForCard(itemId);
+    if (!data) {
+      showToast?.('error', 'Сначала загрузите актуальный контент.');
+      return;
+    }
+    if (!Array.isArray(data.items)) data.items = [];
+    let item = itemId == null ? null : data.items.find((entry) => String(entry.id) === String(itemId));
+    const isNew = !item;
+    if (!item) {
+      const nextId = getNextEntryId(data, 'items');
+      item = createDefaultEntry('items', nextId);
+      item.title = '';
+      item.subtitle = '';
+      item.description = '';
+      item.homeTitle = '';
+      item.homeSubtitle = '';
+      item.homeDescription = '';
+      item.homeCategory = categoryId ? String(categoryId) : '';
+      item.imageUrl = '';
+      delete item.imageSeed;
+    }
+    homepageCardEditId = String(item.id);
+    homepageCardEditCategory = String(categoryId || item.homeCategory || '');
+    const modal = homepageCardField('homepageCardEditor');
+    const title = homepageCardField('homepageCardEditorTitle');
+    const category = homepageCardField('homepageCardCategory');
+    const categoryOptions = homepageCategories(data).map((candidate) => `<option value="${esc(candidate.id)}" ${candidate.id === homepageCardEditCategory ? 'selected' : ''}>${esc(candidate.label)}</option>`).join('');
+    if (category) category.innerHTML = categoryOptions;
+    if (title) title.textContent = isNew ? 'Добавить фото в Pics of the week' : `Редактировать фото #${item.id}`;
+    const values = {
+      homepageCardTitle: item.homeTitle || item.title || '',
+      homepageCardSubtitle: item.homeSubtitle || item.subtitle || '',
+      homepageCardDescription: item.homeDescription || item.description || '',
+      homepageCardCredit: item.homeCredit || '',
+      homepageCardSourceUrl: item.homeSourceUrl || '',
+      homepageCardImageUrl: item.imageUrl || '',
+    };
+    Object.entries(values).forEach(([id, value]) => { const input = homepageCardField(id); if (input) input.value = value; });
+    const meta = homepageCardField('homepageCardEditorMeta');
+    if (meta) meta.textContent = `${item.homeCategory || homepageCardEditCategory || 'Без категории'} · ${isNew ? 'новый слот' : `ID ${item.id}`}`;
+    renderHomepageCardImagePreview(values.homepageCardImageUrl);
+    const status = homepageCardField('homepageCardEditorStatus');
+    if (status) status.textContent = 'Изменения пока не сохранены.';
+    if (modal) {
+      modal.hidden = false;
+      requestAnimationFrame(() => homepageCardField('homepageCardTitle')?.focus());
+    }
+  }
+
+  function collectHomepageCardDraft() {
+    const data = readContent();
+    if (!data || !Array.isArray(data.items)) return null;
+    const category = String(homepageCardField('homepageCardCategory')?.value || homepageCardEditCategory || '').trim();
+    const title = String(homepageCardField('homepageCardTitle')?.value || '').trim();
+    const subtitle = String(homepageCardField('homepageCardSubtitle')?.value || '').trim();
+    const description = String(homepageCardField('homepageCardDescription')?.value || '').trim();
+    const imageUrl = String(homepageCardField('homepageCardImageUrl')?.value || '').trim();
+    let item = data.items.find((entry) => String(entry.id) === String(homepageCardEditId));
+    if (!item) {
+      item = createDefaultEntry('items', getNextEntryId(data, 'items'));
+      data.items.push(item);
+      homepageCardEditId = String(item.id);
+    }
+    item.homeCategory = category || undefined;
+    item.homeTitle = title || undefined;
+    item.homeSubtitle = subtitle || undefined;
+    item.homeDescription = description || undefined;
+    item.homeCredit = String(homepageCardField('homepageCardCredit')?.value || '').trim() || undefined;
+    item.homeSourceUrl = String(homepageCardField('homepageCardSourceUrl')?.value || '').trim() || undefined;
+    item.imageUrl = imageUrl || undefined;
+    if (imageUrl) delete item.imageSeed;
+    if (!String(item.title || '').trim() && title) item.title = title;
+    if (!String(item.subtitle || '').trim() && subtitle) item.subtitle = subtitle;
+    if (!String(item.description || '').trim() && description) item.description = description;
+    inheritHomepageFields(item);
+    return { data, item };
+  }
+
+  function saveHomepageCardDraft({ close = true } = {}) {
+    const result = collectHomepageCardDraft();
+    if (!result) {
+      showToast?.('error', 'Не удалось сохранить карточку: контент не загружен.');
+      return null;
+    }
+    setEditorData(result.data);
+    renderHomepageTab();
+    scheduleHomepageAutoPublish();
+    const status = homepageCardField('homepageCardEditorStatus');
+    if (status) status.textContent = 'Сохранено в черновик главной. Публичная версия изменится после «Опубликовать».';
+    showToast?.('success', 'Карточка сохранена в черновик главной. Проверьте превью и нажмите «Опубликовать».');
+    if (close) closeHomepageCardEditor();
+    return result;
+  }
+
+  async function syncHomepageCardLanguages() {
+    const result = saveHomepageCardDraft({ close: false });
+    if (!result) return;
+    const button = homepageCardField('homepageCardEditorSync');
+    const status = homepageCardField('homepageCardEditorStatus');
+    if (button) { button.disabled = true; button.textContent = 'Синхронизирую…'; }
+    if (status) status.textContent = 'Перевожу подпись и описание на 7 языков…';
+    try {
+      await translateEntryToAllLanguages(result.data, 'items', DEFAULT_LANGUAGE, result.item, { statusPrefix: 'Синхронизация карточки' });
+      setEditorData(result.data);
+      renderHomepageTab();
+      if (status) status.textContent = '7 языков обновлены в черновике. Теперь нажмите «Опубликовать».';
+      showToast?.('success', 'Карточка синхронизирована на 7 языков.');
+    } catch (error) {
+      if (status) status.textContent = `Синхронизация не завершена: ${getErrorMessage(error)}`;
+      showToast?.('error', `Не удалось синхронизировать карточку: ${getErrorMessage(error)}`);
+    } finally {
+      if (button) { button.disabled = false; button.textContent = 'Синхронизировать 7 языков'; }
+    }
+  }
+
+  function bindHomepageCardEditor() {
+    homepageCardField('homepageCardEditorClose')?.addEventListener('click', closeHomepageCardEditor);
+    homepageCardField('homepageCardEditorCancel')?.addEventListener('click', closeHomepageCardEditor);
+    homepageCardField('homepageCardEditorApply')?.addEventListener('click', () => saveHomepageCardDraft());
+    homepageCardField('homepageCardEditorSync')?.addEventListener('click', syncHomepageCardLanguages);
+    homepageCardField('homepageCardImageUrl')?.addEventListener('input', (event) => renderHomepageCardImagePreview(event.target.value));
+    const uploadButton = homepageCardField('homepageCardUploadBtn');
+    const fileInput = homepageCardField('homepageCardFileInput');
+    uploadButton?.addEventListener('click', () => fileInput?.click());
+    fileInput?.addEventListener('change', async () => {
+      const file = fileInput.files?.[0];
+      if (!file) return;
+      uploadButton.disabled = true;
+      uploadButton.textContent = 'Загружаю…';
+      try {
+        const url = await uploadImageReturnUrl(file);
+        const input = homepageCardField('homepageCardImageUrl');
+        if (input) { input.value = url; renderHomepageCardImagePreview(url); }
+        const status = homepageCardField('homepageCardEditorStatus');
+        if (status) status.textContent = 'Фото загружено. Нажмите «Сохранить карточку».';
+      } catch (error) {
+        showToast?.('error', getErrorMessage(error));
+      } finally {
+        uploadButton.disabled = false;
+        uploadButton.textContent = 'Загрузить файл';
+        fileInput.value = '';
+      }
+    });
+    homepageCardField('homepageCardEditor')?.addEventListener('click', (event) => {
+      if (event.target.id === 'homepageCardEditor') closeHomepageCardEditor();
+    });
+  }
+
   const DEFAULT_HOME_CATEGORIES = [
     { id: 'sculpture', label: 'Sculpture', matches: ['sculpture', 'sculptural', 'statue', 'object', 'installation', 'ceramic', 'vase'] },
     { id: 'painting', label: 'Painting', matches: ['painting', 'paint', 'canvas', 'portrait', 'art', 'culture', 'history', 'restoration'] },
@@ -8825,6 +9008,8 @@ function bindStudioMediaActions() {
   let homepageArticlesSyncBusy = false;
   let pendingRemoteHomepageData = null;
   let homepagePublishedData = null;
+  let homepageCardEditId = null;
+  let homepageCardEditCategory = null;
 
   const HOMEPAGE_SECTION_DEFS = [
     { id: 'pics', label: 'Pics of the week', hint: 'Пять категорий изображений, центральный кадр и подписи.' },
@@ -9023,7 +9208,7 @@ function bindStudioMediaActions() {
     if (metaEl) metaEl.textContent = source === 'vps' ? `VPS · ${filled} / ${groups.length} слотов` : `Черновик редактора · ${filled} / ${groups.length}`;
     cardsEl.innerHTML = groups.map((group) => {
       const item = group.items[0];
-      const image = item?.imageUrl || item?.imageSeed || '';
+      const image = item?.imageUrl || '';
       return `<article class="homepage-published-card${item ? '' : ' is-empty'}">
         <div class="homepage-published-card-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : '<span>Слот пуст</span>'}</div>
         <span class="homepage-published-card-category">${esc(group.label)}</span>
@@ -9033,7 +9218,7 @@ function bindStudioMediaActions() {
       </article>`;
     }).join('');
     cardsEl.querySelectorAll('[data-home-published-edit]').forEach((button) => button.addEventListener('click', () => {
-      openGalleryEditor(button.dataset.homePublishedEdit || null, button.dataset.homePublishedCategory || null);
+      openHomepageCardEditor(button.dataset.homePublishedEdit || null, button.dataset.homePublishedCategory || null);
     }));
   }
 
@@ -9553,10 +9738,9 @@ function bindStudioMediaActions() {
       </article>`;
     }).join('');
     preview.querySelectorAll('[data-home-category]').forEach((select) => select.addEventListener('change', () => setHomepageCategory(select.dataset.homeCategory, select.value)));
-    preview.querySelectorAll('[data-home-edit-slot]').forEach((button) => button.addEventListener('click', () => openGalleryEditor(button.dataset.homeEditSlot)));
+    preview.querySelectorAll('[data-home-edit-slot]').forEach((button) => button.addEventListener('click', () => openHomepageCardEditor(button.dataset.homeEditSlot)));
     preview.querySelectorAll('[data-home-add-slot]').forEach((button) => button.addEventListener('click', () => {
-      openGalleryEditor(null, button.dataset.homeAddSlot);
-      setTimeout(() => addEntryBtn?.click(), 80);
+      openHomepageCardEditor(null, button.dataset.homeAddSlot);
     }));
     renderHomepageCategoryEditor(data);
     const auditMessages = [...audit.errors, ...audit.warnings];
@@ -9646,7 +9830,7 @@ function bindStudioMediaActions() {
       </article>`;
     }).join('');
     list.querySelectorAll('[data-home-edit]').forEach((button) =>
-      button.addEventListener('click', () => openGalleryEditor(button.getAttribute('data-home-edit'))));
+      button.addEventListener('click', () => openHomepageCardEditor(button.getAttribute('data-home-edit'))));
     list.querySelectorAll('[data-home-up]').forEach((button) =>
       button.addEventListener('click', () => moveItem(button.getAttribute('data-home-up'), -1)));
     list.querySelectorAll('[data-home-down]').forEach((button) =>
@@ -9728,10 +9912,7 @@ function bindStudioMediaActions() {
     const root = document.querySelector('#tab-homepage .homepage-admin-layout');
     setHomepageSimpleMode(!root?.classList.contains('is-simple'));
   });
-  document.getElementById('homepageAddBtn')?.addEventListener('click', () => {
-    openGalleryEditor(null);
-    setTimeout(() => addEntryBtn?.click(), 80);
-  });
+  document.getElementById('homepageAddBtn')?.addEventListener('click', () => openHomepageCardEditor(null));
   document.getElementById('homepageFillBtn')?.addEventListener('click', fillEmptyHomepageSlots);
   document.getElementById('homepageInheritBtn')?.addEventListener('click', inheritEmptyHomepageFields);
   document.getElementById('homepagePublishBtn')?.addEventListener('click', publishHomepage);
@@ -9874,6 +10055,7 @@ function bindStudioMediaActions() {
     pendingRemoteHomepageData = null;
     setHomepageRemoteNotice('Свежая версия VPS загружена. Локальный черновик заменён по вашему выбору.', 'ok', true);
   });
+  bindHomepageCardEditor();
   restartHomepageRefreshTimer();
   setHomepageSimpleMode(readHomepageUiPrefs().simple, { persist: false });
   window._homepageCategories = homepageCategories;

@@ -335,10 +335,50 @@
               </div>
               <section class="homepage-published-now" aria-labelledby="homepagePublishedTitle">
                 <div class="homepage-published-head">
-                  <div><span class="homepage-admin-kicker">ЧТО ВИДЯТ ЧИТАТЕЛИ СЕЙЧАС</span><h3 id="homepagePublishedTitle">Опубликовано на главной</h3><p>Это текущий снимок с VPS — пять активных слотов Pics of the week. Нажмите «Изменить», чтобы подготовить следующую неделю.</p></div>
+                  <div><span class="homepage-admin-kicker">ЧТО ВИДЯТ ЧИТАТЕЛИ СЕЙЧАС</span><h3 id="homepagePublishedTitle">Опубликовано на главной</h3><p>Это текущий снимок с VPS. Нажмите «Редактировать карточку», чтобы изменить одно фото для следующей недели.</p></div>
                   <span id="homepagePublishedMeta" class="homepage-preview-badge">Проверяю VPS…</span>
                 </div>
                 <div id="homepagePublishedCards" class="homepage-published-cards" aria-live="polite"></div>
+              </section>
+              <section id="homepageCardEditor" class="homepage-card-editor" hidden aria-labelledby="homepageCardEditorTitle">
+                <div class="homepage-card-editor-dialog">
+                <div class="homepage-card-editor-head">
+                  <div>
+                    <span class="homepage-admin-kicker">КАРТОЧКА ФОТО · НЕ СТАТЬЯ</span>
+                    <h3 id="homepageCardEditorTitle">Редактор фото</h3>
+                    <p>Здесь меняются только изображение и подпись Pics of the week. Сохранение отправляет изменения в черновик главной.</p>
+                  </div>
+                  <button id="homepageCardEditorClose" class="homepage-card-editor-close" type="button" aria-label="Закрыть редактор">×</button>
+                </div>
+                <div class="homepage-card-editor-grid">
+                  <div class="homepage-card-editor-preview">
+                    <div id="homepageCardImagePreview" class="homepage-card-editor-image"><span>Фото не выбрано</span></div>
+                    <div id="homepageCardEditorMeta" class="homepage-card-editor-preview-meta"></div>
+                  </div>
+                  <div class="homepage-card-editor-fields">
+                    <label class="homepage-field"><span>Категория</span><select id="homepageCardCategory"></select></label>
+                    <label class="homepage-field"><span>Название работы</span><input id="homepageCardTitle" type="text" placeholder="Например: Unique Forms of Continuity in Space"></label>
+                    <label class="homepage-field"><span>Короткая строка</span><input id="homepageCardSubtitle" type="text" placeholder="Автор · год · материал"></label>
+                    <label class="homepage-field homepage-card-editor-wide"><span>Краткое описание под фото</span><textarea id="homepageCardDescription" rows="4" placeholder="Одно-два предложения именно об изображении, не текст статьи."></textarea></label>
+                    <label class="homepage-field"><span>Автор / источник</span><input id="homepageCardCredit" type="text" placeholder="Artist · museum / archive"></label>
+                    <label class="homepage-field"><span>Ссылка на источник</span><input id="homepageCardSourceUrl" type="url" placeholder="https://…"></label>
+                    <label class="homepage-field homepage-card-editor-wide"><span>URL изображения</span><input id="homepageCardImageUrl" type="url" placeholder="https://… или /images/…"></label>
+                    <div class="homepage-card-editor-upload homepage-card-editor-wide">
+                      <button id="homepageCardUploadBtn" class="btn btn-sm" type="button">Загрузить файл</button>
+                      <input id="homepageCardFileInput" type="file" accept="image/*" hidden>
+                      <span>JPG, PNG или WebP · файл автоматически сжимается перед загрузкой</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="homepage-card-editor-foot">
+                  <span id="homepageCardEditorStatus" class="homepage-card-editor-status" role="status" aria-live="polite">Изменения пока не сохранены.</span>
+                  <div class="homepage-card-editor-actions">
+                    <button id="homepageCardEditorCancel" class="btn btn-sm" type="button">Отмена</button>
+                    <button id="homepageCardEditorSync" class="btn btn-sm" type="button">Синхронизировать 7 языков</button>
+                    <button id="homepageCardEditorApply" class="btn btn-primary" type="button">Сохранить карточку</button>
+                  </div>
+                </div>
+                </div>
               </section>
               <section class="homepage-publishing-flow" aria-labelledby="homepageFlowTitle">
                 <div class="homepage-publishing-flow-copy"><span class="homepage-admin-kicker">СЛЕДУЮЩАЯ НЕДЕЛЯ</span><h3 id="homepageFlowTitle">Как выпустить новую подборку</h3><p>Новая публикация не стирает предыдущую: после «Опубликовать» текущие пять карточек автоматически попадают в Daily picks archive.</p></div>
@@ -475,8 +515,8 @@
                   <div class="homepage-section-head">
                     <div>
                       <span class="homepage-admin-kicker">Карточки на главной</span>
-                      <h3 id="homepageComposerTitle" class="card-title">Pics of the week</h3>
-                      <p class="card-desc">По одной карточке на направление. Пустые карточки можно заполнить позже.</p>
+                      <h3 id="homepageComposerTitle" class="card-title">Подготовка следующей недели</h3>
+                      <p class="card-desc">Здесь собирается будущая подборка из пяти фото. Опубликованная версия выше не изменится, пока вы не нажмёте «Опубликовать».</p>
                     </div>
                     <span class="homepage-preview-badge">Вид на главной</span>
                   </div>
