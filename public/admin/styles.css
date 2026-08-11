@@ -6273,6 +6273,195 @@ body.busy::after {
   .wys-article > *:not(.wys-hero), .wys-canvas.mobile .wys-article > *:not(.wys-hero) { padding-left: 15px; padding-right: 15px; }
 }
 
+/* ══════════════════════════════════════════════════════════════════════════
+   ONE CALM EDITOR
+   Articles and reviews no longer reveal a second, unrelated form below the
+   page. The page itself is the writing surface; controls appear only when
+   useful, and advanced actions stay in Settings / the contextual block menu.
+   ══════════════════════════════════════════════════════════════════════════ */
+#tab-content.is-live-editor #overviewStrip,
+#tab-content.is-live-editor .creator-studio-wrap,
+#tab-content.is-live-editor .editor-split,
+#tab-content.is-live-editor .command-center,
+#tab-content.is-live-editor .editorial-workbench-grid,
+#tab-content.is-live-editor #stats {
+  display: none !important;
+}
+
+#tab-content.is-live-editor .toolbar-buttons {
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+#tab-content.is-live-editor .toolbar-buttons .toolbar-sync-panel,
+#tab-content.is-live-editor .toolbar-buttons .toolbar-sep,
+#tab-content.is-live-editor #wysToggleBtn,
+#tab-content.is-live-editor #moveEntryUpBtn,
+#tab-content.is-live-editor #moveEntryDownBtn,
+#tab-content.is-live-editor #duplicateEntryBtn,
+#tab-content.is-live-editor #deleteEntryBtn,
+#tab-content.is-live-editor #togglePreviewBtn,
+#tab-content.is-live-editor #applyEntryBtn {
+  display: none !important;
+}
+
+#tab-content.is-live-editor #addEntryBtn,
+#tab-content.is-live-editor #saveEntryBtn {
+  min-height: 40px;
+  padding-inline: 15px;
+}
+
+.wys-shell { margin-top: 4px; }
+.wys-bar {
+  position: sticky;
+  top: 8px;
+  z-index: 35;
+  min-height: 58px;
+  margin: 0 auto 18px;
+  padding: 10px 14px;
+  border-color: color-mix(in srgb, var(--line-strong) 72%, transparent);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--bg-card) 94%, transparent);
+  box-shadow: 0 10px 28px rgba(49, 24, 31, .08);
+  backdrop-filter: blur(14px);
+}
+.wys-bar-left { min-width: 0; gap: 9px; }
+.wys-bar-right { gap: 5px; }
+.wys-bar-right .btn { min-height: 36px; }
+.wys-bar-right #wysUndoBtn,
+.wys-bar-right #wysRedoBtn,
+.wys-bar-right #wysDeviceBtn,
+.wys-bar-right #revUndoBtn,
+.wys-bar-right #revRedoBtn { width: 36px; padding: 0; justify-content: center; }
+.wys-live-badge { color: var(--text); letter-spacing: .08em; }
+.wys-live-dot { width: 6px; height: 6px; box-shadow: none; animation: none; }
+.wys-editor-hint { color: var(--text-muted); font-family: var(--font-body); font-size: .78rem; white-space: nowrap; }
+.wys-save-state { margin-left: auto; padding-left: 9px; border-left: 1px solid var(--line); white-space: nowrap; }
+
+.wys-scroll { padding-bottom: 84px; }
+.wys-canvas {
+  max-width: 820px;
+  overflow: hidden;
+  border-color: color-mix(in srgb, var(--line-strong) 62%, transparent);
+  border-radius: 14px;
+  box-shadow: 0 18px 54px rgba(49, 24, 31, .09);
+}
+.wys-canvas.mobile { max-width: 414px; }
+.wys-hero { background: #f3efea; }
+.wys-hero-edit { border-radius: 4px; }
+.wys-article > *:not(.wys-hero) { padding-left: 56px; padding-right: 56px; }
+.wys-meta { margin-top: 30px; }
+.wys-kicker { margin-top: 17px; }
+.wys-title { margin-top: 10px; }
+.wys-excerpt { max-width: 680px; }
+
+/* Editing affordances are quiet until the user points at the exact passage. */
+.wys-ce:hover, .wys-rt:hover { background: color-mix(in srgb, var(--accent-soft) 55%, transparent); }
+.wys-ce:focus, .wys-rt:focus { box-shadow: inset 0 -1px 0 var(--accent); background: color-mix(in srgb, var(--accent-soft) 72%, transparent); }
+.wys-block { margin-inline: -10px; padding-inline: 10px; }
+.wys-block:hover { background: transparent; }
+.wys-block:focus-within { background: color-mix(in srgb, var(--accent-soft) 22%, transparent); }
+.wys-bc { top: -9px; right: 7px; border-color: var(--line); box-shadow: 0 5px 16px rgba(49, 24, 31, .10); }
+.wys-bc-drag { left: -8px; background: var(--bg-card); border-color: var(--line); }
+.wys-insert { height: 18px; }
+.wys-insert-btn { width: 28px; height: 28px; border-radius: 5px; }
+
+/* Reviews use the same editorial surface. The "add" palette is deliberately
+   folded away until needed instead of taking over the entire top of the page. */
+#revWysShell .wys-scroll { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+#revWysShell .wys-canvas { width: min(100%, 820px); margin: 0; }
+.review-block-toolbar {
+  position: static;
+  display: block;
+  width: min(100%, 820px);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.review-block-toolbar > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 40px;
+  padding: 0 13px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--bg-card);
+  color: var(--text);
+  cursor: pointer;
+  list-style: none;
+}
+.review-block-toolbar > summary::-webkit-details-marker { display: none; }
+.review-block-toolbar > summary::before { content: '+'; color: var(--accent); font-size: 1rem; }
+.review-block-toolbar[open] > summary { border-color: var(--accent); background: var(--accent-soft); }
+.review-block-toolbar-kicker { margin: 0; font-size: .54rem; }
+.review-block-toolbar > summary strong { font-family: var(--font-mono); font-size: .63rem; text-transform: uppercase; letter-spacing: .06em; }
+.review-block-toolbar-group {
+  display: inline-flex;
+  margin-top: 8px;
+  padding: 7px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg-card);
+}
+.review-block-toolbar-group + .review-block-toolbar-group { margin-left: 6px; padding-left: 7px; border-left: 1px solid var(--line); }
+.review-block-toolbar button { min-height: 38px; }
+.review-structure-btn {
+  display: block;
+  width: max-content;
+  margin-top: 8px;
+  padding: 0 12px;
+}
+.wys-review-block {
+  margin: 18px 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.wys-review-block:focus-within { box-shadow: none; }
+.wys-review-block-controls {
+  min-height: 26px;
+  margin: 0 0 6px;
+  padding: 0 2px 5px;
+  border-bottom: 1px solid transparent;
+  opacity: 0;
+  transition: opacity .16s ease, border-color .16s ease;
+}
+.wys-review-block:hover .wys-review-block-controls,
+.wys-review-block:focus-within .wys-review-block-controls { opacity: 1; border-color: var(--line); }
+
+@media (max-width: 760px) {
+  #tab-content.is-live-editor .toolbar-buttons { overflow: visible; }
+  #tab-content.is-live-editor #addEntryBtn,
+  #tab-content.is-live-editor #saveEntryBtn { flex: 1 1 auto; justify-content: center; }
+  .wys-bar { top: 5px; margin-bottom: 12px; padding: 10px; }
+  .wys-bar-left { flex-wrap: wrap; gap: 5px 8px; }
+  .wys-editor-hint { display: none; }
+  .wys-save-state { margin-left: 0; padding-left: 0; border-left: 0; }
+  .wys-bar-right { overflow: visible; }
+  .wys-bar-right .btn { min-height: 42px; }
+  .wys-canvas, .wys-canvas.mobile { max-width: 100%; border-radius: 10px; }
+  .wys-article > *:not(.wys-hero), .wys-canvas.mobile .wys-article > *:not(.wys-hero) { padding-left: 22px; padding-right: 22px; }
+  .wys-hero { aspect-ratio: 4 / 3; }
+  #revWysShell .wys-scroll { align-items: stretch; }
+  .review-block-toolbar { width: 100%; }
+  .review-block-toolbar-group { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; gap: 6px; }
+  .review-block-toolbar-group + .review-block-toolbar-group { margin-left: 0; border-left: 1px solid var(--line); }
+  .review-block-toolbar button { justify-content: center; min-height: 42px; padding-inline: 8px; }
+  .review-structure-btn { width: 100%; }
+  .wys-review-block-controls { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wys-shell *, .wys-shell *::before, .wys-shell *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
 /* ── Media metadata + public site controls ─────────────────────────────── */
 .block-media-meta-grid,
 .wys-media-details-grid,
