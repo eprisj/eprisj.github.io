@@ -2670,9 +2670,9 @@ function updateAdminToolbarContext() {
   // “Add” was easy to miss and, worse, made it unclear whether it added a
   // block, a translation, a photo, or an entirely new article.
   const createAction = {
-    articles: { label: '+ Создать статью', title: 'Создать черновик сразу; перевод запускается при сохранении' },
-    reviews: { label: '+ Создать обзор', title: 'Создать черновик сразу; перевод запускается при сохранении' },
-    items: { label: '+ Добавить фото', title: 'Создать карточку сразу; перевод запускается при сохранении' },
+    articles: { label: '+ Создать статью', title: 'Создать новый материал как черновик; переводы запускаются отдельно' },
+    reviews: { label: '+ Создать обзор', title: 'Создать новый обзор как черновик; переводы запускаются отдельно' },
+    items: { label: '+ Добавить фото', title: 'Создать карточку как черновик; переводы запускаются отдельно' },
     libraryItems: { label: '+ Добавить файл', title: 'Создать запись сразу; перевод запускается при сохранении' }
   }[section] || { label: '+ Создать запись', title: 'Создать новую запись как черновик' };
   if (addEntryBtn) {
@@ -2682,21 +2682,13 @@ function updateAdminToolbarContext() {
   const sourceLang = visualLangSelect.value || DEFAULT_LANGUAGE;
   const targetLangs = getTranslationLanguages(data).filter((lang) => lang !== sourceLang);
   if (languageSyncScope) {
-    languageSyncScope.textContent = section === 'articles'
-      ? `${sourceLang} → ${targetLangs.length} языков`
-      : 'Авто при сохранении';
-    languageSyncScope.title = section === 'articles'
-      ? `При сохранении ${sourceLang} обновятся: ${targetLangs.join(', ')}`
-      : 'Недостающие языковые версии будут созданы автоматически.';
+    languageSyncScope.textContent = `${sourceLang} → ${targetLangs.length} языков · отдельно`;
+    languageSyncScope.title = `Кнопка «Сохранить запись» сохраняет только ${sourceLang}. Для переводов нажмите «Синхронизировать».`;
   }
 
   if (saveEntryBtnText) {
-    saveEntryBtnText.textContent = section === 'articles'
-      ? `Сохранить + ${targetLangs.length} языков`
-      : 'Сохранить запись';
-    saveEntryBtn.title = section === 'articles'
-      ? `Сохранить источник ${sourceLang}, обновить ${targetLangs.join(', ')} и сразу опубликовать на VPS`
-      : 'Сохранить эту запись на VPS';
+    saveEntryBtnText.textContent = 'Сохранить запись';
+    saveEntryBtn.title = `Сохранить только текущий язык (${sourceLang}) на VPS`;
   }
 
   const articles = Array.isArray(data.articles) ? data.articles : [];
@@ -4889,7 +4881,7 @@ function showLanguageSyncReport({ selectedId, section, sourceLang, savedToServer
   const updated = Array.isArray(syncResult) ? syncResult : [];
   const failures = getLanguageSyncFailures(syncResult);
   const nextStep = translationDeferred
-    ? 'Исходная запись уже сохранена на VPS. Когда текст готов, нажмите «Синхронизировать» — тогда будут созданы и сохранены все языковые версии.'
+    ? 'Сохранение завершено: текущий язык отправлен на VPS. Переводы не запускались — при готовности отдельно нажмите «Синхронизировать».'
     : failures.length
     ? 'Часть языков не обновилась. Откройте язык из списка, проверьте текст и повторите «Синхронизировать».'
     : (savedToServer
@@ -4939,7 +4931,7 @@ async function saveCurrentEntryOnly() {
     const syncedLangs = [];
     pendingVisualEntryId = selectedId;
     setEditorData(data, { markSynced: true });
-    const syncNote = ' Переводы не создаются автоматически: когда исходник готов, нажмите «Синхронизировать» для 7 языков.';
+    const syncNote = ' Переводы не запускались — для них используйте отдельную кнопку «Синхронизировать».';
     setStatus('success', `Запись #${selectedId} сохранена на VPS (${getSectionLabel(section)} / ${lang}).${syncNote}`);
     showLanguageSyncReport({
       selectedId,
