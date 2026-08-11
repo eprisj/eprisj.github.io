@@ -1311,15 +1311,18 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
   const compactCards = picsLayout.cardStyle === 'compact';
   const picksMode = picsSettings.mode === 'auto' ? 'auto' : 'manual';
   const useLifo = picsSettings.ordering !== 'manual';
+  // Pics of the week is photo-only: a draft/placeholder record without a
+  // real uploaded file must never become a broken public card.
+  const publishedPhotoItems = items.filter((item) => Boolean(String(item.imageUrl || '').trim()));
   const orderedItems = picksMode === 'auto' || useLifo
-    ? [...items].sort((a, b) => {
+    ? [...publishedPhotoItems].sort((a, b) => {
         const stamp = (value?: string) => {
           const parsed = value ? Date.parse(value) : Number.NaN;
           return Number.isFinite(parsed) ? parsed : 0;
         };
         return stamp(b.updatedAt || b.publishAt) - stamp(a.updatedAt || a.publishAt) || b.id - a.id;
       })
-    : items;
+    : publishedPhotoItems;
   const configuredCategories = Array.isArray(picsSettings.categories) ? picsSettings.categories : [];
   const categories = [...configuredCategories, ...DEFAULT_HOMEPAGE_PICS_CATEGORIES]
     .filter((category, index, all) => category && category.id && all.findIndex((candidate) => candidate?.id === category.id) === index)
