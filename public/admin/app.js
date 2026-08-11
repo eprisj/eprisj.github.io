@@ -3875,11 +3875,12 @@ async function createArticleFromBlueprint(kind) {
     const entries = getSectionArray(data, 'articles', sourceLang, sourceLang !== DEFAULT_LANGUAGE);
     const nextId = getNextEntryId(data, 'articles');
     const baseArticle = buildArticleBlueprint(kind, nextId);
-    let sourceArticle = baseArticle;
+    const sourceArticle = baseArticle;
 
+    // A blueprint must appear immediately. Translating an empty template into
+    // six locales used to make this button wait for a long chain of AI calls.
+    // The editor will translate the actual text explicitly on first save.
     if (sourceLang !== DEFAULT_LANGUAGE) {
-      setStatus('info', `Готовлю шаблон на ${sourceLang}...`);
-      sourceArticle = await translateEntryForSection('articles', baseArticle, sourceLang, DEFAULT_LANGUAGE);
       const titleOverride = getCreatorInputValue(creatorTitleInput);
       const categoryOverride = getCreatorInputValue(creatorCategoryInput);
       if (titleOverride) sourceArticle.title = titleOverride;
@@ -3887,14 +3888,13 @@ async function createArticleFromBlueprint(kind) {
     }
 
     entries.push(sourceArticle);
-    setStatus('info', `Создаю языковые версии статьи #${nextId}...`);
-    const syncedLangs = await syncMissingEntryLanguages(data, 'articles', sourceLang, sourceArticle);
+    const seededLangs = seedMissingEntryLanguages(data, 'articles', sourceLang, sourceArticle);
     visualSectionSelect.value = 'articles';
     visualLangSelect.value = sourceLang;
     pendingVisualEntryId = nextId;
     setEditorData(data);
-    const syncNote = syncedLangs.length ? ` Языки: ${syncedLangs.join(', ')}.` : '';
-    setStatus('success', `Шаблон статьи #${nextId} создан. Для Pics of the week добавьте отдельное фото в разделе «Главная».${syncNote}`);
+    const localeNote = seededLangs.length ? ` Вкладки ${seededLangs.join(', ')} готовы; перевод появится при «Сохранить + 6 языков».` : '';
+    setStatus('success', `Шаблон статьи #${nextId} создан мгновенно как черновик.${localeNote}`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
@@ -3910,11 +3910,9 @@ async function createReviewFromBlueprint(kind) {
     const entries = getSectionArray(data, 'reviews', sourceLang, sourceLang !== DEFAULT_LANGUAGE);
     const nextId = getNextEntryId(data, 'reviews');
     const baseReview = buildReviewBlueprint(kind, nextId);
-    let sourceReview = baseReview;
+    const sourceReview = baseReview;
 
     if (sourceLang !== DEFAULT_LANGUAGE) {
-      setStatus('info', `Готовлю шаблон на ${sourceLang}...`);
-      sourceReview = await translateEntryForSection('reviews', baseReview, sourceLang, DEFAULT_LANGUAGE);
       const titleOverride = getCreatorInputValue(creatorTitleInput);
       const categoryOverride = getCreatorInputValue(creatorCategoryInput);
       if (titleOverride) sourceReview.title = titleOverride;
@@ -3922,15 +3920,14 @@ async function createReviewFromBlueprint(kind) {
     }
 
     entries.push(sourceReview);
-    setStatus('info', `Создаю языковые версии обзора #${nextId}...`);
-    const syncedLangs = await syncMissingEntryLanguages(data, 'reviews', sourceLang, sourceReview);
+    const seededLangs = seedMissingEntryLanguages(data, 'reviews', sourceLang, sourceReview);
 
     visualSectionSelect.value = 'reviews';
     visualLangSelect.value = sourceLang;
     pendingVisualEntryId = nextId;
     setEditorData(data);
-    const syncNote = syncedLangs.length ? ` Языки: ${syncedLangs.join(', ')}.` : '';
-    setStatus('success', `Шаблон обзора #${nextId} создан.${syncNote}`);
+    const localeNote = seededLangs.length ? ` Вкладки ${seededLangs.join(', ')} готовы; перевод появится при сохранении.` : '';
+    setStatus('success', `Шаблон обзора #${nextId} создан мгновенно как черновик.${localeNote}`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
@@ -4952,16 +4949,17 @@ async function duplicateVisualEntry() {
     const nextId = getNextEntryId(data, section);
     const duplicate = deepClone(entries[entryIndex]);
     duplicate.id = nextId;
+    duplicate.draft = true;
     if (typeof duplicate.title === 'string') {
       duplicate.title = `${duplicate.title} (копия)`;
     }
 
     entries.splice(entryIndex + 1, 0, duplicate);
-    const syncedLangs = await syncMissingEntryLanguages(data, section, lang, duplicate);
+    const seededLangs = seedMissingEntryLanguages(data, section, lang, duplicate);
     pendingVisualEntryId = nextId;
     setEditorData(data);
-    const syncNote = syncedLangs.length ? ` Языки: ${syncedLangs.join(', ')}.` : '';
-    setStatus('success', `Запись #${selectedId} дублирована в #${nextId}.${syncNote}`);
+    const localeNote = seededLangs.length ? ` Языковые вкладки подготовлены: ${seededLangs.join(', ')}.` : '';
+    setStatus('success', `Запись #${selectedId} дублирована в черновик #${nextId}.${localeNote}`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
@@ -5423,6 +5421,23 @@ function upsertEntryForLanguage(data, section, lang, entry) {
   } else {
     targetEntries.push(entry);
   }
+}
+
+// New drafts need a complete seven-language shape, but they do not need a
+// network translation before the editor can even open. Copying the draft into
+// the locale collections keeps every language path intact and defers AI work
+// until an editor actually has meaningful copy to translate.
+function seedMissingEntryLanguages(data, section, sourceLang, sourceEntry) {
+  const createdLangs = [];
+  const targetLangs = getTranslationLanguages(data).filter((lang) => lang !== sourceLang);
+
+  targetLangs.forEach((lang) => {
+    if (hasConcreteEntryForLanguage(data, section, lang, sourceEntry.id)) return;
+    upsertEntryForLanguage(data, section, lang, deepClone(sourceEntry));
+    createdLangs.push(lang);
+  });
+
+  return createdLangs;
 }
 
 async function syncMissingEntryLanguages(data, section, sourceLang, sourceEntry) {
@@ -6619,12 +6634,7 @@ async function addVisualEntry() {
     const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
     const entries = getSectionArray(data, section, lang, lang !== DEFAULT_LANGUAGE);
     const nextId = getNextEntryId(data, section);
-    let entry = { ...createDefaultEntry(section, nextId), draft: true };
-
-    if (lang !== DEFAULT_LANGUAGE) {
-      setStatus('info', `Готовлю новую запись на ${lang}...`);
-      entry = await translateEntryForSection(section, entry, lang, DEFAULT_LANGUAGE);
-    }
+    const entry = { ...createDefaultEntry(section, nextId), draft: true };
 
     if (section === 'items' && pendingHomepageCategory) {
       entry.homeCategory = pendingHomepageCategory;
@@ -6633,12 +6643,14 @@ async function addVisualEntry() {
     if (section === 'items') inheritHomepageFields(entry);
 
     entries.push(entry);
-    setStatus('info', `Создаю языковые версии записи #${nextId}...`);
-    const syncedLangs = await syncMissingEntryLanguages(data, section, lang, entry);
+    // Creation must never wait for six serial AI requests. We create safe
+    // local locale shells immediately; the real translation happens when the
+    // editor explicitly saves the filled-in entry.
+    const seededLangs = seedMissingEntryLanguages(data, section, lang, entry);
 
     pendingVisualEntryId = nextId;
     setEditorData(data);
-    const syncNote = syncedLangs.length ? ` Языки: ${syncedLangs.join(', ')}.` : '';
+    const localeNote = seededLangs.length ? ` Вкладки ${seededLangs.join(', ')} уже созданы; нажмите «Сохранить + 6 языков» после заполнения текста.` : '';
     const createdMessage = section === 'articles'
       ? 'Создана статья'
       : section === 'reviews'
@@ -6646,7 +6658,7 @@ async function addVisualEntry() {
         : section === 'items'
           ? 'Создана фото-карточка'
           : 'Создана запись';
-    setStatus('success', `${createdMessage} #${nextId} как черновик (${getSectionLabel(section)} / ${lang}).${syncNote}`);
+    setStatus('success', `${createdMessage} #${nextId} мгновенно как черновик (${getSectionLabel(section)} / ${lang}).${localeNote}`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
