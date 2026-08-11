@@ -4364,26 +4364,31 @@ function renderVisualForm() {
 
   if (section === 'items') {
     const previewSource = resolvePreviewImageSource(entry.imageUrl, entry.imageSeed);
+    const isPicsOfWeekCard = entry.picsOfWeek === true;
     const homepageCategoryOptions = (window._homepageCategories ? window._homepageCategories(data) : []).map((category) => `<option value="${escapeHtml(category.id)}" ${entry.homeCategory === category.id ? 'selected' : ''}>${escapeHtml(category.label)}</option>`).join('');
     visualFormEl.innerHTML = `
       <label>Внутренний ID медиа<input id="vf-id" value="${escapeHtml(entry.id)}" disabled /></label>
-      <label>Pics ID<input id="vf-picsId" value="${escapeHtml(entry.picsId || 'Будет создан для Pics of the week')}" disabled /></label>
+      ${isPicsOfWeekCard
+        ? `<label>Pics ID<input id="vf-picsId" value="${escapeHtml(picsIdFor(entry))}" disabled /></label>`
+        : '<div class="form-hint">Медиа статьи: это не карточка Pics of the week и не попадает в подборку на главной.</div>'}
       <label>FIG<input id="vf-fig" value="${escapeHtml(entry.fig || '')}" /></label>
       <label class="full">Заголовок исходной записи<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
       <label class="full">Подзаголовок исходной записи<input id="vf-subtitle" value="${escapeHtml(entry.subtitle || '')}" /></label>
-      <label>Категория Pics of the week<select id="vf-homeCategory"><option value="">Авторазбор по ключевым словам</option>${homepageCategoryOptions}</select></label>
-      <label>Метка на изображении<input id="vf-homeLabel" value="${escapeHtml(entry.homeLabel || '')}" placeholder="Например: week 32" /></label>
       <label class="full">Описание исходной записи<textarea id="vf-description">${escapeHtml(entry.description || '')}</textarea></label>
-      <div class="full homepage-work-fields">
-        <div class="homepage-work-fields-head"><strong>Текст карточки на главной · Pics of the week</strong><span>Эти поля меняют только подпись под фото на главной, а не исходную запись. Пустое поле наследует значение сверху. После правки нажмите «Синхронизировать» — подписи уйдут на 7 языков.</span></div>
-        <label>Название работы<input id="vf-homeTitle" value="${escapeHtml(entry.homeTitle || '')}" placeholder="Например: Unique Forms of Continuity in Space" /></label>
-        <label>Короткая строка<input id="vf-homeSubtitle" value="${escapeHtml(entry.homeSubtitle || '')}" placeholder="Автор · год · материал" /></label>
-        <label class="full">Описание работы<textarea id="vf-homeDescription" placeholder="Короткое описание именно изображения, не статьи">${escapeHtml(entry.homeDescription || '')}</textarea></label>
-        <label>Автор / источник<input id="vf-homeCredit" value="${escapeHtml(entry.homeCredit || '')}" placeholder="Artist · museum / archive" /></label>
-        <label>Источник изображения<input id="vf-homeSourceUrl" value="${escapeHtml(entry.homeSourceUrl || '')}" placeholder="https://…" /></label>
-      </div>
+      ${isPicsOfWeekCard ? `
+        <label>Категория Pics of the week<select id="vf-homeCategory"><option value="">Выберите категорию</option>${homepageCategoryOptions}</select></label>
+        <label>Метка на изображении<input id="vf-homeLabel" value="${escapeHtml(entry.homeLabel || '')}" placeholder="Необязательная подпись" /></label>
+        <div class="full homepage-work-fields">
+          <div class="homepage-work-fields-head"><strong>Текст карточки на главной · Pics of the week</strong><span>Это самостоятельная работа, а не материал журнала. Пустые поля наследуют базовый текст; после правки синхронизируйте 7 языков.</span></div>
+          <label>Название работы<input id="vf-homeTitle" value="${escapeHtml(entry.homeTitle || '')}" placeholder="Название работы" /></label>
+          <label>Короткая строка<input id="vf-homeSubtitle" value="${escapeHtml(entry.homeSubtitle || '')}" placeholder="Автор · год · материал" /></label>
+          <label class="full">Описание работы<textarea id="vf-homeDescription" placeholder="Короткое описание изображения">${escapeHtml(entry.homeDescription || '')}</textarea></label>
+          <label>Автор / источник<input id="vf-homeCredit" value="${escapeHtml(entry.homeCredit || '')}" placeholder="Artist · museum / archive" /></label>
+          <label>Источник изображения<input id="vf-homeSourceUrl" value="${escapeHtml(entry.homeSourceUrl || '')}" placeholder="https://…" /></label>
+        </div>
+      ` : ''}
       <div class="full homepage-image-editor" style="margin-bottom:4px">
-        <div class="homepage-work-fields-head"><strong>Главное фото карточки</strong><span>Это изображение увидит посетитель в Pics of the week. Вставьте URL или загрузите файл — превью обновится сразу.</span></div>
+        <div class="homepage-work-fields-head"><strong>${isPicsOfWeekCard ? 'Главное фото карточки' : 'Изображение записи'}</strong><span>${isPicsOfWeekCard ? 'Это изображение увидит посетитель в Pics of the week. Вставьте URL или загрузите файл — превью обновится сразу.' : 'Изображение остаётся частью этой записи и никогда не будет автоматически показано в Pics of the week.'}</span></div>
         ${renderPhotoPreviewMarkup(previewSource)}
         <label class="homepage-image-url-field">URL фото<input id="vf-imageUrl" value="${escapeHtml(entry.imageUrl || '')}" placeholder="https://… или /images/…" /></label>
         <div class="homepage-image-editor-actions"><button id="vf-img-upload-btn" class="btn btn-sm" type="button">${adminIcon('upload')}<span class="btn-label">Загрузить файл</span></button><a class="btn btn-sm" href="../" target="_blank" rel="noreferrer"><span class="btn-label">Проверить на главной</span>${adminIcon('external')}</a></div>
@@ -4609,6 +4614,7 @@ function buildEntryFromVisualForm(section, current) {
   let next = { ...current };
 
   if (section === 'items') {
+    const isPicsOfWeekCard = current?.picsOfWeek === true;
     const photos = readGalleryPhotoRows()
       .map((p) => ({ url: p.url.trim(), caption: p.caption.trim() }))
       .filter((p) => p.url)
@@ -4621,17 +4627,19 @@ function buildEntryFromVisualForm(section, current) {
       description: getFieldValue('vf-description').trim(),
       imageSeed: getFieldValue('vf-imageSeed').trim(),
       imageUrl: getOptionalString(getFieldValue('vf-imageUrl')),
-      homeCategory: getOptionalString(getFieldValue('vf-homeCategory')),
-      homeLabel: getOptionalString(getFieldValue('vf-homeLabel')),
-      homeTitle: getOptionalString(getFieldValue('vf-homeTitle')),
-      homeSubtitle: getOptionalString(getFieldValue('vf-homeSubtitle')),
-      homeDescription: getOptionalString(getFieldValue('vf-homeDescription')),
-      homeCredit: getOptionalString(getFieldValue('vf-homeCredit')),
-      homeSourceUrl: getOptionalString(getFieldValue('vf-homeSourceUrl')),
+      ...(isPicsOfWeekCard ? {
+        homeCategory: getOptionalString(getFieldValue('vf-homeCategory')),
+        homeLabel: getOptionalString(getFieldValue('vf-homeLabel')),
+        homeTitle: getOptionalString(getFieldValue('vf-homeTitle')),
+        homeSubtitle: getOptionalString(getFieldValue('vf-homeSubtitle')),
+        homeDescription: getOptionalString(getFieldValue('vf-homeDescription')),
+        homeCredit: getOptionalString(getFieldValue('vf-homeCredit')),
+        homeSourceUrl: getOptionalString(getFieldValue('vf-homeSourceUrl')),
+      } : {}),
       images: photos.length ? photos : undefined
     };
     applyDraftFieldsFromForm(next);
-    inheritHomepageFields(next);
+    if (isPicsOfWeekCard) inheritHomepageFields(next);
   } else if (section === 'reviews') {
     const lines = (id) => getFieldValue(id).split('\n').map((s) => s.trim()).filter(Boolean);
     // NOTE: 'content' is managed by the WYSIWYG review canvas (initReviewCanvas),
@@ -8863,6 +8871,7 @@ function bindStudioMediaActions() {
       item.homeDescription = '';
       item.homeCategory = categoryId ? String(categoryId) : '';
       item.imageUrl = '';
+      item.picsOfWeek = true;
       item.picsId = nextPicsId(data);
       delete item.imageSeed;
     }
@@ -8905,6 +8914,7 @@ function bindStudioMediaActions() {
     let item = findHomepageItemByPicsId(data, homepageCardEditId);
     if (!item) {
       item = createDefaultEntry('items', getNextEntryId(data, 'items'));
+      item.picsOfWeek = true;
       item.picsId = nextPicsId(data);
       data.items.push(item);
       homepageCardEditId = picsIdFor(item);
@@ -9041,6 +9051,7 @@ function bindStudioMediaActions() {
   }
 
   function picsIdFor(item) {
+    if (item?.picsOfWeek !== true) return '';
     return String(item?.picsId || '').trim() || fallbackPicsId(item);
   }
 
@@ -9048,6 +9059,7 @@ function bindStudioMediaActions() {
     const year = new Date().getFullYear();
     const matcher = new RegExp(`^${PICS_ID_PREFIX}-${year}-(\\d+)$`);
     const max = (Array.isArray(data?.items) ? data.items : []).reduce((highest, item) => {
+      if (item?.picsOfWeek !== true) return highest;
       const match = String(item?.picsId || '').match(matcher);
       return match ? Math.max(highest, Number(match[1]) || 0) : highest;
     }, 0);
@@ -9058,7 +9070,7 @@ function bindStudioMediaActions() {
     if (!Array.isArray(data?.items)) return 0;
     let created = 0;
     data.items.forEach((item) => {
-      if (!String(item?.imageUrl || '').trim() || String(item?.picsId || '').trim()) return;
+      if (item?.picsOfWeek !== true || !String(item?.imageUrl || '').trim() || String(item?.picsId || '').trim()) return;
       item.picsId = nextPicsId(data);
       created += 1;
     });
@@ -9067,7 +9079,7 @@ function bindStudioMediaActions() {
 
   function findHomepageItemByPicsId(data, picsId) {
     const target = String(picsId || '').trim();
-    return (Array.isArray(data?.items) ? data.items : []).find((item) => picsIdFor(item) === target) || null;
+    return (Array.isArray(data?.items) ? data.items : []).find((item) => item?.picsOfWeek === true && picsIdFor(item) === target) || null;
   }
 
   const HOMEPAGE_SECTION_DEFS = [
@@ -9231,7 +9243,7 @@ function bindStudioMediaActions() {
 
   function homepagePhotoItems(data) {
     return (Array.isArray(data?.items) ? data.items : []).filter((item) =>
-      Boolean(String(item?.imageUrl || '').trim())
+      item?.picsOfWeek === true && Boolean(String(item?.imageUrl || '').trim())
     );
   }
 
@@ -9491,7 +9503,7 @@ function bindStudioMediaActions() {
   function inheritEmptyHomepageFields() {
     const data = readContent();
     if (!data) { showToast?.('error', 'Сначала загрузите контент.'); return; }
-    const items = Array.isArray(data.items) ? data.items : [];
+    const items = Array.isArray(data.items) ? data.items.filter((item) => item?.picsOfWeek === true) : [];
     let changed = 0;
     items.forEach((item) => {
       const before = JSON.stringify([item.homeTitle, item.homeSubtitle, item.homeDescription]);
@@ -9837,9 +9849,12 @@ function bindStudioMediaActions() {
   function moveItem(picsId, delta) {
     const data = readContent();
     if (!data || !Array.isArray(data.items)) return;
-    const index = data.items.findIndex((item) => picsIdFor(item) === String(picsId));
-    const target = index + delta;
-    if (index < 0 || target < 0 || target >= data.items.length) return;
+    const pickIndexes = data.items.map((item, index) => item?.picsOfWeek === true ? index : -1).filter((index) => index >= 0);
+    const position = pickIndexes.findIndex((index) => picsIdFor(data.items[index]) === String(picsId));
+    const targetPosition = position + delta;
+    if (position < 0 || targetPosition < 0 || targetPosition >= pickIndexes.length) return;
+    const index = pickIndexes[position];
+    const target = pickIndexes[targetPosition];
     [data.items[index], data.items[target]] = [data.items[target], data.items[index]];
     reorderLocalizedItems(data);
     setEditorData(data);
@@ -9861,7 +9876,7 @@ function bindStudioMediaActions() {
       return;
     }
     renderPublishedHomepage(homepagePublishedData || data, homepagePublishedData ? 'vps' : 'draft');
-    const items = Array.isArray(data.items) ? data.items : [];
+    const items = homepagePhotoItems(data);
     const groups = homepageCategoryGroups(data);
     const audit = homepageAudit(data, groups);
     renderHomepageControls(data);

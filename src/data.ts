@@ -7,6 +7,12 @@ export interface Item {
   id: number;
   /** Stable public/editorial identity for a Pics of the week photo card. */
   picsId?: string;
+  /**
+   * Explicit membership in the independent Pics of the week collection.
+   * Article covers and article-gallery images must keep this unset, even when
+   * they happen to have a visually similar category.
+   */
+  picsOfWeek?: boolean;
   /** Optional editorial source reference retained for attribution only. */
   articleId?: number;
   title: string;

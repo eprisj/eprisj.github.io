@@ -1312,9 +1312,10 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
   const compactCards = picsLayout.cardStyle === 'compact';
   const picksMode = picsSettings.mode === 'auto' ? 'auto' : 'manual';
   const useLifo = picsSettings.ordering !== 'manual';
-  // Pics of the week is photo-only: a draft/placeholder record without a
-  // real uploaded file must never become a broken public card.
-  const publishedPhotoItems = items.filter((item) => Boolean(String(item.imageUrl || '').trim()));
+  // Pics of the week is an independent curated collection. Article covers and
+  // inline article media are deliberately excluded even when they carry the
+  // same category words or an image URL.
+  const publishedPhotoItems = items.filter((item) => item.picsOfWeek === true && Boolean(String(item.imageUrl || '').trim()));
   const orderedItems = picksMode === 'auto' || useLifo
     ? [...publishedPhotoItems].sort((a, b) => {
         const stamp = (value?: string) => {
