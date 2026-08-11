@@ -12,7 +12,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=4.43" />
+    <link rel="stylesheet" href="./styles.css?v=4.44" />
     <link rel="stylesheet" href="./brandbook.css?v=3" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -1191,53 +1191,60 @@
           <section class="tab-panel" id="tab-studio">
             <div class="studio-layout">
               <div class="card card-highlight">
-                <h2 class="card-title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Страница «Студия»</h2>
-                <p class="card-desc">Контент <strong>/studio</strong>: профиль, услуги, пакеты, проекты. Переводы — в разделе «Переводы» по ключам <code>studio.*</code>.</p>
+                <div class="studio-public-head">
+                  <div>
+                    <span class="section-kicker">ПУБЛИЧНАЯ СТРАНИЦА</span>
+                    <h2 class="card-title">Студия EPRIS</h2>
+                    <p class="card-desc">Здесь редактируется страница <strong>/studio</strong>. Сначала примените изменения в редакторе, затем нажмите общий «Сохранить» — только после этого они появятся на сайте.</p>
+                  </div>
+                  <div id="studioPublishStatus" class="studio-publish-status" aria-live="polite"></div>
+                </div>
                 <div class="studio-toolbar">
-                  <a id="studioOpenLink" href="../studio" target="_blank" rel="noreferrer" class="btn btn-sm">Открыть ↗</a>
-                  <button id="studioPreviewBtn" class="btn btn-sm" type="button">Предпросмотр ↗</button>
-                  <button id="studioApplyBtn" class="btn btn-primary btn-sm" type="button">Применить</button>
+                  <a id="studioOpenLink" href="../studio" target="_blank" rel="noreferrer" class="btn btn-sm">Открыть /studio ↗</a>
+                  <button id="studioPreviewBtn" class="btn btn-sm" type="button">Предпросмотр изменений ↗</button>
+                  <button id="studioApplyBtn" class="btn btn-primary btn-sm" type="button">Применить в редактор</button>
+                  <button id="studioSaveVpsBtn" class="btn btn-sm" type="button">Сохранить на VPS</button>
+                  <button id="studioRefreshBtn" class="btn btn-sm" type="button">Загрузить свежую версию</button>
                 </div>
               </div>
               <div class="studio-grid">
                 <div class="card">
-                  <h2 class="card-title">Профиль студии</h2>
+                  <h2 class="card-title">1. Профиль и обложка</h2>
                   <div class="form-grid">
                     <label><span class="field-label">Название</span><input id="studioName" placeholder="Masha Peut Studio" /></label>
                     <label><span class="field-label">Instagram URL</span><input id="studioInstagram" placeholder="https://instagram.com/..." /></label>
                     <label><span class="field-label">Email</span><input id="studioEmail" placeholder="hello@studio.com" /></label>
-                    <label><span class="field-label">URL hero-изображения</span><input id="studioHeroImage" placeholder="/images/..." /></label>
+                    <label class="full"><span class="field-label">Обложка страницы</span><div class="studio-image-input"><input id="studioHeroImage" placeholder="URL или загрузите файл" /><button id="studioHeroUploadBtn" class="btn btn-sm" type="button">Выбрать фото</button><input id="studioHeroFileInput" type="file" accept="image/*" hidden /></div></label>
                     <label class="full"><span class="field-label">Доступность (ключ или текст)</span><input id="studioAvailability" placeholder="studio.availability.open" /></label>
-                    <label class="full"><span class="field-label">Statement (короткий абзац)</span><input id="studioStatement" placeholder="Masha Peut Studio designs…" /></label>
+                    <label class="full"><span class="field-label">Statement (короткий абзац)</span><textarea id="studioStatement" rows="3" placeholder="Masha Peut Studio designs…"></textarea></label>
                   </div>
                   <div class="studio-hero-preview" id="studioHeroPreview"></div>
                 </div>
                 <div class="card">
                   <div class="studio-section-head">
-                    <h2 class="card-title" style="margin:0">Статистика</h2>
+                    <h2 class="card-title" style="margin:0">2. Показатели</h2>
                     <button id="studioAddStatBtn" class="btn btn-sm" type="button">+ Показатель</button>
                   </div>
-                  <p class="card-desc">Значение — число/текст. Подпись — ключ перевода.</p>
+                  <p class="card-desc">Короткие цифры для первого экрана: например, годы, проекты, города.</p>
                   <div id="studioStatsList" class="studio-stats-list"></div>
                 </div>
               </div>
               <div class="card">
-                <div class="studio-section-head"><h2 class="card-title" style="margin:0">Услуги</h2><button id="studioAddServiceBtn" class="btn btn-sm" type="button">+ Услуга</button></div>
+                <div class="studio-section-head"><h2 class="card-title" style="margin:0">3. Услуги в одну строку</h2><button id="studioAddServiceBtn" class="btn btn-sm" type="button">+ Добавить услугу</button></div>
+                <p class="card-desc">Короткий список, который виден на публичной странице сразу.</p>
                 <div id="studioServicesList" class="studio-services-list"></div>
               </div>
+              <details class="card studio-advanced-panel">
+                <summary class="studio-advanced-summary"><span><b>Расширенные услуги и экспертиза</b><small>Описание, пункты и тип услуги</small></span><span class="studio-summary-plus" aria-hidden="true">+</span></summary>
+                <div class="studio-advanced-body"><div class="studio-section-head"><h2 class="card-title" style="margin:0">Расширенные услуги</h2><button id="studioAddOfferingBtn" class="btn btn-sm" type="button">+ Добавить</button></div><p class="card-desc">Необязательно: подробности открываются на странице студии.</p><div id="studioOfferingsList" class="studio-offerings-list"></div></div>
+              </details>
+              <details class="card studio-advanced-panel">
+                <summary class="studio-advanced-summary"><span><b>Пакеты и цены</b><small>Тарифы, цены и состав работ</small></span><span class="studio-summary-plus" aria-hidden="true">+</span></summary>
+                <div class="studio-advanced-body"><div class="studio-section-head"><h2 class="card-title" style="margin:0">Пакеты и цены</h2><button id="studioAddPkgBtn" class="btn btn-sm" type="button">+ Добавить пакет</button></div><p class="card-desc">Цена — прямой текст, например «от €2 500».</p><div id="studioPkgList" class="studio-pkgs-list"></div></div>
+              </details>
               <div class="card">
-                <div class="studio-section-head"><h2 class="card-title" style="margin:0">Услуги и экспертиза</h2><button id="studioAddOfferingBtn" class="btn btn-sm" type="button">+ Услуга</button></div>
-                <p class="card-desc">Развёрнутые услуги с описанием. Пункты — по одному на строку.</p>
-                <div id="studioOfferingsList" class="studio-offerings-list"></div>
-              </div>
-              <div class="card">
-                <div class="studio-section-head"><h2 class="card-title" style="margin:0">Пакеты и цены</h2><button id="studioAddPkgBtn" class="btn btn-sm" type="button">+ Пакет</button></div>
-                <p class="card-desc">Ценовые тарифы. Цена — прямой текст («от €2 500»).</p>
-                <div id="studioPkgList" class="studio-pkgs-list"></div>
-              </div>
-              <div class="card">
-                <div class="studio-section-head"><h2 class="card-title" style="margin:0">Проекты</h2><button id="studioAddProjectBtn" class="btn btn-sm" type="button">+ Проект</button></div>
-                <p class="card-desc">Портфолио. «Featured» — крупный разворот. Галерея — по URL на строку.</p>
+                <div class="studio-section-head"><h2 class="card-title" style="margin:0">4. Портфолио проектов</h2><button id="studioAddProjectBtn" class="btn btn-sm" type="button">+ Новый проект</button></div>
+                <p class="card-desc">Добавляйте изображения кнопками прямо с компьютера. URL остаётся запасным вариантом, если файл уже размещён.</p>
                 <div id="studioProjectsList" class="studio-projects-list"></div>
               </div>
             </div>
@@ -1815,7 +1822,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.43" type="module"></script>
+    <script src="./app.js?v=4.44" type="module"></script>
     <script src="../brandbook/data.js?v=1"></script>
     <script src="./brandbook.js?v=3"></script>
     <script>

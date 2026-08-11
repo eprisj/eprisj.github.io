@@ -8205,7 +8205,7 @@ const STUDIO_STAT_KEYS = ['studio.stats.years', 'studio.stats.projects', 'studio
 function defaultStudio() {
   return {
     name: '', instagram: '', email: '', heroImage: '',
-    statement: '', services: [], stats: [], projects: [],
+    statement: '', services: [], offerings: [], stats: [], packages: [], projects: [],
   };
 }
 
@@ -8291,6 +8291,12 @@ function renderStudioTab() {
   _studio.stats = _studio.stats || [];
   _studio.projects = _studio.projects || [];
   _studio.packages = _studio.packages || [];
+  const status = document.getElementById('studioPublishStatus');
+  if (status) {
+    const projectCount = _studio.projects.length;
+    const serviceCount = _studio.services.length;
+    status.innerHTML = `<span class="studio-status-dot"></span><strong>Опубликованная версия с VPS</strong><small>/studio · ${projectCount} проектов · ${serviceCount} услуг</small>`;
+  }
   renderStudioForm();
 }
 
@@ -8387,20 +8393,21 @@ function renderStudioForm() {
               <button class="studio-icon-btn danger" data-act="proj-del" data-i="${i}" title="Удалить" type="button">✕</button>
             </div>
           </div>
-          <div class="studio-proj-thumb">${p.imageUrl ? `<img src="${escapeHtml(p.imageUrl)}" onerror="this.style.display='none'" alt="" />` : ''}</div>
+          <div class="studio-proj-thumb">${p.imageUrl ? `<img src="${escapeHtml(p.imageUrl)}" onerror="this.style.display='none'" alt="" />` : '<span>Нет обложки</span>'}</div>
           <div class="studio-proj-grid">
             <input class="studio-proj-title" value="${escapeHtml(p.title || '')}" placeholder="Название проекта" />
             <input class="studio-proj-category" value="${escapeHtml(p.category || '')}" placeholder="Категория" />
             <input class="studio-proj-year" value="${escapeHtml(p.year || '')}" placeholder="Год" />
             <input class="studio-proj-location" value="${escapeHtml(p.location || '')}" placeholder="Локация" />
             <input class="studio-proj-role" value="${escapeHtml(p.role || '')}" placeholder="Роль" />
-            <input class="studio-proj-image" value="${escapeHtml(p.imageUrl || '')}" placeholder="URL обложки (After)" />
-            <input class="studio-proj-before" value="${escapeHtml(p.beforeImage || '')}" placeholder="URL «До» (Before/After)" />
+            <div class="studio-project-media-field"><input class="studio-proj-image" value="${escapeHtml(p.imageUrl || '')}" placeholder="URL обложки (если есть)" /><button class="btn btn-sm" type="button" data-studio-upload="project" data-project-index="${i}">Загрузить</button><input class="studio-proj-file" type="file" accept="image/*" hidden /></div>
+            <div class="studio-project-media-field"><input class="studio-proj-before" value="${escapeHtml(p.beforeImage || '')}" placeholder="URL «До» (необязательно)" /><button class="btn btn-sm" type="button" data-studio-upload="before" data-project-index="${i}">Загрузить «До»</button><input class="studio-proj-before-file" type="file" accept="image/*" hidden /></div>
           </div>
           <textarea class="studio-proj-desc" rows="2" placeholder="Описание кейса">${escapeHtml(p.description || '')}</textarea>
           <textarea class="studio-proj-materials" rows="2" placeholder="Материалы — по одному на строку">${escapeHtml((p.materials || []).join('\n'))}</textarea>
           <textarea class="studio-proj-steps" rows="3" placeholder="Процесс — по строке «Заголовок | Описание»">${escapeHtml((p.caseSteps || []).map((s) => `${s.title} | ${s.detail}`).join('\n'))}</textarea>
-          <textarea class="studio-proj-gallery" rows="2" placeholder="URL галереи — по одному на строку">${escapeHtml((p.gallery || []).join('\n'))}</textarea>
+          <div class="studio-project-media-field"><textarea class="studio-proj-gallery" rows="2" placeholder="URL галереи — по одному на строку">${escapeHtml((p.gallery || []).join('\n'))}</textarea><div class="studio-project-media-actions"><button class="btn btn-sm" type="button" data-studio-upload="gallery" data-project-index="${i}">Добавить фото</button><input class="studio-proj-gallery-file" type="file" accept="image/*" multiple hidden /></div></div>
+          ${(p.gallery || []).length ? `<div class="studio-proj-gallery-preview">${(p.gallery || []).map((url) => `<img src="${escapeHtml(url)}" alt="" onerror="this.style.display='none'" />`).join('')}</div>` : ''}
         </div>`).join('')
       : '<p style="color:var(--text-muted);font-size:.82rem">Нет проектов. Добавьте первый.</p>';
   }
@@ -8495,6 +8502,73 @@ function bindStudioRowActions() {
     const url = hero.value.trim();
     if (prev) prev.innerHTML = url ? `<img src="${escapeHtml(url)}" alt="hero" onerror="this.style.display='none'" />` : '<div class="studio-empty-prev">Укажите URL изображения</div>';
   };
+  bindStudioMediaActions();
+}
+
+async function uploadStudioFiles(files, onUrls, successMessage) {
+  try {
+    setBusy(true);
+    const urls = [];
+    for (const file of files) {
+      setStatus('info', `Загружаю «${file.name}»...`);
+      urls.push(await uploadImageToVPS(file));
+    }
+    onUrls(urls);
+    renderStudioForm();
+    setStatus('success', successMessage || 'Изображение загружено. Нажмите «Применить в редактор».');
+  } catch (error) {
+    setStatus('error', getErrorMessage(error));
+  } finally {
+    setBusy(false);
+  }
+}
+
+async function uploadStudioFile(file, onUrl, successMessage) {
+  return uploadStudioFiles([file], (urls) => onUrl(urls[0]), successMessage);
+}
+
+function bindStudioMediaActions() {
+  const heroBtn = document.getElementById('studioHeroUploadBtn');
+  const heroInput = document.getElementById('studioHeroFileInput');
+  if (heroBtn && heroInput) {
+    heroBtn.onclick = () => heroInput.click();
+    heroInput.onchange = async () => {
+      const file = heroInput.files?.[0];
+      if (!file || !_studio) return;
+      captureStudioForm();
+      await uploadStudioFile(file, (url) => { _studio.heroImage = url; }, 'Обложка студии загружена.');
+    };
+  }
+
+  document.querySelectorAll('#studioProjectsList [data-studio-upload]').forEach((button) => {
+    button.onclick = () => {
+      const card = button.closest('.studio-project-card');
+      const kind = button.dataset.studioUpload;
+      const selector = kind === 'gallery' ? '.studio-proj-gallery-file' : kind === 'before' ? '.studio-proj-before-file' : '.studio-proj-file';
+      card?.querySelector(selector)?.click();
+    };
+  });
+  document.querySelectorAll('#studioProjectsList .studio-project-card').forEach((card) => {
+    const index = Number(card.dataset.index);
+    const bindFile = (selector, kind) => {
+      const input = card.querySelector(selector);
+      if (!input) return;
+      input.onchange = async () => {
+        const files = [...(input.files || [])];
+        if (!files.length || !_studio?.projects[index]) return;
+        captureStudioForm();
+        await uploadStudioFiles(files, (urls) => {
+          const project = _studio.projects[index];
+          if (kind === 'gallery') project.gallery = [...(project.gallery || []), ...urls];
+          else if (kind === 'before') project.beforeImage = urls[0];
+          else project.imageUrl = urls[0];
+        }, kind === 'gallery' ? `${files.length} фото добавлено в галерею проекта.` : 'Фото проекта загружено.');
+      };
+    };
+    bindFile('.studio-proj-file', 'project');
+    bindFile('.studio-proj-before-file', 'before');
+    bindFile('.studio-proj-gallery-file', 'gallery');
+  });
 }
 
 // Add buttons
@@ -8537,8 +8611,12 @@ function bindStudioRowActions() {
     data.studio = _studio;
     editor.value = JSON.stringify(data, null, 2);
     updateEditorState();
+    const status = document.getElementById('studioPublishStatus');
+    if (status) status.innerHTML = '<span class="studio-status-dot" style="background:var(--warn)"></span><strong>Есть локальные изменения</strong><small>Нажмите общий «Сохранить», чтобы опубликовать /studio</small>';
     showToast('success', 'Студия обновлена – нажмите общий «Сохранить», чтобы отправить на VPS.');
   });
+  onClick('studioSaveVpsBtn', () => saveBtn?.click());
+  onClick('studioRefreshBtn', () => loadBtn?.click());
 })();
 
 // ═══════════════════════════════════════════════════════════
