@@ -3195,7 +3195,11 @@ async function updateSelectedPublicationState(nextState) {
 
   if (nextState === 'live') {
     delete entry.draft;
-    delete entry.publishAt;
+    // A past timestamp is the durable editorial confirmation that this entry
+    // was deliberately published. It is also used by the public site to
+    // distinguish a consciously published fresh draft from an abandoned
+    // blueprint with the default title.
+    entry.publishAt = new Date().toISOString();
     data.visibility.entities[section][String(entry.id)] = true;
   } else if (nextState === 'draft') {
     entry.draft = true;
