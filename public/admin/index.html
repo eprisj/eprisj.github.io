@@ -12,7 +12,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=4.33" />
+    <link rel="stylesheet" href="./styles.css?v=4.34" />
     <link rel="stylesheet" href="./brandbook.css?v=3" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -360,6 +360,50 @@
                 </div>
                 <div id="homepageArticlesSyncStatus" class="homepage-layout-status" role="status" aria-live="polite">Новые статьи наследуются из общей ленты публикаций.</div>
                 <div id="homepageRemoteNotice" class="homepage-remote-notice" role="status" aria-live="polite" hidden></div>
+              </section>
+              <section class="card homepage-layout-editor" aria-labelledby="homepageLayoutEditorTitle">
+                <div class="homepage-section-head">
+                  <div>
+                    <span class="homepage-admin-kicker">Конструктор главной</span>
+                    <h3 id="homepageLayoutEditorTitle" class="card-title">Сценарий, секции и тексты</h3>
+                    <p class="card-desc">Соберите главную без JSON: меняйте порядок блоков, выключайте ненужное, выбирайте поведение карточек и правьте заголовки на всех семи языках. Все изменения сначала попадают в черновик.</p>
+                  </div>
+                  <div class="homepage-section-head-actions">
+                    <span id="homepageLayoutState" class="homepage-preview-badge">Черновик</span>
+                    <button id="homepageLayoutResetBtn" class="btn btn-sm" type="button">Сбросить структуру</button>
+                  </div>
+                </div>
+                <div class="homepage-layout-workbench">
+                  <div class="homepage-layout-editor-main">
+                    <div class="homepage-layout-subhead"><strong>Порядок секций</strong><span>Стрелки меняют порядок на главной. Переключатель скрывает блок, но не удаляет его настройки.</span></div>
+                    <div id="homepageLayoutSections" class="homepage-layout-sections" aria-live="polite"></div>
+                    <div class="homepage-layout-subhead homepage-layout-subhead--copy"><strong>Тексты главной · 7 языков</strong><span>Пустые поля наследуют текущую системную подпись. Сохранение происходит по потере фокуса.</span></div>
+                    <div id="homepageLayoutCopyEditor" class="homepage-layout-copy-editor"></div>
+                  </div>
+                  <aside class="homepage-layout-side">
+                    <div class="homepage-layout-preview-head"><span class="homepage-admin-kicker">Схема публикации</span><strong id="homepageLayoutPreviewTitle">Главная</strong></div>
+                    <div id="homepageLayoutPreview" class="homepage-layout-preview" aria-live="polite"></div>
+                    <div class="homepage-layout-side-note"><span aria-hidden="true">✓</span><p>После проверки нажмите общую кнопку «Опубликовать» сверху. Публичный сайт подхватит новую структуру вместе с карточками и витриной.</p></div>
+                  </aside>
+                </div>
+                <div class="homepage-layout-options">
+                  <div class="homepage-layout-option-group">
+                    <span class="homepage-layout-option-label">Pics of the week</span>
+                    <label class="homepage-field"><span>Подписи</span><select id="homepagePicsCaptionPlacement"><option value="below">Под фото — редакционный блок</option><option value="overlay">На фото — компактный overlay</option></select></label>
+                    <label class="homepage-toggle-field"><input id="homepagePicsShowDescriptions" type="checkbox" checked><span><strong>Показывать описания</strong><small>Краткое описание под каждой работой</small></span></label>
+                    <label class="homepage-toggle-field"><input id="homepagePicsShowCategory" type="checkbox" checked><span><strong>Показывать категорию</strong><small>Подпись Sculpture / Painting и т. д.</small></span></label>
+                    <label class="homepage-toggle-field"><input id="homepagePicsShowNavigation" type="checkbox" checked><span><strong>Показывать навигацию</strong><small>Стрелки, точки и счётчик; swipe остаётся всегда</small></span></label>
+                    <label class="homepage-field"><span>Мобильная карусель</span><select id="homepagePicsMobileMode"><option value="single">Один кадр + подсказка свайпа</option><option value="peek">Кадр + лёгкий preview соседей</option></select></label>
+                    <label class="homepage-field"><span>Плотность карточек</span><select id="homepagePicsCardStyle"><option value="editorial">Editorial — крупное описание</option><option value="compact">Compact — больше воздуха вокруг</option></select></label>
+                  </div>
+                  <div class="homepage-layout-option-group">
+                    <span class="homepage-layout-option-label">Статьи на главной</span>
+                    <label class="homepage-toggle-field"><input id="homepageArticlesShowDescription" type="checkbox" checked><span><strong>Показывать превью</strong><small>Описание статьи до перехода</small></span></label>
+                    <label class="homepage-toggle-field"><input id="homepageArticlesShowPreview" type="checkbox" checked><span><strong>Открывать preview</strong><small>Первое нажатие — превью, затем «Read full»</small></span></label>
+                    <label class="homepage-toggle-field"><input id="homepageArticlesShowReadAll" type="checkbox" checked><span><strong>Показывать кнопку чтения</strong><small>CTA внутри каждой карточки статьи</small></span></label>
+                    <label class="homepage-field"><span>Колонки на широком экране</span><select id="homepageArticlesColumns"><option value="1">Одна — журнальный поток</option><option value="2">Две — сбалансированная сетка</option><option value="3">Три — плотная лента</option></select></label>
+                  </div>
+                </div>
               </section>
               <section class="card homepage-carousel-layout-card" aria-labelledby="homepageCarouselLayoutTitle">
                 <div class="homepage-section-head">
@@ -1717,7 +1761,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.33" type="module"></script>
+    <script src="./app.js?v=4.34" type="module"></script>
     <script src="../brandbook/data.js?v=1"></script>
     <script src="./brandbook.js?v=3"></script>
     <script>

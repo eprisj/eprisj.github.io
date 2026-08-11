@@ -1293,6 +1293,13 @@ function homepageItemDescription(item: Item, fallback: string): string {
 function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]; onImageClick: (src: string, alt: string) => void; currentLang: string; t: (key: string) => string }) {
   const homepageSettings = getHomepageSettings();
   const picsSettings = homepageSettings.picsOfWeek || {};
+  const picsLayout = homepageSettings.layout?.pics || {};
+  const showDescriptions = picsLayout.showDescriptions !== false;
+  const showCategory = picsLayout.showCategory !== false;
+  const showNavigation = picsLayout.showNavigation !== false;
+  const captionsOverlay = picsLayout.captionPlacement === 'overlay';
+  const mobilePeek = picsLayout.mobileMode === 'peek';
+  const compactCards = picsLayout.cardStyle === 'compact';
   const picksMode = picsSettings.mode === 'auto' ? 'auto' : 'manual';
   const useLifo = picsSettings.ordering !== 'manual';
   const orderedItems = picksMode === 'auto' || useLifo
@@ -1413,7 +1420,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
         <div className="mb-7 flex items-center justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-4">
           <h1 id="pics-of-week-title" className="font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">{t('homepage.picsTitle')}</h1>
         </div>
-        <div className="home-carousel-mobile-controls" aria-label={t('homepage.carouselLabel')}>
+        {showNavigation && <div className="home-carousel-mobile-controls" aria-label={t('homepage.carouselLabel')}>
           <span className="home-carousel-mobile-count" aria-hidden="true">
             {String(safeCenterIndex + 1).padStart(2, '0')} / {String(Math.max(itemCount, 1)).padStart(2, '0')}
           </span>
@@ -1437,12 +1444,12 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
             })}
           </div>
           <span className="home-carousel-mobile-swipe" aria-hidden="true">↔</span>
-        </div>
+        </div>}
         <div className="home-carousel-frame">
-          <button type="button" onClick={() => moveCarousel(-1)} className="home-carousel-edge-arrow home-carousel-edge-arrow--prev" aria-label={t('homepage.previous')}><ArrowLeft size={17} strokeWidth={1.5} aria-hidden="true" /></button>
+          {showNavigation && <button type="button" onClick={() => moveCarousel(-1)} className="home-carousel-edge-arrow home-carousel-edge-arrow--prev" aria-label={t('homepage.previous')}><ArrowLeft size={17} strokeWidth={1.5} aria-hidden="true" /></button>}
           <div
             style={carouselStyle}
-            className={`home-carousel${isDragging ? ' is-dragging' : ''}`}
+            className={`home-carousel${isDragging ? ' is-dragging' : ''}${captionsOverlay ? ' home-carousel--captions-overlay' : ''}${mobilePeek ? ' home-carousel--mobile-peek' : ''}${compactCards ? ' home-carousel--compact' : ''}`}
             tabIndex={0}
             aria-label={t('homepage.carouselLabel')}
             onKeyDown={(event) => {
@@ -1479,18 +1486,18 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
             >
               <div className="home-carousel-media relative aspect-[4/5] overflow-hidden bg-[#E8DED5]">
                 <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.035]" loading="lazy" referrerPolicy="no-referrer" />
-                <span className="home-carousel-category">{categoryLabel}</span>
+                {showCategory && <span className="home-carousel-category">{categoryLabel}</span>}
               </div>
               <div className="home-carousel-caption">
-                <span className="home-carousel-caption-category">{categoryLabel}</span>
+                {showCategory && <span className="home-carousel-caption-category">{categoryLabel}</span>}
                 <h2>{title}</h2>
-                <p>{description}</p>
+                {showDescriptions && <p>{description}</p>}
               </div>
             </motion.article>
               );
             })() : <div key={`${category.id}-${safeCenterIndex}`} className="home-carousel-empty"><span className="font-mono text-[10px] uppercase tracking-[0.2em]">{localizedHomepageCategoryLabel(category, currentLang)}</span><p>{t('homepage.descriptionUnavailable')}</p></div>)}
           </div>
-          <button type="button" onClick={() => moveCarousel(1)} className="home-carousel-edge-arrow home-carousel-edge-arrow--next" aria-label={t('homepage.next')}><ArrowRight size={17} strokeWidth={1.5} aria-hidden="true" /></button>
+          {showNavigation && <button type="button" onClick={() => moveCarousel(1)} className="home-carousel-edge-arrow home-carousel-edge-arrow--next" aria-label={t('homepage.next')}><ArrowRight size={17} strokeWidth={1.5} aria-hidden="true" /></button>}
         </div>
       </Reveal>
     </section>
@@ -2411,19 +2418,32 @@ function ArticlesSection({
   onArticleClick,
   onArticlePreview,
   t,
+  showDescription = true,
+  showPreview = true,
+  showReadAll = true,
+  columns = 1,
 }: {
   articles: Article[];
   onArticleClick: (article: Article) => void;
   onArticlePreview?: (article: Article) => void;
   t: (key: string) => string;
+  showDescription?: boolean;
+  showPreview?: boolean;
+  showReadAll?: boolean;
+  columns?: 1 | 2 | 3;
 }) {
   const filteredArticles = sortArticlesNewestFirst(articles);
-  const openArticle = onArticlePreview || onArticleClick;
+  const openArticle = showPreview ? (onArticlePreview || onArticleClick) : onArticleClick;
+  const listClass = columns === 3
+    ? 'grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-3'
+    : columns === 2
+      ? 'grid grid-cols-1 gap-8 md:grid-cols-2'
+      : 'space-y-10 sm:space-y-14';
 
   return (
     <div>
       <div className="max-w-4xl mx-auto px-5 sm:px-0 pt-8 sm:pt-10">
-      <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-5%' }} className="space-y-10 sm:space-y-14">
+      <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-5%' }} className={listClass}>
       {filteredArticles.map((article) => (
         <motion.div key={article.id} variants={staggerItem}>
           <motion.button
@@ -2451,12 +2471,12 @@ function ArticlesSection({
               <h3 className="font-crimson text-lg sm:text-xl text-[var(--c-accent)] mb-2 group-hover:text-[var(--c-gold)] transition-colors duration-300">
                 {article.title}
               </h3>
-              <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-4">
+              {showDescription && <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-4">
                 {article.excerpt}
-              </p>
-              <span className="mt-auto inline-flex items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
-                {t('articles.readPreview')} <ArrowUpRight size={14} />
-              </span>
+              </p>}
+              {showReadAll && <span className="mt-auto inline-flex items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
+                {showPreview ? t('articles.readPreview') : t('articles.readFull')} <ArrowUpRight size={14} />
+              </span>}
             </div>
           </motion.button>
         </motion.div>
@@ -3412,6 +3432,47 @@ export default function App() {
   const instagramUrl = safeExternalUrl(siteSettings.instagramUrl);
   const contactEmail = String(siteSettings.contactEmail || '').trim();
   const fallbackTab = VISIBILITY_TABS.find((tab) => isSectionEnabled(tab)) || 'gallery';
+  const homepageLayout = getHomepageSettings().layout || {};
+  const homepageDefaultSectionOrder = ['pics', 'articles', 'showcase', 'archive'];
+  const homepageSectionOrder = Array.from(new Set([
+    ...(Array.isArray(homepageLayout.sectionOrder) ? homepageLayout.sectionOrder : []),
+    ...homepageDefaultSectionOrder,
+  ])).filter((section) => homepageDefaultSectionOrder.includes(section));
+  const homepageSectionVisible = (section: string) => homepageLayout.visibility?.[section as 'pics' | 'articles' | 'showcase' | 'archive'] !== false;
+  const homepageArticleLayout = homepageLayout.articles || {};
+  const homepageArticleColumns = homepageArticleLayout.columns === 2 || homepageArticleLayout.columns === 3 ? homepageArticleLayout.columns : 1;
+  const renderHomepageSection = (section: string) => {
+    if (!homepageSectionVisible(section)) return null;
+    if (section === 'pics') {
+      return <GallerySection items={items} onImageClick={handleImageClick} currentLang={currentLang} t={t} />;
+    }
+    if (section === 'articles') {
+      if (!homepageArticles.length) return null;
+      return <section className="homepage-articles mt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-10 sm:mt-16 sm:pt-12" aria-labelledby="homepage-articles-title">
+        <div className="mb-8 flex flex-col gap-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-5 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t('homepage.articlesEyebrow')}</p>
+            <h2 id="homepage-articles-title" className="mt-2 font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">{t('homepage.articlesTitle')}</h2>
+          </div>
+          <p className="max-w-[34ch] font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)] sm:text-right">{t('homepage.articlesDescription')}</p>
+        </div>
+        <ArticlesSection
+          articles={homepageArticles}
+          onArticleClick={(article) => handleSelectArticle(article.id, article)}
+          onArticlePreview={handlePreviewArticle}
+          t={t}
+          showDescription={homepageArticleLayout.showDescription !== false}
+          showPreview={homepageArticleLayout.showPreview !== false}
+          showReadAll={homepageArticleLayout.showReadAll !== false}
+          columns={homepageArticleColumns}
+        />
+      </section>;
+    }
+    if (section === 'archive') {
+      return <DailyPicksArchive archive={homepageArchive} items={items} onImageClick={handleImageClick} currentLang={currentLang} t={t} />;
+    }
+    return <Suspense fallback={null}><ShowcaseTeaser /></Suspense>;
+  };
 
   useEffect(() => {
     updateMetaTags(selectedArticle, selectedReview, activeTab, activeSearch, siteSettings);
@@ -3608,24 +3669,7 @@ export default function App() {
             ) : (
               <>
                 {activeTab === 'gallery' && (
-                  <>
-                    <GallerySection items={items} onImageClick={handleImageClick} currentLang={currentLang} t={t} />
-                    {homepageArticles.length > 0 && <section className="homepage-articles mt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-10 sm:mt-16 sm:pt-12" aria-labelledby="homepage-articles-title">
-                      <div className="mb-8 flex flex-col gap-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-5 sm:flex-row sm:items-end sm:justify-between">
-                        <div>
-                          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t('homepage.articlesEyebrow')}</p>
-                          <h2 id="homepage-articles-title" className="mt-2 font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">{t('homepage.articlesTitle')}</h2>
-                        </div>
-                        <p className="max-w-[34ch] font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)] sm:text-right">{t('homepage.articlesDescription')}</p>
-                      </div>
-                      <ArticlesSection articles={homepageArticles} onArticleClick={(article) => handleSelectArticle(article.id, article)} onArticlePreview={handlePreviewArticle} t={t} />
-                    </section>}
-                    <DailyPicksArchive archive={homepageArchive} items={items} onImageClick={handleImageClick} currentLang={currentLang} t={t} />
-                    {/* Витрина жила отдельным маршрутом, на который с сайта не
-                        вело ни одной ссылки. Suspense без запасного экрана:
-                        блок не должен ничего занимать, пока грузится. */}
-                    <Suspense fallback={null}><ShowcaseTeaser /></Suspense>
-                  </>
+                  <>{homepageSectionOrder.map((section) => <div key={section} className="contents">{renderHomepageSection(section)}</div>)}</>
                 )}
                 {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
                     {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} onReviewClick={handleSelectReview} />}
