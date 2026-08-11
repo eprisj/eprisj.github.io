@@ -172,6 +172,19 @@ select {
   user-select: none;
 }
 
+/* Keep five editorial positions stable while the work inside each position
+   crossfades. This avoids FLIP reordering and the width/scale snap that was
+   especially visible on iPhone Safari. */
+.home-carousel-slot {
+  flex: 0 0 15%;
+  min-width: 0;
+  display: grid;
+  align-items: start;
+}
+.home-carousel-slot--center { flex-basis: 30%; z-index: 1; }
+.home-carousel-slot > * { grid-area: 1 / 1; width: 100%; }
+.home-carousel-slot .home-carousel-card { width: 100%; flex-basis: auto; }
+
 .home-carousel::-webkit-scrollbar {
   display: none;
 }
@@ -418,6 +431,15 @@ select {
 
   .home-carousel-edge-arrow {
     display: none;
+  }
+
+  .home-carousel-slot {
+    display: none;
+  }
+
+  .home-carousel-slot.home-carousel-slot--center {
+    display: grid;
+    flex: 0 0 100%;
   }
 
   .home-carousel-card {

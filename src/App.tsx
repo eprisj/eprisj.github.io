@@ -1350,6 +1350,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
   const configuredCenterIndex = categories.findIndex((category) => category.id === configuredCenterCategory);
   const defaultCenterIndex = configuredCenterIndex >= 0 ? configuredCenterIndex : Math.min(2, Math.max(0, featuredItems.length - 1));
   const [centerIndex, setCenterIndex] = useState(defaultCenterIndex);
+  const [carouselDirection, setCarouselDirection] = useState<-1 | 1>(1);
   const previousConfiguredCenterIndexRef = useRef(configuredCenterIndex);
   const itemCount = featuredItems.length;
   const safeCenterIndex = itemCount ? ((centerIndex % itemCount) + itemCount) % itemCount : 0;
@@ -1376,6 +1377,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
 
   const moveCarousel = (direction: -1 | 1) => {
     if (!itemCount) return;
+    setCarouselDirection(direction);
     setCenterIndex((current) => (current + direction + itemCount) % itemCount);
   };
   const suppressNextCardClick = () => {
@@ -1445,7 +1447,10 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
                   aria-selected={isActive}
                   aria-label={`${label} ${index + 1}`}
                   className={`home-carousel-mobile-dot${isActive ? ' is-active' : ''}`}
-                  onClick={() => setCenterIndex(index)}
+                  onClick={() => {
+                    setCarouselDirection(index >= safeCenterIndex ? 1 : -1);
+                    setCenterIndex(index);
+                  }}
                 >
                   <span aria-hidden="true" />
                 </button>
@@ -1471,42 +1476,45 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
             onPointerUp={handleCarouselPointerEnd}
             onPointerCancel={(event) => handleCarouselPointerEnd(event, true)}
           >
-          {centeredItems.map(({ category, item }, position) => item ? (() => {
-              const categoryLabel = localizedHomepageCategoryLabel(category, currentLang);
-              const title = homepageItemTitle(item);
-              const description = homepageItemDescription(item, t('homepage.descriptionUnavailable'));
-              const isCenter = position === 2;
-              return (
-            <motion.article
-              key={item.id}
-              transition={{
-                layout: { type: 'tween', duration: 0.48, ease: [0.22, 1, 0.36, 1] },
-                scale: { type: 'tween', duration: 0.44, ease: [0.22, 1, 0.36, 1] },
-                opacity: { duration: 0.34, ease: [0.22, 1, 0.36, 1] },
-              }}
-              layout="position"
-              initial={false}
-              animate={{ scale: isCenter ? centerScale : sideScale, opacity: isCenter ? 1 : 0.8 }}
-              data-carousel-position={isCenter ? 'center' : 'side'}
-              className={`home-carousel-card group ${isCenter ? 'home-carousel-card--center' : 'home-carousel-card--side'}`}
-              role="button"
-              tabIndex={0}
-              onClick={() => handleCarouselCardClick(resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${title}`)}
-              onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onImageClick(resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${title}`); }}
-              aria-label={`${t('homepage.openImage')}: ${categoryLabel}`}
-            >
-              <div className="home-carousel-media relative aspect-[4/5] overflow-hidden bg-[#E8DED5]">
-                <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.035]" loading="lazy" referrerPolicy="no-referrer" />
-                {showCategory && <span className="home-carousel-category">{categoryLabel}</span>}
+          {centeredItems.map(({ category, item }, position) => {
+            const isCenter = position === 2;
+            const slotClass = `home-carousel-slot ${isCenter ? 'home-carousel-slot--center' : 'home-carousel-slot--side'}`;
+            if (!item) {
+              return <div key={`slot-${position}`} className={`${slotClass} home-carousel-empty`}><span className="font-mono text-[10px] uppercase tracking-[0.2em]">{localizedHomepageCategoryLabel(category, currentLang)}</span><p>{t('homepage.descriptionUnavailable')}</p></div>;
+            }
+            const categoryLabel = localizedHomepageCategoryLabel(category, currentLang);
+            const title = homepageItemTitle(item);
+            const description = homepageItemDescription(item, t('homepage.descriptionUnavailable'));
+            return (
+              <div key={`slot-${position}`} className={slotClass}>
+                <AnimatePresence initial={false} mode="sync">
+                  <motion.article
+                    key={`${item.id}-${position}`}
+                    initial={{ opacity: 0, y: carouselDirection > 0 ? 10 : -10, scale: isCenter ? centerScale * 0.985 : sideScale * 0.985 }}
+                    animate={{ opacity: isCenter ? 1 : 0.8, y: 0, scale: isCenter ? centerScale : sideScale }}
+                    exit={{ opacity: 0, y: carouselDirection > 0 ? -8 : 8, scale: isCenter ? centerScale * 0.99 : sideScale * 0.99 }}
+                    transition={{ duration: 0.46, ease: [0.22, 1, 0.36, 1], opacity: { duration: 0.32, ease: 'easeOut' } }}
+                    data-carousel-position={isCenter ? 'center' : 'side'}
+                    className={`home-carousel-card group ${isCenter ? 'home-carousel-card--center' : 'home-carousel-card--side'}`}
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => handleCarouselCardClick(resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${title}`)}
+                    onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onImageClick(resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${title}`); }}
+                    aria-label={`${t('homepage.openImage')}: ${categoryLabel}`}
+                  >
+                    <div className="home-carousel-media relative aspect-[4/5] overflow-hidden bg-[#E8DED5]">
+                      <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" loading="lazy" referrerPolicy="no-referrer" />
+                    </div>
+                    <div className="home-carousel-caption">
+                      {showCategory && <span className="home-carousel-caption-category">{categoryLabel}</span>}
+                      <h2>{title}</h2>
+                      {showDescriptions && <p>{description}</p>}
+                    </div>
+                  </motion.article>
+                </AnimatePresence>
               </div>
-              <div className="home-carousel-caption">
-                {showCategory && <span className="home-carousel-caption-category">{categoryLabel}</span>}
-                <h2>{title}</h2>
-                {showDescriptions && <p>{description}</p>}
-              </div>
-            </motion.article>
-              );
-            })() : <div key={`${category.id}-${safeCenterIndex}`} className="home-carousel-empty"><span className="font-mono text-[10px] uppercase tracking-[0.2em]">{localizedHomepageCategoryLabel(category, currentLang)}</span><p>{t('homepage.descriptionUnavailable')}</p></div>)}
+            );
+          })}
           </div>
           {showNavigation && <button type="button" onClick={() => moveCarousel(1)} className="home-carousel-edge-arrow home-carousel-edge-arrow--next" aria-label={t('homepage.next')}><ArrowRight size={17} strokeWidth={1.5} aria-hidden="true" /></button>}
         </div>
@@ -1586,7 +1594,6 @@ function DailyPicksArchive({ archive, items, onImageClick, currentLang, t }: { a
                   >
                     <div className="relative aspect-[4/5] overflow-hidden bg-[#E8DED5]">
                       {image ? <img src={resolveMediaSource(image, 360, 450)} alt={category} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" referrerPolicy="no-referrer" /> : <span className="flex h-full items-center justify-center font-mono text-[9px] text-[rgb(var(--c-accent-rgb)_/_0.45)]">{t('homepage.descriptionUnavailable')}</span>}
-                      <span className="home-carousel-category">{category}</span>
                     </div>
                     <div className="home-carousel-caption home-carousel-caption--archive">
                       <span className="home-carousel-caption-category">{category}</span>
