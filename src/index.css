@@ -382,7 +382,6 @@ select {
   display: none;
 }
 
-.home-carousel-mobile-arrow,
 .home-carousel-mobile-status {
   display: none;
 }
@@ -486,37 +485,10 @@ select {
   .home-carousel-mobile-controls {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: .55rem;
     margin-top: .85rem;
     padding: 0 .25rem;
-  }
-
-  /* A phone gets explicit previous/next controls as well as swipe. They live
-     in the navigation line rather than on the artwork, so they never cover a
-     photograph or compete with its tap-to-expand action. */
-  .home-carousel-mobile-arrow {
-    display: inline-flex;
-    flex: 0 0 2.75rem;
-    align-items: center;
-    justify-content: center;
-    width: 2.75rem;
-    height: 2.75rem;
-    padding: 0;
-    border: 1px solid color-mix(in srgb, var(--c-accent) 26%, transparent);
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--c-bg) 96%, transparent);
-    color: var(--c-accent);
-    box-shadow: 0 5px 16px color-mix(in srgb, var(--c-accent) 7%, transparent);
-    touch-action: manipulation;
-    transition: color .18s ease, background-color .18s ease, border-color .18s ease, transform .18s ease;
-  }
-
-  .home-carousel-mobile-arrow:active {
-    transform: scale(.94);
-    background: var(--c-accent);
-    border-color: var(--c-accent);
-    color: var(--c-bg);
   }
 
   .home-carousel-mobile-status {
