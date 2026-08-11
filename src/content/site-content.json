@@ -2026,7 +2026,8 @@
       "homeSubtitle": "Fedora E. D. Brown · c. 1908 · silver gelatin print",
       "homeDescription": "A path dissolves into haze and trees, making the landscape feel like a memory still finding its focus.",
       "homeCredit": "Fedora E. D. Brown · public-domain photograph / Wikimedia Commons",
-      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Landscape_by_Fedora_E.D._Brown.jpg"
+      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Landscape_by_Fedora_E.D._Brown.jpg",
+      "picsId": "PICS-2026-001"
     },
     {
       "id": 12,
@@ -2043,7 +2044,8 @@
       "homeSubtitle": "Hilma af Klint · 1907 · tempera on paper",
       "homeDescription": "Lilac fields, solar diagrams and a dark central seed make the canvas feel less painted than grown from an invisible cosmos.",
       "homeCredit": "Hilma af Klint · public-domain work / Wikimedia Commons",
-      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg",
+      "picsId": "PICS-2026-002"
     },
     {
       "id": 10,
@@ -2060,7 +2062,8 @@
       "homeSubtitle": "Lekeboy54 · 2025 · architectural photograph",
       "homeDescription": "A quiet concrete frame turns weather, repetition and a low horizon into one measured composition.",
       "homeCredit": "Lekeboy54 · CC0 / Wikimedia Commons",
-      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Modern_Architectural_Design_of_Concrete_Building.jpg"
+      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Modern_Architectural_Design_of_Concrete_Building.jpg",
+      "picsId": "PICS-2026-003"
     },
     {
       "id": 9,
@@ -2077,7 +2080,8 @@
       "homeSubtitle": "Frank Gehry · 1972 · corrugated cardboard",
       "homeDescription": "A simple sheet becomes a sinuous seat: an everyday material pushed into a sculptural, surprisingly generous form.",
       "homeCredit": "Frank Gehry · photo CC0 / Wikimedia Commons",
-      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Wiggle_Side_Chair,_designed_by_Frank_Gehry,_manufactured_by_Easy_Edges_and_Vitra,_1972,_corrugated_cardboard_-_Design_Museum,_Kensington_-_London_-_DSC01592.jpg"
+      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Wiggle_Side_Chair,_designed_by_Frank_Gehry,_manufactured_by_Easy_Edges_and_Vitra,_1972,_corrugated_cardboard_-_Design_Museum,_Kensington_-_London_-_DSC01592.jpg",
+      "picsId": "PICS-2026-004"
     },
     {
       "id": 8,
@@ -2087,7 +2091,8 @@
       "description": "Tadao Ando is one of the most influential architects of 21st century, who challenges the conventional definition and boarders of architecture. His unique approach showcased the rethinking of traditional Japanese principles through bold shapes, materials and spatial organizations. In this article we are going to reveal the core principles of his philosophy and its cues.",
       "imageSeed": "new-item-8",
       "imageUrl": "https://api.eprisjournal.com/uploads/mrt8t15sx0d6xg.jpg",
-      "articleId": 15
+      "articleId": 15,
+      "picsId": "PICS-2026-005"
     },
     {
       "id": 7,
@@ -2104,7 +2109,8 @@
       "homeSubtitle": "Umberto Boccioni · 1913 · bronze",
       "homeDescription": "A body becomes velocity: Boccioni turns the figure into a single aerodynamic gesture, caught between sculpture and flight.",
       "homeCredit": "Umberto Boccioni · public-domain work / Wikimedia Commons",
-      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:%27Unique_Forms_of_Continuity_in_Space%27,_1913_bronze_by_Umberto_Boccioni.jpg"
+      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:%27Unique_Forms_of_Continuity_in_Space%27,_1913_bronze_by_Umberto_Boccioni.jpg",
+      "picsId": "PICS-2026-006"
     },
     {
       "id": 1,
@@ -2114,7 +2120,8 @@
       "description": "Imagine Vienna in the last years of the nineteenth century: a city drunk on its own reflection. The Ringstrasse glittered with palaces dressed in borrowed history – a Greek parliament here, a Gothic city hall there, a Renaissance opera in between. It was magnificent, and it was exhausted. Behind the gilt, an entire generation of young painters and architects had begun to suspect that their city was building museums to a past that had never quite belonged to it, while the present – electric, anxious, alive – went unpainted.",
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/mro4amq4m2mpj6.webp",
-      "articleId": 12
+      "articleId": 12,
+      "picsId": "PICS-2026-007"
     },
     {
       "id": 2,
@@ -2124,7 +2131,8 @@
       "description": "A dalmatian dot, a slab of burl, three portraits of the same painted dog, and one small cone that keeps reappearing where you least expect it — the disciplined vocabulary one apartment uses five different ways...",
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/mro4g8adm8ea9c.jpg",
-      "articleId": 10
+      "articleId": 10,
+      "picsId": "PICS-2026-008"
     },
     {
       "id": 3,
@@ -2135,7 +2143,8 @@
       "imageSeed": "",
       "imageUrl": "/images/threshold-hero.jpg",
       "articleId": 9,
-      "updatedAt": "2026-08-10T21:53:43.410Z"
+      "updatedAt": "2026-08-10T21:53:43.410Z",
+      "picsId": "PICS-2026-009"
     },
     {
       "id": 4,
@@ -2145,7 +2154,8 @@
       "description": "Choosing a place to stay in a new destination means entrusting it with the significant moments of your life. Falling into bed after a long walk through unfamiliar streets, late-night talks filled with the thoughts and emotions of the day, planning the next breakfast at your newly favorite nearby boulangerie, sharing genuine smiles and the pure excitement of exploration.",
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/mro4ypcjfxlboi.webp",
-      "articleId": 8
+      "articleId": 8,
+      "picsId": "PICS-2026-010"
     },
     {
       "id": 11,
@@ -2155,7 +2165,8 @@
       "description": "On July 7th, Mariia Ivanova, EPRIS's editor-in-chief, officially became a Bachelor of Architecture. To mark the day – a heart built from the architecture and art that inspire her.",
       "imageSeed": "maria-graduation-heart",
       "imageUrl": "/images/heart-hero.jpg",
-      "articleId": 11
+      "articleId": 11,
+      "picsId": "PICS-2026-011"
     },
     {
       "id": 15,
@@ -3096,7 +3107,7 @@
         },
         {
           "type": "text",
-          "content": "Walls, as the strongest border between the intrinsic and extrinsic, play a significant role in Tadao \nAndo's approach – he works with thin materiality and by specific positions with intervals creates \nopenings to allow the structure accept even in the act of prime rejection. Walls are perceived as a \n“sword”, which cuts the landscape, sky, wind, and sunlight in order to promote new disclosure. \nThis act of manifestation is not seen as a cruelty to the exterior, but as a ceremonial and sacred \ndeed, with assimilating nature as an equal part of architecture."
+          "content": "Walls, as the strongest border between the intrinsic and extrinsic, play a significant role in Tadao \nAndo's approach �� he works with thin materiality and by specific positions with intervals creates \nopenings to allow the structure accept even in the act of prime rejection. Walls are perceived as a \n“sword”, which cuts the landscape, sky, wind, and sunlight in order to promote new disclosure. \nThis act of manifestation is not seen as a cruelty to the exterior, but as a ceremonial and sacred \ndeed, with assimilating nature as an equal part of architecture."
         },
         {
           "type": "text",
@@ -4811,7 +4822,7 @@
             },
             {
               "type": "text",
-              "content": "Их методология — криминалистическая. Когда выброшенную дверь извлекают — нередко из мусорного контейнера перед зданием, проходящим «ремонт» застройщиками, считающими пластиковые замены прогрессом — её сначала фотографируют in situ, затем перевозят в мастерскую для оценки. Идентифицируется порода: карельская берёза (Betula pendula var. carelica) с характерной узорчатой текстурой «пламени», сосна обыкновенная (Pinus sylvestris) из архангельских лесов или лиственница сибирская (Larix sibirica) — та самая древесина, что идёт на венецианские сваи и ценится за исключительную влагостойкость. Стратиграфия красочного слоя выполняется по микрокерну: каждый слой каталогизируется в привязке к известным периодам технического обслуживания здания, сопоставляется с архивными данными, когда они доступны."
+              "content": "Их методология — криминалистическая. Когда выброшенную дверь извлекают — нередко из мусорного контейнера перед зданием, проходящим «ремонт» застройщиками, считающими пластиковые замены прогрессом — её сначала фотографируют in situ, затем перевозят в мастерскую для оценки. Идентифицируется порода: карельская берёза (Betula pendula var. carelica) с характерной узорчатой текстурой «пламени», сосна обыкновенная (Pinus sylvestris) из архангельских лесов или лиственница сибирская (Larix sibirica) — та самая древесина, что идёт на венецианские сваи и ценится за исключительную влагостойкость. Стратиграфия красочного слоя выполняется по микрокерну: каждый слой каталогизируется в привязке к известным периодам технического обслуживания здания, сопоставляется с архив��ыми данными, когда они доступны."
             },
             {
               "type": "image",
@@ -5373,7 +5384,7 @@
             },
             {
               "type": "text",
-              "content": "Как уже упоминалось, искусство служит отражением социальных, политических, гендерных и других проблем. Это может быть среда для личного самоанализа или средство для реализации сложных идей в различных формах и формах. Но художник все равно может создавать игривые предметы, руководствуясь внутренним желанием чувствовать материал, экспериментировать с формами и цветами, осваивать техники и привносить частичку радости в повседневную жизнь. И быть игривым - это не синоним<b> </b>с поверхностностью. Все объекты несут в себе предысторию, убеждения, видение, намерения и заботы своих создателей — они просто выражены через другую призму."
+              "content": "Как уже упоминалось, искусство служит отражением социальных, политических, гендерных и других проблем. Это может быть среда для личного самоанализа или средство для реализации сложных идей в различных формах и формах. Но ху��ожник все равно может создавать игривые предметы, руководствуясь внутренним желанием чувствовать материал, экспериментировать с формами и цветами, осваивать техники и привносить частичку радости в повседневную жизнь. И быть игривым - это не синоним<b> </b>с поверхностностью. Все объекты несут в себе предысторию, убеждения, видение, намерения и заботы своих создателей — они просто выражены через другую призму."
             },
             {
               "type": "text",
@@ -7195,7 +7206,7 @@
             },
             {
               "type": "text",
-              "content": "Консервація 2019 року Skillingtons Workshop стала прикладом мінімалістичної філософії, яка визначає сучасну найкращу практику. Перша фаза: сухе чищення щітками з натуральної щетини та пилосос із низьким тиском для видалення захоплених частинок із відкритого волокна — середньовічний дуб, на відміну від сучасної висушеної в печі деревини, зберігає виражений тангенціальний малюнок зерна, який діє як пастка для атмосферної сажі та мінерального пилу. Друга фаза: водне очищення деіонізованою водою та неіонною поверхнево-активною речовиною (Synperonic A7) у концентрації 1%, спочатку перевірено на прихованій ділянці фальця, щоб переконатися, що не відбулося жодних змін у розмірах або збліднення поверхні. Третя фаза: повторне насичення тунговою олією холодного віджиму (Vernicia fordii), нанесене чотирма послідовними шарами протягом шістнадцяти днів, кожен шар вбирається перед нанесенням наступного. Тунгову олію було обрано замість лляної через її чудову стійкість до гідролізу та меншу схильність до жовтіння з віком. Четверта фаза: корозійну фурнітуру з кованого заліза стабілізували Renaissance Wax — мікрокристалічною сумішшю, розробленою Британським музеєм у 1950-х роках, — а не лаком, який створив би недихаючий бар’єр, що суперечить тривалому збереженню заліза."
+              "content": "Консервація 2019 року Skillingtons Workshop стала прикладом мінімалістичної філософії, яка визначає сучасну найкращу практику. Перша фаза: сухе чищення щітками з натуральної щетини та п��лосос із низьким тиском для видалення захоплених частинок із відкритого волокна — середньовічний дуб, на відміну від сучасної висушеної в печі деревини, зберігає виражений тангенціальний малюнок зерна, який діє як пастка для атмосферної сажі та мінерального пилу. Друга фаза: водне очищення деіонізованою водою та неіонною поверхнево-активною речовиною (Synperonic A7) у концентрації 1%, спочатку перевірено на прихованій ділянці фальця, щоб переконатися, що не відбулося жодних змін у розмірах або збліднення поверхні. Третя фаза: повторне насичення тунговою олією холодного віджиму (Vernicia fordii), нанесене чотирма послідовними шарами протягом шістнадцяти днів, кожен шар вбирається перед нанесенням наступного. Тунгову олію було обрано замість лляної через її чудову стійкість до гідролізу та меншу схильність до жовтіння з віком. Четверта фаза: корозійну фурнітуру з кованого заліза стабілізували Renaissance Wax — мікрокристалічною сумішшю, розробленою Британським музеєм у 1950-х роках, — а не лаком, який створив би недихаючий бар’єр, що суперечить тривалому збереженню заліза."
             },
             {
               "type": "image",
@@ -8397,7 +8408,7 @@
             },
             {
               "type": "text",
-              "content": "Її робота визначається сміливим, скорочувальним словником — часто використовує геометричну суворість, щоб кинути виклик нашим уявленням про корисність. Серія SET, представлена ​​в Volume Gallery, є яскравим прикладом цієї методології. У таких предметах, як Unit 2B (Кавовий столик), Яворська виходить за межі функції поверхневого рівня меблів, натомість розглядаючи об’єкт як архетип. Застосовуючи суворі одноколірні палітри та монолітні форми, вона позбавляє від зайвого, щоб розкрити основні маси."
+              "content": "Її робота визначається сміливим, скорочувальним словником — часто використовує геометричну суворість, щоб кинути виклик нашим уявленням про корисність. Серія SET, представлена ​​в Volume Gallery, є яскравим прикладом цієї методології. У таких предметах, як Unit 2B (Кавовий столик), Яворська виходить за межі функції поверхневого рівня меблів, натомість розглядаючи об’єкт як архетип. Застосовуючи суворі одноколірні палітри та монолітні форми, вона позб��вляє від зайвого, щоб розкрити основні маси."
             },
             {
               "type": "text",
@@ -8963,7 +8974,7 @@
           "title": "Новий огляд",
           "subject": "Новий огляд",
           "rating": 0,
-          "content": "Начніте з першого враження — атмосфера, сервіс, для кого це місце. Потім конкретні деталі, що підтверджують висновок.",
+          "content": "Начніте з першого враження — атмосфера, сервіс, для кого це місце. Потім конкретні деталі, що підтверджую��ь висновок.",
           "author": "EPRIS Journal",
           "category": "Food & Stay",
           "verdict": "Одна чёткая строка — стоит ли идти.",
