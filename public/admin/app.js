@@ -8785,6 +8785,13 @@ function bindStudioMediaActions() {
   }
 
   function openGalleryEditor(itemId, categoryId = null) {
+    const local = readContent();
+    // If the editor only contains an old empty draft, hydrate it from the
+    // published snapshot before opening a card. Otherwise “Изменить” opened
+    // a blank generic editor even though the live card had a real image.
+    if (homepagePublishedData && (!local || homepagePhotoItems(local).length === 0)) {
+      setEditorData(deepClone(homepagePublishedData), { markSynced: true, clearDraft: true });
+    }
     visualSectionSelect.value = 'items';
     visualLangSelect.value = DEFAULT_LANGUAGE;
     pendingVisualEntryId = itemId == null ? null : itemId;
@@ -8980,7 +8987,7 @@ function bindStudioMediaActions() {
 
   function homepagePhotoItems(data) {
     return (Array.isArray(data?.items) ? data.items : []).filter((item) =>
-      Boolean(String(item?.imageUrl || item?.imageSeed || '').trim())
+      Boolean(String(item?.imageUrl || '').trim())
     );
   }
 
@@ -9022,7 +9029,7 @@ function bindStudioMediaActions() {
         <span class="homepage-published-card-category">${esc(group.label)}</span>
         <strong class="homepage-published-card-title">${esc(item?.homeTitle || item?.title || 'Добавить фото')}</strong>
         <div class="homepage-published-card-meta"><span>${item ? `ID ${esc(item.id)}` : 'Новая неделя'}</span>${item ? '<span>Опубликовано</span>' : ''}</div>
-        <button class="btn btn-sm${item ? '' : ' btn-primary'}" type="button" data-home-published-edit="${item ? esc(item.id) : ''}" data-home-published-category="${esc(group.id)}">${item ? 'Изменить' : 'Добавить фото'}</button>
+        <button class="btn btn-sm${item ? '' : ' btn-primary'}" type="button" data-home-published-edit="${item ? esc(item.id) : ''}" data-home-published-category="${esc(group.id)}">${item ? 'Редактировать карточку' : 'Добавить фото'}</button>
       </article>`;
     }).join('');
     cardsEl.querySelectorAll('[data-home-published-edit]').forEach((button) => button.addEventListener('click', () => {
@@ -9344,6 +9351,16 @@ function bindStudioMediaActions() {
       homepagePublishedData = parsed;
       renderPublishedHomepage(parsed, 'vps');
       const remoteText = normalizeJsonText(JSON.stringify(parsed));
+      const localSnapshot = readContent();
+      const localHasHomepagePhotos = homepagePhotoItems(localSnapshot).length > 0;
+      const remoteHasHomepagePhotos = homepagePhotoItems(parsed).length > 0;
+      if (!localHasHomepagePhotos && remoteHasHomepagePhotos) {
+        setEditorData(parsed, { markSynced: true, clearDraft: true });
+        pendingRemoteHomepageData = null;
+        setHomepageRemoteNotice('Пустой локальный черновик заменён опубликованной версией VPS — пять карточек доступны для редактирования.', 'ok', true);
+        if (!silent) showToast?.('success', 'Опубликованные карточки загружены в редактор.');
+        return;
+      }
       if (remoteText === lastSyncedSnapshot) {
         pendingRemoteHomepageData = null;
         setHomepageRemoteNotice('Главная и витрина уже используют свежую версию VPS.', 'ok', true);
@@ -9501,8 +9518,13 @@ function bindStudioMediaActions() {
     if (countEl) countEl.textContent = `${selectedCount} / ${groups.length} категорий · ${imageCount} изображений`;
     const state = audit.errors.length ? 'error' : audit.warnings.length ? 'warn' : 'ok';
     if (dot) dot.dataset.state = state;
-    if (statusTitle) statusTitle.textContent = audit.errors.length ? 'Нужна проверка' : emptyCount ? 'Готово частично' : 'Главная готова';
-    if (statusDetail) statusDetail.textContent = audit.errors[0] || (emptyCount ? `Пустых карточек: ${emptyCount}. Их можно заполнить позже.` : 'Пять карточек готовы к проверке и публикации.');
+    const draftMode = isEditorDirty();
+    if (statusTitle) statusTitle.textContent = draftMode
+      ? (audit.errors.length ? 'Черновик требует проверки' : emptyCount ? 'Черновик следующей недели' : 'Черновик готов к публикации')
+      : 'Синхронизировано с публикацией';
+    if (statusDetail) statusDetail.textContent = audit.errors[0] || (emptyCount
+      ? `Пустых карточек: ${emptyCount}. Опубликованная подборка показана выше и не изменится до публикации.`
+      : draftMode ? 'Проверьте пять карточек и нажмите «Опубликовать».' : 'Изменения ещё не внесены. Чтобы начать новую неделю, измените любую карточку выше.');
     if (lastPublishedEl) {
       try {
         const stamp = localStorage.getItem('epris_homepage_last_published');
