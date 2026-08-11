@@ -6837,6 +6837,12 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .homepage-manual-copy-body { padding: 0 12px 12px; }
 .homepage-manual-copy-body > p { max-width: 75ch; margin: 0 0 11px; color: var(--text-muted); font-size: .68rem; line-height: 1.5; }
 .homepage-layout-copy-grid input::placeholder { color: var(--text-muted); opacity: .8; }
+
+/* One article workspace: fields and block editor on the left, preview on the
+   right. Kept DOM controls are hidden so an old session cannot reveal a
+   competing editor or a redundant local-only save action. */
+#wysToggleBtn[hidden],
+#applyEntryBtn[hidden] { display: none !important; }
 .homepage-category-details {
   margin-bottom: 14px;
   border: 1px solid var(--line);

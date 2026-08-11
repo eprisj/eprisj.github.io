@@ -13167,7 +13167,10 @@ async function flushModernEditor() {
     { t: 'map',       label: 'Карта',    icon: '⚑' },
   ];
 
-  let _enabled = true;
+  // The block editor is now the one canonical article editor. The former
+  // inline canvas remains dormant compatibility code, never a competing
+  // workflow: the same article must not appear in two unrelated modes.
+  let _enabled = false;
   let _model   = null;
   let _ctx     = { section: 'articles', lang: DEFAULT_LANGUAGE, id: 0 };
   let _commitTimer = null;
