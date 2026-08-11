@@ -9279,7 +9279,12 @@ function bindStudioRowActions() {
     const statusDetail = document.getElementById('homepageStatusDetail');
     const lastPublishedEl = document.getElementById('homepageLastPublished');
     const dot = document.querySelector('#homepageAdminStatus .homepage-status-dot');
-    if (!preview || !auditEl || !data) return;
+    if (!preview || !auditEl) return;
+    if (!data) {
+      preview.innerHTML = '<div class="homepage-editor-empty"><strong>Редактор ещё не загружен</strong><span>Нажмите «Загрузить» в нижней панели слева — здесь появятся пять карточек Pics of the week.</span></div>';
+      auditEl.innerHTML = '<div class="homepage-audit-item is-warn"><span aria-hidden="true">△</span>Загрузите актуальный контент, чтобы редактировать фото, подписи и описания.</div>';
+      return;
+    }
     const items = homepagePhotoItems(data);
     const groups = homepageCategoryGroups(data);
     const autoMode = data?.homepage?.picsOfWeek?.mode === 'auto';
@@ -9629,6 +9634,13 @@ function bindStudioRowActions() {
   restartHomepageRefreshTimer();
   window._homepageCategories = homepageCategories;
   window._renderHomepageTab = renderHomepageTab;
+  // The shell restores the last tab before this module finishes evaluating.
+  // If that tab is Homepage, no click event is emitted after the renderer is
+  // registered and the editor used to remain as an empty static card. Render
+  // once now; setEditorData() will render again when the VPS payload arrives.
+  if (document.querySelector('.tab-btn[data-tab="homepage"].active') || document.getElementById('tab-homepage')?.classList.contains('active')) {
+    setTimeout(renderHomepageTab, 0);
+  }
 })();
 
 // ═══════════════════════════════════════════════════════════
