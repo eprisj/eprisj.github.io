@@ -3180,7 +3180,7 @@ function renderPublicationSummary(data, section) {
   visualPublicationSummary.innerHTML = `<strong>${entries.length}</strong> записей · <span>${publicationStateIcon('live')} ${counts.live} опубликовано</span> · <span>${publicationStateIcon('draft')} ${counts.draft} черновиков</span> · <span>${publicationStateIcon('scheduled')} ${counts.scheduled} отложено</span> · <span>${publicationStateIcon('hidden')} ${counts.hidden} скрыто</span>`;
 }
 
-function updateSelectedPublicationState(nextState) {
+async function updateSelectedPublicationState(nextState) {
   const data = parseEditorJsonSafe();
   if (!data) { setStatus('error', 'Сначала загрузите корректный контент.'); return; }
   const section = visualSectionSelect.value;
@@ -3206,10 +3206,27 @@ function updateSelectedPublicationState(nextState) {
     data.visibility.entities[section][String(entry.id)] = false;
   }
 
-  setEditorData(data);
-  pendingVisualEntryId = selectedId;
-  refreshVisualEditor();
-  setStatus('info', `Статус «${getEntryTitle(section, entry)}» изменён на «${publicationStateLabel(nextState)}». Нажмите «Сохранить запись», чтобы отправить на VPS.`, { sticky: true });
+  try {
+    setBusy(true);
+    // Publication controls are destructive to visibility if they only mutate
+    // the local JSON. Persist the canonical entity immediately for the two
+    // states that readers can see, so «Опубликовать» cannot leave a draft on
+    // the VPS (the old flow required a second, easy-to-miss save click).
+    if (nextState === 'live' || nextState === 'draft') {
+      await saveEntityToServer(section, DEFAULT_LANGUAGE, entry);
+      setEditorData(data, { markSynced: true });
+    } else {
+      setEditorData(data);
+    }
+    pendingVisualEntryId = selectedId;
+    refreshVisualEditor();
+    const persisted = nextState === 'live' || nextState === 'draft';
+    setStatus('success', `Статус «${getEntryTitle(section, entry)}» изменён на «${publicationStateLabel(nextState)}».${persisted ? ' Изменения сразу отправлены на VPS.' : ' Нажмите «Сохранить запись», чтобы отправить изменение на VPS.'}`, { sticky: true });
+  } catch (error) {
+    setStatus('error', `Статус не сохранён на VPS: ${getErrorMessage(error)}`);
+  } finally {
+    setBusy(false);
+  }
 }
 
 const ARTICLE_BLUEPRINTS = {
