@@ -9433,6 +9433,64 @@ function bindStudioMediaActions() {
     return `${count} ${word}`;
   }
 
+  function homepageArchiveSnapshot(data) {
+    const cards = homepageArchiveCards(homepageCategoryGroups(data));
+    return { cards, signature: homepageArchiveSignature(cards) };
+  }
+
+  async function captureCurrentHomepageWeek() {
+    const current = homepagePublishedData && homepagePhotoItems(homepagePublishedData).length ? deepClone(homepagePublishedData) : null;
+    if (!current) {
+      showToast?.('error', 'Сначала загрузите текущую версию с VPS.');
+      return;
+    }
+    const { cards, signature } = homepageArchiveSnapshot(current);
+    const archive = Array.isArray(current.homepageArchive) ? current.homepageArchive.slice() : [];
+    if (!cards.length || archive.some((entry) => String(entry?.signature || homepageArchiveSignature(Array.isArray(entry?.cards) ? entry.cards : [])) === signature)) {
+      showToast?.('info', 'Этот выпуск уже есть в архиве.');
+      return;
+    }
+    if (!window.confirm('Сохранить текущие пять карточек как первый выпуск архива? Главная и ваш черновик не изменятся.')) return;
+    const button = document.querySelector('[data-home-archive-capture]');
+    const pw = typeof getAdminPassword === 'function' ? getAdminPassword() : '';
+    if (!pw) {
+      showToast?.('error', 'Сессия истекла — войдите в админку заново.');
+      return;
+    }
+    archive.unshift({
+      id: `home-${Date.now()}`,
+      label: 'Pics of the week',
+      publishedAt: new Date().toISOString(),
+      signature,
+      cards,
+    });
+    current.homepageArchive = archive;
+    if (button) { button.disabled = true; button.textContent = 'Сохраняю…'; }
+    try {
+      const response = await fetch(CONTENT_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
+        body: JSON.stringify(current, null, 2),
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok || !payload.ok) throw new Error(payload.error || `VPS вернул ${response.status}`);
+      homepagePublishedData = current;
+      const local = readContent();
+      if (local) {
+        const localArchive = Array.isArray(local.homepageArchive) ? local.homepageArchive : [];
+        const remoteSignatures = new Set(current.homepageArchive.map((entry) => String(entry?.signature || homepageArchiveSignature(Array.isArray(entry?.cards) ? entry.cards : []))));
+        local.homepageArchive = [...current.homepageArchive, ...localArchive.filter((entry) => !remoteSignatures.has(String(entry?.signature || homepageArchiveSignature(Array.isArray(entry?.cards) ? entry.cards : []))))];
+        setEditorData(local, { markSynced: false });
+      }
+      renderHomepageTab();
+      showToast?.('success', 'Текущая неделя сохранена в архив. Главная не менялась.');
+    } catch (error) {
+      showToast?.('error', `Не удалось сохранить архив: ${getErrorMessage(error)}`);
+    } finally {
+      if (button) { button.disabled = false; button.textContent = 'Сохранить текущую неделю'; }
+    }
+  }
+
   function createHomepageWeekDraft(entryId) {
     const data = readContent();
     const archive = Array.isArray(data?.homepageArchive) ? data.homepageArchive : [];
@@ -9513,11 +9571,19 @@ function bindStudioMediaActions() {
     if (!list || !data) return;
     const archive = Array.isArray(data.homepageArchive) ? data.homepageArchive.slice().sort((a, b) => String(b?.publishedAt || '').localeCompare(String(a?.publishedAt || ''))) : [];
     if (count) count.textContent = homepageArchiveCountLabel(archive.length);
+    const publishedSnapshot = homepagePublishedData && homepagePhotoItems(homepagePublishedData).length
+      ? homepageArchiveSnapshot(homepagePublishedData)
+      : null;
+    const hasPublishedSnapshot = Boolean(publishedSnapshot?.signature) && archive.some((entry) => String(entry?.signature || homepageArchiveSignature(Array.isArray(entry?.cards) ? entry.cards : [])) === publishedSnapshot.signature);
+    const capturePrompt = publishedSnapshot?.cards?.length && !hasPublishedSnapshot
+      ? `<div class="homepage-archive-capture"><div><strong>Текущая неделя ещё не в архиве</strong><span>Сохраните этот опубликованный выпуск один раз — главная останется без изменений.</span></div><button class="btn btn-sm" type="button" data-home-archive-capture>Сохранить текущую неделю</button></div>`
+      : '';
     if (!archive.length) {
-      list.innerHTML = '<p class="homepage-archive-empty"><strong>Пока нет сохранённых недель.</strong><span>Когда вы опубликуете следующую подборку, текущие пять карточек останутся здесь как отдельный выпуск.</span></p>';
+      list.innerHTML = `${capturePrompt}<p class="homepage-archive-empty"><strong>Пока нет сохранённых недель.</strong><span>Сохраните текущий выпуск выше; затем каждую заменённую неделю админка будет добавлять сюда сама.</span></p>`;
+      list.querySelector('[data-home-archive-capture]')?.addEventListener('click', captureCurrentHomepageWeek);
       return;
     }
-    list.innerHTML = archive.map((entry, index) => {
+    list.innerHTML = `${capturePrompt}${archive.map((entry, index) => {
       const cards = Array.isArray(entry?.cards) ? entry.cards.slice(0, 5) : [];
       return `<details class="homepage-archive-entry"${index === 0 ? ' open' : ''}>
         <summary>
@@ -9543,7 +9609,8 @@ function bindStudioMediaActions() {
           </div>
         </div>
       </details>`;
-    }).join('');
+    }).join('')}`;
+    list.querySelector('[data-home-archive-capture]')?.addEventListener('click', captureCurrentHomepageWeek);
     list.querySelectorAll('[data-home-archive-copy]').forEach((button) => button.addEventListener('click', () => createHomepageWeekDraft(button.getAttribute('data-home-archive-copy'))));
     list.querySelectorAll('[data-home-archive-remove]').forEach((button) => button.addEventListener('click', () => removeHomepageArchiveEntry(button.getAttribute('data-home-archive-remove'))));
   }
