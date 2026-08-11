@@ -1318,10 +1318,8 @@ textarea {
 /* ── Article Live Preview content (.alp-*) — had no CSS at all until now.
    Ports display-only properties from the already-battle-tested .wys-*
    classes in the WYSIWYG canvas, since this pane exists to approximate
-   the same public-site rendering. Covers the 8 highest-frequency block
-   types; niche types (gallery/poll/checklist/audio/video/map) are a
-   follow-up — the empty state below alone covers every non-article
-   section, so this already takes Preview from broken to usable. ── */
+   the same public-site rendering. The collection renderers below reuse
+   this visual language for reviews, gallery items and library files too. ── */
 .alp-article { font-family: var(--font-serif); color: var(--text); }
 .alp-hero { aspect-ratio: 16/9; border-radius: var(--radius); overflow: hidden; background: var(--bg); margin-bottom: 20px; }
 .alp-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -1336,6 +1334,22 @@ textarea {
 .alp-p { font-size: 1rem; line-height: 1.7; margin: 0 0 16px; }
 .alp-quote { font-family: var(--font-serif); font-style: italic; font-size: 1.35rem; line-height: 1.4; border-left: 3px solid var(--gold); padding: 4px 4px 4px 20px; margin: 16px 0; }
 .alp-note { background: var(--gold-soft); border-left: 3px solid var(--gold); padding: 12px 14px; font-size: .92rem; line-height: 1.6; border-radius: 0 4px 4px 0; margin: 16px 0; }
+.alp-collection { font-family: var(--font-serif); color: var(--text); }
+.alp-collection .alp-hero { aspect-ratio: 4 / 3; }
+.alp-gallery-preview .alp-hero { aspect-ratio: 4 / 5; }
+.alp-subtitle { margin: 8px 0 0; color: var(--text-muted); font: 1rem/1.45 var(--font-serif); }
+.alp-description { max-width: 64ch; color: var(--text-muted); }
+.alp-credit { margin: 0; color: var(--text-muted); font: .62rem/1.4 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+.alp-muted, .alp-empty-hint { color: var(--text-muted); font-size: .78rem; line-height: 1.5; }
+.alp-review-verdict { margin: 18px 0; padding: 12px 16px; border-left: 3px solid var(--gold); background: var(--gold-soft); font: italic 1.1rem/1.45 var(--font-serif); }
+.alp-proscons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
+.alp-proscons section { display: grid; gap: 6px; padding: 12px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--bg-soft); }
+.alp-proscons strong { font: 700 .6rem/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+.alp-proscons span { color: var(--text-muted); font-size: .78rem; line-height: 1.4; }
+.alp-library-preview { display: grid; gap: 14px; align-content: start; }
+.alp-library-icon { display: grid; place-items: center; width: 82px; height: 104px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--gold-soft); color: var(--accent); font: 700 .8rem/1 var(--font-mono); letter-spacing: .08em; }
+.alp-library-preview .alp-title { margin-top: 0; }
+.alp-library-preview .alp-link { width: fit-content; }
 .alp-empty { display: grid; place-items: center; gap: 8px; min-height: 240px; color: var(--text-muted); text-align: center; }
 .alp-empty-icon { font-size: 1.6rem; opacity: .5; }
 .alp-empty-text { font-family: var(--font-mono); font-size: .68rem; }
@@ -5553,6 +5567,7 @@ body.busy::after {
 }
 
 @media (max-width: 620px) {
+  .alp-proscons { grid-template-columns: 1fr; }
   .homepage-admin-layout { padding: 18px 14px 32px; }
   .homepage-admin-actions { display: grid; width: 100%; grid-template-columns: 1fr; }
   .homepage-admin-actions .btn { width: 100%; justify-content: center; }
