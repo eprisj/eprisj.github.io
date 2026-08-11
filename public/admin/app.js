@@ -8809,22 +8809,6 @@ function bindStudioMediaActions() {
     return typeof parseEditorJsonSafe === 'function' ? parseEditorJsonSafe() : null;
   }
 
-  function openGalleryEditor(itemId, categoryId = null) {
-    const local = readContent();
-    // If the editor only contains an old empty draft, hydrate it from the
-    // published snapshot before opening a card. Otherwise “Изменить” opened
-    // a blank generic editor even though the live card had a real image.
-    if (homepagePublishedData && (!local || homepagePhotoItems(local).length === 0)) {
-      setEditorData(deepClone(homepagePublishedData), { markSynced: true, clearDraft: true });
-    }
-    visualSectionSelect.value = 'items';
-    visualLangSelect.value = DEFAULT_LANGUAGE;
-    pendingVisualEntryId = itemId == null ? null : itemId;
-    pendingHomepageCategory = categoryId ? String(categoryId) : null;
-    document.querySelector('.tab-btn[data-tab="content"]')?.click();
-    refreshVisualEditor();
-  }
-
   // A homepage card is a photo, not an article. Keep its quick edit flow
   // separate from the full content editor so the published overview leads to
   // one clear, safe form.
@@ -9321,7 +9305,7 @@ function bindStudioMediaActions() {
     root.classList.toggle('is-simple', isSimple);
     const toggle = document.getElementById('homepageComplexityToggle');
     if (toggle) {
-      toggle.textContent = isSimple ? 'Все настройки' : 'Упростить';
+      toggle.textContent = isSimple ? 'Показать расширенные настройки' : 'Скрыть расширенные настройки';
       toggle.setAttribute('aria-expanded', String(!isSimple));
       toggle.title = isSimple ? 'Показать синхронизацию, раскладку, витрину и архив' : 'Скрыть вторичные настройки';
     }
@@ -9979,7 +9963,6 @@ function bindStudioMediaActions() {
     }
   }
 
-  document.getElementById('homepageOpenEditorBtn')?.addEventListener('click', () => openGalleryEditor(null));
   document.getElementById('homepageLoadLatestBtn')?.addEventListener('click', loadHomepageLatest);
   document.getElementById('homepageComplexityToggle')?.addEventListener('click', () => {
     const root = document.querySelector('#tab-homepage .homepage-admin-layout');

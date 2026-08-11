@@ -6761,11 +6761,6 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .homepage-admin-layout.is-simple .homepage-quickstart {
   display: none !important;
 }
-.homepage-admin-layout.is-simple .homepage-admin-actions #homepageFillBtn,
-.homepage-admin-layout.is-simple .homepage-admin-actions #homepageInheritBtn,
-.homepage-admin-layout.is-simple .homepage-admin-actions #homepageOpenEditorBtn {
-  display: none;
-}
 .homepage-admin-layout.is-simple .homepage-composer-grid {
   grid-template-columns: minmax(0, 1fr);
 }
@@ -6775,6 +6770,36 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .homepage-admin-layout.is-simple .homepage-admin-hero .card-desc {
   max-width: 54ch;
   margin-bottom: 0;
+}
+.homepage-secondary-tools {
+  position: relative;
+  padding: 0 2px;
+  color: var(--text-muted);
+  font-size: .7rem;
+}
+.homepage-secondary-tools > summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  cursor: pointer;
+  color: var(--text-muted);
+  font: 700 .62rem var(--font-mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.homepage-secondary-tools > summary:hover { color: var(--accent); }
+.homepage-secondary-tools-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 4px 0 8px;
+}
+.homepage-secondary-tools p {
+  max-width: 76ch;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: .68rem;
+  line-height: 1.5;
 }
 .homepage-category-details {
   margin-bottom: 14px;
