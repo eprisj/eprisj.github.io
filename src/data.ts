@@ -276,6 +276,35 @@ export interface HomepageShowcaseSettings {
   featuredWorkIds?: string[];
 }
 
+export type HomepageSectionKey = 'pics' | 'articles' | 'showcase' | 'archive';
+
+/**
+ * Editorial layout controls for the public homepage. These values intentionally
+ * stay data-driven so an editor can change the composition without a code deploy.
+ */
+export interface HomepageLayoutSettings {
+  /** Ordered list of homepage sections. Unknown/duplicate keys are ignored. */
+  sectionOrder?: HomepageSectionKey[];
+  /** Per-section visibility switches; missing values use the public defaults. */
+  visibility?: Partial<Record<HomepageSectionKey, boolean>>;
+  /** Visual controls for the five-card Pics of the week composition. */
+  pics?: {
+    captionPlacement?: 'below' | 'overlay';
+    showDescriptions?: boolean;
+    showCategory?: boolean;
+    showNavigation?: boolean;
+    mobileMode?: 'single' | 'peek';
+    cardStyle?: 'editorial' | 'compact';
+  };
+  /** Editorial controls for the article feed below the image selection. */
+  articles?: {
+    showDescription?: boolean;
+    showPreview?: boolean;
+    showReadAll?: boolean;
+    columns?: 1 | 2 | 3;
+  };
+}
+
 export interface HomepagePicsCategory {
   id: string;
   label: string;
@@ -315,6 +344,7 @@ export interface HomepageSettings {
     /** 0 means all published articles, otherwise show the newest N. */
     limit?: number;
   };
+  layout?: HomepageLayoutSettings;
   /** When enabled, safe homepage edits are pushed after a short debounce. */
   autoPublish?: boolean;
   showcase?: HomepageShowcaseSettings;

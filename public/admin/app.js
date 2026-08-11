@@ -8648,12 +8648,109 @@ function bindStudioRowActions() {
   let homepageArticlesSyncBusy = false;
   let pendingRemoteHomepageData = null;
 
+  const HOMEPAGE_SECTION_DEFS = [
+    { id: 'pics', label: 'Pics of the week', hint: 'Пять категорий изображений, центральный кадр и подписи.' },
+    { id: 'articles', label: 'Articles', hint: 'Свежие статьи с preview, описанием и кнопкой чтения.' },
+    { id: 'showcase', label: 'Showcase', hint: 'A vitrine of set design and conceptual art.' },
+    { id: 'archive', label: 'Daily picks archive', hint: 'Накопление прошлых выпусков недельной подборки.' },
+  ];
+  const HOMEPAGE_SECTION_ORDER_DEFAULT = HOMEPAGE_SECTION_DEFS.map((section) => section.id);
+  const HOMEPAGE_COPY_FIELDS = [
+    { id: 'picsTitle', key: 'homepage.picsTitle', label: 'Pics of the week', hint: 'Заголовок подборки' },
+    { id: 'articlesTitle', key: 'homepage.articlesTitle', label: 'Articles', hint: 'Заголовок ленты статей' },
+    { id: 'articlesDescription', key: 'homepage.articlesDescription', label: 'Articles description', hint: 'Короткое пояснение к статьям' },
+    { id: 'archiveTitle', key: 'homepage.archiveTitle', label: 'Daily picks', hint: 'Заголовок архива' },
+    { id: 'archiveDescription', key: 'homepage.archiveDescription', label: 'Archive description', hint: 'Пояснение к накоплению' },
+  ];
+  const HOMEPAGE_LAYOUT_LANGUAGES = ['EN', 'RU', 'UA', 'DE', 'IT', 'ES', 'TR'];
+
   function ensureHomepageSettings(data) {
     if (!data.homepage || typeof data.homepage !== 'object' || Array.isArray(data.homepage)) data.homepage = {};
     if (!data.homepage.picsOfWeek || typeof data.homepage.picsOfWeek !== 'object' || Array.isArray(data.homepage.picsOfWeek)) data.homepage.picsOfWeek = {};
     if (!data.homepage.articles || typeof data.homepage.articles !== 'object' || Array.isArray(data.homepage.articles)) data.homepage.articles = {};
     if (!data.homepage.showcase || typeof data.homepage.showcase !== 'object' || Array.isArray(data.homepage.showcase)) data.homepage.showcase = {};
+    if (!data.homepage.layout || typeof data.homepage.layout !== 'object' || Array.isArray(data.homepage.layout)) data.homepage.layout = {};
+    if (!Array.isArray(data.homepage.layout.sectionOrder)) data.homepage.layout.sectionOrder = HOMEPAGE_SECTION_ORDER_DEFAULT.slice();
+    if (!data.homepage.layout.visibility || typeof data.homepage.layout.visibility !== 'object' || Array.isArray(data.homepage.layout.visibility)) data.homepage.layout.visibility = {};
+    if (!data.homepage.layout.pics || typeof data.homepage.layout.pics !== 'object' || Array.isArray(data.homepage.layout.pics)) data.homepage.layout.pics = {};
+    if (!data.homepage.layout.articles || typeof data.homepage.layout.articles !== 'object' || Array.isArray(data.homepage.layout.articles)) data.homepage.layout.articles = {};
     return data.homepage;
+  }
+
+  function homepageLayout(data) {
+    const home = ensureHomepageSettings(data);
+    const configured = Array.isArray(home.layout.sectionOrder) ? home.layout.sectionOrder.map((key) => String(key)) : [];
+    const sectionOrder = Array.from(new Set([...configured, ...HOMEPAGE_SECTION_ORDER_DEFAULT])).filter((key) => HOMEPAGE_SECTION_ORDER_DEFAULT.includes(key));
+    const visibility = home.layout.visibility || {};
+    return { home, sectionOrder, visibility, pics: home.layout.pics || {}, articles: home.layout.articles || {} };
+  }
+
+  function homepageTranslationValue(data, key, lang) {
+    const translations = data?.translations && typeof data.translations === 'object' ? data.translations : {};
+    const value = translations?.[lang]?.[key];
+    if (typeof value === 'string' && value.trim()) return value;
+    return String(translations?.[DEFAULT_LANGUAGE]?.[key] || '');
+  }
+
+  function updateHomepageTranslation(key, lang, value) {
+    const data = readContent();
+    if (!data) return;
+    if (!data.translations || typeof data.translations !== 'object' || Array.isArray(data.translations)) data.translations = {};
+    if (!data.translations[lang] || typeof data.translations[lang] !== 'object' || Array.isArray(data.translations[lang])) data.translations[lang] = {};
+    const normalized = String(value || '').trim();
+    if (normalized) data.translations[lang][key] = normalized;
+    else delete data.translations[lang][key];
+    commitHomepageLocal(data, `Текст «${key}» обновлён для ${lang}.`);
+    renderHomepageTab();
+    scheduleHomepageAutoPublish();
+  }
+
+  function renderHomepageLayoutEditor(data) {
+    const sectionsEl = document.getElementById('homepageLayoutSections');
+    const copyEl = document.getElementById('homepageLayoutCopyEditor');
+    const previewEl = document.getElementById('homepageLayoutPreview');
+    if (!sectionsEl || !copyEl || !previewEl || !data) return;
+    const layout = homepageLayout(data);
+    const isVisible = (key) => layout.visibility?.[key] !== false;
+    sectionsEl.innerHTML = layout.sectionOrder.map((key, index) => {
+      const def = HOMEPAGE_SECTION_DEFS.find((candidate) => candidate.id === key);
+      if (!def) return '';
+      return `<div class="homepage-layout-section-row${isVisible(key) ? '' : ' is-hidden'}">
+        <span class="homepage-layout-section-index">${String(index + 1).padStart(2, '0')}</span>
+        <div class="homepage-layout-section-copy"><strong>${esc(def.label)}</strong><span>${esc(def.hint)}</span></div>
+        <div class="homepage-layout-section-actions">
+          <label class="homepage-layout-visibility"><input type="checkbox" data-home-layout-visible="${esc(key)}" ${isVisible(key) ? 'checked' : ''}><span>${isVisible(key) ? 'Виден' : 'Скрыт'}</span></label>
+          <button type="button" class="btn btn-sm" data-home-layout-up="${esc(key)}" ${index === 0 ? 'disabled' : ''} aria-label="Поднять ${esc(def.label)}">↑</button>
+          <button type="button" class="btn btn-sm" data-home-layout-down="${esc(key)}" ${index === layout.sectionOrder.length - 1 ? 'disabled' : ''} aria-label="Опустить ${esc(def.label)}">↓</button>
+        </div>
+      </div>`;
+    }).join('');
+    copyEl.innerHTML = HOMEPAGE_COPY_FIELDS.map((field) => `<div class="homepage-layout-copy-row">
+      <div class="homepage-layout-copy-label"><strong>${esc(field.label)}</strong><span>${esc(field.hint)}</span></div>
+      <div class="homepage-layout-copy-grid">${HOMEPAGE_LAYOUT_LANGUAGES.map((lang) => `<label><small>${lang}</small><input data-home-copy-key="${esc(field.key)}" data-home-copy-lang="${lang}" value="${esc(homepageTranslationValue(data, field.key, lang))}" aria-label="${esc(field.label)} · ${lang}"></label>`).join('')}</div>
+    </div>`).join('');
+    previewEl.innerHTML = layout.sectionOrder.map((key, index) => {
+      const def = HOMEPAGE_SECTION_DEFS.find((candidate) => candidate.id === key);
+      if (!def) return '';
+      return `<div class="homepage-layout-preview-item${isVisible(key) ? '' : ' is-hidden'}"><span>${String(index + 1).padStart(2, '0')}</span>${esc(def.label)}${isVisible(key) ? '' : ' · скрыта'}</div>`;
+    }).join('');
+    const state = document.getElementById('homepageLayoutState');
+    if (state) state.textContent = `${layout.sectionOrder.filter(isVisible).length} секций · черновик`;
+    sectionsEl.querySelectorAll('[data-home-layout-visible]').forEach((input) => input.addEventListener('change', (event) => {
+      const key = event.target.dataset.homeLayoutVisible;
+      updateHomepageSettings((home) => { home.layout.visibility[key] = event.target.checked; }, `${event.target.checked ? 'Секция включена' : 'Секция скрыта'}: ${key}.`);
+    }));
+    const moveSection = (key, delta) => updateHomepageSettings((home) => {
+      const current = homepageLayout(data).sectionOrder.slice();
+      const index = current.indexOf(key);
+      const target = index + delta;
+      if (index < 0 || target < 0 || target >= current.length) return;
+      [current[index], current[target]] = [current[target], current[index]];
+      home.layout.sectionOrder = current;
+    }, 'Порядок секций главной обновлён.');
+    sectionsEl.querySelectorAll('[data-home-layout-up]').forEach((button) => button.addEventListener('click', () => moveSection(button.dataset.homeLayoutUp, -1)));
+    sectionsEl.querySelectorAll('[data-home-layout-down]').forEach((button) => button.addEventListener('click', () => moveSection(button.dataset.homeLayoutDown, 1)));
+    copyEl.querySelectorAll('[data-home-copy-key]').forEach((input) => input.addEventListener('change', (event) => updateHomepageTranslation(event.target.dataset.homeCopyKey, event.target.dataset.homeCopyLang, event.target.value)));
   }
 
   function homepageCategories(data) {
@@ -8907,6 +9004,9 @@ function bindStudioRowActions() {
     const pics = home.picsOfWeek || {};
     const articles = home.articles || {};
     const showcase = home.showcase || {};
+    const layout = homepageLayout(data);
+    const layoutPics = layout.pics || {};
+    const layoutArticles = layout.articles || {};
     const autoRefresh = document.getElementById('homepageAutoRefresh');
     const refreshInterval = document.getElementById('homepageRefreshInterval');
     const autoPublish = document.getElementById('homepageAutoPublish');
@@ -8928,6 +9028,17 @@ function bindStudioRowActions() {
     setValue('homepageCarouselCenterScale', [0.98, 1, 1.06, 1.12].includes(Number(pics.centerScale)) ? Number(pics.centerScale) : 1);
     setValue('homepageCarouselSideScale', [0.76, 0.82, 0.88, 0.92].includes(Number(pics.sideScale)) ? Number(pics.sideScale) : 0.88);
     setValue('homepageCarouselGap', [16, 24, 32, 40].includes(Number(pics.gap)) ? Number(pics.gap) : 24);
+    setValue('homepagePicsCaptionPlacement', layoutPics.captionPlacement === 'overlay' ? 'overlay' : 'below');
+    setValue('homepagePicsMobileMode', layoutPics.mobileMode === 'peek' ? 'peek' : 'single');
+    setValue('homepagePicsCardStyle', layoutPics.cardStyle === 'compact' ? 'compact' : 'editorial');
+    setValue('homepageArticlesColumns', [1, 2, 3].includes(Number(layoutArticles.columns)) ? Number(layoutArticles.columns) : 1);
+    const setChecked = (id, checked) => { const el = document.getElementById(id); if (el && document.activeElement !== el) el.checked = checked; };
+    setChecked('homepagePicsShowDescriptions', layoutPics.showDescriptions !== false);
+    setChecked('homepagePicsShowCategory', layoutPics.showCategory !== false);
+    setChecked('homepagePicsShowNavigation', layoutPics.showNavigation !== false);
+    setChecked('homepageArticlesShowDescription', layoutArticles.showDescription !== false);
+    setChecked('homepageArticlesShowPreview', layoutArticles.showPreview !== false);
+    setChecked('homepageArticlesShowReadAll', layoutArticles.showReadAll !== false);
     const layoutStatus = document.getElementById('homepageCarouselLayoutStatus');
     if (layoutStatus) layoutStatus.textContent = `В центре: ${categories.find((category) => category.id === centerCategory)?.label || centerCategory} · боковые превью ${Math.round((Number(pics.sideScale) || 0.88) * 100)}% · зазор ${Number(pics.gap) || 24}px`;
     const showcaseEnabled = document.getElementById('homepageShowcaseEnabled');
@@ -8955,6 +9066,7 @@ function bindStudioRowActions() {
     if (articleStatus) articleStatus.textContent = articles.autoSync === false
       ? `Автоподгрузка новых статей выключена · на главной закреплены ${Number(articles.limit) > 0 ? `последние ${Number(articles.limit)}` : 'все'} тексты.`
       : `Автоподгрузка включена · на главной показываются ${Number(articles.limit) > 0 ? `последние ${Number(articles.limit)}` : 'все новые'} опубликованные статьи. Поля и переводы наследуются из редакционного источника.`;
+    renderHomepageLayoutEditor(data);
     restartHomepageRefreshTimer();
   }
 
@@ -9356,6 +9468,33 @@ function bindStudioRowActions() {
   document.getElementById('homepageAutoPublish')?.addEventListener('change', (event) => {
     updateHomepageSettings((home) => { home.autoPublish = event.target.checked; }, event.target.checked ? 'Автовыталкивание включено.' : 'Автовыталкивание выключено.');
   });
+  document.getElementById('homepageLayoutResetBtn')?.addEventListener('click', () => {
+    if (!window.confirm('Сбросить порядок и видимость секций к структуре по умолчанию? Карточки, тексты и изображения не изменятся.')) return;
+    updateHomepageSettings((home) => {
+      home.layout.sectionOrder = HOMEPAGE_SECTION_ORDER_DEFAULT.slice();
+      home.layout.visibility = {};
+    }, 'Структура главной сброшена к безопасному порядку по умолчанию.');
+  });
+  const homepageLayoutSelects = {
+    homepagePicsCaptionPlacement: (home, value) => { home.layout.pics.captionPlacement = value === 'overlay' ? 'overlay' : 'below'; },
+    homepagePicsMobileMode: (home, value) => { home.layout.pics.mobileMode = value === 'peek' ? 'peek' : 'single'; },
+    homepagePicsCardStyle: (home, value) => { home.layout.pics.cardStyle = value === 'compact' ? 'compact' : 'editorial'; },
+    homepageArticlesColumns: (home, value) => { home.layout.articles.columns = [1, 2, 3].includes(Number(value)) ? Number(value) : 1; },
+  };
+  Object.entries(homepageLayoutSelects).forEach(([id, mutator]) => document.getElementById(id)?.addEventListener('change', (event) => {
+    updateHomepageSettings((home) => mutator(home, event.target.value), 'Расширенная раскладка главной сохранена в черновик.');
+  }));
+  const homepageLayoutToggles = {
+    homepagePicsShowDescriptions: (home, checked) => { home.layout.pics.showDescriptions = checked; },
+    homepagePicsShowCategory: (home, checked) => { home.layout.pics.showCategory = checked; },
+    homepagePicsShowNavigation: (home, checked) => { home.layout.pics.showNavigation = checked; },
+    homepageArticlesShowDescription: (home, checked) => { home.layout.articles.showDescription = checked; },
+    homepageArticlesShowPreview: (home, checked) => { home.layout.articles.showPreview = checked; },
+    homepageArticlesShowReadAll: (home, checked) => { home.layout.articles.showReadAll = checked; },
+  };
+  Object.entries(homepageLayoutToggles).forEach(([id, mutator]) => document.getElementById(id)?.addEventListener('change', (event) => {
+    updateHomepageSettings((home) => mutator(home, event.target.checked), 'Расширенная раскладка главной сохранена в черновик.');
+  }));
 
   const showcaseFields = {
     homepageShowcaseMode: 'mode',

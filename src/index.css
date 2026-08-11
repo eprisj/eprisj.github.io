@@ -188,6 +188,7 @@ select {
 
 .home-carousel-card {
   flex: 0 0 15%;
+  position: relative;
   cursor: pointer;
   opacity: .8;
   transform: scale(var(--home-carousel-side-scale, .88));
@@ -291,6 +292,29 @@ select {
   font-family: var(--font-body);
   font-size: .86rem;
   line-height: 1.45;
+}
+
+.home-carousel--compact .home-carousel-caption {
+  min-height: 6.8rem;
+  padding-top: .65rem;
+}
+
+.home-carousel--captions-overlay .home-carousel-caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  min-height: 0;
+  padding: 2.8rem .85rem .85rem;
+  border: 0;
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--c-bg) 94%, transparent) 48%);
+}
+
+.home-carousel--captions-overlay .home-carousel-caption-category,
+.home-carousel--captions-overlay .home-carousel-caption h2,
+.home-carousel--captions-overlay .home-carousel-caption p {
+  color: var(--c-accent);
 }
 
 .home-carousel-caption--archive {
@@ -409,6 +433,18 @@ select {
     flex: 0 0 100%;
     transform: none;
     opacity: 1;
+  }
+
+  .home-carousel--mobile-peek .home-carousel-card {
+    display: block;
+    flex: 0 0 13%;
+    opacity: .48;
+    pointer-events: none;
+  }
+
+  .home-carousel--mobile-peek .home-carousel-card.home-carousel-card--center {
+    flex: 0 0 82%;
+    pointer-events: auto;
   }
 
   .home-carousel-mobile-controls {
