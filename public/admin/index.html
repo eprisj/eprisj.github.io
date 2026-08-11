@@ -12,7 +12,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=4.47" />
+    <link rel="stylesheet" href="./styles.css?v=4.50" />
     <link rel="stylesheet" href="./brandbook.css?v=3" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -387,8 +387,19 @@
                 </div>
               </section>
               <section class="homepage-publishing-flow" aria-labelledby="homepageFlowTitle">
-                <div class="homepage-publishing-flow-copy"><span class="homepage-admin-kicker">СЛЕДУЮЩАЯ НЕДЕЛЯ</span><h3 id="homepageFlowTitle">Как выпустить новую подборку</h3><p>Новая публикация не стирает предыдущую: после «Опубликовать» текущие пять карточек автоматически попадают в Daily picks archive.</p></div>
-                <ol class="homepage-publishing-flow-steps"><li><b>1</b><span>Измените слот</span><small>Фото, категория, подпись и описание.</small></li><li><b>2</b><span>Проверьте 7 языков</span><small>Пустые переводы наследуют базовый текст.</small></li><li><b>3</b><span>Опубликуйте</span><small>Главная обновится, архив сохранит выпуск.</small></li></ol>
+                <div class="homepage-publishing-flow-copy"><span class="homepage-admin-kicker">СЛЕДУЮЩАЯ НЕДЕЛЯ</span><h3 id="homepageFlowTitle">Как выпустить новую подборку</h3><p>Новая публикация не стирает предыдущую: после «Опубликовать» пять карточек, которые были на сайте, автоматически переходят в архив.</p></div>
+                <ol class="homepage-publishing-flow-steps"><li><b>1</b><span>Измените слот</span><small>Фото, категория, подпись и описание.</small></li><li><b>2</b><span>Проверьте 7 языков</span><small>Пустые переводы наследуют базовый текст.</small></li><li><b>3</b><span>Опубликуйте</span><small>Главная обновится, прежняя неделя сохранится.</small></li></ol>
+              </section>
+              <section class="card homepage-archive-admin" aria-labelledby="homepageArchiveTitle">
+                <div class="homepage-section-head">
+                  <div>
+                    <span class="homepage-admin-kicker">ИСТОРИЯ НЕДЕЛЬ</span>
+                    <h3 id="homepageArchiveTitle" class="card-title">Архив подборок</h3>
+                    <p class="card-desc">Каждый выпуск хранит все пять фото, подписи и описания. Откройте прошлую неделю, чтобы посмотреть состав; «Собрать копию» создаст отдельный черновик следующей недели и не изменит то, что сейчас видят читатели.</p>
+                  </div>
+                  <span id="homepageArchiveCount" class="homepage-preview-badge">0 выпусков</span>
+                </div>
+                <div id="homepageArchiveList" class="homepage-archive-list" aria-live="polite"></div>
               </section>
               <section class="homepage-quickstart" aria-labelledby="homepageQuickstartTitle">
                 <div class="homepage-quickstart-head">
@@ -584,17 +595,6 @@
               </section>
               <div id="homepageGalleryMeta" class="homepage-gallery-meta homepage-advanced" aria-live="polite"></div>
               <div id="homepageGalleryList" class="homepage-gallery-list homepage-advanced"></div>
-              <section class="card homepage-archive-admin homepage-advanced" aria-labelledby="homepageArchiveTitle">
-                <div class="homepage-section-head">
-                  <div>
-                    <span class="homepage-admin-kicker">История подборок</span>
-                    <h3 id="homepageArchiveTitle" class="card-title">Daily Picks archive</h3>
-                    <p class="card-desc">Каждая успешная публикация сохраняет снимок пяти изображений. Следующая неделя не стирает предыдущую.</p>
-                  </div>
-                  <span id="homepageArchiveCount" class="homepage-preview-badge">0 выпусков</span>
-                </div>
-                <div id="homepageArchiveList" class="homepage-archive-list" aria-live="polite"></div>
-              </section>
             </div>
           </section>
 
@@ -1886,7 +1886,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.49" type="module"></script>
+    <script src="./app.js?v=4.50" type="module"></script>
     <script src="../brandbook/data.js?v=1"></script>
     <script src="./brandbook.js?v=3"></script>
     <script>
