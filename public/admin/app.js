@@ -11052,7 +11052,7 @@ function bindStudioRowActions() {
 
     const section = document.getElementById('visualSection')?.value;
     if (section && section !== 'articles') {
-      previewEl.innerHTML = renderNonArticlePreview();
+      previewEl.innerHTML = renderNonArticlePreview(section);
       if (liveDot) liveDot.classList.remove('refreshing');
       return;
     }
@@ -11229,9 +11229,118 @@ function bindStudioRowActions() {
     return '';
   }
 
+  function previewEntryFromForm(data, section, lang, selectedId) {
+    if (!data) return null;
+    const entries = getSectionArray(data, section, lang, false);
+    const stored = entries.find((item) => Number(item.id) === Number(selectedId));
+    if (!stored) return null;
+    const value = (id, fallback = '') => {
+      const element = document.getElementById(id);
+      return element ? String(element.value || '').trim() : fallback;
+    };
+    const entry = { ...stored };
+    if (section === 'items') {
+      Object.assign(entry, {
+        title: value('vf-title', stored.title || ''),
+        subtitle: value('vf-subtitle', stored.subtitle || ''),
+        description: value('vf-description', stored.description || ''),
+        homeTitle: value('vf-homeTitle', stored.homeTitle || ''),
+        homeSubtitle: value('vf-homeSubtitle', stored.homeSubtitle || ''),
+        homeDescription: value('vf-homeDescription', stored.homeDescription || ''),
+        homeCategory: value('vf-homeCategory', stored.homeCategory || ''),
+        homeCredit: value('vf-homeCredit', stored.homeCredit || ''),
+        imageUrl: value('vf-imageUrl', stored.imageUrl || ''),
+        imageSeed: value('vf-imageSeed', stored.imageSeed || ''),
+      });
+      return entry;
+    }
+    if (section === 'reviews') {
+      Object.assign(entry, {
+        title: value('vf-title', stored.title || ''),
+        subject: value('vf-subject', stored.subject || ''),
+        verdict: value('vf-verdict', stored.verdict || ''),
+        meta: value('vf-meta', stored.meta || ''),
+        author: value('vf-author', stored.author || ''),
+        date: value('vf-date', stored.date || ''),
+        category: value('vf-category', stored.category || ''),
+        imageUrl: value('vf-imageUrl', stored.imageUrl || ''),
+        pros: value('vf-pros', Array.isArray(stored.pros) ? stored.pros.join('\n') : '').split('\n').map((item) => item.trim()).filter(Boolean),
+        cons: value('vf-cons', Array.isArray(stored.cons) ? stored.cons.join('\n') : '').split('\n').map((item) => item.trim()).filter(Boolean),
+      });
+      return entry;
+    }
+    if (section === 'libraryItems') {
+      Object.assign(entry, {
+        title: value('vf-title', stored.title || ''),
+        type: value('vf-type', stored.type || ''),
+        url: value('vf-url', stored.url || ''),
+        size: value('vf-size', stored.size || ''),
+        year: value('vf-year', stored.year || ''),
+      });
+    }
+    return entry;
+  }
+
+  function previewEntryFromData(data, section, lang, selectedId) {
+    if (!data) return null;
+    const entries = getSectionArray(data, section, lang, false);
+    return entries.find((item) => Number(item.id) === Number(selectedId)) || null;
+  }
+
+  function renderCollectionHero(source, label) {
+    return `<div class="alp-hero">${source
+      ? `<img src="${escapeHtml(source)}" alt="${escapeHtml(label || '')}" loading="eager" referrerpolicy="no-referrer" />`
+      : '<div class="alp-hero-placeholder">Нет обложки</div>'}</div>`;
+  }
+
   function renderNonArticlePreview(section) {
     const labels = { reviews: 'Обзоры', items: 'Галерея', libraryItems: 'Библиотека' };
-    return `<div class="alp-empty"><div class="alp-empty-icon">☰</div><div class="alp-empty-text">Предпросмотр доступен для статей</div><div style="font-family:var(--font-mono);font-size:.6rem;color:rgba(80,26,44,.35);margin-top:.5rem">Переключитесь на раздел «Статьи»</div></div>`;
+    const data = parseEditorJsonSafe();
+    const lang = document.getElementById('visualLang')?.value || DEFAULT_LANGUAGE;
+    const selectedId = Number(document.getElementById('visualEntry')?.value || 0);
+    const entry = previewEntryFromForm(data, section, lang, selectedId) || previewEntryFromData(data, section, lang, selectedId);
+    if (!entry) {
+      return `<div class="alp-empty"><div class="alp-empty-icon">✦</div><div class="alp-empty-text">Выберите запись для предпросмотра</div><div class="alp-empty-hint">Сначала выберите ${escapeHtml(labels[section] || 'запись')} и нажмите «Применить».</div></div>`;
+    }
+
+    if (section === 'items') {
+      const image = resolveImgSrc(entry.imageUrl, entry.imageSeed, 900, 1100);
+      const title = entry.homeTitle || entry.title || 'Без названия';
+      const description = entry.homeDescription || entry.description || entry.homeSubtitle || entry.subtitle || '';
+      return `<article class="alp-collection alp-gallery-preview">${renderCollectionHero(image, title)}
+        <div class="alp-meta"><span>${escapeHtml(entry.homeCategory || entry.subtitle || 'Gallery')}</span><span class="alp-meta-dot"></span><span>FIG. ${escapeHtml(entry.fig || entry.id)}</span></div>
+        <h1 class="alp-title">${escapeHtml(title)}</h1>
+        ${entry.homeSubtitle || entry.subtitle ? `<p class="alp-subtitle">${escapeHtml(entry.homeSubtitle || entry.subtitle)}</p>` : ''}
+        ${description ? `<p class="alp-p alp-description">${escapeHtml(description)}</p>` : '<p class="alp-p alp-muted">Добавьте краткое описание работы…</p>'}
+        ${entry.homeCredit ? `<p class="alp-credit">${escapeHtml(entry.homeCredit)}</p>` : ''}
+      </article>`;
+    }
+
+    if (section === 'reviews') {
+      const image = resolveImgSrc(entry.imageUrl, '', 900, 620);
+      const blocks = Array.isArray(entry.content)
+        ? entry.content.map((block) => renderBlockHTML(block)).join('')
+        : (entry.content ? `<p class="alp-p">${escapeHtml(entry.content)}</p>` : '<p class="alp-p alp-muted">Добавьте текст обзора…</p>');
+      const pros = Array.isArray(entry.pros) ? entry.pros : [];
+      const cons = Array.isArray(entry.cons) ? entry.cons : [];
+      return `<article class="alp-collection alp-review-preview">${renderCollectionHero(image, entry.title)}
+        <div class="alp-meta"><span>${escapeHtml(entry.category || 'Review')}</span>${entry.rating ? `<span class="alp-meta-dot"></span><span>★ ${escapeHtml(entry.rating)}</span>` : ''}${entry.date ? `<span class="alp-meta-dot"></span><span>${escapeHtml(entry.date)}</span>` : ''}</div>
+        <h1 class="alp-title">${escapeHtml(entry.title || 'Без названия')}</h1>
+        ${entry.subject ? `<p class="alp-subtitle">${escapeHtml(entry.subject)}</p>` : ''}
+        ${entry.verdict ? `<blockquote class="alp-review-verdict">${escapeHtml(entry.verdict)}</blockquote>` : ''}
+        <div class="alp-body">${blocks}</div>
+        ${(pros.length || cons.length) ? `<div class="alp-proscons">${pros.length ? `<section><strong>Плюсы</strong>${pros.map((item) => `<span>+ ${escapeHtml(item)}</span>`).join('')}</section>` : ''}${cons.length ? `<section><strong>Минусы</strong>${cons.map((item) => `<span>− ${escapeHtml(item)}</span>`).join('')}</section>` : ''}</div>` : ''}
+      </article>`;
+    }
+
+    const title = entry.title || 'Без названия';
+    return `<article class="alp-collection alp-library-preview">
+      <div class="alp-library-icon">PDF</div>
+      <div class="alp-meta"><span>${escapeHtml(entry.type || 'Файл')}</span>${entry.year ? `<span class="alp-meta-dot"></span><span>${escapeHtml(entry.year)}</span>` : ''}${entry.size ? `<span class="alp-meta-dot"></span><span>${escapeHtml(entry.size)}</span>` : ''}</div>
+      <h1 class="alp-title">${escapeHtml(title)}</h1>
+      <p class="alp-p alp-description">Проверьте название, тип, размер и ссылку на файл перед публикацией.</p>
+      ${entry.url ? `<a class="alp-link" href="${escapeHtml(entry.url)}" target="_blank" rel="noopener">↗ Открыть файл</a>` : '<p class="alp-muted">URL файла пока не заполнен.</p>'}
+    </article>`;
   }
 
   // ── hook into DOM changes ──────────────────────────────
