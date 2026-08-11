@@ -2027,7 +2027,8 @@
       "homeCredit": "Henry Moore; photo Jynto · CC BY-SA 4.0 / Wikimedia Commons",
       "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Oval_with_Points.jpg",
       "picsId": "PICS-2026-012",
-      "updatedAt": "2026-08-11T10:00:00.000Z"
+      "updatedAt": "2026-08-11T10:00:00.000Z",
+      "picsReleaseId": "PICS-WEEK-2026-001"
     },
     {
       "id": 17,
@@ -2045,7 +2046,8 @@
       "homeCredit": "Hilma af Klint · public-domain work / Wikimedia Commons",
       "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._9_-_1907.jpg",
       "picsId": "PICS-2026-013",
-      "updatedAt": "2026-08-11T10:00:01.000Z"
+      "updatedAt": "2026-08-11T10:00:01.000Z",
+      "picsReleaseId": "PICS-WEEK-2026-001"
     },
     {
       "id": 18,
@@ -2063,7 +2065,8 @@
       "homeCredit": "Carol M. Highsmith · public-domain photograph / Wikimedia Commons",
       "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Salk_Institute_Highsmith.jpg",
       "picsId": "PICS-2026-014",
-      "updatedAt": "2026-08-11T10:00:02.000Z"
+      "updatedAt": "2026-08-11T10:00:02.000Z",
+      "picsReleaseId": "PICS-WEEK-2026-001"
     },
     {
       "id": 19,
@@ -2081,7 +2084,8 @@
       "homeCredit": "Verner Panton; photo Sailko · CC BY-SA 4.0 / Wikimedia Commons",
       "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Ngv_design,_verner_panton,_panton_chair,_1960_02.JPG",
       "picsId": "PICS-2026-015",
-      "updatedAt": "2026-08-11T10:00:03.000Z"
+      "updatedAt": "2026-08-11T10:00:03.000Z",
+      "picsReleaseId": "PICS-WEEK-2026-001"
     },
     {
       "id": 20,
@@ -2099,7 +2103,8 @@
       "homeCredit": "Russell Lee · public-domain photograph / Library of Congress",
       "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Grain_elevators_Caldwell_Idaho_fsac.1a34206u.jpg",
       "picsId": "PICS-2026-016",
-      "updatedAt": "2026-08-11T10:00:04.000Z"
+      "updatedAt": "2026-08-11T10:00:04.000Z",
+      "picsReleaseId": "PICS-WEEK-2026-001"
     },
     {
       "id": 14,
@@ -19369,7 +19374,38 @@
             "TR": "Fotoğraf"
           }
         }
-      ]
+      ],
+      "releases": [
+        {
+          "id": "PICS-WEEK-2026-001",
+          "label": "Pics of the week · 11 авг. 2026 г.",
+          "status": "published",
+          "createdAt": "2026-08-11T13:24:50.299Z",
+          "publishedAt": "2026-08-11T13:24:50.299Z",
+          "publicArchive": false,
+          "picsIds": [
+            "PICS-2026-012",
+            "PICS-2026-013",
+            "PICS-2026-014",
+            "PICS-2026-015",
+            "PICS-2026-016"
+          ]
+        }
+      ],
+      "activeReleaseId": "PICS-WEEK-2026-001"
+    },
+    "articles": {},
+    "showcase": {},
+    "layout": {
+      "sectionOrder": [
+        "pics",
+        "articles",
+        "showcase",
+        "archive"
+      ],
+      "visibility": {},
+      "pics": {},
+      "articles": {}
     }
   },
   "theme": {
@@ -19390,5 +19426,363 @@
     "seoDescription": "",
     "seoKeywords": "",
     "ogImage": ""
-  }
+  },
+  "homepageArchive": [
+    {
+      "id": "PICS-ARCHIVE-PICS-WEEK-2026-001",
+      "releaseId": "PICS-WEEK-2026-001",
+      "label": "Pics of the week · 11 авг. 2026 г.",
+      "publishedAt": "2026-08-11T13:24:50.299Z",
+      "signature": "sculpture:PICS-2026-012|painting:PICS-2026-013|architecture:PICS-2026-014|design:PICS-2026-015|photography:PICS-2026-016",
+      "publicArchive": false,
+      "visibleOnSite": false,
+      "cards": [
+        {
+          "id": 16,
+          "picsId": "PICS-2026-012",
+          "category": "sculpture",
+          "categoryLabel": "Sculpture",
+          "title": "Oval with Points",
+          "subtitle": "Henry Moore · 1968–70 · bronze",
+          "description": "Two voids turn a bronze oval into a shifting horizon: Henry Moore makes weight, landscape and the human body feel inseparable.",
+          "credit": "Henry Moore; photo Jynto · CC BY-SA 4.0 / Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Oval_with_Points.jpg",
+          "imageSeed": "",
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Oval_with_Points.jpg",
+          "localized": {
+            "RU": {
+              "title": "Овал с точками",
+              "subtitle": "Генри Мур · 1968–70 · бронза",
+              "description": "Два пустотных проёма превращают бронзовый овал в меняющийся горизонт: у Генри Мура вес, ландшафт и человеческое тело неразделимы.",
+              "credit": "Генри Мур; фото Jynto · CC BY-SA 4.0 / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "UA": {
+              "title": "Овал із точками",
+              "subtitle": "Генрі Мур · 1968–70 · бронза",
+              "description": "Два отвори перетворюють бронзовий овал на мінливий горизонт: у Генрі Мура вага, ландшафт і людське тіло нероздільні.",
+              "credit": "Генрі Мур; фото Jynto · CC BY-SA 4.0 / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "DE": {
+              "title": "Oval with Points",
+              "subtitle": "Henry Moore · 1968–70 · Bronze",
+              "description": "Zwei Öffnungen verwandeln ein bronzenes Oval in einen wechselnden Horizont: Bei Henry Moore sind Gewicht, Landschaft und menschlicher Körper untrennbar.",
+              "credit": "Henry Moore; Foto Jynto · CC BY-SA 4.0 / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "ES": {
+              "title": "Óvalo con puntas",
+              "subtitle": "Henry Moore · 1968–70 · bronce",
+              "description": "Dos vacíos convierten un óvalo de bronce en un horizonte cambiante: en Henry Moore, peso, paisaje y cuerpo humano son inseparables.",
+              "credit": "Henry Moore; foto de Jynto · CC BY-SA 4.0 / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "TR": {
+              "title": "Noktalı Oval",
+              "subtitle": "Henry Moore · 1968–70 · bronz",
+              "description": "İki boşluk bronz bir ovali değişen bir ufka dönüştürür: Henry Moore’da ağırlık, manzara ve insan bedeni birbirinden ayrılmaz.",
+              "credit": "Henry Moore; fotoğraf Jynto · CC BY-SA 4.0 / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "IT": {
+              "title": "Ovale con punte",
+              "subtitle": "Henry Moore · 1968–70 · bronzo",
+              "description": "Due vuoti trasformano un ovale di bronzo in un orizzonte mutevole: in Henry Moore peso, paesaggio e corpo umano sono inseparabili.",
+              "credit": "Henry Moore; foto di Jynto · CC BY-SA 4.0 / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            }
+          }
+        },
+        {
+          "id": 17,
+          "picsId": "PICS-2026-013",
+          "category": "painting",
+          "categoryLabel": "Painting",
+          "title": "The Ten Largest, No. 9, Old Age",
+          "subtitle": "Hilma af Klint · 1907 · tempera on paper",
+          "description": "Hilma af Klint gives old age a vivid, floating language: lilac fields, loops and dark seeds make the canvas feel grown rather than painted.",
+          "credit": "Hilma af Klint · public-domain work / Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._9_-_1907.jpg",
+          "imageSeed": "",
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Hilma_af_Klint_-_The_Ten_Largest_No._9_-_1907.jpg",
+          "localized": {
+            "RU": {
+              "title": "Десять крупнейших, № 9, Старость",
+              "subtitle": "Хильма аф Клинт · 1907 · темпера на бумаге",
+              "description": "Хильма аф Клинт даёт старости яркий, текучий язык: сиреневые поля, петли и тёмные зерна делают холст скорее выросшим, чем написанным.",
+              "credit": "Хильма аф Клинт · общественное достояние / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "UA": {
+              "title": "Десять найбільших, № 9, Старість",
+              "subtitle": "Гільма аф Клінт · 1907 · темпера на папері",
+              "description": "Гільма аф Клінт дає старості яскраву, плинну мову: бузкові поля, петлі й темне зерно роблять полотно радше вирощеним, ніж намальованим.",
+              "credit": "Гільма аф Клінт · суспільне надбання / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "DE": {
+              "title": "Die zehn Größten, Nr. 9, Alter",
+              "subtitle": "Hilma af Klint · 1907 · Tempera auf Papier",
+              "description": "Hilma af Klint gibt dem Alter eine leuchtende, schwebende Sprache: Fliederfelder, Schleifen und dunkle Samen lassen das Bild eher gewachsen als gemalt erscheinen.",
+              "credit": "Hilma af Klint · gemeinfrei / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "ES": {
+              "title": "Los diez mayores, n.º 9, Vejez",
+              "subtitle": "Hilma af Klint · 1907 · témpera sobre papel",
+              "description": "Hilma af Klint da a la vejez un lenguaje luminoso y flotante: campos lilas, bucles y semillas oscuras hacen que el lienzo parezca crecido más que pintado.",
+              "credit": "Hilma af Klint · obra de dominio público / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "TR": {
+              "title": "En Büyük On, No. 9, Yaşlılık",
+              "subtitle": "Hilma af Klint · 1907 · kâğıt üzerine tempera",
+              "description": "Hilma af Klint yaşlılığa ışıklı, yüzen bir dil verir: leylak alanları, kıvrımlar ve koyu tohumlar resmi boyanmıştan çok büyümüş gibi hissettirir.",
+              "credit": "Hilma af Klint · kamu malı eser / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "IT": {
+              "title": "I dieci maggiori, n. 9, Vecchiaia",
+              "subtitle": "Hilma af Klint · 1907 · tempera su carta",
+              "description": "Hilma af Klint dà alla vecchiaia un linguaggio luminoso e fluttuante: campi lilla, anelli e semi scuri fanno sembrare la tela cresciuta più che dipinta.",
+              "credit": "Hilma af Klint · opera di pubblico dominio / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            }
+          }
+        },
+        {
+          "id": 18,
+          "picsId": "PICS-2026-014",
+          "category": "architecture",
+          "categoryLabel": "Architecture",
+          "title": "Salk Institute",
+          "subtitle": "Louis I. Kahn · 1965 · La Jolla",
+          "description": "At the Salk Institute, concrete is not a backdrop but a precise instrument for light, sea air and silence.",
+          "credit": "Carol M. Highsmith · public-domain photograph / Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Salk_Institute_Highsmith.jpg",
+          "imageSeed": "",
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/14/Salk_Institute_Highsmith.jpg",
+          "localized": {
+            "RU": {
+              "title": "Институт Солка",
+              "subtitle": "Луис Кан · 1965 · Ла-Хойя",
+              "description": "В Институте Солка бетон — не фон, а точный инструмент для света, морского воздуха и тишины.",
+              "credit": "Кэрол М. Хайсмит · фотография в общественном достоянии / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "UA": {
+              "title": "Інститут Солка",
+              "subtitle": "Луї Кан · 1965 · Ла-Хойя",
+              "description": "В Інституті Солка бетон — не тло, а точний інструмент для світла, морського повітря й тиші.",
+              "credit": "Керол М. Гайсміт · фотографія у суспільному надбанні / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "DE": {
+              "title": "Salk Institute",
+              "subtitle": "Louis I. Kahn · 1965 · La Jolla",
+              "description": "Am Salk Institute ist Beton keine Kulisse, sondern ein präzises Instrument für Licht, Meeresluft und Stille.",
+              "credit": "Carol M. Highsmith · gemeinfreies Foto / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "ES": {
+              "title": "Instituto Salk",
+              "subtitle": "Louis I. Kahn · 1965 · La Jolla",
+              "description": "En el Instituto Salk, el hormigón no es un fondo sino un instrumento preciso para la luz, el aire marino y el silencio.",
+              "credit": "Carol M. Highsmith · fotografía de dominio público / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "TR": {
+              "title": "Salk Enstitüsü",
+              "subtitle": "Louis I. Kahn · 1965 · La Jolla",
+              "description": "Salk Enstitüsü’nde beton bir fon değil; ışık, deniz havası ve sessizlik için hassas bir araçtır.",
+              "credit": "Carol M. Highsmith · kamu malı fotoğraf / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "IT": {
+              "title": "Salk Institute",
+              "subtitle": "Louis I. Kahn · 1965 · La Jolla",
+              "description": "Al Salk Institute il cemento non è uno sfondo, ma uno strumento preciso per luce, aria di mare e silenzio.",
+              "credit": "Carol M. Highsmith · fotografia di pubblico dominio / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            }
+          }
+        },
+        {
+          "id": 19,
+          "picsId": "PICS-2026-015",
+          "category": "design",
+          "categoryLabel": "Design",
+          "title": "Panton Chair",
+          "subtitle": "Verner Panton · 1960 · moulded plastic",
+          "description": "One continuous red line becomes a chair: Verner Panton reduces a familiar object to colour, curve and a single unapologetic gesture.",
+          "credit": "Verner Panton; photo Sailko · CC BY-SA 4.0 / Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ngv_design,_verner_panton,_panton_chair,_1960_02.JPG",
+          "imageSeed": "",
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Ngv_design%2C_verner_panton%2C_panton_chair%2C_1960_02.JPG",
+          "localized": {
+            "RU": {
+              "title": "Кресло Panton",
+              "subtitle": "Вернер Пантон · 1960 · формованный пластик",
+              "description": "Одна непрерывная красная линия становится креслом: Вернер Пантон сводит знакомый предмет к цвету, изгибу и одному безоговорочному жесту.",
+              "credit": "Вернер Пантон; фото Sailko · CC BY-SA 4.0 / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "UA": {
+              "title": "Крісло Panton",
+              "subtitle": "Вернер Пантон · 1960 · формований пластик",
+              "description": "Одна безперервна червона лінія стає кріслом: Вернер Пантон зводить знайомий предмет до кольору, вигину й одного безкомпромісного жесту.",
+              "credit": "Вернер Пантон; фото Sailko · CC BY-SA 4.0 / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "DE": {
+              "title": "Panton Chair",
+              "subtitle": "Verner Panton · 1960 · geformter Kunststoff",
+              "description": "Eine einzige rote Linie wird zum Stuhl: Verner Panton reduziert ein vertrautes Objekt auf Farbe, Kurve und eine kompromisslose Geste.",
+              "credit": "Verner Panton; Foto Sailko · CC BY-SA 4.0 / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "ES": {
+              "title": "Silla Panton",
+              "subtitle": "Verner Panton · 1960 · plástico moldeado",
+              "description": "Una sola línea roja continua se vuelve silla: Verner Panton reduce un objeto familiar a color, curva y un gesto sin disculpas.",
+              "credit": "Verner Panton; foto de Sailko · CC BY-SA 4.0 / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "TR": {
+              "title": "Panton Sandalyesi",
+              "subtitle": "Verner Panton · 1960 · kalıplanmış plastik",
+              "description": "Tek bir kesintisiz kırmızı çizgi sandalyeye dönüşür: Verner Panton tanıdık bir nesneyi renge, eğriye ve tavizsiz bir jestine indirger.",
+              "credit": "Verner Panton; fotoğraf Sailko · CC BY-SA 4.0 / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "IT": {
+              "title": "Sedia Panton",
+              "subtitle": "Verner Panton · 1960 · plastica stampata",
+              "description": "Una sola linea rossa continua diventa una sedia: Verner Panton riduce un oggetto familiare a colore, curva e un gesto senza compromessi.",
+              "credit": "Verner Panton; foto di Sailko · CC BY-SA 4.0 / Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            }
+          }
+        },
+        {
+          "id": 20,
+          "picsId": "PICS-2026-016",
+          "category": "photography",
+          "categoryLabel": "Photography",
+          "title": "Co-op Grain Elevator, Caldwell",
+          "subtitle": "Russell Lee · 1940 · Caldwell, Idaho",
+          "description": "Russell Lee turns storage towers and a parked tractor into a quiet, almost abstract portrait of American infrastructure.",
+          "credit": "Russell Lee · public-domain photograph / Library of Congress",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Grain_elevators_Caldwell_Idaho_fsac.1a34206u.jpg",
+          "imageSeed": "",
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Grain_elevators_Caldwell_Idaho_fsac.1a34206u.jpg",
+          "localized": {
+            "RU": {
+              "title": "Кооперативный зерновой элеватор, Колдуэлл",
+              "subtitle": "Рассел Ли · 1940 · Колдуэлл, Айдахо",
+              "description": "Рассел Ли превращает силосные башни и припаркованный трактор в тихий, почти абстрактный портрет американской инфраструктуры.",
+              "credit": "Рассел Ли · фотография в общественном достоянии / Библиотека Конгресса",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "UA": {
+              "title": "Кооперативний зерновий елеватор, Колдвелл",
+              "subtitle": "Рассел Лі · 1940 · Колдвелл, Айдахо",
+              "description": "Рассел Лі перетворює силосні башти й припаркований трактор на тихий, майже абстрактний портрет американської інфраструктури.",
+              "credit": "Рассел Лі · фотографія у суспільному надбанні / Бібліотека Конгресу",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "DE": {
+              "title": "Genossenschaftlicher Getreidespeicher, Caldwell",
+              "subtitle": "Russell Lee · 1940 · Caldwell, Idaho",
+              "description": "Russell Lee macht aus Silotürmen und einem abgestellten Traktor ein leises, beinahe abstraktes Porträt amerikanischer Infrastruktur.",
+              "credit": "Russell Lee · gemeinfreies Foto / Library of Congress",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "ES": {
+              "title": "Elevador cooperativo de grano, Caldwell",
+              "subtitle": "Russell Lee · 1940 · Caldwell, Idaho",
+              "description": "Russell Lee convierte torres de silos y un tractor estacionado en un retrato silencioso y casi abstracto de la infraestructura estadounidense.",
+              "credit": "Russell Lee · fotografía de dominio público / Library of Congress",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "TR": {
+              "title": "Kooperatif Tahıl Asansörü, Caldwell",
+              "subtitle": "Russell Lee · 1940 · Caldwell, Idaho",
+              "description": "Russell Lee silo kulelerini ve park edilmiş bir traktörü Amerikan altyapısının sessiz, neredeyse soyut bir portresine dönüştürür.",
+              "credit": "Russell Lee · kamu malı fotoğraf / Library of Congress",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            },
+            "IT": {
+              "title": "Elevatore cooperativo per cereali, Caldwell",
+              "subtitle": "Russell Lee · 1940 · Caldwell, Idaho",
+              "description": "Russell Lee trasforma torri di silos e un trattore parcheggiato in un ritratto silenzioso e quasi astratto dell’infrastruttura americana.",
+              "credit": "Russell Lee · fotografia di pubblico dominio / Library of Congress",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": ""
+            }
+          }
+        }
+      ]
+    }
+  ]
 }
