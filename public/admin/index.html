@@ -12,7 +12,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=4.42" />
+    <link rel="stylesheet" href="./styles.css?v=4.43" />
     <link rel="stylesheet" href="./brandbook.css?v=3" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -1080,22 +1080,35 @@
                   </div>
                 </div>
                 <div class="issue-statusbar-actions">
-                  <button id="previewPdfBtn" class="btn btn-sm" type="button">Предпросмотр PDF ↗</button>
-                  <button id="saveDraftBtn" class="btn btn-sm" type="button">Черновик</button>
-                  <button id="publishIssueBtn" class="btn btn-primary btn-sm" type="button" disabled>Опубликовать</button>
+                  <a id="issueOpenPublicBtn" class="btn btn-sm" href="../issue" target="_blank" rel="noreferrer">Открыть /issue ↗</a>
+                  <button id="validateIssueBtn" class="btn btn-sm" type="button">Проверить выпуск</button>
+                  <button id="previewPdfBtn" class="btn btn-sm" type="button">Превью выпуска ↗</button>
+                  <button id="saveDraftBtn" class="btn btn-sm" type="button">Сохранить черновик</button>
+                  <button id="publishIssueBtn" class="btn btn-primary btn-sm" type="button" disabled>Опубликовать выпуск</button>
                 </div>
               </div>
               <div class="card card-highlight">
                 <h2 class="card-title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg> Конструктор выпуска</h2>
-                <p class="card-desc"><strong>1)</strong> выберите или создайте выпуск, <strong>2)</strong> соберите статьи, <strong>3)</strong> проверьте валидацию, <strong>4)</strong> опубликуйте. После — «Сохранить» в сайдбаре.</p>
+                <p class="card-desc">Соберите номер по шагам. Черновик не меняет сайт. После проверки нажмите «Опубликовать выпуск», а затем общий «Сохранить» в сайдбаре — только тогда данные уйдут на VPS.</p>
+                <div class="issue-pipeline" id="issuePipeline" aria-label="Путь публикации выпуска">
+                  <div class="issue-pipeline-step is-current" data-pipeline-step="draft"><span class="issue-pipeline-num">1</span><span><b>Черновик</b><small>только в редакторе</small></span></div>
+                  <span class="issue-pipeline-arrow" aria-hidden="true">→</span>
+                  <div class="issue-pipeline-step" data-pipeline-step="check"><span class="issue-pipeline-num">2</span><span><b>Проверка</b><small>ошибки блокируют выпуск</small></span></div>
+                  <span class="issue-pipeline-arrow" aria-hidden="true">→</span>
+                  <div class="issue-pipeline-step" data-pipeline-step="publish"><span class="issue-pipeline-num">3</span><span><b>Публикация</b><small>после общего сохранения</small></span></div>
+                </div>
+                <div class="issue-publication-destination" id="issuePublicationMap">
+                  <div><span class="issue-map-label">Куда попадёт выпуск</span><strong id="issuePublicDestination">Загрузите контент</strong></div>
+                  <div class="issue-map-note" id="issuePublicDestinationNote">Статьи остаются в общей ленте /articles; выбранные здесь также войдут в /issue.</div>
+                </div>
               </div>
               <div class="card">
                 <div class="issue-articles-head">
                   <h2 class="card-title" style="margin:0">Выпуски</h2>
                   <div class="issue-articles-tools">
-                    <button id="newIssueBtn" class="btn btn-sm" type="button">+ Новый</button>
-                    <button id="duplicateIssueBtn" class="btn btn-sm" type="button">Дублировать</button>
-                    <button id="deleteIssueBtn" class="btn btn-sm btn-danger-text" type="button">Удалить</button>
+                    <button id="newIssueBtn" class="btn btn-sm" type="button">+ Новый выпуск</button>
+                    <button id="duplicateIssueBtn" class="btn btn-sm" type="button">Копировать текущий</button>
+                    <button id="deleteIssueBtn" class="btn btn-sm btn-danger-text" type="button">Удалить выпуск</button>
                   </div>
                 </div>
                 <p class="card-desc">Архив всех номеров.</p>
@@ -1136,8 +1149,8 @@
                     <p class="form-hint" style="margin:-8px 0 0">Если пустое — по умолчанию «Mariia Ivanova». Показывается на сайте и в PDF-экспорте выпуска.</p>
                   </div>
                 </div>
-                <div class="card">
-                  <h2 class="card-title">Валидация</h2>
+                <div class="card" id="issueValidationCard">
+                  <h2 class="card-title">Проверка перед публикацией</h2>
                   <p class="card-desc">Критические ошибки блокируют публикацию.</p>
                   <div id="issueValidationSummary" class="issue-validation-summary"></div>
                   <div id="issueValidationChecks" class="issue-validation-checks"></div>
@@ -1153,13 +1166,23 @@
                     <button id="clearSelectionBtn" class="btn btn-sm" type="button">Очистить</button>
                   </div>
                 </div>
-                <p class="card-desc">Порядок (⠿) определяет последовательность в PDF.</p>
+                <p class="card-desc">Отмеченные статьи входят в выпуск и появятся в PDF и на странице <strong>/issue</strong>. Все статьи по-прежнему остаются в общей ленте <strong>/articles</strong>. Галочка включает, перетаскивание меняет порядок.</p>
                 <div id="issueArticlesList" class="issue-articles-list"><p style="color:var(--text-muted);font-size:.82rem">Загрузите контент.</p></div>
               </div>
               <div class="card">
                 <h2 class="card-title">Структура PDF</h2>
                 <p class="card-desc">Так будет собран журнал.</p>
                 <div id="issuePdfStructure" class="issue-pdf-structure"><p style="color:var(--text-muted);font-size:.82rem">Выберите статьи.</p></div>
+              </div>
+              <div class="card issue-site-output-card">
+                <div class="issue-articles-head">
+                  <div>
+                    <h2 class="card-title" style="margin:0">Что увидит читатель</h2>
+                    <p class="card-desc" style="margin-top:4px">Итоговая карта публикации: без догадок, что именно появится на сайте.</p>
+                  </div>
+                  <a id="issueSiteOutputLink" class="btn btn-sm" href="../issue" target="_blank" rel="noreferrer">Открыть страницу ↗</a>
+                </div>
+                <div id="issueSiteOutput" class="issue-site-output"><p class="form-hint">Загрузите контент.</p></div>
               </div>
             </div>
           </section>
@@ -1792,7 +1815,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.42" type="module"></script>
+    <script src="./app.js?v=4.43" type="module"></script>
     <script src="../brandbook/data.js?v=1"></script>
     <script src="./brandbook.js?v=3"></script>
     <script>

@@ -7211,7 +7211,7 @@ function renderIssueSwitcher() {
         ${thumb}
         <div class="issue-switcher-info">
           <div class="issue-switcher-title">${escapeHtml(issue.name || 'Без названия')}</div>
-          <div class="issue-switcher-meta"><span class="issue-switcher-dot ${status}"></span>${escapeHtml(issue.season || '—')} · ${statusLabel[status]}</div>
+        <div class="issue-switcher-meta"><span class="issue-switcher-dot ${status}"></span>${escapeHtml(issue.season || '—')} · ${statusLabel[status]} · ${Array.isArray(issue.articleIds) ? issue.articleIds.length : 0} стат.</div>
         </div>
       </div>`;
   }).join('');
@@ -7295,6 +7295,62 @@ function validateIssue(data, order) {
   const errors = checks.filter(c => c.level === 'danger').length;
   const warnings = checks.filter(c => c.level === 'warn').length;
   return { checks, errors, warnings, canPublish: errors === 0, articleErrors, articleWarnings };
+}
+
+// The public app has one stable issue route today. Keep this in one place so
+// the editor never makes the destination ambiguous when the routing changes.
+function issuePublicHref() {
+  return new URL('../issue', window.location.href).href;
+}
+
+function renderIssuePublicationMap(data, order, result) {
+  const issue = _issues?.[_currentIssueIdx];
+  if (!issue) return;
+  const status = issue.status === 'published' ? 'published' : (issue.status === 'archived' ? 'archived' : 'draft');
+  const isPublished = status === 'published';
+  const publicHref = issuePublicHref();
+  const destination = document.getElementById('issuePublicDestination');
+  const note = document.getElementById('issuePublicDestinationNote');
+  const openBtn = document.getElementById('issueOpenPublicBtn');
+  const outputLink = document.getElementById('issueSiteOutputLink');
+  if (openBtn) { openBtn.href = publicHref; openBtn.textContent = isPublished ? 'Открыть выпуск ↗' : 'Открыть текущий /issue ↗'; }
+  if (outputLink) outputLink.href = publicHref;
+  if (destination) {
+    destination.textContent = isPublished
+      ? `Опубликован на ${new URL(publicHref).pathname} · ${order.length} статей`
+      : `Пока только черновик · на сайте останется текущий опубликованный выпуск`;
+  }
+  if (note) {
+    note.textContent = isPublished
+      ? 'Этот выпуск виден читателям на /issue. Отмеченные статьи также остаются в общей ленте /articles.'
+      : 'Сохранение черновика не меняет сайт. После публикации именно отмеченные статьи появятся на /issue, а в /articles останутся как отдельные материалы.';
+  }
+
+  document.querySelectorAll('[data-pipeline-step]').forEach((step) => {
+    const key = step.dataset.pipelineStep;
+    step.classList.toggle('is-current', key === (isPublished ? 'publish' : (result.errors ? 'check' : 'draft')));
+    step.classList.toggle('is-complete', key === 'draft' || (key === 'check' && !result.errors) || (key === 'publish' && isPublished));
+    step.classList.toggle('has-errors', key === 'check' && result.errors > 0);
+  });
+
+  const output = document.getElementById('issueSiteOutput');
+  if (!output) return;
+  const articleList = order.length
+    ? order.map((id, index) => {
+      const article = issueArticlesOf(data).find((a) => Number(a.id) === Number(id));
+      const articleSlug = article ? slugifySeed(article.title, String(id)) : String(id);
+      return article ? `<li><span class="issue-output-num">${String(index + 1).padStart(2, '0')}</span><span>${escapeHtml(article.title || `Статья #${id}`)}</span><small>/article/${escapeHtml(articleSlug)}</small></li>` : '';
+    }).join('')
+    : '<li class="is-empty">Нет выбранных статей — выпуск не пройдёт проверку.</li>';
+  output.innerHTML = `
+    <div class="issue-output-state ${isPublished ? 'is-live' : 'is-draft'}">
+      <span class="issue-output-dot"></span>
+      <strong>${isPublished ? 'Видно читателям' : 'Не опубликовано'}</strong>
+      <span>${isPublished ? 'страница выпуска активна' : 'только локальный черновик'}</span>
+    </div>
+    <div class="issue-output-route"><span>Страница выпуска</span><code>/issue</code><span class="issue-output-route-note">${isPublished ? 'активна' : 'после публикации'}</span></div>
+    <div class="issue-output-route"><span>Общая лента материалов</span><code>/articles</code><span class="issue-output-route-note">статьи не исчезают</span></div>
+    <div class="issue-output-articles"><span class="issue-map-label">В выпуск войдут в этом порядке</span><ol>${articleList}</ol></div>`;
 }
 
 // First open / content reload: seed builder state from saved issues archive.
@@ -7503,6 +7559,7 @@ function refreshIssueValidation() {
   }
 
   renderIssuePdfStructure(data, order);
+  renderIssuePublicationMap(data, order, result);
 }
 
 function renderIssuePdfStructure(data, order) {
@@ -7573,10 +7630,18 @@ function bindIssueBuilder() {
   const onClick = (id, fn) => { const el = document.getElementById(id); if (el) el.addEventListener('click', fn); };
 
   onClick('saveDraftBtn', () => {
-    if (writeIssueConfig('draft')) showToast('success', 'Черновик сохранён – нажмите общий «Сохранить», чтобы отправить на VPS.');
+    if (writeIssueConfig('draft')) showToast('success', 'Черновик сохранён в редакторе. Нажмите общий «Сохранить», чтобы он ушёл на VPS.');
   });
   onClick('publishIssueBtn', () => {
-    if (writeIssueConfig('published')) showToast('success', 'Выпуск опубликован – нажмите общий «Сохранить», чтобы он попал на сайт.');
+    if (writeIssueConfig('published')) showToast('success', 'Выпуск подготовлен к публикации. Нажмите общий «Сохранить», чтобы он появился на /issue.');
+  });
+  onClick('validateIssueBtn', () => {
+    refreshIssueValidation();
+    document.getElementById('issueValidationCard')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    const data = parseEditorJsonSafe();
+    const result = data ? validateIssue(data, _issueOrder || []) : null;
+    if (result?.canPublish) showToast('success', `Проверка пройдена: выпуск готов, ${result.warnings} предупреждений.`);
+    else if (result) showToast('error', `Проверка остановлена: ${result.errors} ошибок.`);
   });
   onClick('collectAllBtn', () => {
     const data = parseEditorJsonSafe();
@@ -7652,7 +7717,7 @@ function bindIssueBuilder() {
       localStorage.setItem('epris_preview', editor.value);
       localStorage.setItem('epris_preview_issue', String(cur.id));
       window.open('../issue?preview=1', '_blank');
-      showToast('info', 'Открыт предпросмотр текущего черновика на сайте.');
+      showToast('info', 'Открыт предпросмотр текущего черновика на странице выпуска. Он ещё не виден читателям.');
     } catch (e) {
       showToast('error', `Не удалось открыть предпросмотр: ${e.message}`);
     }
