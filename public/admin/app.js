@@ -9014,7 +9014,10 @@ function bindStudioMediaActions() {
   };
   const HOME_CATEGORY_LABELS = Object.fromEntries(DEFAULT_HOME_CATEGORIES.map((category) => [category.id, category.label]));
   const HOMEPAGE_AUTO_PREFS_KEY = 'epris_homepage_auto_prefs_v1';
-  const HOMEPAGE_UI_PREFS_KEY = 'epris_homepage_ui_prefs_v1';
+  // New default: the homepage opens on the five-card editorial flow. Advanced
+  // controls remain available on demand, but an older expanded view must not
+  // keep overwhelming the editor after this clarity pass.
+  const HOMEPAGE_UI_PREFS_KEY = 'epris_homepage_ui_prefs_v2';
   let homepageRefreshTimer = null;
   let homepageRefreshBusy = false;
   let homepageAutoPublishTimer = null;
@@ -9108,7 +9111,7 @@ function bindStudioMediaActions() {
     const translations = data?.translations && typeof data.translations === 'object' ? data.translations : {};
     const value = translations?.[lang]?.[key];
     if (typeof value === 'string' && value.trim()) return value;
-    return String(translations?.[DEFAULT_LANGUAGE]?.[key] || '');
+    return '';
   }
 
   function updateHomepageTranslation(key, lang, value) {
@@ -9147,7 +9150,7 @@ function bindStudioMediaActions() {
     }).join('');
     copyEl.innerHTML = HOMEPAGE_COPY_FIELDS.map((field) => `<div class="homepage-layout-copy-row">
       <div class="homepage-layout-copy-label"><strong>${esc(field.label)}</strong><span>${esc(field.hint)}</span></div>
-      <div class="homepage-layout-copy-grid">${HOMEPAGE_LAYOUT_LANGUAGES.map((lang) => `<label><small>${lang}</small><input data-home-copy-key="${esc(field.key)}" data-home-copy-lang="${lang}" value="${esc(homepageTranslationValue(data, field.key, lang))}" aria-label="${esc(field.label)} · ${lang}"></label>`).join('')}</div>
+      <div class="homepage-layout-copy-grid">${HOMEPAGE_LAYOUT_LANGUAGES.map((lang) => `<label><small>${lang}</small><input data-home-copy-key="${esc(field.key)}" data-home-copy-lang="${lang}" value="${esc(homepageTranslationValue(data, field.key, lang))}" placeholder="Авто" aria-label="${esc(field.label)} · ${lang}"></label>`).join('')}</div>
     </div>`).join('');
     previewEl.innerHTML = layout.sectionOrder.map((key, index) => {
       const def = HOMEPAGE_SECTION_DEFS.find((candidate) => candidate.id === key);
