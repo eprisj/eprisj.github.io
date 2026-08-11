@@ -8,6 +8,12 @@ export interface Item {
   /** Stable public/editorial identity for a Pics of the week photo card. */
   picsId?: string;
   /**
+   * Weekly-release membership for Pics of the week. This is intentionally
+   * separate from the internal media id and from an article id: a fresh draft
+   * can exist in the library without replacing the release readers see.
+   */
+  picsReleaseId?: string;
+  /**
    * Explicit membership in the independent Pics of the week collection.
    * Article covers and article-gallery images must keep this unset, even when
    * they happen to have a visually similar category.
@@ -80,6 +86,12 @@ export interface HomepageArchiveCard {
   sourceUrl?: string;
   imageSeed?: string;
   imageUrl?: string;
+  /**
+   * Optional frozen localized copy. Older entries only contain the base copy;
+   * the public reader falls back safely without rewriting that historical
+   * snapshot from a later edit of the source card.
+   */
+  localized?: Record<string, Partial<Pick<HomepageArchiveCard, 'categoryLabel' | 'title' | 'subtitle' | 'description' | 'credit' | 'sourceUrl' | 'imageSeed' | 'imageUrl'>>>;
 }
 
 export interface HomepageArchiveEntry {
@@ -88,7 +100,29 @@ export interface HomepageArchiveEntry {
   publishedAt: string;
   /** Stable card-id signature prevents duplicate entries on repeated publish. */
   signature?: string;
+  /**
+   * `false` hides this historical week from the public archive while keeping
+   * it available to the editorial team. Missing keeps legacy entries public.
+   */
+  publicArchive?: boolean;
+  /** Legacy-friendly alias for integrations that used a generic visibility flag. */
+  visibleOnSite?: boolean;
+  archivedAt?: string;
   cards: HomepageArchiveCard[];
+}
+
+/** A release is a deliberate five-card weekly composition, not a LIFO bucket. */
+export interface HomepagePicsRelease {
+  id: string;
+  label?: string;
+  status: 'draft' | 'published' | 'archived';
+  createdAt?: string;
+  publishedAt?: string;
+  archivedAt?: string;
+  /** `false` keeps an archived release in the editorial history only. */
+  publicArchive?: boolean;
+  /** Ordered PICS ids, never internal media or article ids. */
+  picsIds: string[];
 }
 
 export interface ContentBlock {
@@ -371,6 +405,10 @@ export interface HomepageSettings {
     centerScale?: number;
     sideScale?: number;
     gap?: number;
+    /** The only weekly release eligible for the public carousel. */
+    activeReleaseId?: string;
+    /** Historical/current release records. Omitted content keeps legacy LIFO behaviour. */
+    releases?: HomepagePicsRelease[];
   };
   /** Homepage editorial feed. New published articles are included by default. */
   articles?: {
@@ -916,11 +954,32 @@ export function getHomepageSettings(): HomepageSettings {
   return src().homepage || {};
 }
 
+/**
+ * Resolve the deliberately published five-card composition. Returning null is
+ * significant: old content did not have release records, so public pages must
+ * keep their established category/LIFO fallback until an editor publishes the
+ * first explicit release.
+ */
+export function getActiveHomepagePicsRelease(): HomepagePicsRelease | null {
+  const pics = getHomepageSettings().picsOfWeek;
+  const activeId = String(pics?.activeReleaseId || '').trim();
+  if (!activeId || !Array.isArray(pics?.releases)) return null;
+  const release = pics.releases.find((candidate) => String(candidate?.id || '').trim() === activeId);
+  if (!release || release.status !== 'published' || !Array.isArray(release.picsIds)) return null;
+  return release;
+}
+
 /** Published weekly homepage snapshots, newest first. */
 export function getHomepageArchive(): HomepageArchiveEntry[] {
   const archive = Array.isArray(src().homepageArchive) ? src().homepageArchive : [];
   return archive
-    .filter((entry): entry is HomepageArchiveEntry => Boolean(entry && Array.isArray(entry.cards) && entry.cards.length))
+    .filter((entry): entry is HomepageArchiveEntry => Boolean(
+      entry
+      && Array.isArray(entry.cards)
+      && entry.cards.length
+      && entry.publicArchive !== false
+      && entry.visibleOnSite !== false
+    ))
     .slice()
     .sort((a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || ''));
 }

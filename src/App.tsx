@@ -28,6 +28,7 @@ import {
   getIssueArchive,
   getStudio,
   getHomepageSettings,
+  getActiveHomepagePicsRelease,
   resolveAuthor,
   translateRole,
   Item,
@@ -1316,12 +1317,21 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
   const compactCards = picsLayout.cardStyle === 'compact';
   const picksMode = picsSettings.mode === 'auto' ? 'auto' : 'manual';
   const useLifo = picsSettings.ordering !== 'manual';
+  const activeRelease = getActiveHomepagePicsRelease();
   // Pics of the week is an independent curated collection. Article covers and
   // inline article media are deliberately excluded even when they carry the
   // same category words or an image URL.
   const publishedPhotoItems = items.filter((item) => item.picsOfWeek === true && Boolean(String(item.imageUrl || '').trim()));
+  // Once an editor publishes a release, its PICS ids are the single source of
+  // truth for the live carousel. New cards may be prepared in the library,
+  // but cannot displace the current week merely because they are newer. Sites
+  // without release data retain the original LIFO/manual behaviour below.
+  const activeReleaseIds = new Set((activeRelease?.picsIds || []).map((id) => String(id).trim()).filter(Boolean));
+  const releasePhotoItems = activeRelease
+    ? publishedPhotoItems.filter((item) => activeReleaseIds.has(getPicsId(item)) || item.picsReleaseId === activeRelease.id)
+    : publishedPhotoItems;
   const orderedItems = picksMode === 'auto' || useLifo
-    ? [...publishedPhotoItems].sort((a, b) => {
+    ? [...releasePhotoItems].sort((a, b) => {
         const stamp = (value?: string) => {
           const parsed = value ? Date.parse(value) : Number.NaN;
           return Number.isFinite(parsed) ? parsed : 0;
@@ -1329,7 +1339,13 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
         return stamp(b.updatedAt || b.publishAt) - stamp(a.updatedAt || a.publishAt)
           || getPicsId(b).localeCompare(getPicsId(a));
       })
-    : publishedPhotoItems;
+    : activeRelease
+      ? [...releasePhotoItems].sort((a, b) => {
+          const aIndex = activeReleaseIds.size ? activeRelease.picsIds.indexOf(getPicsId(a)) : Number.MAX_SAFE_INTEGER;
+          const bIndex = activeReleaseIds.size ? activeRelease.picsIds.indexOf(getPicsId(b)) : Number.MAX_SAFE_INTEGER;
+          return aIndex - bIndex;
+        })
+      : publishedPhotoItems;
   const configuredCategories = Array.isArray(picsSettings.categories) ? picsSettings.categories : [];
   const categories = [...configuredCategories, ...DEFAULT_HOMEPAGE_PICS_CATEGORIES]
     .filter((category, index, all) => category && category.id && all.findIndex((candidate) => candidate?.id === category.id) === index)
@@ -1501,9 +1517,6 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
           <h1 id="pics-of-week-title" className="font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">{t('homepage.picsTitle')}</h1>
         </div>
         {showNavigation && <div className="home-carousel-mobile-controls" aria-label={t('homepage.carouselLabel')}>
-          <button type="button" onClick={() => moveCarousel(-1)} className="home-carousel-mobile-arrow" aria-label={t('homepage.previous')}>
-            <ArrowLeft size={18} strokeWidth={1.5} aria-hidden="true" />
-          </button>
           <div className="home-carousel-mobile-status">
             <span className="home-carousel-mobile-count" aria-hidden="true">
               {String(safeCenterIndex + 1).padStart(2, '0')} / {String(Math.max(itemCount, 1)).padStart(2, '0')}
@@ -1531,9 +1544,6 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
               })}
             </div>
           </div>
-          <button type="button" onClick={() => moveCarousel(1)} className="home-carousel-mobile-arrow" aria-label={t('homepage.next')}>
-            <ArrowRight size={18} strokeWidth={1.5} aria-hidden="true" />
-          </button>
         </div>}
         <div className="home-carousel-frame">
           {showNavigation && <button type="button" onClick={() => moveCarousel(-1)} className="home-carousel-edge-arrow home-carousel-edge-arrow--prev" aria-label={t('homepage.previous')}><ArrowLeft size={17} strokeWidth={1.5} aria-hidden="true" /></button>}
@@ -1635,6 +1645,10 @@ function DailyPicksArchive({ archive, items, onImageClick, currentLang, t }: { a
   if (!archive.length) return null;
   const currentByPicsId = new Map(items.map((item) => [getPicsId(item), item]));
   const currentById = new Map(items.map((item) => [Number(item.id), item]));
+  const archiveCategories = [
+    ...(getHomepageSettings().picsOfWeek?.categories || []),
+    ...DEFAULT_HOMEPAGE_PICS_CATEGORIES,
+  ].filter((category, index, all) => category?.id && all.findIndex((candidate) => candidate?.id === category.id) === index);
   const languageTags: Record<string, string> = { EN: 'en', RU: 'ru', UA: 'uk', TR: 'tr', DE: 'de', IT: 'it', ES: 'es' };
   const formatDate = (value: string) => {
     const date = new Date(value);
@@ -1661,16 +1675,22 @@ function DailyPicksArchive({ archive, items, onImageClick, currentLang, t }: { a
             </div>
             <div className="grid grid-cols-3 gap-2 md:grid-cols-5">
               {entry.cards.slice(0, 5).map((card) => {
-                // Current cards resolve by their own PICS identity. The
-                // numeric media id is only a migration fallback for old
-                // archived weeks and is never shown to readers.
+                // Archive cards are historical snapshots. Prefer their frozen
+                // image and copy (including a future per-language snapshot)
+                // over a mutable card that may have been edited for a newer
+                // release. The live card remains a legacy fallback only when
+                // an older snapshot did not include a specific field.
+                const frozen = { ...card, ...(card.localized?.[currentLang] || card.localized?.[DEFAULT_LANGUAGE] || {}) };
                 const localized = currentByPicsId.get(String(card.picsId || '')) || currentById.get(Number(card.id));
-                const image = localized?.imageUrl || localized?.imageSeed || card.imageUrl || card.imageSeed;
-                const category = localized?.homeCategory
-                  ? localizedHomepageCategoryLabel({ id: localized.homeCategory, label: localized.homeCategory }, currentLang)
-                  : card.categoryLabel || entry.label || 'Pics';
-                const description = homepageItemDescription(localized || ({ id: Number(card.id), title: card.title || category, subtitle: card.subtitle || '', fig: '', description: card.description || '', imageSeed: card.imageSeed || '' } as Item), t('homepage.descriptionUnavailable'));
-                const title = localized ? homepageItemTitle(localized) : (card.title || category);
+                const image = frozen.imageUrl || frozen.imageSeed || localized?.imageUrl || localized?.imageSeed;
+                const categoryId = String(card.category || localized?.homeCategory || '').trim();
+                const categoryConfig = archiveCategories.find((candidate) => candidate.id === categoryId);
+                const category = categoryId
+                  ? localizedHomepageCategoryLabel(categoryConfig || { id: categoryId, label: frozen.categoryLabel || categoryId }, currentLang)
+                  : frozen.categoryLabel || entry.label || 'Pics';
+                const title = String(frozen.title || '').trim() || homepageItemTitle(localized || ({ id: Number(card.id), title: '', subtitle: '', fig: '', description: '', imageSeed: '' } as Item)) || category;
+                const description = String(frozen.description || frozen.subtitle || '').trim()
+                  || (localized ? homepageItemDescription(localized, t('homepage.descriptionUnavailable')) : t('homepage.descriptionUnavailable'));
                 return (
                   <div
                     key={`${entry.id}-${card.picsId || card.id}`}
