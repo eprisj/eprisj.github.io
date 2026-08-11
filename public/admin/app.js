@@ -8663,6 +8663,7 @@ function bindStudioRowActions() {
   };
   const HOME_CATEGORY_LABELS = Object.fromEntries(DEFAULT_HOME_CATEGORIES.map((category) => [category.id, category.label]));
   const HOMEPAGE_AUTO_PREFS_KEY = 'epris_homepage_auto_prefs_v1';
+  const HOMEPAGE_UI_PREFS_KEY = 'epris_homepage_ui_prefs_v1';
   let homepageRefreshTimer = null;
   let homepageRefreshBusy = false;
   let homepageAutoPublishTimer = null;
@@ -8870,6 +8871,29 @@ function bindStudioRowActions() {
 
   function saveHomepageAutoPrefs(prefs) {
     try { localStorage.setItem(HOMEPAGE_AUTO_PREFS_KEY, JSON.stringify(prefs)); } catch { /* storage unavailable */ }
+  }
+
+  function readHomepageUiPrefs() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(HOMEPAGE_UI_PREFS_KEY) || '{}');
+      return { simple: saved.simple !== false };
+    } catch { return { simple: true }; }
+  }
+
+  function setHomepageSimpleMode(simple, { persist = true } = {}) {
+    const root = document.querySelector('#tab-homepage .homepage-admin-layout');
+    if (!root) return;
+    const isSimple = Boolean(simple);
+    root.classList.toggle('is-simple', isSimple);
+    const toggle = document.getElementById('homepageComplexityToggle');
+    if (toggle) {
+      toggle.textContent = isSimple ? 'Все настройки' : 'Упростить';
+      toggle.setAttribute('aria-expanded', String(!isSimple));
+      toggle.title = isSimple ? 'Показать синхронизацию, раскладку, витрину и архив' : 'Скрыть вторичные настройки';
+    }
+    if (persist) {
+      try { localStorage.setItem(HOMEPAGE_UI_PREFS_KEY, JSON.stringify({ simple: isSimple })); } catch { /* storage unavailable */ }
+    }
   }
 
   function setHomepageRemoteNotice(message, state = 'warn', show = true) {
@@ -9243,7 +9267,8 @@ function bindStudioRowActions() {
     if (!editorEl || !data) return;
     const categories = homepageCategories(data);
     const languages = typeof getTranslationLanguages === 'function' ? getTranslationLanguages(data) : ['EN', 'RU', 'UA', 'DE', 'IT', 'ES', 'TR'];
-    editorEl.innerHTML = `<div class="homepage-category-editor-head"><strong>Названия и авторазбор</strong><span>Название показывается на сайте. Ключевые слова помогают автоматически разложить новые фото; подписи ниже — отдельные переводы для 7 языков.</span></div>${categories.map((category, index) => `
+    const wasOpen = Boolean(editorEl.querySelector('.homepage-category-details')?.open);
+    const categoryFields = `<div class="homepage-category-editor-head"><strong>Названия и авторазбор</strong><span>Название показывается на сайте. Ключевые слова помогают автоматически разложить новые фото; подписи ниже — отдельные переводы для 7 языков.</span></div>${categories.map((category, index) => `
       <div class="homepage-category-row">
         <span class="homepage-category-index">0${index + 1}</span>
         <label class="homepage-field"><span>Название категории</span><input data-home-category-label="${esc(category.id)}" value="${esc(category.label)}"></label>
@@ -9254,6 +9279,7 @@ function bindStudioRowActions() {
           return `<label><small>${esc(lang)}</small><input data-home-category-label-lang="${esc(category.id)}" data-home-category-lang="${esc(lang)}" value="${esc(value)}"></label>`;
         }).join('')}</div></div>
       </div>`).join('')}`;
+    editorEl.innerHTML = `<details class="homepage-category-details"${wasOpen ? ' open' : ''}><summary><strong>Настроить категории и переводы</strong><span>Необязательно · 5 направлений · 7 языков</span><em aria-hidden="true">+</em></summary><div class="homepage-category-details-body">${categoryFields}</div></details>`;
     editorEl.querySelectorAll('[data-home-category-label], [data-home-category-matches], [data-home-category-label-lang]').forEach((input) => input.addEventListener('change', (event) => {
       const id = event.target.dataset.homeCategoryLabel || event.target.dataset.homeCategoryMatches || event.target.dataset.homeCategoryLabelLang;
       const isLabel = Boolean(event.target.dataset.homeCategoryLabel);
@@ -9326,11 +9352,13 @@ function bindStudioRowActions() {
       setTimeout(() => addEntryBtn?.click(), 80);
     }));
     renderHomepageCategoryEditor(data);
-    auditEl.innerHTML = [
-      ...audit.errors.map((message) => `<div class="homepage-audit-item is-error"><span aria-hidden="true">!</span>${esc(message)}</div>`),
-      ...audit.warnings.map((message) => `<div class="homepage-audit-item is-warn"><span aria-hidden="true">△</span>${esc(message)}</div>`),
-      ...(!audit.errors.length && !audit.warnings.length ? [`<div class="homepage-audit-item is-ok"><span aria-hidden="true">✓</span>${autoMode ? 'Автоматический LIFO выбрал самые свежие изображения в пяти категориях.' : 'Категории собраны, критических проблем не найдено.'}</div>`] : [])
-    ].join('');
+    const auditMessages = [...audit.errors, ...audit.warnings];
+    if (!auditMessages.length) {
+      auditEl.innerHTML = `<div class="homepage-audit-item is-ok"><span aria-hidden="true">✓</span>${autoMode ? 'Автоматически выбраны самые свежие изображения.' : 'Категории собраны, критических проблем нет.'}</div>`;
+    } else {
+      const issueLabel = audit.errors.length ? `Нужно проверить: ${auditMessages.length}` : `Есть подсказки: ${auditMessages.length}`;
+      auditEl.innerHTML = `<details class="homepage-audit-details"><summary><span class="homepage-audit-summary-label"><span aria-hidden="true">${audit.errors.length ? '!' : '△'}</span>${issueLabel}</span><span class="homepage-audit-summary-action">Показать детали <b aria-hidden="true">+</b></span></summary><div class="homepage-audit-details-body">${auditMessages.map((message) => `<div class="homepage-audit-item ${audit.errors.includes(message) ? 'is-error' : 'is-warn'}"><span aria-hidden="true">${audit.errors.includes(message) ? '!' : '△'}</span>${esc(message)}</div>`).join('')}</div></details>`;
+    }
   }
 
   function reorderLocalizedItems(data) {
@@ -9485,6 +9513,10 @@ function bindStudioRowActions() {
   }
 
   document.getElementById('homepageOpenEditorBtn')?.addEventListener('click', () => openGalleryEditor(null));
+  document.getElementById('homepageComplexityToggle')?.addEventListener('click', () => {
+    const root = document.querySelector('#tab-homepage .homepage-admin-layout');
+    setHomepageSimpleMode(!root?.classList.contains('is-simple'));
+  });
   document.getElementById('homepageAddBtn')?.addEventListener('click', () => {
     openGalleryEditor(null);
     setTimeout(() => addEntryBtn?.click(), 80);
@@ -9632,6 +9664,7 @@ function bindStudioRowActions() {
     setHomepageRemoteNotice('Свежая версия VPS загружена. Локальный черновик заменён по вашему выбору.', 'ok', true);
   });
   restartHomepageRefreshTimer();
+  setHomepageSimpleMode(readHomepageUiPrefs().simple, { persist: false });
   window._homepageCategories = homepageCategories;
   window._renderHomepageTab = renderHomepageTab;
   // The shell restores the last tab before this module finishes evaluating.

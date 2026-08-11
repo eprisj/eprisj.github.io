@@ -12,7 +12,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=4.38" />
+    <link rel="stylesheet" href="./styles.css?v=4.39" />
     <link rel="stylesheet" href="./brandbook.css?v=3" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -327,6 +327,7 @@
                   <button id="homepageFillBtn" class="btn" type="button"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.6 5.2L19 10l-5.4 1.8L12 17l-1.6-5.2L5 10l5.4-1.8L12 3Z"></path><path d="m19 15 .7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7L19 15Z"></path></svg><span class="btn-label">Дозаполнить пустые</span></button>
                   <button id="homepageInheritBtn" class="btn" type="button"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13"></path><path d="m13 6 6 6-6 6"></path><path d="M5 6v12"></path></svg><span class="btn-label">Заполнить наследуемые поля</span></button>
                   <button id="homepageOpenEditorBtn" class="btn" type="button">Полный редактор</button>
+                  <button id="homepageComplexityToggle" class="btn" type="button" aria-controls="tab-homepage" aria-expanded="false">Все настройки</button>
                   <a class="btn" href="../" target="_blank" rel="noreferrer"><span class="btn-label">Открыть сайт</span><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5"></path><path d="M10 14 19 5"></path><path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4"></path></svg></a>
                   <button id="homepagePublishBtn" class="btn btn-primary" type="button">Опубликовать</button>
                 </div>
@@ -363,7 +364,7 @@
                   <span id="homepageLastPublished">Не опубликовано</span>
                 </div>
               </div>
-              <section class="card homepage-control-card" aria-labelledby="homepageControlTitle">
+              <section class="card homepage-control-card homepage-advanced" aria-labelledby="homepageControlTitle">
                 <div class="homepage-section-head">
                   <div>
                     <span class="homepage-admin-kicker">Автопилот и ручной контроль</span>
@@ -386,7 +387,7 @@
                 <div id="homepageArticlesSyncStatus" class="homepage-layout-status" role="status" aria-live="polite">Новые статьи наследуются из общей ленты публикаций.</div>
                 <div id="homepageRemoteNotice" class="homepage-remote-notice" role="status" aria-live="polite" hidden></div>
               </section>
-              <section class="card homepage-layout-editor" aria-labelledby="homepageLayoutEditorTitle">
+              <section class="card homepage-layout-editor homepage-advanced" aria-labelledby="homepageLayoutEditorTitle">
                 <div class="homepage-section-head">
                   <div>
                     <span class="homepage-admin-kicker">Конструктор главной</span>
@@ -434,7 +435,7 @@
                   </div>
                 </div>
               </section>
-              <section class="card homepage-carousel-layout-card" aria-labelledby="homepageCarouselLayoutTitle">
+              <section class="card homepage-carousel-layout-card homepage-advanced" aria-labelledby="homepageCarouselLayoutTitle">
                 <div class="homepage-section-head">
                   <div>
                     <span class="homepage-admin-kicker">Композиция карусели</span>
@@ -471,7 +472,7 @@
                   <div id="homepageComposerPreview" class="homepage-composer-preview" aria-live="polite"></div>
                   <div id="homepageComposerAudit" class="homepage-composer-audit" aria-live="polite"></div>
                 </section>
-                <aside class="card homepage-composer-help">
+                <aside class="card homepage-composer-help homepage-advanced">
                   <span class="homepage-admin-kicker">Проверка перед публикацией</span>
                   <h3 class="card-title">Хвосты под контролем</h3>
                   <ul class="homepage-check-list">
@@ -484,7 +485,7 @@
                   </ul>
                 </aside>
               </div>
-              <section class="card homepage-showcase-editor" aria-labelledby="homepageShowcaseEditorTitle">
+              <section class="card homepage-showcase-editor homepage-advanced" aria-labelledby="homepageShowcaseEditorTitle">
                 <div class="homepage-section-head">
                   <div>
                     <span class="homepage-admin-kicker">Редакционная витрина</span>
@@ -515,9 +516,9 @@
                 </div>
                 <p id="homepageShowcaseStatus" class="homepage-showcase-status" role="status" aria-live="polite">Изменения сохраняются в черновик.</p>
               </section>
-              <div id="homepageGalleryMeta" class="homepage-gallery-meta" aria-live="polite"></div>
-              <div id="homepageGalleryList" class="homepage-gallery-list"></div>
-              <section class="card homepage-archive-admin" aria-labelledby="homepageArchiveTitle">
+              <div id="homepageGalleryMeta" class="homepage-gallery-meta homepage-advanced" aria-live="polite"></div>
+              <div id="homepageGalleryList" class="homepage-gallery-list homepage-advanced"></div>
+              <section class="card homepage-archive-admin homepage-advanced" aria-labelledby="homepageArchiveTitle">
                 <div class="homepage-section-head">
                   <div>
                     <span class="homepage-admin-kicker">История подборок</span>
@@ -1790,7 +1791,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.38" type="module"></script>
+    <script src="./app.js?v=4.39" type="module"></script>
     <script src="../brandbook/data.js?v=1"></script>
     <script src="./brandbook.js?v=3"></script>
     <script>
