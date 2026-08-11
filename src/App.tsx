@@ -1414,12 +1414,22 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
     if (drag.moved) suppressNextCardClick();
     if (horizontalSwipe) moveCarousel(deltaX < 0 ? 1 : -1);
   };
-  const handleCarouselCardClick = (src: string, alt: string) => {
+  const handleCarouselCardClick = (position: number, src: string, alt: string) => {
     if (suppressCardClickRef.current) {
       suppressCardClickRef.current = false;
       return;
     }
-    onImageClick(src, alt);
+    // The centred photograph is the only work opened in the lightbox. A
+    // click on a desktop side preview first brings that work to the centre;
+    // the next click opens it full-screen. This prevents a reader from
+    // unexpectedly losing their place while browsing the strip.
+    if (position === 2) {
+      onImageClick(src, alt);
+      return;
+    }
+    const offset = position - 2;
+    setCarouselDirection(offset > 0 ? 1 : -1);
+    setCenterIndex((current) => (current + offset + itemCount) % itemCount);
   };
   const centerScale = Math.max(0.96, Math.min(1.14, Number(picsSettings.centerScale) || 1));
   const sideScale = Math.max(0.72, Math.min(0.94, Number(picsSettings.sideScale) || 0.88));
@@ -1503,9 +1513,13 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
                     className={`home-carousel-card group ${isCenter ? 'home-carousel-card--center' : 'home-carousel-card--side'}`}
                     role="button"
                     tabIndex={0}
-                    onClick={() => handleCarouselCardClick(resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${title}`)}
-                    onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onImageClick(resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${title}`); }}
-                    aria-label={`${t('homepage.openImage')}: ${categoryLabel}`}
+                    onClick={() => handleCarouselCardClick(position, resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${title}`)}
+                    onKeyDown={(event) => {
+                      if (event.key !== 'Enter' && event.key !== ' ') return;
+                      event.preventDefault();
+                      handleCarouselCardClick(position, resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${title}`);
+                    }}
+                    aria-label={isCenter ? `${t('homepage.openImage')}: ${categoryLabel}` : `${categoryLabel}: ${title}`}
                   >
                     <div className="home-carousel-media relative aspect-[4/5] overflow-hidden bg-[#E8DED5]">
                       <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" loading="lazy" referrerPolicy="no-referrer" />
