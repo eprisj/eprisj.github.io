@@ -9322,6 +9322,13 @@ function bindStudioMediaActions() {
     notice.innerHTML = message;
   }
 
+  function setHomepagePublishFeedback(message, state = 'ready') {
+    const feedback = document.getElementById('homepagePublishFeedback');
+    if (!feedback) return;
+    feedback.textContent = message;
+    feedback.dataset.state = state;
+  }
+
   function commitHomepageLocal(data, message = 'Изменения главной сохранены в локальный черновик.') {
     editor.value = JSON.stringify(data, null, 2);
     updateStats(data);
@@ -9370,7 +9377,7 @@ function bindStudioMediaActions() {
       const localized = data?.localizedCollections && typeof data.localizedCollections === 'object' ? data.localizedCollections : {};
       const missingDescriptions = (typeof getTranslationLanguages === 'function' ? getTranslationLanguages(data) : ['EN', 'RU', 'UA', 'DE', 'IT', 'ES', 'TR'])
         .filter((lang) => {
-          if (lang === DEFAULT_LANG) return !String(item.description || '').trim();
+          if (lang === DEFAULT_LANGUAGE) return !String(item.description || '').trim();
           const localizedItem = Array.isArray(localized[lang]?.items) ? localized[lang].items.find((candidate) => Number(candidate?.id) === Number(item.id)) : null;
           return !String(localizedItem?.homeDescription || localizedItem?.description || '').trim();
         });
@@ -9898,8 +9905,16 @@ function bindStudioMediaActions() {
   }
 
   async function publishHomepage({ silent = false } = {}) {
-    if (homepagePublishBusy) { homepagePublishQueued = true; return; }
-    if (!editor.value) { if (!silent) showToast?.('error', 'Сначала загрузите контент.'); return; }
+    if (homepagePublishBusy) {
+      homepagePublishQueued = true;
+      setHomepagePublishFeedback('Публикация уже выполняется…', 'working');
+      return;
+    }
+    if (!editor.value) {
+      setHomepagePublishFeedback('Сначала загрузите контент.', 'error');
+      if (!silent) showToast?.('error', 'Сначала загрузите контент.');
+      return;
+    }
     const data = readContent();
     const audit = data ? homepageAudit(data, homepageCategoryGroups(data)) : { errors: ['Контент не загружен.'], warnings: [] };
     if (data) {
@@ -9907,12 +9922,17 @@ function bindStudioMediaActions() {
       if (!layout.sectionOrder.some((key) => layout.visibility?.[key] !== false)) audit.errors.unshift('Все секции главной скрыты — включите хотя бы один блок перед публикацией.');
     }
     if (audit.errors.length) {
+      setHomepagePublishFeedback(`Нужна правка: ${audit.errors[0]}`, 'error');
       if (!silent) showToast?.('error', `Нельзя опубликовать главную: ${audit.errors[0]}`);
       renderHomepageTab();
       return;
     }
     const pw = typeof getAdminPassword === 'function' ? getAdminPassword() : '';
-    if (!pw) { if (!silent) showToast?.('error', 'Нет пароля редакции — войдите заново.'); return; }
+    if (!pw) {
+      setHomepagePublishFeedback('Сессия истекла — войдите в админку заново.', 'error');
+      if (!silent) showToast?.('error', 'Нет пароля редакции — войдите заново.');
+      return;
+    }
     // Freeze the current five-category composition into the archive as part of the
     // same payload. Re-publishing an unchanged composition does not create a
     // duplicate entry, so the archive remains a useful editorial record.
@@ -9935,6 +9955,7 @@ function bindStudioMediaActions() {
     const publishPayload = JSON.stringify(publishData, null, 2);
     const button = document.getElementById('homepagePublishBtn');
     homepagePublishBusy = true;
+    setHomepagePublishFeedback('Публикую на VPS…', 'working');
     if (button) { button.disabled = true; button.textContent = silent ? 'Автовыталкиваю…' : 'Публикую…'; }
     try {
       const response = await fetch(CONTENT_API, {
@@ -9952,10 +9973,13 @@ function bindStudioMediaActions() {
       if (lastEl) lastEl.textContent = `Опубликовано ${new Date().toLocaleString('ru-RU', { dateStyle: 'short', timeStyle: 'short' })}`;
       const titleEl = document.getElementById('homepageStatusTitle');
       if (titleEl) titleEl.textContent = 'Главная опубликована';
+      setHomepagePublishFeedback('Опубликовано — сайт обновлён.', 'success');
       if (!silent) showToast?.('success', '✓ Главная и витрина опубликованы.');
     } catch (error) {
-      if (!silent) showToast?.('error', 'Не удалось опубликовать: ' + error.message);
-      setHomepageRemoteNotice(`Выталкивание не удалось: ${esc(error.message)}`, 'warn', true);
+      setHomepagePublishFeedback(`Не опубликовано: ${getErrorMessage(error)}`, 'error');
+      const reason = getErrorMessage(error);
+      if (!silent) showToast?.('error', 'Не удалось опубликовать: ' + reason);
+      setHomepageRemoteNotice(`Выталкивание не удалось: ${esc(reason)}`, 'warn', true);
     } finally {
       homepagePublishBusy = false;
       if (button) { button.disabled = false; button.textContent = 'Опубликовать'; }

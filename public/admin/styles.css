@@ -6701,6 +6701,16 @@ input::placeholder, textarea::placeholder { color: color-mix(in srgb, var(--text
 .homepage-admin-hero .card-title { font-size: 1.5rem; }
 .homepage-admin-hero .card-desc { max-width: 690px; }
 .homepage-admin-actions { position: relative; z-index: 1; }
+.homepage-publish-feedback {
+  flex: 1 0 100%;
+  margin-top: 2px;
+  color: var(--text-muted);
+  font: .62rem/1.4 var(--font-mono);
+  letter-spacing: .02em;
+}
+.homepage-publish-feedback[data-state="working"] { color: var(--accent); }
+.homepage-publish-feedback[data-state="success"] { color: var(--success, #2f7d4a); }
+.homepage-publish-feedback[data-state="error"] { color: var(--danger, #b44444); }
 .homepage-quickstart,
 .homepage-control-card,
 .homepage-layout-editor,
