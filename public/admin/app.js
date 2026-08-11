@@ -2635,6 +2635,19 @@ function updateAdminToolbarContext() {
   if (!data) return;
 
   const section = visualSectionSelect.value;
+  // The primary action must name the thing the editor is creating. A generic
+  // “Add” was easy to miss and, worse, made it unclear whether it added a
+  // block, a translation, a photo, or an entirely new article.
+  const createAction = {
+    articles: { label: '+ Создать статью', title: 'Создать новую статью как черновик' },
+    reviews: { label: '+ Создать обзор', title: 'Создать новый обзор как черновик' },
+    items: { label: '+ Добавить фото', title: 'Создать новую фото-карточку как черновик' },
+    libraryItems: { label: '+ Добавить файл', title: 'Создать новую запись библиотеки как черновик' }
+  }[section] || { label: '+ Создать запись', title: 'Создать новую запись как черновик' };
+  if (addEntryBtn) {
+    addEntryBtn.textContent = createAction.label;
+    addEntryBtn.title = createAction.title;
+  }
   const sourceLang = visualLangSelect.value || DEFAULT_LANGUAGE;
   const targetLangs = getTranslationLanguages(data).filter((lang) => lang !== sourceLang);
   if (languageSyncScope) {
@@ -3315,6 +3328,9 @@ function buildArticleBlueprint(kind, nextId) {
 
   return {
     id: nextId,
+    // Every newly created editorial piece begins as a draft. Visibility is a
+    // deliberate later action, never a side effect of clicking “Create”.
+    draft: true,
     title,
     author: 'EPRIS Journal',
     role: 'Editorial Desk',
@@ -3366,6 +3382,7 @@ function buildReviewBlueprint(kind, nextId) {
   const imageUrl = getOptionalString(getCreatorInputValue(creatorImageUrlInput));
   return {
     id: nextId,
+    draft: true,
     title,
     subject: title,
     rating: 0,
@@ -6594,7 +6611,7 @@ async function addVisualEntry() {
     const lang = visualLangSelect.value || DEFAULT_LANGUAGE;
     const entries = getSectionArray(data, section, lang, lang !== DEFAULT_LANGUAGE);
     const nextId = getNextEntryId(data, section);
-    let entry = createDefaultEntry(section, nextId);
+    let entry = { ...createDefaultEntry(section, nextId), draft: true };
 
     if (lang !== DEFAULT_LANGUAGE) {
       setStatus('info', `Готовлю новую запись на ${lang}...`);
@@ -6614,7 +6631,14 @@ async function addVisualEntry() {
     pendingVisualEntryId = nextId;
     setEditorData(data);
     const syncNote = syncedLangs.length ? ` Языки: ${syncedLangs.join(', ')}.` : '';
-    setStatus('success', `Добавлена новая запись #${nextId} (${getSectionLabel(section)} / ${lang}).${syncNote}`);
+    const createdMessage = section === 'articles'
+      ? 'Создана статья'
+      : section === 'reviews'
+        ? 'Создан обзор'
+        : section === 'items'
+          ? 'Создана фото-карточка'
+          : 'Создана запись';
+    setStatus('success', `${createdMessage} #${nextId} как черновик (${getSectionLabel(section)} / ${lang}).${syncNote}`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
