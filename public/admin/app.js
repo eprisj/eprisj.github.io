@@ -7669,7 +7669,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     if (btn.dataset.tab === 'studio') setTimeout(renderStudioTab, 50);
     if (btn.dataset.tab === 'homepage') setTimeout(() => {
       window._renderHomepageTab && window._renderHomepageTab();
-      refreshHomepageFromVps({ silent: true });
+      window._refreshHomepageFromVps?.({ silent: true });
     }, 50);
     if (btn.dataset.tab === 'manifest') setTimeout(() => window._renderManifestTab && window._renderManifestTab(), 50);
     if (btn.dataset.tab === 'authors') setTimeout(() => window._renderAuthorsTab && window._renderAuthorsTab(), 50);
@@ -9684,6 +9684,7 @@ function bindStudioRowActions() {
   setHomepageSimpleMode(readHomepageUiPrefs().simple, { persist: false });
   window._homepageCategories = homepageCategories;
   window._renderHomepageTab = renderHomepageTab;
+  window._refreshHomepageFromVps = refreshHomepageFromVps;
   // The shell restores the last tab before this module finishes evaluating.
   // If that tab is Homepage, no click event is emitted after the renderer is
   // registered and the editor used to remain as an empty static card. Render
