@@ -9410,6 +9410,8 @@ function bindStudioMediaActions() {
       title: String(item.homeTitle || item.title || ''),
       subtitle: String(item.homeSubtitle || item.subtitle || ''),
       description: String(item.homeDescription || item.description || ''),
+      credit: String(item.homeCredit || ''),
+      sourceUrl: String(item.homeSourceUrl || ''),
       imageSeed: String(item.imageSeed || ''),
       imageUrl: String(item.imageUrl || ''),
     }));
@@ -9424,33 +9426,126 @@ function bindStudioMediaActions() {
     return Number.isNaN(date.getTime()) ? String(value || '') : date.toLocaleDateString('ru-RU', { dateStyle: 'medium' });
   }
 
+  function homepageArchiveCountLabel(count) {
+    const last = Math.abs(Number(count) || 0) % 10;
+    const lastTwo = Math.abs(Number(count) || 0) % 100;
+    const word = lastTwo >= 11 && lastTwo <= 14 ? 'выпусков' : last === 1 ? 'выпуск' : last >= 2 && last <= 4 ? 'выпуска' : 'выпусков';
+    return `${count} ${word}`;
+  }
+
+  function createHomepageWeekDraft(entryId) {
+    const data = readContent();
+    const archive = Array.isArray(data?.homepageArchive) ? data.homepageArchive : [];
+    const entry = archive.find((candidate) => String(candidate?.id) === String(entryId));
+    const cards = Array.isArray(entry?.cards) ? entry.cards.filter((card) => String(card?.imageUrl || card?.imageSeed || '').trim()) : [];
+    if (!data || !entry || !cards.length) {
+      showToast?.('error', 'Не удалось прочитать состав этого выпуска.');
+      return;
+    }
+    if (!window.confirm(`Собрать черновик следующей недели из выпуска «${entry.label || 'Pics of the week'}»? На сайте ничего не изменится до отдельной публикации.`)) return;
+    if (!Array.isArray(data.items)) data.items = [];
+    const createdAt = new Date().toISOString();
+    const created = [];
+    cards.slice(0, 5).forEach((card) => {
+      const item = createDefaultEntry('items', getNextEntryId(data, 'items'));
+      item.picsOfWeek = true;
+      item.picsId = nextPicsId(data);
+      item.draft = false;
+      item.updatedAt = createdAt;
+      item.homeCategory = String(card.category || '');
+      item.homeTitle = String(card.title || '');
+      item.homeSubtitle = String(card.subtitle || '');
+      item.homeDescription = String(card.description || '');
+      item.homeCredit = String(card.credit || '');
+      item.homeSourceUrl = String(card.sourceUrl || '');
+      item.title = item.homeTitle || 'Untitled work';
+      item.subtitle = item.homeSubtitle || '';
+      item.description = item.homeDescription || '';
+      item.imageUrl = String(card.imageUrl || '');
+      if (item.imageUrl) delete item.imageSeed;
+      else item.imageSeed = String(card.imageSeed || '');
+      data.items.unshift(item);
+      // Keep the archive copy publishable in every existing locale. We clone
+      // the matching photo-card translation when it still exists; old archive
+      // entries fall back to the editorial base instead of creating an empty
+      // localization shell that would block the whole gallery.
+      const localizedCollections = data.localizedCollections && typeof data.localizedCollections === 'object'
+        ? data.localizedCollections
+        : {};
+      Object.values(localizedCollections).forEach((bucket) => {
+        if (!Array.isArray(bucket?.items)) return;
+        const source = bucket.items.find((candidate) => String(candidate?.picsId || '') === String(card?.picsId || ''))
+          || bucket.items.find((candidate) => Number(candidate?.id) === Number(card?.id));
+        const localizedItem = deepClone(source || item);
+        localizedItem.id = item.id;
+        localizedItem.picsId = item.picsId;
+        localizedItem.picsOfWeek = true;
+        localizedItem.draft = false;
+        localizedItem.updatedAt = createdAt;
+        localizedItem.homeCategory = item.homeCategory;
+        localizedItem.imageUrl = item.imageUrl;
+        if (item.imageUrl) delete localizedItem.imageSeed;
+        else localizedItem.imageSeed = item.imageSeed;
+        bucket.items.unshift(localizedItem);
+      });
+      created.push(item);
+    });
+    setEditorData(data);
+    renderHomepageTab();
+    showToast?.('success', `Создан черновик следующей недели: ${created.length} самостоятельных фото-карточек. Проверьте их и нажмите «Опубликовать», когда будете готовы.`);
+  }
+
+  function removeHomepageArchiveEntry(entryId) {
+    const data = readContent();
+    const archive = Array.isArray(data?.homepageArchive) ? data.homepageArchive : [];
+    const entry = archive.find((candidate) => String(candidate?.id) === String(entryId));
+    if (!data || !entry) return;
+    if (!window.confirm(`Удалить из архива выпуск от ${homepageArchiveDate(entry.publishedAt)}? Карточки-фото останутся в библиотеке.`)) return;
+    data.homepageArchive = archive.filter((candidate) => String(candidate?.id) !== String(entryId));
+    setEditorData(data);
+    renderHomepageTab();
+    showToast?.('info', 'Выпуск убран из черновика архива. Нажмите «Опубликовать», чтобы применить это на сайте.');
+  }
+
   function renderHomepageArchive(data) {
     const list = document.getElementById('homepageArchiveList');
     const count = document.getElementById('homepageArchiveCount');
     if (!list || !data) return;
     const archive = Array.isArray(data.homepageArchive) ? data.homepageArchive.slice().sort((a, b) => String(b?.publishedAt || '').localeCompare(String(a?.publishedAt || ''))) : [];
-    if (count) count.textContent = `${archive.length} ${archive.length === 1 ? 'выпуск' : 'выпусков'}`;
+    if (count) count.textContent = homepageArchiveCountLabel(archive.length);
     if (!archive.length) {
-      list.innerHTML = '<p class="homepage-archive-empty">Архив появится после первой успешной публикации недельной композиции.</p>';
+      list.innerHTML = '<p class="homepage-archive-empty"><strong>Пока нет сохранённых недель.</strong><span>Когда вы опубликуете следующую подборку, текущие пять карточек останутся здесь как отдельный выпуск.</span></p>';
       return;
     }
-    list.innerHTML = archive.slice(0, 12).map((entry) => {
+    list.innerHTML = archive.map((entry, index) => {
       const cards = Array.isArray(entry?.cards) ? entry.cards.slice(0, 5) : [];
-      return `<article class="homepage-archive-entry">
-        <div class="homepage-archive-entry-meta"><strong>${esc(entry?.label || 'week')}</strong><span>${esc(homepageArchiveDate(entry?.publishedAt))}</span></div>
-        <div class="homepage-archive-thumbs">
-          ${cards.map((card) => {
-            const image = card?.imageUrl || card?.imageSeed || '';
-            return `<div class="homepage-archive-thumb">
-              <div class="homepage-archive-thumb-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : '—'}</div>
-              <span class="homepage-archive-thumb-title">${esc(card?.categoryLabel || card?.category || 'Фото')}</span>
-              <p class="homepage-archive-thumb-description">${esc(card?.description || 'Краткое описание не заполнено.')}</p>
-            </div>`;
-          }).join('')}
+      return `<details class="homepage-archive-entry"${index === 0 ? ' open' : ''}>
+        <summary>
+          <span class="homepage-archive-entry-meta"><strong>${esc(entry?.label || 'Pics of the week')}</strong><span>${esc(homepageArchiveDate(entry?.publishedAt))}</span></span>
+          <span class="homepage-archive-entry-summary">${cards.length} из 5 фото <b aria-hidden="true">⌄</b></span>
+        </summary>
+        <div class="homepage-archive-entry-body">
+          <div class="homepage-archive-thumbs">
+            ${cards.map((card) => {
+              const image = card?.imageUrl || card?.imageSeed || '';
+              return `<article class="homepage-archive-thumb">
+                <div class="homepage-archive-thumb-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : '—'}</div>
+                <div class="homepage-archive-thumb-copy"><span>${esc(card?.categoryLabel || card?.category || 'Фото')}</span><strong>${esc(card?.title || 'Без названия')}</strong><p>${esc(card?.description || 'Краткое описание не заполнено.')}</p></div>
+              </article>`;
+            }).join('')}
+          </div>
+          <div class="homepage-archive-entry-actions">
+            <span class="homepage-gallery-id">Снимок ${esc(entry?.id || '')}</span>
+            <div>
+              <button class="btn btn-sm" type="button" data-home-archive-copy="${esc(entry?.id || '')}">Собрать копию</button>
+              <button class="btn btn-sm btn-danger" type="button" data-home-archive-remove="${esc(entry?.id || '')}">Удалить из архива</button>
+            </div>
+          </div>
         </div>
-        <span class="homepage-gallery-id">Выпуск ${esc(entry?.id || '')}</span>
-      </article>`;
+      </details>`;
     }).join('');
+    list.querySelectorAll('[data-home-archive-copy]').forEach((button) => button.addEventListener('click', () => createHomepageWeekDraft(button.getAttribute('data-home-archive-copy'))));
+    list.querySelectorAll('[data-home-archive-remove]').forEach((button) => button.addEventListener('click', () => removeHomepageArchiveEntry(button.getAttribute('data-home-archive-remove'))));
   }
 
   function setHomepageCategory(categoryId, picsId) {
@@ -9951,12 +10046,14 @@ function bindStudioMediaActions() {
       if (!silent) showToast?.('error', 'Нет пароля редакции — войдите заново.');
       return;
     }
-    // Freeze the current five-category composition into the archive as part of the
-    // same payload. Re-publishing an unchanged composition does not create a
-    // duplicate entry, so the archive remains a useful editorial record.
+    // Archive the *currently live* five-card composition before replacing it.
+    // The draft is the upcoming week; freezing the outgoing VPS selection here
+    // means a first migration also preserves the already-published week.
     const publishData = deepClone(data);
-    const publishGroups = homepageCategoryGroups(publishData);
-    const archiveCards = homepageArchiveCards(publishGroups);
+    const publishedGroups = homepagePublishedData && homepagePhotoItems(homepagePublishedData).length
+      ? homepageCategoryGroups(homepagePublishedData)
+      : homepageCategoryGroups(publishData);
+    const archiveCards = homepageArchiveCards(publishedGroups);
     const archive = Array.isArray(publishData.homepageArchive) ? publishData.homepageArchive.slice() : [];
     const signature = homepageArchiveSignature(archiveCards);
     if (archiveCards.length && !archive.some((entry) => String(entry?.signature || homepageArchiveSignature(Array.isArray(entry?.cards) ? entry.cards : [])) === signature)) {
@@ -9969,7 +10066,9 @@ function bindStudioMediaActions() {
         cards: archiveCards,
       });
     }
-    publishData.homepageArchive = archive.slice(0, 24);
+    // An editorial history is not a rolling cache: every published week stays
+    // available until an editor deliberately removes it from the archive.
+    publishData.homepageArchive = archive;
     const publishPayload = JSON.stringify(publishData, null, 2);
     const button = document.getElementById('homepagePublishBtn');
     homepagePublishBusy = true;

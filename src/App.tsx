@@ -86,8 +86,8 @@ function ImageLightbox({ src, alt, onClose }: { src: string; alt: string; onClos
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.2 }}
-      className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4"
+      transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-0 sm:p-5"
       role="dialog"
       aria-modal="true"
       aria-label={alt || 'Image preview'}
@@ -100,10 +100,14 @@ function ImageLightbox({ src, alt, onClose }: { src: string; alt: string; onClos
       >
         <X size={24} />
       </button>
-      <img
+      <motion.img
         src={src}
         alt={alt}
-        className="max-h-[90vh] max-w-[92vw] object-contain select-none shadow-2xl"
+        initial={{ opacity: 0, scale: 0.985 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.99 }}
+        transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+        className="max-h-[100dvh] max-w-full object-contain select-none shadow-2xl sm:max-h-[92vh] sm:max-w-[92vw]"
         referrerPolicy="no-referrer"
       />
     </motion.div>
@@ -1521,6 +1525,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
                       handleCarouselCardClick(position, resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${title}`);
                     }}
                     aria-label={isCenter ? `${t('homepage.openImage')}: ${categoryLabel}` : `${categoryLabel}: ${title}`}
+                    title={isCenter ? t('homepage.openImage') : undefined}
                   >
                     <div className="home-carousel-media relative aspect-[4/5] overflow-hidden bg-[#E8DED5]">
                       <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" loading="lazy" referrerPolicy="no-referrer" />

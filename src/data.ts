@@ -74,6 +74,10 @@ export interface HomepageArchiveCard {
   title: string;
   subtitle?: string;
   description?: string;
+  /** Attribution stays with the frozen weekly card when it is reused later. */
+  credit?: string;
+  /** Original image/source link retained with the archived card. */
+  sourceUrl?: string;
   imageSeed?: string;
   imageUrl?: string;
 }

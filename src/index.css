@@ -210,10 +210,21 @@ select {
 .home-carousel-card.home-carousel-card--center {
   flex-basis: 30%;
   z-index: 1;
+  cursor: zoom-in;
 }
 
 .home-carousel-card--center:hover {
   opacity: .98;
+}
+
+/* The centre work is a direct, full-screen image action. A zoom cursor makes
+   that affordance clear without adding another label over the artwork. */
+.home-carousel-card--center .home-carousel-media {
+  transition: box-shadow .24s ease, border-color .24s ease;
+}
+.home-carousel-card--center:hover .home-carousel-media {
+  border-color: color-mix(in srgb, var(--c-accent) 46%, transparent);
+  box-shadow: 0 16px 36px color-mix(in srgb, var(--c-accent) 13%, transparent);
 }
 
 .home-carousel-card--side:hover {
