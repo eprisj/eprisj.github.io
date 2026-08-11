@@ -13154,7 +13154,7 @@ async function flushModernEditor() {
   const shell     = document.getElementById('wysShell');
   const canvas    = document.getElementById('wysCanvas');
   const toggleBtn = document.getElementById('wysToggleBtn');
-  const closeBtn  = document.getElementById('wysCloseBtn');
+  const openPageBtn = document.getElementById('wysOpenPageBtn');
   const deviceBtn = document.getElementById('wysDeviceBtn');
   const metaBtn   = document.getElementById('wysMetaBtn');
   const drawer    = document.getElementById('wysMetaDrawer');
@@ -13182,10 +13182,9 @@ async function flushModernEditor() {
     { t: 'map',       label: 'Карта',    icon: '⚑' },
   ];
 
-  // The block editor is now the one canonical article editor. The former
-  // inline canvas remains dormant compatibility code, never a competing
-  // workflow: the same article must not appear in two unrelated modes.
-  let _enabled = false;
+  // One canonical editing surface: an article is edited in its own reading
+  // layout. There is no competing "classic" mode for articles anymore.
+  let _enabled = true;
   let _model   = null;
   let _ctx     = { section: 'articles', lang: DEFAULT_LANGUAGE, id: 0 };
   let _commitTimer = null;
@@ -13251,11 +13250,22 @@ async function flushModernEditor() {
   undoBtn?.addEventListener('click', undo);
   redoBtn?.addEventListener('click', redo);
 
-  const CLASSIC = ['creatorStudioWrap', 'editorSplit', 'commandCenter', 'stats'];
+  const CLASSIC = ['creatorStudioWrap', 'editorSplit', 'commandCenter', 'editorialQueueCard', 'entryHistoryCard', 'stats'];
   const classicEls = () => CLASSIC.map((id) => document.getElementById(id)).filter(Boolean);
+  const contentTab = document.getElementById('tab-content');
 
-  function showWys()     { shell.classList.add('on'); classicEls().forEach((el) => (el.style.display = 'none')); toggleBtn.classList.add('active'); }
-  function showClassic() { shell.classList.remove('on'); classicEls().forEach((el) => (el.style.display = '')); toggleBtn.classList.remove('active'); }
+  function showWys() {
+    shell.classList.add('on');
+    contentTab?.classList.add('is-live-editor');
+    classicEls().forEach((el) => (el.style.display = 'none'));
+    toggleBtn.classList.add('active');
+  }
+  function showClassic() {
+    shell.classList.remove('on');
+    contentTab?.classList.remove('is-live-editor');
+    classicEls().forEach((el) => (el.style.display = ''));
+    toggleBtn.classList.remove('active');
+  }
 
   function imgUrl(src, w = 900, h = 600) {
     if (!src) return '';
@@ -14645,9 +14655,13 @@ async function flushModernEditor() {
   let _mobile = false;
   deviceBtn && (deviceBtn.onclick = () => { _mobile = !_mobile; canvas.classList.toggle('mobile', _mobile); deviceBtn.textContent = _mobile ? '🖥️' : '📱'; });
 
-  // ── mode toggle ───────────────────────────────────────────────────────────
-  toggleBtn.addEventListener('click', () => { _enabled = !_enabled; if (_enabled) reload(); else showClassic(); });
-  closeBtn && (closeBtn.onclick = () => { _enabled = false; showClassic(); });
+  // The top button opens the real public page. It never switches to a second
+  // editor: the canvas above is the only place to write an article.
+  openPageBtn?.addEventListener('click', () => {
+    if (!_model) return;
+    const slug = slugifySeed(_model.title || String(_ctx.id), String(_ctx.id));
+    window.open(`/article/${encodeURIComponent(slug)}/`, '_blank', 'noopener,noreferrer');
+  });
 
   // ── react to selection changes from the classic toolbar ───────────────────
   ['visualSection', 'visualEntry', 'visualLang'].forEach((id) => {
@@ -14672,7 +14686,6 @@ async function flushModernEditor() {
 (function initReviewCanvas() {
   const shell     = document.getElementById('revWysShell');
   const canvas    = document.getElementById('revCanvas');
-  const closeBtn  = document.getElementById('revCloseBtn');
   const saveState = document.getElementById('revSaveState');
   const undoBtn   = document.getElementById('revUndoBtn');
   const redoBtn   = document.getElementById('revRedoBtn');
@@ -14749,6 +14762,7 @@ async function flushModernEditor() {
     const id = Number(visualEntrySelect.value);
     const entry = arr.find((e) => Number(e.id) === id);
     shell.classList.add('on');
+    contentTab?.classList.add('is-live-editor');
     if (!classicEls().every((el) => el.style.display === 'none')) classicEls().forEach((el) => (el.style.display = 'none'));
     if (!entry) { canvas.innerHTML = '<div class="wys-empty"><div class="wys-empty-icon">✦</div><p>Выберите обзор в списке сверху или создайте новый.</p></div>'; return; }
     _id = id;
@@ -14760,6 +14774,7 @@ async function flushModernEditor() {
   function scheduleReload() { clearTimeout(_reloadTimer); _reloadTimer = setTimeout(reload, 140); }
   const CLASSIC = ['creatorStudioWrap', 'editorSplit', 'commandCenter', 'stats'];
   const classicEls = () => CLASSIC.map((id) => document.getElementById(id)).filter(Boolean);
+  const contentTab = document.getElementById('tab-content');
 
   // ── metadata drawer (draft / scheduled publish) ────────────────────────────
   // Reviews only need draft+publishAt here — category/author/etc are already
@@ -15132,8 +15147,6 @@ async function flushModernEditor() {
     const last = canvas.querySelector('.wys-review-block:last-child [data-wys]');
     last?.focus();
   }));
-
-  closeBtn && (closeBtn.onclick = () => { shell.classList.remove('on'); classicEls().forEach((el) => (el.style.display = '')); });
 
   ['visualSection', 'visualEntry', 'visualLang'].forEach((id) => {
     document.getElementById(id)?.addEventListener('change', scheduleReload);

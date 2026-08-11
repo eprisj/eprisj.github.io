@@ -748,20 +748,21 @@
                 </div>
               </div>
 
-              <!-- ═══ WYSIWYG LIVE EDITOR — edit everything inline on the article ═══ -->
+              <!-- ═══ ONE EDITOR SURFACE — the article itself is the editor ═══ -->
               <div id="wysShell" class="wys-shell">
                 <div class="wys-bar">
                   <div class="wys-bar-left">
-                    <span class="wys-live-badge"><span class="wys-live-dot"></span>Живой предпросмотр</span>
+                    <span class="wys-live-badge"><span class="wys-live-dot"></span>Редактор статьи</span>
+                    <span class="wys-editor-hint">Пишите прямо в материал</span>
                     <span id="wysSaveState" class="wys-save-state">Сохранено локально</span>
                   </div>
                   <div class="wys-bar-right">
-                    <button id="wysUndoBtn" class="btn btn-sm" type="button" title="Отменить (Ctrl+Z)" disabled><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 8 4 12l5 4"></path><path d="M4 12h9a7 7 0 0 1 7 7"></path></svg></button>
-                    <button id="wysRedoBtn" class="btn btn-sm" type="button" title="Повторить (Ctrl+Shift+Z)" disabled><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.8-4L3 10"></path><path d="M3 5v5h5"></path><path d="M4 13a8 8 0 0 0 14.8 4L21 14"></path><path d="M21 19v-5h-5"></path></svg></button>
+                    <button id="wysUndoBtn" class="btn btn-sm" type="button" title="Отменить (Ctrl+Z)" aria-label="Отменить" disabled><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 8 4 12l5 4"></path><path d="M4 12h9a7 7 0 0 1 7 7"></path></svg></button>
+                    <button id="wysRedoBtn" class="btn btn-sm" type="button" title="Повторить (Ctrl+Shift+Z)" aria-label="Повторить" disabled><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.8-4L3 10"></path><path d="M3 5v5h5"></path><path d="M4 13a8 8 0 0 0 14.8 4L21 14"></path><path d="M21 19v-5h-5"></path></svg></button>
                     <span class="toolbar-sep"></span>
-                    <button id="wysMetaBtn" class="btn btn-sm" type="button" title="Метаданные"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1 .51V20a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15H4a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 5.6V5a2 2 0 0 1 4 0v.09A1.65 1.65 0 0 0 15 5.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9H20a2 2 0 0 1 0 4h-.09A1.65 1.65 0 0 0 19.4 15Z"></path></svg><span>Мета</span></button>
-                    <button id="wysDeviceBtn" class="btn btn-sm" type="button" title="Мобильный/десктоп"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"></rect><path d="M10 18h4"></path></svg></button>
-                    <button id="wysCloseBtn" class="btn btn-sm" type="button" title="Классический редактор"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg><span>Классика</span></button>
+                    <button id="wysMetaBtn" class="btn btn-sm" type="button" title="Настройки публикации"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1 .51V20a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15H4a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 5.6V5a2 2 0 0 1 4 0v.09A1.65 1.65 0 0 0 15 5.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9H20a2 2 0 0 1 0 4h-.09A1.65 1.65 0 0 0 19.4 15Z"></path></svg><span>Настройки</span></button>
+                    <button id="wysDeviceBtn" class="btn btn-sm" type="button" title="Показать мобильную версию" aria-label="Показать мобильную версию"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"></rect><path d="M10 18h4"></path></svg></button>
+                    <button id="wysOpenPageBtn" class="btn btn-sm" type="button" title="Открыть материал на сайте"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5"></path><path d="M10 14 19 5"></path><path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4"></path></svg><span>На сайте</span></button>
                   </div>
                 </div>
                 <div class="wys-scroll">
@@ -777,28 +778,25 @@
                 </div>
               </div>
 
-              <!-- ═══ REVIEW CANVAS — same live-editing pattern, for Reviews ═══ -->
+              <!-- ═══ REVIEW CANVAS — the review itself is the editor ═══ -->
               <div id="revWysShell" class="wys-shell">
                 <div class="wys-bar">
                   <div class="wys-bar-left">
-                    <span class="wys-live-badge"><span class="wys-live-dot"></span>Живой предпросмотр</span>
+                    <span class="wys-live-badge"><span class="wys-live-dot"></span>Редактор обзора</span>
+                    <span class="wys-editor-hint">Пишите прямо в материал</span>
                     <span id="revSaveState" class="wys-save-state">Сохранено локально</span>
                   </div>
                   <div class="wys-bar-right">
-                    <button id="revUndoBtn" class="btn btn-sm" type="button" title="Отменить (Ctrl+Z)" disabled><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 8 4 12l5 4"></path><path d="M4 12h9a7 7 0 0 1 7 7"></path></svg></button>
-                    <button id="revRedoBtn" class="btn btn-sm" type="button" title="Повторить (Ctrl+Shift+Z)" disabled><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.8-4L3 10"></path><path d="M3 5v5h5"></path><path d="M4 13a8 8 0 0 0 14.8 4L21 14"></path><path d="M21 19v-5h-5"></path></svg></button>
+                    <button id="revUndoBtn" class="btn btn-sm" type="button" title="Отменить (Ctrl+Z)" aria-label="Отменить" disabled><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 8 4 12l5 4"></path><path d="M4 12h9a7 7 0 0 1 7 7"></path></svg></button>
+                    <button id="revRedoBtn" class="btn btn-sm" type="button" title="Повторить (Ctrl+Shift+Z)" aria-label="Повторить" disabled><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.8-4L3 10"></path><path d="M3 5v5h5"></path><path d="M4 13a8 8 0 0 0 14.8 4L21 14"></path><path d="M21 19v-5h-5"></path></svg></button>
                     <span class="toolbar-sep"></span>
-                    <button id="revStructureBtn" class="btn btn-sm" type="button" title="Добавить редакторскую структуру в текст обзора"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span>Структура</span></button>
-                    <button id="revPreviewBtn" class="btn btn-sm" type="button" title="Открыть отдельную публичную страницу обзора"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5"></path><path d="M10 14 19 5"></path><path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4"></path></svg><span>Страница</span></button>
-                    <button id="revCopyUrlBtn" class="btn btn-sm" type="button" title="Скопировать ссылку на обзор"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3"></path></svg><span>URL</span></button>
-                    <span class="toolbar-sep"></span>
-                    <button id="revMetaBtn" class="btn btn-sm" type="button" title="Метаданные"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1 .51V20a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15H4a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 5.6V5a2 2 0 0 1 4 0v.09A1.65 1.65 0 0 0 15 5.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9H20a2 2 0 0 1 0 4h-.09A1.65 1.65 0 0 0 19.4 15Z"></path></svg><span>Мета</span></button>
-                    <button id="revCloseBtn" class="btn btn-sm" type="button" title="Классический редактор"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg><span>Классика</span></button>
+                    <button id="revMetaBtn" class="btn btn-sm" type="button" title="Настройки публикации"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1 .51V20a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15H4a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 5.6V5a2 2 0 0 1 4 0v.09A1.65 1.65 0 0 0 15 5.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9H20a2 2 0 0 1 0 4h-.09A1.65 1.65 0 0 0 19.4 15Z"></path></svg><span>Настройки</span></button>
+                    <button id="revPreviewBtn" class="btn btn-sm" type="button" title="Открыть обзор на сайте"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5"></path><path d="M10 14 19 5"></path><path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4"></path></svg><span>На сайте</span></button>
                   </div>
                 </div>
                 <div class="wys-scroll">
-                  <div class="review-block-toolbar" role="toolbar" aria-label="Добавить блок в обзор">
-                    <div class="review-block-toolbar-label"><span class="review-block-toolbar-kicker">Содержание</span><strong>Добавить блок</strong></div>
+                  <details class="review-block-toolbar" aria-label="Добавить блок в обзор">
+                    <summary><span class="review-block-toolbar-kicker">Содержание</span><strong>+ Добавить блок</strong></summary>
                     <div class="review-block-toolbar-group" aria-label="Текстовые блоки">
                       <button type="button" data-rev-add="text"><b>¶</b>Текст</button>
                       <button type="button" data-rev-add="header"><b>H</b>Заголовок</button>
@@ -811,7 +809,8 @@
                       <button type="button" data-rev-add="link"><b>↗</b>Ссылка</button>
                       <button type="button" data-rev-add="checklist"><b>✓</b>Чек‑лист</button>
                     </div>
-                  </div>
+                    <button id="revStructureBtn" class="review-structure-btn" type="button">Добавить готовую структуру обзора</button>
+                  </details>
                   <div id="revCanvas" class="wys-canvas" aria-label="Редактируемый обзор"></div>
                 </div>
                 <!-- metadata drawer -->
@@ -1887,7 +1886,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.48" type="module"></script>
+    <script src="./app.js?v=4.49" type="module"></script>
     <script src="../brandbook/data.js?v=1"></script>
     <script src="./brandbook.js?v=3"></script>
     <script>
