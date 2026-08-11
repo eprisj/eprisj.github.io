@@ -4460,6 +4460,11 @@
       "rating": 0,
       "content": [
         {
+          "type": "header",
+          "content": "DETAILS THAT MATTER",
+          "level": 2
+        },
+        {
           "type": "text",
           "content": "Taking into account first impressions - atmosphere, service, who this place is for. The following are details that support the findings."
         },
@@ -4475,11 +4480,6 @@
         {
           "type": "text",
           "content": "What stays with you after the first encounter?"
-        },
-        {
-          "type": "header",
-          "content": "DETAILS THAT MATTER",
-          "level": 2
         },
         {
           "type": "text",
@@ -4520,7 +4520,7 @@
       "date": "Aug 1, 2026",
       "imageUrl": "https://api.eprisjournal.com/uploads/msnluv70lwze6y.jpg",
       "draft": true,
-      "updatedAt": "2026-08-11T13:04:20.281Z"
+      "updatedAt": "2026-08-11T13:04:23.694Z"
     }
   ],
   "libraryItems": [
