@@ -9823,7 +9823,7 @@ function bindStudioMediaActions() {
           <span class="homepage-gallery-id">ID ${esc(item.id)}</span>
         </div>
         <div class="homepage-gallery-controls">
-          <button class="btn btn-sm" type="button" data-home-edit="${esc(item.id)}">Фото + текст</button>
+          <button class="btn btn-sm" type="button" data-home-edit="${esc(item.id)}">Изменить карточку</button>
           <button class="btn btn-sm" type="button" data-home-up="${esc(item.id)}" ${index === 0 ? 'disabled' : ''} aria-label="Поднять карточку">↑</button>
           <button class="btn btn-sm" type="button" data-home-down="${esc(item.id)}" ${index === items.length - 1 ? 'disabled' : ''} aria-label="Опустить карточку">↓</button>
         </div>
