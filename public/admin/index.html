@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#180c0f" />
     <title>EPRIS — Редакция</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23180c0f'/%3E%3Ccircle cx='32' cy='32' r='10' fill='%23caa790'/%3E%3C/svg%3E" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23180c0f'/%3E%3Crect x='11' y='13' width='42' height='38' fill='none' stroke='%23caa790' stroke-width='2'/%3E%3Ctext x='32' y='40' text-anchor='middle' fill='%23fff' font-family='Georgia,serif' font-size='25' letter-spacing='2'%3EE%3C/text%3E%3C/svg%3E" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Same fonts the live site loads, so the canvas is a true WYSIWYG match:
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=4.34" />
+    <link rel="stylesheet" href="./styles.css?v=4.35" />
     <link rel="stylesheet" href="./brandbook.css?v=3" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -70,14 +70,27 @@
 
         <!-- Brand -->
         <div class="sidebar-brand">
-          <div class="sidebar-brand-mark">
-            <div class="sidebar-brand-dot"></div>
-          </div>
+          <div class="sidebar-brand-mark" aria-hidden="true">E</div>
           <div class="sidebar-brand-text">
             <span class="sidebar-brand-name">EPRIS</span>
             <span class="sidebar-brand-sub">Редакция</span>
           </div>
         </div>
+
+        <div class="sidebar-context" aria-label="Текущее рабочее пространство">
+          <span class="sidebar-context-dot" aria-hidden="true"></span>
+          <div>
+            <span class="sidebar-context-kicker">Рабочее пространство</span>
+            <strong id="sidebarActiveLabel">Публикации</strong>
+          </div>
+        </div>
+
+        <label class="sidebar-nav-search" for="sidebarNavSearch">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
+          <input id="sidebarNavSearch" type="search" placeholder="Найти раздел" autocomplete="off" />
+          <kbd>/</kbd>
+        </label>
+        <p id="sidebarNavEmpty" class="sidebar-nav-empty" hidden>Раздел не найден</p>
 
         <!-- Nav -->
         <nav class="sidebar-nav">
@@ -205,10 +218,22 @@
           </div>
           <div id="autosave-status" class="autosave-status"></div>
           <div class="sidebar-secondary-actions">
-            <button id="deployVpsBtn" class="sidebar-btn-ghost" type="button">🚀 Deploy VPS</button>
-            <a href="../" class="sidebar-btn-ghost" target="_blank" rel="noreferrer">Сайт ↗</a>
-            <button id="themeToggleBtn" class="sidebar-btn-ghost" type="button" style="margin-top: 4px; display:flex; justify-content:space-between"><span>Темна тема</span><span>🌙</span></button>
-            <button id="logoutBtn" class="sidebar-btn-ghost" type="button" style="display:flex; justify-content:space-between"><span>Выйти</span><span>⏻</span></button>
+            <button id="deployVpsBtn" class="sidebar-btn-ghost" type="button">
+              <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 16V4"></path><path d="m7 9 5-5 5 5"></path><path d="M5 20h14"></path></svg>
+              <span class="sidebar-btn-label">Деплой VPS</span>
+            </button>
+            <a href="../" class="sidebar-btn-ghost" target="_blank" rel="noreferrer">
+              <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M14 5h5v5"></path><path d="M10 14 19 5"></path><path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4"></path></svg>
+              <span class="sidebar-btn-label">Сайт</span>
+            </a>
+            <button id="themeToggleBtn" class="sidebar-btn-ghost" type="button" style="margin-top: 4px; display:flex; justify-content:space-between">
+              <span class="sidebar-btn-label">Темная тема</span>
+              <svg class="btn-icon sidebar-theme-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5 8.5 8.5 0 1 0 20.5 14.5Z"></path></svg>
+            </button>
+            <button id="logoutBtn" class="sidebar-btn-ghost" type="button" style="display:flex; justify-content:space-between">
+              <span class="sidebar-btn-label">Выйти</span>
+              <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M10 17l5-5-5-5"></path><path d="M15 12H3"></path><path d="M21 19V5a2 2 0 0 0-2-2h-5"></path></svg>
+            </button>
           </div>
         </div>
       </aside>
@@ -298,11 +323,11 @@
                   <p class="card-desc">Здесь собирается Pics of the week: пять независимых направлений — Painting, Sculpture, Architecture, Design и Photography. Пустая категория допустима, новые изображения поднимаются по LIFO, а свежие статьи наследуются из общей ленты автоматически.</p>
                 </div>
                 <div class="homepage-admin-actions">
-                  <button id="homepageAddBtn" class="btn btn-primary" type="button">＋ Новое фото</button>
-                  <button id="homepageFillBtn" class="btn" type="button">✦ Дозаполнить пустые</button>
-                  <button id="homepageInheritBtn" class="btn" type="button">↗ Заполнить наследуемые поля</button>
+                  <button id="homepageAddBtn" class="btn btn-primary" type="button"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span class="btn-label">Новое фото</span></button>
+                  <button id="homepageFillBtn" class="btn" type="button"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.6 5.2L19 10l-5.4 1.8L12 17l-1.6-5.2L5 10l5.4-1.8L12 3Z"></path><path d="m19 15 .7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7L19 15Z"></path></svg><span class="btn-label">Дозаполнить пустые</span></button>
+                  <button id="homepageInheritBtn" class="btn" type="button"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13"></path><path d="m13 6 6 6-6 6"></path><path d="M5 6v12"></path></svg><span class="btn-label">Заполнить наследуемые поля</span></button>
                   <button id="homepageOpenEditorBtn" class="btn" type="button">Полный редактор</button>
-                  <a class="btn" href="../" target="_blank" rel="noreferrer">Открыть сайт ↗</a>
+                  <a class="btn" href="../" target="_blank" rel="noreferrer"><span class="btn-label">Открыть сайт</span><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5"></path><path d="M10 14 19 5"></path><path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4"></path></svg></a>
                   <button id="homepagePublishBtn" class="btn btn-primary" type="button">Опубликовать</button>
                 </div>
               </div>
@@ -350,8 +375,8 @@
                 <div class="homepage-control-grid">
                   <label class="homepage-toggle-field"><input id="homepageAutoRefresh" type="checkbox" checked><span><strong>Автообновление</strong><small>Проверять свежий контент на VPS</small></span></label>
                   <label class="homepage-field"><span>Интервал проверки</span><select id="homepageRefreshInterval"><option value="30">Каждые 30 секунд</option><option value="60" selected>Каждую минуту</option><option value="120">Каждые 2 минуты</option><option value="300">Каждые 5 минут</option></select></label>
-                  <button id="homepageRefreshBtn" class="btn" type="button">↻ Получить свежую версию</button>
-                  <button id="homepageArticlesSyncBtn" class="btn" type="button">↻ Синхронизировать новые статьи</button>
+                  <button id="homepageRefreshBtn" class="btn" type="button"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.8-4L3 10"></path><path d="M3 5v5h5"></path><path d="M4 13a8 8 0 0 0 14.8 4L21 14"></path><path d="M21 19v-5h-5"></path></svg><span class="btn-label">Получить свежую версию</span></button>
+                  <button id="homepageArticlesSyncBtn" class="btn" type="button"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.8-4L3 10"></path><path d="M3 5v5h5"></path><path d="M4 13a8 8 0 0 0 14.8 4L21 14"></path><path d="M21 19v-5h-5"></path></svg><span class="btn-label">Синхронизировать новые статьи</span></button>
                   <label class="homepage-toggle-field"><input id="homepageArticlesAutoSync" type="checkbox" checked><span><strong>Автоподгрузка статей</strong><small>Новые опубликованные тексты сами попадут на главную</small></span></label>
                   <label class="homepage-field"><span>Статей на главной</span><select id="homepageArticlesLimit"><option value="0" selected>Все новые</option><option value="3">3 новых</option><option value="5">5 новых</option><option value="8">8 новых</option><option value="12">12 новых</option></select></label>
                   <label class="homepage-field"><span>Режим Pics of the week</span><select id="homepagePicsMode"><option value="manual">Вручную — категории редактора</option><option value="auto">Автоматически — самые новые</option></select></label>
@@ -664,12 +689,12 @@
                     <span id="wysSaveState" class="wys-save-state">Сохранено локально</span>
                   </div>
                   <div class="wys-bar-right">
-                    <button id="wysUndoBtn" class="btn btn-sm" type="button" title="Отменить (Ctrl+Z)" disabled>↺</button>
-                    <button id="wysRedoBtn" class="btn btn-sm" type="button" title="Повторить (Ctrl+Shift+Z)" disabled>↻</button>
+                    <button id="wysUndoBtn" class="btn btn-sm" type="button" title="Отменить (Ctrl+Z)" disabled><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 8 4 12l5 4"></path><path d="M4 12h9a7 7 0 0 1 7 7"></path></svg></button>
+                    <button id="wysRedoBtn" class="btn btn-sm" type="button" title="Повторить (Ctrl+Shift+Z)" disabled><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.8-4L3 10"></path><path d="M3 5v5h5"></path><path d="M4 13a8 8 0 0 0 14.8 4L21 14"></path><path d="M21 19v-5h-5"></path></svg></button>
                     <span class="toolbar-sep"></span>
-                    <button id="wysMetaBtn" class="btn btn-sm" type="button" title="Метаданные">⚙ Мета</button>
-                    <button id="wysDeviceBtn" class="btn btn-sm" type="button" title="Мобильный/десктоп">📱</button>
-                    <button id="wysCloseBtn" class="btn btn-sm" type="button" title="Классический редактор">✕ Классика</button>
+                    <button id="wysMetaBtn" class="btn btn-sm" type="button" title="Метаданные"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1 .51V20a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15H4a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 5.6V5a2 2 0 0 1 4 0v.09A1.65 1.65 0 0 0 15 5.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9H20a2 2 0 0 1 0 4h-.09A1.65 1.65 0 0 0 19.4 15Z"></path></svg><span>Мета</span></button>
+                    <button id="wysDeviceBtn" class="btn btn-sm" type="button" title="Мобильный/десктоп"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"></rect><path d="M10 18h4"></path></svg></button>
+                    <button id="wysCloseBtn" class="btn btn-sm" type="button" title="Классический редактор"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg><span>Классика</span></button>
                   </div>
                 </div>
                 <div class="wys-scroll">
@@ -679,7 +704,7 @@
                 <div id="wysMetaDrawer" class="wys-meta-drawer" hidden>
                   <div class="wys-meta-drawer-head">
                     <span>Метаданные записи</span>
-                    <button id="wysMetaClose" class="btn btn-sm" type="button">✕</button>
+                    <button id="wysMetaClose" class="btn btn-sm" type="button" aria-label="Закрыть"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg></button>
                   </div>
                   <div class="wys-meta-drawer-body" id="wysMetaBody"></div>
                 </div>
@@ -693,15 +718,15 @@
                     <span id="revSaveState" class="wys-save-state">Сохранено локально</span>
                   </div>
                   <div class="wys-bar-right">
-                    <button id="revUndoBtn" class="btn btn-sm" type="button" title="Отменить (Ctrl+Z)" disabled>↺</button>
-                    <button id="revRedoBtn" class="btn btn-sm" type="button" title="Повторить (Ctrl+Shift+Z)" disabled>↻</button>
+                    <button id="revUndoBtn" class="btn btn-sm" type="button" title="Отменить (Ctrl+Z)" disabled><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 8 4 12l5 4"></path><path d="M4 12h9a7 7 0 0 1 7 7"></path></svg></button>
+                    <button id="revRedoBtn" class="btn btn-sm" type="button" title="Повторить (Ctrl+Shift+Z)" disabled><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.8-4L3 10"></path><path d="M3 5v5h5"></path><path d="M4 13a8 8 0 0 0 14.8 4L21 14"></path><path d="M21 19v-5h-5"></path></svg></button>
                     <span class="toolbar-sep"></span>
-                    <button id="revStructureBtn" class="btn btn-sm" type="button" title="Добавить редакторскую структуру в текст обзора">＋ Структура</button>
-                    <button id="revPreviewBtn" class="btn btn-sm" type="button" title="Открыть отдельную публичную страницу обзора">↗ Страница</button>
-                    <button id="revCopyUrlBtn" class="btn btn-sm" type="button" title="Скопировать ссылку на обзор">⧉ URL</button>
+                    <button id="revStructureBtn" class="btn btn-sm" type="button" title="Добавить редакторскую структуру в текст обзора"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span>Структура</span></button>
+                    <button id="revPreviewBtn" class="btn btn-sm" type="button" title="Открыть отдельную публичную страницу обзора"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5"></path><path d="M10 14 19 5"></path><path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4"></path></svg><span>Страница</span></button>
+                    <button id="revCopyUrlBtn" class="btn btn-sm" type="button" title="Скопировать ссылку на обзор"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3"></path></svg><span>URL</span></button>
                     <span class="toolbar-sep"></span>
-                    <button id="revMetaBtn" class="btn btn-sm" type="button" title="Метаданные">⚙ Мета</button>
-                    <button id="revCloseBtn" class="btn btn-sm" type="button" title="Классический редактор">✕ Классика</button>
+                    <button id="revMetaBtn" class="btn btn-sm" type="button" title="Метаданные"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1 .51V20a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15H4a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 5.6V5a2 2 0 0 1 4 0v.09A1.65 1.65 0 0 0 15 5.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9H20a2 2 0 0 1 0 4h-.09A1.65 1.65 0 0 0 19.4 15Z"></path></svg><span>Мета</span></button>
+                    <button id="revCloseBtn" class="btn btn-sm" type="button" title="Классический редактор"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg><span>Классика</span></button>
                   </div>
                 </div>
                 <div class="wys-scroll">
@@ -726,7 +751,7 @@
                 <div id="revMetaDrawer" class="wys-meta-drawer" hidden>
                   <div class="wys-meta-drawer-head">
                     <span>Метаданные обзора</span>
-                    <button id="revMetaClose" class="btn btn-sm" type="button">✕</button>
+                    <button id="revMetaClose" class="btn btn-sm" type="button" aria-label="Закрыть"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg></button>
                   </div>
                   <div class="wys-meta-drawer-body" id="revMetaBody"></div>
                 </div>
@@ -1224,7 +1249,7 @@
                       <span class="manifest-fmtsep"></span>
                       <button type="button" data-mfmt="bold" title="Жирный"><b>B</b></button>
                       <button type="button" data-mfmt="italic" title="Курсив"><i>I</i></button>
-                      <button type="button" data-mfmt="link" title="Ссылка">🔗</button>
+                      <button type="button" data-mfmt="link" title="Ссылка"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.1.1l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1"></path><path d="M14 11a5 5 0 0 0-7.1-.1l-2 2A5 5 0 0 0 12 20l1.1-1.1"></path></svg></button>
                     </div>
                     <div id="manifestBodyEditor" class="wys-rt manifest-editor" contenteditable="true" spellcheck="true"></div>
                   </div>
@@ -1241,7 +1266,7 @@
                 <h2 class="card-title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> About / Команда</h2>
                 <p class="card-desc">Управляйте блоком Team на странице About: имя, роль, биография, фото, ссылки, порядок и видимость. Роль и био нового члена команды можно сразу перевести на все языки.</p>
                 <div class="studio-toolbar">
-                  <button id="authorAddBtn" class="btn btn-primary btn-sm" type="button">＋ Новый член команды</button>
+                  <button id="authorAddBtn" class="btn btn-primary btn-sm" type="button"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span>Новый член команды</span></button>
                   <button id="authorsApplyBtn" class="btn btn-primary btn-sm" type="button">Опубликовать</button>
                   <a class="btn btn-sm" href="../about" target="_blank" rel="noreferrer">Открыть About ↗</a>
                 </div>
@@ -1302,7 +1327,7 @@
                 <div class="radio-subtabs">
                   <button class="radio-sub-btn active" data-rsub="playlists" type="button">📃 Плейлисты</button>
                   <button class="radio-sub-btn" data-rsub="tracks" type="button">🎵 Треки</button>
-                  <button class="radio-sub-btn" data-rsub="podcasts" type="button">🎙 Подкасты</button>
+                  <button class="radio-sub-btn" data-rsub="podcasts" type="button"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><path d="M12 19v3"></path></svg>Подкасты</button>
                   <button class="radio-sub-btn" data-rsub="announcements" type="button">📢 Анонсы</button>
                 </div>
 
@@ -1715,7 +1740,7 @@
       <audio id="globalAudioEl" style="display:none"></audio>
       <div class="player-cover">
         <img id="playerCoverImg" src="" style="display:none" />
-        <div class="player-icon" id="playerFallbackIcon">🎙</div>
+        <div class="player-icon" id="playerFallbackIcon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><path d="M12 19v3"></path></svg></div>
       </div>
       <div class="player-info">
         <div class="player-title" id="playerTitle">Оберіть трек</div>
@@ -1735,7 +1760,7 @@
     <div id="wysiwygToolbar" class="wysiwyg-toolbar" style="display:none">
       <button type="button" data-cmd="bold" title="Жирний (Cmd+B)">B</button>
       <button type="button" data-cmd="italic" title="Курсив (Cmd+I)">I</button>
-      <button type="button" data-cmd="link" title="Посилання">🔗</button>
+      <button type="button" data-cmd="link" title="Посилання"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.1.1l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1"></path><path d="M14 11a5 5 0 0 0-7.1-.1l-2 2A5 5 0 0 0 12 20l1.1-1.1"></path></svg></button>
       <div class="wysiwyg-sep"></div>
       <button type="button" data-cmd="h2" title="Заголовок H2">H2</button>
       <button type="button" data-cmd="h3" title="Заголовок H3">H3</button>
@@ -1765,7 +1790,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.34" type="module"></script>
+    <script src="./app.js?v=4.35" type="module"></script>
     <script src="../brandbook/data.js?v=1"></script>
     <script src="./brandbook.js?v=3"></script>
     <script>
@@ -1773,6 +1798,9 @@
       document.addEventListener('DOMContentLoaded', function () {
         var tabButtons = document.querySelectorAll('.tab-btn');
         var tabPanels = document.querySelectorAll('.tab-panel');
+        var sidebarActiveLabel = document.getElementById('sidebarActiveLabel');
+        var sidebarNavSearch = document.getElementById('sidebarNavSearch');
+        var sidebarNavEmpty = document.getElementById('sidebarNavEmpty');
         var pageTitles = {
           dashboard: 'Обзор',
           content: 'Контент',
@@ -1795,6 +1823,25 @@
           settings: 'Настройки',
         };
         var LAST_TAB_KEY = 'epris_admin_last_tab';
+        function syncSidebarNav() {
+          var active = document.querySelector('.tab-btn.active');
+          if (sidebarActiveLabel && active) sidebarActiveLabel.textContent = active.textContent.trim();
+          tabButtons.forEach(function (button) {
+            if (button.classList.contains('active')) button.setAttribute('aria-current', 'page');
+            else button.removeAttribute('aria-current');
+          });
+        }
+        function filterSidebarNav() {
+          if (!sidebarNavSearch) return;
+          var query = sidebarNavSearch.value.trim().toLocaleLowerCase();
+          var visible = 0;
+          tabButtons.forEach(function (button) {
+            var matches = !query || button.textContent.trim().toLocaleLowerCase().indexOf(query) !== -1;
+            button.hidden = !matches;
+            if (matches) visible += 1;
+          });
+          if (sidebarNavEmpty) sidebarNavEmpty.hidden = visible !== 0;
+        }
         tabButtons.forEach(function (btn) {
           btn.addEventListener('click', function () {
             tabButtons.forEach(function (b) { b.classList.remove('active'); });
@@ -1807,8 +1854,24 @@
             if (titleEl && pageTitles[tab]) titleEl.textContent = pageTitles[tab];
             if (tab === 'polls' && typeof window._renderPollResults === 'function') window._renderPollResults();
             try { localStorage.setItem(LAST_TAB_KEY, tab); } catch (e) { /* localStorage unavailable */ }
+            syncSidebarNav();
           });
         });
+
+        if (sidebarNavSearch) {
+          sidebarNavSearch.addEventListener('input', filterSidebarNav);
+          document.addEventListener('keydown', function (event) {
+            if (event.key === '/' && document.activeElement !== sidebarNavSearch && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement && document.activeElement.tagName)) {
+              event.preventDefault();
+              sidebarNavSearch.focus();
+            }
+            if (event.key === 'Escape' && document.activeElement === sidebarNavSearch) {
+              sidebarNavSearch.value = '';
+              filterSidebarNav();
+              sidebarNavSearch.blur();
+            }
+          });
+        }
 
         // Reopen on the tab the editor was on before the reload, instead of
         // always landing back on whichever tab is hardcoded "active" in the
@@ -1820,6 +1883,7 @@
             if (lastBtn) lastBtn.click();
           }
         } catch (e) { /* localStorage unavailable */ }
+        syncSidebarNav();
       });
     </script>
   </body>

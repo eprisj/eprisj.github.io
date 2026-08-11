@@ -1386,6 +1386,29 @@ function escapeHtml(value) {
     .replaceAll("'", '&#39;');
 }
 
+// Keep the SVG icon in action buttons while changing their busy/idle label.
+// Older handlers used textContent directly, which silently removed the icon
+// and made the chrome jump when an action completed.
+function setButtonLabel(button, label) {
+  if (!button) return;
+  const labelEl = button.querySelector('.btn-label, .sidebar-btn-label');
+  if (labelEl) labelEl.textContent = label;
+  else button.textContent = label;
+}
+
+const ADMIN_ICON_PATHS = Object.freeze({
+  edit: '<path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5Z"></path>',
+  plus: '<path d="M12 5v14M5 12h14"></path>',
+  upload: '<path d="M12 16V4"></path><path d="m7 9 5-5 5 5"></path><path d="M5 20h14"></path>',
+  refresh: '<path d="M20 11a8 8 0 0 0-14.8-4L3 10"></path><path d="M3 5v5h5"></path><path d="M4 13a8 8 0 0 0 14.8 4L21 14"></path><path d="M21 19v-5h-5"></path>',
+  external: '<path d="M14 5h5v5"></path><path d="M10 14 19 5"></path><path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4"></path>',
+  close: '<path d="m6 6 12 12M18 6 6 18"></path>',
+});
+
+function adminIcon(name) {
+  return `<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ADMIN_ICON_PATHS[name] || ADMIN_ICON_PATHS.edit}</svg>`;
+}
+
 async function copyPagesUrl() {
   try {
     const cfg = getConfig();
@@ -4345,7 +4368,7 @@ function renderVisualForm() {
         <div class="homepage-work-fields-head"><strong>Главное фото карточки</strong><span>Это изображение увидит посетитель в Pics of the week. Вставьте URL или загрузите файл — превью обновится сразу.</span></div>
         ${renderPhotoPreviewMarkup(previewSource)}
         <label class="homepage-image-url-field">URL фото<input id="vf-imageUrl" value="${escapeHtml(entry.imageUrl || '')}" placeholder="https://… или /images/…" /></label>
-        <div class="homepage-image-editor-actions"><button id="vf-img-upload-btn" class="btn btn-sm" type="button">📷 Загрузить файл</button><a class="btn btn-sm" href="../" target="_blank" rel="noreferrer">Проверить на главной ↗</a></div>
+        <div class="homepage-image-editor-actions"><button id="vf-img-upload-btn" class="btn btn-sm" type="button">${adminIcon('upload')}<span class="btn-label">Загрузить файл</span></button><a class="btn btn-sm" href="../" target="_blank" rel="noreferrer"><span class="btn-label">Проверить на главной</span>${adminIcon('external')}</a></div>
         <input id="vf-img-upload-input" type="file" accept="image/*" hidden />
       </div>
       <label class="full">imageSeed (если URL пустой)<input id="vf-imageSeed" value="${escapeHtml(entry.imageSeed || '')}" /></label>
@@ -4385,7 +4408,7 @@ function renderVisualForm() {
           <img id="vf-rev-preview" src="${revImg ? escapeHtml(revImg) : ''}" alt="Превью обложки" loading="lazy" referrerpolicy="no-referrer" ${revImg ? '' : 'hidden'} />
           <div id="vf-rev-preview-empty" class="photo-preview-empty" ${revImg ? 'hidden' : ''}>Обложка не выбрана</div>
         </div>
-        <button id="vf-rev-upload-btn" class="btn btn-sm" type="button">📷 Загрузить фото обложки</button>
+        <button id="vf-rev-upload-btn" class="btn btn-sm" type="button">${adminIcon('upload')}<span class="btn-label">Загрузить фото обложки</span></button>
         <input id="vf-rev-upload-input" type="file" accept="image/*" hidden />
       </div>
       <label class="full">Автор<input id="vf-author" value="${escapeHtml(entry.author || '')}" /></label>
@@ -7045,7 +7068,7 @@ if (aiBtn) aiBtn.addEventListener('click', aiGenerateArticle);
 async function deployVPS() {
   const btn = byId('deployVpsBtn');
   btn.disabled = true;
-  btn.textContent = '⏳ Деплой...';
+  setButtonLabel(btn, 'Деплой…');
   showToast('Запускаю деплой VPS...', 'info');
   try {
     const res = await fetch(`${EPRIS_API}/deploy`, {
@@ -7055,14 +7078,14 @@ async function deployVPS() {
     });
     const data = await res.json();
     if (data.ok) {
-      showToast('🚀 Деплой запущен! Сборка займёт ~30 сек.', 'success');
+      showToast('Деплой запущен. Сборка займёт около 30 секунд.', 'success');
     } else {
       showToast('Ошибка деплоя: ' + (data.error || 'unknown'), 'error');
     }
   } catch (e) {
     showToast('Ошибка деплоя: ' + e.message, 'error');
   } finally {
-    setTimeout(() => { btn.disabled = false; btn.textContent = '🚀 Deploy VPS'; }, 5000);
+    setTimeout(() => { btn.disabled = false; setButtonLabel(btn, 'Деплой VPS'); }, 5000);
   }
 }
 
@@ -9118,7 +9141,7 @@ function bindStudioRowActions() {
     if (homepageRefreshBusy) return;
     homepageRefreshBusy = true;
     const button = document.getElementById('homepageRefreshBtn');
-    if (button) { button.disabled = true; button.textContent = '↻ Проверяю…'; }
+    if (button) { button.disabled = true; setButtonLabel(button, 'Проверяю…'); }
     try {
       const response = await fetch(CONTENT_API, { cache: 'no-store' });
       if (!response.ok) throw new Error(`VPS вернул статус ${response.status}`);
@@ -9147,7 +9170,7 @@ function bindStudioRowActions() {
       if (!silent) showToast?.('error', getErrorMessage(error));
     } finally {
       homepageRefreshBusy = false;
-      if (button) { button.disabled = false; button.textContent = '↻ Получить свежую версию'; }
+      if (button) { button.disabled = false; setButtonLabel(button, 'Получить свежую версию'); }
     }
   }
 
@@ -9159,7 +9182,7 @@ function bindStudioRowActions() {
     const button = document.getElementById('homepageArticlesSyncBtn');
     const status = document.getElementById('homepageArticlesSyncStatus');
     const wasDirty = isEditorDirty();
-    if (button) { button.disabled = true; button.textContent = '↻ Синхронизирую…'; }
+    if (button) { button.disabled = true; setButtonLabel(button, 'Синхронизирую…'); }
     if (status) status.textContent = 'Проверяю общую ленту публикаций…';
     try {
       const response = await fetch(CONTENT_API, { cache: 'no-store' });
@@ -9211,7 +9234,7 @@ function bindStudioRowActions() {
       if (!silent) showToast?.('error', message);
     } finally {
       homepageArticlesSyncBusy = false;
-      if (button) { button.disabled = false; button.textContent = '↻ Синхронизировать новые статьи'; }
+      if (button) { button.disabled = false; setButtonLabel(button, 'Синхронизировать новые статьи'); }
     }
   }
 
@@ -9286,8 +9309,8 @@ function bindStudioRowActions() {
         <select id="homepage-category-${esc(group.id)}" class="homepage-slot-select" data-home-category="${esc(group.id)}" ${autoMode ? 'disabled' : ''}>${options}</select>
         <small class="homepage-category-count">${group.items.length} изображений · LIFO ${data?.homepage?.picsOfWeek?.ordering === 'manual' ? 'выкл.' : 'вкл.'}</small>
         <div class="homepage-slot-actions">
-          <button type="button" class="btn btn-sm homepage-slot-edit" data-home-edit-slot="${item ? esc(item.id) : ''}" title="Фото, подпись, описание и переводы" ${item ? '' : 'disabled'}>✎ Фото + текст</button>
-          <button type="button" class="btn btn-sm homepage-slot-add" data-home-add-slot="${esc(group.id)}">＋ ${item ? 'Добавить ещё' : 'Добавить фото'}</button>
+          <button type="button" class="btn btn-sm homepage-slot-edit" data-home-edit-slot="${item ? esc(item.id) : ''}" title="Фото, подпись, описание и переводы" ${item ? '' : 'disabled'}>${adminIcon('edit')}<span class="btn-label">Фото + текст</span></button>
+          <button type="button" class="btn btn-sm homepage-slot-add" data-home-add-slot="${esc(group.id)}">${adminIcon('plus')}<span class="btn-label">${item ? 'Добавить ещё' : 'Добавить фото'}</span></button>
         </div>
       </article>`;
     }).join('');
@@ -11615,21 +11638,31 @@ globalTextareaObserver.observe(document.body, { childList: true, subtree: true }
   // THEME TOGGLE
   const themeBtn = document.getElementById('themeToggleBtn');
   if (themeBtn) {
+    const themeLabel = themeBtn.querySelector('.sidebar-btn-label');
+    const themeIcon = themeBtn.querySelector('.sidebar-theme-icon');
+    const setThemeButton = (isDark) => {
+      if (themeLabel) themeLabel.textContent = isDark ? 'Светлая тема' : 'Темная тема';
+      if (themeIcon) themeIcon.innerHTML = isDark
+        ? '<path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.64 5.64l1.42 1.42M16.94 16.94l1.42 1.42M5.64 18.36l1.42-1.42M16.94 7.06l1.42-1.42"></path><circle cx="12" cy="12" r="3.5"></circle>'
+        : '<path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5 8.5 8.5 0 1 0 20.5 14.5Z"></path>';
+    };
     const isDark = localStorage.getItem('epris_theme') === 'dark';
     if (isDark) {
       document.documentElement.setAttribute('data-theme', 'dark');
-      themeBtn.innerHTML = '<span>Світла тема</span><span>☀️</span>';
+      setThemeButton(true);
+    } else {
+      setThemeButton(false);
     }
     themeBtn.addEventListener('click', () => {
       const current = document.documentElement.getAttribute('data-theme');
       if (current === 'dark') {
         document.documentElement.removeAttribute('data-theme');
         localStorage.setItem('epris_theme', 'light');
-        themeBtn.innerHTML = '<span>Темна тема</span><span>🌙</span>';
+        setThemeButton(false);
       } else {
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('epris_theme', 'dark');
-        themeBtn.innerHTML = '<span>Світла тема</span><span>☀️</span>';
+        setThemeButton(true);
       }
     });
   }
