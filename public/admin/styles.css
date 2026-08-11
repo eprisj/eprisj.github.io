@@ -6811,6 +6811,32 @@ button, a, input, select, textarea { touch-action: manipulation; }
   font-size: .68rem;
   line-height: 1.5;
 }
+.homepage-manual-copy {
+  margin-top: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--bg-soft);
+}
+.homepage-manual-copy > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 54px;
+  padding: 10px 12px;
+  color: var(--text);
+  cursor: pointer;
+  list-style: none;
+}
+.homepage-manual-copy > summary::-webkit-details-marker { display: none; }
+.homepage-manual-copy > summary > span:first-child { display: grid; gap: 3px; }
+.homepage-manual-copy > summary b { font-size: .73rem; }
+.homepage-manual-copy > summary small { color: var(--text-muted); font-size: .62rem; }
+.homepage-manual-copy-plus { color: var(--accent); font: 400 1.2rem/1 var(--font-serif); }
+.homepage-manual-copy[open] .homepage-manual-copy-plus { transform: rotate(45deg); }
+.homepage-manual-copy-body { padding: 0 12px 12px; }
+.homepage-manual-copy-body > p { max-width: 75ch; margin: 0 0 11px; color: var(--text-muted); font-size: .68rem; line-height: 1.5; }
+.homepage-layout-copy-grid input::placeholder { color: var(--text-muted); opacity: .8; }
 .homepage-category-details {
   margin-bottom: 14px;
   border: 1px solid var(--line);
