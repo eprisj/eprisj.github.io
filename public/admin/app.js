@@ -4349,7 +4349,8 @@ function renderVisualForm() {
     const previewSource = resolvePreviewImageSource(entry.imageUrl, entry.imageSeed);
     const homepageCategoryOptions = (window._homepageCategories ? window._homepageCategories(data) : []).map((category) => `<option value="${escapeHtml(category.id)}" ${entry.homeCategory === category.id ? 'selected' : ''}>${escapeHtml(category.label)}</option>`).join('');
     visualFormEl.innerHTML = `
-      <label>ID<input id="vf-id" value="${escapeHtml(entry.id)}" disabled /></label>
+      <label>Внутренний ID медиа<input id="vf-id" value="${escapeHtml(entry.id)}" disabled /></label>
+      <label>Pics ID<input id="vf-picsId" value="${escapeHtml(entry.picsId || 'Будет создан для Pics of the week')}" disabled /></label>
       <label>FIG<input id="vf-fig" value="${escapeHtml(entry.fig || '')}" /></label>
       <label class="full">Заголовок исходной записи<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
       <label class="full">Подзаголовок исходной записи<input id="vf-subtitle" value="${escapeHtml(entry.subtitle || '')}" /></label>
@@ -8806,7 +8807,7 @@ function bindStudioMediaActions() {
   function homepageDraftForCard(itemId = null) {
     let data = readContent();
     const remoteHasCards = homepagePublishedData && homepagePhotoItems(homepagePublishedData).length > 0;
-    const localHasRequested = itemId == null || Array.isArray(data?.items) && data.items.some((item) => String(item.id) === String(itemId));
+    const localHasRequested = itemId == null || Boolean(findHomepageItemByPicsId(data, itemId));
     if (remoteHasCards && (!data || homepagePhotoItems(data).length === 0 || !localHasRequested)) {
       setEditorData(deepClone(homepagePublishedData), { markSynced: true, clearDraft: true });
       data = readContent();
@@ -8841,7 +8842,7 @@ function bindStudioMediaActions() {
       return;
     }
     if (!Array.isArray(data.items)) data.items = [];
-    let item = itemId == null ? null : data.items.find((entry) => String(entry.id) === String(itemId));
+    let item = itemId == null ? null : findHomepageItemByPicsId(data, itemId);
     const isNew = !item;
     if (!item) {
       const nextId = getNextEntryId(data, 'items');
@@ -8854,16 +8855,17 @@ function bindStudioMediaActions() {
       item.homeDescription = '';
       item.homeCategory = categoryId ? String(categoryId) : '';
       item.imageUrl = '';
+      item.picsId = nextPicsId(data);
       delete item.imageSeed;
     }
-    homepageCardEditId = String(item.id);
+    homepageCardEditId = picsIdFor(item);
     homepageCardEditCategory = String(categoryId || item.homeCategory || '');
     const modal = homepageCardField('homepageCardEditor');
     const title = homepageCardField('homepageCardEditorTitle');
     const category = homepageCardField('homepageCardCategory');
     const categoryOptions = homepageCategories(data).map((candidate) => `<option value="${esc(candidate.id)}" ${candidate.id === homepageCardEditCategory ? 'selected' : ''}>${esc(candidate.label)}</option>`).join('');
     if (category) category.innerHTML = categoryOptions;
-    if (title) title.textContent = isNew ? 'Добавить фото в Pics of the week' : `Редактировать фото #${item.id}`;
+    if (title) title.textContent = isNew ? 'Добавить фото в Pics of the week' : `Редактировать ${picsIdFor(item)}`;
     const values = {
       homepageCardTitle: item.homeTitle || item.title || '',
       homepageCardSubtitle: item.homeSubtitle || item.subtitle || '',
@@ -8874,7 +8876,7 @@ function bindStudioMediaActions() {
     };
     Object.entries(values).forEach(([id, value]) => { const input = homepageCardField(id); if (input) input.value = value; });
     const meta = homepageCardField('homepageCardEditorMeta');
-    if (meta) meta.textContent = `${item.homeCategory || homepageCardEditCategory || 'Без категории'} · ${isNew ? 'новый слот' : `ID ${item.id}`}`;
+    if (meta) meta.textContent = `${item.homeCategory || homepageCardEditCategory || 'Без категории'} · ${picsIdFor(item)} · фото-карточка`;
     renderHomepageCardImagePreview(values.homepageCardImageUrl);
     const status = homepageCardField('homepageCardEditorStatus');
     if (status) status.textContent = 'Изменения пока не сохранены.';
@@ -8892,11 +8894,16 @@ function bindStudioMediaActions() {
     const subtitle = String(homepageCardField('homepageCardSubtitle')?.value || '').trim();
     const description = String(homepageCardField('homepageCardDescription')?.value || '').trim();
     const imageUrl = String(homepageCardField('homepageCardImageUrl')?.value || '').trim();
-    let item = data.items.find((entry) => String(entry.id) === String(homepageCardEditId));
+    let item = findHomepageItemByPicsId(data, homepageCardEditId);
     if (!item) {
       item = createDefaultEntry('items', getNextEntryId(data, 'items'));
+      item.picsId = nextPicsId(data);
       data.items.push(item);
-      homepageCardEditId = String(item.id);
+      homepageCardEditId = picsIdFor(item);
+    }
+    if (!String(item.picsId || '').trim()) {
+      item.picsId = nextPicsId(data);
+      homepageCardEditId = item.picsId;
     }
     item.homeCategory = category || undefined;
     item.homeTitle = title || undefined;
@@ -9010,6 +9017,47 @@ function bindStudioMediaActions() {
   let homepagePublishedData = null;
   let homepageCardEditId = null;
   let homepageCardEditCategory = null;
+  const PICS_ID_PREFIX = 'PICS';
+
+  function fallbackPicsId(item) {
+    const source = [item?.imageUrl || item?.imageSeed || '', item?.homeTitle || item?.title || ''].join('|');
+    let hash = 2166136261;
+    for (let index = 0; index < source.length; index += 1) {
+      hash ^= source.charCodeAt(index);
+      hash = Math.imul(hash, 16777619);
+    }
+    return `${PICS_ID_PREFIX}-L-${(hash >>> 0).toString(36).toUpperCase().padStart(6, '0')}`;
+  }
+
+  function picsIdFor(item) {
+    return String(item?.picsId || '').trim() || fallbackPicsId(item);
+  }
+
+  function nextPicsId(data) {
+    const year = new Date().getFullYear();
+    const matcher = new RegExp(`^${PICS_ID_PREFIX}-${year}-(\\d+)$`);
+    const max = (Array.isArray(data?.items) ? data.items : []).reduce((highest, item) => {
+      const match = String(item?.picsId || '').match(matcher);
+      return match ? Math.max(highest, Number(match[1]) || 0) : highest;
+    }, 0);
+    return `${PICS_ID_PREFIX}-${year}-${String(max + 1).padStart(3, '0')}`;
+  }
+
+  function ensurePicsIds(data) {
+    if (!Array.isArray(data?.items)) return 0;
+    let created = 0;
+    data.items.forEach((item) => {
+      if (!String(item?.imageUrl || '').trim() || String(item?.picsId || '').trim()) return;
+      item.picsId = nextPicsId(data);
+      created += 1;
+    });
+    return created;
+  }
+
+  function findHomepageItemByPicsId(data, picsId) {
+    const target = String(picsId || '').trim();
+    return (Array.isArray(data?.items) ? data.items : []).find((item) => picsIdFor(item) === target) || null;
+  }
 
   const HOMEPAGE_SECTION_DEFS = [
     { id: 'pics', label: 'Pics of the week', hint: 'Пять категорий изображений, центральный кадр и подписи.' },
@@ -9194,7 +9242,7 @@ function bindStudioMediaActions() {
     };
     return categories.map((category) => {
       const categoryItems = items.filter((item) => classify(item) === category.id);
-      if (useLifo) categoryItems.sort((a, b) => stamp(b) - stamp(a) || Number(b?.id || 0) - Number(a?.id || 0));
+      if (useLifo) categoryItems.sort((a, b) => stamp(b) - stamp(a) || picsIdFor(b).localeCompare(picsIdFor(a)));
       return { ...category, items: categoryItems };
     });
   }
@@ -9213,8 +9261,8 @@ function bindStudioMediaActions() {
         <div class="homepage-published-card-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : '<span>Слот пуст</span>'}</div>
         <span class="homepage-published-card-category">${esc(group.label)}</span>
         <strong class="homepage-published-card-title">${esc(item?.homeTitle || item?.title || 'Добавить фото')}</strong>
-        <div class="homepage-published-card-meta"><span>${item ? `ID ${esc(item.id)}` : 'Новая неделя'}</span>${item ? '<span>Опубликовано</span>' : ''}</div>
-        <button class="btn btn-sm${item ? '' : ' btn-primary'}" type="button" data-home-published-edit="${item ? esc(item.id) : ''}" data-home-published-category="${esc(group.id)}">${item ? 'Редактировать карточку' : 'Добавить фото'}</button>
+        <div class="homepage-published-card-meta"><span>${item ? esc(picsIdFor(item)) : 'Новая неделя'}</span>${item ? '<span>Опубликовано</span>' : ''}</div>
+        <button class="btn btn-sm${item ? '' : ' btn-primary'}" type="button" data-home-published-edit="${item ? esc(picsIdFor(item)) : ''}" data-home-published-category="${esc(group.id)}">${item ? 'Редактировать карточку' : 'Добавить фото'}</button>
       </article>`;
     }).join('');
     cardsEl.querySelectorAll('[data-home-published-edit]').forEach((button) => button.addEventListener('click', () => {
@@ -9326,6 +9374,7 @@ function bindStudioMediaActions() {
   function homepageArchiveCards(groups) {
     return groups.map((group) => group.items[0] ? { category: group.id, categoryLabel: group.label, item: group.items[0] } : null).filter(Boolean).map(({ category, categoryLabel, item }) => ({
       id: Number(item.id),
+      picsId: picsIdFor(item),
       category,
       categoryLabel,
       title: String(item.homeTitle || item.title || ''),
@@ -9337,7 +9386,7 @@ function bindStudioMediaActions() {
   }
 
   function homepageArchiveSignature(cards) {
-    return cards.map((card) => `${card.category || ''}:${card.id}`).join('|');
+    return cards.map((card) => `${card.category || ''}:${card.picsId || card.id}`).join('|');
   }
 
   function homepageArchiveDate(value) {
@@ -9369,16 +9418,16 @@ function bindStudioMediaActions() {
             </div>`;
           }).join('')}
         </div>
-        <span class="homepage-gallery-id">ID ${esc(entry?.id || '')}</span>
+        <span class="homepage-gallery-id">Выпуск ${esc(entry?.id || '')}</span>
       </article>`;
     }).join('');
   }
 
-  function setHomepageCategory(categoryId, itemId) {
+  function setHomepageCategory(categoryId, picsId) {
     const data = readContent();
     if (!data || !Array.isArray(data.items) || !homepageCategories(data).some((category) => category.id === categoryId)) return;
-    const item = data.items.find((entry) => String(entry.id) === String(itemId));
-    if (!item && itemId) return;
+    const item = findHomepageItemByPicsId(data, picsId);
+    if (!item && picsId) return;
     if (item) item.homeCategory = categoryId;
     setEditorData(data);
     renderHomepageTab();
@@ -9396,12 +9445,12 @@ function bindStudioMediaActions() {
       return;
     }
 
-    const usedIds = new Set(groups.flatMap((group) => group.items.slice(0, 1).map((item) => String(item.id))));
+    const usedPicsIds = new Set(groups.flatMap((group) => group.items.slice(0, 1).map((item) => picsIdFor(item))));
     const candidates = homepagePhotoItems(data)
-      .filter((item) => !usedIds.has(String(item.id)))
+      .filter((item) => !usedPicsIds.has(picsIdFor(item)))
       .sort((a, b) => {
         const stamp = (item) => Date.parse(item?.updatedAt || item?.publishAt || '') || 0;
-        return stamp(b) - stamp(a) || Number(b?.id || 0) - Number(a?.id || 0);
+        return stamp(b) - stamp(a) || picsIdFor(b).localeCompare(picsIdFor(a));
       });
 
     let filled = 0;
@@ -9719,14 +9768,14 @@ function bindStudioMediaActions() {
     preview.innerHTML = groups.map((group) => {
       const item = group.items[0];
       const image = item?.imageUrl || item?.imageSeed || '';
-      const options = [`<option value="">— Выбрать фото —</option>`, ...items.map((candidate) => `<option value="${esc(candidate.id)}" ${item && String(candidate.id) === String(item.id) ? 'selected' : ''}>${esc(candidate.title || `Фото #${candidate.id}`)}</option>`)].join('');
+      const options = [`<option value="">— Выбрать фото —</option>`, ...items.map((candidate) => `<option value="${esc(picsIdFor(candidate))}" ${item && picsIdFor(candidate) === picsIdFor(item) ? 'selected' : ''}>${esc(picsIdFor(candidate))} · ${esc(candidate.homeTitle || candidate.title || 'Без названия')}</option>`)].join('');
       const emptyState = !item;
       return `<article class="homepage-slot-card homepage-slot-card--${esc(group.id)}${emptyState ? ' is-empty' : ''}">
         <div class="homepage-slot-head"><span>${esc(group.label)}</span><span class="homepage-slot-state">${item ? 'Заполнено' : 'Пусто'}</span></div>
         <div class="homepage-slot-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : '<span>Добавьте фото</span>'}</div>
         <div class="homepage-slot-caption"><span>${esc(group.label)}</span><strong>${esc(item?.homeTitle || item?.title || 'Добавьте фото')}</strong><p>${esc(item?.homeDescription || item?.description || item?.homeSubtitle || item?.subtitle || 'После добавления здесь появятся подпись и краткое описание.')}</p></div>
         <div class="homepage-slot-actions">
-          ${item ? `<button type="button" class="btn btn-sm homepage-slot-edit" data-home-edit-slot="${esc(item.id)}" title="Изменить фото, подпись и описание">${adminIcon('edit')}<span class="btn-label">Изменить карточку</span></button>` : ''}
+          ${item ? `<button type="button" class="btn btn-sm homepage-slot-edit" data-home-edit-slot="${esc(picsIdFor(item))}" title="Изменить фото, подпись и описание">${adminIcon('edit')}<span class="btn-label">Изменить карточку</span></button>` : ''}
           <button type="button" class="btn btn-sm homepage-slot-add${emptyState ? ' btn-primary' : ''}" data-home-add-slot="${esc(group.id)}">${adminIcon('plus')}<span class="btn-label">${item ? 'Добавить ещё фото' : 'Добавить фото'}</span></button>
         </div>
         <details class="homepage-slot-extra">
@@ -9767,10 +9816,10 @@ function bindStudioMediaActions() {
     });
   }
 
-  function moveItem(itemId, delta) {
+  function moveItem(picsId, delta) {
     const data = readContent();
     if (!data || !Array.isArray(data.items)) return;
-    const index = data.items.findIndex((item) => String(item.id) === String(itemId));
+    const index = data.items.findIndex((item) => picsIdFor(item) === String(picsId));
     const target = index + delta;
     if (index < 0 || target < 0 || target >= data.items.length) return;
     [data.items[index], data.items[target]] = [data.items[target], data.items[index]];
@@ -9820,12 +9869,12 @@ function bindStudioMediaActions() {
         <div class="homepage-gallery-copy">
           <h3>${esc(item.homeTitle || item.title || '(без заголовка)')}</h3>
           <p>${esc(item.homeDescription || item.description || item.homeSubtitle || item.subtitle || 'Описание не заполнено')}</p>
-          <span class="homepage-gallery-id">ID ${esc(item.id)}</span>
+          <span class="homepage-gallery-id">${esc(picsIdFor(item))} · фото-карточка</span>
         </div>
         <div class="homepage-gallery-controls">
-          <button class="btn btn-sm" type="button" data-home-edit="${esc(item.id)}">Изменить карточку</button>
-          <button class="btn btn-sm" type="button" data-home-up="${esc(item.id)}" ${index === 0 ? 'disabled' : ''} aria-label="Поднять карточку">↑</button>
-          <button class="btn btn-sm" type="button" data-home-down="${esc(item.id)}" ${index === items.length - 1 ? 'disabled' : ''} aria-label="Опустить карточку">↓</button>
+          <button class="btn btn-sm" type="button" data-home-edit="${esc(picsIdFor(item))}">Изменить карточку</button>
+          <button class="btn btn-sm" type="button" data-home-up="${esc(picsIdFor(item))}" ${index === 0 ? 'disabled' : ''} aria-label="Поднять карточку">↑</button>
+          <button class="btn btn-sm" type="button" data-home-down="${esc(picsIdFor(item))}" ${index === items.length - 1 ? 'disabled' : ''} aria-label="Опустить карточку">↓</button>
         </div>
       </article>`;
     }).join('');

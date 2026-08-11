@@ -2013,6 +2013,7 @@
   "items": [
     {
       "id": 14,
+      "picsId": "PICS-2026-001",
       "title": "Sandra Kantanen: Beyond the Lens of Traditional Photography",
       "subtitle": "Photography",
       "fig": "FIG. 11",
@@ -2031,6 +2032,7 @@
     },
     {
       "id": 12,
+      "picsId": "PICS-2026-002",
       "title": "How Emily Kraus Reinvents the Act of Painting",
       "subtitle": "Contemporary Art",
       "fig": "FIG. 10",
@@ -2049,6 +2051,7 @@
     },
     {
       "id": 10,
+      "picsId": "PICS-2026-003",
       "title": "Against the Right Angle",
       "subtitle": "Architecture",
       "fig": "FIG. 08",
@@ -2067,6 +2070,7 @@
     },
     {
       "id": 9,
+      "picsId": "PICS-2026-004",
       "title": "Polish Design: Woven From Memory",
       "subtitle": "Design",
       "fig": "FIG. 09",
@@ -2085,6 +2089,7 @@
     },
     {
       "id": 8,
+      "picsId": "PICS-2026-005",
       "title": "Tadao Ando: Decoding the Philosophy of Pure Design",
       "subtitle": "Architecture",
       "fig": "FIG. 08",
@@ -2096,6 +2101,7 @@
     },
     {
       "id": 7,
+      "picsId": "PICS-2026-006",
       "title": "Art that makes you smile",
       "subtitle": "ART & DESIGN",
       "fig": "FIG. 07",
@@ -2114,6 +2120,7 @@
     },
     {
       "id": 1,
+      "picsId": "PICS-2026-007",
       "title": "The Sacred Spring: A Portrait of the Vienna Secession",
       "subtitle": "Art History",
       "fig": "FIG. 01",
@@ -2125,6 +2132,7 @@
     },
     {
       "id": 2,
+      "picsId": "PICS-2026-008",
       "title": "Five Rooms, One Signature",
       "subtitle": "Interior Design",
       "fig": "FIG. 02",
@@ -2136,6 +2144,7 @@
     },
     {
       "id": 3,
+      "picsId": "PICS-2026-009",
       "title": "The Threshold of Time",
       "subtitle": "Restoration",
       "fig": "FIG. 03",
@@ -2148,6 +2157,7 @@
     },
     {
       "id": 4,
+      "picsId": "PICS-2026-010",
       "title": "Home Away From Home",
       "subtitle": "Design & Travel",
       "fig": "FIG. 04",
@@ -2159,6 +2169,7 @@
     },
     {
       "id": 11,
+      "picsId": "PICS-2026-011",
       "title": "The Heart of EPRIS: Maria Is Now a Bachelor of Architecture",
       "subtitle": "Culture",
       "fig": "FIG. 09",

@@ -3,8 +3,11 @@ import rawContent from './content/site-content.json';
 export const DEFAULT_LANGUAGE = 'EN';
 
 export interface Item {
+  /** Internal media-record id. It is never presented as a Pics of the week id. */
   id: number;
-  /** Optional editorial source reference retained for archive and attribution. */
+  /** Stable public/editorial identity for a Pics of the week photo card. */
+  picsId?: string;
+  /** Optional editorial source reference retained for attribution only. */
   articleId?: number;
   title: string;
   subtitle: string;
@@ -34,9 +37,32 @@ export interface Item {
   homeSourceUrl?: string;
 }
 
+/**
+ * The image strip has a namespace of its own. `Item.id` is an internal media
+ * record and can coincide with an article id; it must never be used as the
+ * public/editorial identity of a Pics of the week card.
+ */
+export function getPicsId(item: Pick<Item, 'picsId' | 'imageUrl' | 'imageSeed' | 'homeTitle' | 'title'>): string {
+  const explicit = String(item.picsId || '').trim();
+  if (explicit) return explicit;
+  // Safe fallback for old VPS snapshots until the admin migration writes a
+  // permanent PICS id. It is derived from the image/card fingerprint, never
+  // from an article or media record id.
+  const source = [item.imageUrl || item.imageSeed || '', item.homeTitle || item.title || ''].join('|');
+  let hash = 2166136261;
+  for (let index = 0; index < source.length; index += 1) {
+    hash ^= source.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return `PICS-L-${(hash >>> 0).toString(36).toUpperCase().padStart(6, '0')}`;
+}
+
 /** A frozen snapshot of one published "Pics of the week" composition. */
 export interface HomepageArchiveCard {
+  /** Legacy internal media id, retained only to read old archive entries. */
   id: number;
+  /** Independent Pics of the week card id. Preferred over the legacy media id. */
+  picsId?: string;
   category?: string;
   categoryLabel?: string;
   title: string;
@@ -586,7 +612,7 @@ function hasLocalizedPayload(entry: unknown): boolean {
 // text fields are overlaid from the localized copy. These fields are structure/
 // media/state/links — never translated prose — so they always come from base.
 const BASE_AUTHORITATIVE_FIELDS = new Set([
-  'id', 'imageSeed', 'imageUrl', 'authorId', 'draft', 'publishAt', 'updatedAt',
+  'id', 'picsId', 'imageSeed', 'imageUrl', 'authorId', 'draft', 'publishAt', 'updatedAt',
   'url', 'link', 'rating', 'featured', 'coordinates',
 ]);
 
