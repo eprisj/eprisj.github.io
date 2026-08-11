@@ -842,12 +842,16 @@ export function getAvailableLanguages(): string[] {
  */
 export function isEntityLive(e: { draft?: boolean; publishAt?: string }): boolean {
   if (e.draft) return false;
-  // Unedited blueprint stubs ("New editorial story", "…— replace me") never
-  // belong on the public site, even if nobody remembered to mark them draft.
-  if (isPlaceholderEntity(e)) return false;
+  const publishTimestamp = e.publishAt ? Date.parse(e.publishAt) : NaN;
+  const explicitlyPublished = Number.isFinite(publishTimestamp) && publishTimestamp <= Date.now();
+  // A seed draft stays hidden by default. The explicit «Опубликовать» action
+  // writes a past publishAt timestamp, which is unambiguous editorial intent:
+  // it must become public immediately even if the editor has not renamed the
+  // temporary title yet. This avoids a successful-looking publish that leads
+  // to a 404 for both new articles and new reviews.
+  if (isPlaceholderEntity(e) && !explicitlyPublished) return false;
   if (e.publishAt) {
-    const ts = Date.parse(e.publishAt);
-    if (!Number.isNaN(ts) && ts > Date.now()) return false;
+    if (Number.isFinite(publishTimestamp) && publishTimestamp > Date.now()) return false;
   }
   return true;
 }
@@ -866,7 +870,12 @@ export function getContentForLanguage(lang: string): LanguageContent {
   // before the merge — mergeLocalizedArray never adds locale-only entries, so
   // an orphaned localized stub for the same id is dropped along with it. Admin
   // preview keeps everything so stubs remain visible for editing.
-  const liveBase = <T,>(arr: T[]): T[] => isPreview() ? arr : arr.filter((e) => !isPlaceholderEntity(e));
+  const liveBase = <T,>(arr: T[]): T[] => isPreview() ? arr : arr.filter((e) => {
+    if (!isPlaceholderEntity(e)) return true;
+    const publishAt = (e as { publishAt?: unknown }).publishAt;
+    const stamp = typeof publishAt === 'string' ? Date.parse(publishAt) : NaN;
+    return Number.isFinite(stamp) && stamp <= Date.now();
+  });
 
   const articles = mergeLocalizedArray(bucket.articles, liveBase(c.articles));
   // Reviews hit the same recycled-id trap the Gallery did: every locale still
