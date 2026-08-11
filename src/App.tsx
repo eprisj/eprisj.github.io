@@ -36,6 +36,7 @@ import {
   getTranslations,
   getTheme,
   getSiteSettings,
+  getPicsId,
   isSectionEnabled,
   isSectionInNavigation,
   loadLiveContent,
@@ -1320,7 +1321,8 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
           const parsed = value ? Date.parse(value) : Number.NaN;
           return Number.isFinite(parsed) ? parsed : 0;
         };
-        return stamp(b.updatedAt || b.publishAt) - stamp(a.updatedAt || a.publishAt) || b.id - a.id;
+        return stamp(b.updatedAt || b.publishAt) - stamp(a.updatedAt || a.publishAt)
+          || getPicsId(b).localeCompare(getPicsId(a));
       })
     : publishedPhotoItems;
   const configuredCategories = Array.isArray(picsSettings.categories) ? picsSettings.categories : [];
@@ -1492,7 +1494,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
               <div key={`slot-${position}`} className={slotClass}>
                 <AnimatePresence initial={false} mode="sync">
                   <motion.article
-                    key={`${item.id}-${position}`}
+                    key={`${getPicsId(item)}-${position}`}
                     initial={{ opacity: 0, y: carouselDirection > 0 ? 10 : -10, scale: isCenter ? centerScale * 0.985 : sideScale * 0.985 }}
                     animate={{ opacity: isCenter ? 1 : 0.8, y: 0, scale: isCenter ? centerScale : sideScale }}
                     exit={{ opacity: 0, y: carouselDirection > 0 ? -8 : 8, scale: isCenter ? centerScale * 0.99 : sideScale * 0.99 }}
@@ -1551,6 +1553,7 @@ function homepageArticleFeed(articles: Article[]): Article[] {
 
 function DailyPicksArchive({ archive, items, onImageClick, currentLang, t }: { archive: HomepageArchiveEntry[]; items: Item[]; onImageClick: (src: string, alt: string) => void; currentLang: string; t: (key: string) => string }) {
   if (!archive.length) return null;
+  const currentByPicsId = new Map(items.map((item) => [getPicsId(item), item]));
   const currentById = new Map(items.map((item) => [Number(item.id), item]));
   const languageTags: Record<string, string> = { EN: 'en', RU: 'ru', UA: 'uk', TR: 'tr', DE: 'de', IT: 'it', ES: 'es' };
   const formatDate = (value: string) => {
@@ -1578,7 +1581,10 @@ function DailyPicksArchive({ archive, items, onImageClick, currentLang, t }: { a
             </div>
             <div className="grid grid-cols-3 gap-2 md:grid-cols-5">
               {entry.cards.slice(0, 5).map((card) => {
-                const localized = currentById.get(Number(card.id));
+                // Current cards resolve by their own PICS identity. The
+                // numeric media id is only a migration fallback for old
+                // archived weeks and is never shown to readers.
+                const localized = currentByPicsId.get(String(card.picsId || '')) || currentById.get(Number(card.id));
                 const image = localized?.imageUrl || localized?.imageSeed || card.imageUrl || card.imageSeed;
                 const category = localized?.homeCategory
                   ? localizedHomepageCategoryLabel({ id: localized.homeCategory, label: localized.homeCategory }, currentLang)
@@ -1587,7 +1593,7 @@ function DailyPicksArchive({ archive, items, onImageClick, currentLang, t }: { a
                 const title = localized ? homepageItemTitle(localized) : (card.title || category);
                 return (
                   <div
-                    key={`${entry.id}-${card.id}`}
+                    key={`${entry.id}-${card.picsId || card.id}`}
                     className="group relative min-w-0 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--c-accent)] focus-visible:outline-offset-2"
                     role="button"
                     tabIndex={image ? 0 : -1}
