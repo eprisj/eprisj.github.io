@@ -12,7 +12,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=4.56" />
+    <link rel="stylesheet" href="./styles.css?v=4.58" />
     <link rel="stylesheet" href="./brandbook.css?v=3" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -1068,13 +1068,29 @@
           <!-- ===== INTERVIEW STUDIO ===== -->
           <section class="tab-panel" id="tab-transcripts">
             <div class="transcript-layout">
-              <section class="transcript-hero">
-                <div>
+              <section class="transcript-hero" id="transcriptHero" data-flow="idle">
+                <div class="transcript-hero-copy">
                   <p class="panel-kicker">Private editorial workspace</p>
                   <h1>Интервью → готовый текст</h1>
                   <p>Три ясных шага: загрузить английскую запись, дождаться локальной расшифровки на VPS и вычитать текст. Аудио не попадает в статьи, публичный сайт или внешний сервис.</p>
+                  <ol class="transcript-flow" id="transcriptFlow" aria-label="Путь интервью">
+                    <li class="is-current" data-transcript-flow-step="upload"><span class="transcript-flow-index">01</span><span><strong>Запись</strong><small>добавить аудио</small></span></li>
+                    <li data-transcript-flow-step="process"><span class="transcript-flow-index">02</span><span><strong>Тихая очередь</strong><small>локально на VPS</small></span></li>
+                    <li data-transcript-flow-step="edit"><span class="transcript-flow-index">03</span><span><strong>Вычитка</strong><small>подготовить черновик</small></span></li>
+                  </ol>
+                  <p id="transcriptFlowNote" class="transcript-flow-note" role="status">Добавьте запись — процесс будет виден здесь, без лишних экранов и ожидания у вкладки.</p>
+                  <div class="transcript-hero-actions"><button class="btn btn-primary" id="transcriptNewBtn" type="button">+ Добавить запись</button><button class="btn" id="transcriptRefreshBtn" type="button">Обновить статус</button></div>
                 </div>
-                <div class="transcript-hero-actions"><button class="btn btn-primary" id="transcriptNewBtn" type="button">+ Добавить запись</button><button class="btn" id="transcriptRefreshBtn" type="button">Обновить статус</button></div>
+                <div class="transcript-hero-visual" aria-hidden="true">
+                  <div class="transcript-hero-signal">
+                    <span class="transcript-signal-kicker">PRIVATE SIGNAL</span>
+                    <div class="transcript-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    <div class="transcript-hero-seal"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><circle cx="24" cy="24" r="16"></circle><path d="M19 18.5v11M24 15v18M29 19.5v9"></path><path d="M13 24h4m14 0h4"></path></svg></div>
+                    <span class="transcript-signal-state">LOCAL · EN</span>
+                  </div>
+                  <span class="transcript-hero-coordinate coordinate-a">01 / AUDIO</span>
+                  <span class="transcript-hero-coordinate coordinate-b">03 / EDIT</span>
+                </div>
               </section>
               <section class="transcript-readiness card" id="transcriptReadiness" aria-live="polite"></section>
               <section class="transcript-composer card" id="transcriptComposer" hidden>
@@ -1924,7 +1940,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.57" type="module"></script>
+    <script src="./app.js?v=4.58" type="module"></script>
     <script src="../brandbook/data.js?v=1"></script>
     <script src="./brandbook.js?v=3"></script>
     <script>
