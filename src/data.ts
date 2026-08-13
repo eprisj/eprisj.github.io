@@ -843,20 +843,11 @@ export function getAvailableLanguages(): string[] {
 export function isEntityLive(e: { draft?: boolean; publishAt?: string }): boolean {
   if (e.draft) return false;
   const publishTimestamp = e.publishAt ? Date.parse(e.publishAt) : NaN;
-  // Before the instant-publish fix the admin represented a published entry by
-  // removing its `draft` field. Keep that durable legacy signal valid: an
-  // entry born as draft:true can only become draft-less through Publish, while
-  // all long-standing records without a draft flag are already public.
-  const hasDraftFlag = Object.prototype.hasOwnProperty.call(e, 'draft');
-  const explicitlyPublished = e.draft === false
-    || !hasDraftFlag
-    || (Number.isFinite(publishTimestamp) && publishTimestamp <= Date.now());
-  // A seed draft stays hidden by default. The explicit «Опубликовать» action
-  // writes a past publishAt timestamp, which is unambiguous editorial intent:
-  // it must become public immediately even if the editor has not renamed the
-  // temporary title yet. This avoids a successful-looking publish that leads
-  // to a 404 for both new articles and new reviews.
-  if (isPlaceholderEntity(e) && !explicitlyPublished) return false;
+  // A blueprint is never reader-facing content. Older admin versions could
+  // remove `draft` before the first real edit, which made a template look
+  // published on mobile clients. A title/copy placeholder stays hidden until
+  // the editor replaces it with actual material, regardless of legacy flags.
+  if (isPlaceholderEntity(e)) return false;
   if (e.publishAt) {
     if (Number.isFinite(publishTimestamp) && publishTimestamp > Date.now()) return false;
   }
@@ -877,13 +868,7 @@ export function getContentForLanguage(lang: string): LanguageContent {
   // before the merge — mergeLocalizedArray never adds locale-only entries, so
   // an orphaned localized stub for the same id is dropped along with it. Admin
   // preview keeps everything so stubs remain visible for editing.
-  const liveBase = <T,>(arr: T[]): T[] => isPreview() ? arr : arr.filter((e) => {
-    if (!isPlaceholderEntity(e)) return true;
-    const entry = e as { draft?: unknown; publishAt?: unknown };
-    if (entry.draft === false || !Object.prototype.hasOwnProperty.call(entry, 'draft')) return true;
-    const stamp = typeof entry.publishAt === 'string' ? Date.parse(entry.publishAt) : NaN;
-    return Number.isFinite(stamp) && stamp <= Date.now();
-  });
+  const liveBase = <T,>(arr: T[]): T[] => isPreview() ? arr : arr.filter((e) => !isPlaceholderEntity(e));
 
   const articles = mergeLocalizedArray(bucket.articles, liveBase(c.articles));
   // Reviews hit the same recycled-id trap the Gallery did: every locale still

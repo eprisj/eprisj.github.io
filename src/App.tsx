@@ -1297,12 +1297,17 @@ function homepageItemDescription(item: Item, fallback: string): string {
   return item.homeDescription?.trim() || item.description?.trim() || item.homeSubtitle?.trim() || item.subtitle?.trim() || homepageItemTitle(item) || fallback;
 }
 
-// Editorial pieces that were entered as "EPRIS Journal" are authored by the
-// editor-in-chief in the reader-facing byline. Keep named guest/contributor
-// credits intact while making the latest-articles cards and article view agree.
-function displayArticleAuthor(article: Pick<Article, 'author'>): string {
-  const author = (article.author || '').trim();
-  return !author || /^epris\s+journal$/i.test(author) ? 'Mariia Ivanova' : author;
+// An article owns its byline. A linked author card enriches that byline but
+// never replaces a named contributor with one default person: guest writers,
+// editors and studios must remain distinct on every screen size.
+function displayArticleAuthor(article: Pick<Article, 'author' | 'authorId'>): string {
+  const namedAuthor = article.author?.trim() || '';
+  // The text stored on the material is the publication credit. An author card
+  // only fills the generic EPRIS Journal fallback; it must never turn a guest
+  // piece into somebody else's byline just because an older editor left an
+  // authorId behind.
+  if (namedAuthor && !/^epris\s+journal$/i.test(namedAuthor)) return namedAuthor;
+  return resolveAuthor(article)?.name?.trim() || namedAuthor || 'EPRIS Journal';
 }
 
 function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]; onImageClick: (src: string, alt: string) => void; currentLang: string; t: (key: string) => string }) {
@@ -1963,7 +1968,16 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   // Resolve the linked author record (by authorId or name) so the byline can
   // show a real photo + bio; falls back to the plain author/role strings.
   const resolvedAuthor = resolveAuthor(article);
-  const authorName = resolvedAuthor?.name || displayArticleAuthor(article);
+  const authorName = displayArticleAuthor(article);
+  const explicitAuthor = article.author?.trim() || '';
+  // Only show a linked profile when it belongs to the visible byline. This
+  // keeps a stale authorId from attaching Mariia's photo/role to another
+  // contributor's article on desktop or mobile.
+  const hasEditorialFallback = !explicitAuthor || /^epris\s+journal$/i.test(explicitAuthor);
+  const isMatchingProfile = Boolean(
+    resolvedAuthor
+      && (hasEditorialFallback || resolvedAuthor.name.trim().toLocaleLowerCase() === authorName.toLocaleLowerCase())
+  );
   // article.role is per-language (each locale bucket carries its own translated
   // string, e.g. "Arts Desk" vs "Arts Desk" translated); the Author record's
   // role is a single global string entered once in the admin, so it can only
@@ -1971,8 +1985,8 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   // article.role and only fall back to the author record's role when the
   // article doesn't specify one — otherwise the byline "role" freezes in
   // one language regardless of the reader's selected language.
-  const authorRole = article.role || translateRole(resolvedAuthor?.role, currentLang);
-  const authorPhoto = resolvedAuthor?.photoUrl;
+  const authorRole = article.role || (isMatchingProfile ? translateRole(resolvedAuthor?.role, currentLang) : undefined);
+  const authorPhoto = isMatchingProfile ? resolvedAuthor?.photoUrl : undefined;
 
   // Jumping to a related article swaps content inside the same overlay — snap
   // the scroll back to the top so the reader starts at the new article's hero.

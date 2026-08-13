@@ -118,6 +118,38 @@ function breadcrumbSchema(items) {
 const indexHtml = readFileSync(join(distDir, 'index.html'), 'utf-8');
 const content = JSON.parse(readFileSync(contentPath, 'utf-8'));
 
+// Static route/SEO pages must follow the same publication rules as the app.
+// Otherwise an untouched editor blueprint is hidden in the React feed but its
+// URL (and an indexable sitemap entry) is still generated during deployment.
+const PLACEHOLDER_TITLES = new Set([
+  'new editorial story', 'new practical guide', 'new photo essay',
+  'new review', 'new gallery item', 'new file',
+  'neues galerieelement', 'nuevo elemento de la galería', 'yeni galeri öğesi',
+  'nuovo elemento della galleria', 'новый элемент галереи', 'новий елемент галереї',
+  'neue redaktionelle geschichte', 'nueva historia editorial', 'yeni editoryal hikaye',
+  'nuova storia editoriale', 'новая редакционная история', 'нова редакційна історія',
+]);
+const PLACEHOLDER_PHRASES = [
+  'replace me', 'replace with real copy before publishing',
+  'замініть мене', 'замініть на справжню копію', 'замените меня',
+  'замените реальной копией', 'ersetze mich', 'reemplázame',
+  'beni değiştir', 'sostituiscimi',
+];
+function isPublicEntry(entry) {
+  if (!entry || entry.draft === true) return false;
+  const title = String(entry.title || '').trim().toLowerCase();
+  if (PLACEHOLDER_TITLES.has(title)) return false;
+  const copy = [entry.subtitle, entry.description, entry.excerpt]
+    .filter((value) => typeof value === 'string')
+    .join(' ')
+    .toLowerCase();
+  if (PLACEHOLDER_PHRASES.some((phrase) => copy.includes(phrase))) return false;
+  const publishAt = entry.publishAt ? Date.parse(entry.publishAt) : NaN;
+  return !(Number.isFinite(publishAt) && publishAt > Date.now());
+}
+const publicArticles = (content.articles || []).filter(isPublicEntry);
+const publicReviews = (content.reviews || []).filter(isPublicEntry);
+
 // Strip all existing OG/twitter/description meta tags and title from template
 let template = indexHtml
   .replace(/<title>[^<]*<\/title>/, '<!--TITLE-->')
@@ -128,7 +160,7 @@ let template = indexHtml
   .replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/g, '')
   .replace(/\n\s*\n/g, '\n');
 
-for (const article of content.articles) {
+for (const article of publicArticles) {
   const slug = generateSlug(article.title);
   const imageUrl = resolveImage(article);
   const excerpt = escapeAttr(article.excerpt);
@@ -197,7 +229,7 @@ for (const article of content.articles) {
   console.log(`Generated: /article/${slug} (id=${article.id})`);
 }
 
-console.log(`\nGenerated OG pages for ${content.articles.length} articles.`);
+console.log(`\nGenerated OG pages for ${publicArticles.length} articles.`);
 
 // ── Reviews ──────────────────────────────────────────────────────────────────
 // Reviews live at readable /review/<slug> URLs like articles do, so they get
@@ -208,7 +240,7 @@ const reviewPlainBody = (review) => Array.isArray(review.content)
   ? review.content.map(blockText).filter(Boolean).join('\n\n')
   : String(review.content || '');
 
-for (const review of content.reviews || []) {
+for (const review of publicReviews) {
   const slug = generateSlug(review.title || '');
   const imageUrl = resolveImage(review);
   const summary = review.verdict || reviewPlainBody(review).slice(0, 200);
@@ -388,8 +420,8 @@ console.log('Generated: /search');
 const sitemapRoutes = ['', ...Object.keys(ROUTES).filter((route) => !ALIAS_ROUTES[route])];
 const sitemapEntries = [
   ...sitemapRoutes.map((route) => ({ loc: route ? `${SITE_ORIGIN}/${route}` : `${SITE_ORIGIN}/`, priority: route ? '0.7' : '1.0', changefreq: route === 'articles' ? 'daily' : 'weekly', image: route ? '' : DEFAULT_IMAGE })),
-  ...content.articles.map((article) => ({ loc: `${SITE_ORIGIN}/article/${generateSlug(article.title)}`, priority: '0.8', changefreq: 'monthly', lastmod: formatDate(article.updatedAt) || formatDate(article.date) || '', image: resolveImage(article), imageTitle: article.title })),
-  ...(content.reviews || []).map((review) => ({ loc: `${SITE_ORIGIN}/review/${generateSlug(review.title || '') || review.id}`, priority: '0.7', changefreq: 'monthly', lastmod: formatDate(review.updatedAt) || formatDate(review.date) || '', image: resolveImage(review), imageTitle: review.title })),
+  ...publicArticles.map((article) => ({ loc: `${SITE_ORIGIN}/article/${generateSlug(article.title)}`, priority: '0.8', changefreq: 'monthly', lastmod: formatDate(article.updatedAt) || formatDate(article.date) || '', image: resolveImage(article), imageTitle: article.title })),
+  ...publicReviews.map((review) => ({ loc: `${SITE_ORIGIN}/review/${generateSlug(review.title || '') || review.id}`, priority: '0.7', changefreq: 'monthly', lastmod: formatDate(review.updatedAt) || formatDate(review.date) || '', image: resolveImage(review), imageTitle: review.title })),
 ];
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${sitemapEntries.map((entry) => `  <url>\n    <loc>${entry.loc}</loc>${entry.lastmod ? `\n    <lastmod>${String(entry.lastmod).slice(0, 10)}</lastmod>` : ''}${entry.image ? `\n    <image:image>\n      <image:loc>${escapeAttr(entry.image)}</image:loc>${entry.imageTitle ? `\n      <image:title>${escapeAttr(entry.imageTitle)}</image:title>` : ''}\n    </image:image>` : ''}\n    <changefreq>${entry.changefreq}</changefreq>\n    <priority>${entry.priority}</priority>\n  </url>`).join('\n')}\n</urlset>\n`;
 writeFileSync(join(distDir, 'sitemap.xml'), sitemapXml);
