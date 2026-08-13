@@ -77,6 +77,12 @@ function jobSummary(job, full = false) {
     updatedAt: job.updatedAt,
     completedAt: job.completedAt || null,
     reviewedAt: job.reviewedAt || null,
+    articleDraft: job.articleDraft && Number.isFinite(Number(job.articleDraft.id)) ? {
+      id: Number(job.articleDraft.id),
+      title: clip(job.articleDraft.title, 180),
+      createdAt: job.articleDraft.createdAt || null,
+    } : null,
+    articleDraftPending: Boolean(job.articleDraftLock && Date.parse(job.articleDraftLock.createdAt || 0) > Date.now() - 10 * 60 * 1000),
     retentionAt: job.retentionAt || null,
     error: job.error || "",
     segmentCount: Array.isArray(job.segments) ? job.segments.length : 0,
@@ -294,7 +300,7 @@ function createInterviewModule({ resolveRole }) {
         }
         return true;
       }
-      const match = url.pathname.match(/^\/interviews\/([a-z0-9_-]{12,64})(?:\/(audio|export|retry))?$/i);
+      const match = url.pathname.match(/^\/interviews\/([a-z0-9_-]{12,64})(?:\/(audio|export|retry|article-draft))?$/i);
       if (!match) { respond(res, 404, { ok: false, error: "interview not found" }); return true; }
       const [, id, action] = match;
       const job = readJob(id);
@@ -319,6 +325,61 @@ function createInterviewModule({ resolveRole }) {
         if (!job.sourcePath || !fs.existsSync(job.sourcePath)) { respond(res, 409, { ok: false, error: "audio expired; upload it again" }); return true; }
         job.status = "queued"; job.stage = "Queued again"; job.progress = 1; job.error = ""; saveJob(job); retrySoon(id);
         respond(res, 200, { ok: true, job: jobSummary(job) });
+        return true;
+      }
+      if (action === "article-draft" && req.method === "POST") {
+        const body = parsed && typeof parsed === "object" ? parsed : {};
+        const actionName = clip(body.action, 24);
+        const lockIsFresh = job.articleDraftLock && Date.parse(job.articleDraftLock.createdAt || 0) > Date.now() - 10 * 60 * 1000;
+        if (actionName === "reserve") {
+          if (job.articleDraft?.id) {
+            respond(res, 409, { ok: false, error: `draft #${job.articleDraft.id} already exists for this interview`, job: jobSummary(job, true) });
+            return true;
+          }
+          if (lockIsFresh) {
+            respond(res, 409, { ok: false, error: "another editor is creating a draft from this interview", job: jobSummary(job, true) });
+            return true;
+          }
+          const token = crypto.randomUUID();
+          job.articleDraftLock = { token, createdAt: now() };
+          saveJob(job);
+          respond(res, 200, { ok: true, token, job: jobSummary(job, true) });
+          return true;
+        }
+        const token = clip(body.token, 100);
+        if (actionName === "link-existing") {
+          const draftId = Number(body.articleId);
+          if (!Number.isInteger(draftId) || draftId < 1) { respond(res, 400, { ok: false, error: "articleId must be a positive integer" }); return true; }
+          if (job.articleDraft?.id && Number(job.articleDraft.id) !== draftId) {
+            respond(res, 409, { ok: false, error: `draft #${job.articleDraft.id} is already linked to this interview`, job: jobSummary(job, true) });
+            return true;
+          }
+          job.articleDraft = { id: draftId, title: clip(body.title, 180), createdAt: job.articleDraft?.createdAt || now() };
+          delete job.articleDraftLock;
+          saveJob(job);
+          respond(res, 200, { ok: true, job: jobSummary(job, true) });
+          return true;
+        }
+        if (!lockIsFresh || !token || token !== job.articleDraftLock?.token) {
+          respond(res, 409, { ok: false, error: "the draft reservation expired; start again", job: jobSummary(job, true) });
+          return true;
+        }
+        if (actionName === "complete") {
+          const draftId = Number(body.articleId);
+          if (!Number.isInteger(draftId) || draftId < 1) { respond(res, 400, { ok: false, error: "articleId must be a positive integer" }); return true; }
+          job.articleDraft = { id: draftId, title: clip(body.title, 180), createdAt: now() };
+          delete job.articleDraftLock;
+          saveJob(job);
+          respond(res, 200, { ok: true, job: jobSummary(job, true) });
+          return true;
+        }
+        if (actionName === "release") {
+          delete job.articleDraftLock;
+          saveJob(job);
+          respond(res, 200, { ok: true, job: jobSummary(job, true) });
+          return true;
+        }
+        respond(res, 400, { ok: false, error: "unknown draft action" });
         return true;
       }
       if (!action && req.method === "PATCH") {
