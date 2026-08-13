@@ -4920,7 +4920,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     readiness: $('transcriptReadiness'), composer: $('transcriptComposer'), newBtn: $('transcriptNewBtn'), refreshBtn: $('transcriptRefreshBtn'), closeComposerBtn: $('transcriptCloseComposerBtn'),
     hero: $('transcriptHero'), flow: $('transcriptFlow'), flowNote: $('transcriptFlowNote'),
     title: $('transcriptTitle'), language: $('transcriptLanguage'), retention: $('transcriptRetention'), speakers: $('transcriptSpeakers'), file: $('transcriptAudioInput'), fileLabel: $('transcriptFileLabel'), fileMeta: $('transcriptFileMeta'), dropzone: $('transcriptDropZone'), consent: $('transcriptConsent'), start: $('transcriptStartBtn'),
-    jobs: $('transcriptJobs'), count: $('transcriptLibraryCount'), editor: $('transcriptEditor'), editorTitle: $('transcriptEditorTitle'), editorMeta: $('transcriptEditorMeta'),
+    jobs: $('transcriptJobs'), count: $('transcriptLibraryCount'), archiveSearch: $('transcriptArchiveSearch'), archiveFilters: $('transcriptArchiveFilters'), editor: $('transcriptEditor'), editorTitle: $('transcriptEditorTitle'), editorMeta: $('transcriptEditorMeta'),
     loadAudio: $('transcriptLoadAudioBtn'), retry: $('transcriptRetryBtn'), audio: $('transcriptAudio'), save: $('transcriptSaveBtn'), undo: $('transcriptUndoBtn'), saveState: $('transcriptSaveState'), txt: $('transcriptTxtBtn'), srt: $('transcriptSrtBtn'), vtt: $('transcriptVttBtn'), createArticle: $('transcriptCreateArticleBtn'), draftPanel: $('transcriptDraftPanel'), draftSetup: $('transcriptDraftSetup'), draftOutcome: $('transcriptDraftOutcome'), openArticle: $('transcriptOpenArticleBtn'), articleAuthor: $('transcriptArticleAuthor'), articleAuthorSummary: $('transcriptArticleAuthorSummary'), reviewed: $('transcriptReviewed'), speakersList: $('transcriptSpeakersList'), search: $('transcriptSearch'), searchPrev: $('transcriptSearchPrev'), searchNext: $('transcriptSearchNext'), segmentCount: $('transcriptSegmentCount'), segments: $('transcriptSegments'),
   };
   let selectedFile = null;
@@ -4935,6 +4935,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   let transcriptSaveInFlight = false;
   let draftArticleAuthorId = '';
   let activeSearchSegmentIndex = -1;
+  let archiveFilter = 'all';
   const audioExtensions = /\.(mp3|m4a|wav|mp4|mpeg|mpga|ogg|webm|flac)$/i;
   const fmtBytes = (bytes) => bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
   const fmtDate = (value) => value ? new Intl.DateTimeFormat('ru-RU', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(value)) : '—';
@@ -4965,6 +4966,25 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     if (job?.status === 'ready') return { title: 'Текст готов к вычитке', detail: 'Откройте запись, проверьте имена и фрагменты, затем создайте черновик.', step: 3 };
     if (job?.status === 'failed') return { title: 'Нужно действие редактора', detail: 'Аудио сохранено. Проверьте причину ниже и перезапустите только эту запись.', step: 1 };
     return { title: job?.stage || 'Черновик', detail: 'Запись ещё не отправлена в очередь.', step: 1 };
+  }
+  function archiveFilterLabel(filter) {
+    return { all: 'Все', ready: 'Готово', working: 'В работе', failed: 'Нужны действия', linked: 'Со статьёй' }[filter] || 'Все';
+  }
+  function matchesArchiveFilter(job, query = String(els.archiveSearch?.value || '').trim().toLocaleLowerCase(), filter = archiveFilter) {
+    const searchable = [job.title, job.filename, job.language, job.articleDraft?.title, job.articleDraft?.id, ...(job.speakers || [])].join(' ').toLocaleLowerCase();
+    if (query && !searchable.includes(query)) return false;
+    if (filter === 'ready') return job.status === 'ready';
+    if (filter === 'working') return ['queued', 'processing'].includes(job.status);
+    if (filter === 'failed') return job.status === 'failed';
+    if (filter === 'linked') return Boolean(job.articleDraft?.id);
+    return true;
+  }
+  function syncArchiveFilters() {
+    els.archiveFilters?.querySelectorAll('[data-transcript-filter]').forEach((button) => {
+      const active = button.dataset.transcriptFilter === archiveFilter;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
   }
   const statusLabel = (job) => stageDetails(job).title;
   const errorFrom = async (response) => {
@@ -5184,9 +5204,17 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     const contentData = parseEditorJsonSafe();
     const linkedArticles = contentData ? getSectionArray(contentData, 'articles', DEFAULT_LANGUAGE, false) : [];
     latestJobs = list;
-    els.count.textContent = `${list.length} ${list.length === 1 ? 'запись' : list.length < 5 ? 'записи' : 'записей'} · автообновление`;
-    if (!list.length) { els.jobs.innerHTML = '<p class="transcript-empty">Здесь появятся записи, отправленные в расшифровку. Готовые тексты и аудио не смешиваются со статьями.</p>'; return; }
-    els.jobs.innerHTML = list.map((job) => {
+    syncArchiveFilters();
+    if (!list.length) { els.count.textContent = '0 записей'; els.jobs.innerHTML = '<p class="transcript-empty">Здесь появятся записи, отправленные в расшифровку. Готовые тексты и аудио не смешиваются со статьями.</p>'; return; }
+    const filtered = list.filter((job) => matchesArchiveFilter(job));
+    const hasNarrowing = archiveFilter !== 'all' || Boolean(String(els.archiveSearch?.value || '').trim());
+    const countLabel = `${filtered.length} ${filtered.length === 1 ? 'запись' : filtered.length < 5 ? 'записи' : 'записей'}`;
+    els.count.textContent = hasNarrowing ? `${countLabel} из ${list.length}` : `${countLabel} · автообновление`;
+    if (!filtered.length) {
+      els.jobs.innerHTML = `<p class="transcript-empty">По запросу «${escapeHtml(String(els.archiveSearch?.value || '').trim() || archiveFilterLabel(archiveFilter))}» ничего нет.<button class="btn btn-sm" type="button" data-interview-clear-filters>Показать все интервью</button></p>`;
+      return;
+    }
+    els.jobs.innerHTML = filtered.map((job) => {
       const details = stageDetails(job, list);
       const progress = Math.max(1, Math.min(100, Number(job.progress) || 0));
       const isInFlight = ['queued', 'processing'].includes(job.status);
@@ -5418,7 +5446,8 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   els.newBtn?.addEventListener('click', openComposer); els.closeComposerBtn?.addEventListener('click', closeComposer); els.refreshBtn?.addEventListener('click', () => refresh());
   els.file?.addEventListener('change', () => setFile(els.file.files?.[0])); els.consent?.addEventListener('change', updateStart); els.retention?.addEventListener('change', () => { if (selectedFile) els.fileMeta.textContent = `${fmtBytes(selectedFile.size)} · файл будет храниться ${els.retention.value} дн.`; });
   els.dropzone?.addEventListener('dragover', (event) => { event.preventDefault(); els.dropzone.classList.add('is-dragging'); }); els.dropzone?.addEventListener('dragleave', () => els.dropzone.classList.remove('is-dragging')); els.dropzone?.addEventListener('drop', (event) => { event.preventDefault(); els.dropzone.classList.remove('is-dragging'); setFile(event.dataTransfer?.files?.[0]); });
-  els.start?.addEventListener('click', startUpload); els.jobs?.addEventListener('click', (event) => { const draftButton = event.target.closest('[data-interview-open-draft]'); if (draftButton) { openLinkedArticle(latestJobs.find((job) => String(job.id) === String(draftButton.dataset.interviewOpenDraft))); return; } const deleteButton = event.target.closest('[data-interview-delete]'); if (deleteButton) { deleteJobById(deleteButton.dataset.interviewDelete); return; } const retryButton = event.target.closest('[data-interview-retry]'); if (retryButton) { retryJobById(retryButton.dataset.interviewRetry); return; } const button = event.target.closest('[data-interview-open]'); if (button) loadJob(button.dataset.interviewOpen); });
+  els.start?.addEventListener('click', startUpload); els.jobs?.addEventListener('click', (event) => { const clearFilters = event.target.closest('[data-interview-clear-filters]'); if (clearFilters) { archiveFilter = 'all'; if (els.archiveSearch) els.archiveSearch.value = ''; renderJobs(latestJobs); return; } const draftButton = event.target.closest('[data-interview-open-draft]'); if (draftButton) { openLinkedArticle(latestJobs.find((job) => String(job.id) === String(draftButton.dataset.interviewOpenDraft))); return; } const deleteButton = event.target.closest('[data-interview-delete]'); if (deleteButton) { deleteJobById(deleteButton.dataset.interviewDelete); return; } const retryButton = event.target.closest('[data-interview-retry]'); if (retryButton) { retryJobById(retryButton.dataset.interviewRetry); return; } const button = event.target.closest('[data-interview-open]'); if (button) loadJob(button.dataset.interviewOpen); });
+  els.archiveSearch?.addEventListener('input', () => renderJobs(latestJobs)); els.archiveFilters?.addEventListener('click', (event) => { const button = event.target.closest('[data-transcript-filter]'); if (!button) return; archiveFilter = button.dataset.transcriptFilter || 'all'; renderJobs(latestJobs); });
   els.search?.addEventListener('input', () => { if (transcriptHasUnsavedChanges) applyEditorDraft(editorDraft()); activeSearchSegmentIndex = -1; renderEditor(); }); els.searchPrev?.addEventListener('click', () => moveSearchMatch(-1)); els.searchNext?.addEventListener('click', () => moveSearchMatch(1)); els.save?.addEventListener('click', () => saveEditor()); els.undo?.addEventListener('click', restoreTranscriptSnapshot); els.loadAudio?.addEventListener('click', loadAudio); els.retry?.addEventListener('click', retryJob); els.txt?.addEventListener('click', () => download('txt')); els.srt?.addEventListener('click', () => download('srt')); els.vtt?.addEventListener('click', () => download('vtt')); els.createArticle?.addEventListener('click', createArticle); els.openArticle?.addEventListener('click', openLinkedArticle); els.articleAuthor?.addEventListener('change', () => { draftArticleAuthorId = els.articleAuthor.value; renderDraftArticleAuthor(); }); els.reviewed?.addEventListener('change', () => { syncDraftReadiness(); markTranscriptChanged(); });
   els.segments?.addEventListener('input', markTranscriptChanged); els.segments?.addEventListener('change', markTranscriptChanged); els.speakersList?.addEventListener('input', markTranscriptChanged); els.speakersList?.addEventListener('change', markTranscriptChanged);
   els.segments?.addEventListener('click', (event) => { const target = event.target.closest('[data-seek]'); if (!target || !els.audio.src) return; els.audio.currentTime = Number(target.dataset.seek) || 0; els.audio.play().catch(() => {}); });
