@@ -4918,12 +4918,14 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   const $ = (id) => byId(id);
   const els = {
     readiness: $('transcriptReadiness'), composer: $('transcriptComposer'), newBtn: $('transcriptNewBtn'), refreshBtn: $('transcriptRefreshBtn'), closeComposerBtn: $('transcriptCloseComposerBtn'),
+    hero: $('transcriptHero'), flow: $('transcriptFlow'), flowNote: $('transcriptFlowNote'),
     title: $('transcriptTitle'), language: $('transcriptLanguage'), retention: $('transcriptRetention'), speakers: $('transcriptSpeakers'), file: $('transcriptAudioInput'), fileLabel: $('transcriptFileLabel'), fileMeta: $('transcriptFileMeta'), dropzone: $('transcriptDropZone'), consent: $('transcriptConsent'), start: $('transcriptStartBtn'),
     jobs: $('transcriptJobs'), count: $('transcriptLibraryCount'), editor: $('transcriptEditor'), editorTitle: $('transcriptEditorTitle'), editorMeta: $('transcriptEditorMeta'),
     loadAudio: $('transcriptLoadAudioBtn'), retry: $('transcriptRetryBtn'), audio: $('transcriptAudio'), save: $('transcriptSaveBtn'), txt: $('transcriptTxtBtn'), srt: $('transcriptSrtBtn'), vtt: $('transcriptVttBtn'), createArticle: $('transcriptCreateArticleBtn'), speakersList: $('transcriptSpeakersList'), search: $('transcriptSearch'), segmentCount: $('transcriptSegmentCount'), segments: $('transcriptSegments'),
   };
   let selectedFile = null;
   let activeJob = null;
+  let latestJobs = [];
   let audioObjectUrl = '';
   let pollTimer = 0;
   const audioExtensions = /\.(mp3|m4a|wav|mp4|mpeg|mpga|ogg|webm|flac)$/i;
@@ -4953,6 +4955,27 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   function updateStart() { els.start.disabled = els.start.dataset.ready !== 'true' || !(selectedFile && els.consent.checked); }
   function closeComposer() { els.composer.hidden = true; }
   function openComposer() { els.composer.hidden = false; els.composer.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  function renderFlow(jobs = latestJobs, ready = true) {
+    const list = Array.isArray(jobs) ? jobs : [];
+    const hasProcessing = list.some((job) => ['queued', 'processing'].includes(job.status));
+    const hasReady = list.some((job) => job.status === 'ready');
+    const state = !ready ? 'waiting' : hasProcessing ? 'processing' : hasReady ? 'ready' : 'idle';
+    els.hero?.setAttribute('data-flow', state);
+    const activeStep = state === 'processing' ? 'process' : state === 'ready' ? 'edit' : 'upload';
+    els.flow?.querySelectorAll('[data-transcript-flow-step]').forEach((step) => {
+      const key = step.dataset.transcriptFlowStep;
+      step.classList.toggle('is-current', key === activeStep);
+      step.classList.toggle('is-complete', (activeStep === 'process' && key === 'upload') || (activeStep === 'edit' && (key === 'upload' || key === 'process')));
+    });
+    if (!els.flowNote) return;
+    const note = {
+      waiting: 'Локальная студия готовится на VPS. После запуска всё остальное происходит в одном спокойном потоке.',
+      processing: 'Идёт локальная обработка на VPS. Окно можно закрыть — очередь продолжит работу и обновит этот статус сама.',
+      ready: 'Есть текст для вычитки. Откройте готовую запись ниже и только затем создайте черновик статьи.',
+      idle: 'Добавьте запись — процесс будет виден здесь, без лишних экранов и ожидания у вкладки.',
+    };
+    els.flowNote.textContent = note[state];
+  }
   function setFile(file) {
     if (!file) return;
     if (!file.type.startsWith('audio/') && !audioExtensions.test(file.name)) { showToast('error', 'Выберите аудиофайл: MP3, M4A, WAV, MP4, OGG, WebM или FLAC.'); return; }
@@ -4970,15 +4993,17 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     const missing = [!health?.localEngine?.ready && 'локальный движок расшифровки', !health?.ffmpegReady && 'подготовка аудио'].filter(Boolean);
     const engine = health?.localEngine?.engine || 'Local Whisper';
     const model = health?.localEngine?.model ? ` · ${health.localEngine.model}` : '';
-    els.readiness.innerHTML = `<span class="transcript-readiness-mark">${ready ? '✓' : '!'}</span><div><strong>${ready ? `${escapeHtml(engine)} готов` : 'Студия готовится на сервере'}</strong><span>${ready ? `Запись не покидает VPS${escapeHtml(model)}. До ${Math.round((health.maxUploadBytes || 0) / 1024 / 1024) || 512} МБ — в защищённую очередь.` : `${escapeHtml(health?.localEngine?.detail || `Нужно завершить: ${missing.join(' и ') || 'проверку сервиса'}`)}. Редактору ничего настраивать не нужно.`}</span></div>`;
+    els.readiness.innerHTML = `<span class="transcript-readiness-mark">${ready ? '✓' : '!'}</span><div class="transcript-readiness-copy"><strong>${ready ? `${escapeHtml(engine)} готов` : 'Студия готовится на сервере'}</strong><span>${ready ? `Запись не покидает VPS${escapeHtml(model)}. До ${Math.round((health.maxUploadBytes || 0) / 1024 / 1024) || 512} МБ — в защищённую очередь.` : `${escapeHtml(health?.localEngine?.detail || `Нужно завершить: ${missing.join(' и ') || 'проверку сервиса'}`)}. Редактору ничего настраивать не нужно.`}</span></div><span class="transcript-readiness-proof">${ready ? 'LOCAL / READY' : 'CHECKING'}</span>`;
     els.start.dataset.ready = ready ? 'true' : 'false';
     updateStart();
+    renderFlow(latestJobs, ready);
   }
   function renderJobs(jobs) {
     const list = Array.isArray(jobs) ? jobs : [];
+    latestJobs = list;
     els.count.textContent = `${list.length} ${list.length === 1 ? 'запись' : list.length < 5 ? 'записи' : 'записей'}`;
     if (!list.length) { els.jobs.innerHTML = '<p class="transcript-empty">Здесь появятся записи, отправленные в расшифровку. Готовые тексты и аудио не смешиваются со статьями.</p>'; return; }
-    els.jobs.innerHTML = list.map((job) => `<article class="transcript-job"><div class="transcript-job-main"><strong class="transcript-job-title">${escapeHtml(job.title || job.filename || 'Без названия')}</strong><div class="transcript-job-meta"><span>${escapeHtml(job.language || 'en').toUpperCase()}</span><span>${escapeHtml(fmtBytes(Number(job.size) || 0))}</span><span>${escapeHtml(fmtDate(job.updatedAt || job.createdAt))}</span><span class="transcript-job-status ${escapeHtml(job.status || '')}">${escapeHtml(statusLabel(job))}</span></div>${['queued', 'processing'].includes(job.status) ? `<div class="transcript-progress"><i style="width:${Math.max(1, Math.min(100, Number(job.progress) || 0))}%"></i></div>` : ''}${job.error ? `<div class="transcript-job-meta" style="color:var(--danger)">${escapeHtml(job.error)}</div>` : ''}</div><button class="btn btn-sm" type="button" data-interview-open="${escapeHtml(job.id)}">${job.status === 'failed' ? 'Открыть / повторить' : 'Открыть'}</button></article>`).join('');
+    els.jobs.innerHTML = list.map((job) => `<article class="transcript-job is-${escapeHtml(job.status || 'draft')}"><div class="transcript-job-main"><strong class="transcript-job-title">${escapeHtml(job.title || job.filename || 'Без названия')}</strong><div class="transcript-job-meta"><span>${escapeHtml(job.language || 'en').toUpperCase()}</span><span>${escapeHtml(fmtBytes(Number(job.size) || 0))}</span><span>${escapeHtml(fmtDate(job.updatedAt || job.createdAt))}</span><span class="transcript-job-status ${escapeHtml(job.status || '')}">${escapeHtml(statusLabel(job))}</span></div>${['queued', 'processing'].includes(job.status) ? `<div class="transcript-job-process"><div class="transcript-progress" aria-label="Прогресс ${Math.max(1, Math.min(100, Number(job.progress) || 0))}%"><i style="width:${Math.max(1, Math.min(100, Number(job.progress) || 0))}%"></i></div><span>${job.status === 'processing' ? 'Обрабатываем локально — можно закрыть вкладку' : 'Ждёт свободное место в локальной очереди'}</span></div>` : ''}${job.error ? `<div class="transcript-job-meta transcript-job-error">${escapeHtml(job.error)}</div>` : ''}</div><button class="btn btn-sm" type="button" data-interview-open="${escapeHtml(job.id)}">${job.status === 'failed' ? 'Открыть / повторить' : job.status === 'ready' ? 'Вычитать' : 'Открыть'}</button></article>`).join('');
   }
   function speakersFromSegments(segments) { return [...new Set((segments || []).map((segment) => String(segment.speaker || '').trim()).filter(Boolean))]; }
   function speakerOptions(job) { return [...new Set([...(job?.speakers || []), ...speakersFromSegments(job?.segments || [])].map((name) => String(name || '').trim()).filter(Boolean))]; }
@@ -5016,6 +5041,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
       const [health, list] = await Promise.all([api('/health'), api('')]);
       renderReadiness(health);
       renderJobs(list.jobs);
+      renderFlow(list.jobs, Boolean(health?.localEngine?.ready && health?.ffmpegReady));
       if (activeJob) await loadJob(activeJob.id, true);
       const hasWork = list.jobs.some((job) => ['queued', 'processing'].includes(job.status));
       window.clearTimeout(pollTimer);
@@ -5023,7 +5049,8 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
       if (!quiet) showToast('success', 'Архив интервью обновлён.');
     } catch (error) {
       els.readiness.className = 'transcript-readiness card missing';
-      els.readiness.innerHTML = `<span class="transcript-readiness-mark">!</span><div><strong>Студия интервью недоступна</strong><span>${escapeHtml(getErrorMessage(error))}</span></div>`;
+      els.readiness.innerHTML = `<span class="transcript-readiness-mark">!</span><div class="transcript-readiness-copy"><strong>Студия интервью недоступна</strong><span>${escapeHtml(getErrorMessage(error))}</span></div><span class="transcript-readiness-proof">OFFLINE</span>`;
+      renderFlow(latestJobs, false);
       if (!quiet) showToast('error', getErrorMessage(error));
     }
   }
