@@ -4920,7 +4920,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     readiness: $('transcriptReadiness'), composer: $('transcriptComposer'), newBtn: $('transcriptNewBtn'), refreshBtn: $('transcriptRefreshBtn'), closeComposerBtn: $('transcriptCloseComposerBtn'),
     title: $('transcriptTitle'), language: $('transcriptLanguage'), retention: $('transcriptRetention'), speakers: $('transcriptSpeakers'), file: $('transcriptAudioInput'), fileLabel: $('transcriptFileLabel'), fileMeta: $('transcriptFileMeta'), dropzone: $('transcriptDropZone'), consent: $('transcriptConsent'), start: $('transcriptStartBtn'),
     jobs: $('transcriptJobs'), count: $('transcriptLibraryCount'), editor: $('transcriptEditor'), editorTitle: $('transcriptEditorTitle'), editorMeta: $('transcriptEditorMeta'),
-    loadAudio: $('transcriptLoadAudioBtn'), audio: $('transcriptAudio'), save: $('transcriptSaveBtn'), txt: $('transcriptTxtBtn'), srt: $('transcriptSrtBtn'), vtt: $('transcriptVttBtn'), createArticle: $('transcriptCreateArticleBtn'), speakersList: $('transcriptSpeakersList'), search: $('transcriptSearch'), segmentCount: $('transcriptSegmentCount'), segments: $('transcriptSegments'),
+    loadAudio: $('transcriptLoadAudioBtn'), retry: $('transcriptRetryBtn'), audio: $('transcriptAudio'), save: $('transcriptSaveBtn'), txt: $('transcriptTxtBtn'), srt: $('transcriptSrtBtn'), vtt: $('transcriptVttBtn'), createArticle: $('transcriptCreateArticleBtn'), speakersList: $('transcriptSpeakersList'), search: $('transcriptSearch'), segmentCount: $('transcriptSegmentCount'), segments: $('transcriptSegments'),
   };
   let selectedFile = null;
   let activeJob = null;
@@ -4983,6 +4983,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     const job = activeJob;
     if (!job) { els.editor.hidden = true; return; }
     els.editor.hidden = false;
+    els.retry.hidden = job.status !== 'failed';
     els.editorTitle.textContent = job.title || job.filename || 'Интервью';
     els.editorMeta.textContent = `${statusLabel(job)} · ${job.segmentCount || (job.segments || []).length} фрагментов · создано ${fmtDate(job.createdAt)}`;
     const speakers = job.speakers?.length ? job.speakers : speakersFromSegments(job.segments);
@@ -5041,7 +5042,8 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
       renderEditor();
       showToast('success', 'Правки к расшифровке сохранены.');
       refresh(true);
-    } catch (error) { showToast('error', getErrorMessage(error)); }
+      return true;
+    } catch (error) { showToast('error', getErrorMessage(error)); return false; }
   }
   async function startUpload() {
     if (els.start.dataset.ready !== 'true') { showToast('error', 'Сначала нужно завершить настройку расшифровки на VPS.'); return; }
@@ -5079,10 +5081,20 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
       audioObjectUrl = URL.createObjectURL(await response.blob()); els.audio.src = audioObjectUrl; els.audio.hidden = false; els.audio.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } catch (error) { showToast('error', getErrorMessage(error)); }
   }
+  async function retryJob() {
+    if (!activeJob) return;
+    try {
+      const payload = await api(`/${encodeURIComponent(activeJob.id)}/retry`, { method: 'POST' });
+      activeJob = payload.job;
+      renderEditor();
+      showToast('success', 'Запись снова поставлена в очередь.');
+      refresh(true);
+    } catch (error) { showToast('error', getErrorMessage(error)); }
+  }
   async function createArticle() {
     if (!activeJob || !activeJob.segments?.length) { showToast('info', 'Сначала дождитесь текста расшифровки.'); return; }
     try {
-      await saveEditor();
+      if (!await saveEditor()) return;
       const data = parseEditorJson();
       const id = getNextEntryId(data, 'articles');
       const groups = [];
@@ -5102,7 +5114,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   els.file?.addEventListener('change', () => setFile(els.file.files?.[0])); els.consent?.addEventListener('change', updateStart); els.retention?.addEventListener('change', () => { if (selectedFile) els.fileMeta.textContent = `${fmtBytes(selectedFile.size)} · файл будет храниться ${els.retention.value} дн.`; });
   els.dropzone?.addEventListener('dragover', (event) => { event.preventDefault(); els.dropzone.classList.add('is-dragging'); }); els.dropzone?.addEventListener('dragleave', () => els.dropzone.classList.remove('is-dragging')); els.dropzone?.addEventListener('drop', (event) => { event.preventDefault(); els.dropzone.classList.remove('is-dragging'); setFile(event.dataTransfer?.files?.[0]); });
   els.start?.addEventListener('click', startUpload); els.jobs?.addEventListener('click', (event) => { const button = event.target.closest('[data-interview-open]'); if (button) loadJob(button.dataset.interviewOpen); });
-  els.search?.addEventListener('input', renderEditor); els.save?.addEventListener('click', saveEditor); els.loadAudio?.addEventListener('click', loadAudio); els.txt?.addEventListener('click', () => download('txt')); els.srt?.addEventListener('click', () => download('srt')); els.vtt?.addEventListener('click', () => download('vtt')); els.createArticle?.addEventListener('click', createArticle);
+  els.search?.addEventListener('input', renderEditor); els.save?.addEventListener('click', saveEditor); els.loadAudio?.addEventListener('click', loadAudio); els.retry?.addEventListener('click', retryJob); els.txt?.addEventListener('click', () => download('txt')); els.srt?.addEventListener('click', () => download('srt')); els.vtt?.addEventListener('click', () => download('vtt')); els.createArticle?.addEventListener('click', createArticle);
   els.segments?.addEventListener('click', (event) => { const target = event.target.closest('[data-seek]'); if (!target || !els.audio.src) return; els.audio.currentTime = Number(target.dataset.seek) || 0; els.audio.play().catch(() => {}); });
   document.querySelector('[data-tab="transcripts"]')?.addEventListener('click', () => refresh(true));
   refresh(true);
