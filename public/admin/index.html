@@ -12,7 +12,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=4.53" />
+    <link rel="stylesheet" href="./styles.css?v=4.55" />
     <link rel="stylesheet" href="./brandbook.css?v=3" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -140,6 +140,10 @@
             <button class="tab-btn" data-tab="upload" type="button">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
               Загрузка фото
+            </button>
+            <button class="tab-btn" data-tab="transcripts" type="button">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3.5M8.5 21.5h7"/></svg>
+              Интервью
             </button>
             <button class="tab-btn" data-tab="translations" type="button">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
@@ -1061,6 +1065,39 @@
             </div>
           </section>
 
+          <!-- ===== INTERVIEW STUDIO ===== -->
+          <section class="tab-panel" id="tab-transcripts">
+            <div class="transcript-layout">
+              <section class="transcript-hero">
+                <div>
+                  <p class="panel-kicker">Interview studio</p>
+                  <h1>Интервью → текст</h1>
+                  <p>Загрузите запись на английском. Аудио остаётся в закрытом хранилище редакции, а готовый текст можно вычитать, скачать с таймкодами или превратить в черновик статьи.</p>
+                </div>
+                <div class="transcript-hero-actions"><button class="btn btn-primary" id="transcriptNewBtn" type="button">+ Новая расшифровка</button><button class="btn" id="transcriptRefreshBtn" type="button">Обновить</button></div>
+              </section>
+              <section class="transcript-readiness card" id="transcriptReadiness" aria-live="polite"></section>
+              <section class="transcript-composer card" id="transcriptComposer" hidden>
+                <div class="transcript-section-head"><div><p class="panel-kicker">Новая запись</p><h2 class="card-title">Подготовить расшифровку</h2></div><button class="btn btn-sm" id="transcriptCloseComposerBtn" type="button">Закрыть</button></div>
+                <div class="transcript-form-grid">
+                  <label class="full"><span class="field-label">Название интервью</span><input id="transcriptTitle" maxlength="180" placeholder="Например: Conversation with Maria Ivanova" /></label>
+                  <label><span class="field-label">Язык записи</span><select id="transcriptLanguage"><option value="en" selected>English</option></select></label>
+                  <label><span class="field-label">Хранить аудио</span><select id="transcriptRetention"><option value="7">7 дней</option><option value="30" selected>30 дней</option><option value="90">90 дней</option></select></label>
+                  <label class="full"><span class="field-label">Известные участники — необязательно</span><input id="transcriptSpeakers" maxlength="500" placeholder="Maria Ivanova, Interviewer" /><small>Имена можно будет уточнить после расшифровки.</small></label>
+                </div>
+                <label class="transcript-dropzone" id="transcriptDropZone" for="transcriptAudioInput"><input id="transcriptAudioInput" type="file" accept="audio/mpeg,audio/mp3,audio/mp4,audio/x-m4a,audio/wav,audio/x-wav,audio/ogg,audio/webm,audio/flac,.mp3,.m4a,.wav,.mp4,.ogg,.webm,.flac" hidden /><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55"><path d="M12 3v12"/><path d="m7 8 5-5 5 5"/><path d="M5 15v3a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-3"/></svg><strong id="transcriptFileLabel">Выбрать MP3, M4A, WAV, MP4, OGG, WebM или FLAC</strong><span id="transcriptFileMeta">До 512 МБ. Для 1–2 часов записи загрузка и обработка идут отдельно.</span></label>
+                <label class="transcript-consent"><input id="transcriptConsent" type="checkbox" /> <span>У меня есть право загрузить эту запись для редакционной расшифровки.</span></label>
+                <div class="transcript-submit-row"><button class="btn btn-primary" id="transcriptStartBtn" type="button" disabled>Загрузить и расшифровать</button><span>Сначала файл попадёт в очередь: закрывать админку не нужно.</span></div>
+              </section>
+              <section class="transcript-library card"><div class="transcript-section-head"><div><p class="panel-kicker">Архив</p><h2 class="card-title">Интервью редакции</h2></div><span id="transcriptLibraryCount" class="transcript-count">0 записей</span></div><div id="transcriptJobs" class="transcript-jobs"><p class="empty-state">Загружаю интервью…</p></div></section>
+              <section class="transcript-editor card" id="transcriptEditor" hidden>
+                <div class="transcript-editor-top"><div><p class="panel-kicker">Расшифровка</p><h2 class="card-title" id="transcriptEditorTitle">Интервью</h2><p id="transcriptEditorMeta" class="card-desc"></p></div><div class="transcript-editor-actions"><button class="btn" id="transcriptLoadAudioBtn" type="button">Плеер</button><button class="btn" id="transcriptSaveBtn" type="button">Сохранить правки</button><button class="btn" id="transcriptTxtBtn" type="button">TXT</button><button class="btn" id="transcriptSrtBtn" type="button">SRT</button><button class="btn" id="transcriptVttBtn" type="button">VTT</button><button class="btn btn-primary" id="transcriptCreateArticleBtn" type="button">В черновик статьи</button></div></div>
+                <audio id="transcriptAudio" controls hidden></audio>
+                <div class="transcript-editor-grid"><aside class="transcript-speakers"><p class="field-label">Участники</p><div id="transcriptSpeakersList"></div><p class="transcript-editor-note">Клик по строке переносит плеер к её таймкоду. Имена и текст можно менять прямо здесь.</p></aside><div class="transcript-body"><div class="transcript-search"><input id="transcriptSearch" placeholder="Найти слово в расшифровке" /><span id="transcriptSegmentCount"></span></div><div id="transcriptSegments" class="transcript-segments"></div></div></div>
+              </section>
+            </div>
+          </section>
+
           <!-- ===== POLLS ===== -->
           <section class="tab-panel" id="tab-polls">
             <div class="monitor-layout">
@@ -1887,7 +1924,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.54" type="module"></script>
+    <script src="./app.js?v=4.55" type="module"></script>
     <script src="../brandbook/data.js?v=1"></script>
     <script src="./brandbook.js?v=3"></script>
     <script>
@@ -1908,6 +1945,7 @@
           visibility: 'Видимость сайта',
           authors: 'About / Команда',
           upload: 'Загрузка фото',
+          transcripts: 'Интервью',
           translations: 'Переводы',
           polls: 'Опросы',
           radio: 'Радио',
