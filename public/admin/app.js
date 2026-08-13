@@ -4353,6 +4353,81 @@ function renderDraftFieldsMarkup(entry) {
   `;
 }
 
+// One byline component for every classic editor.  The public page still gets
+// a plain `author` string, while `authorId` keeps the durable connection to
+// the registry card (photo, role and translations can evolve independently).
+function getRegistryAuthors(data) {
+  return (Array.isArray(data?.authors) ? data.authors : [])
+    .filter((author) => author && author.id)
+    .slice()
+    .sort((a, b) => String(a.name || a.id).localeCompare(String(b.name || b.id), 'ru'));
+}
+
+function renderRegistryAuthorBlock(data, entry, options = {}) {
+  const authors = getRegistryAuthors(data);
+  const selected = authors.find((author) => author.id === entry?.authorId) || null;
+  const context = options.context || 'материала';
+  const optionsMarkup = ['<option value="">— Вручную, без карточки автора —</option>']
+    .concat(authors.map((author) => `<option value="${escapeHtml(author.id)}" ${author.id === entry?.authorId ? 'selected' : ''}>${escapeHtml(author.name || author.id)}${author.active === false ? ' · скрыт в команде' : ''}</option>`))
+    .join('');
+  const portrait = selected?.photoUrl
+    ? `<img src="${escapeHtml(selected.photoUrl)}" alt="" loading="lazy" referrerpolicy="no-referrer" />`
+    : `<span aria-hidden="true">${escapeHtml((selected?.name || entry?.author || '?').trim().charAt(0).toUpperCase() || '?')}</span>`;
+  const selectedText = selected
+    ? `${escapeHtml(selected.name || '')}${selected.role ? `<small>${escapeHtml(selected.role)}</small>` : ''}`
+    : '<span class="registry-author-empty">Карточка автора пока не выбрана</span>';
+
+  return `
+    <section class="registry-author-block full" data-registry-author-block>
+      <div class="registry-author-heading">
+        <span>Подпись ${escapeHtml(context)}</span>
+        <strong>Автор публикации</strong>
+        <p>Выберите автора из реестра. Имя и роль подставятся автоматически; при сохранении останется и связь с карточкой автора.</p>
+      </div>
+      <div class="registry-author-grid">
+        <label class="registry-author-select">
+          <span>Автор из реестра</span>
+          <select id="vf-authorId">${optionsMarkup}</select>
+        </label>
+        <div class="registry-author-summary" data-registry-author-summary>
+          <div class="registry-author-avatar">${portrait}</div>
+          <div>${selectedText}</div>
+        </div>
+        <label>
+          <span>Имя в публикации</span>
+          <input id="vf-author" value="${escapeHtml(entry?.author || '')}" placeholder="Имя автора" />
+        </label>
+        <label>
+          <span>Роль / credit</span>
+          <input id="vf-role" value="${escapeHtml(entry?.role || '')}" placeholder="Автор, фотограф, contributing editor…" />
+        </label>
+      </div>
+    </section>
+  `;
+}
+
+function bindRegistryAuthorBlock(data) {
+  const select = document.getElementById('vf-authorId');
+  if (!select) return;
+  select.addEventListener('change', () => {
+    const author = getRegistryAuthors(data).find((item) => item.id === select.value);
+    if (!author) return; // manual byline: retain what the editor already typed
+    const authorInput = document.getElementById('vf-author');
+    const roleInput = document.getElementById('vf-role');
+    if (authorInput) {
+      authorInput.value = author.name || '';
+    }
+    if (roleInput) {
+      roleInput.value = author.role || '';
+    }
+  });
+  // A manually changed name is a deliberate free-form byline, not an alias
+  // for the previously selected registry author.
+  document.getElementById('vf-author')?.addEventListener('input', () => {
+    if (select.value) select.value = '';
+  });
+}
+
 function renderVisualForm() {
   const data = getVisualData();
   if (!data) {
@@ -4442,11 +4517,13 @@ function renderVisualForm() {
         <input id="vf-photo-upload-input" type="file" accept="image/*" hidden />
       </div>
       ${renderDraftFieldsMarkup(entry)}
+      ${renderRegistryAuthorBlock(data, entry, { context: 'медиа' })}
     `;
     bindPhotoPreviewInputs();
     bindUploadButton('vf-img-upload-btn', 'vf-img-upload-input', 'vf-imageUrl', () => {
       document.getElementById('vf-imageUrl')?.dispatchEvent(new Event('input'));
     });
+    bindRegistryAuthorBlock(data);
     bindCreatorQualityInputs(entry);
     return;
   }
@@ -4474,8 +4551,8 @@ function renderVisualForm() {
         <button id="vf-rev-upload-btn" class="btn btn-sm" type="button">${adminIcon('upload')}<span class="btn-label">Загрузить фото обложки</span></button>
         <input id="vf-rev-upload-input" type="file" accept="image/*" hidden />
       </div>
-      <label class="full">Автор<input id="vf-author" value="${escapeHtml(entry.author || '')}" /></label>
       ${renderDraftFieldsMarkup(entry)}
+      ${renderRegistryAuthorBlock(data, entry, { context: 'обзора' })}
     `;
     const refreshRevPreview = () => {
       const img = document.getElementById('vf-rev-preview');
@@ -4487,6 +4564,7 @@ function renderVisualForm() {
     };
     document.getElementById('vf-imageUrl')?.addEventListener('input', refreshRevPreview);
     bindUploadButton('vf-rev-upload-btn', 'vf-rev-upload-input', 'vf-imageUrl', refreshRevPreview);
+    bindRegistryAuthorBlock(data);
     bindCreatorQualityInputs(entry);
     return;
   }
@@ -4500,7 +4578,9 @@ function renderVisualForm() {
       <label>Размер<input id="vf-size" value="${escapeHtml(entry.size || '')}" /></label>
       <label>Год<input id="vf-year" value="${escapeHtml(entry.year || '')}" /></label>
       ${renderDraftFieldsMarkup(entry)}
+      ${renderRegistryAuthorBlock(data, entry, { context: 'материала библиотеки' })}
     `;
+    bindRegistryAuthorBlock(data);
     bindCreatorQualityInputs(entry);
     return;
   }
@@ -4574,43 +4654,18 @@ function renderVisualForm() {
         </div>
 
         <div class="meta-field-group">
-          <label>Автор из базы</label>
-          <select id="vf-authorId">
-            <option value="">— свободный текст ниже —</option>
-            ${(data.authors || []).map((a) => `<option value="${escapeHtml(a.id)}" ${entry.authorId === a.id ? 'selected' : ''}>${escapeHtml(a.name || a.id)}</option>`).join('')}
-          </select>
-          <span class="form-hint" style="margin:4px 0 0">Выбор подставит имя и роль ниже и свяжет статью с карточкой автора — так байлайн переводится на все языки автоматически.</span>
-        </div>
-
-        <div class="meta-field-group">
-          <label>Автор</label>
-          <input id="vf-author" value="${escapeHtml(entry.author || '')}" placeholder="Имя автора" />
-        </div>
-
-        <div class="meta-field-group">
-          <label>Роль автора</label>
-          <input id="vf-role" value="${escapeHtml(entry.role || '')}" placeholder="Photographer" />
-        </div>
-
-        <div class="meta-field-group">
           <label>Теги (через запятую)</label>
           <input id="vf-tags" value="${escapeHtml(Array.isArray(entry.tags) ? entry.tags.join(', ') : '')}" placeholder="tag1, tag2..." />
         </div>
       </div>
     </div>
+    ${renderRegistryAuthorBlock(data, entry, { context: 'статьи' })}
   `;
   bindPhotoPreviewInputs();
   bindUploadButton('vf-img-upload-btn', 'vf-img-upload-input', 'vf-imageUrl', () => {
     document.getElementById('vf-imageUrl')?.dispatchEvent(new Event('input'));
   });
-  document.getElementById('vf-authorId')?.addEventListener('change', (e) => {
-    const author = (data.authors || []).find((a) => a.id === e.target.value);
-    if (!author) return; // "— свободный текст —" chosen: leave Автор/Роль as typed
-    const authorInput = document.getElementById('vf-author');
-    const roleInput = document.getElementById('vf-role');
-    if (authorInput) { authorInput.value = author.name || ''; authorInput.dispatchEvent(new Event('input')); }
-    if (roleInput) { roleInput.value = author.role || ''; roleInput.dispatchEvent(new Event('input')); }
-  });
+  bindRegistryAuthorBlock(data);
   // Articles use the modern Editor.js block editor.
   mountModernEditor(entry.content || []);
   bindCreatorQualityInputs(entry);
@@ -4667,6 +4722,9 @@ function buildEntryFromVisualForm(section, current) {
       description: getFieldValue('vf-description').trim(),
       imageSeed: getFieldValue('vf-imageSeed').trim(),
       imageUrl: getOptionalString(getFieldValue('vf-imageUrl')),
+      author: getOptionalString(getFieldValue('vf-author')),
+      authorId: getOptionalString(getFieldValue('vf-authorId')),
+      role: getOptionalString(getFieldValue('vf-role')),
       ...(isPicsOfWeekCard ? {
         homeCategory: getOptionalString(getFieldValue('vf-homeCategory')),
         homeLabel: getOptionalString(getFieldValue('vf-homeLabel')),
@@ -4689,6 +4747,8 @@ function buildEntryFromVisualForm(section, current) {
       title: getFieldValue('vf-title').trim(),
       subject: getFieldValue('vf-subject').trim(),
       author: getFieldValue('vf-author').trim(),
+      authorId: getOptionalString(getFieldValue('vf-authorId')),
+      role: getOptionalString(getFieldValue('vf-role')),
       category: getOptionalString(getFieldValue('vf-category')),
       verdict: getOptionalString(getFieldValue('vf-verdict')),
       pros: lines('vf-pros'),
@@ -4707,7 +4767,10 @@ function buildEntryFromVisualForm(section, current) {
       type: getFieldValue('vf-type').trim(),
       size: getFieldValue('vf-size').trim(),
       url: getFieldValue('vf-url').trim(),
-      year: getFieldValue('vf-year').trim()
+      year: getFieldValue('vf-year').trim(),
+      author: getOptionalString(getFieldValue('vf-author')),
+      authorId: getOptionalString(getFieldValue('vf-authorId')),
+      role: getOptionalString(getFieldValue('vf-role'))
     };
     applyDraftFieldsFromForm(next);
   } else {
@@ -13958,9 +14021,64 @@ async function flushModernEditor() {
     }
     h += '</div>';
 
+    // The registry selector deliberately lives at the end of the editorial
+    // flow: choosing a byline is the final publication step, not hidden
+    // metadata in a side drawer.
+    h += renderArticleAuthorFooter();
+
     h += '</article>';
     canvas.innerHTML = h;
     applyEmptyStates();
+    bindArticleAuthorFooter();
+  }
+
+  function renderArticleAuthorFooter() {
+    const { arr } = authorsFromContent();
+    const selected = _model.authorId ? arr.find((author) => author.id === _model.authorId) : null;
+    const options = ['<option value="">— Вручную, без карточки автора —</option>']
+      .concat(arr.map((author) => `<option value="${esc(author.id)}"${author.id === _model.authorId ? ' selected' : ''}>${esc(author.name || author.id)}${author.active === false ? ' · скрыт в команде' : ''}</option>`))
+      .join('');
+    const avatar = selected?.photoUrl
+      ? `<img src="${esc(selected.photoUrl)}" alt="" loading="lazy" referrerpolicy="no-referrer">`
+      : `<span aria-hidden="true">${esc((selected?.name || _model.author || '?').trim().charAt(0).toUpperCase() || '?')}</span>`;
+    return `<section class="registry-author-block wys-author-footer" data-wys-author-footer>
+      <div class="registry-author-heading">
+        <span>Перед публикацией</span>
+        <strong>Автор публикации</strong>
+        <p>Выберите автора из реестра. Имя и роль попадут в байлайн, а связь с карточкой сохранится для переводов и будущих обновлений.</p>
+      </div>
+      <div class="registry-author-grid">
+        <label class="registry-author-select"><span>Автор из реестра</span><select data-wys-author-footer-select>${options}</select></label>
+        <div class="registry-author-summary">
+          <div class="registry-author-avatar">${avatar}</div>
+          <div>${selected ? `${esc(selected.name || '')}${selected.role ? `<small>${esc(selected.role)}</small>` : ''}` : '<span class="registry-author-empty">Карточка автора пока не выбрана</span>'}</div>
+        </div>
+        <label><span>Имя в публикации</span><input data-wys-author-footer-name value="${esc(_model.author || '')}" placeholder="Имя автора"></label>
+        <label><span>Роль / credit</span><input data-wys-author-footer-role value="${esc(_model.role || '')}" placeholder="Автор, фотограф, contributing editor…"></label>
+      </div>
+    </section>`;
+  }
+
+  function bindArticleAuthorFooter() {
+    const footer = canvas.querySelector('[data-wys-author-footer]');
+    if (!footer || !_model) return;
+    const select = footer.querySelector('[data-wys-author-footer-select]');
+    select?.addEventListener('change', () => {
+      const { arr } = authorsFromContent();
+      applyAuthorToModel(arr.find((author) => author.id === select.value) || null);
+      render();
+    });
+    const name = footer.querySelector('[data-wys-author-footer-name]');
+    name?.addEventListener('input', () => {
+      _model.author = name.value;
+      delete _model.authorId;
+      scheduleCommit();
+    });
+    const role = footer.querySelector('[data-wys-author-footer-role]');
+    role?.addEventListener('input', () => {
+      _model.role = role.value;
+      scheduleCommit();
+    });
   }
 
   function insertBtn(pos) {
@@ -14118,7 +14236,7 @@ async function flushModernEditor() {
     }
     else if (field === 'category') _model.category = val;
     else if (field === 'date') _model.date = val;
-    else if (field === 'author') _model.author = val;
+    else if (field === 'author') { _model.author = val; delete _model.authorId; }
     else if (field === 'role') _model.role = val;
     else if (field === 'block') { if (_model.content[i]) _model.content[i].content = val; }
     else if (field === 'caption') { if (_model.content[i]) _model.content[i].caption = val; }
@@ -15525,9 +15643,75 @@ async function flushModernEditor() {
     h += `<span class="wys-ce wys-meta-item" contenteditable="true" data-wys="date-plain" data-empty="Дата">${esc(r.date || '')}</span>`;
     h += '</div>';
 
+    h += renderReviewAuthorFooter();
+
     h += '</article>';
     canvas.innerHTML = h;
     applyEmptyStates();
+    bindReviewAuthorFooter();
+  }
+
+  function reviewAuthorsFromContent() {
+    const data = parseEditorJsonSafe();
+    return Array.isArray(data?.authors)
+      ? data.authors.filter((author) => author && author.id).slice().sort((a, b) => String(a.name || a.id).localeCompare(String(b.name || b.id), 'ru'))
+      : [];
+  }
+
+  function renderReviewAuthorFooter() {
+    const authors = reviewAuthorsFromContent();
+    const selected = _model.authorId ? authors.find((author) => author.id === _model.authorId) : null;
+    const options = ['<option value="">— Вручную, без карточки автора —</option>']
+      .concat(authors.map((author) => `<option value="${esc(author.id)}"${author.id === _model.authorId ? ' selected' : ''}>${esc(author.name || author.id)}${author.active === false ? ' · скрыт в команде' : ''}</option>`))
+      .join('');
+    const avatar = selected?.photoUrl
+      ? `<img src="${esc(selected.photoUrl)}" alt="" loading="lazy" referrerpolicy="no-referrer">`
+      : `<span aria-hidden="true">${esc((selected?.name || _model.author || '?').trim().charAt(0).toUpperCase() || '?')}</span>`;
+    return `<section class="registry-author-block wys-author-footer" data-review-author-footer>
+      <div class="registry-author-heading">
+        <span>Перед публикацией</span>
+        <strong>Автор обзора</strong>
+        <p>Выберите автора из реестра. Подпись будет показана у обзора, а связь с карточкой сохранится для перевода и последующих правок.</p>
+      </div>
+      <div class="registry-author-grid">
+        <label class="registry-author-select"><span>Автор из реестра</span><select data-review-author-footer-select>${options}</select></label>
+        <div class="registry-author-summary">
+          <div class="registry-author-avatar">${avatar}</div>
+          <div>${selected ? `${esc(selected.name || '')}${selected.role ? `<small>${esc(selected.role)}</small>` : ''}` : '<span class="registry-author-empty">Карточка автора пока не выбрана</span>'}</div>
+        </div>
+        <label><span>Имя в публикации</span><input data-review-author-footer-name value="${esc(_model.author || '')}" placeholder="Имя автора"></label>
+        <label><span>Роль / credit</span><input data-review-author-footer-role value="${esc(_model.role || '')}" placeholder="Автор, критик, фотограф…"></label>
+      </div>
+    </section>`;
+  }
+
+  function bindReviewAuthorFooter() {
+    const footer = canvas.querySelector('[data-review-author-footer]');
+    if (!footer || !_model) return;
+    const select = footer.querySelector('[data-review-author-footer-select]');
+    select?.addEventListener('change', () => {
+      const author = reviewAuthorsFromContent().find((item) => item.id === select.value);
+      if (author) {
+        _model.authorId = author.id;
+        _model.author = author.name || '';
+        if (author.role) _model.role = author.role; else delete _model.role;
+      } else {
+        delete _model.authorId;
+      }
+      render();
+      scheduleCommit();
+    });
+    const name = footer.querySelector('[data-review-author-footer-name]');
+    name?.addEventListener('input', () => {
+      _model.author = name.value;
+      delete _model.authorId;
+      scheduleCommit();
+    });
+    const role = footer.querySelector('[data-review-author-footer-role]');
+    role?.addEventListener('input', () => {
+      _model.role = role.value;
+      scheduleCommit();
+    });
   }
 
   function renderChipList(field, items, label, sign) {
@@ -15588,7 +15772,7 @@ async function flushModernEditor() {
     else if (field === 'content-plain') _model.content = val;
     else if (field === 'category') _model.category = val;
     else if (field === 'meta-plain') _model.meta = val;
-    else if (field === 'author-plain') _model.author = val;
+    else if (field === 'author-plain') { _model.author = val; delete _model.authorId; }
     else if (field === 'date-plain') _model.date = val;
     else if (field === 'block-content') { const block = ensureReviewBlocks()[Number(el.getAttribute('data-bi'))]; if (block) block.content = val; }
     else if (field === 'block-media') { const block = ensureReviewBlocks()[Number(el.getAttribute('data-bi'))]; if (block) block.content = val; }
