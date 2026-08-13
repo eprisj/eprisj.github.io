@@ -432,6 +432,7 @@ function createInterviewModule({ resolveRole }) {
             end: Math.max(0, Number(segment.end) || 0),
             speaker: clip(segment.speaker, 80) || "Speaker",
             text: clip(segment.text, 12000),
+            needsReview: Boolean(segment.needsReview),
           })).filter((segment) => segment.text);
         }
         saveJob(job);

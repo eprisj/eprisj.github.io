@@ -4921,7 +4921,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     hero: $('transcriptHero'), flow: $('transcriptFlow'), flowNote: $('transcriptFlowNote'), nextAction: $('transcriptNextAction'), nextTitle: $('transcriptNextTitle'), nextDetail: $('transcriptNextDetail'), nextButton: $('transcriptNextButton'),
     title: $('transcriptTitle'), language: $('transcriptLanguage'), retention: $('transcriptRetention'), speakers: $('transcriptSpeakers'), file: $('transcriptAudioInput'), fileLabel: $('transcriptFileLabel'), fileMeta: $('transcriptFileMeta'), dropzone: $('transcriptDropZone'), consent: $('transcriptConsent'), start: $('transcriptStartBtn'),
     jobs: $('transcriptJobs'), count: $('transcriptLibraryCount'), archiveSearch: $('transcriptArchiveSearch'), archiveFilters: $('transcriptArchiveFilters'), editor: $('transcriptEditor'), editorTitle: $('transcriptEditorTitle'), editorMeta: $('transcriptEditorMeta'),
-    loadAudio: $('transcriptLoadAudioBtn'), retry: $('transcriptRetryBtn'), audio: $('transcriptAudio'), save: $('transcriptSaveBtn'), undo: $('transcriptUndoBtn'), saveState: $('transcriptSaveState'), txt: $('transcriptTxtBtn'), srt: $('transcriptSrtBtn'), vtt: $('transcriptVttBtn'), createArticle: $('transcriptCreateArticleBtn'), draftPanel: $('transcriptDraftPanel'), draftSetup: $('transcriptDraftSetup'), draftOutcome: $('transcriptDraftOutcome'), openArticle: $('transcriptOpenArticleBtn'), articleAuthor: $('transcriptArticleAuthor'), articleAuthorSummary: $('transcriptArticleAuthorSummary'), reviewed: $('transcriptReviewed'), speakersList: $('transcriptSpeakersList'), search: $('transcriptSearch'), searchPrev: $('transcriptSearchPrev'), searchNext: $('transcriptSearchNext'), segmentCount: $('transcriptSegmentCount'), segments: $('transcriptSegments'),
+    loadAudio: $('transcriptLoadAudioBtn'), retry: $('transcriptRetryBtn'), audio: $('transcriptAudio'), save: $('transcriptSaveBtn'), undo: $('transcriptUndoBtn'), saveState: $('transcriptSaveState'), txt: $('transcriptTxtBtn'), srt: $('transcriptSrtBtn'), vtt: $('transcriptVttBtn'), createArticle: $('transcriptCreateArticleBtn'), draftPanel: $('transcriptDraftPanel'), draftSetup: $('transcriptDraftSetup'), draftOutcome: $('transcriptDraftOutcome'), openArticle: $('transcriptOpenArticleBtn'), articleAuthor: $('transcriptArticleAuthor'), articleAuthorSummary: $('transcriptArticleAuthorSummary'), reviewed: $('transcriptReviewed'), speakersList: $('transcriptSpeakersList'), search: $('transcriptSearch'), searchPrev: $('transcriptSearchPrev'), searchNext: $('transcriptSearchNext'), segmentCount: $('transcriptSegmentCount'), segments: $('transcriptSegments'), reviewSummary: $('transcriptReviewSummary'),
   };
   let selectedFile = null;
   let activeJob = null;
@@ -4935,6 +4935,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   let transcriptSaveInFlight = false;
   let draftArticleAuthorId = '';
   let activeSearchSegmentIndex = -1;
+  let activeReviewSegmentIndex = -1;
   let archiveFilter = 'all';
   let suggestedInterviewAction = null;
   const audioExtensions = /\.(mp3|m4a|wav|mp4|mpeg|mpga|ogg|webm|flac)$/i;
@@ -5098,6 +5099,47 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
       return matches;
     }, []) : segments.map((_, index) => index);
     return { query, indices, total: segments.length };
+  }
+  function reviewReasons(segment) {
+    const reasons = [];
+    const text = String(segment?.text || '').trim();
+    if (segment?.needsReview) reasons.push('отмечен редактором');
+    if (/^(speaker|спикер)$/i.test(String(segment?.speaker || '').trim())) reasons.push('не назначен участник');
+    if (text && text.length < 18) reasons.push('короткий фрагмент');
+    return reasons;
+  }
+  function getReviewIssues(job = activeJob) {
+    return (job?.segments || []).reduce((issues, segment, index) => {
+      const reasons = reviewReasons(segment);
+      if (reasons.length) issues.push({ index, reasons });
+      return issues;
+    }, []);
+  }
+  function focusReviewIssue(index) {
+    if (!Number.isInteger(index) || index < 0) return;
+    activeReviewSegmentIndex = index;
+    if (els.search?.value) els.search.value = '';
+    renderEditor();
+    window.requestAnimationFrame(() => {
+      const target = els.segments.querySelector(`[data-segment-index="${index}"]`);
+      target?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      target?.querySelector('[data-segment-text]')?.focus({ preventScroll: true });
+    });
+  }
+  function renderReviewSummary(job = activeJob) {
+    if (!els.reviewSummary) return;
+    const issues = getReviewIssues(job);
+    if (!issues.length) {
+      els.reviewSummary.innerHTML = '<span class="transcript-review-summary-mark is-clear">✓</span><div><strong>Вычитка без отмеченных мест</strong><span>Проверьте текст по смыслу и подтвердите вычитку, когда будете готовы.</span></div>';
+      return;
+    }
+    const manual = issues.filter((issue) => issue.reasons.includes('отмечен редактором')).length;
+    const currentIndex = Math.max(0, issues.findIndex((issue) => issue.index === activeReviewSegmentIndex));
+    const current = issues[currentIndex] || issues[0];
+    const detail = manual
+      ? `${manual} ${manual === 1 ? 'место отмечено' : 'места отмечены'} вручную. Остальные подсказки не блокируют выпуск.`
+      : 'Есть автоматические подсказки: они не блокируют выпуск, а помогают не пропустить место при вычитке.';
+    els.reviewSummary.innerHTML = `<span class="transcript-review-summary-mark">!</span><div><strong>${issues.length} ${issues.length === 1 ? 'место стоит проверить' : issues.length < 5 ? 'места стоит проверить' : 'мест стоит проверить'}</strong><span>${escapeHtml(detail)}</span></div><button class="btn btn-sm" type="button" data-transcript-next-review="${current.index}">К следующему · ${currentIndex + 1}/${issues.length}</button>`;
   }
   function updateSearchControls(search) {
     const hasQuery = Boolean(search.query);
@@ -5275,7 +5317,8 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     if (els.draftPanel) els.draftPanel.hidden = job.status !== 'ready';
     if (els.reviewed) els.reviewed.checked = Boolean(job.reviewedAt);
     els.editorTitle.textContent = job.title || job.filename || 'Интервью';
-    els.editorMeta.textContent = `${statusLabel(job)} · ${job.segmentCount || (job.segments || []).length} фрагментов · создано ${fmtDate(job.createdAt)}`;
+    const reviewCount = getReviewIssues(job).length;
+    els.editorMeta.textContent = `${statusLabel(job)} · ${job.segmentCount || (job.segments || []).length} фрагментов${reviewCount ? ` · ${reviewCount} на проверке` : ''} · создано ${fmtDate(job.createdAt)}`;
     const speakers = speakerOptions(job);
     els.speakersList.className = 'transcript-speakers-list';
     els.speakersList.innerHTML = speakers.length ? speakers.map((name, index) => `<label><span class="sr-only">Участник ${index + 1}</span><input class="transcript-speaker-input" data-speaker-index="${index}" value="${escapeHtml(name)}" /></label>`).join('') : '<p class="transcript-editor-note">Спикеры появятся после готовой расшифровки.</p>';
@@ -5285,8 +5328,11 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     if (!segments.length) { els.segments.innerHTML = `<p class="transcript-empty">${job.status === 'ready' ? 'Поиск ничего не нашёл.' : 'Текст появится здесь после обработки записи.'}</p>`; renderDraftArticleAuthor(); syncDraftReadiness(); if (!transcriptHasUnsavedChanges) { transcriptLastSnapshot = editorSnapshot(); setTranscriptSaveState('saved'); } return; }
     els.segments.innerHTML = segments.map(({ segment, sourceIndex }) => {
       const options = speakerOptions(job).map((name) => `<option value="${escapeHtml(name)}" ${name === segment.speaker ? 'selected' : ''}>${escapeHtml(name)}</option>`).join('');
-      return `<article class="transcript-segment ${sourceIndex === activeSearchSegmentIndex ? 'is-search-current' : ''}" data-segment-index="${sourceIndex}"><button type="button" class="transcript-time" data-seek="${Number(segment.start) || 0}">${escapeHtml(fmtTime(segment.start))}</button><select class="transcript-speaker-select" data-segment-speaker="${sourceIndex}">${options || `<option>${escapeHtml(segment.speaker || 'Speaker')}</option>`}</select><textarea class="transcript-segment-text" data-segment-text="${sourceIndex}" rows="3">${escapeHtml(segment.text || '')}</textarea></article>`;
+      const reasons = reviewReasons(segment);
+      const note = reasons.length ? `<span class="transcript-segment-note">${escapeHtml(reasons.join(' · '))}</span>` : '<span class="transcript-segment-note is-clear">без пометки</span>';
+      return `<article class="transcript-segment ${sourceIndex === activeSearchSegmentIndex ? 'is-search-current' : ''} ${sourceIndex === activeReviewSegmentIndex ? 'is-review-current' : ''}" data-segment-index="${sourceIndex}"><button type="button" class="transcript-time" data-seek="${Number(segment.start) || 0}">${escapeHtml(fmtTime(segment.start))}</button><select class="transcript-speaker-select" data-segment-speaker="${sourceIndex}">${options || `<option>${escapeHtml(segment.speaker || 'Speaker')}</option>`}</select><div class="transcript-segment-copy"><textarea class="transcript-segment-text" data-segment-text="${sourceIndex}" rows="3">${escapeHtml(segment.text || '')}</textarea><div class="transcript-segment-footer">${note}<button class="transcript-segment-review" type="button" data-transcript-toggle-review="${sourceIndex}" aria-pressed="${segment.needsReview ? 'true' : 'false'}">${segment.needsReview ? 'Снять пометку' : 'Отметить для проверки'}</button></div></div></article>`;
     }).join('');
+    renderReviewSummary(job);
     renderDraftArticleAuthor();
     renderDraftOutcome();
     syncDraftReadiness();
@@ -5324,6 +5370,16 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     els.segments.querySelectorAll('[data-segment-text]').forEach((field) => { const index = Number(field.dataset.segmentText); if (next[index]) next[index].text = field.value.trim(); });
     els.segments.querySelectorAll('[data-segment-speaker]').forEach((field) => { const index = Number(field.dataset.segmentSpeaker); if (next[index]) next[index].speaker = field.value; });
     return next.filter((segment) => segment.text);
+  }
+  function toggleSegmentReview(index) {
+    if (!activeJob?.segments?.[index]) return;
+    const draft = editorDraft();
+    if (!draft.segments?.[index]) return;
+    draft.segments[index].needsReview = !draft.segments[index].needsReview;
+    activeReviewSegmentIndex = index;
+    applyEditorDraft(draft);
+    renderEditor();
+    markTranscriptChanged();
   }
   async function saveEditor({ quiet = false, auto = false } = {}) {
     if (!activeJob) return false;
@@ -5509,7 +5565,8 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   els.archiveSearch?.addEventListener('input', () => renderJobs(latestJobs)); els.archiveFilters?.addEventListener('click', (event) => { const button = event.target.closest('[data-transcript-filter]'); if (!button) return; archiveFilter = button.dataset.transcriptFilter || 'all'; renderJobs(latestJobs); });
   els.search?.addEventListener('input', () => { if (transcriptHasUnsavedChanges) applyEditorDraft(editorDraft()); activeSearchSegmentIndex = -1; renderEditor(); }); els.searchPrev?.addEventListener('click', () => moveSearchMatch(-1)); els.searchNext?.addEventListener('click', () => moveSearchMatch(1)); els.save?.addEventListener('click', () => saveEditor()); els.undo?.addEventListener('click', restoreTranscriptSnapshot); els.loadAudio?.addEventListener('click', loadAudio); els.retry?.addEventListener('click', retryJob); els.txt?.addEventListener('click', () => download('txt')); els.srt?.addEventListener('click', () => download('srt')); els.vtt?.addEventListener('click', () => download('vtt')); els.createArticle?.addEventListener('click', createArticle); els.openArticle?.addEventListener('click', openLinkedArticle); els.articleAuthor?.addEventListener('change', () => { draftArticleAuthorId = els.articleAuthor.value; renderDraftArticleAuthor(); }); els.reviewed?.addEventListener('change', () => { syncDraftReadiness(); markTranscriptChanged(); });
   els.segments?.addEventListener('input', markTranscriptChanged); els.segments?.addEventListener('change', markTranscriptChanged); els.speakersList?.addEventListener('input', markTranscriptChanged); els.speakersList?.addEventListener('change', markTranscriptChanged);
-  els.segments?.addEventListener('click', (event) => { const target = event.target.closest('[data-seek]'); if (!target || !els.audio.src) return; els.audio.currentTime = Number(target.dataset.seek) || 0; els.audio.play().catch(() => {}); });
+  els.reviewSummary?.addEventListener('click', (event) => { const button = event.target.closest('[data-transcript-next-review]'); if (!button) return; const issues = getReviewIssues(); if (!issues.length) return; const current = issues.findIndex((issue) => issue.index === Number(button.dataset.transcriptNextReview)); focusReviewIssue(issues[(Math.max(0, current) + 1) % issues.length].index); });
+  els.segments?.addEventListener('click', (event) => { const reviewButton = event.target.closest('[data-transcript-toggle-review]'); if (reviewButton) { toggleSegmentReview(Number(reviewButton.dataset.transcriptToggleReview)); return; } const target = event.target.closest('[data-seek]'); if (!target || !els.audio.src) return; els.audio.currentTime = Number(target.dataset.seek) || 0; els.audio.play().catch(() => {}); });
   document.querySelector('[data-tab="transcripts"]')?.addEventListener('click', () => refresh(true));
   window.addEventListener('beforeunload', (event) => {
     if (!transcriptHasUnsavedChanges && !transcriptSaveInFlight) return;
