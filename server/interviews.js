@@ -306,6 +306,24 @@ function createInterviewModule({ resolveRole }) {
       const job = readJob(id);
       if (!job) { respond(res, 404, { ok: false, error: "interview not found" }); return true; }
       if (!action && req.method === "GET") { respond(res, 200, { ok: true, job: jobSummary(job, true) }); return true; }
+      // A transcript is a working asset, never a source of truth for an
+      // article. Deleting it therefore removes only the private audio and
+      // transcript job. A linked CMS article is intentionally untouched.
+      if (!action && req.method === "DELETE") {
+        if (activeJobs.has(id) || ["queued", "processing"].includes(job.status)) {
+          respond(res, 409, { ok: false, error: "wait until local processing finishes before removing this interview" });
+          return true;
+        }
+        const folder = path.join(AUDIO_DIR, id);
+        try {
+          await fsp.rm(folder, { recursive: true, force: true });
+          await fsp.unlink(jobPath(id)).catch((error) => { if (error.code !== "ENOENT") throw error; });
+          respond(res, 200, { ok: true, deletedId: id, linkedArticleId: Number(job.articleDraft?.id) || null });
+        } catch (error) {
+          respond(res, 500, { ok: false, error: "could not remove interview working files" });
+        }
+        return true;
+      }
       if (action === "audio" && req.method === "GET") {
         if (!job.sourcePath || !fs.existsSync(job.sourcePath)) { respond(res, 404, { ok: false, error: "audio expired" }); return true; }
         const stat = fs.statSync(job.sourcePath);
