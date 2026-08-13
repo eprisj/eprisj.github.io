@@ -4936,7 +4936,30 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     const h = Math.floor(total / 3600); const m = Math.floor((total % 3600) / 60); const s = total % 60;
     return `${h ? `${String(h).padStart(2, '0')}:` : ''}${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
   };
-  const statusLabel = (job) => ({ queued: 'В очереди', processing: job.stage || 'Обрабатывается', ready: 'Готово', failed: 'Нужна проверка' }[job.status] || job.stage || 'Черновик');
+  function getQueueSnapshot(jobs = latestJobs) {
+    const list = Array.isArray(jobs) ? jobs : [];
+    const active = list.filter((job) => job.status === 'processing');
+    const waiting = list.filter((job) => job.status === 'queued').sort((a, b) => String(a.createdAt || '').localeCompare(String(b.createdAt || '')));
+    return { active, waiting, positionById: new Map(waiting.map((job, index) => [job.id, index + 1])) };
+  }
+  function stageDetails(job, jobs = latestJobs) {
+    const stage = String(job?.stage || '').toLowerCase();
+    const queue = getQueueSnapshot(jobs);
+    if (job?.status === 'queued') {
+      const position = queue.positionById.get(job.id) || 1;
+      return { title: position === 1 ? 'Следующая в очереди' : `В очереди · позиция ${position}`, detail: queue.active.length ? 'Другая запись уже обрабатывается локально. Эта начнётся автоматически.' : 'Локальный обработчик подхватит запись автоматически.', step: 1, position };
+    }
+    if (job?.status === 'processing') {
+      const part = stage.match(/part\s+(\d+)\s+of\s+(\d+)/i);
+      if (part) return { title: `Расшифровываем часть ${part[1]} из ${part[2]}`, detail: 'Текст собирается на VPS. Можно закрыть вкладку — прогресс сохранится.', step: 2, part: `${part[1]}/${part[2]}` };
+      if (/prepar|audio|ffmpeg/i.test(stage)) return { title: 'Подготавливаем аудио', detail: 'Приводим запись к рабочему формату перед локальной расшифровкой.', step: 1 };
+      return { title: 'Локальная расшифровка идёт', detail: 'VPS продолжает работу в фоне — редактор не нужно держать открытым.', step: 2 };
+    }
+    if (job?.status === 'ready') return { title: 'Текст готов к вычитке', detail: 'Откройте запись, проверьте имена и фрагменты, затем создайте черновик.', step: 3 };
+    if (job?.status === 'failed') return { title: 'Нужно действие редактора', detail: 'Аудио сохранено. Проверьте причину ниже и перезапустите только эту запись.', step: 1 };
+    return { title: job?.stage || 'Черновик', detail: 'Запись ещё не отправлена в очередь.', step: 1 };
+  }
+  const statusLabel = (job) => stageDetails(job).title;
   const errorFrom = async (response) => {
     const body = await response.json().catch(() => ({}));
     return body.error || `VPS вернул статус ${response.status}`;
@@ -4989,11 +5012,15 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   }
   function renderReadiness(health) {
     const ready = health?.localEngine?.ready && health?.ffmpegReady;
+    const queue = getQueueSnapshot();
     els.readiness.className = `transcript-readiness card ${ready ? 'ready' : 'missing'}`;
     const missing = [!health?.localEngine?.ready && 'локальный движок расшифровки', !health?.ffmpegReady && 'подготовка аудио'].filter(Boolean);
     const engine = health?.localEngine?.engine || 'Local Whisper';
     const model = health?.localEngine?.model ? ` · ${health.localEngine.model}` : '';
-    els.readiness.innerHTML = `<span class="transcript-readiness-mark">${ready ? '✓' : '!'}</span><div class="transcript-readiness-copy"><strong>${ready ? `${escapeHtml(engine)} готов` : 'Студия готовится на сервере'}</strong><span>${ready ? `Запись не покидает VPS${escapeHtml(model)}. До ${Math.round((health.maxUploadBytes || 0) / 1024 / 1024) || 512} МБ — в защищённую очередь.` : `${escapeHtml(health?.localEngine?.detail || `Нужно завершить: ${missing.join(' и ') || 'проверку сервиса'}`)}. Редактору ничего настраивать не нужно.`}</span></div><span class="transcript-readiness-proof">${ready ? 'LOCAL / READY' : 'CHECKING'}</span>`;
+    const queueDetail = queue.active.length
+      ? `${queue.active.length} ${queue.active.length === 1 ? 'запись обрабатывается' : 'записи обрабатываются'} · ${queue.waiting.length ? `${queue.waiting.length} ждут очереди` : 'очередь свободна после неё'}`
+      : queue.waiting.length ? `${queue.waiting.length} ${queue.waiting.length === 1 ? 'запись ждёт' : 'записи ждут'} запуска` : 'очередь свободна';
+    els.readiness.innerHTML = `<span class="transcript-readiness-mark">${ready ? '✓' : '!'}</span><div class="transcript-readiness-copy"><strong>${ready ? `${escapeHtml(engine)} готов` : 'Студия готовится на сервере'}</strong><span>${ready ? `Запись не покидает VPS${escapeHtml(model)}. ${queueDetail}; статус обновляется автоматически.` : `${escapeHtml(health?.localEngine?.detail || `Нужно завершить: ${missing.join(' и ') || 'проверку сервиса'}`)}. Редактору ничего настраивать не нужно.`}</span></div><span class="transcript-readiness-proof">${ready ? 'AUTO · LOCAL' : 'CHECKING'}</span>`;
     els.start.dataset.ready = ready ? 'true' : 'false';
     updateStart();
     renderFlow(latestJobs, ready);
@@ -5001,9 +5028,15 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   function renderJobs(jobs) {
     const list = Array.isArray(jobs) ? jobs : [];
     latestJobs = list;
-    els.count.textContent = `${list.length} ${list.length === 1 ? 'запись' : list.length < 5 ? 'записи' : 'записей'}`;
+    els.count.textContent = `${list.length} ${list.length === 1 ? 'запись' : list.length < 5 ? 'записи' : 'записей'} · автообновление`;
     if (!list.length) { els.jobs.innerHTML = '<p class="transcript-empty">Здесь появятся записи, отправленные в расшифровку. Готовые тексты и аудио не смешиваются со статьями.</p>'; return; }
-    els.jobs.innerHTML = list.map((job) => `<article class="transcript-job is-${escapeHtml(job.status || 'draft')}"><div class="transcript-job-main"><strong class="transcript-job-title">${escapeHtml(job.title || job.filename || 'Без названия')}</strong><div class="transcript-job-meta"><span>${escapeHtml(job.language || 'en').toUpperCase()}</span><span>${escapeHtml(fmtBytes(Number(job.size) || 0))}</span><span>${escapeHtml(fmtDate(job.updatedAt || job.createdAt))}</span><span class="transcript-job-status ${escapeHtml(job.status || '')}">${escapeHtml(statusLabel(job))}</span></div>${['queued', 'processing'].includes(job.status) ? `<div class="transcript-job-process"><div class="transcript-progress" aria-label="Прогресс ${Math.max(1, Math.min(100, Number(job.progress) || 0))}%"><i style="width:${Math.max(1, Math.min(100, Number(job.progress) || 0))}%"></i></div><span>${job.status === 'processing' ? 'Обрабатываем локально — можно закрыть вкладку' : 'Ждёт свободное место в локальной очереди'}</span></div>` : ''}${job.error ? `<div class="transcript-job-meta transcript-job-error">${escapeHtml(job.error)}</div>` : ''}</div><button class="btn btn-sm" type="button" data-interview-open="${escapeHtml(job.id)}">${job.status === 'failed' ? 'Открыть / повторить' : job.status === 'ready' ? 'Вычитать' : 'Открыть'}</button></article>`).join('');
+    els.jobs.innerHTML = list.map((job) => {
+      const details = stageDetails(job, list);
+      const progress = Math.max(1, Math.min(100, Number(job.progress) || 0));
+      const isInFlight = ['queued', 'processing'].includes(job.status);
+      const recovery = job.status === 'failed' ? (job.hasAudio ? 'Аудио на месте. Повторный запуск не удалит вашу запись.' : 'Исходный файл уже удалён. Добавьте его заново, чтобы повторить обработку.') : '';
+      return `<article class="transcript-job is-${escapeHtml(job.status || 'draft')}" data-interview-status="${escapeHtml(job.status || 'draft')}"><div class="transcript-job-main"><div class="transcript-job-heading"><strong class="transcript-job-title">${escapeHtml(job.title || job.filename || 'Без названия')}</strong><span class="transcript-job-status ${escapeHtml(job.status || '')}">${escapeHtml(details.title)}</span></div><div class="transcript-job-meta"><span>${escapeHtml(job.language || 'en').toUpperCase()}</span><span>${escapeHtml(fmtBytes(Number(job.size) || 0))}</span><span>${escapeHtml(fmtDate(job.updatedAt || job.createdAt))}</span></div><div class="transcript-job-rail" aria-label="Этап ${details.step} из 3"><span class="${details.step >= 1 ? 'is-done' : ''}">01</span><i class="${details.step >= 2 ? 'is-done' : ''}"></i><span class="${details.step >= 2 ? 'is-done' : ''}">02</span><i class="${details.step >= 3 ? 'is-done' : ''}"></i><span class="${details.step >= 3 ? 'is-done' : ''}">03</span></div>${isInFlight ? `<div class="transcript-job-process"><div class="transcript-progress" aria-label="Прогресс ${progress}%"><i style="width:${progress}%"></i></div><span>${escapeHtml(details.detail)}</span></div>` : ''}${job.status === 'ready' ? `<p class="transcript-job-next">${escapeHtml(details.detail)}</p>` : ''}${job.error ? `<div class="transcript-job-error"><strong>Почему не получилось:</strong><span>${escapeHtml(job.error)}</span>${recovery ? `<small>${escapeHtml(recovery)}</small>` : ''}</div>` : ''}</div><div class="transcript-job-actions">${job.status === 'failed' && job.hasAudio ? `<button class="btn btn-sm" type="button" data-interview-retry="${escapeHtml(job.id)}">Запустить заново</button>` : ''}<button class="btn btn-sm" type="button" data-interview-open="${escapeHtml(job.id)}">${job.status === 'ready' ? 'Вычитать' : job.status === 'failed' ? 'Открыть запись' : 'Открыть'}</button></div></article>`;
+    }).join('');
   }
   function speakersFromSegments(segments) { return [...new Set((segments || []).map((segment) => String(segment.speaker || '').trim()).filter(Boolean))]; }
   function speakerOptions(job) { return [...new Set([...(job?.speakers || []), ...speakersFromSegments(job?.segments || [])].map((name) => String(name || '').trim()).filter(Boolean))]; }
@@ -5039,8 +5072,8 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   async function refresh(quiet = false) {
     try {
       const [health, list] = await Promise.all([api('/health'), api('')]);
-      renderReadiness(health);
       renderJobs(list.jobs);
+      renderReadiness(health);
       renderFlow(list.jobs, Boolean(health?.localEngine?.ready && health?.ffmpegReady));
       if (activeJob) await loadJob(activeJob.id, true);
       const hasWork = list.jobs.some((job) => ['queued', 'processing'].includes(job.status));
@@ -5113,10 +5146,13 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   }
   async function retryJob() {
     if (!activeJob) return;
+    await retryJobById(activeJob.id);
+  }
+  async function retryJobById(id) {
+    if (!id) return;
     try {
-      const payload = await api(`/${encodeURIComponent(activeJob.id)}/retry`, { method: 'POST' });
-      activeJob = payload.job;
-      renderEditor();
+      const payload = await api(`/${encodeURIComponent(id)}/retry`, { method: 'POST' });
+      if (activeJob?.id === id) { activeJob = payload.job; renderEditor(); }
       showToast('success', 'Запись снова поставлена в очередь.');
       refresh(true);
     } catch (error) { showToast('error', getErrorMessage(error)); }
@@ -5143,7 +5179,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   els.newBtn?.addEventListener('click', openComposer); els.closeComposerBtn?.addEventListener('click', closeComposer); els.refreshBtn?.addEventListener('click', () => refresh());
   els.file?.addEventListener('change', () => setFile(els.file.files?.[0])); els.consent?.addEventListener('change', updateStart); els.retention?.addEventListener('change', () => { if (selectedFile) els.fileMeta.textContent = `${fmtBytes(selectedFile.size)} · файл будет храниться ${els.retention.value} дн.`; });
   els.dropzone?.addEventListener('dragover', (event) => { event.preventDefault(); els.dropzone.classList.add('is-dragging'); }); els.dropzone?.addEventListener('dragleave', () => els.dropzone.classList.remove('is-dragging')); els.dropzone?.addEventListener('drop', (event) => { event.preventDefault(); els.dropzone.classList.remove('is-dragging'); setFile(event.dataTransfer?.files?.[0]); });
-  els.start?.addEventListener('click', startUpload); els.jobs?.addEventListener('click', (event) => { const button = event.target.closest('[data-interview-open]'); if (button) loadJob(button.dataset.interviewOpen); });
+  els.start?.addEventListener('click', startUpload); els.jobs?.addEventListener('click', (event) => { const retryButton = event.target.closest('[data-interview-retry]'); if (retryButton) { retryJobById(retryButton.dataset.interviewRetry); return; } const button = event.target.closest('[data-interview-open]'); if (button) loadJob(button.dataset.interviewOpen); });
   els.search?.addEventListener('input', renderEditor); els.save?.addEventListener('click', saveEditor); els.loadAudio?.addEventListener('click', loadAudio); els.retry?.addEventListener('click', retryJob); els.txt?.addEventListener('click', () => download('txt')); els.srt?.addEventListener('click', () => download('srt')); els.vtt?.addEventListener('click', () => download('vtt')); els.createArticle?.addEventListener('click', createArticle);
   els.segments?.addEventListener('click', (event) => { const target = event.target.closest('[data-seek]'); if (!target || !els.audio.src) return; els.audio.currentTime = Number(target.dataset.seek) || 0; els.audio.play().catch(() => {}); });
   document.querySelector('[data-tab="transcripts"]')?.addEventListener('click', () => refresh(true));
