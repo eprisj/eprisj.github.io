@@ -4877,6 +4877,7 @@ async function applyVisualChanges() {
 // instead of silently losing an edit.
 const CONTENT_META_API = 'https://api.eprisjournal.com/content/meta';
 const CONTENT_ENTITY_API = 'https://api.eprisjournal.com/content/entity';
+const INTERVIEWS_API = 'https://api.eprisjournal.com/interviews';
 async function saveEntityToServer(section, lang, entity, options = {}) {
   const pw = getAdminPassword();
   if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
@@ -4906,6 +4907,206 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
 
   throw new Error('Не удалось сохранить запись на VPS.');
 }
+
+// ─── Interview Studio ───────────────────────────────────────────────────────
+// This is intentionally a separate workspace from the article/review canvas:
+// raw recordings and their own job ids are editorial assets, not CMS entries.
+// Only the explicit “В черновик статьи” action crosses that boundary.
+(() => {
+  const root = byId('tab-transcripts');
+  if (!root) return;
+  const $ = (id) => byId(id);
+  const els = {
+    readiness: $('transcriptReadiness'), composer: $('transcriptComposer'), newBtn: $('transcriptNewBtn'), refreshBtn: $('transcriptRefreshBtn'), closeComposerBtn: $('transcriptCloseComposerBtn'),
+    title: $('transcriptTitle'), language: $('transcriptLanguage'), retention: $('transcriptRetention'), speakers: $('transcriptSpeakers'), file: $('transcriptAudioInput'), fileLabel: $('transcriptFileLabel'), fileMeta: $('transcriptFileMeta'), dropzone: $('transcriptDropZone'), consent: $('transcriptConsent'), start: $('transcriptStartBtn'),
+    jobs: $('transcriptJobs'), count: $('transcriptLibraryCount'), editor: $('transcriptEditor'), editorTitle: $('transcriptEditorTitle'), editorMeta: $('transcriptEditorMeta'),
+    loadAudio: $('transcriptLoadAudioBtn'), audio: $('transcriptAudio'), save: $('transcriptSaveBtn'), txt: $('transcriptTxtBtn'), srt: $('transcriptSrtBtn'), vtt: $('transcriptVttBtn'), createArticle: $('transcriptCreateArticleBtn'), speakersList: $('transcriptSpeakersList'), search: $('transcriptSearch'), segmentCount: $('transcriptSegmentCount'), segments: $('transcriptSegments'),
+  };
+  let selectedFile = null;
+  let activeJob = null;
+  let audioObjectUrl = '';
+  let pollTimer = 0;
+  const audioExtensions = /\.(mp3|m4a|wav|mp4|mpeg|mpga|ogg|webm|flac)$/i;
+  const fmtBytes = (bytes) => bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+  const fmtDate = (value) => value ? new Intl.DateTimeFormat('ru-RU', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(value)) : '—';
+  const fmtTime = (seconds) => {
+    const total = Math.max(0, Math.floor(Number(seconds) || 0));
+    const h = Math.floor(total / 3600); const m = Math.floor((total % 3600) / 60); const s = total % 60;
+    return `${h ? `${String(h).padStart(2, '0')}:` : ''}${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  };
+  const statusLabel = (job) => ({ queued: 'В очереди', processing: job.stage || 'Обрабатывается', ready: 'Готово', failed: 'Нужна проверка' }[job.status] || job.stage || 'Черновик');
+  const errorFrom = async (response) => {
+    const body = await response.json().catch(() => ({}));
+    return body.error || `VPS вернул статус ${response.status}`;
+  };
+  const authHeaders = (headers = {}) => {
+    const password = getAdminPassword();
+    if (!password) throw new Error('Нет пароля редакции — войдите заново.');
+    return { 'X-Admin-Password': password, ...headers };
+  };
+  async function api(path = '', options = {}) {
+    const headers = authHeaders(options.headers || {});
+    const response = await fetch(`${INTERVIEWS_API}${path}`, { ...options, headers, cache: 'no-store' });
+    if (!response.ok) throw new Error(await errorFrom(response));
+    return response.json();
+  }
+  function updateStart() { els.start.disabled = !(selectedFile && els.consent.checked); }
+  function closeComposer() { els.composer.hidden = true; }
+  function openComposer() { els.composer.hidden = false; els.composer.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  function setFile(file) {
+    if (!file) return;
+    if (!file.type.startsWith('audio/') && !audioExtensions.test(file.name)) { showToast('error', 'Выберите аудиофайл: MP3, M4A, WAV, MP4, OGG, WebM или FLAC.'); return; }
+    if (file.size > 512 * 1024 * 1024) { showToast('error', 'Файл больше 512 МБ. Сожмите запись или разделите её на части.'); return; }
+    selectedFile = file;
+    if (!els.title.value.trim()) els.title.value = file.name.replace(/\.[^.]+$/, '');
+    els.fileLabel.textContent = file.name;
+    els.fileMeta.textContent = `${fmtBytes(file.size)} · файл будет храниться ${els.retention.value} дн.`;
+    els.dropzone.classList.add('is-ready');
+    updateStart();
+  }
+  function renderReadiness(health) {
+    const ready = health?.openaiConfigured && health?.ffmpegReady;
+    els.readiness.className = `transcript-readiness card ${ready ? 'ready' : 'missing'}`;
+    const missing = [!health?.openaiConfigured && 'ключ OpenAI', !health?.ffmpegReady && 'ffmpeg'].filter(Boolean);
+    els.readiness.innerHTML = `<span class="transcript-readiness-mark">${ready ? '✓' : '!'}</span><div><strong>${ready ? 'Студия готова к расшифровке' : 'Перед запуском нужна настройка VPS'}</strong><span>${ready ? `Записи до ${Math.round((health.maxUploadBytes || 0) / 1024 / 1024) || 512} МБ будут приняты в защищённую очередь.` : `Не найдено: ${escapeHtml(missing.join(' и ') || 'проверка сервиса')}. Загрузка останется выключенной, пока инфраструктура не будет готова.`}</span></div>`;
+    els.start.disabled = !ready || !(selectedFile && els.consent.checked);
+    els.start.dataset.ready = ready ? 'true' : 'false';
+  }
+  function renderJobs(jobs) {
+    const list = Array.isArray(jobs) ? jobs : [];
+    els.count.textContent = `${list.length} ${list.length === 1 ? 'запись' : list.length < 5 ? 'записи' : 'записей'}`;
+    if (!list.length) { els.jobs.innerHTML = '<p class="transcript-empty">Здесь появятся записи, отправленные в расшифровку. Готовые тексты и аудио не смешиваются со статьями.</p>'; return; }
+    els.jobs.innerHTML = list.map((job) => `<article class="transcript-job"><div class="transcript-job-main"><strong class="transcript-job-title">${escapeHtml(job.title || job.filename || 'Без названия')}</strong><div class="transcript-job-meta"><span>${escapeHtml(job.language || 'en').toUpperCase()}</span><span>${escapeHtml(fmtBytes(Number(job.size) || 0))}</span><span>${escapeHtml(fmtDate(job.updatedAt || job.createdAt))}</span><span class="transcript-job-status ${escapeHtml(job.status || '')}">${escapeHtml(statusLabel(job))}</span></div>${['queued', 'processing'].includes(job.status) ? `<div class="transcript-progress"><i style="width:${Math.max(1, Math.min(100, Number(job.progress) || 0))}%"></i></div>` : ''}${job.error ? `<div class="transcript-job-meta" style="color:var(--danger)">${escapeHtml(job.error)}</div>` : ''}</div><button class="btn btn-sm" type="button" data-interview-open="${escapeHtml(job.id)}">${job.status === 'failed' ? 'Открыть / повторить' : 'Открыть'}</button></article>`).join('');
+  }
+  function speakersFromSegments(segments) { return [...new Set((segments || []).map((segment) => String(segment.speaker || '').trim()).filter(Boolean))]; }
+  function renderEditor() {
+    const job = activeJob;
+    if (!job) { els.editor.hidden = true; return; }
+    els.editor.hidden = false;
+    els.editorTitle.textContent = job.title || job.filename || 'Интервью';
+    els.editorMeta.textContent = `${statusLabel(job)} · ${job.segmentCount || (job.segments || []).length} фрагментов · создано ${fmtDate(job.createdAt)}`;
+    const speakers = job.speakers?.length ? job.speakers : speakersFromSegments(job.segments);
+    els.speakersList.className = 'transcript-speakers-list';
+    els.speakersList.innerHTML = speakers.length ? speakers.map((name, index) => `<label><span class="sr-only">Участник ${index + 1}</span><input class="transcript-speaker-input" data-speaker-index="${index}" value="${escapeHtml(name)}" /></label>`).join('') : '<p class="transcript-editor-note">Спикеры появятся после готовой расшифровки.</p>';
+    const query = els.search.value.trim().toLocaleLowerCase();
+    const segments = (job.segments || []).filter((segment) => !query || `${segment.speaker} ${segment.text}`.toLocaleLowerCase().includes(query));
+    els.segmentCount.textContent = `${segments.length} из ${(job.segments || []).length}`;
+    if (!segments.length) { els.segments.innerHTML = `<p class="transcript-empty">${job.status === 'ready' ? 'Поиск ничего не нашёл.' : 'Текст появится здесь после обработки записи.'}</p>`; return; }
+    els.segments.innerHTML = segments.map((segment) => {
+      const sourceIndex = (job.segments || []).indexOf(segment);
+      const options = speakersFromSegments(job.segments).map((name) => `<option value="${escapeHtml(name)}" ${name === segment.speaker ? 'selected' : ''}>${escapeHtml(name)}</option>`).join('');
+      return `<article class="transcript-segment" data-segment-index="${sourceIndex}"><button type="button" class="transcript-time" data-seek="${Number(segment.start) || 0}">${escapeHtml(fmtTime(segment.start))}</button><select class="transcript-speaker-select" data-segment-speaker="${sourceIndex}">${options || `<option>${escapeHtml(segment.speaker || 'Speaker')}</option>`}</select><textarea class="transcript-segment-text" data-segment-text="${sourceIndex}" rows="3">${escapeHtml(segment.text || '')}</textarea></article>`;
+    }).join('');
+  }
+  async function loadJob(id, quiet = false) {
+    const payload = await api(`/${encodeURIComponent(id)}`);
+    activeJob = payload.job;
+    if (activeJob?.speakers?.length) {
+      activeJob.segments = (activeJob.segments || []).map((segment) => ({ ...segment, speaker: activeJob.speakers.includes(segment.speaker) ? segment.speaker : segment.speaker }));
+    }
+    renderEditor();
+    if (!quiet) els.editor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  async function refresh(quiet = false) {
+    try {
+      const [health, list] = await Promise.all([api('/health'), api('')]);
+      renderReadiness(health);
+      renderJobs(list.jobs);
+      if (activeJob) await loadJob(activeJob.id, true);
+      const hasWork = list.jobs.some((job) => ['queued', 'processing'].includes(job.status));
+      window.clearTimeout(pollTimer);
+      if (hasWork) pollTimer = window.setTimeout(() => refresh(true), 4500);
+      if (!quiet) showToast('success', 'Архив интервью обновлён.');
+    } catch (error) {
+      els.readiness.className = 'transcript-readiness card missing';
+      els.readiness.innerHTML = `<span class="transcript-readiness-mark">!</span><div><strong>Студия интервью недоступна</strong><span>${escapeHtml(getErrorMessage(error))}</span></div>`;
+      if (!quiet) showToast('error', getErrorMessage(error));
+    }
+  }
+  function currentSegmentsFromForm() {
+    const next = (activeJob?.segments || []).map((segment) => ({ ...segment }));
+    els.segments.querySelectorAll('[data-segment-text]').forEach((field) => { const index = Number(field.dataset.segmentText); if (next[index]) next[index].text = field.value.trim(); });
+    els.segments.querySelectorAll('[data-segment-speaker]').forEach((field) => { const index = Number(field.dataset.segmentSpeaker); if (next[index]) next[index].speaker = field.value; });
+    return next.filter((segment) => segment.text);
+  }
+  async function saveEditor() {
+    if (!activeJob) return;
+    try {
+      const oldSpeakers = activeJob.speakers?.length ? activeJob.speakers : speakersFromSegments(activeJob.segments);
+      const speakers = [...els.speakersList.querySelectorAll('[data-speaker-index]')].map((field) => field.value.trim()).filter(Boolean);
+      const renamed = new Map(oldSpeakers.map((name, index) => [name, speakers[index] || name]));
+      const segments = currentSegmentsFromForm().map((segment) => ({ ...segment, speaker: renamed.get(segment.speaker) || segment.speaker }));
+      const payload = await api(`/${encodeURIComponent(activeJob.id)}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title: els.editorTitle.textContent, speakers, segments }) });
+      activeJob = payload.job;
+      renderEditor();
+      showToast('success', 'Правки к расшифровке сохранены.');
+      refresh(true);
+    } catch (error) { showToast('error', getErrorMessage(error)); }
+  }
+  async function startUpload() {
+    if (els.start.dataset.ready !== 'true') { showToast('error', 'Сначала нужно завершить настройку расшифровки на VPS.'); return; }
+    if (!selectedFile || !els.consent.checked) return;
+    try {
+      els.start.disabled = true; els.start.textContent = 'Загружаю…';
+      const headers = authHeaders({
+        'Content-Type': selectedFile.type || 'application/octet-stream', 'X-Interview-Filename': selectedFile.name,
+        'X-Interview-Title': els.title.value.trim() || selectedFile.name.replace(/\.[^.]+$/, ''), 'X-Interview-Language': els.language.value || 'en',
+        'X-Interview-Speakers': els.speakers.value.trim(), 'X-Interview-Retention-Days': els.retention.value,
+      });
+      const response = await fetch(`${INTERVIEWS_API}/upload`, { method: 'POST', headers, body: selectedFile });
+      if (!response.ok) throw new Error(await errorFrom(response));
+      const payload = await response.json();
+      selectedFile = null; els.file.value = ''; els.consent.checked = false; els.fileLabel.textContent = 'Выбрать MP3, M4A, WAV, MP4, OGG, WebM или FLAC'; els.fileMeta.textContent = 'До 512 МБ. Для 1–2 часов записи загрузка и обработка идут отдельно.'; els.dropzone.classList.remove('is-ready'); closeComposer();
+      showToast('success', 'Запись в очереди. Можно закрыть админку — VPS продолжит обработку.');
+      await refresh(true); await loadJob(payload.job.id);
+    } catch (error) { showToast('error', getErrorMessage(error)); }
+    finally { els.start.textContent = 'Загрузить и расшифровать'; updateStart(); }
+  }
+  async function download(format) {
+    if (!activeJob) return;
+    try {
+      const response = await fetch(`${INTERVIEWS_API}/${encodeURIComponent(activeJob.id)}/export?format=${format}`, { headers: authHeaders() });
+      if (!response.ok) throw new Error(await errorFrom(response));
+      const blob = await response.blob(); const url = URL.createObjectURL(blob); const link = document.createElement('a'); link.href = url; link.download = `${activeJob.title || 'interview'}.${format}`; link.click(); URL.revokeObjectURL(url);
+    } catch (error) { showToast('error', getErrorMessage(error)); }
+  }
+  async function loadAudio() {
+    if (!activeJob?.hasAudio) { showToast('info', 'Аудиофайл уже удалён по сроку хранения. Текст остаётся в архиве.'); return; }
+    try {
+      const response = await fetch(`${INTERVIEWS_API}/${encodeURIComponent(activeJob.id)}/audio`, { headers: authHeaders() });
+      if (!response.ok) throw new Error(await errorFrom(response));
+      if (audioObjectUrl) URL.revokeObjectURL(audioObjectUrl);
+      audioObjectUrl = URL.createObjectURL(await response.blob()); els.audio.src = audioObjectUrl; els.audio.hidden = false; els.audio.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (error) { showToast('error', getErrorMessage(error)); }
+  }
+  async function createArticle() {
+    if (!activeJob || !activeJob.segments?.length) { showToast('info', 'Сначала дождитесь текста расшифровки.'); return; }
+    try {
+      await saveEditor();
+      const data = parseEditorJson();
+      const id = getNextEntryId(data, 'articles');
+      const groups = [];
+      for (let start = 0; start < activeJob.segments.length; start += 12) {
+        const block = activeJob.segments.slice(start, start + 12).map((segment) => `<strong>${escapeHtml(segment.speaker || 'Speaker')}</strong><br>${escapeHtml(segment.text || '')}`).join('<br><br>');
+        groups.push({ type: 'text', content: block });
+      }
+      const title = activeJob.title || 'Interview transcript';
+      const entry = { id, draft: true, title, author: 'EPRIS Journal', role: 'Editorial Desk', date: getAdminDateLabel(), excerpt: `Edited transcript of ${title}.`, category: 'Interview', subcategory: 'Transcript', tags: ['interview', 'transcript'], imageSeed: `interview-${id}`, content: groups };
+      const { draft } = stageCanonicalDraft(data, 'articles', entry);
+      await persistNewCanonicalDraft('articles', draft);
+      showToast('success', `Черновик статьи #${id} создан на VPS.`);
+      document.querySelector('[data-tab="content"]')?.click();
+    } catch (error) { showToast('error', getErrorMessage(error)); }
+  }
+  els.newBtn?.addEventListener('click', openComposer); els.closeComposerBtn?.addEventListener('click', closeComposer); els.refreshBtn?.addEventListener('click', () => refresh());
+  els.file?.addEventListener('change', () => setFile(els.file.files?.[0])); els.consent?.addEventListener('change', updateStart); els.retention?.addEventListener('change', () => { if (selectedFile) els.fileMeta.textContent = `${fmtBytes(selectedFile.size)} · файл будет храниться ${els.retention.value} дн.`; });
+  els.dropzone?.addEventListener('dragover', (event) => { event.preventDefault(); els.dropzone.classList.add('is-dragging'); }); els.dropzone?.addEventListener('dragleave', () => els.dropzone.classList.remove('is-dragging')); els.dropzone?.addEventListener('drop', (event) => { event.preventDefault(); els.dropzone.classList.remove('is-dragging'); setFile(event.dataTransfer?.files?.[0]); });
+  els.start?.addEventListener('click', startUpload); els.jobs?.addEventListener('click', (event) => { const button = event.target.closest('[data-interview-open]'); if (button) loadJob(button.dataset.interviewOpen); });
+  els.search?.addEventListener('input', renderEditor); els.save?.addEventListener('click', saveEditor); els.loadAudio?.addEventListener('click', loadAudio); els.txt?.addEventListener('click', () => download('txt')); els.srt?.addEventListener('click', () => download('srt')); els.vtt?.addEventListener('click', () => download('vtt')); els.createArticle?.addEventListener('click', createArticle);
+  els.segments?.addEventListener('click', (event) => { const target = event.target.closest('[data-seek]'); if (!target || !els.audio.src) return; els.audio.currentTime = Number(target.dataset.seek) || 0; els.audio.play().catch(() => {}); });
+  document.querySelector('[data-tab="transcripts"]')?.addEventListener('click', () => refresh(true));
+  refresh(true);
+})();
 
 function getLanguageSyncFailures(syncResult) {
   return Array.isArray(syncResult?.failures) ? syncResult.failures : [];
