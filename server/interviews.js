@@ -76,6 +76,7 @@ function jobSummary(job, full = false) {
     createdAt: job.createdAt,
     updatedAt: job.updatedAt,
     completedAt: job.completedAt || null,
+    reviewedAt: job.reviewedAt || null,
     retentionAt: job.retentionAt || null,
     error: job.error || "",
     segmentCount: Array.isArray(job.segments) ? job.segments.length : 0,
@@ -324,6 +325,7 @@ function createInterviewModule({ resolveRole }) {
         const body = parsed && typeof parsed === "object" ? parsed : {};
         if (body.title != null) job.title = clip(body.title, 180) || job.title;
         if (Array.isArray(body.speakers)) job.speakers = body.speakers.map((value) => clip(value, 80)).filter(Boolean).slice(0, 12);
+        if (typeof body.reviewed === "boolean") job.reviewedAt = body.reviewed ? (job.reviewedAt || now()) : null;
         if (Array.isArray(body.segments)) {
           job.segments = body.segments.slice(0, 12000).map((segment) => ({
             id: safeId(segment.id) || crypto.randomUUID(),
