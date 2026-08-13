@@ -4950,7 +4950,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     if (!response.ok) throw new Error(await errorFrom(response));
     return response.json();
   }
-  function updateStart() { els.start.disabled = !(selectedFile && els.consent.checked); }
+  function updateStart() { els.start.disabled = els.start.dataset.ready !== 'true' || !(selectedFile && els.consent.checked); }
   function closeComposer() { els.composer.hidden = true; }
   function openComposer() { els.composer.hidden = false; els.composer.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   function setFile(file) {
@@ -4965,12 +4965,14 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     updateStart();
   }
   function renderReadiness(health) {
-    const ready = health?.openaiConfigured && health?.ffmpegReady;
+    const ready = health?.localEngine?.ready && health?.ffmpegReady;
     els.readiness.className = `transcript-readiness card ${ready ? 'ready' : 'missing'}`;
-    const missing = [!health?.openaiConfigured && 'ключ OpenAI', !health?.ffmpegReady && 'ffmpeg'].filter(Boolean);
-    els.readiness.innerHTML = `<span class="transcript-readiness-mark">${ready ? '✓' : '!'}</span><div><strong>${ready ? 'Студия готова к расшифровке' : 'Перед запуском нужна настройка VPS'}</strong><span>${ready ? `Записи до ${Math.round((health.maxUploadBytes || 0) / 1024 / 1024) || 512} МБ будут приняты в защищённую очередь.` : `Не найдено: ${escapeHtml(missing.join(' и ') || 'проверка сервиса')}. Загрузка останется выключенной, пока инфраструктура не будет готова.`}</span></div>`;
-    els.start.disabled = !ready || !(selectedFile && els.consent.checked);
+    const missing = [!health?.localEngine?.ready && 'локальный движок расшифровки', !health?.ffmpegReady && 'подготовка аудио'].filter(Boolean);
+    const engine = health?.localEngine?.engine || 'Local Whisper';
+    const model = health?.localEngine?.model ? ` · ${health.localEngine.model}` : '';
+    els.readiness.innerHTML = `<span class="transcript-readiness-mark">${ready ? '✓' : '!'}</span><div><strong>${ready ? `${escapeHtml(engine)} готов` : 'Студия готовится на сервере'}</strong><span>${ready ? `Запись не покидает VPS${escapeHtml(model)}. До ${Math.round((health.maxUploadBytes || 0) / 1024 / 1024) || 512} МБ — в защищённую очередь.` : `${escapeHtml(health?.localEngine?.detail || `Нужно завершить: ${missing.join(' и ') || 'проверку сервиса'}`)}. Редактору ничего настраивать не нужно.`}</span></div>`;
     els.start.dataset.ready = ready ? 'true' : 'false';
+    updateStart();
   }
   function renderJobs(jobs) {
     const list = Array.isArray(jobs) ? jobs : [];
@@ -4979,6 +4981,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     els.jobs.innerHTML = list.map((job) => `<article class="transcript-job"><div class="transcript-job-main"><strong class="transcript-job-title">${escapeHtml(job.title || job.filename || 'Без названия')}</strong><div class="transcript-job-meta"><span>${escapeHtml(job.language || 'en').toUpperCase()}</span><span>${escapeHtml(fmtBytes(Number(job.size) || 0))}</span><span>${escapeHtml(fmtDate(job.updatedAt || job.createdAt))}</span><span class="transcript-job-status ${escapeHtml(job.status || '')}">${escapeHtml(statusLabel(job))}</span></div>${['queued', 'processing'].includes(job.status) ? `<div class="transcript-progress"><i style="width:${Math.max(1, Math.min(100, Number(job.progress) || 0))}%"></i></div>` : ''}${job.error ? `<div class="transcript-job-meta" style="color:var(--danger)">${escapeHtml(job.error)}</div>` : ''}</div><button class="btn btn-sm" type="button" data-interview-open="${escapeHtml(job.id)}">${job.status === 'failed' ? 'Открыть / повторить' : 'Открыть'}</button></article>`).join('');
   }
   function speakersFromSegments(segments) { return [...new Set((segments || []).map((segment) => String(segment.speaker || '').trim()).filter(Boolean))]; }
+  function speakerOptions(job) { return [...new Set([...(job?.speakers || []), ...speakersFromSegments(job?.segments || [])].map((name) => String(name || '').trim()).filter(Boolean))]; }
   function renderEditor() {
     const job = activeJob;
     if (!job) { els.editor.hidden = true; return; }
@@ -4986,7 +4989,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     els.retry.hidden = job.status !== 'failed';
     els.editorTitle.textContent = job.title || job.filename || 'Интервью';
     els.editorMeta.textContent = `${statusLabel(job)} · ${job.segmentCount || (job.segments || []).length} фрагментов · создано ${fmtDate(job.createdAt)}`;
-    const speakers = job.speakers?.length ? job.speakers : speakersFromSegments(job.segments);
+    const speakers = speakerOptions(job);
     els.speakersList.className = 'transcript-speakers-list';
     els.speakersList.innerHTML = speakers.length ? speakers.map((name, index) => `<label><span class="sr-only">Участник ${index + 1}</span><input class="transcript-speaker-input" data-speaker-index="${index}" value="${escapeHtml(name)}" /></label>`).join('') : '<p class="transcript-editor-note">Спикеры появятся после готовой расшифровки.</p>';
     const query = els.search.value.trim().toLocaleLowerCase();
@@ -4995,7 +4998,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     if (!segments.length) { els.segments.innerHTML = `<p class="transcript-empty">${job.status === 'ready' ? 'Поиск ничего не нашёл.' : 'Текст появится здесь после обработки записи.'}</p>`; return; }
     els.segments.innerHTML = segments.map((segment) => {
       const sourceIndex = (job.segments || []).indexOf(segment);
-      const options = speakersFromSegments(job.segments).map((name) => `<option value="${escapeHtml(name)}" ${name === segment.speaker ? 'selected' : ''}>${escapeHtml(name)}</option>`).join('');
+      const options = speakerOptions(job).map((name) => `<option value="${escapeHtml(name)}" ${name === segment.speaker ? 'selected' : ''}>${escapeHtml(name)}</option>`).join('');
       return `<article class="transcript-segment" data-segment-index="${sourceIndex}"><button type="button" class="transcript-time" data-seek="${Number(segment.start) || 0}">${escapeHtml(fmtTime(segment.start))}</button><select class="transcript-speaker-select" data-segment-speaker="${sourceIndex}">${options || `<option>${escapeHtml(segment.speaker || 'Speaker')}</option>`}</select><textarea class="transcript-segment-text" data-segment-text="${sourceIndex}" rows="3">${escapeHtml(segment.text || '')}</textarea></article>`;
     }).join('');
   }

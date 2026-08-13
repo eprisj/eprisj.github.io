@@ -38,3 +38,35 @@ curl -s --compressed -o /dev/null -D - -H "If-None-Match: $ET" https://api.epris
 
 Бэкапы лежат рядом с оригиналами: `/opt/deploy-webhook.js.bak-etag-*`,
 `.bak-weaketag-*`, `/etc/nginx/conf.d/eprisjournal-api.conf.bak-gzip-*`.
+
+## Локальная расшифровка интервью
+
+`interviews.js` и `transcribe-local.py` образуют закрытый контур: запись
+остаётся в `/opt/epris-interviews`, разбивается на короткие части и обрабатывается
+на VPS через `faster-whisper`. Внешнего API и ключа OpenAI нет.
+
+На текущем сервере используется локальная английская модель `small.en`: это
+разумный баланс качества и памяти для одного CPU/≈1.7 ГБ RAM. Процесс запускается
+с пониженным приоритетом, поэтому журнал не должен «замирать» во время длинной
+расшифровки. Для более быстрого или более точного уровня нужен отдельный worker
+с большим объёмом памяти либо GPU — основной сайт менять не придётся.
+
+Разовая установка после доставки серверных файлов:
+
+```bash
+install -m 755 /path/to/setup-local-transcription.sh /opt/epris-interviews/setup-local-transcription.sh
+/opt/epris-interviews/setup-local-transcription.sh /opt/epris-interviews/transcribe-local.py
+```
+
+В unit `eprisjournal-webhook` должны быть заданы:
+
+```ini
+Environment=INTERVIEW_PYTHON_BIN=/opt/epris-interviews/.venv/bin/python
+Environment=INTERVIEW_TRANSCRIBE_SCRIPT=/opt/epris-interviews/transcribe-local.py
+Environment=INTERVIEW_WHISPER_MODEL=/opt/epris-interviews/models/small.en
+Environment=INTERVIEW_WHISPER_THREADS=1
+```
+
+После `daemon-reload` и перезапуска `/interviews/health` показывает только
+готовность локального движка — редактор не видит технических ключей и не должен
+настраивать VPS сам.

@@ -19,6 +19,12 @@ const MAX_BYTES = 512 * 1024 * 1024;
 const DEFAULT_RETENTION_DAYS = 30;
 const MAX_RETENTION_DAYS = 90;
 const activeJobs = new Set();
+const LOCAL_TRANSCRIBE_SCRIPT = process.env.INTERVIEW_TRANSCRIBE_SCRIPT || path.join(__dirname, "transcribe-local.py");
+const LOCAL_PYTHON = process.env.INTERVIEW_PYTHON_BIN || "python3";
+// The VPS has one CPU core and limited RAM.  small.en is the highest practical
+// English-only model here: it is materially stronger than base/tiny while
+// keeping the public site responsive through a low-priority background job.
+const LOCAL_MODEL = process.env.INTERVIEW_WHISPER_MODEL || "/opt/epris-interviews/models/small.en";
 
 function now() { return new Date().toISOString(); }
 function clip(value, length) { return String(value || "").replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, length); }
@@ -74,6 +80,8 @@ function jobSummary(job, full = false) {
     error: job.error || "",
     segmentCount: Array.isArray(job.segments) ? job.segments.length : 0,
     hasAudio: Boolean(job.sourcePath && fs.existsSync(job.sourcePath)),
+    engine: job.engine || "local-whisper",
+    model: job.model || "",
   };
   if (full) out.segments = Array.isArray(job.segments) ? job.segments : [];
   return out;
@@ -101,7 +109,7 @@ function cleanupExpired() {
 }
 function run(command, args, options = {}) {
   return new Promise((resolve, reject) => {
-    execFile(command, args, { maxBuffer: 1024 * 1024, timeout: options.timeout || 30 * 60 * 1000 }, (error, stdout, stderr) => {
+    execFile(command, args, { maxBuffer: 8 * 1024 * 1024, timeout: options.timeout || 30 * 60 * 1000 }, (error, stdout, stderr) => {
       if (error) {
         const detail = String(stderr || error.message).trim().slice(-800);
         reject(new Error(`${command} failed${detail ? `: ${detail}` : ""}`));
@@ -114,23 +122,25 @@ function run(command, args, options = {}) {
 async function ffmpegReady() {
   try { await run("ffmpeg", ["-version"], { timeout: 8000 }); return true; } catch { return false; }
 }
+async function localEngineStatus() {
+  if (!fs.existsSync(LOCAL_TRANSCRIBE_SCRIPT)) {
+    return { ready: false, engine: "Local Whisper", model: LOCAL_MODEL, detail: "Local worker is not installed on VPS." };
+  }
+  try {
+    const { stdout } = await run(LOCAL_PYTHON, [LOCAL_TRANSCRIBE_SCRIPT, "--health"], { timeout: 12000 });
+    const result = JSON.parse(String(stdout || "{}"));
+    return { ...result, ready: Boolean(result.ready), engine: result.engine || "Local Whisper", model: result.model || LOCAL_MODEL };
+  } catch (error) {
+    return { ready: false, engine: "Local Whisper", model: LOCAL_MODEL, detail: "Local worker needs server setup.", technical: clip(error.message, 260) };
+  }
+}
 async function transcribeChunk(chunkPath, language) {
-  const key = process.env.OPENAI_API_KEY;
-  if (!key) throw new Error("OPENAI_API_KEY is not configured on VPS");
-  const file = await fsp.readFile(chunkPath);
-  const form = new FormData();
-  form.append("file", new Blob([file], { type: "audio/mpeg" }), path.basename(chunkPath));
-  form.append("model", "gpt-4o-transcribe-diarize");
-  form.append("response_format", "diarized_json");
-  form.append("chunking_strategy", "auto");
-  if (language) form.append("language", language);
-  const response = await fetch("https://api.openai.com/v1/audio/transcriptions", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${key}` },
-    body: form,
-  });
-  const payload = await response.json().catch(async () => ({ error: { message: (await response.text()).slice(0, 300) } }));
-  if (!response.ok) throw new Error(payload?.error?.message || `OpenAI returned ${response.status}`);
+  // `nice` is intentional: the public journal always wins CPU time over a
+  // background transcription on this small VPS.
+  const { stdout } = await run("nice", ["-n", "15", LOCAL_PYTHON, LOCAL_TRANSCRIBE_SCRIPT, "--input", chunkPath, "--language", language || "en", "--model", LOCAL_MODEL], { timeout: 60 * 60 * 1000 });
+  let payload;
+  try { payload = JSON.parse(String(stdout || "{}")); } catch { throw new Error("Local worker returned an invalid transcript."); }
+  if (payload?.error) throw new Error(payload.error);
   return payload;
 }
 function normaliseSegments(payload, offset) {
@@ -152,10 +162,14 @@ async function processJob(id) {
   try {
     let job = readJob(id);
     if (!job || !job.sourcePath || !fs.existsSync(job.sourcePath)) throw new Error("source audio is unavailable");
-    if (!process.env.OPENAI_API_KEY) throw new Error("OPENAI_API_KEY is not configured on VPS");
     if (!await ffmpegReady()) throw new Error("ffmpeg is not installed on VPS");
+    const engine = await localEngineStatus();
+    if (!engine.ready) throw new Error(engine.detail || "Local transcription service is not ready on VPS.");
     job.status = "processing";
-    job.stage = "Preparing audio";
+    job.engine = "local-whisper";
+    job.model = engine.model || LOCAL_MODEL;
+    job.stage = "Preparing audio locally";
+    job.startedAt = job.startedAt || now();
     job.progress = Math.max(2, Number(job.progress || 0));
     job.error = "";
     job.segments = [];
@@ -163,15 +177,15 @@ async function processJob(id) {
     const chunksDir = path.join(path.dirname(job.sourcePath), "chunks");
     await fsp.rm(chunksDir, { recursive: true, force: true });
     await fsp.mkdir(chunksDir, { recursive: true });
-    // 15-minute mono MP3 chunks keep each upload compact and make a 1–2 hour
-    // interview restartable. OpenAI receives each chunk sequentially.
+    // 15-minute mono chunks are restartable and keep RAM steady on a modest VPS.
+    // The chunks stay on the server and are consumed by the local worker only.
     await run("ffmpeg", ["-y", "-i", job.sourcePath, "-vn", "-ac", "1", "-ar", "16000", "-codec:a", "libmp3lame", "-b:a", "48k", "-f", "segment", "-segment_time", "900", path.join(chunksDir, "part-%03d.mp3")]);
     const chunks = (await fsp.readdir(chunksDir)).filter((name) => /^part-\d+\.mp3$/.test(name)).sort();
     if (!chunks.length) throw new Error("ffmpeg did not create audio chunks");
     for (let index = 0; index < chunks.length; index += 1) {
       job = readJob(id);
       job.status = "processing";
-      job.stage = `Transcribing part ${index + 1} of ${chunks.length}`;
+      job.stage = `Transcribing locally: part ${index + 1} of ${chunks.length}`;
       job.progress = Math.min(96, Math.round(8 + (index / chunks.length) * 86));
       saveJob(job);
       const payload = await transcribeChunk(path.join(chunksDir, chunks[index]), job.language || "en");
@@ -184,7 +198,7 @@ async function processJob(id) {
     }
     job = readJob(id);
     job.status = "ready";
-    job.stage = "Transcript ready";
+    job.stage = "Transcript ready for editing";
     job.progress = 100;
     job.completedAt = now();
     saveJob(job);
@@ -230,7 +244,8 @@ function createInterviewModule({ resolveRole }) {
       if (!role) return true;
       cleanupExpired();
       if (url.pathname === "/interviews/health" && req.method === "GET") {
-        respond(res, 200, { ok: true, openaiConfigured: Boolean(process.env.OPENAI_API_KEY), ffmpegReady: await ffmpegReady(), maxUploadBytes: MAX_BYTES, defaultRetentionDays: DEFAULT_RETENTION_DAYS });
+        const localEngine = await localEngineStatus();
+        respond(res, 200, { ok: true, localEngine, ffmpegReady: await ffmpegReady(), maxUploadBytes: MAX_BYTES, defaultRetentionDays: DEFAULT_RETENTION_DAYS });
         return true;
       }
       if (url.pathname === "/interviews" && req.method === "GET") {
