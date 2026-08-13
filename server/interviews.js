@@ -300,7 +300,7 @@ function createInterviewModule({ resolveRole }) {
         }
         return true;
       }
-      const match = url.pathname.match(/^\/interviews\/([a-z0-9_-]{12,64})(?:\/(audio|export|retry|article-draft))?$/i);
+      const match = url.pathname.match(/^\/interviews\/([a-z0-9_-]{12,64})(?:\/(audio|export|retry|article-draft|retention))?$/i);
       if (!match) { respond(res, 404, { ok: false, error: "interview not found" }); return true; }
       const [, id, action] = match;
       const job = readJob(id);
@@ -343,6 +343,26 @@ function createInterviewModule({ resolveRole }) {
         if (!job.sourcePath || !fs.existsSync(job.sourcePath)) { respond(res, 409, { ok: false, error: "audio expired; upload it again" }); return true; }
         job.status = "queued"; job.stage = "Queued again"; job.progress = 1; job.error = ""; saveJob(job); retrySoon(id);
         respond(res, 200, { ok: true, job: jobSummary(job) });
+        return true;
+      }
+      if (action === "retention" && req.method === "POST") {
+        if (!job.sourcePath || !fs.existsSync(job.sourcePath)) {
+          respond(res, 409, { ok: false, error: "audio expired; only the transcript remains" });
+          return true;
+        }
+        const body = parsed && typeof parsed === "object" ? parsed : {};
+        const requestedDays = Number(body.days);
+        const allowedDays = [7, DEFAULT_RETENTION_DAYS, MAX_RETENTION_DAYS];
+        if (body.days != null && !allowedDays.includes(requestedDays)) {
+          respond(res, 400, { ok: false, error: "retention must be 7, 30, or 90 days" });
+          return true;
+        }
+        const currentRetention = Date.parse(job.retentionAt || "");
+        const retentionBase = Math.max(Date.now(), Number.isFinite(currentRetention) ? currentRetention : 0);
+        const days = allowedDays.includes(requestedDays) ? requestedDays : DEFAULT_RETENTION_DAYS;
+        job.retentionAt = new Date(retentionBase + days * 86400000).toISOString();
+        saveJob(job);
+        respond(res, 200, { ok: true, job: jobSummary(job, true) });
         return true;
       }
       if (action === "article-draft" && req.method === "POST") {
