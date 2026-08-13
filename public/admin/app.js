@@ -4918,7 +4918,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   const $ = (id) => byId(id);
   const els = {
     readiness: $('transcriptReadiness'), composer: $('transcriptComposer'), newBtn: $('transcriptNewBtn'), refreshBtn: $('transcriptRefreshBtn'), closeComposerBtn: $('transcriptCloseComposerBtn'),
-    hero: $('transcriptHero'), flow: $('transcriptFlow'), flowNote: $('transcriptFlowNote'),
+    hero: $('transcriptHero'), flow: $('transcriptFlow'), flowNote: $('transcriptFlowNote'), nextAction: $('transcriptNextAction'), nextTitle: $('transcriptNextTitle'), nextDetail: $('transcriptNextDetail'), nextButton: $('transcriptNextButton'),
     title: $('transcriptTitle'), language: $('transcriptLanguage'), retention: $('transcriptRetention'), speakers: $('transcriptSpeakers'), file: $('transcriptAudioInput'), fileLabel: $('transcriptFileLabel'), fileMeta: $('transcriptFileMeta'), dropzone: $('transcriptDropZone'), consent: $('transcriptConsent'), start: $('transcriptStartBtn'),
     jobs: $('transcriptJobs'), count: $('transcriptLibraryCount'), archiveSearch: $('transcriptArchiveSearch'), archiveFilters: $('transcriptArchiveFilters'), editor: $('transcriptEditor'), editorTitle: $('transcriptEditorTitle'), editorMeta: $('transcriptEditorMeta'),
     loadAudio: $('transcriptLoadAudioBtn'), retry: $('transcriptRetryBtn'), audio: $('transcriptAudio'), save: $('transcriptSaveBtn'), undo: $('transcriptUndoBtn'), saveState: $('transcriptSaveState'), txt: $('transcriptTxtBtn'), srt: $('transcriptSrtBtn'), vtt: $('transcriptVttBtn'), createArticle: $('transcriptCreateArticleBtn'), draftPanel: $('transcriptDraftPanel'), draftSetup: $('transcriptDraftSetup'), draftOutcome: $('transcriptDraftOutcome'), openArticle: $('transcriptOpenArticleBtn'), articleAuthor: $('transcriptArticleAuthor'), articleAuthorSummary: $('transcriptArticleAuthorSummary'), reviewed: $('transcriptReviewed'), speakersList: $('transcriptSpeakersList'), search: $('transcriptSearch'), searchPrev: $('transcriptSearchPrev'), searchNext: $('transcriptSearchNext'), segmentCount: $('transcriptSegmentCount'), segments: $('transcriptSegments'),
@@ -4936,6 +4936,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   let draftArticleAuthorId = '';
   let activeSearchSegmentIndex = -1;
   let archiveFilter = 'all';
+  let suggestedInterviewAction = null;
   const audioExtensions = /\.(mp3|m4a|wav|mp4|mpeg|mpga|ogg|webm|flac)$/i;
   const fmtBytes = (bytes) => bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
   const fmtDate = (value) => value ? new Intl.DateTimeFormat('ru-RU', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(value)) : '—';
@@ -4985,6 +4986,26 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
       button.classList.toggle('is-active', active);
       button.setAttribute('aria-pressed', String(active));
     });
+  }
+  function renderSuggestedInterviewAction(jobs = latestJobs) {
+    if (!els.nextAction || !els.nextTitle || !els.nextDetail || !els.nextButton) return;
+    const list = Array.isArray(jobs) ? jobs : [];
+    const failed = list.find((job) => job.status === 'failed');
+    const readyForReview = list.find((job) => job.status === 'ready' && !job.articleDraft?.id);
+    const linked = list.find((job) => job.articleDraft?.id);
+    const suggestion = failed
+      ? { id: failed.id, type: 'editor', title: 'Нужно разобрать одну запись', detail: `«${failed.title || failed.filename || 'Без названия'}» не дошла до готового текста. Откройте её: причина и безопасный повторный запуск уже внутри.`, button: 'Открыть запись' }
+      : readyForReview
+        ? { id: readyForReview.id, type: 'editor', title: 'Текст готов к вычитке', detail: `«${readyForReview.title || readyForReview.filename || 'Без названия'}» ждёт только проверки имён и смысла — затем можно создать черновик статьи.`, button: 'Открыть вычитку' }
+        : linked
+          ? { id: linked.id, type: 'article', title: 'Черновик уже передан в статьи', detail: `«${linked.articleDraft?.title || linked.title || 'Без названия'}» связан с интервью. Откройте его, чтобы продолжить редактуру или публикацию.`, button: 'Открыть черновик' }
+          : null;
+    suggestedInterviewAction = suggestion;
+    els.nextAction.hidden = !suggestion;
+    if (!suggestion) return;
+    els.nextTitle.textContent = suggestion.title;
+    els.nextDetail.textContent = suggestion.detail;
+    els.nextButton.textContent = suggestion.button;
   }
   function audioRetentionLabel(job) {
     if (!job?.hasAudio) return 'аудио удалено';
@@ -5219,6 +5240,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     const contentData = parseEditorJsonSafe();
     const linkedArticles = contentData ? getSectionArray(contentData, 'articles', DEFAULT_LANGUAGE, false) : [];
     latestJobs = list;
+    renderSuggestedInterviewAction(list);
     syncArchiveFilters();
     if (!list.length) { els.count.textContent = '0 записей'; els.jobs.innerHTML = '<p class="transcript-empty">Здесь появятся записи, отправленные в расшифровку. Готовые тексты и аудио не смешиваются со статьями.</p>'; return; }
     const filtered = list.filter((job) => matchesArchiveFilter(job));
@@ -5473,6 +5495,14 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     }
   }
   els.newBtn?.addEventListener('click', openComposer); els.closeComposerBtn?.addEventListener('click', closeComposer); els.refreshBtn?.addEventListener('click', () => refresh());
+  els.nextButton?.addEventListener('click', () => {
+    const suggestion = suggestedInterviewAction;
+    if (!suggestion) return;
+    const job = latestJobs.find((item) => String(item.id) === String(suggestion.id));
+    if (!job) { refresh(true); return; }
+    if (suggestion.type === 'article') openLinkedArticle(job);
+    else loadJob(job.id).catch((error) => showToast('error', getErrorMessage(error)));
+  });
   els.file?.addEventListener('change', () => setFile(els.file.files?.[0])); els.consent?.addEventListener('change', updateStart); els.retention?.addEventListener('change', () => { if (selectedFile) els.fileMeta.textContent = `${fmtBytes(selectedFile.size)} · файл будет храниться ${els.retention.value} дн.`; });
   els.dropzone?.addEventListener('dragover', (event) => { event.preventDefault(); els.dropzone.classList.add('is-dragging'); }); els.dropzone?.addEventListener('dragleave', () => els.dropzone.classList.remove('is-dragging')); els.dropzone?.addEventListener('drop', (event) => { event.preventDefault(); els.dropzone.classList.remove('is-dragging'); setFile(event.dataTransfer?.files?.[0]); });
   els.start?.addEventListener('click', startUpload); els.jobs?.addEventListener('click', (event) => { const clearFilters = event.target.closest('[data-interview-clear-filters]'); if (clearFilters) { archiveFilter = 'all'; if (els.archiveSearch) els.archiveSearch.value = ''; renderJobs(latestJobs); return; } const draftButton = event.target.closest('[data-interview-open-draft]'); if (draftButton) { openLinkedArticle(latestJobs.find((job) => String(job.id) === String(draftButton.dataset.interviewOpenDraft))); return; } const retentionButton = event.target.closest('[data-interview-retention]'); if (retentionButton) { extendAudioRetentionById(retentionButton.dataset.interviewRetention); return; } const deleteButton = event.target.closest('[data-interview-delete]'); if (deleteButton) { deleteJobById(deleteButton.dataset.interviewDelete); return; } const retryButton = event.target.closest('[data-interview-retry]'); if (retryButton) { retryJobById(retryButton.dataset.interviewRetry); return; } const button = event.target.closest('[data-interview-open]'); if (button) loadJob(button.dataset.interviewOpen); });
