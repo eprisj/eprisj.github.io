@@ -4921,13 +4921,18 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     hero: $('transcriptHero'), flow: $('transcriptFlow'), flowNote: $('transcriptFlowNote'),
     title: $('transcriptTitle'), language: $('transcriptLanguage'), retention: $('transcriptRetention'), speakers: $('transcriptSpeakers'), file: $('transcriptAudioInput'), fileLabel: $('transcriptFileLabel'), fileMeta: $('transcriptFileMeta'), dropzone: $('transcriptDropZone'), consent: $('transcriptConsent'), start: $('transcriptStartBtn'),
     jobs: $('transcriptJobs'), count: $('transcriptLibraryCount'), editor: $('transcriptEditor'), editorTitle: $('transcriptEditorTitle'), editorMeta: $('transcriptEditorMeta'),
-    loadAudio: $('transcriptLoadAudioBtn'), retry: $('transcriptRetryBtn'), audio: $('transcriptAudio'), save: $('transcriptSaveBtn'), txt: $('transcriptTxtBtn'), srt: $('transcriptSrtBtn'), vtt: $('transcriptVttBtn'), createArticle: $('transcriptCreateArticleBtn'), speakersList: $('transcriptSpeakersList'), search: $('transcriptSearch'), segmentCount: $('transcriptSegmentCount'), segments: $('transcriptSegments'),
+    loadAudio: $('transcriptLoadAudioBtn'), retry: $('transcriptRetryBtn'), audio: $('transcriptAudio'), save: $('transcriptSaveBtn'), undo: $('transcriptUndoBtn'), saveState: $('transcriptSaveState'), txt: $('transcriptTxtBtn'), srt: $('transcriptSrtBtn'), vtt: $('transcriptVttBtn'), createArticle: $('transcriptCreateArticleBtn'), speakersList: $('transcriptSpeakersList'), search: $('transcriptSearch'), segmentCount: $('transcriptSegmentCount'), segments: $('transcriptSegments'),
   };
   let selectedFile = null;
   let activeJob = null;
   let latestJobs = [];
   let audioObjectUrl = '';
   let pollTimer = 0;
+  let transcriptAutosaveTimer = 0;
+  let transcriptLastSnapshot = '';
+  let transcriptUndoSnapshot = '';
+  let transcriptHasUnsavedChanges = false;
+  let transcriptSaveInFlight = false;
   const audioExtensions = /\.(mp3|m4a|wav|mp4|mpeg|mpga|ogg|webm|flac)$/i;
   const fmtBytes = (bytes) => bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
   const fmtDate = (value) => value ? new Intl.DateTimeFormat('ru-RU', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(value)) : '—';
@@ -4978,6 +4983,69 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   function updateStart() { els.start.disabled = els.start.dataset.ready !== 'true' || !(selectedFile && els.consent.checked); }
   function closeComposer() { els.composer.hidden = true; }
   function openComposer() { els.composer.hidden = false; els.composer.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  function setTranscriptSaveState(state, message) {
+    if (!els.saveState) return;
+    const labels = {
+      saved: message || 'Все правки сохранены',
+      changed: message || 'Есть несохранённые правки',
+      saving: message || 'Сохраняем правки…',
+      error: message || 'Не удалось сохранить — попробуйте ещё раз',
+    };
+    els.saveState.className = `transcript-save-state is-${state}`;
+    const label = els.saveState.querySelector('span:last-child');
+    if (label) label.textContent = labels[state] || labels.saved;
+    els.save?.toggleAttribute('data-pending', state === 'changed' || state === 'error');
+    els.undo && (els.undo.disabled = !transcriptUndoSnapshot || state === 'saving');
+  }
+  function editorSnapshot() {
+    if (!activeJob) return '';
+    return JSON.stringify(editorDraft());
+  }
+  function editorDraft() {
+    const speakers = [...els.speakersList.querySelectorAll('[data-speaker-index]')].map((field) => field.value.trim());
+    const oldSpeakers = activeJob?.speakers?.length ? activeJob.speakers : speakersFromSegments(activeJob?.segments || []);
+    const renamed = new Map(oldSpeakers.map((name, index) => [name, speakers[index] || name]));
+    const segments = currentSegmentsFromForm().map((segment) => ({ ...segment, speaker: renamed.get(segment.speaker) || segment.speaker }));
+    return { title: els.editorTitle.textContent || '', speakers: speakers.filter(Boolean), segments };
+  }
+  function applyEditorDraft(draft) {
+    if (!activeJob || !draft) return;
+    activeJob.title = draft.title || activeJob.title;
+    activeJob.speakers = Array.isArray(draft.speakers) ? draft.speakers : activeJob.speakers;
+    activeJob.segments = Array.isArray(draft.segments) ? draft.segments : activeJob.segments;
+  }
+  function scheduleTranscriptAutosave(delay = 1400) {
+    window.clearTimeout(transcriptAutosaveTimer);
+    transcriptAutosaveTimer = window.setTimeout(() => saveEditor({ quiet: true, auto: true }), delay);
+  }
+  function markTranscriptChanged() {
+    if (!activeJob) return;
+    const next = editorSnapshot();
+    if (!next || next === transcriptLastSnapshot) {
+      transcriptHasUnsavedChanges = false;
+      transcriptUndoSnapshot = '';
+      setTranscriptSaveState('saved');
+      return;
+    }
+    if (!transcriptHasUnsavedChanges) transcriptUndoSnapshot = transcriptLastSnapshot;
+    transcriptHasUnsavedChanges = true;
+    setTranscriptSaveState('changed');
+    scheduleTranscriptAutosave();
+  }
+  function restoreTranscriptSnapshot() {
+    if (!activeJob || !transcriptUndoSnapshot) return;
+    try {
+      const snapshot = JSON.parse(transcriptUndoSnapshot);
+      applyEditorDraft(snapshot);
+      transcriptLastSnapshot = transcriptUndoSnapshot;
+      transcriptUndoSnapshot = '';
+      transcriptHasUnsavedChanges = false;
+      window.clearTimeout(transcriptAutosaveTimer);
+      renderEditor();
+      setTranscriptSaveState('saved', 'Последнее изменение отменено');
+      showToast('info', 'Последнее изменение отменено локально.');
+    } catch { transcriptUndoSnapshot = ''; setTranscriptSaveState('saved'); }
+  }
   function renderFlow(jobs = latestJobs, ready = true) {
     const list = Array.isArray(jobs) ? jobs : [];
     const hasProcessing = list.some((job) => ['queued', 'processing'].includes(job.status));
@@ -5042,7 +5110,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   function speakerOptions(job) { return [...new Set([...(job?.speakers || []), ...speakersFromSegments(job?.segments || [])].map((name) => String(name || '').trim()).filter(Boolean))]; }
   function renderEditor() {
     const job = activeJob;
-    if (!job) { els.editor.hidden = true; return; }
+    if (!job) { els.editor.hidden = true; transcriptLastSnapshot = ''; transcriptUndoSnapshot = ''; transcriptHasUnsavedChanges = false; return; }
     els.editor.hidden = false;
     els.retry.hidden = job.status !== 'failed';
     els.editorTitle.textContent = job.title || job.filename || 'Интервью';
@@ -5053,12 +5121,13 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     const query = els.search.value.trim().toLocaleLowerCase();
     const segments = (job.segments || []).filter((segment) => !query || `${segment.speaker} ${segment.text}`.toLocaleLowerCase().includes(query));
     els.segmentCount.textContent = `${segments.length} из ${(job.segments || []).length}`;
-    if (!segments.length) { els.segments.innerHTML = `<p class="transcript-empty">${job.status === 'ready' ? 'Поиск ничего не нашёл.' : 'Текст появится здесь после обработки записи.'}</p>`; return; }
+    if (!segments.length) { els.segments.innerHTML = `<p class="transcript-empty">${job.status === 'ready' ? 'Поиск ничего не нашёл.' : 'Текст появится здесь после обработки записи.'}</p>`; if (!transcriptHasUnsavedChanges) { transcriptLastSnapshot = editorSnapshot(); setTranscriptSaveState('saved'); } return; }
     els.segments.innerHTML = segments.map((segment) => {
       const sourceIndex = (job.segments || []).indexOf(segment);
       const options = speakerOptions(job).map((name) => `<option value="${escapeHtml(name)}" ${name === segment.speaker ? 'selected' : ''}>${escapeHtml(name)}</option>`).join('');
       return `<article class="transcript-segment" data-segment-index="${sourceIndex}"><button type="button" class="transcript-time" data-seek="${Number(segment.start) || 0}">${escapeHtml(fmtTime(segment.start))}</button><select class="transcript-speaker-select" data-segment-speaker="${sourceIndex}">${options || `<option>${escapeHtml(segment.speaker || 'Speaker')}</option>`}</select><textarea class="transcript-segment-text" data-segment-text="${sourceIndex}" rows="3">${escapeHtml(segment.text || '')}</textarea></article>`;
     }).join('');
+    if (!transcriptHasUnsavedChanges) { transcriptLastSnapshot = editorSnapshot(); setTranscriptSaveState('saved'); }
   }
   async function loadJob(id, quiet = false) {
     const payload = await api(`/${encodeURIComponent(id)}`);
@@ -5075,7 +5144,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
       renderJobs(list.jobs);
       renderReadiness(health);
       renderFlow(list.jobs, Boolean(health?.localEngine?.ready && health?.ffmpegReady));
-      if (activeJob) await loadJob(activeJob.id, true);
+      if (activeJob && !transcriptHasUnsavedChanges && !transcriptSaveInFlight) await loadJob(activeJob.id, true);
       const hasWork = list.jobs.some((job) => ['queued', 'processing'].includes(job.status));
       window.clearTimeout(pollTimer);
       if (hasWork) pollTimer = window.setTimeout(() => refresh(true), 4500);
@@ -5093,20 +5162,43 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     els.segments.querySelectorAll('[data-segment-speaker]').forEach((field) => { const index = Number(field.dataset.segmentSpeaker); if (next[index]) next[index].speaker = field.value; });
     return next.filter((segment) => segment.text);
   }
-  async function saveEditor() {
-    if (!activeJob) return;
+  async function saveEditor({ quiet = false, auto = false } = {}) {
+    if (!activeJob) return false;
+    if (transcriptSaveInFlight) {
+      if (auto) scheduleTranscriptAutosave(500);
+      return false;
+    }
+    const snapshotAtSave = editorSnapshot();
+    let queueFollowUpSave = false;
     try {
-      const oldSpeakers = activeJob.speakers?.length ? activeJob.speakers : speakersFromSegments(activeJob.segments);
-      const speakers = [...els.speakersList.querySelectorAll('[data-speaker-index]')].map((field) => field.value.trim()).filter(Boolean);
-      const renamed = new Map(oldSpeakers.map((name, index) => [name, speakers[index] || name]));
-      const segments = currentSegmentsFromForm().map((segment) => ({ ...segment, speaker: renamed.get(segment.speaker) || segment.speaker }));
-      const payload = await api(`/${encodeURIComponent(activeJob.id)}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title: els.editorTitle.textContent, speakers, segments }) });
+      transcriptSaveInFlight = true;
+      setTranscriptSaveState('saving');
+      const draft = editorDraft();
+      const payload = await api(`/${encodeURIComponent(activeJob.id)}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(draft) });
+      const snapshotAfterSave = editorSnapshot();
       activeJob = payload.job;
-      renderEditor();
-      showToast('success', 'Правки к расшифровке сохранены.');
-      refresh(true);
+      transcriptLastSnapshot = JSON.stringify({ title: activeJob.title || '', speakers: activeJob.speakers || [], segments: activeJob.segments || [] });
+      transcriptUndoSnapshot = '';
+      const changedWhileSaving = Boolean(snapshotAfterSave && snapshotAfterSave !== snapshotAtSave);
+      if (changedWhileSaving) {
+        applyEditorDraft(JSON.parse(snapshotAfterSave));
+        transcriptHasUnsavedChanges = true;
+        queueFollowUpSave = true;
+        renderEditor();
+        setTranscriptSaveState('changed', 'Есть новые правки — сохраним следом');
+      } else {
+        transcriptHasUnsavedChanges = false;
+        renderEditor();
+        setTranscriptSaveState('saved');
+      }
+      if (!quiet) showToast('success', 'Правки к расшифровке сохранены.');
+      if (!changedWhileSaving) refresh(true);
       return true;
-    } catch (error) { showToast('error', getErrorMessage(error)); return false; }
+    } catch (error) { setTranscriptSaveState('error'); if (!quiet) showToast('error', getErrorMessage(error)); return false; }
+    finally {
+      transcriptSaveInFlight = false;
+      if (queueFollowUpSave) scheduleTranscriptAutosave(450);
+    }
   }
   async function startUpload() {
     if (els.start.dataset.ready !== 'true') { showToast('error', 'Сначала нужно завершить настройку расшифровки на VPS.'); return; }
@@ -5180,9 +5272,15 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   els.file?.addEventListener('change', () => setFile(els.file.files?.[0])); els.consent?.addEventListener('change', updateStart); els.retention?.addEventListener('change', () => { if (selectedFile) els.fileMeta.textContent = `${fmtBytes(selectedFile.size)} · файл будет храниться ${els.retention.value} дн.`; });
   els.dropzone?.addEventListener('dragover', (event) => { event.preventDefault(); els.dropzone.classList.add('is-dragging'); }); els.dropzone?.addEventListener('dragleave', () => els.dropzone.classList.remove('is-dragging')); els.dropzone?.addEventListener('drop', (event) => { event.preventDefault(); els.dropzone.classList.remove('is-dragging'); setFile(event.dataTransfer?.files?.[0]); });
   els.start?.addEventListener('click', startUpload); els.jobs?.addEventListener('click', (event) => { const retryButton = event.target.closest('[data-interview-retry]'); if (retryButton) { retryJobById(retryButton.dataset.interviewRetry); return; } const button = event.target.closest('[data-interview-open]'); if (button) loadJob(button.dataset.interviewOpen); });
-  els.search?.addEventListener('input', renderEditor); els.save?.addEventListener('click', saveEditor); els.loadAudio?.addEventListener('click', loadAudio); els.retry?.addEventListener('click', retryJob); els.txt?.addEventListener('click', () => download('txt')); els.srt?.addEventListener('click', () => download('srt')); els.vtt?.addEventListener('click', () => download('vtt')); els.createArticle?.addEventListener('click', createArticle);
+  els.search?.addEventListener('input', () => { if (transcriptHasUnsavedChanges) applyEditorDraft(editorDraft()); renderEditor(); }); els.save?.addEventListener('click', () => saveEditor()); els.undo?.addEventListener('click', restoreTranscriptSnapshot); els.loadAudio?.addEventListener('click', loadAudio); els.retry?.addEventListener('click', retryJob); els.txt?.addEventListener('click', () => download('txt')); els.srt?.addEventListener('click', () => download('srt')); els.vtt?.addEventListener('click', () => download('vtt')); els.createArticle?.addEventListener('click', createArticle);
+  els.segments?.addEventListener('input', markTranscriptChanged); els.segments?.addEventListener('change', markTranscriptChanged); els.speakersList?.addEventListener('input', markTranscriptChanged); els.speakersList?.addEventListener('change', markTranscriptChanged);
   els.segments?.addEventListener('click', (event) => { const target = event.target.closest('[data-seek]'); if (!target || !els.audio.src) return; els.audio.currentTime = Number(target.dataset.seek) || 0; els.audio.play().catch(() => {}); });
   document.querySelector('[data-tab="transcripts"]')?.addEventListener('click', () => refresh(true));
+  window.addEventListener('beforeunload', (event) => {
+    if (!transcriptHasUnsavedChanges && !transcriptSaveInFlight) return;
+    event.preventDefault();
+    event.returnValue = '';
+  });
   refresh(true);
 })();
 
