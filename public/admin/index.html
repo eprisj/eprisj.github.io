@@ -12,7 +12,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=4.60" />
+    <link rel="stylesheet" href="./styles.css?v=4.61" />
     <link rel="stylesheet" href="./brandbook.css?v=3" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -1107,9 +1107,10 @@
               </section>
               <section class="transcript-library card"><div class="transcript-section-head"><div><p class="panel-kicker">Шаг 2 и архив</p><h2 class="card-title">Интервью редакции</h2><p class="card-desc">Готовое интервью можно открыть, вычитать и только затем вручную превратить в черновик статьи.</p></div><span id="transcriptLibraryCount" class="transcript-count">0 записей</span></div><div id="transcriptJobs" class="transcript-jobs"><p class="empty-state">Загружаю интервью…</p></div></section>
               <section class="transcript-editor card" id="transcriptEditor" hidden>
-                <div class="transcript-editor-top"><div><p class="panel-kicker">Шаг 3 из 3 · вычитка</p><h2 class="card-title" id="transcriptEditorTitle">Интервью</h2><p id="transcriptEditorMeta" class="card-desc"></p><div id="transcriptSaveState" class="transcript-save-state is-saved" aria-live="polite"><span class="transcript-save-state-dot"></span><span>Все правки сохранены</span></div></div><div class="transcript-editor-actions"><button class="btn" id="transcriptLoadAudioBtn" type="button">Слушать запись</button><button class="btn" id="transcriptRetryBtn" type="button" hidden>Запустить заново</button><button class="btn" id="transcriptUndoBtn" type="button" disabled>Отменить изменение</button><button class="btn" id="transcriptSaveBtn" type="button">Сохранить сейчас</button><span class="transcript-export"><button class="btn" id="transcriptTxtBtn" type="button">Скачать TXT</button><button class="btn" id="transcriptSrtBtn" type="button">SRT</button><button class="btn" id="transcriptVttBtn" type="button">VTT</button></span><button class="btn btn-primary" id="transcriptCreateArticleBtn" type="button">Создать черновик статьи</button></div></div>
+                <div class="transcript-editor-top"><div><p class="panel-kicker">Шаг 3 из 4 · вычитка</p><h2 class="card-title" id="transcriptEditorTitle">Интервью</h2><p id="transcriptEditorMeta" class="card-desc"></p><div id="transcriptSaveState" class="transcript-save-state is-saved" aria-live="polite"><span class="transcript-save-state-dot"></span><span>Все правки сохранены</span></div></div><div class="transcript-editor-actions"><button class="btn" id="transcriptLoadAudioBtn" type="button">Слушать запись</button><button class="btn" id="transcriptRetryBtn" type="button" hidden>Запустить заново</button><button class="btn" id="transcriptUndoBtn" type="button" disabled>Отменить изменение</button><button class="btn" id="transcriptSaveBtn" type="button">Сохранить сейчас</button><span class="transcript-export"><button class="btn" id="transcriptTxtBtn" type="button">Скачать TXT</button><button class="btn" id="transcriptSrtBtn" type="button">SRT</button><button class="btn" id="transcriptVttBtn" type="button">VTT</button></span></div></div>
                 <audio id="transcriptAudio" controls hidden></audio>
                 <div class="transcript-editor-grid"><aside class="transcript-speakers"><p class="field-label">Имена для разметки</p><div id="transcriptSpeakersList"></div><p class="transcript-editor-note">Выберите имя в каждой строке текста, когда оно известно. По таймкоду можно вернуться к фрагменту аудио.</p></aside><div class="transcript-body"><div class="transcript-search"><input id="transcriptSearch" placeholder="Найти слово в расшифровке" /><span id="transcriptSegmentCount"></span></div><div id="transcriptSegments" class="transcript-segments"></div></div></div>
+                <section class="transcript-draft-panel" aria-labelledby="transcriptDraftTitle"><div class="transcript-draft-copy"><p class="panel-kicker">Шаг 4 из 4 · подготовка материала</p><h3 id="transcriptDraftTitle">Создать черновик статьи</h3><p>Интервью не станет публикацией само: сначала создадим отдельный черновик, где можно собрать текст, добавить обложку и решить, когда выпускать его на сайт.</p></div><div class="transcript-draft-controls"><label><span class="field-label">Автор из реестра</span><select id="transcriptArticleAuthor"><option value="">Редакция EPRIS · без карточки автора</option></select></label><div id="transcriptArticleAuthorSummary" class="transcript-author-summary" aria-live="polite"></div><button class="btn btn-primary" id="transcriptCreateArticleBtn" type="button">Создать черновик</button></div></section>
               </section>
             </div>
           </section>
@@ -1940,7 +1941,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.60" type="module"></script>
+    <script src="./app.js?v=4.61" type="module"></script>
     <script src="../brandbook/data.js?v=1"></script>
     <script src="./brandbook.js?v=3"></script>
     <script>
