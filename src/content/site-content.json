@@ -4499,7 +4499,7 @@
           "content": "<strong>Speaker</strong><br>mother, the new dispatch."
         }
       ],
-      "updatedAt": "2026-08-14T16:09:23.994Z"
+      "updatedAt": "2026-08-14T16:13:34.049Z"
     }
   ],
   "reviews": [
@@ -4629,7 +4629,7 @@
       "subject": "New review",
       "rating": 0,
       "content": "DETAILS THAT MATTER\n\nTaking into account first impressions - atmosphere, service, who this place is for. The following are details that support the findings.\n\nНовый абзац.ммм\n\nFIRST IMPRESSION\n\nWhat stays with you after the first encounter?\n\nDescribe the material, rhythm, service or object in concrete terms.\n\nIN CONTEXT\n\nPlace the subject in its cultural or local context.\n\nWHO IT IS FOR\n\nA concise editorial recommendation.",
-      "author": "EPRIS Journal",
+      "author": "Maria Ivanova",
       "category": "Food & Stay",
       "verdict": "One clear line - is it worth going?",
       "pros": [
@@ -4644,8 +4644,10 @@
       "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
       "date": "Aug 1, 2026",
       "imageUrl": "https://api.eprisjournal.com/uploads/msnluv70lwze6y.jpg",
-      "updatedAt": "2026-08-14T08:36:14.747Z",
-      "draft": true
+      "updatedAt": "2026-08-14T16:13:34.222Z",
+      "draft": true,
+      "authorId": "author-1784896384236-4fokw",
+      "role": "Author"
     },
     {
       "id": 5,
