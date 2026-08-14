@@ -69,13 +69,13 @@
       <aside class="sidebar">
 
         <!-- Brand -->
-        <div class="sidebar-brand">
-          <div class="sidebar-brand-mark" aria-hidden="true">E</div>
-          <div class="sidebar-brand-text">
-            <span class="sidebar-brand-name">EPRIS</span>
-            <span class="sidebar-brand-sub">Редакция</span>
-          </div>
-        </div>
+        <a class="sidebar-brand" href="../" target="_blank" rel="noreferrer" aria-label="Открыть EPRIS Journal">
+          <span class="sidebar-brand-lockup" aria-hidden="true">
+            <span class="sidebar-brand-wordmark">EPRIS</span>
+            <span class="sidebar-brand-edition">JOURNAL · РЕДАКЦИЯ</span>
+          </span>
+          <svg class="sidebar-brand-visit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+        </a>
 
         <div class="sidebar-context" aria-label="Текущее рабочее пространство">
           <span class="sidebar-context-dot" aria-hidden="true"></span>
@@ -96,7 +96,7 @@
         <nav class="sidebar-nav">
 
           <div class="sidebar-nav-group">
-            <span class="sidebar-nav-label">Editorial</span>
+            <span class="sidebar-nav-label">Редакция</span>
             <button class="tab-btn" data-tab="dashboard" type="button">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
               Обзор
@@ -136,14 +136,15 @@
           </div>
 
           <div class="sidebar-nav-group">
-            <span class="sidebar-nav-label">Tools</span>
+            <span class="sidebar-nav-label">Инструменты</span>
             <button class="tab-btn" data-tab="upload" type="button">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
               Загрузка фото
             </button>
-            <button class="tab-btn" data-tab="transcripts" type="button">
+            <button class="tab-btn tab-btn--transcription" data-tab="transcripts" data-nav-label="Транскрипция" type="button" aria-label="Транскрипция: аудио и видео в текст">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3.5M8.5 21.5h7"/></svg>
-              Интервью
+              <span class="sidebar-tab-copy"><span>Транскрипция</span><small>Аудио / видео → текст</small></span>
+              <span class="sidebar-tab-badge" aria-hidden="true">LOCAL</span>
             </button>
             <button class="tab-btn" data-tab="translations" type="button">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
@@ -176,7 +177,7 @@
           </div>
 
           <div class="sidebar-nav-group">
-            <span class="sidebar-nav-label">Brand</span>
+            <span class="sidebar-nav-label">Бренд</span>
             <button class="tab-btn" data-tab="brandbook" type="button">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7"/><path d="M9 11h5"/></svg>
               Бренд-бук
@@ -184,7 +185,7 @@
           </div>
 
           <div class="sidebar-nav-group">
-            <span class="sidebar-nav-label">System</span>
+            <span class="sidebar-nav-label">Система</span>
             <button class="tab-btn" data-tab="showcase" type="button">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
               Витрина
@@ -1070,17 +1071,17 @@
             <div class="transcript-layout">
               <section class="transcript-hero" id="transcriptHero" data-flow="idle">
                 <div class="transcript-hero-copy">
-                  <p class="panel-kicker">Private editorial workspace</p>
-                  <h1>Интервью → готовый текст</h1>
-                  <p>Три ясных шага: загрузить английскую запись, дождаться локальной расшифровки на VPS и вычитать текст. Аудио не попадает в статьи, публичный сайт или внешний сервис.</p>
+                  <p class="panel-kicker">TRANSCRIPTION LAB · PRIVATE EDITORIAL TOOL</p>
+                  <h1>Аудио и видео → готовый текст</h1>
+                  <p>Загрузите английскую запись или видео, дождитесь локальной расшифровки на VPS и вычитайте текст с таймкодами. Медиа не попадает в статьи, публичный сайт или внешний сервис.</p>
                   <ol class="transcript-flow" id="transcriptFlow" aria-label="Путь интервью">
-                    <li class="is-current" data-transcript-flow-step="upload"><span class="transcript-flow-index">01</span><span><strong>Запись</strong><small>добавить аудио</small></span></li>
-                    <li data-transcript-flow-step="process"><span class="transcript-flow-index">02</span><span><strong>Тихая очередь</strong><small>локально на VPS</small></span></li>
-                    <li data-transcript-flow-step="edit"><span class="transcript-flow-index">03</span><span><strong>Вычитка</strong><small>подготовить черновик</small></span></li>
+                    <li class="is-current" data-transcript-flow-step="upload"><span class="transcript-flow-index">01</span><span><strong>Медиа</strong><small>аудио или видео</small></span></li>
+                    <li data-transcript-flow-step="process"><span class="transcript-flow-index">02</span><span><strong>Локальная очередь</strong><small>обработка на VPS</small></span></li>
+                    <li data-transcript-flow-step="edit"><span class="transcript-flow-index">03</span><span><strong>Редактура</strong><small>текст и черновик</small></span></li>
                   </ol>
-                  <p id="transcriptFlowNote" class="transcript-flow-note" role="status">Добавьте запись — процесс будет виден здесь, без лишних экранов и ожидания у вкладки.</p>
+                  <p id="transcriptFlowNote" class="transcript-flow-note" role="status">Добавьте файл — весь путь будет виден здесь, без лишних экранов и ожидания у вкладки.</p>
                   <aside class="transcript-next-action" id="transcriptNextAction" hidden aria-live="polite"><span class="transcript-next-kicker">Следующее действие</span><div><strong id="transcriptNextTitle"></strong><span id="transcriptNextDetail"></span></div><button class="btn btn-sm" id="transcriptNextButton" type="button"></button></aside>
-                  <div class="transcript-hero-actions"><button class="btn btn-primary" id="transcriptNewBtn" type="button">+ Добавить запись</button><button class="btn" id="transcriptRefreshBtn" type="button">Обновить статус</button></div>
+                  <div class="transcript-hero-actions"><button class="btn btn-primary" id="transcriptNewBtn" type="button">+ Новая расшифровка</button><button class="btn" id="transcriptRefreshBtn" type="button">Обновить статус</button></div>
                 </div>
                 <div class="transcript-hero-visual" aria-hidden="true">
                   <div class="transcript-hero-signal">
@@ -1965,7 +1966,7 @@
           visibility: 'Видимость сайта',
           authors: 'About / Команда',
           upload: 'Загрузка фото',
-          transcripts: 'Интервью',
+          transcripts: 'Транскрипция',
           translations: 'Переводы',
           polls: 'Опросы',
           radio: 'Радио',
@@ -1980,7 +1981,7 @@
         var LAST_TAB_KEY = 'epris_admin_last_tab';
         function syncSidebarNav() {
           var active = document.querySelector('.tab-btn.active');
-          if (sidebarActiveLabel && active) sidebarActiveLabel.textContent = active.textContent.trim();
+          if (sidebarActiveLabel && active) sidebarActiveLabel.textContent = active.dataset.navLabel || active.textContent.trim();
           tabButtons.forEach(function (button) {
             if (button.classList.contains('active')) button.setAttribute('aria-current', 'page');
             else button.removeAttribute('aria-current');

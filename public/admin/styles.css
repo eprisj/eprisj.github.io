@@ -7353,3 +7353,119 @@ button, a, input, select, textarea { touch-action: manipulation; }
 @media (max-width: 780px) {
   .transcript-source-link { min-height: 44px; }
 }
+
+/* ── Sidebar identity and transcription entry ───────────────────────────────
+   The public journal uses a typographic EPRIS wordmark. The editorial shell
+   now uses the same lockup instead of a generic initial badge, while the
+   transcription tool is recognisable as a complete workflow rather than an
+   ambiguous “interview” section. */
+.sidebar-brand {
+  display: flex;
+  min-height: 76px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 18px 18px 16px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color .18s ease, color .18s ease;
+}
+.sidebar-brand:hover { background: rgba(255,255,255,.045); }
+.sidebar-brand:focus-visible {
+  outline: 2px solid var(--sidebar-accent);
+  outline-offset: -4px;
+}
+.sidebar-brand-lockup {
+  display: grid;
+  min-width: 0;
+  gap: 5px;
+}
+.sidebar-brand-wordmark {
+  display: block;
+  padding-left: .22em;
+  color: #fff;
+  font: 400 1.08rem/1 var(--font-mono);
+  letter-spacing: .22em;
+}
+.sidebar-brand-edition {
+  display: block;
+  color: rgba(201,166,144,.74);
+  font: 700 .48rem/1.15 var(--font-mono);
+  letter-spacing: .18em;
+}
+.sidebar-brand-visit {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  color: rgba(255,255,255,.46);
+  transition: color .18s ease, transform .18s ease;
+}
+.sidebar-brand:hover .sidebar-brand-visit { color: var(--sidebar-accent); transform: translate(1px, -1px); }
+
+.sidebar-nav { padding-top: 8px; }
+.sidebar-nav-group + .sidebar-nav-group {
+  margin-top: 14px;
+  padding-top: 8px;
+}
+.sidebar-nav-label {
+  padding: 8px 14px 5px;
+  color: rgba(201,166,144,.72);
+  font-size: .53rem;
+  letter-spacing: .2em;
+}
+.tab-btn { min-height: 42px; }
+.tab-btn--transcription {
+  min-height: 50px;
+  align-items: center;
+  gap: 9px;
+  margin: 2px 8px;
+  padding: 7px 8px !important;
+  border-color: rgba(201,166,144,.18) !important;
+  background: linear-gradient(100deg, rgba(201,166,144,.15), rgba(255,255,255,.025));
+}
+.tab-btn--transcription:hover {
+  border-color: rgba(201,166,144,.48) !important;
+  background: linear-gradient(100deg, rgba(201,166,144,.22), rgba(255,255,255,.055));
+}
+.tab-btn--transcription.active { background: linear-gradient(100deg, rgba(201,166,144,.27), rgba(201,166,144,.09)); }
+.tab-btn--transcription svg { margin-left: 2px; color: var(--sidebar-accent); }
+.sidebar-tab-copy {
+  display: grid;
+  min-width: 0;
+  flex: 1 1 auto;
+  gap: 2px;
+  color: rgba(255,255,255,.9);
+  font-size: .68rem;
+  line-height: 1.12;
+  text-align: left;
+}
+.sidebar-tab-copy small {
+  overflow: hidden;
+  color: rgba(255,255,255,.46);
+  font: 500 .5rem/1.2 var(--font-mono);
+  letter-spacing: .025em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.sidebar-tab-badge {
+  flex: 0 0 auto;
+  padding: 3px 4px;
+  border: 1px solid rgba(141,195,157,.42);
+  border-radius: 999px;
+  color: #a9d5b3;
+  font: 700 .43rem/1 var(--font-mono);
+  letter-spacing: .08em;
+}
+@media (max-width: 760px) {
+  .tab-btn--transcription {
+    flex: 0 0 94px;
+    width: 94px;
+    min-height: 54px;
+    margin: 0;
+    padding: 5px 4px !important;
+  }
+  .tab-btn--transcription .sidebar-tab-copy { display: block; flex: 0 1 auto; font-size: .46rem; text-align: center; }
+  .tab-btn--transcription .sidebar-tab-copy small,
+  .sidebar-tab-badge { display: none; }
+  .tab-btn--transcription svg { margin-left: 0; }
+}
