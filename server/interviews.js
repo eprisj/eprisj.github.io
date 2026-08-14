@@ -75,7 +75,6 @@ function jobSummary(job, full = false) {
     // only from the original file the editor uploads to the private VPS.
     sourceUrl: "",
     sourceKind: job.sourceKind || "upload",
-    sourceProvider: "",
     size: job.size,
     language: job.language,
     speakers: job.speakers || [],
