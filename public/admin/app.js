@@ -4919,11 +4919,13 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   const els = {
     readiness: $('transcriptReadiness'), composer: $('transcriptComposer'), newBtn: $('transcriptNewBtn'), refreshBtn: $('transcriptRefreshBtn'), closeComposerBtn: $('transcriptCloseComposerBtn'),
     hero: $('transcriptHero'), flow: $('transcriptFlow'), flowNote: $('transcriptFlowNote'), nextAction: $('transcriptNextAction'), nextTitle: $('transcriptNextTitle'), nextDetail: $('transcriptNextDetail'), nextButton: $('transcriptNextButton'),
-    title: $('transcriptTitle'), language: $('transcriptLanguage'), retention: $('transcriptRetention'), speakers: $('transcriptSpeakers'), sourceUrl: $('transcriptSourceUrl'), file: $('transcriptAudioInput'), fileLabel: $('transcriptFileLabel'), fileMeta: $('transcriptFileMeta'), dropzone: $('transcriptDropZone'), consent: $('transcriptConsent'), start: $('transcriptStartBtn'),
+    title: $('transcriptTitle'), language: $('transcriptLanguage'), retention: $('transcriptRetention'), speakers: $('transcriptSpeakers'), sourceUrl: $('transcriptSourceUrl'), sourceUrlPanel: $('transcriptSourceUrlPanel'), sourceUrlStatus: $('transcriptSourceUrlStatus'), filePanel: $('transcriptFilePanel'), sourceModeButtons: [...root.querySelectorAll('[data-transcript-source-mode]')], file: $('transcriptAudioInput'), fileLabel: $('transcriptFileLabel'), fileMeta: $('transcriptFileMeta'), dropzone: $('transcriptDropZone'), consent: $('transcriptConsent'), start: $('transcriptStartBtn'), submitDetail: $('transcriptSubmitDetail'),
     jobs: $('transcriptJobs'), count: $('transcriptLibraryCount'), archiveSearch: $('transcriptArchiveSearch'), archiveFilters: $('transcriptArchiveFilters'), editor: $('transcriptEditor'), editorTitle: $('transcriptEditorTitle'), editorMeta: $('transcriptEditorMeta'), sourceLink: $('transcriptSourceLink'),
     loadAudio: $('transcriptLoadAudioBtn'), retry: $('transcriptRetryBtn'), audio: $('transcriptAudio'), save: $('transcriptSaveBtn'), undo: $('transcriptUndoBtn'), saveState: $('transcriptSaveState'), txt: $('transcriptTxtBtn'), srt: $('transcriptSrtBtn'), vtt: $('transcriptVttBtn'), createArticle: $('transcriptCreateArticleBtn'), draftPanel: $('transcriptDraftPanel'), draftSetup: $('transcriptDraftSetup'), draftOutcome: $('transcriptDraftOutcome'), openArticle: $('transcriptOpenArticleBtn'), articleAuthor: $('transcriptArticleAuthor'), articleAuthorSummary: $('transcriptArticleAuthorSummary'), reviewed: $('transcriptReviewed'), speakersList: $('transcriptSpeakersList'), search: $('transcriptSearch'), searchPrev: $('transcriptSearchPrev'), searchNext: $('transcriptSearchNext'), segmentCount: $('transcriptSegmentCount'), replacePanel: $('transcriptReplace'), replaceFind: $('transcriptReplaceFind'), replaceWith: $('transcriptReplaceWith'), replacePreview: $('transcriptReplacePreview'), replaceButton: $('transcriptReplaceAllBtn'), segments: $('transcriptSegments'), reviewSummary: $('transcriptReviewSummary'),
   };
   let selectedFile = null;
+  let sourceMode = 'remote';
+  let sourceImporterReady = false;
   let activeJob = null;
   let latestJobs = [];
   let audioObjectUrl = '';
@@ -4956,6 +4958,15 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
       if (host === 'vimeo.com' || host.endsWith('.vimeo.com')) return 'Vimeo';
       return host;
     } catch { return 'исходник'; }
+  }
+  function supportedRemoteSource(value) {
+    if (!isSafeSourceUrl(value) || !String(value || '').trim()) return '';
+    try {
+      const host = new URL(String(value).trim()).hostname.replace(/^www\./i, '').toLowerCase();
+      if (host === 'youtu.be' || host === 'youtube.com' || host.endsWith('.youtube.com')) return 'YouTube';
+      if (host === 'vimeo.com' || host.endsWith('.vimeo.com')) return 'Vimeo';
+    } catch {}
+    return '';
   }
   const fmtDate = (value) => value ? new Intl.DateTimeFormat('ru-RU', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(value)) : '—';
   const fmtTime = (seconds) => {
@@ -5056,9 +5067,56 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     if (!response.ok) throw new Error(await errorFrom(response));
     return response.json();
   }
-  function updateStart() { els.start.disabled = els.start.dataset.ready !== 'true' || !(selectedFile && els.consent.checked); }
+  function updateSourceStatus() {
+    if (!els.sourceUrlStatus) return;
+    if (sourceMode !== 'remote') { els.sourceUrlStatus.textContent = ''; els.sourceUrlStatus.className = 'transcript-source-status'; return; }
+    const value = els.sourceUrl?.value.trim() || '';
+    const provider = supportedRemoteSource(value);
+    const validHttps = isSafeSourceUrl(value);
+    els.sourceUrlStatus.className = 'transcript-source-status';
+    if (!value) {
+      els.sourceUrlStatus.textContent = 'Поддерживаются публичные ссылки YouTube и Vimeo. Перед запуском подтвердите право на редакционную обработку.';
+      return;
+    }
+    if (provider) {
+      if (!sourceImporterReady) {
+        els.sourceUrlStatus.classList.add('is-error');
+        els.sourceUrlStatus.textContent = `${provider} распознан, но импортёр источников ещё не готов на VPS. Выберите файл или обновите страницу через минуту.`;
+        return;
+      }
+      els.sourceUrlStatus.classList.add('is-ready');
+      els.sourceUrlStatus.textContent = `${provider} распознан. VPS получит аудио в фоне, а затем откроет текст для вычитки.`;
+      return;
+    }
+    els.sourceUrlStatus.classList.add('is-error');
+    els.sourceUrlStatus.textContent = validHttps ? 'Подойдёт только публичная ссылка YouTube или Vimeo.' : 'Нужна полная ссылка https:// без логина и пароля.';
+  }
+  function syncSourceMode(nextMode = sourceMode) {
+    sourceMode = nextMode === 'upload' ? 'upload' : 'remote';
+    els.sourceModeButtons.forEach((button) => {
+      const active = button.dataset.transcriptSourceMode === sourceMode;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-selected', String(active));
+      button.tabIndex = active ? 0 : -1;
+    });
+    if (els.sourceUrlPanel) els.sourceUrlPanel.hidden = sourceMode !== 'remote';
+    if (els.filePanel) els.filePanel.hidden = sourceMode !== 'upload';
+    if (els.submitDetail) els.submitDetail.textContent = sourceMode === 'remote'
+      ? 'Видео останется на исходной платформе. В VPS попадёт только рабочее аудио и текст для вычитки.'
+      : 'VPS извлечёт звук из видео локально. После отправки вкладку можно закрыть.';
+    updateSourceStatus();
+    updateStart();
+  }
+  function updateStart() {
+    if (!els.start) return;
+    const sourceReady = sourceMode === 'remote'
+      ? Boolean(supportedRemoteSource(els.sourceUrl?.value || '')) && sourceImporterReady
+      : Boolean(selectedFile);
+    els.start.disabled = els.start.dataset.ready !== 'true' || !sourceReady || !els.consent?.checked;
+    els.start.textContent = sourceMode === 'remote' ? 'Получить аудио и расшифровать' : 'Загрузить и расшифровать';
+  }
   function closeComposer() { els.composer.hidden = true; }
-  function openComposer() { els.composer.hidden = false; els.composer.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  function openComposer() { els.composer.hidden = false; syncSourceMode(sourceMode); els.composer.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   function setTranscriptSaveState(state, message) {
     if (!els.saveState) return;
     const labels = {
@@ -5349,6 +5407,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   }
   function renderReadiness(health) {
     const ready = health?.localEngine?.ready && health?.ffmpegReady;
+    sourceImporterReady = Boolean(health?.sourceImportReady);
     const queue = getQueueSnapshot();
     els.readiness.className = `transcript-readiness card ${ready ? 'ready' : 'missing'}`;
     const missing = [!health?.localEngine?.ready && 'локальный движок расшифровки', !health?.ffmpegReady && 'подготовка аудио'].filter(Boolean);
@@ -5359,6 +5418,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
       : queue.waiting.length ? `${queue.waiting.length} ${queue.waiting.length === 1 ? 'запись ждёт' : 'записи ждут'} запуска` : 'очередь свободна';
     els.readiness.innerHTML = `<span class="transcript-readiness-mark">${ready ? '✓' : '!'}</span><div class="transcript-readiness-copy"><strong>${ready ? `${escapeHtml(engine)} готов` : 'Студия готовится на сервере'}</strong><span>${ready ? `Запись не покидает VPS${escapeHtml(model)}. ${queueDetail}; статус обновляется автоматически.` : `${escapeHtml(health?.localEngine?.detail || `Нужно завершить: ${missing.join(' и ') || 'проверку сервиса'}`)}. Редактору ничего настраивать не нужно.`}</span></div><span class="transcript-readiness-proof">${ready ? 'AUTO · LOCAL' : 'CHECKING'}</span>`;
     els.start.dataset.ready = ready ? 'true' : 'false';
+    updateSourceStatus();
     updateStart();
     renderFlow(latestJobs, ready);
   }
@@ -5514,26 +5574,68 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
       if (queueFollowUpSave) scheduleTranscriptAutosave(450);
     }
   }
+  function clearComposerAfterStart() {
+    selectedFile = null;
+    if (els.file) els.file.value = '';
+    if (els.sourceUrl) els.sourceUrl.value = '';
+    if (els.consent) els.consent.checked = false;
+    if (els.fileLabel) els.fileLabel.textContent = 'Выбрать аудио или видео';
+    if (els.fileMeta) els.fileMeta.textContent = `${acceptedMediaHint} · до 512 МБ. VPS извлечёт звук из видео локально.`;
+    els.dropzone?.classList.remove('is-ready');
+    updateSourceStatus();
+    closeComposer();
+  }
+  async function startRemoteImport() {
+    const sourceUrl = els.sourceUrl?.value.trim() || '';
+    const provider = supportedRemoteSource(sourceUrl);
+    if (!provider) {
+      showToast('error', 'Вставьте публичную ссылку YouTube или Vimeo.');
+      els.sourceUrl?.focus();
+      updateSourceStatus();
+      return;
+    }
+    const payload = await api('/import', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        sourceUrl,
+        title: els.title?.value.trim() || `${provider} recording`,
+        language: els.language?.value || 'en',
+        speakers: els.speakers?.value.trim() || '',
+        retentionDays: els.retention?.value || 30,
+        rightsConfirmed: Boolean(els.consent?.checked),
+      }),
+    });
+    clearComposerAfterStart();
+    showToast('success', `${provider}: аудио поставлено в очередь. Можно закрыть админку — VPS продолжит обработку.`);
+    await refresh(true);
+    await loadJob(payload.job.id);
+  }
   async function startUpload() {
     if (els.start.dataset.ready !== 'true') { showToast('error', 'Сначала нужно завершить настройку расшифровки на VPS.'); return; }
-    if (!selectedFile || !els.consent.checked) return;
-    const sourceUrl = els.sourceUrl?.value.trim() || '';
-    if (!isSafeSourceUrl(sourceUrl)) { showToast('error', 'Укажите полную безопасную ссылку https://… или очистите поле источника.'); els.sourceUrl?.focus(); return; }
+    if (!els.consent?.checked) return;
     try {
-      els.start.disabled = true; els.start.textContent = 'Загружаю…';
+      els.start.disabled = true;
+      if (sourceMode === 'remote') {
+        els.start.textContent = 'Получаю аудио…';
+        await startRemoteImport();
+        return;
+      }
+      if (!selectedFile) return;
+      els.start.textContent = 'Загружаю…';
       const headers = authHeaders({
         'Content-Type': selectedFile.type || 'application/octet-stream', 'X-Interview-Filename': selectedFile.name,
         'X-Interview-Title': els.title.value.trim() || selectedFile.name.replace(/\.[^.]+$/, ''), 'X-Interview-Language': els.language.value || 'en',
-        'X-Interview-Speakers': els.speakers.value.trim(), 'X-Interview-Retention-Days': els.retention.value, 'X-Interview-Source-Url': sourceUrl,
+        'X-Interview-Speakers': els.speakers.value.trim(), 'X-Interview-Retention-Days': els.retention.value, 'X-Interview-Source-Url': '',
       });
       const response = await fetch(`${INTERVIEWS_API}/upload`, { method: 'POST', headers, body: selectedFile });
       if (!response.ok) throw new Error(await errorFrom(response));
       const payload = await response.json();
-      selectedFile = null; els.file.value = ''; els.consent.checked = false; if (els.sourceUrl) els.sourceUrl.value = ''; els.fileLabel.textContent = 'Выбрать аудио или видео'; els.fileMeta.textContent = `${acceptedMediaHint} · до 512 МБ. VPS извлечёт звук из видео локально.`; els.dropzone.classList.remove('is-ready'); closeComposer();
+      clearComposerAfterStart();
       showToast('success', 'Запись в очереди. Можно закрыть админку — VPS продолжит обработку.');
       await refresh(true); await loadJob(payload.job.id);
     } catch (error) { showToast('error', getErrorMessage(error)); }
-    finally { els.start.textContent = 'Загрузить и расшифровать'; updateStart(); }
+    finally { updateStart(); }
   }
   async function download(format) {
     if (!activeJob) return;
@@ -5656,6 +5758,8 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     if (suggestion.type === 'article') openLinkedArticle(job);
     else loadJob(job.id).catch((error) => showToast('error', getErrorMessage(error)));
   });
+  els.sourceModeButtons.forEach((button) => button.addEventListener('click', () => syncSourceMode(button.dataset.transcriptSourceMode)));
+  els.sourceUrl?.addEventListener('input', () => { updateSourceStatus(); updateStart(); });
   els.file?.addEventListener('change', () => setFile(els.file.files?.[0])); els.consent?.addEventListener('change', updateStart); els.retention?.addEventListener('change', () => { if (selectedFile) { const isVideo = selectedFile.type.startsWith('video/') || videoExtensions.test(selectedFile.name); els.fileMeta.textContent = `${fmtBytes(selectedFile.size)} · ${isVideo ? 'видео: VPS извлечёт звук локально' : 'аудио: готово к расшифровке'} · хранение ${els.retention.value} дн.`; } });
   els.dropzone?.addEventListener('dragover', (event) => { event.preventDefault(); els.dropzone.classList.add('is-dragging'); }); els.dropzone?.addEventListener('dragleave', () => els.dropzone.classList.remove('is-dragging')); els.dropzone?.addEventListener('drop', (event) => { event.preventDefault(); els.dropzone.classList.remove('is-dragging'); setFile(event.dataTransfer?.files?.[0]); });
   els.start?.addEventListener('click', startUpload); els.jobs?.addEventListener('click', (event) => { const clearFilters = event.target.closest('[data-interview-clear-filters]'); if (clearFilters) { archiveFilter = 'all'; if (els.archiveSearch) els.archiveSearch.value = ''; renderJobs(latestJobs); return; } const draftButton = event.target.closest('[data-interview-open-draft]'); if (draftButton) { openLinkedArticle(latestJobs.find((job) => String(job.id) === String(draftButton.dataset.interviewOpenDraft))); return; } const retentionButton = event.target.closest('[data-interview-retention]'); if (retentionButton) { extendAudioRetentionById(retentionButton.dataset.interviewRetention); return; } const deleteButton = event.target.closest('[data-interview-delete]'); if (deleteButton) { deleteJobById(deleteButton.dataset.interviewDelete); return; } const retryButton = event.target.closest('[data-interview-retry]'); if (retryButton) { retryJobById(retryButton.dataset.interviewRetry); return; } const button = event.target.closest('[data-interview-open]'); if (button) loadJob(button.dataset.interviewOpen); });
