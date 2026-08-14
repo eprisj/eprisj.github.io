@@ -4921,7 +4921,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     hero: $('transcriptHero'), flow: $('transcriptFlow'), flowNote: $('transcriptFlowNote'), nextAction: $('transcriptNextAction'), nextTitle: $('transcriptNextTitle'), nextDetail: $('transcriptNextDetail'), nextButton: $('transcriptNextButton'),
     title: $('transcriptTitle'), language: $('transcriptLanguage'), retention: $('transcriptRetention'), speakers: $('transcriptSpeakers'), filePanel: $('transcriptFilePanel'), file: $('transcriptAudioInput'), fileLabel: $('transcriptFileLabel'), fileMeta: $('transcriptFileMeta'), dropzone: $('transcriptDropZone'), uploadProgress: $('transcriptUploadProgress'), uploadPhase: $('transcriptUploadPhase'), uploadPercent: $('transcriptUploadPercent'), uploadBar: $('transcriptUploadBar'), uploadDetail: $('transcriptUploadDetail'), consent: $('transcriptConsent'), start: $('transcriptStartBtn'), submitDetail: $('transcriptSubmitDetail'),
     jobs: $('transcriptJobs'), count: $('transcriptLibraryCount'), archiveSearch: $('transcriptArchiveSearch'), archiveFilters: $('transcriptArchiveFilters'), editor: $('transcriptEditor'), editorTitle: $('transcriptEditorTitle'), editorMeta: $('transcriptEditorMeta'), sourceLink: $('transcriptSourceLink'),
-    loadAudio: $('transcriptLoadAudioBtn'), retry: $('transcriptRetryBtn'), player: document.getElementById('transcriptPlayer'), audio: $('transcriptAudio'), playerTime: document.getElementById('transcriptPlayerTime'), playerDuration: document.getElementById('transcriptPlayerDuration'), playerSpeed: document.getElementById('transcriptPlayerSpeed'), save: $('transcriptSaveBtn'), undo: $('transcriptUndoBtn'), saveState: $('transcriptSaveState'), txt: $('transcriptTxtBtn'), docx: document.getElementById('transcriptDocxBtn'), srt: $('transcriptSrtBtn'), vtt: $('transcriptVttBtn'), createArticle: $('transcriptCreateArticleBtn'), draftPanel: $('transcriptDraftPanel'), draftSetup: $('transcriptDraftSetup'), draftOutcome: $('transcriptDraftOutcome'), openArticle: $('transcriptOpenArticleBtn'), articleAuthor: $('transcriptArticleAuthor'), articleAuthorSummary: $('transcriptArticleAuthorSummary'), reviewed: $('transcriptReviewed'), speakersList: $('transcriptSpeakersList'), search: $('transcriptSearch'), searchPrev: $('transcriptSearchPrev'), searchNext: $('transcriptSearchNext'), segmentCount: $('transcriptSegmentCount'), replacePanel: $('transcriptReplace'), replaceFind: $('transcriptReplaceFind'), replaceWith: $('transcriptReplaceWith'), replacePreview: $('transcriptReplacePreview'), replaceButton: $('transcriptReplaceAllBtn'), segments: $('transcriptSegments'), reviewSummary: $('transcriptReviewSummary'),
+    loadAudio: $('transcriptLoadAudioBtn'), retry: $('transcriptRetryBtn'), player: document.getElementById('transcriptPlayer'), audio: $('transcriptAudio'), timeline: document.getElementById('transcriptTimeline'), timelinePlayhead: document.getElementById('transcriptTimelinePlayhead'), playerTime: document.getElementById('transcriptPlayerTime'), playerDuration: document.getElementById('transcriptPlayerDuration'), playerSpeed: document.getElementById('transcriptPlayerSpeed'), save: $('transcriptSaveBtn'), undo: $('transcriptUndoBtn'), saveState: $('transcriptSaveState'), txt: $('transcriptTxtBtn'), docx: document.getElementById('transcriptDocxBtn'), srt: $('transcriptSrtBtn'), vtt: $('transcriptVttBtn'), createArticle: $('transcriptCreateArticleBtn'), draftPanel: $('transcriptDraftPanel'), draftSetup: $('transcriptDraftSetup'), draftOutcome: $('transcriptDraftOutcome'), openArticle: $('transcriptOpenArticleBtn'), articleAuthor: $('transcriptArticleAuthor'), articleAuthorSummary: $('transcriptArticleAuthorSummary'), reviewed: $('transcriptReviewed'), speakersList: $('transcriptSpeakersList'), search: $('transcriptSearch'), searchPrev: $('transcriptSearchPrev'), searchNext: $('transcriptSearchNext'), segmentCount: $('transcriptSegmentCount'), replacePanel: $('transcriptReplace'), replaceFind: $('transcriptReplaceFind'), replaceWith: $('transcriptReplaceWith'), replacePreview: $('transcriptReplacePreview'), replaceButton: $('transcriptReplaceAllBtn'), segments: $('transcriptSegments'), reviewSummary: $('transcriptReviewSummary'),
   };
   let selectedFile = null;
   let activeJob = null;
@@ -5060,20 +5060,26 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     if (!password) throw new Error('Нет пароля редакции — войдите заново.');
     return { 'X-Admin-Password': password, ...headers };
   };
+  // The VPS deploy webhook shares a process with this API and restarts on
+  // every site deploy (roughly every couple of minutes during active editing
+  // days); a request that lands in that ~1s window fails at the network
+  // level as "Failed to fetch" rather than a normal HTTP error. A couple of
+  // short retries ride past that instead of surfacing it as a bug.
+  async function fetchWithRetry(url, options = {}, attempts = 3) {
+    let lastError;
+    for (let i = 0; i < attempts; i++) {
+      try {
+        return await fetch(url, options);
+      } catch (error) {
+        lastError = error;
+        if (i < attempts - 1) await new Promise((resolve) => window.setTimeout(resolve, 700 * (i + 1)));
+      }
+    }
+    throw lastError;
+  }
   async function api(path = '', options = {}) {
     const headers = authHeaders(options.headers || {});
-    // The VPS deploy webhook shares a process with this API and restarts on
-    // every site deploy (roughly every couple of minutes during active
-    // editing days); a request that lands in that ~1s window fails at the
-    // network level as "Failed to fetch" rather than a normal HTTP error.
-    // One short retry rides past that instead of surfacing it as a bug.
-    let response;
-    try {
-      response = await fetch(`${INTERVIEWS_API}${path}`, { ...options, headers, cache: 'no-store' });
-    } catch (error) {
-      await new Promise((resolve) => window.setTimeout(resolve, 900));
-      response = await fetch(`${INTERVIEWS_API}${path}`, { ...options, headers, cache: 'no-store' });
-    }
+    const response = await fetchWithRetry(`${INTERVIEWS_API}${path}`, { ...options, headers, cache: 'no-store' });
     if (!response.ok) throw new Error(await errorFrom(response));
     return response.json();
   }
@@ -5497,7 +5503,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
       const nextStep = nextInterviewStep(job, linkedArticleId);
       const canRetry = job.status === 'failed' && Boolean(job.hasAudio);
       const recovery = job.status === 'failed' ? (job.hasAudio ? 'Аудио на месте. Повторный запуск не удалит вашу запись.' : 'Исходный файл уже удалён или не был загружен. Добавьте его как новую запись, чтобы повторить обработку.') : '';
-      return `<article class="transcript-job is-${escapeHtml(job.status || 'draft')}" data-interview-status="${escapeHtml(job.status || 'draft')}"><div class="transcript-job-main"><div class="transcript-job-heading"><strong class="transcript-job-title">${escapeHtml(job.title || job.filename || 'Без названия')}</strong><span class="transcript-job-status ${escapeHtml(job.status || '')}">${escapeHtml(details.title)}</span></div><div class="transcript-job-meta"><span>${escapeHtml(job.language || 'en').toUpperCase()}</span><span>${escapeHtml(fmtBytes(Number(job.size) || 0))}</span><span>${escapeHtml(fmtDate(job.updatedAt || job.createdAt))}</span>${retentionLabel ? `<span class="transcript-retention" title="Срок хранения исходного аудио">${escapeHtml(retentionLabel)}</span>` : ''}${linkedArticleId ? `<span class="transcript-linked-draft-state is-${escapeHtml(linkedArticleState)}">${publicationStateIcon(linkedArticleState)} статья #${linkedArticleId} · ${escapeHtml(linkedArticleLabel)}</span>` : ''}</div>${renderJobProcessMap(job)}${isInFlight ? renderJobProgress(job, details, list) : ''}${nextStep ? `<p class="transcript-job-guidance">${escapeHtml(nextStep)}</p>` : ''}${job.error ? `<div class="transcript-job-error"><strong>Почему не получилось:</strong><span>${escapeHtml(interviewErrorMessage(job))}</span>${recovery ? `<small>${escapeHtml(recovery)}</small>` : ''}</div>` : ''}</div><div class="transcript-job-actions">${linkedArticleId ? `<button class="btn btn-sm btn-primary" type="button" data-interview-open-draft="${escapeHtml(job.id)}">Открыть статью</button>` : ''}${canRetry ? `<button class="btn btn-sm" type="button" data-interview-retry="${escapeHtml(job.id)}">Запустить заново</button>` : ''}${job.hasAudio && ['ready', 'failed'].includes(job.status) ? `<button class="btn btn-sm" type="button" data-interview-retention="${escapeHtml(job.id)}">Хранить ещё 30 дн.</button>` : ''}<button class="btn btn-sm" type="button" data-interview-open="${escapeHtml(job.id)}">${job.status === 'ready' ? 'Вычитать' : job.status === 'failed' ? 'Открыть запись' : hasPartialText ? 'Открыть готовые фрагменты' : 'Открыть'}</button>${['ready', 'failed'].includes(job.status) ? `<button class="btn btn-sm btn-danger-text" type="button" data-interview-delete="${escapeHtml(job.id)}">Удалить</button>` : ''}</div></article>`;
+      return `<article class="transcript-job is-${escapeHtml(job.status || 'draft')}" data-interview-status="${escapeHtml(job.status || 'draft')}"><div class="transcript-job-main"><div class="transcript-job-heading"><strong class="transcript-job-title">${escapeHtml(job.title || job.filename || 'Без названия')}</strong><span class="transcript-job-status ${escapeHtml(job.status || '')}">${escapeHtml(details.title)}</span></div><div class="transcript-job-meta"><span>${escapeHtml(job.language || 'en').toUpperCase()}</span><span>${escapeHtml(fmtBytes(Number(job.size) || 0))}</span><span>${escapeHtml(fmtDate(job.updatedAt || job.createdAt))}</span>${retentionLabel ? `<span class="transcript-retention" title="Срок хранения исходного аудио">${escapeHtml(retentionLabel)}</span>` : ''}${linkedArticleId ? `<span class="transcript-linked-draft-state is-${escapeHtml(linkedArticleState)}">${publicationStateIcon(linkedArticleState)} статья #${linkedArticleId} · ${escapeHtml(linkedArticleLabel)}</span>` : ''}</div>${renderJobProcessMap(job)}${isInFlight ? renderJobProgress(job, details, list) : ''}${nextStep ? `<p class="transcript-job-guidance">${escapeHtml(nextStep)}</p>` : ''}${job.error ? `<div class="transcript-job-error"><strong>Почему не получилось:</strong><span>${escapeHtml(interviewErrorMessage(job))}</span>${recovery ? `<small>${escapeHtml(recovery)}</small>` : ''}</div>` : ''}</div><div class="transcript-job-actions">${linkedArticleId ? `<button class="btn btn-sm btn-primary" type="button" data-interview-open-draft="${escapeHtml(job.id)}">Открыть статью</button>` : ''}${canRetry ? `<button class="btn btn-sm" type="button" data-interview-retry="${escapeHtml(job.id)}">Запустить заново</button>` : ''}${job.hasAudio && ['ready', 'failed'].includes(job.status) ? `<button class="btn btn-sm" type="button" data-interview-retention="${escapeHtml(job.id)}">Хранить ещё 30 дн.</button>` : ''}<button class="btn btn-sm btn-primary" type="button" data-interview-open="${escapeHtml(job.id)}">${job.status === 'ready' ? 'Вычитать' : job.status === 'failed' ? 'Открыть запись' : hasPartialText ? 'Открыть готовые фрагменты' : 'Открыть'}</button>${['ready', 'failed'].includes(job.status) ? `<button class="btn btn-sm btn-danger" type="button" data-interview-delete="${escapeHtml(job.id)}">Удалить</button>` : ''}</div></article>`;
     }).join('');
   }
   function speakersFromSegments(segments) { return [...new Set((segments || []).map((segment) => String(segment.speaker || '').trim()).filter(Boolean))]; }
@@ -5544,7 +5550,18 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     renderReplacePreview();
     if (!transcriptHasUnsavedChanges) { transcriptLastSnapshot = editorSnapshot(); setTranscriptSaveState('saved'); }
   }
+  function resetPlayer() {
+    if (audioObjectUrl) URL.revokeObjectURL(audioObjectUrl);
+    audioObjectUrl = '';
+    if (els.audio) { els.audio.pause(); els.audio.removeAttribute('src'); els.audio.load(); }
+    if (els.player) els.player.hidden = true;
+    if (els.playerTime) els.playerTime.textContent = '00:00';
+    if (els.playerDuration) els.playerDuration.textContent = '00:00';
+    if (els.timeline) els.timeline.querySelectorAll('.transcript-timeline-tick').forEach((node) => node.remove());
+    if (els.timelinePlayhead) els.timelinePlayhead.style.left = '0%';
+  }
   async function loadJob(id, quiet = false) {
+    if (activeJob && String(activeJob.id) !== String(id)) resetPlayer();
     const payload = await api(`/${encodeURIComponent(id)}`);
     activeJob = payload.job;
     if (activeJob?.speakers?.length) {
@@ -5728,7 +5745,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   async function download(format) {
     if (!activeJob) return;
     try {
-      const response = await fetch(`${INTERVIEWS_API}/${encodeURIComponent(activeJob.id)}/export?format=${format}`, { headers: authHeaders() });
+      const response = await fetchWithRetry(`${INTERVIEWS_API}/${encodeURIComponent(activeJob.id)}/export?format=${format}`, { headers: authHeaders() });
       if (!response.ok) throw new Error(await errorFrom(response));
       const blob = await response.blob(); const url = URL.createObjectURL(blob); const link = document.createElement('a'); link.href = url; link.download = `${activeJob.title || 'interview'}.${format}`; link.click(); URL.revokeObjectURL(url);
     } catch (error) { showToast('error', getErrorMessage(error)); }
@@ -5738,7 +5755,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     const originalLabel = els.loadAudio.textContent;
     els.loadAudio.disabled = true; els.loadAudio.textContent = 'Загружаю запись…';
     try {
-      const response = await fetch(`${INTERVIEWS_API}/${encodeURIComponent(activeJob.id)}/audio`, { headers: authHeaders() });
+      const response = await fetchWithRetry(`${INTERVIEWS_API}/${encodeURIComponent(activeJob.id)}/audio`, { headers: authHeaders() });
       if (!response.ok) throw new Error(await errorFrom(response));
       if (audioObjectUrl) URL.revokeObjectURL(audioObjectUrl);
       audioObjectUrl = URL.createObjectURL(await response.blob()); els.audio.src = audioObjectUrl;
@@ -5857,9 +5874,31 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   els.archiveSearch?.addEventListener('input', () => renderJobs(latestJobs)); els.archiveFilters?.addEventListener('click', (event) => { const button = event.target.closest('[data-transcript-filter]'); if (!button) return; archiveFilter = button.dataset.transcriptFilter || 'all'; renderJobs(latestJobs); });
   els.search?.addEventListener('input', () => { if (transcriptHasUnsavedChanges) applyEditorDraft(editorDraft()); activeSearchSegmentIndex = -1; renderEditor(); }); els.searchPrev?.addEventListener('click', () => moveSearchMatch(-1)); els.searchNext?.addEventListener('click', () => moveSearchMatch(1)); els.replacePanel?.addEventListener('toggle', () => { if (els.replacePanel.open && !els.replaceFind?.value.trim() && els.search?.value.trim()) els.replaceFind.value = els.search.value.trim(); renderReplacePreview(); }); els.replaceFind?.addEventListener('input', renderReplacePreview); els.replaceWith?.addEventListener('input', renderReplacePreview); els.replaceButton?.addEventListener('click', replaceAllInTranscript); els.save?.addEventListener('click', () => saveEditor()); els.undo?.addEventListener('click', restoreTranscriptSnapshot); els.loadAudio?.addEventListener('click', loadAudio); els.retry?.addEventListener('click', retryJob);
   let lastPlayingSegmentEl = null;
-  els.audio?.addEventListener('loadedmetadata', () => { if (els.playerDuration) els.playerDuration.textContent = fmtTime(els.audio.duration); });
+  els.audio?.addEventListener('loadedmetadata', () => {
+    if (els.playerDuration) els.playerDuration.textContent = fmtTime(els.audio.duration);
+    if (els.timeline) {
+      els.timeline.querySelectorAll('.transcript-timeline-tick').forEach((node) => node.remove());
+      const duration = els.audio.duration || 0;
+      if (duration > 0) {
+        (activeJob?.segments || []).forEach((segment) => {
+          const tick = document.createElement('span');
+          tick.className = 'transcript-timeline-tick';
+          tick.style.left = `${Math.min(100, (Number(segment.start) || 0) / duration * 100)}%`;
+          els.timeline.appendChild(tick);
+        });
+      }
+    }
+  });
+  els.timeline?.addEventListener('click', (event) => {
+    const duration = els.audio?.duration;
+    if (!duration || !els.audio?.src) return;
+    const rect = els.timeline.getBoundingClientRect();
+    const ratio = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
+    els.audio.currentTime = ratio * duration;
+  });
   els.audio?.addEventListener('timeupdate', () => {
     if (els.playerTime) els.playerTime.textContent = fmtTime(els.audio.currentTime);
+    if (els.timelinePlayhead && els.audio.duration) els.timelinePlayhead.style.left = `${Math.min(100, els.audio.currentTime / els.audio.duration * 100)}%`;
     const t = els.audio.currentTime;
     const match = [...(els.segments?.querySelectorAll('[data-segment-start]') || [])].find((node) => {
       const start = Number(node.dataset.segmentStart) || 0;
