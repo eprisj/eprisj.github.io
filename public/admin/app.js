@@ -4984,6 +4984,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   }
   function stageDetails(job, jobs = latestJobs) {
     const stage = String(job?.stage || '').toLowerCase();
+    const isDrmSource = job?.sourceKind === 'remote' && /drm protected/i.test(String(job?.error || ''));
     const queue = getQueueSnapshot(jobs);
     if (job?.status === 'queued') {
       const position = queue.positionById.get(job.id) || 1;
@@ -4996,7 +4997,8 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
       return { title: 'Локальная расшифровка идёт', detail: 'VPS продолжает работу в фоне — редактор не нужно держать открытым.', step: 2 };
     }
     if (job?.status === 'ready') return { title: 'Текст готов к вычитке', detail: 'Откройте запись, проверьте имена и фрагменты, затем создайте черновик.', step: 3 };
-    if (job?.status === 'failed') return { title: 'Нужно действие редактора', detail: 'Аудио сохранено. Проверьте причину ниже и перезапустите только эту запись.', step: 1 };
+    if (job?.status === 'failed' && isDrmSource) return { title: 'Защищённый источник', detail: 'Источник не выдал аудио для расшифровки. Нужен исходный файл, на который у редакции есть права.', step: 1 };
+    if (job?.status === 'failed') return { title: 'Нужно действие редактора', detail: job?.sourceKind === 'remote' ? 'Проверьте причину ниже и повторите только эту запись: ссылка сохранена.' : 'Аудио сохранено. Проверьте причину ниже и перезапустите только эту запись.', step: 1 };
     return { title: job?.stage || 'Черновик', detail: 'Запись ещё не отправлена в очередь.', step: 1 };
   }
   function archiveFilterLabel(filter) {
@@ -5039,7 +5041,13 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     els.nextButton.textContent = suggestion.button;
   }
   function audioRetentionLabel(job) {
-    if (!job?.hasAudio) return 'аудио удалено';
+    if (!job?.hasAudio) {
+      if (job?.sourceKind === 'remote') {
+        if (job?.status === 'failed') return /drm protected/i.test(String(job?.error || '')) ? 'защищённый источник' : 'аудио не получено';
+        return 'аудио подготавливается';
+      }
+      return 'аудио удалено';
+    }
     const retention = Date.parse(job?.retentionAt || '');
     if (!Number.isFinite(retention)) return '';
     const remaining = retention - Date.now();
@@ -5048,12 +5056,19 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     return hours < 36 ? `аудио ещё ${hours} ч` : `аудио до ${fmtDate(job.retentionAt)}`;
   }
   function nextInterviewStep(job, linkedArticleId) {
-    if (job.status === 'failed') return 'Следующий шаг: проверьте причину и перезапустите только эту запись.';
+    if (job.status === 'failed' && job?.sourceKind === 'remote' && /drm protected/i.test(String(job?.error || ''))) return 'Следующий шаг: добавьте исходное аудио или видео, на которое у редакции есть права.';
+    if (job.status === 'failed') return job?.sourceKind === 'remote' ? 'Следующий шаг: проверьте причину и перезапустите только эту ссылку.' : 'Следующий шаг: проверьте причину и перезапустите только эту запись.';
     if (linkedArticleId) return 'Материал уже передан в статью. Рабочая расшифровка остаётся отдельной и может быть удалена без изменения статьи.';
     if (job.status === 'ready') return 'Следующий шаг: вычитать расшифровку, подтвердить проверку и создать отдельный черновик статьи.';
     return '';
   }
   const statusLabel = (job) => stageDetails(job).title;
+  function interviewErrorMessage(job) {
+    const error = String(job?.error || '').trim();
+    if (/drm protected/i.test(error)) return 'YouTube пометил этот ролик как защищённый DRM и не выдаёт из него аудио. Для расшифровки добавьте исходное аудио или видео, на которое у редакции есть права.';
+    if (/HTTP Error 403|unable to download video data/i.test(error)) return 'YouTube временно не выдал аудиопоток. Ссылка сохранена: нажмите «Запустить заново», чтобы VPS повторил получение другим публичным способом.';
+    return error;
+  }
   const errorFrom = async (response) => {
     const body = await response.json().catch(() => ({}));
     return body.error || `VPS вернул статус ${response.status}`;
@@ -5452,8 +5467,10 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
       const sourceUrl = typeof job.sourceUrl === 'string' && /^https:\/\//i.test(job.sourceUrl) ? job.sourceUrl : '';
       const sourceLink = sourceUrl ? `<a class="transcript-source-link" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer">Источник · ${escapeHtml(sourceServiceName(sourceUrl))}</a>` : '';
       const nextStep = nextInterviewStep(job, linkedArticleId);
-      const recovery = job.status === 'failed' ? (job.hasAudio ? 'Аудио на месте. Повторный запуск не удалит вашу запись.' : 'Исходный файл уже удалён. Добавьте его заново, чтобы повторить обработку.') : '';
-      return `<article class="transcript-job is-${escapeHtml(job.status || 'draft')}" data-interview-status="${escapeHtml(job.status || 'draft')}"><div class="transcript-job-main"><div class="transcript-job-heading"><strong class="transcript-job-title">${escapeHtml(job.title || job.filename || 'Без названия')}</strong><span class="transcript-job-status ${escapeHtml(job.status || '')}">${escapeHtml(details.title)}</span></div><div class="transcript-job-meta"><span>${escapeHtml(job.language || 'en').toUpperCase()}</span><span>${escapeHtml(fmtBytes(Number(job.size) || 0))}</span><span>${escapeHtml(fmtDate(job.updatedAt || job.createdAt))}</span>${retentionLabel ? `<span class="transcript-retention" title="Срок хранения исходного аудио">${escapeHtml(retentionLabel)}</span>` : ''}${linkedArticleId ? `<span class="transcript-linked-draft-state is-${escapeHtml(linkedArticleState)}">${publicationStateIcon(linkedArticleState)} статья #${linkedArticleId} · ${escapeHtml(linkedArticleLabel)}</span>` : ''}</div>${sourceLink}<div class="transcript-job-rail" aria-label="Этап ${details.step} из 3"><span class="${details.step >= 1 ? 'is-done' : ''}">01</span><i class="${details.step >= 2 ? 'is-done' : ''}"></i><span class="${details.step >= 2 ? 'is-done' : ''}">02</span><i class="${details.step >= 3 ? 'is-done' : ''}"></i><span class="${details.step >= 3 ? 'is-done' : ''}">03</span></div>${isInFlight ? `<div class="transcript-job-process"><div class="transcript-progress" aria-label="Прогресс ${progress}%"><i style="width:${progress}%"></i></div><span>${escapeHtml(details.detail)}</span></div>` : ''}${nextStep ? `<p class="transcript-job-guidance">${escapeHtml(nextStep)}</p>` : ''}${job.error ? `<div class="transcript-job-error"><strong>Почему не получилось:</strong><span>${escapeHtml(job.error)}</span>${recovery ? `<small>${escapeHtml(recovery)}</small>` : ''}</div>` : ''}</div><div class="transcript-job-actions">${linkedArticleId ? `<button class="btn btn-sm btn-primary" type="button" data-interview-open-draft="${escapeHtml(job.id)}">Открыть статью</button>` : ''}${job.status === 'failed' && job.hasAudio ? `<button class="btn btn-sm" type="button" data-interview-retry="${escapeHtml(job.id)}">Запустить заново</button>` : ''}${job.hasAudio && ['ready', 'failed'].includes(job.status) ? `<button class="btn btn-sm" type="button" data-interview-retention="${escapeHtml(job.id)}">Хранить ещё 30 дн.</button>` : ''}<button class="btn btn-sm" type="button" data-interview-open="${escapeHtml(job.id)}">${job.status === 'ready' ? 'Вычитать' : job.status === 'failed' ? 'Открыть запись' : 'Открыть'}</button>${['ready', 'failed'].includes(job.status) ? `<button class="btn btn-sm btn-danger-text" type="button" data-interview-delete="${escapeHtml(job.id)}">Удалить</button>` : ''}</div></article>`;
+      const drmSource = job.sourceKind === 'remote' && /drm protected/i.test(String(job.error || ''));
+      const canRetry = job.status === 'failed' && (job.hasAudio || (job.sourceKind === 'remote' && !drmSource));
+      const recovery = job.status === 'failed' ? (drmSource ? 'Этот тип защиты нельзя обойти автоматически. Повторный запуск не поможет.' : job.hasAudio ? 'Аудио на месте. Повторный запуск не удалит вашу запись.' : job.sourceKind === 'remote' ? 'Ссылка сохранена. Повторный запуск ещё раз получит аудио из источника.' : 'Исходный файл уже удалён. Добавьте его заново, чтобы повторить обработку.') : '';
+      return `<article class="transcript-job is-${escapeHtml(job.status || 'draft')}" data-interview-status="${escapeHtml(job.status || 'draft')}"><div class="transcript-job-main"><div class="transcript-job-heading"><strong class="transcript-job-title">${escapeHtml(job.title || job.filename || 'Без названия')}</strong><span class="transcript-job-status ${escapeHtml(job.status || '')}">${escapeHtml(details.title)}</span></div><div class="transcript-job-meta"><span>${escapeHtml(job.language || 'en').toUpperCase()}</span><span>${escapeHtml(fmtBytes(Number(job.size) || 0))}</span><span>${escapeHtml(fmtDate(job.updatedAt || job.createdAt))}</span>${retentionLabel ? `<span class="transcript-retention" title="Срок хранения исходного аудио">${escapeHtml(retentionLabel)}</span>` : ''}${linkedArticleId ? `<span class="transcript-linked-draft-state is-${escapeHtml(linkedArticleState)}">${publicationStateIcon(linkedArticleState)} статья #${linkedArticleId} · ${escapeHtml(linkedArticleLabel)}</span>` : ''}</div>${sourceLink}<div class="transcript-job-rail" aria-label="Этап ${details.step} из 3"><span class="${details.step >= 1 ? 'is-done' : ''}">01</span><i class="${details.step >= 2 ? 'is-done' : ''}"></i><span class="${details.step >= 2 ? 'is-done' : ''}">02</span><i class="${details.step >= 3 ? 'is-done' : ''}"></i><span class="${details.step >= 3 ? 'is-done' : ''}">03</span></div>${isInFlight ? `<div class="transcript-job-process"><div class="transcript-progress" aria-label="Прогресс ${progress}%"><i style="width:${progress}%"></i></div><span>${escapeHtml(details.detail)}</span></div>` : ''}${nextStep ? `<p class="transcript-job-guidance">${escapeHtml(nextStep)}</p>` : ''}${job.error ? `<div class="transcript-job-error"><strong>Почему не получилось:</strong><span>${escapeHtml(interviewErrorMessage(job))}</span>${recovery ? `<small>${escapeHtml(recovery)}</small>` : ''}</div>` : ''}</div><div class="transcript-job-actions">${linkedArticleId ? `<button class="btn btn-sm btn-primary" type="button" data-interview-open-draft="${escapeHtml(job.id)}">Открыть статью</button>` : ''}${canRetry ? `<button class="btn btn-sm" type="button" data-interview-retry="${escapeHtml(job.id)}">Запустить заново</button>` : ''}${job.hasAudio && ['ready', 'failed'].includes(job.status) ? `<button class="btn btn-sm" type="button" data-interview-retention="${escapeHtml(job.id)}">Хранить ещё 30 дн.</button>` : ''}<button class="btn btn-sm" type="button" data-interview-open="${escapeHtml(job.id)}">${job.status === 'ready' ? 'Вычитать' : job.status === 'failed' ? 'Открыть запись' : 'Открыть'}</button>${['ready', 'failed'].includes(job.status) ? `<button class="btn btn-sm btn-danger-text" type="button" data-interview-delete="${escapeHtml(job.id)}">Удалить</button>` : ''}</div></article>`;
     }).join('');
   }
   function speakersFromSegments(segments) { return [...new Set((segments || []).map((segment) => String(segment.speaker || '').trim()).filter(Boolean))]; }
@@ -5462,7 +5479,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     const job = activeJob;
     if (!job) { els.editor.hidden = true; transcriptLastSnapshot = ''; transcriptUndoSnapshot = ''; transcriptHasUnsavedChanges = false; return; }
     els.editor.hidden = false;
-    els.retry.hidden = job.status !== 'failed';
+    els.retry.hidden = job.status !== 'failed' || (job.sourceKind === 'remote' && /drm protected/i.test(String(job.error || '')));
     if (els.draftPanel) els.draftPanel.hidden = job.status !== 'ready';
     if (els.reviewed) els.reviewed.checked = Boolean(job.reviewedAt);
     els.editorTitle.textContent = job.title || job.filename || 'Интервью';
