@@ -188,7 +188,7 @@ async function importRemoteSource(job) {
     "--no-playlist", "--no-progress", "--no-warnings", "--max-downloads", "1", "--force-overwrites",
     // Downloading audio only makes the import smaller and avoids fetching a video stream that transcription never needs.
     "--format", "bestaudio/best", "--max-filesize", "1536M", "--extract-audio", "--audio-format", "mp3", "--audio-quality", "5",
-    "--output", outputTemplate, "--print", "after_move:%(title)s", "--", job.sourceUrl,
+    "--output", outputTemplate, "--print", "after_move:%(title)s",
   ];
   // Some public YouTube videos reject one anonymous playback client but allow another.
   // These are public yt-dlp clients only: no cookies, account data, or DRM circumvention is attempted.
@@ -199,7 +199,7 @@ async function importRemoteSource(job) {
   let lastError = "";
   for (const [, clientArgs] of attempts) {
     try {
-      ({ stdout } = await run(YTDLP_BIN, [...sharedArgs, ...clientArgs], { timeout: 45 * 60 * 1000 }));
+      ({ stdout } = await run(YTDLP_BIN, [...sharedArgs, ...clientArgs, "--", job.sourceUrl], { timeout: 45 * 60 * 1000 }));
       lastError = "";
       break;
     } catch (error) {
