@@ -23,7 +23,6 @@ const MAX_RETENTION_DAYS = 90;
 const activeJobs = new Set();
 const LOCAL_TRANSCRIBE_SCRIPT = process.env.INTERVIEW_TRANSCRIBE_SCRIPT || path.join(__dirname, "transcribe-local.py");
 const LOCAL_PYTHON = process.env.INTERVIEW_PYTHON_BIN || "python3";
-const YTDLP_BIN = process.env.INTERVIEW_YTDLP_BIN || "yt-dlp";
 // The VPS has one CPU core and limited RAM.  small.en is the highest practical
 // English-only model here: it is materially stronger than base/tiny while
 // keeping the public site responsive through a low-priority background job.
@@ -32,24 +31,6 @@ const LOCAL_MODEL = process.env.INTERVIEW_WHISPER_MODEL || "/opt/epris-interview
 function now() { return new Date().toISOString(); }
 function clip(value, length) { return String(value || "").replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, length); }
 function safeId(value) { return /^[a-z0-9_-]{12,64}$/i.test(String(value || "")) ? String(value) : ""; }
-function safeSourceUrl(value) {
-  const raw = clip(value, 1500);
-  if (!raw) return "";
-  try {
-    const parsed = new URL(raw);
-    return parsed.protocol === "https:" && !parsed.username && !parsed.password ? parsed.href : "";
-  } catch { return ""; }
-}
-function sourceProvider(value) {
-  const href = safeSourceUrl(value);
-  if (!href) return "";
-  try {
-    const host = new URL(href).hostname.toLowerCase().replace(/^www\./, "");
-    if (host === "youtu.be" || host === "youtube.com" || host.endsWith(".youtube.com")) return "YouTube";
-    if (host === "vimeo.com" || host.endsWith(".vimeo.com")) return "Vimeo";
-  } catch {}
-  return "";
-}
 function safeExt(filename, type) {
   const ext = String(filename || "").toLowerCase().match(/\.([a-z0-9]{2,5})$/)?.[1] || "";
   // Includes Apple Voice Memos and files exported by iOS recorders. ffmpeg
@@ -90,9 +71,11 @@ function jobSummary(job, full = false) {
     id: job.id,
     title: job.title,
     filename: job.filename,
-    sourceUrl: job.sourceUrl || "",
+    // Remote imports were deliberately retired: an interview is processed
+    // only from the original file the editor uploads to the private VPS.
+    sourceUrl: "",
     sourceKind: job.sourceKind || "upload",
-    sourceProvider: job.sourceProvider || sourceProvider(job.sourceUrl) || "",
+    sourceProvider: "",
     size: job.size,
     language: job.language,
     speakers: job.speakers || [],
@@ -155,9 +138,6 @@ function run(command, args, options = {}) {
 async function ffmpegReady() {
   try { await run("ffmpeg", ["-version"], { timeout: 8000 }); return true; } catch { return false; }
 }
-async function ytDlpReady() {
-  try { await run(YTDLP_BIN, ["--version"], { timeout: 8000 }); return true; } catch { return false; }
-}
 async function localEngineStatus() {
   if (!fs.existsSync(LOCAL_TRANSCRIBE_SCRIPT)) {
     return { ready: false, engine: "Local Whisper", model: LOCAL_MODEL, detail: "Local worker is not installed on VPS." };
@@ -179,61 +159,6 @@ async function transcribeChunk(chunkPath, language) {
   if (payload?.error) throw new Error(payload.error);
   return payload;
 }
-async function importRemoteSource(job) {
-  const provider = sourceProvider(job.sourceUrl);
-  if (!provider) throw new Error("Only YouTube and Vimeo links are supported for direct import.");
-  if (!await ytDlpReady()) throw new Error("The YouTube/Vimeo importer is not configured on VPS yet.");
-  const folder = path.join(AUDIO_DIR, job.id);
-  await fsp.mkdir(folder, { recursive: true });
-  const outputTemplate = path.join(folder, "source.%(ext)s");
-  const sharedArgs = [
-    "--no-playlist", "--no-progress", "--no-warnings", "--max-downloads", "1", "--force-overwrites",
-    // Downloading audio only makes the import smaller and avoids fetching a video stream that transcription never needs.
-    "--format", "bestaudio/best", "--max-filesize", "1536M", "--extract-audio", "--audio-format", "mp3", "--audio-quality", "5",
-    "--output", outputTemplate, "--print", "after_move:%(title)s",
-  ];
-  // Some public YouTube videos reject one anonymous playback client but allow another.
-  // These are public yt-dlp clients only: no cookies, account data, or DRM circumvention is attempted.
-  const attempts = provider === "YouTube"
-    ? [["tv", ["--extractor-args", "youtube:player_client=tv"]], ["embedded", ["--extractor-args", "youtube:player_client=web_embedded"]]]
-    : [["default", []]];
-  let stdout = "";
-  let lastError = "";
-  for (const [, clientArgs] of attempts) {
-    try {
-      ({ stdout } = await run(YTDLP_BIN, [...sharedArgs, ...clientArgs, "--", job.sourceUrl], { timeout: 45 * 60 * 1000 }));
-      lastError = "";
-      break;
-    } catch (error) {
-      const message = String(error?.message || error);
-      if (/drm protected/i.test(message)) {
-        throw new Error("This YouTube video is DRM protected. Upload an authorised original audio or video file instead.");
-      }
-      lastError = message;
-    }
-  }
-  if (lastError) {
-    throw new Error(`${provider} did not provide an audio stream after safe public playback attempts. ${lastError}`);
-  }
-  const files = (await fsp.readdir(folder))
-    .filter((name) => /^source\.[a-z0-9]{2,5}$/i.test(name) && safeExt(name, ""))
-    .sort((a, b) => Number(b.endsWith(".mp3")) - Number(a.endsWith(".mp3")) || a.localeCompare(b));
-  const filename = files[0];
-  if (!filename) throw new Error("The source did not return an audio track.");
-  const sourcePath = path.join(folder, filename);
-  const stat = await fsp.stat(sourcePath);
-  if (!stat.size) throw new Error("The imported audio is empty.");
-  if (stat.size > MAX_BYTES) throw new Error("The imported audio is larger than 1.5 GB.");
-  const importedTitle = String(stdout || "").split(/\r?\n/).map((line) => line.replace(/^after_move:/, "").trim()).filter(Boolean).pop() || "";
-  job.sourcePath = sourcePath;
-  job.filename = `${provider.toLowerCase()}-${job.id}.mp3`;
-  job.mimeType = "audio/mpeg";
-  job.size = stat.size;
-  job.sourceKind = "remote";
-  job.sourceProvider = provider;
-  if (!job.title || /^((youtube|vimeo) recording|recording)$/i.test(job.title)) job.title = clip(importedTitle, 180) || `${provider} recording`;
-  return job;
-}
 function normaliseSegments(payload, offset) {
   const source = Array.isArray(payload?.segments) ? payload.segments : [];
   const segments = source.map((segment, index) => ({
@@ -254,16 +179,7 @@ async function processJob(id) {
     let job = readJob(id);
     if (!job) throw new Error("interview is unavailable");
     if (!job.sourcePath || !fs.existsSync(job.sourcePath)) {
-      if (!sourceProvider(job.sourceUrl)) throw new Error("source audio is unavailable");
-      job.status = "processing";
-      job.stage = "Importing audio from source";
-      job.progress = Math.max(2, Number(job.progress || 0));
-      job.error = "";
-      saveJob(job);
-      job = await importRemoteSource(job);
-      job.stage = "Preparing imported audio";
-      job.progress = 7;
-      saveJob(job);
+      throw new Error("Source audio is unavailable. Upload the original file again.");
     }
     if (!await ffmpegReady()) throw new Error("ffmpeg is not installed on VPS");
     const engine = await localEngineStatus();
@@ -348,7 +264,7 @@ function createInterviewModule({ resolveRole }) {
       cleanupExpired();
       if (url.pathname === "/interviews/health" && req.method === "GET") {
         const localEngine = await localEngineStatus();
-        respond(res, 200, { ok: true, localEngine, ffmpegReady: await ffmpegReady(), sourceImportReady: await ytDlpReady(), maxUploadBytes: MAX_BYTES, defaultRetentionDays: DEFAULT_RETENTION_DAYS });
+        respond(res, 200, { ok: true, localEngine, ffmpegReady: await ffmpegReady(), maxUploadBytes: MAX_BYTES, defaultRetentionDays: DEFAULT_RETENTION_DAYS, intake: "local-file-only" });
         return true;
       }
       if (url.pathname === "/interviews" && req.method === "GET") {
@@ -377,7 +293,7 @@ function createInterviewModule({ resolveRole }) {
             size,
             language: clip(req.headers["x-interview-language"] || "en", 12) || "en",
             speakers: parseSpeakers(req.headers["x-interview-speakers"]),
-            sourceUrl: safeSourceUrl(req.headers["x-interview-source-url"]),
+            sourceUrl: "",
             sourceKind: "upload",
             sourcePath: target,
             mimeType: clip(req.headers["content-type"], 100) || "audio/mpeg",
@@ -399,36 +315,7 @@ function createInterviewModule({ resolveRole }) {
         return true;
       }
       if (url.pathname === "/interviews/import" && req.method === "POST") {
-        const body = parsed && typeof parsed === "object" ? parsed : {};
-        const sourceUrl = safeSourceUrl(body.sourceUrl);
-        const provider = sourceProvider(sourceUrl);
-        if (!provider) { respond(res, 400, { ok: false, error: "Paste a public YouTube or Vimeo link." }); return true; }
-        if (body.rightsConfirmed !== true) { respond(res, 400, { ok: false, error: "Confirm that the editorial team has the right to process this recording." }); return true; }
-        if (!await ytDlpReady()) { respond(res, 503, { ok: false, error: "YouTube/Vimeo import is not configured on VPS yet. Upload a file or complete the server setup." }); return true; }
-        const id = `int_${Date.now().toString(36)}_${crypto.randomBytes(5).toString("hex")}`;
-        const retentionDays = Math.max(1, Math.min(MAX_RETENTION_DAYS, Number(body.retentionDays) || DEFAULT_RETENTION_DAYS));
-        const job = {
-          id,
-          title: clip(body.title || `${provider} recording`, 180),
-          filename: `${provider.toLowerCase()}-source.mp3`,
-          size: 0,
-          language: clip(body.language || "en", 12) || "en",
-          speakers: parseSpeakers(body.speakers),
-          sourceUrl,
-          sourceKind: "remote",
-          sourceProvider: provider,
-          mimeType: "audio/mpeg",
-          status: "queued",
-          stage: `Waiting to import ${provider}`,
-          progress: 1,
-          segments: [],
-          createdAt: now(),
-          updatedAt: now(),
-          retentionAt: new Date(Date.now() + retentionDays * 86400000).toISOString(),
-        };
-        saveJob(job);
-        respond(res, 201, { ok: true, job: jobSummary(job) });
-        retrySoon(id);
+        respond(res, 410, { ok: false, error: "Import from external links has been removed. Upload the original audio or video file instead." });
         return true;
       }
       const match = url.pathname.match(/^\/interviews\/([a-z0-9_-]{12,64})(?:\/(audio|export|retry|article-draft|retention))?$/i);
@@ -471,7 +358,7 @@ function createInterviewModule({ resolveRole }) {
         return true;
       }
       if (action === "retry" && req.method === "POST") {
-        if ((!job.sourcePath || !fs.existsSync(job.sourcePath)) && !sourceProvider(job.sourceUrl)) { respond(res, 409, { ok: false, error: "audio expired; upload it again" }); return true; }
+        if (!job.sourcePath || !fs.existsSync(job.sourcePath)) { respond(res, 409, { ok: false, error: "audio expired; upload it again" }); return true; }
         job.status = "queued"; job.stage = "Queued again"; job.progress = 1; job.error = ""; saveJob(job); retrySoon(id);
         respond(res, 200, { ok: true, job: jobSummary(job) });
         return true;
