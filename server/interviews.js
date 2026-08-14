@@ -52,9 +52,11 @@ function sourceProvider(value) {
 }
 function safeExt(filename, type) {
   const ext = String(filename || "").toLowerCase().match(/\.([a-z0-9]{2,5})$/)?.[1] || "";
-  const allowed = new Set(["3g2", "3gp", "aac", "aif", "aiff", "alac", "amr", "asf", "avi", "flac", "m4a", "m4v", "mkv", "mov", "mp3", "mp4", "mpeg", "mpga", "ogg", "opus", "wav", "webm", "wma", "wmv"]);
+  // Includes Apple Voice Memos and files exported by iOS recorders. ffmpeg
+  // normalises them before local transcription; this is a safe intake gate.
+  const allowed = new Set(["3g2", "3ga", "3gp", "aac", "ac3", "aif", "aiff", "alac", "amr", "asf", "avi", "caf", "dts", "eac3", "flac", "m4a", "m4b", "m4r", "m4v", "mka", "mkv", "mov", "mp2", "mp3", "mp4", "mpeg", "mpga", "oga", "ogg", "opus", "spx", "wav", "webm", "wma", "wmv"]);
   if (allowed.has(ext)) return ext;
-  const byMime = { "audio/aac": "aac", "audio/aiff": "aiff", "audio/amr": "amr", "audio/flac": "flac", "audio/mpeg": "mp3", "audio/mp4": "m4a", "audio/ogg": "ogg", "audio/opus": "opus", "audio/wav": "wav", "audio/webm": "webm", "audio/x-m4a": "m4a", "audio/x-wav": "wav", "audio/x-ms-wma": "wma", "video/3gpp": "3gp", "video/avi": "avi", "video/mp4": "mp4", "video/quicktime": "mov", "video/webm": "webm", "video/x-matroska": "mkv", "video/x-ms-asf": "asf", "video/x-msvideo": "avi", "video/x-ms-wmv": "wmv" };
+  const byMime = { "audio/3gpp": "3ga", "audio/aac": "aac", "audio/aiff": "aiff", "audio/amr": "amr", "audio/flac": "flac", "audio/mpeg": "mp3", "audio/mp4": "m4a", "audio/ogg": "ogg", "audio/opus": "opus", "audio/wav": "wav", "audio/webm": "webm", "audio/x-aiff": "aiff", "audio/x-caf": "caf", "audio/x-m4a": "m4a", "audio/x-wav": "wav", "audio/x-ms-wma": "wma", "audio/x-ms-asf": "asf", "video/3gpp": "3gp", "video/avi": "avi", "video/mp4": "mp4", "video/quicktime": "mov", "video/webm": "webm", "video/x-matroska": "mkv", "video/x-ms-asf": "asf", "video/x-msvideo": "avi", "video/x-ms-wmv": "wmv" };
   return byMime[String(type || "").split(";")[0].toLowerCase()] || "";
 }
 function ensureDirs() {
@@ -356,7 +358,7 @@ function createInterviewModule({ resolveRole }) {
       if (url.pathname === "/interviews/upload" && req.method === "POST") {
         const ext = safeExt(req.headers["x-interview-filename"], req.headers["content-type"]);
         const declared = Number(req.headers["content-length"] || 0);
-        if (!ext) { respond(res, 400, { ok: false, error: "Supported formats: MP3, M4A, WAV, MP4, MOV, MKV, AVI, WebM, AAC, OPUS, FLAC and similar media files." }); return true; }
+        if (!ext) { respond(res, 400, { ok: false, error: "Supported formats: iPhone Voice Memos (M4A/AAC), CAF, WAV, AIFF, MP3, FLAC, OGG/OPUS and common video files." }); return true; }
         if (declared && declared > MAX_BYTES) { respond(res, 413, { ok: false, error: "Media file is larger than 1.5 GB." }); return true; }
         const id = `int_${Date.now().toString(36)}_${crypto.randomBytes(5).toString("hex")}`;
         const folder = path.join(AUDIO_DIR, id);

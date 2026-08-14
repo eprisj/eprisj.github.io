@@ -4940,9 +4940,9 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   let activeReviewSegmentIndex = -1;
   let archiveFilter = 'all';
   let suggestedInterviewAction = null;
-  const mediaExtensions = /\.(3g2|3gp|aac|aif|aiff|alac|amr|asf|avi|flac|m4a|m4v|mkv|mov|mp3|mp4|mpeg|mpga|ogg|opus|wav|webm|wma|wmv)$/i;
+  const mediaExtensions = /\.(3g2|3ga|3gp|aac|ac3|aif|aiff|alac|amr|asf|avi|caf|dts|eac3|flac|m4a|m4b|m4r|m4v|mka|mkv|mov|mp2|mp3|mp4|mpeg|mpga|oga|ogg|opus|spx|wav|webm|wma|wmv)$/i;
   const videoExtensions = /\.(3g2|3gp|asf|avi|m4v|mkv|mov|mp4|mpeg|webm|wmv)$/i;
-  const acceptedMediaHint = 'MP3, M4A, WAV, MP4, MOV, MKV, AVI, WebM, AAC и другие';
+  const acceptedMediaHint = 'Voice Memos iPhone (M4A/AAC), CAF, WAV, AIFF, MP3, FLAC, OGG/OPUS и видео';
   const MAX_TRANSCRIPT_BYTES = 1536 * 1024 * 1024;
   const maxTranscriptSizeLabel = '1.5 ГБ';
   const fmtBytes = (bytes) => bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
