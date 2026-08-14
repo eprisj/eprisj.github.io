@@ -1382,6 +1382,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
   const defaultCenterIndex = configuredCenterIndex >= 0 ? configuredCenterIndex : Math.min(2, Math.max(0, featuredItems.length - 1));
   const [centerIndex, setCenterIndex] = useState(defaultCenterIndex);
   const [carouselDirection, setCarouselDirection] = useState<-1 | 1>(1);
+  const [expandedPicsId, setExpandedPicsId] = useState('');
   const previousConfiguredCenterIndexRef = useRef(configuredCenterIndex);
   const itemCount = featuredItems.length;
   const safeCenterIndex = itemCount ? ((centerIndex % itemCount) + itemCount) % itemCount : 0;
@@ -1414,6 +1415,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
   const moveCarousel = (direction: -1 | 1) => {
     if (!itemCount) return;
     setCarouselDirection(direction);
+    setExpandedPicsId('');
     setCenterIndex((current) => (current + direction + itemCount) % itemCount);
   };
   const suppressNextCardClick = () => {
@@ -1489,7 +1491,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
     if (!drag || !touch) return;
     finishCarouselGesture(drag, touch.clientX, touch.clientY, cancelled);
   };
-  const handleCarouselCardClick = (position: number, src: string, alt: string) => {
+  const handleCarouselArtworkClick = (position: number, src: string, alt: string) => {
     if (suppressCardClickRef.current) {
       suppressCardClickRef.current = false;
       return;
@@ -1504,6 +1506,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
     }
     const offset = position - 2;
     setCarouselDirection(offset > 0 ? 1 : -1);
+    setExpandedPicsId('');
     setCenterIndex((current) => (current + offset + itemCount) % itemCount);
   };
   const centerScale = Math.max(0.96, Math.min(1.14, Number(picsSettings.centerScale) || 1));
@@ -1540,6 +1543,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
                     className={`home-carousel-mobile-dot${isActive ? ' is-active' : ''}`}
                     onClick={() => {
                       setCarouselDirection(index >= safeCenterIndex ? 1 : -1);
+                      setExpandedPicsId('');
                       setCenterIndex(index);
                     }}
                   >
@@ -1580,35 +1584,32 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
             const categoryLabel = localizedHomepageCategoryLabel(category, currentLang);
             const title = homepageItemTitle(item);
             const description = homepageItemDescription(item, t('homepage.descriptionUnavailable'));
+            const picsId = getPicsId(item);
+            const detailsOpen = isCenter && expandedPicsId === picsId;
             return (
               <div key={`slot-${position}`} className={slotClass}>
                 <AnimatePresence initial={false} mode="sync">
                   <motion.article
                     key={`${getPicsId(item)}-${position}`}
-                    initial={{ opacity: 0, y: carouselDirection > 0 ? 10 : -10, scale: isCenter ? centerScale * 0.985 : sideScale * 0.985 }}
-                    animate={{ opacity: isCenter ? 1 : 0.8, y: 0, scale: isCenter ? centerScale : sideScale }}
-                    exit={{ opacity: 0, y: carouselDirection > 0 ? -8 : 8, scale: isCenter ? centerScale * 0.99 : sideScale * 0.99 }}
-                    transition={{ duration: 0.46, ease: [0.22, 1, 0.36, 1], opacity: { duration: 0.32, ease: 'easeOut' } }}
+                    initial={{ opacity: 0, x: carouselDirection > 0 ? 9 : -9, scale: isCenter ? centerScale * 0.992 : sideScale * 0.992 }}
+                    animate={{ opacity: isCenter ? 1 : 0.8, x: 0, scale: isCenter ? centerScale : sideScale }}
+                    exit={{ opacity: 0, x: carouselDirection > 0 ? -7 : 7, scale: isCenter ? centerScale * 0.996 : sideScale * 0.996 }}
+                    transition={{ duration: 0.29, ease: [0.22, 1, 0.36, 1], opacity: { duration: 0.2, ease: 'easeOut' } }}
                     data-carousel-position={isCenter ? 'center' : 'side'}
                     className={`home-carousel-card group ${isCenter ? 'home-carousel-card--center' : 'home-carousel-card--side'}`}
-                    role="button"
-                    tabIndex={0}
-                    onClick={() => handleCarouselCardClick(position, resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${title}`)}
-                    onKeyDown={(event) => {
-                      if (event.key !== 'Enter' && event.key !== ' ') return;
-                      event.preventDefault();
-                      handleCarouselCardClick(position, resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${title}`);
-                    }}
-                    aria-label={isCenter ? `${t('homepage.openImage')}: ${categoryLabel}` : `${categoryLabel}: ${title}`}
-                    title={isCenter ? t('homepage.openImage') : undefined}
                   >
-                    <div className="home-carousel-media relative aspect-[4/5] overflow-hidden bg-[#E8DED5]">
-                      <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" loading="lazy" referrerPolicy="no-referrer" draggable={false} />
-                    </div>
+                    <button type="button" className="home-carousel-artwork" onClick={() => handleCarouselArtworkClick(position, resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${title}`)} aria-label={isCenter ? `${t('homepage.openImage')}: ${categoryLabel}` : `${categoryLabel}: ${title}`} title={isCenter ? t('homepage.openImage') : undefined}>
+                      <div className="home-carousel-media relative aspect-[4/5] overflow-hidden bg-[#E8DED5]">
+                        <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" loading="lazy" referrerPolicy="no-referrer" draggable={false} />
+                      </div>
+                    </button>
                     <div className="home-carousel-caption">
                       {showCategory && <span className="home-carousel-caption-category">{categoryLabel}</span>}
                       <h2>{title}</h2>
-                      {showDescriptions && <p>{description}</p>}
+                      {isCenter && showDescriptions && <button type="button" className="home-carousel-caption-toggle" aria-expanded={detailsOpen} aria-controls={`pics-details-${picsId}`} onClick={() => setExpandedPicsId((current) => current === picsId ? '' : picsId)}>{t(detailsOpen ? 'homepage.hideDetails' : 'homepage.showDetails')}</button>}
+                      <AnimatePresence initial={false}>
+                        {isCenter && showDescriptions && detailsOpen && <motion.div id={`pics-details-${picsId}`} className="home-carousel-caption-details" initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -3 }} transition={{ duration: 0.2, ease: 'easeOut' }}><p>{description}</p></motion.div>}
+                      </AnimatePresence>
                     </div>
                   </motion.article>
                 </AnimatePresence>
