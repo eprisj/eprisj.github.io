@@ -5329,6 +5329,12 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     const articleId = Number(job?.articleDraft?.id);
     if (!articleId) return;
     document.querySelector('[data-tab="content"]')?.click();
+    // The content tab's own click listener does its canvas reload at
+    // +200ms using whatever visualEntry value exists at that moment — this
+    // has to land after that, and setting .value below doesn't fire a
+    // native 'change' event (which is what the canvas editor listens for),
+    // so it's dispatched by hand or the article picks the right row but the
+    // editor pane itself never loads it.
     window.setTimeout(() => {
       visualSectionSelect.value = 'articles';
       visualLangSelect.value = DEFAULT_LANGUAGE;
@@ -5336,7 +5342,8 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
       if (visualStatusFilter) visualStatusFilter.value = 'all';
       pendingVisualEntryId = articleId;
       refreshVisualEditor();
-    }, 220);
+      visualEntrySelect?.dispatchEvent(new Event('change', { bubbles: true }));
+    }, 320);
   }
   function scheduleTranscriptAutosave(delay = 1400) {
     window.clearTimeout(transcriptAutosaveTimer);
