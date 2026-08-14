@@ -5431,14 +5431,16 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     const processing = job?.processing || {};
     const phase = String(processing.phase || job?.status || 'queued');
     const queue = getQueueSnapshot(jobs);
+    const chunkCount = Number(processing.chunkCount) || 0;
+    const completedChunks = Number(processing.completedChunks) || 0;
     const facts = [];
     if (job?.status === 'queued') {
       const position = queue.positionById.get(job.id) || 1;
       facts.push(position === 1 ? 'Следующая к запуску' : `Очередь · №${position}`);
-    } else if (Number(processing.chunkCount) > 0) {
-      const chunk = Math.max(1, Math.min(Number(processing.currentChunk) || 1, Number(processing.chunkCount)));
-      facts.push(`Фрагмент ${chunk} из ${processing.chunkCount}`);
-      if (Number(processing.completedChunks) > 0) facts.push(`Сохранено ${processing.completedChunks}`);
+    } else if (chunkCount > 0) {
+      const chunk = Math.max(1, Math.min(Number(processing.currentChunk) || 1, chunkCount));
+      facts.push(`Фрагмент ${chunk} из ${chunkCount}`);
+      if (completedChunks > 0) facts.push(`Сохранено ${completedChunks}`);
     } else if (phase === 'checking') facts.push('Проверка источника');
     else facts.push('Подготовка аудио');
     const duration = fmtDuration(processing.sourceDurationSeconds);
@@ -5447,8 +5449,25 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     if (checkpointInterval) facts.push(checkpointInterval);
     facts.push(`Попытка ${Math.max(1, Number(processing.attempt) || 1)}`);
     facts.push(fmtCheckpoint(processing.checkpointAt));
+    if (Number(job?.segmentCount) > 0) facts.push(`${job.segmentCount} ${job.segmentCount === 1 ? 'фрагмент текста' : 'фрагментов текста'}`);
+    // Speed/ETA: audio-seconds transcribed so far vs wall-clock time spent —
+    // gives an editor a sense of "is this stuck" without reading server logs.
+    const startedAt = processing.attemptStartedAt ? Date.parse(processing.attemptStartedAt) : 0;
+    if (startedAt && completedChunks > 0 && chunkCount > completedChunks) {
+      const elapsedMs = Date.now() - startedAt;
+      const processedAudioSeconds = completedChunks * (Number(processing.chunkSeconds) || 120);
+      const speed = elapsedMs > 0 ? processedAudioSeconds / (elapsedMs / 1000) : 0;
+      if (speed > 0) {
+        facts.push(`Скорость ×${speed.toFixed(1)}`);
+        const remainingChunks = chunkCount - completedChunks;
+        const etaSeconds = (elapsedMs / 1000 / completedChunks) * remainingChunks;
+        if (Number.isFinite(etaSeconds) && etaSeconds > 0) facts.push(`Осталось ≈ ${fmtDuration(etaSeconds) || '<1 мин'}`);
+      }
+    }
+    if (startedAt) facts.push(`В работе ${fmtDuration((Date.now() - startedAt) / 1000) || '<1 мин'}`);
+    const dots = chunkCount > 0 ? `<div class="transcript-chunk-dots" aria-hidden="true">${Array.from({ length: chunkCount }, (_, i) => `<i class="${i < completedChunks ? 'is-done' : i === completedChunks ? 'is-current' : ''}"></i>`).join('')}</div>` : '';
     const stageLabel = job?.status === 'queued' ? 'Ожидает очереди' : details.title;
-    return `<div class="transcript-job-process" aria-live="polite"><div class="transcript-progress-head"><span>${escapeHtml(stageLabel)}</span><strong>${progress}%</strong></div><div class="transcript-progress" role="progressbar" aria-label="Прогресс расшифровки" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}" style="--transcript-progress:${progress / 100}"><i></i></div><div class="transcript-progress-facts">${facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join('')}</div><p>${escapeHtml(details.detail)}</p></div>`;
+    return `<div class="transcript-job-process" aria-live="polite"><div class="transcript-progress-head"><span>${escapeHtml(stageLabel)}</span><strong>${progress}%</strong></div><div class="transcript-progress" role="progressbar" aria-label="Прогресс расшифровки" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}" style="--transcript-progress:${progress / 100}"><i></i></div>${dots}<div class="transcript-progress-facts">${facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join('')}</div><p>${escapeHtml(details.detail)}</p></div>`;
   }
   function renderJobProcessMap(job) {
     const processing = job?.processing || {};
