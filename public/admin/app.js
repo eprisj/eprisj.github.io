@@ -5426,6 +5426,17 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     updateStart();
     renderFlow(latestJobs, ready);
   }
+  function renderCheckpointSparkline(history) {
+    if (!Array.isArray(history) || history.length < 2) return '';
+    const values = history.map((point) => Math.max(0, Number(point.segments) || 0));
+    const max = Math.max(1, ...values);
+    const w = 100, h = 32, step = w / (values.length - 1);
+    const points = values.map((v, i) => [i * step, h - (v / max) * (h - 4) - 2]);
+    const line = points.map(([x, y], i) => `${i === 0 ? 'M' : 'L'}${x.toFixed(1)},${y.toFixed(1)}`).join(' ');
+    const fill = `${line} L${w},${h} L0,${h} Z`;
+    const last = points[points.length - 1];
+    return `<svg class="transcript-sparkline" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="${fill}"/><path class="line" d="${line}" vector-effect="non-scaling-stroke"/><circle cx="${last[0].toFixed(1)}" cy="${last[1].toFixed(1)}" r="2"/></svg>`;
+  }
   function renderJobProgress(job, details, jobs) {
     const progress = Math.max(1, Math.min(100, Number(job?.progress) || 0));
     const processing = job?.processing || {};
@@ -5467,9 +5478,10 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     if (startedAt) facts.push(`В работе ${fmtDuration((Date.now() - startedAt) / 1000) || '<1 мин'}`);
     const dots = chunkCount > 0 ? `<div class="transcript-chunk-dots" aria-hidden="true">${Array.from({ length: chunkCount }, (_, i) => `<i class="${i < completedChunks ? 'is-done' : i === completedChunks ? 'is-current' : ''}"></i>`).join('')}</div>` : '';
     const history = Array.isArray(processing.checkpointHistory) ? processing.checkpointHistory : [];
+    const sparkline = renderCheckpointSparkline(history);
     const snapshots = history.length ? `<details class="transcript-snapshots"><summary>Снепшоты · ${history.length}</summary><ol>${[...history].reverse().map((point) => `<li><span>${escapeHtml(fmtDate(point.at))}</span><span>часть ${escapeHtml(String(point.chunk))} · +${escapeHtml(String(point.segments))} ${point.segments === 1 ? 'фрагмент' : 'фрагментов'}</span></li>`).join('')}</ol></details>` : '';
     const stageLabel = job?.status === 'queued' ? 'Ожидает очереди' : details.title;
-    return `<div class="transcript-job-process" aria-live="polite"><div class="transcript-progress-head"><span>${escapeHtml(stageLabel)}</span><strong>${progress}%</strong></div><div class="transcript-progress" role="progressbar" aria-label="Прогресс расшифровки" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}" style="--transcript-progress:${progress / 100}"><i></i></div>${dots}<div class="transcript-progress-facts">${facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join('')}</div><p>${escapeHtml(details.detail)}</p>${snapshots}</div>`;
+    return `<div class="transcript-job-process" aria-live="polite"><div class="transcript-progress-head"><span>${escapeHtml(stageLabel)}</span><strong>${progress}%</strong></div><div class="transcript-progress" role="progressbar" aria-label="Прогресс расшифровки" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}" style="--transcript-progress:${progress / 100}"><i></i></div>${dots}${sparkline}<div class="transcript-progress-facts">${facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join('')}</div><p>${escapeHtml(details.detail)}</p>${snapshots}</div>`;
   }
   function renderJobProcessMap(job) {
     const processing = job?.processing || {};
