@@ -4959,6 +4959,10 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     const h = Math.floor(total / 3600); const m = Math.floor((total % 3600) / 60); const s = total % 60;
     return h ? `${h} ч ${String(m).padStart(2, '0')} мин` : m ? `${m} мин ${String(s).padStart(2, '0')} сек` : `${s} сек`;
   };
+  const fmtCheckpointInterval = (seconds) => {
+    const minutes = Math.round((Number(seconds) || 0) / 60);
+    return minutes > 0 ? `каждые ${minutes} ${minutes === 1 ? 'минуту' : minutes < 5 ? 'минуты' : 'минут'}` : '';
+  };
   const fmtCheckpoint = (value) => value ? `обновлено ${fmtDate(value)}` : 'ожидаем первую отметку';
   function getQueueSnapshot(jobs = latestJobs) {
     const list = Array.isArray(jobs) ? jobs : [];
@@ -4976,9 +4980,9 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     }
     if (job?.status === 'processing') {
       if (phase === 'checking') return { title: 'Проверяем аудиодорожку', detail: 'Сначала убеждаемся, что файл действительно содержит звук и его можно безопасно обработать.', step: 1 };
-      if (phase === 'saving') return { title: 'Сохраняем фрагмент', detail: 'Готовый кусок текста записывается в закрытый архив. Затем продолжим со следующим.', step: 2 };
+      if (phase === 'saving') return { title: 'Сохраняем фрагмент', detail: 'Готовый кусок текста уже доступен для чтения. Затем продолжим со следующим.', step: 2 };
       const part = stage.match(/part\s+(\d+)\s+of\s+(\d+)/i);
-      if (part) return { title: `Расшифровываем часть ${part[1]} из ${part[2]}`, detail: 'Текст собирается на VPS. Можно закрыть вкладку — прогресс сохранится.', step: 2, part: `${part[1]}/${part[2]}` };
+      if (part) return { title: `Расшифровываем часть ${part[1]} из ${part[2]}`, detail: 'Каждые 2 минуты текст сохраняется и сразу становится доступен для чтения. Можно закрыть вкладку — прогресс сохранится.', step: 2, part: `${part[1]}/${part[2]}` };
       if (/prepar|audio|ffmpeg/i.test(stage)) return { title: 'Подготавливаем аудио', detail: 'Приводим запись к рабочему формату перед локальной расшифровкой.', step: 1 };
       return { title: 'Локальная расшифровка идёт', detail: 'VPS продолжает работу в фоне — редактор не нужно держать открытым.', step: 2 };
     }
@@ -5160,6 +5164,11 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   }
   function renderReplacePreview() {
     if (!els.replacePreview || !els.replaceButton) return;
+    if (activeJob?.status !== 'ready') {
+      els.replacePreview.textContent = 'Замена станет доступна, когда расшифровка будет завершена.';
+      els.replaceButton.disabled = true;
+      return;
+    }
     const plan = getReplacePlan();
     if (!activeJob?.segments?.length) {
       els.replacePreview.textContent = 'Расшифровка появится после обработки записи.';
@@ -5182,6 +5191,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   }
   function replaceAllInTranscript() {
     if (!activeJob) return;
+    if (activeJob.status !== 'ready') { showToast('info', 'Текст ещё пополняется. Редактирование откроется после завершения расшифровки.'); return; }
     const plan = getReplacePlan();
     const replacement = String(els.replaceWith?.value || '');
     if (!plan.needle || !plan.count) { renderReplacePreview(); return; }
@@ -5231,6 +5241,16 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   }
   function renderReviewSummary(job = activeJob) {
     if (!els.reviewSummary) return;
+    if (job?.status === 'failed') {
+      els.reviewSummary.innerHTML = '<span class="transcript-review-summary-mark">!</span><div><strong>Обработка остановилась</strong><span>Сохранённые фрагменты можно прочитать, но они пока защищены от изменений. Перезапустите эту запись, чтобы получить цельный текст.</span></div>';
+      return;
+    }
+    if (job?.status !== 'ready') {
+      const saved = Math.max(0, Number(job?.processing?.completedChunks) || 0);
+      const total = Math.max(0, Number(job?.processing?.chunkCount) || 0);
+      els.reviewSummary.innerHTML = `<span class="transcript-review-summary-mark">…</span><div><strong>${saved ? `Уже сохранено ${saved}${total ? ` из ${total}` : ''} фрагментов` : 'Расшифровка ещё готовится'}</strong><span>Готовый текст можно читать уже сейчас. Редактирование включится после последнего фрагмента, чтобы новые части не перезаписали ваши правки.</span></div>`;
+      return;
+    }
     const issues = getReviewIssues(job);
     if (!issues.length) {
       els.reviewSummary.innerHTML = '<span class="transcript-review-summary-mark is-clear">✓</span><div><strong>Вычитка без отмеченных мест</strong><span>Проверьте текст по смыслу и подтвердите вычитку, когда будете готовы.</span></div>';
@@ -5270,7 +5290,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   }
   function syncDraftReadiness() {
     const alreadyCreated = Boolean(activeJob?.articleDraft?.id);
-    const ready = Boolean(els.reviewed?.checked);
+    const ready = activeJob?.status === 'ready' && Boolean(els.reviewed?.checked);
     if (els.createArticle) els.createArticle.disabled = alreadyCreated || !ready || !activeJob?.segments?.length;
   }
   function renderDraftOutcome() {
@@ -5307,6 +5327,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   }
   function markTranscriptChanged(previousSnapshot = '') {
     if (!activeJob) return;
+    if (activeJob.status !== 'ready') return;
     const next = editorSnapshot();
     const baseline = previousSnapshot || transcriptLastSnapshot;
     if (!next || next === baseline) {
@@ -5349,7 +5370,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     if (!els.flowNote) return;
     const note = {
       waiting: 'Локальная студия готовится на VPS. После запуска всё остальное происходит в одном спокойном потоке.',
-      processing: 'Идёт локальная обработка на VPS. Окно можно закрыть — очередь продолжит работу и обновит этот статус сама.',
+      processing: 'Идёт локальная обработка на VPS. Каждые 2 минуты готовый текст сохраняется — его можно открыть и прочитать до финала.',
       ready: 'Есть текст для вычитки. Откройте готовую запись ниже и только затем создайте черновик статьи.',
       idle: 'Добавьте запись — процесс будет виден здесь, без лишних экранов и ожидания у вкладки.',
     };
@@ -5405,6 +5426,8 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     else facts.push('Подготовка аудио');
     const duration = fmtDuration(processing.sourceDurationSeconds);
     if (duration) facts.push(`Длина ${duration}`);
+    const checkpointInterval = fmtCheckpointInterval(processing.chunkSeconds);
+    if (checkpointInterval) facts.push(checkpointInterval);
     facts.push(`Попытка ${Math.max(1, Number(processing.attempt) || 1)}`);
     facts.push(fmtCheckpoint(processing.checkpointAt));
     const stageLabel = job?.status === 'queued' ? 'Ожидает очереди' : details.title;
@@ -5419,13 +5442,14 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     const chunkCount = Math.max(0, Number(processing.chunkCount) || 0);
     const currentChunk = Math.max(0, Number(processing.currentChunk) || 0);
     const saved = Math.max(0, Number(processing.completedChunks) || 0);
+    const checkpointInterval = fmtCheckpointInterval(processing.chunkSeconds);
     const duration = fmtDuration(processing.sourceDurationSeconds);
     const stepState = (index) => failed && reached === index ? 'failed' : job?.status === 'ready' || reached > index ? 'done' : reached === index ? 'current' : 'pending';
     const steps = [
       { label: 'Файл принят', note: duration ? `длина ${duration}` : 'исходник в закрытом архиве' },
       { label: 'Аудио проверено', note: stepState(1) === 'done' ? 'дорожка подтверждена' : 'проверяем дорожку' },
       { label: 'Подготовка', note: stepState(2) === 'done' ? 'рабочая копия готова' : 'единый рабочий формат' },
-      { label: 'Расшифровка', note: chunkCount ? `фрагмент ${Math.max(1, currentChunk)} из ${chunkCount}` : stepState(3) === 'done' ? 'фрагменты готовы' : 'ждёт подготовки' },
+      { label: 'Расшифровка', note: chunkCount ? `фрагмент ${Math.max(1, currentChunk)} из ${chunkCount}${checkpointInterval ? ` · ${checkpointInterval}` : ''}` : stepState(3) === 'done' ? 'фрагменты готовы' : 'ждёт подготовки' },
       { label: 'Текст сохранён', note: chunkCount && saved ? `${saved} из ${chunkCount} фрагментов` : stepState(4) === 'done' ? 'готово к вычитке' : 'контрольная точка' },
     ];
     return `<ol class="transcript-process-map" aria-label="Карта обработки записи">${steps.map((step, index) => {
@@ -5453,6 +5477,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     els.jobs.innerHTML = filtered.map((job) => {
       const details = stageDetails(job, list);
       const isInFlight = ['queued', 'processing'].includes(job.status);
+      const hasPartialText = isInFlight && Number(job.segmentCount) > 0;
       const linkedArticleId = Number(job.articleDraft?.id) || 0;
       const linkedArticle = linkedArticleId ? linkedArticles.find((entry) => Number(entry.id) === linkedArticleId) : null;
       const linkedArticleState = linkedArticle ? getPublicationState(contentData, 'articles', linkedArticle) : 'draft';
@@ -5461,7 +5486,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
       const nextStep = nextInterviewStep(job, linkedArticleId);
       const canRetry = job.status === 'failed' && Boolean(job.hasAudio);
       const recovery = job.status === 'failed' ? (job.hasAudio ? 'Аудио на месте. Повторный запуск не удалит вашу запись.' : 'Исходный файл уже удалён или не был загружен. Добавьте его как новую запись, чтобы повторить обработку.') : '';
-      return `<article class="transcript-job is-${escapeHtml(job.status || 'draft')}" data-interview-status="${escapeHtml(job.status || 'draft')}"><div class="transcript-job-main"><div class="transcript-job-heading"><strong class="transcript-job-title">${escapeHtml(job.title || job.filename || 'Без названия')}</strong><span class="transcript-job-status ${escapeHtml(job.status || '')}">${escapeHtml(details.title)}</span></div><div class="transcript-job-meta"><span>${escapeHtml(job.language || 'en').toUpperCase()}</span><span>${escapeHtml(fmtBytes(Number(job.size) || 0))}</span><span>${escapeHtml(fmtDate(job.updatedAt || job.createdAt))}</span>${retentionLabel ? `<span class="transcript-retention" title="Срок хранения исходного аудио">${escapeHtml(retentionLabel)}</span>` : ''}${linkedArticleId ? `<span class="transcript-linked-draft-state is-${escapeHtml(linkedArticleState)}">${publicationStateIcon(linkedArticleState)} статья #${linkedArticleId} · ${escapeHtml(linkedArticleLabel)}</span>` : ''}</div>${renderJobProcessMap(job)}${isInFlight ? renderJobProgress(job, details, list) : ''}${nextStep ? `<p class="transcript-job-guidance">${escapeHtml(nextStep)}</p>` : ''}${job.error ? `<div class="transcript-job-error"><strong>Почему не получилось:</strong><span>${escapeHtml(interviewErrorMessage(job))}</span>${recovery ? `<small>${escapeHtml(recovery)}</small>` : ''}</div>` : ''}</div><div class="transcript-job-actions">${linkedArticleId ? `<button class="btn btn-sm btn-primary" type="button" data-interview-open-draft="${escapeHtml(job.id)}">Открыть статью</button>` : ''}${canRetry ? `<button class="btn btn-sm" type="button" data-interview-retry="${escapeHtml(job.id)}">Запустить заново</button>` : ''}${job.hasAudio && ['ready', 'failed'].includes(job.status) ? `<button class="btn btn-sm" type="button" data-interview-retention="${escapeHtml(job.id)}">Хранить ещё 30 дн.</button>` : ''}<button class="btn btn-sm" type="button" data-interview-open="${escapeHtml(job.id)}">${job.status === 'ready' ? 'Вычитать' : job.status === 'failed' ? 'Открыть запись' : 'Открыть'}</button>${['ready', 'failed'].includes(job.status) ? `<button class="btn btn-sm btn-danger-text" type="button" data-interview-delete="${escapeHtml(job.id)}">Удалить</button>` : ''}</div></article>`;
+      return `<article class="transcript-job is-${escapeHtml(job.status || 'draft')}" data-interview-status="${escapeHtml(job.status || 'draft')}"><div class="transcript-job-main"><div class="transcript-job-heading"><strong class="transcript-job-title">${escapeHtml(job.title || job.filename || 'Без названия')}</strong><span class="transcript-job-status ${escapeHtml(job.status || '')}">${escapeHtml(details.title)}</span></div><div class="transcript-job-meta"><span>${escapeHtml(job.language || 'en').toUpperCase()}</span><span>${escapeHtml(fmtBytes(Number(job.size) || 0))}</span><span>${escapeHtml(fmtDate(job.updatedAt || job.createdAt))}</span>${retentionLabel ? `<span class="transcript-retention" title="Срок хранения исходного аудио">${escapeHtml(retentionLabel)}</span>` : ''}${linkedArticleId ? `<span class="transcript-linked-draft-state is-${escapeHtml(linkedArticleState)}">${publicationStateIcon(linkedArticleState)} статья #${linkedArticleId} · ${escapeHtml(linkedArticleLabel)}</span>` : ''}</div>${renderJobProcessMap(job)}${isInFlight ? renderJobProgress(job, details, list) : ''}${nextStep ? `<p class="transcript-job-guidance">${escapeHtml(nextStep)}</p>` : ''}${job.error ? `<div class="transcript-job-error"><strong>Почему не получилось:</strong><span>${escapeHtml(interviewErrorMessage(job))}</span>${recovery ? `<small>${escapeHtml(recovery)}</small>` : ''}</div>` : ''}</div><div class="transcript-job-actions">${linkedArticleId ? `<button class="btn btn-sm btn-primary" type="button" data-interview-open-draft="${escapeHtml(job.id)}">Открыть статью</button>` : ''}${canRetry ? `<button class="btn btn-sm" type="button" data-interview-retry="${escapeHtml(job.id)}">Запустить заново</button>` : ''}${job.hasAudio && ['ready', 'failed'].includes(job.status) ? `<button class="btn btn-sm" type="button" data-interview-retention="${escapeHtml(job.id)}">Хранить ещё 30 дн.</button>` : ''}<button class="btn btn-sm" type="button" data-interview-open="${escapeHtml(job.id)}">${job.status === 'ready' ? 'Вычитать' : job.status === 'failed' ? 'Открыть запись' : hasPartialText ? 'Открыть готовые фрагменты' : 'Открыть'}</button>${['ready', 'failed'].includes(job.status) ? `<button class="btn btn-sm btn-danger-text" type="button" data-interview-delete="${escapeHtml(job.id)}">Удалить</button>` : ''}</div></article>`;
     }).join('');
   }
   function speakersFromSegments(segments) { return [...new Set((segments || []).map((segment) => String(segment.speaker || '').trim()).filter(Boolean))]; }
@@ -5469,13 +5494,20 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   function renderEditor() {
     const job = activeJob;
     if (!job) { els.editor.hidden = true; transcriptLastSnapshot = ''; transcriptUndoSnapshot = ''; transcriptHasUnsavedChanges = false; return; }
+    const isBuilding = job.status !== 'ready';
     els.editor.hidden = false;
     els.retry.hidden = job.status !== 'failed' || !job.hasAudio;
     if (els.draftPanel) els.draftPanel.hidden = job.status !== 'ready';
     if (els.reviewed) els.reviewed.checked = Boolean(job.reviewedAt);
+    if (els.reviewed) els.reviewed.disabled = isBuilding;
+    if (els.articleAuthor) els.articleAuthor.disabled = isBuilding;
+    if (els.save) els.save.disabled = isBuilding || transcriptSaveInFlight;
+    if (els.undo) els.undo.disabled = isBuilding || !transcriptUndoSnapshot || transcriptSaveInFlight;
+    if (els.replacePanel) els.replacePanel.hidden = isBuilding;
     els.editorTitle.textContent = job.title || job.filename || 'Интервью';
     const reviewCount = getReviewIssues(job).length;
-    els.editorMeta.textContent = `${statusLabel(job)} · ${job.segmentCount || (job.segments || []).length} фрагментов${reviewCount ? ` · ${reviewCount} на проверке` : ''} · создано ${fmtDate(job.createdAt)}`;
+    const partialNote = isBuilding && (job.segments || []).length ? ' · текст пополняется, доступен только для чтения' : '';
+    els.editorMeta.textContent = `${statusLabel(job)} · ${job.segmentCount || (job.segments || []).length} фрагментов${reviewCount ? ` · ${reviewCount} на проверке` : ''}${partialNote} · создано ${fmtDate(job.createdAt)}`;
     if (els.sourceLink) {
       els.sourceLink.hidden = true;
       els.sourceLink.removeAttribute('href');
@@ -5483,16 +5515,16 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     }
     const speakers = speakerOptions(job);
     els.speakersList.className = 'transcript-speakers-list';
-    els.speakersList.innerHTML = speakers.length ? speakers.map((name, index) => `<label><span class="sr-only">Участник ${index + 1}</span><input class="transcript-speaker-input" data-speaker-index="${index}" value="${escapeHtml(name)}" /></label>`).join('') : '<p class="transcript-editor-note">Спикеры появятся после готовой расшифровки.</p>';
+    els.speakersList.innerHTML = speakers.length ? speakers.map((name, index) => `<label><span class="sr-only">Участник ${index + 1}</span><input class="transcript-speaker-input" data-speaker-index="${index}" value="${escapeHtml(name)}" ${isBuilding ? 'readonly aria-readonly="true"' : ''} /></label>`).join('') : '<p class="transcript-editor-note">Спикеры появятся после готовой расшифровки.</p>';
     const search = getSearchMatches();
     updateSearchControls(search);
     const segments = search.indices.map((sourceIndex) => ({ segment: (job.segments || [])[sourceIndex], sourceIndex }));
-    if (!segments.length) { els.segments.innerHTML = `<p class="transcript-empty">${job.status === 'ready' ? 'Поиск ничего не нашёл.' : 'Текст появится здесь после обработки записи.'}</p>`; renderReviewSummary(job); renderDraftArticleAuthor(); syncDraftReadiness(); renderReplacePreview(); if (!transcriptHasUnsavedChanges) { transcriptLastSnapshot = editorSnapshot(); setTranscriptSaveState('saved'); } return; }
+    if (!segments.length) { els.segments.innerHTML = `<p class="transcript-empty">${job.status === 'ready' ? 'Поиск ничего не нашёл.' : 'Первый готовый двухминутный фрагмент появится здесь сразу после обработки.'}</p>`; renderReviewSummary(job); renderDraftArticleAuthor(); syncDraftReadiness(); renderReplacePreview(); if (!transcriptHasUnsavedChanges) { transcriptLastSnapshot = editorSnapshot(); setTranscriptSaveState('saved'); } return; }
     els.segments.innerHTML = segments.map(({ segment, sourceIndex }) => {
       const options = speakerOptions(job).map((name) => `<option value="${escapeHtml(name)}" ${name === segment.speaker ? 'selected' : ''}>${escapeHtml(name)}</option>`).join('');
       const reasons = reviewReasons(segment);
       const note = reasons.length ? `<span class="transcript-segment-note">${escapeHtml(reasons.join(' · '))}</span>` : '<span class="transcript-segment-note is-clear">без пометки</span>';
-      return `<article class="transcript-segment ${sourceIndex === activeSearchSegmentIndex ? 'is-search-current' : ''} ${sourceIndex === activeReviewSegmentIndex ? 'is-review-current' : ''}" data-segment-index="${sourceIndex}"><button type="button" class="transcript-time" data-seek="${Number(segment.start) || 0}">${escapeHtml(fmtTime(segment.start))}</button><select class="transcript-speaker-select" data-segment-speaker="${sourceIndex}">${options || `<option>${escapeHtml(segment.speaker || 'Speaker')}</option>`}</select><div class="transcript-segment-copy"><textarea class="transcript-segment-text" data-segment-text="${sourceIndex}" rows="3">${escapeHtml(segment.text || '')}</textarea><div class="transcript-segment-footer">${note}<button class="transcript-segment-review" type="button" data-transcript-toggle-review="${sourceIndex}" aria-pressed="${segment.needsReview ? 'true' : 'false'}">${segment.needsReview ? 'Снять пометку' : 'Отметить для проверки'}</button></div></div></article>`;
+      return `<article class="transcript-segment ${sourceIndex === activeSearchSegmentIndex ? 'is-search-current' : ''} ${sourceIndex === activeReviewSegmentIndex ? 'is-review-current' : ''}" data-segment-index="${sourceIndex}"><button type="button" class="transcript-time" data-seek="${Number(segment.start) || 0}">${escapeHtml(fmtTime(segment.start))}</button><select class="transcript-speaker-select" data-segment-speaker="${sourceIndex}" ${isBuilding ? 'disabled' : ''}>${options || `<option>${escapeHtml(segment.speaker || 'Speaker')}</option>`}</select><div class="transcript-segment-copy"><textarea class="transcript-segment-text" data-segment-text="${sourceIndex}" rows="3" ${isBuilding ? 'readonly aria-readonly="true"' : ''}>${escapeHtml(segment.text || '')}</textarea><div class="transcript-segment-footer">${note}<button class="transcript-segment-review" type="button" data-transcript-toggle-review="${sourceIndex}" aria-pressed="${segment.needsReview ? 'true' : 'false'}" ${isBuilding ? 'disabled' : ''}>${segment.needsReview ? 'Снять пометку' : 'Отметить для проверки'}</button></div></div></article>`;
     }).join('');
     renderReviewSummary(job);
     renderDraftArticleAuthor();
@@ -5546,6 +5578,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   }
   function toggleSegmentReview(index) {
     if (!activeJob?.segments?.[index]) return;
+    if (activeJob.status !== 'ready') return;
     const previousSnapshot = editorSnapshot();
     const draft = editorDraft();
     if (!draft.segments?.[index]) return;
@@ -5557,6 +5590,10 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   }
   async function saveEditor({ quiet = false, auto = false } = {}) {
     if (!activeJob) return false;
+    if (activeJob.status !== 'ready') {
+      if (!auto) showToast('info', 'Текст ещё пополняется. Редактирование включится после завершения расшифровки.');
+      return false;
+    }
     if (transcriptSaveInFlight) {
       if (auto) scheduleTranscriptAutosave(500);
       return false;
