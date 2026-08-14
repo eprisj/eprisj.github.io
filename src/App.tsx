@@ -205,6 +205,8 @@ const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
   'homepage.archiveTitle': { EN: 'Daily picks', RU: 'Ежедневный выбор', UA: 'Щоденний вибір', DE: 'Tägliche Auswahl', IT: 'Scelte quotidiane', ES: 'Selección diaria', TR: 'Günün seçkisi' },
   'homepage.archiveDescription': { EN: 'Every weekly composition stays here after the next one takes its place.', RU: 'Каждая недельная композиция остаётся здесь после выхода следующей.', UA: 'Кожна тижнева композиція залишається тут після виходу наступної.', DE: 'Jede Wochenkomposition bleibt hier, wenn die nächste erscheint.', IT: 'Ogni composizione settimanale resta qui quando arriva la successiva.', ES: 'Cada composición semanal permanece aquí cuando llega la siguiente.', TR: 'Bir sonraki yayınlandığında her haftalık kompozisyon burada kalır.' },
   'homepage.descriptionUnavailable': { EN: 'Short description coming soon.', RU: 'Краткое описание появится скоро.', UA: 'Короткий опис з’явиться незабаром.', DE: 'Eine kurze Beschreibung folgt in Kürze.', IT: 'Una breve descrizione arriverà presto.', ES: 'La breve descripción llegará pronto.', TR: 'Kısa açıklama yakında eklenecek.' },
+  'homepage.showDetails': { EN: 'Show description', RU: 'Показать описание', UA: 'Показати опис', DE: 'Beschreibung zeigen', IT: 'Mostra descrizione', ES: 'Mostrar descripción', TR: 'Açıklamayı göster' },
+  'homepage.hideDetails': { EN: 'Hide description', RU: 'Скрыть описание', UA: 'Сховати опис', DE: 'Beschreibung ausblenden', IT: 'Nascondi descrizione', ES: 'Ocultar descripción', TR: 'Açıklamayı gizle' },
   'homepage.articlesEyebrow': { EN: 'EPRIS / editorial', RU: 'EPRIS / редакция', UA: 'EPRIS / редакція', DE: 'EPRIS / Redaktion', IT: 'EPRIS / redazione', ES: 'EPRIS / editorial', TR: 'EPRIS / editoryal' },
   'homepage.articlesTitle': { EN: 'Articles', RU: 'Статьи', UA: 'Статті', DE: 'Artikel', IT: 'Articoli', ES: 'Artículos', TR: 'Makaleler' },
   'homepage.articlesDescription': { EN: 'The latest writing from the journal, newest first.', RU: 'Свежие тексты журнала — сначала самые новые.', UA: 'Свіжі тексти журналу — спочатку найновіші.', DE: 'Die neuesten Texte des Journals, zuerst die aktuellsten.', IT: 'Gli ultimi testi del journal, dal più recente.', ES: 'Los textos más recientes de la revista, primero los nuevos.', TR: 'Derginin en yeni yazıları, en yeniler önce.' },
@@ -1440,18 +1442,19 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
     if (activeGesture?.source === 'touch' && Date.now() - activeGesture.startedAt < 1200) return;
     gestureSourceRef.current = { source: 'pointer', startedAt: Date.now() };
     dragStateRef.current = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, moved: false };
-    // Pointer capture is useful for a mouse drag, but can swallow a touch-end
-    // in some iOS WebViews. Touch has its own explicit fallback below.
-    if (event.pointerType === 'mouse') {
-      try { event.currentTarget.setPointerCapture?.(event.pointerId); } catch { /* capture is optional */ }
-    }
     setIsDragging(true);
   };
   const handleCarouselPointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (event.pointerType === 'touch') return;
     const drag = dragStateRef.current;
     if (!drag || drag.pointerId !== event.pointerId) return;
-    if (Math.hypot(event.clientX - drag.x, event.clientY - drag.y) > 8) drag.moved = true;
+    if (Math.hypot(event.clientX - drag.x, event.clientY - drag.y) > 8 && !drag.moved) {
+      drag.moved = true;
+      // Capture only after it is proven to be a drag. Capturing on mousedown
+      // retargets a normal click from the image button to this container in
+      // Chromium, which made the centred photograph look unresponsive.
+      try { event.currentTarget.setPointerCapture?.(event.pointerId); } catch { /* capture is optional */ }
+    }
   };
   const handleCarouselPointerEnd = (event: ReactPointerEvent<HTMLDivElement>, cancelled = false) => {
     if (event.pointerType === 'touch') return;
@@ -1460,7 +1463,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
     dragStateRef.current = null;
     if (gestureSourceRef.current?.source === 'pointer') gestureSourceRef.current = null;
     setIsDragging(false);
-    if (event.pointerType === 'mouse') {
+    if (event.pointerType === 'mouse' && drag.moved) {
       try { event.currentTarget.releasePointerCapture?.(event.pointerId); } catch { /* capture may already be released */ }
     }
     finishCarouselGesture(drag, event.clientX, event.clientY, cancelled);
@@ -1559,13 +1562,8 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
           <div
             style={carouselStyle}
             className={`home-carousel${isDragging ? ' is-dragging' : ''}${captionsOverlay ? ' home-carousel--captions-overlay' : ''}${mobilePeek ? ' home-carousel--mobile-peek' : ''}${compactCards ? ' home-carousel--compact' : ''}`}
-            tabIndex={0}
+            tabIndex={-1}
             aria-label={t('homepage.carouselLabel')}
-            onKeyDown={(event) => {
-              if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') event.preventDefault();
-              if (event.key === 'ArrowLeft') moveCarousel(-1);
-              if (event.key === 'ArrowRight') moveCarousel(1);
-            }}
             onPointerDown={handleCarouselPointerDown}
             onPointerMove={handleCarouselPointerMove}
             onPointerUp={handleCarouselPointerEnd}
