@@ -111,6 +111,7 @@ function jobSummary(job, full = false) {
     model: job.model || "",
     processing: {
       phase: job.phase || (job.status === "queued" ? "queued" : job.status || "idle"),
+      failedPhase: job.failedPhase || "",
       sourceDurationSeconds: Math.max(0, Number(job.sourceDurationSeconds) || 0),
       chunkCount: Math.max(0, Number(job.chunkCount) || 0),
       completedChunks: Math.max(0, Number(job.completedChunks) || 0),
@@ -301,6 +302,7 @@ async function processJob(id) {
     const job = readJob(id);
     if (job) {
       job.status = "failed";
+      job.failedPhase = job.phase || "queued";
       job.phase = "failed";
       job.stage = "Needs attention";
       job.error = clip(error.message, 800);
@@ -469,6 +471,7 @@ function createInterviewModule({ resolveRole }) {
         job.stage = "Waiting for the local transcription worker";
         job.progress = 1;
         job.error = "";
+        delete job.failedPhase;
         job.attempt = Math.max(1, Number(job.attempt) || 1) + 1;
         job.attemptStartedAt = now();
         job.checkpointAt = now();
