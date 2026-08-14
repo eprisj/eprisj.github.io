@@ -4943,6 +4943,8 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   const mediaExtensions = /\.(3g2|3gp|aac|aif|aiff|alac|amr|asf|avi|flac|m4a|m4v|mkv|mov|mp3|mp4|mpeg|mpga|ogg|opus|wav|webm|wma|wmv)$/i;
   const videoExtensions = /\.(3g2|3gp|asf|avi|m4v|mkv|mov|mp4|mpeg|webm|wmv)$/i;
   const acceptedMediaHint = 'MP3, M4A, WAV, MP4, MOV, MKV, AVI, WebM, AAC и другие';
+  const MAX_TRANSCRIPT_BYTES = 1536 * 1024 * 1024;
+  const maxTranscriptSizeLabel = '1.5 ГБ';
   const fmtBytes = (bytes) => bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
   function isSafeSourceUrl(value) {
     if (!String(value || '').trim()) return true;
@@ -5396,7 +5398,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   function setFile(file) {
     if (!file) return;
     if (!file.type.startsWith('audio/') && !file.type.startsWith('video/') && !mediaExtensions.test(file.name)) { showToast('error', `Выберите аудио или видео: ${acceptedMediaHint}.`); return; }
-    if (file.size > 512 * 1024 * 1024) { showToast('error', 'Файл больше 512 МБ. Сожмите запись или разделите её на части.'); return; }
+    if (file.size > MAX_TRANSCRIPT_BYTES) { showToast('error', `Файл больше ${maxTranscriptSizeLabel}. Сожмите запись или разделите её на части.`); return; }
     selectedFile = file;
     if (!els.title.value.trim()) els.title.value = file.name.replace(/\.[^.]+$/, '');
     els.fileLabel.textContent = file.name;
@@ -5580,7 +5582,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     if (els.sourceUrl) els.sourceUrl.value = '';
     if (els.consent) els.consent.checked = false;
     if (els.fileLabel) els.fileLabel.textContent = 'Выбрать аудио или видео';
-    if (els.fileMeta) els.fileMeta.textContent = `${acceptedMediaHint} · до 512 МБ. VPS извлечёт звук из видео локально.`;
+    if (els.fileMeta) els.fileMeta.textContent = `${acceptedMediaHint} · до ${maxTranscriptSizeLabel}. VPS извлечёт звук из видео локально.`;
     els.dropzone?.classList.remove('is-ready');
     updateSourceStatus();
     closeComposer();
