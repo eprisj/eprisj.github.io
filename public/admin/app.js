@@ -5581,7 +5581,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
       const options = speakerOptions(job).map((name) => `<option value="${escapeHtml(name)}" ${name === segment.speaker ? 'selected' : ''}>${escapeHtml(name)}</option>`).join('');
       const reasons = reviewReasons(segment);
       const note = reasons.length ? `<span class="transcript-segment-note">${escapeHtml(reasons.join(' · '))}</span>` : '<span class="transcript-segment-note is-clear">без пометки</span>';
-      return `<article class="transcript-segment ${sourceIndex === activeSearchSegmentIndex ? 'is-search-current' : ''} ${sourceIndex === activeReviewSegmentIndex ? 'is-review-current' : ''}" data-segment-index="${sourceIndex}" data-segment-start="${Number(segment.start) || 0}" data-segment-end="${Number(segment.end) || 0}"><button type="button" class="transcript-time" data-seek="${Number(segment.start) || 0}">${escapeHtml(fmtTime(segment.start))}</button><select class="transcript-speaker-select" data-segment-speaker="${sourceIndex}" ${isBuilding ? 'disabled' : ''}>${options || `<option>${escapeHtml(segment.speaker || 'Speaker')}</option>`}</select><div class="transcript-segment-copy"><textarea class="transcript-segment-text" data-segment-text="${sourceIndex}" rows="3" ${isBuilding ? 'readonly aria-readonly="true"' : ''}>${escapeHtml(segment.text || '')}</textarea><div class="transcript-segment-footer">${note}<button class="transcript-segment-review" type="button" data-transcript-toggle-review="${sourceIndex}" aria-pressed="${segment.needsReview ? 'true' : 'false'}" ${isBuilding ? 'disabled' : ''}>${segment.needsReview ? 'Снять пометку' : 'Отметить для проверки'}</button></div></div></article>`;
+      return `<article class="transcript-segment ${sourceIndex === activeSearchSegmentIndex ? 'is-search-current' : ''} ${sourceIndex === activeReviewSegmentIndex ? 'is-review-current' : ''}" data-segment-index="${sourceIndex}" data-segment-start="${Number(segment.start) || 0}" data-segment-end="${Number(segment.end) || 0}"><button type="button" class="transcript-time" data-seek="${Number(segment.start) || 0}">${escapeHtml(fmtTime(segment.start))}</button><div class="transcript-speaker-row"><select class="transcript-speaker-select" data-segment-speaker="${sourceIndex}" ${isBuilding ? 'disabled' : ''}>${options || `<option>${escapeHtml(segment.speaker || 'Speaker')}</option>`}</select>${!isBuilding ? `<button type="button" class="transcript-speaker-paint" data-paint-down="${sourceIndex}" title="Назначить этого спикера всем строкам ниже, до конца">⬇ до конца</button>` : ''}</div><div class="transcript-segment-copy"><textarea class="transcript-segment-text" data-segment-text="${sourceIndex}" rows="3" ${isBuilding ? 'readonly aria-readonly="true"' : ''}>${escapeHtml(segment.text || '')}</textarea><div class="transcript-segment-footer">${note}<button class="transcript-segment-review" type="button" data-transcript-toggle-review="${sourceIndex}" aria-pressed="${segment.needsReview ? 'true' : 'false'}" ${isBuilding ? 'disabled' : ''}>${segment.needsReview ? 'Снять пометку' : 'Отметить для проверки'}</button></div></div></article>`;
     }).join('');
     renderReviewSummary(job);
     renderDraftArticleAuthor();
@@ -5960,7 +5960,42 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   }); els.txt?.addEventListener('click', () => download('txt')); els.docx?.addEventListener('click', () => download('docx')); els.srt?.addEventListener('click', () => download('srt')); els.vtt?.addEventListener('click', () => download('vtt')); els.createArticle?.addEventListener('click', createArticle); els.openArticle?.addEventListener('click', openLinkedArticle); els.articleAuthor?.addEventListener('change', () => { draftArticleAuthorId = els.articleAuthor.value; renderDraftArticleAuthor(); }); els.reviewed?.addEventListener('change', () => { syncDraftReadiness(); markTranscriptChanged(); });
   els.segments?.addEventListener('input', markTranscriptChanged); els.segments?.addEventListener('change', markTranscriptChanged); els.speakersList?.addEventListener('input', markTranscriptChanged); els.speakersList?.addEventListener('change', markTranscriptChanged);
   els.reviewSummary?.addEventListener('click', (event) => { const button = event.target.closest('[data-transcript-next-review]'); if (!button) return; const issues = getReviewIssues(); if (!issues.length) return; const current = issues.findIndex((issue) => issue.index === Number(button.dataset.transcriptNextReview)); focusReviewIssue(issues[(Math.max(0, current) + 1) % issues.length].index); });
-  els.segments?.addEventListener('click', (event) => { const reviewButton = event.target.closest('[data-transcript-toggle-review]'); if (reviewButton) { toggleSegmentReview(Number(reviewButton.dataset.transcriptToggleReview)); return; } const target = event.target.closest('[data-seek]'); if (!target || !els.audio.src) return; els.audio.currentTime = Number(target.dataset.seek) || 0; els.audio.play().catch(() => {}); });
+  els.segments?.addEventListener('click', (event) => {
+    const reviewButton = event.target.closest('[data-transcript-toggle-review]');
+    if (reviewButton) { toggleSegmentReview(Number(reviewButton.dataset.transcriptToggleReview)); return; }
+    const paintButton = event.target.closest('[data-paint-down]');
+    if (paintButton) {
+      const fromIndex = Number(paintButton.dataset.paintDown);
+      const sourceSelect = els.segments.querySelector(`[data-segment-speaker="${fromIndex}"]`);
+      if (!sourceSelect) return;
+      const value = sourceSelect.value;
+      let painted = 0;
+      els.segments.querySelectorAll('[data-segment-speaker]').forEach((select) => {
+        if (Number(select.dataset.segmentSpeaker) > fromIndex) { select.value = value; painted++; }
+      });
+      if (painted) { markTranscriptChanged(); showToast('success', `Спикер «${value}» назначен ${painted} ${painted === 1 ? 'строке' : 'строкам'} ниже.`); }
+      return;
+    }
+    const target = event.target.closest('[data-seek]');
+    if (!target || !els.audio.src) return;
+    els.audio.currentTime = Number(target.dataset.seek) || 0;
+    els.audio.play().catch(() => {});
+  });
+  // Quick keyboard assignment: focus anywhere in a segment's speaker select
+  // and press 1-9 to jump straight to that speaker in the list — much
+  // faster than reopening the dropdown for every alternating line in a
+  // long two-person interview.
+  els.segments?.addEventListener('keydown', (event) => {
+    if (!/^[1-9]$/.test(event.key)) return;
+    const select = event.target.closest('.transcript-speaker-select');
+    if (!select) return;
+    const index = Number(event.key) - 1;
+    if (select.options[index]) {
+      event.preventDefault();
+      select.selectedIndex = index;
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  });
   document.querySelector('[data-tab="transcripts"]')?.addEventListener('click', () => refresh(true));
   window.addEventListener('beforeunload', (event) => {
     if (!transcriptHasUnsavedChanges && !transcriptSaveInFlight) return;
