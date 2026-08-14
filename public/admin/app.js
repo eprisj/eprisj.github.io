@@ -4935,6 +4935,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   let transcriptUndoSnapshot = '';
   let transcriptHasUnsavedChanges = false;
   let transcriptSaveInFlight = false;
+  let transcriptServiceReady = false;
   let draftArticleAuthorId = '';
   let activeSearchSegmentIndex = -1;
   let activeReviewSegmentIndex = -1;
@@ -5064,7 +5065,6 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   function updateSourceStatus() {}
   function syncSourceMode() {
     if (els.filePanel) els.filePanel.hidden = false;
-    if (els.submitDetail) els.submitDetail.textContent = 'Файл попадёт в закрытую рабочую папку VPS. После отправки вкладку можно закрыть.';
     updateStart();
   }
   function updateStart() {
@@ -5074,7 +5074,11 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     if (!transcriptUploadInFlight) els.start.textContent = 'Загрузить и расшифровать';
   }
   function closeComposer() { els.composer.hidden = true; }
-  function openComposer() { els.composer.hidden = false; syncSourceMode(); els.composer.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  function openComposer() {
+    if (transcriptUploadInFlight) return;
+    if (!transcriptServiceReady) { showToast('error', 'Студия ещё проверяет локальный обработчик. Подождите зелёный статус и повторите.'); return; }
+    els.file?.click();
+  }
   function setTranscriptSaveState(state, message) {
     if (!els.saveState) return;
     const labels = {
@@ -5363,10 +5367,14 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     const fileKind = isVideo ? 'видео: VPS извлечёт звук локально' : isIphoneRecording ? 'запись iPhone: формат распознан' : 'аудио: готово к расшифровке';
     els.fileMeta.textContent = `${fmtBytes(file.size)} · ${fileKind} · хранение ${els.retention.value} дн.`;
     els.dropzone.classList.add('is-ready');
+    els.composer.hidden = false;
+    els.composer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     updateStart();
+    window.setTimeout(() => startUpload(), 0);
   }
   function renderReadiness(health) {
     const ready = health?.localEngine?.ready && health?.ffmpegReady && health?.ffprobeReady;
+    transcriptServiceReady = Boolean(ready);
     const queue = getQueueSnapshot();
     els.readiness.className = `transcript-readiness card ${ready ? 'ready' : 'missing'}`;
     const missing = [!health?.localEngine?.ready && 'локальный движок расшифровки', !health?.ffmpegReady && 'подготовка аудио', !health?.ffprobeReady && 'проверка аудиодорожки'].filter(Boolean);
@@ -5588,9 +5596,11 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   function clearComposerAfterStart() {
     selectedFile = null;
     if (els.file) els.file.value = '';
-    if (els.consent) els.consent.checked = false;
-    if (els.fileLabel) els.fileLabel.textContent = 'Выбрать запись';
-    if (els.fileMeta) els.fileMeta.textContent = `${acceptedMediaHint} · до ${maxTranscriptSizeLabel}. VPS приведёт запись к рабочему формату локально.`;
+    if (els.title) els.title.value = '';
+    if (els.speakers) els.speakers.value = '';
+    if (els.consent) els.consent.checked = true;
+    if (els.fileLabel) els.fileLabel.textContent = 'Выбрать другой файл';
+    if (els.fileMeta) els.fileMeta.textContent = `${acceptedMediaHint} · до ${maxTranscriptSizeLabel}.`;
     els.dropzone?.classList.remove('is-ready');
     if (els.uploadProgress) els.uploadProgress.hidden = true;
     closeComposer();
@@ -5631,12 +5641,13 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     });
   }
   async function startUpload() {
-    if (els.start.dataset.ready !== 'true') { showToast('error', 'Сначала нужно завершить настройку расшифровки на VPS.'); return; }
-    if (!els.consent?.checked || transcriptUploadInFlight) return;
+    if (!transcriptServiceReady) { showToast('error', 'Студия ещё проверяет локальный обработчик. Подождите зелёный статус и повторите.'); return; }
+    if (transcriptUploadInFlight) return;
     try {
       transcriptUploadInFlight = true;
       els.start.disabled = true;
       if (!selectedFile) return;
+      els.composer?.classList.add('is-uploading');
       const file = selectedFile;
       els.start.textContent = 'Загружаю…';
       setUploadProgress({ state: 'uploading', percent: 0, phase: 'Передаём исходный файл', detail: 'Файл передаётся напрямую в закрытую рабочую папку VPS. Не закрывайте страницу до подтверждения.' });
@@ -5660,7 +5671,11 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     } catch (error) {
       setUploadProgress({ state: 'error', percent: 0, phase: 'Не удалось передать файл', detail: getErrorMessage(error) });
       showToast('error', getErrorMessage(error));
-    } finally { transcriptUploadInFlight = false; updateStart(); }
+    } finally {
+      transcriptUploadInFlight = false;
+      els.composer?.classList.remove('is-uploading');
+      updateStart();
+    }
   }
   async function download(format) {
     if (!activeJob) return;

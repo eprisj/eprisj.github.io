@@ -7278,6 +7278,7 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .transcript-flow-note { max-width: 560px; min-height: 2.8em; margin: 15px 0 0; color: var(--text-muted); font-size: .7rem; line-height: 1.5; }.transcript-next-action { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; max-width: 720px; margin-top: 14px; padding: 10px 11px; border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--line)); border-radius: 9px; background: color-mix(in srgb, var(--accent-soft) 42%, var(--bg)); }.transcript-next-kicker { align-self: stretch; display: grid; place-items: center; min-width: 70px; padding: 4px 7px; border-right: 1px solid color-mix(in srgb, var(--accent) 24%, var(--line)); color: var(--accent); font: 700 .51rem/1.25 var(--font-mono); letter-spacing: .09em; text-align: center; text-transform: uppercase; }.transcript-next-action div { display: grid; min-width: 0; gap: 3px; }.transcript-next-action strong { font: 600 .78rem/1.25 var(--font-serif); }.transcript-next-action span:not(.transcript-next-kicker) { color: var(--text-muted); font-size: .62rem; line-height: 1.42; }.transcript-next-action .btn { min-height: 36px; white-space: nowrap; }
 .transcript-hero-actions, .transcript-editor-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
 .transcript-hero-actions { justify-content: flex-start; margin-top: 16px; }
+.transcript-intake-cta { min-height: 46px; padding-inline: 20px; }
 .transcript-hero-visual { position: relative; display: grid; min-height: 258px; place-items: center; align-self: stretch; }
 .transcript-hero-signal { position: relative; display: grid; width: min(100%, 300px); min-height: 210px; align-content: center; justify-items: center; gap: 20px; padding: 27px 22px 24px; border: 1px solid color-mix(in srgb, var(--accent) 31%, var(--line)); border-radius: 14px; background: color-mix(in srgb, var(--bg-card) 79%, transparent); box-shadow: 0 20px 48px color-mix(in srgb, var(--accent) 10%, transparent); }
 .transcript-hero-signal::before { position: absolute; inset: 9px; border: 1px solid color-mix(in srgb, var(--line-strong) 55%, transparent); border-radius: 9px; content: ""; pointer-events: none; }
@@ -7445,6 +7446,8 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .transcript-source-status.is-ready { color: #397248; }
 .transcript-source-status.is-error { color: var(--danger); }
 .transcript-source-panel .transcript-dropzone { margin-top: 0; }
+.transcript-composer.is-uploading .transcript-dropzone { pointer-events: none; opacity: .56; }
+.transcript-intake-note { max-width: 700px; margin: 13px 0 0; color: var(--text-muted); font-size: .67rem; line-height: 1.5; }
 .transcript-advanced {
   margin-top: 13px;
   border: 1px solid var(--line);
