@@ -5466,8 +5466,10 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     }
     if (startedAt) facts.push(`В работе ${fmtDuration((Date.now() - startedAt) / 1000) || '<1 мин'}`);
     const dots = chunkCount > 0 ? `<div class="transcript-chunk-dots" aria-hidden="true">${Array.from({ length: chunkCount }, (_, i) => `<i class="${i < completedChunks ? 'is-done' : i === completedChunks ? 'is-current' : ''}"></i>`).join('')}</div>` : '';
+    const history = Array.isArray(processing.checkpointHistory) ? processing.checkpointHistory : [];
+    const snapshots = history.length ? `<details class="transcript-snapshots"><summary>Снепшоты · ${history.length}</summary><ol>${[...history].reverse().map((point) => `<li><span>${escapeHtml(fmtDate(point.at))}</span><span>часть ${escapeHtml(String(point.chunk))} · +${escapeHtml(String(point.segments))} ${point.segments === 1 ? 'фрагмент' : 'фрагментов'}</span></li>`).join('')}</ol></details>` : '';
     const stageLabel = job?.status === 'queued' ? 'Ожидает очереди' : details.title;
-    return `<div class="transcript-job-process" aria-live="polite"><div class="transcript-progress-head"><span>${escapeHtml(stageLabel)}</span><strong>${progress}%</strong></div><div class="transcript-progress" role="progressbar" aria-label="Прогресс расшифровки" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}" style="--transcript-progress:${progress / 100}"><i></i></div>${dots}<div class="transcript-progress-facts">${facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join('')}</div><p>${escapeHtml(details.detail)}</p></div>`;
+    return `<div class="transcript-job-process" aria-live="polite"><div class="transcript-progress-head"><span>${escapeHtml(stageLabel)}</span><strong>${progress}%</strong></div><div class="transcript-progress" role="progressbar" aria-label="Прогресс расшифровки" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}" style="--transcript-progress:${progress / 100}"><i></i></div>${dots}<div class="transcript-progress-facts">${facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join('')}</div><p>${escapeHtml(details.detail)}</p>${snapshots}</div>`;
   }
   function renderJobProcessMap(job) {
     const processing = job?.processing || {};
