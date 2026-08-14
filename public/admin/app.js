@@ -4919,8 +4919,8 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   const els = {
     readiness: $('transcriptReadiness'), composer: $('transcriptComposer'), newBtn: $('transcriptNewBtn'), refreshBtn: $('transcriptRefreshBtn'), closeComposerBtn: $('transcriptCloseComposerBtn'),
     hero: $('transcriptHero'), flow: $('transcriptFlow'), flowNote: $('transcriptFlowNote'), nextAction: $('transcriptNextAction'), nextTitle: $('transcriptNextTitle'), nextDetail: $('transcriptNextDetail'), nextButton: $('transcriptNextButton'),
-    title: $('transcriptTitle'), language: $('transcriptLanguage'), retention: $('transcriptRetention'), speakers: $('transcriptSpeakers'), file: $('transcriptAudioInput'), fileLabel: $('transcriptFileLabel'), fileMeta: $('transcriptFileMeta'), dropzone: $('transcriptDropZone'), consent: $('transcriptConsent'), start: $('transcriptStartBtn'),
-    jobs: $('transcriptJobs'), count: $('transcriptLibraryCount'), archiveSearch: $('transcriptArchiveSearch'), archiveFilters: $('transcriptArchiveFilters'), editor: $('transcriptEditor'), editorTitle: $('transcriptEditorTitle'), editorMeta: $('transcriptEditorMeta'),
+    title: $('transcriptTitle'), language: $('transcriptLanguage'), retention: $('transcriptRetention'), speakers: $('transcriptSpeakers'), sourceUrl: $('transcriptSourceUrl'), file: $('transcriptAudioInput'), fileLabel: $('transcriptFileLabel'), fileMeta: $('transcriptFileMeta'), dropzone: $('transcriptDropZone'), consent: $('transcriptConsent'), start: $('transcriptStartBtn'),
+    jobs: $('transcriptJobs'), count: $('transcriptLibraryCount'), archiveSearch: $('transcriptArchiveSearch'), archiveFilters: $('transcriptArchiveFilters'), editor: $('transcriptEditor'), editorTitle: $('transcriptEditorTitle'), editorMeta: $('transcriptEditorMeta'), sourceLink: $('transcriptSourceLink'),
     loadAudio: $('transcriptLoadAudioBtn'), retry: $('transcriptRetryBtn'), audio: $('transcriptAudio'), save: $('transcriptSaveBtn'), undo: $('transcriptUndoBtn'), saveState: $('transcriptSaveState'), txt: $('transcriptTxtBtn'), srt: $('transcriptSrtBtn'), vtt: $('transcriptVttBtn'), createArticle: $('transcriptCreateArticleBtn'), draftPanel: $('transcriptDraftPanel'), draftSetup: $('transcriptDraftSetup'), draftOutcome: $('transcriptDraftOutcome'), openArticle: $('transcriptOpenArticleBtn'), articleAuthor: $('transcriptArticleAuthor'), articleAuthorSummary: $('transcriptArticleAuthorSummary'), reviewed: $('transcriptReviewed'), speakersList: $('transcriptSpeakersList'), search: $('transcriptSearch'), searchPrev: $('transcriptSearchPrev'), searchNext: $('transcriptSearchNext'), segmentCount: $('transcriptSegmentCount'), replacePanel: $('transcriptReplace'), replaceFind: $('transcriptReplaceFind'), replaceWith: $('transcriptReplaceWith'), replacePreview: $('transcriptReplacePreview'), replaceButton: $('transcriptReplaceAllBtn'), segments: $('transcriptSegments'), reviewSummary: $('transcriptReviewSummary'),
   };
   let selectedFile = null;
@@ -4938,8 +4938,25 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   let activeReviewSegmentIndex = -1;
   let archiveFilter = 'all';
   let suggestedInterviewAction = null;
-  const audioExtensions = /\.(mp3|m4a|wav|mp4|mpeg|mpga|ogg|webm|flac)$/i;
+  const mediaExtensions = /\.(3g2|3gp|aac|aif|aiff|alac|amr|asf|avi|flac|m4a|m4v|mkv|mov|mp3|mp4|mpeg|mpga|ogg|opus|wav|webm|wma|wmv)$/i;
+  const videoExtensions = /\.(3g2|3gp|asf|avi|m4v|mkv|mov|mp4|mpeg|webm|wmv)$/i;
+  const acceptedMediaHint = 'MP3, M4A, WAV, MP4, MOV, MKV, AVI, WebM, AAC и другие';
   const fmtBytes = (bytes) => bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+  function isSafeSourceUrl(value) {
+    if (!String(value || '').trim()) return true;
+    try {
+      const parsed = new URL(String(value).trim());
+      return parsed.protocol === 'https:' && !parsed.username && !parsed.password;
+    } catch { return false; }
+  }
+  function sourceServiceName(value) {
+    try {
+      const host = new URL(String(value)).hostname.replace(/^www\./i, '').toLowerCase();
+      if (host === 'youtu.be' || host === 'youtube.com' || host.endsWith('.youtube.com')) return 'YouTube';
+      if (host === 'vimeo.com' || host.endsWith('.vimeo.com')) return 'Vimeo';
+      return host;
+    } catch { return 'исходник'; }
+  }
   const fmtDate = (value) => value ? new Intl.DateTimeFormat('ru-RU', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(value)) : '—';
   const fmtTime = (seconds) => {
     const total = Math.max(0, Math.floor(Number(seconds) || 0));
@@ -5320,12 +5337,13 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   }
   function setFile(file) {
     if (!file) return;
-    if (!file.type.startsWith('audio/') && !audioExtensions.test(file.name)) { showToast('error', 'Выберите аудиофайл: MP3, M4A, WAV, MP4, OGG, WebM или FLAC.'); return; }
+    if (!file.type.startsWith('audio/') && !file.type.startsWith('video/') && !mediaExtensions.test(file.name)) { showToast('error', `Выберите аудио или видео: ${acceptedMediaHint}.`); return; }
     if (file.size > 512 * 1024 * 1024) { showToast('error', 'Файл больше 512 МБ. Сожмите запись или разделите её на части.'); return; }
     selectedFile = file;
     if (!els.title.value.trim()) els.title.value = file.name.replace(/\.[^.]+$/, '');
     els.fileLabel.textContent = file.name;
-    els.fileMeta.textContent = `${fmtBytes(file.size)} · файл будет храниться ${els.retention.value} дн.`;
+    const isVideo = file.type.startsWith('video/') || videoExtensions.test(file.name);
+    els.fileMeta.textContent = `${fmtBytes(file.size)} · ${isVideo ? 'видео: VPS извлечёт звук локально' : 'аудио: готово к расшифровке'} · хранение ${els.retention.value} дн.`;
     els.dropzone.classList.add('is-ready');
     updateStart();
   }
@@ -5369,9 +5387,11 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
       const linkedArticleState = linkedArticle ? getPublicationState(contentData, 'articles', linkedArticle) : 'draft';
       const linkedArticleLabel = linkedArticle ? publicationStateLabel(linkedArticleState).toLocaleLowerCase() : 'создан';
       const retentionLabel = audioRetentionLabel(job);
+      const sourceUrl = typeof job.sourceUrl === 'string' && /^https:\/\//i.test(job.sourceUrl) ? job.sourceUrl : '';
+      const sourceLink = sourceUrl ? `<a class="transcript-source-link" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer">Источник · ${escapeHtml(sourceServiceName(sourceUrl))}</a>` : '';
       const nextStep = nextInterviewStep(job, linkedArticleId);
       const recovery = job.status === 'failed' ? (job.hasAudio ? 'Аудио на месте. Повторный запуск не удалит вашу запись.' : 'Исходный файл уже удалён. Добавьте его заново, чтобы повторить обработку.') : '';
-      return `<article class="transcript-job is-${escapeHtml(job.status || 'draft')}" data-interview-status="${escapeHtml(job.status || 'draft')}"><div class="transcript-job-main"><div class="transcript-job-heading"><strong class="transcript-job-title">${escapeHtml(job.title || job.filename || 'Без названия')}</strong><span class="transcript-job-status ${escapeHtml(job.status || '')}">${escapeHtml(details.title)}</span></div><div class="transcript-job-meta"><span>${escapeHtml(job.language || 'en').toUpperCase()}</span><span>${escapeHtml(fmtBytes(Number(job.size) || 0))}</span><span>${escapeHtml(fmtDate(job.updatedAt || job.createdAt))}</span>${retentionLabel ? `<span class="transcript-retention" title="Срок хранения исходного аудио">${escapeHtml(retentionLabel)}</span>` : ''}${linkedArticleId ? `<span class="transcript-linked-draft-state is-${escapeHtml(linkedArticleState)}">${publicationStateIcon(linkedArticleState)} статья #${linkedArticleId} · ${escapeHtml(linkedArticleLabel)}</span>` : ''}</div><div class="transcript-job-rail" aria-label="Этап ${details.step} из 3"><span class="${details.step >= 1 ? 'is-done' : ''}">01</span><i class="${details.step >= 2 ? 'is-done' : ''}"></i><span class="${details.step >= 2 ? 'is-done' : ''}">02</span><i class="${details.step >= 3 ? 'is-done' : ''}"></i><span class="${details.step >= 3 ? 'is-done' : ''}">03</span></div>${isInFlight ? `<div class="transcript-job-process"><div class="transcript-progress" aria-label="Прогресс ${progress}%"><i style="width:${progress}%"></i></div><span>${escapeHtml(details.detail)}</span></div>` : ''}${nextStep ? `<p class="transcript-job-guidance">${escapeHtml(nextStep)}</p>` : ''}${job.error ? `<div class="transcript-job-error"><strong>Почему не получилось:</strong><span>${escapeHtml(job.error)}</span>${recovery ? `<small>${escapeHtml(recovery)}</small>` : ''}</div>` : ''}</div><div class="transcript-job-actions">${linkedArticleId ? `<button class="btn btn-sm btn-primary" type="button" data-interview-open-draft="${escapeHtml(job.id)}">Открыть статью</button>` : ''}${job.status === 'failed' && job.hasAudio ? `<button class="btn btn-sm" type="button" data-interview-retry="${escapeHtml(job.id)}">Запустить заново</button>` : ''}${job.hasAudio && ['ready', 'failed'].includes(job.status) ? `<button class="btn btn-sm" type="button" data-interview-retention="${escapeHtml(job.id)}">Хранить ещё 30 дн.</button>` : ''}<button class="btn btn-sm" type="button" data-interview-open="${escapeHtml(job.id)}">${job.status === 'ready' ? 'Вычитать' : job.status === 'failed' ? 'Открыть запись' : 'Открыть'}</button>${['ready', 'failed'].includes(job.status) ? `<button class="btn btn-sm btn-danger-text" type="button" data-interview-delete="${escapeHtml(job.id)}">Удалить</button>` : ''}</div></article>`;
+      return `<article class="transcript-job is-${escapeHtml(job.status || 'draft')}" data-interview-status="${escapeHtml(job.status || 'draft')}"><div class="transcript-job-main"><div class="transcript-job-heading"><strong class="transcript-job-title">${escapeHtml(job.title || job.filename || 'Без названия')}</strong><span class="transcript-job-status ${escapeHtml(job.status || '')}">${escapeHtml(details.title)}</span></div><div class="transcript-job-meta"><span>${escapeHtml(job.language || 'en').toUpperCase()}</span><span>${escapeHtml(fmtBytes(Number(job.size) || 0))}</span><span>${escapeHtml(fmtDate(job.updatedAt || job.createdAt))}</span>${retentionLabel ? `<span class="transcript-retention" title="Срок хранения исходного аудио">${escapeHtml(retentionLabel)}</span>` : ''}${linkedArticleId ? `<span class="transcript-linked-draft-state is-${escapeHtml(linkedArticleState)}">${publicationStateIcon(linkedArticleState)} статья #${linkedArticleId} · ${escapeHtml(linkedArticleLabel)}</span>` : ''}</div>${sourceLink}<div class="transcript-job-rail" aria-label="Этап ${details.step} из 3"><span class="${details.step >= 1 ? 'is-done' : ''}">01</span><i class="${details.step >= 2 ? 'is-done' : ''}"></i><span class="${details.step >= 2 ? 'is-done' : ''}">02</span><i class="${details.step >= 3 ? 'is-done' : ''}"></i><span class="${details.step >= 3 ? 'is-done' : ''}">03</span></div>${isInFlight ? `<div class="transcript-job-process"><div class="transcript-progress" aria-label="Прогресс ${progress}%"><i style="width:${progress}%"></i></div><span>${escapeHtml(details.detail)}</span></div>` : ''}${nextStep ? `<p class="transcript-job-guidance">${escapeHtml(nextStep)}</p>` : ''}${job.error ? `<div class="transcript-job-error"><strong>Почему не получилось:</strong><span>${escapeHtml(job.error)}</span>${recovery ? `<small>${escapeHtml(recovery)}</small>` : ''}</div>` : ''}</div><div class="transcript-job-actions">${linkedArticleId ? `<button class="btn btn-sm btn-primary" type="button" data-interview-open-draft="${escapeHtml(job.id)}">Открыть статью</button>` : ''}${job.status === 'failed' && job.hasAudio ? `<button class="btn btn-sm" type="button" data-interview-retry="${escapeHtml(job.id)}">Запустить заново</button>` : ''}${job.hasAudio && ['ready', 'failed'].includes(job.status) ? `<button class="btn btn-sm" type="button" data-interview-retention="${escapeHtml(job.id)}">Хранить ещё 30 дн.</button>` : ''}<button class="btn btn-sm" type="button" data-interview-open="${escapeHtml(job.id)}">${job.status === 'ready' ? 'Вычитать' : job.status === 'failed' ? 'Открыть запись' : 'Открыть'}</button>${['ready', 'failed'].includes(job.status) ? `<button class="btn btn-sm btn-danger-text" type="button" data-interview-delete="${escapeHtml(job.id)}">Удалить</button>` : ''}</div></article>`;
     }).join('');
   }
   function speakersFromSegments(segments) { return [...new Set((segments || []).map((segment) => String(segment.speaker || '').trim()).filter(Boolean))]; }
@@ -5386,6 +5406,12 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     els.editorTitle.textContent = job.title || job.filename || 'Интервью';
     const reviewCount = getReviewIssues(job).length;
     els.editorMeta.textContent = `${statusLabel(job)} · ${job.segmentCount || (job.segments || []).length} фрагментов${reviewCount ? ` · ${reviewCount} на проверке` : ''} · создано ${fmtDate(job.createdAt)}`;
+    const sourceUrl = typeof job.sourceUrl === 'string' && /^https:\/\//i.test(job.sourceUrl) ? job.sourceUrl : '';
+    if (els.sourceLink) {
+      els.sourceLink.hidden = !sourceUrl;
+      els.sourceLink.href = sourceUrl || '#';
+      els.sourceLink.textContent = sourceUrl ? `Открыть источник · ${sourceServiceName(sourceUrl)}` : '';
+    }
     const speakers = speakerOptions(job);
     els.speakersList.className = 'transcript-speakers-list';
     els.speakersList.innerHTML = speakers.length ? speakers.map((name, index) => `<label><span class="sr-only">Участник ${index + 1}</span><input class="transcript-speaker-input" data-speaker-index="${index}" value="${escapeHtml(name)}" /></label>`).join('') : '<p class="transcript-editor-note">Спикеры появятся после готовой расшифровки.</p>';
@@ -5491,17 +5517,19 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   async function startUpload() {
     if (els.start.dataset.ready !== 'true') { showToast('error', 'Сначала нужно завершить настройку расшифровки на VPS.'); return; }
     if (!selectedFile || !els.consent.checked) return;
+    const sourceUrl = els.sourceUrl?.value.trim() || '';
+    if (!isSafeSourceUrl(sourceUrl)) { showToast('error', 'Укажите полную безопасную ссылку https://… или очистите поле источника.'); els.sourceUrl?.focus(); return; }
     try {
       els.start.disabled = true; els.start.textContent = 'Загружаю…';
       const headers = authHeaders({
         'Content-Type': selectedFile.type || 'application/octet-stream', 'X-Interview-Filename': selectedFile.name,
         'X-Interview-Title': els.title.value.trim() || selectedFile.name.replace(/\.[^.]+$/, ''), 'X-Interview-Language': els.language.value || 'en',
-        'X-Interview-Speakers': els.speakers.value.trim(), 'X-Interview-Retention-Days': els.retention.value,
+        'X-Interview-Speakers': els.speakers.value.trim(), 'X-Interview-Retention-Days': els.retention.value, 'X-Interview-Source-Url': sourceUrl,
       });
       const response = await fetch(`${INTERVIEWS_API}/upload`, { method: 'POST', headers, body: selectedFile });
       if (!response.ok) throw new Error(await errorFrom(response));
       const payload = await response.json();
-      selectedFile = null; els.file.value = ''; els.consent.checked = false; els.fileLabel.textContent = 'Выбрать MP3, M4A, WAV, MP4, OGG, WebM или FLAC'; els.fileMeta.textContent = 'До 512 МБ. Для 1–2 часов записи загрузка и обработка идут отдельно.'; els.dropzone.classList.remove('is-ready'); closeComposer();
+      selectedFile = null; els.file.value = ''; els.consent.checked = false; if (els.sourceUrl) els.sourceUrl.value = ''; els.fileLabel.textContent = 'Выбрать аудио или видео'; els.fileMeta.textContent = `${acceptedMediaHint} · до 512 МБ. VPS извлечёт звук из видео локально.`; els.dropzone.classList.remove('is-ready'); closeComposer();
       showToast('success', 'Запись в очереди. Можно закрыть админку — VPS продолжит обработку.');
       await refresh(true); await loadJob(payload.job.id);
     } catch (error) { showToast('error', getErrorMessage(error)); }
@@ -5628,7 +5656,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     if (suggestion.type === 'article') openLinkedArticle(job);
     else loadJob(job.id).catch((error) => showToast('error', getErrorMessage(error)));
   });
-  els.file?.addEventListener('change', () => setFile(els.file.files?.[0])); els.consent?.addEventListener('change', updateStart); els.retention?.addEventListener('change', () => { if (selectedFile) els.fileMeta.textContent = `${fmtBytes(selectedFile.size)} · файл будет храниться ${els.retention.value} дн.`; });
+  els.file?.addEventListener('change', () => setFile(els.file.files?.[0])); els.consent?.addEventListener('change', updateStart); els.retention?.addEventListener('change', () => { if (selectedFile) { const isVideo = selectedFile.type.startsWith('video/') || videoExtensions.test(selectedFile.name); els.fileMeta.textContent = `${fmtBytes(selectedFile.size)} · ${isVideo ? 'видео: VPS извлечёт звук локально' : 'аудио: готово к расшифровке'} · хранение ${els.retention.value} дн.`; } });
   els.dropzone?.addEventListener('dragover', (event) => { event.preventDefault(); els.dropzone.classList.add('is-dragging'); }); els.dropzone?.addEventListener('dragleave', () => els.dropzone.classList.remove('is-dragging')); els.dropzone?.addEventListener('drop', (event) => { event.preventDefault(); els.dropzone.classList.remove('is-dragging'); setFile(event.dataTransfer?.files?.[0]); });
   els.start?.addEventListener('click', startUpload); els.jobs?.addEventListener('click', (event) => { const clearFilters = event.target.closest('[data-interview-clear-filters]'); if (clearFilters) { archiveFilter = 'all'; if (els.archiveSearch) els.archiveSearch.value = ''; renderJobs(latestJobs); return; } const draftButton = event.target.closest('[data-interview-open-draft]'); if (draftButton) { openLinkedArticle(latestJobs.find((job) => String(job.id) === String(draftButton.dataset.interviewOpenDraft))); return; } const retentionButton = event.target.closest('[data-interview-retention]'); if (retentionButton) { extendAudioRetentionById(retentionButton.dataset.interviewRetention); return; } const deleteButton = event.target.closest('[data-interview-delete]'); if (deleteButton) { deleteJobById(deleteButton.dataset.interviewDelete); return; } const retryButton = event.target.closest('[data-interview-retry]'); if (retryButton) { retryJobById(retryButton.dataset.interviewRetry); return; } const button = event.target.closest('[data-interview-open]'); if (button) loadJob(button.dataset.interviewOpen); });
   els.archiveSearch?.addEventListener('input', () => renderJobs(latestJobs)); els.archiveFilters?.addEventListener('click', (event) => { const button = event.target.closest('[data-transcript-filter]'); if (!button) return; archiveFilter = button.dataset.transcriptFilter || 'all'; renderJobs(latestJobs); });
