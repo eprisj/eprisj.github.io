@@ -184,11 +184,35 @@ async function importRemoteSource(job) {
   const folder = path.join(AUDIO_DIR, job.id);
   await fsp.mkdir(folder, { recursive: true });
   const outputTemplate = path.join(folder, "source.%(ext)s");
-  const { stdout } = await run(YTDLP_BIN, [
-    "--no-playlist", "--no-progress", "--no-warnings", "--max-downloads", "1",
-    "--max-filesize", "1536M", "--extract-audio", "--audio-format", "mp3", "--audio-quality", "5",
+  const sharedArgs = [
+    "--no-playlist", "--no-progress", "--no-warnings", "--max-downloads", "1", "--force-overwrites",
+    // Downloading audio only makes the import smaller and avoids fetching a video stream that transcription never needs.
+    "--format", "bestaudio/best", "--max-filesize", "1536M", "--extract-audio", "--audio-format", "mp3", "--audio-quality", "5",
     "--output", outputTemplate, "--print", "after_move:%(title)s", "--", job.sourceUrl,
-  ], { timeout: 45 * 60 * 1000 });
+  ];
+  // Some public YouTube videos reject one anonymous playback client but allow another.
+  // These are public yt-dlp clients only: no cookies, account data, or DRM circumvention is attempted.
+  const attempts = provider === "YouTube"
+    ? [["tv", ["--extractor-args", "youtube:player_client=tv"]], ["embedded", ["--extractor-args", "youtube:player_client=web_embedded"]]]
+    : [["default", []]];
+  let stdout = "";
+  let lastError = "";
+  for (const [, clientArgs] of attempts) {
+    try {
+      ({ stdout } = await run(YTDLP_BIN, [...sharedArgs, ...clientArgs], { timeout: 45 * 60 * 1000 }));
+      lastError = "";
+      break;
+    } catch (error) {
+      const message = String(error?.message || error);
+      if (/drm protected/i.test(message)) {
+        throw new Error("This YouTube video is DRM protected. Upload an authorised original audio or video file instead.");
+      }
+      lastError = message;
+    }
+  }
+  if (lastError) {
+    throw new Error(`${provider} did not provide an audio stream after safe public playback attempts. ${lastError}`);
+  }
   const files = (await fsp.readdir(folder))
     .filter((name) => /^source\.[a-z0-9]{2,5}$/i.test(name) && safeExt(name, ""))
     .sort((a, b) => Number(b.endsWith(".mp3")) - Number(a.endsWith(".mp3")) || a.localeCompare(b));
