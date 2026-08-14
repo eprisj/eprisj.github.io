@@ -73,7 +73,7 @@ function generateSlug(title: string): string {
     .replace(/^-|-$/g, '');
 }
 
-function ImageLightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
+function ImageLightbox({ src, alt, title, description, onClose }: { src: string; alt: string; title?: string; description?: string; onClose: () => void }) {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -101,16 +101,24 @@ function ImageLightbox({ src, alt, onClose }: { src: string; alt: string; onClos
       >
         <X size={24} />
       </button>
-      <motion.img
-        src={src}
-        alt={alt}
-        initial={{ opacity: 0, scale: 0.985 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.99 }}
-        transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
-        className="max-h-[100dvh] max-w-full object-contain select-none shadow-2xl sm:max-h-[92vh] sm:max-w-[92vw]"
-        referrerPolicy="no-referrer"
-      />
+      <div className="flex max-h-[100dvh] max-w-full flex-col items-center sm:max-h-[92vh] sm:max-w-[92vw]">
+        <motion.img
+          src={src}
+          alt={alt}
+          initial={{ opacity: 0, scale: 0.985 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.99 }}
+          transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+          className="max-h-[calc(100dvh-6rem)] max-w-full object-contain select-none shadow-2xl sm:max-h-[calc(92vh-5rem)]"
+          referrerPolicy="no-referrer"
+        />
+        {(title || description) && (
+          <div className="mt-4 max-w-[70ch] px-4 text-center">
+            {title && <p className="font-serif text-sm text-white/90 sm:text-base">{title}</p>}
+            {description && <p className="mt-1 font-serif text-xs leading-relaxed text-white/60 sm:text-sm">{description}</p>}
+          </div>
+        )}
+      </div>
     </motion.div>
   );
 }
@@ -1645,7 +1653,7 @@ function homepageArticleFeed(articles: Article[]): Article[] {
   return Number.isFinite(limit) && limit > 0 ? sorted.slice(0, Math.max(1, Math.floor(limit))) : sorted;
 }
 
-function DailyPicksArchive({ archive, items, onImageClick, currentLang, t }: { archive: HomepageArchiveEntry[]; items: Item[]; onImageClick: (src: string, alt: string) => void; currentLang: string; t: (key: string) => string }) {
+function DailyPicksArchive({ archive, items, onImageClick, currentLang, t }: { archive: HomepageArchiveEntry[]; items: Item[]; onImageClick: (src: string, alt: string, description?: string, title?: string) => void; currentLang: string; t: (key: string) => string }) {
   if (!archive.length) return null;
   const currentByPicsId = new Map(items.map((item) => [getPicsId(item), item]));
   const currentById = new Map(items.map((item) => [Number(item.id), item]));
@@ -1702,8 +1710,8 @@ function DailyPicksArchive({ archive, items, onImageClick, currentLang, t }: { a
                     role="button"
                     tabIndex={image ? 0 : -1}
                     aria-label={`${t('homepage.openImage')}: ${category}`}
-                    onClick={() => image && onImageClick(resolveMediaSource(image, 2000, 1400), `${category}: ${title}`)}
-                    onKeyDown={(event) => { if (image && (event.key === 'Enter' || event.key === ' ')) onImageClick(resolveMediaSource(image, 2000, 1400), `${category}: ${title}`); }}
+                    onClick={() => image && onImageClick(resolveMediaSource(image, 2000, 1400), `${category}: ${title}`, description, title)}
+                    onKeyDown={(event) => { if (image && (event.key === 'Enter' || event.key === ' ')) onImageClick(resolveMediaSource(image, 2000, 1400), `${category}: ${title}`, description, title); }}
                   >
                     <div className="relative aspect-[4/5] overflow-hidden bg-[#E8DED5]">
                       {image ? <img src={resolveMediaSource(image, 360, 450)} alt={category} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" referrerPolicy="no-referrer" /> : <span className="flex h-full items-center justify-center font-mono text-[9px] text-[rgb(var(--c-accent-rgb)_/_0.45)]">{t('homepage.descriptionUnavailable')}</span>}
@@ -3473,7 +3481,7 @@ export default function App() {
       return DEFAULT_LANGUAGE;
     }
   });
-  const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
+  const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string; title?: string; description?: string } | null>(null);
   const [selectedGalleryItem, setSelectedGalleryItem] = useState<Item | null>(null);
   const [activeSearch, setActiveSearch] = useState(initialRoute.searchQuery || '');
   // Live content: fetch the latest from the VPS on mount and re-render when it
@@ -3621,8 +3629,8 @@ export default function App() {
     updateMetaTags(selectedArticle, selectedReview, activeTab, activeSearch, siteSettings);
   }, [selectedArticle, selectedReview, activeTab, activeSearch, contentVersion]);
 
-  const handleImageClick = useCallback((src: string, alt: string) => {
-    setLightboxImage({ src, alt });
+  const handleImageClick = useCallback((src: string, alt: string, description?: string, title?: string) => {
+    setLightboxImage({ src, alt, description, title });
   }, []);
 
   const navigate = useCallback((path: string) => {
@@ -3896,6 +3904,8 @@ export default function App() {
           <ImageLightbox
             src={lightboxImage.src}
             alt={lightboxImage.alt}
+            title={lightboxImage.title}
+            description={lightboxImage.description}
             onClose={() => setLightboxImage(null)}
           />
         )}
