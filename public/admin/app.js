@@ -4919,7 +4919,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   const els = {
     readiness: $('transcriptReadiness'), composer: $('transcriptComposer'), newBtn: $('transcriptNewBtn'), refreshBtn: $('transcriptRefreshBtn'), closeComposerBtn: $('transcriptCloseComposerBtn'),
     hero: $('transcriptHero'), flow: $('transcriptFlow'), flowNote: $('transcriptFlowNote'), nextAction: $('transcriptNextAction'), nextTitle: $('transcriptNextTitle'), nextDetail: $('transcriptNextDetail'), nextButton: $('transcriptNextButton'),
-    title: $('transcriptTitle'), language: $('transcriptLanguage'), retention: $('transcriptRetention'), speakers: $('transcriptSpeakers'), filePanel: $('transcriptFilePanel'), file: $('transcriptAudioInput'), fileLabel: $('transcriptFileLabel'), fileMeta: $('transcriptFileMeta'), dropzone: $('transcriptDropZone'), consent: $('transcriptConsent'), start: $('transcriptStartBtn'), submitDetail: $('transcriptSubmitDetail'),
+    title: $('transcriptTitle'), language: $('transcriptLanguage'), retention: $('transcriptRetention'), speakers: $('transcriptSpeakers'), filePanel: $('transcriptFilePanel'), file: $('transcriptAudioInput'), fileLabel: $('transcriptFileLabel'), fileMeta: $('transcriptFileMeta'), dropzone: $('transcriptDropZone'), uploadProgress: $('transcriptUploadProgress'), uploadPhase: $('transcriptUploadPhase'), uploadPercent: $('transcriptUploadPercent'), uploadBar: $('transcriptUploadBar'), uploadDetail: $('transcriptUploadDetail'), consent: $('transcriptConsent'), start: $('transcriptStartBtn'), submitDetail: $('transcriptSubmitDetail'),
     jobs: $('transcriptJobs'), count: $('transcriptLibraryCount'), archiveSearch: $('transcriptArchiveSearch'), archiveFilters: $('transcriptArchiveFilters'), editor: $('transcriptEditor'), editorTitle: $('transcriptEditorTitle'), editorMeta: $('transcriptEditorMeta'), sourceLink: $('transcriptSourceLink'),
     loadAudio: $('transcriptLoadAudioBtn'), retry: $('transcriptRetryBtn'), audio: $('transcriptAudio'), save: $('transcriptSaveBtn'), undo: $('transcriptUndoBtn'), saveState: $('transcriptSaveState'), txt: $('transcriptTxtBtn'), srt: $('transcriptSrtBtn'), vtt: $('transcriptVttBtn'), createArticle: $('transcriptCreateArticleBtn'), draftPanel: $('transcriptDraftPanel'), draftSetup: $('transcriptDraftSetup'), draftOutcome: $('transcriptDraftOutcome'), openArticle: $('transcriptOpenArticleBtn'), articleAuthor: $('transcriptArticleAuthor'), articleAuthorSummary: $('transcriptArticleAuthorSummary'), reviewed: $('transcriptReviewed'), speakersList: $('transcriptSpeakersList'), search: $('transcriptSearch'), searchPrev: $('transcriptSearchPrev'), searchNext: $('transcriptSearchNext'), segmentCount: $('transcriptSegmentCount'), replacePanel: $('transcriptReplace'), replaceFind: $('transcriptReplaceFind'), replaceWith: $('transcriptReplaceWith'), replacePreview: $('transcriptReplacePreview'), replaceButton: $('transcriptReplaceAllBtn'), segments: $('transcriptSegments'), reviewSummary: $('transcriptReviewSummary'),
   };
@@ -4928,6 +4928,8 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   let latestJobs = [];
   let audioObjectUrl = '';
   let pollTimer = 0;
+  let pollBackoff = 4500;
+  let transcriptUploadInFlight = false;
   let transcriptAutosaveTimer = 0;
   let transcriptLastSnapshot = '';
   let transcriptUndoSnapshot = '';
@@ -4950,6 +4952,13 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     const h = Math.floor(total / 3600); const m = Math.floor((total % 3600) / 60); const s = total % 60;
     return `${h ? `${String(h).padStart(2, '0')}:` : ''}${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
   };
+  const fmtDuration = (seconds) => {
+    const total = Math.max(0, Math.floor(Number(seconds) || 0));
+    if (!total) return '';
+    const h = Math.floor(total / 3600); const m = Math.floor((total % 3600) / 60); const s = total % 60;
+    return h ? `${h} ч ${String(m).padStart(2, '0')} мин` : m ? `${m} мин ${String(s).padStart(2, '0')} сек` : `${s} сек`;
+  };
+  const fmtCheckpoint = (value) => value ? `обновлено ${fmtDate(value)}` : 'ожидаем первую отметку';
   function getQueueSnapshot(jobs = latestJobs) {
     const list = Array.isArray(jobs) ? jobs : [];
     const active = list.filter((job) => job.status === 'processing');
@@ -4958,6 +4967,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   }
   function stageDetails(job, jobs = latestJobs) {
     const stage = String(job?.stage || '').toLowerCase();
+    const phase = String(job?.processing?.phase || '').toLowerCase();
     const isRetiredRemoteJob = job?.sourceKind === 'remote';
     const queue = getQueueSnapshot(jobs);
     if (job?.status === 'queued') {
@@ -4965,6 +4975,8 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
       return { title: position === 1 ? 'Следующая в очереди' : `В очереди · позиция ${position}`, detail: queue.active.length ? 'Другая запись уже обрабатывается локально. Эта начнётся автоматически.' : 'Локальный обработчик подхватит запись автоматически.', step: 1, position };
     }
     if (job?.status === 'processing') {
+      if (phase === 'checking') return { title: 'Проверяем аудиодорожку', detail: 'Сначала убеждаемся, что файл действительно содержит звук и его можно безопасно обработать.', step: 1 };
+      if (phase === 'saving') return { title: 'Сохраняем фрагмент', detail: 'Готовый кусок текста записывается в закрытый архив. Затем продолжим со следующим.', step: 2 };
       const part = stage.match(/part\s+(\d+)\s+of\s+(\d+)/i);
       if (part) return { title: `Расшифровываем часть ${part[1]} из ${part[2]}`, detail: 'Текст собирается на VPS. Можно закрыть вкладку — прогресс сохранится.', step: 2, part: `${part[1]}/${part[2]}` };
       if (/prepar|audio|ffmpeg/i.test(stage)) return { title: 'Подготавливаем аудио', detail: 'Приводим запись к рабочему формату перед локальной расшифровкой.', step: 1 };
@@ -5034,6 +5046,8 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   function interviewErrorMessage(job) {
     const error = String(job?.error || '').trim();
     if (job?.sourceKind === 'remote') return 'Импорт по внешним ссылкам отключён. Для надёжной расшифровки загрузите исходное аудио или видео как новую запись.';
+    if (/could not be read as audio/i.test(error)) return 'VPS не нашёл читаемую аудиодорожку. В «Диктофоне» iPhone нажмите «Поделиться» → «Сохранить в Файлы» и загрузите исходный файл без переименования расширения.';
+    if (/audio preparation is not installed/i.test(error)) return 'На VPS временно недоступна подготовка аудио. Файл сохранён: ничего не загружайте заново, дождитесь зелёного статуса студии и нажмите «Запустить заново». ';
     return error;
   }
   const errorFrom = async (response) => {
@@ -5060,8 +5074,8 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   function updateStart() {
     if (!els.start) return;
     const sourceReady = Boolean(selectedFile);
-    els.start.disabled = els.start.dataset.ready !== 'true' || !sourceReady || !els.consent?.checked;
-    els.start.textContent = 'Загрузить и расшифровать';
+    els.start.disabled = transcriptUploadInFlight || els.start.dataset.ready !== 'true' || !sourceReady || !els.consent?.checked;
+    if (!transcriptUploadInFlight) els.start.textContent = 'Загрузить и расшифровать';
   }
   function closeComposer() { els.composer.hidden = true; }
   function openComposer() { els.composer.hidden = false; syncSourceMode(); els.composer.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
@@ -5356,10 +5370,10 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     updateStart();
   }
   function renderReadiness(health) {
-    const ready = health?.localEngine?.ready && health?.ffmpegReady;
+    const ready = health?.localEngine?.ready && health?.ffmpegReady && health?.ffprobeReady;
     const queue = getQueueSnapshot();
     els.readiness.className = `transcript-readiness card ${ready ? 'ready' : 'missing'}`;
-    const missing = [!health?.localEngine?.ready && 'локальный движок расшифровки', !health?.ffmpegReady && 'подготовка аудио'].filter(Boolean);
+    const missing = [!health?.localEngine?.ready && 'локальный движок расшифровки', !health?.ffmpegReady && 'подготовка аудио', !health?.ffprobeReady && 'проверка аудиодорожки'].filter(Boolean);
     const engine = health?.localEngine?.engine || 'Local Whisper';
     const model = health?.localEngine?.model ? ` · ${health.localEngine.model}` : '';
     const queueDetail = queue.active.length
@@ -5369,6 +5383,28 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     els.start.dataset.ready = ready ? 'true' : 'false';
     updateStart();
     renderFlow(latestJobs, ready);
+  }
+  function renderJobProgress(job, details, jobs) {
+    const progress = Math.max(1, Math.min(100, Number(job?.progress) || 0));
+    const processing = job?.processing || {};
+    const phase = String(processing.phase || job?.status || 'queued');
+    const queue = getQueueSnapshot(jobs);
+    const facts = [];
+    if (job?.status === 'queued') {
+      const position = queue.positionById.get(job.id) || 1;
+      facts.push(position === 1 ? 'Следующая к запуску' : `Очередь · №${position}`);
+    } else if (Number(processing.chunkCount) > 0) {
+      const chunk = Math.max(1, Math.min(Number(processing.currentChunk) || 1, Number(processing.chunkCount)));
+      facts.push(`Фрагмент ${chunk} из ${processing.chunkCount}`);
+      if (Number(processing.completedChunks) > 0) facts.push(`Сохранено ${processing.completedChunks}`);
+    } else if (phase === 'checking') facts.push('Проверка источника');
+    else facts.push('Подготовка аудио');
+    const duration = fmtDuration(processing.sourceDurationSeconds);
+    if (duration) facts.push(`Длина ${duration}`);
+    facts.push(`Попытка ${Math.max(1, Number(processing.attempt) || 1)}`);
+    facts.push(fmtCheckpoint(processing.checkpointAt));
+    const stageLabel = job?.status === 'queued' ? 'Ожидает очереди' : details.title;
+    return `<div class="transcript-job-process" aria-live="polite"><div class="transcript-progress-head"><span>${escapeHtml(stageLabel)}</span><strong>${progress}%</strong></div><div class="transcript-progress" role="progressbar" aria-label="Прогресс расшифровки" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}" style="--transcript-progress:${progress / 100}"><i></i></div><div class="transcript-progress-facts">${facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join('')}</div><p>${escapeHtml(details.detail)}</p></div>`;
   }
   function renderJobs(jobs) {
     const list = Array.isArray(jobs) ? jobs : [];
@@ -5388,7 +5424,6 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     }
     els.jobs.innerHTML = filtered.map((job) => {
       const details = stageDetails(job, list);
-      const progress = Math.max(1, Math.min(100, Number(job.progress) || 0));
       const isInFlight = ['queued', 'processing'].includes(job.status);
       const linkedArticleId = Number(job.articleDraft?.id) || 0;
       const linkedArticle = linkedArticleId ? linkedArticles.find((entry) => Number(entry.id) === linkedArticleId) : null;
@@ -5398,7 +5433,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
       const nextStep = nextInterviewStep(job, linkedArticleId);
       const canRetry = job.status === 'failed' && Boolean(job.hasAudio);
       const recovery = job.status === 'failed' ? (job.hasAudio ? 'Аудио на месте. Повторный запуск не удалит вашу запись.' : 'Исходный файл уже удалён или не был загружен. Добавьте его как новую запись, чтобы повторить обработку.') : '';
-      return `<article class="transcript-job is-${escapeHtml(job.status || 'draft')}" data-interview-status="${escapeHtml(job.status || 'draft')}"><div class="transcript-job-main"><div class="transcript-job-heading"><strong class="transcript-job-title">${escapeHtml(job.title || job.filename || 'Без названия')}</strong><span class="transcript-job-status ${escapeHtml(job.status || '')}">${escapeHtml(details.title)}</span></div><div class="transcript-job-meta"><span>${escapeHtml(job.language || 'en').toUpperCase()}</span><span>${escapeHtml(fmtBytes(Number(job.size) || 0))}</span><span>${escapeHtml(fmtDate(job.updatedAt || job.createdAt))}</span>${retentionLabel ? `<span class="transcript-retention" title="Срок хранения исходного аудио">${escapeHtml(retentionLabel)}</span>` : ''}${linkedArticleId ? `<span class="transcript-linked-draft-state is-${escapeHtml(linkedArticleState)}">${publicationStateIcon(linkedArticleState)} статья #${linkedArticleId} · ${escapeHtml(linkedArticleLabel)}</span>` : ''}</div><div class="transcript-job-rail" aria-label="Этап ${details.step} из 3"><span class="${details.step >= 1 ? 'is-done' : ''}">01</span><i class="${details.step >= 2 ? 'is-done' : ''}"></i><span class="${details.step >= 2 ? 'is-done' : ''}">02</span><i class="${details.step >= 3 ? 'is-done' : ''}"></i><span class="${details.step >= 3 ? 'is-done' : ''}">03</span></div>${isInFlight ? `<div class="transcript-job-process"><div class="transcript-progress" aria-label="Прогресс ${progress}%"><i style="width:${progress}%"></i></div><span>${escapeHtml(details.detail)}</span></div>` : ''}${nextStep ? `<p class="transcript-job-guidance">${escapeHtml(nextStep)}</p>` : ''}${job.error ? `<div class="transcript-job-error"><strong>Почему не получилось:</strong><span>${escapeHtml(interviewErrorMessage(job))}</span>${recovery ? `<small>${escapeHtml(recovery)}</small>` : ''}</div>` : ''}</div><div class="transcript-job-actions">${linkedArticleId ? `<button class="btn btn-sm btn-primary" type="button" data-interview-open-draft="${escapeHtml(job.id)}">Открыть статью</button>` : ''}${canRetry ? `<button class="btn btn-sm" type="button" data-interview-retry="${escapeHtml(job.id)}">Запустить заново</button>` : ''}${job.hasAudio && ['ready', 'failed'].includes(job.status) ? `<button class="btn btn-sm" type="button" data-interview-retention="${escapeHtml(job.id)}">Хранить ещё 30 дн.</button>` : ''}<button class="btn btn-sm" type="button" data-interview-open="${escapeHtml(job.id)}">${job.status === 'ready' ? 'Вычитать' : job.status === 'failed' ? 'Открыть запись' : 'Открыть'}</button>${['ready', 'failed'].includes(job.status) ? `<button class="btn btn-sm btn-danger-text" type="button" data-interview-delete="${escapeHtml(job.id)}">Удалить</button>` : ''}</div></article>`;
+      return `<article class="transcript-job is-${escapeHtml(job.status || 'draft')}" data-interview-status="${escapeHtml(job.status || 'draft')}"><div class="transcript-job-main"><div class="transcript-job-heading"><strong class="transcript-job-title">${escapeHtml(job.title || job.filename || 'Без названия')}</strong><span class="transcript-job-status ${escapeHtml(job.status || '')}">${escapeHtml(details.title)}</span></div><div class="transcript-job-meta"><span>${escapeHtml(job.language || 'en').toUpperCase()}</span><span>${escapeHtml(fmtBytes(Number(job.size) || 0))}</span><span>${escapeHtml(fmtDate(job.updatedAt || job.createdAt))}</span>${retentionLabel ? `<span class="transcript-retention" title="Срок хранения исходного аудио">${escapeHtml(retentionLabel)}</span>` : ''}${linkedArticleId ? `<span class="transcript-linked-draft-state is-${escapeHtml(linkedArticleState)}">${publicationStateIcon(linkedArticleState)} статья #${linkedArticleId} · ${escapeHtml(linkedArticleLabel)}</span>` : ''}</div><div class="transcript-job-rail" aria-label="Этап ${details.step} из 3"><span class="${details.step >= 1 ? 'is-done' : ''}">01</span><i class="${details.step >= 2 ? 'is-done' : ''}"></i><span class="${details.step >= 2 ? 'is-done' : ''}">02</span><i class="${details.step >= 3 ? 'is-done' : ''}"></i><span class="${details.step >= 3 ? 'is-done' : ''}">03</span></div>${isInFlight ? renderJobProgress(job, details, list) : ''}${nextStep ? `<p class="transcript-job-guidance">${escapeHtml(nextStep)}</p>` : ''}${job.error ? `<div class="transcript-job-error"><strong>Почему не получилось:</strong><span>${escapeHtml(interviewErrorMessage(job))}</span>${recovery ? `<small>${escapeHtml(recovery)}</small>` : ''}</div>` : ''}</div><div class="transcript-job-actions">${linkedArticleId ? `<button class="btn btn-sm btn-primary" type="button" data-interview-open-draft="${escapeHtml(job.id)}">Открыть статью</button>` : ''}${canRetry ? `<button class="btn btn-sm" type="button" data-interview-retry="${escapeHtml(job.id)}">Запустить заново</button>` : ''}${job.hasAudio && ['ready', 'failed'].includes(job.status) ? `<button class="btn btn-sm" type="button" data-interview-retention="${escapeHtml(job.id)}">Хранить ещё 30 дн.</button>` : ''}<button class="btn btn-sm" type="button" data-interview-open="${escapeHtml(job.id)}">${job.status === 'ready' ? 'Вычитать' : job.status === 'failed' ? 'Открыть запись' : 'Открыть'}</button>${['ready', 'failed'].includes(job.status) ? `<button class="btn btn-sm btn-danger-text" type="button" data-interview-delete="${escapeHtml(job.id)}">Удалить</button>` : ''}</div></article>`;
     }).join('');
   }
   function speakersFromSegments(segments) { return [...new Set((segments || []).map((segment) => String(segment.speaker || '').trim()).filter(Boolean))]; }
@@ -5447,21 +5482,31 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     renderEditor();
     if (!quiet) els.editor.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
+  function scheduleTranscriptRefresh(delay = 4500) {
+    window.clearTimeout(pollTimer);
+    pollTimer = window.setTimeout(() => refresh(true), Math.max(1200, Math.min(30000, Number(delay) || 4500)));
+  }
   async function refresh(quiet = false) {
     try {
       const [health, list] = await Promise.all([api('/health'), api('')]);
       renderJobs(list.jobs);
       renderReadiness(health);
-      renderFlow(list.jobs, Boolean(health?.localEngine?.ready && health?.ffmpegReady));
+      renderFlow(list.jobs, Boolean(health?.localEngine?.ready && health?.ffmpegReady && health?.ffprobeReady));
       if (activeJob && !transcriptHasUnsavedChanges && !transcriptSaveInFlight) await loadJob(activeJob.id, true);
       const hasWork = list.jobs.some((job) => ['queued', 'processing'].includes(job.status));
+      pollBackoff = 4500;
       window.clearTimeout(pollTimer);
-      if (hasWork) pollTimer = window.setTimeout(() => refresh(true), 4500);
+      if (hasWork) scheduleTranscriptRefresh(pollBackoff);
       if (!quiet) showToast('success', 'Архив интервью обновлён.');
     } catch (error) {
       els.readiness.className = 'transcript-readiness card missing';
       els.readiness.innerHTML = `<span class="transcript-readiness-mark">!</span><div class="transcript-readiness-copy"><strong>Студия интервью недоступна</strong><span>${escapeHtml(getErrorMessage(error))}</span></div><span class="transcript-readiness-proof">OFFLINE</span>`;
       renderFlow(latestJobs, false);
+      const hasWork = latestJobs.some((job) => ['queued', 'processing'].includes(job.status));
+      if (hasWork) {
+        pollBackoff = Math.min(30000, Math.round(pollBackoff * 1.7));
+        scheduleTranscriptRefresh(pollBackoff);
+      }
       if (!quiet) showToast('error', getErrorMessage(error));
     }
   }
@@ -5527,28 +5572,75 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     if (els.fileLabel) els.fileLabel.textContent = 'Выбрать запись';
     if (els.fileMeta) els.fileMeta.textContent = `${acceptedMediaHint} · до ${maxTranscriptSizeLabel}. VPS приведёт запись к рабочему формату локально.`;
     els.dropzone?.classList.remove('is-ready');
+    if (els.uploadProgress) els.uploadProgress.hidden = true;
     closeComposer();
+  }
+  function setUploadProgress({ phase = 'Передача записи', percent = 0, detail = '', state = '', visible = true } = {}) {
+    if (!els.uploadProgress) return;
+    const safePercent = Math.max(0, Math.min(100, Math.round(Number(percent) || 0)));
+    els.uploadProgress.hidden = !visible;
+    els.uploadProgress.classList.toggle('is-uploading', state === 'uploading');
+    els.uploadProgress.classList.toggle('is-error', state === 'error');
+    if (els.uploadPhase) els.uploadPhase.textContent = phase;
+    if (els.uploadPercent) els.uploadPercent.textContent = `${safePercent}%`;
+    if (els.uploadBar?.parentElement) {
+      els.uploadBar.parentElement.style.setProperty('--transcript-progress', String(safePercent / 100));
+      els.uploadBar.parentElement.setAttribute('aria-valuenow', String(safePercent));
+    }
+    if (els.uploadDetail) els.uploadDetail.textContent = detail || 'Подготавливаем передачу на VPS.';
+  }
+  function uploadInterviewFile(file, headers, onProgress) {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', `${INTERVIEWS_API}/upload`);
+      xhr.timeout = 35 * 60 * 1000;
+      Object.entries(headers).forEach(([key, value]) => xhr.setRequestHeader(key, value));
+      xhr.upload.onprogress = (event) => {
+        if (!event.lengthComputable) { onProgress(null, 0, 0); return; }
+        onProgress(Math.round((event.loaded / event.total) * 100), event.loaded, event.total);
+      };
+      xhr.onerror = () => reject(new Error('Передача файла прервалась. Файл остался на устройстве — проверьте сеть и повторите отправку.'));
+      xhr.ontimeout = () => reject(new Error('Передача заняла слишком много времени. Проверьте сеть и повторите отправку исходного файла.'));
+      xhr.onload = () => {
+        let payload = {};
+        try { payload = JSON.parse(xhr.responseText || '{}'); } catch {}
+        if (xhr.status >= 200 && xhr.status < 300 && payload.ok) { resolve(payload); return; }
+        reject(new Error(payload.error || `VPS вернул статус ${xhr.status}`));
+      };
+      xhr.send(file);
+    });
   }
   async function startUpload() {
     if (els.start.dataset.ready !== 'true') { showToast('error', 'Сначала нужно завершить настройку расшифровки на VPS.'); return; }
-    if (!els.consent?.checked) return;
+    if (!els.consent?.checked || transcriptUploadInFlight) return;
     try {
+      transcriptUploadInFlight = true;
       els.start.disabled = true;
       if (!selectedFile) return;
+      const file = selectedFile;
       els.start.textContent = 'Загружаю…';
+      setUploadProgress({ state: 'uploading', percent: 0, phase: 'Передаём исходный файл', detail: 'Файл передаётся напрямую в закрытую рабочую папку VPS. Не закрывайте страницу до подтверждения.' });
       const headers = authHeaders({
-        'Content-Type': selectedFile.type || 'application/octet-stream', 'X-Interview-Filename': selectedFile.name,
-        'X-Interview-Title': els.title.value.trim() || selectedFile.name.replace(/\.[^.]+$/, ''), 'X-Interview-Language': els.language.value || 'en',
+        'Content-Type': file.type || 'application/octet-stream', 'X-Interview-Filename': file.name,
+        'X-Interview-Title': els.title.value.trim() || file.name.replace(/\.[^.]+$/, ''), 'X-Interview-Language': els.language.value || 'en',
         'X-Interview-Speakers': els.speakers.value.trim(), 'X-Interview-Retention-Days': els.retention.value,
       });
-      const response = await fetch(`${INTERVIEWS_API}/upload`, { method: 'POST', headers, body: selectedFile });
-      if (!response.ok) throw new Error(await errorFrom(response));
-      const payload = await response.json();
+      const payload = await uploadInterviewFile(file, headers, (percent, loaded, total) => {
+        const computed = Number.isFinite(percent) ? percent : 0;
+        const detail = Number.isFinite(percent)
+          ? `${fmtBytes(loaded)} из ${fmtBytes(total)} передано. После 100% VPS проверит аудиодорожку и поставит запись в единственную локальную очередь.`
+          : 'Передаём файл. Браузер не сообщает точный процент, но запись отправляется напрямую на VPS.';
+        setUploadProgress({ state: 'uploading', percent: computed, phase: 'Передаём исходный файл', detail });
+      });
+      setUploadProgress({ state: 'queued', percent: 100, phase: 'Файл принят VPS', detail: 'Запись сохранена и поставлена в локальную очередь. Дальнейшие этапы видны в архиве ниже.' });
       clearComposerAfterStart();
       showToast('success', 'Запись в очереди. Можно закрыть админку — VPS продолжит обработку.');
-      await refresh(true); await loadJob(payload.job.id);
-    } catch (error) { showToast('error', getErrorMessage(error)); }
-    finally { updateStart(); }
+      await refresh(true);
+      els.jobs?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (error) {
+      setUploadProgress({ state: 'error', percent: 0, phase: 'Не удалось передать файл', detail: getErrorMessage(error) });
+      showToast('error', getErrorMessage(error));
+    } finally { transcriptUploadInFlight = false; updateStart(); }
   }
   async function download(format) {
     if (!activeJob) return;

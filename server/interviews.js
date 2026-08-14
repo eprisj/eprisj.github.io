@@ -21,6 +21,8 @@ const MAX_BYTES = 1536 * 1024 * 1024;
 const DEFAULT_RETENTION_DAYS = 30;
 const MAX_RETENTION_DAYS = 90;
 const activeJobs = new Set();
+const pendingJobs = new Set();
+let transcriptionWorkerBusy = false;
 const LOCAL_TRANSCRIBE_SCRIPT = process.env.INTERVIEW_TRANSCRIBE_SCRIPT || path.join(__dirname, "transcribe-local.py");
 const LOCAL_PYTHON = process.env.INTERVIEW_PYTHON_BIN || "python3";
 // The VPS has one CPU core and limited RAM.  small.en is the highest practical
@@ -97,6 +99,17 @@ function jobSummary(job, full = false) {
     hasAudio: Boolean(job.sourcePath && fs.existsSync(job.sourcePath)),
     engine: job.engine || "local-whisper",
     model: job.model || "",
+    processing: {
+      phase: job.phase || (job.status === "queued" ? "queued" : job.status || "idle"),
+      sourceDurationSeconds: Math.max(0, Number(job.sourceDurationSeconds) || 0),
+      chunkCount: Math.max(0, Number(job.chunkCount) || 0),
+      completedChunks: Math.max(0, Number(job.completedChunks) || 0),
+      currentChunk: Math.max(0, Number(job.currentChunk) || 0),
+      attempt: Math.max(1, Number(job.attempt) || 1),
+      checkpointAt: job.checkpointAt || job.updatedAt || null,
+      startedAt: job.startedAt || null,
+      attemptStartedAt: job.attemptStartedAt || job.startedAt || null,
+    },
   };
   if (full) out.segments = Array.isArray(job.segments) ? job.segments : [];
   return out;
@@ -137,6 +150,9 @@ function run(command, args, options = {}) {
 async function ffmpegReady() {
   try { await run("ffmpeg", ["-version"], { timeout: 8000 }); return true; } catch { return false; }
 }
+async function ffprobeReady() {
+  try { await run("ffprobe", ["-version"], { timeout: 8000 }); return true; } catch { return false; }
+}
 async function localEngineStatus() {
   if (!fs.existsSync(LOCAL_TRANSCRIBE_SCRIPT)) {
     return { ready: false, engine: "Local Whisper", model: LOCAL_MODEL, detail: "Local worker is not installed on VPS." };
@@ -157,6 +173,22 @@ async function transcribeChunk(chunkPath, language) {
   try { payload = JSON.parse(String(stdout || "{}")); } catch { throw new Error("Local worker returned an invalid transcript."); }
   if (payload?.error) throw new Error(payload.error);
   return payload;
+}
+async function inspectSourceAudio(sourcePath) {
+  try {
+    const { stdout } = await run("ffprobe", [
+      "-v", "error", "-select_streams", "a:0", "-show_entries", "stream=codec_name:format=duration",
+      "-of", "json", sourcePath,
+    ], { timeout: 20000 });
+    const payload = JSON.parse(String(stdout || "{}"));
+    if (!Array.isArray(payload.streams) || !payload.streams.length) {
+      throw new Error("no audio stream");
+    }
+    const duration = Number(payload?.format?.duration);
+    return { duration: Number.isFinite(duration) && duration > 0 ? duration : 0 };
+  } catch {
+    throw new Error("The file could not be read as audio. Re-export the original iPhone recording and upload it again.");
+  }
 }
 function normaliseSegments(payload, offset) {
   const source = Array.isArray(payload?.segments) ? payload.segments : [];
@@ -180,17 +212,31 @@ async function processJob(id) {
     if (!job.sourcePath || !fs.existsSync(job.sourcePath)) {
       throw new Error("Source audio is unavailable. Upload the original file again.");
     }
-    if (!await ffmpegReady()) throw new Error("ffmpeg is not installed on VPS");
+    if (!await ffmpegReady() || !await ffprobeReady()) throw new Error("Audio preparation is not installed on VPS");
     const engine = await localEngineStatus();
     if (!engine.ready) throw new Error(engine.detail || "Local transcription service is not ready on VPS.");
     job.status = "processing";
     job.engine = "local-whisper";
     job.model = engine.model || LOCAL_MODEL;
-    job.stage = "Preparing audio locally";
+    job.phase = "checking";
+    job.stage = "Checking the source file";
     job.startedAt = job.startedAt || now();
-    job.progress = Math.max(2, Number(job.progress || 0));
+    job.attemptStartedAt = job.attemptStartedAt || now();
+    job.progress = Math.max(3, Number(job.progress || 0));
     job.error = "";
     job.segments = [];
+    job.completedChunks = 0;
+    job.currentChunk = 0;
+    job.chunkCount = 0;
+    job.checkpointAt = now();
+    saveJob(job);
+    const sourceInfo = await inspectSourceAudio(job.sourcePath);
+    job = readJob(id);
+    job.sourceDurationSeconds = sourceInfo.duration;
+    job.phase = "preparing";
+    job.stage = "Creating audio parts locally";
+    job.progress = 8;
+    job.checkpointAt = now();
     saveJob(job);
     const chunksDir = path.join(path.dirname(job.sourcePath), "chunks");
     await fsp.rm(chunksDir, { recursive: true, force: true });
@@ -200,32 +246,55 @@ async function processJob(id) {
     await run("ffmpeg", ["-y", "-i", job.sourcePath, "-vn", "-ac", "1", "-ar", "16000", "-codec:a", "libmp3lame", "-b:a", "48k", "-f", "segment", "-segment_time", "900", path.join(chunksDir, "part-%03d.mp3")]);
     const chunks = (await fsp.readdir(chunksDir)).filter((name) => /^part-\d+\.mp3$/.test(name)).sort();
     if (!chunks.length) throw new Error("ffmpeg did not create audio chunks");
+    job = readJob(id);
+    job.phase = "transcribing";
+    job.chunkCount = chunks.length;
+    job.completedChunks = 0;
+    job.currentChunk = 1;
+    job.stage = `Transcribing locally: part 1 of ${chunks.length}`;
+    job.progress = 10;
+    job.checkpointAt = now();
+    saveJob(job);
     for (let index = 0; index < chunks.length; index += 1) {
       job = readJob(id);
       job.status = "processing";
+      job.phase = "transcribing";
+      job.chunkCount = chunks.length;
+      job.completedChunks = index;
+      job.currentChunk = index + 1;
       job.stage = `Transcribing locally: part ${index + 1} of ${chunks.length}`;
-      job.progress = Math.min(96, Math.round(8 + (index / chunks.length) * 86));
+      job.progress = Math.min(94, Math.round(10 + (index / chunks.length) * 84));
+      job.checkpointAt = now();
       saveJob(job);
       const payload = await transcribeChunk(path.join(chunksDir, chunks[index]), job.language || "en");
       const offset = index * 900;
       const next = normaliseSegments(payload, offset);
       job = readJob(id);
       job.segments = [...(Array.isArray(job.segments) ? job.segments : []), ...next];
-      job.progress = Math.min(98, Math.round(8 + ((index + 1) / chunks.length) * 88));
+      job.phase = "saving";
+      job.completedChunks = index + 1;
+      job.currentChunk = index + 1;
+      job.stage = `Saving part ${index + 1} of ${chunks.length}`;
+      job.progress = Math.min(98, Math.round(10 + ((index + 1) / chunks.length) * 86));
+      job.checkpointAt = now();
       saveJob(job);
     }
     job = readJob(id);
     job.status = "ready";
+    job.phase = "ready";
     job.stage = "Transcript ready for editing";
     job.progress = 100;
     job.completedAt = now();
+    job.checkpointAt = now();
     saveJob(job);
   } catch (error) {
     const job = readJob(id);
     if (job) {
       job.status = "failed";
+      job.phase = "failed";
       job.stage = "Needs attention";
       job.error = clip(error.message, 800);
+      job.checkpointAt = now();
       saveJob(job);
     }
     console.error(`[interviews] ${id}:`, error.message);
@@ -233,7 +302,27 @@ async function processJob(id) {
     activeJobs.delete(id);
   }
 }
-function retrySoon(id) { setTimeout(() => processJob(id), 40).unref(); }
+async function drainTranscriptionQueue() {
+  if (transcriptionWorkerBusy) return;
+  const next = [...pendingJobs]
+    .map((id) => readJob(id))
+    .filter((job) => job && ["queued", "processing"].includes(job.status))
+    .sort((a, b) => String(a.createdAt || a.updatedAt || "").localeCompare(String(b.createdAt || b.updatedAt || "")))[0];
+  if (!next) return;
+  pendingJobs.delete(next.id);
+  transcriptionWorkerBusy = true;
+  try { await processJob(next.id); }
+  finally {
+    transcriptionWorkerBusy = false;
+    if (pendingJobs.size) retrySoon([...pendingJobs][0], 0);
+  }
+}
+function retrySoon(id, delay = 40) {
+  if (!safeId(id)) return;
+  pendingJobs.add(id);
+  const timer = setTimeout(() => { void drainTranscriptionQueue(); }, Math.max(0, Number(delay) || 0));
+  timer.unref();
+}
 function toTimestamp(seconds, separator = ".") {
   const value = Math.max(0, Number(seconds) || 0);
   const hours = Math.floor(value / 3600);
@@ -263,7 +352,7 @@ function createInterviewModule({ resolveRole }) {
       cleanupExpired();
       if (url.pathname === "/interviews/health" && req.method === "GET") {
         const localEngine = await localEngineStatus();
-        respond(res, 200, { ok: true, localEngine, ffmpegReady: await ffmpegReady(), maxUploadBytes: MAX_BYTES, defaultRetentionDays: DEFAULT_RETENTION_DAYS, intake: "local-file-only" });
+        respond(res, 200, { ok: true, localEngine, ffmpegReady: await ffmpegReady(), ffprobeReady: await ffprobeReady(), maxUploadBytes: MAX_BYTES, defaultRetentionDays: DEFAULT_RETENTION_DAYS, intake: "local-file-only" });
         return true;
       }
       if (url.pathname === "/interviews" && req.method === "GET") {
@@ -285,6 +374,7 @@ function createInterviewModule({ resolveRole }) {
           await pipeline(req, fs.createWriteStream(target, { flags: "wx" }));
           if (!size) throw new Error("empty audio file");
           const retentionDays = Math.max(1, Math.min(MAX_RETENTION_DAYS, Number(req.headers["x-interview-retention-days"]) || DEFAULT_RETENTION_DAYS));
+          const createdAt = now();
           const job = {
             id,
             title: clip(req.headers["x-interview-title"] || String(req.headers["x-interview-filename"] || "Interview").replace(/\.[^.]+$/, ""), 180),
@@ -297,11 +387,19 @@ function createInterviewModule({ resolveRole }) {
             sourcePath: target,
             mimeType: clip(req.headers["content-type"], 100) || "audio/mpeg",
             status: "queued",
-            stage: "Queued securely",
+            phase: "queued",
+            stage: "Waiting for the local transcription worker",
             progress: 1,
+            sourceDurationSeconds: 0,
+            chunkCount: 0,
+            completedChunks: 0,
+            currentChunk: 0,
+            attempt: 1,
+            attemptStartedAt: createdAt,
+            checkpointAt: createdAt,
             segments: [],
-            createdAt: now(),
-            updatedAt: now(),
+            createdAt,
+            updatedAt: createdAt,
             retentionAt: new Date(Date.now() + retentionDays * 86400000).toISOString(),
           };
           saveJob(job);
@@ -358,7 +456,18 @@ function createInterviewModule({ resolveRole }) {
       }
       if (action === "retry" && req.method === "POST") {
         if (!job.sourcePath || !fs.existsSync(job.sourcePath)) { respond(res, 409, { ok: false, error: "audio expired; upload it again" }); return true; }
-        job.status = "queued"; job.stage = "Queued again"; job.progress = 1; job.error = ""; saveJob(job); retrySoon(id);
+        if (['queued', 'processing'].includes(job.status)) { respond(res, 409, { ok: false, error: "this interview is already in the local queue" }); return true; }
+        if (job.status === "ready") { respond(res, 409, { ok: false, error: "the transcript is already ready for editing" }); return true; }
+        job.status = "queued";
+        job.phase = "queued";
+        job.stage = "Waiting for the local transcription worker";
+        job.progress = 1;
+        job.error = "";
+        job.attempt = Math.max(1, Number(job.attempt) || 1) + 1;
+        job.attemptStartedAt = now();
+        job.checkpointAt = now();
+        saveJob(job);
+        retrySoon(id);
         respond(res, 200, { ok: true, job: jobSummary(job) });
         return true;
       }
