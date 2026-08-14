@@ -5391,7 +5391,6 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     els.composer.hidden = false;
     els.composer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     updateStart();
-    window.setTimeout(() => startUpload(), 0);
   }
   function renderReadiness(health) {
     const ready = health?.localEngine?.ready && health?.ffmpegReady && health?.ffprobeReady;
