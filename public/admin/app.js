@@ -4968,7 +4968,6 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   function stageDetails(job, jobs = latestJobs) {
     const stage = String(job?.stage || '').toLowerCase();
     const phase = String(job?.processing?.phase || '').toLowerCase();
-    const isRetiredRemoteJob = job?.sourceKind === 'remote';
     const queue = getQueueSnapshot(jobs);
     if (job?.status === 'queued') {
       const position = queue.positionById.get(job.id) || 1;
@@ -4983,7 +4982,6 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
       return { title: 'Локальная расшифровка идёт', detail: 'VPS продолжает работу в фоне — редактор не нужно держать открытым.', step: 2 };
     }
     if (job?.status === 'ready') return { title: 'Текст готов к вычитке', detail: 'Откройте запись, проверьте имена и фрагменты, затем создайте черновик.', step: 3 };
-    if (job?.status === 'failed' && isRetiredRemoteJob) return { title: 'Нужно добавить файл', detail: 'Импорт по ссылке отключён. Загрузите исходную запись с iPhone или компьютера.', step: 1 };
     if (job?.status === 'failed') return { title: 'Нужно действие редактора', detail: 'Аудио сохранено. Проверьте причину ниже и перезапустите только эту запись.', step: 1 };
     return { title: job?.stage || 'Черновик', detail: 'Запись ещё не отправлена в очередь.', step: 1 };
   }
@@ -5027,7 +5025,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     els.nextButton.textContent = suggestion.button;
   }
   function audioRetentionLabel(job) {
-    if (!job?.hasAudio) return job?.sourceKind === 'remote' ? 'нужен исходный файл' : 'аудио удалено';
+    if (!job?.hasAudio) return 'аудио удалено';
     const retention = Date.parse(job?.retentionAt || '');
     if (!Number.isFinite(retention)) return '';
     const remaining = retention - Date.now();
@@ -5036,7 +5034,6 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     return hours < 36 ? `аудио ещё ${hours} ч` : `аудио до ${fmtDate(job.retentionAt)}`;
   }
   function nextInterviewStep(job, linkedArticleId) {
-    if (job.status === 'failed' && job?.sourceKind === 'remote') return 'Следующий шаг: импорт по ссылке отключён. Загрузите исходный файл как новую запись.';
     if (job.status === 'failed') return 'Следующий шаг: проверьте причину и перезапустите только эту запись.';
     if (linkedArticleId) return 'Материал уже передан в статью. Рабочая расшифровка остаётся отдельной и может быть удалена без изменения статьи.';
     if (job.status === 'ready') return 'Следующий шаг: вычитать расшифровку, подтвердить проверку и создать отдельный черновик статьи.';
@@ -5045,7 +5042,6 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   const statusLabel = (job) => stageDetails(job).title;
   function interviewErrorMessage(job) {
     const error = String(job?.error || '').trim();
-    if (job?.sourceKind === 'remote') return 'Импорт по внешним ссылкам отключён. Для надёжной расшифровки загрузите исходное аудио или видео как новую запись.';
     if (/could not be read as audio/i.test(error)) return 'VPS не нашёл читаемую аудиодорожку. В «Диктофоне» iPhone нажмите «Поделиться» → «Сохранить в Файлы» и загрузите исходный файл без переименования расширения.';
     if (/audio preparation is not installed/i.test(error)) return 'На VPS временно недоступна подготовка аудио. Файл сохранён: ничего не загружайте заново, дождитесь зелёного статуса студии и нажмите «Запустить заново». ';
     return error;

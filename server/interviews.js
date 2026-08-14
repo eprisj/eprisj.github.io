@@ -68,6 +68,16 @@ function listJobs() {
     .filter(Boolean)
     .sort((a, b) => String(b.updatedAt || "").localeCompare(String(a.updatedAt || "")));
 }
+function isRetiredImportPlaceholder(job) {
+  // Before local-only intake, a failed link import could leave a shell with no
+  // source file and no transcript. It is not editorial work and must not look
+  // like a recoverable recording in the current archive.
+  return Boolean(job
+    && job.sourceKind === "remote"
+    && !job.articleDraft?.id
+    && !(Array.isArray(job.segments) && job.segments.length)
+    && (!job.sourcePath || !fs.existsSync(job.sourcePath)));
+}
 function jobSummary(job, full = false) {
   const out = {
     id: job.id,
@@ -356,7 +366,7 @@ function createInterviewModule({ resolveRole }) {
         return true;
       }
       if (url.pathname === "/interviews" && req.method === "GET") {
-        respond(res, 200, { ok: true, jobs: listJobs().map((job) => jobSummary(job)) });
+        respond(res, 200, { ok: true, jobs: listJobs().filter((job) => !isRetiredImportPlaceholder(job)).map((job) => jobSummary(job)) });
         return true;
       }
       if (url.pathname === "/interviews/upload" && req.method === "POST") {
@@ -409,10 +419,6 @@ function createInterviewModule({ resolveRole }) {
           try { await fsp.rm(folder, { recursive: true, force: true }); } catch {}
           respond(res, error.message === "audio too large" ? 413 : 500, { ok: false, error: error.message || "upload failed" });
         }
-        return true;
-      }
-      if (url.pathname === "/interviews/import" && req.method === "POST") {
-        respond(res, 410, { ok: false, error: "Import from external links has been removed. Upload the original audio or video file instead." });
         return true;
       }
       const match = url.pathname.match(/^\/interviews\/([a-z0-9_-]{12,64})(?:\/(audio|export|retry|article-draft|retention))?$/i);
