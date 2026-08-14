@@ -2002,8 +2002,18 @@
             if (titleEl && pageTitles[tab]) titleEl.textContent = pageTitles[tab];
             if (tab === 'polls' && typeof window._renderPollResults === 'function') window._renderPollResults();
             try { localStorage.setItem(LAST_TAB_KEY, tab); } catch (e) { /* localStorage unavailable */ }
+            // Direct, shareable link to a section: eprisjournal.com/admin/#translations
+            if (window.location.hash !== '#' + tab) history.replaceState(null, '', '#' + tab);
             syncSidebarNav();
           });
+        });
+
+        // A hash in the URL (bookmark, shared link, browser back/forward)
+        // wins over the remembered last tab.
+        window.addEventListener('hashchange', function () {
+          var tab = window.location.hash.replace(/^#/, '');
+          var btn = tab && document.querySelector('.tab-btn[data-tab="' + tab + '"]');
+          if (btn && !btn.classList.contains('active')) btn.click();
         });
 
         if (sidebarNavSearch) {
@@ -2023,9 +2033,12 @@
 
         // Reopen on the tab the editor was on before the reload, instead of
         // always landing back on whichever tab is hardcoded "active" in the
-        // markup.
+        // markup. A URL hash (bookmark, shared link) wins over the merely
+        // remembered last tab, so eprisjournal.com/admin/#translations
+        // always opens that section regardless of local history.
         try {
-          var lastTab = localStorage.getItem(LAST_TAB_KEY);
+          var hashTab = window.location.hash.replace(/^#/, '');
+          var lastTab = hashTab || localStorage.getItem(LAST_TAB_KEY);
           if (lastTab) {
             var lastBtn = document.querySelector('.tab-btn[data-tab="' + lastTab + '"]');
             if (lastBtn) lastBtn.click();
