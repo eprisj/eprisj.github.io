@@ -9,7 +9,7 @@ const fs = require("fs");
 const fsp = fs.promises;
 const path = require("path");
 const crypto = require("crypto");
-const { execFile } = require("child_process");
+const { execFile, spawn } = require("child_process");
 const { pipeline } = require("stream/promises");
 
 const ROOT = process.env.INTERVIEW_DIR || "/opt/epris-interviews";
@@ -20,6 +20,10 @@ const AUDIO_DIR = path.join(ROOT, "audio");
 const MAX_BYTES = 1536 * 1024 * 1024;
 const DEFAULT_RETENTION_DAYS = 30;
 const MAX_RETENTION_DAYS = 90;
+// Short checkpoints give the editor text early. The Python worker keeps one
+// Whisper model in memory for the entire source, so smaller parts do not add a
+// model-load penalty for every two minutes.
+const TRANSCRIPT_CHUNK_SECONDS = 120;
 const activeJobs = new Set();
 const pendingJobs = new Set();
 let transcriptionWorkerBusy = false;
@@ -113,6 +117,7 @@ function jobSummary(job, full = false) {
       phase: job.phase || (job.status === "queued" ? "queued" : job.status || "idle"),
       failedPhase: job.failedPhase || "",
       sourceDurationSeconds: Math.max(0, Number(job.sourceDurationSeconds) || 0),
+      chunkSeconds: Math.max(1, Number(job.chunkSeconds) || TRANSCRIPT_CHUNK_SECONDS),
       chunkCount: Math.max(0, Number(job.chunkCount) || 0),
       completedChunks: Math.max(0, Number(job.completedChunks) || 0),
       currentChunk: Math.max(0, Number(job.currentChunk) || 0),
@@ -176,14 +181,58 @@ async function localEngineStatus() {
     return { ready: false, engine: "Local Whisper", model: LOCAL_MODEL, detail: "Local worker needs server setup.", technical: clip(error.message, 260) };
   }
 }
-async function transcribeChunk(chunkPath, language) {
+async function transcribeChunksIncrementally(chunkPaths, language, onEvent) {
   // `nice` is intentional: the public journal always wins CPU time over a
-  // background transcription on this small VPS.
-  const { stdout } = await run("nice", ["-n", "15", LOCAL_PYTHON, LOCAL_TRANSCRIBE_SCRIPT, "--input", chunkPath, "--language", language || "en", "--model", LOCAL_MODEL], { timeout: 60 * 60 * 1000 });
-  let payload;
-  try { payload = JSON.parse(String(stdout || "{}")); } catch { throw new Error("Local worker returned an invalid transcript."); }
-  if (payload?.error) throw new Error(payload.error);
-  return payload;
+  // background transcription on this small VPS. The worker streams one JSON
+  // line before and after each fragment, while holding the model in memory.
+  const args = ["-n", "15", LOCAL_PYTHON, LOCAL_TRANSCRIBE_SCRIPT, "--language", language || "en", "--model", LOCAL_MODEL, "--stream"];
+  for (const chunkPath of chunkPaths) args.push("--input", chunkPath);
+  const timeout = Math.max(60 * 60 * 1000, chunkPaths.length * 12 * 60 * 1000);
+  await new Promise((resolve, reject) => {
+    const child = spawn("nice", args, { stdio: ["ignore", "pipe", "pipe"] });
+    let outputBuffer = "";
+    let errorOutput = "";
+    let eventChain = Promise.resolve();
+    let settled = false;
+    const timer = setTimeout(() => {
+      child.kill("SIGTERM");
+      finish(new Error("Local transcription worker timed out."));
+    }, timeout);
+    const finish = (error) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      error ? reject(error) : resolve();
+    };
+    const consumeLine = (line) => {
+      const value = String(line || "").trim();
+      if (!value) return;
+      eventChain = eventChain.then(async () => {
+        let event;
+        try { event = JSON.parse(value); } catch { throw new Error("Local worker returned an invalid progress event."); }
+        if (event?.error) throw new Error(event.error);
+        if (!event || !["start", "result"].includes(event.event)) throw new Error("Local worker returned an unknown progress event.");
+        await onEvent(event);
+      });
+    };
+    child.stdout.setEncoding("utf8");
+    child.stdout.on("data", (data) => {
+      outputBuffer += data;
+      const lines = outputBuffer.split("\n");
+      outputBuffer = lines.pop() || "";
+      lines.forEach(consumeLine);
+    });
+    child.stderr.setEncoding("utf8");
+    child.stderr.on("data", (data) => { errorOutput = `${errorOutput}${data}`.slice(-1200); });
+    child.on("error", (error) => finish(error));
+    child.on("close", (code) => {
+      consumeLine(outputBuffer);
+      eventChain.then(() => {
+        if (code === 0) finish();
+        else finish(new Error(`Local worker failed${errorOutput.trim() ? `: ${errorOutput.trim()}` : ""}`));
+      }).catch(finish);
+    });
+  });
 }
 async function inspectSourceAudio(sourcePath) {
   try {
@@ -236,6 +285,7 @@ async function processJob(id) {
     job.progress = Math.max(3, Number(job.progress || 0));
     job.error = "";
     job.segments = [];
+    job.chunkSeconds = TRANSCRIPT_CHUNK_SECONDS;
     job.completedChunks = 0;
     job.currentChunk = 0;
     job.chunkCount = 0;
@@ -252,9 +302,9 @@ async function processJob(id) {
     const chunksDir = path.join(path.dirname(job.sourcePath), "chunks");
     await fsp.rm(chunksDir, { recursive: true, force: true });
     await fsp.mkdir(chunksDir, { recursive: true });
-    // 15-minute mono chunks are restartable and keep RAM steady on a modest VPS.
-    // The chunks stay on the server and are consumed by the local worker only.
-    await run("ffmpeg", ["-y", "-i", job.sourcePath, "-vn", "-ac", "1", "-ar", "16000", "-codec:a", "libmp3lame", "-b:a", "48k", "-f", "segment", "-segment_time", "900", path.join(chunksDir, "part-%03d.mp3")]);
+    // Two-minute mono checkpoints surface usable text quickly. Chunks remain
+    // private on the VPS and are consumed sequentially by one model process.
+    await run("ffmpeg", ["-y", "-i", job.sourcePath, "-vn", "-ac", "1", "-ar", "16000", "-codec:a", "libmp3lame", "-b:a", "48k", "-f", "segment", "-segment_time", String(TRANSCRIPT_CHUNK_SECONDS), path.join(chunksDir, "part-%03d.mp3")]);
     const chunks = (await fsp.readdir(chunksDir)).filter((name) => /^part-\d+\.mp3$/.test(name)).sort();
     if (!chunks.length) throw new Error("ffmpeg did not create audio chunks");
     job = readJob(id);
@@ -266,30 +316,34 @@ async function processJob(id) {
     job.progress = 10;
     job.checkpointAt = now();
     saveJob(job);
-    for (let index = 0; index < chunks.length; index += 1) {
+    await transcribeChunksIncrementally(chunks.map((name) => path.join(chunksDir, name)), job.language || "en", async (event) => {
+      const index = Math.max(0, Number(event.index) || 0);
       job = readJob(id);
-      job.status = "processing";
-      job.phase = "transcribing";
-      job.chunkCount = chunks.length;
-      job.completedChunks = index;
-      job.currentChunk = index + 1;
-      job.stage = `Transcribing locally: part ${index + 1} of ${chunks.length}`;
-      job.progress = Math.min(94, Math.round(10 + (index / chunks.length) * 84));
-      job.checkpointAt = now();
-      saveJob(job);
-      const payload = await transcribeChunk(path.join(chunksDir, chunks[index]), job.language || "en");
-      const offset = index * 900;
-      const next = normaliseSegments(payload, offset);
-      job = readJob(id);
+      if (!job) throw new Error("interview is unavailable");
+      if (event.event === "start") {
+        job.status = "processing";
+        job.phase = "transcribing";
+        job.chunkSeconds = TRANSCRIPT_CHUNK_SECONDS;
+        job.chunkCount = chunks.length;
+        job.completedChunks = index;
+        job.currentChunk = index + 1;
+        job.stage = `Transcribing locally: part ${index + 1} of ${chunks.length}`;
+        job.progress = Math.min(94, Math.round(10 + (index / chunks.length) * 84));
+        job.checkpointAt = now();
+        saveJob(job);
+        return;
+      }
+      const next = normaliseSegments(event.payload, index * TRANSCRIPT_CHUNK_SECONDS);
       job.segments = [...(Array.isArray(job.segments) ? job.segments : []), ...next];
       job.phase = "saving";
+      job.chunkSeconds = TRANSCRIPT_CHUNK_SECONDS;
       job.completedChunks = index + 1;
       job.currentChunk = index + 1;
       job.stage = `Saving part ${index + 1} of ${chunks.length}`;
       job.progress = Math.min(98, Math.round(10 + ((index + 1) / chunks.length) * 86));
       job.checkpointAt = now();
       saveJob(job);
-    }
+    });
     job = readJob(id);
     job.status = "ready";
     job.phase = "ready";
@@ -403,6 +457,7 @@ function createInterviewModule({ resolveRole }) {
             stage: "Waiting for the local transcription worker",
             progress: 1,
             sourceDurationSeconds: 0,
+            chunkSeconds: TRANSCRIPT_CHUNK_SECONDS,
             chunkCount: 0,
             completedChunks: 0,
             currentChunk: 0,
