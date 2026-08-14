@@ -15,7 +15,9 @@ const { pipeline } = require("stream/promises");
 const ROOT = process.env.INTERVIEW_DIR || "/opt/epris-interviews";
 const JOBS_DIR = path.join(ROOT, "jobs");
 const AUDIO_DIR = path.join(ROOT, "audio");
-const MAX_BYTES = 512 * 1024 * 1024;
+// Large source videos are streamed through nginx straight to disk. 1.5 GB keeps
+// room for the extracted audio and transcription chunks on the 20 GB VPS.
+const MAX_BYTES = 1536 * 1024 * 1024;
 const DEFAULT_RETENTION_DAYS = 30;
 const MAX_RETENTION_DAYS = 90;
 const activeJobs = new Set();
@@ -184,7 +186,7 @@ async function importRemoteSource(job) {
   const outputTemplate = path.join(folder, "source.%(ext)s");
   const { stdout } = await run(YTDLP_BIN, [
     "--no-playlist", "--no-progress", "--no-warnings", "--max-downloads", "1",
-    "--max-filesize", "512M", "--extract-audio", "--audio-format", "mp3", "--audio-quality", "5",
+    "--max-filesize", "1536M", "--extract-audio", "--audio-format", "mp3", "--audio-quality", "5",
     "--output", outputTemplate, "--print", "after_move:%(title)s", "--", job.sourceUrl,
   ], { timeout: 45 * 60 * 1000 });
   const files = (await fsp.readdir(folder))
@@ -195,7 +197,7 @@ async function importRemoteSource(job) {
   const sourcePath = path.join(folder, filename);
   const stat = await fsp.stat(sourcePath);
   if (!stat.size) throw new Error("The imported audio is empty.");
-  if (stat.size > MAX_BYTES) throw new Error("The imported audio is larger than 512 MB.");
+  if (stat.size > MAX_BYTES) throw new Error("The imported audio is larger than 1.5 GB.");
   const importedTitle = String(stdout || "").split(/\r?\n/).map((line) => line.replace(/^after_move:/, "").trim()).filter(Boolean).pop() || "";
   job.sourcePath = sourcePath;
   job.filename = `${provider.toLowerCase()}-${job.id}.mp3`;
@@ -331,7 +333,7 @@ function createInterviewModule({ resolveRole }) {
         const ext = safeExt(req.headers["x-interview-filename"], req.headers["content-type"]);
         const declared = Number(req.headers["content-length"] || 0);
         if (!ext) { respond(res, 400, { ok: false, error: "Supported formats: MP3, M4A, WAV, MP4, MOV, MKV, AVI, WebM, AAC, OPUS, FLAC and similar media files." }); return true; }
-        if (declared && declared > MAX_BYTES) { respond(res, 413, { ok: false, error: "Media file is larger than 512 MB." }); return true; }
+        if (declared && declared > MAX_BYTES) { respond(res, 413, { ok: false, error: "Media file is larger than 1.5 GB." }); return true; }
         const id = `int_${Date.now().toString(36)}_${crypto.randomBytes(5).toString("hex")}`;
         const folder = path.join(AUDIO_DIR, id);
         await fsp.mkdir(folder, { recursive: true });
