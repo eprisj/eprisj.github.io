@@ -6329,7 +6329,6 @@ body.busy::after {
 #tab-content.is-live-editor #moveEntryUpBtn,
 #tab-content.is-live-editor #moveEntryDownBtn,
 #tab-content.is-live-editor #duplicateEntryBtn,
-#tab-content.is-live-editor #deleteEntryBtn,
 #tab-content.is-live-editor #togglePreviewBtn,
 #tab-content.is-live-editor #applyEntryBtn {
   display: none !important;
