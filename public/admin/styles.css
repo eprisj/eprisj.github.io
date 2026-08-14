@@ -7354,6 +7354,144 @@ button, a, input, select, textarea { touch-action: manipulation; }
   .transcript-source-link { min-height: 44px; }
 }
 
+/* ── Transcript intake ────────────────────────────────────────────────────
+   One focused source decision first; editorial metadata stays available but
+   does not obscure the actual start of the workflow. */
+.transcript-composer {
+  width: min(100%, 980px);
+  margin-inline: auto;
+  padding: clamp(20px, 3vw, 34px);
+  border-color: color-mix(in srgb, var(--accent) 26%, var(--line));
+  background: linear-gradient(145deg, color-mix(in srgb, var(--accent-soft) 30%, var(--bg-card)), var(--bg-card) 52%);
+}
+.transcript-source-choice {
+  min-width: 0;
+  margin: 24px 0 0;
+  padding: 0;
+  border: 0;
+}
+.transcript-source-choice legend {
+  margin: 0 0 9px;
+  color: var(--text-muted);
+  font: 700 .57rem/1.2 var(--font-mono);
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.transcript-source-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.transcript-source-tab {
+  display: flex;
+  min-height: 84px;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--bg) 88%, var(--accent-soft));
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+.transcript-source-tab:hover { border-color: color-mix(in srgb, var(--accent) 54%, var(--line)); transform: translateY(-1px); }
+.transcript-source-tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.transcript-source-tab.is-active {
+  border-color: var(--accent);
+  background: linear-gradient(118deg, color-mix(in srgb, var(--accent-soft) 86%, var(--bg)), color-mix(in srgb, var(--accent) 8%, var(--bg)));
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+.transcript-source-tab svg {
+  width: 25px;
+  height: 25px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.55;
+}
+.transcript-source-tab span { display: grid; min-width: 0; gap: 4px; }
+.transcript-source-tab strong { font: 600 .78rem/1.2 var(--font-serif); }
+.transcript-source-tab small { color: var(--text-muted); font-size: .61rem; line-height: 1.35; }
+.transcript-source-panel {
+  margin-top: 12px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--bg) 92%, var(--accent-soft));
+}
+.transcript-source-panel > label { display: grid; gap: 6px; }
+.transcript-source-panel input {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 7px;
+  background: var(--bg);
+  color: var(--text);
+  font: .75rem/1.35 var(--font-mono);
+}
+.transcript-source-panel input:focus { border-color: var(--accent); outline: 0; box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent); }
+.transcript-source-status {
+  min-height: 18px;
+  margin: 9px 0 0;
+  color: var(--text-muted);
+  font-size: .64rem;
+  line-height: 1.45;
+}
+.transcript-source-status.is-ready { color: #397248; }
+.transcript-source-status.is-error { color: var(--danger); }
+.transcript-source-panel .transcript-dropzone { margin-top: 0; }
+.transcript-advanced {
+  margin-top: 13px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: color-mix(in srgb, var(--bg) 88%, var(--bg-soft));
+}
+.transcript-advanced summary {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 13px;
+  color: var(--text);
+  cursor: pointer;
+  font: 600 .68rem/1.2 var(--font-mono);
+  letter-spacing: .04em;
+  list-style: none;
+}
+.transcript-advanced summary::-webkit-details-marker { display: none; }
+.transcript-advanced summary::after { content: '+'; color: var(--accent); font-size: 1rem; }
+.transcript-advanced[open] summary { border-bottom: 1px solid var(--line); }
+.transcript-advanced[open] summary::after { content: '−'; }
+.transcript-advanced summary span { color: var(--text-muted); font-size: .56rem; font-weight: 500; }
+.transcript-advanced .transcript-form-grid { margin: 0; padding: 13px; }
+.transcript-consent {
+  margin-top: 16px;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--bg) 94%, var(--accent-soft));
+}
+.transcript-submit-row {
+  justify-content: space-between;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.transcript-submit-row .btn-primary { min-height: 46px; padding-inline: 18px; }
+.transcript-submit-row span { max-width: 440px; line-height: 1.45; }
+@media (prefers-reduced-motion: reduce) {
+  .transcript-source-tab { transition-duration: .01ms; }
+}
+@media (max-width: 780px) {
+  .transcript-composer { padding: 20px 16px; }
+  .transcript-source-tabs { grid-template-columns: 1fr; }
+  .transcript-source-tab { min-height: 72px; }
+  .transcript-source-panel { padding: 12px; }
+  .transcript-submit-row .btn-primary { width: 100%; }
+}
+
 /* ── Sidebar identity and transcription entry ───────────────────────────────
    The public journal uses a typographic EPRIS wordmark. The editorial shell
    now uses the same lockup instead of a generic initial badge, while the
