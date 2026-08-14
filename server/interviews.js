@@ -29,11 +29,19 @@ const LOCAL_MODEL = process.env.INTERVIEW_WHISPER_MODEL || "/opt/epris-interview
 function now() { return new Date().toISOString(); }
 function clip(value, length) { return String(value || "").replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, length); }
 function safeId(value) { return /^[a-z0-9_-]{12,64}$/i.test(String(value || "")) ? String(value) : ""; }
+function safeSourceUrl(value) {
+  const raw = clip(value, 1500);
+  if (!raw) return "";
+  try {
+    const parsed = new URL(raw);
+    return parsed.protocol === "https:" && !parsed.username && !parsed.password ? parsed.href : "";
+  } catch { return ""; }
+}
 function safeExt(filename, type) {
   const ext = String(filename || "").toLowerCase().match(/\.([a-z0-9]{2,5})$/)?.[1] || "";
-  const allowed = new Set(["mp3", "m4a", "wav", "mp4", "mpeg", "mpga", "ogg", "webm", "flac"]);
+  const allowed = new Set(["3g2", "3gp", "aac", "aif", "aiff", "alac", "amr", "asf", "avi", "flac", "m4a", "m4v", "mkv", "mov", "mp3", "mp4", "mpeg", "mpga", "ogg", "opus", "wav", "webm", "wma", "wmv"]);
   if (allowed.has(ext)) return ext;
-  const byMime = { "audio/mpeg": "mp3", "audio/mp4": "m4a", "audio/x-m4a": "m4a", "audio/wav": "wav", "audio/x-wav": "wav", "audio/ogg": "ogg", "audio/webm": "webm", "audio/flac": "flac" };
+  const byMime = { "audio/aac": "aac", "audio/aiff": "aiff", "audio/amr": "amr", "audio/flac": "flac", "audio/mpeg": "mp3", "audio/mp4": "m4a", "audio/ogg": "ogg", "audio/opus": "opus", "audio/wav": "wav", "audio/webm": "webm", "audio/x-m4a": "m4a", "audio/x-wav": "wav", "audio/x-ms-wma": "wma", "video/3gpp": "3gp", "video/avi": "avi", "video/mp4": "mp4", "video/quicktime": "mov", "video/webm": "webm", "video/x-matroska": "mkv", "video/x-ms-asf": "asf", "video/x-msvideo": "avi", "video/x-ms-wmv": "wmv" };
   return byMime[String(type || "").split(";")[0].toLowerCase()] || "";
 }
 function ensureDirs() {
@@ -67,6 +75,7 @@ function jobSummary(job, full = false) {
     id: job.id,
     title: job.title,
     filename: job.filename,
+    sourceUrl: job.sourceUrl || "",
     size: job.size,
     language: job.language,
     speakers: job.speakers || [],
@@ -262,8 +271,8 @@ function createInterviewModule({ resolveRole }) {
       if (url.pathname === "/interviews/upload" && req.method === "POST") {
         const ext = safeExt(req.headers["x-interview-filename"], req.headers["content-type"]);
         const declared = Number(req.headers["content-length"] || 0);
-        if (!ext) { respond(res, 400, { ok: false, error: "Supported formats: MP3, M4A, WAV, MP4, OGG, WebM or FLAC." }); return true; }
-        if (declared && declared > MAX_BYTES) { respond(res, 413, { ok: false, error: "Audio is larger than 512 MB." }); return true; }
+        if (!ext) { respond(res, 400, { ok: false, error: "Supported formats: MP3, M4A, WAV, MP4, MOV, MKV, AVI, WebM, AAC, OPUS, FLAC and similar media files." }); return true; }
+        if (declared && declared > MAX_BYTES) { respond(res, 413, { ok: false, error: "Media file is larger than 512 MB." }); return true; }
         const id = `int_${Date.now().toString(36)}_${crypto.randomBytes(5).toString("hex")}`;
         const folder = path.join(AUDIO_DIR, id);
         await fsp.mkdir(folder, { recursive: true });
@@ -281,6 +290,7 @@ function createInterviewModule({ resolveRole }) {
             size,
             language: clip(req.headers["x-interview-language"] || "en", 12) || "en",
             speakers: parseSpeakers(req.headers["x-interview-speakers"]),
+            sourceUrl: safeSourceUrl(req.headers["x-interview-source-url"]),
             sourcePath: target,
             mimeType: clip(req.headers["content-type"], 100) || "audio/mpeg",
             status: "queued",

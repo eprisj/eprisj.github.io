@@ -7335,3 +7335,21 @@ button, a, input, select, textarea { touch-action: manipulation; }
   .registry-author-grid { grid-template-columns: 1fr; gap: 10px; }
   .registry-author-summary { min-height: 44px; }
 }
+
+/* Editorial source references are deliberately quiet: a provenance link is useful
+   during review, but it must not compete with the transcript controls. */
+.transcript-source-link {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  margin-top: 7px;
+  color: var(--accent);
+  font: 700 .57rem/1.2 var(--font-mono);
+  letter-spacing: .055em;
+  text-decoration: none;
+}
+.transcript-source-link:hover,
+.transcript-source-link:focus-visible { outline: 0; text-decoration: underline; }
+@media (max-width: 780px) {
+  .transcript-source-link { min-height: 44px; }
+}
