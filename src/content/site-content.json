@@ -2384,8 +2384,8 @@
     {
       "id": 17,
       "title": "Emily Kraus: Rhythm of the Moment",
-      "author": "EPRIS Journal",
-      "role": "mariia ivanova",
+      "author": "Maria Ivanova",
+      "role": "Author",
       "date": "Jul 30, 2026",
       "excerpt": "Inside the Canvas Cube, Emily Kraus Paints the Rhythm of the Present Moment",
       "category": "contemporary art",
@@ -2472,7 +2472,8 @@
         }
       ],
       "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg",
-      "order": 2
+      "order": 2,
+      "authorId": "author-1784896384236-4fokw"
     },
     {
       "id": 18,
@@ -2837,8 +2838,8 @@
     {
       "id": 16,
       "title": "Polish Design: Woven From Memory",
-      "author": "EPRIS Journal",
-      "role": "Maria ivanova",
+      "author": "Maria Ivanova",
+      "role": "Author",
       "date": "Jul 24, 2026",
       "excerpt": "How does the sensetivity of Polish designers towards cultural heritage shape the design scene",
       "category": "design",
@@ -3046,13 +3047,14 @@
         }
       ],
       "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg",
-      "order": 4
+      "order": 4,
+      "authorId": "author-1784896384236-4fokw"
     },
     {
       "id": 15,
       "title": "Tadao Ando",
-      "author": "EPRIS Journal",
-      "role": "maria ivanova",
+      "author": "Maria Ivanova",
+      "role": "Author",
       "date": "Jul 19, 2026",
       "excerpt": "Architecture beneath the tangible",
       "category": "Architecture",
@@ -3255,13 +3257,14 @@
         }
       ],
       "imageUrl": "https://api.eprisjournal.com/uploads/mrt4jakod3agex.jpg",
-      "order": 5
+      "order": 5,
+      "authorId": "author-1784896384236-4fokw"
     },
     {
       "id": 13,
       "title": "Art that makes you smile",
-      "author": "EPRIS Journal",
-      "role": "Maria ivanova",
+      "author": "Maria Ivanova",
+      "role": "Author",
       "date": "Jul 17, 2026",
       "excerpt": "I believe that when you introduce playful objects into an environment, it expands the boundaries of the mind. It gives you non-verbal permission to think freely - not just to push against conventional frames, but to forget they even exist.",
       "category": "art",
@@ -3495,7 +3498,8 @@
         }
       ],
       "imageUrl": "https://api.eprisjournal.com/uploads/mrqbtqfza6qpnq.jpg",
-      "order": 6
+      "order": 6,
+      "authorId": "author-1784896384236-4fokw"
     },
     {
       "id": 10,
@@ -4148,7 +4152,7 @@
       "id": 8,
       "title": "Home Away From Home",
       "author": "Maria Ivanova",
-      "role": "Editor-in-Chief",
+      "role": "Author",
       "date": "Mar 14, 2026",
       "excerpt": "A pied-à-terre always catches the irreplaceable light in your eyes, but it can also spark them.",
       "category": "Travel",
@@ -4269,7 +4273,8 @@
       ],
       "imageSeed": "",
       "updatedAt": "2026-07-16T11:39:01.878Z",
-      "order": 11
+      "order": 11,
+      "authorId": "author-1784896384236-4fokw"
     },
     {
       "id": 19,
@@ -4573,14 +4578,16 @@
           "caption": ""
         }
       ],
-      "author": "Maria ivanova",
+      "author": "Maria Ivanova",
       "imageUrl": "https://api.eprisjournal.com/uploads/ms7zbp2w1tw6jx.webp",
       "featured": true,
       "category": "Food",
       "verdict": "",
       "meta": "paris · restaurant · €€€",
       "pros": [],
-      "cons": []
+      "cons": [],
+      "authorId": "author-1784896384236-4fokw",
+      "role": "Author"
     },
     {
       "id": 2,
@@ -5143,7 +5150,7 @@
           "id": 8,
           "title": "Дом Вдали от дома",
           "author": "Maria Ivanova",
-          "role": "Главный редактор",
+          "role": "Автор",
           "date": "14 марта 2026 г.",
           "excerpt": "Pied-à-terre всегда ловит незаменимый свет в ваших глазах, но также может зажечь их.",
           "category": "Путешествовать",
@@ -5263,7 +5270,8 @@
             }
           ],
           "imageSeed": "",
-          "updatedAt": "2026-07-16T11:39:02.104Z"
+          "updatedAt": "2026-07-16T11:39:02.104Z",
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 9,
@@ -5911,8 +5919,8 @@
         {
           "id": 13,
           "title": "Искусство, которое заставляет вас улыбаться",
-          "author": "EPRIS Journal",
-          "role": "Мария иванова",
+          "author": "Maria Ivanova",
+          "role": "Автор",
           "date": "Jul 17, 2026",
           "excerpt": "Я считаю, что когда вы вводите в окружающую среду игровые предметы, это расширяет границы разума. Это дает вам невербальное разрешение мыслить свободно – не только отвергать общепринятые рамки, но и забывать о их существовании.",
           "category": "искусство",
@@ -6146,7 +6154,8 @@
             }
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mrqbtqfza6qpnq.jpg",
-          "order": 6
+          "order": 6,
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 14,
@@ -6227,8 +6236,8 @@
         {
           "id": 15,
           "title": "Тадао Андо",
-          "author": "EPRIS Journal",
-          "role": "Мария Иванова",
+          "author": "Maria Ivanova",
+          "role": "Автор",
           "date": "19 июля 2026 г.",
           "excerpt": "Архитектура под материальным",
           "category": "Архитектура",
@@ -6430,13 +6439,14 @@
               "content": "Философия Тадао Андо уникальна, и ее нельзя передать точнее, чем через его \nслова. В своем эссе «Клин в обстоятельствах» он объяснил свой подход к жилому пространству. \nпространство – дом – это сцена для жизни; поэтому манера развлечений и пути очень \nважно. Он убежден, что архитектурный замысел не должен восприниматься изнутри – \nкак только посетитель входит в помещение, ему/ей не важно понимать планировку, он/она \nдолжен познавательно осмысливать охватываемое пространство. Вот причина асимметричных, изменчивых, \nи непредсказуемые космические отношения в его проектах. "
             }
           ],
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrt4jakod3agex.jpg"
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrt4jakod3agex.jpg",
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 16,
           "title": "Польский дизайн: сотканный по памяти",
-          "author": "EPRIS Journal",
-          "role": "Мария иванова",
+          "author": "Maria Ivanova",
+          "role": "Автор",
           "date": "24 июля 2026 г.",
           "excerpt": "Как чувствительность польских дизайнеров к культурному наследию влияет на дизайн-сцену",
           "category": "дизайн",
@@ -6643,7 +6653,8 @@
               "content": "Сегодня польский дизайн – это квинтэссенция преданности мастерству, которое на протяжении десятилетий провозглашало культурную самобытность. Стремясь творить на фоне утилитарного минимализма, архитекторы и дизайнеры воплощают свое видение, продолжая формировать уникальный национальный нарратив, поражающий креативщиков всего мира. "
             }
           ],
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg"
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg",
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 18,
@@ -7007,8 +7018,8 @@
         {
           "id": 17,
           "title": "Эмили Краус: Ритм момента",
-          "author": "EPRIS Journal",
-          "role": "Мария Иванова",
+          "author": "Maria Ivanova",
+          "role": "Автор",
           "date": "Jul 30, 2026",
           "excerpt": "Внутри холстового куба Эмили Краус рисует ритм настоящего момента",
           "category": "современное искусство",
@@ -7094,7 +7105,8 @@
               "content": "Глубокое влияние Эмили Краус на мир современного искусства усиливается признанием со стороны крупных институций: как одна из участниц Artsy Vanguard 2026, обладательница Премии Хоппера и вошедшая в шорт-лист как Премии Хоппера, так и Премии Джона Мурса в области живописи, она продолжает делать открытия в каждой новой работе, прокладывая свой сильный путь."
             }
           ],
-          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg",
+          "authorId": "author-1784896384236-4fokw"
         }
       ],
       "reviews": [
@@ -7168,14 +7180,16 @@
               "caption": ""
             }
           ],
-          "author": "Maria ivanova",
+          "author": "Maria Ivanova",
           "imageUrl": "https://api.eprisjournal.com/uploads/ms7zbp2w1tw6jx.webp",
           "featured": true,
           "category": "Food",
           "verdict": "",
           "meta": "paris · restaurant · €€€",
           "pros": [],
-          "cons": []
+          "cons": [],
+          "authorId": "author-1784896384236-4fokw",
+          "role": "Автор"
         },
         {
           "id": 2,
@@ -7557,7 +7571,7 @@
           "id": 8,
           "title": "Дім далеко від дому",
           "author": "Maria Ivanova",
-          "role": "Головний редактор",
+          "role": "Автор",
           "date": "14 березня 2026 р",
           "excerpt": "Pied-à-terre завжди вловлює незамінне світло у ваших очах, але також може запалити їх.",
           "category": "Подорожі",
@@ -7677,7 +7691,8 @@
             }
           ],
           "imageSeed": "",
-          "updatedAt": "2026-07-16T11:39:02.192Z"
+          "updatedAt": "2026-07-16T11:39:02.192Z",
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 9,
@@ -8325,8 +8340,8 @@
         {
           "id": 13,
           "title": "Мистецтво, яке змушує посміхатися",
-          "author": "EPRIS Journal",
-          "role": "Марія Іванова",
+          "author": "Maria Ivanova",
+          "role": "Автор",
           "date": "Jul 17, 2026",
           "excerpt": "Я вважаю, що коли ви вводите ігрові об’єкти в середовище, це розширює межі розуму. Це дає вам невербальний дозвіл мислити вільно - не просто протистояти звичайним рамкам, але й забути про їх існування.",
           "category": "ст",
@@ -8560,7 +8575,8 @@
             }
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mrqbtqfza6qpnq.jpg",
-          "order": 6
+          "order": 6,
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 14,
@@ -8641,8 +8657,8 @@
         {
           "id": 15,
           "title": "Тадао Андо",
-          "author": "EPRIS Journal",
-          "role": "марія іванова",
+          "author": "Maria Ivanova",
+          "role": "Автор",
           "date": "19 липня 2026 р",
           "excerpt": "Архітектура під матеріальним",
           "category": "Архітектура",
@@ -8844,13 +8860,14 @@
               "content": "Філософія Тадао Андо є унікальною, і її неможливо передати точніше, ніж через його \nслова. У своєму есе «Клин в обставинах» він пояснив свій підхід до житлового \nпростір – дім є сценою для проживання; отже, манера розважати та шляхи дуже \nважливо. Він переконаний, що архітектурний план не варто сприймати зсередини – \nколи відвідувач ступає в простір, йому/їй не важливо зрозуміти макет, він/вона \nмає пізнавально осягнути охоплений простір. Це причина асиметричного, мінливого, \nі непередбачувані просторові відносини в його проектах. "
             }
           ],
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrt4jakod3agex.jpg"
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrt4jakod3agex.jpg",
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 16,
           "title": "Польський дизайн: зітканий з пам'яті",
-          "author": "EPRIS Journal",
-          "role": "Марія Іванова",
+          "author": "Maria Ivanova",
+          "role": "Автор",
           "date": "24 липня 2026 р",
           "excerpt": "Як чутливість польських дизайнерів до культурної спадщини формує сцену дизайну",
           "category": "дизайн",
@@ -9057,7 +9074,8 @@
               "content": "Сьогодні польський дизайн є квінтесенцією відданості майстерності, яка десятиліттями проголошувала культурну самобутність. Прагнучи творити на тлі утилітарного мінімалізму, архітектори та дизайнери втілюють своє бачення, продовжуючи формувати унікальний національний наратив, який вражає творчих людей у ​​всьому світі. "
             }
           ],
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg"
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg",
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 18,
@@ -9421,8 +9439,8 @@
         {
           "id": 17,
           "title": "Емілі Краус: Ритм моменту",
-          "author": "EPRIS Journal",
-          "role": "марія іванова",
+          "author": "Maria Ivanova",
+          "role": "Автор",
           "date": "Jul 30, 2026",
           "excerpt": "Всередині Canvas Cube Емілі Краус малює ритм теперішнього моменту",
           "category": "сучасне мистецтво",
@@ -9508,7 +9526,8 @@
               "content": "Глибокий вплив Емілі Краус на світ сучасного мистецтва посилюється визнанням провідних інституцій: як одна з Artsy Vanguard 2026, лауреат премії Хоппера та увійшла до короткого списку премій Хоппера та премії Джона Мурса з живопису, вона продовжує робити відкриття через кожну нову роботу, прокладаючи свій міцний шлях."
             }
           ],
-          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg",
+          "authorId": "author-1784896384236-4fokw"
         }
       ],
       "reviews": [
@@ -9518,7 +9537,7 @@
           "subject": "Ресторан «Олеа», Лімасол",
           "rating": 4.5,
           "content": "Дегустаційне меню представляло собою подорож історією острова. Кожна страва розповідала історію завоювань і торгівлі.",
-          "author": "Elena K.",
+          "author": "Maria Ivanova",
           "imageUrl": "/images/mediterranean-feast.png",
           "featured": true,
           "category": "Їжа",
@@ -9531,7 +9550,9 @@
           ],
           "cons": [
             "Столи трохи тіснувато"
-          ]
+          ],
+          "authorId": "author-1784896384236-4fokw",
+          "role": "Автор"
         },
         {
           "id": 2,
@@ -9913,7 +9934,7 @@
           "id": 8,
           "title": "Ein Zuhause in der Ferne",
           "author": "Maria Ivanova",
-          "role": "Chefredakteur",
+          "role": "Autorin",
           "date": "14. März 2026",
           "excerpt": "Ein Pied-à-Terre fängt immer das unersetzliche Licht in Ihren Augen ein, kann sie aber auch entzünden.",
           "category": "Reisen",
@@ -10033,7 +10054,8 @@
             }
           ],
           "imageSeed": "",
-          "updatedAt": "2026-07-16T11:39:01.953Z"
+          "updatedAt": "2026-07-16T11:39:01.953Z",
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 9,
@@ -10681,8 +10703,8 @@
         {
           "id": 13,
           "title": "Kunst, die Sie zum Lächeln bringt",
-          "author": "EPRIS Journal",
-          "role": "Maria Iwanowa",
+          "author": "Maria Ivanova",
+          "role": "Autorin",
           "date": "Jul 17, 2026",
           "excerpt": "Ich glaube, dass die Grenzen des Geistes erweitert werden, wenn man spielerische Objekte in eine Umgebung einbringt. Es gibt Ihnen die nonverbale Erlaubnis, frei zu denken – nicht nur, sich gegen konventionelle Rahmen zu stellen, sondern zu vergessen, dass sie überhaupt existieren.",
           "category": "Kunst",
@@ -10916,7 +10938,8 @@
             }
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mrqbtqfza6qpnq.jpg",
-          "order": 6
+          "order": 6,
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 14,
@@ -10997,8 +11020,8 @@
         {
           "id": 15,
           "title": "Tadao Ando",
-          "author": "EPRIS Journal",
-          "role": "Maria Iwanowa",
+          "author": "Maria Ivanova",
+          "role": "Autorin",
           "date": "19. Juli 2026",
           "excerpt": "Architektur unter dem Greifbaren",
           "category": "Architektur",
@@ -11200,13 +11223,14 @@
               "content": "Die Philosophie von Tadao Ando ist einzigartig und kann nicht genauer vermittelt werden als durch seine \nWorte. In seinem Essay „A Wedge in Circumstances“ erläuterte er seine Herangehensweise an das Wohnen \nRaum – das Haus ist eine Bühne des Wohnens; Daher sind die Art der Unterhaltung und die Wege sehr \nwichtig. Er ist davon überzeugt, dass der architektonische Plan nicht von innen wahrgenommen werden sollte – \nSobald ein Besucher den Raum betritt, ist es für ihn/sie nicht wichtig, den Grundriss zu verstehen \nsollte den umschlossenen Raum kognitiv erfassen. Das ist der Grund für asymmetrische, variable, \nund unvorhersehbare Raumbeziehungen in seinen Projekten. "
             }
           ],
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrt4jakod3agex.jpg"
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrt4jakod3agex.jpg",
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 16,
           "title": "Polnisches Design: Aus der Erinnerung gewebt",
-          "author": "EPRIS Journal",
-          "role": "Maria Iwanowa",
+          "author": "Maria Ivanova",
+          "role": "Autorin",
           "date": "24. Juli 2026",
           "excerpt": "Wie prägt die Sensibilität polnischer Designer gegenüber dem kulturellen Erbe die Designszene?",
           "category": "Design",
@@ -11413,7 +11437,8 @@
               "content": "Heutzutage ist polnisches Design eine Quintessenz der Hingabe an die Handwerkskunst, die seit Jahrzehnten die kulturelle Identität verkündet. Mit dem Anspruch, vor dem Hintergrund des utilitaristischen Minimalismus zu schaffen, setzen Architekten und Designer ihre Vision um und gestalten weiterhin ein einzigartiges nationales Narrativ, das die Kreativen auf der ganzen Welt in Erstaunen versetzt. "
             }
           ],
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg"
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg",
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 18,
@@ -11777,8 +11802,8 @@
         {
           "id": 17,
           "title": "Emily Kraus: Rhythmus des Augenblicks",
-          "author": "EPRIS Journal",
-          "role": "Maria Iwanowa",
+          "author": "Maria Ivanova",
+          "role": "Autorin",
           "date": "Jul 30, 2026",
           "excerpt": "Im Canvas Cube malt Emily Kraus den Rhythmus des gegenwärtigen Augenblicks",
           "category": "zeitgenössische Kunst",
@@ -11864,7 +11889,8 @@
               "content": "Der tiefgreifende Einfluss von Emily Kraus auf die Welt der zeitgenössischen Kunst wird durch die Anerkennung durch große Institutionen verstärkt: Als eine der Artsy Vanguard 2026, Empfängerin des Hopper-Preises und in die engere Auswahl sowohl des Hopper-Preises als auch des John Moores Painting Prize, macht sie weiterhin Entdeckungen in jedem neuen Werk und begründet ihren starken Weg."
             }
           ],
-          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg",
+          "authorId": "author-1784896384236-4fokw"
         }
       ],
       "reviews": [
@@ -11874,7 +11900,7 @@
           "subject": "Restaurant 'Olea', Limassol",
           "rating": 4.5,
           "content": "Das Degustationsmenü war eine Reise durch die Geschichte der Insel. Jedes Gericht erzählte eine Geschichte von Eroberung und Handel.",
-          "author": "Elena K.",
+          "author": "Maria Ivanova",
           "imageUrl": "/images/mediterranean-feast.png",
           "featured": true,
           "category": "Essen",
@@ -11887,7 +11913,9 @@
           ],
           "cons": [
             "Tische etwas eng"
-          ]
+          ],
+          "authorId": "author-1784896384236-4fokw",
+          "role": "Autorin"
         },
         {
           "id": 2,
@@ -12269,7 +12297,7 @@
           "id": 8,
           "title": "Hogar lejos del hogar",
           "author": "Maria Ivanova",
-          "role": "Editor en jefe",
+          "role": "Autora",
           "date": "14 de marzo de 2026",
           "excerpt": "Un pied-à-terre siempre capta la luz irreemplazable de tus ojos, pero también puede encenderlos.",
           "category": "Viajar",
@@ -12389,7 +12417,8 @@
             }
           ],
           "imageSeed": "",
-          "updatedAt": "2026-07-16T11:39:02.011Z"
+          "updatedAt": "2026-07-16T11:39:02.011Z",
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 9,
@@ -13037,8 +13066,8 @@
         {
           "id": 13,
           "title": "Arte que te hace sonreír",
-          "author": "EPRIS Journal",
-          "role": "maria ivanova",
+          "author": "Maria Ivanova",
+          "role": "Autora",
           "date": "Jul 17, 2026",
           "excerpt": "Creo que cuando introduces objetos divertidos en un entorno, se expanden los límites de la mente. Te da permiso no verbal para pensar libremente, no sólo para ir contra los marcos convencionales, sino para olvidar que incluso existen.",
           "category": "arte",
@@ -13272,7 +13301,8 @@
             }
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mrqbtqfza6qpnq.jpg",
-          "order": 6
+          "order": 6,
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 14,
@@ -13353,8 +13383,8 @@
         {
           "id": 15,
           "title": "Tadao Ando",
-          "author": "EPRIS Journal",
-          "role": "maría ivanova",
+          "author": "Maria Ivanova",
+          "role": "Autora",
           "date": "19 de julio de 2026",
           "excerpt": "Arquitectura bajo lo tangible",
           "category": "Arquitectura",
@@ -13556,13 +13586,14 @@
               "content": "La filosofía de Tadao Ando es única y no se puede transmitir con mayor precisión que a través de su \npalabras. En su ensayo \"Una cuña en las circunstancias\", explicó su enfoque del sector residencial. \nespacio – la casa es un escenario para vivir; por lo tanto, la forma de entretener y los caminos son muy \nimportante. Está convencido de que el plan arquitectónico no debe percibirse desde dentro. \nUna vez que un visitante ingresa al espacio, no es importante que comprenda el diseño, sino que \ndebe comprender cognitivamente el espacio abrazado. Ésa es la razón de las diferencias asimétricas, variables y \ny relaciones espaciales impredecibles en sus proyectos. "
             }
           ],
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrt4jakod3agex.jpg"
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrt4jakod3agex.jpg",
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 16,
           "title": "Diseño polaco: tejido de memoria",
-          "author": "EPRIS Journal",
-          "role": "maria ivanova",
+          "author": "Maria Ivanova",
+          "role": "Autora",
           "date": "24 de julio de 2026",
           "excerpt": "¿Cómo influye la sensibilidad de los diseñadores polacos hacia el patrimonio cultural en la escena del diseño?",
           "category": "diseño",
@@ -13769,7 +13800,8 @@
               "content": "Hoy en día el Diseño Polaco es la quintaesencia de la devoción por la artesanía, que ha proclamado la identidad cultural durante décadas. Al aspirar a crear en el contexto del minimalismo utilitario, los arquitectos y diseñadores traducen su visión y continúan dando forma a una narrativa nacional única que sorprende a los creativos de todo el mundo. "
             }
           ],
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg"
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg",
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 18,
@@ -14133,8 +14165,8 @@
         {
           "id": 17,
           "title": "Emily Kraus: ritmo del momento",
-          "author": "EPRIS Journal",
-          "role": "maria ivanova",
+          "author": "Maria Ivanova",
+          "role": "Autora",
           "date": "Jul 30, 2026",
           "excerpt": "Dentro del Canvas Cube, Emily Kraus pinta el ritmo del momento presente",
           "category": "arte contemporáneo",
@@ -14220,7 +14252,8 @@
               "content": "La profunda influencia de Emily Kraus en el mundo del arte contemporáneo se ve reforzada por el reconocimiento de las principales instituciones: como miembro del Artsy Vanguard 2026, ganadora del Premio Hopper y preseleccionada tanto para el Premio Hopper como para el Premio de Pintura John Moores, continúa haciendo descubrimientos a través de cada nuevo trabajo, estableciendo su fuerte camino."
             }
           ],
-          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg",
+          "authorId": "author-1784896384236-4fokw"
         }
       ],
       "reviews": [
@@ -14230,7 +14263,7 @@
           "subject": "Restaurante 'Olea', Limassol",
           "rating": 4.5,
           "content": "El menú degustación fue un viaje a través de la historia de la isla. Cada plato contaba una historia de conquista y comercio.",
-          "author": "Elena K.",
+          "author": "Maria Ivanova",
           "imageUrl": "/images/mediterranean-feast.png",
           "featured": true,
           "category": "Gastronomía",
@@ -14243,7 +14276,9 @@
           ],
           "cons": [
             "Mesas algo juntas"
-          ]
+          ],
+          "authorId": "author-1784896384236-4fokw",
+          "role": "Autora"
         },
         {
           "id": 2,
@@ -14625,7 +14660,7 @@
           "id": 8,
           "title": "Evden Uzakta Ev",
           "author": "Maria Ivanova",
-          "role": "Genel Yayın Yönetmeni",
+          "role": "Yazar",
           "date": "14 Mart 2026",
           "excerpt": "Pied-à-terre her zaman gözlerinizdeki yeri doldurulamaz ışığı yakalar, ancak aynı zamanda onları ateşleyebilir.",
           "category": "Seyahat",
@@ -14745,7 +14780,8 @@
             }
           ],
           "imageSeed": "",
-          "updatedAt": "2026-07-16T11:39:02.148Z"
+          "updatedAt": "2026-07-16T11:39:02.148Z",
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 9,
@@ -15393,8 +15429,8 @@
         {
           "id": 13,
           "title": "Seni gülümseten sanat",
-          "author": "EPRIS Journal",
-          "role": "Maria Ivanova",
+          "author": "Maria Ivanova",
+          "role": "Yazar",
           "date": "Jul 17, 2026",
           "excerpt": "Bir ortama eğlenceli nesneler kattığınızda zihnin sınırlarını genişlettiğine inanıyorum. Size sözlü olmayan özgür düşünme izni verir; sadece geleneksel çerçevelere karşı çıkmak için değil, aynı zamanda bunların var olduğunu bile unutmak için.",
           "category": "sanat",
@@ -15628,7 +15664,8 @@
             }
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mrqbtqfza6qpnq.jpg",
-          "order": 6
+          "order": 6,
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 14,
@@ -15709,8 +15746,8 @@
         {
           "id": 15,
           "title": "Tadao Ando",
-          "author": "EPRIS Journal",
-          "role": "Maria Ivanova",
+          "author": "Maria Ivanova",
+          "role": "Yazar",
           "date": "19 Temmuz 2026",
           "excerpt": "Somut olanın altındaki mimari",
           "category": "Mimarlık",
@@ -15912,13 +15949,14 @@
               "content": "Tadao Ando'nun felsefesi benzersizdir ve onun aracılığıyla daha doğru bir şekilde aktarılamaz. \nkelimeler. “Koşullarda Bir Sıkıntı” adlı makalesinde konut konusuna yaklaşımını açıkladı. \nmekan – ev yaşamak için bir sahnedir; bu nedenle eğlenme şekli ve yollar çok \nönemli. Mimari planın içeriden algılanmaması gerektiğine inanıyor. \nBir ziyaretçi mekana adım attığında düzeni kavraması önemli değildir. \nkucaklanan alanı bilişsel olarak kavramalıdır. Asimetrik, değişken olmasının nedeni budur. \nve projelerinde öngörülemeyen mekan ilişkileri. "
             }
           ],
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrt4jakod3agex.jpg"
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrt4jakod3agex.jpg",
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 16,
           "title": "Polonya Tasarımı: Hafızadan Dokunmuş",
-          "author": "EPRIS Journal",
-          "role": "Maria Ivanova",
+          "author": "Maria Ivanova",
+          "role": "Yazar",
           "date": "24 Temmuz 2026",
           "excerpt": "Polonyalı tasarımcıların kültürel mirasa yönelik hassasiyeti tasarım sahnesini nasıl şekillendiriyor?",
           "category": "tasarım",
@@ -16125,7 +16163,8 @@
               "content": "Günümüzde Polonya Tasarımı, onlarca yıldır kültürel kimliği ilan eden işçiliğe bağlılığın bir örneğidir. Faydacı minimalizm zemininde yaratmayı arzulayan mimarlar ve tasarımcılar, dünya çapındaki yaratıcıları hayrete düşüren benzersiz bir ulusal anlatıyı şekillendirmeye devam ederek vizyonlarını aktarıyorlar. "
             }
           ],
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg"
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg",
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 18,
@@ -16489,8 +16528,8 @@
         {
           "id": 17,
           "title": "Emily Kraus: Anın Ritmi",
-          "author": "EPRIS Journal",
-          "role": "maria ivanova",
+          "author": "Maria Ivanova",
+          "role": "Yazar",
           "date": "Jul 30, 2026",
           "excerpt": "Kanvas Küpün İçinde Emily Kraus Şimdiki Anın Ritimini Boyadı",
           "category": "çağdaş sanat",
@@ -16576,7 +16615,8 @@
               "content": "Emily Kraus'un çağdaş sanat dünyası üzerindeki derin etkisi, büyük kurumlar tarafından tanınmasıyla pekişiyor: Artsy Vanguard 2026'dan biri, Hopper Ödülü sahibi ve hem Hopper Ödülü hem de John Moores Resim Ödülü için kısa listeye alınmış olarak, her yeni eseriyle keşifler yapmaya devam ederek güçlü yolunu oluşturuyor."
             }
           ],
-          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg",
+          "authorId": "author-1784896384236-4fokw"
         }
       ],
       "reviews": [
@@ -16586,7 +16626,7 @@
           "subject": "Restoran 'Olea', Limassol",
           "rating": 4.5,
           "content": "Tadım menüsü adanın tarihine bir yolculuktu. Her yemek fetih ve ticaretin hikayesini anlatıyordu.",
-          "author": "Elena K.",
+          "author": "Maria Ivanova",
           "imageUrl": "/images/mediterranean-feast.png",
           "featured": true,
           "category": "Yemek",
@@ -16599,7 +16639,9 @@
           ],
           "cons": [
             "Masalar biraz sıkışık"
-          ]
+          ],
+          "authorId": "author-1784896384236-4fokw",
+          "role": "Yazar"
         },
         {
           "id": 2,
@@ -16981,7 +17023,7 @@
           "id": 8,
           "title": "Casa lontano da casa",
           "author": "Maria Ivanova",
-          "role": "Redattore capo",
+          "role": "Autrice",
           "date": "14 marzo 2026",
           "excerpt": "Un pied-à-terre cattura sempre la luce insostituibile nei tuoi occhi, ma può anche accenderli.",
           "category": "Viaggio",
@@ -17101,7 +17143,8 @@
             }
           ],
           "imageSeed": "",
-          "updatedAt": "2026-07-16T11:39:02.061Z"
+          "updatedAt": "2026-07-16T11:39:02.061Z",
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 9,
@@ -17749,8 +17792,8 @@
         {
           "id": 13,
           "title": "L'arte che fa sorridere",
-          "author": "EPRIS Journal",
-          "role": "Maria Ivanova",
+          "author": "Maria Ivanova",
+          "role": "Autrice",
           "date": "Jul 17, 2026",
           "excerpt": "Credo che quando si introducono oggetti giocosi in un ambiente, si espandono i confini della mente. Ti dà il permesso non verbale di pensare liberamente, non solo di opporti ai frame convenzionali, ma di dimenticare che addirittura esistono.",
           "category": "arte",
@@ -17984,7 +18027,8 @@
             }
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mrqbtqfza6qpnq.jpg",
-          "order": 6
+          "order": 6,
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 14,
@@ -18067,7 +18111,7 @@
           "title": "Tadao Ando",
           "excerpt": "L’architettura sotto la superficie tangibile",
           "subcategory": "Feature",
-          "author": "EPRIS Journal",
+          "author": "Maria Ivanova",
           "category": "Architecture",
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/mrt4jakod3agex.jpg",
@@ -18262,13 +18306,14 @@
               "content": "La filosofia di Tadao Ando è unica, e non può essere trasmessa in modo più accurato che attraverso le sue stesse parole. Nel suo saggio “A Wedge in Circumstances”, ha spiegato il suo approccio allo spazio residenziale — la casa è un palcoscenico per vivere, perciò il modo di accogliere gli ospiti e i percorsi sono molto importanti. È convinto che la pianta architettonica non debba essere percepita dall’interno — una volta che un visitatore mette piede nello spazio, non è importante per lui comprenderne la disposizione, quanto piuttosto comprendere cognitivamente lo spazio che lo avvolge. Questa è la ragione delle relazioni spaziali asimmetriche, variabili e imprevedibili nei suoi progetti."
             }
           ],
-          "role": "Scrivania editoriale"
+          "role": "Autrice",
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 16,
           "title": "Design polacco: tessuto dalla memoria",
-          "author": "EPRIS Journal",
-          "role": "Maria Ivanova",
+          "author": "Maria Ivanova",
+          "role": "Autrice",
           "date": "24 luglio 2026",
           "excerpt": "In che modo la sensibilità dei designer polacchi nei confronti del patrimonio culturale modella la scena del design",
           "category": "progetto",
@@ -18475,7 +18520,8 @@
               "content": "Al giorno d'oggi il design polacco è la quintessenza della devozione all'artigianato, che da decenni proclama l'identità culturale. Aspirando a creare sullo sfondo del minimalismo utilitaristico, architetti e designer traducono la loro visione, continuando a dare forma a una narrativa nazionale unica che stupisce i creativi di tutto il mondo. "
             }
           ],
-          "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg"
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrz47lqzelb4g2.jpg",
+          "authorId": "author-1784896384236-4fokw"
         },
         {
           "id": 18,
@@ -18839,8 +18885,8 @@
         {
           "id": 17,
           "title": "Emily Kraus: il ritmo del momento",
-          "author": "EPRIS Journal",
-          "role": "Maria Ivanova",
+          "author": "Maria Ivanova",
+          "role": "Autrice",
           "date": "Jul 30, 2026",
           "excerpt": "All'interno del cubo di tela, Emily Kraus dipinge il ritmo del momento presente",
           "category": "arte contemporanea",
@@ -18926,7 +18972,8 @@
               "content": "La profonda influenza di Emily Kraus sul mondo dell'arte contemporanea è rafforzata dal riconoscimento da parte delle principali istituzioni: come una delle Artsy Vanguard 2026, vincitrice dell'Hopper Prize e selezionata sia per l'Hopper Prize che per il John Moores Painting Prize, continua a fare scoperte attraverso ogni nuovo lavoro, stabilendo il suo percorso forte."
             }
           ],
-          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg"
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg",
+          "authorId": "author-1784896384236-4fokw"
         }
       ],
       "reviews": [
@@ -18936,7 +18983,7 @@
           "subject": "Ristorante 'Olea', Limassol",
           "rating": 4.5,
           "content": "Il menu degustazione è stato un viaggio attraverso la storia dell'isola. Ogni piatto raccontava una storia di conquista e commercio.",
-          "author": "Elena K.",
+          "author": "Maria Ivanova",
           "imageUrl": "/images/mediterranean-feast.png",
           "featured": true,
           "category": "Cibo",
@@ -18949,7 +18996,9 @@
           ],
           "cons": [
             "Tavoli un po’ ravvicinati"
-          ]
+          ],
+          "authorId": "author-1784896384236-4fokw",
+          "role": "Autrice"
         },
         {
           "id": 2,
