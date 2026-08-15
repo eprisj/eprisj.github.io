@@ -6843,6 +6843,86 @@ function requireSourceEntry(data, section, preferredSourceLang, selectedId) {
   throw new Error(`Не найдена запись #${selectedId} ни в одном языке.`);
 }
 
+const TRANSLATE_API = 'https://api.eprisjournal.com/translate';
+
+/* Раньше перевод крутился прямо здесь: вкладка сама била /ai по каждому
+   батчу и сама сохраняла результат. Статья — это шесть языков по тринадцать
+   батчей, минут двадцать, и всё это время вкладку нельзя закрывать. Закрыл,
+   уснул ноут, пропала сеть — обрыв на середине, причём молча: часть языков
+   сохранена, часть нет.
+
+   Теперь кнопка только ставит задачу в очередь на VPS. Дальше сервер сам:
+   переживает перезапуск, умеет ждать сброса дневной квоты у провайдера и
+   продолжает с того языка, на котором остановился. Вкладку можно закрывать
+   сразу. */
+async function enqueueTranslationJob(section, id, sourceLang, opts = {}) {
+  const pw = getAdminPassword();
+  if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
+  const res = await fetch(`${TRANSLATE_API}/enqueue`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
+    body: JSON.stringify({ section, id, sourceLang, targets: opts.targets || null, force: !!opts.force }),
+  });
+  const out = await res.json().catch(() => ({}));
+  if (!res.ok || !out.ok) throw new Error(out.error || `Очередь не приняла задачу (HTTP ${res.status}).`);
+  return out.job;
+}
+
+async function fetchTranslationQueueStatus() {
+  const pw = getAdminPassword();
+  if (!pw) return null;
+  try {
+    const res = await fetch(`${TRANSLATE_API}/status`, { cache: 'no-store', headers: { 'X-Admin-Password': pw } });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch { return null; }
+}
+
+function describeQueueState(status, selectedId) {
+  if (!status) return '';
+  const mine = (status.jobs || []).filter((j) => Number(j.entryId) === Number(selectedId));
+  const job = mine[mine.length - 1];
+  if (!job) return '';
+  if (job.status === 'waiting-quota') {
+    const at = job.waitingUntil || status.quotaUntil;
+    const when = at ? new Date(at).toLocaleString() : 'сброса квоты';
+    return `В очереди: дневная квота переводчика исчерпана, продолжу автоматически после ${when}. Вкладку можно закрыть.`;
+  }
+  if (job.status === 'running') {
+    const p = job.progress ? ` (${job.progress.lang}: ${job.progress.step})` : '';
+    return `Перевод идёт на сервере${p}. Готово: ${job.done.join(', ') || '—'}. Вкладку можно закрыть.`;
+  }
+  if (job.status === 'queued') return 'Задача в очереди на сервере. Вкладку можно закрыть.';
+  if (job.status === 'done') return `Переведено на сервере: ${job.done.join(', ') || '—'}.`;
+  if (job.status === 'partial') return `Переведено: ${job.done.join(', ') || '—'}. Не удалось: ${job.failed.map((f) => f.lang).join(', ')}.`;
+  if (job.status === 'error') return `Очередь остановилась: ${job.error || 'неизвестная ошибка'}.`;
+  return '';
+}
+
+/* Наблюдение за очередью — вежливое: раз в 20 секунд и только пока вкладка
+   открыта и видима. Работа от этого не зависит вообще, поэтому закрытая
+   вкладка ничего не ломает; это просто окно, через которое видно, что там
+   на сервере. */
+let _translateWatchTimer = null;
+function stopTranslationQueueWatch() {
+  if (_translateWatchTimer) { clearInterval(_translateWatchTimer); _translateWatchTimer = null; }
+}
+function startTranslationQueueWatch(entryId) {
+  stopTranslationQueueWatch();
+  const tick = async () => {
+    if (document.hidden) return;
+    const status = await fetchTranslationQueueStatus();
+    if (!status) return;
+    const text = describeQueueState(status, entryId);
+    if (!text) return;
+    const job = (status.jobs || []).filter((j) => Number(j.entryId) === Number(entryId)).pop();
+    setStatus(job && (job.status === 'partial' || job.status === 'error') ? 'info' : 'success', text);
+    if (job && ['done', 'partial', 'error'].includes(job.status)) stopTranslationQueueWatch();
+  };
+  _translateWatchTimer = setInterval(tick, 20000);
+  tick();
+}
+
 async function translateSelectedEntryToAvailableLanguages() {
   try {
     setBusy(true);
@@ -6872,39 +6952,27 @@ async function translateSelectedEntryToAvailableLanguages() {
 
     const targetLangs = getTranslationLanguages(data).filter((lang) => lang !== sourceLang);
     const canSaveToServer = Boolean(getAdminPassword());
-    setStatus('info', `Обновляю языки для записи #${selectedId} из ${sourceLang}: ${targetLangs.join(', ')}...`);
-
-    if (canSaveToServer && visibleIndex !== -1) {
-      setStatus('info', `Сохраняю исходный язык #${selectedId} (${sourceLang}) на VPS...`);
-      await saveEntityToServer(section, sourceLang, sourceEntry);
+    if (!canSaveToServer) {
+      throw new Error('Фоновый перевод идёт на сервере — нужен пароль редакции. Войдите заново.');
     }
 
-    const syncedLangs = await translateEntryToAllLanguages(data, section, sourceLang, sourceEntry, {
-      saveToServer: canSaveToServer,
-      statusPrefix: canSaveToServer
-        ? `Сохраняю языки #${selectedId}`
-        : `Обновляю языки #${selectedId}`
-    });
+    // Исходный язык уходит на VPS ПЕРЕД постановкой в очередь: сервер будет
+    // переводить то, что лежит у него, а не то, что осталось в этой вкладке.
+    if (visibleIndex !== -1) {
+      setStatus('info', `Сохраняю исходный язык #${selectedId} (${sourceLang}) на VPS...`);
+      await saveEntityToServer(section, sourceLang, sourceEntry);
+      pendingVisualEntryId = selectedId;
+      setEditorData(data, { markSynced: true });
+    }
 
-    pendingVisualEntryId = selectedId;
-    setEditorData(data, { markSynced: canSaveToServer });
-    const saveTail = canSaveToServer
-      ? 'и сохранены на VPS.'
-      : 'локально. Нажмите «Сохранить запись», чтобы отправить на VPS.';
-    const syncNote = formatLanguageSyncNote(syncedLangs, 'Обновлены');
-    const statusType = getLanguageSyncFailures(syncedLangs).length ? 'info' : 'success';
-    const resultLabel = syncedLangs.length
-      ? `языки обработаны ${saveTail}`
-      : (canSaveToServer ? 'переводы не обновились. Исходный язык сохранен на VPS.' : 'переводы не обновились. Исходный текст остался локально.');
-    setStatus(statusType, `Запись #${selectedId}: ${resultLabel}${syncNote}`);
-    showLanguageSyncReport({
-      selectedId,
-      section,
-      sourceLang,
-      savedToServer: canSaveToServer,
-      syncResult: syncedLangs,
-      actionLabel: 'Языки обновлены'
-    });
+    const job = await enqueueTranslationJob(section, selectedId, sourceLang, { force: true });
+    const status = await fetchTranslationQueueStatus();
+    const note = describeQueueState(status, selectedId)
+      || 'Задача принята сервером. Вкладку можно закрыть.';
+    setStatus('success',
+      `Запись #${selectedId}: перевод на ${targetLangs.length} язык(ов) поставлен в очередь на VPS. ${note}`);
+    startTranslationQueueWatch(selectedId);
+    void job;
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   } finally {
