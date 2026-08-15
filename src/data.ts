@@ -192,6 +192,9 @@ export interface Review {
   /** Reviews use the same block model as articles; legacy plain text remains supported. */
   content: string | ContentBlock[];
   author: string;
+  role?: string;
+  /** Optional link to the shared author registry, matching the article byline model. */
+  authorId?: string;
   category?: string;
   imageUrl?: string;
   verdict?: string;
