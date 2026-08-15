@@ -4505,6 +4505,180 @@
         }
       ],
       "updatedAt": "2026-08-15T07:03:54.096Z"
+    },
+    {
+      "id": 22,
+      "slug": "rooms-that-watch-you-back",
+      "title": "Rooms That Watch You Back",
+      "author": "Viacheslav Munister",
+      "authorId": "author-1784732936927-kw554",
+      "role": "Contributing Editor",
+      "date": "August 15, 2026",
+      "excerpt": "Glass once promised freedom, honesty and light. Then the walls learned to collect data. An essay on transparent architecture, controlled visibility and the radical luxury of being allowed to disappear.",
+      "category": "Architecture",
+      "subcategory": "Critical Essay",
+      "tags": [
+        "Architecture",
+        "Design",
+        "Glass",
+        "Privacy",
+        "Surveillance",
+        "Modernism"
+      ],
+      "imageSeed": "glass-architecture-surveillance-night",
+      "imageUrl": "https://api.eprisjournal.com/uploads/msu6g5edocd9yr.jpg",
+      "draft": false,
+      "content": [
+        {
+          "type": "text",
+          "content": "At night, every glass building changes allegiance. By day it borrows the sky and returns a clean image of the city. After dark the reflection collapses. Desks, lifts, kitchens and bodies appear in stacked rectangles, each room lit like evidence. A person working late becomes part of the elevation. Someone washing a glass becomes a moving detail in an architect’s drawing. The promise was openness. The sensation is exposure."
+        },
+        {
+          "type": "text",
+          "content": "There is a particular unease in spaces that refuse to keep a secret. You feel it in the lobby where the receptionist can see the lift before the lift can see the receptionist; in the meeting room whose glazed wall has been decorated with a polite stripe of frosting at eye level; in the apartment where the curtain is treated as an aesthetic failure. These interiors are beautiful, controlled and faintly accusatory. They suggest that privacy is something one requests after behaving suspiciously."
+        },
+        {
+          "type": "header",
+          "content": "The promise of seeing everything"
+        },
+        {
+          "type": "text",
+          "content": "Modern glass arrived carrying a moral argument. Weightless walls would replace the defensive opacity of the old institution. Sunlight would enter the factory, the school and the office. Structure would become legible. Work would be visible, therefore honest. The Bauhaus Building in Dessau gave this faith an unforgettable body in 1926: a workshop wing wrapped in steel and crystal plate glass, its corners apparently dissolved, its rooms offered to the outside world as a continuous field of activity."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/msu6g5jnsm6lj3.jpg",
+          "caption": "The workshop façade of the Bauhaus Building in Dessau. Glass makes the structure legible while turning work into a public image. Photo: Wikimedia Commons, public domain."
+        },
+        {
+          "type": "text",
+          "content": "The façade was not merely a technical demonstration. It proposed a new social character. Transparency looked hygienic, collective, forward-moving. The wall no longer had to announce authority through stone; it could perform authority through apparent absence. This is the first trick of transparent architecture: the less material the boundary appears to contain, the easier it is to forget that the boundary still decides who may enter, who may look and who must remain visible."
+        },
+        {
+          "type": "quote",
+          "content": "A transparent wall does not abolish power. It edits the direction in which power can look."
+        },
+        {
+          "type": "header",
+          "content": "A house with nowhere to hide"
+        },
+        {
+          "type": "text",
+          "content": "Philip Johnson’s Glass House of 1949 is usually photographed as pure release: a dark steel frame, a brick cylinder and a glass perimeter placed with unnerving precision in the Connecticut landscape. The countryside seems to pass through the room. Furniture floats. Weather becomes wallpaper. Yet the house is less innocent than its photographs. To inhabit it is to accept that every domestic gesture has acquired an audience, even if that audience is only imagined."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/msu6g5edocd9yr.jpg",
+          "caption": "Philip Johnson’s Glass House, New Canaan, completed in 1949. The landscape appears to pass through the room, while the inhabitant remains permanently on display. Photo: Carol M. Highsmith / Library of Congress, public domain."
+        },
+        {
+          "type": "text",
+          "content": "The crucial object is not the glass pavilion alone but its companion across the lawn: the Brick House. Opaque, heavy and private, it held bedrooms, services and the mechanical systems that supported the transparent icon. The two buildings operate like a split psyche. One performs clarity; the other absorbs sleep, plumbing, disorder and retreat. The Glass House can look effortless because the Brick House keeps the evidence offstage."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/msu6g5mj1cr2y7.jpg",
+          "caption": "Inside the Glass House, furniture and landscape share one visual plane. The circular brick core is the only solid interruption. Photo: Carol M. Highsmith / Library of Congress, public domain."
+        },
+        {
+          "type": "text",
+          "content": "This arrangement reveals a truth that contemporary interiors often conceal: transparency is never complete. It is curated. The cable is hidden, the storage wall is closed, the back office has no window, the camera is black and small. What looks like openness is usually a redistribution of opacity. Someone gets the glass view; someone else manages what must not appear in it."
+        },
+        {
+          "type": "header",
+          "content": "The corporation discovers a face"
+        },
+        {
+          "type": "text",
+          "content": "By the middle of the twentieth century, glass had become corporate grammar. Lever House in New York, completed by Skidmore, Owings & Merrill in 1952, replaced the masonry weight of the commercial block with a blue-green curtain wall and a raised slab hovering above a public plaza. The building looked precise, clean and almost frictionless. It made administration photogenic. The company could be understood as a cool surface rather than a room full of decisions."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/msu6g5pl0gojxo.jpg",
+          "caption": "Lever House on Park Avenue: the curtain wall turns corporate organisation into an abstract, immaculate skin. Photo: Seth Tisue, CC BY-SA 2.0."
+        },
+        {
+          "type": "text",
+          "content": "This is where transparency becomes branding. A glazed headquarters says: nothing is hidden here. But the statement is visual, not procedural. You can see people walking behind the façade without seeing how authority moves between them. The transparent building offers access to bodies and withholds access to systems. It is possible to watch an entire floor at work and learn nothing about what the work is doing."
+        },
+        {
+          "type": "header",
+          "content": "When the building starts taking notes"
+        },
+        {
+          "type": "text",
+          "content": "The smart office completes the transition from window to interface. At The Edge in Amsterdam, employees use an app to locate colleagues, find desks and adjust local lighting or temperature, while sensors monitor occupancy, movement, humidity, carbon dioxide, light and climate. The design is genuinely useful. Rooms can respond to demand; energy is not spent pretending that an empty floor is occupied. Comfort becomes precise."
+        },
+        {
+          "type": "text",
+          "content": "But precision has a shadow. Once a building knows where a person sits, how long a room is used and which route fills after lunch, space becomes behavioural data. The employee no longer moves through a neutral container. The container records movement, predicts demand and quietly defines what counts as normal. No villain needs to sit behind a wall of monitors. The unease comes from the fact that the system can be efficient, pleasant and invasive at the same time."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/msu6g5sd70bo9x.jpg",
+          "caption": "Reflections multiply the office façade into an uncertain field of interior, exterior and observer. Photo: Dietmar Rabich, CC BY-SA 4.0."
+        },
+        {
+          "type": "note",
+          "content": "The most persuasive surveillance architecture does not look punitive. It looks convenient. It remembers your preferred light level, opens the correct door and suggests the nearest desk. Control arrives dressed as service."
+        },
+        {
+          "type": "header",
+          "content": "Designing the right to disappear"
+        },
+        {
+          "type": "text",
+          "content": "The answer is not a sentimental return to thick walls and tiny windows. Opacity can protect, but it can also isolate and intimidate. The more interesting task is to design adjustable visibility: spaces that allow a person to decide when to appear, when to blur and when to vanish. Privacy should behave less like a bunker and more like a dimmer."
+        },
+        {
+          "type": "text",
+          "content": "This changes the status of ordinary elements. A curtain is no longer decoration but a user-controlled façade. Ribbed glass transmits light while refusing a complete image. A deep reveal lets someone stand near a window without becoming a display. A turn in a corridor delays the view by one second, enough to replace surprise with consent. Acoustic absorption prevents transparency of sound even where visual connection is useful. A warm pool of local light can make a desk feel inhabited without illuminating the entire room."
+        },
+        {
+          "type": "text",
+          "content": "Good spatial privacy is not the absence of contact. It is the ability to modulate contact without asking permission from the building. The best rooms offer several states between exposed and sealed: visible, silhouetted, reflected, screened, withdrawn. They recognise that human attention is not an unlimited public resource."
+        },
+        {
+          "type": "quote",
+          "content": "The radical luxury of the next interior may be simple: a room that notices you without reporting you."
+        },
+        {
+          "type": "header",
+          "content": "The last lit window"
+        },
+        {
+          "type": "text",
+          "content": "Glass remains irresistible because it turns architecture into weather. It catches clouds, dissolves corners and lets a room borrow a horizon. None of that beauty is false. The mistake is to confuse visual openness with ethical openness, or technical intelligence with care. A building can reveal its structure and still conceal its politics. It can know exactly where you are and understand nothing about what you need."
+        },
+        {
+          "type": "text",
+          "content": "The city after midnight makes this contradiction visible. Towers become grids of private scenes; transparent homes become lanterns; the office continues to glow for nobody. Somewhere behind one pane, a person reaches for a switch. The room goes dark. For a moment the façade loses a piece of information. That small disappearance feels less like retreat than control."
+        },
+        {
+          "type": "header",
+          "content": "References"
+        },
+        {
+          "type": "link",
+          "content": "Transparency in Architecture and Beyond – MoMA",
+          "url": "https://www.moma.org/calendar/galleries/5381"
+        },
+        {
+          "type": "link",
+          "content": "Bauhaus Building – Stiftung Bauhaus Dessau",
+          "url": "https://bauhaus-dessau.de/en/venues/bauhaus-building/"
+        },
+        {
+          "type": "link",
+          "content": "The Glass House – National Trust for Historic Preservation",
+          "url": "https://theglasshouse.org/about/"
+        },
+        {
+          "type": "link",
+          "content": "The Edge – PLP Architecture",
+          "url": "https://www.plparchitecture.com/projects/the-edge"
+        }
+      ]
     }
   ],
   "reviews": [
