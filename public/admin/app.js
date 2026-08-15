@@ -1965,35 +1965,11 @@ function validateEntityShape(section, entity) {
   return check(ENTITY_REQUIRED_FIELDS[section], true) || check(ENTITY_OPTIONAL_FIELDS[section], false);
 }
 
-// Reviews are edited as structured blocks in the live canvas, while the
-// entity endpoint still accepts the original plain-text contract. Keep that
-// compatibility concern at the API boundary so the editor and public reader
-// can continue to work with either representation.
-function reviewContentToPlainText(content) {
-  if (typeof content === 'string') return content;
-  if (!Array.isArray(content)) return '';
-  return content.map((block) => {
-    if (!block || typeof block !== 'object') return '';
-    if (Array.isArray(block.content)) return block.content.filter(Boolean).join('\n');
-    if (block.content && typeof block.content === 'object') {
-      if (Array.isArray(block.content.items)) return block.content.items.filter(Boolean).join('\n');
-      if (Array.isArray(block.content.options)) {
-        const question = block.content.question || '';
-        const options = block.content.options.map((option) => option?.label || '').filter(Boolean).join(' / ');
-        return [question, options].filter(Boolean).join('\n');
-      }
-      return '';
-    }
-    const text = String(block.content == null ? '' : block.content).trim();
-    const caption = String(block.caption == null ? '' : block.caption).trim();
-    return [text, caption].filter(Boolean).join('\n');
-  }).filter(Boolean).join('\n\n').trim();
-}
-
 function normalizeEntityForServer(section, entity) {
-  if (section !== 'reviews' || !entity || typeof entity !== 'object') return entity;
-  if (typeof entity.content === 'string') return entity;
-  return { ...entity, content: reviewContentToPlainText(entity.content) };
+  // The VPS and public reader both support structured review blocks. Preserve
+  // the array exactly as the visual editor created it: flattening it here used
+  // to turn image URLs and captions into visible paragraphs on the live page.
+  return entity;
 }
 
 function validateJson() {
