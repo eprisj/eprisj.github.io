@@ -6323,13 +6323,24 @@ body.busy::after {
   border-top: 1px solid var(--line);
 }
 
-#tab-content.is-live-editor .toolbar-buttons .toolbar-sync-panel,
+/* Медиа-панель прячем, языковую — нет. Обе носят класс .toolbar-sync-panel,
+   поэтому одно правило убирало вместе с медиа и кнопку «Синхронизировать».
+   А живой редактор сам после сохранения пишет: «Переводы не запускались — для
+   них используйте отдельную кнопку "Синхронизировать"», то есть отправлял к
+   кнопке, которую этот же селектор и скрывал. Переводы в этом режиме было
+   нечем запустить вообще. Ср. d2678865, где так же пропала кнопка удаления. */
+#tab-content.is-live-editor .toolbar-buttons .toolbar-media-panel,
 #tab-content.is-live-editor .toolbar-buttons .toolbar-sep,
 #tab-content.is-live-editor #wysToggleBtn,
 #tab-content.is-live-editor #moveEntryUpBtn,
 #tab-content.is-live-editor #moveEntryDownBtn,
 #tab-content.is-live-editor #duplicateEntryBtn,
 #tab-content.is-live-editor #togglePreviewBtn,
+/* «Весь раздел» переводит всю секцию разом. Рядом с кнопкой, к которой
+   подсказка гонит после каждого сохранения, это ловушка: один промах мышью —
+   и выбраны все записи раздела, а квоты переводчиков дневные. В упрощённой
+   панели живого редактора её быть не должно; в классическом режиме осталась. */
+#tab-content.is-live-editor #translateAllArticlesBtn,
 #tab-content.is-live-editor #applyEntryBtn {
   display: none !important;
 }
