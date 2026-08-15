@@ -2726,12 +2726,65 @@ function ReviewBody({ content }: { content: Review['content'] }) {
   })}</div>;
 }
 
-function ReviewView({ review, t, onClose }: { review: Review; t: (key: string) => string; onClose: () => void }) {
+function ReviewView({ review, t, onClose, currentLang }: { review: Review; t: (key: string) => string; onClose: () => void; currentLang: string }) {
+  const resolvedAuthor = resolveAuthor(review);
+  const authorName = review.author?.trim() || resolvedAuthor?.name?.trim() || 'EPRIS Journal';
+  const explicitAuthor = review.author?.trim() || '';
+  const hasEditorialFallback = !explicitAuthor || /^epris\s+journal$/i.test(explicitAuthor);
+  const isMatchingProfile = Boolean(
+    resolvedAuthor
+      && (hasEditorialFallback || resolvedAuthor.name.trim().toLocaleLowerCase() === authorName.toLocaleLowerCase())
+  );
+  const authorProfile = isMatchingProfile ? resolvedAuthor : null;
+  const authorRole = translateRole(review.role || authorProfile?.role, currentLang);
+  const authorPhoto = authorProfile?.photoUrl;
+
   return <motion.article initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} className="fixed inset-0 z-[90] overflow-y-auto bg-[var(--c-bg)]">
     <div className="mx-auto max-w-5xl px-5 py-6 sm:px-10 sm:py-10"><button onClick={onClose} className="mb-12 inline-flex min-h-11 items-center gap-2 font-mono text-[10px] uppercase tracking-widest"><ArrowLeft size={15} /> {t('nav.reviews')}</button>
       {review.imageUrl && <img src={review.imageUrl} alt={review.title} className="mb-10 aspect-[16/8] w-full object-cover" />}
-      <header className="mx-auto mb-12 max-w-3xl border-b border-[var(--c-accent)] pb-10"><p className="font-mono text-[10px] uppercase tracking-[.2em] text-[var(--c-gold)]">{review.category || 'Review'}</p><h1 className="mt-4 font-serif text-5xl leading-[.94] sm:text-7xl">{review.title}</h1><p className="mt-5 font-mono text-[11px] uppercase tracking-widest opacity-60">{review.subject}</p>{review.verdict && <p className="mt-8 border-l-2 border-[var(--c-gold)] pl-5 font-serif text-2xl italic leading-snug">{review.verdict}</p>}</header>
-      <div className="mx-auto max-w-3xl"><ReviewBody content={review.content} /><ProsCons pros={review.pros} cons={review.cons} t={t} /><footer className="mt-14 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-5 font-mono text-[10px] uppercase tracking-widest opacity-60">{review.meta && <span>{review.meta} · </span>}— {review.author}</footer></div>
+      <header className="mx-auto mb-12 max-w-3xl border-b border-[var(--c-accent)] pb-10">
+        <p className="font-mono text-[10px] uppercase tracking-[.2em] text-[var(--c-gold)]">{review.category || 'Review'}</p>
+        <h1 className="mt-4 font-serif text-5xl leading-[.94] sm:text-7xl">{review.title}</h1>
+        <p className="mt-5 font-mono text-[11px] uppercase tracking-widest opacity-60">{review.subject}</p>
+        <div className="mt-5 flex flex-wrap items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">
+          {review.date && <><span>{review.date}</span><span aria-hidden="true" className="h-1 w-1 rounded-full bg-[rgb(var(--c-accent-rgb)_/_0.3)]" /></>}
+          <span>{authorName}</span>
+          {authorRole && <><span aria-hidden="true" className="h-1 w-1 rounded-full bg-[rgb(var(--c-accent-rgb)_/_0.3)]" /><span className="text-[var(--c-gold)]">{authorRole}</span></>}
+        </div>
+        {review.verdict && <p className="mt-8 border-l-2 border-[var(--c-gold)] pl-5 font-serif text-2xl italic leading-snug">{review.verdict}</p>}
+      </header>
+      <div className="mx-auto max-w-3xl">
+        <ReviewBody content={review.content} />
+        <ProsCons pros={review.pros} cons={review.cons} t={t} />
+        <footer className="mt-10 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-8 sm:mt-16 sm:pt-12">
+          <div className="flex items-start gap-4 sm:gap-6">
+            {authorPhoto ? (
+              <img
+                src={authorPhoto}
+                alt={authorName}
+                loading="lazy"
+                className="h-12 w-12 shrink-0 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.2)] object-cover sm:h-16 sm:w-16"
+              />
+            ) : (
+              <div aria-hidden="true" className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--c-accent)] font-serif text-lg text-[var(--c-bg)] sm:h-16 sm:w-16 sm:text-xl">
+                {authorName.charAt(0)}
+              </div>
+            )}
+            <div className="min-w-0">
+              <p className="mb-1 font-serif text-xl">{authorName}</p>
+              {authorRole && <p className="mb-3 font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)]">{authorRole}</p>}
+              {authorProfile?.bio && <p className="mb-3 max-w-xl font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.7)]">{authorProfile.bio}</p>}
+              {(authorProfile?.website || authorProfile?.instagram) && (
+                <div className="mb-3 flex flex-wrap items-center gap-4">
+                  {authorProfile.website && <a href={authorProfile.website} target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] underline underline-offset-4 transition-colors hover:text-[var(--c-gold)]">Website</a>}
+                  {authorProfile.instagram && <a href={`https://instagram.com/${authorProfile.instagram.replace(/^@/, '')}`} target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] underline underline-offset-4 transition-colors hover:text-[var(--c-gold)]">{authorProfile.instagram}</a>}
+                </div>
+              )}
+              {(review.date || review.meta) && <p className="font-mono text-xs text-[rgb(var(--c-accent-rgb)_/_0.5)]">{[review.date, review.meta].filter(Boolean).join(' · ')}</p>}
+            </div>
+          </div>
+        </footer>
+      </div>
     </div>
   </motion.article>;
 }
@@ -3873,7 +3926,7 @@ export default function App() {
           <ArticleView article={selectedArticle} related={relatedArticles} onArticleClick={(a) => handleSelectArticle(a.id, a)} onTagClick={handleSearch} onClose={handleCloseArticle} onImageClick={handleImageClick} t={t} currentLang={currentLang} setCurrentLang={setCurrentLang} languages={languageOptions} />
         )}
       </AnimatePresence>
-      <AnimatePresence>{selectedReview && <ReviewView review={selectedReview} t={t} onClose={handleCloseReview} />}</AnimatePresence>
+      <AnimatePresence>{selectedReview && <ReviewView review={selectedReview} t={t} onClose={handleCloseReview} currentLang={currentLang} />}</AnimatePresence>
 
       <AnimatePresence>
         {articleSlugNotFound && (
