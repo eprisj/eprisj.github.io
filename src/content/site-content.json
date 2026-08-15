@@ -12151,11 +12151,11 @@
           "content": [
             {
               "type": "text",
-              "content": "Nachts wechselt jedes Glasgebäude die Loyalität. Über Tag leiht es sich den Himmel aus und gibt ein sauberes Bild der Stadt zurück. Nachts bricht die Reflexion zusammen. Schreibtische, Aufzüge, Küchen und Körper erscheinen in gestapelten Rechtecken, jedes Zimmer beleuchtet wie Beweismaterial. Eine Person, die spät arbeitet, wird Teil der Fassade. Wer ein Glas wäscht, wird zu einem beweglichen Detail in der Zeichnung eines Architekten. Das Versprechen war Offenheit. Das Gefühl ist Enthüllung."
+              "content": "Nachts ändert jedes Glasgebäude seine Loyalität. Tagsüber leiht es sich den Himmel aus und gibt ein sauberes Bild der Stadt zurück. Nachts bricht die Reflexion zusammen. Schreibtische, Aufzüge, Küchen und Körper erscheinen in gestapelten Rechtecken, jedes Zimmer beleuchtet wie ein Beweis. Eine Person, die spät arbeitet, wird Teil der Aufsicht. Jemand, der ein Glas wäscht, wird zu einem beweglichen Detail in einer Architektenzeichnung. Das Versprechen war Offenheit. Das Gefühl ist Enthüllung."
             },
             {
               "type": "text",
-              "content": "Es gibt eine besondere Unruhe in Räumen, die ein Geheimnis nicht bewahren wollen. Man spürt sie in der Lobby, wo der Empfang den Aufzug sehen kann, bevor der Aufzug den Empfang sehen kann; im Besprechungsraum, dessen verglaste Wand mit einem höflichen Streifen Mattierung auf Augenhöhe verziert ist; in der Wohnung, in der der Vorhang als ästhetisches Versagen behandelt wird. Diese Innenräume sind schön, kontrolliert und leicht beschuldigend. Sie suggerieren, dass Privatsphäre etwas ist, das man nach verdächtigem Verhalten anfordert."
+              "content": "Es gibt eine besondere Unruhe in Räumen, die ein Geheimnis nicht bewahren wollen. Man spürt sie in der Lobby, wo die Rezeptionist*in den Aufzug sehen kann, bevor dieser sie sieht; im Besprechungsraum, dessen verglaste Wand mit einem höflichen Streifen Frosting auf Augenhöhe verziert ist; in der Wohnung, in der der Vorhang als ästhetisches Fehlverhalten behandelt wird. Diese Innenräume sind schön, kontrolliert und leicht beschuldigend. Sie legen nahe, dass Privatsphäre etwas ist, das man erst nach verdächtigem Verhalten anfragt."
             },
             {
               "type": "header",
@@ -12163,37 +12163,37 @@
             },
             {
               "type": "text",
-              "content": "Modernes Glas brachte ein moralisches Argument mit sich. Schwerelose Wände hätten die defensive Undurchsichtigkeit der alten Institution ersetzen sollen. Sonnenlicht würde in die Fabrik, die Schule und das Büro eintreten. Die Struktur würde erkennbar werden. Arbeit wäre sichtbar, also ehrlich. Das Bauhaus-Gebäude in Dessau verlieh diesem Glauben 1926 einen unvergesslichen Körper: ein Werkstattflügel, umhüllt von Stahl und Kristallplattenglas, dessen Ecken scheinbar aufgelöst waren, dessen Räume der Außenwelt als kontinuierliches Feld der Tätigkeit angeboten wurden."
+              "content": "Modernes Glas brachte ein moralisches Argument mit sich. Lastenlose Wände würden die defensive Undurchsichtigkeit der alten Institution ersetzen. Sonnenlicht würde die Fabrik, die Schule und das Büro durchdringen. Die Struktur würde lesbar werden. Arbeit wäre sichtbar, also ehrlich. Das Bauhaus-Gebäude in Dessau verlieh diesem Glauben 1926 einen unvergesslichen Körper: ein Werkstattflügel, eingehüllt in Stahl und Kristallplattenglas, dessen Ecken scheinbar aufgelöst wurden, dessen Räume der Außenwelt als ein zusammenhängendes Aktivitätsfeld angeboten wurden."
             },
             {
-              "type": "Bild",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msu6g5jnsm6lj3.jpg",
-              "caption": "Die Werkstattfassade des Bauhausgebäudes in Dessau. Glas macht die Struktur erkennbar, während es die Arbeit in ein öffentliches Bild verwandelt. Foto: Wikimedia Commons, gemeinfrei."
+              "caption": "Die Werkstattfassade des Bauhausgebäudes in Dessau. Glas macht die Struktur lesbar, während es die Arbeit zu einem öffentlichen Bild macht. Foto: Wikimedia Commons, gemeinfrei."
             },
             {
-              "type": "Text",
-              "content": "Die Fassade war nicht nur eine technische Demonstration. Sie schlug einen neuen sozialen Charakter vor. Transparenz wirkte hygienisch, kollektiv, fortschreitend. Die Mauer musste nicht mehr Autorität durch Stein verkünden; sie konnte Autorität durch scheinbare Abwesenheit ausüben. Dies ist der erste Trick transparenter Architektur: Je weniger Material die Grenze zu enthalten scheint, desto leichter ist es zu vergessen, dass die Grenze weiterhin darüber entscheidet, wer eintreten darf, wer hinschauen darf und wer sichtbar bleiben muss."
+              "type": "text",
+              "content": "Die Fassade war nicht bloß eine technische Demonstration. Sie schlug einen neuen sozialen Charakter vor. Transparenz wirkte hygienisch, kollektiv, vorwärtsgerichtet. Die Wand musste nicht mehr Autorität durch Stein ankündigen; sie konnte Autorität durch scheinbare Abwesenheit ausüben. Das ist der erste Trick transparenter Architektur: Je weniger Material die Grenze zu enthalten scheint, desto leichter ist es, zu vergessen, dass die Grenze dennoch darüber entscheidet, wer eintreten darf, wer hinschauen darf und wer sichtbar bleiben muss."
             },
             {
-              "type": "Zitat",
-              "content": "Eine transparente Wand schafft nicht die Macht ab. Sie bearbeitet die Richtung, in die die Macht blicken kann."
+              "type": "quote",
+              "content": "Eine transparente Wand schafft Macht nicht ab. Sie ändert die Richtung, in die Macht blicken kann."
             },
             {
-              "type": "Überschrift",
+              "type": "header",
               "content": "Ein Haus ohne Versteck"
             },
             {
               "type": "text",
-              "content": "Philip Johnsons Glashaus von 1949 wird gewöhnlich als reine Befreiung fotografiert: ein dunkler Stahlrahmen, ein Ziegelzylinder und ein Glasperimeter, die mit unheimlicher Präzision in die Connecticut-Landschaft gestellt sind. Die Landschaft scheint durch den Raum zu gehen. Möbel schwebt. Wetter wird zur Tapete. Doch das Haus ist weniger unbescholten als seine Fotografien. Es zu bewohnen bedeutet, zu akzeptieren, dass jede häusliche Geste ein Publikum bekommen hat, selbst wenn dieses Publikum nur eingebildet ist."
+              "content": "Philip Johnson’s Glashaus von 1949 wird normalerweise als reine Befreiung fotografiert: ein dunkler Stahlrahmen, ein Backsteinzylinder und ein Glasperimeter, die mit unheimlicher Präzision in der Connecticut-Landschaft platziert sind. Die Landschaft scheint durch den Raum zu hindurchzugehen. Möbel schweben. Das Wetter wird zur Tapete. Doch das Haus ist weniger unschuldig als seine Fotografien. Es zu bewohnen bedeutet, zu akzeptieren, dass jede häusliche Geste ein Publikum gefunden hat, selbst wenn dieses Publikum nur eingebildet ist."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msu6g5edocd9yr.jpg",
-              "caption": "Philip Johnsons Glashaus, New Canaan, fertiggestellt 1949. Die Landschaft scheint durch den Raum zu gehen, während der Bewohner ständig ausgestellt bleibt. Foto: Carol M. Highsmith / Library of Congress, gemeinfrei."
+              "caption": "Philip Johnson’s Glashaus, New Canaan, fertiggestellt 1949. Die Landschaft scheint durch den Raum zu hindurchzugehen, während der Bewohner ständig ausgestellt bleibt. Foto: Carol M. Highsmith / Library of Congress, gemeinfrei."
             },
             {
               "type": "text",
-              "content": "Das entscheidende Objekt ist nicht allein das Glaspavillon, sondern sein Gegenstück gegenüber dem Rasen: das Backsteinhaus. Undurchsichtig, schwer und privat, es beherbergte Schlafzimmer, Dienstleistungen und die mechanischen Systeme, die das transparente Ikone stützten. Die beiden Gebäude funktionieren wie eine gespaltene Psyche. Das eine verkörpert Klarheit; das andere nimmt Schlaf, Sanitäranlagen, Unordnung und Rückzug auf. Das Glashaus kann mühelos wirken, denn das Backsteinhaus hält die Beweise abseits der Bühne."
+              "content": "Das entscheidende Objekt ist nicht allein das Glaspavillon, sondern sein Gegenstück gegenüber dem Rasen: das Backsteinhaus. Undurchsichtig, schwer und privat, es beherbergte Schlafzimmer, Dienstleistungen und die mechanischen Systeme, die das transparente Icon unterstützten. Die beiden Gebäude funktionieren wie eine gespaltene Psyche. Das eine verkörpert Klarheit; das andere nimmt Schlaf, Sanitär, Unordnung und Rückzug auf. Das Glashaus kann mühelos wirken, weil das Backsteinhaus die Beweise abseits der Bühne hält."
             },
             {
               "type": "header",
@@ -12201,29 +12201,29 @@
             },
             {
               "type": "text",
-              "content": "Das Farnsworth-Haus von Mies van der Rohe schärft dieselbe Frage. Entworfen 1945 und fertiggestellt 1951 für die Ärztin Edith Farnsworth, wird das Wochenendhaus über der Überschwemmungsebene des Fox River als zwei weiße horizontale Ebenen mit einem einzigen transparenten Raum zwischen ihnen erhöht. Das Bild wirkt nahezu unglaublich ruhig. Im Winter setzen sich die kahlen Äste durch die Verglasung fort, bis das Haus weniger gebaut erscheint als lediglich skizziert."
+              "content": "Mies van der Rohes Farnsworth-Haus schärft dieselbe Frage. 1945 entworfen und 1951 für die Ärztin Edith Farnsworth fertiggestellt, wird das Wochenendhaus über der Flutebene des Fox River als zwei weiße horizontale Ebenen angehoben, zwischen denen ein einzelner transparenter Raum schwebt. Das Bild wirkt beinahe unmöglich ruhig. Im Winter setzen sich die kahlen Äste durch die Verglasung fort, bis das Haus weniger gebaut erscheint als vorübergehend skizziert."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msu6r768yk7inf.jpg",
-              "caption": "Das Farnsworth-Haus im Winter, Plano, Illinois. Die Vorhänge sind kein Verrat am Konzept; sie sind Beweis dafür, dass ein Konzept irgendwann auf einen Körper trifft. Foto: Carol M. Highsmith / Library of Congress, gemeinfrei."
+              "caption": "Farnsworth-Haus im Winter, Plano, Illinois. Die Vorhänge sind kein Verrat des Konzepts; sie sind ein Beweis dafür, dass ein Konzept irgendwann auf einen Körper trifft. Foto: Carol M. Highsmith / Library of Congress, gemeinfrei."
             },
             {
               "type": "text",
-              "content": "Der Plan wirkt universell, doch das Leben ist spezifisch. Der Morgen kommt aus einer Richtung. Kleidung muss irgendwo hingehen. Eine Person wird krank, wütend, müde oder schlicht unwillig, die Landschaft zu gestalten. Kurz nach dem Einzug fügte Farnsworth Schirme um die westliche Veranda hinzu. Bei einer späteren Restaurierung wurden sie entfernt, um das kanonische Bild von 1951 wiederherzustellen. Die Abfolge ist aufschlussreich: Der Bewohner modifizierte das Meisterwerk, um das Leben erträglicher zu machen; die Erhaltung modifizierte es erneut, um das Meisterwerk lesbarer zu machen."
+              "content": "Der Plan scheint universell, doch das Leben ist spezifisch. Der Morgen kommt aus einer Richtung. Kleidung muss irgendwo hin. Eine Person wird krank, wütend, müde oder hat einfach keine Lust, die Landschaft zu gestalten. Kurz nach dem Einzug brachte Farnsworth Schirme um die westliche Veranda an. Bei einer späteren Restaurierung wurden sie entfernt, um das kanonische Bild von 1951 wiederherzustellen. Die Abfolge ist aufschlussreich: Der Bewohner hat das Meisterwerk verändert, um das Leben erträglicher zu machen; die Erhaltung hat es erneut verändert, um das Meisterwerk deutlicher zu machen."
             },
             {
               "type": "text",
-              "content": "Dies ist kein Argument gegen das Haus. Es ist ein Argument dafür, seine Schönheit zu lesen, ohne die erforderliche Verhandlung zum Bewohnen auszulöschen. Die Architekturfotografie belohnt die ununterbrochene Ebene. Das tägliche Leben erzeugt Unterbrechungen: ein halb zugezogener Vorhang, ein Stuhl, der vom Blick weg gedreht wird, Kondensation an der Kante einer Scheibe. Diese Marken sind kein visueller Rausch. Sie sind die Rückmeldung des Bewohners."
+              "content": "Dies ist kein Argument gegen das Haus. Es ist ein Argument dafür, seine Schönheit zu lesen, ohne die Verhandlungen auszulöschen, die das Bewohnen erfordern. Die architektonische Fotografie belohnt die ununterbrochene Ebene. Das tägliche Leben erzeugt Unterbrechungen: ein halb zugezogener Vorhang, ein vom Blick abgewendeter Stuhl, Kondensation am Rand einer Scheibe. Diese Spuren sind kein visueller Rausch. Sie sind die schriftliche Antwort des Bewohners."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msu6g5mj1cr2y7.jpg",
-              "caption": "Im Glashaus teilen Möbel und Landschaft eine visuelle Ebene. Der kreisende Backstein-Kern ist die einzige feste Unterbrechung. Foto: Carol M. Highsmith / Library of Congress, gemeinfrei."
+              "caption": "Im Glashaus teilen Möbel und Landschaft eine visuelle Ebene. Der kreisförmige Ziegelkern ist die einzige feste Unterbrechung. Foto: Carol M. Highsmith / Library of Congress, gemeinfrei."
             },
             {
               "type": "text",
-              "content": "Diese Anordnung enthüllt eine Wahrheit, die zeitgenössische Innenräume oft verbergen: Transparenz ist niemals vollständig. Sie ist kuratiert. Das Kabel ist versteckt, die Lagerwand ist geschlossen, das Backoffice hat kein Fenster, die Kamera ist schwarz und klein. Was wie Offenheit aussieht, ist meist eine Umverteilung von Undurchsichtigkeit. Jemand bekommt den Glasblick; jemand anderes verwaltet, was darin nicht erscheinen soll."
+              "content": "Diese Anordnung offenbart eine Wahrheit, die zeitgenössische Innenräume oft verbergen: Transparenz ist niemals vollständig. Sie ist kuratiert. Das Kabel ist versteckt, die Lagerwand ist geschlossen, das Hinterbüro hat kein Fenster, die Kamera ist schwarz und klein. Was wie Offenheit wirkt, ist in der Regel eine Umverteilung von Undurchsichtigkeit. Manche bekommen den Glasblick; andere verwalten, was nicht darin erscheinen soll."
             },
             {
               "type": "header",
@@ -12231,54 +12231,54 @@
             },
             {
               "type": "text",
-              "content": "In der Mitte des zwanzigsten Jahrhunderts hatte Glas sich zur Unternehmensgrammatik entwickelt. Der Lever House in New York, fertiggestellt von Skidmore, Owings & Merrill im Jahr 1952, ersetzte das Mauerwerksgewicht des kommerziellen Blocks durch eine blau-grüne Fassadenwand und eine erhöhte Platte, die über einem öffentlichen Platz schwebte. Das Gebäude wirkte präzise, sauber und nahezu reibungslos. Es machte die Verwaltung fotogen. Das Unternehmen konnte als kühle Oberfläche verstanden werden, statt als ein Raum voller Entscheidungen."
+              "content": "In der Mitte des 20. Jahrhunderts war Glas zur Unternehmensgrammatik geworden. Lever House in New York, fertiggestellt von Skidmore, Owings & Merrill im Jahr 1952, ersetze das Mauerwerksgewicht des Geschäftsblocks durch eine blau-grüne Vorhangfassade und eine angehobene Platte, die über einem öffentlichen Platz schwebt. Das Gebäude wirkte präzise, sauber und nahezu reibungslos. Es machte die Verwaltung fotogen. Das Unternehmen konnte als kühle Oberfläche verstanden werden, anstatt als ein Raum voller Entscheidungen."
             },
             {
-              "type": "header",
+              "type": "Überschrift",
               "content": "Die Institution als makelloses Bild"
             },
             {
-              "type": "text",
-              "content": "Das Sekretariatsgebäude der Vereinten Nationen machte die Symbolik deutlich. Als seine blau‑grüne glasierte Platte 1950 neben dem East River emporstieg, konnte Transparenz für eine Institution stehen, die bereit war, ihre Abläufe der Welt zu offenbaren. Die Fassade bot ein moralisches Bild, bevor sie Informationen lieferte: internationale Ordnung als leuchtendes Gitter, Bürokratie verwandelt in Licht."
+              "type": "Text",
+              "content": "Das Hauptquartiergebäude der Vereinten Nationen machte die Symbolik deutlich. Als sein blaugrün verglasierter Block 1950 neben dem East River emporstieg, konnte Transparenz für eine Institution stehen, die bereit war, ihre Abläufe der Welt zu offenbaren. Die Fassade bot ein moralisches Bild, bevor sie Informationen lieferte: Weltordnung als leuchtendes Gitter, Bürokratie verwandelt in Licht."
             },
             {
-              "type": "image",
+              "type": "Bild",
               "content": "https://api.eprisjournal.com/uploads/msu6r79ffu6czg.jpg",
-              "caption": "Das Sekretariatsgebäude der Vereinten Nationen bei Sonnenuntergang. Die Vorhangfassade verwandelt eine Institution in ein einziges leuchtendes Bild, während einzelne Zimmer undurchsichtig bleiben. Foto: Daryan Shamkhali, CC0."
+              "caption": "Das Hauptquartiergebäude der Vereinten Nationen bei Sonnenuntergang. Die Vorhangfassade verwandelt eine Institution in ein einzelnes leuchtendes Bild, während einzelne Zimmer unlesbar bleiben. Foto: Daryan Shamkhali, CC0."
             },
             {
-              "type": "text",
-              "content": "Von der Straße aus jedoch erzeugt das Gitter Gleichheit, indem es jede Öffnung äquivalent erscheinen lässt. Im Inneren unterscheiden sich die Räume in Zugang, Sicherheit und Einfluss. Die Vorhangfassade gleicht diese Unterscheidungen zu einer einheitlichen Haut an. Das ist die politische Verführung des Glasturms: Er kann Offenheit repräsentieren, ohne die Hierarchie aufzugeben. Man sieht die Organisation überall und ihre Entscheidungen nirgendwo."
+              "type": "Text",
+              "content": "Von der Straße aus jedoch erfüllt das Gitter Gleichheit, indem es jedes Fach gleich erscheinen lässt. Im Inneren unterscheiden sich die Räume hinsichtlich Zugang, Sicherheit und Einfluss. Die Vorhangfassade gleicht diese Unterscheidungen zu einer einheitlichen Oberfläche an. Das ist die politische Verführung des Glasturms: Sie kann Offenheit repräsentieren, ohne die Hierarchie aufzugeben. Man sieht die Organisation überall, aber ihre Entscheidungen nirgends."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msu6g5pl0gojxo.jpg",
-              "caption": "Das Lever House an der Park Avenue: Die Vorhangfassade verwandelt die Unternehmensorganisation in eine abstrakte, makellose Haut. Foto: Seth Tisue, CC BY-SA 2.0."
+              "caption": "Lever House an der Park Avenue: Die Vorhangfassade verwandelt die korporative Organisation in eine abstrakte, makellose Haut. Foto: Seth Tisue, CC BY-SA 2.0."
             },
             {
               "type": "text",
-              "content": "Hier wird Transparenz zum Branding. Ein verglastes Hauptquartier sagt: Nichts ist hier versteckt. Doch die Aussage ist visuell, nicht prozedural. Man kann Menschen sehen, die hinter der Fassade gehen, ohne zu sehen, wie Autorität zwischen ihnen weitergegeben wird. Das transparente Gebäude bietet Zugang zu Körpern und entzieht den Zugang zu Systemen. Es ist möglich, eine gesamte Etage bei der Arbeit zu beobachten und nichts darüber zu lernen, was die Arbeit eigentlich tut."
+              "content": "Hier wird Transparenz zur Marke. Ein verglastes Hauptquartier sagt: Hier ist nichts versteckt. Aber die Aussage ist visuell, nicht prozedural. Man kann Menschen sehen, die hinter der Fassade gehen, ohne zu sehen, wie Autorität zwischen ihnen weitergegeben wird. Das transparente Gebäude bietet Zugang zu Körpern, verweigert aber Zugang zu Systemen. Es ist möglich, eine ganze Etage bei der Arbeit zu beobachten und nichts darüber zu lernen, was die Arbeit tatsächlich tut."
             },
             {
               "type": "header",
-              "content": "Wenn das Gebäude anfängt, Notizen zu machen"
+              "content": "Wenn das Gebäude beginnt, Notizen zu machen."
             },
             {
               "type": "text",
-              "content": "Das smarte Büro vollzieht den Übergang vom Fenster zur Schnittstelle. Am The Edge in Amsterdam nutzen Mitarbeitende eine App, um Kollegen zu finden, Schreibtische zu lokalisieren und lokale Beleuchtung oder Temperatur einzustellen, während Sensoren Belegung, Bewegung, Luftfeuchtigkeit, Kohlendioxid, Licht und Klima überwachen. Das Design ist wirklich nützlich. Räume können auf Nachfrage reagieren; Energie wird nicht dafür verschwendet, vorzutäuschen, dass ein leeres Stockwerk belegt ist. Komfort wird präzise."
+              "content": "Das intelligente Büro vervollständigt den Übergang vom Fenster zur Schnittstelle. Am The Edge in Amsterdam nutzen Mitarbeiter eine App, um Kollegen zu finden, Schreibtische zu lokalisieren und die lokale Beleuchtung oder Temperatur einzustellen, während Sensoren Belegung, Bewegung, Luftfeuchtigkeit, Kohlendioxid, Licht und Klima überwachen. Das Design ist wirklich nützlich. Räume können auf Nachfrage reagieren; Energie wird nicht verschwendet, indem getan wird, als wäre ein leeres Stockwerk belegt. Komfort wird präzise."
             },
             {
               "type": "text",
-              "content": "But Präzision hat einen Schatten. Sobald ein Gebäude weiß, wo eine Person sitzt, wie lange ein Raum genutzt wird und welche Route nach dem Mittagsessen ausgelastet ist, wird Raum zu Verhaltensdaten. Der Mitarbeiter bewegt sich nicht mehr durch einen neutralen Behälter. Der Behälter zeichnet Bewegungen auf, prognostiziert Nachfrage und definiert stillschweigend, was als normal gilt. Kein Schurke muss hinter einer Wand von Monitoren sitzen. Die Unruhe entsteht daraus, dass das System gleichzeitig effizient, angenehm und invasiv sein kann."
+              "content": "Aber Präzision hat einen Schatten. Sobald ein Gebäude weiß, wo eine Person sitzt, wie lange ein Raum genutzt wird und welche Route nach dem Mittagessen frequentiert wird, verwandelt sich Raum in Verhaltensdaten. Der Mitarbeiter bewegt sich nicht mehr durch einen neutralen Behälter. Der Behälter zeichnet Bewegungen auf, prognostiziert Nachfrage und definiert leise, was als normal gilt. Kein Bösewicht muss hinter einer Wand von Monitoren sitzen. Das Unbehagen entsteht daraus, dass das System zugleich effizient, angenehm und invasiv sein kann."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msu6g5sd70bo9x.jpg",
-              "caption": "Reflexionen multiplizieren die Bürofassade in ein unsicheres Feld aus Innen-, Außen- und Beobachterperspektive. Foto: Dietmar Rabich, CC BY-SA 4.0."
+              "caption": "Reflexionen vervielfachen die Bürofassade zu einem unbestimmten Feld aus Innenraum, Außenraum und Beobachter. Foto: Dietmar Rabich, CC BY-SA 4.0."
             },
             {
               "type": "note",
-              "content": "Die überzeugendste Überwachungsarchitektur sieht nicht bestrafend aus. Sie wirkt praktisch. Sie erinnert sich an dein bevorzugtes Lichtniveau, öffnet die richtige Tür und schlägt den nächsten Schreibtisch vor. Kontrolle kommt verkleidet als Dienstleistung."
+              "content": "Die überzeugendste Überwachungsarchitektur sieht nicht bestrafend aus. Sie wirkt praktisch. Sie erinnert sich an Ihr bevorzugtes Lichtpegel, öffnet die richtige Tür und schlägt den nächstgelegenen Schreibtisch vor. Kontrolle kommt im Gewand der Dienstleistung."
             },
             {
               "type": "header",
@@ -12286,40 +12286,40 @@
             },
             {
               "type": "text",
-              "content": "Die Antwort ist keine sentimentale Rückkehr zu dicken Wänden und kleinen Fenstern. Undurchsichtigkeit kann schützen, aber sie kann auch isolieren und einschüchtern. Die interessantere Aufgabe besteht darin, eine einstellbare Sichtbarkeit zu gestalten: Räume, die es einer Person erlauben, zu entscheiden, wann sie erscheinen, wann sie verschwimmen und wann sie verschwinden soll. Privatsphäre sollte weniger wie ein Bunker und mehr wie ein Dimmer funktionieren."
+              "content": "Die Antwort ist nicht eine sentimentale Rückkehr zu dicken Wänden und kleinen Fenstern. Undurchsichtigkeit kann schützen, aber sie kann auch isolieren und einschüchtern. Die interessantere Aufgabe besteht darin, einstellbare Sichtbarkeit zu entwerfen: Räume, die es einer Person erlauben, zu entscheiden, wann sie erscheinen, wann sie verschwimmen und wann sie verschwinden möchte. Privatsphäre sollte weniger wie ein Bunker und mehr wie ein Dimmer funktionieren."
             },
             {
               "type": "header",
-              "content": "Transparenz ohne Verhör"
+              "content": "Transparenz ohne das Verhör"
             },
             {
               "type": "text",
-              "content": "Das Glaspavillon von SANAA im Toledo Museum of Art bietet ein mehrdeutigeres Modell. Seine transparenten Wände teilen Innen und Außen nicht einfach nur auf. Mehr als 360 große Paneele, viele davon gekrümmt, bilden Räume innerhalb von Räumen. Reflexionen überlagern sich mit Silhouetten; eine Person erscheint, verschwindet hinter einer Kurve und kehrt als blasses Doppelbild auf einer anderen Oberfläche zurück. Die Sichtbarkeit ist kontinuierlich, aber niemals stabil."
+              "content": "Das SANAA’s Glass Pavilion im Toledo Museum of Art bietet ein mehrdeutigeres Modell. Seine transparenten Wände teilen Innen und Außen nicht einfach auf. Mehr als 360 große Paneele, viele davon gebogen, bilden Räume innerhalb von Räumen. Reflexionen überlagern sich mit Silhouetten; eine Person erscheint, verschwindet hinter einer Biegung und kehrt als blasses Doppelbild auf einer anderen Oberfläche zurück. Sichtbarkeit ist stetig, aber niemals stabil."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msu6r7d4gzssa6.jpg",
-              "caption": "Im Inneren des Glaspavillons von SANAA, Toledo Museum of Art. Gebogene Wände machen die Sichtbarkeit geschichtet und unsicher statt total. Foto: Kiko 2709 / Adam C Nelson, CC BY-SA 3.0."
+              "caption": "Innenansicht des SANAA’s Glass Pavilion, Toledo Museum of Art. Gebogene Wände machen die Sichtbarkeit geschichtet und unsicher statt total. Foto: Kiko 2709 / Adam C Nelson, CC BY-SA 3.0."
             },
             {
               "type": "text",
-              "content": "Der Unterschied ist subtil, aber wichtig. Eine gerade verglaste Trennwand verhält sich wie ein Diagramm: hier, dort, beobachtet, Beobachter. Gebogenes Glas führt Verzögerungen und Fehler ein. Es gibt dem Auge zu viel Informationen auf einmal, um sie zu erfassen. Die Architektur bleibt offen, doch der Körper ist nicht auf ein einziges Blickfeld festgelegt. Offenheit wird atmosphärischer statt disziplinär."
+              "content": "Der Unterschied ist subtil, aber wichtig. Eine gerade verglaste Trennwand verhält sich wie ein Diagramm: hier, dort, beobachtet, Beobachter. Gebogenes Glas führt zu Verzögerung und Fehler. Es gibt dem Auge zu viel Informationen auf einmal, um sie zu erfassen. Die Architektur bleibt offen, doch der Körper ist nicht an ein einzelnes Sichtfeld gebunden. Offenheit wird atmosphärisch statt disziplinär."
             },
             {
               "type": "text",
-              "content": "Dies deutet auf ein reichhaltigeres Briefing für zeitgenössisches Design hin. Frage nicht nur, wie viel Tageslicht oder visuelle Verbindung eine Trennwand liefern kann. Frage, welche Art von Beziehung das Glas erzeugt. Wer erhält den ersten Blick? Kann die Person im Inneren einen Annäherungsvorgang vorausahnen? Schützt oder macht die Reflexion nachts sichtbar? Kann der Oberfläche den Zustand ändern, ohne das Gebäudemanagement zu rufen? Die ethische Qualität der Transparenz liegt in diesen kleinen Asymmetrien."
+              "content": "Dies legt ein reichhaltigeres Briefing für zeitgenössisches Design nahe. Frage nicht nur danach, wie viel Tageslicht oder visuelle Verbindung eine Trennwand liefern kann. Frage, welche Art von Beziehung die Scheibe erzeugt. Wer erhält den ersten Blick? Kann die Person innen einen Annäherung antizipieren? Schützt oder offenbart die Reflexion nach Dunkelheit? Kann die Oberfläche ihren Zustand ändern, ohne das Facility Management zu bemühen? Die ethische Qualität der Transparenz lebt in diesen kleinen Asymmetrien."
             },
             {
               "type": "text",
-              "content": "Dies ändert den Status gewöhnlicher Elemente. Ein Vorhang ist keine Dekoration mehr, sondern eine von Nutzern gesteuerte Fassade. Rippenförmiges Glas lässt Licht durch, während es ein vollständiges Bild verweigert. Eine tiefe Laibung erlaubt es jemandem, nahe einem Fenster zu stehen, ohne zur Auslage zu werden. Eine Kurve im Flur verzögert den Blick um eine Sekunde – genug, um Überraschung durch Zustimmung zu ersetzen. Akustische Absorption verhindert die Transparenz von Schall, selbst wo ein visueller Kontakt nützlich ist. Ein warmer Lichtpool aus lokaler Beleuchtung kann einen Schreibtisch bewohnt wirken lassen, ohne den ganzen Raum zu erhellen."
+              "content": "Dies ändert den Status gewöhnlicher Elemente. Ein Vorhang ist keine Dekoration mehr, sondern eine nutzerkontrollierte Fassade. Geriffeltes Glas lässt Licht durch, während es ein komplettes Bild verweigert. Eine tiefe Nutze ermöglicht es jemandem, nahe einem Fenster zu stehen, ohne zur Schau gestellt zu werden. Eine Kurve im Korridor verzögert den Blick um eine Sekunde, genug, um Überraschung durch Zustimmung zu ersetzen. Akustische Absorption verhindert die Transparenz von Schall, selbst dort, wo visuelle Verbindung nützlich ist. Ein warmer Lichtpool aus lokaler Beleuchtung kann einen Schreibtisch bewohnt wirken lassen, ohne den gesamten Raum zu erhellen."
             },
             {
               "type": "text",
-              "content": "Gute räumliche Privatsphäre ist nicht das Fehlen von Kontakt. Sie ist die Fähigkeit, Kontakt zu modulieren, ohne Erlaubnis vom Gebäude einzuholen. Die besten Räume bieten mehrere Zustände zwischen offen und geschlossen: sichtbar, silhouettiert, reflektiert, abgeschirmt, zurückgezogen. Sie erkennen, dass menschliche Aufmerksamkeit keine unbegrenzte öffentliche Ressource ist."
+              "content": "Gute räumliche Privatsphäre ist nicht das Fehlen von Kontakt. Sie ist die Fähigkeit, Kontakt zu modulieren, ohne die Erlaubnis des Gebäudes einzuholen. Die besten Räume bieten mehrere Zustände zwischen offen und geschlossen: sichtbar, silhouettiert, reflektiert, abgeschirmt, zurückgezogen. Sie erkennen an, dass menschliche Aufmerksamkeit keine unbegrenzte öffentliche Ressource ist."
             },
             {
               "type": "quote",
-              "content": "Der radikale Luxus des nächsten Interieurs könnte einfach sein: ein Raum, der dich wahrnimmt, ohne dich zu melden."
+              "content": "Der radikale Luxus des nächsten Innenraums könnte einfach sein: ein Raum, der dich bemerkt, ohne dich zu melden."
             },
             {
               "type": "header",
@@ -12327,38 +12327,38 @@
             },
             {
               "type": "text",
-              "content": "Glas bleibt unwiderstehlich, weil es Architektur in Wetter verwandelt. Es fängt Wolken ein, löst Ecken auf und lässt einen Raum einen Horizont ausleihen. Von dieser Schönheit ist nichts falsch. Der Fehler besteht darin, visuelle Offenheit mit ethischer Offenheit zu verwechseln, oder technische Intelligenz mit Sorgfalt. Ein Gebäude kann seine Struktur preisgeben und dennoch seine Politik verbergen. Es kann genau wissen, wo du bist, und nichts darüber verstehen, was du brauchst."
+              "content": "Glas bleibt unwiderstehlich, weil es Architektur in Wetter verwandelt. Es fängt Wolken ein, löst Ecken auf und lässt einen Raum einen Horizont borgen. Keine dieser Schönheit ist falsch. Der Fehler besteht darin, visuelle Offenheit mit ethischer Offenheit zu verwechseln, oder technische Intelligenz mit Sorgfalt. Ein Gebäude kann seine Struktur offenbaren und dennoch seine Politik verbergen. Es kann genau wissen, wo du bist, und nichts darüber verstehen, was du brauchst."
             },
             {
               "type": "text",
-              "content": "Die Stadt nach Mitternacht macht diesen Widerspruch sichtbar. Türme werden zu Gittern privater Szenen; transparente Häuser werden zu Laternen; das Büro leuchtet weiter für niemanden. Hinter einer Scheibe greift irgendjemand nach einem Schalter. Der Raum wird dunkel. Für einen Moment verliert die Fassade ein Stück Information. Dieses kleine Verschwinden erscheint weniger als Rückzug denn als Kontrolle."
+              "content": "Die Stadt nach Mitternacht macht diesen Widerspruch sichtbar. Türme werden zu Gittern privater Szenen; transparente Häuser werden zu Laternen; das Büro leuchtet weiter für niemanden. Hinter einer Scheibe irgendwo greift eine Person nach einem Schalter. Der Raum wird dunkel. Für einen Moment verliert die Fassade ein Stück Information. Dieses kleine Verschwinden fühlt sich weniger wie ein Rückzug denn wie Kontrolle an."
             },
             {
-              "type": "header",
+              "type": "Überschrift",
               "content": "Referenzen"
             },
             {
-              "type": "link",
-              "content": "Transparenz in der Architektur und darüber hinaus – MoMA",
+              "type": "Link",
+              "content": "Transparenz in Architektur und darüber hinaus – MoMA",
               "url": "https://www.moma.org/calendar/galleries/5381"
             },
             {
-              "type": "link",
+              "type": "Link",
               "content": "Bauhaus-Gebäude – Stiftung Bauhaus Dessau",
               "url": "https://bauhaus-dessau.de/en/venues/bauhaus-building/"
             },
             {
-              "type": "link",
+              "type": "Link",
               "content": "Das Glashaus – National Trust for Historic Preservation",
               "url": "https://theglasshouse.org/about/"
             },
             {
               "type": "link",
-              "content": "The Edge – PLP Architecture",
+              "content": "Die Kante – PLP Architecture",
               "url": "https://www.plparchitecture.com/projects/the-edge"
             }
           ],
-          "updatedAt": "2026-08-15T12:06:35.054Z"
+          "updatedAt": "2026-08-15T12:11:44.885Z"
         }
       ],
       "reviews": [
