@@ -1969,7 +1969,31 @@ function normalizeEntityForServer(section, entity) {
   // The VPS and public reader both support structured review blocks. Preserve
   // the array exactly as the visual editor created it: flattening it here used
   // to turn image URLs and captions into visible paragraphs on the live page.
-  return entity;
+  if (section !== 'articles' && section !== 'reviews') return entity;
+
+  // Editorial copy uses a spaced en dash. Pasted Word/Docs text often brings
+  // an em dash with no surrounding spaces ("grammar—and"), which reads like
+  // an accidental long gap in the journal typography. Normalise prose on save
+  // while leaving URLs, slugs, media paths and machine identifiers untouched.
+  const machineKeys = new Set([
+    'id', 'slug', 'imageUrl', 'imageSeed', 'url', 'link', 'src', 'href',
+    'authorId', 'type', 'layout', 'align', 'aspectRatio', 'publishAt',
+  ]);
+  const normalisePunctuation = (value, key = '') => {
+    if (typeof value === 'string') {
+      return machineKeys.has(key) ? value : value.replace(/\s*—\s*/g, ' – ');
+    }
+    if (Array.isArray(value)) return value.map((item) => normalisePunctuation(item, key));
+    if (!value || typeof value !== 'object') return value;
+    return Object.fromEntries(
+      Object.entries(value).map(([childKey, childValue]) => [
+        childKey,
+        normalisePunctuation(childValue, childKey),
+      ]),
+    );
+  };
+
+  return normalisePunctuation(entity);
 }
 
 function validateJson() {
