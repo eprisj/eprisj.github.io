@@ -1310,14 +1310,30 @@ function homepageItemDescription(item: Item, fallback: string): string {
 // An article owns its byline. A linked author card enriches that byline but
 // never replaces a named contributor with one default person: guest writers,
 // editors and studios must remain distinct on every screen size.
-function displayArticleAuthor(article: Pick<Article, 'author' | 'authorId'>): string {
+type BylineEntity = Pick<Article, 'author' | 'authorId' | 'role'>;
+
+function resolveBylineAuthor(entity: BylineEntity): Author | null {
+  const direct = resolveAuthor(entity);
+  if (direct) return direct;
+  // Older editor versions wrote the selected person's name into `role` while
+  // leaving `author` as "EPRIS Journal". Recover that unambiguous legacy shape
+  // for readers; the content audit also migrates those records permanently.
+  const namedAuthor = entity.author?.trim() || '';
+  const legacyName = entity.role?.trim().toLocaleLowerCase() || '';
+  if ((!namedAuthor || /^epris\s+journal$/i.test(namedAuthor)) && legacyName) {
+    return getAuthors().find((author) => author.name.trim().toLocaleLowerCase() === legacyName) || null;
+  }
+  return null;
+}
+
+function displayArticleAuthor(article: BylineEntity): string {
   const namedAuthor = article.author?.trim() || '';
   // The text stored on the material is the publication credit. An author card
   // only fills the generic EPRIS Journal fallback; it must never turn a guest
   // piece into somebody else's byline just because an older editor left an
   // authorId behind.
   if (namedAuthor && !/^epris\s+journal$/i.test(namedAuthor)) return namedAuthor;
-  return resolveAuthor(article)?.name?.trim() || namedAuthor || 'EPRIS Journal';
+  return resolveBylineAuthor(article)?.name?.trim() || namedAuthor || 'EPRIS Journal';
 }
 
 function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]; onImageClick: (src: string, alt: string) => void; currentLang: string; t: (key: string) => string }) {
@@ -1974,7 +1990,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
 
   // Resolve the linked author record (by authorId or name) so the byline can
   // show a real photo + bio; falls back to the plain author/role strings.
-  const resolvedAuthor = resolveAuthor(article);
+  const resolvedAuthor = resolveBylineAuthor(article);
   const authorName = displayArticleAuthor(article);
   const explicitAuthor = article.author?.trim() || '';
   // Only show a linked profile when it belongs to the visible byline. This
@@ -1992,7 +2008,12 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   // article.role and only fall back to the author record's role when the
   // article doesn't specify one — otherwise the byline "role" freezes in
   // one language regardless of the reader's selected language.
-  const authorRole = article.role || (isMatchingProfile ? translateRole(resolvedAuthor?.role, currentLang) : undefined);
+  const roleWasLegacyAuthorName = Boolean(
+    resolvedAuthor && article.role?.trim().toLocaleLowerCase() === resolvedAuthor.name.trim().toLocaleLowerCase()
+  );
+  const authorRole = roleWasLegacyAuthorName
+    ? translateRole(resolvedAuthor?.role, currentLang)
+    : (article.role || (isMatchingProfile ? translateRole(resolvedAuthor?.role, currentLang) : undefined));
   const authorPhoto = isMatchingProfile ? resolvedAuthor?.photoUrl : undefined;
 
   // Jumping to a related article swaps content inside the same overlay — snap

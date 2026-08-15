@@ -663,7 +663,10 @@ function hasLocalizedPayload(entry: unknown): boolean {
 // text fields are overlaid from the localized copy. These fields are structure/
 // media/state/links — never translated prose — so they always come from base.
 const BASE_AUTHORITATIVE_FIELDS = new Set([
-  'id', 'picsId', 'imageSeed', 'imageUrl', 'authorId', 'draft', 'publishAt', 'updatedAt',
+  // A person's name is identity, not translated copy. Keeping both author
+  // fields base-owned prevents a stale locale from showing a different writer
+  // (or an old placeholder) on the same article/review.
+  'id', 'picsId', 'imageSeed', 'imageUrl', 'author', 'authorId', 'draft', 'publishAt', 'updatedAt',
   'url', 'link', 'rating', 'featured', 'coordinates',
 ]);
 
