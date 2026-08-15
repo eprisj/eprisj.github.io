@@ -4679,11 +4679,11 @@
       "content": [
         {
           "type": "text",
-          "content": "At Enigma, the first architectural act is not arrival but uncertainty. RCR Arquitectes and Pau Llimona treat Albert Adrià’s restaurant as a sequence rather than a room: thresholds, veils and changes of light delay the moment when the whole interior can be understood. The 514.78-square-metre space was designed in 2014–15 and built in 2015–16, but its decisive material is neither glass nor stone. It is a large-format RCR watercolour, digitised and carried across ceramic floors, walls and furniture until drawing becomes atmosphere."
+          "content": "Enigma does not greet you with a grand dining room. It begins with a shimmer, a blurred silhouette and the feeling that something is being held back. RCR Arquitectes and Pau Llimona designed Albert Adrià’s Barcelona restaurant as a sequence of discoveries rather than a single interior: thresholds, veils and changing light postpone the moment when the whole place can be understood. The 514.78-square-metre project was designed in 2014–15 and built in 2015–16, yet its defining material is not glass, stone or steel. It is an RCR watercolour, enlarged and translated across ceramic floors, walls and furniture until a drawing becomes a place."
         },
         {
           "type": "text",
-          "content": "That translation matters. In lesser hands, a chef-led interior becomes branding: one motif repeated until it is exhausted. Here the image behaves more like weather. Pale, mineral surfaces dissolve edges; ribbed glass makes neighbouring tables visible but unreadable; suspended ceiling forms lower and expand the room without announcing a single grand gesture. The architecture constantly withholds just enough information to keep attention awake."
+          "content": "That translation is the key to Enigma’s identity. A more conventional restaurant might repeat a logo, a signature colour or one photogenic motif. Here identity behaves like weather: it surrounds the guest without turning into signage. Pale mineral surfaces erase hard edges; ribbed glass makes neighbouring tables present but unreadable; suspended forms lower and expand the ceiling without announcing themselves as sculpture. Nothing shouts “brand”, yet everything feels unmistakably related."
         },
         {
           "type": "text",
@@ -4714,6 +4714,15 @@
         {
           "type": "text",
           "content": "The photographs reveal how little of the room can be described by a single material name. Cast glass reads alternately as curtain, ice, rain and polished stone. Pale tables and chairs almost disappear into the reflective ground, while darker service elements collect in recesses. Instead of using contrast to clarify circulation, RCR uses degrees of opacity. Movement is guided by what remains partly visible: a glint of stainless steel, a silhouette behind ribbed glass, a warmer pocket of light beyond the next partition."
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "Identity without a logo"
+        },
+        {
+          "type": "text",
+          "content": "Enigma’s strongest branding decision is to avoid looking branded. The visual system is built from behaviours rather than emblems: translucency instead of a fixed graphic mark, repetition without perfect sameness, cool grey surfaces interrupted by warmer light, and a route that reveals information gradually. The watercolour supplies a recognisable texture, but the deeper identity lies in how the room acts. It filters, delays, reflects and reframes. The restaurant can therefore remain coherent across architecture, furniture and table setting without reducing itself to a colour palette. This is spatial identity at its most convincing: guests may forget an individual detail, but they remember the sensation of moving through the whole."
         },
         {
           "type": "header",
@@ -4760,7 +4769,7 @@
       ],
       "author": "Viacheslav Munister",
       "category": "ARCHITECTURE & DINING",
-      "verdict": "A restaurant where architecture does not frame the meal—it edits time, attention and appetite.",
+      "verdict": "Enigma does not decorate a dinner. It gives the evening its own visual grammar—and asks the guest to read it one room at a time.",
       "pros": [
         "Architecture choreographs the meal without becoming scenery",
         "A watercolour becomes a coherent material system",
@@ -4772,7 +4781,7 @@
       ],
       "meta": "BARCELONA · RCR ARQUITECTES + PAU LLIMONA · 514.78 M² · 2016 · PHOTO: HISAO SUZUKI / RCR ARQUITECTES",
       "date": "AUG 15, 2026",
-      "updatedAt": "2026-08-15T08:47:04.660Z",
+      "updatedAt": "2026-08-15T08:50:50.258Z",
       "authorId": "author-1784732936927-kw554",
       "role": "Автор",
       "imageUrl": "https://api.eprisjournal.com/uploads/msu2shhacwwanq.webp"
