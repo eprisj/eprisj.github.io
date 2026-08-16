@@ -308,6 +308,8 @@ export interface FuturoshockWork {
   modelUrl?: string;
   /** Built-in display study used while a commissioned GLB/GLTF is not supplied. */
   openingScene?: 'amber' | 'fold' | 'orbit';
+  /** Curatorial room placement for the digital exhibition. */
+  room?: 'room-01' | 'room-02';
   materials?: string[];
   edition?: string;
   relatedArticleUrl?: string;
