@@ -1978,6 +1978,10 @@ function normalizeEntityForServer(section, entity) {
   const machineKeys = new Set([
     'id', 'slug', 'imageUrl', 'imageSeed', 'url', 'link', 'src', 'href',
     'authorId', 'type', 'layout', 'align', 'aspectRatio', 'publishAt',
+    // Machine values, not prose: an ISO date, a card cover URL and a CSS
+    // object-position keyword have no business being run through the em-dash
+    // normaliser that exists for pasted editorial copy.
+    'publishedAt', 'previewImageUrl', 'previewFocus',
   ]);
   const normalisePunctuation = (value, key = '') => {
     if (typeof value === 'string') {
