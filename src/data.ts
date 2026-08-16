@@ -296,6 +296,24 @@ export interface Studio {
   projects: StudioProject[];
 }
 
+export interface FuturoshockWork {
+  id: string;
+  title: string;
+  author: string;
+  year: string;
+  format: '2d' | '3d';
+  medium: string;
+  statement: string;
+  imageUrl?: string;
+  modelUrl?: string;
+  materials?: string[];
+  edition?: string;
+  relatedArticleUrl?: string;
+  draft?: boolean;
+  publishAt?: string;
+  updatedAt?: string;
+}
+
 /** A per-language manifesto shown at /manifest. Each locale carries its own
  *  title + HTML body; the page falls back to DEFAULT_LANGUAGE when a locale is
  *  missing. Edited from the admin "Manifest" tab. */
@@ -473,6 +491,7 @@ export interface SiteContent {
   studio?: Studio;
   authors?: Author[];
   manifest?: Manifest;
+  futuroshock?: FuturoshockWork[];
 }
 
 const content = rawContent as SiteContent;
@@ -1084,6 +1103,10 @@ export function getStudio(): Studio {
     ...studio,
     projects: (studio.projects || []).filter((project) => isEntityVisible('studioProjects', project.id)),
   };
+}
+
+export function getFuturoshock(): FuturoshockWork[] {
+  return (src().futuroshock || []).filter((work) => isEntityLive(work));
 }
 
 /**

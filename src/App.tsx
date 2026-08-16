@@ -15,6 +15,7 @@ const ShowcasePage = lazy(() => import('./showcase/ShowcasePage').then((m) => ({
 const BureauPage = lazy(() => import('./showcase/BureauPage').then((m) => ({ default: m.BureauPage })));
 const ShowcaseTeaser = lazy(() => import('./showcase/ShowcaseTeaser').then((m) => ({ default: m.ShowcaseTeaser })));
 const StagePage = lazy(() => import('./stage/StagePage').then((m) => ({ default: m.StagePage })));
+const FuturoshockPage = lazy(() => import('./FuturoshockPage').then((m) => ({ default: m.FuturoshockPage })));
 import {
   Article,
   Author,
@@ -3534,6 +3535,9 @@ export default function App() {
   }
   if (/^\/stage\/?$/.test(window.location.pathname)) {
     return <Suspense fallback={<div className="min-h-screen bg-[#1a0b10]" />}><StagePage /></Suspense>;
+  }
+  if (/^\/futuroshock\/?$/.test(window.location.pathname)) {
+    return <Suspense fallback={<div className="min-h-screen bg-[#0b0e0f]" />}><FuturoshockPage /></Suspense>;
   }
   if (/^\/(?:showcase|works|set)\/?$/.test(window.location.pathname)) {
     if (!/^\/showcase\/?$/.test(window.location.pathname)) {
