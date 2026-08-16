@@ -68,22 +68,22 @@ function ShelfPiece({ index, position }: { index: number; position: [number, num
 function DisplayShelf({ activeRoom }: { activeRoom: RoomId }) {
   const accent = activeRoom === 'room-03' ? '#e34f67' : activeRoom === 'room-02' ? '#d7e7df' : '#ffc276';
   const positions: [number, number, number][] = [[-2.7, 1.75, .15], [0, 1.75, .15], [2.7, 1.75, .15], [-2.7, 0, .15], [0, 0, .15], [2.7, 0, .15], [-2.7, -1.74, .15], [0, -1.74, .15], [2.7, -1.74, .15]];
-  return <div className="relative min-h-[520px] overflow-hidden bg-[#100d0b] sm:min-h-[650px]" aria-label="Interactive 3D display shelf">
-    <Canvas shadows camera={{ position: [8.4, 3.05, 10.4], fov: 33 }} dpr={[1, 1.5]}>
-      <color attach="background" args={['#100d0b']} />
-      <fog attach="fog" args={['#100d0b', 9, 19]} />
-      <ambientLight intensity={.32} />
-      <spotLight castShadow position={[-4.4, 6.8, 4.4]} angle={.4} penumbra={.72} intensity={6.2} color="#ffd49b" shadow-mapSize={[1024, 1024]} />
-      <spotLight position={[4.8, 4.2, 3.6]} angle={.5} penumbra={.86} intensity={4.2} color={accent} />
-      <pointLight position={[0, 1.7, 3]} intensity={3.4} distance={8} color="#f6bc76" />
-      <mesh position={[0, 0, -.34]} receiveShadow><boxGeometry args={[8.85, 6.1, .22]} /><meshStandardMaterial color="#2a1b14" roughness={.46} metalness={.05} /></mesh>
-      <mesh position={[-4.35, 0, 0]}><boxGeometry args={[.24, 6.26, .66]} /><meshStandardMaterial color="#24140e" roughness={.32} /></mesh><mesh position={[4.35, 0, 0]}><boxGeometry args={[.24, 6.26, .66]} /><meshStandardMaterial color="#24140e" roughness={.32} /></mesh>
-      {[-2.25, .05, 2.35].map((x) => <mesh key={`upright-${x}`} position={[x - .92, 0, 0]}><boxGeometry args={[.16, 6.05, .6]} /><meshStandardMaterial color="#321c12" roughness={.28} /></mesh>)}
-      {[-2.62, -.88, .88, 2.62].map((y) => <group key={`shelf-${y}`}><mesh position={[0, y, .05]}><boxGeometry args={[8.65, .18, .75]} /><meshStandardMaterial color="#5b3420" roughness={.28} metalness={.04} /></mesh><pointLight position={[0, y + .1, .62]} intensity={1.5} distance={4.2} color="#ffd18a" /></group>)}
+  return <div className="relative min-h-[520px] overflow-hidden bg-[#17100d] sm:min-h-[650px]" aria-label="Interactive 3D display shelf">
+    <Canvas shadows camera={{ position: [0, .15, 10.8], fov: 34 }} dpr={[1, 1.5]}>
+      <color attach="background" args={['#17100d']} />
+      <fog attach="fog" args={['#17100d', 12, 23]} />
+      <ambientLight intensity={.72} />
+      <spotLight castShadow position={[-4.4, 6.8, 5.8]} angle={.5} penumbra={.72} intensity={10.5} color="#ffd49b" shadow-mapSize={[1024, 1024]} />
+      <spotLight position={[4.8, 4.2, 5.6]} angle={.55} penumbra={.86} intensity={7.4} color={accent} />
+      <pointLight position={[0, 1.7, 4]} intensity={7.8} distance={9} color="#f6bc76" />
+      <mesh position={[0, 0, -.34]} receiveShadow><boxGeometry args={[8.85, 6.1, .22]} /><meshStandardMaterial color="#3a2118" roughness={.46} metalness={.05} /></mesh>
+      <mesh position={[-4.35, 0, 0]}><boxGeometry args={[.24, 6.26, .66]} /><meshStandardMaterial color="#412313" roughness={.32} /></mesh><mesh position={[4.35, 0, 0]}><boxGeometry args={[.24, 6.26, .66]} /><meshStandardMaterial color="#412313" roughness={.32} /></mesh>
+      {[-2.8, 0, 2.8].map((x) => <mesh key={`upright-${x}`} position={[x, 0, 0]}><boxGeometry args={[.16, 6.05, .6]} /><meshStandardMaterial color="#4b2917" roughness={.28} /></mesh>)}
+      {[-2.62, -.88, .88, 2.62].map((y) => <group key={`shelf-${y}`}><mesh position={[0, y, .05]}><boxGeometry args={[8.65, .18, .75]} /><meshStandardMaterial color="#75442a" roughness={.28} metalness={.04} /></mesh><pointLight position={[0, y + .1, 1.08]} intensity={3.2} distance={4.6} color="#ffd18a" /></group>)}
       {positions.map((position, index) => <ShelfPiece key={index} index={index} position={position} />)}
       <mesh position={[0, -3.1, 1.35]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow><planeGeometry args={[18, 13]} /><meshStandardMaterial color="#0c0a09" roughness={.85} /></mesh>
       <ContactShadows position={[0, -2.72, .3]} opacity={.65} scale={11} blur={2.6} far={7} />
-      <OrbitControls enablePan={false} minDistance={8} maxDistance={14} minPolarAngle={.92} maxPolarAngle={1.46} />
+      <OrbitControls enablePan={false} minDistance={8} maxDistance={13} minPolarAngle={.92} maxPolarAngle={1.46} />
     </Canvas>
     <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-between border-t border-white/10 bg-black/30 px-5 py-4 font-mono text-[9px] uppercase tracking-[.16em] text-white/45 backdrop-blur sm:px-8"><span>drag to look</span><span>light is live</span></div>
   </div>;
