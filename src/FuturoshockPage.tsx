@@ -1,7 +1,6 @@
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Canvas } from '@react-three/fiber';
 import { ContactShadows, OrbitControls, Environment, useGLTF, useTexture } from '@react-three/drei';
-import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
-import { Vector3 } from 'three';
+import { Suspense, useEffect, useMemo, useState } from 'react';
 import { ArrowLeft, ArrowUpRight, Box, Image as ImageIcon, Upload } from 'lucide-react';
 import { getFuturoshock, subscribeContent, type FuturoshockWork } from './data';
 
@@ -71,20 +70,6 @@ function ShelfArtwork({ url }: { url: string }) {
   return <group><mesh position={[0, 0, -.04]}><boxGeometry args={[1.16, 1.08, .1]} /><meshStandardMaterial color="#1c1512" roughness={.35} /></mesh><mesh position={[0, 0, .03]}><planeGeometry args={[.98, .9]} /><meshBasicMaterial map={texture} toneMapped={false} /></mesh></group>;
 }
 
-function ShelfCamera({ focus }: { focus: [number, number, number] }) {
-  const { camera } = useThree();
-  const destination = useRef(new Vector3(0, .1, 18));
-  const target = useRef(new Vector3());
-  useFrame((_, delta) => {
-    destination.current.set(focus[0] * .12, focus[1] * .08, 18);
-    target.current.set(focus[0], focus[1], 0);
-    const blend = 1 - Math.exp(-delta * 3.8);
-    camera.position.lerp(destination.current, blend);
-    camera.lookAt(target.current);
-  });
-  return null;
-}
-
 function ShelfContent({ work, index, position, active, onSelect }: { work?: FuturoshockWork; index: number; position: [number, number, number]; active?: boolean; onSelect?: () => void }) {
   if (!work) return null;
   const canShowImage = Boolean(work.imageUrl && !work.id.startsWith('fs-opening'));
@@ -99,7 +84,6 @@ function DisplayShelf({ works, activeRoom, selectedId, onSelect }: { works: Futu
   const slots: [number, number, number][] = [[-4.65, 2.55, .55], [-2.33, 2.55, .55], [0, 2.55, .55], [2.33, 2.55, .55], [4.65, 2.55, .55], [-4.65, 0, .55], [-2.33, 0, .55], [0, 0, .55], [2.33, 0, .55], [4.65, 0, .55], [-4.65, -2.55, .55], [-2.33, -2.55, .55], [0, -2.55, .55], [2.33, -2.55, .55], [4.65, -2.55, .55]];
   const placed = new Map<number, FuturoshockWork>();
   works.filter((work) => (work.room || 'room-01') === activeRoom).forEach((work, index) => placed.set(work.shelfSlot || index + 1, work));
-  const selectedSlot = [...placed.entries()].find(([, work]) => work.id === selectedId)?.[0] || 1;
   return <div className="relative h-[calc(100svh-72px)] min-h-[620px] max-h-[920px] overflow-hidden bg-[#17100d]" aria-label="Interactive Futuroshock display shelf">
     <Canvas shadows camera={{ position: [0, .1, 18], fov: 28 }} dpr={[1, 1.5]}>
       <color attach="background" args={['#17100d']} />
@@ -117,7 +101,7 @@ function DisplayShelf({ works, activeRoom, selectedId, onSelect }: { works: Futu
       <mesh position={[0, -4.3, 1.3]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow><planeGeometry args={[26, 16]} /><meshStandardMaterial color="#100c0a" roughness={.9} /></mesh>
       <ContactShadows position={[0, -4.02, .6]} opacity={.5} scale={15} blur={2.7} far={8} />
       <Environment preset="warehouse" />
-      <ShelfCamera focus={selectedId ? slots[selectedSlot - 1] : [0, 0, 0]} />
+      <OrbitControls target={[0, 0, 0]} enablePan={false} minDistance={14} maxDistance={22} minPolarAngle={1.12} maxPolarAngle={1.55} />
     </Canvas>
   </div>;
 }
