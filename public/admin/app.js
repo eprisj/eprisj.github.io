@@ -9096,6 +9096,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     if (btn.dataset.tab === 'manifest') setTimeout(() => window._renderManifestTab && window._renderManifestTab(), 50);
     if (btn.dataset.tab === 'authors') setTimeout(() => window._renderAuthorsTab && window._renderAuthorsTab(), 50);
     if (btn.dataset.tab === 'history') setTimeout(refreshVersionHistory, 50);
+    if (btn.dataset.tab === 'order') setTimeout(() => window._renderArticleOrderTab && window._renderArticleOrderTab(), 50);
   });
 });
 
@@ -18336,4 +18337,311 @@ document.addEventListener('click', (event) => {
   }, 1200);
   renderEditorialQueue();
   renderEntryHistory();
+})();
+
+// ═══════════════════════════════════════════════════════════
+// ──  ПОРЯДОК СТАТЕЙ — chronology, pins and a manual sequence  ──────────────
+// ═══════════════════════════════════════════════════════════
+/* One screen that answers "in what order do the articles appear, and what does
+   each one look like as a card". Before this the answer lived in code: the feed
+   sorted by Date.parse(article.date) and nothing an editor could touch changed
+   it. The `order` field in the JSON looked like the control and was read by
+   nobody.
+
+   Settings are written to homepage.articleOrder and consumed by orderArticles()
+   in src/data.ts — the site's single ordering function — so what is arranged
+   here is exactly what a reader gets, on the homepage and in /articles alike.
+
+   Like the issue builder and the author cards, this edits the whole-file JSON
+   through the shared editor textarea rather than the per-entity endpoint: the
+   order is a property of the collection, not of one article, and a per-entity
+   PATCH would have nowhere to put it. */
+(() => {
+  const root = byId('tab-order');
+  if (!root) return;
+
+  const listEl = byId('orderList');
+  const modeEl = byId('orderMode');
+  const unplacedEl = byId('orderUnplaced');
+  const unplacedField = byId('orderUnplacedField');
+  const searchEl = byId('orderSearch');
+  const categoryEl = byId('orderCategory');
+  const statusEl = byId('orderStatus');
+  const countEl = byId('orderCount');
+  const homeEl = byId('orderPreviewHome');
+  const allEl = byId('orderPreviewAll');
+  const homeLimitEl = byId('orderPreviewLimit');
+
+  /** Working copy of homepage.articleOrder; written back on "Записать в JSON". */
+  let settings = { mode: 'chronological', pinned: [], manualOrder: [], unplaced: 'top' };
+  let articles = [];
+  let dragId = null;
+
+  const num = (v) => Number(v);
+  /* Named function, not an arrow in a const: scripts/check-order-parity.mjs
+     lifts this and resolveArticleOrder out of this file by name so it can run
+     the admin's real ordering against the site's, and a declaration is what it
+     can find. Mirrors articleTimestamp() in src/data.ts. */
+  function stampOf(a) {
+    for (const value of [a.publishedAt, a.date, a.updatedAt]) {
+      const t = value ? Date.parse(value) : NaN;
+      if (Number.isFinite(t)) return t;
+    }
+    return 0;
+  }
+
+  /* The same resolution as orderArticles() in src/data.ts. Duplicated here on
+     purpose and kept deliberately small: the admin is a static page that cannot
+     import the site's TypeScript, and a screen that shows a different order
+     from the one it is arranging would be worse than no screen.
+
+     Pure and exposed as window._resolveArticleOrder so the two implementations
+     can be run against each other on the same data instead of being trusted to
+     stay in step. scripts/check-order-parity.mjs does exactly that. */
+  function resolveArticleOrder(articles, settings) {
+    const byId = new Map(articles.map((a) => [num(a.id), a]));
+    const taken = new Set();
+    const out = [];
+    const take = (id) => {
+      const key = num(id);
+      if (taken.has(key) || !byId.has(key)) return;
+      taken.add(key);
+      out.push(byId.get(key));
+    };
+    (settings.pinned || []).forEach(take);
+    const chronological = articles.slice().sort((a, b) => stampOf(b) - stampOf(a) || num(b.id) - num(a.id));
+    if (settings.mode === 'manual') {
+      const placed = (settings.manualOrder || []).filter((id) => byId.has(num(id)));
+      const unplaced = chronological.filter((a) => !placed.includes(num(a.id)));
+      if (settings.unplaced === 'bottom') {
+        placed.forEach(take);
+        unplaced.forEach((a) => take(a.id));
+      } else {
+        unplaced.forEach((a) => take(a.id));
+        placed.forEach(take);
+      }
+    } else {
+      chronological.forEach((a) => take(a.id));
+    }
+    return out;
+  }
+  window._resolveArticleOrder = resolveArticleOrder;
+  const resolveOrder = () => resolveArticleOrder(articles, settings);
+
+  function statusOf(a) {
+    if (a.draft) return { key: 'draft', label: 'черновик' };
+    if (a.publishAt && Date.parse(a.publishAt) > Date.now()) return { key: 'scheduled', label: 'по расписанию' };
+    if (!a.publishedAt && !Number.isFinite(Date.parse(a.date || ''))) return { key: 'nodate', label: 'нет даты' };
+    return { key: 'live', label: 'опубликована' };
+  }
+
+  function matchesFilters(a) {
+    const q = (searchEl.value || '').trim().toLowerCase();
+    if (q && ![a.title, a.author, a.excerpt].some((f) => String(f || '').toLowerCase().includes(q))) return false;
+    if (categoryEl.value && String(a.category || '') !== categoryEl.value) return false;
+    if (statusEl.value && statusOf(a).key !== statusEl.value) return false;
+    return true;
+  }
+
+  function isoOf(a) {
+    if (a.publishedAt) return String(a.publishedAt).slice(0, 10);
+    const t = Date.parse(a.date || '');
+    return Number.isFinite(t) ? new Date(t).toISOString().slice(0, 10) : '';
+  }
+
+  function render() {
+    const ordered = resolveOrder();
+    const pinned = new Set((settings.pinned || []).map(num));
+    const visible = ordered.filter(matchesFilters);
+    const manual = settings.mode === 'manual';
+    // style.display, not the hidden attribute: .order-field sets display:flex,
+    // which wins over [hidden] and left the control on screen in chronological
+    // mode, where it does nothing.
+    unplacedField.style.display = manual ? '' : 'none';
+
+    countEl.textContent = visible.length === ordered.length
+      ? `${ordered.length} статей`
+      : `${visible.length} из ${ordered.length}`;
+
+    listEl.innerHTML = visible.map((a, idx) => {
+      const st = statusOf(a);
+      const id = num(a.id);
+      const position = ordered.indexOf(a) + 1;
+      return `
+        <div class="order-row${pinned.has(id) ? ' pinned' : ''}" data-id="${id}" draggable="${manual ? 'true' : 'false'}">
+          <span class="order-handle" title="${manual ? 'Перетащить' : 'Перетаскивание работает в ручном режиме'}">⠿</span>
+          <span class="order-num">${String(position).padStart(2, '0')}</span>
+          <div class="order-move">
+            <button class="order-move-btn" data-act="up" data-id="${id}" type="button" ${idx === 0 ? 'disabled' : ''}>▲</button>
+            <button class="order-move-btn" data-act="down" data-id="${id}" type="button" ${idx === visible.length - 1 ? 'disabled' : ''}>▼</button>
+          </div>
+          <button class="order-pin" data-act="pin" data-id="${id}" type="button" title="${pinned.has(id) ? 'Открепить' : 'Закрепить вверху'}">${pinned.has(id) ? '📌' : '📍'}</button>
+          ${a.imageUrl ? `<img class="order-thumb" src="${escapeHtml(a.imageUrl)}" alt="" loading="lazy" referrerpolicy="no-referrer" />` : '<div class="order-thumb"></div>'}
+          <div class="order-info">
+            <div class="order-title">${escapeHtml(a.title || 'Без заголовка')}</div>
+            <div class="order-meta">${escapeHtml(a.category || '—')}${a.subcategory ? ' / ' + escapeHtml(a.subcategory) : ''} · ID ${id} · ${escapeHtml(a.author || 'без автора')}</div>
+          </div>
+          <input class="order-date" type="date" value="${escapeHtml(isoOf(a))}" data-id="${id}" title="publishedAt — по нему строится хронология" />
+          <span class="order-status order-status--${st.key}">${st.label}</span>
+        </div>`;
+    }).join('') || '<div class="order-empty">Ничего не найдено по текущим фильтрам.</div>';
+
+    renderPreview(ordered);
+  }
+
+  function renderPreview(ordered) {
+    const limitRaw = Number((parseEditorJsonSafe()?.homepage?.articles || {}).limit);
+    const limit = Number.isFinite(limitRaw) && limitRaw > 0 ? limitRaw : 0;
+    homeLimitEl.textContent = limit ? `· первые ${limit}` : '· все';
+    const card = (a, i) => `
+      <div class="order-card">
+        <span class="order-card-num">${i + 1}</span>
+        ${a.imageUrl ? `<img src="${escapeHtml(a.imageUrl)}" alt="" loading="lazy" referrerpolicy="no-referrer" />` : '<div class="order-card-empty"></div>'}
+        <div class="order-card-cat">${escapeHtml(a.category || '')}</div>
+        <div class="order-card-title">${escapeHtml(a.title || '')}</div>
+      </div>`;
+    const live = ordered.filter((a) => statusOf(a).key === 'live');
+    homeEl.innerHTML = (limit ? live.slice(0, limit) : live).map(card).join('') || '<p class="order-empty">Нет опубликованных статей.</p>';
+    allEl.innerHTML = live.map(card).join('') || '<p class="order-empty">Нет опубликованных статей.</p>';
+  }
+
+  /* Reordering only ever rewrites manualOrder, and switches the mode to manual
+     if it was not already: dragging a row in chronological mode used to be the
+     obvious thing to try, and silently doing nothing is the worst answer. */
+  function moveTo(id, targetId) {
+    const ordered = resolveOrder().map((a) => num(a.id));
+    const from = ordered.indexOf(num(id));
+    const to = ordered.indexOf(num(targetId));
+    if (from < 0 || to < 0 || from === to) return;
+    ordered.splice(to, 0, ordered.splice(from, 1)[0]);
+    settings.mode = 'manual';
+    settings.manualOrder = ordered;
+    modeEl.value = 'manual';
+    render();
+  }
+
+  function nudge(id, delta) {
+    const ordered = resolveOrder().map((a) => num(a.id));
+    const from = ordered.indexOf(num(id));
+    const to = from + delta;
+    if (from < 0 || to < 0 || to >= ordered.length) return;
+    ordered.splice(to, 0, ordered.splice(from, 1)[0]);
+    settings.mode = 'manual';
+    settings.manualOrder = ordered;
+    modeEl.value = 'manual';
+    render();
+  }
+
+  function togglePin(id) {
+    const key = num(id);
+    const pinned = (settings.pinned || []).map(num);
+    settings.pinned = pinned.includes(key) ? pinned.filter((p) => p !== key) : [...pinned, key];
+    render();
+  }
+
+  /** Load the current content JSON into the screen. */
+  function load() {
+    const data = parseEditorJsonSafe();
+    if (!data) {
+      listEl.innerHTML = '<div class="order-empty">Загрузите JSON (кнопка «Загрузить»), чтобы увидеть статьи.</div>';
+      return;
+    }
+    articles = Array.isArray(data.articles) ? data.articles.slice() : [];
+    const saved = (data.homepage && data.homepage.articleOrder) || {};
+    settings = {
+      mode: saved.mode === 'manual' ? 'manual' : 'chronological',
+      pinned: Array.isArray(saved.pinned) ? saved.pinned.map(num) : [],
+      manualOrder: Array.isArray(saved.manualOrder) ? saved.manualOrder.map(num) : [],
+      unplaced: saved.unplaced === 'bottom' ? 'bottom' : 'top',
+    };
+    modeEl.value = settings.mode;
+    unplacedEl.value = settings.unplaced;
+    const cats = [...new Set(articles.map((a) => String(a.category || '')).filter(Boolean))].sort();
+    categoryEl.innerHTML = '<option value="">Все рубрики</option>' + cats.map((c) => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
+    render();
+  }
+
+  /* Write the arrangement back into the shared editor JSON. Dates written here
+     go straight onto the article as publishedAt, which is what the site sorts
+     by; `date` is left exactly as the editor typed it, because that string is
+     the line a reader sees and is nobody else's to rewrite. */
+  function apply() {
+    const data = parseEditorJsonSafe();
+    if (!data) { showToast('error', 'JSON не разобран — загрузите контент.'); return; }
+    data.homepage = data.homepage || {};
+    data.homepage.articleOrder = {
+      mode: settings.mode,
+      pinned: (settings.pinned || []).map(num),
+      manualOrder: settings.mode === 'manual' ? (settings.manualOrder || []).map(num) : [],
+      unplaced: settings.unplaced,
+    };
+    const dates = new Map(articles.map((a) => [num(a.id), a.publishedAt]));
+    (data.articles || []).forEach((a) => {
+      const iso = dates.get(num(a.id));
+      if (iso) a.publishedAt = iso;
+    });
+    editor.value = JSON.stringify(data, null, 2);
+    updateEditorState();
+    showToast('success', 'Порядок записан в JSON. Нажмите общий «Сохранить», чтобы отправить на VPS.');
+  }
+
+  listEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-act]');
+    if (!btn) return;
+    const id = btn.dataset.id;
+    if (btn.dataset.act === 'pin') togglePin(id);
+    if (btn.dataset.act === 'up') nudge(id, -1);
+    if (btn.dataset.act === 'down') nudge(id, 1);
+  });
+
+  listEl.addEventListener('change', (e) => {
+    const input = e.target.closest('.order-date');
+    if (!input) return;
+    const article = articles.find((a) => num(a.id) === num(input.dataset.id));
+    if (!article) return;
+    // An emptied field clears publishedAt rather than storing "", so the
+    // article falls back to its display date instead of parsing an empty string.
+    if (input.value) article.publishedAt = input.value; else delete article.publishedAt;
+    render();
+  });
+
+  listEl.addEventListener('dragstart', (e) => {
+    const row = e.target.closest('.order-row');
+    if (!row) return;
+    dragId = row.dataset.id;
+    row.classList.add('dragging');
+  });
+  listEl.addEventListener('dragend', (e) => {
+    e.target.closest('.order-row')?.classList.remove('dragging');
+    dragId = null;
+  });
+  listEl.addEventListener('dragover', (e) => { if (dragId) e.preventDefault(); });
+  listEl.addEventListener('drop', (e) => {
+    const row = e.target.closest('.order-row');
+    if (!row || !dragId) return;
+    e.preventDefault();
+    moveTo(dragId, row.dataset.id);
+  });
+
+  modeEl.addEventListener('change', () => {
+    settings.mode = modeEl.value === 'manual' ? 'manual' : 'chronological';
+    // Entering manual mode with an empty sequence would look like "the order
+    // reset": seed it from what is on screen, which is what the editor sees.
+    if (settings.mode === 'manual' && !(settings.manualOrder || []).length) {
+      settings.manualOrder = resolveOrder().map((a) => num(a.id));
+    }
+    render();
+  });
+  unplacedEl.addEventListener('change', () => { settings.unplaced = unplacedEl.value; render(); });
+  [searchEl, categoryEl, statusEl].forEach((el) => el.addEventListener('input', render));
+  byId('orderSortByDateBtn').addEventListener('click', () => {
+    settings.mode = 'chronological';
+    settings.manualOrder = [];
+    modeEl.value = 'chronological';
+    render();
+    showToast('success', 'Порядок сброшен к хронологии. Закрепления сохранены.');
+  });
+  byId('orderApplyBtn').addEventListener('click', apply);
+
+  window._renderArticleOrderTab = load;
 })();
