@@ -310,6 +310,8 @@ export interface FuturoshockWork {
   openingScene?: 'amber' | 'fold' | 'orbit' | 'totem';
   /** Curatorial room placement for the digital exhibition. */
   room?: 'room-01' | 'room-02' | 'room-03';
+  /** Physical position in the Futuroshock shelf, counted left-to-right and top-to-bottom. */
+  shelfSlot?: number;
   materials?: string[];
   edition?: string;
   relatedArticleUrl?: string;
