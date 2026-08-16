@@ -17,15 +17,15 @@ function OpeningObject({ scene = 'amber' }: { scene?: FuturoshockWork['openingSc
 }
 
 const OPENING_WORKS: FuturoshockWork[] = [
-  { id: 'fs-opening-shelf', title: 'shelf after dinner', author: 'EPRIS opening study', year: '2026', format: '2d', medium: 'digital photograph', statement: 'A working collection of ceramic forms, glass and warm light. The first wall is already occupied by a real image, rather than a mockup.', imageUrl: '/images/futuroshock-interior.png', materials: ['wood', 'ceramic', 'glass', 'warm light'], edition: 'room 01 / image 01', room: 'room-01' },
-  { id: 'fs-opening-amber', title: 'amber vessel', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural 3D object', statement: 'A small calibrated volume for the illuminated plinth. Rotate it to inspect the warm metal and opaque amber surface.', openingScene: 'amber', materials: ['amber resin', 'dark metal'], edition: 'room 01 / object 01', room: 'room-01' },
-  { id: 'fs-opening-fold', title: 'folded witness', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural 3D object', statement: 'Two offset planes turn a wall work into an object. This position is reserved for scans, reliefs and architectural fragments.', openingScene: 'fold', materials: ['brushed aluminium', 'smoked lacquer'], edition: 'room 01 / object 02', room: 'room-01' },
-  { id: 'fs-opening-light', title: 'light index', author: 'EPRIS opening study', year: '2026', format: '2d', medium: 'digital photograph', statement: 'A photographic index of the room: reflection, shelf depth and the small shifts that make a display feel inhabited.', imageUrl: '/images/futuroshock-interior.png', materials: ['glass', 'walnut', 'fabric'], edition: 'room 02 / image 01', room: 'room-02' },
-  { id: 'fs-opening-orbit', title: 'orbit for a hand', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural 3D object', statement: 'A rotational study built for the final position near the window. It gives the opening room movement before the first model arrives.', openingScene: 'orbit', materials: ['bronze', 'milk glass', 'charcoal stone'], edition: 'room 02 / object 01', room: 'room-02' },
-  { id: 'fs-opening-detail', title: 'inventory of touch', author: 'EPRIS opening study', year: '2026', format: '2d', medium: 'digital photograph', statement: 'The starting material palette: vessels, marks and domestic scale. The future exhibition grows from this level of attention.', imageUrl: '/images/futuroshock-interior.png', materials: ['ceramic', 'wood', 'linen'], edition: 'room 02 / image 02', room: 'room-02' },
-  { id: 'fs-opening-signal', title: 'signal totem', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural light object', statement: 'A vertical receiver for the final chamber. It turns a small point of red light into an address in the dark.', openingScene: 'totem', materials: ['anodised aluminium', 'resin', 'low voltage light'], edition: 'room 03 / object 01', room: 'room-03' },
-  { id: 'fs-opening-afterimage', title: 'afterimage room', author: 'EPRIS opening study', year: '2026', format: '2d', medium: 'digital photograph', statement: 'An interior photographed after the visitor leaves: surface remains, objects become evidence and the room holds its own memory.', imageUrl: '/images/futuroshock-interior.png', materials: ['smoked glass', 'oak', 'night light'], edition: 'room 03 / image 01', room: 'room-03' },
-  { id: 'fs-opening-archive-fold', title: 'red shift', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural relief', statement: 'A relief that changes from an image into a sharp object when its edge catches the light.', openingScene: 'fold', materials: ['oxide red lacquer', 'aluminium'], edition: 'room 03 / object 02', room: 'room-03' },
+  { id: 'fs-opening-shelf', title: 'smoked vessel', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural 3D object', statement: 'A weighted amber form with a dark metal collar. It sits closest to the first warm strip, where its surface changes from honey to tobacco.', openingScene: 'amber', materials: ['amber resin', 'oxidised steel'], edition: 'shelf 01', room: 'room-01', shelfSlot: 1 },
+  { id: 'fs-opening-amber', title: 'amber vessel', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural 3D object', statement: 'A small calibrated volume for the illuminated plinth. Rotate it to inspect the warm metal and opaque amber surface.', openingScene: 'amber', materials: ['amber resin', 'dark metal'], edition: 'shelf 02', room: 'room-01', shelfSlot: 2 },
+  { id: 'fs-opening-fold', title: 'folded witness', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural 3D object', statement: 'Two offset planes turn a wall work into an object. This position is reserved for scans, reliefs and architectural fragments.', openingScene: 'fold', materials: ['brushed aluminium', 'smoked lacquer'], edition: 'shelf 03', room: 'room-01', shelfSlot: 3 },
+  { id: 'fs-opening-light', title: 'small sun', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural light object', statement: 'A small light volume for the second line of the shelf. The milk-glass core keeps a soft edge while the base catches the warm reflection.', openingScene: 'totem', materials: ['milk glass', 'brass', 'low-voltage light'], edition: 'shelf 04', room: 'room-01', shelfSlot: 4 },
+  { id: 'fs-opening-orbit', title: 'orbit for a hand', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural 3D object', statement: 'A rotational study built for the final position near the window. It gives the opening room movement before the first model arrives.', openingScene: 'orbit', materials: ['bronze', 'milk glass', 'charcoal stone'], edition: 'shelf 05', room: 'room-01', shelfSlot: 5 },
+  { id: 'fs-opening-detail', title: 'touch index', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural relief', statement: 'Two folded plates are held apart just enough for the edge to cast its own small shadow across the backing stone.', openingScene: 'fold', materials: ['brushed aluminium', 'oxide lacquer'], edition: 'shelf 06', room: 'room-01', shelfSlot: 6 },
+  { id: 'fs-opening-signal', title: 'signal totem', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural light object', statement: 'A vertical receiver for the final chamber. It turns a small point of red light into an address in the dark.', openingScene: 'totem', materials: ['anodised aluminium', 'resin', 'low voltage light'], edition: 'shelf 07', room: 'room-01', shelfSlot: 7 },
+  { id: 'fs-opening-afterimage', title: 'afterimage orb', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural light object', statement: 'A low red signal held in a black base. It is deliberately quiet until the viewer moves around its edge.', openingScene: 'totem', materials: ['tinted resin', 'anodised aluminium'], edition: 'shelf 09', room: 'room-01', shelfSlot: 9 },
+  { id: 'fs-opening-archive-fold', title: 'red shift', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural relief', statement: 'A relief that changes from an image into a sharp object when its edge catches the light.', openingScene: 'fold', materials: ['oxide red lacquer', 'aluminium'], edition: 'shelf 08', room: 'room-01', shelfSlot: 8 },
 ];
 
 type LightMode = 'warm' | 'contrejour';
@@ -70,14 +70,15 @@ function ShelfArtwork({ url }: { url: string }) {
   return <group><mesh position={[0, 0, -.04]}><boxGeometry args={[1.16, 1.08, .1]} /><meshStandardMaterial color="#1c1512" roughness={.35} /></mesh><mesh position={[0, 0, .03]}><planeGeometry args={[.98, .9]} /><meshBasicMaterial map={texture} toneMapped={false} /></mesh></group>;
 }
 
-function ShelfContent({ work, index, position }: { work?: FuturoshockWork; index: number; position: [number, number, number] }) {
+function ShelfContent({ work, index, position, active, onSelect }: { work?: FuturoshockWork; index: number; position: [number, number, number]; active?: boolean; onSelect?: () => void }) {
   const canShowImage = Boolean(work?.imageUrl && !work.id.startsWith('fs-opening'));
-  return <group position={position} scale={work?.format === '3d' && work.modelUrl ? .5 : 1}>
+  return <group position={position} scale={work?.format === '3d' && work.modelUrl ? .5 : 1} onClick={(event) => { event.stopPropagation(); onSelect?.(); }}>
+    {active && <mesh position={[0, 0, -.18]}><boxGeometry args={[1.9, 2.15, .02]} /><meshBasicMaterial color="#f0b16a" transparent opacity={.18} /></mesh>}
     {work?.format === '3d' && work.modelUrl ? <Suspense fallback={<ShelfPiece index={index % 9} position={[0, 0, 0]} />}><Model url={work.modelUrl} /></Suspense> : canShowImage && work?.imageUrl ? <ShelfArtwork url={work.imageUrl} /> : <ShelfPiece index={index % 9} position={[0, 0, 0]} />}
   </group>;
 }
 
-function DisplayShelf({ works, activeRoom }: { works: FuturoshockWork[]; activeRoom: RoomId }) {
+function DisplayShelf({ works, activeRoom, selectedId, onSelect }: { works: FuturoshockWork[]; activeRoom: RoomId; selectedId: string | null; onSelect: (id: string) => void }) {
   const accent = activeRoom === 'room-03' ? '#d2495f' : activeRoom === 'room-02' ? '#d4e3dd' : '#ffc273';
   const slots: [number, number, number][] = [[-4.65, 2.55, .55], [-2.33, 2.55, .55], [0, 2.55, .55], [2.33, 2.55, .55], [4.65, 2.55, .55], [-4.65, 0, .55], [-2.33, 0, .55], [0, 0, .55], [2.33, 0, .55], [4.65, 0, .55], [-4.65, -2.55, .55], [-2.33, -2.55, .55], [0, -2.55, .55], [2.33, -2.55, .55], [4.65, -2.55, .55]];
   const placed = new Map<number, FuturoshockWork>();
@@ -95,12 +96,13 @@ function DisplayShelf({ works, activeRoom }: { works: FuturoshockWork[]; activeR
       <mesh position={[0, 0, -.12]}><boxGeometry args={[11.92, 8.42, .1]} /><meshStandardMaterial color="#d9cfbd" roughness={.82} /></mesh>
       {[-6.02, -3.5, -1.17, 1.17, 3.5, 6.02].map((x) => <mesh key={`upright-${x}`} position={[x, 0, .02]} castShadow><boxGeometry args={[.22, 8.58, .74]} /><meshStandardMaterial color="#3a1f15" roughness={.3} metalness={.05} /></mesh>)}
       {[-4.14, -1.36, 1.36, 4.14].map((y) => <group key={`shelf-${y}`}><mesh position={[0, y, .17]} castShadow receiveShadow><boxGeometry args={[12.1, .2, .84]} /><meshStandardMaterial color="#58321f" roughness={.28} metalness={.04} /></mesh><mesh position={[0, y + .13, .58]}><boxGeometry args={[11.65, .03, .05]} /><meshStandardMaterial color="#ffd695" emissive="#f0ad56" emissiveIntensity={1.75} /></mesh><pointLight position={[0, y + .1, 1.7]} intensity={5} distance={5.5} color="#ffc06d" /></group>)}
-      {slots.map((position, index) => <ShelfContent key={index} work={placed.get(index + 1)} index={index} position={position} />)}
+      {slots.map((position, index) => { const work = placed.get(index + 1); return <ShelfContent key={index} work={work} index={index} position={position} active={work?.id === selectedId} onSelect={work ? () => onSelect(work.id) : undefined} />; })}
       <mesh position={[0, -4.3, 1.3]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow><planeGeometry args={[26, 16]} /><meshStandardMaterial color="#100c0a" roughness={.9} /></mesh>
       <ContactShadows position={[0, -4.02, .6]} opacity={.5} scale={15} blur={2.7} far={8} />
       <Environment preset="warehouse" />
       <OrbitControls target={[0, 0, 0]} enablePan={false} minDistance={14} maxDistance={22} minPolarAngle={1.12} maxPolarAngle={1.55} />
     </Canvas>
+    <div className="absolute inset-x-0 bottom-0 flex justify-center gap-px border-t border-white/15 bg-[#0a0908]/74 p-2 backdrop-blur"><div className="grid grid-cols-9 gap-1 sm:grid-cols-[repeat(15,minmax(0,1fr))]">{slots.map((_, index) => { const work = placed.get(index + 1); return <button key={index} type="button" aria-label={work ? `Select ${work.title}` : `Empty shelf slot ${index + 1}`} onClick={() => work && onSelect(work.id)} disabled={!work} className={`grid h-7 w-7 place-items-center border font-mono text-[8px] transition sm:h-8 sm:w-8 ${work?.id === selectedId ? 'border-[#f0b16a] bg-[#f0b16a] text-[#17110d]' : work ? 'border-white/25 text-white/70 hover:border-[#f0b16a]' : 'border-white/10 text-white/20'}`}>{String(index + 1).padStart(2, '0')}</button>; })}</div></div>
   </div>;
 }
 
@@ -203,7 +205,7 @@ export function FuturoshockPage() {
         </div>
       </header>
 
-      <section className="border-b border-white/12"><DisplayShelf works={works} activeRoom={activeRoom} /></section>
+      <section className="border-b border-white/12"><DisplayShelf works={works} activeRoom={activeRoom} selectedId={selectedId} onSelect={setSelectedId} /></section>
 
       <section className="mx-auto max-w-[1700px] px-5 py-14 sm:px-8 sm:py-20 lg:px-12">
         <div className="flex items-end justify-between border-b border-white/15 pb-5"><div><p className="font-mono text-[10px] uppercase tracking-[.18em] text-[#ee9f7d]">shelf inventory</p><h2 className="mt-3 font-display text-[clamp(2.8rem,5vw,5.2rem)] lowercase leading-[.86]">what is on view</h2></div><span className="hidden font-mono text-[10px] uppercase tracking-[.15em] text-white/40 sm:block">15 positions / live edit</span></div>
