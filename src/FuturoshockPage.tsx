@@ -69,7 +69,7 @@ function DisplayShelf({ activeRoom }: { activeRoom: RoomId }) {
   const accent = activeRoom === 'room-03' ? '#e34f67' : activeRoom === 'room-02' ? '#d7e7df' : '#ffc276';
   const positions: [number, number, number][] = [[-2.7, 1.75, .15], [0, 1.75, .15], [2.7, 1.75, .15], [-2.7, 0, .15], [0, 0, .15], [2.7, 0, .15], [-2.7, -1.74, .15], [0, -1.74, .15], [2.7, -1.74, .15]];
   return <div className="relative min-h-[520px] overflow-hidden bg-[#17100d] sm:min-h-[650px]" aria-label="Interactive 3D display shelf">
-    <Canvas shadows camera={{ position: [0, .15, 10.8], fov: 34 }} dpr={[1, 1.5]}>
+    <Canvas shadows camera={{ position: [0, .1, 6.3], fov: 32 }} dpr={[1, 1.5]}>
       <color attach="background" args={['#17100d']} />
       <fog attach="fog" args={['#17100d', 12, 23]} />
       <ambientLight intensity={.72} />
@@ -83,7 +83,7 @@ function DisplayShelf({ activeRoom }: { activeRoom: RoomId }) {
       {positions.map((position, index) => <ShelfPiece key={index} index={index} position={position} />)}
       <mesh position={[0, -3.1, 1.35]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow><planeGeometry args={[18, 13]} /><meshStandardMaterial color="#0c0a09" roughness={.85} /></mesh>
       <ContactShadows position={[0, -2.72, .3]} opacity={.65} scale={11} blur={2.6} far={7} />
-      <OrbitControls enablePan={false} minDistance={8} maxDistance={13} minPolarAngle={.92} maxPolarAngle={1.46} />
+      <OrbitControls enablePan={false} minDistance={5.4} maxDistance={10} minPolarAngle={.92} maxPolarAngle={1.46} />
     </Canvas>
     <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-between border-t border-white/10 bg-black/30 px-5 py-4 font-mono text-[9px] uppercase tracking-[.16em] text-white/45 backdrop-blur sm:px-8"><span>drag to look</span><span>light is live</span></div>
   </div>;
@@ -202,7 +202,7 @@ export function FuturoshockPage() {
         </div>
       </section>
 
-      <section className="border-b border-white/12 bg-[#0c1011]"><div className="mx-auto grid max-w-[1700px] gap-8 px-5 py-12 sm:px-8 lg:grid-cols-[.54fr_1.46fr] lg:px-12 lg:py-16"><div className="flex flex-col justify-between"><div><p className="font-mono text-[10px] uppercase tracking-[.18em] text-[#ee9f7d]">the first vitrine</p><h2 className="mt-5 max-w-[7ch] font-display text-[clamp(3rem,5.2vw,5.5rem)] lowercase leading-[.82]">objects, not interfaces</h2></div><p className="max-w-[23rem] font-sans text-sm leading-[1.7] text-white/52">A shelf built to receive real images and models. Light changes with each exhibition room.</p></div><div className="border border-white/15 p-2 sm:p-3"><DisplayShelf activeRoom={activeRoom} /></div></div></section>
+      <section className="border-b border-white/12 bg-[#0c1011]"><div className="mx-auto grid max-w-[1700px] gap-8 px-5 py-12 sm:px-8 lg:grid-cols-[.27fr_1.73fr] lg:px-12 lg:py-16"><div><p className="font-mono text-[10px] uppercase tracking-[.18em] text-[#ee9f7d]">digital display shelf</p></div><div className="border border-white/15 p-2 sm:p-3"><DisplayShelf activeRoom={activeRoom} /></div></div></section>
 
       <nav aria-label="Exhibition rooms" className="border-b border-white/12 bg-[#0b0e0f]"><div className="mx-auto grid max-w-[1700px] md:grid-cols-3 lg:px-12">{(Object.keys(ROOMS) as RoomId[]).map((room) => { const item = ROOMS[room]; const active = room === activeRoom; return <button key={room} type="button" onClick={() => { setActiveRoom(room); setLightMode(item.light); }} aria-pressed={active} className={`group grid min-h-[178px] grid-cols-[4.5rem_1fr_auto] items-end gap-5 border-b border-white/12 px-5 py-7 text-left transition sm:px-8 md:border-b-0 ${room !== 'room-03' ? 'md:border-r' : ''} ${active ? 'bg-[#181514]' : 'hover:bg-white/[.045]'}`}><span className="font-display text-4xl leading-none text-[#ee9f7d]">{item.number}</span><span><span className="block font-display text-[clamp(1.8rem,3vw,3rem)] lowercase leading-[.86] text-[#f6efe5]">{item.title}</span><span className="mt-3 block font-mono text-[9px] uppercase tracking-[.16em] text-white/48">{item.note}</span></span><ArrowUpRight size={17} className={`mb-1 transition-transform duration-300 ${active ? 'translate-x-0 translate-y-0 text-[#ee9f7d]' : 'group-hover:translate-x-1 group-hover:-translate-y-1 text-white/45'}`} /></button>; })}</div></nav>
 
