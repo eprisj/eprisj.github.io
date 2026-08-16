@@ -346,6 +346,36 @@ export interface Studio {
   projects: StudioProject[];
 }
 
+export interface FuturoshockWork {
+  id: string;
+  title: string;
+  author: string;
+  year: string;
+  format: '2d' | '3d';
+  medium: string;
+  statement: string;
+  imageUrl?: string;
+  modelUrl?: string;
+  /** Built-in display study used while a commissioned GLB/GLTF is not supplied. */
+  openingScene?: 'amber' | 'fold' | 'orbit' | 'totem';
+  /** Curatorial room placement for the digital exhibition. */
+  room?: 'room-01' | 'room-02' | 'room-03';
+  /** Physical position in the Futuroshock shelf, counted left-to-right and top-to-bottom. */
+  shelfSlot?: number;
+  /** Optional object scale tuned for the fixed Futuroshock shelf. */
+  shelfScale?: number;
+  /** A concise physical description displayed in the object dossier. */
+  textureNote?: string;
+  /** Dimensions or edition scale, for example "28 x 16 x 12 cm". */
+  dimensions?: string;
+  materials?: string[];
+  edition?: string;
+  relatedArticleUrl?: string;
+  draft?: boolean;
+  publishAt?: string;
+  updatedAt?: string;
+}
+
 /** A per-language manifesto shown at /manifest. Each locale carries its own
  *  title + HTML body; the page falls back to DEFAULT_LANGUAGE when a locale is
  *  missing. Edited from the admin "Manifest" tab. */
@@ -561,6 +591,7 @@ export interface SiteContent {
   studio?: Studio;
   authors?: Author[];
   manifest?: Manifest;
+  futuroshock?: FuturoshockWork[];
 }
 
 const content = rawContent as SiteContent;
@@ -1251,6 +1282,10 @@ export function getStudio(): Studio {
     ...studio,
     projects: (studio.projects || []).filter((project) => isEntityVisible('studioProjects', project.id)),
   };
+}
+
+export function getFuturoshock(): FuturoshockWork[] {
+  return (src().futuroshock || []).filter((work) => isEntityLive(work));
 }
 
 /**
