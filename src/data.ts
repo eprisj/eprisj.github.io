@@ -312,6 +312,12 @@ export interface FuturoshockWork {
   room?: 'room-01' | 'room-02' | 'room-03';
   /** Physical position in the Futuroshock shelf, counted left-to-right and top-to-bottom. */
   shelfSlot?: number;
+  /** Optional object scale tuned for the fixed Futuroshock shelf. */
+  shelfScale?: number;
+  /** A concise physical description displayed in the object dossier. */
+  textureNote?: string;
+  /** Dimensions or edition scale, for example "28 x 16 x 12 cm". */
+  dimensions?: string;
   materials?: string[];
   edition?: string;
   relatedArticleUrl?: string;
