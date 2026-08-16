@@ -18376,6 +18376,8 @@ document.addEventListener('click', (event) => {
   let settings = { mode: 'chronological', pinned: [], manualOrder: [], unplaced: 'top' };
   let articles = [];
   let dragId = null;
+  /** Ids whose card settings are open. Kept out of the data: it is UI state. */
+  const expanded = new Set();
 
   const num = (v) => Number(v);
   /* Named function, not an arrow in a const: scripts/check-order-parity.mjs
@@ -18483,10 +18485,53 @@ document.addEventListener('click', (event) => {
           </div>
           <input class="order-date" type="date" value="${escapeHtml(isoOf(a))}" data-id="${id}" title="publishedAt — по нему строится хронология" />
           <span class="order-status order-status--${st.key}">${st.label}</span>
-        </div>`;
+          <button class="order-expand" data-act="expand" data-id="${id}" type="button" title="Настройки карточки">${expanded.has(id) ? '▴' : '▾'}</button>
+        </div>
+        ${expanded.has(id) ? cardSettings(a) : ''}`;
     }).join('') || '<div class="order-empty">Ничего не найдено по текущим фильтрам.</div>';
 
     renderPreview(ordered);
+  }
+
+  /* Card settings for one article. Every field is an override with the real
+     one shown as the placeholder, so an empty box means "use the article's own"
+     rather than "blank on the card" — the fallback is in the renderer, and the
+     placeholder is how an editor sees that without reading code. */
+  function cardSettings(a) {
+    const id = num(a.id);
+    const focus = String(a.previewFocus || '');
+    const focusOptions = ['', 'center top', 'center center', 'center bottom', 'left center', 'right center'];
+    const focusLabels = { '': 'по умолчанию (центр)', 'center top': 'верх', 'center center': 'центр', 'center bottom': 'низ', 'left center': 'слева', 'right center': 'справа' };
+    return `
+      <div class="order-card-settings" data-for="${id}">
+        <label class="order-cs-field order-cs-wide">
+          <span>Заголовок на карточке</span>
+          <input type="text" data-cs="previewTitle" data-id="${id}" value="${escapeHtml(a.previewTitle || '')}" placeholder="${escapeHtml(a.title || '')}" />
+        </label>
+        <label class="order-cs-field order-cs-wide">
+          <span>Описание на карточке</span>
+          <textarea data-cs="previewExcerpt" data-id="${id}" rows="2" placeholder="${escapeHtml(String(a.excerpt || '').slice(0, 120))}">${escapeHtml(a.previewExcerpt || '')}</textarea>
+        </label>
+        <label class="order-cs-field order-cs-wide">
+          <span>Обложка карточки (URL)</span>
+          <input type="url" data-cs="previewImageUrl" data-id="${id}" value="${escapeHtml(a.previewImageUrl || '')}" placeholder="${escapeHtml(a.imageUrl || 'как у статьи')}" />
+        </label>
+        <label class="order-cs-field">
+          <span>Кадрирование</span>
+          <select data-cs="previewFocus" data-id="${id}">
+            ${focusOptions.map((o) => `<option value="${escapeHtml(o)}"${o === focus ? ' selected' : ''}>${escapeHtml(focusLabels[o] || o)}</option>`).join('')}
+          </select>
+        </label>
+        <label class="order-cs-check">
+          <input type="checkbox" data-cs="previewHideExcerpt" data-id="${id}"${a.previewHideExcerpt ? ' checked' : ''} />
+          <span>Без описания</span>
+        </label>
+        <label class="order-cs-check">
+          <input type="checkbox" data-cs="previewHideAuthor" data-id="${id}"${a.previewHideAuthor ? ' checked' : ''} />
+          <span>Без автора</span>
+        </label>
+        <div class="order-cs-note">Пустое поле = берётся из самой статьи. Заголовок и описание переводятся, обложка и кадрирование общие для всех языков.</div>
+      </div>`;
   }
 
   function renderPreview(ordered) {
@@ -18575,10 +18620,17 @@ document.addEventListener('click', (event) => {
       manualOrder: settings.mode === 'manual' ? (settings.manualOrder || []).map(num) : [],
       unplaced: settings.unplaced,
     };
-    const dates = new Map(articles.map((a) => [num(a.id), a.publishedAt]));
+    const CARD_FIELDS = ['previewTitle', 'previewExcerpt', 'previewImageUrl', 'previewFocus', 'previewHideExcerpt', 'previewHideAuthor'];
+    const edited = new Map(articles.map((a) => [num(a.id), a]));
     (data.articles || []).forEach((a) => {
-      const iso = dates.get(num(a.id));
-      if (iso) a.publishedAt = iso;
+      const mine = edited.get(num(a.id));
+      if (!mine) return;
+      if (mine.publishedAt) a.publishedAt = mine.publishedAt; else delete a.publishedAt;
+      // Deleting a cleared override matters: leaving the old value behind would
+      // make an emptied box do nothing, which is the opposite of what it says.
+      CARD_FIELDS.forEach((key) => {
+        if (mine[key] === undefined) delete a[key]; else a[key] = mine[key];
+      });
     });
     editor.value = JSON.stringify(data, null, 2);
     updateEditorState();
@@ -18592,6 +18644,33 @@ document.addEventListener('click', (event) => {
     if (btn.dataset.act === 'pin') togglePin(id);
     if (btn.dataset.act === 'up') nudge(id, -1);
     if (btn.dataset.act === 'down') nudge(id, 1);
+    if (btn.dataset.act === 'expand') {
+      const key = num(id);
+      if (expanded.has(key)) expanded.delete(key); else expanded.add(key);
+      render();
+    }
+  });
+
+  /* Card fields are written straight onto the working article. An emptied box
+     DELETES the key rather than storing "": an empty string is a value, and it
+     would override the article's own title with nothing. */
+  listEl.addEventListener('input', (e) => {
+    const field = e.target.closest('[data-cs]');
+    if (!field) return;
+    const article = articles.find((a) => num(a.id) === num(field.dataset.id));
+    if (!article) return;
+    const key = field.dataset.cs;
+    if (field.type === 'checkbox') {
+      if (field.checked) article[key] = true; else delete article[key];
+      return;
+    }
+    const value = String(field.value || '').trim();
+    if (value) article[key] = value; else delete article[key];
+    // No re-render on every keystroke: it would take the focus out of the box.
+    if (key === 'previewTitle') {
+      const row = listEl.querySelector(`.order-row[data-id="${num(article.id)}"] .order-title`);
+      if (row) row.textContent = value || article.title || 'Без заголовка';
+    }
   });
 
   listEl.addEventListener('change', (e) => {

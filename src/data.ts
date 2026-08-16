@@ -196,6 +196,34 @@ export interface Article {
   publishAt?: string;
   /** Server-stamped on every /content/entity save — see mergeLocalizedArray. */
   updatedAt?: string;
+
+  /* ── How this article looks as a CARD ──────────────────────────────────────
+     The gallery has had per-surface preview fields (homeTitle, homeSubtitle,
+     homeDescription, homeCredit) for a while; articles had none, so a headline
+     written for the top of a page had to also work at 18px in a grid, and an
+     editor who wanted a shorter line had to damage the article to get it.
+
+     All of these are optional and fall back to the real field, so an article
+     that sets none behaves exactly as before. The two text ones are ordinary
+     translatable copy; the image and the layout switches are base-owned (see
+     BASE_AUTHORITATIVE_FIELDS), because a card that is a different size or
+     shows a different photo per language is a bug, not a translation. */
+  /** Card headline. Falls back to `title`. */
+  previewTitle?: string;
+  /** Card standfirst. Falls back to `excerpt`. */
+  previewExcerpt?: string;
+  /** Card cover. Falls back to `imageUrl`/`imageSeed`. */
+  previewImageUrl?: string;
+  /**
+   * Focal point of the card cover as `x% y%`, fed to object-position. Cards
+   * are square while covers rarely are, so the default centre crop is what
+   * decapitates a portrait.
+   */
+  previewFocus?: string;
+  /** Hide the standfirst on this card even where the surface shows one. */
+  previewHideExcerpt?: boolean;
+  /** Hide the byline on this card. */
+  previewHideAuthor?: boolean;
 }
 
 export interface Review {
@@ -725,6 +753,10 @@ const BASE_AUTHORITATIVE_FIELDS = new Set([
   // feed differently from every other one — the same class of drift that made
   // translated article bodies diverge from the base before the text-overlay fix.
   'publishedAt',
+  // Card media and card layout are properties of the design, not of a
+  // language. Translations may override previewTitle/previewExcerpt, which are
+  // copy, and nothing else about the card.
+  'previewImageUrl', 'previewFocus', 'previewHideExcerpt', 'previewHideAuthor',
 ]);
 
 // Content-block types whose `content` field is translatable prose (a string).

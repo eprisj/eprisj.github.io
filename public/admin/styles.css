@@ -7677,3 +7677,24 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .order-card img, .order-card-empty { width: 46px; height: 32px; object-fit: cover; border-radius: 4px; background: rgba(14, 14, 16, .08); }
 .order-card-cat { display: none; }
 .order-card-title { font-size: .68rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Card settings, opened per row. A grid so the two text fields can span the
+   width while the crop selector and the switches sit on one line under them. */
+.order-row { grid-template-columns: auto auto auto auto 54px minmax(0, 1fr) auto auto auto; }
+.order-expand { border: 1px solid var(--line); background: #fff; border-radius: 6px; cursor: pointer; font-size: .6rem; padding: 4px 7px; line-height: 1; }
+.order-card-settings {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 14px;
+  margin: -2px 0 4px; padding: 12px 14px;
+  border: 1px solid var(--line); border-top: 0; border-radius: 0 0 8px 8px;
+  background: rgba(14, 14, 16, .035);
+}
+@media (max-width: 720px) { .order-card-settings { grid-template-columns: minmax(0, 1fr); } }
+.order-cs-wide { grid-column: 1 / -1; }
+.order-cs-field { display: flex; flex-direction: column; gap: 4px; }
+.order-cs-field > span { font-family: var(--font-mono); font-size: .54rem; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); }
+.order-cs-field input, .order-cs-field textarea, .order-cs-field select {
+  font: inherit; font-size: .76rem; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; background: #fff; width: 100%;
+}
+.order-cs-field textarea { resize: vertical; }
+.order-cs-check { display: flex; align-items: center; gap: 7px; font-size: .74rem; align-self: end; padding-bottom: 6px; }
+.order-cs-note { grid-column: 1 / -1; font-size: .64rem; line-height: 1.5; color: var(--text-muted); }
