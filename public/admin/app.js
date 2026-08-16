@@ -18382,6 +18382,8 @@ document.addEventListener('click', (event) => {
   let dragId = null;
   /** Ids whose card settings are open. Kept out of the data: it is UI state. */
   const expanded = new Set();
+  /** Ids ticked for a bulk action. Also UI state, cleared on reload. */
+  const selected = new Set();
 
   const num = (v) => Number(v);
   /* Named function, not an arrow in a const: scripts/check-order-parity.mjs
@@ -18475,6 +18477,7 @@ document.addEventListener('click', (event) => {
       const position = ordered.indexOf(a) + 1;
       return `
         <div class="order-row${pinned.has(id) ? ' pinned' : ''}" data-id="${id}" draggable="${manual ? 'true' : 'false'}">
+          <input type="checkbox" class="order-check" data-id="${id}" ${selected.has(id) ? 'checked' : ''} title="Выбрать для массового действия" />
           <span class="order-handle" title="${manual ? 'Перетащить' : 'Перетаскивание работает в ручном режиме'}">⠿</span>
           <span class="order-num">${String(position).padStart(2, '0')}</span>
           <div class="order-move">
@@ -18534,6 +18537,14 @@ document.addEventListener('click', (event) => {
           <input type="checkbox" data-cs="previewHideAuthor" data-id="${id}"${a.previewHideAuthor ? ' checked' : ''} />
           <span>Без автора</span>
         </label>
+        <label class="order-cs-check">
+          <input type="checkbox" data-cs="hideOnHome" data-id="${id}"${a.hideOnHome ? ' checked' : ''} />
+          <span>Не показывать на главной</span>
+        </label>
+        <label class="order-cs-check">
+          <input type="checkbox" data-cs="hideInList" data-id="${id}"${a.hideInList ? ' checked' : ''} />
+          <span>Не показывать в разделе «Статьи»</span>
+        </label>
         <div class="order-cs-note">Пустое поле = берётся из самой статьи. Заголовок и описание переводятся, обложка и кадрирование общие для всех языков.</div>
       </div>`;
   }
@@ -18550,8 +18561,13 @@ document.addEventListener('click', (event) => {
         <div class="order-card-title">${escapeHtml(a.title || '')}</div>
       </div>`;
     const live = ordered.filter((a) => statusOf(a).key === 'live');
-    homeEl.innerHTML = (limit ? live.slice(0, limit) : live).map(card).join('') || '<p class="order-empty">Нет опубликованных статей.</p>';
-    allEl.innerHTML = live.map(card).join('') || '<p class="order-empty">Нет опубликованных статей.</p>';
+    // Same two filters the site applies (homepageArticleFeed / the grid), so
+    // hiding a piece from one surface is visible here rather than only after
+    // a deploy.
+    const home = live.filter((a) => !a.hideOnHome);
+    const list = live.filter((a) => !a.hideInList);
+    homeEl.innerHTML = (limit ? home.slice(0, limit) : home).map(card).join('') || '<p class="order-empty">Нет статей для главной.</p>';
+    allEl.innerHTML = list.map(card).join('') || '<p class="order-empty">Нет статей для раздела.</p>';
   }
 
   /* Reordering only ever rewrites manualOrder, and switches the mode to manual
@@ -18624,7 +18640,7 @@ document.addEventListener('click', (event) => {
       manualOrder: settings.mode === 'manual' ? (settings.manualOrder || []).map(num) : [],
       unplaced: settings.unplaced,
     };
-    const CARD_FIELDS = ['previewTitle', 'previewExcerpt', 'previewImageUrl', 'previewFocus', 'previewHideExcerpt', 'previewHideAuthor'];
+    const CARD_FIELDS = ['previewTitle', 'previewExcerpt', 'previewImageUrl', 'previewFocus', 'previewHideExcerpt', 'previewHideAuthor', 'hideOnHome', 'hideInList'];
     const edited = new Map(articles.map((a) => [num(a.id), a]));
     (data.articles || []).forEach((a) => {
       const mine = edited.get(num(a.id));
@@ -18726,5 +18742,137 @@ document.addEventListener('click', (event) => {
   });
   byId('orderApplyBtn').addEventListener('click', apply);
 
-  window._renderArticleOrderTab = load;
+  /* ── Bulk actions ────────────────────────────────────────────────────────
+     Everything here is something an editor would otherwise do row by row on a
+     journal that only grows. They all work on the CURRENT selection, and the
+     two that move things switch to manual mode for the same reason a single
+     drag does: a move that silently does nothing is worse than no move. */
+  const bulkBar = byId('orderBulk');
+  const bulkCount = byId('orderBulkCount');
+  const selectAllEl = byId('orderSelectAll');
+
+  function syncBulkBar() {
+    bulkBar.hidden = selected.size === 0;
+    bulkCount.textContent = `выбрано: ${selected.size}`;
+  }
+
+  function selectedInOrder() {
+    return resolveOrder().map((a) => num(a.id)).filter((id) => selected.has(id));
+  }
+
+  function bulkMove(edge) {
+    const ordered = resolveOrder().map((a) => num(a.id));
+    const picked = selectedInOrder();
+    if (!picked.length) return;
+    const rest = ordered.filter((id) => !selected.has(id));
+    settings.mode = 'manual';
+    settings.manualOrder = edge === 'top' ? [...picked, ...rest] : [...rest, ...picked];
+    modeEl.value = 'manual';
+    render();
+  }
+
+  listEl.addEventListener('change', (e) => {
+    const box = e.target.closest('.order-check');
+    if (!box) return;
+    const id = num(box.dataset.id);
+    if (box.checked) selected.add(id); else selected.delete(id);
+    syncBulkBar();
+  });
+
+  selectAllEl.addEventListener('change', () => {
+    const visible = resolveOrder().filter(matchesFilters).map((a) => num(a.id));
+    if (selectAllEl.checked) visible.forEach((id) => selected.add(id));
+    else visible.forEach((id) => selected.delete(id));
+    render();
+    syncBulkBar();
+  });
+
+  bulkBar.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-bulk]');
+    if (!btn || !selected.size) return;
+    const act = btn.dataset.bulk;
+    const picked = selectedInOrder();
+    if (act === 'pin') {
+      const pinned = (settings.pinned || []).map(num);
+      settings.pinned = [...pinned, ...picked.filter((id) => !pinned.includes(id))];
+    }
+    if (act === 'unpin') settings.pinned = (settings.pinned || []).map(num).filter((id) => !selected.has(id));
+    if (act === 'top' || act === 'bottom') bulkMove(act);
+    if (act === 'hideHome' || act === 'showHome') {
+      articles.forEach((a) => {
+        if (!selected.has(num(a.id))) return;
+        if (act === 'hideHome') a.hideOnHome = true; else delete a.hideOnHome;
+      });
+    }
+    render();
+  });
+
+  /* ── One-click sequences ─────────────────────────────────────────────────
+     "By date" returns to chronology and drops the manual list, because that is
+     what going back to chronology means. The other three PRODUCE a manual
+     sequence: they are one-off arrangements, not rules the site should keep
+     applying as new articles arrive. */
+  byId('orderSortByDateBtn').addEventListener('click', () => {
+    const key = byId('orderSortKey').value;
+    if (key === 'date') {
+      settings.mode = 'chronological';
+      settings.manualOrder = [];
+      modeEl.value = 'chronological';
+      render();
+      showToast('success', 'Порядок сброшен к хронологии. Закрепления сохранены.');
+      return;
+    }
+    const current = resolveOrder();
+    let sorted;
+    if (key === 'updated') sorted = current.slice().sort((a, b) => (Date.parse(b.updatedAt || '') || 0) - (Date.parse(a.updatedAt || '') || 0));
+    else if (key === 'title') sorted = current.slice().sort((a, b) => String(a.title || '').localeCompare(String(b.title || ''), 'ru'));
+    else sorted = current.slice().reverse();
+    settings.mode = 'manual';
+    settings.manualOrder = sorted.map((a) => num(a.id));
+    modeEl.value = 'manual';
+    render();
+    showToast('success', 'Готово. Порядок стал ручным — его можно править дальше.');
+  });
+
+  /* ── Homepage feed controls ──────────────────────────────────────────────
+     They already existed in the homepage tab, but they decide what this screen
+     is previewing, so they belong next to the preview. Written to the same
+     homepage.articles / homepage.layout.articles keys the homepage tab uses. */
+  const homeLimit = byId('orderHomeLimit');
+  const homeColumns = byId('orderHomeColumns');
+  const homeDesc = byId('orderHomeShowDescription');
+  const homeRead = byId('orderHomeShowReadAll');
+
+  function loadHomeControls() {
+    const data = parseEditorJsonSafe() || {};
+    const hp = data.homepage || {};
+    const limit = Number((hp.articles || {}).limit);
+    homeLimit.value = Number.isFinite(limit) && limit > 0 ? String(limit) : '';
+    const layout = (hp.layout || {}).articles || {};
+    homeColumns.value = layout.columns ? String(layout.columns) : '';
+    homeDesc.checked = layout.showDescription !== false;
+    homeRead.checked = layout.showReadAll !== false;
+  }
+
+  function applyHomeControls() {
+    const data = parseEditorJsonSafe();
+    if (!data) { showToast('error', 'JSON не разобран — загрузите контент.'); return; }
+    data.homepage = data.homepage || {};
+    data.homepage.articles = data.homepage.articles || {};
+    const limit = Number(homeLimit.value);
+    if (Number.isFinite(limit) && limit > 0) data.homepage.articles.limit = Math.round(limit);
+    else delete data.homepage.articles.limit;
+    data.homepage.layout = data.homepage.layout || {};
+    const layout = data.homepage.layout.articles = data.homepage.layout.articles || {};
+    if (homeColumns.value) layout.columns = Number(homeColumns.value); else delete layout.columns;
+    layout.showDescription = homeDesc.checked;
+    layout.showReadAll = homeRead.checked;
+    editor.value = JSON.stringify(data, null, 2);
+    updateEditorState();
+    render();
+  }
+
+  [homeLimit, homeColumns, homeDesc, homeRead].forEach((el) => el.addEventListener('change', applyHomeControls));
+
+  window._renderArticleOrderTab = () => { load(); loadHomeControls(); syncBulkBar(); };
 })();

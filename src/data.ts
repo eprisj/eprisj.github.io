@@ -224,6 +224,14 @@ export interface Article {
   previewHideExcerpt?: boolean;
   /** Hide the byline on this card. */
   previewHideAuthor?: boolean;
+  /**
+   * Keep the article out of the homepage feed while leaving it in /articles.
+   * Not the same as a draft: the piece is published and readable, it just does
+   * not belong on the front page (a short note, a correction, a re-run).
+   */
+  hideOnHome?: boolean;
+  /** The mirror image: on the homepage, absent from the /articles grid. */
+  hideInList?: boolean;
 }
 
 export interface Review {
@@ -757,6 +765,9 @@ const BASE_AUTHORITATIVE_FIELDS = new Set([
   // language. Translations may override previewTitle/previewExcerpt, which are
   // copy, and nothing else about the card.
   'previewImageUrl', 'previewFocus', 'previewHideExcerpt', 'previewHideAuthor',
+  // Where a piece appears is an editorial decision about the whole article,
+  // taken once, not per language.
+  'hideOnHome', 'hideInList',
 ]);
 
 // Content-block types whose `content` field is translatable prose (a string).

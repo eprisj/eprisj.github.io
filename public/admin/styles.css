@@ -7698,3 +7698,20 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .order-cs-field textarea { resize: vertical; }
 .order-cs-check { display: flex; align-items: center; gap: 7px; font-size: .74rem; align-self: end; padding-bottom: 6px; }
 .order-cs-note { grid-column: 1 / -1; font-size: .64rem; line-height: 1.5; color: var(--text-muted); }
+
+/* Row gains a selection box, so the template gains a column. */
+.order-row { grid-template-columns: auto auto auto auto auto 54px minmax(0, 1fr) auto auto auto; }
+.order-check { margin: 0; }
+.order-bulk {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+  margin-bottom: 8px; padding: 8px 12px;
+  border: 1px solid var(--line); border-radius: 8px; background: rgba(205, 242, 79, .2);
+}
+.order-bulk-count { font-family: var(--font-mono); font-size: .58rem; color: var(--text-muted); }
+.order-bulk-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-left: auto; }
+.order-home-controls {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 12px;
+  padding: 10px 12px; margin-bottom: 4px;
+  border: 1px solid var(--line); border-radius: 8px; background: rgba(255, 255, 255, .7);
+}
+.order-home-controls .order-cs-check { grid-column: 1 / -1; padding-bottom: 0; }

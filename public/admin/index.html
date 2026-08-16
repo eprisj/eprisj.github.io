@@ -1207,7 +1207,16 @@
                         <option value="bottom">в конец</option>
                       </select>
                     </label>
-                    <button class="btn btn-sm" id="orderSortByDateBtn" type="button">Выстроить по дате</button>
+                    <label class="order-field">
+                      <span>Выстроить</span>
+                      <select id="orderSortKey">
+                        <option value="date">по дате публикации</option>
+                        <option value="updated">по последней правке</option>
+                        <option value="title">по алфавиту</option>
+                        <option value="reverse">развернуть текущий</option>
+                      </select>
+                    </label>
+                    <button class="btn btn-sm" id="orderSortByDateBtn" type="button">Применить</button>
                   </div>
                   <div class="order-bar-right">
                     <span class="order-count" id="orderCount">—</span>
@@ -1225,11 +1234,35 @@
                     <option value="nodate">Без даты</option>
                   </select>
                 </div>
+                <div class="order-bulk" id="orderBulk" hidden>
+                  <label class="order-cs-check"><input type="checkbox" id="orderSelectAll" /><span>Выбрать все видимые</span></label>
+                  <span class="order-bulk-count" id="orderBulkCount">выбрано: 0</span>
+                  <span class="order-bulk-actions">
+                    <button class="btn btn-sm" data-bulk="pin" type="button">Закрепить</button>
+                    <button class="btn btn-sm" data-bulk="unpin" type="button">Открепить</button>
+                    <button class="btn btn-sm" data-bulk="top" type="button">В начало</button>
+                    <button class="btn btn-sm" data-bulk="bottom" type="button">В конец</button>
+                    <button class="btn btn-sm" data-bulk="hideHome" type="button">Скрыть с главной</button>
+                    <button class="btn btn-sm" data-bulk="showHome" type="button">Вернуть на главную</button>
+                  </span>
+                </div>
                 <div class="order-list" id="orderList"></div>
                 <p class="order-hint">Перетащите строку или используйте ▲▼. Кнопка 📌 закрепляет статью вверху в любом режиме. Дату можно править прямо здесь: она пишется в publishedAt, по которому строится хронология. Изменения уходят на VPS общей кнопкой «Сохранить».</p>
               </div>
               <aside class="order-preview">
                 <p class="panel-kicker">Как это ляжет</p>
+                <div class="order-home-controls">
+                  <label class="order-cs-field">
+                    <span>Карточек на главной</span>
+                    <input type="number" id="orderHomeLimit" min="0" max="60" step="1" placeholder="0 = все" />
+                  </label>
+                  <label class="order-cs-field">
+                    <span>Колонок</span>
+                    <select id="orderHomeColumns"><option value="">как сейчас</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
+                  </label>
+                  <label class="order-cs-check"><input type="checkbox" id="orderHomeShowDescription" /><span>Описание под заголовком</span></label>
+                  <label class="order-cs-check"><input type="checkbox" id="orderHomeShowReadAll" /><span>Кнопка «читать»</span></label>
+                </div>
                 <div class="order-preview-surface">
                   <h4>Главная <span id="orderPreviewLimit"></span></h4>
                   <div class="order-preview-cards" id="orderPreviewHome"></div>
