@@ -175,16 +175,13 @@ export function FuturoshockPage() {
         </div>
       </header>
 
-      <section className="relative overflow-hidden border-b border-white/12">
-        <div className="pointer-events-none absolute inset-0 opacity-[0.08]" style={{ backgroundImage: 'linear-gradient(90deg,#f6efe5 1px,transparent 1px),linear-gradient(#f6efe5 1px,transparent 1px)', backgroundSize: '120px 120px' }} />
-        <div className="mx-auto grid max-w-[1700px] gap-12 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[.84fr_1.16fr] lg:items-end lg:px-12 lg:py-28">
-          <div className="relative">
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#ee9f7d]">EPRIS / author works / digital exhibition</p>
-            <h1 className="mt-7 max-w-[8ch] font-display text-[clamp(4rem,10vw,10rem)] lowercase leading-[.78]">futuroshock</h1>
-            <p className="mt-10 max-w-[34rem] border-l border-[#ee5e42] pl-5 font-sans text-[17px] leading-[1.6] text-white/68 sm:text-[20px]">A living room for the works our authors make, collect and send into the future: images, objects, models, prototypes and scenes with enough presence to stand alone.</p>
-            <a href="mailto:editor@eprisjournal.com?subject=Futuroshock%20submission" className="mt-9 inline-flex min-h-12 items-center gap-3 border border-white/22 px-5 font-mono text-[10px] uppercase tracking-[0.16em] text-white hover:border-[#ee5e42] hover:text-[#ee9f7d]"><Upload size={15} /> submit a work</a>
-          </div>
-          <div className="relative border border-white/15 bg-[#15191a] p-2 shadow-[0_30px_100px_rgba(0,0,0,.35)] sm:p-3"><InteriorRoom compact lightMode={lightMode} room={activeRoom} /></div>
+      <section className="relative isolate overflow-hidden border-b border-white/12 bg-[#151210]">
+        <div className="absolute inset-0"><img src="/images/futuroshock-interior.png" alt="Futuroshock's first physical display room" className="h-full min-h-[720px] w-full object-cover object-[58%_center] saturate-[.7] contrast-[1.08] brightness-[.72]" /><div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,9,8,.94)_0%,rgba(7,9,8,.62)_36%,rgba(7,9,8,.08)_74%,rgba(7,9,8,.48)_100%)]" /><div className="absolute inset-x-0 bottom-0 h-[46%] bg-[linear-gradient(0deg,rgba(6,8,7,.92),transparent)]" /></div>
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-[.16]" style={{ backgroundImage: 'linear-gradient(90deg,#f6efe5 1px,transparent 1px)', backgroundSize: 'calc((100% - 48px) / 12) 100%' }} />
+        <div className="relative mx-auto grid min-h-[calc(100svh-73px)] max-w-[1700px] content-between px-5 py-8 sm:px-8 sm:py-12 lg:px-12 lg:py-14">
+          <div className="flex items-start justify-between gap-5 font-mono text-[9px] uppercase tracking-[.18em] text-[#f6e1be]/78"><span>Futuroshock / live exhibition</span><span className="hidden sm:block">Kyiv / interior study / 01</span></div>
+          <div className="max-w-[48rem] pb-5 sm:pb-10"><p className="font-mono text-[10px] uppercase tracking-[.2em] text-[#eead7b]">a room for authored objects</p><h1 className="mt-5 max-w-[8ch] font-display text-[clamp(4.4rem,10.8vw,10.5rem)] lowercase leading-[.74] text-[#fff8ee]">futuro<br className="hidden sm:block" />shock</h1><p className="mt-8 max-w-[31rem] border-l border-[#eaa26e] pl-5 font-sans text-[16px] leading-[1.62] text-white/78 sm:text-[19px]">A real display room, rebuilt online for images, objects and models by EPRIS authors. First works arrive into a place with scale, shadow and a point of view.</p><a href="mailto:editor@eprisjournal.com?subject=Futuroshock%20submission" className="mt-8 inline-flex min-h-12 items-center gap-3 border border-[#f6e8d6]/48 bg-[#090b0a]/35 px-5 font-mono text-[10px] uppercase tracking-[.16em] text-[#fff8ee] backdrop-blur hover:border-[#eead7b] hover:text-[#eead7b]"><Upload size={15} /> place a work in the room</a></div>
+          <div className="grid gap-4 border-t border-white/28 pt-4 text-[#fff8ee] sm:grid-cols-[1.3fr_.7fr] sm:gap-8"><p className="font-mono text-[9px] uppercase leading-[1.7] tracking-[.16em] text-white/62">current condition<br /><span className="text-[#f5c48d]">warm shelf light / walnut / ceramic / glass</span></p><p className="font-mono text-[9px] uppercase leading-[1.7] tracking-[.16em] text-white/62 sm:text-right">scroll to enter<br /><span className="text-[#f5c48d]">three rooms / 2D + 3D</span></p></div>
         </div>
       </section>
 
