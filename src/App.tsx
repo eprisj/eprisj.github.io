@@ -1655,7 +1655,9 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
 function homepageArticleFeed(articles: Article[]): Article[] {
   const settings = getHomepageSettings().articles || {};
   if (settings.enabled === false) return [];
-  const sorted = orderArticles(articles);
+  // hideOnHome is per article and separate from `draft`: the piece is
+  // published and reachable, it just does not belong on the front page.
+  const sorted = orderArticles(articles).filter((article) => !article.hideOnHome);
   const limit = Number(settings.limit);
   return Number.isFinite(limit) && limit > 0 ? sorted.slice(0, Math.max(1, Math.floor(limit))) : sorted;
 }
@@ -2592,7 +2594,7 @@ function ArticlesSection({
   showReadAll?: boolean;
   columns?: 1 | 2 | 3;
 }) {
-  const filteredArticles = orderArticles(articles);
+  const filteredArticles = orderArticles(articles).filter((article) => !article.hideInList);
   const openArticle = showPreview ? (onArticlePreview || onArticleClick) : onArticleClick;
   const listClass = columns === 3
     ? 'grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-3'
