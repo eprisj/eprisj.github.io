@@ -50,25 +50,42 @@ function PlanRoom({ room, position, active, onSelect }: { room: RoomId; position
   </group>;
 }
 
-function SpatialPlan({ activeRoom, onSelect }: { activeRoom: RoomId; onSelect: (room: RoomId) => void }) {
-  return <div className="relative min-h-[390px] overflow-hidden bg-[#0c1011] sm:min-h-[480px]" aria-label="Interactive three-room exhibition map">
-    <Canvas camera={{ position: [5.8, 4.5, 7.7], fov: 36 }} dpr={[1, 1.5]}>
-      <color attach="background" args={['#0c1011']} />
-      <ambientLight intensity={.55} />
-      <directionalLight position={[3, 6, 5]} intensity={2.8} color="#ffdeb0" />
-      <pointLight position={[-2.6, 2.8, 1.5]} intensity={activeRoom === 'room-01' ? 9 : 2} color="#e8a158" distance={6} />
-      <pointLight position={[0, 2.4, 1]} intensity={activeRoom === 'room-02' ? 9 : 2} color="#d9e2f0" distance={6} />
-      <pointLight position={[2.6, 2.6, 1]} intensity={activeRoom === 'room-03' ? 11 : 2} color="#de3d62" distance={6} />
-      <mesh position={[0, -.28, 0]} rotation={[-Math.PI / 2, 0, 0]}><planeGeometry args={[12, 8]} /><meshStandardMaterial color="#111718" metalness={.45} roughness={.66} /></mesh>
-      <mesh position={[-1.3, -.12, 0]}><boxGeometry args={[.7, .08, .5]} /><meshStandardMaterial color="#3b342e" roughness={.5} /></mesh>
-      <mesh position={[1.3, -.12, 0]}><boxGeometry args={[.7, .08, .5]} /><meshStandardMaterial color="#3b342e" roughness={.5} /></mesh>
-      <PlanRoom room="room-01" position={[-2.6, 0, 0]} active={activeRoom === 'room-01'} onSelect={onSelect} />
-      <PlanRoom room="room-02" position={[0, 0, 0]} active={activeRoom === 'room-02'} onSelect={onSelect} />
-      <PlanRoom room="room-03" position={[2.6, 0, 0]} active={activeRoom === 'room-03'} onSelect={onSelect} />
-      <ContactShadows position={[0, -.24, 0]} opacity={.7} scale={12} blur={2.8} far={5} />
-      <OrbitControls enablePan={false} minDistance={6} maxDistance={11} minPolarAngle={.65} maxPolarAngle={1.25} />
+function ShelfPiece({ index, position }: { index: number; position: [number, number, number] }) {
+  const pale = '#e4d7c1';
+  const clay = '#b67445';
+  const glass = '#9ebcad';
+  if (index === 0) return <group position={position}><mesh position={[0, -.08, 0]} scale={[.72, 1.05, .72]}><sphereGeometry args={[.48, 40, 32]} /><meshPhysicalMaterial color={clay} roughness={.2} metalness={.15} /></mesh><mesh position={[0, .45, 0]}><cylinderGeometry args={[.16, .23, .56, 40]} /><meshStandardMaterial color="#58352b" roughness={.3} /></mesh></group>;
+  if (index === 1) return <group position={position}><mesh position={[0, -.08, 0]}><cylinderGeometry args={[.38, .46, .16, 48]} /><meshStandardMaterial color="#251f1e" metalness={.72} roughness={.18} /></mesh><mesh position={[0, .15, 0]}><cylinderGeometry args={[.05, .05, .46, 24]} /><meshStandardMaterial color="#b08a55" metalness={.8} roughness={.2} /></mesh><mesh position={[0, .55, 0]}><sphereGeometry args={[.27, 36, 32]} /><meshPhysicalMaterial color="#ffe1a1" emissive="#f0a944" emissiveIntensity={1.4} roughness={.16} /></mesh><pointLight position={[0, .55, .2]} intensity={2.2} distance={2.8} color="#ffc56a" /></group>;
+  if (index === 2) return <group position={position}><mesh rotation={[0, .22, 0]}><torusKnotGeometry args={[.32, .095, 130, 18]} /><meshStandardMaterial color="#b8b9b0" metalness={.84} roughness={.17} /></mesh><mesh position={[0, -.48, 0]}><cylinderGeometry args={[.34, .4, .12, 40]} /><meshStandardMaterial color="#1d2120" roughness={.36} /></mesh></group>;
+  if (index === 3) return <group position={position}><mesh position={[-.22, 0, 0]} rotation={[0, -.12, .04]}><boxGeometry args={[.34, .82, .54]} /><meshStandardMaterial color="#9b4737" roughness={.5} /></mesh><mesh position={[.1, .03, .03]} rotation={[0, .08, -.03]}><boxGeometry args={[.28, .95, .56]} /><meshStandardMaterial color="#d0bc93" roughness={.48} /></mesh><mesh position={[.36, -.05, 0]} rotation={[0, .16, .02]}><boxGeometry args={[.2, .72, .5]} /><meshStandardMaterial color="#3e5754" roughness={.45} /></mesh></group>;
+  if (index === 4) return <group position={position}><mesh scale={[.66, 1.16, .66]}><sphereGeometry args={[.42, 40, 32]} /><meshPhysicalMaterial color={glass} roughness={.08} transmission={.28} thickness={.35} /></mesh><mesh position={[0, .48, 0]}><cylinderGeometry args={[.12, .17, .5, 36]} /><meshPhysicalMaterial color={glass} roughness={.08} transmission={.28} thickness={.35} /></mesh></group>;
+  if (index === 5) return <group position={position}><mesh position={[-.26, 0, 0]} rotation={[0, 0, -.25]}><coneGeometry args={[.28, 1.05, 5]} /><meshStandardMaterial color="#e3d7c1" roughness={.38} /></mesh><mesh position={[.24, -.08, 0]} rotation={[0, 0, .29]}><coneGeometry args={[.23, .86, 5]} /><meshStandardMaterial color="#b86c4a" roughness={.35} /></mesh></group>;
+  if (index === 6) return <group position={position}><mesh><torusGeometry args={[.42, .12, 28, 80]} /><meshStandardMaterial color="#c9944f" metalness={.76} roughness={.18} /></mesh><mesh position={[0, 0, -.06]}><sphereGeometry args={[.18, 32, 32]} /><meshStandardMaterial color="#3f5350" roughness={.23} metalness={.46} /></mesh></group>;
+  if (index === 7) return <group position={position}><mesh position={[0, -.12, 0]}><cylinderGeometry args={[.44, .5, .14, 48]} /><meshStandardMaterial color="#282724" metalness={.72} roughness={.18} /></mesh><mesh position={[0, .36, 0]} scale={[.74, 1.1, .74]}><sphereGeometry args={[.38, 40, 32]} /><meshStandardMaterial color="#d9d1c2" roughness={.2} metalness={.28} /></mesh></group>;
+  return <group position={position}><mesh rotation={[.2, -.35, 0]}><torusKnotGeometry args={[.27, .08, 90, 16]} /><meshStandardMaterial color="#a53848" metalness={.56} roughness={.18} /></mesh><mesh position={[0, -.46, 0]}><cylinderGeometry args={[.3, .35, .12, 36]} /><meshStandardMaterial color="#25191b" roughness={.4} /></mesh></group>;
+}
+
+function DisplayShelf({ activeRoom }: { activeRoom: RoomId }) {
+  const accent = activeRoom === 'room-03' ? '#e34f67' : activeRoom === 'room-02' ? '#d7e7df' : '#ffc276';
+  const positions: [number, number, number][] = [[-2.7, 1.75, .15], [0, 1.75, .15], [2.7, 1.75, .15], [-2.7, 0, .15], [0, 0, .15], [2.7, 0, .15], [-2.7, -1.74, .15], [0, -1.74, .15], [2.7, -1.74, .15]];
+  return <div className="relative min-h-[520px] overflow-hidden bg-[#100d0b] sm:min-h-[650px]" aria-label="Interactive 3D display shelf">
+    <Canvas shadows camera={{ position: [8.4, 3.05, 10.4], fov: 33 }} dpr={[1, 1.5]}>
+      <color attach="background" args={['#100d0b']} />
+      <fog attach="fog" args={['#100d0b', 9, 19]} />
+      <ambientLight intensity={.32} />
+      <spotLight castShadow position={[-4.4, 6.8, 4.4]} angle={.4} penumbra={.72} intensity={6.2} color="#ffd49b" shadow-mapSize={[1024, 1024]} />
+      <spotLight position={[4.8, 4.2, 3.6]} angle={.5} penumbra={.86} intensity={4.2} color={accent} />
+      <pointLight position={[0, 1.7, 3]} intensity={3.4} distance={8} color="#f6bc76" />
+      <mesh position={[0, 0, -.34]} receiveShadow><boxGeometry args={[8.85, 6.1, .22]} /><meshStandardMaterial color="#2a1b14" roughness={.46} metalness={.05} /></mesh>
+      <mesh position={[-4.35, 0, 0]}><boxGeometry args={[.24, 6.26, .66]} /><meshStandardMaterial color="#24140e" roughness={.32} /></mesh><mesh position={[4.35, 0, 0]}><boxGeometry args={[.24, 6.26, .66]} /><meshStandardMaterial color="#24140e" roughness={.32} /></mesh>
+      {[-2.25, .05, 2.35].map((x) => <mesh key={`upright-${x}`} position={[x - .92, 0, 0]}><boxGeometry args={[.16, 6.05, .6]} /><meshStandardMaterial color="#321c12" roughness={.28} /></mesh>)}
+      {[-2.62, -.88, .88, 2.62].map((y) => <group key={`shelf-${y}`}><mesh position={[0, y, .05]}><boxGeometry args={[8.65, .18, .75]} /><meshStandardMaterial color="#5b3420" roughness={.28} metalness={.04} /></mesh><pointLight position={[0, y + .1, .62]} intensity={1.5} distance={4.2} color="#ffd18a" /></group>)}
+      {positions.map((position, index) => <ShelfPiece key={index} index={index} position={position} />)}
+      <mesh position={[0, -3.1, 1.35]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow><planeGeometry args={[18, 13]} /><meshStandardMaterial color="#0c0a09" roughness={.85} /></mesh>
+      <ContactShadows position={[0, -2.72, .3]} opacity={.65} scale={11} blur={2.6} far={7} />
+      <OrbitControls enablePan={false} minDistance={8} maxDistance={14} minPolarAngle={.92} maxPolarAngle={1.46} />
     </Canvas>
-    <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 border-t border-white/10 bg-[#0c1011]/76 px-5 py-4 backdrop-blur sm:px-8"><span className="font-mono text-[9px] uppercase tracking-[.18em] text-[#f0c28c]">spatial index / 03 rooms</span><span className="font-mono text-[9px] uppercase tracking-[.14em] text-white/45">drag to orbit · tap a room to enter</span></div>
+    <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-between border-t border-white/10 bg-black/30 px-5 py-4 font-mono text-[9px] uppercase tracking-[.16em] text-white/45 backdrop-blur sm:px-8"><span>drag to look</span><span>light is live</span></div>
   </div>;
 }
 
@@ -185,7 +202,7 @@ export function FuturoshockPage() {
         </div>
       </section>
 
-      <section className="border-b border-white/12 bg-[#0c1011]"><div className="mx-auto grid max-w-[1700px] gap-8 px-5 py-12 sm:px-8 lg:grid-cols-[.72fr_1.28fr] lg:px-12 lg:py-16"><div><p className="font-mono text-[10px] uppercase tracking-[.18em] text-[#ee9f7d]">floor map / live positions</p><h2 className="mt-5 max-w-[8ch] font-display text-[clamp(3rem,5.2vw,5.5rem)] lowercase leading-[.82]">the building is the interface</h2><p className="mt-6 max-w-[31rem] font-sans text-base leading-[1.65] text-white/58">Move through three rooms as a spatial sequence. The map keeps the architecture legible while each room remains its own light condition.</p></div><div className="border border-white/15 p-2 sm:p-3"><SpatialPlan activeRoom={activeRoom} onSelect={(room) => { setActiveRoom(room); setLightMode(ROOMS[room].light); }} /></div></div></section>
+      <section className="border-b border-white/12 bg-[#0c1011]"><div className="mx-auto grid max-w-[1700px] gap-8 px-5 py-12 sm:px-8 lg:grid-cols-[.54fr_1.46fr] lg:px-12 lg:py-16"><div className="flex flex-col justify-between"><div><p className="font-mono text-[10px] uppercase tracking-[.18em] text-[#ee9f7d]">the first vitrine</p><h2 className="mt-5 max-w-[7ch] font-display text-[clamp(3rem,5.2vw,5.5rem)] lowercase leading-[.82]">objects, not interfaces</h2></div><p className="max-w-[23rem] font-sans text-sm leading-[1.7] text-white/52">A shelf built to receive real images and models. Light changes with each exhibition room.</p></div><div className="border border-white/15 p-2 sm:p-3"><DisplayShelf activeRoom={activeRoom} /></div></div></section>
 
       <nav aria-label="Exhibition rooms" className="border-b border-white/12 bg-[#0b0e0f]"><div className="mx-auto grid max-w-[1700px] md:grid-cols-3 lg:px-12">{(Object.keys(ROOMS) as RoomId[]).map((room) => { const item = ROOMS[room]; const active = room === activeRoom; return <button key={room} type="button" onClick={() => { setActiveRoom(room); setLightMode(item.light); }} aria-pressed={active} className={`group grid min-h-[178px] grid-cols-[4.5rem_1fr_auto] items-end gap-5 border-b border-white/12 px-5 py-7 text-left transition sm:px-8 md:border-b-0 ${room !== 'room-03' ? 'md:border-r' : ''} ${active ? 'bg-[#181514]' : 'hover:bg-white/[.045]'}`}><span className="font-display text-4xl leading-none text-[#ee9f7d]">{item.number}</span><span><span className="block font-display text-[clamp(1.8rem,3vw,3rem)] lowercase leading-[.86] text-[#f6efe5]">{item.title}</span><span className="mt-3 block font-mono text-[9px] uppercase tracking-[.16em] text-white/48">{item.note}</span></span><ArrowUpRight size={17} className={`mb-1 transition-transform duration-300 ${active ? 'translate-x-0 translate-y-0 text-[#ee9f7d]' : 'group-hover:translate-x-1 group-hover:-translate-y-1 text-white/45'}`} /></button>; })}</div></nav>
 
