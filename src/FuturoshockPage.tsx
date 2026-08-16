@@ -69,7 +69,7 @@ function DisplayShelf({ activeRoom }: { activeRoom: RoomId }) {
   const accent = activeRoom === 'room-03' ? '#e34f67' : activeRoom === 'room-02' ? '#d7e7df' : '#ffc276';
   const positions: [number, number, number][] = [[-2.7, 1.75, .15], [0, 1.75, .15], [2.7, 1.75, .15], [-2.7, 0, .15], [0, 0, .15], [2.7, 0, .15], [-2.7, -1.74, .15], [0, -1.74, .15], [2.7, -1.74, .15]];
   return <div className="relative min-h-[520px] overflow-hidden bg-[#17100d] sm:min-h-[650px]" aria-label="Interactive 3D display shelf">
-    <Canvas shadows camera={{ position: [0, .1, 6.3], fov: 32 }} dpr={[1, 1.5]}>
+    <Canvas orthographic shadows camera={{ position: [0, 0, 10], zoom: 86 }} dpr={[1, 1.5]}>
       <color attach="background" args={['#17100d']} />
       <fog attach="fog" args={['#17100d', 12, 23]} />
       <ambientLight intensity={.72} />
@@ -83,7 +83,7 @@ function DisplayShelf({ activeRoom }: { activeRoom: RoomId }) {
       {positions.map((position, index) => <ShelfPiece key={index} index={index} position={position} />)}
       <mesh position={[0, -3.1, 1.35]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow><planeGeometry args={[18, 13]} /><meshStandardMaterial color="#0c0a09" roughness={.85} /></mesh>
       <ContactShadows position={[0, -2.72, .3]} opacity={.65} scale={11} blur={2.6} far={7} />
-      <OrbitControls enablePan={false} minDistance={5.4} maxDistance={10} minPolarAngle={.92} maxPolarAngle={1.46} />
+      <OrbitControls enablePan={false} enableZoom={false} minPolarAngle={1.12} maxPolarAngle={1.52} />
     </Canvas>
     <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-between border-t border-white/10 bg-black/30 px-5 py-4 font-mono text-[9px] uppercase tracking-[.16em] text-white/45 backdrop-blur sm:px-8"><span>drag to look</span><span>light is live</span></div>
   </div>;
