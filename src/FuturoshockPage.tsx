@@ -1,7 +1,7 @@
 import { Canvas } from '@react-three/fiber';
 import { ContactShadows, OrbitControls, Environment, useGLTF, useTexture } from '@react-three/drei';
 import { Suspense, useEffect, useMemo, useState } from 'react';
-import { ArrowLeft, ArrowUpRight, Box, Image as ImageIcon, Move3d, Upload } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Box, Image as ImageIcon, Upload } from 'lucide-react';
 import { getFuturoshock, subscribeContent, type FuturoshockWork } from './data';
 
 function Model({ url }: { url: string }) {
@@ -122,9 +122,6 @@ function WorkPreview({ work, lightMode }: { work: FuturoshockWork; lightMode: Li
           <OrbitControls enablePan={false} minDistance={2} maxDistance={7} />
         </Canvas>
         {lightMode === 'contrejour' && <div aria-hidden="true" className="pointer-events-none absolute inset-x-[24%] top-0 h-full bg-[linear-gradient(90deg,transparent,rgba(255,228,180,.34),transparent)] blur-2xl" />}
-        <span className="absolute left-4 top-4 inline-flex items-center gap-2 border border-white/20 bg-black/40 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-white/80 backdrop-blur">
-          <Move3d size={13} /> interactive object
-        </span>
       </div>
     );
   }
@@ -132,7 +129,6 @@ function WorkPreview({ work, lightMode }: { work: FuturoshockWork; lightMode: Li
     <div className="relative h-full min-h-[360px] overflow-hidden bg-[#e6ded2]">
       {work.imageUrl ? <img src={work.imageUrl} alt={work.title} className={`h-full w-full object-cover transition duration-700 ${lightMode === 'contrejour' ? 'scale-[1.02] saturate-[.44] contrast-[1.34] brightness-[.56]' : ''}`} /> : <div className="grid h-full place-items-center text-[#282321]/40"><ImageIcon size={42} /></div>}
       {lightMode === 'contrejour' && <><div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(3,6,6,.82),transparent_56%,rgba(3,6,6,.48))]" /><div aria-hidden="true" className="pointer-events-none absolute bottom-0 left-[43%] top-0 w-[18%] -skew-x-[7deg] bg-[linear-gradient(90deg,transparent,rgba(255,230,187,.34),transparent)] blur-xl" /></>}
-      <span className={`absolute left-4 top-4 inline-flex items-center gap-2 border px-3 py-2 font-mono text-[10px] uppercase tracking-[0.16em] backdrop-blur ${lightMode === 'contrejour' ? 'border-white/25 bg-black/30 text-white/80' : 'border-black/15 bg-[#f6efe5]/85 text-[#282321]/70'}`}><ImageIcon size={13} /> image study</span>
     </div>
   );
 }
@@ -177,10 +173,10 @@ function InteriorRoom({ compact = false, lightMode = 'warm', room = 'room-01' }:
 
 export function FuturoshockPage() {
   const [works, setWorks] = useState<FuturoshockWork[]>(() => getFuturoshock().length ? getFuturoshock() : OPENING_WORKS);
-  const [selectedId, setSelectedId] = useState<string | null>(() => (getFuturoshock().length ? getFuturoshock() : OPENING_WORKS)[0]?.id ?? null);
+  const [selectedId, setSelectedId] = useState<string | null>(() => { const exhibition = getFuturoshock().length ? getFuturoshock() : OPENING_WORKS; return exhibition.find((work) => work.format === '3d')?.id ?? exhibition[0]?.id ?? null; });
   const [activeRoom, setActiveRoom] = useState<RoomId>('room-01');
   const visibleWorks = useMemo(() => works.filter((work) => (work.room || 'room-01') === activeRoom), [works, activeRoom]);
-  const selected = useMemo(() => visibleWorks.find((work) => work.id === selectedId) ?? visibleWorks[0] ?? null, [visibleWorks, selectedId]);
+  const selected = useMemo(() => works.find((work) => work.id === selectedId) ?? works[0] ?? null, [works, selectedId]);
   const [lightMode, setLightMode] = useState<LightMode>('warm');
 
   useEffect(() => {
@@ -194,8 +190,8 @@ export function FuturoshockPage() {
   }, []);
 
   useEffect(() => {
-    if (!visibleWorks.some((work) => work.id === selectedId)) setSelectedId(visibleWorks[0]?.id ?? null);
-  }, [activeRoom, selectedId, visibleWorks]);
+    if (!works.some((work) => work.id === selectedId)) setSelectedId(works[0]?.id ?? null);
+  }, [selectedId, works]);
 
   return (
     <main className="min-h-screen bg-[#0b0e0f] text-[#f6efe5] selection:bg-[#ee5e42] selection:text-[#0b0e0f]">
@@ -212,6 +208,7 @@ export function FuturoshockPage() {
       <section className="mx-auto max-w-[1700px] px-5 py-14 sm:px-8 sm:py-20 lg:px-12">
         <div className="flex items-end justify-between border-b border-white/15 pb-5"><div><p className="font-mono text-[10px] uppercase tracking-[.18em] text-[#ee9f7d]">shelf inventory</p><h2 className="mt-3 font-display text-[clamp(2.8rem,5vw,5.2rem)] lowercase leading-[.86]">what is on view</h2></div><span className="hidden font-mono text-[10px] uppercase tracking-[.15em] text-white/40 sm:block">15 positions / live edit</span></div>
         <div className="grid border-l border-t border-white/15 sm:grid-cols-2 lg:grid-cols-3">{works.map((work, index) => { const slot = work.shelfSlot || index + 1; return <button key={work.id} type="button" onClick={() => setSelectedId(work.id)} className={`min-h-[300px] border-b border-r border-white/15 p-6 text-left transition hover:bg-white/[.045] sm:p-8 ${selected?.id === work.id ? 'bg-[#171514]' : ''}`}><div className="flex items-start justify-between gap-4"><span className="font-display text-4xl leading-none text-[#ee9f7d]">{String(slot).padStart(2, '0')}</span><span className="font-mono text-[9px] uppercase tracking-[.16em] text-white/42">{work.format === '3d' ? 'object / 3D' : 'image / 2D'}</span></div><h3 className="mt-12 font-display text-[clamp(2rem,3vw,3.25rem)] lowercase leading-[.86] text-[#f6efe5]">{work.title}</h3><p className="mt-5 max-w-[34rem] font-sans text-sm leading-[1.65] text-white/62">{work.statement}</p><div className="mt-7 border-t border-white/12 pt-4 font-mono text-[9px] uppercase leading-[1.65] tracking-[.13em] text-[#f0c28c]">{work.materials?.join(' / ') || work.medium}</div></button>; })}</div>
+        {selected && <section className="mt-10 grid overflow-hidden border border-white/15 bg-[#151313] lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,.8fr)]"><div className="min-h-[440px] border-b border-white/12 lg:border-b-0 lg:border-r"><WorkPreview work={selected} lightMode={lightMode} /></div><div className="flex flex-col justify-between p-6 sm:p-9"><div><p className="font-mono text-[10px] uppercase tracking-[.17em] text-[#ee9f7d]">selected object / rotate freely</p><h3 className="mt-5 font-display text-[clamp(3rem,5vw,5.8rem)] lowercase leading-[.82]">{selected.title}</h3><p className="mt-7 max-w-[34rem] font-sans text-[16px] leading-[1.7] text-white/68">{selected.statement}</p><dl className="mt-9 grid grid-cols-2 gap-x-5 gap-y-6 border-t border-white/14 pt-5 font-mono text-[9px] uppercase tracking-[.13em]"><div><dt className="text-white/35">surface</dt><dd className="mt-2 leading-[1.55] text-[#f0c28c]">{selected.materials?.join(' / ') || selected.medium}</dd></div><div><dt className="text-white/35">medium</dt><dd className="mt-2 leading-[1.55] text-white/72">{selected.medium}</dd></div><div><dt className="text-white/35">author</dt><dd className="mt-2 leading-[1.55] text-white/72">{selected.author}</dd></div><div><dt className="text-white/35">position</dt><dd className="mt-2 leading-[1.55] text-white/72">shelf {String(selected.shelfSlot || works.indexOf(selected) + 1).padStart(2, '0')}</dd></div></dl></div><span className="mt-9 font-mono text-[9px] uppercase tracking-[.16em] text-white/42">drag to rotate / scroll to inspect</span></div></section>}
       </section>
 
       <section className="border-t border-white/12 bg-[#f1e9df] text-[#171313]"><div className="mx-auto grid max-w-[1700px] gap-12 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[.8fr_1.2fr] lg:px-12"><div><p className="font-mono text-[10px] uppercase tracking-[.18em] text-[#a63d2c]">02 / submission logic</p><h2 className="mt-5 max-w-[8ch] font-display text-[clamp(3rem,6vw,6rem)] lowercase leading-[.82]">make it impossible to scroll past</h2></div><div className="grid gap-0 border-t border-[#171313]/18"><div className="grid gap-4 border-b border-[#171313]/18 py-6 sm:grid-cols-[5rem_1fr]"><span className="font-display text-3xl text-[#a63d2c]">01</span><p className="max-w-[38rem] font-sans text-base leading-relaxed">Send one strong cover image and, when available, a clean GLB or GLTF model. The work should survive both a quiet thumbnail and a full-screen view.</p></div><div className="grid gap-4 border-b border-[#171313]/18 py-6 sm:grid-cols-[5rem_1fr]"><span className="font-display text-3xl text-[#a63d2c]">02</span><p className="max-w-[38rem] font-sans text-base leading-relaxed">Add the actual material vocabulary: light, scale, surface, object, route. Futuroshock is not a portfolio dump; it is a room with editorial attention.</p></div><div className="grid gap-4 py-6 sm:grid-cols-[5rem_1fr]"><span className="font-display text-3xl text-[#a63d2c]">03</span><p className="max-w-[38rem] font-sans text-base leading-relaxed">The editorial team checks file quality, rights and context before publishing. Selected works can link back to an EPRIS article, review or Bureau case.</p></div></div></div></section>
