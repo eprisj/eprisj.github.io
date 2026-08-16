@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber';
-import { ContactShadows, OrbitControls, Environment, useGLTF } from '@react-three/drei';
+import { ContactShadows, OrbitControls, Environment, useGLTF, useTexture } from '@react-three/drei';
 import { Suspense, useEffect, useMemo, useState } from 'react';
 import { ArrowLeft, ArrowUpRight, Box, Image as ImageIcon, Move3d, Upload } from 'lucide-react';
 import { getFuturoshock, subscribeContent, type FuturoshockWork } from './data';
@@ -65,27 +65,42 @@ function ShelfPiece({ index, position }: { index: number; position: [number, num
   return <group position={position}><mesh rotation={[.2, -.35, 0]}><torusKnotGeometry args={[.27, .08, 90, 16]} /><meshStandardMaterial color="#a53848" metalness={.56} roughness={.18} /></mesh><mesh position={[0, -.46, 0]}><cylinderGeometry args={[.3, .35, .12, 36]} /><meshStandardMaterial color="#25191b" roughness={.4} /></mesh></group>;
 }
 
-function DisplayShelf({ activeRoom }: { activeRoom: RoomId }) {
-  const accent = activeRoom === 'room-03' ? '#e34f67' : activeRoom === 'room-02' ? '#d7e7df' : '#ffc276';
-  const positions: [number, number, number][] = [[-2.7, 1.75, .15], [0, 1.75, .15], [2.7, 1.75, .15], [-2.7, 0, .15], [0, 0, .15], [2.7, 0, .15], [-2.7, -1.74, .15], [0, -1.74, .15], [2.7, -1.74, .15]];
-  return <div className="relative min-h-[520px] overflow-hidden bg-[#17100d] sm:min-h-[650px]" aria-label="Interactive 3D display shelf">
-    <Canvas orthographic shadows camera={{ position: [0, 0, 10], zoom: 86 }} dpr={[1, 1.5]}>
+function ShelfArtwork({ url }: { url: string }) {
+  const texture = useTexture(url);
+  return <group><mesh position={[0, 0, -.04]}><boxGeometry args={[1.16, 1.08, .1]} /><meshStandardMaterial color="#1c1512" roughness={.35} /></mesh><mesh position={[0, 0, .03]}><planeGeometry args={[.98, .9]} /><meshBasicMaterial map={texture} toneMapped={false} /></mesh></group>;
+}
+
+function ShelfContent({ work, index, position }: { work?: FuturoshockWork; index: number; position: [number, number, number] }) {
+  const canShowImage = Boolean(work?.imageUrl && !work.id.startsWith('fs-opening'));
+  return <group position={position} scale={work?.format === '3d' && work.modelUrl ? .5 : 1}>
+    {work?.format === '3d' && work.modelUrl ? <Suspense fallback={<ShelfPiece index={index % 9} position={[0, 0, 0]} />}><Model url={work.modelUrl} /></Suspense> : canShowImage && work?.imageUrl ? <ShelfArtwork url={work.imageUrl} /> : <ShelfPiece index={index % 9} position={[0, 0, 0]} />}
+  </group>;
+}
+
+function DisplayShelf({ works, activeRoom }: { works: FuturoshockWork[]; activeRoom: RoomId }) {
+  const accent = activeRoom === 'room-03' ? '#d2495f' : activeRoom === 'room-02' ? '#d4e3dd' : '#ffc273';
+  const slots: [number, number, number][] = [[-4.65, 2.55, .55], [-2.33, 2.55, .55], [0, 2.55, .55], [2.33, 2.55, .55], [4.65, 2.55, .55], [-4.65, 0, .55], [-2.33, 0, .55], [0, 0, .55], [2.33, 0, .55], [4.65, 0, .55], [-4.65, -2.55, .55], [-2.33, -2.55, .55], [0, -2.55, .55], [2.33, -2.55, .55], [4.65, -2.55, .55]];
+  const placed = new Map<number, FuturoshockWork>();
+  works.filter((work) => (work.room || 'room-01') === activeRoom).forEach((work, index) => placed.set(work.shelfSlot || index + 1, work));
+  return <div className="relative h-[calc(100svh-72px)] min-h-[620px] max-h-[920px] overflow-hidden bg-[#17100d]" aria-label="Interactive Futuroshock display shelf">
+    <Canvas shadows camera={{ position: [0, .1, 18], fov: 28 }} dpr={[1, 1.5]}>
       <color attach="background" args={['#17100d']} />
-      <fog attach="fog" args={['#17100d', 12, 23]} />
-      <ambientLight intensity={.72} />
-      <spotLight castShadow position={[-4.4, 6.8, 5.8]} angle={.5} penumbra={.72} intensity={10.5} color="#ffd49b" shadow-mapSize={[1024, 1024]} />
-      <spotLight position={[4.8, 4.2, 5.6]} angle={.55} penumbra={.86} intensity={7.4} color={accent} />
-      <pointLight position={[0, 1.7, 4]} intensity={7.8} distance={9} color="#f6bc76" />
-      <mesh position={[0, 0, -.34]} receiveShadow><boxGeometry args={[8.85, 6.1, .22]} /><meshStandardMaterial color="#3a2118" roughness={.46} metalness={.05} /></mesh>
-      <mesh position={[-4.35, 0, 0]}><boxGeometry args={[.24, 6.26, .66]} /><meshStandardMaterial color="#412313" roughness={.32} /></mesh><mesh position={[4.35, 0, 0]}><boxGeometry args={[.24, 6.26, .66]} /><meshStandardMaterial color="#412313" roughness={.32} /></mesh>
-      {[-2.8, 0, 2.8].map((x) => <mesh key={`upright-${x}`} position={[x, 0, 0]}><boxGeometry args={[.16, 6.05, .6]} /><meshStandardMaterial color="#4b2917" roughness={.28} /></mesh>)}
-      {[-2.62, -.88, .88, 2.62].map((y) => <group key={`shelf-${y}`}><mesh position={[0, y, .05]}><boxGeometry args={[8.65, .18, .75]} /><meshStandardMaterial color="#75442a" roughness={.28} metalness={.04} /></mesh><pointLight position={[0, y + .1, 1.08]} intensity={3.2} distance={4.6} color="#ffd18a" /></group>)}
-      {positions.map((position, index) => <ShelfPiece key={index} index={index} position={position} />)}
-      <mesh position={[0, -3.1, 1.35]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow><planeGeometry args={[18, 13]} /><meshStandardMaterial color="#0c0a09" roughness={.85} /></mesh>
-      <ContactShadows position={[0, -2.72, .3]} opacity={.65} scale={11} blur={2.6} far={7} />
-      <OrbitControls enablePan={false} enableZoom={false} minPolarAngle={1.12} maxPolarAngle={1.52} />
+      <fog attach="fog" args={['#17100d', 13, 25]} />
+      <ambientLight intensity={.5} />
+      <directionalLight position={[1, 7, 7]} intensity={2.4} color="#ffe0b3" />
+      <spotLight castShadow position={[-5.4, 7.5, 6]} angle={.46} penumbra={.7} intensity={11} color="#ffd395" shadow-mapSize={[1024, 1024]} />
+      <spotLight position={[5.2, 5.8, 5]} angle={.42} penumbra={.8} intensity={6} color={accent} />
+      <mesh position={[0, 0, -.42]} receiveShadow><boxGeometry args={[12.2, 8.7, .28]} /><meshStandardMaterial color="#c7b9a5" roughness={.76} /></mesh>
+      <mesh position={[0, 0, -.26]}><boxGeometry args={[12.42, 8.92, .16]} /><meshStandardMaterial color="#321c13" roughness={.31} /></mesh>
+      <mesh position={[0, 0, -.12]}><boxGeometry args={[11.92, 8.42, .1]} /><meshStandardMaterial color="#d9cfbd" roughness={.82} /></mesh>
+      {[-6.02, -3.5, -1.17, 1.17, 3.5, 6.02].map((x) => <mesh key={`upright-${x}`} position={[x, 0, .02]} castShadow><boxGeometry args={[.22, 8.58, .74]} /><meshStandardMaterial color="#3a1f15" roughness={.3} metalness={.05} /></mesh>)}
+      {[-4.14, -1.36, 1.36, 4.14].map((y) => <group key={`shelf-${y}`}><mesh position={[0, y, .17]} castShadow receiveShadow><boxGeometry args={[12.1, .2, .84]} /><meshStandardMaterial color="#58321f" roughness={.28} metalness={.04} /></mesh><mesh position={[0, y + .13, .58]}><boxGeometry args={[11.65, .03, .05]} /><meshStandardMaterial color="#ffd695" emissive="#f0ad56" emissiveIntensity={1.75} /></mesh><pointLight position={[0, y + .1, 1.7]} intensity={5} distance={5.5} color="#ffc06d" /></group>)}
+      {slots.map((position, index) => <ShelfContent key={index} work={placed.get(index + 1)} index={index} position={position} />)}
+      <mesh position={[0, -4.3, 1.3]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow><planeGeometry args={[26, 16]} /><meshStandardMaterial color="#100c0a" roughness={.9} /></mesh>
+      <ContactShadows position={[0, -4.02, .6]} opacity={.5} scale={15} blur={2.7} far={8} />
+      <Environment preset="warehouse" />
+      <OrbitControls target={[0, 0, 0]} enablePan={false} minDistance={14} maxDistance={22} minPolarAngle={1.12} maxPolarAngle={1.55} />
     </Canvas>
-    <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-between border-t border-white/10 bg-black/30 px-5 py-4 font-mono text-[9px] uppercase tracking-[.16em] text-white/45 backdrop-blur sm:px-8"><span>drag to look</span><span>light is live</span></div>
   </div>;
 }
 
@@ -192,11 +207,7 @@ export function FuturoshockPage() {
         </div>
       </header>
 
-      <section className="relative min-h-[calc(100svh-73px)] overflow-hidden border-b border-white/12 bg-[#1e130e]">
-        <img src="/images/futuroshock-interior.png" alt="Futuroshock display shelf with ceramic, glass and sculptural objects" className="absolute inset-0 h-full w-full object-cover object-[50%_34%] saturate-[.82] contrast-[1.04]" />
-        <div aria-hidden="true" className="pointer-events-none absolute inset-x-[5%] top-[17%] h-px bg-[#ffd18a]/60 shadow-[0_0_30px_8px_rgba(255,185,84,.25)]" />
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(0deg,rgba(8,7,6,.32),transparent_42%)]" />
-      </section>
+      <section className="border-b border-white/12"><DisplayShelf works={works} activeRoom={activeRoom} /></section>
 
       <section className="border-b border-white/12 bg-[#0c1011]"><div className="mx-auto max-w-[1700px] px-5 py-8 sm:px-8 sm:py-12 lg:px-12"><div className="relative min-h-[460px] overflow-hidden border border-white/15 bg-[#20130e] sm:min-h-[680px]"><img src="/images/futuroshock-interior.png" alt="A lit display shelf of ceramic, glass and sculptural objects" className="absolute inset-0 h-full w-full object-cover object-[50%_35%] saturate-[.78] contrast-[1.04]" /><div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,7,6,.38),transparent_38%,rgba(8,7,6,.16)),linear-gradient(0deg,rgba(8,7,6,.42),transparent_48%)]" /><div aria-hidden="true" className="absolute inset-x-[7%] top-[17%] h-px bg-[#ffd18a]/55 shadow-[0_0_28px_7px_rgba(255,185,84,.22)]" /></div></div></section>
 
