@@ -9,9 +9,23 @@ function Model({ url }: { url: string }) {
   return <primitive object={scene} scale={1.35} />;
 }
 
+function OpeningObject({ scene = 'amber' }: { scene?: FuturoshockWork['openingScene'] }) {
+  if (scene === 'fold') return <group rotation={[0.28, -0.55, 0]}><mesh castShadow><boxGeometry args={[1.15, 1.75, 0.2]} /><meshStandardMaterial color="#cab29b" metalness={0.28} roughness={0.32} /></mesh><mesh position={[0.28, 0.16, 0.18]} rotation={[0, 0.45, 0]}><boxGeometry args={[0.75, 1.25, 0.15]} /><meshStandardMaterial color="#422e27" metalness={0.46} roughness={0.24} /></mesh></group>;
+  if (scene === 'orbit') return <group rotation={[0.2, 0.2, 0]}><mesh><torusGeometry args={[0.9, 0.14, 28, 120]} /><meshStandardMaterial color="#d7a36a" metalness={0.78} roughness={0.18} /></mesh><mesh rotation={[1.1, 0.45, 0]}><torusGeometry args={[0.58, 0.1, 28, 120]} /><meshStandardMaterial color="#d9e4d9" metalness={0.4} roughness={0.2} /></mesh><mesh><sphereGeometry args={[0.24, 48, 48]} /><meshStandardMaterial color="#351f21" roughness={0.18} metalness={0.38} /></mesh></group>;
+  return <group rotation={[0.1, -0.32, 0]}><mesh position={[0, -0.55, 0]}><cylinderGeometry args={[0.52, 0.7, 0.18, 64]} /><meshStandardMaterial color="#2b211f" metalness={0.58} roughness={0.27} /></mesh><mesh position={[0, 0.16, 0]}><sphereGeometry args={[0.58, 64, 48, 0, Math.PI * 2, 0, Math.PI * .62]} /><meshStandardMaterial color="#bb6f2f" metalness={0.48} roughness={0.17} /></mesh><mesh position={[0.18, 0.35, .25]}><sphereGeometry args={[0.23, 48, 48]} /><meshStandardMaterial color="#f0c685" metalness={0.18} roughness={0.22} /></mesh></group>;
+}
+
+const OPENING_WORKS: FuturoshockWork[] = [
+  { id: 'fs-opening-shelf', title: 'shelf after dinner', author: 'EPRIS opening study', year: '2026', format: '2d', medium: 'digital photograph', statement: 'A working collection of ceramic forms, glass and warm light. The first wall is already occupied by a real image, rather than a mockup.', imageUrl: '/images/futuroshock-interior.png', materials: ['wood', 'ceramic', 'glass', 'warm light'], edition: 'room 01 / image 01' },
+  { id: 'fs-opening-amber', title: 'amber vessel', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural 3D object', statement: 'A small calibrated volume for the illuminated plinth. Rotate it to inspect the warm metal and opaque amber surface.', openingScene: 'amber', materials: ['amber resin', 'dark metal'], edition: 'room 01 / object 01' },
+  { id: 'fs-opening-fold', title: 'folded witness', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural 3D object', statement: 'Two offset planes turn a wall work into an object. This position is reserved for scans, reliefs and architectural fragments.', openingScene: 'fold', materials: ['brushed aluminium', 'smoked lacquer'], edition: 'room 01 / object 02' },
+  { id: 'fs-opening-light', title: 'light index', author: 'EPRIS opening study', year: '2026', format: '2d', medium: 'digital photograph', statement: 'A photographic index of the room: reflection, shelf depth and the small shifts that make a display feel inhabited.', imageUrl: '/images/futuroshock-interior.png', materials: ['glass', 'walnut', 'fabric'], edition: 'room 01 / image 02' },
+  { id: 'fs-opening-orbit', title: 'orbit for a hand', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural 3D object', statement: 'A rotational study built for the final position near the window. It gives the opening room movement before the first model arrives.', openingScene: 'orbit', materials: ['bronze', 'milk glass', 'charcoal stone'], edition: 'room 01 / object 03' },
+  { id: 'fs-opening-detail', title: 'inventory of touch', author: 'EPRIS opening study', year: '2026', format: '2d', medium: 'digital photograph', statement: 'The starting material palette: vessels, marks and domestic scale. The future exhibition grows from this level of attention.', imageUrl: '/images/futuroshock-interior.png', materials: ['ceramic', 'wood', 'linen'], edition: 'room 01 / image 03' },
+];
+
 function WorkPreview({ work }: { work: FuturoshockWork }) {
-  const [failed, setFailed] = useState(false);
-  if (work.format === '3d' && work.modelUrl && !failed) {
+  if (work.format === '3d') {
     return (
       <div className="relative h-full min-h-[360px] overflow-hidden bg-[#15191a]">
         <Canvas camera={{ position: [2.8, 1.8, 3.2], fov: 34 }} dpr={[1, 1.6]}>
@@ -20,7 +34,7 @@ function WorkPreview({ work }: { work: FuturoshockWork }) {
           <directionalLight position={[3, 5, 4]} intensity={3.5} color="#ffe2b0" />
           <directionalLight position={[-3, 1, -2]} intensity={1.8} color="#9cc8ff" />
           <Suspense fallback={null}>
-            <Model url={work.modelUrl} />
+            {work.modelUrl ? <Model url={work.modelUrl} /> : <OpeningObject scene={work.openingScene} />}
             <Environment preset="studio" />
           </Suspense>
           <OrbitControls enablePan={false} minDistance={2} maxDistance={7} />
@@ -43,7 +57,7 @@ function WorkCard({ work, active, onSelect }: { work: FuturoshockWork; active: b
   return (
     <button type="button" onClick={onSelect} className={`group text-left ${active ? 'text-[#f6efe5]' : 'text-[#f6efe5]/58'}`}>
       <div className={`aspect-[4/3] overflow-hidden border transition ${active ? 'border-[#ee5e42]' : 'border-white/15 group-hover:border-white/45'}`}>
-        {work.imageUrl ? <img src={work.imageUrl} alt="" className="h-full w-full object-cover grayscale-[.2] transition duration-500 group-hover:scale-105 group-hover:grayscale-0" /> : <div className="grid h-full place-items-center bg-[#171c1d]"><Box size={26} /></div>}
+        {work.imageUrl ? <img src={work.imageUrl} alt="" className="h-full w-full object-cover grayscale-[.2] transition duration-500 group-hover:scale-105 group-hover:grayscale-0" /> : <div className="grid h-full place-items-center bg-[#171c1d]"><span className="font-mono text-[10px] uppercase tracking-[.16em] text-[#ee9f7d]">3D / {work.openingScene || 'model'}</span></div>}
       </div>
       <span className="mt-3 block font-display text-[1.45rem] lowercase leading-none">{work.title}</span>
       <span className="mt-2 block font-mono text-[9px] uppercase tracking-[0.14em] text-[#ee9f7d]/75">{work.author} / {work.year}</span>
@@ -74,15 +88,16 @@ function InteriorRoom({ compact = false }: { compact?: boolean }) {
 }
 
 export function FuturoshockPage() {
-  const [works, setWorks] = useState<FuturoshockWork[]>(() => getFuturoshock());
-  const [selectedId, setSelectedId] = useState<string | null>(() => getFuturoshock()[0]?.id ?? null);
+  const [works, setWorks] = useState<FuturoshockWork[]>(() => getFuturoshock().length ? getFuturoshock() : OPENING_WORKS);
+  const [selectedId, setSelectedId] = useState<string | null>(() => (getFuturoshock().length ? getFuturoshock() : OPENING_WORKS)[0]?.id ?? null);
   const selected = useMemo(() => works.find((work) => work.id === selectedId) ?? works[0] ?? null, [works, selectedId]);
 
   useEffect(() => {
     const unsubscribe = subscribeContent(() => {
       const next = getFuturoshock();
-      setWorks(next);
-      setSelectedId((current) => next.some((work) => work.id === current) ? current : next[0]?.id ?? null);
+      const exhibition = next.length ? next : OPENING_WORKS;
+      setWorks(exhibition);
+      setSelectedId((current) => exhibition.some((work) => work.id === current) ? current : exhibition[0]?.id ?? null);
     });
     return unsubscribe;
   }, []);

@@ -306,6 +306,8 @@ export interface FuturoshockWork {
   statement: string;
   imageUrl?: string;
   modelUrl?: string;
+  /** Built-in display study used while a commissioned GLB/GLTF is not supplied. */
+  openingScene?: 'amber' | 'fold' | 'orbit';
   materials?: string[];
   edition?: string;
   relatedArticleUrl?: string;
