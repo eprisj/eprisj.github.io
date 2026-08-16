@@ -7348,233 +7348,233 @@
           "title": "Комнаты, которые следят за вами",
           "author": "Viacheslav Munister",
           "authorId": "author-1784732936927-kw554",
-          "role": "Редактор",
+          "role": "Редактор-соавтор",
           "date": "15 августа 2026 г.",
-          "excerpt": "Стекло когда-то обещало свободу, честность и свет. Затем стены научились собирать данные. Эссе о прозрачной архитектуре, контролируемой видимости и радикальной роскоши исчезновения.",
+          "excerpt": "Стекло когда-то обещало свободу, честность и свет. Затем стены научились собирать данные. Эссе о прозрачной архитектуре, контролируемой видимости и радикальной роскоши быть разрешённым исчезать.",
           "category": "Архитектура",
           "subcategory": "Критическое эссе",
           "tags": [
             "Архитектура",
-            "Проектное значение",
+            "Дизайн",
             "Стекло",
             "Конфиденциальность",
-            "Надзор",
-            "модернизм"
+            "Наблюдение",
+            "Модернизм"
           ],
           "imageSeed": "glass-architecture-surveillance-night",
           "imageUrl": "https://api.eprisjournal.com/uploads/msu6g5edocd9yr.jpg",
           "draft": false,
           "content": [
             {
-              "type": "тексте",
-              "content": "Ночью каждое стеклянное здание меняет верность. Днем он заимствует небо и возвращает чистый образ города. После наступления темноты отражение коллапсирует. Письменные столы, лифты, кухни и тела выглядят как прямоугольники, каждая комната освещена как улика. Человек, работающий допоздна, становится частью возвышения. Тот, кто моет стекло, становится движущейся деталью на чертеже архитектора. Обещанием была открытость. Ощущение - экспозиция."
+              "type": "текст",
+              "content": "Ночью каждое стеклянное здание меняет лояльность. Днём оно заимствует небо и возвращает чистый образ города. После наступления темноты отражение рушится. Столы, лифты, кухни и тела появляются в сложенных прямоугольниках, каждая комната освещена, словно улика. Человек, работающий допоздна, становится частью фасада. Человек, моющий стакан, становится движущейся деталью в чертеже архитектора. Обещание заключалось в открытости. Ощущение — это уязвимость."
             },
             {
-              "type": "тексте",
-              "content": "Особое беспокойство возникает в пространствах, которые отказываются хранить тайну. Вы чувствуете это в вестибюле, где администратор может видеть лифт, прежде чем лифт может видеть администратора; в конференц-зале, застекленная стена которого была украшена вежливой полосой глазури на уровне глаз; в квартире, где занавеска рассматривается как эстетическая неудача. Эти интерьеры красивые, контролируемые и слегка обвинительные. Они предполагают, что конфиденциальность - это то, о чем просят после подозрительного поведения."
+              "type": "текст",
+              "content": "В помещениях, которые отказываются хранить тайну, присутствует особое беспокойство. Вы чувствуете его в холле, где ресепционист может увидеть лифт раньше, чем лифт увидит ресепционист; в переговорной комнате, где остеклённая стена украшена вежливой полосой матового стекла на уровне глаз; в квартире, где штора рассматривается как эстетическая неудача. Эти интерьеры прекрасны, контролируемы и слегка обвинительны. Они подразумевают, что конфиденциальность — это то, о чём человек просит после подозрительного поведения."
             },
             {
               "type": "заголовок",
-              "content": "Обещание увидеть все"
+              "content": "Обещание видеть всё"
             },
             {
-              "type": "тексте",
-              "content": "QUERY LENGTH LIMIT EXCEEDED. MAX ALLOWED QUERY : 500 CHARS"
+              "type": "текст",
+              "content": "Современное стекло прибыло с моральным аргументом. Лёгкие стены заменили бы оборонительную непрозрачность старого учреждения. Солнечный свет проник бы в фабрику, школу и офис. Конструкция стала бы читаемой. Работа стала бы видимой, а значит честной. Здание Баухаус в Дессау в 1926 году передало этой вере незабываемую форму: крыло мастерской, обёрнутое в сталь и хрустальное листовое стекло, его углы, казалось, растворились, а комнаты были предложены внешнему миру как непрерывное поле деятельности."
             },
             {
               "type": "изображение",
               "content": "https://api.eprisjournal.com/uploads/msu6g5jnsm6lj3.jpg",
-              "caption": "Фасад мастерской здания Bauhaus в Дессау. Стекло делает структуру разборчивой, превращая работу в публичный образ. Фото: Wikimedia Commons, общественное достояние."
+              "caption": "Фасад мастерской здания Баухаус в Дессау. Стекло делает структуру читаемой, превращая работу в публичный образ. Фото: Wikimedia Commons, общественное достояние."
             },
             {
-              "type": "тексте",
-              "content": "Фасад был не просто технической демонстрацией. Она предложила новый социальный характер. Прозрачность выглядела гигиеничной, коллективной, поступательной. Стене больше не нужно было объявлять власть через камень; она могла осуществлять власть через кажущееся отсутствие. Это первый трюк прозрачной архитектуры: чем меньше материала на границе, тем легче забыть, что граница все еще решает, кто может войти, кто может выглядеть и кто должен оставаться видимым."
+              "type": "текст",
+              "content": "Фасад был не просто технической демонстрацией. Он предложил новый социальный характер. Прозрачность выглядела гигиеничной, коллективной, движущейся вперёд. Стена больше не должна была объявлять о своей власти через камень; она могла осуществлять власть через видимое отсутствие. Это первый трюк прозрачной архитектуры: чем менее материальной кажется граница, тем легче забыть, что граница всё ещё решает, кто может войти, кто может смотреть и кто должен оставаться видимым."
             },
             {
               "type": "цитата",
-              "content": "Прозрачная стена не отменяет власть. Он редактирует направление, в котором может выглядеть сила."
+              "content": "Прозрачная стена не отменяет власть. Она редактирует направление, в котором власть может смотреть."
             },
             {
               "type": "заголовок",
-              "content": "Дом, в котором негде спрятаться"
+              "content": "Дом, где негде спрятаться"
             },
             {
-              "type": "тексте",
-              "content": "Стеклянный дом Филиппа Джонсона 1949 года обычно фотографируется как чистый релиз: темная стальная рама, кирпичный цилиндр и стеклянный периметр, размещенный с невероятной точностью в ландшафте Коннектикута. Сельская местность, кажется, проходит через комнату. Мебель плавает, погода становится обоями. Тем не менее, дом менее невинный, чем его фотографии. Обитать в нем - значит признать, что каждый внутренний жест приобрел аудиторию, даже если эта аудитория только воображаемая."
+              "type": "текст",
+              "content": "Стеклянный дом Филипа Джонсона 1949 года обычно фотографируют как чистую свободу: тёмная стальная рама, кирпичный цилиндр и стеклянный периметр расположены в ландшафте Коннектикута с непринуждённой точностью. Кажется, что сельская местность проходит сквозь комнату. Мебель парит. Погода становится обоями. Однако дом менее невинен, чем на его фотографиях. Живя в нём, нужно принять, что каждое домашнее действие обрело зрителя, даже если этот зритель лишь воображаемый."
             },
             {
               "type": "изображение",
               "content": "https://api.eprisjournal.com/uploads/msu6g5edocd9yr.jpg",
-              "caption": "Стеклянный дом Филиппа Джонсона, Нью-Ханаан, завершен в 1949 году. Пейзаж, кажется, проходит через комнату, в то время как житель остается постоянно на виду. Фото: Кэрол М. Хайсмит / Библиотека Конгресса, общественное достояние."
+              "caption": "Стеклянный дом Филипа Джонсона, Нью-Канан, завершённый в 1949 году. Пейзаж кажется проходящим сквозь комнату, тогда как обитатель постоянно находится на выставке. Фото: Кэрол М. Хайсмит / Библиотека Конгресса, общественное достояние."
             },
             {
-              "type": "тексте",
-              "content": "Важнейшим объектом является не только стеклянный павильон, но и его спутник через газон: Кирпичный дом. Непрозрачный, тяжелый и уединенный, он вмещал спальни, услуги и механические системы, которые поддерживали прозрачную икону. Два здания работают как расколотая психика. Один выполняет ясность; другой поглощает сон, сантехнику, беспорядок и отступление. Стеклянный дом может выглядеть непринужденным, потому что Кирпичный дом хранит улики за кулисами."
+              "type": "текст",
+              "content": "Ключевой объект – не только стеклянный павильон, но и его спутник через газон: Кирпичный дом. Непрозрачный, тяжёлый и приватный, он содержал спальни, службы и механические системы, поддерживающие прозрачную икону. Два здания функционируют как расщеплённая психика. Одну обеспечивает ясность; другая поглощает сон, сантехнику, беспорядок и уход в уединение. Стеклянный дом может выглядеть без усилий, потому что Кирпичный дом держит доказательства за кулисами."
             },
             {
               "type": "заголовок",
-              "content": "Корпус в идеальной раме"
+              "content": "Тело в идеальном кадре"
             },
             {
-              "type": "text",
-              "content": "Mies van der Rohe’s Farnsworth House sharpens the same question. Designed in 1945 and completed in 1951 for the physician Edith Farnsworth, the weekend house is raised above the Fox River floodplain as two white horizontal planes with a single transparent room suspended between them. The image is almost impossibly calm. In winter, bare branches continue through the glazing until the house seems less built than temporarily outlined."
+              "type": "текст",
+              "content": "Дом Фарнсворта Миса ван дер Роэ уточняет тот же вопрос. Спроектированный в 1945 году и завершённый в 1951 для врача Эдит Фарнсворта, уик‑энд‑дом вознесён над поймой реки Фокс как два белых горизонтальных плана с единственной прозрачной комнатой, подвешенной между ними. Изображение выглядит почти невозможным спокойно. Зимой голые ветви продолжаются сквозь остекление, пока дом кажется менее построенным, чем временно обозначенным."
             },
             {
-              "type": "image",
+              "type": "изображение",
               "content": "https://api.eprisjournal.com/uploads/msu6r768yk7inf.jpg",
-              "caption": "Farnsworth House in winter, Plano, Illinois. The curtains are not a betrayal of the concept; they are evidence that a concept eventually meets a body. Photo: Carol M. Highsmith / Library of Congress, public domain."
+              "caption": "Дом Фарнсворта зимой, Плейно, Иллинойс. Шторы не являются предательством концепции; они свидетельствуют о том, что концепция в конце концов сталкивается с телом. Фото: Кэрол М. Хайсмит / Библиотека Конгресса, общественное достояние."
             },
             {
-              "type": "text",
-              "content": "The plan appears universal, but living is specific. Morning arrives from one direction. Clothing has to go somewhere. A person becomes ill, angry, tired or simply unwilling to perform the landscape. Shortly after moving in, Farnsworth added screens around the west porch. Later restoration removed them to recover the canonical 1951 image. The sequence is revealing: the occupant modified the masterpiece to make life more tolerable; preservation modified it again to make the masterpiece more legible."
+              "type": "текст",
+              "content": "План кажется универсальным, но жизнь конкретна. Утро приходит с одного направления. Одежду нужно куда‑то деть. Человек может заболеть, рассердиться, утомиться или просто не захотеть выполнять ландшафт. Через некоторое время после заселения Фарнсворта установила экраны вокруг западного портика. Позже реставрация удалила их, чтобы восстановить канонический образ 1951 года. Эта последовательность показательна: обитатель модифицировал шедевр, чтобы сделать жизнь более терпимой; сохранение вновь модифицировало его, чтобы сделать шедевр более читаемым."
             },
             {
-              "type": "text",
-              "content": "This is not an argument against the house. It is an argument for reading its beauty without erasing the negotiation required to inhabit it. Architectural photography rewards the uninterrupted plane. Daily life produces interruptions: a curtain half drawn, a chair turned away from the view, condensation at the edge of a pane. Those marks are not visual noise. They are the resident writing back."
+              "type": "текст",
+              "content": "Это не аргумент против дома. Это аргумент за чтение его красоты без стирания переговоров, необходимых для его обитаемости. Архитектурная фотография вознаграждает непрерывную плоскость. Повседневная жизнь производит перерывы: штора наполовину задернута, кресло повернуто от вида, конденсат по краю стекла. Эти отметки не являются визуальным шумом. Это жилец пишет ответом."
             },
             {
-              "type": "image",
+              "type": "изображение",
               "content": "https://api.eprisjournal.com/uploads/msu6g5mj1cr2y7.jpg",
-              "caption": "Inside the Glass House, furniture and landscape share one visual plane. The circular brick core is the only solid interruption. Photo: Carol M. Highsmith / Library of Congress, public domain."
+              "caption": "Внутри Стеклянного дома мебель и ландшафт разделяют одну визуальную плоскость. Круглая кирпичная сердцевина — единственное твёрдое препятствие. Фото: Кэрол М. Хайсмит / Библиотека Конгресса, общественное достояние."
             },
             {
-              "type": "text",
-              "content": "This arrangement reveals a truth that contemporary interiors often conceal: transparency is never complete. It is curated. The cable is hidden, the storage wall is closed, the back office has no window, the camera is black and small. What looks like openness is usually a redistribution of opacity. Someone gets the glass view; someone else manages what must not appear in it."
+              "type": "текст",
+              "content": "Это расположение раскрывает истину, которую современные интерьеры часто скрывают: прозрачность никогда не бывает полной. Она тщательно подобрана. Кабель скрыт, стена хранения закрыта, в заднем офисе нет окна, камера чёрная и маленькая. То, что выглядит как открытость, обычно является перераспределением непрозрачности. Один получает вид через стекло; другой управляет тем, что не должно появляться в нём."
             },
             {
-              "type": "header",
-              "content": "The corporation discovers a face"
+              "type": "заголовок",
+              "content": "Корпорация обнаруживает лицо"
             },
             {
-              "type": "text",
-              "content": "By the middle of the twentieth century, glass had become corporate grammar. Lever House in New York, completed by Skidmore, Owings & Merrill in 1952, replaced the masonry weight of the commercial block with a blue-green curtain wall and a raised slab hovering above a public plaza. The building looked precise, clean and almost frictionless. It made administration photogenic. The company could be understood as a cool surface rather than a room full of decisions."
+              "type": "текст",
+              "content": "К середине двадцатого века стекло стало корпоративной грамматикой. Lever House в Нью-Йорке, завершённый Skidmore, Owings & Merrill в 1952 году, заменил каменную тяжесть коммерческого блока на сине-зелёную шторную стену и приподнятую плиту, парящую над публичной площадью. Здание выглядело точным, чистым и почти без трения. Оно сделало управление фотогеничным. Компанию можно было понять как холодную поверхность, а не как комнату, полную решений."
             },
             {
-              "type": "header",
-              "content": "The institution as immaculate image"
+              "type": "заголовок",
+              "content": "Учреждение как безупречный образ"
             },
             {
-              "type": "text",
-              "content": "The United Nations Secretariat Building made the symbolism explicit. When its blue-green glazed slab rose beside the East River in 1950, transparency could stand for an institution willing to expose its workings to the world. The façade offered a moral picture before it offered information: international order as a luminous grid, bureaucracy transformed into light."
+              "type": "текст",
+              "content": "Здание Секретариата Организации Объединённых Наций сделало символизм явным. Когда его голубовато-зелёное остеклённое панно поднялось рядом с Ист-Ривер в 1950 году, прозрачность могла символизировать учреждение, готовое открыть свою работу миру. Фасад предложил моральную картину прежде, чем информацию: международный порядок как светящаяся решётка, бюрократия, превращённая в свет."
             },
             {
-              "type": "image",
+              "type": "изображение",
               "content": "https://api.eprisjournal.com/uploads/msu6r79ffu6czg.jpg",
-              "caption": "The United Nations Secretariat Building at sunset. The curtain wall turns an institution into a single luminous image while individual rooms remain unreadable. Photo: Daryan Shamkhali, CC0."
+              "caption": "Здание Секретариата Организации Объединённых Наций на закате. Навесная стена превращает учреждение в единый светящийся образ, тогда как отдельные помещения остаются непрозрачными. Фото: Дарянг Шамхали, CC0."
             },
             {
-              "type": "text",
-              "content": "From the street, however, the grid performs equality by making every bay appear equivalent. Inside, rooms differ in access, security and influence. The curtain wall flattens those distinctions into one consistent skin. That is the political seduction of the glass tower: it can represent openness without surrendering hierarchy. You see the organisation everywhere and its decisions nowhere."
+              "type": "текст",
+              "content": "Однако с улицы решётка выполняет функцию равенства, делая каждую ячейку визуально эквивалентной. Внутри помещения различаются по доступу, безопасности и влиянию. Навесная стена сглаживает эти различия в единую согласованную оболочку. Это политическое соблазнение стеклянной башни: она может представлять открытость, не отказываясь от иерархии. Вы видите организацию повсюду, но её решения нигде."
             },
             {
-              "type": "image",
+              "type": "изображение",
               "content": "https://api.eprisjournal.com/uploads/msu6g5pl0gojxo.jpg",
-              "caption": "Lever House on Park Avenue: the curtain wall turns corporate organisation into an abstract, immaculate skin. Photo: Seth Tisue, CC BY-SA 2.0."
+              "caption": "Lever House на Парк-авеню: занавесная стена превращает корпоративную организацию в абстрактную, безупречную кожу. Фото: Seth Tisue, CC BY-SA 2.0."
             },
             {
-              "type": "text",
-              "content": "This is where transparency becomes branding. A glazed headquarters says: nothing is hidden here. But the statement is visual, not procedural. You can see people walking behind the façade without seeing how authority moves between them. The transparent building offers access to bodies and withholds access to systems. It is possible to watch an entire floor at work and learn nothing about what the work is doing."
+              "type": "текст",
+              "content": "Это то место, где прозрачность становится брендом. Здание с остеклением заявляет: здесь ничего не скрыто. Но это утверждение визуальное, а не процедурное. Вы можете видеть людей, идущих за фасадом, не видя, как передвигается власть между ними. Прозрачное здание предоставляет доступ к телам и ограничивает доступ к системам. Возможно наблюдать за целым этажом в работе и не узнать, чем занимается эта работа."
             },
             {
-              "type": "header",
-              "content": "When the building starts taking notes"
+              "type": "заголовок",
+              "content": "Когда здание начинает делать заметки"
             },
             {
-              "type": "text",
-              "content": "The smart office completes the transition from window to interface. At The Edge in Amsterdam, employees use an app to locate colleagues, find desks and adjust local lighting or temperature, while sensors monitor occupancy, movement, humidity, carbon dioxide, light and climate. The design is genuinely useful. Rooms can respond to demand; energy is not spent pretending that an empty floor is occupied. Comfort becomes precise."
+              "type": "текст",
+              "content": "Умный офис завершает переход от окна к интерфейсу. В The Edge в Амстердаме сотрудники используют приложение, чтобы находить коллег, находить рабочие места и регулировать локальное освещение или температуру, в то время как датчики отслеживают заполненность, движение, влажность, углекислый газ, свет и климат. Дизайн действительно полезен. Помещения могут реагировать на спрос; энергия не тратится впустую на притворство, что пустой этаж занят. Комфорт становится точным."
             },
             {
-              "type": "text",
-              "content": "But precision has a shadow. Once a building knows where a person sits, how long a room is used and which route fills after lunch, space becomes behavioural data. The employee no longer moves through a neutral container. The container records movement, predicts demand and quietly defines what counts as normal. No villain needs to sit behind a wall of monitors. The unease comes from the fact that the system can be efficient, pleasant and invasive at the same time."
+              "type": "текст",
+              "content": "Но точность имеет тень. Как только здание узнаёт, где сидит человек, как долго используется помещение и какой путь заполняется после обеда, пространство превращается в поведенческие данные. Сотрудник больше не перемещается в нейтральном контейнере. Контейнер фиксирует движение, предсказывает спрос и незаметно определяет, что считается нормальным. Никакому злодею не нужно сидеть за стеной мониторов. Тревога возникает из‑за того, что система может быть одновременно эффективной, приятной и вмешательством."
             },
             {
-              "type": "image",
+              "type": "изображение",
               "content": "https://api.eprisjournal.com/uploads/msu6g5sd70bo9x.jpg",
-              "caption": "Reflections multiply the office façade into an uncertain field of interior, exterior and observer. Photo: Dietmar Rabich, CC BY-SA 4.0."
+              "caption": "Отражения умножают фасад офиса в неопределённое поле внутреннего, внешнего и наблюдателя. Фото: Dietmar Rabich, CC BY-SA 4.0."
             },
             {
-              "type": "note",
-              "content": "The most persuasive surveillance architecture does not look punitive. It looks convenient. It remembers your preferred light level, opens the correct door and suggests the nearest desk. Control arrives dressed as service."
+              "type": "заметка",
+              "content": "Наиболее убедительная архитектура наблюдения не выглядит наказательной. Она выглядит удобной. Она запоминает ваш предпочтительный уровень света, открывает нужную дверь и предлагает ближайший стол. Контроль приходит в обличье сервиса."
             },
             {
-              "type": "header",
-              "content": "Designing the right to disappear"
+              "type": "заголовок",
+              "content": "Проектирование права исчезнуть"
             },
             {
-              "type": "text",
-              "content": "The answer is not a sentimental return to thick walls and tiny windows. Opacity can protect, but it can also isolate and intimidate. The more interesting task is to design adjustable visibility: spaces that allow a person to decide when to appear, when to blur and when to vanish. Privacy should behave less like a bunker and more like a dimmer."
+              "type": "текст",
+              "content": "Ответ не является сентиментальным возвратом к толстым стенам и крошечным окнам. Непрозрачность может защищать, но она также может изолировать и запугивать. Более интересная задача — спроектировать регулируемую видимость: пространства, позволяющие человеку решать, когда появляться, когда размываться и когда исчезать. Конфиденциальность должна вести себя менее как бункер и более как диммер."
             },
             {
-              "type": "header",
-              "content": "Transparency without the interrogation"
+              "type": "заголовок",
+              "content": "Прозрачность без допроса"
             },
             {
-              "type": "text",
-              "content": "SANAA’s Glass Pavilion at the Toledo Museum of Art offers a more ambiguous model. Its transparent walls do not simply divide interior from exterior. More than 360 large panels, many of them curved, form rooms inside rooms. Reflections overlap with silhouettes; a person appears, disappears behind a bend and returns as a pale double in another surface. Visibility is continuous but never stable."
+              "type": "текст",
+              "content": "Стеклянный павильон SANAA в музее искусств Толедо предлагает более неоднозначную модель. Его прозрачные стены не просто делят внутреннее и внешнее пространство. Более 360 больших панелей, многие из которых изогнуты, образуют комнаты внутри комнат. Отражения накладываются на силуэты; человек появляется, исчезает за изгибом и возвращается как бледный двойник на другой поверхности. Видимость непрерывна, но никогда не устойчива."
             },
             {
-              "type": "image",
+              "type": "изображение",
               "content": "https://api.eprisjournal.com/uploads/msu6r7d4gzssa6.jpg",
-              "caption": "Inside SANAA’s Glass Pavilion, Toledo Museum of Art. Curved walls make visibility layered and uncertain rather than total. Photo: Kiko 2709 / Adam C Nelson, CC BY-SA 3.0."
+              "caption": "Внутри стеклянного павильона SANAA, музей искусств Толедо. Изогнутые стены делают видимость слоистой и неопределённой, а не полной. Фото: Kiko 2709 / Adam C Nelson, CC BY-SA 3.0."
             },
             {
-              "type": "text",
-              "content": "The difference is subtle but important. A straight glazed partition behaves like a diagram: here, there, observed, observer. Curved glass introduces delay and error. It gives the eye too much information to master at once. The architecture remains open, yet the body is not pinned to a single field of vision. Openness becomes atmospheric rather than disciplinary."
+              "type": "текст",
+              "content": "Разница тонкая, но важная. Прямая стеклянная перегородка ведёт себя как схема: здесь, там, наблюдаемый, наблюдатель. Изогнутое стекло вносит задержку и ошибку. Оно даёт глазу слишком много информации, которую невозможно освоить сразу. Архитектура остаётся открытой, но тело не привязано к одному полю зрения. Открытость становится атмосферной, а не дисциплинарной."
             },
             {
-              "type": "text",
-              "content": "This suggests a richer brief for contemporary design. Do not ask only how much daylight or visual connection a partition can deliver. Ask what kind of relationship the pane produces. Who receives the first view? Can the person inside anticipate an approach? Does reflection protect or expose after dark? Can the surface change state without summoning facilities management? The ethical quality of transparency lives in these small asymmetries."
+              "type": "текст",
+              "content": "Это предполагает более богатое задание для современного дизайна. Не спрашивайте только, сколько дневного света или визуальной связи может обеспечить перегородка. Спросите, какие отношения производит стекло. Кто получает первый вид? Может ли человек внутри предвидеть приближение? Защищает или обнажает отражение после наступления тьмы? Может ли поверхность менять состояние без вызова службы управления объектами? Этическое качество прозрачности проявляется в этих небольших асимметриях."
             },
             {
-              "type": "text",
-              "content": "This changes the status of ordinary elements. A curtain is no longer decoration but a user-controlled façade. Ribbed glass transmits light while refusing a complete image. A deep reveal lets someone stand near a window without becoming a display. A turn in a corridor delays the view by one second, enough to replace surprise with consent. Acoustic absorption prevents transparency of sound even where visual connection is useful. A warm pool of local light can make a desk feel inhabited without illuminating the entire room."
+              "type": "текст",
+              "content": "Это меняет статус обычных элементов. Занавес перестаёт быть mere decoration и становится фасадом, контролируемым пользователем. Рифлёное стекло пропускает свет, отказываясь от полного изображения. Глубокий выступ позволяет кому‑то стоять рядом с окном, не превращаясь в экспозицию. Поворот в коридоре задерживает вид на одну секунду, достаточно, чтобы заменить неожиданность согласием. Акустическое поглощение препятствует прозрачности звука даже там, где визуальная связь полезна. Тёплый локальный световой луч может заставить стол чувствовать себя обитаемым, не освещая всю комнату."
             },
             {
-              "type": "text",
-              "content": "Good spatial privacy is not the absence of contact. It is the ability to modulate contact without asking permission from the building. The best rooms offer several states between exposed and sealed: visible, silhouetted, reflected, screened, withdrawn. They recognise that human attention is not an unlimited public resource."
+              "type": "текст",
+              "content": "Хорошая пространственная конфиденциальность — это не отсутствие контакта. Это способность модулировать контакт без разрешения со стороны здания. Лучшие помещения предлагают несколько состояний между открытым и закрытым: видимый, силуэтный, отражённый, экранный, отстранённый. Они признают, что внимание человека — не неограниченный публичный ресурс."
             },
             {
-              "type": "quote",
-              "content": "The radical luxury of the next interior may be simple: a room that notices you without reporting you."
+              "type": "цитата",
+              "content": "Радикальная роскошь следующего интерьера может быть простой: комната, которая замечает вас, не сообщая о вас."
             },
             {
-              "type": "header",
-              "content": "The last lit window"
+              "type": "заголовок",
+              "content": "Последнее освещённое окно"
             },
             {
-              "type": "text",
-              "content": "Glass remains irresistible because it turns architecture into weather. It catches clouds, dissolves corners and lets a room borrow a horizon. None of that beauty is false. The mistake is to confuse visual openness with ethical openness, or technical intelligence with care. A building can reveal its structure and still conceal its politics. It can know exactly where you are and understand nothing about what you need."
+              "type": "текст",
+              "content": "Стекло остаётся неотразимым, поскольку превращает архитектуру в погоду. Он ловит облака, стирает углы и позволяет комнате заимствовать горизонт. Ни одна часть этой красоты не ложна. Ошибка заключается в смешении визуальной открытости с этической открытостью либо технического интеллекта с заботой. Здание может раскрыть свою структуру и при этом скрывать свою политику. Оно может точно знать, где вы находитесь, но ничего не понимать о том, что вам нужно."
             },
             {
-              "type": "text",
-              "content": "The city after midnight makes this contradiction visible. Towers become grids of private scenes; transparent homes become lanterns; the office continues to glow for nobody. Somewhere behind one pane, a person reaches for a switch. The room goes dark. For a moment the façade loses a piece of information. That small disappearance feels less like retreat than control."
+              "type": "текст",
+              "content": "Город после полуночи делает видимым это противоречие. Башни превращаются в сетки частных сцен; прозрачные дома становятся фонарями; офис продолжает светиться ни для кого. За одним стеклом кто-то тянётся к выключателю. Комната погружается во тьму. На мгновение фасад теряет часть информации. Это небольшое исчезновение кажется менее отступлением, чем контролем."
             },
             {
-              "type": "header",
-              "content": "References"
+              "type": "заголовок",
+              "content": "Список литературы"
             },
             {
-              "type": "link",
-              "content": "Transparency in Architecture and Beyond – MoMA",
+              "type": "ссылка",
+              "content": "Прозрачность в архитектуре и за её пределами – MoMA",
               "url": "https://www.moma.org/calendar/galleries/5381"
             },
             {
-              "type": "link",
-              "content": "Bauhaus Building – Stiftung Bauhaus Dessau",
+              "type": "ссылка",
+              "content": "Здание Баухауса – Stiftung Bauhaus Dessau",
               "url": "https://bauhaus-dessau.de/en/venues/bauhaus-building/"
             },
             {
-              "type": "link",
-              "content": "The Glass House – National Trust for Historic Preservation",
+              "type": "ссылка",
+              "content": "Стеклянный дом – Национальный траст по сохранению исторического наследия",
               "url": "https://theglasshouse.org/about/"
             },
             {
-              "type": "link",
-              "content": "The Edge – PLP Architecture",
+              "type": "ссылка",
+              "content": "Край – Архитектура PLP",
               "url": "https://www.plparchitecture.com/projects/the-edge"
             }
           ],
-          "updatedAt": "2026-08-15T13:08:23.051Z"
+          "updatedAt": "2026-08-16T00:53:21.792Z"
         }
       ],
       "reviews": [
