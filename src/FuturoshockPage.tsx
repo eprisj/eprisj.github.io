@@ -1,12 +1,21 @@
 import { Canvas } from '@react-three/fiber';
 import { ContactShadows, OrbitControls, Environment, useGLTF, useTexture } from '@react-three/drei';
 import { Suspense, useEffect, useMemo, useState } from 'react';
+import * as THREE from 'three';
 import { ArrowLeft, ArrowUpRight, Box, Image as ImageIcon, Upload } from 'lucide-react';
 import { getFuturoshock, subscribeContent, type FuturoshockWork } from './data';
 
-function Model({ url }: { url: string }) {
+function Model({ url, size = 2.25 }: { url: string; size?: number }) {
   const { scene } = useGLTF(url);
-  return <primitive object={scene} scale={1.35} />;
+  const model = useMemo(() => scene.clone(true), [scene]);
+  const placement = useMemo(() => {
+    const bounds = new THREE.Box3().setFromObject(model);
+    const dimensions = bounds.getSize(new THREE.Vector3());
+    const center = bounds.getCenter(new THREE.Vector3());
+    const scale = size / Math.max(dimensions.x, dimensions.y, dimensions.z, 0.01);
+    return { scale, position: [-center.x * scale, -bounds.min.y * scale, -center.z * scale] as [number, number, number] };
+  }, [model, size]);
+  return <group scale={placement.scale} position={placement.position}><primitive object={model} /></group>;
 }
 
 function OpeningObject({ scene = 'amber' }: { scene?: FuturoshockWork['openingScene'] }) {
@@ -17,13 +26,13 @@ function OpeningObject({ scene = 'amber' }: { scene?: FuturoshockWork['openingSc
 }
 
 const OPENING_WORKS: FuturoshockWork[] = [
-  { id: 'fs-opening-shelf', title: 'smoked vessel', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural 3D object', statement: 'A weighted amber form with a dark metal collar. It sits closest to the first warm strip, where its surface changes from honey to tobacco.', openingScene: 'amber', materials: ['amber resin', 'oxidised steel'], edition: 'shelf 01', room: 'room-01', shelfSlot: 1 },
-  { id: 'fs-opening-amber', title: 'amber vessel', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural 3D object', statement: 'A small calibrated volume for the illuminated plinth. Rotate it to inspect the warm metal and opaque amber surface.', openingScene: 'amber', materials: ['amber resin', 'dark metal'], edition: 'shelf 02', room: 'room-01', shelfSlot: 2 },
+  { id: 'fs-opening-shelf', title: 'diffuse teacup', author: 'Poly Haven / Eric Chadwick', year: '2023', format: '3d', medium: 'GLB / diffuse transmission', statement: 'A porcelain study with a soft subsurface edge. It is deliberately placed at eye level so the warm strip reveals the body rather than turning it into a flat render.', modelUrl: '/models/futuroshock/teacup.glb', materials: ['porcelain', 'translucent glaze'], edition: 'shelf 01 / CC0', room: 'room-01', shelfSlot: 1, shelfScale: .88, textureNote: 'soft transmission, warm white glaze' },
+  { id: 'fs-opening-amber', title: 'glass hurricane', author: 'Wayfair / Eric Chadwick', year: '2021', format: '3d', medium: 'GLB / volume glass', statement: 'A real glass volume with its edge and thickness preserved. The rear shelf light is part of the work: it makes the object read as glass instead of a tinted silhouette.', modelUrl: '/models/futuroshock/candle-holder.glb', materials: ['clear glass', 'volume transmission'], edition: 'shelf 02 / CC BY 4.0', room: 'room-01', shelfSlot: 2, shelfScale: .82, textureNote: 'clear volume, caustic-like edge' },
   { id: 'fs-opening-fold', title: 'folded witness', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural 3D object', statement: 'Two offset planes turn a wall work into an object. This position is reserved for scans, reliefs and architectural fragments.', openingScene: 'fold', materials: ['brushed aluminium', 'smoked lacquer'], edition: 'shelf 03', room: 'room-01', shelfSlot: 3 },
-  { id: 'fs-opening-light', title: 'small sun', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural light object', statement: 'A small light volume for the second line of the shelf. The milk-glass core keeps a soft edge while the base catches the warm reflection.', openingScene: 'totem', materials: ['milk glass', 'brass', 'low-voltage light'], edition: 'shelf 04', room: 'room-01', shelfSlot: 4 },
-  { id: 'fs-opening-orbit', title: 'orbit for a hand', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural 3D object', statement: 'A rotational study built for the final position near the window. It gives the opening room movement before the first model arrives.', openingScene: 'orbit', materials: ['bronze', 'milk glass', 'charcoal stone'], edition: 'shelf 05', room: 'room-01', shelfSlot: 5 },
+  { id: 'fs-opening-light', title: 'iridescence lamp', author: 'Wayfair / Eric Chadwick', year: '2022', format: '3d', medium: 'GLB / iridescence + volume', statement: 'A lamp with material behavior that changes as the view changes. Here it gives the shelf a genuine light object, not a decorative icon.', modelUrl: '/models/futuroshock/iridescence-lamp.glb', materials: ['iridescent glass', 'metal', 'volume material'], edition: 'shelf 04 / CC BY 4.0', room: 'room-01', shelfSlot: 4, shelfScale: .78, textureNote: 'iridescent film, coloured transmission' },
+  { id: 'fs-opening-orbit', title: 'silk pouf', author: 'Wayfair / Eric Chadwick', year: '2023', format: '3d', medium: 'GLB / sheen fabric', statement: 'A low textile piece breaks the shelf rhythm with a materially soft object. Its specular response stays quiet until the view catches the weave.', modelUrl: '/models/futuroshock/silk-pouf.glb', materials: ['silk fabric', 'sheen material'], edition: 'shelf 05 / CC BY 4.0', room: 'room-01', shelfSlot: 5, shelfScale: .86, textureNote: 'soft fabric sheen, woven surface' },
   { id: 'fs-opening-detail', title: 'touch index', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural relief', statement: 'Two folded plates are held apart just enough for the edge to cast its own small shadow across the backing stone.', openingScene: 'fold', materials: ['brushed aluminium', 'oxide lacquer'], edition: 'shelf 06', room: 'room-01', shelfSlot: 6 },
-  { id: 'fs-opening-signal', title: 'signal totem', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural light object', statement: 'A vertical receiver for the final chamber. It turns a small point of red light into an address in the dark.', openingScene: 'totem', materials: ['anodised aluminium', 'resin', 'low voltage light'], edition: 'shelf 07', room: 'room-01', shelfSlot: 7 },
+  { id: 'fs-opening-signal', title: 'lantern after rain', author: 'Microsoft / Khronos', year: '2017', format: '3d', medium: 'GLB / wood and glass', statement: 'The tallest object on the shelf is now a real lantern model. Its height gives the composition a necessary vertical without inventing another generic totem.', modelUrl: '/models/futuroshock/lantern.glb', materials: ['painted wood', 'glass', 'metal'], edition: 'shelf 07 / CC0', room: 'room-01', shelfSlot: 7, shelfScale: .72, textureNote: 'weathered wood, transparent panes' },
   { id: 'fs-opening-afterimage', title: 'afterimage orb', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural light object', statement: 'A low red signal held in a black base. It is deliberately quiet until the viewer moves around its edge.', openingScene: 'totem', materials: ['tinted resin', 'anodised aluminium'], edition: 'shelf 09', room: 'room-01', shelfSlot: 9 },
   { id: 'fs-opening-archive-fold', title: 'red shift', author: 'EPRIS opening study', year: '2026', format: '3d', medium: 'procedural relief', statement: 'A relief that changes from an image into a sharp object when its edge catches the light.', openingScene: 'fold', materials: ['oxide red lacquer', 'aluminium'], edition: 'shelf 08', room: 'room-01', shelfSlot: 8 },
 ];
