@@ -1,6 +1,7 @@
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { ContactShadows, OrbitControls, Environment, useGLTF, useTexture } from '@react-three/drei';
-import { Suspense, useEffect, useMemo, useState } from 'react';
+import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
+import { Vector3 } from 'three';
 import { ArrowLeft, ArrowUpRight, Box, Image as ImageIcon, Upload } from 'lucide-react';
 import { getFuturoshock, subscribeContent, type FuturoshockWork } from './data';
 
@@ -70,11 +71,26 @@ function ShelfArtwork({ url }: { url: string }) {
   return <group><mesh position={[0, 0, -.04]}><boxGeometry args={[1.16, 1.08, .1]} /><meshStandardMaterial color="#1c1512" roughness={.35} /></mesh><mesh position={[0, 0, .03]}><planeGeometry args={[.98, .9]} /><meshBasicMaterial map={texture} toneMapped={false} /></mesh></group>;
 }
 
+function ShelfCamera({ focus }: { focus: [number, number, number] }) {
+  const { camera } = useThree();
+  const destination = useRef(new Vector3(0, .1, 18));
+  const target = useRef(new Vector3());
+  useFrame((_, delta) => {
+    destination.current.set(focus[0] * .34, focus[1] * .22, 14.2);
+    target.current.set(focus[0], focus[1], 0);
+    const blend = 1 - Math.exp(-delta * 3.8);
+    camera.position.lerp(destination.current, blend);
+    camera.lookAt(target.current);
+  });
+  return null;
+}
+
 function ShelfContent({ work, index, position, active, onSelect }: { work?: FuturoshockWork; index: number; position: [number, number, number]; active?: boolean; onSelect?: () => void }) {
-  const canShowImage = Boolean(work?.imageUrl && !work.id.startsWith('fs-opening'));
-  return <group position={position} scale={work?.format === '3d' && work.modelUrl ? .5 : 1} onClick={(event) => { event.stopPropagation(); onSelect?.(); }}>
+  if (!work) return null;
+  const canShowImage = Boolean(work.imageUrl && !work.id.startsWith('fs-opening'));
+  return <group position={position} scale={(work.format === '3d' && work.modelUrl ? .5 : 1) * (work.shelfScale || 1)} onClick={(event) => { event.stopPropagation(); onSelect?.(); }}>
     {active && <mesh position={[0, 0, -.18]}><boxGeometry args={[1.9, 2.15, .02]} /><meshBasicMaterial color="#f0b16a" transparent opacity={.18} /></mesh>}
-    {work?.format === '3d' && work.modelUrl ? <Suspense fallback={<ShelfPiece index={index % 9} position={[0, 0, 0]} />}><Model url={work.modelUrl} /></Suspense> : canShowImage && work?.imageUrl ? <ShelfArtwork url={work.imageUrl} /> : <ShelfPiece index={index % 9} position={[0, 0, 0]} />}
+    {work.format === '3d' && work.modelUrl ? <Suspense fallback={<OpeningObject scene={work.openingScene} />}><Model url={work.modelUrl} /></Suspense> : canShowImage && work.imageUrl ? <ShelfArtwork url={work.imageUrl} /> : <OpeningObject scene={work.openingScene} />}
   </group>;
 }
 
@@ -83,6 +99,7 @@ function DisplayShelf({ works, activeRoom, selectedId, onSelect }: { works: Futu
   const slots: [number, number, number][] = [[-4.65, 2.55, .55], [-2.33, 2.55, .55], [0, 2.55, .55], [2.33, 2.55, .55], [4.65, 2.55, .55], [-4.65, 0, .55], [-2.33, 0, .55], [0, 0, .55], [2.33, 0, .55], [4.65, 0, .55], [-4.65, -2.55, .55], [-2.33, -2.55, .55], [0, -2.55, .55], [2.33, -2.55, .55], [4.65, -2.55, .55]];
   const placed = new Map<number, FuturoshockWork>();
   works.filter((work) => (work.room || 'room-01') === activeRoom).forEach((work, index) => placed.set(work.shelfSlot || index + 1, work));
+  const selectedSlot = [...placed.entries()].find(([, work]) => work.id === selectedId)?.[0] || 1;
   return <div className="relative h-[calc(100svh-72px)] min-h-[620px] max-h-[920px] overflow-hidden bg-[#17100d]" aria-label="Interactive Futuroshock display shelf">
     <Canvas shadows camera={{ position: [0, .1, 18], fov: 28 }} dpr={[1, 1.5]}>
       <color attach="background" args={['#17100d']} />
@@ -100,9 +117,8 @@ function DisplayShelf({ works, activeRoom, selectedId, onSelect }: { works: Futu
       <mesh position={[0, -4.3, 1.3]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow><planeGeometry args={[26, 16]} /><meshStandardMaterial color="#100c0a" roughness={.9} /></mesh>
       <ContactShadows position={[0, -4.02, .6]} opacity={.5} scale={15} blur={2.7} far={8} />
       <Environment preset="warehouse" />
-      <OrbitControls target={[0, 0, 0]} enablePan={false} minDistance={14} maxDistance={22} minPolarAngle={1.12} maxPolarAngle={1.55} />
+      <ShelfCamera focus={slots[selectedSlot - 1]} />
     </Canvas>
-    <div className="absolute inset-x-0 bottom-0 flex justify-center gap-px border-t border-white/15 bg-[#0a0908]/74 p-2 backdrop-blur"><div className="grid grid-cols-9 gap-1 sm:grid-cols-[repeat(15,minmax(0,1fr))]">{slots.map((_, index) => { const work = placed.get(index + 1); return <button key={index} type="button" aria-label={work ? `Select ${work.title}` : `Empty shelf slot ${index + 1}`} onClick={() => work && onSelect(work.id)} disabled={!work} className={`grid h-7 w-7 place-items-center border font-mono text-[8px] transition sm:h-8 sm:w-8 ${work?.id === selectedId ? 'border-[#f0b16a] bg-[#f0b16a] text-[#17110d]' : work ? 'border-white/25 text-white/70 hover:border-[#f0b16a]' : 'border-white/10 text-white/20'}`}>{String(index + 1).padStart(2, '0')}</button>; })}</div></div>
   </div>;
 }
 
@@ -180,6 +196,10 @@ export function FuturoshockPage() {
   const visibleWorks = useMemo(() => works.filter((work) => (work.room || 'room-01') === activeRoom), [works, activeRoom]);
   const selected = useMemo(() => works.find((work) => work.id === selectedId) ?? works[0] ?? null, [works, selectedId]);
   const [lightMode, setLightMode] = useState<LightMode>('warm');
+  const selectWork = (id: string) => {
+    setSelectedId(id);
+    window.setTimeout(() => document.getElementById('object-dossier')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+  };
 
   useEffect(() => {
     const unsubscribe = subscribeContent(() => {
@@ -205,12 +225,12 @@ export function FuturoshockPage() {
         </div>
       </header>
 
-      <section className="border-b border-white/12"><DisplayShelf works={works} activeRoom={activeRoom} selectedId={selectedId} onSelect={setSelectedId} /></section>
+      <section className="border-b border-white/12"><DisplayShelf works={works} activeRoom={activeRoom} selectedId={selectedId} onSelect={selectWork} /></section>
 
       <section className="mx-auto max-w-[1700px] px-5 py-14 sm:px-8 sm:py-20 lg:px-12">
         <div className="flex items-end justify-between border-b border-white/15 pb-5"><div><p className="font-mono text-[10px] uppercase tracking-[.18em] text-[#ee9f7d]">shelf inventory</p><h2 className="mt-3 font-display text-[clamp(2.8rem,5vw,5.2rem)] lowercase leading-[.86]">what is on view</h2></div><span className="hidden font-mono text-[10px] uppercase tracking-[.15em] text-white/40 sm:block">15 positions / live edit</span></div>
-        <div className="grid border-l border-t border-white/15 sm:grid-cols-2 lg:grid-cols-3">{works.map((work, index) => { const slot = work.shelfSlot || index + 1; return <button key={work.id} type="button" onClick={() => setSelectedId(work.id)} className={`min-h-[300px] border-b border-r border-white/15 p-6 text-left transition hover:bg-white/[.045] sm:p-8 ${selected?.id === work.id ? 'bg-[#171514]' : ''}`}><div className="flex items-start justify-between gap-4"><span className="font-display text-4xl leading-none text-[#ee9f7d]">{String(slot).padStart(2, '0')}</span><span className="font-mono text-[9px] uppercase tracking-[.16em] text-white/42">{work.format === '3d' ? 'object / 3D' : 'image / 2D'}</span></div><h3 className="mt-12 font-display text-[clamp(2rem,3vw,3.25rem)] lowercase leading-[.86] text-[#f6efe5]">{work.title}</h3><p className="mt-5 max-w-[34rem] font-sans text-sm leading-[1.65] text-white/62">{work.statement}</p><div className="mt-7 border-t border-white/12 pt-4 font-mono text-[9px] uppercase leading-[1.65] tracking-[.13em] text-[#f0c28c]">{work.materials?.join(' / ') || work.medium}</div></button>; })}</div>
-        {selected && <section className="mt-10 grid overflow-hidden border border-white/15 bg-[#151313] lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,.8fr)]"><div className="min-h-[440px] border-b border-white/12 lg:border-b-0 lg:border-r"><WorkPreview work={selected} lightMode={lightMode} /></div><div className="flex flex-col justify-between p-6 sm:p-9"><div><p className="font-mono text-[10px] uppercase tracking-[.17em] text-[#ee9f7d]">selected object / rotate freely</p><h3 className="mt-5 font-display text-[clamp(3rem,5vw,5.8rem)] lowercase leading-[.82]">{selected.title}</h3><p className="mt-7 max-w-[34rem] font-sans text-[16px] leading-[1.7] text-white/68">{selected.statement}</p><dl className="mt-9 grid grid-cols-2 gap-x-5 gap-y-6 border-t border-white/14 pt-5 font-mono text-[9px] uppercase tracking-[.13em]"><div><dt className="text-white/35">surface</dt><dd className="mt-2 leading-[1.55] text-[#f0c28c]">{selected.materials?.join(' / ') || selected.medium}</dd></div><div><dt className="text-white/35">medium</dt><dd className="mt-2 leading-[1.55] text-white/72">{selected.medium}</dd></div><div><dt className="text-white/35">author</dt><dd className="mt-2 leading-[1.55] text-white/72">{selected.author}</dd></div><div><dt className="text-white/35">position</dt><dd className="mt-2 leading-[1.55] text-white/72">shelf {String(selected.shelfSlot || works.indexOf(selected) + 1).padStart(2, '0')}</dd></div></dl></div><span className="mt-9 font-mono text-[9px] uppercase tracking-[.16em] text-white/42">drag to rotate / scroll to inspect</span></div></section>}
+        <div className="grid border-l border-t border-white/15 sm:grid-cols-2 lg:grid-cols-3">{works.map((work, index) => { const slot = work.shelfSlot || index + 1; return <button key={work.id} type="button" onClick={() => selectWork(work.id)} className={`min-h-[300px] border-b border-r border-white/15 p-6 text-left transition hover:bg-white/[.045] sm:p-8 ${selected?.id === work.id ? 'bg-[#171514]' : ''}`}><div className="flex items-start justify-between gap-4"><span className="font-display text-4xl leading-none text-[#ee9f7d]">{String(slot).padStart(2, '0')}</span><span className="font-mono text-[9px] uppercase tracking-[.16em] text-white/42">{work.format === '3d' ? 'object / 3D' : 'image / 2D'}</span></div><h3 className="mt-12 font-display text-[clamp(2rem,3vw,3.25rem)] lowercase leading-[.86] text-[#f6efe5]">{work.title}</h3><p className="mt-5 max-w-[34rem] font-sans text-sm leading-[1.65] text-white/62">{work.statement}</p><div className="mt-7 border-t border-white/12 pt-4 font-mono text-[9px] uppercase leading-[1.65] tracking-[.13em] text-[#f0c28c]">{work.materials?.join(' / ') || work.medium}</div></button>; })}</div>
+        {selected && <section id="object-dossier" className="mt-10 grid overflow-hidden border border-white/15 bg-[#151313] lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,.8fr)]"><div className="min-h-[440px] border-b border-white/12 lg:border-b-0 lg:border-r"><WorkPreview work={selected} lightMode={lightMode} /></div><div className="flex flex-col justify-between p-6 sm:p-9"><div><p className="font-mono text-[10px] uppercase tracking-[.17em] text-[#ee9f7d]">selected object / rotate freely</p><h3 className="mt-5 font-display text-[clamp(3rem,5vw,5.8rem)] lowercase leading-[.82]">{selected.title}</h3><p className="mt-7 max-w-[34rem] font-sans text-[16px] leading-[1.7] text-white/68">{selected.statement}</p><dl className="mt-9 grid grid-cols-2 gap-x-5 gap-y-6 border-t border-white/14 pt-5 font-mono text-[9px] uppercase tracking-[.13em]"><div><dt className="text-white/35">surface</dt><dd className="mt-2 leading-[1.55] text-[#f0c28c]">{selected.materials?.join(' / ') || selected.medium}</dd></div><div><dt className="text-white/35">medium</dt><dd className="mt-2 leading-[1.55] text-white/72">{selected.medium}</dd></div><div><dt className="text-white/35">author</dt><dd className="mt-2 leading-[1.55] text-white/72">{selected.author}</dd></div><div><dt className="text-white/35">position</dt><dd className="mt-2 leading-[1.55] text-white/72">shelf {String(selected.shelfSlot || works.indexOf(selected) + 1).padStart(2, '0')}</dd></div></dl></div><span className="mt-9 font-mono text-[9px] uppercase tracking-[.16em] text-white/42">drag to rotate / scroll to inspect</span></div></section>}
       </section>
 
       <section className="border-t border-white/12 bg-[#f1e9df] text-[#171313]"><div className="mx-auto grid max-w-[1700px] gap-12 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[.8fr_1.2fr] lg:px-12"><div><p className="font-mono text-[10px] uppercase tracking-[.18em] text-[#a63d2c]">02 / submission logic</p><h2 className="mt-5 max-w-[8ch] font-display text-[clamp(3rem,6vw,6rem)] lowercase leading-[.82]">make it impossible to scroll past</h2></div><div className="grid gap-0 border-t border-[#171313]/18"><div className="grid gap-4 border-b border-[#171313]/18 py-6 sm:grid-cols-[5rem_1fr]"><span className="font-display text-3xl text-[#a63d2c]">01</span><p className="max-w-[38rem] font-sans text-base leading-relaxed">Send one strong cover image and, when available, a clean GLB or GLTF model. The work should survive both a quiet thumbnail and a full-screen view.</p></div><div className="grid gap-4 border-b border-[#171313]/18 py-6 sm:grid-cols-[5rem_1fr]"><span className="font-display text-3xl text-[#a63d2c]">02</span><p className="max-w-[38rem] font-sans text-base leading-relaxed">Add the actual material vocabulary: light, scale, surface, object, route. Futuroshock is not a portfolio dump; it is a room with editorial attention.</p></div><div className="grid gap-4 py-6 sm:grid-cols-[5rem_1fr]"><span className="font-display text-3xl text-[#a63d2c]">03</span><p className="max-w-[38rem] font-sans text-base leading-relaxed">The editorial team checks file quality, rights and context before publishing. Selected works can link back to an EPRIS article, review or Bureau case.</p></div></div></div></section>
