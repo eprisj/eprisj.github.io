@@ -75,7 +75,7 @@ function ShelfContent({ work, index, position, active, onSelect }: { work?: Futu
   const canShowImage = Boolean(work.imageUrl && !work.id.startsWith('fs-opening'));
   return <group position={position} scale={(work.format === '3d' && work.modelUrl ? .5 : 1) * (work.shelfScale || 1)} onClick={(event) => { event.stopPropagation(); onSelect?.(); }}>
     {active && <mesh position={[0, 0, -.18]}><boxGeometry args={[1.9, 2.15, .02]} /><meshBasicMaterial color="#f0b16a" transparent opacity={.18} /></mesh>}
-    {work.format === '3d' && work.modelUrl ? <Suspense fallback={<OpeningObject scene={work.openingScene} />}><Model url={work.modelUrl} /></Suspense> : canShowImage && work.imageUrl ? <ShelfArtwork url={work.imageUrl} /> : <OpeningObject scene={work.openingScene} />}
+    {work.format === '3d' && work.modelUrl ? <Suspense fallback={<ShelfPiece index={index % 9} position={[0, 0, 0]} />}><Model url={work.modelUrl} /></Suspense> : canShowImage && work.imageUrl ? <ShelfArtwork url={work.imageUrl} /> : <ShelfPiece index={index % 9} position={[0, 0, 0]} />}
   </group>;
 }
 
