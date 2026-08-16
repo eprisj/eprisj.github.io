@@ -2614,11 +2614,17 @@ function ArticlesSection({
             whileHover={{ x: 4 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
+            {/* Card-specific cover, headline and standfirst when the editor set
+                them, the article's own otherwise (see the preview* fields in
+                data.ts). objectPosition carries the focal point: the frame is
+                square and covers rarely are, so a centre crop is what cuts the
+                top off a portrait. */}
             <div className="aspect-square overflow-hidden bg-[#E8DED5]">
               <motion.img
-                src={resolveMediaSource(article.imageUrl || article.imageSeed, 480, 480)}
-                alt={article.title}
+                src={resolveMediaSource(article.previewImageUrl || article.imageUrl || article.imageSeed, 480, 480)}
+                alt={article.previewTitle || article.title}
                 className="w-full h-full object-cover"
+                style={article.previewFocus ? { objectPosition: article.previewFocus } : undefined}
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -2629,14 +2635,14 @@ function ArticlesSection({
                 </span>
               )}
               <h3 className="font-crimson text-lg sm:text-xl text-[var(--c-accent)] mb-2 group-hover:text-[var(--c-gold)] transition-colors duration-300">
-                {article.title}
+                {article.previewTitle || article.title}
               </h3>
-              {showDescription && <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-4">
-                {article.excerpt}
+              {showDescription && !article.previewHideExcerpt && <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-4">
+                {article.previewExcerpt || article.excerpt}
               </p>}
-              <div className="mt-auto border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] pt-3 font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.58)]">
+              {!article.previewHideAuthor && <div className="mt-auto border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] pt-3 font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.58)]">
                 {t('articles.by')} {displayArticleAuthor(article)}
-              </div>
+              </div>}
               {showReadAll && <span className="mt-auto inline-flex items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
                 {showPreview ? t('articles.readPreview') : t('articles.readFull')} <ArrowUpRight size={14} />
               </span>}
