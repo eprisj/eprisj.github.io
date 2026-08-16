@@ -76,7 +76,7 @@ function ShelfCamera({ focus }: { focus: [number, number, number] }) {
   const destination = useRef(new Vector3(0, .1, 18));
   const target = useRef(new Vector3());
   useFrame((_, delta) => {
-    destination.current.set(focus[0] * .34, focus[1] * .22, 14.2);
+    destination.current.set(focus[0] * .12, focus[1] * .08, 18);
     target.current.set(focus[0], focus[1], 0);
     const blend = 1 - Math.exp(-delta * 3.8);
     camera.position.lerp(destination.current, blend);
@@ -117,7 +117,7 @@ function DisplayShelf({ works, activeRoom, selectedId, onSelect }: { works: Futu
       <mesh position={[0, -4.3, 1.3]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow><planeGeometry args={[26, 16]} /><meshStandardMaterial color="#100c0a" roughness={.9} /></mesh>
       <ContactShadows position={[0, -4.02, .6]} opacity={.5} scale={15} blur={2.7} far={8} />
       <Environment preset="warehouse" />
-      <ShelfCamera focus={slots[selectedSlot - 1]} />
+      <ShelfCamera focus={selectedId ? slots[selectedSlot - 1] : [0, 0, 0]} />
     </Canvas>
   </div>;
 }
@@ -192,12 +192,14 @@ function InteriorRoom({ compact = false, lightMode = 'warm', room = 'room-01' }:
 export function FuturoshockPage() {
   const [works, setWorks] = useState<FuturoshockWork[]>(() => getFuturoshock().length ? getFuturoshock() : OPENING_WORKS);
   const [selectedId, setSelectedId] = useState<string | null>(() => { const exhibition = getFuturoshock().length ? getFuturoshock() : OPENING_WORKS; return exhibition.find((work) => work.format === '3d')?.id ?? exhibition[0]?.id ?? null; });
+  const [focusedId, setFocusedId] = useState<string | null>(null);
   const [activeRoom, setActiveRoom] = useState<RoomId>('room-01');
   const visibleWorks = useMemo(() => works.filter((work) => (work.room || 'room-01') === activeRoom), [works, activeRoom]);
   const selected = useMemo(() => works.find((work) => work.id === selectedId) ?? works[0] ?? null, [works, selectedId]);
   const [lightMode, setLightMode] = useState<LightMode>('warm');
   const selectWork = (id: string) => {
     setSelectedId(id);
+    setFocusedId(id);
     window.setTimeout(() => document.getElementById('object-dossier')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
   };
 
@@ -225,7 +227,7 @@ export function FuturoshockPage() {
         </div>
       </header>
 
-      <section className="border-b border-white/12"><DisplayShelf works={works} activeRoom={activeRoom} selectedId={selectedId} onSelect={selectWork} /></section>
+      <section className="border-b border-white/12"><DisplayShelf works={works} activeRoom={activeRoom} selectedId={focusedId} onSelect={selectWork} /></section>
 
       <section className="mx-auto max-w-[1700px] px-5 py-14 sm:px-8 sm:py-20 lg:px-12">
         <div className="flex items-end justify-between border-b border-white/15 pb-5"><div><p className="font-mono text-[10px] uppercase tracking-[.18em] text-[#ee9f7d]">shelf inventory</p><h2 className="mt-3 font-display text-[clamp(2.8rem,5vw,5.2rem)] lowercase leading-[.86]">what is on view</h2></div><span className="hidden font-mono text-[10px] uppercase tracking-[.15em] text-white/40 sm:block">15 positions / live edit</span></div>
