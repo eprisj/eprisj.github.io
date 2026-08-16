@@ -24,6 +24,7 @@ import {
   getAuthors,
   getManifest,
   getContentForLanguage,
+  orderArticles,
   getHomepageArchive,
   getIssueArchive,
   getStudio,
@@ -1646,25 +1647,15 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
   );
 }
 
-function articlePublishedTimestamp(article: Pick<Article, 'date' | 'updatedAt'>): number {
-  for (const value of [article.date, article.updatedAt]) {
-    const timestamp = value ? Date.parse(value) : Number.NaN;
-    if (Number.isFinite(timestamp)) return timestamp;
-  }
-  return 0;
-}
-
-function sortArticlesNewestFirst(articles: Article[]): Article[] {
-  return [...articles].sort((a, b) => {
-    const byDate = articlePublishedTimestamp(b) - articlePublishedTimestamp(a);
-    return byDate || b.id - a.id;
-  });
-}
-
+/* Ordering moved to data.ts (orderArticles). It used to live here as a local
+   sort by Date.parse(article.date), which the Articles grid and the homepage
+   feed each called for themselves — two places deciding one thing, with no way
+   for an editor to influence either. The rule now belongs to the content
+   layer, where pins and the manual sequence live with it. */
 function homepageArticleFeed(articles: Article[]): Article[] {
   const settings = getHomepageSettings().articles || {};
   if (settings.enabled === false) return [];
-  const sorted = sortArticlesNewestFirst(articles);
+  const sorted = orderArticles(articles);
   const limit = Number(settings.limit);
   return Number.isFinite(limit) && limit > 0 ? sorted.slice(0, Math.max(1, Math.floor(limit))) : sorted;
 }
@@ -2601,7 +2592,7 @@ function ArticlesSection({
   showReadAll?: boolean;
   columns?: 1 | 2 | 3;
 }) {
-  const filteredArticles = sortArticlesNewestFirst(articles);
+  const filteredArticles = orderArticles(articles);
   const openArticle = showPreview ? (onArticlePreview || onArticleClick) : onArticleClick;
   const listClass = columns === 3
     ? 'grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-3'

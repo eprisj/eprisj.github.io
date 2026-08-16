@@ -168,7 +168,21 @@ export interface Article {
   role?: string;
   /** Optional link to an entry in SiteContent.authors; falls back to the `author`/`role` strings when absent. */
   authorId?: string;
+  /**
+   * Human-facing date, exactly as an editor typed it ("Jul 30, 2026",
+   * "15 серпня 2026"). Display only.
+   */
   date: string;
+  /**
+   * Machine-readable publication date (ISO 8601) and the ONLY key the feed
+   * sorts by. `date` used to carry both jobs and could not: the base content
+   * holds "July 18, 2026", "Jul 30, 2026" and "Aug 2, 2026" side by side, and
+   * the moment an editor writes a date in any other shape (a Cyrillic month,
+   * 15.08.2026, a typo) Date.parse returns NaN and the article slides silently
+   * to wherever `updatedAt` and `id` happen to put it. Backfilled by
+   * scripts/backfill-published-at.mjs; new articles get it from the admin.
+   */
+  publishedAt?: string;
   excerpt: string;
   category: string;
   subcategory?: string;
@@ -349,6 +363,38 @@ export interface HomepageShowcaseSettings {
   featuredWorkIds?: string[];
 }
 
+/**
+ * Ordering for every list of articles on the site.
+ *
+ * `mode` decides the base sequence and `pinned` sits on top of it, in the order
+ * given. Chronological is the default because that is what a journal is; manual
+ * exists for an editor who wants a run of pieces to read in a set order.
+ *
+ * `manualOrder` is a LIST of ids, not a number on each article. The per-article
+ * `order` field this replaces is exactly the failure a list avoids: it holds
+ * 1..11 on the older articles, nothing at all on the four newest, and no code
+ * has read it since the feed started sorting by date. A list cannot half-exist,
+ * cannot need renumbering, and an article missing from it has one obvious
+ * meaning (it has not been placed yet) instead of an ambiguous undefined.
+ *
+ * Ordering lives on the base content, never inside a translation bucket: a
+ * per-language order would drift apart the same way translated article bodies
+ * did before the text-overlay fix.
+ */
+export interface ArticleOrderSettings {
+  mode?: 'chronological' | 'manual';
+  /** Article ids shown first, in this order, in both modes. */
+  pinned?: number[];
+  /** Article ids in editor-defined order; used when mode is 'manual'. */
+  manualOrder?: number[];
+  /**
+   * Where articles absent from `manualOrder` go. 'top' suits a journal that
+   * keeps publishing into a hand-arranged run; 'bottom' suits a fixed
+   * anthology whose tail is deliberate.
+   */
+  unplaced?: 'top' | 'bottom';
+}
+
 export type HomepageSectionKey = 'pics' | 'articles' | 'showcase' | 'archive';
 
 /**
@@ -421,6 +467,12 @@ export interface HomepageSettings {
     /** 0 means all published articles, otherwise show the newest N. */
     limit?: number;
   };
+  /**
+   * How every article surface is ordered. One setting, not one per surface:
+   * the homepage feed, the Articles grid and search all used to sort for
+   * themselves, which is how two of them could already disagree.
+   */
+  articleOrder?: ArticleOrderSettings;
   layout?: HomepageLayoutSettings;
   /** When enabled, safe homepage edits are pushed after a short debounce. */
   autoPublish?: boolean;
@@ -668,6 +720,11 @@ const BASE_AUTHORITATIVE_FIELDS = new Set([
   // (or an old placeholder) on the same article/review.
   'id', 'picsId', 'imageSeed', 'imageUrl', 'author', 'authorId', 'draft', 'publishAt', 'updatedAt',
   'url', 'link', 'rating', 'featured', 'coordinates',
+  // When an article was published is a fact about the article, not a translated
+  // string. Left overlayable, a stale locale bucket could order that language's
+  // feed differently from every other one — the same class of drift that made
+  // translated article bodies diverge from the base before the text-overlay fix.
+  'publishedAt',
 ]);
 
 // Content-block types whose `content` field is translatable prose (a string).
@@ -956,6 +1013,73 @@ export function getTheme(): SiteTheme {
 
 export function getSiteSettings(): SiteSettings {
   return src().site || {};
+}
+
+/**
+ * The publication moment of an article, as a number.
+ *
+ * `publishedAt` first: it is the field that exists to answer this. `date` is a
+ * free-text display string and is only a fallback for content written before
+ * the backfill; `updatedAt` after it, and 0 last, which sorts an undated piece
+ * to the end rather than to the top.
+ */
+export function articleTimestamp(article: { publishedAt?: string; date?: string; updatedAt?: string }): number {
+  for (const value of [article.publishedAt, article.date, article.updatedAt]) {
+    const timestamp = value ? Date.parse(value) : Number.NaN;
+    if (Number.isFinite(timestamp)) return timestamp;
+  }
+  return 0;
+}
+
+/**
+ * THE order of articles. Every surface calls this one function, so the
+ * homepage feed, the Articles grid, an issue and search cannot answer the same
+ * question differently — which they already did, with two separate sorts in
+ * App.tsx and a dead `order` field in the data.
+ *
+ * Pinned ids come first in the order the editor pinned them. The rest follow
+ * the mode. Ids that no longer exist are ignored rather than leaving holes.
+ */
+export function orderArticles<T extends { id: number; publishedAt?: string; date?: string; updatedAt?: string }>(
+  articles: T[],
+  settings: ArticleOrderSettings = getHomepageSettings().articleOrder || {},
+): T[] {
+  const byId = new Map(articles.map((article) => [Number(article.id), article]));
+  const taken = new Set<number>();
+  const out: T[] = [];
+
+  const take = (id: number) => {
+    const key = Number(id);
+    if (taken.has(key)) return;
+    const article = byId.get(key);
+    if (!article) return;      // deleted since it was pinned/placed
+    taken.add(key);
+    out.push(article);
+  };
+
+  (settings.pinned || []).forEach(take);
+
+  const chronological = articles
+    .slice()
+    .sort((a, b) => articleTimestamp(b) - articleTimestamp(a) || Number(b.id) - Number(a.id));
+
+  if (settings.mode === 'manual') {
+    const placed = (settings.manualOrder || []).filter((id) => byId.has(Number(id)));
+    const unplaced = chronological.filter((article) => !placed.includes(Number(article.id)));
+    // Newly published pieces should not vanish into the middle of a hand-made
+    // run: they go to one deliberate end of it, and which end is a setting.
+    if (settings.unplaced === 'bottom') {
+      placed.forEach(take);
+      unplaced.forEach((article) => take(article.id));
+    } else {
+      unplaced.forEach((article) => take(article.id));
+      placed.forEach(take);
+    }
+  } else {
+    chronological.forEach((article) => take(article.id));
+  }
+
+  return out;
 }
 
 export function getHomepageSettings(): HomepageSettings {
