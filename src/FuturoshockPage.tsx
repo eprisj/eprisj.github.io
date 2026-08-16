@@ -54,7 +54,7 @@ function WorkCard({ work, active, onSelect }: { work: FuturoshockWork; active: b
 function InteriorRoom({ compact = false }: { compact?: boolean }) {
   return (
     <div className={`relative isolate overflow-hidden bg-[#201a17] ${compact ? 'min-h-[360px]' : 'min-h-[560px]'}`}>
-      <img src="/futuroshock/interior-reference.png" alt="The Futuroshock interior, prepared for its first works" className="absolute inset-0 h-full w-full object-cover object-center saturate-[.72] contrast-[1.04]" />
+      <img src="/images/futuroshock-interior.png" alt="The Futuroshock interior, prepared for its first works" className="absolute inset-0 h-full w-full object-cover object-center saturate-[.72] contrast-[1.04]" />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,12,12,.76),rgba(10,12,12,.14)_53%,rgba(10,12,12,.54)),linear-gradient(0deg,rgba(10,12,12,.7),transparent_55%)]" />
       <div className="absolute inset-x-[6%] top-[18%] h-px bg-[#f8e0af]/65 shadow-[0_0_22px_5px_rgba(248,190,94,.33)]" />
       <div className="absolute left-[8%] top-[27%] h-[44%] w-[38%] border border-[#f9e7ca]/36 bg-[#291e18]/22 shadow-[inset_0_0_50px_rgba(0,0,0,.4),0_12px_50px_rgba(0,0,0,.28)]">
