@@ -2380,7 +2380,7 @@
       ],
       "order": 1,
       "imageUrl": "https://api.eprisjournal.com/uploads/msm9xi2uysm3fm.jpg",
-      "updatedAt": "2026-08-17T08:30:40.658Z",
+      "updatedAt": "2026-08-17T08:52:41.889Z",
       "publishedAt": "2026-07-18"
     },
     {
@@ -22071,6 +22071,25 @@
       "visibility": {},
       "pics": {},
       "articles": {}
+    },
+    "articleOrder": {
+      "mode": "manual",
+      "pinned": [],
+      "manualOrder": [
+        18,
+        22,
+        17,
+        16,
+        15,
+        14,
+        13,
+        10,
+        12,
+        11,
+        9,
+        8
+      ],
+      "unplaced": "top"
     }
   },
   "theme": {
