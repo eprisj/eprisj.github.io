@@ -4627,53 +4627,6 @@
       ]
     },
     {
-      "id": 3,
-      "title": "Modernist Retreat",
-      "subject": "Hotel 'The Edge', Paphos",
-      "rating": 4,
-      "content": "Stunning architecture, but the service lacked the warmth one expects in the Mediterranean.",
-      "author": "James B.",
-      "imageUrl": "/images/article-img-4.png",
-      "featured": false,
-      "category": "Stay",
-      "verdict": "Stunning architecture let down by lukewarm service.",
-      "meta": "Paphos · Design hotel · €€€",
-      "pros": [
-        "Breathtaking cliff-edge design",
-        "Serene, minimal rooms"
-      ],
-      "cons": [
-        "Service lacks Mediterranean warmth",
-        "Limited dining options"
-      ]
-    },
-    {
-      "id": 4,
-      "title": "New review",
-      "subject": "New review",
-      "rating": 0,
-      "content": "DETAILS THAT MATTER\n\nTaking into account first impressions - atmosphere, service, who this place is for. The following are details that support the findings.\n\nНовый абзац.ммм\n\nFIRST IMPRESSION\n\nWhat stays with you after the first encounter?\n\nDescribe the material, rhythm, service or object in concrete terms.\n\nIN CONTEXT\n\nPlace the subject in its cultural or local context.\n\nWHO IT IS FOR\n\nA concise editorial recommendation.",
-      "author": "Maria Ivanova",
-      "category": "Food & Stay",
-      "verdict": "One clear line - is it worth going?",
-      "pros": [
-        "Location",
-        "Atmosphere",
-        "Value for money",
-        ""
-      ],
-      "cons": [
-        "One honest minus"
-      ],
-      "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
-      "date": "Aug 1, 2026",
-      "imageUrl": "https://api.eprisjournal.com/uploads/msnluv70lwze6y.jpg",
-      "updatedAt": "2026-08-14T16:21:54.544Z",
-      "draft": true,
-      "authorId": "author-1784896384236-4fokw",
-      "role": "Author"
-    },
-    {
       "id": 5,
       "draft": true,
       "title": "New review",
