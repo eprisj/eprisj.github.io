@@ -7902,3 +7902,14 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .sc-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; opacity: .55; transition: opacity .12s ease; }
 .sc-card:hover .sc-actions, .sc-card:focus-within .sc-actions { opacity: 1; }
 .sc-actions .btn { font-size: .58rem; padding: 5px 10px; }
+
+/* Delete lives inside the opened card settings, one row down from everything
+   else and visually separated: it is the only action on this screen that
+   destroys content instead of rearranging it. */
+.order-cs-danger {
+  grid-column: 1 / -1; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  margin-top: 4px; padding-top: 12px; border-top: 1px solid var(--line);
+}
+.order-cs-danger > span { font-size: .7rem; line-height: 1.45; color: var(--text-muted); }
+.order-cs-delete { border-color: rgba(178, 70, 31, .5); color: #b2461f; }
+.order-cs-delete:hover { background: rgba(178, 70, 31, .08); border-color: #b2461f; }
