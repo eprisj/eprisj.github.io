@@ -2576,6 +2576,130 @@ function ArticlePreviewDialog({ article, onClose, onReadFull, onImageClick, t }:
   );
 }
 
+/* ОДНА КАРТОЧКА НА ВСЕ СПИСКИ ЖУРНАЛА.
+
+   Статьи и обзоры были двумя независимыми вёрстками одного и того же —
+   «обложка, рубрика, заголовок, вводка, автор, кнопка». Поэтому они и разошлись:
+   статьи читались как журнал (ряд карточек в одну колонку, квадратная обложка
+   слева), а обзоры — как каталог (плитка 2-в-ряд, широкий баннер сверху,
+   строка фильтров). Одна и та же страница выглядела как два разных издания.
+
+   Теперь композицию задаёт это место, и разойтись снова они не могут. Всё, что
+   отличает обзор от статьи, приходит данными: `kicker` — то, О ЧЁМ обзор
+   (адрес ресторана, автор книги), которого у статьи нет, а `verdict` — приговор,
+   главная строка обзора: она набирается курсивом с золотой линейкой, потому что
+   это голос критика, а не пересказ. */
+type EditorialCardData = {
+  key: string;
+  eyebrow?: string;
+  kicker?: string;
+  title: string;
+  standfirst?: string;
+  verdict?: string;
+  byline?: string;
+  imageSrc?: string;
+  imageFocus?: string;
+};
+
+function EditorialListCard({
+  card,
+  onOpen,
+  ctaLabel,
+  ariaLabel,
+  showDescription = true,
+  showByline = true,
+  showCta = true,
+}: {
+  card: EditorialCardData;
+  onOpen: () => void;
+  ctaLabel: string;
+  ariaLabel: string;
+  showDescription?: boolean;
+  showByline?: boolean;
+  showCta?: boolean;
+}) {
+  return (
+    <motion.button
+      type="button"
+      className="w-full border border-[var(--c-accent)] bg-transparent p-0 text-left group cursor-pointer grid grid-cols-1 sm:grid-cols-[45%_1fr] items-stretch overflow-hidden"
+      onClick={onOpen}
+      aria-label={ariaLabel}
+      whileHover={{ x: 4 }}
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {/* Card-specific cover, headline and standfirst when the editor set
+          them, the entry's own otherwise (see the preview* fields in
+          data.ts). objectPosition carries the focal point: the frame is
+          square and covers rarely are, so a centre crop is what cuts the
+          top off a portrait. */}
+      <div className="aspect-square overflow-hidden bg-[#E8DED5]">
+        <motion.img
+          src={card.imageSrc}
+          alt={card.title}
+          className="w-full h-full object-cover"
+          style={card.imageFocus ? { objectPosition: card.imageFocus } : undefined}
+          referrerPolicy="no-referrer"
+        />
+      </div>
+      <div className="flex flex-col p-4 sm:p-6">
+        {card.eyebrow && (
+          <span className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.55)] uppercase tracking-widest mb-1">
+            {card.eyebrow}
+          </span>
+        )}
+        <h3 className="font-crimson text-lg sm:text-xl text-[var(--c-accent)] mb-2 group-hover:text-[var(--c-gold)] transition-colors duration-300">
+          {card.title}
+        </h3>
+        {card.kicker && (
+          <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] -mt-1 mb-3">
+            {card.kicker}
+          </p>
+        )}
+        {showDescription && card.verdict && (
+          <p className="font-serif text-sm italic text-[var(--c-accent)] leading-snug mb-3 border-l-2 border-[var(--c-gold)] pl-3">
+            {card.verdict}
+          </p>
+        )}
+        {showDescription && card.standfirst && (
+          <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-4">
+            {card.standfirst}
+          </p>
+        )}
+        {showByline && card.byline && (
+          <div className="mt-auto border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] pt-3 font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.58)]">
+            {card.byline}
+          </div>
+        )}
+        {showCta && (
+          <span className="mt-auto inline-flex items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
+            {ctaLabel} <ArrowUpRight size={14} />
+          </span>
+        )}
+      </div>
+    </motion.button>
+  );
+}
+
+/* Обёртка списка — та же мера набора и те же интервалы для любого раздела.
+   max-w-4xl тут не украшение: карточка «обложка + текст» рассчитана на эту
+   ширину, и на всю ширину экрана она разъезжается в баннер. */
+function EditorialList({ children, columns = 1 }: { children: React.ReactNode; columns?: 1 | 2 | 3 }) {
+  const listClass = columns === 3
+    ? 'grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-3'
+    : columns === 2
+      ? 'grid grid-cols-1 gap-8 md:grid-cols-2'
+      : 'space-y-10 sm:space-y-14';
+  return (
+    <div>
+      <div className="max-w-4xl mx-auto px-5 sm:px-0 pt-8 sm:pt-10">
+        <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-5%' }} className={listClass}>
+          {children}
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
 function ArticlesSection({
   articles,
   onArticleClick,
@@ -2597,65 +2721,30 @@ function ArticlesSection({
 }) {
   const filteredArticles = orderArticles(articles).filter((article) => !article.hideInList);
   const openArticle = showPreview ? (onArticlePreview || onArticleClick) : onArticleClick;
-  const listClass = columns === 3
-    ? 'grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-3'
-    : columns === 2
-      ? 'grid grid-cols-1 gap-8 md:grid-cols-2'
-      : 'space-y-10 sm:space-y-14';
 
   return (
-    <div>
-      <div className="max-w-4xl mx-auto px-5 sm:px-0 pt-8 sm:pt-10">
-      <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-5%' }} className={listClass}>
+    <EditorialList columns={columns}>
       {filteredArticles.map((article) => (
         <motion.div key={article.id} variants={staggerItem}>
-          <motion.button
-            type="button"
-            className="w-full border border-[var(--c-accent)] bg-transparent p-0 text-left group cursor-pointer grid grid-cols-1 sm:grid-cols-[45%_1fr] items-stretch overflow-hidden"
-            onClick={() => openArticle(article)}
-            aria-label={`${t('articles.readPreview')}: ${article.title}`}
-            whileHover={{ x: 4 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          >
-            {/* Card-specific cover, headline and standfirst when the editor set
-                them, the article's own otherwise (see the preview* fields in
-                data.ts). objectPosition carries the focal point: the frame is
-                square and covers rarely are, so a centre crop is what cuts the
-                top off a portrait. */}
-            <div className="aspect-square overflow-hidden bg-[#E8DED5]">
-              <motion.img
-                src={resolveMediaSource(article.previewImageUrl || article.imageUrl || article.imageSeed, 480, 480)}
-                alt={article.previewTitle || article.title}
-                className="w-full h-full object-cover"
-                style={article.previewFocus ? { objectPosition: article.previewFocus } : undefined}
-                referrerPolicy="no-referrer"
-              />
-            </div>
-            <div className="flex flex-col p-4 sm:p-6">
-              {article.category && (
-                <span className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.55)] uppercase tracking-widest mb-1">
-                  {article.category}
-                </span>
-              )}
-              <h3 className="font-crimson text-lg sm:text-xl text-[var(--c-accent)] mb-2 group-hover:text-[var(--c-gold)] transition-colors duration-300">
-                {article.previewTitle || article.title}
-              </h3>
-              {showDescription && !article.previewHideExcerpt && <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-4">
-                {article.previewExcerpt || article.excerpt}
-              </p>}
-              {!article.previewHideAuthor && <div className="mt-auto border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] pt-3 font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.58)]">
-                {t('articles.by')} {displayArticleAuthor(article)}
-              </div>}
-              {showReadAll && <span className="mt-auto inline-flex items-center gap-2 self-start border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] group-hover:bg-[var(--c-accent)] group-hover:text-[var(--c-bg)] transition-colors">
-                {showPreview ? t('articles.readPreview') : t('articles.readFull')} <ArrowUpRight size={14} />
-              </span>}
-            </div>
-          </motion.button>
+          <EditorialListCard
+            card={{
+              key: String(article.id),
+              eyebrow: article.category,
+              title: article.previewTitle || article.title,
+              standfirst: article.previewHideExcerpt ? undefined : (article.previewExcerpt || article.excerpt),
+              byline: article.previewHideAuthor ? undefined : `${t('articles.by')} ${displayArticleAuthor(article)}`,
+              imageSrc: resolveMediaSource(article.previewImageUrl || article.imageUrl || article.imageSeed, 480, 480),
+              imageFocus: article.previewFocus,
+            }}
+            onOpen={() => openArticle(article)}
+            ctaLabel={showPreview ? t('articles.readPreview') : t('articles.readFull')}
+            ariaLabel={`${t('articles.readPreview')}: ${article.title}`}
+            showDescription={showDescription}
+            showCta={showReadAll}
+          />
         </motion.div>
       ))}
-      </motion.div>
-      </div>
-    </div>
+    </EditorialList>
   );
 }
 
@@ -2810,111 +2899,67 @@ function ReviewView({ review, t, onClose, currentLang }: { review: Review; t: (k
   </motion.article>;
 }
 
-function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (key: string) => string; onReviewClick: (review: Review) => void }) {
-  const [activeCategory, setActiveCategory] = useState('__all');
-  const categories = useMemo(() => {
-    const set = Array.from(new Set(reviews.map((r) => r.category).filter((c): c is string => Boolean(c))));
-    return ['__all', ...set];
-  }, [reviews]);
+/* ОБЗОРЫ НАБИРАЮТСЯ КАК СТАТЬИ.
 
-  const featured = reviews.find((r) => r.featured);
-  const rest = reviews.filter((r) => r.id !== (featured?.id ?? -1));
-  const filtered = activeCategory === '__all' ? rest : rest.filter((r) => r.category === activeCategory);
+   Раздел был устроен принципиально иначе: широкий баннер главного обзора во всю
+   полосу, строка фильтров по рубрикам и плитка два-в-ряд с обложками 16:9 и
+   заголовками в 3xl. Рядом со статьями — рядом карточек в одну колонку с
+   квадратной обложкой — это читалось как другой сайт под той же шапкой.
+
+   Три решения, каждое из них — отказ от чего-то:
+
+   БАННЕРА БОЛЬШЕ НЕТ. Главный обзор просто идёт первым и помечен рубрикой
+   «Featured» в надзаголовке. В журнальной полосе первенство и так означает
+   «главное», а отдельная широкая плашка была единственным элементом раздела,
+   который не встречается больше нигде на сайте.
+
+   ФИЛЬТРА ПО РУБРИКАМ НЕТ. У статей его нет, а обзоров сейчас четыре, и каждая
+   кнопка отбирала ровно один. Рубрика осталась надзаголовком карточки.
+
+   ПРИГОВОР ОСТАЛСЯ. Это единственное, что отличает обзор от статьи по существу,
+   и он набран так же, как был: курсив с золотой линейкой слева. Композиция общая,
+   голос раздела — свой. */
+function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (key: string) => string; onReviewClick: (review: Review) => void }) {
+  // Главный обзор — первым в полосе, остальные в своём порядке.
+  const ordered = useMemo(
+    () => [...reviews].sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured))),
+    [reviews],
+  );
 
   return (
-    <div>
-      {/* Featured review */}
-      {featured && (
-        <Reveal>
-          <div className="mb-12 md:mb-16 border border-[var(--c-accent)] grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
-            {featured.imageUrl && (
-              <div className="relative aspect-[4/3] lg:aspect-auto bg-[#1a0812] overflow-hidden">
-                <img src={featured.imageUrl} alt={featured.title} className="w-full h-full object-cover" />
-                <span className="absolute top-4 left-4 bg-[rgb(var(--c-bg-rgb)_/_0.9)] text-[var(--c-accent)] font-mono text-[9px] uppercase tracking-[0.2em] px-3 py-1.5">
-                  {t('reviews.featured')}
-                </span>
-              </div>
-            )}
-            <div className="p-7 sm:p-10 md:p-12 bg-[#E8DED5] flex flex-col">
-              {featured.category && (
-                <span className="mb-5 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)]">{featured.category}</span>
-              )}
-              <h3 className="font-serif text-3xl md:text-4xl text-[var(--c-accent)] mb-1.5">{featured.title}</h3>
-              <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-5">{featured.subject}</p>
-              {featured.verdict && (
-                <p className="font-serif text-xl md:text-2xl italic text-[var(--c-accent)] leading-snug mb-5 border-l-2 border-[var(--c-gold)] pl-4">
-                  {featured.verdict}
-                </p>
-              )}
-              <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{reviewPlainText(featured.content).slice(0, 260)}{reviewPlainText(featured.content).length > 260 ? '…' : ''}</p>
-              <button onClick={() => onReviewClick(featured)} className="mt-6 inline-flex min-h-11 items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest">{t('reviews.read')} <ArrowUpRight size={14} /></button>
-              <div className="mt-auto pt-6 flex items-center justify-between">
-                {featured.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{featured.meta}</span>}
-                <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] ml-auto">— {featured.author}</span>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-      )}
-
-      {/* Category filter */}
-      {categories.length > 2 && (
-        <div className="flex flex-wrap gap-2 mb-8">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              type="button"
-              onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest border transition-colors ${
-                activeCategory === cat
-                  ? 'bg-[var(--c-accent)] text-[var(--c-bg)] border-[var(--c-accent)]'
-                  : 'text-[var(--c-accent)] border-[rgb(var(--c-accent-rgb)_/_0.3)] hover:border-[var(--c-accent)]'
-              }`}
-            >
-              {cat === '__all' ? t('reviews.all') : cat}
-            </button>
-          ))}
-        </div>
-      )}
-
-      {/* Review grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-        {filtered.map((review, index) => (
-          <Reveal key={review.id} delay={(index % 2) * 0.08}>
-            <div className="bg-[#E8DED5] border border-[var(--c-accent)] h-full flex flex-col overflow-hidden">
-              {review.imageUrl && (
-                <div className="relative aspect-[16/9] bg-[#1a0812] overflow-hidden">
-                  <img src={review.imageUrl} alt={review.title} className="w-full h-full object-cover" />
-                  {review.category && (
-                    <span className="absolute top-3 left-3 bg-[rgb(var(--c-bg-rgb)_/_0.9)] text-[var(--c-accent)] font-mono text-[8px] uppercase tracking-[0.2em] px-2.5 py-1">
-                      {review.category}
-                    </span>
-                  )}
-                </div>
-              )}
-              <div className="p-6 sm:p-8 flex flex-col flex-1">
-                {!review.imageUrl && review.category && (
-                  <span className="mb-4 font-mono text-[10px] uppercase tracking-widest text-[var(--c-gold)]">{review.category}</span>
-                )}
-                <h3 className="font-serif text-2xl md:text-3xl text-[var(--c-accent)] mb-1.5">{review.title}</h3>
-                <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-4">{review.subject}</p>
-                {review.verdict && (
-                  <p className="font-serif text-lg italic text-[var(--c-accent)] leading-snug mb-4 border-l-2 border-[var(--c-gold)] pl-3">
-                    {review.verdict}
-                  </p>
-                )}
-                <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{reviewPlainText(review.content).slice(0, 190)}{reviewPlainText(review.content).length > 190 ? '…' : ''}</p>
-                <button onClick={() => onReviewClick(review)} className="mt-6 inline-flex min-h-11 items-center gap-2 border-b border-[var(--c-accent)] font-mono text-[10px] uppercase tracking-widest">{t('reviews.read')} <ArrowUpRight size={14} /></button>
-                <div className="mt-auto pt-6 flex items-center justify-between gap-3">
-                  {review.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{review.meta}</span>}
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] ml-auto">— {review.author}</span>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-    </div>
+    <EditorialList>
+      {ordered.map((review) => {
+        const body = reviewPlainText(review.content);
+        return (
+          <motion.div key={review.id} variants={staggerItem}>
+            <EditorialListCard
+              card={{
+                key: String(review.id),
+                // Рубрика, а у главного обзора — метка «Featured» рядом с ней:
+                // баннер её больше не несёт, а сказать это надо.
+                eyebrow: [review.featured ? t('reviews.featured') : '', review.category || '']
+                  .filter(Boolean).join(' · ') || undefined,
+                title: review.title,
+                kicker: review.subject,
+                verdict: review.verdict,
+                // Вводка — начало текста, и только если приговора нет: две
+                // цитаты подряд в карточке шириной в половину полосы не читаются.
+                standfirst: review.verdict ? undefined : (body.length > 190 ? `${body.slice(0, 190)}…` : body),
+                byline: review.author ? `${t('articles.by')} ${review.author}` : undefined,
+                /* У обзора обложка необязательна, а карточка без неё — дыра
+                   в полосе: сетка «обложка + текст» держится на первом столбце.
+                   Поэтому тот же запасной вариант, что и у статьи без своего
+                   изображения — устойчивая заглушка по ключу записи. */
+                imageSrc: resolveMediaSource(review.imageUrl || `review-${review.id}`, 480, 480),
+              }}
+              onOpen={() => onReviewClick(review)}
+              ctaLabel={t('reviews.read')}
+              ariaLabel={`${t('reviews.read')}: ${review.title}`}
+            />
+          </motion.div>
+        );
+      })}
+    </EditorialList>
   );
 }
 

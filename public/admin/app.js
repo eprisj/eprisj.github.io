@@ -4638,7 +4638,7 @@ function renderVisualForm() {
     visualFormEl.innerHTML = `
       <label>ID<input id="vf-id" value="${escapeHtml(entry.id)}" disabled /></label>
       <label>Категория<input id="vf-category" value="${escapeHtml(entry.category || '')}" placeholder="Food / Books / Stay…" /></label>
-      <label class="checkbox-label" style="align-self:end" for="vf-featured"><input id="vf-featured" type="checkbox" ${entry.featured ? 'checked' : ''} /> Главный обзор (featured)</label>
+      <label class="checkbox-label" style="align-self:end" for="vf-featured"><input id="vf-featured" type="checkbox" ${entry.featured ? 'checked' : ''} /> Featured — первым в разделе</label>
       <label class="full">Заголовок<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
       <label class="full">Тема (что обозревается)<input id="vf-subject" value="${escapeHtml(entry.subject || '')}" /></label>
       <label class="full">Вердикт (одна строка-вывод)<input id="vf-verdict" value="${escapeHtml(entry.verdict || '')}" /></label>
@@ -16916,7 +16916,7 @@ async function flushModernEditor() {
 
     h += '<div class="wys-review-top">';
     h += `<span class="wys-ce wys-kicker" contenteditable="true" data-wys="category" data-empty="Категория">${esc(r.category || '')}</span>`;
-    h += '<label class="wys-review-featured"><input type="checkbox" data-wys-act="featured"' + (r.featured ? ' checked' : '') + '> Featured (главный обзор раздела)</label>';
+    h += '<label class="wys-review-featured"><input type="checkbox" data-wys-act="featured"' + (r.featured ? ' checked' : '') + '> Featured — идёт первым в разделе и помечен в надзаголовке</label>';
     h += '</div>';
 
     h += `<h1 class="wys-title wys-ce" contenteditable="true" data-wys="title-plain" data-empty="Заголовок обзора…">${esc(r.title || '')}</h1>`;
@@ -17898,7 +17898,9 @@ async function flushModernEditor() {
 //
 //   • featured эксклюзивен. Сайт берёт ПЕРВЫЙ обзор с featured, поэтому два
 //     флага молча означают «показывается старый». Ставим флаг — снимаем у
-//     остальных, и говорим, у кого сняли.
+//     остальных, и говорим, у кого сняли. С 17.08.2026 отдельного баннера у
+//     главного обзора нет: раздел набирается как «Статьи», и флаг означает
+//     «первым в полосе, с пометкой Featured в надзаголовке карточки».
 //   • rating есть в схеме, но ни одна форма его не показывала: у новых
 //     обзоров поле просто отсутствовало. Теперь оно на виду — вместе с
 //     честной пометкой, что на сайте оно не выводится.
