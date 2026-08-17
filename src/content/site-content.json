@@ -2251,6 +2251,17 @@
       "imageSeed": "maria-graduation-heart",
       "imageUrl": "/images/heart-hero.jpg",
       "articleId": 11
+    },
+    {
+      "id": 15,
+      "title": "New gallery item",
+      "subtitle": "One-line context — replace me",
+      "fig": "FIG. 15",
+      "description": "One or two sentences describing this piece — replace with real copy before publishing.",
+      "imageSeed": "new-item-15",
+      "homeTitle": "New gallery item",
+      "homeSubtitle": "One-line context — replace me",
+      "homeDescription": "One or two sentences describing this piece — replace with real copy before publishing."
     }
   ],
   "articles": [
@@ -2369,7 +2380,7 @@
       ],
       "order": 1,
       "imageUrl": "https://api.eprisjournal.com/uploads/msm9xi2uysm3fm.jpg",
-      "updatedAt": "2026-08-17T08:54:08.791Z",
+      "updatedAt": "2026-08-17T09:25:09.485Z",
       "publishedAt": "2026-07-18"
     },
     {
@@ -4637,6 +4648,54 @@
       ]
     },
     {
+      "id": 4,
+      "title": "New review",
+      "subject": "New review",
+      "rating": 0,
+      "content": "DETAILS THAT MATTER\n\nTaking into account first impressions - atmosphere, service, who this place is for. The following are details that support the findings.\n\nНовый абзац.ммм\n\nFIRST IMPRESSION\n\nWhat stays with you after the first encounter?\n\nDescribe the material, rhythm, service or object in concrete terms.\n\nIN CONTEXT\n\nPlace the subject in its cultural or local context.\n\nWHO IT IS FOR\n\nA concise editorial recommendation.",
+      "author": "Maria Ivanova",
+      "category": "Food & Stay",
+      "verdict": "One clear line - is it worth going?",
+      "pros": [
+        "Location",
+        "Atmosphere",
+        "Value for money",
+        ""
+      ],
+      "cons": [
+        "One honest minus"
+      ],
+      "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
+      "date": "Aug 1, 2026",
+      "imageUrl": "https://api.eprisjournal.com/uploads/msnluv70lwze6y.jpg",
+      "updatedAt": "2026-08-14T16:21:54.544Z",
+      "draft": true,
+      "authorId": "author-1784896384236-4fokw",
+      "role": "Author"
+    },
+    {
+      "id": 5,
+      "draft": true,
+      "title": "New review",
+      "subject": "New review",
+      "rating": 0,
+      "content": "Начните с первого впечатления – атмосфера, сервис, для кого это место. Затем конкретные детали, подтверждающие вывод.",
+      "author": "EPRIS Journal",
+      "category": "Food & Stay",
+      "verdict": "Одна чёткая строка – стоит ли идти.",
+      "pros": [
+        "Локация",
+        "Атмосфера",
+        "Соотношение цены и качества"
+      ],
+      "cons": [
+        "Один честный минус"
+      ],
+      "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
+      "date": "Aug 11, 2026",
+      "updatedAt": "2026-08-11T13:23:56.882Z"
+    },
+    {
       "id": 6,
       "title": "Dining Inside a Watercolour",
       "subject": "Enigma · Barcelona · RCR Arquitectes",
@@ -5090,6 +5149,17 @@
           "homeCategory": "painting",
           "homeLabel": "Хильма аф Клинт · 1907 · темпера на бумаге",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 15,
+          "title": "Новый элемент галереи",
+          "subtitle": "Однострочный контекст — замените меня",
+          "fig": "FIG. 15",
+          "description": "Одно или два предложения, описывающие этот объект — замените на реальный текст перед публикацией.",
+          "imageSeed": "new-item-15",
+          "homeTitle": "Новый элемент галереи",
+          "homeSubtitle": "Однострочный контекст — замените меня",
+          "homeDescription": "Одно или два предложения, описывающие этот объект — замените на реальный текст перед публикацией."
         }
       ],
       "articles": [
@@ -7414,6 +7484,26 @@
           ]
         },
         {
+          "id": 4,
+          "title": "Новый обзор",
+          "subject": "Новый обзор",
+          "rating": 0,
+          "content": "С учетом первых впечатлений – атмосфера, сервис, для кого это место. Далее приведены детали, подтверждающие выводы.",
+          "author": "EPRIS Journal",
+          "category": "Food & Stay",
+          "verdict": "Одна чёткая строка – стоит ли идти.",
+          "pros": [
+            "Локация",
+            "Атмосфера",
+            "Соотношение цены и качества"
+          ],
+          "cons": [
+            "Один честный минус"
+          ],
+          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
+          "date": "Aug 1, 2026"
+        },
+        {
           "id": 6,
           "title": "Ужин внутри акварели",
           "subject": "Enigma · Барселона · RCR Arquitects",
@@ -7867,6 +7957,17 @@
           "homeCategory": "painting",
           "homeLabel": "Гільма аф Клінт · 1907 · темпера на папері",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 15,
+          "title": "Новий елемент галереї",
+          "subtitle": "Однолінійний контекст — заміни мене",
+          "fig": "FIG. 15",
+          "description": "Один або два речення, що описують цей об’єкт — замініть на реальний текст перед публікацією.",
+          "imageSeed": "new-item-15",
+          "homeTitle": "Новий елемент галереї",
+          "homeSubtitle": "Однолінійний контекст — заміни мене",
+          "homeDescription": "Один або два речення, що описують цей об’єкт — замініть на реальний текст перед публікацією."
         }
       ],
       "articles": [
@@ -10133,6 +10234,26 @@
           ]
         },
         {
+          "id": 4,
+          "title": "Новий огляд",
+          "subject": "Новий огляд",
+          "rating": 0,
+          "content": "Начніте з першого враження – атмосфера, сервіс, для кого це місце. Потім конкретні деталі, що підтверджую��ь висновок.",
+          "author": "EPRIS Journal",
+          "category": "Food & Stay",
+          "verdict": "Одна чёткая строка – стоит ли идти.",
+          "pros": [
+            "Локация",
+            "Атмосфера",
+            "Соотношение цены и качества"
+          ],
+          "cons": [
+            "Один честный минус"
+          ],
+          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
+          "date": "Aug 1, 2026"
+        },
+        {
           "id": 6,
           "title": "Вечеря всередині акварелі",
           "subject": "Enigma · Барселона · RCR Arquitectes",
@@ -10586,6 +10707,17 @@
           "homeCategory": "painting",
           "homeLabel": "Hilma af Klint · 1907 · Tempera auf Papier",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 15,
+          "title": "Neues Galerieobjekt",
+          "subtitle": "Einzeiliger Kontext — ersetze mich",
+          "fig": "FIG. 15",
+          "description": "Ein oder zwei Sätze, die dieses Stück beschreiben — ersetze mit echtem Text vor der Veröffentlichung.",
+          "imageSeed": "new-item-15",
+          "homeTitle": "Neues Galerieobjekt",
+          "homeSubtitle": "Einzeiliger Kontext — ersetze mich",
+          "homeDescription": "Ein oder zwei Sätze, die dieses Stück beschreiben — ersetze mit echtem Text vor der Veröffentlichung."
         }
       ],
       "articles": [
@@ -12852,6 +12984,26 @@
           ]
         },
         {
+          "id": 4,
+          "title": "Neue Rezension",
+          "subject": "Neue Rezension",
+          "rating": 0,
+          "content": "Kommen Sie mit der ersten Woche – Atmosphäre, Service, für diese Gegend. Die konkreten Details werden später angezeigt.",
+          "author": "EPRIS Journal",
+          "category": "Food & Stay",
+          "verdict": "Одна чёткая строка – стоит ли идти.",
+          "pros": [
+            "Локация",
+            "Атмосфера",
+            "Соотношение цены и качества"
+          ],
+          "cons": [
+            "Один честный минус"
+          ],
+          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
+          "date": "Aug 1, 2026"
+        },
+        {
           "id": 6,
           "title": "Essen in einem Aquarell",
           "subject": "Enigma · Barcelona · RCR Arquitectes",
@@ -13305,6 +13457,17 @@
           "homeCategory": "painting",
           "homeLabel": "Hilma af Klint · 1907 · temple sobre papel",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 15,
+          "title": "Nuevo elemento de galería",
+          "subtitle": "Contexto de una línea — reemplazarme",
+          "fig": "FIG. 15",
+          "description": "Una o dos frases describiendo esta pieza — reemplazar con copia real antes de publicar.",
+          "imageSeed": "new-item-15",
+          "homeTitle": "Nuevo elemento de galería",
+          "homeSubtitle": "Contexto de una línea — reemplazarme",
+          "homeDescription": "Una o dos frases describiendo esta pieza — reemplazar con copia real antes de publicar."
         }
       ],
       "articles": [
@@ -15571,6 +15734,26 @@
           ]
         },
         {
+          "id": 4,
+          "title": "Nueva reseña",
+          "subject": "Nueva reseña",
+          "rating": 0,
+          "content": "Начните с первого впечатления – атмосфера, сервис, для кого это место. Estos detalles concretos se pueden realizar.",
+          "author": "EPRIS Journal",
+          "category": "Food & Stay",
+          "verdict": "Одна чёткая строка – стоит ли идти.",
+          "pros": [
+            "Локация",
+            "Атмосфера",
+            "Соотношение цены и качества"
+          ],
+          "cons": [
+            "Один честный минус"
+          ],
+          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
+          "date": "Aug 1, 2026"
+        },
+        {
           "id": 6,
           "title": "Cenar dentro de una acuarela",
           "subject": "Enigma · Barcelona · RCR Arquitectes",
@@ -16024,6 +16207,17 @@
           "homeCategory": "painting",
           "homeLabel": "Hilma af Klint · 1907 · kâğıt üzerine tempera",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 15,
+          "title": "Yeni galeri öğesi",
+          "subtitle": "Tek satırlık bağlam — beni değiştir",
+          "fig": "FIG. 15",
+          "description": "Bu parçayı tanımlayan bir veya iki cümle — yayınlamadan önce gerçek kopyayla değiştirin.",
+          "imageSeed": "new-item-15",
+          "homeTitle": "Yeni galeri öğesi",
+          "homeSubtitle": "Tek satırlık bağlam — beni değiştir",
+          "homeDescription": "Bu parçayı tanımlayan bir veya iki cümle — yayınlamadan önce gerçek kopyayla değiştirin."
         }
       ],
       "articles": [
@@ -18290,6 +18484,26 @@
           ]
         },
         {
+          "id": 4,
+          "title": "Yeni inceleme",
+          "subject": "Yeni inceleme",
+          "rating": 0,
+          "content": "Çok iyi bir atmosfere sahip olmak - atmosfer, sunucu, benim için. Ayrıntıları kontrol edin, daha sonra satın alın.",
+          "author": "EPRIS Journal",
+          "category": "Food & Stay",
+          "verdict": "Одна чёткая строка – стоит ли идти.",
+          "pros": [
+            "Локация",
+            "Атмосфера",
+            "Соотношение цены и качества"
+          ],
+          "cons": [
+            "Один честный минус"
+          ],
+          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
+          "date": "Aug 1, 2026"
+        },
+        {
           "id": 6,
           "title": "Bir su boyası içinde yemek",
           "subject": "Enigma · Barcelona · RCR Mimarlar",
@@ -18743,6 +18957,17 @@
           "homeCategory": "painting",
           "homeLabel": "Hilma af Klint · 1907 · tempera su carta",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 15,
+          "title": "Nuovo elemento della galleria",
+          "subtitle": "Contesto su una riga — sostituiscimi",
+          "fig": "FIG. 15",
+          "description": "Una o due frasi che descrivono questo pezzo — sostituire con copia reale prima della pubblicazione.",
+          "imageSeed": "new-item-15",
+          "homeTitle": "Nuovo elemento della galleria",
+          "homeSubtitle": "Contesto su una riga — sostituiscimi",
+          "homeDescription": "Una o due frasi che descrivono questo pezzo — sostituire con copia reale prima della pubblicazione."
         }
       ],
       "articles": [
@@ -21004,6 +21229,26 @@
           ]
         },
         {
+          "id": 4,
+          "title": "Nuova recensione",
+          "subject": "Nuova recensione",
+          "rating": 0,
+          "content": "Fare attenzione al primo controllo: atmosfera, servizio per tutto questo. Visualizzare i dettagli aggiuntivi dell'acqua.",
+          "author": "EPRIS Journal",
+          "category": "Food & Stay",
+          "verdict": "Одна чёткая строка – стоит ли идти.",
+          "pros": [
+            "Локация",
+            "Атмосфера",
+            "Соотношение цены и качества"
+          ],
+          "cons": [
+            "Один честный минус"
+          ],
+          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
+          "date": "Aug 1, 2026"
+        },
+        {
           "id": 6,
           "title": "Cenare all'interno di un acquerello",
           "subject": "Enigma · Barcelona · RCR Arquitectes",
@@ -21833,10 +22078,10 @@
       "manualOrder": [
         22,
         18,
+        14,
         17,
         16,
         15,
-        14,
         13,
         10,
         12,
