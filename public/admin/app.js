@@ -2857,29 +2857,49 @@ async function saveToGitHub() {
    for one — can finish the job in the same click instead of leaving the change
    staged locally and announcing success. That gap is why drafts an editor
    deleted months ago were still live. */
+/* ОДНА ОТПРАВКА КОНТЕНТА НА VPS. Вынесена, чтобы публикация могла случиться
+   ДО автоперевода и, при необходимости, ещё раз после него. */
+async function postContentToVps(payload, pw) {
+  const res = await fetch(CONTENT_API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
+    body: JSON.stringify(payload)
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || !data.ok) throw new Error(data.error || ('VPS вернул статус ' + res.status));
+  return data;
+}
+
+/* СНАЧАЛА СОХРАНИТЬ, ПОТОМ ПЕРЕВОДИТЬ.
+
+   Здесь стояло наоборот: перед POST шёл ensureAllContentLanguages — полный
+   обход всех статей, карточек, обзоров и библиотеки с достройкой недостающих
+   языков через переводчик. Любой сбой на этом круге (исчерпанные квоты
+   OpenRouter/DeepL, обрыв сети, «AI returned invalid JSON») выбрасывал
+   исключение ДО единственного запроса, который что-то сохраняет. Внешне это
+   выглядело так: редактор расставляет порядок статей, жмёт «Сохранить» — и на
+   живом сайте не меняется ничего, потому что на сервер не ушло ничего.
+   Проверено на живом контенте: в site-content.json нет даже ключа
+   homepage.articleOrder, хотя порядок расставляли не раз.
+
+   Порядок обратный: пароль, POST, и только потом достройка языков. Она может
+   не получиться — тогда это предупреждение поверх уже сохранённого контента, а
+   не потерянная работа. Созданные переводы уходят вторым POST, так что конечное
+   состояние на сервере то же, что и раньше. */
 async function publishContentToVps({ note = 'Публикую на VPS...' } = {}) {
+  let parsed = null;
+  let pw = '';
   try {
     setBusy(true);
     setStatus('info', note);
 
-    const parsed = parseEditorJson();
-    const syncSummary = await ensureAllContentLanguages(parsed, visualLangSelect.value || DEFAULT_LANGUAGE);
-    if (syncSummary.created) {
-      setEditorData(parsed);
-      setStatus('info', `Создано переводов: ${syncSummary.created}. Публикую...`);
-    }
+    parsed = parseEditorJson();
     saveSettings();
 
-    const pw = getAdminPassword();
+    pw = getAdminPassword();
     if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
 
-    const res = await fetch(CONTENT_API, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
-      body: JSON.stringify(parsed)
-    });
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok || !data.ok) throw new Error(data.error || ('VPS вернул статус ' + res.status));
+    const data = await postContentToVps(parsed, pw);
 
     currentSha = '';
     setLastSyncedSnapshotFromText(editor.value);
@@ -2896,8 +2916,37 @@ async function publishContentToVps({ note = 'Публикую на VPS...' } = {
     }
   } catch (error) {
     setStatus('error', getErrorMessage(error));
+    return;
   } finally {
     setBusy(false);
+  }
+
+  /* Обход языков идёт ПОСЛЕ сохранения и НЕ задерживает его: на десятке статей
+     с семью языками он занимает минуты, а при исчерпанных квотах ещё и падает.
+     Раньше редактор ждал всё это до записи, а при сбое не получал ничего. */
+  syncLanguagesAfterPublish(parsed, pw);
+}
+
+/* Достройка недостающих переводов после уже состоявшейся публикации.
+   Намеренно не await-ится: её сбой — это предупреждение, а не потеря правки,
+   и панель не должна стоять занятой, пока переводчик перебирает записи. */
+async function syncLanguagesAfterPublish(parsed, pw) {
+  try {
+    const syncSummary = await ensureAllContentLanguages(parsed, visualLangSelect.value || DEFAULT_LANGUAGE);
+    if (!syncSummary.created) {
+      setStatus('success', 'Опубликовано на VPS — сайт обновлён мгновенно');
+      return;
+    }
+    setEditorData(parsed);
+    setStatus('info', `Создано переводов: ${syncSummary.created}. Досохраняю...`);
+    await postContentToVps(parsed, pw);
+    setLastSyncedSnapshotFromText(editor.value);
+    lastSyncedTime = new Date();
+    updateLastSyncedBadge();
+    setStatus('success', `Опубликовано на VPS. Достроено переводов: ${syncSummary.created}.`);
+  } catch (error) {
+    setStatus('success', 'Опубликовано на VPS. Автоперевод не отработал.');
+    showToast?.('error', `Контент сохранён, но автоперевод не отработал: ${getErrorMessage(error)}. Переводы можно достроить на вкладке «Переводы».`);
   }
 }
 
