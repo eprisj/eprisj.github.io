@@ -12,7 +12,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=4.72" />
+    <link rel="stylesheet" href="./styles.css?v=4.73" />
     <link rel="stylesheet" href="./brandbook.css?v=3" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -106,7 +106,7 @@
               <span class="sidebar-tab-copy"><span>Транскрипция</span><small>Аудио / видео → текст</small></span>
               <span class="sidebar-tab-badge" aria-hidden="true">LOCAL</span>
             </button>
-            <button class="tab-btn" data-tab="homepage" type="button">
+            <button class="tab-btn active" data-tab="homepage" type="button">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/><circle cx="15" cy="15" r="2.5"/></svg>
               Главная / Галерея
             </button>
@@ -114,7 +114,7 @@
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
               Видимость
             </button>
-            <button class="tab-btn active" data-tab="content" type="button">
+            <button class="tab-btn" data-tab="content" type="button">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
               Публикации
             </button>
@@ -323,7 +323,7 @@
           </section>
 
           <!-- ===== HOMEPAGE / GALLERY ===== -->
-          <section class="tab-panel" id="tab-homepage">
+          <section class="tab-panel active" id="tab-homepage">
             <div class="homepage-admin-layout">
               <div class="card card-highlight homepage-admin-hero">
                 <div>
@@ -664,7 +664,7 @@
           </section>
 
           <!-- ===== CONTENT ===== -->
-          <section class="tab-panel active" id="tab-content">
+          <section class="tab-panel" id="tab-content">
             <div id="overviewStrip" class="overview-strip" style="display:none"></div>
             <div class="content-layout">
               <div class="entry-toolbar">
@@ -2036,7 +2036,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.72" type="module"></script>
+    <script src="./app.js?v=4.73" type="module"></script>
     <script src="../brandbook/data.js?v=1"></script>
     <script src="./brandbook.js?v=3"></script>
     <script>
@@ -2069,6 +2069,8 @@
           history: 'История версий',
           settings: 'Настройки',
         };
+        /* Kept only to clear it: the admin used to reopen on the last section an
+           editor visited, and that key is still sitting in their browsers. */
         var LAST_TAB_KEY = 'epris_admin_last_tab';
         /* Sections that must never become the screen the admin opens on.
            «Порядок статей» is a task you come to deliberately and leave — being
@@ -2079,6 +2081,8 @@
            hash is honoured on load — this only stops the screen claiming the
            entrance by itself. */
         var NO_AUTO_REOPEN = ['order'];
+        /* The section the admin opens on when the URL does not say otherwise. */
+        var DEFAULT_TAB = 'homepage';
         function syncSidebarNav() {
           var active = document.querySelector('.tab-btn.active');
           if (sidebarActiveLabel && active) sidebarActiveLabel.textContent = active.dataset.navLabel || active.textContent.trim();
@@ -2109,13 +2113,11 @@
             var titleEl = document.getElementById('pageTitle');
             if (titleEl && pageTitles[tab]) titleEl.textContent = pageTitles[tab];
             if (tab === 'polls' && typeof window._renderPollResults === 'function') window._renderPollResults();
+            /* No last-tab memory any more (see the open logic at the end of this
+               file): the entrance is fixed, so recording where someone was would
+               only be state nobody reads. The hash is still written, because that
+               is what makes a section linkable. */
             var remembers = NO_AUTO_REOPEN.indexOf(tab) === -1;
-            try {
-              if (remembers) localStorage.setItem(LAST_TAB_KEY, tab);
-              // Forget an excluded section rather than leaving a stale pointer to
-              // whatever was open before it.
-              else localStorage.removeItem(LAST_TAB_KEY);
-            } catch (e) { /* localStorage unavailable */ }
             // Direct, shareable link to a section: eprisjournal.com/admin/#translations
             if (remembers) {
               if (window.location.hash !== '#' + tab) history.replaceState(null, '', '#' + tab);
@@ -2156,27 +2158,33 @@
         // markup. A URL hash (bookmark, shared link) wins over the merely
         // remembered last tab, so eprisjournal.com/admin/#translations
         // always opens that section regardless of local history.
+        /* Where the admin opens.
+           One rule: «Главная / Галерея», unless the URL hash names a section.
+           The remembered-last-tab restore that used to decide this is gone — it
+           is what kept dragging an editor into whatever they happened to look at
+           last, and it fought every attempt to have a predictable entrance. A
+           hash still wins, so shared and bookmarked links work, except for
+           sections in NO_AUTO_REOPEN: a stale #order left in the address bar is
+           not a request to start there.
+
+           Note this CLICKS the button rather than trusting the `active` classes
+           in the markup: several sections (this one included) load their data in
+           the click handler, so a tab that is merely marked active would come up
+           empty. */
         try {
           var hashTab = window.location.hash.replace(/^#/, '');
-          var lastTab = hashTab || localStorage.getItem(LAST_TAB_KEY);
-          /* An excluded section never wins the initial open, from either source.
-             Both are checked because the app used to write its own hash on every
-             switch, so an editor who visited «Порядок статей» once had #order in
-             the address bar AND order in localStorage — two stale pointers back
-             into a screen they only meant to visit. Clearing them here fixes the
-             state already saved in the browsers of everyone who has been there;
-             clicking the section in the sidebar still opens it, and so does a
-             hash typed while the page is open (see the hashchange handler). */
-          if (lastTab && NO_AUTO_REOPEN.indexOf(lastTab) !== -1) {
-            lastTab = '';
-            try { localStorage.removeItem(LAST_TAB_KEY); } catch (e) { /* ignore */ }
-            if (window.location.hash) history.replaceState(null, '', window.location.pathname + window.location.search);
+          if (hashTab && NO_AUTO_REOPEN.indexOf(hashTab) !== -1) {
+            hashTab = '';
+            history.replaceState(null, '', window.location.pathname + window.location.search);
           }
-          if (lastTab) {
-            var lastBtn = document.querySelector('.tab-btn[data-tab="' + lastTab + '"]');
-            if (lastBtn) lastBtn.click();
-          }
-        } catch (e) { /* localStorage unavailable */ }
+          // The old memory key is no longer read; clear it so it stops lingering
+          // in editors' browsers.
+          try { localStorage.removeItem(LAST_TAB_KEY); } catch (e) { /* ignore */ }
+          var openTab = hashTab || DEFAULT_TAB;
+          var openBtn = document.querySelector('.tab-btn[data-tab="' + openTab + '"]')
+                     || document.querySelector('.tab-btn[data-tab="' + DEFAULT_TAB + '"]');
+          if (openBtn) openBtn.click();
+        } catch (e) { /* ignore */ }
         syncSidebarNav();
       });
     </script>
