@@ -12981,26 +12981,85 @@
       "reviews": [
         {
           "id": 1,
-          "title": "Eine Symphonie der Aromen",
-          "subject": "Restaurant 'Olea', Limassol",
+          "title": "Le Dauphine",
+          "subject": "131 Avenue Parmentier, Paris",
           "rating": 4.5,
-          "content": "Das Degustationsmenü war eine Reise durch die Geschichte der Insel. Jedes Gericht erzählte eine Geschichte von Eroberung und Handel.",
+          "content": [
+            {
+              "type": "text",
+              "content": "Hochwertige Bistronomie. Le Dauphine im 11. Arrondissement von Paris ist eher ein exponiertes als ein verstecktes Juwel der Stadt. Dank der Architekten Rem Koolhaas und Clément Blanchet, die an der Restaurierung des Speiseraums gearbeitet haben, verfügt der Eingang des glänzenden und winzigen Restaurants über einen massiven weißen Rahmen, der die Glasfassade umarmt und einen offenen Blick auf das prächtige Interieur bietet."
+            },
+            {
+              "type": "Bild",
+              "content": "https://api.eprisjournal.com/uploads/msbpdtwm8fm1zc.webp",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Das Duo der Sterneköche – Fred Péneau und Inaki Aizpitarte – beauftragte das OMA-Büro und Clément Blanchet, weniger als 60 Quadratmeter in einen hochwertigen Bistro-Gastronomie-Raum zu verwandeln. Im Jahr 2010 öffnete Le Dauphine seine Türen und erlangte sofort die Aufmerksamkeit und Liebe des Publikums, sowohl für sein Design als auch für seine Küche. "
+            },
+            {
+              "type": "Bild",
+              "content": "https://api.eprisjournal.com/uploads/msbpfodp7mc2k6.webp",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "QUERY LENGTH LIMIT EXCEEDED. MAX ALLOWED QUERY : 500 CHARS"
+            },
+            {
+              "type": "Bild",
+              "content": "https://api.eprisjournal.com/uploads/msbpw1txo5dnn1.webp",
+              "caption": ""
+            },
+            {
+              "type": "Bild",
+              "content": "https://api.eprisjournal.com/uploads/msbpjad387xo0q.webp",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Der eingangs beschriebene Außenrahmen setzt die Geschichte des hellenistischen Heiligtums mit gebührender Ehre fort. Es dient als Übergang zwischen dem erhabenen Interieur und der Straße und enthält den Zauber eines immersiven Erlebnisses. Vom Alltäglichen zum Heiligtum des Geschmacks zu gelangen – wo jede bewusste Wahl Ihre Qualitätserfahrung erhöht – bedeutet, die klassischen Pronaos neu zu interpretieren und die Außenwelt vom Sakralen zu trennen."
+            },
+            {
+              "type": "Bild",
+              "content": "https://api.eprisjournal.com/uploads/msbpuvht9d8y4o.webp",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Trotz der bescheidenen Umgebung fühlt sich das Restaurant nicht komprimiert an – die Wände werden nicht durch Spiegelplatten, die den hellen Marmor widerspiegeln, Tische und glückliche Gäste, die die Freude teilen, in einem modernen städtischen Zufluchtsort zu sein, einschränkend wahrgenommen."
+            },
+            {
+              "type": "text",
+              "content": "Das markanteste Element des hellenistischen Tempels ist das Gefühl der Monumentalität – das Innere strahlt ein solides Vertrauen in seine eigene Unabhängigkeit von Zeit und Trends aus."
+            },
+            {
+              "type": "Bild",
+              "content": "https://api.eprisjournal.com/uploads/msbptvabvc2ngx.webp",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Es hat sich bewährt – 16 Jahre nach seiner Eröffnung im Jahr 2010 können Sie Le Dauphine immer noch besuchen und sich an der Mitteltheke auf einem Barhocker vergnügen oder einen Tisch für ein gemütliches, modernes böhmisches Abendessen mit Ihrem Nächsten reservieren."
+            },
+            {
+              "type": "Bild",
+              "content": "https://api.eprisjournal.com/uploads/msbpxbq4cbdynt.webp",
+              "caption": ""
+            }
+          ],
           "author": "Maria Ivanova",
-          "imageUrl": "/images/mediterranean-feast.png",
+          "imageUrl": "https://api.eprisjournal.com/uploads/ms7zbp2w1tw6jx.webp",
           "featured": true,
-          "category": "Essen",
-          "verdict": "Ein Degustationsmenü, das die Insel wie ein Geschichtsbuch liest.",
-          "meta": "Limassol · Degustation · €€€",
-          "pros": [
-            "Erfindungsreiche, regionale Gänge",
-            "Tadellose Weinbegleitung",
-            "Warmer, unaufgeregter Service"
-          ],
-          "cons": [
-            "Tische etwas eng"
-          ],
+          "category": "Food",
+          "verdict": "",
+          "meta": "paris · restaurant · €€€",
+          "pros": [],
+          "cons": [],
           "authorId": "author-1784896384236-4fokw",
-          "role": "Autorin"
+          "role": "Author",
+          "updatedAt": "2026-08-17T09:59:26.505Z"
         },
         {
           "id": 2,
