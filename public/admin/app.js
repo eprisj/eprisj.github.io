@@ -2849,9 +2849,18 @@ async function saveToGitHub() {
     'Опубликовать'
   );
   if (!confirmed) return;
+  await publishContentToVps();
+}
+
+/* The publish itself, without the confirmation dialog around it.
+   Split out so an action that has ALREADY asked the editor — deleting a record,
+   for one — can finish the job in the same click instead of leaving the change
+   staged locally and announcing success. That gap is why drafts an editor
+   deleted months ago were still live. */
+async function publishContentToVps({ note = 'Публикую на VPS...' } = {}) {
   try {
     setBusy(true);
-    setStatus('info', 'Публикую на VPS...');
+    setStatus('info', note);
 
     const parsed = parseEditorJson();
     const syncSummary = await ensureAllContentLanguages(parsed, visualLangSelect.value || DEFAULT_LANGUAGE);
@@ -8055,6 +8064,14 @@ function undoLastDeletion() {
   }
 }
 
+/* Undo after a delete that already reached the server has to reach it too.
+   Restoring only the local JSON would leave the editor looking at a record the
+   site no longer has — the same gap as before, pointing the other way. */
+async function undoLastDeletionAndPublish() {
+  undoLastDeletion();
+  await publishContentToVps({ note: 'Возвращаю запись на VPS...' });
+}
+
 async function deleteVisualEntry() {
   try {
     const data = parseEditorJson();
@@ -8078,9 +8095,11 @@ async function deleteVisualEntry() {
     const warning = isDefaultLang
       ? `Это версия <strong>${escapeHtml(DEFAULT_LANGUAGE)}</strong> (основная). Удаление скроет запись <strong>на всех языках</strong>, включая уже существующие переводы.`
       : `Будет удалён только перевод на <strong>${escapeHtml(lang)}</strong>. Версия ${escapeHtml(DEFAULT_LANGUAGE)} и другие языки не пострадают.`;
+    // Say plainly that this reaches the live site now, because it does.
+    const reach = '<p>Запись будет удалена <strong>сразу на сервере</strong> — отдельное сохранение не нужно. Отменить можно кнопкой в уведомлении.</p>';
     const confirmed = await showConfirmModal(
       `Удалить запись #${selectedId}?`,
-      `<p>${escapeHtml(entryTitle)}</p><p>${warning}</p>`,
+      `<p>${escapeHtml(entryTitle)}</p><p>${warning}</p>${reach}`,
       'Удалить'
     );
     if (!confirmed) {
@@ -8097,13 +8116,16 @@ async function deleteVisualEntry() {
     }
 
     setEditorData(data);
-    /* "Удалена" was a lie this admin told for a long time: the entry leaves the
-       local JSON here and nothing is sent anywhere, so without the publish step
-       the record is back on the next load. Three drafts an editor deleted
-       months ago were still on the site because of this wording. Say what
-       actually happened, and what is still needed. */
-    showToastWithAction('success', `Запись #${selectedId} (${entryTitle}) убрана из списка. Нажмите «Сохранить», чтобы удалить её на сервере.`, 'Отменить', undoLastDeletion);
-    setStatus('info', `Запись #${selectedId} убрана локально (${getSectionLabel(section)} / ${lang}). Опубликуйте, чтобы удалить на VPS.`);
+
+    /* Delete now finishes on the server, in this click.
+       It used to stop at the local JSON and toast "Запись удалена", so the only
+       thing standing between an editor and a deleted record coming back was
+       remembering to press a different button in the sidebar. Three drafts
+       deleted months ago were still live because of that. The editor already
+       confirmed a destructive action; publishing it is what they asked for.
+       Undo republishes too, otherwise it would only undo half of what happened. */
+    await publishContentToVps({ note: `Удаляю запись #${selectedId} на VPS...` });
+    showToastWithAction('success', `Запись #${selectedId} (${entryTitle}) удалена на сервере.`, 'Отменить', undoLastDeletionAndPublish);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   }
