@@ -8097,8 +8097,13 @@ async function deleteVisualEntry() {
     }
 
     setEditorData(data);
-    showToastWithAction('success', `Запись #${selectedId} (${entryTitle}) удалена.`, 'Отменить', undoLastDeletion);
-    setStatus('success', `Запись #${selectedId} удалена (${getSectionLabel(section)} / ${lang}).`);
+    /* "Удалена" was a lie this admin told for a long time: the entry leaves the
+       local JSON here and nothing is sent anywhere, so without the publish step
+       the record is back on the next load. Three drafts an editor deleted
+       months ago were still on the site because of this wording. Say what
+       actually happened, and what is still needed. */
+    showToastWithAction('success', `Запись #${selectedId} (${entryTitle}) убрана из списка. Нажмите «Сохранить», чтобы удалить её на сервере.`, 'Отменить', undoLastDeletion);
+    setStatus('info', `Запись #${selectedId} убрана локально (${getSectionLabel(section)} / ${lang}). Опубликуйте, чтобы удалить на VPS.`);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
   }
@@ -18429,6 +18434,8 @@ document.addEventListener('click', (event) => {
   const expanded = new Set();
   /** Ids ticked for a bulk action. Also UI state, cleared on reload. */
   const selected = new Set();
+  /** Ids the editor deleted on this screen, applied to the JSON on write. */
+  const removed = new Set();
 
   const num = (v) => Number(v);
   /* Named function, not an arrow in a const: scripts/check-order-parity.mjs
@@ -18591,6 +18598,10 @@ document.addEventListener('click', (event) => {
           <span>Не показывать в разделе «Статьи»</span>
         </label>
         <div class="order-cs-note">Пустое поле = берётся из самой статьи. Заголовок и описание переводятся, обложка и кадрирование общие для всех языков.</div>
+        <div class="order-cs-danger">
+          <button class="btn btn-sm order-cs-delete" data-act="delete" data-id="${id}" type="button">Удалить статью</button>
+          <span>Из основного списка и из всех переводов. Применится при сохранении.</span>
+        </div>
       </div>`;
   }
 
@@ -18693,7 +18704,7 @@ document.addEventListener('click', (event) => {
      the line a reader sees and is nobody else's to rewrite. */
   function apply() {
     const data = parseEditorJsonSafe();
-    if (!data) { showToast('error', 'JSON не разобран — загрузите контент.'); return; }
+    if (!data) { showToast('error', 'JSON не разобран — загрузите контент.'); return false; }
     data.homepage = data.homepage || {};
     data.homepage.articleOrder = {
       mode: settings.mode,
@@ -18713,9 +18724,46 @@ document.addEventListener('click', (event) => {
         if (mine[key] === undefined) delete a[key]; else a[key] = mine[key];
       });
     });
+    /* Removals are applied by rebuilding the list, not by patching entries:
+       an article the editor deleted here must leave data.articles entirely, and
+       a per-entry loop can only ever change what is still there. */
+    if (removed.size) {
+      data.articles = (data.articles || []).filter((a) => !removed.has(num(a.id)));
+      const order = data.homepage.articleOrder;
+      order.pinned = (order.pinned || []).filter((id) => !removed.has(num(id)));
+      order.manualOrder = (order.manualOrder || []).filter((id) => !removed.has(num(id)));
+      /* Translations keep their own copy of every article. Left behind, the
+         next reader in that language gets a deleted draft merged onto a live
+         id — the recycled-id incident this content has already had once. */
+      const buckets = data.localizedCollections || {};
+      Object.keys(buckets).forEach((lang) => {
+        const bucket = buckets[lang];
+        if (bucket && Array.isArray(bucket.articles)) {
+          bucket.articles = bucket.articles.filter((a) => !removed.has(num(a.id)));
+        }
+      });
+    }
     editor.value = JSON.stringify(data, null, 2);
     updateEditorState();
-    showToast('success', 'Порядок записан в JSON. Нажмите общий «Сохранить», чтобы отправить на VPS.');
+    return true;
+  }
+
+  /* Two buttons, because they are two different promises.
+     "Записать в JSON" stages the change locally, which is what the rest of this
+     admin does. "Сохранить" does that AND publishes, because an editor who has
+     just rearranged the front page should not have to know that a second button
+     somewhere else is what makes it real — and because a delete that is only
+     staged looks exactly like a delete that happened, right up until the next
+     reload brings the draft back. */
+  function applyAndTell() {
+    if (apply()) showToast('success', 'Порядок записан в JSON. Нажмите «Сохранить», чтобы отправить на VPS.');
+  }
+
+  async function saveToVps() {
+    if (!apply()) return;
+    const globalSave = byId('saveBtn');
+    if (!globalSave) { showToast('error', 'Не найдена кнопка публикации — сохраните вручную.'); return; }
+    globalSave.click();
   }
 
   listEl.addEventListener('click', (e) => {
@@ -18725,6 +18773,25 @@ document.addEventListener('click', (event) => {
     if (btn.dataset.act === 'pin') togglePin(id);
     if (btn.dataset.act === 'up') nudge(id, -1);
     if (btn.dataset.act === 'down') nudge(id, 1);
+    if (btn.dataset.act === 'delete') {
+      const key = num(id);
+      const article = articles.find((a) => num(a.id) === key);
+      const title = (article && (article.title || '')) || `#${key}`;
+      /* Confirm, because this is the one action on the screen that destroys
+         content rather than rearranging it. The wording says what will actually
+         happen and when — a "Запись удалена" toast for something that only left
+         the local JSON is how three drafts came back from the dead. */
+      if (!window.confirm(`Удалить статью «${String(title).slice(0, 60)}»?\n\nОна исчезнет из основного списка и из всех переводов. Удаление уйдёт на сервер, когда вы нажмёте «Сохранить».`)) return;
+      removed.add(key);
+      articles = articles.filter((a) => num(a.id) !== key);
+      settings.pinned = (settings.pinned || []).filter((p) => num(p) !== key);
+      settings.manualOrder = (settings.manualOrder || []).filter((p) => num(p) !== key);
+      expanded.delete(key);
+      selected.delete(key);
+      render();
+      showToast('success', 'Статья убрана из списка. Нажмите «Сохранить», чтобы удалить её на сервере.');
+      return;
+    }
     if (btn.dataset.act === 'expand') {
       const key = num(id);
       if (expanded.has(key)) expanded.delete(key); else expanded.add(key);
@@ -18801,7 +18868,8 @@ document.addEventListener('click', (event) => {
     render();
     showToast('success', 'Порядок сброшен к хронологии. Закрепления сохранены.');
   });
-  byId('orderApplyBtn').addEventListener('click', apply);
+  byId('orderApplyBtn').addEventListener('click', applyAndTell);
+  byId('orderSaveBtn')?.addEventListener('click', saveToVps);
 
   /* ── Bulk actions ────────────────────────────────────────────────────────
      Everything here is something an editor would otherwise do row by row on a
