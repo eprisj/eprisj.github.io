@@ -2241,6 +2241,29 @@ function runLocalizationHealthCheck(data) {
 
   const localized = data.localizedCollections && typeof data.localizedCollections === 'object'
     ? data.localizedCollections : {};
+
+  /* СНАЧАЛА БАЗА, ПОТОМ ЛОКАЛИ.
+
+     Проверка смотрела только в localizedCollections и поэтому описывала
+     следствия. Живой случай 17.08.2026: заготовка «New gallery item» (#15)
+     лежала В БАЗЕ, переводчик добросовестно перевёл её на шесть языков — и
+     отчёт выдал шесть одинаковых ошибок про шесть локалей, ни одна из которых
+     не была причиной. Причина одна, и чинится она одним удалением: пока
+     заготовка в базе, её будут переводить снова после любого «Сохранить».
+
+     Заодно это единственное место, которое скажет, что заготовку видят и
+     англоязычные читатели: карточка живая, без скрытия, прямо в галерее. */
+  const baseStubHint = new Set();
+  for (const [sectionKey, sectionLabel, strict] of POISON_SECTIONS) {
+    const entries = Array.isArray(data[sectionKey]) ? data[sectionKey] : [];
+    const stubs = entries.filter(isAuditPlaceholderEntity);
+    if (!stubs.length) continue;
+    const ids = stubs.map((e) => `#${e?.id ?? '?'}`).join(', ');
+    baseStubHint.add(sectionKey);
+    const line = `ПРИЧИНА — база/${sectionLabel}: незаполненная заготовка (${ids}) лежит в основном списке. Её видят читатели на английском, а её переводы ${strict ? `откатывают ВЕСЬ ${sectionLabel.toLowerCase()} на всех языках к английскому` : 'остаются английскими у соседних записей'}. Удалите её (или заполните) — это чинит все строки ниже разом.`;
+    if (strict) errors.push(line); else warnings.push(line);
+  }
+
   for (const [lang, bucket] of Object.entries(localized)) {
     if (!bucket || typeof bucket !== 'object') continue;
     for (const [sectionKey, sectionLabel, strict] of POISON_SECTIONS) {
@@ -2249,13 +2272,17 @@ function runLocalizationHealthCheck(data) {
       const stubs = entries.filter(isAuditPlaceholderEntity);
       if (!stubs.length) continue;
       const ids = stubs.map((e) => `#${e?.id ?? '?'}`).join(', ');
+      /* Перевод заготовки — следствие заготовки. Пока она в базе, эти строки
+         будут появляться снова после каждой достройки языков, и чинить их по
+         одной бессмысленно: они уйдут сами, как только уйдёт оригинал. */
+      const cause = baseStubHint.has(sectionKey) ? ' Это перевод заготовки из базы — удалите её, а не эту копию.' : '';
       if (strict) {
         errors.push(
-          `${lang}/${sectionLabel}: незаполненная заготовка (${ids}) — из-за неё ВЕСЬ ${sectionLabel.toLowerCase()} на ${lang} читатели видят по-английски, не только эту карточку. Заполните или удалите.`
+          `${lang}/${sectionLabel}: незаполненная заготовка (${ids}) — из-за неё ВЕСЬ ${sectionLabel.toLowerCase()} на ${lang} читатели видят по-английски, не только эту карточку.${cause || ' Заполните или удалите.'}`
         );
       } else {
         warnings.push(
-          `${lang}/${sectionLabel}: незаполненная заготовка (${ids}) — эта карточка останется на английском для читателей ${lang}, соседние записи не пострадают. Заполните или удалите, когда дойдут руки.`
+          `${lang}/${sectionLabel}: незаполненная заготовка (${ids}) — эта карточка останется на английском для читателей ${lang}, соседние записи не пострадают.${cause || ' Заполните или удалите, когда дойдут руки.'}`
         );
       }
     }
@@ -2303,7 +2330,17 @@ function runLocalizationHealthCheck(data) {
       ? 'Есть предупреждения по локалям или медиаданным.'
       : 'Локали синхронизированы, а фотоподборка отделена от статей.';
 
-  return createMonitorResult(level, 'Локализация и главная', detail, [...errors, ...warnings].slice(0, 10));
+  /* Список режется до десяти строк, и раньше он резался молча: живой отчёт
+     17.08.2026 показал шесть локалей и четыре расхождения — ровно десять — а
+     седьмая локаль с той же заготовкой в отчёт не попала и выглядела здоровой.
+     Обрезка теперь называет себя, чтобы «десять строк» не читалось как «всего
+     десять проблем». */
+  const all = [...errors, ...warnings];
+  const shown = all.slice(0, 10);
+  if (all.length > shown.length) {
+    shown.push(`…и ещё ${all.length - shown.length}: показаны первые 10 из ${all.length}. Причины (строки «ПРИЧИНА —») всегда идут первыми.`);
+  }
+  return createMonitorResult(level, 'Локализация и главная', detail, shown);
 }
 
 function runContentQualityChecks(data) {
