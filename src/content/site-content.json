@@ -5076,7 +5076,7 @@
       ],
       "meta": "BARCELONA · RCR ARQUITECTES + PAU LLIMONA · 514.78 M² · 2016 · PHOTO: HISAO SUZUKI / RCR ARQUITECTES",
       "date": "AUG 15, 2026",
-      "updatedAt": "2026-08-17T00:05:18.881Z",
+      "updatedAt": "2026-08-17T00:25:10.074Z",
       "authorId": "author-1784732936927-kw554",
       "role": "Автор",
       "imageUrl": "https://api.eprisjournal.com/uploads/msu2shhacwwanq.webp"
@@ -21010,21 +21010,21 @@
         {
           "id": 22,
           "slug": "rooms-that-watch-you-back",
-          "title": "Stanze che ti guardano da dietro",
+          "title": "Stanze che ti osservano alle spalle",
           "author": "Viacheslav Munister",
           "authorId": "author-1784732936927-kw554",
-          "role": "Contributing Editor",
+          "role": "Redattore contributore",
           "date": "15 agosto 2026",
-          "excerpt": "Il vetro una volta prometteva libertà, onestà e luce. Poi i muri hanno imparato a raccogliere dati. Un saggio sull'architettura trasparente, la visibilità controllata e il lusso radicale di poter scomparire.",
+          "excerpt": "Il vetro una volta prometteva libertà, onestà e luce. Poi le pareti hanno imparato a raccogliere dati. Un saggio sull'architettura trasparente, sulla visibilità controllata e sul lusso radicale di poter scomparire.",
           "category": "Architettura",
           "subcategory": "Saggio critico",
           "tags": [
             "Architettura",
-            "Progetto",
-            "Bicchiere",
+            "Design",
+            "Vetro",
             "Privacy",
             "Sorveglianza",
-            "Modernità"
+            "Modernismo"
           ],
           "imageSeed": "glass-architecture-surveillance-night",
           "imageUrl": "https://api.eprisjournal.com/uploads/msu6g5edocd9yr.jpg",
@@ -21032,214 +21032,215 @@
           "content": [
             {
               "type": "text",
-              "content": "Di notte, ogni edificio di vetro cambia fedeltà. Di giorno prende in prestito il cielo e restituisce un'immagine pulita della città. Dopo il tramonto il riflesso collassa. Scrivanie, ascensori, cucine e corpi appaiono in rettangoli impilati, ogni stanza illuminata come prova. Una persona che lavora fino a tardi diventa parte dell'elevazione. Qualcuno che lava un bicchiere diventa un dettaglio in movimento nel disegno di un architetto. La promessa era l'apertura. La sensazione è l'esposizione."
+              "content": "Di notte, ogni edificio di vetro cambia alleanza. Di giorno prende in prestito il cielo e restituisce un'immagine pulita della città. Dopo il tramonto il riflesso crolla. Scrivanie, ascensori, cucine e corpi appaiono in rettangoli sovrapposti, ogni stanza illuminata come una prova. Una persona che lavora tardi diventa parte della facciata. Qualcuno che lava un vetro diventa un dettaglio mobile in un disegno dell'architetto. La promessa era apertura. La sensazione è esposizione."
             },
             {
               "type": "text",
-              "content": "C'è un particolare disagio negli spazi che si rifiutano di mantenere un segreto. Lo senti nella hall dove la receptionist può vedere l'ascensore prima che l'ascensore possa vedere la receptionist; nella sala riunioni la cui parete vetrata è stata decorata con una garbata striscia di glassa all'altezza degli occhi; nell'appartamento dove la tenda è trattata come un fallimento estetico. Questi interni sono belli, controllati e vagamente accusatori. Suggeriscono che la privacy è qualcosa che si richiede dopo essersi comportati in modo sospetto."
+              "content": "C'è un particolare disagio negli spazi che rifiutano di custodire un segreto. Lo si sente nell'atrio dove la receptionist può vedere l'ascensore prima che l'ascensore possa vedere la receptionist; nella sala riunioni cuja parete vetrata è stata decorata con una cortese striscia di sabbiatura all'altezza degli occhi; nell'appartamento dove la tenda è trattata come un fallimento estetico. Questi interni sono belli, controllati e leggermente accusatori. Suggeriscono che la privacy sia qualcosa che si richiede dopo aver agito sospettosamente."
             },
             {
-              "type": "intestazione",
+              "type": "header",
               "content": "La promessa di vedere tutto"
             },
             {
               "type": "text",
-              "content": "QUERY LENGTH LIMIT EXCEEDED. MAX ALLOWED QUERY : 500 CHARS"
+              "content": "Il vetro moderno è arrivato portando un argomento morale. Le pareti senza peso avrebbero sostituito l'opacità difensiva dell'antica istituzione. La luce solare sarebbe entrata nella fabbrica, nella scuola e nell'ufficio. La struttura sarebbe diventata leggibile. Il lavoro sarebbe stato visibile, quindi onesto. L'edificio Bauhaus di Dessau ha dato a questa fede un corpo indimenticabile nel 1926: un'ala di laboratorio avvolta in acciaio e vetro piatto cristallino, i suoi angoli apparentemente dissolti, le sue stanze offerte al mondo esterno come un campo continuo di attività."
             },
             {
-              "type": "image",
+              "type": "immagine",
               "content": "https://api.eprisjournal.com/uploads/msu6g5jnsm6lj3.jpg",
-              "caption": "La facciata dell'officina del Bauhaus Building di Dessau. Il vetro rende leggibile la struttura trasformando l'opera in immagine pubblica. Foto: Wikimedia Commons, dominio pubblico."
+              "caption": "La facciata del laboratorio dell'edificio Bauhaus a Dessau. Il vetro rende la struttura leggibile trasformando il lavoro in un'immagine pubblica. Foto: Wikimedia Commons, dominio pubblico."
             },
             {
-              "type": "text",
-              "content": "La facciata non era solo una dimostrazione tecnica. Proponeva un nuovo carattere sociale. La trasparenza sembrava igienica, collettiva, orientata in avanti. Il muro non doveva più annunciare l'autorità attraverso la pietra; poteva esercitare l'autorità attraverso un'apparente assenza. Questo è il primo trucco dell'architettura trasparente: meno materiale sembra contenere il confine, più è facile dimenticare che il confine decide ancora chi può entrare, chi può guardare e chi deve rimanere visibile."
+              "type": "testo",
+              "content": "La facciata non era semplicemente una dimostrazione tecnica. Proposeva un nuovo carattere sociale. La trasparenza appariva igienica, collettiva, protesa verso il futuro. Il muro non doveva più annunciare l'autorità attraverso la pietra; poteva esercitare l'autorità attraverso l'apparente assenza. Questo è il primo trucco dell'architettura trasparente: quanto meno materiale sembra contenere il confine, tanto più è facile dimenticare che il confine decide ancora chi può entrare, chi può guardare e chi deve rimanere visibile."
             },
             {
-              "type": "quote",
-              "content": "Un muro trasparente non abolisce il potere. Modifica la direzione in cui il potere può guardare."
+              "type": "citazione",
+              "content": "Un muro trasparente non abolisce il potere. Ne modifica la direzione in cui il potere può guardare."
             },
             {
               "type": "intestazione",
-              "content": "Una casa senza un posto dove nascondersi"
+              "content": "Una casa senza luogo dove nascondersi"
             },
             {
-              "type": "text",
-              "content": "La Glass House di Philip Johnson del 1949 è solitamente fotografata come pura release: una cornice in acciaio scuro, un cilindro in mattoni e un perimetro in vetro collocati con inquietante precisione nel paesaggio del Connecticut. La campagna sembra passare attraverso la stanza. I mobili galleggiano. Il tempo diventa carta da parati. Eppure la casa è meno innocente delle sue fotografie. Abitarlo significa accettare che ogni gesto domestico ha acquisito un pubblico, anche se quel pubblico è solo immaginato."
+              "type": "testo",
+              "content": "Philip Johnson’s Glass House del 1949 è di solito fotografato come pura liberazione: una struttura d'acciaio scura, un cilindro di mattoni e un perimetro di vetro posti con precisione inquietante nel paesaggio del Connecticut. La campagna sembra passare attraverso la stanza. I mobili flottano. Il tempo diventa carta da parati. Eppure la casa è meno innocente di quanto suggeriscano le fotografie. Abitarla significa accettare che ogni gesto domestico abbia acquisito un pubblico, anche se quel pubblico è solo immaginato."
             },
             {
-              "type": "image",
+              "type": "immagine",
               "content": "https://api.eprisjournal.com/uploads/msu6g5edocd9yr.jpg",
-              "caption": "La Glass House di Philip Johnson, New Canaan, completata nel 1949. Il paesaggio sembra attraversare la stanza, mentre l'abitante rimane permanentemente esposto. Foto: Carol M. Highsmith / Library of Congress, public domain."
+              "caption": "La Glass House di Philip Johnson, New Canaan, completata nel 1949. Il paesaggio sembra attraversare la stanza, mentre l'abitante rimane permanentemente in esposizione. Foto: Carol M. Highsmith / Library of Congress, dominio pubblico."
             },
             {
-              "type": "text",
-              "content": "L'oggetto cruciale non è solo il padiglione di vetro, ma il suo compagno attraverso il prato: la Brick House. Opaco, pesante e privato, ospitava le camere da letto, i servizi e i sistemi meccanici che sostenevano l'icona trasparente. I due edifici operano come una psiche divisa. Uno fa chiarezza; l'altro assorbe il sonno, l'impianto idraulico, il disordine e la ritirata. La Glass House può sembrare senza sforzo perché la Brick House tiene le prove dietro le quinte."
+              "type": "testo",
+              "content": "L'oggetto cruciale non è il padiglione di vetro da solo, ma il suo compagno dall'altra parte del prato: la Brick House. Opaca, pesante e privata, essa conteneva camere da letto, servizi e i sistemi meccanici che sostenevano l'icona trasparente. I due edifici funzionano come una psiche divisa. Uno esegue la chiarezza; l'altro assorbe il sonno, l'idraulica, il disordine e il ritiro. La Glass House può apparire senza sforzo perché la Brick House tiene nascoste le prove."
             },
             {
               "type": "intestazione",
               "content": "Il corpo nella cornice perfetta"
             },
             {
-              "type": "text",
-              "content": "La casa di Farnsworth di Mies van der Rohe affina la stessa domanda. Progettata nel 1945 e completata nel 1951 per il medico Edith Farnsworth, la casa del fine settimana è sollevata sopra la pianura alluvionale del fiume Fox come due piani orizzontali bianchi con un'unica stanza trasparente sospesa tra di loro. L'immagine è quasi incredibilmente calma. In inverno, i rami nudi continuano attraverso le vetrate fino a quando la casa sembra meno costruita di quanto temporaneamente delineato."
+              "type": "testo",
+              "content": "La Farnsworth House di Mies van der Rohe accentua la stessa domanda. Progettata nel 1945 e completata nel 1951 per la medico Edith Farnsworth, la casa di fine settimana è sollevata sopra la pianura alluvionale del fiume Fox come due piani orizzontali bianchi con una singola stanza trasparente sospesa tra di loro. L'immagine è quasi impossibilmente calma. In inverno, i rami spogli proseguono attraverso la vetratura finché la casa sembra meno costruita che provvisoriamente delineata."
             },
             {
-              "type": "image",
+              "type": "immagine",
               "content": "https://api.eprisjournal.com/uploads/msu6r768yk7inf.jpg",
-              "caption": "Farnsworth House in inverno, Plano, Illinois. Le tende non sono un tradimento del concetto; sono la prova che un concetto alla fine incontra un corpo. Foto: Carol M. Highsmith / Library of Congress, public domain."
+              "caption": "Farnsworth House d'inverno, Plano, Illinois. Le tende non sono un tradimento del concetto; sono la prova che un concetto incontra infine un corpo. Foto: Carol M. Highsmith / Biblioteca del Congresso, dominio pubblico."
             },
             {
-              "type": "text",
-              "content": "QUERY LENGTH LIMIT EXCEEDED. MAX ALLOWED QUERY : 500 CHARS"
+              "type": "testo",
+              "content": "Il piano appare universale, ma l'abitare è specifico. Il mattino arriva da una direzione. I vestiti devono andare da qualche parte. Una persona può ammalarsi, arrabbiarsi, stancarsi o semplicemente non avere voglia di confrontarsi con il paesaggio. Poco dopo essersi trasferita, Farnsworth aggiunse degli schermi intorno al portico occidentale. Successivamente, il restauro li rimosse per recuperare l'immagine canonica del 1951. La sequenza è rivelatrice: l'occupante ha modificato il capolavoro per rendere la vita più tollerabile; la conservazione l'ha modificata nuovamente per rendere il capolavoro più leggibile."
             },
             {
-              "type": "text",
-              "content": "Questo non è un argomento contro la casa. È un argomento per leggere la sua bellezza senza cancellare la trattativa necessaria per abitarla. La fotografia di architettura premia il piano ininterrotto. La vita quotidiana produce interruzioni: una tenda mezza tirata, una sedia girata lontano dalla vista, condensa sul bordo di un vetro. Quei segni non sono rumori visivi. Sono i residenti che rispondono."
+              "type": "testo",
+              "content": "Questo non è un argomento contro la casa. È un argomento a favore della lettura della sua bellezza senza cancellare la negoziazione necessaria per abitarla. La fotografia architettonica premia il piano senza interruzioni. La vita quotidiana produce interruzioni: una tenda mezzo chiusa, una sedia rivolta lontano dalla vista, condensa al bordo di un vetro. Questi segni non sono rumore visivo. Sono l'abitante che scrive di ritorno."
             },
             {
-              "type": "image",
+              "type": "immagine",
               "content": "https://api.eprisjournal.com/uploads/msu6g5mj1cr2y7.jpg",
-              "caption": "All'interno della Glass House, mobili e paesaggio condividono un piano visivo. Il nucleo circolare in mattoni è l'unica interruzione solida. Foto: Carol M. Highsmith / Library of Congress, public domain."
+              "caption": "All'interno della Glass House, i mobili e il paesaggio condividono un unico piano visivo. Il nucleo circolare di mattoni è l'unica interruzione solida. Foto: Carol M. Highsmith / Library of Congress, pubblico dominio."
             },
             {
-              "type": "text",
-              "content": "Questa disposizione rivela una verità che gli interni contemporanei spesso nascondono: la trasparenza non è mai completa. È curata, il cavo è nascosto, la parete portaoggetti è chiusa, il back office non ha finestre, la telecamera è nera e piccola. Ciò che sembra apertura di solito è una ridistribuzione dell'opacità. Qualcuno ottiene la vista dal vetro; qualcun altro gestisce ciò che non deve apparire in esso."
+              "type": "testo",
+              "content": "Questa disposizione rivela una verità che gli interni contemporanei spesso nascondono: la trasparenza non è mai completa. È curata. Il cavo è nascosto, il muro di stoccaggio è chiuso, l'ufficio sul retro non ha finestre, la telecamera è nera e piccola. Ciò che sembra apertura di solito è una redistribuzione dell'opacità. Qualcuno ottiene la vista sul vetro; qualcun altro gestisce ciò che non deve apparire in essa."
             },
             {
               "type": "intestazione",
-              "content": "La società scopre un volto"
+              "content": "La corporazione scopre un volto"
             },
             {
-              "type": "text",
-              "content": "Verso la metà del XX secolo, il vetro era diventato la grammatica aziendale. La Lever House di New York, completata da Skidmore, Owings & Merrill nel 1952, sostituì il peso in muratura del blocco commerciale con una facciata continua blu-verde e una lastra rialzata sospesa sopra una piazza pubblica. L'edificio sembrava preciso, pulito e quasi privo di attriti. Ha reso la somministrazione fotogenica. L'azienda potrebbe essere intesa come una superficie fresca piuttosto che una stanza piena di decisioni."
+              "type": "testo",
+              "content": "Alla metà del XX secolo, il vetro era diventato grammatica corporativa. La Lever House a New York, completata da Skidmore, Owings & Merrill nel 1952, sostituì il peso murario del blocco commerciale con una parete curtain verde-azzurra e una lastra sollevata sospesa sopra una piazza pubblica. L'edificio sembrava preciso, pulito e quasi privo di attrito. Ha reso l'amministrazione fotogenica. L'azienda poteva essere intesa come una superficie fresca piuttosto che una stanza piena di decisioni."
             },
             {
               "type": "intestazione",
               "content": "L'istituzione come immagine immacolata"
             },
             {
-              "type": "text",
-              "content": "L'edificio del Segretariato delle Nazioni Unite ha reso esplicito il simbolismo. Quando la sua lastra smaltata blu-verde sorse accanto all'East River nel 1950, la trasparenza poteva rappresentare un'istituzione disposta a esporre il suo funzionamento al mondo. La facciata offriva un quadro morale prima di offrire informazioni: l'ordine internazionale come griglia luminosa, la burocrazia trasformata in luce."
+              "type": "testo",
+              "content": "L'edificio del Segretariato delle Nazioni Unite ha reso esplicito il simbolismo. Quando la sua lastra vetrata verde-azzurra si è innalzata accanto al fiume East nel 1950, la trasparenza poteva rappresentare un'istituzione disposta a esporre i suoi funzionamenti al mondo. La facciata ha offerto un'immagine morale prima di offrire informazioni: l'ordine internazionale come una griglia luminosa, la burocrazia trasformata in luce."
             },
             {
-              "type": "image",
+              "type": "immagine",
               "content": "https://api.eprisjournal.com/uploads/msu6r79ffu6czg.jpg",
-              "caption": "Il Palazzo del Segretariato delle Nazioni Unite al tramonto. La facciata continua trasforma un'istituzione in un'unica immagine luminosa mentre le singole stanze rimangono illeggibili. Foto: Daryan Shamkhali, CC0."
+              "caption": "L'edificio del Segretariato delle Nazioni Unite al tramonto. La parete di vetro trasforma un'istituzione in un'unica immagine luminosa, mentre le singole stanze rimangono illeggibili. Foto: Daryan Shamkhali, CC0."
             },
             {
-              "type": "text",
-              "content": "Dalla strada, tuttavia, la griglia esegue l'uguaglianza facendo apparire ogni baia equivalente. All'interno, le stanze differiscono per accesso, sicurezza e influenza. La parete divisoria appiattisce quelle distinzioni in una pelle uniforme. Questa è la seduzione politica della torre di vetro: può rappresentare l'apertura senza arrendersi alla gerarchia. Si vede l'organizzazione ovunque e le sue decisioni da nessuna parte."
+              "type": "testo",
+              "content": "Dalla strada, tuttavia, la griglia realizza l'uguaglianza facendo apparire ogni baia equivalente. All'interno, le stanze differiscono per accesso, sicurezza e influenza. La parete di vetro appiattisce queste distinzioni in una pelle uniforme. Questo è la seduzione politica della torre di vetro: può rappresentare l'apertura senza rinunciare alla gerarchia. Vedi l'organizzazione ovunque e le sue decisioni da nessuna parte."
             },
             {
-              "type": "image",
+              "type": "immagine",
               "content": "https://api.eprisjournal.com/uploads/msu6g5pl0gojxo.jpg",
-              "caption": "Lever House su Park Avenue: la facciata continua trasforma l'organizzazione aziendale in una pelle astratta e immacolata. Foto: Seth Tisue, CC BY-SA 2.0."
+              "caption": "Lever House su Park Avenue: la parete a tende trasforma l'organizzazione aziendale in una pelle astratta e immacolata. Foto: Seth Tisue, CC BY-SA 2.0."
             },
             {
-              "type": "text",
-              "content": "È qui che la trasparenza diventa branding. Un quartier generale vetrato dice: qui non si nasconde nulla. Ma la dichiarazione è visiva, non procedurale. Puoi vedere le persone che camminano dietro la facciata senza vedere come l'autorità si muove tra di loro. L'edificio trasparente offre l'accesso ai corpi e trattiene l'accesso ai sistemi. È possibile guardare un intero piano al lavoro e non imparare nulla su ciò che sta facendo il lavoro."
+              "type": "testo",
+              "content": "Questo è dove la trasparenza diventa marchio. Una sede vetrata dice: qui nulla è nascosto. Ma l'affermazione è visiva, non procedurale. Si possono vedere le persone camminare dietro la facciata senza vedere come l'autorità si muove tra loro. L'edificio trasparente offre accesso ai corpi e nega l'accesso ai sistemi. È possibile osservare un intero piano al lavoro e non imparare nulla su cosa stia facendo quel lavoro."
             },
             {
               "type": "intestazione",
               "content": "Quando l'edificio inizia a prendere appunti"
             },
             {
-              "type": "text",
-              "content": "Lo smart office completa il passaggio dalla finestra all'interfaccia. Al The Edge di Amsterdam, i dipendenti utilizzano un'app per localizzare i colleghi, trovare scrivanie e regolare l'illuminazione o la temperatura locale, mentre i sensori monitorano l'occupazione, il movimento, l'umidità, l'anidride carbonica, la luce e il clima. Il design è davvero utile. Le stanze possono rispondere alla domanda; l'energia non viene spesa fingendo che un piano vuoto sia occupato. Il comfort diventa precisione."
+              "type": "testo",
+              "content": "L'ufficio intelligente completa la transizione dalla finestra all'interfaccia. All'Edge ad Amsterdam, i dipendenti usano un'app per localizzare i colleghi, trovare le scrivanie e regolare l'illuminazione o la temperatura locali, mentre i sensori monitorano l'occupazione, il movimento, l'umidità, l'anidride carbonica, la luce e il clima. Il design è genuinamente utile. Le stanze possono rispondere alla domanda; l'energia non viene spesa facendo finta che un piano vuoto sia occupato. Il comfort diventa preciso."
             },
             {
-              "type": "text",
-              "content": "Ma la precisione ha un'ombra. Una volta che un edificio sa dove si trova una persona, per quanto tempo viene utilizzata una stanza e quale percorso si riempie dopo pranzo, lo spazio diventa dati comportamentali. Il dipendente non si muove più attraverso un contenitore neutro. Il contenitore registra il movimento, prevede la domanda e definisce silenziosamente ciò che conta come normale. Nessun cattivo deve sedersi dietro un muro di monitor. Il disagio deriva dal fatto che il sistema può essere efficiente, piacevole e invasivo allo stesso tempo."
+              "type": "testo",
+              "content": "Ma la precisione ha un'ombra. Una volta che un edificio sa dove si siede una persona, quanto tempo una stanza è utilizzata e quale percorso si affolla dopo pranzo, lo spazio diventa dati comportamentali. Il dipendente non si muove più attraverso un contenitore neutro. Il contenitore registra il movimento, prevede la domanda e definisce silenziosamente cosa conta come normale. Nessun cattivo ha bisogno di sedersi dietro un muro di monitor. L'ansia deriva dal fatto che il sistema può essere efficiente, piacevole e invasivo allo stesso tempo."
             },
             {
-              "type": "image",
+              "type": "immagine",
               "content": "https://api.eprisjournal.com/uploads/msu6g5sd70bo9x.jpg",
               "caption": "I riflessi moltiplicano la facciata dell'ufficio in un campo incerto di interno, esterno e osservatore. Foto: Dietmar Rabich, CC BY-SA 4.0."
             },
             {
-              "type": "nota:",
-              "content": "L'architettura di sorveglianza più persuasiva non sembra punitiva. Sembra comodo, ricorda il tuo livello di luce preferito, apre la porta corretta e suggerisce la scrivania più vicina. Arriva il controllo vestito da servizio."
+              "type": "nota",
+              "content": "L'architettura di sorveglianza più persuasiva non appare punitiva. Appare comoda. Ricorda il livello di luce preferito, apre la porta corretta e suggerisce la scrivania più vicina. Il controllo arriva vestito da servizio."
             },
             {
               "type": "intestazione",
-              "content": "Progettare il diritto alla scomparsa"
+              "content": "Progettare il diritto di scomparire"
             },
             {
-              "type": "text",
-              "content": "La risposta non è un ritorno sentimentale a pareti spesse e finestre minuscole. L'opacità può proteggere, ma può anche isolare e intimidire. Il compito più interessante è progettare una visibilità regolabile: spazi che consentano a una persona di decidere quando apparire, quando sfocare e quando svanire. La privacy dovrebbe comportarsi meno come un bunker e più come un dimmer."
+              "type": "testo",
+              "content": "La risposta non è un ritorno sentimentale a pareti spesse e finestre minuscole. L'opacità può proteggere, ma può anche isolare e intimidire. Il compito più interessante è progettare una visibilità regolabile: spazi che permettano a una persona di decidere quando apparire, quando sfocare e quando scomparire. La privacy dovrebbe comportarsi meno come un bunker e più come un dimmer."
             },
             {
               "type": "intestazione",
-              "content": "Trasparenza senza interrogatorio"
+              "content": "Trasparenza senza l'interrogatorio"
             },
             {
-              "type": "text",
-              "content": "Il padiglione di vetro di SANAA al Museo d'arte di Toledo offre un modello più ambiguo. Le sue pareti trasparenti non si limitano a dividere l'interno dall'esterno. Più di 360 grandi pannelli, molti dei quali curvi, formano stanze all'interno di stanze. I riflessi si sovrappongono alle sagome; una persona appare, scompare dietro una curva e ritorna come un pallido doppio su un'altra superficie. La visibilità è continua ma mai stabile."
+              "type": "testo",
+              "content": "Il Padiglione di Vetro di SANAA al Toledo Museum of Art offre un modello più ambiguo. Le sue pareti trasparenti non si limitano semplicemente a dividere interno ed esterno. Oltre 360 pannelli grandi, molti dei quali curvi, formano stanze dentro stanze. I riflessi si sovrappongono alle sagome; una persona appare, scompare dietro una curva e ricompare come un doppio pallido su un'altra superficie. La visibilità è continua ma mai stabile."
             },
             {
-              "type": "image",
+              "type": "immagine",
               "content": "https://api.eprisjournal.com/uploads/msu6r7d4gzssa6.jpg",
-              "caption": "All'interno del Padiglione di Vetro di SANAA, Museo d'Arte di Toledo. Le pareti curve rendono la visibilità stratificata e incerta piuttosto che totale. Foto: Kiko 2709 / Adam C Nelson, CC BY-SA 3.0."
+              "caption": "All'interno del Padiglione di Vetro di SANAA, Toledo Museum of Art. Le pareti curve rendono la visibilità stratificata e incerta piuttosto che totale. Foto: Kiko 2709 / Adam C Nelson, CC BY-SA 3.0."
             },
             {
-              "type": "text",
-              "content": "La differenza è sottile ma importante. Una parete vetrata diritta si comporta come un diagramma: qui, là, osservato, osservatore. Il vetro curvo introduce ritardo ed errore. Dà all'occhio troppe informazioni da padroneggiare contemporaneamente. L'architettura rimane aperta, ma il corpo non è appuntato ad un unico campo visivo. L'apertura diventa atmosferica piuttosto che disciplinare."
+              "type": "testo",
+              "content": "La differenza è sottile ma importante. Una parete vetrata dritta si comporta come un diagramma: qui, lì, osservato, osservatore. Il vetro curvo introduce ritardo e errore. Fornisce all'occhio troppe informazioni da assimilare in un unico colpo. L'architettura rimane aperta, ma il corpo non è fissato a un unico campo visivo. L'apertura diventa atmosferica piuttosto che disciplinare."
             },
             {
-              "type": "text",
-              "content": "Questo suggerisce un brief più ricco per il design contemporaneo. Non chiedere solo quanta luce diurna o connessione visiva può fornire una partizione. Chiedi che tipo di relazione produce il pannello. Chi riceve la prima visualizzazione? La persona all'interno può anticipare un approccio? Il riflesso protegge o espone dopo il tramonto? La superficie può cambiare stato senza convocare la gestione delle strutture? La qualità etica della trasparenza vive in queste piccole asimmetrie."
+              "type": "testo",
+              "content": "Questo suggerisce un brief più ricco per il design contemporaneo. Non chiedere solo quanta luce diurna o connessione visiva una parete possa fornire. Chiedi quale tipo di relazione il pannello produce. Chi riceve la prima visuale? La persona all'interno può anticipare un approccio? Il riflesso protegge o espone dopo il buio? La superficie può cambiare stato senza dover richiedere l'intervento del facility management? La qualità etica della trasparenza risiede in queste piccole asimmetrie."
             },
             {
-              "type": "text",
-              "content": "QUERY LENGTH LIMIT EXCEEDED. MAX ALLOWED QUERY : 500 CHARS"
+              "type": "testo",
+              "content": "Questo cambia lo status degli elementi ordinari. Una tenda non è più solo decorazione ma una facciata controllata dall'utente. Il vetro nervato trasmette luce rifiutando tuttavia un'immagine completa. Una rientranza profonda permette a qualcuno di stare vicino a una finestra senza diventare oggetto di esposizione. Una svolta in un corridoio ritarda la visuale di un secondo, sufficiente a sostituire la sorpresa con il consenso. L'assorbimento acustico impedisce la trasparenza del suono anche dove la connessione visiva è utile. Una pozza calda di luce locale può far sentire una scrivania abitata senza illuminare tutta la stanza."
             },
             {
-              "type": "text",
-              "content": "Una buona privacy spaziale non è l'assenza di contatto. È la capacità di modulare il contatto senza chiedere il permesso all'edificio. Le stanze migliori offrono diversi stati tra esposto e sigillato: visibile, sagomato, riflesso, schermato, ritirato. Riconoscono che l'attenzione umana non è una risorsa pubblica illimitata."
+              "type": "testo",
+              "content": "La buona privacy spaziale non è l'assenza di contatto. È la capacità di modulare il contatto senza dover chiedere il permesso all'edificio. Le migliori stanze offrono diversi stati tra esposizione e chiusura: visibile, in silhouette, riflesso, schermato, ritirato. Riconoscono che l'attenzione umana non è una risorsa pubblica illimitata."
             },
             {
-              "type": "quote",
-              "content": "Il lusso radicale del prossimo interno può essere semplice: una stanza che ti nota senza segnalarti."
+              "type": "citazione",
+              "content": "Il lusso radicale dell’interiorità successiva potrebbe essere semplice: una stanza che ti nota senza riferire su di te."
             },
             {
               "type": "intestazione",
               "content": "L'ultima finestra illuminata"
             },
             {
-              "type": "text",
-              "content": "Il vetro rimane irresistibile perché trasforma l'architettura in tempo. Cattura le nuvole, dissolve gli angoli e lascia che una stanza prenda in prestito un orizzonte. Niente di quella bellezza è falsa. L'errore è confondere l'apertura visiva con l'apertura etica, o l'intelligenza tecnica con la cura. Un edificio può rivelare la sua struttura e ancora nascondere la sua politica. Può sapere esattamente dove ti trovi e non capire nulla di ciò di cui hai bisogno."
+              "type": "testo",
+              "content": "Il vetro rimane irresistibile perché trasforma l'architettura in meteorologia. Cattura le nuvole, scioglie gli angoli e permette a una stanza di prendere in prestito un orizzonte. Nessuna di quella bellezza è falsa. L'errore consiste nel confondere l'apertura visiva con l'apertura etica, o l'intelligenza tecnica con la cura. Un edificio può rivelare la sua struttura e comunque nascondere la sua politica. Può sapere esattamente dove ti trovi e non capire nulla di ciò di cui hai bisogno."
             },
             {
-              "type": "text",
-              "content": "La città dopo la mezzanotte rende visibile questa contraddizione. Le torri diventano griglie di scene private; le case trasparenti diventano lanterne; l'ufficio continua a brillare per nessuno. Da qualche parte dietro un pannello, una persona cerca un interruttore. La stanza diventa buia. Per un attimo la facciata perde un'informazione. Quella piccola scomparsa sembra meno una ritirata che un controllo."
+              "type": "testo",
+              "content": "La città dopo mezzanotte rende evidente questa contraddizione. Le torri diventano griglie di scene private; le case trasparenti diventano lanterne; l'ufficio continua a brillare per nessuno. Da qualche parte dietro un vetro, una persona tende la mano verso un interruttore. La stanza si oscura. Per un momento la facciata perde un'informazione. Quella piccola scomparsa sembra meno un ritirarsi che un atto di controllo."
             },
             {
               "type": "intestazione",
               "content": "Riferimenti"
             },
             {
-              "type": "link",
-              "content": "Trasparenza in Architettura e non solo – MoMA",
+              "type": "collegamento",
+              "content": "Trasparenza nell'architettura e oltre – MoMA",
               "url": "https://www.moma.org/calendar/galleries/5381"
             },
             {
-              "type": "link",
+              "type": "collegamento",
               "content": "Edificio Bauhaus – Stiftung Bauhaus Dessau",
               "url": "https://bauhaus-dessau.de/en/venues/bauhaus-building/"
             },
             {
-              "type": "link",
-              "content": "The Glass House – National Trust for Historic Preservation",
+              "type": "collegamento",
+              "content": "La Casa di Vetro – National Trust for Historic Preservation",
               "url": "https://theglasshouse.org/about/"
             },
             {
-              "type": "link",
-              "content": "The Edge – Architettura PLP",
+              "type": "collegamento",
+              "content": "L'avanguardia – PLP architecture",
               "url": "https://www.plparchitecture.com/projects/the-edge"
             }
           ],
-          "updatedAt": "2026-08-15T13:06:58.453Z"
+          "updatedAt": "2026-08-17T00:25:00.301Z",
+          "publishedAt": "2026-08-15"
         }
       ],
       "reviews": [
