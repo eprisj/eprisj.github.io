@@ -7696,6 +7696,28 @@
           "authorId": "author-1784732936927-kw554",
           "role": "Приглашённый редактор",
           "imageUrl": "https://api.eprisjournal.com/uploads/msu2shhacwwanq.webp"
+        },
+        {
+          "id": 5,
+          "draft": true,
+          "title": "Новый обзор",
+          "subject": "Новый обзор",
+          "rating": 0,
+          "content": "С учетом первых впечатлений – атмосфера, сервис, для кого это место. Далее приведены детали, подтверждающие выводы.",
+          "author": "EPRIS Journal",
+          "category": "Food & Stay",
+          "verdict": "Одна чёткая строка – стоит ли идти.",
+          "pros": [
+            "Локация",
+            "Атмосфера",
+            "Соотношение цены и качества"
+          ],
+          "cons": [
+            "Один честный минус"
+          ],
+          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
+          "date": "Aug 11, 2026",
+          "updatedAt": "2026-08-17T15:10:46.906Z"
         }
       ],
       "libraryItems": [
@@ -10505,6 +10527,28 @@
           "authorId": "author-1784732936927-kw554",
           "role": "Запрошений редактор",
           "imageUrl": "https://api.eprisjournal.com/uploads/msu2shhacwwanq.webp"
+        },
+        {
+          "id": 5,
+          "draft": true,
+          "title": "Новий огляд",
+          "subject": "Новий огляд",
+          "rating": 0,
+          "content": "Начніте з першого враження – атмосфера, сервіс, для кого це місце. Потім конкретні деталі, що підтверджують висновок.",
+          "author": "EPRIS Journal",
+          "category": "Food & Stay",
+          "verdict": "Одна чёткая строка – стоит ли идти.",
+          "pros": [
+            "Локація",
+            "Атмосфера",
+            "Соотношение ціни і якості"
+          ],
+          "cons": [
+            "Один честный минус"
+          ],
+          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
+          "date": "Aug 11, 2026",
+          "updatedAt": "2026-08-17T15:10:52.633Z"
         }
       ],
       "libraryItems": [
@@ -13314,6 +13358,28 @@
           "authorId": "author-1784732936927-kw554",
           "role": "Автор",
           "imageUrl": "https://api.eprisjournal.com/uploads/msu2shhacwwanq.webp"
+        },
+        {
+          "id": 5,
+          "draft": true,
+          "title": "Neue Rezension",
+          "subject": "Neue Rezension",
+          "rating": 0,
+          "content": "Kommen Sie mit der ersten Woche – Atmosphäre, Service, für diese Gegend. Die konkreten Details werden später angezeigt.",
+          "author": "EPRIS Journal",
+          "category": "Food & Stay",
+          "verdict": "Eine einzelne Zeile – es ist nur eine Zeile.",
+          "pros": [
+            "Standort",
+            "Atmosphäre",
+            "Sichere Preise und Kosten"
+          ],
+          "cons": [
+            "Один честный минус"
+          ],
+          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
+          "date": "Aug 11, 2026",
+          "updatedAt": "2026-08-17T15:10:59.462Z"
         }
       ],
       "libraryItems": [
@@ -16064,6 +16130,28 @@
           "authorId": "author-1784732936927-kw554",
           "role": "Автор",
           "imageUrl": "https://api.eprisjournal.com/uploads/msu2shhacwwanq.webp"
+        },
+        {
+          "id": 5,
+          "draft": true,
+          "title": "Nueva reseña",
+          "subject": "Nueva reseña",
+          "rating": 0,
+          "content": "Начните с первого впечатления – атмосфера, сервис, для кого это место. Estos detalles concretos se pueden realizar.",
+          "author": "EPRIS Journal",
+          "category": "Food & Stay",
+          "verdict": "Одна чёткая строка – стоит ли идти.",
+          "pros": [
+            "Ubicación",
+            "Atmósfera",
+            "Соотношение цены и качества"
+          ],
+          "cons": [
+            "Один честный minус"
+          ],
+          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
+          "date": "Aug 11, 2026",
+          "updatedAt": "2026-08-17T15:11:06.798Z"
         }
       ],
       "libraryItems": [
