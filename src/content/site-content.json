@@ -4607,26 +4607,6 @@
       "role": "Author"
     },
     {
-      "id": 2,
-      "title": "The Book of Whispers",
-      "subject": "Novel by S. Alexiou",
-      "rating": 5,
-      "content": "Hauntingly beautiful. A prose that feels like poetry, exploring memory and loss in a divided city.",
-      "author": "Maria S.",
-      "imageUrl": "/images/urban-solitude.png",
-      "featured": false,
-      "category": "Books",
-      "verdict": "Prose that moves like poetry through memory and loss.",
-      "meta": "Novel · 248 pp · S. Alexiou",
-      "pros": [
-        "Luminous, restrained language",
-        "Unforgettable sense of place"
-      ],
-      "cons": [
-        "Slow middle third"
-      ]
-    },
-    {
       "id": 5,
       "draft": true,
       "title": "New review",
