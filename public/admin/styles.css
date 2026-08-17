@@ -7805,3 +7805,66 @@ button, a, input, select, textarea { touch-action: manipulation; }
   padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255, 255, 255, .7);
 }
 .order-home-controls .order-cs-check { grid-column: 1 / -1; padding-bottom: 0; }
+
+/* ── ВИТРИНА И БЮРО ─────────────────────────────────────────────────────────
+
+   These cards were built from inline styles: a 120x150 portrait crop for every
+   photograph regardless of its shape, a 260-character statement at full
+   contrast, and a dark maroon primary button repeated on every row down the
+   page. Fifteen works meant fifteen "Опубликовать" buttons shouting at once,
+   and the whole point of the screen — deciding on the queue — was the hardest
+   thing to see.
+
+   Same rule as the order screen: scan at full strength, act on hover. */
+
+#tab-showcase [hidden] { display: none !important; }
+
+.sc-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 10px 0 12px; }
+.sc-filters { display: flex; flex-wrap: wrap; gap: 4px; padding: 3px; border: 1px solid var(--line); border-radius: 8px; background: rgba(14, 14, 16, .04); }
+.sc-filter {
+  border: 0; border-radius: 6px; cursor: pointer; padding: 6px 11px; background: none;
+  font-family: var(--font-mono); font-size: .54rem; text-transform: uppercase; letter-spacing: .09em; color: var(--text-muted);
+}
+.sc-filter[aria-selected="true"] { background: #fff; color: inherit; box-shadow: 0 1px 2px rgba(14, 14, 16, .07); }
+.sc-count { font-family: var(--font-mono); font-size: .58rem; color: var(--text-muted); margin-left: auto; }
+
+.sc-card {
+  display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 14px;
+  align-items: start; margin-bottom: 8px; padding: 12px;
+  border: 1px solid transparent; border-radius: 8px;
+  background: rgba(255, 255, 255, .6);
+  transition: background .12s ease, border-color .12s ease;
+}
+.sc-card:hover { background: #fff; border-color: var(--line); }
+.sc-card.no-photo { grid-template-columns: minmax(0, 1fr); }
+/* Landscape, not a forced portrait crop: most set-design and installation
+   photographs are wider than they are tall, and 120x150 was cutting the room
+   out of every one of them. */
+.sc-thumb { width: 104px; height: 72px; object-fit: cover; border-radius: 5px; background: rgba(14, 14, 16, .07); }
+.sc-body { min-width: 0; }
+.sc-meta {
+  display: flex; align-items: center; gap: 7px; flex-wrap: wrap; margin: 0 0 5px;
+  font-family: var(--font-mono); font-size: .5rem; text-transform: uppercase; letter-spacing: .09em; color: var(--text-muted);
+}
+.sc-state { display: inline-flex; align-items: center; gap: 6px; }
+.sc-state::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.sc-state--queue { color: #b8860b; }
+.sc-state--live { color: #4f7a1f; }
+.sc-state--archived { color: rgba(14, 14, 16, .38); }
+.sc-title { margin: 0 0 2px; font-size: .95rem; line-height: 1.25; overflow-wrap: anywhere; }
+.sc-author { margin: 0; font-size: .8rem; }
+.sc-place { margin: 3px 0 0; font-family: var(--font-mono); font-size: .54rem; color: var(--text-muted); overflow-wrap: anywhere; }
+/* Two lines is enough to recognise a work; the full statement is one click away
+   on the source. A 260-character paragraph per row turned the queue into an
+   essay you had to read to find the buttons. */
+.sc-statement {
+  margin: 7px 0 0; font-size: .76rem; line-height: 1.5; color: rgba(14, 14, 16, .68);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.sc-hold { margin: 7px 0 0; font-size: .7rem; line-height: 1.45; color: #9a6b06; }
+
+/* The actions stay in the flow (an editor needs to reach them without hunting)
+   but lose their weight until the row is under the cursor. */
+.sc-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; opacity: .55; transition: opacity .12s ease; }
+.sc-card:hover .sc-actions, .sc-card:focus-within .sc-actions { opacity: 1; }
+.sc-actions .btn { font-size: .58rem; padding: 5px 10px; }
