@@ -18163,7 +18163,9 @@ function showcaseCard(work) {
         ${place ? `<p class="sc-place">${escapeHtml(place)}</p>` : ''}
         ${work.statement ? `<p class="sc-statement">${escapeHtml(work.statement.slice(0, 260))}</p>` : ''}
         ${hold}
+        ${_showcaseEditing === work.id ? showcaseEditForm(work) : ''}
         <div class="sc-actions">
+          <button class="btn" data-showcase-edit="${escapeHtml(work.id)}" type="button">${_showcaseEditing === work.id ? 'Свернуть' : 'Править карточку'}</button>
           ${work.status !== 'Published' ? `<button class="btn" data-showcase-act="Published" data-showcase-id="${escapeHtml(work.id)}" type="button">Опубликовать</button>` : ''}
           ${work.status !== 'Archived' ? `<button class="btn" data-showcase-act="Archived" data-showcase-id="${escapeHtml(work.id)}" type="button">В архив</button>` : ''}
           ${work.status !== 'Under review' ? `<button class="btn" data-showcase-act="Under review" data-showcase-id="${escapeHtml(work.id)}" type="button">Вернуть в очередь</button>` : ''}
@@ -18171,6 +18173,71 @@ function showcaseCard(work) {
         </div>
       </div>
     </article>`;
+}
+
+/* ПРАВКА КАРТОЧКИ ПРЯМО В ПАНЕЛИ.
+
+   До этого экран умел ровно одно — двигать работу между тремя состояниями, а
+   заголовок, автора, город, подпись и кадры можно было поправить только по ssh
+   через review.js. Для редакции это выглядело как «в витрине ничего не
+   меняется»: менять было негде. Форма пишет в тот же PATCH, витрина отдаётся с
+   Cache-Control: no-store и читается страницей с cache:'no-store', поэтому
+   правка видна на сайте с первой же перезагрузкой — без сборки и деплоя.
+
+   Пустое поле здесь означает «стереть», и сервер именно стирает ключ. Поэтому
+   поля, которых редакция не касалась, в запрос не попадают вовсе. */
+const SHOWCASE_EDIT_FIELDS = [
+  ['title', 'Заголовок', 'text'],
+  ['author', 'Автор', 'text'],
+  ['credits', 'Кто ещё стоит за работой', 'text'],
+  ['year', 'Год', 'text'],
+  ['discipline', 'Дисциплина', 'text'],
+  ['medium', 'Материал / техника', 'text'],
+  ['venue', 'Площадка', 'text'],
+  ['city', 'Город', 'text'],
+  ['country', 'Страна', 'text'],
+  ['countryCode', 'Код страны (2 буквы)', 'text'],
+  ['authorInstagram', 'Instagram автора', 'text'],
+  ['portfolio', 'Портфолио', 'text'],
+  ['sourceUrl', 'Ссылка на источник (https)', 'text'],
+  ['tags', 'Теги через запятую', 'text'],
+  ['statement', 'Описание', 'textarea'],
+];
+
+let _showcaseEditing = '';
+
+function showcaseEditForm(work) {
+  const val = (key) => {
+    if (key === 'tags') return (work.tags || []).join(', ');
+    return work[key] == null ? '' : String(work[key]);
+  };
+  const fields = SHOWCASE_EDIT_FIELDS.map(([key, label, kind]) => `
+    <label class="sc-edit-field">
+      <span>${escapeHtml(label)}</span>
+      ${kind === 'textarea'
+        ? `<textarea rows="4" data-sc-field="${key}">${escapeHtml(val(key))}</textarea>`
+        : `<input type="text" data-sc-field="${key}" value="${escapeHtml(val(key))}">`}
+    </label>`).join('');
+  /* Кадры правятся списком адресов по строке на кадр: первый — обложка карточки
+     и возможная открывающая сцена витрины, поэтому порядок здесь значащий и
+     сказан вслух. */
+  const images = (work.images || []).map((img) => img.url).join('\n');
+  return `
+    <form class="sc-edit" data-sc-edit-form="${escapeHtml(work.id)}">
+      ${fields}
+      <label class="sc-edit-field">
+        <span>Кадры — по одному https-адресу на строку, первый становится обложкой</span>
+        <textarea rows="3" data-sc-field="images">${escapeHtml(images)}</textarea>
+      </label>
+      <label class="sc-edit-check">
+        <input type="checkbox" data-sc-field="featured" ${work.featured ? 'checked' : ''}>
+        <span>Может открывать витрину</span>
+      </label>
+      <div class="sc-actions">
+        <button class="btn btn-primary" type="submit">Сохранить карточку</button>
+        <span class="card-desc" data-sc-edit-status></span>
+      </div>
+    </form>`;
 }
 
 function showcaseEnquiryCard(enquiry) {
@@ -18328,7 +18395,58 @@ async function showcaseSetEnquiryStatus(id, next) {
   await loadShowcaseEnquiries();
 }
 
+async function showcaseSaveFields(id, form) {
+  const token = showcaseToken();
+  if (!token) return;
+  const statusEl = form.querySelector('[data-sc-edit-status]');
+  const fields = {};
+  form.querySelectorAll('[data-sc-field]').forEach((el) => {
+    const key = el.dataset.scField;
+    if (key === 'images') {
+      fields.images = String(el.value || '').split('\n').map((line) => line.trim()).filter(Boolean)
+        .map((url) => ({ url }));
+      return;
+    }
+    if (el.type === 'checkbox') { fields[key] = el.checked; return; }
+    fields[key] = el.value;
+  });
+  /* Кадры отправляем списком объектов, но подписи и права у существующих кадров
+     терять нельзя — они там уже есть и в форме их нет. Переносим по адресу. */
+  const work = _showcaseWorks.find((w) => w.id === id);
+  if (work && Array.isArray(fields.images)) {
+    const byUrl = new Map((work.images || []).map((img) => [img.url, img]));
+    fields.images = fields.images.map((img) => ({ ...(byUrl.get(img.url) || {}), url: img.url }));
+  }
+  if (statusEl) statusEl.textContent = 'Сохраняю…';
+  try {
+    const res = await fetch(`${SHOWCASE_API}/works/${encodeURIComponent(id)}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json', 'X-Showcase-Token': token },
+      body: JSON.stringify({ fields }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || !data.ok) throw new Error(data.error || `сервер ответил ${res.status}`);
+    if (statusEl) statusEl.textContent = 'Сохранено — уже на сайте.';
+    await loadShowcaseQueue();
+  } catch (error) {
+    if (statusEl) statusEl.textContent = `Не получилось: ${error.message}`;
+  }
+}
+
+document.addEventListener('submit', (event) => {
+  const form = event.target.closest('[data-sc-edit-form]');
+  if (!form) return;
+  event.preventDefault();
+  showcaseSaveFields(form.dataset.scEditForm, form);
+});
+
 document.addEventListener('click', (event) => {
+  const edit = event.target.closest('[data-showcase-edit]');
+  if (edit) {
+    _showcaseEditing = _showcaseEditing === edit.dataset.showcaseEdit ? '' : edit.dataset.showcaseEdit;
+    renderShowcaseWorks();
+    return;
+  }
   const btn = event.target.closest('[data-showcase-act]');
   if (btn) { showcaseSetStatus(btn.dataset.showcaseId, btn.dataset.showcaseAct); return; }
   const enquiryBtn = event.target.closest('[data-showcase-enquiry-act]');

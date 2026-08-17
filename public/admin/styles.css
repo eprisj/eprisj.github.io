@@ -7902,6 +7902,29 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .sc-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; opacity: .55; transition: opacity .12s ease; }
 .sc-card:hover .sc-actions, .sc-card:focus-within .sc-actions { opacity: 1; }
 .sc-actions .btn { font-size: .58rem; padding: 5px 10px; }
+/* Открытая карточка витрины правится на месте. Две колонки, потому что поля
+   тут короткие и однострочные: в одну колонку форма из пятнадцати строк
+   выталкивает соседние работы с экрана и очередь перестаёт читаться. */
+.sc-edit {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px 14px;
+  margin: 12px 0 4px; padding: 14px; border: 1px solid var(--line); border-radius: 8px;
+  background: rgba(255, 255, 255, .78);
+}
+.sc-edit-field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.sc-edit-field > span {
+  font-family: var(--font-mono); font-size: .5rem; text-transform: uppercase;
+  letter-spacing: .09em; color: var(--text-muted);
+}
+.sc-edit-field input, .sc-edit-field textarea {
+  width: 100%; padding: 7px 9px; font: inherit; font-size: .78rem;
+  border: 1px solid var(--line); border-radius: 6px; background: #fff; color: inherit;
+}
+.sc-edit-field textarea { resize: vertical; line-height: 1.45; }
+/* Описание и список кадров — во всю ширину: это единственные поля, где текст
+   переносится, и в узкой колонке они нечитаемы. */
+.sc-edit-field:has(textarea) { grid-column: 1 / -1; }
+.sc-edit-check { grid-column: 1 / -1; display: flex; align-items: center; gap: 8px; font-size: .78rem; }
+.sc-edit .sc-actions { grid-column: 1 / -1; opacity: 1; align-items: center; }
 
 /* Delete lives inside the opened card settings, one row down from everything
    else and visually separated: it is the only action on this screen that
