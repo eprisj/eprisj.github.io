@@ -7628,181 +7628,215 @@ button, a, input, select, textarea { touch-action: manipulation; }
 
 /* ── ПОРЯДОК СТАТЕЙ ─────────────────────────────────────────────────────────
 
-   One block, rewritten as one. It had grown in three appended patches, each
-   re-declaring .order-row's grid-template-columns on top of the last, which is
-   how the row ended up carrying ten controls at equal visual weight: a
-   checkbox, a drag handle, a number, two nudge buttons, a pin, a thumbnail, a
-   title, a date field, a status pill and a disclosure caret. Everything shouted,
-   so nothing read.
+   Second pass. The first one fixed a genuinely overloaded screen — ten controls
+   per row at equal weight — but overcorrected: everything shrank, the nudge
+   arrows and the disclosure caret went to opacity 0, and the pin sat at 18%
+   grey. Calm, and unusable. You cannot click what you cannot find, and hiding a
+   control behind hover means an editor has to sweep the page to discover what
+   the row can even do.
 
-   The rule now: the row shows what an editor needs to SCAN (position, cover,
-   title, date, state) at full strength, and what they need to ACT with (nudge,
-   pin, expand) only on hover or when it is already on. Drag stays visible
-   because it is the primary gesture. */
+   The balance this pass aims for: every control is VISIBLE at rest and legible
+   at a glance, but drawn in one weight below the content. Hover raises contrast
+   rather than revealing existence. Nothing smaller than 12px, and every hit
+   target at least 28px. */
 
-.order-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 24px; align-items: start; }
-@media (max-width: 1100px) { .order-layout { grid-template-columns: minmax(0, 1fr); } }
+.order-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 24px; align-items: start; }
+/* The preview column costs 320px plus its gap, and the row needs about 880px
+   before headlines stop truncating. Below that the reference belongs under the
+   working surface, not beside it — at 1100 the list was down to 540px and every
+   title was an ellipsis while a column of thumbnails sat next to it. */
+@media (max-width: 1320px) { .order-layout { grid-template-columns: minmax(0, 1fr); } }
 
 /* [hidden] must win, everywhere on this screen.
-   Any class that sets a `display` silently defeats the attribute, and I have now
-   been bitten by this three times on this one screen: the unplaced-position
-   field stayed visible in chronological mode, the bulk bar sat there reading
-   "выбрано: 0" as a toolbar for an action that could not be performed, and both
-   preview lists showed at once so the column repeated the same fifteen covers
-   twice. Scoped to #tab-order rather than listing class names, so the next
-   element that gets a display and a hidden state is covered before it breaks. */
+   Any class that sets a `display` silently defeats the attribute, and I was
+   bitten by this three times here: the unplaced-position field stayed visible in
+   chronological mode, the bulk bar sat there reading "выбрано: 0" as a toolbar
+   for an action that could not be performed, and both preview lists showed at
+   once so the column repeated the same fifteen covers twice. */
 #tab-order [hidden] { display: none !important; }
 
 /* ── toolbar ── */
-.order-bar { display: flex; flex-wrap: wrap; gap: 10px 18px; justify-content: space-between; align-items: flex-end; margin-bottom: 14px; }
-.order-bar-left, .order-bar-right { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; }
-.order-field { display: flex; flex-direction: column; gap: 5px; }
-.order-field > span { font-family: var(--font-mono); font-size: .54rem; text-transform: uppercase; letter-spacing: .11em; color: var(--text-muted); }
-.order-field select { font: inherit; font-size: .78rem; padding: 6px 8px; border: 1px solid var(--line); border-radius: 7px; background: #fff; }
-.order-count { font-family: var(--font-mono); font-size: .6rem; color: var(--text-muted); padding-bottom: 7px; }
+.order-bar { display: flex; flex-wrap: wrap; gap: 12px 20px; justify-content: space-between; align-items: flex-end; margin-bottom: 16px; }
+.order-bar-left, .order-bar-right { display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; }
+.order-field { display: flex; flex-direction: column; gap: 6px; }
+.order-field > span { font-family: var(--font-mono); font-size: .62rem; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); }
+.order-field select { font: inherit; font-size: .84rem; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: #fff; min-height: 34px; }
+.order-count { font-family: var(--font-mono); font-size: .68rem; color: var(--text-muted); padding-bottom: 9px; }
 
-/* Filters are a secondary surface: same controls, less ink, so the eye lands on
-   the list rather than on three identical boxes. */
-.order-filters { display: grid; grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr) minmax(0, 1fr); gap: 8px; margin-bottom: 12px; }
+.order-filters { display: grid; grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr) minmax(0, 1fr); gap: 10px; margin-bottom: 14px; }
 @media (max-width: 720px) { .order-filters { grid-template-columns: minmax(0, 1fr); } }
 .order-filters input, .order-filters select {
-  font: inherit; font-size: .76rem; padding: 7px 10px;
-  border: 1px solid transparent; border-radius: 7px;
-  background: rgba(14, 14, 16, .045); color: inherit;
+  font: inherit; font-size: .84rem; padding: 9px 12px; min-height: 36px;
+  border: 1px solid var(--line); border-radius: 8px;
+  background: #fff; color: inherit;
 }
-.order-filters input:focus, .order-filters select:focus { outline: none; border-color: var(--line); background: #fff; }
+.order-filters input:focus, .order-filters select:focus { outline: 2px solid rgba(14, 14, 16, .3); outline-offset: -1px; }
 .order-filters input::placeholder { color: var(--text-muted); }
 
 /* ── bulk bar ── */
 .order-bulk {
   display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
-  margin-bottom: 10px; padding: 8px 12px;
-  border: 1px solid rgba(14, 14, 16, .16); border-radius: 8px;
-  background: rgba(205, 242, 79, .22);
+  margin-bottom: 12px; padding: 10px 14px;
+  border: 1px solid rgba(14, 14, 16, .2); border-radius: 8px;
+  background: rgba(205, 242, 79, .28);
 }
-.order-bulk-count { font-family: var(--font-mono); font-size: .58rem; color: rgba(14, 14, 16, .6); }
-.order-bulk-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-left: auto; }
+.order-bulk-count { font-family: var(--font-mono); font-size: .66rem; color: rgba(14, 14, 16, .68); }
+.order-bulk-actions { display: flex; flex-wrap: wrap; gap: 7px; margin-left: auto; }
+.order-bulk-actions .btn { font-size: .68rem; padding: 7px 12px; }
 
 /* ── the list ── */
-.order-list { display: flex; flex-direction: column; gap: 4px; }
+.order-list { display: flex; flex-direction: column; gap: 6px; }
 .order-row {
   display: grid;
-  grid-template-columns: auto auto 2.1rem auto auto 46px minmax(0, 1fr) auto auto auto;
-  gap: 12px; align-items: center;
-  padding: 7px 12px 7px 10px;
-  border: 1px solid transparent; border-radius: 8px;
-  background: rgba(255, 255, 255, .6);
-  transition: background .12s ease, border-color .12s ease;
+  /* The title column has a floor. minmax(0, 1fr) let it collapse to literally
+     zero once the ten control columns wanted more than the list had, so every
+     headline vanished behind an ellipsis while the arrows kept their padding.
+     Below, the columns that may give way do so in order of how little they are
+     needed to identify a row: first the status word, then the cover. */
+  grid-template-columns: auto auto 1.9rem auto auto 56px minmax(9rem, 1fr) auto auto auto;
+  /* 9px, not 14: ten columns of controls at a comfortable size plus generous
+     gaps left the title 104px on a 692px list — every headline truncated to
+     "Rooms That—". The controls keep their size; the air between them gives the
+     content back its room. */
+  gap: 9px; align-items: center;
+  padding: 10px 12px;
+  border: 1px solid var(--line); border-radius: 9px;
+  background: #fff;
+  transition: border-color .12s ease, box-shadow .12s ease;
 }
-.order-row:hover { background: #fff; border-color: var(--line); }
-.order-row.pinned { background: rgba(205, 242, 79, .18); }
-.order-row.pinned:hover { background: rgba(205, 242, 79, .26); }
+.order-row:hover { border-color: rgba(14, 14, 16, .34); box-shadow: 0 1px 3px rgba(14, 14, 16, .06); }
+.order-row.pinned { background: rgba(205, 242, 79, .2); border-color: rgba(14, 14, 16, .22); }
 .order-row.dragging { opacity: .4; }
 
-.order-check { margin: 0; opacity: .35; transition: opacity .12s ease; }
-.order-row:hover .order-check, .order-check:checked { opacity: 1; }
-.order-handle { cursor: grab; opacity: .3; user-select: none; transition: opacity .12s ease; }
-.order-row:hover .order-handle { opacity: .65; }
-.order-row[draggable="false"] .order-handle { cursor: default; opacity: .15; }
-.order-num { font-family: var(--font-mono); font-size: .68rem; color: rgba(14, 14, 16, .45); text-align: right; }
+/* Checkbox at its natural size, not shrunk: it is the entry point to every bulk
+   action and it was a 13px grey square at 35% opacity. */
+.order-check { margin: 0; width: 16px; height: 16px; cursor: pointer; accent-color: #0e0e10; }
+.order-handle { cursor: grab; opacity: .45; user-select: none; font-size: 1rem; padding: 4px 2px; }
+.order-row:hover .order-handle { opacity: .8; }
+.order-row[draggable="false"] .order-handle { cursor: default; opacity: .2; }
+.order-num { font-family: var(--font-mono); font-size: .8rem; color: rgba(14, 14, 16, .55); text-align: right; }
 
-/* Nudge buttons are the keyboard-less fallback for drag, not a primary control:
-   they were two boxed arrows in every row, permanently. Hidden until the row is
-   under the cursor, and the column keeps its width so nothing shifts. */
-.order-move { display: flex; flex-direction: column; gap: 2px; opacity: 0; transition: opacity .12s ease; }
-.order-row:hover .order-move { opacity: 1; }
-/* Keyboard users never trigger :hover, and an opacity-0 button is still in the
-   tab order — so anything revealed on hover is revealed on focus too, or it
-   would be a control you can reach but cannot see. */
-.order-row:focus-within .order-move,
-.order-row:focus-within .order-pin,
-.order-row:focus-within .order-expand,
-.order-row:focus-within .order-check,
-.order-row:focus-within .order-handle { opacity: 1; }
-.order-row:focus-within .order-pin { filter: none; }
-.order-move-btn { border: 1px solid var(--line); background: #fff; border-radius: 4px; font-size: .46rem; line-height: 1; padding: 2px 4px; cursor: pointer; color: inherit; }
-.order-move-btn:disabled { opacity: .25; cursor: default; }
-
-/* A pin that is not pinned should look like an offer, not a state. Fifteen
-   bright markers down the page said "everything is pinned" when nothing was. */
-.order-pin { border: 0; background: none; cursor: pointer; font-size: .8rem; line-height: 1; padding: 2px; opacity: .18; filter: grayscale(1); transition: opacity .12s ease, filter .12s ease; }
-.order-row:hover .order-pin { opacity: .5; }
-.order-row.pinned .order-pin, .order-row.pinned:hover .order-pin { opacity: 1; filter: none; }
-
-.order-thumb { width: 46px; height: 34px; object-fit: cover; border-radius: 4px; background: rgba(14, 14, 16, .07); }
-.order-info { min-width: 0; }
-.order-title { font-size: .82rem; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.order-meta { font-family: var(--font-mono); font-size: .54rem; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 2px; }
-
-/* The date is read far more often than it is edited, so it reads as text and
-   only becomes a visible field when it is being used. */
-.order-date {
-  font-family: var(--font-mono); font-size: .62rem; padding: 4px 6px;
-  border: 1px solid transparent; border-radius: 6px; background: transparent;
-  color: rgba(14, 14, 16, .62); transition: background .12s ease, border-color .12s ease, color .12s ease;
+/* Nudge buttons: always visible, real borders, 26x18 each so the pair is a
+   28px+ target. They were opacity 0 until hover, which made reordering by
+   keyboard-free clicking a feature you had to stumble upon. */
+.order-move { display: flex; flex-direction: column; gap: 3px; }
+.order-move-btn {
+  border: 1px solid var(--line); background: #fff; border-radius: 5px;
+  font-size: .58rem; line-height: 1; padding: 4px 7px; cursor: pointer;
+  color: rgba(14, 14, 16, .65);
 }
-.order-row:hover .order-date { color: inherit; background: rgba(14, 14, 16, .04); }
-.order-date:focus { outline: none; border-color: var(--line); background: #fff; color: inherit; }
+.order-move-btn:hover:not(:disabled) { border-color: rgba(14, 14, 16, .45); color: inherit; background: rgba(14, 14, 16, .04); }
+.order-move-btn:disabled { opacity: .3; cursor: default; }
 
-/* State as a dot plus a word: the filled pills were four competing blocks of
-   colour in a list whose subject is order, not status. */
+/* The pin reads as an outline when off and fills when on — a visible affordance
+   either way. At 18% grey it was invisible until hovered, so nothing on the
+   screen said an article could be pinned at all. */
+.order-pin {
+  border: 1px solid var(--line); background: #fff; border-radius: 7px;
+  cursor: pointer; font-size: .8rem; line-height: 1;
+  min-width: 30px; min-height: 30px; padding: 0;
+  opacity: .75; filter: grayscale(1);
+  transition: opacity .12s ease, filter .12s ease, border-color .12s ease;
+}
+.order-pin:hover { opacity: 1; filter: none; border-color: rgba(14, 14, 16, .45); }
+.order-row.pinned .order-pin { opacity: 1; filter: none; border-color: rgba(14, 14, 16, .4); background: rgba(205, 242, 79, .55); }
+
+.order-thumb { width: 56px; height: 40px; object-fit: cover; border-radius: 5px; background: rgba(14, 14, 16, .07); }
+.order-info { min-width: 0; }
+.order-title { font-size: .95rem; font-weight: 600; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.order-meta { font-family: var(--font-mono); font-size: .66rem; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 3px; }
+
+/* The date is editable, so it looks editable: a field with a border, at a size
+   you can actually read. Previously it was borderless text until hover, which
+   hid the one thing on the row an editor most often needs to correct. */
+.order-date {
+  font-family: var(--font-mono); font-size: .74rem; padding: 6px 8px; min-height: 32px;
+  border: 1px solid var(--line); border-radius: 7px; background: #fff;
+  color: inherit;
+}
+.order-date:hover { border-color: rgba(14, 14, 16, .4); }
+.order-date:focus { outline: 2px solid rgba(14, 14, 16, .32); outline-offset: -1px; }
+
+/* State as a dot plus a word, but at a readable size and full colour. */
 .order-status {
   display: inline-flex; align-items: center; gap: 6px;
-  font-family: var(--font-mono); font-size: .5rem; text-transform: uppercase; letter-spacing: .09em;
-  color: var(--text-muted); white-space: nowrap; border: 0; background: none; padding: 0;
+  font-family: var(--font-mono); font-size: .66rem; text-transform: uppercase; letter-spacing: .06em;
+  white-space: nowrap; border: 0; background: none; padding: 0;
+  /* The dot carries the state; the word confirms it. Full width here — clipping
+     "ОПУБЛИКОВАНА" to "ОПУБЛИКО…" on a screen with 500px of spare room was the
+     wrong economy. The word only folds away in the narrow query below, where
+     the headline genuinely needs those pixels. */
+  overflow: hidden; text-overflow: ellipsis;
 }
-.order-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
-.order-status--live { color: #4f7a1f; }
-.order-status--draft { color: rgba(14, 14, 16, .38); }
-.order-status--scheduled { color: #4a6bbf; }
-.order-status--nodate { color: #c2542f; }
+.order-status::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+.order-status--live { color: #46701a; }
+.order-status--draft { color: rgba(14, 14, 16, .5); }
+.order-status--scheduled { color: #3f5faf; }
+.order-status--nodate { color: #b2461f; }
 
-.order-expand { border: 1px solid transparent; background: none; border-radius: 6px; cursor: pointer; font-size: .58rem; padding: 4px 7px; line-height: 1; color: var(--text-muted); opacity: 0; transition: opacity .12s ease; }
-.order-row:hover .order-expand, .order-row.expanded .order-expand { opacity: 1; }
-.order-row:hover .order-expand:hover { border-color: var(--line); background: #fff; color: inherit; }
+/* The caret opens the card settings — a real control, so it looks like one. */
+.order-expand {
+  border: 1px solid var(--line); background: #fff; border-radius: 7px;
+  cursor: pointer; font-size: .7rem; line-height: 1;
+  min-width: 30px; min-height: 30px; padding: 0;
+  color: rgba(14, 14, 16, .6);
+}
+.order-expand:hover { border-color: rgba(14, 14, 16, .45); color: inherit; background: rgba(14, 14, 16, .04); }
+.order-row.expanded .order-expand { background: rgba(14, 14, 16, .07); border-color: rgba(14, 14, 16, .34); color: inherit; }
 
-.order-empty { padding: 16px 12px; font-size: .72rem; color: var(--text-muted); }
-.order-hint { margin-top: 12px; font-size: .66rem; line-height: 1.55; color: var(--text-muted); max-width: 62ch; }
+/* Narrow list: shed what is least needed to tell rows apart, in that order.
+   The sidebar is a fixed ~244px, so viewport width tracks the list width
+   closely enough to key off. */
+@media (max-width: 1240px) {
+  .order-status { max-width: 0; gap: 0; }              /* dot only, word folds away */
+  .order-row { grid-template-columns: auto auto 1.9rem auto auto 56px minmax(8rem, 1fr) auto auto auto; }
+}
+@media (max-width: 1080px) {
+  .order-thumb { display: none; }
+  .order-row { grid-template-columns: auto auto 1.9rem auto auto minmax(8rem, 1fr) auto auto auto; }
+}
+
+.order-empty { padding: 18px 14px; font-size: .8rem; color: var(--text-muted); }
+.order-hint { margin-top: 14px; font-size: .74rem; line-height: 1.6; color: var(--text-muted); max-width: 68ch; }
 
 /* ── per-row card settings ── */
 .order-card-settings {
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 14px;
-  margin: 0 0 4px; padding: 14px;
-  border: 1px solid var(--line); border-radius: 8px;
-  background: rgba(14, 14, 16, .03);
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px;
+  margin: 0 0 6px; padding: 16px;
+  border: 1px solid var(--line); border-radius: 9px;
+  background: rgba(14, 14, 16, .035);
 }
 @media (max-width: 720px) { .order-card-settings { grid-template-columns: minmax(0, 1fr); } }
 .order-cs-wide { grid-column: 1 / -1; }
-.order-cs-field { display: flex; flex-direction: column; gap: 4px; }
-.order-cs-field > span { font-family: var(--font-mono); font-size: .52rem; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); }
+.order-cs-field { display: flex; flex-direction: column; gap: 5px; }
+.order-cs-field > span { font-family: var(--font-mono); font-size: .6rem; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); }
 .order-cs-field input, .order-cs-field textarea, .order-cs-field select {
-  font: inherit; font-size: .76rem; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; background: #fff; width: 100%;
+  font: inherit; font-size: .84rem; padding: 8px 10px; min-height: 34px;
+  border: 1px solid var(--line); border-radius: 7px; background: #fff; width: 100%;
 }
-.order-cs-field textarea { resize: vertical; }
-.order-cs-check { display: flex; align-items: center; gap: 7px; font-size: .72rem; align-self: end; padding-bottom: 6px; }
-.order-cs-note { grid-column: 1 / -1; font-size: .62rem; line-height: 1.5; color: var(--text-muted); }
+.order-cs-field textarea { resize: vertical; min-height: 60px; }
+.order-cs-check { display: flex; align-items: center; gap: 9px; font-size: .82rem; align-self: end; padding-bottom: 7px; cursor: pointer; }
+.order-cs-check input { width: 16px; height: 16px; accent-color: #0e0e10; cursor: pointer; }
+.order-cs-note { grid-column: 1 / -1; font-size: .72rem; line-height: 1.55; color: var(--text-muted); }
 
 /* ── preview column ── */
-/* One list with a surface switch, not two lists of the same cards. The column
-   was showing the homepage feed and the /articles grid stacked, which for a
-   fifteen-item journal is the same fifteen covers twice. */
-.order-preview { position: sticky; top: 12px; display: flex; flex-direction: column; gap: 12px; }
-.order-preview-tabs { display: flex; gap: 4px; padding: 3px; border: 1px solid var(--line); border-radius: 8px; background: rgba(14, 14, 16, .04); }
+.order-preview { position: sticky; top: 12px; display: flex; flex-direction: column; gap: 14px; }
+.order-preview-tabs { display: flex; gap: 4px; padding: 4px; border: 1px solid var(--line); border-radius: 9px; background: rgba(14, 14, 16, .04); }
 .order-preview-tab {
-  flex: 1; border: 0; border-radius: 6px; cursor: pointer; padding: 6px 8px; background: none;
-  font-family: var(--font-mono); font-size: .54rem; text-transform: uppercase; letter-spacing: .09em; color: var(--text-muted);
+  flex: 1; border: 0; border-radius: 7px; cursor: pointer; padding: 8px 10px; background: none; min-height: 32px;
+  font-family: var(--font-mono); font-size: .62rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted);
 }
-.order-preview-tab[aria-selected="true"] { background: #fff; color: inherit; box-shadow: 0 1px 2px rgba(14, 14, 16, .07); }
-.order-preview-cards { display: flex; flex-direction: column; gap: 5px; max-height: 62vh; overflow-y: auto; padding-right: 2px; }
-.order-card { display: grid; grid-template-columns: 1.4rem 40px minmax(0, 1fr); gap: 8px; align-items: center; padding: 4px; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
-.order-card-num { font-family: var(--font-mono); font-size: .56rem; color: var(--text-muted); text-align: right; }
-.order-card img, .order-card-empty { width: 40px; height: 28px; object-fit: cover; border-radius: 3px; background: rgba(14, 14, 16, .08); }
+.order-preview-tab[aria-selected="true"] { background: #fff; color: inherit; box-shadow: 0 1px 2px rgba(14, 14, 16, .08); }
+.order-preview-cards { display: flex; flex-direction: column; gap: 6px; max-height: 62vh; overflow-y: auto; padding-right: 3px; }
+.order-card { display: grid; grid-template-columns: 1.6rem 48px minmax(0, 1fr); gap: 9px; align-items: center; padding: 5px; border: 1px solid var(--line); border-radius: 7px; background: #fff; }
+.order-card-num { font-family: var(--font-mono); font-size: .64rem; color: var(--text-muted); text-align: right; }
+.order-card img, .order-card-empty { width: 48px; height: 33px; object-fit: cover; border-radius: 4px; background: rgba(14, 14, 16, .08); }
 .order-card-cat { display: none; }
-.order-card-title { font-size: .66rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.order-card-title { font-size: .74rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 .order-home-controls {
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 12px;
-  padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255, 255, 255, .7);
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 14px;
+  padding: 14px; border: 1px solid var(--line); border-radius: 9px; background: #fff;
 }
 .order-home-controls .order-cs-check { grid-column: 1 / -1; padding-bottom: 0; }
 
