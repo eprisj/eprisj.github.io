@@ -12,7 +12,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=4.71" />
+    <link rel="stylesheet" href="./styles.css?v=4.72" />
     <link rel="stylesheet" href="./brandbook.css?v=3" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -2036,7 +2036,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.71" type="module"></script>
+    <script src="./app.js?v=4.72" type="module"></script>
     <script src="../brandbook/data.js?v=1"></script>
     <script src="./brandbook.js?v=3"></script>
     <script>
@@ -2070,6 +2070,15 @@
           settings: 'Настройки',
         };
         var LAST_TAB_KEY = 'epris_admin_last_tab';
+        /* Sections that must never become the screen the admin opens on.
+           «Порядок статей» is a task you come to deliberately and leave — being
+           dropped into it on every login is disorienting, and because the tab
+           handler below rewrites the URL hash on every switch, one visit made it
+           the entry point permanently: the hash said #order, the remembered tab
+           said order, and both pointed back here. Direct links still work — the
+           hash is honoured on load — this only stops the screen claiming the
+           entrance by itself. */
+        var NO_AUTO_REOPEN = ['order'];
         function syncSidebarNav() {
           var active = document.querySelector('.tab-btn.active');
           if (sidebarActiveLabel && active) sidebarActiveLabel.textContent = active.dataset.navLabel || active.textContent.trim();
@@ -2100,9 +2109,21 @@
             var titleEl = document.getElementById('pageTitle');
             if (titleEl && pageTitles[tab]) titleEl.textContent = pageTitles[tab];
             if (tab === 'polls' && typeof window._renderPollResults === 'function') window._renderPollResults();
-            try { localStorage.setItem(LAST_TAB_KEY, tab); } catch (e) { /* localStorage unavailable */ }
+            var remembers = NO_AUTO_REOPEN.indexOf(tab) === -1;
+            try {
+              if (remembers) localStorage.setItem(LAST_TAB_KEY, tab);
+              // Forget an excluded section rather than leaving a stale pointer to
+              // whatever was open before it.
+              else localStorage.removeItem(LAST_TAB_KEY);
+            } catch (e) { /* localStorage unavailable */ }
             // Direct, shareable link to a section: eprisjournal.com/admin/#translations
-            if (window.location.hash !== '#' + tab) history.replaceState(null, '', '#' + tab);
+            if (remembers) {
+              if (window.location.hash !== '#' + tab) history.replaceState(null, '', '#' + tab);
+            } else if (window.location.hash) {
+              // No hash for an excluded section: otherwise the next reload reads
+              // it back as intent and lands here again.
+              history.replaceState(null, '', window.location.pathname + window.location.search);
+            }
             syncSidebarNav();
           });
         });
@@ -2138,6 +2159,19 @@
         try {
           var hashTab = window.location.hash.replace(/^#/, '');
           var lastTab = hashTab || localStorage.getItem(LAST_TAB_KEY);
+          /* An excluded section never wins the initial open, from either source.
+             Both are checked because the app used to write its own hash on every
+             switch, so an editor who visited «Порядок статей» once had #order in
+             the address bar AND order in localStorage — two stale pointers back
+             into a screen they only meant to visit. Clearing them here fixes the
+             state already saved in the browsers of everyone who has been there;
+             clicking the section in the sidebar still opens it, and so does a
+             hash typed while the page is open (see the hashchange handler). */
+          if (lastTab && NO_AUTO_REOPEN.indexOf(lastTab) !== -1) {
+            lastTab = '';
+            try { localStorage.removeItem(LAST_TAB_KEY); } catch (e) { /* ignore */ }
+            if (window.location.hash) history.replaceState(null, '', window.location.pathname + window.location.search);
+          }
           if (lastTab) {
             var lastBtn = document.querySelector('.tab-btn[data-tab="' + lastTab + '"]');
             if (lastBtn) lastBtn.click();
