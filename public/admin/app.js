@@ -18021,27 +18021,37 @@ const SHOWCASE_ENQUIRY_STATUS_LABEL = {
   Archived: 'Архив',
 };
 
+/* Which of the three states a work is in, as a class plus a word. It used to be
+   the raw status label inside a paragraph of meta, which meant the one thing an
+   editor scans for — is this waiting for me? — read exactly like the discipline
+   and the year next to it. */
+const SHOWCASE_STATE_CLASS = { 'Under review': 'queue', Published: 'live', Archived: 'archived' };
+
 function showcaseCard(work) {
   const photo = (work.images || [])[0]?.url || '';
   const place = [work.venue, work.city, work.country].filter(Boolean).join(' · ');
   const meta = [work.discipline, work.year].filter(Boolean).join(' · ');
+  const stateClass = SHOWCASE_STATE_CLASS[work.status] || 'queue';
   // holdReason — причина, по которой сборщик не смог атрибутировать работу
   // сам. Это самое полезное, что редактор может увидеть перед решением.
   const hold = work.holdReason
-    ? `<p style="margin:8px 0 0;color:#b8860b;font-size:12px">⚠ ${escapeHtml(work.holdReason)}</p>`
+    ? `<p class="sc-hold">⚠ ${escapeHtml(work.holdReason)}</p>`
     : '';
   return `
-    <article style="display:flex;gap:16px;align-items:flex-start;margin-bottom:12px;padding:14px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.72)">
-      ${photo ? `<img src="${escapeHtml(photo)}" alt="" style="width:120px;height:150px;object-fit:cover;flex:none;background:#eee">` : ''}
-      <div style="flex:1;min-width:0">
-        <p class="card-desc" style="margin:0">${escapeHtml(SHOWCASE_STATUS_LABEL[work.status] || work.status)}${meta ? ' · ' + escapeHtml(meta) : ''}</p>
-        <h3 style="margin:6px 0 2px;font-size:16px">${escapeHtml(work.title || '—')}</h3>
-        <p style="margin:0;font-size:14px">${escapeHtml(work.author || 'автор не указан')}</p>
-        ${place ? `<p class="card-desc" style="margin:4px 0 0">${escapeHtml(place)}</p>` : ''}
-        ${work.statement ? `<p style="margin:8px 0 0;font-size:13px;line-height:1.5;opacity:.8">${escapeHtml(work.statement.slice(0, 260))}</p>` : ''}
+    <article class="sc-card${photo ? '' : ' no-photo'}">
+      ${photo ? `<img class="sc-thumb" src="${escapeHtml(photo)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : ''}
+      <div class="sc-body">
+        <p class="sc-meta">
+          <span class="sc-state sc-state--${stateClass}">${escapeHtml(SHOWCASE_STATUS_LABEL[work.status] || work.status)}</span>
+          ${meta ? `<span>${escapeHtml(meta)}</span>` : ''}
+        </p>
+        <h3 class="sc-title">${escapeHtml(work.title || '—')}</h3>
+        <p class="sc-author">${escapeHtml(work.author || 'автор не указан')}</p>
+        ${place ? `<p class="sc-place">${escapeHtml(place)}</p>` : ''}
+        ${work.statement ? `<p class="sc-statement">${escapeHtml(work.statement.slice(0, 260))}</p>` : ''}
         ${hold}
-        <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-          ${work.status !== 'Published' ? `<button class="btn btn-primary" data-showcase-act="Published" data-showcase-id="${escapeHtml(work.id)}" type="button">Опубликовать</button>` : ''}
+        <div class="sc-actions">
+          ${work.status !== 'Published' ? `<button class="btn" data-showcase-act="Published" data-showcase-id="${escapeHtml(work.id)}" type="button">Опубликовать</button>` : ''}
           ${work.status !== 'Archived' ? `<button class="btn" data-showcase-act="Archived" data-showcase-id="${escapeHtml(work.id)}" type="button">В архив</button>` : ''}
           ${work.status !== 'Under review' ? `<button class="btn" data-showcase-act="Under review" data-showcase-id="${escapeHtml(work.id)}" type="button">Вернуть в очередь</button>` : ''}
           ${work.sourceUrl ? `<a class="btn" href="${escapeHtml(work.sourceUrl)}" target="_blank" rel="noreferrer">Источник</a>` : ''}
@@ -18079,6 +18089,36 @@ function showcaseEnquiryCard(enquiry) {
     </article>`;
 }
 
+/* Loaded works, and which group is on screen. The default is the queue: that is
+   what the screen is for, and the other groups are a click away. */
+let _showcaseWorks = [];
+let _showcaseFilter = 'queue';
+const SHOWCASE_FILTER_STATUS = { queue: 'Under review', live: 'Published', archived: 'Archived' };
+
+function renderShowcaseWorks() {
+  const box = byId('showcaseQueue');
+  const count = byId('showcaseCount');
+  if (!box) return;
+  const wanted = SHOWCASE_FILTER_STATUS[_showcaseFilter];
+  const shown = wanted ? _showcaseWorks.filter((work) => work.status === wanted) : _showcaseWorks;
+  if (count) count.textContent = shown.length === _showcaseWorks.length
+    ? `${_showcaseWorks.length} работ`
+    : `${shown.length} из ${_showcaseWorks.length}`;
+  box.innerHTML = shown.length
+    ? shown.map(showcaseCard).join('')
+    : '<p class="card-desc">В этой группе пока пусто.</p>';
+  document.querySelectorAll('[data-sc-filter]').forEach((tab) => {
+    tab.setAttribute('aria-selected', String(tab.dataset.scFilter === _showcaseFilter));
+  });
+}
+
+document.addEventListener('click', (event) => {
+  const tab = event.target.closest('[data-sc-filter]');
+  if (!tab) return;
+  _showcaseFilter = tab.dataset.scFilter;
+  renderShowcaseWorks();
+});
+
 async function loadShowcaseQueue() {
   const box = byId('showcaseQueue');
   const status = byId('showcaseStatus');
@@ -18100,7 +18140,12 @@ async function loadShowcaseQueue() {
     works.sort((a, b) => (order[a.status] ?? 3) - (order[b.status] ?? 3) || String(b.addedAt || '').localeCompare(String(a.addedAt || '')));
     const queued = works.filter((w) => w.status === 'Under review').length;
     status.textContent = `${queued} в очереди · ${works.filter((w) => w.status === 'Published').length} на сайте · ${works.filter((w) => w.status === 'Archived').length} в архиве`;
-    box.innerHTML = works.length ? works.map(showcaseCard).join('') : '<p class="card-desc">Пока пусто.</p>';
+    /* Held, then rendered through the filter. The screen exists to work through
+       a queue, but it was showing everything ever submitted in one scroll — the
+       archive is the largest group and it sat between the editor and the three
+       works actually waiting for a decision. */
+    _showcaseWorks = works;
+    renderShowcaseWorks();
   } catch (error) {
     status.textContent = `Не удалось загрузить: ${error.message}`;
     box.innerHTML = '';

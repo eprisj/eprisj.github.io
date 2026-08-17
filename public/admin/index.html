@@ -12,7 +12,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=4.67" />
+    <link rel="stylesheet" href="./styles.css?v=4.68" />
     <link rel="stylesheet" href="./brandbook.css?v=3" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -1144,7 +1144,16 @@
                 <div>
                   <h3 class="card-title" style="font-size:16px;margin-bottom:4px">Работы в витрину</h3>
                   <p id="showcaseStatus" class="card-desc"></p>
-                  <div id="showcaseQueue" style="margin-top:12px"></div>
+                  <div class="sc-toolbar">
+                    <div class="sc-filters" role="tablist" id="showcaseFilters">
+                      <button class="sc-filter" type="button" role="tab" data-sc-filter="queue" aria-selected="true">В очереди</button>
+                      <button class="sc-filter" type="button" role="tab" data-sc-filter="live" aria-selected="false">На сайте</button>
+                      <button class="sc-filter" type="button" role="tab" data-sc-filter="archived" aria-selected="false">Архив</button>
+                      <button class="sc-filter" type="button" role="tab" data-sc-filter="all" aria-selected="false">Все</button>
+                    </div>
+                    <span class="sc-count" id="showcaseCount"></span>
+                  </div>
+                  <div id="showcaseQueue"></div>
                 </div>
                 <div>
                   <h3 class="card-title" style="font-size:16px;margin-bottom:4px">Заявки бюро</h3>
@@ -2026,7 +2035,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.67" type="module"></script>
+    <script src="./app.js?v=4.68" type="module"></script>
     <script src="../brandbook/data.js?v=1"></script>
     <script src="./brandbook.js?v=3"></script>
     <script>
