@@ -7627,91 +7627,181 @@ button, a, input, select, textarea { touch-action: manipulation; }
 }
 
 /* ── ПОРЯДОК СТАТЕЙ ─────────────────────────────────────────────────────────
-   The list is the working surface and the preview is a reference, so the grid
-   gives the list the room and lets the preview column stay narrow; below a
-   laptop width the preview drops under the list rather than squeezing it. */
-.order-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 20px; align-items: start; }
+
+   One block, rewritten as one. It had grown in three appended patches, each
+   re-declaring .order-row's grid-template-columns on top of the last, which is
+   how the row ended up carrying ten controls at equal visual weight: a
+   checkbox, a drag handle, a number, two nudge buttons, a pin, a thumbnail, a
+   title, a date field, a status pill and a disclosure caret. Everything shouted,
+   so nothing read.
+
+   The rule now: the row shows what an editor needs to SCAN (position, cover,
+   title, date, state) at full strength, and what they need to ACT with (nudge,
+   pin, expand) only on hover or when it is already on. Drag stays visible
+   because it is the primary gesture. */
+
+.order-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 24px; align-items: start; }
 @media (max-width: 1100px) { .order-layout { grid-template-columns: minmax(0, 1fr); } }
-.order-bar { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: flex-end; margin-bottom: 12px; }
+
+/* [hidden] must win, everywhere on this screen.
+   Any class that sets a `display` silently defeats the attribute, and I have now
+   been bitten by this three times on this one screen: the unplaced-position
+   field stayed visible in chronological mode, the bulk bar sat there reading
+   "выбрано: 0" as a toolbar for an action that could not be performed, and both
+   preview lists showed at once so the column repeated the same fifteen covers
+   twice. Scoped to #tab-order rather than listing class names, so the next
+   element that gets a display and a hidden state is covered before it breaks. */
+#tab-order [hidden] { display: none !important; }
+
+/* ── toolbar ── */
+.order-bar { display: flex; flex-wrap: wrap; gap: 10px 18px; justify-content: space-between; align-items: flex-end; margin-bottom: 14px; }
 .order-bar-left, .order-bar-right { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; }
-.order-field { display: flex; flex-direction: column; gap: 4px; }
-.order-field > span { font-family: var(--font-mono); font-size: .56rem; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); }
-.order-count { font-family: var(--font-mono); font-size: .62rem; color: var(--text-muted); }
-.order-filters { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); gap: 8px; margin-bottom: 10px; }
+.order-field { display: flex; flex-direction: column; gap: 5px; }
+.order-field > span { font-family: var(--font-mono); font-size: .54rem; text-transform: uppercase; letter-spacing: .11em; color: var(--text-muted); }
+.order-field select { font: inherit; font-size: .78rem; padding: 6px 8px; border: 1px solid var(--line); border-radius: 7px; background: #fff; }
+.order-count { font-family: var(--font-mono); font-size: .6rem; color: var(--text-muted); padding-bottom: 7px; }
+
+/* Filters are a secondary surface: same controls, less ink, so the eye lands on
+   the list rather than on three identical boxes. */
+.order-filters { display: grid; grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr) minmax(0, 1fr); gap: 8px; margin-bottom: 12px; }
 @media (max-width: 720px) { .order-filters { grid-template-columns: minmax(0, 1fr); } }
-.order-list { display: flex; flex-direction: column; gap: 6px; }
+.order-filters input, .order-filters select {
+  font: inherit; font-size: .76rem; padding: 7px 10px;
+  border: 1px solid transparent; border-radius: 7px;
+  background: rgba(14, 14, 16, .045); color: inherit;
+}
+.order-filters input:focus, .order-filters select:focus { outline: none; border-color: var(--line); background: #fff; }
+.order-filters input::placeholder { color: var(--text-muted); }
+
+/* ── bulk bar ── */
+.order-bulk {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+  margin-bottom: 10px; padding: 8px 12px;
+  border: 1px solid rgba(14, 14, 16, .16); border-radius: 8px;
+  background: rgba(205, 242, 79, .22);
+}
+.order-bulk-count { font-family: var(--font-mono); font-size: .58rem; color: rgba(14, 14, 16, .6); }
+.order-bulk-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-left: auto; }
+
+/* ── the list ── */
+.order-list { display: flex; flex-direction: column; gap: 4px; }
 .order-row {
   display: grid;
-  grid-template-columns: auto auto auto auto 54px minmax(0, 1fr) auto auto;
-  gap: 10px; align-items: center;
-  padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px;
-  background: rgba(255, 255, 255, .72);
+  grid-template-columns: auto auto 2.1rem auto auto 46px minmax(0, 1fr) auto auto auto;
+  gap: 12px; align-items: center;
+  padding: 7px 12px 7px 10px;
+  border: 1px solid transparent; border-radius: 8px;
+  background: rgba(255, 255, 255, .6);
+  transition: background .12s ease, border-color .12s ease;
 }
-.order-row:hover { border-color: var(--text-muted); }
-.order-row.pinned { background: rgba(205, 242, 79, .16); border-color: rgba(14, 14, 16, .28); }
-.order-row.dragging { opacity: .45; }
-.order-handle { cursor: grab; opacity: .5; user-select: none; }
-.order-row[draggable="false"] .order-handle { cursor: default; opacity: .22; }
-.order-num { font-family: var(--font-mono); font-size: .62rem; color: var(--text-muted); }
-.order-move { display: flex; flex-direction: column; gap: 2px; }
-.order-move-btn { border: 1px solid var(--line); background: #fff; border-radius: 4px; font-size: .5rem; line-height: 1; padding: 2px 4px; cursor: pointer; }
-.order-move-btn:disabled { opacity: .3; cursor: default; }
-.order-pin { border: 0; background: none; cursor: pointer; font-size: .9rem; line-height: 1; }
-.order-thumb { width: 54px; height: 38px; object-fit: cover; border-radius: 4px; background: rgba(14, 14, 16, .08); }
+.order-row:hover { background: #fff; border-color: var(--line); }
+.order-row.pinned { background: rgba(205, 242, 79, .18); }
+.order-row.pinned:hover { background: rgba(205, 242, 79, .26); }
+.order-row.dragging { opacity: .4; }
+
+.order-check { margin: 0; opacity: .35; transition: opacity .12s ease; }
+.order-row:hover .order-check, .order-check:checked { opacity: 1; }
+.order-handle { cursor: grab; opacity: .3; user-select: none; transition: opacity .12s ease; }
+.order-row:hover .order-handle { opacity: .65; }
+.order-row[draggable="false"] .order-handle { cursor: default; opacity: .15; }
+.order-num { font-family: var(--font-mono); font-size: .68rem; color: rgba(14, 14, 16, .45); text-align: right; }
+
+/* Nudge buttons are the keyboard-less fallback for drag, not a primary control:
+   they were two boxed arrows in every row, permanently. Hidden until the row is
+   under the cursor, and the column keeps its width so nothing shifts. */
+.order-move { display: flex; flex-direction: column; gap: 2px; opacity: 0; transition: opacity .12s ease; }
+.order-row:hover .order-move { opacity: 1; }
+/* Keyboard users never trigger :hover, and an opacity-0 button is still in the
+   tab order — so anything revealed on hover is revealed on focus too, or it
+   would be a control you can reach but cannot see. */
+.order-row:focus-within .order-move,
+.order-row:focus-within .order-pin,
+.order-row:focus-within .order-expand,
+.order-row:focus-within .order-check,
+.order-row:focus-within .order-handle { opacity: 1; }
+.order-row:focus-within .order-pin { filter: none; }
+.order-move-btn { border: 1px solid var(--line); background: #fff; border-radius: 4px; font-size: .46rem; line-height: 1; padding: 2px 4px; cursor: pointer; color: inherit; }
+.order-move-btn:disabled { opacity: .25; cursor: default; }
+
+/* A pin that is not pinned should look like an offer, not a state. Fifteen
+   bright markers down the page said "everything is pinned" when nothing was. */
+.order-pin { border: 0; background: none; cursor: pointer; font-size: .8rem; line-height: 1; padding: 2px; opacity: .18; filter: grayscale(1); transition: opacity .12s ease, filter .12s ease; }
+.order-row:hover .order-pin { opacity: .5; }
+.order-row.pinned .order-pin, .order-row.pinned:hover .order-pin { opacity: 1; filter: none; }
+
+.order-thumb { width: 46px; height: 34px; object-fit: cover; border-radius: 4px; background: rgba(14, 14, 16, .07); }
 .order-info { min-width: 0; }
 .order-title { font-size: .82rem; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.order-meta { font-family: var(--font-mono); font-size: .56rem; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.order-date { font-family: var(--font-mono); font-size: .62rem; padding: 4px 6px; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
-.order-status { font-family: var(--font-mono); font-size: .52rem; text-transform: uppercase; letter-spacing: .08em; padding: 3px 7px; border-radius: 999px; border: 1px solid var(--line); white-space: nowrap; }
-.order-status--live { background: rgba(205, 242, 79, .5); }
-.order-status--draft { background: rgba(14, 14, 16, .06); color: var(--text-muted); }
-.order-status--scheduled { background: rgba(120, 160, 255, .18); }
-.order-status--nodate { background: rgba(255, 120, 90, .2); }
-.order-empty { padding: 14px; font-size: .72rem; color: var(--text-muted); }
-.order-hint { margin-top: 10px; font-size: .68rem; line-height: 1.5; color: var(--text-muted); }
-.order-preview { position: sticky; top: 12px; display: flex; flex-direction: column; gap: 14px; }
-.order-preview-surface h4 { margin: 0 0 6px; font-family: var(--font-mono); font-size: .58rem; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); font-weight: 600; }
-.order-preview-cards { display: flex; flex-direction: column; gap: 6px; max-height: 320px; overflow-y: auto; padding-right: 4px; }
-.order-card { display: grid; grid-template-columns: auto 46px minmax(0, 1fr); gap: 8px; align-items: center; padding: 5px; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
-.order-card-num { font-family: var(--font-mono); font-size: .56rem; color: var(--text-muted); }
-.order-card img, .order-card-empty { width: 46px; height: 32px; object-fit: cover; border-radius: 4px; background: rgba(14, 14, 16, .08); }
-.order-card-cat { display: none; }
-.order-card-title { font-size: .68rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.order-meta { font-family: var(--font-mono); font-size: .54rem; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 2px; }
 
-/* Card settings, opened per row. A grid so the two text fields can span the
-   width while the crop selector and the switches sit on one line under them. */
-.order-row { grid-template-columns: auto auto auto auto 54px minmax(0, 1fr) auto auto auto; }
-.order-expand { border: 1px solid var(--line); background: #fff; border-radius: 6px; cursor: pointer; font-size: .6rem; padding: 4px 7px; line-height: 1; }
+/* The date is read far more often than it is edited, so it reads as text and
+   only becomes a visible field when it is being used. */
+.order-date {
+  font-family: var(--font-mono); font-size: .62rem; padding: 4px 6px;
+  border: 1px solid transparent; border-radius: 6px; background: transparent;
+  color: rgba(14, 14, 16, .62); transition: background .12s ease, border-color .12s ease, color .12s ease;
+}
+.order-row:hover .order-date { color: inherit; background: rgba(14, 14, 16, .04); }
+.order-date:focus { outline: none; border-color: var(--line); background: #fff; color: inherit; }
+
+/* State as a dot plus a word: the filled pills were four competing blocks of
+   colour in a list whose subject is order, not status. */
+.order-status {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: .5rem; text-transform: uppercase; letter-spacing: .09em;
+  color: var(--text-muted); white-space: nowrap; border: 0; background: none; padding: 0;
+}
+.order-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+.order-status--live { color: #4f7a1f; }
+.order-status--draft { color: rgba(14, 14, 16, .38); }
+.order-status--scheduled { color: #4a6bbf; }
+.order-status--nodate { color: #c2542f; }
+
+.order-expand { border: 1px solid transparent; background: none; border-radius: 6px; cursor: pointer; font-size: .58rem; padding: 4px 7px; line-height: 1; color: var(--text-muted); opacity: 0; transition: opacity .12s ease; }
+.order-row:hover .order-expand, .order-row.expanded .order-expand { opacity: 1; }
+.order-row:hover .order-expand:hover { border-color: var(--line); background: #fff; color: inherit; }
+
+.order-empty { padding: 16px 12px; font-size: .72rem; color: var(--text-muted); }
+.order-hint { margin-top: 12px; font-size: .66rem; line-height: 1.55; color: var(--text-muted); max-width: 62ch; }
+
+/* ── per-row card settings ── */
 .order-card-settings {
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 14px;
-  margin: -2px 0 4px; padding: 12px 14px;
-  border: 1px solid var(--line); border-top: 0; border-radius: 0 0 8px 8px;
-  background: rgba(14, 14, 16, .035);
+  margin: 0 0 4px; padding: 14px;
+  border: 1px solid var(--line); border-radius: 8px;
+  background: rgba(14, 14, 16, .03);
 }
 @media (max-width: 720px) { .order-card-settings { grid-template-columns: minmax(0, 1fr); } }
 .order-cs-wide { grid-column: 1 / -1; }
 .order-cs-field { display: flex; flex-direction: column; gap: 4px; }
-.order-cs-field > span { font-family: var(--font-mono); font-size: .54rem; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); }
+.order-cs-field > span { font-family: var(--font-mono); font-size: .52rem; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); }
 .order-cs-field input, .order-cs-field textarea, .order-cs-field select {
   font: inherit; font-size: .76rem; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; background: #fff; width: 100%;
 }
 .order-cs-field textarea { resize: vertical; }
-.order-cs-check { display: flex; align-items: center; gap: 7px; font-size: .74rem; align-self: end; padding-bottom: 6px; }
-.order-cs-note { grid-column: 1 / -1; font-size: .64rem; line-height: 1.5; color: var(--text-muted); }
+.order-cs-check { display: flex; align-items: center; gap: 7px; font-size: .72rem; align-self: end; padding-bottom: 6px; }
+.order-cs-note { grid-column: 1 / -1; font-size: .62rem; line-height: 1.5; color: var(--text-muted); }
 
-/* Row gains a selection box, so the template gains a column. */
-.order-row { grid-template-columns: auto auto auto auto auto 54px minmax(0, 1fr) auto auto auto; }
-.order-check { margin: 0; }
-.order-bulk {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
-  margin-bottom: 8px; padding: 8px 12px;
-  border: 1px solid var(--line); border-radius: 8px; background: rgba(205, 242, 79, .2);
+/* ── preview column ── */
+/* One list with a surface switch, not two lists of the same cards. The column
+   was showing the homepage feed and the /articles grid stacked, which for a
+   fifteen-item journal is the same fifteen covers twice. */
+.order-preview { position: sticky; top: 12px; display: flex; flex-direction: column; gap: 12px; }
+.order-preview-tabs { display: flex; gap: 4px; padding: 3px; border: 1px solid var(--line); border-radius: 8px; background: rgba(14, 14, 16, .04); }
+.order-preview-tab {
+  flex: 1; border: 0; border-radius: 6px; cursor: pointer; padding: 6px 8px; background: none;
+  font-family: var(--font-mono); font-size: .54rem; text-transform: uppercase; letter-spacing: .09em; color: var(--text-muted);
 }
-.order-bulk-count { font-family: var(--font-mono); font-size: .58rem; color: var(--text-muted); }
-.order-bulk-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-left: auto; }
+.order-preview-tab[aria-selected="true"] { background: #fff; color: inherit; box-shadow: 0 1px 2px rgba(14, 14, 16, .07); }
+.order-preview-cards { display: flex; flex-direction: column; gap: 5px; max-height: 62vh; overflow-y: auto; padding-right: 2px; }
+.order-card { display: grid; grid-template-columns: 1.4rem 40px minmax(0, 1fr); gap: 8px; align-items: center; padding: 4px; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+.order-card-num { font-family: var(--font-mono); font-size: .56rem; color: var(--text-muted); text-align: right; }
+.order-card img, .order-card-empty { width: 40px; height: 28px; object-fit: cover; border-radius: 3px; background: rgba(14, 14, 16, .08); }
+.order-card-cat { display: none; }
+.order-card-title { font-size: .66rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
 .order-home-controls {
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 12px;
-  padding: 10px 12px; margin-bottom: 4px;
-  border: 1px solid var(--line); border-radius: 8px; background: rgba(255, 255, 255, .7);
+  padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255, 255, 255, .7);
 }
 .order-home-controls .order-cs-check { grid-column: 1 / -1; padding-bottom: 0; }

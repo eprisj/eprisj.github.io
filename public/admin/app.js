@@ -18476,7 +18476,7 @@ document.addEventListener('click', (event) => {
       const id = num(a.id);
       const position = ordered.indexOf(a) + 1;
       return `
-        <div class="order-row${pinned.has(id) ? ' pinned' : ''}" data-id="${id}" draggable="${manual ? 'true' : 'false'}">
+        <div class="order-row${pinned.has(id) ? ' pinned' : ''}${expanded.has(id) ? ' expanded' : ''}" data-id="${id}" draggable="${manual ? 'true' : 'false'}">
           <input type="checkbox" class="order-check" data-id="${id}" ${selected.has(id) ? 'checked' : ''} title="Выбрать для массового действия" />
           <span class="order-handle" title="${manual ? 'Перетащить' : 'Перетаскивание работает в ручном режиме'}">⠿</span>
           <span class="order-num">${String(position).padStart(2, '0')}</span>
@@ -18568,7 +18568,23 @@ document.addEventListener('click', (event) => {
     const list = live.filter((a) => !a.hideInList);
     homeEl.innerHTML = (limit ? home.slice(0, limit) : home).map(card).join('') || '<p class="order-empty">Нет статей для главной.</p>';
     allEl.innerHTML = list.map(card).join('') || '<p class="order-empty">Нет статей для раздела.</p>';
+    applyPreviewSurface();
   }
+
+  /* Which surface the preview column is showing. Both lists are rendered and one
+     is hidden, rather than re-rendering on every switch: the lists are fifteen
+     rows of text and the switch should feel like looking, not loading. */
+  let previewSurface = 'home';
+  function applyPreviewSurface() {
+    homeEl.hidden = previewSurface !== 'home';
+    allEl.hidden = previewSurface !== 'all';
+    root.querySelectorAll('.order-preview-tab').forEach((tab) => {
+      tab.setAttribute('aria-selected', String(tab.dataset.surface === previewSurface));
+    });
+  }
+  root.querySelectorAll('.order-preview-tab').forEach((tab) => {
+    tab.addEventListener('click', () => { previewSurface = tab.dataset.surface; applyPreviewSurface(); });
+  });
 
   /* Reordering only ever rewrites manualOrder, and switches the mode to manual
      if it was not already: dragging a row in chronological mode used to be the
