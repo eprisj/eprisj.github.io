@@ -12212,6 +12212,74 @@ function bindStudioMediaActions() {
     showToast?.('success', 'Порядок обновлён. Нажмите «Опубликовать», чтобы применить на сайте.');
   }
 
+  /* Состояние полосы шагов на «Главной». Раньше редактор должен был
+     догадаться, в каком он месте недельного цикла: обе кнопки выглядели
+     одинаково, и «Опубликовать» охотно срабатывала на пустом черновике,
+     после чего объясняла ошибку тостом. Теперь шаг подсвечен, счётчик
+     показывает заполненность, а публикация недоступна, пока пятёрка не
+     собрана, и прямо говорит, чего ждёт. */
+  function renderHomepageSteps(data) {
+    const strip = document.getElementById('homepageSteps');
+    if (!strip) return;
+    const addBtn = document.getElementById('homepageAddBtn');
+    const publishBtn = document.getElementById('homepagePublishBtn');
+    const createNote = document.getElementById('hpStepCreateNote');
+    const fillNote = document.getElementById('hpStepFillNote');
+    const fillCount = document.getElementById('hpStepFillCount');
+    const draft = data ? homepageDraftRelease(data) : null;
+    const groups = data
+      ? homepageCategoryGroups(data, draft ? { releaseId: draft.id, restrict: true } : { useActive: true })
+      : [];
+    const total = groups.length || 5;
+    const filled = groups.filter((group) => group.items.length).length;
+    const ready = !!draft && filled >= total;
+
+    const setState = (step, state) => {
+      const el = strip.querySelector(`.hp-step[data-step="${step}"]`);
+      if (el) el.dataset.state = state;
+    };
+
+    setState('create', draft ? 'done' : 'current');
+    if (addBtn) {
+      addBtn.disabled = !!draft;
+      addBtn.classList.toggle('btn-primary', !draft);
+    }
+    if (createNote) {
+      createNote.textContent = draft
+        ? 'Выпуск создан и пока виден только вам.'
+        : 'Появятся пять пустых слотов, по одному на категорию.';
+    }
+
+    setState('fill', !draft ? 'idle' : (filled >= total ? 'done' : 'current'));
+    if (fillCount) fillCount.textContent = `${filled}/${total}`;
+    if (fillNote) {
+      fillNote.textContent = !draft
+        ? 'Сначала создайте выпуск.'
+        : (filled >= total
+          ? 'Все пять слотов заполнены.'
+          : `Заполнено ${filled} из ${total}: откройте пустой слот ниже и добавьте фото.`);
+    }
+
+    setState('publish', ready ? 'current' : 'idle');
+    if (publishBtn) {
+      /* Правки текущей пятёрки публиковать можно и без нового выпуска —
+         блокируем только недособранный черновик. */
+      const blocked = !!draft && !ready;
+      publishBtn.disabled = blocked;
+      publishBtn.classList.toggle('btn-primary', ready);
+      publishBtn.textContent = draft ? 'Опубликовать выпуск' : 'Опубликовать изменения';
+      publishBtn.title = blocked ? `Осталось заполнить слотов: ${total - filled}` : '';
+    }
+    const feedback = document.getElementById('homepagePublishFeedback');
+    if (feedback && feedback.dataset.state === 'ready') {
+      feedback.textContent = !draft
+        ? 'Отправит на сайт текущие правки.'
+        : (ready
+          ? 'Новая пятёрка заменит текущую, прежняя уйдёт в архив сама.'
+          : `Станет доступно, когда заполните все ${total} слотов.`);
+    }
+  }
+
   function renderHomepageTab() {
     const list = document.getElementById('homepageGalleryList');
     const meta = document.getElementById('homepageGalleryMeta');
@@ -12225,6 +12293,7 @@ function bindStudioMediaActions() {
       return;
     }
     renderPublishedHomepage(homepagePublishedData || data, homepagePublishedData ? 'vps' : 'draft');
+    renderHomepageSteps(data);
     const items = homepagePhotoItems(data);
     // The homepage editor is a release editor now. Its status must describe the
     // five cards readers see (or the five cards being prepared), not every
@@ -12405,6 +12474,7 @@ function bindStudioMediaActions() {
       const titleEl = document.getElementById('homepageStatusTitle');
       if (titleEl) titleEl.textContent = 'Главная опубликована';
       setHomepagePublishFeedback('Опубликовано — сайт обновлён.', 'success');
+      renderHomepageSteps(publishData);
       if (!silent) showToast?.('success', '✓ Главная и витрина опубликованы.');
     } catch (error) {
       setHomepagePublishFeedback(`Не опубликовано: ${getErrorMessage(error)}`, 'error');
@@ -12413,7 +12483,8 @@ function bindStudioMediaActions() {
       setHomepageRemoteNotice(`Выталкивание не удалось: ${esc(reason)}`, 'warn', true);
     } finally {
       homepagePublishBusy = false;
-      if (button) { button.disabled = false; button.textContent = 'Опубликовать выпуск'; }
+      if (button) { button.disabled = false; }
+      renderHomepageSteps(readContent());
       if (homepagePublishQueued) { homepagePublishQueued = false; scheduleHomepageAutoPublish(); }
     }
   }
