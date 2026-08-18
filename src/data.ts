@@ -461,7 +461,10 @@ export interface ArticleOrderSettings {
   unplaced?: 'top' | 'bottom';
 }
 
-export type HomepageSectionKey = 'pics' | 'articles' | 'showcase' | 'archive';
+/* 'reviews' — секция обзоров на главной, сразу после трёх свежих статей.
+   Ключ входит сюда, а не живёт строкой в компоненте: порядок и видимость
+   секций редактируются в админке, и незнакомый ей ключ она бы отбросила. */
+export type HomepageSectionKey = 'pics' | 'articles' | 'reviews' | 'showcase' | 'archive';
 
 /**
  * Editorial layout controls for the public homepage. These values intentionally

@@ -46,7 +46,7 @@ import {
   subscribeContent
 } from './data';
 import { DEFAULT_HOMEPAGE_PICS_CATEGORIES } from './data';
-import type { HomepageArchiveEntry, HomepagePicsCategory, SiteSettings, SiteTheme, VisibilitySectionKey } from './data';
+import type { HomepageArchiveEntry, HomepagePicsCategory, HomepageSectionKey, SiteSettings, SiteTheme, VisibilitySectionKey } from './data';
 import { Search, ArrowUpRight, FileText, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, ArrowRight, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
 
 // Issue-draft preview: when the admin opens /issue?preview=1, load the unsaved
@@ -219,6 +219,11 @@ const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
   'homepage.hideDetails': { EN: 'Hide description', RU: 'Скрыть описание', UA: 'Сховати опис', DE: 'Beschreibung ausblenden', IT: 'Nascondi descrizione', ES: 'Ocultar descripción', TR: 'Açıklamayı gizle' },
   'homepage.articlesEyebrow': { EN: 'EPRIS / editorial', RU: 'EPRIS / редакция', UA: 'EPRIS / редакція', DE: 'EPRIS / Redaktion', IT: 'EPRIS / redazione', ES: 'EPRIS / editorial', TR: 'EPRIS / editoryal' },
   'homepage.articlesTitle': { EN: 'Articles', RU: 'Статьи', UA: 'Статті', DE: 'Artikel', IT: 'Articoli', ES: 'Artículos', TR: 'Makaleler' },
+  'homepage.discoverAll': { EN: 'Discover all stories', RU: 'Все материалы', UA: 'Усі матеріали', DE: 'Alle Beiträge entdecken', IT: 'Scopri tutte le storie', ES: 'Descubrir todas las historias', TR: 'Tüm yazıları keşfet' },
+  'homepage.reviewsEyebrow': { EN: 'EPRIS / reviews', RU: 'EPRIS / обзоры', UA: 'EPRIS / огляди', DE: 'EPRIS / Rezensionen', IT: 'EPRIS / recensioni', ES: 'EPRIS / reseñas', TR: 'EPRIS / incelemeler' },
+  'homepage.reviewsTitle': { EN: 'Reviews', RU: 'Обзоры', UA: 'Огляди', DE: 'Rezensionen', IT: 'Recensioni', ES: 'Reseñas', TR: 'İncelemeler' },
+  'homepage.reviewsDescription': { EN: 'What we have been reading, watching and wearing lately.', RU: 'Что мы читаем, смотрим и носим в последнее время.', UA: 'Що ми читаємо, дивимось і носимо останнім часом.', DE: 'Was wir zuletzt gelesen, gesehen und getragen haben.', IT: 'Cosa abbiamo letto, visto e indossato di recente.', ES: 'Lo que hemos leído, visto y llevado últimamente.', TR: 'Son zamanlarda okuduklarımız, izlediklerimiz ve giydiklerimiz.' },
+  'homepage.allReviews': { EN: 'All reviews', RU: 'Все обзоры', UA: 'Усі огляди', DE: 'Alle Rezensionen', IT: 'Tutte le recensioni', ES: 'Todas las reseñas', TR: 'Tüm incelemeler' },
   'homepage.articlesDescription': { EN: 'The latest writing from the journal, newest first.', RU: 'Свежие тексты журнала — сначала самые новые.', UA: 'Свіжі тексти журналу — спочатку найновіші.', DE: 'Die neuesten Texte des Journals, zuerst die aktuellsten.', IT: 'Gli ultimi testi del journal, dal più recente.', ES: 'Los textos más recientes de la revista, primero los nuevos.', TR: 'Derginin en yeni yazıları, en yeniler önce.' },
   'articles.readPreview': { EN: 'Read preview', RU: 'Читать превью', UA: 'Читати прев’ю', DE: 'Vorschau lesen', IT: 'Leggi anteprima', ES: 'Leer vista previa', TR: 'Önizlemeyi oku' },
   'articles.readFull': { EN: 'Read full article', RU: 'Читать полностью', UA: 'Читати повністю', DE: 'Vollständigen Artikel lesen', IT: 'Leggi l’articolo completo', ES: 'Leer el artículo completo', TR: 'Makalenin tamamını oku' },
@@ -1653,6 +1658,16 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
    feed each called for themselves — two places deciding one thing, with no way
    for an editor to influence either. The rule now belongs to the content
    layer, where pins and the manual sequence live with it. */
+/* Главная показывает ТРИ последние статьи, а не весь архив.
+
+   Раньше без явной настройки на первую страницу выкладывались все тринадцать
+   материалов, и она превращалась в бесконечную ленту: витрина журнала читалась
+   как список файлов. Три свежих текста — это превью, после которого человек
+   либо идёт в раздел статей за остальным, либо спускается к обзорам.
+
+   Настройка в админке по-прежнему главнее: поставили лимит — работает он. */
+const HOMEPAGE_ARTICLE_PREVIEW_COUNT = 3;
+
 function homepageArticleFeed(articles: Article[]): Article[] {
   const settings = getHomepageSettings().articles || {};
   if (settings.enabled === false) return [];
@@ -1660,7 +1675,16 @@ function homepageArticleFeed(articles: Article[]): Article[] {
   // published and reachable, it just does not belong on the front page.
   const sorted = orderArticles(articles).filter((article) => !article.hideOnHome);
   const limit = Number(settings.limit);
-  return Number.isFinite(limit) && limit > 0 ? sorted.slice(0, Math.max(1, Math.floor(limit))) : sorted;
+  const effective = Number.isFinite(limit) && limit > 0
+    ? Math.max(1, Math.floor(limit))
+    : HOMEPAGE_ARTICLE_PREVIEW_COUNT;
+  return sorted.slice(0, effective);
+}
+
+/* Сколько статей вообще годится для главной — нужно, чтобы понять, прячет ли
+   превью что-то ещё. Кнопка «все материалы» имеет смысл только тогда. */
+function homepageArticlePoolSize(articles: Article[]): number {
+  return orderArticles(articles).filter((article) => !article.hideOnHome).length;
 }
 
 function DailyPicksArchive({ archive, items, onImageClick, currentLang, t }: { archive: HomepageArchiveEntry[]; items: Item[]; onImageClick: (src: string, alt: string, description?: string, title?: string) => void; currentLang: string; t: (key: string) => string }) {
@@ -3649,6 +3673,16 @@ export default function App() {
   const { items, articles, reviews } = getContentForLanguage(currentLang);
   const homepageArchive = getHomepageArchive();
   const homepageArticles = homepageArticleFeed(articles);
+  const homepageArticlePool = homepageArticlePoolSize(articles);
+  /* Обзоров на главной столько же, сколько статей: три карточки — это превью,
+     а не раздел. Главный обзор всегда среди них, иначе «Featured» на вкладке и
+     на главной означали бы разное. */
+  const homepageReviews = useMemo(
+    () => [...reviews]
+      .sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)))
+      .slice(0, HOMEPAGE_ARTICLE_PREVIEW_COUNT),
+    [reviews],
+  );
   const issueArchive = getIssueArchive(currentLang);
   const studio = getStudio();
   const defaultContent = getContentForLanguage(DEFAULT_LANGUAGE);
@@ -3706,12 +3740,29 @@ export default function App() {
   const contactEmail = String(siteSettings.contactEmail || '').trim();
   const fallbackTab = VISIBILITY_TABS.find((tab) => isSectionEnabled(tab)) || 'gallery';
   const homepageLayout = getHomepageSettings().layout || {};
-  const homepageDefaultSectionOrder = ['pics', 'articles', 'showcase', 'archive'];
-  const homepageSectionOrder = Array.from(new Set([
-    ...(Array.isArray(homepageLayout.sectionOrder) ? homepageLayout.sectionOrder : []),
-    ...homepageDefaultSectionOrder,
-  ])).filter((section) => homepageDefaultSectionOrder.includes(section));
-  const homepageSectionVisible = (section: string) => homepageLayout.visibility?.[section as 'pics' | 'articles' | 'showcase' | 'archive'] !== false;
+  const homepageDefaultSectionOrder: HomepageSectionKey[] = ['pics', 'articles', 'reviews', 'showcase', 'archive'];
+  /* Порядок секций: сохранённый в админке — главный, но НОВАЯ секция должна
+     встать на своё место по замыслу, а не в хвост.
+
+     Наивное слияние «сохранённые, затем дефолтные» отправляло обзоры за архив:
+     в сохранённом списке их просто нет, ведь он записан до их появления. Идём
+     по дефолтному порядку и для каждой секции берём позицию из сохранённого,
+     если она там есть; отсутствующие остаются там, где стоят по умолчанию. */
+  const savedSectionOrder = (Array.isArray(homepageLayout.sectionOrder) ? homepageLayout.sectionOrder : [])
+    .filter((section) => homepageDefaultSectionOrder.includes(section));
+  const homepageSectionOrder = (() => {
+    const known = homepageDefaultSectionOrder.filter((section) => savedSectionOrder.includes(section));
+    const savedQueue = savedSectionOrder.filter((section) => known.includes(section));
+    return homepageDefaultSectionOrder.map((section) => (
+      known.includes(section) ? savedQueue.shift() as HomepageSectionKey : section
+    ));
+  })();
+  const homepageSectionVisible = (section: string) => {
+    // Обзоры на главной подчиняются той же галочке раздела, что и вкладка:
+    // выключили раздел в админке — он исчезает целиком, а не наполовину.
+    if (section === 'reviews' && !isSectionEnabled('reviews')) return false;
+    return homepageLayout.visibility?.[section as HomepageSectionKey] !== false;
+  };
   const homepageArticleLayout = homepageLayout.articles || {};
   const homepageArticleColumns = homepageArticleLayout.columns === 2 || homepageArticleLayout.columns === 3 ? homepageArticleLayout.columns : 1;
   const renderHomepageSection = (section: string) => {
@@ -3739,6 +3790,49 @@ export default function App() {
           showReadAll={homepageArticleLayout.showReadAll !== false}
           columns={homepageArticleColumns}
         />
+        {/* Выход в раздел статей стоит там, где превью заканчивается, и только
+            если за ним действительно что-то есть: кнопка «все материалы» под
+            полным списком обманывала бы. */}
+        {homepageArticlePool > homepageArticles.length && (
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() => openSection('articles')}
+              className="font-mono text-[11px] uppercase tracking-[0.2em] border border-[var(--c-accent)] rounded-full px-7 py-3 text-[var(--c-accent)] transition-colors hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]"
+            >
+              {t('homepage.discoverAll')}
+            </button>
+          </div>
+        )}
+      </section>;
+    }
+    /* ОБЗОРЫ СРАЗУ ПОСЛЕ СТАТЕЙ.
+
+       До сих пор они жили только на своей вкладке, и с главной о них нельзя
+       было узнать. Теперь три свежих текста, выход в архив статей и следом
+       обзоры — главная читается как оглавление номера, а не как одна лента. */
+    if (section === 'reviews') {
+      if (!homepageReviews.length) return null;
+      return <section className="homepage-reviews mt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-10 sm:mt-16 sm:pt-12" aria-labelledby="homepage-reviews-title">
+        <div className="mb-8 flex flex-col gap-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-5 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t('homepage.reviewsEyebrow')}</p>
+            <h2 id="homepage-reviews-title" className="mt-2 font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">{t('homepage.reviewsTitle')}</h2>
+          </div>
+          <p className="max-w-[34ch] font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)] sm:text-right">{t('homepage.reviewsDescription')}</p>
+        </div>
+        <ReviewsSection reviews={homepageReviews} t={t} onReviewClick={handleSelectReview} />
+        {reviews.length > homepageReviews.length && (
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() => openSection('reviews')}
+              className="font-mono text-[11px] uppercase tracking-[0.2em] border border-[var(--c-accent)] rounded-full px-7 py-3 text-[var(--c-accent)] transition-colors hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]"
+            >
+              {t('homepage.allReviews')}
+            </button>
+          </div>
+        )}
       </section>;
     }
     if (section === 'archive') {
@@ -3780,6 +3874,16 @@ export default function App() {
     setPassportCode(undefined);
     navigate(target === 'gallery' ? '/' : `/${target}`);
   }, [fallbackTab, navigate]);
+
+  /* Переход из превью в раздел ведёт к началу раздела.
+
+     Кнопка стоит глубоко на главной, и без прокрутки человек оказывался в
+     середине списка статей — ровно там, где была кнопка. Выглядит как будто
+     ничего не произошло, только пропала половина страницы. */
+  const openSection = useCallback((tab: string) => {
+    handleSetTab(tab);
+    window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }, [handleSetTab]);
 
   const handleHome = useCallback(() => {
     handleSetTab('gallery');
