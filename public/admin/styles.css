@@ -8101,3 +8101,14 @@ button, a, input, select, textarea { touch-action: manipulation; }
    основная кнопка: обычный путь всё-таки «Сохранить». */
 .sidebar-btn-recover { border-color: var(--gold); color: var(--gold); }
 .sidebar-btn-recover:hover { background: var(--gold-soft); }
+/* Автосохранение: галочка и строка состояния под кнопками сохранения. */
+.sidebar-autosave { display: flex; align-items: center; gap: 8px; margin-top: 10px; color: var(--text-muted); font: .64rem/1.3 var(--font-mono); cursor: pointer; }
+.sidebar-autosave input { accent-color: var(--gold); }
+.autosave-status { margin-top: 6px; color: var(--text-muted); font: .6rem/1.4 var(--font-mono); }
+.autosave-status[data-kind="ok"] { color: var(--ok, #4a7c59); }
+.autosave-status[data-kind="warn"] { color: var(--gold); }
+/* Быстрое добавление вопроса и картинка в карточке. */
+.forms-quick-add { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 10px 12px; border: 1px dashed var(--line-strong); border-radius: var(--radius-sm); background: var(--bg-soft); }
+.forms-quick-add > span { margin-right: 2px; color: var(--text-muted); font: 700 .58rem/1 var(--font-mono); letter-spacing: .09em; text-transform: uppercase; }
+.forms-image-row { display: grid; grid-template-columns: 1fr auto; gap: 6px; }
+.forms-image-preview { display: block; max-width: 260px; margin-top: 8px; border: 1px solid var(--line); border-radius: 3px; }

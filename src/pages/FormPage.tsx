@@ -19,7 +19,7 @@ type UploadedFile = { fileId: string; name: string; size: number; type: string }
 
 type FormField = {
   id: string;
-  type: 'short-text' | 'long-text' | 'email' | 'url' | 'number' | 'date' | 'single-choice' | 'multi-choice' | 'consent' | 'section' | 'files';
+  type: 'short-text' | 'long-text' | 'email' | 'url' | 'number' | 'date' | 'single-choice' | 'multi-choice' | 'consent' | 'section' | 'files' | 'image';
   label: string;
   hint?: string;
   placeholder?: string;
@@ -31,6 +31,7 @@ type FormField = {
   max?: number | null;
   maxFiles?: number | null;
   accept?: string;
+  imageUrl?: string;
   showIf?: { fieldId: string; value: string } | null;
 };
 
@@ -324,15 +325,25 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
     );
   }
   if (state === 'sent') {
-    return shell(
-      <div className="border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-8">
-        <p className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">
-          <Check className="h-3.5 w-3.5" />EPRIS / form
-        </p>
-        <h1 className="mt-3 font-crimson text-3xl text-[var(--c-accent)]">{t.sent}</h1>
-        {thankYou && <p className="mt-4 whitespace-pre-line font-serif text-[15px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{thankYou}</p>}
-        <a href="/" className="mt-8 inline-block font-mono text-[11px] uppercase tracking-[0.2em] underline">eprisjournal.com</a>
-      </div>,
+    /* Последний экран — единственное, что автор увидит после получаса работы,
+       и раньше он выглядел как обрывок формы, прижатый к левому краю. Теперь
+       это отдельная страница благодарности: по центру, с воздухом и выходом
+       обратно в журнал. */
+    return (
+      <main className="mx-auto flex min-h-[80vh] w-full max-w-[560px] flex-col items-center justify-center px-6 py-20 text-center">
+        <span className="flex h-14 w-14 items-center justify-center rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.3)]">
+          <Check className="h-6 w-6 text-[var(--c-accent)]" />
+        </span>
+        <p className="mt-7 font-mono text-[10px] uppercase tracking-[0.24em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">EPRIS / form</p>
+        <h1 className="mt-3 font-crimson text-[30px] leading-tight text-[var(--c-accent)] sm:text-[36px]">{t.sent}</h1>
+        {thankYou && (
+          <p className="mt-5 whitespace-pre-line font-serif text-[16px] leading-[1.75] text-[rgb(var(--c-accent-rgb)_/_0.72)]">{thankYou}</p>
+        )}
+        <span className="mt-9 h-px w-16 bg-[rgb(var(--c-accent-rgb)_/_0.25)]" />
+        <a href="/" className="mt-7 inline-flex items-center gap-2 rounded-full border border-[var(--c-accent)] px-7 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--c-accent)] transition-colors hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]">
+          eprisjournal.com
+        </a>
+      </main>
     );
   }
 
@@ -366,6 +377,23 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
 
       <div className="mt-12 space-y-10">
         {(() => { let questionNumber = 0; return form!.fields.map((field) => {
+          if (field.type === 'image') {
+            if (!field.imageUrl) return null;
+            /* Картинка идёт во всю полосу набора и без рамки: это иллюстрация
+               к вопросу, а не вложение — рамка превратила бы её в элемент
+               управления, который хочется нажать. */
+            return (
+              <figure key={field.id} className="my-2">
+                <img src={field.imageUrl} alt={field.label || ''} loading="lazy"
+                  className="w-full rounded-[2px] object-cover" />
+                {(field.label || field.hint) && (
+                  <figcaption className="mt-2 font-serif text-[13px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.6)]">
+                    {field.label}{field.hint ? ` — ${field.hint}` : ''}
+                  </figcaption>
+                )}
+              </figure>
+            );
+          }
           if (field.type === 'section') {
             return (
               <div key={field.id} className="border-t border-[rgb(var(--c-accent-rgb)_/_0.25)] pt-8">
