@@ -4760,10 +4760,18 @@
         },
         {
           "type": "text",
-          "content": ""
+          "content": "<b>What has been your most inspiring trip?</b>"
+        },
+        {
+          "type": "text",
+          "content": "<b>Ksenia</b>: “I’ve just come back from New York, where my husband and I got married, so that’s definitely my strongest impression at the moment. But I think every journey is inspiring in its own way.”"
+        },
+        {
+          "type": "text",
+          "content": "Alena: “Recently, it was my solo trip to Porto. I visited the Serralves Museum, explored Álvaro Siza’s architecture, and absolutely loved it. The fact that I went alone also made it a special experience.”"
         }
       ],
-      "updatedAt": "2026-08-18T16:06:36.928Z"
+      "updatedAt": "2026-08-18T16:07:00.017Z"
     }
   ],
   "reviews": [
