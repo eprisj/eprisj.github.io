@@ -140,9 +140,18 @@ function listForms() {
     .sort((a, b) => String(b.updatedAt || "").localeCompare(String(a.updatedAt || "")));
 }
 
+/* Поиск анкеты по адресу учитывает и прежние адреса.
+
+   Адрес анкеты меняют по делу: «interview-abbie-downey/abbie-downey» читается
+   с дублем имени, а «interview/abbie-downey» нет. Но письмо со старой ссылкой
+   уже ушло, и оно должно открываться и через год. Прежние адреса копятся в
+   aliases и работают наравне с нынешним. */
 function findFormBySlug(slug) {
   const target = clean(slug, 80).toLowerCase();
-  return listForms().find((form) => String(form.slug).toLowerCase() === target) || null;
+  const forms = listForms();
+  return forms.find((form) => String(form.slug).toLowerCase() === target)
+    || forms.find((form) => (form.aliases || []).some((alias) => String(alias).toLowerCase() === target))
+    || null;
 }
 
 function readResponses(formId) {
@@ -287,9 +296,18 @@ function normaliseForm(raw, existing = null) {
   const fields = Array.isArray(raw?.fields) ? raw.fields.slice(0, MAX_FIELDS).map(normaliseField) : (existing?.fields || []);
   const status = ["draft", "open", "closed"].includes(raw?.status) ? raw.status : (existing?.status || "draft");
   const access = ["link", "invite"].includes(raw?.access) ? raw.access : (existing?.access || "link");
+  const slug = slugify(requestedSlug || existing?.slug || title);
+  /* Прежний адрес запоминается ровно в момент переименования. Список короткий:
+     повторные правки одного и того же адреса не плодят дублей. */
+  const aliases = Array.from(new Set([
+    ...(Array.isArray(existing?.aliases) ? existing.aliases : []),
+    ...(existing?.slug && existing.slug !== slug ? [existing.slug] : []),
+  ])).filter((alias) => alias !== slug).slice(0, 10);
+
   return {
     id,
-    slug: slugify(requestedSlug || existing?.slug || title),
+    slug,
+    aliases,
     title,
     description: cleanMultiline(raw?.description, 2000) || existing?.description || "",
     /* Что автор увидит после отправки. Пустая страница «спасибо» — самый
