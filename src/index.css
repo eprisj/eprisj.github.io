@@ -693,3 +693,25 @@ img[loading="lazy"] {
   .rich-text .stat-figure { font-size: 1.55em; }
   .rich-text ul.stats { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); }
 }
+
+/* Вход раздела. Раньше этим занимался framer-motion, но его переход между
+   маршрутами оставлял старый раздел на экране (см. RouteTransition в App.tsx),
+   поэтому движение свелось к одной короткой CSS-анимации без exit-фазы. */
+.route-motion-enter {
+  animation: route-enter .34s cubic-bezier(.22,.61,.36,1) both;
+}
+.route-motion-enter[data-route-direction='back'] {
+  animation-name: route-enter-back;
+}
+@keyframes route-enter {
+  from { opacity: 0; transform: translate3d(14px, 6px, 0) scale(.995); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes route-enter-back {
+  from { opacity: 0; transform: translate3d(-14px, 6px, 0) scale(.995); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .route-motion-enter { animation: route-enter-fade .18s ease both; }
+  @keyframes route-enter-fade { from { opacity: 0; } to { opacity: 1; } }
+}
