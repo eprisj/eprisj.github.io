@@ -50,6 +50,7 @@ const ORPHAN_FILE_TTL_MS = 24 * 60 * 60 * 1000;
 const MAX_BODY_BYTES = 512 * 1024;      // анкета — это текст, не медиатека
 const MAX_FIELDS = 60;
 const MAX_ANSWER_CHARS = 8000;
+const DEFAULT_MAX_LENGTH = 5000;
 const MAX_RESPONSES_PER_FORM = 5000;
 /* Один IP — десять ответов в час. Живой автор столько не отправляет, а
    скрипту этого мало, чтобы засорить анкету. */
@@ -251,9 +252,18 @@ function normaliseField(raw, index) {
   const options = Array.isArray(raw?.options)
     ? raw.options.map((option) => clean(option, 160)).filter(Boolean).slice(0, 30)
     : [];
+  /* «Ограничения нет» и «ограничение равно нулю» — разные вещи, и Number()
+     их не различает: Number(null) даёт 0, а зажим в допустимый диапазон
+     превращал этот ноль в единицу. Так у анкеты, пересохранённой без явных
+     настроек, все поля получили предел в ОДИН символ, и человек видел
+     счётчик «0 / 1», не в силах написать ни слова.
+
+     Пустое значение любого вида означает отсутствие ограничения. */
   const num = (value, min, max) => {
+    if (value === null || value === undefined || value === "") return null;
     const parsed = Number(value);
-    return Number.isFinite(parsed) ? Math.max(min, Math.min(max, Math.round(parsed))) : null;
+    if (!Number.isFinite(parsed)) return null;
+    return Math.max(min, Math.min(max, Math.round(parsed)));
   };
   /* УСЛОВНЫЙ ПОКАЗ.
      Половина вопросов в анкете нужна не всем: «какой у вас формат съёмки»
@@ -280,7 +290,13 @@ function normaliseField(raw, index) {
     /* Рамки ответа. Пустое значение означает «без ограничения» — это не то же
        самое, что ноль, поэтому null, а не 0. */
     minLength: ["short-text", "long-text"].includes(type) ? num(raw?.minLength, 0, 20000) : null,
-    maxLength: ["short-text", "long-text"].includes(type) ? num(raw?.maxLength, 1, 20000) : null,
+    /* Верхняя граница по умолчанию щедрая: пять тысяч знаков это примерно
+       страница с четвертью, и развёрнутый ответ на вопрос интервью в неё
+       укладывается с запасом. Предел нужен не чтобы ограничить человека, а
+       чтобы вставленная по ошибке книга не легла в анкету целиком. */
+    maxLength: ["short-text", "long-text"].includes(type)
+      ? (num(raw?.maxLength, 1, 20000) ?? DEFAULT_MAX_LENGTH)
+      : null,
     min: type === "number" ? num(raw?.min, -1e9, 1e9) : null,
     max: type === "number" ? num(raw?.max, -1e9, 1e9) : null,
     maxFiles: type === "files" ? num(raw?.maxFiles, 1, 30) : null,

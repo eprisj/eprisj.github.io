@@ -560,14 +560,26 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
                     })}
                   </div>
                 )}
-                {/* Счётчик знаков показывается, только когда предел задан:
-                    иначе это шум под каждым полем. */}
-                {field.type === 'long-text' && (field.maxLength || field.minLength) ? (
-                  <p className="mt-1.5 text-right font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.45)]">
-                    {String(value ?? '').length}{field.maxLength ? ` / ${field.maxLength}` : ''}
-                    {field.minLength && String(value ?? '').length < field.minLength ? ` · ${t.minLength} ${field.minLength}` : ''}
-                  </p>
-                ) : null}
+                {/* Счётчик молчит, пока в нём нет нужды.
+
+                    Предел в пять тысяч знаков стоит на каждом поле, и писать
+                    «0 / 5000» под пустым вопросом значит намекать человеку,
+                    что от него ждут пять тысяч знаков. Счётчик появляется,
+                    когда до предела действительно недалеко, и сразу же, если
+                    у вопроса задана нижняя граница. */}
+                {(() => {
+                  if (field.type !== 'long-text' && field.type !== 'short-text') return null;
+                  const length = String(value ?? '').length;
+                  const nearLimit = Boolean(field.maxLength) && length > field.maxLength! * 0.8;
+                  const belowMin = Boolean(field.minLength) && length < field.minLength!;
+                  if (!nearLimit && !belowMin) return null;
+                  return (
+                    <p className={`mt-1.5 text-right font-mono text-[10px] ${nearLimit ? 'text-[#B3261E]' : 'text-[rgb(var(--c-accent-rgb)_/_0.45)]'}`}>
+                      {length}{field.maxLength ? ` / ${field.maxLength}` : ''}
+                      {belowMin ? ` · ${t.minLength} ${field.minLength}` : ''}
+                    </p>
+                  );
+                })()}
                 {field.type === 'files' && (() => {
                   const list = Array.isArray(value) ? (value as UploadedFile[]) : [];
                   const busy = uploading[field.id];
