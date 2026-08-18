@@ -19312,6 +19312,10 @@ const FORM_FIELD_TYPES = [
 ];
 
 let formsCache = [];
+// Какие вопросы раскрыты, и есть ли несохранённые правки: и то, и другое
+// переживает перерисовку списка, поэтому лежит рядом с черновиком.
+const formsOpenFields = new Set();
+let formsDirty = false;
 let formsDraft = null;      // анкета, открытая в редакторе
 let formsResponses = null;  // ответы открытой анкеты, если их запросили
 
@@ -19325,6 +19329,11 @@ async function formsFetch(path, options = {}) {
   try { data = text ? JSON.parse(text) : null; } catch { data = null; }
   if (!response.ok) throw new Error(data?.error || `HTTP ${response.status}`);
   return data;
+}
+
+/* Короткий адрес для писем и мессенджеров: та же страница, что и /form/. */
+function formShortUrl(form) {
+  return `https://eprisjournal.com/f/${form.slug}`;
 }
 
 function formPublicUrl(form, token) {
@@ -19428,6 +19437,7 @@ function renderFormEditor() {
       <button class="btn" type="button" id="formAddField">+ Вопрос</button>
       <button class="btn btn-primary" type="button" id="formSave">Сохранить</button>
       ${saved ? `<a class="btn" href="${escapeHtml(formPublicUrl(form))}" target="_blank" rel="noopener">Открыть анкету</a>` : ''}
+      ${saved && form.status !== 'open' ? '<span class="muted">Анкета не открыта — по ссылке её пока не заполнить.</span>' : ''}
     </div>
 
     ${saved ? `
@@ -19437,7 +19447,12 @@ function renderFormEditor() {
         ? `<p class="muted">Анкета по приглашению: у каждого автора своя ссылка, и ответ подписан его именем.</p>
            <div class="forms-invite-new"><input id="formInviteLabel" type="text" placeholder="Имя автора"><button class="btn" type="button" id="formInviteAdd">Создать ссылку</button></div>
            <div id="formInvites"></div>`
-        : `<code class="forms-link">${escapeHtml(formPublicUrl(form))}</code>`}
+        : `<div class="forms-link-row">
+             <code class="forms-link">${escapeHtml(formPublicUrl(form))}</code>
+             <button class="btn btn-sm" type="button" data-copy-link="${escapeHtml(formPublicUrl(form))}">Копировать</button>
+           </div>
+           <p class="muted">Короткий вариант той же ссылки: <code>${escapeHtml(formShortUrl(form))}</code>
+             <button class="btn btn-sm" type="button" data-copy-link="${escapeHtml(formShortUrl(form))}">Копировать</button></p>`}
     </div>
 
     <div class="forms-responses">
@@ -19454,23 +19469,48 @@ function renderFormEditor() {
   if (saved && form.access === 'invite') renderFormInvites();
 }
 
+/* Строка вопроса.
+
+   Раньше все вопросы стояли развёрнутыми, и анкета из десяти пунктов не
+   помещалась на экран: чтобы поменять местами первый и последний, редактор
+   листал страницу. Теперь по умолчанию — компактная строка (номер, текст,
+   тип), а поля правки раскрываются по клику. Порядок меняется перетаскиванием
+   за ручку, стрелки остались для клавиатуры и точных перестановок. */
 function renderFormFieldRow(field, index) {
   const isChoice = field.type === 'single-choice' || field.type === 'multi-choice';
+  const typeLabel = (FORM_FIELD_TYPES.find(([value]) => value === field.type) || [, field.type])[1];
+  const open = formsOpenFields.has(index);
   return `
-    <div class="forms-field" data-field-index="${index}">
-      <div class="forms-field-head">
+    <div class="forms-field${open ? ' is-open' : ''}" data-field-index="${index}" draggable="true">
+      <div class="forms-field-bar" data-field-toggle="${index}">
+        <span class="forms-field-grip" title="Перетащите, чтобы переставить">⋮⋮</span>
         <span class="forms-field-index">${String(index + 1).padStart(2, '0')}</span>
-        <input type="text" data-field-label="${index}" value="${escapeHtml(field.label || '')}" placeholder="Текст вопроса">
-        <select data-field-type="${index}">
-          ${FORM_FIELD_TYPES.map(([value, label]) => `<option value="${value}"${field.type === value ? ' selected' : ''}>${label}</option>`).join('')}
-        </select>
-        <label class="forms-field-required"><input type="checkbox" data-field-required="${index}"${field.required ? ' checked' : ''}> обязательный</label>
-        <button class="btn btn-sm" type="button" data-field-up="${index}" ${index === 0 ? 'disabled' : ''}>↑</button>
-        <button class="btn btn-sm" type="button" data-field-down="${index}">↓</button>
-        <button class="btn btn-sm btn-danger" type="button" data-field-remove="${index}">×</button>
+        <span class="forms-field-name">${escapeHtml(field.label || 'Без названия')}${field.required ? '<i>обязательный</i>' : ''}</span>
+        <span class="forms-field-kind">${escapeHtml(typeLabel)}</span>
+        <span class="forms-field-tools">
+          <button class="btn btn-sm" type="button" data-field-up="${index}" ${index === 0 ? 'disabled' : ''} title="Выше">↑</button>
+          <button class="btn btn-sm" type="button" data-field-down="${index}" title="Ниже">↓</button>
+          <button class="btn btn-sm" type="button" data-field-copy="${index}" title="Дублировать">⧉</button>
+          <button class="btn btn-sm btn-danger" type="button" data-field-remove="${index}" title="Удалить">×</button>
+        </span>
       </div>
-      <input class="forms-field-hint" type="text" data-field-hint="${index}" value="${escapeHtml(field.hint || '')}" placeholder="Пояснение под вопросом (необязательно)">
-      ${isChoice ? `<input class="forms-field-options" type="text" data-field-options="${index}" value="${escapeHtml((field.options || []).join(', '))}" placeholder="Варианты через запятую">` : ''}
+      <div class="forms-field-body">
+        <label class="field"><span>Текст вопроса</span>
+          <input type="text" data-field-label="${index}" value="${escapeHtml(field.label || '')}" placeholder="Например: О чём материал?"></label>
+        <div class="forms-field-row">
+          <label class="field"><span>Тип ответа</span>
+            <select data-field-type="${index}">
+              ${FORM_FIELD_TYPES.map(([value, label]) => `<option value="${value}"${field.type === value ? ' selected' : ''}>${label}</option>`).join('')}
+            </select></label>
+          <label class="forms-field-required"><input type="checkbox" data-field-required="${index}"${field.required ? ' checked' : ''}> обязательный</label>
+        </div>
+        <label class="field"><span>Пояснение под вопросом</span>
+          <input type="text" data-field-hint="${index}" value="${escapeHtml(field.hint || '')}" placeholder="Необязательно"></label>
+        ${isChoice ? `<label class="field"><span>Варианты ответа</span>
+          <input type="text" data-field-options="${index}" value="${escapeHtml((field.options || []).join(', '))}" placeholder="Через запятую: Архитектура, Дизайн, Фотография"></label>` : ''}
+        ${field.type === 'consent' ? `<label class="field"><span>Текст согласия</span>
+          <input type="text" data-field-placeholder="${index}" value="${escapeHtml(field.placeholder || '')}" placeholder="Да, EPRIS может опубликовать этот материал."></label>` : ''}
+      </div>
     </div>`;
 }
 
@@ -19512,6 +19552,7 @@ async function renderFormInvites() {
       <div class="forms-invite${invite.revoked ? ' is-revoked' : ''}">
         <strong>${escapeHtml(invite.label)}</strong>
         <code class="forms-link">${escapeHtml(formPublicUrl(formsDraft, invite.token))}</code>
+        <button class="btn btn-sm" type="button" data-copy-link="${escapeHtml(formPublicUrl(formsDraft, invite.token))}">Копировать</button>
         <span class="muted">${invite.usedAt ? `ответил ${escapeHtml(new Date(invite.usedAt).toLocaleDateString('ru-RU'))}` : 'ещё не отвечал'}</span>
         ${invite.revoked ? '<span class="muted">отозвано</span>' : `<button class="btn btn-sm" type="button" data-invite-revoke="${escapeHtml(invite.token)}">Отозвать</button>`}
       </div>`).join('') : '<p class="muted">Ссылок пока нет.</p>';
@@ -19519,6 +19560,21 @@ async function renderFormInvites() {
     host.innerHTML = `<p class="muted">${escapeHtml(error.message)}</p>`;
   }
 }
+
+/* Индикатор несохранённого. Анкету правят долго, вкладку закрывают быстро. */
+function updateFormsDirtyState() {
+  const button = document.getElementById('formSave');
+  if (button) {
+    button.classList.toggle('is-dirty', formsDirty);
+    button.textContent = formsDirty ? 'Сохранить изменения' : 'Сохранено';
+  }
+}
+
+window.addEventListener('beforeunload', (event) => {
+  if (!formsDirty) return;
+  event.preventDefault();
+  event.returnValue = '';
+});
 
 function collectFormDraft() {
   const value = (id) => document.getElementById(id)?.value || '';
@@ -19535,6 +19591,7 @@ function collectFormDraft() {
     type: document.querySelector(`[data-field-type="${index}"]`)?.value || field.type,
     hint: document.querySelector(`[data-field-hint="${index}"]`)?.value || '',
     required: Boolean(document.querySelector(`[data-field-required="${index}"]`)?.checked),
+    placeholder: document.querySelector(`[data-field-placeholder="${index}"]`)?.value ?? field.placeholder ?? '',
     options: (document.querySelector(`[data-field-options="${index}"]`)?.value || '')
       .split(',').map((option) => option.trim()).filter(Boolean),
   }));
@@ -19544,10 +19601,14 @@ function collectFormDraft() {
 function bindFormEditor() {
   const host = document.getElementById('formsEditor');
   if (!host) return;
+  updateFormsDirtyState();
 
   host.querySelector('#formAddField')?.addEventListener('click', () => {
     collectFormDraft();
     formsDraft.fields.push({ id: '', type: 'short-text', label: '', required: false, options: [] });
+    formsDirty = true;
+    // Новый вопрос сразу раскрыт: его добавили, чтобы заполнить.
+    formsOpenFields.add(formsDraft.fields.length - 1);
     renderFormEditor();
   });
 
@@ -19555,6 +19616,7 @@ function bindFormEditor() {
     const draft = collectFormDraft();
     try {
       const data = await formsFetch('/save', { method: 'POST', body: JSON.stringify(draft) });
+      formsDirty = false;
       showToast('success', 'Анкета сохранена');
       await loadForms(data.form.id);
     } catch (error) {
@@ -19590,7 +19652,76 @@ function bindFormEditor() {
     }
   });
 
+  // Любая правка в полях помечает черновик несохранённым — по этой отметке
+  // подсвечивается кнопка и срабатывает предупреждение при уходе со страницы.
+  host.querySelectorAll('input, select, textarea').forEach((control) => {
+    control.addEventListener('input', () => { formsDirty = true; updateFormsDirtyState(); });
+  });
+
+  /* Перетаскивание вопросов. Меняет порядок в черновике, а не в разметке:
+     после переноса список перерисовывается из данных, поэтому номера, кнопки
+     «выше/ниже» и раскрытые карточки остаются согласованными. */
+  let dragFrom = null;
+  host.querySelectorAll('.forms-field').forEach((row) => {
+    row.addEventListener('dragstart', (event) => {
+      dragFrom = Number(row.dataset.fieldIndex);
+      row.classList.add('is-dragging');
+      event.dataTransfer.effectAllowed = 'move';
+    });
+    row.addEventListener('dragend', () => { row.classList.remove('is-dragging'); dragFrom = null; });
+    row.addEventListener('dragover', (event) => { event.preventDefault(); row.classList.add('is-drop-target'); });
+    row.addEventListener('dragleave', () => row.classList.remove('is-drop-target'));
+    row.addEventListener('drop', (event) => {
+      event.preventDefault();
+      row.classList.remove('is-drop-target');
+      const to = Number(row.dataset.fieldIndex);
+      if (dragFrom === null || dragFrom === to) return;
+      collectFormDraft();
+      const [moved] = formsDraft.fields.splice(dragFrom, 1);
+      formsDraft.fields.splice(to, 0, moved);
+      formsDirty = true;
+      formsOpenFields.clear();
+      renderFormEditor();
+    });
+  });
+
+  /* Слушатель кликов вешается ОДИН раз на всю жизнь панели.
+     Раньше он навешивался при каждой перерисовке на тот же самый элемент, и
+     после трёх перерисовок одно нажатие «дублировать» создавало три копии
+     вопроса. Разметка внутри меняется, сам контейнер — нет, поэтому хватает
+     одной делегированной подписки. */
+  if (host.dataset.bound === '1') return;
+  host.dataset.bound = '1';
   host.addEventListener('click', async (event) => {
+    const toggle = event.target.closest('[data-field-toggle]');
+    if (toggle && !event.target.closest('button')) {
+      const index = Number(toggle.dataset.fieldToggle);
+      if (formsOpenFields.has(index)) formsOpenFields.delete(index);
+      else formsOpenFields.add(index);
+      collectFormDraft();
+      renderFormEditor();
+      return;
+    }
+    const copyButton = event.target.closest('[data-field-copy]');
+    if (copyButton) {
+      collectFormDraft();
+      const index = Number(copyButton.dataset.fieldCopy);
+      const source = formsDraft.fields[index];
+      // Копия без id: сервер выдаст свой, иначе два вопроса делили бы один
+      // ключ и ответы на второй затирали бы первый.
+      formsDraft.fields.splice(index + 1, 0, { ...source, id: '', label: `${source.label} (копия)` });
+      formsDirty = true;
+      renderFormEditor();
+      return;
+    }
+    const linkButton = event.target.closest('[data-copy-link]');
+    if (linkButton) {
+      try {
+        await navigator.clipboard.writeText(linkButton.dataset.copyLink);
+        showToast('success', 'Ссылка скопирована');
+      } catch { showToast('error', 'Не удалось скопировать — выделите ссылку вручную'); }
+      return;
+    }
     const fileButton = event.target.closest('[data-file-download]');
     if (fileButton) {
       /* Файл лежит за паролем, поэтому обычная ссылка не годится: браузер не
