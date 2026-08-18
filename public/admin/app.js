@@ -8596,40 +8596,31 @@ function getPollStorageKeyForArticle(articleId, blockIndex) {
   return `epris-poll-v2-article-${articleId}-block-${blockIndex}`;
 }
 
-const POLL_COUNTER_NAMESPACE = 'eprisj-github-io';
-const POLL_COUNTER_BASE_URL = 'https://api.counterapi.dev/v1';
+/* ГОЛОСА СЧИТАЕТ НАШ СЕРВЕР, А НЕ ЧУЖОЙ СЧЁТЧИК.
 
-function getPollCounterName(pollKey, optionIndex) {
-  return `${pollKey}-option-${optionIndex}`
-    .toLowerCase()
-    .replace(/[^a-z0-9_-]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .slice(0, 120);
-}
+   Панель читала результаты из counterapi.dev — публичного счётчика нажатий.
+   Он закрыл первую версию своего API и теперь на любой запрос отвечает
+   «410 Gone: migrate to v2», отсюда и «Онлайн-счётчик временно недоступен».
 
-async function readPollCounter(pollKey, optionIndex) {
-  const name = getPollCounterName(pollKey, optionIndex);
-  const response = await fetch(`${POLL_COUNTER_BASE_URL}/${POLL_COUNTER_NAMESPACE}/${encodeURIComponent(name)}/`, {
-    cache: 'no-store'
-  });
-
-  if (response.status === 400 || response.status === 404) {
-    return 0;
-  }
-
-  if (!response.ok) {
-    throw new Error(`Poll counter read failed: ${response.status}`);
-  }
-
-  const payload = await response.json();
-  return Number(payload.count) || 0;
-}
+   Мигрировать туда же незачем: голоса читателей давно принимает наш
+   собственный сервер (POST /poll-vote, GET /poll-results) — он же не даёт
+   голосовать дважды и хранит результат рядом с контентом. Публичная страница
+   журнала пользуется именно им; в панели остался забытый чужой счётчик.
+   Теперь источник один. */
+const POLL_RESULTS_API = 'https://api.eprisjournal.com/poll-results';
 
 async function readPollCounters(poll) {
-  const counts = await Promise.all(poll.options.map((_, index) => readPollCounter(poll.pollKey, index)));
+  const response = await fetch(`${POLL_RESULTS_API}?key=${encodeURIComponent(poll.pollKey)}`, { cache: 'no-store' });
+  if (!response.ok) throw new Error(`Poll counter read failed: ${response.status}`);
+  const payload = await response.json().catch(() => ({}));
+  if (!payload?.ok) throw new Error(payload?.error || 'сервер опросов ответил без данных');
+
+  /* Сервер отдаёт объект вида { "0": 12, "1": 5 } — по индексу варианта.
+     Отсутствующий индекс означает, что за него ещё не голосовали. */
+  const counts = payload.counts && typeof payload.counts === 'object' ? payload.counts : {};
   return poll.options.map((option, index) => ({
     ...option,
-    onlineVotes: counts[index] || 0
+    onlineVotes: Number(counts[index] ?? counts[String(index)] ?? 0) || 0,
   }));
 }
 
