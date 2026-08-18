@@ -4568,14 +4568,18 @@
         },
         {
           "type": "text",
-          "content": "Alena: “I’m from a small town in Chuvashia and trained as an English and French teacher. But I was always drawn to art – cinema, architecture, painting, and crafts. Before moving, I took filmmaking courses because I dreamed of making films. When I found out that Ksenia had her own production company here, I wanted to join her."
+          "content": "<b>Alena</b>: “I’m from a small town in Chuvashia and trained as an English and French teacher. But I was always drawn to art – cinema, architecture, painting, and crafts. Before moving, I took filmmaking courses because I dreamed of making films. When I found out that Ksenia had her own production company here, I wanted to join her."
         },
         {
           "type": "text",
           "content": "I was so nervous about reaching out that my husband Mark contacted Ksenia for me, asking if I could come by, observe, and help out. In the end, Ksenia and I became very close. She’s an incredible person – always encouraging others and giving them space to express themselves. It was Ksenia who told me, ‘You should study drawing.’ I was surprised: ‘Me? Drawing? Are you serious?’ But I eventually enrolled too. It turned out to be an amazing experience: we learned to observe, create, and go through a complex, profound, almost philosophical process of discovery.”"
+        },
+        {
+          "type": "text",
+          "content": ""
         }
       ],
-      "updatedAt": "2026-08-18T16:00:15.270Z"
+      "updatedAt": "2026-08-18T16:00:22.041Z"
     }
   ],
   "reviews": [
