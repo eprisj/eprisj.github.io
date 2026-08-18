@@ -95,6 +95,8 @@ const server = http.createServer(async (req, res) => {
       const form = F.findFormBySlug(parts[1]);
       if (!form) return send(res, 404, { ok: false, error: "form not found" });
       if (form.status !== "open") return send(res, 403, { ok: false, error: "form closed", status: form.status });
+      const closedReason = F.formClosedReason(form);
+      if (closedReason) return send(res, 403, { ok: false, error: closedReason });
       if (form.access === "invite") {
         const token = F.clean(url.searchParams.get("t"), 60);
         const invite = form.invites.find((item) => item.token === token && !item.revoked);
@@ -108,6 +110,8 @@ const server = http.createServer(async (req, res) => {
       const form = F.findFormBySlug(parts[1]);
       if (!form) return send(res, 404, { ok: false, error: "form not found" });
       if (form.status !== "open") return send(res, 403, { ok: false, error: "form closed" });
+      const closed = F.formClosedReason(form);
+      if (closed) return send(res, 403, { ok: false, error: closed });
 
       const body = await readBody(req);
       /* Ловушка для роботов: поле скрыто от человека, поэтому заполнить его

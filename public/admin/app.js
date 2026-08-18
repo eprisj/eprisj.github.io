@@ -19519,6 +19519,12 @@ function renderFormEditor() {
       <label class="field"><span>Адрес ссылки</span><input id="formSlug" type="text" value="${escapeHtml(form.slug || '')}" placeholder="author-questionnaire"><small class="muted">eprisjournal.com/form/<b>${escapeHtml(form.slug || '…')}</b> — латиницей; из русского заголовка адрес переводится сам.</small></label>
       <label class="field"><span>Вступление</span><textarea id="formDescription" rows="2">${escapeHtml(form.description || '')}</textarea></label>
       <label class="field"><span>Текст после отправки</span><textarea id="formThankYou" rows="2">${escapeHtml(form.thankYou || '')}</textarea></label>
+      <div class="forms-editor-row">
+        <label class="field"><span>Закрыть после даты</span>
+          <input id="formClosesAt" type="date" value="${escapeHtml((form.closesAt || '').slice(0, 10))}"><small class="muted">Пусто — без срока.</small></label>
+        <label class="field"><span>Закрыть после N ответов</span>
+          <input id="formMaxResponses" type="number" min="0" value="${Number(form.maxResponses) || ''}" placeholder="без предела"></label>
+      </div>
     </div>
 
     <div class="forms-fields" id="formFields">
@@ -19589,6 +19595,45 @@ function renderFormEditor() {
    листал страницу. Теперь по умолчанию — компактная строка (номер, текст,
    тип), а поля правки раскрываются по клику. Порядок меняется перетаскиванием
    за ручку, стрелки остались для клавиатуры и точных перестановок. */
+/* Пустое поле числа означает «без ограничения», а не ноль. */
+function numberOrNull(raw, fallback) {
+  if (raw === undefined) return fallback ?? null;
+  const text = String(raw).trim();
+  if (!text) return null;
+  const parsed = Number(text);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+/* Условие показа вопроса: «спрашивать, только если в вопросе N выбрано X».
+   Источником может быть только вопрос со списком или согласие — по свободному
+   тексту условие пришлось бы сверять по точному совпадению строки, а это
+   ловушка: любой пробел ломает анкету молча. */
+function renderShowIfControls(field, index) {
+  if (field.type === 'section') return '';
+  const sources = (formsDraft?.fields || [])
+    .map((candidate, candidateIndex) => ({ candidate, candidateIndex }))
+    .filter(({ candidate, candidateIndex }) => candidateIndex !== index
+      && ['single-choice', 'multi-choice', 'consent'].includes(candidate.type)
+      && candidate.id);
+  if (!sources.length) return '';
+  const current = field.showIf || {};
+  const selected = sources.find(({ candidate }) => candidate.id === current.fieldId)?.candidate;
+  const values = selected
+    ? (selected.type === 'consent' ? ['true'] : (selected.options || []))
+    : [];
+  return `<div class="forms-field-row">
+    <label class="field"><span>Показывать, если в вопросе</span>
+      <select data-showif-field="${index}">
+        <option value="">всегда показывать</option>
+        ${sources.map(({ candidate, candidateIndex }) => `<option value="${escapeHtml(candidate.id)}"${current.fieldId === candidate.id ? ' selected' : ''}>${String(candidateIndex + 1).padStart(2, '0')} · ${escapeHtml(candidate.label || 'без названия')}</option>`).join('')}
+      </select></label>
+    <label class="field"><span>выбрано</span>
+      <select data-showif-value="${index}" ${values.length ? '' : 'disabled'}>
+        ${values.map((option) => `<option value="${escapeHtml(option)}"${current.value === option ? ' selected' : ''}>${escapeHtml(option === 'true' ? 'отмечено' : option)}</option>`).join('') || '<option value="">—</option>'}
+      </select></label>
+  </div>`;
+}
+
 function renderFormFieldRow(field, index) {
   const isChoice = field.type === 'single-choice' || field.type === 'multi-choice';
   const typeLabel = (FORM_FIELD_TYPES.find(([value]) => value === field.type) || [, field.type])[1];
@@ -19634,6 +19679,19 @@ function renderFormFieldRow(field, index) {
         </div>` : ''}
         ${['short-text', 'long-text', 'email', 'url', 'number'].includes(field.type) ? `<label class="field"><span>Подсказка в поле</span>
           <input type="text" data-field-placeholder="${index}" value="${escapeHtml(field.placeholder || '')}" placeholder="Например: Мария Иванова"><small class="muted">Серый текст внутри поля — пример ответа, а не пояснение.</small></label>` : ''}
+        ${['short-text', 'long-text'].includes(field.type) ? `<div class="forms-field-row">
+          <label class="field"><span>Не короче, знаков</span><input type="number" min="0" data-field-minlength="${index}" value="${field.minLength ?? ''}" placeholder="без предела"></label>
+          <label class="field"><span>Не длиннее, знаков</span><input type="number" min="1" data-field-maxlength="${index}" value="${field.maxLength ?? ''}" placeholder="без предела"></label>
+        </div>` : ''}
+        ${field.type === 'number' ? `<div class="forms-field-row">
+          <label class="field"><span>Не меньше</span><input type="number" data-field-min="${index}" value="${field.min ?? ''}" placeholder="без предела"></label>
+          <label class="field"><span>Не больше</span><input type="number" data-field-max="${index}" value="${field.max ?? ''}" placeholder="без предела"></label>
+        </div>` : ''}
+        ${field.type === 'files' ? `<div class="forms-field-row">
+          <label class="field"><span>Файлов не больше</span><input type="number" min="1" max="30" data-field-maxfiles="${index}" value="${field.maxFiles ?? ''}" placeholder="до 30"></label>
+          <label class="field"><span>Какие форматы</span><input type="text" data-field-accept="${index}" value="${escapeHtml(field.accept || '')}" placeholder="image/*,.pdf — пусто: любые"></label>
+        </div>` : ''}
+        ${renderShowIfControls(field, index)}
         ${field.type === 'consent' ? `<label class="field"><span>Текст согласия</span>
           <input type="text" data-field-placeholder="${index}" value="${escapeHtml(field.placeholder || '')}" placeholder="Да, EPRIS может опубликовать этот материал."></label>` : ''}
       </div>
@@ -19711,6 +19769,8 @@ function collectFormDraft() {
   formsDraft.language = value('formLanguage');
   formsDraft.description = value('formDescription');
   formsDraft.thankYou = value('formThankYou');
+  formsDraft.closesAt = value('formClosesAt');
+  formsDraft.maxResponses = Number(value('formMaxResponses')) || 0;
   formsDraft.fields = formsDraft.fields.map((field, index) => ({
     ...field,
     /* `??`, а не `||`: пустая строка — законное значение. С `||` стёртый текст
@@ -19721,6 +19781,18 @@ function collectFormDraft() {
     hint: document.querySelector(`[data-field-hint="${index}"]`)?.value ?? field.hint ?? '',
     required: Boolean(document.querySelector(`[data-field-required="${index}"]`)?.checked),
     placeholder: document.querySelector(`[data-field-placeholder="${index}"]`)?.value ?? field.placeholder ?? '',
+    minLength: numberOrNull(document.querySelector(`[data-field-minlength="${index}"]`)?.value, field.minLength),
+    maxLength: numberOrNull(document.querySelector(`[data-field-maxlength="${index}"]`)?.value, field.maxLength),
+    min: numberOrNull(document.querySelector(`[data-field-min="${index}"]`)?.value, field.min),
+    max: numberOrNull(document.querySelector(`[data-field-max="${index}"]`)?.value, field.max),
+    maxFiles: numberOrNull(document.querySelector(`[data-field-maxfiles="${index}"]`)?.value, field.maxFiles),
+    accept: document.querySelector(`[data-field-accept="${index}"]`)?.value ?? field.accept ?? '',
+    showIf: (() => {
+      const source = document.querySelector(`[data-showif-field="${index}"]`)?.value;
+      const option = document.querySelector(`[data-showif-value="${index}"]`)?.value;
+      if (source === undefined) return field.showIf || null;
+      return source ? { fieldId: source, value: option || '' } : null;
+    })(),
     options: (() => {
       const inputs = [...document.querySelectorAll(`[data-option-input^="${index}:"]`)];
       if (!inputs.length) return field.options || [];
@@ -19964,8 +20036,10 @@ function bindFormEditor() {
 
   // Смена типа вопроса меняет набор полей строки (варианты появляются только
   // у списков), поэтому строка перерисовывается сразу, а не после сохранения.
-  host.querySelectorAll('[data-field-type]').forEach((select) => {
-    select.addEventListener('change', () => { collectFormDraft(); renderFormEditor(); });
+  host.querySelectorAll('[data-field-type], [data-showif-field]').forEach((select) => {
+    // Тип вопроса меняет набор настроек, источник условия — список значений.
+    // И то, и другое видно только после перерисовки строки.
+    select.addEventListener('change', () => { formsDirty = true; collectFormDraft(); renderFormEditor(); });
   });
 }
 

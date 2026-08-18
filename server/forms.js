@@ -239,6 +239,18 @@ function normaliseField(raw, index) {
   const options = Array.isArray(raw?.options)
     ? raw.options.map((option) => clean(option, 160)).filter(Boolean).slice(0, 30)
     : [];
+  const num = (value, min, max) => {
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? Math.max(min, Math.min(max, Math.round(parsed))) : null;
+  };
+  /* УСЛОВНЫЙ ПОКАЗ.
+     Половина вопросов в анкете нужна не всем: «какой у вас формат съёмки»
+     спрашивают только фотографа. Раньше редакция обходила это двумя анкетами
+     и двумя ссылками; теперь вопрос показывается, когда в другом выбран
+     нужный вариант. Условие хранится ссылкой на поле и значение. */
+  const showIf = raw?.showIf && clean(raw.showIf.fieldId, 40)
+    ? { fieldId: clean(raw.showIf.fieldId, 40), value: clean(raw.showIf.value, 160) }
+    : null;
   return {
     id: clean(raw?.id, 40) || `f${index + 1}-${newId().slice(0, 4)}`,
     type,
@@ -249,6 +261,15 @@ function normaliseField(raw, index) {
     // ответа, у второго она означает «нельзя отправить без галочки».
     required: type === "section" ? false : Boolean(raw?.required),
     options: (type === "single-choice" || type === "multi-choice") ? options : [],
+    /* Рамки ответа. Пустое значение означает «без ограничения» — это не то же
+       самое, что ноль, поэтому null, а не 0. */
+    minLength: ["short-text", "long-text"].includes(type) ? num(raw?.minLength, 0, 20000) : null,
+    maxLength: ["short-text", "long-text"].includes(type) ? num(raw?.maxLength, 1, 20000) : null,
+    min: type === "number" ? num(raw?.min, -1e9, 1e9) : null,
+    max: type === "number" ? num(raw?.max, -1e9, 1e9) : null,
+    maxFiles: type === "files" ? num(raw?.maxFiles, 1, 30) : null,
+    accept: type === "files" ? clean(raw?.accept, 160) : "",
+    showIf,
   };
 }
 
@@ -270,6 +291,13 @@ function normaliseForm(raw, existing = null) {
     language: clean(raw?.language, 5).toUpperCase() || existing?.language || "EN",
     status,
     access,
+    /* Анкета закрывается сама: по дате или по числу ответов. Без этого
+       редакция вспоминает закрыть приём через месяц после дедлайна, и автор
+       присылает работу в пустоту. */
+    closesAt: clean(raw?.closesAt, 40) || existing?.closesAt || "",
+    maxResponses: Number.isFinite(Number(raw?.maxResponses)) && Number(raw?.maxResponses) > 0
+      ? Math.min(MAX_RESPONSES_PER_FORM, Math.round(Number(raw.maxResponses)))
+      : (existing?.maxResponses || 0),
     fields,
     invites: Array.isArray(existing?.invites) ? existing.invites : [],
     createdAt: existing?.createdAt || nowIso(),
@@ -284,17 +312,42 @@ function publicForm(form) {
     id: form.id, slug: form.slug, title: form.title, description: form.description,
     thankYou: form.thankYou, language: form.language, status: form.status,
     access: form.access, fields: form.fields,
+    closesAt: form.closesAt || "", maxResponses: form.maxResponses || 0,
   };
+}
+
+/* Анкета может быть открыта, но уже не принимать: вышел срок или набрано
+   нужное число ответов. Причина возвращается наружу, чтобы страница написала
+   человеку по-человечески, а не «403». */
+function formClosedReason(form) {
+  if (form.closesAt) {
+    const deadline = Date.parse(form.closesAt);
+    if (Number.isFinite(deadline) && deadline < Date.now()) return "deadline passed";
+  }
+  if (form.maxResponses && readResponses(form.id).length >= form.maxResponses) return "response limit reached";
+  return "";
 }
 
 /* ── Проверка ответа ────────────────────────────────────────────────────────
    Проверяем на сервере, а не только в браузере: форма открыта миру, и до
    диска доходит ровно то, что мы согласились принять. */
+/* Виден ли вопрос при таких ответах. Скрытый вопрос не спрашивают — и не
+   требуют: иначе анкета отказывалась бы отправляться из-за поля, которого
+   автор в глаза не видел. */
+function fieldVisible(field, answers) {
+  if (!field.showIf || !field.showIf.fieldId) return true;
+  const source = answers?.[field.showIf.fieldId];
+  if (Array.isArray(source)) return source.includes(field.showIf.value);
+  if (typeof source === "boolean") return source === (field.showIf.value === "true" || field.showIf.value === "да");
+  return String(source ?? "") === field.showIf.value;
+}
+
 function validateAnswers(form, rawAnswers) {
   const answers = {};
   const errors = [];
   for (const field of form.fields) {
     if (field.type === "section") continue;
+    if (!fieldVisible(field, rawAnswers)) { answers[field.id] = ""; continue; }
     const raw = rawAnswers?.[field.id];
     let value;
     if (field.type === "multi-choice") {
@@ -310,7 +363,7 @@ function validateAnswers(form, rawAnswers) {
          сверяем с описанием на диске: без этого можно было бы приписать
          своему ответу чужой файл, подставив его идентификатор. */
       const list = Array.isArray(raw) ? raw : [];
-      value = list.slice(0, 30).map((item) => {
+      value = list.slice(0, field.maxFiles || 30).map((item) => {
         const meta = fileMeta(form.id, clean(item?.fileId, 40));
         return meta ? { fileId: meta.id, name: meta.name, size: meta.size, type: meta.type } : null;
       }).filter(Boolean);
@@ -322,6 +375,11 @@ function validateAnswers(form, rawAnswers) {
       value = raw === "" || raw == null ? "" : String(Number(raw));
       if (value === "NaN") value = "";
       if (field.required && value === "") errors.push(field.label);
+      if (value !== "") {
+        const parsed = Number(value);
+        if (field.min !== null && field.min !== undefined && parsed < field.min) errors.push(`${field.label} — не меньше ${field.min}`);
+        if (field.max !== null && field.max !== undefined && parsed > field.max) errors.push(`${field.label} — не больше ${field.max}`);
+      }
     } else if (field.type === "email") {
       value = clean(raw, 200).toLowerCase();
       if (value && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) errors.push(`${field.label} — неверный адрес`);
@@ -329,6 +387,10 @@ function validateAnswers(form, rawAnswers) {
     } else {
       value = field.type === "long-text" ? cleanMultiline(raw) : clean(raw, 500);
       if (field.required && !value) errors.push(field.label);
+      else if (value) {
+        if (field.minLength && value.length < field.minLength) errors.push(`${field.label} — не короче ${field.minLength} знаков`);
+        if (field.maxLength && value.length > field.maxLength) value = value.slice(0, field.maxLength);
+      }
     }
     answers[field.id] = value;
   }
@@ -376,6 +438,6 @@ module.exports = {
   ensureDirs, nowIso, newId, clean, cleanMultiline, slugify,
   formPath, responsesPath, readJson, writeJsonAtomic,
   listForms, findFormBySlug, readResponses, writeResponses,
-  normaliseForm, publicForm, validateAnswers,
+  normaliseForm, publicForm, validateAnswers, fieldVisible, formClosedReason,
   ipFingerprint, tooManyRecent, responsesCsv,
 };
