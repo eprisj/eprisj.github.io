@@ -41,7 +41,11 @@ function safeEntryName(name, taken) {
   let base = String(name || "file")
     .split("/")
     .map((part) => part.replace(/[\\:*?"<>|\r\n]/g, "-").trim())
-    .filter(Boolean)
+    /* Сегменты «..» и «.» выбрасываются. Имя приходит из ответа автора, а
+       распаковщики по традиции идут по такому пути наружу целевой папки:
+       архив с записью «../../etc/passwd» пишет файл туда, куда его никто не
+       звал. Папки при этом остаются, потому что вверх по дереву они не ведут. */
+    .filter((part) => part && part !== "." && part !== "..")
     .join("/") || "file";
   let candidate = base;
   let n = 2;
