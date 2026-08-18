@@ -122,9 +122,12 @@ function SupportBlock({ support, open, onToggle, copied, onCopy, t }: {
 }) {
   return (
     <aside className="mt-14 border-t border-[rgb(var(--c-accent-rgb)_/_0.18)] pt-6">
-      <p className="font-serif text-[14px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.7)]">{support.free}</p>
+      {/* Строка про бесплатность набрана плотнее остального мелкого текста:
+          это единственное здесь утверждение, ради которого блок и существует,
+          и оно не должно читаться как сноска. Кнопка держит тот же вес. */}
+      <p className="font-serif text-[15px] font-medium leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.88)]">{support.free}</p>
       <button type="button" onClick={onToggle}
-        className="mt-3 inline-flex items-center gap-2 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.3)] px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-[rgb(var(--c-accent-rgb)_/_0.7)] transition-colors hover:border-[var(--c-accent)] hover:text-[var(--c-accent)]">
+        className="mt-3.5 inline-flex items-center gap-2 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.45)] px-5 py-2.5 font-mono text-[10.5px] font-bold uppercase tracking-[0.18em] text-[var(--c-accent)] transition-colors hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]">
         {open ? t.supportHide : t.supportShow}
       </button>
       {open && (
