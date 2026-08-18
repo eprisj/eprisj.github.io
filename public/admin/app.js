@@ -19306,6 +19306,7 @@ const FORM_FIELD_TYPES = [
   ['date', 'Дата'],
   ['single-choice', 'Один из списка'],
   ['multi-choice', 'Несколько из списка'],
+  ['files', 'Файлы (фото, макеты, любые)'],
   ['consent', 'Согласие (галочка)'],
   ['section', 'Раздел (без ответа)'],
 ];
@@ -19415,6 +19416,7 @@ function renderFormEditor() {
           ${['EN', 'RU', 'UA'].map((lang) => `<option value="${lang}"${form.language === lang ? ' selected' : ''}>${lang}</option>`).join('')}
         </select></label>
       </div>
+      <label class="field"><span>Адрес ссылки</span><input id="formSlug" type="text" value="${escapeHtml(form.slug || '')}" placeholder="author-questionnaire"><small class="muted">eprisjournal.com/form/<b>${escapeHtml(form.slug || '…')}</b> — латиницей; из русского заголовка адрес переводится сам.</small></label>
       <label class="field"><span>Вступление</span><textarea id="formDescription" rows="2">${escapeHtml(form.description || '')}</textarea></label>
       <label class="field"><span>Текст после отправки</span><textarea id="formThankYou" rows="2">${escapeHtml(form.thankYou || '')}</textarea></label>
     </div>
@@ -19484,6 +19486,16 @@ function renderFormResponses(form, responses) {
       </header>
       <dl>${columns.map((field) => {
         const value = response.answers?.[field.id];
+        /* Файлы — ссылками, а не именами: имя без ссылки означает «файл где-то
+           есть», и редактор идёт спрашивать его у автора второй раз. */
+        if (field.type === 'files') {
+          const files = Array.isArray(value) ? value : [];
+          if (!files.length) return '';
+          return `<div><dt>${escapeHtml(field.label)}</dt><dd>${files.map((file) => `
+            <button type="button" class="forms-file" data-file-download="${escapeHtml(file.fileId)}" data-file-name="${escapeHtml(file.name)}">
+              ${escapeHtml(file.name)} <span>${formatFileSize(file.size)}</span>
+            </button>`).join('')}</dd></div>`;
+        }
         const text = Array.isArray(value) ? value.join(', ') : (value === true ? 'да' : value === false ? 'нет' : String(value ?? ''));
         return text ? `<div><dt>${escapeHtml(field.label)}</dt><dd>${escapeHtml(text)}</dd></div>` : '';
       }).join('')}</dl>
@@ -19511,6 +19523,7 @@ async function renderFormInvites() {
 function collectFormDraft() {
   const value = (id) => document.getElementById(id)?.value || '';
   formsDraft.title = value('formTitle');
+  formsDraft.slug = value('formSlug');
   formsDraft.status = value('formStatus');
   formsDraft.access = value('formAccess');
   formsDraft.language = value('formLanguage');
@@ -19578,6 +19591,26 @@ function bindFormEditor() {
   });
 
   host.addEventListener('click', async (event) => {
+    const fileButton = event.target.closest('[data-file-download]');
+    if (fileButton) {
+      /* Файл лежит за паролем, поэтому обычная ссылка не годится: браузер не
+         пошлёт заголовок. Тянем через fetch и отдаём как загрузку. */
+      try {
+        const response = await fetch(`${FORMS_API}/${encodeURIComponent(formsDraft.id)}/files/${encodeURIComponent(fileButton.dataset.fileDownload)}`, {
+          headers: { 'X-Admin-Password': getAdminPassword() },
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url; link.download = fileButton.dataset.fileName || 'file';
+        document.body.appendChild(link); link.click(); link.remove();
+        URL.revokeObjectURL(url);
+      } catch (error) {
+        showToast('error', `Файл не скачался: ${error.message}`);
+      }
+      return;
+    }
     const target = event.target.closest('[data-field-remove],[data-field-up],[data-field-down],[data-response-delete],[data-invite-revoke]');
     if (!target) return;
     if (target.dataset.fieldRemove !== undefined) {

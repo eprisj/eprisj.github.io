@@ -15,9 +15,11 @@ import { Loader2, Check, AlertCircle } from 'lucide-react';
 
 const API_BASE = 'https://api.eprisjournal.com/forms';
 
+type UploadedFile = { fileId: string; name: string; size: number; type: string };
+
 type FormField = {
   id: string;
-  type: 'short-text' | 'long-text' | 'email' | 'url' | 'number' | 'date' | 'single-choice' | 'multi-choice' | 'consent' | 'section';
+  type: 'short-text' | 'long-text' | 'email' | 'url' | 'number' | 'date' | 'single-choice' | 'multi-choice' | 'consent' | 'section' | 'files';
   label: string;
   hint?: string;
   placeholder?: string;
@@ -37,24 +39,30 @@ type PublicForm = {
   fields: FormField[];
 };
 
-type AnswerValue = string | string[] | boolean;
+type AnswerValue = string | string[] | boolean | UploadedFile[];
 
 const COPY = {
   EN: { loading: 'Loading the form…', closed: 'This form is closed.', missing: 'Form not found.',
         invite: 'This form is open by invitation. Use the personal link the editors sent you.',
         required: 'Please fill in the highlighted fields.', send: 'Send answers', sending: 'Sending…',
         sent: 'Thank you — your answers are with the editors.', error: 'Could not send the form. Try again in a minute.',
-        requiredMark: 'required', invitedAs: 'Answering as' },
+        requiredMark: 'required', invitedAs: 'Answering as',
+        attach: 'Attach files', uploading: 'Uploading…', remove: 'Remove',
+        tooLarge: 'This file is too large.', uploadFailed: 'Upload failed — try again.', noSpace: 'The server is out of space. Tell the editors.' },
   RU: { loading: 'Загружаем анкету…', closed: 'Анкета закрыта.', missing: 'Анкета не найдена.',
         invite: 'Анкета открыта по приглашению. Откройте личную ссылку, которую прислала редакция.',
         required: 'Заполните отмеченные поля.', send: 'Отправить ответы', sending: 'Отправляем…',
         sent: 'Спасибо — ответы у редакции.', error: 'Не удалось отправить. Попробуйте через минуту.',
-        requiredMark: 'обязательно', invitedAs: 'Отвечает' },
+        requiredMark: 'обязательно', invitedAs: 'Отвечает',
+        attach: 'Прикрепить файлы', uploading: 'Загружаем…', remove: 'Убрать',
+        tooLarge: 'Файл слишком большой.', uploadFailed: 'Не загрузилось — попробуйте ещё раз.', noSpace: 'На сервере кончилось место. Сообщите редакции.' },
   UA: { loading: 'Завантажуємо анкету…', closed: 'Анкету закрито.', missing: 'Анкету не знайдено.',
         invite: 'Анкета відкрита за запрошенням. Відкрийте особисте посилання від редакції.',
         required: 'Заповніть позначені поля.', send: 'Надіслати відповіді', sending: 'Надсилаємо…',
         sent: 'Дякуємо — відповіді у редакції.', error: 'Не вдалося надіслати. Спробуйте за хвилину.',
-        requiredMark: 'обовʼязково', invitedAs: 'Відповідає' },
+        requiredMark: 'обовʼязково', invitedAs: 'Відповідає',
+        attach: 'Прикріпити файли', uploading: 'Завантажуємо…', remove: 'Прибрати',
+        tooLarge: 'Файл завеликий.', uploadFailed: 'Не завантажилось — спробуйте ще раз.', noSpace: 'На сервері скінчилось місце. Повідомте редакцію.' },
 } as const;
 
 function copyFor(language?: string) {
@@ -100,6 +108,50 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
     return () => { cancelled = true; };
   }, [slug, token]);
 
+  const [uploading, setUploading] = useState<Record<string, boolean>>({});
+  const [uploadError, setUploadError] = useState<Record<string, string>>({});
+
+  /* Файл уходит на сервер сразу при выборе, а не вместе с анкетой.
+     Так автор видит, что пятисотмегабайтный макет действительно загрузился,
+     до того как нажмёт «Отправить», — и не теряет заполненные ответы, если
+     загрузка сорвалась. В самом ответе едут только ссылки на загруженное. */
+  const uploadFiles = useCallback(async (field: FormField, files: FileList) => {
+    if (!form || !files.length) return;
+    setUploading((prev) => ({ ...prev, [field.id]: true }));
+    setUploadError((prev) => ({ ...prev, [field.id]: '' }));
+    const done: UploadedFile[] = [];
+    for (const file of Array.from(files)) {
+      try {
+        const query = token ? `?t=${encodeURIComponent(token)}` : '';
+        const response = await fetch(`${API_BASE}/public/${encodeURIComponent(form.slug)}/upload${query}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': file.type || 'application/octet-stream',
+            // Имя едет заголовком и в кодировке URL: в нём бывают кириллица,
+            // пробелы и переводы строк, которых заголовок не переживает.
+            'X-File-Name': encodeURIComponent(file.name),
+          },
+          body: file,
+        });
+        const data = await response.json().catch(() => null);
+        if (response.status === 413) { setUploadError((prev) => ({ ...prev, [field.id]: t.tooLarge })); continue; }
+        if (response.status === 507) { setUploadError((prev) => ({ ...prev, [field.id]: t.noSpace })); continue; }
+        if (!response.ok || !data?.ok) { setUploadError((prev) => ({ ...prev, [field.id]: t.uploadFailed })); continue; }
+        done.push(data.file as UploadedFile);
+      } catch {
+        setUploadError((prev) => ({ ...prev, [field.id]: t.uploadFailed }));
+      }
+    }
+    if (done.length) {
+      setAnswers((prev) => {
+        const current = Array.isArray(prev[field.id]) ? (prev[field.id] as UploadedFile[]) : [];
+        return { ...prev, [field.id]: [...current, ...done] };
+      });
+      setMissingFields((prev) => prev.filter((id) => id !== field.id));
+    }
+    setUploading((prev) => ({ ...prev, [field.id]: false }));
+  }, [form, t, token]);
+
   const setAnswer = useCallback((fieldId: string, value: AnswerValue) => {
     setAnswers((prev) => ({ ...prev, [fieldId]: value }));
     setMissingFields((prev) => prev.filter((id) => id !== fieldId));
@@ -116,7 +168,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
     const missing = form.fields.filter((field) => {
       if (!field.required || field.type === 'section') return false;
       const value = answers[field.id];
-      if (field.type === 'multi-choice') return !Array.isArray(value) || !value.length;
+      if (field.type === 'multi-choice' || field.type === 'files') return !Array.isArray(value) || !value.length;
       if (field.type === 'consent') return !value;
       return !String(value ?? '').trim();
     }).map((field) => field.id);
@@ -236,7 +288,9 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
                 {field.type === 'multi-choice' && (
                   <div className="space-y-2">
                     {(field.options || []).map((option) => {
-                      const list = Array.isArray(value) ? value : [];
+                      // Ответ этого типа — всегда список строк; общий тип
+                      // ответов шире, потому что файлы приходят объектами.
+                      const list = (Array.isArray(value) ? value : []).filter((item): item is string => typeof item === 'string');
                       return (
                         <label key={option} className="flex cursor-pointer items-baseline gap-3 font-serif text-[15px] text-[rgb(var(--c-accent-rgb)_/_0.85)]">
                           <input type="checkbox" checked={list.includes(option)}
@@ -247,6 +301,38 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
                     })}
                   </div>
                 )}
+                {field.type === 'files' && (() => {
+                  const list = Array.isArray(value) ? (value as UploadedFile[]) : [];
+                  const busy = uploading[field.id];
+                  const failed = uploadError[field.id];
+                  return (
+                    <div>
+                      <label className="inline-flex cursor-pointer items-center gap-2 border border-[rgb(var(--c-accent-rgb)_/_0.35)] px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-accent)] transition-colors hover:bg-[rgb(var(--c-accent-rgb)_/_0.06)]">
+                        {busy ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : null}
+                        {busy ? t.uploading : t.attach}
+                        <input type="file" multiple className="hidden" disabled={busy}
+                          onChange={(e) => { if (e.target.files) uploadFiles(field, e.target.files); e.target.value = ''; }} />
+                      </label>
+                      {failed && <p className="mt-2 font-serif text-sm text-[#B3261E]">{failed}</p>}
+                      {list.length > 0 && (
+                        <ul className="mt-3 space-y-1.5">
+                          {list.map((file) => (
+                            <li key={file.fileId} className="flex items-baseline justify-between gap-3 border-b border-[rgb(var(--c-accent-rgb)_/_0.12)] pb-1.5 font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.85)]">
+                              <span className="truncate">{file.name}</span>
+                              <span className="shrink-0 font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.5)]">
+                                {file.size > 1048576 ? `${(file.size / 1048576).toFixed(1)} MB` : `${Math.max(1, Math.round(file.size / 1024))} KB`}
+                              </span>
+                              <button type="button" className="shrink-0 font-mono text-[10px] uppercase tracking-[0.14em] underline"
+                                onClick={() => setAnswer(field.id, list.filter((item) => item.fileId !== file.fileId))}>
+                                {t.remove}
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  );
+                })()}
                 {field.type === 'consent' && (
                   <label className="flex cursor-pointer items-baseline gap-3 font-serif text-[15px] text-[rgb(var(--c-accent-rgb)_/_0.85)]">
                     <input type="checkbox" checked={Boolean(value)} onChange={(e) => setAnswer(field.id, e.target.checked)} />

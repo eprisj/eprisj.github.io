@@ -11,6 +11,9 @@
  */
 
 const http = require("http");
+const fs = require("fs");
+const path = require("path");
+const { pipeline } = require("stream/promises");
 const F = require("./forms.js");
 
 const PORT = Number(process.env.PORT || 9878);
@@ -120,6 +123,13 @@ const server = http.createServer(async (req, res) => {
       const { answers, errors } = F.validateAnswers(form, body?.answers || {});
       if (errors.length) return send(res, 400, { ok: false, error: "missing answers", fields: errors });
 
+      const attachedBytes = Object.values(answers).reduce((total, value) => (
+        Array.isArray(value) ? total + value.reduce((sum, item) => sum + (Number(item?.size) || 0), 0) : total
+      ), 0);
+      if (attachedBytes > F.MAX_RESPONSE_BYTES) {
+        return send(res, 413, { ok: false, error: "attachments too large", limitMb: Math.round(F.MAX_RESPONSE_BYTES / 1048576) });
+      }
+
       const responses = F.readResponses(form.id);
       if (responses.length >= F.MAX_RESPONSES_PER_FORM) return send(res, 429, { ok: false, error: "form is full" });
 
@@ -142,6 +152,63 @@ const server = http.createServer(async (req, res) => {
         await F.writeJsonAtomic(F.formPath(form.id), form);
       }
       return send(res, 200, { ok: true, accepted: true, thankYou: form.thankYou });
+    }
+
+    /* Загрузка файла к анкете.
+     *
+     * Файл идёт потоком прямо на диск: анкету с оригиналами фотографий нельзя
+     * складывать в память процесса — она кончится раньше, чем закончится
+     * загрузка. Имя и поле приходят заголовками, тело — сырой файл; так не
+     * нужен разбор multipart ради одного вложения. */
+    if (req.method === "POST" && parts[0] === "public" && parts[1] && parts[2] === "upload") {
+      const form = F.findFormBySlug(parts[1]);
+      if (!form) return send(res, 404, { ok: false, error: "form not found" });
+      if (form.status !== "open") return send(res, 403, { ok: false, error: "form closed" });
+      if (form.access === "invite") {
+        const token = F.clean(url.searchParams.get("t"), 60);
+        if (!form.invites.find((item) => item.token === token && !item.revoked)) {
+          return send(res, 403, { ok: false, error: "invite required" });
+        }
+      }
+      const declared = Number(req.headers["content-length"] || 0);
+      if (declared > F.MAX_FILE_BYTES) {
+        return send(res, 413, { ok: false, error: "file too large", limitMb: Math.round(F.MAX_FILE_BYTES / 1048576) });
+      }
+      /* Место на диске проверяем ДО приёма: свободные два гигабайта — это не
+         запас на всякий случай, а условие работы сайта, радио и админки,
+         которые живут на том же разделе. */
+      if (!F.diskHasRoom(declared)) return send(res, 507, { ok: false, error: "no space left" });
+
+      const fileId = F.newId() + F.newId();
+      const dir = F.uploadDirFor(form.id);
+      fs.mkdirSync(dir, { recursive: true });
+      const target = F.uploadPath(form.id, fileId);
+
+      let written = 0;
+      let aborted = false;
+      const sink = fs.createWriteStream(target);
+      req.on("data", (chunk) => {
+        written += chunk.length;
+        // Заголовок Content-Length можно подделать, поэтому режем и по факту.
+        if (written > F.MAX_FILE_BYTES && !aborted) { aborted = true; req.destroy(); sink.destroy(); }
+      });
+      try {
+        await pipeline(req, sink);
+      } catch {
+        fs.rmSync(target, { force: true });
+        return send(res, aborted ? 413 : 400, { ok: false, error: aborted ? "file too large" : "upload failed" });
+      }
+
+      const meta = {
+        id: fileId,
+        formId: form.id,
+        name: F.safeFileName(decodeURIComponent(String(req.headers["x-file-name"] || "file"))),
+        type: F.clean(req.headers["content-type"], 120) || "application/octet-stream",
+        size: written,
+        uploadedAt: F.nowIso(),
+      };
+      await F.saveFileMeta(form.id, meta);
+      return send(res, 200, { ok: true, file: { fileId: meta.id, name: meta.name, size: meta.size, type: meta.type } });
     }
 
     /* ── Дальше только редакция ────────────────────────────────────────── */
@@ -187,9 +254,40 @@ const server = http.createServer(async (req, res) => {
 
     if (req.method === "DELETE" && parts[1] === "responses" && parts[2]) {
       const id = F.clean(parts[2], 40);
-      const responses = F.readResponses(form.id).filter((item) => item.id !== id);
+      const all = F.readResponses(form.id);
+      const doomed = all.find((item) => item.id === id);
+      if (doomed) F.removeResponseFiles(form.id, doomed);
+      const responses = all.filter((item) => item.id !== id);
       await F.writeResponses(form.id, responses);
       return send(res, 200, { ok: true, responses: responses.length });
+    }
+
+    /* Файл отдаётся только редакции и только через эту точку: на диске он
+       лежит под случайным именем, nginx его не раздаёт, прямой ссылки нет. */
+    if (req.method === "GET" && parts[1] === "files" && parts[2]) {
+      const meta = F.fileMeta(form.id, F.clean(parts[2], 60));
+      if (!meta) return send(res, 404, { ok: false, error: "file not found" });
+      const file = F.uploadPath(form.id, meta.id);
+      if (!fs.existsSync(file)) return send(res, 404, { ok: false, error: "file missing on disk" });
+      res.writeHead(200, {
+        // Всегда как вложение: что бы ни лежало внутри, браузер редактора это
+        // сохраняет, а не открывает и не исполняет.
+        "Content-Type": "application/octet-stream",
+        "Content-Length": meta.size,
+        "Content-Disposition": `attachment; filename*=UTF-8''${encodeURIComponent(meta.name)}`,
+        "Cache-Control": "no-store",
+      });
+      fs.createReadStream(file).pipe(res);
+      return true;
+    }
+
+    if (req.method === "GET" && parts[1] === "storage") {
+      return send(res, 200, {
+        ok: true,
+        freeBytes: F.freeBytes(),
+        maxFileBytes: F.MAX_FILE_BYTES,
+        maxResponseBytes: F.MAX_RESPONSE_BYTES,
+      });
     }
 
     if (req.method === "POST" && parts[1] === "invites") {
@@ -231,3 +329,13 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, "127.0.0.1", () => console.log(`[forms] listening on 127.0.0.1:${PORT}`));
+
+/* Раз в час убираем файлы, которые загрузили и бросили, не отправив анкету.
+   Первый проход — через минуту после старта, чтобы выкат не совпал с уборкой. */
+setTimeout(() => { try { F.sweepOrphanFiles(); } catch (e) { console.warn("[forms] sweep:", e.message); } }, 60 * 1000).unref?.();
+setInterval(() => {
+  try {
+    const removed = F.sweepOrphanFiles();
+    if (removed) console.log(`[forms] swept ${removed} orphan file(s)`);
+  } catch (e) { console.warn("[forms] sweep:", e.message); }
+}, 60 * 60 * 1000).unref?.();

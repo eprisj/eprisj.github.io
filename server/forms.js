@@ -25,6 +25,27 @@ const crypto = require("crypto");
 const ROOT = process.env.FORMS_DIR || "/opt/epris-forms";
 const FORMS_DIR = path.join(ROOT, "forms");
 const RESPONSES_DIR = path.join(ROOT, "responses");
+const UPLOADS_DIR = path.join(ROOT, "uploads");
+
+/* ФАЙЛЫ АВТОРА.
+ *
+ * Портфолио, макеты, оригиналы фотографий — то, ради чего анкету и заводят.
+ * Формально «без ограничений» не бывает: на диске VPS шесть с небольшим
+ * свободных гигабайт, и анкета, забившая его под ноль, уронит вместе с собой
+ * сайт, радио и админку. Поэтому пределы щедрые, но названные, и они
+ * настраиваются переменными окружения без правки кода:
+ *   FORMS_MAX_FILE_MB     — один файл (по умолчанию 512 МБ)
+ *   FORMS_MAX_RESPONSE_MB — все файлы одного ответа (по умолчанию 2 ГБ)
+ *   FORMS_MIN_FREE_GB     — сколько места на диске беречь (по умолчанию 2 ГБ)
+ * Тип файла не ограничен вовсе: «любые» здесь означает буквально любые. Файл
+ * никогда не отдаётся по прямому пути и не исполняется — он лежит под
+ * случайным именем и скачивается только редакцией, по паролю. */
+const MAX_FILE_BYTES = Math.round((Number(process.env.FORMS_MAX_FILE_MB) || 512) * 1024 * 1024);
+const MAX_RESPONSE_BYTES = Math.round((Number(process.env.FORMS_MAX_RESPONSE_MB) || 2048) * 1024 * 1024);
+const MIN_FREE_BYTES = Math.round((Number(process.env.FORMS_MIN_FREE_GB) || 2) * 1024 * 1024 * 1024);
+/* Файл, загруженный и брошенный (человек передумал отправлять анкету), живёт
+   сутки. Иначе диск копит чужие черновики вечно. */
+const ORPHAN_FILE_TTL_MS = 24 * 60 * 60 * 1000;
 
 const MAX_BODY_BYTES = 512 * 1024;      // анкета — это текст, не медиатека
 const MAX_FIELDS = 60;
@@ -36,11 +57,11 @@ const RATE_LIMIT_PER_HOUR = 10;
 
 const FIELD_TYPES = new Set([
   "short-text", "long-text", "email", "url", "number", "date",
-  "single-choice", "multi-choice", "consent", "section",
+  "single-choice", "multi-choice", "consent", "section", "files",
 ]);
 
 function ensureDirs() {
-  for (const dir of [ROOT, FORMS_DIR, RESPONSES_DIR]) {
+  for (const dir of [ROOT, FORMS_DIR, RESPONSES_DIR, UPLOADS_DIR]) {
     try { fs.mkdirSync(dir, { recursive: true }); } catch { /* уже есть */ }
   }
 }
@@ -52,15 +73,45 @@ const clean = (value, max = 300) => String(value == null ? "" : value).replace(/
 const cleanMultiline = (value, max = MAX_ANSWER_CHARS) => String(value == null ? "" : value).replace(/\r\n/g, "\n").trim().slice(0, max);
 
 /* Ссылка на анкету должна читаться и диктоваться по телефону, поэтому slug —
-   из букв заголовка, а не случайная строка. Кириллица транслитерируется: в
-   адресе %D0%B0%D0%B2… не читается вообще. */
+   из букв заголовка, а не случайная строка.
+
+   Кириллический заголовок превращать в транслит («anketa-avtora-osennyi-nomer»)
+   — плохой выход: такую ссылку не прочитает ни русскоязычный, ни иностранный
+   автор, а именно её отправляют людям, для которых журнал англоязычный.
+   Поэтому заголовок на кириллице даёт короткий английский адрес по словарю
+   ходовых слов анкет, а редактор всегда может задать свой явно. */
 const TRANSLIT = {
   а:"a",б:"b",в:"v",г:"g",ґ:"g",д:"d",е:"e",є:"ie",ж:"zh",з:"z",и:"y",і:"i",ї:"i",й:"i",к:"k",л:"l",м:"m",
   н:"n",о:"o",п:"p",р:"r",с:"s",т:"t",у:"u",ф:"f",х:"h",ц:"ts",ч:"ch",ш:"sh",щ:"shch",ъ:"",ы:"y",ь:"",э:"e",ю:"iu",я:"ia",
 };
+/* Словарь на те слова, из которых редакция реально составляет названия
+   анкет. Промахнулись — редактор правит адрес руками, поле для этого есть. */
+const SLUG_WORDS = {
+  анкета: "questionnaire", анкети: "questionnaire", анкета_автора: "author-questionnaire",
+  автор: "author", автора: "author", авторов: "authors", авторська: "author",
+  интервью: "interview", интервʼю: "interview", інтервю: "interview", інтерв: "interview",
+  вопросы: "questions", питання: "questions", опрос: "survey", опитування: "survey",
+  заявка: "application", заявки: "application", подача: "submission", матеріал: "story",
+  материал: "story", статья: "story", стаття: "story", номер: "issue", выпуск: "issue",
+  осенний: "autumn", осінній: "autumn", зимний: "winter", весенний: "spring", летний: "summer",
+  фото: "photo", фотограф: "photographer", портфолио: "portfolio", портфоліо: "portfolio",
+  редакция: "editorial", редакція: "editorial", обратная: "feedback", связь: "feedback",
+  сотрудничество: "collaboration", співпраця: "collaboration", участие: "participation",
+};
+
 function slugify(value) {
-  const base = String(value || "").toLowerCase().split("").map((ch) => TRANSLIT[ch] ?? ch).join("");
-  return base.replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60) || `form-${newId().slice(0, 6)}`;
+  const raw = String(value || "").toLowerCase().trim();
+  const latin = raw.replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  // Заголовок уже латиницей — берём как есть, ничего не выдумывая.
+  if (latin.length >= 3) return latin.slice(0, 60);
+
+  const words = raw.split(/[^a-zа-яёіїєґ0-9]+/i).filter(Boolean);
+  const mapped = words.map((word) => SLUG_WORDS[word] || "").filter(Boolean);
+  if (mapped.length) return [...new Set(mapped)].join("-").slice(0, 60);
+
+  const translit = raw.split("").map((ch) => TRANSLIT[ch] ?? ch).join("")
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  return translit.slice(0, 60) || `form-${newId().slice(0, 6)}`;
 }
 
 const formPath = (id) => path.join(FORMS_DIR, `${id}.json`);
@@ -98,6 +149,86 @@ function readResponses(formId) {
 
 async function writeResponses(formId, responses) {
   await writeJsonAtomic(responsesPath(formId), { formId, updatedAt: nowIso(), responses });
+}
+
+
+/* ── Файлы ────────────────────────────────────────────────────────────────── */
+const uploadDirFor = (formId) => path.join(UPLOADS_DIR, String(formId));
+const uploadPath = (formId, fileId) => path.join(uploadDirFor(formId), fileId);
+
+function freeBytes() {
+  try {
+    const stat = fs.statfsSync(ROOT);
+    return stat.bavail * stat.bsize;
+  } catch {
+    // Нет statfs — не притворяемся, что места нет: проверку просто пропускаем.
+    return Number.MAX_SAFE_INTEGER;
+  }
+}
+
+function diskHasRoom(expectedBytes = 0) {
+  return freeBytes() - expectedBytes > MIN_FREE_BYTES;
+}
+
+/* Имя файла показывается редактору, но НЕ участвует в пути на диске: путь
+   строится из случайного идентификатора. Иначе «../../etc/passwd» в имени
+   стал бы путём, а два автора с «portfolio.pdf» затёрли бы друг друга. */
+function safeFileName(name) {
+  const cleaned = String(name || "file").replace(/[\r\n\t]/g, " ").replace(/[/\\]/g, "-").trim();
+  return cleaned.slice(0, 180) || "file";
+}
+
+function fileMeta(formId, fileId) {
+  const meta = readJson(`${uploadPath(formId, fileId)}.json`, null);
+  return meta && meta.id === fileId ? meta : null;
+}
+
+async function saveFileMeta(formId, meta) {
+  await writeJsonAtomic(`${uploadPath(formId, meta.id)}.json`, meta);
+}
+
+/* Файлы, на которые не сослался ни один ответ, — это брошенные черновики.
+   Собираются раз в час и после суток жизни удаляются вместе с описанием. */
+function sweepOrphanFiles() {
+  ensureDirs();
+  let removed = 0;
+  for (const formDir of fs.readdirSync(UPLOADS_DIR, { withFileTypes: true })) {
+    if (!formDir.isDirectory()) continue;
+    const formId = formDir.name;
+    const used = new Set();
+    for (const response of readResponses(formId)) {
+      for (const value of Object.values(response.answers || {})) {
+        if (Array.isArray(value)) for (const item of value) if (item && item.fileId) used.add(item.fileId);
+      }
+    }
+    for (const entry of fs.readdirSync(uploadDirFor(formId))) {
+      if (entry.endsWith(".json")) continue;
+      if (used.has(entry)) continue;
+      const file = uploadPath(formId, entry);
+      try {
+        if (Date.now() - fs.statSync(file).mtimeMs < ORPHAN_FILE_TTL_MS) continue;
+        fs.unlinkSync(file);
+        fs.rmSync(`${file}.json`, { force: true });
+        removed += 1;
+      } catch { /* уже удалён */ }
+    }
+  }
+  return removed;
+}
+
+/* Ответ удаляют вместе с приложенными файлами: иначе «удалить ответ» означало
+   бы «спрятать текст, оставив портфолио на диске навсегда». */
+function removeResponseFiles(formId, response) {
+  for (const value of Object.values(response?.answers || {})) {
+    if (!Array.isArray(value)) continue;
+    for (const item of value) {
+      if (!item || !item.fileId) continue;
+      try {
+        fs.rmSync(uploadPath(formId, item.fileId), { force: true });
+        fs.rmSync(`${uploadPath(formId, item.fileId)}.json`, { force: true });
+      } catch { /* уже удалён */ }
+    }
+  }
 }
 
 /* ── Нормализация формы ─────────────────────────────────────────────────────
@@ -174,6 +305,16 @@ function validateAnswers(form, rawAnswers) {
       value = clean(raw, 160);
       if (value && !field.options.includes(value)) value = "";
       if (field.required && !value) errors.push(field.label);
+    } else if (field.type === "files") {
+      /* В ответе приходят не сами файлы, а ссылки на уже загруженные. Каждую
+         сверяем с описанием на диске: без этого можно было бы приписать
+         своему ответу чужой файл, подставив его идентификатор. */
+      const list = Array.isArray(raw) ? raw : [];
+      value = list.slice(0, 30).map((item) => {
+        const meta = fileMeta(form.id, clean(item?.fileId, 40));
+        return meta ? { fileId: meta.id, name: meta.name, size: meta.size, type: meta.type } : null;
+      }).filter(Boolean);
+      if (field.required && !value.length) errors.push(field.label);
     } else if (field.type === "consent") {
       value = Boolean(raw);
       if (field.required && !value) errors.push(field.label);
@@ -207,7 +348,11 @@ function tooManyRecent(responses, fingerprint) {
 }
 
 function csvEscape(value) {
-  const text = Array.isArray(value) ? value.join("; ") : String(value == null ? "" : value);
+  const list = Array.isArray(value)
+    // Файлы в таблице — это их имена: идентификатор на диске в отчёте не нужен.
+    ? value.map((item) => (item && typeof item === "object" && item.name ? item.name : item))
+    : null;
+  const text = list ? list.join("; ") : String(value == null ? "" : value);
   return /[",\n;]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
 }
 
@@ -224,7 +369,10 @@ function responsesCsv(form, responses) {
 }
 
 module.exports = {
-  ROOT, FORMS_DIR, RESPONSES_DIR, MAX_BODY_BYTES, MAX_RESPONSES_PER_FORM, FIELD_TYPES,
+  ROOT, FORMS_DIR, RESPONSES_DIR, UPLOADS_DIR, MAX_BODY_BYTES, MAX_RESPONSES_PER_FORM, FIELD_TYPES,
+  MAX_FILE_BYTES, MAX_RESPONSE_BYTES, MIN_FREE_BYTES,
+  uploadDirFor, uploadPath, freeBytes, diskHasRoom, safeFileName, fileMeta, saveFileMeta,
+  sweepOrphanFiles, removeResponseFiles,
   ensureDirs, nowIso, newId, clean, cleanMultiline, slugify,
   formPath, responsesPath, readJson, writeJsonAtomic,
   listForms, findFormBySlug, readResponses, writeResponses,
