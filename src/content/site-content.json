@@ -4549,9 +4549,13 @@
           "type": "image",
           "content": "new-editorial-story-2",
           "caption": "Lead image"
+        },
+        {
+          "type": "text",
+          "content": ""
         }
       ],
-      "updatedAt": "2026-08-18T15:58:24.830Z"
+      "updatedAt": "2026-08-18T15:58:39.991Z"
     }
   ],
   "reviews": [
