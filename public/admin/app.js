@@ -3127,6 +3127,174 @@ function getErrorMessage(error) {
   return String(error);
 }
 
+
+/* ═══ АВТОСОХРАНЕНИЕ ═══════════════════════════════════════════════════════
+
+   У Марии пропали карточки, потому что работа жила в одном месте — в черновике
+   браузера — и одно нажатие его стёрло. Корзина черновиков закрыла тот случай,
+   но остаётся весь класс потерь, где нажимать ничего не надо: закрытая вкладка,
+   очищенный кэш, разряженный ноутбук, «сохраню потом».
+
+   Автосохранение делает две разные вещи, и их важно не путать.
+
+   ПЕРВОЕ работает всегда: раз в две минуты редактор кладёт снимок работы в
+   историю браузера — десять последних версий, с отметкой времени. Это ничего
+   не публикует и не может ничего испортить.
+
+   ВТОРОЕ — отправка на VPS — выключено по умолчанию и включается галочкой.
+   Причина проста: сохранение на сервер в этой админке означает публикацию,
+   сайт обновляется мгновенно. Автоматически публиковать недописанное нельзя
+   без ведома редактора, поэтому галочка честно называется «сразу на сайт». */
+const AUTOSAVE_HISTORY_KEY = 'epris-admin-autosave-history-v1';
+const AUTOSAVE_PREF_KEY = 'epris-admin-autosave-to-vps';
+const AUTOSAVE_HISTORY_LIMIT = 10;
+const AUTOSAVE_INTERVAL_MS = 2 * 60 * 1000;
+let autosaveTimer = 0;
+let autosaveInFlight = false;
+
+function autosaveHistory() {
+  try { return JSON.parse(localStorage.getItem(AUTOSAVE_HISTORY_KEY) || '[]'); } catch { return []; }
+}
+
+function pushAutosaveSnapshot() {
+  try {
+    const text = editor.value.trim();
+    if (!text) return null;
+    const history = autosaveHistory();
+    if (history[0]?.draft === text) return null;   // ничего не изменилось
+    history.unshift({ at: new Date().toISOString(), draft: text });
+    /* История режется по количеству И по объёму: контент весит около двух
+       мегабайт, десять копий переполнили бы хранилище браузера, и тогда мы
+       потеряли бы даже обычный черновик. */
+    let trimmed = history.slice(0, AUTOSAVE_HISTORY_LIMIT);
+    while (trimmed.length > 1) {
+      try {
+        localStorage.setItem(AUTOSAVE_HISTORY_KEY, JSON.stringify(trimmed));
+        return trimmed[0];
+      } catch {
+        trimmed = trimmed.slice(0, trimmed.length - 1);
+      }
+    }
+    localStorage.setItem(AUTOSAVE_HISTORY_KEY, JSON.stringify(trimmed));
+    return trimmed[0];
+  } catch { return null; }
+}
+
+function setAutosaveNote(text, kind = 'muted') {
+  const el = document.getElementById('autosave-status');
+  if (!el) return;
+  el.textContent = text;
+  el.dataset.kind = kind;
+}
+
+function autosaveToVpsEnabled() {
+  return localStorage.getItem(AUTOSAVE_PREF_KEY) === '1';
+}
+
+async function runAutosave() {
+  if (autosaveInFlight) return;
+  if (!editor || !editor.value.trim()) return;
+  if (!isEditorDirty()) return;
+
+  const snapshot = pushAutosaveSnapshot();
+  const stamp = new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+  if (snapshot) setAutosaveNote(`Черновик сохранён в браузере · ${stamp}`);
+
+  if (!autosaveToVpsEnabled()) return;
+  const pw = getAdminPassword();
+  if (!pw) { setAutosaveNote('Автосохранение на VPS: нет пароля редакции', 'warn'); return; }
+
+  let parsed;
+  // Незакрытая скобка в JSON — обычное состояние на середине правки. Молча
+  // пропускаем такой круг: сообщать об ошибке каждые две минуты бессмысленно.
+  try { parsed = parseEditorJson(); } catch { return; }
+
+  autosaveInFlight = true;
+  try {
+    await postContentToVps(parsed, pw);
+    setLastSyncedSnapshotFromText(editor.value);
+    lastSyncedTime = new Date();
+    updateLastSyncedBadge();
+    setAutosaveNote(`Сохранено на VPS · ${stamp}`, 'ok');
+  } catch (error) {
+    // Автосохранение не имеет права перебивать ручную работу тревогой на весь
+    // экран: пишем в строку статуса и пробуем на следующем круге.
+    setAutosaveNote(`Не сохранилось на VPS: ${getErrorMessage(error)}`, 'warn');
+  } finally {
+    autosaveInFlight = false;
+  }
+}
+
+function startAutosave() {
+  clearInterval(autosaveTimer);
+  autosaveTimer = setInterval(runAutosave, AUTOSAVE_INTERVAL_MS);
+  /* Снимок при уходе со страницы — самый ценный из всех: именно на закрытии
+     вкладки теряется работа, которую «сохраню потом». */
+  window.addEventListener('beforeunload', () => { try { pushAutosaveSnapshot(); } catch {} });
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') { try { pushAutosaveSnapshot(); } catch {} }
+  });
+}
+
+function restoreAutosaveSnapshot(index = 0) {
+  const entry = autosaveHistory()[index];
+  if (!entry) { showToast('error', 'Автоснимков пока нет.'); return false; }
+  try {
+    stashDraftBeforeReplace('возврат автоснимка');
+    setEditorData(JSON.parse(entry.draft), { markSynced: false, clearDraft: false });
+    showToast('success', `Восстановлен автоснимок от ${new Date(entry.at).toLocaleString('ru-RU')}.`);
+    return true;
+  } catch (error) {
+    showToast('error', `Автоснимок повреждён: ${error.message}`);
+    return false;
+  }
+}
+window.autosaveHistory = autosaveHistory;
+window.restoreAutosaveSnapshot = restoreAutosaveSnapshot;
+// Наружу — чтобы автоснимок можно было снять вручную и проверить работу.
+window.pushAutosaveSnapshot = pushAutosaveSnapshot;
+window.runAutosave = runAutosave;
+
+/* Список автоснимков — простым диалогом выбора: отдельный экран ради десяти
+   строк со временем не окупается, а выбрать нужный момент надо. */
+function openAutosaveHistory() {
+  const history = autosaveHistory();
+  if (!history.length) { showToast('info', 'Автоснимков пока нет — первый появится через две минуты работы.'); return; }
+  const lines = history.map((entry, index) => `${index + 1}. ${new Date(entry.at).toLocaleString('ru-RU')}`).join('\n');
+  const answer = window.prompt(`Автоснимки редактора:\n${lines}\n\nНомер снимка для восстановления (текущее состояние уйдёт в корзину черновиков):`, '1');
+  if (!answer) return;
+  const index = Number(answer) - 1;
+  if (!Number.isInteger(index) || index < 0 || index >= history.length) { showToast('error', 'Нет снимка с таким номером.'); return; }
+  restoreAutosaveSnapshot(index);
+}
+
+function refreshAutosaveHistoryButton() {
+  const button = document.getElementById('autosaveHistoryBtn');
+  if (!button) return;
+  const history = autosaveHistory();
+  button.hidden = !history.length;
+  if (history.length) button.title = `Последний снимок: ${new Date(history[0].at).toLocaleString('ru-RU')} · всего ${history.length}`;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('autosaveHistoryBtn')?.addEventListener('click', openAutosaveHistory);
+  refreshAutosaveHistoryButton();
+  const toggle = document.getElementById('autosaveVpsToggle');
+  if (toggle) {
+    toggle.checked = autosaveToVpsEnabled();
+    toggle.addEventListener('change', () => {
+      localStorage.setItem(AUTOSAVE_PREF_KEY, toggle.checked ? '1' : '0');
+      setAutosaveNote(toggle.checked
+        ? 'Автосохранение на VPS включено — правки уходят на сайт каждые 2 минуты'
+        : 'Автоснимки в браузере каждые 2 минуты · на сайт не уходят');
+    });
+  }
+  setAutosaveNote(autosaveToVpsEnabled()
+    ? 'Автосохранение на VPS включено — правки уходят на сайт каждые 2 минуты'
+    : 'Автоснимки в браузере каждые 2 минуты · на сайт не уходят');
+  startAutosave();
+});
+
 /* КОРЗИНА ЧЕРНОВИКА.
 
    Кнопка «Загрузить свежую версию VPS» стирала локальный черновик начисто:
@@ -19399,6 +19567,7 @@ const FORM_FIELD_TYPES = [
   ['single-choice', 'Один из списка'],
   ['multi-choice', 'Несколько из списка'],
   ['files', 'Файлы (фото, макеты, любые)'],
+  ['image', 'Картинка (иллюстрация, без ответа)'],
   ['consent', 'Согласие (галочка)'],
   ['section', 'Раздел (без ответа)'],
 ];
@@ -19657,8 +19826,20 @@ function renderFormEditor() {
         ${audit.warnings.map((line) => `<p>${escapeHtml(line)}</p>`).join('')}
       </div>`;
     })()}
+    <!-- Раньше кнопка была одна: «+ Вопрос» добавляла короткий текст, и тип
+         приходилось менять в раскрытой карточке. Пять частых видов ставятся
+         одним нажатием, остальные — через «ещё». -->
+    <div class="forms-quick-add">
+      <span>Добавить:</span>
+      <button class="btn btn-sm" type="button" data-add-field="short-text">Текст</button>
+      <button class="btn btn-sm" type="button" data-add-field="long-text">Развёрнутый</button>
+      <button class="btn btn-sm" type="button" data-add-field="single-choice">Список</button>
+      <button class="btn btn-sm" type="button" data-add-field="files">Файлы</button>
+      <button class="btn btn-sm" type="button" data-add-field="image">Картинку</button>
+      <button class="btn btn-sm" type="button" data-add-field="section">Раздел</button>
+    </div>
     <div class="forms-editor-actions">
-      <button class="btn" type="button" id="formAddField">+ Вопрос</button>
+      <button class="btn" type="button" id="formAddField">+ Ещё вопрос</button>
       <button class="btn btn-primary" type="button" id="formSave">Сохранить</button>
       ${saved ? '<button class="btn" type="button" id="formDuplicate">Дублировать анкету</button>' : ''}
       ${saved && form.status === 'open' ? '<button class="btn" type="button" id="formPreviewToggle">Предпросмотр</button>' : ''}
@@ -19779,7 +19960,7 @@ function renderFormFieldRow(field, index) {
             <select data-field-type="${index}">
               ${FORM_FIELD_TYPES.map(([value, label]) => `<option value="${value}"${field.type === value ? ' selected' : ''}>${label}</option>`).join('')}
             </select></label>
-          <label class="forms-field-required"><input type="checkbox" data-field-required="${index}"${field.required ? ' checked' : ''}> обязательный</label>
+          ${['section', 'image'].includes(field.type) ? '' : `<label class="forms-field-required"><input type="checkbox" data-field-required="${index}"${field.required ? ' checked' : ''}> обязательный</label>`}
         </div>
         <label class="field"><span>Пояснение под вопросом</span>
           <input type="text" data-field-hint="${index}" value="${escapeHtml(field.hint || '')}" placeholder="Необязательно"></label>
@@ -19809,6 +19990,13 @@ function renderFormFieldRow(field, index) {
         ${field.type === 'files' ? `<div class="forms-field-row">
           <label class="field"><span>Файлов не больше</span><input type="number" min="1" max="30" data-field-maxfiles="${index}" value="${field.maxFiles ?? ''}" placeholder="до 30"></label>
           <label class="field"><span>Какие форматы</span><input type="text" data-field-accept="${index}" value="${escapeHtml(field.accept || '')}" placeholder="image/*,.pdf — пусто: любые"></label>
+        </div>` : ''}
+        ${field.type === 'image' ? `<div class="field"><span>Картинка</span>
+          <div class="forms-image-row">
+            <input type="text" data-field-image="${index}" value="${escapeHtml(field.imageUrl || '')}" placeholder="https://… или загрузите файл">
+            <button class="btn btn-sm" type="button" data-field-image-upload="${index}">Загрузить</button>
+          </div>
+          ${field.imageUrl ? `<img class="forms-image-preview" src="${escapeHtml(field.imageUrl)}" alt="">` : '<small class="muted">Без картинки блок не покажется автору.</small>'}
         </div>` : ''}
         ${renderShowIfControls(field, index)}
         ${field.type === 'consent' ? `<label class="field"><span>Текст согласия</span>
@@ -19906,6 +20094,7 @@ function collectFormDraft() {
     max: numberOrNull(document.querySelector(`[data-field-max="${index}"]`)?.value, field.max),
     maxFiles: numberOrNull(document.querySelector(`[data-field-maxfiles="${index}"]`)?.value, field.maxFiles),
     accept: document.querySelector(`[data-field-accept="${index}"]`)?.value ?? field.accept ?? '',
+    imageUrl: document.querySelector(`[data-field-image="${index}"]`)?.value ?? field.imageUrl ?? '',
     showIf: (() => {
       const source = document.querySelector(`[data-showif-field="${index}"]`)?.value;
       const option = document.querySelector(`[data-showif-value="${index}"]`)?.value;
@@ -20059,6 +20248,56 @@ function bindFormEditor() {
     /* Варианты ответа правятся по одному: добавить, переставить, удалить.
        Строка «через запятую» ломалась на первом же варианте с запятой внутри
        («Фото, включая плёнку») и не давала менять порядок. */
+    const quickAdd = event.target.closest('[data-add-field]');
+    if (quickAdd) {
+      collectFormDraft();
+      const type = quickAdd.dataset.addField;
+      const preset = {
+        'short-text': { label: '' },
+        'long-text': { label: '' },
+        'single-choice': { label: '', options: ['Вариант 1', 'Вариант 2'] },
+        files: { label: 'Файлы' },
+        image: { label: '' },
+        section: { label: 'Новый раздел' },
+      }[type] || { label: '' };
+      formsDraft.fields.push({ id: '', type, required: false, options: [], ...preset });
+      formsDirty = true;
+      formsOpenFields.add(formsDraft.fields.length - 1);
+      renderFormEditor();
+      return;
+    }
+
+    const imageButton = event.target.closest('[data-field-image-upload]');
+    if (imageButton) {
+      /* Картинку грузим тем же путём, что и остальные изображения журнала:
+         одно хранилище, один способ сжатия, один адрес в контенте. */
+      const index = Number(imageButton.dataset.fieldImageUpload);
+      const picker = document.createElement('input');
+      picker.type = 'file';
+      picker.accept = 'image/*';
+      picker.addEventListener('change', async () => {
+        const file = picker.files?.[0];
+        if (!file) return;
+        imageButton.disabled = true;
+        const previous = imageButton.textContent;
+        imageButton.textContent = 'Загружаю…';
+        try {
+          const url = await uploadImageToVPS(file);
+          collectFormDraft();
+          formsDraft.fields[index].imageUrl = url;
+          formsDirty = true;
+          renderFormEditor();
+          showToast('success', 'Картинка загружена');
+        } catch (error) {
+          showToast('error', `Не загрузилось: ${error.message}`);
+          imageButton.disabled = false;
+          imageButton.textContent = previous;
+        }
+      });
+      picker.click();
+      return;
+    }
+
     const optionButton = event.target.closest('[data-option-add],[data-option-remove],[data-option-up],[data-option-down]');
     if (optionButton) {
       collectFormDraft();

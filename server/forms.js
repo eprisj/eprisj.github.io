@@ -58,6 +58,9 @@ const RATE_LIMIT_PER_HOUR = 10;
 const FIELD_TYPES = new Set([
   "short-text", "long-text", "email", "url", "number", "date",
   "single-choice", "multi-choice", "consent", "section", "files",
+  /* Картинка в анкете — не вопрос, а часть текста: пример макета, обложка
+     номера, схема проезда. Ответа не требует и в выгрузку не попадает. */
+  "image",
 ]);
 
 function ensureDirs() {
@@ -259,7 +262,8 @@ function normaliseField(raw, index) {
     placeholder: clean(raw?.placeholder, 160),
     // У раздела и согласия обязательность смысла не имеет — у первого нет
     // ответа, у второго она означает «нельзя отправить без галочки».
-    required: type === "section" ? false : Boolean(raw?.required),
+    required: (type === "section" || type === "image") ? false : Boolean(raw?.required),
+    imageUrl: type === "image" ? clean(raw?.imageUrl, 500) : "",
     options: (type === "single-choice" || type === "multi-choice") ? options : [],
     /* Рамки ответа. Пустое значение означает «без ограничения» — это не то же
        самое, что ноль, поэтому null, а не 0. */
@@ -346,7 +350,7 @@ function validateAnswers(form, rawAnswers) {
   const answers = {};
   const errors = [];
   for (const field of form.fields) {
-    if (field.type === "section") continue;
+    if (field.type === "section" || field.type === "image") continue;
     if (!fieldVisible(field, rawAnswers)) { answers[field.id] = ""; continue; }
     const raw = rawAnswers?.[field.id];
     let value;
@@ -419,7 +423,7 @@ function csvEscape(value) {
 }
 
 function responsesCsv(form, responses) {
-  const columns = form.fields.filter((field) => field.type !== "section");
+  const columns = form.fields.filter((field) => field.type !== "section" && field.type !== "image");
   const header = ["submittedAt", "invite", ...columns.map((field) => field.label)];
   const rows = responses.map((response) => [
     response.submittedAt,
