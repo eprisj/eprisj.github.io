@@ -34,7 +34,9 @@ function setCors(res, origin) {
   const allow = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
   res.setHeader("Access-Control-Allow-Origin", allow);
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, X-Admin-Password");
+  // X-File-Name обязателен в списке: имя файла едет заголовком, и без него
+  // предварительный запрос браузера отклоняет всю загрузку.
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, X-Admin-Password, X-File-Name");
   res.setHeader("Vary", "Origin");
 }
 
