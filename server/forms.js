@@ -259,7 +259,10 @@ function normaliseField(raw, index) {
     type,
     label: clean(raw?.label, 300) || `Вопрос ${index + 1}`,
     hint: clean(raw?.hint, 400),
-    placeholder: clean(raw?.placeholder, 160),
+    /* У согласия в подписи стоит не подсказка, а сам текст разрешения: это
+       юридическая формулировка, и обрезать её на ста шестидесяти знаках
+       значит опубликовать половину условия. */
+    placeholder: clean(raw?.placeholder, type === "consent" ? 1500 : 160),
     // У раздела и согласия обязательность смысла не имеет — у первого нет
     // ответа, у второго она означает «нельзя отправить без галочки».
     required: (type === "section" || type === "image") ? false : Boolean(raw?.required),
@@ -304,8 +307,52 @@ function normaliseForm(raw, existing = null) {
       : (existing?.maxResponses || 0),
     fields,
     invites: Array.isArray(existing?.invites) ? existing.invites : [],
+    // По умолчанию блок поддержки показывается везде; выключается осознанно.
+    supportNote: raw?.supportNote === false ? false : (existing?.supportNote === false ? false : true),
     createdAt: existing?.createdAt || nowIso(),
     updatedAt: nowIso(),
+  };
+}
+
+
+/* ПОДДЕРЖКА ПРОЕКТА, ОДИН РАЗ И ВО ВСЕХ АНКЕТАХ.
+ *
+ * Публикация в журнале бесплатна, и это важно сказать вслух: человек,
+ * заполняющий анкету, обычно не знает, попросят ли с него денег, и на всякий
+ * случай ждёт подвоха. Строчка про бесплатность снимает этот вопрос сразу.
+ *
+ * Реквизиты идут следом и намеренно тихо: мелким шрифтом, под чертой, после
+ * всех вопросов. Это приглашение, а не условие, поэтому блок не мигает, ничего
+ * не требует и не мешает отправить анкету.
+ *
+ * Живёт здесь, а не в тексте каждой анкеты: реквизиты меняются редко, но
+ * менять их в десяти местах никто не станет, и половина форм останется со
+ * старыми. Отключается для отдельной анкеты полем supportNote: false.       */
+const SUPPORT_NOTE = {
+  free: {
+    EN: "Publication in EPRIS Journal is free. We never charge authors or designers for being published.",
+    RU: "Публикация в EPRIS Journal бесплатна. Мы никогда не берём денег с авторов и дизайнеров за публикацию.",
+    UA: "Публікація в EPRIS Journal безкоштовна. Ми ніколи не беремо грошей з авторів і дизайнерів за публікацію.",
+  },
+  invite: {
+    EN: "If you would like to support the journal, it helps us keep it independent:",
+    RU: "Если захотите поддержать журнал, это помогает сохранять его независимым:",
+    UA: "Якщо захочете підтримати журнал, це допомагає зберігати його незалежним:",
+  },
+  methods: [
+    { label: "PayPal", value: "munister@outlook.com" },
+    { label: "Card", value: "4149 5100 2837 6350", note: "MUNISTER VIACHESLAV" },
+    { label: "IBAN", value: "UA733003350000002620715221312" },
+  ],
+};
+
+function supportNoteFor(language) {
+  const lang = String(language || "EN").toUpperCase();
+  const pick = (dict) => dict[lang] || dict.EN;
+  return {
+    free: pick(SUPPORT_NOTE.free),
+    invite: pick(SUPPORT_NOTE.invite),
+    methods: SUPPORT_NOTE.methods,
   };
 }
 
@@ -317,6 +364,7 @@ function publicForm(form) {
     thankYou: form.thankYou, language: form.language, status: form.status,
     access: form.access, fields: form.fields,
     closesAt: form.closesAt || "", maxResponses: form.maxResponses || 0,
+    support: form.supportNote === false ? null : supportNoteFor(form.language),
   };
 }
 
@@ -442,6 +490,6 @@ module.exports = {
   ensureDirs, nowIso, newId, clean, cleanMultiline, slugify,
   formPath, responsesPath, readJson, writeJsonAtomic,
   listForms, findFormBySlug, readResponses, writeResponses,
-  normaliseForm, publicForm, validateAnswers, fieldVisible, formClosedReason,
+  normaliseForm, publicForm, validateAnswers, fieldVisible, formClosedReason, supportNoteFor,
   ipFingerprint, tooManyRecent, responsesCsv,
 };
