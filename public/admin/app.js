@@ -9216,6 +9216,9 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
       window._refreshHomepageFromVps?.({ silent: true });
     }, 50);
     if (btn.dataset.tab === 'manifest') setTimeout(() => window._renderManifestTab && window._renderManifestTab(), 50);
+    // Анкеты живут в своей службе, поэтому список тянется при открытии вкладки,
+    // а не вместе с контентом сайта.
+    if (btn.dataset.tab === 'forms') setTimeout(() => window._loadFormsTab && window._loadFormsTab(), 50);
     if (btn.dataset.tab === 'authors') setTimeout(() => window._renderAuthorsTab && window._renderAuthorsTab(), 50);
     if (btn.dataset.tab === 'history') setTimeout(refreshVersionHistory, 50);
     if (btn.dataset.tab === 'order') setTimeout(() => window._renderArticleOrderTab && window._renderArticleOrderTab(), 50);
@@ -19282,3 +19285,341 @@ document.addEventListener('click', (event) => {
 
   window._renderArticleOrderTab = () => { load(); loadHomeControls(); syncBulkBar(); };
 })();
+
+/* ═══ АНКЕТЫ АВТОРОВ ═══════════════════════════════════════════════════════
+
+   Конструктор вопросов, ссылка автору и его ответы — в одном месте, рядом с
+   материалом, к которому анкета относится. Раньше редакция для этого уходила
+   в Google Forms: вопросы там, ответы там, а имя и почта автора — на чужом
+   сервере под чужой политикой хранения.
+
+   Служба анкет живёт отдельным процессом (api.eprisjournal.com/forms) и не
+   зависит от выката сайта: приём ответа не должен падать оттого, что кто-то
+   правит статью.                                                            */
+const FORMS_API = 'https://api.eprisjournal.com/forms';
+const FORM_FIELD_TYPES = [
+  ['short-text', 'Короткий ответ'],
+  ['long-text', 'Развёрнутый ответ'],
+  ['email', 'Почта'],
+  ['url', 'Ссылка'],
+  ['number', 'Число'],
+  ['date', 'Дата'],
+  ['single-choice', 'Один из списка'],
+  ['multi-choice', 'Несколько из списка'],
+  ['consent', 'Согласие (галочка)'],
+  ['section', 'Раздел (без ответа)'],
+];
+
+let formsCache = [];
+let formsDraft = null;      // анкета, открытая в редакторе
+let formsResponses = null;  // ответы открытой анкеты, если их запросили
+
+async function formsFetch(path, options = {}) {
+  const response = await fetch(`${FORMS_API}${path}`, {
+    ...options,
+    headers: { 'Content-Type': 'application/json', 'X-Admin-Password': getAdminPassword(), ...(options.headers || {}) },
+  });
+  const text = await response.text();
+  let data = null;
+  try { data = text ? JSON.parse(text) : null; } catch { data = null; }
+  if (!response.ok) throw new Error(data?.error || `HTTP ${response.status}`);
+  return data;
+}
+
+function formPublicUrl(form, token) {
+  const base = `https://eprisjournal.com/form/${form.slug}`;
+  return token ? `${base}?t=${token}` : base;
+}
+
+async function loadForms(selectId) {
+  const list = document.getElementById('formsList');
+  if (!list) return;
+  try {
+    const data = await formsFetch('/list');
+    formsCache = Array.isArray(data?.forms) ? data.forms : [];
+  } catch (error) {
+    list.innerHTML = `<p class="muted">Не удалось загрузить: ${escapeHtml(error.message)}</p>`;
+    return;
+  }
+  renderFormsList();
+  if (selectId) openFormEditor(selectId);
+}
+
+function renderFormsList() {
+  const list = document.getElementById('formsList');
+  if (!list) return;
+  if (!formsCache.length) {
+    list.innerHTML = '<p class="muted">Пока ни одной анкеты. Нажмите «Новая анкета».</p>';
+    return;
+  }
+  const statusLabel = { draft: 'черновик', open: 'открыта', closed: 'закрыта' };
+  list.innerHTML = formsCache.map((form) => `
+    <button type="button" class="forms-list-item${formsDraft && formsDraft.id === form.id ? ' is-active' : ''}" data-form-open="${escapeHtml(form.id)}">
+      <strong>${escapeHtml(form.title)}</strong>
+      <span class="forms-list-meta">${escapeHtml(statusLabel[form.status] || form.status)} · ${form.responses} ответ(ов)${form.access === 'invite' ? ` · ${form.invites} приглашений` : ''}</span>
+    </button>`).join('');
+}
+
+function blankForm() {
+  return {
+    id: '', slug: '', title: 'Анкета автора', description: '', thankYou: 'Спасибо — ответы у редакции.',
+    language: 'EN', status: 'draft', access: 'link',
+    fields: [
+      { id: '', type: 'short-text', label: 'Имя и фамилия', required: true, options: [] },
+      { id: '', type: 'email', label: 'Почта', required: true, options: [] },
+    ],
+  };
+}
+
+async function openFormEditor(id) {
+  if (id) {
+    try {
+      const data = await formsFetch(`/${encodeURIComponent(id)}/responses`);
+      formsDraft = JSON.parse(JSON.stringify(data.form));
+      formsResponses = Array.isArray(data.responses) ? data.responses : [];
+    } catch (error) {
+      showToast('error', `Не удалось открыть анкету: ${error.message}`);
+      return;
+    }
+  } else {
+    formsDraft = blankForm();
+    formsResponses = [];
+  }
+  renderFormsList();
+  renderFormEditor();
+}
+
+function renderFormEditor() {
+  const host = document.getElementById('formsEditor');
+  if (!host) return;
+  if (!formsDraft) {
+    host.innerHTML = '<p class="muted">Выберите анкету слева или создайте новую.</p>';
+    return;
+  }
+  const form = formsDraft;
+  const saved = Boolean(form.id);
+  host.innerHTML = `
+    <div class="forms-editor-head">
+      <label class="field"><span>Название</span><input id="formTitle" type="text" value="${escapeHtml(form.title)}"></label>
+      <div class="forms-editor-row">
+        <label class="field"><span>Статус</span><select id="formStatus">
+          <option value="draft"${form.status === 'draft' ? ' selected' : ''}>Черновик</option>
+          <option value="open"${form.status === 'open' ? ' selected' : ''}>Открыта</option>
+          <option value="closed"${form.status === 'closed' ? ' selected' : ''}>Закрыта</option>
+        </select></label>
+        <label class="field"><span>Доступ</span><select id="formAccess">
+          <option value="link"${form.access === 'link' ? ' selected' : ''}>По ссылке</option>
+          <option value="invite"${form.access === 'invite' ? ' selected' : ''}>По приглашению</option>
+        </select></label>
+        <label class="field"><span>Язык</span><select id="formLanguage">
+          ${['EN', 'RU', 'UA'].map((lang) => `<option value="${lang}"${form.language === lang ? ' selected' : ''}>${lang}</option>`).join('')}
+        </select></label>
+      </div>
+      <label class="field"><span>Вступление</span><textarea id="formDescription" rows="2">${escapeHtml(form.description || '')}</textarea></label>
+      <label class="field"><span>Текст после отправки</span><textarea id="formThankYou" rows="2">${escapeHtml(form.thankYou || '')}</textarea></label>
+    </div>
+
+    <div class="forms-fields" id="formFields">
+      ${form.fields.map((field, index) => renderFormFieldRow(field, index)).join('') || '<p class="muted">Добавьте первый вопрос.</p>'}
+    </div>
+    <div class="forms-editor-actions">
+      <button class="btn" type="button" id="formAddField">+ Вопрос</button>
+      <button class="btn btn-primary" type="button" id="formSave">Сохранить</button>
+      ${saved ? `<a class="btn" href="${escapeHtml(formPublicUrl(form))}" target="_blank" rel="noopener">Открыть анкету</a>` : ''}
+    </div>
+
+    ${saved ? `
+    <div class="forms-share">
+      <p class="panel-kicker">ССЫЛКА ДЛЯ АВТОРА</p>
+      ${form.access === 'invite'
+        ? `<p class="muted">Анкета по приглашению: у каждого автора своя ссылка, и ответ подписан его именем.</p>
+           <div class="forms-invite-new"><input id="formInviteLabel" type="text" placeholder="Имя автора"><button class="btn" type="button" id="formInviteAdd">Создать ссылку</button></div>
+           <div id="formInvites"></div>`
+        : `<code class="forms-link">${escapeHtml(formPublicUrl(form))}</code>`}
+    </div>
+
+    <div class="forms-responses">
+      <div class="panel-head">
+        <div><p class="panel-kicker">ОТВЕТЫ · ${formsResponses.length}</p></div>
+        <div class="panel-actions">
+          <button class="btn" type="button" id="formExportCsv">Скачать CSV</button>
+        </div>
+      </div>
+      ${renderFormResponses(form, formsResponses)}
+    </div>` : ''}
+  `;
+  bindFormEditor();
+  if (saved && form.access === 'invite') renderFormInvites();
+}
+
+function renderFormFieldRow(field, index) {
+  const isChoice = field.type === 'single-choice' || field.type === 'multi-choice';
+  return `
+    <div class="forms-field" data-field-index="${index}">
+      <div class="forms-field-head">
+        <span class="forms-field-index">${String(index + 1).padStart(2, '0')}</span>
+        <input type="text" data-field-label="${index}" value="${escapeHtml(field.label || '')}" placeholder="Текст вопроса">
+        <select data-field-type="${index}">
+          ${FORM_FIELD_TYPES.map(([value, label]) => `<option value="${value}"${field.type === value ? ' selected' : ''}>${label}</option>`).join('')}
+        </select>
+        <label class="forms-field-required"><input type="checkbox" data-field-required="${index}"${field.required ? ' checked' : ''}> обязательный</label>
+        <button class="btn btn-sm" type="button" data-field-up="${index}" ${index === 0 ? 'disabled' : ''}>↑</button>
+        <button class="btn btn-sm" type="button" data-field-down="${index}">↓</button>
+        <button class="btn btn-sm btn-danger" type="button" data-field-remove="${index}">×</button>
+      </div>
+      <input class="forms-field-hint" type="text" data-field-hint="${index}" value="${escapeHtml(field.hint || '')}" placeholder="Пояснение под вопросом (необязательно)">
+      ${isChoice ? `<input class="forms-field-options" type="text" data-field-options="${index}" value="${escapeHtml((field.options || []).join(', '))}" placeholder="Варианты через запятую">` : ''}
+    </div>`;
+}
+
+function renderFormResponses(form, responses) {
+  if (!responses.length) return '<p class="muted">Ответов пока нет.</p>';
+  const columns = form.fields.filter((field) => field.type !== 'section');
+  return `<div class="forms-responses-list">${responses.slice().reverse().map((response) => `
+    <article class="forms-response">
+      <header>
+        <span>${escapeHtml(new Date(response.submittedAt).toLocaleString('ru-RU'))}</span>
+        ${response.inviteLabel ? `<strong>${escapeHtml(response.inviteLabel)}</strong>` : ''}
+        <button class="btn btn-sm btn-danger" type="button" data-response-delete="${escapeHtml(response.id)}">Удалить</button>
+      </header>
+      <dl>${columns.map((field) => {
+        const value = response.answers?.[field.id];
+        const text = Array.isArray(value) ? value.join(', ') : (value === true ? 'да' : value === false ? 'нет' : String(value ?? ''));
+        return text ? `<div><dt>${escapeHtml(field.label)}</dt><dd>${escapeHtml(text)}</dd></div>` : '';
+      }).join('')}</dl>
+    </article>`).join('')}</div>`;
+}
+
+async function renderFormInvites() {
+  const host = document.getElementById('formInvites');
+  if (!host || !formsDraft?.id) return;
+  try {
+    const data = await formsFetch(`/${encodeURIComponent(formsDraft.id)}/invites`);
+    const invites = Array.isArray(data?.invites) ? data.invites : [];
+    host.innerHTML = invites.length ? invites.map((invite) => `
+      <div class="forms-invite${invite.revoked ? ' is-revoked' : ''}">
+        <strong>${escapeHtml(invite.label)}</strong>
+        <code class="forms-link">${escapeHtml(formPublicUrl(formsDraft, invite.token))}</code>
+        <span class="muted">${invite.usedAt ? `ответил ${escapeHtml(new Date(invite.usedAt).toLocaleDateString('ru-RU'))}` : 'ещё не отвечал'}</span>
+        ${invite.revoked ? '<span class="muted">отозвано</span>' : `<button class="btn btn-sm" type="button" data-invite-revoke="${escapeHtml(invite.token)}">Отозвать</button>`}
+      </div>`).join('') : '<p class="muted">Ссылок пока нет.</p>';
+  } catch (error) {
+    host.innerHTML = `<p class="muted">${escapeHtml(error.message)}</p>`;
+  }
+}
+
+function collectFormDraft() {
+  const value = (id) => document.getElementById(id)?.value || '';
+  formsDraft.title = value('formTitle');
+  formsDraft.status = value('formStatus');
+  formsDraft.access = value('formAccess');
+  formsDraft.language = value('formLanguage');
+  formsDraft.description = value('formDescription');
+  formsDraft.thankYou = value('formThankYou');
+  formsDraft.fields = formsDraft.fields.map((field, index) => ({
+    ...field,
+    label: document.querySelector(`[data-field-label="${index}"]`)?.value || field.label,
+    type: document.querySelector(`[data-field-type="${index}"]`)?.value || field.type,
+    hint: document.querySelector(`[data-field-hint="${index}"]`)?.value || '',
+    required: Boolean(document.querySelector(`[data-field-required="${index}"]`)?.checked),
+    options: (document.querySelector(`[data-field-options="${index}"]`)?.value || '')
+      .split(',').map((option) => option.trim()).filter(Boolean),
+  }));
+  return formsDraft;
+}
+
+function bindFormEditor() {
+  const host = document.getElementById('formsEditor');
+  if (!host) return;
+
+  host.querySelector('#formAddField')?.addEventListener('click', () => {
+    collectFormDraft();
+    formsDraft.fields.push({ id: '', type: 'short-text', label: '', required: false, options: [] });
+    renderFormEditor();
+  });
+
+  host.querySelector('#formSave')?.addEventListener('click', async () => {
+    const draft = collectFormDraft();
+    try {
+      const data = await formsFetch('/save', { method: 'POST', body: JSON.stringify(draft) });
+      showToast('success', 'Анкета сохранена');
+      await loadForms(data.form.id);
+    } catch (error) {
+      showToast('error', `Не сохранилось: ${error.message}`);
+    }
+  });
+
+  host.querySelector('#formExportCsv')?.addEventListener('click', async () => {
+    try {
+      const response = await fetch(`${FORMS_API}/${encodeURIComponent(formsDraft.id)}/responses?format=csv`, {
+        headers: { 'X-Admin-Password': getAdminPassword() },
+      });
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url; link.download = `${formsDraft.slug}-responses.csv`;
+      document.body.appendChild(link); link.click(); link.remove();
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      showToast('error', `Не выгрузилось: ${error.message}`);
+    }
+  });
+
+  host.querySelector('#formInviteAdd')?.addEventListener('click', async () => {
+    const label = document.getElementById('formInviteLabel')?.value.trim();
+    if (!label) { showToast('error', 'Укажите имя автора'); return; }
+    try {
+      await formsFetch(`/${encodeURIComponent(formsDraft.id)}/invites`, { method: 'POST', body: JSON.stringify({ label }) });
+      document.getElementById('formInviteLabel').value = '';
+      renderFormInvites();
+    } catch (error) {
+      showToast('error', `Не создалось: ${error.message}`);
+    }
+  });
+
+  host.addEventListener('click', async (event) => {
+    const target = event.target.closest('[data-field-remove],[data-field-up],[data-field-down],[data-response-delete],[data-invite-revoke]');
+    if (!target) return;
+    if (target.dataset.fieldRemove !== undefined) {
+      collectFormDraft();
+      formsDraft.fields.splice(Number(target.dataset.fieldRemove), 1);
+      renderFormEditor();
+      return;
+    }
+    if (target.dataset.fieldUp !== undefined || target.dataset.fieldDown !== undefined) {
+      collectFormDraft();
+      const index = Number(target.dataset.fieldUp ?? target.dataset.fieldDown);
+      const next = target.dataset.fieldUp !== undefined ? index - 1 : index + 1;
+      if (next < 0 || next >= formsDraft.fields.length) return;
+      const fields = formsDraft.fields;
+      [fields[index], fields[next]] = [fields[next], fields[index]];
+      renderFormEditor();
+      return;
+    }
+    if (target.dataset.responseDelete) {
+      if (!confirm('Удалить этот ответ? Восстановить будет нечем.')) return;
+      await formsFetch(`/${encodeURIComponent(formsDraft.id)}/responses/${encodeURIComponent(target.dataset.responseDelete)}`, { method: 'DELETE' });
+      openFormEditor(formsDraft.id);
+      return;
+    }
+    if (target.dataset.inviteRevoke) {
+      await formsFetch(`/${encodeURIComponent(formsDraft.id)}/invites/${encodeURIComponent(target.dataset.inviteRevoke)}`, { method: 'DELETE' });
+      renderFormInvites();
+    }
+  });
+
+  // Смена типа вопроса меняет набор полей строки (варианты появляются только
+  // у списков), поэтому строка перерисовывается сразу, а не после сохранения.
+  host.querySelectorAll('[data-field-type]').forEach((select) => {
+    select.addEventListener('change', () => { collectFormDraft(); renderFormEditor(); });
+  });
+}
+
+window._loadFormsTab = () => loadForms(formsDraft?.id);
+
+document.getElementById('formsNewBtn')?.addEventListener('click', () => openFormEditor(''));
+document.getElementById('formsReloadBtn')?.addEventListener('click', () => loadForms(formsDraft?.id));
+document.getElementById('formsList')?.addEventListener('click', (event) => {
+  const button = event.target.closest('[data-form-open]');
+  if (button) openFormEditor(button.dataset.formOpen);
+});
