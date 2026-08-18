@@ -25,6 +25,13 @@ type FormField = {
   placeholder?: string;
   required?: boolean;
   options?: string[];
+  minLength?: number | null;
+  maxLength?: number | null;
+  min?: number | null;
+  max?: number | null;
+  maxFiles?: number | null;
+  accept?: string;
+  showIf?: { fieldId: string; value: string } | null;
 };
 
 type PublicForm = {
@@ -37,6 +44,8 @@ type PublicForm = {
   status: string;
   access: string;
   fields: FormField[];
+  closesAt?: string;
+  maxResponses?: number;
 };
 
 type AnswerValue = string | string[] | boolean | UploadedFile[];
@@ -46,21 +55,21 @@ const COPY = {
         invite: 'This form is open by invitation. Use the personal link the editors sent you.',
         required: 'Please fill in the highlighted fields.', send: 'Send answers', sending: 'Sending…',
         sent: 'Thank you — your answers are with the editors.', error: 'Could not send the form. Try again in a minute.',
-        requiredMark: 'required', invitedAs: 'Answering as', progress: 'Filled in', thisRequired: 'This answer is required.', left: 'Left', dropHint: 'or drop them here',
+        requiredMark: 'required', invitedAs: 'Answering as', progress: 'Filled in', thisRequired: 'This answer is required.', left: 'Left', dropHint: 'or drop them here', filesFull: 'Maximum files attached:', minLength: 'at least', closedDeadline: 'The deadline for this form has passed.', closedLimit: 'This form has collected all the answers it needed.',
         attach: 'Attach files', uploading: 'Uploading…', remove: 'Remove',
         tooLarge: 'This file is too large.', uploadFailed: 'Upload failed — try again.', noSpace: 'The server is out of space. Tell the editors.' },
   RU: { loading: 'Загружаем анкету…', closed: 'Анкета закрыта.', missing: 'Анкета не найдена.',
         invite: 'Анкета открыта по приглашению. Откройте личную ссылку, которую прислала редакция.',
         required: 'Заполните отмеченные поля.', send: 'Отправить ответы', sending: 'Отправляем…',
         sent: 'Спасибо — ответы у редакции.', error: 'Не удалось отправить. Попробуйте через минуту.',
-        requiredMark: 'обязательно', invitedAs: 'Отвечает', progress: 'Заполнено', thisRequired: 'Без этого ответа нельзя отправить.', left: 'Осталось', dropHint: 'или перетащите их сюда',
+        requiredMark: 'обязательно', invitedAs: 'Отвечает', progress: 'Заполнено', thisRequired: 'Без этого ответа нельзя отправить.', left: 'Осталось', dropHint: 'или перетащите их сюда', filesFull: 'Больше файлов не нужно, максимум:', minLength: 'не меньше', closedDeadline: 'Срок подачи закончился.', closedLimit: 'Анкета собрала нужное число ответов.',
         attach: 'Прикрепить файлы', uploading: 'Загружаем…', remove: 'Убрать',
         tooLarge: 'Файл слишком большой.', uploadFailed: 'Не загрузилось — попробуйте ещё раз.', noSpace: 'На сервере кончилось место. Сообщите редакции.' },
   UA: { loading: 'Завантажуємо анкету…', closed: 'Анкету закрито.', missing: 'Анкету не знайдено.',
         invite: 'Анкета відкрита за запрошенням. Відкрийте особисте посилання від редакції.',
         required: 'Заповніть позначені поля.', send: 'Надіслати відповіді', sending: 'Надсилаємо…',
         sent: 'Дякуємо — відповіді у редакції.', error: 'Не вдалося надіслати. Спробуйте за хвилину.',
-        requiredMark: 'обовʼязково', invitedAs: 'Відповідає', progress: 'Заповнено', thisRequired: 'Без цієї відповіді не надіслати.', left: 'Залишилось', dropHint: 'або перетягніть їх сюди',
+        requiredMark: 'обовʼязково', invitedAs: 'Відповідає', progress: 'Заповнено', thisRequired: 'Без цієї відповіді не надіслати.', left: 'Залишилось', dropHint: 'або перетягніть їх сюди', filesFull: 'Більше файлів не потрібно, максимум:', minLength: 'не менше', closedDeadline: 'Строк подання завершився.', closedLimit: 'Анкета зібрала потрібну кількість відповідей.',
         attach: 'Прикріпити файли', uploading: 'Завантажуємо…', remove: 'Прибрати',
         tooLarge: 'Файл завеликий.', uploadFailed: 'Не завантажилось — спробуйте ще раз.', noSpace: 'На сервері скінчилось місце. Повідомте редакцію.' },
 } as const;
@@ -110,7 +119,14 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
         const data = await response.json().catch(() => null);
         if (cancelled) return;
         if (response.status === 404) { setState('missing'); return; }
-        if (response.status === 403) { setState(data?.error === 'invite required' ? 'invite' : 'closed'); return; }
+        if (response.status === 403) {
+          if (data?.error === 'invite required') setState('invite');
+          else {
+            setClosedReason(data?.error === 'deadline passed' ? 'deadline' : data?.error === 'response limit reached' ? 'limit' : '');
+            setState('closed');
+          }
+          return;
+        }
         if (!data?.ok || !data.form) { setState('missing'); return; }
         setForm(data.form);
         setInviteLabel(String(data.invite?.label || ''));
@@ -139,6 +155,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
   const [previews, setPreviews] = useState<Record<string, string>>({});
   const [uploading, setUploading] = useState<Record<string, boolean>>({});
   const [uploadError, setUploadError] = useState<Record<string, string>>({});
+  const [closedReason, setClosedReason] = useState('');
 
   /* Файл уходит на сервер сразу при выборе, а не вместе с анкетой.
      Так автор видит, что пятисотмегабайтный макет действительно загрузился,
@@ -212,11 +229,22 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
     try { localStorage.setItem(draftKey, JSON.stringify(answers)); } catch { /* нет места — не беда */ }
   }, [answers, draftKey, form, restored]);
 
+  /* Показывать ли вопрос при нынешних ответах. Скрытый не спрашивается и не
+     требуется — иначе анкета отказывалась бы отправляться из-за поля, которого
+     человек не видел. Правило то же, что на сервере. */
+  const isVisible = useCallback((field: FormField) => {
+    if (!field.showIf?.fieldId) return true;
+    const source = answers[field.showIf.fieldId];
+    if (Array.isArray(source)) return (source as string[]).includes(field.showIf.value);
+    if (typeof source === 'boolean') return source === (field.showIf.value === 'true');
+    return String(source ?? '') === field.showIf.value;
+  }, [answers]);
+
   /* Сколько обязательного осталось. Полоса вверху отвечает на единственный
      вопрос, который человек задаёт длинной анкете: «сколько ещё?» */
   const progress = useMemo(() => {
     if (!form) return { done: 0, total: 0 };
-    const required = form.fields.filter((field) => field.required && field.type !== 'section');
+    const required = form.fields.filter((field) => field.required && field.type !== 'section' && isVisible(field));
     const done = required.filter((field) => {
       const value = answers[field.id];
       if (field.type === 'multi-choice' || field.type === 'files') return Array.isArray(value) && value.length > 0;
@@ -224,7 +252,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
       return String(value ?? '').trim().length > 0;
     }).length;
     return { done, total: required.length };
-  }, [answers, form]);
+  }, [answers, form, isVisible]);
 
   const submit = useCallback(async (event: FormEvent) => {
     event.preventDefault();
@@ -235,7 +263,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
        обязательные поля» под кнопкой заставляет искать их глазами по всей
        странице, а на длинной анкете это и есть причина её бросить. */
     const missing = form.fields.filter((field) => {
-      if (!field.required || field.type === 'section') return false;
+      if (!field.required || field.type === 'section' || !isVisible(field)) return false;
       const value = answers[field.id];
       if (field.type === 'multi-choice' || field.type === 'files') return !Array.isArray(value) || !value.length;
       if (field.type === 'consent') return !value;
@@ -268,7 +296,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
       setError(t.error);
       setSending(false);
     }
-  }, [answers, draftKey, form, sending, t, token]);
+  }, [answers, draftKey, form, isVisible, sending, t, token]);
 
   /* Полоса набора — 640 пикселей: примерно семьдесят знаков в строке, то есть
      ширина, на которой длинный вопрос читается без возврата глазом. На
@@ -283,7 +311,10 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
       <Loader2 className="h-4 w-4 animate-spin" />{copyFor('EN').loading}</p>);
   }
   if (state === 'missing' || state === 'closed' || state === 'invite') {
-    const message = state === 'missing' ? t.missing : state === 'closed' ? t.closed : t.invite;
+    const message = state === 'missing' ? t.missing
+      : state === 'closed'
+        ? (closedReason === 'deadline' ? t.closedDeadline : closedReason === 'limit' ? t.closedLimit : t.closed)
+        : t.invite;
     return shell(
       <div className="border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-8">
         <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">EPRIS / form</p>
@@ -343,6 +374,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
               </div>
             );
           }
+          if (!isVisible(field)) return null;
           questionNumber += 1;
           const missing = missingFields.includes(field.id);
           const value = answers[field.id];
@@ -365,7 +397,8 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
                   {missing && <p className="mt-2 font-serif text-[14px] text-[#B3261E]">{t.thisRequired}</p>}
               <div className={`mt-3 ${missing ? 'rounded-[2px] ring-2 ring-[#B3261E]/35' : ''}`}>
                 {field.type === 'long-text' && (
-                  <textarea id={`input-${field.id}`} rows={5} className={`${inputClass} resize-none overflow-hidden`}
+                  <textarea id={`input-${field.id}`} rows={5} maxLength={field.maxLength || undefined}
+                    className={`${inputClass} resize-none overflow-hidden`}
                     placeholder={field.placeholder} value={String(value ?? '')}
                     /* Поле растёт под текст: полоса прокрутки внутри поля
                        прячет от автора начало собственного ответа. */
@@ -379,6 +412,13 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
                 {(field.type === 'short-text' || field.type === 'email' || field.type === 'url' || field.type === 'number' || field.type === 'date') && (
                   <input id={`input-${field.id}`} className={inputClass} placeholder={field.placeholder}
                     type={field.type === 'short-text' ? 'text' : field.type}
+                    maxLength={field.type === 'short-text' ? (field.maxLength || undefined) : undefined}
+                    min={field.type === 'number' && field.min != null ? field.min : undefined}
+                    max={field.type === 'number' && field.max != null ? field.max : undefined}
+                    /* Числовое поле на телефоне открывает цифровую клавиатуру,
+                       остальные — обычную: тип поля влияет на то, чем человек
+                       набирает ответ, а не только на проверку. */
+                    inputMode={field.type === 'number' ? 'decimal' : undefined}
                     value={String(value ?? '')} onChange={(e) => setAnswer(field.id, e.target.value)} />
                 )}
                 {field.type === 'single-choice' && (
@@ -408,11 +448,20 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
                     })}
                   </div>
                 )}
+                {/* Счётчик знаков показывается, только когда предел задан:
+                    иначе это шум под каждым полем. */}
+                {field.type === 'long-text' && (field.maxLength || field.minLength) ? (
+                  <p className="mt-1.5 text-right font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.45)]">
+                    {String(value ?? '').length}{field.maxLength ? ` / ${field.maxLength}` : ''}
+                    {field.minLength && String(value ?? '').length < field.minLength ? ` · ${t.minLength} ${field.minLength}` : ''}
+                  </p>
+                ) : null}
                 {field.type === 'files' && (() => {
                   const list = Array.isArray(value) ? (value as UploadedFile[]) : [];
                   const busy = uploading[field.id];
                   const failed = uploadError[field.id];
                   const dragging = dragField === field.id;
+                  const full = Boolean(field.maxFiles && list.length >= field.maxFiles);
                   return (
                     <div>
                       {/* Область для перетаскивания, она же кнопка выбора.
@@ -435,8 +484,10 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
                         <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-accent)]">
                           {busy ? t.uploading : t.attach}
                         </span>
-                        <span className="font-serif text-[13px] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{t.dropHint}</span>
-                        <input type="file" multiple className="hidden" disabled={busy}
+                        <span className="font-serif text-[13px] text-[rgb(var(--c-accent-rgb)_/_0.55)]">
+                          {full ? `${t.filesFull} ${field.maxFiles}` : t.dropHint}
+                        </span>
+                        <input type="file" multiple className="hidden" disabled={busy || full} accept={field.accept || undefined}
                           onChange={(e) => { if (e.target.files) uploadFiles(field, e.target.files); e.target.value = ''; }} />
                       </label>
                       {failed && <p className="mt-2 font-serif text-[14px] text-[#B3261E]">{failed}</p>}
