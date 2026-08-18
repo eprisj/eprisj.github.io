@@ -306,9 +306,10 @@ body {
 }
 .tab-btn[hidden] { display: none; }
 .sb-ico {
-  width: 16px; height: 16px;
+  width: 17px; height: 17px;
   flex-shrink: 0;
-  opacity: .55;
+  opacity: .78;
+  stroke-width: 1.8;
   transition: opacity .13s ease, color .13s ease;
 }
 .sb-label {
@@ -340,7 +341,7 @@ body {
 }
 
 .tab-btn:hover { background: rgba(255,255,255,.055); color: var(--sidebar-text-hover); }
-.tab-btn:hover .sb-ico { opacity: .8; }
+.tab-btn:hover .sb-ico { opacity: 1; }
 .tab-btn:focus-visible {
   outline: 2px solid rgba(173,173,173,.6);
   outline-offset: -2px;
@@ -350,7 +351,7 @@ body {
   color: var(--sidebar-text-active);
   font-weight: 500;
 }
-.tab-btn.active .sb-ico { opacity: 1; color: var(--sidebar-accent); }
+.tab-btn.active .sb-ico { opacity: 1; color: #fff; }
 /* Активная метка — тонкая планка слева, привязанная к самому пункту. */
 .sb-item.is-active::before {
   content: '';
@@ -621,8 +622,21 @@ body {
 .sidebar.is-collapsed .sb-group + .sb-group { border-top: 1px solid rgba(255,255,255,.09); padding-top: 4px; }
 .sidebar.is-collapsed .tab-btn {
   justify-content: center;
-  padding: 9px 0;
+  padding: 10px 0;
 }
+.sidebar.is-collapsed .sb-ico {
+  width: 19px; height: 19px;
+  opacity: .9;
+  stroke-width: 1.9;
+}
+.sidebar.is-collapsed .tab-btn:hover .sb-ico { opacity: 1; }
+.sidebar.is-collapsed .tab-btn.active {
+  background: rgba(255,255,255,.16);
+}
+.sidebar.is-collapsed .tab-btn.active .sb-ico { opacity: 1; color: #fff; }
+.sidebar.is-collapsed .sb-mini svg,
+.sidebar.is-collapsed .sb-save svg { width: 15px; height: 15px; opacity: .95; }
+.sidebar.is-collapsed .sb-collapse { color: rgba(255,255,255,.6); }
 .sidebar.is-collapsed .sb-item.is-active::before { left: -6px; }
 .sidebar.is-collapsed .sb-foot { padding: 8px 6px 10px; gap: 5px; }
 .sidebar.is-collapsed .sb-save { padding: 9px 0; }
@@ -870,6 +884,63 @@ body {
 @media (max-width: 720px) {
   .hp-step { flex-wrap: wrap; }
   .hp-step .btn, .hp-step-count { margin-left: 36px; }
+}
+
+/* ── Служебная полоса и настройки «Главной» ──────────────────
+   Действия отделены от входа в настройки: слева то, что делают
+   с выпуском прямо сейчас, справа — переключатель всех
+   настроек главной, который раньше был неотличим от соседей. */
+.hp-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.hp-tools-group { display: flex; flex-wrap: wrap; gap: 6px; }
+.hp-tools-settings {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border: 1px solid var(--line-strong);
+  background: var(--bg-card);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: .72rem;
+  cursor: pointer;
+  transition: background .13s ease, border-color .13s ease;
+}
+.hp-tools-settings svg { width: 14px; height: 14px; }
+.hp-tools-settings:hover { background: var(--bg-soft); border-color: var(--accent); }
+.hp-tools-settings[aria-expanded="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg-card);
+}
+
+/* Настройки разбиты на смысловые блоки: «что видит читатель»
+   и «как ведёт себя панель». Заголовок блока отвечает на вопрос
+   «зачем мне сюда смотреть» до того, как читать подписи полей. */
+.hp-settings-block + .hp-settings-block {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.hp-settings-title {
+  margin: 0 0 10px;
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+@media (max-width: 720px) {
+  .hp-tools { align-items: stretch; flex-direction: column; }
+  .hp-tools-settings { justify-content: center; }
 }
 
 /* Scrollable main content */
@@ -7267,36 +7338,6 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .homepage-admin-layout.is-simple .homepage-admin-hero .card-desc {
   max-width: 54ch;
   margin-bottom: 0;
-}
-.homepage-secondary-tools {
-  position: relative;
-  padding: 0 2px;
-  color: var(--text-muted);
-  font-size: .7rem;
-}
-.homepage-secondary-tools > summary {
-  display: inline-flex;
-  align-items: center;
-  min-height: 34px;
-  cursor: pointer;
-  color: var(--text-muted);
-  font: 700 .62rem var(--font-mono);
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-.homepage-secondary-tools > summary:hover { color: var(--accent); }
-.homepage-secondary-tools-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 4px 0 8px;
-}
-.homepage-secondary-tools p {
-  max-width: 76ch;
-  margin: 0;
-  color: var(--text-muted);
-  font-size: .68rem;
-  line-height: 1.5;
 }
 .homepage-manual-copy {
   margin-top: 18px;
