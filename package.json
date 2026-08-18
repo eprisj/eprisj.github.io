@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/generate-og-pages.mjs",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node --test server/forms.test.js server/data.test.mjs"
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.5.1",
