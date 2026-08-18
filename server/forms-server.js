@@ -15,6 +15,7 @@ const fs = require("fs");
 const path = require("path");
 const { pipeline } = require("stream/promises");
 const F = require("./forms.js");
+const { buildZip } = require("./zip.js");
 
 const PORT = Number(process.env.PORT || 9878);
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "";
@@ -292,6 +293,71 @@ const server = http.createServer(async (req, res) => {
         "Cache-Control": "no-store",
       });
       fs.createReadStream(file).pipe(res);
+      return true;
+    }
+
+    /* АРХИВ ФОТОГРАФИЙ ОДНИМ ФАЙЛОМ.
+     *
+     * Двадцать снимков — это двадцать нажатий «скачать» и двадцать файлов в
+     * загрузках без всякого порядка. Отдаём один zip: либо весь по анкете,
+     * либо по одному ответу (?response=ID), с именами вида
+     * «02 Abbie Downey/фасад.jpg», чтобы в архиве было видно, кто что прислал.
+     *
+     * Поддерживаем Range: архив на сотни мегабайт по мобильной связи иначе
+     * приходится качать заново после каждого обрыва. */
+    if (req.method === "GET" && parts[1] === "files.zip") {
+      const responses = F.readResponses(form.id);
+      const wanted = F.clean(url.searchParams.get("response"), 40);
+      const chosen = wanted ? responses.filter((item) => item.id === wanted) : responses;
+
+      const entries = [];
+      chosen.forEach((response, index) => {
+        const who = F.clean(response.inviteLabel, 60) || `ответ ${index + 1}`;
+        const folder = `${String(index + 1).padStart(2, "0")} ${who}`;
+        for (const value of Object.values(response.answers || {})) {
+          if (!Array.isArray(value)) continue;
+          for (const item of value) {
+            if (!item || !item.fileId) continue;
+            const file = F.uploadPath(form.id, item.fileId);
+            if (!fs.existsSync(file)) continue;
+            entries.push({ name: `${folder}/${item.name || item.fileId}`, path: file, date: new Date(response.submittedAt) });
+          }
+        }
+      });
+
+      if (!entries.length) return send(res, 404, { ok: false, error: "no files" });
+
+      const zip = buildZip(entries);
+      const filename = `${form.slug}${wanted ? "-" + wanted : ""}-files.zip`;
+      const range = String(req.headers.range || "");
+      const match = range.match(/^bytes=(\d*)-(\d*)$/);
+      if (match) {
+        const start = match[1] ? Number(match[1]) : 0;
+        const end = match[2] ? Number(match[2]) : zip.length - 1;
+        if (start >= zip.length || end >= zip.length || start > end) {
+          res.writeHead(416, { "Content-Range": `bytes */${zip.length}` });
+          res.end();
+          return true;
+        }
+        res.writeHead(206, {
+          "Content-Type": "application/zip",
+          "Content-Length": end - start + 1,
+          "Content-Range": `bytes ${start}-${end}/${zip.length}`,
+          "Accept-Ranges": "bytes",
+          "Content-Disposition": `attachment; filename*=UTF-8''${encodeURIComponent(filename)}`,
+        });
+        res.end(zip.subarray(start, end + 1));
+        return true;
+      }
+
+      res.writeHead(200, {
+        "Content-Type": "application/zip",
+        "Content-Length": zip.length,
+        "Accept-Ranges": "bytes",
+        "Content-Disposition": `attachment; filename*=UTF-8''${encodeURIComponent(filename)}`,
+        "Cache-Control": "no-store",
+      });
+      res.end(zip);
       return true;
     }
 
