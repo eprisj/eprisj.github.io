@@ -232,9 +232,17 @@ const server = http.createServer(async (req, res) => {
       const existing = body?.id ? F.readJson(F.formPath(F.clean(body.id, 40)), null) : null;
       const form = F.normaliseForm(body, existing);
       /* Один slug — одна анкета. Иначе публичная ссылка вела бы то в одну,
-         то в другую, в зависимости от порядка файлов на диске. */
-      const clash = F.listForms().find((item) => item.slug === form.slug && item.id !== form.id);
-      if (clash) form.slug = `${form.slug}-${form.id.slice(0, 4)}`;
+         то в другую, в зависимости от порядка файлов на диске.
+         Занятый адрес получает номер («author-questionnaire-2»), а не хвост
+         из шестнадцатеричного мусора: ссылку диктуют по телефону и пишут в
+         письме, и «-10e5» в ней выглядит поломкой. */
+      const taken = new Set(F.listForms().filter((item) => item.id !== form.id).map((item) => item.slug));
+      if (taken.has(form.slug)) {
+        const base = form.slug;
+        let n = 2;
+        while (taken.has(`${base}-${n}`) && n < 50) n += 1;
+        form.slug = `${base}-${n}`;
+      }
       await F.writeJsonAtomic(F.formPath(form.id), form);
       return send(res, 200, { ok: true, form: F.publicForm(form) });
     }
