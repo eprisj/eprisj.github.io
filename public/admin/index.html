@@ -16,7 +16,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=5.11" />
+    <link rel="stylesheet" href="./styles.css?v=5.20" />
     <link rel="stylesheet" href="./brandbook.css?v=3" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -78,23 +78,14 @@
         </button>
 
         <a class="sb-brand" href="../" target="_blank" rel="noreferrer" aria-label="Открыть сайт EPRIS Journal">
-          <span class="sb-brand-mark" aria-hidden="true">E</span>
-          <span class="sb-brand-copy">
-            <strong>EPRIS</strong>
-            <small>Journal · редакция</small>
-          </span>
+          <span class="sb-wordmark">EPRIS</span>
+          <span class="sb-wordmark-short" aria-hidden="true">E</span>
+          <span class="sb-edition">Journal · редакция</span>
           <svg class="sb-brand-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
         </a>
 
-        <div class="sb-search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
-          <input id="sidebarNavSearch" type="search" placeholder="Поиск раздела" autocomplete="off" aria-label="Поиск раздела" />
-          <kbd>/</kbd>
-        </div>
 
         <nav class="sb-nav" id="sbNav" aria-label="Разделы редакции">
-          <p id="sidebarNavEmpty" class="sb-empty" hidden>Раздел не найден</p>
-
           <section class="sb-group sb-group--pinned" data-group="pinned">
             <button class="sb-group-head" type="button" data-toggle-group="pinned" aria-expanded="true">
               <svg class="sb-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
@@ -473,14 +464,40 @@
               <div class="card card-highlight homepage-admin-hero">
                 <div>
                   <span class="homepage-admin-kicker">Главная страница</span>
-                  <h2 class="card-title">Галерея EPRIS</h2>
-                  <p class="card-desc">Работайте выпусками: читатели всегда видят только текущую пятёрку. Новый выпуск готовится отдельно и не меняет сайт до публикации.</p>
+                  <h2 class="card-title">Подборка недели</h2>
+                  <p class="card-desc">Читатели видят пять фото. Чтобы их обновить, соберите новый выпуск: он готовится отдельно и попадёт на сайт только после публикации.</p>
                 </div>
-                <div class="homepage-admin-actions">
-                  <button id="homepageAddBtn" class="btn btn-primary" type="button"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span class="btn-label">Создать новый выпуск</span></button>
-                  <button id="homepagePublishBtn" class="btn btn-primary" type="button">Опубликовать выпуск</button>
-                  <span id="homepagePublishFeedback" class="homepage-publish-feedback" data-state="ready" role="status" aria-live="polite">Готово к публикации</span>
-                </div>
+                <!-- Раньше здесь стояли две одинаково выглядящие primary-кнопки,
+                     а порядок действий объяснялся текстом в трёх других местах
+                     страницы. Теперь порядок и есть интерфейс: шаги показывают,
+                     что уже сделано, что делать сейчас и почему публикация
+                     пока недоступна. -->
+                <ol class="hp-steps" id="homepageSteps">
+                  <li class="hp-step" data-step="create">
+                    <b class="hp-step-num">1</b>
+                    <div class="hp-step-copy">
+                      <span>Создать выпуск</span>
+                      <small id="hpStepCreateNote">Появятся пять пустых слотов, по одному на категорию.</small>
+                    </div>
+                    <button id="homepageAddBtn" class="btn btn-primary btn-sm" type="button"><span class="btn-label">Создать выпуск</span></button>
+                  </li>
+                  <li class="hp-step" data-step="fill">
+                    <b class="hp-step-num">2</b>
+                    <div class="hp-step-copy">
+                      <span>Заполнить пять фото</span>
+                      <small id="hpStepFillNote">Сначала создайте выпуск.</small>
+                    </div>
+                    <span class="hp-step-count" id="hpStepFillCount" aria-hidden="true">0/5</span>
+                  </li>
+                  <li class="hp-step" data-step="publish">
+                    <b class="hp-step-num">3</b>
+                    <div class="hp-step-copy">
+                      <span>Опубликовать</span>
+                      <small id="homepagePublishFeedback" class="homepage-publish-feedback" data-state="ready" role="status" aria-live="polite">Новая пятёрка заменит текущую, прежняя уйдёт в архив сама.</small>
+                    </div>
+                    <button id="homepagePublishBtn" class="btn btn-sm" type="button">Опубликовать</button>
+                  </li>
+                </ol>
               </div>
               <details class="homepage-secondary-tools">
                 <summary>Настройки и служебные действия</summary>
@@ -491,7 +508,6 @@
                   <button id="homepageComplexityToggle" class="btn btn-sm" type="button" aria-controls="tab-homepage" aria-expanded="false">Показать расширенные настройки</button>
                   <a class="btn btn-sm" href="../" target="_blank" rel="noreferrer">Открыть сайт ↗</a>
                 </div>
-                  <p>Для обычной недели достаточно: «Создать новый выпуск» → выбрать пять новых фото → «Опубликовать выпуск».</p>
               </details>
               <section class="homepage-published-now" aria-labelledby="homepagePublishedTitle">
                 <div class="homepage-published-head">
@@ -539,10 +555,6 @@
                   </div>
                 </div>
                 </div>
-              </section>
-              <section class="homepage-publishing-flow" aria-labelledby="homepageFlowTitle">
-                <div class="homepage-publishing-flow-copy"><span class="homepage-admin-kicker">НЕДЕЛЬНЫЙ ЦИКЛ</span><h3 id="homepageFlowTitle">Новый выпуск без риска для главной</h3><p>Создание черновика не меняет сайт. При публикации новая пятёрка становится текущей, а прежняя автоматически фиксируется в истории.</p></div>
-                <ol class="homepage-publishing-flow-steps"><li><b>1</b><span>Создайте выпуск</span><small>Появятся пять пустых слотов — по одному на категорию.</small></li><li><b>2</b><span>Заполните фото</span><small>Изображение, подпись и описание; затем — 7 языков.</small></li><li><b>3</b><span>Опубликуйте</span><small>Новая неделя на сайте, старая — в архиве автоматически.</small></li></ol>
               </section>
               <section class="card homepage-archive-admin" aria-labelledby="homepageArchiveTitle">
                 <div class="homepage-section-head">
@@ -2215,7 +2227,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.85" type="module"></script>
+    <script src="./app.js?v=4.90" type="module"></script>
     <script src="../brandbook/data.js?v=1"></script>
     <script src="./brandbook.js?v=3"></script>
     <script>
@@ -2224,8 +2236,6 @@
         var tabButtons = document.querySelectorAll('.tab-btn');
         var tabPanels = document.querySelectorAll('.tab-panel');
         var sidebarActiveLabel = document.getElementById('sidebarActiveLabel');
-        var sidebarNavSearch = document.getElementById('sidebarNavSearch');
-        var sidebarNavEmpty = document.getElementById('sidebarNavEmpty');
         var pageTitles = {
           dashboard: 'Обзор',
           content: 'Контент',
@@ -2380,32 +2390,6 @@
           });
         }
 
-        function filterSidebarNav() {
-          if (!sidebarNavSearch) return;
-          var query = sidebarNavSearch.value.trim().toLocaleLowerCase();
-          var visible = 0;
-          tabButtons.forEach(function (button) {
-            var haystack = (button.dataset.navLabel || button.textContent) + ' ' + (button.dataset.keywords || '');
-            var matches = !query || haystack.toLocaleLowerCase().indexOf(query) !== -1;
-            var item = button.closest('.sb-item') || button;
-            item.hidden = !matches;
-            if (matches) visible += 1;
-          });
-          /* Раньше прятались только кнопки, а заголовки групп оставались
-             висеть над пустотой. */
-          navRoot && navRoot.querySelectorAll('.sb-group').forEach(function (section) {
-            var hasVisible = !!section.querySelector('.sb-item:not([hidden])');
-            section.hidden = query ? !hasVisible : false;
-            section.classList.toggle('is-searching', !!query);
-          });
-          if (sidebarNavEmpty) sidebarNavEmpty.hidden = visible !== 0;
-        }
-
-        function firstVisibleTab() {
-          var item = navRoot && navRoot.querySelector('.sb-item:not([hidden]) .tab-btn');
-          return item || null;
-        }
-
         if (navRoot) {
           navRoot.addEventListener('click', function (event) {
             var head = event.target.closest('.sb-group-head');
@@ -2451,41 +2435,9 @@
           if (btn && !btn.classList.contains('active')) btn.click();
         });
 
-        if (sidebarNavSearch) {
-          sidebarNavSearch.addEventListener('input', filterSidebarNav);
-          sidebarNavSearch.addEventListener('keydown', function (event) {
-            if (event.key === 'Enter') {
-              var first = firstVisibleTab();
-              if (first) {
-                event.preventDefault();
-                first.click();
-                sidebarNavSearch.value = '';
-                filterSidebarNav();
-                sidebarNavSearch.blur();
-              }
-            }
-            if (event.key === 'ArrowDown') {
-              var target = firstVisibleTab();
-              if (target) { event.preventDefault(); target.focus(); }
-            }
-          });
-          document.addEventListener('keydown', function (event) {
-            var typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement && document.activeElement.tagName)
-              || (document.activeElement && document.activeElement.isContentEditable);
-            if (event.key === '/' && document.activeElement !== sidebarNavSearch && !typing) {
-              event.preventDefault();
-              sidebarNavSearch.focus();
-              sidebarNavSearch.select();
-            }
-            /* ⌘K намеренно НЕ перехватывается: это сочетание уже открывает
-               общий поиск по статьям и подкастам. Навигация живёт на «/». */
-            if (event.key === 'Escape' && document.activeElement === sidebarNavSearch) {
-              sidebarNavSearch.value = '';
-              filterSidebarNav();
-              sidebarNavSearch.blur();
-            }
-          });
-        }
+        /* Клавиатуры для поиска здесь больше нет: строку убрали, разделы
+           разложены по группам и читаются глазами быстрее, чем набирается
+           запрос. Осталось сворачивание панели на «[». */
 
         // Reopen on the tab the editor was on before the reload, instead of
         // always landing back on whichever tab is hardcoded "active" in the
@@ -2553,15 +2505,6 @@
           event.preventDefault();
           toggleCollapsed();
         });
-        /* Клик по разделу в свёрнутом виде разворачивать панель не должен:
-           это скрытая перестановка интерфейса под курсором. А вот поиск
-           без подписей бессмыслен, поэтому «/» панель разворачивает. */
-        if (sidebarNavSearch) {
-          sidebarNavSearch.addEventListener('focus', function () {
-            if (sidebarEl && sidebarEl.classList.contains('is-collapsed')) applyCollapsed(false);
-          });
-        }
-
         /* На узких экранах низ панели скрыт (сайдбар превращается в док),
            поэтому «Сохранить» переезжает в шапку. Именно ПЕРЕЕЗЖАЕТ: кнопку
            по id ищет половина app.js, второй такой быть не должно. */
@@ -2599,7 +2542,6 @@
         applyCollapsed(function () { try { return localStorage.getItem(COLLAPSE_KEY) === '1'; } catch (e) { return false; } }());
         applyGroupState();
         applyPins();
-        filterSidebarNav();
         syncSidebarNav();
       });
     </script>
