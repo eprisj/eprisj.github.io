@@ -3341,7 +3341,7 @@ function findMatchingArticle(item: Item, articles: Article[]): Article | undefin
   return articles.find((a) => a.title && base(a.title) === itemBase);
 }
 
-function parsePath(pathname: string, search = ''): { tab?: string; articleId?: number; reviewId?: number; passportCode?: string; searchQuery?: string; formSlug?: string } {
+function parsePath(pathname: string, search = ''): { tab?: string; articleId?: number; reviewId?: number; passportCode?: string; searchQuery?: string; formSlug?: string; formInvite?: string } {
   const p = pathname.replace(/^\//, '').replace(/\/$/, '');
   if (!p) return {};
   if (p === 'search') {
@@ -3371,8 +3371,11 @@ function parsePath(pathname: string, search = ''): { tab?: string; articleId?: n
      ровно анкету — без меню номера и без остальной витрины.
      Короткий /f/ — та же страница: этот адрес влезает в подпись письма и в
      строчку в мессенджере, а /form/ остаётся для тех, кто уже разослан. */
-  const formMatch = p.match(/^(?:form|f)\/([a-z0-9-]{1,80})$/i);
-  if (formMatch) return { tab: 'form', formSlug: formMatch[1] };
+  /* Персональная ссылка выглядит как /f/interview-abbie-downey/abbie-downey:
+     имя человека вместо строки случайных знаков. Прежний вид со знаком
+     вопроса продолжает работать ради уже разосланных писем. */
+  const formMatch = p.match(/^(?:form|f)\/([a-z0-9-]{1,80})(?:\/([a-z0-9-]{1,80}))?$/i);
+  if (formMatch) return { tab: 'form', formSlug: formMatch[1], formInvite: formMatch[2] };
 
   const passportMatch = p.match(/^passport(?:\/([A-Za-z0-9-]+))?$/);
   if (passportMatch) return { tab: 'passport', passportCode: passportMatch[1] || undefined };
@@ -3633,6 +3636,9 @@ export default function App() {
      приходят по прямой ссылке и уходят с неё на сайт. */
   const [formSlug] = useState<string | undefined>(initialRoute.formSlug);
   const [formToken] = useState<string | undefined>(() => {
+    // Приглашение приходит либо путём, либо параметром: путь главнее, потому
+    // что это новый, читаемый вид ссылки.
+    if (initialRoute.formInvite) return initialRoute.formInvite;
     try { return new URLSearchParams(window.location.search).get('t') || undefined; } catch { return undefined; }
   });
   const [currentLang, setCurrentLang] = useState(() => {
