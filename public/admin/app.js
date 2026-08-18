@@ -11507,6 +11507,49 @@ function bindStudioMediaActions() {
     return { errors, warnings };
   }
 
+  function homepageReleasePublicationErrors(draftRelease, groups) {
+    const errors = [];
+    const expectedSlots = 5;
+    if (!draftRelease) return errors;
+    if (groups.length !== expectedSlots) {
+      errors.push(`Выпуск должен содержать ${expectedSlots} слотов, а сейчас настроено ${groups.length}.`);
+      return errors;
+    }
+    const selectedIds = [];
+    groups.forEach((group) => {
+      if (group.items.length !== 1) {
+        errors.push(group.items.length
+          ? `${group.label}: в выпуске должно быть одно фото, сейчас выбрано ${group.items.length}.`
+          : `${group.label}: добавьте фото перед публикацией.`);
+        return;
+      }
+      selectedIds.push(picsIdFor(group.items[0]));
+    });
+    if (selectedIds.length === expectedSlots && new Set(selectedIds).size !== selectedIds.length) {
+      errors.push('Одно и то же фото выбрано несколько раз. Для выпуска нужны пять разных карточек.');
+    }
+    return errors;
+  }
+
+  async function homepageRemoteIsStillCurrent() {
+    if (!lastSyncedSnapshot) {
+      throw new Error('Нет подтверждённой версии VPS. Сначала нажмите «Получить свежую версию».');
+    }
+    const response = await fetch(CONTENT_API, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`Не удалось сверить VPS: статус ${response.status}`);
+    const remote = await response.json();
+    validateShape(remote);
+    const remoteSnapshot = normalizeJsonText(JSON.stringify(remote));
+    if (remoteSnapshot === lastSyncedSnapshot) return true;
+    pendingRemoteHomepageData = remote;
+    setHomepageRemoteNotice(
+      'Версия на VPS изменилась после загрузки этой страницы. Публикация остановлена, чтобы не затереть чужие правки. <button class="btn btn-sm" type="button" data-homepage-accept-remote>Получить свежую версию</button>',
+      'warn',
+      true,
+    );
+    return false;
+  }
+
   function homepageArchiveCards(groups, data = null) {
     const localizedCollections = data?.localizedCollections && typeof data.localizedCollections === 'object'
       ? data.localizedCollections
@@ -12251,6 +12294,7 @@ function bindStudioMediaActions() {
     }
     const targetGroups = data ? homepageCategoryGroups(data, draftRelease ? { releaseId: draftRelease.id, restrict: true } : { useActive: true }) : [];
     const audit = data ? homepageAudit(data, targetGroups) : { errors: ['Контент не загружен.'], warnings: [] };
+    if (draftRelease) audit.errors.push(...homepageReleasePublicationErrors(draftRelease, targetGroups));
     if (data) {
       const layout = homepageLayout(data);
       if (!layout.sectionOrder.some((key) => layout.visibility?.[key] !== false)) audit.errors.unshift('Все секции главной скрыты — включите хотя бы один блок перед публикацией.');
@@ -12261,11 +12305,34 @@ function bindStudioMediaActions() {
       renderHomepageTab();
       return;
     }
+    try {
+      const remoteIsCurrent = await homepageRemoteIsStillCurrent();
+      if (!remoteIsCurrent) {
+        setHomepagePublishFeedback('Публикация остановлена: на VPS есть более свежая версия.', 'error');
+        if (!silent) showToast?.('info', 'На VPS появились изменения. Сначала получите свежую версию; ваш черновик останется в корзине.');
+        return;
+      }
+    } catch (error) {
+      const reason = getErrorMessage(error);
+      setHomepagePublishFeedback(`Не удалось безопасно сверить VPS: ${reason}`, 'error');
+      if (!silent) showToast?.('error', `Публикация остановлена: ${reason}`);
+      return;
+    }
     const pw = typeof getAdminPassword === 'function' ? getAdminPassword() : '';
     if (!pw) {
       setHomepagePublishFeedback('Сессия истекла — войдите в админку заново.', 'error');
       if (!silent) showToast?.('error', 'Нет пароля редакции — войдите заново.');
       return;
+    }
+    if (!silent) {
+      const outgoing = homepageActiveRelease(data);
+      const confirmed = window.confirm(
+        `Опубликовать новый выпуск из пяти карточек?\n\nСейчас на главной: ${releaseLabel(outgoing)}.\nПосле подтверждения его снимок останется в архиве, а читатели увидят новый выпуск.`
+      );
+      if (!confirmed) {
+        setHomepagePublishFeedback('Публикация отменена. Черновик и текущая главная сохранены.', 'ready');
+        return;
+      }
     }
     const publishData = deepClone(data);
     const outgoingRelease = homepageActiveRelease(publishData);
