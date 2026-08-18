@@ -956,14 +956,28 @@ function mergeLocalizedArray<T extends { id: number }>(value: T[] | undefined, f
 //      the same bucket (which the per-id merge can't tell are stale) can't be
 //      trusted either. This is what caught the recycled-id incident again: every
 //      locale's items still translated the OLD deleted pieces on reused ids.
+/* ЗАЩИТА ОТ ЧУЖОГО ПЕРЕВОДА — ПОЗАПИСНО, А НЕ ВСЕМ НАБОРОМ.
+ *
+ * Прежняя версия выключала перевод ЦЕЛИКОМ, если в языковом наборе оказалось
+ * не столько же записей, сколько в базе, или хоть одна заглушка. Замысел был
+ * верный (перевод удалённого обзора однажды подменил собой живой), но цена
+ * оказалась несоразмерной: в наборе обзоров лежит шесть записей против трёх
+ * в базе — переводы двух удалённых и один черновик, — и из-за них читатель на
+ * украинском видел ВСЕ обзоры по-английски. Причём навсегда: сам собой лишний
+ * перевод не исчезнет.
+ *
+ * Сопоставление идёт по id. Перевод записи применяется, если запись есть в
+ * базе, её структура совпадает и в переводе действительно что-то написано.
+ * Лишние записи в языковом наборе просто игнорируются — они больше не могут
+ * ни подменить живой обзор, ни отменить перевод остальных.
+ *
+ * Разбор мусора при этом остаётся нужным: см. уборку осиротевших переводов —
+ * данные чистятся отдельно, но сайт не должен зависеть от их чистоты. */
 function mergeLocalizedItems<T extends { id: number }>(value: T[] | undefined, fallback: T[]): T[] {
-  if (Array.isArray(value) && value.length !== fallback.length) return fallback;
-  if (Array.isArray(value) && value.some(isPlaceholderEntity)) return fallback;
-  if (Array.isArray(value) && value.some((localized) => {
-    const base = fallback.find((entry) => Number(entry.id) === Number(localized.id));
-    return Boolean(base && hasContentShapeMismatch(base, localized));
-  })) return fallback;
-  return mergeLocalizedArray(value, fallback);
+  if (!Array.isArray(value)) return fallback;
+  const baseIds = new Set(fallback.map((entry) => Number(entry.id)));
+  const usable = value.filter((localized) => baseIds.has(Number(localized.id)) && !isPlaceholderEntity(localized));
+  return mergeLocalizedArray(usable, fallback);
 }
 
 export function getAvailableLanguages(): string[] {
