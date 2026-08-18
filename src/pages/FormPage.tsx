@@ -1,5 +1,5 @@
 import { FormEvent, useCallback, useEffect, useMemo, useState } from 'react';
-import { Loader2, Check, AlertCircle } from 'lucide-react';
+import { Loader2, Check, AlertCircle, Paperclip, X } from 'lucide-react';
 
 /* ПУБЛИЧНАЯ АНКЕТА.
  *
@@ -46,21 +46,21 @@ const COPY = {
         invite: 'This form is open by invitation. Use the personal link the editors sent you.',
         required: 'Please fill in the highlighted fields.', send: 'Send answers', sending: 'Sending…',
         sent: 'Thank you — your answers are with the editors.', error: 'Could not send the form. Try again in a minute.',
-        requiredMark: 'required', invitedAs: 'Answering as',
+        requiredMark: 'required', invitedAs: 'Answering as', progress: 'Filled in', thisRequired: 'This answer is required.', left: 'Left', dropHint: 'or drop them here',
         attach: 'Attach files', uploading: 'Uploading…', remove: 'Remove',
         tooLarge: 'This file is too large.', uploadFailed: 'Upload failed — try again.', noSpace: 'The server is out of space. Tell the editors.' },
   RU: { loading: 'Загружаем анкету…', closed: 'Анкета закрыта.', missing: 'Анкета не найдена.',
         invite: 'Анкета открыта по приглашению. Откройте личную ссылку, которую прислала редакция.',
         required: 'Заполните отмеченные поля.', send: 'Отправить ответы', sending: 'Отправляем…',
         sent: 'Спасибо — ответы у редакции.', error: 'Не удалось отправить. Попробуйте через минуту.',
-        requiredMark: 'обязательно', invitedAs: 'Отвечает',
+        requiredMark: 'обязательно', invitedAs: 'Отвечает', progress: 'Заполнено', thisRequired: 'Без этого ответа нельзя отправить.', left: 'Осталось', dropHint: 'или перетащите их сюда',
         attach: 'Прикрепить файлы', uploading: 'Загружаем…', remove: 'Убрать',
         tooLarge: 'Файл слишком большой.', uploadFailed: 'Не загрузилось — попробуйте ещё раз.', noSpace: 'На сервере кончилось место. Сообщите редакции.' },
   UA: { loading: 'Завантажуємо анкету…', closed: 'Анкету закрито.', missing: 'Анкету не знайдено.',
         invite: 'Анкета відкрита за запрошенням. Відкрийте особисте посилання від редакції.',
         required: 'Заповніть позначені поля.', send: 'Надіслати відповіді', sending: 'Надсилаємо…',
         sent: 'Дякуємо — відповіді у редакції.', error: 'Не вдалося надіслати. Спробуйте за хвилину.',
-        requiredMark: 'обовʼязково', invitedAs: 'Відповідає',
+        requiredMark: 'обовʼязково', invitedAs: 'Відповідає', progress: 'Заповнено', thisRequired: 'Без цієї відповіді не надіслати.', left: 'Залишилось', dropHint: 'або перетягніть їх сюди',
         attach: 'Прикріпити файли', uploading: 'Завантажуємо…', remove: 'Прибрати',
         tooLarge: 'Файл завеликий.', uploadFailed: 'Не завантажилось — спробуйте ще раз.', noSpace: 'На сервері скінчилось місце. Повідомте редакцію.' },
 } as const;
@@ -70,10 +70,25 @@ function copyFor(language?: string) {
   return (COPY as unknown as Record<string, typeof COPY.EN>)[key] || COPY.EN;
 }
 
+/* Размер шрифта в полях — 16px и не меньше.
+   Это не вкус: Safari на iPhone принудительно приближает страницу, когда
+   фокус попадает в поле с текстом мельче шестнадцати пикселей, и человек
+   заполняет анкету, ёрзая по увеличенной странице. Всё остальное здесь —
+   про попадание пальцем: высокая строка ввода, крупные варианты ответа,
+   заметный фокус. */
 const inputClass =
-  'w-full rounded-none border border-[rgb(var(--c-accent-rgb)_/_0.25)] bg-transparent px-3 py-2.5 font-serif text-[15px] ' +
-  'text-[var(--c-accent)] outline-none transition-colors placeholder:text-[rgb(var(--c-accent-rgb)_/_0.4)] ' +
-  'focus:border-[var(--c-accent)]';
+  'w-full rounded-[2px] border border-[rgb(var(--c-accent-rgb)_/_0.22)] bg-[rgb(var(--c-accent-rgb)_/_0.02)] ' +
+  'px-4 py-3.5 font-serif text-[16px] leading-relaxed text-[var(--c-accent)] outline-none transition-all ' +
+  'placeholder:text-[rgb(var(--c-accent-rgb)_/_0.35)] ' +
+  'focus:border-[var(--c-accent)] focus:bg-transparent focus:ring-4 focus:ring-[rgb(var(--c-accent-rgb)_/_0.07)]';
+
+/* Варианты ответа — не точки диаметром в десять пикселей, а целые строки:
+   палец попадает по всей карточке, а выбранная видна с расстояния. */
+const choiceClass = (selected: boolean) =>
+  'flex cursor-pointer items-start gap-3 rounded-[2px] border px-4 py-3 font-serif text-[16px] leading-snug transition-all ' +
+  (selected
+    ? 'border-[var(--c-accent)] bg-[rgb(var(--c-accent-rgb)_/_0.06)] text-[var(--c-accent)]'
+    : 'border-[rgb(var(--c-accent-rgb)_/_0.18)] text-[rgb(var(--c-accent-rgb)_/_0.8)] hover:border-[rgb(var(--c-accent-rgb)_/_0.45)]');
 
 export function FormPage({ slug, token }: { slug: string; token?: string }) {
   const [form, setForm] = useState<PublicForm | null>(null);
@@ -108,6 +123,20 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
     return () => { cancelled = true; };
   }, [slug, token]);
 
+  /* Черновик живёт в браузере автора.
+
+     Длинную анкету заполняют не за один присест: человек уходит искать
+     ссылку на портфолио, закрывает вкладку, возвращается с телефона на
+     ноутбук. Потерянные ответы — самая частая причина, по которой анкету не
+     присылают вовсе. Файлы сюда не пишем: их место на сервере, а в черновике
+     остаются только ссылки на уже загруженное. */
+  const draftKey = `epris_form_draft_${slug}`;
+  const [restored, setRestored] = useState(false);
+  const [dragField, setDragField] = useState('');
+  /* Миниатюра берётся из выбранного файла в браузере и никуда не отправляется:
+     тянуть картинку обратно с сервера ради превью значит гонять мегабайты по
+     мобильному интернету второй раз. */
+  const [previews, setPreviews] = useState<Record<string, string>>({});
   const [uploading, setUploading] = useState<Record<string, boolean>>({});
   const [uploadError, setUploadError] = useState<Record<string, string>>({});
 
@@ -137,7 +166,11 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
         if (response.status === 413) { setUploadError((prev) => ({ ...prev, [field.id]: t.tooLarge })); continue; }
         if (response.status === 507) { setUploadError((prev) => ({ ...prev, [field.id]: t.noSpace })); continue; }
         if (!response.ok || !data?.ok) { setUploadError((prev) => ({ ...prev, [field.id]: t.uploadFailed })); continue; }
-        done.push(data.file as UploadedFile);
+        const uploaded = data.file as UploadedFile;
+        done.push(uploaded);
+        if (file.type.startsWith('image/')) {
+          setPreviews((prev) => ({ ...prev, [uploaded.fileId]: URL.createObjectURL(file) }));
+        }
       } catch {
         setUploadError((prev) => ({ ...prev, [field.id]: t.uploadFailed }));
       }
@@ -156,6 +189,42 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
     setAnswers((prev) => ({ ...prev, [fieldId]: value }));
     setMissingFields((prev) => prev.filter((id) => id !== fieldId));
   }, []);
+
+  // Восстанавливаем черновик, когда анкета уже известна: иначе можно вернуть
+  // ответы на вопросы, которых в ней больше нет.
+  useEffect(() => {
+    if (!form || restored) return;
+    setRestored(true);
+    try {
+      const stored = JSON.parse(localStorage.getItem(draftKey) || 'null');
+      if (stored && typeof stored === 'object') {
+        const known = new Set(form.fields.map((field) => field.id));
+        const filtered = Object.fromEntries(
+          Object.entries(stored as Record<string, AnswerValue>).filter(([key]) => known.has(key)),
+        ) as Record<string, AnswerValue>;
+        if (Object.keys(filtered).length) setAnswers((prev) => ({ ...filtered, ...prev }));
+      }
+    } catch { /* приватный режим — просто не восстанавливаем */ }
+  }, [draftKey, form, restored]);
+
+  useEffect(() => {
+    if (!form || !restored) return;
+    try { localStorage.setItem(draftKey, JSON.stringify(answers)); } catch { /* нет места — не беда */ }
+  }, [answers, draftKey, form, restored]);
+
+  /* Сколько обязательного осталось. Полоса вверху отвечает на единственный
+     вопрос, который человек задаёт длинной анкете: «сколько ещё?» */
+  const progress = useMemo(() => {
+    if (!form) return { done: 0, total: 0 };
+    const required = form.fields.filter((field) => field.required && field.type !== 'section');
+    const done = required.filter((field) => {
+      const value = answers[field.id];
+      if (field.type === 'multi-choice' || field.type === 'files') return Array.isArray(value) && value.length > 0;
+      if (field.type === 'consent') return Boolean(value);
+      return String(value ?? '').trim().length > 0;
+    }).length;
+    return { done, total: required.length };
+  }, [answers, form]);
 
   const submit = useCallback(async (event: FormEvent) => {
     event.preventDefault();
@@ -192,16 +261,21 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
         setSending(false);
         return;
       }
+      try { localStorage.removeItem(draftKey); } catch { /* не важно */ }
       setThankYou(String(data.thankYou || form.thankYou || ''));
       setState('sent');
     } catch {
       setError(t.error);
       setSending(false);
     }
-  }, [answers, form, sending, t, token]);
+  }, [answers, draftKey, form, sending, t, token]);
 
+  /* Полоса набора — 640 пикселей: примерно семьдесят знаков в строке, то есть
+     ширина, на которой длинный вопрос читается без возврата глазом. На
+     телефоне поля дышат по краям, на большом экране анкета не растягивается
+     во всю ширину монитора. */
   const shell = (children: React.ReactNode) => (
-    <main className="mx-auto min-h-screen w-full max-w-[720px] px-5 py-16 sm:px-8 sm:py-24">{children}</main>
+    <main className="mx-auto min-h-screen w-full max-w-[640px] px-5 pb-24 pt-12 sm:px-8 sm:pb-32 sm:pt-20">{children}</main>
   );
 
   if (state === 'loading') {
@@ -233,42 +307,74 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
 
   return shell(
     <form onSubmit={submit} noValidate>
-      <header className="border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-8">
-        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">EPRIS / form</p>
-        <h1 className="mt-3 font-crimson text-3xl leading-tight text-[var(--c-accent)] sm:text-4xl">{form!.title}</h1>
+      <header className="border-t border-[rgb(var(--c-accent-rgb)_/_0.25)] pt-8">
+        <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">EPRIS / form</p>
+        <h1 className="mt-3 font-crimson text-[32px] leading-[1.12] text-[var(--c-accent)] sm:text-[40px]">{form!.title}</h1>
         {form!.description && (
-          <p className="mt-4 whitespace-pre-line font-serif text-[15px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{form!.description}</p>
+          <p className="mt-5 whitespace-pre-line font-serif text-[16px] leading-[1.7] text-[rgb(var(--c-accent-rgb)_/_0.72)]">{form!.description}</p>
         )}
         {inviteLabel && (
-          <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.18em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t.invitedAs}: {inviteLabel}</p>
+          <p className="mt-5 inline-block border border-[rgb(var(--c-accent-rgb)_/_0.25)] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-[rgb(var(--c-accent-rgb)_/_0.6)]">
+            {t.invitedAs}: {inviteLabel}
+          </p>
+        )}
+        {progress.total > 0 && (
+          <div className="mt-8">
+            <div className="flex items-baseline justify-between font-mono text-[10px] uppercase tracking-[0.18em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">
+              <span>{t.progress}</span>
+              <span>{progress.done} / {progress.total}</span>
+            </div>
+            {/* Полоса, а не проценты: доля читается взглядом, число — нет. */}
+            <div className="mt-2 h-[3px] w-full bg-[rgb(var(--c-accent-rgb)_/_0.12)]">
+              <div className="h-full bg-[var(--c-accent)] transition-[width] duration-500"
+                style={{ width: `${Math.round((progress.done / progress.total) * 100)}%` }} />
+            </div>
+          </div>
         )}
       </header>
 
-      <div className="mt-10 space-y-8">
-        {form!.fields.map((field) => {
+      <div className="mt-12 space-y-10">
+        {(() => { let questionNumber = 0; return form!.fields.map((field) => {
           if (field.type === 'section') {
             return (
-              <div key={field.id} className="border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-6">
-                <h2 className="font-crimson text-2xl text-[var(--c-accent)]">{field.label}</h2>
-                {field.hint && <p className="mt-2 font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.65)]">{field.hint}</p>}
+              <div key={field.id} className="border-t border-[rgb(var(--c-accent-rgb)_/_0.25)] pt-8">
+                <h2 className="font-crimson text-[26px] leading-tight text-[var(--c-accent)]">{field.label}</h2>
+                {field.hint && <p className="mt-2 font-serif text-[15px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.65)]">{field.hint}</p>}
               </div>
             );
           }
+          questionNumber += 1;
           const missing = missingFields.includes(field.id);
           const value = answers[field.id];
           return (
-            <div key={field.id} id={`field-${field.id}`}>
-              <label className="block font-serif text-[15px] text-[var(--c-accent)]" htmlFor={`input-${field.id}`}>
-                {field.label}
-                {field.required && (
-                  <span className="ml-2 font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.45)]">{t.requiredMark}</span>
-                )}
-              </label>
-              {field.hint && <p className="mt-1 font-serif text-[13px] text-[rgb(var(--c-accent-rgb)_/_0.6)]">{field.hint}</p>}
-              <div className={`mt-2 ${missing ? 'ring-1 ring-[#B3261E]' : ''}`}>
+            <div key={field.id} id={`field-${field.id}`} className="scroll-mt-24">
+              {/* Номер вопроса слева от текста: по нему понятно, где ты в
+                  анкете, и на него ссылаются в переписке с редактором. */}
+              <div className="flex gap-3">
+                <span className="mt-[3px] shrink-0 font-mono text-[11px] tabular-nums text-[rgb(var(--c-accent-rgb)_/_0.35)]">
+                  {String(questionNumber).padStart(2, '0')}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <label className="block font-serif text-[17px] leading-snug text-[var(--c-accent)]" htmlFor={`input-${field.id}`}>
+                    {field.label}
+                    {field.required && (
+                      <span className="ml-2 align-[2px] font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.4)]">{t.requiredMark}</span>
+                    )}
+                  </label>
+                  {field.hint && <p className="mt-1.5 font-serif text-[14px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.6)]">{field.hint}</p>}
+                  {missing && <p className="mt-2 font-serif text-[14px] text-[#B3261E]">{t.thisRequired}</p>}
+              <div className={`mt-3 ${missing ? 'rounded-[2px] ring-2 ring-[#B3261E]/35' : ''}`}>
                 {field.type === 'long-text' && (
-                  <textarea id={`input-${field.id}`} rows={6} className={inputClass} placeholder={field.placeholder}
-                    value={String(value ?? '')} onChange={(e) => setAnswer(field.id, e.target.value)} />
+                  <textarea id={`input-${field.id}`} rows={5} className={`${inputClass} resize-none overflow-hidden`}
+                    placeholder={field.placeholder} value={String(value ?? '')}
+                    /* Поле растёт под текст: полоса прокрутки внутри поля
+                       прячет от автора начало собственного ответа. */
+                    ref={(el) => { if (el) { el.style.height = 'auto'; el.style.height = `${el.scrollHeight}px`; } }}
+                    onChange={(e) => {
+                      e.target.style.height = 'auto';
+                      e.target.style.height = `${e.target.scrollHeight}px`;
+                      setAnswer(field.id, e.target.value);
+                    }} />
                 )}
                 {(field.type === 'short-text' || field.type === 'email' || field.type === 'url' || field.type === 'number' || field.type === 'date') && (
                   <input id={`input-${field.id}`} className={inputClass} placeholder={field.placeholder}
@@ -278,9 +384,10 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
                 {field.type === 'single-choice' && (
                   <div className="space-y-2">
                     {(field.options || []).map((option) => (
-                      <label key={option} className="flex cursor-pointer items-baseline gap-3 font-serif text-[15px] text-[rgb(var(--c-accent-rgb)_/_0.85)]">
-                        <input type="radio" name={field.id} checked={value === option} onChange={() => setAnswer(field.id, option)} />
-                        {option}
+                      <label key={option} className={choiceClass(value === option)}>
+                        <input type="radio" className="mt-1 accent-[var(--c-accent)]" name={field.id}
+                          checked={value === option} onChange={() => setAnswer(field.id, option)} />
+                        <span>{option}</span>
                       </label>
                     ))}
                   </div>
@@ -292,10 +399,10 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
                       // ответов шире, потому что файлы приходят объектами.
                       const list = (Array.isArray(value) ? value : []).filter((item): item is string => typeof item === 'string');
                       return (
-                        <label key={option} className="flex cursor-pointer items-baseline gap-3 font-serif text-[15px] text-[rgb(var(--c-accent-rgb)_/_0.85)]">
-                          <input type="checkbox" checked={list.includes(option)}
+                        <label key={option} className={choiceClass(list.includes(option))}>
+                          <input type="checkbox" className="mt-1 accent-[var(--c-accent)]" checked={list.includes(option)}
                             onChange={(e) => setAnswer(field.id, e.target.checked ? [...list, option] : list.filter((item) => item !== option))} />
-                          {option}
+                          <span>{option}</span>
                         </label>
                       );
                     })}
@@ -305,26 +412,55 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
                   const list = Array.isArray(value) ? (value as UploadedFile[]) : [];
                   const busy = uploading[field.id];
                   const failed = uploadError[field.id];
+                  const dragging = dragField === field.id;
                   return (
                     <div>
-                      <label className="inline-flex cursor-pointer items-center gap-2 border border-[rgb(var(--c-accent-rgb)_/_0.35)] px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-accent)] transition-colors hover:bg-[rgb(var(--c-accent-rgb)_/_0.06)]">
-                        {busy ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : null}
-                        {busy ? t.uploading : t.attach}
+                      {/* Область для перетаскивания, она же кнопка выбора.
+                          С ноутбука файлы кидают мышью из папки, с телефона
+                          выбирают пальцем — работать должно и то, и другое. */}
+                      <label
+                        onDragOver={(e) => { e.preventDefault(); setDragField(field.id); }}
+                        onDragLeave={() => setDragField('')}
+                        onDrop={(e) => {
+                          e.preventDefault(); setDragField('');
+                          if (e.dataTransfer.files?.length) uploadFiles(field, e.dataTransfer.files);
+                        }}
+                        className={'flex cursor-pointer flex-col items-center justify-center gap-2 rounded-[2px] border border-dashed px-5 py-8 text-center transition-colors '
+                          + (dragging
+                            ? 'border-[var(--c-accent)] bg-[rgb(var(--c-accent-rgb)_/_0.06)]'
+                            : 'border-[rgb(var(--c-accent-rgb)_/_0.3)] hover:border-[rgb(var(--c-accent-rgb)_/_0.55)]')}>
+                        {busy
+                          ? <Loader2 className="h-5 w-5 animate-spin text-[var(--c-accent)]" />
+                          : <Paperclip className="h-5 w-5 text-[rgb(var(--c-accent-rgb)_/_0.55)]" />}
+                        <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-accent)]">
+                          {busy ? t.uploading : t.attach}
+                        </span>
+                        <span className="font-serif text-[13px] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{t.dropHint}</span>
                         <input type="file" multiple className="hidden" disabled={busy}
                           onChange={(e) => { if (e.target.files) uploadFiles(field, e.target.files); e.target.value = ''; }} />
                       </label>
-                      {failed && <p className="mt-2 font-serif text-sm text-[#B3261E]">{failed}</p>}
+                      {failed && <p className="mt-2 font-serif text-[14px] text-[#B3261E]">{failed}</p>}
                       {list.length > 0 && (
-                        <ul className="mt-3 space-y-1.5">
+                        <ul className="mt-3 space-y-2">
                           {list.map((file) => (
-                            <li key={file.fileId} className="flex items-baseline justify-between gap-3 border-b border-[rgb(var(--c-accent-rgb)_/_0.12)] pb-1.5 font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.85)]">
-                              <span className="truncate">{file.name}</span>
-                              <span className="shrink-0 font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.5)]">
-                                {file.size > 1048576 ? `${(file.size / 1048576).toFixed(1)} MB` : `${Math.max(1, Math.round(file.size / 1024))} KB`}
+                            <li key={file.fileId} className="flex items-center gap-3 rounded-[2px] border border-[rgb(var(--c-accent-rgb)_/_0.16)] p-2.5">
+                              {/* У картинки — её собственный кадр: так видно,
+                                  что приложили именно ту работу. */}
+                              {previews[file.fileId]
+                                ? <img src={previews[file.fileId]} alt="" className="h-12 w-12 shrink-0 object-cover" />
+                                : <span className="flex h-12 w-12 shrink-0 items-center justify-center bg-[rgb(var(--c-accent-rgb)_/_0.06)] font-mono text-[9px] uppercase text-[rgb(var(--c-accent-rgb)_/_0.5)]">
+                                    {(file.name.split('.').pop() || 'file').slice(0, 4)}
+                                  </span>}
+                              <span className="min-w-0 flex-1">
+                                <span className="block truncate font-serif text-[15px] text-[var(--c-accent)]">{file.name}</span>
+                                <span className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.5)]">
+                                  {file.size > 1048576 ? `${(file.size / 1048576).toFixed(1)} MB` : `${Math.max(1, Math.round(file.size / 1024))} KB`}
+                                </span>
                               </span>
-                              <button type="button" className="shrink-0 font-mono text-[10px] uppercase tracking-[0.14em] underline"
+                              <button type="button" aria-label={t.remove}
+                                className="shrink-0 rounded-full p-2 text-[rgb(var(--c-accent-rgb)_/_0.55)] transition-colors hover:bg-[rgb(var(--c-accent-rgb)_/_0.08)] hover:text-[var(--c-accent)]"
                                 onClick={() => setAnswer(field.id, list.filter((item) => item.fileId !== file.fileId))}>
-                                {t.remove}
+                                <X className="h-4 w-4" />
                               </button>
                             </li>
                           ))}
@@ -334,15 +470,18 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
                   );
                 })()}
                 {field.type === 'consent' && (
-                  <label className="flex cursor-pointer items-baseline gap-3 font-serif text-[15px] text-[rgb(var(--c-accent-rgb)_/_0.85)]">
-                    <input type="checkbox" checked={Boolean(value)} onChange={(e) => setAnswer(field.id, e.target.checked)} />
-                    {field.placeholder || field.label}
+                  <label className={choiceClass(Boolean(value))}>
+                    <input type="checkbox" className="mt-1 accent-[var(--c-accent)]" checked={Boolean(value)}
+                      onChange={(e) => setAnswer(field.id, e.target.checked)} />
+                    <span>{field.placeholder || field.label}</span>
                   </label>
                 )}
               </div>
+                </div>
+              </div>
             </div>
           );
-        })}
+        }); })()}
       </div>
 
       {/* Ловушка для роботов: настоящий человек этого поля не видит и не
@@ -358,12 +497,22 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
         </p>
       )}
 
-      <div className="mt-10 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-6">
-        <button type="submit" disabled={sending}
-          className="inline-flex items-center gap-2 rounded-full border border-[var(--c-accent)] px-7 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--c-accent)] transition-colors hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] disabled:opacity-60">
-          {sending && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
-          {sending ? t.sending : t.send}
-        </button>
+      {/* Кнопка прилипает к низу экрана на телефоне: анкета длиннее экрана, и
+          «Отправить» не должно требовать прокрутки в конец после того, как
+          человек всё заполнил. На широком экране она остаётся обычной. */}
+      <div className="sticky bottom-0 z-10 mt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.25)] bg-[var(--c-bg)] pb-[max(12px,env(safe-area-inset-bottom))] pt-5">
+        <div className="flex flex-wrap items-center gap-4">
+          <button type="submit" disabled={sending}
+            className="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-[var(--c-accent)] bg-[var(--c-accent)] px-8 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--c-bg)] transition-opacity hover:opacity-85 disabled:opacity-60">
+            {sending && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
+            {sending ? t.sending : t.send}
+          </button>
+          {progress.total > progress.done && (
+            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">
+              {t.left}: {progress.total - progress.done}
+            </span>
+          )}
+        </div>
       </div>
     </form>,
   );
