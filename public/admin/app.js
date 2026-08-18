@@ -1148,11 +1148,16 @@ function ensurePublishBanner() {
 function updateEditorState() {
   editorStateEl.className = 'editor-state';
   const dirty = isEditorDirty();
+  // Строка живёт в узкой колонке над кнопкой «Сохранить», поэтому она короткая,
+  // а инструкция целиком осталась в подсказке: развёрнутый текст занимал три
+  // строки и отжимал кнопку вниз.
   if (dirty) {
     editorStateEl.classList.add('dirty');
-    editorStateEl.textContent = 'Есть локальные изменения. Нажмите «Сохранить запись» или «Опубликовать».';
+    editorStateEl.textContent = 'Есть несохранённые правки';
+    editorStateEl.title = 'Нажмите «Сохранить», а затем «Опубликовать», чтобы правки увидели читатели.';
   } else {
-    editorStateEl.textContent = 'Все изменения синхронизированы.';
+    editorStateEl.textContent = 'Всё сохранено';
+    editorStateEl.title = 'Локальных изменений нет: редактор и сервер совпадают.';
   }
   ensurePublishBanner().classList.toggle('is-visible', dirty);
   updateLastSyncedBadge();

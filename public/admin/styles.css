@@ -131,7 +131,11 @@ body {
 .navbar, .sub-header, .tab-bar { display: none !important; }
 
 /* ══════════════════════════════════════════════════════════
-   SIDEBAR
+   SIDEBAR — навигация редакции
+   ──────────────────────────────────────────────────────────
+   25 разделов в пяти сворачиваемых группах плюс блок «Часто».
+   Плотность рассчитана так, чтобы развёрнутая рабочая группа
+   и низ панели помещались в один экран без прокрутки.
    ══════════════════════════════════════════════════════════ */
 .sidebar {
   width: var(--sidebar-w);
@@ -144,230 +148,432 @@ body {
   overflow: hidden;
   position: relative;
   z-index: 50;
-  border-right: 1px solid rgba(0,0,0,.18);
+  border-right: 1px solid rgba(0,0,0,.28);
+  --sb-gap: 2px;
+  --sb-pad: 12px;
 }
 
-/* Brand */
-.sidebar-brand {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  padding: 20px 18px 16px;
-  border-bottom: 1px solid rgba(255,255,255,.06);
+/* ── Бренд ───────────────────────────────────────────────── */
+.sb-brand {
   flex-shrink: 0;
-}
-.sidebar-brand-mark {
-  width: 30px;
-  height: 30px;
-  border: 1.5px solid rgba(201,166,144,.4);
-  border-radius: 7px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  background: rgba(201,166,144,.07);
-}
-.sidebar-brand-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--sidebar-accent);
-  border-radius: 50%;
-  box-shadow: 0 0 6px rgba(201,166,144,.5);
-}
-.sidebar-brand-text {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  line-height: 1;
-}
-.sidebar-brand-name {
-  font-family: var(--font-mono);
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .22em;
-  color: #fff;
-  text-transform: uppercase;
-}
-.sidebar-brand-sub {
-  font-family: var(--font-mono);
-  font-size: .5rem;
-  letter-spacing: .16em;
-  color: rgba(201,166,144,.6);
-  text-transform: uppercase;
-  margin-top: 3px;
-}
-
-/* Nav groups */
-.sidebar-nav {
-  flex: 1;
-  overflow-y: auto;
-  padding: 10px 0;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,.06) transparent;
-}
-.sidebar-nav-group {
-  padding: 0 10px;
-  margin-bottom: 2px;
-}
-.sidebar-nav-group + .sidebar-nav-group { margin-top: 6px; }
-.sidebar-nav-label {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: .68rem;
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: rgba(201,166,144,.55);
-  padding: 14px 8px 6px;
-  user-select: none;
-}
-
-/* Tab buttons — sidebar style */
-.tab-btn[hidden] {
-  display: none !important;
-}
-.tab-btn {
-  display: flex !important;
   align-items: center;
   gap: 10px;
-  width: 100%;
-  padding: 10px 12px;
-  border: none;
-  border-radius: 8px;
-  background: transparent;
-  color: var(--sidebar-text);
-  font-family: var(--font-mono);
-  font-size: .8rem;
-  font-weight: 500;
-  letter-spacing: .01em;
-  text-align: left;
-  cursor: pointer;
-  transition: background .12s, color .12s;
-  white-space: nowrap;
-  box-shadow: none !important;
-  border-bottom: none !important;
-  position: relative;
-  text-transform: none;
-}
-.tab-btn svg {
-  opacity: .5;
-  flex-shrink: 0;
-  transition: opacity .12s;
-  width: 16px !important;
-  height: 16px !important;
-}
-.tab-btn:hover {
-  background: rgba(255,255,255,.06);
-  color: var(--sidebar-text-hover);
-  transform: none !important;
-  box-shadow: none !important;
-}
-.tab-btn:hover svg { opacity: .75; }
-.tab-btn.active {
-  background: rgba(201,166,144,.10);
+  padding: 16px var(--sb-pad) 14px;
+  text-decoration: none;
   color: var(--sidebar-text-active);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+.sb-brand-mark {
+  width: 26px; height: 26px;
+  flex-shrink: 0;
+  display: grid; place-items: center;
+  border-radius: 7px;
+  background: linear-gradient(140deg, var(--sidebar-accent), #8d6a55);
+  color: #1a0d10;
+  font-family: var(--font-serif);
+  font-size: .82rem;
   font-weight: 600;
 }
-.tab-btn.active::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 16px;
-  width: 3px;
-  background: var(--sidebar-accent);
-  border-radius: 3px;
+.sb-brand-copy { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.sb-brand-copy strong {
+  font-family: var(--font-serif);
+  font-size: .82rem;
+  font-weight: 500;
+  letter-spacing: .16em;
 }
-.tab-btn.active svg { opacity: 1; }
+.sb-brand-copy small {
+  font-family: var(--font-mono);
+  font-size: .52rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--sidebar-text);
+}
+.sb-brand-out {
+  width: 13px; height: 13px;
+  margin-left: auto;
+  opacity: .35;
+  transition: opacity .15s ease, transform .15s ease;
+}
+.sb-brand:hover .sb-brand-out { opacity: .9; transform: translate(1px,-1px); }
 
-/* Sidebar bottom */
-.sidebar-bottom {
+/* ── Поиск ───────────────────────────────────────────────── */
+.sb-search {
   flex-shrink: 0;
-  padding: 10px 10px 14px;
-  border-top: 1px solid rgba(255,255,255,.06);
+  margin: 10px var(--sb-pad) 6px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 8px;
+  height: 30px;
+  border-radius: 7px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid transparent;
+  transition: border-color .15s ease, background .15s ease;
 }
-.sidebar-status-row {
+.sb-search:focus-within {
+  background: rgba(255,255,255,.08);
+  border-color: rgba(201,166,144,.45);
+}
+.sb-search svg { width: 13px; height: 13px; color: var(--sidebar-text); flex-shrink: 0; }
+.sb-search input {
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: 0;
+  outline: none;
+  color: var(--sidebar-text-active);
+  font-family: var(--font-sans);
+  font-size: .74rem;
+}
+.sb-search input::placeholder { color: rgba(255,255,255,.32); }
+.sb-search input::-webkit-search-cancel-button { display: none; }
+.sb-search kbd {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: .55rem;
+  color: rgba(255,255,255,.35);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 4px;
+  padding: 1px 4px;
+}
+.sb-search:focus-within kbd { opacity: 0; }
+
+/* ── Список разделов ─────────────────────────────────────── */
+.sb-nav {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 4px var(--sb-pad) 10px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,.14) transparent;
+  /* Прокрутка обозначена затуханием по краям, а не полосой в упор. */
+  mask-image: linear-gradient(to bottom, transparent 0, #000 8px, #000 calc(100% - 10px), transparent 100%);
+}
+.sb-nav::-webkit-scrollbar { width: 6px; }
+.sb-nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,.12); border-radius: 3px; }
+.sb-empty {
+  margin: 10px 4px;
+  font-size: .68rem;
+  color: rgba(255,255,255,.36);
+}
+
+.sb-group { margin-bottom: 8px; }
+.sb-group[hidden] { display: none; }
+.sb-group-head {
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 6px;
-  margin-bottom: 10px;
-  padding: 0 2px;
+  padding: 5px 4px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: rgba(255,255,255,.40);
+  font-family: var(--font-mono);
+  font-size: .55rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  transition: color .15s ease;
 }
-.sidebar-editor-state,
-#editorState {
-  font-family: var(--font-mono) !important;
-  font-size: .55rem !important;
-  color: rgba(255,255,255,.6) !important;
-  letter-spacing: .04em;
+.sb-group-head:hover { color: rgba(255,255,255,.72); }
+.sb-group-head span { flex: 1; text-align: left; }
+.sb-chev {
+  width: 11px; height: 11px;
+  flex-shrink: 0;
+  transform: rotate(90deg);
+  transition: transform .18s ease;
+  opacity: .6;
+}
+.sb-group.is-collapsed .sb-chev { transform: rotate(0deg); }
+.sb-count {
+  font-style: normal;
+  font-size: .55rem;
+  color: rgba(255,255,255,.26);
+}
+.sb-group.is-collapsed .sb-group-items { display: none; }
+/* Во время поиска группы всегда раскрыты: иначе результат прячется. */
+.sb-group.is-searching .sb-group-items { display: block; }
+.sb-group.is-searching .sb-chev { opacity: .25; }
+
+.sb-group-items { display: block; }
+
+/* ── Пункт ───────────────────────────────────────────────── */
+.sb-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--sb-gap);
+}
+.sb-item[hidden] { display: none; }
+
+.tab-btn {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 9px;
+  border: 0;
+  border-radius: 7px;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--sidebar-text);
+  font-family: var(--font-sans);
+  font-size: .765rem;
+  line-height: 1.25;
+  letter-spacing: -.005em;
+  transition: background .13s ease, color .13s ease;
+}
+.tab-btn[hidden] { display: none; }
+.sb-ico {
+  width: 16px; height: 16px;
+  flex-shrink: 0;
+  opacity: .55;
+  transition: opacity .13s ease, color .13s ease;
+}
+.sb-label {
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  flex: 1;
 }
-.sidebar-actions {
+.sb-copy { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.sb-copy small {
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  letter-spacing: .06em;
+  color: rgba(255,255,255,.28);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sb-badge {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: .46rem;
+  letter-spacing: .1em;
+  color: rgba(201,166,144,.75);
+  border: 1px solid rgba(201,166,144,.3);
+  border-radius: 999px;
+  padding: 1px 5px;
+}
+
+.tab-btn:hover { background: rgba(255,255,255,.055); color: var(--sidebar-text-hover); }
+.tab-btn:hover .sb-ico { opacity: .8; }
+.tab-btn:focus-visible {
+  outline: 2px solid rgba(201,166,144,.6);
+  outline-offset: -2px;
+}
+.tab-btn.active {
+  background: rgba(201,166,144,.13);
+  color: var(--sidebar-text-active);
+  font-weight: 500;
+}
+.tab-btn.active .sb-ico { opacity: 1; color: var(--sidebar-accent); }
+/* Активная метка — тонкая планка слева, привязанная к самому пункту. */
+.sb-item.is-active::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  border-radius: 0 2px 2px 0;
+  background: var(--sidebar-accent);
+}
+
+/* ── Булавка ─────────────────────────────────────────────── */
+.sb-pin {
+  position: absolute;
+  right: 4px;
+  width: 22px; height: 22px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 5px;
+  background: none;
+  color: rgba(255,255,255,.5);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity .12s ease, background .12s ease, color .12s ease;
+}
+.sb-pin svg { width: 12px; height: 12px; }
+.sb-item:hover .sb-pin,
+.sb-pin:focus-visible { opacity: 1; }
+.sb-pin:hover { background: rgba(255,255,255,.1); color: #fff; }
+.sb-item.is-pinned .sb-pin { opacity: .55; color: var(--sidebar-accent); }
+.sb-item.is-pinned .sb-pin svg { fill: currentColor; }
+.sb-item.is-pinned:hover .sb-pin { opacity: 1; }
+/* Булавка перекрывает хвост длинной подписи, поэтому под неё резервируется место. */
+.sb-item:hover .tab-btn .sb-label,
+.sb-item.is-pinned .tab-btn .sb-label { padding-right: 20px; }
+
+.sb-group--pinned .sb-group-head { color: rgba(201,166,144,.75); }
+.sb-pin-hint {
+  margin: 2px 4px 0;
+  font-size: .62rem;
+  line-height: 1.35;
+  color: rgba(255,255,255,.28);
+}
+
+/* ── Низ панели ──────────────────────────────────────────── */
+.sb-foot {
+  flex-shrink: 0;
+  padding: 10px var(--sb-pad) 12px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  background: rgba(0,0,0,.16);
   display: flex;
-  gap: 6px;
-  margin-bottom: 6px;
+  flex-direction: column;
+  gap: 8px;
 }
-.sidebar-btn {
+.sb-state-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+#editorState {
+  font-size: .63rem;
+  line-height: 1.3;
+  color: rgba(255,255,255,.42);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+#editorState.dirty { color: var(--sidebar-accent); }
+
+/* Одно главное действие на всю панель. */
+.sb-save {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  background: var(--sidebar-accent);
+  color: #1a0d10;
+  font-family: var(--font-sans);
+  font-size: .765rem;
+  font-weight: 500;
+  transition: filter .13s ease, transform .08s ease;
+}
+.sb-save svg { width: 14px; height: 14px; }
+.sb-save:hover { filter: brightness(1.08); }
+.sb-save:active { transform: translateY(1px); }
+
+.sb-foot-row { display: flex; gap: 4px; }
+.sb-mini {
   flex: 1;
-  display: inline-flex;
+  min-width: 0;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
-  padding: 8px 10px;
-  border-radius: var(--radius);
+  padding: 6px 4px;
   border: 1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.04);
-  color: rgba(255,255,255,.60);
-  font-family: var(--font-mono);
-  font-size: .58rem;
-  font-weight: 500;
-  letter-spacing: .05em;
+  border-radius: 6px;
+  background: none;
+  color: rgba(255,255,255,.55);
   cursor: pointer;
-  transition: all .15s;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-.sidebar-btn:hover {
-  background: rgba(255,255,255,.08);
-  color: rgba(255,255,255,.88);
-  border-color: rgba(255,255,255,.18);
-}
-.sidebar-btn-primary {
-  background: var(--sidebar-accent);
-  border-color: var(--sidebar-accent);
-  color: #1a0b0e;
-  font-weight: 700;
-}
-.sidebar-btn-primary:hover {
-  background: #d9b49a;
-  border-color: #d9b49a;
-  color: #1a0b0e;
-}
-.sidebar-secondary-actions { display: flex; gap: 4px; }
-.sidebar-btn-ghost {
-  flex: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px 8px;
-  border-radius: var(--radius);
-  border: none;
-  background: transparent;
-  color: rgba(255,255,255,.62);
-  font-family: var(--font-mono);
-  font-size: .52rem;
-  letter-spacing: .05em;
-  cursor: pointer;
-  transition: color .12s, background .12s;
   text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: .655rem;
+  transition: background .13s ease, color .13s ease, border-color .13s ease;
+}
+.sb-mini svg { width: 12px; height: 12px; flex-shrink: 0; }
+.sb-mini:hover {
+  background: rgba(255,255,255,.07);
+  border-color: rgba(255,255,255,.2);
+  color: #fff;
+}
+.sb-mini[hidden] { display: none; }
+
+.sb-more { font-size: .68rem; }
+.sb-more > summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 2px;
+  cursor: pointer;
+  color: rgba(255,255,255,.38);
+  font-family: var(--font-mono);
+  font-size: .55rem;
+  letter-spacing: .14em;
   text-transform: uppercase;
 }
-.sidebar-btn-ghost:hover {
-  color: rgba(255,255,255,.92);
-  background: rgba(255,255,255,.08);
+.sb-more > summary::-webkit-details-marker { display: none; }
+.sb-more > summary:hover { color: rgba(255,255,255,.7); }
+.sb-more[open] > summary .sb-chev { transform: rotate(-90deg); }
+.sb-more > summary .sb-chev { transform: rotate(90deg); }
+.sb-more-body {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 6px 2px 2px;
+}
+.sb-more-row { display: flex; gap: 4px; }
+.sb-more-row:empty { display: none; }
+.sb-more-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px 2px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: rgba(255,255,255,.5);
+  font-family: var(--font-sans);
+  font-size: .7rem;
+  transition: color .13s ease;
+}
+.sb-more-link:hover { color: #fff; }
+.sb-more-link svg { width: 13px; height: 13px; }
+
+.sb-switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: rgba(255,255,255,.55);
+  font-size: .7rem;
+}
+.sb-switch input { position: absolute; opacity: 0; pointer-events: none; }
+.sb-switch-track {
+  width: 28px; height: 16px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: rgba(255,255,255,.14);
+  position: relative;
+  transition: background .16s ease;
+}
+.sb-switch-track i {
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform .16s ease;
+}
+.sb-switch input:checked + .sb-switch-track { background: var(--sidebar-accent); }
+.sb-switch input:checked + .sb-switch-track i { transform: translateX(12px); }
+.sb-switch input:focus-visible + .sb-switch-track { outline: 2px solid rgba(201,166,144,.7); outline-offset: 2px; }
+
+.autosave-status:empty { display: none; }
+.autosave-status {
+  font-family: var(--font-mono);
+  font-size: .55rem;
+  line-height: 1.4;
+  color: rgba(255,255,255,.3);
 }
 
 /* Autosave indicator */
@@ -376,6 +582,84 @@ body {
 .autosave-indicator[data-state="saving"]::before { background: var(--sidebar-accent) !important; }
 .autosave-indicator[data-state="saved"]::before  { background: #4caf50 !important; }
 .autosave-indicator[data-state="saved"]::after   { content: none; }
+
+/* Узкие экраны: панель сжимается, подписи остаются. */
+@media (max-width: 1180px) {
+  .sidebar { --sidebar-w: 196px; }
+}
+
+/* Точка автосохранения: базовый вид (раньше он приезжал из слоя,
+   который жил в самом низу файла и переопределял сам себя). */
+.autosave-indicator {
+  width: 7px; height: 7px;
+  display: inline-block;
+  position: relative;
+}
+.autosave-indicator::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,.18);
+  transition: background .2s ease;
+}
+.autosave-indicator[data-state="saving"]::before { animation: sbPulse 1.1s ease-in-out infinite; }
+@keyframes sbPulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+
+/* ── Планшет и телефон: панель уезжает вниз доком ────────────
+   Группы схлопываются в один горизонтальный ряд (display: contents),
+   закреплённое остаётся первым, низ панели прячется: сохранение на
+   узких экранах живёт в шапке. */
+@media (max-width: 860px) {
+  html, body, .admin-layout { height: 100dvh; }
+  .admin-layout { flex-direction: column; }
+  .sidebar {
+    order: 2;
+    width: 100%; min-width: 100%; max-width: 100%;
+    height: calc(64px + env(safe-area-inset-bottom));
+    min-height: calc(64px + env(safe-area-inset-bottom));
+    flex-direction: row;
+    border-top: 1px solid rgba(201,166,144,.18);
+    border-right: 0;
+  }
+  .sb-brand, .sb-search, .sb-foot, .sb-group-head, .sb-pin, .sb-pin-hint, .sb-empty { display: none; }
+  .sb-nav {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 5px 8px calc(5px + env(safe-area-inset-bottom));
+    mask-image: none;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+  .sb-nav::-webkit-scrollbar { display: none; }
+  .sb-group, .sb-group-items { display: contents; }
+  .sb-item { margin: 0; scroll-snap-align: start; }
+  .sb-item.is-active::before {
+    left: 50%; right: auto; top: auto; bottom: 2px;
+    width: 20px; height: 2px;
+    transform: translateX(-50%);
+    border-radius: 2px;
+  }
+  .tab-btn {
+    flex: 0 0 74px;
+    width: 74px;
+    height: 52px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+    padding: 5px 3px;
+    font-size: .47rem;
+    line-height: 1.15;
+    text-align: center;
+  }
+  .sb-label { white-space: normal; padding-right: 0 !important; }
+  .sb-copy small, .sb-badge { display: none; }
+  .sb-ico { width: 17px; height: 17px; }
+}
 
 /* ══════════════════════════════════════════════════════════
    MAIN AREA
@@ -432,6 +716,32 @@ body {
   align-items: center;
   gap: 6px;
   flex-shrink: 0;
+}
+
+/* Шапка: заголовок раздела, состояние и действия в одном ряду.
+   На узких экранах сюда переезжает «Сохранить» (см. index.html). */
+.topbar { gap: 12px; }
+.topbar-title { letter-spacing: -.01em; }
+.topbar-right { gap: 8px; }
+.sb-save--topbar {
+  width: auto;
+  min-height: 32px;
+  padding: 6px 14px;
+  font-size: .72rem;
+  border-radius: 7px;
+}
+@media (min-width: 861px) {
+  .sb-save--topbar { display: none; }
+}
+
+@media (max-width: 860px) {
+  /* Заголовок раздела уступает место действию: он обрезается многоточием,
+     а вспомогательная «Копировать URL» на телефоне не показывается. */
+  .topbar { padding: 0 12px; gap: 8px; }
+  .topbar-left { min-width: 0; }
+  .topbar-title { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex-shrink: 1; }
+  .topbar-status { display: none; }
+  #copySiteBtn { display: none; }
 }
 
 /* Scrollable main content */
@@ -788,8 +1098,8 @@ textarea {
 .status.success { color: var(--ok);     border-color: rgba(45,107,53,.25);  background: var(--ok-soft); }
 .status.info    { color: var(--info);   border-color: rgba(29,95,138,.25);  background: var(--info-soft); }
 
-.editor-state { margin: 0; font-family: var(--font-mono); font-size: .58rem; line-height: 1.45; color: var(--text-muted); letter-spacing: .03em; }
-.editor-state.dirty { color: var(--warn); }
+
+
 
 /* Quality chips */
 .quality-chip {
@@ -6118,51 +6428,14 @@ body.busy::after {
 
   /* Turn the desktop sidebar into a calm, scrollable bottom dock. It keeps all
      sections available without taking half of a narrow writing viewport. */
-  .sidebar {
-    order: 2;
-    width: 100%;
-    min-width: 100%;
-    max-width: 100%;
-    height: calc(68px + env(safe-area-inset-bottom));
-    min-height: calc(68px + env(safe-area-inset-bottom));
-    max-height: calc(68px + env(safe-area-inset-bottom));
-    flex-direction: row;
-    border-top: 1px solid rgba(201,166,144,.18);
-    border-right: 0;
-    overflow: hidden;
-  }
-  .sidebar-brand, .sidebar-bottom, .sidebar-nav-label { display: none; }
-  .sidebar-nav {
-    display: flex;
-    align-items: stretch;
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding: 5px 8px calc(5px + env(safe-area-inset-bottom));
-    scrollbar-width: none;
-    scroll-snap-type: x proximity;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-x: contain;
-  }
-  .sidebar-nav::-webkit-scrollbar { display: none; }
-  .sidebar-nav-group { display: contents; }
-  .tab-btn {
-    flex: 0 0 76px;
-    width: 76px;
-    min-height: 54px;
-    height: 54px;
-    justify-content: center;
-    flex-direction: column;
-    gap: 3px;
-    padding: 5px 3px;
-    font-size: .47rem;
-    line-height: 1.12;
-    text-align: center;
-    white-space: normal;
-    scroll-snap-align: start;
-  }
-  .tab-btn svg { width: 17px !important; height: 17px !important; }
-  .tab-btn.active::before { top: auto; bottom: 3px; left: 50%; width: 22px; height: 2px; transform: translateX(-50%); }
+  
+  
+  
+  
+  
+  
+  
+  
 
   .main-area { order: 1; width: 100%; min-height: 0; }
   .topbar { height: 52px; padding: 0 12px; }
@@ -6298,7 +6571,7 @@ body.busy::after {
 }
 
 @media (max-width: 390px) {
-  .tab-btn { flex-basis: 70px; width: 70px; font-size: .44rem; }
+  
   .wys-article > *:not(.wys-hero), .wys-canvas.mobile .wys-article > *:not(.wys-hero) { padding-left: 15px; padding-right: 15px; }
 }
 
@@ -6636,137 +6909,30 @@ body.busy::after {
    one wordmark, one icon weight, and action controls that read as controls
    rather than decorative glyphs. Keep this layer at the end so legacy
    panels inherit the upgrade without a risky component-by-component rewrite. */
-:root { --sidebar-w: 244px; }
 
-.sidebar {
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.025), transparent 38%),
-    var(--sidebar-bg);
-  box-shadow: 12px 0 28px rgba(24, 12, 15, .08);
-}
-.sidebar-brand {
-  min-height: 68px;
-  padding: 18px 18px 15px;
-  gap: 12px;
-  border-bottom-color: rgba(255,255,255,.10);
-}
-.sidebar-brand-mark {
-  width: 34px;
-  height: 28px;
-  border-radius: 0;
-  border: 1px solid rgba(255,255,255,.66);
-  background: transparent;
-  color: #fff;
-  font-family: var(--font-serif);
-  font-size: .93rem;
-  letter-spacing: .08em;
-  line-height: 1;
-}
-.sidebar-brand-mark::after { content: none; }
-.sidebar-brand-name {
-  font-family: var(--font-mono);
-  font-size: .82rem;
-  font-weight: 400;
-  letter-spacing: .23em;
-}
-.sidebar-brand-sub { letter-spacing: .18em; color: rgba(201,166,144,.72); }
 
-.sidebar-context {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin: 12px 12px 5px;
-  padding: 9px 10px;
-  border: 1px solid rgba(255,255,255,.09);
-  border-radius: 9px;
-  background: rgba(255,255,255,.035);
-}
-.sidebar-context-dot {
-  width: 7px;
-  height: 7px;
-  flex: 0 0 auto;
-  border-radius: 50%;
-  background: #8dc39d;
-  box-shadow: 0 0 0 4px rgba(141,195,157,.12);
-}
-.sidebar-context-kicker {
-  display: block;
-  margin-bottom: 2px;
-  color: rgba(255,255,255,.36);
-  font: 700 .48rem/1.1 var(--font-mono);
-  letter-spacing: .14em;
-  text-transform: uppercase;
-}
-.sidebar-context strong {
-  display: block;
-  overflow: hidden;
-  color: rgba(255,255,255,.86);
-  font: 600 .68rem/1.3 var(--font-mono);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.sidebar-nav-search {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin: 8px 12px 4px;
-  padding: 0 9px;
-  min-height: 36px;
-  border: 1px solid rgba(255,255,255,.10);
-  border-radius: 8px;
-  color: rgba(255,255,255,.45);
-  background: rgba(255,255,255,.04);
-}
-.sidebar-nav-search:focus-within {
-  border-color: rgba(201,166,144,.62);
-  background: rgba(201,166,144,.08);
-  color: var(--sidebar-accent);
-}
-.sidebar-nav-search input {
-  min-width: 0;
-  min-height: 32px;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  color: #fff;
-  font-size: .62rem;
-  box-shadow: none;
-}
-.sidebar-nav-search input:focus { border: 0; box-shadow: none; }
-.sidebar-nav-search input::placeholder { color: rgba(255,255,255,.36); }
-.sidebar-nav-search kbd {
-  padding: 2px 5px;
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 4px;
-  color: rgba(255,255,255,.36);
-  font: .55rem var(--font-code);
-}
-.sidebar-nav-empty {
-  margin: 12px 18px;
-  color: rgba(255,255,255,.38);
-  font: .62rem var(--font-mono);
-}
-.sidebar-nav { padding-top: 6px; }
-.sidebar-nav-group + .sidebar-nav-group {
-  margin-top: 12px;
-  padding-top: 5px;
-  border-top: 1px solid rgba(255,255,255,.055);
-}
-.sidebar-nav-label {
-  padding-top: 10px;
-  color: rgba(201,166,144,.66);
-  font-size: .58rem;
-  letter-spacing: .18em;
-}
-.tab-btn {
-  min-height: 40px;
-  border: 1px solid transparent !important;
-  border-radius: 8px;
-  gap: 11px;
-  padding-inline: 12px;
-  font-size: .76rem;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .tab-btn:focus-visible,
 .sidebar-btn:focus-visible,
 .sidebar-btn-ghost:focus-visible,
@@ -6775,13 +6941,10 @@ body.busy::after {
   outline: 2px solid var(--sidebar-accent);
   outline-offset: 2px;
 }
-.tab-btn:hover { border-color: rgba(255,255,255,.08) !important; }
-.tab-btn.active {
-  border-color: rgba(201,166,144,.20) !important;
-  background: linear-gradient(90deg, rgba(201,166,144,.18), rgba(201,166,144,.06));
-}
-.tab-btn.active::before { width: 2px; }
-.tab-btn svg { width: 17px !important; height: 17px !important; stroke-width: 1.7; }
+
+
+
+
 
 .btn-icon {
   width: 15px;
@@ -6806,25 +6969,14 @@ body.busy::after {
 .btn:active { transform: translateY(0) scale(.985); }
 .btn-sm { min-height: 34px; border-radius: 7px; }
 .btn-primary { box-shadow: 0 4px 12px rgba(80,26,44,.18); }
-.sidebar-btn,
-.sidebar-btn-ghost {
-  min-height: 36px;
-  border-radius: 7px;
-}
-.sidebar-btn .btn-icon,
-.sidebar-btn-ghost .btn-icon { width: 14px; height: 14px; opacity: .8; }
-.sidebar-btn-ghost { gap: 6px; }
-.sidebar-btn-ghost:hover .btn-icon { opacity: 1; }
-.sidebar-secondary-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
-.sidebar-secondary-actions #themeToggleBtn,
-.sidebar-secondary-actions #logoutBtn { grid-column: 1 / -1; }
 
-@media (max-width: 760px) {
-  :root { --sidebar-w: 100%; }
-  .sidebar { box-shadow: 0 -8px 24px rgba(24,12,15,.10); }
-  .sidebar-context, .sidebar-nav-search, .sidebar-nav-empty { display: none; }
-  .tab-btn { min-height: 54px; border-radius: 8px; }
-}
+
+
+
+
+
+
+
 
 /* ── Editorial quality pass ─────────────────────────────────────────────
    A calmer surface system makes the admin feel like the EPRIS newsroom,
@@ -7515,116 +7667,27 @@ button, a, input, select, textarea { touch-action: manipulation; }
    now uses the same lockup instead of a generic initial badge, while the
    transcription tool is recognisable as a complete workflow rather than an
    ambiguous “interview” section. */
-.sidebar-brand {
-  display: flex;
-  min-height: 76px;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 18px 18px 16px;
-  color: #fff;
-  text-decoration: none;
-  transition: background-color .18s ease, color .18s ease;
-}
-.sidebar-brand:hover { background: rgba(255,255,255,.045); }
-.sidebar-brand:focus-visible {
-  outline: 2px solid var(--sidebar-accent);
-  outline-offset: -4px;
-}
-.sidebar-brand-lockup {
-  display: grid;
-  min-width: 0;
-  gap: 5px;
-}
-.sidebar-brand-wordmark {
-  display: block;
-  padding-left: .22em;
-  color: #fff;
-  font: 400 1.08rem/1 var(--font-mono);
-  letter-spacing: .22em;
-}
-.sidebar-brand-edition {
-  display: block;
-  color: rgba(201,166,144,.74);
-  font: 700 .48rem/1.15 var(--font-mono);
-  letter-spacing: .18em;
-}
-.sidebar-brand-visit {
-  width: 17px;
-  height: 17px;
-  flex: 0 0 auto;
-  color: rgba(255,255,255,.46);
-  transition: color .18s ease, transform .18s ease;
-}
-.sidebar-brand:hover .sidebar-brand-visit { color: var(--sidebar-accent); transform: translate(1px, -1px); }
 
-.sidebar-nav { padding-top: 8px; }
-.sidebar-nav-group + .sidebar-nav-group {
-  margin-top: 14px;
-  padding-top: 8px;
-}
-.sidebar-nav-label {
-  padding: 8px 14px 5px;
-  color: rgba(201,166,144,.72);
-  font-size: .53rem;
-  letter-spacing: .2em;
-}
-.tab-btn { min-height: 42px; }
-.tab-btn--transcription {
-  min-height: 50px;
-  align-items: center;
-  gap: 9px;
-  margin: 2px 8px;
-  padding: 7px 8px !important;
-  border-color: rgba(201,166,144,.18) !important;
-  background: linear-gradient(100deg, rgba(201,166,144,.15), rgba(255,255,255,.025));
-}
-.tab-btn--transcription:hover {
-  border-color: rgba(201,166,144,.48) !important;
-  background: linear-gradient(100deg, rgba(201,166,144,.22), rgba(255,255,255,.055));
-}
-.tab-btn--transcription.active { background: linear-gradient(100deg, rgba(201,166,144,.27), rgba(201,166,144,.09)); }
-.tab-btn--transcription svg { margin-left: 2px; color: var(--sidebar-accent); }
-.sidebar-tab-copy {
-  display: grid;
-  min-width: 0;
-  flex: 1 1 auto;
-  gap: 2px;
-  color: rgba(255,255,255,.9);
-  font-size: .68rem;
-  line-height: 1.12;
-  text-align: left;
-}
-.sidebar-tab-copy small {
-  overflow: hidden;
-  color: rgba(255,255,255,.46);
-  font: 500 .5rem/1.2 var(--font-mono);
-  letter-spacing: .025em;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.sidebar-tab-badge {
-  flex: 0 0 auto;
-  padding: 3px 4px;
-  border: 1px solid rgba(141,195,157,.42);
-  border-radius: 999px;
-  color: #a9d5b3;
-  font: 700 .43rem/1 var(--font-mono);
-  letter-spacing: .08em;
-}
-@media (max-width: 760px) {
-  .tab-btn--transcription {
-    flex: 0 0 94px;
-    width: 94px;
-    min-height: 54px;
-    margin: 0;
-    padding: 5px 4px !important;
-  }
-  .tab-btn--transcription .sidebar-tab-copy { display: block; flex: 0 1 auto; font-size: .46rem; text-align: center; }
-  .tab-btn--transcription .sidebar-tab-copy small,
-  .sidebar-tab-badge { display: none; }
-  .tab-btn--transcription svg { margin-left: 0; }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ── ПОРЯДОК СТАТЕЙ ─────────────────────────────────────────────────────────
 
@@ -8103,34 +8166,22 @@ button, a, input, select, textarea { touch-action: manipulation; }
    три полноразмерные кнопки и два абзаца пояснений ради действий, которые
    нажимают раз в месяц. Главными остаются «Загрузить» и «Сохранить»;
    страховка — мелкой строкой под ними, состояние — одной строкой. */
-.sidebar-recovery { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 8px; }
-.sidebar-mini-btn {
-  display: inline-flex; align-items: center; gap: 5px;
-  padding: 4px 9px; border: 1px solid rgba(255,255,255,.14); border-radius: 999px;
-  background: transparent; color: rgba(255,255,255,.62);
-  font: 600 .58rem/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase;
-  cursor: pointer; transition: border-color .14s, color .14s, background .14s;
-}
-.sidebar-mini-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(255,255,255,.04); }
-.sidebar-mini-btn[hidden] { display: none !important; }
+
+
+
+
 
 /* Тумблер вместо галочки: включение публикации — переключатель режима, а не
    пункт списка, и выглядеть должен соответственно. */
-.sidebar-switch { display: inline-flex; align-items: center; gap: 7px; margin-left: auto; cursor: pointer; }
-.sidebar-switch input { position: absolute; opacity: 0; width: 0; height: 0; }
-.sidebar-switch-track {
-  position: relative; width: 26px; height: 14px; border-radius: 999px;
-  background: rgba(255,255,255,.16); transition: background .16s;
-}
-.sidebar-switch-track i {
-  position: absolute; top: 2px; left: 2px; width: 10px; height: 10px; border-radius: 50%;
-  background: rgba(255,255,255,.75); transition: transform .16s, background .16s;
-}
-.sidebar-switch input:checked + .sidebar-switch-track { background: var(--gold); }
-.sidebar-switch input:checked + .sidebar-switch-track i { transform: translateX(12px); background: #fff; }
-.sidebar-switch input:focus-visible + .sidebar-switch-track { box-shadow: 0 0 0 2px rgba(255,255,255,.25); }
-.sidebar-switch-label { color: rgba(255,255,255,.55); font: 600 .56rem/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
-.sidebar-switch:hover .sidebar-switch-label { color: rgba(255,255,255,.8); }
+
+
+
+
+
+
+
+
+
 
 .autosave-status { margin-top: 8px; color: rgba(255,255,255,.4); font: .56rem/1.4 var(--font-mono); }
 .autosave-status[data-kind="ok"] { color: rgba(140,200,150,.85); }
