@@ -3878,17 +3878,36 @@ export default function App() {
   /* Переход из превью в раздел ведёт к началу раздела.
 
      Кнопка стоит глубоко на главной, и без прокрутки человек оказывался в
-     середине списка статей — ровно там, где была кнопка. Выглядит как будто
-     ничего не произошло, только пропала половина страницы. */
+     середине списка статей — ровно там, где была кнопка. Выглядит так, будто
+     ничего не произошло, только пропала половина страницы.
+
+     Одного requestAnimationFrame мало, и это видно только на живой странице:
+     в тот момент новый раздел ещё не отрисован, страница короткая, прокрутка в
+     ноль проходит вхолостую — а когда список статей появляется, браузерное
+     якорение прокрутки (overflow anchor) возвращает читателя туда, где он был.
+     Поэтому мгновенная прокрутка повторяется после отрисовки, а не сглаженная:
+     плавную анимацию якорение перебивает на полпути. */
+  const scrollToTop = useCallback(() => {
+    const jump = () => window.scrollTo({ top: 0, behavior: 'auto' });
+    jump();
+    window.requestAnimationFrame(() => {
+      jump();
+      window.requestAnimationFrame(jump);
+    });
+    window.setTimeout(jump, 160);
+  }, []);
+
   const openSection = useCallback((tab: string) => {
     handleSetTab(tab);
-    window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  }, [handleSetTab]);
+    scrollToTop();
+  }, [handleSetTab, scrollToTop]);
 
   const handleHome = useCallback(() => {
     handleSetTab('gallery');
-    window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  }, [handleSetTab]);
+    // Та же болезнь, что и у перехода в раздел: возврат домой с середины
+    // длинной страницы якорение прокрутки отматывало обратно.
+    scrollToTop();
+  }, [handleSetTab, scrollToTop]);
 
   const handleSelectArticle = useCallback((id: number, article?: Article) => {
     setPreviewArticleId(null);
