@@ -3202,7 +3202,7 @@ async function runAutosave() {
 
   if (!autosaveToVpsEnabled()) return;
   const pw = getAdminPassword();
-  if (!pw) { setAutosaveNote('Автосохранение на VPS: нет пароля редакции', 'warn'); return; }
+  if (!pw) { setAutosaveNote('Нет пароля редакции', 'warn'); return; }
 
   let parsed;
   // Незакрытая скобка в JSON — обычное состояние на середине правки. Молча
@@ -3215,11 +3215,11 @@ async function runAutosave() {
     setLastSyncedSnapshotFromText(editor.value);
     lastSyncedTime = new Date();
     updateLastSyncedBadge();
-    setAutosaveNote(`Сохранено на VPS · ${stamp}`, 'ok');
+    setAutosaveNote(`Сохранено на сайте · ${stamp}`, 'ok');
   } catch (error) {
     // Автосохранение не имеет права перебивать ручную работу тревогой на весь
     // экран: пишем в строку статуса и пробуем на следующем круге.
-    setAutosaveNote(`Не сохранилось на VPS: ${getErrorMessage(error)}`, 'warn');
+    setAutosaveNote(`Не сохранилось: ${getErrorMessage(error)}`, 'warn');
   } finally {
     autosaveInFlight = false;
   }
@@ -3285,13 +3285,13 @@ document.addEventListener('DOMContentLoaded', () => {
     toggle.addEventListener('change', () => {
       localStorage.setItem(AUTOSAVE_PREF_KEY, toggle.checked ? '1' : '0');
       setAutosaveNote(toggle.checked
-        ? 'Автосохранение на VPS включено — правки уходят на сайт каждые 2 минуты'
-        : 'Автоснимки в браузере каждые 2 минуты · на сайт не уходят');
+        ? 'Правки уходят на сайт каждые 2 минуты'
+        : 'Снимки в браузере каждые 2 минуты');
     });
   }
   setAutosaveNote(autosaveToVpsEnabled()
-    ? 'Автосохранение на VPS включено — правки уходят на сайт каждые 2 минуты'
-    : 'Автоснимки в браузере каждые 2 минуты · на сайт не уходят');
+    ? 'Правки уходят на сайт каждые 2 минуты'
+    : 'Снимки в браузере каждые 2 минуты');
   startAutosave();
 });
 
