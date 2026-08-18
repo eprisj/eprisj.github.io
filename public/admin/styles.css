@@ -8031,10 +8031,39 @@ button, a, input, select, textarea { touch-action: manipulation; }
 /* Варианты ответа, предпросмотр, проверка анкеты и выбор шаблона. */
 .forms-options { display: grid; gap: 6px; }
 .forms-option { display: grid; grid-template-columns: 1fr auto auto auto; gap: 6px; }
-.forms-templates { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px; padding: 10px 12px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--bg-soft); }
+/* Полоса шаблонов больше не тянется во всю ширину панели: она появляется по
+   кнопке «Новая анкета», встаёт по содержимому и не спорит по весу с самой
+   анкетой. */
+.forms-templates { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg-soft); }
 .forms-templates-label { margin-right: 4px; color: var(--text-muted); font: 700 .58rem/1 var(--font-mono); letter-spacing: .09em; text-transform: uppercase; }
 .forms-audit { display: grid; gap: 4px; padding: 10px 12px; border: 1px solid var(--line-strong); border-left: 3px solid var(--gold); border-radius: var(--radius-sm); background: var(--gold-soft); color: var(--text); font: .72rem/1.45 var(--font-serif); }
 .forms-audit.is-error { border-left-color: var(--danger, #a33); }
 .forms-audit p { margin: 0; }
 .forms-preview { margin-top: 12px; border: 1px solid var(--line); border-radius: var(--radius-sm); overflow: hidden; }
 .forms-preview iframe { display: block; width: 100%; height: 640px; border: 0; background: #fff; }
+
+
+/* ── Вкладка «Анкеты»: композиция ──────────────────────────────────────────
+   Экран редакции широкий, и пустая правая половина — это не «воздух», а
+   ощущение недоделанной страницы. Колонки держатся вместе, пустое состояние
+   зовёт нажать, а список анкет читается как список, а не как набор кнопок. */
+.forms-layout { max-width: 1320px; }
+.forms-list { gap: 8px; }
+.forms-list-item { position: relative; gap: 5px; padding: 11px 13px 11px 15px; border-radius: var(--radius-sm); transition: border-color .12s, background .12s; }
+.forms-list-item::before { content: ""; position: absolute; top: 10px; bottom: 10px; left: 6px; width: 2px; border-radius: 2px; background: transparent; }
+.forms-list-item.is-active { background: var(--bg); box-shadow: none; }
+.forms-list-item.is-active::before { background: var(--accent); }
+.forms-list-top { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.forms-list-top strong { min-width: 0; overflow: hidden; font: 600 .8rem/1.3 var(--font-serif); text-overflow: ellipsis; white-space: nowrap; }
+.forms-list-top em { flex: 0 0 auto; color: var(--gold); font: 700 .6rem/1 var(--font-mono); font-style: normal; }
+.forms-list-meta { display: flex; align-items: center; gap: 5px; }
+.forms-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-muted); }
+.forms-dot--open { background: var(--ok, #4a7c59); }
+.forms-dot--draft { background: var(--gold); }
+.forms-dot--closed { background: var(--text-muted); opacity: .5; }
+
+.forms-empty { display: grid; justify-items: start; gap: 8px; padding: 28px 30px; border: 1px dashed var(--line-strong); border-radius: var(--radius-sm); background: var(--bg-soft); }
+.forms-empty-kicker { margin: 0; color: var(--text-muted); font: 700 .58rem/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
+.forms-empty h3 { margin: 0; font: 600 1.05rem/1.3 var(--font-serif); }
+.forms-empty .muted { max-width: 52ch; margin: 0; }
+.forms-empty-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }

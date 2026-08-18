@@ -19353,6 +19353,9 @@ async function loadForms(selectId) {
   }
   renderFormsList();
   if (selectId) openFormEditor(selectId);
+  // Без выбранной анкеты правая колонка рисуется своим пустым состоянием, а не
+  // остаётся заглушкой из разметки страницы.
+  else if (!formsDraft) renderFormEditor();
 }
 
 function renderFormsList() {
@@ -19365,8 +19368,14 @@ function renderFormsList() {
   const statusLabel = { draft: 'черновик', open: 'открыта', closed: 'закрыта' };
   list.innerHTML = formsCache.map((form) => `
     <button type="button" class="forms-list-item${formsDraft && formsDraft.id === form.id ? ' is-active' : ''}" data-form-open="${escapeHtml(form.id)}">
-      <strong>${escapeHtml(form.title)}</strong>
-      <span class="forms-list-meta">${escapeHtml(statusLabel[form.status] || form.status)} · ${form.responses} ответ(ов)${form.access === 'invite' ? ` · ${form.invites} приглашений` : ''}</span>
+      <span class="forms-list-top">
+        <strong>${escapeHtml(form.title)}</strong>
+        ${form.responses ? `<em title="Ответов">${form.responses}</em>` : ''}
+      </span>
+      <span class="forms-list-meta">
+        <i class="forms-dot forms-dot--${escapeHtml(form.status)}"></i>${escapeHtml(statusLabel[form.status] || form.status)}
+        ${form.access === 'invite' ? ` · ${form.invites} приглашений` : ''}
+      </span>
     </button>`).join('');
 }
 
@@ -19494,7 +19503,25 @@ function renderFormEditor() {
   const host = document.getElementById('formsEditor');
   if (!host) return;
   if (!formsDraft) {
-    host.innerHTML = '<p class="muted">Выберите анкету слева или создайте новую.</p>';
+    /* Пустой экран должен предлагать действие, а не сообщать о пустоте.
+       Растянутая рамка со словами «выберите слева» занимала половину окна и
+       ничего не давала нажать. */
+    host.innerHTML = `<div class="forms-empty">
+      <p class="forms-empty-kicker">Анкеты</p>
+      <h3>Соберите анкету за пару минут</h3>
+      <p class="muted">Вопросы, ссылка автору и ответы — здесь же. Начните с шаблона или с чистого листа.</p>
+      <div class="forms-empty-actions">
+        <button class="btn btn-primary" type="button" data-template="author">Анкета автора</button>
+        <button class="btn" type="button" data-template="interview">Интервью</button>
+        <button class="btn" type="button" data-template="pitch">Заявка на материал</button>
+        <button class="btn" type="button" data-template="portfolio">Портфолио</button>
+        <button class="btn" type="button" data-template="blank">С нуля</button>
+      </div>
+    </div>`;
+    // Шаблоны на пустом экране работают теми же кнопками, что и в шапке.
+    host.querySelectorAll('[data-template]').forEach((button) => {
+      button.addEventListener('click', () => openFormEditor('', button.dataset.template === 'blank' ? '' : button.dataset.template));
+    });
     return;
   }
   const form = formsDraft;
