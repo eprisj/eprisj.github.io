@@ -8034,6 +8034,10 @@ button, a, input, select, textarea { touch-action: manipulation; }
 /* Полоса шаблонов больше не тянется во всю ширину панели: она появляется по
    кнопке «Новая анкета», встаёт по содержимому и не спорит по весу с самой
    анкетой. */
+/* `display` в этом правиле сильнее атрибута hidden, поэтому скрытая полоса
+   шаблонов продолжала занимать 68 пикселей между шапкой и содержимым —
+   ровно та пустота, которая читалась как «кривые отступы». */
+.forms-templates[hidden] { display: none !important; }
 .forms-templates { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg-soft); }
 .forms-templates-label { margin-right: 4px; color: var(--text-muted); font: 700 .58rem/1 var(--font-mono); letter-spacing: .09em; text-transform: uppercase; }
 .forms-audit { display: grid; gap: 4px; padding: 10px 12px; border: 1px solid var(--line-strong); border-left: 3px solid var(--gold); border-radius: var(--radius-sm); background: var(--gold-soft); color: var(--text); font: .72rem/1.45 var(--font-serif); }
@@ -8067,3 +8071,29 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .forms-empty h3 { margin: 0; font: 600 1.05rem/1.3 var(--font-serif); }
 .forms-empty .muted { max-width: 52ch; margin: 0; }
 .forms-empty-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+
+
+/* ── Вкладка «Анкеты»: ритм отступов ───────────────────────────────────────
+   Раньше содержимое лежало прямо на фоне страницы: слева упиралось в сайдбар,
+   справа — в край окна, а кнопки шапки улетали на полтора метра от заголовка.
+   Теперь это обычная карточка админки с её же полями, а вертикальные
+   расстояния идут по одной шкале: 8 внутри группы, 16 между группами,
+   24 между крупными блоками. */
+.forms-card { max-width: 1320px; }
+.forms-card .panel-head { align-items: flex-end; gap: 16px; margin-bottom: 0; }
+.forms-card .card-desc { max-width: 68ch; margin-top: 6px; }
+.forms-card .panel-actions { display: flex; flex-shrink: 0; gap: 8px; }
+#tab-forms .forms-templates { margin: 16px 0 0; }
+#tab-forms .forms-layout { margin-top: 20px; max-width: none; }
+/* Шапка карточки и содержимое разделены одной линией — так видно, где
+   заканчивается описание раздела и начинается работа. */
+#tab-forms .panel-head { padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+#tab-forms .forms-editor { padding: 20px 22px; }
+#tab-forms .forms-editor-head { gap: 16px; }
+#tab-forms .forms-fields { margin-top: 4px; }
+#tab-forms .forms-editor-actions { margin-top: 4px; }
+#tab-forms .forms-empty { padding: 32px; }
+@media (max-width: 720px) {
+  .forms-card .panel-head { flex-direction: column; align-items: stretch; }
+  .forms-card .panel-actions { justify-content: flex-start; }
+}
