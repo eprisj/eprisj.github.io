@@ -21,8 +21,10 @@ const ALLOWED_ORIGINS = [
   "https://eprisjournal.com",
   "https://www.eprisjournal.com",
   "https://admin.eprisjournal.com",
+  // Локальные порты разработки: витрина (5173/5199) и статика админки (8901).
   "http://localhost:5173",
   "http://localhost:5199",
+  "http://localhost:8901",
 ];
 
 function setCors(res, origin) {
