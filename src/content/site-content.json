@@ -4528,8 +4528,8 @@
       "id": 23,
       "draft": true,
       "title": "Chora Practice: ",
-      "author": "EPRIS Journal",
-      "role": "Editorial Desk",
+      "author": "Maria Ivanova",
+      "role": "Author",
       "date": "Aug 17, 2026",
       "excerpt": "A conversation about creativity, resilience, and the art of listening to your inner impulses.",
       "category": "Culture",
@@ -4737,7 +4737,7 @@
         },
         {
           "type": "text",
-          "content": "Alena: “I’m a very slow person, so observation helps me a lot. I love immersing myself in the process – looking at a tree, feeling the wind. Simply observing yourself and the world around you can reveal a lot."
+          "content": "Alena: I’m a very slow person, so observation helps me a lot. I love immersing myself in the process – looking at a tree, feeling the wind. Simply observing yourself and the world around you can reveal a lot."
         },
         {
           "type": "text",
@@ -4745,11 +4745,11 @@
         },
         {
           "type": "text",
-          "content": "<b>Alena</b>: “Probably the Gulbenkian Garden. It’s an incredible park and museum. It’s right in the city, but once you enter, it feels like you’re somewhere completely different. It’s a beautiful combination of nature, architecture, and art. You walk in and suddenly find yourself in your own little world. You can breathe out.”"
+          "content": "<b>Alena</b>: Probably the Gulbenkian Garden. It’s an incredible park and museum. It’s right in the city, but once you enter, it feels like you’re somewhere completely different. It’s a beautiful combination of nature, architecture, and art. You walk in and suddenly find yourself in your own little world. You can breathe out."
         },
         {
           "type": "text",
-          "content": "<b>Ksenia</b>: “For me, besides Gulbenkian, it’s probably Cabo Espichel. It has this incredible lighthouse and is considered by the Portuguese to be one of the westernmost points of Europe. I also love the café at Museu Albuquerque, and MACAM – Museu de Arte Contemporânea Armando Martins – has a wonderful café too. They’re all affordable but incredibly stylish. Museums often have amazing cafés.”"
+          "content": "<b>Ksenia</b>: For me, besides Gulbenkian, it’s probably Cabo Espichel. It has this incredible lighthouse and is considered by the Portuguese to be one of the westernmost points of Europe. I also love the café at Museu Albuquerque, and MACAM – Museu de Arte Contemporânea Armando Martins – has a wonderful café too. They’re all affordable but incredibly stylish. Museums often have amazing cafés."
         },
         {
           "type": "text",
@@ -4757,11 +4757,11 @@
         },
         {
           "type": "text",
-          "content": "<b>Ksenia</b>: “I’ve just come back from New York, where my husband and I got married, so that’s definitely my strongest impression at the moment. But I think every journey is inspiring in its own way.”"
+          "content": "<b>Ksenia</b>: I’ve just come back from New York, where my husband and I got married, so that’s definitely my strongest impression at the moment. But I think every journey is inspiring in its own way."
         },
         {
           "type": "text",
-          "content": "<b>Alena</b>: “Recently, it was my solo trip to Porto. I visited the Serralves Museum, explored Álvaro Siza’s architecture, and absolutely loved it. The fact that I went alone also made it a special experience.”"
+          "content": "<b>Alena</b>: Recently, it was my solo trip to Porto. I visited the Serralves Museum, explored Álvaro Siza’s architecture, and absolutely loved it. The fact that I went alone also made it a special experience."
         },
         {
           "type": "text",
@@ -4769,14 +4769,15 @@
         },
         {
           "type": "text",
-          "content": "<b>Alena</b>: “Keep doing what you genuinely love. Despite your inner limitations, look deeply within yourself, listen to your true desires, and simply give yourself permission to pursue them.”"
+          "content": "<b>Alena</b>: Keep doing what you genuinely love. Despite your inner limitations, look deeply within yourself, listen to your true desires, and simply give yourself permission to pursue them."
         },
         {
           "type": "text",
-          "content": "<b>Ksenia</b>: “The main lesson I took from art school is: ‘Experience resistance.’ If you feel resistance toward something, you should move toward it. It means there’s a huge amount of energy hidden there. Don’t ignore or suppress it – look at it more closely.”"
+          "content": "<b>Ksenia</b>: The main lesson I took from art school is: ‘Experience resistance.’ If you feel resistance toward something, you should move toward it. It means there’s a huge amount of energy hidden there. Don’t ignore or suppress it – look at it more closely."
         }
       ],
-      "updatedAt": "2026-08-18T17:28:57.014Z"
+      "updatedAt": "2026-08-18T17:36:02.270Z",
+      "authorId": "author-1784896384236-4fokw"
     }
   ],
   "reviews": [
