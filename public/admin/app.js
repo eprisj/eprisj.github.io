@@ -12,6 +12,7 @@ const DEFAULTS = Object.freeze({
 
 const STORAGE_KEY = 'epris-admin-settings-v3';
 const DRAFT_KEY = 'epris-admin-draft-v1';
+const DRAFT_SESSION_KEY = `${DRAFT_KEY}-session`;
 const DEFAULT_LANGUAGE = 'EN';
 
 const SECTION_CONFIG = {
@@ -169,6 +170,7 @@ let pendingVisualEntryId = null;
 let pendingHomepageCategory = null;
 let visualRefreshTimer = null;
 let draftSaveTimer = null;
+let draftStorageWarningShown = false;
 let monitorTimer = null;
 let lastSyncedTime = null;
 
@@ -527,7 +529,7 @@ document.addEventListener('beforeinput', (event) => {
       if (!res.ok || !result.ok) throw new Error(result.error || `VPS вернул статус ${res.status}`);
       editor.value = JSON.stringify(data, null, 2);
       setLastSyncedSnapshotFromText(editor.value);
-      localStorage.removeItem(DRAFT_KEY);
+      clearStoredDraft();
       lastSyncedTime = new Date();
       visibilityDirty = false;
       updateLastSyncedBadge();
@@ -1168,15 +1170,54 @@ function scheduleDraftSave() {
 
 function saveDraft() {
   if (!isEditorDirty() || !editor.value.trim()) {
-    localStorage.removeItem(DRAFT_KEY);
+    clearStoredDraft();
     return;
   }
 
-  localStorage.setItem(DRAFT_KEY, editor.value);
+  try {
+    localStorage.setItem(DRAFT_KEY, editor.value);
+    try { sessionStorage.removeItem(DRAFT_SESSION_KEY); } catch { /* storage unavailable */ }
+    draftStorageWarningShown = false;
+    return;
+  } catch (error) {
+    console.warn('[draft] localStorage is full or unavailable; using this-tab backup instead.', error);
+  }
+
+  try {
+    sessionStorage.setItem(DRAFT_SESSION_KEY, editor.value);
+  } catch (error) {
+    console.warn('[draft] sessionStorage is unavailable too.', error);
+  }
+
+  if (!draftStorageWarningShown) {
+    draftStorageWarningShown = true;
+    // Saving a browser backup must never prevent the rest of the admin UI
+    // from rendering. In particular, a new gallery release should show its
+    // empty slots even when the permanent browser storage is already full.
+    setTimeout(() => {
+      setStatus('info', 'Память браузера заполнена: черновик удерживается только в этой вкладке. Опубликуйте его и не закрывайте страницу до публикации.');
+      if (typeof showToast === 'function') {
+        showToast('info', 'Черновик не помещается в постоянную память браузера. Интерфейс продолжает работать; до публикации не закрывайте вкладку.');
+      }
+    }, 0);
+  }
+}
+
+function clearStoredDraft() {
+  try { localStorage.removeItem(DRAFT_KEY); } catch { /* storage unavailable */ }
+  try { sessionStorage.removeItem(DRAFT_SESSION_KEY); } catch { /* storage unavailable */ }
+}
+
+function readStoredDraft() {
+  try {
+    const persistentDraft = localStorage.getItem(DRAFT_KEY);
+    if (persistentDraft) return persistentDraft;
+  } catch { /* storage unavailable */ }
+  try { return sessionStorage.getItem(DRAFT_SESSION_KEY) || ''; } catch { return ''; }
 }
 
 function restoreDraftIfAny() {
-  const draft = localStorage.getItem(DRAFT_KEY);
+  const draft = readStoredDraft();
   if (!draft) {
     return;
   }
@@ -1273,7 +1314,7 @@ function applyDefaults(showStatus) {
 
 function resetSavedSettings() {
   localStorage.removeItem(STORAGE_KEY);
-  localStorage.removeItem(DRAFT_KEY);
+  clearStoredDraft();
   currentSha = '';
 
   applyConfig({
@@ -1329,20 +1370,24 @@ function guessProjectRepoFromPath(pathname) {
 function saveSettings() {
   const cfg = getConfig();
 
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify({
-      owner: cfg.owner,
-      repo: cfg.repo,
-      branch: cfg.branch,
-      path: cfg.path,
-      uploadDir: cfg.uploadDir,
-      message: cfg.message,
-      autoLoadOnStart: cfg.autoLoadOnStart,
-      rememberToken: cfg.rememberToken,
-      token: cfg.rememberToken ? cfg.token : ''
-    })
-  );
+  try {
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        owner: cfg.owner,
+        repo: cfg.repo,
+        branch: cfg.branch,
+        path: cfg.path,
+        uploadDir: cfg.uploadDir,
+        message: cfg.message,
+        autoLoadOnStart: cfg.autoLoadOnStart,
+        rememberToken: cfg.rememberToken,
+        token: cfg.rememberToken ? cfg.token : ''
+      })
+    );
+  } catch (error) {
+    console.warn('[settings] localStorage is full or unavailable.', error);
+  }
 }
 
 function getConfig() {
@@ -3007,7 +3052,7 @@ async function publishContentToVps({ note = 'Публикую на VPS...' } = {
 
     currentSha = '';
     setLastSyncedSnapshotFromText(editor.value);
-    localStorage.removeItem(DRAFT_KEY);
+    clearStoredDraft();
     lastSyncedTime = new Date();
     updateLastSyncedBadge();
     setStatus('success', 'Опубликовано на VPS — сайт обновлён мгновенно');
@@ -3441,7 +3486,7 @@ function setEditorData(data, options = {}) {
     setLastSyncedSnapshotFromText(editor.value);
   }
   if (clearDraft) {
-    localStorage.removeItem(DRAFT_KEY);
+    clearStoredDraft();
   } else {
     saveDraft();
   }
