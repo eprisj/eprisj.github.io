@@ -10551,7 +10551,8 @@ function bindStudioMediaActions() {
 
   const HOMEPAGE_SECTION_DEFS = [
     { id: 'pics', label: 'Pics of the week', hint: 'Пять категорий изображений, центральный кадр и подписи.' },
-    { id: 'articles', label: 'Articles', hint: 'Свежие статьи с preview, описанием и кнопкой чтения.' },
+    { id: 'articles', label: 'Articles', hint: 'Три свежие статьи и кнопка «Discover all stories» в раздел.' },
+    { id: 'reviews', label: 'Reviews', hint: 'Три обзора после статей; главный обзор всегда среди них.' },
     { id: 'showcase', label: 'Showcase', hint: 'A vitrine of set design and conceptual art.' },
     { id: 'archive', label: 'Daily picks archive', hint: 'Накопление прошлых выпусков недельной подборки.' },
   ];
@@ -10560,6 +10561,8 @@ function bindStudioMediaActions() {
     { id: 'picsTitle', key: 'homepage.picsTitle', label: 'Pics of the week', hint: 'Заголовок подборки' },
     { id: 'articlesTitle', key: 'homepage.articlesTitle', label: 'Articles', hint: 'Заголовок ленты статей' },
     { id: 'articlesDescription', key: 'homepage.articlesDescription', label: 'Articles description', hint: 'Короткое пояснение к статьям' },
+    { id: 'reviewsTitle', key: 'homepage.reviewsTitle', label: 'Reviews', hint: 'Заголовок ленты обзоров' },
+    { id: 'reviewsDescription', key: 'homepage.reviewsDescription', label: 'Reviews description', hint: 'Короткое пояснение к обзорам' },
     { id: 'archiveTitle', key: 'homepage.archiveTitle', label: 'Daily picks', hint: 'Заголовок архива' },
     { id: 'archiveDescription', key: 'homepage.archiveDescription', label: 'Archive description', hint: 'Пояснение к накоплению' },
   ];
@@ -10580,8 +10583,18 @@ function bindStudioMediaActions() {
 
   function homepageLayout(data) {
     const home = ensureHomepageSettings(data);
-    const configured = Array.isArray(home.layout.sectionOrder) ? home.layout.sectionOrder.map((key) => String(key)) : [];
-    const sectionOrder = Array.from(new Set([...configured, ...HOMEPAGE_SECTION_ORDER_DEFAULT])).filter((key) => HOMEPAGE_SECTION_ORDER_DEFAULT.includes(key));
+    /* Сохранённый порядок главнее, но СЕКЦИЯ, КОТОРОЙ В НЁМ НЕТ, встаёт на своё
+       место по замыслу, а не в хвост.
+
+       Наивное «сохранённые, затем остальные» отправляло новые обзоры за архив:
+       в сохранённом списке их нет, он записан до их появления. И админка, и
+       сайт должны раскладывать одинаково — иначе превью здесь показывает одно,
+       а читатель видит другое. Ровно та же логика лежит в App.tsx. */
+    const configured = (Array.isArray(home.layout.sectionOrder) ? home.layout.sectionOrder.map((key) => String(key)) : [])
+      .filter((key) => HOMEPAGE_SECTION_ORDER_DEFAULT.includes(key));
+    const known = HOMEPAGE_SECTION_ORDER_DEFAULT.filter((key) => configured.includes(key));
+    const queue = configured.filter((key) => known.includes(key));
+    const sectionOrder = HOMEPAGE_SECTION_ORDER_DEFAULT.map((key) => (known.includes(key) ? queue.shift() : key));
     const visibility = home.layout.visibility || {};
     return { home, sectionOrder, visibility, pics: home.layout.pics || {}, articles: home.layout.articles || {} };
   }
@@ -10650,6 +10663,17 @@ function bindStudioMediaActions() {
         if (key === 'articles') {
           const latest = (Array.isArray(data.articles) ? data.articles : []).slice().sort((a, b) => String(b?.updatedAt || b?.date || '').localeCompare(String(a?.updatedAt || a?.date || ''))).slice(0, 2);
           return `<div class="homepage-layout-visual-block"><span class="homepage-layout-visual-kicker">Articles · ${latest.length ? 'новейшие сверху' : 'пока пусто'}</span>${latest.length ? `<div class="homepage-layout-visual-articles">${latest.map((article) => `<div class="homepage-layout-visual-article"><strong>${esc(article.title || 'Без заголовка')}</strong><span>${esc(article.category || 'EPRIS / editorial')}</span></div>`).join('')}</div>` : '<div class="homepage-layout-visual-placeholder">Новые статьи будут наследоваться из общей публикационной ленты.</div>'}</div>`;
+        }
+        if (key === 'reviews') {
+          /* Превью обзоров показывает ровно то, что попадёт на главную: три
+             карточки, главный обзор первым. Иначе редактор двигает секции
+             вслепую и узнаёт результат уже на сайте. */
+          const featuredFirst = (Array.isArray(data.reviews) ? data.reviews : []).slice()
+            .sort((a, b) => Number(Boolean(b?.featured)) - Number(Boolean(a?.featured)))
+            .slice(0, 3);
+          return `<div class="homepage-layout-visual-block"><span class="homepage-layout-visual-kicker">Reviews · ${featuredFirst.length ? 'главный обзор первым' : 'пока пусто'}</span>${featuredFirst.length
+            ? `<div class="homepage-layout-visual-articles">${featuredFirst.map((review) => `<div class="homepage-layout-visual-article"><strong>${esc(String(review?.title || 'Без названия'))}</strong><span>${esc([review?.featured ? 'Featured' : '', review?.category || ''].filter(Boolean).join(' · '))}</span></div>`).join('')}</div>`
+            : '<div class="homepage-layout-visual-placeholder">Добавьте обзор — секция скроется, пока их нет.</div>'}</div>`;
         }
         if (key === 'showcase') return `<div class="homepage-layout-visual-block"><span class="homepage-layout-visual-kicker">Showcase</span><div class="homepage-layout-visual-placeholder">A vitrine of set design and conceptual art · ${data?.homepage?.showcase?.enabled === false ? 'анонс скрыт' : 'анонс включён'}</div></div>`;
         const archiveCount = Array.isArray(data.homepageArchive) ? data.homepageArchive.length : 0;
@@ -11006,6 +11030,26 @@ function bindStudioMediaActions() {
         });
       if (missingDescriptions.length) errors.push(`${group.label}: нет описания на языках ${missingDescriptions.join(', ')} — нажмите «Синхронизировать».`);
     });
+
+    /* ЧТО ГЛАВНАЯ ПОКАЖЕТ НА САМОМ ДЕЛЕ.
+
+       Секция может быть включена и при этом пустой — тогда на сайте она просто
+       не отрисуется, и редактор узнаёт об этом последним, уже с живой страницы.
+       Проверяем ровно те условия, по которым публичная страница решает не
+       показывать блок. */
+    const articlePool = (Array.isArray(data?.articles) ? data.articles : []).filter((article) => !article?.hideOnHome && !article?.draft);
+    const layoutVisibility = data?.homepage?.layout?.visibility || {};
+    if (layoutVisibility.articles !== false) {
+      if (!articlePool.length) errors.push('Секция Articles включена, но на главную не попадает ни одна статья (все скрыты или черновики).');
+      else if (articlePool.length < 3) warnings.push(`На главной место под три статьи, доступно ${articlePool.length}.`);
+    }
+    if (layoutVisibility.reviews !== false) {
+      const reviewPool = (Array.isArray(data?.reviews) ? data.reviews : []).filter((review) => !review?.draft);
+      if (!reviewPool.length) warnings.push('Секция Reviews включена, но обзоров нет — на главной она не появится.');
+      else if (!reviewPool.some((review) => review?.featured)) warnings.push('Ни один обзор не отмечен главным — порядок на главной будет произвольным.');
+      if (data?.visibility?.reviews === false) warnings.push('Раздел «Обзоры» выключен целиком — блок на главной тоже скрыт.');
+    }
+
     return { errors, warnings };
   }
 
