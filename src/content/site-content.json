@@ -19009,6 +19009,71 @@
             }
           ],
           "updatedAt": "2026-08-16T14:19:25.861Z"
+        },
+        {
+          "id": 23,
+          "draft": true,
+          "title": "Koro Uygulaması: ",
+          "author": "EPRIS Journal",
+          "role": "Editör Masası",
+          "date": "17 Ağustos 2026",
+          "excerpt": "Yeni bir editoryal hikaye için odaklanmış bir açılış paragrafı.",
+          "category": "Kültür",
+          "subcategory": "Özellik",
+          "tags": [
+            "hikaye",
+            "kültür",
+            "editoryal"
+          ],
+          "imageSeed": "new-editorial-story",
+          "content": [
+            {
+              "type": "metin",
+              "content": "Yaratıcı keşfin kişisel dönüşümle yakından iç içe geçtiği yeni bir ülkede kendi projenizi yaratmak her zaman cesur bir adımdır. Merkezi Lizbon, Portekiz'de bulunan Chora Practice'in kurucuları Alena ve Ksenia, herhangi bir krizi nasıl bir büyüme noktasına dönüştürebileceğinizi, dünyada neden \"yaratıcı olmayan\" insanların bulunmadığını ve gerçekten sevdiğiniz şeyi yapmak için kendinize nasıl izin vereceğinizi anlatıyor. Bu, hayattan zevk alma, müzeler, “saçmalıklarla” meşgul olma cesareti ve içsel dürtülerinizi dinleme sanatı hakkında bir konuşma."
+            },
+            {
+              "type": "görüntü",
+              "content": "yeni-editoryal-hikaye-2",
+              "caption": "Potansiyel müşteri resmi"
+            },
+            {
+              "type": "alıntı",
+              "content": "Buraya hatırlamaya değer bir satır ekleyin."
+            },
+            {
+              "type": "Not",
+              "content": "Editoryal not, kaynak bağlamı veya kısa bir özet."
+            },
+            {
+              "type": "kontrol listesi",
+              "caption": "Neyi kapsamalı",
+              "content": {
+                "items": [
+                  "Bağlam",
+                  "Önemli ayrıntı",
+                  "İnsan açısı",
+                  "Bundan sonra ne değişecek?"
+                ]
+              }
+            },
+            {
+              "type": "anket",
+              "content": {
+                "question": "Bundan sonra neyi keşfetmemiz gerekiyor?",
+                "options": [
+                  {
+                    "label": "Daha fazla bağlam",
+                    "votes": 0
+                  },
+                  {
+                    "label": "Pratik kılavuz",
+                    "votes": 0
+                  }
+                ]
+              }
+            }
+          ],
+          "updatedAt": "2026-08-18T05:42:24.205Z"
         }
       ],
       "reviews": [
