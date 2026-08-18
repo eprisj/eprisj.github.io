@@ -19696,7 +19696,9 @@ function formShortUrl(form) {
 
 function formPublicUrl(form, token) {
   const base = `https://eprisjournal.com/form/${form.slug}`;
-  return token ? `${base}?t=${token}` : base;
+  // Персональная ссылка теперь читается: /f/<анкета>/<имя>, без параметров и
+  // случайных знаков. Старый вид со знаком вопроса сервер по-прежнему принимает.
+  return token ? `https://eprisjournal.com/f/${form.slug}/${token}` : base;
 }
 
 async function loadForms(selectId) {

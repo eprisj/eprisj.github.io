@@ -92,6 +92,18 @@ const server = http.createServer(async (req, res) => {
     }
 
     /* ── Публично: открытая анкета и отправка ответа ───────────────────── */
+    /* Приглашение можно передать и путём, и параметром: путь /i/<имя> нужен
+       для красивой ссылки в письме, параметр ?t= остаётся ради ссылок,
+       которые уже разосланы. */
+    if (req.method === "GET" && parts[0] === "public" && parts[1] && parts[2] === "i" && parts[3]) {
+      url.searchParams.set("t", parts[3]);
+      parts.length = 2;
+    }
+    if (req.method === "POST" && parts[0] === "public" && parts[1] && parts[2] === "i" && parts[3] && parts[4]) {
+      url.searchParams.set("t", parts[3]);
+      parts.splice(2, 2);
+    }
+
     if (req.method === "GET" && parts[0] === "public" && parts[1]) {
       const form = F.findFormBySlug(parts[1]);
       if (!form) return send(res, 404, { ok: false, error: "form not found" });
@@ -373,7 +385,17 @@ const server = http.createServer(async (req, res) => {
     if (req.method === "POST" && parts[1] === "invites") {
       const body = await readBody(req);
       const label = F.clean(body?.label, 120) || "Автор";
-      const invite = { token: F.newId() + F.newId().slice(0, 6), label, createdAt: F.nowIso(), usedAt: null, uses: 0, revoked: false };
+      /* Ключ приглашения делается из имени, а не из случайных цифр: ссылку
+         вставляют в письмо человеку, и «?t=c48d35d5f6f5958105ae27c8» в ней
+         выглядит как техническая ошибка. Совпадение имён разводится номером.
+         Секретности здесь и не требовалось: приглашение говорит, ЧЬЙ это
+         ответ, а не охраняет тайну; кто получил ссылку, тот и отвечает. */
+      const base = F.slugify(label) || "guest";
+      const taken = new Set(form.invites.map((item) => item.token));
+      let token = base;
+      let n = 2;
+      while (taken.has(token) && n < 50) { token = `${base}-${n}`; n += 1; }
+      const invite = { token, label, createdAt: F.nowIso(), usedAt: null, uses: 0, revoked: false };
       form.invites.push(invite);
       form.updatedAt = F.nowIso();
       await F.writeJsonAtomic(F.formPath(form.id), form);
