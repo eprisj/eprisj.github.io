@@ -12,7 +12,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=4.88" />
+    <link rel="stylesheet" href="./styles.css?v=4.89" />
     <link rel="stylesheet" href="./brandbook.css?v=3" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -229,21 +229,26 @@
               Сохранить
             </button>
           </div>
-          <!-- Возврат черновика: появляется, только если в корзине что-то есть,
-               иначе это кнопка «ничего не делать» на видном месте. -->
-          <button id="draftTrashBtn" class="sidebar-btn sidebar-btn-recover" type="button" hidden>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
-            Вернуть черновик
-          </button>
-          <label class="sidebar-autosave" for="autosaveVpsToggle" title="Каждые 2 минуты отправлять правки на VPS. Сайт обновляется сразу.">
-            <input type="checkbox" id="autosaveVpsToggle">
-            <span>Автосохранение сразу на сайт</span>
-          </label>
+          <!-- Страховка от потери работы: две мелкие кнопки в одну строку и
+               одна строка состояния. Раньше это были три полноразмерные
+               кнопки и два абзаца текста — панель раздувалась вдвое ради
+               того, что нажимают раз в месяц. -->
+          <div class="sidebar-recovery">
+            <button id="draftTrashBtn" class="sidebar-mini-btn" type="button" hidden title="Вернуть черновик из корзины">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+              Черновик
+            </button>
+            <button id="autosaveHistoryBtn" class="sidebar-mini-btn" type="button" hidden title="История автоснимков">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              Снимки
+            </button>
+            <label class="sidebar-switch" for="autosaveVpsToggle" title="Каждые 2 минуты отправлять правки на VPS. Сайт обновляется сразу.">
+              <input type="checkbox" id="autosaveVpsToggle">
+              <span class="sidebar-switch-track"><i></i></span>
+              <span class="sidebar-switch-label">Авто&#8209;публикация</span>
+            </label>
+          </div>
           <div id="autosave-status" class="autosave-status"></div>
-          <button id="autosaveHistoryBtn" class="sidebar-btn sidebar-btn-recover" type="button" hidden>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-            История автоснимков
-          </button>
           <div class="sidebar-secondary-actions">
             <button id="deployVpsBtn" class="sidebar-btn-ghost" type="button">
               <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 16V4"></path><path d="m7 9 5-5 5 5"></path><path d="M5 20h14"></path></svg>
