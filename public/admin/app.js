@@ -1095,14 +1095,44 @@ function isEditorDirty() {
   return current !== lastSyncedSnapshot;
 }
 
+/* Несохранённое видно не только строчкой в углу.
+
+   Мария сделала карточки галереи, увидела в панели «есть локальные изменения»
+   и решила, что работа сохранена: слово «сохранились» в её понимании и
+   означало это. На сайт карточки не попали, потому что живой номер меняет
+   только публикация.
+
+   Поэтому при несохранённых правках сверху появляется полоса: она говорит
+   прямо, что читатели этих изменений не видят, и даёт кнопку, которой их
+   можно выпустить, не разыскивая её в панели. */
+function ensurePublishBanner() {
+  let banner = document.getElementById('unpublishedBanner');
+  if (banner) return banner;
+  banner = document.createElement('div');
+  banner.id = 'unpublishedBanner';
+  banner.className = 'unpublished-banner';
+  banner.innerHTML = '<span class="unpublished-dot"></span>'
+    + '<span class="unpublished-text">Изменения сохранены только в браузере. На сайте их пока нет.</span>'
+    + '<button type="button" class="btn btn-primary btn-sm" id="unpublishedPublish">Опубликовать</button>';
+  document.body.appendChild(banner);
+  banner.querySelector('#unpublishedPublish').addEventListener('click', () => {
+    // Тот же путь, что и у кнопки «Сохранить»: одно место, где решается, что
+    // значит «опубликовать».
+    if (typeof saveToGitHub === 'function') saveToGitHub();
+  });
+  return banner;
+}
+
 function updateEditorState() {
   editorStateEl.className = 'editor-state';
-  if (isEditorDirty()) {
+  const dirty = isEditorDirty();
+  if (dirty) {
     editorStateEl.classList.add('dirty');
-    editorStateEl.textContent = 'Есть локальные изменения. Нажмите «Сохранить запись» или общий «Сохранить», чтобы отправить их на VPS.';
+    editorStateEl.textContent = 'Есть локальные изменения. Нажмите «Сохранить запись» или «Опубликовать».';
   } else {
     editorStateEl.textContent = 'Все изменения синхронизированы.';
   }
+  ensurePublishBanner().classList.toggle('is-visible', dirty);
   updateLastSyncedBadge();
 }
 
