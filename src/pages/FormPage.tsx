@@ -488,21 +488,37 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
           }
           if (!isVisible(field)) return null;
           questionNumber += 1;
+          /* Вопрос часто приходит с собственной нумерацией: редакция пишет
+             «1. Ваши интерьеры…», как в письме. Своя нумерация страницы тогда
+             становится вторым числом рядом с первым, и они не совпадают:
+             «03» слева и «1.» в тексте. Если номер уже есть в тексте, берём
+             его и убираем из подписи, чтобы число осталось одно и верное. */
+          const written = String(field.label || '').match(/^\s*(\d{1,2})[.)]\s+(.*)$/s);
+          const shownNumber = written ? written[1].padStart(2, '0') : String(questionNumber).padStart(2, '0');
+          const shownLabel = written ? written[2] : field.label;
           const missing = missingFields.includes(field.id);
           const value = answers[field.id];
           return (
             <div key={field.id} id={`field-${field.id}`} className="scroll-mt-24">
-              {/* Номер вопроса слева от текста: по нему понятно, где ты в
-                  анкете, и на него ссылаются в переписке с редактором. */}
-              <div className="flex gap-3">
-                <span className="mt-[3px] shrink-0 font-mono text-[11px] tabular-nums text-[rgb(var(--c-accent-rgb)_/_0.35)]">
-                  {String(questionNumber).padStart(2, '0')}
+              {/* Номер вопроса: на телефоне над текстом, на широком экране
+                  слева от него. Колонка с числом на узком экране отнимала у
+                  длинного вопроса пятую часть строки и рвала его на слоги. */}
+              <div className="flex flex-col gap-1 sm:flex-row sm:gap-3">
+                <span className="shrink-0 font-mono text-[11px] tabular-nums text-[rgb(var(--c-accent-rgb)_/_0.4)] sm:mt-[3px]">
+                  {shownNumber}
                 </span>
                 <div className="min-w-0 flex-1">
                   <label className="block font-serif text-[17px] leading-snug text-[var(--c-accent)]" htmlFor={`input-${field.id}`}>
-                    {field.label}
+                    {shownLabel}
                     {field.required && (
-                      <span className="ml-2 align-[2px] font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.4)]">{t.requiredMark}</span>
+                      /* Неразрывный пробел перед пометкой: иначе слово
+                         «обязательно» отрывается от вопроса и висит одно на
+                         новой строке, что на узком экране читается как
+                         отдельная мысль. */
+                      <>
+                        {'\u00A0'}
+                        <span className="whitespace-nowrap align-[2px] font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.4)]">{t.requiredMark}</span>
+                      </>
                     )}
                   </label>
                   {field.hint && <p className="mt-1.5 font-serif text-[14px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.6)]">{field.hint}</p>}
