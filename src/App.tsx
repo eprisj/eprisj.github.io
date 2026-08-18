@@ -606,20 +606,25 @@ function routePosition(routeKey: string): number {
 }
 
 function RouteTransition({ routeKey, direction, children }: { routeKey: string; direction: number; children: ReactNode }) {
+  /* Раздел появляется через CSS-анимацию входа, а не через AnimatePresence.
+     Прежняя обвязка (mode="wait" вокруг motion.div с key={routeKey}) на этой
+     связке версий вела себя так: уходящий маршрут не доигрывал exit и не
+     размонтировался, а входящий оставался на initial, то есть с нулевой
+     непрозрачностью. Наружу это выглядело как сломанный сайт — адрес и
+     заголовок вкладки менялись, содержимое нет, а узлы разделов копились в
+     DOM один поверх другого. Поиск был лишь самым заметным следствием.
+
+     Смена key заставляет React размонтировать прошлый раздел — здесь это
+     гарантия, а не побочный эффект анимации. Направление перехода остаётся
+     осмысленным: оно задаёт сторону, с которой раздел выезжает. */
   return (
-    <AnimatePresence initial={false} mode="wait" custom={direction}>
-      <motion.div
-        key={routeKey}
-        custom={direction}
-        variants={routeVariants}
-        initial="enter"
-        animate="center"
-        exit="exit"
-        className="route-motion-surface min-h-[calc(100dvh-4rem)]"
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
+    <div
+      key={routeKey}
+      data-route-direction={direction >= 0 ? 'forward' : 'back'}
+      className="route-motion-surface route-motion-enter min-h-[calc(100dvh-4rem)]"
+    >
+      {children}
+    </div>
   );
 }
 
@@ -3886,6 +3891,7 @@ export default function App() {
   useEffect(() => {
     updateMetaTags(selectedArticle, selectedReview, activeTab, activeSearch, siteSettings);
   }, [selectedArticle, selectedReview, activeTab, activeSearch, contentVersion]);
+
 
   const handleImageClick = useCallback((src: string, alt: string, description?: string, title?: string) => {
     setLightboxImage({ src, alt, description, title });
