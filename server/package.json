@@ -1,0 +1,6 @@
+{
+  "name": "epris-server-modules",
+  "private": true,
+  "//": "Корневой package.json объявляет type: module ради сборки сайта, а эти службы написаны на CommonJS и живут на VPS отдельными процессами. Свой package.json возвращает им CommonJS, не трогая сборку фронтенда.",
+  "type": "commonjs"
+}
