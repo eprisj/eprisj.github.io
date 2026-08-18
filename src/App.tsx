@@ -16,6 +16,7 @@ const BureauPage = lazy(() => import('./showcase/BureauPage').then((m) => ({ def
 const ShowcaseTeaser = lazy(() => import('./showcase/ShowcaseTeaser').then((m) => ({ default: m.ShowcaseTeaser })));
 const StagePage = lazy(() => import('./stage/StagePage').then((m) => ({ default: m.StagePage })));
 const FuturoshockPage = lazy(() => import('./FuturoshockPage').then((m) => ({ default: m.FuturoshockPage })));
+const FormPage = lazy(() => import('./pages/FormPage').then((m) => ({ default: m.FormPage })));
 import {
   Article,
   Author,
@@ -3340,7 +3341,7 @@ function findMatchingArticle(item: Item, articles: Article[]): Article | undefin
   return articles.find((a) => a.title && base(a.title) === itemBase);
 }
 
-function parsePath(pathname: string, search = ''): { tab?: string; articleId?: number; reviewId?: number; passportCode?: string; searchQuery?: string } {
+function parsePath(pathname: string, search = ''): { tab?: string; articleId?: number; reviewId?: number; passportCode?: string; searchQuery?: string; formSlug?: string } {
   const p = pathname.replace(/^\//, '').replace(/\/$/, '');
   if (!p) return {};
   if (p === 'search') {
@@ -3365,6 +3366,12 @@ function parsePath(pathname: string, search = ''): { tab?: string; articleId?: n
     const id = SLUG_MAP.get(slugMatch[1]);
     if (id !== undefined) return { tab: 'articles', articleId: id };
   }
+  /* Анкета автора. Живёт отдельным адресом, а не вкладкой: ссылку присылают
+     человеку, который на сайт до этого не заходил, и она должна открывать
+     ровно анкету — без меню номера и без остальной витрины. */
+  const formMatch = p.match(/^form\/([a-z0-9-]{1,80})$/i);
+  if (formMatch) return { tab: 'form', formSlug: formMatch[1] };
+
   const passportMatch = p.match(/^passport(?:\/([A-Za-z0-9-]+))?$/);
   if (passportMatch) return { tab: 'passport', passportCode: passportMatch[1] || undefined };
   if (VALID_TABS.includes(p)) return { tab: p };
@@ -3619,6 +3626,13 @@ export default function App() {
   const [previewArticleId, setPreviewArticleId] = useState<number | null>(null);
   const [selectedReviewId, setSelectedReviewId] = useState<number | null>(initialRoute.reviewId ?? null);
   const [passportCode, setPassportCode] = useState<string | undefined>(initialRoute.passportCode);
+  /* Адрес анкеты и персональный токен приглашения читаются один раз при
+     загрузке: страница анкеты не участвует в навигации по вкладкам, к ней
+     приходят по прямой ссылке и уходят с неё на сайт. */
+  const [formSlug] = useState<string | undefined>(initialRoute.formSlug);
+  const [formToken] = useState<string | undefined>(() => {
+    try { return new URLSearchParams(window.location.search).get('t') || undefined; } catch { return undefined; }
+  });
   const [currentLang, setCurrentLang] = useState(() => {
     try {
       const stored = localStorage.getItem('epris_language');
@@ -4043,6 +4057,10 @@ export default function App() {
         ) : activeTab === 'podcasts' ? (
           <LazyTab>
             <PodcastsPage t={t} />
+          </LazyTab>
+        ) : activeTab === 'form' ? (
+          <LazyTab>
+            <FormPage slug={formSlug || ''} token={formToken || undefined} />
           </LazyTab>
         ) : activeTab === 'passport' ? (
           <LazyTab>
