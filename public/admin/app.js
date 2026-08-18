@@ -2987,17 +2987,23 @@ async function publishContentToVps({ note = 'Публикую на VPS...' } = {
 async function syncLanguagesAfterPublish(parsed, pw) {
   try {
     const syncSummary = await ensureAllContentLanguages(parsed, visualLangSelect.value || DEFAULT_LANGUAGE);
-    if (!syncSummary.created) {
+    const total = (syncSummary.created || 0) + (syncSummary.interfaceUpdated || 0);
+    if (!total) {
       setStatus('success', 'Опубликовано на VPS — сайт обновлён мгновенно');
       return;
     }
     setEditorData(parsed);
-    setStatus('info', `Создано переводов: ${syncSummary.created}. Досохраняю...`);
+    setStatus('info', `Достроено переводов: ${total}. Досохраняю...`);
     await postContentToVps(parsed, pw);
     setLastSyncedSnapshotFromText(editor.value);
     lastSyncedTime = new Date();
     updateLastSyncedBadge();
-    setStatus('success', `Опубликовано на VPS. Достроено переводов: ${syncSummary.created}.`);
+    /* Тексты секций считаются отдельно от записей: редактор должен видеть, что
+       автоматически перевелось не только содержимое, но и подписи разделов. */
+    const parts = [];
+    if (syncSummary.created) parts.push(`записей: ${syncSummary.created}`);
+    if (syncSummary.interfaceUpdated) parts.push(`текстов секций: ${syncSummary.interfaceUpdated}`);
+    setStatus('success', `Опубликовано на VPS. Достроено переводов — ${parts.join(', ')}.`);
   } catch (error) {
     setStatus('success', 'Опубликовано на VPS. Автоперевод не отработал.');
     showToast?.('error', `Контент сохранён, но автоперевод не отработал: ${getErrorMessage(error)}. Переводы можно достроить на вкладке «Переводы».`);
@@ -6707,22 +6713,31 @@ async function translateText(value, targetLang, sourceLang = DEFAULT_LANGUAGE) {
     return translationCache.get(cacheKey);
   }
 
+  /* ПЕРЕВОД ИДЁТ ЧЕРЕЗ НАШ СЕРВЕР, А НЕ НАПРЯМУЮ В GOOGLE.
+
+     Браузер редакции стучался в публичный translate.googleapis.com — тот
+     самый, который сейчас отвечает 429 всем подряд. Поэтому кнопки перевода
+     в админке падали ровно тогда, когда переводить было нужнее всего.
+
+     На сервере уже есть цепочка с OpenAI во главе и бесплатными ступенями
+     под ней. Одно место, где решается «чем переводим», один ключ, одна
+     диагностика в логах. */
   const translatedParts = [];
   for (const chunk of splitTextForTranslation(text)) {
-    const url = new URL('https://translate.googleapis.com/translate_a/single');
-    url.searchParams.set('client', 'gtx');
-    url.searchParams.set('sl', sourceCode);
-    url.searchParams.set('tl', targetCode);
-    url.searchParams.set('dt', 't');
-    url.searchParams.set('q', chunk);
-
-    const response = await fetch(url.toString(), { cache: 'no-store' });
+    const response = await fetch('https://api.eprisjournal.com/translate-text', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ texts: [chunk], target: targetCode.toUpperCase() }),
+    });
     if (!response.ok) {
       throw new Error(`Сервис перевода ответил HTTP ${response.status}. Попробуйте позже.`);
     }
-
-    const payload = await response.json();
-    translatedParts.push(readGoogleTranslatePayload(payload) || chunk);
+    const payload = await response.json().catch(() => ({}));
+    const translated = Array.isArray(payload?.texts) ? payload.texts[0] : '';
+    if (!payload?.ok || !translated) {
+      throw new Error(`Перевод не удался: ${payload?.error || 'пустой ответ'}`);
+    }
+    translatedParts.push(translated);
   }
 
   const translated = translatedParts.join('');
@@ -7139,6 +7154,93 @@ function getConcreteEntryIds(data, section) {
   return Array.from(ids).filter(Number.isFinite);
 }
 
+/* ═══ ТЕКСТЫ СЕКЦИЙ ПЕРЕВОДЯТСЯ САМИ ══════════════════════════════════════
+
+   Заголовки и описания разделов главной («Articles», «Reviews», пояснения под
+   ними) живут не в статьях, а в словаре интерфейса. Достройка языков их не
+   касалась: она обходит статьи, карточки, обзоры и библиотеку. Поэтому
+   редактор менял заголовок секции по-английски, а на шести других языках
+   оставался прежний текст — и не менялся никогда, потому что руками эти
+   ключи никто не открывает.
+
+   Теперь при каждой публикации словарь подтягивается сам:
+   • ключа нет или он пуст — переводим;
+   • английский оригинал изменился — переводим заново.
+   Второе важнее первого: без отпечатка источника перевод «застывал» на первой
+   версии текста, и правка заголовка тихо расходилась по языкам.
+
+   Отпечаток простой и короткий — не для защиты, а чтобы отличить «текст тот
+   же» от «текст переписали». */
+function textFingerprint(value) {
+  const text = String(value == null ? '' : value);
+  let hash = 0;
+  for (let i = 0; i < text.length; i += 1) {
+    hash = ((hash << 5) - hash + text.charCodeAt(i)) | 0;
+  }
+  return `${text.length}:${hash.toString(36)}`;
+}
+
+async function translateBatchViaServer(texts, targetLang) {
+  const res = await fetch('https://api.eprisjournal.com/translate-text', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ texts, target: String(targetLang).toUpperCase() }),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || !data?.ok || !Array.isArray(data.texts) || data.texts.length !== texts.length) {
+    throw new Error(data?.error || `перевод ответил ${res.status}`);
+  }
+  return data.texts;
+}
+
+async function syncInterfaceTranslations(data, sourceLang = DEFAULT_LANGUAGE) {
+  if (!data.translations || typeof data.translations !== 'object') return { updated: 0 };
+  const source = data.translations[sourceLang];
+  if (!source) return { updated: 0 };
+  if (!data.translationsSource || typeof data.translationsSource !== 'object') data.translationsSource = {};
+
+  const languages = Object.keys(data.translations).filter((lang) => lang !== sourceLang);
+  let updated = 0;
+
+  for (const lang of languages) {
+    const target = data.translations[lang] || (data.translations[lang] = {});
+    const stale = Object.keys(source).filter((key) => {
+      const sourceText = String(source[key] || '').trim();
+      if (!sourceText) return false;
+      // Ссылки, адреса и одиночные символы переводить нечего и незачем.
+      if (isLikelyMediaOrUrl(sourceText) || sourceText.length < 2) return false;
+      const current = String(target[key] || '').trim();
+      if (!current) return true;
+      const seen = data.translationsSource[`${lang}:${key}`];
+      return seen !== textFingerprint(sourceText);
+    });
+    if (!stale.length) continue;
+
+    /* Пачками по двадцать: один запрос на ключ — это сотни обращений и
+       минуты ожидания, а одна пачка на весь словарь упирается в предел длины
+       ответа модели. */
+    for (let i = 0; i < stale.length; i += 20) {
+      const chunk = stale.slice(i, i + 20);
+      const texts = chunk.map((key) => String(source[key]));
+      setStatus('info', `Перевожу тексты интерфейса: ${lang} (${i + chunk.length}/${stale.length})…`);
+      try {
+        const translated = await translateBatchViaServer(texts, lang);
+        chunk.forEach((key, index) => {
+          target[key] = translated[index];
+          data.translationsSource[`${lang}:${key}`] = textFingerprint(String(source[key]));
+          updated += 1;
+        });
+      } catch (error) {
+        // Сбой одной пачки не должен останавливать остальные языки: следующая
+        // публикация доведёт недостающее.
+        console.warn('[i18n] пачка не перевелась', lang, error.message);
+      }
+    }
+  }
+
+  return { updated };
+}
+
 async function ensureAllContentLanguages(data, preferredSourceLang = DEFAULT_LANGUAGE) {
   const sections = ['articles', 'items', 'reviews', 'libraryItems'];
   let created = 0;
@@ -7152,7 +7254,11 @@ async function ensureAllContentLanguages(data, preferredSourceLang = DEFAULT_LAN
     }
   }
 
-  return { created };
+  // Тексты секций главной идут тем же проходом: они такая же часть номера,
+  // как статья, и точно так же не должны оставаться на одном языке.
+  const interface_ = await syncInterfaceTranslations(data, preferredSourceLang);
+
+  return { created, interfaceUpdated: interface_.updated };
 }
 
 function findEntryInLanguage(data, section, lang, selectedId) {
