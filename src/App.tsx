@@ -3881,20 +3881,21 @@ export default function App() {
      середине списка статей — ровно там, где была кнопка. Выглядит так, будто
      ничего не произошло, только пропала половина страницы.
 
-     Одного requestAnimationFrame мало, и это видно только на живой странице:
-     в тот момент новый раздел ещё не отрисован, страница короткая, прокрутка в
-     ноль проходит вхолостую — а когда список статей появляется, браузерное
-     якорение прокрутки (overflow anchor) возвращает читателя туда, где он был.
-     Поэтому мгновенная прокрутка повторяется после отрисовки, а не сглаженная:
-     плавную анимацию якорение перебивает на полпути. */
+     Тонкость в двух вещах, и обе видны только на собранной странице.
+
+     Первая: в html стоит `scroll-behavior: smooth`, поэтому behavior 'auto'
+     означает не «мгновенно», а «как задано в CSS» — читателя плавно везло
+     через полстраницы, и переход выглядел как долгая поездка вместо смены
+     раздела. Нужен явный 'instant'.
+
+     Вторая: одного requestAnimationFrame мало — в этот момент новый раздел ещё
+     не отрисован, страница короткая, и прокрутка проходит вхолостую. Поэтому
+     тот же мгновенный переход повторяется после отрисовки. */
   const scrollToTop = useCallback(() => {
-    const jump = () => window.scrollTo({ top: 0, behavior: 'auto' });
+    const jump = () => window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
     jump();
-    window.requestAnimationFrame(() => {
-      jump();
-      window.requestAnimationFrame(jump);
-    });
-    window.setTimeout(jump, 160);
+    window.requestAnimationFrame(jump);
+    window.setTimeout(jump, 180);
   }, []);
 
   const openSection = useCallback((tab: string) => {
