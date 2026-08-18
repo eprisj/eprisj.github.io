@@ -16,7 +16,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=5.00" />
+    <link rel="stylesheet" href="./styles.css?v=5.10" />
     <link rel="stylesheet" href="./brandbook.css?v=3" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -71,6 +71,11 @@
 
       <!-- ══ SIDEBAR ══ -->
       <aside class="sidebar" id="sidebar">
+
+        <button id="sbCollapseBtn" class="sb-collapse" type="button" aria-controls="sidebar" aria-expanded="true" title="Свернуть меню (клавиша [)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6 9 12l6 6"/></svg>
+          <span class="sr-only">Свернуть меню</span>
+        </button>
 
         <a class="sb-brand" href="../" target="_blank" rel="noreferrer" aria-label="Открыть сайт EPRIS Journal">
           <span class="sb-brand-mark" aria-hidden="true">E</span>
@@ -1006,7 +1011,7 @@
                       </div>
                     </label>
                     <div class="photo-preview creator-field-wide">
-                      <img id="creatorImagePreview" src="" alt="Превью" loading="lazy" referrerpolicy="no-referrer" hidden style="max-height:90px;object-fit:contain;margin-top:4px;border-radius:var(--radius-sm);" />
+                      <img id="creatorImagePreview" src="" alt="Превью" loading="lazy" referrerpolicy="no-referrer" hidden style="max-height:90px;object-fit:contain;margin-top:4px;border-radius:0;" />
                     </div>
                   </div>
                   <div class="creator-actions">
@@ -1780,15 +1785,15 @@
                     <div style="padding:16px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px"><h3 class="card-title" style="margin:0;flex:1">Загрузить трек</h3></div>
                     <div style="padding:20px;display:grid;gap:12px">
                       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Название<input id="trackTitle" type="text" placeholder="Название трека" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" /></label>
-                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Исполнитель<input id="trackArtist" type="text" placeholder="Исполнитель" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" /></label>
+                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Название<input id="trackTitle" type="text" placeholder="Название трека" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text)" /></label>
+                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Исполнитель<input id="trackArtist" type="text" placeholder="Исполнитель" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text)" /></label>
                       </div>
-                      <div id="trackDropZone" style="border:2px dashed var(--line);border-radius:6px;padding:32px;text-align:center;cursor:pointer">
+                      <div id="trackDropZone" style="border:2px dashed var(--line);border-radius:0;padding:32px;text-align:center;cursor:pointer">
                         <div style="font-size:.9rem;font-weight:700;color:var(--text-muted)">Перетащите аудиофайл или нажмите</div>
                         <div style="font-size:.75rem;color:var(--text-muted);margin-top:4px">MP3, WAV, OGG, FLAC, M4A · макс. 300 МБ</div>
                         <input id="trackFileInput" type="file" accept=".mp3,.wav,.ogg,.flac,.m4a,.aac,.opus,.webm" multiple style="display:none" />
                       </div>
-                      <div id="trackUploadProgress" style="display:none"><div style="height:4px;background:var(--line);border-radius:2px;overflow:hidden"><div id="trackProgressBar" style="height:100%;background:var(--accent);width:0%;transition:width .3s"></div></div><p id="trackProgressLabel" style="font-size:.72rem;color:var(--text-muted);margin:4px 0 0"></p></div>
+                      <div id="trackUploadProgress" style="display:none"><div style="height:4px;background:var(--line);border-radius:0;overflow:hidden"><div id="trackProgressBar" style="height:100%;background:var(--accent);width:0%;transition:width .3s"></div></div><p id="trackProgressLabel" style="font-size:.72rem;color:var(--text-muted);margin:4px 0 0"></p></div>
                       <div style="display:flex;gap:8px"><button class="btn btn-primary btn-sm" type="button" id="trackUploadBtn">Загрузить</button><button class="btn btn-sm" type="button" id="trackRefreshBtn">↻ Обновить</button></div>
                     </div>
                   </div>
@@ -1802,14 +1807,14 @@
                     <div style="padding:16px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px"><h3 class="card-title" style="margin:0;flex:1">Подкасты</h3><button class="btn btn-sm btn-primary" type="button" id="podcastNewBtn">+ Новый</button><button class="btn btn-sm" type="button" id="podcastRefreshBtn">↻</button></div>
                     <div id="podcastForm" style="display:none;padding:20px;border-bottom:1px solid var(--line);background:var(--bg-card)">
                       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
-                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Название *<input id="podcastTitle" type="text" placeholder="Название эпизода" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" /></label>
-                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Аудио *<div style="display:flex;gap:6px;align-items:center"><input id="podcastAudioUrl" type="url" placeholder="https://..." style="flex:1;background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" /><button class="btn btn-sm" type="button" id="podcastAudioUploadBtn">📁 Файл</button><input id="podcastAudioFileInput" type="file" accept=".mp3,.wav,.ogg,.flac,.m4a,.aac,.opus,.webm,.mp4" style="display:none" /></div><div id="podcastAudioProgress" style="display:none;margin-top:4px"><div style="height:3px;background:var(--line);border-radius:2px;overflow:hidden"><div id="podcastAudioProgressBar" style="height:100%;background:var(--accent);width:0%;transition:width .2s"></div></div><span id="podcastAudioProgressLabel" style="font-size:.7rem;color:var(--text-muted)"></span></div></label>
-                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Обложка<div style="display:flex;gap:6px;align-items:center"><input id="podcastCoverUrl" type="url" placeholder="https://..." style="flex:1;background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" /><button class="btn btn-sm" type="button" id="podcastCoverUploadBtn">📁 Фото</button><input id="podcastCoverFileInput" type="file" accept=".jpg,.jpeg,.png,.webp,.gif,.avif" style="display:none" /></div><div id="podcastCoverProgress" style="display:none;margin-top:4px"><div style="height:3px;background:var(--line);border-radius:2px;overflow:hidden"><div id="podcastCoverProgressBar" style="height:100%;background:var(--accent);width:0%;transition:width .2s"></div></div><span id="podcastCoverProgressLabel" style="font-size:.7rem;color:var(--text-muted)"></span></div></label>
-                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Длительность<input id="podcastDuration" type="text" placeholder="45:30" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" /></label>
-                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Сезон<input id="podcastSeason" type="text" placeholder="Сезон 1 / 2026" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" /></label>
-                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">№ эпизода<input id="podcastEpisode" type="number" min="0" placeholder="1" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" /></label>
-                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted);grid-column:1/-1">Теги (через запятую)<input id="podcastTags" type="text" placeholder="дизайн, интервью, культура" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" /></label>
-                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted);grid-column:1/-1">Описание<textarea id="podcastDesc" rows="2" placeholder="Описание эпизода..." style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text);resize:vertical"></textarea></label>
+                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Название *<input id="podcastTitle" type="text" placeholder="Название эпизода" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text)" /></label>
+                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Аудио *<div style="display:flex;gap:6px;align-items:center"><input id="podcastAudioUrl" type="url" placeholder="https://..." style="flex:1;background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text)" /><button class="btn btn-sm" type="button" id="podcastAudioUploadBtn">📁 Файл</button><input id="podcastAudioFileInput" type="file" accept=".mp3,.wav,.ogg,.flac,.m4a,.aac,.opus,.webm,.mp4" style="display:none" /></div><div id="podcastAudioProgress" style="display:none;margin-top:4px"><div style="height:3px;background:var(--line);border-radius:0;overflow:hidden"><div id="podcastAudioProgressBar" style="height:100%;background:var(--accent);width:0%;transition:width .2s"></div></div><span id="podcastAudioProgressLabel" style="font-size:.7rem;color:var(--text-muted)"></span></div></label>
+                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Обложка<div style="display:flex;gap:6px;align-items:center"><input id="podcastCoverUrl" type="url" placeholder="https://..." style="flex:1;background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text)" /><button class="btn btn-sm" type="button" id="podcastCoverUploadBtn">📁 Фото</button><input id="podcastCoverFileInput" type="file" accept=".jpg,.jpeg,.png,.webp,.gif,.avif" style="display:none" /></div><div id="podcastCoverProgress" style="display:none;margin-top:4px"><div style="height:3px;background:var(--line);border-radius:0;overflow:hidden"><div id="podcastCoverProgressBar" style="height:100%;background:var(--accent);width:0%;transition:width .2s"></div></div><span id="podcastCoverProgressLabel" style="font-size:.7rem;color:var(--text-muted)"></span></div></label>
+                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Длительность<input id="podcastDuration" type="text" placeholder="45:30" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text)" /></label>
+                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Сезон<input id="podcastSeason" type="text" placeholder="Сезон 1 / 2026" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text)" /></label>
+                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">№ эпизода<input id="podcastEpisode" type="number" min="0" placeholder="1" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text)" /></label>
+                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted);grid-column:1/-1">Теги (через запятую)<input id="podcastTags" type="text" placeholder="дизайн, интервью, культура" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text)" /></label>
+                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted);grid-column:1/-1">Описание<textarea id="podcastDesc" rows="2" placeholder="Описание эпизода..." style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text);resize:vertical"></textarea></label>
                         <label class="checkbox-label" style="grid-column:1/-1;font-size:.8rem"><input id="podcastPublished" type="checkbox" checked /> Опубликован (виден на сайте)</label>
                       </div>
                       <div style="display:flex;gap:8px"><button class="btn btn-primary btn-sm" type="button" id="podcastSaveBtn">Сохранить</button><button class="btn btn-sm" type="button" id="podcastCancelBtn">Отмена</button></div>
@@ -1823,11 +1828,11 @@
                     <div style="padding:16px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px"><h3 class="card-title" style="margin:0;flex:1">Анонсы</h3><button class="btn btn-sm btn-primary" type="button" id="annNewBtn">+ Новый</button><button class="btn btn-sm" type="button" id="annRefreshBtn">↻</button></div>
                     <div id="annForm" style="display:none;padding:20px;border-bottom:1px solid var(--line);background:var(--bg-card)">
                       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
-                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Название *<input id="annTitle" type="text" placeholder="Название события" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" /></label>
-                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Дата и время<input id="annDate" type="datetime-local" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" /></label>
-                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Локация<input id="annLocation" type="text" placeholder="Город / Адрес" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" /></label>
-                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Ссылка<input id="annLink" type="url" placeholder="https://..." style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text)" /></label>
-                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted);grid-column:1/-1">Текст<textarea id="annBody" rows="2" placeholder="Описание..." style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:4px;font-size:.82rem;color:var(--text);resize:vertical"></textarea></label>
+                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Название *<input id="annTitle" type="text" placeholder="Название события" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text)" /></label>
+                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Дата и время<input id="annDate" type="datetime-local" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text)" /></label>
+                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Локация<input id="annLocation" type="text" placeholder="Город / Адрес" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text)" /></label>
+                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Ссылка<input id="annLink" type="url" placeholder="https://..." style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text)" /></label>
+                        <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted);grid-column:1/-1">Текст<textarea id="annBody" rows="2" placeholder="Описание..." style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text);resize:vertical"></textarea></label>
                       </div>
                       <div style="display:flex;gap:8px"><button class="btn btn-primary btn-sm" type="button" id="annSaveBtn">Сохранить</button><button class="btn btn-sm" type="button" id="annCancelBtn">Отмена</button></div>
                       <input type="hidden" id="annEditId" value="" />
@@ -2210,7 +2215,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.84" type="module"></script>
+    <script src="./app.js?v=4.85" type="module"></script>
     <script src="../brandbook/data.js?v=1"></script>
     <script src="./brandbook.js?v=3"></script>
     <script>
@@ -2364,6 +2369,10 @@
             /* Активный раздел в свёрнутой группе иначе исчезал бы с глаз. */
             var section = active.closest('.sb-group');
             if (section && section.classList.contains('is-collapsed')) toggleGroup(section.dataset.group);
+            /* Раздел, открытый по ссылке или из другого экрана, может лежать
+               за пределами прокрутки: подтягиваем его в поле зрения, иначе
+               подсветка есть, а увидеть её нельзя. */
+            if (item && item.scrollIntoView) item.scrollIntoView({ block: 'nearest' });
           }
           tabButtons.forEach(function (button) {
             if (button.classList.contains('active')) button.setAttribute('aria-current', 'page');
@@ -2510,6 +2519,49 @@
                      || document.querySelector('.tab-btn[data-tab="' + DEFAULT_TAB + '"]');
           if (openBtn) openBtn.click();
         } catch (e) { /* ignore */ }
+        /* ── Сворачивание панели ────────────────────────────────────────
+           Свёрнутая панель оставляет колонку иконок: подписи прячутся, а
+           не обрезаются, и каждая кнопка получает title, иначе колонка
+           превращается в ребус. Состояние переживает перезагрузку. */
+        var COLLAPSE_KEY = 'epris_admin_nav_collapsed';
+        var sidebarEl = document.getElementById('sidebar');
+        var collapseBtn = document.getElementById('sbCollapseBtn');
+
+        function applyCollapsed(collapsed) {
+          if (!sidebarEl) return;
+          sidebarEl.classList.toggle('is-collapsed', collapsed);
+          if (collapseBtn) {
+            collapseBtn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+            collapseBtn.title = collapsed ? 'Развернуть меню (клавиша [)' : 'Свернуть меню (клавиша [)';
+          }
+          tabButtons.forEach(function (button) {
+            var label = button.dataset.navLabel || button.textContent.trim();
+            if (collapsed) button.title = label;
+            else button.removeAttribute('title');
+          });
+          try { localStorage.setItem(COLLAPSE_KEY, collapsed ? '1' : '0'); } catch (e) { /* приватный режим */ }
+        }
+        function toggleCollapsed() {
+          applyCollapsed(!(sidebarEl && sidebarEl.classList.contains('is-collapsed')));
+        }
+        if (collapseBtn) collapseBtn.addEventListener('click', toggleCollapsed);
+        document.addEventListener('keydown', function (event) {
+          if (event.key !== '[' || event.metaKey || event.ctrlKey || event.altKey) return;
+          var typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement && document.activeElement.tagName)
+            || (document.activeElement && document.activeElement.isContentEditable);
+          if (typing) return;
+          event.preventDefault();
+          toggleCollapsed();
+        });
+        /* Клик по разделу в свёрнутом виде разворачивать панель не должен:
+           это скрытая перестановка интерфейса под курсором. А вот поиск
+           без подписей бессмыслен, поэтому «/» панель разворачивает. */
+        if (sidebarNavSearch) {
+          sidebarNavSearch.addEventListener('focus', function () {
+            if (sidebarEl && sidebarEl.classList.contains('is-collapsed')) applyCollapsed(false);
+          });
+        }
+
         /* На узких экранах низ панели скрыт (сайдбар превращается в док),
            поэтому «Сохранить» переезжает в шапку. Именно ПЕРЕЕЗЖАЕТ: кнопку
            по id ищет половина app.js, второй такой быть не должно. */
@@ -2544,6 +2596,7 @@
           });
         })();
 
+        applyCollapsed(function () { try { return localStorage.getItem(COLLAPSE_KEY) === '1'; } catch (e) { return false; } }());
         applyGroupState();
         applyPins();
         filterSidebarNav();

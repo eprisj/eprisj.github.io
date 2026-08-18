@@ -8783,11 +8783,11 @@ async function renderPollResults() {
   const polls = collectPollsFromContent();
 
   if (!polls.length) {
-    pollResultsGrid.innerHTML = '<p style="color:#94a3b8;text-align:center;padding:32px 0;">Опросы не найдены. Загрузите свежий контент с VPS.</p>';
+    pollResultsGrid.innerHTML = '<p style="color:#8c8c8c;text-align:center;padding:32px 0;">Опросы не найдены. Загрузите свежий контент с VPS.</p>';
     return;
   }
 
-  pollResultsGrid.innerHTML = '<p style="color:#94a3b8;text-align:center;padding:32px 0;">Загружаю онлайн-голоса...</p>';
+  pollResultsGrid.innerHTML = '<p style="color:#8c8c8c;text-align:center;padding:32px 0;">Загружаю онлайн-голоса...</p>';
 
   let html = '';
   for (const poll of polls) {
@@ -8807,14 +8807,14 @@ async function renderPollResults() {
     html += `<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">`;
     html += `<div>`;
     html += `<h3 style="font-size:14px;font-weight:600;margin:0 0 4px;">${escapeHtml(poll.question)}</h3>`;
-    html += `<p style="font-size:12px;color:#94a3b8;margin:0;">Статья: ${escapeHtml(poll.articleTitle)} · блок #${poll.blockIndex + 1}</p>`;
+    html += `<p style="font-size:12px;color:#8c8c8c;margin:0;">Статья: ${escapeHtml(poll.articleTitle)} · блок #${poll.blockIndex + 1}</p>`;
     if (poll.localizedLanguages.length) {
-      html += `<p style="font-size:11px;color:#64748b;margin:4px 0 0;">Переводы статьи: ${escapeHtml(poll.localizedLanguages.join(', '))}</p>`;
+      html += `<p style="font-size:11px;color:#666666;margin:4px 0 0;">Переводы статьи: ${escapeHtml(poll.localizedLanguages.join(', '))}</p>`;
     }
     html += `</div>`;
-    html += `<span style="font-size:12px;color:#64748b;white-space:nowrap;margin-left:12px;">Всего: ${combinedTotalVotes}</span>`;
+    html += `<span style="font-size:12px;color:#666666;white-space:nowrap;margin-left:12px;">Всего: ${combinedTotalVotes}</span>`;
     html += `</div>`;
-    html += `<p style="font-size:11px;color:#64748b;margin:0 0 10px;">JSON: ${jsonTotalVotes} · Онлайн: ${onlineTotalVotes} · Этот браузер: ${browserTotalVotes}</p>`;
+    html += `<p style="font-size:11px;color:#666666;margin:0 0 10px;">JSON: ${jsonTotalVotes} · Онлайн: ${onlineTotalVotes} · Этот браузер: ${browserTotalVotes}</p>`;
     if (onlineError) {
       html += `<p style="font-size:11px;color:#b45309;margin:0 0 10px;">Онлайн-счётчик временно недоступен: ${escapeHtml(onlineError)}</p>`;
     }
@@ -8825,10 +8825,10 @@ async function renderPollResults() {
       html += `<div style="margin-bottom:8px;">`;
       html += `<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:2px;">`;
       html += `<span>${escapeHtml(opt.label)}</span>`;
-      html += `<span style="color:#94a3b8;">${visibleVotes} (${pct}%) · JSON ${opt.baseVotes} · онлайн ${opt.onlineVotes}</span>`;
+      html += `<span style="color:#8c8c8c;">${visibleVotes} (${pct}%) · JSON ${opt.baseVotes} · онлайн ${opt.onlineVotes}</span>`;
       html += `</div>`;
-      html += `<div style="height:8px;background:#1e293b;border-radius:4px;overflow:hidden;">`;
-      html += `<div style="height:100%;width:${pct}%;background:linear-gradient(90deg,#3b82f6,#8b5cf6);border-radius:4px;transition:width .3s;"></div>`;
+      html += `<div style="height:8px;background:#1e293b;border-radius:0;overflow:hidden;">`;
+      html += `<div style="height:100%;width:${pct}%;background:linear-gradient(90deg,#3b82f6,#8b5cf6);border-radius:0;transition:width .3s;"></div>`;
       html += `</div>`;
       html += `</div>`;
     }
@@ -9827,7 +9827,7 @@ function renderDashboard() {
       covEl.innerHTML = langsList.map(lang => {
         const filled = enKeys.filter(k => data.translations[lang]?.[k]).length;
         const pct    = Math.round((filled / total) * 100);
-        const color  = pct === 100 ? '#4A7C59' : pct > 70 ? '#B8860B' : '#8B3A3A';
+        const color  = pct === 100 ? '#0a0a0a' : pct > 70 ? '#4d4d4d' : '#8c8c8c';
         return `<div class="dash-lang-row">
           <span class="dash-lang-name">${escapeHtml(lang)}</span>
           <div class="dash-lang-track"><div class="dash-lang-fill" style="width:${pct}%;background:${color}"></div></div>
@@ -9917,7 +9917,7 @@ function renderTranslationsTab() {
     overviewEl.innerHTML = nonEnLangs.map(lang => {
       const filled = allKeys.filter(k => data.translations[lang]?.[k]).length;
       const pct = allKeys.length ? Math.round((filled / allKeys.length) * 100) : 0;
-      const color = pct === 100 ? '#4A7C59' : pct > 70 ? '#B8860B' : '#8B3A3A';
+      const color = pct === 100 ? '#0a0a0a' : pct > 70 ? '#4d4d4d' : '#8c8c8c';
       return `<div class="transl-lang-pill" data-lang="${escapeHtml(lang)}" title="${filled}/${allKeys.length} ключей">
         <span class="transl-lang-pill-name">${escapeHtml(lang)}</span>
         <div class="transl-lang-pill-track"><div class="transl-lang-pill-fill" style="width:${pct}%;background:${color}"></div></div>
@@ -13176,12 +13176,12 @@ function bindStudioMediaActions() {
           ? `<span style="font-size:.62rem;color:var(--gold)">${p.tags.slice(0,3).map(escapeHtml).join(' · ')}</span>` : '';
         return `
         <div style="display:flex;align-items:center;gap:12px;padding:11px 20px;border-bottom:1px solid var(--line)">
-          <div style="width:42px;height:42px;border-radius:6px;background:var(--bg-soft);overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--text-faint)">
+          <div style="width:42px;height:42px;border-radius:0;background:var(--bg-soft);overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--text-faint)">
             ${cover ? `<img src="${escapeHtml(cover)}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentNode.textContent='🎙'" />` : '🎙'}
           </div>
           <div style="flex:1;min-width:0">
             <div style="font-size:.86rem;font-weight:600;color:var(--text);display:flex;align-items:center;gap:7px">
-              ${p.episode_number != null ? `<span style="font-family:var(--font-mono);font-size:.62rem;background:var(--bg-soft);padding:1px 6px;border-radius:10px;color:var(--text-muted)">№${p.episode_number}</span>` : ''}
+              ${p.episode_number != null ? `<span style="font-family:var(--font-mono);font-size:.62rem;background:var(--bg-soft);padding:1px 6px;border-radius:0;color:var(--text-muted)">№${p.episode_number}</span>` : ''}
               <span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escapeHtml(p.title)}</span>
             </div>
             <div style="font-size:.7rem;color:var(--text-muted);margin-top:2px;display:flex;gap:8px;flex-wrap:wrap">
@@ -14389,7 +14389,7 @@ function bindStudioMediaActions() {
         <div style="padding:8px 20px;font-family:var(--font-mono);font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);background:var(--bg)">${season}</div>
         ${items.map(p => `
           <div style="display:flex;align-items:center;gap:12px;padding:10px 20px;border-bottom:1px solid var(--line)">
-            ${p.cover_url ? `<img src="${p.cover_url}" style="width:44px;height:44px;object-fit:cover;border-radius:4px;flex-shrink:0" />` : `<div style="width:44px;height:44px;background:var(--bg-soft);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.2rem">🎙</div>`}
+            ${p.cover_url ? `<img src="${p.cover_url}" style="width:44px;height:44px;object-fit:cover;border-radius:0;flex-shrink:0" />` : `<div style="width:44px;height:44px;background:var(--bg-soft);border-radius:0;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.2rem">🎙</div>`}
             <div style="flex:1;min-width:0">
               <div style="font-weight:600;font-size:.84rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.title}</div>
               <div style="font-size:.7rem;color:var(--text-muted);margin-top:2px">${p.duration || ''}${p.episode ? ` · Эп. ${p.episode}` : ''}${p.tags ? ` · ${p.tags}` : ''}</div>
@@ -17041,10 +17041,10 @@ async function flushModernEditor() {
         `</div>`;
     } else if (selected) {
       html +=
-        `<div style="margin-top:8px;display:flex;align-items:center;gap:10px;padding:8px;border:1px solid rgba(0,0,0,0.12);border-radius:8px">` +
+        `<div style="margin-top:8px;display:flex;align-items:center;gap:10px;padding:8px;border:1px solid rgba(0,0,0,0.12);border-radius:0">` +
         (selected.photoUrl
-          ? `<img src="${esc(selected.photoUrl)}" alt="" style="width:40px;height:40px;border-radius:50%;object-fit:cover;flex:0 0 auto">`
-          : `<div style="width:40px;height:40px;border-radius:50%;background:#c9b7a8;display:flex;align-items:center;justify-content:center;flex:0 0 auto">${esc((selected.name || '?').charAt(0))}</div>`) +
+          ? `<img src="${esc(selected.photoUrl)}" alt="" style="width:40px;height:40px;object-fit:cover;flex:0 0 auto">`
+          : `<div style="width:40px;height:40px;background:#d6d6d6;display:flex;align-items:center;justify-content:center;flex:0 0 auto">${esc((selected.name || '?').charAt(0))}</div>`) +
         `<div style="flex:1;min-width:0"><div style="font-weight:600">${esc(selected.name || '')}</div><div style="opacity:.6;font-size:12px">${esc(selected.role || '')}</div></div>` +
         `<button type="button" class="btn btn-sm" data-author-edit>✎</button>` +
         `<button type="button" class="btn btn-sm" data-author-new>＋</button>` +
@@ -17076,14 +17076,14 @@ async function flushModernEditor() {
     const a = existing ? { ...existing } : { id: newAuthorId(), name: '', role: '', bio: '', photoUrl: '', website: '', instagram: '', active: true };
     const field = (label, key, ph) => `<label class="wys-meta-field"><span>${label}</span><input data-af="${key}" value="${esc(a[key] || '')}" placeholder="${ph || ''}"></label>`;
     host.innerHTML =
-      `<div style="display:grid;gap:6px;padding:8px;border:1px solid rgba(0,0,0,0.12);border-radius:8px">` +
+      `<div style="display:grid;gap:6px;padding:8px;border:1px solid rgba(0,0,0,0.12);border-radius:0">` +
       `<div style="font-weight:600">${existing ? 'Редактирование автора' : 'Новый автор'}</div>` +
       field('Имя', 'name', 'Имя автора') +
       field('Роль', 'role', 'Автор') +
       `<label class="wys-meta-field"><span>Био</span><textarea data-af="bio" rows="3" placeholder="Короткая биография">${esc(a.bio || '')}</textarea></label>` +
       `<div class="wys-meta-field"><span>Фото</span>` +
         `<div style="display:flex;align-items:center;gap:8px">` +
-        `<div data-af-photo style="width:44px;height:44px;border-radius:50%;background:#c9b7a8;object-fit:cover;overflow:hidden;flex:0 0 auto">${a.photoUrl ? `<img src="${esc(a.photoUrl)}" style="width:100%;height:100%;object-fit:cover">` : ''}</div>` +
+        `<div data-af-photo style="width:44px;height:44px;background:#d6d6d6;object-fit:cover;overflow:hidden;flex:0 0 auto">${a.photoUrl ? `<img src="${esc(a.photoUrl)}" style="width:100%;height:100%;object-fit:cover">` : ''}</div>` +
         `<button type="button" class="btn btn-sm" data-af-upload>Загрузить фото</button>` +
         `</div>` +
         `<input data-af="photoUrl" value="${esc(a.photoUrl || '')}" placeholder="URL фото" style="margin-top:6px">` +
@@ -18831,7 +18831,7 @@ function showcaseEnquiryCard(enquiry) {
     : (String(enquiry.contact || '').startsWith('http') ? enquiry.contact : '');
   const status = SHOWCASE_ENQUIRY_STATUS_LABEL[enquiry.status] || enquiry.status || 'Новая';
   return `
-    <article style="margin-bottom:12px;padding:14px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.72)">
+    <article style="margin-bottom:12px;padding:14px;border:1px solid var(--line);border-radius:0;background:rgba(255,255,255,.72)">
       <p class="card-desc" style="margin:0">${escapeHtml(status)}${enquiry.addedAt ? ' · ' + escapeHtml(new Date(enquiry.addedAt).toLocaleDateString('ru-RU')) : ''}</p>
       <h3 style="margin:6px 0 2px;font-size:16px">${escapeHtml(enquiry.name || '—')}</h3>
       ${details ? `<p class="card-desc" style="margin:4px 0 0">${escapeHtml(details)}</p>` : ''}
