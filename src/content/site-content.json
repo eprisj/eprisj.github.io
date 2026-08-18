@@ -13276,6 +13276,71 @@
           ],
           "updatedAt": "2026-08-17T15:13:22.412Z",
           "publishedAt": "2026-08-15"
+        },
+        {
+          "id": 23,
+          "draft": true,
+          "title": "Chora-Übung: ",
+          "author": "EPRIS Journal",
+          "role": "Redaktion",
+          "date": "17. August 2026",
+          "excerpt": "Ein fokussierter Eröffnungsabsatz für eine neue redaktionelle Geschichte.",
+          "category": "Kultur",
+          "subcategory": "Besonderheit",
+          "tags": [
+            "Geschichte",
+            "Kultur",
+            "Leitartikel"
+          ],
+          "imageSeed": "new-editorial-story",
+          "content": [
+            {
+              "type": "Text",
+              "content": "Ein eigenes Projekt in einem neuen Land zu schaffen ist immer ein mutiger Schritt, bei dem kreative Erkundung eng mit persönlicher Transformation verknüpft ist. Alena und Ksenia – Gründerinnen von Chora Practice mit Sitz in Lissabon, Portugal – sprechen darüber, wie man jede Krise in einen Wachstumspunkt verwandeln kann, warum es keine „unkreativen“ Menschen auf der Welt gibt und wie man sich erlauben kann, das zu tun, was man wirklich liebt. Dies ist ein Gespräch über Lebensfreude, Museen, den Mut zum „Unsinn“ und die Kunst, auf die inneren Impulse zu hören."
+            },
+            {
+              "type": "Bild",
+              "content": "neue-redaktionelle-story-2",
+              "caption": "Leitbild"
+            },
+            {
+              "type": "Zitat",
+              "content": "Fügen Sie hier eine Zeile hinzu, an die Sie sich erinnern sollten."
+            },
+            {
+              "type": "Notiz",
+              "content": "Redaktionelle Anmerkung, Quellenkontext oder eine kurze Anmerkung."
+            },
+            {
+              "type": "Checkliste",
+              "caption": "Was abzudecken ist",
+              "content": {
+                "items": [
+                  "Kontext",
+                  "Wichtiges Detail",
+                  "Menschlicher Blickwinkel",
+                  "Was ändert sich als nächstes?"
+                ]
+              }
+            },
+            {
+              "type": "Umfrage",
+              "content": {
+                "question": "Was sollten wir als nächstes erkunden?",
+                "options": [
+                  {
+                    "label": "Mehr Kontext",
+                    "votes": 0
+                  },
+                  {
+                    "label": "Praktischer Leitfaden",
+                    "votes": 0
+                  }
+                ]
+              }
+            }
+          ],
+          "updatedAt": "2026-08-18T05:41:45.443Z"
         }
       ],
       "reviews": [
