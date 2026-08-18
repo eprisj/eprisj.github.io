@@ -47,6 +47,11 @@ type PublicForm = {
   fields: FormField[];
   closesAt?: string;
   maxResponses?: number;
+  support?: {
+    free: string;
+    invite: string;
+    methods: { label: string; value: string; note?: string }[];
+  } | null;
 };
 
 type AnswerValue = string | string[] | boolean | UploadedFile[];
@@ -55,24 +60,24 @@ const COPY = {
   EN: { loading: 'Loading the form…', closed: 'This form is closed.', missing: 'Form not found.',
         invite: 'This form is open by invitation. Use the personal link the editors sent you.',
         required: 'Please fill in the highlighted fields.', send: 'Send answers', sending: 'Sending…',
-        sent: 'Thank you — your answers are with the editors.', error: 'Could not send the form. Try again in a minute.',
+        sent: 'Thank you. Your answers are with the editors.', error: 'Could not send the form. Try again in a minute.',
         requiredMark: 'required', invitedAs: 'Answering as', progress: 'Filled in', thisRequired: 'This answer is required.', left: 'Left', dropHint: 'or drop them here', filesFull: 'Maximum files attached:', minLength: 'at least', closedDeadline: 'The deadline for this form has passed.', closedLimit: 'This form has collected all the answers it needed.',
         attach: 'Attach files', uploading: 'Uploading…', remove: 'Remove',
-        tooLarge: 'This file is too large.', uploadFailed: 'Upload failed — try again.', noSpace: 'The server is out of space. Tell the editors.' },
+        tooLarge: 'This file is too large.', uploadFailed: 'Upload failed. Try again.', noSpace: 'The server is out of space. Tell the editors.' },
   RU: { loading: 'Загружаем анкету…', closed: 'Анкета закрыта.', missing: 'Анкета не найдена.',
         invite: 'Анкета открыта по приглашению. Откройте личную ссылку, которую прислала редакция.',
         required: 'Заполните отмеченные поля.', send: 'Отправить ответы', sending: 'Отправляем…',
-        sent: 'Спасибо — ответы у редакции.', error: 'Не удалось отправить. Попробуйте через минуту.',
+        sent: 'Спасибо. Ответы у редакции.', error: 'Не удалось отправить. Попробуйте через минуту.',
         requiredMark: 'обязательно', invitedAs: 'Отвечает', progress: 'Заполнено', thisRequired: 'Без этого ответа нельзя отправить.', left: 'Осталось', dropHint: 'или перетащите их сюда', filesFull: 'Больше файлов не нужно, максимум:', minLength: 'не меньше', closedDeadline: 'Срок подачи закончился.', closedLimit: 'Анкета собрала нужное число ответов.',
         attach: 'Прикрепить файлы', uploading: 'Загружаем…', remove: 'Убрать',
-        tooLarge: 'Файл слишком большой.', uploadFailed: 'Не загрузилось — попробуйте ещё раз.', noSpace: 'На сервере кончилось место. Сообщите редакции.' },
+        tooLarge: 'Файл слишком большой.', uploadFailed: 'Не загрузилось. Попробуйте ещё раз.', noSpace: 'На сервере кончилось место. Сообщите редакции.' },
   UA: { loading: 'Завантажуємо анкету…', closed: 'Анкету закрито.', missing: 'Анкету не знайдено.',
         invite: 'Анкета відкрита за запрошенням. Відкрийте особисте посилання від редакції.',
         required: 'Заповніть позначені поля.', send: 'Надіслати відповіді', sending: 'Надсилаємо…',
-        sent: 'Дякуємо — відповіді у редакції.', error: 'Не вдалося надіслати. Спробуйте за хвилину.',
+        sent: 'Дякуємо. Відповіді у редакції.', error: 'Не вдалося надіслати. Спробуйте за хвилину.',
         requiredMark: 'обовʼязково', invitedAs: 'Відповідає', progress: 'Заповнено', thisRequired: 'Без цієї відповіді не надіслати.', left: 'Залишилось', dropHint: 'або перетягніть їх сюди', filesFull: 'Більше файлів не потрібно, максимум:', minLength: 'не менше', closedDeadline: 'Строк подання завершився.', closedLimit: 'Анкета зібрала потрібну кількість відповідей.',
         attach: 'Прикріпити файли', uploading: 'Завантажуємо…', remove: 'Прибрати',
-        tooLarge: 'Файл завеликий.', uploadFailed: 'Не завантажилось — спробуйте ще раз.', noSpace: 'На сервері скінчилось місце. Повідомте редакцію.' },
+        tooLarge: 'Файл завеликий.', uploadFailed: 'Не завантажилось. Спробуйте ще раз.', noSpace: 'На сервері скінчилось місце. Повідомте редакцію.' },
 } as const;
 
 function copyFor(language?: string) {
@@ -132,7 +137,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
         setForm(data.form);
         setInviteLabel(String(data.invite?.label || ''));
         setState('ready');
-        document.title = `${data.form.title} — EPRIS Journal`;
+        document.title = `${data.form.title} · EPRIS Journal`;
       } catch {
         if (!cancelled) setState('missing');
       }
@@ -339,6 +344,23 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
         {thankYou && (
           <p className="mt-5 whitespace-pre-line font-serif text-[16px] leading-[1.75] text-[rgb(var(--c-accent-rgb)_/_0.72)]">{thankYou}</p>
         )}
+        {form?.support && (
+          <div className="mt-10 w-full border-t border-[rgb(var(--c-accent-rgb)_/_0.18)] pt-6 text-left">
+            <p className="font-serif text-[14px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.7)]">{form.support.free}</p>
+            <p className="mt-3 font-serif text-[14px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.55)]">{form.support.invite}</p>
+            <dl className="mt-3 space-y-1.5">
+              {form.support.methods.map((method) => (
+                <div key={method.label} className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
+                  <dt className="min-w-[52px] font-mono text-[10px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.45)]">{method.label}</dt>
+                  <dd className="font-mono text-[12.5px] text-[rgb(var(--c-accent-rgb)_/_0.75)]">
+                    {method.value}
+                    {method.note && <span className="ml-2 text-[rgb(var(--c-accent-rgb)_/_0.45)]">{method.note}</span>}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        )}
         <span className="mt-9 h-px w-16 bg-[rgb(var(--c-accent-rgb)_/_0.25)]" />
         <a href="/" className="mt-7 inline-flex items-center gap-2 rounded-full border border-[var(--c-accent)] px-7 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--c-accent)] transition-colors hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]">
           eprisjournal.com
@@ -388,7 +410,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
                   className="w-full rounded-[2px] object-cover" />
                 {(field.label || field.hint) && (
                   <figcaption className="mt-2 font-serif text-[13px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.6)]">
-                    {field.label}{field.hint ? ` — ${field.hint}` : ''}
+                    {field.label}{field.hint ? `. ${field.hint}` : ''}
                   </figcaption>
                 )}
               </figure>
@@ -574,6 +596,31 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
         <p className="mt-8 flex items-start gap-2 font-serif text-sm text-[#B3261E]">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />{error}
         </p>
+      )}
+
+      {/* ПОДДЕРЖКА ПРОЕКТА.
+
+          Стоит после всех вопросов и до кнопки, набрана мелко и без единого
+          восклицательного знака: человек уже сделал главное, ответил, и его
+          нельзя встречать просьбой о деньгах в середине работы. Первая строка
+          снимает вопрос, который автор боится задать вслух: публикация
+          бесплатна. */}
+      {form!.support && (
+        <aside className="mt-14 border-t border-[rgb(var(--c-accent-rgb)_/_0.18)] pt-6">
+          <p className="font-serif text-[14px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.7)]">{form!.support.free}</p>
+          <p className="mt-3 font-serif text-[14px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.55)]">{form!.support.invite}</p>
+          <dl className="mt-3 space-y-1.5">
+            {form!.support.methods.map((method) => (
+              <div key={method.label} className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
+                <dt className="min-w-[52px] font-mono text-[10px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.45)]">{method.label}</dt>
+                <dd className="font-mono text-[12.5px] text-[rgb(var(--c-accent-rgb)_/_0.75)]">
+                  {method.value}
+                  {method.note && <span className="ml-2 text-[rgb(var(--c-accent-rgb)_/_0.45)]">{method.note}</span>}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </aside>
       )}
 
       {/* Кнопка прилипает к низу экрана на телефоне: анкета длиннее экрана, и
