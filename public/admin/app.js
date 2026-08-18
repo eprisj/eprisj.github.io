@@ -19975,7 +19975,10 @@ function renderFormEditor() {
           })()}
         </div>
         <div class="panel-actions">
-          <button class="btn" type="button" id="formExportCsv">Скачать CSV</button>
+          <button class="btn" type="button" id="formExportDoc">В Word</button>
+          <button class="btn" type="button" id="formExportPdf">В PDF</button>
+          <button class="btn" type="button" id="formExportCsv">CSV</button>
+          <button class="btn" type="button" id="formExportZip">Фото архивом</button>
         </div>
       </div>
       ${renderFormResponses(form, formsResponses)}
@@ -20110,6 +20113,8 @@ function renderFormResponses(form, responses) {
       <header>
         <span>${escapeHtml(new Date(response.submittedAt).toLocaleString('ru-RU'))}</span>
         ${response.inviteLabel ? `<strong>${escapeHtml(response.inviteLabel)}</strong>` : ''}
+        <button class="btn btn-sm" type="button" data-response-doc="${escapeHtml(response.id)}" title="Скачать этот ответ в Word">Word</button>
+        <button class="btn btn-sm" type="button" data-response-zip="${escapeHtml(response.id)}" title="Скачать файлы этого ответа архивом">Файлы</button>
         <button class="btn btn-sm btn-danger" type="button" data-response-delete="${escapeHtml(response.id)}">Удалить</button>
       </header>
       <dl>${columns.map((field) => {
@@ -20128,6 +20133,87 @@ function renderFormResponses(form, responses) {
         return text ? `<div><dt>${escapeHtml(field.label)}</dt><dd>${escapeHtml(text)}</dd></div>` : '';
       }).join('')}</dl>
     </article>`).join('')}</div>`;
+}
+
+/* ВЫГРУЗКА ОТВЕТОВ В DOC И PDF.
+ *
+ * CSV годится для таблицы и не годится для чтения: интервью на семь развёрнутых
+ * ответов в ячейках Excel читать невозможно, а редактору нужно отдать текст
+ * корректору, автору на вычитку и в вёрстку.
+ *
+ * DOC собирается как HTML с вордовским типом: Word и Pages открывают такой
+ * файл как обычный документ, стили сохраняются, и для этого не нужна библиотека
+ * на полтора мегабайта в панели, которая грузится на каждом заходе.
+ *
+ * PDF делает сам браузер: печать отдельного окна в «Сохранить как PDF» даёт
+ * тот же результат, что генератор, и всегда совпадает с тем, что редактор
+ * видит на экране.
+ */
+function formResponseDocumentHtml(form, responses) {
+  const columns = form.fields.filter((field) => !['section', 'image'].includes(field.type));
+  const answerHtml = (field, response) => {
+    const value = response.answers?.[field.id];
+    if (field.type === 'files') {
+      const files = Array.isArray(value) ? value : [];
+      return files.length ? files.map((file) => escapeHtml(file.name)).join('<br>') : '<i>нет файлов</i>';
+    }
+    if (Array.isArray(value)) return escapeHtml(value.join(', '));
+    if (value === true) return 'да';
+    if (value === false) return 'нет';
+    return escapeHtml(String(value ?? '')).replace(/\n/g, '<br>');
+  };
+
+  const blocks = responses.map((response, index) => `
+    <h2>${escapeHtml(response.inviteLabel || `Ответ ${index + 1}`)}</h2>
+    <p class="meta">${escapeHtml(new Date(response.submittedAt).toLocaleString('ru-RU'))}</p>
+    ${columns.map((field) => `
+      <h3>${escapeHtml(field.label)}</h3>
+      <p>${answerHtml(field, response) || '<i>без ответа</i>'}</p>`).join('')}
+  `).join('<hr>');
+
+  return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${escapeHtml(form.title)}</title>
+    <style>
+      body { font: 12pt/1.6 Georgia, 'Times New Roman', serif; color: #111; margin: 2.5cm; }
+      h1 { font-size: 20pt; margin: 0 0 4pt; }
+      h2 { font-size: 14pt; margin: 24pt 0 2pt; }
+      h3 { font-size: 11pt; margin: 16pt 0 2pt; color: #444; font-weight: 700; }
+      p { margin: 0 0 8pt; }
+      .meta { color: #777; font-size: 9pt; }
+      .lead { color: #555; font-size: 10pt; margin-bottom: 18pt; }
+      hr { border: 0; border-top: 1px solid #ccc; margin: 28pt 0; }
+    </style></head><body>
+    <h1>${escapeHtml(form.title)}</h1>
+    <p class="lead">EPRIS Journal · ${escapeHtml(new Date().toLocaleDateString('ru-RU'))} · ответов: ${responses.length}</p>
+    ${blocks}
+  </body></html>`;
+}
+
+function downloadFormResponsesDoc(form, responses) {
+  const html = formResponseDocumentHtml(form, responses);
+  // BOM нужен Word: без него кириллица в .doc открывается крякозябрами.
+  const blob = new Blob(['\ufeff', html], { type: 'application/msword' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `${form.slug}-answers.doc`;
+  document.body.appendChild(link); link.click(); link.remove();
+  URL.revokeObjectURL(url);
+}
+
+function printFormResponsesPdf(form, responses) {
+  const html = formResponseDocumentHtml(form, responses);
+  const frame = document.createElement('iframe');
+  // Печать во встроенном окне, а не в новой вкладке: блокировщики всплывающих
+  // окон закрывают вкладку раньше, чем браузер успевает открыть печать.
+  frame.style.cssText = 'position:fixed;right:0;bottom:0;width:0;height:0;border:0;';
+  document.body.appendChild(frame);
+  const doc = frame.contentDocument;
+  doc.open(); doc.write(html); doc.close();
+  frame.onload = () => {
+    frame.contentWindow.focus();
+    frame.contentWindow.print();
+    setTimeout(() => frame.remove(), 60000);
+  };
 }
 
 async function renderFormInvites() {
@@ -20261,6 +20347,44 @@ function bindFormEditor() {
       await loadForms(data.form.id);
     } catch (error) {
       showToast('error', `Не скопировалось: ${error.message}`);
+    }
+  });
+
+  host.querySelector('#formExportDoc')?.addEventListener('click', () => {
+    if (!formsResponses.length) { showToast('info', 'Ответов пока нет.'); return; }
+    downloadFormResponsesDoc(formsDraft, formsResponses);
+  });
+
+  host.querySelector('#formExportPdf')?.addEventListener('click', () => {
+    if (!formsResponses.length) { showToast('info', 'Ответов пока нет.'); return; }
+    printFormResponsesPdf(formsDraft, formsResponses);
+  });
+
+  host.querySelector('#formExportZip')?.addEventListener('click', async () => {
+    /* Архив тянем как файл, а не ссылкой: он за паролем, и обычная ссылка не
+       отправит заголовок. Большие архивы качаются потоково самим браузером,
+       поэтому просто ведём человека на адрес с временным токеном? Нет —
+       проще и честнее скачать через fetch и отдать blob, как делают остальные
+       выгрузки этой панели. */
+    const button = host.querySelector('#formExportZip');
+    const original = button.textContent;
+    button.disabled = true; button.textContent = 'Собираю…';
+    try {
+      const res = await fetch(`${FORMS_API}/${encodeURIComponent(formsDraft.id)}/files.zip`, {
+        headers: { 'X-Admin-Password': getAdminPassword() },
+      });
+      if (res.status === 404) { showToast('info', 'К этой анкете ещё не приложили ни одного файла.'); return; }
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url; link.download = `${formsDraft.slug}-files.zip`;
+      document.body.appendChild(link); link.click(); link.remove();
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      showToast('error', `Архив не собрался: ${error.message}`);
+    } finally {
+      button.disabled = false; button.textContent = original;
     }
   });
 
@@ -20437,6 +20561,30 @@ function bindFormEditor() {
         await navigator.clipboard.writeText(linkButton.dataset.copyLink);
         showToast('success', 'Ссылка скопирована');
       } catch { showToast('error', 'Не удалось скопировать — выделите ссылку вручную'); }
+      return;
+    }
+    const oneDoc = event.target.closest('[data-response-doc]');
+    if (oneDoc) {
+      const response = formsResponses.find((item) => item.id === oneDoc.dataset.responseDoc);
+      if (response) downloadFormResponsesDoc(formsDraft, [response]);
+      return;
+    }
+    const oneZip = event.target.closest('[data-response-zip]');
+    if (oneZip) {
+      try {
+        const res = await fetch(`${FORMS_API}/${encodeURIComponent(formsDraft.id)}/files.zip?response=${encodeURIComponent(oneZip.dataset.responseZip)}`,
+          { headers: { 'X-Admin-Password': getAdminPassword() } });
+        if (res.status === 404) { showToast('info', 'В этом ответе нет файлов.'); return; }
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url; link.download = `${formsDraft.slug}-${oneZip.dataset.responseZip}-files.zip`;
+        document.body.appendChild(link); link.click(); link.remove();
+        URL.revokeObjectURL(url);
+      } catch (error) {
+        showToast('error', `Архив не собрался: ${error.message}`);
+      }
       return;
     }
     const fileButton = event.target.closest('[data-file-download]');

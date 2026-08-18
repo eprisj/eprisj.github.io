@@ -61,21 +61,21 @@ const COPY = {
         invite: 'This form is open by invitation. Use the personal link the editors sent you.',
         required: 'Please fill in the highlighted fields.', send: 'Send answers', sending: 'Sending…',
         sent: 'Thank you. Your answers are with the editors.', error: 'Could not send the form. Try again in a minute.',
-        requiredMark: 'required', invitedAs: 'Answering as', progress: 'Filled in', thisRequired: 'This answer is required.', left: 'Left', dropHint: 'or drop them here', filesFull: 'Maximum files attached:', minLength: 'at least', closedDeadline: 'The deadline for this form has passed.', closedLimit: 'This form has collected all the answers it needed.',
+        requiredMark: 'required', invitedAs: 'Answering as', progress: 'Filled in', thisRequired: 'This answer is required.', left: 'Left', dropHint: 'or drop them here', filesFull: 'Maximum files attached:', minLength: 'at least', closedDeadline: 'The deadline for this form has passed.', closedLimit: 'This form has collected all the answers it needed.', supportShow: 'Support the journal', supportHide: 'Hide details', copy: 'Copy', copied: 'Copied',
         attach: 'Attach files', uploading: 'Uploading…', remove: 'Remove',
         tooLarge: 'This file is too large.', uploadFailed: 'Upload failed. Try again.', noSpace: 'The server is out of space. Tell the editors.' },
   RU: { loading: 'Загружаем анкету…', closed: 'Анкета закрыта.', missing: 'Анкета не найдена.',
         invite: 'Анкета открыта по приглашению. Откройте личную ссылку, которую прислала редакция.',
         required: 'Заполните отмеченные поля.', send: 'Отправить ответы', sending: 'Отправляем…',
         sent: 'Спасибо. Ответы у редакции.', error: 'Не удалось отправить. Попробуйте через минуту.',
-        requiredMark: 'обязательно', invitedAs: 'Отвечает', progress: 'Заполнено', thisRequired: 'Без этого ответа нельзя отправить.', left: 'Осталось', dropHint: 'или перетащите их сюда', filesFull: 'Больше файлов не нужно, максимум:', minLength: 'не меньше', closedDeadline: 'Срок подачи закончился.', closedLimit: 'Анкета собрала нужное число ответов.',
+        requiredMark: 'обязательно', invitedAs: 'Отвечает', progress: 'Заполнено', thisRequired: 'Без этого ответа нельзя отправить.', left: 'Осталось', dropHint: 'или перетащите их сюда', filesFull: 'Больше файлов не нужно, максимум:', minLength: 'не меньше', closedDeadline: 'Срок подачи закончился.', closedLimit: 'Анкета собрала нужное число ответов.', supportShow: 'Поддержать журнал', supportHide: 'Свернуть', copy: 'Копировать', copied: 'Скопировано',
         attach: 'Прикрепить файлы', uploading: 'Загружаем…', remove: 'Убрать',
         tooLarge: 'Файл слишком большой.', uploadFailed: 'Не загрузилось. Попробуйте ещё раз.', noSpace: 'На сервере кончилось место. Сообщите редакции.' },
   UA: { loading: 'Завантажуємо анкету…', closed: 'Анкету закрито.', missing: 'Анкету не знайдено.',
         invite: 'Анкета відкрита за запрошенням. Відкрийте особисте посилання від редакції.',
         required: 'Заповніть позначені поля.', send: 'Надіслати відповіді', sending: 'Надсилаємо…',
         sent: 'Дякуємо. Відповіді у редакції.', error: 'Не вдалося надіслати. Спробуйте за хвилину.',
-        requiredMark: 'обовʼязково', invitedAs: 'Відповідає', progress: 'Заповнено', thisRequired: 'Без цієї відповіді не надіслати.', left: 'Залишилось', dropHint: 'або перетягніть їх сюди', filesFull: 'Більше файлів не потрібно, максимум:', minLength: 'не менше', closedDeadline: 'Строк подання завершився.', closedLimit: 'Анкета зібрала потрібну кількість відповідей.',
+        requiredMark: 'обовʼязково', invitedAs: 'Відповідає', progress: 'Заповнено', thisRequired: 'Без цієї відповіді не надіслати.', left: 'Залишилось', dropHint: 'або перетягніть їх сюди', filesFull: 'Більше файлів не потрібно, максимум:', minLength: 'не менше', closedDeadline: 'Строк подання завершився.', closedLimit: 'Анкета зібрала потрібну кількість відповідей.', supportShow: 'Підтримати журнал', supportHide: 'Згорнути', copy: 'Копіювати', copied: 'Скопійовано',
         attach: 'Прикріпити файли', uploading: 'Завантажуємо…', remove: 'Прибрати',
         tooLarge: 'Файл завеликий.', uploadFailed: 'Не завантажилось. Спробуйте ще раз.', noSpace: 'На сервері скінчилось місце. Повідомте редакцію.' },
 } as const;
@@ -104,6 +104,52 @@ const choiceClass = (selected: boolean) =>
   (selected
     ? 'border-[var(--c-accent)] bg-[rgb(var(--c-accent-rgb)_/_0.06)] text-[var(--c-accent)]'
     : 'border-[rgb(var(--c-accent-rgb)_/_0.18)] text-[rgb(var(--c-accent-rgb)_/_0.8)] hover:border-[rgb(var(--c-accent-rgb)_/_0.45)]');
+
+
+/* БЛОК ПОДДЕРЖКИ.
+
+   Свёрнут по умолчанию: видна одна строка о том, что публикация бесплатна, и
+   сдержанная кнопка. Реквизиты появляются, только если человек сам этого
+   захотел. У каждого способа своя кнопка копирования: номер карты и IBAN
+   выделять пальцем на телефоне мучительно, а ошибиться в одной цифре легко. */
+function SupportBlock({ support, open, onToggle, copied, onCopy, t }: {
+  support: NonNullable<PublicForm['support']>;
+  open: boolean;
+  onToggle: () => void;
+  copied: string;
+  onCopy: (label: string, value: string) => void;
+  t: typeof COPY.EN;
+}) {
+  return (
+    <aside className="mt-14 border-t border-[rgb(var(--c-accent-rgb)_/_0.18)] pt-6">
+      <p className="font-serif text-[14px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.7)]">{support.free}</p>
+      <button type="button" onClick={onToggle}
+        className="mt-3 inline-flex items-center gap-2 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.3)] px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-[rgb(var(--c-accent-rgb)_/_0.7)] transition-colors hover:border-[var(--c-accent)] hover:text-[var(--c-accent)]">
+        {open ? t.supportHide : t.supportShow}
+      </button>
+      {open && (
+        <div className="mt-4">
+          <p className="font-serif text-[14px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.55)]">{support.invite}</p>
+          <dl className="mt-3 space-y-2">
+            {support.methods.map((method) => (
+              <div key={method.label} className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                <dt className="min-w-[52px] font-mono text-[10px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.45)]">{method.label}</dt>
+                <dd id={`support-${method.label}`} className="select-all font-mono text-[13px] text-[var(--c-accent)]">
+                  {method.value}
+                  {method.note && <span className="ml-2 text-[rgb(var(--c-accent-rgb)_/_0.45)]">{method.note}</span>}
+                </dd>
+                <button type="button" onClick={() => onCopy(method.label, method.value)}
+                  className="rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.22)] px-3 py-1 font-mono text-[9px] uppercase tracking-[0.14em] text-[rgb(var(--c-accent-rgb)_/_0.6)] transition-colors hover:border-[var(--c-accent)] hover:text-[var(--c-accent)]">
+                  {copied === method.label ? t.copied : t.copy}
+                </button>
+              </div>
+            ))}
+          </dl>
+        </div>
+      )}
+    </aside>
+  );
+}
 
 export function FormPage({ slug, token }: { slug: string; token?: string }) {
   const [form, setForm] = useState<PublicForm | null>(null);
@@ -162,6 +208,31 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
   const [uploading, setUploading] = useState<Record<string, boolean>>({});
   const [uploadError, setUploadError] = useState<Record<string, string>>({});
   const [closedReason, setClosedReason] = useState('');
+  /* Реквизиты закрыты кнопкой. Открытый список карт и IBAN под анкетой
+     выглядит как счёт, даже когда сопровождается словами «публикация
+     бесплатна»: цифры считываются раньше текста. Кнопка оставляет выбор
+     за человеком, а тем, кто не собирался платить, не показывает ничего. */
+  const [supportOpen, setSupportOpen] = useState(false);
+  const [copied, setCopied] = useState('');
+
+  const copyValue = useCallback(async (label: string, value: string) => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopied(label);
+      window.setTimeout(() => setCopied(''), 2000);
+    } catch {
+      // Буфер недоступен (старый браузер, отказ в правах): выделяем текст,
+      // чтобы человек скопировал сам, а не остался ни с чем.
+      const node = document.getElementById(`support-${label}`);
+      if (node) {
+        const range = document.createRange();
+        range.selectNodeContents(node);
+        const selection = window.getSelection();
+        selection?.removeAllRanges();
+        selection?.addRange(range);
+      }
+    }
+  }, []);
 
   /* Файл уходит на сервер сразу при выборе, а не вместе с анкетой.
      Так автор видит, что пятисотмегабайтный макет действительно загрузился,
@@ -345,20 +416,8 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
           <p className="mt-5 whitespace-pre-line font-serif text-[16px] leading-[1.75] text-[rgb(var(--c-accent-rgb)_/_0.72)]">{thankYou}</p>
         )}
         {form?.support && (
-          <div className="mt-10 w-full border-t border-[rgb(var(--c-accent-rgb)_/_0.18)] pt-6 text-left">
-            <p className="font-serif text-[14px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.7)]">{form.support.free}</p>
-            <p className="mt-3 font-serif text-[14px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.55)]">{form.support.invite}</p>
-            <dl className="mt-3 space-y-1.5">
-              {form.support.methods.map((method) => (
-                <div key={method.label} className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
-                  <dt className="min-w-[52px] font-mono text-[10px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.45)]">{method.label}</dt>
-                  <dd className="font-mono text-[12.5px] text-[rgb(var(--c-accent-rgb)_/_0.75)]">
-                    {method.value}
-                    {method.note && <span className="ml-2 text-[rgb(var(--c-accent-rgb)_/_0.45)]">{method.note}</span>}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+          <div className="mt-10 w-full text-left">
+            <SupportBlock support={form.support} open={supportOpen} onToggle={() => setSupportOpen((v) => !v)} copied={copied} onCopy={copyValue} t={t} />
           </div>
         )}
         <span className="mt-9 h-px w-16 bg-[rgb(var(--c-accent-rgb)_/_0.25)]" />
@@ -605,23 +664,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
           нельзя встречать просьбой о деньгах в середине работы. Первая строка
           снимает вопрос, который автор боится задать вслух: публикация
           бесплатна. */}
-      {form!.support && (
-        <aside className="mt-14 border-t border-[rgb(var(--c-accent-rgb)_/_0.18)] pt-6">
-          <p className="font-serif text-[14px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.7)]">{form!.support.free}</p>
-          <p className="mt-3 font-serif text-[14px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.55)]">{form!.support.invite}</p>
-          <dl className="mt-3 space-y-1.5">
-            {form!.support.methods.map((method) => (
-              <div key={method.label} className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
-                <dt className="min-w-[52px] font-mono text-[10px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.45)]">{method.label}</dt>
-                <dd className="font-mono text-[12.5px] text-[rgb(var(--c-accent-rgb)_/_0.75)]">
-                  {method.value}
-                  {method.note && <span className="ml-2 text-[rgb(var(--c-accent-rgb)_/_0.45)]">{method.note}</span>}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </aside>
-      )}
+      {form!.support && <SupportBlock support={form!.support} open={supportOpen} onToggle={() => setSupportOpen((v) => !v)} copied={copied} onCopy={copyValue} t={t} />}
 
       {/* Кнопка прилипает к низу экрана на телефоне: анкета длиннее экрана, и
           «Отправить» не должно требовать прокрутки в конец после того, как
