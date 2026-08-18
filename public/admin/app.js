@@ -19370,8 +19370,89 @@ function renderFormsList() {
     </button>`).join('');
 }
 
-function blankForm() {
-  return {
+/* Шаблоны — не украшение, а способ не начинать с пустого экрана. Это четыре
+   анкеты, которые редакция и так составляет руками каждый раз. */
+const FORM_TEMPLATES = {
+  author: {
+    title: 'Author questionnaire',
+    description: 'A few questions before we publish your piece.',
+    thankYou: 'Thank you — the editors will be in touch.',
+    fields: [
+      { type: 'section', label: 'About you' },
+      { type: 'short-text', label: 'Full name', required: true, placeholder: 'Maria Ivanova' },
+      { type: 'email', label: 'Email', required: true, placeholder: 'you@example.com' },
+      { type: 'section', label: 'About the piece' },
+      { type: 'long-text', label: 'What is the story about?', hint: 'Two or three sentences are enough.', required: true },
+      { type: 'files', label: 'Your work', hint: 'Any format.' },
+      { type: 'consent', label: 'Publication consent', placeholder: 'Yes, EPRIS may publish this material.', required: true },
+    ],
+  },
+  interview: {
+    title: 'Interview questions',
+    description: 'Answer in your own words — we edit for length, not for voice.',
+    thankYou: 'Thank you. We will send the edited text before publication.',
+    fields: [
+      { type: 'short-text', label: 'Name and what you do', required: true },
+      { type: 'long-text', label: 'How did this project start?', required: true },
+      { type: 'long-text', label: 'What went wrong along the way?' },
+      { type: 'long-text', label: 'What are you working on next?' },
+      { type: 'files', label: 'Photographs we may use', hint: 'Please send the highest resolution you have.' },
+    ],
+  },
+  pitch: {
+    title: 'Pitch a story',
+    description: 'Tell us what you want to write and why it belongs in EPRIS.',
+    thankYou: 'Thank you — we read every pitch.',
+    fields: [
+      { type: 'short-text', label: 'Your name', required: true },
+      { type: 'email', label: 'Email', required: true },
+      { type: 'long-text', label: 'The story in one paragraph', required: true },
+      { type: 'single-choice', label: 'Section', options: ['Architecture', 'Design', 'Photography', 'Fashion'], required: true },
+      { type: 'url', label: 'A link to your previous work' },
+    ],
+  },
+  portfolio: {
+    title: 'Portfolio submission',
+    description: 'Send your work — we look at everything.',
+    thankYou: 'Thank you. We will write if we want to publish.',
+    fields: [
+      { type: 'short-text', label: 'Name', required: true },
+      { type: 'email', label: 'Email', required: true },
+      { type: 'files', label: 'Your work', hint: 'Any format, up to 512 MB per file.', required: true },
+      { type: 'long-text', label: 'A few words about the series' },
+    ],
+  },
+};
+
+/* Что не так с анкетой ДО того, как её открыли автору.
+
+   Ошибки — то, из-за чего анкета не работает: некому отвечать (нет вопросов),
+   вопрос без текста, список без вариантов. Замечания — то, из-за чего она
+   работает плохо. */
+function auditForm(form) {
+  const errors = [];
+  const warnings = [];
+  const asked = form.fields.filter((field) => field.type !== 'section');
+  if (!asked.length) errors.push('В анкете нет ни одного вопроса.');
+  form.fields.forEach((field, index) => {
+    const number = String(index + 1).padStart(2, '0');
+    if (!String(field.label || '').trim()) errors.push(`Вопрос ${number}: пустой текст вопроса.`);
+    if ((field.type === 'single-choice' || field.type === 'multi-choice') && !(field.options || []).filter(Boolean).length) {
+      errors.push(`Вопрос ${number}: список без вариантов ответа.`);
+    }
+  });
+  if (!asked.some((field) => field.required)) warnings.push('Ни один вопрос не обязателен — анкету можно прислать пустой.');
+  if (!asked.some((field) => field.type === 'email')) warnings.push('Нет поля с почтой — ответить автору будет некуда.');
+  if (!String(form.thankYou || '').trim()) warnings.push('Не задан текст после отправки — автор увидит только «спасибо».');
+  if (form.status === 'open' && form.access === 'invite' && !(formsCache.find((item) => item.id === form.id)?.invites)) {
+    warnings.push('Анкета по приглашению, но ни одной персональной ссылки ещё не создано.');
+  }
+  return { errors, warnings };
+}
+
+function blankForm(templateKey) {
+  const template = FORM_TEMPLATES[templateKey];
+  const base = {
     id: '', slug: '', title: 'Анкета автора', description: '', thankYou: 'Спасибо — ответы у редакции.',
     language: 'EN', status: 'draft', access: 'link',
     fields: [
@@ -19379,9 +19460,17 @@ function blankForm() {
       { id: '', type: 'email', label: 'Почта', required: true, options: [] },
     ],
   };
+  if (!template) return base;
+  return {
+    ...base,
+    title: template.title,
+    description: template.description,
+    thankYou: template.thankYou,
+    fields: template.fields.map((field) => ({ id: '', options: [], ...field })),
+  };
 }
 
-async function openFormEditor(id) {
+async function openFormEditor(id, templateKey) {
   if (id) {
     try {
       const data = await formsFetch(`/${encodeURIComponent(id)}/responses`);
@@ -19392,8 +19481,10 @@ async function openFormEditor(id) {
       return;
     }
   } else {
-    formsDraft = blankForm();
+    formsDraft = blankForm(templateKey);
     formsResponses = [];
+    formsOpenFields.clear();
+    formsDirty = true;
   }
   renderFormsList();
   renderFormEditor();
@@ -19433,13 +19524,24 @@ function renderFormEditor() {
     <div class="forms-fields" id="formFields">
       ${form.fields.map((field, index) => renderFormFieldRow(field, index)).join('') || '<p class="muted">Добавьте первый вопрос.</p>'}
     </div>
+    ${(() => {
+      const audit = auditForm(form);
+      if (!audit.errors.length && !audit.warnings.length) return '';
+      return `<div class="forms-audit${audit.errors.length ? ' is-error' : ''}">
+        ${audit.errors.map((line) => `<p><b>Мешает публикации:</b> ${escapeHtml(line)}</p>`).join('')}
+        ${audit.warnings.map((line) => `<p>${escapeHtml(line)}</p>`).join('')}
+      </div>`;
+    })()}
     <div class="forms-editor-actions">
       <button class="btn" type="button" id="formAddField">+ Вопрос</button>
       <button class="btn btn-primary" type="button" id="formSave">Сохранить</button>
+      ${saved ? '<button class="btn" type="button" id="formDuplicate">Дублировать анкету</button>' : ''}
+      ${saved && form.status === 'open' ? '<button class="btn" type="button" id="formPreviewToggle">Предпросмотр</button>' : ''}
       ${saved ? `<a class="btn" href="${escapeHtml(formPublicUrl(form))}" target="_blank" rel="noopener">Открыть анкету</a>` : ''}
       ${saved && form.status !== 'open' ? '<span class="muted">Анкета не открыта — по ссылке её пока не заполнить.</span>' : ''}
     </div>
 
+    ${saved && form.status === 'open' ? '<div class="forms-preview" id="formPreview" hidden><iframe title="Предпросмотр анкеты" loading="lazy"></iframe></div>' : ''}
     ${saved ? `
     <div class="forms-share">
       <p class="panel-kicker">ССЫЛКА ДЛЯ АВТОРА</p>
@@ -19457,7 +19559,18 @@ function renderFormEditor() {
 
     <div class="forms-responses">
       <div class="panel-head">
-        <div><p class="panel-kicker">ОТВЕТЫ · ${formsResponses.length}</p></div>
+        <div>
+          <p class="panel-kicker">ОТВЕТЫ · ${formsResponses.length}</p>
+          ${(() => {
+            if (!formsResponses.length) return '';
+            const weekAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
+            const week = formsResponses.filter((item) => Date.parse(item.submittedAt) > weekAgo).length;
+            const last = formsResponses[formsResponses.length - 1];
+            const withFiles = formsResponses.filter((item) => Object.values(item.answers || {})
+              .some((value) => Array.isArray(value) && value.some((entry) => entry && entry.fileId))).length;
+            return `<p class="muted">за неделю ${week} · с файлами ${withFiles} · последний ${escapeHtml(new Date(last.submittedAt).toLocaleString('ru-RU'))}</p>`;
+          })()}
+        </div>
         <div class="panel-actions">
           <button class="btn" type="button" id="formExportCsv">Скачать CSV</button>
         </div>
@@ -19506,8 +19619,21 @@ function renderFormFieldRow(field, index) {
         </div>
         <label class="field"><span>Пояснение под вопросом</span>
           <input type="text" data-field-hint="${index}" value="${escapeHtml(field.hint || '')}" placeholder="Необязательно"></label>
-        ${isChoice ? `<label class="field"><span>Варианты ответа</span>
-          <input type="text" data-field-options="${index}" value="${escapeHtml((field.options || []).join(', '))}" placeholder="Через запятую: Архитектура, Дизайн, Фотография"></label>` : ''}
+        ${isChoice ? `<div class="field"><span>Варианты ответа</span>
+          <div class="forms-options">
+            ${(field.options || []).map((option, optionIndex) => `
+              <div class="forms-option">
+                <input type="text" data-option-input="${index}:${optionIndex}" value="${escapeHtml(option)}" placeholder="Вариант ${optionIndex + 1}">
+                <button class="btn btn-sm" type="button" data-option-up="${index}:${optionIndex}" ${optionIndex === 0 ? 'disabled' : ''} title="Выше">↑</button>
+                <button class="btn btn-sm" type="button" data-option-down="${index}:${optionIndex}" ${optionIndex === (field.options.length - 1) ? 'disabled' : ''} title="Ниже">↓</button>
+                <button class="btn btn-sm btn-danger" type="button" data-option-remove="${index}:${optionIndex}" title="Удалить">×</button>
+              </div>`).join('')}
+            <button class="btn btn-sm" type="button" data-option-add="${index}">+ вариант</button>
+          </div>
+          ${(field.options || []).length ? '' : '<small class="muted">Пока ни одного варианта — вопрос со списком без них не покажется автору.</small>'}
+        </div>` : ''}
+        ${['short-text', 'long-text', 'email', 'url', 'number'].includes(field.type) ? `<label class="field"><span>Подсказка в поле</span>
+          <input type="text" data-field-placeholder="${index}" value="${escapeHtml(field.placeholder || '')}" placeholder="Например: Мария Иванова"><small class="muted">Серый текст внутри поля — пример ответа, а не пояснение.</small></label>` : ''}
         ${field.type === 'consent' ? `<label class="field"><span>Текст согласия</span>
           <input type="text" data-field-placeholder="${index}" value="${escapeHtml(field.placeholder || '')}" placeholder="Да, EPRIS может опубликовать этот материал."></label>` : ''}
       </div>
@@ -19587,13 +19713,19 @@ function collectFormDraft() {
   formsDraft.thankYou = value('formThankYou');
   formsDraft.fields = formsDraft.fields.map((field, index) => ({
     ...field,
-    label: document.querySelector(`[data-field-label="${index}"]`)?.value || field.label,
-    type: document.querySelector(`[data-field-type="${index}"]`)?.value || field.type,
-    hint: document.querySelector(`[data-field-hint="${index}"]`)?.value || '',
+    /* `??`, а не `||`: пустая строка — законное значение. С `||` стёртый текст
+       вопроса возвращался обратно при первой же перерисовке, и редактор не мог
+       ни очистить поле, ни увидеть предупреждение о пустом вопросе. */
+    label: document.querySelector(`[data-field-label="${index}"]`)?.value ?? field.label,
+    type: document.querySelector(`[data-field-type="${index}"]`)?.value ?? field.type,
+    hint: document.querySelector(`[data-field-hint="${index}"]`)?.value ?? field.hint ?? '',
     required: Boolean(document.querySelector(`[data-field-required="${index}"]`)?.checked),
     placeholder: document.querySelector(`[data-field-placeholder="${index}"]`)?.value ?? field.placeholder ?? '',
-    options: (document.querySelector(`[data-field-options="${index}"]`)?.value || '')
-      .split(',').map((option) => option.trim()).filter(Boolean),
+    options: (() => {
+      const inputs = [...document.querySelectorAll(`[data-option-input^="${index}:"]`)];
+      if (!inputs.length) return field.options || [];
+      return inputs.map((input) => input.value.trim()).filter(Boolean);
+    })(),
   }));
   return formsDraft;
 }
@@ -19621,6 +19753,37 @@ function bindFormEditor() {
       await loadForms(data.form.id);
     } catch (error) {
       showToast('error', `Не сохранилось: ${error.message}`);
+    }
+  });
+
+  host.querySelector('#formPreviewToggle')?.addEventListener('click', () => {
+    /* Предпросмотр — настоящая страница анкеты в рамке, а не её имитация.
+       Имитация неизбежно разъезжается с оригиналом, и редактор проверяет не
+       то, что увидит автор. */
+    const box = document.getElementById('formPreview');
+    if (!box) return;
+    const frame = box.querySelector('iframe');
+    if (box.hidden) {
+      frame.src = `${formPublicUrl(formsDraft)}?preview=${Date.now()}`;
+      box.hidden = false;
+    } else {
+      box.hidden = true;
+      frame.src = 'about:blank';
+    }
+  });
+
+  host.querySelector('#formDuplicate')?.addEventListener('click', async () => {
+    const draft = collectFormDraft();
+    // Копия анкеты — всегда черновик с новым адресом: иначе публикация копии
+    // увела бы на неё автора, которому уже разослали оригинал.
+    const copy = { ...draft, id: '', slug: '', title: `${draft.title} (копия)`, status: 'draft' };
+    try {
+      const data = await formsFetch('/save', { method: 'POST', body: JSON.stringify(copy) });
+      formsDirty = false;
+      showToast('success', 'Копия создана как черновик');
+      await loadForms(data.form.id);
+    } catch (error) {
+      showToast('error', `Не скопировалось: ${error.message}`);
     }
   });
 
@@ -19702,6 +19865,33 @@ function bindFormEditor() {
       renderFormEditor();
       return;
     }
+    /* Варианты ответа правятся по одному: добавить, переставить, удалить.
+       Строка «через запятую» ломалась на первом же варианте с запятой внутри
+       («Фото, включая плёнку») и не давала менять порядок. */
+    const optionButton = event.target.closest('[data-option-add],[data-option-remove],[data-option-up],[data-option-down]');
+    if (optionButton) {
+      collectFormDraft();
+      const add = optionButton.dataset.optionAdd;
+      if (add !== undefined) {
+        const field = formsDraft.fields[Number(add)];
+        field.options = [...(field.options || []), ''];
+      } else {
+        const raw = optionButton.dataset.optionRemove ?? optionButton.dataset.optionUp ?? optionButton.dataset.optionDown;
+        const [fieldIndex, optionIndex] = raw.split(':').map(Number);
+        const field = formsDraft.fields[fieldIndex];
+        const options = [...(field.options || [])];
+        if (optionButton.dataset.optionRemove !== undefined) options.splice(optionIndex, 1);
+        else {
+          const next = optionButton.dataset.optionUp !== undefined ? optionIndex - 1 : optionIndex + 1;
+          if (next >= 0 && next < options.length) [options[optionIndex], options[next]] = [options[next], options[optionIndex]];
+        }
+        field.options = options;
+      }
+      formsDirty = true;
+      renderFormEditor();
+      return;
+    }
+
     const copyButton = event.target.closest('[data-field-copy]');
     if (copyButton) {
       collectFormDraft();
@@ -19781,7 +19971,16 @@ function bindFormEditor() {
 
 window._loadFormsTab = () => loadForms(formsDraft?.id);
 
-document.getElementById('formsNewBtn')?.addEventListener('click', () => openFormEditor(''));
+document.getElementById('formsNewBtn')?.addEventListener('click', () => {
+  const list = document.getElementById('formsTemplates');
+  if (list) list.hidden = !list.hidden;
+});
+document.getElementById('formsTemplates')?.addEventListener('click', (event) => {
+  const button = event.target.closest('[data-template]');
+  if (!button) return;
+  document.getElementById('formsTemplates').hidden = true;
+  openFormEditor('', button.dataset.template === 'blank' ? '' : button.dataset.template);
+});
 document.getElementById('formsReloadBtn')?.addEventListener('click', () => loadForms(formsDraft?.id));
 document.getElementById('formsList')?.addEventListener('click', (event) => {
   const button = event.target.closest('[data-form-open]');
