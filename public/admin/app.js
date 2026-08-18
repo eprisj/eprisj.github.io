@@ -1847,8 +1847,20 @@ async function loadFromGitHub() {
     const parsed = await res.json();
     validateShape(parsed);
 
+    /* Загрузка с VPS перезаписывает всё, что не сохранено. Раньше она делала
+       это молча — одно нажатие стирало несохранённые карточки. Спрашиваем, и
+       спрашиваем по делу: сколько именно правок будет потеряно. */
+    if (isEditorDirty()) {
+      const ok = window.confirm(
+        'В редакторе есть изменения, которых нет на VPS.\n\n'
+        + 'Загрузка заменит их версией с сервера. Копия текущего черновика попадёт в корзину черновиков — вернуть можно кнопкой «Вернуть черновик».\n\n'
+        + 'Загрузить версию VPS?',
+      );
+      if (!ok) { setStatus('info', 'Загрузка отменена — черновик на месте.'); return; }
+    }
+
     currentSha = '';
-    setEditorData(parsed, { markSynced: true, clearDraft: true });
+    setEditorData(parsed, { markSynced: true, clearDraft: true, reason: 'кнопка «Загрузить с VPS»' });
     lastSyncedTime = new Date();
     updateLastSyncedBadge();
     setStatus('success', 'Контент загружен с VPS (live)');
@@ -3115,8 +3127,87 @@ function getErrorMessage(error) {
   return String(error);
 }
 
+/* КОРЗИНА ЧЕРНОВИКА.
+
+   Кнопка «Загрузить свежую версию VPS» стирала локальный черновик начисто:
+   редактор делал карточки галереи, видел «на VPS более свежая версия»,
+   нажимал — и работа исчезала без следа и без возврата. Ровно это и
+   случилось у Марии.
+
+   Теперь перед любой заменой черновик кладётся в корзину: последние пять
+   снимков с отметкой времени. Из них можно вернуть работу, пока браузер не
+   очистили. Это не отменяет главного правила — сохранять на VPS, — но
+   перестаёт наказывать за одно нажатие. */
+const DRAFT_TRASH_KEY = 'epris-admin-draft-trash-v1';
+const DRAFT_TRASH_LIMIT = 5;
+
+function stashDraftBeforeReplace(reason) {
+  try {
+    const draft = localStorage.getItem(DRAFT_KEY);
+    if (!draft) return;
+    // Одинаковый снимок дважды подряд не нужен: чаще всего это повторное
+    // нажатие той же кнопки.
+    const trash = JSON.parse(localStorage.getItem(DRAFT_TRASH_KEY) || '[]');
+    if (trash[0]?.draft === draft) return;
+    trash.unshift({ at: new Date().toISOString(), reason: String(reason || ''), draft });
+    localStorage.setItem(DRAFT_TRASH_KEY, JSON.stringify(trash.slice(0, DRAFT_TRASH_LIMIT)));
+  } catch { /* приватный режим или нет места — не мешаем работе */ }
+}
+
+function listDraftTrash() {
+  try { return JSON.parse(localStorage.getItem(DRAFT_TRASH_KEY) || '[]'); } catch { return []; }
+}
+
+function restoreDraftFromTrash(index = 0) {
+  const entry = listDraftTrash()[index];
+  if (!entry) { showToast('error', 'Резервных черновиков нет.'); return false; }
+  try {
+    const data = JSON.parse(entry.draft);
+    // Возврат сам по себе тоже замена: текущее состояние уходит в корзину.
+    setEditorData(data, { markSynced: false, clearDraft: false });
+    showToast('success', `Черновик от ${new Date(entry.at).toLocaleString('ru-RU')} восстановлен. Проверьте и сохраните на VPS.`);
+    return true;
+  } catch (error) {
+    showToast('error', `Не удалось разобрать резервный черновик: ${error.message}`);
+    return false;
+  }
+}
+window.restoreDraftFromTrash = restoreDraftFromTrash;
+window.listDraftTrash = listDraftTrash;
+
+/* Кнопка возврата видна только когда есть что возвращать, и говорит, за какое
+   время черновик: «вернуть» вслепую страшнее, чем не возвращать. */
+function refreshDraftTrashButton() {
+  const button = document.getElementById('draftTrashBtn');
+  if (!button) return;
+  const trash = listDraftTrash();
+  button.hidden = !trash.length;
+  if (trash.length) {
+    const when = new Date(trash[0].at);
+    button.title = `Черновик от ${when.toLocaleString('ru-RU')} · ${trash[0].reason || 'замена черновика'}`;
+  }
+}
+window.refreshDraftTrashButton = refreshDraftTrashButton;
+
+document.addEventListener('DOMContentLoaded', () => {
+  refreshDraftTrashButton();
+  document.getElementById('draftTrashBtn')?.addEventListener('click', () => {
+    const trash = listDraftTrash();
+    if (!trash.length) return;
+    const when = new Date(trash[0].at).toLocaleString('ru-RU');
+    if (!window.confirm(`Вернуть черновик от ${when}?\n\nТекущее содержимое редактора тоже уйдёт в корзину черновиков.`)) return;
+    stashDraftBeforeReplace('возврат черновика из корзины');
+    restoreDraftFromTrash(0);
+    refreshDraftTrashButton();
+  });
+});
+
 function setEditorData(data, options = {}) {
   const { markSynced = false, clearDraft = false } = options;
+  if (clearDraft) {
+    stashDraftBeforeReplace(options.reason || 'замена черновика версией VPS');
+    setTimeout(() => { try { refreshDraftTrashButton(); } catch {} }, 0);
+  }
   editor.value = JSON.stringify(data, null, 2);
   updateStats(data);
   refreshVisualEditor();
@@ -11461,7 +11552,7 @@ function bindStudioMediaActions() {
       const localHasHomepagePhotos = homepagePhotoItems(localSnapshot).length > 0;
       const remoteHasHomepagePhotos = homepagePhotoItems(parsed).length > 0;
       if (!localHasHomepagePhotos && remoteHasHomepagePhotos) {
-        setEditorData(parsed, { markSynced: true, clearDraft: true });
+        setEditorData(parsed, { markSynced: true, clearDraft: true, reason: 'автозамена пустого черновика' });
         pendingRemoteHomepageData = null;
         setHomepageRemoteNotice('Пустой локальный черновик заменён опубликованной версией VPS — пять карточек доступны для редактирования.', 'ok', true);
         if (!silent) showToast?.('success', 'Опубликованные карточки загружены в редактор.');
@@ -12044,7 +12135,8 @@ function bindStudioMediaActions() {
   });
   document.getElementById('homepageRemoteNotice')?.addEventListener('click', (event) => {
     if (!event.target.closest('[data-homepage-accept-remote]') || !pendingRemoteHomepageData) return;
-    setEditorData(pendingRemoteHomepageData, { markSynced: true, clearDraft: true });
+    if (isEditorDirty() && !window.confirm('Заменить локальный черновик версией с VPS? Копия черновика останется в корзине черновиков.')) return;
+    setEditorData(pendingRemoteHomepageData, { markSynced: true, clearDraft: true, reason: 'кнопка «Загрузить свежую версию VPS»' });
     pendingRemoteHomepageData = null;
     setHomepageRemoteNotice('Свежая версия VPS загружена. Локальный черновик заменён по вашему выбору.', 'ok', true);
   });
