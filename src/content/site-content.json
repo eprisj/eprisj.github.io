@@ -3264,7 +3264,8 @@
       "imageUrl": "https://api.eprisjournal.com/uploads/mrt4jakod3agex.jpg",
       "order": 5,
       "authorId": "author-1784896384236-4fokw",
-      "publishedAt": "2026-07-19"
+      "publishedAt": "2026-07-19",
+      "updatedAt": "2026-08-18T14:16:25.809Z"
     },
     {
       "id": 13,
@@ -4520,7 +4521,7 @@
           "url": "https://www.plparchitecture.com/projects/the-edge"
         }
       ],
-      "updatedAt": "2026-08-15T12:12:47.109Z",
+      "updatedAt": "2026-08-18T13:38:27.415Z",
       "publishedAt": "2026-08-15"
     },
     {
@@ -4691,7 +4692,7 @@
       ],
       "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
       "date": "Aug 11, 2026",
-      "updatedAt": "2026-08-17T11:59:02.085Z"
+      "updatedAt": "2026-08-18T13:38:27.623Z"
     },
     {
       "id": 6,
@@ -7548,67 +7549,6 @@
           "authorId": "author-1784896384236-4fokw",
           "role": "Author",
           "updatedAt": "2026-08-17T09:58:13.756Z"
-        },
-        {
-          "id": 2,
-          "title": "Книга шепотов",
-          "subject": "Роман С. Алексиу",
-          "rating": 5,
-          "content": "Завораживающе красиво. Проза, похожая на поэзию, исследующая воспоминания и потери в разделенном городе.",
-          "author": "Maria S.",
-          "imageUrl": "/images/urban-solitude.png",
-          "featured": false,
-          "category": "Книги",
-          "verdict": "Проза, что движется как поэзия – сквозь память и утрату.",
-          "meta": "Роман · 248 с. · С. Алексиу",
-          "pros": [
-            "Светлый, сдержанный язык",
-            "Незабываемое чувство места"
-          ],
-          "cons": [
-            "Провисает середина"
-          ]
-        },
-        {
-          "id": 3,
-          "title": "Модернистское отступление",
-          "subject": "Отель The Edge, Пафос",
-          "rating": 4,
-          "content": "Потрясающая архитектура, но сервису не хватало той теплоты, которую можно ожидать от Средиземноморья.",
-          "author": "James B.",
-          "imageUrl": "/images/article-img-4.png",
-          "featured": false,
-          "category": "Отели",
-          "verdict": "Потрясающая архитектура, подведённая прохладным сервисом.",
-          "meta": "Пафос · Дизайн-отель · €€€",
-          "pros": [
-            "Захватывающая архитектура на краю скалы",
-            "Спокойные минималистичные номера"
-          ],
-          "cons": [
-            "Сервису не хватает средиземноморского тепла",
-            "Скудный выбор еды"
-          ]
-        },
-        {
-          "id": 4,
-          "title": "Новый обзор",
-          "subject": "Новый обзор",
-          "rating": 0,
-          "content": "С учетом первых впечатлений – атмосфера, сервис, для кого это место. Далее приведены детали, подтверждающие выводы.",
-          "author": "EPRIS Journal",
-          "category": "Food & Stay",
-          "verdict": "Одна чёткая строка – стоит ли идти.",
-          "pros": [
-            "Локация",
-            "Атмосфера",
-            "Соотношение цены и качества"
-          ],
-          "cons": [
-            "Один честный минус"
-          ],
-          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
-          "date": "Aug 1, 2026"
         },
         {
           "id": 6,
@@ -10486,67 +10426,6 @@
           "authorId": "author-1784896384236-4fokw",
           "role": "Author",
           "updatedAt": "2026-08-18T05:43:07.257Z"
-        },
-        {
-          "id": 2,
-          "title": "Книга Шепотів",
-          "subject": "Роман С. Алексіу",
-          "rating": 5,
-          "content": "Надзвичайно красива. Проза, схожа на поезію, досліджує пам’ять і втрату в розділеному місті.",
-          "author": "Maria S.",
-          "imageUrl": "/images/urban-solitude.png",
-          "featured": false,
-          "category": "Книги",
-          "verdict": "Проза, що рухається як поезія – крізь пам’ять і втрату.",
-          "meta": "Роман · 248 с. · С. Алексіу",
-          "pros": [
-            "Світла, стримана мова",
-            "Незабутнє відчуття місця"
-          ],
-          "cons": [
-            "Провисає середина"
-          ]
-        },
-        {
-          "id": 3,
-          "title": "Modernist Retreat",
-          "subject": "Готель 'The Edge', Пафос",
-          "rating": 4,
-          "content": "Приголомшлива архітектура, але обслуговуванню не вистачало тепла, якого можна очікувати в Середземному морі.",
-          "author": "James B.",
-          "imageUrl": "/images/article-img-4.png",
-          "featured": false,
-          "category": "Готелі",
-          "verdict": "Приголомшлива архітектура, підведена прохолодним сервісом.",
-          "meta": "Пафос · Дизайн-готель · €€€",
-          "pros": [
-            "Захоплива архітектура на краю скелі",
-            "Спокійні мінімалістичні номери"
-          ],
-          "cons": [
-            "Сервісу бракує середземноморського тепла",
-            "Обмежений вибір їжі"
-          ]
-        },
-        {
-          "id": 4,
-          "title": "Новий огляд",
-          "subject": "Новий огляд",
-          "rating": 0,
-          "content": "Начніте з першого враження – атмосфера, сервіс, для кого це місце. Потім конкретні деталі, що підтверджую��ь висновок.",
-          "author": "EPRIS Journal",
-          "category": "Food & Stay",
-          "verdict": "Одна чёткая строка – стоит ли идти.",
-          "pros": [
-            "Локация",
-            "Атмосфера",
-            "Соотношение цены и качества"
-          ],
-          "cons": [
-            "Один честный минус"
-          ],
-          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
-          "date": "Aug 1, 2026"
         },
         {
           "id": 6,
@@ -13427,67 +13306,6 @@
           "updatedAt": "2026-08-18T05:43:26.519Z"
         },
         {
-          "id": 2,
-          "title": "Das Buch der Flüsterer",
-          "subject": "Roman von S. Alexiou",
-          "rating": 5,
-          "content": "Unheimlich schön. Eine Prosa, die sich wie Poesie anfühlt, und Erinnerung und Verlust in einer geteilten Stadt erforscht.",
-          "author": "Maria S.",
-          "imageUrl": "/images/urban-solitude.png",
-          "featured": false,
-          "category": "Bücher",
-          "verdict": "Prosa, die wie Poesie durch Erinnerung und Verlust gleitet.",
-          "meta": "Roman · 248 S. · S. Alexiou",
-          "pros": [
-            "Leuchtende, zurückhaltende Sprache",
-            "Unvergessliches Ortsgefühl"
-          ],
-          "cons": [
-            "Zähes Mittelteil"
-          ]
-        },
-        {
-          "id": 3,
-          "title": "Modernistischer Rückzugsort",
-          "subject": "Hotel 'The Edge', Paphos",
-          "rating": 4,
-          "content": "Atemberaubende Architektur, aber dem Service fehlte die Wärme, die man im Mittelmeerraum erwartet.",
-          "author": "James B.",
-          "imageUrl": "/images/article-img-4.png",
-          "featured": false,
-          "category": "Hotels",
-          "verdict": "Atemberaubende Architektur, gebremst durch lauen Service.",
-          "meta": "Paphos · Designhotel · €€€",
-          "pros": [
-            "Spektakuläre Architektur am Klippenrand",
-            "Ruhige, minimalistische Zimmer"
-          ],
-          "cons": [
-            "Service ohne mediterrane Wärme",
-            "Wenig kulinarische Auswahl"
-          ]
-        },
-        {
-          "id": 4,
-          "title": "Neue Rezension",
-          "subject": "Neue Rezension",
-          "rating": 0,
-          "content": "Kommen Sie mit der ersten Woche – Atmosphäre, Service, für diese Gegend. Die konkreten Details werden später angezeigt.",
-          "author": "EPRIS Journal",
-          "category": "Food & Stay",
-          "verdict": "Одна чёткая строка – стоит ли идти.",
-          "pros": [
-            "Локация",
-            "Атмосфера",
-            "Соотношение цены и качества"
-          ],
-          "cons": [
-            "Один честный минус"
-          ],
-          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
-          "date": "Aug 1, 2026"
-        },
-        {
           "id": 6,
           "title": "Essen in einem Aquarell",
           "subject": "Enigma · Barcelona · RCR Arquitectes",
@@ -16262,67 +16080,6 @@
           ],
           "authorId": "author-1784896384236-4fokw",
           "role": "Autora"
-        },
-        {
-          "id": 2,
-          "title": "El libro de los susurros",
-          "subject": "Novela de S. Alexiou",
-          "rating": 5,
-          "content": "De una belleza inquietante. Una prosa que se siente como poesía, explorando la memoria y la pérdida en una ciudad dividida.",
-          "author": "Maria S.",
-          "imageUrl": "/images/urban-solitude.png",
-          "featured": false,
-          "category": "Libros",
-          "verdict": "Una prosa que fluye como poesía entre memoria y pérdida.",
-          "meta": "Novela · 248 pp · S. Alexiou",
-          "pros": [
-            "Lenguaje luminoso y contenido",
-            "Sentido del lugar inolvidable"
-          ],
-          "cons": [
-            "Tercio central lento"
-          ]
-        },
-        {
-          "id": 3,
-          "title": "Retiro modernista",
-          "subject": "Hotel 'The Edge', Paphos",
-          "rating": 4,
-          "content": "Arquitectura impresionante, pero al servicio le faltaba la calidez que se espera en el Mediterráneo.",
-          "author": "James B.",
-          "imageUrl": "/images/article-img-4.png",
-          "featured": false,
-          "category": "Alojamiento",
-          "verdict": "Arquitectura impresionante, lastrada por un servicio tibio.",
-          "meta": "Pafos · Hotel de diseño · €€€",
-          "pros": [
-            "Arquitectura imponente al borde del acantilado",
-            "Habitaciones serenas y mínimas"
-          ],
-          "cons": [
-            "Al servicio le falta calidez mediterránea",
-            "Oferta gastronómica limitada"
-          ]
-        },
-        {
-          "id": 4,
-          "title": "Nueva reseña",
-          "subject": "Nueva reseña",
-          "rating": 0,
-          "content": "Начните с первого впечатления – атмосфера, сервис, для кого это место. Estos detalles concretos se pueden realizar.",
-          "author": "EPRIS Journal",
-          "category": "Food & Stay",
-          "verdict": "Одна чёткая строка – стоит ли идти.",
-          "pros": [
-            "Локация",
-            "Атмосфера",
-            "Соотношение цены и качества"
-          ],
-          "cons": [
-            "Один честный минус"
-          ],
-          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
-          "date": "Aug 1, 2026"
         },
         {
           "id": 6,
@@ -19101,67 +18858,6 @@
           "role": "Yazar"
         },
         {
-          "id": 2,
-          "title": "Fısıltıların kitabı",
-          "subject": "S. Alexiou'nun romanı",
-          "rating": 5,
-          "content": "Ruhani güzellikte. Bölünmüş bir şehirde hafıza ve kaybı araştıran şiir gibi bir düzyazı.",
-          "author": "Maria S.",
-          "imageUrl": "/images/urban-solitude.png",
-          "featured": false,
-          "category": "Kitaplar",
-          "verdict": "Bellek ve kayıp arasında şiir gibi akan bir düzyazı.",
-          "meta": "Roman · 248 s. · S. Alexiou",
-          "pros": [
-            "Aydınlık, ölçülü dil",
-            "Unutulmaz mekân hissi"
-          ],
-          "cons": [
-            "Orta bölüm yavaş"
-          ]
-        },
-        {
-          "id": 3,
-          "title": "Modernist sığınak",
-          "subject": "Hotel 'The Edge', Paphos",
-          "rating": 4,
-          "content": "Muhteşem mimari, ama servise Akdeniz'de beklenen sıcaklık eksikti.",
-          "author": "James B.",
-          "imageUrl": "/images/article-img-4.png",
-          "featured": false,
-          "category": "Konaklama",
-          "verdict": "Nefes kesen mimari, ılık servisle gölgeleniyor.",
-          "meta": "Baf · Tasarım otel · €€€",
-          "pros": [
-            "Uçurum kenarında çarpıcı mimari",
-            "Sakin, minimal odalar"
-          ],
-          "cons": [
-            "Serviste Akdeniz sıcaklığı yok",
-            "Sınırlı yemek seçeneği"
-          ]
-        },
-        {
-          "id": 4,
-          "title": "Yeni inceleme",
-          "subject": "Yeni inceleme",
-          "rating": 0,
-          "content": "Çok iyi bir atmosfere sahip olmak - atmosfer, sunucu, benim için. Ayrıntıları kontrol edin, daha sonra satın alın.",
-          "author": "EPRIS Journal",
-          "category": "Food & Stay",
-          "verdict": "Одна чёткая строка – стоит ли идти.",
-          "pros": [
-            "Локация",
-            "Атмосфера",
-            "Соотношение цены и качества"
-          ],
-          "cons": [
-            "Один честный минус"
-          ],
-          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
-          "date": "Aug 1, 2026"
-        },
-        {
           "id": 6,
           "title": "Bir su boyası içinde yemek",
           "subject": "Enigma · Barcelona · RCR Mimarlar",
@@ -21931,67 +21627,6 @@
           ],
           "authorId": "author-1784896384236-4fokw",
           "role": "Autrice"
-        },
-        {
-          "id": 2,
-          "title": "Il libro dei sussurri",
-          "subject": "Romanzo di S. Alexiou",
-          "rating": 5,
-          "content": "Di una bellezza inquietante. Una prosa che sembra poesia, esplorando la memoria e la perdita in una città divisa.",
-          "author": "Maria S.",
-          "imageUrl": "/images/urban-solitude.png",
-          "featured": false,
-          "category": "Libri",
-          "verdict": "Una prosa che scorre come poesia tra memoria e perdita.",
-          "meta": "Romanzo · 248 pp · S. Alexiou",
-          "pros": [
-            "Lingua luminosa e misurata",
-            "Senso del luogo indimenticabile"
-          ],
-          "cons": [
-            "Parte centrale lenta"
-          ]
-        },
-        {
-          "id": 3,
-          "title": "Rifugio modernista",
-          "subject": "Hotel 'The Edge', Paphos",
-          "rating": 4,
-          "content": "Architettura straordinaria, ma al servizio mancava il calore che ci si aspetta nel Mediterraneo.",
-          "author": "James B.",
-          "imageUrl": "/images/article-img-4.png",
-          "featured": false,
-          "category": "Soggiorni",
-          "verdict": "Architettura splendida, tradita da un servizio tiepido.",
-          "meta": "Paphos · Design hotel · €€€",
-          "pros": [
-            "Architettura mozzafiato a picco sul mare",
-            "Camere serene e minimal"
-          ],
-          "cons": [
-            "Servizio senza calore mediterraneo",
-            "Scelta gastronomica limitata"
-          ]
-        },
-        {
-          "id": 4,
-          "title": "Nuova recensione",
-          "subject": "Nuova recensione",
-          "rating": 0,
-          "content": "Fare attenzione al primo controllo: atmosfera, servizio per tutto questo. Visualizzare i dettagli aggiuntivi dell'acqua.",
-          "author": "EPRIS Journal",
-          "category": "Food & Stay",
-          "verdict": "Одна чёткая строка – стоит ли идти.",
-          "pros": [
-            "Локация",
-            "Атмосфера",
-            "Соотношение цены и качества"
-          ],
-          "cons": [
-            "Один честный минус"
-          ],
-          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
-          "date": "Aug 1, 2026"
         },
         {
           "id": 6,
