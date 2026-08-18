@@ -18992,24 +18992,24 @@
         {
           "id": 5,
           "draft": true,
-          "title": "Yeni inceleme",
-          "subject": "Yeni inceleme",
+          "title": "Yeni bir inceleme",
+          "subject": "Yeni bir inceleme",
           "rating": 0,
-          "content": "İlk izlenimden başlayın – atmosfer, servis, bu mekan kimler için. Daha sonra sonucu destekleyen spesifik ayrıntılar.",
+          "content": "İlk izlenimle başlayın – atmosfer, hizmet, bu mekan kimler içindir. Daha sonra çıkarıyı destekleyen spesifik ayrıntılar.",
           "author": "EPRIS Journal",
           "category": "Food & Stay",
-          "verdict": "Bir net satır – gitmeye değer mi?",
+          "verdict": "Bir satır net – gitmek gerçekten mi?",
           "pros": [
             "Lokasyon",
             "Atmosfer",
-            "Fiyat-kalite oranı"
+            "Fiyat‑kalite oranı"
           ],
           "cons": [
-            "Bir dürüst eksik"
+            "Sadece bir eksik"
           ],
           "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
           "date": "Aug 11, 2026",
-          "updatedAt": "2026-08-18T00:12:53.103Z"
+          "updatedAt": "2026-08-18T01:47:13.397Z"
         }
       ],
       "libraryItems": [
