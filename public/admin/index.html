@@ -16,8 +16,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=5.20" />
-    <link rel="stylesheet" href="./brandbook.css?v=3" />
+    <link rel="stylesheet" href="./styles.css?v=5.40" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
@@ -262,16 +261,9 @@
             <button class="sb-group-head" type="button" data-toggle-group="brand" aria-expanded="true">
               <svg class="sb-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
               <span>Бренд и дизайн</span>
-              <em class="sb-count" aria-hidden="true">3</em>
+              <em class="sb-count" aria-hidden="true">2</em>
             </button>
             <div class="sb-group-items">
-            <div class="sb-item" data-home="brand">
-              <button class="tab-btn" data-tab="brandbook" data-nav-label="Бренд-бук" data-keywords="гайдлайны айдентика логотип" type="button">
-                <svg class="sb-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.2A2.2 2.2 0 0 1 6.2 3H19v14.4H6.2A2.2 2.2 0 0 0 4 19.6Z"/><path d="M4 19.6A2.2 2.2 0 0 1 6.2 17.4H19V21H6.2A2.2 2.2 0 0 1 4 18.8Z"/><path d="M8 7.5h6"/></svg>
-                <span class="sb-label">Бренд-бук</span>
-              </button>
-              <button class="sb-pin" type="button" data-pin="brandbook" title="Закрепить в «Часто»" aria-label="Закрепить раздел «Бренд-бук» в блоке «Часто»"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M9 3.5h6l-.8 5.2 3.3 3.3H6.5l3.3-3.3Z"/><path d="M12 12v8.5"/></svg></button>
-            </div>
             <div class="sb-item" data-home="brand">
               <button class="tab-btn" data-tab="design" data-nav-label="Дизайн" data-keywords="шоп мудборд макеты" type="button">
                 <svg class="sb-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 3.5 4.2 7.2H3.8Z"/><circle cx="17.2" cy="6.8" r="3.3"/><rect x="4" y="14" width="7.5" height="7" rx="1.4"/><path d="M14 21v-7h7v7Z"/></svg>
@@ -499,16 +491,23 @@
                   </li>
                 </ol>
               </div>
-              <details class="homepage-secondary-tools">
-                <summary>Настройки и служебные действия</summary>
-                <div class="homepage-secondary-tools-actions">
-                  <button id="homepageLoadLatestBtn" class="btn btn-sm" type="button">Загрузить текущую версию</button>
-                  <button id="homepageFillBtn" class="btn btn-sm" type="button">Проверить пустые слоты</button>
-                  <button id="homepageInheritBtn" class="btn btn-sm" type="button">Заполнить наследуемые поля</button>
-                  <button id="homepageComplexityToggle" class="btn btn-sm" type="button" aria-controls="tab-homepage" aria-expanded="false">Показать расширенные настройки</button>
+              <!-- Раньше это был <details> «Настройки и служебные действия»: пять
+                   кнопок вперемешку, где проверка готовности выпуска стояла рядом
+                   со ссылкой на сайт, а переключатель всех настроек главной был
+                   такой же серой кнопкой, как остальные. Теперь действия названы
+                   тем, что они делают, а вход в настройки отделён. -->
+              <div class="hp-tools">
+                <div class="hp-tools-group" role="group" aria-label="Действия с выпуском">
+                  <button id="homepageLoadLatestBtn" class="btn btn-sm" type="button" title="Забрать с сайта то, что опубликовано сейчас">Обновить с сайта</button>
+                  <button id="homepageFillBtn" class="btn btn-sm" type="button" title="Показать, каких фото и подписей не хватает">Проверить готовность</button>
+                  <button id="homepageInheritBtn" class="btn btn-sm" type="button" title="Подставить подписи и описания из прошлого выпуска там, где пусто">Дозаполнить подписи</button>
                   <a class="btn btn-sm" href="../" target="_blank" rel="noreferrer">Открыть сайт ↗</a>
                 </div>
-              </details>
+                <button id="homepageComplexityToggle" class="hp-tools-settings" type="button" aria-controls="tab-homepage" aria-expanded="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2"/><circle cx="16" cy="7" r="2.2"/><path d="M4 17h5M13 17h7"/><circle cx="11" cy="17" r="2.2"/></svg>
+                  <span class="hp-tools-settings-label">Настройки главной</span>
+                </button>
+              </div>
               <section class="homepage-published-now" aria-labelledby="homepagePublishedTitle">
                 <div class="homepage-published-head">
                   <div><span class="homepage-admin-kicker">ЧТО ВИДЯТ ЧИТАТЕЛИ СЕЙЧАС</span><h3 id="homepagePublishedTitle">Текущий выпуск на главной</h3><p>Это независимый снимок с VPS. Чтобы не менять его случайно, создайте новый выпуск ниже — он будет отдельным черновиком.</p></div>
@@ -604,24 +603,38 @@
               <section class="card homepage-control-card homepage-advanced" aria-labelledby="homepageControlTitle">
                 <div class="homepage-section-head">
                   <div>
-                    <span class="homepage-admin-kicker">Автопилот и ручной контроль</span>
-                    <h3 id="homepageControlTitle" class="card-title">Обновление и выталкивание</h3>
-                    <p class="card-desc">Админка проверяет VPS без перезагрузки. Локальные правки не перезаписываются — сначала появится предупреждение о новой версии.</p>
+                    <span class="homepage-admin-kicker">Настройки главной</span>
+                    <h3 id="homepageControlTitle" class="card-title">Что попадает на главную и как часто</h3>
+                    <p class="card-desc">Панель сама проверяет сайт на свежие правки. Ваши несохранённые изменения при этом не перезаписываются: сначала появится предупреждение.</p>
                   </div>
                   <span id="homepageRefreshState" class="homepage-preview-badge">Автообновление включено</span>
                 </div>
-                <div class="homepage-control-grid">
-                  <label class="homepage-toggle-field"><input id="homepageAutoRefresh" type="checkbox" checked><span><strong>Автообновление</strong><small>Проверять свежий контент на VPS</small></span></label>
-                  <label class="homepage-field"><span>Интервал проверки</span><select id="homepageRefreshInterval"><option value="30">Каждые 30 секунд</option><option value="60" selected>Каждую минуту</option><option value="120">Каждые 2 минуты</option><option value="300">Каждые 5 минут</option></select></label>
-                  <button id="homepageRefreshBtn" class="btn" type="button"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.8-4L3 10"></path><path d="M3 5v5h5"></path><path d="M4 13a8 8 0 0 0 14.8 4L21 14"></path><path d="M21 19v-5h-5"></path></svg><span class="btn-label">Получить свежую версию</span></button>
-                  <button id="homepageArticlesSyncBtn" class="btn" type="button"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.8-4L3 10"></path><path d="M3 5v5h5"></path><path d="M4 13a8 8 0 0 0 14.8 4L21 14"></path><path d="M21 19v-5h-5"></path></svg><span class="btn-label">Синхронизировать новые статьи</span></button>
-                  <label class="homepage-toggle-field"><input id="homepageArticlesAutoSync" type="checkbox" checked><span><strong>Автоподгрузка статей</strong><small>Новые опубликованные тексты сами попадут на главную</small></span></label>
-                  <label class="homepage-field"><span>Статей на главной</span><select id="homepageArticlesLimit"><option value="0" selected>Все новые</option><option value="3">3 новых</option><option value="5">5 новых</option><option value="8">8 новых</option><option value="12">12 новых</option></select></label>
-                  <label class="homepage-field"><span>Режим Pics of the week</span><select id="homepagePicsMode"><option value="manual">Вручную — категории редактора</option><option value="auto">Автоматически — самые новые</option></select></label>
-                  <label class="homepage-field"><span>Порядок обновления</span><select id="homepageOrdering"><option value="lifo">LIFO — свежие сверху</option><option value="manual">Ручной порядок</option></select></label>
-                  <label class="homepage-toggle-field"><input id="homepageAutoPublish" type="checkbox"><span><strong>Автовыталкивание</strong><small>Публиковать безопасные правки после паузы</small></span></label>
+
+                <!-- Разделено по смыслу: слева то, что решает, ЧТО увидит читатель,
+                     справа — поведение самой панели. Раньше девять контролов лежали
+                     одной сеткой, и «сколько статей на главной» стояло вплотную к
+                     «интервалу проверки VPS». -->
+                <div class="hp-settings-block">
+                  <h4 class="hp-settings-title">Содержимое главной</h4>
+                  <div class="homepage-control-grid">
+                    <label class="homepage-field"><span>Как выбираются пять фото</span><select id="homepagePicsMode"><option value="manual">Выбираю сам, по категориям</option><option value="auto">Автоматически, самые новые</option></select></label>
+                    <label class="homepage-field"><span>Порядок фото в выпуске</span><select id="homepageOrdering"><option value="lifo">Сначала новые</option><option value="manual">Мой порядок</option></select></label>
+                    <label class="homepage-field"><span>Сколько статей показывать</span><select id="homepageArticlesLimit"><option value="0" selected>Все новые</option><option value="3">3 новых</option><option value="5">5 новых</option><option value="8">8 новых</option><option value="12">12 новых</option></select></label>
+                    <label class="homepage-toggle-field"><input id="homepageArticlesAutoSync" type="checkbox" checked><span><strong>Новые статьи сами попадают на главную</strong><small>Как только текст опубликован, он появляется в ленте</small></span></label>
+                    <button id="homepageArticlesSyncBtn" class="btn btn-sm" type="button"><span class="btn-label">Подтянуть новые статьи сейчас</span></button>
+                  </div>
+                  <div id="homepageArticlesSyncStatus" class="homepage-layout-status" role="status" aria-live="polite">Новые статьи наследуются из общей ленты публикаций.</div>
                 </div>
-                <div id="homepageArticlesSyncStatus" class="homepage-layout-status" role="status" aria-live="polite">Новые статьи наследуются из общей ленты публикаций.</div>
+
+                <div class="hp-settings-block">
+                  <h4 class="hp-settings-title">Поведение панели</h4>
+                  <div class="homepage-control-grid">
+                    <label class="homepage-toggle-field"><input id="homepageAutoRefresh" type="checkbox" checked><span><strong>Следить за сайтом</strong><small>Проверять, не изменил ли кто-то главную с другого компьютера</small></span></label>
+                    <label class="homepage-field"><span>Как часто проверять</span><select id="homepageRefreshInterval"><option value="30">Каждые 30 секунд</option><option value="60" selected>Каждую минуту</option><option value="120">Каждые 2 минуты</option><option value="300">Каждые 5 минут</option></select></label>
+                    <button id="homepageRefreshBtn" class="btn btn-sm" type="button"><span class="btn-label">Проверить прямо сейчас</span></button>
+                    <label class="homepage-toggle-field"><input id="homepageAutoPublish" type="checkbox"><span><strong>Публиковать мелкие правки сами</strong><small>Через пару секунд после изменения, без нажатия «Опубликовать». Новый выпуск так не публикуется</small></span></label>
+                  </div>
+                </div>
               </section>
               <section class="card homepage-layout-editor homepage-advanced" aria-labelledby="homepageLayoutEditorTitle">
                 <div class="homepage-section-head">
@@ -2040,7 +2053,6 @@
 
           <!-- ══ PASSPORTS ══ -->
           <!-- ===== BRANDBOOK ===== -->
-          <section class="tab-panel" id="tab-brandbook"></section>
 
           <section class="tab-panel" id="tab-passports">
             <div class="pp-admin">
@@ -2227,9 +2239,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=4.90" type="module"></script>
-    <script src="../brandbook/data.js?v=1"></script>
-    <script src="./brandbook.js?v=3"></script>
+    <script src="./app.js?v=5.00" type="module"></script>
     <script>
       // Tab switching + page title update
       document.addEventListener('DOMContentLoaded', function () {
@@ -2539,7 +2549,22 @@
           });
         })();
 
-        applyCollapsed(function () { try { return localStorage.getItem(COLLAPSE_KEY) === '1'; } catch (e) { return false; } }());
+        /* Панель открывается свёрнутой: колонка иконок отдаёт экран
+           материалу, а развернуть её — один клик или «[». Сохранённый
+           выбор редактора уважается, но старое значение, записанное до
+           смены умолчания, один раз сбрасывается — иначе те, кто уже
+           открывал панель, никогда не увидели бы нового поведения. */
+        applyCollapsed(function () {
+          try {
+            if (localStorage.getItem('epris_admin_nav_collapsed_default') !== 'rail') {
+              localStorage.setItem('epris_admin_nav_collapsed_default', 'rail');
+              localStorage.removeItem(COLLAPSE_KEY);
+              return true;
+            }
+            var stored = localStorage.getItem(COLLAPSE_KEY);
+            return stored === null ? true : stored === '1';
+          } catch (e) { return true; }
+        }());
         applyGroupState();
         applyPins();
         syncSidebarNav();

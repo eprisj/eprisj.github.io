@@ -11411,9 +11411,14 @@ function bindStudioMediaActions() {
     root.classList.toggle('is-simple', isSimple);
     const toggle = document.getElementById('homepageComplexityToggle');
     if (toggle) {
-      toggle.textContent = isSimple ? 'Показать расширенные настройки' : 'Скрыть расширенные настройки';
+      /* Подпись меняем внутри span: у кнопки теперь есть иконка, и запись
+         в textContent стирала бы её вместе с текстом. */
+      const label = toggle.querySelector('.hp-tools-settings-label');
+      if (label) label.textContent = isSimple ? 'Настройки главной' : 'Скрыть настройки';
       toggle.setAttribute('aria-expanded', String(!isSimple));
-      toggle.title = isSimple ? 'Показать синхронизацию, раскладку, витрину и архив' : 'Скрыть вторичные настройки';
+      toggle.title = isSimple
+        ? 'Что попадает на главную, вид карусели, витрина и архив выпусков'
+        : 'Свернуть настройки и оставить только выпуск';
     }
     if (persist) {
       try { localStorage.setItem(HOMEPAGE_UI_PREFS_KEY, JSON.stringify({ simple: isSimple })); } catch { /* storage unavailable */ }
@@ -11538,7 +11543,7 @@ function bindStudioMediaActions() {
 
   async function homepageRemoteIsStillCurrent() {
     if (!lastSyncedSnapshot) {
-      throw new Error('Нет подтверждённой версии VPS. Сначала нажмите «Получить свежую версию».');
+      throw new Error('Нет подтверждённой версии сайта. Сначала нажмите «Проверить прямо сейчас».');
     }
     const response = await fetch(CONTENT_API, { cache: 'no-store' });
     if (!response.ok) throw new Error(`Не удалось сверить VPS: статус ${response.status}`);
@@ -11548,7 +11553,7 @@ function bindStudioMediaActions() {
     if (remoteSnapshot === lastSyncedSnapshot) return true;
     pendingRemoteHomepageData = remote;
     setHomepageRemoteNotice(
-      'Версия на VPS изменилась после загрузки этой страницы. Публикация остановлена, чтобы не затереть чужие правки. <button class="btn btn-sm" type="button" data-homepage-accept-remote>Получить свежую версию</button>',
+      'Версия на VPS изменилась после загрузки этой страницы. Публикация остановлена, чтобы не затереть чужие правки. <button class="btn btn-sm" type="button" data-homepage-accept-remote>Забрать свежую версию</button>',
       'warn',
       true,
     );
@@ -11932,7 +11937,7 @@ function bindStudioMediaActions() {
       if (!silent) showToast?.('success', 'Текущая подборка автоматически добавлена в историю. Сайт не менялся.');
       return candidate;
     } catch (error) {
-      setHomepageRemoteNotice(`Не удалось автоматически подготовить историю: ${esc(getErrorMessage(error))}. Повторите «Получить свежую версию».`, 'warn', true);
+      setHomepageRemoteNotice(`Не удалось автоматически подготовить историю: ${esc(getErrorMessage(error))}. Повторите «Проверить прямо сейчас».`, 'warn', true);
       if (!silent) showToast?.('error', `История не сохранена: ${getErrorMessage(error)}`);
       return remote;
     } finally {
@@ -11988,7 +11993,7 @@ function bindStudioMediaActions() {
       if (!silent) showToast?.('error', getErrorMessage(error));
     } finally {
       homepageRefreshBusy = false;
-      if (button) { button.disabled = false; setButtonLabel(button, 'Получить свежую версию'); }
+      if (button) { button.disabled = false; setButtonLabel(button, 'Проверить прямо сейчас'); }
     }
   }
 
