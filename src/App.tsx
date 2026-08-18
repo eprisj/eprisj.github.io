@@ -3677,7 +3677,7 @@ export default function App() {
       if (document.visibilityState === 'visible') void loadLiveContent(5000);
     };
     const onVisibility = () => { if (document.visibilityState === 'visible') refresh(); };
-    const timer = window.setInterval(refresh, 60_000);
+    const timer = window.setInterval(refresh, 15_000);
     window.addEventListener('visibilitychange', onVisibility);
     window.addEventListener('focus', refresh);
     return () => {

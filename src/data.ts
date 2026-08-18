@@ -606,6 +606,7 @@ const content = rawContent as SiteContent;
 export const CONTENT_API = 'https://api.eprisjournal.com/content';
 
 let liveContent: SiteContent | null = null;
+let liveContentEtag = '';
 const contentListeners = new Set<() => void>();
 
 /** Subscribe to live-content swaps; returns an unsubscribe fn. */
@@ -623,25 +624,31 @@ export function applyLiveContent(json: SiteContent): void {
 }
 
 /**
- * Fetches the live content from the VPS and swaps it in. Resolves to true on
- * success, false on any failure (network, timeout, bad shape) — in which case
- * the bundled fallback stays active and the site is unaffected.
+ * Fetches the live content from the VPS and swaps it in. Repeat calls use the
+ * ETag from the previous response, so unchanged content answers with a tiny
+ * 304 response instead of downloading the whole editorial JSON again.
+ * Resolves to true on success (including 304), false on any failure (network,
+ * timeout, bad shape) — in which case the bundled fallback stays unaffected.
  */
 export async function loadLiveContent(timeoutMs = 4000): Promise<boolean> {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), timeoutMs);
   try {
-    const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), timeoutMs);
-    const res = await fetch(CONTENT_API, { signal: ctrl.signal, cache: 'no-store' });
-    clearTimeout(timer);
+    const headers = liveContentEtag ? { 'If-None-Match': liveContentEtag } : undefined;
+    const res = await fetch(CONTENT_API, { signal: ctrl.signal, cache: 'no-store', headers });
+    if (res.status === 304) return true;
     if (!res.ok) return false;
     const json = await res.json();
     if (!json || typeof json !== 'object' || !json.translations || !Array.isArray(json.articles)) {
       return false;
     }
+    liveContentEtag = res.headers.get('ETag') || liveContentEtag;
     applyLiveContent(json as SiteContent);
     return true;
   } catch {
     return false; // keep bundled fallback
+  } finally {
+    clearTimeout(timer);
   }
 }
 
