@@ -13364,24 +13364,24 @@
         {
           "id": 5,
           "draft": true,
-          "title": "Neue Rezension",
-          "subject": "Neue Rezension",
+          "title": "Neue Bewertung",
+          "subject": "Neue Bewertung",
           "rating": 0,
-          "content": "Kommen Sie mit der ersten Woche – Atmosphäre, Service, für diese Gegend. Die konkreten Details werden später angezeigt.",
+          "content": "Beginnen Sie mit dem ersten Eindruck – Atmosphäre, Service, für wen dieser Ort gedacht ist. Anschließend konkrete Details, die diese Schlussfolgerung bestätigen.",
           "author": "EPRIS Journal",
           "category": "Food & Stay",
-          "verdict": "Eine einzelne Zeile – es ist nur eine Zeile.",
+          "verdict": "Eine klare Zeile – lohnt es sich zu gehen?",
           "pros": [
-            "Standort",
+            "Lage",
             "Atmosphäre",
-            "Sichere Preise und Kosten"
+            "Preis-Leistungs-Verhältnis"
           ],
           "cons": [
-            "Один честный минус"
+            "Ein ehrlicher Nachteil"
           ],
           "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
           "date": "Aug 11, 2026",
-          "updatedAt": "2026-08-17T15:10:59.462Z"
+          "updatedAt": "2026-08-18T00:12:03.580Z"
         }
       ],
       "libraryItems": [
