@@ -21841,6 +21841,71 @@
           ],
           "updatedAt": "2026-08-17T00:25:00.301Z",
           "publishedAt": "2026-08-15"
+        },
+        {
+          "id": 23,
+          "draft": true,
+          "title": "Pratica della Chora: ",
+          "author": "EPRIS Journal",
+          "role": "Scrivania editoriale",
+          "date": "17 agosto 2026",
+          "excerpt": "Un paragrafo di apertura mirato per una nuova storia editoriale.",
+          "category": "Cultura",
+          "subcategory": "Caratteristica",
+          "tags": [
+            "storia",
+            "cultura",
+            "editoriale"
+          ],
+          "imageSeed": "new-editorial-story",
+          "content": [
+            {
+              "type": "testo",
+              "content": "Creare il proprio progetto in un nuovo paese è sempre un passo coraggioso, in cui l'esplorazione creativa si intreccia strettamente con la trasformazione personale. Alena e Ksenia – fondatrici di Chora Practice, con sede a Lisbona, Portogallo – parlano di come trasformare qualsiasi crisi in un punto di crescita, del perché non esistono persone “non creative” al mondo e di come permettersi di fare ciò che si ama veramente. Questa è una conversazione sul gusto per la vita, sui musei, sul coraggio di impegnarsi in “sciocchezze” e sull’arte di ascoltare i propri impulsi interiori."
+            },
+            {
+              "type": "immagine",
+              "content": "nuova-storia-editoriale-2",
+              "caption": "Immagine principale"
+            },
+            {
+              "type": "citazione",
+              "content": "Aggiungi una riga che vale la pena ricordare qui."
+            },
+            {
+              "type": "nota",
+              "content": "Nota editoriale, contesto della fonte o una breve nota."
+            },
+            {
+              "type": "lista di controllo",
+              "caption": "Cosa coprire",
+              "content": {
+                "items": [
+                  "Contesto",
+                  "Dettaglio chiave",
+                  "Angolo umano",
+                  "Cosa cambia dopo"
+                ]
+              }
+            },
+            {
+              "type": "sondaggio",
+              "content": {
+                "question": "Cosa dovremmo esplorare dopo?",
+                "options": [
+                  {
+                    "label": "Più contesto",
+                    "votes": 0
+                  },
+                  {
+                    "label": "Guida pratica",
+                    "votes": 0
+                  }
+                ]
+              }
+            }
+          ],
+          "updatedAt": "2026-08-18T05:42:47.976Z"
         }
       ],
       "reviews": [
