@@ -3024,8 +3024,26 @@ function Sidebar({ t }: { t: (key: string) => string }) {
 // field says about relevance (title outweighs a stray mention in a content
 // block), then rank. Covers Articles, Gallery and Reviews in one
 // pass so a search actually finds whatever the reader is looking for.
-function normalizeSearchText(text: string): string {
-  return text
+/* Текст для поиска приходит из живого контента, который редакция меняет без
+   участия кода: поле, бывшее строкой, однажды оказывается массивом блоков или
+   числом. Раньше такой случай ронял НЕ поиск, а всё приложение целиком —
+   `.normalize is not a function` в рендере, белая страница вместо сайта.
+   Поэтому вход приводится к строке здесь, а не предполагается строкой. */
+function blocksToText(value: unknown): string {
+  if (typeof value === 'string') return value;
+  if (typeof value === 'number') return String(value);
+  if (Array.isArray(value)) return value.map(blocksToText).join(' ');
+  if (value && typeof value === 'object') {
+    const block = value as { content?: unknown; text?: unknown };
+    if (block.content !== undefined) return blocksToText(block.content);
+    if (block.text !== undefined) return blocksToText(block.text);
+    return Object.values(value as Record<string, unknown>).map(blocksToText).join(' ');
+  }
+  return '';
+}
+
+function normalizeSearchText(text: unknown): string {
+  return blocksToText(text)
     .normalize('NFKD')
     .replace(/[\u0300-\u036f]/g, '')
     .toLocaleLowerCase()
@@ -3101,7 +3119,7 @@ function buildSearchIndex(
   const hits: SearchHit[] = [];
 
   for (const a of articles) {
-    const bodyText = (a.content || []).map((b) => (typeof b.content === 'string' ? b.content : '')).join(' ');
+    const bodyText = blocksToText(a.content);
     const allTokens = tokenize([a.title, a.category, (a.tags || []).join(' '), a.author, a.excerpt, bodyText].filter(Boolean).join(' '));
     const score =
       scoreField(tokenize(a.title), queryTokens, 10) +
@@ -3136,18 +3154,20 @@ function buildSearchIndex(
   }
 
   for (const r of reviews) {
-    const allTokens = tokenize([r.title, r.subject, r.category, r.author, r.content].filter(Boolean).join(' '));
+    // Как и у статьи, тело отзыва — массив блоков, а не строка.
+    const reviewBody = blocksToText(r.content);
+    const allTokens = tokenize([r.title, r.subject, r.category, r.author, reviewBody].filter(Boolean).join(' '));
     const score =
       scoreField(tokenize(r.title), queryTokens, 10) +
       scoreField(tokenize(r.subject || ''), queryTokens, 6) +
       scoreField(tokenize(r.category || ''), queryTokens, 6) +
       scoreField(tokenize(r.author || ''), queryTokens, 4) +
-      scoreField(tokenize(r.content || ''), queryTokens, 2);
+      scoreField(tokenize(reviewBody), queryTokens, 2);
     if (score > 0 && matchesEveryQueryToken(allTokens, queryTokens)) {
       hits.push({
         key: `review-${r.id}`, score, kind: 'review', title: r.title,
         meta: [r.category, r.subject].filter(Boolean).join(' · '),
-        excerpt: r.verdict || r.content || '', imageUrl: r.imageUrl,
+        excerpt: blocksToText(r.verdict) || reviewBody, imageUrl: r.imageUrl,
         onOpen: () => handlers.onGoToTab('reviews'),
       });
     }
