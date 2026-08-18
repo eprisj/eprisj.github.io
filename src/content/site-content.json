@@ -4768,10 +4768,14 @@
         },
         {
           "type": "text",
-          "content": "Alena: “Recently, it was my solo trip to Porto. I visited the Serralves Museum, explored Álvaro Siza’s architecture, and absolutely loved it. The fact that I went alone also made it a special experience.”"
+          "content": "<b>Alena</b>: “Recently, it was my solo trip to Porto. I visited the Serralves Museum, explored Álvaro Siza’s architecture, and absolutely loved it. The fact that I went alone also made it a special experience.”"
+        },
+        {
+          "type": "text",
+          "content": ""
         }
       ],
-      "updatedAt": "2026-08-18T16:07:00.017Z"
+      "updatedAt": "2026-08-18T16:07:07.202Z"
     }
   ],
   "reviews": [
