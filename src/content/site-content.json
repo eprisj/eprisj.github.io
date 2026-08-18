@@ -4549,45 +4549,9 @@
           "type": "image",
           "content": "new-editorial-story-2",
           "caption": "Lead image"
-        },
-        {
-          "type": "quote",
-          "content": "Add a line worth remembering here."
-        },
-        {
-          "type": "note",
-          "content": "Editorial note, source context, or a short aside."
-        },
-        {
-          "type": "checklist",
-          "caption": "What to cover",
-          "content": {
-            "items": [
-              "Context",
-              "Key detail",
-              "Human angle",
-              "What changes next"
-            ]
-          }
-        },
-        {
-          "type": "poll",
-          "content": {
-            "question": "What should we explore next?",
-            "options": [
-              {
-                "label": "More context",
-                "votes": 0
-              },
-              {
-                "label": "Practical guide",
-                "votes": 0
-              }
-            ]
-          }
         }
       ],
-      "updatedAt": "2026-08-18T15:57:37.523Z"
+      "updatedAt": "2026-08-18T15:58:24.830Z"
     }
   ],
   "reviews": [
