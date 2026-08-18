@@ -13451,10 +13451,10 @@
           "title": "Neue Bewertung",
           "subject": "Neue Bewertung",
           "rating": 0,
-          "content": "Beginnen Sie mit dem ersten Eindruck – Atmosphäre, Service, für wen dieser Ort gedacht ist. Anschließend konkrete Details, die diese Schlussfolgerung bestätigen.",
+          "content": "Beginnen Sie mit dem ersten Eindruck – Atmosphäre, Service, für wen ist dieser Ort. Dann konkrete Details, die die Schlussfolgerung bestätigen.",
           "author": "EPRIS Journal",
           "category": "Food & Stay",
-          "verdict": "Eine klare Zeile – lohnt es sich zu gehen?",
+          "verdict": "Eine klare Zeile – lohnt es sich, hingehen?",
           "pros": [
             "Lage",
             "Atmosphäre",
@@ -13465,7 +13465,7 @@
           ],
           "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
           "date": "Aug 11, 2026",
-          "updatedAt": "2026-08-18T00:12:03.580Z"
+          "updatedAt": "2026-08-18T01:46:37.846Z"
         }
       ],
       "libraryItems": [
