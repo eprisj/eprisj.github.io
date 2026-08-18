@@ -1105,6 +1105,30 @@ function isEditorDirty() {
    Поэтому при несохранённых правках сверху появляется полоса: она говорит
    прямо, что читатели этих изменений не видят, и даёт кнопку, которой их
    можно выпустить, не разыскивая её в панели. */
+function publishUnpublishedChanges() {
+  let hasHomepageDraft = false;
+  try {
+    const data = JSON.parse(editor.value || '{}');
+    const releases = data?.homepage?.picsOfWeek?.releases;
+    hasHomepageDraft = Array.isArray(releases) && releases.some((release) => release?.status === 'draft');
+  } catch {
+    // The regular save path below will surface malformed JSON to the editor.
+  }
+
+  // A homepage release needs the dedicated transition from draft to published
+  // so activeReleaseId is switched. A generic JSON save would keep the draft
+  // invisible to readers while making the admin look synchronized.
+  if (hasHomepageDraft) {
+    const homepagePublishButton = document.getElementById('homepagePublishBtn');
+    if (homepagePublishButton) {
+      homepagePublishButton.click();
+      return;
+    }
+  }
+
+  if (typeof saveToGitHub === 'function') saveToGitHub();
+}
+
 function ensurePublishBanner() {
   let banner = document.getElementById('unpublishedBanner');
   if (banner) return banner;
@@ -1115,11 +1139,7 @@ function ensurePublishBanner() {
     + '<span class="unpublished-text">Изменения сохранены только в браузере. На сайте их пока нет.</span>'
     + '<button type="button" class="btn btn-primary btn-sm" id="unpublishedPublish">Опубликовать</button>';
   document.body.appendChild(banner);
-  banner.querySelector('#unpublishedPublish').addEventListener('click', () => {
-    // Тот же путь, что и у кнопки «Сохранить»: одно место, где решается, что
-    // значит «опубликовать».
-    if (typeof saveToGitHub === 'function') saveToGitHub();
-  });
+  banner.querySelector('#unpublishedPublish').addEventListener('click', publishUnpublishedChanges);
   return banner;
 }
 
