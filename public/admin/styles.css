@@ -8140,3 +8140,24 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .forms-quick-add > span { margin-right: 2px; color: var(--text-muted); font: 700 .58rem/1 var(--font-mono); letter-spacing: .09em; text-transform: uppercase; }
 .forms-image-row { display: grid; grid-template-columns: 1fr auto; gap: 6px; }
 .forms-image-preview { display: block; max-width: 260px; margin-top: 8px; border: 1px solid var(--line); border-radius: 3px; }
+
+/* Полоса «не опубликовано»: единственное место, где панель говорит о разнице
+   между сохранённым у себя и увиденным читателем. Держится сверху, не мешает
+   работать и исчезает сразу после публикации. */
+.unpublished-banner {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 3000;
+  display: none; align-items: center; gap: 12px;
+  padding: 9px 16px;
+  background: var(--gold-soft, #f6ecd9);
+  border-bottom: 1px solid var(--gold, #c9a690);
+  color: var(--text, #241a1c);
+  font: 600 .72rem/1.3 var(--font-mono);
+}
+.unpublished-banner.is-visible { display: flex; }
+.unpublished-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold, #c9a690); flex: 0 0 auto; }
+.unpublished-text { flex: 1; min-width: 0; }
+body:has(.unpublished-banner.is-visible) { padding-top: 38px; }
+@media (max-width: 640px) {
+  .unpublished-banner { font-size: .66rem; padding: 8px 12px; gap: 8px; }
+  .unpublished-text { white-space: normal; }
+}
