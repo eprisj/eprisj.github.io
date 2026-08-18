@@ -16172,6 +16172,71 @@
             }
           ],
           "updatedAt": "2026-08-16T14:18:38.016Z"
+        },
+        {
+          "id": 23,
+          "draft": true,
+          "title": "Práctica de coro: ",
+          "author": "EPRIS Journal",
+          "role": "Escritorio editorial",
+          "date": "17 de agosto de 2026",
+          "excerpt": "Un párrafo inicial centrado en una nueva historia editorial.",
+          "category": "Cultura",
+          "subcategory": "Característica",
+          "tags": [
+            "historia",
+            "cultura",
+            "editorial"
+          ],
+          "imageSeed": "new-editorial-story",
+          "content": [
+            {
+              "type": "texto",
+              "content": "Crear tu propio proyecto en un nuevo país es siempre un paso audaz, donde la exploración creativa se entrelaza estrechamente con la transformación personal. Alena y Ksenia, fundadoras de Chora Practice, con sede en Lisboa, Portugal, hablan sobre cómo convertir cualquier crisis en un punto de crecimiento, por qué no hay personas “no creativas” en el mundo y cómo permitirte hacer lo que realmente amas. Esta es una conversación sobre el gusto por la vida, los museos, el coraje de hacer “tonterías” y el arte de escuchar tus impulsos internos."
+            },
+            {
+              "type": "imagen",
+              "content": "nueva-historia-editorial-2",
+              "caption": "imagen principal"
+            },
+            {
+              "type": "cita",
+              "content": "Agregue una línea que valga la pena recordar aquí."
+            },
+            {
+              "type": "nota",
+              "content": "Nota editorial, contexto fuente o breve comentario."
+            },
+            {
+              "type": "lista de verificación",
+              "caption": "que cubrir",
+              "content": {
+                "items": [
+                  "Contexto",
+                  "Detalle clave",
+                  "ángulo humano",
+                  "¿Qué cambia a continuación?"
+                ]
+              }
+            },
+            {
+              "type": "encuesta",
+              "content": {
+                "question": "¿Qué deberíamos explorar a continuación?",
+                "options": [
+                  {
+                    "label": "Más contexto",
+                    "votes": 0
+                  },
+                  {
+                    "label": "guía practica",
+                    "votes": 0
+                  }
+                ]
+              }
+            }
+          ],
+          "updatedAt": "2026-08-18T05:42:04.875Z"
         }
       ],
       "reviews": [
