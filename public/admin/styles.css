@@ -981,6 +981,145 @@ body {
 }
 .homepage-card-editor-image span { padding: 0 14px; text-align: center; line-height: 1.5; }
 
+/* ── Мастер создания записи ──────────────────────────────────
+   Одно окно вместо двух путей создания: тип, поля, обложка. */
+.entry-wizard {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0,0,0,.45);
+}
+.entry-wizard[hidden] { display: none; }
+.entry-wizard-dialog {
+  width: min(760px, 100%);
+  max-height: min(820px, calc(100vh - 48px));
+  overflow: auto;
+  padding: 22px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+}
+.entry-wizard-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.entry-wizard-head h3 {
+  margin: 2px 0 0;
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--text);
+}
+
+/* Тип задаёт структуру будущего материала, поэтому у каждого варианта есть
+   пояснение: без него четыре одинаковые кнопки заставляли гадать. */
+.entry-wizard-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.entry-type {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 11px 12px;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--bg-card);
+  cursor: pointer;
+  transition: border-color .13s ease, background .13s ease;
+}
+.entry-type strong { font-size: .82rem; font-weight: 500; color: var(--text); }
+.entry-type small { font-size: .66rem; line-height: 1.35; color: var(--text-muted); }
+.entry-type:hover { border-color: var(--line-strong); background: var(--bg-soft); }
+.entry-type.is-active {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+.entry-type.is-active strong { color: var(--bg-card); }
+.entry-type.is-active small { color: rgba(255,255,255,.72); }
+
+.entry-wizard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.entry-wizard-wide { grid-column: 1 / -1; }
+.homepage-field span em {
+  font-style: normal;
+  color: var(--text-faint);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.entry-wizard-cover {
+  display: grid;
+  grid-template-columns: minmax(0, 200px) minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+.entry-wizard-cover-drop {
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+  padding: 10px;
+  border: 1px dashed var(--line-strong);
+  background: var(--bg-soft);
+  color: var(--text-muted);
+  font-size: .66rem;
+  line-height: 1.4;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+.entry-wizard-cover-drop.is-dropping { border-style: solid; border-color: var(--accent); }
+.entry-wizard-cover-drop.has-image { padding: 0; border-style: solid; }
+.entry-wizard-cover-drop.has-image span { display: none; }
+.entry-wizard-cover-drop img { width: 100%; height: 100%; object-fit: cover; }
+.entry-wizard-cover-fields { display: grid; gap: 8px; align-content: start; }
+
+.entry-wizard-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.entry-wizard-actions { display: flex; gap: 8px; }
+
+/* Вставка блоков относится к открытой записи, поэтому живёт рядом с редактором. */
+.entry-inserts {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.entry-inserts[hidden] { display: none; }
+.entry-inserts-label {
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-right: 4px;
+}
+
+@media (max-width: 720px) {
+  .entry-wizard { padding: 12px; }
+  .entry-wizard-grid { grid-template-columns: 1fr; }
+  .entry-wizard-cover { grid-template-columns: 1fr; }
+}
+
 /* Scrollable main content */
 .main-content {
   flex: 1;

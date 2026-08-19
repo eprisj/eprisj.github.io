@@ -76,24 +76,15 @@ const languageSyncScope = byId('languageSyncScope');
 const applyEntryBtn = byId('applyEntryBtn');
 const saveEntryBtn = byId('saveEntryBtn');
 const saveEntryBtnText = byId('saveEntryBtnText');
-const creatorQualityEl = byId('creatorQuality');
+const creatorQualityEl = document.getElementById('creatorQuality');
 const creatorTitleInput = byId('creatorTitle');
 const creatorCategoryInput = byId('creatorCategory');
 const creatorSeedInput = byId('creatorSeed');
 const creatorImageUrlInput = byId('creatorImageUrl');
 const creatorImagePreview = byId('creatorImagePreview');
-const storyBlueprintBtn = byId('storyBlueprintBtn');
-const guideBlueprintBtn = byId('guideBlueprintBtn');
-const photoEssayBlueprintBtn = byId('photoEssayBlueprintBtn');
-const reviewBlueprintBtn = byId('reviewBlueprintBtn');
 const insertStructureBtn = byId('insertStructureBtn');
 const insertChecklistTemplateBtn = byId('insertChecklistTemplateBtn');
 const insertPollTemplateBtn = byId('insertPollTemplateBtn');
-const articleBlueprintGroupEl = byId('articleBlueprintGroup');
-const reviewBlueprintGroupEl = byId('reviewBlueprintGroup');
-const reviewPlaceBlueprintBtn = byId('reviewPlaceBlueprintBtn');
-const reviewProductBlueprintBtn = byId('reviewProductBlueprintBtn');
-const reviewMediaBlueprintBtn = byId('reviewMediaBlueprintBtn');
 const contentAuditMetricsEl = byId('contentAuditMetrics');
 const entryPreviewEl = byId('entryPreview');
 const findMissingLangBtn = byId('findMissingLangBtn');
@@ -143,13 +134,6 @@ const interactiveButtons = [
   downloadAllOriginalsBtn,
   applyEntryBtn,
   saveEntryBtn,
-  storyBlueprintBtn,
-  guideBlueprintBtn,
-  photoEssayBlueprintBtn,
-  reviewBlueprintBtn,
-  reviewPlaceBlueprintBtn,
-  reviewProductBlueprintBtn,
-  reviewMediaBlueprintBtn,
   insertStructureBtn,
   insertChecklistTemplateBtn,
   insertPollTemplateBtn,
@@ -862,9 +846,6 @@ function bindEvents() {
     pendingVisualEntryId = null;
     pendingHomepageCategory = null;
     renderVisualForm();
-    // Auto-collapse creator studio when editing an existing entry
-    const wrap = document.getElementById('creatorStudioWrap');
-    if (wrap && visualEntrySelect.value) wrap.removeAttribute('open');
     // Scroll editor into view
     setTimeout(() => {
       const pane = document.getElementById('editorSplit');
@@ -890,7 +871,8 @@ function bindEvents() {
     refreshVisualEditor();
   });
 
-  addEntryBtn.addEventListener('click', addVisualEntry);
+  addEntryBtn.addEventListener('click', openEntryWizard);
+  bindEntryWizard();
   moveEntryUpBtn.addEventListener('click', () => moveVisualEntry(-1));
   moveEntryDownBtn.addEventListener('click', () => moveVisualEntry(1));
   duplicateEntryBtn.addEventListener('click', duplicateVisualEntry);
@@ -905,13 +887,6 @@ function bindEvents() {
   visualPublishBtn.addEventListener('click', () => updateSelectedPublicationState('live'));
   visualDraftBtn.addEventListener('click', () => updateSelectedPublicationState('draft'));
   visualHideBtn.addEventListener('click', () => updateSelectedPublicationState('hidden'));
-  storyBlueprintBtn.addEventListener('click', () => createArticleFromBlueprint('story'));
-  guideBlueprintBtn.addEventListener('click', () => createArticleFromBlueprint('guide'));
-  photoEssayBlueprintBtn.addEventListener('click', () => createArticleFromBlueprint('photoEssay'));
-  reviewBlueprintBtn.addEventListener('click', () => createArticleFromBlueprint('review'));
-  reviewPlaceBlueprintBtn.addEventListener('click', () => createReviewFromBlueprint('place'));
-  reviewProductBlueprintBtn.addEventListener('click', () => createReviewFromBlueprint('product'));
-  reviewMediaBlueprintBtn.addEventListener('click', () => createReviewFromBlueprint('media'));
   insertStructureBtn.addEventListener('click', () => appendArticlePreset('structure'));
   insertChecklistTemplateBtn.addEventListener('click', () => appendArticlePreset('checklist'));
   insertPollTemplateBtn.addEventListener('click', () => appendArticlePreset('poll'));
@@ -1044,14 +1019,13 @@ function bindEvents() {
   updateCreatorStudioForSection();
 }
 
-// Creator Studio's blueprint buttons used to always show the Article set
-// regardless of the selected section — clicking any of them while viewing
-// Reviews silently created an Article and flipped the section over. Swap the
-// visible button group to match visualSectionSelect instead.
+/* Выбор типа записи переехал в мастер создания: он сам знает, что делать в
+   «Статьях», а что в «Обзорах». Прежние группы кнопок под редактором, которые
+   приходилось прятать и показывать под текущий раздел, удалены — вместе с
+   классом ошибок, когда нажатие в разделе «Обзоры» молча создавало статью. */
 function updateCreatorStudioForSection() {
-  const section = visualSectionSelect.value;
-  articleBlueprintGroupEl.hidden = section !== 'articles';
-  reviewBlueprintGroupEl.hidden = section !== 'reviews';
+  const insertGroup = document.getElementById('articleInsertGroup');
+  if (insertGroup) insertGroup.hidden = visualSectionSelect.value !== 'articles';
 }
 
 function scheduleVisualRefresh() {
@@ -3840,16 +3814,18 @@ function buildArticleBlueprint(kind, nextId) {
     return block;
   });
 
+  const author = getCreatorInputValue(document.getElementById('creatorAuthor')) || 'EPRIS Journal';
+  const excerpt = getCreatorInputValue(document.getElementById('creatorExcerpt')) || blueprint.excerpt;
   return {
     id: nextId,
     // Every newly created editorial piece begins as a draft. Visibility is a
     // deliberate later action, never a side effect of clicking “Create”.
     draft: true,
     title,
-    author: 'EPRIS Journal',
+    author,
     role: 'Editorial Desk',
     date: getAdminDateLabel(),
-    excerpt: blueprint.excerpt,
+    excerpt,
     category,
     subcategory: blueprint.subcategory,
     tags: deepClone(blueprint.tags),
@@ -4416,6 +4392,182 @@ async function persistNewCanonicalDraft(section, entry) {
 // Articles and Pics of the week are separate editorial collections. The
 // homepage strip accepts only explicitly curated image records; writing an
 // article never creates a homepage photo automatically.
+/* ── Мастер создания записи ──────────────────────────────────────────────
+   Раньше создание жило в двух местах сразу: кнопка «+ Создать статью» в
+   тулбаре заводила пустой черновик без единого поля, а свёрнутая внизу
+   «Creator Studio» предлагала четыре одинаковые чёрные кнопки-типа, поле
+   «imageSeed» и загрузку обложки. Результат зависел от того, какой из двух
+   путей выбрал редактор. Теперь путь один и он спрашивает ровно то, с чего
+   статья начинается. */
+let wizardKind = 'story';
+
+function wizardEl(id) { return document.getElementById(id); }
+
+function openEntryWizard() {
+  const modal = wizardEl('entryWizard');
+  if (!modal) return;
+  const section = visualSectionSelect.value;
+  /* В «Обзорах» типы другие, поэтому мастер показывает их набор. Для галереи и
+     библиотеки заготовок нет — там работает прежнее быстрое создание. */
+  if (section !== 'articles' && section !== 'reviews') {
+    addVisualEntry();
+    return;
+  }
+  const types = wizardEl('entryWizardTypes');
+  if (types) {
+    const article = [['story', 'Статья', 'Текст со сценой, цитатой и врезкой'],
+      ['guide', 'Гид', 'Подборка с адресами и чеклистом'],
+      ['photoEssay', 'Фото-эссе', 'Галерея с подписями, минимум текста'],
+      ['review', 'Рецензия', 'Оценка места, продукта или книги']];
+    const review = [['place', 'Место', 'Ресторан, отель, галерея'],
+      ['product', 'Продукт', 'Вещь, коллекция, релиз'],
+      ['media', 'Книга или медиа', 'Издание, фильм, выставка']];
+    const list = section === 'reviews' ? review : article;
+    wizardKind = list[0][0];
+    types.innerHTML = list.map(([kind, label, hint], index) => `
+      <button class="entry-type${index === 0 ? ' is-active' : ''}" type="button" data-kind="${escapeHtml(kind)}" role="radio" aria-checked="${index === 0}">
+        <strong>${escapeHtml(label)}</strong>
+        <small>${escapeHtml(hint)}</small>
+      </button>`).join('');
+  }
+  const titleEl = wizardEl('entryWizardTitle');
+  if (titleEl) titleEl.textContent = section === 'reviews' ? 'Новый обзор' : 'Новая статья';
+
+  /* Подсказки из уже существующих записей: категории и авторы редакции.
+     Через parseEditorJsonSafe, а не readContent: последняя живёт в области
+     видимости другого модуля и здесь недоступна — ровно так же, как esc,
+     на которой мастер сначала и падал. */
+  try {
+    const data = parseEditorJsonSafe();
+    const rows = Array.isArray(data?.[section]) ? data[section] : [];
+    const fill = (listId, key) => {
+      const target = wizardEl(listId);
+      if (!target) return;
+      const values = [...new Set(rows.map((row) => String(row?.[key] || '').trim()).filter(Boolean))].sort();
+      target.innerHTML = values.map((value) => `<option value="${escapeHtml(value)}"></option>`).join('');
+    };
+    fill('entryWizardCategories', 'category');
+    fill('entryWizardAuthors', 'author');
+  } catch { /* контент ещё не загружен — подсказок просто не будет */ }
+
+  ['creatorTitle', 'creatorCategory', 'creatorAuthor', 'creatorExcerpt', 'creatorImageUrl', 'creatorSeed']
+    .forEach((id) => { const field = wizardEl(id); if (field) field.value = ''; });
+  renderWizardCover('');
+  const statusEl = wizardEl('entryWizardStatus');
+  if (statusEl) statusEl.textContent = 'Запись создаётся черновиком: на сайте её не будет, пока не опубликуете.';
+  modal.hidden = false;
+  setTimeout(() => wizardEl('creatorTitle')?.focus(), 0);
+}
+
+function closeEntryWizard() {
+  const modal = wizardEl('entryWizard');
+  if (modal) modal.hidden = true;
+}
+
+function renderWizardCover(url) {
+  const box = wizardEl('creatorImagePreviewBox');
+  const img = wizardEl('creatorImagePreview');
+  if (!box || !img) return;
+  if (url) {
+    img.src = url;
+    img.hidden = false;
+    box.classList.add('has-image');
+  } else {
+    img.removeAttribute('src');
+    img.hidden = true;
+    box.classList.remove('has-image');
+  }
+}
+
+async function uploadWizardCover(file) {
+  if (!file || !/^image\//.test(file.type)) {
+    showToast?.('info', 'Нужен файл изображения: JPG, PNG или WebP.');
+    return;
+  }
+  const statusEl = wizardEl('entryWizardStatus');
+  if (statusEl) statusEl.textContent = 'Загружаю обложку…';
+  try {
+    const url = await uploadImageReturnUrl(file);
+    const input = wizardEl('creatorImageUrl');
+    if (input) input.value = url;
+    renderWizardCover(url);
+    if (statusEl) statusEl.textContent = 'Обложка загружена.';
+  } catch (error) {
+    if (statusEl) statusEl.textContent = `Обложка не загрузилась: ${getErrorMessage(error)}`;
+  }
+}
+
+async function createFromWizard() {
+  const section = visualSectionSelect.value;
+  const title = getCreatorInputValue(wizardEl('creatorTitle'));
+  const statusEl = wizardEl('entryWizardStatus');
+  /* Заголовок — единственное обязательное поле: без него в списке записей
+     появляется «New editorial story», и найти свой материал невозможно. */
+  if (!title) {
+    if (statusEl) statusEl.textContent = 'Впишите заголовок: по нему запись видна в списке.';
+    wizardEl('creatorTitle')?.focus();
+    return;
+  }
+  const button = wizardEl('entryWizardCreate');
+  if (button) { button.disabled = true; button.textContent = 'Создаю…'; }
+  try {
+    if (section === 'reviews') await createReviewFromBlueprint(wizardKind);
+    else await createArticleFromBlueprint(wizardKind);
+    closeEntryWizard();
+  } finally {
+    if (button) { button.disabled = false; button.textContent = 'Создать черновик'; }
+  }
+}
+
+function bindEntryWizard() {
+  const modal = wizardEl('entryWizard');
+  if (!modal) return;
+  wizardEl('entryWizardClose')?.addEventListener('click', closeEntryWizard);
+  wizardEl('entryWizardCreate')?.addEventListener('click', createFromWizard);
+  modal.addEventListener('click', (event) => { if (event.target === modal) closeEntryWizard(); });
+  wizardEl('entryWizardTypes')?.addEventListener('click', (event) => {
+    const button = event.target.closest('.entry-type');
+    if (!button) return;
+    wizardKind = button.dataset.kind || 'story';
+    modal.querySelectorAll('.entry-type').forEach((el) => {
+      const active = el === button;
+      el.classList.toggle('is-active', active);
+      el.setAttribute('aria-checked', String(active));
+    });
+  });
+  wizardEl('creatorImageUrl')?.addEventListener('input', (event) => renderWizardCover(event.target.value.trim()));
+  wizardEl('creatorImageUploadBtn')?.addEventListener('click', () => wizardEl('creatorImageUploadInput')?.click());
+  wizardEl('creatorImageUploadInput')?.addEventListener('change', (event) => {
+    const file = event.target.files?.[0];
+    if (file) uploadWizardCover(file);
+    event.target.value = '';
+  });
+  const drop = wizardEl('creatorImagePreviewBox');
+  if (drop) {
+    ['dragenter', 'dragover'].forEach((type) => drop.addEventListener(type, (event) => {
+      event.preventDefault(); drop.classList.add('is-dropping');
+    }));
+    ['dragleave', 'drop'].forEach((type) => drop.addEventListener(type, () => drop.classList.remove('is-dropping')));
+    drop.addEventListener('drop', (event) => {
+      event.preventDefault();
+      const file = event.dataTransfer?.files?.[0];
+      if (file) uploadWizardCover(file);
+    });
+    drop.addEventListener('click', () => wizardEl('creatorImageUploadInput')?.click());
+  }
+  document.addEventListener('paste', (event) => {
+    if (modal.hidden) return;
+    const item = [...(event.clipboardData?.items || [])].find((entry) => entry.type.startsWith('image/'));
+    const file = item?.getAsFile();
+    if (file) { event.preventDefault(); uploadWizardCover(file); }
+  });
+  document.addEventListener('keydown', (event) => {
+    if (modal.hidden) return;
+    if (event.key === 'Escape') { event.preventDefault(); closeEntryWizard(); }
+    if ((event.metaKey || event.ctrlKey) && event.key === 'Enter') { event.preventDefault(); createFromWizard(); }
+  });
+}
+
 async function createArticleFromBlueprint(kind) {
   try {
     setBusy(true);
@@ -15909,7 +16061,7 @@ async function flushModernEditor() {
   undoBtn?.addEventListener('click', undo);
   redoBtn?.addEventListener('click', redo);
 
-  const CLASSIC = ['creatorStudioWrap', 'editorSplit', 'commandCenter', 'editorialQueueCard', 'entryHistoryCard', 'stats'];
+  const CLASSIC = ['editorSplit', 'commandCenter', 'editorialQueueCard', 'entryHistoryCard', 'stats'];
   const classicEls = () => CLASSIC.map((id) => document.getElementById(id)).filter(Boolean);
   const contentTab = document.getElementById('tab-content');
 
@@ -17547,7 +17699,7 @@ async function flushModernEditor() {
     updateDraftBadge();
   }
   function scheduleReload() { clearTimeout(_reloadTimer); _reloadTimer = setTimeout(reload, 140); }
-  const CLASSIC = ['creatorStudioWrap', 'editorSplit', 'commandCenter', 'stats'];
+  const CLASSIC = ['editorSplit', 'commandCenter', 'stats'];
   const classicEls = () => CLASSIC.map((id) => document.getElementById(id)).filter(Boolean);
   const contentTab = document.getElementById('tab-content');
 
