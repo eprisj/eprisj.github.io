@@ -150,7 +150,7 @@ export function IssuePage({
         if (!heading && !body) return null;
         return (
           <div className="border-b border-[rgb(var(--c-accent-rgb)_/_0.14)]">
-            <div className="max-w-4xl mx-auto px-5 sm:px-8 py-10 md:py-14">
+            <div className="max-w-4xl mx-auto px-5 sm:px-8 py-9 md:py-12">
               <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-4">
                 {t('pdf.letter.kicker')}
               </p>
@@ -173,7 +173,7 @@ export function IssuePage({
         );
       })()}
 
-      <div className="max-w-4xl mx-auto px-5 sm:px-8 py-10 md:py-14">
+      <div className="max-w-4xl mx-auto px-5 sm:px-8 py-9 md:py-12">
 
         {/* Материалы выпуска */}
         <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-[rgb(var(--c-accent-rgb)_/_0.18)] pb-4 mb-8">
@@ -187,7 +187,7 @@ export function IssuePage({
 
         {/* Карточка материала повторяет карточку в «Статьях»: рамка, квадрат
             изображения слева, текст справа. */}
-        <div className="space-y-8 mb-12">
+        <div className="space-y-5 mb-10">
           {articles.map((article, index) => {
             const cover = coverFor(article);
             return (
@@ -204,9 +204,13 @@ export function IssuePage({
                 role={onArticleClick ? 'button' : undefined}
                 tabIndex={onArticleClick ? 0 : undefined}
                 aria-label={onArticleClick ? `${t('read.article')}: ${article.title}` : undefined}
-                className={`group border border-[var(--c-accent)] grid grid-cols-1 sm:grid-cols-[42%_1fr] items-stretch overflow-hidden ${onArticleClick ? 'cursor-pointer transition-colors hover:bg-[rgb(var(--c-accent-rgb)_/_0.04)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c-gold)]' : ''}`}
+                className={`group border border-[var(--c-accent)] grid grid-cols-1 sm:grid-cols-[minmax(0,190px)_1fr] items-stretch overflow-hidden ${onArticleClick ? 'cursor-pointer transition-colors hover:bg-[rgb(var(--c-accent-rgb)_/_0.04)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c-gold)]' : ''}`}
               >
-                <div className="aspect-square overflow-hidden bg-[#E8DED5]">
+                {/* Раньше картинка занимала 42% ширины квадратом и задавала высоту
+                    всей карточке: под коротким анонсом оставалось полполосы пустоты,
+                    а «Read article» уезжал далеко вниз от текста. Теперь колонка
+                    обложки узкая и тянется по высоте текста, а не наоборот. */}
+                <div className="h-56 sm:h-auto overflow-hidden bg-[#E8DED5]">
                   {cover ? (
                     <img
                       src={cover}
@@ -219,17 +223,17 @@ export function IssuePage({
                     </div>
                   )}
                 </div>
-                <div className="flex flex-col p-4 sm:p-6">
+                <div className="flex flex-col p-4 sm:p-5">
                   <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-2">
                     {article.category}
                   </span>
                   <h3 className="font-serif text-xl md:text-2xl text-[var(--c-accent)] leading-tight mb-3">
                     {article.title}
                   </h3>
-                  <p className="font-serif text-sm md:text-base text-[rgb(var(--c-accent-rgb)_/_0.6)] leading-relaxed line-clamp-4">
+                  <p className="font-serif text-sm md:text-base text-[rgb(var(--c-accent-rgb)_/_0.62)] leading-relaxed">
                     {article.excerpt}
                   </p>
-                  <div className="mt-auto pt-4 flex items-baseline justify-between gap-3">
+                  <div className="mt-4 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                     <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">
                       {article.author} · {article.date}
                     </p>
