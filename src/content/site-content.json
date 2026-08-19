@@ -4540,7 +4540,7 @@
         "lifestyle",
         "lisbon"
       ],
-      "imageSeed": "new-editorial-story",
+      "imageSeed": "",
       "content": [
         {
           "type": "text",
@@ -4782,8 +4782,9 @@
           "content": "<b>Ksenia</b>: The main lesson I took from art school is: ‘Experience resistance.’ If you feel resistance toward something, you should move toward it. It means there’s a huge amount of energy hidden there. Don’t ignore or suppress it – look at it more closely."
         }
       ],
-      "updatedAt": "2026-08-19T09:28:22.769Z",
-      "authorId": "author-1784896384236-4fokw"
+      "updatedAt": "2026-08-19T09:28:52.197Z",
+      "authorId": "author-1784896384236-4fokw",
+      "imageUrl": "https://api.eprisjournal.com/uploads/msywp93hspwqz4.webp"
     }
   ],
   "reviews": [
