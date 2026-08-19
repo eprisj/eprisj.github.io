@@ -871,6 +871,15 @@ function bindEvents() {
     refreshVisualEditor();
   });
 
+  document.getElementById('entryLangSyncBtn')?.addEventListener('click', () => {
+    translateSelectedEntryToAvailableLanguages();
+  });
+  document.getElementById('entryLangAuto')?.addEventListener('change', (event) => {
+    try { localStorage.setItem(ENTRY_AUTOTRANSLATE_KEY, event.target.checked ? '1' : '0'); } catch { /* приватный режим */ }
+    setStatus('info', event.target.checked
+      ? 'Переводы будут обновляться сразу после сохранения английской версии.'
+      : 'Переводы обновляются только по кнопке «Синхронизировать».');
+  });
   addEntryBtn.addEventListener('click', openEntryWizard);
   bindEntryWizard();
   moveEntryUpBtn.addEventListener('click', () => moveVisualEntry(-1));
@@ -3613,7 +3622,69 @@ function publicationTimestamp(entry) {
   return 0;
 }
 
+/* ── Состояние переводов записи ──────────────────────────────────────────
+   Переводы живут отдельными копиями и не обновляются при сохранении базовой
+   версии — это осознанное разделение, иначе каждое сохранение превращалось бы
+   в шестиязычную сетевую задачу. Плата за него: расхождение никак не было
+   видно. Статья 23 месяц стояла на шести языках заготовкой «Добавьте сюда
+   строку, которую стоит запомнить», пока английская версия была полноценным
+   интервью. Теперь состояние показано, а обновление — в одно нажатие. */
+const ENTRY_AUTOTRANSLATE_KEY = 'epris_admin_autotranslate';
+
+function entryAutoTranslateEnabled() {
+  try { return localStorage.getItem(ENTRY_AUTOTRANSLATE_KEY) === '1'; } catch { return false; }
+}
+
+function entryTranslationStates(data, section, entryId) {
+  const base = (getSectionArray(data, section, DEFAULT_LANGUAGE, false) || [])
+    .find((item) => Number(item.id) === Number(entryId));
+  if (!base) return [];
+  const baseStamp = Date.parse(base.updatedAt || 0) || 0;
+  const languages = getTranslationLanguages(data).filter((lang) => lang !== DEFAULT_LANGUAGE);
+  return languages.map((lang) => {
+    /* Читаем localizedCollections напрямую. getSectionArray при отсутствующем
+       языке возвращает БАЗОВЫЙ массив как запасной вариант для отображения —
+       из-за этого «перевода нет» определялось как «перевод свежий», а с
+       флагом создания она ещё и заводила пустые коллекции в данных. */
+    const bucket = data?.localizedCollections?.[lang];
+    const localized = Array.isArray(bucket?.[section])
+      ? bucket[section].find((item) => Number(item.id) === Number(entryId))
+      : null;
+    if (!localized) return { lang, state: 'missing' };
+    const stamp = Date.parse(localized.updatedAt || 0) || 0;
+    /* Час допуска: перевод сохраняется следом за оригиналом, и разница в
+       несколько секунд не означает, что он отстал. */
+    if (baseStamp && stamp && stamp + 3600000 < baseStamp) return { lang, state: 'stale' };
+    return { lang, state: 'fresh' };
+  });
+}
+
+function renderEntryLanguageBar(data, section, entryId) {
+  const bar = document.getElementById('entryLangBar');
+  const chips = document.getElementById('entryLangChips');
+  const syncBtn = document.getElementById('entryLangSyncBtn');
+  const auto = document.getElementById('entryLangAuto');
+  if (!bar || !chips) return;
+  const supported = section === 'articles' || section === 'reviews' || section === 'items';
+  if (!supported || !entryId) { bar.hidden = true; return; }
+  const states = entryTranslationStates(data, section, entryId);
+  if (!states.length) { bar.hidden = true; return; }
+  bar.hidden = false;
+  if (auto) auto.checked = entryAutoTranslateEnabled();
+  const titles = { fresh: 'Перевод не отстаёт от оригинала', stale: 'Оригинал изменён позже перевода', missing: 'Перевода ещё нет' };
+  chips.innerHTML = states.map(({ lang, state }) =>
+    `<span class="entry-lang-chip is-${state}" title="${escapeHtml(titles[state])}">${escapeHtml(lang)}</span>`).join('');
+  const behind = states.filter((item) => item.state !== 'fresh');
+  if (syncBtn) {
+    syncBtn.hidden = behind.length === 0;
+    syncBtn.textContent = behind.length
+      ? `Обновить переводы (${behind.length})`
+      : 'Обновить переводы';
+  }
+}
+
 function renderPublicationSummary(data, section) {
+  renderEntryLanguageBar(data, section, Number(visualEntrySelect?.value) || null);
   if (!visualPublicationSummary) return;
   const entries = getSectionArray(data, section, DEFAULT_LANGUAGE, false);
   const counts = entries.reduce((result, entry) => {
@@ -6742,8 +6813,17 @@ async function saveCurrentEntryOnly() {
     const syncedLangs = [];
     pendingVisualEntryId = selectedId;
     setEditorData(data, { markSynced: true });
-    const syncNote = ' Переводы не запускались — для них используйте отдельную кнопку «Синхронизировать».';
+    const willAutoTranslate = entryAutoTranslateEnabled() && lang === DEFAULT_LANGUAGE;
+    const syncNote = willAutoTranslate
+      ? ' Обновляю переводы…'
+      : ' Переводы не запускались — для них используйте отдельную кнопку «Синхронизировать».';
     setStatus('success', `Запись #${selectedId} сохранена на VPS (${getSectionLabel(section)} / ${lang}).${syncNote}`);
+    renderEntryLanguageBar(data, section, selectedId);
+    if (willAutoTranslate) {
+      /* Перевод запускается после того, как оригинал уже сохранён: даже если
+         сеть подведёт на переводах, сама запись на сервере останется. */
+      setTimeout(() => { translateSelectedEntryToAvailableLanguages().catch(() => {}); }, 60);
+    }
     showLanguageSyncReport({
       selectedId,
       section,
