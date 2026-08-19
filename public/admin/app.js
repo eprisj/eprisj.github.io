@@ -20813,6 +20813,11 @@ const FORM_FIELD_TYPES = [
 ];
 
 let formsCache = [];
+/* Состояние загрузки списка анкет. Без него пустой formsCache означал сразу
+   две разные вещи — «ещё не спросили сервер» и «анкет действительно нет», —
+   и экран успевал сказать «пока ни одной анкеты» до того, как ответ приходил.
+   Редакция читала это как потерю данных. */
+let formsLoadState = 'idle';
 // Какие вопросы раскрыты, и есть ли несохранённые правки: и то, и другое
 // переживает перерисовку списка, поэтому лежит рядом с черновиком.
 const formsOpenFields = new Set();
@@ -20847,11 +20852,17 @@ function formPublicUrl(form, token) {
 async function loadForms(selectId) {
   const list = document.getElementById('formsList');
   if (!list) return;
+  formsLoadState = 'loading';
+  renderFormsList();
+  renderFormEditor();
   try {
     const data = await formsFetch('/list');
     formsCache = Array.isArray(data?.forms) ? data.forms : [];
+    formsLoadState = 'ready';
   } catch (error) {
+    formsLoadState = 'error';
     list.innerHTML = `<p class="muted">Не удалось загрузить: ${escapeHtml(error.message)}</p>`;
+    renderFormEditor();
     return;
   }
   renderFormsList();
@@ -20864,6 +20875,14 @@ async function loadForms(selectId) {
 function renderFormsList() {
   const list = document.getElementById('formsList');
   if (!list) return;
+  if (formsLoadState === 'loading' || formsLoadState === 'idle') {
+    /* Заготовки строк, а не слово «загрузка»: место под список занято сразу,
+       и он не прыгает, когда ответ приходит. */
+    list.innerHTML = '<div class="forms-list-skeleton" aria-hidden="true">'
+      + '<span></span><span></span><span></span>'
+      + '</div><p class="muted forms-list-loading" role="status">Читаем список анкет…</p>';
+    return;
+  }
   if (!formsCache.length) {
     list.innerHTML = '<p class="muted">Пока ни одной анкеты. Нажмите «Новая анкета».</p>';
     return;
@@ -21005,6 +21024,12 @@ async function openFormEditor(id, templateKey) {
 function renderFormEditor() {
   const host = document.getElementById('formsEditor');
   if (!host) return;
+  if (!formsDraft && (formsLoadState === 'loading' || formsLoadState === 'idle')) {
+    /* Пока список не пришёл, предлагать «начните с шаблона» нельзя: анкеты
+       могут уже быть, и приглашение создать новую читается как «всё пропало». */
+    host.innerHTML = '<div class="forms-empty forms-empty--loading"><p class="muted" role="status">Загружаем анкеты…</p></div>';
+    return;
+  }
   if (!formsDraft) {
     /* Пустой экран должен предлагать действие, а не сообщать о пустоте.
        Растянутая рамка со словами «выберите слева» занимала половину окна и
