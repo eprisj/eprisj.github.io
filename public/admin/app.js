@@ -8226,9 +8226,13 @@ function renderBlockBody(block, index) {
     const poster = block.poster || '';
     const credit = block.credit || '';
     const sourceUrl = block.sourceUrl || '';
-    /* Петля включена по умолчанию: в материал чаще вставляют короткий кусок
-       вместо гифки, а не ролик со звуком. */
-    const loop = block.loop !== false;
+    /* Петля включена сама только у бывших гифок: сервер сохраняет их как
+       *.loop.webm, и сайт крутит такой файл по кругу даже без флага.
+       Раньше галочка стояла по умолчанию у любого видео — панель обещала
+       цикл, а сайт его не делал, потому что там нужен явный флаг. Обещать
+       то, чего не происходит, хуже, чем не обещать. */
+    const isLoopFile = /[.]loop[.](?:webm|mp4)(?:$|[?#])/i.test(src);
+    const loop = block.loop === undefined ? isLoopFile : !!block.loop;
     const muted = block.muted !== false;
     const isFile = /[.](?:mp4|webm|ogv|ogg)(?:$|[?#])/i.test(src);
     return `
@@ -8238,7 +8242,7 @@ function renderBlockBody(block, index) {
         <button id="block-video-upload-btn-${index}" class="btn btn-sm" type="button" title="Загрузить видео или GIF с компьютера" onclick="triggerBlockVideoUpload(${index})">Загрузить</button>
         <input id="block-video-file-${index}" type="file" accept="video/*,image/gif" onchange="handleBlockVideoUpload(${index})" hidden />
       </div>
-      <div class="block-video-hint" id="block-video-hint-${index}">GIF и ролики сжимаются на сервере: гифка на 5 МБ обычно становится файлом около полумегабайта.</div>
+      <div class="block-video-hint" id="block-video-hint-${index}">GIF и ролики сжимаются на сервере: гифка на 5 МБ обычно становится файлом около полумегабайта. Гифка сохраняется петлёй и крутится по кругу без панели управления.</div>
       </div>
       <div class="block-image-preview" id="block-video-preview-${index}">
         ${isFile

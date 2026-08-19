@@ -577,7 +577,13 @@ function VideoBlock({ content, caption, poster, credit, sourceUrl, loop, muted, 
   const openVideoLabel = t('video.openVideo');
   const provider = ytId ? 'YouTube' : vimeoId ? 'Vimeo' : directVideo ? 'Video' : openVideoLabel;
   const cleanSource = safeExternalUrl(sourceUrl);
-  const isLoop = directVideo && !!loop;
+  /* Бывшая гифка узнаётся по имени файла: сервер сохраняет её как
+     *.loop.webm. Флаг «петля» в блоке легко потерять — старая запись,
+     скопированный блок, вручную вставленная ссылка, — и тогда гифка
+     попадала в обычную ветку видео: с панелью управления, без цикла, в
+     рамке 16:9. Имя файла эту память не теряет. */
+  const looksLikeLoopFile = /[.]loop[.](webm|mp4)([?#]|$)/i.test(content || '');
+  const isLoop = directVideo && (!!loop || looksLikeLoopFile);
 
   return (
     <figure className={isLoop ? 'my-8 sm:my-12 -mx-4 sm:mx-0' : 'my-8 sm:my-12'}>
