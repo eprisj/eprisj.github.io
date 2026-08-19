@@ -10758,7 +10758,7 @@ function bindStudioMediaActions() {
     homepageCardEditReleaseId = null;
   }
 
-  function openHomepageCardEditor(itemId = null, categoryId = null) {
+  function openHomepageCardEditor(itemId = null, categoryId = null, { slotIndex = null } = {}) {
     let data = homepageDraftForCard(itemId);
     if (!data) {
       showToast?.('error', 'Сначала загрузите актуальный контент.');
@@ -10791,6 +10791,14 @@ function bindStudioMediaActions() {
     }
     homepageCardEditId = picsIdFor(item);
     homepageCardEditCategory = String(categoryId || item.homeCategory || '');
+    if (slotIndex != null) {
+      homepageCardSlotIndex = slotIndex;
+    } else {
+      const slots = homepageSlotOrder();
+      const found = slots.findIndex((slot) => (slot.picsId && slot.picsId === homepageCardEditId)
+        || (!slot.picsId && slot.category === homepageCardEditCategory));
+      homepageCardSlotIndex = found === -1 ? 0 : found;
+    }
     homepageCardEditReleaseId = String(item.picsReleaseId || draftRelease?.id || '');
     const modal = homepageCardField('homepageCardEditor');
     const title = homepageCardField('homepageCardEditorTitle');
@@ -10814,7 +10822,14 @@ function bindStudioMediaActions() {
     if (status) status.textContent = 'Правки записываются сами, подтверждать ничего не нужно.';
     if (modal) {
       modal.hidden = false;
-      requestAnimationFrame(() => homepageCardField('homepageCardTitle')?.focus());
+      /* Соседний слот открывается с начала окна: иначе после прокрутки к полям
+         следующая карточка встречала бы редактора серединой формы. */
+      modal.querySelector('.homepage-card-editor-dialog')?.scrollTo({ top: 0 });
+      /* Через setTimeout, а не requestAnimationFrame: rAF не выполняется, пока
+         вкладка в фоне, и панель, открытая во второй вкладке, осталась бы без
+         подписи слота и без фокуса до первого переключения на неё. */
+      setTimeout(updateHomepageCardStepper, 0);
+      setTimeout(() => homepageCardField('homepageCardTitle')?.focus(), 0);
     }
   }
 
@@ -10869,6 +10884,7 @@ function bindStudioMediaActions() {
      а кнопка осталась только чтобы закрыть окно. Тост при автозаписи не
      показывается: он бы всплывал на каждое слово. */
   let homepageCardAutosaveTimer = 0;
+  let homepageCardSlotIndex = 0;
 
   function homepageCardSavedNote() {
     const time = new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
@@ -10891,6 +10907,15 @@ function bindStudioMediaActions() {
     return result;
   }
 
+  /* Признак того, что в форме есть что записывать. Без этой проверки простое
+     открытие слота или переход к соседнему создавали пустую карточку: в выпуске
+     заводился мусор, а счётчик заполненности показывал слот занятым. */
+  function homepageCardHasContent() {
+    return ['homepageCardTitle', 'homepageCardSubtitle', 'homepageCardDescription',
+      'homepageCardCredit', 'homepageCardSourceUrl', 'homepageCardImageUrl']
+      .some((id) => String(homepageCardField(id)?.value || '').trim().length > 0);
+  }
+
   function scheduleHomepageCardAutosave() {
     const status = homepageCardField('homepageCardEditorStatus');
     if (status) status.textContent = 'Записываю…';
@@ -10900,6 +10925,7 @@ function bindStudioMediaActions() {
          closeHomepageCardEditor, а повторная создала бы пустую карточку. */
       const modal = homepageCardField('homepageCardEditor');
       if (!modal || modal.hidden) return;
+      if (!homepageCardHasContent()) return;
       saveHomepageCardDraft({ close: false, silent: true });
     }, 700);
   }
@@ -10930,8 +10956,57 @@ function bindStudioMediaActions() {
   function closeHomepageCardEditorSaving() {
     clearTimeout(homepageCardAutosaveTimer);
     const modal = homepageCardField('homepageCardEditor');
-    if (modal && !modal.hidden) saveHomepageCardDraft({ close: false, silent: true });
+    if (modal && !modal.hidden && homepageCardHasContent()) saveHomepageCardDraft({ close: false, silent: true });
     closeHomepageCardEditor();
+  }
+
+  /* Общая загрузка фото для слота и для окна карточки: и перетаскивание, и
+     вставка из буфера ведут сюда, чтобы поведение было одинаковым. */
+  async function putImageIntoCard(file, { statusEl } = {}) {
+    if (!file || !/^image\//.test(file.type)) {
+      showToast?.('info', 'Это не изображение. Нужен JPG, PNG или WebP.');
+      return null;
+    }
+    const status = statusEl || homepageCardField('homepageCardEditorStatus');
+    if (status) status.textContent = 'Загружаю фото…';
+    try {
+      const url = await uploadImageReturnUrl(file);
+      const input = homepageCardField('homepageCardImageUrl');
+      if (input) { input.value = url; renderHomepageCardImagePreview(url); }
+      saveHomepageCardDraft({ close: false, silent: true });
+      return url;
+    } catch (error) {
+      if (status) status.textContent = `Фото не загрузилось: ${getErrorMessage(error)}`;
+      showToast?.('error', getErrorMessage(error));
+      return null;
+    }
+  }
+
+  /* Соседний слот открывается прямо из окна: пятёрка заполняется подряд, без
+     закрыть-найти-открыть на каждую карточку. */
+  function homepageSlotOrder() {
+    const data = readContent();
+    if (!data) return [];
+    const draft = homepageDraftRelease(data);
+    return homepageCategoryGroups(data, draft ? { releaseId: draft.id, restrict: true } : { useActive: true })
+      .map((group) => ({ category: group.id, label: group.label, picsId: group.items[0] ? picsIdFor(group.items[0]) : null }));
+  }
+
+  function stepHomepageCard(direction) {
+    const slots = homepageSlotOrder();
+    if (!slots.length) return;
+    clearTimeout(homepageCardAutosaveTimer);
+    if (homepageCardHasContent()) saveHomepageCardDraft({ close: false, silent: true });
+    homepageCardSlotIndex = (homepageCardSlotIndex + direction + slots.length) % slots.length;
+    const target = homepageSlotOrder()[homepageCardSlotIndex] || slots[homepageCardSlotIndex];
+    openHomepageCardEditor(target.picsId, target.category, { slotIndex: homepageCardSlotIndex });
+  }
+
+  function updateHomepageCardStepper() {
+    const slots = homepageSlotOrder();
+    const label = homepageCardField('homepageCardSlotPosition');
+    if (!label) return;
+    label.textContent = slots.length ? `Слот ${homepageCardSlotIndex + 1} из ${slots.length}` : '';
   }
 
   function bindHomepageCardEditor() {
@@ -10946,6 +11021,43 @@ function bindStudioMediaActions() {
     });
     homepageCardField('homepageCardEditorSync')?.addEventListener('click', syncHomepageCardLanguages);
     homepageCardField('homepageCardImageUrl')?.addEventListener('input', (event) => renderHomepageCardImagePreview(event.target.value));
+    homepageCardField('homepageCardPrevSlot')?.addEventListener('click', () => stepHomepageCard(-1));
+    homepageCardField('homepageCardNextSlot')?.addEventListener('click', () => stepHomepageCard(1));
+
+    // Перетаскивание файла на превью
+    const dropZone = homepageCardField('homepageCardImagePreview');
+    if (dropZone) {
+      ['dragenter', 'dragover'].forEach((type) => dropZone.addEventListener(type, (event) => {
+        event.preventDefault();
+        dropZone.classList.add('is-dropping');
+      }));
+      ['dragleave', 'drop'].forEach((type) => dropZone.addEventListener(type, () => dropZone.classList.remove('is-dropping')));
+      dropZone.addEventListener('drop', (event) => {
+        event.preventDefault();
+        const file = event.dataTransfer?.files?.[0];
+        if (file) putImageIntoCard(file);
+      });
+    }
+
+    /* Ctrl/Cmd+V со снимком экрана или скопированной картинкой: самый частый
+       способ принести фото, для которого раньше приходилось сперва сохранять
+       файл на диск. */
+    document.addEventListener('paste', (event) => {
+      const modal = homepageCardField('homepageCardEditor');
+      if (!modal || modal.hidden) return;
+      const item = [...(event.clipboardData?.items || [])].find((entry) => entry.type.startsWith('image/'));
+      if (!item) return;
+      const file = item.getAsFile();
+      if (file) { event.preventDefault(); putImageIntoCard(file); }
+    });
+
+    /* Esc закрывает окно, сохраняя набранное. */
+    document.addEventListener('keydown', (event) => {
+      const modal = homepageCardField('homepageCardEditor');
+      if (!modal || modal.hidden) return;
+      if (event.key === 'Escape') { event.preventDefault(); closeHomepageCardEditorSaving(); }
+      if ((event.metaKey || event.ctrlKey) && event.key === 'Enter') { event.preventDefault(); closeHomepageCardEditorSaving(); }
+    });
     const uploadButton = homepageCardField('homepageCardUploadBtn');
     const fileInput = homepageCardField('homepageCardFileInput');
     uploadButton?.addEventListener('click', () => fileInput?.click());
@@ -12278,7 +12390,9 @@ function bindStudioMediaActions() {
       ? homepageCategoryGroups(data, draft ? { releaseId: draft.id, restrict: true } : { useActive: true })
       : [];
     const total = groups.length || 5;
-    const filled = groups.filter((group) => group.items.length).length;
+    /* Заполненным слот делает фотография. Карточка без изображения — это начатая
+       работа, а не готовый слот, и обещать по ней публикацию нельзя. */
+    const filled = groups.filter((group) => group.items.some((item) => String(item?.imageUrl || '').trim())).length;
     const ready = !!draft && filled >= total;
 
     const setState = (step, state) => {
