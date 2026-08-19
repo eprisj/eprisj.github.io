@@ -1120,6 +1120,48 @@ body {
   .entry-wizard-cover { grid-template-columns: 1fr; }
 }
 
+/* ── Состояние переводов записи ──────────────────────────────
+   Три состояния читаются без легенды: залитый чип — перевод в
+   ногу с оригиналом, обведённый — отстал, пунктирный — его нет. */
+.entry-langs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+.entry-langs[hidden] { display: none; }
+.entry-langs-label {
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.entry-langs-chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.entry-lang-chip {
+  min-width: 30px;
+  padding: 3px 7px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  letter-spacing: .08em;
+  border: 1px solid var(--line-strong);
+}
+.entry-lang-chip.is-fresh { background: var(--accent); border-color: var(--accent); color: var(--bg-card); }
+.entry-lang-chip.is-stale { background: var(--bg-card); color: var(--text); }
+.entry-lang-chip.is-missing { border-style: dashed; color: var(--text-faint); }
+.entry-langs-auto {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  font-size: .68rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
 /* Scrollable main content */
 .main-content {
   flex: 1;
