@@ -429,7 +429,74 @@ function safeExternalUrl(value?: string): string | null {
 
 // Privacy-friendly click-to-play embeds for YouTube/Vimeo. Direct MP4/WebM
 // stays native, so it is fast, accessible and never needs a third-party player.
-function VideoBlock({ content, caption, poster, credit, sourceUrl, t }: { content: string; caption?: string; poster?: string; credit?: string; sourceUrl?: string; t: (key: string) => string }) {
+/* ── Видео-петля ─────────────────────────────────────────────────────────────
+   То, что редакция вставляет вместо гифки: играет само, по кругу, без звука и
+   без панели управления. Три вещи, без которых это не работает в реальности:
+
+   • `muted` + `playsInline` — иначе iOS не запустит воспроизведение вовсе и
+     развернёт ролик на весь экран при касании;
+   • пауза за пределами экрана — десяток петель в длинном материале иначе
+     декодируются одновременно, грея телефон и съедая трафик;
+   • уважение к системной настройке «уменьшить движение»: там, где человек
+     попросил не двигать картинку, показываем постер и даём кнопку. */
+function LoopingVideo({ src, poster, caption }: { src: string; poster?: string; caption?: string }) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [reduceMotion, setReduceMotion] = useState(false);
+  const [manuallyPlaying, setManuallyPlaying] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const apply = () => setReduceMotion(query.matches);
+    apply();
+    query.addEventListener?.('change', apply);
+    return () => query.removeEventListener?.('change', apply);
+  }, []);
+
+  useEffect(() => {
+    const node = videoRef.current;
+    if (!node || (reduceMotion && !manuallyPlaying)) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) node.play().catch(() => { /* автозапуск может быть запрещён */ });
+        else node.pause();
+      });
+    }, { threshold: 0.15 });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [reduceMotion, manuallyPlaying]);
+
+  const showStill = reduceMotion && !manuallyPlaying;
+
+  return (
+    <div className="relative">
+      <video
+        ref={videoRef}
+        className="w-full h-auto block"
+        src={src}
+        poster={poster || undefined}
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        autoPlay={!showStill}
+        aria-label={caption || 'Video loop'}
+      />
+      {showStill && (
+        <button
+          type="button"
+          onClick={() => { setManuallyPlaying(true); videoRef.current?.play().catch(() => {}); }}
+          className="absolute inset-0 flex items-center justify-center bg-[rgb(var(--c-bg-rgb)_/_0.35)]"
+        >
+          <span className="border border-[var(--c-accent)] bg-[var(--c-bg)] px-4 py-2 font-mono text-[10px] uppercase tracking-widest">
+            Play
+          </span>
+        </button>
+      )}
+    </div>
+  );
+}
+
+function VideoBlock({ content, caption, poster, credit, sourceUrl, loop, muted, t }: { content: string; caption?: string; poster?: string; credit?: string; sourceUrl?: string; loop?: boolean; muted?: boolean; t: (key: string) => string }) {
   const [playing, setPlaying] = useState(false);
   const ytId = extractYouTubeId(content);
   const vimeoId = extractVimeoId(content);
@@ -445,9 +512,13 @@ function VideoBlock({ content, caption, poster, credit, sourceUrl, t }: { conten
 
   return (
     <figure className="my-8 sm:my-12">
-      <div className="aspect-video bg-black relative overflow-hidden">
-        {directVideo ? (
-          <video className="w-full h-full object-cover" controls preload="metadata" poster={poster || undefined}>
+      {/* Петля сохраняет собственную пропорцию: гифка бывает и квадратной, и
+          вертикальной, а рамка 16:9 обрезала бы её по краям. */}
+      <div className={`${directVideo && loop ? '' : 'aspect-video'} bg-black relative overflow-hidden`}>
+        {directVideo && loop ? (
+          <LoopingVideo src={content} poster={poster} caption={caption} />
+        ) : directVideo ? (
+          <video className="w-full h-full object-cover" controls preload="metadata" muted={muted} poster={poster || undefined}>
             <source src={content} />
             Your browser does not support this video.
           </video>
@@ -2319,7 +2390,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                   );
                 }
                 case 'video':
-                  return <VideoBlock key={index} content={typeof block.content === 'string' ? block.content : ''} caption={block.caption} poster={block.poster} credit={block.credit} sourceUrl={block.sourceUrl} t={t} />;
+                  return <VideoBlock key={index} content={typeof block.content === 'string' ? block.content : ''} caption={block.caption} poster={block.poster} credit={block.credit} sourceUrl={block.sourceUrl} loop={block.loop} muted={block.muted} t={t} />;
                 case 'audio':
                   return (
                     <figure key={index} className="my-8 sm:my-12 p-4 sm:p-6 bg-[#E8DED5] border border-[rgb(var(--c-accent-rgb)_/_0.2)] flex items-center gap-3 sm:gap-4">

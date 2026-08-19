@@ -8659,3 +8659,11 @@ body:has(.unpublished-banner.is-visible) { padding-top: 38px; }
    каждом обновлении страницы (класс ставится инлайн-скриптом в index.html
    до разбора app.js). */
 html.epris-signed-in .auth-overlay { display: none !important; }
+
+/* Управление рядом слотов: выбор центра и позиция каждой карточки. */
+.hp-row-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; }
+.hp-row-centre { display: inline-flex; align-items: center; gap: 8px; font-size: .72rem; color: var(--text); }
+.hp-row-centre select { min-height: 30px; }
+.hp-row-hint { font-size: .66rem; color: var(--text-muted); }
+.hp-slot-order { display: inline-flex; align-items: center; gap: 5px; margin-top: 6px; font-family: var(--font-mono); font-size: .6rem; color: var(--text-muted); }
+.hp-slot-order select { min-height: 26px; padding: 2px 4px; font-size: .68rem; }

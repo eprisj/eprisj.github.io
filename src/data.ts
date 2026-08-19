@@ -139,6 +139,12 @@ export interface ContentBlock {
   sourceUrl?: string;
   /** Poster image for Vimeo or self-hosted video. */
   poster?: string;
+  /** Видео-петля: играет само, по кругу и без звука — так ведут себя гифки. */
+  loop?: boolean;
+  /** Запускать без действия читателя. Работает только вместе с muted. */
+  autoplay?: boolean;
+  /** Без звука. Для петли включено всегда: иначе браузер не даст автозапуск. */
+  muted?: boolean;
   coordinates?: { lat: number; lng: number };
   url?: string;
   level?: number;
