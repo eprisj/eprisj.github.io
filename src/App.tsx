@@ -443,6 +443,7 @@ function LoopingVideo({ src, poster, caption }: { src: string; poster?: string; 
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [reduceMotion, setReduceMotion] = useState(false);
   const [manuallyPlaying, setManuallyPlaying] = useState(false);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const query = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -468,10 +469,12 @@ function LoopingVideo({ src, poster, caption }: { src: string; poster?: string; 
   const showStill = reduceMotion && !manuallyPlaying;
 
   return (
-    <div className="relative">
+    <div className="relative bg-[rgb(var(--c-accent-rgb)_/_0.05)]">
       <video
         ref={videoRef}
-        className="w-full h-auto block"
+        /* Появляется, когда первый кадр готов: иначе на медленной сети видно
+           пустой прямоугольник, который потом дёргается. */
+        className={`w-full h-auto block transition-opacity duration-500 ${ready ? 'opacity-100' : 'opacity-0'}`}
         src={src}
         poster={poster || undefined}
         loop
@@ -479,8 +482,14 @@ function LoopingVideo({ src, poster, caption }: { src: string; poster?: string; 
         playsInline
         preload="metadata"
         autoPlay={!showStill}
+        onLoadedData={() => setReady(true)}
         aria-label={caption || 'Video loop'}
       />
+      {!ready && poster && (
+        /* Пока грузится — тот же кадр, что станет постером: переход
+           получается незаметным, без вспышки пустоты. */
+        <img src={poster} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
+      )}
       {showStill && (
         <button
           type="button"
@@ -509,13 +518,17 @@ function VideoBlock({ content, caption, poster, credit, sourceUrl, loop, muted, 
   const openVideoLabel = t('video.openVideo');
   const provider = ytId ? 'YouTube' : vimeoId ? 'Vimeo' : directVideo ? 'Video' : openVideoLabel;
   const cleanSource = safeExternalUrl(sourceUrl);
+  const isLoop = directVideo && !!loop;
 
   return (
-    <figure className="my-8 sm:my-12">
-      {/* Петля сохраняет собственную пропорцию: гифка бывает и квадратной, и
-          вертикальной, а рамка 16:9 обрезала бы её по краям. */}
-      <div className={`${directVideo && loop ? '' : 'aspect-video'} bg-black relative overflow-hidden`}>
-        {directVideo && loop ? (
+    <figure className={isLoop ? 'my-8 sm:my-12 -mx-4 sm:mx-0' : 'my-8 sm:my-12'}>
+      {/* Петля живёт по правилам фотографии в статье: на телефоне тянется от
+          края до края, сохраняет собственную пропорцию (гифка бывает
+          квадратной и вертикальной — рамка 16:9 обрезала бы её) и не сидит на
+          чёрной подложке, из-за которой светлые гифки смотрелись врезкой из
+          другого материала. */}
+      <div className={`${isLoop ? '' : 'aspect-video bg-black'} relative overflow-hidden`}>
+        {isLoop ? (
           <LoopingVideo src={content} poster={poster} caption={caption} />
         ) : directVideo ? (
           <video className="w-full h-full object-cover" controls preload="metadata" muted={muted} poster={poster || undefined}>
@@ -566,7 +579,7 @@ function VideoBlock({ content, caption, poster, credit, sourceUrl, loop, muted, 
         )}
       </div>
       {(caption || credit) && (
-        <figcaption className="text-center font-mono text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] mt-3 sm:mt-4 uppercase tracking-widest px-4">
+        <figcaption className="text-center font-mono text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] mt-3 sm:mt-4 uppercase tracking-widest px-4 sm:px-0">
           {caption}{caption && credit ? ' · ' : ''}{credit}
           {cleanSource && <a href={cleanSource} target="_blank" rel="noopener noreferrer" className="ml-2 underline underline-offset-4 hover:text-[var(--c-gold)] transition-colors">source</a>}
         </figcaption>
