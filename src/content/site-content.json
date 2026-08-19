@@ -4740,22 +4740,6 @@
           "content": "<b>Ksenia</b>: For me, besides Gulbenkian, it’s probably Cabo Espichel. It has this incredible lighthouse and is considered by the Portuguese to be one of the westernmost points of Europe. I also love the café at Museu Albuquerque, and MACAM – Museu de Arte Contemporânea Armando Martins – has a wonderful café too. They’re all affordable but incredibly stylish. Museums often have amazing cafés."
         },
         {
-          "type": "gallery",
-          "content": [
-            "https://api.eprisjournal.com/uploads/mszveqbo93sr6s.jpg",
-            "https://api.eprisjournal.com/uploads/mszvejrsmcv3yc.jpg",
-            "https://api.eprisjournal.com/uploads/mszvku9ffidwjo.jpg",
-            "https://api.eprisjournal.com/uploads/mszvpj9rtyf8k3.webp"
-          ],
-          "caption": "",
-          "alts": [
-            "Gulbenkian Garden",
-            "Gulbenkian Garden",
-            "Cabo Espichel",
-            "Cafe in Foundation Albuquerque "
-          ]
-        },
-        {
           "type": "text",
           "content": "<b>What has been your most inspiring trip?</b>"
         },
@@ -4780,7 +4764,7 @@
           "content": "<b>Ksenia</b>: The main lesson I took from art school is: ‘Experience resistance.’ If you feel resistance toward something, you should move toward it. It means there’s a huge amount of energy hidden there. Don’t ignore or suppress it – look at it more closely."
         }
       ],
-      "updatedAt": "2026-08-19T16:15:40.120Z",
+      "updatedAt": "2026-08-19T16:17:48.301Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "publishAt": "2026-08-19T09:38:46.903Z",
