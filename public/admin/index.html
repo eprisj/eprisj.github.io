@@ -16,7 +16,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=5.60" />
+    <link rel="stylesheet" href="./styles.css?v=5.70" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
@@ -446,6 +446,87 @@
                 </div>
                 <p class="card-desc">Все номера журнала с их статусами.</p>
                 <div id="dashIssueTimeline" class="dash-issue-timeline"><p class="dash-empty-hint">Загрузите контент.</p></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ===== МАСТЕР СОЗДАНИЯ ЗАПИСИ =====
+               Создание было разложено на два несвязанных пути: кнопка
+               «+ Создать статью» в тулбаре заводила пустой черновик, а
+               свёрнутая внизу «Creator Studio» — заготовку с полями, среди
+               которых стояло «imageSeed». Теперь путь один: заполняешь то,
+               с чего статья и начинается (тип, заголовок, автор, анонс,
+               обложка), получаешь готовый черновик и сразу его правишь. -->
+          <section id="entryWizard" class="entry-wizard" hidden aria-labelledby="entryWizardTitle" role="dialog" aria-modal="true">
+            <div class="entry-wizard-dialog">
+              <div class="entry-wizard-head">
+                <div>
+                  <span class="homepage-admin-kicker">Новая запись</span>
+                  <h3 id="entryWizardTitle">Что создаём</h3>
+                </div>
+                <button id="entryWizardClose" class="homepage-card-editor-close" type="button" aria-label="Закрыть">×</button>
+              </div>
+
+              <div class="entry-wizard-types" id="entryWizardTypes" role="radiogroup" aria-label="Тип записи">
+                <button class="entry-type is-active" type="button" data-kind="story" role="radio" aria-checked="true">
+                  <strong>Статья</strong>
+                  <small>Текст со сценой, цитатой и врезкой</small>
+                </button>
+                <button class="entry-type" type="button" data-kind="guide" role="radio" aria-checked="false">
+                  <strong>Гид</strong>
+                  <small>Подборка с адресами и чеклистом</small>
+                </button>
+                <button class="entry-type" type="button" data-kind="photoEssay" role="radio" aria-checked="false">
+                  <strong>Фото-эссе</strong>
+                  <small>Галерея с подписями, минимум текста</small>
+                </button>
+                <button class="entry-type" type="button" data-kind="review" role="radio" aria-checked="false">
+                  <strong>Рецензия</strong>
+                  <small>Оценка места, продукта или книги</small>
+                </button>
+              </div>
+
+              <div class="entry-wizard-grid">
+                <label class="homepage-field entry-wizard-wide">
+                  <span>Заголовок</span>
+                  <input id="creatorTitle" type="text" placeholder="Например: Rooms That Watch You Back" />
+                </label>
+                <label class="homepage-field">
+                  <span>Категория</span>
+                  <input id="creatorCategory" type="text" placeholder="Culture, Design, Travel…" list="entryWizardCategories" />
+                  <datalist id="entryWizardCategories"></datalist>
+                </label>
+                <label class="homepage-field">
+                  <span>Автор</span>
+                  <input id="creatorAuthor" type="text" placeholder="EPRIS Journal" list="entryWizardAuthors" />
+                  <datalist id="entryWizardAuthors"></datalist>
+                </label>
+                <label class="homepage-field entry-wizard-wide">
+                  <span>Анонс <em>краткое описание в списке материалов</em></span>
+                  <textarea id="creatorExcerpt" rows="2" placeholder="Одно-два предложения о том, ради чего это читать."></textarea>
+                </label>
+                <div class="entry-wizard-cover entry-wizard-wide">
+                  <div id="creatorImagePreviewBox" class="entry-wizard-cover-drop">
+                    <img id="creatorImagePreview" src="" alt="" hidden referrerpolicy="no-referrer" />
+                    <span>Перетащите обложку сюда, вставьте из буфера (⌘V) или выберите файл</span>
+                  </div>
+                  <div class="entry-wizard-cover-fields">
+                    <label class="homepage-field">
+                      <span>Ссылка на обложку</span>
+                      <input id="creatorImageUrl" type="url" placeholder="https://… или /images/…" />
+                    </label>
+                    <button id="creatorImageUploadBtn" class="btn btn-sm" type="button">Загрузить файл</button>
+                    <input id="creatorImageUploadInput" type="file" accept="image/*" hidden />
+                    <input id="creatorSeed" type="hidden" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="entry-wizard-foot">
+                <span id="entryWizardStatus" class="homepage-card-editor-status" role="status" aria-live="polite">Запись создаётся черновиком: на сайте её не будет, пока не опубликуете.</span>
+                <div class="entry-wizard-actions">
+                  <button id="entryWizardCreate" class="btn btn-primary" type="button">Создать черновик</button>
+                </div>
               </div>
             </div>
           </section>
@@ -1012,63 +1093,16 @@
                 </div>
               </div>
 
-              <!-- ── Creator Studio — collapsible, collapsed when editing ── -->
-              <details class="creator-studio-wrap" id="creatorStudioWrap">
-                <summary class="creator-studio-toggle">
-                  <span class="creator-studio-toggle-label">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                    Создать новую запись
-                  </span>
-                  <span id="creatorQualityInline" class="creator-quality-inline"></span>
-                </summary>
-                <section class="creator-studio" aria-label="Creator Studio">
-                  <div id="creatorQuality" class="creator-quality" aria-live="polite" style="display:none"></div>
-                  <div class="creator-grid">
-                    <label class="creator-field">
-                      <span>Заголовок</span>
-                      <input id="creatorTitle" placeholder="Название новой статьи" />
-                    </label>
-                    <label class="creator-field">
-                      <span>Категория</span>
-                      <input id="creatorCategory" placeholder="Culture, Design, Travel..." />
-                    </label>
-                    <label class="creator-field">
-                      <span>imageSeed</span>
-                      <input id="creatorSeed" placeholder="visual-seed" />
-                    </label>
-                    <label class="creator-field creator-field-wide">
-                      <span>URL обложки</span>
-                      <div style="display:flex;gap:8px;align-items:center;width:100%;">
-                        <input id="creatorImageUrl" placeholder="https://..." style="flex:1" />
-                        <button id="creatorImageUploadBtn" class="btn btn-sm" type="button" title="Загрузить с ПК">📁 Загрузить</button>
-                        <input id="creatorImageUploadInput" type="file" accept="image/*" hidden />
-                      </div>
-                    </label>
-                    <div class="photo-preview creator-field-wide">
-                      <img id="creatorImagePreview" src="" alt="Превью" loading="lazy" referrerpolicy="no-referrer" hidden style="max-height:90px;object-fit:contain;margin-top:4px;border-radius:0;" />
-                    </div>
-                  </div>
-                  <div class="creator-actions">
-                    <button id="aiGenerateBtn" class="btn btn-sm btn-ai" type="button" title="AI Генерация (Черновик)">✨ AI</button>
-                    <span class="toolbar-sep"></span>
-                    <span id="articleBlueprintGroup" class="creator-actions-group">
-                      <button id="storyBlueprintBtn" class="btn btn-primary btn-sm" type="button">Статья</button>
-                      <button id="guideBlueprintBtn" class="btn btn-primary btn-sm" type="button">Гид</button>
-                      <button id="photoEssayBlueprintBtn" class="btn btn-primary btn-sm" type="button">Фото-эссе</button>
-                      <button id="reviewBlueprintBtn" class="btn btn-primary btn-sm" type="button">Рецензия</button>
-                      <span class="toolbar-sep"></span>
-                      <button id="insertStructureBtn" class="btn btn-sm" type="button">+ Структура</button>
-                      <button id="insertChecklistTemplateBtn" class="btn btn-sm" type="button">+ Чеклист</button>
-                      <button id="insertPollTemplateBtn" class="btn btn-sm" type="button">+ Опрос</button>
-                    </span>
-                    <span id="reviewBlueprintGroup" class="creator-actions-group" hidden>
-                      <button id="reviewPlaceBlueprintBtn" class="btn btn-primary btn-sm" type="button">Ресторан/место</button>
-                      <button id="reviewProductBlueprintBtn" class="btn btn-primary btn-sm" type="button">Продукт</button>
-                      <button id="reviewMediaBlueprintBtn" class="btn btn-primary btn-sm" type="button">Книга/медиа</button>
-                    </span>
-                  </div>
-                </section>
-              </details>
+              <!-- Быстрая вставка блоков в открытую запись. Раньше эти три кнопки
+                   лежали внутри «Creator Studio» вперемешку с созданием новой
+                   статьи, хотя относятся к уже открытому материалу. -->
+              <div class="entry-inserts" id="articleInsertGroup">
+                <span class="entry-inserts-label">Вставить блок</span>
+                <button id="insertStructureBtn" class="btn btn-sm" type="button">Структура</button>
+                <button id="insertChecklistTemplateBtn" class="btn btn-sm" type="button">Чеклист</button>
+                <button id="insertPollTemplateBtn" class="btn btn-sm" type="button">Опрос</button>
+                <button id="aiGenerateBtn" class="btn btn-sm btn-ai" type="button" title="Черновик текста через AI">✨ AI-черновик</button>
+              </div>
 
               <!-- ── Main editor — block editor + split preview ── -->
               <div class="editor-split" id="editorSplit">
@@ -2248,7 +2282,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=5.20" type="module"></script>
+    <script src="./app.js?v=5.30" type="module"></script>
     <script>
       // Tab switching + page title update
       document.addEventListener('DOMContentLoaded', function () {
