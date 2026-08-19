@@ -11164,6 +11164,14 @@ function bindStudioMediaActions() {
     if (!String(item.title || '').trim() && title) item.title = title;
     if (!String(item.subtitle || '').trim() && subtitle) item.subtitle = subtitle;
     if (!String(item.description || '').trim() && description) item.description = description;
+    /* Отметка времени обязательна.
+       Слот категории показывает самую свежую карточку (порядок LIFO), а
+       карточка, сохранённая из редактора, отметки не получала: её stamp был
+       нулём, то есть «старше» всего остального. Редактор добавлял новое фото
+       в категорию и видел на главной прежнее — «карточка не заменяется».
+       Теперь любое сохранение делает карточку самой свежей в своей категории,
+       что и означает «заменить фото недели». */
+    item.updatedAt = new Date().toISOString();
     inheritHomepageFields(item);
     return { data, item };
   }
@@ -11703,7 +11711,7 @@ function bindStudioMediaActions() {
     const pics = data?.homepage?.picsOfWeek || {};
     const useLifo = pics.ordering !== 'manual';
     const stamp = (item) => {
-      const value = item?.updatedAt || item?.publishAt;
+      const value = item?.updatedAt || item?.publishAt || item?.date;
       const parsed = value ? Date.parse(value) : Number.NaN;
       return Number.isFinite(parsed) ? parsed : 0;
     };
