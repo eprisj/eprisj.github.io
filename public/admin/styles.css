@@ -8645,3 +8645,17 @@ body:has(.unpublished-banner.is-visible) { padding-top: 38px; }
 /* Перестановка категории: две узкие кнопки под основными действиями слота. */
 .homepage-card-move { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
 .homepage-card-move .btn { width: 100%; justify-content: center; padding-inline: 0; }
+
+/* Слот выпуска: карточка целиком кликабельна и перетаскивается. */
+.homepage-published-card { cursor: pointer; transition: border-color .13s ease, background .13s ease, opacity .13s ease; }
+.homepage-published-card:hover { border-color: var(--accent); }
+.homepage-published-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.homepage-published-card.is-dragging { opacity: .4; }
+.homepage-published-card.is-drop-target { border-color: var(--accent); background: var(--bg-soft); }
+.homepage-published-card.is-centre { box-shadow: inset 0 0 0 1px var(--accent); }
+.homepage-published-card-category { pointer-events: none; }
+
+/* Уже вошедший редактор не должен видеть форму входа на долю секунды при
+   каждом обновлении страницы (класс ставится инлайн-скриптом в index.html
+   до разбора app.js). */
+html.epris-signed-in .auth-overlay { display: none !important; }
