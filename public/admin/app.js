@@ -1906,6 +1906,13 @@ async function uploadImageToVPS(file) {
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok || !data.ok || !data.url) throw new Error(data.error || `Ошибка загрузки на сервер (${res.status})`);
+  /* Сервер превращает GIF в WebM, и такая ссылка в поле изображения даёт
+     битую картинку. Пути, которые умеют переключиться на блок «Видео», ловят
+     GIF раньше; всем остальным честнее отказать с объяснением, чем подставить
+     ссылку, которая не покажется. */
+  if (data.kind === 'video') {
+    throw new Error('Это анимация: вставьте её блоком «Видео» — там она играет по кругу и весит меньше.');
+  }
   return data.url;
 }
 
@@ -15841,6 +15848,44 @@ window.handleBlockImageUpload = async function(index) {
   const file = fileInput.files[0];
   const btn = document.getElementById(`block-img-upload-btn-${index}`);
   const originalText = btn.innerHTML;
+
+  /* GIF в блоке «Фото» — самый частый способ вставить гифку, и до сих пор он
+     молча ломался: сервер превращает GIF в WebM (так он весит в разы меньше
+     при том же виде), возвращал ссылку на .webm, а она попадала в <img> —
+     читатель видел битую картинку.
+
+     Поэтому блок здесь же превращается в «Видео» с включённой петлёй: это то
+     же самое, чем гифка и является, только легче. Подпись сохраняется. */
+  const looksLikeGif = String(file.type || '') === 'image/gif' || /[.]gif$/i.test(file.name || '');
+  if (looksLikeGif) {
+    try {
+      btn.innerHTML = '⏳';
+      btn.disabled = true;
+      const result = await uploadVideoReturnResult(file);
+      const blocks = collectBlockEditorContent();
+      const previous = blocks[index] || {};
+      blocks[index] = {
+        type: 'video',
+        content: result.url,
+        caption: previous.caption || '',
+        poster: result.posterUrl || '',
+        loop: true,
+        muted: true,
+      };
+      redrawBlockEditor(blocks);
+      const before = (result.originalBytes / 1024 / 1024).toFixed(1);
+      const after = (result.bytes / 1024 / 1024).toFixed(2);
+      showToast('success', `Гифка добавлена как петля: ${before} МБ → ${after} МБ`);
+    } catch (err) {
+      showToast('error', err.message || 'Не удалось загрузить гифку');
+    } finally {
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+      fileInput.value = '';
+    }
+    return;
+  }
+
   try {
     btn.innerHTML = '⏳';
     btn.disabled = true;
