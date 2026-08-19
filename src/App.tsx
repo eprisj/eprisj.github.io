@@ -378,6 +378,19 @@ function applySiteTheme(theme: SiteTheme) {
   if (theme.fontDisplay) { ensureGoogleFont(theme.fontDisplay); root.setProperty('--font-display', `'${theme.fontDisplay}', serif`); }
   if (theme.fontBody) { ensureGoogleFont(theme.fontBody); root.setProperty('--font-body', `'${theme.fontBody}', serif`); }
   if (theme.bgImage) { root.setProperty('--bg-image', `url("${theme.bgImage}")`); } else { root.removeProperty('--bg-image'); }
+  /* Фоновая картинка тянется во весь экран только когда она есть. Постоянный
+     background-attachment: fixed на iOS оставляет неокрашенную полосу у нижней
+     кромки — фон считается от вьюпорта, а панель браузера меняет его высоту. */
+  root.setProperty('--bg-attachment', theme.bgImage ? 'fixed' : 'scroll');
+  /* Панели Safari (и встроенных браузеров) красятся по theme-color. Он был
+     прибит в разметке бордовым от старой палитры, а фон сайта задаётся из
+     панели «Оформление» и давно стал белым: под страницей оставалась чужая
+     серо-тёмная полоса. Держим его равным фактическому фону. */
+  if (theme.bg) {
+    document.querySelectorAll('meta[name="theme-color"]').forEach((meta) => {
+      meta.setAttribute('content', theme.bg as string);
+    });
+  }
 }
 
 function Reveal({ children, delay = 0, y = 28, className = '' }: { children: ReactNode; delay?: number; y?: number; className?: string }) {
