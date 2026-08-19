@@ -8569,18 +8569,43 @@ body:has(.unpublished-banner.is-visible) { padding-top: 38px; }
   .translations-layout { padding: 12px 12px 28px; gap: 12px; }
   .issues-layout { padding: 0 12px 20px; }
 
-  /* Тулбар записи: селекты в одну колонку, кнопки — сеткой, без прокрутки. */
-  .toolbar-selects { display: grid; grid-template-columns: 1fr; gap: 8px; }
-  .toolbar-field-grow { min-width: 0; }
-  .toolbar-buttons,
-  .toolbar-publication-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
-    gap: 6px;
-  }
-  .toolbar-buttons .btn,
-  .toolbar-publication-row .btn { width: 100%; justify-content: center; }
-  .toolbar-publication-summary { grid-column: 1 / -1; }
+  /* Тулбар записи трогаем осторожно: для него уже есть продуманная
+     мобильная раскладка ниже 760 точек — селекты в две колонки с
+     переносом длинных полей на всю ширину, а кнопки одной спокойной
+     лентой с «Сохранить запись», приколотым к правому краю.
+
+     Раньше здесь стояла своя раскладка сеткой, и она эту побеждала: из
+     ленты получалась стена в тринадцать одинаковых кнопок высотой в
+     205 точек, где главное действие ничем не выделялось. Осталось
+     только то, что лентой не решается.
+
+     А не работала эта раскладка по той же причине, что и всё остальное:
+     колонка `1fr` — это `minmax(auto, 1fr)`, и она не становится уже
+     содержимого. Два поля по 253 точки в тулбаре шириной 347 выезжали за
+     экран, поэтому прежняя заплатка и выглядела необходимой. Лечится
+     причина, а не следствие. */
+  /* Сам тулбар тоже сетка, и его ряды — такие же грид-элементы с
+     `min-width: auto`. Пока это не снято, ряд шире экрана растягивает
+     себя целиком, а не сжимает содержимое: правки внутри ряда ничего не
+     меняли, потому что предел ставился уровнем выше. */
+  .entry-toolbar > * { min-width: 0; }
+  .toolbar-selects { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .toolbar-selects > *, .toolbar-field, .toolbar-field-grow { min-width: 0; }
+  .toolbar-field select, .toolbar-field input { width: 100%; min-width: 0; }
+  .toolbar-publication-row { flex-wrap: wrap; }
+  .toolbar-publication-row > * { min-width: 0; max-width: 100%; }
+
+  /* В режиме живого редактора лента кнопок намеренно не прокручивается
+     (`#tab-content.is-live-editor .toolbar-buttons { overflow: visible }`),
+     но правило `flex-wrap: nowrap` рядом осталось — а нельзя одновременно
+     запретить и перенос, и прокрутку: содержимое просто уезжает за экран.
+     Раз прокрутки нет, разрешаем перенос. */
+  #tab-content.is-live-editor .toolbar-buttons { flex-wrap: wrap; }
+  .toolbar-buttons > * { min-width: 0; max-width: 100%; }
+  .toolbar-sync-panel { grid-template-columns: minmax(0, 1fr); }
+  /* «EN → 0 языков · отдельные переводы» — не заголовок, а состояние;
+     обрезанное на полуслове оно бесполезно. */
+  .toolbar-sync-label { overflow: visible; white-space: normal; }
   .toolbar-sync-panel,
   .toolbar-media-panel {
     display: grid;
@@ -9125,4 +9150,24 @@ html.epris-signed-in .auth-overlay { display: none !important; }
      ряда, который и растягивал карточку шире экрана. */
   .steps-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
   .step-item { width: auto; }
+}
+
+/* Шапка на телефоне: сообщение не должно съедать название раздела.
+   Строка состояния (#status) прячется правилом для .topbar-status, но
+   скрипт при ошибке переписывает класс на «status error» — и правило
+   перестаёт действовать ровно тогда, когда сообщение появляется. В
+   результате «Публикации» превращались в «Ко…», а само сообщение всё
+   равно было обрезано на полуслове.
+
+   Ни то, ни другое сокращать не нужно: шапка растёт на строку. */
+@media (max-width: 860px) {
+  .topbar { height: auto; min-height: 52px; padding: 6px 12px; }
+  .topbar-left { flex-wrap: wrap; align-items: center; row-gap: 2px; }
+  .topbar-title { flex: 0 1 auto; }
+  .topbar-left #status { flex: 1 1 100%; overflow: visible; font-size: .62rem; line-height: 1.35; white-space: normal; }
+  .topbar-left #status:empty { display: none; }
+  /* Подпись сохранения занимает место, которое нужнее названию раздела:
+     иконка дискеты понятна и без слова. */
+  .topbar-right .sb-save .sidebar-btn-label { display: none; }
+  .topbar-right .sb-save { min-width: 46px; padding-inline: 12px; }
 }
