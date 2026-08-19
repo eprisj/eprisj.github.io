@@ -4785,6 +4785,68 @@
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "publishAt": "2026-08-19T09:38:46.903Z",
       "previewToken": "6991679b107e26485222164c"
+    },
+    {
+      "id": 24,
+      "draft": true,
+      "title": "mmm",
+      "author": "EPRIS Journal",
+      "role": "Editorial Desk",
+      "date": "Aug 19, 2026",
+      "excerpt": "A review with a clear verdict, criteria, and context.",
+      "category": "Review",
+      "subcategory": "Critique",
+      "tags": [
+        "review",
+        "critique",
+        "editorial"
+      ],
+      "imageSeed": "mmm",
+      "content": [
+        {
+          "type": "text",
+          "content": "Open with the verdict and the reason it matters."
+        },
+        {
+          "type": "quote",
+          "content": "The line that captures the whole review."
+        },
+        {
+          "type": "checklist",
+          "caption": "Criteria",
+          "content": {
+            "items": [
+              "Idea",
+              "Execution",
+              "Usefulness",
+              "Originality"
+            ]
+          }
+        },
+        {
+          "type": "image",
+          "content": "mmm-4",
+          "caption": "Reference image"
+        },
+        {
+          "type": "poll",
+          "content": {
+            "question": "Would you read more reviews like this?",
+            "options": [
+              {
+                "label": "Yes",
+                "votes": 0
+              },
+              {
+                "label": "Not this format",
+                "votes": 0
+              }
+            ]
+          }
+        }
+      ],
+      "updatedAt": "2026-08-19T11:28:30.216Z",
+      "previewToken": "6407cce84a410856746686cc"
     }
   ],
   "reviews": [
