@@ -8553,3 +8553,91 @@ body:has(.unpublished-banner.is-visible) { padding-top: 38px; }
   .unpublished-banner { font-size: .66rem; padding: 8px 12px; gap: 8px; }
   .unpublished-text { white-space: normal; }
 }
+
+/* ── Телефон: панель как рабочий инструмент, а не уменьшенный десктоп ──
+   Редактировать с телефона приходится регулярно, а панель до сих пор
+   версталась «по остаточному принципу»: тулбар записи в шесть колонок,
+   кнопки в строку с горизонтальной прокруткой, поля в две колонки на
+   экране в 375 точек и модальные окна в размер десктопных. */
+@media (max-width: 720px) {
+  /* Секции внутри вкладок дышат меньше — экрана и так мало. */
+  .content-layout,
+  .dashboard-layout,
+  .settings-layout,
+  .upload-layout,
+  .transcript-layout,
+  .monitor-layout,
+  .studio-layout,
+  .translations-layout { padding: 12px 12px 28px; gap: 12px; }
+  .issues-layout { padding: 0 12px 20px; }
+
+  /* Тулбар записи: селекты в одну колонку, кнопки — сеткой, без прокрутки. */
+  .toolbar-selects { display: grid; grid-template-columns: 1fr; gap: 8px; }
+  .toolbar-field-grow { min-width: 0; }
+  .toolbar-buttons,
+  .toolbar-publication-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+    gap: 6px;
+  }
+  .toolbar-buttons .btn,
+  .toolbar-publication-row .btn { width: 100%; justify-content: center; }
+  .toolbar-publication-summary { grid-column: 1 / -1; }
+  .toolbar-sync-panel,
+  .toolbar-media-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+    gap: 6px;
+    width: 100%;
+  }
+  .toolbar-sync-label { grid-column: 1 / -1; }
+
+  /* Пальцем в поле шириной с половину экрана не попасть. */
+  .entry-wizard-grid,
+  .homepage-card-editor-grid,
+  .homepage-card-editor-fields,
+  .homepage-control-grid,
+  .homepage-carousel-layout-grid { grid-template-columns: 1fr !important; }
+
+  /* Модальные окна занимают экран целиком: обрезанное по краям окно на
+     телефоне листается хуже, чем полноэкранное. */
+  .homepage-card-editor,
+  .entry-wizard { padding: 0; }
+  .homepage-card-editor-dialog,
+  .entry-wizard-dialog {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100dvh;
+    height: 100dvh;
+    padding: 14px 12px calc(14px + env(safe-area-inset-bottom));
+    border: 0;
+  }
+  .homepage-card-editor-actions,
+  .entry-wizard-actions { display: grid; grid-template-columns: 1fr; gap: 6px; width: 100%; }
+  .homepage-card-editor-actions .btn,
+  .entry-wizard-actions .btn { width: 100%; justify-content: center; }
+  .homepage-card-editor-foot,
+  .entry-wizard-foot { flex-direction: column; align-items: stretch; gap: 10px; }
+
+  /* Слоты выпуска: два в ряд вместо пяти. */
+  .homepage-published-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .homepage-admin-hero { padding: 14px 12px; }
+  .hp-tools { flex-direction: column; align-items: stretch; }
+  .hp-tools-group { display: grid; grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)); }
+  .hp-tools-group .btn { width: 100%; justify-content: center; }
+
+  /* Ввод не должен вызывать зум: iOS увеличивает страницу на любом поле
+     мельче 16px, и после этого редактор остаётся в увеличенном виде. */
+  input, select, textarea { font-size: 16px; }
+
+  /* Служебные подписи и таблицы прокручиваются внутри себя, а не растягивают
+     страницу вширь. */
+  .table-wrap, .transl-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+
+@media (max-width: 480px) {
+  .homepage-published-cards { grid-template-columns: 1fr; }
+  .entry-wizard-types { grid-template-columns: 1fr; }
+  .hp-step { flex-wrap: wrap; }
+  .hp-step .btn, .hp-step-count { margin-left: 34px; }
+}

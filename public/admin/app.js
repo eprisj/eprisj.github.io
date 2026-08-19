@@ -11208,6 +11208,41 @@ function bindStudioMediaActions() {
     return `Сохранено в черновик в ${time}. На сайт попадёт после «Опубликовать».`;
   }
 
+  /* Карточка обязана иметь минимальный набор полей, иначе сервер отклонит
+     запись целиком. Заполняем пропуски здесь, а не оставляем это на удачу:
+     редактор ввёл фото и подпись, остальное — служебное. */
+  function ensureHomepageCardShape(item) {
+    if (!String(item.title || '').trim()) item.title = String(item.homeTitle || '').trim() || 'Pics of the week';
+    if (!String(item.subtitle || '').trim()) item.subtitle = String(item.homeSubtitle || '').trim() || String(item.homeCategory || 'EPRIS');
+    if (!String(item.description || '').trim()) item.description = String(item.homeDescription || '').trim() || String(item.homeTitle || item.title || '');
+    if (!String(item.fig || '').trim()) item.fig = `FIG. ${String(item.id ?? '').padStart(2, '0')}`;
+    if (!String(item.imageSeed || '').trim() && !String(item.imageUrl || '').trim()) {
+      item.imageSeed = `pics-${item.id ?? Date.now()}`;
+    }
+    return item;
+  }
+
+  /* Карточка уходит на сервер сразу, а не ждёт публикации.
+     Раньше правки жили только в localStorage до нажатия «Опубликовать»: смена
+     устройства, другая вкладка или очистка кэша — и работа исчезала, а старые
+     и новые карточки расходились между браузерами. Теперь запись идёт тем же
+     точечным PATCH, что и статьи: одна карточка, с проверкой версии, не
+     затрагивая остальной документ. Публикация по-прежнему нужна, но только
+     чтобы показать выпуск читателям. */
+  async function pushHomepageCardToServer(item) {
+    const status = homepageCardField('homepageCardEditorStatus');
+    try {
+      await saveEntityToServer('items', DEFAULT_LANGUAGE, ensureHomepageCardShape(deepClone(item)));
+      if (status) status.textContent = `${homepageCardSavedNote()} Карточка сохранена на сервере.`;
+      return true;
+    } catch (error) {
+      /* Молча терять правку нельзя: если сервер отказал, редактор должен знать,
+         что карточка держится только в этом браузере. */
+      if (status) status.textContent = `Сохранено только в браузере: ${getErrorMessage(error)}`;
+      return false;
+    }
+  }
+
   function saveHomepageCardDraft({ close = true, silent = false } = {}) {
     const result = collectHomepageCardDraft();
     if (!result) {
@@ -11219,6 +11254,7 @@ function bindStudioMediaActions() {
     scheduleHomepageAutoPublish();
     const status = homepageCardField('homepageCardEditorStatus');
     if (status) status.textContent = homepageCardSavedNote();
+    pushHomepageCardToServer(result.item);
     if (!silent) showToast?.('success', 'Карточка сохранена в черновик главной.');
     if (close) closeHomepageCardEditor();
     return result;
@@ -11835,14 +11871,31 @@ function bindStudioMediaActions() {
     const activeRelease = homepageActiveRelease(data);
     const groups = homepageCategoryGroups(data, { useActive: true });
     const filled = groups.filter((group) => group.items.length).length;
-    /* Если центр не выбран, сайт ставит в середину третью категорию — показываем
-       ровно то же, чтобы панель не расходилась с тем, что видит читатель. */
-    const centreCategory = String(data?.homepage?.picsOfWeek?.centerCategory || '').trim()
+    /* Центр читаем из ТЕКУЩИХ настроек редактора, а не из снимка с VPS.
+       Карточки в этом блоке показываются опубликованные, и настройки брались
+       оттуда же — поэтому нажатие «В центр» не двигало ряд: выбор лежал в
+       черновике, а рисовали мы по снимку, где его ещё нет. Если центр не задан
+       вовсе, сайт ставит в середину третью категорию — показываем то же. */
+    const settingsSource = parseEditorJsonSafe() || data;
+    const centreCategory = String(settingsSource?.homepage?.picsOfWeek?.centerCategory || '').trim()
+      || String(data?.homepage?.picsOfWeek?.centerCategory || '').trim()
       || groups[2]?.id || groups[0]?.id || '';
+
+    /* Порядок ряда повторяет карусель на сайте.
+       Панель показывала слоты в порядке категорий и только обводила
+       центральный: нажимаешь «В центр» — подпись переезжает, ряд стоит на
+       месте, и проверить расстановку глазами невозможно. Сайт же строит
+       ленту так, что выбранная категория оказывается третьей, а соседние
+       разложены вокруг с заворотом. Считаем здесь ровно ту же перестановку. */
+    const centreIndex = Math.max(0, groups.findIndex((group) => group.id === centreCategory));
+    const total = groups.length;
+    const ordered = total
+      ? Array.from({ length: total }, (_, position) => groups[(centreIndex + position - 2 + total) % total])
+      : groups;
     if (metaEl) metaEl.textContent = source === 'vps'
       ? `${activeRelease ? releaseLabel(activeRelease) : 'VPS'} · ${filled} / ${groups.length} слотов`
       : `Черновик редактора · ${filled} / ${groups.length}`;
-    cardsEl.innerHTML = groups.map((group) => {
+    cardsEl.innerHTML = ordered.map((group) => {
       const item = group.items[0];
       const image = item?.imageUrl || '';
       /* Какая карточка стоит в середине карусели, редактор раньше задавал
