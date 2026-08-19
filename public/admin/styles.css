@@ -8943,3 +8943,84 @@ html.epris-signed-in .auth-overlay { display: none !important; }
     transform: none;
   }
 }
+
+/* ══════════════════════════════════════════════════════════
+   ТЕЛЕФОН: ТАБЛИЦА ПЕРЕВОДОВ КАРТОЧКАМИ
+   ──────────────────────────────────────────────────────────
+   Четыре колонки — ключ, эталон EN, поле перевода и действия —
+   на 375 точках не помещаются, а прокрутка вбок здесь не спасает:
+   переводя, нужно видеть одновременно и английскую строку, и поле,
+   куда пишешь. При горизонтальной прокрутке они не попадают в
+   экран вместе, и правка идёт вслепую.
+
+   Поэтому строка разворачивается в карточку сверху вниз. Подписи
+   колонок приходят из ::before, потому что шапка таблицы скрыта;
+   исключение — заголовок языка, он меняется на лету, и в карточке
+   язык и так назван в строке статистики над списком.
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 860px) {
+  .transl-table,
+  .transl-table tbody,
+  .transl-table tr,
+  .transl-table td { display: block; width: auto; }
+  .transl-table thead { display: none; }
+
+  .transl-table tr {
+    padding: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .transl-table tr.transl-missing { border-left: 2px solid var(--gold); }
+
+  .transl-table td { padding: 0; border: 0; }
+  .transl-table td + td { margin-top: 7px; }
+
+  /* Ключ — служебная строка, ей хватает мелкого моноширинного шрифта. */
+  .transl-table td:nth-child(1) .transl-key { font-size: .62rem; word-break: break-all; }
+
+  /* Эталон подписан явно: без шапки таблицы иначе непонятно, почему
+     над полем ввода стоит ещё один текст. */
+  .transl-table td:nth-child(2)::before {
+    content: 'EN';
+    display: block;
+    margin-bottom: 2px;
+    color: var(--text-muted);
+    font: 700 .55rem/1 var(--font-mono);
+    letter-spacing: .09em;
+  }
+  .transl-table td:nth-child(2) .transl-en-val { white-space: normal; }
+
+  .transl-table td:nth-child(3) input { width: 100%; min-height: 44px; }
+
+  /* Действия — в строку под полем, кнопки в размер пальца. */
+  .transl-table td:nth-child(4) { display: flex; gap: 6px; justify-content: flex-start; text-align: left !important; }
+  .transl-table td:nth-child(4):empty { display: none; }
+  .transl-copy-btn,
+  .transl-ai-row-btn { min-height: 40px; padding-inline: 12px; }
+
+  /* Прокрутка вбок больше не нужна и только мешала бы вертикальной. */
+  .transl-table-wrap { overflow-x: visible; }
+
+  /* Реестр паспортов оставлен таблицей с прокруткой: его читают, а не
+     заполняют, и у него есть постраничная навигация. */
+}
+
+/* Список анкет во время загрузки: три заготовки строк вместо слова
+   «загрузка». Место под список занято сразу, поэтому экран не прыгает,
+   когда ответ приходит, и никто не успевает прочитать «анкет нет». */
+.forms-list-skeleton { display: grid; gap: 6px; }
+.forms-list-skeleton span {
+  display: block;
+  height: 46px;
+  border: 1px solid var(--line-weak);
+  background: linear-gradient(90deg, var(--bg-soft) 0%, var(--bg-card) 50%, var(--bg-soft) 100%);
+  background-size: 220% 100%;
+  animation: formsSkeleton 1.3s ease-in-out infinite;
+}
+.forms-list-skeleton span:nth-child(2) { animation-delay: .12s; }
+.forms-list-skeleton span:nth-child(3) { animation-delay: .24s; }
+@keyframes formsSkeleton { 0% { background-position: 130% 0; } 100% { background-position: -30% 0; } }
+.forms-list-loading { margin-top: 10px; font-size: .68rem; }
+.forms-empty--loading { display: grid; place-items: center; min-height: 180px; }
+@media (prefers-reduced-motion: reduce) {
+  .forms-list-skeleton span { animation: none; }
+}
