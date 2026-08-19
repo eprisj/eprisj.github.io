@@ -37,6 +37,7 @@ import {
   Item,
   Review,
   setPreviewOverride,
+  setPreviewToken,
   getTranslations,
   getTheme,
   getSiteSettings,
@@ -3365,6 +3366,15 @@ function findMatchingArticle(item: Item, articles: Article[]): Article | undefin
   if (itemBase.length < 4) return undefined;
   return articles.find((a) => a.title && base(a.title) === itemBase);
 }
+
+/* Ссылка на черновик: /article/<slug>?preview=<token>. Токен ставится до
+   первого чтения контента, иначе запись успеет отфильтроваться как черновик. */
+(function readPreviewToken() {
+  try {
+    const token = new URLSearchParams(window.location.search).get('preview');
+    if (token && token.length >= 8) setPreviewToken(token);
+  } catch { /* нестандартный адрес — предпросмотра просто не будет */ }
+})();
 
 function parsePath(pathname: string, search = ''): { tab?: string; articleId?: number; reviewId?: number; passportCode?: string; searchQuery?: string; formSlug?: string; formInvite?: string } {
   const p = pathname.replace(/^\//, '').replace(/\/$/, '');

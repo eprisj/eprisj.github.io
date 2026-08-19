@@ -31,6 +31,8 @@ export interface Item {
   images?: { url: string; caption?: string }[];
   /** Hidden from the public site until unset. */
   draft?: boolean;
+  /** Токен ссылки предпросмотра: открывает этот черновик по адресу ?preview=… */
+  previewToken?: string;
   /** ISO datetime; hidden from the public site until this moment passes. */
   publishAt?: string;
   /** Server-stamped on every /content/entity save — see mergeLocalizedArray. */
@@ -192,6 +194,8 @@ export interface Article {
   content: ContentBlock[];
   /** Hidden from the public site until unset. */
   draft?: boolean;
+  /** Токен ссылки предпросмотра: открывает этот черновик по адресу ?preview=… */
+  previewToken?: string;
   /** ISO datetime; hidden from the public site until this moment passes. */
   publishAt?: string;
   /** Server-stamped on every /content/entity save — see mergeLocalizedArray. */
@@ -256,6 +260,8 @@ export interface Review {
   featured?: boolean;
   /** Hidden from the public site until unset. */
   draft?: boolean;
+  /** Токен ссылки предпросмотра: открывает этот черновик по адресу ?preview=… */
+  previewToken?: string;
   /** ISO datetime; hidden from the public site until this moment passes. */
   publishAt?: string;
   /** Server-stamped on every /content/entity save — see mergeLocalizedArray. */
@@ -271,6 +277,8 @@ export interface LibraryItem {
   url?: string;
   /** Hidden from the public site until unset. */
   draft?: boolean;
+  /** Токен ссылки предпросмотра: открывает этот черновик по адресу ?preview=… */
+  previewToken?: string;
   /** ISO datetime; hidden from the public site until this moment passes. */
   publishAt?: string;
   /** Server-stamped on every /content/entity save — see mergeLocalizedArray. */
@@ -372,6 +380,8 @@ export interface FuturoshockWork {
   edition?: string;
   relatedArticleUrl?: string;
   draft?: boolean;
+  /** Токен ссылки предпросмотра: открывает этот черновик по адресу ?preview=… */
+  previewToken?: string;
   publishAt?: string;
   updatedAt?: string;
 }
@@ -659,6 +669,23 @@ export async function loadLiveContent(timeoutMs = 4000): Promise<boolean> {
 // then resolve against the override instead of the live/bundled content.
 let previewContent: SiteContent | null = null;
 let previewIssueId: number | null = null;
+
+/* ── Ссылка на черновик ──────────────────────────────────────────────────────
+   Прежний предпросмотр жил в localStorage: он показывал черновик только тому,
+   кто нажал кнопку в панели, и переслать его автору или редактору было нечем.
+   Теперь у записи может быть `previewToken`, и ссылка вида
+   /article/<slug>?preview=<token> открывает её у любого, кому эту ссылку дали,
+   не публикуя запись на сайте. Токен сверяется с конкретной записью, поэтому
+   одна ссылка открывает ровно один материал, а не все черновики разом. */
+let previewToken: string | null = null;
+export function setPreviewToken(token: string | null): void {
+  previewToken = token && token.trim() ? token.trim() : null;
+}
+function matchesPreviewToken(entry: unknown): boolean {
+  if (!previewToken) return false;
+  const token = (entry as { previewToken?: string } | null)?.previewToken;
+  return typeof token === 'string' && token.length > 0 && token === previewToken;
+}
 export function setPreviewOverride(json: SiteContent | null, issueId?: number | null): void {
   previewContent = json;
   previewIssueId = issueId ?? null;
@@ -1002,6 +1029,9 @@ export function getAvailableLanguages(): string[] {
  * the real site.
  */
 export function isEntityLive(e: { draft?: boolean; publishAt?: string }): boolean {
+  // Черновик, открытый по своей ссылке предпросмотра, читается как обычная
+  // запись — но только он один и только при точном совпадении токена.
+  if (matchesPreviewToken(e)) return true;
   if (e.draft) return false;
   const publishTimestamp = e.publishAt ? Date.parse(e.publishAt) : NaN;
   // A blueprint is never reader-facing content. Older admin versions could
@@ -1029,7 +1059,7 @@ export function getContentForLanguage(lang: string): LanguageContent {
   // before the merge — mergeLocalizedArray never adds locale-only entries, so
   // an orphaned localized stub for the same id is dropped along with it. Admin
   // preview keeps everything so stubs remain visible for editing.
-  const liveBase = <T,>(arr: T[]): T[] => isPreview() ? arr : arr.filter((e) => !isPlaceholderEntity(e));
+  const liveBase = <T,>(arr: T[]): T[] => isPreview() ? arr : arr.filter((e) => matchesPreviewToken(e) || !isPlaceholderEntity(e));
 
   const articles = mergeLocalizedArray(bucket.articles, liveBase(c.articles));
   // Reviews hit the same recycled-id trap the Gallery did: every locale still

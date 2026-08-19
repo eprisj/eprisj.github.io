@@ -880,6 +880,7 @@ function bindEvents() {
       ? 'Переводы будут обновляться сразу после сохранения английской версии.'
       : 'Переводы обновляются только по кнопке «Синхронизировать».');
   });
+  document.getElementById('previewLinkBtn')?.addEventListener('click', copyEntryPreviewLink);
   addEntryBtn.addEventListener('click', openEntryWizard);
   bindEntryWizard();
   moveEntryUpBtn.addEventListener('click', () => moveVisualEntry(-1));
@@ -2077,6 +2078,8 @@ function normalizeEntityForServer(section, entity) {
     // object-position keyword have no business being run through the em-dash
     // normaliser that exists for pasted editorial copy.
     'publishedAt', 'previewImageUrl', 'previewFocus',
+    // Токен ссылки предпросмотра — машинное значение, не текст статьи.
+    'previewToken',
   ]);
   const normalisePunctuation = (value, key = '') => {
     if (typeof value === 'string') {
@@ -3693,6 +3696,62 @@ function renderPublicationSummary(data, section) {
     return result;
   }, { live: 0, draft: 0, scheduled: 0, hidden: 0 });
   visualPublicationSummary.innerHTML = `<strong>${entries.length}</strong> записей · <span>${publicationStateIcon('live')} ${counts.live} опубликовано</span> · <span>${publicationStateIcon('draft')} ${counts.draft} черновиков</span> · <span>${publicationStateIcon('scheduled')} ${counts.scheduled} отложено</span> · <span>${publicationStateIcon('hidden')} ${counts.hidden} скрыто</span>`;
+}
+
+/* ── Ссылка на черновик ──────────────────────────────────────────────────
+   Материал часто нужно показать автору или редактору до публикации. Раньше
+   для этого приходилось либо публиковать запись, либо пересказывать текст:
+   встроенный предпросмотр работал через localStorage и открывался только в
+   том браузере, где нажали кнопку. Теперь запись получает собственный токен,
+   и ссылка вида /article/<slug>?preview=<token> открывает её у кого угодно —
+   ровно эту запись и ровно пока токен при ней. */
+function ensurePreviewToken(entry) {
+  const existing = String(entry?.previewToken || '').trim();
+  if (existing.length >= 12) return existing;
+  const bytes = new Uint8Array(12);
+  crypto.getRandomValues(bytes);
+  return Array.from(bytes, (b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function copyEntryPreviewLink() {
+  try {
+    const data = parseEditorJson();
+    const section = visualSectionSelect.value;
+    if (section !== 'articles' && section !== 'reviews') {
+      setStatus('info', 'Ссылка для чтения есть у статей и обзоров.');
+      return;
+    }
+    const selectedId = Number(visualEntrySelect.value);
+    const entries = getSectionArray(data, section, DEFAULT_LANGUAGE, false);
+    const entry = entries.find((item) => Number(item.id) === selectedId);
+    if (!entry) { setStatus('error', 'Сначала выберите запись.'); return; }
+
+    setBusy(true);
+    const token = ensurePreviewToken(entry);
+    if (entry.previewToken !== token) {
+      entry.previewToken = token;
+      /* Токен обязан попасть на сервер: ссылка, которую редактор скопировал,
+         должна работать и после перезагрузки чужого браузера. */
+      await saveEntityToServer(section, DEFAULT_LANGUAGE, entry);
+      setEditorData(data, { markSynced: true });
+    }
+    const slug = slugifySeed(entry.title, String(entry.id));
+    const path = section === 'reviews' ? 'review' : 'article';
+    const link = `https://eprisjournal.com/${path}/${encodeURIComponent(slug)}/?preview=${token}`;
+    try {
+      await navigator.clipboard.writeText(link);
+      setStatus('success', `Ссылка для чтения скопирована: ${link}`);
+    } catch {
+      /* Буфер недоступен (нет разрешения) — показываем ссылку, чтобы её можно
+         было скопировать вручную, а не оставляем редактора ни с чем. */
+      setStatus('info', `Ссылка для чтения: ${link}`);
+    }
+    showToast?.('success', 'Ссылка открывает черновик, не публикуя его.');
+  } catch (error) {
+    setStatus('error', getErrorMessage(error));
+  } finally {
+    setBusy(false);
+  }
 }
 
 async function updateSelectedPublicationState(nextState) {
