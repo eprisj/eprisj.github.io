@@ -4529,7 +4529,7 @@
       "author": "Maria Ivanova",
       "role": "Author",
       "date": "Aug 17, 2026",
-      "excerpt": "Founders of a Lisbon-based decor studio on the art of listening to your inner self, importance of resilience & favorite places in the city",
+      "excerpt": "Founders of a Lisbon-based decor studio on the art of listening to your inner self, importance of resilience and favorite places in the city",
       "category": "interview",
       "subcategory": "Feature",
       "tags": [
@@ -4781,7 +4781,7 @@
           "content": "<b>Ksenia</b>: The main lesson I took from art school is: ‘Experience resistance.’ If you feel resistance toward something, you should move toward it. It means there’s a huge amount of energy hidden there. Don’t ignore or suppress it – look at it more closely."
         }
       ],
-      "updatedAt": "2026-08-19T09:38:47.922Z",
+      "updatedAt": "2026-08-19T08:58:22.609Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "publishAt": "2026-08-19T09:38:46.903Z"
@@ -22701,7 +22701,9 @@
       }
     },
     "entities": {
-      "articles": {},
+      "articles": {
+        "23": true
+      },
       "items": {},
       "reviews": {},
       "authors": {},
