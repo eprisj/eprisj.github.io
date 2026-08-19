@@ -686,6 +686,16 @@ function matchesPreviewToken(entry: unknown): boolean {
   const token = (entry as { previewToken?: string } | null)?.previewToken;
   return typeof token === 'string' && token.length > 0 && token === previewToken;
 }
+
+/* Тот же вопрос, но по коллекции и идентификатору: проверка видимости знает
+   только их, а не саму запись. */
+function matchesPreviewTokenFor(collection: string, id: string | number): boolean {
+  if (!previewToken) return false;
+  const list = (src() as unknown as Record<string, unknown>)[collection];
+  if (!Array.isArray(list)) return false;
+  const entry = list.find((candidate) => String((candidate as { id?: unknown })?.id) === String(id));
+  return matchesPreviewToken(entry);
+}
 export function setPreviewOverride(json: SiteContent | null, issueId?: number | null): void {
   previewContent = json;
   previewIssueId = issueId ?? null;
@@ -730,6 +740,12 @@ export function isSectionInNavigation(key: VisibilitySectionKey): boolean {
 
 function isEntityVisible(collection: VisibilityEntityKey, id: string | number): boolean {
   if (isPreview()) return true;
+  /* Ссылка предпросмотра обязана открывать и СКРЫТУЮ запись.
+     Первая версия обходила только фильтр черновиков, а видимость проверялась
+     отдельно и записывала статью обратно в невидимые — то есть ссылка не
+     работала ровно в том случае, ради которого её и делают: показать на
+     утверждение материал, который ещё не должен стоять на сайте. */
+  if (matchesPreviewTokenFor(collection, id)) return true;
   return src().visibility?.entities?.[collection]?.[String(id)] !== false;
 }
 
