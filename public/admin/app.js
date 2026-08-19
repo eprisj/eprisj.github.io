@@ -11911,9 +11911,31 @@ function bindStudioMediaActions() {
         <div class="homepage-published-card-actions">
           <button class="btn btn-sm${item ? '' : ' btn-primary'}" type="button" data-home-published-edit="${item ? esc(picsIdFor(item)) : ''}" data-home-published-category="${esc(group.id)}">${item ? 'Открыть карточку' : 'Создать новый выпуск'}</button>
           <button class="btn btn-sm${isCentre ? ' btn-primary' : ''}" type="button" data-home-centre="${esc(group.id)}"${isCentre ? ' disabled' : ''} title="Поставить эту категорию в середину карусели на сайте">${isCentre ? 'Центр' : 'В центр'}</button>
+          <!-- Порядок категорий тоже виден на сайте, а менять его раньше было
+               негде: расстановка задавалась массивом в JSON. -->
+          <div class="homepage-card-move" role="group" aria-label="Переставить категорию">
+            <button class="btn btn-sm" type="button" data-home-move="${esc(group.id)}" data-home-move-dir="-1" title="Сдвинуть левее">‹</button>
+            <button class="btn btn-sm" type="button" data-home-move="${esc(group.id)}" data-home-move-dir="1" title="Сдвинуть правее">›</button>
+          </div>
         </div>
       </article>`;
     }).join('');
+    cardsEl.querySelectorAll('[data-home-move]').forEach((button) => button.addEventListener('click', () => {
+      const id = button.getAttribute('data-home-move');
+      const direction = Number(button.getAttribute('data-home-move-dir')) || 1;
+      updateHomepageSettings((home) => {
+        const list = home.picsOfWeek.categories;
+        if (!Array.isArray(list)) return;
+        const from = list.findIndex((category) => String(category?.id) === String(id));
+        if (from === -1) return;
+        /* Заворачиваем по кругу: карусель на сайте тоже кольцевая, и упор в
+           край здесь означал бы ограничение, которого у читателя нет. */
+        const to = (from + direction + list.length) % list.length;
+        const [moved] = list.splice(from, 1);
+        list.splice(to, 0, moved);
+      }, 'Порядок категорий изменён. На сайт уйдёт после «Опубликовать».');
+      renderHomepageTab();
+    }));
     cardsEl.querySelectorAll('[data-home-centre]').forEach((button) => button.addEventListener('click', () => {
       const category = button.getAttribute('data-home-centre');
       if (!category) return;
