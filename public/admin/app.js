@@ -11905,6 +11905,12 @@ function bindStudioMediaActions() {
      будет выглядеть». Здесь ряд показан в том же порядке, в каком карточки
      идут в карусели, середина ряда и есть середина карусели, а порядок
      меняется перетаскиванием. Кнопок нет: карточка открывается по клику. */
+  /* Ряд слотов = то, что стоит на главной.
+     Ряд рисуется в карусельном порядке: центральная категория ровно
+     посередине, соседние — вокруг неё с заворотом, как на сайте. Управление
+     явное, без догадок: над рядом выбирается центр, у каждой карточки —
+     её позиция. Перетаскивание тоже работает, но это ускорение для тех, кто
+     о нём знает, а не единственный способ что-то поменять. */
   function renderPublishedHomepage(data, source = 'vps') {
     const cardsEl = document.getElementById('homepagePublishedCards');
     const metaEl = document.getElementById('homepagePublishedMeta');
@@ -11912,22 +11918,56 @@ function bindStudioMediaActions() {
     const activeRelease = homepageActiveRelease(data);
     const groups = homepageCategoryGroups(data, { useActive: true });
     const filled = groups.filter((group) => group.items.length).length;
-    const centreIndex = Math.min(2, Math.max(0, groups.length - 1));
+
+    /* Настройки читаем из черновика редактора: карточки показываются
+       опубликованные, но выбор центра лежит в правках, которых в снимке с
+       сервера ещё нет. Раньше из-за этого выбор не отображался. */
+    const settings = parseEditorJsonSafe() || data;
+    const centreCategory = String(settings?.homepage?.picsOfWeek?.centerCategory || '').trim()
+      || groups[2]?.id || groups[0]?.id || '';
+    const centreIndex = Math.max(0, groups.findIndex((group) => group.id === centreCategory));
+    const total = groups.length;
+    const ordered = total
+      ? Array.from({ length: total }, (_, position) => groups[(centreIndex + position - 2 + total) % total])
+      : groups;
+    const middle = Math.min(2, Math.max(0, total - 1));
 
     if (metaEl) metaEl.textContent = source === 'vps'
       ? `${activeRelease ? releaseLabel(activeRelease) : 'VPS'} · ${filled} / ${groups.length} слотов`
       : `Черновик редактора · ${filled} / ${groups.length}`;
 
-    cardsEl.innerHTML = groups.map((group, index) => {
+    const controls = document.getElementById('homepageRowControls');
+    if (controls) {
+      controls.innerHTML = `<label class="hp-row-centre">
+          <span>В центре карусели</span>
+          <select id="homepageCentrePick">
+            ${groups.map((group) => `<option value="${esc(group.id)}"${group.id === centreCategory ? ' selected' : ''}>${esc(group.label)}</option>`).join('')}
+          </select>
+        </label>
+        <span class="hp-row-hint">Порядок можно менять номером под карточкой или перетаскиванием.</span>`;
+      document.getElementById('homepageCentrePick')?.addEventListener('change', (event) => {
+        updateHomepageSettings((home) => { home.picsOfWeek.centerCategory = String(event.target.value || ''); }, null);
+        renderHomepageTab();
+      });
+    }
+
+    cardsEl.innerHTML = ordered.map((group, position) => {
       const item = group.items[0];
       const image = item?.imageUrl || '';
-      const isCentre = index === centreIndex;
+      const isCentre = position === middle;
+      const orderIndex = groups.findIndex((candidate) => candidate.id === group.id);
       return `<article class="homepage-published-card${item ? '' : ' is-empty'}${isCentre ? ' is-centre' : ''}"
-        draggable="true" data-home-slot="${esc(group.id)}" data-home-index="${index}"
-        tabindex="0" role="button" aria-label="${esc(group.label)}: открыть карточку, перетащить для порядка">
+        draggable="true" data-home-slot="${esc(group.id)}" data-home-position="${position}"
+        tabindex="0" role="button" aria-label="${esc(group.label)}: открыть карточку">
         <div class="homepage-published-card-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy" draggable="false">` : '<span>Слот пуст</span>'}</div>
         <span class="homepage-published-card-category">${esc(group.label)}${isCentre ? ' · в центре' : ''}</span>
         <strong class="homepage-published-card-title">${esc(item?.homeTitle || item?.title || 'Добавить фото')}</strong>
+        <label class="hp-slot-order" title="Порядок этой категории в карусели">
+          <span>№</span>
+          <select data-home-order="${esc(group.id)}">
+            ${groups.map((_, index) => `<option value="${index}"${index === orderIndex ? ' selected' : ''}>${index + 1}</option>`).join('')}
+          </select>
+        </label>
       </article>`;
     }).join('');
 
@@ -11939,21 +11979,41 @@ function bindStudioMediaActions() {
       else createHomepageRelease();
     };
 
-    /* Перестановка: тащим карточку на место другой. Порядок категорий и есть
-       порядок карусели, а центральной становится та, что оказалась третьей —
-       отдельной настройки «центральная категория» больше не требуется. */
+    const moveCategory = (categoryId, toIndex) => {
+      updateHomepageSettings((home) => {
+        const list = home.picsOfWeek.categories;
+        if (!Array.isArray(list) || !list.length) return;
+        const from = list.findIndex((category) => String(category?.id) === String(categoryId));
+        if (from === -1) return;
+        const target = Math.max(0, Math.min(list.length - 1, toIndex));
+        const [moved] = list.splice(from, 1);
+        list.splice(target, 0, moved);
+      }, null);
+      renderHomepageTab();
+    };
+
+    cardsEl.querySelectorAll('[data-home-order]').forEach((select) => {
+      select.addEventListener('click', (event) => event.stopPropagation());
+      select.addEventListener('change', (event) => {
+        event.stopPropagation();
+        moveCategory(select.getAttribute('data-home-order'), Number(select.value));
+      });
+    });
+
     let dragFrom = null;
     cardsEl.querySelectorAll('.homepage-published-card').forEach((card) => {
-      card.addEventListener('click', () => { if (!card.dataset.dragging) openSlot(card.dataset.homeSlot); });
+      card.addEventListener('click', (event) => {
+        if (event.target.closest('.hp-slot-order')) return;
+        if (!card.dataset.dragging) openSlot(card.dataset.homeSlot);
+      });
       card.addEventListener('keydown', (event) => {
         if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openSlot(card.dataset.homeSlot); }
       });
       card.addEventListener('dragstart', (event) => {
-        dragFrom = Number(card.dataset.homeIndex);
+        dragFrom = card.dataset.homeSlot;
         card.dataset.dragging = '1';
         card.classList.add('is-dragging');
         event.dataTransfer.effectAllowed = 'move';
-        /* Safari не начинает перетаскивание без полезной нагрузки. */
         event.dataTransfer.setData('text/plain', card.dataset.homeSlot);
       });
       card.addEventListener('dragend', () => {
@@ -11965,19 +12025,11 @@ function bindStudioMediaActions() {
       card.addEventListener('drop', (event) => {
         event.preventDefault();
         card.classList.remove('is-drop-target');
-        const to = Number(card.dataset.homeIndex);
-        if (dragFrom == null || Number.isNaN(to) || dragFrom === to) return;
-        updateHomepageSettings((home) => {
-          const list = home.picsOfWeek.categories;
-          if (!Array.isArray(list) || !list.length) return;
-          const [moved] = list.splice(dragFrom, 1);
-          list.splice(to, 0, moved);
-          /* Середина ряда — середина карусели. */
-          const centre = list[Math.min(2, list.length - 1)];
-          if (centre?.id) home.picsOfWeek.centerCategory = centre.id;
-        }, null);
+        const targetId = card.dataset.homeSlot;
+        if (!dragFrom || dragFrom === targetId) return;
+        const targetIndex = groups.findIndex((candidate) => candidate.id === targetId);
+        moveCategory(dragFrom, targetIndex);
         dragFrom = null;
-        renderHomepageTab();
       });
     });
   }
