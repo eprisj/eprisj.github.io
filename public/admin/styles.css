@@ -8641,3 +8641,7 @@ body:has(.unpublished-banner.is-visible) { padding-top: 38px; }
   .hp-step { flex-wrap: wrap; }
   .hp-step .btn, .hp-step-count { margin-left: 34px; }
 }
+
+/* Перестановка категории: две узкие кнопки под основными действиями слота. */
+.homepage-card-move { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+.homepage-card-move .btn { width: 100%; justify-content: center; padding-inline: 0; }
