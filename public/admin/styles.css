@@ -943,6 +943,44 @@ body {
   .hp-tools-settings { justify-content: center; }
 }
 
+/* ── Окно карточки: переход по слотам и приём файла ──────────
+   Пятёрка собирается подряд, не закрывая окно, а фото можно
+   принести перетаскиванием или из буфера. */
+.hp-card-head-tools { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.hp-card-stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line-strong);
+}
+.hp-card-step {
+  width: 30px; height: 30px;
+  border: 0;
+  background: var(--bg-card);
+  color: var(--text);
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.hp-card-step:hover { background: var(--accent); color: var(--bg-card); }
+.hp-card-step-label {
+  padding: 0 10px;
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  line-height: 30px;
+}
+.homepage-card-editor-image.is-dropping {
+  border-style: solid;
+  border-color: var(--accent);
+  background: var(--bg-soft);
+}
+.homepage-card-editor-image span { padding: 0 14px; text-align: center; line-height: 1.5; }
+
 /* Scrollable main content */
 .main-content {
   flex: 1;

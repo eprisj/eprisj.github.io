@@ -16,7 +16,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=5.50" />
+    <link rel="stylesheet" href="./styles.css?v=5.60" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
@@ -523,11 +523,18 @@
                     <h3 id="homepageCardEditorTitle">Редактор фото</h3>
                     <p>Здесь меняются изображение и подпись Pics of the week. Правки записываются сами: на сайт они попадут, когда вы нажмёте «Опубликовать».</p>
                   </div>
-                  <button id="homepageCardEditorClose" class="homepage-card-editor-close" type="button" aria-label="Закрыть редактор">×</button>
+                  <div class="hp-card-head-tools">
+                    <div class="hp-card-stepper" role="group" aria-label="Переход между слотами выпуска">
+                      <button id="homepageCardPrevSlot" class="hp-card-step" type="button" aria-label="Предыдущий слот">‹</button>
+                      <span id="homepageCardSlotPosition" class="hp-card-step-label" aria-live="polite"></span>
+                      <button id="homepageCardNextSlot" class="hp-card-step" type="button" aria-label="Следующий слот">›</button>
+                    </div>
+                    <button id="homepageCardEditorClose" class="homepage-card-editor-close" type="button" aria-label="Закрыть редактор">×</button>
+                  </div>
                 </div>
                 <div class="homepage-card-editor-grid">
                   <div class="homepage-card-editor-preview">
-                    <div id="homepageCardImagePreview" class="homepage-card-editor-image"><span>Фото не выбрано</span></div>
+                    <div id="homepageCardImagePreview" class="homepage-card-editor-image"><span>Перетащите фото сюда или вставьте из буфера (⌘V)</span></div>
                     <div id="homepageCardEditorMeta" class="homepage-card-editor-preview-meta"></div>
                   </div>
                   <div class="homepage-card-editor-fields">
@@ -541,7 +548,7 @@
                     <div class="homepage-card-editor-upload homepage-card-editor-wide">
                       <button id="homepageCardUploadBtn" class="btn btn-sm" type="button">Загрузить файл</button>
                       <input id="homepageCardFileInput" type="file" accept="image/*" hidden>
-                      <span>JPG, PNG или WebP · файл автоматически сжимается перед загрузкой</span>
+                      <span>JPG, PNG или WebP · сжимается автоматически. Можно перетащить файл на превью или вставить из буфера</span>
                     </div>
                   </div>
                 </div>
@@ -2241,7 +2248,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=5.10" type="module"></script>
+    <script src="./app.js?v=5.20" type="module"></script>
     <script>
       // Tab switching + page title update
       document.addEventListener('DOMContentLoaded', function () {
