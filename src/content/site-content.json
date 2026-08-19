@@ -4605,7 +4605,7 @@
         },
         {
           "type": "image",
-          "content": "",
+          "content": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
           "caption": ""
         },
         {
@@ -4623,6 +4623,11 @@
         {
           "type": "text",
           "content": "At some point, we started receiving requests for fabric installations and realized we had found an open niche. It was a combination of a rational business approach and genuine personal interest. And although installing huge arches is physically demanding, fabric turned out to be the easiest material for us to work with because we understand it so well.”"
+        },
+        {
+          "type": "image",
+          "content": "",
+          "caption": ""
         },
         {
           "type": "text",
@@ -4781,7 +4786,7 @@
           "content": "<b>Ksenia</b>: The main lesson I took from art school is: ‘Experience resistance.’ If you feel resistance toward something, you should move toward it. It means there’s a huge amount of energy hidden there. Don’t ignore or suppress it – look at it more closely."
         }
       ],
-      "updatedAt": "2026-08-19T09:00:04.600Z",
+      "updatedAt": "2026-08-19T09:00:24.890Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
