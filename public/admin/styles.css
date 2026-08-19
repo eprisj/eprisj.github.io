@@ -8667,3 +8667,9 @@ html.epris-signed-in .auth-overlay { display: none !important; }
 .hp-row-hint { font-size: .66rem; color: var(--text-muted); }
 .hp-slot-order { display: inline-flex; align-items: center; gap: 5px; margin-top: 6px; font-family: var(--font-mono); font-size: .6rem; color: var(--text-muted); }
 .hp-slot-order select { min-height: 26px; padding: 2px 4px; font-size: .68rem; }
+
+/* Блок «Видео»: подсказка о сжатии и переключатели поведения. */
+.block-video-hint { margin-top: 6px; font-size: .66rem; line-height: 1.4; color: var(--text-muted); }
+.block-video-toggles { display: flex; flex-wrap: wrap; gap: 14px; margin: 8px 0; font-size: .7rem; color: var(--text); }
+.block-video-toggles label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+#block-video-preview-0 video, [id^="block-video-preview-"] video { display: block; }
