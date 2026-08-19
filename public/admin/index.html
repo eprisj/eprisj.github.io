@@ -16,7 +16,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=6.51" />
+    <link rel="stylesheet" href="./styles.css?v=6.52" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
@@ -326,6 +326,15 @@
           </section>
 
         </nav>
+
+        <!-- Док на телефоне показывает только закреплённые разделы; за
+             остальными двадцатью открывается список во весь экран. Раньше
+             все 25 лежали лентой по 74 точки — почти два экрана прокрутки
+             вбок без заголовков групп, вслепую. -->
+        <button id="navSheetBtn" class="sb-sheet-btn" type="button" aria-expanded="false" aria-controls="sbNav">
+          <svg class="sb-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <span class="sb-label">Разделы</span>
+        </button>
 
         <div class="sb-foot">
           <div class="sb-state-row">
@@ -2472,6 +2481,26 @@
           });
         }
 
+        /* ── Список разделов на телефоне ────────────────────────────────
+           Отдельного меню нет: во весь экран разворачивается та же .sb-nav
+           с теми же кнопками. Дублировать разметку нельзя — по всему app.js
+           разделы ищутся как `.tab-btn[data-tab=…]` в единственном числе, и
+           вторая копия кнопки сломала бы и подсветку, и переключение. */
+        var sheetBtn = document.getElementById('navSheetBtn');
+        /* Список открывается над содержимым, но НЕ над доком: сама кнопка
+           «Разделы» остаётся видимой и закрывает список повторным нажатием.
+           Затемняющая подложка тут не нужна и была бы нулевой площади. */
+        function setNavSheet(open) {
+          document.body.classList.toggle('nav-sheet-open', open);
+          if (sheetBtn) sheetBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+        if (sheetBtn) sheetBtn.addEventListener('click', function () {
+          setNavSheet(!document.body.classList.contains('nav-sheet-open'));
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') setNavSheet(false);
+        });
+
         if (navRoot) {
           navRoot.addEventListener('click', function (event) {
             var head = event.target.closest('.sb-group-head');
@@ -2492,6 +2521,8 @@
             var titleEl = document.getElementById('pageTitle');
             if (titleEl && pageTitles[tab]) titleEl.textContent = pageTitles[tab];
             if (tab === 'polls' && typeof window._renderPollResults === 'function') window._renderPollResults();
+            /* Раздел выбран — список во весь экран больше не нужен. */
+            setNavSheet(false);
             /* No last-tab memory any more (see the open logic at the end of this
                file): the entrance is fixed, so recording where someone was would
                only be state nobody reads. The hash is still written, because that
