@@ -441,9 +441,19 @@ function safeExternalUrl(value?: string): string | null {
      попросил не двигать картинку, показываем постер и даём кнопку. */
 function LoopingVideo({ src, poster, caption }: { src: string; poster?: string; caption?: string }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const frameRef = useRef<HTMLDivElement | null>(null);
   const [reduceMotion, setReduceMotion] = useState(false);
   const [manuallyPlaying, setManuallyPlaying] = useState(false);
+  const [paused, setPaused] = useState(false);
   const [ready, setReady] = useState(false);
+  /* Файл начинает грузиться, только когда петля подходит к экрану. Раньше
+     каждая гифка в материале тянула свои мегабайты сразу при открытии
+     страницы, даже если читатель до неё не дошёл, — на телефоне это самая
+     дорогая часть статьи. */
+  const [near, setNear] = useState(false);
+  /* Экономия трафика — не догадка о скорости, а явно включённый режим:
+     тогда петля стоит на постере и ждёт нажатия. */
+  const [saveData, setSaveData] = useState(false);
 
   useEffect(() => {
     const query = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -454,8 +464,28 @@ function LoopingVideo({ src, poster, caption }: { src: string; poster?: string; 
   }, []);
 
   useEffect(() => {
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    setSaveData(!!connection?.saveData);
+  }, []);
+
+  useEffect(() => {
+    const node = frameRef.current;
+    if (!node || near) return;
+    /* Без IntersectionObserver отложить загрузку нечем — тогда грузим сразу,
+       иначе на таком браузере петля не появилась бы вовсе. */
+    if (typeof IntersectionObserver === 'undefined') { setNear(true); return; }
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) setNear(true);
+    }, { rootMargin: '400px 0px' });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [near]);
+
+  const showStill = (reduceMotion || saveData) && !manuallyPlaying;
+
+  useEffect(() => {
     const node = videoRef.current;
-    if (!node || (reduceMotion && !manuallyPlaying)) return;
+    if (!node || showStill || paused) return;
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) node.play().catch(() => { /* автозапуск может быть запрещён */ });
@@ -464,24 +494,41 @@ function LoopingVideo({ src, poster, caption }: { src: string; poster?: string; 
     }, { threshold: 0.15 });
     observer.observe(node);
     return () => observer.disconnect();
-  }, [reduceMotion, manuallyPlaying]);
+  }, [showStill, paused, near]);
 
-  const showStill = reduceMotion && !manuallyPlaying;
+  const toggle = () => {
+    const node = videoRef.current;
+    if (showStill) {
+      setManuallyPlaying(true);
+      setPaused(false);
+      node?.play().catch(() => { /* запуск может быть запрещён */ });
+      return;
+    }
+    if (paused) {
+      setPaused(false);
+      node?.play().catch(() => { /* запуск может быть запрещён */ });
+    } else {
+      setPaused(true);
+      node?.pause();
+    }
+  };
+
+  const stopped = showStill || paused;
 
   return (
-    <div className="relative bg-[rgb(var(--c-accent-rgb)_/_0.05)]">
+    <div ref={frameRef} className="relative bg-[rgb(var(--c-accent-rgb)_/_0.05)]">
       <video
         ref={videoRef}
         /* Появляется, когда первый кадр готов: иначе на медленной сети видно
            пустой прямоугольник, который потом дёргается. */
         className={`w-full h-auto block transition-opacity duration-500 ${ready ? 'opacity-100' : 'opacity-0'}`}
-        src={src}
+        src={near ? src : undefined}
         poster={poster || undefined}
         loop
         muted
         playsInline
-        preload="metadata"
-        autoPlay={!showStill}
+        preload={near ? 'metadata' : 'none'}
+        autoPlay={near && !showStill}
         onLoadedData={() => setReady(true)}
         aria-label={caption || 'Video loop'}
       />
@@ -490,17 +537,29 @@ function LoopingVideo({ src, poster, caption }: { src: string; poster?: string; 
            получается незаметным, без вспышки пустоты. */
         <img src={poster} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
       )}
-      {showStill && (
-        <button
-          type="button"
-          onClick={() => { setManuallyPlaying(true); videoRef.current?.play().catch(() => {}); }}
-          className="absolute inset-0 flex items-center justify-center bg-[rgb(var(--c-bg-rgb)_/_0.35)]"
-        >
+
+      {/* Вся петля — одна кнопка. На телефоне остановить анимацию было нечем:
+          она шла всё время, пока текст под ней читают. Наведения там нет,
+          поэтому подпись «loop» видна всегда, а не только под курсором. */}
+      <button
+        type="button"
+        onClick={toggle}
+        aria-pressed={stopped}
+        aria-label={stopped ? 'Запустить анимацию' : 'Остановить анимацию'}
+        className={`absolute inset-0 flex items-center justify-center transition-colors ${
+          stopped ? 'bg-[rgb(var(--c-bg-rgb)_/_0.35)]' : 'bg-transparent'
+        }`}
+      >
+        {stopped ? (
           <span className="border border-[var(--c-accent)] bg-[var(--c-bg)] px-4 py-2 font-mono text-[10px] uppercase tracking-widest">
-            Play
+            {saveData && !manuallyPlaying ? 'Play · экономия трафика' : 'Play'}
           </span>
-        </button>
-      )}
+        ) : (
+          <span className="absolute bottom-3 right-3 border border-[rgb(var(--c-bg-rgb)_/_0.45)] bg-[rgb(var(--c-bg-rgb)_/_0.55)] px-2 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--c-accent)] backdrop-blur-sm">
+            loop
+          </span>
+        )}
+      </button>
     </div>
   );
 }
@@ -2366,15 +2425,29 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                           ? 'my-6 sm:my-8 float-right ml-6 mb-2 max-w-[80%] sm:max-w-[55%] clear-right'
                           : 'my-8 sm:my-12 -mx-4 sm:mx-0';
                   const figureStyle = widthPct && align !== 'full' && !stretched ? { width: `${widthPct}%`, maxWidth: '100%' } : undefined;
+                  /* Гифка, вставленная картинкой (старые материалы и просто
+                     вставленная ссылка), остаётся картинкой — иначе она
+                     перестала бы двигаться. Но грузить её вперёд текста
+                     незачем: это самый тяжёлый файл в статье. */
+                  const isAnimatedImage = /[.]gif([?#]|$)/i.test(imageSource);
                   return (
-                    <figure key={index} className={figureClass} style={figureStyle}>
+                    <figure key={index} className={`${figureClass} relative`} style={figureStyle}>
                       <img
                         src={imageSource}
                         alt={imageAlt}
                         className="w-full h-auto cursor-pointer hover:opacity-90 transition-opacity"
                         referrerPolicy="no-referrer"
+                        /* Первая картинка материала грузится сразу: она почти
+                           всегда и есть то, ради чего страницу открыли. */
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                        decoding="async"
                         onClick={() => onImageClick(imageSource, imageAlt)}
                       />
+                      {isAnimatedImage && (
+                        <span className="pointer-events-none absolute bottom-3 right-3 border border-[rgb(var(--c-bg-rgb)_/_0.45)] bg-[rgb(var(--c-bg-rgb)_/_0.55)] px-2 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--c-accent)] backdrop-blur-sm">
+                          gif
+                        </span>
+                      )}
                       {(block.caption || block.credit) && (
                         <figcaption className="text-center font-mono text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] mt-3 sm:mt-4 uppercase tracking-widest px-4 sm:px-0">
                           {block.caption}{block.caption && block.credit ? ' · ' : ''}{block.credit}

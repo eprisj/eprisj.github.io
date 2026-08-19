@@ -9024,3 +9024,21 @@ html.epris-signed-in .auth-overlay { display: none !important; }
 @media (prefers-reduced-motion: reduce) {
   .forms-list-skeleton span { animation: none; }
 }
+
+/* Блоки «Видео» и «Фото» на телефоне: загрузка и переключатели — то, чем
+   пользуются пальцем, а не мышью. Флажки петли и звука стояли строкой в
+   14 точек: попасть в них с телефона можно было только со второго раза. */
+@media (max-width: 860px) {
+  .block-video-toggles { gap: 4px; flex-direction: column; align-items: stretch; }
+  .block-video-toggles label {
+    min-height: 44px;
+    padding: 0 10px;
+    border: 1px solid var(--line-weak);
+    background: var(--bg-soft);
+  }
+  .block-video-toggles input[type="checkbox"] { width: 18px; height: 18px; }
+  .block-video-hint { font-size: .68rem; }
+  [id^="block-video-preview-"] video { max-height: 40vh; margin: 0 auto; }
+  [id^="block-img-upload-btn-"],
+  [id^="block-video-upload-btn-"] { min-height: 44px; }
+}
