@@ -650,6 +650,33 @@ class TabErrorBoundary extends Component<{ children: ReactNode }, { hasError: bo
   }
 }
 
+/* ── Тихая граница ошибки ────────────────────────────────────────────────────
+   Корневая защита ловит падение и показывает заглушку на весь экран. Это
+   правильно для сломанной страницы и слишком грубо для одной её части: один
+   кривой блок в статье — и читатель не видит ни текста, ни остальных
+   иллюстраций. Ровно так и вышло с поиском: массив там, где ожидалась строка,
+   уронил весь сайт.
+
+   Эта граница отделяет часть от целого. Что упало — исчезает (или показывает
+   короткую строку), остальное продолжает работать, а ошибка уходит в консоль,
+   чтобы её было видно при разборе. */
+class SafePart extends Component<{ children: ReactNode; label?: string; silent?: boolean }, { hasError: boolean }> {
+  state = { hasError: false };
+  static getDerivedStateFromError() { return { hasError: true }; }
+  componentDidCatch(error: unknown) {
+    console.error(`[epris] часть страницы не отрисовалась${this.props.label ? `: ${this.props.label}` : ''}`, error);
+  }
+  render() {
+    if (!this.state.hasError) return this.props.children;
+    if (this.props.silent) return null;
+    return (
+      <div className="my-6 border border-[rgb(var(--c-accent-rgb)_/_0.2)] px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)]">
+        Этот фрагмент не удалось показать
+      </div>
+    );
+  }
+}
+
 function LazyTab({ children }: { children: ReactNode }) {
   return (
     <TabErrorBoundary>
@@ -2282,6 +2309,10 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
 
           <div className="prose prose-lg prose-stone mx-auto font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)]">
             {article.content?.map((block, index) => {
+              /* Каждый блок под собственной защитой: один битый блок раньше
+                 обрушивал весь материал, и читатель не видел ни текста, ни
+                 остальных иллюстраций. */
+              const renderBlock = () => {
               // Skip the first image block if it duplicates the hero cover photo
               if (
                 block.type === 'image' &&
@@ -2523,6 +2554,8 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                 default:
                   return null;
               }
+            };
+              return <SafePart key={`block-${index}`} label={`блок ${block?.type ?? 'без типа'}`}>{renderBlock()}</SafePart>;
             })}
           </div>
 
@@ -4217,6 +4250,7 @@ export default function App() {
         ) : (
           <main className="site-main max-w-[1600px] mx-auto px-4 sm:px-8 md:px-16 pb-8 sm:pb-12 md:pb-24">
             {activeSearch ? (
+              <SafePart label="результаты поиска">
               <SearchResults
                 query={activeSearch}
                 articles={articles}
@@ -4229,10 +4263,17 @@ export default function App() {
                 onSearch={handleSearch}
                 t={t}
               />
+              </SafePart>
             ) : (
               <>
                 {activeTab === 'gallery' && (
-                  <>{homepageSectionOrder.map((section) => <div key={section} className="contents">{renderHomepageSection(section)}</div>)}</>
+                  <>{homepageSectionOrder.map((section) => (
+                    /* Каждая секция главной отделена: сломанная карусель не
+                       должна забирать с собой ленту статей и подвал. */
+                    <SafePart key={section} label={`секция ${section}`} silent>
+                      <div className="contents">{renderHomepageSection(section)}</div>
+                    </SafePart>
+                  ))}</>
                 )}
                 {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
                     {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} onReviewClick={handleSelectReview} />}
