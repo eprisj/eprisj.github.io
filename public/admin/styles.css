@@ -9054,3 +9054,75 @@ html.epris-signed-in .auth-overlay { display: none !important; }
   .wys-video-actions .wys-gal-add { width: 100%; min-height: 44px; }
   .wys-video-note { width: 100%; }
 }
+
+/* ══════════════════════════════════════════════════════════
+   ТЕЛЕФОН: ОБЩИЕ ПРАВИЛА ДЛЯ ВСЕЙ ПАНЕЛИ
+   ──────────────────────────────────────────────────────────
+   Разделов двадцать пять, и чинить их по одному — значит чинить
+   вечно. Здесь собрано то, что оказалось общим для всех после
+   обхода каждой вкладки на экране в 375 точек.
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 860px) {
+  /* ── Размер нажатия ──
+     Кнопка высотой 34 точки — это меньше подушечки пальца, и такими
+     были все кнопки панели: не в одном месте, а везде. Ниже — не
+     украшение, а единственная причина, по которой в них попадают.
+
+     Селекторы с .tab-panel — не украшательство: по панели рассыпаны правила
+     вида `.toolbar-publication-row .btn { min-height: 34px }`, которые весят
+     два класса и перебивают короткую запись. С префиксом вес равный, а
+     стоит правило ниже — значит выигрывает оно. */
+  .tab-panel .btn { min-height: 42px; }
+  .tab-panel .btn-sm { min-height: 38px; }
+  .tab-panel .btn-xs { min-height: 34px; }
+  .tab-panel select,
+  .tab-panel input[type="text"], .tab-panel input[type="search"],
+  .tab-panel input[type="url"], .tab-panel input[type="email"],
+  .tab-panel input[type="number"], .tab-panel input[type="date"] { min-height: 42px; }
+  .tab-panel .ap-preset, .tab-panel .monitor-link,
+  .tab-panel .order-preview-tab, .tab-panel .hp-tools-settings,
+  .tab-panel .sc-filter, .manifest-fmtbar button { min-height: 40px; }
+  /* Полоса разметки в «Манифесте» — восемь кнопок в ряд; в одну строку по
+     40 точек они не помещаются, поэтому переносятся сеткой. */
+  .manifest-fmtbar { display: grid; grid-template-columns: repeat(auto-fit, minmax(56px, 1fr)); gap: 4px; }
+
+  /* ── Переполнение по ширине ──
+     Элемент грид-сетки по умолчанию не уже своего содержимого
+     (min-width: auto), поэтому одна длинная ссылка или ряд шагов
+     растягивали колонку шире экрана: карточка настроек выезжала на
+     460 точек при экране в 375, а в «Дизайне» уходила за правый край.
+     Разрешаем колонкам сжиматься и переносим длинные строки. */
+  .settings-layout > *, .content-layout > *, .dashboard-layout > *,
+  .studio-layout > *, .monitor-layout > *, .upload-layout > *,
+  .translations-layout > *, .issues-layout > * { min-width: 0; }
+  .card, .panel { overflow-wrap: anywhere; }
+  .card code, .card a { overflow-wrap: anywhere; }
+
+  /* Двухколоночные сетки полей: на 375 точках колонка выходит по 67–148
+     точек, и значение вроде «eprisj.github.io» или «src/content/site.json»
+     видно наполовину. Поле, которое нельзя прочитать целиком, нельзя и
+     проверить перед сохранением. */
+  .tab-panel .form-grid,
+  .tab-panel .homepage-category-locale-grid,
+  .tab-panel .dash-audit-row,
+  .tab-panel .pp-sync-status { grid-template-columns: minmax(0, 1fr); }
+
+  /* Сетки, заданные прямо в разметке (шесть мест, все на две колонки),
+     на телефоне складываются в одну. Через !important, потому что
+     подключённый стиль иначе inline-правило не перебивает. */
+  .tab-panel [style*="grid-template-columns"] { grid-template-columns: minmax(0, 1fr) !important; }
+
+  /* Ряд карточек-счётчиков листается вбок, а не ломает страницу. */
+  .dash-stats-row { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .dash-stats-row::-webkit-scrollbar { display: none; }
+
+  /* Оформление: три колонки цветов на 313 точках — это поля по сто
+     точек с подписями в два переноса. */
+  .ap-color { grid-template-columns: minmax(0, 1fr) !important; }
+  .ap-presets { display: grid; grid-template-columns: repeat(auto-fit, minmax(104px, 1fr)); gap: 6px; }
+
+  /* Шаги в карточках («1 — 2 — 3») занимают строку каждый, вместо
+     ряда, который и растягивал карточку шире экрана. */
+  .steps-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .step-item { width: auto; }
+}
