@@ -814,7 +814,8 @@ async function init(options = {}) {
   if (fromLogin || getConfig().autoLoadOnStart) {
     await loadFromGitHub();
   } else {
-    restoreDraftIfAny();
+    await loadAutosaveHistory();
+    await restoreDraftIfAny();
   }
   queueMonitoringChecks(320, 'full');
 }
@@ -1157,47 +1158,154 @@ function scheduleDraftSave() {
   }, 800);
 }
 
+/* ── Хранилище черновика ─────────────────────────────────────────────────────
+   Документ журнала весит около двух мегабайт, а в localStorage браузер даёт
+   всего пять на весь сайт — вместе с историей автоснимков это переполнялось,
+   и панель честно предупреждала, что черновик держится только до закрытия
+   вкладки. Именно так работа и терялась.
+
+   IndexedDB такого потолка не имеет (порядок — сотни мегабайт), и запись в
+   него не блокирует поток. Плюс сжатие: gzip ужимает этот JSON примерно в
+   восемь раз, так что и места занимает меньше, и пишется быстрее.
+   Если IndexedDB или CompressionStream недоступны, всё продолжает работать
+   по-старому — просто с прежними ограничениями. */
+const IDB_NAME = 'epris-admin';
+const IDB_STORE = 'drafts';
+let idbPromise = null;
+
+function openDraftDb() {
+  if (idbPromise) return idbPromise;
+  idbPromise = new Promise((resolve) => {
+    try {
+      const request = indexedDB.open(IDB_NAME, 1);
+      request.onupgradeneeded = () => {
+        const db = request.result;
+        if (!db.objectStoreNames.contains(IDB_STORE)) db.createObjectStore(IDB_STORE);
+      };
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => resolve(null);
+    } catch { resolve(null); }
+  });
+  return idbPromise;
+}
+
+async function idbPut(key, value) {
+  const db = await openDraftDb();
+  if (!db) return false;
+  return new Promise((resolve) => {
+    try {
+      const tx = db.transaction(IDB_STORE, 'readwrite');
+      tx.objectStore(IDB_STORE).put(value, key);
+      tx.oncomplete = () => resolve(true);
+      tx.onerror = () => resolve(false);
+      tx.onabort = () => resolve(false);
+    } catch { resolve(false); }
+  });
+}
+
+async function idbGet(key) {
+  const db = await openDraftDb();
+  if (!db) return null;
+  return new Promise((resolve) => {
+    try {
+      const tx = db.transaction(IDB_STORE, 'readonly');
+      const request = tx.objectStore(IDB_STORE).get(key);
+      request.onsuccess = () => resolve(request.result ?? null);
+      request.onerror = () => resolve(null);
+    } catch { resolve(null); }
+  });
+}
+
+async function idbDelete(key) {
+  const db = await openDraftDb();
+  if (!db) return;
+  try {
+    const tx = db.transaction(IDB_STORE, 'readwrite');
+    tx.objectStore(IDB_STORE).delete(key);
+  } catch { /* нечего удалять */ }
+}
+
+async function packText(text) {
+  if (typeof CompressionStream !== 'function') return { text };
+  try {
+    const stream = new Blob([text]).stream().pipeThrough(new CompressionStream('gzip'));
+    return { gzip: await new Response(stream).arrayBuffer() };
+  } catch { return { text }; }
+}
+
+async function unpackValue(value) {
+  if (!value) return '';
+  if (typeof value === 'string') return value;
+  if (value.text) return value.text;
+  if (value.gzip && typeof DecompressionStream === 'function') {
+    try {
+      const stream = new Blob([value.gzip]).stream().pipeThrough(new DecompressionStream('gzip'));
+      return await new Response(stream).text();
+    } catch { return ''; }
+  }
+  return '';
+}
+
 function saveDraft() {
   if (!isEditorDirty() || !editor.value.trim()) {
     clearStoredDraft();
     return;
   }
 
-  try {
-    localStorage.setItem(DRAFT_KEY, editor.value);
-    try { sessionStorage.removeItem(DRAFT_SESSION_KEY); } catch { /* storage unavailable */ }
-    draftStorageWarningShown = false;
-    return;
-  } catch (error) {
-    console.warn('[draft] localStorage is full or unavailable; using this-tab backup instead.', error);
-  }
+  const text = editor.value;
 
-  try {
-    sessionStorage.setItem(DRAFT_SESSION_KEY, editor.value);
-  } catch (error) {
-    console.warn('[draft] sessionStorage is unavailable too.', error);
-  }
+  /* Три ступени, сверху вниз, и переход на следующую только когда предыдущая
+     реально не сработала:
+       1. IndexedDB — вмещает документ целиком, здесь он и живёт;
+       2. localStorage — для старых браузеров без IndexedDB, те самые 5 МБ;
+       3. sessionStorage — последняя соломинка, живёт до закрытия вкладки,
+          и только в этом случае редактора стоит предупредить. */
+  (async () => {
+    const packed = await packText(text);
+    if (await idbPut(DRAFT_KEY, packed)) {
+      draftStorageWarningShown = false;
+      /* Копия в localStorage больше не нужна и занимает то самое место,
+         из-за нехватки которого всё и начиналось. */
+      try { localStorage.removeItem(DRAFT_KEY); } catch { /* уже нет */ }
+      try { sessionStorage.removeItem(DRAFT_SESSION_KEY); } catch { /* уже нет */ }
+      return;
+    }
 
-  if (!draftStorageWarningShown) {
-    draftStorageWarningShown = true;
-    // Saving a browser backup must never prevent the rest of the admin UI
-    // from rendering. In particular, a new gallery release should show its
-    // empty slots even when the permanent browser storage is already full.
-    setTimeout(() => {
-      setStatus('info', 'Память браузера заполнена: черновик удерживается только в этой вкладке. Опубликуйте его и не закрывайте страницу до публикации.');
-      if (typeof showToast === 'function') {
-        showToast('info', 'Черновик не помещается в постоянную память браузера. Интерфейс продолжает работать; до публикации не закрывайте вкладку.');
-      }
-    }, 0);
-  }
+    try {
+      localStorage.setItem(DRAFT_KEY, text);
+      try { sessionStorage.removeItem(DRAFT_SESSION_KEY); } catch { /* storage unavailable */ }
+      draftStorageWarningShown = false;
+      return;
+    } catch (error) {
+      console.warn('[draft] localStorage is full or unavailable.', error);
+    }
+
+    try {
+      sessionStorage.setItem(DRAFT_SESSION_KEY, text);
+    } catch (error) {
+      console.warn('[draft] sessionStorage is unavailable too.', error);
+    }
+
+    if (!draftStorageWarningShown) {
+      draftStorageWarningShown = true;
+      setTimeout(() => {
+        setStatus('info', 'Браузер не даёт сохранить черновик надолго: он держится только в этой вкладке. Опубликуйте изменения, не закрывая страницу.');
+      }, 0);
+    }
+  })();
 }
 
 function clearStoredDraft() {
   try { localStorage.removeItem(DRAFT_KEY); } catch { /* storage unavailable */ }
   try { sessionStorage.removeItem(DRAFT_SESSION_KEY); } catch { /* storage unavailable */ }
+  idbDelete(DRAFT_KEY);
 }
 
-function readStoredDraft() {
+async function readStoredDraft() {
+  /* Порядок важен: свежая запись всегда в IndexedDB, а в localStorage может
+     лежать остаток от прошлых версий панели. */
+  const stored = await unpackValue(await idbGet(DRAFT_KEY));
+  if (stored) return stored;
   try {
     const persistentDraft = localStorage.getItem(DRAFT_KEY);
     if (persistentDraft) return persistentDraft;
@@ -1205,8 +1313,8 @@ function readStoredDraft() {
   try { return sessionStorage.getItem(DRAFT_SESSION_KEY) || ''; } catch { return ''; }
 }
 
-function restoreDraftIfAny() {
-  const draft = readStoredDraft();
+async function restoreDraftIfAny() {
+  const draft = await readStoredDraft();
   if (!draft) {
     return;
   }
@@ -3273,8 +3381,27 @@ const AUTOSAVE_INTERVAL_MS = 2 * 60 * 1000;
 let autosaveTimer = 0;
 let autosaveInFlight = false;
 
+/* История снимков живёт в IndexedDB и держится в памяти для синхронного
+   доступа из интерфейса. Раньше она делила пять мегабайт localStorage с самим
+   черновиком: чтобы влезть, код выбрасывал снимки один за другим, и в итоге
+   от «истории» оставалась одна запись. */
+let autosaveHistoryCache = null;
+
 function autosaveHistory() {
-  try { return JSON.parse(localStorage.getItem(AUTOSAVE_HISTORY_KEY) || '[]'); } catch { return []; }
+  if (autosaveHistoryCache) return autosaveHistoryCache;
+  try {
+    autosaveHistoryCache = JSON.parse(localStorage.getItem(AUTOSAVE_HISTORY_KEY) || '[]');
+  } catch { autosaveHistoryCache = []; }
+  return autosaveHistoryCache;
+}
+
+async function loadAutosaveHistory() {
+  const stored = await idbGet(AUTOSAVE_HISTORY_KEY);
+  const text = await unpackValue(stored);
+  if (text) {
+    try { autosaveHistoryCache = JSON.parse(text); } catch { /* повреждено — начнём заново */ }
+  }
+  return autosaveHistory();
 }
 
 function pushAutosaveSnapshot() {
@@ -3287,16 +3414,14 @@ function pushAutosaveSnapshot() {
     /* История режется по количеству И по объёму: контент весит около двух
        мегабайт, десять копий переполнили бы хранилище браузера, и тогда мы
        потеряли бы даже обычный черновик. */
-    let trimmed = history.slice(0, AUTOSAVE_HISTORY_LIMIT);
-    while (trimmed.length > 1) {
-      try {
-        localStorage.setItem(AUTOSAVE_HISTORY_KEY, JSON.stringify(trimmed));
-        return trimmed[0];
-      } catch {
-        trimmed = trimmed.slice(0, trimmed.length - 1);
-      }
-    }
-    localStorage.setItem(AUTOSAVE_HISTORY_KEY, JSON.stringify(trimmed));
+    const trimmed = history.slice(0, AUTOSAVE_HISTORY_LIMIT);
+    autosaveHistoryCache = trimmed;
+    /* Пишем целиком: в IndexedDB десять снимков помещаются свободно, поэтому
+       выбрасывать половину истории ради места больше не нужно. */
+    packText(JSON.stringify(trimmed))
+      .then((packed) => idbPut(AUTOSAVE_HISTORY_KEY, packed))
+      .then((stored) => { if (stored) { try { localStorage.removeItem(AUTOSAVE_HISTORY_KEY); } catch { /* уже нет */ } } })
+      .catch(() => { /* история не критична */ });
     return trimmed[0];
   } catch { return null; }
 }
