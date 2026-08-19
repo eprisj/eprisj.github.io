@@ -4770,6 +4770,13 @@
           "content": "<b>Alena</b>: Recently, it was my solo trip to Porto. I visited the Soares dos Reis Museum, explored Álvaro Siza’s architecture, and absolutely loved it. The fact that I went alone also made it a special experience."
         },
         {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/mszvyjpqyuvjqx.jpg"
+          ],
+          "caption": ""
+        },
+        {
           "type": "text",
           "content": "<b>Finally, what is the one piece of advice you would give every reader?</b>"
         },
@@ -4782,7 +4789,7 @@
           "content": "<b>Ksenia</b>: The main lesson I took from art school is: ‘Experience resistance.’ If you feel resistance toward something, you should move toward it. It means there’s a huge amount of energy hidden there. Don’t ignore or suppress it – look at it more closely."
         }
       ],
-      "updatedAt": "2026-08-19T09:24:42.897Z",
+      "updatedAt": "2026-08-19T09:25:14.914Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
