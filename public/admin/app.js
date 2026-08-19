@@ -1867,6 +1867,29 @@ async function compressImageForUpload(file) {
   }
 }
 
+/* Видео и GIF отправляются как есть: пережимать их в браузере нечем, этим
+   занимается сервер. Отсюда и другой предел размера — исходник крупнее, но до
+   читателя доезжает уже сжатый файл. */
+async function uploadVideoReturnResult(file) {
+  const type = String(file.type || '');
+  const isGif = type === 'image/gif' || /[.]gif$/i.test(file.name || '');
+  if (!type.startsWith('video/') && !isGif) {
+    throw new Error('Нужен видеофайл (MP4, WebM, MOV) или GIF.');
+  }
+  if (file.size > 120 * 1024 * 1024) {
+    throw new Error('Файл слишком большой. Максимум: 120 МБ.');
+  }
+  const base64Content = await readFileAsBase64(file);
+  const res = await fetch(UPLOAD_API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-Admin-Password': getAdminPassword() },
+    body: JSON.stringify({ filename: file.name, contentType: type || 'video/mp4', data: base64Content }),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || !data.ok || !data.url) throw new Error(data.error || `Ошибка загрузки (${res.status})`);
+  return data;
+}
+
 async function uploadImageToVPS(file) {
   if (!String(file.type || '').startsWith('image/')) {
     throw new Error('Можно загрузить только файл изображения (JPG, PNG, WebP и т.д.).');
@@ -8190,6 +8213,44 @@ function renderBlockBody(block, index) {
       </div>`;
   }
 
+  if (t === 'video') {
+    const src = typeof c === 'string' ? c : '';
+    const cap = block.caption || '';
+    const poster = block.poster || '';
+    const credit = block.credit || '';
+    const sourceUrl = block.sourceUrl || '';
+    /* Петля включена по умолчанию: в материал чаще вставляют короткий кусок
+       вместо гифки, а не ролик со звуком. */
+    const loop = block.loop !== false;
+    const muted = block.muted !== false;
+    const isFile = /[.](?:mp4|webm|ogv|ogg)(?:$|[?#])/i.test(src);
+    return `
+      <div><span class="block-field-label">Видео или GIF</span>
+      <div style="display:flex;gap:8px;align-items:center;width:100%;">
+        <input data-block-field="content" data-block-index="${index}" id="block-video-input-${index}" value="${escapeHtml(src)}" placeholder="Загрузите файл или вставьте ссылку (YouTube, Vimeo, mp4)" style="flex:1" />
+        <button id="block-video-upload-btn-${index}" class="btn btn-sm" type="button" title="Загрузить видео или GIF с компьютера" onclick="triggerBlockVideoUpload(${index})">Загрузить</button>
+        <input id="block-video-file-${index}" type="file" accept="video/*,image/gif" onchange="handleBlockVideoUpload(${index})" hidden />
+      </div>
+      <div class="block-video-hint" id="block-video-hint-${index}">GIF и ролики сжимаются на сервере: гифка на 5 МБ обычно становится файлом около полумегабайта.</div>
+      </div>
+      <div class="block-image-preview" id="block-video-preview-${index}">
+        ${isFile
+          ? '<video src="' + escapeHtml(src) + '" muted loop playsinline autoplay preload="metadata" style="max-width:100%;max-height:180px"></video>'
+          : (src ? '<div class="block-image-preview-empty">Внешнее видео: ' + escapeHtml(src.slice(0, 60)) + '</div>' : '<div class="block-image-preview-empty">Файл не выбран</div>')}
+      </div>
+      <div class="block-video-toggles">
+        <label><input type="checkbox" data-block-field="loop" ${loop ? 'checked' : ''}> Петля: играет само и по кругу</label>
+        <label><input type="checkbox" data-block-field="muted" ${muted ? 'checked' : ''}> Без звука</label>
+      </div>
+      <div><span class="block-field-label">Подпись</span>
+      <input data-block-field="caption" value="${escapeHtml(cap)}" placeholder="Подпись под видео" /></div>
+      <div class="block-media-meta-grid">
+        <label><span class="block-field-label">Обложка (кадр)</span><input data-block-field="poster" value="${escapeHtml(poster)}" placeholder="Ставится сама при загрузке файла" /></label>
+        <label><span class="block-field-label">Автор / credit</span><input data-block-field="credit" value="${escapeHtml(credit)}" placeholder="Имя автора или студия" /></label>
+        <label class="full"><span class="block-field-label">Источник / права</span><input data-block-field="sourceUrl" value="${escapeHtml(sourceUrl)}" placeholder="https://…" /></label>
+      </div>`;
+  }
+
   if (t === 'gallery') {
     const items = Array.isArray(c) ? c : [];
     const cap = block.caption || '';
@@ -8811,7 +8872,13 @@ function buildBlockFromDom(type, body) {
     const poster = body.querySelector('[data-block-field="poster"]');
     const credit = body.querySelector('[data-block-field="credit"]');
     const sourceUrl = body.querySelector('[data-block-field="sourceUrl"]');
+    const loopField = body.querySelector('[data-block-field="loop"]');
+    const mutedField = body.querySelector('[data-block-field="muted"]');
     const block = { type: 'video', content: src ? src.value.trim() : '' };
+    /* Петля без «без звука» не запустится: браузеры не дают автозапуск со
+       звуком. Поэтому одно включает другое, а не спорит с ним. */
+    if (loopField) block.loop = !!loopField.checked;
+    if (mutedField) block.muted = !!mutedField.checked || !!(loopField && loopField.checked);
     if (cap && cap.value.trim()) block.caption = cap.value.trim();
     if (poster && poster.value.trim()) block.poster = poster.value.trim();
     if (credit && credit.value.trim()) block.credit = credit.value.trim();
@@ -15712,6 +15779,59 @@ globalTextareaObserver.observe(document.body, { childList: true, subtree: true }
 // ===== GLOBAL BLOCK IMAGE/GALLERY UPLOAD HELPERS =====
 window.triggerBlockImageUpload = function(index) {
   document.getElementById(`block-img-file-${index}`)?.click();
+};
+
+window.triggerBlockVideoUpload = function(index) {
+  document.getElementById(`block-video-file-${index}`)?.click();
+};
+
+/* Загрузка видео и GIF.
+   Файл уходит на сервер как есть, конвертацию делает ffmpeg там: браузер
+   пережимать видео не умеет, а гифка на несколько мегабайт в материале — это
+   секунды ожидания у читателя. Сервер возвращает готовый файл, кадр-обложку
+   и подсказку, годится ли это в петлю. */
+window.handleBlockVideoUpload = async function(index) {
+  const fileInput = document.getElementById(`block-video-file-${index}`);
+  const textInput = document.getElementById(`block-video-input-${index}`);
+  const hint = document.getElementById(`block-video-hint-${index}`);
+  if (!fileInput || !fileInput.files || !fileInput.files[0] || !textInput) return;
+  const file = fileInput.files[0];
+  const btn = document.getElementById(`block-video-upload-btn-${index}`);
+  const originalText = btn ? btn.innerHTML : '';
+  try {
+    if (btn) { btn.innerHTML = 'Обрабатываю…'; btn.disabled = true; }
+    if (hint) hint.textContent = `Загружаю «${file.name}» (${(file.size / 1024 / 1024).toFixed(1)} МБ). Сжатие идёт на сервере.`;
+    const result = await uploadVideoReturnResult(file);
+    textInput.value = result.url;
+    textInput.dispatchEvent(new Event('input', { bubbles: true }));
+    textInput.dispatchEvent(new Event('change', { bubbles: true }));
+
+    const body = textInput.closest('.block-card-body');
+    const posterField = body && body.querySelector('[data-block-field="poster"]');
+    if (posterField && result.posterUrl) {
+      posterField.value = result.posterUrl;
+      posterField.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    const loopField = body && body.querySelector('[data-block-field="loop"]');
+    const mutedField = body && body.querySelector('[data-block-field="muted"]');
+    if (loopField && result.loopSuggested) { loopField.checked = true; loopField.dispatchEvent(new Event('change', { bubbles: true })); }
+    if (mutedField && result.loopSuggested) { mutedField.checked = true; mutedField.dispatchEvent(new Event('change', { bubbles: true })); }
+
+    const preview = document.getElementById(`block-video-preview-${index}`);
+    if (preview) preview.innerHTML = `<video src="${escapeHtml(result.url)}" muted loop playsinline autoplay preload="metadata" style="max-width:100%;max-height:180px"></video>`;
+    if (hint) {
+      const before = (result.originalBytes / 1024 / 1024).toFixed(1);
+      const after = (result.bytes / 1024 / 1024).toFixed(2);
+      hint.textContent = `Готово: ${before} МБ → ${after} МБ${result.width ? `, ${result.width}×${result.height}` : ''}. Обложка добавлена.`;
+    }
+    showToast('success', 'Видео загружено и сжато');
+  } catch (err) {
+    if (hint) hint.textContent = `Не загрузилось: ${err.message || err}`;
+    showToast('error', err.message || 'Ошибка загрузки видео');
+  } finally {
+    if (btn) { btn.innerHTML = originalText; btn.disabled = false; }
+    fileInput.value = '';
+  }
 };
 
 window.handleBlockImageUpload = async function(index) {
