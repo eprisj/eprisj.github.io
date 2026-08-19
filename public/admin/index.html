@@ -16,7 +16,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=5.80" />
+    <link rel="stylesheet" href="./styles.css?v=5.90" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
@@ -988,6 +988,8 @@
                   <button id="visualPublishBtn" class="btn btn-sm btn-primary" type="button" title="Снять черновик и открыть запись на сайте">Опубликовать</button>
                   <button id="visualDraftBtn" class="btn btn-sm" type="button" title="Скрыть запись как черновик">В черновик</button>
                   <button id="visualHideBtn" class="btn btn-sm" type="button" title="Скрыть запись без удаления">Скрыть</button>
+                  <!-- Ссылка на черновик: отдать материал на вычитку, не публикуя. -->
+                  <button id="previewLinkBtn" class="btn btn-sm" type="button" title="Ссылка, по которой черновик можно прочитать на сайте, не публикуя его">Ссылка для чтения</button>
                 </div>
                 <div class="toolbar-buttons">
                   <button id="wysToggleBtn" class="btn btn-sm btn-wys-toggle" type="button" title="Устаревший режим редактора" hidden tabindex="-1" aria-hidden="true">
@@ -2295,7 +2297,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=5.40" type="module"></script>
+    <script src="./app.js?v=5.50" type="module"></script>
     <script>
       // Tab switching + page title update
       document.addEventListener('DOMContentLoaded', function () {
