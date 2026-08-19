@@ -2732,8 +2732,6 @@ code {
   border-color: var(--accent);
   outline: none;
 }
-  outline: none;
-}
 .block-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .block-field-label {
   display: block;
@@ -8673,3 +8671,138 @@ html.epris-signed-in .auth-overlay { display: none !important; }
 .block-video-toggles { display: flex; flex-wrap: wrap; gap: 14px; margin: 8px 0; font-size: .7rem; color: var(--text); }
 .block-video-toggles label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
 #block-video-preview-0 video, [id^="block-video-preview-"] video { display: block; }
+
+/* ══════════════════════════════════════════════════════════
+   ТЕЛЕФОН, ЧАСТЬ ВТОРАЯ: то, чего на телефоне просто не было
+   ──────────────────────────────────────────────────────────
+   Два места панели на узком экране не просто были неудобны, а не
+   работали вовсе, и обнаруживается это только с телефона в руках:
+
+   1. Низ левой панели (.sb-foot) на ≤860px скрывался целиком —
+      вместе с «Сохранить», «Загрузить», «Деплой» и строкой состояния.
+      Панель уезжает вниз доком, а места для этих кнопок в доке не
+      нашлось, и сохранить материал с телефона было нечем.
+
+   2. Шапка блока (.block-card-header) и кнопка вставки между блоками
+      живут в левом поле: position:absolute, translateX(-100%) и
+      opacity:0 до наведения. На телефоне нет ни поля (экран уже
+      этого выноса), ни наведения — то есть удалить блок, переставить
+      его, свернуть или вставить новый посередине было нельзя.
+
+   Правила стоят в самом конце файла намеренно: выше есть слои,
+   которые перекрывают всё, что объявлено раньше.
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 860px) {
+  /* ── Полоса сохранения над доком ──────────────────────────
+     Держится над нижней навигацией, а не в ней: сохранение — не
+     раздел, между разделами его листать не нужно. */
+  .sb-foot {
+    display: flex;
+    position: fixed;
+    left: 0; right: 0;
+    bottom: calc(64px + env(safe-area-inset-bottom));
+    z-index: 60;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    background: var(--sidebar-bg);
+    border-top: 1px solid rgba(255,255,255,.09);
+  }
+  /* Состояние редактора занимает остаток строки и сжимается первым. */
+  .sb-state-row { flex: 1 1 auto; min-width: 0; margin: 0; }
+  /* Строка состояния ужимается первой и на узком экране обрезается до
+     обрубка вроде «Есть и…», который ничего не сообщает. Ниже 400 точек
+     остаётся только точка автосохранения: у неё три состояния и она
+     читается без слов. */
+  .sb-state-row .editor-state { overflow: hidden; font-size: .58rem; text-overflow: ellipsis; white-space: nowrap; }
+  .sb-save {
+    flex: 0 0 auto;
+    width: auto;
+    min-height: 42px;
+    padding: 0 16px;
+  }
+  .sb-foot-row { flex: 0 0 auto; flex-direction: row; gap: 4px; }
+  .sb-mini { min-width: 42px; min-height: 42px; justify-content: center; padding: 0 9px; }
+  /* Подписи кнопок не помещаются рядом с «Сохранить» — остаются иконки,
+     у каждой есть title. «Ещё» с редкими действиями на телефоне скрыто:
+     ради него полоса выросла бы вдвое. */
+  .sb-foot .sidebar-btn-label,
+  .sb-more { display: none; }
+  .sb-save .sidebar-btn-label { display: inline; }
+
+  /* Под полосой и доком остаётся место: иначе последняя строка текста
+     и кнопки внизу вкладки навсегда закрыты. */
+  .main-content { padding-bottom: 68px; }
+
+  /* ── Блок статьи: управление внутрь карточки ──────────────
+     Левое поле в 60px на экране в 375 точек — это шестая часть
+     ширины, отданная под элементы, которых на телефоне не видно. */
+  .block-editor { padding-left: 0; }
+
+  .block-card-header {
+    position: static;
+    transform: none;
+    left: auto; top: auto;
+    opacity: 1;
+    width: 100%;
+    margin-bottom: 4px;
+    padding: 4px 6px;
+    box-shadow: none;
+    flex-wrap: wrap;
+  }
+  /* Перетаскивать блок пальцем всё равно нельзя — порядок меняют
+     стрелками, которые рядом. Ручка только занимала бы место. */
+  .block-drag-handle { display: none; }
+  .block-actions { margin-left: auto; gap: 0; }
+  .block-action-btn { width: 40px; height: 40px; }
+  .block-action-btn svg { width: 15px; height: 15px; }
+  /* У свёрнутого блока должно быть видно, что внутри: иначе список
+     свёрнутых карточек неотличим одна от другой. */
+  .block-card.collapsed .block-content-preview {
+    display: block;
+    flex: 1 1 100%;
+    order: 10;
+    overflow: hidden;
+    font-weight: 400;
+    text-transform: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Вставка между блоками: видимая полоса вместо кнопки в поле. */
+  .block-insert-between {
+    height: auto;
+    margin: 2px 0;
+    opacity: 1;
+    justify-content: center;
+  }
+  .block-insert-btn {
+    position: static;
+    transform: none;
+    left: auto;
+    width: 100%;
+    height: 26px;
+    border: 1px dashed var(--line);
+    opacity: .5;
+  }
+  .block-insert-btn:active { opacity: 1; }
+
+  /* Палитра блоков внизу: кнопки в сетку, а не в строку враспор. */
+  /* Палитра блоков ровной сеткой: во flex последняя кнопка растягивалась
+     на всю строку и читалась как главное действие, хотя «Ссылка» ничем
+     не важнее «Текста». */
+  .add-block-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(94px, 1fr)); gap: 5px; padding: 10px; }
+  .add-block-btn { min-height: 40px; padding-inline: 8px; }
+  .block-insert-popup-btn { min-height: 44px; }
+
+  /* Зум при фокусе в поле мешает и на планшете — правило было
+     заведено только до 720px. */
+  input, select, textarea { font-size: 16px; }
+}
+
+@media (max-width: 400px) {
+  .sb-foot .editor-state { display: none; }
+  .sb-state-row { flex: 0 0 auto; }
+  .sb-save { flex: 1 1 auto; justify-content: center; }
+}
