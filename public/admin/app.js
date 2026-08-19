@@ -2980,15 +2980,41 @@ async function downloadArticleOriginals(allArticles = false) {
   }
 }
 
+/* Что стоит сказать редактору перед публикацией — и стоит ли вообще.
+   Возвращает текст предупреждения либо null, если публиковать безопасно. */
+function describePublishRisk() {
+  const data = parseEditorJsonSafe();
+  if (!data) return null;
+  const warnings = [];
+  const pics = data?.homepage?.picsOfWeek || {};
+  const categories = Array.isArray(pics.categories) ? pics.categories : [];
+  const picsItems = (data.items || []).filter((item) => item?.picsOfWeek);
+  if (categories.length) {
+    const emptySlots = categories.filter((category) => !picsItems.some((item) =>
+      String(item?.homeCategory || '') === String(category.id) && String(item?.imageUrl || '').trim())).length;
+    if (emptySlots) warnings.push(`пустых слотов на главной: ${emptySlots}`);
+  }
+  const stubs = ['articles', 'reviews', 'items'].reduce((total, section) => total
+    + (data[section] || []).filter((entry) => /^(New editorial story|New review|New gallery item)$/.test(String(entry?.title || ''))).length, 0);
+  if (stubs) warnings.push(`незаполненных заготовок: ${stubs}`);
+  if (!warnings.length) return null;
+  return `Перед публикацией стоит знать: ${warnings.join(', ')}. Читатели увидят страницу в этом виде.`;
+}
+
 // Publishes the editor content to the VPS. The public site reads it live, so
 // changes appear immediately — no GitHub commit, no Actions rebuild.
 async function saveToGitHub() {
-  const confirmed = await showConfirmModal(
-    'Опубликовать изменения?',
-    'Контент будет сохранён на <strong>VPS</strong> и сайт обновится <strong>сразу</strong> — без пересборки.',
-    'Опубликовать'
-  );
-  if (!confirmed) return;
+  /* Диалог спрашиваем только когда есть о чём предупредить.
+     Раньше подтверждение висело на каждой публикации, включая ту, где
+     редактор только что нажал «Опубликовать» осознанно: лишний клик и лишнее
+     окно ради текста, который он уже прочитал десятки раз. Теперь окно
+     появляется, если в выпуске остались пустые слоты или есть незаполненные
+     заготовки, — то есть когда публикация действительно может навредить. */
+  const risky = describePublishRisk();
+  if (risky) {
+    const confirmed = await showConfirmModal('Опубликовать всё-таки?', risky, 'Опубликовать');
+    if (!confirmed) return;
+  }
   await publishContentToVps();
 }
 
@@ -3026,12 +3052,15 @@ async function postContentToVps(payload, pw) {
    не получиться — тогда это предупреждение поверх уже сохранённого контента, а
    не потерянная работа. Созданные переводы уходят вторым POST, так что конечное
    состояние на сервере то же, что и раньше. */
-async function publishContentToVps({ note = 'Публикую на VPS...' } = {}) {
+/* silent: публикация как часть другого действия (например, скрытия записи).
+   Своих сообщений она тогда не пишет — о результате скажет то действие,
+   которое её вызвало, и редактор не получает два уведомления об одном. */
+async function publishContentToVps({ note = 'Публикую на VPS...', silent = false } = {}) {
   let parsed = null;
   let pw = '';
   try {
     setBusy(true);
-    setStatus('info', note);
+    if (!silent) setStatus('info', note);
 
     parsed = parseEditorJson();
     saveSettings();
@@ -3046,7 +3075,7 @@ async function publishContentToVps({ note = 'Публикую на VPS...' } = {
     clearStoredDraft();
     lastSyncedTime = new Date();
     updateLastSyncedBadge();
-    setStatus('success', 'Опубликовано на VPS — сайт обновлён мгновенно');
+    if (!silent) setStatus('success', 'Опубликовано на VPS — сайт обновлён мгновенно');
     // Server-side echo of the same "Локализация и главная" check (see
     // runLocalizationHealthCheck) — surfaced here too so a stub that just
     // went live is impossible to miss even by an editor who never opens
@@ -3812,12 +3841,18 @@ async function updateSelectedPublicationState(nextState) {
       await saveEntityToServer(section, DEFAULT_LANGUAGE, entry);
       setEditorData(data, { markSynced: true });
     } else {
+      /* «Скрыть» живёт в data.visibility, а не в самой записи, поэтому
+         точечным PATCH его не отправить — нужна публикация документа. Раньше
+         вместо этого выводилась инструкция «нажмите Сохранить запись», и
+         скрытая статья оставалась на сайте до тех пор, пока её не прочитают.
+         Скрытие должно срабатывать сразу: это защитное действие. */
       setEditorData(data);
+      await publishContentToVps({ silent: true });
     }
     pendingVisualEntryId = selectedId;
     refreshVisualEditor();
-    const persisted = nextState === 'live' || nextState === 'draft';
-    setStatus('success', `Статус «${getEntryTitle(section, entry)}» изменён на «${publicationStateLabel(nextState)}».${persisted ? ' Изменения сразу отправлены на VPS.' : ' Нажмите «Сохранить запись», чтобы отправить изменение на VPS.'}`, { sticky: true });
+    /* Одна короткая строка вместо абзаца с инструкциями. */
+    setStatus('success', `«${getEntryTitle(section, entry)}» — ${publicationStateLabel(nextState).toLowerCase()}`);
   } catch (error) {
     setStatus('error', `Статус не сохранён на VPS: ${getErrorMessage(error)}`);
   } finally {
@@ -11864,6 +11899,12 @@ function bindStudioMediaActions() {
     return { changed, active, archiveEntry: entry };
   }
 
+  /* Ряд слотов = то, что стоит на главной.
+     Прошлая версия предлагала на каждую карточку три кнопки: «Открыть»,
+     «В центр» и пару стрелок, — и всё равно не отвечала на вопрос «как это
+     будет выглядеть». Здесь ряд показан в том же порядке, в каком карточки
+     идут в карусели, середина ряда и есть середина карусели, а порядок
+     меняется перетаскиванием. Кнопок нет: карточка открывается по клику. */
   function renderPublishedHomepage(data, source = 'vps') {
     const cardsEl = document.getElementById('homepagePublishedCards');
     const metaEl = document.getElementById('homepagePublishedMeta');
@@ -11871,82 +11912,74 @@ function bindStudioMediaActions() {
     const activeRelease = homepageActiveRelease(data);
     const groups = homepageCategoryGroups(data, { useActive: true });
     const filled = groups.filter((group) => group.items.length).length;
-    /* Центр читаем из ТЕКУЩИХ настроек редактора, а не из снимка с VPS.
-       Карточки в этом блоке показываются опубликованные, и настройки брались
-       оттуда же — поэтому нажатие «В центр» не двигало ряд: выбор лежал в
-       черновике, а рисовали мы по снимку, где его ещё нет. Если центр не задан
-       вовсе, сайт ставит в середину третью категорию — показываем то же. */
-    const settingsSource = parseEditorJsonSafe() || data;
-    const centreCategory = String(settingsSource?.homepage?.picsOfWeek?.centerCategory || '').trim()
-      || String(data?.homepage?.picsOfWeek?.centerCategory || '').trim()
-      || groups[2]?.id || groups[0]?.id || '';
+    const centreIndex = Math.min(2, Math.max(0, groups.length - 1));
 
-    /* Порядок ряда повторяет карусель на сайте.
-       Панель показывала слоты в порядке категорий и только обводила
-       центральный: нажимаешь «В центр» — подпись переезжает, ряд стоит на
-       месте, и проверить расстановку глазами невозможно. Сайт же строит
-       ленту так, что выбранная категория оказывается третьей, а соседние
-       разложены вокруг с заворотом. Считаем здесь ровно ту же перестановку. */
-    const centreIndex = Math.max(0, groups.findIndex((group) => group.id === centreCategory));
-    const total = groups.length;
-    const ordered = total
-      ? Array.from({ length: total }, (_, position) => groups[(centreIndex + position - 2 + total) % total])
-      : groups;
     if (metaEl) metaEl.textContent = source === 'vps'
       ? `${activeRelease ? releaseLabel(activeRelease) : 'VPS'} · ${filled} / ${groups.length} слотов`
       : `Черновик редактора · ${filled} / ${groups.length}`;
-    cardsEl.innerHTML = ordered.map((group) => {
+
+    cardsEl.innerHTML = groups.map((group, index) => {
       const item = group.items[0];
       const image = item?.imageUrl || '';
-      /* Какая карточка стоит в середине карусели, редактор раньше задавал
-         селектом «Центральная категория» в расширенных настройках — то есть
-         в другом конце страницы и другими словами, чем то, что он видит.
-         Теперь центр выбирается на самой карточке. */
-      const isCentre = String(centreCategory) === String(group.id);
-      return `<article class="homepage-published-card${item ? '' : ' is-empty'}${isCentre ? ' is-centre' : ''}">
-        <div class="homepage-published-card-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : '<span>Слот пуст</span>'}</div>
-        <span class="homepage-published-card-category">${esc(group.label)}</span>
+      const isCentre = index === centreIndex;
+      return `<article class="homepage-published-card${item ? '' : ' is-empty'}${isCentre ? ' is-centre' : ''}"
+        draggable="true" data-home-slot="${esc(group.id)}" data-home-index="${index}"
+        tabindex="0" role="button" aria-label="${esc(group.label)}: открыть карточку, перетащить для порядка">
+        <div class="homepage-published-card-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy" draggable="false">` : '<span>Слот пуст</span>'}</div>
+        <span class="homepage-published-card-category">${esc(group.label)}${isCentre ? ' · в центре' : ''}</span>
         <strong class="homepage-published-card-title">${esc(item?.homeTitle || item?.title || 'Добавить фото')}</strong>
-        <div class="homepage-published-card-meta"><span>${item ? esc(picsIdFor(item)) : 'Пустой слот'}</span>${isCentre ? '<span>В центре</span>' : ''}</div>
-        <div class="homepage-published-card-actions">
-          <button class="btn btn-sm${item ? '' : ' btn-primary'}" type="button" data-home-published-edit="${item ? esc(picsIdFor(item)) : ''}" data-home-published-category="${esc(group.id)}">${item ? 'Открыть карточку' : 'Создать новый выпуск'}</button>
-          <button class="btn btn-sm${isCentre ? ' btn-primary' : ''}" type="button" data-home-centre="${esc(group.id)}"${isCentre ? ' disabled' : ''} title="Поставить эту категорию в середину карусели на сайте">${isCentre ? 'Центр' : 'В центр'}</button>
-          <!-- Порядок категорий тоже виден на сайте, а менять его раньше было
-               негде: расстановка задавалась массивом в JSON. -->
-          <div class="homepage-card-move" role="group" aria-label="Переставить категорию">
-            <button class="btn btn-sm" type="button" data-home-move="${esc(group.id)}" data-home-move-dir="-1" title="Сдвинуть левее">‹</button>
-            <button class="btn btn-sm" type="button" data-home-move="${esc(group.id)}" data-home-move-dir="1" title="Сдвинуть правее">›</button>
-          </div>
-        </div>
       </article>`;
     }).join('');
-    cardsEl.querySelectorAll('[data-home-move]').forEach((button) => button.addEventListener('click', () => {
-      const id = button.getAttribute('data-home-move');
-      const direction = Number(button.getAttribute('data-home-move-dir')) || 1;
-      updateHomepageSettings((home) => {
-        const list = home.picsOfWeek.categories;
-        if (!Array.isArray(list)) return;
-        const from = list.findIndex((category) => String(category?.id) === String(id));
-        if (from === -1) return;
-        /* Заворачиваем по кругу: карусель на сайте тоже кольцевая, и упор в
-           край здесь означал бы ограничение, которого у читателя нет. */
-        const to = (from + direction + list.length) % list.length;
-        const [moved] = list.splice(from, 1);
-        list.splice(to, 0, moved);
-      }, 'Порядок категорий изменён. На сайт уйдёт после «Опубликовать».');
-      renderHomepageTab();
-    }));
-    cardsEl.querySelectorAll('[data-home-centre]').forEach((button) => button.addEventListener('click', () => {
-      const category = button.getAttribute('data-home-centre');
-      if (!category) return;
-      updateHomepageSettings((home) => { home.picsOfWeek.centerCategory = category; },
-        'Категория поставлена в центр карусели. Изменение уйдёт на сайт после «Опубликовать».');
-      renderHomepageTab();
-    }));
-    cardsEl.querySelectorAll('[data-home-published-edit]').forEach((button) => button.addEventListener('click', () => {
-      if (button.dataset.homePublishedEdit) openHomepageCardEditor(button.dataset.homePublishedEdit, button.dataset.homePublishedCategory || null);
+
+    const openSlot = (categoryId) => {
+      const group = groups.find((candidate) => candidate.id === categoryId);
+      const item = group?.items[0];
+      if (item) openHomepageCardEditor(picsIdFor(item), categoryId);
+      else if (homepageDraftRelease(readContent() || data)) openHomepageCardEditor(null, categoryId);
       else createHomepageRelease();
-    }));
+    };
+
+    /* Перестановка: тащим карточку на место другой. Порядок категорий и есть
+       порядок карусели, а центральной становится та, что оказалась третьей —
+       отдельной настройки «центральная категория» больше не требуется. */
+    let dragFrom = null;
+    cardsEl.querySelectorAll('.homepage-published-card').forEach((card) => {
+      card.addEventListener('click', () => { if (!card.dataset.dragging) openSlot(card.dataset.homeSlot); });
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openSlot(card.dataset.homeSlot); }
+      });
+      card.addEventListener('dragstart', (event) => {
+        dragFrom = Number(card.dataset.homeIndex);
+        card.dataset.dragging = '1';
+        card.classList.add('is-dragging');
+        event.dataTransfer.effectAllowed = 'move';
+        /* Safari не начинает перетаскивание без полезной нагрузки. */
+        event.dataTransfer.setData('text/plain', card.dataset.homeSlot);
+      });
+      card.addEventListener('dragend', () => {
+        card.classList.remove('is-dragging');
+        setTimeout(() => { delete card.dataset.dragging; }, 0);
+      });
+      card.addEventListener('dragover', (event) => { event.preventDefault(); card.classList.add('is-drop-target'); });
+      card.addEventListener('dragleave', () => card.classList.remove('is-drop-target'));
+      card.addEventListener('drop', (event) => {
+        event.preventDefault();
+        card.classList.remove('is-drop-target');
+        const to = Number(card.dataset.homeIndex);
+        if (dragFrom == null || Number.isNaN(to) || dragFrom === to) return;
+        updateHomepageSettings((home) => {
+          const list = home.picsOfWeek.categories;
+          if (!Array.isArray(list) || !list.length) return;
+          const [moved] = list.splice(dragFrom, 1);
+          list.splice(to, 0, moved);
+          /* Середина ряда — середина карусели. */
+          const centre = list[Math.min(2, list.length - 1)];
+          if (centre?.id) home.picsOfWeek.centerCategory = centre.id;
+        }, null);
+        dragFrom = null;
+        renderHomepageTab();
+      });
+    });
   }
 
   function readHomepageAutoPrefs() {
@@ -12010,7 +12043,10 @@ function bindStudioMediaActions() {
     updateStats(data);
     updateEditorState();
     saveDraft();
-    setStatus('info', message, { sticky: true });
+    /* message === null означает «действие говорит само за себя»: перетащенная
+       карточка уже стоит на новом месте, и подпись об этом — лишний шум.
+       Строка о несохранённых правках и без того висит наверху. */
+    if (message !== null) setStatus('info', message, { sticky: true });
   }
 
   function scheduleHomepageAutoPublish() {

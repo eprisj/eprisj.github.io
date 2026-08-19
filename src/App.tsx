@@ -3756,15 +3756,22 @@ export default function App() {
   const issueArchive = getIssueArchive(currentLang);
   const studio = getStudio();
   const defaultContent = getContentForLanguage(DEFAULT_LANGUAGE);
+  /* Пока живой контент не пришёл, статью берём только из него.
+     Запасная копия из сборки не знает о свежих правках видимости, поэтому
+     статья, скрытая редакцией минуту назад, успевала мелькнуть на экране
+     перед тем, как исчезнуть. Лучше показать пустой кадр на долю секунды,
+     чем то, что читателю видеть не полагается. */
   const selectedArticle = selectedArticleId !== null
     ? articles.find((article) => article.id === selectedArticleId)
-      || defaultContent.articles.find((article) => article.id === selectedArticleId)
-      || null
+      || (contentLoadAttempted
+        ? defaultContent.articles.find((article) => article.id === selectedArticleId) || null
+        : null)
     : null;
   const previewArticle = previewArticleId !== null
     ? articles.find((article) => article.id === previewArticleId)
-      || defaultContent.articles.find((article) => article.id === previewArticleId)
-      || null
+      || (contentLoadAttempted
+        ? defaultContent.articles.find((article) => article.id === previewArticleId) || null
+        : null)
     : null;
   const selectedReview = selectedReviewId !== null
     ? reviews.find((review) => review.id === selectedReviewId) || defaultContent.reviews.find((review) => review.id === selectedReviewId) || null
