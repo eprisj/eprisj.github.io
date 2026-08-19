@@ -11817,20 +11817,39 @@ function bindStudioMediaActions() {
     const activeRelease = homepageActiveRelease(data);
     const groups = homepageCategoryGroups(data, { useActive: true });
     const filled = groups.filter((group) => group.items.length).length;
+    /* Если центр не выбран, сайт ставит в середину третью категорию — показываем
+       ровно то же, чтобы панель не расходилась с тем, что видит читатель. */
+    const centreCategory = String(data?.homepage?.picsOfWeek?.centerCategory || '').trim()
+      || groups[2]?.id || groups[0]?.id || '';
     if (metaEl) metaEl.textContent = source === 'vps'
       ? `${activeRelease ? releaseLabel(activeRelease) : 'VPS'} · ${filled} / ${groups.length} слотов`
       : `Черновик редактора · ${filled} / ${groups.length}`;
     cardsEl.innerHTML = groups.map((group) => {
       const item = group.items[0];
       const image = item?.imageUrl || '';
-      return `<article class="homepage-published-card${item ? '' : ' is-empty'}">
+      /* Какая карточка стоит в середине карусели, редактор раньше задавал
+         селектом «Центральная категория» в расширенных настройках — то есть
+         в другом конце страницы и другими словами, чем то, что он видит.
+         Теперь центр выбирается на самой карточке. */
+      const isCentre = String(centreCategory) === String(group.id);
+      return `<article class="homepage-published-card${item ? '' : ' is-empty'}${isCentre ? ' is-centre' : ''}">
         <div class="homepage-published-card-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : '<span>Слот пуст</span>'}</div>
         <span class="homepage-published-card-category">${esc(group.label)}</span>
         <strong class="homepage-published-card-title">${esc(item?.homeTitle || item?.title || 'Добавить фото')}</strong>
-        <div class="homepage-published-card-meta"><span>${item ? esc(picsIdFor(item)) : 'Пустой слот'}</span>${item ? '<span>На сайте</span>' : ''}</div>
-        <button class="btn btn-sm${item ? '' : ' btn-primary'}" type="button" data-home-published-edit="${item ? esc(picsIdFor(item)) : ''}" data-home-published-category="${esc(group.id)}">${item ? 'Открыть карточку' : 'Создать новый выпуск'}</button>
+        <div class="homepage-published-card-meta"><span>${item ? esc(picsIdFor(item)) : 'Пустой слот'}</span>${isCentre ? '<span>В центре</span>' : ''}</div>
+        <div class="homepage-published-card-actions">
+          <button class="btn btn-sm${item ? '' : ' btn-primary'}" type="button" data-home-published-edit="${item ? esc(picsIdFor(item)) : ''}" data-home-published-category="${esc(group.id)}">${item ? 'Открыть карточку' : 'Создать новый выпуск'}</button>
+          <button class="btn btn-sm${isCentre ? ' btn-primary' : ''}" type="button" data-home-centre="${esc(group.id)}"${isCentre ? ' disabled' : ''} title="Поставить эту категорию в середину карусели на сайте">${isCentre ? 'Центр' : 'В центр'}</button>
+        </div>
       </article>`;
     }).join('');
+    cardsEl.querySelectorAll('[data-home-centre]').forEach((button) => button.addEventListener('click', () => {
+      const category = button.getAttribute('data-home-centre');
+      if (!category) return;
+      updateHomepageSettings((home) => { home.picsOfWeek.centerCategory = category; },
+        'Категория поставлена в центр карусели. Изменение уйдёт на сайт после «Опубликовать».');
+      renderHomepageTab();
+    }));
     cardsEl.querySelectorAll('[data-home-published-edit]').forEach((button) => button.addEventListener('click', () => {
       if (button.dataset.homePublishedEdit) openHomepageCardEditor(button.dataset.homePublishedEdit, button.dataset.homePublishedCategory || null);
       else createHomepageRelease();

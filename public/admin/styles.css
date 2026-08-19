@@ -1162,6 +1162,11 @@ body {
   cursor: pointer;
 }
 
+/* Слот, стоящий в центре карусели на сайте, отмечен и в панели. */
+.homepage-published-card.is-centre { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.homepage-published-card-actions { display: grid; gap: 4px; }
+.homepage-published-card-actions .btn { width: 100%; justify-content: center; }
+
 /* Scrollable main content */
 .main-content {
   flex: 1;
