@@ -8598,7 +8598,11 @@ body:has(.unpublished-banner.is-visible) { padding-top: 38px; }
   .homepage-carousel-layout-grid { grid-template-columns: 1fr !important; }
 
   /* Модальные окна занимают экран целиком: обрезанное по краям окно на
-     телефоне листается хуже, чем полноэкранное. */
+     телефоне листается хуже, чем полноэкранное.
+     Точка 860, а не 720: ровно с неё панель уезжает вниз доком, то есть
+     экран уже считается мобильным. В зазоре 720–860 (планшет в портрете,
+     крупный телефон в альбоме) окно оставалось десктопным поверх
+     мобильной оболочки. */
   .homepage-card-editor,
   .entry-wizard { padding: 0; }
   .homepage-card-editor-dialog,
@@ -8630,6 +8634,40 @@ body:has(.unpublished-banner.is-visible) { padding-top: 38px; }
 
   /* Служебные подписи и таблицы прокручиваются внутри себя, а не растягивают
      страницу вширь. */
+  .table-wrap, .transl-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+
+/* ── Зазор 720–860 ──────────────────────────────────────────────────────
+   Оболочка становится мобильной на 860 (панель уходит вниз доком), а
+   почти вся мобильная вёрстка была заведена на 720. Между ними экран уже
+   телефонный, а содержимое ещё десктопное: планшет в портрете и телефон в
+   альбоме попадают ровно туда. Ниже — то, что относится к оболочке и к
+   размеру пальца, а не к нехватке ширины; сетки полей остаются на 720,
+   две колонки на 800 точках читаются нормально. */
+@media (max-width: 860px) {
+  .content-layout,
+  .dashboard-layout,
+  .settings-layout,
+  .upload-layout,
+  .transcript-layout,
+  .monitor-layout,
+  .studio-layout,
+  .translations-layout { padding: 14px 14px 28px; }
+  .issues-layout { padding: 0 14px 22px; }
+
+  .homepage-card-editor,
+  .entry-wizard { padding: 0; }
+  .homepage-card-editor-dialog,
+  .entry-wizard-dialog {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100dvh;
+    height: 100dvh;
+    border: 0;
+  }
+  .homepage-card-editor-actions .btn,
+  .entry-wizard-actions .btn { min-height: 44px; }
+
   .table-wrap, .transl-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 }
 
@@ -8693,47 +8731,51 @@ html.epris-signed-in .auth-overlay { display: none !important; }
    которые перекрывают всё, что объявлено раньше.
    ══════════════════════════════════════════════════════════ */
 @media (max-width: 860px) {
-  /* ── Полоса сохранения над доком ──────────────────────────
-     Держится над нижней навигацией, а не в ней: сохранение — не
-     раздел, между разделами его листать не нужно. */
-  .sb-foot {
+  /* ── «Загрузить», «Деплой», «Сайт» и состояние ────────────
+     На узких экранах низ панели скрывался целиком. «Сохранить» из него
+     уезжает в шапку отдельным скриптом, а остальное просто пропадало:
+     выкатить изменения на сайт или перечитать данные с сервера с
+     телефона было нечем.
+
+     Отдельной полосы внизу они не заслуживают — это действия на раз в
+     день, а 56 точек постоянной высоты на экране в 812 стоят дорого.
+     Поэтому низ панели живёт в списке разделов: туда и так заходят,
+     когда переключаются между экранами. */
+  .sb-foot { display: none; }
+  body.nav-sheet-open .sidebar .sb-foot {
     display: flex;
     position: fixed;
     left: 0; right: 0;
     bottom: calc(64px + env(safe-area-inset-bottom));
-    z-index: 60;
+    z-index: 215;
     flex-direction: row;
     align-items: center;
     gap: 8px;
-    padding: 7px 10px;
+    padding: 8px 10px;
     background: var(--sidebar-bg);
-    border-top: 1px solid rgba(255,255,255,.09);
+    border-top: 1px solid rgba(255,255,255,.1);
   }
-  /* Состояние редактора занимает остаток строки и сжимается первым. */
-  .sb-state-row { flex: 1 1 auto; min-width: 0; margin: 0; }
-  /* Строка состояния ужимается первой и на узком экране обрезается до
-     обрубка вроде «Есть и…», который ничего не сообщает. Ниже 400 точек
-     остаётся только точка автосохранения: у неё три состояния и она
-     читается без слов. */
-  .sb-state-row .editor-state { overflow: hidden; font-size: .58rem; text-overflow: ellipsis; white-space: nowrap; }
-  .sb-save {
-    flex: 0 0 auto;
-    width: auto;
-    min-height: 42px;
-    padding: 0 16px;
+  body.nav-sheet-open .sidebar .sb-state-row { flex: 1 1 auto; min-width: 0; margin: 0; }
+  body.nav-sheet-open .sidebar .sb-state-row .editor-state {
+    overflow: hidden;
+    font-size: .58rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
-  .sb-foot-row { flex: 0 0 auto; flex-direction: row; gap: 4px; }
-  .sb-mini { min-width: 42px; min-height: 42px; justify-content: center; padding: 0 9px; }
-  /* Подписи кнопок не помещаются рядом с «Сохранить» — остаются иконки,
-     у каждой есть title. «Ещё» с редкими действиями на телефоне скрыто:
-     ради него полоса выросла бы вдвое. */
-  .sb-foot .sidebar-btn-label,
-  .sb-more { display: none; }
-  .sb-save .sidebar-btn-label { display: inline; }
+  /* Свёрнутая панель ставит эти кнопки колонкой — на узком экране
+     ряд должен победить, поэтому селектор перебивает .sidebar.is-collapsed. */
+  .sidebar.is-collapsed .sb-foot-row,
+  body.nav-sheet-open .sidebar .sb-foot-row { flex: 0 0 auto; flex-direction: row; gap: 4px; }
+  body.nav-sheet-open .sidebar .sb-mini { min-width: 44px; min-height: 44px; justify-content: center; padding: 0 9px; }
+  /* Подписи не помещаются вчетвером в строку — остаются иконки с title. */
+  body.nav-sheet-open .sidebar .sb-foot .sidebar-btn-label,
+  body.nav-sheet-open .sidebar .sb-more { display: none; }
+  /* Список прокручивается над этой полосой, а не под ней. */
+  body.nav-sheet-open .sidebar .sb-nav { padding-bottom: 64px; }
 
-  /* Под полосой и доком остаётся место: иначе последняя строка текста
-     и кнопки внизу вкладки навсегда закрыты. */
-  .main-content { padding-bottom: 68px; }
+  /* Под доком остаётся место: иначе последняя строка текста и кнопки
+     внизу вкладки навсегда закрыты нижней навигацией. */
+  .main-content { padding-bottom: 12px; }
 
   /* ── Блок статьи: управление внутрь карточки ──────────────
      Левое поле в 60px на экране в 375 точек — это шестая часть
@@ -8801,8 +8843,103 @@ html.epris-signed-in .auth-overlay { display: none !important; }
   input, select, textarea { font-size: 16px; }
 }
 
-@media (max-width: 400px) {
-  .sb-foot .editor-state { display: none; }
-  .sb-state-row { flex: 0 0 auto; }
-  .sb-save { flex: 1 1 auto; justify-content: center; }
+/* ══════════════════════════════════════════════════════════
+   ТЕЛЕФОН: ДОК И СПИСОК РАЗДЕЛОВ
+   ──────────────────────────────────────────────────────────
+   В доке лежали все 25 разделов лентой по 74 точки: почти 1900
+   точек прокрутки вбок, без заголовков групп и без края — найти
+   нужное можно было только перебором. Теперь в доке закреплённые
+   (блок «Часто», по умолчанию четыре), а за остальными открывается
+   тот же .sb-nav во весь экран, с группами и подписями.
+   Разметка одна и та же: копия кнопки раздела сломала бы поиск
+   `.tab-btn[data-tab=…]`, на который рассчитывает весь app.js.
+
+   Селекторы ниже намеренно длиннее нужного: панель на телефоне остаётся
+   в классе .is-collapsed, а её правила (`.sidebar.is-collapsed .tab-btn`
+   и подобные) весят три класса и перебивали короткую запись через body.
+   Отсюда `.sidebar` в каждой строке.
+   ══════════════════════════════════════════════════════════ */
+.sb-sheet-btn { display: none; }
+
+@media (max-width: 860px) {
+  /* ── Док: только закреплённое ── */
+  .sb-group:not([data-group="pinned"]) { display: none; }
+  .sb-nav { padding-right: 82px; }
+
+  .sb-sheet-btn {
+    display: flex;
+    position: fixed;
+    right: 0; bottom: 0;
+    z-index: 220;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    width: 74px;
+    height: calc(64px + env(safe-area-inset-bottom));
+    padding-bottom: env(safe-area-inset-bottom);
+    border: 0;
+    border-left: 1px solid rgba(255,255,255,.12);
+    background: var(--sidebar-bg);
+    color: rgba(255,255,255,.72);
+    font: 700 .47rem/1.15 var(--font-mono);
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .sb-sheet-btn .sb-ico { width: 17px; height: 17px; }
+  .sb-sheet-btn[aria-expanded="true"] { background: rgba(255,255,255,.16); color: #fff; }
+
+  /* ── Список во весь экран ──
+     Снизу оставлен док: кнопка «Разделы» остаётся на виду и закрывает
+     список повторным нажатием — выхода «в никуда» не возникает. */
+  body.nav-sheet-open .sidebar .sb-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    bottom: calc(64px + env(safe-area-inset-bottom));
+    z-index: 210;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 12px 10px 20px;
+    background: var(--sidebar-bg);
+  }
+  body.nav-sheet-open .sidebar .sb-group,
+  body.nav-sheet-open .sidebar .sb-group:not([data-group="pinned"]) { display: block; margin-bottom: 10px; }
+  body.nav-sheet-open .sidebar .sb-group-items { display: block; }
+  body.nav-sheet-open .sidebar .sb-group-head { display: flex; min-height: 34px; }
+  body.nav-sheet-open .sidebar .sb-item { display: flex; align-items: center; margin: 0; }
+  body.nav-sheet-open .sidebar .tab-btn {
+    flex: 1 1 auto;
+    width: auto;
+    height: auto;
+    min-height: 46px;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 8px 12px;
+    font-size: .76rem;
+    text-align: left;
+  }
+  body.nav-sheet-open .sidebar .sb-ico { width: 18px; height: 18px; }
+  body.nav-sheet-open .sidebar .sb-label { white-space: nowrap; }
+  /* У «Транскрипции» подпись лежит в .sb-copy вместе с пояснением и
+     значком LOCAL, а свёрнутая панель прячет всю обёртку — раздел
+     оставался безымянной иконкой и в доке, и в списке. Прячем только
+     пояснение и значок, подпись возвращаем. */
+  .sidebar.is-collapsed .sb-copy,
+  body.nav-sheet-open .sidebar .sb-copy { display: flex; }
+  .sidebar.is-collapsed .sb-copy small,
+  .sidebar.is-collapsed .sb-badge,
+  body.nav-sheet-open .sidebar .sb-copy small,
+  body.nav-sheet-open .sidebar .sb-badge { display: none; }
+  /* Закрепить раздел прямо отсюда: именно в этом списке и становится
+     понятно, что стоит держать в доке. */
+  body.nav-sheet-open .sidebar .sb-pin { display: flex; opacity: .5; width: 40px; height: 40px; }
+  body.nav-sheet-open .sidebar .sb-item.is-pinned .sb-pin { opacity: 1; }
+  body.nav-sheet-open .sidebar .sb-item.is-active::before {
+    top: 6px; bottom: 6px; left: 0; right: auto;
+    width: 2px; height: auto;
+    transform: none;
+  }
 }
