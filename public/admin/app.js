@@ -3715,40 +3715,58 @@ function ensurePreviewToken(entry) {
 
 async function copyEntryPreviewLink() {
   try {
-    const data = parseEditorJson();
     const section = visualSectionSelect.value;
     if (section !== 'articles' && section !== 'reviews') {
       setStatus('info', 'Ссылка для чтения есть у статей и обзоров.');
       return;
     }
+    setBusy(true);
+
+    /* Сначала сохраняем то, что редактор видит СЕЙЧАС.
+       Прежняя версия отправляла запись на сервер только когда заводила новый
+       токен: у записи с уже выданной ссылкой правки оставались в браузере, и
+       адресат открывал старый текст, считая, что читает свежий. А если
+       сохранение падало, ссылка всё равно копировалась в буфер — редактор
+       отправлял коллеге заведомо нерабочий адрес. Теперь: выгрузить холст,
+       собрать запись из формы, сохранить, и только потом выдать ссылку. */
+    await flushActiveEditorialCanvas();
+    const data = parseEditorJson();
     const selectedId = Number(visualEntrySelect.value);
     const entries = getSectionArray(data, section, DEFAULT_LANGUAGE, false);
-    const entry = entries.find((item) => Number(item.id) === selectedId);
-    if (!entry) { setStatus('error', 'Сначала выберите запись.'); return; }
+    const entryIndex = entries.findIndex((item) => Number(item.id) === selectedId);
+    if (entryIndex === -1) { setStatus('error', 'Сначала выберите запись.'); return; }
 
-    setBusy(true);
-    const token = ensurePreviewToken(entry);
-    if (entry.previewToken !== token) {
-      entry.previewToken = token;
-      /* Токен обязан попасть на сервер: ссылка, которую редактор скопировал,
-         должна работать и после перезагрузки чужого браузера. */
-      await saveEntityToServer(section, DEFAULT_LANGUAGE, entry);
-      setEditorData(data, { markSynced: true });
-    }
-    const slug = slugifySeed(entry.title, String(entry.id));
+    const current = entries[entryIndex];
+    const next = usesLiveEditorialCanvas(section) ? deepClone(current) : buildEntryFromVisualForm(section, current);
+    next.previewToken = ensurePreviewToken(current);
+    const entityErr = validateEntityShape(section, normalizeEntityForServer(section, next));
+    if (entityErr) throw new Error(entityErr);
+
+    await saveEntityToServer(section, DEFAULT_LANGUAGE, next);
+    entries[entryIndex] = next;
+    pendingVisualEntryId = selectedId;
+    setEditorData(data, { markSynced: true });
+
+    /* Адрес по идентификатору, а не по заголовку.
+       Слаг разбирается на сайте через карту слагов, собранную из бандла: у
+       свежей или переименованной записи его там нет, и ссылка открывала
+       «материал не найден» — то есть для черновиков, ради которых всё и
+       делалось, не работала почти никогда. Числовой адрес разбирается всегда. */
     const path = section === 'reviews' ? 'review' : 'article';
-    const link = `https://eprisjournal.com/${path}/${encodeURIComponent(slug)}/?preview=${token}`;
+    const link = `https://eprisjournal.com/${path}/${next.id}/?preview=${next.previewToken}`;
     try {
       await navigator.clipboard.writeText(link);
-      setStatus('success', `Ссылка для чтения скопирована: ${link}`);
+      setStatus('success', `Сохранено и скопировано. Ссылка для чтения: ${link}`);
     } catch {
       /* Буфер недоступен (нет разрешения) — показываем ссылку, чтобы её можно
          было скопировать вручную, а не оставляем редактора ни с чем. */
-      setStatus('info', `Ссылка для чтения: ${link}`);
+      setStatus('info', `Сохранено. Ссылка для чтения: ${link}`);
     }
-    showToast?.('success', 'Ссылка открывает черновик, не публикуя его.');
+    showToast?.('success', 'Запись сохранена, ссылка открывает её без публикации.');
   } catch (error) {
-    setStatus('error', getErrorMessage(error));
+    /* Ссылку не выдаём: она вела бы на версию, которой на сервере нет. */
+    setStatus('error', `Ссылка не создана — запись не сохранилась: ${getErrorMessage(error)}`);
+    showToast?.('error', 'Ссылка не создана: сначала должна сохраниться запись.');
   } finally {
     setBusy(false);
   }
