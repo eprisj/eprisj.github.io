@@ -4074,7 +4074,7 @@ export default function App() {
       <div className={activeTab === 'gallery' ? '' : 'lg:pr-12'}>
         {activeTab === 'issue' ? (
           <LazyTab>
-            <IssuePage archive={issueArchive} t={t} />
+            <IssuePage archive={issueArchive} t={t} onArticleClick={(article) => handleSelectArticle(article.id, article)} />
           </LazyTab>
         ) : activeTab === 'design' ? (
           <LazyTab>
