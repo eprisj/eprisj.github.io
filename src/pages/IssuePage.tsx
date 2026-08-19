@@ -89,33 +89,43 @@ export function IssuePage({
   return (
     <div className="pt-16 min-h-screen bg-[var(--c-bg)]">
 
-      {/* Шапка выпуска */}
+      {/* Шапка выпуска.
+          Типографика собрана в один ритм: тонкая линия и разрядка над номером
+          выпуска, крупный титул, курсивный подзаголовок сразу под ним и пара
+          одинаковых по весу кнопок. Прежде здесь спорили три разных приёма —
+          зажатый трекинг титула (-0.045em), подзаголовок в отрыве от него и
+          две кнопки с рамками разной насыщенности, из-за чего вторая читалась
+          как отключённая. */}
       <div className="border-b border-[rgb(var(--c-accent-rgb)_/_0.18)]">
-        <div className="max-w-4xl mx-auto px-5 sm:px-8 py-10 sm:py-14 grid gap-8 sm:gap-12 sm:grid-cols-[1fr_minmax(200px,260px)] sm:items-end">
+        <div className="max-w-4xl mx-auto px-5 sm:px-8 py-12 sm:py-16 grid gap-10 sm:gap-14 sm:grid-cols-[1fr_minmax(190px,240px)] sm:items-center">
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-5">
-              {t('issue.edition')}{issue.number ? ` · ${issue.number}` : ''}{issue.season ? ` · ${issue.season}` : ''}
+            <p className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.28em] text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-6">
+              <span className="w-8 border-t border-[rgb(var(--c-accent-rgb)_/_0.35)]" aria-hidden="true" />
+              {issue.season || t('issue.edition')}
             </p>
             <h1
-              style={{ fontFamily: 'var(--font-display)', fontWeight: 430 }}
-              className="text-[clamp(40px,7vw,84px)] leading-[0.9] tracking-[-0.045em] text-[var(--c-accent)] text-balance"
+              style={{ fontFamily: 'var(--font-display)', fontWeight: 400 }}
+              className="text-[clamp(38px,6.2vw,72px)] leading-[0.96] tracking-[-0.015em] text-[var(--c-accent)] text-balance"
             >
               {issue.name}
             </h1>
             {issue.tagline && (
-              <p className="font-serif text-lg md:text-xl italic text-[rgb(var(--c-accent-rgb)_/_0.7)] mt-4 leading-relaxed">
+              <p className="font-serif text-xl md:text-[26px] italic text-[rgb(var(--c-accent-rgb)_/_0.62)] mt-3 leading-snug">
                 {issue.tagline}
               </p>
             )}
-            <div className="flex flex-wrap items-stretch gap-3 mt-8">
+            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[rgb(var(--c-accent-rgb)_/_0.42)] mt-6">
+              {t('issue.edition')}{issue.number ? ` · ${issue.number}` : ''}
+            </p>
+            <div className="flex flex-wrap items-stretch gap-3 mt-7">
               <DownloadButton status={status} onDownload={handleDownload} t={t} />
               <a
                 href="#issue-contents"
-                className="inline-flex items-center gap-2 border border-[rgb(var(--c-accent-rgb)_/_0.4)] px-6 py-3 font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.65)] transition-colors hover:border-[var(--c-accent)] hover:text-[var(--c-accent)]"
+                className="inline-flex items-center gap-2 border border-[var(--c-accent)] px-6 py-3 font-mono text-[10px] uppercase tracking-widest text-[var(--c-accent)] transition-colors hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]"
               >
                 {t('issue.contents')}
                 <ArrowRight size={13} aria-hidden="true" />
@@ -128,11 +138,10 @@ export function IssuePage({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             /* Обложку показываем и на телефоне: это главный образ выпуска, а
-               прятать его на самом ходовом экране странно. Ширину ограничиваем,
-               чтобы она не оттесняла заголовок ниже сгиба. */
+               прятать его на самом ходовом экране странно. */
             className="order-first sm:order-none w-40 sm:w-auto"
           >
-            <div className="aspect-[3/4] overflow-hidden border border-[var(--c-accent)]">
+            <div className="aspect-[3/4] overflow-hidden border border-[rgb(var(--c-accent-rgb)_/_0.25)]">
               <img
                 src={issue.coverUrl}
                 alt={`${issue.name} — ${issue.season}`}
