@@ -8128,6 +8128,10 @@ const BLOCK_TYPES = [
   { type: 'image', label: 'Фото', icon: '\uD83D\uDDBC' },
   { type: 'gallery', label: 'Галерея', icon: '\uD83D\uDDBC\uD83D\uDDBC' },
   { type: 'audio', label: 'Аудио', icon: '\u266B' },
+  /* Гифка стоит отдельным пунктом, хотя хранится как video с петлёй:
+     выбирают по назначению, а не по формату (см. тот же список в
+     современном редакторе). */
+  { type: 'gif', label: 'Гифка', icon: '\u25C9' },
   { type: 'video', label: 'Видео', icon: '▶' },
   { type: 'link', label: 'Ссылка', icon: '\uD83D\uDD17' },
   { type: 'checklist', label: 'Чеклист', icon: '\u2611' },
@@ -8232,11 +8236,13 @@ function renderBlockBody(block, index) {
        цикл, а сайт его не делал, потому что там нужен явный флаг. Обещать
        то, чего не происходит, хуже, чем не обещать. */
     const isLoopFile = /[.]loop[.](?:webm|mp4)(?:$|[?#])/i.test(src);
+    const isGif = block.mediaKind === 'gif' || isLoopFile;
     const loop = block.loop === undefined ? isLoopFile : !!block.loop;
     const muted = block.muted !== false;
     const isFile = /[.](?:mp4|webm|ogv|ogg)(?:$|[?#])/i.test(src);
     return `
-      <div><span class="block-field-label">Видео или GIF</span>
+      ${isGif ? '<input type="hidden" data-block-field="mediaKind" value="gif" />' : ''}
+      <div><span class="block-field-label">${isGif ? 'Гифка' : 'Видео или GIF'}</span>
       <div style="display:flex;gap:8px;align-items:center;width:100%;">
         <input data-block-field="content" data-block-index="${index}" id="block-video-input-${index}" value="${escapeHtml(src)}" placeholder="Загрузите файл или вставьте ссылку (YouTube, Vimeo, mp4)" style="flex:1" />
         <button id="block-video-upload-btn-${index}" class="btn btn-sm" type="button" title="Загрузить видео или GIF с компьютера" onclick="triggerBlockVideoUpload(${index})">Загрузить</button>
@@ -8422,7 +8428,10 @@ function renderBlockEditor(blocks) {
     html += '<div class="block-card' + (isCollapsed ? ' collapsed' : '') + '" data-block-index="' + i + '" data-block-type="' + t + '" draggable="true">';
     html += '<div class="block-card-header">';
     html += '<span class="block-drag-handle" title="Перетащить"></span>';
-    html += '<span class="block-type-badge type-' + t + '">' + getBlockTypeIcon(t) + ' ' + escapeHtml(getBlockTypeLabel(t)) + '</span>';
+    /* Гифка хранится как video, но в шапке блока должна называться гифкой:
+       иначе редактор ищет её глазами среди «Видео». */
+    const badgeType = (t === 'video' && (block.mediaKind === 'gif' || /[.]loop[.](?:webm|mp4)(?:$|[?#])/i.test(String(block.content || '')))) ? 'gif' : t;
+    html += '<span class="block-type-badge type-' + badgeType + '">' + getBlockTypeIcon(badgeType) + ' ' + escapeHtml(getBlockTypeLabel(badgeType)) + '</span>';
     html += '<span style="font-size:.6rem;color:var(--text-muted);opacity:.5;">#' + (i + 1) + '</span>';
     if (preview && isCollapsed) {
       html += '<span class="block-content-preview">' + escapeHtml(preview) + '</span>';
@@ -8733,13 +8742,7 @@ window.showInsertMenu = function(beforeIndex, triggerEl) {
     closePopup();
     const type = btn.dataset.type;
     const blocks = collectBlockEditorContent();
-    const newBlock = { type, content: '' };
-    if (type === 'gallery') newBlock.content = [];
-    if (type === 'checklist') newBlock.content = { items: [''] };
-    if (type === 'poll') newBlock.content = { question: '', options: [{ label: '', votes: 0 }] };
-    if (type === 'map') { newBlock.content = ''; newBlock.coordinates = { lat: 0, lng: 0 }; }
-
-    blocks.splice(beforeIndex, 0, newBlock);
+    blocks.splice(beforeIndex, 0, makeEditorBlock(type));
     const newStates = {};
     Object.keys(blockCollapseStates).forEach(k => {
       const ki = Number(k);
@@ -8885,7 +8888,11 @@ function buildBlockFromDom(type, body) {
     const sourceUrl = body.querySelector('[data-block-field="sourceUrl"]');
     const loopField = body.querySelector('[data-block-field="loop"]');
     const mutedField = body.querySelector('[data-block-field="muted"]');
+    const kindField = body.querySelector('[data-block-field="mediaKind"]');
     const block = { type: 'video', content: src ? src.value.trim() : '' };
+    /* Признак «это гифка» собирается вместе с остальным: сборка идёт из DOM,
+       и поле, которого нет в разметке, тихо теряется при каждом сохранении. */
+    if (kindField && kindField.value) block.mediaKind = kindField.value;
     /* Петля без «без звука» не запустится: браузеры не дают автозапуск со
        звуком. Поэтому одно включает другое, а не спорит с ним. */
     if (loopField) block.loop = !!loopField.checked;
@@ -8984,13 +8991,24 @@ window.removeBlock = function(index) {
     redrawBlockEditor(blocks);}
 };
 
+/* Одна фабрика на оба места вставки — палитру внизу и меню между блоками.
+   Раньше заготовка блока была написана дважды, и любой новый тип пришлось бы
+   заводить в двух местах (а забыть — в одном). */
+function makeEditorBlock(type) {
+  if (type === 'gallery') return { type, content: [] };
+  if (type === 'checklist') return { type, content: { items: [''] } };
+  if (type === 'poll') return { type, content: { question: '', options: [{ label: '', votes: 0 }] } };
+  if (type === 'map') return { type, content: '', coordinates: { lat: 0, lng: 0 } };
+  /* Гифка — это video с петлёй: отдельный тип блока пришлось бы учить и
+     сайту, и переводам, и экспорту, ради разницы, которая касается только
+     редактора. */
+  if (type === 'gif') return { type: 'video', mediaKind: 'gif', content: '', loop: true, muted: true };
+  return { type, content: '' };
+}
+
 window.addBlock = function(type) {
   const blocks = collectBlockEditorContent();
-  const newBlock = { type, content: '' };
-  if (type === 'gallery') newBlock.content = [];
-  if (type === 'checklist') newBlock.content = { items: [''] };
-  if (type === 'poll') newBlock.content = { question: '', options: [{ label: '', votes: 0 }] };
-  if (type === 'map') { newBlock.content = ''; newBlock.coordinates = { lat: 0, lng: 0 }; }
+  const newBlock = makeEditorBlock(type);
   blocks.push(newBlock);
   const editorEl = document.getElementById('vf-block-editor');
   if (editorEl) {
@@ -15870,6 +15888,7 @@ window.handleBlockImageUpload = async function(index) {
       const previous = blocks[index] || {};
       blocks[index] = {
         type: 'video',
+        mediaKind: 'gif',
         content: result.url,
         caption: previous.caption || '',
         poster: result.posterUrl || '',
@@ -16626,6 +16645,13 @@ async function flushModernEditor() {
     { t: 'note',      label: 'Заметка',  icon: '✎' },
     { t: 'image',     label: 'Фото',     icon: '▣' },
     { t: 'gallery',   label: 'Галерея',  icon: '⊞' },
+    /* Гифка отделена от видео намеренно. Технически это тот же блок: гифка
+       превращается в WebM и хранится как video с петлёй. Но выбирают их по
+       назначению, а не по формату — гифка идёт по кругу, молчит и не просит
+       нажать «play», — и человек, ищущий «куда вставить гифку», не обязан
+       догадываться, что она прячется под «Видео». Именно на этом всё и
+       ломалось: гифку несли в блок «Фото». */
+    { t: 'gif',       label: 'Гифка',    icon: '◉' },
     { t: 'video',     label: 'Видео',    icon: '▶' },
     { t: 'checklist', label: 'Чеклист',  icon: '☑' },
     { t: 'link',      label: 'Ссылка',   icon: '↗' },
@@ -17079,15 +17105,27 @@ async function flushModernEditor() {
       const directMatch = /\.(?:mp4|webm|ogv|ogg)(?:$|[?#])/i.test(url);
       const thumb = ytMatch ? `https://img.youtube.com/vi/${ytMatch[1]}/hqdefault.jpg` : (block.poster || '');
       const provider = ytMatch ? 'YouTube' : vimeoMatch ? 'Vimeo' : directMatch ? 'MP4/WebM' : '';
-      inner = `<div class="wys-video">
-        <div class="wys-video-thumb">${thumb ? `<img src="${esc(thumb)}" referrerpolicy="no-referrer" alt="">` : `<div class="wys-video-ph">${provider || '▶'}</div>`}</div>
+      /* Гифка — тот же блок, но другой разговор с редактором: у неё нет
+         звука и постера «для превью», зато есть загрузка с компьютера и
+         обещание, что она пойдёт по кругу. */
+      const isGif = block.mediaKind === 'gif' || /[.]loop[.](?:webm|mp4)(?:$|[?#])/i.test(url);
+      inner = `<div class="wys-video${isGif ? ' is-gif' : ''}">
+        <div class="wys-video-thumb">${
+          isGif && directMatch
+            ? `<video src="${esc(url)}" muted loop playsinline autoplay preload="metadata"></video>`
+            : thumb ? `<img src="${esc(thumb)}" referrerpolicy="no-referrer" alt="">` : `<div class="wys-video-ph">${isGif ? '◉' : (provider || '▶')}</div>`
+        }</div>
         <div class="wys-video-fields">
-          <input class="wys-inline-input" data-wys="content-str" data-i="${i}" value="${esc(url)}" placeholder="YouTube, Vimeo или прямой .mp4/.webm URL">
-          <input class="wys-inline-input" data-wys="poster" data-i="${i}" value="${esc(block.poster || '')}" placeholder="Постер для Vimeo/MP4 (необязательно)">
-          <input class="wys-inline-input" data-wys="caption" data-i="${i}" value="${esc(block.caption || '')}" placeholder="Подпись к видео">
+          <div class="wys-video-actions">
+            <button type="button" class="wys-gal-add" data-wys-act="video-upload" data-i="${i}" data-gif="${isGif ? '1' : ''}">⇪ ${isGif ? 'Загрузить гифку с ПК' : 'Загрузить файл с ПК'}</button>
+            ${isGif ? '<span class="wys-video-note">Идёт по кругу, без звука и без панели управления</span>' : ''}
+          </div>
+          <input class="wys-inline-input" data-wys="content-str" data-i="${i}" value="${esc(url)}" placeholder="${isGif ? 'Ссылка на гифку или файл (заполнится при загрузке)' : 'YouTube, Vimeo или прямой .mp4/.webm URL'}">
+          <input class="wys-inline-input" data-wys="poster" data-i="${i}" value="${esc(block.poster || '')}" placeholder="${isGif ? 'Первый кадр (ставится сам при загрузке)' : 'Постер для Vimeo/MP4 (необязательно)'}">
+          <input class="wys-inline-input" data-wys="caption" data-i="${i}" value="${esc(block.caption || '')}" placeholder="Подпись${isGif ? ' к гифке' : ' к видео'}">
           <input class="wys-inline-input" data-wys="credit" data-i="${i}" value="${esc(block.credit || '')}" placeholder="Автор / credit">
           <input class="wys-inline-input" data-wys="source-url" data-i="${i}" value="${esc(block.sourceUrl || '')}" placeholder="Источник / права (https://…)">
-          ${url && !provider ? '<p class="wys-video-warn">Поддерживаются YouTube, Vimeo и прямые MP4/WebM. Неизвестная ссылка останется кликабельной.</p>' : ''}
+          ${url && !provider && !isGif ? '<p class="wys-video-warn">Поддерживаются YouTube, Vimeo и прямые MP4/WebM. Неизвестная ссылка останется кликабельной.</p>' : ''}
         </div>
       </div>`;
     } else if (t === 'poll') {
@@ -17390,6 +17428,50 @@ async function flushModernEditor() {
     if (a === 'tag-add') { const t = prompt('Новый тег:'); if (t && t.trim()) { _model.tags = _model.tags || []; _model.tags.push(t.trim()); render(); commit(); } return; }
     if (a === 'tag-del') { _model.tags.splice(i, 1); render(); commit(); return; }
     if (a === 'gal-add') { const b = _model.content[i]; if (b) { if (!Array.isArray(b.content)) b.content = []; openImagePicker((urls) => { b.content.push(...(Array.isArray(urls) ? urls : [urls])); render(); commit(); }, { multi: true }); } return; }
+    /* Загрузка видео и гифки прямо из редактора статьи. До сих пор здесь были
+       только поля для ссылки: файл с компьютера вставить было нечем, и это
+       вторая половина истории «гифки не вставляются» — первая была в блоке
+       «Фото», куда их несли за неимением другого места. */
+    if (a === 'video-upload') {
+      const block = _model.content[i];
+      if (!block) return;
+      const wantsGif = act.getAttribute('data-gif') === '1';
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = wantsGif ? 'image/gif,video/*' : 'video/*,image/gif';
+      input.hidden = true;
+      document.body.appendChild(input);
+      input.onchange = async () => {
+        const file = (input.files || [])[0];
+        input.remove();
+        if (!file) return;
+        const label = act.textContent;
+        act.disabled = true;
+        act.textContent = 'Загрузка…';
+        try {
+          const result = await uploadVideoReturnResult(file);
+          block.content = result.url;
+          if (result.posterUrl) block.poster = result.posterUrl;
+          /* Гифка остаётся гифкой и в модели, и в имени файла: сайту хватит
+             любого из двух признаков, чтобы пустить её по кругу. */
+          if (wantsGif || result.isLoopFile || result.loopSuggested) {
+            block.mediaKind = wantsGif || result.isLoopFile ? 'gif' : block.mediaKind;
+            block.loop = true;
+            block.muted = true;
+          }
+          const before = (result.originalBytes / 1024 / 1024).toFixed(1);
+          const after = (result.bytes / 1024 / 1024).toFixed(2);
+          showToast('success', `Загружено и сжато: ${before} МБ → ${after} МБ`);
+          render(); commit();
+        } catch (err) {
+          showToast('error', err.message || 'Не удалось загрузить файл');
+          act.disabled = false;
+          act.textContent = label;
+        }
+      };
+      input.click();
+      return;
+    }
     if (a === 'gal-add-multi') { const b = _model.content[i]; if (b) { if (!Array.isArray(b.content)) b.content = []; openMultiImageUpload((urls) => { b.content.push(...urls); render(); commit(); }, act); } return; }
     if (a === 'gal-del') {
       const gi = Number(act.getAttribute('data-gi'));
@@ -17694,6 +17776,9 @@ async function flushModernEditor() {
     if (type === 'link') return { type: 'link', content: '', url: '' };
     if (type === 'audio') return { type: 'audio', content: '', caption: '' };
     if (type === 'video') return { type: 'video', content: '', caption: '' };
+    /* Хранится как video: сайту, переводам и экспорту не нужен ещё один тип
+       блока, а mediaKind говорит редактору, какой вид показать. */
+    if (type === 'gif') return { type: 'video', mediaKind: 'gif', content: '', caption: '', loop: true, muted: true };
     if (type === 'map') return { type: 'map', content: '' };
     if (type === 'header') return { type: 'header', content: '' };
     if (type === 'quote') return { type: 'quote', content: '' };
