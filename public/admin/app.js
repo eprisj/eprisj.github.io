@@ -10811,7 +10811,7 @@ function bindStudioMediaActions() {
     if (meta) meta.textContent = `${item.homeCategory || homepageCardEditCategory || 'Без категории'} · ${picsIdFor(item)} · фото-карточка`;
     renderHomepageCardImagePreview(values.homepageCardImageUrl);
     const status = homepageCardField('homepageCardEditorStatus');
-    if (status) status.textContent = 'Изменения пока не сохранены.';
+    if (status) status.textContent = 'Правки записываются сами, подтверждать ничего не нужно.';
     if (modal) {
       modal.hidden = false;
       requestAnimationFrame(() => homepageCardField('homepageCardTitle')?.focus());
@@ -10862,20 +10862,46 @@ function bindStudioMediaActions() {
     return { data, item };
   }
 
-  function saveHomepageCardDraft({ close = true } = {}) {
+  /* Карточка пишется сама.
+     Раньше правку надо было подтвердить кнопкой «Сохранить карточку», и это был
+     единственный способ не потерять работу: закрыл окно мимо кнопки — набранное
+     исчезло. Теперь любое изменение поля уходит в черновик через паузу в 700 мс,
+     а кнопка осталась только чтобы закрыть окно. Тост при автозаписи не
+     показывается: он бы всплывал на каждое слово. */
+  let homepageCardAutosaveTimer = 0;
+
+  function homepageCardSavedNote() {
+    const time = new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+    return `Сохранено в черновик в ${time}. На сайт попадёт после «Опубликовать».`;
+  }
+
+  function saveHomepageCardDraft({ close = true, silent = false } = {}) {
     const result = collectHomepageCardDraft();
     if (!result) {
-      showToast?.('error', 'Не удалось сохранить карточку: контент не загружен.');
+      if (!silent) showToast?.('error', 'Не удалось сохранить карточку: контент не загружен.');
       return null;
     }
     setEditorData(result.data);
     renderHomepageTab();
     scheduleHomepageAutoPublish();
     const status = homepageCardField('homepageCardEditorStatus');
-    if (status) status.textContent = 'Сохранено в черновик главной. Публичная версия изменится после «Опубликовать».';
-    showToast?.('success', 'Карточка сохранена в черновик главной. Проверьте превью и нажмите «Опубликовать».');
+    if (status) status.textContent = homepageCardSavedNote();
+    if (!silent) showToast?.('success', 'Карточка сохранена в черновик главной.');
     if (close) closeHomepageCardEditor();
     return result;
+  }
+
+  function scheduleHomepageCardAutosave() {
+    const status = homepageCardField('homepageCardEditorStatus');
+    if (status) status.textContent = 'Записываю…';
+    clearTimeout(homepageCardAutosaveTimer);
+    homepageCardAutosaveTimer = setTimeout(() => {
+      /* Окно могли закрыть, пока шла пауза: тогда запись уже сделана в
+         closeHomepageCardEditor, а повторная создала бы пустую карточку. */
+      const modal = homepageCardField('homepageCardEditor');
+      if (!modal || modal.hidden) return;
+      saveHomepageCardDraft({ close: false, silent: true });
+    }, 700);
   }
 
   async function syncHomepageCardLanguages() {
@@ -10889,7 +10915,7 @@ function bindStudioMediaActions() {
       await translateEntryToAllLanguages(result.data, 'items', DEFAULT_LANGUAGE, result.item, { statusPrefix: 'Синхронизация карточки' });
       setEditorData(result.data);
       renderHomepageTab();
-      if (status) status.textContent = '7 языков обновлены в черновике. Теперь нажмите «Опубликовать».';
+      if (status) status.textContent = '7 языков обновлены в черновике. Осталось нажать «Опубликовать».';
       showToast?.('success', 'Карточка синхронизирована на 7 языков.');
     } catch (error) {
       if (status) status.textContent = `Синхронизация не завершена: ${getErrorMessage(error)}`;
@@ -10899,10 +10925,25 @@ function bindStudioMediaActions() {
     }
   }
 
+  /* Закрытие — это тоже момент сохранения: иначе правка, сделанная за 700 мс
+     до клика по крестику, не успела бы записаться. */
+  function closeHomepageCardEditorSaving() {
+    clearTimeout(homepageCardAutosaveTimer);
+    const modal = homepageCardField('homepageCardEditor');
+    if (modal && !modal.hidden) saveHomepageCardDraft({ close: false, silent: true });
+    closeHomepageCardEditor();
+  }
+
   function bindHomepageCardEditor() {
-    homepageCardField('homepageCardEditorClose')?.addEventListener('click', closeHomepageCardEditor);
-    homepageCardField('homepageCardEditorCancel')?.addEventListener('click', closeHomepageCardEditor);
-    homepageCardField('homepageCardEditorApply')?.addEventListener('click', () => saveHomepageCardDraft());
+    homepageCardField('homepageCardEditorClose')?.addEventListener('click', closeHomepageCardEditorSaving);
+    homepageCardField('homepageCardEditorApply')?.addEventListener('click', closeHomepageCardEditorSaving);
+    ['homepageCardCategory', 'homepageCardTitle', 'homepageCardSubtitle', 'homepageCardDescription',
+      'homepageCardCredit', 'homepageCardSourceUrl', 'homepageCardImageUrl'].forEach((id) => {
+      const field = homepageCardField(id);
+      if (!field) return;
+      field.addEventListener('input', scheduleHomepageCardAutosave);
+      field.addEventListener('change', scheduleHomepageCardAutosave);
+    });
     homepageCardField('homepageCardEditorSync')?.addEventListener('click', syncHomepageCardLanguages);
     homepageCardField('homepageCardImageUrl')?.addEventListener('input', (event) => renderHomepageCardImagePreview(event.target.value));
     const uploadButton = homepageCardField('homepageCardUploadBtn');
@@ -10918,7 +10959,8 @@ function bindStudioMediaActions() {
         const input = homepageCardField('homepageCardImageUrl');
         if (input) { input.value = url; renderHomepageCardImagePreview(url); }
         const status = homepageCardField('homepageCardEditorStatus');
-        if (status) status.textContent = 'Фото загружено. Нажмите «Сохранить карточку».';
+        if (status) status.textContent = 'Фото загружено и записано в черновик.';
+        saveHomepageCardDraft({ close: false, silent: true });
       } catch (error) {
         showToast?.('error', getErrorMessage(error));
       } finally {
@@ -12261,8 +12303,8 @@ function bindStudioMediaActions() {
       fillNote.textContent = !draft
         ? 'Сначала создайте выпуск.'
         : (filled >= total
-          ? 'Все пять слотов заполнены.'
-          : `Заполнено ${filled} из ${total}: откройте пустой слот ниже и добавьте фото.`);
+          ? 'Все пять слотов заполнены, правки записаны.'
+          : `Заполнено ${filled} из ${total}: откройте пустой слот ниже и добавьте фото. Правки записываются сами.`);
     }
 
     setState('publish', ready ? 'current' : 'idle');
