@@ -1,4 +1,5 @@
 import { FormEvent, useCallback, useEffect, useMemo, useState } from 'react';
+import { SupportJournal } from '../components/SupportJournal';
 import { Loader2, Check, AlertCircle, Paperclip, X } from 'lucide-react';
 
 /* ПУБЛИЧНАЯ АНКЕТА.
@@ -61,7 +62,7 @@ const COPY = {
         invite: 'This form is open by invitation. Use the personal link the editors sent you.',
         required: 'Please fill in the highlighted fields.', send: 'Send answers', sending: 'Sending…',
         sent: 'Thank you. Your answers are with the editors.', error: 'Could not send the form. Try again in a minute.',
-        requiredMark: 'required', invitedAs: 'Answering as', progress: 'Filled in', thisRequired: 'This answer is required.', left: 'Left', dropHint: 'or drop them here', filesFull: 'Maximum files attached:', minLength: 'at least', closedDeadline: 'The deadline for this form has passed.', closedLimit: 'This form has collected all the answers it needed.', supportShow: 'Support the journal', supportHide: 'Hide details', copy: 'Copy', copied: 'Copied',
+        requiredMark: 'required', invitedAs: 'Answering as', progress: 'Filled in', thisRequired: 'This answer is required.', left: 'Left', dropHint: 'or drop them here', filesFull: 'Maximum files attached:', minLength: 'at least', closedDeadline: 'The deadline for this form has passed.', closedLimit: 'This form has collected all the answers it needed.',
         savedHere: 'Saved on this device. You can close the tab and come back.', restored: 'We brought back the answers you started earlier.', leaveWarning: 'Your answers are saved here, but not sent yet.',
         previewBanner: 'Preview. This is how the form looks to the author; answers cannot be sent from here.',
         attach: 'Attach files', uploading: 'Uploading…', remove: 'Remove',
@@ -70,7 +71,7 @@ const COPY = {
         invite: 'Анкета открыта по приглашению. Откройте личную ссылку, которую прислала редакция.',
         required: 'Заполните отмеченные поля.', send: 'Отправить ответы', sending: 'Отправляем…',
         sent: 'Спасибо. Ответы у редакции.', error: 'Не удалось отправить. Попробуйте через минуту.',
-        requiredMark: 'обязательно', invitedAs: 'Отвечает', progress: 'Заполнено', thisRequired: 'Без этого ответа нельзя отправить.', left: 'Осталось', dropHint: 'или перетащите их сюда', filesFull: 'Больше файлов не нужно, максимум:', minLength: 'не меньше', closedDeadline: 'Срок подачи закончился.', closedLimit: 'Анкета собрала нужное число ответов.', supportShow: 'Поддержать журнал', supportHide: 'Свернуть', copy: 'Копировать', copied: 'Скопировано',
+        requiredMark: 'обязательно', invitedAs: 'Отвечает', progress: 'Заполнено', thisRequired: 'Без этого ответа нельзя отправить.', left: 'Осталось', dropHint: 'или перетащите их сюда', filesFull: 'Больше файлов не нужно, максимум:', minLength: 'не меньше', closedDeadline: 'Срок подачи закончился.', closedLimit: 'Анкета собрала нужное число ответов.',
         savedHere: 'Сохраняется на этом устройстве. Вкладку можно закрыть и вернуться позже.', restored: 'Вернули ответы, которые вы начали раньше.', leaveWarning: 'Ответы сохранены здесь, но ещё не отправлены.',
         previewBanner: 'Предпросмотр. Так анкету видит автор; отправить ответы отсюда нельзя.',
         attach: 'Прикрепить файлы', uploading: 'Загружаем…', remove: 'Убрать',
@@ -79,7 +80,7 @@ const COPY = {
         invite: 'Анкета відкрита за запрошенням. Відкрийте особисте посилання від редакції.',
         required: 'Заповніть позначені поля.', send: 'Надіслати відповіді', sending: 'Надсилаємо…',
         sent: 'Дякуємо. Відповіді у редакції.', error: 'Не вдалося надіслати. Спробуйте за хвилину.',
-        requiredMark: 'обовʼязково', invitedAs: 'Відповідає', progress: 'Заповнено', thisRequired: 'Без цієї відповіді не надіслати.', left: 'Залишилось', dropHint: 'або перетягніть їх сюди', filesFull: 'Більше файлів не потрібно, максимум:', minLength: 'не менше', closedDeadline: 'Строк подання завершився.', closedLimit: 'Анкета зібрала потрібну кількість відповідей.', supportShow: 'Підтримати журнал', supportHide: 'Згорнути', copy: 'Копіювати', copied: 'Скопійовано',
+        requiredMark: 'обовʼязково', invitedAs: 'Відповідає', progress: 'Заповнено', thisRequired: 'Без цієї відповіді не надіслати.', left: 'Залишилось', dropHint: 'або перетягніть їх сюди', filesFull: 'Більше файлів не потрібно, максимум:', minLength: 'не менше', closedDeadline: 'Строк подання завершився.', closedLimit: 'Анкета зібрала потрібну кількість відповідей.',
         savedHere: 'Зберігається на цьому пристрої. Вкладку можна закрити й повернутися пізніше.', restored: 'Повернули відповіді, які ви почали раніше.', leaveWarning: 'Відповіді збережені тут, але ще не надіслані.',
         previewBanner: 'Попередній перегляд. Так анкету бачить автор; надіслати відповіді звідси не можна.',
         attach: 'Прикріпити файли', uploading: 'Завантажуємо…', remove: 'Прибрати',
@@ -112,53 +113,6 @@ const choiceClass = (selected: boolean) =>
     : 'border-[rgb(var(--c-accent-rgb)_/_0.18)] text-[rgb(var(--c-accent-rgb)_/_0.8)] hover:border-[rgb(var(--c-accent-rgb)_/_0.45)]');
 
 
-/* БЛОК ПОДДЕРЖКИ.
-
-   Свёрнут по умолчанию: видна одна строка о том, что публикация бесплатна, и
-   сдержанная кнопка. Реквизиты появляются, только если человек сам этого
-   захотел. У каждого способа своя кнопка копирования: номер карты и IBAN
-   выделять пальцем на телефоне мучительно, а ошибиться в одной цифре легко. */
-function SupportBlock({ support, open, onToggle, copied, onCopy, t }: {
-  support: NonNullable<PublicForm['support']>;
-  open: boolean;
-  onToggle: () => void;
-  copied: string;
-  onCopy: (label: string, value: string) => void;
-  t: typeof COPY.EN;
-}) {
-  return (
-    <aside className="mt-14 border-t border-[rgb(var(--c-accent-rgb)_/_0.18)] pt-6">
-      {/* Строка про бесплатность набрана плотнее остального мелкого текста:
-          это единственное здесь утверждение, ради которого блок и существует,
-          и оно не должно читаться как сноска. Кнопка держит тот же вес. */}
-      <p className="font-serif text-[15px] font-medium leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.88)]">{support.free}</p>
-      <button type="button" onClick={onToggle}
-        className="mt-3.5 inline-flex items-center gap-2 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.45)] px-5 py-2.5 font-mono text-[10.5px] font-bold uppercase tracking-[0.18em] text-[var(--c-accent)] transition-colors hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]">
-        {open ? t.supportHide : t.supportShow}
-      </button>
-      {open && (
-        <div className="mt-4">
-          <p className="font-serif text-[14px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.55)]">{support.invite}</p>
-          <dl className="mt-3 space-y-2">
-            {support.methods.map((method) => (
-              <div key={method.label} className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                <dt className="min-w-[52px] font-mono text-[10px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.45)]">{method.label}</dt>
-                <dd id={`support-${method.label}`} className="select-all font-mono text-[13px] text-[var(--c-accent)]">
-                  {method.value}
-                  {method.note && <span className="ml-2 text-[rgb(var(--c-accent-rgb)_/_0.45)]">{method.note}</span>}
-                </dd>
-                <button type="button" onClick={() => onCopy(method.label, method.value)}
-                  className="rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.22)] px-3 py-1 font-mono text-[9px] uppercase tracking-[0.14em] text-[rgb(var(--c-accent-rgb)_/_0.6)] transition-colors hover:border-[var(--c-accent)] hover:text-[var(--c-accent)]">
-                  {copied === method.label ? t.copied : t.copy}
-                </button>
-              </div>
-            ))}
-          </dl>
-        </div>
-      )}
-    </aside>
-  );
-}
 
 export function FormPage({ slug, token }: { slug: string; token?: string }) {
   const [form, setForm] = useState<PublicForm | null>(null);
@@ -236,28 +190,6 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
      выглядит как счёт, даже когда сопровождается словами «публикация
      бесплатна»: цифры считываются раньше текста. Кнопка оставляет выбор
      за человеком, а тем, кто не собирался платить, не показывает ничего. */
-  const [supportOpen, setSupportOpen] = useState(false);
-  const [copied, setCopied] = useState('');
-
-  const copyValue = useCallback(async (label: string, value: string) => {
-    try {
-      await navigator.clipboard.writeText(value);
-      setCopied(label);
-      window.setTimeout(() => setCopied(''), 2000);
-    } catch {
-      // Буфер недоступен (старый браузер, отказ в правах): выделяем текст,
-      // чтобы человек скопировал сам, а не остался ни с чем.
-      const node = document.getElementById(`support-${label}`);
-      if (node) {
-        const range = document.createRange();
-        range.selectNodeContents(node);
-        const selection = window.getSelection();
-        selection?.removeAllRanges();
-        selection?.addRange(range);
-      }
-    }
-  }, []);
-
   /* Файл уходит на сервер сразу при выборе, а не вместе с анкетой.
      Так автор видит, что пятисотмегабайтный макет действительно загрузился,
      до того как нажмёт «Отправить», — и не теряет заполненные ответы, если
@@ -467,7 +399,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
         )}
         {form?.support && (
           <div className="mt-10 w-full text-left">
-            <SupportBlock support={form.support} open={supportOpen} onToggle={() => setSupportOpen((v) => !v)} copied={copied} onCopy={copyValue} t={t} />
+            <SupportJournal lang={form.language} />
           </div>
         )}
         <span className="mt-9 h-px w-16 bg-[rgb(var(--c-accent-rgb)_/_0.25)]" />
@@ -754,12 +686,11 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
 
       {/* ПОДДЕРЖКА ПРОЕКТА.
 
-          Стоит после всех вопросов и до кнопки, набрана мелко и без единого
-          восклицательного знака: человек уже сделал главное, ответил, и его
-          нельзя встречать просьбой о деньгах в середине работы. Первая строка
-          снимает вопрос, который автор боится задать вслух: публикация
-          бесплатна. */}
-      {form!.support && <SupportBlock support={form!.support} open={supportOpen} onToggle={() => setSupportOpen((v) => !v)} copied={copied} onCopy={copyValue} t={t} />}
+          Стоит после всех вопросов и до кнопки: человек уже сделал главное,
+          ответил, и его не стоит встречать просьбой о деньгах в середине
+          работы. Свёрнута по умолчанию — тот же компонент, что в конце статей
+          и обзоров. */}
+      {form!.support && <SupportJournal lang={form!.language} className="mt-14" />}
 
       {/* Кнопка прилипает к низу экрана на телефоне: анкета длиннее экрана, и
           «Отправить» не должно требовать прокрутки в конец после того, как
