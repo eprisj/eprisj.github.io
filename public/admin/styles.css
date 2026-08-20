@@ -7384,15 +7384,40 @@ body.busy::after {
 .wysiwyg-toolbar button svg { width: 14px; height: 14px; }
 .manifest-fmtbar button svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; vertical-align: middle; }
 .player-icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+/* КНОПКИ ЧИТАЛИСЬ СЛАБО В ПОКОЕ И МОЛЧАЛИ НА ТАП.
+   Это правило стоит позже базового .btn (строка ~1233) и на равной
+   специфичности побеждает — то есть именно box-shadow отсюда определял
+   вид кнопки в состоянии покоя, а не более заметная тень из базового блока.
+   Прежнее значение — 4% непрозрачности на 1px — практически невидимо, и
+   кнопка выглядела плоской вырезкой, пока по ней не проведут курсором.
+   :hover на тач-экране не бывает вовсе: тапнул — увидел scale(.985) на 3%
+   и больше ничего. Отклика на нажатие не было по существу.
+   border-color не трогаю — острые углы и тонкая линия часть стиля сайта,
+   не баг; усиливаю глубину и текст, а не форму. */
 .btn {
   min-height: 40px;
   border-radius: 0;
-  box-shadow: 0 1px 0 rgba(25,25,25,.04);
+  border-width: 2px;
+  font-size: .7rem;
+  font-weight: 700;
+  box-shadow: 0 1px 2px rgba(25,25,25,.09), 0 2px 6px rgba(25,25,25,.06);
 }
 .btn:hover { box-shadow: 0 5px 14px rgba(45,45,45,.13); }
-.btn:active { transform: translateY(0) scale(.985); }
-.btn-sm { min-height: 34px; border-radius: 0; }
+/* Реальный отклик на нажатие, не только сжатие на 3%: та же инверсия в
+   акцент, что и на :hover, только теперь она срабатывает и на :active —
+   то есть на тач-экране тоже, где :hover не наступает никогда. */
+.btn:active {
+  background: var(--accent);
+  color: var(--bg-card);
+  border-color: var(--accent);
+  box-shadow: 0 1px 3px rgba(0,0,0,.18) inset;
+  transform: translateY(0) scale(.98);
+}
+.btn-sm { min-height: 34px; border-radius: 0; font-size: .64rem; }
 .btn-primary { box-shadow: 0 4px 12px rgba(45,45,45,.18); }
+/* Primary и так залита акцентом — на тап её незачем перекрашивать в тот же
+   цвет, только тень слегка утапливается. */
+.btn-primary:active { background: var(--accent); color: var(--bg-card); box-shadow: 0 1px 3px rgba(0,0,0,.25) inset; }
 
 
 
