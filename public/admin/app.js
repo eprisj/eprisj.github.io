@@ -782,8 +782,8 @@ function logout() {
 authLoginPwBtn?.addEventListener('click', handlePasswordLogin);
 authLoginInput?.addEventListener('keydown', (e) => { if (e.key === 'Enter') handlePasswordLogin(); });
 authPasswordInput?.addEventListener('keydown', (e) => { if (e.key === 'Enter') handlePasswordLogin(); });
-byId('logoutBtn')?.addEventListener('click', () => {
-  if (confirm('Выйти из редакции? Потребуется снова ввести пароль.')) logout();
+byId('logoutBtn')?.addEventListener('click', async () => {
+  if (await showConfirmModal('Выйти из редакции?', 'Потребуется снова ввести пароль.', 'Выйти')) logout();
 });
 
 // Bootstrap: auth gate first, then init
@@ -3355,6 +3355,38 @@ function showConfirmModal(title, bodyHtml, confirmLabel = '\u0414\u0430') {
     overlay.querySelector('[data-action="cancel"]').addEventListener('click', () => close(false));
     overlay.querySelector('[data-action="confirm"]').addEventListener('click', () => close(true));
     overlay.addEventListener('click', (e) => { if (e.target === overlay) close(false); });
+  });
+}
+
+// ===== TEXT PROMPT MODAL =====
+/* Замена window.prompt(): та же форма (заголовок + одно поле + Отмена/OK),
+   но в стиле панели, а не системным диалогом с чужими шрифтом и кнопками.
+   Третий параметр — пояснение НАД полем, не placeholder: тот пропадает,
+   как только в поле уже есть значение (а тут обычно есть — правят
+   существующую подпись, а не пишут с нуля), и длинное объяснение было бы
+   не видно ровно тогда, когда нужнее всего.
+   Не годится для мест, где prompt() держит фокус/выделение в contenteditable
+   между показом и ответом (execCommand('createLink', …) и подобные) — эта
+   модалка асинхронная и фокус в поле ввода собьёт выделение раньше, чем
+   диалог закроется. Для тех мест prompt() остаётся синхронным намеренно. */
+function showPromptModal(title, defaultValue = '', description = '') {
+  return new Promise((resolve) => {
+    const overlay = document.createElement('div');
+    overlay.className = 'modal-overlay';
+    const descHtml = description ? `<p>${escapeHtml(description)}</p>` : '';
+    overlay.innerHTML = `<div class="modal-card"><h3 class="modal-title">${escapeHtml(title)}</h3><div class="modal-body">${descHtml}<input type="text" class="modal-input" value="${escapeHtml(defaultValue)}"></div><div class="modal-actions"><button class="btn" type="button" data-action="cancel">Отмена</button><button class="btn btn-primary" type="button" data-action="confirm">OK</button></div></div>`;
+    document.body.appendChild(overlay);
+    const input = overlay.querySelector('.modal-input');
+    const close = (result) => { overlay.classList.add('removing'); setTimeout(() => overlay.remove(), 200); resolve(result); };
+    overlay.querySelector('[data-action="cancel"]').addEventListener('click', () => close(null));
+    overlay.querySelector('[data-action="confirm"]').addEventListener('click', () => close(input.value));
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(null); });
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { e.preventDefault(); close(input.value); }
+      if (e.key === 'Escape') { e.preventDefault(); close(null); }
+    });
+    // Фокус сразу и выделенное значение — как у prompt(), правку начинают с чистого листа.
+    requestAnimationFrame(() => { input.focus(); input.select(); });
   });
 }
 
@@ -8978,8 +9010,8 @@ window.moveBlock = function(index, direction) {
     redrawBlockEditor(blocks);}
 };
 
-window.removeBlock = function(index) {
-  if (!confirm('Удалить блок #' + (index + 1) + '?')) return;
+window.removeBlock = async function(index) {
+  if (!(await showConfirmModal(`Удалить блок #${index + 1}?`, 'Блок исчезнет из статьи после сохранения.', 'Удалить'))) return;
   const blocks = collectBlockEditorContent();
   blocks.splice(index, 1);
   // Shift collapse states
@@ -13613,11 +13645,12 @@ function bindStudioMediaActions() {
     wrap.querySelectorAll('[data-author-edit]').forEach((b) =>
       b.addEventListener('click', () => openEditor(authors.find((a) => String(a.id) === b.getAttribute('data-author-edit')))));
     wrap.querySelectorAll('[data-author-del]').forEach((b) =>
-      b.addEventListener('click', () => {
+      b.addEventListener('click', async () => {
         const id = b.getAttribute('data-author-del');
         const idx = authors.findIndex((author) => String(author.id) === id);
         const a = authors[idx];
-        if (!a || !confirm(`Удалить участника «${a.name || ''}»? Статьи не удаляются, но потеряют привязку к его карточке.`)) return;
+        if (!a) return;
+        if (!(await showConfirmModal(`Удалить участника «${a.name || ''}»?`, 'Статьи не удаляются, но потеряют привязку к его карточке.', 'Удалить'))) return;
         const d = readContent(); if (!d) return;
         const liveIndex = authorsArray(d).findIndex((author) => String(author.id) === id);
         if (liveIndex >= 0) authorsArray(d).splice(liveIndex, 1);
@@ -13696,7 +13729,7 @@ function bindStudioMediaActions() {
           if (urlInp) urlInp.value = url;
           const box = card.querySelector('[data-af-photo]');
           if (box) box.innerHTML = `<img src="${esc(url)}" alt="">`;
-        } catch (err) { alert('Не удалось загрузить фото: ' + err.message); }
+        } catch (err) { showToast('error', 'Не удалось загрузить фото: ' + err.message); }
         finally { upBtn.disabled = false; upBtn.textContent = 'Загрузить фото'; }
       };
       fi.click();
@@ -13707,7 +13740,7 @@ function bindStudioMediaActions() {
       a.role = (a.role || '').trim();
       a.bio = (a.bio || '').trim();
       a.teamOrder = Math.max(1, Number.parseInt(a.teamOrder, 10) || nextOrder);
-      if (!a.name) { alert('У участника должно быть имя.'); return; }
+      if (!a.name) { showToast('error', 'У участника должно быть имя.'); return; }
       const activeCb = card.querySelector('[data-af-active]');
       const teamCb = card.querySelector('[data-af-team]');
       const translateCb = card.querySelector('[data-af-translate]');
@@ -13716,7 +13749,7 @@ function bindStudioMediaActions() {
       a.active = !!(activeCb && activeCb.checked);
       a.showOnTeam = !!(teamCb && teamCb.checked);
       const data = readContent();
-      if (!data) { alert('Не удалось прочитать контент.'); return; }
+      if (!data) { showToast('error', 'Не удалось прочитать контент.'); return; }
       saveButton.disabled = true;
       saveButton.textContent = translateCb?.checked ? 'Перевожу…' : 'Сохраняю…';
       try {
@@ -13998,7 +14031,7 @@ function bindStudioMediaActions() {
   };
 
   window._radioDeleteTrack = async function(id, title) {
-    if (!confirm('Удалить «' + title + '»?')) return;
+    if (!(await showConfirmModal(`Удалить «${title}»?`, 'Трек и файл на сервере будут удалены без возможности восстановить.', 'Удалить'))) return;
     try {
       const j = await radioFetch('/api/music/tracks/' + id, { method: 'DELETE' });
       if (j.ok) { radioShowToast('Трек удалён', 'success'); loadTracks(); }
@@ -14215,7 +14248,7 @@ function bindStudioMediaActions() {
 
   window._podcastEdit = id => { const p = _podcasts.find(x => x.id === id); if (p) showPodcastForm(p); };
   window._podcastDelete = async (id, title) => {
-    if (!confirm('Удалить «' + title + '»?')) return;
+    if (!(await showConfirmModal(`Удалить «${title}»?`, 'Выпуск подкаста будет удалён без возможности восстановить.', 'Удалить'))) return;
     try {
       const j = await radioFetch('/api/podcasts/' + id, { method: 'DELETE' });
       if (j.ok) { radioShowToast('Удалено', 'success'); loadPodcasts(); }
@@ -14383,7 +14416,7 @@ function bindStudioMediaActions() {
 
   window._annEdit = id => { const a = _announcements.find(x => x.id === id); if (a) showAnnForm(a); };
   window._annDelete = async (id, title) => {
-    if (!confirm('Удалить «' + title + '»?')) return;
+    if (!(await showConfirmModal(`Удалить «${title}»?`, 'Объявление будет удалено без возможности восстановить.', 'Удалить'))) return;
     try {
       const j = await radioFetch('/api/announcements/' + id, { method: 'DELETE' });
       if (j.ok) { radioShowToast('Удалено', 'success'); loadAnnouncements(); }
@@ -14656,7 +14689,8 @@ function bindStudioMediaActions() {
   }
 
   async function deletePlaylist() {
-    if (!_activePl || !confirm('Удалить плейлист «' + _activePl.title + '»?')) return;
+    if (!_activePl) return;
+    if (!(await showConfirmModal(`Удалить плейлист «${_activePl.title}»?`, 'Треки плейлиста останутся в общей библиотеке.', 'Удалить'))) return;
     try {
       const j = await radioFetch('/api/playlists/' + _activePl.id, { method: 'DELETE' });
       if (j.ok) { radioShowToast('Удалено', 'success'); _activePl = null; loadPlaylists(); }
@@ -15404,12 +15438,12 @@ function bindStudioMediaActions() {
       tags: document.getElementById('ptTags').value.trim(),
       is_published: document.getElementById('ptPublished').checked ? 1 : 0,
     };
-    if (!body.title || !body.audio_url) { alert('Название и аудио обязательны'); return; }
+    if (!body.title || !body.audio_url) { showToast('error', 'Название и аудио обязательны'); return; }
     const path = id ? `/api/podcasts/${id}` : '/api/podcasts';
     const method = id ? 'PUT' : 'POST';
     const j = await apiFetch(path, { method, body: JSON.stringify(body) });
     if (j.ok) { document.getElementById('podcastsTabForm').style.display = 'none'; loadList(); }
-    else alert(j.error || 'Ошибка сохранения');
+    else showToast('error', j.error || 'Ошибка сохранения');
   }
 
   window._ptEdit = id => { showForm(_list.find(p => p.id === id)); };
@@ -15420,7 +15454,7 @@ function bindStudioMediaActions() {
     loadList();
   };
   window._ptDelete = async (id, title) => {
-    if (!confirm(`Удалить «${title}»?`)) return;
+    if (!(await showConfirmModal(`Удалить «${title}»?`, 'Выпуск будет удалён без возможности восстановить.', 'Удалить'))) return;
     await apiFetch(`/api/podcasts/${id}`, { method: 'DELETE' });
     loadList();
   };
@@ -16395,7 +16429,7 @@ function __buildEditorTools() {
     tunes: ['imgAlignTune'],
     config: {
       uploader: {
-        uploadByFile: async (file) => { try { const url = await uploadImageReturnUrl(file); return { success: 1, file: { url } }; } catch (e) { alert('Ошибка загрузки изображения: ' + e.message); return { success: 0 }; } },
+        uploadByFile: async (file) => { try { const url = await uploadImageReturnUrl(file); return { success: 1, file: { url } }; } catch (e) { showToast('error', 'Ошибка загрузки изображения: ' + e.message); return { success: 0 }; } },
         uploadByUrl: async (url) => ({ success: 1, file: { url } })
       }
     }
@@ -17410,7 +17444,7 @@ async function flushModernEditor() {
   });
 
   // ── clicks: structural actions ────────────────────────────────────────────
-  canvas.addEventListener('click', (e) => {
+  canvas.addEventListener('click', async (e) => {
     const act = e.target.closest('[data-wys-act]');
     if (!act || !_model) return;
     const a = act.getAttribute('data-wys-act');
@@ -17433,7 +17467,7 @@ async function flushModernEditor() {
     if (a === 'down') { moveArticleBlock(i, i + 1); return; }
     if (a === 'bottom') { moveArticleBlock(i, _model.content.length - 1); return; }
     if (a === 'del')  { _model.content.splice(i, 1); _galSelected.clear(); render(); commit(); return; }
-    if (a === 'tag-add') { const t = prompt('Новый тег:'); if (t && t.trim()) { _model.tags = _model.tags || []; _model.tags.push(t.trim()); render(); commit(); } return; }
+    if (a === 'tag-add') { const t = await showPromptModal('Новый тег'); if (t && t.trim()) { _model.tags = _model.tags || []; _model.tags.push(t.trim()); render(); commit(); } return; }
     if (a === 'tag-del') { _model.tags.splice(i, 1); render(); commit(); return; }
     if (a === 'gal-add') { const b = _model.content[i]; if (b) { if (!Array.isArray(b.content)) b.content = []; openImagePicker((urls) => { b.content.push(...(Array.isArray(urls) ? urls : [urls])); render(); commit(); }, { multi: true }); } return; }
     /* Загрузка видео и гифки прямо из редактора статьи. До сих пор здесь были
@@ -17504,7 +17538,7 @@ async function flushModernEditor() {
       const b = _model.content[i];
       if (!b) return;
       if (!Array.isArray(b.alts)) b.alts = [];
-      const v = prompt('Подпись к этому фото — покажется на сайте под снимком и в лайтбоксе (а также как alt-текст для поисковиков и незрячих):', b.alts[gi] || '');
+      const v = await showPromptModal('Подпись к этому фото', b.alts[gi] || '', 'Покажется на сайте под снимком и в лайтбоксе, а также как alt-текст для поисковиков и незрячих.');
       if (v === null) return; // cancelled
       b.alts[gi] = v.trim();
       render(); commit();
@@ -17668,7 +17702,7 @@ async function flushModernEditor() {
     (async () => {
       for (const f of files) {
         try { b.content.push(await uploadImageReturnUrl(f)); render(); }
-        catch (err) { alert(`Не удалось загрузить "${f.name}": ${err.message}`); }
+        catch (err) { showToast('error', `Не удалось загрузить "${f.name}": ${err.message}`); }
       }
       commit();
     })();
@@ -17832,7 +17866,7 @@ async function flushModernEditor() {
       for (let idx = 0; idx < files.length; idx++) {
         if (triggerBtn) { triggerBtn.disabled = true; triggerBtn.textContent = `Загрузка ${idx + 1}/${files.length}…`; }
         try { urls.push(await uploadImageReturnUrl(files[idx])); }
-        catch (err) { alert(`Не удалось загрузить "${files[idx].name}": ${err.message}`); }
+        catch (err) { showToast('error', `Не удалось загрузить "${files[idx].name}": ${err.message}`); }
       }
       if (triggerBtn) { triggerBtn.disabled = false; triggerBtn.textContent = label; }
       if (urls.length) onDone(urls);
@@ -17891,7 +17925,7 @@ async function flushModernEditor() {
         if (Array.isArray(_mediaCache)) _mediaCache.unshift({ name: f.name, url, mtime: Date.now(), size: f.size });
         if (multi) { selected.add(url); updateDoneBtn(); renderGrid(); }
         else { closePopovers(); onPick(url); }
-      } catch (err) { alert('Ошибка загрузки: ' + err.message); }
+      } catch (err) { showToast('error', 'Ошибка загрузки: ' + err.message); }
       finally { btn.disabled = false; btn.textContent = '📁 Загрузить с ПК'; }
     };
 
@@ -17945,9 +17979,9 @@ async function flushModernEditor() {
           const url = btn.getAttribute('data-url');
           const usage = usageByUrl.get(url) || { count: 0, refs: [] };
           const warning = usage.count
-            ? `Используется (мест: ${usage.count}): ${usage.refs.map((r) => `${r.section}#${r.id}`).join(', ')}.\nУдаление приведёт к разбитым изображениям в этих записях.`
+            ? `Используется (мест: ${usage.count}): ${escapeHtml(usage.refs.map((r) => `${r.section}#${r.id}`).join(', '))}.<br>Удаление приведёт к разбитым изображениям в этих записях.`
             : 'Фото не используется в статьях, обзорах или галерее.';
-          if (!confirm(`Удалить «${name}» с сервера?\n${warning}`)) return;
+          if (!(await showConfirmModal(`Удалить «${escapeHtml(name)}» с сервера?`, warning, 'Удалить'))) return;
           btn.disabled = true;
           try {
             const pw = (typeof getAdminPassword === 'function') ? getAdminPassword() : '';
@@ -17961,7 +17995,7 @@ async function flushModernEditor() {
             if (Array.isArray(_mediaCache)) _mediaCache = _mediaCache.filter((it) => it.name !== name);
             btn.closest('.wys-media-cell').remove();
             if (!grid.querySelector('.wys-media-cell')) grid.innerHTML = '<div class="wys-media-empty">Пока нет загруженных фото — загрузите первое выше.</div>';
-          } catch (err) { btn.disabled = false; alert('Не удалось удалить: ' + err.message); }
+          } catch (err) { btn.disabled = false; showToast('error', 'Не удалось удалить: ' + err.message); }
         };
       });
     }
@@ -18239,7 +18273,7 @@ async function flushModernEditor() {
           if (urlInp) urlInp.value = url;
           const box = host.querySelector('[data-af-photo]');
           if (box) box.innerHTML = `<img src="${esc(url)}" style="width:100%;height:100%;object-fit:cover">`;
-        } catch (err) { alert('Не удалось загрузить фото: ' + err.message); }
+        } catch (err) { showToast('error', 'Не удалось загрузить фото: ' + err.message); }
         finally { upBtn.disabled = false; upBtn.textContent = 'Загрузить фото'; }
       };
       fi.click();
@@ -18247,11 +18281,11 @@ async function flushModernEditor() {
     host.querySelector('[data-af-cancel]').addEventListener('click', renderAuthorPicker);
     host.querySelector('[data-af-save]').addEventListener('click', () => {
       a.name = (a.name || '').trim();
-      if (!a.name) { alert('У автора должно быть имя.'); return; }
+      if (!a.name) { showToast('error', 'У автора должно быть имя.'); return; }
       const activeCb = host.querySelector('[data-af-active]');
       a.active = !!(activeCb && activeCb.checked);
       const { cdata } = authorsFromContent();
-      if (!cdata) { alert('Не удалось прочитать контент из редактора.'); return; }
+      if (!cdata) { showToast('error', 'Не удалось прочитать контент из редактора.'); return; }
       if (!Array.isArray(cdata.authors)) cdata.authors = [];
       const idx = cdata.authors.findIndex((x) => x.id === a.id);
       if (idx >= 0) cdata.authors[idx] = a; else cdata.authors.push(a);
@@ -20069,7 +20103,7 @@ async function showcaseSetStatus(id, next) {
   });
   if (!res.ok) {
     const detail = await res.text();
-    alert(`Не получилось: ${res.status} ${detail.slice(0, 120)}`);
+    showToast('error', `Не получилось: ${res.status} ${detail.slice(0, 120)}`);
     return;
   }
   await loadShowcaseQueue();
@@ -20085,7 +20119,7 @@ async function showcaseSetEnquiryStatus(id, next) {
   });
   if (!res.ok) {
     const detail = await res.text();
-    alert(`Не получилось: ${res.status} ${detail.slice(0, 120)}`);
+    showToast('error', `Не получилось: ${res.status} ${detail.slice(0, 120)}`);
     return;
   }
   await loadShowcaseEnquiries();
@@ -22068,7 +22102,7 @@ function bindFormEditor() {
       return;
     }
     if (target.dataset.responseDelete) {
-      if (!confirm('Удалить этот ответ? Восстановить будет нечем.')) return;
+      if (!(await showConfirmModal('Удалить этот ответ?', 'Восстановить будет нечем.', 'Удалить'))) return;
       await formsFetch(`/${encodeURIComponent(formsDraft.id)}/responses/${encodeURIComponent(target.dataset.responseDelete)}`, { method: 'DELETE' });
       openFormEditor(formsDraft.id);
       return;

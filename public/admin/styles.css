@@ -5601,6 +5601,20 @@ body.busy::after {
 .modal-body p { margin: 0 0 8px; }
 .modal-body p:last-child { margin-bottom: 0; }
 .modal-body strong { color: var(--text); font-weight: 600; }
+/* Поле showPromptModal — замена window.prompt(). Тот же язык, что у
+   базовых .btn: острые углы, видимая рамка, а не системный текстбокс. */
+.modal-input {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  min-height: 40px;
+}
+.modal-input:focus { outline: none; border-color: var(--accent); }
 .modal-actions { display: flex; justify-content: flex-end; gap: 8px; }
 
 /* ── Keyboard shortcuts panel — showShortcutsPanel() had no CSS at all until now ── */
