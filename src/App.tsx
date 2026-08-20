@@ -38,6 +38,7 @@ import {
   Review,
   setPreviewOverride,
   setPreviewToken,
+  hasPreviewToken,
   getTranslations,
   getTheme,
   getSiteSettings,
@@ -235,6 +236,9 @@ const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
   'lang.title': { EN: 'Language', RU: 'Язык', UA: 'Мова', DE: 'Sprache', IT: 'Lingua', ES: 'Idioma', TR: 'Dil' },
   'lang.chooseEdition': { EN: 'Choose edition', RU: 'Выберите версию', UA: 'Виберіть версію', DE: 'Ausgabe wählen', IT: 'Scegli edizione', ES: 'Elegir edición', TR: 'Baskı seç' },
   'article.notFound': { EN: 'Article not found', RU: 'Статья не найдена', UA: 'Статтю не знайдено', DE: 'Artikel nicht gefunden', IT: 'Articolo non trovato', ES: 'Artículo no encontrado', TR: 'Makale bulunamadı' },
+  'article.loading': { EN: 'Opening the article', RU: 'Открываем статью', UA: 'Відкриваємо статтю', DE: 'Artikel wird geöffnet', IT: 'Apertura dell\'articolo', ES: 'Abriendo el artículo', TR: 'Makale açılıyor' },
+  'article.loading.body': { EN: 'Fetching the latest content. On a slow connection this can take a few seconds.', RU: 'Загружаем свежий материал. На медленной связи это занимает несколько секунд.', UA: 'Завантажуємо свіжий матеріал. На повільному зв\'язку це триває кілька секунд.', DE: 'Wir laden die neuesten Inhalte. Bei langsamer Verbindung dauert das einige Sekunden.', IT: 'Stiamo caricando i contenuti più recenti. Con una connessione lenta può richiedere qualche secondo.', ES: 'Cargando el contenido más reciente. Con una conexión lenta puede tardar unos segundos.', TR: 'En güncel içerik yükleniyor. Yavaş bağlantıda bu birkaç saniye sürebilir.' },
+  'article.retry': { EN: 'Try again', RU: 'Попробовать снова', UA: 'Спробувати ще раз', DE: 'Erneut versuchen', IT: 'Riprova', ES: 'Intentar de nuevo', TR: 'Tekrar dene' },
   'article.notFound.body': { EN: 'This link may be broken, or the article has moved.', RU: 'Ссылка могла устареть, либо статья была перемещена.', UA: 'Посилання могло застаріти, або статтю було переміщено.', DE: 'Dieser Link ist möglicherweise defekt oder der Artikel wurde verschoben.', IT: 'Questo link potrebbe essere non valido o l\'articolo è stato spostato.', ES: 'Este enlace puede estar roto o el artículo se ha movido.', TR: 'Bu bağlantı bozuk olabilir veya makale taşınmış olabilir.' },
   'article.backToArticles': { EN: 'Back to Articles', RU: 'Назад к статьям', UA: 'Назад до статей', DE: 'Zurück zu Artikeln', IT: 'Torna agli articoli', ES: 'Volver a artículos', TR: 'Makalelere dön' },
   'article.related': { EN: 'Read also', RU: 'Читать также', UA: 'Читати також', DE: 'Auch lesen', IT: 'Leggi anche', ES: 'Leer también', TR: 'Ayrıca okuyun' },
@@ -3909,7 +3913,21 @@ export default function App() {
   useEffect(() => {
     applySiteTheme(getTheme()); // bundled/default theme on first paint
     const unsubscribe = subscribeContent(() => { setContentVersion((v) => v + 1); applySiteTheme(getTheme()); });
-    loadLiveContent().then(() => { applySiteTheme(getTheme()); setContentLoadAttempted(true); });
+    /* Ссылка на черновик — особый случай. Обычной статье четырёх секунд хватает
+       с запасом: если живой контент не пришёл, читатель всё равно увидит
+       страницу из собранного бандла. Черновика в бандле нет по определению,
+       поэтому там таймаут решает не «свежо или нет», а «откроется или нет»:
+       контент отдаётся сжатым примерно на 700 КБ, и на мобильной связи это
+       заметно дольше четырёх секунд. Отсюда «иногда не открывается»: дома
+       ссылка работает, в дороге — нет.
+
+       Поэтому под предпросмотр даём заведомо достаточное время и одну повторную
+       попытку: лишние секунды ожидания честнее, чем список статей вместо
+       обещанного материала. */
+    const previewMode = hasPreviewToken();
+    loadLiveContent(previewMode ? 25000 : 4000)
+      .then((ok) => (ok || !previewMode ? ok : loadLiveContent(25000)))
+      .then(() => { applySiteTheme(getTheme()); setContentLoadAttempted(true); });
     return unsubscribe;
   }, []);
   // Keep the homepage editorial feed live when a reader leaves it open. The
@@ -3991,6 +4009,18 @@ export default function App() {
   const articleSlugNotFound = contentLoadAttempted
     && selectedArticleId === null
     && /^\/article\/([^/]+)\/?$/.test(window.location.pathname);
+  /* Адрес указывает на конкретную статью, а её нет среди загруженных.
+     Раньше этот случай ничего не рисовал: ArticleView не появлялся, и читатель
+     оставался на списке статей — той самой вкладке, которую включил разбор
+     адреса. Выглядит как «ссылка привела не туда», хотя на деле материал ещё
+     едет (или не доехал). Разделяем два состояния честно: пока живой контент
+     не ответил — ждём, после ответа — говорим, что не нашли. */
+  const articleAwaitingContent = !contentLoadAttempted
+    && selectedArticleId !== null
+    && !selectedArticle;
+  const articleIdNotFound = contentLoadAttempted
+    && selectedArticleId !== null
+    && !selectedArticle;
   // "Read also": same-category articles first, then the rest (newest ids first
   // as a recency proxy), excluding the one being read. Three cards max.
   const relatedArticles = selectedArticle
@@ -4406,6 +4436,61 @@ export default function App() {
         )}
       </AnimatePresence>
       <AnimatePresence>{selectedReview && <ReviewView review={selectedReview} t={t} onClose={handleCloseReview} currentLang={currentLang} />}</AnimatePresence>
+
+      {/* Материал ещё едет: адрес указывает на статью, живой контент не ответил.
+          Без этого экрана читатель видел список статей и решал, что ссылка
+          сломана. */}
+      <AnimatePresence>
+        {articleAwaitingContent && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-[var(--c-bg)] flex items-center justify-center px-6"
+          >
+            <div className="text-center max-w-md">
+              <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-4">EPRIS</p>
+              <h1 className="font-serif text-2xl sm:text-3xl text-[var(--c-accent)] mb-4">{t('article.loading')}</h1>
+              <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.7)]">{t('article.loading.body')}</p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {articleIdNotFound && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-[var(--c-bg)] flex items-center justify-center px-6"
+          >
+            <div className="text-center max-w-md">
+              <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-4">404</p>
+              <h1 className="font-serif text-3xl sm:text-4xl text-[var(--c-accent)] mb-4">{t('article.notFound')}</h1>
+              <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.7)] mb-8">{t('article.notFound.body')}</p>
+              <div className="flex flex-wrap gap-3 justify-center">
+                {/* Чаще всего это не сломанная ссылка, а неудачная загрузка:
+                    повтор возвращает материал, не заставляя искать его руками. */}
+                <button
+                  type="button"
+                  onClick={() => { setContentLoadAttempted(false); void loadLiveContent(25000).finally(() => setContentLoadAttempted(true)); }}
+                  className="font-mono text-xs uppercase tracking-widest border border-[var(--c-accent)] rounded-full px-6 py-3 hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors"
+                >
+                  {t('article.retry')}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { window.history.replaceState(null, '', '/articles'); setSelectedArticleId(null); setActiveTab('articles'); }}
+                  className="font-mono text-xs uppercase tracking-widest border border-[rgb(var(--c-accent-rgb)_/_0.3)] rounded-full px-6 py-3 hover:border-[var(--c-accent)] transition-colors"
+                >
+                  {t('article.backToArticles')}
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {articleSlugNotFound && (
