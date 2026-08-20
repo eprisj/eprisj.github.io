@@ -207,3 +207,50 @@ test("имя файла не может увести запись из архи�
   const zip = buildZip([{ name: "../../etc/passwd", data: Buffer.from("x") }]);
   assert.ok(!zip.includes(Buffer.from("../../etc/passwd", "utf8")));
 });
+
+/* ── Приём ответов ──────────────────────────────────────────────────────── */
+
+test("одновременные ответы не затирают друг друга", async () => {
+  /* Раньше приём был «прочитать список, дописать, записать целиком». Два
+     человека, нажавшие «отправить» в одну секунду, читали одинаковый список, и
+     тот, кто записал позже, стирал чужой ответ. Ошибки при этом не возникало:
+     оба видели «спасибо», а до редакции доходил один. */
+  const formId = "race-" + F.newId();
+  const many = Array.from({ length: 12 }, (_, i) => ({
+    id: F.newId(), submittedAt: F.nowIso(), answers: { q: `ответ ${i}` },
+  }));
+
+  await Promise.all(many.map((response) => F.appendResponse(formId, response)));
+
+  const stored = F.readResponses(formId);
+  assert.equal(stored.length, many.length, "часть ответов потерялась при одновременной записи");
+  for (const response of many) {
+    assert.ok(stored.some((item) => item.id === response.id), `ответ ${response.id} не сохранился`);
+  }
+});
+
+test("журнал приёма хранит ответ отдельно от основного файла", async () => {
+  /* Журнал — страховка на случай, когда основной файл пострадал: перезапись во
+     время выката, кончившееся место, чужая правка. Ответ уже принят, человек
+     второй раз анкету не пришлёт, поэтому строка в журнале пишется до того,
+     как трогается основной файл. */
+  const formId = "log-" + F.newId();
+  const response = { id: F.newId(), submittedAt: F.nowIso(), answers: { q: "важный ответ" } };
+
+  await F.appendResponse(formId, response);
+  fs.rmSync(F.responsesPath(formId), { force: true });   // основной файл потерян
+
+  const rescued = F.readResponseLog(formId);
+  assert.equal(rescued.length, 1);
+  assert.equal(rescued[0].answers.q, "важный ответ");
+  assert.equal(F.readResponses(formId).length, 0, "проверяем именно журнал, а не основной файл");
+});
+
+test("уведомление молчит, пока почта не настроена, и не мешает приёму", async () => {
+  /* Письмо редакции — довесок к приёму, а не его часть. Без настроек SMTP
+     служба обязана работать ровно как раньше. */
+  const form = F.normaliseForm({ title: "Notify", fields: [{ type: "short-text", label: "Имя" }] });
+  const sent = await F.notifyNewResponse(form, { submittedAt: F.nowIso(), answers: {} }, 1);
+  assert.equal(F.mailConfigured(), false);
+  assert.equal(sent, false);
+});

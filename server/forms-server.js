@@ -155,22 +155,29 @@ const server = http.createServer(async (req, res) => {
       const fingerprint = F.ipFingerprint(clientIp(req));
       if (F.tooManyRecent(responses, fingerprint)) return send(res, 429, { ok: false, error: "too many submissions" });
 
-      responses.push({
+      const response = {
         id: F.newId(),
         submittedAt: F.nowIso(),
         source: fingerprint,
         inviteToken: invite ? invite.token : "",
         inviteLabel: invite ? invite.label : "",
         answers,
-      });
-      await F.writeResponses(form.id, responses);
+      };
+      /* Запись идёт через очередь службы, а не «прочитал-дописал-записал»:
+         два ответа в одну секунду раньше затирали друг друга, и пропажу
+         никто не замечал — оба автора видели «спасибо». */
+      const total = await F.appendResponse(form.id, response);
 
       if (invite) {
         invite.usedAt = F.nowIso();
         invite.uses = Number(invite.uses || 0) + 1;
         await F.writeJsonAtomic(F.formPath(form.id), form);
       }
-      return send(res, 200, { ok: true, accepted: true, thankYou: form.thankYou });
+      /* Автору отвечаем сразу, письмо редакции уходит следом: приём анкеты не
+         должен ждать чужой почтовый сервер и тем более падать вместе с ним. */
+      send(res, 200, { ok: true, accepted: true, thankYou: form.thankYou });
+      F.notifyNewResponse(form, response, total).catch(() => {});
+      return;
     }
 
     /* Загрузка файла к анкете.

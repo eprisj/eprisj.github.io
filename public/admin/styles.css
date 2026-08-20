@@ -340,6 +340,31 @@ body {
   padding: 1px 5px;
 }
 
+/* Счётчик непрочитанных ответов. В отличие от служебных подписей вроде LOCAL
+   он сообщает о событии, поэтому читается, а не шепчет: анкету заполнили, и об
+   этом надо узнать при входе в панель, а не открывая каждую анкету по очереди. */
+.sb-badge--count {
+  color: #12120f;
+  background: #cfe14a;
+  border-color: #cfe14a;
+  font-size: .5rem;
+  letter-spacing: .04em;
+  padding: 1px 6px;
+}
+/* Свёрнутая панель прячет подписи (см. .sidebar.is-collapsed ниже), но счётчик
+   должен пережить и это: точкой на иконке, без числа. */
+.sidebar.is-collapsed .tab-btn .sb-badge--count {
+  display: block;
+  position: absolute;
+  top: 6px; right: 6px;
+  width: 7px; height: 7px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 0;
+  overflow: hidden;
+}
+.sidebar.is-collapsed .sb-item { position: relative; }
+
 .tab-btn:hover { background: rgba(255,255,255,.055); color: var(--sidebar-text-hover); }
 .tab-btn:hover .sb-ico { opacity: 1; }
 .tab-btn:focus-visible {
@@ -8395,6 +8420,26 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .forms-field-index { color: var(--gold); font: 700 .6rem/1 var(--font-mono); }
 .forms-field-required { display: inline-flex; align-items: center; gap: 5px; color: var(--text-muted); font: .62rem/1 var(--font-mono); white-space: nowrap; }
 .forms-editor-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Вставка вопросов списком: панель раскрывается под кнопками добавления и
+   должна читаться как временный рабочий стол, а не как ещё одна часть анкеты. */
+.forms-paste {
+  margin: 8px 0 12px;
+  padding: 12px;
+  border: 1px dashed rgba(173,173,173,.35);
+  background: rgba(255,255,255,.02);
+  display: grid;
+  gap: 10px;
+}
+.forms-paste textarea { width: 100%; resize: vertical; min-height: 120px; }
+.forms-paste-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: end;
+}
+.forms-paste-actions .field { margin: 0; min-width: 190px; }
+
 .forms-share, .forms-responses { padding-top: 12px; border-top: 1px solid var(--line); }
 .forms-link { display: inline-block; overflow-wrap: anywhere; padding: 6px 8px; border: 1px dashed var(--line-strong); border-radius: 0; font: .68rem/1.4 var(--font-mono); }
 .forms-invite-new { display: flex; gap: 8px; margin: 8px 0; }
