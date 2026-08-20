@@ -164,6 +164,72 @@ async function writeResponses(formId, responses) {
   await writeJsonAtomic(responsesPath(formId), { formId, updatedAt: nowIso(), responses });
 }
 
+/* ЖУРНАЛ ПРИЁМА: КАЖДЫЙ ОТВЕТ ПИШЕТСЯ ДВАЖДЫ.
+ *
+ * Основной файл анкеты перезаписывается целиком, и это нормально, пока пишет
+ * кто-то один. Но ответ может прийти и во время выката, и одновременно со
+ * вторым ответом, и в момент, когда на разделе кончается место, — а человек по
+ * ту сторону уже увидел «спасибо» и второй раз анкету не пришлёт.
+ *
+ * Поэтому рядом ведётся журнал: одна строка JSON на ответ, только дозапись,
+ * ничего никогда не перезаписывается. Он не используется при обычной работе и
+ * нужен ровно для одного случая: если ответ пропал из основного файла, он
+ * лежит здесь целиком, вместе с временем приёма.                            */
+function responsesLogPath(formId) {
+  return path.join(RESPONSES_DIR, `${formId}.log.jsonl`);
+}
+
+function appendResponseLog(formId, response) {
+  try {
+    ensureDirs();
+    fs.appendFileSync(responsesLogPath(formId), JSON.stringify(response) + "\n");
+  } catch (error) {
+    // Журнал — страховка, а не условие приёма: его отказ не должен отменять
+    // уже принятый ответ.
+    console.error("[forms] response log failed", formId, error.message);
+  }
+}
+
+function readResponseLog(formId) {
+  try {
+    return fs.readFileSync(responsesLogPath(formId), "utf8")
+      .split("\n").filter(Boolean)
+      .map((line) => { try { return JSON.parse(line); } catch { return null; } })
+      .filter(Boolean);
+  } catch { return []; }
+}
+
+/* ПРИЁМ ОТВЕТА ПО ОЧЕРЕДИ.
+ *
+ * Раньше приём был «прочитать файл целиком, добавить ответ, записать целиком».
+ * Два человека, нажавшие «отправить» в одну и ту же секунду, читали один и тот
+ * же список, и тот, кто записал позже, затирал чужой ответ. Никакой ошибки при
+ * этом не появлялось: оба видели «спасибо», а в панель приходил один.
+ *
+ * Очередь на анкету выстраивает такие записи в цепочку. Внутри процесса этого
+ * достаточно: служба одна и работает в одном экземпляре.                     */
+const responseQueues = new Map();
+
+function appendResponse(formId, response) {
+  const previous = responseQueues.get(formId) || Promise.resolve();
+  const next = previous.then(async () => {
+    appendResponseLog(formId, response);
+    const all = readResponses(formId);
+    all.push(response);
+    await writeResponses(formId, all);
+    return all.length;
+  }).catch((error) => {
+    console.error("[forms] append failed", formId, error.message);
+    throw error;
+  });
+  /* В карте лежит «хвост» очереди, а не результат: ошибка одной записи не
+     должна рвать цепочку для следующих ответов. */
+  const tail = next.catch(() => {});
+  responseQueues.set(formId, tail);
+  tail.then(() => { if (responseQueues.get(formId) === tail) responseQueues.delete(formId); });
+  return next;
+}
+
 
 /* ── Файлы ────────────────────────────────────────────────────────────────── */
 const uploadDirFor = (formId) => path.join(UPLOADS_DIR, String(formId));
@@ -516,6 +582,183 @@ function responsesCsv(form, responses) {
   return "﻿" + [header, ...rows].map((row) => row.map(csvEscape).join(",")).join("\r\n");
 }
 
+/* ПИСЬМО РЕДАКЦИИ О НОВОМ ОТВЕТЕ.
+ *
+ * Служба принимала анкету молча: файл ложился на диск, и узнать об этом можно
+ * было, только открыв панель и нажав «ответы». Автор при этом уже ждёт реакции.
+ *
+ * Письмо отправляется вручную по SMTP, без библиотеки: одно соединение, четыре
+ * команды, текст без вложений. Тянуть зависимость (и потом обновлять её на
+ * машине, где живут ещё четыре проекта) ради этого не стоит.
+ *
+ * Уведомление НИКОГДА не влияет на приём: почта отвалилась, ящик переполнен,
+ * настроек нет — ответ всё равно принят и лежит на диске. Поэтому отправка
+ * идёт после ответа автору и её ошибки только пишутся в журнал.             */
+const net = require("net");
+const tls = require("tls");
+
+const MAIL = {
+  host: process.env.SMTP_HOST || "",
+  port: Number(process.env.SMTP_PORT || 465),
+  secure: String(process.env.SMTP_SECURE || "true") !== "false",
+  user: process.env.SMTP_USER || "",
+  pass: process.env.SMTP_PASSWORD || "",
+  from: process.env.SMTP_FROM || process.env.SMTP_USER || "",
+  to: process.env.FORMS_NOTIFY_TO || "",
+};
+
+function mailConfigured() {
+  return Boolean(MAIL.host && MAIL.user && MAIL.pass && MAIL.from && MAIL.to);
+}
+
+function encodeHeader(value) {
+  // Тема с кириллицей без кодировки приезжает набором вопросительных знаков.
+  return /^[\x20-\x7E]*$/.test(value)
+    ? value
+    : `=?UTF-8?B?${Buffer.from(value, "utf8").toString("base64")}?=`;
+}
+
+function smtpSend({ to, subject, text }) {
+  return new Promise((resolve, reject) => {
+    const socket = MAIL.secure
+      ? tls.connect({ host: MAIL.host, port: MAIL.port, servername: MAIL.host })
+      : net.connect({ host: MAIL.host, port: MAIL.port });
+    socket.setTimeout(15000);
+
+    const body = [
+      `From: ${MAIL.from}`,
+      `To: ${to}`,
+      `Subject: ${encodeHeader(subject)}`,
+      "MIME-Version: 1.0",
+      "Content-Type: text/plain; charset=utf-8",
+      "Content-Transfer-Encoding: base64",
+      "",
+      Buffer.from(text, "utf8").toString("base64").replace(/(.{76})/g, "$1\r\n"),
+    ].join("\r\n");
+
+    /* Каждая строка — «команда и код, который сервер должен ответить». Держать
+       их списком проще, чем цепочкой колбэков: видно весь диалог целиком. */
+    const steps = [
+      { send: "EHLO eprisjournal.com", expect: 250 },
+      { send: "AUTH LOGIN", expect: 334 },
+      { send: Buffer.from(MAIL.user).toString("base64"), expect: 334 },
+      { send: Buffer.from(MAIL.pass).toString("base64"), expect: 235 },
+      { send: `MAIL FROM:<${MAIL.from}>`, expect: 250 },
+      { send: `RCPT TO:<${to}>`, expect: 250 },
+      { send: "DATA", expect: 354 },
+      { send: `${body}\r\n.`, expect: 250 },
+      { send: "QUIT", expect: 221 },
+    ];
+
+    let index = -1;          // -1 = ждём приветствие сервера
+    let buffer = "";
+    let done = false;
+
+    const finish = (error) => {
+      if (done) return;
+      done = true;
+      socket.destroy();
+      error ? reject(error) : resolve(true);
+    };
+
+    socket.on("timeout", () => finish(new Error("smtp timeout")));
+    socket.on("error", (error) => finish(error));
+    socket.on("close", () => finish(done ? null : new Error("smtp closed early")));
+
+    socket.on("data", (chunk) => {
+      buffer += chunk.toString("utf8");
+      /* Ответ SMTP бывает многострочным: продолжение помечено дефисом после
+         кода («250-SIZE»), последняя строка — пробелом («250 OK»). Пока не
+         пришла она, отвечать рано. */
+      const lines = buffer.split(/\r?\n/).filter(Boolean);
+      const last = lines[lines.length - 1] || "";
+      if (!/^\d{3} /.test(last)) return;
+      buffer = "";
+
+      const code = Number(last.slice(0, 3));
+      const expected = index < 0 ? 220 : steps[index].expect;
+      if (code !== expected) return finish(new Error(`smtp expected ${expected}, got: ${last.trim()}`));
+
+      index += 1;
+      if (index >= steps.length) return finish(null);
+      socket.write(steps[index].send + "\r\n");
+    });
+  });
+}
+
+function answerPreview(form, response) {
+  const asked = (form.fields || []).filter((field) => field.type !== "section" && field.type !== "image");
+  return asked.map((field) => {
+    const value = response.answers?.[field.id];
+    const shown = Array.isArray(value)
+      ? value.map((item) => item?.name || item).join(", ")
+      : String(value ?? "");
+    return `${field.label}\n${shown.trim() || "(пусто)"}`;
+  }).join("\n\n");
+}
+
+/* ТЕЛЕГРАМ КАК ВТОРОЙ КАНАЛ.
+ *
+ * Почта требует чужого сервера и его настроек; телеграм — токена бота и номера
+ * чата, и включается за пару минут. Каналы независимы: настроен один — работает
+ * один, настроены оба — придёт и туда, и туда, потому что «ответ пришёл» лучше
+ * увидеть дважды, чем не увидеть вовсе.                                      */
+const TELEGRAM = {
+  token: process.env.FORMS_TELEGRAM_TOKEN || "",
+  chat: process.env.FORMS_TELEGRAM_CHAT || "",
+};
+
+function telegramConfigured() {
+  return Boolean(TELEGRAM.token && TELEGRAM.chat);
+}
+
+async function telegramSend(text) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 10000);
+  try {
+    const response = await fetch(`https://api.telegram.org/bot${TELEGRAM.token}/sendMessage`, {
+      method: "POST",
+      signal: controller.signal,
+      headers: { "Content-Type": "application/json" },
+      // Без разметки: в ответах бывают любые символы, и падать из-за чужого
+      // текста уведомление не должно.
+      body: JSON.stringify({ chat_id: TELEGRAM.chat, text: text.slice(0, 3900), disable_web_page_preview: true }),
+    });
+    const data = await response.json().catch(() => null);
+    if (!data?.ok) throw new Error(data?.description || `HTTP ${response.status}`);
+    return true;
+  } finally { clearTimeout(timer); }
+}
+
+async function notifyNewResponse(form, response, total) {
+  if (!mailConfigured() && !telegramConfigured()) return false;
+  const text = [
+    `Анкета: ${form.title}`,
+    `Ответ №${total}, принят ${response.submittedAt}`,
+    response.inviteLabel ? `Персональная ссылка: ${response.inviteLabel}` : "",
+    "",
+    `Открыть в панели: https://eprisjournal.com/admin/#forms`,
+    "",
+    "————",
+    "",
+    answerPreview(form, response),
+  ].filter((line) => line !== "").join("\n");
+
+  /* Оба канала запускаются вместе и падают порознь: отказ почты не должен
+     отменять телеграм, и наоборот. */
+  const attempts = [];
+  if (mailConfigured()) {
+    attempts.push(smtpSend({ to: MAIL.to, subject: `Новый ответ: ${form.title}`, text })
+      .catch((error) => { console.error("[forms] mail notify failed", error.message); return false; }));
+  }
+  if (telegramConfigured()) {
+    attempts.push(telegramSend(text)
+      .catch((error) => { console.error("[forms] telegram notify failed", error.message); return false; }));
+  }
+  const results = await Promise.all(attempts);
+  return results.some(Boolean);
+}
+
 module.exports = {
   ROOT, FORMS_DIR, RESPONSES_DIR, UPLOADS_DIR, MAX_BODY_BYTES, MAX_RESPONSES_PER_FORM, FIELD_TYPES,
   MAX_FILE_BYTES, MAX_RESPONSE_BYTES, MIN_FREE_BYTES,
@@ -524,6 +767,7 @@ module.exports = {
   ensureDirs, nowIso, newId, clean, cleanMultiline, slugify,
   formPath, responsesPath, readJson, writeJsonAtomic,
   listForms, findFormBySlug, readResponses, writeResponses,
+  appendResponse, readResponseLog, responsesLogPath, notifyNewResponse, mailConfigured, telegramConfigured,
   normaliseForm, publicForm, validateAnswers, fieldVisible, formClosedReason, supportNoteFor,
   ipFingerprint, tooManyRecent, responsesCsv,
 };

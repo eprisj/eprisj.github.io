@@ -20983,6 +20983,48 @@ function formPublicUrl(form, token) {
   return token ? `https://eprisjournal.com/f/${form.slug}/${token}` : base;
 }
 
+/* СКОЛЬКО ОТВЕТОВ ПРИШЛО, ПОКА НАС НЕ БЫЛО.
+ *
+ * Раньше узнать о новом ответе можно было единственным способом: открыть
+ * «Анкеты», зайти в анкету, нажать «ответы». Если анкет несколько, обойти надо
+ * все, и человек по ту сторону всё это время ждёт.
+ *
+ * Панель запоминает, сколько ответов было у каждой анкеты в последний раз,
+ * когда их читали. Разница и есть «новые». Хранится у пользователя, потому что
+ * прочитал их конкретный редактор, а не редакция вообще.                     */
+const FORMS_SEEN_KEY = 'epris_forms_seen_counts';
+
+function formsSeenCounts() {
+  try { return JSON.parse(localStorage.getItem(FORMS_SEEN_KEY) || '{}') || {}; }
+  catch { return {}; }
+}
+
+function markFormResponsesSeen(formId, count) {
+  const seen = formsSeenCounts();
+  seen[formId] = Number(count) || 0;
+  try { localStorage.setItem(FORMS_SEEN_KEY, JSON.stringify(seen)); } catch {}
+  renderFormsUnreadBadge();
+}
+
+function formsUnreadCount() {
+  const seen = formsSeenCounts();
+  return formsCache.reduce((total, form) => {
+    const now = Number(form.responses) || 0;
+    // Анкета, которой ещё не открывали: все ответы в ней новые.
+    const before = Object.prototype.hasOwnProperty.call(seen, form.id) ? Number(seen[form.id]) || 0 : 0;
+    return total + Math.max(0, now - before);
+  }, 0);
+}
+
+function renderFormsUnreadBadge() {
+  const badge = document.getElementById('formsUnreadBadge');
+  if (!badge) return;
+  const count = formsUnreadCount();
+  badge.hidden = count === 0;
+  badge.textContent = count > 99 ? '99+' : String(count);
+  badge.title = count ? `Новых ответов: ${count}` : '';
+}
+
 async function loadForms(selectId) {
   const list = document.getElementById('formsList');
   if (!list) return;
@@ -21000,6 +21042,7 @@ async function loadForms(selectId) {
     return;
   }
   renderFormsList();
+  renderFormsUnreadBadge();
   if (selectId) openFormEditor(selectId);
   // Без выбранной анкеты правая колонка рисуется своим пустым состоянием, а не
   // остаётся заглушкой из разметки страницы.
@@ -21141,6 +21184,8 @@ async function openFormEditor(id, templateKey) {
       const data = await formsFetch(`/${encodeURIComponent(id)}/responses`);
       formsDraft = JSON.parse(JSON.stringify(data.form));
       formsResponses = Array.isArray(data.responses) ? data.responses : [];
+      // Анкету открыли вместе с ответами — значит их прочитали.
+      markFormResponsesSeen(id, formsResponses.length);
     } catch (error) {
       showToast('error', `Не удалось открыть анкету: ${error.message}`);
       return;
@@ -21238,6 +21283,21 @@ function renderFormEditor() {
       <button class="btn btn-sm" type="button" data-add-field="files">Файлы</button>
       <button class="btn btn-sm" type="button" data-add-field="image">Картинку</button>
       <button class="btn btn-sm" type="button" data-add-field="section">Раздел</button>
+      <button class="btn btn-sm" type="button" id="formPasteFields">Вставить списком</button>
+    </div>
+    <div class="forms-paste" id="formPasteBox" hidden>
+      <p class="muted">Вставьте вопросы как есть: по одному в строке. Нумерация и тире убираются сами; строка без вопросительного знака, оканчивающаяся двоеточием, становится разделом.</p>
+      <textarea id="formPasteInput" rows="6" placeholder="1. Как начался проект?&#10;2. Что пошло не так?&#10;&#10;О себе:&#10;Имя и род занятий"></textarea>
+      <div class="forms-paste-actions">
+        <label class="field"><span>Тип ответа для всех</span>
+          <select id="formPasteType">
+            <option value="long-text">Развёрнутый ответ</option>
+            <option value="short-text">Короткий ответ</option>
+          </select></label>
+        <label class="forms-field-required"><input type="checkbox" id="formPasteRequired"> сделать обязательными</label>
+        <button class="btn btn-primary btn-sm" type="button" id="formPasteApply">Добавить вопросы</button>
+        <span class="muted" id="formPasteCount"></span>
+      </div>
     </div>
     <div class="forms-editor-actions">
       <button class="btn" type="button" id="formAddField">+ Ещё вопрос</button>
@@ -21602,6 +21662,76 @@ function bindFormEditor() {
   if (!host) return;
   updateFormsDirtyState();
 
+  /* ВСТАВИТЬ СПИСКОМ.
+   *
+   * Вопросы для интервью приходят готовым списком: в письме, в заметке, в
+   * сообщении. Раньше их переносили по одному — нажать «ещё вопрос», выбрать
+   * тип, вставить строку, и так пятнадцать раз. Здесь список вставляется
+   * целиком, а разбор берёт на себя то, что человек всё равно делал руками:
+   * снимает нумерацию и маркеры, отличает заголовок раздела от вопроса. */
+  const pasteBox = host.querySelector('#formPasteBox');
+  const pasteInput = host.querySelector('#formPasteInput');
+  const pasteCount = host.querySelector('#formPasteCount');
+
+  function parsePastedFields(text, type, required) {
+    return String(text || '')
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      // Нумерация («1.», «1)», «01 »), маркеры списка и лишние кавычки.
+      .map((line) => line.replace(/^[-–—•*]\s+/, '').replace(/^\d{1,2}[.)]\s*/, '').trim())
+      .filter(Boolean)
+      .map((line) => {
+        /* Раздел, а не вопрос: строка кончается двоеточием и не спрашивает.
+           Правило намеренно тупое и предсказуемое: «О себе:» станет разделом,
+           «Что пошло не так?» — вопросом. Спорные строки («Как вас
+           представить:») уйдут в разделы, и это чинится одним щелчком по типу,
+           в отличие от догадок, которые каждый раз срабатывают по-разному. */
+        const isSection = line.endsWith(':') && !line.includes('?');
+        return {
+          id: '',
+          type: isSection ? 'section' : type,
+          label: isSection ? line.replace(/:$/, '') : line,
+          required: isSection ? false : required,
+          options: [],
+        };
+      });
+  }
+
+  function updatePasteCount() {
+    if (!pasteCount || !pasteInput) return;
+    const parsed = parsePastedFields(pasteInput.value, 'long-text', false);
+    const questions = parsed.filter((field) => field.type !== 'section').length;
+    const sections = parsed.length - questions;
+    pasteCount.textContent = parsed.length
+      ? `Получится вопросов: ${questions}${sections ? `, разделов: ${sections}` : ''}`
+      : '';
+  }
+
+  host.querySelector('#formPasteFields')?.addEventListener('click', () => {
+    if (!pasteBox) return;
+    pasteBox.hidden = !pasteBox.hidden;
+    if (!pasteBox.hidden) pasteInput?.focus();
+  });
+  pasteInput?.addEventListener('input', updatePasteCount);
+
+  host.querySelector('#formPasteApply')?.addEventListener('click', () => {
+    const type = host.querySelector('#formPasteType')?.value || 'long-text';
+    const required = Boolean(host.querySelector('#formPasteRequired')?.checked);
+    const parsed = parsePastedFields(pasteInput?.value, type, required);
+    if (!parsed.length) { showToast('error', 'Нечего добавлять: список пуст.'); return; }
+    collectFormDraft();
+    const from = formsDraft.fields.length;
+    formsDraft.fields.push(...parsed);
+    formsDirty = true;
+    /* Раскрывать пятнадцать вопросов сразу незачем — список станет полотном.
+       Свёрнутые строки показывают текст вопроса, и этого хватает, чтобы
+       проверить, что всё встало правильно. */
+    formsOpenFields.clear();
+    renderFormEditor();
+    showToast('success', `Добавлено вопросов: ${parsed.filter((f) => f.type !== 'section').length}`);
+    document.querySelector(`[data-field-index="${from}"]`)?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  });
+
   host.querySelector('#formAddField')?.addEventListener('click', () => {
     collectFormDraft();
     formsDraft.fields.push({ id: '', type: 'short-text', label: '', required: false, options: [] });
@@ -21951,6 +22081,19 @@ function bindFormEditor() {
 }
 
 window._loadFormsTab = () => loadForms(formsDraft?.id);
+
+/* Счётчик должен работать до того, как в «Анкеты» зашли: смысл его в том,
+   чтобы туда зайти. Список запрашивается один раз при входе в панель, тихо —
+   ошибка здесь ничего не значит, счётчик просто не появится. */
+window._refreshFormsBadge = async () => {
+  if (!getAdminPassword()) return;
+  try {
+    const data = await formsFetch('/list');
+    formsCache = Array.isArray(data?.forms) ? data.forms : formsCache;
+    renderFormsUnreadBadge();
+  } catch {}
+};
+setTimeout(() => window._refreshFormsBadge(), 1200);
 
 document.getElementById('formsNewBtn')?.addEventListener('click', () => {
   const list = document.getElementById('formsTemplates');
