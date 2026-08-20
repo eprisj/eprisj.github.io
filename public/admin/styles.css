@@ -923,6 +923,12 @@ body {
 .hp-step[data-state="done"] .hp-step-copy > small { color: var(--text-muted); }
 .hp-step[data-state="idle"] .hp-step-num,
 .hp-step[data-state="idle"] .hp-step-copy > span { color: var(--text-faint); }
+/* Шаг доступен, но вне цикла 1→2→3 (пример: «Опубликовать» без черновика —
+   шлёт текущие правки сайта, к пятёрке слотов не привязано). Кнопка под
+   заголовком рабочая, поэтому заголовок не гаснет как у по-настоящему
+   заблокированного idle — иначе тусклый текст спорит с чёрной кнопкой
+   прямо под ним. */
+.hp-step[data-state="available"] .hp-step-copy > span { color: var(--text); }
 .hp-step .btn:disabled { opacity: .45; cursor: not-allowed; }
 
 .homepage-publish-feedback[data-state="error"] { color: var(--danger); }
