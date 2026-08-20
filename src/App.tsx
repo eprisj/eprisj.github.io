@@ -427,6 +427,39 @@ function isDirectVideoUrl(url: string): boolean {
   return /\.(?:mp4|webm|ogv|ogg)(?:$|[?#])/i.test(url);
 }
 
+/* ── Источники одного и того же ролика ───────────────────────────────────────
+   Файл лежит на сервере в двух видах: mp4 (H.264) и webm (VP9). WebM меньше,
+   но его не понимает ни один Safari до iOS 17.4 — а именно там читатель видел
+   пустой прямоугольник вместо гифки. Поэтому браузеру даётся выбор: сначала
+   webm, следом mp4, и решает он сам по canPlayType, без лишних запросов.
+
+   Старые записи хранят одну ссылку — второй формат выводится из имени файла:
+   сервер кладёт оба файла рядом с одинаковым именем. Если соседа нет, эта
+   ветка просто не сработает: браузер перейдёт к следующему источнику. */
+function videoSources(content: string, videoWebm?: string): { src: string; type: string }[] {
+  const url = String(content || '').trim();
+  if (!url) return [];
+  const isOurUpload = /\/uploads\//.test(url);
+  const webm = String(videoWebm || '').trim()
+    || (isOurUpload && /\.mp4(?:$|[?#])/i.test(url) ? url.replace(/\.mp4(?=$|[?#])/i, '.webm') : '');
+  const mp4 = /\.mp4(?:$|[?#])/i.test(url)
+    ? url
+    : (isOurUpload && /\.webm(?:$|[?#])/i.test(url) ? url.replace(/\.webm(?=$|[?#])/i, '.mp4') : '');
+  const list: { src: string; type: string }[] = [];
+  if (webm) list.push({ src: webm, type: 'video/webm' });
+  if (mp4) list.push({ src: mp4, type: 'video/mp4' });
+  if (!list.length) list.push({ src: url, type: '' });
+  /* Ссылка из блока всегда должна быть в списке: редактор мог вставить .ogv
+     или файл со стороннего сайта, и додумывать за него нечего. */
+  if (!list.some((item) => item.src === url)) {
+    const known = /\.webm(?:$|[?#])/i.test(url) ? 'video/webm'
+      : /\.mp4(?:$|[?#])/i.test(url) ? 'video/mp4'
+        : /\.ogv(?:$|[?#])/i.test(url) ? 'video/ogg' : '';
+    list.push({ src: url, type: known });
+  }
+  return list;
+}
+
 function safeExternalUrl(value?: string): string | null {
   const url = String(value || '').trim();
   return /^https?:\/\//i.test(url) ? url : null;
@@ -444,13 +477,17 @@ function safeExternalUrl(value?: string): string | null {
      декодируются одновременно, грея телефон и съедая трафик;
    • уважение к системной настройке «уменьшить движение»: там, где человек
      попросил не двигать картинку, показываем постер и даём кнопку. */
-function LoopingVideo({ src, poster, caption }: { src: string; poster?: string; caption?: string }) {
+function LoopingVideo({ src, webm, poster, caption }: { src: string; webm?: string; poster?: string; caption?: string }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const frameRef = useRef<HTMLDivElement | null>(null);
   const [reduceMotion, setReduceMotion] = useState(false);
   const [manuallyPlaying, setManuallyPlaying] = useState(false);
   const [paused, setPaused] = useState(false);
   const [ready, setReady] = useState(false);
+  /* Если ни один из форматов не пошёл (очень старый браузер, сломанный файл),
+     петля не должна оставаться пустым прямоугольником: показываем постер. */
+  const [failed, setFailed] = useState(false);
+  const sources = videoSources(src, webm);
   /* Файл начинает грузиться, только когда петля подходит к экрану. Раньше
      каждая гифка в материале тянула свои мегабайты сразу при открытии
      страницы, даже если читатель до неё не дошёл, — на телефоне это самая
@@ -522,22 +559,37 @@ function LoopingVideo({ src, poster, caption }: { src: string; poster?: string; 
 
   return (
     <div ref={frameRef} className="relative bg-[rgb(var(--c-accent-rgb)_/_0.05)]">
-      <video
-        ref={videoRef}
-        /* Появляется, когда первый кадр готов: иначе на медленной сети видно
-           пустой прямоугольник, который потом дёргается. */
-        className={`w-full h-auto block transition-opacity duration-500 ${ready ? 'opacity-100' : 'opacity-0'}`}
-        src={near ? src : undefined}
-        poster={poster || undefined}
-        loop
-        muted
-        playsInline
-        preload={near ? 'metadata' : 'none'}
-        autoPlay={near && !showStill}
-        onLoadedData={() => setReady(true)}
-        aria-label={caption || 'Video loop'}
-      />
-      {!ready && poster && (
+      {failed ? (
+        poster ? (
+          <img src={poster} alt={caption || ''} className="w-full h-auto block" />
+        ) : (
+          <div className="aspect-video w-full flex items-center justify-center font-mono text-[10px] uppercase tracking-widest opacity-60">
+            video
+          </div>
+        )
+      ) : (
+        <video
+          ref={videoRef}
+          /* Появляется, когда первый кадр готов: иначе на медленной сети видно
+             пустой прямоугольник, который потом дёргается. */
+          className={`w-full h-auto block transition-opacity duration-500 ${ready ? 'opacity-100' : 'opacity-0'}`}
+          poster={poster || undefined}
+          loop
+          muted
+          playsInline
+          preload={near ? 'metadata' : 'none'}
+          autoPlay={near && !showStill}
+          onLoadedData={() => setReady(true)}
+          /* Ошибка приходит на <video>, когда кончились все <source>. */
+          onError={() => setFailed(true)}
+          aria-label={caption || 'Video loop'}
+        >
+          {near && sources.map((item) => (
+            <source key={item.src} src={item.src} type={item.type || undefined} />
+          ))}
+        </video>
+      )}
+      {!ready && !failed && poster && (
         /* Пока грузится — тот же кадр, что станет постером: переход
            получается незаметным, без вспышки пустоты. */
         <img src={poster} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
@@ -546,6 +598,7 @@ function LoopingVideo({ src, poster, caption }: { src: string; poster?: string; 
       {/* Вся петля — одна кнопка. На телефоне остановить анимацию было нечем:
           она шла всё время, пока текст под ней читают. Наведения там нет,
           поэтому подпись «loop» видна всегда, а не только под курсором. */}
+      {!failed && (
       <button
         type="button"
         onClick={toggle}
@@ -565,11 +618,12 @@ function LoopingVideo({ src, poster, caption }: { src: string; poster?: string; 
           </span>
         )}
       </button>
+      )}
     </div>
   );
 }
 
-function VideoBlock({ content, caption, poster, credit, sourceUrl, loop, muted, t }: { content: string; caption?: string; poster?: string; credit?: string; sourceUrl?: string; loop?: boolean; muted?: boolean; t: (key: string) => string }) {
+function VideoBlock({ content, videoWebm, caption, poster, credit, sourceUrl, loop, muted, t }: { content: string; videoWebm?: string; caption?: string; poster?: string; credit?: string; sourceUrl?: string; loop?: boolean; muted?: boolean; t: (key: string) => string }) {
   const [playing, setPlaying] = useState(false);
   const ytId = extractYouTubeId(content);
   const vimeoId = extractVimeoId(content);
@@ -599,10 +653,15 @@ function VideoBlock({ content, caption, poster, credit, sourceUrl, loop, muted, 
           другого материала. */}
       <div className={`${isLoop ? '' : 'aspect-video bg-black'} relative overflow-hidden`}>
         {isLoop ? (
-          <LoopingVideo src={content} poster={poster} caption={caption} />
+          <LoopingVideo src={content} webm={videoWebm} poster={poster} caption={caption} />
         ) : directVideo ? (
-          <video className="w-full h-full object-cover" controls preload="metadata" muted={muted} poster={poster || undefined}>
-            <source src={content} />
+          /* Обычный ролик: тот же приём с двумя форматами. Порядок важен —
+             браузер берёт первый, который умеет, поэтому webm достаётся тем,
+             кому он дешевле, а Safari спокойно уходит на mp4. */
+          <video className="w-full h-full object-cover" controls playsInline preload="metadata" muted={muted} poster={poster || undefined}>
+            {videoSources(content, videoWebm).map((item) => (
+              <source key={item.src} src={item.src} type={item.type || undefined} />
+            ))}
             Your browser does not support this video.
           </video>
         ) : playing && embedUrl ? (
@@ -2518,7 +2577,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                   );
                 }
                 case 'video':
-                  return <VideoBlock key={index} content={typeof block.content === 'string' ? block.content : ''} caption={block.caption} poster={block.poster} credit={block.credit} sourceUrl={block.sourceUrl} loop={block.loop} muted={block.muted} t={t} />;
+                  return <VideoBlock key={index} content={typeof block.content === 'string' ? block.content : ''} videoWebm={block.videoWebm} caption={block.caption} poster={block.poster} credit={block.credit} sourceUrl={block.sourceUrl} loop={block.loop} muted={block.muted} t={t} />;
                 case 'audio':
                   return (
                     <figure key={index} className="my-8 sm:my-12 p-4 sm:p-6 bg-[#E8DED5] border border-[rgb(var(--c-accent-rgb)_/_0.2)] flex items-center gap-3 sm:gap-4">
@@ -3067,7 +3126,7 @@ const reviewPlainText = (content: Review['content']) => typeof content === 'stri
   ? content
   : reviewBlocks(content).map(block => typeof block.content === 'string' ? block.content : block.type === 'checklist' && !Array.isArray(block.content) && 'items' in block.content ? block.content.items.join(' ') : '').filter(Boolean).join(' ');
 
-function ReviewBody({ content }: { content: Review['content'] }) {
+function ReviewBody({ content, t }: { content: Review['content']; t: (key: string) => string }) {
   if (typeof content === 'string') return <p className="font-serif text-lg leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)] whitespace-pre-line">{content}</p>;
   return <div className="space-y-7 sm:space-y-10">{reviewBlocks(content).map((block, index) => {
     const text = typeof block.content === 'string' ? block.content : '';
@@ -3076,7 +3135,11 @@ function ReviewBody({ content }: { content: Review['content'] }) {
     if (block.type === 'note' && text) return <aside key={index} className="border-y border-[rgb(var(--c-accent-rgb)_/_.18)] py-5 font-serif italic text-xl">{text}</aside>;
     if (block.type === 'image' && text) return <figure key={index} className="space-y-2"><img src={text} alt={block.alt || block.caption || ''} className="w-full object-cover" />{block.caption && <figcaption className="font-mono text-[10px] uppercase tracking-widest opacity-60">{block.caption}</figcaption>}</figure>;
     if (block.type === 'gallery' && Array.isArray(block.content)) return <figure key={index} className="grid grid-cols-2 gap-2">{block.content.map((src, i) => <img key={i} src={src} alt={block.alts?.[i] || ''} className="aspect-square w-full object-cover" />)}</figure>;
-    if (block.type === 'video' && text) return <div key={index} className="aspect-video bg-black"><iframe className="h-full w-full" src={text} title={block.caption || 'Review video'} allowFullScreen /></div>;
+    /* Обзор показывает видео и гифки тем же блоком, что и статья. Раньше сюда
+       подставлялся <iframe src={файл}>: ссылка на YouTube ещё как-то жила, а
+       загруженный из панели mp4 или бывшая гифка не показывались вовсе —
+       браузер не проигрывает видеофайл внутри iframe. */
+    if (block.type === 'video' && text) return <VideoBlock key={index} content={text} videoWebm={block.videoWebm} caption={block.caption} poster={block.poster} credit={block.credit} sourceUrl={block.sourceUrl} loop={block.loop} muted={block.muted} t={t} />;
     if (block.type === 'link' && text) return <a key={index} href={block.url || text} target="_blank" rel="noopener noreferrer" className="inline-flex border-b border-[var(--c-accent)] pb-1 font-mono text-xs uppercase tracking-widest">{text}<ArrowUpRight size={14} className="ml-2" /></a>;
     if (block.type === 'checklist' && !Array.isArray(block.content) && 'items' in block.content) return <ul key={index} className="space-y-2 font-serif text-lg">{block.content.items.map((item, i) => <li key={i} className="flex gap-3"><Check size={16} className="mt-1 shrink-0 text-[var(--c-gold)]" />{item}</li>)}</ul>;
     return text ? <p key={index} className="font-serif text-lg leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)] whitespace-pre-line">{text}</p> : null;
@@ -3111,7 +3174,7 @@ function ReviewView({ review, t, onClose, currentLang }: { review: Review; t: (k
         {review.verdict && <p className="mt-8 border-l-2 border-[var(--c-gold)] pl-5 font-serif text-2xl italic leading-snug">{review.verdict}</p>}
       </header>
       <div className="mx-auto max-w-3xl">
-        <ReviewBody content={review.content} />
+        <ReviewBody content={review.content} t={t} />
         <ProsCons pros={review.pros} cons={review.cons} t={t} />
         <footer className="mt-10 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-8 sm:mt-16 sm:pt-12">
           <div className="flex items-start gap-4 sm:gap-6">

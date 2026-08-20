@@ -1870,24 +1870,111 @@ async function compressImageForUpload(file) {
 /* Видео и GIF отправляются как есть: пережимать их в браузере нечем, этим
    занимается сервер. Отсюда и другой предел размера — исходник крупнее, но до
    читателя доезжает уже сжатый файл. */
-async function uploadVideoReturnResult(file) {
-  const type = String(file.type || '');
-  const isGif = type === 'image/gif' || /[.]gif$/i.test(file.name || '');
-  if (!type.startsWith('video/') && !isGif) {
-    throw new Error('Нужен видеофайл (MP4, WebM, MOV) или GIF.');
-  }
-  if (file.size > 120 * 1024 * 1024) {
-    throw new Error('Файл слишком большой. Максимум: 120 МБ.');
-  }
-  const base64Content = await readFileAsBase64(file);
-  const res = await fetch(UPLOAD_API, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-Admin-Password': getAdminPassword() },
-    body: JSON.stringify({ filename: file.name, contentType: type || 'video/mp4', data: base64Content }),
+const UPLOAD_MEDIA_API = 'https://api.eprisjournal.com/upload-media';
+const MAX_MEDIA_BYTES = 300 * 1024 * 1024;
+
+/* Файл уходит на сервер потоком, без base64.
+   Прежняя схема (файл → base64-строка → JSON) на телефоне падала раньше, чем
+   начиналась загрузка: ролик на сто мегабайт превращался в строку на сто
+   тридцать, и вкладка Safari просто закрывалась. Здесь же появляется процент
+   выполнения — на мобильном интернете это единственный признак, что панель
+   не зависла. */
+function uploadMediaBinary(file, onProgress) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', UPLOAD_MEDIA_API, true);
+    xhr.setRequestHeader('X-Admin-Password', getAdminPassword());
+    /* Имя файла может быть кириллическим, а в заголовке допустим только
+       ASCII — иначе браузер молча отбрасывает запрос. */
+    xhr.setRequestHeader('X-Filename', encodeURIComponent(String(file.name || 'video')));
+    xhr.setRequestHeader('X-File-Type', String(file.type || ''));
+    /* Конвертация длинного ролика идёт минутами: обрыв по умолчанию сделал бы
+       вид, что загрузка не удалась, хотя сервер продолжает работу. */
+    xhr.timeout = 30 * 60 * 1000;
+    if (xhr.upload && typeof onProgress === 'function') {
+      xhr.upload.onprogress = (e) => { if (e.lengthComputable) onProgress(e.loaded / e.total); };
+    }
+    xhr.onload = () => {
+      let data = {};
+      try { data = JSON.parse(xhr.responseText || '{}'); } catch { /* не JSON */ }
+      if (xhr.status === 404 || xhr.status === 405) {
+        const err = new Error('no-binary-route');
+        err.__fallback = true;
+        reject(err);
+        return;
+      }
+      if (xhr.status === 413) { reject(new Error('Файл слишком большой для сервера.')); return; }
+      if (xhr.status < 200 || xhr.status >= 300 || !data.ok || !data.url) {
+        reject(new Error(data.error || `Ошибка загрузки (${xhr.status})`));
+        return;
+      }
+      resolve(data);
+    };
+    xhr.onerror = () => reject(new Error('Сеть оборвалась во время загрузки.'));
+    xhr.ontimeout = () => reject(new Error('Сервер слишком долго обрабатывал файл.'));
+    xhr.send(file);
   });
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok || !data.ok || !data.url) throw new Error(data.error || `Ошибка загрузки (${res.status})`);
-  return data;
+}
+
+async function uploadVideoReturnResult(file, onProgress) {
+  const type = String(file.type || '');
+  const name = String(file.name || '');
+  const isGif = type === 'image/gif' || /[.]gif$/i.test(name);
+  /* Телефоны часто отдают файл без MIME-типа или с неожиданным
+     (`video/quicktime` у iPhone, пустая строка у части Android-галерей),
+     поэтому расширение имеет тот же вес, что и тип. */
+  const looksVideo = type.startsWith('video/') || /[.](?:mp4|webm|mov|m4v|mkv|avi|3gp|ogv)$/i.test(name);
+  if (!looksVideo && !isGif) {
+    throw new Error('Нужен видеофайл (MP4, MOV, WebM) или GIF.');
+  }
+  if (file.size > MAX_MEDIA_BYTES) {
+    throw new Error('Файл слишком большой. Максимум: 300 МБ.');
+  }
+  try {
+    return await uploadMediaBinary(file, onProgress);
+  } catch (err) {
+    /* Старый путь остаётся запасным на случай, если панель открыта со
+       старым сервером: там работает только JSON с base64. */
+    if (!err || !err.__fallback) throw err;
+    if (file.size > 60 * 1024 * 1024) throw new Error('Файл слишком большой для этого сервера.');
+    const base64Content = await readFileAsBase64(file);
+    const res = await fetch(UPLOAD_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Admin-Password': getAdminPassword() },
+      body: JSON.stringify({ filename: file.name, contentType: type || 'video/mp4', data: base64Content }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || !data.ok || !data.url) throw new Error(data.error || `Ошибка загрузки (${res.status})`);
+    return data;
+  }
+}
+
+/* Один и тот же ролик лежит на сервере в двух форматах. Панель запоминает оба:
+   mp4 — основная ссылка (играет везде), webm — лёгкая добавка для браузеров,
+   которые её понимают. */
+function applyVideoUploadToBlock(block, result, { forceLoop } = {}) {
+  block.content = result.url;
+  block.videoWebm = result.webmUrl || '';
+  if (result.posterUrl) block.poster = result.posterUrl;
+  if (forceLoop || result.isLoopFile || result.loopSuggested) {
+    if (forceLoop || result.isLoopFile) block.mediaKind = 'gif';
+    block.loop = true;
+    block.muted = true;
+  }
+  return block;
+}
+
+/* Разметка предпросмотра одна на все редакторы: и в панели видно ровно то,
+   что увидит читатель, — включая выбор формата самим браузером. */
+function videoPreviewHtml(url, webmUrl, poster, extraStyle) {
+  const src = String(url || '');
+  if (!src) return '';
+  const webm = String(webmUrl || '') || (/[.]mp4(?:$|[?#])/i.test(src) && /\/uploads\//.test(src) ? src.replace(/[.]mp4(?=$|[?#])/i, '.webm') : '');
+  const sources = [];
+  if (webm) sources.push(`<source src="${escapeHtml(webm)}" type="video/webm">`);
+  sources.push(`<source src="${escapeHtml(src)}"${/[.]mp4(?:$|[?#])/i.test(src) ? ' type="video/mp4"' : ''}>`);
+  const posterAttr = poster ? ` poster="${escapeHtml(poster)}"` : '';
+  return `<video muted loop playsinline autoplay preload="metadata"${posterAttr} style="${extraStyle || 'max-width:100%;max-height:180px'}">${sources.join('')}</video>`;
 }
 
 async function uploadImageToVPS(file) {
@@ -8274,17 +8361,18 @@ function renderBlockBody(block, index) {
     const isFile = /[.](?:mp4|webm|ogv|ogg)(?:$|[?#])/i.test(src);
     return `
       ${isGif ? '<input type="hidden" data-block-field="mediaKind" value="gif" />' : ''}
+      <input type="hidden" data-block-field="videoWebm" value="${escapeHtml(block.videoWebm || '')}" />
       <div><span class="block-field-label">${isGif ? 'Гифка' : 'Видео или GIF'}</span>
       <div style="display:flex;gap:8px;align-items:center;width:100%;">
         <input data-block-field="content" data-block-index="${index}" id="block-video-input-${index}" value="${escapeHtml(src)}" placeholder="Загрузите файл или вставьте ссылку (YouTube, Vimeo, mp4)" style="flex:1" />
         <button id="block-video-upload-btn-${index}" class="btn btn-sm" type="button" title="Загрузить видео или GIF с компьютера" onclick="triggerBlockVideoUpload(${index})">Загрузить</button>
-        <input id="block-video-file-${index}" type="file" accept="video/*,image/gif" onchange="handleBlockVideoUpload(${index})" hidden />
+        <input id="block-video-file-${index}" type="file" accept="video/*,image/gif,.mp4,.mov,.m4v,.webm,.gif" onchange="handleBlockVideoUpload(${index})" hidden />
       </div>
       <div class="block-video-hint" id="block-video-hint-${index}">GIF и ролики сжимаются на сервере: гифка на 5 МБ обычно становится файлом около полумегабайта. Гифка сохраняется петлёй и крутится по кругу без панели управления.</div>
       </div>
       <div class="block-image-preview" id="block-video-preview-${index}">
         ${isFile
-          ? '<video src="' + escapeHtml(src) + '" muted loop playsinline autoplay preload="metadata" style="max-width:100%;max-height:180px"></video>'
+          ? videoPreviewHtml(src, block.videoWebm, block.poster)
           : (src ? '<div class="block-image-preview-empty">Внешнее видео: ' + escapeHtml(src.slice(0, 60)) + '</div>' : '<div class="block-image-preview-empty">Файл не выбран</div>')}
       </div>
       <div class="block-video-toggles">
@@ -8921,7 +9009,11 @@ function buildBlockFromDom(type, body) {
     const loopField = body.querySelector('[data-block-field="loop"]');
     const mutedField = body.querySelector('[data-block-field="muted"]');
     const kindField = body.querySelector('[data-block-field="mediaKind"]');
+    const webmField = body.querySelector('[data-block-field="videoWebm"]');
     const block = { type: 'video', content: src ? src.value.trim() : '' };
+    /* Второй формат живёт в скрытом поле: он не редактируется руками, но
+       обязан пережить сохранение — иначе Safari снова остаётся без mp4-пары. */
+    if (webmField && webmField.value.trim()) block.videoWebm = webmField.value.trim();
     /* Признак «это гифка» собирается вместе с остальным: сборка идёт из DOM,
        и поле, которого нет в разметке, тихо теряется при каждом сохранении. */
     if (kindField && kindField.value) block.mediaKind = kindField.value;
@@ -15136,6 +15228,11 @@ function bindStudioMediaActions() {
       if (typeof c !== 'string' || !c.trim()) return '';
       const ytMatch = c.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]{11})/);
       if (ytMatch) return `<div class="alp-video-wrap"><iframe src="https://www.youtube.com/embed/${ytMatch[1]}" allowfullscreen></iframe></div>`;
+      /* Загруженный файл в предпросмотре играет, а не изображается строкой со
+         значком: иначе проверить материал перед публикацией нечем. */
+      if (/[.](?:mp4|webm|ogv|ogg)(?:$|[?#])/i.test(c)) {
+        return `<div class="alp-video-wrap">${videoPreviewHtml(c, block.videoWebm, block.poster, 'width:100%;display:block')}</div>`;
+      }
       return `<div class="alp-audio"><span class="alp-audio-icon">▶</span><span class="alp-audio-caption">${escapeHtml(block.caption || c)}</span></div>`;
     }
     if (t === 'poll') {
@@ -15872,12 +15969,23 @@ window.handleBlockVideoUpload = async function(index) {
   try {
     if (btn) { btn.innerHTML = 'Обрабатываю…'; btn.disabled = true; }
     if (hint) hint.textContent = `Загружаю «${file.name}» (${(file.size / 1024 / 1024).toFixed(1)} МБ). Сжатие идёт на сервере.`;
-    const result = await uploadVideoReturnResult(file);
+    const result = await uploadVideoReturnResult(file, (ratio) => {
+      if (!hint) return;
+      const percent = Math.round(ratio * 100);
+      hint.textContent = percent < 100
+        ? `Отправляю файл: ${percent}%`
+        : 'Файл на сервере, идёт сжатие. Это может занять пару минут.';
+    });
     textInput.value = result.url;
     textInput.dispatchEvent(new Event('input', { bubbles: true }));
     textInput.dispatchEvent(new Event('change', { bubbles: true }));
 
     const body = textInput.closest('.block-card-body');
+    const webmField = body && body.querySelector('[data-block-field="videoWebm"]');
+    if (webmField) {
+      webmField.value = result.webmUrl || '';
+      webmField.dispatchEvent(new Event('input', { bubbles: true }));
+    }
     const posterField = body && body.querySelector('[data-block-field="poster"]');
     if (posterField && result.posterUrl) {
       posterField.value = result.posterUrl;
@@ -15889,7 +15997,7 @@ window.handleBlockVideoUpload = async function(index) {
     if (mutedField && result.loopSuggested) { mutedField.checked = true; mutedField.dispatchEvent(new Event('change', { bubbles: true })); }
 
     const preview = document.getElementById(`block-video-preview-${index}`);
-    if (preview) preview.innerHTML = `<video src="${escapeHtml(result.url)}" muted loop playsinline autoplay preload="metadata" style="max-width:100%;max-height:180px"></video>`;
+    if (preview) preview.innerHTML = videoPreviewHtml(result.url, result.webmUrl, result.posterUrl);
     if (hint) {
       const before = (result.originalBytes / 1024 / 1024).toFixed(1);
       const after = (result.bytes / 1024 / 1024).toFixed(2);
@@ -15932,6 +16040,7 @@ window.handleBlockImageUpload = async function(index) {
         type: 'video',
         mediaKind: 'gif',
         content: result.url,
+        videoWebm: result.webmUrl || '',
         caption: previous.caption || '',
         poster: result.posterUrl || '',
         loop: true,
@@ -16307,8 +16416,64 @@ class EprisBlockTool {
     } else if (t === 'audio' || t === 'video') {
       this.fields.content = this._input(b.content || '');
       this.fields.caption = this._input(b.caption || '');
-      body.appendChild(this._mkRow(t === 'video' ? 'URL видео (YouTube, Vimeo или .mp4/.webm)' : 'URL', this.fields.content));
+      body.appendChild(this._mkRow(t === 'video' ? 'URL видео (YouTube, Vimeo или загруженный файл)' : 'URL', this.fields.content));
       if (t === 'video') {
+        /* Загрузка файла прямо из блока: раньше здесь принималась только
+           ссылка, и добавить гифку или ролик с телефона было нечем. */
+        this._videoWebm = b.videoWebm || '';
+        this._videoLoop = b.loop;
+        this._videoMuted = b.muted;
+        this._videoKind = b.mediaKind || '';
+        const upBtn = document.createElement('button');
+        upBtn.type = 'button';
+        upBtn.className = 'ebt-add';
+        upBtn.textContent = '⇪ Загрузить видео или GIF';
+        const preview = document.createElement('div');
+        preview.className = 'ebt-video-preview';
+        const paintPreview = () => {
+          const value = this.fields.content ? this.fields.content.value.trim() : '';
+          preview.innerHTML = /[.](?:mp4|webm|ogv|ogg)(?:$|[?#])/i.test(value)
+            ? videoPreviewHtml(value, this._videoWebm, b.poster, 'max-width:100%;max-height:160px;display:block')
+            : '';
+        };
+        paintPreview();
+        upBtn.onclick = () => {
+          const input = document.createElement('input');
+          input.type = 'file';
+          input.accept = 'video/*,image/gif,.mp4,.mov,.m4v,.webm,.gif';
+          input.hidden = true;
+          document.body.appendChild(input);
+          input.onchange = async () => {
+            const file = (input.files || [])[0];
+            input.remove();
+            if (!file) return;
+            const label = upBtn.textContent;
+            upBtn.disabled = true;
+            try {
+              const result = await uploadVideoReturnResult(file, (ratio) => {
+                const percent = Math.round(ratio * 100);
+                upBtn.textContent = percent < 100 ? `Отправка ${percent}%` : 'Сжатие на сервере…';
+              });
+              const patch = applyVideoUploadToBlock({}, result);
+              if (this.fields.content) this.fields.content.value = patch.content;
+              if (this.fields.poster && patch.poster) this.fields.poster.value = patch.poster;
+              this._videoWebm = patch.videoWebm || '';
+              this._videoLoop = patch.loop;
+              this._videoMuted = patch.muted;
+              this._videoKind = patch.mediaKind || this._videoKind;
+              paintPreview();
+              showToast('success', 'Файл загружен и сжат');
+            } catch (err) {
+              showToast('error', err.message || 'Не удалось загрузить файл');
+            } finally {
+              upBtn.disabled = false;
+              upBtn.textContent = label;
+            }
+          };
+          input.click();
+        };
+        body.appendChild(upBtn);
+        body.appendChild(preview);
         this.fields.poster = this._input(b.poster || '');
         this.fields.credit = this._input(b.credit || '');
         this.fields.sourceUrl = this._input(b.sourceUrl || '');
@@ -16360,6 +16525,12 @@ class EprisBlockTool {
       const o = { type: t, content: f.content ? f.content.value.trim() : '' };
       if (f.caption && f.caption.value.trim()) o.caption = f.caption.value.trim();
       if (t === 'video') {
+        /* Второй формат и признаки петли не редактируются руками, но обязаны
+           дожить до сохранения — иначе загруженный файл теряет половину себя. */
+        if (this._videoWebm) o.videoWebm = this._videoWebm;
+        if (this._videoKind) o.mediaKind = this._videoKind;
+        if (this._videoLoop != null) o.loop = !!this._videoLoop;
+        if (this._videoMuted != null) o.muted = !!this._videoMuted;
         if (f.poster && f.poster.value.trim()) o.poster = f.poster.value.trim();
         if (f.credit && f.credit.value.trim()) o.credit = f.credit.value.trim();
         if (f.sourceUrl && f.sourceUrl.value.trim()) o.sourceUrl = f.sourceUrl.value.trim();
@@ -17153,8 +17324,11 @@ async function flushModernEditor() {
       const isGif = block.mediaKind === 'gif' || /[.]loop[.](?:webm|mp4)(?:$|[?#])/i.test(url);
       inner = `<div class="wys-video${isGif ? ' is-gif' : ''}">
         <div class="wys-video-thumb">${
-          isGif && directMatch
-            ? `<video src="${esc(url)}" muted loop playsinline autoplay preload="metadata"></video>`
+          directMatch
+            /* Раньше в редакторе играла только гифка, а обычный ролик
+               показывался картинкой-заглушкой: редактор не видел, что именно
+               он вставил, и узнавал о неудаче уже с сайта. */
+            ? videoPreviewHtml(url, block.videoWebm, isGif ? '' : block.poster, 'width:100%;height:100%;object-fit:cover')
             : thumb ? `<img src="${esc(thumb)}" referrerpolicy="no-referrer" alt="">` : `<div class="wys-video-ph">${isGif ? '◉' : (provider || '▶')}</div>`
         }</div>
         <div class="wys-video-fields">
@@ -17491,16 +17665,13 @@ async function flushModernEditor() {
         act.disabled = true;
         act.textContent = 'Загрузка…';
         try {
-          const result = await uploadVideoReturnResult(file);
-          block.content = result.url;
-          if (result.posterUrl) block.poster = result.posterUrl;
+          const result = await uploadVideoReturnResult(file, (ratio) => {
+            const percent = Math.round(ratio * 100);
+            act.textContent = percent < 100 ? `Отправка ${percent}%` : 'Сжатие на сервере…';
+          });
           /* Гифка остаётся гифкой и в модели, и в имени файла: сайту хватит
              любого из двух признаков, чтобы пустить её по кругу. */
-          if (wantsGif || result.isLoopFile || result.loopSuggested) {
-            block.mediaKind = wantsGif || result.isLoopFile ? 'gif' : block.mediaKind;
-            block.loop = true;
-            block.muted = true;
-          }
+          applyVideoUploadToBlock(block, result, { forceLoop: wantsGif });
           const before = (result.originalBytes / 1024 / 1024).toFixed(1);
           const after = (result.bytes / 1024 / 1024).toFixed(2);
           showToast('success', `Загружено и сжато: ${before} МБ → ${after} МБ`);
@@ -18432,7 +18603,23 @@ async function flushModernEditor() {
       <button type="button" class="wys-review-block-delete" data-wys-act="block-del" data-bi="${index}" aria-label="Удалить блок" title="Удалить блок">×</button>
     </div>`;
     if (type === 'image') return `<section class="wys-review-block" data-review-block="${index}">${controls}<div style="display:flex;gap:6px;align-items:center;margin-bottom:4px"><input data-wys="block-media" data-bi="${index}" value="${esc(block.content || '')}" placeholder="URL фото" style="flex:1"><button type="button" class="btn btn-sm" data-wys-act="block-img-upload" data-bi="${index}" style="white-space:nowrap">${adminIcon('upload')}<span class="btn-label">Загрузить</span></button></div><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Подпись (необязательно)"></section>`;
-    if (type === 'video') return `<section class="wys-review-block" data-review-block="${index}">${controls}<input data-wys="block-media" data-bi="${index}" value="${esc(block.content || '')}" placeholder="URL YouTube/Vimeo"><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Подпись (необязательно)" style="margin-top:7px"></section>`;
+    /* Видео и гифка в обзоре: до сих пор здесь было только поле «URL
+       YouTube/Vimeo» — файл с телефона или компьютера вставить было нечем, и
+       редакция несла ролики в блок фото, где они не показывались вовсе. */
+    if (type === 'video') {
+      const vurl = String(block.content || '');
+      const isFile = /[.](?:mp4|webm|ogv|ogg)(?:$|[?#])/i.test(vurl);
+      const preview = isFile
+        ? `<div class="wys-review-video-preview">${videoPreviewHtml(vurl, block.videoWebm, block.poster, 'max-width:100%;max-height:170px;display:block')}</div>`
+        : '';
+      return `<section class="wys-review-block" data-review-block="${index}">${controls}
+        <div style="display:flex;gap:6px;align-items:center;margin-bottom:4px">
+          <input data-wys="block-media" data-bi="${index}" value="${esc(vurl)}" placeholder="URL YouTube/Vimeo или загруженный файл" style="flex:1">
+          <button type="button" class="btn btn-sm" data-wys-act="block-video-upload" data-bi="${index}" style="white-space:nowrap">${adminIcon('upload')}<span class="btn-label">Видео или GIF</span></button>
+        </div>
+        ${preview}
+        <input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Подпись (необязательно)" style="margin-top:7px"></section>`;
+    }
     if (type === 'gallery') return `<section class="wys-review-block" data-review-block="${index}">${controls}<textarea data-wys="block-gallery" data-bi="${index}" placeholder="По одному URL фото на строку">${esc(Array.isArray(block.content) ? block.content.join('\n') : '')}</textarea><input data-wys="block-caption" data-bi="${index}" value="${esc(block.caption || '')}" placeholder="Общая подпись (необязательно)" style="margin-top:7px"></section>`;
     if (type === 'link') return `<section class="wys-review-block" data-review-block="${index}">${controls}<input data-wys="block-content" data-bi="${index}" value="${esc(block.content || '')}" placeholder="Текст ссылки"><input data-wys="block-url" data-bi="${index}" value="${esc(block.url || '')}" placeholder="https://…" style="margin-top:7px"></section>`;
     if (type === 'checklist') return `<section class="wys-review-block" data-review-block="${index}">${controls}<textarea data-wys="block-checklist" data-bi="${index}" placeholder="Один пункт на строку">${esc(block.content?.items?.join('\n') || '')}</textarea></section>`;
@@ -18824,6 +19011,41 @@ async function flushModernEditor() {
         const blocks = ensureReviewBlocks();
         if (blocks[bi]) { blocks[bi].content = url; render(); commit(); }
       });
+    }
+    if (a === 'block-video-upload') {
+      const bi = Number(act.getAttribute('data-bi'));
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'video/*,image/gif,.mp4,.mov,.m4v,.webm,.gif';
+      input.hidden = true;
+      document.body.appendChild(input);
+      input.onchange = async () => {
+        const file = (input.files || [])[0];
+        input.remove();
+        if (!file) return;
+        const label = act.innerHTML;
+        act.disabled = true;
+        try {
+          const result = await uploadVideoReturnResult(file, (ratio) => {
+            const percent = Math.round(ratio * 100);
+            act.textContent = percent < 100 ? `Отправка ${percent}%` : 'Сжатие…';
+          });
+          const blocks = ensureReviewBlocks();
+          if (blocks[bi]) {
+            applyVideoUploadToBlock(blocks[bi], result);
+            render(); commit();
+          }
+          const before = (result.originalBytes / 1024 / 1024).toFixed(1);
+          const after = (result.bytes / 1024 / 1024).toFixed(2);
+          showToast('success', `Загружено и сжато: ${before} МБ → ${after} МБ`);
+        } catch (err) {
+          showToast('error', err.message || 'Не удалось загрузить файл');
+          act.disabled = false;
+          act.innerHTML = label;
+        }
+      };
+      input.click();
+      return;
     }
     if (a === 'pros-add') { _model.pros = _model.pros || []; _model.pros.push(''); render(); commit(); return; }
     if (a === 'cons-add') { _model.cons = _model.cons || []; _model.cons.push(''); render(); commit(); return; }
