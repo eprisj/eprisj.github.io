@@ -9120,8 +9120,12 @@ html.epris-signed-in .auth-overlay { display: none !important; }
   .settings-layout > *, .content-layout > *, .dashboard-layout > *,
   .studio-layout > *, .monitor-layout > *, .upload-layout > *,
   .translations-layout > *, .issues-layout > * { min-width: 0; }
-  .card, .panel { overflow-wrap: anywhere; }
-  .card code, .card a { overflow-wrap: anywhere; }
+  /* `anywhere` рвёт слово в любом месте, даже когда рядом есть нормальный
+     перенос: «Опубликовать» превращалось в «Опублико / вать». Обычному
+     тексту нужен `break-word` — он рвёт только то, что иначе не помещается.
+     Рвать где угодно можно ссылкам и коду: там слов нет. */
+  .card, .panel { overflow-wrap: break-word; }
+  .card code, .card a[href], .panel code { overflow-wrap: anywhere; }
 
   /* Двухколоночные сетки полей: на 375 точках колонка выходит по 67–148
      точек, и значение вроде «eprisj.github.io» или «src/content/site.json»
@@ -9170,4 +9174,75 @@ html.epris-signed-in .auth-overlay { display: none !important; }
      иконка дискеты понятна и без слова. */
   .topbar-right .sb-save .sidebar-btn-label { display: none; }
   .topbar-right .sb-save { min-width: 46px; padding-inline: 12px; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   ТЕЛЕФОН: СТРОКА «ПОРЯДКА СТАТЕЙ» И ШАГИ ГЛАВНОЙ
+   ──────────────────────────────────────────────────────────
+   Найдено на живой панели с телефона, а не на пустом скелете.
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 860px) {
+  /* Строка списка — десять колонок управления и заголовок между ними.
+     На 375 точках от заголовка оставалось «In Conversat…», а поле даты
+     сжималось в колонку по одному символу в строке. Раскладываем в две
+     строки: сверху — что это за статья, снизу — что с ней можно сделать. */
+  .order-row {
+    grid-template-columns: auto auto 44px minmax(0, 1fr) auto;
+    grid-template-areas:
+      "check num thumb info expand"
+      "move  move move date status";
+    row-gap: 10px;
+    column-gap: 8px;
+    padding: 10px;
+    align-items: center;
+  }
+  .order-check { grid-area: check; }
+  .order-num { grid-area: num; }
+  /* Обложку правило для узкого окна прятало целиком (`display: none` до
+     1080), потому что в один ряд она не влезала. В двухрядной раскладке
+     она влезает — и опознать статью по картинке быстрее, чем по номеру. */
+  .order-thumb { grid-area: thumb; display: block; width: 44px; height: 44px; object-fit: cover; }
+  .order-info { grid-area: info; }
+  /* Каретка растягивалась на всю свою колонку (по умолчанию грид-элемент
+     тянется во всю ячейку) и забирала у заголовка около 140 точек —
+     из-за этого он ломался на четыре строки. */
+  .order-expand { grid-area: expand; justify-self: end; width: 40px; min-width: 40px; min-height: 40px; padding: 0; }
+  /* Стрелки в ряд, а не колонкой: колонкой они делали строку высотой
+     в 176 точек — на экран помещалось меньше четырёх статей.
+     Занимают три первые колонки: если растянуть их на две, их ширина
+     становится нижней границей для этих двух колонок, галочка с номером
+     разъезжаются, и заголовку остаётся полоса в четыре слова. */
+  .order-move { grid-area: move; display: flex; flex-direction: row; gap: 6px; }
+  .order-date { grid-area: date; width: 100%; min-height: 40px; }
+  /* Статус встаёт в конец строки с датой, но со своей колонкой: раньше
+     он попадал в 40 точек, отведённые каретке, и сжимался в ноль —
+     слово было в разметке, но не на экране. Колонка «auto» подстроится
+     и под «на сайте», и под «запланировано». */
+  /* Слово статуса на узком экране сворачивалось в точку правилом
+     `max-width: 0` — оно писалось для строки в один ряд, где заголовку
+     были нужны эти пиксели. В двухрядной раскладке место есть, и слово
+     возвращается: точка одного цвета с соседней ни о чём не говорит. */
+  .order-status {
+    grid-area: status;
+    justify-self: end;
+    max-width: none;
+    gap: 6px;
+    overflow: visible;
+    white-space: nowrap;
+  }
+  /* Перетаскивать пальцем всё равно нельзя — порядок меняют стрелками,
+     а закрепление переехало в развёрнутые настройки строки. */
+  .order-handle, .order-pin { display: none; }
+  .order-move-btn { min-width: 44px; min-height: 40px; }
+  /* Заголовок в две строки честнее, чем одна строка с многоточием:
+     «In Conversat…» не отличить от соседней записи. */
+  .order-title { overflow: visible; white-space: normal; text-overflow: clip; }
+  .order-meta { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* Шаги на главной: кнопка держала свою ширину и выдавливала пояснение
+     в колонку шириной в три слова. Кнопка уходит на свою строку. */
+  .hp-step { flex-wrap: wrap; align-items: flex-start; row-gap: 10px; }
+  .hp-step-copy { flex: 1 1 auto; min-width: 0; }
+  .hp-step .btn { flex: 1 1 100%; margin-left: 0; justify-content: center; }
+  .hp-step-count { margin-left: auto; }
 }
