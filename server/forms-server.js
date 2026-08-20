@@ -107,9 +107,16 @@ const server = http.createServer(async (req, res) => {
     if (req.method === "GET" && parts[0] === "public" && parts[1]) {
       const form = F.findFormBySlug(parts[1]);
       if (!form) return send(res, 404, { ok: false, error: "form not found" });
-      if (form.status !== "open") return send(res, 403, { ok: false, error: "form closed", status: form.status });
-      const closedReason = F.formClosedReason(form);
-      if (closedReason) return send(res, 403, { ok: false, error: closedReason });
+      /* Предпросмотр: анкету видно до открытия приёма, но отправить нельзя.
+         Проверка стоит до всех отказов, потому что смысл ссылки именно в том,
+         чтобы посмотреть на закрытую анкету. */
+      const previewing = F.matchesFormPreview(form, url.searchParams.get("preview"));
+      if (!previewing) {
+        if (form.status !== "open") return send(res, 403, { ok: false, error: "form closed", status: form.status });
+        const closedReason = F.formClosedReason(form);
+        if (closedReason) return send(res, 403, { ok: false, error: closedReason });
+      }
+      if (previewing) return send(res, 200, { ok: true, form: F.publicForm(form), preview: true });
       if (form.access === "invite") {
         const token = F.clean(url.searchParams.get("t"), 60);
         const invite = form.invites.find((item) => item.token === token && !item.revoked);
@@ -268,7 +275,7 @@ const server = http.createServer(async (req, res) => {
         form.slug = `${base}-${n}`;
       }
       await F.writeJsonAtomic(F.formPath(form.id), form);
-      return send(res, 200, { ok: true, form: F.publicForm(form) });
+      return send(res, 200, { ok: true, form: { ...F.publicForm(form), previewToken: F.previewTokenFor(form) } });
     }
 
     const formId = F.clean(parts[0], 40);
@@ -283,7 +290,9 @@ const server = http.createServer(async (req, res) => {
           "Content-Disposition": `attachment; filename="${form.slug}-responses.csv"`,
         });
       }
-      return send(res, 200, { ok: true, form: F.publicForm(form), responses });
+      // Редакция открывает анкету вместе с её ссылкой на предпросмотр: она
+      // нужна ровно здесь, рядом с кнопкой «открыть анкету».
+      return send(res, 200, { ok: true, form: { ...F.publicForm(form), previewToken: F.previewTokenFor(form) }, responses });
     }
 
     if (req.method === "DELETE" && parts[1] === "responses" && parts[2]) {

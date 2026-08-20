@@ -62,6 +62,8 @@ const COPY = {
         required: 'Please fill in the highlighted fields.', send: 'Send answers', sending: 'Sending…',
         sent: 'Thank you. Your answers are with the editors.', error: 'Could not send the form. Try again in a minute.',
         requiredMark: 'required', invitedAs: 'Answering as', progress: 'Filled in', thisRequired: 'This answer is required.', left: 'Left', dropHint: 'or drop them here', filesFull: 'Maximum files attached:', minLength: 'at least', closedDeadline: 'The deadline for this form has passed.', closedLimit: 'This form has collected all the answers it needed.', supportShow: 'Support the journal', supportHide: 'Hide details', copy: 'Copy', copied: 'Copied',
+        savedHere: 'Saved on this device. You can close the tab and come back.', restored: 'We brought back the answers you started earlier.', leaveWarning: 'Your answers are saved here, but not sent yet.',
+        previewBanner: 'Preview. This is how the form looks to the author; answers cannot be sent from here.',
         attach: 'Attach files', uploading: 'Uploading…', remove: 'Remove',
         tooLarge: 'This file is too large.', uploadFailed: 'Upload failed. Try again.', noSpace: 'The server is out of space. Tell the editors.' },
   RU: { loading: 'Загружаем анкету…', closed: 'Анкета закрыта.', missing: 'Анкета не найдена.',
@@ -69,6 +71,8 @@ const COPY = {
         required: 'Заполните отмеченные поля.', send: 'Отправить ответы', sending: 'Отправляем…',
         sent: 'Спасибо. Ответы у редакции.', error: 'Не удалось отправить. Попробуйте через минуту.',
         requiredMark: 'обязательно', invitedAs: 'Отвечает', progress: 'Заполнено', thisRequired: 'Без этого ответа нельзя отправить.', left: 'Осталось', dropHint: 'или перетащите их сюда', filesFull: 'Больше файлов не нужно, максимум:', minLength: 'не меньше', closedDeadline: 'Срок подачи закончился.', closedLimit: 'Анкета собрала нужное число ответов.', supportShow: 'Поддержать журнал', supportHide: 'Свернуть', copy: 'Копировать', copied: 'Скопировано',
+        savedHere: 'Сохраняется на этом устройстве. Вкладку можно закрыть и вернуться позже.', restored: 'Вернули ответы, которые вы начали раньше.', leaveWarning: 'Ответы сохранены здесь, но ещё не отправлены.',
+        previewBanner: 'Предпросмотр. Так анкету видит автор; отправить ответы отсюда нельзя.',
         attach: 'Прикрепить файлы', uploading: 'Загружаем…', remove: 'Убрать',
         tooLarge: 'Файл слишком большой.', uploadFailed: 'Не загрузилось. Попробуйте ещё раз.', noSpace: 'На сервере кончилось место. Сообщите редакции.' },
   UA: { loading: 'Завантажуємо анкету…', closed: 'Анкету закрито.', missing: 'Анкету не знайдено.',
@@ -76,6 +80,8 @@ const COPY = {
         required: 'Заповніть позначені поля.', send: 'Надіслати відповіді', sending: 'Надсилаємо…',
         sent: 'Дякуємо. Відповіді у редакції.', error: 'Не вдалося надіслати. Спробуйте за хвилину.',
         requiredMark: 'обовʼязково', invitedAs: 'Відповідає', progress: 'Заповнено', thisRequired: 'Без цієї відповіді не надіслати.', left: 'Залишилось', dropHint: 'або перетягніть їх сюди', filesFull: 'Більше файлів не потрібно, максимум:', minLength: 'не менше', closedDeadline: 'Строк подання завершився.', closedLimit: 'Анкета зібрала потрібну кількість відповідей.', supportShow: 'Підтримати журнал', supportHide: 'Згорнути', copy: 'Копіювати', copied: 'Скопійовано',
+        savedHere: 'Зберігається на цьому пристрої. Вкладку можна закрити й повернутися пізніше.', restored: 'Повернули відповіді, які ви почали раніше.', leaveWarning: 'Відповіді збережені тут, але ще не надіслані.',
+        previewBanner: 'Попередній перегляд. Так анкету бачить автор; надіслати відповіді звідси не можна.',
         attach: 'Прикріпити файли', uploading: 'Завантажуємо…', remove: 'Прибрати',
         tooLarge: 'Файл завеликий.', uploadFailed: 'Не завантажилось. Спробуйте ще раз.', noSpace: 'На сервері скінчилось місце. Повідомте редакцію.' },
 } as const;
@@ -163,13 +169,22 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
   const [thankYou, setThankYou] = useState('');
+  // Анкета открыта по ссылке предпросмотра: показываем, но не принимаем ответы.
+  const [previewMode, setPreviewMode] = useState(false);
   const t = useMemo(() => copyFor(form?.language), [form?.language]);
 
   useEffect(() => {
     let cancelled = false;
     (async () => {
       try {
-        const url = `${API_BASE}/public/${encodeURIComponent(slug)}${token ? `?t=${encodeURIComponent(token)}` : ''}`;
+        /* Предпросмотр черновика: редакция открывает анкету до того, как включит
+           приём. Токен идёт в том же запросе, что и приглашение. */
+        const previewToken = new URLSearchParams(window.location.search).get('preview') || '';
+        const params = new URLSearchParams();
+        if (token) params.set('t', token);
+        if (previewToken) params.set('preview', previewToken);
+        const query = params.toString();
+        const url = `${API_BASE}/public/${encodeURIComponent(slug)}${query ? `?${query}` : ''}`;
         const response = await fetch(url);
         const data = await response.json().catch(() => null);
         if (cancelled) return;
@@ -185,6 +200,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
         if (!data?.ok || !data.form) { setState('missing'); return; }
         setForm(data.form);
         setInviteLabel(String(data.invite?.label || ''));
+        setPreviewMode(Boolean(data.preview));
         setState('ready');
         document.title = `${data.form.title} · EPRIS Journal`;
       } catch {
@@ -203,6 +219,11 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
      остаются только ссылки на уже загруженное. */
   const draftKey = `epris_form_draft_${slug}`;
   const [restored, setRestored] = useState(false);
+  /* Черновик восстановился молча, и человек об этом не знал: возвращаясь к
+     анкете, он видел свои ответы и не понимал, откуда они, а уходя — боялся
+     потерять написанное. Обе вещи стоит сказать вслух. */
+  const [restoredNotice, setRestoredNotice] = useState(false);
+  const [savedAt, setSavedAt] = useState<number | null>(null);
   const [dragField, setDragField] = useState('');
   /* Миниатюра берётся из выбранного файла в браузере и никуда не отправляется:
      тянуть картинку обратно с сервера ради превью значит гонять мегабайты по
@@ -299,15 +320,38 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
         const filtered = Object.fromEntries(
           Object.entries(stored as Record<string, AnswerValue>).filter(([key]) => known.has(key)),
         ) as Record<string, AnswerValue>;
-        if (Object.keys(filtered).length) setAnswers((prev) => ({ ...filtered, ...prev }));
+        if (Object.keys(filtered).length) {
+          setAnswers((prev) => ({ ...filtered, ...prev }));
+          setRestoredNotice(true);
+        }
       }
     } catch { /* приватный режим — просто не восстанавливаем */ }
   }, [draftKey, form, restored]);
 
   useEffect(() => {
     if (!form || !restored) return;
-    try { localStorage.setItem(draftKey, JSON.stringify(answers)); } catch { /* нет места — не беда */ }
+    try {
+      localStorage.setItem(draftKey, JSON.stringify(answers));
+      // Пустой объект — это ещё не начатая анкета, о её «сохранении» сообщать не о чем.
+      if (Object.keys(answers).length) setSavedAt(Date.now());
+    } catch { /* нет места — не беда */ }
   }, [answers, draftKey, form, restored]);
+
+  /* Уход со страницы с незаконченной анкетой. Ответы никуда не денутся, но
+     человек этого не знает, а закрытая вкладка выглядит как потерянный час
+     работы. Браузер покажет своё стандартное предупреждение; наш текст туда
+     не попадёт, но само окно даёт шанс передумать. */
+  useEffect(() => {
+    const started = Object.keys(answers).length > 0;
+    if (!started || state === 'sent') return;
+    const onBeforeUnload = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = t.leaveWarning;
+      return t.leaveWarning;
+    };
+    window.addEventListener('beforeunload', onBeforeUnload);
+    return () => window.removeEventListener('beforeunload', onBeforeUnload);
+  }, [answers, state, t.leaveWarning]);
 
   /* Показывать ли вопрос при нынешних ответах. Скрытый не спрашивается и не
      требуется — иначе анкета отказывалась бы отправляться из-за поля, которого
@@ -356,6 +400,9 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
       return;
     }
 
+    // В предпросмотре кнопка выключена, но обработчик всё равно не должен
+    // отправлять: черновик анкеты не готов собирать ответы.
+    if (previewMode) return;
     setSending(true);
     try {
       const response = await fetch(`${API_BASE}/public/${encodeURIComponent(form.slug)}/submit`, {
@@ -376,7 +423,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
       setError(t.error);
       setSending(false);
     }
-  }, [answers, draftKey, form, isVisible, sending, t, token]);
+  }, [answers, draftKey, form, isVisible, previewMode, sending, t, token]);
 
   /* Полоса набора — 640 пикселей: примерно семьдесят знаков в строке, то есть
      ширина, на которой длинный вопрос читается без возврата глазом. На
@@ -439,6 +486,11 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
         {form!.description && (
           <p className="mt-5 whitespace-pre-line font-serif text-[16px] leading-[1.7] text-[rgb(var(--c-accent-rgb)_/_0.72)]">{form!.description}</p>
         )}
+        {previewMode && (
+          <p className="mt-5 border border-[rgb(var(--c-accent-rgb)_/_0.3)] bg-[rgb(var(--c-accent-rgb)_/_0.04)] px-4 py-3 font-mono text-[10px] uppercase leading-[1.6] tracking-[0.14em] text-[rgb(var(--c-accent-rgb)_/_0.7)]">
+            {t.previewBanner}
+          </p>
+        )}
         {inviteLabel && (
           <p className="mt-5 inline-block border border-[rgb(var(--c-accent-rgb)_/_0.25)] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-[rgb(var(--c-accent-rgb)_/_0.6)]">
             {t.invitedAs}: {inviteLabel}
@@ -455,7 +507,19 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
               <div className="h-full bg-[var(--c-accent)] transition-[width] duration-500"
                 style={{ width: `${Math.round((progress.done / progress.total) * 100)}%` }} />
             </div>
+            {/* Анкета длинная, и главный страх отвечающего — потерять написанное.
+                Строка появляется только когда есть что терять. */}
+            {savedAt !== null && (
+              <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-[rgb(var(--c-accent-rgb)_/_0.42)]">
+                {t.savedHere}
+              </p>
+            )}
           </div>
+        )}
+        {restoredNotice && (
+          <p className="mt-5 border-l-2 border-[rgb(var(--c-accent-rgb)_/_0.3)] pl-3 font-serif text-[14px] leading-[1.6] text-[rgb(var(--c-accent-rgb)_/_0.7)]">
+            {t.restored}
+          </p>
         )}
       </header>
 
@@ -702,7 +766,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
           человек всё заполнил. На широком экране она остаётся обычной. */}
       <div className="sticky bottom-0 z-10 mt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.25)] bg-[var(--c-bg)] pb-[max(12px,env(safe-area-inset-bottom))] pt-5">
         <div className="flex flex-wrap items-center gap-4">
-          <button type="submit" disabled={sending}
+          <button type="submit" disabled={sending || previewMode}
             className="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-[var(--c-accent)] bg-[var(--c-accent)] px-8 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--c-bg)] transition-opacity hover:opacity-85 disabled:opacity-60">
             {sending && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
             {sending ? t.sending : t.send}

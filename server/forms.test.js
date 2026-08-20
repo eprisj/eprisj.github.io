@@ -254,3 +254,23 @@ test("уведомление молчит, пока почта не настро
   assert.equal(F.mailConfigured(), false);
   assert.equal(sent, false);
 });
+
+/* ── Предпросмотр анкеты ─────────────────────────────────────────────────── */
+
+test("ссылка предпросмотра открывает черновик, но у каждой анкеты она своя", () => {
+  /* Черновик отвечал «анкета закрыта» и самой редакции: посмотреть вопросы
+     глазами автора можно было, только открыв приём. Токен постоянный (ссылку
+     дают коллеге и она не протухает от правки), но выведен из идентификатора
+     анкеты, поэтому одна ссылка не открывает все черновики разом. */
+  const a = F.normaliseForm({ title: 'A', fields: [{ type: 'short-text', label: 'Имя' }] });
+  const b = F.normaliseForm({ title: 'B', fields: [{ type: 'short-text', label: 'Имя' }] });
+
+  const tokenA = F.previewTokenFor(a);
+  assert.equal(F.previewTokenFor(a), tokenA, 'токен меняться не должен');
+  assert.notEqual(F.previewTokenFor(b), tokenA, 'у другой анкеты другой токен');
+
+  assert.equal(F.matchesFormPreview(a, tokenA), true);
+  assert.equal(F.matchesFormPreview(b, tokenA), false, 'чужой токен не подходит');
+  assert.equal(F.matchesFormPreview(a, ''), false, 'пустой токен не открывает ничего');
+  assert.equal(F.matchesFormPreview(a, tokenA.slice(0, 10)), false, 'обрезанный токен не подходит');
+});

@@ -371,6 +371,31 @@ function normaliseField(raw, index) {
   };
 }
 
+/* ПОКАЗАТЬ АНКЕТУ ДО ТОГО, КАК ЕЁ ОТКРЫЛИ.
+ *
+ * Черновик отвечал «анкета закрыта» всем, включая саму редакцию: посмотреть,
+ * как вопросы выглядят глазами автора, можно было только открыв приём — то
+ * есть согласившись принимать ответы раньше, чем анкета готова. Предпросмотр
+ * в панели упирался в то же самое.
+ *
+ * Ссылка вида /form/<slug>?preview=<токен> показывает черновик, не открывая
+ * приёма: отправить по ней ничего нельзя, форма помечена как предпросмотр.
+ * Токен постоянный и выводится из идентификатора анкеты, поэтому у каждой
+ * анкеты он свой и не меняется от правки к правке. Секретом он не является:
+ * он защищает от случайного захода, а не от целенаправленного поиска, ровно
+ * как ссылки на черновики статей.                                           */
+function previewTokenFor(form) {
+  return crypto.createHash("sha256")
+    .update(`epris-form-preview:${form.id}`)
+    .digest("hex")
+    .slice(0, 24);
+}
+
+function matchesFormPreview(form, token) {
+  const given = clean(token, 40);
+  return Boolean(given) && given === previewTokenFor(form);
+}
+
 function normaliseForm(raw, existing = null) {
   const title = clean(raw?.title, 200) || existing?.title || "Анкета автора";
   const id = existing?.id || clean(raw?.id, 40) || newId();
@@ -768,6 +793,6 @@ module.exports = {
   formPath, responsesPath, readJson, writeJsonAtomic,
   listForms, findFormBySlug, readResponses, writeResponses,
   appendResponse, readResponseLog, responsesLogPath, notifyNewResponse, mailConfigured, telegramConfigured,
-  normaliseForm, publicForm, validateAnswers, fieldVisible, formClosedReason, supportNoteFor,
+  normaliseForm, publicForm, validateAnswers, previewTokenFor, matchesFormPreview, fieldVisible, formClosedReason, supportNoteFor,
   ipFingerprint, tooManyRecent, responsesCsv,
 };
