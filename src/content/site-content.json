@@ -4795,6 +4795,71 @@
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "publishAt": "2026-08-19T09:38:46.903Z",
       "previewToken": "0eadc13dc5057beeff1fffd5"
+    },
+    {
+      "id": 24,
+      "draft": true,
+      "title": "SAMPLE",
+      "author": "EPRIS Journal",
+      "role": "Editorial Desk",
+      "date": "Aug 20, 2026",
+      "excerpt": "A focused opening paragraph for a new editorial story.",
+      "category": "Culture",
+      "subcategory": "Feature",
+      "tags": [
+        "story",
+        "culture",
+        "editorial"
+      ],
+      "imageSeed": "sample",
+      "content": [
+        {
+          "type": "text",
+          "content": "Start with the strongest scene, fact, or observation. Keep this first block tight and specific."
+        },
+        {
+          "type": "image",
+          "content": "sample-2",
+          "caption": "Lead image"
+        },
+        {
+          "type": "quote",
+          "content": "Add a line worth remembering here."
+        },
+        {
+          "type": "note",
+          "content": "Editorial note, source context, or a short aside."
+        },
+        {
+          "type": "checklist",
+          "caption": "What to cover",
+          "content": {
+            "items": [
+              "Context",
+              "Key detail",
+              "Human angle",
+              "What changes next"
+            ]
+          }
+        },
+        {
+          "type": "poll",
+          "content": {
+            "question": "What should we explore next?",
+            "options": [
+              {
+                "label": "More context",
+                "votes": 0
+              },
+              {
+                "label": "Practical guide",
+                "votes": 0
+              }
+            ]
+          }
+        }
+      ],
+      "updatedAt": "2026-08-20T09:32:48.477Z"
     }
   ],
   "reviews": [
