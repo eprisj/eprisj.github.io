@@ -523,6 +523,17 @@ function LoopingVideo({ src, webm, poster, caption }: { src: string; webm?: stri
     return () => observer.disconnect();
   }, [near]);
 
+  /* Источники появляются в разметке позже самого <video> — только когда петля
+     подошла к экрану. Браузер сам про них не узнает: добавленные после монтажа
+     <source> не запускают загрузку, нужен явный load(). Без этого петля
+     оставалась пустой навсегда. */
+  useEffect(() => {
+    if (!near) return;
+    const node = videoRef.current;
+    if (!node) return;
+    try { node.load(); } catch { /* элемент мог исчезнуть */ }
+  }, [near]);
+
   const showStill = (reduceMotion || saveData) && !manuallyPlaying;
 
   useEffect(() => {
