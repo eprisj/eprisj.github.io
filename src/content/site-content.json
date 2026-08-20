@@ -4868,7 +4868,7 @@
           }
         }
       ],
-      "updatedAt": "2026-08-20T10:13:42.106Z",
+      "updatedAt": "2026-08-20T10:21:38.218Z",
       "previewToken": "9ce4a8719bcf166dcc3eef76"
     }
   ],
@@ -7970,7 +7970,7 @@
           "imageSeed": "sample",
           "content": [
             {
-              "type": "видео",
+              "type": "video",
               "mediaKind": "гиф",
               "content": "https://api.eprisjournal.com/uploads/mt1bol00oftquh.loop.webm",
               "caption": "",
@@ -7979,16 +7979,16 @@
               "poster": "https://api.eprisjournal.com/uploads/mt1bol00oftquh.poster.jpg"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Начните с самой сильной сцены, факта или наблюдения. Сохраните этот первый блок лаконичным и конкретным."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "sample-2",
               "caption": "Главное изображение"
             },
             {
-              "type": "цитата",
+              "type": "quote",
               "content": "Добавьте здесь строчку, которую стоит запомнить."
             },
             {
@@ -11148,11 +11148,11 @@
               "content": "Додайте рядок, вартий запам’ятовування."
             },
             {
-              "type": "Примітка",
+              "type": "note",
               "content": "Редакційна примітка, джерельний контекст або коротке відходження."
             },
             {
-              "type": "Контрольний список",
+              "type": "checklist",
               "caption": "Що охоплювати",
               "content": {
                 "items": [
@@ -11164,7 +11164,7 @@
               }
             },
             {
-              "type": "Опитування",
+              "type": "poll",
               "content": {
                 "question": "Що нам слід досліджити далі?",
                 "options": [
@@ -20609,16 +20609,16 @@
               "poster": "https://api.eprisjournal.com/uploads/mt1bol00oftquh.poster.jpg"
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "En güçlü sahneyi, gerçekle ya da gözlemle başlayın. İlk blok sıkı ve özgü olsun."
             },
             {
-              "type": "görsel",
+              "type": "image",
               "content": "sample-2",
               "caption": "Öne çıkan görsel"
             },
             {
-              "type": "alıntı",
+              "type": "quote",
               "content": "Burada değeri hatırlanacak bir satır ekleyin."
             },
             {
@@ -23777,11 +23777,11 @@
               "content": "Aggiungi una frase che vale la pena ricordare qui."
             },
             {
-              "type": "nota",
+              "type": "note",
               "content": "Nota editoriale, contesto della fonte, o una breve digressione."
             },
             {
-              "type": "elenco di controllo",
+              "type": "checklist",
               "caption": "Cosa trattare",
               "content": {
                 "items": [
@@ -23793,7 +23793,7 @@
               }
             },
             {
-              "type": "sondaggio",
+              "type": "poll",
               "content": {
                 "question": "Cosa dovremmo esplorare successivamente?",
                 "options": [
