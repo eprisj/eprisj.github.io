@@ -2,41 +2,27 @@ import { useCallback, useState } from 'react';
 
 /* БЛОК ПОДДЕРЖКИ ЖУРНАЛА, ОДИН НА ВЕСЬ САЙТ.
  *
- * Тот же блок уже жил в анкетах (src/pages/FormPage.tsx): свёрнут по
- * умолчанию, реквизиты появляются только если человек сам этого захотел,
- * у каждого способа своя кнопка копирования. Читатель статьи, дочитавший до
- * конца, — тот же адресат, что и автор, заполнивший анкету, поэтому это один
- * компонент, а не два похожих.
+ * Используется и в конце статей/обзоров, и в анкетах (src/pages/FormPage.tsx)
+ * — один компонент вместо двух похожих, чтобы вид и правки жили в одном
+ * месте.
+ *
+ * Текст короткий и без объяснений про деньги: «мы не берём плату» звучало как
+ * оправдание перед вопросом, которого никто не задавал. Читателю, дошедшему
+ * до этого места, интересно одно — как поддержать, а не отчёт о том, что с
+ * него не возьмут денег.
  *
  * Реквизиты встроены здесь же, а не запрашиваются с сервера: они меняются
- * реже, чем раз в год, а страница статьи не должна ждать лишний round-trip
- * ради строки, которую 9 читателей из 10 не развернут. Те же значения отданы
- * формам через server/forms.js — если реквизиты когда-нибудь поменяются,
- * поправить нужно в обоих местах, и это ровно то, чего исходный комментарий
- * в forms.js просил избежать «в одном месте, но не в файле, который отгружает
- * бэкенд, а не фронтенд».                                                    */
-const SUPPORT_TEXT: Record<string, { free: string; invite: string; show: string; hide: string; copy: string; copied: string }> = {
-  EN: { free: 'Publication in EPRIS Journal is free. We never charge authors or designers for being published.',
-        invite: 'If you would like to support the journal, it helps us keep it independent:',
-        show: 'Support the journal', hide: 'Hide details', copy: 'Copy', copied: 'Copied' },
-  RU: { free: 'Публикация в EPRIS Journal бесплатна. Мы никогда не берём денег с авторов и дизайнеров за публикацию.',
-        invite: 'Если захотите поддержать журнал, это помогает сохранять его независимым:',
-        show: 'Поддержать журнал', hide: 'Свернуть', copy: 'Копировать', copied: 'Скопировано' },
-  UA: { free: 'Публікація в EPRIS Journal безкоштовна. Ми ніколи не беремо грошей з авторів і дизайнерів за публікацію.',
-        invite: 'Якщо захочете підтримати журнал, це допомагає зберігати його незалежним:',
-        show: 'Підтримати журнал', hide: 'Згорнути', copy: 'Копіювати', copied: 'Скопійовано' },
-  DE: { free: 'Die Veröffentlichung im EPRIS Journal ist kostenlos. Wir verlangen nie Geld von Autoren oder Designern für eine Veröffentlichung.',
-        invite: 'Wenn Sie das Journal unterstützen möchten, hilft uns das, unabhängig zu bleiben:',
-        show: 'Journal unterstützen', hide: 'Details ausblenden', copy: 'Kopieren', copied: 'Kopiert' },
-  IT: { free: 'La pubblicazione su EPRIS Journal è gratuita. Non chiediamo mai denaro ad autori o designer per essere pubblicati.',
-        invite: 'Se vuoi sostenere la rivista, ci aiuta a restare indipendenti:',
-        show: 'Sostieni la rivista', hide: 'Nascondi dettagli', copy: 'Copia', copied: 'Copiato' },
-  ES: { free: 'La publicación en EPRIS Journal es gratuita. Nunca cobramos a autores o diseñadores por ser publicados.',
-        invite: 'Si deseas apoyar la revista, nos ayuda a mantenerla independiente:',
-        show: 'Apoyar la revista', hide: 'Ocultar detalles', copy: 'Copiar', copied: 'Copiado' },
-  TR: { free: 'EPRIS Journal\'da yayın ücretsizdir. Yazarlardan veya tasarımcılardan yayın için asla ücret almayız.',
-        invite: 'Dergiyi desteklemek isterseniz, bağımsız kalmamıza yardımcı olur:',
-        show: 'Dergiyi destekle', hide: 'Ayrıntıları gizle', copy: 'Kopyala', copied: 'Kopyalandı' },
+ * реже раза в год, а страница статьи не должна ждать лишний round-trip ради
+ * строки, которую 9 читателей из 10 не развернут. Форма решает, показывать ли
+ * блок вообще (см. FormPage — form.support), но не что в нём написано.       */
+const SUPPORT_TEXT: Record<string, { show: string; hide: string; invite: string; copy: string; copied: string }> = {
+  EN: { show: 'Support the journal', hide: 'Hide', invite: 'A few ways to support us:', copy: 'Copy', copied: 'Copied' },
+  RU: { show: 'Поддержать журнал', hide: 'Свернуть', invite: 'Несколько способов поддержать нас:', copy: 'Копировать', copied: 'Скопировано' },
+  UA: { show: 'Підтримати журнал', hide: 'Згорнути', invite: 'Кілька способів підтримати нас:', copy: 'Копіювати', copied: 'Скопійовано' },
+  DE: { show: 'Journal unterstützen', hide: 'Ausblenden', invite: 'Ein paar Wege, uns zu unterstützen:', copy: 'Kopieren', copied: 'Kopiert' },
+  IT: { show: 'Sostieni la rivista', hide: 'Nascondi', invite: 'Alcuni modi per sostenerci:', copy: 'Copia', copied: 'Copiato' },
+  ES: { show: 'Apoyar la revista', hide: 'Ocultar', invite: 'Algunas formas de apoyarnos:', copy: 'Copiar', copied: 'Copiado' },
+  TR: { show: 'Dergiyi destekle', hide: 'Gizle', invite: 'Bizi desteklemenin birkaç yolu:', copy: 'Kopyala', copied: 'Kopyalandı' },
 };
 
 const SUPPORT_METHODS: { label: string; value: string; note?: string }[] = [
@@ -54,7 +40,7 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
     try {
       await navigator.clipboard.writeText(value);
       setCopied(label);
-      window.setTimeout(() => setCopied(''), 2000);
+      window.setTimeout(() => setCopied(''), 1800);
     } catch {
       // Буфер недоступен — выделяем текст, чтобы человек скопировал вручную.
       const node = document.getElementById(`support-journal-${label}`);
@@ -70,35 +56,45 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
 
   return (
     <aside className={`border-t border-[rgb(var(--c-accent-rgb)_/_0.18)] pt-6 ${className}`}>
-      <p className="font-serif text-[15px] font-medium leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.88)]">{t.free}</p>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="mt-3.5 inline-flex items-center gap-2 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.45)] px-5 py-2.5 font-mono text-[10.5px] font-bold uppercase tracking-[0.18em] text-[var(--c-accent)] transition-colors hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]"
+        className="inline-flex items-center gap-2 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.45)] px-5 py-2.5 font-mono text-[10.5px] font-bold uppercase tracking-[0.18em] text-[var(--c-accent)] transition-colors hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]"
       >
         {open ? t.hide : t.show}
       </button>
       {open && (
-        <div className="mt-4">
+        <div className="mt-5">
           <p className="font-serif text-[14px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.55)]">{t.invite}</p>
-          <dl className="mt-3 space-y-2">
+          {/* Каждый способ — своя карточка с фиксированной структурой: лейбл и
+              кнопка копирования всегда на одной строке сверху, значение —
+              отдельной строкой во всю ширину под ней. Раньше всё стояло в один
+              резиновый ряд (flex-wrap), и на узком экране «Copy» у карты
+              падал под подпись держателя, а у IBAN улетал на отдельную строку
+              без выравнивания. Здесь переносится только значение — то, что и
+              должно переноситься, — а не расположение кнопки. */}
+          <div className="mt-3 divide-y divide-[rgb(var(--c-accent-rgb)_/_0.1)]">
             {SUPPORT_METHODS.map((method) => (
-              <div key={method.label} className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                <dt className="min-w-[52px] font-mono text-[10px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.45)]">{method.label}</dt>
-                <dd id={`support-journal-${method.label}`} className="select-all font-mono text-[13px] text-[var(--c-accent)]">
-                  {method.value}
-                  {method.note && <span className="ml-2 text-[rgb(var(--c-accent-rgb)_/_0.45)]">{method.note}</span>}
-                </dd>
+              <div key={method.label} className="flex items-start justify-between gap-4 py-3 first:pt-0 last:pb-0">
+                <div className="min-w-0">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.45)]">{method.label}</p>
+                  <p id={`support-journal-${method.label}`} className="mt-1 select-all break-all font-mono text-[13px] text-[var(--c-accent)]">
+                    {method.value}
+                  </p>
+                  {method.note && (
+                    <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.1em] text-[rgb(var(--c-accent-rgb)_/_0.4)]">{method.note}</p>
+                  )}
+                </div>
                 <button
                   type="button"
                   onClick={() => copyValue(method.label, method.value)}
-                  className="rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.22)] px-3 py-1 font-mono text-[9px] uppercase tracking-[0.14em] text-[rgb(var(--c-accent-rgb)_/_0.6)] transition-colors hover:border-[var(--c-accent)] hover:text-[var(--c-accent)]"
+                  className="shrink-0 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.22)] px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-[rgb(var(--c-accent-rgb)_/_0.6)] transition-colors hover:border-[var(--c-accent)] hover:text-[var(--c-accent)]"
                 >
                   {copied === method.label ? t.copied : t.copy}
                 </button>
               </div>
             ))}
-          </dl>
+          </div>
         </div>
       )}
     </aside>
