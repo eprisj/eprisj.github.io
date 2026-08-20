@@ -139,6 +139,9 @@ export interface ContentBlock {
   sourceUrl?: string;
   /** Poster image for Vimeo or self-hosted video. */
   poster?: string;
+  /** Второй формат того же ролика (WebM/VP9): меньше весит, но играет не везде.
+   *  Основная ссылка в `content` — всегда mp4, он понятен любому браузеру. */
+  videoWebm?: string;
   /** Видео-петля: играет само, по кругу и без звука — так ведут себя гифки. */
   loop?: boolean;
   /** Запускать без действия читателя. Работает только вместе с muted. */
