@@ -687,6 +687,12 @@ let previewToken: string | null = null;
 export function setPreviewToken(token: string | null): void {
   previewToken = token && token.trim() ? token.trim() : null;
 }
+/* Открыта ли страница по ссылке на черновик. Приложению это нужно до того, как
+   что-то отрисовано: черновика нет в собранном бандле, он приходит только из
+   живого контента, и ждать его в этом случае надо иначе, чем обычную статью. */
+export function hasPreviewToken(): boolean {
+  return previewToken !== null;
+}
 function matchesPreviewToken(entry: unknown): boolean {
   if (!previewToken) return false;
   const token = (entry as { previewToken?: string } | null)?.previewToken;
