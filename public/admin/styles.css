@@ -8911,6 +8911,44 @@ html.epris-signed-in .auth-overlay { display: none !important; }
   /* Зум при фокусе в поле мешает и на планшете — правило было
      заведено только до 720px. */
   input, select, textarea { font-size: 16px; }
+
+  /* ЭТИ ПОЛЯ БЛАНКЕТНОЕ ПРАВИЛО ВЫШЕ НЕ ДОСТАЁТ.
+
+     "input, select, textarea { font-size: 16px }" перебивает голые теги, но
+     проигрывает любому правилу с классом — у класса специфичность выше,
+     независимо от того, что было раньше в файле. Двадцать с лишним таких
+     полей в разных редакторах остаются мельче 16px и на телефоне при фокусе
+     запускают зум Safari, который потом не снимается сам — страница остаётся
+     увеличенной, пока не отмасштабировать руками. Здесь те же селекторы,
+     специфичность та же, но правило идёт позже в каскаде и поэтому побеждает
+     без !important. */
+  .raw-panel textarea,
+  .block-card-body input,
+  .pl-desc-input,
+  .transl-table input,
+  .meta-field-group input,
+  .meta-field-group select,
+  .ebt-input,
+  .ebt-textarea,
+  .wys-inline-input,
+  .wys-pop-input,
+  .wys-meta-field input,
+  .pp-select-field,
+  .homepage-category-locale-grid input,
+  .homepage-slot-select,
+  .homepage-layout-copy-grid input,
+  .transcript-speaker-input,
+  .order-field select,
+  .order-filters input,
+  .order-filters select,
+  .order-cs-field input,
+  .order-cs-field textarea,
+  .order-cs-field select,
+  .sc-edit-field input,
+  .sc-edit-field textarea,
+  .hp-slot-order select {
+    font-size: 16px;
+  }
 }
 
 /* ══════════════════════════════════════════════════════════
