@@ -49,6 +49,7 @@ import {
   subscribeContent
 } from './data';
 import { DEFAULT_HOMEPAGE_PICS_CATEGORIES } from './data';
+import { SupportJournal } from './components/SupportJournal';
 import type { HomepageArchiveEntry, HomepagePicsCategory, HomepageSectionKey, SiteSettings, SiteTheme, VisibilitySectionKey } from './data';
 import { Search, ArrowUpRight, FileText, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, ArrowRight, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
 
@@ -2718,6 +2719,8 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
             </div>
           </footer>
 
+          <SupportJournal lang={currentLang} className="mt-12 sm:mt-16" />
+
           {related.length > 0 && (
             <section className="mt-12 sm:mt-20 pt-10 sm:pt-14 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)]">
               <h2 className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-8">
@@ -3138,6 +3141,7 @@ function ReviewView({ review, t, onClose, currentLang }: { review: Review; t: (k
             </div>
           </div>
         </footer>
+        <SupportJournal lang={currentLang} className="mt-10 sm:mt-16" />
       </div>
     </div>
   </motion.article>;
