@@ -210,14 +210,14 @@ function GalleryItemView({ item, onClose, articles, onReadArticle }: { item: Ite
 const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
   'nav.home': { EN: 'Home', RU: 'Главная', UA: 'Головна', DE: 'Startseite', IT: 'Home', ES: 'Inicio', TR: 'Ana sayfa' },
   'reviews.read': { EN: 'Read', RU: 'Читать', UA: 'Читати', DE: 'Lesen', IT: 'Leggi', ES: 'Leer', TR: 'Oku' },
-  'homepage.picsTitle': { EN: 'Pics of the week', RU: 'Фото недели', UA: 'Фото тижня', DE: 'Bilder der Woche', IT: 'Foto della settimana', ES: 'Fotos de la semana', TR: 'Haftanın fotoğrafları' },
+  'homepage.picsTitle': { EN: 'Daily Picks', RU: 'Daily Picks', UA: 'Daily Picks', DE: 'Daily Picks', IT: 'Daily Picks', ES: 'Daily Picks', TR: 'Daily Picks' },
   'homepage.previous': { EN: 'Previous images', RU: 'Предыдущие изображения', UA: 'Попередні зображення', DE: 'Vorherige Bilder', IT: 'Immagini precedenti', ES: 'Imágenes anteriores', TR: 'Önceki görseller' },
   'homepage.next': { EN: 'Next images', RU: 'Следующие изображения', UA: 'Наступні зображення', DE: 'Nächste Bilder', IT: 'Immagini successive', ES: 'Imágenes siguientes', TR: 'Sonraki görseller' },
   'homepage.openImage': { EN: 'Open image', RU: 'Открыть изображение', UA: 'Відкрити зображення', DE: 'Bild öffnen', IT: 'Apri immagine', ES: 'Abrir imagen', TR: 'Görseli aç' },
-  'homepage.carouselLabel': { EN: 'Pics of the week categories', RU: 'Категории фото недели', UA: 'Категорії фото тижня', DE: 'Kategorien der Bilder der Woche', IT: 'Categorie delle foto della settimana', ES: 'Categorías de fotos de la semana', TR: 'Haftanın fotoğraf kategorileri' },
+  'homepage.carouselLabel': { EN: 'Daily Picks categories', RU: 'Категории Daily Picks', UA: 'Категорії Daily Picks', DE: 'Daily Picks Kategorien', IT: 'Categorie Daily Picks', ES: 'Categorías de Daily Picks', TR: 'Daily Picks kategorileri' },
   'homepage.archiveEyebrow': { EN: 'Archive', RU: 'Архив', UA: 'Архів', DE: 'Archiv', IT: 'Archivio', ES: 'Archivo', TR: 'Arşiv' },
-  'homepage.archiveTitle': { EN: 'Daily picks', RU: 'Ежедневный выбор', UA: 'Щоденний вибір', DE: 'Tägliche Auswahl', IT: 'Scelte quotidiane', ES: 'Selección diaria', TR: 'Günün seçkisi' },
-  'homepage.archiveDescription': { EN: 'Every weekly composition stays here after the next one takes its place.', RU: 'Каждая недельная композиция остаётся здесь после выхода следующей.', UA: 'Кожна тижнева композиція залишається тут після виходу наступної.', DE: 'Jede Wochenkomposition bleibt hier, wenn die nächste erscheint.', IT: 'Ogni composizione settimanale resta qui quando arriva la successiva.', ES: 'Cada composición semanal permanece aquí cuando llega la siguiente.', TR: 'Bir sonraki yayınlandığında her haftalık kompozisyon burada kalır.' },
+  'homepage.archiveTitle': { EN: 'Daily Picks', RU: 'Daily Picks', UA: 'Daily Picks', DE: 'Daily Picks', IT: 'Daily Picks', ES: 'Daily Picks', TR: 'Daily Picks' },
+  'homepage.archiveDescription': { EN: 'Every past composition stays here after the next one takes its place.', RU: 'Каждая предыдущая подборка остаётся здесь после выхода следующей.', UA: 'Кожна попередня добірка залишається тут після виходу наступної.', DE: 'Jede frühere Komposition bleibt hier, wenn die nächste erscheint.', IT: 'Ogni composizione precedente resta qui quando arriva la successiva.', ES: 'Cada composición anterior permanece aquí cuando llega la siguiente.', TR: 'Bir sonraki yayınlandığında her önceki kompozisyon burada kalır.' },
   'homepage.descriptionUnavailable': { EN: 'Short description coming soon.', RU: 'Краткое описание появится скоро.', UA: 'Короткий опис з’явиться незабаром.', DE: 'Eine kurze Beschreibung folgt in Kürze.', IT: 'Una breve descrizione arriverà presto.', ES: 'La breve descripción llegará pronto.', TR: 'Kısa açıklama yakında eklenecek.' },
   'homepage.showDetails': { EN: 'Show description', RU: 'Показать описание', UA: 'Показати опис', DE: 'Beschreibung zeigen', IT: 'Mostra descrizione', ES: 'Mostrar descripción', TR: 'Açıklamayı göster' },
   'homepage.hideDetails': { EN: 'Hide description', RU: 'Скрыть описание', UA: 'Сховати опис', DE: 'Beschreibung ausblenden', IT: 'Nascondi descrizione', ES: 'Ocultar descripción', TR: 'Açıklamayı gizle' },
@@ -1627,7 +1627,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
   const picksMode = picsSettings.mode === 'auto' ? 'auto' : 'manual';
   const useLifo = picsSettings.ordering !== 'manual';
   const activeRelease = getActiveHomepagePicsRelease();
-  // Pics of the week is an independent curated collection. Article covers and
+  // Daily Picks is an independent curated collection. Article covers and
   // inline article media are deliberately excluded even when they carry the
   // same category words or an image URL.
   const publishedPhotoItems = items.filter((item) => item.picsOfWeek === true && Boolean(String(item.imageUrl || '').trim()));
