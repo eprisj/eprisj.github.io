@@ -1059,16 +1059,51 @@ function queueMonitoringChecks(delay = 450, mode = 'local') {
   }, delay);
 }
 
+/* Нормализация — это полный разбор и обратная сборка всего документа сайта, а
+   он весит около двух мегабайт. Функция чистая (строка на входе, строка на
+   выходе), но `isEditorDirty()` дёргает её из четырнадцати мест, и за одно
+   сохранение она успевала отработать несколько раз подряд на одной и той же
+   строке: сначала из `updateEditorState()`, потом из `saveDraft()`. Помним
+   последнюю пару вход/выход — повторные вызовы становятся сравнением ссылок.
+
+   Кэш на одну запись выбран намеренно: во время набора текста строка меняется
+   каждые 450 мс, и словарь по всем виденным версиям документа просто держал бы
+   в памяти мегабайты мусора ради попаданий, которых не будет. */
+let _normalizeCacheIn = null;
+let _normalizeCacheOut = null;
 function normalizeJsonText(text) {
   const raw = String(text || '').trim();
   if (!raw) {
     return '';
   }
+  if (raw === _normalizeCacheIn) return _normalizeCacheOut;
 
+  let out;
   try {
-    return JSON.stringify(JSON.parse(raw));
+    out = JSON.stringify(JSON.parse(raw));
   } catch {
-    return raw;
+    out = raw;
+  }
+  _normalizeCacheIn = raw;
+  _normalizeCacheOut = out;
+  return out;
+}
+
+/* Тот, кто только что собрал текст документа из объекта, знает нормализованный
+   вид даром: это тот же объект без отступов. Без этой подсказки ближайший
+   `isEditorDirty()` разбирал бы свежую строку заново — а разбор двух мегабайт
+   втрое дороже, чем сборка компактной строки из готового объекта. */
+function rememberNormalizedJson(rawText, dataObject) {
+  try {
+    const raw = String(rawText || '').trim();
+    if (!raw) return;
+    _normalizeCacheIn = raw;
+    /* Без объекта считаем, что текст уже компактный, то есть сам себе
+       нормализованный вид, — тогда подсказка достаётся вообще бесплатно. */
+    _normalizeCacheOut = dataObject === undefined ? raw : JSON.stringify(dataObject);
+  } catch {
+    _normalizeCacheIn = null;
+    _normalizeCacheOut = null;
   }
 }
 
@@ -2359,6 +2394,20 @@ function updateStatsFromEditor() {
   }
 
   updateStats(parsed);
+}
+
+/* Панель статистики (сколько статей, обзоров, сколько весит документ) — сводка,
+   на которую редактор смотрит изредка, а пересчитывалась она при каждом
+   сохранении, то есть каждые 450 мс во время набора. Одна только строка
+   «Размер (байт)» стоит около двадцати миллисекунд: чтобы узнать вес в байтах,
+   создаётся Blob из всего документа. Показывать это на полсекунды позже никому
+   не мешает, а из набора текста уходит заметная задержка. */
+let _statsTimer = null;
+function scheduleStatsUpdate(data) {
+  clearTimeout(_statsTimer);
+  _statsTimer = setTimeout(() => {
+    try { updateStats(data); } catch {}
+  }, 1200);
 }
 
 function updateStats(data) {
@@ -17030,17 +17079,64 @@ async function flushModernEditor() {
     setSave('saved');
     pushHistory();
   }
+  /* Разбор всего документа сайта (около двух мегабайт) на каждое сохранение —
+     самая дорогая операция в наборе текста, а сохранение происходит каждые
+     450 мс. Между двумя сохранениями документ меняем только мы сами, поэтому
+     разобранный объект переживает до следующего раза.
+
+     Сверка идёт по самой строке `editor.value`, а не по флагу: если документ
+     подменили мимо нас (загрузка с сервера, откат версии, правка JSON руками в
+     той же textarea), строка не совпадёт с запомненной и разбор повторится.
+     Объект наружу не отдаётся — только читается в `updateStats` — поэтому
+     чужие мутации ему не грозят. */
+  let _flushDocText = null;
+  let _flushDocData = null;
+  /* Возврат отступов после паузы в наборе. Пишем только если textarea всё ещё
+     содержит ровно ту строку, которую оставили мы: иначе за это время документ
+     подменили (загрузка с сервера, откат версии, ручная правка), и наш красивый
+     вид затёр бы чужой свежий. */
+  let _prettyTimer = null;
+  function schedulePrettyReflow(data) {
+    clearTimeout(_prettyTimer);
+    _prettyTimer = setTimeout(() => {
+      if (editor.value !== _flushDocText) return;
+      try {
+        const pretty = JSON.stringify(data, null, 2);
+        editor.value = pretty;
+        _flushDocText = pretty;
+        _flushDocData = data;
+        rememberNormalizedJson(pretty, data);
+      } catch { /* документ остаётся компактным — он полностью рабочий */ }
+    }, 700);
+  }
   function flushLocal() {
     if (!_model) return false;
-    const data = parseEditorJsonSafe();
-    if (!data) return false;
+    let data;
+    if (_flushDocData && editor.value === _flushDocText) {
+      data = _flushDocData;
+    } else {
+      data = parseEditorJsonSafe();
+      if (!data) return false;
+    }
     const arr = getSectionArray(data, _ctx.section, _ctx.lang, _ctx.lang !== DEFAULT_LANGUAGE);
     const idx = arr.findIndex((e) => Number(e.id) === _ctx.id);
     const clean = clone(_model);
     if (idx >= 0) arr[idx] = clean; else arr.push(clean);
     _suspendReload = true;
-    editor.value = JSON.stringify(data, null, 2);
-    try { updateStats(data); } catch {}
+    /* Во время набора документ собирается без отступов. Отступы нужны ровно
+       одному читателю — человеку, который откроет сырую textarea, — а стоят
+       они полтора раза дороже компактной сборки (30 мс против 20 на двух
+       мегабайтах) и раздувают строку на 17%, которая тут же уходит в черновик.
+       Поэтому красивый вид возвращается, когда набор прекратился: для всего
+       остального кода это тот же самый JSON. Заодно компактная строка сама себе
+       нормализованный вид, и ближайший `isEditorDirty()` не считает ничего. */
+    const flushed = JSON.stringify(data);
+    _flushDocText = flushed;
+    _flushDocData = data;
+    editor.value = flushed;
+    rememberNormalizedJson(flushed);
+    schedulePrettyReflow(data);
+    scheduleStatsUpdate(data);
     try { updateEditorState(); } catch {}
     try { saveDraft(); } catch {}
     setTimeout(() => { _suspendReload = false; }, 60);
