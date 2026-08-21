@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
-import { Check, Copy, CreditCard, Landmark, Wallet } from 'lucide-react';
+import { Check, Copy, CreditCard, Landmark, QrCode, Wallet } from 'lucide-react';
+import QRCode from 'qrcode';
 
 /* БЛОК ПОДДЕРЖКИ ЖУРНАЛА, ОДИН НА ВЕСЬ САЙТ.
  *
@@ -36,18 +37,31 @@ const SUPPORT_METHODS: { label: string; value: string; note?: string; icon: type
   { label: 'IBAN', value: 'UA733003350000002620715221312', icon: Landmark },
 ];
 
-/* QR-код PayPal — сознательно пусто. Ссылка paypal.me/<логин> выбирается
-   человеком в самом PayPal и не выводится из email никакой формулой;
-   нарисовать QR наугад значит рискнуть чужими деньгами, если строка
-   окажется чужим настоящим логином. Как только появится точный URL —
-   он подставляется сюда, и карточка PayPal сама отрисует код рядом с
-   реквизитом, ничего больше менять не придётся. */
-const PAYPAL_QR_URL: string | null = null;
+/* Настоящая ссылка PayPal (не придуманная — подтверждена сканированием
+   собственного QR-кода PayPal пользователем и проверкой ответа сервера).
+   QR рисуется на лету тем же пакетом qrcode, что уже используется для
+   паспортов (src/pages/passport/passportRender.ts), а не хранится готовой
+   картинкой — так ссылку видно прямо в коде и легко сменить одной строкой. */
+const PAYPAL_QR_TARGET = 'https://www.paypal.com/qrcodes/p2pqrc/UW4J64QUNFVUQ';
 
 export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string; className?: string }) {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState('');
+  const [qrOpen, setQrOpen] = useState(false);
+  const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
   const t = SUPPORT_TEXT[String(lang || 'EN').toUpperCase()] || SUPPORT_TEXT.EN;
+
+  const toggleQr = useCallback(async () => {
+    setQrOpen((v) => !v);
+    if (!qrDataUrl) {
+      try {
+        const dataUrl = await QRCode.toDataURL(PAYPAL_QR_TARGET, { margin: 1, width: 320 });
+        setQrDataUrl(dataUrl);
+      } catch {
+        // QR не сгенерировался — ссылка всё равно доступна копированием ниже.
+      }
+    }
+  }, [qrDataUrl]);
 
   const copyValue = useCallback(async (label: string, value: string) => {
     try {
@@ -84,41 +98,70 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
             {SUPPORT_METHODS.map((method) => {
               const Icon = method.icon;
               const isCopied = copied === method.label;
-              const showQr = method.label === 'PayPal' && PAYPAL_QR_URL;
+              const isPaypal = method.label === 'PayPal';
               return (
-                <div
-                  key={method.label}
-                  className="flex items-center gap-3.5 rounded-2xl border border-[rgb(var(--c-accent-rgb)_/_0.12)] bg-[rgb(var(--c-gold-rgb)_/_0.045)] p-3.5 transition-colors hover:border-[rgb(var(--c-gold-rgb)_/_0.4)]"
-                >
-                  {showQr ? (
-                    <img src={PAYPAL_QR_URL} alt={t.qr} width={44} height={44} className="h-11 w-11 shrink-0 rounded-lg border border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-white object-contain p-1" />
-                  ) : (
+                <div key={method.label}>
+                  <div className="flex items-center gap-3.5 rounded-2xl border border-[rgb(var(--c-accent-rgb)_/_0.12)] bg-[rgb(var(--c-gold-rgb)_/_0.045)] p-3.5 transition-colors hover:border-[rgb(var(--c-gold-rgb)_/_0.4)]">
                     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[rgb(var(--c-gold-rgb)_/_0.14)] text-[var(--c-gold)]">
                       <Icon size={18} strokeWidth={1.75} aria-hidden="true" />
                     </span>
-                  )}
-                  <div className="min-w-0 flex-1">
-                    <p className="font-mono text-[9.5px] uppercase tracking-[0.14em] text-[rgb(var(--c-accent-rgb)_/_0.48)]">{method.label}</p>
-                    <p id={`support-journal-${method.label}`} className="mt-0.5 select-all truncate font-mono text-[13px] text-[var(--c-accent)]">
-                      {method.value}
-                    </p>
-                    {method.note && (
-                      <p className="mt-0.5 font-mono text-[9.5px] uppercase tracking-[0.08em] text-[rgb(var(--c-accent-rgb)_/_0.4)]">{method.note}</p>
+                    <div className="min-w-0 flex-1">
+                      <p className="font-mono text-[9.5px] uppercase tracking-[0.14em] text-[rgb(var(--c-accent-rgb)_/_0.48)]">{method.label}</p>
+                      <p id={`support-journal-${method.label}`} className="mt-0.5 select-all truncate font-mono text-[13px] text-[var(--c-accent)]">
+                        {method.value}
+                      </p>
+                      {method.note && (
+                        <p className="mt-0.5 font-mono text-[9.5px] uppercase tracking-[0.08em] text-[rgb(var(--c-accent-rgb)_/_0.4)]">{method.note}</p>
+                      )}
+                    </div>
+                    {isPaypal && (
+                      <button
+                        type="button"
+                        onClick={toggleQr}
+                        aria-label={t.qr}
+                        title={t.qr}
+                        aria-expanded={qrOpen}
+                        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-colors ${
+                          qrOpen
+                            ? 'border-[var(--c-gold)] bg-[var(--c-gold)] text-[var(--c-bg)]'
+                            : 'border-[rgb(var(--c-accent-rgb)_/_0.18)] text-[rgb(var(--c-accent-rgb)_/_0.55)] hover:border-[var(--c-gold)] hover:text-[var(--c-gold)]'
+                        }`}
+                      >
+                        <QrCode size={15} strokeWidth={1.75} aria-hidden="true" />
+                      </button>
                     )}
+                    <button
+                      type="button"
+                      onClick={() => copyValue(method.label, method.value)}
+                      aria-label={isCopied ? t.copied : t.copy}
+                      title={isCopied ? t.copied : t.copy}
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-colors ${
+                        isCopied
+                          ? 'border-[var(--c-gold)] bg-[var(--c-gold)] text-[var(--c-bg)]'
+                          : 'border-[rgb(var(--c-accent-rgb)_/_0.18)] text-[rgb(var(--c-accent-rgb)_/_0.55)] hover:border-[var(--c-gold)] hover:text-[var(--c-gold)]'
+                      }`}
+                    >
+                      {isCopied ? <Check size={15} strokeWidth={2} aria-hidden="true" /> : <Copy size={14} strokeWidth={1.75} aria-hidden="true" />}
+                    </button>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => copyValue(method.label, method.value)}
-                    aria-label={isCopied ? t.copied : t.copy}
-                    title={isCopied ? t.copied : t.copy}
-                    className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-colors ${
-                      isCopied
-                        ? 'border-[var(--c-gold)] bg-[var(--c-gold)] text-[var(--c-bg)]'
-                        : 'border-[rgb(var(--c-accent-rgb)_/_0.18)] text-[rgb(var(--c-accent-rgb)_/_0.55)] hover:border-[var(--c-gold)] hover:text-[var(--c-gold)]'
-                    }`}
-                  >
-                    {isCopied ? <Check size={15} strokeWidth={2} aria-hidden="true" /> : <Copy size={14} strokeWidth={1.75} aria-hidden="true" />}
-                  </button>
+                  {isPaypal && qrOpen && (
+                    <div className="mt-2.5 flex flex-col items-center gap-2 rounded-2xl border border-[rgb(var(--c-accent-rgb)_/_0.12)] bg-[rgb(var(--c-gold-rgb)_/_0.045)] p-4">
+                      {qrDataUrl ? (
+                        <img
+                          src={qrDataUrl}
+                          alt={t.qr}
+                          width={176}
+                          height={176}
+                          className="h-44 w-44 rounded-xl border border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-white p-2"
+                        />
+                      ) : (
+                        <div className="flex h-44 w-44 items-center justify-center rounded-xl border border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-white/40">
+                          <span className="h-6 w-6 animate-spin rounded-full border-2 border-[var(--c-gold)] border-t-transparent" aria-hidden="true" />
+                        </div>
+                      )}
+                      <p className="font-mono text-[9.5px] uppercase tracking-[0.1em] text-[rgb(var(--c-accent-rgb)_/_0.48)]">{t.qr}</p>
+                    </div>
+                  )}
                 </div>
               );
             })}
