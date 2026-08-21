@@ -9266,8 +9266,26 @@ html.epris-signed-in .auth-overlay { display: none !important; }
 .wys-video-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 6px; }
 .wys-video-note { color: var(--text-muted); font-size: .66rem; }
 .block-type-badge.type-gif { color: var(--ok); }
+
+/* Превью было 96px шириной и всегда 16/9 — вертикальная гифка тонула в чёрных
+   полях, а рядом кнопка загрузки разъезжалась в огромный пунктирный квадрат:
+   она носила класс .wys-gal-add, у которого aspect-ratio:1 для плиток
+   галереи. Отсюда и «выглядит плохо»: две трети блока занимало пустое место. */
+.wys-video-thumb { width: 168px; aspect-ratio: 4 / 3; background: var(--bg); border: 1px solid var(--line); }
+.wys-video.is-gif .wys-video-thumb { aspect-ratio: auto; min-height: 118px; }
+.wys-video-upload {
+  border: 1px solid var(--line-strong); background: var(--bg-card); color: var(--text);
+  font-family: var(--font-mono); font-size: .68rem; letter-spacing: .04em;
+  padding: 8px 14px; cursor: pointer; border-radius: 0; white-space: nowrap;
+}
+.wys-video-upload:hover { border-color: var(--accent); color: var(--accent); }
+.wys-video-state { font-family: var(--font-mono); font-size: .62rem; color: var(--text-muted); letter-spacing: .04em; }
+.wys-video-state.is-ready { color: var(--ok); }
+.wys-video-caption { margin: 0 0 6px; }
 @media (max-width: 860px) {
-  .wys-video-actions .wys-gal-add { width: 100%; min-height: 44px; }
+  .wys-video { flex-direction: column; }
+  .wys-video-thumb { width: 100%; }
+  .wys-video-upload { width: 100%; min-height: 44px; }
   .wys-video-note { width: 100%; }
 }
 

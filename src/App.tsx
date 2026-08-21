@@ -440,14 +440,20 @@ function videoSources(content: string, videoWebm?: string): { src: string; type:
   const url = String(content || '').trim();
   if (!url) return [];
   const isOurUpload = /\/uploads\//.test(url);
-  const webm = String(videoWebm || '').trim()
-    || (isOurUpload && /\.mp4(?:$|[?#])/i.test(url) ? url.replace(/\.mp4(?=$|[?#])/i, '.webm') : '');
+  /* WebM больше не додумывается из имени mp4. Раньше строка `.mp4` → `.webm`
+     давала запрос к файлу, которого с 21.08.2026 просто нет (сервер перестал
+     тратить на VP9 по двадцать секунд ядра), — то есть лишний 404 перед
+     каждым воспроизведением. У старых записей webm на диске есть, но замеры
+     показали, что он КРУПНЕЕ mp4 в каждой паре (+21…132%), поэтому первым
+     источником теперь всегда идёт mp4, а webm — только если он явно записан
+     в блоке, и только вторым. */
+  const webm = String(videoWebm || '').trim();
   const mp4 = /\.mp4(?:$|[?#])/i.test(url)
     ? url
     : (isOurUpload && /\.webm(?:$|[?#])/i.test(url) ? url.replace(/\.webm(?=$|[?#])/i, '.mp4') : '');
   const list: { src: string; type: string }[] = [];
-  if (webm) list.push({ src: webm, type: 'video/webm' });
   if (mp4) list.push({ src: mp4, type: 'video/mp4' });
+  if (webm) list.push({ src: webm, type: 'video/webm' });
   if (!list.length) list.push({ src: url, type: '' });
   /* Ссылка из блока всегда должна быть в списке: редактор мог вставить .ogv
      или файл со стороннего сайта, и додумывать за него нечего. */
