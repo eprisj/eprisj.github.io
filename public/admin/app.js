@@ -11611,6 +11611,20 @@ function bindStudioMediaActions() {
     item.homeDescription = description || undefined;
     item.homeCredit = String(homepageCardField('homepageCardCredit')?.value || '').trim() || undefined;
     item.homeSourceUrl = String(homepageCardField('homepageCardSourceUrl')?.value || '').trim() || undefined;
+    /* Это и есть точка потери, о которой предупреждал редактор: item -
+       одна и та же запись и для текущего опубликованного состояния, и для
+       правки поверх него, пока не создан отдельный черновой выпуск.
+       Достаточно перезаписать это поле, чтобы прежнее фото исчезло из
+       данных без следа - не только с сайта, но и из пула "раньше в этой
+       категории", потому что он и сам читает imageUrl отсюда же. Ловим
+       момент замены здесь, а не пытаемся распутывать релизы: снимок
+       старого значения кладём на саму запись, прежде чем поле перезапишут. */
+    const previousImageUrl = String(item.imageUrl || '').trim();
+    if (previousImageUrl && previousImageUrl !== imageUrl) {
+      if (!Array.isArray(item.imageHistory)) item.imageHistory = [];
+      item.imageHistory.unshift({ url: previousImageUrl, replacedAt: new Date().toISOString() });
+      if (item.imageHistory.length > 12) item.imageHistory.length = 12;
+    }
     item.imageUrl = imageUrl || undefined;
     if (imageUrl) delete item.imageSeed;
     if (!String(item.title || '').trim() && title) item.title = title;
@@ -12697,6 +12711,16 @@ function bindStudioMediaActions() {
     (Array.isArray(data.items) ? data.items : []).forEach((item) => {
       if (!item?.picsOfWeek || String(item.homeCategory || '') !== String(categoryId)) return;
       consider(item.imageUrl, item.homeTitle || item.title, item.updatedAt);
+      /* Фото, снятое со ЭТОЙ ЖЕ записи (замена в редакторе карточки, не
+         перенос на новый выпуск), никогда не получало отдельного item -
+         на его месте оставалось только новое значение imageUrl, старое
+         исчезало насовсем. collectHomepageCardDraft теперь ловит этот
+         момент и складывает прежний URL в item.imageHistory перед
+         перезаписью; здесь его читаем, тем же названием, что и у записи,
+         к которой он принадлежал. */
+      (Array.isArray(item.imageHistory) ? item.imageHistory : []).forEach((entry) => {
+        consider(entry?.url, item.homeTitle || item.title, entry?.replacedAt);
+      });
     });
     return [...byUrl.values()].sort((a, b) => b.ms - a.ms).slice(0, 16);
   }
