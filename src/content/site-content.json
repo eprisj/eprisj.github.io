@@ -2036,18 +2036,17 @@
       "subtitle": "Hilma af Klint · 1907 · tempera on paper",
       "fig": "PICS 013",
       "description": "Hilma af Klint gives old age a vivid, floating language: lilac fields, loops and dark seeds make the canvas feel grown rather than painted.",
-      "imageSeed": "",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Hilma_af_Klint_-_The_Ten_Largest_No._9_-_1907.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mt2pocyymsxngk.jpg",
       "picsOfWeek": true,
       "homeCategory": "painting",
-      "homeTitle": "The Ten Largest, No. 9, Old Age",
-      "homeSubtitle": "Hilma af Klint · 1907 · tempera on paper",
-      "homeDescription": "Hilma af Klint gives old age a vivid, floating language: lilac fields, loops and dark seeds make the canvas feel grown rather than painted.",
-      "homeCredit": "Hilma af Klint · public-domain work / Wikimedia Commons",
-      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._9_-_1907.jpg",
+      "homeTitle": "La Gorge du Refus",
+      "homeSubtitle": "Ivan Tovar  · 1974 • oil on canvas",
+      "homeDescription": "Ivan Tovar was a Dominican surrealist known for dreamlike paintings exploring the subconscious through symbolic, fantastical imagery.",
+      "homeCredit": "Sothebys",
       "picsId": "PICS-2026-013",
-      "updatedAt": "2026-08-11T10:00:01.000Z",
-      "picsReleaseId": "PICS-WEEK-2026-001"
+      "updatedAt": "2026-08-21T08:59:53.043Z",
+      "picsReleaseId": "PICS-WEEK-2026-001",
+      "homeSourceUrl": "https://www.sothebys.com/en/auctions/ecatalogue/2019/impressionist-modern-art-day-n10068/lot.396.html"
     },
     {
       "id": 18,
@@ -4943,7 +4942,7 @@
           }
         }
       ],
-      "updatedAt": "2026-08-21T08:59:38.055Z"
+      "updatedAt": "2026-08-21T08:34:12.004Z"
     }
   ],
   "reviews": [
