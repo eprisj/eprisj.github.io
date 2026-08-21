@@ -1882,7 +1882,11 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
               return <div key={`slot-${position}`} className={`${slotClass} home-carousel-empty`}><span className="font-mono text-[10px] uppercase tracking-[0.2em]">{localizedHomepageCategoryLabel(category, currentLang)}</span><p>{t('homepage.descriptionUnavailable')}</p></div>;
             }
             const categoryLabel = localizedHomepageCategoryLabel(category, currentLang);
-            const title = homepageItemTitle(item);
+            // homepageItemTitle can genuinely return '' (homeTitle and title both
+            // blank) — the archive view below already falls back to the category,
+            // this one didn't, and a content photo would render alt="" for a
+            // screen reader with nothing else nearby to explain what it is.
+            const title = homepageItemTitle(item) || categoryLabel;
             const description = homepageItemDescription(item, t('homepage.descriptionUnavailable'));
             const picsId = getPicsId(item);
             const detailsOpen = isCenter && expandedPicsId === picsId;
@@ -1909,7 +1913,15 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
                             устоялись) браузер иногда не успевал распознать как
                             видимый — отсюда «то грузится, то нет» при листании,
                             не только при первой загрузке. */}
-                        <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" referrerPolicy="no-referrer" draggable={false} />
+                        {/* fetchPriority только у центра: это и есть кандидат
+                            в LCP (largest contentful paint) — самая крупная
+                            картинка, которую видит читатель первой. Раньше
+                            все пять грузились с одним приоритетом и спорили
+                            за канал с шрифтами наравне; теперь браузер знает,
+                            какую тащить первой. decoding="async" — тот же
+                            приём, что уже стоит на архивных превью ниже, не
+                            блокирует отрисовку раскодированием картинки. */}
+                        <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" referrerPolicy="no-referrer" draggable={false} decoding="async" fetchPriority={isCenter ? 'high' : undefined} />
                       </div>
                     </button>
                     <div className="home-carousel-caption">
