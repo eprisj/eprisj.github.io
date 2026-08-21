@@ -17678,6 +17678,27 @@ async function flushModernEditor() {
      copying out of a plain-text editor gives you, and treating them as soft
      wraps would collapse the whole draft into one paragraph, which is the bug
      this is here to fix. */
+  /* Управление блоком на телефоне. Панель (переставить, сменить тип, удалить)
+     рассчитана на курсор: она проявляется по наведению, а сенсорный экран
+     наводить не умеет. Оставался `:focus-within` — но чтобы получить фокус,
+     нужно попасть в текст, а это открывает клавиатуру на пол-экрана, хотя
+     человек всего лишь хотел передвинуть абзац.
+
+     Теперь панель открывает касание в любое место блока — по краю, по
+     картинке, по отступу. Показываем ровно у одного блока: панель висит НАД
+     блоком и, будучи видимой у всех сразу, закрывает последнюю строку
+     предыдущего — материал становится нечитаемым (проверено на телефоне).
+
+     `pointerdown` — потому что он приходит раньше фокуса и клавиатуры, и
+     одинаково от пальца, пера и мыши. Класс живёт до следующего касания или
+     до перерисовки холста; после структурной операции панель закрыть уместно. */
+  canvas.addEventListener('pointerdown', (e) => {
+    const blk = e.target.closest('.wys-block');
+    const prev = canvas.querySelector('.wys-block.is-touch-active');
+    if (prev && prev !== blk) prev.classList.remove('is-touch-active');
+    if (blk) blk.classList.add('is-touch-active');
+  }, { passive: true });
+
   canvas.addEventListener('paste', (e) => {
     if (!_model) return;
     const el = e.target.closest('.wys-rt[data-wys="block"]');
