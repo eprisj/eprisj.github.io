@@ -1969,10 +1969,14 @@ function applyVideoUploadToBlock(block, result, { forceLoop } = {}) {
 function videoPreviewHtml(url, webmUrl, poster, extraStyle) {
   const src = String(url || '');
   if (!src) return '';
-  const webm = String(webmUrl || '') || (/[.]mp4(?:$|[?#])/i.test(src) && /\/uploads\//.test(src) ? src.replace(/[.]mp4(?=$|[?#])/i, '.webm') : '');
+  /* mp4 идёт первым, а webm — только если он явно записан в блоке. Догадка
+     «рядом лежит .webm» с 21.08.2026 неверна: сервер больше не тратит на VP9
+     по двадцать секунд ядра, файла попросту нет, и превью каждый раз ходило
+     за 404 перед тем, как показать картинку. */
+  const webm = String(webmUrl || '');
   const sources = [];
-  if (webm) sources.push(`<source src="${escapeHtml(webm)}" type="video/webm">`);
   sources.push(`<source src="${escapeHtml(src)}"${/[.]mp4(?:$|[?#])/i.test(src) ? ' type="video/mp4"' : ''}>`);
+  if (webm) sources.push(`<source src="${escapeHtml(webm)}" type="video/webm">`);
   const posterAttr = poster ? ` poster="${escapeHtml(poster)}"` : '';
   return `<video muted loop playsinline autoplay preload="metadata"${posterAttr} style="${extraStyle || 'max-width:100%;max-height:180px'}">${sources.join('')}</video>`;
 }
@@ -17333,15 +17337,24 @@ async function flushModernEditor() {
         }</div>
         <div class="wys-video-fields">
           <div class="wys-video-actions">
-            <button type="button" class="wys-gal-add" data-wys-act="video-upload" data-i="${i}" data-gif="${isGif ? '1' : ''}">⇪ ${isGif ? 'Загрузить гифку с ПК' : 'Загрузить файл с ПК'}</button>
-            ${isGif ? '<span class="wys-video-note">Идёт по кругу, без звука и без панели управления</span>' : ''}
+            <button type="button" class="wys-video-upload" data-wys-act="video-upload" data-i="${i}" data-gif="${isGif ? '1' : ''}">⇪ ${isGif ? 'Загрузить гифку' : 'Загрузить файл'}</button>
+            ${url ? `<span class="wys-video-state is-ready">${isGif ? 'Гифка на месте' : (provider || 'Файл на месте')}</span>` : '<span class="wys-video-state">Файл ещё не выбран</span>'}
+            ${isGif ? '<span class="wys-video-note">По кругу, без звука и без кнопок</span>' : ''}
           </div>
-          <input class="wys-inline-input" data-wys="content-str" data-i="${i}" value="${esc(url)}" placeholder="${isGif ? 'Ссылка на гифку или файл (заполнится при загрузке)' : 'YouTube, Vimeo или прямой .mp4/.webm URL'}">
-          <input class="wys-inline-input" data-wys="poster" data-i="${i}" value="${esc(block.poster || '')}" placeholder="${isGif ? 'Первый кадр (ставится сам при загрузке)' : 'Постер для Vimeo/MP4 (необязательно)'}">
-          <input class="wys-inline-input" data-wys="caption" data-i="${i}" value="${esc(block.caption || '')}" placeholder="Подпись${isGif ? ' к гифке' : ' к видео'}">
-          <input class="wys-inline-input" data-wys="credit" data-i="${i}" value="${esc(block.credit || '')}" placeholder="Автор / credit">
-          <input class="wys-inline-input" data-wys="source-url" data-i="${i}" value="${esc(block.sourceUrl || '')}" placeholder="Источник / права (https://…)">
+          <input class="wys-inline-input wys-video-caption" data-wys="caption" data-i="${i}" value="${esc(block.caption || '')}" placeholder="Подпись${isGif ? ' к гифке' : ' к видео'} — показывается на сайте">
           ${url && !provider && !isGif ? '<p class="wys-video-warn">Поддерживаются YouTube, Vimeo и прямые MP4/WebM. Неизвестная ссылка останется кликабельной.</p>' : ''}
+          <!-- Ссылка и постер проставляются сами при загрузке с компьютера, поэтому
+               лежат в свёрнутом блоке: раньше пять одинаковых пустых полей подряд
+               были первым, что видел редактор, и понять по ним было нечего. -->
+          <details class="wys-media-details"${url ? '' : ' open'}>
+            <summary>${isGif ? 'Ссылка, первый кадр и права' : 'Ссылка, постер и права'}</summary>
+            <div class="wys-media-details-grid">
+              <label class="wys-media-details-wide"><span>${isGif ? 'Ссылка на гифку' : 'Ссылка на видео'}</span><input class="wys-inline-input" data-wys="content-str" data-i="${i}" value="${esc(url)}" placeholder="${isGif ? 'Заполнится при загрузке с компьютера' : 'YouTube, Vimeo или прямой .mp4 URL'}"></label>
+              <label class="wys-media-details-wide"><span>${isGif ? 'Первый кадр' : 'Постер'}</span><input class="wys-inline-input" data-wys="poster" data-i="${i}" value="${esc(block.poster || '')}" placeholder="${isGif ? 'Ставится сам при загрузке' : 'Показывается до запуска — необязательно'}"></label>
+              <label><span>Автор / credit</span><input class="wys-inline-input" data-wys="credit" data-i="${i}" value="${esc(block.credit || '')}" placeholder="Имя / студия / архив"></label>
+              <label><span>Источник / права</span><input class="wys-inline-input" data-wys="source-url" data-i="${i}" value="${esc(block.sourceUrl || '')}" placeholder="https://…"></label>
+            </div>
+          </details>
         </div>
       </div>`;
     } else if (t === 'poll') {
