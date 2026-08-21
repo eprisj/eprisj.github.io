@@ -4846,7 +4846,7 @@ async function persistNewCanonicalDraft(section, entry) {
   await saveEntityToServer(section, DEFAULT_LANGUAGE, entry);
 }
 
-// Articles and Pics of the week are separate editorial collections. The
+// Articles and Daily Picks are separate editorial collections. The
 // homepage strip accepts only explicitly curated image records; writing an
 // article never creates a homepage photo automatically.
 /* ── Мастер создания записи ──────────────────────────────────────────────
@@ -5564,16 +5564,16 @@ function renderVisualForm() {
       <label>Внутренний ID медиа<input id="vf-id" value="${escapeHtml(entry.id)}" disabled /></label>
       ${isPicsOfWeekCard
         ? `<label>Pics ID<input id="vf-picsId" value="${escapeHtml(picsIdFor(entry))}" disabled /></label>`
-        : '<div class="form-hint">Медиа статьи: это не карточка Pics of the week и не попадает в подборку на главной.</div>'}
+        : '<div class="form-hint">Медиа статьи: это не карточка Daily Picks и не попадает в подборку на главной.</div>'}
       <label>FIG<input id="vf-fig" value="${escapeHtml(entry.fig || '')}" /></label>
       <label class="full">Заголовок исходной записи<input id="vf-title" value="${escapeHtml(entry.title || '')}" /></label>
       <label class="full">Подзаголовок исходной записи<input id="vf-subtitle" value="${escapeHtml(entry.subtitle || '')}" /></label>
       <label class="full">Описание исходной записи<textarea id="vf-description">${escapeHtml(entry.description || '')}</textarea></label>
       ${isPicsOfWeekCard ? `
-        <label>Категория Pics of the week<select id="vf-homeCategory"><option value="">Выберите категорию</option>${homepageCategoryOptions}</select></label>
+        <label>Категория Daily Picks<select id="vf-homeCategory"><option value="">Выберите категорию</option>${homepageCategoryOptions}</select></label>
         <label>Метка на изображении<input id="vf-homeLabel" value="${escapeHtml(entry.homeLabel || '')}" placeholder="Необязательная подпись" /></label>
         <div class="full homepage-work-fields">
-          <div class="homepage-work-fields-head"><strong>Текст карточки на главной · Pics of the week</strong><span>Это самостоятельная работа, а не материал журнала. Пустые поля наследуют базовый текст; после правки синхронизируйте 7 языков.</span></div>
+          <div class="homepage-work-fields-head"><strong>Текст карточки на главной · Daily Picks</strong><span>Это самостоятельная работа, а не материал журнала. Пустые поля наследуют базовый текст; после правки синхронизируйте 7 языков.</span></div>
           <label>Название работы<input id="vf-homeTitle" value="${escapeHtml(entry.homeTitle || '')}" placeholder="Название работы" /></label>
           <label>Короткая строка<input id="vf-homeSubtitle" value="${escapeHtml(entry.homeSubtitle || '')}" placeholder="Автор · год · материал" /></label>
           <label class="full">Описание работы<textarea id="vf-homeDescription" placeholder="Короткое описание изображения">${escapeHtml(entry.homeDescription || '')}</textarea></label>
@@ -5582,7 +5582,7 @@ function renderVisualForm() {
         </div>
       ` : ''}
       <div class="full homepage-image-editor" style="margin-bottom:4px">
-        <div class="homepage-work-fields-head"><strong>${isPicsOfWeekCard ? 'Главное фото карточки' : 'Изображение записи'}</strong><span>${isPicsOfWeekCard ? 'Это изображение увидит посетитель в Pics of the week. Вставьте URL или загрузите файл — превью обновится сразу.' : 'Изображение остаётся частью этой записи и никогда не будет автоматически показано в Pics of the week.'}</span></div>
+        <div class="homepage-work-fields-head"><strong>${isPicsOfWeekCard ? 'Главное фото карточки' : 'Изображение записи'}</strong><span>${isPicsOfWeekCard ? 'Это изображение увидит посетитель в Daily Picks. Вставьте URL или загрузите файл — превью обновится сразу.' : 'Изображение остаётся частью этой записи и никогда не будет автоматически показано в Daily Picks.'}</span></div>
         ${renderPhotoPreviewMarkup(previewSource)}
         <label class="homepage-image-url-field">URL фото<input id="vf-imageUrl" value="${escapeHtml(entry.imageUrl || '')}" placeholder="https://… или /images/…" /></label>
         <div class="homepage-image-editor-actions"><button id="vf-img-upload-btn" class="btn btn-sm" type="button">${adminIcon('upload')}<span class="btn-label">Загрузить файл</span></button><a class="btn btn-sm" href="../" target="_blank" rel="noreferrer"><span class="btn-label">Проверить на главной</span>${adminIcon('external')}</a></div>
@@ -5768,7 +5768,7 @@ function applyDraftFieldsFromForm(next) {
   if (pv) next.publishAt = new Date(pv).toISOString(); else delete next.publishAt;
 }
 
-// Pics of the week keeps its own editorial fields, but an empty field should
+// Daily Picks keeps its own editorial fields, but an empty field should
 // never leave a card without a title or description. Store the inherited value
 // explicitly so new cards, translated copies and archive snapshots all keep the
 // same source-of-truth even when the homepage is edited later.
@@ -11592,7 +11592,7 @@ function bindStudioMediaActions() {
      запись целиком. Заполняем пропуски здесь, а не оставляем это на удачу:
      редактор ввёл фото и подпись, остальное — служебное. */
   function ensureHomepageCardShape(item) {
-    if (!String(item.title || '').trim()) item.title = String(item.homeTitle || '').trim() || 'Pics of the week';
+    if (!String(item.title || '').trim()) item.title = String(item.homeTitle || '').trim() || 'Daily Picks';
     if (!String(item.subtitle || '').trim()) item.subtitle = String(item.homeSubtitle || '').trim() || String(item.homeCategory || 'EPRIS');
     if (!String(item.description || '').trim()) item.description = String(item.homeDescription || '').trim() || String(item.homeTitle || item.title || '');
     if (!String(item.fig || '').trim()) item.fig = `FIG. ${String(item.id ?? '').padStart(2, '0')}`;
@@ -11896,7 +11896,7 @@ function bindStudioMediaActions() {
   }
 
   const HOMEPAGE_SECTION_DEFS = [
-    { id: 'pics', label: 'Pics of the week', hint: 'Пять категорий изображений, центральный кадр и подписи.' },
+    { id: 'pics', label: 'Daily Picks', hint: 'Пять категорий изображений, центральный кадр и подписи.' },
     { id: 'articles', label: 'Articles', hint: 'Три свежие статьи и кнопка «Discover all stories» в раздел.' },
     { id: 'reviews', label: 'Reviews', hint: 'Три обзора после статей; главный обзор всегда среди них.' },
     { id: 'showcase', label: 'Showcase', hint: 'A vitrine of set design and conceptual art.' },
@@ -11904,7 +11904,7 @@ function bindStudioMediaActions() {
   ];
   const HOMEPAGE_SECTION_ORDER_DEFAULT = HOMEPAGE_SECTION_DEFS.map((section) => section.id);
   const HOMEPAGE_COPY_FIELDS = [
-    { id: 'picsTitle', key: 'homepage.picsTitle', label: 'Pics of the week', hint: 'Заголовок подборки' },
+    { id: 'picsTitle', key: 'homepage.picsTitle', label: 'Daily Picks', hint: 'Заголовок подборки' },
     { id: 'articlesTitle', key: 'homepage.articlesTitle', label: 'Articles', hint: 'Заголовок ленты статей' },
     { id: 'articlesDescription', key: 'homepage.articlesDescription', label: 'Articles description', hint: 'Короткое пояснение к статьям' },
     { id: 'reviewsTitle', key: 'homepage.reviewsTitle', label: 'Reviews', hint: 'Заголовок ленты обзоров' },
@@ -12000,7 +12000,7 @@ function bindStudioMediaActions() {
       const centerCategory = String(data?.homepage?.picsOfWeek?.centerCategory || 'architecture');
       const visualBlocks = layout.sectionOrder.filter(isVisible).map((key) => {
         if (key === 'pics') {
-          return `<div class="homepage-layout-visual-block"><span class="homepage-layout-visual-kicker">Pics of the week · 5 slots</span><div class="homepage-layout-visual-pics">${groups.map((group) => {
+          return `<div class="homepage-layout-visual-block"><span class="homepage-layout-visual-kicker">Daily Picks · 5 slots</span><div class="homepage-layout-visual-pics">${groups.map((group) => {
             const item = group.items[0];
             const image = item?.imageUrl || item?.imageSeed || '';
             return `<div class="homepage-layout-visual-pic${group.id === centerCategory ? ' is-center' : ''}"><div class="homepage-layout-visual-pic-media">${image ? `<img src="${esc(image)}" alt="" loading="lazy">` : 'Пусто'}</div><span>${esc(group.label)}</span></div>`;
@@ -12118,7 +12118,7 @@ function bindStudioMediaActions() {
     const explicit = String(release?.label || '').trim();
     if (explicit) return explicit;
     const stamp = release?.publishedAt || release?.createdAt || fallbackDate;
-    return stamp ? `Pics of the week · ${homepageArchiveDate(stamp)}` : 'Pics of the week';
+    return stamp ? `Daily Picks · ${homepageArchiveDate(stamp)}` : 'Daily Picks';
   }
 
   function homepagePastReleasesPublic(data) {
@@ -12184,7 +12184,7 @@ function bindStudioMediaActions() {
         const now = new Date().toISOString();
         active = {
           id: nextHomepageReleaseId(data),
-          label: `Pics of the week · ${homepageArchiveDate(now)}`,
+          label: `Daily Picks · ${homepageArchiveDate(now)}`,
           status: 'published',
           createdAt: now,
           publishedAt: now,
@@ -12469,9 +12469,9 @@ function bindStudioMediaActions() {
     const errors = [];
     const warnings = [];
     if (data?.homepage?.layout?.visibility?.pics === false) {
-      return { errors, warnings: ['Pics of the week скрыт в сценарии главной — изображения сохранены в редакторе.'] };
+      return { errors, warnings: ['Daily Picks скрыт в сценарии главной — изображения сохранены в редакторе.'] };
     }
-    if (!groups?.length) errors.push('Не настроены категории Pics of the week.');
+    if (!groups?.length) errors.push('Не настроены категории Daily Picks.');
     groups.forEach((group) => {
       const item = group.items[0];
       if (!item) {
@@ -13098,7 +13098,7 @@ function bindStudioMediaActions() {
         else if (isLabel) category.label = String(event.target.value || '').trim() || category.label;
         else category.matches = String(event.target.value || '').split(',').map((match) => match.trim()).filter(Boolean);
         home.picsOfWeek.categories = categoriesNow;
-      }, 'Категории Pics of the week сохранены в черновик.');
+      }, 'Категории Daily Picks сохранены в черновик.');
     }));
   }
 
@@ -13112,7 +13112,7 @@ function bindStudioMediaActions() {
     const dot = document.querySelector('#homepageAdminStatus .homepage-status-dot');
     if (!preview || !auditEl) return;
     if (!data) {
-      preview.innerHTML = '<div class="homepage-editor-empty"><strong>Редактор ещё не загружен</strong><span>Нажмите «Загрузить» в нижней панели слева — здесь появятся пять карточек Pics of the week.</span></div>';
+      preview.innerHTML = '<div class="homepage-editor-empty"><strong>Редактор ещё не загружен</strong><span>Нажмите «Загрузить» в нижней панели слева — здесь появятся пять карточек Daily Picks.</span></div>';
       auditEl.innerHTML = '<div class="homepage-audit-item is-warn"><span aria-hidden="true">△</span>Загрузите актуальный контент, чтобы редактировать фото, подписи и описания.</div>';
       return;
     }
@@ -13441,7 +13441,7 @@ function bindStudioMediaActions() {
       }
       incomingRelease.status = 'published';
       incomingRelease.publishedAt = now;
-      incomingRelease.label = `Pics of the week · ${homepageArchiveDate(now)}`;
+      incomingRelease.label = `Daily Picks · ${homepageArchiveDate(now)}`;
       incomingRelease.publicArchive = false;
       home.picsOfWeek.activeReleaseId = incomingRelease.id;
       const incomingIds = releaseIds(incomingRelease);
@@ -13538,7 +13538,7 @@ function bindStudioMediaActions() {
     restartHomepageRefreshTimer();
   });
   document.getElementById('homepagePicsMode')?.addEventListener('change', (event) => {
-    updateHomepageSettings((home) => { home.picsOfWeek.mode = event.target.value === 'auto' ? 'auto' : 'manual'; }, 'Режим Pics of the week обновлён.');
+    updateHomepageSettings((home) => { home.picsOfWeek.mode = event.target.value === 'auto' ? 'auto' : 'manual'; }, 'Режим Daily Picks обновлён.');
   });
   document.getElementById('homepageOrdering')?.addEventListener('change', (event) => {
     updateHomepageSettings((home) => { home.picsOfWeek.ordering = event.target.value === 'manual' ? 'manual' : 'lifo'; }, event.target.value === 'manual' ? 'Ручной порядок включён.' : 'LIFO-порядок включён: свежие изображения будут сверху.');
