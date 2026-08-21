@@ -4637,12 +4637,6 @@
           "content": "Then we had to decide on the format. Words like ‘studio’ or ‘bureau’ were already taken, and that’s when we came up with ‘practice’. We thought, ‘Wait, this sounds like an art practice! That’s perfect.’ And that’s how Chora Practice was born."
         },
         {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mszv3593xr6u88.jpg",
-          "caption": "",
-          "credit": "Organized by Open the Door Events | Photo by Joy Zamora"
-        },
-        {
           "type": "text",
           "content": "Six months later, we finally decided to find out what Chora meant in Portuguese – we hadn’t actually checked. It turned out to be the imperative form of the verb chorar, meaning ‘cry.’”"
         },
@@ -4653,6 +4647,12 @@
         {
           "type": "text",
           "content": "<b>Alena</b>: We mostly do everything ourselves."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mszv3593xr6u88.jpg",
+          "caption": "",
+          "credit": "Organized by Open the Door Events | Photo by Joy Zamora"
         },
         {
           "type": "text",
@@ -4784,7 +4784,7 @@
           "content": "<b>Xenia</b>: The main lesson I took from art school is: ‘Experience resistance.’ If you feel resistance toward something, you should move toward it. It means there’s a huge amount of energy hidden there. Don’t ignore or suppress it – look at it more closely."
         }
       ],
-      "updatedAt": "2026-08-21T15:58:43.151Z",
+      "updatedAt": "2026-08-21T15:59:08.607Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "publishAt": "2026-08-19T09:38:46.903Z",
