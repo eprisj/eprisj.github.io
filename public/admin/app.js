@@ -11560,6 +11560,7 @@ function bindStudioMediaActions() {
     const meta = homepageCardField('homepageCardEditorMeta');
     if (meta) meta.textContent = `${item.homeCategory || homepageCardEditCategory || 'Без категории'} · ${picsIdFor(item)} · фото-карточка`;
     renderHomepageCardImagePreview(values.homepageCardImageUrl);
+    renderHomepageCardHistory(data);
     const status = homepageCardField('homepageCardEditorStatus');
     if (status) status.textContent = 'Правки записываются сами, подтверждать ничего не нужно.';
     if (modal) {
@@ -11807,6 +11808,11 @@ function bindStudioMediaActions() {
     });
     homepageCardField('homepageCardEditorSync')?.addEventListener('click', syncHomepageCardLanguages);
     homepageCardField('homepageCardImageUrl')?.addEventListener('input', (event) => renderHomepageCardImagePreview(event.target.value));
+    /* Пул "раньше в этой категории" зависит от выбранной категории и от
+       текущего URL (чтобы не подсказывать фото, уже стоящее в поле) -
+       перерисовываем при смене любого из двух, отдельно от автосохранения. */
+    homepageCardField('homepageCardCategory')?.addEventListener('change', () => renderHomepageCardHistory());
+    homepageCardField('homepageCardImageUrl')?.addEventListener('change', () => renderHomepageCardHistory());
     homepageCardField('homepageCardPrevSlot')?.addEventListener('click', () => stepHomepageCard(-1));
     homepageCardField('homepageCardNextSlot')?.addEventListener('click', () => stepHomepageCard(1));
 
@@ -12653,6 +12659,72 @@ function bindStudioMediaActions() {
 
   function homepageArchiveSignature(cards) {
     return cards.map((card) => `${card.category || ''}:${card.picsId || card.id}`).join('|');
+  }
+
+  /* Пул "раньше в этой категории" для окна редактора карточки.
+     Раньше заменить фото можно было только вставив новый URL заново -
+     старое, однажды снятое со слота, никуда не пропадало из данных
+     (setHomepageCategory клонирует, а не удаляет запись), но и увидеть
+     его снова было негде: ни в архиве (там хранится только уже
+     опубликованный выпуск целиком, а не отдельные фото по категориям),
+     ни в текущем списке (замена просто отвязывает старую карточку от
+     релиза). Смотрим в оба источника разом:
+       - зафиксированные выпуски архива (data.homepageArchive[].cards) -
+         то, что уже было на сайте;
+       - все Daily Picks-записи той же категории (data.items) - включая
+         те, что когда-то были в черновике и заменены до публикации, архив
+         их не видел вовсе.
+     Дубли по URL схлопываются, дата берётся самая свежая среди источников,
+     список сортируется по ней и обрезается: history - подсказка, а не
+     полный каталог. */
+  function homepageCategoryPhotoHistory(data, categoryId, excludeUrl) {
+    if (!data || !categoryId) return [];
+    const byUrl = new Map();
+    const consider = (url, title, dateValue) => {
+      const clean = String(url || '').trim();
+      if (!clean || clean === excludeUrl) return;
+      const ms = dateValue ? Date.parse(dateValue) : NaN;
+      const prev = byUrl.get(clean);
+      if (prev && (Number.isFinite(prev.ms) ? prev.ms : -1) >= (Number.isFinite(ms) ? ms : -1)) return;
+      byUrl.set(clean, { url: clean, title: String(title || '').trim(), ms: Number.isFinite(ms) ? ms : -1 });
+    };
+    (Array.isArray(data.homepageArchive) ? data.homepageArchive : []).forEach((entry) => {
+      (Array.isArray(entry?.cards) ? entry.cards : []).forEach((card) => {
+        if (String(card?.category || '') !== String(categoryId)) return;
+        consider(card.imageUrl, card.title, entry.publishedAt);
+      });
+    });
+    (Array.isArray(data.items) ? data.items : []).forEach((item) => {
+      if (!item?.picsOfWeek || String(item.homeCategory || '') !== String(categoryId)) return;
+      consider(item.imageUrl, item.homeTitle || item.title, item.updatedAt);
+    });
+    return [...byUrl.values()].sort((a, b) => b.ms - a.ms).slice(0, 16);
+  }
+
+  function renderHomepageCardHistory(dataArg) {
+    const wrap = homepageCardField('homepageCardHistoryWrap');
+    const list = homepageCardField('homepageCardHistory');
+    if (!wrap || !list) return;
+    const data = dataArg || readContent();
+    const category = String(homepageCardField('homepageCardCategory')?.value || homepageCardEditCategory || '');
+    const currentUrl = String(homepageCardField('homepageCardImageUrl')?.value || '').trim();
+    const items = data ? homepageCategoryPhotoHistory(data, category, currentUrl) : [];
+    if (!items.length) { wrap.hidden = true; list.innerHTML = ''; return; }
+    wrap.hidden = false;
+    list.innerHTML = items.map((entry, index) => `<button type="button" class="homepage-card-editor-history-item" data-history-url="${esc(entry.url)}" title="${esc(entry.title || 'Использовать это фото')}">
+      <img src="${esc(entry.url)}" alt="" loading="lazy">
+      ${entry.ms > 0 ? `<span>${esc(homepageArchiveDate(new Date(entry.ms).toISOString()))}</span>` : ''}
+    </button>`).join('');
+    list.querySelectorAll('[data-history-url]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const url = button.getAttribute('data-history-url') || '';
+        const input = homepageCardField('homepageCardImageUrl');
+        if (input) input.value = url;
+        renderHomepageCardImagePreview(url);
+        renderHomepageCardHistory(data);
+        scheduleHomepageCardAutosave();
+      });
+    });
   }
 
   function homepageArchiveDate(value) {

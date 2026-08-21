@@ -6225,6 +6225,13 @@ body.busy::after {
 .homepage-card-editor-fields textarea:focus { outline: 2px solid color-mix(in srgb, var(--accent) 30%, transparent); border-color: var(--accent); }
 .homepage-card-editor-upload { display: flex; align-items: center; gap: 9px; color: var(--text-muted); font-size: .65rem; line-height: 1.35; }
 .homepage-card-editor-upload .btn { flex: 0 0 auto; }
+.homepage-card-editor-history-wrap { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+.homepage-card-editor-history-label { display: block; margin-bottom: 8px; font: .6rem/1.3 var(--font-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); }
+.homepage-card-editor-history { display: flex; flex-wrap: wrap; gap: 8px; }
+.homepage-card-editor-history-item { position: relative; width: 56px; height: 56px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: var(--bg-card); cursor: pointer; padding: 0; flex: 0 0 auto; transition: border-color .12s, transform .12s; }
+.homepage-card-editor-history-item:hover { border-color: var(--accent); transform: translateY(-1px); }
+.homepage-card-editor-history-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.homepage-card-editor-history-item span { position: absolute; inset: auto 0 0 0; padding: 2px 4px; font: .5rem/1.2 var(--font-mono); color: #fff; background: linear-gradient(0deg, rgba(0,0,0,.65), transparent); text-align: right; }
 .homepage-card-editor-foot { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--line); }
 .homepage-card-editor-status { color: var(--text-muted); font: .65rem/1.4 var(--font-mono); }
 .homepage-card-editor-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
