@@ -4821,21 +4821,25 @@
         {
           "type": "video",
           "mediaKind": "gif",
-          "content": "",
+          "content": "https://api.eprisjournal.com/uploads/mt35c8z0937px7.mp4",
           "caption": "",
           "loop": true,
-          "muted": true
+          "muted": true,
+          "videoWebm": "",
+          "poster": "https://api.eprisjournal.com/uploads/mt35c8z0937px7.poster.jpg"
         },
         {
           "type": "video",
           "mediaKind": "gif",
-          "content": "",
+          "content": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.mp4",
           "caption": "",
           "loop": true,
-          "muted": true
+          "muted": true,
+          "videoWebm": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.webm",
+          "poster": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.poster.jpg"
         }
       ],
-      "updatedAt": "2026-08-21T16:13:15.797Z",
+      "updatedAt": "2026-08-21T16:14:40.216Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "publishAt": "2026-08-19T09:38:46.903Z",
