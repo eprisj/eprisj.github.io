@@ -4801,13 +4801,15 @@
         {
           "type": "video",
           "mediaKind": "gif",
-          "content": "",
+          "content": "https://api.eprisjournal.com/uploads/mt35850in1olvy.mp4",
           "caption": "",
           "loop": true,
-          "muted": true
+          "muted": true,
+          "videoWebm": "https://api.eprisjournal.com/uploads/mt35850in1olvy.webm",
+          "poster": "https://api.eprisjournal.com/uploads/mt35850in1olvy.poster.jpg"
         }
       ],
-      "updatedAt": "2026-08-21T16:07:52.679Z",
+      "updatedAt": "2026-08-21T16:08:49.273Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "publishAt": "2026-08-19T09:38:46.903Z",
