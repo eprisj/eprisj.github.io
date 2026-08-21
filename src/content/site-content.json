@@ -4941,7 +4941,7 @@
           }
         }
       ],
-      "updatedAt": "2026-08-21T09:49:06.280Z"
+      "updatedAt": "2026-08-21T09:52:05.705Z"
     }
   ],
   "reviews": [
@@ -24872,13 +24872,13 @@
           "picsId": "PICS-2026-012",
           "category": "sculpture",
           "categoryLabel": "Sculpture",
-          "title": "Oval with Points",
-          "subtitle": "Henry Moore · 1968–70 · bronze",
+          "title": "Motion Alone",
+          "subtitle": "Paul Insect · 2021 · Mixed Media and Marble Pedestal",
           "description": "Two voids turn a bronze oval into a shifting horizon: Henry Moore makes weight, landscape and the human body feel inseparable.",
-          "credit": "Henry Moore; photo Jynto · CC BY-SA 4.0 / Wikimedia Commons",
-          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Oval_with_Points.jpg",
+          "credit": "Artsy",
+          "sourceUrl": "https://www.artsy.net/artwork/paul-insect-motion-alone-42",
           "imageSeed": "",
-          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Oval_with_Points.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt2rl37fc2se74.jpg",
           "localized": {
             "RU": {
               "title": "Овал с точками",
@@ -25013,10 +25013,10 @@
           "title": "Salk Institute",
           "subtitle": "Louis I. Kahn · 1965 · La Jolla",
           "description": "At the Salk Institute, concrete is not a backdrop but a precise instrument for light, sea air and silence.",
-          "credit": "Carol M. Highsmith · public-domain photograph / Wikimedia Commons",
-          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Salk_Institute_Highsmith.jpg",
+          "credit": "Valeria Vasy • @selency",
+          "sourceUrl": "https://www.instagram.com/p/Dbn8bkgkbqc/?img_index=1&igsi=MTA5eGpjazBudWd1Mw==",
           "imageSeed": "",
-          "imageUrl": "https://api.eprisjournal.com/uploads/msyzsp5uhmq5or.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt2rjf2iptcgt2.jpg",
           "localized": {
             "RU": {
               "title": "Институт Солка",
