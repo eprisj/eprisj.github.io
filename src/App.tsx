@@ -1900,7 +1900,16 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
                   >
                     <button type="button" className="home-carousel-artwork" onClick={() => handleCarouselArtworkClick(position, resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${title}`)} aria-label={isCenter ? `${t('homepage.openImage')}: ${categoryLabel}` : `${categoryLabel}: ${title}`} title={isCenter ? t('homepage.openImage') : undefined}>
                       <div className="home-carousel-media relative aspect-[4/5] overflow-hidden bg-[#E8DED5]">
-                        <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" loading="lazy" referrerPolicy="no-referrer" draggable={false} />
+                        {/* Не lazy: это h1-карусель — самое первое, что видно на
+                            главной, и позиции всегда все пять в кадре разом, ни
+                            одна не «за экраном». Хуже того, каждый поворот
+                            карусели пересоздаёт <img> заново (key меняется на
+                            position), и свежий loading="lazy" элемент внутри
+                            анимации framer-motion (opacity/scale ещё не
+                            устоялись) браузер иногда не успевал распознать как
+                            видимый — отсюда «то грузится, то нет» при листании,
+                            не только при первой загрузке. */}
+                        <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" referrerPolicy="no-referrer" draggable={false} />
                       </div>
                     </button>
                     <div className="home-carousel-caption">
