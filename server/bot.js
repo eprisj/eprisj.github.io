@@ -273,7 +273,36 @@ async function cmdContacts() {
   })].join("\n");
 }
 
+/* Карточные версии — тот же язык, что у /status, /last, /drafts: чёрно-белая
+   рамка, Crimson Text, тонкие линии. Текстовые cmdContacts/cmdInterviews
+   остаются как есть — используются в /help и как запасной путь, если
+   sharp/рендер вдруг подведёт. */
+async function cmdContactsCard() {
+  let crm;
+  try { crm = await fetchCrm(); } catch (e) { return { text: `CRM недоступна: ${esc(e.message)}` }; }
+  if (!crm.contacts.length) return { text: "Контактов пока нет — добавьте через App." };
+  const sorted = [...crm.contacts].sort((a, b) => String(a.name || "").localeCompare(String(b.name || "")));
+  const buffer = await cards.renderContacts(sorted);
+  return { buffer, caption: `Контактов: ${sorted.length}` };
+}
+
 const STATUS_EMOJI = { planned: "🗓", done: "✅", transcribing: "📝", ready: "✨" };
+
+async function cmdInterviewsCard() {
+  let crm;
+  try { crm = await fetchCrm(); } catch (e) { return { text: `CRM недоступна: ${esc(e.message)}` }; }
+  if (!crm.interviews.length) return { text: "Интервью пока нет — добавьте через App." };
+  const contactName = (id) => { const c = crm.contacts.find((x) => String(x.id) === String(id)); return c ? c.name : null; };
+  const sorted = [...crm.interviews]
+    .sort((a, b) => String(a.scheduledAt || "").localeCompare(String(b.scheduledAt || "")))
+    .map((iv) => ({
+      ...iv,
+      contactName: contactName(iv.contactId),
+      when: iv.scheduledAt ? new Date(iv.scheduledAt).toLocaleString("ru-RU", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) : "без даты",
+    }));
+  const buffer = await cards.renderInterviews(sorted);
+  return { buffer, caption: `Интервью: ${sorted.length}` };
+}
 
 async function cmdInterviews() {
   let crm;
@@ -812,6 +841,8 @@ const PHOTO_COMMANDS = {
   "/status": cmdStatusCard,
   "/last": cmdLastCard,
   "/drafts": cmdDraftsCard,
+  "/contacts": cmdContactsCard,
+  "/interviews": cmdInterviewsCard,
 };
 
 async function sendCommandResult(command) {
