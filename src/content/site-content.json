@@ -4760,7 +4760,11 @@
         },
         {
           "type": "gallery",
-          "content": [],
+          "content": [
+            "https://api.eprisjournal.com/uploads/mt4lp7zz0bm3b3.jpg",
+            "https://api.eprisjournal.com/uploads/mt4lp8r7cia5ej.jpg",
+            "https://api.eprisjournal.com/uploads/mt4lp9h75oexad.jpg"
+          ],
           "caption": ""
         },
         {
@@ -4892,7 +4896,7 @@
           "credit": "@chora.practice"
         }
       ],
-      "updatedAt": "2026-08-22T16:36:39.239Z",
+      "updatedAt": "2026-08-22T16:36:59.358Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "publishAt": "2026-08-19T09:38:46.903Z",
