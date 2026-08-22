@@ -4663,16 +4663,6 @@
           "content": "<b>Xenia</b>: I think it was more Alena’s initiative. She knows how to sew, genuinely loves fabrics, and has a deep understanding of the material."
         },
         {
-          "type": "video",
-          "mediaKind": "gif",
-          "content": "https://api.eprisjournal.com/uploads/mt35bxhczp0ori.mp4",
-          "caption": "",
-          "loop": true,
-          "muted": true,
-          "videoWebm": "https://api.eprisjournal.com/uploads/mt35bxhczp0ori.webm",
-          "poster": "https://api.eprisjournal.com/uploads/mt35bxhczp0ori.poster.jpg"
-        },
-        {
           "type": "text",
           "content": "At some point, we started receiving requests for fabric installations and realized we had found an open niche. It was a combination of a rational business approach and genuine personal interest. And although installing huge arches is physically demanding, fabric turned out to be the easiest material for us to work with because we understand it so well.”"
         },
@@ -4685,6 +4675,16 @@
         {
           "type": "text",
           "content": "<b>How did you choose the name Chora? Is it connected to philosophy?</b>"
+        },
+        {
+          "type": "video",
+          "mediaKind": "gif",
+          "content": "https://api.eprisjournal.com/uploads/mt35bxhczp0ori.mp4",
+          "caption": "",
+          "loop": true,
+          "muted": true,
+          "videoWebm": "https://api.eprisjournal.com/uploads/mt35bxhczp0ori.webm",
+          "poster": "https://api.eprisjournal.com/uploads/mt35bxhczp0ori.poster.jpg"
         },
         {
           "type": "text",
@@ -4870,7 +4870,7 @@
           "poster": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.poster.jpg"
         }
       ],
-      "updatedAt": "2026-08-22T11:33:34.862Z",
+      "updatedAt": "2026-08-22T11:33:49.140Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "publishAt": "2026-08-19T09:38:46.903Z",
