@@ -21,6 +21,7 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
+const cards = require("./bot-cards");
 
 const TOKEN = process.env.EPRIS_BOT_TOKEN || "";
 const CHAT = process.env.EPRIS_BOT_CHAT || "";
@@ -28,6 +29,7 @@ const PORT = Number(process.env.EPRIS_BOT_PORT || 9879);
 const CONTENT_FILE = process.env.EPRIS_CONTENT_FILE || "/opt/epris-content/site-content.json";
 const FORMS_API = process.env.EPRIS_FORMS_API || "http://127.0.0.1:9878";
 const FORMS_PASSWORD = process.env.ADMIN_PASSWORD || "";
+const CONTENT_API = process.env.EPRIS_CONTENT_API || "https://api.eprisjournal.com";
 const SITE = "https://eprisjournal.com";
 
 if (!TOKEN || !CHAT) {
@@ -124,6 +126,28 @@ const MENU = kb([
   [["Сторож", "cmd:alerts"]],
 ]);
 
+/* Отправка PNG-карточки вместо текста. Телеграм ждёт multipart, а не JSON —
+   Node 22 даёт глобальные FormData/Blob, отдельный пакет не нужен. */
+async function sendPhoto(buffer, caption, extra = {}) {
+  const form = new FormData();
+  form.append("chat_id", CHAT);
+  if (caption) {
+    form.append("caption", caption.slice(0, 1024));
+    form.append("parse_mode", "HTML");
+  }
+  if (extra.reply_markup) form.append("reply_markup", JSON.stringify(extra.reply_markup));
+  form.append("photo", new Blob([buffer], { type: "image/png" }), "card.png");
+  try {
+    const response = await fetch(api("sendPhoto"), { method: "POST", body: form });
+    const data = await response.json().catch(() => null);
+    if (!data || !data.ok) console.error("[bot] sendPhoto:", data && data.description);
+    return data;
+  } catch (error) {
+    console.error("[bot] sendPhoto:", error.message);
+    return null;
+  }
+}
+
 async function sendRich(text, extra = {}) {
   const parts = chunk(text);
   for (let i = 0; i < parts.length; i += 1) {
@@ -165,6 +189,39 @@ function draftUrl(collection, entry) {
   return entry.previewToken ? `${base}?preview=${entry.previewToken}` : base;
 }
 
+/* ── Правка контента прямо из чата ────────────────────────────────────────────
+ * Пишем не в локальный файл, а через PATCH /content/entity на самом API:
+ * там же лежит проверка версии (оптимистичная блокировка — не перезаписать
+ * правку, сделанную в панели параллельно) и валидация формы сущности.
+ * Бот только читает актуальную версию сущности из локального файла, меняет
+ * одно поле и отправляет её целиком обратно — meta.version берём заново
+ * перед каждой отправкой, чтобы не словить 409 на ровном месте. */
+async function patchEntity(section, id, mutate, lang) {
+  const metaRes = await fetch(`${CONTENT_API}/content/meta`);
+  const meta = await metaRes.json().catch(() => null);
+  if (!meta || !meta.ok || !meta.version) throw new Error("не удалось получить версию контента");
+
+  const content = readContent();
+  if (!content) throw new Error("контент прочитать не удалось");
+  const arr = lang && lang !== "EN"
+    ? (content.localizedCollections && content.localizedCollections[lang] && content.localizedCollections[lang][section]) || []
+    : content[section] || [];
+  const entity = arr.find((e) => Number(e && e.id) === Number(id));
+  if (!entity) throw new Error("материал не найден");
+
+  const next = { ...entity };
+  mutate(next);
+
+  const response = await fetch(`${CONTENT_API}/content/entity`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json", "X-Admin-Password": FORMS_PASSWORD },
+    body: JSON.stringify({ section, id, entity: next, lang, expectedVersion: meta.version }),
+  });
+  const data = await response.json().catch(() => null);
+  if (!data || !data.ok) throw new Error((data && data.error) || `PATCH ${response.status}`);
+  return next;
+}
+
 async function formsList() {
   if (!FORMS_PASSWORD) return null;
   try {
@@ -199,16 +256,15 @@ function cmdHelp() {
     "", "<i>Ниже — то же самое кнопками, набирать не обязательно.</i>"].join("\n");
 }
 
-async function cmdStatus() {
-  const lines = ["EPRIS, состояние:"];
-
+async function collectStatus() {
+  const checks = [];
   const check = async (label, url) => {
     const started = Date.now();
     try {
       const response = await fetch(url, { signal: AbortSignal.timeout(8000) });
-      lines.push(`${response.ok ? "✓" : "✗"} ${label}: ${response.status}, ${Date.now() - started} мс`);
+      checks.push({ label, ok: response.ok, detail: `${response.status}, ${Date.now() - started} мс` });
     } catch (error) {
-      lines.push(`✗ ${label}: не отвечает (${error.name === "TimeoutError" ? "таймаут" : error.message})`);
+      checks.push({ label, ok: false, detail: error.name === "TimeoutError" ? "таймаут" : error.message });
     }
   };
 
@@ -217,27 +273,52 @@ async function cmdStatus() {
   await check("анкеты", `${FORMS_API}/health`);   // /list закрыт паролем, см. сторож
 
   const content = readContent();
+  const counts = [];
+  let contentModified = null;
   if (content) {
     const count = (key) => (Array.isArray(content[key]) ? content[key].length : 0);
     const drafts = ["articles", "reviews"].reduce(
       (total, key) => total + (Array.isArray(content[key]) ? content[key].filter((entry) => entry && entry.draft).length : 0), 0);
-    lines.push("", `материалов: статей ${count("articles")}, обзоров ${count("reviews")}, в галерее ${count("items")}`);
-    lines.push(`из них черновиков: ${drafts}`);
-    try {
-      const stat = fs.statSync(CONTENT_FILE);
-      lines.push(`последняя правка контента: ${new Date(stat.mtime).toLocaleString("ru-RU")}`);
-    } catch { /* нет файла — уже сказано выше */ }
+    counts.push({ n: count("articles"), label: "статей" }, { n: count("reviews"), label: "обзоров" },
+      { n: count("items"), label: "в галерее" }, { n: drafts, label: "черновиков" });
+    try { contentModified = fs.statSync(CONTENT_FILE).mtime; } catch { /* нет файла */ }
+  }
+
+  let freeGb = null;
+  try {
+    const stat = fs.statfsSync("/");
+    freeGb = (stat.bavail * stat.bsize) / 1073741824;
+  } catch { /* не критично */ }
+
+  return { checks, counts, contentModified, freeGb };
+}
+
+async function cmdStatus() {
+  const { checks, counts, contentModified, freeGb } = await collectStatus();
+  const lines = ["EPRIS, состояние:", ...checks.map((c) => `${c.ok ? "✓" : "✗"} ${c.label}: ${c.detail}`)];
+  if (counts.length) {
+    lines.push("", counts.map((c) => `${c.label === "черновиков" ? "из них " : ""}${c.label}: ${c.n}`).join(", "));
   } else {
     lines.push("", "файл контента прочитать не удалось");
   }
-
-  try {
-    const stat = fs.statfsSync("/");
-    const freeGb = (stat.bavail * stat.bsize) / 1073741824;
-    lines.push(`свободно на диске: ${freeGb.toFixed(1)} ГБ${freeGb < 2 ? " ← мало, загрузка файлов начнёт отказывать" : ""}`);
-  } catch { /* не критично */ }
-
+  if (contentModified) lines.push(`последняя правка контента: ${contentModified.toLocaleString("ru-RU")}`);
+  if (freeGb !== null) lines.push(`свободно на диске: ${freeGb.toFixed(1)} ГБ${freeGb < 2 ? " ← мало, загрузка файлов начнёт отказывать" : ""}`);
   return lines.join("\n");
+}
+
+/* Та же сводка, но карточкой в айдентике EPRIS — на неё удобнее взглянуть
+   мельком, чем разбирать текстовый список галочек. */
+async function cmdStatusCard() {
+  const { checks, counts, freeGb } = await collectStatus();
+  const buffer = await cards.renderStatus({
+    checks,
+    counts: counts.filter((c) => c.label !== "черновиков"),
+    disk: freeGb !== null ? `${freeGb.toFixed(1)} ГБ` : "н/д",
+    updatedAt: new Date().toLocaleString("ru-RU"),
+  });
+  const bad = checks.filter((c) => !c.ok).length;
+  const caption = bad ? `⚠ ${bad} проверк${bad === 1 ? "а" : "и"} не в порядке` : "Всё в порядке";
+  return { buffer, caption };
 }
 
 async function cmdForms() {
@@ -251,20 +332,48 @@ async function cmdForms() {
   })].join("\n");
 }
 
-function cmdDrafts() {
+function draftsList() {
   const content = readContent();
-  if (!content) return "Контент прочитать не удалось.";
+  if (!content) return null;
+  const out = [];
+  for (const [key, kind] of [["articles", "статья"], ["reviews", "обзор"]]) {
+    const list = Array.isArray(content[key]) ? content[key].filter((entry) => entry && entry.draft) : [];
+    for (const entry of list) out.push({ section: key, kind, id: entry.id, title: entry.title || "без названия", entry });
+  }
+  return out;
+}
+
+function cmdDrafts() {
+  const drafts = draftsList();
+  if (!drafts) return "Контент прочитать не удалось.";
+  if (!drafts.length) return "Черновиков нет — всё опубликовано.";
   const out = [];
   for (const [key, title] of [["articles", "Статьи"], ["reviews", "Обзоры"]]) {
-    const list = Array.isArray(content[key]) ? content[key].filter((entry) => entry && entry.draft) : [];
+    const list = drafts.filter((d) => d.section === key).slice(0, 15);
     if (!list.length) continue;
     out.push(`${title}:`);
-    for (const entry of list.slice(0, 15)) {
-      out.push(`• ${entry.title || "без названия"}\n  ${draftUrl(key, entry)}`);
-    }
+    for (const d of list) out.push(`• ${d.title}\n  ${draftUrl(key, d.entry)}`);
     out.push("");
   }
-  return out.length ? ["Черновики:", "", ...out].join("\n") : "Черновиков нет — всё опубликовано.";
+  return ["Черновики:", "", ...out].join("\n");
+}
+
+/* Список черновиков карточкой + кнопки «Опубликовать»/«Правка заголовка» под
+   каждым — не нужно открывать панель ради одного клика. lastDraftsIndex
+   хранит, какая кнопка на какую (section,id) ссылается, между сообщениями. */
+let lastDraftsIndex = [];
+
+async function cmdDraftsCard() {
+  const drafts = draftsList();
+  if (!drafts) return { text: "Контент прочитать не удалось." };
+  if (!drafts.length) return { text: "Черновиков нет — всё опубликовано." };
+  lastDraftsIndex = drafts.slice(0, 8);
+  const buffer = await cards.renderDrafts(lastDraftsIndex);
+  const rows = lastDraftsIndex.map((d, i) => [
+    [`✓ Опубликовать №${i + 1}`, `pub:${i}`],
+    [`✏️ Заголовок №${i + 1}`, `edit:${i}`],
+  ]);
+  return { buffer, caption: `Черновиков: ${drafts.length}`, keyboard: kb(rows) };
 }
 
 function cmdLast() {
@@ -283,6 +392,24 @@ function cmdLast() {
   return ["Последнее опубликованное:", "", ...published.slice(0, 5).map(
     (entry) => `• ${entry.title} (${entry.kind})${entry.when ? `\n  ${String(entry.when).slice(0, 10)}` : ""}\n  ${entry.url}`,
   )].join("\n");
+}
+
+async function cmdLastCard() {
+  const content = readContent();
+  if (!content) return { text: "Контент прочитать не удалось." };
+  const published = [];
+  for (const [key, kind] of [["articles", "статья"], ["reviews", "обзор"]]) {
+    const list = Array.isArray(content[key]) ? content[key] : [];
+    for (const entry of list) {
+      if (!entry || entry.draft) continue;
+      published.push({ kind, title: entry.title || "без названия", when: entry.updatedAt || entry.date || "", url: articleUrl(entry) });
+    }
+  }
+  published.sort((a, b) => String(b.when).localeCompare(String(a.when)));
+  if (!published.length) return { text: "Опубликованного пока нет." };
+  const top = published[0];
+  const buffer = await cards.renderLast({ kind: top.kind, title: top.title, when: String(top.when).slice(0, 10) });
+  return { buffer, caption: `${esc(top.title)}\n${top.url}` };
 }
 
 /* ── Сторож: алерты сами, без вопроса ────────────────────────────────────────
@@ -557,6 +684,60 @@ async function cmdResponses() {
     ...withAnswers.map((f) => `${esc(f.title)} — <b>${Number(f.responses)}</b>\n  ${SITE}/f/${esc(f.slug)}`)].join("\n");
 }
 
+/* Команды, у которых есть карточный вариант — берём приоритет над текстом
+   в обоих местах, откуда бота можно спросить (сообщение и кнопка меню). */
+const PHOTO_COMMANDS = {
+  "/status": cmdStatusCard,
+  "/last": cmdLastCard,
+  "/drafts": cmdDraftsCard,
+};
+
+async function sendCommandResult(command) {
+  const photoFn = PHOTO_COMMANDS[command];
+  if (photoFn) {
+    const result = await photoFn();
+    if (result.buffer) { await sendPhoto(result.buffer, result.caption, { reply_markup: result.keyboard || MENU }); return; }
+    if (result.text) { await sendRich(result.text, { reply_markup: MENU }); return; }
+  }
+  const answer = await handleCommand(command);
+  if (answer) await sendRich(answer, { reply_markup: MENU });
+}
+
+// ── Правка одним кликом: публикация и смена заголовка из карточки черновиков ─
+
+let pendingEdit = null;   // { section, id, title } — ждём следующий текст как новый заголовок
+
+async function handlePublish(index) {
+  const d = lastDraftsIndex[index];
+  if (!d) return sendRich("Список черновиков устарел — откройте /drafts заново.");
+  try {
+    await patchEntity(d.section, d.id, (e) => { e.draft = false; });
+    await sendRich(`✓ Опубликовано: <b>${esc(d.title)}</b>`, { reply_markup: MENU });
+  } catch (error) {
+    await sendRich(`✗ Не удалось опубликовать: ${esc(error.message)}`);
+  }
+}
+
+async function handleEditStart(index) {
+  const d = lastDraftsIndex[index];
+  if (!d) return sendRich("Список черновиков устарел — откройте /drafts заново.");
+  pendingEdit = { section: d.section, id: d.id, title: d.title };
+  await sendRich(`Пришлите новый заголовок для «${esc(d.title)}» одним сообщением.`);
+}
+
+async function handleEditApply(newTitle) {
+  const p = pendingEdit;
+  pendingEdit = null;
+  const title = newTitle.trim();
+  if (!title) return sendRich("Пустой заголовок — правка отменена.");
+  try {
+    await patchEntity(p.section, p.id, (e) => { e.title = title; });
+    await sendRich(`✓ Заголовок обновлён: «${esc(p.title)}» → «${esc(title)}»`, { reply_markup: MENU });
+  } catch (error) {
+    await sendRich(`✗ Не удалось сохранить: ${esc(error.message)}`);
+  }
+}
+
 async function handleCommand(text) {
   const command = String(text || "").trim().split(/\s+/)[0].toLowerCase().replace(/@.*$/, "");
   switch (command) {
@@ -625,10 +806,9 @@ async function poll() {
         if (String(q.message && q.message.chat && q.message.chat.id) !== String(CHAT)) continue;
         void tg("answerCallbackQuery", { callback_query_id: q.id });
         const data = String(q.data || "");
-        if (data.startsWith("cmd:")) {
-          const answer = await handleCommand("/" + data.slice(4));
-          if (answer) await sendRich(answer, { reply_markup: MENU });
-        }
+        if (data.startsWith("cmd:")) await sendCommandResult("/" + data.slice(4));
+        else if (data.startsWith("pub:")) await handlePublish(Number(data.slice(4)));
+        else if (data.startsWith("edit:")) await handleEditStart(Number(data.slice(5)));
         continue;
       }
 
@@ -636,6 +816,17 @@ async function poll() {
       if (!message || !message.text) continue;
       // Чужие чаты игнорируем: бот отвечает только редакции.
       if (String(message.chat && message.chat.id) !== String(CHAT)) continue;
+
+      // Ждём новый заголовок после «✏️ Заголовок» — обычный текст, не команда.
+      if (pendingEdit && !message.text.startsWith("/")) {
+        await handleEditApply(message.text);
+        continue;
+      }
+
+      if (PHOTO_COMMANDS[message.text.trim().split(/\s+/)[0].toLowerCase()]) {
+        await sendCommandResult(message.text.trim().split(/\s+/)[0].toLowerCase());
+        continue;
+      }
       const answer = await handleCommand(message.text);
       // Меню вешаем на ответ всегда: следующий вопрос почти никогда не
       // единственный, и заставлять набирать вторую команду руками незачем.
