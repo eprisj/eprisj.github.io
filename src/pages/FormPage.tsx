@@ -398,7 +398,14 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
           <p className="mt-5 whitespace-pre-line font-serif text-[16px] leading-[1.75] text-[rgb(var(--c-accent-rgb)_/_0.72)]">{thankYou}</p>
         )}
         {form?.support && (
-          <div className="mt-10 w-full text-left">
+          /* Единственный левополосный блок на иначе полностью центрированной
+             странице благодарности — раньше w-full text-left растягивал его
+             под ширину колонки, и разделитель-бордер компонента шёл во всю
+             её ширину, а не короткой чертой как остальные разделители здесь.
+             flex justify-center сжимает aside до содержимого: кнопка и её
+             верхняя черта центрируются и читаются как ещё один короткий
+             разделитель — тот же язык, что h-px w-16 чуть ниже. */
+          <div className="mt-10 flex w-full justify-center">
             <SupportJournal lang={form.language} />
           </div>
         )}
