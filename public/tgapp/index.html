@@ -242,7 +242,7 @@
   .crm-row .meta { font-size: 12px; color: var(--muted); margin-top: 3px; }
   .status-badge {
     font-size: 10px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--ink);
-    padding: 3px 8px; white-space: nowrap; flex-shrink: 0;
+    padding: 5px 9px; white-space: nowrap; flex-shrink: 0; cursor: pointer;
   }
   .status-badge.st-planned { border-color: var(--muted); color: var(--muted); }
   .status-badge.st-done { border-color: var(--success); color: var(--success); }
@@ -306,6 +306,7 @@
       <button class="tab" data-crmtab="contacts">Контакты</button>
       <button class="tab" data-crmtab="notes">Заметки</button>
     </div>
+    <input class="search" id="crmSearch" placeholder="Поиск…">
     <div class="new-row" id="crmAddRow"></div>
     <div id="crmList"></div>
   </div>
@@ -538,6 +539,10 @@
       showBootError(e.message);
       return;
     }
+    // CRM — отдельно и не блокируя открытие: документ маленький, но если
+    // /crm сейчас недоступен, это не повод держать человека на экране
+    // загрузки — статьи и обзоры важнее, CRM подгрузится по факту открытия.
+    loadCrm().then(function () { updateCrmLinkCount(); }).catch(function () {});
 
     bootedAt = Date.now();
     $("boot").classList.add("hidden");
@@ -1182,6 +1187,16 @@
     crmLoaded = true;
   }
 
+  // Кнопка на дашборде показывает реальные числа вместо общей подписи —
+  // не нужно заходить внутрь, чтобы понять, пусто там или нет.
+  function updateCrmLinkCount() {
+    var upcoming = crm.interviews.filter(function (iv) { return iv.status === "planned"; }).length;
+    var bits = [];
+    if (upcoming) bits.push(upcoming + " предстоящих");
+    bits.push(crm.contacts.length + " контактов", crm.notes.length + " заметок");
+    $("crmLink").textContent = "👥 CRM: " + bits.join(", ") + " →";
+  }
+
   async function saveCrm() {
     var res = await fetchJSON(API + "/crm", {
       method: "POST",
@@ -1189,6 +1204,7 @@
       body: JSON.stringify(crm),
     });
     if (!res.data || !res.data.ok) throw new Error((res.data && res.data.error) || "HTTP " + res.status);
+    updateCrmLinkCount();
   }
 
   function contactName(id) {
@@ -1202,6 +1218,7 @@
     if (!crmLoaded) {
       try { await loadCrm(); } catch (e) { toast("Не удалось загрузить CRM: " + e.message, true); return; }
     }
+    updateCrmLinkCount();
     crmActiveTab = tab || crmActiveTab;
     $("home-view").classList.add("hidden");
     $("crm-view").classList.remove("hidden");
@@ -1213,9 +1230,10 @@
   }
 
   document.querySelectorAll("#crm-view .tab").forEach(function (tab) {
-    tab.onclick = function () { openCrm(tab.dataset.crmtab); };
+    tab.onclick = function () { $("crmSearch").value = ""; openCrm(tab.dataset.crmtab); };
   });
   $("crmLink").onclick = function () { openCrm(); };
+  $("crmSearch").oninput = renderCrmList;
 
   function renderCrmList() {
     if (crmActiveTab === "notes") { renderNotes(); return; }
@@ -1224,16 +1242,23 @@
   }
 
   // ── Контакты ─────────────────────────────────────────────────────────────
+  function crmQuery() { return ($("crmSearch").value || "").trim().toLowerCase(); }
+
   function renderContacts() {
     $("crmAddRow").innerHTML = '<button class="new-btn" id="addContactBtn">+ Контакт</button>';
     $("addContactBtn").onclick = function () { openContactEditor(null); };
-    var list = crm.contacts.slice().sort(function (a, b) { return String(a.name || "").localeCompare(String(b.name || "")); });
+    var q = crmQuery();
+    var list = crm.contacts.slice()
+      .filter(function (c) { return !q || String(c.name || "").toLowerCase().includes(q) || String(c.telegram || "").toLowerCase().includes(q); })
+      .sort(function (a, b) { return String(a.name || "").localeCompare(String(b.name || "")); });
     $("crmList").innerHTML = list.length ? list.map(function (c) {
       var typeLabel = { author: "Автор", partner: "Партнёр", speaker: "Спикер", other: "" }[c.type] || "";
+      var ivCount = crm.interviews.filter(function (iv) { return String(iv.contactId) === String(c.id); }).length;
+      var meta = [typeLabel, c.telegram, c.phone].filter(Boolean).join(" · ") + (ivCount ? ` · ${ivCount} интервью` : "");
       return '<div class="crm-row" data-id="' + c.id + '">' +
         '<div><div class="ttl">' + esc(c.name || "Без имени") + '</div>' +
-        '<div class="meta">' + esc([typeLabel, c.telegram, c.phone].filter(Boolean).join(" · ")) + '</div></div></div>';
-    }).join("") : '<div class="empty">Пока пусто</div>';
+        '<div class="meta">' + esc(meta) + '</div></div></div>';
+    }).join("") : '<div class="empty">Ничего не найдено</div>';
     $("crmList").querySelectorAll(".crm-row").forEach(function (row) {
       row.onclick = function () { openContactEditor(Number(row.dataset.id)); };
     });
@@ -1246,19 +1271,43 @@
   }
 
   // ── Интервью ─────────────────────────────────────────────────────────────
+  var STATUS_CYCLE = ["planned", "done", "transcribing", "ready"];
+
   function renderInterviews() {
     $("crmAddRow").innerHTML = '<button class="new-btn" id="addInterviewBtn">+ Интервью</button>';
     $("addInterviewBtn").onclick = function () { openInterviewEditor(null); };
-    var list = crm.interviews.slice().sort(function (a, b) { return String(a.scheduledAt || "").localeCompare(String(b.scheduledAt || "")); });
+    var q = crmQuery();
+    var list = crm.interviews.slice()
+      .filter(function (iv) { return !q || String(iv.subject || "").toLowerCase().includes(q) || contactName(iv.contactId).toLowerCase().includes(q); })
+      .sort(function (a, b) { return String(a.scheduledAt || "").localeCompare(String(b.scheduledAt || "")); });
     $("crmList").innerHTML = list.length ? list.map(function (iv) {
       var when = iv.scheduledAt ? new Date(iv.scheduledAt).toLocaleString("ru-RU", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) : "без даты";
       return '<div class="crm-row" data-id="' + iv.id + '">' +
         '<div><div class="ttl">' + esc(iv.subject || "Без темы") + '</div>' +
         '<div class="meta">' + esc(contactName(iv.contactId)) + ' · ' + esc(when) + '</div></div>' +
-        '<span class="status-badge st-' + esc(iv.status || "planned") + '">' + esc(STATUS_LABEL[iv.status] || "Запланировано") + '</span></div>';
-    }).join("") : '<div class="empty">Пока пусто</div>';
+        '<span class="status-badge st-' + esc(iv.status || "planned") + '" data-act="cyclestatus" data-id="' + iv.id + '">' +
+        esc(STATUS_LABEL[iv.status] || "Запланировано") + '</span></div>';
+    }).join("") : '<div class="empty">Ничего не найдено</div>';
     $("crmList").querySelectorAll(".crm-row").forEach(function (row) {
-      row.onclick = function () { openInterviewEditor(Number(row.dataset.id)); };
+      row.onclick = function (ev) {
+        if (ev.target.closest('[data-act="cyclestatus"]')) return;
+        openInterviewEditor(Number(row.dataset.id));
+      };
+    });
+    // Статус по кругу тапом на бейдж — самое частое действие с интервью
+    // (провёл → расшифровываю → готово) не должно требовать открытия формы
+    // ради одной смены значения в select'е.
+    $("crmList").querySelectorAll('[data-act="cyclestatus"]').forEach(function (badge) {
+      badge.onclick = function (ev) {
+        ev.stopPropagation();
+        var iv = crm.interviews.find(function (x) { return x.id === Number(badge.dataset.id); });
+        if (!iv) return;
+        var next = STATUS_CYCLE[(STATUS_CYCLE.indexOf(iv.status) + 1) % STATUS_CYCLE.length];
+        iv.status = next;
+        iv.updatedAt = new Date().toISOString();
+        badge.textContent = "…";
+        saveCrm().then(function () { haptic("success"); renderInterviews(); }).catch(function (e) { toast("Ошибка: " + e.message, true); renderInterviews(); });
+      };
     });
   }
 
@@ -1351,6 +1400,7 @@
       e.status = $("ce-status").value;
       e.scheduledAt = $("ce-when").value || "";
       e.reminded = false;   // время могли перенести — напоминание должно сработать заново
+      e.overdueNotified = false;
     }
     var noteVal = $("ce-note").value.trim();
     if (isContact) e.note = noteVal; else e.notes = noteVal;
@@ -1406,18 +1456,23 @@
       saveCrm().catch(function () {});
       renderNotes();
     };
-    var list = crm.notes.slice().sort(function (a, b) { return String(b.createdAt || "").localeCompare(String(a.createdAt || "")); });
+    var q = crmQuery();
+    var list = crm.notes.slice()
+      .filter(function (n) { return !q || String(n.text || "").toLowerCase().includes(q); })
+      .sort(function (a, b) { return String(b.createdAt || "").localeCompare(String(a.createdAt || "")); });
     $("crmList").innerHTML = list.length ? list.map(function (n) {
       var when = n.createdAt ? String(n.createdAt).slice(0, 10) : "";
       return '<div class="note-card" data-id="' + n.id + '">' +
         '<textarea placeholder="Заметка…">' + esc(n.text) + '</textarea>' +
         '<div class="note-foot"><span class="note-date">' + esc(when) + '</span><span class="note-del" data-act="delnote">✕</span></div></div>';
-    }).join("") : '<div class="empty">Пока пусто</div>';
+    }).join("") : '<div class="empty">Ничего не найдено</div>';
 
     $("crmList").querySelectorAll(".note-card textarea").forEach(function (ta) {
+      autoGrow(ta);
       var id = Number(ta.closest(".note-card").dataset.id);
       var timer = null;
       ta.addEventListener("input", function () {
+        autoGrow(ta);
         clearTimeout(timer);
         timer = setTimeout(function () {
           var note = crm.notes.find(function (x) { return x.id === id; });
