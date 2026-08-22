@@ -352,32 +352,59 @@
     try { tgw && tgw.HapticFeedback && tgw.HapticFeedback.notificationOccurred(kind || "success"); } catch (e) {}
   }
 
+  /* ── Сеть с таймаутом ─────────────────────────────────────────────────────
+   * Голый fetch без таймаута — это «Сохраняю…» до конца времён, если ответ
+   * не пришёл: полузакрытый Telegram (свёрнутый в фон, половинчатый лист на
+   * iOS) регулярно держит соединение подвешенным вместо явной ошибки. */
+  function fetchJSON(url, opts, timeoutMs) {
+    var controller = new AbortController();
+    var timer = setTimeout(function () { controller.abort(); }, timeoutMs || 12000);
+    return fetch(url, Object.assign({}, opts, { signal: controller.signal }))
+      .then(function (res) {
+        return res.json().catch(function () { return null; }).then(function (data) {
+          return { status: res.status, ok: res.ok, data: data };
+        });
+      })
+      .catch(function (e) {
+        if (e.name === "AbortError") throw new Error("нет ответа — таймаут");
+        throw new Error("нет сети: " + e.message);
+      })
+      .finally(function () { clearTimeout(timer); });
+  }
+
+  var bootedAt = 0;
+
   // ── Инициализация: подтверждаем, что это правда открыто из бота EPRIS ─────
   async function boot() {
     if (!tgw || !tgw.initData) {
-      $("boot").textContent = "Открой это через кнопку бота в Telegram — вне приложения initData пуст.";
+      $("boot").innerHTML = "Открой это через кнопку бота в Telegram — вне приложения initData пуст.";
       return;
     }
     tgw.ready();
     tgw.expand();
     try { tgw.setHeaderColor && tgw.setHeaderColor("#111111"); } catch (e) {}
 
+    $("boot").classList.remove("hidden");
+    $("boot").textContent = "Проверяем доступ…";
+    $("home-view").classList.add("hidden");
+
     try {
-      var res = await fetch(API + "/telegram/auth", {
+      var authRes = await fetchJSON(API + "/telegram/auth", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ initData: tgw.initData }),
       });
-      var data = await res.json();
-      if (!data.ok) throw new Error(data.error || "auth failed");
-      ADMIN_PW = data.password;
-      if (data.name) $("who").textContent = data.name.toUpperCase();
+      if (!authRes.data || !authRes.data.ok) throw new Error((authRes.data && authRes.data.error) || "HTTP " + authRes.status);
+      ADMIN_PW = authRes.data.password;
+      if (authRes.data.name) $("who").textContent = authRes.data.name.toUpperCase();
+
+      await loadContent();
     } catch (e) {
-      $("boot").textContent = "Не удалось подтвердить доступ: " + e.message;
+      showBootError(e.message);
       return;
     }
 
-    await loadContent();
+    bootedAt = Date.now();
     $("boot").classList.add("hidden");
     $("home-view").classList.remove("hidden");
     renderHome();
@@ -385,9 +412,24 @@
     tgw.BackButton && tgw.BackButton.onClick(goBack);
   }
 
+  function showBootError(message) {
+    var boot = $("boot");
+    boot.innerHTML = "";
+    var p = document.createElement("div");
+    p.textContent = "Не удалось открыть панель: " + message;
+    var btn = document.createElement("div");
+    btn.className = "add-block-btn";
+    btn.style.cssText = "display:inline-block;margin-top:16px;";
+    btn.textContent = "Повторить";
+    btn.onclick = boot;
+    boot.appendChild(p);
+    boot.appendChild(btn);
+  }
+
   async function loadContent() {
-    var res = await fetch(API + "/content", { cache: "no-store" });
-    content = await res.json();
+    var res = await fetchJSON(API + "/content", { cache: "no-store" });
+    if (!res.ok || !res.data) throw new Error("контент недоступен (HTTP " + res.status + ")");
+    content = res.data;
     flatList = [];
     ["articles", "reviews"].forEach(function (section) {
       var kind = section === "articles" ? "статья" : "обзор";
@@ -474,8 +516,36 @@
     });
   }
 
+  // ── Незасохранённые правки: не терять их молча ────────────────────────────
+  // Полузакрытый Telegram (свайп вниз на половинчатом листе, переключение
+  // на другой чат) может закрыть Mini App в любой момент — closingConfirmation
+  // просит Telegram самому спросить «точно закрыть», а свой Back переспрашивает,
+  // если правки ещё не сохранены.
+  var isDirty = false;
+  function setDirty(v) {
+    isDirty = v;
+    try {
+      if (!tgw) return;
+      if (v && tgw.enableClosingConfirmation) tgw.enableClosingConfirmation();
+      else if (!v && tgw.disableClosingConfirmation) tgw.disableClosingConfirmation();
+    } catch (e) { /* старый клиент без этого API — не критично */ }
+  }
+
   function goBack() {
-    if ($("editor").classList.contains("open")) { closeEditor(); return; }
+    if ($("editor").classList.contains("open")) {
+      if (isDirty) {
+        if (tgw && tgw.showConfirm) {
+          tgw.showConfirm("Есть несохранённые правки. Закрыть без сохранения?", function (confirmed) {
+            if (confirmed) closeEditor();
+          });
+        } else if (window.confirm("Есть несохранённые правки. Закрыть без сохранения?")) {
+          closeEditor();
+        }
+        return;
+      }
+      closeEditor();
+      return;
+    }
     if (!$("list-view").classList.contains("hidden")) {
       $("list-view").classList.add("hidden");
       $("home-view").classList.remove("hidden");
@@ -567,12 +637,23 @@
     $("editor").classList.add("open");
     $("editor").scrollTop = 0;
     tgw && tgw.BackButton && tgw.BackButton.show();
+    setDirty(false);   // поля только что заполнены кодом, это не правка пользователя
   }
+
+  // Любая правка внутри редактора — набор текста, чекбоксы, блоки — считается
+  // несохранённой. Один делегированный слушатель проще, чем помечать дюжину
+  // мест по отдельности, и не пропустит новое поле, если его позже добавят.
+  $("editor").addEventListener("input", function () { setDirty(true); });
+  $("editor").addEventListener("click", function (ev) {
+    if (ev.target.closest("#cancelBtn, #saveBtn, #openSiteLink")) return;
+    setDirty(true);
+  });
 
   function closeEditor() {
     $("editor").classList.remove("open");
     current = null;
     blockList = [];
+    setDirty(false);
     // Куда возвращаться, решили ДО открытия редактора (editorReturnView) —
     // не по тому, есть ли на странице .row: они остаются в DOM и на скрытом
     // home-view («Свежее» использует тот же класс), так что подсчёт всегда
@@ -729,13 +810,16 @@
     else toast("Загрузка фото…");
     try {
       var b64 = await fileToBase64(file);
-      var res = await fetch(API + "/upload", {
+      // Фото весит больше обычного JSON-ответа — таймаут просторнее, чтобы
+      // мобильная загрузка не обрывалась на полпути.
+      var res = await fetchJSON(API + "/upload", {
         method: "POST",
         headers: { "Content-Type": "application/json", "X-Admin-Password": ADMIN_PW },
         body: JSON.stringify({ data: b64, contentType: file.type || "image/jpeg", filename: file.name || "photo.jpg" }),
-      });
-      var data = await res.json();
-      if (!data.ok) throw new Error(data.error || "upload failed");
+      }, 45000);
+      var data = res.data;
+      if (!data || !data.ok) throw new Error((data && data.error) || "HTTP " + res.status);
+      setDirty(true);
       if (target === "cover") {
         current.entity.imageUrl = data.url;
         cover.style.backgroundImage = "url(" + data.url + ")";
@@ -794,19 +878,33 @@
       next.draft = $("draftSwitch").dataset.on !== "1";
       next.content = blockList;
 
-      var metaRes = await fetch(API + "/content/meta", { cache: "no-store" });
-      var meta = await metaRes.json();
-      if (!meta.ok) throw new Error("не удалось получить версию контента");
+      var metaRes = await fetchJSON(API + "/content/meta", { cache: "no-store" });
+      if (!metaRes.data || !metaRes.data.ok) throw new Error("не удалось получить версию контента");
 
-      var patchRes = await fetch(API + "/content/entity", {
+      var patchRes = await fetchJSON(API + "/content/entity", {
         method: "PATCH",
         headers: { "Content-Type": "application/json", "X-Admin-Password": ADMIN_PW },
-        body: JSON.stringify({ section: current.section, id: next.id, entity: next, expectedVersion: meta.version }),
+        body: JSON.stringify({ section: current.section, id: next.id, entity: next, expectedVersion: metaRes.data.version }),
       });
-      var patchData = await patchRes.json();
-      if (!patchData.ok) throw new Error(patchData.error || "PATCH failed");
+
+      // 409 — кто-то (панель или другой редактор) сохранил материал, пока
+      // мы правили. Молча перезаписывать поверх нельзя — это стёрло бы
+      // чужую правку. Разложить конфликт по полям тоже некуда: проще
+      // отдать выбор человеку, а не гадать самим.
+      if (patchRes.status === 409) {
+        if (tgw && tgw.showConfirm) {
+          tgw.showConfirm("Материал изменили в другом месте, пока вы правили. Обновить данные? Свои правки придётся внести заново.", function (confirmed) {
+            if (confirmed) { setDirty(false); loadContent().then(function () { toast("Обновлено — правки утеряны, начните заново"); goBack(); }); }
+          });
+        } else {
+          toast("Материал изменили в другом месте — обновите /digest и повторите правку", true);
+        }
+        return;
+      }
+      if (!patchRes.data || !patchRes.data.ok) throw new Error((patchRes.data && patchRes.data.error) || "HTTP " + patchRes.status);
 
       current.entity = next;
+      setDirty(false);
       await loadContent();
       renderHome();
       toast("Сохранено");
@@ -896,6 +994,33 @@
       }
     }, 200);
   });
+
+  // ── Возврат из фона / полузакрытого состояния ───────────────────────────
+  // Telegram сворачивает Mini App в фон (переключились в другой чат, экран
+  // заблокировали) и на iOS умеет открывать её половинчатым нижним листом
+  // до полного разворота. И то, и другое иногда сбрасывает tgw.expand() и
+  // оставляет заголовок недоступным под шторкой — переразворачиваем при
+  // каждом возврате. Контент тоже тихо освежаем, если давно не трогали и
+  // сейчас не заняты редактированием (чтобы не сбить незаконченную правку).
+  var STALE_MS = 3 * 60 * 1000;
+  function onResume() {
+    if (!tgw) return;
+    try { tgw.expand(); } catch (e) {}
+    if ($("editor").classList.contains("open")) return;   // не мешаем правке
+    if (!ADMIN_PW) return;                                  // boot ещё не прошёл
+    if (Date.now() - bootedAt < STALE_MS) return;
+    loadContent().then(function () {
+      bootedAt = Date.now();
+      if (!$("home-view").classList.contains("hidden")) renderHome();
+      if (!$("list-view").classList.contains("hidden")) renderList();
+    }).catch(function () { /* тихо: следующий явный ↻ или открытие покажет ошибку */ });
+  }
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "visible") onResume();
+  });
+  if (tgw && tgw.onEvent) {
+    try { tgw.onEvent("activated", onResume); } catch (e) {}
+  }
 
   boot();
 })();
