@@ -124,13 +124,16 @@ async function tg(method, payload) {
    подписи не сжимались в нечитаемые столбцы. */
 const kb = (rows) => ({ inline_keyboard: rows.map((row) => row.map(([text, data]) => ({ text, callback_data: data }))) });
 
+/* Шесть кнопок вместо одиннадцати: под каждым ответом бота висело целое
+   меню на все случаи жизни (Службы/Диск/Сертификат/Ссылки/Сторож — это
+   вопросы раз в неделю, не через сообщение), и это читалось как «нет
+   гибкости» — стену кнопок пролистывают, а не читают. То, что осталось
+   внизу, всё ещё доступно командой (/services, /disk, /ssl, /links,
+   /alerts) и в /help — просто не навязывается на каждом шаге. */
 const MENU = kb([
   [["📋 Состояние", "cmd:status"], ["✉️ Анкеты", "cmd:forms"]],
   [["📝 Черновики", "cmd:drafts"], ["📰 Последнее", "cmd:last"]],
   [["👥 Контакты", "cmd:contacts"], ["🎙 Интервью", "cmd:interviews"]],
-  [["🛠 Службы", "cmd:services"], ["💾 Диск", "cmd:disk"]],
-  [["🔒 Сертификат", "cmd:ssl"], ["🔗 Ссылки", "cmd:links"]],
-  [["👁 Сторож", "cmd:alerts"]],
 ]);
 
 /* Отправка PNG-карточки вместо текста. Телеграм ждёт multipart, а не JSON —
@@ -384,20 +387,26 @@ function cmdHelp() {
 }
 
 async function collectStatus() {
-  const checks = [];
   const check = async (label, url) => {
     const started = Date.now();
     try {
       const response = await fetch(url, { signal: AbortSignal.timeout(8000) });
-      checks.push({ label, ok: response.ok, detail: `${response.status}, ${Date.now() - started} мс` });
+      return { label, ok: response.ok, detail: `${response.status}, ${Date.now() - started} мс` };
     } catch (error) {
-      checks.push({ label, ok: false, detail: error.name === "TimeoutError" ? "таймаут" : error.message });
+      return { label, ok: false, detail: error.name === "TimeoutError" ? "таймаут" : error.message };
     }
   };
 
-  await check("сайт", SITE);
-  await check("контент", "https://api.eprisjournal.com/content");
-  await check("анкеты", `${FORMS_API}/health`);   // /list закрыт паролем, см. сторож
+  // Параллельно, не по очереди: раньше три проверки шли одна за другой с
+  // таймаутом 8с каждая — если что-то одно подвисало (не упало, а именно
+  // подвисало), /status ждал до 24с вместо 8. Порядок строк на карточке не
+  // зависит от того, кто первым ответил — Promise.all сохраняет порядок
+  // самого массива промисов, не порядок завершения.
+  const checks = await Promise.all([
+    check("сайт", SITE),
+    check("контент", "https://api.eprisjournal.com/content"),
+    check("анкеты", `${FORMS_API}/health`),   // /list закрыт паролем, см. сторож
+  ]);
 
   const content = readContent();
   const counts = [];
@@ -1043,9 +1052,16 @@ async function poll() {
     }
   } catch (error) {
     if (error.name !== "TimeoutError") console.error("[bot] опрос:", error.message);
-  } finally {
-    setTimeout(poll, 500);
+    // Задержка нужна только после реальной ошибки — не долбить API, пока
+    // сеть или Телеграм приходят в себя. На каждом успешном цикле (и на
+    // пустом таймауте long polling'а, это не ошибка) она была лишней —
+    // добавляла до полусекунды к ответу на каждое сообщение без всякой
+    // причины: getUpdates и так не возвращается, пока нет апдейта или не
+    // истекут его собственные 50с.
+    setTimeout(poll, 3000);
+    return;
   }
+  setTimeout(poll, 0);
 }
 poll();
 

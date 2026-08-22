@@ -106,6 +106,16 @@
     color: var(--ink); cursor: pointer;
   }
 
+  /* Та же рамка, но без uppercase/letter-spacing: та вёрстка держит короткую
+     статичную метку ("ВСЕ МАТЕРИАЛЫ"), а тут — предложение с цифрами
+     ("3 предстоящих, 8 контактов") — капсом оно превращалось в крик. */
+  .crm-link {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    text-align: center; padding: 14px 12px; margin-top: 4px; border: 1px solid var(--rule);
+    font-family: 'PT Serif', serif; font-size: 15px; color: var(--ink); cursor: pointer;
+  }
+  .crm-link .n { font-family: 'PT Mono', monospace; font-size: 13px; color: var(--muted); }
+
   .out-link {
     display: inline-block; margin-bottom: 16px; font-size: 12px; letter-spacing: 1px;
     text-transform: uppercase; color: var(--muted); text-decoration: underline; cursor: pointer;
@@ -282,7 +292,7 @@
       <button class="new-btn" id="newReviewBtn">+ Обзор</button>
     </div>
     <div class="stat-row" id="stats"></div>
-    <div class="more-link" id="crmLink">👥 CRM: контакты, интервью, заметки →</div>
+    <div class="crm-link" id="crmLink">CRM — контакты, интервью, заметки →</div>
     <div class="title" style="font-size:20px;margin:6px 0 10px;">Свежее</div>
     <div id="recent"></div>
     <div class="more-link" id="allLink">Все материалы →</div>
@@ -1248,10 +1258,8 @@
   // не нужно заходить внутрь, чтобы понять, пусто там или нет.
   function updateCrmLinkCount() {
     var upcoming = crm.interviews.filter(function (iv) { return iv.status === "planned"; }).length;
-    var bits = [];
-    if (upcoming) bits.push(upcoming + " предстоящих");
-    bits.push(crm.contacts.length + " контактов", crm.notes.length + " заметок");
-    $("crmLink").textContent = "👥 CRM: " + bits.join(", ") + " →";
+    var bits = [upcoming + " интервью", crm.contacts.length + " контактов", crm.notes.length + " заметок"];
+    $("crmLink").innerHTML = "CRM<span class=\"n\">&nbsp;&nbsp;" + esc(bits.join("  ·  ")) + "</span>&nbsp;&nbsp;→";
   }
 
   async function saveCrm() {
