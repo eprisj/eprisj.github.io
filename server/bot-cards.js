@@ -142,6 +142,53 @@ function draftsCard(items) {
   `);
 }
 
+/* ── Карточка контактов ──────────────────────────────────────────────────── */
+function contactsCard(items) {
+  const top = BAR + 100;
+  const listTop = top + 30;
+  const typeLabel = { author: "автор", partner: "партнёр", speaker: "спикер", other: "" };
+  const rows = items.slice(0, 6).map((c, i) => {
+    const y = listTop + i * 66;
+    const meta = [typeLabel[c.type] || "", c.telegram, c.phone].filter(Boolean).join("  ·  ");
+    return `
+      <text x="40" y="${y}" font-family="${FONT_TITLE}" font-size="24" fill="${COLOR.ink}">${wrap(c.name || "без имени", 44)[0]}</text>
+      <text x="${W - 40}" y="${y}" font-family="${FONT_LABEL}" font-size="12" letter-spacing="0.5" fill="${COLOR.muted}" text-anchor="end">${wrap(meta, 40)[0] || ""}</text>
+      <line x1="40" y1="${y + 20}" x2="${W - 40}" y2="${y + 20}" stroke="${COLOR.rule}" stroke-width="1"/>`;
+  }).join("");
+
+  return frame("КОНТАКТЫ", `
+    <text x="40" y="${BAR + 50}" font-family="${FONT_LABEL}" font-size="11" letter-spacing="1.5" fill="${COLOR.muted}">РЕДАКЦИЯ · АВТОРЫ И ПАРТНЁРЫ</text>
+    <text x="40" y="${BAR + 90}" font-family="${FONT_TITLE}" font-size="34" fill="${COLOR.ink}">Контакты — ${items.length}</text>
+    ${rows}
+  `);
+}
+
+/* ── Карточка интервью ────────────────────────────────────────────────────── */
+const STATUS_COLOR = { planned: COLOR.muted, done: COLOR.success, transcribing: "#b8860b", ready: COLOR.success };
+const STATUS_LABEL = { planned: "запланировано", done: "проведено", transcribing: "расшифровка", ready: "готово" };
+
+function interviewsCard(items) {
+  const top = BAR + 100;
+  const listTop = top + 30;
+  const rows = items.slice(0, 6).map((iv, i) => {
+    const y = listTop + i * 66;
+    const dot = STATUS_COLOR[iv.status] || COLOR.muted;
+    const meta = [iv.contactName, iv.when].filter(Boolean).join("  ·  ");
+    return `
+      <circle cx="34" cy="${y - 8}" r="6" fill="${dot}"/>
+      <text x="56" y="${y}" font-family="${FONT_TITLE}" font-size="24" fill="${COLOR.ink}">${wrap(iv.subject || "без темы", 40)[0]}</text>
+      <text x="${W - 40}" y="${y}" font-family="${FONT_LABEL}" font-size="12" letter-spacing="0.5" fill="${dot}" text-anchor="end">${esc(STATUS_LABEL[iv.status] || iv.status || "")}</text>
+      <text x="56" y="${y + 24}" font-family="${FONT_LABEL}" font-size="12" letter-spacing="0.3" fill="${COLOR.muted}">${esc(meta)}</text>
+      <line x1="40" y1="${y + 40}" x2="${W - 40}" y2="${y + 40}" stroke="${COLOR.rule}" stroke-width="1"/>`;
+  }).join("");
+
+  return frame("ИНТЕРВЬЮ", `
+    <text x="40" y="${BAR + 50}" font-family="${FONT_LABEL}" font-size="11" letter-spacing="1.5" fill="${COLOR.muted}">РЕДАКЦИЯ · ПЛАНИРОВАНИЕ</text>
+    <text x="40" y="${BAR + 90}" font-family="${FONT_TITLE}" font-size="34" fill="${COLOR.ink}">Интервью — ${items.length}</text>
+    ${rows}
+  `);
+}
+
 async function toPng(svg) {
   return sharp(Buffer.from(svg)).png().toBuffer();
 }
@@ -152,4 +199,6 @@ module.exports = {
   renderStatus: (data) => toPng(statusCard(data)),
   renderLast: (data) => toPng(lastCard(data)),
   renderDrafts: (items) => toPng(draftsCard(items)),
+  renderContacts: (items) => toPng(contactsCard(items)),
+  renderInterviews: (items) => toPng(interviewsCard(items)),
 };
