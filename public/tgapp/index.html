@@ -39,7 +39,11 @@
     display: flex; align-items: center; justify-content: space-between;
   }
   header.bar .logo { font-family: 'PT Serif', serif; font-size: 18px; letter-spacing: 4px; }
+  header.bar .right { display: flex; align-items: center; gap: 14px; }
   header.bar .tag { font-size: 10px; letter-spacing: 2px; opacity: 0.6; text-transform: uppercase; }
+  header.bar .refresh { font-size: 16px; opacity: 0.75; cursor: pointer; line-height: 1; padding: 4px; }
+  header.bar .refresh.spin { animation: spin 0.6s linear; }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
   main { padding: 16px 16px 8px; }
 
@@ -72,14 +76,31 @@
   }
   .row .cat { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
   .row .ttl { font-family: 'Crimson Text', serif; font-size: 19px; margin-top: 2px; line-height: 1.25; }
+  .row .prev {
+    font-size: 13px; color: var(--muted); margin-top: 4px; line-height: 1.35;
+    display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .row .side { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
   .row .badge {
     font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
-    border: 1px solid var(--ink); padding: 3px 8px; white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+    border: 1px solid var(--ink); padding: 3px 8px; white-space: nowrap;
   }
   .row .badge.draft { color: var(--error); border-color: var(--error); }
   .row .badge.live { color: var(--success); border-color: var(--success); }
+  .row .when { font-size: 10px; letter-spacing: 0.5px; color: var(--muted); white-space: nowrap; }
 
   .empty { color: var(--muted); padding: 30px 0; text-align: center; font-size: 14px; }
+
+  .more-link {
+    display: block; text-align: center; padding: 12px; margin-top: 4px;
+    border: 1px solid var(--rule); font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--ink); cursor: pointer;
+  }
+
+  .out-link {
+    display: inline-block; margin-bottom: 16px; font-size: 12px; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--muted); text-decoration: underline; cursor: pointer;
+  }
 
   /* Редактор — отдельный экран, не модалка: Telegram Mini App и так живёт
      в отдельном окне, второй слой поверх только путает. */
@@ -136,7 +157,10 @@
 
 <header class="bar">
   <span class="logo">EPRIS</span>
-  <span class="tag" id="who">РЕДАКЦИЯ</span>
+  <span class="right">
+    <span class="tag" id="who">РЕДАКЦИЯ</span>
+    <span class="refresh" id="refreshBtn" title="Обновить">↻</span>
+  </span>
 </header>
 
 <main>
@@ -146,6 +170,7 @@
     <div class="stat-row" id="stats"></div>
     <div class="title" style="font-size:20px;margin:6px 0 10px;">Свежее</div>
     <div id="recent"></div>
+    <div class="more-link" id="allLink">Все материалы →</div>
   </div>
 
   <div id="list-view" class="hidden">
@@ -160,6 +185,7 @@
   </div>
 
   <div id="editor">
+    <div class="out-link" id="openSiteLink">Открыть на сайте ↗</div>
     <div class="cover" id="cover">Нажмите, чтобы добавить обложку</div>
     <input type="file" id="fileInput" accept="image/*" style="display:none">
 
@@ -278,7 +304,11 @@
       stat(drafts.length, "черновиков"),
       stat((content.items || []).length, "в галерее"),
     ].join("");
-    $("stats").querySelectorAll(".stat")[1].onclick = function () { openList("draft"); };
+    var statEls = $("stats").querySelectorAll(".stat");
+    statEls[0].onclick = function () { openList("all"); };
+    statEls[0].style.cursor = "pointer";
+    statEls[1].onclick = function () { openList("draft"); };
+    statEls[1].style.cursor = "pointer";
 
     var recent = published.slice(0, 6);
     $("recent").innerHTML = recent.length
@@ -316,12 +346,21 @@
     bindRows($("rows"));
   }
 
+  function shortDate(v) {
+    var s = String(v || "").slice(0, 10);
+    return s || "";
+  }
+
   function rowHtml(x) {
     var e = x.entity;
     var badge = e.draft ? '<span class="badge draft">черновик</span>' : '<span class="badge live">live</span>';
+    var preview = (x.section === "reviews" ? e.subject : e.excerpt) || "";
+    var when = shortDate(e.updatedAt || e.date);
     return '<div class="row" data-section="' + x.section + '" data-id="' + e.id + '">' +
       '<div><div class="cat">' + esc((e.category || x.kind).toUpperCase()) + '</div>' +
-      '<div class="ttl">' + esc(e.title || "без названия") + '</div></div>' + badge + '</div>';
+      '<div class="ttl">' + esc(e.title || "без названия") + '</div>' +
+      (preview ? '<div class="prev">' + esc(preview) + '</div>' : '') + '</div>' +
+      '<div class="side">' + badge + (when ? '<span class="when">' + esc(when) + '</span>' : '') + '</div></div>';
   }
 
   function bindRows(container) {
@@ -480,6 +519,37 @@
     tab.onclick = function () { openList(tab.dataset.section); };
   });
   $("search").oninput = renderList;
+  $("allLink").onclick = function () { openList("all"); };
+
+  // ── Внешняя ссылка на материал: та же схема slug'ов, что и на сайте ────────
+  function slugify(v) {
+    return String(v || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "").slice(0, 60);
+  }
+  function siteUrl(section, entity) {
+    if (section === "reviews") return "https://eprisjournal.com/review/" + entity.id;
+    var slug = slugify(entity.title);
+    return slug ? "https://eprisjournal.com/article/" + slug : "https://eprisjournal.com/articles";
+  }
+  $("openSiteLink").onclick = function () {
+    if (!current) return;
+    var url = siteUrl(current.section, current.entity);
+    if (tgw && tgw.openLink) tgw.openLink(url); else window.open(url, "_blank");
+  };
+
+  $("refreshBtn").onclick = async function () {
+    var btn = $("refreshBtn");
+    btn.classList.add("spin");
+    try {
+      await loadContent();
+      if (!$("home-view").classList.contains("hidden")) renderHome();
+      if (!$("list-view").classList.contains("hidden")) renderList();
+      toast("Обновлено");
+    } catch (e) {
+      toast("Не удалось обновить: " + e.message, true);
+    } finally {
+      setTimeout(function () { btn.classList.remove("spin"); }, 600);
+    }
+  };
 
   boot();
 })();
