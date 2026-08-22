@@ -99,7 +99,7 @@
   .row .side { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
   .row .badge {
     font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
-    border: 1px solid var(--ink); padding: 3px 8px; white-space: nowrap;
+    border: 1px solid var(--ink); padding: 5px 9px; white-space: nowrap; cursor: pointer;
   }
   .row .badge.draft { color: var(--error); border-color: var(--error); }
   .row .badge.live { color: var(--success); border-color: var(--success); }
@@ -373,6 +373,12 @@
 
   <div id="editor">
     <div class="out-link" id="openSiteLink">Открыть на сайте ↗</div>
+
+    <div class="toggle-row" style="margin-bottom:16px;">
+      <span class="lbl" id="draftLbl">Опубликовать</span>
+      <div class="switch" id="draftSwitch"><div class="dot"></div></div>
+    </div>
+
     <div class="cover" id="cover">Нажмите, чтобы добавить обложку</div>
     <input type="file" id="fileInput" accept="image/*" style="display:none">
 
@@ -387,6 +393,10 @@
     <div class="field" id="f-cat-wrap">
       <label>Категория</label>
       <input type="text" id="f-cat">
+    </div>
+    <div class="field" id="f-date-wrap">
+      <label>Дата</label>
+      <input type="text" id="f-date" placeholder="July 18, 2026">
     </div>
     <div class="field" id="f-rating-wrap" style="display:none">
       <label>Оценка (0–5)</label>
@@ -416,11 +426,6 @@
     <div class="field" id="f-link-wrap" style="display:none">
       <label>Ссылка</label>
       <input type="text" id="f-link" placeholder="https://…">
-    </div>
-
-    <div class="toggle-row">
-      <span class="lbl">Опубликовано</span>
-      <div class="switch" id="draftSwitch"><div class="dot"></div></div>
     </div>
 
     <div class="blocks-heading">Текст материала</div>
@@ -646,7 +651,13 @@
 
   function rowHtml(x) {
     var e = x.entity;
-    var badge = e.draft ? '<span class="badge draft">черновик</span>' : '<span class="badge live">live</span>';
+    // Бейдж — не просто статус, а кнопка: тап публикует/снимает с публикации
+    // без похода в редактор. Раньше это было можно сделать только открыв
+    // материал и докрутив до тумблера внизу — на статью с длинным телом
+    // это лишние секунды ради одного действия.
+    var badge = e.draft
+      ? '<span class="badge draft" data-act="togglepub">черновик</span>'
+      : '<span class="badge live" data-act="togglepub">live</span>';
     var preview = (x.section === "reviews" ? e.subject : e.excerpt) || "";
     var when = shortDate(e.updatedAt || e.date);
     return '<div class="row" data-section="' + x.section + '" data-id="' + e.id + '">' +
@@ -658,8 +669,45 @@
 
   function bindRows(container) {
     container.querySelectorAll(".row").forEach(function (row) {
-      row.onclick = function () { openEditor(row.dataset.section, Number(row.dataset.id)); };
+      row.onclick = function (ev) {
+        if (ev.target.closest('[data-act="togglepub"]')) return;   // обработано ниже отдельно
+        openEditor(row.dataset.section, Number(row.dataset.id));
+      };
     });
+    container.querySelectorAll('[data-act="togglepub"]').forEach(function (badge) {
+      badge.onclick = function (ev) {
+        ev.stopPropagation();
+        quickTogglePublish(badge.closest(".row").dataset.section, Number(badge.closest(".row").dataset.id), badge);
+      };
+    });
+  }
+
+  // ── Публикация в один тап, без открытия редактора ───────────────────────
+  async function quickTogglePublish(section, id, badgeEl) {
+    var item = flatList.find(function (x) { return x.section === section && x.entity.id === id; });
+    if (!item) return;
+    var wasDraft = !!item.entity.draft;
+    badgeEl.textContent = "…";
+    try {
+      var metaRes = await fetchJSON(API + "/content/meta", { cache: "no-store" });
+      if (!metaRes.data || !metaRes.data.ok) throw new Error("нет версии контента");
+      var next = Object.assign({}, item.entity, { draft: !wasDraft });
+      var patchRes = await fetchJSON(API + "/content/entity", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json", "X-Admin-Password": ADMIN_PW },
+        body: JSON.stringify({ section: section, id: id, entity: next, expectedVersion: metaRes.data.version }),
+      });
+      if (patchRes.status === 409) { toast("Изменили в другом месте — обновите (↻) и повторите", true); await loadContent(); renderList(); renderHome(); return; }
+      if (!patchRes.data || !patchRes.data.ok) throw new Error((patchRes.data && patchRes.data.error) || "HTTP " + patchRes.status);
+      item.entity = next;
+      haptic("success");
+      toast(wasDraft ? "Опубликовано" : "Снято с публикации");
+      renderList();
+      if (!$("home-view").classList.contains("hidden")) renderHome();
+    } catch (e) {
+      toast("Ошибка: " + e.message, true);
+      badgeEl.textContent = wasDraft ? "черновик" : "live";
+    }
   }
 
   // ── Незасохранённые правки: не терять их молча ────────────────────────────
@@ -738,8 +786,10 @@
     $("f-title").value = e.title || "";
     $("subLabel").textContent = isReview ? "Тема" : "Лид";
     $("f-sub").value = (isReview ? e.subject : e.excerpt) || "";
+    autoGrow($("f-sub"));
     $("f-cat-wrap").style.display = "";
     $("f-cat").value = e.category || "";
+    $("f-date").value = e.date || "";
     $("f-rating-wrap").style.display = isReview ? "" : "none";
     $("f-rating").value = isReview && e.rating != null ? String(e.rating) : "";
 
@@ -789,12 +839,35 @@
     $("editor").scrollTop = 0;
     tgw && tgw.BackButton && tgw.BackButton.show();
     setDirty(false);   // поля только что заполнены кодом, это не правка пользователя
+
+    // Пересчёт высоты — ПОСЛЕ того, как редактор стал видимым. renderBlocks()
+    // выше вызывался, пока #editor ещё display:none, а scrollHeight скрытого
+    // элемента всегда 0 — textarea сжимались до min-height и обрезали текст
+    // до первого нажатия клавиши.
+    $("editor").querySelectorAll("textarea").forEach(function (ta) { autoGrow(ta); });
   }
 
   // Любая правка внутри редактора — набор текста, чекбоксы, блоки — считается
   // несохранённой. Один делегированный слушатель проще, чем помечать дюжину
   // мест по отдельности, и не пропустит новое поле, если его позже добавят.
+  // "input" одного недостаточно: <select> и datetime-local в части WebView
+  // (Telegram на Android регулярно) поднимают только "change" — на них
+  // правка молча не помечалась несохранённой, и закрытие без запроса
+  // теряло, например, смену категории или переключение публикации.
   $("editor").addEventListener("input", function () { setDirty(true); });
+  $("editor").addEventListener("change", function () { setDirty(true); });
+
+  // Текстовые поля растут вместе с текстом вместо ручного перетаскивания
+  // уголка — на теле статьи, которое легко разрастается на десятки строк,
+  // таскать resize-хендл после каждого абзаца утомляет быстрее, чем сам
+  // набор текста.
+  function autoGrow(el) {
+    el.style.height = "auto";
+    el.style.height = el.scrollHeight + "px";
+  }
+  $("editor").addEventListener("input", function (ev) {
+    if (ev.target.tagName === "TEXTAREA") autoGrow(ev.target);
+  });
   $("editor").addEventListener("click", function (ev) {
     if (ev.target.closest("#cancelBtn, #saveBtn, #openSiteLink")) return;
     setDirty(true);
@@ -903,6 +976,10 @@
     $("blocks").innerHTML = blockList.length
       ? blockList.map(blockCardHtml).join("")
       : '<div class="empty">Пусто — добавьте блок ниже</div>';
+    // Существующий текст блока может быть длиннее исходной высоты textarea —
+    // без этого прохода длинные абзацы открывались бы обрезанными до первого
+    // ввода символа.
+    $("blocks").querySelectorAll("textarea").forEach(function (ta) { autoGrow(ta); });
   }
 
   $("blocks").addEventListener("input", function (ev) {
@@ -945,6 +1022,10 @@
   function setSwitch(on) {
     $("draftSwitch").classList.toggle("on", on);
     $("draftSwitch").dataset.on = on ? "1" : "0";
+    // Подпись — не статус «опубликовано: да/нет», а действие, которое
+    // произойдёт при сохранении: жалоба была именно на то, что кнопку
+    // публикации не удавалось найти среди полей формы.
+    $("draftLbl").textContent = on ? "Опубликовано — снять с публикации?" : "Опубликовать";
   }
 
   $("draftSwitch").onclick = function () { setSwitch($("draftSwitch").dataset.on !== "1"); haptic(); };
@@ -1026,6 +1107,7 @@
         next.tags = chipLists.tags.slice();
       }
       next.category = $("f-cat").value.trim();
+      next.date = $("f-date").value.trim();
       next.draft = $("draftSwitch").dataset.on !== "1";
       next.content = blockList;
 
@@ -1236,6 +1318,7 @@
   }
 
   $("crm-editor").addEventListener("input", function () { setDirty(true); });
+  $("crm-editor").addEventListener("change", function () { setDirty(true); });
   $("crm-editor").addEventListener("click", function (ev) {
     if (ev.target.closest("#ceCancelBtn, #ceSaveBtn, #ceDeleteBtn")) return;
     setDirty(true);
