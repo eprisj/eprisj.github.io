@@ -127,6 +127,7 @@ const kb = (rows) => ({ inline_keyboard: rows.map((row) => row.map(([text, data]
 const MENU = kb([
   [["📋 Состояние", "cmd:status"], ["✉️ Анкеты", "cmd:forms"]],
   [["📝 Черновики", "cmd:drafts"], ["📰 Последнее", "cmd:last"]],
+  [["👥 Контакты", "cmd:contacts"], ["🎙 Интервью", "cmd:interviews"]],
   [["🛠 Службы", "cmd:services"], ["💾 Диск", "cmd:disk"]],
   [["🔒 Сертификат", "cmd:ssl"], ["🔗 Ссылки", "cmd:links"]],
   [["👁 Сторож", "cmd:alerts"]],
@@ -237,6 +238,68 @@ async function formsList() {
   } catch { return null; }
 }
 
+// ── CRM: контакты, интервью, заметки — тот же /crm, что и у Mini App ─────────
+async function fetchCrm() {
+  const response = await fetch(`${CONTENT_API}/crm`, { headers: { "X-Admin-Password": FORMS_PASSWORD } });
+  const data = await response.json();
+  if (!data || !data.ok) throw new Error((data && data.error) || `HTTP ${response.status}`);
+  return { contacts: data.contacts || [], interviews: data.interviews || [], notes: data.notes || [] };
+}
+async function saveCrm(crm) {
+  const response = await fetch(`${CONTENT_API}/crm`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-Admin-Password": FORMS_PASSWORD },
+    body: JSON.stringify(crm),
+  });
+  const data = await response.json();
+  if (!data || !data.ok) throw new Error((data && data.error) || `HTTP ${response.status}`);
+}
+
+const STATUS_LABEL_RU = { planned: "запланировано", done: "проведено", transcribing: "расшифровка", ready: "готово" };
+
+async function cmdContacts() {
+  let crm;
+  try { crm = await fetchCrm(); } catch (e) { return `CRM недоступна: ${esc(e.message)}`; }
+  if (!crm.contacts.length) return "Контактов пока нет — добавьте через App.";
+  const typeLabel = { author: "автор", partner: "партнёр", speaker: "спикер", other: "" };
+  const sorted = [...crm.contacts].sort((a, b) => String(a.name || "").localeCompare(String(b.name || "")));
+  return ["<b>👥 Контакты</b>", "", ...sorted.map((c) => {
+    const bits = [typeLabel[c.type] || "", c.telegram, c.phone].filter(Boolean).join(" · ");
+    return `• <b>${esc(c.name || "без имени")}</b>${bits ? `\n  ${esc(bits)}` : ""}`;
+  })].join("\n");
+}
+
+async function cmdInterviews() {
+  let crm;
+  try { crm = await fetchCrm(); } catch (e) { return `CRM недоступна: ${esc(e.message)}`; }
+  if (!crm.interviews.length) return "Интервью пока нет — добавьте через App.";
+  const contactName = (id) => { const c = crm.contacts.find((x) => String(x.id) === String(id)); return c ? c.name : "—"; };
+  const sorted = [...crm.interviews].sort((a, b) => String(a.scheduledAt || "").localeCompare(String(b.scheduledAt || "")));
+  return ["<b>🎙 Интервью</b>", "", ...sorted.map((iv) => {
+    const when = iv.scheduledAt ? new Date(iv.scheduledAt).toLocaleString("ru-RU", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) : "без даты";
+    return `• <b>${esc(iv.subject || "без темы")}</b> — ${STATUS_LABEL_RU[iv.status] || iv.status}\n  ${esc(contactName(iv.contactId))} · ${esc(when)}`;
+  })].join("\n");
+}
+
+async function cmdNote(text) {
+  const body = String(text || "").replace(/^\/note(@\S+)?\s*/i, "").trim();
+  if (!body) return "Формат: /note текст заметки";
+  let crm;
+  try { crm = await fetchCrm(); } catch (e) { return `CRM недоступна: ${esc(e.message)}`; }
+  const maxId = crm.notes.reduce((m, n) => Math.max(m, Number(n.id) || 0), 0);
+  crm.notes.unshift({ id: maxId + 1, text: body, createdAt: new Date().toISOString() });
+  try { await saveCrm(crm); } catch (e) { return `Не удалось сохранить: ${esc(e.message)}`; }
+  return "📌 Заметка сохранена.";
+}
+
+async function cmdNotes() {
+  let crm;
+  try { crm = await fetchCrm(); } catch (e) { return `CRM недоступна: ${esc(e.message)}`; }
+  if (!crm.notes.length) return "Заметок пока нет.";
+  const sorted = [...crm.notes].sort((a, b) => String(b.createdAt || "").localeCompare(String(a.createdAt || ""))).slice(0, 15);
+  return ["<b>📌 Заметки</b>", "", ...sorted.map((n) => `• ${esc(n.text)}${n.createdAt ? `\n  <i>${esc(String(n.createdAt).slice(0, 10))}</i>` : ""}`)].join("\n");
+}
+
 // ── Команды ──────────────────────────────────────────────────────────────────
 
 const COMMANDS = [
@@ -246,6 +309,10 @@ const COMMANDS = [
   ["/responses", "где сколько ответов накопилось"],
   ["/drafts", "черновики со ссылками для автора"],
   ["/last", "что опубликовано последним"],
+  ["/contacts", "контакты редакции: авторы, партнёры, спикеры"],
+  ["/interviews", "запланированные и проведённые интервью"],
+  ["/note", "быстрая заметка: /note текст"],
+  ["/notes", "последние заметки"],
   ["/services", "состояние служб на сервере"],
   ["/disk", "место на диске и что его занимает"],
   ["/ssl", "сколько осталось сертификату"],
@@ -261,6 +328,7 @@ const COMMANDS = [
    раздел лезть, а не читаешь список из пятнадцати команд подряд. */
 const HELP_GROUPS = [
   ["📋 Редакция", ["/status", "/last", "/drafts", "/digest"]],
+  ["👥 CRM", ["/contacts", "/interviews", "/note", "/notes"]],
   ["✉️ Анкеты", ["/forms", "/responses"]],
   ["🛠 Сервер", ["/services", "/disk", "/ssl", "/links"]],
   ["👁 Сторож", ["/alerts", "/mute", "/unmute"]],
@@ -555,6 +623,11 @@ async function watchdog() {
 
     // 6. Счётчик черновиков на самой кнопке App — видно, не открывая бота.
     await updateMenuBadge();
+
+    // 7. Напоминания об интервью — за час до назначенного времени, один раз
+    //    (reminded=true), и только пока оно ещё «запланировано»: если статус
+    //    сменили или время перенесли, Mini App уже сбросил reminded сама.
+    await remindInterviews();
   } catch (error) {
     console.error("[bot] сторож:", error.message);
   } finally {
@@ -818,6 +891,10 @@ async function handleCommand(text) {
     case "/responses": return cmdResponses();
     case "/drafts": return cmdDrafts();
     case "/last": return cmdLast();
+    case "/contacts": return cmdContacts();
+    case "/interviews": return cmdInterviews();
+    case "/note": return cmdNote(text);
+    case "/notes": return cmdNotes();
     case "/services": return cmdServices();
     case "/disk": return cmdDisk();
     case "/ssl": return cmdSsl();
@@ -1001,6 +1078,30 @@ async function updateMenuBadge() {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ chat_id: CHAT, menu_button: button }),
   }).catch(() => {});
+}
+
+/* Час до интервью — не раньше и не за неделю: слишком заблаговременно, и
+   уведомление потеряется среди прочего. reminded — чтобы не слать одно и
+   то же на каждом круге сторожа (раз в 5 минут), пока час не истёк. */
+async function remindInterviews() {
+  let crm;
+  try { crm = await fetchCrm(); } catch { return; }   // CRM недоступна — не критично, попробуем на следующем круге
+  const now = Date.now();
+  const due = crm.interviews.filter((iv) => {
+    if (iv.reminded || iv.status !== "planned" || !iv.scheduledAt) return false;
+    const at = Date.parse(iv.scheduledAt);
+    return Number.isFinite(at) && at - now > 0 && at - now <= 3600000;
+  });
+  if (!due.length) return;
+  const contactName = (id) => { const c = crm.contacts.find((x) => String(x.id) === String(id)); return c ? c.name : null; };
+  for (const iv of due) {
+    const when = new Date(iv.scheduledAt).toLocaleString("ru-RU", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+    const who = contactName(iv.contactId);
+    await sendRich(`🎙 <b>Интервью через час</b>\n${esc(iv.subject || "без темы")}${who ? `\nС: ${esc(who)}` : ""}\n${esc(when)}`,
+      { reply_markup: MENU });
+    iv.reminded = true;
+  }
+  await saveCrm(crm).catch((e) => console.error("[bot] не удалось сохранить reminded:", e.message));
 }
 
 void fetch(api("setChatMenuButton"), {

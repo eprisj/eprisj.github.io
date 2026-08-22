@@ -232,6 +232,36 @@
     width: 72px; height: 72px; border: 1px dashed var(--rule); display: flex; align-items: center;
     justify-content: center; font-size: 22px; color: var(--muted); cursor: pointer;
   }
+
+  /* ── CRM: контакты, интервью, заметки ────────────────────────────────────── */
+  .crm-row {
+    padding: 14px 0; border-bottom: 1px solid var(--rule); cursor: pointer;
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;
+  }
+  .crm-row .ttl { font-family: 'Crimson Text', serif; font-size: 19px; line-height: 1.25; }
+  .crm-row .meta { font-size: 12px; color: var(--muted); margin-top: 3px; }
+  .status-badge {
+    font-size: 10px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--ink);
+    padding: 3px 8px; white-space: nowrap; flex-shrink: 0;
+  }
+  .status-badge.st-planned { border-color: var(--muted); color: var(--muted); }
+  .status-badge.st-done { border-color: var(--success); color: var(--success); }
+  .status-badge.st-transcribing { color: #b8860b; border-color: #b8860b; }
+  .status-badge.st-ready { border-color: var(--success); color: var(--success); background: var(--tint); }
+
+  .note-card { border: 1px solid var(--rule); padding: 12px; margin-bottom: 10px; position: relative; }
+  .note-card textarea {
+    width: 100%; border: none; background: none; font-family: 'PT Serif', serif; font-size: 15px;
+    color: var(--ink); outline: none; resize: vertical; min-height: 50px;
+  }
+  .note-card .note-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 6px; }
+  .note-card .note-date { font-size: 10px; color: var(--muted); letter-spacing: 0.5px; }
+  .note-card .note-del { font-size: 13px; color: var(--muted); cursor: pointer; }
+
+  #crm-editor .field select {
+    width: 100%; border: none; border-bottom: 1px solid var(--ink); padding: 8px 0;
+    font-family: 'PT Serif', serif; font-size: 16px; color: var(--ink); background: none; outline: none;
+  }
 </style>
 </head>
 <body>
@@ -253,6 +283,7 @@
       <button class="new-btn" id="newReviewBtn">+ Обзор</button>
     </div>
     <div class="stat-row" id="stats"></div>
+    <div class="more-link" id="crmLink">👥 CRM: контакты, интервью, заметки →</div>
     <div class="title" style="font-size:20px;margin:6px 0 10px;">Свежее</div>
     <div id="recent"></div>
     <div class="more-link" id="allLink">Все материалы →</div>
@@ -267,6 +298,77 @@
     </div>
     <input class="search" id="search" placeholder="Поиск по заголовку…">
     <div id="rows"></div>
+  </div>
+
+  <div id="crm-view" class="hidden">
+    <div class="tabs">
+      <button class="tab active" data-crmtab="interviews">Интервью</button>
+      <button class="tab" data-crmtab="contacts">Контакты</button>
+      <button class="tab" data-crmtab="notes">Заметки</button>
+    </div>
+    <div class="new-row" id="crmAddRow"></div>
+    <div id="crmList"></div>
+  </div>
+
+  <div id="crm-editor" class="hidden">
+    <div class="field" id="ce-name-wrap">
+      <label id="ceNameLabel">Имя</label>
+      <input type="text" id="ce-name">
+    </div>
+    <div class="field" id="ce-type-wrap">
+      <label>Тип</label>
+      <select id="ce-type">
+        <option value="author">Автор</option>
+        <option value="partner">Партнёр</option>
+        <option value="speaker">Спикер</option>
+        <option value="other">Другое</option>
+      </select>
+    </div>
+    <div class="field" id="ce-telegram-wrap">
+      <label>Telegram</label>
+      <input type="text" id="ce-telegram" placeholder="@username">
+    </div>
+    <div class="field" id="ce-email-wrap">
+      <label>Email</label>
+      <input type="text" id="ce-email">
+    </div>
+    <div class="field" id="ce-phone-wrap">
+      <label>Телефон</label>
+      <input type="text" id="ce-phone">
+    </div>
+
+    <div class="field" id="ce-subject-wrap">
+      <label>Тема интервью</label>
+      <input type="text" id="ce-subject">
+    </div>
+    <div class="field" id="ce-contact-wrap">
+      <label>С кем</label>
+      <select id="ce-contact"></select>
+    </div>
+    <div class="field" id="ce-status-wrap">
+      <label>Статус</label>
+      <select id="ce-status">
+        <option value="planned">Запланировано</option>
+        <option value="done">Проведено</option>
+        <option value="transcribing">Расшифровка</option>
+        <option value="ready">Готово</option>
+      </select>
+    </div>
+    <div class="field" id="ce-when-wrap">
+      <label>Дата и время</label>
+      <input type="datetime-local" id="ce-when">
+    </div>
+
+    <div class="field" id="ce-note-wrap">
+      <label>Заметка</label>
+      <textarea id="ce-note"></textarea>
+    </div>
+
+    <div class="actions">
+      <button class="btn" id="ceDeleteBtn" style="border-color:var(--error);color:var(--error)">Удалить</button>
+      <button class="btn" id="ceCancelBtn">Назад</button>
+      <button class="btn primary" id="ceSaveBtn">Сохранить</button>
+    </div>
   </div>
 
   <div id="editor">
@@ -575,19 +677,24 @@
     } catch (e) { /* старый клиент без этого API — не критично */ }
   }
 
+  function confirmDiscard(action) {
+    if (!isDirty) { action(); return; }
+    if (tgw && tgw.showConfirm) {
+      tgw.showConfirm("Есть несохранённые правки. Закрыть без сохранения?", function (confirmed) {
+        if (confirmed) action();
+      });
+    } else if (window.confirm("Есть несохранённые правки. Закрыть без сохранения?")) {
+      action();
+    }
+  }
+
   function goBack() {
-    if ($("editor").classList.contains("open")) {
-      if (isDirty) {
-        if (tgw && tgw.showConfirm) {
-          tgw.showConfirm("Есть несохранённые правки. Закрыть без сохранения?", function (confirmed) {
-            if (confirmed) closeEditor();
-          });
-        } else if (window.confirm("Есть несохранённые правки. Закрыть без сохранения?")) {
-          closeEditor();
-        }
-        return;
-      }
-      closeEditor();
+    if ($("editor").classList.contains("open")) { confirmDiscard(closeEditor); return; }
+    if (!$("crm-editor").classList.contains("hidden")) { confirmDiscard(closeCrmEditor); return; }
+    if (!$("crm-view").classList.contains("hidden")) {
+      $("crm-view").classList.add("hidden");
+      $("home-view").classList.remove("hidden");
+      tgw && tgw.BackButton && tgw.BackButton.hide();
       return;
     }
     if (!$("list-view").classList.contains("hidden")) {
@@ -963,13 +1070,289 @@
     }
   };
 
-  document.querySelectorAll(".tab").forEach(function (tab) {
+  // Скоуп к #list-view намеренно: у #crm-view свои .tab с data-crmtab,
+  // общий querySelectorAll(".tab") зацепил бы и их тоже.
+  document.querySelectorAll("#list-view .tab").forEach(function (tab) {
     tab.onclick = function () { openList(tab.dataset.section); };
   });
   $("search").oninput = renderList;
   $("allLink").onclick = function () { openList("all"); };
   $("newArticleBtn").onclick = function () { openCreate("articles"); };
   $("newReviewBtn").onclick = function () { openCreate("reviews"); };
+
+  // ══════════════════════════════════════════════════════════════════════
+  // CRM: контакты, интервью, заметки — отдельный документ (/crm), не связан
+  // с публичным контентом сайта. Тот же паттерн read-modify-write целиком,
+  // что и раньше для content, но без версионирования: документ маленький,
+  // редактор один, конфликт почти невероятен, а версионирование на его
+  // месте — сложность без реальной пользы.
+  // ══════════════════════════════════════════════════════════════════════
+
+  var crm = { contacts: [], interviews: [], notes: [] };
+  var crmLoaded = false;
+  var crmActiveTab = "interviews";
+  var crmCurrent = null;   // { kind: "contact"|"interview", entity }
+
+  async function loadCrm() {
+    var res = await fetchJSON(API + "/crm", { headers: { "X-Admin-Password": ADMIN_PW }, cache: "no-store" });
+    if (!res.data || !res.data.ok) throw new Error("CRM недоступна (HTTP " + res.status + ")");
+    crm = { contacts: res.data.contacts || [], interviews: res.data.interviews || [], notes: res.data.notes || [] };
+    crmLoaded = true;
+  }
+
+  async function saveCrm() {
+    var res = await fetchJSON(API + "/crm", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-Admin-Password": ADMIN_PW },
+      body: JSON.stringify(crm),
+    });
+    if (!res.data || !res.data.ok) throw new Error((res.data && res.data.error) || "HTTP " + res.status);
+  }
+
+  function contactName(id) {
+    var c = crm.contacts.find(function (x) { return String(x.id) === String(id); });
+    return c ? c.name : "—";
+  }
+
+  var STATUS_LABEL = { planned: "Запланировано", done: "Проведено", transcribing: "Расшифровка", ready: "Готово" };
+
+  async function openCrm(tab) {
+    if (!crmLoaded) {
+      try { await loadCrm(); } catch (e) { toast("Не удалось загрузить CRM: " + e.message, true); return; }
+    }
+    crmActiveTab = tab || crmActiveTab;
+    $("home-view").classList.add("hidden");
+    $("crm-view").classList.remove("hidden");
+    document.querySelectorAll("#crm-view .tab").forEach(function (t) {
+      t.classList.toggle("active", t.dataset.crmtab === crmActiveTab);
+    });
+    renderCrmList();
+    tgw && tgw.BackButton && tgw.BackButton.show();
+  }
+
+  document.querySelectorAll("#crm-view .tab").forEach(function (tab) {
+    tab.onclick = function () { openCrm(tab.dataset.crmtab); };
+  });
+  $("crmLink").onclick = function () { openCrm(); };
+
+  function renderCrmList() {
+    if (crmActiveTab === "notes") { renderNotes(); return; }
+    if (crmActiveTab === "contacts") { renderContacts(); return; }
+    renderInterviews();
+  }
+
+  // ── Контакты ─────────────────────────────────────────────────────────────
+  function renderContacts() {
+    $("crmAddRow").innerHTML = '<button class="new-btn" id="addContactBtn">+ Контакт</button>';
+    $("addContactBtn").onclick = function () { openContactEditor(null); };
+    var list = crm.contacts.slice().sort(function (a, b) { return String(a.name || "").localeCompare(String(b.name || "")); });
+    $("crmList").innerHTML = list.length ? list.map(function (c) {
+      var typeLabel = { author: "Автор", partner: "Партнёр", speaker: "Спикер", other: "" }[c.type] || "";
+      return '<div class="crm-row" data-id="' + c.id + '">' +
+        '<div><div class="ttl">' + esc(c.name || "Без имени") + '</div>' +
+        '<div class="meta">' + esc([typeLabel, c.telegram, c.phone].filter(Boolean).join(" · ")) + '</div></div></div>';
+    }).join("") : '<div class="empty">Пока пусто</div>';
+    $("crmList").querySelectorAll(".crm-row").forEach(function (row) {
+      row.onclick = function () { openContactEditor(Number(row.dataset.id)); };
+    });
+  }
+
+  function openContactEditor(id) {
+    var c = id ? crm.contacts.find(function (x) { return x.id === id; }) : null;
+    crmCurrent = { kind: "contact", entity: c ? Object.assign({}, c) : { id: nextCrmId("contacts"), name: "", type: "author", telegram: "", email: "", phone: "", note: "" } };
+    fillCrmEditor();
+  }
+
+  // ── Интервью ─────────────────────────────────────────────────────────────
+  function renderInterviews() {
+    $("crmAddRow").innerHTML = '<button class="new-btn" id="addInterviewBtn">+ Интервью</button>';
+    $("addInterviewBtn").onclick = function () { openInterviewEditor(null); };
+    var list = crm.interviews.slice().sort(function (a, b) { return String(a.scheduledAt || "").localeCompare(String(b.scheduledAt || "")); });
+    $("crmList").innerHTML = list.length ? list.map(function (iv) {
+      var when = iv.scheduledAt ? new Date(iv.scheduledAt).toLocaleString("ru-RU", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) : "без даты";
+      return '<div class="crm-row" data-id="' + iv.id + '">' +
+        '<div><div class="ttl">' + esc(iv.subject || "Без темы") + '</div>' +
+        '<div class="meta">' + esc(contactName(iv.contactId)) + ' · ' + esc(when) + '</div></div>' +
+        '<span class="status-badge st-' + esc(iv.status || "planned") + '">' + esc(STATUS_LABEL[iv.status] || "Запланировано") + '</span></div>';
+    }).join("") : '<div class="empty">Пока пусто</div>';
+    $("crmList").querySelectorAll(".crm-row").forEach(function (row) {
+      row.onclick = function () { openInterviewEditor(Number(row.dataset.id)); };
+    });
+  }
+
+  function openInterviewEditor(id) {
+    var iv = id ? crm.interviews.find(function (x) { return x.id === id; }) : null;
+    crmCurrent = { kind: "interview", entity: iv ? Object.assign({}, iv) : { id: nextCrmId("interviews"), subject: "", contactId: null, status: "planned", scheduledAt: "", notes: "", reminded: false } };
+    fillCrmEditor();
+  }
+
+  function nextCrmId(section) {
+    var max = 0;
+    (crm[section] || []).forEach(function (x) { max = Math.max(max, Number(x.id) || 0); });
+    return max + 1;
+  }
+
+  // ── Общий редактор контакта/интервью ────────────────────────────────────
+  function fillCrmEditor() {
+    var isContact = crmCurrent.kind === "contact";
+    var e = crmCurrent.entity;
+    ["name", "type", "telegram", "email", "phone"].forEach(function (f) {
+      $("ce-" + f + "-wrap").style.display = isContact ? "" : "none";
+    });
+    ["subject", "contact", "status", "when"].forEach(function (f) {
+      $("ce-" + f + "-wrap").style.display = isContact ? "none" : "";
+    });
+    $("ceNameLabel").textContent = "Имя";
+
+    if (isContact) {
+      $("ce-name").value = e.name || "";
+      $("ce-type").value = e.type || "author";
+      $("ce-telegram").value = e.telegram || "";
+      $("ce-email").value = e.email || "";
+      $("ce-phone").value = e.phone || "";
+    } else {
+      $("ce-subject").value = e.subject || "";
+      $("ce-contact").innerHTML = '<option value="">— без контакта —</option>' +
+        crm.contacts.map(function (c) { return '<option value="' + c.id + '">' + esc(c.name) + '</option>'; }).join("");
+      $("ce-contact").value = e.contactId || "";
+      $("ce-status").value = e.status || "planned";
+      $("ce-when").value = e.scheduledAt ? e.scheduledAt.slice(0, 16) : "";
+    }
+    $("ce-note").value = (isContact ? e.note : e.notes) || "";
+    $("ceDeleteBtn").style.display = (id_of(e) ? "" : "none");
+
+    $("home-view").classList.add("hidden");
+    $("crm-view").classList.add("hidden");
+    $("crm-editor").classList.remove("hidden");
+    $("crm-editor").scrollTop = 0;
+    tgw && tgw.BackButton && tgw.BackButton.show();
+    setDirty(false);
+  }
+  function id_of(e) {
+    // Новая запись получает id заранее (nextCrmId), поэтому отличаем
+    // «уже существует» по факту присутствия в crm.*, не по наличию id.
+    if (crmCurrent.kind === "contact") return crm.contacts.some(function (x) { return x.id === e.id; });
+    return crm.interviews.some(function (x) { return x.id === e.id; });
+  }
+
+  $("crm-editor").addEventListener("input", function () { setDirty(true); });
+  $("crm-editor").addEventListener("click", function (ev) {
+    if (ev.target.closest("#ceCancelBtn, #ceSaveBtn, #ceDeleteBtn")) return;
+    setDirty(true);
+  });
+
+  function closeCrmEditor() {
+    $("crm-editor").classList.add("hidden");
+    crmCurrent = null;
+    setDirty(false);
+    $("crm-view").classList.remove("hidden");
+    renderCrmList();
+  }
+  $("ceCancelBtn").onclick = goBack;
+
+  $("ceSaveBtn").onclick = async function () {
+    if (!crmCurrent) return;
+    var isContact = crmCurrent.kind === "contact";
+    var e = crmCurrent.entity;
+    if (isContact) {
+      e.name = $("ce-name").value.trim();
+      if (!e.name) { toast("Имя не может быть пустым", true); return; }
+      e.type = $("ce-type").value;
+      e.telegram = $("ce-telegram").value.trim();
+      e.email = $("ce-email").value.trim();
+      e.phone = $("ce-phone").value.trim();
+    } else {
+      e.subject = $("ce-subject").value.trim();
+      if (!e.subject) { toast("Тема не может быть пустой", true); return; }
+      e.contactId = $("ce-contact").value ? Number($("ce-contact").value) : null;
+      e.status = $("ce-status").value;
+      e.scheduledAt = $("ce-when").value || "";
+      e.reminded = false;   // время могли перенести — напоминание должно сработать заново
+    }
+    var noteVal = $("ce-note").value.trim();
+    if (isContact) e.note = noteVal; else e.notes = noteVal;
+    e.updatedAt = new Date().toISOString();
+
+    var btn = $("ceSaveBtn");
+    btn.disabled = true;
+    btn.textContent = "Сохраняю…";
+    try {
+      var list = isContact ? crm.contacts : crm.interviews;
+      var idx = list.findIndex(function (x) { return x.id === e.id; });
+      if (idx >= 0) list[idx] = e; else list.push(e);
+      await saveCrm();
+      setDirty(false);
+      toast("Сохранено");
+      haptic("success");
+      closeCrmEditor();
+    } catch (err) {
+      toast("Ошибка: " + err.message, true);
+      haptic("error");
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Сохранить";
+    }
+  };
+
+  $("ceDeleteBtn").onclick = function () {
+    if (!crmCurrent) return;
+    var isContact = crmCurrent.kind === "contact";
+    var doDelete = async function () {
+      var list = isContact ? crm.contacts : crm.interviews;
+      var idx = list.findIndex(function (x) { return x.id === crmCurrent.entity.id; });
+      if (idx >= 0) list.splice(idx, 1);
+      try {
+        await saveCrm();
+        setDirty(false);
+        toast("Удалено");
+        closeCrmEditor();
+      } catch (err) { toast("Ошибка: " + err.message, true); }
+    };
+    if (tgw && tgw.showConfirm) tgw.showConfirm("Удалить запись без возможности отмены?", function (ok) { if (ok) doDelete(); });
+    else if (window.confirm("Удалить запись без возможности отмены?")) doDelete();
+  };
+
+  // ── Заметки: стикеры, ничем не привязаны ────────────────────────────────
+  // Автосохранение с debounce — не «Сохранить» на каждую заметку отдельно,
+  // это были бы лишние тапы ради строчки текста.
+  function renderNotes() {
+    $("crmAddRow").innerHTML = '<button class="new-btn" id="addNoteBtn">+ Заметка</button>';
+    $("addNoteBtn").onclick = function () {
+      var note = { id: nextCrmId("notes"), text: "", createdAt: new Date().toISOString() };
+      crm.notes.unshift(note);
+      saveCrm().catch(function () {});
+      renderNotes();
+    };
+    var list = crm.notes.slice().sort(function (a, b) { return String(b.createdAt || "").localeCompare(String(a.createdAt || "")); });
+    $("crmList").innerHTML = list.length ? list.map(function (n) {
+      var when = n.createdAt ? String(n.createdAt).slice(0, 10) : "";
+      return '<div class="note-card" data-id="' + n.id + '">' +
+        '<textarea placeholder="Заметка…">' + esc(n.text) + '</textarea>' +
+        '<div class="note-foot"><span class="note-date">' + esc(when) + '</span><span class="note-del" data-act="delnote">✕</span></div></div>';
+    }).join("") : '<div class="empty">Пока пусто</div>';
+
+    $("crmList").querySelectorAll(".note-card textarea").forEach(function (ta) {
+      var id = Number(ta.closest(".note-card").dataset.id);
+      var timer = null;
+      ta.addEventListener("input", function () {
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          var note = crm.notes.find(function (x) { return x.id === id; });
+          if (!note) return;
+          note.text = ta.value;
+          note.updatedAt = new Date().toISOString();
+          saveCrm().then(function () { toast("Заметка сохранена"); }).catch(function (e) { toast("Не сохранилось: " + e.message, true); });
+        }, 900);
+      });
+    });
+    $("crmList").querySelectorAll('[data-act="delnote"]').forEach(function (btn) {
+      btn.onclick = function () {
+        var id = Number(btn.closest(".note-card").dataset.id);
+        crm.notes = crm.notes.filter(function (x) { return x.id !== id; });
+        saveCrm().then(renderNotes).catch(function (e) { toast("Не удалилось: " + e.message, true); });
+      };
+    });
+  }
 
   // ── Внешняя ссылка на материал: та же схема slug'ов, что и на сайте ────────
   function slugify(v) {
