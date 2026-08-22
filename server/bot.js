@@ -257,17 +257,23 @@ async function saveCrm(crm) {
 
 const STATUS_LABEL_RU = { planned: "запланировано", done: "проведено", transcribing: "расшифровка", ready: "готово" };
 
+/* <blockquote> — не украшение ради украшения: список из десятка контактов
+   сплошным текстом сливается в кашу, а рамка вокруг каждой записи держит
+   взгляд построчно. Телеграм поддерживает тег без каких-то доп. настроек
+   бота — он есть в HTML-режиме давно, просто раньше не пригождался. */
 async function cmdContacts() {
   let crm;
   try { crm = await fetchCrm(); } catch (e) { return `CRM недоступна: ${esc(e.message)}`; }
   if (!crm.contacts.length) return "Контактов пока нет — добавьте через App.";
   const typeLabel = { author: "автор", partner: "партнёр", speaker: "спикер", other: "" };
   const sorted = [...crm.contacts].sort((a, b) => String(a.name || "").localeCompare(String(b.name || "")));
-  return ["<b>👥 Контакты</b>", "", ...sorted.map((c) => {
-    const bits = [typeLabel[c.type] || "", c.telegram, c.phone].filter(Boolean).join(" · ");
-    return `• <b>${esc(c.name || "без имени")}</b>${bits ? `\n  ${esc(bits)}` : ""}`;
+  return [`<b>👥 Контакты</b> — ${sorted.length}`, "", ...sorted.map((c) => {
+    const bits = [typeLabel[c.type] || "", c.telegram, c.phone, c.email].filter(Boolean).join(" · ");
+    return `<blockquote><b>${esc(c.name || "без имени")}</b>${bits ? `\n${esc(bits)}` : ""}</blockquote>`;
   })].join("\n");
 }
+
+const STATUS_EMOJI = { planned: "🗓", done: "✅", transcribing: "📝", ready: "✨" };
 
 async function cmdInterviews() {
   let crm;
@@ -275,9 +281,10 @@ async function cmdInterviews() {
   if (!crm.interviews.length) return "Интервью пока нет — добавьте через App.";
   const contactName = (id) => { const c = crm.contacts.find((x) => String(x.id) === String(id)); return c ? c.name : "—"; };
   const sorted = [...crm.interviews].sort((a, b) => String(a.scheduledAt || "").localeCompare(String(b.scheduledAt || "")));
-  return ["<b>🎙 Интервью</b>", "", ...sorted.map((iv) => {
+  return [`<b>🎙 Интервью</b> — ${sorted.length}`, "", ...sorted.map((iv) => {
     const when = iv.scheduledAt ? new Date(iv.scheduledAt).toLocaleString("ru-RU", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) : "без даты";
-    return `• <b>${esc(iv.subject || "без темы")}</b> — ${STATUS_LABEL_RU[iv.status] || iv.status}\n  ${esc(contactName(iv.contactId))} · ${esc(when)}`;
+    const mark = STATUS_EMOJI[iv.status] || "•";
+    return `<blockquote>${mark} <b>${esc(iv.subject || "без темы")}</b> — ${esc(STATUS_LABEL_RU[iv.status] || iv.status)}\n${esc(contactName(iv.contactId))} · ${esc(when)}</blockquote>`;
   })].join("\n");
 }
 
@@ -1097,7 +1104,7 @@ async function remindInterviews() {
   for (const iv of due) {
     const when = new Date(iv.scheduledAt).toLocaleString("ru-RU", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
     const who = contactName(iv.contactId);
-    await sendRich(`🎙 <b>Интервью через час</b>\n${esc(iv.subject || "без темы")}${who ? `\nС: ${esc(who)}` : ""}\n${esc(when)}`,
+    await sendRich(`🎙 <b>Интервью через час</b>\n\n<blockquote>${esc(iv.subject || "без темы")}${who ? `\n${esc(who)}` : ""}\n${esc(when)}</blockquote>`,
       { reply_markup: MENU });
     iv.reminded = true;
   }
