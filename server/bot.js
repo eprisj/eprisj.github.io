@@ -959,4 +959,13 @@ void fetch(api("setMyCommands"), {
   body: JSON.stringify({ commands: COMMANDS.map(([name, what]) => ({ command: name.slice(1), description: what })) }),
 }).catch(() => {});
 
+/* Кнопка слева от поля ввода открывает Mini App — полноценную панель
+   вместо построчных команд. Ставится глобально для приватных чатов с
+   ботом: он и так односторонний, второй редакции тут не бывает. */
+void fetch(api("setChatMenuButton"), {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ menu_button: { type: "web_app", text: "App", web_app: { url: `${SITE}/tgapp/` } } }),
+}).catch(() => {});
+
 module.exports = { chunk, slugify, draftUrl, esc, kb };
