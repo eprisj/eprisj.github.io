@@ -16,6 +16,21 @@
     --rule: rgba(17,17,17,0.14);
     --success: #3f6b4a;
     --error: #a13b3b;
+    /* Шапка на сайте всегда чёрная, в любой системной теме — это часть
+       айдентики EPRIS, не то, что подстраивается под Telegram. */
+    --header-bg: #111111;
+    --header-fg: #ffffff;
+    --tint: rgba(0,0,0,0.03);
+  }
+  /* Тёмная тема Telegram — не инверсия один в один, а тот же чёрно-белый
+     язык наоборот: тёмная бумага, светлые чернила. Устанавливается JS-ом
+     по tgw.colorScheme, тут — только палитра. */
+  html.tg-dark {
+    --ink: #f2f0ec;
+    --paper: #0d0d0d;
+    --muted: rgba(242,240,236,0.55);
+    --rule: rgba(242,240,236,0.16);
+    --tint: rgba(255,255,255,0.05);
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
@@ -24,6 +39,7 @@
     font-family: 'PT Serif', Georgia, serif;
     -webkit-font-smoothing: antialiased;
     padding-bottom: 40px;
+    transition: background .15s, color .15s;
   }
   @font-face {
     font-family: 'Crimson Text';
@@ -34,7 +50,7 @@
   .mono { font-family: 'PT Mono', 'PT Serif', monospace; letter-spacing: 0.06em; }
 
   header.bar {
-    background: var(--ink); color: var(--paper);
+    background: var(--header-bg); color: var(--header-fg);
     padding: 18px 20px; position: sticky; top: 0; z-index: 10;
     display: flex; align-items: center; justify-content: space-between;
   }
@@ -158,7 +174,7 @@
     margin: 24px 0 10px; padding-top: 16px; border-top: 1px solid var(--rule);
   }
   .block-card { border: 1px solid var(--rule); padding: 12px; margin-bottom: 10px; }
-  .block-card.locked { background: rgba(17,17,17,0.03); }
+  .block-card.locked { background: var(--tint); }
   .block-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
   .block-type {
     font-family: 'PT Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
@@ -374,6 +390,16 @@
 
   var bootedAt = 0;
 
+  // ── Тема: тот же чёрно-белый язык, только наоборот ──────────────────────
+  // Не подстраиваемся под themeParams Telegram (кнопки чужого чата, цвет
+  // ссылок и т.п.) — это увело бы от айдентики EPRIS. Синхронизируем только
+  // сам факт «сейчас темно» через tgw.colorScheme, палитра — своя, задана
+  // в CSS под html.tg-dark.
+  function syncTheme() {
+    var dark = tgw && tgw.colorScheme === "dark";
+    document.documentElement.classList.toggle("tg-dark", dark);
+  }
+
   // ── Инициализация: подтверждаем, что это правда открыто из бота EPRIS ─────
   async function boot() {
     if (!tgw || !tgw.initData) {
@@ -383,6 +409,8 @@
     tgw.ready();
     tgw.expand();
     try { tgw.setHeaderColor && tgw.setHeaderColor("#111111"); } catch (e) {}
+    syncTheme();
+    if (tgw.onEvent) { try { tgw.onEvent("themeChanged", syncTheme); } catch (e) {} }
 
     $("boot").classList.remove("hidden");
     $("boot").textContent = "Проверяем доступ…";

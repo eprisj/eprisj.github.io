@@ -69,13 +69,19 @@ function chunk(text, limit = 3900) {
   return out;
 }
 
-async function send(text) {
-  for (const part of chunk(text)) {
+async function send(text, keyboard) {
+  const parts = chunk(text);
+  for (let i = 0; i < parts.length; i += 1) {
     try {
       const response = await fetch(api("sendMessage"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ chat_id: CHAT, text: part, disable_web_page_preview: true }),
+        // Клавиатура — только под последним куском, как и в sendRich: иначе
+        // при разбивке длинного события на части она повторилась бы на каждой.
+        body: JSON.stringify({
+          chat_id: CHAT, text: parts[i], disable_web_page_preview: true,
+          ...(keyboard && i === parts.length - 1 ? { reply_markup: keyboard } : {}),
+        }),
       });
       const data = await response.json().catch(() => null);
       if (!data || !data.ok) console.error("[bot] отправка не удалась:", data && data.description);
@@ -840,8 +846,13 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, { "Content-Type": "application/json" });
     res.end('{"ok":true}');
     let text = "";
-    try { text = String(JSON.parse(body).text || ""); } catch { text = body.slice(0, 2000); }
-    if (text.trim()) void send(text.trim());
+    let keyboard;
+    try {
+      const parsed = JSON.parse(body);
+      text = String(parsed.text || "");
+      if (parsed.keyboard && parsed.keyboard.inline_keyboard) keyboard = parsed.keyboard;
+    } catch { text = body.slice(0, 2000); }
+    if (text.trim()) void send(text.trim(), keyboard);
   });
 });
 server.listen(PORT, "127.0.0.1", () => console.log(`[bot] события на 127.0.0.1:${PORT}`));
