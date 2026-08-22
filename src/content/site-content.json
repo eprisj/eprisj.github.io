@@ -4577,6 +4577,16 @@
           "content": "Creating your own project in a new country is always a bold step, where creative exploration intertwines closely with personal transformation. Alena Kuzmina and Xenia Bunina – founders of decor studio <u>Chora Practice</u>, based in Lisbon, Portugal – talk about how to turn any crisis into a point of growth, why there are no “uncreative” people in the world, and how to allow yourself to do what you genuinely love. "
         },
         {
+          "type": "video",
+          "mediaKind": "gif",
+          "content": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.mp4",
+          "caption": "",
+          "loop": true,
+          "muted": true,
+          "videoWebm": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.webm",
+          "poster": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.poster.jpg"
+        },
+        {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/msywgl9vx19o8e.webp",
           "caption": "",
@@ -4780,16 +4790,6 @@
           "content": "<b>Xenia</b>: For me, besides Gulbenkian, it’s probably Cabo Espichel. It has this incredible lighthouse and is considered by the Portuguese to be one of the westernmost points of Europe. I also love the café at Museu Albuquerque, and MACAM – Museu de Arte Contemporânea Armando Martins – has a wonderful café too. They’re all affordable but incredibly stylish. Museums often have amazing cafés."
         },
         {
-          "type": "video",
-          "mediaKind": "gif",
-          "content": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.mp4",
-          "caption": "",
-          "loop": true,
-          "muted": true,
-          "videoWebm": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.webm",
-          "poster": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.poster.jpg"
-        },
-        {
           "type": "gallery",
           "content": [
             "https://api.eprisjournal.com/uploads/mszveqbo93sr6s.jpg",
@@ -4870,7 +4870,7 @@
           "poster": "https://api.eprisjournal.com/uploads/mt35c8z0937px7.poster.jpg"
         }
       ],
-      "updatedAt": "2026-08-22T11:30:14.186Z",
+      "updatedAt": "2026-08-22T11:30:26.929Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "publishAt": "2026-08-19T09:38:46.903Z",
