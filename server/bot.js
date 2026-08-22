@@ -385,14 +385,17 @@ async function cmdDraftsCard() {
   if (!drafts.length) return { text: "Черновиков нет — всё опубликовано." };
   lastDraftsIndex = drafts.slice(0, 8);
   const buffer = await cards.renderDrafts(lastDraftsIndex);
-  // Три действия на черновик умещены в один ряд (не три) — иначе клавиатура
-  // на восемь черновиков растягивается на два экрана сплошной серой стеной.
+  // Четыре действия на черновик в один ряд (не четыре строки) — иначе
+  // клавиатура на восемь черновиков растягивается на два экрана. Четвёртая
+  // кнопка — не callback, а web_app: открывает Mini App сразу в редакторе
+  // этого материала (?open=section-id), не с дашборда.
   const rows = lastDraftsIndex.map((d, i) => [
-    [`${i + 1} ✓`, `pub:${i}`],
-    [`${i + 1} ✏️`, `edit:${i}`],
-    [`${i + 1} 🖼`, `photo:${i}`],
+    { text: `${i + 1} ✓`, callback_data: `pub:${i}` },
+    { text: `${i + 1} ✏️`, callback_data: `edit:${i}` },
+    { text: `${i + 1} 🖼`, callback_data: `photo:${i}` },
+    { text: `${i + 1} 📱`, web_app: { url: `${SITE}/tgapp/?open=${d.section}-${d.id}` } },
   ]);
-  return { buffer, caption: `Черновиков: ${drafts.length}`, keyboard: kb(rows) };
+  return { buffer, caption: `Черновиков: ${drafts.length}`, keyboard: { inline_keyboard: rows } };
 }
 
 function cmdLast() {
@@ -543,6 +546,9 @@ async function watchdog() {
           { reply_markup: kb([[["Открыть анкеты", "cmd:forms"]]]) });
       }
     }
+
+    // 6. Счётчик черновиков на самой кнопке App — видно, не открывая бота.
+    await updateMenuBadge();
   } catch (error) {
     console.error("[bot] сторож:", error.message);
   } finally {
@@ -967,6 +973,25 @@ void fetch(api("setMyCommands"), {
    появляется. Поэтому ставим ЕЩЁ РАЗ явно с chat_id: персональная запись
    имеет приоритет, значит и чинить нужно именно её. */
 const MENU_BUTTON = { type: "web_app", text: "App", web_app: { url: `${SITE}/tgapp/` } };
+
+/* Число черновиков прямо в подписи кнопки — видно до открытия бота, а не
+   после команды. Дёргаем API только когда счётчик реально сменился: у
+   setChatMenuButton нет отдельного лимита, но незачем стучаться в Telegram
+   каждые пять минут ради одного и того же текста. */
+async function updateMenuBadge() {
+  const drafts = draftsList();
+  const count = Array.isArray(drafts) ? drafts.length : 0;
+  if (state.menuDraftCount === count) return;
+  state.menuDraftCount = count;
+  saveState(state);
+  const button = { ...MENU_BUTTON, text: count ? `App · ${count}` : "App" };
+  await fetch(api("setChatMenuButton"), {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ chat_id: CHAT, menu_button: button }),
+  }).catch(() => {});
+}
+
 void fetch(api("setChatMenuButton"), {
   method: "POST",
   headers: { "Content-Type": "application/json" },

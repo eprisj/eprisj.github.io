@@ -406,10 +406,26 @@
 
     bootedAt = Date.now();
     $("boot").classList.add("hidden");
-    $("home-view").classList.remove("hidden");
-    renderHome();
-
     tgw.BackButton && tgw.BackButton.onClick(goBack);
+
+    // Диплинк из бота: кнопка "📱" под черновиком открывает Mini App с
+    // ?open=section-id — сразу в редакторе этого материала, а не с
+    // дашборда. Хвостом query-строку не оставляем: если человек потом
+    // потянет за ↻ обновить, второй заход не должен снова дёргать editor.
+    var openParam = new URLSearchParams(location.search).get("open");
+    var deepLinked = false;
+    if (openParam) {
+      var m = /^(articles|reviews)-(\d+)$/.exec(openParam);
+      if (m) {
+        var item = flatList.find(function (x) { return x.section === m[1] && String(x.entity.id) === m[2]; });
+        if (item) { fillEditor(item); deepLinked = true; }
+      }
+      history.replaceState(null, "", location.pathname);
+    }
+    if (!deepLinked) {
+      $("home-view").classList.remove("hidden");
+      renderHome();
+    }
   }
 
   function showBootError(message) {
