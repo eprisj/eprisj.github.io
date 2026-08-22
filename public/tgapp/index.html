@@ -151,6 +151,41 @@
   #toast.show { bottom: 16px; }
 
   .loading { text-align: center; padding: 60px 0; color: var(--muted); font-size: 13px; letter-spacing: 1px; }
+
+  /* ── Блоки тела статьи ─────────────────────────────────────────────────── */
+  .blocks-heading {
+    font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted);
+    margin: 24px 0 10px; padding-top: 16px; border-top: 1px solid var(--rule);
+  }
+  .block-card { border: 1px solid var(--rule); padding: 12px; margin-bottom: 10px; }
+  .block-card.locked { background: rgba(17,17,17,0.03); }
+  .block-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .block-type {
+    font-family: 'PT Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .block-ctrls { display: flex; gap: 10px; }
+  .block-ctrls span { cursor: pointer; font-size: 14px; color: var(--ink); padding: 2px 4px; user-select: none; }
+  .block-ctrls span.disabled { opacity: 0.25; pointer-events: none; }
+  .block-card textarea, .block-card input[type=text] {
+    width: 100%; border: none; border-bottom: 1px solid var(--rule); padding: 6px 0;
+    font-family: 'PT Serif', serif; font-size: 15px; color: var(--ink); background: none; outline: none; resize: vertical;
+  }
+  .block-card textarea { min-height: 60px; }
+  .block-card select {
+    border: 1px solid var(--rule); background: none; font-family: 'PT Mono', monospace; font-size: 11px;
+    padding: 4px 6px; color: var(--ink);
+  }
+  .block-card .cap-input { margin-top: 8px; }
+  .block-locked-preview { font-size: 13px; color: var(--muted); line-height: 1.4; }
+  .block-img {
+    width: 100%; max-height: 160px; object-fit: cover; margin-bottom: 8px; cursor: pointer; display: block;
+  }
+  .add-block-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 22px; }
+  .add-block-btn {
+    border: 1px solid var(--ink); background: none; padding: 8px 12px; font-family: 'PT Mono', monospace;
+    font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink); cursor: pointer;
+  }
 </style>
 </head>
 <body>
@@ -209,6 +244,16 @@
     <div class="toggle-row">
       <span class="lbl">Опубликовано</span>
       <div class="switch" id="draftSwitch"><div class="dot"></div></div>
+    </div>
+
+    <div class="blocks-heading">Текст материала</div>
+    <div id="blocks"></div>
+    <div class="add-block-row" id="addBlockRow">
+      <button class="add-block-btn" data-add="text">+ Текст</button>
+      <button class="add-block-btn" data-add="header">+ Заголовок</button>
+      <button class="add-block-btn" data-add="quote">+ Цитата</button>
+      <button class="add-block-btn" data-add="note">+ Заметка</button>
+      <button class="add-block-btn" data-add="image">+ Фото</button>
     </div>
 
     <div class="actions">
@@ -409,21 +454,115 @@
 
     setSwitch(!e.draft);
 
+    // Рабочая копия тела статьи: строку (у части обзоров content — просто
+    // текст) заворачиваем в один текстовый блок, остальное клонируем, чтобы
+    // правки в редакторе не текли обратно в flatList до явного сохранения.
+    var rawContent = e.content;
+    if (typeof rawContent === "string") blockList = rawContent ? [{ type: "text", content: rawContent }] : [];
+    else if (Array.isArray(rawContent)) blockList = JSON.parse(JSON.stringify(rawContent));
+    else blockList = [];
+    renderBlocks();
+
     $("home-view").classList.add("hidden");
     $("list-view").classList.add("hidden");
     $("editor").classList.add("open");
+    $("editor").scrollTop = 0;
     tgw && tgw.BackButton && tgw.BackButton.show();
   }
 
   function closeEditor() {
     $("editor").classList.remove("open");
     current = null;
+    blockList = [];
     if (document.querySelectorAll(".row").length || activeSection) {
       $("list-view").classList.remove("hidden");
     } else {
       $("home-view").classList.remove("hidden");
     }
   }
+
+  // ── Блоки тела статьи ────────────────────────────────────────────────────
+  // Полная широта типов блоков (12 штук) редактируется в самой веб-панели.
+  // Здесь — те, что составляют подавляющее большинство текста материалов:
+  // текст/заголовок/цитата/заметка/фото. Остальные (галерея, мозаика, карта,
+  // чек-лист, опрос, видео, ссылка) показываются как есть, без редактора —
+  // тронуть их структуру с телефона слишком легко сломать, а посмотреть
+  // и переставить всё равно можно.
+  var EDITABLE_TEXT = { text: "Текст", quote: "Цитата", note: "Заметка" };
+  var blockList = [];
+  var photoTarget = "cover";   // "cover" | номер блока — куда положить следующее загруженное фото
+
+  function blockPreview(b) {
+    var val = b.content;
+    if (Array.isArray(val)) return val.length + " элем.";
+    if (val && typeof val === "object") return Object.keys(val).slice(0, 3).join(", ");
+    return esc(String(val || "")).slice(0, 100);
+  }
+
+  function blockCardHtml(b, i) {
+    var head = '<div class="block-head"><span class="block-type">' + esc(b.type) + '</span>' +
+      '<div class="block-ctrls">' +
+      '<span data-act="up" data-i="' + i + '" class="' + (i === 0 ? "disabled" : "") + '">↑</span>' +
+      '<span data-act="down" data-i="' + i + '" class="' + (i === blockList.length - 1 ? "disabled" : "") + '">↓</span>' +
+      '<span data-act="del" data-i="' + i + '">✕</span></div></div>';
+
+    if (EDITABLE_TEXT[b.type]) {
+      return '<div class="block-card" data-i="' + i + '">' + head +
+        '<textarea data-field="content" data-i="' + i + '">' + esc(b.content) + '</textarea></div>';
+    }
+    if (b.type === "header") {
+      return '<div class="block-card" data-i="' + i + '">' + head +
+        '<textarea data-field="content" data-i="' + i + '">' + esc(b.content) + '</textarea>' +
+        '<div style="margin-top:8px"><select data-field="level" data-i="' + i + '">' +
+        [1, 2, 3, 4].map(function (n) { return '<option value="' + n + '"' + (String(b.level) === String(n) ? " selected" : "") + '>H' + n + '</option>'; }).join("") +
+        '</select></div></div>';
+    }
+    if (b.type === "image") {
+      var img = typeof b.content === "string" && b.content ? b.content : "";
+      return '<div class="block-card" data-i="' + i + '">' + head +
+        (img ? '<img class="block-img" src="' + esc(img) + '" data-act="pickimg" data-i="' + i + '">' : '<div class="add-block-btn" data-act="pickimg" data-i="' + i + '" style="margin-bottom:8px;display:inline-block">Загрузить фото</div>') +
+        '<input type="text" class="cap-input" placeholder="Подпись" data-field="caption" data-i="' + i + '" value="' + esc(b.caption || "") + '"></div>';
+    }
+    return '<div class="block-card locked" data-i="' + i + '">' + head +
+      '<div class="block-locked-preview">' + blockPreview(b) + '<br><i>правится в панели на сайте</i></div></div>';
+  }
+
+  function renderBlocks() {
+    $("blocks").innerHTML = blockList.length
+      ? blockList.map(blockCardHtml).join("")
+      : '<div class="empty">Пусто — добавьте блок ниже</div>';
+  }
+
+  $("blocks").addEventListener("input", function (ev) {
+    var t = ev.target;
+    var i = Number(t.dataset.i);
+    var field = t.dataset.field;
+    if (!field || !blockList[i]) return;
+    blockList[i][field] = t.value;
+  });
+
+  $("blocks").addEventListener("click", function (ev) {
+    var t = ev.target.closest("[data-act]");
+    if (!t) return;
+    var i = Number(t.dataset.i);
+    var act = t.dataset.act;
+    if (act === "up" && i > 0) { var a = blockList.splice(i, 1)[0]; blockList.splice(i - 1, 0, a); renderBlocks(); }
+    else if (act === "down" && i < blockList.length - 1) { var b = blockList.splice(i, 1)[0]; blockList.splice(i + 1, 0, b); renderBlocks(); }
+    else if (act === "del") { blockList.splice(i, 1); renderBlocks(); }
+    else if (act === "pickimg") { photoTarget = i; $("fileInput").click(); }
+  });
+
+  $("addBlockRow").addEventListener("click", function (ev) {
+    var t = ev.target.closest("[data-add]");
+    if (!t) return;
+    var type = t.dataset.add;
+    var block = type === "header" ? { type: "header", level: "2", content: "" }
+      : type === "image" ? { type: "image", content: "", caption: "" }
+      : { type: type, content: "" };
+    blockList.push(block);
+    renderBlocks();
+    haptic();
+  });
 
   function setSwitch(on) {
     $("draftSwitch").classList.toggle("on", on);
@@ -433,29 +572,36 @@
   $("draftSwitch").onclick = function () { setSwitch($("draftSwitch").dataset.on !== "1"); haptic(); };
   $("cancelBtn").onclick = goBack;
 
-  $("cover").onclick = function () { $("fileInput").click(); };
+  $("cover").onclick = function () { photoTarget = "cover"; $("fileInput").click(); };
   $("fileInput").onchange = async function () {
     var file = this.files && this.files[0];
+    this.value = "";   // иначе повторный выбор того же файла не поднимет onchange
     if (!file || !current) return;
-    var cover = $("cover");
-    cover.textContent = "Загрузка…";
-    cover.classList.remove("has-image");
+    var target = photoTarget;
+    var cover = target === "cover" ? $("cover") : null;
+    if (cover) { cover.textContent = "Загрузка…"; cover.classList.remove("has-image"); }
+    else toast("Загрузка фото…");
     try {
       var b64 = await fileToBase64(file);
       var res = await fetch(API + "/upload", {
         method: "POST",
         headers: { "Content-Type": "application/json", "X-Admin-Password": ADMIN_PW },
-        body: JSON.stringify({ data: b64, contentType: file.type || "image/jpeg", filename: file.name || "cover.jpg" }),
+        body: JSON.stringify({ data: b64, contentType: file.type || "image/jpeg", filename: file.name || "photo.jpg" }),
       });
       var data = await res.json();
       if (!data.ok) throw new Error(data.error || "upload failed");
-      current.entity.imageUrl = data.url;
-      cover.style.backgroundImage = "url(" + data.url + ")";
-      cover.classList.add("has-image");
-      cover.innerHTML = "<span>Заменить обложку</span>";
+      if (target === "cover") {
+        current.entity.imageUrl = data.url;
+        cover.style.backgroundImage = "url(" + data.url + ")";
+        cover.classList.add("has-image");
+        cover.innerHTML = "<span>Заменить обложку</span>";
+      } else if (blockList[target]) {
+        blockList[target].content = data.url;
+        renderBlocks();
+      }
       toast("Фото загружено");
     } catch (e) {
-      cover.textContent = "Не удалось загрузить — нажмите ещё раз";
+      if (cover) cover.textContent = "Не удалось загрузить — нажмите ещё раз";
       toast(e.message, true);
     }
   };
@@ -487,6 +633,7 @@
       }
       next.category = $("f-cat").value.trim();
       next.draft = $("draftSwitch").dataset.on !== "1";
+      next.content = blockList;
 
       var metaRes = await fetch(API + "/content/meta", { cache: "no-store" });
       var meta = await metaRes.json();
