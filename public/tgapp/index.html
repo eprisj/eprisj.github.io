@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>EPRIS — редакция</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
@@ -186,6 +186,36 @@
     border: 1px solid var(--ink); background: none; padding: 8px 12px; font-family: 'PT Mono', monospace;
     font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink); cursor: pointer;
   }
+
+  /* ── Чипы: теги, плюсы/минусы обзора ─────────────────────────────────────── */
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+  .chip {
+    border: 1px solid var(--ink); padding: 4px 8px 4px 10px; font-size: 12px;
+    display: flex; align-items: center; gap: 6px; font-family: 'PT Serif', serif;
+  }
+  .chip .x { cursor: pointer; opacity: 0.55; font-size: 12px; }
+
+  /* ── Создание материала ───────────────────────────────────────────────── */
+  .new-row { display: flex; gap: 10px; margin: 4px 0 20px; }
+  .new-btn {
+    flex: 1; border: 1px dashed var(--ink); background: none; padding: 12px 10px;
+    font-family: 'PT Mono', monospace; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--ink); cursor: pointer; text-align: center;
+  }
+
+  /* ── Gallery-блок: редактируемая сетка миниатюр ──────────────────────────── */
+  .gal-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .gal-thumb { position: relative; width: 72px; height: 72px; }
+  .gal-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .gal-thumb .x {
+    position: absolute; top: -6px; right: -6px; width: 18px; height: 18px; background: var(--ink);
+    color: var(--paper); border-radius: 50%; font-size: 11px; display: flex; align-items: center;
+    justify-content: center; cursor: pointer;
+  }
+  .gal-add {
+    width: 72px; height: 72px; border: 1px dashed var(--rule); display: flex; align-items: center;
+    justify-content: center; font-size: 22px; color: var(--muted); cursor: pointer;
+  }
 </style>
 </head>
 <body>
@@ -202,6 +232,10 @@
   <div id="boot" class="loading">Проверяем доступ…</div>
 
   <div id="home-view" class="hidden">
+    <div class="new-row">
+      <button class="new-btn" id="newArticleBtn">+ Статья</button>
+      <button class="new-btn" id="newReviewBtn">+ Обзор</button>
+    </div>
     <div class="stat-row" id="stats"></div>
     <div class="title" style="font-size:20px;margin:6px 0 10px;">Свежее</div>
     <div id="recent"></div>
@@ -241,6 +275,31 @@
       <input type="text" id="f-rating" inputmode="decimal">
     </div>
 
+    <div class="field" id="f-tags-wrap" style="display:none">
+      <label>Теги</label>
+      <div class="chips" id="chips-tags"></div>
+      <input type="text" id="tags-input" placeholder="Тег + Enter">
+    </div>
+
+    <div class="field" id="f-verdict-wrap" style="display:none">
+      <label>Вердикт</label>
+      <textarea id="f-verdict"></textarea>
+    </div>
+    <div class="field" id="f-pros-wrap" style="display:none">
+      <label>Плюсы</label>
+      <div class="chips" id="chips-pros"></div>
+      <input type="text" id="pros-input" placeholder="Плюс + Enter">
+    </div>
+    <div class="field" id="f-cons-wrap" style="display:none">
+      <label>Минусы</label>
+      <div class="chips" id="chips-cons"></div>
+      <input type="text" id="cons-input" placeholder="Минус + Enter">
+    </div>
+    <div class="field" id="f-link-wrap" style="display:none">
+      <label>Ссылка</label>
+      <input type="text" id="f-link" placeholder="https://…">
+    </div>
+
     <div class="toggle-row">
       <span class="lbl">Опубликовано</span>
       <div class="switch" id="draftSwitch"><div class="dot"></div></div>
@@ -275,6 +334,7 @@
   var flatList = [];      // { section, kind, entity }
   var current = null;     // сущность в редакторе сейчас
   var activeSection = "all";
+  var editorReturnView = "home";   // куда вернуться из редактора: "home" | "list"
 
   function $(id) { return document.getElementById(id); }
   function esc(s) { return String(s == null ? "" : s); }
@@ -428,11 +488,32 @@
   function openEditor(section, id) {
     var item = flatList.find(function (x) { return x.section === section && x.entity.id === id; });
     if (!item) return;
+    fillEditor(item);
+  }
+
+  // ── Создание материала с нуля ────────────────────────────────────────────
+  function nextId(section) {
+    var max = 0;
+    flatList.forEach(function (x) { if (x.section === section) max = Math.max(max, Number(x.entity.id) || 0); });
+    return max + 1;
+  }
+
+  function openCreate(section) {
+    var isReview = section === "reviews";
+    var id = nextId(section);
+    var who = (tgw && tgw.initDataUnsafe && tgw.initDataUnsafe.user && tgw.initDataUnsafe.user.first_name) || "EPRIS Journal";
+    var entity = isReview
+      ? { id: id, title: "", subject: "", rating: 0, content: [], author: who, draft: true }
+      : { id: id, title: "", author: who, date: new Date().toISOString().slice(0, 10), excerpt: "", category: "", imageSeed: "", tags: [], content: [], draft: true };
+    fillEditor({ section: section, kind: isReview ? "обзор" : "статья", entity: entity, isNew: true });
+  }
+
+  function fillEditor(item) {
     current = item;
     var e = item.entity;
-    var isReview = section === "reviews";
+    var isReview = item.section === "reviews";
 
-    $("titleLabel").textContent = isReview ? "Заголовок обзора" : "Заголовок статьи";
+    $("titleLabel").textContent = (item.isNew ? "Новый: " : "") + (isReview ? "заголовок обзора" : "заголовок статьи");
     $("f-title").value = e.title || "";
     $("subLabel").textContent = isReview ? "Тема" : "Лид";
     $("f-sub").value = (isReview ? e.subject : e.excerpt) || "";
@@ -440,6 +521,23 @@
     $("f-cat").value = e.category || "";
     $("f-rating-wrap").style.display = isReview ? "" : "none";
     $("f-rating").value = isReview && e.rating != null ? String(e.rating) : "";
+
+    $("f-tags-wrap").style.display = isReview ? "none" : "";
+    chipLists.tags = Array.isArray(e.tags) ? e.tags.slice() : [];
+    renderChips("tags");
+
+    $("f-verdict-wrap").style.display = isReview ? "" : "none";
+    $("f-verdict").value = e.verdict || "";
+    $("f-pros-wrap").style.display = isReview ? "" : "none";
+    chipLists.pros = Array.isArray(e.pros) ? e.pros.slice() : [];
+    renderChips("pros");
+    $("f-cons-wrap").style.display = isReview ? "" : "none";
+    chipLists.cons = Array.isArray(e.cons) ? e.cons.slice() : [];
+    renderChips("cons");
+    $("f-link-wrap").style.display = isReview ? "" : "none";
+    $("f-link").value = e.link || "";
+
+    $("openSiteLink").style.display = item.isNew ? "none" : "";
 
     var cover = $("cover");
     if (e.imageUrl) {
@@ -463,6 +561,7 @@
     else blockList = [];
     renderBlocks();
 
+    editorReturnView = $("list-view").classList.contains("hidden") ? "home" : "list";
     $("home-view").classList.add("hidden");
     $("list-view").classList.add("hidden");
     $("editor").classList.add("open");
@@ -474,10 +573,16 @@
     $("editor").classList.remove("open");
     current = null;
     blockList = [];
-    if (document.querySelectorAll(".row").length || activeSection) {
+    // Куда возвращаться, решили ДО открытия редактора (editorReturnView) —
+    // не по тому, есть ли на странице .row: они остаются в DOM и на скрытом
+    // home-view («Свежее» использует тот же класс), так что подсчёт всегда
+    // находил хоть одну строку и уводил обратно в список, даже если открыли
+    // материал прямо с дашборда.
+    if (editorReturnView === "list") {
       $("list-view").classList.remove("hidden");
     } else {
       $("home-view").classList.remove("hidden");
+      tgw && tgw.BackButton && tgw.BackButton.hide();
     }
   }
 
@@ -490,7 +595,32 @@
   // и переставить всё равно можно.
   var EDITABLE_TEXT = { text: "Текст", quote: "Цитата", note: "Заметка" };
   var blockList = [];
-  var photoTarget = "cover";   // "cover" | номер блока — куда положить следующее загруженное фото
+  var photoTarget = "cover";   // "cover" | номер блока | {i, gallery:true} — куда положить следующее загруженное фото
+
+  // ── Чипы: теги статьи, плюсы/минусы обзора ──────────────────────────────
+  var chipLists = { tags: [], pros: [], cons: [] };
+  function renderChips(key) {
+    $("chips-" + key).innerHTML = chipLists[key].map(function (v, i) {
+      return '<span class="chip">' + esc(v) + '<span class="x" data-chipdel="' + key + '" data-i="' + i + '">✕</span></span>';
+    }).join("");
+  }
+  ["tags", "pros", "cons"].forEach(function (key) {
+    $("chips-" + key).addEventListener("click", function (ev) {
+      var t = ev.target.closest("[data-chipdel]");
+      if (!t) return;
+      chipLists[key].splice(Number(t.dataset.i), 1);
+      renderChips(key);
+    });
+    $(key + "-input").addEventListener("keydown", function (ev) {
+      if (ev.key !== "Enter") return;
+      ev.preventDefault();
+      var v = this.value.trim();
+      if (!v) return;
+      chipLists[key].push(v);
+      this.value = "";
+      renderChips(key);
+    });
+  });
 
   function blockPreview(b) {
     var val = b.content;
@@ -523,6 +653,16 @@
         (img ? '<img class="block-img" src="' + esc(img) + '" data-act="pickimg" data-i="' + i + '">' : '<div class="add-block-btn" data-act="pickimg" data-i="' + i + '" style="margin-bottom:8px;display:inline-block">Загрузить фото</div>') +
         '<input type="text" class="cap-input" placeholder="Подпись" data-field="caption" data-i="' + i + '" value="' + esc(b.caption || "") + '"></div>';
     }
+    if (b.type === "gallery") {
+      var imgs = Array.isArray(b.content) ? b.content : [];
+      var thumbs = imgs.map(function (url, gi) {
+        return '<div class="gal-thumb"><img src="' + esc(url) + '">' +
+          '<span class="x" data-act="galdel" data-i="' + i + '" data-gi="' + gi + '">✕</span></div>';
+      }).join("");
+      return '<div class="block-card" data-i="' + i + '">' + head +
+        '<div class="gal-grid">' + thumbs + '<div class="gal-add" data-act="galadd" data-i="' + i + '">+</div></div>' +
+        '<input type="text" class="cap-input" placeholder="Подпись" data-field="caption" data-i="' + i + '" value="' + esc(b.caption || "") + '"></div>';
+    }
     return '<div class="block-card locked" data-i="' + i + '">' + head +
       '<div class="block-locked-preview">' + blockPreview(b) + '<br><i>правится в панели на сайте</i></div></div>';
   }
@@ -550,6 +690,12 @@
     else if (act === "down" && i < blockList.length - 1) { var b = blockList.splice(i, 1)[0]; blockList.splice(i + 1, 0, b); renderBlocks(); }
     else if (act === "del") { blockList.splice(i, 1); renderBlocks(); }
     else if (act === "pickimg") { photoTarget = i; $("fileInput").click(); }
+    else if (act === "galadd") { photoTarget = { i: i, gallery: true }; $("fileInput").click(); }
+    else if (act === "galdel") {
+      var gi = Number(t.dataset.gi);
+      var blk = blockList[i];
+      if (blk && Array.isArray(blk.content)) { blk.content.splice(gi, 1); renderBlocks(); }
+    }
   });
 
   $("addBlockRow").addEventListener("click", function (ev) {
@@ -595,6 +741,13 @@
         cover.style.backgroundImage = "url(" + data.url + ")";
         cover.classList.add("has-image");
         cover.innerHTML = "<span>Заменить обложку</span>";
+      } else if (target && typeof target === "object" && target.gallery) {
+        var galBlock = blockList[target.i];
+        if (galBlock) {
+          if (!Array.isArray(galBlock.content)) galBlock.content = [];
+          galBlock.content.push(data.url);
+          renderBlocks();
+        }
       } else if (blockList[target]) {
         blockList[target].content = data.url;
         renderBlocks();
@@ -624,12 +777,18 @@
       var isReview = current.section === "reviews";
       var next = Object.assign({}, current.entity);
       next.title = $("f-title").value.trim();
+      if (!next.title) throw new Error("заголовок не может быть пустым");
       if (isReview) {
         next.subject = $("f-sub").value.trim();
         var r = parseFloat($("f-rating").value.replace(",", "."));
         if (!Number.isNaN(r)) next.rating = Math.max(0, Math.min(5, r));
+        next.verdict = $("f-verdict").value.trim();
+        next.pros = chipLists.pros.slice();
+        next.cons = chipLists.cons.slice();
+        next.link = $("f-link").value.trim();
       } else {
         next.excerpt = $("f-sub").value.trim();
+        next.tags = chipLists.tags.slice();
       }
       next.category = $("f-cat").value.trim();
       next.draft = $("draftSwitch").dataset.on !== "1";
@@ -667,6 +826,8 @@
   });
   $("search").oninput = renderList;
   $("allLink").onclick = function () { openList("all"); };
+  $("newArticleBtn").onclick = function () { openCreate("articles"); };
+  $("newReviewBtn").onclick = function () { openCreate("reviews"); };
 
   // ── Внешняя ссылка на материал: та же схема slug'ов, что и на сайте ────────
   function slugify(v) {
@@ -697,6 +858,44 @@
       setTimeout(function () { btn.classList.remove("spin"); }, 600);
     }
   };
+
+  // ── Клавиатура закрывает поле ввода ─────────────────────────────────────
+  // Мобильный Telegram WebView не всегда ужимает вьюпорт под открывшуюся
+  // клавиатуру (даже с interactive-widget=resizes-content — зависит от
+  // клиента), так что активное поле молча уезжает под неё. Чиним сами:
+  // держим #editor с запасом снизу, равным высоте клавиатуры, и подкручиваем
+  // фокус в видимую область.
+  var kbPad = document.createElement("div");
+  kbPad.id = "kbPad";
+  document.body.appendChild(kbPad);
+  kbPad.style.cssText = "height:0;transition:height .15s;";
+
+  function syncKeyboardPad() {
+    if (!window.visualViewport) return;
+    var gap = Math.max(0, window.innerHeight - window.visualViewport.height);
+    kbPad.style.height = gap + "px";
+  }
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", syncKeyboardPad);
+  }
+
+  document.addEventListener("focusin", function (ev) {
+    var t = ev.target;
+    if (!t.matches || !t.matches("input, textarea, select")) return;
+    setTimeout(function () {
+      syncKeyboardPad();
+      t.scrollIntoView({ block: "center", behavior: "smooth" });
+    }, 300);
+  });
+  document.addEventListener("focusout", function (ev) {
+    var t = ev.target;
+    if (!t.matches || !t.matches("input, textarea, select")) return;
+    setTimeout(function () {
+      if (!document.activeElement || !document.activeElement.matches("input, textarea, select")) {
+        kbPad.style.height = "0";
+      }
+    }, 200);
+  });
 
   boot();
 })();
