@@ -38,16 +38,32 @@ if (!TOKEN || !CHAT) {
 const api = (method) => `https://api.telegram.org/bot${TOKEN}/${method}`;
 
 /* Телеграм отклоняет сообщения длиннее 4096 символов целиком, а не обрезает.
-   Режем сами и по строкам, чтобы не рвать слово посередине. */
+   Режем сами и по строкам, чтобы не рвать слово посередине.
+
+   ОДНА СТРОКА ДЛИННЕЕ ЛИМИТА РАНЬШЕ ТЕРЯЛАСЬ. Прежняя версия делала
+   `line.slice(0, limit)` — то есть от длинной строки оставляла начало, а
+   хвост выбрасывала молча. На тексте в 9000 символов без переносов
+   уходило 3900, а 5100 исчезали, и никто бы не заметил: телеграм отвечал
+   «ок», в чате лежало обрезанное сообщение. Заметно это стало на выводе
+   du и списков служб, где перенос строки не гарантирован.
+
+   Теперь длинная строка нарезается на куски целиком, ничего не теряя. */
 function chunk(text, limit = 3900) {
-  const lines = String(text).split("\n");
   const out = [];
   let current = "";
-  for (const line of lines) {
-    if ((current + line).length > limit && current) { out.push(current); current = ""; }
-    current += (current ? "\n" : "") + line.slice(0, limit);
+  const flush = () => { if (current) { out.push(current); current = ""; } };
+
+  for (const line of String(text).split("\n")) {
+    // Строка, которая не помещается даже одна, режется на части сама.
+    if (line.length > limit) {
+      flush();
+      for (let i = 0; i < line.length; i += limit) out.push(line.slice(i, i + limit));
+      continue;
+    }
+    if (current && (current.length + 1 + line.length) > limit) flush();
+    current += (current ? "\n" : "") + line;
   }
-  if (current) out.push(current);
+  flush();
   return out;
 }
 
@@ -64,6 +80,62 @@ async function send(text) {
     } catch (error) {
       console.error("[bot] отправка не удалась:", error.message);
     }
+  }
+}
+
+
+/* ── Телеграм: то, что в боте до сих пор не использовалось ───────────────────
+ * Бот умел ровно одно — послать простой текст. Ни разметки, ни кнопок, ни
+ * ответа на нажатие. Ниже добавлены родные возможности телеграма, ради
+ * которых не нужно ничего, кроме тех же исходящих запросов: HTML-разметка,
+ * inline-клавиатуры, ответ на callback и правка уже отправленного сообщения.
+ */
+
+/* В HTML-режиме телеграм падает на голых < > &, а в заголовках материалов
+   они встречаются. Экранируем всё, что пришло из контента. */
+const esc = (value) => String(value == null ? "" : value)
+  .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+async function tg(method, payload) {
+  try {
+    const response = await fetch(api(method), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const data = await response.json().catch(() => null);
+    if (!data || !data.ok) console.error(`[bot] ${method}:`, data && data.description);
+    return data;
+  } catch (error) {
+    console.error(`[bot] ${method}:`, error.message);
+    return null;
+  }
+}
+
+/* Кнопки под сообщением. Раскладка задаётся массивом рядов, чтобы длинные
+   подписи не сжимались в нечитаемые столбцы. */
+const kb = (rows) => ({ inline_keyboard: rows.map((row) => row.map(([text, data]) => ({ text, callback_data: data }))) });
+
+const MENU = kb([
+  [["Состояние", "cmd:status"], ["Анкеты", "cmd:forms"]],
+  [["Черновики", "cmd:drafts"], ["Последнее", "cmd:last"]],
+  [["Службы", "cmd:services"], ["Диск", "cmd:disk"]],
+  [["Сертификат", "cmd:ssl"], ["Ссылки", "cmd:links"]],
+  [["Сторож", "cmd:alerts"]],
+]);
+
+async function sendRich(text, extra = {}) {
+  const parts = chunk(text);
+  for (let i = 0; i < parts.length; i += 1) {
+    await tg("sendMessage", {
+      chat_id: CHAT,
+      text: parts[i],
+      parse_mode: "HTML",
+      disable_web_page_preview: true,
+      // Клавиатура только под последним куском: иначе она повторится
+      // столько раз, на сколько частей разрезано сообщение.
+      ...(i === parts.length - 1 ? extra : {}),
+    });
   }
 }
 
@@ -105,15 +177,26 @@ async function formsList() {
 // ── Команды ──────────────────────────────────────────────────────────────────
 
 const COMMANDS = [
+  ["/menu", "всё меню кнопками"],
   ["/status", "что живо: сайт, контент, анкеты, место на диске"],
   ["/forms", "анкеты и сколько ответов пришло"],
+  ["/responses", "где сколько ответов накопилось"],
   ["/drafts", "черновики со ссылками для автора"],
   ["/last", "что опубликовано последним"],
+  ["/services", "состояние служб на сервере"],
+  ["/disk", "место на диске и что его занимает"],
+  ["/ssl", "сколько осталось сертификату"],
+  ["/links", "быстрые ссылки"],
+  ["/alerts", "что сторож проверяет сам"],
+  ["/mute", "тишина на N часов (по умолчанию 4)"],
+  ["/unmute", "вернуть алерты"],
   ["/help", "этот список"],
 ];
 
 function cmdHelp() {
-  return ["EPRIS. Что я умею:", "", ...COMMANDS.map(([name, what]) => `${name} — ${what}`)].join("\n");
+  return ["<b>EPRIS.</b> Что я умею:", "",
+    ...COMMANDS.map(([name, what]) => `${name} — ${esc(what)}`),
+    "", "<i>Ниже — то же самое кнопками, набирать не обязательно.</i>"].join("\n");
 }
 
 async function cmdStatus() {
@@ -131,7 +214,7 @@ async function cmdStatus() {
 
   await check("сайт", SITE);
   await check("контент", "https://api.eprisjournal.com/content");
-  await check("анкеты", `${FORMS_API}/list`);
+  await check("анкеты", `${FORMS_API}/health`);   // /list закрыт паролем, см. сторож
 
   const content = readContent();
   if (content) {
@@ -202,15 +285,296 @@ function cmdLast() {
   )].join("\n");
 }
 
+/* ── Сторож: алерты сами, без вопроса ────────────────────────────────────────
+ * До сих пор бот был только реактивным: спросили — ответил. Значит про упавший
+ * сайт или кончившийся диск редакция узнавала последней, от читателя.
+ *
+ * Сторож обходит проверки по кругу и пишет в чат сам. Два правила, без
+ * которых он превратился бы в шум и его отключили бы через день:
+ *
+ *   • сообщаем ПЕРЕХОД, а не состояние. «Сайт лежит» приходит один раз, а не
+ *     каждые пять минут, пока лежит. Восстановление тоже приходит — иначе
+ *     непонятно, кончилось ли уже.
+ *   • состояние переживает перезапуск (файл на диске), иначе рестарт службы
+ *     заново разошлёт всё, о чём уже сообщили.
+ */
+
+const STATE_FILE = process.env.EPRIS_BOT_STATE || "/opt/epris-bot/state.json";
+const WATCH_INTERVAL_MS = Number(process.env.EPRIS_BOT_WATCH_MS || 5 * 60 * 1000);
+const DISK_ALERT_GB = Number(process.env.EPRIS_BOT_DISK_GB || 2);
+const SSL_ALERT_DAYS = Number(process.env.EPRIS_BOT_SSL_DAYS || 14);
+
+function loadState() {
+  try { return JSON.parse(fs.readFileSync(STATE_FILE, "utf8")) || {}; } catch { return {}; }
+}
+function saveState(state) {
+  try { fs.writeFileSync(STATE_FILE, JSON.stringify(state), "utf8"); } catch (e) { console.error("[bot] state:", e.message); }
+}
+let state = loadState();
+
+/* Тишина по просьбе. Дежурный уходит спать — алерты не должны будить, но и
+   теряться не должны: после срока сторож продолжит с того же места. */
+function muted() {
+  return Boolean(state.muteUntil && Date.now() < state.muteUntil);
+}
+
+/* Ядро антиспама. Сообщение уходит, только если состояние изменилось. */
+async function transition(key, isBad, badText, goodText) {
+  const was = state[key] === "bad";
+  if (isBad === was) return;
+  state[key] = isBad ? "bad" : "ok";
+  saveState(state);
+  if (muted()) return;
+  await sendRich(isBad ? `🔴 ${badText}` : `🟢 ${goodText}`);
+}
+
+async function reachable(url) {
+  try {
+    const response = await fetch(url, { signal: AbortSignal.timeout(9000) });
+    return response.ok;
+  } catch { return false; }
+}
+
+async function watchdog() {
+  try {
+    // 1. Сайт и его API
+    await transition("site", !(await reachable(SITE)),
+      `<b>Сайт не отвечает</b>\n${SITE}`, `Сайт снова отвечает\n${SITE}`);
+    await transition("api", !(await reachable("https://api.eprisjournal.com/content")),
+      "<b>API контента не отвечает</b>\nСайт откроется, но материалы не подтянутся.",
+      "API контента снова отвечает");
+    /* Проверять надо /health, а не /list: /list закрыт паролем и без него
+       честно отвечает 401, то есть «служба жива и охраняется». Сторож на
+       первом же круге принял это за падение и прислал ложную тревогу —
+       поймано при проверке после выката. /health открыт намеренно и
+       отвечает {"ok":true}. */
+    await transition("forms", !(await reachable(`${FORMS_API}/health`)),
+      "<b>Служба анкет не отвечает</b>\nОтветы авторов сейчас не принимаются.",
+      "Служба анкет снова принимает ответы");
+
+    // 2. Системные службы
+    for (const s of await serviceStates()) {
+      await transition(`svc:${s.unit}`, !s.ok,
+        `<b>Служба «${esc(s.label)}» не работает</b>\n<code>${esc(s.unit)}: ${esc(s.state)}</code>`,
+        `Служба «${esc(s.label)}» снова работает`);
+    }
+
+    // 3. Диск
+    const disk = diskFree();
+    if (disk) {
+      await transition("disk", disk.freeGb < DISK_ALERT_GB,
+        `<b>Мало места на диске</b>\nОсталось ${disk.freeGb.toFixed(1)} ГБ — загрузка фото и аудио начнёт отказывать.`,
+        `Место на диске в норме (${disk.freeGb.toFixed(1)} ГБ)`);
+    }
+
+    // 4. Сертификат
+    const days = await sslDaysLeft();
+    if (days !== null) {
+      await transition("ssl", days <= SSL_ALERT_DAYS,
+        `<b>Сертификат истекает</b>\nОсталось ${days} дн. Проверьте таймер certbot.`,
+        "Сертификат продлён");
+    }
+
+    // 5. Новые ответы в анкетах — считаем по нарастающей сумме, а не по
+    //    отдельным ответам: служба анкет отдаёт только количество.
+    const forms = await formsList();
+    if (forms) {
+      const seen = state.formCounts || {};
+      const next = {};
+      const fresh = [];
+      for (const form of forms) {
+        const count = Number(form.responses) || 0;
+        next[form.slug] = count;
+        const before = Number(seen[form.slug]);
+        if (Number.isFinite(before) && count > before) {
+          fresh.push(`${esc(form.title)} — <b>+${count - before}</b> (всего ${count})`);
+        }
+      }
+      state.formCounts = next;
+      saveState(state);
+      if (fresh.length && !muted()) {
+        await sendRich(["✉️ <b>Новые ответы в анкетах</b>", "", ...fresh].join("\n"),
+          { reply_markup: kb([[["Открыть анкеты", "cmd:forms"]]]) });
+      }
+    }
+  } catch (error) {
+    console.error("[bot] сторож:", error.message);
+  } finally {
+    setTimeout(watchdog, WATCH_INTERVAL_MS);
+  }
+}
+
+function cmdAlerts() {
+  const rows = [
+    "<b>Сторож</b>", "",
+    `проверка каждые ${Math.round(WATCH_INTERVAL_MS / 60000)} мин`,
+    `порог по диску: ${DISK_ALERT_GB} ГБ`,
+    `предупреждение о сертификате: за ${SSL_ALERT_DAYS} дн.`,
+    "",
+    "<b>Под наблюдением:</b>",
+    "• сайт, API контента, служба анкет",
+    `• службы: ${WATCHED_SERVICES.map(([, l]) => l).join(", ")}`,
+    "• свободное место и срок сертификата",
+    "• новые ответы в анкетах",
+    "",
+    muted()
+      ? `🔕 тишина до ${new Date(state.muteUntil).toLocaleString("ru-RU")}`
+      : "🔔 алерты включены",
+    "",
+    "<i>Сообщается смена состояния, а не само состояние: «упало» и «поднялось» по разу, без повторов.</i>",
+  ];
+  return rows.join("\n");
+}
+
+function cmdMute(text) {
+  const hours = Math.min(72, Math.max(1, Number(String(text).split(/\s+/)[1]) || 4));
+  state.muteUntil = Date.now() + hours * 3600000;
+  saveState(state);
+  return `🔕 Тишина на ${hours} ч — до ${new Date(state.muteUntil).toLocaleString("ru-RU")}.\nСторож продолжит следить и сообщит, что накопилось, когда срок выйдет.`;
+}
+
+function cmdUnmute() {
+  state.muteUntil = 0;
+  saveState(state);
+  return "🔔 Алерты снова включены.";
+}
+
+/* ── Новые команды: инфраструктура под рукой ─────────────────────────────────
+ * Всё, ради чего раньше приходилось лезть по ssh: живы ли службы, не кончился
+ * ли диск, когда протухнет сертификат. Редактор такими вопросами не задаётся,
+ * а вот дежурный по сайту — постоянно.
+ */
+
+const { execFile } = require("child_process");
+
+/* Обёртка над внешней командой с таймаутом. Без него зависший systemctl
+   держал бы обработчик до бесконечности, и бот переставал бы отвечать. */
+function run(command, args, timeout = 6000) {
+  return new Promise((resolve) => {
+    execFile(command, args, { timeout, encoding: "utf8" }, (error, stdout) => {
+      resolve(error && !stdout ? "" : String(stdout || ""));
+    });
+  });
+}
+
+const WATCHED_SERVICES = [
+  ["epris-forms", "анкеты"],
+  ["epris-bot", "бот"],
+  ["epris-interviews", "интервью"],
+  ["epris-radio", "радио"],
+  ["epris-showcase", "витрина"],
+  ["eprisjournal-webhook", "деплой"],
+  ["nginx", "nginx"],
+];
+
+async function serviceStates() {
+  const out = [];
+  for (const [unit, label] of WATCHED_SERVICES) {
+    const state = (await run("/usr/bin/systemctl", ["is-active", unit])).trim() || "unknown";
+    out.push({ unit, label, state, ok: state === "active" });
+  }
+  return out;
+}
+
+async function cmdServices() {
+  const states = await serviceStates();
+  const bad = states.filter((s) => !s.ok);
+  const lines = [`<b>Службы</b> — ${bad.length ? `не в порядке: ${bad.length}` : "все на ходу"}`, ""];
+  for (const s of states) lines.push(`${s.ok ? "✓" : "✗"} ${esc(s.label)} — <code>${esc(s.state)}</code>`);
+  return lines.join("\n");
+}
+
+function diskFree() {
+  try {
+    const stat = fs.statfsSync("/");
+    return {
+      freeGb: (stat.bavail * stat.bsize) / 1073741824,
+      totalGb: (stat.blocks * stat.bsize) / 1073741824,
+    };
+  } catch { return null; }
+}
+
+async function cmdDisk() {
+  const disk = diskFree();
+  if (!disk) return "Размер диска получить не удалось.";
+  const usedPct = 100 - (disk.freeGb / disk.totalGb) * 100;
+  const lines = [
+    "<b>Диск</b>", "",
+    `свободно: <b>${disk.freeGb.toFixed(1)} ГБ</b> из ${disk.totalGb.toFixed(0)} ГБ`,
+    `занято: ${usedPct.toFixed(0)}%`,
+  ];
+  if (disk.freeGb < DISK_ALERT_GB) lines.push("", "⚠ мало места: загрузка файлов начнёт отказывать");
+  // Крупнейшие каталоги — чтобы сразу видеть, что именно съело место.
+  const du = await run("/usr/bin/du", ["-sh", "/opt/epris-forms/data", "/var/www/eprisjournal", "/opt/builds"], 9000);
+  if (du.trim()) lines.push("", "<b>Что занимает:</b>", `<code>${esc(du.trim())}</code>`);
+  return lines.join("\n");
+}
+
+async function cmdSsl() {
+  const days = await sslDaysLeft();
+  if (days === null) return "Срок сертификата определить не удалось.";
+  const mark = days <= SSL_ALERT_DAYS ? "⚠" : "✓";
+  return `<b>Сертификат</b>\n\n${mark} eprisjournal.com — осталось <b>${days}</b> дн.` +
+    (days <= SSL_ALERT_DAYS ? "\n\nПора продлевать: certbot обычно делает это сам, но раз счёт пошёл на дни — стоит проверить таймер." : "");
+}
+
+async function sslDaysLeft() {
+  const out = await run("/usr/bin/openssl", [
+    "s_client", "-connect", "eprisjournal.com:443", "-servername", "eprisjournal.com",
+  ], 8000).catch(() => "");
+  let text = out;
+  if (!/notAfter/.test(text)) {
+    // Через сокет не вышло — пробуем файл сертификата на диске.
+    text = await run("/usr/bin/openssl", ["x509", "-enddate", "-noout", "-in",
+      "/etc/letsencrypt/live/eprisjournal.com/fullchain.pem"], 5000);
+  }
+  const match = /notAfter=(.+)/.exec(text);
+  if (!match) return null;
+  const end = Date.parse(match[1].trim());
+  if (!Number.isFinite(end)) return null;
+  return Math.round((end - Date.now()) / 86400000);
+}
+
+function cmdLinks() {
+  return [
+    "<b>Ссылки</b>", "",
+    `Сайт — ${SITE}`,
+    `Панель — ${SITE}/admin/`,
+    `Анкеты — ${SITE}/admin/#forms`,
+    `Статьи — ${SITE}/articles`,
+    `Витрина — ${SITE}/showcase`,
+  ].join("\n");
+}
+
+async function cmdResponses() {
+  const forms = await formsList();
+  if (!forms) return "Список анкет получить не удалось.";
+  const withAnswers = forms.filter((f) => Number(f.responses) > 0);
+  if (!withAnswers.length) return "Ответов пока нет ни в одной анкете.";
+  withAnswers.sort((a, b) => Number(b.responses) - Number(a.responses));
+  const total = withAnswers.reduce((sum, f) => sum + Number(f.responses), 0);
+  return [`<b>Ответы</b> — всего ${total}`, "",
+    ...withAnswers.map((f) => `${esc(f.title)} — <b>${Number(f.responses)}</b>\n  ${SITE}/f/${esc(f.slug)}`)].join("\n");
+}
+
 async function handleCommand(text) {
   const command = String(text || "").trim().split(/\s+/)[0].toLowerCase().replace(/@.*$/, "");
   switch (command) {
     case "/start":
+    case "/menu":
     case "/help": return cmdHelp();
     case "/status": return cmdStatus();
     case "/forms": return cmdForms();
+    case "/responses": return cmdResponses();
     case "/drafts": return cmdDrafts();
     case "/last": return cmdLast();
+    case "/services": return cmdServices();
+    case "/disk": return cmdDisk();
+    case "/ssl": return cmdSsl();
+    case "/links": return cmdLinks();
+    case "/alerts": return cmdAlerts();
+    case "/mute": return cmdMute(text);
+    case "/unmute": return cmdUnmute();
     default: return null;   // молчим на обычные сообщения, а не спорим с человеком
   }
 }
@@ -252,12 +616,30 @@ async function poll() {
     const data = await response.json();
     for (const update of (data && data.result) || []) {
       offset = update.update_id + 1;
+
+      /* Нажатие кнопки под сообщением. Телеграм ждёт answerCallbackQuery в
+         течение нескольких секунд, иначе у человека висят «часики» на
+         кнопке — отвечаем сразу, до выполнения самой команды. */
+      if (update.callback_query) {
+        const q = update.callback_query;
+        if (String(q.message && q.message.chat && q.message.chat.id) !== String(CHAT)) continue;
+        void tg("answerCallbackQuery", { callback_query_id: q.id });
+        const data = String(q.data || "");
+        if (data.startsWith("cmd:")) {
+          const answer = await handleCommand("/" + data.slice(4));
+          if (answer) await sendRich(answer, { reply_markup: MENU });
+        }
+        continue;
+      }
+
       const message = update.message || update.channel_post;
       if (!message || !message.text) continue;
       // Чужие чаты игнорируем: бот отвечает только редакции.
       if (String(message.chat && message.chat.id) !== String(CHAT)) continue;
       const answer = await handleCommand(message.text);
-      if (answer) await send(answer);
+      // Меню вешаем на ответ всегда: следующий вопрос почти никогда не
+      // единственный, и заставлять набирать вторую команду руками незачем.
+      if (answer) await sendRich(answer, { reply_markup: MENU });
     }
   } catch (error) {
     if (error.name !== "TimeoutError") console.error("[bot] опрос:", error.message);
@@ -269,10 +651,15 @@ poll();
 
 /* Список команд в меню телеграма: человек видит их по нажатию «/», а не
    вспоминает. Ставится один раз при старте, ошибка тут ничего не ломает. */
+/* Сторож стартует с задержкой: сразу после перезапуска службы соседи ещё
+   поднимаются, и проверка застала бы их «упавшими» — получили бы ложную
+   тревогу на каждом рестарте. */
+setTimeout(watchdog, 20000);
+
 void fetch(api("setMyCommands"), {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({ commands: COMMANDS.map(([name, what]) => ({ command: name.slice(1), description: what })) }),
 }).catch(() => {});
 
-module.exports = { chunk, slugify, draftUrl };
+module.exports = { chunk, slugify, draftUrl, esc, kb };
