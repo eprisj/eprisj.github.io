@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EPRIS — редакция</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+  /* Тот же язык, что на самом сайте (снято живьём с eprisjournal.com, не с
+     устаревшего брендбука): чёрно-белая гамма, Crimson Text прямым
+     начертанием для заголовков, тонкие 1px рамки, pill-кнопки. */
+  :root {
+    --ink: #111111;
+    --paper: #ffffff;
+    --muted: rgba(17,17,17,0.55);
+    --rule: rgba(17,17,17,0.14);
+    --success: #3f6b4a;
+    --error: #a13b3b;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper); color: var(--ink);
+    font-family: 'PT Serif', Georgia, serif;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 40px;
+  }
+  @font-face {
+    font-family: 'Crimson Text';
+    src: local('Crimson Text');
+    font-weight: 400 600;
+  }
+  .title { font-family: 'Crimson Text', 'PT Serif', serif; }
+  .mono { font-family: 'PT Mono', 'PT Serif', monospace; letter-spacing: 0.06em; }
+
+  header.bar {
+    background: var(--ink); color: var(--paper);
+    padding: 18px 20px; position: sticky; top: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  header.bar .logo { font-family: 'PT Serif', serif; font-size: 18px; letter-spacing: 4px; }
+  header.bar .tag { font-size: 10px; letter-spacing: 2px; opacity: 0.6; text-transform: uppercase; }
+
+  main { padding: 16px 16px 8px; }
+
+  .tabs { display: flex; gap: 8px; margin: 4px 0 16px; }
+  .tab {
+    flex: 1; text-align: center; padding: 10px 6px; font-size: 12px;
+    letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--rule);
+    background: none; color: var(--muted); cursor: pointer;
+  }
+  .tab.active { border-color: var(--ink); color: var(--ink); }
+
+  .stat-row { display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+  .stat {
+    flex: 1 1 30%; border: 1px solid var(--rule); padding: 12px 10px; min-width: 90px;
+  }
+  .stat .n { font-family: 'Crimson Text', serif; font-size: 26px; line-height: 1; }
+  .stat .l { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+
+  .search {
+    width: 100%; padding: 10px 0; border: none; border-bottom: 1px solid var(--ink);
+    background: none; font-family: 'PT Serif', serif; font-size: 15px; color: var(--ink);
+    margin-bottom: 12px; outline: none;
+  }
+  .search::placeholder { color: var(--muted); }
+
+  .row {
+    padding: 14px 0; border-bottom: 1px solid var(--rule);
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;
+    cursor: pointer;
+  }
+  .row .cat { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+  .row .ttl { font-family: 'Crimson Text', serif; font-size: 19px; margin-top: 2px; line-height: 1.25; }
+  .row .badge {
+    font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+    border: 1px solid var(--ink); padding: 3px 8px; white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+  }
+  .row .badge.draft { color: var(--error); border-color: var(--error); }
+  .row .badge.live { color: var(--success); border-color: var(--success); }
+
+  .empty { color: var(--muted); padding: 30px 0; text-align: center; font-size: 14px; }
+
+  /* Редактор — отдельный экран, не модалка: Telegram Mini App и так живёт
+     в отдельном окне, второй слой поверх только путает. */
+  #editor { display: none; }
+  #editor.open { display: block; }
+  .hidden { display: none !important; }
+
+  .field { margin-bottom: 16px; }
+  .field label {
+    display: block; font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 6px;
+  }
+  .field input[type=text], .field textarea, .field select {
+    width: 100%; border: none; border-bottom: 1px solid var(--ink); padding: 8px 0;
+    font-family: 'PT Serif', serif; font-size: 16px; color: var(--ink); background: none; outline: none;
+    resize: vertical;
+  }
+  .field textarea { min-height: 70px; }
+
+  .cover {
+    width: 100%; aspect-ratio: 16/9; border: 1px solid var(--rule); margin-bottom: 16px;
+    display: flex; align-items: center; justify-content: center; color: var(--muted);
+    font-size: 12px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer;
+    background-size: cover; background-position: center; position: relative; overflow: hidden;
+  }
+  .cover.has-image span { background: rgba(17,17,17,0.7); color: #fff; padding: 6px 12px; }
+
+  .toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--rule); margin-bottom: 16px; }
+  .toggle-row .lbl { font-size: 14px; }
+  .switch { width: 42px; height: 24px; border: 1px solid var(--ink); position: relative; cursor: pointer; flex-shrink: 0; }
+  .switch .dot { position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; background: var(--ink); transition: left .15s; }
+  .switch.on .dot { left: 22px; background: var(--success); }
+
+  .actions { display: flex; gap: 10px; margin-top: 20px; }
+  .btn {
+    flex: 1; border: 1px solid var(--ink); background: none; padding: 13px 10px;
+    font-family: 'PT Mono', monospace; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--ink); cursor: pointer; text-align: center;
+  }
+  .btn.primary { background: var(--ink); color: var(--paper); }
+  .btn:disabled { opacity: 0.4; }
+
+  #toast {
+    position: fixed; left: 16px; right: 16px; bottom: -80px; background: var(--ink); color: var(--paper);
+    padding: 12px 16px; font-size: 13px; text-align: center;
+    transition: bottom .2s; z-index: 50;
+  }
+  #toast.show { bottom: 16px; }
+
+  .loading { text-align: center; padding: 60px 0; color: var(--muted); font-size: 13px; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <span class="logo">EPRIS</span>
+  <span class="tag" id="who">РЕДАКЦИЯ</span>
+</header>
+
+<main>
+  <div id="boot" class="loading">Проверяем доступ…</div>
+
+  <div id="home-view" class="hidden">
+    <div class="stat-row" id="stats"></div>
+    <div class="title" style="font-size:20px;margin:6px 0 10px;">Свежее</div>
+    <div id="recent"></div>
+  </div>
+
+  <div id="list-view" class="hidden">
+    <div class="tabs">
+      <button class="tab active" data-section="all">Все</button>
+      <button class="tab" data-section="articles">Статьи</button>
+      <button class="tab" data-section="reviews">Обзоры</button>
+      <button class="tab" data-section="draft">Черновики</button>
+    </div>
+    <input class="search" id="search" placeholder="Поиск по заголовку…">
+    <div id="rows"></div>
+  </div>
+
+  <div id="editor">
+    <div class="cover" id="cover">Нажмите, чтобы добавить обложку</div>
+    <input type="file" id="fileInput" accept="image/*" style="display:none">
+
+    <div class="field">
+      <label id="titleLabel">Заголовок</label>
+      <input type="text" id="f-title">
+    </div>
+    <div class="field" id="f-sub-wrap">
+      <label id="subLabel">Лид</label>
+      <textarea id="f-sub"></textarea>
+    </div>
+    <div class="field" id="f-cat-wrap">
+      <label>Категория</label>
+      <input type="text" id="f-cat">
+    </div>
+    <div class="field" id="f-rating-wrap" style="display:none">
+      <label>Оценка (0–5)</label>
+      <input type="text" id="f-rating" inputmode="decimal">
+    </div>
+
+    <div class="toggle-row">
+      <span class="lbl">Опубликовано</span>
+      <div class="switch" id="draftSwitch"><div class="dot"></div></div>
+    </div>
+
+    <div class="actions">
+      <button class="btn" id="cancelBtn">Назад</button>
+      <button class="btn primary" id="saveBtn">Сохранить</button>
+    </div>
+  </div>
+</main>
+
+<div id="toast"></div>
+
+<script>
+(function () {
+  "use strict";
+  var API = "https://api.eprisjournal.com";
+  var tgw = window.Telegram && window.Telegram.WebApp;
+  var ADMIN_PW = null;
+  var content = null;
+  var flatList = [];      // { section, kind, entity }
+  var current = null;     // сущность в редакторе сейчас
+  var activeSection = "all";
+
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? "" : s); }
+
+  function toast(msg, isError) {
+    var el = $("toast");
+    el.textContent = msg;
+    el.style.background = isError ? "#a13b3b" : "#111111";
+    el.classList.add("show");
+    clearTimeout(toast._t);
+    toast._t = setTimeout(function () { el.classList.remove("show"); }, 2600);
+  }
+
+  function haptic(kind) {
+    try { tgw && tgw.HapticFeedback && tgw.HapticFeedback.notificationOccurred(kind || "success"); } catch (e) {}
+  }
+
+  // ── Инициализация: подтверждаем, что это правда открыто из бота EPRIS ─────
+  async function boot() {
+    if (!tgw || !tgw.initData) {
+      $("boot").textContent = "Открой это через кнопку бота в Telegram — вне приложения initData пуст.";
+      return;
+    }
+    tgw.ready();
+    tgw.expand();
+    try { tgw.setHeaderColor && tgw.setHeaderColor("#111111"); } catch (e) {}
+
+    try {
+      var res = await fetch(API + "/telegram/auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ initData: tgw.initData }),
+      });
+      var data = await res.json();
+      if (!data.ok) throw new Error(data.error || "auth failed");
+      ADMIN_PW = data.password;
+      if (data.name) $("who").textContent = data.name.toUpperCase();
+    } catch (e) {
+      $("boot").textContent = "Не удалось подтвердить доступ: " + e.message;
+      return;
+    }
+
+    await loadContent();
+    $("boot").classList.add("hidden");
+    $("home-view").classList.remove("hidden");
+    renderHome();
+
+    tgw.BackButton && tgw.BackButton.onClick(goBack);
+  }
+
+  async function loadContent() {
+    var res = await fetch(API + "/content", { cache: "no-store" });
+    content = await res.json();
+    flatList = [];
+    ["articles", "reviews"].forEach(function (section) {
+      var kind = section === "articles" ? "статья" : "обзор";
+      (content[section] || []).forEach(function (entity) {
+        flatList.push({ section: section, kind: kind, entity: entity });
+      });
+    });
+    flatList.sort(function (a, b) {
+      return String(b.entity.updatedAt || b.entity.date || "").localeCompare(String(a.entity.updatedAt || a.entity.date || ""));
+    });
+  }
+
+  // ── Дашборд ────────────────────────────────────────────────────────────────
+  function renderHome() {
+    var drafts = flatList.filter(function (x) { return x.entity.draft; });
+    var published = flatList.filter(function (x) { return !x.entity.draft; });
+    $("stats").innerHTML = [
+      stat(published.length, "опубл."),
+      stat(drafts.length, "черновиков"),
+      stat((content.items || []).length, "в галерее"),
+    ].join("");
+    $("stats").querySelectorAll(".stat")[1].onclick = function () { openList("draft"); };
+
+    var recent = published.slice(0, 6);
+    $("recent").innerHTML = recent.length
+      ? recent.map(rowHtml).join("")
+      : '<div class="empty">Пока пусто</div>';
+    bindRows($("recent"));
+  }
+
+  function stat(n, label) {
+    return '<div class="stat"><div class="n">' + n + '</div><div class="l">' + esc(label) + '</div></div>';
+  }
+
+  // ── Список ────────────────────────────────────────────────────────────────
+  function openList(section) {
+    activeSection = section || "all";
+    $("home-view").classList.add("hidden");
+    $("list-view").classList.remove("hidden");
+    document.querySelectorAll(".tab").forEach(function (t) {
+      t.classList.toggle("active", t.dataset.section === activeSection);
+    });
+    renderList();
+    tgw && tgw.BackButton && tgw.BackButton.show();
+  }
+
+  function renderList() {
+    var q = ($("search").value || "").trim().toLowerCase();
+    var items = flatList.filter(function (x) {
+      if (activeSection === "articles" && x.section !== "articles") return false;
+      if (activeSection === "reviews" && x.section !== "reviews") return false;
+      if (activeSection === "draft" && !x.entity.draft) return false;
+      if (q && !(x.entity.title || "").toLowerCase().includes(q)) return false;
+      return true;
+    });
+    $("rows").innerHTML = items.length ? items.map(rowHtml).join("") : '<div class="empty">Ничего не найдено</div>';
+    bindRows($("rows"));
+  }
+
+  function rowHtml(x) {
+    var e = x.entity;
+    var badge = e.draft ? '<span class="badge draft">черновик</span>' : '<span class="badge live">live</span>';
+    return '<div class="row" data-section="' + x.section + '" data-id="' + e.id + '">' +
+      '<div><div class="cat">' + esc((e.category || x.kind).toUpperCase()) + '</div>' +
+      '<div class="ttl">' + esc(e.title || "без названия") + '</div></div>' + badge + '</div>';
+  }
+
+  function bindRows(container) {
+    container.querySelectorAll(".row").forEach(function (row) {
+      row.onclick = function () { openEditor(row.dataset.section, Number(row.dataset.id)); };
+    });
+  }
+
+  function goBack() {
+    if ($("editor").classList.contains("open")) { closeEditor(); return; }
+    if (!$("list-view").classList.contains("hidden")) {
+      $("list-view").classList.add("hidden");
+      $("home-view").classList.remove("hidden");
+      tgw && tgw.BackButton && tgw.BackButton.hide();
+      return;
+    }
+  }
+
+  // ── Редактор ──────────────────────────────────────────────────────────────
+  function openEditor(section, id) {
+    var item = flatList.find(function (x) { return x.section === section && x.entity.id === id; });
+    if (!item) return;
+    current = item;
+    var e = item.entity;
+    var isReview = section === "reviews";
+
+    $("titleLabel").textContent = isReview ? "Заголовок обзора" : "Заголовок статьи";
+    $("f-title").value = e.title || "";
+    $("subLabel").textContent = isReview ? "Тема" : "Лид";
+    $("f-sub").value = (isReview ? e.subject : e.excerpt) || "";
+    $("f-cat-wrap").style.display = "";
+    $("f-cat").value = e.category || "";
+    $("f-rating-wrap").style.display = isReview ? "" : "none";
+    $("f-rating").value = isReview && e.rating != null ? String(e.rating) : "";
+
+    var cover = $("cover");
+    if (e.imageUrl) {
+      cover.style.backgroundImage = "url(" + e.imageUrl + ")";
+      cover.classList.add("has-image");
+      cover.innerHTML = "<span>Заменить обложку</span>";
+    } else {
+      cover.style.backgroundImage = "";
+      cover.classList.remove("has-image");
+      cover.textContent = "Нажмите, чтобы добавить обложку";
+    }
+
+    setSwitch(!e.draft);
+
+    $("home-view").classList.add("hidden");
+    $("list-view").classList.add("hidden");
+    $("editor").classList.add("open");
+    tgw && tgw.BackButton && tgw.BackButton.show();
+  }
+
+  function closeEditor() {
+    $("editor").classList.remove("open");
+    current = null;
+    if (document.querySelectorAll(".row").length || activeSection) {
+      $("list-view").classList.remove("hidden");
+    } else {
+      $("home-view").classList.remove("hidden");
+    }
+  }
+
+  function setSwitch(on) {
+    $("draftSwitch").classList.toggle("on", on);
+    $("draftSwitch").dataset.on = on ? "1" : "0";
+  }
+
+  $("draftSwitch").onclick = function () { setSwitch($("draftSwitch").dataset.on !== "1"); haptic(); };
+  $("cancelBtn").onclick = goBack;
+
+  $("cover").onclick = function () { $("fileInput").click(); };
+  $("fileInput").onchange = async function () {
+    var file = this.files && this.files[0];
+    if (!file || !current) return;
+    var cover = $("cover");
+    cover.textContent = "Загрузка…";
+    cover.classList.remove("has-image");
+    try {
+      var b64 = await fileToBase64(file);
+      var res = await fetch(API + "/upload", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "X-Admin-Password": ADMIN_PW },
+        body: JSON.stringify({ data: b64, contentType: file.type || "image/jpeg", filename: file.name || "cover.jpg" }),
+      });
+      var data = await res.json();
+      if (!data.ok) throw new Error(data.error || "upload failed");
+      current.entity.imageUrl = data.url;
+      cover.style.backgroundImage = "url(" + data.url + ")";
+      cover.classList.add("has-image");
+      cover.innerHTML = "<span>Заменить обложку</span>";
+      toast("Фото загружено");
+    } catch (e) {
+      cover.textContent = "Не удалось загрузить — нажмите ещё раз";
+      toast(e.message, true);
+    }
+  };
+
+  function fileToBase64(file) {
+    return new Promise(function (resolve, reject) {
+      var reader = new FileReader();
+      reader.onload = function () { resolve(String(reader.result).split(",")[1]); };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  $("saveBtn").onclick = async function () {
+    if (!current) return;
+    var btn = $("saveBtn");
+    btn.disabled = true;
+    btn.textContent = "Сохраняю…";
+    try {
+      var isReview = current.section === "reviews";
+      var next = Object.assign({}, current.entity);
+      next.title = $("f-title").value.trim();
+      if (isReview) {
+        next.subject = $("f-sub").value.trim();
+        var r = parseFloat($("f-rating").value.replace(",", "."));
+        if (!Number.isNaN(r)) next.rating = Math.max(0, Math.min(5, r));
+      } else {
+        next.excerpt = $("f-sub").value.trim();
+      }
+      next.category = $("f-cat").value.trim();
+      next.draft = $("draftSwitch").dataset.on !== "1";
+
+      var metaRes = await fetch(API + "/content/meta", { cache: "no-store" });
+      var meta = await metaRes.json();
+      if (!meta.ok) throw new Error("не удалось получить версию контента");
+
+      var patchRes = await fetch(API + "/content/entity", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json", "X-Admin-Password": ADMIN_PW },
+        body: JSON.stringify({ section: current.section, id: next.id, entity: next, expectedVersion: meta.version }),
+      });
+      var patchData = await patchRes.json();
+      if (!patchData.ok) throw new Error(patchData.error || "PATCH failed");
+
+      current.entity = next;
+      await loadContent();
+      renderHome();
+      toast("Сохранено");
+      haptic("success");
+      goBack();
+    } catch (e) {
+      toast("Ошибка: " + e.message, true);
+      haptic("error");
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Сохранить";
+    }
+  };
+
+  document.querySelectorAll(".tab").forEach(function (tab) {
+    tab.onclick = function () { openList(tab.dataset.section); };
+  });
+  $("search").oninput = renderList;
+
+  boot();
+})();
+</script>
+</body>
+</html>
