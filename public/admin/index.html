@@ -16,7 +16,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=6.73" />
+    <link rel="stylesheet" href="./styles.css?v=6.77" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
@@ -1895,7 +1895,7 @@
                   <div class="card" style="padding:0;overflow:hidden">
                     <div style="padding:16px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px"><h3 class="card-title" style="margin:0;flex:1">Загрузить трек</h3></div>
                     <div style="padding:20px;display:grid;gap:12px">
-                      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                      <div class="rf-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
                         <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Название<input id="trackTitle" type="text" placeholder="Название трека" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text)" /></label>
                         <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Исполнитель<input id="trackArtist" type="text" placeholder="Исполнитель" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text)" /></label>
                       </div>
@@ -1917,7 +1917,7 @@
                   <div class="card" style="padding:0;overflow:hidden">
                     <div style="padding:16px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px"><h3 class="card-title" style="margin:0;flex:1">Подкасты</h3><button class="btn btn-sm btn-primary" type="button" id="podcastNewBtn">+ Новый</button><button class="btn btn-sm" type="button" id="podcastRefreshBtn">↻</button></div>
                     <div id="podcastForm" style="display:none;padding:20px;border-bottom:1px solid var(--line);background:var(--bg-card)">
-                      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+                      <div class="rf-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
                         <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Название *<input id="podcastTitle" type="text" placeholder="Название эпизода" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text)" /></label>
                         <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Аудио *<div style="display:flex;gap:6px;align-items:center"><input id="podcastAudioUrl" type="url" placeholder="https://..." style="flex:1;background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text)" /><button class="btn btn-sm" type="button" id="podcastAudioUploadBtn">📁 Файл</button><input id="podcastAudioFileInput" type="file" accept=".mp3,.wav,.ogg,.flac,.m4a,.aac,.opus,.webm,.mp4" style="display:none" /></div><div id="podcastAudioProgress" style="display:none;margin-top:4px"><div style="height:3px;background:var(--line);border-radius:0;overflow:hidden"><div id="podcastAudioProgressBar" style="height:100%;background:var(--accent);width:0%;transition:width .2s"></div></div><span id="podcastAudioProgressLabel" style="font-size:.7rem;color:var(--text-muted)"></span></div></label>
                         <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Обложка<div style="display:flex;gap:6px;align-items:center"><input id="podcastCoverUrl" type="url" placeholder="https://..." style="flex:1;background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text)" /><button class="btn btn-sm" type="button" id="podcastCoverUploadBtn">📁 Фото</button><input id="podcastCoverFileInput" type="file" accept=".jpg,.jpeg,.png,.webp,.gif,.avif" style="display:none" /></div><div id="podcastCoverProgress" style="display:none;margin-top:4px"><div style="height:3px;background:var(--line);border-radius:0;overflow:hidden"><div id="podcastCoverProgressBar" style="height:100%;background:var(--accent);width:0%;transition:width .2s"></div></div><span id="podcastCoverProgressLabel" style="font-size:.7rem;color:var(--text-muted)"></span></div></label>
@@ -1938,7 +1938,7 @@
                   <div class="card" style="padding:0;overflow:hidden">
                     <div style="padding:16px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px"><h3 class="card-title" style="margin:0;flex:1">Анонсы</h3><button class="btn btn-sm btn-primary" type="button" id="annNewBtn">+ Новый</button><button class="btn btn-sm" type="button" id="annRefreshBtn">↻</button></div>
                     <div id="annForm" style="display:none;padding:20px;border-bottom:1px solid var(--line);background:var(--bg-card)">
-                      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+                      <div class="rf-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
                         <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Название *<input id="annTitle" type="text" placeholder="Название события" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text)" /></label>
                         <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Дата и время<input id="annDate" type="datetime-local" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text)" /></label>
                         <label style="display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--text-muted)">Локация<input id="annLocation" type="text" placeholder="Город / Адрес" style="background:var(--bg);border:1px solid var(--line);padding:8px 10px;border-radius:0;font-size:.82rem;color:var(--text)" /></label>
@@ -1969,7 +1969,7 @@
                     <button class="btn btn-sm" type="button" id="podcastsTabRefreshBtn">↻ Обновить</button>
                   </div>
                   <div id="podcastsTabForm" style="display:none;padding:20px;border-bottom:1px solid var(--line);background:var(--bg-card)">
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+                    <div class="rf-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
                       <label style="display:flex;flex-direction:column;gap:4px"><span class="field-label">Название *</span><input id="ptTitle" type="text" placeholder="Название эпизода" /></label>
                       <label style="display:flex;flex-direction:column;gap:4px"><span class="field-label">№ эпизода</span><input id="ptEpisode" type="number" min="0" placeholder="1" /></label>
                       <label style="display:flex;flex-direction:column;gap:4px"><span class="field-label">Аудио (URL) *</span><input id="ptAudioUrl" type="url" placeholder="https://..." /></label>
@@ -2014,7 +2014,7 @@
                 </div>
               </div>
 
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+              <div class="rf-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
                 <div class="card">
                   <div class="card-title">Страница дизайна</div>
                   <p class="card-desc">Раздел /design — AI-мудборд с реальными товарами из дизайнерских магазинов. Каталог обновляется в <code>src/design/catalog.ts</code>.</p>
