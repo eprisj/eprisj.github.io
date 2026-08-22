@@ -4739,6 +4739,18 @@
           "content": "<b>Alena</b>: “Crises definitely happen. When I’m exhausted, I go for a walk in the forest. Nature inspires, relaxes, and recharges me enormously. I see problems as a completely normal part of the process. In fact, I’m even grateful for them because they mean we’re actively searching, facing challenges, and growing.”"
         },
         {
+          "type": "video",
+          "mediaKind": "gif",
+          "content": "https://api.eprisjournal.com/uploads/mt353zdbavxtzi.mp4",
+          "caption": "Installation for Tales Wedding Planner",
+          "loop": true,
+          "muted": true,
+          "videoWebm": "https://api.eprisjournal.com/uploads/mt353zdbavxtzi.webm",
+          "poster": "https://api.eprisjournal.com/uploads/mt353zdbavxtzi.poster.jpg",
+          "sourceUrl": "https://www.instagram.com/p/DbolFp7DNTp/?img_index=1&igsi=d3JkcnZlazRybGFk",
+          "credit": "@chora.practice "
+        },
+        {
           "type": "text",
           "content": "<b>Xenia</b>: “I believe every business is essentially a journey from one crisis to the next. It’s not a burden – it’s simply part of reality. You need to be prepared for it and understand that every crisis is an opportunity. Things are going incredibly well for us now, and we’re very happy, but we know another difficult period will eventually come. And when it does, we’ll get through it and come out stronger."
         },
@@ -4831,18 +4843,6 @@
           "content": "<b>Finally, what is the one piece of advice you would give every reader?</b>"
         },
         {
-          "type": "video",
-          "mediaKind": "gif",
-          "content": "https://api.eprisjournal.com/uploads/mt353zdbavxtzi.mp4",
-          "caption": "Installation for Tales Wedding Planner",
-          "loop": true,
-          "muted": true,
-          "videoWebm": "https://api.eprisjournal.com/uploads/mt353zdbavxtzi.webm",
-          "poster": "https://api.eprisjournal.com/uploads/mt353zdbavxtzi.poster.jpg",
-          "sourceUrl": "https://www.instagram.com/p/DbolFp7DNTp/?img_index=1&igsi=d3JkcnZlazRybGFk",
-          "credit": "@chora.practice "
-        },
-        {
           "type": "text",
           "content": "<b>Alena</b>: Keep doing what you genuinely love. Despite your inner limitations, look deeply within yourself, listen to your true desires, and simply give yourself permission to pursue them."
         },
@@ -4875,7 +4875,7 @@
           "credit": "@chora.practice"
         }
       ],
-      "updatedAt": "2026-08-22T11:42:50.101Z",
+      "updatedAt": "2026-08-22T11:43:32.831Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "publishAt": "2026-08-19T09:38:46.903Z",
