@@ -371,8 +371,9 @@ async function cmdDraftsCard() {
   lastDraftsIndex = drafts.slice(0, 8);
   const buffer = await cards.renderDrafts(lastDraftsIndex);
   const rows = lastDraftsIndex.map((d, i) => [
-    [`✓ Опубликовать №${i + 1}`, `pub:${i}`],
+    [`✓ №${i + 1}`, `pub:${i}`],
     [`✏️ Заголовок №${i + 1}`, `edit:${i}`],
+    [`🖼 Фото №${i + 1}`, `photo:${i}`],
   ]);
   return { buffer, caption: `Черновиков: ${drafts.length}`, keyboard: kb(rows) };
 }
@@ -740,6 +741,43 @@ async function handleEditApply(newTitle) {
   }
 }
 
+// ── Фото прямо из чата: телеграм → /upload на API → imageUrl материала ───────
+
+let pendingPhoto = null;   // { section, id, title } — ждём следующее фото
+
+async function handlePhotoStart(index) {
+  const d = lastDraftsIndex[index];
+  if (!d) return sendRich("Список черновиков устарел — откройте /drafts заново.");
+  pendingPhoto = { section: d.section, id: d.id, title: d.title };
+  await sendRich(`Пришлите фото для «${esc(d.title)}» одним сообщением (как фото, не файлом).`);
+}
+
+async function handlePhotoApply(photoSizes) {
+  const p = pendingPhoto;
+  pendingPhoto = null;
+  try {
+    // Телеграм присылает один file_id на несколько уменьшенных копий — берём
+    // последнюю в массиве, она самая крупная.
+    const best = photoSizes[photoSizes.length - 1];
+    const fileInfo = await tg("getFile", { file_id: best.file_id });
+    const filePath = fileInfo && fileInfo.result && fileInfo.result.file_path;
+    if (!filePath) throw new Error("не удалось получить файл из телеграма");
+    const fileRes = await fetch(`https://api.telegram.org/file/bot${TOKEN}/${filePath}`);
+    const buf = Buffer.from(await fileRes.arrayBuffer());
+    const uploadRes = await fetch(`${CONTENT_API}/upload`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-Admin-Password": FORMS_PASSWORD },
+      body: JSON.stringify({ data: buf.toString("base64"), contentType: "image/jpeg", filename: "telegram.jpg" }),
+    });
+    const uploadData = await uploadRes.json().catch(() => null);
+    if (!uploadData || !uploadData.ok) throw new Error((uploadData && uploadData.error) || `upload ${uploadRes.status}`);
+    await patchEntity(p.section, p.id, (e) => { e.imageUrl = uploadData.url; });
+    await sendRich(`✓ Фото добавлено к «${esc(p.title)}»`, { reply_markup: MENU });
+  } catch (error) {
+    await sendRich(`✗ Не удалось сохранить фото: ${esc(error.message)}`);
+  }
+}
+
 async function handleCommand(text) {
   const command = String(text || "").trim().split(/\s+/)[0].toLowerCase().replace(/@.*$/, "");
   switch (command) {
@@ -811,13 +849,21 @@ async function poll() {
         if (data.startsWith("cmd:")) await sendCommandResult("/" + data.slice(4));
         else if (data.startsWith("pub:")) await handlePublish(Number(data.slice(4)));
         else if (data.startsWith("edit:")) await handleEditStart(Number(data.slice(5)));
+        else if (data.startsWith("photo:")) await handlePhotoStart(Number(data.slice(6)));
         continue;
       }
 
       const message = update.message || update.channel_post;
-      if (!message || !message.text) continue;
+      if (!message) continue;
       // Чужие чаты игнорируем: бот отвечает только редакции.
       if (String(message.chat && message.chat.id) !== String(CHAT)) continue;
+
+      // Ждём фото после «🖼 Фото» — оно приходит отдельным апдейтом, без текста.
+      if (pendingPhoto && Array.isArray(message.photo) && message.photo.length) {
+        await handlePhotoApply(message.photo);
+        continue;
+      }
+      if (!message.text) continue;
 
       // Ждём новый заголовок после «✏️ Заголовок» — обычный текст, не команда.
       if (pendingEdit && !message.text.startsWith("/")) {
