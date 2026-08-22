@@ -98,25 +98,25 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
       </button>
       {open && (
         <div className="mt-5 max-w-md">
-          <p className="font-serif text-[15px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.62)]">{t.invite}</p>
-          <div className="mt-4 grid gap-2.5">
+          <p className="font-serif text-[15px] font-medium leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{t.invite}</p>
+          <div className="mt-4 grid gap-3">
             {SUPPORT_METHODS.map((method) => {
               const Icon = method.icon;
               const isCopied = copied === method.label;
               const isPaypal = method.label === 'PayPal';
               return (
                 <div key={method.label}>
-                  <div className="flex items-center gap-3.5 rounded-2xl border border-[rgb(var(--c-accent-rgb)_/_0.12)] bg-[rgb(var(--c-gold-rgb)_/_0.045)] p-3.5 transition-colors hover:border-[rgb(var(--c-gold-rgb)_/_0.4)]">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[rgb(var(--c-gold-rgb)_/_0.14)] text-[var(--c-gold)]">
-                      <Icon size={18} strokeWidth={1.75} aria-hidden="true" />
+                  <div className="flex items-center gap-3.5 rounded-2xl border-[1.5px] border-[rgb(var(--c-accent-rgb)_/_0.2)] bg-[rgb(var(--c-gold-rgb)_/_0.08)] p-4 transition-colors hover:border-[var(--c-gold)]">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[rgb(var(--c-gold-rgb)_/_0.2)] text-[var(--c-gold)]">
+                      <Icon size={19} strokeWidth={2} aria-hidden="true" />
                     </span>
                     <div className="min-w-0 flex-1">
-                      <p className="font-mono text-[9.5px] uppercase tracking-[0.14em] text-[rgb(var(--c-accent-rgb)_/_0.48)]">{method.label}</p>
-                      <p id={`support-journal-${method.label}`} className="mt-0.5 select-all truncate font-mono text-[13px] text-[var(--c-accent)]">
+                      <p className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[rgb(var(--c-accent-rgb)_/_0.62)]">{method.label}</p>
+                      <p id={`support-journal-${method.label}`} className="mt-0.5 select-all truncate font-mono text-[14px] font-bold text-[var(--c-accent)]">
                         {method.value}
                       </p>
                       {method.note && (
-                        <p className="mt-0.5 font-mono text-[9.5px] uppercase tracking-[0.08em] text-[rgb(var(--c-accent-rgb)_/_0.4)]">{method.note}</p>
+                        <p className="mt-0.5 font-mono text-[9.5px] font-semibold uppercase tracking-[0.08em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{method.note}</p>
                       )}
                     </div>
                     {isPaypal && (
@@ -126,13 +126,13 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
                         aria-label={t.qr}
                         title={t.qr}
                         aria-expanded={qrOpen}
-                        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-colors ${
+                        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-[1.5px] transition-colors ${
                           qrOpen
                             ? 'border-[var(--c-gold)] bg-[var(--c-gold)] text-[var(--c-bg)]'
-                            : 'border-[rgb(var(--c-accent-rgb)_/_0.18)] text-[rgb(var(--c-accent-rgb)_/_0.55)] hover:border-[var(--c-gold)] hover:text-[var(--c-gold)]'
+                            : 'border-[rgb(var(--c-accent-rgb)_/_0.28)] text-[rgb(var(--c-accent-rgb)_/_0.65)] hover:border-[var(--c-gold)] hover:text-[var(--c-gold)]'
                         }`}
                       >
-                        <QrCode size={15} strokeWidth={1.75} aria-hidden="true" />
+                        <QrCode size={15} strokeWidth={2} aria-hidden="true" />
                       </button>
                     )}
                     <button
@@ -140,31 +140,31 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
                       onClick={() => copyValue(method.label, method.value)}
                       aria-label={isCopied ? t.copied : t.copy}
                       title={isCopied ? t.copied : t.copy}
-                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-colors ${
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-[1.5px] transition-colors ${
                         isCopied
                           ? 'border-[var(--c-gold)] bg-[var(--c-gold)] text-[var(--c-bg)]'
-                          : 'border-[rgb(var(--c-accent-rgb)_/_0.18)] text-[rgb(var(--c-accent-rgb)_/_0.55)] hover:border-[var(--c-gold)] hover:text-[var(--c-gold)]'
+                          : 'border-[rgb(var(--c-accent-rgb)_/_0.28)] text-[rgb(var(--c-accent-rgb)_/_0.65)] hover:border-[var(--c-gold)] hover:text-[var(--c-gold)]'
                       }`}
                     >
-                      {isCopied ? <Check size={15} strokeWidth={2} aria-hidden="true" /> : <Copy size={14} strokeWidth={1.75} aria-hidden="true" />}
+                      {isCopied ? <Check size={15} strokeWidth={2.5} aria-hidden="true" /> : <Copy size={14} strokeWidth={2} aria-hidden="true" />}
                     </button>
                   </div>
                   {isPaypal && qrOpen && (
-                    <div className="mt-2.5 flex flex-col items-center gap-2 rounded-2xl border border-[rgb(var(--c-accent-rgb)_/_0.12)] bg-[rgb(var(--c-gold-rgb)_/_0.045)] p-4">
+                    <div className="mt-2.5 flex flex-col items-center gap-2 rounded-2xl border-[1.5px] border-[rgb(var(--c-accent-rgb)_/_0.2)] bg-[rgb(var(--c-gold-rgb)_/_0.08)] p-4">
                       {qrDataUrl ? (
                         <img
                           src={qrDataUrl}
                           alt={t.qr}
                           width={176}
                           height={176}
-                          className="h-44 w-44 rounded-xl border border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-white p-2"
+                          className="h-44 w-44 rounded-xl border-[1.5px] border-[rgb(var(--c-accent-rgb)_/_0.2)] bg-white p-2"
                         />
                       ) : (
-                        <div className="flex h-44 w-44 items-center justify-center rounded-xl border border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-white/40">
+                        <div className="flex h-44 w-44 items-center justify-center rounded-xl border-[1.5px] border-[rgb(var(--c-accent-rgb)_/_0.2)] bg-white/40">
                           <span className="h-6 w-6 animate-spin rounded-full border-2 border-[var(--c-gold)] border-t-transparent" aria-hidden="true" />
                         </div>
                       )}
-                      <p className="font-mono text-[9.5px] uppercase tracking-[0.1em] text-[rgb(var(--c-accent-rgb)_/_0.48)]">{t.qr}</p>
+                      <p className="font-mono text-[9.5px] font-bold uppercase tracking-[0.1em] text-[rgb(var(--c-accent-rgb)_/_0.6)]">{t.qr}</p>
                     </div>
                   )}
                 </div>
