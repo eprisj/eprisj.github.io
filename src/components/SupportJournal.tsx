@@ -99,7 +99,15 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
       {open && (
         <div className="mt-5 max-w-md">
           <p className="font-serif text-[15px] font-medium leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{t.invite}</p>
-          <div className="mt-4 grid gap-3">
+          {/* grid без явных колонок берёт auto-track, который сайзится по
+              max-content детей - длинный IBAN внутри карточки растягивал
+              трек шире родителя (max-w-md), и панель на телефоне вылезала
+              вправо за пределы страничного паддинга до самого края экрана,
+              хотя truncate на тексте должен был её обрезать - но обрезать
+              нечему без ограниченной ширины трека. grid-cols-1 даёт треку
+              minmax(0,1fr) вместо auto - теперь панель не шире родителя
+              ни при каком тексте внутри. */}
+          <div className="mt-4 grid grid-cols-1 gap-3">
             {SUPPORT_METHODS.map((method) => {
               const Icon = method.icon;
               const isCopied = copied === method.label;
