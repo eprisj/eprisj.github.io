@@ -82,7 +82,7 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
   }, []);
 
   return (
-    <aside className={`border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] pt-7 ${className}`}>
+    <aside className={`border-t-2 border-[rgb(var(--c-accent-rgb)_/_0.18)] pt-7 ${className}`}>
       {/* Раньше кнопка была единственным сигналом - гость мог её не заметить,
           прочитав только заголовок иконки. Строка приглашения теперь видна
           всегда, не только при разворачивании, и говорит не «мы бесплатны»

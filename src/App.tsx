@@ -2740,27 +2740,33 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
             })}
           </div>
 
-          <footer className="mt-10 sm:mt-16 pt-8 sm:pt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)]">
-            <div className="flex items-start gap-4 sm:gap-6">
+          {/* Автор / теги / share / support раньше жили каждый на своей
+              толщине рамки и своей прозрачности (0.2 / 0.1 / 0.14 - три
+              разных серых) - выглядело как три отдельных виджета, а не один
+              блок-подвал статьи. Единый вес: border-t-2 на разделителях,
+              border-[1.5px] на пилюлях, тексты на ступень темнее и жирнее -
+              подвал читается одним куском, а не остатком после статьи. */}
+          <footer className="mt-10 sm:mt-16 pt-8 sm:pt-12 border-t-2 border-[rgb(var(--c-accent-rgb)_/_0.18)]">
+            <div className="flex items-start gap-5 sm:gap-7 rounded-2xl bg-[rgb(var(--c-accent-rgb)_/_0.035)] p-5 sm:p-7">
               {authorPhoto ? (
                 <img
                   src={authorPhoto}
                   alt={authorName}
                   loading="lazy"
-                  className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover shrink-0 border border-[rgb(var(--c-accent-rgb)_/_0.2)]"
+                  className="w-14 h-14 sm:w-[72px] sm:h-[72px] rounded-full object-cover shrink-0 border-2 border-[rgb(var(--c-accent-rgb)_/_0.22)]"
                 />
               ) : (
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[var(--c-accent)] flex items-center justify-center text-[var(--c-bg)] font-serif text-lg sm:text-xl shrink-0">
+                <div className="w-14 h-14 sm:w-[72px] sm:h-[72px] rounded-full bg-[var(--c-accent)] flex items-center justify-center text-[var(--c-bg)] font-serif text-xl sm:text-2xl shrink-0">
                   {(authorName || '').charAt(0)}
                 </div>
               )}
               <div>
-                <p className="font-serif text-xl mb-1">{authorName}</p>
+                <p className="font-serif text-xl sm:text-2xl font-semibold mb-1">{authorName}</p>
                 {authorRole && (
-                  <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-3">{authorRole}</p>
+                  <p className="font-mono text-xs font-bold uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.7)] mb-3">{authorRole}</p>
                 )}
                 {resolvedAuthor?.bio && (
-                  <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.7)] leading-relaxed mb-3 max-w-xl">{resolvedAuthor.bio}</p>
+                  <p className="font-serif text-[15px] text-[rgb(var(--c-accent-rgb)_/_0.85)] leading-relaxed mb-3 max-w-xl">{resolvedAuthor.bio}</p>
                 )}
                 {(resolvedAuthor?.website || resolvedAuthor?.instagram) && (
                   <div className="flex items-center gap-4 mb-3">
@@ -2769,7 +2775,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                         href={resolvedAuthor.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors"
+                        className="font-mono text-[10px] font-bold uppercase tracking-widest text-[var(--c-accent)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors"
                       >
                         Website
                       </a>
@@ -2779,24 +2785,24 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                         href={`https://instagram.com/${resolvedAuthor.instagram.replace(/^@/, '')}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors"
+                        className="font-mono text-[10px] font-bold uppercase tracking-widest text-[var(--c-accent)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors"
                       >
                         {resolvedAuthor.instagram}
                       </a>
                     )}
                   </div>
                 )}
-                <p className="font-mono text-xs text-[rgb(var(--c-accent-rgb)_/_0.5)]">{article.date}</p>
+                <p className="font-mono text-xs font-semibold text-[rgb(var(--c-accent-rgb)_/_0.55)]">{article.date}</p>
               </div>
             </div>
             {article.tags && (
-              <div className="flex flex-wrap gap-2 mt-8">
+              <div className="flex flex-wrap gap-2.5 mt-8">
                 {article.tags.map((tag: string, i: number) => (
                   <button
                     type="button"
                     key={i}
                     onClick={() => onTagClick(tag)}
-                    className="px-3 py-1 border border-[rgb(var(--c-accent-rgb)_/_0.2)] font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:border-[var(--c-accent)] hover:text-[var(--c-accent)] transition-colors cursor-pointer"
+                    className="px-3.5 py-1.5 rounded-full border-[1.5px] border-[rgb(var(--c-accent-rgb)_/_0.22)] bg-[rgb(var(--c-accent-rgb)_/_0.03)] font-mono text-xs font-bold uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.75)] hover:border-[var(--c-accent)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.06)] hover:text-[var(--c-accent)] transition-colors cursor-pointer"
                   >
                     {tag}
                   </button>
@@ -2804,11 +2810,11 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
               </div>
             )}
 
-            <div className="mt-10 pt-8 border-t border-[rgb(var(--c-accent-rgb)_/_0.1)] flex justify-center">
+            <div className="mt-10 pt-8 border-t-2 border-[rgb(var(--c-accent-rgb)_/_0.18)] flex justify-center">
               <button
                 type="button"
                 onClick={handleShare}
-                className="flex items-center gap-3 px-6 py-3 border border-[rgb(var(--c-accent-rgb)_/_0.2)] rounded-full font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors"
+                className="flex items-center gap-3 px-7 py-3.5 border-[1.5px] border-[rgb(var(--c-accent-rgb)_/_0.3)] rounded-full font-mono text-xs font-bold uppercase tracking-widest text-[var(--c-accent)] hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors"
               >
                 {copied ? <Check size={16} /> : <Share2 size={16} />}
                 {copied ? t('share.copied') : t('share')}
