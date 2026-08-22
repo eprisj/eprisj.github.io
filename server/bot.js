@@ -245,6 +245,7 @@ const COMMANDS = [
   ["/ssl", "сколько осталось сертификату"],
   ["/links", "быстрые ссылки"],
   ["/alerts", "что сторож проверяет сам"],
+  ["/digest", "утренний дайджест прямо сейчас (в 9:00 по Киеву — сам)"],
   ["/mute", "тишина на N часов (по умолчанию 4)"],
   ["/unmute", "вернуть алерты"],
   ["/help", "этот список"],
@@ -693,6 +694,7 @@ const PHOTO_COMMANDS = {
 };
 
 async function sendCommandResult(command) {
+  if (command === "/digest") { await sendDigest(); return; }
   const photoFn = PHOTO_COMMANDS[command];
   if (photoFn) {
     const result = await photoFn();
@@ -823,8 +825,9 @@ async function poll() {
         continue;
       }
 
-      if (PHOTO_COMMANDS[message.text.trim().split(/\s+/)[0].toLowerCase()]) {
-        await sendCommandResult(message.text.trim().split(/\s+/)[0].toLowerCase());
+      const firstWord = message.text.trim().split(/\s+/)[0].toLowerCase();
+      if (PHOTO_COMMANDS[firstWord] || firstWord === "/digest") {
+        await sendCommandResult(firstWord);
         continue;
       }
       const answer = await handleCommand(message.text);
@@ -839,6 +842,46 @@ async function poll() {
   }
 }
 poll();
+
+// ── Утренний дайджест: карточка сама, без вопроса ────────────────────────────
+
+const DIGEST_HOUR = Number(process.env.EPRIS_BOT_DIGEST_HOUR || 9);
+const DIGEST_TZ = process.env.EPRIS_BOT_DIGEST_TZ || "Europe/Kyiv";
+
+/* Следующий запуск считаем не прибавлением 24 часов от прошлого раза (тогда
+   переход на летнее/зимнее время постепенно сдвинул бы дайджест), а заново
+   от текущего момента: смотрим который час сейчас в Киеве и считаем разницу
+   до ближайшего DIGEST_HOUR:00 там же. */
+function msUntilDigest() {
+  const now = new Date();
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: DIGEST_TZ, hour12: false,
+    year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit",
+  }).formatToParts(now);
+  const get = (t) => Number(parts.find((p) => p.type === t).value);
+  const y = get("year"), mo = get("month"), d = get("day"), h = get("hour"), mi = get("minute"), s = get("second");
+  const asIfUtc = Date.UTC(y, mo - 1, d, h, mi, s);
+  const offsetMs = asIfUtc - now.getTime();   // на сколько DIGEST_TZ впереди/позади UTC
+  let target = Date.UTC(y, mo - 1, d, DIGEST_HOUR, 0, 0) - offsetMs;
+  if (target <= now.getTime()) target += 86400000;
+  return target - now.getTime();
+}
+
+async function sendDigest() {
+  try {
+    const status = await cmdStatusCard();
+    await sendPhoto(status.buffer, `Доброе утро, редакция.\n${status.caption}`, { reply_markup: MENU });
+    const drafts = await cmdDraftsCard();
+    if (drafts.buffer) await sendPhoto(drafts.buffer, drafts.caption, { reply_markup: drafts.keyboard || MENU });
+  } catch (error) {
+    console.error("[bot] дайджест:", error.message);
+  }
+}
+
+function scheduleDigest() {
+  setTimeout(async () => { await sendDigest(); scheduleDigest(); }, msUntilDigest());
+}
+scheduleDigest();
 
 /* Список команд в меню телеграма: человек видит их по нажатию «/», а не
    вспоминает. Ставится один раз при старте, ошибка тут ничего не ломает. */
