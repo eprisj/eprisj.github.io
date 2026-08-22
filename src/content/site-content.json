@@ -2024,7 +2024,7 @@
       "homeSubtitle": "Rob Davidov· 2021 · Mixed Media and Marble Pedestal",
       "homeDescription": "Robert Davidov is a Melbourne-based architect and founder of Davidov Architects. His sculptural practice explores mass, material, and form through hand-built ceramic works,",
       "picsId": "PICS-2026-012",
-      "updatedAt": "2026-08-22T09:28:23.996Z",
+      "updatedAt": "2026-08-22T09:28:31.773Z",
       "picsReleaseId": "PICS-WEEK-2026-001",
       "imageHistory": [
         {
@@ -2095,17 +2095,23 @@
       "subtitle": "Verner Panton · 1960 · moulded plastic",
       "fig": "PICS 015",
       "description": "One continuous red line becomes a chair: Verner Panton reduces a familiar object to colour, curve and a single unapologetic gesture.",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mt2sfbg2hafvk4.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mt46gngoycogff.jpg",
       "picsOfWeek": true,
       "homeCategory": "design",
-      "homeTitle": "Curly Candlesticks",
-      "homeSubtitle": "Valeria Vasi • 2024 • iron",
-      "homeDescription": "Valeria Vasi is a Moscow-born, Barcelona-based artist and designer known for transforming functional ceramics and furniture into sculptural objects through geometric forms and experimental materials.",
-      "homeCredit": "Valeria Vasi • @valeria.vasi",
+      "homeTitle": "Totem Jr, GLIF",
+      "homeSubtitle": "GLIF",
+      "homeDescription": "GLIF is an Istanbul-based design studio transforming antique furniture into sculptural, one-of-a-kind pieces, blending heritage with contemporary architectural interventions.",
+      "homeCredit": "@glif.art",
       "picsId": "PICS-2026-015",
-      "updatedAt": "2026-08-21T10:09:35.635Z",
+      "updatedAt": "2026-08-22T09:34:18.820Z",
       "picsReleaseId": "PICS-WEEK-2026-001",
-      "homeSourceUrl": "https://www.instagram.com/p/DAxoa-tuu-0/?img_index=1&igsi=MWpteHJ5ZHA0Y21q"
+      "imageHistory": [
+        {
+          "url": "https://api.eprisjournal.com/uploads/mt2sfbg2hafvk4.jpg",
+          "replacedAt": "2026-08-22T09:30:17.243Z"
+        }
+      ],
+      "homeSourceUrl": "https://www.instagram.com/p/DbkmC8FDMas/?igsi=cmVjMnZmOTIzb2Vj"
     },
     {
       "id": 20,
@@ -4869,7 +4875,7 @@
           "poster": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.poster.jpg"
         }
       ],
-      "updatedAt": "2026-08-22T09:34:05.023Z",
+      "updatedAt": "2026-08-22T09:18:33.965Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "publishAt": "2026-08-19T09:38:46.903Z",
