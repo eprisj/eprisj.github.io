@@ -2017,7 +2017,7 @@
       "subtitle": "Henry Moore · 1968–70 · bronze",
       "fig": "PICS 012",
       "description": "Two voids turn a bronze oval into a shifting horizon: Henry Moore makes weight, landscape and the human body feel inseparable.",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mt4636yht0nbh3.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mt464h3xj7ftes.jpg",
       "picsOfWeek": true,
       "homeCategory": "sculpture",
       "homeTitle": "Motion Alone",
@@ -2025,10 +2025,14 @@
       "homeDescription": "Paul Insect is a British contemporary artist whose work combines painting, sculpture, and found imagery, often exploring identity, popular culture, and consumerism.",
       "homeCredit": "Artsy",
       "picsId": "PICS-2026-012",
-      "updatedAt": "2026-08-22T09:19:49.168Z",
+      "updatedAt": "2026-08-22T09:20:54.813Z",
       "picsReleaseId": "PICS-WEEK-2026-001",
       "homeSourceUrl": "https://www.artsy.net/artwork/paul-insect-motion-alone-42",
       "imageHistory": [
+        {
+          "url": "https://api.eprisjournal.com/uploads/mt4636yht0nbh3.jpg",
+          "replacedAt": "2026-08-22T09:20:49.289Z"
+        },
         {
           "url": "https://api.eprisjournal.com/uploads/mt4618kgtwhcbh.jpg",
           "replacedAt": "2026-08-22T09:19:49.168Z"
@@ -4865,7 +4869,7 @@
           "poster": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.poster.jpg"
         }
       ],
-      "updatedAt": "2026-08-22T09:20:00.825Z",
+      "updatedAt": "2026-08-22T09:21:08.076Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "publishAt": "2026-08-19T09:38:46.903Z",
