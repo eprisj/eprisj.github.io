@@ -119,11 +119,11 @@ async function tg(method, payload) {
 const kb = (rows) => ({ inline_keyboard: rows.map((row) => row.map(([text, data]) => ({ text, callback_data: data }))) });
 
 const MENU = kb([
-  [["Состояние", "cmd:status"], ["Анкеты", "cmd:forms"]],
-  [["Черновики", "cmd:drafts"], ["Последнее", "cmd:last"]],
-  [["Службы", "cmd:services"], ["Диск", "cmd:disk"]],
-  [["Сертификат", "cmd:ssl"], ["Ссылки", "cmd:links"]],
-  [["Сторож", "cmd:alerts"]],
+  [["📋 Состояние", "cmd:status"], ["✉️ Анкеты", "cmd:forms"]],
+  [["📝 Черновики", "cmd:drafts"], ["📰 Последнее", "cmd:last"]],
+  [["🛠 Службы", "cmd:services"], ["💾 Диск", "cmd:disk"]],
+  [["🔒 Сертификат", "cmd:ssl"], ["🔗 Ссылки", "cmd:links"]],
+  [["👁 Сторож", "cmd:alerts"]],
 ]);
 
 /* Отправка PNG-карточки вместо текста. Телеграм ждёт multipart, а не JSON —
@@ -251,10 +251,25 @@ const COMMANDS = [
   ["/help", "этот список"],
 ];
 
+/* Разбито по смыслу, а не одним полотном — так за секунду видно, в какой
+   раздел лезть, а не читаешь список из пятнадцати команд подряд. */
+const HELP_GROUPS = [
+  ["📋 Редакция", ["/status", "/last", "/drafts", "/digest"]],
+  ["✉️ Анкеты", ["/forms", "/responses"]],
+  ["🛠 Сервер", ["/services", "/disk", "/ssl", "/links"]],
+  ["👁 Сторож", ["/alerts", "/mute", "/unmute"]],
+];
+
 function cmdHelp() {
-  return ["<b>EPRIS.</b> Что я умею:", "",
-    ...COMMANDS.map(([name, what]) => `${name} — ${esc(what)}`),
-    "", "<i>Ниже — то же самое кнопками, набирать не обязательно.</i>"].join("\n");
+  const byName = new Map(COMMANDS);
+  const out = ["<b>EPRIS.</b> Что я умею:", ""];
+  for (const [title, names] of HELP_GROUPS) {
+    out.push(`<b>${title}</b>`);
+    for (const name of names) out.push(`${name} — ${esc(byName.get(name) || "")}`);
+    out.push("");
+  }
+  out.push("<i>Ниже — то же самое кнопками, набирать не обязательно.</i>");
+  return out.join("\n");
 }
 
 async function collectStatus() {
@@ -327,7 +342,7 @@ async function cmdForms() {
   if (!forms) return "Список анкет получить не удалось.";
   if (!forms.length) return "Анкет пока нет.";
   const label = { draft: "черновик", open: "открыта", closed: "закрыта" };
-  return ["Анкеты:", "", ...forms.map((form) => {
+  return ["✉️ Анкеты:", "", ...forms.map((form) => {
     const count = Number(form.responses) || 0;
     return `${form.title}\n  ${label[form.status] || form.status}, ответов: ${count}\n  ${SITE}/f/${form.slug}`;
   })].join("\n");
@@ -356,7 +371,7 @@ function cmdDrafts() {
     for (const d of list) out.push(`• ${d.title}\n  ${draftUrl(key, d.entry)}`);
     out.push("");
   }
-  return ["Черновики:", "", ...out].join("\n");
+  return ["📝 Черновики:", "", ...out].join("\n");
 }
 
 /* Список черновиков карточкой + кнопки «Опубликовать»/«Правка заголовка» под
@@ -370,10 +385,12 @@ async function cmdDraftsCard() {
   if (!drafts.length) return { text: "Черновиков нет — всё опубликовано." };
   lastDraftsIndex = drafts.slice(0, 8);
   const buffer = await cards.renderDrafts(lastDraftsIndex);
+  // Три действия на черновик умещены в один ряд (не три) — иначе клавиатура
+  // на восемь черновиков растягивается на два экрана сплошной серой стеной.
   const rows = lastDraftsIndex.map((d, i) => [
-    [`✓ №${i + 1}`, `pub:${i}`],
-    [`✏️ Заголовок №${i + 1}`, `edit:${i}`],
-    [`🖼 Фото №${i + 1}`, `photo:${i}`],
+    [`${i + 1} ✓`, `pub:${i}`],
+    [`${i + 1} ✏️`, `edit:${i}`],
+    [`${i + 1} 🖼`, `photo:${i}`],
   ]);
   return { buffer, caption: `Черновиков: ${drafts.length}`, keyboard: kb(rows) };
 }
@@ -535,7 +552,7 @@ async function watchdog() {
 
 function cmdAlerts() {
   const rows = [
-    "<b>Сторож</b>", "",
+    "<b>👁 Сторож</b>", "",
     `проверка каждые ${Math.round(WATCH_INTERVAL_MS / 60000)} мин`,
     `порог по диску: ${DISK_ALERT_GB} ГБ`,
     `предупреждение о сертификате: за ${SSL_ALERT_DAYS} дн.`,
@@ -608,7 +625,7 @@ async function serviceStates() {
 async function cmdServices() {
   const states = await serviceStates();
   const bad = states.filter((s) => !s.ok);
-  const lines = [`<b>Службы</b> — ${bad.length ? `не в порядке: ${bad.length}` : "все на ходу"}`, ""];
+  const lines = [`<b>🛠 Службы</b> — ${bad.length ? `не в порядке: ${bad.length}` : "все на ходу"}`, ""];
   for (const s of states) lines.push(`${s.ok ? "✓" : "✗"} ${esc(s.label)} — <code>${esc(s.state)}</code>`);
   return lines.join("\n");
 }
@@ -628,7 +645,7 @@ async function cmdDisk() {
   if (!disk) return "Размер диска получить не удалось.";
   const usedPct = 100 - (disk.freeGb / disk.totalGb) * 100;
   const lines = [
-    "<b>Диск</b>", "",
+    "<b>💾 Диск</b>", "",
     `свободно: <b>${disk.freeGb.toFixed(1)} ГБ</b> из ${disk.totalGb.toFixed(0)} ГБ`,
     `занято: ${usedPct.toFixed(0)}%`,
   ];
@@ -643,7 +660,7 @@ async function cmdSsl() {
   const days = await sslDaysLeft();
   if (days === null) return "Срок сертификата определить не удалось.";
   const mark = days <= SSL_ALERT_DAYS ? "⚠" : "✓";
-  return `<b>Сертификат</b>\n\n${mark} eprisjournal.com — осталось <b>${days}</b> дн.` +
+  return `<b>🔒 Сертификат</b>\n\n${mark} eprisjournal.com — осталось <b>${days}</b> дн.` +
     (days <= SSL_ALERT_DAYS ? "\n\nПора продлевать: certbot обычно делает это сам, но раз счёт пошёл на дни — стоит проверить таймер." : "");
 }
 
@@ -666,7 +683,7 @@ async function sslDaysLeft() {
 
 function cmdLinks() {
   return [
-    "<b>Ссылки</b>", "",
+    "<b>🔗 Ссылки</b>", "",
     `Сайт — ${SITE}`,
     `Панель — ${SITE}/admin/`,
     `Анкеты — ${SITE}/admin/#forms`,
@@ -682,7 +699,7 @@ async function cmdResponses() {
   if (!withAnswers.length) return "Ответов пока нет ни в одной анкете.";
   withAnswers.sort((a, b) => Number(b.responses) - Number(a.responses));
   const total = withAnswers.reduce((sum, f) => sum + Number(f.responses), 0);
-  return [`<b>Ответы</b> — всего ${total}`, "",
+  return [`<b>✉️ Ответы</b> — всего ${total}`, "",
     ...withAnswers.map((f) => `${esc(f.title)} — <b>${Number(f.responses)}</b>\n  ${SITE}/f/${esc(f.slug)}`)].join("\n");
 }
 
@@ -781,7 +798,7 @@ async function handlePhotoApply(photoSizes) {
 async function handleCommand(text) {
   const command = String(text || "").trim().split(/\s+/)[0].toLowerCase().replace(/@.*$/, "");
   switch (command) {
-    case "/start":
+    case "/start": return `👋 На связи бот редакции EPRIS.\n\nВ 9:00 по Киеву — сам пришлёт дайджест. Остальное — по кнопкам ниже или командой, если так привычнее.\n\n<i>/help — полный список.</i>`;
     case "/menu":
     case "/help": return cmdHelp();
     case "/status": return cmdStatus();
