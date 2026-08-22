@@ -960,12 +960,22 @@ void fetch(api("setMyCommands"), {
 }).catch(() => {});
 
 /* Кнопка слева от поля ввода открывает Mini App — полноценную панель
-   вместо построчных команд. Ставится глобально для приватных чатов с
-   ботом: он и так односторонний, второй редакции тут не бывает. */
+   вместо построчных команд. Глобальный дефолт ставится для приватных чатов
+   вообще, но у чата редакции уже мог осесть персональный оверрайд типа
+   "default" (Телеграм заводит его сам при первом /start, до того как бот
+   вообще узнал про web_app) — он перебивает глобальный молча, кнопка не
+   появляется. Поэтому ставим ЕЩЁ РАЗ явно с chat_id: персональная запись
+   имеет приоритет, значит и чинить нужно именно её. */
+const MENU_BUTTON = { type: "web_app", text: "App", web_app: { url: `${SITE}/tgapp/` } };
 void fetch(api("setChatMenuButton"), {
   method: "POST",
   headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ menu_button: { type: "web_app", text: "App", web_app: { url: `${SITE}/tgapp/` } } }),
+  body: JSON.stringify({ menu_button: MENU_BUTTON }),
+}).catch(() => {});
+void fetch(api("setChatMenuButton"), {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ chat_id: CHAT, menu_button: MENU_BUTTON }),
 }).catch(() => {});
 
 module.exports = { chunk, slugify, draftUrl, esc, kb };
