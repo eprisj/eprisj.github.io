@@ -141,11 +141,16 @@
     display: block; font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
     color: var(--muted); margin-bottom: 6px;
   }
-  .field input[type=text], .field textarea, .field select {
+  .field input[type=text], .field input[type=datetime-local], .field textarea, .field select {
     width: 100%; border: none; border-bottom: 1px solid var(--ink); padding: 8px 0;
     font-family: 'PT Serif', serif; font-size: 16px; color: var(--ink); background: none; outline: none;
-    resize: vertical;
+    resize: vertical; border-radius: 0; -webkit-appearance: none; appearance: none;
   }
+  /* datetime-local без своего значения на iOS красится в системный серый
+     пилюльный фон — при попытке выглядеть «как остальные поля» через
+     appearance:none WebKit всё равно оставляет отступы календарной иконки
+     по бокам своими, поэтому подравниваем вручную. */
+  .field input[type=datetime-local] { min-height: 34px; padding-left: 2px; color-scheme: light; }
   .field textarea { min-height: 70px; }
 
   .cover {
@@ -274,6 +279,11 @@
   }
   .note-card .note-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 6px; }
   .note-card .note-date { font-size: 10px; color: var(--muted); letter-spacing: 0.5px; }
+  .note-card .note-actions { display: flex; align-items: center; gap: 14px; }
+  .note-card .note-done {
+    font-family: 'PT Mono', monospace; font-size: 10px; letter-spacing: 0.5px; text-transform: uppercase;
+    color: var(--success); cursor: pointer;
+  }
   .note-card .note-del { font-size: 13px; color: var(--muted); cursor: pointer; }
 
   #crm-editor .field select {
@@ -922,7 +932,11 @@
     el.style.height = "auto";
     el.style.height = el.scrollHeight + "px";
   }
-  $("editor").addEventListener("input", function (ev) {
+  // На весь документ, не только #editor: у CRM (заметки-стикеры, поле
+  // заметки в интервью/контакте) те же textarea с тем же тиком роста —
+  // раньше жили только в статьях, и в CRM текст обрезался точно так же,
+  // как когда-то в редакторе материала.
+  document.addEventListener("input", function (ev) {
     if (ev.target.tagName === "TEXTAREA") autoGrow(ev.target);
   });
   $("editor").addEventListener("click", function (ev) {
@@ -1550,24 +1564,34 @@
       var when = n.createdAt ? String(n.createdAt).slice(0, 10) : "";
       return '<div class="note-card" data-id="' + n.id + '">' +
         '<textarea placeholder="Заметка…">' + esc(n.text) + '</textarea>' +
-        '<div class="note-foot"><span class="note-date">' + esc(when) + '</span><span class="note-del" data-act="delnote">✕</span></div></div>';
+        '<div class="note-foot"><span class="note-date">' + esc(when) + '</span>' +
+        '<span class="note-actions"><span class="note-done" data-act="donenote">✓ Готово</span>' +
+        '<span class="note-del" data-act="delnote">✕</span></span></div></div>';
     }).join("") : '<div class="empty">Ничего не найдено</div>';
 
     $("crmList").querySelectorAll(".note-card textarea").forEach(function (ta) {
       autoGrow(ta);
       var id = Number(ta.closest(".note-card").dataset.id);
       var timer = null;
+      function flush() {
+        clearTimeout(timer);
+        var note = crm.notes.find(function (x) { return x.id === id; });
+        if (!note || note.text === ta.value) return;
+        note.text = ta.value;
+        note.updatedAt = new Date().toISOString();
+        saveCrm().then(function () { toast("Заметка сохранена"); }).catch(function (e) { toast("Не сохранилось: " + e.message, true); });
+      }
       ta.addEventListener("input", function () {
         autoGrow(ta);
         clearTimeout(timer);
-        timer = setTimeout(function () {
-          var note = crm.notes.find(function (x) { return x.id === id; });
-          if (!note) return;
-          note.text = ta.value;
-          note.updatedAt = new Date().toISOString();
-          saveCrm().then(function () { toast("Заметка сохранена"); }).catch(function (e) { toast("Не сохранилось: " + e.message, true); });
-        }, 900);
+        timer = setTimeout(flush, 900);
       });
+      // Уход с поля (тап вовне, скрытие клавиатуры) сохраняет сразу, не
+      // дожидаясь дебаунса — раньше можно было закрыть CRM в те самые 900мс
+      // и потерять последний символ.
+      ta.addEventListener("blur", flush);
+      var doneBtn = ta.closest(".note-card").querySelector('[data-act="donenote"]');
+      if (doneBtn) doneBtn.addEventListener("click", function () { ta.blur(); });
     });
     $("crmList").querySelectorAll('[data-act="delnote"]').forEach(function (btn) {
       btn.onclick = function () {
