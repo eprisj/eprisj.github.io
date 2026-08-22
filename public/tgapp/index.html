@@ -514,6 +514,15 @@
   function syncTheme() {
     var dark = tgw && tgw.colorScheme === "dark";
     document.documentElement.classList.toggle("tg-dark", dark);
+    // Фон ЗА пределами контента — область растяжения при овербаунсе и
+    // нижняя панель — Телеграм красит в белый по умолчанию, если не
+    // сказать иначе. На тёмной теме и на половинчатом/свёрнутом состоянии
+    // (когда этой полосы видно больше, чем обычно) это была белая вспышка
+    // не в тон ничему. Красим в --paper, шапка (setHeaderColor) — отдельно,
+    // она всегда чёрная вне зависимости от темы.
+    var paper = dark ? "#0d0d0d" : "#ffffff";
+    try { tgw.setBackgroundColor && tgw.setBackgroundColor(paper); } catch (e) {}
+    try { tgw.setBottomBarColor && tgw.setBottomBarColor(paper); } catch (e) {}
   }
 
   // ── Инициализация: подтверждаем, что это правда открыто из бота EPRIS ─────
@@ -527,6 +536,16 @@
     try { tgw.setHeaderColor && tgw.setHeaderColor("#111111"); } catch (e) {}
     syncTheme();
     if (tgw.onEvent) { try { tgw.onEvent("themeChanged", syncTheme); } catch (e) {} }
+    // На Android человек может утащить половинчатый лист обратно вниз
+    // жестом прямо во время работы — expand() при открытии этого не ловит,
+    // а isExpanded после жеста становится false. Возвращаем сами.
+    if (tgw.onEvent) {
+      try {
+        tgw.onEvent("viewportChanged", function () {
+          if (tgw.isExpanded === false) tgw.expand();
+        });
+      } catch (e) {}
+    }
 
     $("boot").classList.remove("hidden");
     $("boot").textContent = "Проверяем доступ…";
