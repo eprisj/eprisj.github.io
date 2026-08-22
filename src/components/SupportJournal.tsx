@@ -21,14 +21,14 @@ import QRCode from 'qrcode';
  * Оформление — язык самого сайта (скруглённые карточки, мягкая тень, золотой
  * акцент на интерактиве), не брутalist-моно панели: это два разных места с
  * разным голосом, они и не должны выглядеть одинаково.                      */
-const SUPPORT_TEXT: Record<string, { show: string; hide: string; invite: string; copy: string; copied: string; qr: string }> = {
-  EN: { show: 'Support the journal', hide: 'Hide', invite: 'A few ways to support us', copy: 'Copy', copied: 'Copied', qr: 'Scan with PayPal' },
-  RU: { show: 'Поддержать журнал', hide: 'Свернуть', invite: 'Несколько способов поддержать нас', copy: 'Копировать', copied: 'Скопировано', qr: 'Сканируйте в PayPal' },
-  UA: { show: 'Підтримати журнал', hide: 'Згорнути', invite: 'Кілька способів підтримати нас', copy: 'Копіювати', copied: 'Скопійовано', qr: 'Скануйте у PayPal' },
-  DE: { show: 'Journal unterstützen', hide: 'Ausblenden', invite: 'Ein paar Wege, uns zu unterstützen', copy: 'Kopieren', copied: 'Kopiert', qr: 'Mit PayPal scannen' },
-  IT: { show: 'Sostieni la rivista', hide: 'Nascondi', invite: 'Alcuni modi per sostenerci', copy: 'Copia', copied: 'Copiato', qr: 'Scansiona con PayPal' },
-  ES: { show: 'Apoyar la revista', hide: 'Ocultar', invite: 'Algunas formas de apoyarnos', copy: 'Copiar', copied: 'Copiado', qr: 'Escanea con PayPal' },
-  TR: { show: 'Dergiyi destekle', hide: 'Gizle', invite: 'Bizi desteklemenin birkaç yolu', copy: 'Kopyala', copied: 'Kopyalandı', qr: "PayPal ile tara" },
+const SUPPORT_TEXT: Record<string, { lead: string; show: string; hide: string; invite: string; copy: string; copied: string; qr: string }> = {
+  EN: { lead: "If our work here means something to you, we'd be grateful for your support.", show: 'Support the journal', hide: 'Hide', invite: 'A few ways to support us', copy: 'Copy', copied: 'Copied', qr: 'Scan with PayPal' },
+  RU: { lead: 'Если наша работа что-то значит для вас, мы будем признательны за поддержку.', show: 'Поддержать журнал', hide: 'Свернуть', invite: 'Несколько способов поддержать нас', copy: 'Копировать', copied: 'Скопировано', qr: 'Сканируйте в PayPal' },
+  UA: { lead: 'Якщо наша робота щось для вас важить, ми будемо вдячні за підтримку.', show: 'Підтримати журнал', hide: 'Згорнути', invite: 'Кілька способів підтримати нас', copy: 'Копіювати', copied: 'Скопійовано', qr: 'Скануйте у PayPal' },
+  DE: { lead: 'Wenn Ihnen unsere Arbeit hier etwas bedeutet, wären wir für Ihre Unterstützung dankbar.', show: 'Journal unterstützen', hide: 'Ausblenden', invite: 'Ein paar Wege, uns zu unterstützen', copy: 'Kopieren', copied: 'Kopiert', qr: 'Mit PayPal scannen' },
+  IT: { lead: 'Se il nostro lavoro qui significa qualcosa per te, ti saremmo grati per il tuo sostegno.', show: 'Sostieni la rivista', hide: 'Nascondi', invite: 'Alcuni modi per sostenerci', copy: 'Copia', copied: 'Copiato', qr: 'Scansiona con PayPal' },
+  ES: { lead: 'Si nuestro trabajo aquí significa algo para ti, te agradeceríamos tu apoyo.', show: 'Apoyar la revista', hide: 'Ocultar', invite: 'Algunas formas de apoyarnos', copy: 'Copiar', copied: 'Copiado', qr: 'Escanea con PayPal' },
+  TR: { lead: 'Buradaki çalışmamız sizin için bir anlam ifade ediyorsa, desteğiniz için minnettar oluruz.', show: 'Dergiyi destekle', hide: 'Gizle', invite: 'Bizi desteklemenin birkaç yolu', copy: 'Kopyala', copied: 'Kopyalandı', qr: "PayPal ile tara" },
 };
 
 const SUPPORT_METHODS: { label: string; value: string; note?: string; icon: typeof Wallet }[] = [
@@ -83,12 +83,17 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
 
   return (
     <aside className={`border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] pt-7 ${className}`}>
+      {/* Раньше кнопка была единственным сигналом - гость мог её не заметить,
+          прочитав только заголовок иконки. Строка приглашения теперь видна
+          всегда, не только при разворачивании, и говорит не «мы бесплатны»
+          (оправдание перед незаданным вопросом), а прямое, тёплое приглашение. */}
+      <p className="max-w-md font-serif text-[15px] italic leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)]">{t.lead}</p>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="group inline-flex items-center gap-2.5 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.2)] bg-[rgb(var(--c-gold-rgb)_/_0.07)] py-2.5 pl-4 pr-5 font-mono text-[10.5px] font-bold uppercase tracking-[0.16em] text-[var(--c-accent)] transition-colors hover:border-[var(--c-gold)] hover:bg-[rgb(var(--c-gold-rgb)_/_0.14)]"
+        className="group mt-4 inline-flex items-center gap-3 rounded-full border border-[rgb(var(--c-gold-rgb)_/_0.4)] bg-[rgb(var(--c-gold-rgb)_/_0.12)] py-3 pl-[18px] pr-6 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--c-accent)] shadow-[0_1px_2px_rgb(var(--c-gold-rgb)_/_0.15)] transition-all hover:-translate-y-px hover:border-[var(--c-gold)] hover:bg-[rgb(var(--c-gold-rgb)_/_0.22)] hover:shadow-[0_4px_14px_rgb(var(--c-gold-rgb)_/_0.3)]"
       >
-        <span aria-hidden="true" className="text-[13px] leading-none text-[var(--c-gold)]">♥</span>
+        <span aria-hidden="true" className="animate-[pulse_2.4s_ease-in-out_infinite] text-[16px] leading-none text-[var(--c-gold)]">♥</span>
         {open ? t.hide : t.show}
       </button>
       {open && (
