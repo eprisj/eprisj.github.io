@@ -284,7 +284,8 @@ async function cmdInterviews() {
   return [`<b>🎙 Интервью</b> — ${sorted.length}`, "", ...sorted.map((iv) => {
     const when = iv.scheduledAt ? new Date(iv.scheduledAt).toLocaleString("ru-RU", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) : "без даты";
     const mark = STATUS_EMOJI[iv.status] || "•";
-    return `<blockquote>${mark} <b>${esc(iv.subject || "без темы")}</b> — ${esc(STATUS_LABEL_RU[iv.status] || iv.status)}\n${esc(contactName(iv.contactId))} · ${esc(when)}</blockquote>`;
+    const link = iv.meetLink ? `\n<a href="${esc(iv.meetLink)}">🎥 Встреча</a>` : "";
+    return `<blockquote>${mark} <b>${esc(iv.subject || "без темы")}</b> — ${esc(STATUS_LABEL_RU[iv.status] || iv.status)}\n${esc(contactName(iv.contactId))} · ${esc(when)}${link}</blockquote>`;
   })].join("\n");
 }
 
@@ -1115,8 +1116,13 @@ async function remindInterviews() {
   for (const iv of due) {
     const when = new Date(iv.scheduledAt).toLocaleString("ru-RU", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
     const who = contactName(iv.contactId);
+    // Ссылка — отдельной кнопкой, не просто текстом: за час до созвона это
+    // единственное, что реально нужно нажать, не разбирая сообщение. Полное
+    // MENU сюда не приплюсовываем — оно и так на одну команду /menu дальше,
+    // а десяток лишних кнопок под алертом только мешает найти нужную.
+    const keyboard = iv.meetLink ? { inline_keyboard: [[{ text: "🎥 Присоединиться", url: iv.meetLink }]] } : MENU;
     await sendRich(`🎙 <b>Интервью через час</b>\n\n<blockquote>${esc(iv.subject || "без темы")}${who ? `\n${esc(who)}` : ""}\n${esc(when)}</blockquote>`,
-      { reply_markup: MENU });
+      { reply_markup: keyboard });
     iv.reminded = true;
     changed = true;
   }

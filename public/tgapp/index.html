@@ -365,6 +365,10 @@
       <label>Дата и время</label>
       <input type="datetime-local" id="ce-when">
     </div>
+    <div class="field" id="ce-meet-wrap">
+      <label>Ссылка на встречу</label>
+      <input type="text" id="ce-meet" placeholder="https://meet.google.com/…">
+    </div>
 
     <div class="field" id="ce-note-wrap">
       <label>Заметка</label>
@@ -1343,15 +1347,24 @@
       .sort(function (a, b) { return String(a.scheduledAt || "").localeCompare(String(b.scheduledAt || "")); });
     $("crmList").innerHTML = list.length ? list.map(function (iv) {
       var when = iv.scheduledAt ? new Date(iv.scheduledAt).toLocaleString("ru-RU", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) : "без даты";
+      var meet = iv.meetLink ? ' <span data-act="joinmeet" data-id="' + iv.id + '" title="Открыть встречу">🎥</span>' : "";
       return '<div class="crm-row" data-id="' + iv.id + '">' +
         '<div><div class="ttl">' + esc(iv.subject || "Без темы") + '</div>' +
-        '<div class="meta">' + esc(contactName(iv.contactId)) + ' · ' + esc(when) + '</div></div>' +
+        '<div class="meta">' + esc(contactName(iv.contactId)) + ' · ' + esc(when) + meet + '</div></div>' +
         '<span class="status-badge st-' + esc(iv.status || "planned") + '" data-act="cyclestatus" data-id="' + iv.id + '">' +
         esc(STATUS_LABEL[iv.status] || "Запланировано") + '</span></div>';
     }).join("") : '<div class="empty">Ничего не найдено</div>';
+    $("crmList").querySelectorAll('[data-act="joinmeet"]').forEach(function (el) {
+      el.onclick = function (ev) {
+        ev.stopPropagation();
+        var iv = crm.interviews.find(function (x) { return x.id === Number(el.dataset.id); });
+        if (!iv || !iv.meetLink) return;
+        if (tgw && tgw.openLink) tgw.openLink(iv.meetLink); else window.open(iv.meetLink, "_blank");
+      };
+    });
     $("crmList").querySelectorAll(".crm-row").forEach(function (row) {
       row.onclick = function (ev) {
-        if (ev.target.closest('[data-act="cyclestatus"]')) return;
+        if (ev.target.closest('[data-act="cyclestatus"], [data-act="joinmeet"]')) return;
         openInterviewEditor(Number(row.dataset.id));
       };
     });
@@ -1374,7 +1387,7 @@
 
   function openInterviewEditor(id) {
     var iv = id ? crm.interviews.find(function (x) { return x.id === id; }) : null;
-    crmCurrent = { kind: "interview", entity: iv ? Object.assign({}, iv) : { id: nextCrmId("interviews"), subject: "", contactId: null, status: "planned", scheduledAt: "", notes: "", reminded: false } };
+    crmCurrent = { kind: "interview", entity: iv ? Object.assign({}, iv) : { id: nextCrmId("interviews"), subject: "", contactId: null, status: "planned", scheduledAt: "", meetLink: "", notes: "", reminded: false } };
     fillCrmEditor();
   }
 
@@ -1391,7 +1404,7 @@
     ["name", "type", "telegram", "email", "phone"].forEach(function (f) {
       $("ce-" + f + "-wrap").style.display = isContact ? "" : "none";
     });
-    ["subject", "contact", "status", "when"].forEach(function (f) {
+    ["subject", "contact", "status", "when", "meet"].forEach(function (f) {
       $("ce-" + f + "-wrap").style.display = isContact ? "none" : "";
     });
     $("ceNameLabel").textContent = "Имя";
@@ -1409,6 +1422,7 @@
       $("ce-contact").value = e.contactId || "";
       $("ce-status").value = e.status || "planned";
       $("ce-when").value = e.scheduledAt ? e.scheduledAt.slice(0, 16) : "";
+      $("ce-meet").value = e.meetLink || "";
     }
     $("ce-note").value = (isContact ? e.note : e.notes) || "";
     $("ceDeleteBtn").style.display = (id_of(e) ? "" : "none");
@@ -1462,6 +1476,7 @@
       e.scheduledAt = $("ce-when").value || "";
       e.reminded = false;   // время могли перенести — напоминание должно сработать заново
       e.overdueNotified = false;
+      e.meetLink = $("ce-meet").value.trim();
     }
     var noteVal = $("ce-note").value.trim();
     if (isContact) e.note = noteVal; else e.notes = noteVal;
