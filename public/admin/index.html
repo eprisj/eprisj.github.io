@@ -255,6 +255,13 @@
               <button class="sb-pin" type="button" data-pin="forms" title="Закрепить в «Часто»" aria-label="Закрепить раздел «Анкеты» в блоке «Часто»"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M9 3.5h6l-.8 5.2 3.3 3.3H6.5l3.3-3.3Z"/><path d="M12 12v8.5"/></svg></button>
             </div>
             <div class="sb-item" data-home="journal">
+              <button class="tab-btn" data-tab="crm" data-nav-label="CRM" data-keywords="контакты интервью заметки crm авторы партнёры планирование" type="button">
+                <svg class="sb-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <span class="sb-label">CRM</span>
+              </button>
+              <button class="sb-pin" type="button" data-pin="crm" title="Закрепить в «Часто»" aria-label="Закрепить раздел «CRM» в блоке «Часто»"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M9 3.5h6l-.8 5.2 3.3 3.3H6.5l3.3-3.3Z"/><path d="M12 12v8.5"/></svg></button>
+            </div>
+            <div class="sb-item" data-home="journal">
               <button class="tab-btn" data-tab="passports" data-nav-label="Паспорта" data-keywords="документы удостоверения" type="button">
                 <svg class="sb-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="2.8" width="15" height="18.4" rx="2"/><circle cx="12" cy="9.5" r="2.6"/><path d="M8 17a4.4 4.4 0 0 1 8 0"/></svg>
                 <span class="sb-label">Паспорта</span>
@@ -1812,6 +1819,24 @@
             </div>
           </section>
 
+          <!-- ===== CRM ===== -->
+          <section class="tab-panel" id="tab-crm">
+            <div class="studio-layout">
+              <div class="card card-highlight">
+                <h2 class="card-title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> CRM</h2>
+                <p class="card-desc">Контакты, планирование интервью и заметки редакции — тот же документ, что видит бот и Mini App в Telegram: правки здесь появляются там сразу, и наоборот.</p>
+                <div class="studio-toolbar">
+                  <button class="btn btn-sm crm-subtab active" data-crmsub="interviews" type="button">Интервью</button>
+                  <button class="btn btn-sm crm-subtab" data-crmsub="contacts" type="button">Контакты</button>
+                  <button class="btn btn-sm crm-subtab" data-crmsub="notes" type="button">Заметки</button>
+                  <button id="crmAddBtn" class="btn btn-primary btn-sm" type="button" style="margin-left:auto"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span id="crmAddLabel">Новое интервью</span></button>
+                </div>
+              </div>
+              <div id="crmList" class="studio-grid"></div>
+              <div id="crmEditorCard" class="card" hidden></div>
+            </div>
+          </section>
+
           <!-- ===== TRANSLATIONS ===== -->
           <section class="tab-panel" id="tab-translations">
             <div class="translations-layout">
@@ -2341,6 +2366,7 @@
           homepage: 'Главная / Галерея',
           visibility: 'Видимость сайта',
           authors: 'About / Команда',
+          crm: 'CRM',
           upload: 'Загрузка фото',
           transcripts: 'Транскрипция',
           translations: 'Переводы',

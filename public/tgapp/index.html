@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>EPRIS — редакция</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
   /* Тот же язык, что на самом сайте (снято живьём с eprisjournal.com, не с
@@ -21,16 +24,6 @@
     --header-bg: #111111;
     --header-fg: #ffffff;
     --tint: rgba(0,0,0,0.03);
-  }
-  /* Тёмная тема Telegram — не инверсия один в один, а тот же чёрно-белый
-     язык наоборот: тёмная бумага, светлые чернила. Устанавливается JS-ом
-     по tgw.colorScheme, тут — только палитра. */
-  html.tg-dark {
-    --ink: #f2f0ec;
-    --paper: #0d0d0d;
-    --muted: rgba(242,240,236,0.55);
-    --rule: rgba(242,240,236,0.16);
-    --tint: rgba(255,255,255,0.05);
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
@@ -510,23 +503,17 @@
 
   var bootedAt = 0;
 
-  // ── Тема: тот же чёрно-белый язык, только наоборот ──────────────────────
-  // Не подстраиваемся под themeParams Telegram (кнопки чужого чата, цвет
-  // ссылок и т.п.) — это увело бы от айдентики EPRIS. Синхронизируем только
-  // сам факт «сейчас темно» через tgw.colorScheme, палитра — своя, задана
-  // в CSS под html.tg-dark.
+  // ── Тема: сайт не подстраивается под тёмный режим системы, и панель ──────
+  // тоже не должна. Раньше здесь была инверсия палитры под tgw.colorScheme —
+  // выглядела как généric-приложение, а не как EPRIS: сам сайт всегда белый
+  // с чёрной шапкой независимо от темы устройства, эта страница — тоже.
+  // Фон ЗА пределами контента (овербаунс, нижняя панель Telegram) красится
+  // в белый явно: без этого Telegram иногда красит его в свой тёмный тон,
+  // даже когда сама страница светлая — на половинчатом/свёрнутом состоянии
+  // эта полоса особенно заметна.
   function syncTheme() {
-    var dark = tgw && tgw.colorScheme === "dark";
-    document.documentElement.classList.toggle("tg-dark", dark);
-    // Фон ЗА пределами контента — область растяжения при овербаунсе и
-    // нижняя панель — Телеграм красит в белый по умолчанию, если не
-    // сказать иначе. На тёмной теме и на половинчатом/свёрнутом состоянии
-    // (когда этой полосы видно больше, чем обычно) это была белая вспышка
-    // не в тон ничему. Красим в --paper, шапка (setHeaderColor) — отдельно,
-    // она всегда чёрная вне зависимости от темы.
-    var paper = dark ? "#0d0d0d" : "#ffffff";
-    try { tgw.setBackgroundColor && tgw.setBackgroundColor(paper); } catch (e) {}
-    try { tgw.setBottomBarColor && tgw.setBottomBarColor(paper); } catch (e) {}
+    try { tgw.setBackgroundColor && tgw.setBackgroundColor("#ffffff"); } catch (e) {}
+    try { tgw.setBottomBarColor && tgw.setBottomBarColor("#ffffff"); } catch (e) {}
   }
 
   // ── Инициализация: подтверждаем, что это правда открыто из бота EPRIS ─────
@@ -539,7 +526,6 @@
     tgw.expand();
     try { tgw.setHeaderColor && tgw.setHeaderColor("#111111"); } catch (e) {}
     syncTheme();
-    if (tgw.onEvent) { try { tgw.onEvent("themeChanged", syncTheme); } catch (e) {} }
     // На Android человек может утащить половинчатый лист обратно вниз
     // жестом прямо во время работы — expand() при открытии этого не ловит,
     // а isExpanded после жеста становится false. Возвращаем сами.
@@ -686,9 +672,15 @@
     bindRows($("rows"));
   }
 
+  // updatedAt — ISO ("2026-08-20T11:37:40Z"), первые 10 символов — ровно
+  // YYYY-MM-DD, слайс безопасен. date у статей — человеческий формат
+  // ("July 18, 2026" / "Jul 8, 2026"), и тот же слайс на 10 символов резал
+  // его посреди слова ("Jul 8, 202"). ISO отличаем по дефисам на местах
+  // года-месяца-дня; всё остальное показываем как есть.
   function shortDate(v) {
-    var s = String(v || "").slice(0, 10);
-    return s || "";
+    var s = String(v || "");
+    if (!s) return "";
+    return /^\d{4}-\d{2}-\d{2}/.test(s) ? s.slice(0, 10) : s;
   }
 
   function rowHtml(x) {
