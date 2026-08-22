@@ -642,24 +642,34 @@ async function watchdog() {
   }
 }
 
+/* Раньше /alerts показывал только настройки сторожа — что именно проверяется
+   и с каким порогом, но не отвечал на первый вопрос, с которым сюда идут:
+   «а сейчас-то всё в порядке?». Состояние уже посчитано в transition() на
+   каждом круге и лежит в state[key] — просто читаем, не гоняя проверки
+   заново ради одной команды. */
 function cmdAlerts() {
+  const live = (key, label) => {
+    const s = state[key];
+    const mark = s === "bad" ? "🔴" : s === "ok" ? "🟢" : "⚪";
+    return `${mark} ${label}`;
+  };
   const rows = [
     "<b>👁 Сторож</b>", "",
-    `проверка каждые ${Math.round(WATCH_INTERVAL_MS / 60000)} мин`,
-    `порог по диску: ${DISK_ALERT_GB} ГБ`,
-    `предупреждение о сертификате: за ${SSL_ALERT_DAYS} дн.`,
+    "<blockquote>" + [
+      live("site", "сайт"), live("api", "API контента"), live("forms", "служба анкет"),
+      ...WATCHED_SERVICES.map(([unit, label]) => live(`svc:${unit}`, label)),
+      live("disk", "диск"), live("ssl", "сертификат"),
+    ].join("\n") + "</blockquote>",
     "",
-    "<b>Под наблюдением:</b>",
-    "• сайт, API контента, служба анкет",
-    `• службы: ${WATCHED_SERVICES.map(([, l]) => l).join(", ")}`,
-    "• свободное место и срок сертификата",
+    `проверка каждые ${Math.round(WATCH_INTERVAL_MS / 60000)} мин · порог диска ${DISK_ALERT_GB} ГБ · сертификат за ${SSL_ALERT_DAYS} дн.`,
     "• новые ответы в анкетах",
+    "• интервью: напоминание за час, отметка о просрочке через 2 часа без смены статуса",
     "",
     muted()
       ? `🔕 тишина до ${new Date(state.muteUntil).toLocaleString("ru-RU")}`
       : "🔔 алерты включены",
     "",
-    "<i>Сообщается смена состояния, а не само состояние: «упало» и «поднялось» по разу, без повторов.</i>",
+    "<i>⚪ — ещё не проверялось с последнего перезапуска. Сообщается смена состояния, а не само состояние: «упало» и «поднялось» по разу, без повторов.</i>",
   ];
   return rows.join("\n");
 }
@@ -1094,21 +1104,42 @@ async function remindInterviews() {
   let crm;
   try { crm = await fetchCrm(); } catch { return; }   // CRM недоступна — не критично, попробуем на следующем круге
   const now = Date.now();
+  const contactName = (id) => { const c = crm.contacts.find((x) => String(x.id) === String(id)); return c ? c.name : null; };
+  let changed = false;
+
   const due = crm.interviews.filter((iv) => {
     if (iv.reminded || iv.status !== "planned" || !iv.scheduledAt) return false;
     const at = Date.parse(iv.scheduledAt);
     return Number.isFinite(at) && at - now > 0 && at - now <= 3600000;
   });
-  if (!due.length) return;
-  const contactName = (id) => { const c = crm.contacts.find((x) => String(x.id) === String(id)); return c ? c.name : null; };
   for (const iv of due) {
     const when = new Date(iv.scheduledAt).toLocaleString("ru-RU", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
     const who = contactName(iv.contactId);
     await sendRich(`🎙 <b>Интервью через час</b>\n\n<blockquote>${esc(iv.subject || "без темы")}${who ? `\n${esc(who)}` : ""}\n${esc(when)}</blockquote>`,
       { reply_markup: MENU });
     iv.reminded = true;
+    changed = true;
   }
-  await saveCrm(crm).catch((e) => console.error("[bot] не удалось сохранить reminded:", e.message));
+
+  /* Время прошло, а статус так и остался «запланировано» — либо забыли
+     отметить, либо интервью сорвалось. Раздражает не меньше, чем молчание:
+     поэтому один раз, не на каждом круге (overdueNotified), и не сразу —
+     двух часов достаточно, чтобы не дёргать из-за короткой задержки. */
+  const overdue = crm.interviews.filter((iv) => {
+    if (iv.overdueNotified || iv.status !== "planned" || !iv.scheduledAt) return false;
+    const at = Date.parse(iv.scheduledAt);
+    return Number.isFinite(at) && now - at >= 7200000;
+  });
+  for (const iv of overdue) {
+    const when = new Date(iv.scheduledAt).toLocaleString("ru-RU", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+    const who = contactName(iv.contactId);
+    await sendRich(`⚠️ <b>Интервью прошло, статус не менялся</b>\n\n<blockquote>${esc(iv.subject || "без темы")}${who ? `\n${esc(who)}` : ""}\n${esc(when)}</blockquote>\nОтметьте в App, как прошло — или перенесите дату.`,
+      { reply_markup: MENU });
+    iv.overdueNotified = true;
+    changed = true;
+  }
+
+  if (changed) await saveCrm(crm).catch((e) => console.error("[bot] не удалось сохранить reminded:", e.message));
 }
 
 void fetch(api("setChatMenuButton"), {
