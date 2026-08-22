@@ -4799,6 +4799,14 @@
           "content": "Alena: I’m a very slow person, so observation helps me a lot. I love immersing myself in the process – looking at a tree, feeling the wind. Simply observing yourself and the world around you can reveal a lot."
         },
         {
+          "type": "video",
+          "mediaKind": "gif",
+          "content": "",
+          "caption": "",
+          "loop": true,
+          "muted": true
+        },
+        {
           "type": "text",
           "content": "<b>What is your favorite place in Lisbon, somewhere you always want to return to?</b>"
         },
@@ -4875,7 +4883,7 @@
           "credit": "@chora.practice"
         }
       ],
-      "updatedAt": "2026-08-22T16:32:38.078Z",
+      "updatedAt": "2026-08-22T16:33:28.581Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "publishAt": "2026-08-19T09:38:46.903Z",
