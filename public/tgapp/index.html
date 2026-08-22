@@ -64,12 +64,26 @@
   }
   .tab.active { border-color: var(--ink); color: var(--ink); }
 
-  .stat-row { display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
-  .stat {
-    flex: 1 1 30%; border: 1px solid var(--rule); padding: 12px 10px; min-width: 90px;
+  /* Контрольная панель дашборда: одна рамка вместо трёх разрозненных
+     блоков (плитки статистики / ссылка CRM отдельной строкой / пунктирные
+     кнопки создания). Плитки сверху, действия снизу через тонкую линию —
+     тот же приём, что и в карточках бота (масштхед + тело + разделители). */
+  .control-bar { border: 1px solid var(--ink); margin-bottom: 20px; }
+  .cb-stats { display: flex; }
+  .cb-stat {
+    flex: 1; text-align: center; padding: 16px 4px; border-right: 1px solid var(--rule); cursor: default;
   }
-  .stat .n { font-family: 'Crimson Text', serif; font-size: 26px; line-height: 1; }
-  .stat .l { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+  .cb-stat:last-child { border-right: none; }
+  .cb-stat.tappable { cursor: pointer; }
+  .cb-stat .n { font-family: 'Crimson Text', serif; font-size: 25px; line-height: 1; }
+  .cb-stat .l { font-size: 9px; letter-spacing: 0.5px; text-transform: uppercase; color: var(--muted); margin-top: 5px; }
+  .cb-actions { display: flex; border-top: 1px solid var(--ink); }
+  .cb-action {
+    flex: 1; padding: 13px 4px; border: none; background: none; cursor: pointer; border-right: 1px solid var(--ink);
+    font-family: 'PT Mono', monospace; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink);
+  }
+  .cb-action:last-child { border-right: none; }
+  .cb-action:active { background: var(--tint); }
 
   .search {
     width: 100%; padding: 10px 0; border: none; border-bottom: 1px solid var(--ink);
@@ -107,14 +121,9 @@
   }
 
   /* Та же рамка, но без uppercase/letter-spacing: та вёрстка держит короткую
-     статичную метку ("ВСЕ МАТЕРИАЛЫ"), а тут — предложение с цифрами
-     ("3 предстоящих, 8 контактов") — капсом оно превращалось в крик. */
-  .crm-link {
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    text-align: center; padding: 14px 12px; margin-top: 4px; border: 1px solid var(--rule);
-    font-family: 'PT Serif', serif; font-size: 15px; color: var(--ink); cursor: pointer;
-  }
-  .crm-link .n { font-family: 'PT Mono', monospace; font-size: 13px; color: var(--muted); }
+     статичную метку ("ВСЕ МАТЕРИАЛЫ"). CRM теперь плитка в control-bar
+     вместо отдельной строки — этот класс используется только там, где
+     остался: список материалов. */
 
   .out-link {
     display: inline-block; margin-bottom: 16px; font-size: 12px; letter-spacing: 1px;
@@ -287,12 +296,13 @@
   <div id="boot" class="loading">Проверяем доступ…</div>
 
   <div id="home-view" class="hidden">
-    <div class="new-row">
-      <button class="new-btn" id="newArticleBtn">+ Статья</button>
-      <button class="new-btn" id="newReviewBtn">+ Обзор</button>
+    <div class="control-bar">
+      <div class="cb-stats" id="stats"></div>
+      <div class="cb-actions">
+        <button class="cb-action" id="newArticleBtn">+ Статья</button>
+        <button class="cb-action" id="newReviewBtn">+ Обзор</button>
+      </div>
     </div>
-    <div class="stat-row" id="stats"></div>
-    <div class="crm-link" id="crmLink">CRM — контакты, интервью, заметки →</div>
     <div class="title" style="font-size:20px;margin:6px 0 10px;">Свежее</div>
     <div id="recent"></div>
     <div class="more-link" id="allLink">Все материалы →</div>
@@ -635,16 +645,17 @@
   function renderHome() {
     var drafts = flatList.filter(function (x) { return x.entity.draft; });
     var published = flatList.filter(function (x) { return !x.entity.draft; });
+    var crmTotal = crmLoaded ? crm.contacts.length + crm.interviews.length + crm.notes.length : null;
     $("stats").innerHTML = [
-      stat(published.length, "опубл."),
-      stat(drafts.length, "черновиков"),
+      stat(published.length, "опубл.", "tappable"),
+      stat(drafts.length, "черновиков", "tappable"),
       stat((content.items || []).length, "в галерее"),
+      stat(crmTotal === null ? "—" : crmTotal, "CRM", "tappable"),
     ].join("");
-    var statEls = $("stats").querySelectorAll(".stat");
+    var statEls = $("stats").querySelectorAll(".cb-stat");
     statEls[0].onclick = function () { openList("all"); };
-    statEls[0].style.cursor = "pointer";
     statEls[1].onclick = function () { openList("draft"); };
-    statEls[1].style.cursor = "pointer";
+    statEls[3].onclick = function () { openCrm(); };
 
     var recent = published.slice(0, 6);
     $("recent").innerHTML = recent.length
@@ -653,8 +664,8 @@
     bindRows($("recent"));
   }
 
-  function stat(n, label) {
-    return '<div class="stat"><div class="n">' + n + '</div><div class="l">' + esc(label) + '</div></div>';
+  function stat(n, label, cls) {
+    return '<div class="cb-stat' + (cls ? " " + cls : "") + '"><div class="n">' + n + '</div><div class="l">' + esc(label) + '</div></div>';
   }
 
   // ── Список ────────────────────────────────────────────────────────────────
@@ -1254,12 +1265,12 @@
     crmLoaded = true;
   }
 
-  // Кнопка на дашборде показывает реальные числа вместо общей подписи —
-  // не нужно заходить внутрь, чтобы понять, пусто там или нет.
+  // Плитка «CRM» на дашборде показывает реальное число записей — не нужно
+  // заходить внутрь, чтобы понять, пусто там или нет. Перерисовываем весь
+  // дашборд только если он сейчас виден: незачем трогать DOM списка или
+  // редактора, если человек туда даже не смотрит.
   function updateCrmLinkCount() {
-    var upcoming = crm.interviews.filter(function (iv) { return iv.status === "planned"; }).length;
-    var bits = [upcoming + " интервью", crm.contacts.length + " контактов", crm.notes.length + " заметок"];
-    $("crmLink").innerHTML = "CRM<span class=\"n\">&nbsp;&nbsp;" + esc(bits.join("  ·  ")) + "</span>&nbsp;&nbsp;→";
+    if (!$("home-view").classList.contains("hidden")) renderHome();
   }
 
   async function saveCrm() {
@@ -1297,7 +1308,6 @@
   document.querySelectorAll("#crm-view .tab").forEach(function (tab) {
     tab.onclick = function () { $("crmSearch").value = ""; openCrm(tab.dataset.crmtab); };
   });
-  $("crmLink").onclick = function () { openCrm(); };
   $("crmSearch").oninput = renderCrmList;
 
   function renderCrmList() {
