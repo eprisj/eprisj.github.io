@@ -150,7 +150,13 @@
   .switch .dot { position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; background: var(--ink); transition: left .15s; }
   .switch.on .dot { left: 22px; background: var(--success); }
 
-  .actions { display: flex; gap: 10px; margin-top: 20px; }
+  /* Липнет к низу экрана — на статье в 15+ блоков «Сохранить» раньше было
+     видно только домотав до самого конца, что на практике означало лишний
+     повод бросить правку на середине. */
+  .actions {
+    display: flex; gap: 10px; margin-top: 20px; position: sticky; bottom: 0;
+    background: var(--paper); padding: 12px 0 4px; border-top: 1px solid var(--rule);
+  }
   .btn {
     flex: 1; border: 1px solid var(--ink); background: none; padding: 13px 10px;
     font-family: 'PT Mono', monospace; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
@@ -381,6 +387,7 @@
     </div>
 
     <div class="cover" id="cover">Нажмите, чтобы добавить обложку</div>
+    <div class="out-link" id="removeCoverLink" style="display:none;margin-top:-10px;color:var(--error);">✕ Убрать обложку</div>
     <input type="file" id="fileInput" accept="image/*" style="display:none">
 
     <div class="field">
@@ -393,7 +400,8 @@
     </div>
     <div class="field" id="f-cat-wrap">
       <label>Категория</label>
-      <input type="text" id="f-cat">
+      <input type="text" id="f-cat" list="catList">
+      <datalist id="catList"></datalist>
     </div>
     <div class="field" id="f-date-wrap">
       <label>Дата</label>
@@ -429,7 +437,7 @@
       <input type="text" id="f-link" placeholder="https://…">
     </div>
 
-    <div class="blocks-heading">Текст материала</div>
+    <div class="blocks-heading" id="blocksHeading">Текст материала</div>
     <div id="blocks"></div>
     <div class="add-block-row" id="addBlockRow">
       <button class="add-block-btn" data-add="text">+ Текст</button>
@@ -596,6 +604,12 @@
     flatList.sort(function (a, b) {
       return String(b.entity.updatedAt || b.entity.date || "").localeCompare(String(a.entity.updatedAt || a.entity.date || ""));
     });
+
+    // Автоподсказка категорий из того, что уже реально использовалось —
+    // не справочник, который можно рассинхронизировать, а живой список:
+    // обновляется при каждой загрузке контента.
+    var cats = Array.from(new Set(flatList.map(function (x) { return x.entity.category; }).filter(Boolean))).sort();
+    $("catList").innerHTML = cats.map(function (c) { return '<option value="' + esc(c) + '">'; }).join("");
   }
 
   // ── Дашборд ────────────────────────────────────────────────────────────────
@@ -820,10 +834,12 @@
       cover.style.backgroundImage = "url(" + e.imageUrl + ")";
       cover.classList.add("has-image");
       cover.innerHTML = "<span>Заменить обложку</span>";
+      $("removeCoverLink").style.display = "";
     } else {
       cover.style.backgroundImage = "";
       cover.classList.remove("has-image");
       cover.textContent = "Нажмите, чтобы добавить обложку";
+      $("removeCoverLink").style.display = "none";
     }
 
     setSwitch(!e.draft);
@@ -922,7 +938,10 @@
       renderChips(key);
     });
     $(key + "-input").addEventListener("keydown", function (ev) {
-      if (ev.key !== "Enter") return;
+      // Запятая — так же естественно, как Enter, когда перечисляешь теги
+      // подряд: не у всех клавиатур Enter на телефоне ведёт себя одинаково
+      // (иногда «Готово», иногда перевод строки), а запятая — всегда запятая.
+      if (ev.key !== "Enter" && ev.key !== ",") return;
       ev.preventDefault();
       var v = this.value.trim();
       if (!v) return;
@@ -978,6 +997,7 @@
   }
 
   function renderBlocks() {
+    $("blocksHeading").textContent = "Текст материала" + (blockList.length ? " — " + blockList.length : "");
     $("blocks").innerHTML = blockList.length
       ? blockList.map(blockCardHtml).join("")
       : '<div class="empty">Пусто — добавьте блок ниже</div>';
@@ -1002,7 +1022,17 @@
     var act = t.dataset.act;
     if (act === "up" && i > 0) { var a = blockList.splice(i, 1)[0]; blockList.splice(i - 1, 0, a); renderBlocks(); }
     else if (act === "down" && i < blockList.length - 1) { var b = blockList.splice(i, 1)[0]; blockList.splice(i + 1, 0, b); renderBlocks(); }
-    else if (act === "del") { blockList.splice(i, 1); renderBlocks(); }
+    else if (act === "del") {
+      // Пустой блок (только что добавленный, ничего не потерять) удаляется
+      // сразу. Всё остальное — с подтверждением: отмены "✕" нет, а текст
+      // внутри блока мог быть на несколько абзацев.
+      var block = blockList[i];
+      var hasContent = block && (Array.isArray(block.content) ? block.content.length : String(block.content || "").trim());
+      var doDel = function () { blockList.splice(i, 1); renderBlocks(); setDirty(true); };
+      if (!hasContent) { doDel(); }
+      else if (tgw && tgw.showConfirm) tgw.showConfirm("Удалить блок без возможности отмены?", function (ok) { if (ok) doDel(); });
+      else if (window.confirm("Удалить блок без возможности отмены?")) doDel();
+    }
     else if (act === "pickimg") { photoTarget = i; $("fileInput").click(); }
     else if (act === "galadd") { photoTarget = { i: i, gallery: true }; $("fileInput").click(); }
     else if (act === "galdel") {
@@ -1037,6 +1067,17 @@
   $("cancelBtn").onclick = goBack;
 
   $("cover").onclick = function () { photoTarget = "cover"; $("fileInput").click(); };
+  $("removeCoverLink").onclick = function (ev) {
+    ev.stopPropagation();
+    if (!current) return;
+    current.entity.imageUrl = "";
+    var cover = $("cover");
+    cover.style.backgroundImage = "";
+    cover.classList.remove("has-image");
+    cover.textContent = "Нажмите, чтобы добавить обложку";
+    $("removeCoverLink").style.display = "none";
+    setDirty(true);
+  };
   $("fileInput").onchange = async function () {
     var file = this.files && this.files[0];
     this.value = "";   // иначе повторный выбор того же файла не поднимет onchange
@@ -1062,6 +1103,7 @@
         cover.style.backgroundImage = "url(" + data.url + ")";
         cover.classList.add("has-image");
         cover.innerHTML = "<span>Заменить обложку</span>";
+        $("removeCoverLink").style.display = "";
       } else if (target && typeof target === "object" && target.gallery) {
         var galBlock = blockList[target.i];
         if (galBlock) {
