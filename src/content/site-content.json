@@ -4615,6 +4615,16 @@
           "content": "<b>Xenia:</b> The environment is completely different. I love my city and my country, but St. Petersburg is huge, while Lisbon has only around 600,000 people. Because there are fewer people and the overall atmosphere is more relaxed, everything feels calmer. If you’re not bothering anyone, people tend to support you. In an environment like this, it’s much easier to express yourself."
         },
         {
+          "type": "video",
+          "mediaKind": "gif",
+          "content": "https://api.eprisjournal.com/uploads/mt35c8z0937px7.mp4",
+          "caption": "",
+          "loop": true,
+          "muted": true,
+          "videoWebm": "",
+          "poster": "https://api.eprisjournal.com/uploads/mt35c8z0937px7.poster.jpg"
+        },
+        {
           "type": "text",
           "content": "<b>Does it also have to do with the relaxed atmosphere around you, as well as the fact that no one knows you and you’re free to try something new?</b>"
         },
@@ -4651,6 +4661,16 @@
         {
           "type": "text",
           "content": "<b>Xenia</b>: I think it was more Alena’s initiative. She knows how to sew, genuinely loves fabrics, and has a deep understanding of the material."
+        },
+        {
+          "type": "video",
+          "mediaKind": "gif",
+          "content": "https://api.eprisjournal.com/uploads/mt35bxhczp0ori.mp4",
+          "caption": "",
+          "loop": true,
+          "muted": true,
+          "videoWebm": "https://api.eprisjournal.com/uploads/mt35bxhczp0ori.webm",
+          "poster": "https://api.eprisjournal.com/uploads/mt35bxhczp0ori.poster.jpg"
         },
         {
           "type": "text",
@@ -4842,26 +4862,6 @@
         {
           "type": "video",
           "mediaKind": "gif",
-          "content": "https://api.eprisjournal.com/uploads/mt35bxhczp0ori.mp4",
-          "caption": "",
-          "loop": true,
-          "muted": true,
-          "videoWebm": "https://api.eprisjournal.com/uploads/mt35bxhczp0ori.webm",
-          "poster": "https://api.eprisjournal.com/uploads/mt35bxhczp0ori.poster.jpg"
-        },
-        {
-          "type": "video",
-          "mediaKind": "gif",
-          "content": "https://api.eprisjournal.com/uploads/mt35c8z0937px7.mp4",
-          "caption": "",
-          "loop": true,
-          "muted": true,
-          "videoWebm": "",
-          "poster": "https://api.eprisjournal.com/uploads/mt35c8z0937px7.poster.jpg"
-        },
-        {
-          "type": "video",
-          "mediaKind": "gif",
           "content": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.mp4",
           "caption": "",
           "loop": true,
@@ -4870,7 +4870,7 @@
           "poster": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.poster.jpg"
         }
       ],
-      "updatedAt": "2026-08-22T11:31:11.727Z",
+      "updatedAt": "2026-08-22T11:33:34.862Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "publishAt": "2026-08-19T09:38:46.903Z",
