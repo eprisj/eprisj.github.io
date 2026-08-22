@@ -4831,14 +4831,6 @@
           "content": "<b>Finally, what is the one piece of advice you would give every reader?</b>"
         },
         {
-          "type": "text",
-          "content": "<b>Alena</b>: Keep doing what you genuinely love. Despite your inner limitations, look deeply within yourself, listen to your true desires, and simply give yourself permission to pursue them."
-        },
-        {
-          "type": "text",
-          "content": "<b>Xenia</b>: The main lesson I took from art school is: ‘Experience resistance.’ If you feel resistance toward something, you should move toward it. It means there’s a huge amount of energy hidden there. Don’t ignore or suppress it – look at it more closely."
-        },
-        {
           "type": "video",
           "mediaKind": "gif",
           "content": "https://api.eprisjournal.com/uploads/mt353zdbavxtzi.mp4",
@@ -4851,6 +4843,14 @@
           "credit": "@chora.practice "
         },
         {
+          "type": "text",
+          "content": "<b>Alena</b>: Keep doing what you genuinely love. Despite your inner limitations, look deeply within yourself, listen to your true desires, and simply give yourself permission to pursue them."
+        },
+        {
+          "type": "text",
+          "content": "<b>Xenia</b>: The main lesson I took from art school is: ‘Experience resistance.’ If you feel resistance toward something, you should move toward it. It means there’s a huge amount of energy hidden there. Don’t ignore or suppress it – look at it more closely."
+        },
+        {
           "type": "video",
           "mediaKind": "gif",
           "content": "https://api.eprisjournal.com/uploads/mt35850in1olvy.mp4",
@@ -4859,20 +4859,23 @@
           "muted": true,
           "videoWebm": "https://api.eprisjournal.com/uploads/mt35850in1olvy.webm",
           "poster": "https://api.eprisjournal.com/uploads/mt35850in1olvy.poster.jpg",
-          "credit": "@chora.practice"
+          "credit": "@chora.practice",
+          "sourceUrl": "https://www.instagram.com/p/DbolFp7DNTp/?img_index=1&igsi=d3JkcnZlazRybGFk"
         },
         {
           "type": "video",
           "mediaKind": "gif",
           "content": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.mp4",
-          "caption": "",
+          "caption": "Installation for Tales Wediding Planner",
           "loop": true,
           "muted": true,
           "videoWebm": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.webm",
-          "poster": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.poster.jpg"
+          "poster": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.poster.jpg",
+          "sourceUrl": "https://www.instagram.com/p/DbolFp7DNTp/?img_index=1&igsi=d3JkcnZlazRybGFk",
+          "credit": "@chora.practice"
         }
       ],
-      "updatedAt": "2026-08-22T11:41:12.460Z",
+      "updatedAt": "2026-08-22T11:42:50.101Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "publishAt": "2026-08-19T09:38:46.903Z",
