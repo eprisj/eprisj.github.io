@@ -4806,7 +4806,9 @@
           "loop": true,
           "muted": true,
           "videoWebm": "",
-          "poster": "https://api.eprisjournal.com/uploads/mt4lmobma8gvmc.poster.jpg"
+          "poster": "https://api.eprisjournal.com/uploads/mt4lmobma8gvmc.poster.jpg",
+          "sourceUrl": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTU3MjAxODQ0MTkyNDY4?story_media_id=3956606514496304158&igsi=MXFocnY2bWg0OHdhaw==",
+          "credit": "@chora.practice"
         },
         {
           "type": "text",
@@ -4885,7 +4887,7 @@
           "credit": "@chora.practice"
         }
       ],
-      "updatedAt": "2026-08-22T16:35:56.999Z",
+      "updatedAt": "2026-08-22T16:36:26.801Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "publishAt": "2026-08-19T09:38:46.903Z",
