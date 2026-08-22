@@ -10420,6 +10420,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     if (btn.dataset.tab === 'authors') setTimeout(() => window._renderAuthorsTab && window._renderAuthorsTab(), 50);
     if (btn.dataset.tab === 'history') setTimeout(refreshVersionHistory, 50);
     if (btn.dataset.tab === 'order') setTimeout(() => window._renderArticleOrderTab && window._renderArticleOrderTab(), 50);
+    if (btn.dataset.tab === 'crm') setTimeout(() => window._renderCrmTab && window._renderCrmTab(), 50);
   });
 });
 
@@ -14050,6 +14051,250 @@ function bindStudioMediaActions() {
   document.getElementById('authorAddBtn')?.addEventListener('click', () => openEditor(null));
   document.getElementById('authorsApplyBtn')?.addEventListener('click', applyAuthors);
   window._renderAuthorsTab = renderAuthorsTab;
+})();
+
+// ═══════════════════════════════════════════════════════════
+// ──  CRM: контакты, интервью, заметки  ──────────────────────
+// Тот же /crm, которым уже пользуются бот и Mini App в Telegram — один
+// документ, три входа. Правка здесь появляется там сразу (и наоборот),
+// потому что это не копия данных, а один и тот же файл на VPS.
+// ═══════════════════════════════════════════════════════════
+(function () {
+  const esc = (s) => String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const CRM_API = 'https://api.eprisjournal.com/crm';
+  const STATUS_LABEL = { planned: 'Запланировано', done: 'Проведено', transcribing: 'Расшифровка', ready: 'Готово' };
+  const TYPE_LABEL = { author: 'Автор', partner: 'Партнёр', speaker: 'Спикер', other: 'Другое' };
+
+  let crm = { contacts: [], interviews: [], notes: [] };
+  let crmSub = 'interviews';
+  let crmLoaded = false;
+
+  async function fetchCrm() {
+    const pw = getAdminPassword();
+    if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
+    const res = await fetch(CRM_API, { headers: { 'X-Admin-Password': pw }, cache: 'no-store' });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || !data.ok) throw new Error(data.error || ('VPS вернул статус ' + res.status));
+    crm = { contacts: data.contacts || [], interviews: data.interviews || [], notes: data.notes || [] };
+    crmLoaded = true;
+  }
+
+  async function saveCrm() {
+    const pw = getAdminPassword();
+    const res = await fetch(CRM_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
+      body: JSON.stringify(crm),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || !data.ok) throw new Error(data.error || ('VPS вернул статус ' + res.status));
+  }
+
+  const nextId = (key) => Math.max(0, ...crm[key].map((x) => Number(x.id) || 0)) + 1;
+  const contactName = (id) => { const c = crm.contacts.find((x) => String(x.id) === String(id)); return c ? c.name : '—'; };
+
+  function listEl() { return document.getElementById('crmList'); }
+  function cardEl() { return document.getElementById('crmEditorCard'); }
+
+  async function renderCrmTab() {
+    const wrap = listEl();
+    if (!wrap) return;
+    wrap.innerHTML = '<p class="form-hint">Загрузка…</p>';
+    try {
+      await fetchCrm();
+    } catch (e) {
+      wrap.innerHTML = `<p class="form-hint">Не удалось загрузить CRM: ${esc(e.message)}</p>`;
+      return;
+    }
+    renderList();
+  }
+
+  function renderList() {
+    const wrap = listEl();
+    if (!wrap) return;
+    document.getElementById('crmAddLabel').textContent =
+      crmSub === 'contacts' ? 'Новый контакт' : crmSub === 'notes' ? 'Новая заметка' : 'Новое интервью';
+
+    if (crmSub === 'contacts') {
+      const list = crm.contacts.slice().sort((a, b) => String(a.name || '').localeCompare(String(b.name || '')));
+      wrap.innerHTML = list.length ? list.map((c) => {
+        const ivCount = crm.interviews.filter((iv) => String(iv.contactId) === String(c.id)).length;
+        const meta = [TYPE_LABEL[c.type] || '', c.telegram, c.phone, c.email].filter(Boolean).join(' · ');
+        return `
+        <div class="card team-admin-card">
+          <div class="team-admin-avatar team-admin-avatar-placeholder">${esc((c.name || '?').charAt(0))}</div>
+          <div class="team-admin-copy">
+            <div class="team-admin-name">${esc(c.name || '(без имени)')}</div>
+            <div class="team-admin-role">${esc(meta)}${ivCount ? ` · ${ivCount} интервью` : ''}</div>
+            ${c.note ? `<div class="team-admin-bio">${esc(c.note)}</div>` : ''}
+            <div class="team-admin-actions">
+              <button class="btn btn-sm" type="button" data-crm-edit="contact:${esc(c.id)}">${typeof adminIcon === 'function' ? adminIcon('edit') : ''}<span class="btn-label">Редактировать</span></button>
+              <button class="btn btn-sm btn-danger-text" type="button" data-crm-del="contact:${esc(c.id)}">🗑 Удалить</button>
+            </div>
+          </div>
+        </div>`;
+      }).join('') : '<p class="form-hint">Пока нет контактов.</p>';
+    } else if (crmSub === 'notes') {
+      const list = crm.notes.slice().sort((a, b) => String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
+      wrap.innerHTML = list.length ? list.map((n) => `
+        <div class="card team-admin-card" style="align-items:flex-start">
+          <div class="team-admin-copy" style="width:100%">
+            <div class="team-admin-bio" style="white-space:pre-wrap">${esc(n.text)}</div>
+            <div class="team-status-badges"><span class="team-badge">${esc(String(n.createdAt || '').slice(0, 10))}</span></div>
+            <div class="team-admin-actions">
+              <button class="btn btn-sm" type="button" data-crm-edit="note:${esc(n.id)}">${typeof adminIcon === 'function' ? adminIcon('edit') : ''}<span class="btn-label">Редактировать</span></button>
+              <button class="btn btn-sm btn-danger-text" type="button" data-crm-del="note:${esc(n.id)}">🗑 Удалить</button>
+            </div>
+          </div>
+        </div>`).join('') : '<p class="form-hint">Пока нет заметок.</p>';
+    } else {
+      const list = crm.interviews.slice().sort((a, b) => String(a.scheduledAt || '').localeCompare(String(b.scheduledAt || '')));
+      wrap.innerHTML = list.length ? list.map((iv) => {
+        const when = iv.scheduledAt ? new Date(iv.scheduledAt).toLocaleString('ru-RU', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : 'без даты';
+        const badgeClass = iv.status === 'done' || iv.status === 'ready' ? 'team-badge is-active' : iv.status === 'transcribing' ? 'team-badge' : 'team-badge is-muted';
+        return `
+        <div class="card team-admin-card">
+          <div class="team-admin-copy">
+            <div class="team-admin-name">${esc(iv.subject || '(без темы)')}</div>
+            <div class="team-status-badges"><span class="${badgeClass}">${esc(STATUS_LABEL[iv.status] || iv.status)}</span></div>
+            <div class="team-admin-role">${esc(contactName(iv.contactId))} · ${esc(when)}</div>
+            ${iv.meetLink ? `<div class="team-admin-bio"><a href="${esc(iv.meetLink)}" target="_blank" rel="noreferrer">🎥 Ссылка на встречу ↗</a></div>` : ''}
+            ${iv.notes ? `<div class="team-admin-bio">${esc(iv.notes)}</div>` : ''}
+            <div class="team-admin-actions">
+              <button class="btn btn-sm" type="button" data-crm-edit="interview:${esc(iv.id)}">${typeof adminIcon === 'function' ? adminIcon('edit') : ''}<span class="btn-label">Редактировать</span></button>
+              <button class="btn btn-sm btn-danger-text" type="button" data-crm-del="interview:${esc(iv.id)}">🗑 Удалить</button>
+            </div>
+          </div>
+        </div>`;
+      }).join('') : '<p class="form-hint">Пока нет интервью.</p>';
+    }
+
+    wrap.querySelectorAll('[data-crm-edit]').forEach((b) => b.addEventListener('click', () => {
+      const [kind, id] = b.getAttribute('data-crm-edit').split(':');
+      openCrmEditor(kind, kind === 'note' ? Number(id) : Number(id));
+    }));
+    wrap.querySelectorAll('[data-crm-del]').forEach((b) => b.addEventListener('click', async () => {
+      const [kind, id] = b.getAttribute('data-crm-del').split(':');
+      const key = kind === 'contact' ? 'contacts' : kind === 'note' ? 'notes' : 'interviews';
+      const item = crm[key].find((x) => String(x.id) === id);
+      if (!item) return;
+      const label = kind === 'note' ? (item.text || '').slice(0, 40) : (item.name || item.subject || '');
+      if (!(await showConfirmModal(`Удалить «${esc(label)}»?`, 'Действие необратимо.', 'Удалить'))) return;
+      crm[key] = crm[key].filter((x) => String(x.id) !== id);
+      try {
+        await saveCrm();
+        renderList();
+        showToast('info', 'Удалено.');
+      } catch (e) { showToast('error', 'Не удалось сохранить: ' + e.message); }
+    }));
+  }
+
+  function openCrmEditor(kind, id) {
+    const card = cardEl();
+    if (!card) return;
+    card.hidden = false;
+
+    if (kind === 'contact') {
+      const existing = id ? crm.contacts.find((x) => x.id === id) : null;
+      const c = existing ? { ...existing } : { id: nextId('contacts'), name: '', type: 'author', telegram: '', email: '', phone: '', note: '' };
+      const field = (label, key, ph) => `<label><span class="field-label">${label}</span><input data-cf="${key}" value="${esc(c[key] || '')}" placeholder="${ph || ''}"></label>`;
+      card.innerHTML = `
+        <h3 class="card-title">${existing ? 'Контакт' : 'Новый контакт'}</h3>
+        <div class="form-grid">
+          ${field('Имя', 'name')}
+          <label><span class="field-label">Тип</span>
+            <select data-cf="type">${Object.entries(TYPE_LABEL).map(([v, l]) => `<option value="${v}" ${c.type === v ? 'selected' : ''}>${l}</option>`).join('')}</select>
+          </label>
+          ${field('Telegram', 'telegram', '@username')}
+          ${field('Email', 'email')}
+          ${field('Телефон', 'phone')}
+        </div>
+        <label><span class="field-label">Заметка</span><textarea data-cf="note" rows="3">${esc(c.note || '')}</textarea></label>
+        <div class="studio-toolbar">
+          <button class="btn btn-primary btn-sm" type="button" id="crmSaveBtn">Сохранить</button>
+          <button class="btn btn-sm" type="button" id="crmCancelBtn">Отмена</button>
+        </div>`;
+      document.getElementById('crmSaveBtn').addEventListener('click', async () => {
+        const next = { ...c };
+        card.querySelectorAll('[data-cf]').forEach((el) => { next[el.dataset.cf] = el.value.trim(); });
+        if (!next.name) { showToast('error', 'Имя не может быть пустым.'); return; }
+        const idx = crm.contacts.findIndex((x) => x.id === next.id);
+        if (idx >= 0) crm.contacts[idx] = next; else crm.contacts.push(next);
+        try { await saveCrm(); card.hidden = true; renderList(); showToast('success', 'Сохранено.'); }
+        catch (e) { showToast('error', 'Не удалось сохранить: ' + e.message); }
+      });
+    } else if (kind === 'note') {
+      const existing = id ? crm.notes.find((x) => x.id === id) : null;
+      const n = existing ? { ...existing } : { id: nextId('notes'), text: '', createdAt: new Date().toISOString() };
+      card.innerHTML = `
+        <h3 class="card-title">${existing ? 'Заметка' : 'Новая заметка'}</h3>
+        <label><span class="field-label">Текст</span><textarea data-cf="text" rows="5">${esc(n.text || '')}</textarea></label>
+        <div class="studio-toolbar">
+          <button class="btn btn-primary btn-sm" type="button" id="crmSaveBtn">Сохранить</button>
+          <button class="btn btn-sm" type="button" id="crmCancelBtn">Отмена</button>
+        </div>`;
+      document.getElementById('crmSaveBtn').addEventListener('click', async () => {
+        const next = { ...n, text: card.querySelector('[data-cf="text"]').value.trim(), updatedAt: new Date().toISOString() };
+        const idx = crm.notes.findIndex((x) => x.id === next.id);
+        if (idx >= 0) crm.notes[idx] = next; else crm.notes.push(next);
+        try { await saveCrm(); card.hidden = true; renderList(); showToast('success', 'Сохранено.'); }
+        catch (e) { showToast('error', 'Не удалось сохранить: ' + e.message); }
+      });
+    } else {
+      const existing = id ? crm.interviews.find((x) => x.id === id) : null;
+      const iv = existing ? { ...existing } : { id: nextId('interviews'), subject: '', contactId: null, status: 'planned', scheduledAt: '', meetLink: '', notes: '', reminded: false };
+      const contactOptions = ['<option value="">— без контакта —</option>']
+        .concat(crm.contacts.map((c) => `<option value="${esc(c.id)}" ${String(iv.contactId) === String(c.id) ? 'selected' : ''}>${esc(c.name)}</option>`)).join('');
+      card.innerHTML = `
+        <h3 class="card-title">${existing ? 'Интервью' : 'Новое интервью'}</h3>
+        <div class="form-grid">
+          <label><span class="field-label">Тема</span><input data-cf="subject" value="${esc(iv.subject || '')}"></label>
+          <label><span class="field-label">С кем</span><select data-cf="contactId">${contactOptions}</select></label>
+          <label><span class="field-label">Статус</span>
+            <select data-cf="status">${Object.entries(STATUS_LABEL).map(([v, l]) => `<option value="${v}" ${iv.status === v ? 'selected' : ''}>${l}</option>`).join('')}</select>
+          </label>
+          <label><span class="field-label">Дата и время</span><input type="datetime-local" data-cf="scheduledAt" value="${esc((iv.scheduledAt || '').slice(0, 16))}"></label>
+          <label><span class="field-label">Ссылка на встречу</span><input data-cf="meetLink" value="${esc(iv.meetLink || '')}" placeholder="https://meet.google.com/…"></label>
+        </div>
+        <label><span class="field-label">Заметка</span><textarea data-cf="notes" rows="3">${esc(iv.notes || '')}</textarea></label>
+        <div class="studio-toolbar">
+          <button class="btn btn-primary btn-sm" type="button" id="crmSaveBtn">Сохранить</button>
+          <button class="btn btn-sm" type="button" id="crmCancelBtn">Отмена</button>
+        </div>`;
+      document.getElementById('crmSaveBtn').addEventListener('click', async () => {
+        const next = { ...iv };
+        card.querySelectorAll('[data-cf]').forEach((el) => { next[el.dataset.cf] = el.value.trim(); });
+        if (!next.subject) { showToast('error', 'Тема не может быть пустой.'); return; }
+        next.contactId = next.contactId ? Number(next.contactId) : null;
+        // Время могли перенести — напоминания должны сработать заново, не
+        // молчать до следующего раза, потому что уже отметились как reminded.
+        next.reminded = false;
+        next.overdueNotified = false;
+        const idx = crm.interviews.findIndex((x) => x.id === next.id);
+        if (idx >= 0) crm.interviews[idx] = next; else crm.interviews.push(next);
+        try { await saveCrm(); card.hidden = true; renderList(); showToast('success', 'Сохранено.'); }
+        catch (e) { showToast('error', 'Не удалось сохранить: ' + e.message); }
+      });
+    }
+
+    document.getElementById('crmCancelBtn').addEventListener('click', () => { card.hidden = true; });
+  }
+
+  document.querySelectorAll('.crm-subtab').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.crm-subtab').forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      crmSub = btn.dataset.crmsub;
+      cardEl().hidden = true;
+      if (crmLoaded) renderList(); else renderCrmTab();
+    });
+  });
+  document.getElementById('crmAddBtn')?.addEventListener('click', () => {
+    openCrmEditor(crmSub === 'contacts' ? 'contact' : crmSub === 'notes' ? 'note' : 'interview', null);
+  });
+
+  window._renderCrmTab = renderCrmTab;
 })();
 
 // ═══════════════════════════════════════════════════════════
