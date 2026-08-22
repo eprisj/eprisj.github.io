@@ -2035,17 +2035,27 @@
       "subtitle": "Hilma af Klint · 1907 · tempera on paper",
       "fig": "PICS 013",
       "description": "Hilma af Klint gives old age a vivid, floating language: lilac fields, loops and dark seeds make the canvas feel grown rather than painted.",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mt2pocyymsxngk.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mt45868wd5pi0w.jpg",
       "picsOfWeek": true,
       "homeCategory": "painting",
-      "homeTitle": "La Gorge du Refus",
+      "homeTitle": "Mysery of the Plunge I, Daniel Atenyi, 2025",
       "homeSubtitle": "Ivan Tovar  · 1974 • oil on canvas",
       "homeDescription": "Ivan Tovar was a Dominican surrealist known for dreamlike paintings exploring the subconscious through symbolic, fantastical imagery.",
-      "homeCredit": "Sothebys",
+      "homeCredit": "Artsy",
       "picsId": "PICS-2026-013",
-      "updatedAt": "2026-08-21T08:59:53.043Z",
+      "updatedAt": "2026-08-22T08:58:13.645Z",
       "picsReleaseId": "PICS-WEEK-2026-001",
-      "homeSourceUrl": "https://www.sothebys.com/en/auctions/ecatalogue/2019/impressionist-modern-art-day-n10068/lot.396.html"
+      "imageHistory": [
+        {
+          "url": "https://api.eprisjournal.com/uploads/mt457i309fer4u.jpg",
+          "replacedAt": "2026-08-22T08:55:42.040Z"
+        },
+        {
+          "url": "https://api.eprisjournal.com/uploads/mt2pocyymsxngk.jpg",
+          "replacedAt": "2026-08-22T08:55:10.700Z"
+        }
+      ],
+      "homeSourceUrl": "https://www.artsy.net/artwork/daniel-atenyi-mystery-of-the-plunge-i"
     },
     {
       "id": 18,
@@ -4839,7 +4849,7 @@
           "poster": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.poster.jpg"
         }
       ],
-      "updatedAt": "2026-08-22T08:57:59.577Z",
+      "updatedAt": "2026-08-22T08:58:23.983Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "publishAt": "2026-08-19T09:38:46.903Z",
