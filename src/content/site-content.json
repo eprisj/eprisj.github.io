@@ -2020,14 +2020,12 @@
       "imageUrl": "https://api.eprisjournal.com/uploads/mt464h3xj7ftes.jpg",
       "picsOfWeek": true,
       "homeCategory": "sculpture",
-      "homeTitle": "Motion Alone",
-      "homeSubtitle": "Paul Insect · 2021 · Mixed Media and Marble Pedestal",
-      "homeDescription": "Paul Insect is a British contemporary artist whose work combines painting, sculpture, and found imagery, often exploring identity, popular culture, and consumerism.",
-      "homeCredit": "Artsy",
+      "homeTitle": "GRID STUDY 01, Rob Davidov",
+      "homeSubtitle": "Rob Davidov· 2021 · Mixed Media and Marble Pedestal",
+      "homeDescription": "Robert Davidov is a Melbourne-based architect and founder of Davidov Architects. His sculptural practice explores mass, material, and form through hand-built ceramic works,",
       "picsId": "PICS-2026-012",
-      "updatedAt": "2026-08-22T09:20:54.813Z",
+      "updatedAt": "2026-08-22T09:28:23.996Z",
       "picsReleaseId": "PICS-WEEK-2026-001",
-      "homeSourceUrl": "https://www.artsy.net/artwork/paul-insect-motion-alone-42",
       "imageHistory": [
         {
           "url": "https://api.eprisjournal.com/uploads/mt4636yht0nbh3.jpg",
@@ -2041,7 +2039,9 @@
           "url": "https://api.eprisjournal.com/uploads/mt2rl37fc2se74.jpg",
           "replacedAt": "2026-08-22T09:18:18.007Z"
         }
-      ]
+      ],
+      "homeCredit": "@oigall_projects",
+      "homeSourceUrl": "https://www.instagram.com/p/Da2Jwm-E_vj/?igsi=bnNoOXFtYXRpMmt5"
     },
     {
       "id": 17,
@@ -4869,7 +4869,7 @@
           "poster": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.poster.jpg"
         }
       ],
-      "updatedAt": "2026-08-22T09:28:10.366Z",
+      "updatedAt": "2026-08-22T09:18:33.965Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "publishAt": "2026-08-19T09:38:46.903Z",
