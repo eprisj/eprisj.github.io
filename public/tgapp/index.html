@@ -1144,14 +1144,12 @@
       // Every header block on the whole site stores its kicker baked into
       // the content string itself (<span class="kicker">01 · Origins</span>
       // Becoming a painter) - the site's own renderer expects that one
-      // string. Editing it as raw markup read as broken HTML leaking into
-      // the app, not a title, so it's split into two plain fields here and
-      // stitched back into the same format on every keystroke - the stored
-      // shape never changes, only what a person looking at the editor sees.
+      // string. A person editing this just wants to fix the heading text,
+      // not manage markup, so the kicker is carried through untouched and
+      // invisible - one plain textarea with only the readable title in it.
       var parsed = parseHeaderContent(b.content);
-      return '<div class="block-card" data-i="' + i + '">' + head +
-        '<input type="text" class="cap-input" placeholder="Kicker (необязательно) — напр. 01 · Origins" data-field="kicker" data-i="' + i + '" value="' + esc(parsed.kicker) + '">' +
-        '<textarea data-field="title" data-i="' + i + '" style="margin-top:8px">' + esc(parsed.title) + '</textarea>' +
+      return '<div class="block-card" data-i="' + i + '" data-kicker="' + esc(parsed.kicker) + '">' + head +
+        '<textarea data-field="title" data-i="' + i + '">' + esc(parsed.title) + '</textarea>' +
         '<div style="margin-top:8px"><select data-field="level" data-i="' + i + '">' +
         [1, 2, 3, 4].map(function (n) { return '<option value="' + n + '"' + (String(b.level) === String(n) ? " selected" : "") + '>H' + n + '</option>'; }).join("") +
         '</select></div></div>';
@@ -1192,11 +1190,9 @@
     var i = Number(t.dataset.i);
     var field = t.dataset.field;
     if (!field || !blockList[i]) return;
-    if (field === "kicker" || field === "title") {
+    if (field === "title") {
       var card = t.closest(".block-card");
-      var kickerVal = card.querySelector('[data-field="kicker"]').value;
-      var titleVal = card.querySelector('[data-field="title"]').value;
-      blockList[i].content = buildHeaderContent(kickerVal, titleVal);
+      blockList[i].content = buildHeaderContent(card.dataset.kicker, t.value);
       return;
     }
     blockList[i][field] = t.value;
