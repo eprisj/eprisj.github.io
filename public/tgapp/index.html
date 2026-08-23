@@ -424,7 +424,7 @@
 
     <div class="field">
       <label id="titleLabel">Заголовок</label>
-      <input type="text" id="f-title">
+      <input type="text" id="f-title" enterkeyhint="done">
     </div>
     <div class="field" id="f-sub-wrap">
       <label id="subLabel">Лид</label>
@@ -432,16 +432,16 @@
     </div>
     <div class="field" id="f-cat-wrap">
       <label>Категория</label>
-      <input type="text" id="f-cat" list="catList">
+      <input type="text" id="f-cat" list="catList" enterkeyhint="done">
       <datalist id="catList"></datalist>
     </div>
     <div class="field" id="f-date-wrap">
       <label>Дата</label>
-      <input type="text" id="f-date" placeholder="July 18, 2026">
+      <input type="text" id="f-date" placeholder="July 18, 2026" enterkeyhint="done">
     </div>
     <div class="field" id="f-rating-wrap" style="display:none">
       <label>Оценка (0–5)</label>
-      <input type="text" id="f-rating" inputmode="decimal">
+      <input type="text" id="f-rating" inputmode="decimal" enterkeyhint="done">
     </div>
 
     <div class="field" id="f-tags-wrap" style="display:none">
@@ -466,7 +466,7 @@
     </div>
     <div class="field" id="f-link-wrap" style="display:none">
       <label>Ссылка</label>
-      <input type="text" id="f-link" placeholder="https://…">
+      <input type="text" id="f-link" placeholder="https://…" enterkeyhint="done">
     </div>
 
     <div class="blocks-heading" id="blocksHeading">Текст материала</div>
@@ -1009,6 +1009,22 @@
   $("editor").addEventListener("input", function () { setDirty(true); scheduleDraftSave(); });
   $("editor").addEventListener("change", function () { setDirty(true); scheduleDraftSave(); });
 
+  // enterkeyhint="done" on the single-line fields (title, category, date,
+  // rating, link) shows "Done" on the iOS keyboard instead of a bare arrow -
+  // but on a plain <input> outside a <form>, Enter has no default action at
+  // all, so tapping that "Done" key visibly did nothing and the keyboard
+  // just sat there. Blur closes it, matching what the label promises. Not on
+  // textareas (Enter there means a new line) or the tag/pros/cons inputs
+  // (their own keydown handler already gives Enter a job - adding a chip).
+  $("editor").addEventListener("keydown", function (ev) {
+    if (ev.key !== "Enter") return;
+    var t = ev.target;
+    if (t.tagName !== "INPUT" || t.type !== "text") return;
+    if (t.id === "tags-input" || t.id === "pros-input" || t.id === "cons-input") return;
+    ev.preventDefault();
+    t.blur();
+  });
+
   // Текстовые поля растут вместе с текстом вместо ручного перетаскивания
   // уголка — на теле статьи, которое легко разрастается на десятки строк,
   // таскать resize-хендл после каждого абзаца утомляет быстрее, чем сам
@@ -1092,6 +1108,20 @@
     });
   });
 
+  // Header block content is one HTML string on the wire (see the comment at
+  // its editor markup below) - these two just move between that string and
+  // the plain kicker/title pair the editor shows.
+  function parseHeaderContent(raw) {
+    var s = String(raw == null ? "" : raw);
+    var m = s.match(/^<span class="kicker">([\s\S]*?)<\/span>([\s\S]*)$/);
+    return m ? { kicker: m[1], title: m[2] } : { kicker: "", title: s };
+  }
+  function buildHeaderContent(kicker, title) {
+    kicker = String(kicker || "").trim();
+    title = String(title == null ? "" : title);
+    return kicker ? '<span class="kicker">' + kicker + '</span>' + title : title;
+  }
+
   function blockPreview(b) {
     var val = b.content;
     if (Array.isArray(val)) return val.length + " элем.";
@@ -1111,8 +1141,17 @@
         '<textarea data-field="content" data-i="' + i + '">' + esc(b.content) + '</textarea></div>';
     }
     if (b.type === "header") {
+      // Every header block on the whole site stores its kicker baked into
+      // the content string itself (<span class="kicker">01 · Origins</span>
+      // Becoming a painter) - the site's own renderer expects that one
+      // string. Editing it as raw markup read as broken HTML leaking into
+      // the app, not a title, so it's split into two plain fields here and
+      // stitched back into the same format on every keystroke - the stored
+      // shape never changes, only what a person looking at the editor sees.
+      var parsed = parseHeaderContent(b.content);
       return '<div class="block-card" data-i="' + i + '">' + head +
-        '<textarea data-field="content" data-i="' + i + '">' + esc(b.content) + '</textarea>' +
+        '<input type="text" class="cap-input" placeholder="Kicker (необязательно) — напр. 01 · Origins" data-field="kicker" data-i="' + i + '" value="' + esc(parsed.kicker) + '">' +
+        '<textarea data-field="title" data-i="' + i + '" style="margin-top:8px">' + esc(parsed.title) + '</textarea>' +
         '<div style="margin-top:8px"><select data-field="level" data-i="' + i + '">' +
         [1, 2, 3, 4].map(function (n) { return '<option value="' + n + '"' + (String(b.level) === String(n) ? " selected" : "") + '>H' + n + '</option>'; }).join("") +
         '</select></div></div>';
@@ -1153,6 +1192,13 @@
     var i = Number(t.dataset.i);
     var field = t.dataset.field;
     if (!field || !blockList[i]) return;
+    if (field === "kicker" || field === "title") {
+      var card = t.closest(".block-card");
+      var kickerVal = card.querySelector('[data-field="kicker"]').value;
+      var titleVal = card.querySelector('[data-field="title"]').value;
+      blockList[i].content = buildHeaderContent(kickerVal, titleVal);
+      return;
+    }
     blockList[i][field] = t.value;
   });
 
