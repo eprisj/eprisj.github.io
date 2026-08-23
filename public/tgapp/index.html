@@ -195,6 +195,36 @@
   .btn.primary { background: var(--ink); color: var(--paper); }
   .btn:disabled { opacity: 0.4; }
 
+  /* ── Полноэкранная правка одного блока ────────────────────────────────
+     Список карточек хорош, чтобы видеть структуру статьи и переставлять
+     блоки, но писать в нём нельзя: при открытой клавиатуре на абзац
+     остаётся 4–5 строк, а вокруг — рамка карточки, тип блока и три
+     кнопки управления, которые борются с текстом за те же полэкрана.
+     Здесь ровно один абзац и ничего больше: вся доступная высота уходит
+     под текст, а перейти к соседнему абзацу можно, не выходя наружу. */
+  #blockFocus {
+    position: fixed; left: 0; top: 0; right: 0; z-index: 60;
+    background: var(--paper); display: none; flex-direction: column;
+  }
+  #blockFocus.open { display: flex; }
+  #bf-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 16px; border-bottom: 1px solid var(--rule); flex-shrink: 0;
+    font-family: 'PT Mono', monospace; font-size: 12px; letter-spacing: 1.5px;
+    text-transform: uppercase; background: var(--paper);
+  }
+  #bf-done { cursor: pointer; padding: 4px 2px; }
+  #bf-pos { color: var(--muted); font-size: 11px; letter-spacing: 1px; }
+  #bf-nav { display: flex; gap: 18px; }
+  #bf-nav span { cursor: pointer; font-size: 17px; padding: 2px 6px; line-height: 1; }
+  #bf-nav span.disabled { opacity: 0.22; pointer-events: none; }
+  #bf-text {
+    flex: 1; width: 100%; border: none; outline: none; background: none; resize: none;
+    padding: 16px 16px 24px; font-family: 'PT Serif', serif;
+    font-size: 17px; line-height: 1.6; color: var(--ink);
+    -webkit-appearance: none; border-radius: 0;
+  }
+
   #toast {
     position: fixed; left: 16px; right: 16px; bottom: -80px; background: var(--ink); color: var(--paper);
     padding: 12px 16px; font-size: 13px; text-align: center;
@@ -503,6 +533,19 @@
     </div>
   </div>
 </main>
+
+<!-- Полноэкранная правка одного блока. См. openBlockFocus(). -->
+<div id="blockFocus">
+  <div id="bf-bar">
+    <span id="bf-done">Готово</span>
+    <span id="bf-pos"></span>
+    <span id="bf-nav">
+      <span id="bf-prev">↑</span>
+      <span id="bf-next">↓</span>
+    </span>
+  </div>
+  <textarea id="bf-text" placeholder="Текст абзаца…"></textarea>
+</div>
 
 <div id="toast"></div>
 
@@ -888,6 +931,10 @@
   }
 
   function goBack() {
+    // Полноэкранная правка блока — верхний слой: Back закрывает сначала её,
+    // а не весь редактор материала. Спрашивать про несохранённое здесь не
+    // нужно: текст уже лежит в blockList, это возврат к списку блоков.
+    if ($("blockFocus").classList.contains("open")) { closeBlockFocus(); return; }
     if ($("editor").classList.contains("open")) { confirmDiscard(closeEditor); return; }
     if (!$("crm-editor").classList.contains("hidden")) { confirmDiscard(closeCrmEditor); return; }
     if (!$("crm-view").classList.contains("hidden")) {
@@ -1056,7 +1103,9 @@
   // раньше жили только в статьях, и в CRM текст обрезался точно так же,
   // как когда-то в редакторе материала.
   document.addEventListener("input", function (ev) {
-    if (ev.target.tagName === "TEXTAREA") autoGrow(ev.target);
+    // Кроме полноэкранной: та растянута на весь экран через flex и должна
+    // прокручиваться внутри себя, а не расти под текст (иначе уедет вниз).
+    if (ev.target.tagName === "TEXTAREA" && ev.target.id !== "bf-text") autoGrow(ev.target);
   });
   $("editor").addEventListener("click", function (ev) {
     if (ev.target.closest("#cancelBtn, #saveBtn, #openSiteLink")) return;
@@ -1065,6 +1114,9 @@
   });
 
   function closeEditor() {
+    // Полноэкранная правка живёт поверх редактора — уходя из редактора,
+    // закрываем и её, иначе она останется висеть над списком материалов.
+    if (bfIndex >= 0) closeBlockFocus();
     // Closing here always follows either a successful save (draft already
     // cleared) or an explicit "discard changes" confirmation (confirmDiscard
     // only calls closeEditor after the person says yes) - either way the
@@ -1214,6 +1266,109 @@
       return;
     }
     blockList[i][field] = t.value;
+  });
+
+  /* ── Полноэкранная правка одного блока ──────────────────────────────────
+     Текстовые блоки в списке открываются сюда: одна textarea во весь
+     экран вместо строчки в тесной карточке. Список остаётся тем, для чего
+     он хорош — увидеть структуру статьи, переставить и удалить блоки. */
+  var bfIndex = -1;   // индекс блока, открытого на весь экран; -1 — закрыто
+
+  // Полноэкранно правится текст: у text/quote/note это content, у header —
+  // заголовок без кикера (кикер едет отдельно, см. buildHeaderContent).
+  function bfFocusable(b) {
+    return !!b && (EDITABLE_TEXT[b.type] || b.type === "header");
+  }
+  function bfReadValue(b) {
+    return b.type === "header" ? parseHeaderContent(b.content).title : String(b.content == null ? "" : b.content);
+  }
+  function bfWriteValue(b, v) {
+    if (b.type === "header") b.content = buildHeaderContent(parseHeaderContent(b.content).kicker, v);
+    else b.content = v;
+  }
+
+  // Высота — ровно по видимой части экрана: при открытой клавиатуре
+  // visualViewport.height и есть то, что осталось над ней, поэтому
+  // textarea во flex:1 занимает всё это место и ни пикселя не уезжает под
+  // клавиатуру.
+  function bfSyncHeight() {
+    var h = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
+    $("blockFocus").style.height = h + "px";
+  }
+  if (window.visualViewport) window.visualViewport.addEventListener("resize", bfSyncHeight);
+
+  function bfRenderNav() {
+    var prev = -1, next = -1;
+    for (var i = bfIndex - 1; i >= 0; i--) if (bfFocusable(blockList[i])) { prev = i; break; }
+    for (var j = bfIndex + 1; j < blockList.length; j++) if (bfFocusable(blockList[j])) { next = j; break; }
+    $("bf-prev").classList.toggle("disabled", prev < 0);
+    $("bf-next").classList.toggle("disabled", next < 0);
+    $("bf-prev").dataset.to = prev;
+    $("bf-next").dataset.to = next;
+    var total = blockList.filter(bfFocusable).length;
+    var nth = blockList.slice(0, bfIndex + 1).filter(bfFocusable).length;
+    $("bf-pos").textContent = (blockList[bfIndex].type === "header" ? "Заголовок" : blockList[bfIndex].type) + " · " + nth + "/" + total;
+  }
+
+  function openBlockFocus(i) {
+    var b = blockList[i];
+    if (!bfFocusable(b)) return;
+    bfIndex = i;
+    $("bf-text").value = bfReadValue(b);
+    bfRenderNav();
+    $("blockFocus").classList.add("open");
+    bfSyncHeight();
+    // Курсор в начало, а не в конец: открывают абзац обычно чтобы
+    // перечитать и поправить, а не дописать в хвост.
+    $("bf-text").focus();
+    $("bf-text").setSelectionRange(0, 0);
+    $("bf-text").scrollTop = 0;
+    tgw && tgw.BackButton && tgw.BackButton.show();
+  }
+
+  function closeBlockFocus() {
+    if (bfIndex < 0) return;
+    bfIndex = -1;
+    $("bf-text").blur();
+    $("blockFocus").classList.remove("open");
+    // Список мог устареть, пока правили: перерисуем, чтобы карточка
+    // показывала новый текст и новую высоту.
+    renderBlocks();
+  }
+
+  $("bf-text").addEventListener("input", function () {
+    if (bfIndex < 0 || !blockList[bfIndex]) return;
+    bfWriteValue(blockList[bfIndex], this.value);
+    setDirty(true);
+    scheduleDraftSave();
+  });
+
+  $("bf-done").addEventListener("click", closeBlockFocus);
+  ["bf-prev", "bf-next"].forEach(function (id) {
+    $(id).addEventListener("click", function () {
+      var to = Number(this.dataset.to);
+      if (!(to >= 0)) return;
+      // Не закрываем и не открываем заново — просто меняем содержимое:
+      // клавиатура остаётся поднятой, переход между абзацами мгновенный.
+      bfIndex = to;
+      $("bf-text").value = bfReadValue(blockList[to]);
+      bfRenderNav();
+      $("bf-text").focus();
+      $("bf-text").setSelectionRange(0, 0);
+      $("bf-text").scrollTop = 0;
+    });
+  });
+
+  // Тап по тексту блока в списке — вход в полноэкранную правку. Именно
+  // тап по самому тексту, не по карточке: стрелки, удаление и выбор
+  // уровня заголовка должны работать на месте.
+  $("blocks").addEventListener("focusin", function (ev) {
+    var t = ev.target;
+    if (t.tagName !== "TEXTAREA") return;
+    var i = Number(t.dataset.i);
+    if (!bfFocusable(blockList[i])) return;
+    t.blur();
+    openBlockFocus(i);
   });
 
   $("blocks").addEventListener("click", function (ev) {
@@ -1810,7 +1965,9 @@
     document.body.classList.add("kb-open");
     setTimeout(function () {
       syncKeyboardPad();
-      t.scrollIntoView({ block: "center", behavior: "smooth" });
+      // Полноэкранное поле подгонять не надо: оно и так ровно во весь
+      // видимый экран, а scrollIntoView на нём дёргает страницу под ним.
+      if (t.id !== "bf-text") t.scrollIntoView({ block: "center", behavior: "smooth" });
     }, 300);
   });
   document.addEventListener("focusout", function (ev) {
