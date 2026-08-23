@@ -208,7 +208,12 @@
   .block-ctrls span.disabled { opacity: 0.25; pointer-events: none; }
   .block-card textarea, .block-card input[type=text] {
     width: 100%; border: none; border-bottom: 1px solid var(--rule); padding: 6px 0;
-    font-family: 'PT Serif', serif; font-size: 15px; color: var(--ink); background: none; outline: none; resize: vertical;
+    /* 16px, not 15 - anything smaller and iOS Safari auto-zooms the whole
+       page in on focus (its own accessibility heuristic, not something CSS
+       can opt out of otherwise). These are the most-used fields in the
+       editor, so the zoom-and-snap-back on every single tap was the main
+       thing making text editing on iPhone feel broken. */
+    font-family: 'PT Serif', serif; font-size: 16px; color: var(--ink); background: none; outline: none; resize: vertical;
   }
   .block-card textarea { min-height: 60px; }
   .block-card select {
@@ -274,7 +279,7 @@
 
   .note-card { border: 1px solid var(--rule); padding: 12px; margin-bottom: 10px; position: relative; }
   .note-card textarea {
-    width: 100%; border: none; background: none; font-family: 'PT Serif', serif; font-size: 15px;
+    width: 100%; border: none; background: none; font-family: 'PT Serif', serif; font-size: 16px;
     color: var(--ink); outline: none; resize: vertical; min-height: 50px;
   }
   .note-card .note-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 6px; }
@@ -790,6 +795,69 @@
     } catch (e) { /* старый клиент без этого API — не критично */ }
   }
 
+  // ── Черновик в localStorage ──────────────────────────────────────────────
+  // enableClosingConfirmation() выше ловит только явное закрытие приложения
+  // человеком - оно ничего не может сделать, когда iOS среди правки просто
+  // убивает свёрнутый WebView под нехватку памяти или Telegram убивает его,
+  // переключившись в другой чат надолго. Правка при этом пропадала целиком:
+  // «слетало» без предупреждения и без шанса восстановить. Снимок полей
+  // редактора уходит в localStorage при каждой правке (дебаунс, чтобы не
+  // писать посимвольно) и переживает и убитый процесс, и перезапуск - при
+  // следующем открытии ТОГО ЖЕ материала предлагаем восстановить его вместо
+  // серверной версии.
+  function draftKey(section, id) { return "epris_tgapp_draft_" + section + "_" + id; }
+  var _draftSaveT = null;
+  function scheduleDraftSave() {
+    clearTimeout(_draftSaveT);
+    _draftSaveT = setTimeout(saveDraftNow, 400);
+  }
+  function saveDraftNow() {
+    if (!current) return;
+    try {
+      var snap = {
+        savedAt: Date.now(),
+        title: $("f-title").value,
+        sub: $("f-sub").value,
+        cat: $("f-cat").value,
+        date: $("f-date").value,
+        rating: $("f-rating").value,
+        verdict: $("f-verdict").value,
+        link: $("f-link").value,
+        published: $("draftSwitch").dataset.on === "1",
+        tags: chipLists.tags.slice(),
+        pros: chipLists.pros.slice(),
+        cons: chipLists.cons.slice(),
+        blockList: blockList,
+      };
+      localStorage.setItem(draftKey(current.section, current.entity.id), JSON.stringify(snap));
+    } catch (e) { /* приватный режим/переполненная квота - без черновика, не критично */ }
+  }
+  function clearDraft(section, id) {
+    try { localStorage.removeItem(draftKey(section, id)); } catch (e) {}
+  }
+  // Применяет черновик поверх уже заполненных полем сервера - вызывается
+  // только после согласия человека, поэтому просто перезаписывает.
+  function applyDraft(draft) {
+    $("f-title").value = draft.title;
+    $("f-sub").value = draft.sub; autoGrow($("f-sub"));
+    $("f-cat").value = draft.cat;
+    $("f-date").value = draft.date;
+    $("f-rating").value = draft.rating;
+    $("f-verdict").value = draft.verdict;
+    $("f-link").value = draft.link;
+    setSwitch(draft.published);
+    chipLists.tags = Array.isArray(draft.tags) ? draft.tags.slice() : [];
+    renderChips("tags");
+    chipLists.pros = Array.isArray(draft.pros) ? draft.pros.slice() : [];
+    renderChips("pros");
+    chipLists.cons = Array.isArray(draft.cons) ? draft.cons.slice() : [];
+    renderChips("cons");
+    blockList = Array.isArray(draft.blockList) ? draft.blockList : [];
+    renderBlocks();
+    $("editor").querySelectorAll("textarea").forEach(function (ta) { autoGrow(ta); });
+    setDirty(true);
+  }
+
   function confirmDiscard(action) {
     if (!isDirty) { action(); return; }
     if (tgw && tgw.showConfirm) {
@@ -912,6 +980,23 @@
     // элемента всегда 0 — textarea сжимались до min-height и обрезали текст
     // до первого нажатия клавиши.
     $("editor").querySelectorAll("textarea").forEach(function (ta) { autoGrow(ta); });
+
+    // Черновик того же материала, оставленный процессом, который убили не
+    // спросив (см. saveDraftNow) — предлагаем восстановить вместо того, что
+    // только что пришло с сервера. Не спрашиваем на новых материалах:
+    // nextId() пересчитывается от текущего flatList, поэтому "новый" id
+    // может законно означать другую, ещё не сохранённую статью.
+    if (!item.isNew) {
+      try {
+        var rawDraft = localStorage.getItem(draftKey(item.section, e.id));
+        if (rawDraft) {
+          var draft = JSON.parse(rawDraft);
+          var ask = function (confirmed) { if (confirmed) applyDraft(draft); else clearDraft(item.section, e.id); };
+          if (tgw && tgw.showConfirm) tgw.showConfirm("Есть несохранённый черновик этого материала (правка прервалась в прошлый раз). Восстановить его?", ask);
+          else ask(window.confirm("Есть несохранённый черновик этого материала. Восстановить его?"));
+        }
+      } catch (e2) { /* битый JSON в localStorage - молча игнорируем черновик */ }
+    }
   }
 
   // Любая правка внутри редактора — набор текста, чекбоксы, блоки — считается
@@ -921,8 +1006,8 @@
   // (Telegram на Android регулярно) поднимают только "change" — на них
   // правка молча не помечалась несохранённой, и закрытие без запроса
   // теряло, например, смену категории или переключение публикации.
-  $("editor").addEventListener("input", function () { setDirty(true); });
-  $("editor").addEventListener("change", function () { setDirty(true); });
+  $("editor").addEventListener("input", function () { setDirty(true); scheduleDraftSave(); });
+  $("editor").addEventListener("change", function () { setDirty(true); scheduleDraftSave(); });
 
   // Текстовые поля растут вместе с текстом вместо ручного перетаскивания
   // уголка — на теле статьи, которое легко разрастается на десятки строк,
@@ -942,9 +1027,15 @@
   $("editor").addEventListener("click", function (ev) {
     if (ev.target.closest("#cancelBtn, #saveBtn, #openSiteLink")) return;
     setDirty(true);
+    scheduleDraftSave();
   });
 
   function closeEditor() {
+    // Closing here always follows either a successful save (draft already
+    // cleared) or an explicit "discard changes" confirmation (confirmDiscard
+    // only calls closeEditor after the person says yes) - either way the
+    // draft is no longer wanted.
+    if (current) clearDraft(current.section, current.entity.id);
     $("editor").classList.remove("open");
     current = null;
     blockList = [];
@@ -1234,6 +1325,7 @@
       if (!patchRes.data || !patchRes.data.ok) throw new Error((patchRes.data && patchRes.data.error) || "HTTP " + patchRes.status);
 
       current.entity = next;
+      clearDraft(current.section, next.id);
       setDirty(false);
       await loadContent();
       renderHome();
