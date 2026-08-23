@@ -1291,19 +1291,58 @@
      Текстовые блоки в списке открываются сюда: одна textarea во весь
      экран вместо строчки в тесной карточке. Список остаётся тем, для чего
      он хорош — увидеть структуру статьи, переставить и удалить блоки. */
-  var bfIndex = -1;   // индекс блока, открытого на весь экран; -1 — закрыто
+  var bfIndex = -1;   // начало открытого куска; -1 — закрыто
+  var bfEnd   = -1;   // конец открытого куска включительно (для серии абзацев)
 
   // Полноэкранно правится текст: у text/quote/note это content, у header —
   // заголовок без кикера (кикер едет отдельно, см. buildHeaderContent).
   function bfFocusable(b) {
     return !!b && (EDITABLE_TEXT[b.type] || b.type === "header");
   }
-  function bfReadValue(b) {
-    return b.type === "header" ? parseHeaderContent(b.content).title : String(b.content == null ? "" : b.content);
+
+  /* ── Серия абзацев = один сплошной текст ────────────────────────────────
+     Тело статьи на две трети состоит из блоков type:"text", и идут они
+     подряд длинными сериями — в живом контенте попадаются серии по 8, 10,
+     19 абзацев. Правка по одному блоку превращала статью на 26 блоков в 26
+     отдельных экранов: нельзя перечитать абзац вместе с соседним, нельзя
+     выделить кусок через границу абзаца, нельзя просто скроллить и писать.
+     Поэтому подряд идущие text-блоки открываются вместе, одним текстом с
+     пустой строкой между абзацами, и на выходе так же режутся обратно.
+     Заголовки, цитаты, фото и прочая структура остаются отдельными
+     блоками — их границы осмысленные, склеивать их в текст нельзя. */
+  function bfRunOf(i) {
+    var b = blockList[i];
+    if (!b || b.type !== "text") return { from: i, to: i };
+    var from = i, to = i;
+    while (from > 0 && blockList[from - 1] && blockList[from - 1].type === "text") from--;
+    while (to < blockList.length - 1 && blockList[to + 1] && blockList[to + 1].type === "text") to++;
+    return { from: from, to: to };
   }
-  function bfWriteValue(b, v) {
-    if (b.type === "header") b.content = buildHeaderContent(parseHeaderContent(b.content).kicker, v);
-    else b.content = v;
+  function bfReadRange(from, to) {
+    if (blockList[from] && blockList[from].type === "header") {
+      return parseHeaderContent(blockList[from].content).title;
+    }
+    var parts = [];
+    for (var i = from; i <= to; i++) parts.push(String(blockList[i].content == null ? "" : blockList[i].content));
+    return parts.join("\n\n");
+  }
+  function bfWriteRange(from, to, v) {
+    var b = blockList[from];
+    if (b && b.type === "header") {
+      b.content = buildHeaderContent(parseHeaderContent(b.content).kicker, v);
+      return to;
+    }
+    if (b && b.type !== "text") { b.content = v; return to; }
+    /* Пустая строка — граница абзаца; пустые куски выкидываем, чтобы лишние
+       переводы строки в конце не плодили пустых блоков. Сам текст абзаца НЕ
+       трогаем: в живом контенте у многих абзацев есть пробел или nbsp по
+       краям, и .trim() здесь означал бы, что достаточно открыть статью и
+       поправить одно слово, чтобы молча переписать соседние абзацы. */
+    var paras = String(v).split(/\n\s*\n/).filter(function (s) { return s.trim().length; });
+    if (!paras.length) paras = [""];
+    var rebuilt = paras.map(function (t) { return { type: "text", content: t }; });
+    blockList.splice(from, to - from + 1, ...rebuilt);
+    return from + rebuilt.length - 1;   // новый конец куска
   }
 
   // Высота — ровно по видимой части экрана: при открытой клавиатуре
@@ -1316,38 +1355,70 @@
   }
   if (window.visualViewport) window.visualViewport.addEventListener("resize", bfSyncHeight);
 
+  // Куски статьи, а не блоки: серия абзацев считается за один. Иначе счётчик
+  // обещал бы 26 шагов там, где на самом деле их пять.
+  function bfChunks() {
+    var out = [], i = 0;
+    while (i < blockList.length) {
+      if (!bfFocusable(blockList[i])) { i++; continue; }
+      var r = bfRunOf(i);
+      out.push(r);
+      i = r.to + 1;
+    }
+    return out;
+  }
   function bfRenderNav() {
-    var prev = -1, next = -1;
-    for (var i = bfIndex - 1; i >= 0; i--) if (bfFocusable(blockList[i])) { prev = i; break; }
-    for (var j = bfIndex + 1; j < blockList.length; j++) if (bfFocusable(blockList[j])) { next = j; break; }
+    var chunks = bfChunks();
+    var at = 0;
+    for (var k = 0; k < chunks.length; k++) if (chunks[k].from <= bfIndex && bfIndex <= chunks[k].to) { at = k; break; }
+    var prev = at > 0 ? chunks[at - 1].from : -1;
+    var next = at < chunks.length - 1 ? chunks[at + 1].from : -1;
     $("bf-prev").classList.toggle("disabled", prev < 0);
     $("bf-next").classList.toggle("disabled", next < 0);
     $("bf-prev").dataset.to = prev;
     $("bf-next").dataset.to = next;
-    var total = blockList.filter(bfFocusable).length;
-    var nth = blockList.slice(0, bfIndex + 1).filter(bfFocusable).length;
-    $("bf-pos").textContent = (blockList[bfIndex].type === "header" ? "Заголовок" : blockList[bfIndex].type) + " · " + nth + "/" + total;
+    var b = blockList[bfIndex];
+    var label = b.type === "header" ? "Заголовок"
+      : b.type === "text" ? (bfEnd > bfIndex ? (bfEnd - bfIndex + 1) + " абзаца" : "текст")
+      : b.type;
+    $("bf-pos").textContent = label + " · " + (at + 1) + "/" + chunks.length;
   }
 
-  function openBlockFocus(i) {
+  function openBlockFocus(i, caret) {
     var b = blockList[i];
     if (!bfFocusable(b)) return;
-    bfIndex = i;
-    $("bf-text").value = bfReadValue(b);
+    var r = bfRunOf(i);
+    bfIndex = r.from; bfEnd = r.to;
+    var val = bfReadRange(r.from, r.to);
+    $("bf-text").value = val;
     bfRenderNav();
     $("blockFocus").classList.add("open");
     bfSyncHeight();
-    // Курсор в начало, а не в конец: открывают абзац обычно чтобы
-    // перечитать и поправить, а не дописать в хвост.
     $("bf-text").focus();
-    $("bf-text").setSelectionRange(0, 0);
-    $("bf-text").scrollTop = 0;
+    /* Курсор — в начало того абзаца, по которому ткнули, а не в начало всей
+       серии: тапнув по девятому абзацу, человек хочет править девятый. */
+    var pos = 0;
+    if (caret === undefined) {
+      for (var k = r.from; k < i; k++) pos += String(blockList[k].content || "").length + 2;
+    } else pos = caret;
+    pos = Math.min(pos, val.length);
+    $("bf-text").setSelectionRange(pos, pos);
+    // Прокрутить к курсору: у длинной серии он может быть далеко вниз.
+    if (pos > 0) {
+      var probe = document.createElement("div");
+      probe.style.cssText = "position:absolute;visibility:hidden;white-space:pre-wrap;width:" +
+        ($("bf-text").clientWidth - 32) + "px;font:16px/1.6 'PT Serif',serif;";
+      probe.textContent = val.slice(0, pos);
+      document.body.appendChild(probe);
+      $("bf-text").scrollTop = Math.max(0, probe.offsetHeight - 60);
+      probe.remove();
+    } else $("bf-text").scrollTop = 0;
     tgw && tgw.BackButton && tgw.BackButton.show();
   }
 
   function closeBlockFocus() {
     if (bfIndex < 0) return;
-    bfIndex = -1;
+    bfIndex = -1; bfEnd = -1;
     $("bf-text").blur();
     $("blockFocus").classList.remove("open");
     // Список мог устареть, пока правили: перерисуем, чтобы карточка
@@ -1357,7 +1428,8 @@
 
   $("bf-text").addEventListener("input", function () {
     if (bfIndex < 0 || !blockList[bfIndex]) return;
-    bfWriteValue(blockList[bfIndex], this.value);
+    // Пересборка серии может изменить число блоков — запоминаем новый конец.
+    bfEnd = bfWriteRange(bfIndex, bfEnd, this.value);
     setDirty(true);
     scheduleDraftSave();
   });
@@ -1368,30 +1440,30 @@
       var to = Number(this.dataset.to);
       if (!(to >= 0)) return;
       // Не закрываем и не открываем заново — просто меняем содержимое:
-      // клавиатура остаётся поднятой, переход между абзацами мгновенный.
-      bfIndex = to;
-      $("bf-text").value = bfReadValue(blockList[to]);
-      bfRenderNav();
-      $("bf-text").focus();
-      $("bf-text").setSelectionRange(0, 0);
-      $("bf-text").scrollTop = 0;
+      // клавиатура остаётся поднятой, переход между кусками мгновенный.
+      openBlockFocus(to, 0);
     });
   });
 
-  // Новый абзац прямо из письма. Раньше, дописав абзац, надо было выйти
-  // в список, домотать до самого низа к «+ Текст», найти новый блок и
-  // войти в него — четыре действия, чтобы продолжить писать. Теперь блок
-  // появляется сразу после текущего, и мы сразу в нём: клавиатура даже не
-  // успевает опуститься.
+  /* «+» — новый абзац. Внутри сплошного текста это просто пустая строка в
+     конце (границы абзацев там и есть пустые строки), после заголовка или
+     цитаты — новый text-блок следом. В обоих случаях курсор оказывается
+     там, где продолжать писать, и клавиатура не опускается. */
   $("bf-add").addEventListener("click", function () {
     if (bfIndex < 0) return;
-    blockList.splice(bfIndex + 1, 0, { type: "text", content: "" });
+    var ta = $("bf-text");
+    if (blockList[bfIndex] && blockList[bfIndex].type === "text") {
+      ta.value = ta.value.replace(/\s*$/, "") + "\n\n";
+      ta.dispatchEvent(new Event("input", { bubbles: true }));
+      ta.focus();
+      ta.setSelectionRange(ta.value.length, ta.value.length);
+      ta.scrollTop = ta.scrollHeight;
+      return;
+    }
+    blockList.splice(bfEnd + 1, 0, { type: "text", content: "" });
     setDirty(true);
     scheduleDraftSave();
-    bfIndex = bfIndex + 1;
-    $("bf-text").value = "";
-    bfRenderNav();
-    $("bf-text").focus();
+    openBlockFocus(bfEnd + 1, 0);
   });
 
   $("blocks").addEventListener("click", function (ev) {
