@@ -174,6 +174,19 @@
     display: flex; gap: 10px; margin-top: 20px; position: sticky; bottom: 0;
     background: var(--paper); padding: 12px 0 4px; border-top: 1px solid var(--rule);
   }
+  /* While the keyboard is up (see the focusin/focusout pair below), this bar
+     sat pinned right above it on top of an already keyboard-shrunk viewport -
+     Save/Back permanently visible cost real height from the couple of lines
+     of the paragraph actually being typed. Save is always reachable a
+     heartbeat later by tapping out of the field; while typing, that space is
+     worth more as text. */
+  body.kb-open .actions { display: none; }
+  /* Same reasoning as .actions above, and the bigger win of the two: this
+     bar is sticky, so it stays pinned at the top of the scroll container
+     eating its own height back out of the already-halved viewport for as
+     long as the keyboard is up - on top of Telegram's own native chrome
+     above it, which isn't ours to touch. */
+  body.kb-open header.bar { display: none; }
   .btn {
     flex: 1; border: 1px solid var(--ink); background: none; padding: 13px 10px;
     font-family: 'PT Mono', monospace; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
@@ -1789,6 +1802,7 @@
   document.addEventListener("focusin", function (ev) {
     var t = ev.target;
     if (!t.matches || !t.matches("input, textarea, select")) return;
+    document.body.classList.add("kb-open");
     setTimeout(function () {
       syncKeyboardPad();
       t.scrollIntoView({ block: "center", behavior: "smooth" });
@@ -1800,6 +1814,7 @@
     setTimeout(function () {
       if (!document.activeElement || !document.activeElement.matches("input, textarea, select")) {
         kbPad.style.height = "0";
+        document.body.classList.remove("kb-open");
       }
     }, 200);
   });
