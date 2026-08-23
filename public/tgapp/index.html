@@ -209,8 +209,13 @@
     font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted);
     margin: 24px 0 10px; padding-top: 16px; border-top: 1px solid var(--rule);
   }
-  .block-card { border: 1px solid var(--rule); padding: 12px; margin-bottom: 10px; }
+  .block-card { border: 1px solid var(--rule); padding: 12px; margin-bottom: 10px; transition: border-color .15s; }
   .block-card.locked { background: var(--tint); }
+  /* A long article is a scrolling list of near-identical paragraph cards -
+     nothing marked which one the keyboard was actually attached to, so
+     finding your place after scrolling meant guessing from surrounding
+     text. The whole card outlines in ink the moment its field has focus. */
+  .block-card:focus-within { border-color: var(--ink); border-width: 1.5px; }
   .block-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
   .block-type {
     font-family: 'PT Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
