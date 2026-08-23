@@ -4585,12 +4585,6 @@
           "content": "<b>Xenia: </b>Most people who move to Portugal eventually start doing what they truly love – things they wanted to pursue in their ‘past life’ but were afraid to because of social expectations. The same happened to me."
         },
         {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/msywgl9vx19o8e.webp",
-          "caption": "",
-          "credit": "Organized by Open the Door Events | Photo by Joy Zamora"
-        },
-        {
           "type": "text",
           "content": "After moving here, I started my own production company, working on photo and video advertising. That’s how Alena and I met. Later, I discovered Arco, a contemporary art school where we were taught not so much how to draw as how to look at the world through an artistic lens. I graduated this year, it were three years of intense study."
         },
@@ -4605,6 +4599,12 @@
         {
           "type": "text",
           "content": "I was so nervous about reaching out that my husband Mark contacted Ksenia for me, asking if I could come by, observe, and help out. In the end, Ksenia and I became very close. She’s an incredible person – always encouraging others and giving them space to express themselves. It was Ksenia who told me, ‘You should go to the art school.’ I was surprised: ‘Me? Are you serious?’ But I eventually enrolled too. It turned out to be an amazing experience: we learned to observe, create, and go through a complex, profound, almost philosophical process of discovery.”"
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/msywgl9vx19o8e.webp",
+          "caption": "",
+          "credit": "Organized by Open the Door Events | Photo by Joy Zamora"
         },
         {
           "type": "text",
@@ -4896,7 +4896,7 @@
           "credit": "@chora.practice"
         }
       ],
-      "updatedAt": "2026-08-23T15:31:29.230Z",
+      "updatedAt": "2026-08-23T15:31:45.665Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "previewToken": "0eadc13dc5057beeff1fffd5",
