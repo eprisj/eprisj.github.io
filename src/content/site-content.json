@@ -4577,18 +4577,18 @@
           "content": "Creating your own project in a new country is always a bold step, where creative exploration intertwines closely with personal transformation. Elena Kuzmina and Xenia Bunina – founders of decor studio <u>Chora Practice</u>, based in Lisbon, Portugal – talk about how to turn any crisis into a point of growth, why there are no “uncreative” people in the world, and how to allow yourself to do what you genuinely love. "
         },
         {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/msywgl9vx19o8e.webp",
-          "caption": "",
-          "credit": "Organized by Open the Door Events | Photo by Joy Zamora"
-        },
-        {
           "type": "text",
           "content": "<b>Chora is a creative practice. Could you tell us about your background?</b>"
         },
         {
           "type": "text",
           "content": "<b>Xenia: </b>Most people who move to Portugal eventually start doing what they truly love – things they wanted to pursue in their ‘past life’ but were afraid to because of social expectations. The same happened to me."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/msywgl9vx19o8e.webp",
+          "caption": "",
+          "credit": "Organized by Open the Door Events | Photo by Joy Zamora"
         },
         {
           "type": "text",
@@ -4896,7 +4896,7 @@
           "credit": "@chora.practice"
         }
       ],
-      "updatedAt": "2026-08-23T15:30:41.432Z",
+      "updatedAt": "2026-08-23T15:31:29.230Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "previewToken": "0eadc13dc5057beeff1fffd5",
