@@ -4805,7 +4805,7 @@
         },
         {
           "type": "text",
-          "content": "Alena: I’m a very slow person, so observation helps me a lot. I love immersing myself in the process – looking at a tree, feeling the wind. Simply observing yourself and the world around you can reveal a lot."
+          "content": "<b>Alena: </b>I’m a very slow person, so observation helps me a lot. I love immersing myself in the process – looking at a tree, feeling the wind. Simply observing yourself and the world around you can reveal a lot."
         },
         {
           "type": "video",
@@ -4896,7 +4896,7 @@
           "credit": "@chora.practice"
         }
       ],
-      "updatedAt": "2026-08-23T15:29:43.762Z",
+      "updatedAt": "2026-08-23T15:30:41.432Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "previewToken": "0eadc13dc5057beeff1fffd5",
