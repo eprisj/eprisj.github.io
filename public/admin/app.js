@@ -2584,6 +2584,76 @@ function isAuditPlaceholderEntity(entry) {
   return AUDIT_PLACEHOLDER_PHRASES.some((p) => haystack.includes(p));
 }
 
+/* Блоки, чей `content` — URL или структура, а не проза: совпадение с базой у
+   них не просто нормально, оно обязательно (медиа принадлежит базе). */
+const AUDIT_MEDIA_BLOCK_TYPES = new Set(['image', 'gallery', 'video', 'map', 'mosaic', 'link', 'poll']);
+const AUDIT_TEXTUAL_BLOCK_TYPES = new Set(['text', 'header', 'quote', 'note', 'checklist']);
+/* Отличить реальный пропуск от имени собственного, которое и ДОЛЖНО остаться
+   латиницей. Проверено на живом контенте: служебные слова ловят все девять
+   заголовков #22 и не задевают ни одного из пятнадцати имён художников
+   («Lola Mayeras», «Karolina Merska»). Без фильтра отчёт тонет в именах, а
+   такой отчёт перестают читать — ровно так и выжил исходный баг. */
+const AUDIT_EN_FUNCTION_WORDS = new Set([
+  'the', 'of', 'a', 'an', 'in', 'on', 'with', 'to', 'for', 'from', 'that',
+  'you', 'your', 'it', 'its', 'is', 'are', 'be', 'how', 'why', 'what',
+  'when', 'where', 'no', 'not', 'into', 'at', 'by',
+]);
+function auditStripMarkup(v) { return String(v == null ? '' : v).replace(/<[^>]+>/g, '').trim(); }
+function auditLooksTranslatable(text) {
+  const clean = auditStripMarkup(text);
+  if (clean.length > 60) return true;
+  return (clean.toLowerCase().match(/[a-z']+/g) || []).some((w) => AUDIT_EN_FUNCTION_WORDS.has(w));
+}
+function auditLocaleUsesCyrillic(bucket, sectionKey, id) {
+  const arr = Array.isArray(bucket?.[sectionKey]) ? bucket[sectionKey] : [];
+  const entry = arr.find((e) => Number(e && e.id) === Number(id));
+  const blocks = entry && Array.isArray(entry.content) ? entry.content : [];
+  return blocks.some((b) => b && /[Ѐ-ӿ]/.test(String(b.content || '')));
+}
+/* Переведён ли блок другим языком ТОЙ ЖЕ письменности. Ограничение
+   существенно: RU и UA транслитерируют имя («Zofia Wyganowska» → «Зофія
+   Вигановська»), и без него транслитерация засчитывалась доказательством
+   переводимости — четыре ложных предупреждения на живом контенте. */
+function auditTranslatedElsewhere(data, sectionKey, id, index, baseText, skipLang) {
+  const localized = data.localizedCollections || {};
+  const targetCyrillic = auditLocaleUsesCyrillic(localized[skipLang], sectionKey, id);
+  for (const [lang, bucket] of Object.entries(localized)) {
+    if (lang === skipLang || !bucket || typeof bucket !== 'object') continue;
+    if (auditLocaleUsesCyrillic(bucket, sectionKey, id) !== targetCyrillic) continue;
+    const arr = Array.isArray(bucket[sectionKey]) ? bucket[sectionKey] : [];
+    const entry = arr.find((e) => Number(e && e.id) === Number(id));
+    const blocks = entry && Array.isArray(entry.content) ? entry.content : null;
+    if (!blocks || !blocks[index]) continue;
+    const t = auditStripMarkup(blocks[index].content);
+    if (t && t !== baseText) return true;
+  }
+  return false;
+}
+function auditTranslationCompleteness(base, loc, data, sectionKey, lang) {
+  const baseBlocks = Array.isArray(base?.content) ? base.content : null;
+  if (!baseBlocks) return null;
+  const locBlocks = Array.isArray(loc?.content) ? loc.content : [];
+  let total = 0;
+  let translated = 0;
+  const gaps = [];
+  for (let i = 0; i < baseBlocks.length; i += 1) {
+    const b = baseBlocks[i];
+    if (!b || typeof b !== 'object') continue;
+    if (AUDIT_MEDIA_BLOCK_TYPES.has(b.type) || !AUDIT_TEXTUAL_BLOCK_TYPES.has(b.type)) continue;
+    const baseText = auditStripMarkup(b.content);
+    if (!baseText) continue;
+    total += 1;
+    const locText = auditStripMarkup(locBlocks[i] && locBlocks[i].content);
+    if (locText && locText !== baseText) { translated += 1; continue; }
+    if (auditLooksTranslatable(baseText)
+      || auditTranslatedElsewhere(data, sectionKey, base.id, i, baseText, lang)) {
+      gaps.push({ index: i, type: b.type, text: baseText });
+    }
+  }
+  if (!total) return null;
+  return { percent: Math.round((translated / total) * 100), total, translated, gaps };
+}
+
 // The single worst failure mode in this content model: getContentForLanguage()
 // discards a WHOLE locale bucket (items/articles/reviews/libraryItems) back to
 // English the moment *any one* entry in it is still an unfilled stub — see the
@@ -2700,6 +2770,35 @@ function runLocalizationHealthCheck(data) {
             `${lang}/${sectionKey} #${loc.id}: content другой длины (в базе ${base.content.length} блоков, в ${lang} — ${loc.content.length}) — вероятно, устаревший перевод.`
           );
         }
+      }
+    }
+  }
+
+  /* ПОЛНОТА ПЕРЕВОДА.
+
+     Обе проверки выше смотрят на КОЛИЧЕСТВО и ТИП блоков, но ни одна — на то,
+     изменился ли текст. Перевод, протащивший английскую строку насквозь,
+     проходил их как здоровый: статья #22 показывала девять английских
+     заголовков разделов читателям всех шести языков, и ни отчёт, ни панель об
+     этом не сообщали. mergeEntryTextOntoBase в src/data.ts подставляет базу
+     поле за полем, поэтому непереведённый блок молча выходит на сайт.
+
+     Зеркало проверки из /opt/epris-content/localization-audit.js — держать в
+     синхроне вручную (этот бандл не может require() тот файл). */
+  for (const [lang, bucket] of Object.entries(localized)) {
+    if (!bucket || typeof bucket !== 'object') continue;
+    for (const [sectionKey, sectionLabel] of POISON_SECTIONS) {
+      const baseEntries = Array.isArray(data[sectionKey]) ? data[sectionKey] : [];
+      const locEntries = Array.isArray(bucket[sectionKey]) ? bucket[sectionKey] : [];
+      for (const loc of locEntries) {
+        const base = baseEntries.find((b) => Number(b && b.id) === Number(loc && loc.id));
+        if (!base || base.draft) continue;
+        const stats = auditTranslationCompleteness(base, loc, data, sectionKey, lang);
+        if (!stats || !stats.gaps.length) continue;
+        const sample = stats.gaps.slice(0, 3).map((g) => JSON.stringify(g.text.slice(0, 40))).join(', ');
+        warnings.push(
+          `${lang}/${sectionLabel} #${loc.id}: переведено ${stats.percent}% — ${stats.gaps.length} текстовых блок(ов) читатели ${lang} видят по-английски (${sample}${stats.gaps.length > 3 ? ', …' : ''}). Допереведите или поправьте вручную.`
+        );
       }
     }
   }
