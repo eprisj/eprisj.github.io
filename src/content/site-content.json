@@ -5756,14 +5756,31 @@
         },
         {
           "id": 19,
-          "title": "Кресло Panton",
-          "subtitle": "Вернер Пантон · 1960 · формованный пластик",
-          "description": "Одна непрерывная красная линия становится креслом: Вернер Пантон сводит знакомый предмет к цвету, изгибу и одному безоговорочному жесту.",
+          "title": "Panton Chair",
+          "subtitle": "Verner Panton · 1960 · формованный пластик",
           "fig": "PICS 015",
-          "homeTitle": "Кресло Panton",
-          "homeSubtitle": "Вернер Пантон · 1960 · формованный пластик",
-          "homeDescription": "Одна непрерывная красная линия становится креслом: Вернер Пантон сводит знакомый предмет к цвету, изгибу и одному безоговорочному жесту.",
-          "homeCredit": "Вернер Пантон; фото Sailko · CC BY-SA 4.0 / Wikimedia Commons"
+          "description": "Одна непрерывная красная линия превращается в стул: Verner Panton сводит знакомый объект к цвету, кривой и одному безапелляционному жесту.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt6zhyw3gy7ean.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "design",
+          "homeTitle": "Табурет Grace Prince x paloma wool, 2026",
+          "homeSubtitle": "Grace Prince x paloma wool • 2026",
+          "homeDescription": "Grace Prince — британский дизайнер, базирующийся в Цюрихе, чья практика исследует материал, хрупкость и напряжение через мебель и объекты. Для её сотрудничества с Paloma Wool, The Sequence Collection, она объединила нержавеющую сталь, бронзу, кожу, вязание и дерево, чтобы создать диалог между одеждой и функциональными объектами.",
+          "homeCredit": "@grace_____prince",
+          "picsId": "PICS-2026-015",
+          "updatedAt": "2026-08-24T21:05:25.533Z",
+          "picsReleaseId": "PICS-WEEK-2026-001",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt46gngoycogff.jpg",
+              "replacedAt": "2026-08-24T08:38:40.118Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt2sfbg2hafvk4.jpg",
+              "replacedAt": "2026-08-22T09:30:17.243Z"
+            }
+          ],
+          "homeSourceUrl": "https://www.instagram.com/grace____prince?igsi=eGZveHpubzZjcWI="
         },
         {
           "id": 20,
@@ -9343,14 +9360,31 @@
         },
         {
           "id": 19,
-          "title": "Крісло Panton",
-          "subtitle": "Вернер Пантон · 1960 · формований пластик",
-          "description": "Одна безперервна червона лінія стає кріслом: Вернер Пантон зводить знайомий предмет до кольору, вигину й одного безкомпромісного жесту.",
+          "title": "Panton Chair",
+          "subtitle": "Verner Panton · 1960 · формований пластик",
           "fig": "PICS 015",
-          "homeTitle": "Крісло Panton",
-          "homeSubtitle": "Вернер Пантон · 1960 · формований пластик",
-          "homeDescription": "Одна безперервна червона лінія стає кріслом: Вернер Пантон зводить знайомий предмет до кольору, вигину й одного безкомпромісного жесту.",
-          "homeCredit": "Вернер Пантон; фото Sailko · CC BY-SA 4.0 / Wikimedia Commons"
+          "description": "Одна безперервна червона лінія стає стільцем: Verner Panton зменшує знайомий об'єкт до кольору, кривої та одного беззастережного жесту.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt6zhyw3gy7ean.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "design",
+          "homeTitle": "Стілець Grace Prince x paloma wool, 2026",
+          "homeSubtitle": "Grace Prince x paloma wool • 2026",
+          "homeDescription": "Grace Prince — британський дизайнер, що базується в Цюриху, чия практика досліджує матеріал, крихкість і напруження через меблі та об'єкти. Для її співпраці з Paloma Wool, The Sequence Collection, вона поєднала нержавіючу сталь, бронзу, шкіру, в'язання та дерево, щоб створити діалог між одягом і функціональними об'єктами.",
+          "homeCredit": "@grace_____prince",
+          "picsId": "PICS-2026-015",
+          "updatedAt": "2026-08-24T21:05:30.317Z",
+          "picsReleaseId": "PICS-WEEK-2026-001",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt46gngoycogff.jpg",
+              "replacedAt": "2026-08-24T08:38:40.118Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt2sfbg2hafvk4.jpg",
+              "replacedAt": "2026-08-22T09:30:17.243Z"
+            }
+          ],
+          "homeSourceUrl": "https://www.instagram.com/grace____prince?igsi=eGZveHpubzZjcWI="
         },
         {
           "id": 20,
@@ -23674,12 +23708,25 @@
           "id": 18,
           "title": "Salk Institute",
           "subtitle": "Louis I. Kahn · 1965 · La Jolla",
-          "description": "Al Salk Institute il cemento non è uno sfondo, ma uno strumento preciso per luce, aria di mare e silenzio.",
           "fig": "PICS 014",
-          "homeTitle": "Salk Institute",
+          "description": "Al Salk Institute, il cemento non è uno sfondo ma uno strumento preciso per la luce, l'aria di mare e il silenzio.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt6zvjpsi8eh1m.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "architecture",
+          "homeTitle": "Interno Wilson, Atelier MKD",
           "homeSubtitle": "Louis I. Kahn · 1965 · La Jolla",
-          "homeDescription": "Al Salk Institute il cemento non è uno sfondo, ma uno strumento preciso per luce, aria di mare e silenzio.",
-          "homeCredit": "Carol M. Highsmith · fotografia di pubblico dominio / Wikimedia Commons"
+          "homeDescription": "Gli interni degli appartamenti parigini hanno un fascino particolare, e Wilson di Atelier MKD è un bell'esempio di come una composizione contenuta e stabile possa comunque sembrare profondamente personale. Il carattere risiede nei dettagli — maschere e figurine, vasi e sedie.",
+          "picsId": "PICS-2026-014",
+          "updatedAt": "2026-08-24T21:05:21.692Z",
+          "picsReleaseId": "PICS-WEEK-2026-001",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt2rjf2iptcgt2.jpg",
+              "replacedAt": "2026-08-24T08:49:13.487Z"
+            }
+          ],
+          "homeSourceUrl": "https://www.instagram.com/ateliermkd?igsi=YTRiaGRzM2oyZHRm",
+          "homeCredit": "@ateliermkd"
         },
         {
           "id": 19,
