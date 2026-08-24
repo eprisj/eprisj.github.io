@@ -4076,6 +4076,45 @@ function getPublicationState(data, section, entry) {
   return 'live';
 }
 
+/* ПРОВЕРКА ПОСЛЕ ПУБЛИКАЦИИ: ЧИТАЕМ С СЕРВЕРА, А НЕ ВЕРИМ ОТВЕТУ.
+
+   Панель считала действие успешным, если запрос вернул ok. Ровно этого было
+   мало: PATCH записи честно сохранял draft:false и отвечал ok, а карта
+   видимости оставалась прежней и держала статью скрытой — панель писала
+   «опубликовано», ссылка предпросмотра показывала готовый материал, читатель
+   не видел ничего. Отправлено и опубликовано — разные события, и слово
+   «успешно» должно означать второе.
+
+   Читаем языковой срез (~109 КБ вместо ~700 КБ полного документа): базовая
+   запись и карта видимости есть в любом срезе, а больше для проверки ничего
+   не нужно. */
+async function verifyEntryIsLive(section, id) {
+  try {
+    const res = await fetch(`${CONTENT_API}?lang=${DEFAULT_LANGUAGE}`, { cache: 'no-store' });
+    if (!res.ok) return { ok: false, reason: `сервер ответил ${res.status}` };
+    const data = await res.json();
+    const entry = (Array.isArray(data?.[section]) ? data[section] : [])
+      .find((e) => Number(e && e.id) === Number(id));
+    if (!entry) return { ok: false, reason: 'записи нет в опубликованном контенте' };
+    if (entry.draft) return { ok: false, reason: 'на сервере она всё ещё черновик' };
+    if (data?.visibility?.entities?.[section]?.[String(id)] === false) {
+      return { ok: false, reason: 'на сервере она скрыта в карте видимости' };
+    }
+    if (isAuditPlaceholderEntity(entry)) {
+      return { ok: false, reason: 'сайт прячет её как текст-заготовку' };
+    }
+    const publishAt = entry.publishAt ? Date.parse(entry.publishAt) : NaN;
+    if (Number.isFinite(publishAt) && publishAt > Date.now()) {
+      return { ok: false, reason: 'дата выхода ещё не наступила' };
+    }
+    return { ok: true };
+  } catch (e) {
+    /* Сеть отвалилась уже после сохранения — это не провал публикации, но и
+       подтвердить её мы не можем. Так и скажем, вместо бодрого «успешно». */
+    return { ok: null, reason: getErrorMessage(e) };
+  }
+}
+
 /* ЧТО МЕШАЕТ ЧИТАТЕЛЮ УВИДЕТЬ ЭТУ ЗАПИСЬ.
 
    getPublicationState знает только три вещи: draft, отложенную дату и карту
@@ -4388,12 +4427,32 @@ async function updateSelectedPublicationState(nextState) {
          скрытая статья оставалась на сайте до тех пор, пока её не прочитают.
          Скрытие должно срабатывать сразу: это защитное действие. */
       setEditorData(data);
-      await publishContentToVps({ silent: true });
+      /* Скрытие — защитное действие: молчаливый провал здесь означает, что
+         запись осталась на сайте, хотя редактор уверен в обратном. Это хуже,
+         чем несостоявшаяся публикация, поэтому исход проверяется так же. */
+      if (await publishContentToVps({ silent: true }) === false) {
+        setStatus('error', `«${getEntryTitle(section, entry)}» НЕ скрыта — она всё ещё на сайте. Повторите.`);
+        return;
+      }
     }
     pendingVisualEntryId = selectedId;
     refreshVisualEditor();
     /* Одна короткая строка вместо абзаца с инструкциями. */
-    setStatus('success', `«${getEntryTitle(section, entry)}» — ${publicationStateLabel(nextState).toLowerCase()}`);
+    const title = getEntryTitle(section, entry);
+    if (nextState !== 'live') {
+      setStatus('success', `«${title}» — ${publicationStateLabel(nextState).toLowerCase()}`);
+      return;
+    }
+    // Публикация — единственное действие, чей результат виден читателю прямо
+    // сейчас, поэтому именно её и подтверждаем чтением с сервера.
+    const check = await verifyEntryIsLive(section, entry.id);
+    if (check.ok === true) {
+      setStatus('success', `«${title}» — опубликовано и проверено на сервере`);
+    } else if (check.ok === null) {
+      setStatus('info', `«${title}» сохранена, но подтвердить публикацию не удалось: ${check.reason}. Обновите страницу и проверьте.`);
+    } else {
+      setStatus('error', `«${title}» НЕ опубликована: ${check.reason}.`);
+    }
   } catch (error) {
     setStatus('error', `Статус не сохранён на VPS: ${getErrorMessage(error)}`);
   } finally {
