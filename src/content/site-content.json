@@ -5701,13 +5701,34 @@
         {
           "id": 17,
           "title": "Десять крупнейших, № 9, Старость",
-          "subtitle": "Хильма аф Клинт · 1907 · темпера на бумаге",
-          "description": "Хильма аф Клинт даёт старости яркий, текучий язык: сиреневые поля, петли и тёмные зерна делают холст скорее выросшим, чем написанным.",
+          "subtitle": "Hilma af Klint · 1907 · темпера на бумаге",
           "fig": "PICS 013",
-          "homeTitle": "Десять крупнейших, № 9, Старость",
-          "homeSubtitle": "Хильма аф Клинт · 1907 · темпера на бумаге",
-          "homeDescription": "Хильма аф Клинт даёт старости яркий, текучий язык: сиреневые поля, петли и тёмные зерна делают холст скорее выросшим, чем написанным.",
-          "homeCredit": "Хильма аф Клинт · общественное достояние / Wikimedia Commons"
+          "description": "Hilma af Klint придает старости яркий, плавающий язык: лиловые поля, петли и темные семена делают холст ощущением выросшим, а не нарисованным.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "painting",
+          "homeTitle": "Diver, Molly Brocklhurst, 2024",
+          "homeSubtitle": "Molly Brocklehurst · 2024 • масло на холсте",
+          "homeDescription": "Molly Brocklehurst — британский художник, известный своими сновидческими масляными картинами, основанными на найденных фотографиях. Ее работы исследуют память, ностальгию и размывшуюся границу между реальностью и вымыслом, создавая сцены, которые ощущаются как фрагменты забытого прошлого.",
+          "homeCredit": "@mollbrokenhurst",
+          "picsId": "PICS-2026-013",
+          "updatedAt": "2026-08-24T21:04:27.802Z",
+          "picsReleaseId": "PICS-WEEK-2026-001",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt45868wd5pi0w.jpg",
+              "replacedAt": "2026-08-24T07:53:54.578Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt457i309fer4u.jpg",
+              "replacedAt": "2026-08-22T08:55:42.040Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt2pocyymsxngk.jpg",
+              "replacedAt": "2026-08-22T08:55:10.700Z"
+            }
+          ],
+          "homeSourceUrl": "https://www.instagram.com/mollybrocklehurst?igsi=MWN2N2tjeGt0NnF1bA=="
         },
         {
           "id": 18,
@@ -16323,14 +16344,39 @@
       "items": [
         {
           "id": 16,
-          "title": "Óvalo con puntas",
+          "title": "Oval con Puntos",
           "subtitle": "Henry Moore · 1968–70 · bronce",
-          "description": "Dos vacíos convierten un óvalo de bronce en un horizonte cambiante: en Henry Moore, peso, paisaje y cuerpo humano son inseparables.",
           "fig": "PICS 012",
-          "homeTitle": "Óvalo con puntas",
-          "homeSubtitle": "Henry Moore · 1968–70 · bronce",
-          "homeDescription": "Dos vacíos convierten un óvalo de bronce en un horizonte cambiante: en Henry Moore, peso, paisaje y cuerpo humano son inseparables.",
-          "homeCredit": "Henry Moore; foto de Jynto · CC BY-SA 4.0 / Wikimedia Commons"
+          "description": "Dos vacíos convierten un óvalo de bronce en un horizonte cambiante: Henry Moore hace que peso, paisaje y cuerpo humano parezcan inseparables.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt6x738935zw1a.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "sculpture",
+          "homeTitle": "VESTIDO FANTASMA • BRANDON MORRIS • 2025",
+          "homeSubtitle": "Brandon Morris · 2025 ·Fibra de vidrio y resina",
+          "homeDescription": "Brandon Morris explora la frontera entre moda y escultura, creando su serie Vestido Fantasma con fibra de vidrio y resina. Inspirado en la ropa infantil victoriana, películas de terror como The Ring, y artistas Martin Margiela, Hans Bellmer y Heidi Bucher, imagina vestidos existentes sin un cuerpo.",
+          "picsId": "PICS-2026-012",
+          "updatedAt": "2026-08-24T21:04:19.260Z",
+          "picsReleaseId": "PICS-WEEK-2026-001",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt464h3xj7ftes.jpg",
+              "replacedAt": "2026-08-24T07:34:13.220Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt4636yht0nbh3.jpg",
+              "replacedAt": "2026-08-22T09:20:49.289Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt4618kgtwhcbh.jpg",
+              "replacedAt": "2026-08-22T09:19:49.168Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt2rl37fc2se74.jpg",
+              "replacedAt": "2026-08-22T09:18:18.007Z"
+            }
+          ],
+          "homeCredit": "@codeunknown_",
+          "homeSourceUrl": "https://www.instagram.com/codeunknown_?igsi=MTNkeWFjMmx4eTZybw=="
         },
         {
           "id": 17,
@@ -19857,14 +19903,39 @@
       "items": [
         {
           "id": 16,
-          "title": "Noktalı Oval",
+          "title": "Oval with Points",
           "subtitle": "Henry Moore · 1968–70 · bronz",
-          "description": "İki boşluk bronz bir ovali değişen bir ufka dönüştürür: Henry Moore’da ağırlık, manzara ve insan bedeni birbirinden ayrılmaz.",
           "fig": "PICS 012",
-          "homeTitle": "Noktalı Oval",
-          "homeSubtitle": "Henry Moore · 1968–70 · bronz",
-          "homeDescription": "İki boşluk bronz bir ovali değişen bir ufka dönüştürür: Henry Moore’da ağırlık, manzara ve insan bedeni birbirinden ayrılmaz.",
-          "homeCredit": "Henry Moore; fotoğraf Jynto · CC BY-SA 4.0 / Wikimedia Commons"
+          "description": "İki boşluk bir bronz ovali kaydırıcı bir ufuk haline getiriyor: Henry Moore ağırlık, manzara ve insan bedenini ayırt edilemez kılıyor.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt6x738935zw1a.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "sculpture",
+          "homeTitle": "GHOST DRESS • BRANDON MORRIS • 2025",
+          "homeSubtitle": "Brandon Morris · 2025 ·Fiber Cam ve Reçine",
+          "homeDescription": "Brandon Morris moda ve heykel arasındaki sınırı keşfediyor, Ghost Dress serisini fiber cam ve reçineden oluşturuyor. Viktorya dönemi çocuk kıyafetlerinden, The Ring gibi korku filmlerinden ve sanatçılardan Martin Margiela, Hans Bellmer ve Heidi Bucher’dan ilham alarak, beden olmadan var olan elbiseleri hayal ediyor.",
+          "picsId": "PICS-2026-012",
+          "updatedAt": "2026-08-24T21:04:21.779Z",
+          "picsReleaseId": "PICS-WEEK-2026-001",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt464h3xj7ftes.jpg",
+              "replacedAt": "2026-08-24T07:34:13.220Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt4636yht0nbh3.jpg",
+              "replacedAt": "2026-08-22T09:20:49.289Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt4618kgtwhcbh.jpg",
+              "replacedAt": "2026-08-22T09:19:49.168Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt2rl37fc2se74.jpg",
+              "replacedAt": "2026-08-22T09:18:18.007Z"
+            }
+          ],
+          "homeCredit": "@codeunknown_",
+          "homeSourceUrl": "https://www.instagram.com/codeunknown_?igsi=MTNkeWFjMmx4eTZybw=="
         },
         {
           "id": 17,
@@ -23384,14 +23455,39 @@
       "items": [
         {
           "id": 16,
-          "title": "Ovale con punte",
+          "title": "Oval con Punti",
           "subtitle": "Henry Moore · 1968–70 · bronzo",
-          "description": "Due vuoti trasformano un ovale di bronzo in un orizzonte mutevole: in Henry Moore peso, paesaggio e corpo umano sono inseparabili.",
           "fig": "PICS 012",
-          "homeTitle": "Ovale con punte",
-          "homeSubtitle": "Henry Moore · 1968–70 · bronzo",
-          "homeDescription": "Due vuoti trasformano un ovale di bronzo in un orizzonte mutevole: in Henry Moore peso, paesaggio e corpo umano sono inseparabili.",
-          "homeCredit": "Henry Moore; foto di Jynto · CC BY-SA 4.0 / Wikimedia Commons"
+          "description": "Due vuoti trasformano un ovale di bronzo in un orizzonte in movimento: Henry Moore rende peso, paesaggio e corpo umano inseparabili.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt6x738935zw1a.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "sculpture",
+          "homeTitle": "GHOST DRESS • BRANDON MORRIS • 2025",
+          "homeSubtitle": "Brandon Morris · 2025 ·Vetroresina e Resina",
+          "homeDescription": "Brandon Morris esplora il confine tra moda e scultura, creando la sua serie Ghost Dress in fibra di vetro e resina. Ispirato all’abbigliamento infantile vittoriano, ai film horror come The Ring, e agli artisti Martin Margiela, Hans Bellmer e Heidi Bucher, immagina abiti esistenti senza un corpo.",
+          "picsId": "PICS-2026-012",
+          "updatedAt": "2026-08-24T21:04:24.635Z",
+          "picsReleaseId": "PICS-WEEK-2026-001",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt464h3xj7ftes.jpg",
+              "replacedAt": "2026-08-24T07:34:13.220Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt4636yht0nbh3.jpg",
+              "replacedAt": "2026-08-22T09:20:49.289Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt4618kgtwhcbh.jpg",
+              "replacedAt": "2026-08-22T09:19:49.168Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt2rl37fc2se74.jpg",
+              "replacedAt": "2026-08-22T09:18:18.007Z"
+            }
+          ],
+          "homeCredit": "@codeunknown_",
+          "homeSourceUrl": "https://www.instagram.com/codeunknown_?igsi=MTNkeWFjMmx4eTZybw=="
         },
         {
           "id": 17,
