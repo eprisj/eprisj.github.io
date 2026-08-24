@@ -4141,6 +4141,15 @@ async function updateSelectedPublicationState(nextState) {
   if (!data.visibility.entities || typeof data.visibility.entities !== 'object' || Array.isArray(data.visibility.entities)) data.visibility.entities = {};
   if (!data.visibility.entities[section] || typeof data.visibility.entities[section] !== 'object' || Array.isArray(data.visibility.entities[section])) data.visibility.entities[section] = {};
 
+  /* Видимость лежит в data.visibility, а не в самой записи, поэтому точечный
+     PATCH записи её не увозит — это уже учтено в ветке «Скрыть» ниже, но не
+     было учтено здесь. «Опубликовать» переставляло флаг только в локальном
+     JSON и сохраняло одну запись, так что материал, когда-то снятый с сайта
+     через «Скрыть», оставался на VPS с visibility=false при draft:false.
+     В панели всё выглядело опубликованным, ссылка предпросмотра открывала
+     готовый материал (она обходит оба фильтра), а читатель не видел ничего. */
+  const wasHidden = data.visibility.entities[section][String(entry.id)] === false;
+
   if (nextState === 'live') {
     delete entry.draft;
     // A past timestamp is the durable editorial confirmation that this entry
@@ -4166,6 +4175,14 @@ async function updateSelectedPublicationState(nextState) {
     // the VPS (the old flow required a second, easy-to-miss save click).
     if (nextState === 'live' || nextState === 'draft') {
       await saveEntityToServer(section, DEFAULT_LANGUAGE, entry);
+      /* Запись сохранена, но снятие «скрыто» живёт вне записи — без этой
+         публикации документа статья остаётся невидимой на сайте. Делается
+         только когда флаг реально надо сдвинуть, чтобы обычная публикация не
+         тащила весь документ. */
+      if (wasHidden) {
+        setEditorData(data);
+        await publishContentToVps({ silent: true });
+      }
       setEditorData(data, { markSynced: true });
     } else {
       /* «Скрыть» живёт в data.visibility, а не в самой записи, поэтому
