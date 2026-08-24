@@ -20003,13 +20003,34 @@
         {
           "id": 17,
           "title": "En Büyük On, No. 9, Yaşlılık",
-          "subtitle": "Hilma af Klint · 1907 · kâğıt üzerine tempera",
-          "description": "Hilma af Klint yaşlılığa ışıklı, yüzen bir dil verir: leylak alanları, kıvrımlar ve koyu tohumlar resmi boyanmıştan çok büyümüş gibi hissettirir.",
+          "subtitle": "Hilma af Klint · 1907 · kağıt üzerine tempera",
           "fig": "PICS 013",
-          "homeTitle": "En Büyük On, No. 9, Yaşlılık",
-          "homeSubtitle": "Hilma af Klint · 1907 · kâğıt üzerine tempera",
-          "homeDescription": "Hilma af Klint yaşlılığa ışıklı, yüzen bir dil verir: leylak alanları, kıvrımlar ve koyu tohumlar resmi boyanmıştan çok büyümüş gibi hissettirir.",
-          "homeCredit": "Hilma af Klint · kamu malı eser / Wikimedia Commons"
+          "description": "Hilma af Klint yaşlılığa canlı, yüzen bir dil veriyor: leylak tarlaları, döngüler ve koyu tohumlar tuvali büyümüş gibi hissettiriyor, boyanmış değil.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "painting",
+          "homeTitle": "Diver, Molly Brocklhurst, 2024",
+          "homeSubtitle": "Molly Brocklehurst · 2024 • tuval üzerine yağlı boya",
+          "homeDescription": "Molly Brocklehurst İngiliz bir ressamdır ve bulunan fotoğraflara dayanan rüya gibi yağlı boya tablolarıyla tanınır. Eseri hafıza, nostalji ve gerçeklik ile kurgu arasındaki bulanık çizgiyi keşfeder, unutulmuş bir geçmişin parçaları gibi hissettiren sahneler yaratır.",
+          "homeCredit": "@mollbrokenhurst",
+          "picsId": "PICS-2026-013",
+          "updatedAt": "2026-08-24T21:04:42.709Z",
+          "picsReleaseId": "PICS-WEEK-2026-001",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt45868wd5pi0w.jpg",
+              "replacedAt": "2026-08-24T07:53:54.578Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt457i309fer4u.jpg",
+              "replacedAt": "2026-08-22T08:55:42.040Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt2pocyymsxngk.jpg",
+              "replacedAt": "2026-08-22T08:55:10.700Z"
+            }
+          ],
+          "homeSourceUrl": "https://www.instagram.com/mollybrocklehurst?igsi=MWN2N2tjeGt0NnF1bA=="
         },
         {
           "id": 18,
@@ -23554,14 +23575,35 @@
         },
         {
           "id": 17,
-          "title": "I dieci maggiori, n. 9, Vecchiaia",
+          "title": "I Dieci Più Grandi, n. 9, Vecchiaia",
           "subtitle": "Hilma af Klint · 1907 · tempera su carta",
-          "description": "Hilma af Klint dà alla vecchiaia un linguaggio luminoso e fluttuante: campi lilla, anelli e semi scuri fanno sembrare la tela cresciuta più che dipinta.",
           "fig": "PICS 013",
-          "homeTitle": "I dieci maggiori, n. 9, Vecchiaia",
-          "homeSubtitle": "Hilma af Klint · 1907 · tempera su carta",
-          "homeDescription": "Hilma af Klint dà alla vecchiaia un linguaggio luminoso e fluttuante: campi lilla, anelli e semi scuri fanno sembrare la tela cresciuta più che dipinta.",
-          "homeCredit": "Hilma af Klint · opera di pubblico dominio / Wikimedia Commons"
+          "description": "Hilma af Klint dà alla vecchiaia un linguaggio vivido e fluttuante: campi lilla, anelli e semi scuri rendono la tela più cresciuta che dipinta.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "painting",
+          "homeTitle": "Diver, Molly Brocklhurst, 2024",
+          "homeSubtitle": "Molly Brocklehurst · 2024 • olio su tela",
+          "homeDescription": "Molly Brocklehurst è una pittrice britannica nota per i suoi dipinti ad olio onirici basati su fotografie trovate. Il suo lavoro esplora memoria, nostalgia e la linea sfocata tra realtà e finzione, creando scene che sembrano frammenti di un passato dimenticato.",
+          "homeCredit": "@mollbrokenhurst",
+          "picsId": "PICS-2026-013",
+          "updatedAt": "2026-08-24T21:04:46.261Z",
+          "picsReleaseId": "PICS-WEEK-2026-001",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt45868wd5pi0w.jpg",
+              "replacedAt": "2026-08-24T07:53:54.578Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt457i309fer4u.jpg",
+              "replacedAt": "2026-08-22T08:55:42.040Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt2pocyymsxngk.jpg",
+              "replacedAt": "2026-08-22T08:55:10.700Z"
+            }
+          ],
+          "homeSourceUrl": "https://www.instagram.com/mollybrocklehurst?igsi=MWN2N2tjeGt0NnF1bA=="
         },
         {
           "id": 18,
@@ -27689,58 +27731,58 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mt6x738935zw1a.jpg",
           "localized": {
             "RU": {
-              "title": "Овал с точками",
-              "subtitle": "Генри Мур · 1968–70 · бронза",
-              "description": "Два пустотных проёма превращают бронзовый овал в меняющийся горизонт: у Генри Мура вес, ландшафт и человеческое тело неразделимы.",
-              "credit": "Генри Мур; фото Jynto · CC BY-SA 4.0 / Wikimedia Commons",
-              "sourceUrl": "",
+              "title": "GHOST DRESS • BRANDON MORRIS • 2025",
+              "subtitle": "Brandon Morris · 2025 ·Стекловолокно и смола",
+              "description": "Brandon Morris исследует границу между модой и скульптурой, создавая свою серию Ghost Dress из стекловолокна и смолы. Вдохновленный викторианской детской одеждой, фильмами ужасов такими как The Ring, а также художниками Martin Margiela, Hans Bellmer и Heidi Bucher, он представляет себе платья, существующие без тела.",
+              "credit": "@codeunknown_",
+              "sourceUrl": "https://www.instagram.com/codeunknown_?igsi=MTNkeWFjMmx4eTZybw==",
               "imageSeed": "",
-              "imageUrl": ""
+              "imageUrl": "https://api.eprisjournal.com/uploads/mt6x738935zw1a.jpg"
             },
             "UA": {
-              "title": "Овал із точками",
-              "subtitle": "Генрі Мур · 1968–70 · бронза",
-              "description": "Два отвори перетворюють бронзовий овал на мінливий горизонт: у Генрі Мура вага, ландшафт і людське тіло нероздільні.",
-              "credit": "Генрі Мур; фото Jynto · CC BY-SA 4.0 / Wikimedia Commons",
-              "sourceUrl": "",
+              "title": "GHOST DRESS • BRANDON MORRIS • 2025",
+              "subtitle": "Brandon Morris · 2025 ·волоконно-скловолоконний і смола",
+              "description": "Brandon Morris досліджує межу між модою та скульптурою, створюючи свою серію Ghost Dress з волоконно-скловолоконного матеріалу та смоли. Надихаючись дитячим одягом вікторіанської епохи, фільмами жахів, такими як The Ring, та художниками Martin Margiela, Hans Bellmer і Heidi Bucher, він уявляє сукні, що існують без тіла.",
+              "credit": "@codeunknown_",
+              "sourceUrl": "https://www.instagram.com/codeunknown_?igsi=MTNkeWFjMmx4eTZybw==",
               "imageSeed": "",
-              "imageUrl": ""
+              "imageUrl": "https://api.eprisjournal.com/uploads/mt6x738935zw1a.jpg"
             },
             "DE": {
-              "title": "Oval with Points",
-              "subtitle": "Henry Moore · 1968–70 · Bronze",
-              "description": "Zwei Öffnungen verwandeln ein bronzenes Oval in einen wechselnden Horizont: Bei Henry Moore sind Gewicht, Landschaft und menschlicher Körper untrennbar.",
-              "credit": "Henry Moore; Foto Jynto · CC BY-SA 4.0 / Wikimedia Commons",
-              "sourceUrl": "",
+              "title": "GHOST DRESS • BRANDON MORRIS • 2025",
+              "subtitle": "Brandon Morris · 2025 · Fiberglas und Harz",
+              "description": "Brandon Morris erforscht die Grenze zwischen Mode und Skulptur, indem er seine Ghost Dress-Serie aus Fiberglas und Harz schafft. Inspiriert von viktorianischer Kinderkleidung, Horrorfilmen wie The Ring und Künstlern Martin Margiela, Hans Bellmer und Heidi Bucher, stellt er sich Kleider vor, die ohne Körper existieren.",
+              "credit": "@codeunknown_",
+              "sourceUrl": "https://www.instagram.com/codeunknown_?igsi=MTNkeWFjMmx4eTZybw==",
               "imageSeed": "",
-              "imageUrl": ""
+              "imageUrl": "https://api.eprisjournal.com/uploads/mt6x738935zw1a.jpg"
             },
             "ES": {
-              "title": "Óvalo con puntas",
-              "subtitle": "Henry Moore · 1968–70 · bronce",
-              "description": "Dos vacíos convierten un óvalo de bronce en un horizonte cambiante: en Henry Moore, peso, paisaje y cuerpo humano son inseparables.",
-              "credit": "Henry Moore; foto de Jynto · CC BY-SA 4.0 / Wikimedia Commons",
-              "sourceUrl": "",
+              "title": "VESTIDO FANTASMA • BRANDON MORRIS • 2025",
+              "subtitle": "Brandon Morris · 2025 ·Fibra de vidrio y resina",
+              "description": "Brandon Morris explora la frontera entre moda y escultura, creando su serie Vestido Fantasma con fibra de vidrio y resina. Inspirado en la ropa infantil victoriana, películas de terror como The Ring, y artistas Martin Margiela, Hans Bellmer y Heidi Bucher, imagina vestidos existentes sin un cuerpo.",
+              "credit": "@codeunknown_",
+              "sourceUrl": "https://www.instagram.com/codeunknown_?igsi=MTNkeWFjMmx4eTZybw==",
               "imageSeed": "",
-              "imageUrl": ""
+              "imageUrl": "https://api.eprisjournal.com/uploads/mt6x738935zw1a.jpg"
             },
             "TR": {
-              "title": "Noktalı Oval",
-              "subtitle": "Henry Moore · 1968–70 · bronz",
-              "description": "İki boşluk bronz bir ovali değişen bir ufka dönüştürür: Henry Moore’da ağırlık, manzara ve insan bedeni birbirinden ayrılmaz.",
-              "credit": "Henry Moore; fotoğraf Jynto · CC BY-SA 4.0 / Wikimedia Commons",
-              "sourceUrl": "",
+              "title": "GHOST DRESS • BRANDON MORRIS • 2025",
+              "subtitle": "Brandon Morris · 2025 ·Fiber Cam ve Reçine",
+              "description": "Brandon Morris moda ve heykel arasındaki sınırı keşfediyor, Ghost Dress serisini fiber cam ve reçineden oluşturuyor. Viktorya dönemi çocuk kıyafetlerinden, The Ring gibi korku filmlerinden ve sanatçılardan Martin Margiela, Hans Bellmer ve Heidi Bucher’dan ilham alarak, beden olmadan var olan elbiseleri hayal ediyor.",
+              "credit": "@codeunknown_",
+              "sourceUrl": "https://www.instagram.com/codeunknown_?igsi=MTNkeWFjMmx4eTZybw==",
               "imageSeed": "",
-              "imageUrl": ""
+              "imageUrl": "https://api.eprisjournal.com/uploads/mt6x738935zw1a.jpg"
             },
             "IT": {
-              "title": "Ovale con punte",
-              "subtitle": "Henry Moore · 1968–70 · bronzo",
-              "description": "Due vuoti trasformano un ovale di bronzo in un orizzonte mutevole: in Henry Moore peso, paesaggio e corpo umano sono inseparabili.",
-              "credit": "Henry Moore; foto di Jynto · CC BY-SA 4.0 / Wikimedia Commons",
-              "sourceUrl": "",
+              "title": "GHOST DRESS • BRANDON MORRIS • 2025",
+              "subtitle": "Brandon Morris · 2025 ·Vetroresina e Resina",
+              "description": "Brandon Morris esplora il confine tra moda e scultura, creando la sua serie Ghost Dress in fibra di vetro e resina. Ispirato all’abbigliamento infantile vittoriano, ai film horror come The Ring, e agli artisti Martin Margiela, Hans Bellmer e Heidi Bucher, immagina abiti esistenti senza un corpo.",
+              "credit": "@codeunknown_",
+              "sourceUrl": "https://www.instagram.com/codeunknown_?igsi=MTNkeWFjMmx4eTZybw==",
               "imageSeed": "",
-              "imageUrl": ""
+              "imageUrl": "https://api.eprisjournal.com/uploads/mt6x738935zw1a.jpg"
             }
           }
         },
@@ -27758,58 +27800,58 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg",
           "localized": {
             "RU": {
-              "title": "Десять крупнейших, № 9, Старость",
-              "subtitle": "Хильма аф Клинт · 1907 · темпера на бумаге",
-              "description": "Хильма аф Клинт даёт старости яркий, текучий язык: сиреневые поля, петли и тёмные зерна делают холст скорее выросшим, чем написанным.",
-              "credit": "Хильма аф Клинт · общественное достояние / Wikimedia Commons",
-              "sourceUrl": "",
+              "title": "Diver, Molly Brocklhurst, 2024",
+              "subtitle": "Molly Brocklehurst · 2024 • масло на холсте",
+              "description": "Molly Brocklehurst — британский художник, известный своими сновидческими масляными картинами, основанными на найденных фотографиях. Ее работы исследуют память, ностальгию и размывшуюся границу между реальностью и вымыслом, создавая сцены, которые ощущаются как фрагменты забытого прошлого.",
+              "credit": "@mollbrokenhurst",
+              "sourceUrl": "https://www.instagram.com/mollybrocklehurst?igsi=MWN2N2tjeGt0NnF1bA==",
               "imageSeed": "",
-              "imageUrl": ""
+              "imageUrl": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg"
             },
             "UA": {
-              "title": "Десять найбільших, № 9, Старість",
-              "subtitle": "Гільма аф Клінт · 1907 · темпера на папері",
-              "description": "Гільма аф Клінт дає старості яскраву, плинну мову: бузкові поля, петлі й темне зерно роблять полотно радше вирощеним, ніж намальованим.",
-              "credit": "Гільма аф Клінт · суспільне надбання / Wikimedia Commons",
-              "sourceUrl": "",
+              "title": "Diver, Molly Brocklhurst, 2024",
+              "subtitle": "Molly Brocklehurst · 2024 • олія на полотні",
+              "description": "Molly Brocklehurst — британська художниця, відома своїми сновидінськими олійними картинами, заснованими на знайдених фотографіях. Її роботи досліджують пам’ять, ностальгію та розмиту межу між реальністю та вигадкою, створюючи сцени, що відчуваються як фрагменти забутої минувшини.",
+              "credit": "@mollbrokenhurst",
+              "sourceUrl": "https://www.instagram.com/mollybrocklehurst?igsi=MWN2N2tjeGt0NnF1bA==",
               "imageSeed": "",
-              "imageUrl": ""
+              "imageUrl": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg"
             },
             "DE": {
-              "title": "Die zehn Größten, Nr. 9, Alter",
-              "subtitle": "Hilma af Klint · 1907 · Tempera auf Papier",
-              "description": "Hilma af Klint gibt dem Alter eine leuchtende, schwebende Sprache: Fliederfelder, Schleifen und dunkle Samen lassen das Bild eher gewachsen als gemalt erscheinen.",
-              "credit": "Hilma af Klint · gemeinfrei / Wikimedia Commons",
-              "sourceUrl": "",
+              "title": "Diver, Molly Brocklhurst, 2024",
+              "subtitle": "Molly Brocklehurst · 2024 • Öl auf Leinwand",
+              "description": "Molly Brocklehurst ist eine britische Malerin, bekannt für ihre traumhaften Ölgemälde basierend auf gefundenen Fotografien. Ihre Arbeit erforscht Erinnerung, Nostalgie und die verschwommene Grenze zwischen Realität und Fiktion, und schafft Szenen, die wie Fragmente einer vergessenen Vergangenheit wirken.",
+              "credit": "@mollbrokenhurst",
+              "sourceUrl": "https://www.instagram.com/mollybrocklehurst?igsi=MWN2N2tjeGt0NnF1bA==",
               "imageSeed": "",
-              "imageUrl": ""
+              "imageUrl": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg"
             },
             "ES": {
-              "title": "Los diez mayores, n.º 9, Vejez",
-              "subtitle": "Hilma af Klint · 1907 · témpera sobre papel",
-              "description": "Hilma af Klint da a la vejez un lenguaje luminoso y flotante: campos lilas, bucles y semillas oscuras hacen que el lienzo parezca crecido más que pintado.",
-              "credit": "Hilma af Klint · obra de dominio público / Wikimedia Commons",
-              "sourceUrl": "",
+              "title": "Diver, Molly Brocklhurst, 2024",
+              "subtitle": "Molly Brocklehurst · 2024 • óleo sobre lienzo",
+              "description": "Molly Brocklehurst es una pintora británica conocida por sus pinturas al óleo oníricas basadas en fotografías encontradas. Su trabajo explora la memoria, la nostalgia y la línea borrosa entre la realidad y la ficción, creando escenas que parecen fragmentos de un pasado olvidado.",
+              "credit": "@mollbrokenhurst",
+              "sourceUrl": "https://www.instagram.com/mollybrocklehurst?igsi=MWN2N2tjeGt0NnF1bA==",
               "imageSeed": "",
-              "imageUrl": ""
+              "imageUrl": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg"
             },
             "TR": {
-              "title": "En Büyük On, No. 9, Yaşlılık",
-              "subtitle": "Hilma af Klint · 1907 · kâğıt üzerine tempera",
-              "description": "Hilma af Klint yaşlılığa ışıklı, yüzen bir dil verir: leylak alanları, kıvrımlar ve koyu tohumlar resmi boyanmıştan çok büyümüş gibi hissettirir.",
-              "credit": "Hilma af Klint · kamu malı eser / Wikimedia Commons",
-              "sourceUrl": "",
+              "title": "Diver, Molly Brocklhurst, 2024",
+              "subtitle": "Molly Brocklehurst · 2024 • tuval üzerine yağlı boya",
+              "description": "Molly Brocklehurst İngiliz bir ressamdır ve bulunan fotoğraflara dayanan rüya gibi yağlı boya tablolarıyla tanınır. Eseri hafıza, nostalji ve gerçeklik ile kurgu arasındaki bulanık çizgiyi keşfeder, unutulmuş bir geçmişin parçaları gibi hissettiren sahneler yaratır.",
+              "credit": "@mollbrokenhurst",
+              "sourceUrl": "https://www.instagram.com/mollybrocklehurst?igsi=MWN2N2tjeGt0NnF1bA==",
               "imageSeed": "",
-              "imageUrl": ""
+              "imageUrl": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg"
             },
             "IT": {
-              "title": "I dieci maggiori, n. 9, Vecchiaia",
-              "subtitle": "Hilma af Klint · 1907 · tempera su carta",
-              "description": "Hilma af Klint dà alla vecchiaia un linguaggio luminoso e fluttuante: campi lilla, anelli e semi scuri fanno sembrare la tela cresciuta più che dipinta.",
-              "credit": "Hilma af Klint · opera di pubblico dominio / Wikimedia Commons",
-              "sourceUrl": "",
+              "title": "Diver, Molly Brocklhurst, 2024",
+              "subtitle": "Molly Brocklehurst · 2024 • olio su tela",
+              "description": "Molly Brocklehurst è una pittrice britannica nota per i suoi dipinti ad olio onirici basati su fotografie trovate. Il suo lavoro esplora memoria, nostalgia e la linea sfocata tra realtà e finzione, creando scene che sembrano frammenti di un passato dimenticato.",
+              "credit": "@mollbrokenhurst",
+              "sourceUrl": "https://www.instagram.com/mollybrocklehurst?igsi=MWN2N2tjeGt0NnF1bA==",
               "imageSeed": "",
-              "imageUrl": ""
+              "imageUrl": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg"
             }
           }
         },
