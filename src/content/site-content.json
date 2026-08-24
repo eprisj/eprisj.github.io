@@ -2304,17 +2304,6 @@
       "imageSeed": "maria-graduation-heart",
       "imageUrl": "/images/heart-hero.jpg",
       "articleId": 11
-    },
-    {
-      "id": 15,
-      "title": "New gallery item",
-      "subtitle": "One-line context — replace me",
-      "fig": "FIG. 15",
-      "description": "One or two sentences describing this piece — replace with real copy before publishing.",
-      "imageSeed": "new-item-15",
-      "homeTitle": "New gallery item",
-      "homeSubtitle": "One-line context — replace me",
-      "homeDescription": "One or two sentences describing this piece — replace with real copy before publishing."
     }
   ],
   "articles": [
@@ -5463,28 +5452,6 @@
       "role": "Author"
     },
     {
-      "id": 5,
-      "title": "New review",
-      "subject": "New review",
-      "rating": 0,
-      "content": "Начните с первого впечатления – атмосфера, сервис, для кого это место. Затем конкретные детали, подтверждающие вывод.",
-      "author": "EPRIS Journal",
-      "category": "Food & Stay",
-      "verdict": "Одна чёткая строка – стоит ли идти.",
-      "pros": [
-        "Локация",
-        "Атмосфера",
-        "Соотношение цены и качества"
-      ],
-      "cons": [
-        "Один честный минус"
-      ],
-      "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
-      "date": "Aug 11, 2026",
-      "updatedAt": "2026-08-21T19:37:58.441Z",
-      "previewToken": "76a0ec2d305ee48d0bf146b0"
-    },
-    {
       "id": 6,
       "title": "Dining Inside a Watercolour",
       "subject": "Enigma · Barcelona · RCR Arquitectes",
@@ -5938,17 +5905,6 @@
           "homeCategory": "painting",
           "homeLabel": "Хильма аф Клинт · 1907 · темпера на бумаге",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
-        },
-        {
-          "id": 15,
-          "title": "Новый элемент галереи",
-          "subtitle": "Однострочный контекст — замените меня",
-          "fig": "FIG. 15",
-          "description": "Одно или два предложения, описывающие этот объект — замените на реальный текст перед публикацией.",
-          "imageSeed": "new-item-15",
-          "homeTitle": "Новый элемент галереи",
-          "homeSubtitle": "Однострочный контекст — замените меня",
-          "homeDescription": "Одно или два предложения, описывающие этот объект — замените на реальный текст перед публикацией."
         }
       ],
       "articles": [
@@ -8859,28 +8815,6 @@
           "authorId": "author-1784732936927-kw554",
           "role": "Приглашённый редактор",
           "imageUrl": "https://api.eprisjournal.com/uploads/msu2shhacwwanq.webp"
-        },
-        {
-          "id": 5,
-          "draft": true,
-          "title": "Новый обзор",
-          "subject": "Новый обзор",
-          "rating": 0,
-          "content": "Начните с первого впечатления – атмосфера, сервис, для кого это место. Затем конкретные детали, подтверждающие вывод.",
-          "author": "EPRIS Journal",
-          "category": "Food & Stay",
-          "verdict": "Одна чёткая строка – стоит ли идти.",
-          "pros": [
-            "Локация",
-            "Атмосфера",
-            "Соотношение цены и качества"
-          ],
-          "cons": [
-            "Один честный минус"
-          ],
-          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
-          "date": "Aug 11, 2026",
-          "updatedAt": "2026-08-18T01:44:05.053Z"
         }
       ],
       "libraryItems": [
@@ -9183,17 +9117,6 @@
           "homeCategory": "painting",
           "homeLabel": "Гільма аф Клінт · 1907 · темпера на папері",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
-        },
-        {
-          "id": 15,
-          "title": "Новий елемент галереї",
-          "subtitle": "Однолінійний контекст — заміни мене",
-          "fig": "FIG. 15",
-          "description": "Один або два речення, що описують цей об’єкт — замініть на реальний текст перед публікацією.",
-          "imageSeed": "new-item-15",
-          "homeTitle": "Новий елемент галереї",
-          "homeSubtitle": "Однолінійний контекст — заміни мене",
-          "homeDescription": "Один або два речення, що описують цей об’єкт — замініть на реальний текст перед публікацією."
         }
       ],
       "articles": [
@@ -12104,28 +12027,6 @@
           "authorId": "author-1784732936927-kw554",
           "role": "Запрошений редактор",
           "imageUrl": "https://api.eprisjournal.com/uploads/msu2shhacwwanq.webp"
-        },
-        {
-          "id": 5,
-          "draft": true,
-          "title": "Новий відгук",
-          "subject": "Новий відгук",
-          "rating": 0,
-          "content": "Почніть з першого враження – атмосфера, сервіс, для кого це місце. Потім конкретні деталі, які підтверджують висновок.",
-          "author": "EPRIS Journal",
-          "category": "Food & Stay",
-          "verdict": "Одна чітка рядка – варто йти?",
-          "pros": [
-            "Локація",
-            "Атмосфера",
-            "Відношення ціни та якості"
-          ],
-          "cons": [
-            "Один чесний мінус"
-          ],
-          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
-          "date": "Aug 11, 2026",
-          "updatedAt": "2026-08-18T01:44:32.262Z"
         }
       ],
       "libraryItems": [
@@ -12428,17 +12329,6 @@
           "homeCategory": "painting",
           "homeLabel": "Hilma af Klint · 1907 · Tempera auf Papier",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
-        },
-        {
-          "id": 15,
-          "title": "Neues Galerieobjekt",
-          "subtitle": "Einzeiliger Kontext — ersetze mich",
-          "fig": "FIG. 15",
-          "description": "Ein oder zwei Sätze, die dieses Stück beschreiben — ersetze mit echtem Text vor der Veröffentlichung.",
-          "imageSeed": "new-item-15",
-          "homeTitle": "Neues Galerieobjekt",
-          "homeSubtitle": "Einzeiliger Kontext — ersetze mich",
-          "homeDescription": "Ein oder zwei Sätze, die dieses Stück beschreiben — ersetze mit echtem Text vor der Veröffentlichung."
         }
       ],
       "articles": [
@@ -15349,28 +15239,6 @@
           "authorId": "author-1784732936927-kw554",
           "role": "Автор",
           "imageUrl": "https://api.eprisjournal.com/uploads/msu2shhacwwanq.webp"
-        },
-        {
-          "id": 5,
-          "draft": true,
-          "title": "Neue Bewertung",
-          "subject": "Neue Bewertung",
-          "rating": 0,
-          "content": "Beginnen Sie mit dem ersten Eindruck – Atmosphäre, Service, für wen ist dieser Ort. Dann konkrete Details, die die Schlussfolgerung bestätigen.",
-          "author": "EPRIS Journal",
-          "category": "Food & Stay",
-          "verdict": "Eine klare Zeile – lohnt es sich, hingehen?",
-          "pros": [
-            "Lage",
-            "Atmosphäre",
-            "Preis-Leistungs-Verhältnis"
-          ],
-          "cons": [
-            "Ein ehrlicher Nachteil"
-          ],
-          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
-          "date": "Aug 11, 2026",
-          "updatedAt": "2026-08-18T01:46:37.846Z"
         }
       ],
       "libraryItems": [
@@ -15673,17 +15541,6 @@
           "homeCategory": "painting",
           "homeLabel": "Hilma af Klint · 1907 · temple sobre papel",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
-        },
-        {
-          "id": 15,
-          "title": "Nuevo elemento de galería",
-          "subtitle": "Contexto de una línea — reemplazarme",
-          "fig": "FIG. 15",
-          "description": "Una o dos frases describiendo esta pieza — reemplazar con copia real antes de publicar.",
-          "imageSeed": "new-item-15",
-          "homeTitle": "Nuevo elemento de galería",
-          "homeSubtitle": "Contexto de una línea — reemplazarme",
-          "homeDescription": "Una o dos frases describiendo esta pieza — reemplazar con copia real antes de publicar."
         }
       ],
       "articles": [
@@ -18600,28 +18457,6 @@
           "authorId": "author-1784732936927-kw554",
           "role": "Автор",
           "imageUrl": "https://api.eprisjournal.com/uploads/msu2shhacwwanq.webp"
-        },
-        {
-          "id": 5,
-          "draft": true,
-          "title": "Nueva reseña",
-          "subject": "Nueva reseña",
-          "rating": 0,
-          "content": "Empieza con la primera impresión – ambiente, servicio, para quién es este lugar. Luego los detalles específicos que confirman la conclusión.",
-          "author": "EPRIS Journal",
-          "category": "Food & Stay",
-          "verdict": "Una línea clara – ¿vale la pena ir?",
-          "pros": [
-            "Ubicación",
-            "Atmosfera",
-            "Relación calidad-precio"
-          ],
-          "cons": [
-            "Un punto negativo honesto"
-          ],
-          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
-          "date": "Aug 11, 2026",
-          "updatedAt": "2026-08-18T01:46:55.959Z"
         }
       ],
       "libraryItems": [
@@ -18924,17 +18759,6 @@
           "homeCategory": "painting",
           "homeLabel": "Hilma af Klint · 1907 · kâğıt üzerine tempera",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
-        },
-        {
-          "id": 15,
-          "title": "Yeni galeri öğesi",
-          "subtitle": "Tek satırlık bağlam — beni değiştir",
-          "fig": "FIG. 15",
-          "description": "Bu parçayı tanımlayan bir veya iki cümle — yayınlamadan önce gerçek kopyayla değiştirin.",
-          "imageSeed": "new-item-15",
-          "homeTitle": "Yeni galeri öğesi",
-          "homeSubtitle": "Tek satırlık bağlam — beni değiştir",
-          "homeDescription": "Bu parçayı tanımlayan bir veya iki cümle — yayınlamadan önce gerçek kopyayla değiştirin."
         }
       ],
       "articles": [
@@ -21844,28 +21668,6 @@
           "authorId": "author-1784732936927-kw554",
           "role": "Автор",
           "imageUrl": "https://api.eprisjournal.com/uploads/msu2shhacwwanq.webp"
-        },
-        {
-          "id": 5,
-          "draft": true,
-          "title": "Yeni bir inceleme",
-          "subject": "Yeni bir inceleme",
-          "rating": 0,
-          "content": "İlk izlenimle başlayın – atmosfer, hizmet, bu mekan kimler içindir. Daha sonra çıkarıyı destekleyen spesifik ayrıntılar.",
-          "author": "EPRIS Journal",
-          "category": "Food & Stay",
-          "verdict": "Bir satır net – gitmek gerçekten mi?",
-          "pros": [
-            "Lokasyon",
-            "Atmosfer",
-            "Fiyat‑kalite oranı"
-          ],
-          "cons": [
-            "Sadece bir eksik"
-          ],
-          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
-          "date": "Aug 11, 2026",
-          "updatedAt": "2026-08-18T01:47:13.397Z"
         }
       ],
       "libraryItems": [
@@ -22168,17 +21970,6 @@
           "homeCategory": "painting",
           "homeLabel": "Hilma af Klint · 1907 · tempera su carta",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
-        },
-        {
-          "id": 15,
-          "title": "Nuovo elemento della galleria",
-          "subtitle": "Contesto su una riga — sostituiscimi",
-          "fig": "FIG. 15",
-          "description": "Una o due frasi che descrivono questo pezzo — sostituire con copia reale prima della pubblicazione.",
-          "imageSeed": "new-item-15",
-          "homeTitle": "Nuovo elemento della galleria",
-          "homeSubtitle": "Contesto su una riga — sostituiscimi",
-          "homeDescription": "Una o due frasi che descrivono questo pezzo — sostituire con copia reale prima della pubblicazione."
         }
       ],
       "articles": [
@@ -25088,28 +24879,6 @@
           "authorId": "author-1784732936927-kw554",
           "role": "Автор",
           "imageUrl": "https://api.eprisjournal.com/uploads/msu2shhacwwanq.webp"
-        },
-        {
-          "id": 5,
-          "draft": true,
-          "title": "Nuova recensione",
-          "subject": "Nuova recensione",
-          "rating": 0,
-          "content": "Inizia dalla prima impressione – atmosfera, servizio, per chi è questo posto. Poi dettagli specifici, che confermano la conclusione.",
-          "author": "EPRIS Journal",
-          "category": "Food & Stay",
-          "verdict": "Una linea chiara – vale la pena andare?",
-          "pros": [
-            "Posizione",
-            "Atmosfera",
-            "Rapporto qualità-prezzo"
-          ],
-          "cons": [
-            "Un onesto difetto"
-          ],
-          "meta": "Локация · Ценовой диапазон · Посещено ММ.ГГГГ",
-          "date": "Aug 11, 2026",
-          "updatedAt": "2026-08-18T01:47:28.426Z"
         }
       ],
       "libraryItems": [
@@ -25632,12 +25401,10 @@
     },
     "entities": {
       "articles": {
-        "23": false
+        "23": true
       },
       "items": {},
-      "reviews": {
-        "5": false
-      },
+      "reviews": {},
       "authors": {},
       "studioProjects": {}
     }
