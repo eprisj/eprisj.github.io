@@ -3232,11 +3232,21 @@ function updateAdminToolbarContext() {
   const selectedEntries = getSectionArray(data, section, DEFAULT_LANGUAGE, false);
   const selectedEntry = selectedEntries.find((entry) => Number(entry.id) === selectedId);
   const selectedState = getPublicationState(data, section, selectedEntry);
-  if (visualPublishBtn) visualPublishBtn.disabled = !selectedEntry || selectedState === 'live';
+  /* Кнопка гасла, как только состояние локально стало «live» — и повторить
+     публикацию было нечем. Но «live» в панели и «читатель это видит» — разные
+     вещи: запись может быть заготовкой, лежать без карточки на главной или не
+     доехать до сервера. Пока под кнопками висит хоть один блокер, повтор
+     должен оставаться доступным, иначе единственный выход из расхождения —
+     перевести запись в черновик и обратно. */
+  const selectedReach = selectedEntry ? describeEntryReach(data, section, selectedEntry) : null;
+  const selectedHasBlockers = Boolean(selectedReach && selectedReach.blockers.length);
+  if (visualPublishBtn) {
+    visualPublishBtn.disabled = !selectedEntry || (selectedState === 'live' && !selectedHasBlockers);
+  }
   if (visualDraftBtn) visualDraftBtn.disabled = !selectedEntry || selectedState === 'draft';
   if (visualHideBtn) visualHideBtn.disabled = !selectedEntry || selectedState === 'hidden';
   if (visualPublishBtn) visualPublishBtn.textContent = selectedState === 'hidden' ? 'Показать и опубликовать' : 'Опубликовать';
-  renderEntryReach(data, section, selectedEntry);
+  renderEntryReach(selectedReach);
   const selectedCount = countArticleOriginals(selectedArticle);
   const totalCount = articles.reduce((sum, article) => sum + countArticleOriginals(article), 0);
   const canDownloadSelected = section === 'articles' && Boolean(selectedArticle) && selectedCount > 0;
@@ -4179,10 +4189,11 @@ function describeEntryReach(data, section, entry) {
   return { blockers, notes };
 }
 
-function renderEntryReach(data, section, entry) {
+// reach уже посчитан вызывающим (им же управляется доступность «Опубликовать»),
+// поэтому второй проход по всем языкам здесь не нужен.
+function renderEntryReach(reach) {
   const host = byId('visualEntryReach');
   if (!host) return;
-  const reach = entry ? describeEntryReach(data, section, entry) : null;
   if (!reach) { host.hidden = true; host.innerHTML = ''; return; }
   host.hidden = false;
   const chip = (text, kind) => `<span class="reach-chip is-${kind}">${escapeHtml(text)}</span>`;
