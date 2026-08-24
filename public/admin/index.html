@@ -1434,6 +1434,17 @@
 
           <section class="tab-panel" id="tab-monitor">
             <div class="monitor-layout">
+              <!-- Метрики редакции: не «жив ли сервер», а «что происходит с
+                   журналом». Считаются из контента, поэтому не требуют сети и
+                   рисуются сразу при открытии вкладки. -->
+              <div class="card">
+                <div class="monitor-head">
+                  <div><h2 class="card-title" style="margin-bottom:4px">Метрики редакции</h2><p class="card-desc">Ритм выпуска, доходимость до читателя, переводы, что в работе</p></div>
+                </div>
+                <div id="metricsRow" class="metrics-row"></div>
+                <div id="metricsCadence" class="metrics-cadence"></div>
+                <div id="metricsDetail" class="metrics-detail"></div>
+              </div>
               <div class="card">
                 <div class="monitor-head">
                   <div><h2 class="card-title" style="margin-bottom:4px">Мониторинг проекта</h2><p class="card-desc">Статус деплоя и доступность сайта</p></div>
