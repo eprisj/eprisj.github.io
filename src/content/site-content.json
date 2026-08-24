@@ -8544,23 +8544,23 @@
         {
           "id": 24,
           "draft": true,
-          "title": "Образец",
+          "title": "ПРИМЕР",
           "author": "EPRIS Journal",
           "role": "Редакционный стол",
           "date": "20 авг. 2026",
-          "excerpt": "Сфокусированный вводный абзац для новой редакционной истории.",
+          "excerpt": "Сфокусированный вводный абзац для новой редакционной статьи.",
           "category": "Культура",
           "subcategory": "Особенность",
           "tags": [
             "история",
             "культура",
-            "редакционный"
+            "редакционная статья"
           ],
           "imageSeed": "sample",
           "content": [
             {
-              "type": "video",
-              "mediaKind": "гиф",
+              "type": "видео",
+              "mediaKind": "гифка",
               "content": "https://api.eprisjournal.com/uploads/mt1bol00oftquh.loop.webm",
               "caption": "",
               "loop": true,
@@ -8568,24 +8568,24 @@
               "poster": "https://api.eprisjournal.com/uploads/mt1bol00oftquh.poster.jpg"
             },
             {
-              "type": "text",
-              "content": "Начните с самой сильной сцены, факта или наблюдения. Сохраните этот первый блок лаконичным и конкретным."
+              "type": "текст",
+              "content": "Начните с самой сильной сцены, факта или наблюдения. Сделайте этот первый блок коротким и конкретным."
             },
             {
-              "type": "image",
+              "type": "изображение",
               "content": "https://api.eprisjournal.com/uploads/mt4ebkm9vukf41.png",
-              "caption": "Главное изображение"
+              "caption": "ведущее изображение"
             },
             {
-              "type": "quote",
-              "content": "Добавьте здесь строчку, которую стоит запомнить."
+              "type": "цитата",
+              "content": "Добавьте здесь строку, которую стоит запомнить."
             },
             {
-              "type": "note",
-              "content": "Редакционная заметка, контекст источника или короткое отступление."
+              "type": "заметка",
+              "content": "Редакционная заметка, исходный контекст или короткое замечание."
             },
             {
-              "type": "checklist",
+              "type": "список проверок",
               "caption": "Что осветить",
               "content": {
                 "items": [
@@ -8597,7 +8597,7 @@
               }
             },
             {
-              "type": "poll",
+              "type": "опрос",
               "content": {
                 "question": "Что нам следует исследовать дальше?",
                 "options": [
@@ -8613,7 +8613,8 @@
               }
             }
           ],
-          "updatedAt": "2026-08-20T09:32:47.916Z"
+          "updatedAt": "2026-08-24T20:34:48.334Z",
+          "previewToken": "9ce4a8719bcf166dcc3eef76"
         }
       ],
       "reviews": [
@@ -11774,23 +11775,23 @@
         {
           "id": 24,
           "draft": true,
-          "title": "Зразок",
+          "title": "ПРИКЛАД",
           "author": "EPRIS Journal",
-          "role": "Редакційний стіл",
-          "date": "20 серп. 2026",
-          "excerpt": "Зосереджений відкривальний абзац для нової редакційної історії.",
+          "role": "Редакційна команда",
+          "date": "20 серпня 2026",
+          "excerpt": "Зосереджений вступний абзац для нової редакційної історії.",
           "category": "Культура",
-          "subcategory": "Особлива стаття",
+          "subcategory": "Особливість",
           "tags": [
             "історія",
             "культура",
-            "редакційний"
+            "редакційна стаття"
           ],
           "imageSeed": "sample",
           "content": [
             {
-              "type": "video",
-              "mediaKind": "gif",
+              "type": "відео",
+              "mediaKind": "гіф",
               "content": "https://api.eprisjournal.com/uploads/mt1bol00oftquh.loop.webm",
               "caption": "",
               "loop": true,
@@ -11798,38 +11799,38 @@
               "poster": "https://api.eprisjournal.com/uploads/mt1bol00oftquh.poster.jpg"
             },
             {
-              "type": "text",
-              "content": "Почніть із найсильнішої сцени, факту або спостереження. Зберігайте цей перший блок коротким і конкретним."
+              "type": "текст",
+              "content": "Почніть з найсильнішої сцени, факту або спостереження. Тримайте цей перший блок коротким і конкретним."
             },
             {
-              "type": "image",
+              "type": "зображення",
               "content": "https://api.eprisjournal.com/uploads/mt4ebkm9vukf41.png",
               "caption": "Головне зображення"
             },
             {
-              "type": "quote",
-              "content": "Додайте рядок, вартий запам’ятовування."
+              "type": "цитата",
+              "content": "Додайте тут рядок, який варто запам'ятати."
             },
             {
-              "type": "note",
-              "content": "Редакційна примітка, джерельний контекст або коротке відходження."
+              "type": "примітка",
+              "content": "Редакційна примітка, контекст джерела або короткий коментар."
             },
             {
-              "type": "checklist",
-              "caption": "Що охоплювати",
+              "type": "список перевірки",
+              "caption": "Що охопити",
               "content": {
                 "items": [
                   "Контекст",
                   "Ключова деталь",
                   "Людський аспект",
-                  "Що змінюється далі"
+                  "Що зміниться далі"
                 ]
               }
             },
             {
-              "type": "poll",
+              "type": "опитування",
               "content": {
-                "question": "Що нам слід досліджити далі?",
+                "question": "Що нам слід дослідити далі?",
                 "options": [
                   {
                     "label": "Більше контексту",
@@ -11843,7 +11844,8 @@
               }
             }
           ],
-          "updatedAt": "2026-08-20T09:32:47.916Z"
+          "updatedAt": "2026-08-24T20:34:54.271Z",
+          "previewToken": "9ce4a8719bcf166dcc3eef76"
         }
       ],
       "reviews": [
@@ -15004,17 +15006,17 @@
         {
           "id": 24,
           "draft": true,
-          "title": "Muster",
+          "title": "BEISPIEL",
           "author": "EPRIS Journal",
-          "role": "Redaktionstisch",
+          "role": "Redaktionsbüro",
           "date": "20. Aug. 2026",
-          "excerpt": "Ein fokussierter Einleitungsabsatz für eine neue redaktionelle Geschichte.",
+          "excerpt": "Ein fokussierter Eröffnungssatz für eine neue redaktionelle Geschichte.",
           "category": "Kultur",
-          "subcategory": "Reportage",
+          "subcategory": "Beitrag",
           "tags": [
             "Geschichte",
             "Kultur",
-            "redaktionell"
+            "Redaktion"
           ],
           "imageSeed": "sample",
           "content": [
@@ -15034,32 +15036,32 @@
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mt4ebkm9vukf41.png",
-              "caption": "Hauptbild"
+              "caption": "Leitbild"
             },
             {
               "type": "quote",
-              "content": "Fügen Sie eine Zeile hinzu, die es wert ist, erinnert zu werden."
+              "content": "Fügen Sie hier eine Zeile hinzu, die es wert ist, erinnert zu werden."
             },
             {
-              "type": "note",
-              "content": "Redaktioneller Hinweis, Quellenkontext oder eine kurze Nebenbemerkung."
+              "type": "Hinweis",
+              "content": "Redaktioneller Hinweis, Quellkontext oder kurzer Einschub."
             },
             {
-              "type": "checklist",
-              "caption": "Was abzudecken ist",
+              "type": "Checkliste",
+              "caption": "Was zu behandeln ist",
               "content": {
                 "items": [
                   "Kontext",
                   "Wichtiges Detail",
-                  "Menschlicher Aspekt",
+                  "Menschlicher Blickwinkel",
                   "Was ändert sich als Nächstes"
                 ]
               }
             },
             {
-              "type": "poll",
+              "type": "Umfrage",
               "content": {
-                "question": "Was sollen wir als Nächstes erkunden?",
+                "question": "Was sollten wir als Nächstes erkunden?",
                 "options": [
                   {
                     "label": "Mehr Kontext",
@@ -15073,7 +15075,8 @@
               }
             }
           ],
-          "updatedAt": "2026-08-20T09:32:47.916Z"
+          "updatedAt": "2026-08-24T20:34:59.248Z",
+          "previewToken": "9ce4a8719bcf166dcc3eef76"
         }
       ],
       "reviews": [
@@ -18236,11 +18239,11 @@
           "draft": true,
           "title": "MUESTRA",
           "author": "EPRIS Journal",
-          "role": "Escritorio Editorial",
-          "date": "Ago 20, 2026",
+          "role": "Redacción",
+          "date": "20 de agosto de 2026",
           "excerpt": "Un párrafo de apertura enfocado para una nueva historia editorial.",
           "category": "Cultura",
-          "subcategory": "Destacado",
+          "subcategory": "Artículo destacado",
           "tags": [
             "historia",
             "cultura",
@@ -18258,24 +18261,24 @@
               "poster": "https://api.eprisjournal.com/uploads/mt1bol00oftquh.poster.jpg"
             },
             {
-              "type": "text",
-              "content": "Comience con la escena, hecho o observación más fuerte. Mantenga este primer bloque ajustado y específico."
+              "type": "texto",
+              "content": "Comienza con la escena, hecho u observación más fuerte. Mantén este primer bloque compacto y específico."
             },
             {
-              "type": "image",
+              "type": "imagen",
               "content": "https://api.eprisjournal.com/uploads/mt4ebkm9vukf41.png",
-              "caption": "Imagen principal"
+              "caption": "imagen principal"
             },
             {
-              "type": "quote",
-              "content": "Añada una línea que valga la pena recordar aquí."
+              "type": "cita",
+              "content": "Agrega una línea que valga la pena recordar aquí."
             },
             {
-              "type": "note",
-              "content": "Nota editorial, contexto de origen o una breve aclaración."
+              "type": "nota",
+              "content": "Nota editorial, contexto de la fuente, o una breve observación."
             },
             {
-              "type": "checklist",
+              "type": "lista de verificación",
               "caption": "Qué cubrir",
               "content": {
                 "items": [
@@ -18287,7 +18290,7 @@
               }
             },
             {
-              "type": "poll",
+              "type": "encuesta",
               "content": {
                 "question": "¿Qué deberíamos explorar a continuación?",
                 "options": [
@@ -18303,7 +18306,8 @@
               }
             }
           ],
-          "updatedAt": "2026-08-20T09:32:47.916Z"
+          "updatedAt": "2026-08-24T20:35:05.160Z",
+          "previewToken": "9ce4a8719bcf166dcc3eef76"
         }
       ],
       "reviews": [
@@ -21470,17 +21474,17 @@
         {
           "id": 24,
           "draft": true,
-          "title": "Örnek",
+          "title": "ÖRNEK",
           "author": "EPRIS Journal",
-          "role": "Düzenleme Masası",
-          "date": "Ağustos 20, 2026",
-          "excerpt": "Yeni bir editörel hikaye için odaklanmış bir giriş paragrafı.",
+          "role": "Editoryal Masası",
+          "date": "20 Ağustos 2026",
+          "excerpt": "Yeni bir editoryal hikaye için odaklanmış bir giriş paragrafı.",
           "category": "Kültür",
-          "subcategory": "Öne Çıkan",
+          "subcategory": "Özellik",
           "tags": [
             "hikaye",
             "kültür",
-            "editörel"
+            "editoryal"
           ],
           "imageSeed": "sample",
           "content": [
@@ -21494,52 +21498,53 @@
               "poster": "https://api.eprisjournal.com/uploads/mt1bol00oftquh.poster.jpg"
             },
             {
-              "type": "text",
-              "content": "En güçlü sahneyi, gerçekle ya da gözlemle başlayın. İlk blok sıkı ve özgü olsun."
+              "type": "metin",
+              "content": "En güçlü sahne, gerçek veya gözlemle başlayın. Bu ilk bloğu sıkı ve spesifik tutun."
             },
             {
-              "type": "image",
+              "type": "görüntü",
               "content": "https://api.eprisjournal.com/uploads/mt4ebkm9vukf41.png",
-              "caption": "Öne çıkan görsel"
+              "caption": "Başlık görüntüsü"
             },
             {
-              "type": "quote",
-              "content": "Burada değeri hatırlanacak bir satır ekleyin."
+              "type": "alıntı",
+              "content": "Buraya hatırlamaya değer bir satır ekleyin."
             },
             {
-              "type": "note",
-              "content": "Editör notu, kaynak bağlamı ya da kısa bir yan not."
+              "type": "not",
+              "content": "Editoryal not, kaynak bağlamı veya kısa bir dipnot."
             },
             {
-              "type": "checklist",
-              "caption": "Kapsanması gerekenler",
+              "type": "kontrol listesi",
+              "caption": "Neleri kapsamalı",
               "content": {
                 "items": [
                   "Bağlam",
-                  "Önemli detay",
+                  "Anahtar detay",
                   "İnsan açısı",
-                  "Değişecek şeyler"
+                  "Sonraki değişiklikler"
                 ]
               }
             },
             {
-              "type": "poll",
+              "type": "anket",
               "content": {
-                "question": "Sonra ne keşfetmeliyiz?",
+                "question": "Sırada neyi keşfetmeliyiz?",
                 "options": [
                   {
                     "label": "Daha fazla bağlam",
                     "votes": 0
                   },
                   {
-                    "label": "Pratik kılavuz",
+                    "label": "Pratik rehber",
                     "votes": 0
                   }
                 ]
               }
             }
           ],
-          "updatedAt": "2026-08-20T09:32:47.916Z"
+          "updatedAt": "2026-08-24T20:35:10.940Z",
+          "previewToken": "9ce4a8719bcf166dcc3eef76"
         }
       ],
       "reviews": [
@@ -24699,13 +24704,13 @@
         {
           "id": 24,
           "draft": true,
-          "title": "Esempio",
+          "title": "ESEMPIO",
           "author": "EPRIS Journal",
           "role": "Redazione",
           "date": "20 ago 2026",
           "excerpt": "Un paragrafo di apertura mirato per una nuova storia editoriale.",
           "category": "Cultura",
-          "subcategory": "In evidenza",
+          "subcategory": "Inchiesta",
           "tags": [
             "storia",
             "cultura",
@@ -24723,41 +24728,41 @@
               "poster": "https://api.eprisjournal.com/uploads/mt1bol00oftquh.poster.jpg"
             },
             {
-              "type": "text",
-              "content": "Inizia con la scena, il fatto o l'osservazione più forte. Mantieni questo primo blocco conciso e specifico."
+              "type": "testo",
+              "content": "Inizia con la scena, fatto o osservazione più forte. Mantieni questo primo blocco compatto e specifico."
             },
             {
-              "type": "image",
+              "type": "immagine",
               "content": "https://api.eprisjournal.com/uploads/mt4ebkm9vukf41.png",
               "caption": "Immagine principale"
             },
             {
-              "type": "quote",
-              "content": "Aggiungi una frase che vale la pena ricordare qui."
+              "type": "citazione",
+              "content": "Aggiungi una riga degna di essere ricordata qui."
             },
             {
-              "type": "note",
+              "type": "nota",
               "content": "Nota editoriale, contesto della fonte, o una breve digressione."
             },
             {
-              "type": "checklist",
-              "caption": "Cosa trattare",
+              "type": "lista di controllo",
+              "caption": "Cosa coprire",
               "content": {
                 "items": [
                   "Contesto",
                   "Dettaglio chiave",
-                  "Aspetto umano",
-                  "Cosa cambierà successivamente"
+                  "Angolo umano",
+                  "Cosa cambia dopo"
                 ]
               }
             },
             {
-              "type": "poll",
+              "type": "sondaggio",
               "content": {
-                "question": "Cosa dovremmo esplorare successivamente?",
+                "question": "Cosa dovremmo esplorare dopo?",
                 "options": [
                   {
-                    "label": "Maggiori dettagli",
+                    "label": "Più contesto",
                     "votes": 0
                   },
                   {
@@ -24768,7 +24773,8 @@
               }
             }
           ],
-          "updatedAt": "2026-08-20T09:32:47.916Z"
+          "updatedAt": "2026-08-24T20:35:15.956Z",
+          "previewToken": "9ce4a8719bcf166dcc3eef76"
         }
       ],
       "reviews": [
