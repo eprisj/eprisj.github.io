@@ -2295,6 +2295,50 @@ textarea {
 
 .monitor-grid { display: grid; gap: 10px; }
 
+/* Метрики редакции. Палитра панели монохромная, поэтому вес числа несёт
+   смысл, а не цвет: крупная цифра — то, на что смотрят, подпись под ней
+   объясняет, мелкая строка снизу даёт контекст («обычно раз в 9 дн.»),
+   без которого само число ни о чём не говорит. */
+.metrics-row {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1px; background: var(--line); border: 1px solid var(--line); margin-bottom: 18px;
+}
+.metric-tile { background: var(--bg-card); padding: 14px 12px; text-align: center; }
+.metric-value { font-size: 1.7rem; font-weight: 700; line-height: 1.1; color: var(--text); }
+.metric-label {
+  font-family: var(--font-mono); font-size: .58rem; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--text-muted); margin-top: 4px;
+}
+.metric-hint { font-size: .62rem; color: var(--text-faint); margin-top: 4px; line-height: 1.3; }
+
+.metrics-cadence { margin-bottom: 18px; }
+.metrics-cadence-title, .metrics-block-title {
+  font-family: var(--font-mono); font-size: .58rem; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px;
+}
+.cadence-bars { display: flex; align-items: flex-end; gap: 6px; height: 86px; }
+.cadence-col { flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%; }
+/* Столбик растёт снизу: колонка тянется на всю высоту, а сам столбик
+   прижат к низу через margin-top:auto — иначе месяц с нулём «висел» бы
+   посередине и читался как ошибка отрисовки. */
+.cadence-bar { width: 100%; background: var(--text); margin-top: auto; min-height: 2px; }
+.cadence-n { font-size: .62rem; font-weight: 600; margin-top: 4px; }
+.cadence-m {
+  font-family: var(--font-mono); font-size: .54rem; letter-spacing: .06em;
+  color: var(--text-muted); text-transform: uppercase;
+}
+
+.metrics-block { margin-top: 16px; }
+.metrics-line {
+  display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+  padding: 7px 0; border-bottom: 1px solid var(--line); font-size: .78rem;
+}
+.metrics-line:last-child { border-bottom: 0; }
+.metrics-why {
+  font-family: var(--font-mono); font-size: .58rem; letter-spacing: .03em;
+  color: var(--text-muted); margin-left: auto;
+}
+
 .history-list { display: flex; flex-direction: column; gap: 8px; }
 .history-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid var(--line); border-radius: 0; padding: 10px 14px; background: var(--bg); }
 .history-row-main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
@@ -3590,7 +3634,11 @@ code {
 .dash-lang-row:last-child { border-bottom: none; }
 .dash-lang-name { font-family: var(--font-mono); font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text); }
 .dash-lang-track { height: 5px; background: var(--line); border-radius: 0; overflow: hidden; }
-.dash-lang-fill  { height: 100%; border-radius: 0; transition: width .4s; }
+/* Цвет заливки дашборд задаёт инлайном (там он кодирует процент), но у
+   класса своего цвета не было — метрики редакции, рисующие ту же полоску без
+   инлайна, показывали пустой жёлоб. Значение по умолчанию, инлайн его
+   по-прежнему перебивает. */
+.dash-lang-fill  { height: 100%; border-radius: 0; transition: width .4s; background: var(--text); }
 .dash-lang-pct   { font-family: var(--font-mono); font-size: .72rem; font-weight: 700; text-align: right; }
 
 /* ── Dashboard: аудит контента ── */

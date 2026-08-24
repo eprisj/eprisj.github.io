@@ -3100,7 +3100,170 @@ async function runUploadDirectoryCheck(cfg) {
   }
 }
 
+/* МЕТРИКИ РЕДАКЦИИ.
+
+   Мониторинг до сих пор отвечал на вопрос «жив ли сервер»: деплой, доступность
+   страниц, каталог загрузок. На вопрос «что происходит с журналом» не отвечал
+   никто, и ритм выпуска приходилось прикидывать по памяти.
+
+   Считается из уже загруженного контента — ни одной сетевой заявки, поэтому
+   рисуется сразу при открытии вкладки, а не по кнопке. */
+
+/* Даты в контенте живут в двух видах: publishedAt (ISO, есть у 12 из 17) и
+   человеческое date («July 18, 2026», есть у всех). Берём первое, что
+   разобралось, иначе метрика молча потеряла бы треть материалов. */
+function metricDate(entry) {
+  const iso = String(entry && entry.publishedAt || '').trim();
+  if (iso) {
+    const d = new Date(iso);
+    if (!Number.isNaN(d.getTime())) return d;
+  }
+  const human = String(entry && entry.date || '').trim();
+  if (human) {
+    const d = new Date(human);
+    if (!Number.isNaN(d.getTime())) return d;
+  }
+  return null;
+}
+
+function collectEditorialMetrics(data) {
+  if (!data) return null;
+  const articles = Array.isArray(data.articles) ? data.articles : [];
+  const reviews = Array.isArray(data.reviews) ? data.reviews : [];
+  const live = [];
+  const drafts = [];
+  const stuck = [];
+
+  for (const [section, list] of [['articles', articles], ['reviews', reviews]]) {
+    for (const e of list) {
+      if (!e) continue;
+      if (e.draft) { drafts.push({ section, entry: e }); continue; }
+      const reach = describeEntryReach(data, section, e);
+      if (reach && reach.blockers.length) stuck.push({ section, entry: e, reach });
+      else live.push({ section, entry: e, reach });
+    }
+  }
+
+  // ── Ритм: сколько выходило по месяцам, последние шесть ──
+  const byMonth = new Map();
+  const now = new Date();
+  for (let i = 5; i >= 0; i -= 1) {
+    const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+    byMonth.set(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`, 0);
+  }
+  const dates = [];
+  for (const { entry } of live) {
+    const d = metricDate(entry);
+    if (!d) continue;
+    dates.push(d);
+    const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    if (byMonth.has(key)) byMonth.set(key, byMonth.get(key) + 1);
+  }
+  dates.sort((a, b) => a - b);
+  const last = dates.length ? dates[dates.length - 1] : null;
+  const daysSince = last ? Math.floor((now - last) / 86400000) : null;
+
+  /* Средний зазор считается по последним публикациям, а не по всей истории:
+     журнал начинался нерегулярно, и старые полугодовые паузы искажали бы
+     картину текущего месяца. */
+  const recent = dates.slice(-8);
+  let avgGap = null;
+  if (recent.length > 1) {
+    let sum = 0;
+    for (let i = 1; i < recent.length; i += 1) sum += (recent[i] - recent[i - 1]) / 86400000;
+    avgGap = Math.round(sum / (recent.length - 1));
+  }
+
+  // ── Переводы: доля реально переведённого текста, а не ключей словаря ──
+  const langs = Object.keys(data.localizedCollections || {});
+  const langStats = langs.map((lang) => {
+    let gaps = 0;
+    let checked = 0;
+    for (const { section, entry } of live) {
+      const loc = ((data.localizedCollections[lang] || {})[section] || [])
+        .find((x) => Number(x && x.id) === Number(entry.id));
+      checked += 1;
+      if (!loc) { gaps += 1; continue; }
+      const st = auditTranslationCompleteness(entry, loc, data, section, lang);
+      if (st && st.gaps.length) gaps += 1;
+    }
+    return { lang, gaps, checked };
+  });
+
+  const oldestDraft = drafts
+    .map(({ entry }) => metricDate(entry))
+    .filter(Boolean)
+    .sort((a, b) => a - b)[0] || null;
+
+  return {
+    live, drafts, stuck, byMonth, daysSince, avgGap, langStats,
+    oldestDraftDays: oldestDraft ? Math.floor((now - oldestDraft) / 86400000) : null,
+  };
+}
+
+function renderEditorialMetrics() {
+  const row = byId('metricsRow');
+  if (!row) return;
+  const data = parseEditorJsonSafe();
+  const m = collectEditorialMetrics(data);
+  if (!m) {
+    row.innerHTML = '<p class="dash-empty-hint">Загрузите контент с VPS.</p>';
+    byId('metricsCadence').innerHTML = '';
+    byId('metricsDetail').innerHTML = '';
+    return;
+  }
+
+  const tile = (value, label, hint) =>
+    `<div class="metric-tile"><div class="metric-value">${escapeHtml(String(value))}</div>` +
+    `<div class="metric-label">${escapeHtml(label)}</div>` +
+    (hint ? `<div class="metric-hint">${escapeHtml(hint)}</div>` : '') + '</div>';
+
+  row.innerHTML = [
+    tile(m.live.length, 'на сайте', 'дошло до читателя'),
+    tile(m.stuck.length, 'застряло', m.stuck.length ? 'опубликовано, но не видно' : 'всё чисто'),
+    tile(m.drafts.length, 'в работе', m.oldestDraftDays != null ? `старейший ${m.oldestDraftDays} дн.` : ''),
+    tile(m.daysSince == null ? '—' : m.daysSince, 'дней с выпуска', m.avgGap ? `обычно раз в ${m.avgGap} дн.` : ''),
+  ].join('');
+
+  // ── Ритм по месяцам ──
+  const months = [...m.byMonth.entries()];
+  const peak = Math.max(1, ...months.map(([, n]) => n));
+  const names = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
+  byId('metricsCadence').innerHTML =
+    '<div class="metrics-cadence-title">Ритм выпуска, последние 6 месяцев</div>' +
+    '<div class="cadence-bars">' + months.map(([key, n]) => {
+      const month = names[Number(key.slice(5, 7)) - 1] || key;
+      return `<div class="cadence-col" title="${escapeHtml(key)}: ${n}">
+        <div class="cadence-bar" style="height:${Math.round((n / peak) * 100)}%"></div>
+        <div class="cadence-n">${n}</div>
+        <div class="cadence-m">${escapeHtml(month)}</div>
+      </div>`;
+    }).join('') + '</div>';
+
+  // ── Подробности: что застряло и где переводы ──
+  const parts = [];
+  if (m.stuck.length) {
+    parts.push('<div class="metrics-block"><div class="metrics-block-title">Опубликовано, но читатель не видит</div>' +
+      m.stuck.map(({ entry, reach }) =>
+        `<div class="metrics-line"><strong>#${escapeHtml(String(entry.id))}</strong> ${escapeHtml(String(entry.title || '').slice(0, 46))}` +
+        `<span class="metrics-why">${escapeHtml(reach.blockers.join('; '))}</span></div>`).join('') + '</div>');
+  }
+  if (m.langStats.length) {
+    parts.push('<div class="metrics-block"><div class="metrics-block-title">Переводы живых материалов</div>' +
+      m.langStats.map(({ lang, gaps, checked }) => {
+        const done = checked - gaps;
+        const pct = checked ? Math.round((done / checked) * 100) : 100;
+        return `<div class="dash-lang-row"><span class="dash-lang-name">${escapeHtml(lang)}</span>` +
+          `<div class="dash-lang-track"><div class="dash-lang-fill" style="width:${pct}%"></div></div>` +
+          `<span class="dash-lang-pct">${done}/${checked}</span></div>`;
+      }).join('') + '</div>');
+  }
+  byId('metricsDetail').innerHTML = parts.join('') ||
+    '<p class="dash-empty-hint">Всё опубликованное дошло до читателя и переведено.</p>';
+}
+
 async function runMonitoringChecks(options = {}) {
+  try { renderEditorialMetrics(); } catch (e) { console.warn('[metrics]', e.message); }
   const mode = options.mode === 'full' ? 'full' : 'local';
   const cfg = getConfig();
   const content = parseEditorJsonSafe();
@@ -3972,6 +4135,9 @@ function setEditorData(data, options = {}) {
   }
   try { window._renderVisibility?.(); } catch {}
   try { window._renderHomepageTab?.(); } catch {}
+  // Метрики считаются из контента, поэтому пересчитываются вместе с ним, а не
+  // ждут кнопки «Обновить»: иначе вкладка показывала бы позавчерашние цифры.
+  try { renderEditorialMetrics(); } catch {}
   // Re-seed Issue Builder + Translations from freshly loaded content
   if (typeof renderIssuesTab === 'function' && document.getElementById('issueArticlesList')) {
     _issues = null; // force resync of issue archive from reloaded content
