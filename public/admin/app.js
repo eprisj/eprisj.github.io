@@ -7872,7 +7872,57 @@ async function translateArticleEntry(article, targetLang, sourceLang = DEFAULT_L
     }
   }
 
+  await retryUntranslatedBlocks(article, next, targetLang, onProgress);
   return next;
+}
+
+/* ПРОВЕРКА, ЧТО ПЕРЕВОД ДЕЙСТВИТЕЛЬНО СОСТОЯЛСЯ.
+
+   translationShapeMismatch сверяет ФОРМУ — ключи и длины массивов, — но не то,
+   изменился ли хоть один символ. Модель может вернуть безупречный по форме
+   ответ, в котором часть блоков осталась на английском, и конвейер примет его
+   как успех: ни ошибки, ни записи в лог.
+
+   Именно это и произошло со статьёй #22. Перевод шёл 19.08.2026, уже после
+   того как база была закончена, вернул все 49 блоков, прозу перевёл — а все
+   девять заголовков разделов оставил английскими во всех шести языках. Форма
+   сошлась, длины сошлись, проверки промолчали, и читатели RU/UA/DE/ES/TR/IT
+   полгода видели «The promise of seeing everything» посреди своего языка.
+
+   Поэтому после батчей идёт вторая попытка ровно по тем блокам, которые
+   вернулись неизменными. Имена собственные («Lola Mayeras») законно совпадают
+   с оригиналом — их отсеивает та же эвристика, что и в отчёте локализации,
+   иначе повтор жёг бы квоту на том, что и не должно переводиться. */
+async function retryUntranslatedBlocks(source, next, targetLang, onProgress) {
+  const blocks = Array.isArray(source && source.content) ? source.content : [];
+  const suspects = [];
+  for (let i = 0; i < blocks.length; i += 1) {
+    const b = blocks[i];
+    if (!b || typeof b !== 'object' || !AUDIT_TEXTUAL_BLOCK_TYPES.has(b.type)) continue;
+    const before = auditStripMarkup(b.content);
+    if (!before) continue;
+    const after = auditStripMarkup(next.content[i] && next.content[i].content);
+    if (after && after !== before) continue;
+    if (!auditLooksTranslatable(before)) continue;
+    suspects.push(i);
+  }
+  if (!suspects.length) return;
+
+  if (onProgress) onProgress(`повтор ${suspects.length} непереведённых блок(ов)`);
+  let translated = null;
+  try {
+    translated = await aiTranslateObject(suspects.map((i) => blocks[i]), targetLang);
+  } catch (e) {
+    console.warn('Повтор непереведённых блоков не удался:', e.message);
+    return;
+  }
+  if (!Array.isArray(translated)) return;
+  suspects.forEach((idx, k) => {
+    const candidate = translated[k];
+    if (!candidate || typeof candidate !== 'object') return;
+    const after = auditStripMarkup(candidate.content);
+    if (after && after !== auditStripMarkup(blocks[idx].content)) next.content[idx] = candidate;
+  });
 }
 
 async function translateEntryForSection(section, entry, targetLang, sourceLang = DEFAULT_LANGUAGE, onProgress = null) {
