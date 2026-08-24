@@ -1366,8 +1366,53 @@
   function bfSyncHeight() {
     var h = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
     $("blockFocus").style.height = h + "px";
+    /* Поле только что стало ниже (поднялась клавиатура) — строка, на которой
+       стоял курсор, могла уехать под неё. Раньше её никто не возвращал: высота
+       чинилась, а положение внутри текста оставалось прежним. */
+    setTimeout(function () { bfRevealCaret(true); }, 0);
   }
   if (window.visualViewport) window.visualViewport.addEventListener("resize", bfSyncHeight);
+
+  /* Где каретка внутри поля, в пикселях от его верха.
+
+     Зеркало копирует РЕАЛЬНЫЕ метрики через getComputedStyle. Прежний замер
+     был вшит строкой "16px/1.6", тогда как поле набрано 17px: промах в пол
+     строки на абзац к двадцатому абзацу набирал целый экран, и прокрутка
+     «к курсору» приводила не туда. */
+  function bfCaretTop() {
+    var ta = $("bf-text");
+    var cs = getComputedStyle(ta);
+    var mirror = document.createElement("div");
+    ["fontFamily", "fontSize", "fontWeight", "fontStyle", "lineHeight", "letterSpacing",
+     "wordSpacing", "textTransform", "paddingTop", "paddingLeft", "paddingRight"]
+      .forEach(function (p) { mirror.style[p] = cs[p]; });
+    mirror.style.cssText += ";position:absolute;left:-9999px;top:0;visibility:hidden;" +
+      "white-space:pre-wrap;word-wrap:break-word;width:" + ta.clientWidth + "px;";
+    mirror.textContent = ta.value.slice(0, ta.selectionStart);
+    var mark = document.createElement("span");
+    mark.textContent = "​";
+    mirror.appendChild(mark);
+    document.body.appendChild(mirror);
+    var top = mark.offsetTop;
+    mirror.remove();
+    return top;
+  }
+
+  /* Каретка держится в удобной полосе, а не у самого края экрана. Прокрутка
+     только когда строка реально вышла за неё: дёргать текст на каждой букве
+     хуже, чем не дёргать вовсе. */
+  function bfRevealCaret(force) {
+    var ta = $("bf-text");
+    if (!ta || bfIndex < 0 || !$("blockFocus").classList.contains("open")) return;
+    var line = parseFloat(getComputedStyle(ta).lineHeight) || 27;
+    var view = ta.clientHeight;
+    if (!view) return;
+    var top = bfCaretTop();
+    var pad = Math.min(line * 2, view * 0.25);
+    if (force || top < ta.scrollTop + pad || top > ta.scrollTop + view - pad - line) {
+      ta.scrollTop = Math.max(0, top - view * 0.4);
+    }
+  }
 
   // Куски статьи, а не блоки: серия абзацев считается за один. Иначе счётчик
   // обещал бы 26 шагов там, где на самом деле их пять.
@@ -1418,15 +1463,7 @@
     pos = Math.min(pos, val.length);
     $("bf-text").setSelectionRange(pos, pos);
     // Прокрутить к курсору: у длинной серии он может быть далеко вниз.
-    if (pos > 0) {
-      var probe = document.createElement("div");
-      probe.style.cssText = "position:absolute;visibility:hidden;white-space:pre-wrap;width:" +
-        ($("bf-text").clientWidth - 32) + "px;font:16px/1.6 'PT Serif',serif;";
-      probe.textContent = val.slice(0, pos);
-      document.body.appendChild(probe);
-      $("bf-text").scrollTop = Math.max(0, probe.offsetHeight - 60);
-      probe.remove();
-    } else $("bf-text").scrollTop = 0;
+    if (pos > 0) bfRevealCaret(true); else $("bf-text").scrollTop = 0;
     tgw && tgw.BackButton && tgw.BackButton.show();
   }
 
@@ -1446,6 +1483,12 @@
     bfEnd = bfWriteRange(bfIndex, bfEnd, this.value);
     setDirty(true);
     scheduleDraftSave();
+    bfRevealCaret();
+  });
+  /* Курсор двигают не только буквами: тап по тексту, стрелки, автозамена.
+     Полоса проверяется и там, иначе строка уезжает под клавиатуру молча. */
+  ["click", "keyup", "select"].forEach(function (ev) {
+    $("bf-text").addEventListener(ev, function () { bfRevealCaret(); });
   });
 
   $("bf-done").addEventListener("click", closeBlockFocus);
