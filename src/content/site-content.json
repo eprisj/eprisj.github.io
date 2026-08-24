@@ -2053,17 +2053,21 @@
       "subtitle": "Hilma af Klint · 1907 · tempera on paper",
       "fig": "PICS 013",
       "description": "Hilma af Klint gives old age a vivid, floating language: lilac fields, loops and dark seeds make the canvas feel grown rather than painted.",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mt45868wd5pi0w.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg",
       "picsOfWeek": true,
       "homeCategory": "painting",
-      "homeTitle": "Mysery of the Plunge I, Daniel Atenyi, 2025",
-      "homeSubtitle": "Ivan Tovar  · 1974 • oil on canvas",
-      "homeDescription": "Daniel Atenyi is a Ugandan artist whose expressive charcoal works explore identity and emotion, with figures caught between presence and disappearance.",
-      "homeCredit": "Artsy",
+      "homeTitle": "Diver, Molly Brocklhurst, 2024",
+      "homeSubtitle": "Molly Brocklhurst · 2024 • oil on canvas",
+      "homeDescription": "Molly Brocklehurst is a British painter known for her dreamlike oil paintings based on found photographs. Her work explores memory, nostalgia, and the blurred line between reality and fiction, creating scenes that feel like fragments of a forgotten past.",
+      "homeCredit": "@mollbrokenhurst",
       "picsId": "PICS-2026-013",
-      "updatedAt": "2026-08-24T07:43:46.530Z",
+      "updatedAt": "2026-08-24T07:59:26.045Z",
       "picsReleaseId": "PICS-WEEK-2026-001",
       "imageHistory": [
+        {
+          "url": "https://api.eprisjournal.com/uploads/mt45868wd5pi0w.jpg",
+          "replacedAt": "2026-08-24T07:53:54.578Z"
+        },
         {
           "url": "https://api.eprisjournal.com/uploads/mt457i309fer4u.jpg",
           "replacedAt": "2026-08-22T08:55:42.040Z"
@@ -2073,7 +2077,7 @@
           "replacedAt": "2026-08-22T08:55:10.700Z"
         }
       ],
-      "homeSourceUrl": "https://www.artsy.net/artwork/daniel-atenyi-mystery-of-the-plunge-i"
+      "homeSourceUrl": "https://www.instagram.com/mollybrocklehurst?igsi=MWN2N2tjeGt0NnF1bA=="
     },
     {
       "id": 18,
@@ -4905,7 +4909,7 @@
           "credit": "@chora.practice"
         }
       ],
-      "updatedAt": "2026-08-24T07:59:02.259Z",
+      "updatedAt": "2026-08-24T07:46:49.918Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "previewToken": "0eadc13dc5057beeff1fffd5",
@@ -25358,13 +25362,13 @@
           "picsId": "PICS-2026-013",
           "category": "painting",
           "categoryLabel": "Painting",
-          "title": "Mysery of the Plunge I, Daniel Atenyi, 2025",
-          "subtitle": "Ivan Tovar  · 1974 • oil on canvas",
-          "description": "Daniel Atenyi is a Ugandan artist whose expressive charcoal works explore identity and emotion, with figures caught between presence and disappearance.",
-          "credit": "Artsy",
-          "sourceUrl": "https://www.artsy.net/artwork/daniel-atenyi-mystery-of-the-plunge-i",
+          "title": "Diver, Molly Brocklhurst, 2024",
+          "subtitle": "Molly Brocklhurst · 2024 • oil on canvas",
+          "description": "Molly Brocklehurst is a British painter known for her dreamlike oil paintings based on found photographs. Her work explores memory, nostalgia, and the blurred line between reality and fiction, creating scenes that feel like fragments of a forgotten past.",
+          "credit": "@mollbrokenhurst",
+          "sourceUrl": "https://www.instagram.com/mollybrocklehurst?igsi=MWN2N2tjeGt0NnF1bA==",
           "imageSeed": "",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mt45868wd5pi0w.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg",
           "localized": {
             "RU": {
               "title": "Десять крупнейших, № 9, Старость",
