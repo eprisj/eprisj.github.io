@@ -5942,11 +5942,12 @@
         {
           "id": 21,
           "title": "Комнаты, которые наблюдают за вами",
-          "subtitle": "Architecture",
+          "subtitle": "Архитектура",
           "fig": "FIG. 12",
           "description": "Стекло когда-то обещало свободу, честность и свет. Затем стены научились собирать данные. Эссе о прозрачной архитектуре, контролируемой видимости и радикальной роскоши быть позволенным исчезнуть.",
           "imageUrl": "https://api.eprisjournal.com/uploads/msu6g5edocd9yr.jpg",
-          "articleId": 22
+          "articleId": 22,
+          "updatedAt": "2026-08-24T21:05:58.706Z"
         },
         {
           "id": 22,
@@ -9562,12 +9563,13 @@
         },
         {
           "id": 21,
-          "title": "Кімнати, що дивляться на вас у відповідь",
-          "subtitle": "Architecture",
+          "title": "Кімнати, які дивляться на вас у відповідь",
+          "subtitle": "Архітектура",
           "fig": "FIG. 12",
           "description": "Скло колись обіцяло свободу, чесність і світло. Потім стіни навчилися збирати дані. Есе про прозору архітектуру, контрольовану видимість і радикальну розкіш бути дозволеним зникнути.",
           "imageUrl": "https://api.eprisjournal.com/uploads/msu6g5edocd9yr.jpg",
-          "articleId": 22
+          "articleId": 22,
+          "updatedAt": "2026-08-24T21:06:01.584Z"
         },
         {
           "id": 22,
@@ -13183,12 +13185,13 @@
         },
         {
           "id": 21,
-          "title": "Zimmer, Die Dich Zurücksehen",
-          "subtitle": "Architecture",
+          "title": "Räume, die dich zurück beobachten",
+          "subtitle": "Architektur",
           "fig": "FIG. 12",
           "description": "Glas versprach einst Freiheit, Ehrlichkeit und Licht. Dann lernten die Wände, Daten zu sammeln. Ein Aufsatz über transparente Architektur, kontrollierte Sichtbarkeit und den radikalen Luxus, verschwinden zu dürfen.",
           "imageUrl": "https://api.eprisjournal.com/uploads/msu6g5edocd9yr.jpg",
-          "articleId": 22
+          "articleId": 22,
+          "updatedAt": "2026-08-24T21:06:03.675Z"
         },
         {
           "id": 22,
@@ -16804,12 +16807,13 @@
         },
         {
           "id": 21,
-          "title": "Habitaciones Que Te Observan",
-          "subtitle": "Architecture",
+          "title": "Habitaciones Que Te Miran",
+          "subtitle": "Arquitectura",
           "fig": "FIG. 12",
-          "description": "Cristal alguna vez prometió libertad, honestidad y luz. Luego las paredes aprendieron a recopilar datos. Un ensayo sobre arquitectura transparente, visibilidad controlada y el lujo radical de poder desaparecer.",
+          "description": "El vidrio una vez prometió libertad, honestidad y luz. Luego las paredes aprendieron a recopilar datos. Un ensayo sobre arquitectura transparente, visibilidad controlada y el lujo radical de poder desaparecer.",
           "imageUrl": "https://api.eprisjournal.com/uploads/msu6g5edocd9yr.jpg",
-          "articleId": 22
+          "articleId": 22,
+          "updatedAt": "2026-08-24T21:06:05.676Z"
         },
         {
           "id": 22,
@@ -23894,14 +23898,31 @@
         },
         {
           "id": 20,
-          "title": "Elevatore cooperativo per cereali, Caldwell",
+          "title": "Co-op Grain Elevator, Caldwell",
           "subtitle": "Russell Lee · 1940 · Caldwell, Idaho",
-          "description": "Russell Lee trasforma torri di silos e un trattore parcheggiato in un ritratto silenzioso e quasi astratto dell’infrastruttura americana.",
           "fig": "PICS 016",
-          "homeTitle": "Elevatore cooperativo per cereali, Caldwell",
-          "homeSubtitle": "Russell Lee · 1940 · Caldwell, Idaho",
-          "homeDescription": "Russell Lee trasforma torri di silos e un trattore parcheggiato in un ritratto silenzioso e quasi astratto dell’infrastruttura americana.",
-          "homeCredit": "Russell Lee · fotografia di pubblico dominio / Library of Congress"
+          "description": "Russell Lee trasforma torri di stoccaggio e un trattore parcheggiato in un ritratto silenzioso, quasi astratto, dell'infrastruttura americana.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt6yiou5w8hzc9.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "photography",
+          "homeTitle": "#4 Dalla Serie Lake,",
+          "homeSubtitle": "Taras Perevarukha • 2026 • 10x15 cm",
+          "homeDescription": "Taras Perevarukha è un fotografo ucraino con base a Londra il cui lavoro esplora immobilità, memoria, spostamento e il passare del tempo.",
+          "picsId": "PICS-2026-016",
+          "updatedAt": "2026-08-24T21:05:56.489Z",
+          "picsReleaseId": "PICS-WEEK-2026-001",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt45lf3ufscc8z.jpg",
+              "replacedAt": "2026-08-24T08:11:13.917Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt2ojuzsmj0byf.jpg",
+              "replacedAt": "2026-08-22T09:06:00.118Z"
+            }
+          ],
+          "homeCredit": "@tarasperevarukha",
+          "homeSourceUrl": "https://www.instagram.com/tarasperevarukha?igsi=MTIydXM3OGl1NGYwMg=="
         },
         {
           "id": 14,
