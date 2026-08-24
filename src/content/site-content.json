@@ -2127,23 +2127,27 @@
       "subtitle": "Russell Lee · 1940 · Caldwell, Idaho",
       "fig": "PICS 016",
       "description": "Russell Lee turns storage towers and a parked tractor into a quiet, almost abstract portrait of American infrastructure.",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mt45lf3ufscc8z.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mt6yiou5w8hzc9.jpg",
       "picsOfWeek": true,
       "homeCategory": "photography",
-      "homeTitle": "Break Out, William Wegman, 1995",
-      "homeSubtitle": "William Wegman • 1995",
-      "homeDescription": "William Wegman is an American artist best known for his playful photographs of dogs, especially Weimaraners, exploring identity, performance, and the absurd.",
-      "homeCredit": "Artsy",
+      "homeTitle": "#4 From Lake Series,",
+      "homeSubtitle": "Taras Perevarukha • 2026 • 10x15 cm",
+      "homeDescription": "Taras Perevarukha is a Ukrainian photographer based in London whose work explores stillness, memory, displacement, and the passage of time.",
       "picsId": "PICS-2026-016",
-      "updatedAt": "2026-08-22T09:13:01.840Z",
+      "updatedAt": "2026-08-24T08:22:50.330Z",
       "picsReleaseId": "PICS-WEEK-2026-001",
       "imageHistory": [
+        {
+          "url": "https://api.eprisjournal.com/uploads/mt45lf3ufscc8z.jpg",
+          "replacedAt": "2026-08-24T08:11:13.917Z"
+        },
         {
           "url": "https://api.eprisjournal.com/uploads/mt2ojuzsmj0byf.jpg",
           "replacedAt": "2026-08-22T09:06:00.118Z"
         }
       ],
-      "homeSourceUrl": "https://www.artsy.net/artwork/william-wegman-break-out-17"
+      "homeCredit": "@tarasperevarukha",
+      "homeSourceUrl": "https://www.instagram.com/tarasperevarukha?igsi=MTIydXM3OGl1NGYwMg=="
     },
     {
       "id": 14,
@@ -4909,7 +4913,7 @@
           "credit": "@chora.practice"
         }
       ],
-      "updatedAt": "2026-08-24T08:22:25.364Z",
+      "updatedAt": "2026-08-24T07:59:59.374Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "previewToken": "0eadc13dc5057beeff1fffd5",
