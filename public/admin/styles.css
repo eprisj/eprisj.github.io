@@ -8668,8 +8668,18 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .forms-editor-head select,
 .forms-editor-head textarea { width: 100%; }
 .forms-editor-head > .field:first-child input { font: 600 .95rem/1.3 var(--font-serif); }
-.forms-list { display: grid; align-content: start; gap: 6px; }
-.forms-list-item { display: grid; gap: 3px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 0; background: var(--bg-soft); color: var(--text); text-align: left; cursor: pointer; }
+/* Колонка задана явно, и это не косметика.
+
+   Без grid-template-columns неявная колонка получает `auto`, чей минимум —
+   min-content. Заголовок анкеты набран nowrap, поэтому min-content равен всей
+   его длине: у колонки шириной 240px колонка внутри вычислялась в 310px,
+   карточки вылезали за свой контейнер и ложились поверх редактора, закрывая
+   его левый край. `min-width:0` на самом заголовке не помогает — цепочку
+   рвут промежуточные .forms-list-item и .forms-list-top, у которых своего
+   минимума никто не снимал. */
+.forms-list { display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; gap: 6px; }
+.forms-list-item { display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; gap: 3px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 0; background: var(--bg-soft); color: var(--text); text-align: left; cursor: pointer; }
+.forms-list-item > * { min-width: 0; }
 .forms-list-item:hover { border-color: var(--line-strong); }
 .forms-list-item.is-active { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
 .forms-list-item strong { font: 700 .78rem/1.3 var(--font-serif); }
