@@ -9701,7 +9701,13 @@ function undoLastDeletion() {
    site no longer has — the same gap as before, pointing the other way. */
 async function undoLastDeletionAndPublish() {
   undoLastDeletion();
-  await publishContentToVps({ note: 'Возвращаю запись на VPS...' });
+  /* Молчаливый провал здесь разводит панель с сервером в другую сторону:
+     запись снова видна редактору, а на сайте её по-прежнему нет. Отмена,
+     о которой нельзя сказать, состоялась она или нет, хуже отсутствия
+     кнопки «Отменить». */
+  if (await publishContentToVps({ note: 'Возвращаю запись на VPS...' }) === false) {
+    setStatus('error', 'Запись возвращена только в панели — на сервер она не уехала. Нажмите «Опубликовать всё».');
+  }
 }
 
 async function deleteVisualEntry() {
@@ -9756,7 +9762,15 @@ async function deleteVisualEntry() {
        deleted months ago were still live because of that. The editor already
        confirmed a destructive action; publishing it is what they asked for.
        Undo republishes too, otherwise it would only undo half of what happened. */
-    await publishContentToVps({ note: `Удаляю запись #${selectedId} на VPS...` });
+    /* Исход публикации проверяется, иначе починка выше остаётся половинчатой:
+       локальный JSON и правда больше не содержит записи, но если POST не
+       дошёл, на сайте она осталась — а редактор прочитал «удалена на сервере»
+       и закрыл вкладку. Это ровно тот же разрыв между «отправлено» и
+       «сделано», из-за которого три черновика и жили после удаления. */
+    if (await publishContentToVps({ note: `Удаляю запись #${selectedId} на VPS...` }) === false) {
+      setStatus('error', `Запись #${selectedId} (${entryTitle}) НЕ удалена — она всё ещё на сервере. Повторите удаление.`);
+      return;
+    }
     showToastWithAction('success', `Запись #${selectedId} (${entryTitle}) удалена на сервере.`, 'Отменить', undoLastDeletionAndPublish);
   } catch (error) {
     setStatus('error', getErrorMessage(error));
@@ -16275,12 +16289,19 @@ function bindStudioMediaActions() {
   window._ptTogglePub = async id => {
     const p = _list.find(p => p.id === id);
     if (!p) return;
-    await apiFetch(`/api/podcasts/${id}`, { method: 'PUT', body: JSON.stringify({ ...p, is_published: p.is_published ? 0 : 1 }) });
+    /* apiFetch не бросает на HTTP-ошибке — она возвращает тело как есть,
+       поэтому исход читается из него, как и в сохранении выше. Без этого
+       снятие выпуска с публикации и удаление молча «получались» на любой
+       ошибке сервера: список перерисовывался прежним, и объяснить, почему
+       ничего не изменилось, было нечем. */
+    const pub = await apiFetch(`/api/podcasts/${id}`, { method: 'PUT', body: JSON.stringify({ ...p, is_published: p.is_published ? 0 : 1 }) });
+    if (!pub || !pub.ok) { showToast('error', (pub && pub.error) || 'Не удалось изменить публикацию выпуска'); return; }
     loadList();
   };
   window._ptDelete = async (id, title) => {
     if (!(await showConfirmModal(`Удалить «${title}»?`, 'Выпуск будет удалён без возможности восстановить.', 'Удалить'))) return;
-    await apiFetch(`/api/podcasts/${id}`, { method: 'DELETE' });
+    const del = await apiFetch(`/api/podcasts/${id}`, { method: 'DELETE' });
+    if (!del || !del.ok) { showToast('error', (del && del.error) || 'Не удалось удалить выпуск'); return; }
     loadList();
   };
 
