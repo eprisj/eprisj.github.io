@@ -4923,11 +4923,12 @@
           "credit": "@chora.practice"
         }
       ],
-      "updatedAt": "2026-08-24T09:38:35.870Z",
+      "updatedAt": "2026-08-24T09:40:18.978Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "previewToken": "0eadc13dc5057beeff1fffd5",
-      "publishAt": "2026-08-24T09:37:23.315Z"
+      "publishAt": "2026-08-24T09:15:36.200Z",
+      "draft": false
     },
     {
       "id": 24,
