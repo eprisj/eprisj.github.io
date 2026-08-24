@@ -614,6 +614,9 @@ export interface SiteContent {
   authors?: Author[];
   manifest?: Manifest;
   futuroshock?: FuturoshockWork[];
+  /* Приходит только в языковом срезе (`?lang=`): в нём translations урезаны до
+     двух языков, а переключателю нужен полный список. */
+  languages?: string[];
 }
 
 const content = rawContent as SiteContent;
@@ -625,7 +628,10 @@ const content = rawContent as SiteContent;
 export const CONTENT_API = 'https://api.eprisjournal.com/content';
 
 let liveContent: SiteContent | null = null;
-let liveContentEtag = '';
+/* ETag свой на каждый языковой срез: у /content?lang=UA и ?lang=DE разные тела,
+   и общий тег заставлял бы сервер отвечать 200 на заведомо неизменившийся срез
+   (или, хуже, 304 на чужой). */
+const liveContentEtags: Record<string, string> = {};
 const contentListeners = new Set<() => void>();
 
 /** Subscribe to live-content swaps; returns an unsubscribe fn. */
@@ -637,8 +643,31 @@ function notifyContentChanged(): void {
   contentListeners.forEach((cb) => { try { cb(); } catch { /* ignore */ } });
 }
 
+/* ЯЗЫКОВЫЕ СРЕЗЫ НАКАПЛИВАЮТСЯ, А НЕ ВЫТЕСНЯЮТ ДРУГ ДРУГА.
+
+   `?lang=UA` привозит только украинский набор. Если просто положить ответ на
+   место предыдущего, то переключение на немецкий покажет английский текст —
+   немецкого набора в памяти уже нет, — и так до конца загрузки следующего
+   среза. Поэтому наборы по языкам сливаются поверх предыдущего состояния, а
+   стартовой основой служит собранный бандл: в нём есть все языки, пусть и от
+   последней сборки. Переключение мгновенно показывает осмысленный текст, а
+   свежий срез приезжает следом и перекрывает его.
+
+   Устаревшие наборы из бандла безопасны: mergeLocalizedArray накладывает
+   перевод только на записи, которые есть в ЖИВОЙ базе, поэтому перевод
+   удалённой статьи никуда не всплывёт. */
 export function applyLiveContent(json: SiteContent): void {
-  liveContent = json;
+  const previous = liveContent || content;
+  const merged: SiteContent = { ...json };
+  merged.localizedCollections = {
+    ...(previous.localizedCollections || {}),
+    ...(json.localizedCollections || {}),
+  };
+  merged.translations = { ...(previous.translations || {}), ...(json.translations || {}) };
+  if (previous.manifest || json.manifest) {
+    merged.manifest = { ...(previous.manifest || {}), ...(json.manifest || {}) } as Manifest;
+  }
+  liveContent = merged;
   notifyContentChanged();
 }
 
@@ -649,19 +678,27 @@ export function applyLiveContent(json: SiteContent): void {
  * Resolves to true on success (including 304), false on any failure (network,
  * timeout, bad shape) — in which case the bundled fallback stays unaffected.
  */
-export async function loadLiveContent(timeoutMs = 4000): Promise<boolean> {
+export async function loadLiveContent(timeoutMs = 4000, lang?: string): Promise<boolean> {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+  /* Читателю нужен один язык из семи. Полный документ — это ~700 КБ в gzip,
+     срез — 216 КБ (109 КБ для английского), и на мобильной связи разница
+     решает, откроется ли страница вообще: см. таймауты предпросмотра в
+     App.tsx. Без параметра сервер по-прежнему отдаёт всё целиком. */
+  const code = String(lang || '').trim().toUpperCase();
+  const url = /^[A-Z]{2}$/.test(code) ? `${CONTENT_API}?lang=${code}` : CONTENT_API;
+  const etagKey = /^[A-Z]{2}$/.test(code) ? code : '*';
   try {
-    const headers = liveContentEtag ? { 'If-None-Match': liveContentEtag } : undefined;
-    const res = await fetch(CONTENT_API, { signal: ctrl.signal, cache: 'no-store', headers });
+    const known = liveContentEtags[etagKey];
+    const headers = known ? { 'If-None-Match': known } : undefined;
+    const res = await fetch(url, { signal: ctrl.signal, cache: 'no-store', headers });
     if (res.status === 304) return true;
     if (!res.ok) return false;
     const json = await res.json();
     if (!json || typeof json !== 'object' || !json.translations || !Array.isArray(json.articles)) {
       return false;
     }
-    liveContentEtag = res.headers.get('ETag') || liveContentEtag;
+    liveContentEtags[etagKey] = res.headers.get('ETag') || known || '';
     applyLiveContent(json as SiteContent);
     return true;
   } catch {
@@ -1046,7 +1083,13 @@ function mergeLocalizedItems<T extends { id: number }>(value: T[] | undefined, f
 }
 
 export function getAvailableLanguages(): string[] {
-  const allLangs = Object.keys(src().translations);
+  /* В языковом срезе translations урезаны до своего языка плюс EN, поэтому
+     список берётся из явного поля `languages`. Без него (полный ответ или
+     собранный бандл) остаётся прежний путь — по ключам словаря. */
+  const declared = src().languages;
+  const allLangs = Array.isArray(declared) && declared.length
+    ? [...declared]
+    : Object.keys(src().translations);
   if (!allLangs.includes(DEFAULT_LANGUAGE)) {
     allLangs.unshift(DEFAULT_LANGUAGE);
   }
