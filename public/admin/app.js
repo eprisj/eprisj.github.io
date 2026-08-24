@@ -3363,7 +3363,10 @@ async function publishContentToVps({ note = 'Публикую на VPS...', sile
     }
   } catch (error) {
     setStatus('error', getErrorMessage(error));
-    return;
+    /* Возвращаем исход, а не тишину: вызывающий код (например, снятие
+       «скрыто» при публикации) обязан отличить сохранённое от несохранённого,
+       иначе поверх этой ошибки ляжет его собственное «успешно». */
+    return false;
   } finally {
     setBusy(false);
   }
@@ -3372,6 +3375,7 @@ async function publishContentToVps({ note = 'Публикую на VPS...', sile
      с семью языками он занимает минуты, а при исчерпанных квотах ещё и падает.
      Раньше редактор ждал всё это до записи, а при сбое не получал ничего. */
   syncLanguagesAfterPublish(parsed, pw);
+  return true;
 }
 
 /* Достройка недостающих переводов после уже состоявшейся публикации.
@@ -4181,7 +4185,10 @@ async function updateSelectedPublicationState(nextState) {
          тащила весь документ. */
       if (wasHidden) {
         setEditorData(data);
-        await publishContentToVps({ silent: true });
+        if (await publishContentToVps({ silent: true }) === false) {
+          setStatus('error', `«${getEntryTitle(section, entry)}» сохранена, но осталась скрытой на сайте. Повторите публикацию.`);
+          return;
+        }
       }
       setEditorData(data, { markSynced: true });
     } else {
