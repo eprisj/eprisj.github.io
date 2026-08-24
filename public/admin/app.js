@@ -2671,18 +2671,24 @@ function runLocalizationHealthCheck(data) {
 
   const errors = [];
   const warnings = [];
-  // `strict: true` sections go through mergeLocalizedItems in src/data.ts,
-  // which discards the WHOLE bucket back to English if any one entry is a
-  // stub. `strict: false` sections go through mergeLocalizedArray, which
-  // only skips the one stub entry — its siblings translate fine. Keep this
-  // list in sync with the const article/reviews/items/libraryItems lines in
-  // getContentForLanguage(); getting it backwards makes this check cry wolf
-  // (or worse, miss a real whole-bucket poisoning).
+  /* Здесь был третий флаг `strict`: items/reviews шли через
+     mergeLocalizedItems, которая глушила ВЕСЬ языковой список из-за одной
+     заготовки, и находка справедливо считалась ошибкой.
+
+     Это поведение из src/data.ts убрали намеренно — см. комментарий «ЗАЩИТА ОТ
+     ЧУЖОГО ПЕРЕВОДА — ПОЗАПИСНО, А НЕ ВСЕМ НАБОРОМ»: теперь отбрасывается сама
+     заготовка, а переводы остальных записей применяются. Ни один раздел
+     целиком больше не откатывается.
+
+     Проверка же осталась прежней и продолжала показывать пять красных ошибок
+     про механизм, которого в коде уже нет. Отчёт, пугающий сильнее, чем есть
+     на деле, перестают читать — и следующая настоящая ошибка утонет вместе с
+     ним. */
   const POISON_SECTIONS = [
-    ['items', 'Галерея', true],
-    ['reviews', 'Обзоры', true],
-    ['articles', 'Статьи', false],
-    ['libraryItems', 'Библиотека', false],
+    ['items', 'Галерея'],
+    ['reviews', 'Обзоры'],
+    ['articles', 'Статьи'],
+    ['libraryItems', 'Библиотека'],
   ];
 
   const localized = data.localizedCollections && typeof data.localizedCollections === 'object'
@@ -2705,37 +2711,44 @@ function runLocalizationHealthCheck(data) {
      Формулировать сильнее, чем есть, нельзя: «её видят читатели» отправило бы
      редакцию тушить пожар не там. */
   const baseStubHint = new Set();
-  for (const [sectionKey, sectionLabel, strict] of POISON_SECTIONS) {
+  for (const [sectionKey, sectionLabel] of POISON_SECTIONS) {
     const entries = Array.isArray(data[sectionKey]) ? data[sectionKey] : [];
     const stubs = entries.filter(isAuditPlaceholderEntity);
     if (!stubs.length) continue;
     const ids = stubs.map((e) => `#${e?.id ?? '?'}`).join(', ');
     baseStubHint.add(sectionKey);
-    const line = `ПРИЧИНА — база/${sectionLabel}: незаполненная заготовка (${ids}) лежит в основном списке. Читателям она не видна (сайт прячет заготовки), но ${strict ? `её переводы откатывают ВЕСЬ ${sectionLabel.toLowerCase()} на всех языках к английскому` : 'её переводы остаются английскими у соседних записей'}. Удалите её (или заполните) — это чинит все строки ниже разом.`;
-    if (strict) errors.push(line); else warnings.push(line);
+    const locales = Object.keys(localized).length;
+    warnings.push(
+      `ПРИЧИНА — база/${sectionLabel}: незаполненная заготовка (${ids}) лежит в основном списке. Читателям она не видна (сайт прячет заготовки), но переводится заново после каждого сохранения — ${locales} локал(и) держат её копию, и каждая тратит квоту переводчика. Удалите её (или заполните) — это чинит и все её переводы разом.`
+    );
   }
 
   for (const [lang, bucket] of Object.entries(localized)) {
     if (!bucket || typeof bucket !== 'object') continue;
-    for (const [sectionKey, sectionLabel, strict] of POISON_SECTIONS) {
+    for (const [sectionKey, sectionLabel] of POISON_SECTIONS) {
       const entries = bucket[sectionKey];
       if (!Array.isArray(entries)) continue;
-      const stubs = entries.filter(isAuditPlaceholderEntity);
+      /* Опознаём и по БАЗОВОЙ записи того же id, а не только по строкам самого
+         перевода. Списки фраз держатся на точном совпадении с тем, что выдал
+         переводчик, а он выдаёт варианты: испанская заготовка написала
+         «reemplazarme» вместо «reemplázame» и «de galería» вместо
+         «de la galería» — и проскочила обе проверки, пока пять других языков
+         исправно ловились. Дописывать строки бессмысленно, следующий вариант
+         снова будет новым. */
+      const baseEntries = Array.isArray(data[sectionKey]) ? data[sectionKey] : [];
+      const stubs = entries.filter((loc) => {
+        if (isAuditPlaceholderEntity(loc)) return true;
+        const base = baseEntries.find((b) => Number(b && b.id) === Number(loc && loc.id));
+        return Boolean(base && isAuditPlaceholderEntity(base));
+      });
       if (!stubs.length) continue;
+      /* Причина уже названа строкой выше — двенадцать одинаковых следствий под
+         ней ничего не добавляют и топят остальной отчёт. */
+      if (baseStubHint.has(sectionKey)) continue;
       const ids = stubs.map((e) => `#${e?.id ?? '?'}`).join(', ');
-      /* Перевод заготовки — следствие заготовки. Пока она в базе, эти строки
-         будут появляться снова после каждой достройки языков, и чинить их по
-         одной бессмысленно: они уйдут сами, как только уйдёт оригинал. */
-      const cause = baseStubHint.has(sectionKey) ? ' Это перевод заготовки из базы — удалите её, а не эту копию.' : '';
-      if (strict) {
-        errors.push(
-          `${lang}/${sectionLabel}: незаполненная заготовка (${ids}) — из-за неё ВЕСЬ ${sectionLabel.toLowerCase()} на ${lang} читатели видят по-английски, не только эту карточку.${cause || ' Заполните или удалите.'}`
-        );
-      } else {
-        warnings.push(
-          `${lang}/${sectionLabel}: незаполненная заготовка (${ids}) — эта карточка останется на английском для читателей ${lang}, соседние записи не пострадают.${cause || ' Заполните или удалите, когда дойдут руки.'}`
-        );
-      }
+      warnings.push(
+        `${lang}/${sectionLabel}: перевод заготовки (${ids}), которой в базе уже нет — осиротевшая копия. Читателям не видна, но остаётся в языковом наборе навсегда: удалите её из локали.`
+      );
     }
   }
 
@@ -2805,10 +2818,10 @@ function runLocalizationHealthCheck(data) {
 
   const level = errors.length > 0 ? 'error' : warnings.length > 0 ? 'warn' : 'ok';
   const detail = level === 'error'
-    ? 'Незаполненная заготовка глушит перевод целого раздела — это ошибка, не предупреждение.'
+    ? 'Перевод подменяет живую запись — это ошибка, не предупреждение.'
     : level === 'warn'
-      ? 'Есть предупреждения по локалям или медиаданным.'
-      : 'Локали синхронизированы, а фотоподборка отделена от статей.';
+      ? 'Есть неполные переводы, заготовки или расхождения по локалям.'
+      : 'Локали переведены полностью, а фотоподборка отделена от статей.';
 
   /* Список режется до десяти строк, и раньше он резался молча: живой отчёт
      17.08.2026 показал шесть локалей и четыре расхождения — ровно десять — а
