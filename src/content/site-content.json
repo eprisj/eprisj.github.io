@@ -12224,8 +12224,8 @@
               "content": "Редакційна примітка, контекст джерела або коротке зауваження."
             },
             {
-              "type": "Перевірка",
-              "caption": "Що потрібно вирішити",
+              "type": "Перевіряльний список",
+              "caption": "Що потрібно врахувати",
               "content": {
                 "items": [
                   "Контекст",
@@ -12252,7 +12252,7 @@
               }
             }
           ],
-          "updatedAt": "2026-08-24T21:06:40.602Z",
+          "updatedAt": "2026-08-24T21:16:06.633Z",
           "previewToken": "9ce4a8719bcf166dcc3eef76"
         },
         {
@@ -15807,7 +15807,7 @@
           "draft": true,
           "title": "BEISPIEL",
           "author": "EPRIS Journal",
-          "role": "Redaktionsbüro",
+          "role": "Redaktion",
           "date": "20. Aug. 2026",
           "excerpt": "Ein fokussierter Eröffnungssatz für eine neue redaktionelle Geschichte.",
           "category": "Kultur",
@@ -15853,14 +15853,14 @@
                   "Kontext",
                   "Wichtiges Detail",
                   "Menschliche Perspektive",
-                  "Was ändert sich als Nächstes"
+                  "Was ändert sich als nächstes"
                 ]
               }
             },
             {
               "type": "Umfrage",
               "content": {
-                "question": "Was sollten wir als Nächstes erkunden?",
+                "question": "Was sollten wir als Nächstes erforschen?",
                 "options": [
                   {
                     "label": "Mehr Kontext",
@@ -15874,7 +15874,7 @@
               }
             }
           ],
-          "updatedAt": "2026-08-24T21:06:46.522Z",
+          "updatedAt": "2026-08-24T21:16:11.460Z",
           "previewToken": "9ce4a8719bcf166dcc3eef76"
         },
         {
@@ -19452,7 +19452,7 @@
             },
             {
               "type": "texto",
-              "content": "Comienza con la escena, hecho u observación más fuerte. Mantén este primer bloque breve y específico."
+              "content": "Comience con la escena, hecho u observación más fuerte. Mantenga este primer bloque breve y específico."
             },
             {
               "type": "imagen",
@@ -19461,7 +19461,7 @@
             },
             {
               "type": "cita",
-              "content": "Agrega una línea aquí que valga la pena recordar."
+              "content": "Agregue una línea aquí que valga la pena recordar."
             },
             {
               "type": "Nota",
@@ -19469,7 +19469,7 @@
             },
             {
               "type": "Lista de verificación",
-              "caption": "Lo que necesita ser abordado",
+              "caption": "Qué necesita ser abordado",
               "content": {
                 "items": [
                   "Contexto",
@@ -19496,7 +19496,7 @@
               }
             }
           ],
-          "updatedAt": "2026-08-24T21:06:53.595Z",
+          "updatedAt": "2026-08-24T21:16:16.545Z",
           "previewToken": "9ce4a8719bcf166dcc3eef76"
         },
         {
