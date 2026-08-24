@@ -2103,23 +2103,27 @@
       "subtitle": "Verner Panton · 1960 · moulded plastic",
       "fig": "PICS 015",
       "description": "One continuous red line becomes a chair: Verner Panton reduces a familiar object to colour, curve and a single unapologetic gesture.",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mt46gngoycogff.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mt6zhyw3gy7ean.jpg",
       "picsOfWeek": true,
       "homeCategory": "design",
-      "homeTitle": "Totem Jr, GLIF",
-      "homeSubtitle": "GLIF",
-      "homeDescription": "GLIF is an Istanbul-based design studio transforming antique furniture into sculptural, one-of-a-kind pieces, blending heritage with contemporary architectural interventions.",
-      "homeCredit": "@glif.art",
+      "homeTitle": "Stool Grace Prince x paloma wool, 2026",
+      "homeSubtitle": "Grace Prince x paloma wool • 2026",
+      "homeDescription": "Grace Prince is a British designer based in Zürich, whose practice explores material, fragility and tension through furniture and objects. For her collaboration with Paloma Wool, The Sequence Collection, she combined stainless steel, bronze, leather, knit and wood to create a dialogue between clothing and functional objects.",
+      "homeCredit": "@grace_____prince",
       "picsId": "PICS-2026-015",
-      "updatedAt": "2026-08-22T09:34:18.820Z",
+      "updatedAt": "2026-08-24T08:42:42.030Z",
       "picsReleaseId": "PICS-WEEK-2026-001",
       "imageHistory": [
+        {
+          "url": "https://api.eprisjournal.com/uploads/mt46gngoycogff.jpg",
+          "replacedAt": "2026-08-24T08:38:40.118Z"
+        },
         {
           "url": "https://api.eprisjournal.com/uploads/mt2sfbg2hafvk4.jpg",
           "replacedAt": "2026-08-22T09:30:17.243Z"
         }
       ],
-      "homeSourceUrl": "https://www.instagram.com/p/DbkmC8FDMas/?igsi=cmVjMnZmOTIzb2Vj"
+      "homeSourceUrl": "https://www.instagram.com/grace____prince?igsi=eGZveHpubzZjcWI="
     },
     {
       "id": 20,
@@ -4913,7 +4917,7 @@
           "credit": "@chora.practice"
         }
       ],
-      "updatedAt": "2026-08-24T08:41:59.330Z",
+      "updatedAt": "2026-08-24T08:42:49.171Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "previewToken": "0eadc13dc5057beeff1fffd5",
