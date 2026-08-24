@@ -24428,86 +24428,105 @@
         },
         {
           "id": 23,
-          "title": "In conversazione con la pratica del Chora: ",
+          "title": "In Conversazione con Chora Practice: ",
           "author": "Maria Ivanova",
-          "role": "Author",
-          "date": "Aug 17, 2026",
-          "excerpt": "Fondatori di uno studio di arredamento con sede a Lisbona sull'arte di ascoltare il proprio io interiore, l'importanza della resilienza e i luoghi preferiti della città",
-          "category": "interview",
-          "subcategory": "Feature",
+          "role": "Autore",
+          "date": "17 ago 2026",
+          "excerpt": "Fondatori di uno studio di decorazione con sede a Lisbona sulla arte di ascoltare il proprio io interiore, importanza della resilienza e luoghi preferiti in città",
+          "category": "intervista",
+          "subcategory": "Caratteristica",
           "tags": [
             "design",
-            "lifestyle",
-            "lisbon",
-            "Interview"
+            "stile di vita",
+            "lisbona",
+            "Intervista"
           ],
           "imageSeed": "",
           "content": [
             {
               "type": "text",
-              "content": "Creare il proprio progetto in un nuovo paese è sempre un passo coraggioso, in cui l'esplorazione creativa si intreccia strettamente con la trasformazione personale. Alena e Ksenia, fondatrici dello studio di arredamento <u>Chora Practice</u>, con sede a Lisbona, Portogallo, parlano di come trasformare qualsiasi crisi in un punto di crescita, del perché non esistono persone \"non creative\" al mondo e di come permettersi di fare ciò che ami veramente. "
+              "content": "Creare il proprio progetto in un nuovo paese è sempre un passo audace, dove l'esplorazione creativa si intreccia strettamente con la trasformazione personale. Elena Kuzmina e Xenia Bunina – fondatrici dello studio di decorazione <u>Chora Practice</u>, con sede a Lisbona, Portogallo – parlano di come trasformare qualsiasi crisi in un punto di crescita, perché non esistono persone “non creative” nel mondo, e come permettersi di fare ciò che si ama veramente."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt5yuvvra38x2n.jpg",
+              "caption": "Elena Kuzmina e Xenia Bunina, Fondatrici di Chora Practice"
+            },
+            {
+              "type": "text",
+              "content": "<b>Chora è una pratica creativa. Potreste parlarci del vostro background?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>Xenia: </b>La maggior parte delle persone che si trasferiscono in Portogallo iniziano infine a fare ciò che veramente amano – cose che volevano perseguire nella loro ‘vita passata’ ma avevano paura di farlo a causa delle aspettative sociali. Lo stesso è successo a me."
+            },
+            {
+              "type": "text",
+              "content": "Dopo essermi trasferita qui, ho avviato la mia propria compagnia di produzione, lavorando su pubblicità fotografica e video. È così che ho incontrato Alena. Successivamente, ho scoperto Arco, una scuola di arte contemporanea dove ci insegnavano non tanto come disegnare quanto come guardare il mondo attraverso una lente artistica. Mi sono laureata quest'anno, sono stati tre anni di studio intenso."
+            },
+            {
+              "type": "text",
+              "content": "<b>Elena, potresti parlarci della tua esperienza?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>Elena</b>: Vengo da una piccola città in Chuvashia e ho studiato come insegnante di inglese e francese. Ma sono sempre stata attratta dall'arte – cinema, architettura, pittura, artigianato - tutto. Prima di trasferirmi, ho seguito corsi di produzione cinematografica perché sognavo di fare film. Quando ho scoperto che Ksenia aveva la sua propria compagnia di produzione qui, ho voluto unirmi a lei."
+            },
+            {
+              "type": "text",
+              "content": "Ero così nervosa all'idea di contattarla che mio marito Mark ha preso contatto con Ksenia per me, chiedendo se potessi passare, osservare e aiutare. Alla fine, Ksenia e io siamo diventate molto amiche. È una persona incredibile – sempre incoraggiante gli altri e dando loro spazio per esprimersi. È stata Ksenia a dirmi, ‘Dovresti andare alla scuola d'arte.’ Sono rimasta sorpresa: ‘Io? Seriamente?’ Ma alla fine mi sono iscritta anche io. Si è rivelata un'esperienza straordinaria: abbiamo imparato a osservare, creare e attraversare un processo complesso, profondo, quasi filosofico di scoperta."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msywgl9vx19o8e.webp",
-              "caption": ""
+              "caption": "",
+              "credit": "Organizzato da Open the Door Events | Foto di Joy Zamora"
             },
             {
               "type": "text",
-              "content": "<b>Chora è una pratica creativa. Potresti parlarci del tuo background?</b>"
+              "content": "<b>Hai menzionato che dopo esserti trasferito in Portogallo, hai provato un senso di libertà. Cosa contribuisce esattamente a questo?</b>"
             },
             {
               "type": "text",
-              "content": "<b>Ksenia: </b>La maggior parte delle persone che si trasferiscono in Portogallo alla fine iniziano a fare ciò che amano veramente: cose che avrebbero voluto perseguire nella loro \"vita passata\" ma che avevano paura di fare a causa delle aspettative sociali. Lo stesso è successo a me."
+              "content": "<b>Xenia:</b> L'ambiente è completamente diverso. Amo la mia città e il mio paese, ma San Pietroburgo è enorme, mentre Lisbona ha solo circa 600.000 persone. Perché ci sono meno persone e l'atmosfera generale è più rilassata, tutto sembra più calmo. Se non disturbi nessuno, le persone tendono a supportarti. In un ambiente come questo, è molto più facile esprimerti."
+            },
+            {
+              "type": "video",
+              "mediaKind": "gif",
+              "content": "https://api.eprisjournal.com/uploads/mt35c8z0937px7.mp4",
+              "caption": "",
+              "loop": true,
+              "muted": true,
+              "videoWebm": "",
+              "poster": "https://api.eprisjournal.com/uploads/mt35c8z0937px7.poster.jpg",
+              "credit": "@chora.practice",
+              "sourceUrl": "https://www.instagram.com/p/DbolFp7DNTp/?img_index=1&igsi=d3JkcnZlazRybGFk"
             },
             {
               "type": "text",
-              "content": "Dopo essermi trasferito qui, ho avviato la mia società di produzione, lavorando su foto e pubblicità video. È così che io e Alena ci siamo conosciuti. Più tardi ho scoperto Arco, una scuola d'arte contemporanea dove ci hanno insegnato non tanto a disegnare quanto a guardare il mondo attraverso una lente artistica. Mi sono laureata quest'anno, sono stati tre anni di studio intenso."
+              "content": "<b>Ha anche a che fare con l'atmosfera rilassata intorno a te, così come il fatto che nessuno ti conosce e sei libero di provare qualcosa di nuovo?</b>"
             },
             {
               "type": "text",
-              "content": "<b>Alena, potresti raccontarci la tua esperienza?</b>"
+              "content": "<b>Xenia:</b> Non so se Alena si sente allo stesso modo, ma ho avuto questa idea. L'immigrazione può essere un'esperienza molto intensa, non importa quanto tu sia preparato. Per molti immigrati, la vita si divide in due periodi – la vita prima e quella nuova. Se ricominci da capo, perché ripetere ciò che hai appena vissuto quando hai la possibilità di iniziare a fare ciò che desideri veramente?"
             },
             {
               "type": "text",
-              "content": "<b>Alena</b>: Vengo da una piccola città della Ciuvascia e ho studiato come insegnante di inglese e francese. Ma sono sempre stato attratto dall'arte: cinema, architettura, pittura, artigianato, tutto. Prima di trasferirmi ho seguito corsi di cinema perché sognavo di fare film. Quando ho scoperto che Ksenia aveva qui la sua società di produzione, ho voluto unirmi a lei."
+              "content": "<b>È una riflessione potente. Spesso arriviamo al cambiamento positivo superando esperienze difficili.</b>"
             },
             {
               "type": "text",
-              "content": "Ero così nervosa all'idea di contattarmi che mio marito Mark ha contattato Ksenia per me, chiedendomi se potevo passare, osservare e dare una mano. Alla fine, io e Ksenia siamo diventati molto legati. È una persona incredibile: incoraggia sempre gli altri e dà loro lo spazio per esprimersi. È stata Ksenia a dirmi: “Dovresti andare alla scuola d’arte”. Sono rimasto sorpreso: “Io? Dici sul serio?’ Ma alla fine mi sono iscritto anch’io. Si è rivelata un’esperienza straordinaria: abbiamo imparato a osservare, creare e attraversare un processo di scoperta complesso, profondo, quasi filosofico”."
+              "content": "<b>Parliamo del tuo studio di decorazione. Cosa fai esattamente, e quali sono le tue principali aree di interesse?</b>"
             },
             {
               "type": "text",
-              "content": "<b>Hai detto che dopo esserti trasferito in Portogallo hai provato un senso di libertà. Cosa contribuisce esattamente a ciò?</b>"
-            },
-            {
-              "type": "text",
-              "content": "<b>Ksenia:</b> L'ambiente è completamente diverso. Amo la mia città e il mio paese, ma San Pietroburgo è enorme, mentre Lisbona conta solo circa 600.000 abitanti. Poiché ci sono meno persone e l'atmosfera generale è più rilassata, tutto sembra più tranquillo. Se non dai fastidio a nessuno, le persone tendono a supportarti. In un ambiente come questo, è molto più facile esprimersi."
-            },
-            {
-              "type": "text",
-              "content": "<b>Ha a che fare anche con l'atmosfera rilassata che ti circonda e con il fatto che nessuno ti conosce e sei libero di provare qualcosa di nuovo?</b>"
-            },
-            {
-              "type": "text",
-              "content": "Ksenia: Non so se Alena si sente allo stesso modo, ma ho avuto questo pensiero. L’immigrazione può essere un’esperienza molto intensa, non importa quanto tu sia preparato. Per molti immigrati, la vita sembra divisa in due periodi: la vita precedente e quella nuova. Se stai ricominciando da capo, perché ripetere ciò che hai appena vissuto quando hai la possibilità di iniziare a fare ciò che desideri veramente?"
-            },
-            {
-              "type": "text",
-              "content": "<b>È un pensiero potente. Spesso arriviamo a un cambiamento positivo superando esperienze difficili.</b>"
-            },
-            {
-              "type": "text",
-              "content": "<b>Parliamo del tuo studio di decorazione. Che cosa fai esattamente e quali sono le tue principali aree di interesse?</b>"
-            },
-            {
-              "type": "text",
-              "content": "<b>Ksenia</b>: Il nostro obiettivo principale è l'arredamento tessile per matrimoni premium. Inizialmente decoravamo ristoranti, realizzando installazioni stagionali temporanee per il periodo natalizio o estivo. Poi abbiamo realizzato il nostro primo progetto di matrimonio e abbiamo pensato: \"Oh, questo è davvero un campo fantastico!\""
+              "content": "<b>Xenia</b>: La nostra attenzione principale è l'arredamento tessile per matrimoni di alta qualità. Inizialmente, decoravamo ristoranti, creando installazioni stagionali temporanee per Natale o l'estate. Poi abbiamo realizzato il nostro primo progetto di matrimonio e abbiamo pensato, ‘Oh, questo è in realtà un campo così fantastico!’"
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
-              "caption": ""
+              "caption": "",
+              "credit": "Organizzato da Open the Door Events | Foto di Joy Zamora"
             },
             {
               "type": "text",
@@ -24515,20 +24534,21 @@
             },
             {
               "type": "text",
-              "content": "<b>Alena</b>: \"Penso semplicemente che non abbiamo paura delle sfide. Ci immergiamo a capofitto in ogni progetto e scopriamo le cose lungo il percorso. Come artisti, consideriamo il tessuto semplicemente come il mezzo che sembra giusto per questa fase particolare. Non siamo attaccati all'idea di creare sempre archi tessili.\""
+              "content": "<b>Elena</b>: Penso che semplicemente non abbiamo paura delle sfide. Ci tuffiamo a capofitto in ogni progetto e troviamo le soluzioni lungo il percorso. Come artiste, vediamo il tessuto semplicemente come il mezzo che si adatta a questa fase particolare. Non siamo attaccate all'idea di creare sempre archi tessili."
             },
             {
               "type": "text",
-              "content": "<b>Ksenia</b>: \"Penso che sia stata più un'iniziativa di Alena. Sa cucire, ama sinceramente i tessuti e ha una profonda conoscenza del materiale. Come coppia, spesso raccogliamo le idee l'uno dell'altro e dividiamo le responsabilità: io mi occupo della comunicazione con i clienti, dei budget e delle questioni finanziarie, mentre Alena gravita naturalmente verso i tessuti."
+              "content": "<b>Xenia</b>: Penso che sia stata più iniziativa di Alena. Sa come cucire, ama sinceramente i tessuti e ha una profonda comprensione del materiale."
             },
             {
               "type": "text",
-              "content": "Ad un certo punto, abbiamo iniziato a ricevere richieste per installazioni su tessuto e ci siamo resi conto di aver trovato una nicchia aperta. Era una combinazione di un approccio commerciale razionale e di un genuino interesse personale. E sebbene l’installazione di archi enormi sia fisicamente impegnativa, il tessuto si è rivelato il materiale più semplice con cui lavorare perché lo comprendiamo molto bene”."
+              "content": "A un certo punto, abbiamo iniziato a ricevere richieste per installazioni di tessuti e ci siamo resi conto di aver trovato una nicchia aperta. È stata una combinazione di un approccio commerciale razionale e di un interesse personale genuino. E anche se installare grandi archi è fisicamente impegnativo, il tessuto si è rivelato il materiale più facile con cui lavorare perché lo comprendiamo così bene."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mszv3593xr6u88.jpg",
-              "caption": ""
+              "caption": "",
+              "credit": "Organizzato da Open the Door Events | Foto di Joy Zamora"
             },
             {
               "type": "text",
@@ -24536,75 +24556,108 @@
             },
             {
               "type": "text",
-              "content": "<b>Ksenia:</b> “Era una giornata soleggiata meravigliosa – credo fosse agosto – e stavamo seduti nel magnifico Estrela Garden a fare brainstorming. Eravamo in tre in quel momento, e avevamo già cercato di trovare un nome da circa un mese."
+              "content": "<b>Xenia:</b> Era una giornata soleggiata meravigliosa – penso fosse agosto – e stavamo seduti nel magnifico Giardino Estrela facendo brainstorming. Eravamo in tre in quel momento, e avevamo già cercato di trovare un nome da circa un mese."
             },
             {
               "type": "text",
-              "content": "Poi siamo incappate nel concetto di Plato di Chora. Nella sua filosofia, si riferisce a uno spazio primordiale – ‘spazio prima di tutto’ – dove la materia prende forma. Abbiamo trovato quell’idea molto ispirante, soprattutto perché il nostro concetto iniziale era decor multisensoriale."
+              "content": "Poi abbiamo incontrato il concetto di Chora di Plato. Nella sua filosofia, si riferisce a uno spazio primordiale – ‘spazio prima di tutto’ – dove la materia prende forma. Abbiamo trovato quell’idea molto ispirante, soprattutto perché il nostro concetto iniziale era decor multisensoriale."
             },
             {
               "type": "text",
-              "content": "Poi abbiamo dovuto decidere il formato. Parole come ‘studio’ o ‘bureau’ erano già prese, ed è stato allora che abbiamo pensato a ‘practice’. Abbiamo pensato, ‘Aspetta, questo suona come una pratica artistica! È perfetto.’ E così è nata Chora Practice."
+              "content": "Poi abbiamo dovuto decidere sul formato. Parole come ‘studio’ o ‘bureau’ erano già prese, ed è stato allora che abbiamo pensato a ‘practice’. Abbiamo pensato, ‘Aspetta, questo suona come una pratica artistica! È perfetto.’ E così è nata Chora Practice."
             },
             {
               "type": "text",
-              "content": "Sei mesi dopo, abbiamo finalmente deciso di scoprire cosa significasse Chora in portoghese – in realtà non l’avevamo verificato. Si è scoperto che è la forma imperativa del verbo chorar, che significa ‘piangere’.\""
+              "content": "Sei mesi dopo, abbiamo finalmente deciso di scoprire cosa significasse Chora in portoghese – in realtà non l’avevamo verificato. Si è scoperto che è la forma imperativa del verbo chorar, che significa ‘piangere’."
             },
             {
               "type": "text",
-              "content": "<b>Parliamo un po’ della parte tecnica. Come si svolge il processo di installazione? Fate tutto voi o principalmente supervisionate il processo?</b>"
+              "content": "<b>Parliamo un po' della parte tecnica. Come si presenta il processo di installazione? Fate tutto voi o principalmente supervisionate il processo?</b>"
             },
             {
               "type": "text",
-              "content": "<b>Alena</b>: Per lo più facciamo tutto noi stessi."
+              "content": "<b>Elena</b>: Facciamo principalmente tutto noi stesse."
             },
             {
               "type": "text",
-              "content": "<b>Ksenia</b>: Dipende dal progetto. Quando abbiamo creato una tenda per Bosque Concepts, hanno fornito un team di operai. Dopo una breve briefing, hanno realizzato un’incredibile installazione di drappeggio molto rapidamente. Le nostre decorazioni non sono ancora di grande scala, quindi noi due possiamo gestire abbastanza cose da sole."
+              "content": "<b>Xenia</b>: Dipende dal progetto. Quando abbiamo creato una tenda per Tales [Wedding Planner], avevamo un team di Back UP Rentals. Dopo un breve briefing, hanno creato un'incredibile installazione di drappeggio molto rapidamente. Le nostre decorazioni non sono ancora di grande scala, quindi noi due possiamo gestire abbastanza cose da sole."
+            },
+            {
+              "type": "video",
+              "mediaKind": "gif",
+              "content": "https://api.eprisjournal.com/uploads/mt353zdbavxtzi.mp4",
+              "caption": "Installazione per Tales Wedding Planner",
+              "loop": true,
+              "muted": true,
+              "videoWebm": "https://api.eprisjournal.com/uploads/mt353zdbavxtzi.webm",
+              "poster": "https://api.eprisjournal.com/uploads/mt353zdbavxtzi.poster.jpg",
+              "sourceUrl": "https://www.instagram.com/p/DbolFp7DNTp/?img_index=1&igsi=d3JkcnZlazRybGFk",
+              "credit": "@chora.practice "
+            },
+            {
+              "type": "video",
+              "mediaKind": "gif",
+              "content": "https://api.eprisjournal.com/uploads/mt35bxhczp0ori.mp4",
+              "caption": "Installazione per Tales Wedding Planner",
+              "loop": true,
+              "muted": true,
+              "videoWebm": "https://api.eprisjournal.com/uploads/mt35bxhczp0ori.webm",
+              "poster": "https://api.eprisjournal.com/uploads/mt35bxhczp0ori.poster.jpg",
+              "credit": "@chora.practice",
+              "sourceUrl": "https://www.instagram.com/p/DbolFp7DNTp/?img_index=1&igsi=d3JkcnZlazRybGFk"
             },
             {
               "type": "text",
-              "content": "<b>L’industria degli eventi è piena di situazioni impreviste. Come affrontate le crisi sul posto?</b>"
+              "content": "<b>L'industria degli eventi è piena di situazioni impreviste. Come affronti le crisi sul posto?</b>"
             },
             {
               "type": "text",
-              "content": "<b>Alena</b>: Qualcosa va sempre storto ai matrimoni. La cosa principale è mantenere la calma ed essere preparati."
+              "content": "<b>Elena</b>: Qualcosa va sempre storto ai matrimoni. La cosa principale è mantenere la calma ed essere preparati."
             },
             {
               "type": "text",
-              "content": "<b>Ksenia</b>: Portiamo sempre tessuto extra. Cerchiamo di anticipare i problemi potenziali in anticipo – quali ostacoli possono verificarsi per fioristi, organizzatori e trasporti. Pensiamo a quanti più scenari possibili, troviamo soluzioni e ci prepariamo ad esse."
+              "content": "<b>Xenia</b>: Portiamo sempre tessuto extra. Cerchiamo di anticipare i problemi potenziali in anticipo – quali ostacoli possono verificarsi per fioristi, organizzatori e trasporti. Pensiamo a quanti più scenari possibili, proponiamo soluzioni e ci prepariamo di conseguenza."
             },
             {
               "type": "text",
-              "content": "<b>Come affrontate le crisi e il burnout creativo? Cosa vi aiuta a recuperare e andare avanti quando le cose si fanno difficili?</b>"
+              "content": "<b>Come affronti le crisi e il burnout creativo? Cosa ti aiuta a recuperare e andare avanti quando le cose si fanno difficili?</b>"
             },
             {
               "type": "text",
-              "content": "<b>Alena</b>: “Le crisi succedono sicuramente. Quando sono esausta, faccio una passeggiata nel bosco. La natura ispira, rilassa e mi ricarica enormemente. Vedo i problemi come una parte completamente normale del processo. In realtà, ne sono anche grata perché significano che stiamo attivamente cercando, affrontando sfide e crescendo.”"
+              "content": "<b>Elena</b>: Le crisi succedono sicuramente. Quando sono esausta, faccio una passeggiata nel bosco. La natura ispira, rilassa e mi ricarica enormemente. Vedo i problemi come una parte completamente normale del processo. In effetti, ne sono anche grata perché significano che stiamo attivamente cercando, affrontando sfide e crescendo.”"
             },
             {
               "type": "text",
-              "content": "<b>Ksenia</b>: “Credo che ogni attività sia essenzialmente un viaggio da una crisi all’altra. Non è un peso – è semplicemente parte della realtà. Devi essere preparato e capire che ogni crisi è un’opportunità. Le cose stanno andando incredibilmente bene per noi ora, e siamo molto felici, ma sappiamo che un altro periodo difficile arriverà prima o poi. E quando arriverà, lo supereremo e ne usciremo più forti.”"
+              "content": "<b>Xenia</b>: “Credo che ogni attività sia essenzialmente un viaggio da una crisi all’altra. Non è un peso – è semplicemente parte della realtà. Devi essere preparato e capire che ogni crisi è un’opportunità. Le cose stanno andando incredibilmente bene per noi ora, e siamo molto felici, ma sappiamo che un altro periodo difficile arriverà eventualmente. E quando arriverà, lo supereremo e ne usciremo più forti."
             },
             {
               "type": "text",
-              "content": "Sì, è difficile e frustrante. Ma se qualcosa ti frustra così tanto da farti venire voglia di piangere, probabilmente sei a un passo da una svolta. La scuola d’arte mi ha insegnato che se non ti muovi verso quella resistenza, perdi l’opportunità. Quindi: inspira, espira e risolvi il problema."
+              "content": "Sì, è difficile e frustrante. Ma se qualcosa ti frustra così tanto da farti venire voglia di piangere, probabilmente significa che sei a un passo da una svolta. La scuola d’arte mi ha insegnato che se non ti muovi verso quella resistenza, perdi l’opportunità. Quindi: inspira, espira e risolvi il problema."
+            },
+            {
+              "type": "galleria",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mt4lp7zz0bm3b3.jpg",
+                "https://api.eprisjournal.com/uploads/mt4lp8r7cia5ej.jpg",
+                "https://api.eprisjournal.com/uploads/mt4lp9h75oexad.jpg"
+              ],
+              "caption": "@chora.practice"
+            },
+            {
+              "type": "testo",
+              "content": "<b>Come spiegheresti una vita piena di creatività a qualcuno che non è connesso al mondo creativo? Come sperimenti e percepisci il mondo?</b>"
+            },
+            {
+              "type": "testo",
+              "content": "<b>Xenia</b>: “Onestamente, non lo so – non sono mai stato dall'altra parte. Non credo che le persone siano divise in ‘creative’ e ‘non-creative’."
+            },
+            {
+              "type": "testo",
+              "content": "Quando qualcuno dice, ‘Sei persone creative, ma io sono più con i piedi per terra,’ sono convinto che stiano sopprimendo qualcosa in se stessi. Per qualsiasi motivo – vergogna, paura, o condizionamento sociale – non si permettono di riconoscere l'artista dentro di loro."
             },
             {
               "type": "text",
-              "content": "<b>Come spiegheresti a qualcuno che non è connesso al mondo creativo una vita piena di creatività? Come vivi e percepisci il mondo?</b>"
-            },
-            {
-              "type": "text",
-              "content": "<b>Ksenia</b>: “Onestamente, non lo so – non sono mai stata dall’altra parte. Non credo che le persone siano divise in ‘creative’ e ‘non creative’."
-            },
-            {
-              "type": "text",
-              "content": "Quando qualcuno dice, ‘Siete persone creative, ma io sono più con i piedi per terra,’ sono convinta che stiano sopprimendo qualcosa in loro stessi. Per qualche motivo – vergogna, paura o condizionamento sociale – non si permettono di riconoscere l’artista dentro di sé."
-            },
-            {
-              "type": "text",
-              "content": "Credo davvero che siamo tutti creatori in qualche misura. E se qualcuno che legge questo pensa, ‘No, quello sicuramente non sono io,’ suggerirei semplicemente di aprirsi un po’ di più al mondo. Dentro di te c’è sicuramente qualcosa.’"
+              "content": "Credo veramente che siamo tutti creatori in qualche misura. E se qualcuno che legge questo pensa, ‘No, sicuramente non sono io,’ suggerirei semplicemente di aprirti un po’ di più al mondo."
             },
             {
               "type": "text",
@@ -24612,23 +24665,35 @@
             },
             {
               "type": "text",
-              "content": "<b>Ksenia</b>: C’è una pratica chiamata \"Impulse\". Per esempio, stai camminando per strada e all’improvviso hai voglia di raccogliere una foglia o fotografare un edificio particolare. Il tuo critico interiore dice immediatamente, ‘Perché? Nessuno ne ha bisogno. Siamo in ritardo. Per favore, smetti di fare qualcosa di inutile.’"
+              "content": "<b>Xenia</b>: C’è una pratica chiamata \"Impulse\". Per esempio, stai camminando per strada e all’improvviso ti viene voglia di raccogliere una foglia o fotografare un edificio particolare. Il tuo critico interiore dice immediatamente, ‘Perché? Nessuno ne ha bisogno. Siamo in ritardo. Per favore, smetti di fare qualcosa di inutile."
             },
             {
               "type": "text",
-              "content": "Ma quell’impulso piccolo è esattamente ciò che la tua mente ti dice di ignorare. Se ascolti questo impulso una volta, poi ancora e ancora, il mondo diventa gradualmente più ricco – e impari di più su te stesso, cosa ti piace veramente e cosa vuoi davvero fare."
+              "content": "Ma quell’impulso è esattamente ciò che la tua mente ti sta dicendo di ignorare. Se ascolti questo impulso una volta, poi di nuovo e ancora, il mondo diventa gradualmente più ricco – e impari di più su te stesso, cosa ti piace veramente, e cosa vuoi davvero fare."
             },
             {
               "type": "text",
-              "content": "La cosa importante è ascoltare quella voce che dice, ‘Questo è inutile,’ e rispondere: ‘Ottimo. Farò qualcosa di inutile.’ Questo mi ha aiutato enormemente. È in realtà ciò che mi ha portato alla scuola d’arte, perché all’inizio, studiare arte sembrava completamente inutile.”"
+              "content": "La cosa importante è sentire quella voce che dice, «Questo è inutile,» e rispondere: «Ottimo. Farò qualcosa di inutile.» Questo mi ha aiutato enormemente. È in realtà ciò che mi ha portato alla scuola d'arte, perché all'inizio, studiare arte sembrava completamente inutile."
             },
             {
               "type": "text",
-              "content": "<b>Alena, hai il tuo modo di sbloccare quella parte creativa di te?</b>"
+              "content": "<b>Elena, hai il tuo modo di sbloccare quella parte creativa di te?</b>"
             },
             {
               "type": "text",
-              "content": "Alena: Sono una persona molto lenta, quindi l’osservazione mi aiuta molto. Adoro immergermi nel processo – guardare un albero, sentire il vento. Osservare semplicemente te stesso e il mondo intorno può rivelare molto."
+              "content": "<b>Elena: </b>Sono una persona molto lenta, quindi l'osservazione mi aiuta molto. Adoro immergermi nel processo – guardare un albero, sentire il vento. Osservare semplicemente te stesso e il mondo intorno a te può rivelare molto."
+            },
+            {
+              "type": "video",
+              "mediaKind": "gif",
+              "content": "https://api.eprisjournal.com/uploads/mt4lmobma8gvmc.mp4",
+              "caption": "Fragmento dell'Installazione per Tales Wedding Planner",
+              "loop": true,
+              "muted": true,
+              "videoWebm": "",
+              "poster": "https://api.eprisjournal.com/uploads/mt4lmobma8gvmc.poster.jpg",
+              "sourceUrl": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTU3MjAxODQ0MTkyNDY4?story_media_id=3956606514496304158&igsi=MXFocnY2bWg0OHdhaw==",
+              "credit": "@chora.practice"
             },
             {
               "type": "text",
@@ -24636,11 +24701,11 @@
             },
             {
               "type": "text",
-              "content": "<b>Alena</b>: Probabilmente il Giardino Gulbenkian. È un parco e museo incredibile. È proprio in città, ma una volta entrati, sembra di essere da un’altra parte completamente diversa. È una bellissima combinazione di natura, architettura e arte. Entri e improvvisamente ti trovi nel tuo piccolo mondo. Puoi respirare profondamente."
+              "content": "<b>Elena</b>: Probabilmente il Giardino Gulbenkian. È un parco e museo incredibile. È proprio in città, ma una volta entrati, sembra di essere da un'altra parte completamente diversa. È una bellissima combinazione di natura, architettura e arte. Entri e improvvisamente ti trovi nel tuo piccolo mondo. Puoi respirare profondamente."
             },
             {
               "type": "text",
-              "content": "<b>Ksenia</b>: Per me, oltre al Gulbenkian, è probabilmente Cabo Espichel. Ha questo incredibile faro ed è considerato dai portoghesi uno dei punti più occidentali d’Europa. Mi piace anche il caffè al Museu Albuquerque, e MACAM – Museu de Arte Contemporânea Armando Martins – ha un caffè meraviglioso. Sono tutti accessibili ma incredibilmente eleganti. I musei spesso hanno caffè fantastici."
+              "content": "<b>Xenia</b>: Per me, oltre al Gulbenkian, probabilmente Cabo Espichel. Ha questo incredibile faro ed è considerato dai portoghesi uno dei punti più occidentali d'Europa. Mi piace anche il caffè al Museu Albuquerque, e il MACAM – Museu de Arte Contemporânea Armando Martins – ha un caffè meraviglioso. Sono tutti accessibili ma incredibilmente eleganti. I musei spesso hanno caffè fantastici."
             },
             {
               "type": "gallery",
@@ -24652,10 +24717,10 @@
               ],
               "caption": "",
               "alts": [
-                "Gulbenkian Garden",
-                "Gulbenkian Garden",
+                "Giardino Gulbenkian",
+                "Giardino Gulbenkian",
                 "Cabo Espichel",
-                "Cafe in Foundation Albuquerque "
+                "Caffè nella Foundation Albuquerque"
               ]
             },
             {
@@ -24664,11 +24729,11 @@
             },
             {
               "type": "text",
-              "content": "<b>Ksenia</b>: Sono appena tornata da New York, dove io e mio marito ci siamo sposati, quindi questa è sicuramente la mia impressione più forte al momento. Ma penso che ogni viaggio sia ispirante a modo suo."
+              "content": "<b>Xenia</b>: Sono appena tornata da New York, dove io e mio marito ci siamo sposati, quindi questa è sicuramente la mia impressione più forte al momento. Ma penso che ogni viaggio sia ispirante a modo suo."
             },
             {
               "type": "text",
-              "content": "<b>Alena</b>: Recentemente, è stato il mio viaggio in solitaria a Porto. Ho visitato il Museu Soares dos Reis, esplorato l’architettura di Álvaro Siza, e l’ho adorato. Il fatto che sono andata da sola ha reso l’esperienza ancora più speciale."
+              "content": "<b>Elena</b>: Recentemente, è stato il mio viaggio in solitaria a Porto. Ho visitato il Museo d'Arte Contemporanea Serralves, esplorato l'architettura di Álvaro Siza, e l'ho adorato. Il fatto che sia andata da sola ha reso l'esperienza ancora più speciale."
             },
             {
               "type": "text",
@@ -24676,18 +24741,42 @@
             },
             {
               "type": "text",
-              "content": "<b>Alena</b>: Continua a fare ciò che ami veramente. Nonostante i limiti interiori, guarda in profondità dentro di te, ascolta i tuoi veri desideri e concediti semplicemente il permesso di seguirli."
+              "content": "<b>Elena</b>: Continua a fare ciò che ami veramente. Nonostante i tuoi limiti interiori, guarda profondamente dentro di te, ascolta i tuoi veri desideri e concediti semplicemente il permesso di perseguirli."
             },
             {
               "type": "text",
-              "content": "<b>Ksenia</b>: La lezione principale che ho imparato dalla scuola d’arte è: ‘Sperimenta la resistenza.’ Se provi resistenza verso qualcosa, dovresti muoverti verso di essa. Significa che c’è una grande quantità di energia nascosta lì. Non ignorarla o sopprimerla – osservala più da vicino."
+              "content": "<b>Xenia</b>: La lezione principale che ho imparato dalla scuola d'arte è: ‘Sperimenta resistenza.’ Se senti resistenza verso qualcosa, dovresti muoverti verso di essa. Significa che c'è una grande quantità di energia nascosta lì. Non ignorarla o sopprimerla – guardala più da vicino."
+            },
+            {
+              "type": "video",
+              "mediaKind": "gif",
+              "content": "https://api.eprisjournal.com/uploads/mt35850in1olvy.mp4",
+              "caption": "",
+              "loop": true,
+              "muted": true,
+              "videoWebm": "https://api.eprisjournal.com/uploads/mt35850in1olvy.webm",
+              "poster": "https://api.eprisjournal.com/uploads/mt35850in1olvy.poster.jpg",
+              "credit": "@chora.practice",
+              "sourceUrl": "https://www.instagram.com/p/DbolFp7DNTp/?img_index=1&igsi=d3JkcnZlazRybGFk"
+            },
+            {
+              "type": "video",
+              "mediaKind": "gif",
+              "content": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.mp4",
+              "caption": "Installazione per Tales Wediding Planner",
+              "loop": true,
+              "muted": true,
+              "videoWebm": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.webm",
+              "poster": "https://api.eprisjournal.com/uploads/mt35cexjfquvyg.poster.jpg",
+              "sourceUrl": "https://www.instagram.com/p/DbolFp7DNTp/?img_index=1&igsi=d3JkcnZlazRybGFk",
+              "credit": "@chora.practice"
             }
           ],
-          "updatedAt": "2026-08-19T13:17:39.970Z",
+          "updatedAt": "2026-08-24T09:23:53.850Z",
           "authorId": "author-1784896384236-4fokw",
           "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
-          "publishAt": "2026-08-19T09:38:46.903Z",
-          "previewToken": "6991679b107e26485222164c"
+          "previewToken": "0eadc13dc5057beeff1fffd5",
+          "publishAt": "2026-08-24T09:15:36.400Z"
         },
         {
           "id": 24,
