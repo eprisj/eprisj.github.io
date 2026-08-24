@@ -3100,6 +3100,126 @@ async function runUploadDirectoryCheck(cfg) {
   }
 }
 
+/* ЖИВОЙ ПУЛЬС.
+
+   Мониторинг запускался кнопкой и показывал состояние на момент нажатия. Про
+   деплой, который прошёл минуту назад, или про упавшую службу редакция узнавала
+   только если догадывалась нажать «Обновить» ещё раз.
+
+   Опрашиваются только дешёвые публичные ответы (75-185 мс, до 250 байт), и
+   только пока вкладка мониторинга открыта И окно на экране: фоновая вкладка,
+   тихо стучащая в API раз в двадцать секунд весь рабочий день, — это не
+   мониторинг, а лишний трафик.
+
+   Смысл не в зелёных точках, а в замеченных ИЗМЕНЕНИЯХ: пульс сам скажет
+   «прошёл деплой» и «контент обновлён», не заставляя сверять хеши глазами. */
+const PULSE_INTERVAL_MS = 20000;
+const PULSE_SOURCES = [
+  { key: 'site', label: 'Сайт', url: 'https://eprisjournal.com/' },
+  { key: 'api', label: 'Контент', url: 'https://api.eprisjournal.com/content/meta' },
+  { key: 'forms', label: 'Анкеты', url: 'https://api.eprisjournal.com/forms/health' },
+  { key: 'deploy', label: 'Деплой', url: 'https://api.eprisjournal.com/deploy-status' },
+];
+let pulseTimer = null;
+let pulseState = {};     // key -> { ok, ms, at }
+let pulseSeen = {};      // что видели в прошлый раз: чтобы заметить изменение
+let pulseEvents = [];    // человеческая лента: что произошло, а не что есть
+
+function pulseNote(text) {
+  pulseEvents.unshift({ at: Date.now(), text });
+  pulseEvents = pulseEvents.slice(0, 6);
+}
+
+async function pulseProbe(source) {
+  const started = Date.now();
+  try {
+    const res = await fetch(source.url, { cache: 'no-store', signal: AbortSignal.timeout(8000) });
+    const ms = Date.now() - started;
+    let body = null;
+    if (source.key === 'api' || source.key === 'deploy') {
+      body = await res.json().catch(() => null);
+    }
+    return { ok: res.ok, ms, at: Date.now(), body };
+  } catch (error) {
+    return { ok: false, ms: Date.now() - started, at: Date.now(), error: getErrorMessage(error) };
+  }
+}
+
+async function pulseTick() {
+  const results = await Promise.all(PULSE_SOURCES.map(pulseProbe));
+  PULSE_SOURCES.forEach((source, i) => {
+    const r = results[i];
+    const was = pulseState[source.key];
+    // Падение и возврат — события, а не просто цвет точки.
+    if (was && was.ok !== r.ok) pulseNote(`${source.label}: ${r.ok ? 'снова отвечает' : 'не отвечает'}`);
+    pulseState[source.key] = r;
+
+    if (source.key === 'deploy' && r.body && r.body.commitShort) {
+      if (pulseSeen.deploy && pulseSeen.deploy !== r.body.commitShort) {
+        pulseNote(`Прошёл деплой: ${r.body.commitShort} — ${String(r.body.subject || '').slice(0, 60)}`);
+      }
+      pulseSeen.deploy = r.body.commitShort;
+    }
+    if (source.key === 'api' && r.body && r.body.version) {
+      if (pulseSeen.version && pulseSeen.version !== r.body.version) pulseNote('Контент на сервере обновлён');
+      pulseSeen.version = r.body.version;
+    }
+  });
+  renderPulse();
+}
+
+function renderPulse() {
+  const row = byId('pulseRow');
+  if (!row) return;
+  row.innerHTML = PULSE_SOURCES.map((source) => {
+    const r = pulseState[source.key];
+    if (!r) return `<div class="pulse-cell"><span class="pulse-dot idle"></span>${escapeHtml(source.label)}</div>`;
+    const cls = r.ok ? 'up' : 'down';
+    const detail = r.ok ? `${r.ms} мс` : (r.error ? String(r.error).slice(0, 28) : 'нет ответа');
+    return `<div class="pulse-cell"><span class="pulse-dot ${cls}"></span>` +
+      `<span class="pulse-name">${escapeHtml(source.label)}</span>` +
+      `<span class="pulse-ms">${escapeHtml(detail)}</span></div>`;
+  }).join('');
+
+  const log = byId('pulseLog');
+  if (log) {
+    log.innerHTML = pulseEvents.length
+      ? pulseEvents.map((e) =>
+          `<div class="pulse-event"><span class="pulse-event-time">${new Date(e.at).toLocaleTimeString('ru-RU')}</span>` +
+          `<span>${escapeHtml(e.text)}</span></div>`).join('')
+      : '';
+  }
+  const state = byId('pulseState');
+  if (state) {
+    const last = Math.max(0, ...Object.values(pulseState).map((r) => r.at || 0));
+    state.textContent = last ? `обновлено в ${new Date(last).toLocaleTimeString('ru-RU')}` : 'опрашиваю…';
+  }
+}
+
+function pulseShouldRun() {
+  const panel = document.getElementById('tab-monitor');
+  return Boolean(panel && panel.classList.contains('active') && document.visibilityState === 'visible');
+}
+
+function syncPulse() {
+  if (pulseShouldRun()) {
+    if (pulseTimer) return;
+    void pulseTick();
+    pulseTimer = setInterval(() => {
+      // Вкладку могли увести, пока таймер жил: проверяем на каждом круге, а не
+      // только при переключении — иначе фоновая вкладка продолжит опрос.
+      if (!pulseShouldRun()) { syncPulse(); return; }
+      void pulseTick();
+    }, PULSE_INTERVAL_MS);
+  } else if (pulseTimer) {
+    clearInterval(pulseTimer);
+    pulseTimer = null;
+    const state = byId('pulseState');
+    if (state) state.textContent = 'на паузе';
+  }
+}
+document.addEventListener('visibilitychange', syncPulse);
+
 /* МЕТРИКИ РЕДАКЦИИ.
 
    Мониторинг до сих пор отвечал на вопрос «жив ли сервер»: деплой, доступность
@@ -10935,6 +11055,10 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     if (btn.dataset.tab === 'history') setTimeout(refreshVersionHistory, 50);
     if (btn.dataset.tab === 'order') setTimeout(() => window._renderArticleOrderTab && window._renderArticleOrderTab(), 50);
     if (btn.dataset.tab === 'crm') setTimeout(() => window._renderCrmTab && window._renderCrmTab(), 50);
+    /* Пульс включается и гаснет вместе со вкладкой — и при уходе на любую
+       другую тоже, поэтому проверка стоит на каждом переключении, а не только
+       на 'monitor'. */
+    setTimeout(syncPulse, 60);
   });
 });
 

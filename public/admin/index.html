@@ -1441,6 +1441,15 @@
                 <div class="monitor-head">
                   <div><h2 class="card-title" style="margin-bottom:4px">Метрики редакции</h2><p class="card-desc">Ритм выпуска, доходимость до читателя, переводы, что в работе</p></div>
                 </div>
+                <!-- Живой пульс: опрашивается сам, пока вкладка открыта.
+                     Держится выше метрик, потому что отвечает на более срочный
+                     вопрос — «работает ли всё прямо сейчас». -->
+                <div class="pulse-head">
+                  <span class="metrics-cadence-title" style="margin:0">Пульс</span>
+                  <span id="pulseState" class="pulse-state">не запущен</span>
+                </div>
+                <div id="pulseRow" class="pulse-row"></div>
+                <div id="pulseLog" class="pulse-log"></div>
                 <div id="metricsRow" class="metrics-row"></div>
                 <div id="metricsCadence" class="metrics-cadence"></div>
                 <div id="metricsDetail" class="metrics-detail"></div>
