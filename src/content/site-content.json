@@ -2304,6 +2304,24 @@
       "imageSeed": "maria-graduation-heart",
       "imageUrl": "/images/heart-hero.jpg",
       "articleId": 11
+    },
+    {
+      "id": 21,
+      "title": "Rooms That Watch You Back",
+      "subtitle": "Architecture",
+      "fig": "FIG. 12",
+      "description": "Glass once promised freedom, honesty and light. Then the walls learned to collect data. An essay on transparent architecture, controlled visibility and the radical luxury of being allowed to disappear.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/msu6g5edocd9yr.jpg",
+      "articleId": 22
+    },
+    {
+      "id": 22,
+      "title": "In Conversation with Chora Practice:",
+      "subtitle": "Interview",
+      "fig": "FIG. 13",
+      "description": "Founders of a Lisbon-based decor studio on the art of listening to your inner self, importance of resilience and favorite places in the city",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
+      "articleId": 23
     }
   ],
   "articles": [
@@ -5905,6 +5923,24 @@
           "homeCategory": "painting",
           "homeLabel": "Хильма аф Клинт · 1907 · темпера на бумаге",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 21,
+          "title": "Комнаты, которые наблюдают за вами",
+          "subtitle": "Architecture",
+          "fig": "FIG. 12",
+          "description": "Стекло когда-то обещало свободу, честность и свет. Затем стены научились собирать данные. Эссе о прозрачной архитектуре, контролируемой видимости и радикальной роскоши быть позволенным исчезнуть.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msu6g5edocd9yr.jpg",
+          "articleId": 22
+        },
+        {
+          "id": 22,
+          "title": "В беседе с Chora Practice:",
+          "subtitle": "Interview",
+          "fig": "FIG. 13",
+          "description": "Основатели студии декора из Лиссабона о искусстве слушать свое внутреннее я, важности устойчивости и любимых местах в городе",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
+          "articleId": 23
         }
       ],
       "articles": [
@@ -9117,6 +9153,24 @@
           "homeCategory": "painting",
           "homeLabel": "Гільма аф Клінт · 1907 · темпера на папері",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 21,
+          "title": "Кімнати, що дивляться на вас у відповідь",
+          "subtitle": "Architecture",
+          "fig": "FIG. 12",
+          "description": "Скло колись обіцяло свободу, чесність і світло. Потім стіни навчилися збирати дані. Есе про прозору архітектуру, контрольовану видимість і радикальну розкіш бути дозволеним зникнути.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msu6g5edocd9yr.jpg",
+          "articleId": 22
+        },
+        {
+          "id": 22,
+          "title": "У розмові з Chora Practice:",
+          "subtitle": "Interview",
+          "fig": "FIG. 13",
+          "description": "Засновники студії декору з Лісабона про мистецтво слухати своє внутрішнє я, важливість стійкості та улюблені місця в місті",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
+          "articleId": 23
         }
       ],
       "articles": [
@@ -12329,6 +12383,24 @@
           "homeCategory": "painting",
           "homeLabel": "Hilma af Klint · 1907 · Tempera auf Papier",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 21,
+          "title": "Zimmer, Die Dich Zurücksehen",
+          "subtitle": "Architecture",
+          "fig": "FIG. 12",
+          "description": "Glas versprach einst Freiheit, Ehrlichkeit und Licht. Dann lernten die Wände, Daten zu sammeln. Ein Aufsatz über transparente Architektur, kontrollierte Sichtbarkeit und den radikalen Luxus, verschwinden zu dürfen.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msu6g5edocd9yr.jpg",
+          "articleId": 22
+        },
+        {
+          "id": 22,
+          "title": "Im Gespräch mit Chora Practice:",
+          "subtitle": "Interview",
+          "fig": "FIG. 13",
+          "description": "Gründer eines in Lissabon ansässigen Dekorationsstudios über die Kunst des Zuhörens auf das eigene Innere, die Bedeutung von Resilienz und Lieblingsorte in der Stadt",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
+          "articleId": 23
         }
       ],
       "articles": [
@@ -15541,6 +15613,24 @@
           "homeCategory": "painting",
           "homeLabel": "Hilma af Klint · 1907 · temple sobre papel",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 21,
+          "title": "Habitaciones Que Te Observan",
+          "subtitle": "Architecture",
+          "fig": "FIG. 12",
+          "description": "Cristal alguna vez prometió libertad, honestidad y luz. Luego las paredes aprendieron a recopilar datos. Un ensayo sobre arquitectura transparente, visibilidad controlada y el lujo radical de poder desaparecer.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msu6g5edocd9yr.jpg",
+          "articleId": 22
+        },
+        {
+          "id": 22,
+          "title": "En conversación con Chora Practice:",
+          "subtitle": "Interview",
+          "fig": "FIG. 13",
+          "description": "Fundadores de un estudio de decoración con sede en Lisboa sobre el arte de escuchar a tu yo interior, la importancia de la resiliencia y lugares favoritos en la ciudad",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
+          "articleId": 23
         }
       ],
       "articles": [
@@ -18759,6 +18849,24 @@
           "homeCategory": "painting",
           "homeLabel": "Hilma af Klint · 1907 · kâğıt üzerine tempera",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 21,
+          "title": "İzleyen Odalar",
+          "subtitle": "Architecture",
+          "fig": "FIG. 12",
+          "description": "Cam bir zamanlar özgürlük, dürüstlük ve ışık vaat etmişti. Sonra duvarlar veri toplamayı öğrendi. Şeffaf mimarlık, kontrollü görünürlük ve kaybolma özgürlüğünün radikal lüksü üzerine bir deneme.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msu6g5edocd9yr.jpg",
+          "articleId": 22
+        },
+        {
+          "id": 22,
+          "title": "Chora Practice ile Söyleşi:",
+          "subtitle": "Interview",
+          "fig": "FIG. 13",
+          "description": "Lizbon merkezli dekor stüdyosu kurucuları içsel kendinizle dinleme sanatından, dayanıklılığın öneminden ve şehrin favori yerlerinden bahsediyor",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
+          "articleId": 23
         }
       ],
       "articles": [
@@ -21970,6 +22078,24 @@
           "homeCategory": "painting",
           "homeLabel": "Hilma af Klint · 1907 · tempera su carta",
           "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+        },
+        {
+          "id": 21,
+          "title": "Camere che ti guardano indietro",
+          "subtitle": "Architecture",
+          "fig": "FIG. 12",
+          "description": "Il vetro una volta prometteva libertà, onestà e luce. Poi i muri hanno imparato a raccogliere dati. Un saggio sull'architettura trasparente, la visibilità controllata e il lusso radicale di poter scomparire.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msu6g5edocd9yr.jpg",
+          "articleId": 22
+        },
+        {
+          "id": 22,
+          "title": "In Conversazione con Chora Practice:",
+          "subtitle": "Interview",
+          "fig": "FIG. 13",
+          "description": "Fondatori di uno studio di decorazione con sede a Lisbona sull'arte di ascoltare il proprio io interiore, l'importanza della resilienza e i luoghi preferiti in città",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
+          "articleId": 23
         }
       ],
       "articles": [
