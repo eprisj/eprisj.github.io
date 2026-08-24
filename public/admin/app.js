@@ -3125,9 +3125,49 @@ let pulseState = {};     // key -> { ok, ms, at }
 let pulseSeen = {};      // что видели в прошлый раз: чтобы заметить изменение
 let pulseEvents = [];    // человеческая лента: что произошло, а не что есть
 
-function pulseNote(text) {
-  pulseEvents.unshift({ at: Date.now(), text });
-  pulseEvents = pulseEvents.slice(0, 6);
+/* ИСТОРИЯ, БЕЗ КОТОРОЙ ДИАГНОСТИКИ НЕТ.
+
+   Точка «сейчас 180 мс» не отвечает на вопрос, который на самом деле задают:
+   всегда так было или испортилось час назад? Каждый опрос затирал предыдущий,
+   и деградацию можно было заметить, только сидя и глядя в цифру.
+
+   Держим короткую ленту замеров и переживаем перезагрузку вкладки: инцидент
+   обычно замечают ПОСЛЕ того, как он случился, и история, стёртая при F5,
+   бесполезна ровно в тот момент, когда нужна. Ограничение по числу точек, а
+   не по времени: так вкладка, открытая на сутки, не растит localStorage. */
+const PULSE_HISTORY_KEY = 'epris_pulse_history_v1';
+const PULSE_HISTORY_MAX = 90;      // при 20 с это полчаса наблюдения
+const PULSE_EVENTS_MAX = 40;
+let pulseHistory = {};   // key -> [{ t, ok, ms }]
+
+function loadPulseHistory() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(PULSE_HISTORY_KEY) || 'null');
+    if (raw && typeof raw === 'object') {
+      pulseHistory = raw.history || {};
+      pulseEvents = Array.isArray(raw.events) ? raw.events : [];
+      pulseSeen = raw.seen || {};
+    }
+  } catch { /* повреждённая запись не должна мешать мониторингу */ }
+}
+function savePulseHistory() {
+  try {
+    localStorage.setItem(PULSE_HISTORY_KEY, JSON.stringify({
+      history: pulseHistory, events: pulseEvents.slice(0, PULSE_EVENTS_MAX), seen: pulseSeen,
+    }));
+  } catch { /* переполнение хранилища не повод ронять вкладку */ }
+}
+function pulsePush(key, sample) {
+  if (!Array.isArray(pulseHistory[key])) pulseHistory[key] = [];
+  pulseHistory[key].push(sample);
+  if (pulseHistory[key].length > PULSE_HISTORY_MAX) {
+    pulseHistory[key] = pulseHistory[key].slice(-PULSE_HISTORY_MAX);
+  }
+}
+
+function pulseNote(text, kind) {
+  pulseEvents.unshift({ at: Date.now(), text, kind: kind || 'info' });
+  pulseEvents = pulseEvents.slice(0, PULSE_EVENTS_MAX);
 }
 
 async function pulseProbe(source) {
@@ -3151,21 +3191,54 @@ async function pulseTick() {
     const r = results[i];
     const was = pulseState[source.key];
     // Падение и возврат — события, а не просто цвет точки.
-    if (was && was.ok !== r.ok) pulseNote(`${source.label}: ${r.ok ? 'снова отвечает' : 'не отвечает'}`);
+    if (was && was.ok !== r.ok) {
+      pulseNote(`${source.label}: ${r.ok ? 'снова отвечает' : 'не отвечает'}`, r.ok ? 'up' : 'down');
+    }
     pulseState[source.key] = r;
+    pulsePush(source.key, { t: r.at, ok: r.ok, ms: r.ms });
 
     if (source.key === 'deploy' && r.body && r.body.commitShort) {
       if (pulseSeen.deploy && pulseSeen.deploy !== r.body.commitShort) {
-        pulseNote(`Прошёл деплой: ${r.body.commitShort} — ${String(r.body.subject || '').slice(0, 60)}`);
+        pulseNote(`Деплой ${r.body.commitShort} — ${String(r.body.subject || '').slice(0, 70)}`, 'deploy');
       }
       pulseSeen.deploy = r.body.commitShort;
     }
     if (source.key === 'api' && r.body && r.body.version) {
-      if (pulseSeen.version && pulseSeen.version !== r.body.version) pulseNote('Контент на сервере обновлён');
+      if (pulseSeen.version && pulseSeen.version !== r.body.version) pulseNote('Контент на сервере обновлён', 'content');
       pulseSeen.version = r.body.version;
     }
   });
+  savePulseHistory();
   renderPulse();
+}
+
+/* Спарклайн задержки. Ось намеренно НЕ от нуля, а от минимума выборки: разница
+   между 80 и 180 мс на шкале от нуля выглядит как ровная линия, а это ровно то
+   ухудшение, которое надо увидеть. Провалы рисуются столбиком до низа —
+   отсутствие ответа это не «медленно», а другое состояние, и линией его
+   изображать нельзя. */
+function pulseSparkline(samples) {
+  if (!samples || samples.length < 2) return '';
+  const W = 120, H = 26;
+  const ok = samples.filter((s) => s.ok);
+  const min = ok.length ? Math.min(...ok.map((s) => s.ms)) : 0;
+  const max = ok.length ? Math.max(...ok.map((s) => s.ms)) : 1;
+  const span = Math.max(1, max - min);
+  const x = (i) => (i / (samples.length - 1)) * W;
+  const y = (ms) => H - 2 - ((ms - min) / span) * (H - 5);
+
+  let path = '';
+  let started = false;
+  const fails = [];
+  samples.forEach((s, i) => {
+    if (!s.ok) { fails.push(x(i)); started = false; return; }
+    path += `${started ? 'L' : 'M'}${x(i).toFixed(1)} ${y(s.ms).toFixed(1)}`;
+    started = true;
+  });
+  const bars = fails.map((fx) =>
+    `<rect x="${(fx - 1).toFixed(1)}" y="0" width="2" height="${H}" fill="currentColor" opacity=".28"/>`).join('');
+  return `<svg class="pulse-spark" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true">` +
+    bars + (path ? `<path d="${path}" fill="none" stroke="currentColor" stroke-width="1.4"/>` : '') + '</svg>';
 }
 
 function renderPulse() {
@@ -3173,27 +3246,88 @@ function renderPulse() {
   if (!row) return;
   row.innerHTML = PULSE_SOURCES.map((source) => {
     const r = pulseState[source.key];
+    const hist = pulseHistory[source.key] || [];
     if (!r) return `<div class="pulse-cell"><span class="pulse-dot idle"></span>${escapeHtml(source.label)}</div>`;
     const cls = r.ok ? 'up' : 'down';
-    const detail = r.ok ? `${r.ms} мс` : (r.error ? String(r.error).slice(0, 28) : 'нет ответа');
-    return `<div class="pulse-cell"><span class="pulse-dot ${cls}"></span>` +
+    const detail = r.ok ? `${r.ms} мс` : (r.error ? String(r.error).slice(0, 24) : 'нет ответа');
+    // Медиана, а не среднее: один тайм-аут на девятнадцать нормальных ответов
+    // сдвигает среднее так, что оно перестаёт описывать обычное поведение.
+    const oks = hist.filter((s) => s.ok).map((s) => s.ms).sort((a, b) => a - b);
+    const med = oks.length ? oks[Math.floor(oks.length / 2)] : null;
+    const fails = hist.filter((s) => !s.ok).length;
+    return `<div class="pulse-cell"><div class="pulse-cell-top">` +
+      `<span class="pulse-dot ${cls}"></span>` +
       `<span class="pulse-name">${escapeHtml(source.label)}</span>` +
-      `<span class="pulse-ms">${escapeHtml(detail)}</span></div>`;
+      `<span class="pulse-ms">${escapeHtml(detail)}</span></div>` +
+      pulseSparkline(hist) +
+      `<div class="pulse-cell-foot">${med != null ? `обычно ${med} мс` : '&nbsp;'}` +
+      `${fails ? ` · сбоев ${fails}` : ''}</div></div>`;
   }).join('');
+  renderPulseTimeline();
 
   const log = byId('pulseLog');
   if (log) {
-    log.innerHTML = pulseEvents.length
-      ? pulseEvents.map((e) =>
-          `<div class="pulse-event"><span class="pulse-event-time">${new Date(e.at).toLocaleTimeString('ru-RU')}</span>` +
-          `<span>${escapeHtml(e.text)}</span></div>`).join('')
-      : '';
+    log.innerHTML = pulseEvents.slice(0, 8).map((e) => {
+      const mark = { deploy: '▲', content: '◆', down: '●', up: '○' }[e.kind] || '·';
+      return `<div class="pulse-event is-${escapeHtml(e.kind || 'info')}">` +
+        `<span class="pulse-event-mark">${mark}</span>` +
+        `<span class="pulse-event-time">${new Date(e.at).toLocaleTimeString('ru-RU')}</span>` +
+        `<span>${escapeHtml(e.text)}</span></div>`;
+    }).join('');
   }
   const state = byId('pulseState');
   if (state) {
     const last = Math.max(0, ...Object.values(pulseState).map((r) => r.at || 0));
     state.textContent = last ? `обновлено в ${new Date(last).toLocaleTimeString('ru-RU')}` : 'опрашиваю…';
   }
+}
+
+/* Шкала времени. Список событий отвечает «что было», но не отвечает «когда
+   относительно друг друга» — а именно это и есть диагностика: деплой в 20:14 и
+   падение API в 20:15 стоят рядом не случайно, и в столбце строк эта связь
+   теряется. */
+function renderPulseTimeline() {
+  const host = byId('pulseTimeline');
+  if (!host) return;
+  const now = Date.now();
+  /* Окно — по фактическим данным, а не фиксированный час: истории всего
+     полчаса (90 замеров по 20 с), и на часовой шкале половина полосы стояла
+     пустой, читаясь как сбой отрисовки, а не как «столько мы и наблюдаем». */
+  let oldest = now;
+  for (const key of Object.keys(pulseHistory)) {
+    const first = (pulseHistory[key] || [])[0];
+    if (first && first.t < oldest) oldest = first.t;
+  }
+  const span = Math.max(5 * 60 * 1000, now - oldest);
+  const from = now - span;
+  const marks = pulseEvents.filter((e) => e.at >= from);
+
+  // Полоса доступности: сплошная там, где всё отвечало, разрывы там, где нет.
+  const bands = PULSE_SOURCES.map((source) => {
+    const hist = (pulseHistory[source.key] || []).filter((s) => s.t >= from);
+    if (!hist.length) return '';
+    const cells = hist.map((s) => {
+      const left = ((s.t - from) / span) * 100;
+      return `<span class="tl-tick ${s.ok ? 'ok' : 'bad'}" style="left:${left.toFixed(2)}%"></span>`;
+    }).join('');
+    return `<div class="tl-row"><span class="tl-label">${escapeHtml(source.label)}</span>` +
+      `<div class="tl-track">${cells}</div></div>`;
+  }).join('');
+
+  const pins = marks.map((e) => {
+    const left = ((e.at - from) / span) * 100;
+    const mark = { deploy: '▲', content: '◆', down: '●', up: '○' }[e.kind] || '·';
+    return `<span class="tl-pin is-${escapeHtml(e.kind || 'info')}" style="left:${left.toFixed(2)}%" ` +
+      `title="${escapeHtml(new Date(e.at).toLocaleTimeString('ru-RU') + ' · ' + e.text)}">${mark}</span>`;
+  }).join('');
+
+  if (!bands) { host.innerHTML = ''; return; }
+  const t = (ms) => new Date(now - ms).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+  host.innerHTML =
+    `<div class="tl-head"><span>${escapeHtml(t(span))}</span>` +
+    `<span>наблюдаем ${Math.max(1, Math.round(span / 60000))} мин</span>` +
+    `<span>${escapeHtml(t(0))}</span></div>` +
+    `<div class="tl-pins"><div class="tl-track">${pins}</div></div>` + bands;
 }
 
 function pulseShouldRun() {
@@ -3219,6 +3353,9 @@ function syncPulse() {
   }
 }
 document.addEventListener('visibilitychange', syncPulse);
+/* История поднимается сразу: инцидент разбирают после перезагрузки вкладки, и
+   пустой график в этот момент — то же самое, что его отсутствие. */
+loadPulseHistory();
 
 /* МЕТРИКИ РЕДАКЦИИ.
 

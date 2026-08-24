@@ -2325,6 +2325,46 @@ textarea {
 .pulse-dot.down { background: transparent; border: 2px solid var(--text); }
 .pulse-dot.idle { background: var(--line-strong); }
 
+.pulse-cell { flex-direction: column; align-items: stretch; gap: 5px; }
+.pulse-cell-top { display: flex; align-items: center; gap: 7px; min-width: 0; }
+.pulse-cell-foot {
+  font-family: var(--font-mono); font-size: .54rem; letter-spacing: .04em;
+  color: var(--text-faint);
+}
+/* Спарклайн наследует currentColor от ячейки, поэтому в тёмной теме
+   перекрашивается сам, без второго набора правил. */
+.pulse-spark { width: 100%; height: 26px; display: block; color: var(--text); opacity: .75; }
+
+/* Шкала времени: один час наблюдения. Засечки доступности снизу, события
+   булавками сверху — так видно, что деплой и провал API стоят рядом. */
+.pulse-timeline { margin-bottom: 16px; }
+.tl-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: var(--font-mono); font-size: .54rem; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--text-faint); margin-bottom: 6px;
+}
+.tl-row { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; }
+.tl-label {
+  width: 62px; flex-shrink: 0; text-align: right;
+  font-family: var(--font-mono); font-size: .54rem; letter-spacing: .04em;
+  color: var(--text-muted); text-transform: uppercase;
+}
+.tl-track { position: relative; flex: 1; height: 9px; background: var(--bg-soft); }
+.tl-tick { position: absolute; top: 0; width: 2px; height: 9px; }
+.tl-tick.ok  { background: var(--text); opacity: .5; }
+.tl-tick.bad { background: var(--text); opacity: 1; box-shadow: 0 0 0 1px var(--bg-card); }
+.tl-pins { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; padding-left: 70px; }
+.tl-pins .tl-track { height: 15px; background: transparent; }
+.tl-pin {
+  position: absolute; top: 0; transform: translateX(-50%);
+  font-size: .6rem; line-height: 15px; color: var(--text); cursor: default;
+}
+.tl-pin.is-down { color: var(--text); font-weight: 700; }
+.tl-pin.is-up   { color: var(--text-muted); }
+
+.pulse-event-mark { font-size: .6rem; width: 10px; flex-shrink: 0; color: var(--text-muted); }
+.pulse-event.is-down .pulse-event-mark { color: var(--text); font-weight: 700; }
+
 .pulse-log { margin-bottom: 18px; }
 .pulse-event {
   display: flex; gap: 10px; align-items: baseline;
