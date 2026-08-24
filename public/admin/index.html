@@ -1026,6 +1026,11 @@
                   <!-- Ссылка на черновик: отдать материал на вычитку, не публикуя. -->
                   <button id="previewLinkBtn" class="btn btn-sm" type="button" title="Ссылка, по которой черновик можно прочитать на сайте, не публикуя его">Ссылка для чтения</button>
                 </div>
+                <!-- «Опубликовано» ещё не значит «читатель это видит»: запись
+                     могут прятать карта видимости, текст-заготовка или
+                     отсутствие карточки на главной, а перевод бывает неполным.
+                     Здесь перечислено то, что мешает именно выбранной записи. -->
+                <div id="visualEntryReach" class="toolbar-entry-reach" aria-live="polite" hidden></div>
                 <div class="toolbar-buttons">
                   <button id="wysToggleBtn" class="btn btn-sm btn-wys-toggle" type="button" title="Устаревший режим редактора" hidden tabindex="-1" aria-hidden="true">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
