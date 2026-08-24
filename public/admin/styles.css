@@ -2365,6 +2365,22 @@ textarea {
 .pulse-event-mark { font-size: .6rem; width: 10px; flex-shrink: 0; color: var(--text-muted); }
 .pulse-event.is-down .pulse-event-mark { color: var(--text); font-weight: 700; }
 
+/* «Вы смотрите старую копию». Внизу, а не сверху: сверху стоят панель статуса
+   и тулбар, и баннер там сдвигал бы вёрстку каждого раздела. Инверсия, а не
+   цвет — палитра монохромная, и это то же «блокер», что и в строке публикации. */
+.stale-banner {
+  position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 900;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 12px 16px; background: var(--text); color: var(--bg);
+  box-shadow: 0 8px 28px rgba(0,0,0,.22); font-size: .82rem; line-height: 1.4;
+}
+.stale-banner strong { font-weight: 700; }
+.stale-banner .btn { flex-shrink: 0; background: var(--bg); color: var(--text); border: 0; }
+.stale-banner .btn:hover { opacity: .85; }
+@media (max-width: 700px) {
+  .stale-banner { flex-direction: column; align-items: stretch; text-align: left; }
+}
+
 .pulse-log { margin-bottom: 18px; }
 .pulse-event {
   display: flex; gap: 10px; align-items: baseline;
