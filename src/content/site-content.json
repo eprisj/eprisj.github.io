@@ -2085,17 +2085,23 @@
       "subtitle": "Louis I. Kahn · 1965 · La Jolla",
       "fig": "PICS 014",
       "description": "At the Salk Institute, concrete is not a backdrop but a precise instrument for light, sea air and silence.",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mt2rjf2iptcgt2.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mt6zvjpsi8eh1m.jpg",
       "picsOfWeek": true,
       "homeCategory": "architecture",
-      "homeTitle": "Salvador Dali House Museum",
-      "homeSubtitle": "1930",
-      "homeDescription": "The Salvador Dalí House-Museum in Portlligat is a labyrinthine seaside home created by Dalí and Gala from a cluster of fishermen’s huts, gradually transformed into an intimate, surreal living and working space.",
-      "homeCredit": "Valeria Vasy • @selency",
+      "homeTitle": "Interior Wilson, Atelier MKD",
+      "homeSubtitle": "Louis I. Kahn · 1965 · La Jolla",
+      "homeDescription": "Parisian apartment interiors have a particular charm, and Wilson by Atelier MKD is a beautiful example of how a restrained, stable composition can still feel deeply personal. The character lies in the details — masks and figurines, vases and chairs.",
       "picsId": "PICS-2026-014",
-      "updatedAt": "2026-08-21T10:03:39.666Z",
+      "updatedAt": "2026-08-24T08:54:01.438Z",
       "picsReleaseId": "PICS-WEEK-2026-001",
-      "homeSourceUrl": "https://www.instagram.com/p/DXSAq7VjAqc/?img_index=3&igsi=b3djMGZ0eWE1c3pk"
+      "imageHistory": [
+        {
+          "url": "https://api.eprisjournal.com/uploads/mt2rjf2iptcgt2.jpg",
+          "replacedAt": "2026-08-24T08:49:13.487Z"
+        }
+      ],
+      "homeSourceUrl": "https://www.instagram.com/ateliermkd?igsi=YTRiaGRzM2oyZHRm",
+      "homeCredit": "@ateliermkd"
     },
     {
       "id": 19,
@@ -4917,7 +4923,7 @@
           "credit": "@chora.practice"
         }
       ],
-      "updatedAt": "2026-08-24T08:52:45.642Z",
+      "updatedAt": "2026-08-24T08:42:49.171Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "previewToken": "0eadc13dc5057beeff1fffd5",
