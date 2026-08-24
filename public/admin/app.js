@@ -3236,6 +3236,7 @@ function updateAdminToolbarContext() {
   if (visualDraftBtn) visualDraftBtn.disabled = !selectedEntry || selectedState === 'draft';
   if (visualHideBtn) visualHideBtn.disabled = !selectedEntry || selectedState === 'hidden';
   if (visualPublishBtn) visualPublishBtn.textContent = selectedState === 'hidden' ? 'Показать и опубликовать' : 'Опубликовать';
+  renderEntryReach(data, section, selectedEntry);
   const selectedCount = countArticleOriginals(selectedArticle);
   const totalCount = articles.reduce((sum, article) => sum + countArticleOriginals(article), 0);
   const canDownloadSelected = section === 'articles' && Boolean(selectedArticle) && selectedCount > 0;
@@ -4073,6 +4074,83 @@ function getPublicationState(data, section, entry) {
   if (Number.isFinite(publishAt) && publishAt > Date.now()) return 'scheduled';
   if (data?.visibility?.entities?.[section]?.[String(entry.id)] === false) return 'hidden';
   return 'live';
+}
+
+/* ЧТО МЕШАЕТ ЧИТАТЕЛЮ УВИДЕТЬ ЭТУ ЗАПИСЬ.
+
+   getPublicationState знает только три вещи: draft, отложенную дату и карту
+   видимости. Сайт же прячет запись ещё двумя способами, и оба выглядят как
+   «опубликовано» в панели: текст-заготовка отсекается в getContentForLanguage
+   до всякой проверки черновиков, а статья без карточки в Галерее просто не
+   попадает на главную, хотя по прямой ссылке открывается.
+
+   Именно из этого разрыва вырос вопрос «опубликовал, а статьи нет»: панель
+   показывала зелёное «Опубликовано», ссылка предпросмотра показывала готовый
+   материал (она обходит все фильтры), а читатель не видел ничего. Плюс сюда же
+   попадает полнота перевода — до сих пор её было видно только во вкладке
+   мониторинга, то есть не там, где редактор работает. */
+function describeEntryReach(data, section, entry) {
+  if (!data || !entry) return null;
+  const blockers = [];
+  const notes = [];
+
+  if (entry.draft) {
+    blockers.push('черновик — читателям не видна');
+  }
+  const publishAt = entry.publishAt ? Date.parse(entry.publishAt) : NaN;
+  if (Number.isFinite(publishAt) && publishAt > Date.now()) {
+    blockers.push(`выйдет ${new Date(publishAt).toLocaleString('ru-RU', { dateStyle: 'medium', timeStyle: 'short' })}`);
+  }
+  if (data?.visibility?.entities?.[section]?.[String(entry.id)] === false) {
+    blockers.push('скрыта в карте видимости');
+  }
+  if (isAuditPlaceholderEntity(entry)) {
+    blockers.push('текст-заготовка — сайт прячет такие записи даже опубликованными');
+  }
+  if (section === 'articles' && !entry.draft) {
+    const items = Array.isArray(data.items) ? data.items : [];
+    const linked = items.some((it) => it && Number(it.articleId) === Number(entry.id));
+    const byTitle = items.some((it) => {
+      const a = String(it && it.title || '').trim().toLowerCase();
+      const b = String(entry.title || '').trim().toLowerCase();
+      return a && b && (a === b || a.split(':')[0].trim() === b.split(':')[0].trim());
+    });
+    if (!linked && !byTitle) notes.push('не на главной: нет карточки в Галерее');
+  }
+
+  /* Перевод: только те языки, где реально не хватает текста. Имена собственные
+     и медиа-блоки эвристика уже отсеяла, иначе строка была бы бесполезно
+     длинной на каждой записи.
+
+     У черновика переводов нет по определению — он ещё не проходил достройку
+     языков. Шесть «нет» под каждым черновиком не сообщают ничего нового и
+     ровно так приучают не смотреть на эту строку вообще. */
+  if (!entry.draft) {
+    const gaps = [];
+    for (const [lang, bucket] of Object.entries(data.localizedCollections || {})) {
+      const loc = (bucket?.[section] || []).find((e) => Number(e && e.id) === Number(entry.id));
+      if (!loc) { gaps.push(`${lang} нет`); continue; }
+      const stats = auditTranslationCompleteness(entry, loc, data, section, lang);
+      if (stats && stats.gaps.length) gaps.push(`${lang} ${stats.percent}%`);
+    }
+    if (gaps.length) notes.push(`перевод: ${gaps.join(', ')}`);
+  }
+
+  if (!blockers.length && !notes.length) return null;
+  return { blockers, notes };
+}
+
+function renderEntryReach(data, section, entry) {
+  const host = byId('visualEntryReach');
+  if (!host) return;
+  const reach = entry ? describeEntryReach(data, section, entry) : null;
+  if (!reach) { host.hidden = true; host.innerHTML = ''; return; }
+  host.hidden = false;
+  const chip = (text, kind) => `<span class="reach-chip is-${kind}">${escapeHtml(text)}</span>`;
+  host.innerHTML = [
+    ...reach.blockers.map((b) => chip(b, 'blocker')),
+    ...reach.notes.map((n) => chip(n, 'note')),
+  ].join('');
 }
 
 function publicationStateLabel(state) {

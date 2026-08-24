@@ -1672,6 +1672,42 @@ textarea {
 }
 .toolbar-publication-summary strong { color: var(--text); }
 .toolbar-publication-row .btn { min-height: 34px; }
+/* Что мешает читателю увидеть выбранную запись. Палитра панели монохромная,
+   поэтому две степени различаются ВЕСОМ, а не цветом: blocker — чёрный текст
+   на плотном фоне (запись не доедет до читателя вовсе), note — серый на
+   светлом (доедет, но неполной: нет карточки на главной, недопереведена).
+   Разделение существенно: «черновик» и «перевод 87%» требуют разных действий
+   и разной срочности. */
+.toolbar-entry-reach {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 5px 0 1px;
+}
+.reach-chip {
+  font-family: var(--font-mono);
+  font-size: .56rem;
+  letter-spacing: .04em;
+  line-height: 1.3;
+  padding: 3px 7px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+}
+/* Заливкой, а не оттенком — как и весь остальной интерфейс. Первая версия
+   красила обе степени в соседние оттенки серого (--danger-soft #e3e3e3 против
+   --warn-soft #f2f2f2), и на мониторе они читались как одно и то же: смысл
+   различия пропадал ровно там, где он и нужен. */
+.reach-chip.is-blocker {
+  color: var(--bg);
+  background: var(--text);
+  border-color: var(--text);
+  font-weight: 600;
+}
+.reach-chip.is-note {
+  color: var(--text-muted);
+  background: transparent;
+  border-color: var(--line-strong);
+}
 .toolbar-buttons { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
 .toolbar-sep { width: 1px; height: 20px; background: var(--line); margin: 0 4px; }
 .toolbar-sync-panel {
