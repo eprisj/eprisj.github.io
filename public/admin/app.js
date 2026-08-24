@@ -2211,6 +2211,12 @@ async function loadFromGitHub() {
     setEditorData(parsed, { markSynced: true, clearDraft: true, reason: 'кнопка «Загрузить с VPS»' });
     lastSyncedTime = new Date();
     updateLastSyncedBadge();
+    /* Запоминаем, КАКУЮ версию мы держим. Раньше версия спрашивалась только в
+       момент сохранения — ради проверки конфликта, — а что лежит в редакторе
+       сейчас, панель не знала и знать не могла. Поэтому правки, сделанные из
+       другой вкладки, из Mini App или ботом, оставались невидимыми: список
+       статей продолжал показывать удалённые черновики и старые заголовки. */
+    void rememberLoadedVersion();
     setStatus('success', 'Контент загружен с VPS (live)');
   } catch (error) {
     setStatus('error', getErrorMessage(error));
@@ -3206,6 +3212,8 @@ async function pulseTick() {
     if (source.key === 'api' && r.body && r.body.version) {
       if (pulseSeen.version && pulseSeen.version !== r.body.version) pulseNote('Контент на сервере обновлён', 'content');
       pulseSeen.version = r.body.version;
+      // Тот же ответ отвечает и на вопрос «а у меня свежая копия?».
+      checkContentFreshness(r.body.version);
     }
   });
   savePulseHistory();
@@ -6715,6 +6723,76 @@ async function applyVisualChanges() {
 // writing so a stale save surfaces as a clear "someone else saved" message
 // instead of silently losing an edit.
 const CONTENT_META_API = 'https://api.eprisjournal.com/content/meta';
+
+/* ВЫ СМОТРИТЕ СТАРУЮ КОПИЮ.
+
+   Панель держит контент в памяти вкладки и до сих пор никак не узнавала, что
+   на сервере он изменился. Правки из другой вкладки, из Mini App или ботом
+   оставались невидимыми: список статей продолжал показывать удалённые
+   черновики и прежние заголовки, и редактор работал с копией, которой уже нет.
+   Хуже: сохранение из такой копии могло вернуть удалённое обратно.
+
+   Версия контента у сервера уже есть (её спрашивают при сохранении ради
+   проверки конфликта) — надо всего лишь запомнить свою и сравнивать. */
+let loadedContentVersion = null;
+
+async function rememberLoadedVersion() {
+  try {
+    const res = await fetch(CONTENT_META_API, { cache: 'no-store' });
+    const meta = await res.json().catch(() => null);
+    if (meta && meta.version) loadedContentVersion = meta.version;
+    hideStaleContentBanner();
+  } catch { /* нет сети — просто не обновляем отметку */ }
+}
+
+function hideStaleContentBanner() {
+  const el = document.getElementById('staleContentBanner');
+  if (el) el.remove();
+}
+
+function showStaleContentBanner() {
+  if (document.getElementById('staleContentBanner')) return;
+  const el = document.createElement('div');
+  el.id = 'staleContentBanner';
+  el.className = 'stale-banner';
+  el.innerHTML =
+    '<span><strong>Контент на сервере изменился.</strong> Вы смотрите копию, ' +
+    'загруженную раньше: удалённые записи могут быть ещё видны, а новые — отсутствовать.</span>' +
+    '<button class="btn btn-sm btn-primary" type="button" id="staleReloadBtn">Загрузить свежий</button>';
+  document.body.appendChild(el);
+  const btn = document.getElementById('staleReloadBtn');
+  if (btn) btn.addEventListener('click', () => { hideStaleContentBanner(); void loadFromGitHub(); });
+}
+
+/* Сравнение вызывается из пульса: он и так спрашивает /content/meta каждые
+   двадцать секунд, второй таймер ради того же ответа не нужен. */
+function checkContentFreshness(serverVersion) {
+  if (!serverVersion || !loadedContentVersion) return;
+  if (serverVersion === loadedContentVersion) { hideStaleContentBanner(); return; }
+  showStaleContentBanner();
+}
+
+/* Пульс живёт только на вкладке мониторинга, а устаревшую копию обычно видят
+   совсем в другом месте — в списке статей. Поэтому проверка висит ещё и на
+   событиях: переключение раздела и возврат в окно. Это не опрос по таймеру:
+   спрашиваем ровно тогда, когда человек снова смотрит на данные, и ответ
+   весит сто двадцать байт. */
+let freshnessCheckAt = 0;
+async function checkContentFreshnessNow() {
+  if (!loadedContentVersion) return;
+  // Не чаще раза в 15 с: переключение вкладок бывает частым, а ответ один и тот же.
+  if (Date.now() - freshnessCheckAt < 15000) return;
+  freshnessCheckAt = Date.now();
+  try {
+    const res = await fetch(CONTENT_META_API, { cache: 'no-store' });
+    const meta = await res.json().catch(() => null);
+    if (meta && meta.version) checkContentFreshness(meta.version);
+  } catch { /* сеть отвалилась — молчим, это ловит пульс */ }
+}
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') void checkContentFreshnessNow();
+});
+window.addEventListener('focus', () => { void checkContentFreshnessNow(); });
 const CONTENT_ENTITY_API = 'https://api.eprisjournal.com/content/entity';
 const INTERVIEWS_API = 'https://api.eprisjournal.com/interviews';
 async function saveEntityToServer(section, lang, entity, options = {}) {
@@ -11196,6 +11274,8 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
        другую тоже, поэтому проверка стоит на каждом переключении, а не только
        на 'monitor'. */
     setTimeout(syncPulse, 60);
+    // Раздел, который сейчас откроют, может рисовать уже несуществующие записи.
+    void checkContentFreshnessNow();
   });
 });
 
