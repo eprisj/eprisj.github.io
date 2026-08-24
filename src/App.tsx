@@ -4036,18 +4036,32 @@ export default function App() {
        попытку: лишние секунды ожидания честнее, чем список статей вместо
        обещанного материала. */
     const previewMode = hasPreviewToken();
-    loadLiveContent(previewMode ? 25000 : 4000)
-      .then((ok) => (ok || !previewMode ? ok : loadLiveContent(25000)))
+    /* Язык известен ещё до первого запроса — он лежит в localStorage, — поэтому
+       сразу просим срез, а не весь журнал: 216 КБ вместо 700 (для английского
+       109 КБ). Именно этот вес и стоял за таймаутами предпросмотра выше. */
+    const startLang = currentLang;
+    loadLiveContent(previewMode ? 25000 : 4000, startLang)
+      .then((ok) => (ok || !previewMode ? ok : loadLiveContent(25000, startLang)))
       .then(() => { applySiteTheme(getTheme()); setContentLoadAttempted(true); });
     return unsubscribe;
+    // Стартовый язык читается один раз: переключение обрабатывает эффект ниже.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  /* Смена языка — это новый срез. В памяти лежит уже загруженный набор плюс
+     наборы из бандла, поэтому текст на экране меняется сразу, а свежий перевод
+     подъезжает следом и перекрывает его. */
+  const langLoadedRef = useRef(true);
+  useEffect(() => {
+    if (langLoadedRef.current) { langLoadedRef.current = false; return; }
+    void loadLiveContent(8000, currentLang);
+  }, [currentLang]);
   // Keep the homepage editorial feed live when a reader leaves it open. The
   // first load above remains the fast path; this lightweight refresh only runs
   // on Home, pauses in hidden tabs, and respects the admin's auto-sync switch.
   useEffect(() => {
     if (activeTab !== 'gallery' || getHomepageSettings().articles?.autoSync === false) return;
     const refresh = () => {
-      if (document.visibilityState === 'visible') void loadLiveContent(5000);
+      if (document.visibilityState === 'visible') void loadLiveContent(5000, currentLang);
     };
     const onVisibility = () => { if (document.visibilityState === 'visible') refresh(); };
     const timer = window.setInterval(refresh, 15_000);
@@ -4058,7 +4072,9 @@ export default function App() {
       window.removeEventListener('visibilitychange', onVisibility);
       window.removeEventListener('focus', refresh);
     };
-  }, [activeTab, contentVersion]);
+    // currentLang в зависимостях: иначе таймер продолжит опрашивать срез того
+    // языка, который был активен при подписке.
+  }, [activeTab, contentVersion, currentLang]);
   const languageOptions = getAvailableLanguages();
   useEffect(() => {
     try { localStorage.setItem('epris_language', currentLang); } catch { /* storage may be unavailable */ }
