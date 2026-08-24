@@ -23093,7 +23093,7 @@
             },
             {
               "type": "Not",
-              "content": "Editoryal not, kaynak bağlamı veya kısa bir dipnot."
+              "content": "Editoryal not, kaynak bağlamı veya kısa bir yan not."
             },
             {
               "type": "Kontrol listesi",
@@ -23110,7 +23110,7 @@
             {
               "type": "Anket",
               "content": {
-                "question": "Sonraki keşfedilecekler?",
+                "question": "Sonraki keşfedilecekler nedir?",
                 "options": [
                   {
                     "label": "Daha fazla bağlam",
@@ -23124,7 +23124,7 @@
               }
             }
           ],
-          "updatedAt": "2026-08-24T21:07:01.013Z",
+          "updatedAt": "2026-08-24T21:16:22.706Z",
           "previewToken": "9ce4a8719bcf166dcc3eef76"
         },
         {
@@ -26745,7 +26745,7 @@
               }
             }
           ],
-          "updatedAt": "2026-08-24T21:07:08.211Z",
+          "updatedAt": "2026-08-24T21:16:27.942Z",
           "previewToken": "9ce4a8719bcf166dcc3eef76"
         },
         {
