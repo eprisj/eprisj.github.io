@@ -2017,16 +2017,20 @@
       "subtitle": "Henry Moore · 1968–70 · bronze",
       "fig": "PICS 012",
       "description": "Two voids turn a bronze oval into a shifting horizon: Henry Moore makes weight, landscape and the human body feel inseparable.",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mt464h3xj7ftes.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mt6x738935zw1a.jpg",
       "picsOfWeek": true,
       "homeCategory": "sculpture",
-      "homeTitle": "GRID STUDY 01, Rob Davidov",
-      "homeSubtitle": "Rob Davidov· 2021 · Mixed Media and Marble Pedestal",
-      "homeDescription": "Robert Davidov is a Melbourne-based architect and founder of Davidov Architects. His sculptural practice explores mass, material, and form through hand-built ceramic works,",
+      "homeTitle": "GHOST DRESS • BRANDON MORRIS • 2025",
+      "homeSubtitle": "Brandon Morris · 2025 ·Fiber Glass and Resin",
+      "homeDescription": "Brandon Morris explores the boundary between fashion and sculpture, creating his Ghost Dress series from fiberglass and resin. Inspired by Victorian children’s clothing, horror films such as The Ring, and artists Martin Margiela, Hans Bellmer and Heidi Bucher, he imagines dresses existing without a body.",
       "picsId": "PICS-2026-012",
-      "updatedAt": "2026-08-22T09:28:31.773Z",
+      "updatedAt": "2026-08-24T07:43:39.279Z",
       "picsReleaseId": "PICS-WEEK-2026-001",
       "imageHistory": [
+        {
+          "url": "https://api.eprisjournal.com/uploads/mt464h3xj7ftes.jpg",
+          "replacedAt": "2026-08-24T07:34:13.220Z"
+        },
         {
           "url": "https://api.eprisjournal.com/uploads/mt4636yht0nbh3.jpg",
           "replacedAt": "2026-08-22T09:20:49.289Z"
@@ -2040,8 +2044,8 @@
           "replacedAt": "2026-08-22T09:18:18.007Z"
         }
       ],
-      "homeCredit": "@oigall_projects",
-      "homeSourceUrl": "https://www.instagram.com/p/Da2Jwm-E_vj/?igsi=bnNoOXFtYXRpMmt5"
+      "homeCredit": "@codeunknown_",
+      "homeSourceUrl": "https://www.instagram.com/codeunknown_?igsi=MTNkeWFjMmx4eTZybw=="
     },
     {
       "id": 17,
@@ -2057,7 +2061,7 @@
       "homeDescription": "Daniel Atenyi is a Ugandan artist whose expressive charcoal works explore identity and emotion, with figures caught between presence and disappearance.",
       "homeCredit": "Artsy",
       "picsId": "PICS-2026-013",
-      "updatedAt": "2026-08-22T09:04:45.638Z",
+      "updatedAt": "2026-08-24T07:43:46.530Z",
       "picsReleaseId": "PICS-WEEK-2026-001",
       "imageHistory": [
         {
@@ -4901,7 +4905,7 @@
           "credit": "@chora.practice"
         }
       ],
-      "updatedAt": "2026-08-24T07:41:59.671Z",
+      "updatedAt": "2026-08-24T07:27:27.036Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "previewToken": "0eadc13dc5057beeff1fffd5",
