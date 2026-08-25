@@ -5184,6 +5184,11 @@
           "content": "<span>06 · Studio</span>"
         },
         {
+          "type": "image",
+          "content": "",
+          "caption": ""
+        },
+        {
           "type": "text",
           "content": "<b>MI:</b> Do you paint daily, or wait for inspiration?"
         },
@@ -5288,7 +5293,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-25T16:43:33.514Z",
+      "updatedAt": "2026-08-25T16:49:29.864Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8sghgw8esg3y.jpg"
     },
     {
