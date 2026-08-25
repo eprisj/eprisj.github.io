@@ -1,8 +1,8 @@
-import { Suspense, useMemo, useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Suspense, useEffect, useMemo, useRef } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { ContactShadows, OrbitControls } from '@react-three/drei';
 import { BufferAttribute, BufferGeometry, CatmullRomCurve3, DoubleSide, ExtrudeGeometry, Shape, Vector2, Vector3 } from 'three';
-import type { Group } from 'three';
+import type { Group, PerspectiveCamera } from 'three';
 
 /* ЗДАНИЕ МУЗЕЯ, СОБРАННОЕ КОДОМ, А НЕ ЗАГРУЖЕННОЕ ФАЙЛОМ.
  *
@@ -261,6 +261,29 @@ function SiteContours() {
   );
 }
 
+/* ПОСАДКА КАМЕРЫ СЧИТАЕТСЯ, А НЕ ПРОПИСЫВАЕТСЯ ЧИСЛОМ.
+ *
+ * fov у перспективной камеры вертикальный, и на узкой колонке телефона он
+ * покрывает высоту, но не ширину: макет шириной в тридцать метров вылезал за
+ * оба края, оставляя в кадре кусок крыла. Расстояние берётся по худшей из двух
+ * осей, поэтому здание целиком помещается и в широкой панели, и в телефонной. */
+function FitCamera({ radius }: { radius: number }) {
+  const { camera, size } = useThree();
+  useEffect(() => {
+    const perspective = camera as PerspectiveCamera;
+    const aspect = size.width / Math.max(size.height, 1);
+    const verticalFov = (perspective.fov * Math.PI) / 180;
+    const horizontalFov = 2 * Math.atan(Math.tan(verticalFov / 2) * aspect);
+    const distance = Math.max(radius / Math.sin(verticalFov / 2), radius / Math.sin(horizontalFov / 2));
+    const direction = new Vector3(1.15, 0.35, 1.02).normalize();
+    perspective.position.copy(direction.multiplyScalar(distance));
+    perspective.near = distance / 12;
+    perspective.far = distance * 3.2;
+    perspective.updateProjectionMatrix();
+  }, [camera, size.width, size.height, radius]);
+  return null;
+}
+
 function Turntable({ still, children }: { still: boolean; children: React.ReactNode }) {
   const group = useRef<Group>(null);
   useFrame((_, delta) => {
@@ -299,6 +322,7 @@ export function MuseumModel({ label }: { label: string }) {
         dpr={[1, 1.6]}
         gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
       >
+        <FitCamera radius={15.8} />
         <hemisphereLight args={['#ffffff', '#d8d2c9', 0.95]} />
         <directionalLight
           position={[18, 26, 14]}
