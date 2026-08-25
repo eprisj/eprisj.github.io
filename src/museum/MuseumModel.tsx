@@ -332,6 +332,8 @@ function WingHalls() {
 }
 
 function Building({ open, labels }: { open: boolean; labels: MuseumLabels }) {
+  const { size: canvasSize } = useThree();
+  const compactCanvas = canvasSize.width < 520;
   /* Материалы, которые расступаются при взгляде сверху: оболочка ротонды,
      её кровельное кольцо и верхнее крыло. Остальное здание остаётся плотным —
      разрез должен открывать зал, а не разбирать макет на части. */
@@ -421,7 +423,7 @@ function Building({ open, labels }: { open: boolean; labels: MuseumLabels }) {
             <meshStandardMaterial ref={(material) => { shell.current[1] = material; }} color={GLASS} roughness={0.26} metalness={0.12} opacity={0.7} transparent />
             <circleGeometry args={[drumRadius(DRUM_TOP) - 1.25, 48]} />
           </mesh>
-          {open && (
+          {open && !compactCanvas && (
             <Html position={[0, DRUM_TOP + 1.6, 0]} center zIndexRange={[8, 0]} style={{ pointerEvents: 'none' }}>
               <span className="whitespace-nowrap border border-[rgb(var(--c-accent-rgb)_/_0.28)] bg-[var(--c-bg)]/88 px-2 py-1 font-mono text-[8px] uppercase tracking-[0.14em] text-[var(--c-accent)]">
                 {labels.oculus}
@@ -470,12 +472,19 @@ function Building({ open, labels }: { open: boolean; labels: MuseumLabels }) {
  * бы спорили с силуэтом. Текст не перехватывает мышь, иначе он мешал бы
  * вращению ровно там, где интереснее всего крутить. */
 function Legend({ open, labels }: { open: boolean; labels: MuseumLabels }) {
+  const { size } = useThree();
   if (!open) return null;
+  /* На телефоне макет мельче, и точки, разнесённые в пространстве, сходятся в
+     несколько пикселей: «Окулюс» садился прямо на «Пандус». Точку пандуса
+     увели наружу, а окулюс на узком холсте не показываем совсем — лучше четыре
+     читаемые подписи, чем пять слипшихся. Проверку держим здесь же, чтобы
+     размер холста, а не ширина окна, решал: панель бывает узкой и на десктопе. */
+  void size;
   /* Подпись стоит у того, что называет, и в РАСКРЫТОМ состоянии: атриум и залы
      видно только когда покрытие поднялось. Окулюса здесь нет — он часть кровли
      и уезжает вместе с ней, поэтому подписан внутри её группы. */
   const points: [string, [number, number, number]][] = [
-    [labels.ramp, [1.2, 11.6, 6.4]],
+    [labels.ramp, [5.4, 9.4, 5.8]],
     [labels.atrium, [-2.9, WING_TOP + 1.8, 2.1]],
     [labels.galleries, [7.6, 1.6, -4.2]],
     [labels.entrance, [12.6, 3.0, 6.8]],
