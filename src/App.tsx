@@ -14,6 +14,7 @@ const CollaborationPage = lazy(() => import('./pages/CollaborationPage').then((m
 const ShowcasePage = lazy(() => import('./showcase/ShowcasePage').then((m) => ({ default: m.ShowcasePage })));
 const BureauPage = lazy(() => import('./showcase/BureauPage').then((m) => ({ default: m.BureauPage })));
 const StagePage = lazy(() => import('./stage/StagePage').then((m) => ({ default: m.StagePage })));
+const VitrinePage = lazy(() => import('./VitrinePage').then((m) => ({ default: m.VitrinePage })));
 const FormPage = lazy(() => import('./pages/FormPage').then((m) => ({ default: m.FormPage })));
 import {
   Article,
@@ -841,7 +842,7 @@ const staggerItem = {
 
 // Shared motion tokens so interactions read as one system.
 const EASE = [0.22, 1, 0.36, 1] as const;
-const ROUTE_SEQUENCE = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'design', 'studio', 'radio', 'podcasts', 'passport'];
+const ROUTE_SEQUENCE = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'design', 'vitrine', 'studio', 'radio', 'podcasts', 'passport'];
 /* Route transitions run in mode="wait", so the old page leaves BEFORE the new
    one arrives and the two durations add up. Symmetrical timings therefore read
    as a lag, not as grace: the eye is waiting on nothing for the whole exit.
@@ -962,6 +963,7 @@ function NavBar({
     { id: 'podcasts', label: t('nav.podcasts') },
   ].filter((tab) => isSectionInNavigation(tab.id));
 
+  const isVitrineRoute = /^\/(?:futuroshock|vitrine)\/?$/.test(window.location.pathname);
   const tabHref = (tab: string) => tab === 'gallery' ? '/' : `/${tab}`;
   const handleTabLink = (event: MouseEvent<HTMLAnchorElement>, tab: string) => {
     // Keep native link behaviour for Cmd/Ctrl-click, middle click and new-tab
@@ -1070,6 +1072,15 @@ function NavBar({
                 )}
               </a>
             ))}
+            <a
+              href="/vitrine"
+              aria-current={isVitrineRoute ? 'page' : undefined}
+              className={`relative flex h-full flex-col items-center justify-center overflow-hidden transition-colors duration-200 ${
+                isVitrineRoute ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'text-[var(--c-accent)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.08)]'
+              }`}
+            >
+              <span className="relative z-10 font-bold">Vitrine</span>
+            </a>
           </div>
         </LayoutGroup>
 
@@ -1300,6 +1311,20 @@ function NavBar({
                   <span className="font-serif font-normal text-xl leading-tight">{tab.label}</span>
                 </motion.a>
               ))}
+              <motion.a
+                href="/vitrine"
+                variants={{
+                  hidden: { opacity: 0, x: -14 },
+                  show: { opacity: 1, x: 0, transition: { duration: 0.22, ease: EASE } },
+                }}
+                onClick={() => setIsMenuOpen(false)}
+                aria-current={isVitrineRoute ? 'page' : undefined}
+                className={`min-h-[64px] px-6 py-4 flex items-center justify-between text-left transition-colors active:scale-[0.99] ${
+                  isVitrineRoute ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : ''
+                }`}
+              >
+                <span className="font-serif font-normal text-xl leading-tight">Vitrine</span>
+              </motion.a>
             </motion.div>
             
             <div className="mt-auto border-t border-[var(--c-accent)]">
@@ -3708,7 +3733,7 @@ function SearchResults({
   );
 }
 
-const VALID_TABS = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'studio', 'radio', 'podcasts', 'design', 'passport'];
+const VALID_TABS = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'studio', 'radio', 'podcasts', 'design', 'vitrine', 'passport'];
 const VISIBILITY_TABS: VisibilitySectionKey[] = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'design', 'studio', 'radio', 'podcasts'];
 
 function buildSlugMap(): Map<string, number> {
@@ -3831,6 +3856,7 @@ const ROUTE_META: Record<string, { title: string; description: string }> = {
   issue: { title: 'Current Issue — EPRIS Journal', description: 'Read the current digital issue of EPRIS Journal.' },
   studio: { title: 'EPRIS Studio', description: 'Editorial, visual and cultural projects by EPRIS Studio.' },
   design: { title: 'The Edit — EPRIS Design', description: 'A curated selection of contemporary furniture, objects and interior design by EPRIS.' },
+  vitrine: { title: 'Vitrine | EPRIS Journal', description: 'A living selection of works by Ukrainian artists, designers and architects, curated by EPRIS Journal.' },
   radio: { title: 'EPRIS Radio', description: 'Listen to EPRIS Radio: sound, music and cultural programming.' },
   podcasts: { title: 'EPRIS Podcasts', description: 'Conversations and audio stories about contemporary art, architecture, design and cities.' },
 };
@@ -4055,10 +4081,7 @@ export default function App() {
   if (/^\/stage\/?$/.test(window.location.pathname)) {
     return <Suspense fallback={<div className="min-h-screen bg-[#1a0b10]" />}><StagePage /></Suspense>;
   }
-  if (/^\/(?:futuroshock|vitrine)\/?$/.test(window.location.pathname)) {
-    window.location.replace('/');
-    return <div className="min-h-screen bg-[var(--c-bg)]" aria-busy="true" />;
-  }
+  if (/^\/futuroshock\/?$/.test(window.location.pathname)) window.history.replaceState(null, '', '/vitrine');
   if (/^\/(?:showcase|works|set)\/?$/.test(window.location.pathname)) {
     if (!/^\/showcase\/?$/.test(window.location.pathname)) {
       window.history.replaceState(null, '', '/showcase');
@@ -4544,6 +4567,10 @@ export default function App() {
           <LazyTab>
             <DesignPage lang={currentLang} />
           </LazyTab>
+        ) : activeTab === 'vitrine' ? (
+          <LazyTab>
+            <VitrinePage />
+          </LazyTab>
         ) : activeTab === 'studio' ? (
           <LazyTab>
             <StudioPage studio={studio} t={t} />
@@ -4601,7 +4628,7 @@ export default function App() {
           </main>
         )}
 
-        {activeTab !== 'issue' && activeTab !== 'design' && activeTab !== 'studio' && activeTab !== 'radio' && activeTab !== 'podcasts' && activeTab !== 'passport' && <footer className="border-t border-[rgba(209,181,149,0.45)] bg-[#180D13] text-[#F7F2EC] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
+        {activeTab !== 'issue' && activeTab !== 'design' && activeTab !== 'vitrine' && activeTab !== 'studio' && activeTab !== 'radio' && activeTab !== 'podcasts' && activeTab !== 'passport' && <footer className="border-t border-[rgba(209,181,149,0.45)] bg-[#180D13] text-[#F7F2EC] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
           <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center md:items-end gap-8 sm:gap-12 text-center md:text-left">
             <div>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-[#F7F2EC]">{footerTitle}</h2>

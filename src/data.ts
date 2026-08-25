@@ -379,6 +379,8 @@ export interface FuturoshockWork {
   id: string;
   title: string;
   author: string;
+  /** City and country of the author or the work's current location. */
+  location?: string;
   year: string;
   format: '2d' | '3d';
   medium: string;
