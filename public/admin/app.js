@@ -8546,39 +8546,65 @@ function mergeTranslatedBlock(source, translated) {
   return base;
 }
 
+/* Сколько текста уходит в один запрос к /translate-text. Модель ограничена по
+   длине ответа, а один запрос на предложение — это сотни обращений и минуты
+   ожидания; порог подобран так же, как в серверном скрипте пакетного перевода
+   (scripts за пределами репозитория), который на реальной статье уложил шесть
+   языков в единицы минут вместо нескольких минут НА язык. */
+const ARTICLE_TRANSLATE_BATCH_CHARS = 2600;
+
+function chunkByChars(items, getText, limit) {
+  const batches = [];
+  let batch = [];
+  let size = 0;
+  items.forEach((item) => {
+    const length = getText(item).length;
+    if (batch.length && size + length > limit) {
+      batches.push(batch);
+      batch = [];
+      size = 0;
+    }
+    batch.push(item);
+    size += length;
+  });
+  if (batch.length) batches.push(batch);
+  return batches;
+}
+
 async function translateArticleEntry(article, targetLang, sourceLang = DEFAULT_LANGUAGE, onProgress = null) {
   const next = deepClone(article);
-
-  const metaObj = {
-    title: next.title,
-    role: next.role,
-    date: next.date,
-    excerpt: next.excerpt,
-    category: next.category,
-    subcategory: next.subcategory,
-    tags: next.tags
-  };
-
-  if (onProgress) onProgress('metadata');
-  const translatedMeta = await aiTranslateObject(metaObj, targetLang);
-  Object.assign(next, translatedMeta || {});
-
   const blocks = Array.isArray(article.content) ? article.content : [];
-  next.content = [];
 
-  const batchSize = 4;
-  const totalBatches = Math.ceil(blocks.length / batchSize);
-  for (let i = 0; i < blocks.length; i += batchSize) {
-    const batchIndex = Math.floor(i / batchSize) + 1;
-    if (onProgress) onProgress(`batch ${batchIndex} of ${totalBatches}`);
-
-    const batch = blocks.slice(i, i + batchSize);
-    const translatedBatch = await aiTranslateObject(batch, targetLang);
-    if (Array.isArray(translatedBatch) && translatedBatch.length === batch.length) {
-      next.content.push(...batch.map((source, k) => mergeTranslatedBlock(source, translatedBatch[k])));
-    } else {
-      next.content.push(...batch);
+  /* Только строки. Ни разу не уходит структура — значит, ей неоткуда взяться
+     повреждённой на другом конце: старая схема прогоняла блок через модель
+     целиком и полагалась на mergeTranslatedBlock, чтобы вычистить последствия,
+     если модель заодно "перевела" type или align. */
+  const jobs = [];
+  ['title', 'role', 'date', 'excerpt', 'category', 'subcategory'].forEach((key) => {
+    const value = next[key];
+    if (typeof value === 'string' && value.trim()) jobs.push({ apply: (v) => { next[key] = v; }, text: value });
+  });
+  (next.tags || []).forEach((tag, i) => {
+    if (typeof tag === 'string' && tag.trim()) jobs.push({ apply: (v) => { next.tags[i] = v; }, text: tag });
+  });
+  next.content = blocks.map((block) => deepClone(block));
+  blocks.forEach((block, i) => {
+    if (BLOCK_PROSE_TYPES_FOR_MERGE.has(block.type) && typeof block.content === 'string' && block.content.trim()) {
+      jobs.push({ apply: (v) => { next.content[i].content = v; }, text: block.content });
     }
+    if (typeof block.caption === 'string' && block.caption.trim()) {
+      jobs.push({ apply: (v) => { next.content[i].caption = v; }, text: block.caption });
+    }
+  });
+
+  if (!jobs.length) return next;
+
+  const batches = chunkByChars(jobs, (job) => job.text, ARTICLE_TRANSLATE_BATCH_CHARS);
+  for (let i = 0; i < batches.length; i += 1) {
+    if (onProgress) onProgress(`batch ${i + 1} of ${batches.length}`);
+    const batch = batches[i];
+    const translated = await translateBatchViaServer(batch.map((job) => job.text), targetLang);
+    batch.forEach((job, k) => { if (translated[k]) job.apply(translated[k]); });
   }
 
   await retryUntranslatedBlocks(article, next, targetLang, onProgress);
@@ -8620,7 +8646,7 @@ async function retryUntranslatedBlocks(source, next, targetLang, onProgress) {
   if (onProgress) onProgress(`повтор ${suspects.length} непереведённых блок(ов)`);
   let translated = null;
   try {
-    translated = await aiTranslateObject(suspects.map((i) => blocks[i]), targetLang);
+    translated = await translateBatchViaServer(suspects.map((i) => blocks[i].content), targetLang);
   } catch (e) {
     console.warn('Повтор непереведённых блоков не удался:', e.message);
     return;
@@ -8628,9 +8654,8 @@ async function retryUntranslatedBlocks(source, next, targetLang, onProgress) {
   if (!Array.isArray(translated)) return;
   suspects.forEach((idx, k) => {
     const candidate = translated[k];
-    if (!candidate || typeof candidate !== 'object') return;
-    const after = auditStripMarkup(candidate.content);
-    if (after && after !== auditStripMarkup(blocks[idx].content)) next.content[idx] = mergeTranslatedBlock(blocks[idx], candidate);
+    const after = auditStripMarkup(candidate);
+    if (after && after !== auditStripMarkup(blocks[idx].content)) next.content[idx] = { ...next.content[idx], content: candidate };
   });
 }
 
