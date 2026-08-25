@@ -84,6 +84,8 @@
      тот же приём, что и в карточках бота (масштхед + тело + разделители). */
   .control-bar { border: 1px solid var(--ink); margin-bottom: 20px; }
   .cb-stats { display: flex; }
+  /* Сводка и черновики — только для редакции. */
+  body.role-editor .cb-stats { display: none; }
   .cb-stat {
     flex: 1; text-align: center; padding: 16px 4px; border-right: 1px solid var(--rule); cursor: default;
   }
@@ -579,6 +581,7 @@
   var API = "https://api.eprisjournal.com";
   var tgw = window.Telegram && window.Telegram.WebApp;
   var ADMIN_PW = null;
+  var ROLE = "admin";
   var content = null;
   var flatList = [];      // { section, kind, entity }
   var current = null;     // сущность в редакторе сейчас
@@ -669,6 +672,8 @@
       });
       if (!authRes.data || !authRes.data.ok) throw new Error((authRes.data && authRes.data.error) || "HTTP " + authRes.status);
       ADMIN_PW = authRes.data.password;
+      ROLE = authRes.data.role || "admin";
+      applyRole();
       if (authRes.data.name) $("who").textContent = authRes.data.name.toUpperCase();
 
       await loadContent();
@@ -742,7 +747,23 @@
   }
 
   // ── Дашборд ────────────────────────────────────────────────────────────────
+  /* ЧТО ВИДИТ РЕДАКТОР, А ЧТО ТОЛЬКО РЕДАКЦИЯ.
+
+     Панель со сводкой и вкладка черновиков — внутренняя кухня: сколько всего
+     опубликовано, сколько лежит незаконченного, сколько записей в CRM. Роли
+     editor это не нужно, а с точки зрения редакции — и не показывается.
+
+     Это только интерфейс. Удаление материалов запрещено на сервере проверкой
+     role === "editor", поэтому спрятанная кнопка здесь — удобство, а не защита. */
+  function applyRole() {
+    if (ROLE === "admin") return;
+    document.body.classList.add("role-editor");
+    var draftTab = document.querySelector('.tab[data-section="draft"]');
+    if (draftTab) draftTab.remove();
+  }
+
   function renderHome() {
+    if (ROLE !== "admin") { renderHomeForEditor(); return; }
     var drafts = flatList.filter(function (x) { return x.entity.draft; });
     var published = flatList.filter(function (x) { return !x.entity.draft; });
     var crmTotal = crmLoaded ? crm.contacts.length + crm.interviews.length + crm.notes.length : null;
@@ -758,6 +779,16 @@
     statEls[3].onclick = function () { openCrm(); };
 
     var recent = published.slice(0, 6);
+    $("recent").innerHTML = recent.length
+      ? recent.map(rowHtml).join("")
+      : '<div class="empty">Пока пусто</div>';
+    bindRows($("recent"));
+  }
+
+  /* Домашний экран редактора: без сводки, сразу свежие материалы. */
+  function renderHomeForEditor() {
+    $("stats").innerHTML = "";
+    var recent = flatList.filter(function (x) { return !x.entity.draft; }).slice(0, 8);
     $("recent").innerHTML = recent.length
       ? recent.map(rowHtml).join("")
       : '<div class="empty">Пока пусто</div>';
