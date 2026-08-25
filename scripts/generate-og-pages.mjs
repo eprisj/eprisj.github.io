@@ -323,8 +323,6 @@ const ROUTES = {
   collaboration: 'Collaboration Registry',
   collab: 'Collaboration Registry',
   bureau: 'Bureau — how the work is put together',
-  vitrine: 'Vitrine',
-  futuroshock: 'Vitrine',
   showcase: 'Showcase — Set Design & Conceptual Art',
   works: 'Showcase — Set Design & Conceptual Art',
   set: 'Showcase — Set Design & Conceptual Art',
@@ -348,8 +346,6 @@ const ROUTE_DESCRIPTIONS = {
   collaboration: 'Discover and suggest emerging architects, designers and artists for EPRIS Journal interviews and editorial collaborations.',
   collab: 'Discover and suggest emerging architects, designers and artists for EPRIS Journal interviews and editorial collaborations.',
   bureau: 'Breakdowns of the moves behind set design and installation: the gesture, what holds it up and where it breaks — written by the EPRIS editorial.',
-  vitrine: 'A changing EPRIS vitrine of digital objects, viewed in context.',
-  futuroshock: 'A changing EPRIS vitrine of digital objects, viewed in context.',
   showcase: SHOWCASE_DESCRIPTION,
   works: SHOWCASE_DESCRIPTION,
   set: SHOWCASE_DESCRIPTION,
@@ -357,7 +353,7 @@ const ROUTE_DESCRIPTIONS = {
 };
 
 // Aliases that must not compete with their canonical route in search results.
-const ALIAS_ROUTES = { collaboation: 'collaboration', collab: 'collaboration', works: 'showcase', set: 'showcase', futuroshock: 'vitrine' };
+const ALIAS_ROUTES = { collaboation: 'collaboration', collab: 'collaboration', works: 'showcase', set: 'showcase' };
 
 function routeHead(route, label) {
   const canonicalRoute = ALIAS_ROUTES[route] || route;

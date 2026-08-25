@@ -565,6 +565,133 @@ function catalogItemPrice(item: CatalogItem, resolved: Resolved): number | null 
   return Number.isFinite(n) ? n : null;
 }
 
+const ROOM_OF_WEEK_COPY = {
+  EN: {
+    eyebrow: 'EPRIS DESIGN / SELECTED INTERIORS',
+    title: 'Room of the week',
+    intro: 'A room begins with one object that carries its weight. This week, we follow the anchor piece and the four decisions that give it context.',
+    anchor: 'Anchor piece',
+    related: 'In this room',
+    view: 'Read object note',
+  },
+  RU: {
+    eyebrow: 'EPRIS DESIGN / ВЫБРАННЫЕ ИНТЕРЬЕРЫ',
+    title: 'Комната недели',
+    intro: 'Комната начинается с одного предмета, который держит её интонацию. Здесь мы показываем главный объект и четыре решения, которые создают для него контекст.',
+    anchor: 'Главный предмет',
+    related: 'В этой комнате',
+    view: 'Открыть заметку',
+  },
+  UA: {
+    eyebrow: 'EPRIS DESIGN / ВИБРАНІ ІНТЕР’ЄРИ',
+    title: 'Кімната тижня',
+    intro: 'Кімната починається з одного предмета, який тримає її інтонацію. Тут головний об’єкт і чотири рішення, що створюють для нього контекст.',
+    anchor: 'Головний предмет',
+    related: 'У цій кімнаті',
+    view: 'Відкрити нотатку',
+  },
+  DE: {
+    eyebrow: 'EPRIS DESIGN / AUSGEWÄHLTE INTERIEURS',
+    title: 'Raum der Woche',
+    intro: 'Ein Raum beginnt mit einem Objekt, das seinen Ton trägt. Diese Woche folgen wir dem Ankerstück und vier Entscheidungen, die ihm Kontext geben.',
+    anchor: 'Ankerstück',
+    related: 'In diesem Raum',
+    view: 'Objektnotiz öffnen',
+  },
+} as const;
+
+function getRoomOfWeekCopy(lang: string) {
+  return ROOM_OF_WEEK_COPY[lang as keyof typeof ROOM_OF_WEEK_COPY] || ROOM_OF_WEEK_COPY.EN;
+}
+
+function RoomOfWeek({ set, resolved, onOpen, lang }: {
+  set: SetDesign;
+  resolved: Resolved;
+  onOpen: (item: CatalogItem, data: ResolvedProduct) => void;
+  lang: string;
+}) {
+  const copy = getRoomOfWeekCopy(lang);
+  const look = getLook(set.id, lang);
+  const pieces = set.catalogIds
+    .map((id) => CATALOG_BY_ID.get(id))
+    .filter((item): item is CatalogItem => !!item)
+    .slice(0, 5);
+  const anchor = pieces[0];
+  const anchorData = anchor ? resolved[anchor.id] : undefined;
+  const related = pieces.slice(1);
+
+  return (
+    <section aria-labelledby="room-of-week-title" className="bg-[var(--c-bg)] text-[var(--c-accent)]">
+      <div className="mx-auto max-w-[1600px] border-x border-[rgb(var(--c-accent-rgb)_/_0.9)]">
+        <header className="flex items-center justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] px-5 py-3 sm:px-8 lg:px-12">
+          <p className="font-mono text-[9px] uppercase tracking-[0.18em] sm:text-[10px]">{copy.eyebrow}</p>
+          <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">01 / {String(SETS.length).padStart(2, '0')}</span>
+        </header>
+
+        <div className="grid lg:grid-cols-[minmax(0,1.18fr)_minmax(22rem,.82fr)]">
+          <figure className="border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] lg:border-b-0 lg:border-r">
+            <div className="relative aspect-[4/3] overflow-hidden bg-[#efefeb] sm:aspect-[16/10] lg:aspect-auto lg:min-h-[42rem]">
+              <img src={set.photo} alt={look.title || set.title} className="h-full w-full object-cover" />
+            </div>
+            <figcaption className="grid gap-3 border-t border-[rgb(var(--c-accent-rgb)_/_0.9)] px-5 py-4 sm:grid-cols-[auto_1fr] sm:items-baseline sm:px-8 lg:px-12">
+              <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">{look.title || set.title}</span>
+              <p className="max-w-[44rem] text-sm leading-relaxed sm:text-right">{look.subtitle || set.subtitle}</p>
+            </figcaption>
+          </figure>
+
+          <div className="flex min-h-full flex-col">
+            <div className="px-5 pb-8 pt-9 sm:px-8 lg:px-12 lg:pb-10 lg:pt-12">
+              <h1 id="room-of-week-title" className="max-w-[8ch] font-display text-[clamp(3.4rem,7vw,6.75rem)] leading-[0.86] tracking-[-0.04em]">{copy.title}</h1>
+              <p className="mt-7 max-w-[38rem] text-[15px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.76)] sm:text-base">{copy.intro}</p>
+            </div>
+
+            {anchor && (
+              <div className="border-y border-[rgb(var(--c-accent-rgb)_/_0.9)] px-5 py-5 sm:px-8 lg:px-12">
+                <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">01 / {copy.anchor}</p>
+                <button
+                  type="button"
+                  onClick={() => anchorData && onOpen(anchor, anchorData)}
+                  disabled={!anchorData}
+                  className="group mt-3 flex w-full items-end justify-between gap-5 text-left disabled:cursor-default"
+                >
+                  <span>
+                    <span className="block font-display text-[clamp(1.8rem,3vw,3rem)] leading-[0.95] transition group-enabled:group-hover:opacity-55">{anchorData?.title || anchor.name}</span>
+                    <span className="mt-2 block font-mono text-[9px] uppercase tracking-[0.14em] text-[rgb(var(--c-accent-rgb)_/_0.62)]">{anchor.category} / {anchorData?.brand || anchor.retailer}</span>
+                  </span>
+                  {anchorData && <span className="mb-1 shrink-0 font-mono text-[9px] uppercase tracking-[0.14em] underline decoration-1 underline-offset-4">{copy.view}<ArrowUpRight className="ml-2 inline" size={12} aria-hidden="true" /></span>}
+                </button>
+              </div>
+            )}
+
+            <div className="mt-auto">
+              <p className="px-5 pb-3 pt-5 font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)] sm:px-8 lg:px-12">{copy.related}</p>
+              <ol className="border-t border-[rgb(var(--c-accent-rgb)_/_0.9)]">
+                {related.map((item, index) => {
+                  const data = resolved[item.id];
+                  return (
+                    <li key={item.id} className="border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] last:border-b-0">
+                      <button
+                        type="button"
+                        onClick={() => data && onOpen(item, data)}
+                        disabled={!data}
+                        className="group grid min-h-16 w-full grid-cols-[2.25rem_minmax(0,1fr)_auto] items-center gap-3 px-5 py-3 text-left transition group-enabled:hover:bg-[rgb(var(--c-accent-rgb)_/_0.06)] disabled:cursor-default sm:px-8 lg:px-12"
+                      >
+                        <span className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.52)]">{String(index + 2).padStart(2, '0')}</span>
+                        <span className="min-w-0"><span className="block truncate font-display text-lg leading-tight">{data?.title || item.name}</span><span className="mt-1 block font-mono text-[8px] uppercase tracking-[0.13em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">{item.category} / {data?.brand || item.retailer}</span></span>
+                        {data && <ArrowUpRight size={14} aria-hidden="true" className="opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100" />}
+                      </button>
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function DesignPage({ lang = 'EN' }: { lang?: string }) {
   const ui = getUI(lang);
   const [resolved, setResolved] = useState<Resolved>({});
@@ -636,55 +763,11 @@ export function DesignPage({ lang = 'EN' }: { lang?: string }) {
   }, [activeCat, search, sortMode, resolved]);
 
   return (
-    <div className="bg-[#0d0408] min-h-screen">
-
-      {/* ── MASTHEAD ── */}
-      <div className="relative overflow-hidden border-b border-white/5">
-        {/* Huge background word */}
-        <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none select-none">
-          <span
-            className="font-mono font-bold uppercase text-white leading-none"
-            style={{ fontSize: 'clamp(100px, 28vw, 400px)', opacity: 0.025, letterSpacing: '-0.04em', whiteSpace: 'nowrap' }}
-          >DESIGN</span>
-        </div>
-
-        <div className="relative z-10 px-6 md:px-12 lg:px-16 pt-10 pb-12 md:pt-14 md:pb-16">
-          <div className="flex items-start justify-between gap-8">
-            <div>
-              <div className="flex items-center gap-3 mb-5">
-                <div className="h-px w-8 bg-[rgb(var(--c-gold-rgb)_/_0.4)]" />
-                <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-[rgb(var(--c-gold-rgb)_/_0.6)]">EPRIS · Journal</span>
-              </div>
-              <h1
-                style={{ fontFamily: "var(--font-display)" }}
-                className="text-[clamp(48px,10vw,140px)] leading-[0.88] text-white"
-              >{ui.masthead}<br />{ui.masthead2}</h1>
-            </div>
-            <div className="hidden lg:block text-right mt-4">
-              <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/55 leading-relaxed">
-                {SETS.length} {ui.looksBelow.split(' ').slice(1).join(' ')}<br />
-                {CATALOG.length} real products<br />
-                IKEA · HAY · Muuto · CB2<br />
-                Ferm Living · West Elm · Amazon
-              </p>
-            </div>
-          </div>
-          {/* Intro — 2 paragraphs explaining the section */}
-          <div className="mt-10 grid md:grid-cols-2 gap-6 md:gap-12 max-w-4xl">
-            <p className="text-[15px] text-white/70 leading-relaxed">{ui.intro1}</p>
-            <p className="text-[15px] text-white/70 leading-relaxed">{ui.intro2}</p>
-          </div>
-
-          {/* Divider */}
-          <div className="mt-10 flex items-center gap-4">
-            <div className="h-px flex-1 bg-white/6" />
-            <span className="font-mono text-[7px] uppercase tracking-[0.4em] text-white/45">{SETS.length} {ui.looksBelow}</span>
-          </div>
-        </div>
-      </div>
+    <div className="min-h-screen bg-[#0d0408] pt-16">
+      <RoomOfWeek set={SETS[0]} resolved={resolved} onOpen={openModal} lang={lang} />
 
       {/* ── AI STYLIST ── */}
-      <StylistPanel resolved={resolved} onOpen={openModal} lang={lang} />
+      <div id="design-rooms"><StylistPanel resolved={resolved} onOpen={openModal} lang={lang} /></div>
 
       {/* ── LOOKS — alternating panels ── */}
       <div>

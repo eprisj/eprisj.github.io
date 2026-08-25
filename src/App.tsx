@@ -14,7 +14,6 @@ const CollaborationPage = lazy(() => import('./pages/CollaborationPage').then((m
 const ShowcasePage = lazy(() => import('./showcase/ShowcasePage').then((m) => ({ default: m.ShowcasePage })));
 const BureauPage = lazy(() => import('./showcase/BureauPage').then((m) => ({ default: m.BureauPage })));
 const StagePage = lazy(() => import('./stage/StagePage').then((m) => ({ default: m.StagePage })));
-const FuturoshockPage = lazy(() => import('./FuturoshockPage').then((m) => ({ default: m.FuturoshockPage })));
 const FormPage = lazy(() => import('./pages/FormPage').then((m) => ({ default: m.FormPage })));
 import {
   Article,
@@ -3956,10 +3955,8 @@ export default function App() {
     return <Suspense fallback={<div className="min-h-screen bg-[#1a0b10]" />}><StagePage /></Suspense>;
   }
   if (/^\/(?:futuroshock|vitrine)\/?$/.test(window.location.pathname)) {
-    if (!/^\/vitrine\/?$/.test(window.location.pathname)) {
-      window.history.replaceState(null, '', '/vitrine');
-    }
-    return <Suspense fallback={<div className="min-h-screen bg-[#0b0e0f]" />}><FuturoshockPage /></Suspense>;
+    window.location.replace('/');
+    return <div className="min-h-screen bg-[var(--c-bg)]" aria-busy="true" />;
   }
   if (/^\/(?:showcase|works|set)\/?$/.test(window.location.pathname)) {
     if (!/^\/showcase\/?$/.test(window.location.pathname)) {
