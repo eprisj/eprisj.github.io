@@ -5080,6 +5080,11 @@
           "content": "Contemporary art has become elite-focused in places, and I don't like that. My wife, who's a psychologist, hates a lot of the abstraction I love – she doesn't connect with it, and once wanted to leave the Tate halfway through a visit. I understand that reaction. Art should be accessible. When I see people say “I hate this painting,” it makes me a little sad, because it's still a human creation, even the ones I personally don't like. So the hands and feet are also an invitation – I don't want anyone standing in front of my work feeling like they don't belong there."
         },
         {
+          "type": "gallery",
+          "content": [],
+          "caption": ""
+        },
+        {
           "type": "header",
           "level": 2,
           "content": "<span class=\"kicker\">04 · Finding a language</span>From Eggs to figuration"
@@ -5253,7 +5258,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-25T13:02:06.446Z"
+      "updatedAt": "2026-08-25T13:02:44.587Z"
     },
     {
       "id": 24,
