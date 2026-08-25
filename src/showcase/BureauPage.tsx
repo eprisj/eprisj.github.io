@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Layers3, Lightbulb, Ruler, Sparkles } from 'lucide-react';
 import { FALLBACK_CASES, fetchCase, fetchCases, type BureauCase } from './bureauApi';
 import { FALLBACK_WORKS, fetchWorks, type Work } from './showcaseApi';
-import { btnGhost, btnSolid } from './ui';
+import { btnSolid } from './ui';
 
 /**
  * Бюро — мастерская журнала: не «что показали», а «как это устроено».
@@ -57,8 +57,8 @@ function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-[#f5f0eb]/12 bg-[#1a0b10]/95 backdrop-blur-xl">
       <div className="mx-auto flex min-h-20 max-w-[1600px] items-center justify-between gap-4 px-4 sm:px-8 lg:px-12">
-        <a href="/showcase" className="inline-flex min-h-11 items-center gap-2 font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/60 hover:text-[#f5f0eb]">
-          <ArrowLeft size={14} /> Showcase
+        <a href="/" className="inline-flex min-h-11 items-center gap-2 font-sans text-[9px] uppercase tracking-[0.2em] text-[#f5f0eb]/60 hover:text-[#f5f0eb]">
+          <ArrowLeft size={14} /> EPRIS Journal
         </a>
         <a href="/bureau" className="inline-flex min-h-11 items-center font-display text-[18px] lowercase leading-none tracking-normal text-[#f5f0eb] sm:text-[22px]">
           epris bureau
@@ -102,9 +102,6 @@ function BureauProductionIntro({ works }: { works: Work[] }) {
             <div className="mt-9 flex flex-wrap gap-4">
               <a href="#bureau-services" className={btnSolid('ink')}>
                 What we make <ArrowRight size={15} />
-              </a>
-              <a href="/showcase" className={btnGhost('ink')}>
-                Source vitrine <ArrowUpRight size={15} />
               </a>
             </div>
           </div>
@@ -158,9 +155,6 @@ function BureauReferenceRoom({ works }: { works: Work[] }) {
           <p className="max-w-[43rem] border-l border-[#d7b46a] pl-5 font-sans text-[16px] leading-[1.65] text-[#f5f0eb]/72 sm:text-[17px]">
             Bureau starts with actual works and visible things: surfaces, shadows, shelves, curtains, podiums, frames, routes. The references below become decisions a fabricator, photographer and curator can all understand.
           </p>
-          <a href="/showcase" className={`${btnSolid('ink')} mt-8`}>
-            Browse the source vitrine <ArrowUpRight size={15} />
-          </a>
           </div>
         </div>
 
@@ -168,7 +162,7 @@ function BureauReferenceRoom({ works }: { works: Work[] }) {
           <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {refs.map((work, index) => {
               return (
-                <a key={work.id} href="/showcase" className="group block border border-[#f5f0eb]/14 bg-[#1d0d12] p-3 shadow-[0_22px_70px_rgba(0,0,0,.24)] transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-[#d7b46a]/60 hover:shadow-[0_28px_80px_rgba(0,0,0,.3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d7b46a]">
+                <article key={work.id} className="group block border border-[#f5f0eb]/14 bg-[#1d0d12] p-3 shadow-[0_22px_70px_rgba(0,0,0,.24)]">
                   <span className="block aspect-[4/3] overflow-hidden bg-[#261116]">
                     <img src={workImage(work)} alt={work.title} loading="lazy" className="h-full w-full object-cover opacity-[.9] transition duration-300 group-hover:scale-[1.035] group-hover:opacity-100" />
                   </span>
@@ -179,7 +173,7 @@ function BureauReferenceRoom({ works }: { works: Work[] }) {
                       <span className="mt-3 block font-sans text-[9px] uppercase tracking-[0.14em] text-[#d7b46a]">{work.discipline || 'reference'} / {work.city || work.country || 'site'}</span>
                     </span>
                   </span>
-                </a>
+                </article>
               );
             })}
           </div>
@@ -304,10 +298,6 @@ function CaseDetail({ item }: { item: BureauCase }) {
                 {example.note && (
                   <p className="mt-3 font-sans text-[13px] leading-relaxed text-[#f5f0eb]/70">{example.note}</p>
                 )}
-                {/* Витрина — источник примеров, поэтому отсюда всегда есть ход обратно. */}
-                <a href="/showcase" className="mt-3 inline-flex min-h-10 items-center gap-2 font-sans text-[9px] uppercase tracking-[0.16em] text-[#f5f0eb]/60 hover:text-[#f5f0eb]">
-                  In the vitrine <ArrowUpRight size={12} />
-                </a>
               </li>
             ))}
           </ul>
@@ -338,7 +328,7 @@ function CaseList({ items, works }: { items: BureauCase[]; works: Work[] }) {
           breakdowns
         </h2>
         <p className="mt-7 max-w-[54ch] font-sans text-[15px] leading-[1.65] text-[#f5f0eb]/70 sm:text-[17px]">
-          how the work in the vitrine is actually put together: the move, what holds it up, where it breaks
+          how a visual decision is actually put together: the move, what holds it up, where it breaks
         </p>
 
         <div className="mt-16 grid gap-px border border-[#f5f0eb]/14 bg-[#f5f0eb]/14 sm:grid-cols-2 xl:grid-cols-4">

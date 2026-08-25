@@ -13,7 +13,6 @@ const DesignPage = lazy(() => import('./design/DesignPage').then((m) => ({ defau
 const CollaborationPage = lazy(() => import('./pages/CollaborationPage').then((m) => ({ default: m.CollaborationPage })));
 const ShowcasePage = lazy(() => import('./showcase/ShowcasePage').then((m) => ({ default: m.ShowcasePage })));
 const BureauPage = lazy(() => import('./showcase/BureauPage').then((m) => ({ default: m.BureauPage })));
-const ShowcaseTeaser = lazy(() => import('./showcase/ShowcaseTeaser').then((m) => ({ default: m.ShowcaseTeaser })));
 const StagePage = lazy(() => import('./stage/StagePage').then((m) => ({ default: m.StagePage })));
 const FuturoshockPage = lazy(() => import('./FuturoshockPage').then((m) => ({ default: m.FuturoshockPage })));
 const FormPage = lazy(() => import('./pages/FormPage').then((m) => ({ default: m.FormPage })));
@@ -1072,14 +1071,6 @@ function NavBar({
                 )}
               </a>
             ))}
-            {/* Ссылка, а не вкладка: /showcase — собственный маршрут вне
-                управляемого набора секций, поэтому и переход обычный. */}
-            <a
-              href="/showcase"
-              className="relative flex flex-col items-center justify-center group h-full overflow-hidden text-[var(--c-accent)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.08)] transition-colors duration-200"
-            >
-              <span className="font-bold relative z-10">Showcase</span>
-            </a>
           </div>
         </LayoutGroup>
 
@@ -1310,17 +1301,6 @@ function NavBar({
                   <span className="font-serif font-normal text-xl leading-tight">{tab.label}</span>
                 </motion.a>
               ))}
-              <motion.a
-                href="/showcase"
-                variants={{
-                  hidden: { opacity: 0, x: -14 },
-                  show: { opacity: 1, x: 0, transition: { duration: 0.22, ease: EASE } },
-                }}
-                onClick={() => setIsMenuOpen(false)}
-                className="min-h-[64px] px-6 py-4 flex items-center justify-between text-left transition-colors active:scale-[0.99]"
-              >
-                <span className="font-serif font-normal text-xl leading-tight">Showcase</span>
-              </motion.a>
             </motion.div>
             
             <div className="mt-auto border-t border-[var(--c-accent)]">
@@ -3975,7 +3955,10 @@ export default function App() {
   if (/^\/stage\/?$/.test(window.location.pathname)) {
     return <Suspense fallback={<div className="min-h-screen bg-[#1a0b10]" />}><StagePage /></Suspense>;
   }
-  if (/^\/futuroshock\/?$/.test(window.location.pathname)) {
+  if (/^\/(?:futuroshock|vitrine)\/?$/.test(window.location.pathname)) {
+    if (!/^\/vitrine\/?$/.test(window.location.pathname)) {
+      window.history.replaceState(null, '', '/vitrine');
+    }
     return <Suspense fallback={<div className="min-h-screen bg-[#0b0e0f]" />}><FuturoshockPage /></Suspense>;
   }
   if (/^\/(?:showcase|works|set)\/?$/.test(window.location.pathname)) {
@@ -4170,7 +4153,7 @@ export default function App() {
   const contactEmail = String(siteSettings.contactEmail || '').trim();
   const fallbackTab = VISIBILITY_TABS.find((tab) => isSectionEnabled(tab)) || 'gallery';
   const homepageLayout = getHomepageSettings().layout || {};
-  const homepageDefaultSectionOrder: HomepageSectionKey[] = ['pics', 'articles', 'reviews', 'showcase', 'archive'];
+  const homepageDefaultSectionOrder: HomepageSectionKey[] = ['pics', 'articles', 'reviews', 'archive'];
   /* Порядок секций: сохранённый в админке — главный, но НОВАЯ секция должна
      встать на своё место по замыслу, а не в хвост.
 
@@ -4268,7 +4251,7 @@ export default function App() {
     if (section === 'archive') {
       return <DailyPicksArchive archive={homepageArchive} items={items} onImageClick={handleImageClick} currentLang={currentLang} t={t} />;
     }
-    return <Suspense fallback={null}><ShowcaseTeaser /></Suspense>;
+    return null;
   };
 
   useEffect(() => {

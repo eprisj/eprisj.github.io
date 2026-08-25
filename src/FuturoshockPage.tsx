@@ -2,7 +2,7 @@ import { Canvas } from '@react-three/fiber';
 import { ContactShadows, OrbitControls, Environment, useGLTF, useTexture } from '@react-three/drei';
 import { Suspense, useEffect, useMemo, useState } from 'react';
 import * as THREE from 'three';
-import { ArrowLeft, ArrowUpRight, Box, Image as ImageIcon, Upload } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { getFuturoshock, subscribeContent, type FuturoshockWork } from './data';
 
 function Model({ url, size = 2.25 }: { url: string; size?: number }) {
@@ -19,7 +19,7 @@ function Model({ url, size = 2.25 }: { url: string; size?: number }) {
 }
 
 /* Procedural stand-in. Every object on the opening shelf is a real model now,
-   so this is no longer what the exhibition is made of — it stays for two jobs:
+   so this is no longer what the exhibition is made of. It stays for two jobs:
    the miniature objects in the room plan, where a 250KB GLB per room would be
    paid for a shape 40px across, and any work an editor adds later without a
    model yet, which should look like a placed object rather than a hole. */
@@ -47,28 +47,6 @@ const OPENING_WORKS: FuturoshockWork[] = [
   { id: 'fs-opening-afterimage', title: 'barn lamp', author: 'Wayfair, LLC', year: '2023', format: '3d', medium: 'GLB / anisotropic metal', statement: 'A brushed metal shade whose highlight stretches into a line instead of a point. It is quiet head on and turns sharp the moment the viewer moves around its edge.', modelUrl: '/models/futuroshock/barn-lamp.glb', materials: ['brushed steel', 'enamel'], edition: 'shelf 09 / CC BY 4.0', room: 'room-01', shelfSlot: 9, shelfScale: .8, textureNote: 'anisotropic brushed highlight' },
   { id: 'fs-opening-archive-fold', title: 'silk pouf', author: 'Wayfair, LLC', year: '2023', format: '3d', medium: 'GLB / specular sheen', statement: 'Woven silk with a sheen that runs across the weave rather than with it. The one soft body in a room of hard glaze, and the only piece that changes colour as it turns.', modelUrl: '/models/futuroshock/silk-pouf.glb', materials: ['woven silk', 'sheen'], edition: 'shelf 08 / CC BY 4.0', room: 'room-01', shelfSlot: 8, shelfScale: .82, textureNote: 'specular sheen across the weave' },
 ];
-
-type LightMode = 'warm' | 'contrejour';
-type RoomId = 'room-01' | 'room-02' | 'room-03';
-
-const ROOMS: Record<RoomId, { number: string; title: string; note: string; light: LightMode }> = {
-  'room-01': { number: '01', title: 'objects after light', note: 'warm shelves, slow material reading', light: 'warm' },
-  'room-02': { number: '02', title: 'counterlight archive', note: 'silhouettes, reflection, a harder edge', light: 'contrejour' },
-  'room-03': { number: '03', title: 'afterimage chamber', note: 'a signal room for red light and relief', light: 'contrejour' },
-};
-
-function PlanRoom({ room, position, active, onSelect }: { room: RoomId; position: [number, number, number]; active: boolean; onSelect: (room: RoomId) => void }) {
-  const color = room === 'room-01' ? '#d8a66d' : room === 'room-02' ? '#d7d9d4' : '#d4445a';
-  const scene = room === 'room-01' ? 'amber' : room === 'room-02' ? 'orbit' : 'totem';
-  return <group position={position} onClick={() => onSelect(room)}>
-    <mesh position={[0, -.1, 0]}><boxGeometry args={[2.1, .18, 1.75]} /><meshStandardMaterial color={active ? '#2d2724' : '#15191b'} metalness={.3} roughness={.48} /></mesh>
-    <mesh position={[0, .72, -.82]}><boxGeometry args={[2.1, 1.62, .12]} /><meshStandardMaterial color={active ? '#2b2320' : '#15191b'} metalness={.12} roughness={.78} /></mesh>
-    <mesh position={[-.76, .58, -.73]}><boxGeometry args={[.55, .86, .06]} /><meshStandardMaterial color={color} emissive={color} emissiveIntensity={active ? 1.45 : .32} roughness={.42} /></mesh>
-    <mesh position={[.62, .18, .28]}><cylinderGeometry args={[.32, .42, .45, 36]} /><meshStandardMaterial color="#221e1d" metalness={.55} roughness={.26} /></mesh>
-    <group position={[.62, .72, .28]} scale={.42}><OpeningObject scene={scene} /></group>
-    <mesh position={[0, .03, .06]} onClick={() => onSelect(room)}><boxGeometry args={[2.45, .06, 2.05]} /><meshBasicMaterial transparent opacity={0} /></mesh>
-  </group>;
-}
 
 function ShelfPiece({ index, position }: { index: number; position: [number, number, number] }) {
   const pale = '#e4d7c1';
@@ -99,19 +77,18 @@ function ShelfContent({ work, index, position, active, onSelect }: { work?: Futu
   </group>;
 }
 
-function DisplayShelf({ works, activeRoom, selectedId, onSelect }: { works: FuturoshockWork[]; activeRoom: RoomId; selectedId: string | null; onSelect: (id: string) => void }) {
-  const accent = activeRoom === 'room-03' ? '#d2495f' : activeRoom === 'room-02' ? '#d4e3dd' : '#ffc273';
+function DisplayShelf({ works, selectedId, onSelect }: { works: FuturoshockWork[]; selectedId: string | null; onSelect: (id: string) => void }) {
   const slots: [number, number, number][] = [[-4.65, 2.55, .55], [-2.33, 2.55, .55], [0, 2.55, .55], [2.33, 2.55, .55], [4.65, 2.55, .55], [-4.65, 0, .55], [-2.33, 0, .55], [0, 0, .55], [2.33, 0, .55], [4.65, 0, .55], [-4.65, -2.55, .55], [-2.33, -2.55, .55], [0, -2.55, .55], [2.33, -2.55, .55], [4.65, -2.55, .55]];
   const placed = new Map<number, FuturoshockWork>();
-  works.filter((work) => (work.room || 'room-01') === activeRoom).forEach((work, index) => placed.set(work.shelfSlot || index + 1, work));
-  return <div className="relative h-[calc(100svh-72px)] min-h-[620px] max-h-[920px] overflow-hidden bg-[#17100d]" aria-label="Interactive Futuroshock display shelf">
-    <Canvas shadows camera={{ position: [0, .1, 18], fov: 28 }} dpr={[1, 1.5]}>
+  works.slice(0, slots.length).forEach((work, index) => placed.set(work.shelfSlot || index + 1, work));
+  return <div className="relative h-[72vw] min-h-[17rem] max-h-[22rem] overflow-hidden bg-[#17100d] sm:h-[clamp(25rem,62svh,42rem)] sm:min-h-[400px] sm:max-h-[42rem]" aria-label="Interactive Vitrine display shelf">
+    <Canvas shadows camera={{ position: [0, .1, 18], fov: 28 }} dpr={[1, 1.35]} gl={{ antialias: false, powerPreference: 'high-performance' }}>
       <color attach="background" args={['#17100d']} />
       <fog attach="fog" args={['#17100d', 13, 25]} />
       <ambientLight intensity={.5} />
       <directionalLight position={[1, 7, 7]} intensity={2.4} color="#ffe0b3" />
       <spotLight castShadow position={[-5.4, 7.5, 6]} angle={.46} penumbra={.7} intensity={11} color="#ffd395" shadow-mapSize={[1024, 1024]} />
-      <spotLight position={[5.2, 5.8, 5]} angle={.42} penumbra={.8} intensity={6} color={accent} />
+      <spotLight position={[5.2, 5.8, 5]} angle={.42} penumbra={.8} intensity={6} color="#ffc273" />
       <mesh position={[0, 0, -.42]} receiveShadow><boxGeometry args={[12.2, 8.7, .28]} /><meshStandardMaterial color="#c7b9a5" roughness={.76} /></mesh>
       <mesh position={[0, 0, -.26]}><boxGeometry args={[12.42, 8.92, .16]} /><meshStandardMaterial color="#321c13" roughness={.31} /></mesh>
       <mesh position={[0, 0, -.12]}><boxGeometry args={[11.92, 8.42, .1]} /><meshStandardMaterial color="#d9cfbd" roughness={.82} /></mesh>
@@ -121,110 +98,16 @@ function DisplayShelf({ works, activeRoom, selectedId, onSelect }: { works: Futu
       <mesh position={[0, -4.3, 1.3]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow><planeGeometry args={[26, 16]} /><meshStandardMaterial color="#100c0a" roughness={.9} /></mesh>
       <ContactShadows position={[0, -4.02, .6]} opacity={.5} scale={15} blur={2.7} far={8} />
       <Environment preset="warehouse" />
-      {/* enableZoom={false} on THIS canvas only.
-          The shelf fills the first screen, so the wheel over it was the wheel
-          over the whole opening view — and OrbitControls turned it into a dolly
-          between 14 and 22 units, which is barely a visible change and cost the
-          reader their scroll. Getting to the page below meant moving the mouse
-          off the canvas first: effort for nothing. Drag still orbits the shelf,
-          and the object inspector further down keeps its zoom, where "scroll to
-          inspect" is what the label promises and the canvas is not the page. */}
       <OrbitControls target={[0, 0, 0]} enableZoom={false} enablePan={false} minDistance={14} maxDistance={22} minPolarAngle={1.12} maxPolarAngle={1.55} />
     </Canvas>
-    {/* An explicit way down, over the canvas. The shelf ends exactly at the fold,
-        so without this the next section is something a reader has to guess is
-        there. */}
-    <button
-      type="button"
-      onClick={() => document.getElementById('shelf-inventory')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-      className="group absolute inset-x-0 bottom-0 z-10 flex flex-col items-center gap-2 bg-gradient-to-t from-[#17100d] via-[#17100d]/78 to-transparent pb-5 pt-14 font-mono text-[10px] uppercase tracking-[.18em] text-white/55 transition hover:text-white"
-    >
-      <span>what is on view</span>
-      <span aria-hidden="true" className="translate-y-0 transition-transform duration-300 group-hover:translate-y-1">↓</span>
-    </button>
   </div>;
-}
-
-function WorkPreview({ work, lightMode }: { work: FuturoshockWork; lightMode: LightMode }) {
-  if (work.format === '3d') {
-    return (
-      <div className={`relative h-full min-h-[360px] overflow-hidden ${lightMode === 'contrejour' ? 'bg-[#070b0c]' : 'bg-[#15191a]'}`}>
-        <Canvas camera={{ position: [2.8, 1.8, 3.2], fov: 34 }} dpr={[1, 1.6]}>
-          <color attach="background" args={[lightMode === 'contrejour' ? '#070b0c' : '#15191a']} />
-          <ambientLight intensity={lightMode === 'contrejour' ? 0.24 : 1.15} />
-          <directionalLight position={[3, 5, 4]} intensity={lightMode === 'contrejour' ? 0.55 : 3.5} color="#ffe2b0" />
-          <directionalLight position={[-3, 1, -2]} intensity={lightMode === 'contrejour' ? 0.7 : 1.8} color="#9cc8ff" />
-          <pointLight position={[0, 1.8, -2.8]} intensity={lightMode === 'contrejour' ? 16 : 3.4} distance={8} color={lightMode === 'contrejour' ? '#fff0cf' : '#e8a35c'} />
-          <Suspense fallback={null}>
-            {work.modelUrl ? <Model url={work.modelUrl} /> : <OpeningObject scene={work.openingScene} />}
-            <Environment preset="studio" />
-            <ContactShadows position={[0, -1.08, 0]} opacity={lightMode === 'contrejour' ? 0.84 : 0.42} scale={6} blur={2.4} far={3.2} color="#000000" />
-          </Suspense>
-          <OrbitControls enablePan={false} minDistance={2} maxDistance={7} />
-        </Canvas>
-        {lightMode === 'contrejour' && <div aria-hidden="true" className="pointer-events-none absolute inset-x-[24%] top-0 h-full bg-[linear-gradient(90deg,transparent,rgba(255,228,180,.34),transparent)] blur-2xl" />}
-      </div>
-    );
-  }
-  return (
-    <div className="relative h-full min-h-[360px] overflow-hidden bg-[#e6ded2]">
-      {work.imageUrl ? <img src={work.imageUrl} alt={work.title} className={`h-full w-full object-cover transition duration-700 ${lightMode === 'contrejour' ? 'scale-[1.02] saturate-[.44] contrast-[1.34] brightness-[.56]' : ''}`} /> : <div className="grid h-full place-items-center text-[#282321]/40"><ImageIcon size={42} /></div>}
-      {lightMode === 'contrejour' && <><div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(3,6,6,.82),transparent_56%,rgba(3,6,6,.48))]" /><div aria-hidden="true" className="pointer-events-none absolute bottom-0 left-[43%] top-0 w-[18%] -skew-x-[7deg] bg-[linear-gradient(90deg,transparent,rgba(255,230,187,.34),transparent)] blur-xl" /></>}
-    </div>
-  );
-}
-
-function WorkCard({ work, active, onSelect }: { work: FuturoshockWork; active: boolean; onSelect: () => void }) {
-  return (
-    <button type="button" onClick={onSelect} className={`group text-left ${active ? 'text-[#f6efe5]' : 'text-[#f6efe5]/58'}`}>
-      <div className={`aspect-[4/3] overflow-hidden border transition ${active ? 'border-[#ee5e42]' : 'border-white/15 group-hover:border-white/45'}`}>
-        {work.imageUrl ? <img src={work.imageUrl} alt="" className="h-full w-full object-cover grayscale-[.2] transition duration-500 group-hover:scale-105 group-hover:grayscale-0" /> : <div className="grid h-full place-items-center bg-[#171c1d]"><span className="font-mono text-[10px] uppercase tracking-[.16em] text-[#ee9f7d]">3D / {work.openingScene || 'model'}</span></div>}
-      </div>
-      <span className="mt-3 block font-display text-[1.45rem] lowercase leading-none">{work.title}</span>
-      <span className="mt-2 block font-mono text-[9px] uppercase tracking-[0.14em] text-[#ee9f7d]/75">{work.author} / {work.year}</span>
-    </button>
-  );
-}
-
-function InteriorRoom({ compact = false, lightMode = 'warm', room = 'room-01' }: { compact?: boolean; lightMode?: LightMode; room?: RoomId }) {
-  const isArchive = room === 'room-02';
-  const isSignal = room === 'room-03';
-  return (
-    <div className={`relative isolate overflow-hidden bg-[#201a17] ${compact ? 'min-h-[360px]' : 'min-h-[560px]'}`}>
-      <img src="/images/futuroshock-interior.png" alt="The Futuroshock interior, prepared for its first works" className={`absolute inset-0 h-full w-full object-cover transition duration-700 ${isArchive ? 'object-[78%_center]' : isSignal ? 'object-[28%_center]' : 'object-center'} ${lightMode === 'contrejour' ? 'scale-[1.02] saturate-[.42] contrast-[1.28] brightness-[.56]' : 'saturate-[.72] contrast-[1.04]'}`} />
-      <div className={`absolute inset-0 transition duration-700 ${isSignal ? 'bg-[linear-gradient(90deg,rgba(7,4,8,.92),rgba(47,8,23,.32)_56%,rgba(4,6,7,.82)),linear-gradient(0deg,rgba(2,4,4,.75),transparent_68%)]' : lightMode === 'contrejour' ? 'bg-[linear-gradient(90deg,rgba(4,7,7,.89),rgba(10,12,12,.18)_56%,rgba(4,7,7,.76)),linear-gradient(0deg,rgba(2,4,4,.72),transparent_68%)]' : 'bg-[linear-gradient(90deg,rgba(10,12,12,.76),rgba(10,12,12,.14)_53%,rgba(10,12,12,.54)),linear-gradient(0deg,rgba(10,12,12,.7),transparent_55%)]'}`} />
-      {lightMode === 'contrejour' && <><div aria-hidden="true" className="absolute -top-[10%] left-[47%] h-[128%] w-[15%] -skew-x-[8deg] bg-[linear-gradient(90deg,transparent,rgba(255,230,180,.38),transparent)] blur-xl" /><div aria-hidden="true" className="absolute left-0 right-0 top-[21%] h-px bg-[#ffe3ba]/80 shadow-[0_0_36px_11px_rgba(255,180,93,.48)]" /></>}
-      {isSignal && <div aria-hidden="true" className="absolute bottom-[-20%] left-[48%] h-[120%] w-[10%] bg-[linear-gradient(90deg,transparent,rgba(221,49,91,.64),transparent)] blur-2xl" />}
-      <div className={`absolute inset-x-[6%] top-[18%] h-px transition duration-500 ${lightMode === 'contrejour' ? 'bg-[#fff0cc]/90 shadow-[0_0_32px_8px_rgba(250,186,98,.58)]' : 'bg-[#f8e0af]/65 shadow-[0_0_22px_5px_rgba(248,190,94,.33)]'}`} />
-      <div className={`absolute ${isArchive ? 'left-[53%] top-[24%] h-[49%] w-[32%]' : isSignal ? 'left-[23%] top-[19%] h-[58%] w-[42%]' : 'left-[8%] top-[27%] h-[44%] w-[38%]'} border transition duration-700 ${isSignal ? 'border-[#ec7a8f]/70 bg-[#130910]/42 shadow-[inset_0_0_90px_rgba(0,0,0,.88),0_0_58px_rgba(207,43,79,.28)' : lightMode === 'contrejour' ? 'border-[#ffe6bd]/70 bg-[#060908]/48 shadow-[inset_0_0_80px_rgba(0,0,0,.86),14px_20px_70px_rgba(0,0,0,.64)' : 'border-[#f9e7ca]/36 bg-[#291e18]/22 shadow-[inset_0_0_50px_rgba(0,0,0,.4),0_12px_50px_rgba(0,0,0,.28)'}`}>
-        <span className="absolute -left-px -top-6 font-mono text-[9px] uppercase tracking-[.17em] text-[#f8d7a0]">{isSignal ? 'signal plane / 03' : isArchive ? 'archive frame / 02' : 'vacant frame / 01'}</span>
-        <span className="absolute bottom-3 left-3 font-mono text-[9px] uppercase tracking-[.14em] text-white/52">2D work</span>
-      </div>
-      <div className={`absolute ${isArchive ? 'left-[12%] top-[40%] h-[28%] w-[20%]' : isSignal ? 'left-[72%] top-[40%] h-[24%] w-[15%]' : 'right-[8%] top-[33%] h-[32%] w-[23%]'} border transition duration-700 ${isSignal ? 'border-[#f2a1ad]/80 bg-[#1a0912]/44 shadow-[inset_0_0_62px_rgba(0,0,0,.82),-10px_10px_48px_rgba(222,46,91,.3)' : lightMode === 'contrejour' ? 'border-[#fff0d2]/70 bg-[#060807]/42 shadow-[inset_0_0_62px_rgba(0,0,0,.82),-15px_10px_55px_rgba(255,194,115,.22)' : 'border-[#f9e7ca]/42 bg-[#36241b]/24 shadow-[inset_0_0_45px_rgba(0,0,0,.45),0_12px_50px_rgba(0,0,0,.28)'}`}>
-        <span className="absolute bottom-3 left-3 font-mono text-[9px] uppercase tracking-[.14em] text-white/52">3D object</span>
-        <span aria-hidden="true" className={`absolute left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rotate-45 border transition duration-700 ${lightMode === 'contrejour' ? 'border-[#fff2d7]/85 bg-[#2e241d]/15 shadow-[0_0_55px_12px_rgba(255,204,132,.34)]' : 'border-[#f5d5a6]/60 bg-[#754d32]/20 shadow-[0_0_35px_rgba(255,173,88,.18)]'}`} />
-      </div>
-      <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-4 border-t border-white/18 bg-[#0a0c0c]/70 px-4 py-4 backdrop-blur-sm sm:px-6">
-        <span className="font-mono text-[9px] uppercase tracking-[.18em] text-[#f8d7a0]">room {ROOMS[room].number} / opening state</span>
-        <span className="font-mono text-[9px] uppercase tracking-[.14em] text-white/56">light: {lightMode === 'contrejour' ? 'contre-jour / night' : 'warm / night'}</span>
-      </div>
-    </div>
-  );
 }
 
 export function FuturoshockPage() {
   const [works, setWorks] = useState<FuturoshockWork[]>(() => getFuturoshock().length ? getFuturoshock() : OPENING_WORKS);
   const [selectedId, setSelectedId] = useState<string | null>(() => { const exhibition = getFuturoshock().length ? getFuturoshock() : OPENING_WORKS; return exhibition.find((work) => work.format === '3d')?.id ?? exhibition[0]?.id ?? null; });
-  const [focusedId, setFocusedId] = useState<string | null>(null);
-  const [activeRoom, setActiveRoom] = useState<RoomId>('room-01');
-  const visibleWorks = useMemo(() => works.filter((work) => (work.room || 'room-01') === activeRoom), [works, activeRoom]);
   const selected = useMemo(() => works.find((work) => work.id === selectedId) ?? works[0] ?? null, [works, selectedId]);
-  const [lightMode, setLightMode] = useState<LightMode>('warm');
-  const selectWork = (id: string) => {
-    setSelectedId(id);
-    setFocusedId(id);
-    window.setTimeout(() => document.getElementById('object-dossier')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
-  };
+  const selectWork = (id: string) => setSelectedId(id);
 
   useEffect(() => {
     const unsubscribe = subscribeContent(() => {
@@ -240,25 +123,65 @@ export function FuturoshockPage() {
     if (!works.some((work) => work.id === selectedId)) setSelectedId(works[0]?.id ?? null);
   }, [selectedId, works]);
 
+  useEffect(() => {
+    document.title = 'Vitrine | EPRIS Journal';
+    let description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+    if (!description) { description = document.createElement('meta'); description.name = 'description'; document.head.appendChild(description); }
+    description.content = 'A changing EPRIS vitrine of digital objects, viewed in context.';
+    let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical); }
+    canonical.href = 'https://eprisjournal.com/vitrine';
+  }, []);
+
   return (
-    <main className="min-h-screen bg-[#0b0e0f] text-[#f6efe5] selection:bg-[#ee5e42] selection:text-[#0b0e0f]">
-      <header className="sticky top-0 z-30 border-b border-white/12 bg-[#0b0e0f]/92 backdrop-blur-xl">
-        <div className="mx-auto flex min-h-[72px] max-w-[1700px] items-center justify-between gap-4 px-5 sm:px-8 lg:px-12">
-          <a href="/" className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-white/58 hover:text-white"><ArrowLeft size={14} /> EPRIS Journal</a>
-          <a href="/futuroshock" className="font-display text-[21px] lowercase leading-none tracking-normal">futuroshock</a>
-          <a href="/bureau" className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-white/58 hover:text-white">Bureau <ArrowUpRight size={13} /></a>
+    <main className="min-h-screen bg-[var(--c-bg)] pt-16 text-[var(--c-accent)] selection:bg-[var(--c-gold)] selection:text-[var(--c-bg)]">
+      <header className="fixed inset-x-0 top-0 z-50 h-16 border-b border-[var(--c-accent)] bg-[rgb(var(--c-bg-rgb)_/_0.94)] backdrop-blur-xl">
+        <div className="mx-auto grid h-full max-w-[1700px] grid-cols-[1fr_auto_1fr] items-center px-3 sm:px-6 lg:px-12">
+          <a href="/" className="inline-flex min-h-11 items-center justify-self-start gap-2 font-mono text-[10px] uppercase tracking-[0.16em] transition hover:opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--c-accent)]"><ArrowLeft size={14} aria-hidden="true" /> <span className="hidden sm:inline">EPRIS Journal</span><span className="sm:hidden">EPRIS</span></a>
+          <a href="/vitrine" aria-current="page" className="font-mono text-[11px] uppercase tracking-[0.22em]">Vitrine</a>
+          <a href="/bureau" className="inline-flex min-h-11 items-center justify-self-end gap-2 font-mono text-[10px] uppercase tracking-[0.16em] transition hover:opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--c-accent)]"><span className="hidden sm:inline">Bureau</span><ArrowUpRight size={14} aria-hidden="true" /></a>
         </div>
       </header>
 
-      <section className="border-b border-white/12"><DisplayShelf works={works} activeRoom={activeRoom} selectedId={focusedId} onSelect={selectWork} /></section>
-
-      <section id="shelf-inventory" className="mx-auto max-w-[1700px] scroll-mt-[72px] px-5 py-14 sm:px-8 sm:py-20 lg:px-12">
-        <div className="flex items-end justify-between border-b border-white/15 pb-5"><div><p className="font-mono text-[10px] uppercase tracking-[.18em] text-[#ee9f7d]">shelf inventory</p><h2 className="mt-3 font-display text-[clamp(2.8rem,5vw,5.2rem)] lowercase leading-[.86]">what is on view</h2></div><span className="hidden font-mono text-[10px] uppercase tracking-[.15em] text-white/40 sm:block">15 positions / live edit</span></div>
-        <div className="grid border-l border-t border-white/15 sm:grid-cols-2 lg:grid-cols-3">{works.map((work, index) => { const slot = work.shelfSlot || index + 1; return <button key={work.id} type="button" onClick={() => selectWork(work.id)} className={`min-h-[300px] border-b border-r border-white/15 p-6 text-left transition hover:bg-white/[.045] sm:p-8 ${selected?.id === work.id ? 'bg-[#171514]' : ''}`}><div className="flex items-start justify-between gap-4"><span className="font-display text-4xl leading-none text-[#ee9f7d]">{String(slot).padStart(2, '0')}</span><span className="font-mono text-[9px] uppercase tracking-[.16em] text-white/42">{work.format === '3d' ? 'object / 3D' : 'image / 2D'}</span></div><h3 className="mt-12 font-display text-[clamp(2rem,3vw,3.25rem)] lowercase leading-[.86] text-[#f6efe5]">{work.title}</h3><p className="mt-5 max-w-[34rem] font-sans text-sm leading-[1.65] text-white/62">{work.statement}</p><div className="mt-7 border-t border-white/12 pt-4 font-mono text-[9px] uppercase leading-[1.65] tracking-[.13em] text-[#f0c28c]">{work.materials?.join(' / ') || work.medium}</div></button>; })}</div>
-        {selected && <section id="object-dossier" className="mt-10 scroll-mt-[72px] grid overflow-hidden border border-white/15 bg-[#151313] lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,.8fr)]"><div className="min-h-[440px] border-b border-white/12 lg:border-b-0 lg:border-r"><WorkPreview work={selected} lightMode={lightMode} /></div><div className="flex flex-col justify-between p-6 sm:p-9"><div><p className="font-mono text-[10px] uppercase tracking-[.17em] text-[#ee9f7d]">selected object / rotate freely</p><h3 className="mt-5 font-display text-[clamp(3rem,5vw,5.8rem)] lowercase leading-[.82]">{selected.title}</h3><p className="mt-7 max-w-[34rem] font-sans text-[16px] leading-[1.7] text-white/68">{selected.statement}</p><dl className="mt-9 grid grid-cols-2 gap-x-5 gap-y-6 border-t border-white/14 pt-5 font-mono text-[9px] uppercase tracking-[.13em]"><div><dt className="text-white/35">surface</dt><dd className="mt-2 leading-[1.55] text-[#f0c28c]">{selected.materials?.join(' / ') || selected.medium}</dd></div><div><dt className="text-white/35">medium</dt><dd className="mt-2 leading-[1.55] text-white/72">{selected.medium}</dd></div><div><dt className="text-white/35">author</dt><dd className="mt-2 leading-[1.55] text-white/72">{selected.author}</dd></div><div><dt className="text-white/35">position</dt><dd className="mt-2 leading-[1.55] text-white/72">shelf {String(selected.shelfSlot || works.indexOf(selected) + 1).padStart(2, '0')}</dd></div></dl></div><span className="mt-9 font-mono text-[9px] uppercase tracking-[.16em] text-white/42">drag to rotate / scroll to inspect</span></div></section>}
+      <section aria-labelledby="vitrine-title" className="border-b border-[rgb(var(--c-accent-rgb)_/_0.18)]">
+        <div className="mx-auto max-w-[1700px] px-5 pb-8 pt-10 sm:px-8 sm:pb-10 lg:px-12">
+          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)]">EPRIS Vitrine</p>
+          <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <h1 id="vitrine-title" className="font-display text-[clamp(2.75rem,7vw,6rem)] leading-[0.88]">Vitrine</h1>
+            <p className="max-w-[34rem] text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.72)] sm:text-base">A changing selection of digital objects, viewed in context.</p>
+          </div>
+        </div>
+        <div className="mx-auto max-w-[1700px] px-5 pb-5 sm:px-8 lg:px-12"><DisplayShelf works={works} selectedId={selected?.id ?? null} onSelect={selectWork} /></div>
       </section>
 
-      <section className="border-t border-white/12 bg-[#f1e9df] text-[#171313]"><div className="mx-auto grid max-w-[1700px] gap-12 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[.8fr_1.2fr] lg:px-12"><div><p className="font-mono text-[10px] uppercase tracking-[.18em] text-[#a63d2c]">02 / submission logic</p><h2 className="mt-5 max-w-[8ch] font-display text-[clamp(3rem,6vw,6rem)] lowercase leading-[.82]">make it impossible to scroll past</h2></div><div className="grid gap-0 border-t border-[#171313]/18"><div className="grid gap-4 border-b border-[#171313]/18 py-6 sm:grid-cols-[5rem_1fr]"><span className="font-display text-3xl text-[#a63d2c]">01</span><p className="max-w-[38rem] font-sans text-base leading-relaxed">Send one strong cover image and, when available, a clean GLB or GLTF model. The work should survive both a quiet thumbnail and a full-screen view.</p></div><div className="grid gap-4 border-b border-[#171313]/18 py-6 sm:grid-cols-[5rem_1fr]"><span className="font-display text-3xl text-[#a63d2c]">02</span><p className="max-w-[38rem] font-sans text-base leading-relaxed">Add the actual material vocabulary: light, scale, surface, object, route. Futuroshock is not a portfolio dump; it is a room with editorial attention.</p></div><div className="grid gap-4 py-6 sm:grid-cols-[5rem_1fr]"><span className="font-display text-3xl text-[#a63d2c]">03</span><p className="max-w-[38rem] font-sans text-base leading-relaxed">The editorial team checks file quality, rights and context before publishing. Selected works can link back to an EPRIS article, review or Bureau case.</p></div></div></div></section>
+      <section id="shelf-inventory" aria-labelledby="on-view-title" className="mx-auto max-w-[1700px] px-5 py-10 sm:px-8 sm:py-14 lg:px-12">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(19rem,.65fr)] lg:items-start lg:gap-12">
+          <div>
+            <div className="flex items-baseline justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.22)] pb-4">
+              <h2 id="on-view-title" className="font-display text-3xl sm:text-4xl">On view</h2>
+              <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[rgb(var(--c-accent-rgb)_/_0.62)]">{works.length} works</span>
+            </div>
+            <div className="mt-4 grid border-l border-t border-[rgb(var(--c-accent-rgb)_/_0.16)] sm:grid-cols-2">
+              {works.map((work, index) => {
+                const slot = work.shelfSlot || index + 1;
+                const active = selected?.id === work.id;
+                return <button key={work.id} type="button" onClick={() => selectWork(work.id)} aria-pressed={active} aria-controls="object-details" className={`group flex min-h-24 items-center gap-4 border-b border-r border-[rgb(var(--c-accent-rgb)_/_0.16)] p-4 text-left transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--c-gold)] sm:p-5 ${active ? 'bg-[rgb(var(--c-gold-rgb)_/_0.14)]' : 'hover:bg-[rgb(var(--c-accent-rgb)_/_0.05)]'}`}>
+                  <span className="font-mono text-[10px] tracking-[0.12em] text-[var(--c-gold)]">{String(slot).padStart(2, '0')}</span>
+                  <span className="min-w-0"><span className="block font-display text-xl leading-tight">{work.title}</span><span className="mt-1 block truncate font-mono text-[9px] uppercase tracking-[0.12em] text-[rgb(var(--c-accent-rgb)_/_0.62)]">{work.materials?.join(' / ') || work.medium}</span></span>
+                </button>;
+              })}
+            </div>
+          </div>
+
+          {selected && <aside id="object-details" aria-live="polite" className="border-t-2 border-[var(--c-gold)] bg-[rgb(var(--c-accent-rgb)_/_0.045)] p-5 sm:p-7 lg:sticky lg:top-24">
+            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-gold)]">Selected work</p>
+            <h2 className="mt-4 font-display text-[clamp(2.25rem,4vw,4rem)] leading-[0.92]">{selected.title}</h2>
+            <p className="mt-4 text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.74)]">{selected.author} · {selected.year}</p>
+            <p className="mt-5 border-t border-[rgb(var(--c-accent-rgb)_/_0.18)] pt-5 text-sm leading-relaxed">{selected.materials?.join(', ') || selected.medium}</p>
+            {selected.statement && <details className="group mt-6 border-t border-[rgb(var(--c-accent-rgb)_/_0.18)] pt-4"><summary className="cursor-pointer list-none font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--c-accent)] transition hover:text-[var(--c-gold)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--c-gold)]"><span className="group-open:hidden">Read curatorial note</span><span className="hidden group-open:inline">Close curatorial note</span></summary><p className="mt-4 text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.74)]">{selected.statement}</p></details>}
+          </aside>}
+        </div>
+      </section>
     </main>
   );
 }

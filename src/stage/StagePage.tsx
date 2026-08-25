@@ -16,8 +16,8 @@ function Header() {
           <ArrowLeft size={14} /> Bureau
         </a>
         <a href="/stage" className="font-display text-[21px] lowercase leading-none text-[#f5f0eb] sm:text-[25px]">epris stage</a>
-        <a href="/showcase" className="inline-flex min-h-11 items-center gap-2 font-sans text-[9px] uppercase tracking-[0.18em] text-[#f5f0eb]/60 transition-colors hover:text-[#f5f0eb]">
-          Showcase <ArrowUpRight size={13} />
+        <a href="/" className="inline-flex min-h-11 items-center gap-2 font-sans text-[9px] uppercase tracking-[0.18em] text-[#f5f0eb]/60 transition-colors hover:text-[#f5f0eb]">
+          EPRIS Journal <ArrowUpRight size={13} />
         </a>
       </div>
     </header>
