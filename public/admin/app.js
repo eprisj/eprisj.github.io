@@ -23010,6 +23010,7 @@ function renderFormEditor() {
   `;
   bindFormEditor();
   if (saved && form.access === 'invite') renderFormInvites();
+  hydrateFormResponsePhotos();
 }
 
 /* Строка вопроса.
@@ -23129,34 +23130,160 @@ function renderFormFieldRow(field, index) {
     </div>`;
 }
 
+/* ЭКРАН ОТВЕТОВ — ЭТО ЧЕРНОВИК МАТЕРИАЛА, А НЕ ВЫГРУЗКА ФОРМЫ.
+ *
+ * Раньше ответ рисовался как <dl>: вопрос и ответ прижаты друг к другу, абзацы
+ * склеены в одну простыню, разделы анкеты выброшены, а присланные фотографии
+ * показаны строкой имён файлов. Прочитать интервью в таком виде нельзя, и
+ * редактор шёл выгружать Word ради того, чтобы просто посмотреть.
+ *
+ * Теперь это читаемый разворот: разделы анкеты остаются заголовками, вопрос
+ * стоит над ответом и набран иначе, абзацы сохраняются, а изображения
+ * подгружаются миниатюрами и открываются во весь экран.
+ */
+function formResponseFiles(response) {
+  return Object.values(response.answers || {})
+    .filter(Array.isArray)
+    .flat()
+    .filter((entry) => entry && entry.fileId);
+}
+
+function renderFormResponseAnswer(field, value) {
+  if (field.type === 'files') {
+    const files = Array.isArray(value) ? value : [];
+    if (!files.length) return '<p class="forms-a is-empty">файлов нет</p>';
+    const images = files.filter((file) => String(file.type || '').startsWith('image/'));
+    const others = files.filter((file) => !String(file.type || '').startsWith('image/'));
+    const gallery = images.length ? `<div class="forms-photos">${images.map((file) => `
+      <figure class="forms-photo" data-file-preview="${escapeHtml(file.fileId)}" data-file-name="${escapeHtml(file.name)}" title="${escapeHtml(file.name)}">
+        <span class="forms-photo-frame"><span class="forms-photo-wait">◻︎</span></span>
+        <figcaption>${escapeHtml(file.name)} · ${formatFileSize(file.size)}</figcaption>
+      </figure>`).join('')}</div>` : '';
+    const rest = others.length ? `<div class="forms-files">${others.map((file) => `
+      <button type="button" class="forms-file" data-file-download="${escapeHtml(file.fileId)}" data-file-name="${escapeHtml(file.name)}">
+        ${escapeHtml(file.name)} <span>${formatFileSize(file.size)}</span>
+      </button>`).join('')}</div>` : '';
+    return gallery + rest;
+  }
+
+  if (Array.isArray(value)) {
+    return value.length
+      ? `<div class="forms-a"><p>${escapeHtml(value.join(', '))}</p></div>`
+      : '<p class="forms-a is-empty">без ответа</p>';
+  }
+  if (value === true) return '<div class="forms-a"><p>да</p></div>';
+  if (value === false) return '<div class="forms-a"><p>нет</p></div>';
+
+  const text = String(value ?? '').trim();
+  if (!text) return '<p class="forms-a is-empty">без ответа</p>';
+  /* Абзацы автора — часть ответа: он разделил мысли пустой строкой, и в
+     редакции это разделение должно дожить до вёрстки. */
+  const paragraphs = text.split(/\n\s*\n/).map((part) => part.trim()).filter(Boolean);
+  return `<div class="forms-a">${paragraphs.map((part) => `<p>${escapeHtml(part).replace(/\n/g, '<br>')}</p>`).join('')}</div>`;
+}
+
 function renderFormResponses(form, responses) {
   if (!responses.length) return '<p class="muted">Ответов пока нет.</p>';
-  const columns = form.fields.filter((field) => field.type !== 'section');
-  return `<div class="forms-responses-list">${responses.slice().reverse().map((response) => `
+  const fields = Array.isArray(form.fields) ? form.fields : [];
+  const questions = fields.filter((field) => field.type !== 'section');
+
+  return `<div class="forms-responses-list">${responses.slice().reverse().map((response, indexFromEnd) => {
+    const number = responses.length - indexFromEnd;
+    const answered = questions.filter((field) => {
+      const value = response.answers?.[field.id];
+      if (Array.isArray(value)) return value.length > 0;
+      return value !== undefined && value !== null && String(value).trim() !== '';
+    }).length;
+    const photos = formResponseFiles(response).filter((file) => String(file.type || '').startsWith('image/')).length;
+    const when = new Date(response.submittedAt);
+    const meta = [
+      when.toLocaleString('ru-RU', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
+      `${answered} из ${questions.length} вопросов`,
+      photos ? `${photos} фото` : '',
+    ].filter(Boolean).join(' · ');
+
+    return `
     <article class="forms-response">
-      <header>
-        <span>${escapeHtml(new Date(response.submittedAt).toLocaleString('ru-RU'))}</span>
-        ${response.inviteLabel ? `<strong>${escapeHtml(response.inviteLabel)}</strong>` : ''}
-        <button class="btn btn-sm" type="button" data-response-doc="${escapeHtml(response.id)}" title="Скачать этот ответ в Word">Word</button>
-        <button class="btn btn-sm" type="button" data-response-zip="${escapeHtml(response.id)}" title="Скачать файлы этого ответа архивом">Файлы</button>
-        <button class="btn btn-sm btn-danger" type="button" data-response-delete="${escapeHtml(response.id)}">Удалить</button>
+      <header class="forms-response-head">
+        <div>
+          <p class="forms-response-name">${escapeHtml(response.inviteLabel || `Ответ ${number}`)}</p>
+          <p class="forms-response-when">${escapeHtml(meta)}</p>
+        </div>
+        <div class="forms-response-tools">
+          <button class="btn btn-sm" type="button" data-response-doc="${escapeHtml(response.id)}" title="Скачать этот ответ в Word">Word</button>
+          <button class="btn btn-sm" type="button" data-response-zip="${escapeHtml(response.id)}" title="Скачать файлы этого ответа архивом">Файлы</button>
+          <button class="btn btn-sm btn-danger" type="button" data-response-delete="${escapeHtml(response.id)}">Удалить</button>
+        </div>
       </header>
-      <dl>${columns.map((field) => {
-        const value = response.answers?.[field.id];
-        /* Файлы — ссылками, а не именами: имя без ссылки означает «файл где-то
-           есть», и редактор идёт спрашивать его у автора второй раз. */
-        if (field.type === 'files') {
-          const files = Array.isArray(value) ? value : [];
-          if (!files.length) return '';
-          return `<div><dt>${escapeHtml(field.label)}</dt><dd>${files.map((file) => `
-            <button type="button" class="forms-file" data-file-download="${escapeHtml(file.fileId)}" data-file-name="${escapeHtml(file.name)}">
-              ${escapeHtml(file.name)} <span>${formatFileSize(file.size)}</span>
-            </button>`).join('')}</dd></div>`;
-        }
-        const text = Array.isArray(value) ? value.join(', ') : (value === true ? 'да' : value === false ? 'нет' : String(value ?? ''));
-        return text ? `<div><dt>${escapeHtml(field.label)}</dt><dd>${escapeHtml(text)}</dd></div>` : '';
-      }).join('')}</dl>
-    </article>`).join('')}</div>`;
+      <div class="forms-response-body">
+        ${fields.map((field) => {
+          if (field.type === 'section') {
+            return `<p class="forms-answer-section">${escapeHtml(field.label || '')}</p>`;
+          }
+          const value = response.answers?.[field.id];
+          const empty = Array.isArray(value) ? !value.length : (value === undefined || value === null || String(value).trim() === '');
+          if (empty && field.type !== 'files') return '';
+          return `<div class="forms-qa">
+            <p class="forms-q">${escapeHtml(field.label || field.id)}</p>
+            ${renderFormResponseAnswer(field, value)}
+          </div>`;
+        }).join('')}
+      </div>
+    </article>`;
+  }).join('')}</div>`;
+}
+
+/* Файл отдаётся только по паролю, поэтому <img src> для него не работает:
+   браузер не пошлёт заголовок. Тянем тело сами и показываем как blob. Один
+   кэш на сессию, чтобы перерисовка панели не качала те же снимки заново. */
+const formPhotoCache = new Map();
+
+async function hydrateFormResponsePhotos() {
+  if (!formsDraft || !formsDraft.id) return;
+  const nodes = Array.from(document.querySelectorAll('.forms-photo[data-file-preview]'))
+    .filter((node) => !node.dataset.loaded);
+  for (const node of nodes) {
+    const fileId = node.dataset.filePreview;
+    node.dataset.loaded = '1';
+    try {
+      let url = formPhotoCache.get(fileId);
+      if (!url) {
+        const res = await fetch(`${FORMS_API}/${encodeURIComponent(formsDraft.id)}/files/${encodeURIComponent(fileId)}`, {
+          headers: { 'X-Admin-Password': getAdminPassword() },
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        url = URL.createObjectURL(await res.blob());
+        formPhotoCache.set(fileId, url);
+      }
+      const frame = node.querySelector('.forms-photo-frame');
+      if (frame) frame.innerHTML = `<img src="${url}" alt="${escapeHtml(node.dataset.fileName || '')}" loading="lazy">`;
+      node.onclick = () => openFormPhotoLightbox(url, node.dataset.fileName || 'photo', fileId);
+    } catch (error) {
+      const frame = node.querySelector('.forms-photo-frame');
+      if (frame) frame.innerHTML = '<span class="forms-photo-wait">не открылось</span>';
+    }
+  }
+}
+
+function openFormPhotoLightbox(url, name, fileId) {
+  const existing = document.querySelector('.forms-lightbox');
+  if (existing) existing.remove();
+  const box = document.createElement('div');
+  box.className = 'forms-lightbox';
+  box.innerHTML = `
+    <img src="${url}" alt="${escapeHtml(name)}">
+    <div class="forms-lightbox-bar">
+      <span>${escapeHtml(name)}</span>
+      <button class="btn btn-sm" type="button" data-file-download="${escapeHtml(fileId)}" data-file-name="${escapeHtml(name)}">Скачать</button>
+      <button class="btn btn-sm" type="button" data-lightbox-close>Закрыть</button>
+    </div>`;
+  box.addEventListener('click', (event) => {
+    if (event.target === box || event.target.closest('[data-lightbox-close]')) box.remove();
+  });
+  document.addEventListener('keydown', function onEsc(event) {
+    if (event.key === 'Escape') { box.remove(); document.removeEventListener('keydown', onEsc); }
+  });
+  document.body.appendChild(box);
 }
 
 /* ВЫГРУЗКА ОТВЕТОВ В DOC И PDF.
