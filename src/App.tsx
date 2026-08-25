@@ -1079,7 +1079,7 @@ function NavBar({
                 isVitrineRoute ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'text-[var(--c-accent)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.08)]'
               }`}
             >
-              <span className="relative z-10 font-bold">Vitrine</span>
+              <span className="relative z-10 font-bold">Museum</span>
             </a>
           </div>
         </LayoutGroup>
@@ -1323,7 +1323,7 @@ function NavBar({
                   isVitrineRoute ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : ''
                 }`}
               >
-                <span className="font-serif font-normal text-xl leading-tight">Vitrine</span>
+                <span className="font-serif font-normal text-xl leading-tight">Museum</span>
               </motion.a>
             </motion.div>
             
@@ -3856,7 +3856,7 @@ const ROUTE_META: Record<string, { title: string; description: string }> = {
   issue: { title: 'Current Issue — EPRIS Journal', description: 'Read the current digital issue of EPRIS Journal.' },
   studio: { title: 'EPRIS Studio', description: 'Editorial, visual and cultural projects by EPRIS Studio.' },
   design: { title: 'The Edit — EPRIS Design', description: 'A curated selection of contemporary furniture, objects and interior design by EPRIS.' },
-  vitrine: { title: 'Vitrine | EPRIS Journal', description: 'A living selection of works by Ukrainian artists, designers and architects, curated by EPRIS Journal.' },
+  vitrine: { title: 'EPRIS Museum | EPRIS Journal', description: 'A living museum collection of works by Ukrainian artists, designers and architects, curated by EPRIS Journal.' },
   radio: { title: 'EPRIS Radio', description: 'Listen to EPRIS Radio: sound, music and cultural programming.' },
   podcasts: { title: 'EPRIS Podcasts', description: 'Conversations and audio stories about contemporary art, architecture, design and cities.' },
 };
