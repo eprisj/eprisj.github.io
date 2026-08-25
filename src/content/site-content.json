@@ -4965,7 +4965,7 @@
         {
           "type": "header",
           "level": 2,
-          "content": "<span class=\"kicker\">01 · Origins</span>Becoming a painter"
+          "content": "<span>01 · </span>Becoming a painter"
         },
         {
           "type": "text",
@@ -4982,6 +4982,11 @@
         {
           "type": "text",
           "content": "Eventually I started showing in London while I was still studying, and having a gallery or two consign my work convinced me it might actually be possible. My wife's support mattered enormously too – she married me knowing I wanted to be an artist. That's how I built myself into one, if that makes sense."
+        },
+        {
+          "type": "gallery",
+          "content": [],
+          "caption": ""
         },
         {
           "type": "text",
@@ -5231,7 +5236,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-25T12:49:34.899Z"
+      "updatedAt": "2026-08-25T12:51:39.271Z"
     },
     {
       "id": 24,
