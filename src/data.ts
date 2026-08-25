@@ -180,6 +180,12 @@ export interface Article {
   /** Optional link to an entry in SiteContent.authors; falls back to the `author`/`role` strings when absent. */
   authorId?: string;
   /**
+   * Optional second credit: the studio, museum or institution the material was
+   * made together with. It is rendered as its own card under the author's and
+   * never touches the byline — the byline belongs to whoever wrote the piece.
+   */
+  contributorId?: string;
+  /**
    * Human-facing date, exactly as an editor typed it ("Jul 30, 2026",
    * "15 серпня 2026"). Display only.
    */
