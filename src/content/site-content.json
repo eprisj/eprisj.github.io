@@ -2343,7 +2343,7 @@
       "imageUrl": "https://api.eprisjournal.com/uploads/mt919szqnaqxwe.jpg",
       "articleId": 27,
       "draft": true,
-      "updatedAt": "2026-08-25T19:05:04.000Z"
+      "updatedAt": "2026-08-25T19:14:32.000Z"
     }
   ],
   "articles": [
@@ -5196,7 +5196,7 @@
         },
         {
           "type": "text",
-          "content": "<b>KA:</b> Both, I think, but I lean toward “learned.” I hated abstraction as a kid – I loved realism, and when I first saw work by a well-known abstract painter I genuinely didn't get it. Now I've cried in front of a Rothko. I think that capacity should be available to everyone, the same way everyone can learn to recognise beauty in a face or in clothing – it doesn't have to be about painting specifically. My own family still doesn't really understand my abstraction, but they're supportive. My wife's father, a who has no art background, once looked at a painting and said, “Oh, he can draw hands and feet – he must be good.” That's a connection, even if it only lasts a second."
+          "content": "<b>KA:</b> Both, I think, but I lean toward “learned.” I hated abstraction as a kid – I loved realism, and when I first saw work by a well-known abstract painter I genuinely didn't get it. Now I <i>did</i> cried in front of a Rothko. I think that capacity should be available to everyone, the same way everyone can learn to recognise beauty in a face or in clothing – it doesn't have to be about painting specifically. My own family still doesn't really understand my abstraction, but they're supportive. My wife's father, a who has no art background, once looked at a painting and said, “Oh, he can draw hands and feet – he must be good.” That's a connection, even if it only lasts a second."
         },
         {
           "type": "text",
@@ -5320,7 +5320,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-25T19:14:07.125Z",
+      "updatedAt": "2026-08-25T19:14:30.990Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8wh6owj2qa80.jpg",
       "previewToken": "7050d8a93e5a216872f5399c"
     },
@@ -5618,21 +5618,19 @@
       "content": [
         {
           "type": "text",
-          "content": "A souvenir magnet does one thing well: it makes you remember that you were somewhere. It does not remember what happened there, who you were with, or what the light looked like at the moment you decided this was a trip worth keeping a piece of. Meanwhile all of that lives on your phone, in a camera roll thousands of photos deep, and you will probably never scroll back to it."
+          "content": "Every souvenir shop sells the same promise: a small object that will remind you, years later, that you were somewhere. A magnet does this job better than almost anything else, which is exactly the problem. It remembers the fact of the trip and forgets everything that made the trip worth remembering — who you were laughing with on the ferry, what the light looked like on the last night, the wrong turn that became the best hour of the week. That richer material does not disappear. It is on your phone, buried a few thousand photographs deep, in the part of the camera roll nobody scrolls back to."
         },
         {
           "type": "text",
-          "content": "<b>Souv</b> is a Zagreb-based startup built on that gap. Tap a physical card or magnet with your phone, no app required, and it opens a personal space tied to that exact place and trip: your photographs, a short recap video, a note. The object stays on your fridge. The memory stays reachable. Since its first pilot at a cycling event on the island of Brač, Souv has spread along the Croatian coast, into museum shops and chain retail, and has been named a finalist in the Digital Communication Design category of Zagreb Design Week 2026."
+          "content": "<b>Souv</b>, a startup out of Zagreb, was built to close exactly that gap. Tap a physical card or magnet with your phone — no app to install — and it opens a personal space tied to that specific place and trip: your own photographs, a short recap video, a note for later. The object stays on the fridge, doing what a souvenir has always done. The memory it points to stays reachable, which is the part that used to get lost."
         },
         {
           "type": "text",
-          "content": "We spoke with co-founders Matej Petrić and Antonio Šeparović about the third coffee in Zagreb that started it, the version of the idea they were sure would work and had to throw out, and what it actually took to put colour-engraved stainless steel into production."
+          "content": "The company started with two friends, a university, and no plan to end up running a small metal workshop. Since a first pilot at a cycling event on the island of Brač, Souv has spread along the Croatian coast, into museum shops and chain retail, and has been named a finalist in the Digital Communication Design category of Zagreb Design Week 2026, where it will show at the Academy of Fine Arts this September."
         },
         {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mt919szqnaqxwe.jpg",
-          "caption": "A hand of Souv cards for the Dubrovnik Summer Festival edition. Courtesy Souv",
-          "align": "center"
+          "type": "text",
+          "content": "We spoke with co-founders Matej Petrić and Antonio Šeparović about the third coffee in Zagreb that started it, the version of the idea they were sure would work and had to throw out anyway, and what it actually took to put colour-engraved stainless steel into production."
         },
         {
           "type": "text",
@@ -5822,6 +5820,10 @@
         },
         {
           "type": "text",
+          "content": "<i>The next question is about the one part of the product that could not be solved by iterating on the app: a physical object, made in batches, that has to look the same the five-hundredth time as it did the first.</i>"
+        },
+        {
+          "type": "text",
           "content": "<b>What's been the hardest part of building Souv so far? Pick one concrete example — a specific technical problem, a specific design decision, or a specific logistical headache — and walk through how you actually solved it, including anything you tried first that failed.</b>"
         },
         {
@@ -5859,6 +5861,10 @@
           "content": "https://api.eprisjournal.com/uploads/mt919t7s2uwlyf.jpg",
           "caption": "An early version of the Souv product, from city artwork to the engraving bench. Courtesy Souv",
           "align": "center"
+        },
+        {
+          "type": "text",
+          "content": "<i>The last question is about scale, and the answer turns out to be less about new cities than about what Souv actually is: an object, or a layer that any object could carry.</i>"
         },
         {
           "type": "text",
@@ -5906,7 +5912,8 @@
       "authorId": "author-1784732936927-kw554",
       "draft": true,
       "previewToken": "60a95a90d21ef6c29acec8c9",
-      "updatedAt": "2026-08-25T19:05:04.000Z"
+      "updatedAt": "2026-08-25T19:14:32.000Z",
+      "contributorId": "author-souv"
     }
   ],
   "reviews": [
@@ -29634,6 +29641,19 @@
       "showOnTeam": true,
       "teamOrder": 10,
       "collaborator": true
+    },
+    {
+      "id": "author-souv",
+      "name": "Souv",
+      "role": "Startup, Zagreb (Croatia)",
+      "bio": "Souv is a Zagreb-based startup that ties a physical souvenir, a card or magnet, to a personal digital memory space: tap it with a phone and reach your own photos, videos and notes from that trip, no app required. Founded by Matej Petrić and Antonio Šeparović, it started with a pilot on the island of Brač and now sells along the Croatian coast, in independent stores, museum shops and chain retail. Souv is a 2026 Zagreb Design Week finalist in Digital Communication Design.",
+      "photoUrl": "https://api.eprisjournal.com/uploads/mt91lmd4l9g2ss.jpg",
+      "website": "https://souv.app",
+      "instagram": "@souv.socials",
+      "active": true,
+      "showOnTeam": true,
+      "collaborator": true,
+      "teamOrder": 11
     }
   ],
   "manifest": {
