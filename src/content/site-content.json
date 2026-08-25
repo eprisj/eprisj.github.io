@@ -5294,7 +5294,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-25T14:27:16.101Z",
+      "updatedAt": "2026-08-25T14:47:43.675Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8oh2wuvblzxh.jpg"
     },
     {
@@ -29300,8 +29300,9 @@
       "website": "https://museonivola.it/en/",
       "instagram": "@museo_nivola",
       "active": true,
-      "showOnTeam": false,
-      "teamOrder": 4
+      "showOnTeam": true,
+      "teamOrder": 10,
+      "collaborator": true
     }
   ],
   "manifest": {
