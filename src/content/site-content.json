@@ -2329,10 +2329,10 @@
       "subtitle": "Interview",
       "fig": "FIG. 14",
       "description": "The team of the Museo Nivola in Orani on the border between a museum and its village, on inheriting Costantino Nivola's method rather than his forms, and on what a monographic museum can still become.",
-      "imageUrl": "",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mt8phvdsl4ilhu.jpg",
       "articleId": 26,
       "draft": true,
-      "updatedAt": "2026-08-25T13:25:11.000Z"
+      "updatedAt": "2026-08-25T13:35:39.000Z"
     }
   ],
   "articles": [
@@ -5389,7 +5389,7 @@
         "Costantino Nivola"
       ],
       "imageSeed": "",
-      "imageUrl": "",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mt8phvdsl4ilhu.jpg",
       "content": [
         {
           "type": "text",
@@ -5398,6 +5398,12 @@
         {
           "type": "text",
           "content": "We spoke with the team of the Museo Nivola about where a museum ends and a village begins, about inheriting a method rather than a set of forms, and about what a monographic museum can become when it refuses to be a mausoleum."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mt8phvdsl4ilhu.jpg",
+          "caption": "Museo Nivola, Orani. Courtesy Museo Nivola",
+          "align": "center"
         },
         {
           "type": "text",
@@ -5412,12 +5418,24 @@
           "content": "This relation is deeper still if we think of Nivola’s own work, because Orani is a presence that runs through all of his research and is evident in the materials, in his childhood memories, in the experience of his father the mason, in his conception of public space and of the relationship with the social life of a place. In the 1953 project <i>Pergola Village</i>, Nivola imagined connecting the houses of the village, ideally and physically, through vine pergolas, turning the streets into shared social space. In 1958, returning to Orani, he made the graffito on the facade of the church of Nostra Signora d’Itria and brought his sculptures directly into the streets, involving the inhabitants in an experience that goes entirely beyond the traditional model of the exhibition."
         },
         {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mt8phvon2ihj61.jpg",
+          "caption": "Pergola Village, Vined Orani, plate from Interiors, January 1953. Courtesy Museo Nivola",
+          "align": "center"
+        },
+        {
           "type": "text",
           "content": "This is why we like to think that the Museo Nivola does not end at the threshold of the building: the village is not an extension of the museum in the sense of a musealisation of the territory, but rather a living interlocutor."
         },
         {
           "type": "text",
           "content": "The challenge is precisely to prevent Orani from becoming a backdrop, or a kind of diffuse museum crystallised in the past. We are interested in continuing to build a relationship in which the museum is part of the life of the village and the village keeps entering the museum, through people, through memory, through educational activities, projects in public space and new forms of cultural production."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mt8phvyrs11r07.jpg",
+          "caption": "Nivola near the funeral monument to his mother and his brother Giuseppe, Orani, 1958. Photo C. Bavagnoli. Courtesy Museo Nivola",
+          "align": "center"
         },
         {
           "type": "text",
@@ -5428,8 +5446,20 @@
           "content": "That is the great topicality of his thought. Today, perhaps, even more than when Nivola began working in this direction. For him, the integration of art and architecture did not simply mean placing a work inside a building or on its facade. It meant conceiving space, matter, function and the experience of whoever would inhabit that space all together. The famous total project."
         },
         {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mt8phw5rzot1h0.jpg",
+          "caption": "The Olivetti showroom on Fifth Avenue, New York, 1954. Photo H. Namuth. Courtesy Museo Nivola",
+          "align": "center"
+        },
+        {
           "type": "text",
           "content": "Nivola worked with some of the great protagonists of modern architecture, trying to overcome the disciplinary separation between artist, architect and designer. His interest was directed at space as an overall experience. Sculpture could become wall, relief could become part of architecture, the courtyard a place of encounter. Even the urban plan was to be an instrument for strengthening social relations."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mt8pj4hlw7p230.jpg",
+          "caption": "Relief for the Morse & Stiles colleges, Yale University, 1961, sandcast, concrete, 51 x 45 x 9 cm. Photo P. Pinna. Courtesy Museo Nivola",
+          "align": "center"
         },
         {
           "type": "text",
@@ -5460,6 +5490,12 @@
           "content": "Here some of the central questions in his work stop being merely art-historical themes and acquire a concrete dimension. His relationship with matter refers back to the geology of his land, as well as to family experience and his father’s trade. The attention to community, the theme of participation, take on a crucial meaning. A museum in the place of origin has access to a memory that is not only documentary. There is an oral, vernacular, everyday memory, made of people who remember him or who have gathered the memory of previous generations. There are the light, the silences, the movement of the landscape: elements difficult to restore inside an exhibition, and they require a language, a narration, a rooted and conscious approach."
         },
         {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mt8phwlmm7eei6.jpg",
+          "caption": "Model for the Monument to the Mason of Orani, from the Building Blocks series, 1955, concrete, 63.5 x 68.5 x 34.5 cm. Photo P. Pinna. Courtesy Museo Nivola",
+          "align": "center"
+        },
+        {
           "type": "text",
           "content": "This does not mean reading Nivola exclusively through Sardinia: that would be equally reductive, because his artistic identity is born precisely from the encounter between Orani and the world. The strength of the Museo Nivola lies, if anything, in the possibility of holding these two dimensions together. On one side, an artist fully part of the international culture of the twentieth century; on the other, a biography and an imaginary profoundly rooted in the island."
         },
@@ -5484,6 +5520,12 @@
           "content": "In the coming months, this work will continue through a rereading of the permanent collection. The temporary departure of some works for the exhibition dedicated to Nivola at the Triennale di Milano will become an occasion to rethink the display, to return to studying the storerooms, to present lesser-known works and to create other connections. We want scientific research to be able to speak with educational activity, every exhibition to be able to generate an experience within public space, the heritage to be continuously reread through the “sentiment of the present”, and the museum to continue to be perceived by the community as a belonging."
         },
         {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mt8phwxzw8tcdl.jpg",
+          "caption": "Piazza Satta, Nuoro, 1967. Architect Richard Stein. Photo C. Nivola. Courtesy Museo Nivola",
+          "align": "center"
+        },
+        {
           "type": "text",
           "content": "It is a dynamic that, in the end, already belonged to Nivola: crossing the world without losing the bond with the place one set out from. And this is perhaps the model of museum we are interested in continuing to build: not a closed place that preserves a legacy, but an organism capable of putting it back into circulation, continuously."
         }
@@ -5491,7 +5533,8 @@
       "authorId": "author-1784732936927-kw554",
       "draft": true,
       "previewToken": "bf6e06015612b1dfa06d7e68",
-      "updatedAt": "2026-08-25T13:29:04.000Z"
+      "updatedAt": "2026-08-25T13:35:39.000Z",
+      "showCover": true
     }
   ],
   "reviews": [
@@ -6143,6 +6186,17 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
           "articleId": 23,
           "updatedAt": "2026-08-24T22:24:13.275Z"
+        },
+        {
+          "id": 23,
+          "title": "Где заканчивается музей и начинается деревня",
+          "subtitle": "Интервью",
+          "fig": "FIG. 14",
+          "description": "Команда Museo Nivola в Orani на границе между музеем и его деревней, о наследовании метода Costantino Nivola, а не его форм, и о том, чем может стать монографический музей.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt8phvdsl4ilhu.jpg",
+          "articleId": 26,
+          "draft": true,
+          "updatedAt": "2026-08-25T13:37:24.013Z"
         }
       ],
       "articles": [
@@ -9886,6 +9940,17 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
           "articleId": 23,
           "updatedAt": "2026-08-24T22:24:15.125Z"
+        },
+        {
+          "id": 23,
+          "title": "Де закінчується музей і починається село",
+          "subtitle": "Інтерв'ю",
+          "fig": "FIG. 14",
+          "description": "Команда Museo Nivola в Orani на кордоні між музеєм і його селом, про успадкування методу Costantino Nivola, а не його форм, і про те, чим може стати монографічний музей.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt8phvdsl4ilhu.jpg",
+          "articleId": 26,
+          "draft": true,
+          "updatedAt": "2026-08-25T13:37:25.713Z"
         }
       ],
       "articles": [
@@ -13629,6 +13694,17 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
           "articleId": 23,
           "updatedAt": "2026-08-24T22:24:16.716Z"
+        },
+        {
+          "id": 23,
+          "title": "Wo das Museum endet und das Dorf beginnt",
+          "subtitle": "Interview",
+          "fig": "FIG. 14",
+          "description": "Das Team des Museo Nivola in Orani an der Grenze zwischen einem Museum und seinem Dorf, über die Erbschaft von Costantino Nivolas Methode anstelle seiner Formen, und darüber, was ein monografisches Museum noch werden kann.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt8phvdsl4ilhu.jpg",
+          "articleId": 26,
+          "draft": true,
+          "updatedAt": "2026-08-25T13:37:27.136Z"
         }
       ],
       "articles": [
@@ -16599,6 +16675,127 @@
             }
           ],
           "updatedAt": "2026-08-24T21:11:43.158Z"
+        },
+        {
+          "id": 26,
+          "title": "Wo das Museum endet und das Dorf beginnt",
+          "author": "Viacheslav Munister",
+          "role": "Autor",
+          "date": "25. Aug. 2026",
+          "excerpt": "Das Team des Museo Nivola in Orani an der Grenze zwischen einem Museum und seinem Dorf, bei der Übernahme von Costantino Nivolas Methode anstelle seiner Formen, und darüber, was ein monografisches Museum noch werden kann.",
+          "category": "interview",
+          "subcategory": "Feature",
+          "tags": [
+            "Interview",
+            "architektur",
+            "sardinien",
+            "museum",
+            "Costantino Nivola"
+          ],
+          "imageSeed": "",
+          "imageUrl": "",
+          "content": [
+            {
+              "type": "text",
+              "content": "Costantino Nivola wurde 1911 in Orani geboren, einem Dorf in den Barbagia-Hügeln im zentralen Sardinien, Sohn eines Maurers. Er reiste nach Mailand, dann nach Paris, dann nach New York, lehrte an der Harvard Graduate School of Design und arbeitete neben Le Corbusier, Josep Lluís Sert und Eero Saarinen. Er hörte nie auf zurückzukehren. 1958 brachte er seine Skulpturen zurück auf die Straßen von Orani, und heute steht das Museum, das seinen Namen trägt, auf dem Hügel über dem Dorf."
+            },
+            {
+              "type": "text",
+              "content": "Wir sprachen mit dem Team des Museo Nivola über wo ein Museum endet und ein Dorf beginnt, über das Erben einer Methode anstelle eines Satzes von Formen, und darüber, was ein monografisches Museum werden kann, wenn es sich weigert, ein Mausoleum zu sein."
+            },
+            {
+              "type": "text",
+              "content": "<b>Wo, Ihrer Ansicht nach, endet das Museo Nivola und beginnt Orani? Kann das Dorf, seine Landschaft und seine Bewohner als Fortsetzung des Museumsraums betrachtet werden?</b>"
+            },
+            {
+              "type": "text",
+              "content": "In einem Ort wie Orani, angesichts seiner Geschichte und seiner Natur, ist die Grenze zwischen Museum und Dorf schwer zu ziehen. Das Museum selbst entsteht an einer bestimmten Position: auf dem Hügel, eingebettet in die Landschaft und gleichzeitig der Steigung zugewandt, auf der das Dorf ansteigt. Seine Architektur baut keinen Bruch mit seinem Kontext, sondern stellt ständig Beziehungen zu dem her, was es umgibt: die Vegetation, die Form des Tals, die Quelle von Su Càntaru und vor allem die Gemeinschaft."
+            },
+            {
+              "type": "text",
+              "content": "Diese Beziehung ist noch tiefer, wenn wir an Nivolas eigenes Werk denken, denn Orani ist eine Präsenz, die sich durch all seine Forschungen zieht und in den Materialien, in seinen Kindheitserinnerungen, in der Erfahrung seines Vaters, des Maurers, in seinem Verständnis von öffentlichem Raum und der Beziehung zum sozialen Leben eines Ortes sichtbar ist. Im Projekt <i>Pergola Village</i> von 1953 stellte sich Nivola vor, die Häuser des Dorfes idealerweise und physisch durch Weinpergolen zu verbinden, wodurch die Straßen zu gemeinsamem sozialem Raum wurden. 1958, bei seiner Rückkehr nach Orani, machte er das Graffiti an der Fassade der Kirche Nostra Signora d’Itria und brachte seine Skulpturen direkt auf die Straßen, wobei er die Einwohner in eine Erfahrung einbezog, die weit über das traditionelle Modell der Ausstellung hinausgeht."
+            },
+            {
+              "type": "text",
+              "content": "Deshalb denken wir gerne, dass das Museo Nivola nicht an der Schwelle des Gebäudes endet: Das Dorf ist keine Erweiterung des Museums im Sinne einer Musealisierung des Territoriums, sondern ein lebendiger Gesprächspartner."
+            },
+            {
+              "type": "text",
+              "content": "Die Herausforderung besteht genau darin, zu verhindern, dass Orani zu einem Hintergrund wird oder eine Art diffuses Museum, das in der Vergangenheit kristallisiert ist. Wir sind daran interessiert, weiterhin eine Beziehung aufzubauen, in der das Museum Teil des Lebens des Dorfes ist und das Dorf immer wieder das Museum betritt, durch Menschen, durch Erinnerung, durch Bildungsaktivitäten, Projekte im öffentlichen Raum und neue Formen kultureller Produktion."
+            },
+            {
+              "type": "text",
+              "content": "<b>Nivola glaubte fest an die Integration von Kunst und Architektur. Wie aktuell ist diese Idee heute und was kann sie neuen Generationen von Künstlern, Architekten und Designern lehren?</b>"
+            },
+            {
+              "type": "text",
+              "content": "Das ist die große Aktualität seines Denkens. Heute, vielleicht sogar mehr als damals, als Nivola begann, in diese Richtung zu arbeiten. Für ihn bedeutete die Integration von Kunst und Architektur nicht einfach, ein Werk in ein Gebäude oder auf seine Fassade zu setzen. Es bedeutete, Raum, Materie, Funktion und die Erfahrung dessen, der diesen Raum bewohnen würde, alles zusammen zu konzipieren. Das berühmte Gesamtprojekt."
+            },
+            {
+              "type": "text",
+              "content": "Nivola arbeitete mit einigen der großen Protagonisten der modernen Architektur, versuchte die disziplinäre Trennung zwischen Künstler, Architekt und Designer zu überwinden. Sein Interesse galt dem Raum als Gesamterlebnis. Skulptur konnte zur Wand werden, Relief konnte Teil der Architektur werden, der Innenhof ein Begegnungsort. Sogar der Stadtplan sollte ein Instrument zur Stärkung sozialer Beziehungen sein."
+            },
+            {
+              "type": "text",
+              "content": "Hinter der Idee der Integration zwischen den Künsten steckt noch etwas Weiteres: eine Konzeption von Kunst als Instrument, das die Qualität des kollektiven Lebens beeinflussen kann."
+            },
+            {
+              "type": "text",
+              "content": "Nivola lädt uns ein, aus zu starren Kategorien auszubrechen. Er lädt uns ein, zu fragen, für wen ein Raum gestaltet ist, wer ihn nutzen wird, welche Beziehungen er erzeugen wird. In einem Moment, in dem Architektur, Kunst und Design aufgefordert sind, Umwelt- und Sozialfragen sowie neue Weisen des Wohnens zu konfrontieren, erscheint sein interdisziplinärer Ansatz überraschend zeitgenössisch."
+            },
+            {
+              "type": "text",
+              "content": "Es geht natürlich nicht nur darum, seine Formen und Sprachen einfach zu reproduzieren, sondern seine Methode zu erben: durch Dialog zwischen Disziplinen zu arbeiten, Aufmerksamkeit auf Materialien und Kontext zu richten und Raum als etwas zu betrachten, das Verhaltensweisen, Begegnungen und Gemeinschaftsformen orientieren kann; nicht als neutraler Behälter."
+            },
+            {
+              "type": "text",
+              "content": "<b>Was kann ein Museum an seinem Geburtsort über Costantino Nivola erzählen, das eine bedeutende internationale Institution nicht auf die gleiche Weise vermitteln könnte?</b>"
+            },
+            {
+              "type": "text",
+              "content": "Eine internationale Institution kann Nivola im Rahmen der globalen Kunstgeschichte und der Architektur des zwanzigsten Jahrhunderts erzählen, seine Beziehungen zu New York, zur Harvard Graduate School of Design, zu Architekten wie Le Corbusier, Josep Lluís Sert oder Eero Saarinen rekonstruieren und das außergewöhnliche kulturelle Netzwerk, in dem er sich bewegte, zurückgeben."
+            },
+            {
+              "type": "text",
+              "content": "Orani kann etwas anderes erzählen, die Entstehung dieses Blicks zeigen, seine anthropologischen Gründe."
+            },
+            {
+              "type": "text",
+              "content": "Hier hören einige der zentralen Fragen in seiner Arbeit auf, nur noch Kunsthistorikthemen zu sein, und erlangen eine konkrete Dimension. Seine Beziehung zur Materie bezieht sich auf die Geologie seines Landes sowie auf familiäre Erfahrungen und den Beruf seines Vaters. Die Aufmerksamkeit für Gemeinschaft, das Thema der Teilnahme, erhält eine entscheidende Bedeutung. Ein Museum am Ort des Ursprungs hat Zugang zu einer Erinnerung, die nicht nur dokumentarisch ist. Es gibt eine mündliche, volkstümliche, alltägliche Erinnerung, gemacht von Menschen, die sich an ihn erinnern oder die die Erinnerung früherer Generationen gesammelt haben. Es gibt das Licht, die Stille, die Bewegung der Landschaft: Elemente, die schwer in einer Ausstellung wiederherzustellen sind, und die eine Sprache, eine Erzählung, einen verwurzelten und bewussten Ansatz erfordern."
+            },
+            {
+              "type": "text",
+              "content": "Das bedeutet nicht, Nivola ausschließlich durch Sardinien zu lesen: Das wäre ebenso reduktiv, weil seine künstlerische Identität genau aus der Begegnung zwischen Orani und der Welt geboren wird. Die Stärke des Museo Nivola liegt, wenn überhaupt, in der Möglichkeit, diese beiden Dimensionen zusammenzuhalten. Einerseits ein Künstler, der vollständig Teil der internationalen Kultur des zwanzigsten Jahrhunderts ist; andererseits eine Biografie und eine Vorstellung, die tief in der Insel verwurzelt sind."
+            },
+            {
+              "type": "text",
+              "content": "Vielleicht ist das, was das Museo Nivola auf einzigartige Weise bieten kann, genau die Möglichkeit zu verstehen, dass diese beiden Dimensionen nicht im Widerspruch zueinander stehen."
+            },
+            {
+              "type": "text",
+              "content": "<b>Könnten Sie uns, soweit möglich, über Ihre Pläne für die Zukunft und die Entwicklung des Museo Nivola berichten? Wir waren besonders beeindruckt davon, wie das Museum über den traditionellen Ausstellungsraum hinausgeht und einen Dialog zwischen Kunst, Architektur, Landschaft und dem Dorf Orani schafft. Wie stellen Sie sich die nächste Phase seiner Entwicklung vor?</b>"
+            },
+            {
+              "type": "text",
+              "content": "Die Richtung, die wir einschlagen, besteht darin, genau diese hybride Identität des Museo Nivola zu vertiefen: ein monografisches Museum als Forschungszentrum, als Ort, der dem Zeitgenössischen, der Architektur, der Landschaft, der Bildung und erneut der Gemeinschaft gewidmet ist."
+            },
+            {
+              "type": "text",
+              "content": "Das neue Programm <i>Nivola vis-à-vis</i> entsteht aus diesem Bedürfnis. Nach einer Reihe von Ausstellungen, die zeitgenössischen Künstlern gewidmet sind, kehrt unsere Vision zurück, Nivola direkt zu hinterfragen, ihn in Beziehung zu den Figuren, Erfahrungen und Fragen seiner Zeit zu setzen. Es geht nicht nur darum, formale Vergleiche zu erstellen, sondern Nivolas Werk als Ausgangspunkt für Themen zu analysieren, die noch immer lebendig und notwendig sind: Raum und Körper, Architektur und Design, die Durchdringung von Kunst und Umwelt. Die Ausstellung <i>Nivola, Colombo e lo spazio intorno</i>, die derzeit zu sehen ist, reflektiert beispielsweise über Raum als physische und relationale Erkenntnis. Um sie herum kreisen wichtige Überlegungen darüber, was Nivolas Forschung weiterhin für die Gegenwart vorschlägt. Welche Aspekte seines Werks erscheinen noch offen, dringend und produktiv? Im internationalen Diskurs ist es grundlegend, ihr Gestaltungspotenzial wiederzubeleben, die Fragen, die Nivola vor über siebzig Jahren über die Beziehung zwischen Kunst und Gesellschaft, zwischen Bildung und Fantasie, zwischen Projekt und Alltag stellte, wieder in den Mittelpunkt der aktuellen Diskussion zu rücken."
+            },
+            {
+              "type": "text",
+              "content": "In den kommenden Monaten wird diese Arbeit durch eine Neuinterpretation der Dauerausstellung fortgesetzt. Der temporäre Abzug einiger Werke für die Ausstellung, die Nivola bei der Triennale di Milano gewidmet ist, wird zur Gelegenheit, die Präsentation neu zu überdenken, die Lager wieder zu studieren, weniger bekannte Werke zu präsentieren und weitere Verbindungen zu schaffen. Wir möchten, dass wissenschaftliche Forschung mit Bildungsaktivitäten sprechen kann, jede Ausstellung eine Erfahrung im öffentlichen Raum erzeugen kann, das Erbe kontinuierlich durch das „Gefühl der Gegenwart“ neu gelesen wird und das Museum weiterhin von der Gemeinschaft als Zugehörigkeit wahrgenommen wird."
+            },
+            {
+              "type": "text",
+              "content": "Es ist eine Dynamik, die letztlich bereits Nivola gehörte: die Welt zu durchqueren, ohne die Verbindung zum Ort zu verlieren, von dem man ausgegangen ist. Und das ist vielleicht das Modell eines Museums, das wir weiterhin aufbauen möchten: kein geschlossener Ort, der ein Vermächtnis bewahrt, sondern ein Organismus, der es kontinuierlich wieder in Umlauf bringt."
+            }
+          ],
+          "authorId": "author-1784732936927-kw554",
+          "draft": true,
+          "previewToken": "bf6e06015612b1dfa06d7e68",
+          "updatedAt": "2026-08-25T13:35:56.510Z"
         }
       ],
       "reviews": [
@@ -17251,6 +17448,17 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
           "articleId": 23,
           "updatedAt": "2026-08-24T22:24:19.298Z"
+        },
+        {
+          "id": 23,
+          "title": "Donde termina el Museo y comienza la aldea",
+          "subtitle": "Entrevista",
+          "fig": "FIG. 14",
+          "description": "El equipo del Museo Nivola en Orani en la frontera entre un museo y su aldea, sobre heredar el método de Costantino Nivola en lugar de sus formas, y sobre en qué puede convertirse aún un museo monográfico.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt8phvdsl4ilhu.jpg",
+          "articleId": 26,
+          "draft": true,
+          "updatedAt": "2026-08-25T13:37:28.802Z"
         }
       ],
       "articles": [
@@ -20221,6 +20429,127 @@
             }
           ],
           "updatedAt": "2026-08-24T20:41:43.444Z"
+        },
+        {
+          "id": 26,
+          "title": "Donde termina el Museo y comienza el pueblo",
+          "author": "Viacheslav Munister",
+          "role": "Autor",
+          "date": "25 de ago, 2026",
+          "excerpt": "El equipo del Museo Nivola en Orani en la frontera entre un museo y su pueblo, sobre heredar el método de Costantino Nivola en lugar de sus formas, y sobre lo que un museo monográfico aún puede convertirse.",
+          "category": "entrevista",
+          "subcategory": "Característica",
+          "tags": [
+            "Entrevista",
+            "arquitectura",
+            "sardinia",
+            "museo",
+            "Costantino Nivola"
+          ],
+          "imageSeed": "",
+          "imageUrl": "",
+          "content": [
+            {
+              "type": "texto",
+              "content": "Costantino Nivola nació en 1911 en Orani, un pueblo en las colinas de Barbagia en el centro de Cerdeña, hijo de un albañil. Se fue a Milán, luego a París, luego a Nueva York, enseñó en la Harvard Graduate School of Design y trabajó junto a Le Corbusier, Josep Lluís Sert y Eero Saarinen. Nunca dejó de volver. En 1958 llevó sus esculturas de regreso a las calles de Orani, y hoy el museo que lleva su nombre se encuentra en la ladera sobre el pueblo."
+            },
+            {
+              "type": "texto",
+              "content": "Hablamos con el equipo del Museo Nivola sobre dónde termina un museo y comienza un pueblo, sobre heredar un método en lugar de un conjunto de formas, y sobre lo que un museo monográfico puede llegar a ser cuando se niega a ser un mausoleo."
+            },
+            {
+              "type": "texto",
+              "content": "<b>¿Dónde, en su opinión, termina el Museo Nivola y comienza Orani? ¿Se puede considerar que el pueblo, su paisaje y sus habitantes son una continuación del espacio del museo?</b>"
+            },
+            {
+              "type": "texto",
+              "content": "En un lugar como Orani, dada su historia y su naturaleza, la frontera entre museo y pueblo es difícil de trazar. El propio museo nace en una posición particular: en la colina, inmerso en el paisaje y al mismo tiempo enfrentando la pendiente por la que sube el pueblo. Su arquitectura no crea una ruptura con su contexto, sino que establece continuamente relaciones con lo que lo rodea: la vegetación, la forma del valle, el manantial de Su Càntaru y, sobre todo, la comunidad."
+            },
+            {
+              "type": "texto",
+              "content": "Esta relación es aún más profunda si pensamos en el propio trabajo de Nivola, porque Orani es una presencia que atraviesa toda su investigación y es evidente en los materiales, en sus recuerdos de infancia, en la experiencia de su padre el albañil, en su concepción del espacio público y de la relación con la vida social de un lugar. En el proyecto de 1953 <i>Pergola Village</i>, Nivola imaginó conectar las casas del pueblo, ideal y físicamente, mediante pérgolas de vid, convirtiendo las calles en un espacio social compartido. En 1958, al regresar a Orani, realizó el graffiti en la fachada de la iglesia de Nostra Signora d’Itria y llevó sus esculturas directamente a las calles, involucrando a los habitantes en una experiencia que va mucho más allá del modelo tradicional de la exposición."
+            },
+            {
+              "type": "texto",
+              "content": "Por eso nos gusta pensar que el Museo Nivola no termina en el umbral del edificio: el pueblo no es una extensión del museo en el sentido de una musealización del territorio, sino más bien un interlocutor vivo."
+            },
+            {
+              "type": "texto",
+              "content": "El desafío es precisamente evitar que Orani se convierta en un telón de fondo, o en una especie de museo difuso cristalizado en el pasado. Nos interesa seguir construyendo una relación en la que el museo sea parte de la vida del pueblo y el pueblo siga entrando en el museo, a través de las personas, de la memoria, de actividades educativas, proyectos en el espacio público y nuevas formas de producción cultural."
+            },
+            {
+              "type": "texto",
+              "content": "<b>Nivola creía profundamente en la integración del arte y la arquitectura. ¿Qué tan vigente es esa idea hoy en día, y qué puede enseñar a las nuevas generaciones de artistas, arquitectos y diseñadores?</b>"
+            },
+            {
+              "type": "text",
+              "content": "Esa es la gran actualidad de su pensamiento. Hoy, quizás, incluso más que cuando Nivola comenzó a trabajar en esta dirección. Para él, la integración del arte y la arquitectura no significaba simplemente colocar una obra dentro de un edificio o en su fachada. Significaba concebir espacio, materia, función y la experiencia de quien habitaría ese espacio en conjunto. El famoso proyecto total."
+            },
+            {
+              "type": "text",
+              "content": "Nivola trabajó con algunos de los grandes protagonistas de la arquitectura moderna, intentando superar la separación disciplinaria entre artista, arquitecto y diseñador. Su interés se dirigía al espacio como una experiencia global. La escultura podía convertirse en pared, el relieve en parte de la arquitectura, el patio en un lugar de encuentro. Incluso el plan urbano debía ser un instrumento para fortalecer las relaciones sociales."
+            },
+            {
+              "type": "text",
+              "content": "Detrás de la idea de integración entre las artes hay algo aún más amplio: una concepción del arte como un instrumento capaz de afectar la calidad de la vida colectiva."
+            },
+            {
+              "type": "text",
+              "content": "Nivola nos invita a salir de categorías demasiado rígidas. Nos invita a preguntar para quién está diseñado un espacio, quién lo usará, qué relaciones producirá. En un momento en que la arquitectura, el arte y el diseño deben confrontar cuestiones ambientales y sociales y nuevas formas de habitar, su enfoque interdisciplinario aparece sorprendentemente contemporáneo."
+            },
+            {
+              "type": "texto",
+              "content": "No es, por supuesto, una cuestión de simplemente reproducir sus formas y lenguajes, sino de heredar su método: trabajar a través del diálogo entre disciplinas, mantener la atención en los materiales y en el contexto, y considerar el espacio como algo que puede orientar comportamientos, encuentros y formas de comunidad; no como un contenedor neutral."
+            },
+            {
+              "type": "texto",
+              "content": "<b>¿Qué puede decirnos un museo ubicado en su lugar de origen sobre Costantino Nivola que una institución internacional importante no pudiera decir de la misma manera?</b>"
+            },
+            {
+              "type": "texto",
+              "content": "Una institución internacional puede situar a Nivola dentro de la dimensión de la historia del arte global y la arquitectura del siglo XX, reconstruir sus relaciones con Nueva York, con la Harvard Graduate School of Design, con arquitectos como Le Corbusier, Josep Lluís Sert o Eero Saarinen, y devolver la red cultural extraordinaria en la que se movía."
+            },
+            {
+              "type": "texto",
+              "content": "Orani puede contar algo diferente, mostrando la génesis de esa mirada, sus razones antropológicas."
+            },
+            {
+              "type": "texto",
+              "content": "Aquí algunas de las preguntas centrales en su trabajo dejan de ser meramente temas histórico-artísticos y adquieren una dimensión concreta. Su relación con la materia remite a la geología de su tierra, así como a la experiencia familiar y al oficio de su padre. La atención a la comunidad, el tema de la participación, adquieren un significado crucial. Un museo en el lugar de origen tiene acceso a una memoria que no es solo documental. Existe una memoria oral, vernácula, cotidiana, hecha de personas que lo recuerdan o que han reunido la memoria de generaciones anteriores. Están la luz, los silencios, el movimiento del paisaje: elementos difíciles de restaurar dentro de una exposición, y que requieren un lenguaje, una narración, un enfoque arraigado y consciente."
+            },
+            {
+              "type": "texto",
+              "content": "Esto no significa leer a Nivola exclusivamente a través de Cerdeña: eso sería igualmente reductivo, porque su identidad artística nace precisamente del encuentro entre Orani y el mundo. La fuerza del Museo Nivola radica, si acaso, en la posibilidad de mantener juntas estas dos dimensiones. Por un lado, un artista completamente parte de la cultura internacional del siglo XX; por otro, una biografía y un imaginario profundamente arraigados en la isla."
+            },
+            {
+              "type": "texto",
+              "content": "Quizás lo que el Museo Nivola puede ofrecer de manera única es exactamente la posibilidad de entender que estas dos dimensiones no están en contradicción."
+            },
+            {
+              "type": "texto",
+              "content": "<b>¿Podría contarnos, en la medida de lo posible, sus planes para el futuro y para el desarrollo del Museo Nivola? Nos impresionó especialmente la forma en que el museo va más allá del espacio de exposición tradicional, creando un diálogo entre arte, arquitectura, paisaje y el pueblo de Orani. ¿Cómo imagina la próxima fase de su evolución?</b>"
+            },
+            {
+              "type": "texto",
+              "content": "La dirección que seguimos es profundizar precisamente en esta identidad híbrida del Museo Nivola: un museo monográfico como centro de investigación, como lugar dedicado a lo contemporáneo, a la arquitectura, al paisaje, a la educación y, una vez más, a la comunidad."
+            },
+            {
+              "type": "texto",
+              "content": "El nuevo programa <i>Nivola vis-à-vis</i> surge de esa necesidad. Después de una serie de exposiciones dedicadas a artistas contemporáneos, nuestra visión vuelve a cuestionar directamente a Nivola, colocándolo en relación con las figuras, experiencias y preguntas de su tiempo. No se trata simplemente de construir comparaciones formales, sino de analizar la obra de Nivola como punto de partida para temas que aún son vitales y necesarios: espacio y cuerpo, arquitectura y diseño, la interpenetración del arte y el medio ambiente. La exposición <i>Nivola, Colombo e lo spazio intorno</i>, actualmente en exhibición, reflexiona por ejemplo sobre el espacio como cognición física y relacional. Alrededor de ella orbitan reflexiones importantes sobre lo que la investigación de Nivola sigue sugiriendo al presente. ¿Qué aspectos de su obra aún parecen abiertos, urgentes y productivos? Dentro del debate internacional, es fundamental reactivar su potencial de diseño, devolviendo al centro del discurso actual las preguntas que Nivola planteó hace más de setenta años sobre la relación entre arte y sociedad, entre educación e imaginación, entre el proyecto y la vida cotidiana."
+            },
+            {
+              "type": "texto",
+              "content": "En los próximos meses, este trabajo continuará a través de una reinterpretación de la colección permanente. La salida temporal de algunas obras para la exposición dedicada a Nivola en la Triennale di Milano será una ocasión para repensar la exhibición, volver a estudiar las bodegas, presentar obras menos conocidas y crear otras conexiones. Queremos que la investigación científica pueda dialogar con la actividad educativa, que cada exposición pueda generar una experiencia dentro del espacio público, que el patrimonio sea reinterpretado continuamente a través del «sentimiento del presente», y que el museo siga siendo percibido por la comunidad como un pertenecer."
+            },
+            {
+              "type": "texto",
+              "content": "Es una dinámica que, en última instancia, ya pertenecía a Nivola: cruzar el mundo sin perder el vínculo con el lugar desde el que se partió. Y quizás este sea el modelo de museo que nos interesa seguir construyendo: no un lugar cerrado que preserve un legado, sino un organismo capaz de ponerlo en circulación, de manera continua."
+            }
+          ],
+          "authorId": "author-1784732936927-kw554",
+          "draft": true,
+          "previewToken": "bf6e06015612b1dfa06d7e68",
+          "updatedAt": "2026-08-25T13:36:30.606Z"
         }
       ],
       "reviews": [
@@ -20879,6 +21208,17 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
           "articleId": 23,
           "updatedAt": "2026-08-24T22:24:21.077Z"
+        },
+        {
+          "id": 23,
+          "title": "Müze Nerede Biter ve Köy Nerede Başlar",
+          "subtitle": "Röportaj",
+          "fig": "FIG. 14",
+          "description": "Orani'deki Museo Nivola ekibi, müze ile köy arasındaki sınırda, Costantino Nivola'nın biçimlerinden çok yöntemini miras alması ve monografik bir müzenin hâlâ ne olabileceği üzerine.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt8phvdsl4ilhu.jpg",
+          "articleId": 26,
+          "draft": true,
+          "updatedAt": "2026-08-25T13:37:30.841Z"
         }
       ],
       "articles": [
@@ -23849,6 +24189,127 @@
             }
           ],
           "updatedAt": "2026-08-24T21:12:54.786Z"
+        },
+        {
+          "id": 26,
+          "title": "Müze Nerede Biter ve Köy Nerede Başlar",
+          "author": "Viacheslav Munister",
+          "role": "Yazar",
+          "date": "25 Ağustos 2026",
+          "excerpt": "Orani'deki Museo Nivola ekibi, bir müze ile köyü arasındaki sınırda, Costantino Nivola'nın biçimlerinden çok yöntemini miras alırken ve monografik bir müzenin hâlâ ne olabileceği üzerine.",
+          "category": "röportaj",
+          "subcategory": "Özellik",
+          "tags": [
+            "Röportaj",
+            "mimari",
+            "sardinya",
+            "müze",
+            "Costantino Nivola"
+          ],
+          "imageSeed": "",
+          "imageUrl": "",
+          "content": [
+            {
+              "type": "metin",
+              "content": "Costantino Nivola 1911 yılında Orani'de, Sardinya'nın orta kesimindeki Barbagia tepelerindeki bir köyde, bir duvar ustasının oğlu olarak doğdu. Milano'ya, sonra Paris'e, ardından New York'a gitti, Harvard Yüksek Tasarım Okulu'nda öğretim yaptı ve Le Corbusier, Josep Lluís Sert ve Eero Saarinen ile birlikte çalıştı. Asla geri dönmekten vazgeçmedi. 1958 yılında heykellerini tekrar Orani sokaklarına getirdi ve bugün onun adını taşıyan müze köyün üzerindeki tepede duruyor."
+            },
+            {
+              "type": "metin",
+              "content": "Museo Nivola ekibiyle, bir müzenin nerede bittiği ve bir köyün nerede başladığı, bir yöntem miras almak ile biçim seti değil, ve monografik bir müze mezar olmaktan vazgeçtiğinde ne olabileceği hakkında konuştuk."
+            },
+            {
+              "type": "metin",
+              "content": "<b>Sizin görüşünüze göre, Museo Nivola nerede biter ve Orani nerede başlar? Köy, manzarası ve sakinleri müze alanının bir devamı olarak kabul edilebilir mi?</b>"
+            },
+            {
+              "type": "metin",
+              "content": "Orani gibi bir yerde, tarihi ve doğası göz önüne alındığında, müze ile köy arasındaki sınır çizmek zordur. Müzeyi kendisi belirli bir konumda doğar: tepenin üzerinde, manzaraya gömülü ve aynı zamanda köyün tırmandığı yokuşa bakan. Mimarlığı, bağlamıyla bir kopuş inşa etmek yerine, sürekli olarak çevresiyle ilişkiler kurar: bitki örtüsü, vadi şekli, Su Càntaru'nun kaynağı ve en önemlisi, topluluk."
+            },
+            {
+              "type": "text",
+              "content": "Bu ilişki, Nivola’nın kendi çalışmasını düşündüğümüzde daha da derinleşir, çünkü Orani, tüm araştırmalarında yer alan ve malzemelerde, çocukluk anılarında, babası duvar ustasının deneyiminde, kamusal alan kavramında ve bir yerin sosyal yaşamıyla ilişkide belirgin olan bir varlıktır. 1953 projesinde <i>Pergola Village</i>, Nivola, köyün evlerini, ideali ve fiziksel olarak, asma pergolalarla bağlamayı hayal etti ve sokakları ortak sosyal alanlara dönüştürdü. 1958’de, Orani’ye dönerken, Nostra Signora d’Itria kilisesinin cephesine grafiti yaptı ve heykellerini doğrudan sokaklara taşıdı, sakinleri geleneksel sergi modelinin çok ötesine geçen bir deneyime dahil etti."
+            },
+            {
+              "type": "text",
+              "content": "İşte bu yüzden, Museo Nivola’nın binanın eşiğinde sona ermediğini düşünmeyi seviyoruz: köy, alanın müzeyleştirilmesi anlamında bir müzeye uzantı değildir, daha çok yaşayan bir muhataptır."
+            },
+            {
+              "type": "text",
+              "content": "Sorun tam da Orani’nin bir fon perde veya geçmişte kristalleşmiş bir tür yaygın müzeye dönüşmesini engellemektir. İlgi alanımız, müzenin köyün yaşamının bir parçası olduğu ve köyün insanların, hafızanın, eğitim faaliyetlerinin, kamusal alandaki projelerin ve yeni kültürel üretim biçimlerinin aracılığıyla müzeye girmeye devam ettiği bir ilişki kurmaya devam etmektir."
+            },
+            {
+              "type": "text",
+              "content": "<b>Nivola, sanat ve mimarinin bütünleşmesine derinden inanıyordu. Bu fikir bugün ne kadar güncel ve yeni nesil sanatçılara, mimarlara ve tasarımcılara ne öğretebilir?</b>"
+            },
+            {
+              "type": "metin",
+              "content": "İşte onun düşüncesinin büyük güncelliği budur. Bugün, belki de, Nivola bu yönde çalışmaya başladığından çok daha fazla. Onun için, sanat ve mimarinin entegrasyonu sadece bir eseri bir bina içine veya cephesine yerleştirmek anlamına gelmedi. Mekanı, maddeyi, fonksiyonu ve o mekanda yaşayacak olanın deneyimini birlikte tasavvur etmeyi ifade ediyordu. Ünlü toplam proje."
+            },
+            {
+              "type": "metin",
+              "content": "Nivola, modern mimarinin bazı büyük figürleriyle çalıştı, sanatçı, mimar ve tasarımcı arasındaki disiplinlerarası ayrımı aşmaya çalıştı. Onun ilgisi, mekânı genel bir deneyim olarak görmeye yönelmişti. Heykel duvar haline gelebilirdi, kabartma mimarinin bir parçası olabilirdi, avlu bir buluşma yeri olabilirdi. Hatta kentsel plan, sosyal ilişkileri güçlendirmek için bir araç olmalıydı."
+            },
+            {
+              "type": "metin",
+              "content": "Sanatlar arasındaki entegrasyon fikrinin arkasında daha geniş bir şey yatıyor: sanatın, kolektif yaşam kalitesini etkileyebilen bir araç olarak kavranması."
+            },
+            {
+              "type": "metin",
+              "content": "Nivola, bizi çok katı kategorilerden çıkmaya davet ediyor. Bir mekânın kim için tasarlandığını, kimlerin kullanacağını, hangi ilişkileri üreteceğini sormaya davet ediyor. Mimarlık, sanat ve tasarımın çevresel ve sosyal sorularla yüzleşmeye ve yeni yaşam biçimleri aramaya çağrıldığı bir dönemde, onun disiplinlerarası yaklaşımı şaşırtıcı derecede çağdaş görünüyor."
+            },
+            {
+              "type": "text",
+              "content": "Elbette, sadece onun formlarını ve dillerini yeniden üretmek değil, onun yöntemini miras almakla ilgilidir: disiplinler arasında diyalog yoluyla çalışmak, malzemelere ve bağlama dikkat etmek ve alanı, davranışları, karşılaşmaları ve topluluk biçimlerini yönlendirebilecek bir şey olarak düşünmek; nötr bir kap olarak değil."
+            },
+            {
+              "type": "text",
+              "content": "<b>Onun doğduğu yerde bulunan bir müze, Costantino Nivola hakkında bize ne söyleyebilir ki, aynı şekilde anlatamayacak büyük bir uluslararası kurum?</b>"
+            },
+            {
+              "type": "text",
+              "content": "Uluslararası bir kurum, Nivola'yı küresel sanat tarihi ve yirminci yüzyıl mimarisi boyutunda anlatabilir, onun New York ile, Harvard Graduate School of Design ile, Le Corbusier, Josep Lluís Sert veya Eero Saarinen gibi mimarlarla ilişkilerini yeniden kurabilir ve onun hareket ettiği olağanüstü kültürel ağı geri verebilir."
+            },
+            {
+              "type": "text",
+              "content": "Orani farklı bir şey anlatabilir, o bakışın kökenini, antropolojik nedenlerini gösterebilir."
+            },
+            {
+              "type": "text",
+              "content": "Buradaki bazı merkezi sorular onun çalışmasında sadece sanat-tarihi temalar olmaktan çıkıp somut bir boyut kazanır. Onun maddeyle ilişkisi, topraklarının jeolojisine, aile deneyimine ve babasının mesleğine geri döner. Topluma olan dikkat, katılım teması, hayati bir anlam kazanır. Köken yerinde bir müze, sadece belgesel olmayan bir hafızaya erişim sağlar. İnsanlardan oluşan sözlü, halk arasında kullanılan, günlük hafıza vardır; onu hatırlayanlar veya önceki nesillerin hafızasını toplayanlar. Işıklar, sessizlikler, manzaranın hareketi: sergi içinde yeniden oluşturulması zor olan unsurlar ve bunlar bir dil, bir anlatım, köklü ve bilinçli bir yaklaşım gerektirir."
+            },
+            {
+              "type": "text",
+              "content": "Bu, Nivola'yı sadece Sardinya üzerinden okumak anlamına gelmez: bu da aynı derecede indirgemeci olurdu, çünkü onun sanatsal kimliği tam da Orani ile dünya arasındaki karşılaşmadan doğar. Museo Nivola'nın gücü, eğer varsa, bu iki boyutu birlikte tutma olasılığında yatar. Bir yanda, yirminci yüzyılın uluslararası kültürüne tamamen entegre bir sanatçı; diğer yanda, adaya köklü bir şekilde bağlı bir biyografi ve hayali."
+            },
+            {
+              "type": "text",
+              "content": "Belki de Museo Nivola'nın benzersiz şekilde sunabileceği şey, bu iki boyutun çelişki içinde olmadığını anlamanın olasılığıdır."
+            },
+            {
+              "type": "text",
+              "content": "<b>Gelecek planlarınız ve Museo Nivola'nın gelişimi hakkında mümkün olduğunca bize bilgi verebilir misiniz? Müzenin geleneksel sergi alanının ötesine geçerek sanat, mimari, peyzaj ve Orani köyü arasında bir diyalog yaratması bizi özellikle etkiledi. Onun evrimindeki bir sonraki aşamayı nasıl hayal ediyorsunuz?</b>"
+            },
+            {
+              "type": "metin",
+              "content": "İzlediğimiz yön, Museo Nivola’nın bu hibrit kimliğini tam olarak derinleştirmektir: bir araştırma merkezi olarak monografik bir müze, çağdaş, mimarlık, peyzaj, eğitim ve tekrar topluluğa adanmış bir yer."
+            },
+            {
+              "type": "metin",
+              "content": "Yeni program <i>Nivola vis-à-vis</i> bu ihtiyaçtan doğar. Çağdaş sanatçılara adanmış bir dizi sergiden sonra, vizyonumuz doğrudan Nivola’ya yönelerek, onu zamanının figürleri, deneyimleri ve soruları ile ilişkilendirir. Bu, sadece biçimsel karşılaştırmalar kurmak meselesi değil, Nivola’nın çalışmalarını, hâlâ canlı ve gerekli olan temalar için bir başlangıç noktası olarak analiz etmektir: mekan ve beden, mimarlık ve tasarım, sanat ve çevre arasındaki iç içe geçiş. Şu anda görülen <i>Nivola, Colombo e lo spazio intorno</i> sergisi, örneğin, mekânı fiziksel ve ilişkisel biliş olarak yansıtır. Etrafında, Nivola’nın araştırmasının günümüze ne kadar devam ettiğine dair önemli yansımalar dolaşır. Hangi yönleriyle onun çalışması hâlâ açık, acil ve üretken görünmektedir? Uluslararası tartışma içinde, tasarım potansiyellerini yeniden canlandırmak ve Nivola’nın sanat ve toplum, eğitim ve hayal gücü, proje ve günlük yaşam arasındaki ilişki hakkında otuz yılı aşkın süre önce sorduğu soruları güncel tartışmanın merkezine getirmek temel önemdedir."
+            },
+            {
+              "type": "metin",
+              "content": "Önümüzdeki aylarda, bu çalışma kalıcı koleksiyonun yeniden okunmasıyla devam edecek. Milano Trienali’nde Nivola’ya adanmış sergi için bazı eserlerin geçici olarak ayrılması, sergiyi yeniden düşünmek, depolara dönmek, daha az bilinen eserleri sunmak ve diğer bağlantılar kurmak için bir fırsat haline gelecek. Bilimsel araştırmanın eğitim faaliyetleriyle konuşabilmesini, her serginin kamusal alanda bir deneyim yaratabilmesini, mirasın sürekli olarak “şimdinin duygusu” aracılığıyla yeniden okunmasını ve müzenin topluluk tarafından bir aidiyet olarak algılanmaya devam etmesini istiyoruz."
+            },
+            {
+              "type": "metin",
+              "content": "Sonuçta, Nivola’ya ait olan zaten bu dinamiktir: gidilen yerle bağını kaybetmeden dünyayı dolaşmak. Ve belki de ilgilendiğimiz müze modeli budur: bir mirası koruyan kapalı bir yer değil, onu sürekli olarak dolaşıma sokabilen bir organizma. "
+            }
+          ],
+          "authorId": "author-1784732936927-kw554",
+          "draft": true,
+          "previewToken": "bf6e06015612b1dfa06d7e68",
+          "updatedAt": "2026-08-25T13:36:56.958Z"
         }
       ],
       "reviews": [
@@ -24503,13 +24964,14 @@
         },
         {
           "id": 23,
-          "title": "Dove finisce il museo e dove comincia il paese",
+          "title": "Dove finisce il Museo e inizia il Villaggio",
           "subtitle": "Intervista",
           "fig": "FIG. 14",
-          "description": "Il Museo Nivola di Orani sul confine tra un museo e il suo paese, sull'eredità del metodo di Costantino Nivola più che delle sue forme, e su cosa può ancora diventare un museo monografico.",
-          "imageUrl": "",
+          "description": "Il team del Museo Nivola in Orani sul confine tra un museo e il suo villaggio, sull'eredità del metodo di Costantino Nivola piuttosto che delle sue forme, e su ciò che un museo monografico può ancora diventare.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt8phvdsl4ilhu.jpg",
           "articleId": 26,
-          "updatedAt": "2026-08-25T13:25:11.000Z"
+          "draft": true,
+          "updatedAt": "2026-08-25T13:37:32.392Z"
         }
       ],
       "articles": [
@@ -27536,13 +27998,13 @@
         },
         {
           "id": 26,
-          "title": "Dove finisce il museo e dove comincia il paese",
+          "title": "Dove finisce il Museo e inizia il Villaggio",
           "author": "Viacheslav Munister",
           "role": "Autore",
-          "date": "25 agosto 2026",
-          "excerpt": "Il Museo Nivola di Orani sul confine tra un museo e il suo paese, sull'eredità del metodo di Costantino Nivola più che delle sue forme, e su cosa può ancora diventare un museo monografico.",
+          "date": "25 ago 2026",
+          "excerpt": "Il team del Museo Nivola a Orani sul confine tra un museo e il suo villaggio, sull'eredità del metodo di Costantino Nivola piuttosto che delle sue forme, e su ciò che un museo monografico può ancora diventare.",
           "category": "intervista",
-          "subcategory": "Approfondimento",
+          "subcategory": "Caratteristica",
           "tags": [
             "Intervista",
             "architettura",
@@ -27550,67 +28012,68 @@
             "museo",
             "Costantino Nivola"
           ],
+          "imageSeed": "",
           "imageUrl": "",
           "content": [
             {
               "type": "text",
-              "content": "Costantino Nivola nasce nel 1911 a Orani, un paese della Barbagia, nella Sardegna centrale, figlio di un muratore. Parte per Milano, poi Parigi, poi New York, insegna alla Harvard Graduate School of Design e lavora accanto a Le Corbusier, Josep Lluís Sert ed Eero Saarinen. Non smette mai di tornare. Nel 1958 riporta le sue sculture nelle strade di Orani, e oggi il museo che porta il suo nome sorge sulla collina sopra il paese."
+              "content": "Costantino Nivola nacque nel 1911 a Orani, un villaggio nelle colline della Barbagia nel centro della Sardegna, figlio di un muratore. Partì per Milano, poi Parigi, poi New York, insegnò alla Harvard Graduate School of Design e lavorò accanto a Le Corbusier, Josep Lluís Sert e Eero Saarinen. Non smise mai di tornare. Nel 1958 portò le sue sculture di nuovo nelle strade di Orani, e oggi il museo che porta il suo nome si trova sulla collina sopra il villaggio."
             },
             {
               "type": "text",
-              "content": "Abbiamo parlato con il team del Museo Nivola di dove finisce un museo e dove comincia un paese, di come si eredita un metodo e non un repertorio di forme, e di cosa può diventare un museo monografico quando rifiuta di essere un mausoleo."
+              "content": "Abbiamo parlato con il team del Museo Nivola di dove finisce un museo e inizia un villaggio, di ereditare un metodo piuttosto che un insieme di forme, e di cosa può diventare un museo monografico quando si rifiuta di essere un mausoleo."
             },
             {
               "type": "text",
-              "content": "<b>Dove finisce, secondo voi, il Museo Nivola e dove comincia Orani? È possibile considerare il paese, il suo paesaggio e i suoi abitanti come una continuazione dello spazio museale?</b>"
+              "content": "<b>Dove, a vostro avviso, finisce il Museo Nivola e inizia Orani? Il villaggio, il suo paesaggio e i suoi abitanti possono essere considerati una continuazione dello spazio museale?</b>"
             },
             {
               "type": "text",
-              "content": "In un luogo come Orani, data la sua storia e la sua natura, il confine tra museo e paese è difficile da tracciare. Il museo stesso nasce in una posizione particolare: sulla collina, immerso nel paesaggio e allo stesso tempo affacciato sul versante dove il paese arrampica. La sua architettura non costruisce una cesura rispetto al contesto, ma stabilisce continuamente relazioni con ciò che la circonda: la vegetazione, la conformazione della valle, la sorgente di Su Càntaru e, soprattutto, la comunità."
+              "content": "In un luogo come Orani, data la sua storia e la sua natura, è difficile tracciare il confine tra museo e villaggio. Il museo stesso nasce in una posizione particolare: sulla collina, immerso nel paesaggio e allo stesso tempo rivolto verso la pendenza su cui si arrampica il villaggio. La sua architettura non crea una rottura con il contesto, ma stabilisce continuamente relazioni con ciò che lo circonda: la vegetazione, la forma della valle, la sorgente di Su Càntaru e, soprattutto, la comunità."
             },
             {
               "type": "text",
-              "content": "Ma questa relazione è ancora più profonda se pensiamo all’opera stessa di Nivola, perché Orani è una presenza che attraversa tutta la sua ricerca ed è evidente nei materiali, nelle memorie d’infanzia, nell’esperienza del padre muratore, nella concezione dello spazio pubblico e della relazione con la vita sociale del luogo. Nel progetto <i>Pergola Village</i> del 1953, Nivola immaginava di collegare le case del paese idealmente e fisicamente attraverso pergole di viti, trasformando le strade in spazi di socialità condivisa. Nel 1958, tornando a Orani, realizza il graffito sulla facciata della chiesa di Nostra Signora d’Itria e porta le sue sculture direttamente nelle strade, coinvolgendo gli abitanti in un’esperienza che supera completamente il modello tradizionale della mostra."
+              "content": "Questa relazione è ancora più profonda se pensiamo al lavoro di Nivola stesso, perché Orani è una presenza che attraversa tutte le sue ricerche ed è evidente nei materiali, nei ricordi d'infanzia, nell'esperienza di suo padre il muratore, nella sua concezione dello spazio pubblico e del rapporto con la vita sociale di un luogo. Nel progetto del 1953 <i>Pergola Village</i>, Nivola immaginò di collegare le case del villaggio, idealmente e fisicamente, attraverso pergole di vite, trasformando le strade in uno spazio sociale condiviso. Nel 1958, tornando a Orani, realizzò il graffito sulla facciata della chiesa di Nostra Signora d’Itria e portò le sue sculture direttamente nelle strade, coinvolgendo gli abitanti in un'esperienza che va oltre il modello tradizionale della mostra."
             },
             {
               "type": "text",
-              "content": "Per questo ci piace pensare che il Museo Nivola non termini con la soglia dell’edificio: il paese non è un’estensione del museo nel senso di una musealizzazione del territorio, ma è piuttosto un interlocutore vivo."
+              "content": "Per questo ci piace pensare che il Museo Nivola non finisca al varco dell'edificio: il villaggio non è un'estensione del museo nel senso di una musealizzazione del territorio, ma piuttosto un interlocutore vivente."
             },
             {
               "type": "text",
-              "content": "La sfida è proprio evitare che Orani diventi uno sfondo o una sorta di museo diffuso cristallizzato nel passato. Ci interessa continuare a costruire una relazione nella quale il museo sia parte della vita del paese e il paese continui a entrare nel museo, attraverso le persone, la memoria, le attività educative, i progetti nello spazio pubblico e le nuove forme di produzione culturale."
+              "content": "La sfida è proprio quella di evitare che Orani diventi uno sfondo, o una sorta di museo diffuso cristallizzato nel passato. Siamo interessati a continuare a costruire un rapporto in cui il museo fa parte della vita del villaggio e il villaggio continua a entrare nel museo, attraverso le persone, attraverso la memoria, attraverso attività educative, progetti nello spazio pubblico e nuove forme di produzione culturale."
             },
             {
               "type": "text",
-              "content": "<b>Nivola credeva profondamente nell’integrazione tra arte e architettura. Quanto è ancora attuale oggi questa idea e cosa può insegnare alle nuove generazioni di artisti, architetti e designer?</b>"
+              "content": "<b>Nivola credeva profondamente nell'integrazione tra arte e architettura. Quanto è attuale questa idea oggi, e cosa può insegnare alle nuove generazioni di artisti, architetti e designer?</b>"
             },
             {
               "type": "text",
-              "content": "È la grande attualità del suo pensiero. Oggi, forse, ancora più di quanto non lo fosse quando Nivola iniziò a lavorare in questa direzione. Per lui l’integrazione tra arte e architettura non significava semplicemente collocare un’opera dentro o sulla facciata di un edificio. Significava concepire insieme lo spazio, la materia, la funzione e l’esperienza di chi avrebbe abitato lo spazio in questione. Il famoso progetto totale."
+              "content": "Questa è la grande attualità del suo pensiero. Oggi, forse, ancora di più di quando Nivola iniziò a lavorare in questa direzione. Per lui, l'integrazione di arte e architettura non significava semplicemente collocare un'opera all'interno di un edificio o sulla sua facciata. Significava concepire spazio, materia, funzione e l'esperienza di chi avrebbe abitato quello spazio tutto insieme. Il famoso progetto totale."
             },
             {
               "type": "text",
-              "content": "Nivola ha lavorato con alcuni dei grandi protagonisti dell’architettura moderna, cercando di superare la separazione disciplinare fra artista, architetto e designer. Il suo interesse era rivolto allo spazio come esperienza complessiva. La scultura poteva diventare parete, il rilievo parte dell’architettura, il cortile un luogo di incontro. Perfino il piano urbanistico doveva essere uno strumento per rafforzare i rapporti sociali."
+              "content": "Nivola ha lavorato con alcuni dei grandi protagonisti dell'architettura moderna, cercando di superare la separazione disciplinare tra artista, architetto e designer. Il suo interesse era rivolto allo spazio come esperienza complessiva. La scultura poteva diventare parete, il rilievo poteva diventare parte dell'architettura, il cortile un luogo di incontro. Anche il piano urbanistico doveva essere uno strumento per rafforzare le relazioni sociali."
             },
             {
               "type": "text",
-              "content": "Dietro l’idea di integrazione tra le arti c’è qualcosa di ancora più ampio: una concezione dell’arte come strumento capace di incidere sulla qualità della vita collettiva."
+              "content": "Dietro l'idea di integrazione tra le arti c'è qualcosa di ancora più ampio: una concezione dell'arte come strumento capace di influenzare la qualità della vita collettiva."
             },
             {
               "type": "text",
-              "content": "Nivola invita a uscire dalle categorie troppo rigide. Invita a chiedersi per chi si progetti uno spazio, chi lo utilizzerà, quali relazioni produrrà. In un momento in cui architettura, arte e design sono chiamati a confrontarsi con questioni ambientali, sociali e con nuove modalità dell’abitare, il suo approccio interdisciplinare appare sorprendentemente contemporaneo."
+              "content": "Nivola ci invita a uscire da categorie troppo rigide. Ci invita a chiedere per chi uno spazio è progettato, chi lo userà, quali relazioni produrrà. In un momento in cui architettura, arte e design sono chiamati ad affrontare questioni ambientali e sociali e nuovi modi di abitare, il suo approccio interdisciplinare appare sorprendentemente contemporaneo."
             },
             {
               "type": "text",
-              "content": "Non si tratta naturalmente di riprodurne meramente forme e linguaggi, ma di ereditarne il metodo: lavorare attraverso il dialogo tra discipline, mantenere attenzione per i materiali e per il contesto e considerare lo spazio come qualcosa che può orientare comportamenti, incontri e forme di comunità; e non come un contenitore neutro."
+              "content": "Non è, naturalmente, una questione di riprodurre semplicemente le sue forme e linguaggi, ma di ereditare il suo metodo: lavorare attraverso il dialogo tra discipline, mantenendo l'attenzione sui materiali e sul contesto, e considerando lo spazio come qualcosa che può orientare comportamenti, incontri e forme di comunità; non come un contenitore neutro."
             },
             {
               "type": "text",
-              "content": "<b>Che cosa può raccontare di Costantino Nivola un museo situato proprio nel suo luogo d’origine che una grande istituzione internazionale non potrebbe raccontare allo stesso modo?</b>"
+              "content": "<b>Cosa può raccontarci un museo situato nel suo luogo di origine su Costantino Nivola che un'istituzione internazionale di rilievo non potrebbe raccontare allo stesso modo?</b>"
             },
             {
               "type": "text",
-              "content": "Una istituzione internazionale può raccontare Nivola nella dimensione della storia dell’arte globale e dell’architettura del Novecento, ricostruire i suoi rapporti con New York, con l’Harvard Graduate School of Design, con architetti come Le Corbusier, Josep Lluís Sert o Eero Saarinen, e restituire la straordinaria rete culturale nella quale si è mosso."
+              "content": "Un'istituzione internazionale può raccontare Nivola all'interno della dimensione della storia dell'arte globale e dell'architettura del ventesimo secolo, ricostruendo le sue relazioni con New York, con la Harvard Graduate School of Design, con architetti come Le Corbusier, Josep Lluís Sert o Eero Saarinen, e restituire la straordinaria rete culturale in cui si muoveva."
             },
             {
               "type": "text",
@@ -27618,38 +28081,41 @@
             },
             {
               "type": "text",
-              "content": "Qui alcune questioni centrali nella sua opera smettono di essere soltanto temi storico-artistici e acquistano una dimensione concreta. Il rapporto con la materia rimanda alla geologia della sua terra, oltre che all’esperienza familiare e al mestiere paterno. L’attenzione alla comunità, il tema della partecipazione assumono un significato cruciale. Un museo nel luogo d’origine ha accesso a una memoria che non è soltanto documentaria. Esiste una memoria orale, vernacolare, quotidiana, fatta di persone che ricordano lui o che ne hanno raccolto la memoria delle generazioni precedenti. Esistono la luce, i silenzi, l’andamento del paesaggio: elementi difficili da restituire all’interno di una mostra e sono necessari un linguaggio, una narrazione, un approccio radicato e consapevole."
+              "content": "Qui alcune delle domande centrali nel suo lavoro smettono di essere semplicemente temi storico-artistici e acquisiscono una dimensione concreta. La sua relazione con la materia rimanda alla geologia della sua terra, così come all’esperienza familiare e al mestiere del padre. L’attenzione alla comunità, il tema della partecipazione, assumono un significato cruciale. Un museo nel luogo di origine ha accesso a una memoria che non è solo documentaria. C’è una memoria orale, vernacolare, quotidiana, fatta di persone che lo ricordano o che hanno raccolto la memoria delle generazioni precedenti. Ci sono la luce, i silenzi, il movimento del paesaggio: elementi difficili da ricostruire all’interno di una mostra, e che richiedono un linguaggio, una narrazione, un approccio radicato e consapevole."
             },
             {
               "type": "text",
-              "content": "Questo non significa leggere Nivola esclusivamente attraverso la Sardegna: sarebbe altrettanto riduttivo, perché la sua identità artistica nasce proprio dall’incontro tra Orani e il mondo. La forza del Museo Nivola sta semmai nella possibilità di tenere insieme queste due dimensioni. Da un lato, un artista pienamente inserito nella cultura internazionale del Novecento; dall’altro, una biografia e un immaginario profondamente radicati nell’isola."
+              "content": "Questo non significa leggere Nivola esclusivamente attraverso la Sardegna: sarebbe altrettanto riduttivo, perché la sua identità artistica nasce proprio dall’incontro tra Orani e il mondo. La forza del Museo Nivola risiede, se vogliamo, nella possibilità di tenere insieme queste due dimensioni. Da un lato, un artista pienamente parte della cultura internazionale del ventesimo secolo; dall’altro, una biografia e un’immaginario profondamente radicati nell’isola."
             },
             {
               "type": "text",
-              "content": "Forse ciò che il Museo Nivola può offrire in modo unico è proprio la possibilità di comprendere che queste due dimensioni non sono in contraddizione."
+              "content": "Forse ciò che il Museo Nivola può offrire in modo unico è proprio la possibilità di capire che queste due dimensioni non sono in contraddizione."
             },
             {
               "type": "text",
-              "content": "<b>Ci raccontate, per quanto possibile, quali sono i vostri progetti per il futuro e per lo sviluppo del Museo Nivola? Siamo rimasti particolarmente colpiti dal modo in cui il museo va oltre il tradizionale spazio espositivo, creando un dialogo tra arte, architettura, paesaggio e il paese di Orani. Come immaginate la prossima fase della sua evoluzione?</b>"
+              "content": "<b>Potresti raccontarci, per quanto possibile, dei tuoi piani per il futuro e per lo sviluppo del Museo Nivola? Siamo stati particolarmente colpiti dal modo in cui il museo va oltre lo spazio espositivo tradizionale, creando un dialogo tra arte, architettura, paesaggio e il villaggio di Orani. Come immagini la prossima fase della sua evoluzione?</b>"
             },
             {
-              "type": "text",
-              "content": "La direzione che stiamo seguendo è quella di approfondire ulteriormente proprio questa identità ibrida del Museo Nivola: museo monografico come centro di ricerca, come luogo dedicato al contemporaneo, all’architettura, al paesaggio, all’educazione e, ancora una volta, alla comunità."
+              "type": "testo",
+              "content": "La direzione che stiamo seguendo è approfondire proprio questa identità ibrida del Museo Nivola: un museo monografico come centro di ricerca, come luogo dedicato al contemporaneo, all'architettura, al paesaggio, all'educazione e, ancora una volta, alla comunità."
             },
             {
-              "type": "text",
-              "content": "Il nuovo programma <i>Nivola vis-à-vis</i> nasce da tale esigenza. Dopo una serie di mostre dedicate ad artisti e artiste contemporanei, la nostra visione torna a interrogare direttamente Nivola mettendolo in relazione con figure, esperienze e questioni del suo tempo. Non si tratta di costruire semplicemente confronti formali, ma di analizzare l’opera di Nivola quale punto di partenza per temi ancora vitali e necessari: lo spazio e il corpo, l’architettura e il design, la compenetrazione tra arte e ambiente. La mostra <i>Nivola, Colombo e lo spazio intorno</i>, attualmente in corso, riflette per esempio sullo spazio come cognizione fisica e relazionale. Attorno ad essa orbitano riflessioni importanti su ciò che la ricerca di Nivola continua a suggerire al presente. Quali aspetti del suo lavoro appaiono tuttora aperti, urgenti e produttivi? In ambito di dibattito internazionale, è fondamentale riattivarne il potenziale progettuale, riportando al centro del discorso corrente le domande che Nivola poneva oltre settant’anni fa sul rapporto fra arte e società, fra educazione e immaginazione, fra progetto e vita quotidiana."
+              "type": "testo",
+              "content": "Il nuovo programma <i>Nivola vis-à-vis</i> nasce da questa esigenza. Dopo una serie di mostre dedicate ad artisti contemporanei, la nostra visione torna a interrogare direttamente Nivola, collocandolo in relazione con le figure, le esperienze e le domande del suo tempo. Non si tratta semplicemente di costruire confronti formali, ma di analizzare il lavoro di Nivola come punto di partenza per temi ancora vitali e necessari: spazio e corpo, architettura e design, l'interpenetrarsi di arte e ambiente. La mostra <i>Nivola, Colombo e lo spazio intorno</i>, attualmente in corso, riflette ad esempio sullo spazio come cognizione fisica e relazionale. Intorno ad esso orbitano importanti riflessioni su ciò che la ricerca di Nivola continua a suggerire al presente. Quali aspetti del suo lavoro appaiono ancora aperti, urgenti e produttivi? Nell'ambito del dibattito internazionale, è fondamentale riattivare il loro potenziale progettuale, riportando al centro del discorso attuale le domande che Nivola pose più di settant'anni fa sulla relazione tra arte e società, tra educazione e immaginazione, tra progetto e vita quotidiana."
             },
             {
-              "type": "text",
-              "content": "Nei prossimi mesi, questo lavoro continuerà attraverso una rilettura della collezione permanente. La temporanea partenza di alcune opere per la mostra dedicata a Nivola alla Triennale di Milano diventerà occasione per ripensare l’allestimento, tornare a studiare i depositi, presentare opere meno note e creare altre connessioni. Vogliamo che la ricerca scientifica possa dialogare con l’attività educativa, che ogni mostra possa generare un’esperienza dentro lo spazio pubblico, che il patrimonio possa essere continuamente riletto attraverso il “sentimento del presente” e che il museo continui a essere percepito dalla comunità come una appartenenza."
+              "type": "testo",
+              "content": "Nei prossimi mesi, questo lavoro continuerà attraverso una rilettura della collezione permanente. La temporanea partenza di alcune opere per la mostra dedicata a Nivola alla Triennale di Milano diventerà un'occasione per ripensare l'esposizione, per tornare a studiare le soffitte, per presentare opere meno note e per creare altre connessioni. Vogliamo che la ricerca scientifica possa dialogare con l'attività educativa, che ogni mostra possa generare un'esperienza all’interno dello spazio pubblico, che il patrimonio venga continuamente rilettto attraverso il “sentimento del presente”, e che il museo continui a essere percepito dalla comunità come un appartenere."
             },
             {
-              "type": "text",
-              "content": "È una dinamica che in fondo apparteneva già a Nivola: attraversare il mondo senza perdere il legame con il luogo da cui si è partiti. Ed è forse questo il modello di museo che ci interessa continuare a costruire: non un luogo chiuso che conserva un’eredità, ma un organismo capace di rimetterla continuamente in circolo."
+              "type": "testo",
+              "content": "È una dinamica che, in fondo, apparteneva già a Nivola: attraversare il mondo senza perdere il legame con il luogo da cui si è partiti. E questo è forse il modello di museo che ci interessa continuare a costruire: non un luogo chiuso che conserva un patrimonio, ma un organismo capace di rimetterlo in circolazione, continuamente."
             }
           ],
-          "updatedAt": "2026-08-25T13:29:04.000Z"
+          "authorId": "author-1784732936927-kw554",
+          "draft": true,
+          "previewToken": "bf6e06015612b1dfa06d7e68",
+          "updatedAt": "2026-08-25T13:37:21.396Z"
         }
       ],
       "reviews": [
