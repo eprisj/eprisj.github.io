@@ -2325,14 +2325,14 @@
     },
     {
       "id": 23,
-      "title": "Where the Museum Ends and the Village Begins",
+      "title": "A Museum That Belongs to Its Village",
       "subtitle": "Interview",
       "fig": "FIG. 14",
-      "description": "The team of the Museo Nivola in Orani on the border between a museum and its village, on inheriting Costantino Nivola's method rather than his forms, and on what a monographic museum can still become.",
+      "description": "The team of the Museo Nivola in Orani on the gentle border between a museum and its village, on inheriting Costantino Nivola's method rather than his forms, and on what a monographic museum can still become.",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8pvrakmxoout.jpg",
       "articleId": 26,
       "draft": true,
-      "updatedAt": "2026-08-25T13:47:38.000Z"
+      "updatedAt": "2026-08-25T13:55:06.000Z"
     }
   ],
   "articles": [
@@ -5374,11 +5374,11 @@
     },
     {
       "id": 26,
-      "title": "Where the Museum Ends and the Village Begins",
+      "title": "A Museum That Belongs to Its Village",
       "author": "Viacheslav Munister",
       "role": "Author",
       "date": "Aug 25, 2026",
-      "excerpt": "The team of the Museo Nivola in Orani on the border between a museum and its village, on inheriting Costantino Nivola's method rather than his forms, and on what a monographic museum can still become.",
+      "excerpt": "The team of the Museo Nivola in Orani on the gentle border between a museum and its village, on inheriting Costantino Nivola's method rather than his forms, and on what a monographic museum can still become.",
       "category": "interview",
       "subcategory": "Feature",
       "tags": [
@@ -5393,15 +5393,15 @@
       "content": [
         {
           "type": "text",
-          "content": "Orani is a village in the Barbagia, the mountainous middle of Sardinia. A road climbs from the valley, the houses stack up the slope, and above them, on the hillside, stands a low white building that looks back down at the roofs. Inside is the largest collection of work by Costantino Nivola in the world: more than two hundred sculptures and paintings, the first of them given by the artist’s widow, Ruth Nivola."
+          "content": "Orani is a village in the Barbagia, the mountainous heart of Sardinia. A road climbs up from the valley, the houses gather along the slope, and just above them, on the hillside, a low white building sits among olive trees and looks back down at the roofs. It is one of the most quietly beautiful small museums in Italy, and it belongs, in the fullest sense of the word, to the place it stands in."
         },
         {
           "type": "text",
-          "content": "Nivola was born here in 1911, the son of a mason, and learned the trade on his father’s building sites before the ISIA in Monza and a job as a graphic designer for Olivetti in Milan. In 1939 he escaped Fascist Italy for New York. He met Le Corbusier in 1946, covered the wall of the Olivetti showroom on Fifth Avenue with a sand-cast relief in 1954, taught at the Harvard Graduate School of Design at the invitation of Josep Lluís Sert, and spent three years filling Eero Saarinen’s colleges at Yale with carved concrete. He also kept coming back. In 1953 he drew a plan to link every house in Orani with vine pergolas; in 1958 he covered the facade of the village church with a graffito and carried his sculptures out into the streets for three days."
+          "content": "Costantino Nivola was born here in 1911, the son of a mason, and learned the trade on his father’s building sites before the ISIA in Monza and a job as a graphic designer for Olivetti in Milan. In 1939 he left for New York. He met Le Corbusier in 1946, wrapped the wall of the Olivetti showroom on Fifth Avenue in a sand-cast relief in 1954, taught at the Harvard Graduate School of Design at the invitation of Josep Lluís Sert, and spent three years filling Eero Saarinen’s colleges at Yale with carved concrete. And he kept coming home. In 1953 he drew a plan to link every house in Orani with vine pergolas; in 1958 he covered the facade of the village church with a graffito and carried his sculptures out into the streets for three days, with the whole village taking part."
         },
         {
           "type": "text",
-          "content": "That double life, an artist of international modernism and a man who never really left his village, is both the museum’s subject and its problem. We put four questions to the team of the Museo Nivola: where the museum ends and Orani begins, what survives today of Nivola’s belief in the union of art and architecture, what a museum in the birthplace knows that a large institution does not, and what the museum intends to become."
+          "content": "The museum that carries his name has inherited that generosity. It keeps its door open to the village, to contemporary artists, to schoolchildren and to researchers, and it does all of this with rare care and warmth. We are grateful to the team of the Museo Nivola for the time and thought they gave to our four questions: where the museum ends and Orani begins, what is still alive in Nivola’s belief in the union of art and architecture, what a museum in an artist’s birthplace can know, and what they hope the museum will become."
         },
         {
           "type": "image",
@@ -5575,7 +5575,7 @@
       "authorId": "author-1784732936927-kw554",
       "draft": true,
       "previewToken": "bf6e06015612b1dfa06d7e68",
-      "updatedAt": "2026-08-25T13:49:05.000Z",
+      "updatedAt": "2026-08-25T13:55:06.000Z",
       "showCover": true
     }
   ],
@@ -25221,14 +25221,14 @@
         },
         {
           "id": 23,
-          "title": "Dove finisce il Museo e inizia il Villaggio",
+          "title": "Un museo che appartiene al suo paese",
           "subtitle": "Intervista",
           "fig": "FIG. 14",
-          "description": "Il team del Museo Nivola in Orani sul confine tra un museo e il suo villaggio, sull'eredità del metodo di Costantino Nivola piuttosto che delle sue forme, e su ciò che un museo monografico può ancora diventare.",
+          "description": "Il Museo Nivola di Orani sul confine gentile tra un museo e il suo paese, sull'eredità del metodo di Costantino Nivola più che delle sue forme, e su cosa può ancora diventare un museo monografico.",
           "imageUrl": "https://api.eprisjournal.com/uploads/mt8pvrakmxoout.jpg",
           "articleId": 26,
           "draft": true,
-          "updatedAt": "2026-08-25T13:47:38.000Z"
+          "updatedAt": "2026-08-25T13:55:06.000Z"
         }
       ],
       "articles": [
@@ -28255,11 +28255,11 @@
         },
         {
           "id": 26,
-          "title": "Dove finisce il Museo e inizia il Villaggio",
+          "title": "Un museo che appartiene al suo paese",
           "author": "Viacheslav Munister",
           "role": "Autore",
           "date": "25 ago 2026",
-          "excerpt": "Il team del Museo Nivola a Orani sul confine tra un museo e il suo villaggio, sull'eredità del metodo di Costantino Nivola piuttosto che delle sue forme, e su ciò che un museo monografico può ancora diventare.",
+          "excerpt": "Il Museo Nivola di Orani sul confine gentile tra un museo e il suo paese, sull'eredità del metodo di Costantino Nivola più che delle sue forme, e su cosa può ancora diventare un museo monografico.",
           "category": "intervista",
           "subcategory": "Caratteristica",
           "tags": [
@@ -28274,15 +28274,15 @@
           "content": [
             {
               "type": "text",
-              "content": "Orani è un paese della Barbagia, nel cuore montuoso della Sardegna. Una strada sale dalla valle, le case si accatastano lungo il pendio e sopra di esse, sulla collina, sta un edificio bianco e basso che guarda i tetti dall’alto. Dentro c’è la più vasta collezione al mondo di opere di Costantino Nivola: oltre duecento sculture e dipinti, i primi donati dalla vedova dell’artista, Ruth Nivola."
+              "content": "Orani è un paese della Barbagia, nel cuore montuoso della Sardegna. Una strada sale dalla valle, le case si raccolgono lungo il pendio e appena sopra di esse, sulla collina, un edificio bianco e basso sta tra gli ulivi e guarda i tetti dall’alto. È uno dei piccoli musei più silenziosamente belli d’Italia, e appartiene, nel senso più pieno della parola, al luogo in cui si trova."
             },
             {
               "type": "text",
-              "content": "Nivola nasce qui nel 1911, figlio di un muratore, e impara il mestiere nei cantieri del padre prima dell’ISIA di Monza e del lavoro di grafico per Olivetti a Milano. Nel 1939 fugge dall’Italia fascista verso New York. Incontra Le Corbusier nel 1946, nel 1954 riveste la parete dello showroom Olivetti sulla Fifth Avenue con un rilievo in sandcast, insegna alla Harvard Graduate School of Design su invito di Josep Lluís Sert e passa tre anni a riempire di cemento scolpito i college di Eero Saarinen a Yale. E continua a tornare. Nel 1953 disegna un piano per collegare tutte le case di Orani con pergole di viti; nel 1958 copre la facciata della chiesa del paese con un graffito e porta le sue sculture nelle strade per tre giorni."
+              "content": "Costantino Nivola nasce qui nel 1911, figlio di un muratore, e impara il mestiere nei cantieri del padre prima dell’ISIA di Monza e del lavoro di grafico per Olivetti a Milano. Nel 1939 parte per New York. Incontra Le Corbusier nel 1946, nel 1954 riveste la parete dello showroom Olivetti sulla Fifth Avenue con un rilievo in sandcast, insegna alla Harvard Graduate School of Design su invito di Josep Lluís Sert e passa tre anni a riempire di cemento scolpito i college di Eero Saarinen a Yale. E continua a tornare a casa. Nel 1953 disegna un piano per collegare tutte le case di Orani con pergole di viti; nel 1958 copre la facciata della chiesa del paese con un graffito e porta le sue sculture nelle strade per tre giorni, con la partecipazione di tutto il paese."
             },
             {
               "type": "text",
-              "content": "Questa doppia vita, artista del modernismo internazionale e uomo che non ha mai davvero lasciato il suo paese, è insieme il tema del museo e il suo problema. Abbiamo rivolto quattro domande al team del Museo Nivola: dove finisce il museo e dove comincia Orani, che cosa resta oggi della fiducia di Nivola nell’unione tra arte e architettura, che cosa sa un museo nel luogo d’origine che una grande istituzione non sa, e che cosa il museo intende diventare."
+              "content": "Il museo che porta il suo nome ha ereditato quella generosità. Tiene la porta aperta al paese, agli artisti contemporanei, ai bambini delle scuole e a chi fa ricerca, e lo fa con una cura e un calore rari. Ringraziamo il team del Museo Nivola per il tempo e l’attenzione dedicati alle nostre quattro domande: dove finisce il museo e dove comincia Orani, che cosa resta vivo della fiducia di Nivola nell’unione tra arte e architettura, che cosa può sapere un museo nel luogo di nascita di un artista, e che cosa sperano che il museo diventi."
             },
             {
               "type": "image",
@@ -28456,7 +28456,7 @@
           "authorId": "author-1784732936927-kw554",
           "draft": true,
           "previewToken": "bf6e06015612b1dfa06d7e68",
-          "updatedAt": "2026-08-25T13:49:05.000Z"
+          "updatedAt": "2026-08-25T13:55:06.000Z"
         }
       ],
       "reviews": [
