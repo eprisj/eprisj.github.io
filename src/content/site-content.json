@@ -23223,6 +23223,17 @@
           "articleId": 26,
           "draft": true,
           "updatedAt": "2026-08-25T15:07:13.751Z"
+        },
+        {
+          "id": 24,
+          "title": "Souv: Unutmayacak Hatıra",
+          "subtitle": "Röportaj",
+          "fig": "FIG. 15",
+          "description": "Matej Petrić ve Antonio Šeparović, sıradan bir buzdolabı magnetini bir gezginin kendi fotoğraflarına girişine dönüştürmek, kimsenin aslında NFC teknolojisini neden satın almak istemediği ve Zagreb'de iki arkadaş ve üçüncü kahveyle başlayan bir girişime lazer kazıyıcı koymak için ne gerektiği hakkında.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt919szqnaqxwe.jpg",
+          "articleId": 27,
+          "draft": true,
+          "updatedAt": "2026-08-25T19:25:53.115Z"
         }
       ],
       "articles": [
@@ -27371,6 +27382,17 @@
           "articleId": 26,
           "draft": true,
           "updatedAt": "2026-08-25T14:51:33.000Z"
+        },
+        {
+          "id": 24,
+          "title": "Souv: Il souvenir che non dimentica",
+          "subtitle": "Intervista",
+          "fig": "FIG. 15",
+          "description": "Matej Petrić e Antonio Šeparović su trasformare un normale magnete da frigorifero nell'ingresso alle foto di un viaggiatore, perché nessuno vuole davvero comprare la tecnologia NFC, e cosa è servito per mettere un'incisore laser in una startup nata come due amici e un terzo caffè a Zagabria.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt919szqnaqxwe.jpg",
+          "articleId": 27,
+          "draft": true,
+          "updatedAt": "2026-08-25T19:25:55.595Z"
         }
       ],
       "articles": [
