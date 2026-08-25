@@ -19,6 +19,7 @@ const MUSEUM_COPY = {
     openLabel: 'Open the space',
     closeLabel: 'Close the space',
     insideLabel: 'Inside the EPRIS Museum building: atrium, balconies and the ramp',
+    legend: { atrium: 'Atrium', ramp: 'Ramp', oculus: 'Oculus', galleries: 'Galleries', entrance: 'Entrance' },
     collectionIntro: 'An evolving museum of Ukrainian practice. Each object belongs to a broader story of making, place and cultural memory.',
     object: 'Object',
     objectDossier: 'Object dossier',
@@ -47,6 +48,7 @@ const MUSEUM_COPY = {
     openLabel: 'Открыть пространство',
     closeLabel: 'Закрыть пространство',
     insideLabel: 'Внутри здания EPRIS Museum: атриум, балконы и пандус',
+    legend: { atrium: 'Атриум', ramp: 'Пандус', oculus: 'Окулюс', galleries: 'Залы', entrance: 'Вход' },
     collectionIntro: 'Развивающийся музей украинской практики. Каждый объект связан с историей создания, местом и культурной памятью.',
     object: 'Объект',
     objectDossier: 'Паспорт объекта',
@@ -75,6 +77,7 @@ const MUSEUM_COPY = {
     openLabel: 'Відкрити простір',
     closeLabel: 'Закрити простір',
     insideLabel: 'Усередині будівлі EPRIS Museum: атріум, балкони та пандус',
+    legend: { atrium: 'Атріум', ramp: 'Пандус', oculus: 'Окулюс', galleries: 'Зали', entrance: 'Вхід' },
     collectionIntro: 'Музей української практики, що розвивається. Кожен об’єкт пов’язаний з історією створення, місцем і культурною пам’яттю.',
     object: 'Об’єкт',
     objectDossier: 'Паспорт об’єкта',
@@ -103,6 +106,7 @@ const MUSEUM_COPY = {
     openLabel: 'Raum öffnen',
     closeLabel: 'Raum schließen',
     insideLabel: 'Im Inneren des EPRIS-Museums: Atrium, Galerien und Rampe',
+    legend: { atrium: 'Atrium', ramp: 'Rampe', oculus: 'Okulus', galleries: 'Säle', entrance: 'Eingang' },
     collectionIntro: 'Ein wachsendes Museum ukrainischer Praxis. Jedes Objekt gehört zu einer Geschichte von Herstellung, Ort und kulturellem Gedächtnis.',
     object: 'Objekt',
     objectDossier: 'Objektdossier',
@@ -166,7 +170,7 @@ function EmptyVitrine({ copy }: { copy: MuseumCopy }) {
     <section aria-labelledby="vitrine-title" className="grid flex-1 lg:grid-cols-[minmax(0,1.18fr)_minmax(22rem,.82fr)]">
       <div className="relative min-h-[28rem] overflow-hidden border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] sm:min-h-[34rem] lg:min-h-[42rem] lg:border-b-0 lg:border-r">
         <Suspense fallback={<div className="absolute inset-0 bg-[#f6f4f1]" />}>
-          <MuseumModel label={copy.modelLabel} openLabel={copy.openLabel} closeLabel={copy.closeLabel} insideLabel={copy.insideLabel} />
+          <MuseumModel label={copy.modelLabel} openLabel={copy.openLabel} closeLabel={copy.closeLabel} insideLabel={copy.insideLabel} labels={copy.legend} />
         </Suspense>
         <div className="pointer-events-none absolute inset-x-0 bottom-0 p-5 sm:p-8 lg:p-12">
           <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">{copy.firstSelection}</p>

@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { ContactShadows, OrbitControls } from '@react-three/drei';
+import { ContactShadows, Html, OrbitControls } from '@react-three/drei';
 import { BufferAttribute, BufferGeometry, CatmullRomCurve3, DoubleSide, ExtrudeGeometry, Shape, Spherical, Vector2, Vector3 } from 'three';
 import type { Group, MeshStandardMaterial, PerspectiveCamera } from 'three';
 
@@ -32,6 +32,8 @@ const PLASTER_DEEP = '#e8e3db';   // плиты и пандус — на пол�
 const PLASTER_SHADE = '#ddd7cd';
 const GLASS = '#2b2a28';
 const GOLD = '#c9a690';
+
+export type MuseumLabels = { atrium: string; ramp: string; oculus: string; galleries: string; entrance: string };
 
 const WING_TOP = 5.0;             // верх нижнего крыла — на нём стоит всё остальное
 const UPPER_TOP = 8.6;            // верх второго крыла
@@ -158,12 +160,30 @@ function spiralAroundDrum(fromY: number, toY: number, turns: number, offset: num
  *
  * Управляет этим кнопка, а не угол камеры: подсказка «покрути и что-нибудь
  * произойдёт» не работает, а нажатие — договор, который видно. */
-function useShellReveal(materials: React.MutableRefObject<(MeshStandardMaterial | null)[]>, open: boolean) {
+/* РАЗБОРКА, А НЕ ПРОСВЕЧИВАНИЕ.
+ *
+ * Первый заход делал оболочку прозрачной, и это была ошибка: белый гипс сквозь
+ * белый гипс превращается в кашу, где не видно ни стен, ни того, что за ними.
+ * В архитектуре разрез показывают, СНИМАЯ материал, а не делая его призрачным.
+ *
+ * Поэтому объёмы расходятся: покрытие крыла и оболочка ротонды поднимаются над
+ * зданием, открывая планы под собой, и слегка притухают, чтобы не спорить с
+ * тем, ради чего поднялись. Приём известен как разнесённая аксонометрия, и
+ * читается он мгновенно, без всякой подписи. */
+function useLift(target: React.MutableRefObject<Group | null>, open: boolean, height: number, speed = 3) {
+  useFrame((_, delta) => {
+    if (!target.current) return;
+    const want = open ? height : 0;
+    target.current.position.y += (want - target.current.position.y) * Math.min(delta * speed, 1);
+  });
+}
+
+function useShellReveal(materials: React.MutableRefObject<(MeshStandardMaterial | null)[]>, open: boolean, depth = 0.9) {
   const value = useRef(0);
   useFrame((_, delta) => {
     const target = open ? 1 : 0;
     value.current += (target - value.current) * Math.min(delta * 3.4, 1);
-    const opacity = 1 - value.current * 0.9;
+    const opacity = 1 - value.current * depth;
     materials.current.forEach((material) => {
       if (!material) return;
       /* Только opacity. Переключать сам флаг transparent на лету нельзя:
@@ -179,7 +199,7 @@ function useShellReveal(materials: React.MutableRefObject<(MeshStandardMaterial 
 /* Внутреннее пространство ротонды: пол атриума, кольцевые балконы вдоль стены
    и световой колодец под окулюсом. Балконы посажены на тот же радиус, что и
    оболочка, поэтому пространство читается как одно, а не как набор дисков. */
-function Atrium() {
+function Atrium({ open }: { open: boolean }) {
   const balconies = useMemo(
     () => [10.6, 13.4, 16.2].map((y) => ({ y, radius: drumRadius(y) - 0.12 })),
     [],
@@ -199,20 +219,39 @@ function Atrium() {
         <meshBasicMaterial color="#ffffff" transparent opacity={0.55} />
       </mesh>
 
-      {/* Подиумы в зале: пустой атриум читается вестибюлем, а с ними — музеем.
-          Ставим по дуге, а не по центру: центр держит свет из окулюса. */}
+      {/* Подиумы с экспонатами: пустой атриум читается вестибюлем, а с ними —
+          музеем. Ставим по дуге, а не по центру: центр держит свет из окулюса.
+          У каждого свой источник — в зале экспонат виден потому, что на него
+          направлен свет, а не потому, что вокруг светло. */}
       {[0.4, 1.5, 2.6, 4.1].map((angle, index) => {
         const distance = 2.9 + (index % 2) * 1.1;
+        const x = Math.cos(angle) * distance;
+        const z = Math.sin(angle) * distance;
         return (
-          <mesh
-            key={angle}
-            position={[Math.cos(angle) * distance, WING_TOP + 0.55, Math.sin(angle) * distance]}
-            castShadow
-            receiveShadow
-          >
-            <boxGeometry args={[0.9, 0.86, 0.9]} />
-            <meshStandardMaterial color={PLASTER_DEEP} roughness={0.9} />
-          </mesh>
+          <group key={angle} position={[x, 0, z]}>
+            <mesh position={[0, WING_TOP + 0.55, 0]} castShadow receiveShadow>
+              <boxGeometry args={[0.9, 0.86, 0.9]} />
+              <meshStandardMaterial color={PLASTER_DEEP} roughness={0.9} />
+            </mesh>
+            <mesh position={[0, WING_TOP + 1.32, 0]} castShadow>
+              {index % 3 === 0
+                ? <torusKnotGeometry args={[0.24, 0.08, 64, 12]} />
+                : index % 3 === 1
+                  ? <icosahedronGeometry args={[0.34, 0]} />
+                  : <coneGeometry args={[0.3, 0.66, 5]} />}
+              <meshStandardMaterial color={PLASTER_SHADE} roughness={0.55} metalness={0.18} />
+            </mesh>
+            <spotLight
+              position={[0, WING_TOP + 4.4, 0]}
+              target-position={[0, WING_TOP + 1.2, 0]}
+              angle={0.42}
+              penumbra={0.75}
+              intensity={open ? 26 : 0}
+              distance={9}
+              decay={2}
+              color="#fff6ea"
+            />
+          </group>
         );
       })}
 
@@ -232,12 +271,84 @@ function Atrium() {
   );
 }
 
-function Building({ open }: { open: boolean }) {
+/* ЗАЛЫ НИЖНЕГО КРЫЛА.
+ *
+ * Ротонда — не всё здание: основная площадь музея лежит по земле. В раскрытом
+ * состоянии крыло не растворяется полностью, как оболочка ротонды, а сохраняет
+ * плотность: иначе от макета остаётся дым. Приглушается ровно настолько, чтобы
+ * сквозь него читались перегородки, подиумы и антресоль. */
+function WingHalls() {
+  const partitions = useMemo(
+    () => [
+      { position: [-6.4, 0, 2.2] as const, rotation: 0.35, width: 6.2 },
+      { position: [-2.1, 0, 6.6] as const, rotation: -0.85, width: 5.0 },
+      { position: [4.8, 0, 5.4] as const, rotation: 0.62, width: 5.6 },
+      { position: [7.4, 0, -2.6] as const, rotation: -0.3, width: 4.4 },
+    ],
+    [],
+  );
+
+  const cases = useMemo(
+    () => [
+      [-4.6, 4.4] as const,
+      [-7.8, -1.2] as const,
+      [1.6, 7.4] as const,
+      [6.2, 2.2] as const,
+      [8.6, -4.4] as const,
+      [-1.4, -6.8] as const,
+    ],
+    [],
+  );
+
+  return (
+    <group>
+      {/* Пол зала */}
+      <mesh position={[0, 0.5, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+        <circleGeometry args={[12.4, 96]} />
+        <meshStandardMaterial color={PLASTER_SHADE} roughness={0.95} />
+      </mesh>
+
+      {partitions.map(({ position, rotation, width }) => (
+        <mesh key={`${position[0]}-${position[2]}`} position={[position[0], 2.3, position[2]]} rotation={[0, rotation, 0]} castShadow receiveShadow>
+          <boxGeometry args={[width, 3.4, 0.26]} />
+          <meshStandardMaterial color={PLASTER} roughness={0.92} />
+        </mesh>
+      ))}
+
+      {cases.map(([x, z]) => (
+        <mesh key={`${x}-${z}`} position={[x, 1.05, z]} castShadow receiveShadow>
+          <boxGeometry args={[1.5, 1.1, 0.8]} />
+          <meshStandardMaterial color={PLASTER_DEEP} roughness={0.88} />
+        </mesh>
+      ))}
+
+      {/* Антресоль: второй уровень, с которого зал виден сверху */}
+      <mesh position={[0, 4.1, 0]} rotation={[-Math.PI / 2, 0, 0]} castShadow receiveShadow>
+        <ringGeometry args={[8.2, 11.8, 96, 1, 0.6, 3.5]} />
+        <meshStandardMaterial color={PLASTER_DEEP} roughness={0.9} side={DoubleSide} />
+      </mesh>
+    </group>
+  );
+}
+
+function Building({ open, labels }: { open: boolean; labels: MuseumLabels }) {
   /* Материалы, которые расступаются при взгляде сверху: оболочка ротонды,
      её кровельное кольцо и верхнее крыло. Остальное здание остаётся плотным —
      разрез должен открывать зал, а не разбирать макет на части. */
+  /* Поднимаются три части: покрытие нижнего крыла, верхнее крыло и оболочка
+     ротонды. Высоты разные — иначе разлёт читается одним движением лифта, а
+     не разбором здания по слоям. */
+  const lowerShell = useRef<Group | null>(null);
+  const upperShell = useRef<Group | null>(null);
+  const drumShell = useRef<Group | null>(null);
+  useLift(lowerShell, open, 4.2);
+  useLift(upperShell, open, 6.2, 2.6);
+  useLift(drumShell, open, 7.6, 2.2);
+
+  /* Поднятые части ещё и притухают: они уже сказали, что здесь была стена,
+     и дальше не должны спорить с планом, который открыли. */
   const shell = useRef<(MeshStandardMaterial | null)[]>([]);
-  useShellReveal(shell, open);
+  useShellReveal(shell, open, 0.42);
 
   const lowerWing = useMemo(() => slabGeometry([13.8, 10.1, 12.7, 8.3, 11.5, 13.4, 9.4, 11.9], WING_TOP), []);
   const upperWing = useMemo(() => slabGeometry([8.6, 6.2, 7.9, 5.6, 7.4, 8.3, 6.0, 7.1], UPPER_TOP - WING_TOP + 0.6, 0.3), []);
@@ -271,33 +382,53 @@ function Building({ open }: { open: boolean }) {
 
   return (
     <group position={[0, -9.2, 0]}>
-      {/* Нижнее крыло: залы, лежащие по земле */}
-      <mesh geometry={lowerWing} castShadow receiveShadow>
-        <meshStandardMaterial color={PLASTER} roughness={0.92} metalness={0.02} />
-      </mesh>
+      {/* Залы лежат по земле и остаются на месте — поднимается оболочка над ними */}
+      <WingHalls />
+      <group ref={lowerShell}>
+        <mesh geometry={lowerWing} castShadow receiveShadow>
+          <meshStandardMaterial ref={(material) => { shell.current[3] = material; }} color={PLASTER} roughness={0.92} metalness={0.02} transparent />
+        </mesh>
 
-      {/* Ленточное остекление крыла — горизонталь, по которой читается этаж */}
-      <mesh position={[0, 2.5, 0]}>
-        <cylinderGeometry args={[11.35, 11.35, 0.62, 128, 1, true]} />
-        <meshStandardMaterial color={GLASS} roughness={0.34} metalness={0.14} opacity={0.72} transparent side={DoubleSide} />
-      </mesh>
+        {/* Ленточное остекление крыла — горизонталь, по которой читается этаж */}
+        <mesh position={[0, 2.5, 0]}>
+          <cylinderGeometry args={[11.35, 11.35, 0.62, 128, 1, true]} />
+          <meshStandardMaterial color={GLASS} roughness={0.34} metalness={0.14} opacity={0.72} transparent side={DoubleSide} />
+        </mesh>
+      </group>
 
       {/* Второе крыло, повёрнутое к первому: слоистость вместо одного объёма */}
+      <group ref={upperShell}>
       <group position={[2.6, WING_TOP - 0.6, -1.9]} rotation={[0, 0.62, 0]}>
         <mesh geometry={upperWing} castShadow receiveShadow>
           <meshStandardMaterial ref={(material) => { shell.current[2] = material; }} color={PLASTER_DEEP} roughness={0.9} metalness={0.02} transparent />
         </mesh>
       </group>
+      </group>
 
       {/* Ротонда со всем, что к ней относится. Смещена с оси стилобата:
           вертикаль, поставленная ровно в центр, складывает композицию в торт. */}
       <group position={[-2.9, 0, 2.1]}>
-        <Atrium />
+        <Atrium open={open} />
 
-        <mesh castShadow receiveShadow>
-          <latheGeometry args={[drum, 128]} />
-          <meshStandardMaterial ref={(material) => { shell.current[0] = material; }} color={PLASTER} roughness={0.9} metalness={0.02} side={DoubleSide} transparent />
-        </mesh>
+        {/* Покрытие ротонды: сама оболочка и окулюс — одна деталь, поэтому
+            поднимаются вместе, а атриум под ними остаётся на месте. */}
+        <group ref={drumShell}>
+          <mesh castShadow receiveShadow>
+            <latheGeometry args={[drum, 128]} />
+            <meshStandardMaterial ref={(material) => { shell.current[0] = material; }} color={PLASTER} roughness={0.9} metalness={0.02} side={DoubleSide} transparent />
+          </mesh>
+          <mesh position={[0, DRUM_TOP + 0.78, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+            <meshStandardMaterial ref={(material) => { shell.current[1] = material; }} color={GLASS} roughness={0.26} metalness={0.12} opacity={0.7} transparent />
+            <circleGeometry args={[drumRadius(DRUM_TOP) - 1.25, 48]} />
+          </mesh>
+          {open && (
+            <Html position={[0, DRUM_TOP + 1.6, 0]} center zIndexRange={[8, 0]} style={{ pointerEvents: 'none' }}>
+              <span className="whitespace-nowrap border border-[rgb(var(--c-accent-rgb)_/_0.28)] bg-[var(--c-bg)]/88 px-2 py-1 font-mono text-[8px] uppercase tracking-[0.14em] text-[var(--c-accent)]">
+                {labels.oculus}
+              </span>
+            </Html>
+          )}
+        </group>
 
         <mesh geometry={drumWindow}>
           <meshStandardMaterial color={GLASS} roughness={0.32} metalness={0.14} opacity={0.88} transparent />
@@ -310,11 +441,6 @@ function Building({ open }: { open: boolean }) {
           <meshStandardMaterial color={PLASTER_SHADE} roughness={0.86} />
         </mesh>
 
-        {/* Окулюс: свет ротонда берёт сверху */}
-        <mesh position={[0, DRUM_TOP + 0.78, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-          <meshStandardMaterial ref={(material) => { shell.current[1] = material; }} color={GLASS} roughness={0.26} metalness={0.12} opacity={0.7} transparent />
-          <circleGeometry args={[drumRadius(DRUM_TOP) - 1.25, 48]} />
-        </mesh>
       </group>
 
       <mesh geometry={canopy} castShadow receiveShadow>
@@ -334,6 +460,37 @@ function Building({ open }: { open: boolean }) {
         <meshStandardMaterial color={PLASTER_DEEP} roughness={0.95} />
       </mesh>
     </group>
+  );
+}
+
+/* ЭКСПЛИКАЦИЯ.
+ *
+ * Раскрытый макет показывает устройство, но не называет его. Подписи привязаны
+ * к точкам самого здания и висят только в открытом состоянии — в закрытом они
+ * бы спорили с силуэтом. Текст не перехватывает мышь, иначе он мешал бы
+ * вращению ровно там, где интереснее всего крутить. */
+function Legend({ open, labels }: { open: boolean; labels: MuseumLabels }) {
+  if (!open) return null;
+  /* Подпись стоит у того, что называет, и в РАСКРЫТОМ состоянии: атриум и залы
+     видно только когда покрытие поднялось. Окулюса здесь нет — он часть кровли
+     и уезжает вместе с ней, поэтому подписан внутри её группы. */
+  const points: [string, [number, number, number]][] = [
+    [labels.ramp, [1.2, 11.6, 6.4]],
+    [labels.atrium, [-2.9, WING_TOP + 1.8, 2.1]],
+    [labels.galleries, [7.6, 1.6, -4.2]],
+    [labels.entrance, [12.6, 3.0, 6.8]],
+  ];
+
+  return (
+    <>
+      {points.map(([text, position]) => (
+        <Html key={text} position={position} center zIndexRange={[8, 0]} style={{ pointerEvents: 'none' }}>
+          <span className="whitespace-nowrap border border-[rgb(var(--c-accent-rgb)_/_0.28)] bg-[var(--c-bg)]/88 px-2 py-1 font-mono text-[8px] uppercase tracking-[0.14em] text-[var(--c-accent)]">
+            {text}
+          </span>
+        </Html>
+      ))}
+    </>
   );
 }
 
@@ -390,7 +547,10 @@ function CameraRig({ open, radius }: { open: boolean; radius: number }) {
        здание стоит не по центру площадки: любой подлёт срезал крыло или пандус.
        Раскрытие держится на том, что расступается оболочка, а не на том, что
        камера лезет внутрь. */
-    const want = fitted;
+    /* В раскрытом состоянии композиция становится выше — поднятые части стоят
+       над зданием, — поэтому камера отходит. Приближения по-прежнему нет: оно
+       срезало крыло, потому что здание стоит не по центру площадки. */
+    const want = fitted * (open ? 1.34 : 1);
     distance.current += (want - distance.current) * step;
 
     /* Азимут остаётся тот, который выбрал зритель: нажатие не должно отбирать
@@ -414,8 +574,10 @@ function Turntable({ still, slow, children }: { still: boolean; slow: boolean; c
   const group = useRef<Group>(null);
   useFrame((_, delta) => {
     if (still || !group.current) return;
-    // В раскрытом зале вращение мешает разглядывать: замедляем, но не стопорим
-    group.current.rotation.y += delta * (slow ? 0.026 : 0.075);
+    // В раскрытом состоянии вращение останавливается совсем: подписи
+    // экспликации должны стоять на месте, а не уезжать из-под курсора.
+    if (slow) return;
+    group.current.rotation.y += delta * 0.075;
   });
   return <group ref={group}>{children}</group>;
 }
@@ -429,7 +591,7 @@ function hasWebGL() {
   }
 }
 
-export function MuseumModel({ label, openLabel, closeLabel, insideLabel }: { label: string; openLabel: string; closeLabel: string; insideLabel: string }) {
+export function MuseumModel({ label, openLabel, closeLabel, insideLabel, labels }: { label: string; openLabel: string; closeLabel: string; insideLabel: string; labels: MuseumLabels }) {
   /* Автоповорот — украшение, а не содержание: при системной просьбе убрать
      движение сцена замирает, но остаётся управляемой мышью. */
   const still = useMemo(() => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches, []);
@@ -471,7 +633,8 @@ export function MuseumModel({ label, openLabel, closeLabel, insideLabel }: { lab
 
           <Suspense fallback={null}>
             <Turntable still={still} slow={open}>
-              <Building open={open} />
+              <Building open={open} labels={labels} />
+              <Legend open={open} labels={labels} />
               <SiteContours />
               <ContactShadows position={[0, -9.48, 0]} opacity={0.32} scale={64} blur={2.8} far={20} resolution={512} color="#6f6a63" />
             </Turntable>
