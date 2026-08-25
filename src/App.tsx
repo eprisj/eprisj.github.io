@@ -2278,6 +2278,23 @@ function NoteBlock({ content }: { content: string }) {
   );
 }
 
+/* Подпись над карточкой соавтора. Роль автора переводится отдельной таблицей
+   (translateRole), а эта строка своя и короткая — держим её здесь, чтобы не
+   заводить ключ перевода ради двух слов. Неизвестный язык получает английский. */
+const CONTRIBUTOR_LABELS: Record<string, string> = {
+  EN: 'In collaboration with',
+  IT: 'In collaborazione con',
+  RU: 'Совместно с',
+  UA: 'Спільно з',
+  DE: 'In Zusammenarbeit mit',
+  ES: 'En colaboración con',
+  TR: 'İş birliğiyle',
+};
+
+function contributorLabel(lang: string): string {
+  return CONTRIBUTOR_LABELS[(lang || 'EN').toUpperCase()] || CONTRIBUTOR_LABELS.EN;
+}
+
 function ArticleView({ article, related, onArticleClick, onTagClick, onClose, onImageClick, t, currentLang, setCurrentLang, languages }: { article: Article; related: Article[]; onArticleClick: (article: Article) => void; onTagClick: (tag: string) => void; onClose: () => void; onImageClick: (src: string, alt: string) => void; t: (key: string) => string; currentLang: string; setCurrentLang: (lang: string) => void; languages: string[] }) {
   const [isArticleLangOpen, setIsArticleLangOpen] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -2310,6 +2327,9 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
     ? translateRole(resolvedAuthor?.role, currentLang)
     : (article.role || (isMatchingProfile ? translateRole(resolvedAuthor?.role, currentLang) : undefined));
   const authorPhoto = isMatchingProfile ? resolvedAuthor?.photoUrl : undefined;
+  // Второй кредит: институция, вместе с которой сделан материал. Она не
+  // перебивает подпись автора, а стоит отдельной карточкой под ней.
+  const contributor = article.contributorId ? resolveAuthor({ authorId: article.contributorId }) : null;
 
   // Jumping to a related article swaps content inside the same overlay — snap
   // the scroll back to the top so the reader starts at the new article's hero.
@@ -2774,6 +2794,60 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                 <p className="font-mono text-xs font-semibold text-[rgb(var(--c-accent-rgb)_/_0.55)]">{article.date}</p>
               </div>
             </div>
+            {contributor && (
+              <div className="mt-4 sm:mt-5">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-2.5">{contributorLabel(currentLang)}</p>
+                <div className="flex items-start gap-5 sm:gap-7 rounded-2xl bg-[rgb(var(--c-accent-rgb)_/_0.035)] p-5 sm:p-7">
+                  {contributor.photoUrl ? (
+                    <img
+                      src={contributor.photoUrl}
+                      alt={contributor.name}
+                      loading="lazy"
+                      /* Логотип института — не портрет: круглая обрезка режет
+                         вордмарк, поэтому квадрат со скруглением и contain. */
+                      className="w-14 h-14 sm:w-[72px] sm:h-[72px] rounded-xl object-contain bg-white p-1.5 shrink-0 border-2 border-[rgb(var(--c-accent-rgb)_/_0.22)]"
+                    />
+                  ) : (
+                    <div className="w-14 h-14 sm:w-[72px] sm:h-[72px] rounded-xl bg-[var(--c-accent)] flex items-center justify-center text-[var(--c-bg)] font-serif text-xl sm:text-2xl shrink-0">
+                      {(contributor.name || '').charAt(0)}
+                    </div>
+                  )}
+                  <div>
+                    <p className="font-serif text-xl sm:text-2xl font-semibold mb-1">{contributor.name}</p>
+                    {contributor.role && (
+                      <p className="font-mono text-xs font-bold uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.7)] mb-3">{contributor.role}</p>
+                    )}
+                    {contributor.bio && (
+                      <p className="font-serif text-[15px] text-[rgb(var(--c-accent-rgb)_/_0.85)] leading-relaxed mb-3 max-w-xl">{contributor.bio}</p>
+                    )}
+                    {(contributor.website || contributor.instagram) && (
+                      <div className="flex items-center gap-4">
+                        {contributor.website && (
+                          <a
+                            href={contributor.website}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-mono text-[10px] font-bold uppercase tracking-widest text-[var(--c-accent)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors"
+                          >
+                            Website
+                          </a>
+                        )}
+                        {contributor.instagram && (
+                          <a
+                            href={`https://instagram.com/${contributor.instagram.replace(/^@/, '')}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-mono text-[10px] font-bold uppercase tracking-widest text-[var(--c-accent)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors"
+                          >
+                            {contributor.instagram}
+                          </a>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
             {article.tags && (
               <div className="flex flex-wrap gap-2.5 mt-8">
                 {article.tags.map((tag: string, i: number) => (
