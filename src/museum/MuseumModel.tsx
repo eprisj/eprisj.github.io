@@ -1,8 +1,8 @@
-import { Suspense, useEffect, useMemo, useRef } from 'react';
+import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { ContactShadows, OrbitControls } from '@react-three/drei';
-import { BufferAttribute, BufferGeometry, CatmullRomCurve3, DoubleSide, ExtrudeGeometry, Shape, Vector2, Vector3 } from 'three';
-import type { Group, PerspectiveCamera } from 'three';
+import { BufferAttribute, BufferGeometry, CatmullRomCurve3, DoubleSide, ExtrudeGeometry, Shape, Spherical, Vector2, Vector3 } from 'three';
+import type { Group, MeshStandardMaterial, PerspectiveCamera } from 'three';
 
 /* ЗДАНИЕ МУЗЕЯ, СОБРАННОЕ КОДОМ, А НЕ ЗАГРУЖЕННОЕ ФАЙЛОМ.
  *
@@ -148,7 +148,97 @@ function spiralAroundDrum(fromY: number, toY: number, turns: number, offset: num
   return new CatmullRomCurve3(samples);
 }
 
-function Building() {
+/* РАЗРЕЗ ПО НАЖАТИЮ.
+ *
+ * Снаружи здание закрыто, и это правильно: макет сначала должен читаться
+ * объёмом. Но музей — это прежде всего внутреннее пространство, поэтому у
+ * макета есть второе состояние: оболочка ротонды и верхнее крыло расступаются,
+ * камера подходит ближе, и виден зал — пол, балконы, внутренняя сторона
+ * пандуса и свет из окулюса.
+ *
+ * Управляет этим кнопка, а не угол камеры: подсказка «покрути и что-нибудь
+ * произойдёт» не работает, а нажатие — договор, который видно. */
+function useShellReveal(materials: React.MutableRefObject<(MeshStandardMaterial | null)[]>, open: boolean) {
+  const value = useRef(0);
+  useFrame((_, delta) => {
+    const target = open ? 1 : 0;
+    value.current += (target - value.current) * Math.min(delta * 3.4, 1);
+    const opacity = 1 - value.current * 0.9;
+    materials.current.forEach((material) => {
+      if (!material) return;
+      /* Только opacity. Переключать сам флаг transparent на лету нельзя:
+         three пересобирает шейдер лишь по needsUpdate, и без него смена флага
+         молча не применяется — стены оставались глухими. Поэтому материалы
+         объявлены прозрачными сразу, а меняется прозрачность. */
+      material.opacity = opacity;
+      material.depthWrite = opacity > 0.6;
+    });
+  });
+}
+
+/* Внутреннее пространство ротонды: пол атриума, кольцевые балконы вдоль стены
+   и световой колодец под окулюсом. Балконы посажены на тот же радиус, что и
+   оболочка, поэтому пространство читается как одно, а не как набор дисков. */
+function Atrium() {
+  const balconies = useMemo(
+    () => [10.6, 13.4, 16.2].map((y) => ({ y, radius: drumRadius(y) - 0.12 })),
+    [],
+  );
+
+  return (
+    <group>
+      {/* Пол атриума */}
+      <mesh position={[0, WING_TOP + 0.12, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+        <circleGeometry args={[drumRadius(WING_TOP) - 0.15, 64]} />
+        <meshStandardMaterial color={PLASTER_SHADE} roughness={0.94} />
+      </mesh>
+
+      {/* Круг света под окулюсом — то, ради чего в музее делают верхний свет */}
+      <mesh position={[0, WING_TOP + 0.14, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <circleGeometry args={[2.15, 48]} />
+        <meshBasicMaterial color="#ffffff" transparent opacity={0.55} />
+      </mesh>
+
+      {/* Подиумы в зале: пустой атриум читается вестибюлем, а с ними — музеем.
+          Ставим по дуге, а не по центру: центр держит свет из окулюса. */}
+      {[0.4, 1.5, 2.6, 4.1].map((angle, index) => {
+        const distance = 2.9 + (index % 2) * 1.1;
+        return (
+          <mesh
+            key={angle}
+            position={[Math.cos(angle) * distance, WING_TOP + 0.55, Math.sin(angle) * distance]}
+            castShadow
+            receiveShadow
+          >
+            <boxGeometry args={[0.9, 0.86, 0.9]} />
+            <meshStandardMaterial color={PLASTER_DEEP} roughness={0.9} />
+          </mesh>
+        );
+      })}
+
+      {balconies.map(({ y, radius }) => (
+        <group key={y}>
+          <mesh position={[0, y, 0]} rotation={[-Math.PI / 2, 0, 0]} castShadow receiveShadow>
+            <ringGeometry args={[radius - 1.5, radius, 64]} />
+            <meshStandardMaterial color={PLASTER_DEEP} roughness={0.9} side={DoubleSide} />
+          </mesh>
+          <mesh position={[0, y + 0.42, 0]} rotation={[Math.PI / 2, 0, 0]}>
+            <torusGeometry args={[radius - 1.5, 0.06, 6, 64]} />
+            <meshStandardMaterial color={PLASTER_SHADE} roughness={0.85} />
+          </mesh>
+        </group>
+      ))}
+    </group>
+  );
+}
+
+function Building({ open }: { open: boolean }) {
+  /* Материалы, которые расступаются при взгляде сверху: оболочка ротонды,
+     её кровельное кольцо и верхнее крыло. Остальное здание остаётся плотным —
+     разрез должен открывать зал, а не разбирать макет на части. */
+  const shell = useRef<(MeshStandardMaterial | null)[]>([]);
+  useShellReveal(shell, open);
+
   const lowerWing = useMemo(() => slabGeometry([13.8, 10.1, 12.7, 8.3, 11.5, 13.4, 9.4, 11.9], WING_TOP), []);
   const upperWing = useMemo(() => slabGeometry([8.6, 6.2, 7.9, 5.6, 7.4, 8.3, 6.0, 7.1], UPPER_TOP - WING_TOP + 0.6, 0.3), []);
   const drum = useMemo(() => drumProfile(), []);
@@ -195,16 +285,18 @@ function Building() {
       {/* Второе крыло, повёрнутое к первому: слоистость вместо одного объёма */}
       <group position={[2.6, WING_TOP - 0.6, -1.9]} rotation={[0, 0.62, 0]}>
         <mesh geometry={upperWing} castShadow receiveShadow>
-          <meshStandardMaterial color={PLASTER_DEEP} roughness={0.9} metalness={0.02} />
+          <meshStandardMaterial ref={(material) => { shell.current[2] = material; }} color={PLASTER_DEEP} roughness={0.9} metalness={0.02} transparent />
         </mesh>
       </group>
 
       {/* Ротонда со всем, что к ней относится. Смещена с оси стилобата:
           вертикаль, поставленная ровно в центр, складывает композицию в торт. */}
       <group position={[-2.9, 0, 2.1]}>
+        <Atrium />
+
         <mesh castShadow receiveShadow>
           <latheGeometry args={[drum, 128]} />
-          <meshStandardMaterial color={PLASTER} roughness={0.9} metalness={0.02} side={DoubleSide} />
+          <meshStandardMaterial ref={(material) => { shell.current[0] = material; }} color={PLASTER} roughness={0.9} metalness={0.02} side={DoubleSide} transparent />
         </mesh>
 
         <mesh geometry={drumWindow}>
@@ -220,8 +312,8 @@ function Building() {
 
         {/* Окулюс: свет ротонда берёт сверху */}
         <mesh position={[0, DRUM_TOP + 0.78, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+          <meshStandardMaterial ref={(material) => { shell.current[1] = material; }} color={GLASS} roughness={0.26} metalness={0.12} opacity={0.7} transparent />
           <circleGeometry args={[drumRadius(DRUM_TOP) - 1.25, 48]} />
-          <meshStandardMaterial color={GLASS} roughness={0.26} metalness={0.12} opacity={0.7} transparent />
         </mesh>
       </group>
 
@@ -266,29 +358,64 @@ function SiteContours() {
  * fov у перспективной камеры вертикальный, и на узкой колонке телефона он
  * покрывает высоту, но не ширину: макет шириной в тридцать метров вылезал за
  * оба края, оставляя в кадре кусок крыла. Расстояние берётся по худшей из двух
- * осей, поэтому здание целиком помещается и в широкой панели, и в телефонной. */
-function FitCamera({ radius }: { radius: number }) {
+ * осей, поэтому здание целиком помещается и в широкой панели, и в телефонной.
+ *
+ * Тот же расчёт обслуживает раскрытие: в открытом состоянии камера подходит
+ * ближе, к масштабу зала. Меняется только длина вектора — направление остаётся
+ * тем, которое зритель выбрал мышью, иначе нажатие сбрасывало бы его ракурс. */
+function CameraRig({ open, radius }: { open: boolean; radius: number }) {
   const { camera, size } = useThree();
-  useEffect(() => {
+  const distance = useRef(0);
+
+  const fitted = useMemo(() => {
     const perspective = camera as PerspectiveCamera;
     const aspect = size.width / Math.max(size.height, 1);
     const verticalFov = (perspective.fov * Math.PI) / 180;
     const horizontalFov = 2 * Math.atan(Math.tan(verticalFov / 2) * aspect);
-    const distance = Math.max(radius / Math.sin(verticalFov / 2), radius / Math.sin(horizontalFov / 2));
-    const direction = new Vector3(1.15, 0.35, 1.02).normalize();
-    perspective.position.copy(direction.multiplyScalar(distance));
-    perspective.near = distance / 12;
-    perspective.far = distance * 3.2;
-    perspective.updateProjectionMatrix();
+    return Math.max(radius / Math.sin(verticalFov / 2), radius / Math.sin(horizontalFov / 2));
   }, [camera, size.width, size.height, radius]);
+
+  useEffect(() => {
+    const perspective = camera as PerspectiveCamera;
+    if (!distance.current) distance.current = fitted;
+    perspective.near = fitted / 40;
+    perspective.far = fitted * 3.4;
+    perspective.updateProjectionMatrix();
+  }, [camera, fitted]);
+
+  const spherical = useRef(new Spherical());
+  useFrame((_, delta) => {
+    const step = Math.min(delta * 2.6, 1);
+    /* Приближения нет намеренно. Посадка кадра выверена по габариту здания, а
+       здание стоит не по центру площадки: любой подлёт срезал крыло или пандус.
+       Раскрытие держится на том, что расступается оболочка, а не на том, что
+       камера лезет внутрь. */
+    const want = fitted;
+    distance.current += (want - distance.current) * step;
+
+    /* Азимут остаётся тот, который выбрал зритель: нажатие не должно отбирать
+       у него ракурс. Меняются только длина вектора и наклон — камера опускается
+       почти на уровень зала. Сверху смотреть бесполезно: витки пандуса идут
+       снаружи ротонды и закрывают собой атриум, ради которого всё и делалось,
+       а сбоку сквозь растворённую стену читается разрез: пол, балконы, подиумы
+       и лестничная спираль перед ними. */
+    spherical.current.setFromVector3(camera.position);
+    if (open) {
+      spherical.current.phi += (1.16 - spherical.current.phi) * step * 0.6;
+    }
+    spherical.current.radius = distance.current;
+    camera.position.setFromSpherical(spherical.current);
+  });
+
   return null;
 }
 
-function Turntable({ still, children }: { still: boolean; children: React.ReactNode }) {
+function Turntable({ still, slow, children }: { still: boolean; slow: boolean; children: React.ReactNode }) {
   const group = useRef<Group>(null);
   useFrame((_, delta) => {
     if (still || !group.current) return;
-    group.current.rotation.y += delta * 0.075;
+    // В раскрытом зале вращение мешает разглядывать: замедляем, но не стопорим
+    group.current.rotation.y += delta * (slow ? 0.026 : 0.075);
   });
   return <group ref={group}>{children}</group>;
 }
@@ -302,60 +429,76 @@ function hasWebGL() {
   }
 }
 
-export function MuseumModel({ label }: { label: string }) {
+export function MuseumModel({ label, openLabel, closeLabel, insideLabel }: { label: string; openLabel: string; closeLabel: string; insideLabel: string }) {
   /* Автоповорот — украшение, а не содержание: при системной просьбе убрать
      движение сцена замирает, но остаётся управляемой мышью. */
   const still = useMemo(() => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches, []);
+  const [open, setOpen] = useState(false);
 
   if (typeof window !== 'undefined' && !hasWebGL()) {
     return <div className="flex h-full w-full items-center justify-center bg-[#f6f4f1]" role="img" aria-label={label} />;
   }
 
   return (
-    <div className="h-full w-full cursor-grab active:cursor-grabbing" role="img" aria-label={label}>
-      {/* flat — это NoToneMapping. По умолчанию fiber ставит ACES, и белый гипс
-          уезжает в ровный серый: тонмаппинг для фотореализма, а здесь макет. */}
-      <Canvas
-        flat
-        shadows
-        camera={{ position: [42, 13, 37], fov: 30 }}
-        dpr={[1, 1.6]}
-        gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
+    <div className="relative h-full w-full">
+      <div className="h-full w-full cursor-grab active:cursor-grabbing" role="img" aria-label={open ? insideLabel : label}>
+        {/* flat — это NoToneMapping. По умолчанию fiber ставит ACES, и белый гипс
+            уезжает в ровный серый: тонмаппинг для фотореализма, а здесь макет. */}
+        <Canvas
+          flat
+          shadows
+          camera={{ position: [42, 13, 37], fov: 30 }}
+          dpr={[1, 1.6]}
+          gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
+        >
+          <CameraRig open={open} radius={15.8} />
+          <hemisphereLight args={['#ffffff', '#d8d2c9', 0.95]} />
+          <directionalLight
+            position={[18, 26, 14]}
+            intensity={1.25}
+            castShadow
+            shadow-mapSize={[2048, 2048]}
+            shadow-bias={-0.0006}
+            shadow-normalBias={0.035}
+            shadow-camera-left={-32}
+            shadow-camera-right={32}
+            shadow-camera-top={32}
+            shadow-camera-bottom={-32}
+          />
+          <directionalLight position={[-20, 10, -16]} intensity={0.34} />
+          {/* Свет из окулюса: в раскрытом зале он и есть главный источник */}
+          <pointLight position={[-2.9, 8.5, 2.1]} intensity={open ? 42 : 0} distance={26} decay={2} color="#fffaf2" />
+
+          <Suspense fallback={null}>
+            <Turntable still={still} slow={open}>
+              <Building open={open} />
+              <SiteContours />
+              <ContactShadows position={[0, -9.48, 0]} opacity={0.32} scale={64} blur={2.8} far={20} resolution={512} color="#6f6a63" />
+            </Turntable>
+          </Suspense>
+
+          {/* Колесо не перехватывается: страница должна прокручиваться под курсором,
+              а не масштабировать макет. Крутить можно перетаскиванием. */}
+          <OrbitControls
+            enableZoom={false}
+            enablePan={false}
+            minPolarAngle={0.32}
+            maxPolarAngle={Math.PI / 2.15}
+            rotateSpeed={0.55}
+          />
+        </Canvas>
+      </div>
+
+      {/* Кнопка живёт над канвасом, а не в колонке рядом: действие относится к
+          макету, и рука не должна уходить от него через всю страницу. */}
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        aria-pressed={open}
+        className="absolute right-4 top-4 z-10 min-h-11 border border-[rgb(var(--c-accent-rgb)_/_0.35)] bg-[var(--c-bg)]/85 px-4 py-2 font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--c-accent)] backdrop-blur-sm transition hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--c-accent)] sm:right-6 sm:top-6"
       >
-        <FitCamera radius={15.8} />
-        <hemisphereLight args={['#ffffff', '#d8d2c9', 0.95]} />
-        <directionalLight
-          position={[18, 26, 14]}
-          intensity={1.25}
-          castShadow
-          shadow-mapSize={[2048, 2048]}
-          shadow-bias={-0.0006}
-          shadow-normalBias={0.035}
-          shadow-camera-left={-32}
-          shadow-camera-right={32}
-          shadow-camera-top={32}
-          shadow-camera-bottom={-32}
-        />
-        <directionalLight position={[-20, 10, -16]} intensity={0.34} />
-
-        <Suspense fallback={null}>
-          <Turntable still={still}>
-            <Building />
-            <SiteContours />
-            <ContactShadows position={[0, -9.48, 0]} opacity={0.32} scale={64} blur={2.8} far={20} resolution={512} color="#6f6a63" />
-          </Turntable>
-        </Suspense>
-
-        {/* Колесо не перехватывается: страница должна прокручиваться под курсором,
-            а не масштабировать макет. Крутить можно перетаскиванием. */}
-        <OrbitControls
-          enableZoom={false}
-          enablePan={false}
-          minPolarAngle={Math.PI / 5}
-          maxPolarAngle={Math.PI / 2.15}
-          rotateSpeed={0.55}
-        />
-      </Canvas>
+        {open ? closeLabel : openLabel}
+      </button>
     </div>
   );
 }
