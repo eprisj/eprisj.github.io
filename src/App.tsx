@@ -1397,11 +1397,15 @@ function TeamMemberCard({
   bioText?: ReactNode;
   websiteLabel: string;
 }) {
+  /* Портрет обрезается в круг, логотип — нет: круглая маска съедает вордмарк
+     по краям, а институция узнаётся именно по нему. Тот же размер, тот же
+     ритм колонки, разная маска. */
+  const isLogo = author.collaborator === true;
   return (
     <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-12 max-w-2xl mx-auto">
       {author.photoUrl && (
-        <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden shrink-0 border border-[rgb(var(--c-accent-rgb)_/_0.2)]">
-          <img src={author.photoUrl} alt={author.name} className="w-full h-full object-cover" />
+        <div className={`w-32 h-32 sm:w-40 sm:h-40 overflow-hidden shrink-0 border border-[rgb(var(--c-accent-rgb)_/_0.2)] ${isLogo ? 'rounded-2xl bg-white p-4' : 'rounded-full'}`}>
+          <img src={author.photoUrl} alt={author.name} className={`w-full h-full ${isLogo ? 'object-contain' : 'object-cover'}`} />
         </div>
       )}
       <div className="text-center sm:text-left">
@@ -1437,13 +1441,17 @@ function TeamMemberCard({
 }
 
 function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => string; currentLang: string; onOpenManifest: () => void }) {
-  const team = getAuthors()
+  const listed = getAuthors()
     .filter((author) => author.active !== false && author.showOnTeam !== false)
     .sort((a, b) => {
       const aOrder = a.teamOrder ?? LEGACY_TEAM_ORDER.get(a.id) ?? Number.MAX_SAFE_INTEGER;
       const bOrder = b.teamOrder ?? LEGACY_TEAM_ORDER.get(b.id) ?? Number.MAX_SAFE_INTEGER;
       return aOrder - bOrder || a.name.localeCompare(b.name);
     });
+  // Музей или студия — не сотрудники редакции, и под заголовком «Команда»
+  // они читались бы как штат. Своя группа сразу под ней, тем же строем карточек.
+  const team = listed.filter((author) => author.collaborator !== true);
+  const collaborators = listed.filter((author) => author.collaborator === true);
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -1493,6 +1501,25 @@ function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => 
                   <TeamMemberCard key={member.id} author={member} roleLabel={roleLabel} bioText={bioText} websiteLabel={t('about.website')} />
                 );
               })}
+            </div>
+          </div>
+        </Reveal>
+      )}
+
+      {collaborators.length > 0 && (
+        <Reveal>
+          <div className="mb-16">
+            <h3 className="font-serif text-2xl md:text-3xl text-[var(--c-accent)] mb-12 text-center">{contributorLabel(currentLang)}</h3>
+            <div className="flex flex-col gap-16 sm:gap-20">
+              {collaborators.map((member) => (
+                <TeamMemberCard
+                  key={member.id}
+                  author={member}
+                  roleLabel={translateRole(member.role, currentLang) || member.role || ''}
+                  bioText={member.bio ? <p>{member.bio}</p> : undefined}
+                  websiteLabel={t('about.website')}
+                />
+              ))}
             </div>
           </div>
         </Reveal>
