@@ -2325,14 +2325,14 @@
     },
     {
       "id": 23,
-      "title": "A Museum That Belongs to Its Village",
+      "title": "The Museum Orani Built",
       "subtitle": "Interview",
       "fig": "FIG. 14",
-      "description": "The team of the Museo Nivola in Orani on the gentle border between a museum and its village, on inheriting Costantino Nivola's method rather than his forms, and on what a monographic museum can still become.",
+      "description": "Costantino Nivola left a Sardinian village of masons for New York and never stopped coming back. The team of his museum, on the hill above Orani, on where a museum ends, on the method he left behind, and on what a monographic museum can still become.",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8pvrakmxoout.jpg",
       "articleId": 26,
       "draft": true,
-      "updatedAt": "2026-08-25T13:55:06.000Z"
+      "updatedAt": "2026-08-25T14:16:07.000Z"
     }
   ],
   "articles": [
@@ -5374,13 +5374,13 @@
     },
     {
       "id": 26,
-      "title": "A Museum That Belongs to Its Village",
+      "title": "The Museum Orani Built",
       "author": "Viacheslav Munister",
       "role": "Author",
       "date": "Aug 25, 2026",
-      "excerpt": "The team of the Museo Nivola in Orani on the gentle border between a museum and its village, on inheriting Costantino Nivola's method rather than his forms, and on what a monographic museum can still become.",
+      "excerpt": "Costantino Nivola left a Sardinian village of masons for New York and never stopped coming back. The team of his museum, on the hill above Orani, on where a museum ends, on the method he left behind, and on what a monographic museum can still become.",
       "category": "interview",
-      "subcategory": "Feature",
+      "subcategory": "Interview",
       "tags": [
         "Interview",
         "architecture",
@@ -5560,23 +5560,15 @@
         {
           "type": "text",
           "content": "<i>The exhibition Nivola, Colombo e lo spazio intorno is on view at the Museo Nivola in Orani, Sardinia. Works from the permanent collection will travel to the exhibition dedicated to Nivola at the Triennale di Milano, and the display in Orani will be rebuilt around their absence.</i>"
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mt8q1x99j78tra.jpg",
-          "caption": "",
-          "align": "center"
-        },
-        {
-          "type": "text",
-          "content": "<b>Museo Nivola</b><br>Orani, Barbagia, Sardinia. The museum holds the largest collection of work by Costantino Nivola in the world, more than two hundred sculptures and paintings, the first of them donated by the artist’s widow Ruth Nivola. Alongside the permanent collection it runs exhibitions of contemporary art, a research and education programme, and projects in the public space of the village.<br><a href=\"https://museonivola.it/en/\" target=\"_blank\" rel=\"noopener\">museonivola.it</a> · <a href=\"https://www.instagram.com/museo_nivola/\" target=\"_blank\" rel=\"noopener\">@museo_nivola</a>"
         }
       ],
       "authorId": "author-1784732936927-kw554",
       "draft": true,
       "previewToken": "bf6e06015612b1dfa06d7e68",
-      "updatedAt": "2026-08-25T13:55:06.000Z",
-      "showCover": true
+      "updatedAt": "2026-08-25T14:16:07.000Z",
+      "showCover": true,
+      "contributorId": "author-museo-nivola",
+      "publishedAt": "2026-08-25T13:00:00.000Z"
     }
   ],
   "reviews": [
@@ -9212,11 +9204,11 @@
         },
         {
           "id": 26,
-          "title": "Музей, принадлежащий своему селу",
+          "title": "Музей Orani Built",
           "author": "Viacheslav Munister",
           "role": "Автор",
           "date": "25 авг. 2026",
-          "excerpt": "Команда Museo Nivola в Orani на мягкой границе между музеем и его селом, унаследовав метод Костантино Ниволы, а не его формы, и о том, чем может стать монографический музей.",
+          "excerpt": "Костantino Nivola покинул сардинскую деревню каменщиков ради Нью-Йорка и никогда не переставал возвращаться. Команда его музея, на холме над Orani, там, где заканчивается музей, о методе, который он оставил, и о том, чем может стать монографический музей.",
           "category": "интервью",
           "subcategory": "Особенность",
           "tags": [
@@ -9231,7 +9223,7 @@
           "content": [
             {
               "type": "текст",
-              "content": "Orani — деревня в Barbagia, гористом сердце Sardinia. Дорога поднимается из долины, дома собираются вдоль склона, и чуть выше, на склоне холма, низкое белое здание расположено среди оливковых деревьев и смотрит вниз на крыши. Это один из самых тихо красивых маленьких музеев в Италии, и он принадлежит, в полном смысле слова, тому месту, на котором он стоит."
+              "content": "Orani — деревня в Barbagia, гористом сердце Sardinia. Дорога поднимается из долины, дома собираются вдоль склона, и чуть выше, на склоне, низкое белое здание расположено среди оливковых деревьев и смотрит вниз на крыши. Это один из самых тихо красивых маленьких музеев в Италии, и он принадлежит, в полном смысле слова, тому месту, на котором он стоит."
             },
             {
               "type": "текст",
@@ -9239,7 +9231,7 @@
             },
             {
               "type": "текст",
-              "content": "Музей, носит его имя, унаследовал ту щедрость. Он держит дверь открытой для деревни, для современных художников, для школьников и исследователей, и делает все это с редкой заботой и теплом. Мы благодарны команде Museo Nivola за время и мысли, которые они уделили нашим четырем вопросам: где заканчивается музей и начинается Orani, что еще живо в вере Nivola в единство искусства и архитектуры, что может узнать музей в родном городе художника, и что они надеются, что музей станет."
+              "content": "Музей, носит его имя, унаследовал ту щедрость. Он держит дверь открытой для деревни, для современных художников, для школьников и исследователей, и делает все это с редкой заботой и теплом. Мы благодарны команде Museo Nivola за время и мысли, которые они уделили нашим четырем вопросам: где заканчивается музей и начинается Orani, что еще живо в вере Nivola в единство искусства и архитектуры, что может знать музей в родном городе художника, и что они надеются, что музей станет."
             },
             {
               "type": "изображение",
@@ -9295,30 +9287,30 @@
             },
             {
               "type": "текст",
-              "content": "Вот в чем великая актуальность его мысли. Сегодня, возможно, даже больше, чем когда Nivola начал работать в этом направлении. Для него интеграция искусства и архитектуры не означала просто размещение произведения внутри здания или на его фасаде. Это означало концепцию пространства, материи, функции и опыта того, кто будет жить в этом пространстве, все вместе. Известный концептуальный проект."
+              "content": "Вот в чем великая актуальность его мысли. Сегодня, возможно, даже больше, чем когда Nivola начал работать в этом направлении. Для него интеграция искусства и архитектуры не означала просто размещение произведения внутри здания или на его фасаде. Это означало концепцию пространства, материи, функции и опыта того, кто будет жить в этом пространстве, все вместе. Известный концепт полного проекта."
             },
             {
               "type": "текст",
               "content": "Nivola работал с некоторыми из великих представителей современной архитектуры, пытаясь преодолеть дисциплинарное разделение между художником, архитектором и дизайнером. Его интерес был направлен на пространство как на общее впечатление. Скульптура могла стать стеной, рельеф — частью архитектуры, двор — местом встречи. Даже градостроительный план должен был стать инструментом укрепления социальных связей."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mt8phw5rzot1h0.jpg",
-              "caption": "Выставочный зал Olivetti на Fifth Avenue, Нью-Йорк, 1954. Фото H. Namuth. Музей Nivola",
-              "align": "центр"
+              "caption": "Выставочный зал Olivetti на Fifth Avenue, Нью-Йорк, 1954. Фото H. Namuth. Courtesy Museo Nivola",
+              "align": "center"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "За идеей интеграции между искусствами скрывается что-то более широкое: концепция искусства как инструмента, способного влиять на качество коллективной жизни."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mt8pj4hlw7p230.jpg",
-              "caption": "Рельеф для колледжей Morse & Stiles, Yale University, 1961, песчаное литье, бетон, 51 x 45 x 9 см. Фото P. Pinna. Музей Nivola",
-              "align": "центр"
+              "caption": "Рельеф для колледжей Morse & Stiles, Yale University, 1961, песчаное литье, бетон, 51 x 45 x 9 см. Фото P. Pinna. Courtesy Museo Nivola",
+              "align": "center"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Nivola приглашает нас выйти за рамки слишком жестких категорий. Он приглашает нас задаться вопросом, для кого предназначено пространство, кто будет его использовать, какие отношения оно создаст. В момент, когда архитектура, искусство и дизайн призваны столкнуться с экологическими и социальными вопросами и новыми способами обитания, его междисциплинарный подход кажется удивительно современным."
             },
             {
@@ -9335,7 +9327,7 @@
             },
             {
               "type": "текст",
-              "content": "Международная институция может рассказать о Nivola в рамках глобальной истории искусства и архитектуры XX века, восстановить его связи с Нью-Йорком, с Harvard Graduate School of Design, с архитекторами такими как Le Corbusier, Josep Lluís Sert или Eero Saarinen, и вернуть в память исключительную культурную сеть, в которой он находился."
+              "content": "Международная институция может рассказать о Nivola в рамках глобальной истории искусства и архитектуры XX века, восстановить его связи с Нью-Йорком, с Harvard Graduate School of Design, с архитекторами такими как Le Corbusier, Josep Lluís Sert или Eero Saarinen, и вернуть его в исключительную культурную сеть, в которой он находился."
             },
             {
               "type": "текст",
@@ -9357,7 +9349,7 @@
             },
             {
               "type": "text",
-              "content": "Возможно, что именно то, что Museo Nivola может предложить уникальным образом, — это возможность понять, что эти две измерения не противоречат друг другу."
+              "content": "Возможно, что именно то, что Museo Nivola может предложить уникальным образом, — это именно возможность понять, что эти две измерения не противоречат друг другу."
             },
             {
               "type": "text",
@@ -9373,7 +9365,7 @@
             },
             {
               "type": "текст",
-              "content": "Новая программа <i>Nivola vis-à-vis</i> возникает из этой необходимости. После серии выставок, посвящённых современным художникам, наше видение возвращается к непосредственному вопросу о Nivola, ставя его в связь с фигурами, опытом и вопросами его времени. Речь идёт не просто о построении формальных сравнений, а об анализе работы Nivola как отправной точки для тем, которые остаются актуальными и необходимыми: пространство и тело, архитектура и дизайн, взаимопроникновение искусства и окружающей среды. Выставка <i>Nivola, Colombo e lo spazio intorno</i>, которая в настоящее время экспонируется, например, размышляет о пространстве как о физическом и реляционном познании. Вокруг неё вращаются важные размышления о том, что исследования Nivola продолжают предлагать современности. Какие аспекты его работы всё ещё кажутся открытыми, актуальными и продуктивными? В рамках международных дебатов важно активировать их проектный потенциал, возвращая в центр текущего дискурса вопросы, которые Nivola задавал более семидесяти лет назад о взаимоотношениях искусства и общества, между образованием и воображением, между проектом и повседневной жизнью."
+              "content": "Новая программа <i>Nivola vis-à-vis</i> возникает из этой потребности. После серии выставок, посвящённых современным художникам, наше видение возвращается к непосредственному вопросу о Nivola, ставя его в связь с фигурами, опытом и вопросами его времени. Речь идёт не просто о построении формальных сравнений, а об анализе работы Nivola как отправной точки для тем, которые остаются актуальными и необходимыми: пространство и тело, архитектура и дизайн, взаимопроникновение искусства и окружающей среды. Выставка <i>Nivola, Colombo e lo spazio intorno</i>, которая в настоящее время экспонируется, например, размышляет о пространстве как о физическом и реляционном познании. Вокруг неё вращаются важные размышления о том, что исследования Nivola продолжают предлагать современности. Какие аспекты его работы всё ещё кажутся открытыми, актуальными и продуктивными? В рамках международных дебатов важно возобновить их проектный потенциал, возвращая в центр текущего дискурса вопросы, которые Nivola задавал более семидесяти лет назад о взаимоотношениях искусства и общества, об образовании и воображении, о проекте и повседневной жизни."
             },
             {
               "type": "изображение",
@@ -9383,11 +9375,11 @@
             },
             {
               "type": "текст",
-              "content": "В ближайшие месяцы эта работа продолжится через переосмысление постоянной коллекции. Временный вывоз некоторых работ для выставки, посвящённой Nivola в Triennale di Milano, станет поводом пересмотреть экспозицию, вернуться к изучению складских помещений, представить менее известные работы и создать новые связи. Мы хотим, чтобы научные исследования могли взаимодействовать с образовательной деятельностью, каждая выставка могла создавать опыт в общественном пространстве, наследие могло бы постоянно переосмысливаться через «чувство настоящего», а музей продолжал восприниматься сообществом как часть его жизни."
+              "content": "В ближайшие месяцы эта работа продолжится через переосмысление постоянной коллекции. Временный вывоз некоторых работ для выставки, посвящённой Nivola в Triennale di Milano, станет поводом для переосмысления экспозиции, возвращения к изучению складских помещений, представления менее известных работ и создания новых связей. Мы хотим, чтобы научные исследования могли взаимодействовать с образовательной деятельностью, каждая выставка могла создавать опыт в общественном пространстве, наследие могло бы постоянно переосмысливаться через «чувство настоящего», а музей продолжал восприниматься сообществом как часть его принадлежности."
             },
             {
               "type": "текст",
-              "content": "Это динамика, которая, в конце концов, уже принадлежала Nivola: пересекать мир, не теряя связи с местом, откуда ты начал. И, возможно, именно такой моделью музея мы заинтересованы продолжать строить: не закрытым местом, которое сохраняет наследие, а организмом, способным постоянно возвращать его в обращение."
+              "content": "Это динамика, которая, в конце концов, уже принадлежала Nivola: пересекать мир, не теряя связи с местом, с которого начал. И, возможно, именно такой моделью музея мы заинтересованы в дальнейшем строительстве: не закрытым местом, которое сохраняет наследие, а организмом, способным постоянно возвращать его в обращение."
             },
             {
               "type": "изображение",
@@ -9398,23 +9390,14 @@
             {
               "type": "текст",
               "content": "<i>Выставка Nivola, Colombo e lo spazio intorno демонстрируется в Museo Nivola в Orani, Сардиния. Работы из постоянной коллекции отправятся в выставку, посвящённую Nivola, в Triennale di Milano, а экспозиция в Orani будет перестроена вокруг их отсутствия.</i>"
-            },
-            {
-              "type": "изображение",
-              "content": "https://api.eprisjournal.com/uploads/mt8q1x99j78tra.jpg",
-              "caption": "",
-              "align": "центр"
-            },
-            {
-              "type": "текст",
-              "content": "<b>Museo Nivola</b><br>Orani, Barbagia, Сардиния. В музее хранится самая большая в мире коллекция работ Costantino Nivola, более двухсот скульптур и картин, первая из которых была пожертвована вдовой художника Ruth Nivola. Наряду с постоянной коллекцией он проводит выставки современного искусства, исследовательскую и образовательную программы, а также проекты в общественном пространстве деревни.<br><a href=\"https://museonivola.it/en/\" target=\"_blank\" rel=\"noopener\">museonivola.it</a> · <a href=\"https://www.instagram.com/museo_nivola/\" target=\"_blank\" rel=\"noopener\">@museo_nivola</a>"
             }
           ],
           "authorId": "author-1784732936927-kw554",
           "draft": true,
           "previewToken": "bf6e06015612b1dfa06d7e68",
-          "updatedAt": "2026-08-25T14:03:05.559Z",
-          "showCover": true
+          "updatedAt": "2026-08-25T14:18:24.286Z",
+          "showCover": true,
+          "contributorId": "author-museo-nivola"
         }
       ],
       "reviews": [
@@ -25431,14 +25414,14 @@
         },
         {
           "id": 23,
-          "title": "Un museo che appartiene al suo paese",
+          "title": "Il museo che Orani ha costruito",
           "subtitle": "Intervista",
           "fig": "FIG. 14",
-          "description": "Il Museo Nivola di Orani sul confine gentile tra un museo e il suo paese, sull'eredità del metodo di Costantino Nivola più che delle sue forme, e su cosa può ancora diventare un museo monografico.",
+          "description": "Costantino Nivola lasciò un paese di muratori in Sardegna per New York e non smise mai di tornare. Il team del suo museo, sulla collina sopra Orani, su dove finisce un museo, sul metodo che ci ha lasciato e su cosa può ancora diventare un museo monografico.",
           "imageUrl": "https://api.eprisjournal.com/uploads/mt8pvrakmxoout.jpg",
           "articleId": 26,
           "draft": true,
-          "updatedAt": "2026-08-25T13:55:06.000Z"
+          "updatedAt": "2026-08-25T14:16:07.000Z"
         }
       ],
       "articles": [
@@ -28189,15 +28172,15 @@
               "content": "<span>02 ·</span> Metodo"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "<b>MI: Sei nato e cresciuto in Giappone, poi ti sei trasferito a Londra per studiare. Hai detto che il tuo lavoro è radicato nella cultura giapponese – come si manifesta nella tua pratica?</b>"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "<b>KA:</b> C'è un libro, <i>In Praise of Shadows</i> – non ricordo il nome di battesimo dell'autore – su come le case tradizionali giapponesi usano luce e ombra, con un forte accento sullo spazio negativo. Una singola mensola con fiori diventa il punto focale di una stanza proprio perché tutto intorno è vuoto. Anche uno spazio abitativo viene trattato come una completa espressione artistica. Ero già interessato al contrasto tra luce e ombra – solitamente scattavo molte fotografie – e a un certo punto questo si è fuso con la mia pittura."
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Prendo come riferimento dipinti classici, nella maggior parte dei casi, e li manipolo. Nel processo cerco di eliminare elementi così da potermi concentrare su ciò che realmente conta, su ciò che voglio trasmettere. Tutti i miei dipinti hanno spazio bianco – quello è la tela grezza stessa. Sciolgo la vernice. Non è perfettamente pulita; si possono ancora vedere le linee sottostanti. Lo faccio perché amo l'atto fisico di togliere di nuovo il colore. Nella cultura Zen giapponese, ciò che conta è l'espressione minimalista, e volevo un processo immersivo e fisico per me stesso, in parte perché penso che l'arte contemporanea sia diventata molto focalizzata sui social media – le persone dipingono in base a ciò che è già popolare lì. Continuo a chiedermi perché ancora nel 2026 dipingiamo."
             },
             {
@@ -28218,27 +28201,27 @@
               "content": "<b>KA:</b> Hai ragione. Una volta ho visitato una chiesa di Tadao Ando – una scatola di cemento con due sottili linee di vetro che fanno da croce. Entrando, mi sono sentito completamente sicuro, proprio perché non c'era niente. Quel tipo di vuoto minimalista conta perché è uno dei pochi posti rimasti per vedere davvero chi siamo – passiamo così tanto delle nostre vite sui telefoni, immersi nei contenuti invece. Mantengo uno sfondo monocromatico nella maggior parte dei miei dipinti per lo stesso motivo: quando si lava la vernice ci sono tracce ovunque, e ognuna di esse conta. E adoro ancora come i dipinti barocchi usino l'oscurità – non come assenza, ma come presenza nel quadro."
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mt8o6ppz5cm8rs.jpg",
               "caption": "Church of the Light, Tadao Ando, 1989",
               "sourceUrl": "https://www.dezeen.com/2017/10/31/tadao-ando-full-scale-mock-up-church-of-the-light-exhibition-tokyo-national-art-center/",
               "credit": "Dezeen"
             },
             {
-              "type": "intestazione",
+              "type": "header",
               "level": 2,
               "content": "<span>03 · Metamorfosi</span>"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "<b>MI: La tua recente serie di lavori, <i>Human Metaphors</i>, mostrata a Parigi – tratta di vulnerabilità, identità e cambiamento. È una risposta alla pressione della costante auto-presentazione a cui viviamo ora?</b>"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "<b>KA:</b> Penso di sì. Questa serie è una dichiarazione contro quel tipo di ricerca di validazione. A Londra ho sentito di dover adattarmi a un certo formato – ciò che è di tendenza, ciò che è popolare, ciò che sembra corretto. Vivere in Lituania ha cambiato tutto. Raramente vedo qualcuno – mia moglie, il nostro cane, il nostro gatto. I lituani, e in generale le persone slave, nella mia esperienza, sono molto fedeli a se stessi. Non dicono nemmeno ciao a metà del tempo, cosa che trovo rinfrescante – non c'è finzione. Le persone inseguono influenza e denaro, e questo conta, ma alla fine della giornata sei la persona più importante nella tua vita, ed è facile dimenticarlo. Questa è la domanda che cerco di lasciare nel dipinto – ed è anche il motivo per cui lascio così tanto spazio vuoto. Deve diventare l'esperienza propria dello spettatore."
             },
             {
-              "type": "galleria",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mt8or0zl9nfedq.jpg",
                 "https://api.eprisjournal.com/uploads/mt8or2t281k9ci.jpg"
@@ -28246,19 +28229,19 @@
               "caption": "Dettagli di “Soliloquy”, 2026"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "<b>MI: Attraverso l'astrazione, ma con mani e piedi ancora presenti, stai facendo un gesto verso qualcosa come coscienza o anima – un sé che può essere staccato dal corpo?</b>"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "<b>KA:</b> Esattamente. Il titolo <i>Metafore Umane</i> era per la mostra di New York; quella di Parigi si chiamava <i>Metamorfosi</i>, che adoro altrettanto. Cancello il corpo perché penso che abbiamo smesso di prestare attenzione ad esso come scala fisica – viviamo nelle nostre teste, sui nostri telefoni, e il corpo diventa quasi incidentale rispetto al volto, che porta la prima impressione. Le mani e i piedi, però, sono stranamente universali. I corpi variano enormemente, ma una mano rimane una mano. Quindi le tengo come una sorta di ancora – qualcosa che tutti possono riconoscere – e cancello il resto così le persone possono entrare nel dipinto senza bisogno di permesso prima."
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "L'arte contemporanea è diventata elitista in alcuni luoghi, e non mi piace. Mia moglie, che è psicologa, odia molta dell'astrazione che amo – non si connette con essa, e una volta ha voluto lasciare la Tate a metà visita. Capisco quella reazione. L'arte dovrebbe essere accessibile. Quando vedo persone dire “Odio questo dipinto,” mi rende un po' triste, perché è comunque una creazione umana, anche quelle che personalmente non mi piacciono. Quindi le mani e i piedi sono anche un invito – non voglio che nessuno si trovi davanti al mio lavoro sentendosi come se non appartenesse lì."
             },
             {
-              "type": "galleria",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mt8odjhem1x46j.jpg",
                 "https://api.eprisjournal.com/uploads/mt8odk8s8fcxbu.jpg"
@@ -28266,33 +28249,33 @@
               "caption": "Union, Keisuke Azuma, 2026, olio su tela"
             },
             {
-              "type": "intestazione",
+              "type": "header",
               "level": 2,
               "content": "<span>04 · Sulla Serie delle Uova e un Viaggio verso l'Astrazione</span>"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "<b>MI: Hai una serie precedente intitolata <i>Uova</i>, più orientata alla figura – qualcosa sulla trasformazione, forse sulla rinascita?</b>"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "<b>KA:</b> Esattamente. Dopo aver conseguito la laurea a Londra sono passato direttamente in Lituania, in uno studio sotterraneo, in inverno, con nessuno intorno – sembrava una prigione d'arte, solo io e il lavoro. È da lì che è nata la serie delle Uova. Prima facevo pittura paesaggistica astratta, che amavo, ma seguivo ciò che le persone dicevano fosse buono senza capire appieno perché – ho anche scritto un libro una volta, cercando di spiegare il paesaggio astratto a me stesso, e onestamente non capivo la mia stessa spiegazione."
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mt8oujwbb5bo1t.jpg",
               "caption": "Distant Plea, Keisuke Azuma, 2025, olio su tela"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Poi ho visto un dipinto di un pittore britannico – non ne avevo mai sentito parlare prima di vivere a Londra – per la prima volta, solo sui social media, e mi ha veramente scioccato. Ho capito che volevo combinare astrazione con qualcosa di più figurativo, ma ancora non sapevo come. La serie Egg riguardava il guadagnare questo – ci sono voluti circa otto mesi per costruire la fiducia per reintrodurre elementi realistici. Non sempre è stato un successo, ma era necessario. Ho bisogno di un piano prima di dipingere, e le Eggs erano il luogo in cui ne ho costruito uno."
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "<b>MI: Pensi che l'astrazione sia la forma più pura di pittura – più potente perché induce all'auto-riflessione piuttosto che leggere una figura?</b>"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "<b>KA:</b> Sono per lo più d'accordo. Ricordo una retrospettiva di Monet a Kyoto – è tecnicamente figurativo, molto pittorico, ma c'era una tela incompleta della serie Water Lilies in mostra, quasi senza colore, solo alcuni tratti. Mi ha colpito più del suo lavoro finito. È uno dei dipinti che ha rotto la mia resistenza all'astrazione – prima la odiavo perché non sapevo come affrontarla."
             },
             {
@@ -28452,11 +28435,11 @@
               "content": "<b>KA:</b> A Londra, tecnicamente, ma avevamo parlato per anni prima – su una piattaforma di scambio linguistico. Stavo imparando l’inglese, lei voleva imparare il giapponese, e alla fine abbiamo parlato principalmente in inglese, cosa che mi andava bene all’epoca. Eravamo amici online per cinque o sei anni prima che lei venisse a Londra e iniziassimo a uscire, ancora a distanza per un po’ dopo. In totale, ci conosciamo da circa otto anni. Siamo stati amici prima, abbastanza a lungo da conoscere le storie dell’altro – relazioni passate e tutto – che si è rivelato importante. È la base più solida che abbia mai avuto, e tutto il resto è cresciuto da lì."
             },
             {
-              "type": "citazione",
+              "type": "quote",
               "content": "Sapere cosa ti piace, sapere di avere il potere di decidere qualcosa per te stesso – anche nella vita quotidiana – penso che potrebbe essere il consiglio."
             },
             {
-              "type": "nota",
+              "type": "note",
               "content": "Questa intervista è stata modificata e condensata per lunghezza e chiarezza."
             }
           ],
@@ -28465,11 +28448,11 @@
         },
         {
           "id": 26,
-          "title": "Un museo che appartiene al suo paese",
+          "title": "Il museo che Orani ha costruito",
           "author": "Viacheslav Munister",
           "role": "Autore",
           "date": "25 ago 2026",
-          "excerpt": "Il Museo Nivola di Orani sul confine gentile tra un museo e il suo paese, sull'eredità del metodo di Costantino Nivola più che delle sue forme, e su cosa può ancora diventare un museo monografico.",
+          "excerpt": "Costantino Nivola lasciò un paese di muratori in Sardegna per New York e non smise mai di tornare. Il team del suo museo, sulla collina sopra Orani, su dove finisce un museo, sul metodo che ci ha lasciato e su cosa può ancora diventare un museo monografico.",
           "category": "intervista",
           "subcategory": "Caratteristica",
           "tags": [
@@ -28651,22 +28634,12 @@
             {
               "type": "text",
               "content": "<i>La mostra Nivola, Colombo e lo spazio intorno è in corso al Museo Nivola di Orani, in Sardegna. Alcune opere della collezione permanente partiranno per la mostra dedicata a Nivola alla Triennale di Milano, e l’allestimento di Orani sarà ripensato attorno alla loro assenza.</i>"
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mt8q1x99j78tra.jpg",
-              "caption": "",
-              "align": "center"
-            },
-            {
-              "type": "text",
-              "content": "<b>Museo Nivola</b><br>Orani, Barbagia, Sardegna. Il museo conserva la più vasta collezione al mondo di opere di Costantino Nivola, oltre duecento sculture e dipinti, i primi donati dalla vedova dell’artista Ruth Nivola. Accanto alla collezione permanente porta avanti mostre di arte contemporanea, un programma di ricerca e di educazione e progetti nello spazio pubblico del paese.<br><a href=\"https://museonivola.it/\" target=\"_blank\" rel=\"noopener\">museonivola.it</a> · <a href=\"https://www.instagram.com/museo_nivola/\" target=\"_blank\" rel=\"noopener\">@museo_nivola</a>"
             }
           ],
           "authorId": "author-1784732936927-kw554",
           "draft": true,
           "previewToken": "bf6e06015612b1dfa06d7e68",
-          "updatedAt": "2026-08-25T13:55:06.000Z"
+          "updatedAt": "2026-08-25T14:16:07.000Z"
         }
       ],
       "reviews": [
