@@ -2325,14 +2325,14 @@
     },
     {
       "id": 23,
-      "title": "The Museum Orani Built",
+      "title": "Museo Nivola: A Museum, a Village and the Memory They Share",
       "subtitle": "Interview",
       "fig": "FIG. 14",
-      "description": "Costantino Nivola left a Sardinian village of masons for New York and never stopped coming back. The team of his museum, on the hill above Orani, on where a museum ends, on the method he left behind, and on what a monographic museum can still become.",
+      "description": "Costantino Nivola left a Sardinian village of masons for New York, worked with Le Corbusier, Sert and Saarinen, and never stopped coming back. The team of his museum, on the hill above Orani, on where a museum ends and a village begins, on the method he left behind, and on what a monographic museum can still become.",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8pvrakmxoout.jpg",
       "articleId": 26,
       "draft": true,
-      "updatedAt": "2026-08-25T14:16:07.000Z"
+      "updatedAt": "2026-08-25T14:51:33.000Z"
     }
   ],
   "articles": [
@@ -5294,8 +5294,8 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-25T14:47:43.675Z",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mt8oh2wuvblzxh.jpg"
+      "updatedAt": "2026-08-25T14:57:15.376Z",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mt8sghgw8esg3y.jpg"
     },
     {
       "id": 24,
@@ -5374,11 +5374,11 @@
     },
     {
       "id": 26,
-      "title": "The Museum Orani Built",
+      "title": "Museo Nivola: A Museum, a Village and the Memory They Share",
       "author": "Viacheslav Munister",
       "role": "Author",
       "date": "Aug 25, 2026",
-      "excerpt": "Costantino Nivola left a Sardinian village of masons for New York and never stopped coming back. The team of his museum, on the hill above Orani, on where a museum ends, on the method he left behind, and on what a monographic museum can still become.",
+      "excerpt": "Costantino Nivola left a Sardinian village of masons for New York, worked with Le Corbusier, Sert and Saarinen, and never stopped coming back. The team of his museum, on the hill above Orani, on where a museum ends and a village begins, on the method he left behind, and on what a monographic museum can still become.",
       "category": "interview",
       "subcategory": "Interview",
       "tags": [
@@ -5563,12 +5563,13 @@
         }
       ],
       "authorId": "author-1784732936927-kw554",
-      "draft": true,
+      "draft": false,
       "previewToken": "bf6e06015612b1dfa06d7e68",
-      "updatedAt": "2026-08-25T14:16:07.000Z",
+      "updatedAt": "2026-08-25T14:56:35.000Z",
       "showCover": true,
       "contributorId": "author-museo-nivola",
-      "publishedAt": "2026-08-25T13:00:00.000Z"
+      "publishedAt": "2026-08-25T13:00:00.000Z",
+      "hideOnHome": true
     }
   ],
   "reviews": [
@@ -25383,14 +25384,14 @@
         },
         {
           "id": 23,
-          "title": "Il museo che Orani ha costruito",
+          "title": "Museo Nivola: un museo, un paese e la memoria che condividono",
           "subtitle": "Intervista",
           "fig": "FIG. 14",
-          "description": "Costantino Nivola lasciò un paese di muratori in Sardegna per New York e non smise mai di tornare. Il team del suo museo, sulla collina sopra Orani, su dove finisce un museo, sul metodo che ci ha lasciato e su cosa può ancora diventare un museo monografico.",
+          "description": "Costantino Nivola lasciò un paese di muratori in Sardegna per New York, lavorò con Le Corbusier, Sert e Saarinen e non smise mai di tornare. Il team del suo museo, sulla collina sopra Orani, su dove finisce un museo e dove comincia un paese, sul metodo che ci ha lasciato e su cosa può ancora diventare un museo monografico.",
           "imageUrl": "https://api.eprisjournal.com/uploads/mt8pvrakmxoout.jpg",
           "articleId": 26,
           "draft": true,
-          "updatedAt": "2026-08-25T14:16:07.000Z"
+          "updatedAt": "2026-08-25T14:51:33.000Z"
         }
       ],
       "articles": [
@@ -28417,11 +28418,11 @@
         },
         {
           "id": 26,
-          "title": "Il museo che Orani ha costruito",
+          "title": "Museo Nivola: un museo, un paese e la memoria che condividono",
           "author": "Viacheslav Munister",
           "role": "Autore",
           "date": "25 ago 2026",
-          "excerpt": "Costantino Nivola lasciò un paese di muratori in Sardegna per New York e non smise mai di tornare. Il team del suo museo, sulla collina sopra Orani, su dove finisce un museo, sul metodo che ci ha lasciato e su cosa può ancora diventare un museo monografico.",
+          "excerpt": "Costantino Nivola lasciò un paese di muratori in Sardegna per New York, lavorò con Le Corbusier, Sert e Saarinen e non smise mai di tornare. Il team del suo museo, sulla collina sopra Orani, su dove finisce un museo e dove comincia un paese, sul metodo che ci ha lasciato e su cosa può ancora diventare un museo monografico.",
           "category": "intervista",
           "subcategory": "Caratteristica",
           "tags": [
@@ -28608,7 +28609,7 @@
           "authorId": "author-1784732936927-kw554",
           "draft": true,
           "previewToken": "bf6e06015612b1dfa06d7e68",
-          "updatedAt": "2026-08-25T14:16:07.000Z"
+          "updatedAt": "2026-08-25T14:51:33.000Z"
         }
       ],
       "reviews": [
@@ -29381,7 +29382,8 @@
     "entities": {
       "articles": {
         "22": true,
-        "23": true
+        "23": true,
+        "26": true
       },
       "items": {},
       "reviews": {},
