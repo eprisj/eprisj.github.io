@@ -5239,7 +5239,8 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mt8vyjtgoszvir.jpg",
-          "caption": ""
+          "caption": "The Nickel Bar, London",
+          "sourceUrl": "https://www.thened.com/london/restaurants/the-nickel-bar"
         },
         {
           "type": "text",
@@ -5291,7 +5292,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-25T16:35:11.284Z",
+      "updatedAt": "2026-08-25T16:35:32.593Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8sghgw8esg3y.jpg"
     },
     {
