@@ -8461,6 +8461,7 @@ async function aiTranslateObject(obj, targetLang, maxRetries = 3) {
 Translate all textual content values within this JSON structure to ${targetLang}.
 Keep the JSON structure, keys, and array lengths exactly identical. Preserve all HTML tags (like <em> or <strong>) perfectly intact.
 Do NOT translate URLs, IDs, image names, or keys.
+NEVER translate the VALUE of a "type", "align", "id", "url", "poster" or "videoWebm" field — copy those characters exactly as given.
 Return ONLY valid JSON.
 
 JSON to translate:
@@ -8484,6 +8485,65 @@ ${JSON.stringify(obj, null, 2)}`;
     }
   }
   throw new Error(`AI returned invalid JSON after ${maxRetries} attempts: ` + lastError.message);
+}
+
+/* ЧТО ПЕРЕВОД ИМЕЕТ ПРАВО ПОМЕНЯТЬ В БЛОКЕ.
+
+   Блок уезжает к модели целиком, JSON-ом, и вместе с прозой она переводила
+   служебное поле type: "text" превращалось в "текст", "imagen", "Bild".
+   Сайт накладывает перевод на базу поблочно и берёт локализованный блок
+   только если тип совпал — то есть на каждый такой блок читатель получал
+   английский текст, молча. Проверено на статье #26: 36 из 38 блоков RU.
+
+   Поэтому результат модели не принимается как есть: из него берутся только
+   текстовые поля, всё остальное — тип, выравнивание, ссылки на медиа —
+   копируется из оригинала. */
+const BLOCK_PROSE_TYPES_FOR_MERGE = new Set(['text', 'quote', 'note', 'link', 'map', 'heading', 'header']);
+
+function mergeTranslatedBlock(source, translated) {
+  const base = deepClone(source || {});
+  if (!translated || typeof translated !== 'object') return base;
+
+  ['caption', 'alt', 'credit'].forEach((key) => {
+    if (typeof translated[key] === 'string' && translated[key].trim()) base[key] = translated[key];
+  });
+
+  if (BLOCK_PROSE_TYPES_FOR_MERGE.has(base.type)) {
+    if (typeof translated.content === 'string') base.content = translated.content;
+    return base;
+  }
+
+  if (base.type === 'checklist') {
+    const tc = translated.content;
+    if (tc && typeof tc === 'object' && Array.isArray(tc.items)) base.content = tc;
+    return base;
+  }
+
+  if (base.type === 'poll') {
+    const tc = translated.content;
+    const bc = base.content;
+    if (tc && typeof tc === 'object' && bc && typeof bc === 'object') {
+      base.content = {
+        ...bc,
+        question: typeof tc.question === 'string' ? tc.question : bc.question,
+        options: (bc.options || []).map((opt, i) => {
+          const label = tc.options && tc.options[i] && tc.options[i].label;
+          return typeof label === 'string' && label.trim() ? { ...opt, label } : opt;
+        }),
+      };
+    }
+    return base;
+  }
+
+  if (base.type === 'gallery' && Array.isArray(base.content) && Array.isArray(translated.content)
+      && base.content.length === translated.content.length) {
+    base.content = base.content.map((img, i) => {
+      const caption = translated.content[i] && translated.content[i].caption;
+      return (typeof caption === 'string' && caption.trim()) ? { ...img, caption } : img;
+    });
+  }
+
+  return base;
 }
 
 async function translateArticleEntry(article, targetLang, sourceLang = DEFAULT_LANGUAGE, onProgress = null) {
@@ -8514,8 +8574,8 @@ async function translateArticleEntry(article, targetLang, sourceLang = DEFAULT_L
 
     const batch = blocks.slice(i, i + batchSize);
     const translatedBatch = await aiTranslateObject(batch, targetLang);
-    if (Array.isArray(translatedBatch)) {
-      next.content.push(...translatedBatch);
+    if (Array.isArray(translatedBatch) && translatedBatch.length === batch.length) {
+      next.content.push(...batch.map((source, k) => mergeTranslatedBlock(source, translatedBatch[k])));
     } else {
       next.content.push(...batch);
     }
@@ -8570,7 +8630,7 @@ async function retryUntranslatedBlocks(source, next, targetLang, onProgress) {
     const candidate = translated[k];
     if (!candidate || typeof candidate !== 'object') return;
     const after = auditStripMarkup(candidate.content);
-    if (after && after !== auditStripMarkup(blocks[idx].content)) next.content[idx] = candidate;
+    if (after && after !== auditStripMarkup(blocks[idx].content)) next.content[idx] = mergeTranslatedBlock(blocks[idx], candidate);
   });
 }
 
@@ -8610,8 +8670,11 @@ async function translateEntryForSection(section, entry, targetLang, sourceLang =
         if (onProgress) onProgress(`batch ${batchIndex} of ${totalBatches}`);
         const batch = entry.content.slice(i, i + batchSize);
         const translatedBatch = await aiTranslateObject(batch, targetLang);
-        if (Array.isArray(translatedBatch)) next.content.push(...translatedBatch);
-        else next.content.push(...batch);
+        if (Array.isArray(translatedBatch) && translatedBatch.length === batch.length) {
+          next.content.push(...batch.map((source, k) => mergeTranslatedBlock(source, translatedBatch[k])));
+        } else {
+          next.content.push(...batch);
+        }
       }
     } else if (typeof entry.content === 'string' && entry.content.trim()) {
       const translatedStr = await aiTranslateObject({text: entry.content}, targetLang);
