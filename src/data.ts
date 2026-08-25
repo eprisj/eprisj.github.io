@@ -1195,14 +1195,37 @@ export function resolveAuthor(article: { authorId?: string; author?: string }): 
 // otherwise freeze in that language regardless of the reader's selected
 // locale. This lookup translates known role strings per language; unknown
 // roles fall back to the raw string as typed.
-const ROLE_TRANSLATIONS: Record<string, Record<string, string>> = {
-  'Автор': { EN: 'Author', RU: 'Автор', UA: 'Автор', DE: 'Autor', ES: 'Autor', TR: 'Yazar', IT: 'Autore' },
-};
+/* Роль набирается один раз, в одном языке, и раньше таблица знала только один
+   вход — русское «Автор». Всё, что редактор написал по-английски, оставалось
+   английским для русского читателя, а всё, что осталось по-русски (например,
+   роль в старом обзоре), показывалось кириллицей и в английской, и в
+   немецкой, и в итальянской версии. Теперь ключом служит ЛЮБОЕ написание из
+   строки: ищем по нижнему регистру среди всех вариантов набора. */
+const ROLE_SETS: Record<string, string>[] = [
+  { EN: 'Author', RU: 'Автор', UA: 'Автор', DE: 'Autor', ES: 'Autor', TR: 'Yazar', IT: 'Autore' },
+  { EN: 'Guest Editor', RU: 'Приглашённый редактор', UA: 'Запрошений редактор', DE: 'Gastredakteur', ES: 'Editor invitado', TR: 'Konuk editör', IT: 'Redattore ospite' },
+  { EN: 'Editorial Desk', RU: 'Редакция', UA: 'Редакція', DE: 'Redaktion', ES: 'Redacción', TR: 'Yayın kurulu', IT: 'Redazione' },
+  { EN: 'Editorial team', RU: 'Редакция', UA: 'Редакція', DE: 'Redaktion', ES: 'Redacción', TR: 'Yayın kurulu', IT: 'Redazione' },
+  { EN: 'Contributing Editor', RU: 'Редактор-корреспондент', UA: 'Редактор-кореспондент', DE: 'Mitarbeitender Redakteur', ES: 'Editor colaborador', TR: 'Katkıda bulunan editör', IT: 'Redattore collaboratore' },
+  { EN: 'Editor-in-Chief', RU: 'Главный редактор', UA: 'Головний редактор', DE: 'Chefredakteurin', ES: 'Editora jefa', TR: 'Genel yayın yönetmeni', IT: 'Direttrice' },
+];
 
-/** Translate an Author record's `role` string into the given language, if known. */
+const ROLE_INDEX: Record<string, Record<string, string>> = (() => {
+  const index: Record<string, Record<string, string>> = {};
+  for (const set of ROLE_SETS) {
+    for (const value of Object.values(set)) {
+      const key = value.trim().toLocaleLowerCase();
+      if (!index[key]) index[key] = set;
+    }
+  }
+  return index;
+})();
+
+/** Translate a `role` string into the given language, if the role is known. */
 export function translateRole(role: string | undefined, lang: string): string | undefined {
   if (!role) return role;
-  return ROLE_TRANSLATIONS[role]?.[lang] || role;
+  const set = ROLE_INDEX[role.trim().toLocaleLowerCase()];
+  return set?.[(lang || 'EN').toUpperCase()] || role;
 }
 
 // Back-compat: the bundled translations map. Prefer getTranslations() for
