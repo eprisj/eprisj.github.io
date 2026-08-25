@@ -4569,7 +4569,7 @@ export default function App() {
           </LazyTab>
         ) : activeTab === 'vitrine' ? (
           <LazyTab>
-            <VitrinePage />
+            <VitrinePage lang={currentLang} />
           </LazyTab>
         ) : activeTab === 'studio' ? (
           <LazyTab>
