@@ -5050,7 +5050,9 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mt8o6ppz5cm8rs.jpg",
-          "caption": "Church of the Light, Tadao Ando"
+          "caption": "Church of the Light, Tadao Ando",
+          "sourceUrl": "https://www.dezeen.com/2017/10/31/tadao-ando-full-scale-mock-up-church-of-the-light-exhibition-tokyo-national-art-center/",
+          "credit": "Dezeen"
         },
         {
           "type": "header",
@@ -5251,7 +5253,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-25T12:58:04.915Z"
+      "updatedAt": "2026-08-25T12:58:41.508Z"
     },
     {
       "id": 24,
