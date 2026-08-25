@@ -4972,7 +4972,8 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mt8oisq6xlwmv4.jpg",
-          "caption": "Keisuke Azuma in his studio"
+          "caption": "Keisuke Azuma in his studio",
+          "credit": "Courtesy of Keisuke Azuma"
         },
         {
           "type": "text",
@@ -5306,7 +5307,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-25T16:53:41.164Z",
+      "updatedAt": "2026-08-25T16:53:58.368Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8sghgw8esg3y.jpg"
     },
     {
