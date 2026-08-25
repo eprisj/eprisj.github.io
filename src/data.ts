@@ -170,6 +170,12 @@ export interface Author {
   showOnTeam?: boolean;
   /** Lower numbers appear first in the About / Team section. */
   teamOrder?: number;
+  /**
+   * A museum, studio or institution we made something with, not a member of
+   * the editorial team. Shown on About in its own group under the team, and
+   * with the logo fitted whole rather than cropped into a portrait circle.
+   */
+  collaborator?: boolean;
 }
 
 export interface Article {
