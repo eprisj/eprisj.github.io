@@ -5140,7 +5140,10 @@
         },
         {
           "type": "gallery",
-          "content": [],
+          "content": [
+            "https://api.eprisjournal.com/uploads/mt8ozb0tp97p2w.jpg",
+            "https://api.eprisjournal.com/uploads/mt8ozedd11xygj.jpg"
+          ],
           "caption": ""
         },
         {
@@ -5288,7 +5291,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-25T13:19:37.537Z",
+      "updatedAt": "2026-08-25T13:19:53.932Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8oh2wuvblzxh.jpg"
     },
     {
