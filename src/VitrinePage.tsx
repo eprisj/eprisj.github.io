@@ -16,6 +16,9 @@ const MUSEUM_COPY = {
     imagePending: 'Image archive in preparation',
     modelLabel: 'Three-dimensional model of the EPRIS Museum building',
     modelHint: 'Drag to turn the model',
+    openLabel: 'Open the space',
+    closeLabel: 'Close the space',
+    insideLabel: 'Inside the EPRIS Museum building: atrium, balconies and the ramp',
     collectionIntro: 'An evolving museum of Ukrainian practice. Each object belongs to a broader story of making, place and cultural memory.',
     object: 'Object',
     objectDossier: 'Object dossier',
@@ -41,6 +44,9 @@ const MUSEUM_COPY = {
     imagePending: 'Изображение готовится для архива',
     modelLabel: 'Трёхмерная модель здания EPRIS Museum',
     modelHint: 'Потяните, чтобы повернуть макет',
+    openLabel: 'Открыть пространство',
+    closeLabel: 'Закрыть пространство',
+    insideLabel: 'Внутри здания EPRIS Museum: атриум, балконы и пандус',
     collectionIntro: 'Развивающийся музей украинской практики. Каждый объект связан с историей создания, местом и культурной памятью.',
     object: 'Объект',
     objectDossier: 'Паспорт объекта',
@@ -66,6 +72,9 @@ const MUSEUM_COPY = {
     imagePending: 'Зображення готується для архіву',
     modelLabel: 'Тривимірна модель будівлі EPRIS Museum',
     modelHint: 'Потягніть, щоб обернути макет',
+    openLabel: 'Відкрити простір',
+    closeLabel: 'Закрити простір',
+    insideLabel: 'Усередині будівлі EPRIS Museum: атріум, балкони та пандус',
     collectionIntro: 'Музей української практики, що розвивається. Кожен об’єкт пов’язаний з історією створення, місцем і культурною пам’яттю.',
     object: 'Об’єкт',
     objectDossier: 'Паспорт об’єкта',
@@ -91,6 +100,9 @@ const MUSEUM_COPY = {
     imagePending: 'Bildarchiv wird vorbereitet',
     modelLabel: 'Dreidimensionales Modell des EPRIS-Museumsgebäudes',
     modelHint: 'Ziehen, um das Modell zu drehen',
+    openLabel: 'Raum öffnen',
+    closeLabel: 'Raum schließen',
+    insideLabel: 'Im Inneren des EPRIS-Museums: Atrium, Galerien und Rampe',
     collectionIntro: 'Ein wachsendes Museum ukrainischer Praxis. Jedes Objekt gehört zu einer Geschichte von Herstellung, Ort und kulturellem Gedächtnis.',
     object: 'Objekt',
     objectDossier: 'Objektdossier',
@@ -154,7 +166,7 @@ function EmptyVitrine({ copy }: { copy: MuseumCopy }) {
     <section aria-labelledby="vitrine-title" className="grid flex-1 lg:grid-cols-[minmax(0,1.18fr)_minmax(22rem,.82fr)]">
       <div className="relative min-h-[28rem] overflow-hidden border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] sm:min-h-[34rem] lg:min-h-[42rem] lg:border-b-0 lg:border-r">
         <Suspense fallback={<div className="absolute inset-0 bg-[#f6f4f1]" />}>
-          <MuseumModel label={copy.modelLabel} />
+          <MuseumModel label={copy.modelLabel} openLabel={copy.openLabel} closeLabel={copy.closeLabel} insideLabel={copy.insideLabel} />
         </Suspense>
         <div className="pointer-events-none absolute inset-x-0 bottom-0 p-5 sm:p-8 lg:p-12">
           <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">{copy.firstSelection}</p>
