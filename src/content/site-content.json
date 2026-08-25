@@ -5208,7 +5208,7 @@
         },
         {
           "type": "text",
-          "content": "<b>MI:</b> So the starting point now is memory or emotion, recalled, rather than something you're seeing in the moment?"
+          "content": "<b>MI: So the starting point now is memory or emotion, recalled, rather than something you're seeing in the moment?</b>"
         },
         {
           "type": "text",
@@ -5216,7 +5216,7 @@
         },
         {
           "type": "text",
-          "content": "<b>MI:</b> Do you plan meticulously, or let the canvas decide in the moment?"
+          "content": "<b>MI: Do you plan meticulously, or let the canvas decide in the moment?</b>"
         },
         {
           "type": "text",
@@ -5230,19 +5230,11 @@
         },
         {
           "type": "text",
-          "content": "<b>MI:</b> You mentioned “manipulating” classical paintings – what does that actually involve?"
+          "content": "<b>MI: What's your biggest non-visual source of inspiration?</b>"
         },
         {
           "type": "text",
-          "content": "<b>KA:</b> “Manipulate” might be too cheeky a word – I think of it more as asking those paintings for help. I put the classical image into the iPad, work over it, sometimes almost entirely, and edit down to what matters. There's a painter – I keep forgetting the name – known for using film stills as reference and extracting what mattered from a scene rather than the whole image [Luc Tuymans]. That's close to what I'm doing: extracting, not reproducing. "
-        },
-        {
-          "type": "text",
-          "content": "<b>MI:</b> What's your biggest non-visual source of inspiration?"
-        },
-        {
-          "type": "text",
-          "content": "<b>KA:</b> Honestly, everything, but music and film especially. Even our dog – she has no capacity for overthinking, she's just happy, and there's something inspiring about that raw, unfiltered expression. In film I love things that confuse me – David Lynch, work that leaves a question instead of answering it. In music I listen mostly to instrumental or classical pieces, and to a Japanese band whose lyrics are deliberately mysterious. I'm drawn to writers from a certain era for the same reason – the mystery does more work than an explanation would."
+          "content": "<b>KA:</b> Honestly, everything, but music and film especially. Even our dog – she has no capacity for overthinking, she's just happy, and there's something inspiring about that raw, unfiltered expression. In film I love things that confuse me – David Lynch, work that leaves a question instead of answering it. In music I listen mostly to instrumental or classical pieces, and to a Japanese band whose lyrics are deliberately mysterious – the mystery does more work than an explanation would."
         },
         {
           "type": "header",
@@ -5251,7 +5243,7 @@
         },
         {
           "type": "text",
-          "content": "<b>MI:</b> Do you have any hidden gems in London that you can share with us. doesn't need to be art-related. A bar, a bench, a street."
+          "content": "<b>MI: Do you have any hidden gems in London that you can share with us. doesn't need to be art-related. A bar, a bench, a street.</b>"
         },
         {
           "type": "text",
@@ -5274,7 +5266,7 @@
         },
         {
           "type": "text",
-          "content": "<b>MI:</b> You mentioned earlier how much the move from Japan, through London, to Lithuania shaped you – can you say more about that?"
+          "content": "<b>MI: You mentioned earlier how much the move from Japan, through London, to Lithuania shaped you – can you say more about that?</b>"
         },
         {
           "type": "text",
@@ -5282,7 +5274,7 @@
         },
         {
           "type": "text",
-          "content": "<b>MI:</b> And for someone young who wants to be an artist but is afraid to start?"
+          "content": "<b>MI: And for someone young who wants to be an artist but is afraid to start?</b>"
         },
         {
           "type": "text",
@@ -5309,7 +5301,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-25T18:17:11.551Z",
+      "updatedAt": "2026-08-25T18:25:46.451Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8wh6owj2qa80.jpg",
       "previewToken": "7050d8a93e5a216872f5399c"
     },
