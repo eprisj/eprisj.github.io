@@ -24538,12 +24538,12 @@
           "author": "Viacheslav Munister",
           "role": "Yazar",
           "date": "25 Ağustos 2026",
-          "excerpt": "Costantino Nivola, Sardinya taş ustası bir köyden New York'a gitti ve hiç geri dönmeyi bırakamadı. Orani'nin üzerinde tepenin üzerinde, bir müzeyi bitiren yerde, geride bıraktığı yöntem üzerinde ve bir monografik müzenin hâlâ ne olabileceği üzerinde onun müzesinin ekibi.",
-          "category": "mülakat",
-          "subcategory": "Özellik",
+          "excerpt": "Costantino Nivola, Sardinya'daki bir taş ustası köyünden New York'a gitti ve hiç geri dönmeyi bırakmadı. Orani'nin üzerinde tepenin üzerinde, bir müzeyi bitiren yerde, geride bıraktığı yöntem üzerinde ve bir monografik müzenin hâlâ ne olabileceği üzerinde onun müzesinin ekibi.",
+          "category": "görüşme",
+          "subcategory": "Görüşme",
           "tags": [
-            "Mülakat",
-            "mimari",
+            "Görüşme",
+            "mimarlık",
             "sardinya",
             "müze",
             "Costantino Nivola"
@@ -24553,15 +24553,15 @@
           "content": [
             {
               "type": "text",
-              "content": "Orani, Sardinya'nın dağlık kalbi olan Barbagia'da bir köydür. Bir yol vadiden yukarı tırmanır, evler eğim boyunca toplanır ve hemen üzerinde, yamaçta, zeytin ağaçları arasında düşük beyaz bir bina oturur ve çatıya bakar. İtalya'nın en sessiz ve güzel küçük müzelerinden biridir ve tam anlamıyla, bulunduğu yere aittir."
+              "content": "Orani, Sardinya'nın dağlık kalbi olan Barbagia'da bir köydür. Bir yol vadiden yukarı tırmanır, evler eğim boyunca toplanır ve hemen üzerinde, yamaçta, düşük beyaz bir bina zeytin ağaçları arasında oturur ve çatıları aşağıya bakar. İtalya'nın en sessiz ve güzel küçük müzelerinden biridir ve tam anlamıyla, ayakta durduğu yere aittir."
             },
             {
               "type": "text",
-              "content": "Costantino Nivola burada 1911 yılında doğdu, bir duvar ustasının oğluydu ve ailesinin inşaat alanlarında mesleği öğrendi, ardından Monza'daki ISIA ve Milano'daki Olivetti için grafik tasarımcı olarak çalıştı. 1939 yılında New York'a gitti. 1946 yılında Le Corbusier ile tanıştı, 1954 yılında Fifth Avenue'daki Olivetti sergi salonunun duvarını kum döküm rölyefle kapladı, Josep Lluís Sert'in davetiyle Harvard Graduate School of Design'da öğretim yaptı ve üç yıl boyunca Yale'deki Eero Saarinen'in koleksiyonlarını oymalı betonla doldurdu. Ve eve dönmeye devam etti. 1953 yılında, Orani'deki her evi asma köprülerle bağlama planı çizdi; 1958 yılında köy kilisesinin cephesini bir grafitoyla kapladı ve heykellerini üç gün boyunca sokaklara çıkardı, tüm köy katıldı."
+              "content": "Costantino Nivola burada 1911 yılında doğdu, bir duvar ustasının oğluydu ve ailesinin inşaat sahalarında mesleği öğrendi, ardından Monza'daki ISIA ve Milano'daki Olivetti için grafik tasarımcı olarak çalıştı. 1939 yılında New York'a gitti. 1946 yılında Le Corbusier ile tanıştı, 1954 yılında Fifth Avenue'daki Olivetti sergi salonunun duvarını kum döküm rölyefle kapladı, Josep Lluís Sert'in davetiyle Harvard Graduate School of Design'da öğretim yaptı ve üç yıl boyunca Yale'deki Eero Saarinen'in koleksiyonlarını oyma betonla doldurdu. Ve eve dönmeye devam etti. 1953 yılında, Orani'deki her evi asma pergolalarla bağlama planı çizdi; 1958'de köy kilisesinin cephesini grafitoyla kapladı ve heykellerini üç gün boyunca sokaklara çıkardı, tüm köy katıldı."
             },
             {
               "type": "text",
-              "content": "Adını taşıyan müze, o cömertliği miras aldı. Kapısını köye, çağdaş sanatçılara, okul çocuklarına ve araştırmacılara açık tutar ve tüm bunları nadir bir özen ve sıcaklıkla yapar. Museo Nivola ekibine, dört sorumuza verdikleri zaman ve düşünce için minnettarız: müze nerede biter ve Orani nerede başlar, Nivola'nın sanat ve mimarlık birliğine olan inancında hâlâ ne var, bir sanatçının doğduğu yerdeki bir müze ne bilebilir ve müzenin ne olmasını umuyorlar."
+              "content": "Adını taşıyan müze, o cömertliği miras almıştır. Kapısını köye, çağdaş sanatçılara, okul çocuklarına ve araştırmacılara açık tutar ve tüm bunları nadir bir özen ve sıcaklıkla yapar. Museo Nivola ekibine, dört sorumuza verdikleri zaman ve düşünce için minnettarız: müze nerede biter ve Orani nerede başlar, Nivola'nın sanat ve mimarlık birliğine olan inancında hâlâ ne var, bir sanatçının doğduğu yerdeki bir müze ne bilebilir ve müzenin ne olmasını umuyorlar."
             },
             {
               "type": "image",
@@ -24575,53 +24575,53 @@
             },
             {
               "type": "text",
-              "content": "Böyle bir yerde, Orani gibi, tarihi ve doğası göz önüne alındığında, müze ile köy arasındaki sınır çizmek zordur. Müze kendisi belirli bir konumda doğar: tepe üzerinde, manzaraya gömülü ve aynı zamanda köyün tırmandığı yamaçla yüz yüze. Mimarlığı, bağlamıyla bir kopuş inşa etmez, ancak sürekli olarak çevresiyle ilişkiler kurar: bitki örtüsü, vadinin şekli, Su Càntaru kaynağı ve en önemlisi, toplum."
+              "content": "Böyle bir yerde, Orani gibi, tarihi ve doğası göz önüne alındığında, müze ile köy arasındaki sınır çizmek zordur. Müze kendisi belirli bir konumda doğar: tepe üzerinde, manzaraya gömülü ve aynı zamanda köyün tırmandığı yamaçla yüz yüze. Mimarlığı, bağlamıyla bir kopuş inşa etmez, ancak sürekli olarak çevresiyle ilişkiler kurar: bitki örtüsü, vadinin şekli, Su Càntaru'nun kaynağı ve en önemlisi, toplum."
             },
             {
               "type": "text",
-              "content": "Bu ilişki, Nivola’nın kendi çalışmasını düşündüğümüzde daha da derindir, çünkü Orani, onun tüm araştırmalarında var olan ve malzemelerde, çocukluk anılarında, babasının duvar ustası olma deneyiminde, kamusal alan kavramında ve bir yerin sosyal yaşamıyla ilişkide belirgin olan bir varlıktır. 1953 tarihli <i>Pergola Village</i> projesinde, Nivola köyün evlerini, ideali ve fiziksel olarak, asma pergolalar aracılığıyla bağlamayı hayal etti, sokakları ortak sosyal alanlara dönüştürdü. 1958’de, Orani’ye dönerken, Nostra Signora d’Itria kilisesinin cephesine grafiti yaptı ve heykellerini doğrudan sokaklara taşıdı, sakinleri geleneksel sergi modelinin ötesine geçen bir deneyime dahil etti."
+              "content": "Bu ilişki, Nivola’nın kendi çalışmasını düşündüğümüzde daha da derindir, çünkü Orani, onun tüm araştırmalarında var olan ve malzemelerde, çocukluk anılarında, babasının duvar ustası olmasında, kamusal alan kavramında ve bir yerin sosyal yaşamıyla ilişkide belirgin olan bir varlıktır. 1953 tarihli <i>Pergola Village</i> projesinde, Nivola köyün evlerini, ideali ve fiziksel olarak, asma pergolalar aracılığıyla bağlamayı hayal etti, sokakları ortak sosyal alanlara dönüştürdü. 1958’de, Orani’ye dönerken, Nostra Signora d’Itria kilisesinin cephesine grafiti yaptı ve heykellerini doğrudan sokaklara taşıdı, sakinleri geleneksel sergi modelinin çok ötesine geçen bir deneyime dahil etti."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mt8phvon2ihj61.jpg",
-              "caption": "Pergola Village, Vined Orani, İç Mekanlar sayfasından, Ocak 1953. Museo Nivola Kurumu",
+              "caption": "Pergola Village, Vined Orani, İç Mekanlar dergisinden sayfa, Ocak 1953. Kaynak: Museo Nivola",
               "align": "center"
             },
             {
-              "type": "image",
+              "type": "resim",
               "content": "https://api.eprisjournal.com/uploads/mt8pvrsry2q0bf.jpg",
-              "caption": "Nostra Signora d’Itria kilisesi, Orani, 1958 yılında cephesine yapılan graffito Nivola ile. Museo Nivola tarafından sağlanmıştır",
-              "align": "center"
+              "caption": "Nostra Signora d’Itria kilisesi, Orani, 1958 yılında cephesine yapılan graffito Nivola ile. İzinli Museo Nivola",
+              "align": "merkez"
             },
             {
-              "type": "text",
-              "content": "İşte bu yüzden Museo Nivola'nın binanın eşiğinde sona ermediğini düşünmeyi seviyoruz: köy, alanın müzeyleştirilmesi anlamında bir müzeye uzantısı değil, daha çok yaşayan bir muhataptır."
+              "type": "metin",
+              "content": "İşte bu yüzden Museo Nivola'nın binanın eşiğinde sona ermediğini düşünmeyi seviyoruz: köy, alanın musealleşmesi anlamında bir müzeye uzantısı değil, daha çok yaşayan bir muhataptır."
             },
             {
-              "type": "text",
-              "content": "Mücadele tam da Orani'nin bir fon perde veya geçmişte kristalleşmiş bir tür yaygın müzeye dönüşmesini engellemektir. Amacımız, müzenin köyün yaşamının bir parçası olduğu ve köyün insanların, hafızanın, eğitim faaliyetlerinin, kamusal alan projelerinin ve yeni kültürel üretim biçimlerinin aracılığıyla müzeye girmeye devam ettiği bir ilişki kurmaya devam etmektir."
+              "type": "metin",
+              "content": "Sorun tam olarak Orani'nin bir fon perde veya geçmişte kristalleşmiş bir tür yaygın müzeye dönüşmesini engellemektir. Amacımız, müzenin köyün yaşamının bir parçası olduğu ve köyün insanların, hafızanın, eğitim faaliyetlerinin, kamusal alan projelerinin ve yeni kültürel üretim biçimlerinin aracılığıyla müzeye girmeye devam ettiği bir ilişki kurmaya devam etmektir."
             },
             {
-              "type": "image",
+              "type": "resim",
               "content": "https://api.eprisjournal.com/uploads/mt8phvyrs11r07.jpg",
-              "caption": "Annesi ve kardeşi Giuseppe’ye ait cenaze anıtının yakınında Nivola, Orani, 1958. Fotoğraf C. Bavagnoli. Museo Nivola tarafından sağlanmıştır",
-              "align": "center"
+              "caption": "Annesi ve kardeşi Giuseppe'nin cenaze anıtı yakınında Nivola, Orani, 1958. Fotoğraf C. Bavagnoli. İzinli Museo Nivola",
+              "align": "merkez"
             },
             {
               "type": "metin",
-              "content": "<i>Nivola kendine mimarlık için heykeltıraş diyordu ve bu ifade mütevazı bir ifade değildi. Heykelin bir mobilya parçası gibi binadan sonra gelmeyeceği anlamına geliyordu.</i>"
+              "content": "<i>Nivola kendisini mimarlık alanında heykeltıraş olarak tanımlıyordu ve bu ifade hiç de mütevazı bir ifade değildi. Bu, heykelin bir mobilya parçası gibi binadan sonra gelmeyeceği anlamına geliyordu.</i>"
             },
             {
               "type": "metin",
-              "content": "<b>Nivola, sanat ve mimarinin bütünleşmesine derinden inanıyordu. Bu fikir bugün ne kadar güncel ve yeni nesil sanatçılara, mimarlara ve tasarımcılara ne öğretebilir?</b>"
+              "content": "<b>Nivola sanat ve mimarinin bütünleşmesine derinden inanıyordu. Bu fikir bugün ne kadar güncel ve yeni nesil sanatçılara, mimarlara ve tasarımcılara neler öğretebilir?</b>"
             },
             {
               "type": "metin",
-              "content": "Düşüncesinin büyük güncelliği budur. Bugün, belki de Nivola'nın bu yönde çalışmaya başladığından daha fazla. Onun için sanat ve mimarinin bütünleşmesi, sadece bir eserin bir binanın içine veya cephesine yerleştirilmesi anlamına gelmiyordu. Bu, mekanı, maddeyi, işlevi ve o mekanda birlikte yaşayacak kişinin deneyimini tasarlamak anlamına geliyordu. Ünlü total projesi."
+              "content": "Düşüncesinin büyük güncelliği budur. Bugün belki de Nivola'nın bu yönde çalışmaya başladığı zamandan çok daha fazlası. Ona göre sanat ve mimarinin bütünleşmesi, bir eserin yalnızca bir binanın içine veya cephesine yerleştirilmesi anlamına gelmiyordu. Bu, mekânı, maddeyi, işlevi ve o mekânda yaşayanın deneyimini bir arada kavramak anlamına geliyordu. Ünlü toplam proje."
             },
             {
               "type": "metin",
-              "content": "Nivola, sanatçı, mimar ve tasarımcı arasındaki disiplin ayrımının üstesinden gelmeye çalışarak modern mimarinin büyük kahramanlarından bazılarıyla çalıştı. İlgisi genel bir deneyim olarak uzaya yönelmişti. Heykel duvar olabilir, kabartma mimarinin bir parçası olabilir, avlu bir karşılaşma yeri olabilir. Kentsel plan bile toplumsal ilişkileri güçlendirmek için bir araç olacaktı."
+              "content": "Nivola, modern mimarinin bazı büyük kahramanlarıyla birlikte çalışarak sanatçı, mimar ve tasarımcı arasındaki disiplin ayrılığının üstesinden gelmeye çalıştı. İlgisi genel bir deneyim olarak uzaya yönelikti. Heykel bir duvara, rölyef mimarinin bir parçasına, avlu ise bir buluşma mekanına dönüşebilir. Hatta imar planı bile toplumsal ilişkilerin güçlendirilmesine bir araç olacaktı."
             },
             {
               "type": "image",
@@ -24641,23 +24641,23 @@
             },
             {
               "type": "text",
-              "content": "Nivola, çok katı kategorilerden çıkmamız için bizi davet ediyor. Bir alanın kim için tasarlandığını, kimlerin kullanacağını, hangi ilişkileri üreteceğini sormaya davet ediyor. Mimarlık, sanat ve tasarımın çevresel ve sosyal sorularla ve yeni yaşam biçimleriyle yüzleşmeye çağrıldığı bir zamanda, onun disiplinlerarası yaklaşımı şaşırtıcı derecede çağdaş görünüyor."
+              "content": "Nivola, bizi çok katı kategorilerden çıkmaya davet ediyor. Bir alanın kim için tasarlandığını, kimlerin kullanacağını, hangi ilişkileri üreteceğini sormaya davet ediyor. Mimarlık, sanat ve tasarımın çevresel ve sosyal sorularla ve yeni yaşam biçimleriyle yüzleşmeye çağrıldığı bir zamanda, onun disiplinlerarası yaklaşımı şaşırtıcı derecede çağdaş görünüyor."
             },
             {
-              "type": "text",
-              "content": "Bu, elbette, sadece onun biçimlerini ve dillerini yeniden üretmek değil, onun yöntemini miras almakla ilgilidir: disiplinler arasında diyalog yoluyla çalışmak, malzemelere ve bağlama dikkat etmek ve alanı, davranışları, karşılaşmaları ve topluluk biçimlerini yönlendirebilecek bir şey olarak düşünmek; nötr bir konteyner olarak değil."
+              "type": "metin",
+              "content": "Elbette, sadece onun formlarını ve dillerini yeniden üretmek değil, onun yöntemini miras almakla ilgilidir: disiplinler arasında diyalog yoluyla çalışmak, malzemelere ve bağlama dikkat etmek ve alanı, davranışları, karşılaşmaları ve topluluk biçimlerini yönlendirebilecek bir şey olarak düşünmek; nötr bir kap olarak değil."
             },
             {
-              "type": "text",
-              "content": "<i>Orani'deki koleksiyon her yerde en büyüğüdür, ancak birkaç bin nüfuslu bir köyde bir müze için yapılan argüman asla envanterle ilgili olmamıştır.</i>"
+              "type": "metin",
+              "content": "<i>Orani'deki koleksiyon her yerde en büyüğüdür, ancak birkaç bin nüfuslu bir köyde bir müze için yapılan argüman asla envanterle ilgili değildi.</i>"
             },
             {
-              "type": "text",
-              "content": "<b>Doğduğu yerde bulunan bir müze, Costantino Nivola hakkında bize ne söyleyebilir ki, aynı şekilde büyük bir uluslararası kurum söyleyemez mi?</b>"
+              "type": "metin",
+              "content": "<b>Doğduğu yerde bulunan bir müze, Costantino Nivola hakkında bize ne söyleyebilir ki, aynı şekilde büyük bir uluslararası kurum söyleyemez?</b>"
             },
             {
-              "type": "text",
-              "content": "Uluslararası bir kurum, Nivola'yı küresel sanat tarihi ve yirminci yüzyıl mimarisi boyutunda anlatabilir, onun New York, Harvard Graduate School of Design, Le Corbusier, Josep Lluís Sert veya Eero Saarinen gibi mimarlarla ilişkilerini yeniden kurabilir ve onun hareket ettiği olağanüstü kültürel ağı geri verebilir."
+              "type": "metin",
+              "content": "Uluslararası bir kurum, Nivola'yı küresel sanat tarihi ve yirminci yüzyıl mimarisi bağlamında anlatabilir, onun New York, Harvard Graduate School of Design, Le Corbusier, Josep Lluís Sert veya Eero Saarinen gibi mimarlarla ilişkilerini yeniden kurabilir ve onun hareket ettiği olağanüstü kültürel ağı geri verebilir."
             },
             {
               "type": "text",
@@ -24665,69 +24665,70 @@
             },
             {
               "type": "text",
-              "content": "İşte onun eserindeki bazı merkezi sorular artık sadece sanat-tarihi temalar olmaktan çıkıp somut bir boyut kazanıyor. Maddeyle olan ilişkisi, onun toprağının jeolojisine, aile deneyimine ve babasının mesleğine geri dönüyor. Topluma olan dikkat, katılım teması, hayati bir anlam kazanıyor. Köken yerinde bir müze, sadece belgesel olmayan bir hafızaya erişim sağlar. Sözlü, halk arasında kullanılan, günlük hafıza vardır; onu hatırlayan insanlar veya önceki nesillerin hafızasını toplayan kişilerden oluşur. Işıklar, sessizlikler, manzaranın hareketi: sergi içinde yeniden oluşturulması zor olan unsurlar ve bunlar bir dil, bir anlatım, köklü ve bilinçli bir yaklaşım gerektirir."
-            },
-            {
-              "type": "resim",
-              "content": "https://api.eprisjournal.com/uploads/mt8phwlmm7eei6.jpg",
-              "caption": "Orani'deki Mason Anıtı için Model, Building Blocks serisinden, 1955, beton, 63.5 x 68.5 x 34.5 cm. Fotoğraf P. Pinna. Museo Nivola'nın izniyle",
-              "align": "merkez"
-            },
-            {
-              "type": "text",
-              "content": "Bu, Nivola'yı sadece Sardinya üzerinden okumak anlamına gelmez: bu da aynı şekilde indirgemeci olurdu, çünkü onun sanatsal kimliği tam da Orani ile dünya arasındaki karşılaşmadan doğar. Museo Nivola'nın gücü, eğer varsa, bu iki boyutu birlikte tutma olasılığında yatar. Bir yanda, yirminci yüzyılın uluslararası kültürüne tamamen entegre bir sanatçı; diğer yanda, adaya derinlemesine kök salmış bir biyografi ve hayali."
-            },
-            {
-              "type": "text",
-              "content": "Belki de Museo Nivola'nın sunabileceği benzersiz şey, tam olarak bu iki boyutun çelişki içinde olmadığını anlamanın imkanını sunmaktır."
-            },
-            {
-              "type": "text",
-              "content": "<i>Son soru, sonra ne olacağıyla ilgilidir ve cevap, bir tapınaktan çok bir atölyeye daha yakın bir şey anlatır.</i>"
-            },
-            {
-              "type": "text",
-              "content": "<b>Gelecek ve Museo Nivola'nın gelişimiyle ilgili planlarınız hakkında, olabildiğince anlatabilir misiniz? Özellikle müzenin geleneksel sergi alanının ötesine geçiş biçimi bizi etkiledi; sanat, mimari, peyzaj ve Orani köyü arasında bir diyalog kuruyor. Onun evrimindeki bir sonraki aşamayı nasıl hayal ediyorsunuz?</b>"
-            },
-            {
-              "type": "text",
-              "content": "İzlediğimiz yön, tam da bu hibrit kimliği derinleştirmektir: bir araştırma merkezi olarak monografik müze, çağdaş, mimari, peyzaj, eğitim ve tekrar topluma adanmış bir yer olarak."
-            },
-            {
-              "type": "text",
-              "content": "Yeni program <i>Nivola vis-à-vis</i> bu ihtiyaçtan doğar. Çağdaş sanatçılara adanmış bir dizi sergiden sonra, vizyonumuz doğrudan Nivola’ya yönelir, onu zamanının figürleri, deneyimleri ve soruları ile ilişkilendirir. Bu sadece biçimsel karşılaştırmalar kurmak meselesi değil, Nivola’nın çalışmalarını hâlâ canlı ve gerekli temalar için bir başlangıç noktası olarak analiz etmektir: mekan ve beden, mimari ve tasarım, sanat ve çevre arasındaki iç içe geçiş. Şu anda görülen <i>Nivola, Colombo e lo spazio intorno</i> sergisi, örneğin, mekânı fiziksel ve ilişkisel biliş olarak yansıtır. Etrafında, Nivola’nın araştırmasının günümüze ne kadar devam ettiğine dair önemli yansımalar dolaşır. Onun çalışmalarının hangi yönleri hâlâ açık, acil ve üretken görünmektedir? Uluslararası tartışma içinde, tasarım potansiyellerini yeniden canlandırmak ve Nivola’nın sanat ve toplum, eğitim ve hayal gücü, proje ve günlük yaşam arasındaki ilişki hakkında otuz yılı aşkın süredir sorduğu soruları güncel tartışmanın merkezine getirmek temel önemdedir."
+              "content": "İşte onun eserlerindeki bazı temel sorular artık sadece sanat-tarihi temalar olmaktan çıkıp somut bir boyut kazanıyor. Maddeyle ilişkisi, onun topraklarının jeolojisine ve aile deneyimine, babasının mesleğine geri dönüyor. Topluma olan dikkat, katılım teması, hayati bir anlam kazanıyor. Köken yerinde bir müze, sadece belgesel olmayan bir hafızaya erişim sağlar. Sözlü, halk arasında kullanılan, günlük hafıza vardır; onu hatırlayan insanlar veya önceki nesillerin hafızasını toplayanlar. Işıklar, sessizlikler, manzaranın hareketi: sergi içinde yeniden oluşturulması zor olan unsurlar ve bunlar bir dil, bir anlatım, köklü ve bilinçli bir yaklaşım gerektirir."
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mt8pvry22l32qj.jpg",
-              "caption": "Kalıcı koleksiyon, Museo Nivola, Orani. Fotoğraf Cedric Dasesson. Museo Nivola’ya ait",
+              "content": "https://api.eprisjournal.com/uploads/mt8phwlmm7eei6.jpg",
+              "caption": "Orani'deki Mason Anıtı için Model, Building Blocks serisinden, 1955, beton, 63.5 x 68.5 x 34.5 cm. Fotoğraf P. Pinna. Kaynak: Museo Nivola",
               "align": "center"
             },
             {
               "type": "text",
-              "content": "Önümüzdeki aylarda, bu çalışma kalıcı koleksiyonun yeniden okunmasıyla devam edecek. Milano Trienali’nde Nivola’ya adanmış sergi için bazı eserlerin geçici olarak ayrılması, sergiyi yeniden düşünmek, depolara dönmek, daha az bilinen eserleri sunmak ve diğer bağlantılar kurmak için bir fırsat haline gelecek. Bilimsel araştırmanın eğitim faaliyetleriyle konuşabilmesini, her serginin kamusal alanda bir deneyim yaratabilmesini, mirasın sürekli olarak “şimdinin duygusu” aracılığıyla yeniden okunmasını ve müzenin topluluk tarafından bir aidiyet olarak algılanmaya devam etmesini istiyoruz."
+              "content": "Bu, Nivola'yı sadece Sardinya üzerinden okumak anlamına gelmez: bu da aynı şekilde indirgemeci olurdu, çünkü onun sanatsal kimliği tam da Orani ile dünya arasındaki karşılaşmadan doğar. Museo Nivola'nın gücü, eğer varsa, bu iki boyutu bir arada tutma olasılığında yatar. Bir yanda, yirminci yüzyılın uluslararası kültürünün tamamen parçası bir sanatçı; diğer yanda, adaya derinlemesine kök salmış bir biyografi ve hayali."
+            },
+            {
+              "type": "metin",
+              "content": "Belki de Museo Nivola'nın sunabileceği benzersiz şey, tam olarak bu iki boyutun çelişki içinde olmadığını anlamanın imkanıdır."
+            },
+            {
+              "type": "metin",
+              "content": "<i>Son soru, sıradakilerle ilgilidir ve cevap, bir tapınaktan çok bir atölyeye daha yakın bir şeyi tanımlar.</i>"
+            },
+            {
+              "type": "metin",
+              "content": "<b>Gelecek planlarınız ve Museo Nivola'nın gelişimi hakkında mümkün olduğunca bize anlatabilir misiniz? Müzenin geleneksel sergi alanının ötesine geçiş biçimi, sanat, mimari, peyzaj ve Orani köyü arasında bir diyalog yaratması özellikle dikkat çekiciydi. Evriminin bir sonraki aşamasını nasıl hayal ediyorsunuz?</b>"
+            },
+            {
+              "type": "metin",
+              "content": "İzlediğimiz yön, tam da bu hibrit kimliği derinleştirmektir: bir araştırma merkezi olarak monografik bir müze, çağdaşlara, mimariye, peyzajlara, eğitime ve tekrar, topluluğa adanmış bir yer."
             },
             {
               "type": "text",
-              "content": "Sonuçta, Nivola’ya ait olan bir dinamik bu: gittiği yerle bağını kaybetmeden dünyayı dolaşmak. Ve belki de ilgilendiğimiz müze modeli budur: bir mirası koruyan kapalı bir yer değil, onu sürekli olarak yeniden dolaşıma sokabilen bir organizma."
+              "content": "Yeni program <i>Nivola vis-à-vis</i> bu ihtiyaçtan doğar. Çağdaş sanatçılara adanmış bir dizi sergiden sonra, vizyonumuz doğrudan Nivola’ya yönelir, onu zamanının figürleri, deneyimleri ve soruları ile ilişkilendirir. Bu, sadece biçimsel karşılaştırmalar kurmak meselesi değil, Nivola’nın çalışmalarını hâlâ canlı ve gerekli temalar için bir başlangıç noktası olarak analiz etmektir: mekân ve beden, mimarlık ve tasarım, sanat ve çevre arasındaki iç içe geçiş. Şu anda görülen <i>Nivola, Colombo e lo spazio intorno</i> sergisi, örneğin, mekânı fiziksel ve ilişkisel biliş olarak yansıtır. Etrafında, Nivola’nın araştırmasının günümüze ne kadar devam ettiğine dair önemli yansımalar dolaşır. Onun çalışmalarının hangi yönleri hâlâ açık, acil ve üretken görünmektedir? Uluslararası tartışma içinde, tasarım potansiyellerini yeniden canlandırmak ve Nivola’nın sanat ve toplum, eğitim ve hayal gücü, proje ve günlük yaşam arasındaki ilişki hakkında otuz yılı aşkın süre önce sorduğu soruları güncel tartışmanın merkezine getirmek temel önemdedir."
+            },
+            {
+              "type": "resim",
+              "content": "https://api.eprisjournal.com/uploads/mt8pvry22l32qj.jpg",
+              "caption": "Kalıcı koleksiyon, Museo Nivola, Orani. Fotoğraf Cedric Dasesson. Museo Nivola’ya ait",
+              "align": "merkez"
+            },
+            {
+              "type": "text",
+              "content": "Önümüzdeki aylarda, bu çalışma kalıcı koleksiyonun yeniden okunmasıyla devam edecek. Milano Trienali’nde Nivola’ya adanmış sergi için bazı eserlerin geçici olarak ayrılması, sergiyi yeniden düşünmek, depolara geri dönmek, daha az bilinen eserleri sunmak ve diğer bağlantılar kurmak için bir fırsat haline gelecek. Bilimsel araştırmanın eğitim faaliyetleriyle konuşabilir olmasını, her serginin kamusal alanda bir deneyim yaratmasını, mirasın sürekli olarak “şimdinin duygusu” aracılığıyla yeniden okunmasını ve müzenin topluluk tarafından bir aidiyet olarak algılanmaya devam etmesini istiyoruz."
+            },
+            {
+              "type": "text",
+              "content": "Sonuçta, Nivola’ya ait olan bir dinamik bu: gidilen yerle bağını kaybetmeden dünyayı dolaşmak. Ve belki de ilgilendiğimiz müze modeli budur: bir mirası koruyan kapalı bir yer değil, onu sürekli olarak dolaşıma sokabilen bir organizma."
             },
             {
               "type": "görüntü",
               "content": "https://api.eprisjournal.com/uploads/mt8phwxzw8tcdl.jpg",
-              "caption": "Piazza Satta, Nuoro, 1967. Mimar Richard Stein. Fotoğraf C. Nivola. İzinli Museo Nivola",
+              "caption": "Piazza Satta, Nuoro, 1967. Mimar Richard Stein. Fotoğraf C. Nivola. Müze Nivola'nın izniyle",
               "align": "merkez"
             },
             {
               "type": "metin",
-              "content": "<i>Sergi Nivola, Colombo ve çevresi alanı Museo Nivola'da Orani, Sardinya'da sergileniyor. Kalıcı koleksiyondan eserler, Milano Triennale'deki Nivola'ya adanmış sergiye seyahat edecek ve Orani'deki sergi, onların yokluğunda yeniden kurulacak.</i>"
+              "content": "<i>Sergi Nivola, Colombo e lo spazio intorno, Orani, Sardinya'daki Museo Nivola'da gösteriliyor. Kalıcı koleksiyondan eserler, Milano Triennale'deki Nivola'ya adanmış sergiye seyahat edecek ve Orani'deki sergi, onların yokluğuna göre yeniden inşa edilecek.</i>"
             }
           ],
           "authorId": "author-1784732936927-kw554",
           "draft": true,
           "previewToken": "bf6e06015612b1dfa06d7e68",
-          "updatedAt": "2026-08-25T14:24:28.382Z",
+          "updatedAt": "2026-08-25T14:36:16.946Z",
           "showCover": true,
-          "contributorId": "author-museo-nivola"
+          "contributorId": "author-museo-nivola",
+          "publishedAt": "2026-08-25T13:00:00.000Z"
         }
       ],
       "reviews": [
