@@ -10927,8 +10927,11 @@ function renderIssuePublicationMap(data, order, result) {
   const articleList = order.length
     ? order.map((id, index) => {
       const article = issueArticlesOf(data).find((a) => Number(a.id) === Number(id));
-      const articleSlug = article ? slugifySeed(article.title, String(id)) : String(id);
-      return article ? `<li><span class="issue-output-num">${String(index + 1).padStart(2, '0')}</span><span>${escapeHtml(article.title || `Статья #${id}`)}</span><small>/article/${escapeHtml(articleSlug)}</small></li>` : '';
+      /* slugifySeed режет строку до 48 символов ради imageSeed — здесь она
+         давала редактору неверный адрес, ведь на сайте у длинного заголовка
+         слаг не обрезается. Числовой id — единственный адрес, который сайт
+         резолвит гарантированно, независимо от длины заголовка. */
+      return article ? `<li><span class="issue-output-num">${String(index + 1).padStart(2, '0')}</span><span>${escapeHtml(article.title || `Статья #${id}`)}</span><small>/article/${id}</small></li>` : '';
     }).join('')
     : '<li class="is-empty">Нет выбранных статей — выпуск не пройдёт проверку.</li>';
   output.innerHTML = `
@@ -19897,10 +19900,18 @@ async function flushModernEditor() {
 
   // The top button opens the real public page. It never switches to a second
   // editor: the canvas above is the only place to write an article.
+  /* ССЫЛКА СТРОИЛАСЬ НЕ ТОЙ ФУНКЦИЕЙ.
+     slugifySeed сделана для imageSeed и обрезает результат до 48 символов —
+     разумно для имени файла, разрушительно для URL. Сайт ищет статью по
+     полному слагу (generateSlug в App.tsx, без обрезки) и по числовому id;
+     обрезанного варианта в его SLUG_MAP нет и быть не может. На заголовке
+     длиннее ~40 знаков после чистки кнопка открывала «материал не найден» —
+     воспроизведено на статье #26, слаг обрезался на «-t» посреди «they-share».
+     Числовой id сайт резолвит напрямую, минуя слаг: это надёжный путь,
+     который не зависит от повторения чужого алгоритма нарезки текста. */
   openPageBtn?.addEventListener('click', () => {
     if (!_model) return;
-    const slug = slugifySeed(_model.title || String(_ctx.id), String(_ctx.id));
-    window.open(`/article/${encodeURIComponent(slug)}/`, '_blank', 'noopener,noreferrer');
+    window.open(`/article/${_ctx.id}/`, '_blank', 'noopener,noreferrer');
   });
 
   // ── react to selection changes from the classic toolbar ───────────────────
