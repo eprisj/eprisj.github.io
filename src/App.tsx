@@ -2325,7 +2325,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   );
   const authorRole = roleWasLegacyAuthorName
     ? translateRole(resolvedAuthor?.role, currentLang)
-    : (article.role || (isMatchingProfile ? translateRole(resolvedAuthor?.role, currentLang) : undefined));
+    : (translateRole(article.role, currentLang) || (isMatchingProfile ? translateRole(resolvedAuthor?.role, currentLang) : undefined));
   const authorPhoto = isMatchingProfile ? resolvedAuthor?.photoUrl : undefined;
   // Второй кредит: институция, вместе с которой сделан материал. Она не
   // перебивает подпись автора, а стоит отдельной карточкой под ней.
@@ -2451,7 +2451,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                 {article.role && (
                   <>
                     <span className="w-1 h-1 bg-[rgb(var(--c-accent-rgb)_/_0.4)] rounded-full" />
-                    <span className="text-[var(--c-gold)]">{article.role}</span>
+                    <span className="text-[var(--c-gold)]">{translateRole(article.role, currentLang)}</span>
                   </>
                 )}
               </div>
@@ -2815,7 +2815,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                   <div>
                     <p className="font-serif text-xl sm:text-2xl font-semibold mb-1">{contributor.name}</p>
                     {contributor.role && (
-                      <p className="font-mono text-xs font-bold uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.7)] mb-3">{contributor.role}</p>
+                      <p className="font-mono text-xs font-bold uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.7)] mb-3">{translateRole(contributor.role, currentLang)}</p>
                     )}
                     {contributor.bio && (
                       <p className="font-serif text-[15px] text-[rgb(var(--c-accent-rgb)_/_0.85)] leading-relaxed mb-3 max-w-xl">{contributor.bio}</p>
