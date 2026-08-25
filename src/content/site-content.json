@@ -5050,14 +5050,14 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mt8o6ppz5cm8rs.jpg",
-          "caption": "Church of the Light, Tadao Ando",
+          "caption": "Church of the Light, Tadao Ando, 1989",
           "sourceUrl": "https://www.dezeen.com/2017/10/31/tadao-ando-full-scale-mock-up-church-of-the-light-exhibition-tokyo-national-art-center/",
           "credit": "Dezeen"
         },
         {
           "type": "header",
           "level": 2,
-          "content": "<span class=\"kicker\">03 · The current series</span>Human Metaphors and the vanishing body"
+          "content": "<span>03 · </span> and vanishing body"
         },
         {
           "type": "text",
@@ -5253,7 +5253,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-25T12:58:41.508Z"
+      "updatedAt": "2026-08-25T12:59:02.384Z"
     },
     {
       "id": 24,
