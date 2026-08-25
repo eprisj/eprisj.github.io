@@ -5301,7 +5301,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-25T18:30:46.516Z",
+      "updatedAt": "2026-08-25T18:31:45.449Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8wh6owj2qa80.jpg",
       "previewToken": "7050d8a93e5a216872f5399c"
     },
@@ -5573,11 +5573,10 @@
       "authorId": "author-1784732936927-kw554",
       "draft": false,
       "previewToken": "bf6e06015612b1dfa06d7e68",
-      "updatedAt": "2026-08-25T18:22:44.996Z",
+      "updatedAt": "2026-08-25T18:31:30.000Z",
       "showCover": true,
       "contributorId": "author-museo-nivola",
-      "publishedAt": "2026-08-25T13:00:00.000Z",
-      "hideOnHome": true
+      "publishedAt": "2026-08-25T13:00:00.000Z"
     }
   ],
   "reviews": [
@@ -9407,8 +9406,7 @@
           "updatedAt": "2026-08-25T15:02:59.271Z",
           "showCover": true,
           "contributorId": "author-museo-nivola",
-          "publishedAt": "2026-08-25T13:00:00.000Z",
-          "hideOnHome": true
+          "publishedAt": "2026-08-25T13:00:00.000Z"
         }
       ],
       "reviews": [
@@ -13239,8 +13237,7 @@
           "updatedAt": "2026-08-25T15:03:47.197Z",
           "showCover": true,
           "contributorId": "author-museo-nivola",
-          "publishedAt": "2026-08-25T13:00:00.000Z",
-          "hideOnHome": true
+          "publishedAt": "2026-08-25T13:00:00.000Z"
         }
       ],
       "reviews": [
@@ -17071,8 +17068,7 @@
           "updatedAt": "2026-08-25T15:04:36.105Z",
           "showCover": true,
           "contributorId": "author-museo-nivola",
-          "publishedAt": "2026-08-25T13:00:00.000Z",
-          "hideOnHome": true
+          "publishedAt": "2026-08-25T13:00:00.000Z"
         }
       ],
       "reviews": [
@@ -20903,8 +20899,7 @@
           "updatedAt": "2026-08-25T15:05:22.532Z",
           "showCover": true,
           "contributorId": "author-museo-nivola",
-          "publishedAt": "2026-08-25T13:00:00.000Z",
-          "hideOnHome": true
+          "publishedAt": "2026-08-25T13:00:00.000Z"
         }
       ],
       "reviews": [
@@ -24734,8 +24729,7 @@
           "updatedAt": "2026-08-25T15:06:56.653Z",
           "showCover": true,
           "contributorId": "author-museo-nivola",
-          "publishedAt": "2026-08-25T13:00:00.000Z",
-          "hideOnHome": true
+          "publishedAt": "2026-08-25T13:00:00.000Z"
         }
       ],
       "reviews": [
@@ -29547,6 +29541,8 @@
       "mode": "manual",
       "pinned": [],
       "manualOrder": [
+        23,
+        26,
         22,
         18,
         14,
