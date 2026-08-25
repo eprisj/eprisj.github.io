@@ -28309,8 +28309,8 @@
               "content": "<span>06 · Studio</span>"
             },
             {
-              "type": "text",
-              "content": "<b>MI:</b> Dipingi quotidianamente, o aspetti l'ispirazione?"
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt8wi29ll76qp4.jpg"
             },
             {
               "type": "text",
@@ -28337,8 +28337,8 @@
               "content": "<b>MI:</b> Hai menzionato “manipolare” dipinti classici – cosa comporta esattamente?"
             },
             {
-              "type": "text",
-              "content": "<b>KA:</b> “Manipolare” potrebbe essere una parola troppo sfacciata – lo vedo più come chiedere ai dipinti aiuto. Ho inserito l'immagine classica su iPad, ci lavoro sopra, a volte quasi interamente, e riduco a ciò che conta. C'è un pittore – continuo a dimenticare il nome – noto per usare still di film come riferimento ed estrarre ciò che importava da una scena piuttosto che l'intera immagine [Luc Tuymans]. Questo si avvicina a quello che sto facendo: estrarre, non riprodurre."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt8wkn228zqy9o.jpg"
             },
             {
               "type": "text",
@@ -28349,7 +28349,7 @@
               "content": "<b>KA:</b> Onestamente, tutto, ma musica e film in particolare. Anche il nostro cane – non ha capacità di pensare troppo, è semplicemente felice, e c'è qualcosa di ispirante in quella espressione cruda, non filtrata. Nei film adoro le cose che mi confondono – David Lynch, lavori che lasciano una domanda invece di rispondere. Nella musica ascolto principalmente pezzi strumentali o classici, e una band giapponese le cui liriche sono deliberatamente misteriose. Sono attratto da scrittori di una certa epoca per lo stesso motivo – il mistero fa più lavoro di una spiegazione."
             },
             {
-              "type": "header",
+              "type": "text",
               "level": 2,
               "content": "<span>07 · Luoghi Preferiti</span>"
             },
@@ -28358,7 +28358,7 @@
               "content": "<b>MI:</b> Hai qualche gioiello nascosto a Londra che puoi condividere con noi. non deve essere legato all'arte. Un bar, una panchina, una strada."
             },
             {
-              "type": "text",
+              "type": "header",
               "content": "<b>KA:</b> Non proprio nascosto, ma c'è un bar a Londra, all'interno di un ex edificio bancario vicino alla stazione di Bank, che hanno svuotato e ricostruito – sembra un po' come Hogwarts all'interno. Molto buio, molto spazioso, più simile a un salotto di un grande hotel che a un bar tipico, e abbastanza scuro da poter avere davvero una conversazione privata. L'ho scoperto solo verso la fine del mio tempo a Londra, e ci tornerei solo per quello."
             },
             {
@@ -28366,20 +28366,20 @@
               "content": "In Giappone, indicherei alle persone Nara – tutti vanno per i cervi e il Buddha gigante, ma se sali più in alto sulla montagna dietro il tempio principale, forse venti minuti oltre il punto in cui si fermano la maggior parte dei turisti, c'è un tempio molto più tranquillo con una vista sull'intera città. Sembra di fare un passo indietro di alcuni secoli. In generale: qualsiasi tempio piccolo e minore che trovi su una mappa piuttosto che in una lista dei \"migliori\" – da qualche parte in cui ti è effettivamente permesso entrare. Kyoto ne ha migliaia. Se poi riesci a prendere un matcha lì, ancora meglio."
             },
             {
-              "type": "header",
+              "type": "text",
               "level": 2,
               "content": "<span class=\"kicker\">08 · Chiusura</span>Su vita, cultura e amore"
             },
             {
-              "type": "text",
-              "content": "<b>MI:</b> Un'ultima domanda, non artistica – se dovessi dare un consiglio di vita, quale sarebbe?"
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt8vyjtgoszvir.jpg"
             },
             {
               "type": "text",
               "content": "<b>KA:</b> Smetti di essere un compiacente. Penso che molte persone abbiano difficoltà con questo, a diversi livelli, e anche io – con tutti, anche con gli sconosciuti. Qualcosa di piccolo come dire a mia moglie che in realtà non mi piaceva un pasticcino che aveva comprato per me sarebbe stato impossibile cinque anni fa. Conta, perché abbiamo una sola vita, e ho sentito la stessa cosa da molte persone più anziane in interviste: fai semplicemente quello che vuoi davvero. Sono ancora più propenso a compiacere le persone di quanto vorrei, onestamente, ed è una capacità utile in piccole dosi – ma troppo è troppo. Conoscere la propria voce, anche nelle piccole decisioni quotidiane, è tutto."
             },
             {
-              "type": "text",
+              "type": "header",
               "content": "<b>MI:</b> E per qualcuno giovane che vuole essere un artista ma ha paura di iniziare?"
             },
             {
@@ -28399,7 +28399,7 @@
               "content": "<b>MI:</b> Hai un piatto preferito di quel lato del mondo?"
             },
             {
-              "type": "text",
+              "type": "quote",
               "content": "<b>KA:</b> Zuppa fredda di barbabietola, in estate, con patata bollita e uovo. Ho rifiutato di provarla la prima volta – il colore da solo mi ha scoraggiato – e ora la adoro. Aneto, anche; è diventato uno dei miei gusti preferiti. Mi sono lamentato costantemente del cibo a Londra e in Europa occidentale in generale, tranne che per quello italiano – pasta e pizza sono difficili da discutere – ma il cibo slavo potrebbe essere l’unica cucina che ha veramente rivaleggiato con quella giapponese per me, cosa che non mi aspettavo."
             },
             {
