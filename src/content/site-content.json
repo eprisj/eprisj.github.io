@@ -5215,6 +5215,11 @@
         },
         {
           "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mt8wkn228zqy9o.jpg",
+          "caption": ""
+        },
+        {
+          "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mt8wi29ll76qp4.jpg",
           "caption": "Keisuke Azuma’s studio in Lithuania",
           "credit": "Courtesy of Keisuke Azuma"
@@ -5300,7 +5305,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-25T16:51:49.571Z",
+      "updatedAt": "2026-08-25T16:52:22.029Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8sghgw8esg3y.jpg"
     },
     {
