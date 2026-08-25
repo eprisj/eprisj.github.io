@@ -5328,7 +5328,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-25T19:23:50.721Z",
+      "updatedAt": "2026-08-25T19:24:20.977Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8wh6owj2qa80.jpg",
       "previewToken": "7050d8a93e5a216872f5399c"
     },
@@ -26347,6 +26347,324 @@
           "showCover": true,
           "contributorId": "author-museo-nivola",
           "publishedAt": "2026-08-25T13:00:00.000Z"
+        },
+        {
+          "id": 27,
+          "title": "Souv: Unutmayanın Hatırlattığı Hatıra",
+          "author": "Viacheslav Munister",
+          "role": "Yazar",
+          "date": "25 Ağustos 2026",
+          "excerpt": "Matej Petrić ve Antonio Šeparović sıradan bir buzdolabı magnetini bir gezginin kendi fotoğraflarına girişine dönüştürmek, kimsenin aslında NFC teknolojisini neden satın almak istemediği ve iki arkadaş ve üçüncü bir kahveyle Zagreb'de başlayan bir girişime lazer oymacı yerleştirmenin ne gerektiği hakkında.",
+          "category": "mülakat",
+          "subcategory": "Özellik",
+          "tags": [
+            "Mülakat",
+            "tasarım",
+            "seyahat",
+            "kroatia",
+            "girişim"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt919szqnaqxwe.jpg",
+          "content": [
+            {
+              "type": "metin",
+              "content": "Her hatıra dükkanı aynı sözü satıyor: size, yıllar sonra, bir yerde olduğunuzu hatırlatacak küçük bir nesne. Bir mıknatıs bu işi neredeyse başka hiçbir şeyden daha iyi yapar, ki bu da tam olarak sorundur. Bu, seyahat gerçeğini hatırlar ve seyahati hatırlamaya değer kılan her şeyi unutur — feribotta kiminle güldüğünüzü, son geceki ışığın nasıl göründüğünü, yanlış dönüşün haftanın en iyi saatine dönüşmesini. O daha zengin malzeme kaybolmaz. Telefonunuzda, birkaç bin fotoğraf derinliğinde gömülü, kimsenin geri kaydırmadığı kamera rulosunun bölümünde bulunur."
+            },
+            {
+              "type": "metin",
+              "content": "<b>Souv</b>, Zagreb'ten çıkan bir girişim, tam olarak bu boşluğu kapatmak için kuruldu. Fiziksel bir kart veya mıknatısı telefonunuzla dokunun — herhangi bir uygulama yüklemeye gerek yok — ve bu, o belirli yer ve seyahatle bağlantılı kişisel bir alan açar: kendi fotoğraflarınız, kısa bir özet video, sonra için bir not. Nesne buzdolabına yapışır, her zaman yaptığı gibi bir hatıra. İşaret ettiği anı ulaşılabilir kalır, bu da kaybolan kısımdır."
+            },
+            {
+              "type": "metin",
+              "content": "Şirket, iki arkadaş, bir üniversite ve küçük bir metal atölyesi işletmek gibi bir plan olmadan başladı. Brač adasındaki bir bisiklet etkinliğinde ilk pilot uygulamadan sonra, Souv Hırvatistan kıyısında yayıldı, müze dükkanlarına ve zincir perakendeye girdi ve Zagreb Tasarım Haftası 2026'nin Dijital İletişim Tasarımı kategorisinde finale kaldı, bu Eylül ayında Güzel Sanatlar Akademisi'nde sergilenecek."
+            },
+            {
+              "type": "metin",
+              "content": "Ortak kurucular Matej Petrić ve Antonio Šeparović ile Zagreb'teki üçüncü kahve hakkında konuştuk; işe yarayacağından emin oldukları ve her ne kadar atmak zorunda kalmış olsalar da, fikrin hangi versiyonunun çalıştığını ve renkli oyma paslanmaz çeliği üretime nasıl geçirdiklerini konuştuk."
+            },
+            {
+              "type": "text",
+              "content": "<b>Bize en başa dönmemizi sağlayın — Souv fikrini gerçekten tetikleyen belirli bir seyahat, belirli bir yer veya belirli bir hayal kırıklığı var mıydı? O anı detaylıca anlatın — nerede olduğunuzu, ne yapmaya çalıştığınızı ve neyin işe yaramadığını.</b>"
+            },
+            {
+              "type": "text",
+              "content": "Garip olan şu ki, Souv bir plajda, havaalanında veya özellikle dramatik bir seyahat sırasında doğmadı. Zagreb'de kahve içerken başladı."
+            },
+            {
+              "type": "text",
+              "content": "Antonio ve ben WESPA'da oturuyorduk, o zaten üçüncü kahvemiz olarak hatırladığı zaman, seyahat ederken kaç fotoğraf çektiğimiz ve bunlara ne kadar nadir geri döndüğümüz hakkında konuşuyorduk. Aynı zamanda, evlerimiz ziyaret ettiğimiz yerlerin fiziksel hatıralarıyla doluydu, özellikle mıknatıslar. Garip olan şu ki, fiziksel nesne hayatta kalmıştı, oysa gerçek deneyim, telefonda binlerce fotoğraf arasında bir yerde gömülüydü."
+            },
+            {
+              "type": "text",
+              "content": "Bu kopukluk başlangıç noktası oldu. Çok basit bir soru sorduk: ya fiziksel hatıra, dijital anıları bir şekilde taşıyabiliyorsa?"
+            },
+            {
+              "type": "metin",
+              "content": "İlk başta neredeyse açıkçası ortaya çıkmış gibi geldi. Bir hediye eşyasına dokun, fotoğraflarını aç, yer hakkında bir şey ekle. Daha sonra daha zor soruları sormaya başladık: Fiziksel nesne aslında ne olmalı? Bir kişi neden satın alır? Teknolojiyi nasıl görünmez kılar? Ve bir dijital nesneyi gerçek bir armağan gibi hissettirirken başka bir uygulama gibi hissettirilmesini nasıl önleriz?"
+            },
+            {
+              "type": "metin",
+              "content": "<b>Kuruculuk ekibi kimlerden oluşuyordu ve size erken çalışmayı nasıl bölüştürdünüz? Geriye baktığınızda, ürünü en çok şekillendiren fikir kimin oldu ve bu kişinin rolü şirket büyüdükçe değiştirdi mi?</b>"
+            },
+            {
+              "type": "metin",
+              "content": "Souv, benimle Matej Petrić ve Antonio Šeparović birlikte kurduğumuz bir şirket. İş ortaklığına başlamadan önce arkadaş ve üniversite arkadaşıyız ve her ikimiz de yazılım ve dijital ürün alanlarından geldik. Bu, çalışma bölümünün “bir teknik kurucu ve bir iş kurucu” şeklindeki temiz bir ayrım olduğu düşüncesinin çok daha az geçerli olduğu anlamına geliyordu. Başlangıçta, ürünün ihtiyaç duyduğu her şeyi birlikte yapıyorduk."
+            },
+            {
+              "type": "metin",
+              "content": "Ben de Souv’u tek bir kişinin fikrine göre atribüt etmemeyi dürüstçe kabul ederim. İlk soru, aramızda bir konuşmadan çıktı ve ürün daha sonraki yinelemelerle şekillendi. Eğer bir prensip ürünü diğer herşeyden fazla etkilediyse, test sırasında öğrendik bir şeydi: insanlar NFC teknolojisini satın almakla ilgilenmiyor."
+            },
+            {
+              "type": "text",
+              "content": "Onlar bir deneyimi korumaya ilgi duyuyorlar. Bunu anladığımızda, teknoloji daha sessiz hale geldi ve hafıza ürünün merkezine yerleşti. Ekibin büyümesiyle, tasarımcı Antonija Bačić gibi uzmanlar bu ilkeleri çok daha olgun bir fiziksel ve görsel kimliğe dönüştürmeye yardımcı oldular."
+            },
+            {
+              "type": "text",
+              "content": "<b>Aslında Souv'un ilk versiyonu nasıl görünüyordu — kart, uygulama, tüm deneyim? O ilk versiyonun hangi parçaları bugün mağazalarda satılanlara kadar sürdü ve hangi parçalar tamamen atıldı, belki de işe yarayacağından emin olduğunuz bir şey bile?</b>"
+            },
+            {
+              "type": "text",
+              "content": "İlk versiyonlar, bugün satın alabileceğiniz Souv'a kıyasla çok daha çok kavram kanıtına yakındı. Temel fikir zaten vardı: NFC veya QR bağlantısı olan fiziksel bir kart veya mıknatıs, bu belirli nesneyle ilişkili dijital bir alanı açıyordu. Bir nesne ile masaüstünüzde veya buzdolabınızda bulunan nesne ile kişisel dijital hafıza arasındaki bağlantının doğal hissettirebileceğini kanıtlamamız gerekiyordu."
+            },
+            {
+              "type": "text",
+              "content": "Hayatta kalan aslında fikrin en temel parçasıdır. Hala fiziksel bir nesneye dokunuyorsunuz, hiçbir şey indirmeniz gerekmez ve o nesne kendi fotoğraflarınıza, videolarınıza, notlarınıza ve yolculuğunuza giriş sağlar."
+            },
+            {
+              "type": "text",
+              "content": "Neredeyse o çekirdek etrafındaki her şey daha rafine hale geldi. Başlangıç daha basit hale geldi, dijital deneyim çok daha az teknoloji odaklı oldu ve fiziksel ürün iki çok farklı ifadeye gelişti: erişilebilir basılı Eco versiyonu ve renk lazer gravürlü fırçalanmış paslanmaz çelikten yapılmış Premium nesne."
+            },
+            {
+              "type": "text",
+              "content": "Başlangıçta aşırı tahmin ettiğimiz bir şey teknolojinin kendisindeki “vay” duygusuydu. Bir nesneye telefonla dokunmanın insanların en çok ilgisini çekeceğini varsaydık. Bu kullanışlıdır, ama onları ilgilendiren neden değildir. Önemli an, dokunuşun diğer tarafında ne olduğunu anladıkları andır. Bu, tüm ürünün tasarımını ve açıklamasını değiştirdi."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt919sg821bqcm.jpg",
+              "caption": "Erken taslaklar, “süper güçlerle hatıralar” broşürü ve bir mağaza sergileme standı. Söz konusu Souv",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "<b>Yol boyunca en çok önemli olan dönüm noktalarını bizimle paylaş — ilk mağaza, evinizin dışındaki ilk şehir, Zagreb Tasarım Haftası. Her biri sonrası gerçekten ne değişti — ve dışarıdan daha büyük hissettiren bir an oldu mu, ya da tam tersi?</b>"
+            },
+            {
+              "type": "text",
+              "content": "Birçok dönüm noktası vardı, ama bunlar çok farklı nedenlerle önemliydi."
+            },
+            {
+              "type": "text",
+              "content": "Souv'un gerçek bir ortamda ilk kullanımı özellikle önemliydi. Brač'taki Uvati Vitar bisiklet etkinliğinde katılımcılar etkinlik deneyiminin bir parçası olarak kişiselleştirilmiş bir Souv aldılar. Dağıtılan Souv'ların yaklaşık %70'i aktive edildi ve kişisel anılarla dolduruldu, ve katılımcıların neredeyse beşte biri deneyimi paylaştı. Sayılar küçük bir pilot çalışmaya dayanıyordu, ama dahili olarak o an bir basın makalesinden veya sunumdan çok daha büyüktü çünkü yabancılar sonunda ürünü bizim yanımızda durmadan kullanıyordu."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt919s9royx1r6.jpg",
+              "caption": "Souv'un ilk gerçek dünya kullanımı: Brač'taki Uvati Vitar bisiklet etkinliğinde dağıtılan kişiselleştirilmiş kart. Souv tarafından sağlanmıştır",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Zagreb'teki ilk perakende noktası başka bir psikolojik dönüşümdü. O zamana kadar Souv bizim tasarladığımız, test ettiğimiz ve sunduğumuz bir şeydi. Bunu gerçek bir mağazaya koymak, bizi hiç tanımayan bir kişinin onu rafta görebilmesi, anlaması ve parasını hak edip etmediğine karar vermesi anlamına geliyordu."
+            },
+            {
+              "type": "metin",
+              "content": "Sonrasında gerçekten düzgün bir “ikinci şehir” olmadı. Yayılım oldukça hızlı bir şekilde Zagreb’den kıyıya doğru ilerledi, Souv Split, Zadar, Dubrovnik, Šibenik, Pula, Poreč, Korçula ve Brač gibi yerlerde ortaya çıktı. Ağustos ayına gelindiğinde, perakende ağı bağımsız mağazalar, müze konumları ve zincir perakende noktalarını içeriyordu."
+            },
+            {
+              "type": "metin",
+              "content": "Ve şimdi Zagreb Tasarım Haftası var. Souv, 2026 Dijital İletişim Tasarımı ve Etkileşim Tasarımı kategorisinde finale kaldı ve 15-20 Eylül tarihleri arasında Güzel Sanatlar Akademisi’nde sergilenecek. Bu sergi henüz bizim önümüzde, bu yüzden henüz neyi değiştireceğini bilmiyoruz gibi davranamayız. Ama seçilmek kendisi çok şey ifade ediyor çünkü Souv’u sadece bir turizm girişimi olarak değil, aynı zamanda etkileşim ve iletişim tasarımı parçası olarak da tanıyor."
+            },
+            {
+              "type": "metin",
+              "content": "İlginçtir ki, dışarıdan küçük görünen bazı anlar, ilk etkinlikte insanların Souv’u kullanmasını izlemek gibi, içten baktığınızda devasa hissettirdi. Medya maruziyeti bazen tam tersi şekilde çalışır: kamuoyunda büyük bir dönüm noktası gibi görünürken, şirket içinde bir sonraki üretim partisini, bir yazılım hatasını veya bir mağazadaki ekranın doğru konumlandırılıp konumlandırılmadığını düşünüyorsunuz."
+            },
+            {
+              "type": "metin",
+              "content": "<b>Onu 'sıradan bir hatıra değil' diyorsunuz. Gerçekten hayal kırıklığına uğrattığını düşündüğünüz, kişisel olarak sahip olduğunuz, satın aldığınız veya size verilen belirli bir hatıra var mıydı — ve bu nesne Souv’un şekillenmesinde etkili oldu mu?</b>"
+            },
+            {
+              "type": "text",
+              "content": "Bir tane korkunç hatıra yoktu ki, bize, “bu endüstriyi düzeltmeliyiz” dedirtsin."
+            },
+            {
+              "type": "text",
+              "content": "Neredeyse tam tersi oldu. Aslında hatıraları severiz, özellikle mıknatısları, bu yüzden mıknatıs bizim ilk formatımız oldu. Fiziksel tetikleyiciler olarak şaşırtıcı derecede iyi çalışırlar. Birini buzdolabında görürsünüz ve hemen Dubrovnik, Paris veya beş yıl önce ziyaret ettiğiniz adayı hatırlarsınız."
+            },
+            {
+              "type": "text",
+              "content": "Hayal kırıklığı, nesnenin sizi sadece belli bir noktaya kadar götürebilmesiydi. Size, “Oradaydım,” diyebilirdi, ama orada ne olduğunu, kimlerle seyahat ettiğinizi, sizi güldüren şeyin ne olduğunu veya mekanın gerçekten nasıl hissettirdiğini anlatamazdı."
+            },
+            {
+              "type": "text",
+              "content": "Bu arada, tüm bu daha zengin malzeme mevcuttu. Sadece bir yerde, bir telefonun 23.000 fotoğraflık zaman çizelgesinde duruyordu."
+            },
+            {
+              "type": "text",
+              "content": "Yani Souv'u etkileyen nesne özellikle kötü bir hatıra değilmiş. Muhtemelen oldukça iyi iş yapan, çok daha iyi hikayeyi içeren ama neredeyse hiç anlatmayan telefonun yanında duran oldukça sıradan mıknatısmış. Bu iki şeyi bağlamaya çalıştık."
+            },
+            {
+              "type": "text",
+              "content": "<b>Her şehir — Zagreb, Dubrovnik, Split, Zadar, Brač, Korčula — kendi görsel kimliğine sahip. Bir yeni şehrin kartının nasıl görünmesi ve hissettirmesi gerektiğine karar verirken nasıl bir yol izliyorsunuz, ve bir yerli size hiç şehrini yanlış mı anladınız dedi mi?</b>"
+            },
+            {
+              "type": "text",
+              "content": "Soruyla başlamamaya çalışıyoruz, “Bu karta hangi simgeyi koymalıyız?”"
+            },
+            {
+              "type": "text",
+              "content": "Gerçekten onu bilen insanlar için yerin tanınabilir kılan şeyle başlıyoruz. Bu elbette mimari ve simgeleri içerir, ama aynı zamanda renk, yerel görsel kodlar, manzara, küçük detaylar, hikayeler ve destinasyonun kendini gösterme biçimi. Sonra bu malzemeyi, tüm bir turizm broşürünü bir mıknatısa sığdırmaya çalışmak yerine, bir nesne olarak çalışabilecek bir şeye indirgeriz."
+            },
+            {
+              "type": "text",
+              "content": "Tasarım aynı zamanda malzemenin de hayatta kalması gerektiğine sahip olmalı. Bir ekranda güzel görünen bir şey, Eco versiyonuna UV baskı yapıldığında veya paslanmaz çelik üzerine renkli oyma yapıldığında tamamen farklı davranabilir, bu yüzden süreç sürekli olarak görsel tasarım ile fiziksel test arasında geçiş yapar."
+            },
+            {
+              "type": "text",
+              "content": "Sanat direktörümüz Antonija, o görsel dili geliştirmede merkezi bir rol oynadı, oysa destinasyon ortakları, baskıya geçmeden önce yerel geri bildirimler sağlar."
+            },
+            {
+              "type": "text",
+              "content": "Ve evet, yerel halk detaylara meydan okudu. Genellikle bu dramatik bir “şehrimizi tamamen yanlış anladınız” anı değildir, ancak daha küçük düzeltmeler son derece değerlidir. Bir motif teknik olarak tanınabilir olabilir ve yine de her gün o yeri gören biri için yanlış hissettirebilir."
+            },
+            {
+              "type": "text",
+              "content": "Geliştirme sırasında bu konuşmayı yapmayı çok tercih ederiz, çünkü yerel halkın kendilerini temsil ettiğine inanmadığı güzel tasarlanmış bir nesne üretmek yerine."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt919s1merprdg.jpg",
+              "caption": "Bir Souv kartının görsel dili, en yakın simge değil, yerel halkın tanıdığıyla başlar. İltifat Souv",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "<b>Dokun. Kaydet. Seyahatinizi yeniden yaşayın. Birinin ilk kez bir karta dokunduğu saniyelerde gerçekten ne olduğunu, ardından genellikle haftalar veya aylar sonra, evlerine döndüklerinde ne olduğunu adım adım anlatın. Birinin gerçekten şaşırdığı veya duygulandığı bir anı biliyor musunuz?</b>"
+            },
+            {
+              "type": "text",
+              "content": "İlk dokunuş kasıtlı olarak basittir."
+            },
+            {
+              "type": "text",
+              "content": "NFC özellikli bir telefonla Souv'a dokunursunuz veya arka taraftaki QR kodu tararsınız. Deneyim doğrudan tarayıcıda açılır, bu yüzden yükleyecek bir uygulama yoktur. İlk ziyaretinizde giriş yaparsınız, Souv'u kendiniz için mi saklıyorsunuz yoksa hediye olarak mı hazırlıyorsunuz, ve o belirli Souv'u talep edersiniz. Oradan ilk fotoğraflarınızı, videolarınızı veya mesajınızı ekleyebilirsiniz."
+            },
+            {
+              "type": "text",
+              "content": "İddia edildikten sonra, bu sizin kişisel hafıza alanınız haline gelir. Yolculuğu bir zaman çizelgesiyle organize edebilir, materyal eklemeye devam edebilir, bir özet video oluşturabilir ve varış noktasıyla bağlantılı seçili içeriği keşfedebilirsiniz."
+            },
+            {
+              "type": "text",
+              "content": "Daha ilginç kısım daha sonra gerçekleşir. Seyahatten haftalar, aylar veya hatta yıllar sonra, fiziksel nesne hâlâ oradadır. Masanızda veya buzdolabınızda görürsünüz ve tekrar dokunursunuz. Genel bir destinasyon sayfasını açmak yerine, kendi fotoğraflarınıza ve o yerin kendi versiyonunuza geri dönersiniz."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt919sukn6i5qq.jpg",
+              "caption": "Tık içindeki: bir seyahat zaman çizelgesi, paylaşılan anılar ve Souv'un yapıldığı yerin haritası. Souv Kurumu'nun İmzası ile",
+              "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt919sl1cg9g0o.jpg",
+              "caption": "İddia akışı ve kişisel koleksiyon ekranı için erken arayüz çalışması. Souv Kurumu'nun İmzası ile",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "<i>Sonraki soru, uygulamada yineleme yaparak çözülemeyen ürünün bir parçası hakkında: toplu halde üretilmiş, ilk yapıldığında olduğu gibi beş yüzüncü kez de aynı görünmesi gereken fiziksel bir nesne.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>Souv'u inşa etmenin şu ana kadar en zor kısmı neydi? Bir somut örnek seçin — belirli bir teknik sorun, belirli bir tasarım kararı veya belirli bir lojistik baş ağrısı — ve nasıl çözdüğünüzü adım adım anlatın, ilk denediğiniz ve başarısız olan herhangi bir şeyi de dahil edin.</b>"
+            },
+            {
+              "type": "text",
+              "content": "Birçok somut örnek, Premium paslanmaz çelik Souv'dur."
+            },
+            {
+              "type": "text",
+              "content": "Kağıt üzerinde, fikir basitti: paslanmaz çeliği alın ve hedef sanat eserini renkli olarak kazıyın. Gerçekte, bu nesneyi tutarlı bir şekilde üretmek, projenin en zor bölümlerinden biri haline geldi."
+            },
+            {
+              "type": "text",
+              "content": "Farklı malzemeleri, oyma parametrelerini, yüzeyleri, üretim hızlarını ve sanat eserini hazırlama yollarını test ettik. Zorluk, bir güzel örnek üretmek değildi. Bir parçayı iyi görünmesini sağlamak için makul olmayan bir zaman harcayabilirsiniz. Gerçek sorun, aynı kaliteyle elli veya beş yüzüncü parçayı, perakende ürünü için makul olan üretim süresi ve maliyet içinde yaratmaktır."
+            },
+            {
+              "type": "text",
+              "content": "Görsel kalite, dayanıklılık, tekrarlanabilirlik ve hız arasında sürekli olarak ödünleşmelerle karşılaştık. Sonunda, üretimi tamamen dışarıdaki bir kara kutu olarak ele alırsak istediğimiz kontrol seviyesini elde edemeyeceğimizi fark ettik."
+            },
+            {
+              "type": "text",
+              "content": "Bu yüzden sürecin önemli bir bölümünü içeri aldık ve Zagreb'te kendi küçük üretim tesisimizi kurduk. Bu, orijinal girişim planının bir parçası değildi. Yazılım alanından geliyoruz. Birdenbire paslanmaz çelik, lazerler, malzeme toleransları, yüzey işlemleri ve üretim iş akışları hakkında öğrenmeye başladık."
+            },
+            {
+              "type": "text",
+              "content": "Geriye dönüp baktığımızda, bu zorluk Souv'u geliştirdi. Artık fiziksel nesneyi çok daha derin bir seviyede anlıyoruz çünkü onu kendimiz yapmayı öğrenmek zorunda kaldık."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt919sqhdw818b.jpg",
+              "caption": "Premium sürüm: renkli lazer oyma parlak paslanmaz çelik üzerinde. İmkan Souv",
+              "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt919t7s2uwlyf.jpg",
+              "caption": "Souv ürününün erken bir versiyonu, şehir sanat eserinden oyma tezgahına. İmkan Souv",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "<i>Son soru ölçekle ilgilidir ve cevap, yeni şehirlerden çok Souv'un aslında ne olduğuyla ilgilidir: bir nesne mi, yoksa herhangi bir nesnenin taşıyabileceği bir katman mı.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>Birkaç yıl sonra Souv'u nerede görüyorsunuz? Daha çok şehir ve ülke mi, üzerinde çalıştığınız belirli yeni bir özellik mi, yoksa ürünle ilgili gerçekten değiştirmek istediğiniz bir şey mi varsa, baştan başlama şansınız olsa?</b>"
+            },
+            {
+              "type": "text",
+              "content": "Birkaç yıl içinde, Souv'un Hırvatistan şehir magnetleri koleksiyonundan çok daha büyük olmasını istiyoruz."
+            },
+            {
+              "type": "text",
+              "content": "Hırvatistan, modeli kanıtlamamız için doğru yer çünkü turizm burada günlük yaşamın çok önemli bir parçası, ancak temel davranış evrenseldir. İnsanlar seyahat eder, yüzlerce fotoğraf çeker, geziyi hatırlamak için bir şeyler satın alır ve sonra nadiren oluşturdukları dijital materyalin çoğuna geri dönerler."
+            },
+            {
+              "type": "text",
+              "content": "Bu nedenle uluslararası genişleme kesinlikle hırslarımızın bir parçasıdır, ancak daha önemli genişleme tek bir üründen bir platforma geçiştir."
+            },
+            {
+              "type": "text",
+              "content": "Bu, kendi koleksiyonluk Souv nesnelerimizi geliştirmeye devam etmek anlamına gelir, aynı zamanda Souv deneyiminin diğer fiziksel ürünlerde de yaşamasına izin vermek. Zaten geliştirdiğimiz bir yön, mevcut bir hatıra veya ambalajına entegre edilebilecek küçük bir NFC/QR Souv katmanıdır. Seramik bir nesne, kitap, müze ürünü veya yerel yapım bir hediye “bir Souv ürünü” olmak zorunda değildir; mevcut kimliğini koruyabilirken, arkasındaki kişisel hafıza deneyimini kazanabilir."
+            },
+            {
+              "type": "text",
+              "content": "Dijital taraf da büyümeye devam edecek: yolculukları, hediye etmeyi, koleksiyonları, özet deneyimleri ve varış noktası içeriğini daha zengin organize etme yolları, seyahat sonrası evrilebilecek içerikler."
+            },
+            {
+              "type": "text",
+              "content": "Eğer tekrar başlayabilseydik, en büyük değiştireceğimiz şey, duygusal öneriyle çok daha erken başlamak ve gerçek dünya perakende davranışlarını daha erken test etmek olurdu."
+            },
+            {
+              "type": "text",
+              "content": "Başlangıçta çok fazla zaman teknolojik düşünür gibi düşünerek harcadık. Bugün biliyoruz ki NFC, QR kod ve yazılım neredeyse ortadan kalkmalı."
+            },
+            {
+              "type": "text",
+              "content": "Ürün aslında telefonla bir şeye dokunmakla ilgili değil. Bir deneyime fiziksel bir yer kazandırmakla ilgili."
+            },
+            {
+              "type": "görüntü",
+              "content": "https://api.eprisjournal.com/uploads/mt919t3r3yquvm.jpg",
+              "caption": "Anıları canlı tutan hatıralıklar: seyahat et, bağlan, yeniden yaşa. İltifat Souv",
+              "align": "merkez"
+            }
+          ],
+          "authorId": "author-1784732936927-kw554",
+          "draft": true,
+          "previewToken": "60a95a90d21ef6c29acec8c9",
+          "updatedAt": "2026-08-25T19:24:25.085Z",
+          "contributorId": "author-souv"
         }
       ],
       "reviews": [
