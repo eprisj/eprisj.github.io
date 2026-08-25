@@ -5144,7 +5144,10 @@
             "https://api.eprisjournal.com/uploads/mt8ozb0tp97p2w.jpg",
             "https://api.eprisjournal.com/uploads/mt8ozedd11xygj.jpg"
           ],
-          "caption": ""
+          "caption": "",
+          "alts": [
+            "Cradle, Keisuke Azuma, 2025, oil on canvas"
+          ]
         },
         {
           "type": "header",
@@ -5291,7 +5294,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-25T13:20:06.157Z",
+      "updatedAt": "2026-08-25T13:20:30.401Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8oh2wuvblzxh.jpg"
     },
     {
