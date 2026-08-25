@@ -1,0 +1,110 @@
+import { useEffect, useState } from 'react';
+import { ArrowUpRight } from 'lucide-react';
+import { getFuturoshock, subscribeContent, type FuturoshockWork } from './data';
+
+function orderWorks(works: FuturoshockWork[]) {
+  return [...works].sort((a, b) => {
+    const aPosition = a.shelfSlot ?? Number.MAX_SAFE_INTEGER;
+    const bPosition = b.shelfSlot ?? Number.MAX_SAFE_INTEGER;
+    if (aPosition !== bPosition) return aPosition - bPosition;
+    return String(b.updatedAt || b.publishAt || '').localeCompare(String(a.updatedAt || a.publishAt || ''));
+  });
+}
+
+function WorkImage({ work, priority = false }: { work: FuturoshockWork; priority?: boolean }) {
+  if (!work.imageUrl) {
+    return (
+      <div className="flex h-full min-h-[20rem] items-end bg-[#efefeb] p-5 text-[var(--c-accent)] sm:p-8" role="img" aria-label={`Image for ${work.title} is being prepared`}>
+        <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">Image archive in preparation</span>
+      </div>
+    );
+  }
+
+  return <img src={work.imageUrl} alt={`${work.title} by ${work.author}`} loading={priority ? 'eager' : 'lazy'} className="h-full w-full object-cover" />;
+}
+
+function workLine(work: FuturoshockWork) {
+  return [work.author, work.location, work.year].filter(Boolean).join(' · ');
+}
+
+function EmptyVitrine() {
+  return (
+    <section aria-labelledby="vitrine-title" className="grid lg:grid-cols-[minmax(0,1.18fr)_minmax(22rem,.82fr)]">
+      <div className="flex min-h-[28rem] items-end border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] p-5 sm:min-h-[34rem] sm:p-8 lg:min-h-[42rem] lg:border-b-0 lg:border-r lg:p-12">
+        <div>
+          <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">First selection</p>
+          <h1 id="vitrine-title" className="mt-5 max-w-[7ch] font-display text-[clamp(4rem,9vw,8.5rem)] leading-[0.83] tracking-[-0.05em]">Vitrine</h1>
+        </div>
+      </div>
+      <div className="flex flex-col justify-between">
+        <div className="p-5 sm:p-8 lg:p-12">
+          <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">EPRIS / Ukrainian practice</p>
+          <p className="mt-7 max-w-[34rem] text-[16px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.8)]">A living selection of works by Ukrainian artists, designers and architects, at home and across the diaspora.</p>
+          <p className="mt-5 max-w-[34rem] text-[15px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.66)]">The first works are being prepared by the editorial team. Each entry will appear with its author, place, material and the context that makes the work matter.</p>
+        </div>
+        <p className="border-t border-[rgb(var(--c-accent-rgb)_/_0.9)] px-5 py-5 font-mono text-[9px] uppercase tracking-[0.15em] text-[rgb(var(--c-accent-rgb)_/_0.56)] sm:px-8 lg:px-12">No portfolio dump. No marketplace.</p>
+      </div>
+    </section>
+  );
+}
+
+function VitrineCollection({ works, selectedId, onSelect }: { works: FuturoshockWork[]; selectedId: string | null; onSelect: (id: string) => void }) {
+  const selected = works.find((work) => work.id === selectedId) || works[0];
+  if (!selected) return null;
+  const otherWorks = works.filter((work) => work.id !== selected.id);
+
+  return (
+    <>
+      <section aria-labelledby="vitrine-title" className="grid lg:grid-cols-[minmax(0,1.18fr)_minmax(22rem,.82fr)]">
+        <figure className="border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] lg:border-b-0 lg:border-r">
+          <div className="aspect-[4/3] overflow-hidden bg-[#efefeb] sm:aspect-[16/10] lg:aspect-auto lg:min-h-[42rem]"><WorkImage work={selected} priority /></div>
+          <figcaption className="grid gap-3 border-t border-[rgb(var(--c-accent-rgb)_/_0.9)] px-5 py-4 sm:grid-cols-[auto_1fr] sm:items-baseline sm:px-8 lg:px-12">
+            <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">{selected.medium || selected.format}</span>
+            <p className="text-sm leading-relaxed sm:text-right">{workLine(selected)}</p>
+          </figcaption>
+        </figure>
+
+        <div className="flex min-h-full flex-col">
+          <div className="px-5 pb-8 pt-9 sm:px-8 lg:px-12 lg:pb-10 lg:pt-12">
+            <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">EPRIS VITRINE / UKRAINIAN PRACTICE</p>
+            <h1 id="vitrine-title" className="mt-5 font-display text-[clamp(3.4rem,7vw,6.75rem)] leading-[0.86] tracking-[-0.04em]">Vitrine</h1>
+            <p className="mt-7 max-w-[36rem] text-[15px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.76)]">Works by Ukrainian artists, designers and architects, in Ukraine and across the diaspora.</p>
+          </div>
+
+          <article className="border-y border-[rgb(var(--c-accent-rgb)_/_0.9)] px-5 py-5 sm:px-8 lg:px-12">
+            <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">01 / On view</p>
+            <h2 className="mt-3 font-display text-[clamp(2rem,3.8vw,3.7rem)] leading-[0.92]">{selected.title}</h2>
+            <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.14em] text-[rgb(var(--c-accent-rgb)_/_0.62)]">{workLine(selected)}</p>
+            {selected.statement && <p className="mt-5 max-w-[37rem] text-[15px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)]">{selected.statement}</p>}
+            <dl className="mt-6 grid grid-cols-2 gap-x-5 gap-y-4 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-5 font-mono text-[9px] uppercase tracking-[0.13em]">
+              <div><dt className="text-[rgb(var(--c-accent-rgb)_/_0.5)]">Material</dt><dd className="mt-2 leading-relaxed">{selected.materials?.join(', ') || selected.medium || 'Editorial note pending'}</dd></div>
+              <div><dt className="text-[rgb(var(--c-accent-rgb)_/_0.5)]">Scale</dt><dd className="mt-2 leading-relaxed">{selected.dimensions || selected.edition || 'Editorial note pending'}</dd></div>
+            </dl>
+            {selected.relatedArticleUrl && <a href={selected.relatedArticleUrl} className="mt-7 inline-flex min-h-11 items-center gap-2 font-mono text-[9px] uppercase tracking-[0.14em] underline decoration-1 underline-offset-4 transition hover:opacity-55 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--c-accent)]">Read EPRIS context <ArrowUpRight size={13} aria-hidden="true" /></a>}
+          </article>
+
+          {otherWorks.length > 0 && <div className="mt-auto"><p className="px-5 pb-3 pt-5 font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)] sm:px-8 lg:px-12">Also on view</p><ol className="border-t border-[rgb(var(--c-accent-rgb)_/_0.9)]">{otherWorks.map((work, index) => <li key={work.id} className="border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] last:border-b-0"><button type="button" onClick={() => onSelect(work.id)} aria-pressed={selected.id === work.id} className="group grid min-h-16 w-full grid-cols-[2.25rem_minmax(0,1fr)_auto] items-center gap-3 px-5 py-3 text-left transition hover:bg-[rgb(var(--c-accent-rgb)_/_0.06)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--c-accent)] sm:px-8 lg:px-12"><span className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.52)]">{String(index + 2).padStart(2, '0')}</span><span className="min-w-0"><span className="block truncate font-display text-lg leading-tight">{work.title}</span><span className="mt-1 block font-mono text-[8px] uppercase tracking-[0.13em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">{workLine(work)}</span></span><ArrowUpRight size={14} aria-hidden="true" className="opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100" /></button></li>)}</ol></div>}
+        </div>
+      </section>
+
+      {otherWorks.length > 0 && <section aria-labelledby="vitrine-index-title" className="border-t border-[rgb(var(--c-accent-rgb)_/_0.9)]"><div className="px-5 py-8 sm:px-8 lg:px-12"><div className="flex items-baseline justify-between gap-4"><h2 id="vitrine-index-title" className="font-display text-3xl sm:text-4xl">All works</h2><span className="font-mono text-[9px] uppercase tracking-[0.15em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">{works.length} on view</span></div><div className="mt-6 grid border-l border-t border-[rgb(var(--c-accent-rgb)_/_0.9)] sm:grid-cols-2 lg:grid-cols-3">{works.map((work, index) => <button key={work.id} type="button" onClick={() => onSelect(work.id)} aria-pressed={selected.id === work.id} className={`group text-left transition hover:bg-[rgb(var(--c-accent-rgb)_/_0.06)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--c-accent)] ${selected.id === work.id ? 'bg-[rgb(var(--c-accent-rgb)_/_0.06)]' : ''}`}><div className="aspect-[4/3] overflow-hidden border-b border-r border-[rgb(var(--c-accent-rgb)_/_0.9)] bg-[#efefeb]"><WorkImage work={work} /></div><span className="block border-b border-r border-[rgb(var(--c-accent-rgb)_/_0.9)] p-4"><span className="font-mono text-[9px] text-[rgb(var(--c-accent-rgb)_/_0.52)]">{String(index + 1).padStart(2, '0')}</span><span className="mt-3 block font-display text-xl leading-tight">{work.title}</span><span className="mt-2 block font-mono text-[8px] uppercase tracking-[0.13em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">{workLine(work)}</span></span></button>)}</div></div></section>}
+    </>
+  );
+}
+
+export function VitrinePage() {
+  const [works, setWorks] = useState<FuturoshockWork[]>(() => orderWorks(getFuturoshock()));
+  const [selectedId, setSelectedId] = useState<string | null>(() => works[0]?.id || null);
+
+  useEffect(() => subscribeContent(() => setWorks(orderWorks(getFuturoshock()))), []);
+  useEffect(() => {
+    if (!works.some((work) => work.id === selectedId)) setSelectedId(works[0]?.id || null);
+  }, [selectedId, works]);
+  useEffect(() => {
+    document.title = 'Vitrine | EPRIS Journal';
+    const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (canonical) canonical.href = 'https://eprisjournal.com/vitrine';
+  }, []);
+
+  return <main className="min-h-screen bg-[var(--c-bg)] pt-16 text-[var(--c-accent)]"><div className="mx-auto max-w-[1600px] border-x border-[rgb(var(--c-accent-rgb)_/_0.9)]"><header className="flex items-center justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] px-5 py-3 sm:px-8 lg:px-12"><p className="font-mono text-[9px] uppercase tracking-[0.18em] sm:text-[10px]">EPRIS VITRINE / UKRAINIAN PRACTICE</p><span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{String(works.length).padStart(2, '0')} works</span></header>{works.length === 0 ? <EmptyVitrine /> : <VitrineCollection works={works} selectedId={selectedId} onSelect={setSelectedId} />}</div></main>;
+}
