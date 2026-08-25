@@ -4952,7 +4952,7 @@
         "culture",
         "editorial"
       ],
-      "imageSeed": "intwerview-with-keisuke-azuma",
+      "imageSeed": "",
       "content": [
         {
           "type": "text",
@@ -5261,7 +5261,8 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-25T13:04:01.898Z"
+      "updatedAt": "2026-08-25T13:05:14.214Z",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mt8oggryqmeac4.jpg"
     },
     {
       "id": 24,
