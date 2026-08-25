@@ -394,6 +394,7 @@
     <div class="title" style="font-size:20px;margin:6px 0 10px;">Свежее</div>
     <div id="recent"></div>
     <div class="more-link" id="allLink">Все материалы →</div>
+    <div class="more-link" id="formsLink">Анкеты →</div>
   </div>
 
   <div id="list-view" class="hidden">
@@ -405,6 +406,22 @@
     </div>
     <input class="search" id="search" placeholder="Поиск по заголовку…">
     <div id="rows"></div>
+  </div>
+
+  <div id="forms-view" class="hidden">
+    <div class="title" style="font-size:20px;margin:0 0 10px;">Анкеты</div>
+    <input class="search" id="formsSearch" placeholder="Поиск по названию…">
+    <div id="formsRows"></div>
+  </div>
+
+  <div id="form-view" class="hidden">
+    <div id="formHead"></div>
+    <div id="formInvites"></div>
+    <div id="formResponses"></div>
+  </div>
+
+  <div id="resp-view" class="hidden">
+    <div id="respBody"></div>
   </div>
 
   <div id="crm-view" class="hidden">
@@ -735,8 +752,15 @@
         flatList.push({ section: section, kind: kind, entity: entity });
       });
     });
+    /* СОРТИРОВКА ПО ВРЕМЕНИ, А НЕ ПО СТРОКЕ.
+       Раньше здесь было localeCompare двух строк. Но updatedAt — ISO
+       ("2026-08-25T13:19:00Z"), а date у старых материалов человеческий
+       ("Jul 8, 2026"): при сравнении строк буква J больше цифры 2, и записи
+       без updatedAt всплывали над всеми свежими. Свежая статья уезжала в
+       самый низ списка и выглядела как «не добавилась». Сравниваем числа. */
     flatList.sort(function (a, b) {
-      return String(b.entity.updatedAt || b.entity.date || "").localeCompare(String(a.entity.updatedAt || a.entity.date || ""));
+      var d = entityTime(b.entity) - entityTime(a.entity);
+      return d || (Number(b.entity.id) || 0) - (Number(a.entity.id) || 0);
     });
 
     // Автоподсказка категорий из того, что уже реально использовалось —
@@ -829,6 +853,22 @@
   // ("July 18, 2026" / "Jul 8, 2026"), и тот же слайс на 10 символов резал
   // его посреди слова ("Jul 8, 202"). ISO отличаем по дефисам на местах
   // года-месяца-дня; всё остальное показываем как есть.
+  /* Единая точка «когда это было». Порядок ленты берётся отсюда, а не из
+     сравнения строк: разбираем ISO и человеческий формат в одну шкалу. */
+  function entityTime(e) {
+    var candidates = [e.updatedAt, e.publishAt, e.date];
+    for (var i = 0; i < candidates.length; i++) {
+      var raw = String(candidates[i] || "").trim();
+      if (!raw) continue;
+      var ts = Date.parse(raw);
+      if (!isNaN(ts)) return ts;
+      // "20 Aug. 2026" и прочая ручная запись: убираем точки и пробуем снова.
+      ts = Date.parse(raw.replace(/\./g, " ").replace(/\s+/g, " "));
+      if (!isNaN(ts)) return ts;
+    }
+    return 0;
+  }
+
   function shortDate(v) {
     var s = String(v || "");
     if (!s) return "";
@@ -991,6 +1031,14 @@
     // нужно: текст уже лежит в blockList, это возврат к списку блоков.
     if ($("blockFocus").classList.contains("open")) { closeBlockFocus(); return; }
     if ($("editor").classList.contains("open")) { confirmDiscard(closeEditor); return; }
+    if (!$("resp-view").classList.contains("hidden")) { showFormsView("form-view"); return; }
+    if (!$("form-view").classList.contains("hidden")) { showFormsView("forms-view"); return; }
+    if (!$("forms-view").classList.contains("hidden")) {
+      $("forms-view").classList.add("hidden");
+      $("home-view").classList.remove("hidden");
+      tgw && tgw.BackButton && tgw.BackButton.hide();
+      return;
+    }
     if (!$("crm-editor").classList.contains("hidden")) { confirmDiscard(closeCrmEditor); return; }
     if (!$("crm-view").classList.contains("hidden")) {
       $("crm-view").classList.add("hidden");
@@ -2191,6 +2239,363 @@
   if (tgw && tgw.onEvent) {
     try { tgw.onEvent("activated", onResume); } catch (e) {}
   }
+
+
+  /* ── АНКЕТЫ ────────────────────────────────────────────────────────────────
+   *
+   * Раздел повторяет работу, которая до этого была только в большой админке:
+   * список анкет, персональные ссылки-приглашения, ответы целиком и файлы.
+   * Служба анкет живёт отдельным процессом (см. /forms на api), поэтому она
+   * отвечает даже когда идёт выкат сайта — читать ответы с телефона можно
+   * всегда.
+   *
+   * Файлы отдаются только по паролю и только этой точкой, прямой ссылки на
+   * диск нет. Значит, скачать их простым <a href> нельзя: тянем тело с
+   * заголовком и отдаём браузеру blob. */
+  var FORMS_API = API + "/forms";
+  var formsList = [];
+  var formsLoaded = false;
+  var currentForm = null;      // { form, responses }
+  var currentResponse = null;
+
+  function formsHeaders(extra) {
+    return Object.assign({ "X-Admin-Password": ADMIN_PW }, extra || {});
+  }
+
+  function showFormsView(which) {
+    ["home-view", "list-view", "crm-view", "forms-view", "form-view", "resp-view"].forEach(function (id) {
+      $(id).classList.toggle("hidden", id !== which);
+    });
+    tgw && tgw.BackButton && (which === "home-view" ? tgw.BackButton.hide() : tgw.BackButton.show());
+    if (which === "forms-view") renderFormsList();
+    if (which === "form-view") renderForm();
+    if (which === "resp-view") renderResponse();
+  }
+
+  async function loadForms() {
+    var res = await fetchJSON(FORMS_API + "/list", { headers: formsHeaders(), cache: "no-store" });
+    if (!res.data || !res.data.ok) throw new Error("анкеты недоступны (HTTP " + res.status + ")");
+    formsList = (res.data.forms || []).slice().sort(function (a, b) {
+      return String(b.updatedAt || "").localeCompare(String(a.updatedAt || ""));
+    });
+    formsLoaded = true;
+  }
+
+  async function openForms() {
+    if (!formsLoaded) {
+      try { await loadForms(); } catch (e) { toast("Не удалось загрузить анкеты: " + e.message, true); return; }
+    }
+    showFormsView("forms-view");
+  }
+
+  var FORM_STATUS = { open: "приём открыт", closed: "закрыта", draft: "черновик" };
+
+  function formStatusBadge(f) {
+    var cls = f.status === "open" ? "live" : "draft";
+    return '<span class="badge ' + cls + '">' + esc(FORM_STATUS[f.status] || f.status) + '</span>';
+  }
+
+  function renderFormsList() {
+    var q = ($("formsSearch").value || "").trim().toLowerCase();
+    var rows = formsList.filter(function (f) {
+      return !q || String(f.title || "").toLowerCase().includes(q);
+    });
+    $("formsRows").innerHTML = rows.length ? rows.map(function (f) {
+      var count = Number(f.responses || 0);
+      var meta = [
+        count ? count + " " + plural(count, "ответ", "ответа", "ответов") : "ответов нет",
+        f.access === "invite" ? "по приглашению" : "по ссылке",
+        Number(f.invites || 0) ? f.invites + " пригл." : "",
+      ].filter(Boolean).join(" · ");
+      return '<div class="row" data-formid="' + esc(f.id) + '">' +
+        '<div><div class="cat">' + esc(String(f.language || "").toUpperCase()) + '</div>' +
+        '<div class="ttl">' + esc(f.title || "без названия") + '</div>' +
+        '<div class="prev">' + esc(meta) + '</div></div>' +
+        '<div class="side">' + formStatusBadge(f) +
+        '<span class="when">' + esc(shortDate(f.updatedAt)) + '</span></div></div>';
+    }).join("") : '<div class="empty">Ничего не найдено</div>';
+    $("formsRows").querySelectorAll(".row").forEach(function (row) {
+      row.onclick = function () { openForm(row.dataset.formid); };
+    });
+  }
+
+  function plural(n, one, few, many) {
+    var m10 = n % 10, m100 = n % 100;
+    if (m10 === 1 && m100 !== 11) return one;
+    if (m10 >= 2 && m10 <= 4 && (m100 < 10 || m100 >= 20)) return few;
+    return many;
+  }
+
+  async function openForm(id) {
+    var res = await fetchJSON(FORMS_API + "/" + encodeURIComponent(id) + "/responses", { headers: formsHeaders(), cache: "no-store" }, 20000);
+    if (!res.data || !res.data.ok) { toast("Не удалось открыть анкету (HTTP " + res.status + ")", true); return; }
+    currentForm = { form: res.data.form, responses: res.data.responses || [], invites: [] };
+    showFormsView("form-view");
+    loadInvites();
+  }
+
+  async function loadInvites() {
+    if (!currentForm) return;
+    var res = await fetchJSON(FORMS_API + "/" + encodeURIComponent(currentForm.form.id) + "/invites", { headers: formsHeaders(), cache: "no-store" });
+    currentForm.invites = (res.data && res.data.invites) || [];
+    if (!$("form-view").classList.contains("hidden")) renderInvites();
+  }
+
+  function publicUrl(form, token) {
+    return "https://eprisjournal.com/f/" + form.slug + (token ? "/" + token : "");
+  }
+
+  function copy(text, what) {
+    var done = function () { toast((what || "Ссылка") + " скопирована"); haptic("success"); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function () { toast(text); });
+      return;
+    }
+    toast(text);
+  }
+
+  function renderForm() {
+    if (!currentForm) return;
+    var f = currentForm.form;
+    var responses = currentForm.responses;
+    var questions = (f.fields || []).filter(function (x) { return x.type !== "section"; }).length;
+    $("formHead").innerHTML =
+      '<div class="cat">' + esc(String(f.language || "").toUpperCase()) + ' · ' + esc(FORM_STATUS[f.status] || f.status) + '</div>' +
+      '<div class="title" style="font-size:23px;margin:4px 0 8px;">' + esc(f.title || "без названия") + '</div>' +
+      (f.description ? '<div class="prev" style="margin-bottom:10px;">' + esc(f.description) + '</div>' : '') +
+      '<div class="prev" style="margin-bottom:12px;">' + questions + ' ' + plural(questions, "вопрос", "вопроса", "вопросов") +
+        ' · ' + responses.length + ' ' + plural(responses.length, "ответ", "ответа", "ответов") +
+        (f.closesAt ? ' · до ' + esc(shortDate(f.closesAt)) : '') +
+        (f.maxResponses ? ' · лимит ' + f.maxResponses : '') + '</div>' +
+      '<div class="new-row">' +
+        '<button class="new-btn" data-act="copylink">Ссылка на анкету</button>' +
+        '<button class="new-btn" data-act="openlink">Открыть</button>' +
+        (responses.length ? '<button class="new-btn" data-act="zip">Файлы zip</button>' : '') +
+      '</div>';
+    $("formHead").querySelectorAll("[data-act]").forEach(function (btn) {
+      var act = btn.dataset.act;
+      btn.onclick = function () {
+        if (act === "copylink") return copy(publicUrl(f), "Ссылка на анкету");
+        if (act === "openlink") return tgw && tgw.openLink ? tgw.openLink(publicUrl(f)) : window.open(publicUrl(f), "_blank");
+        if (act === "zip") return downloadProtected(FORMS_API + "/" + encodeURIComponent(f.id) + "/files.zip", (f.slug || "files") + ".zip", btn);
+      };
+    });
+    renderInvites();
+    renderResponsesList();
+  }
+
+  function renderInvites() {
+    if (!currentForm) return;
+    var f = currentForm.form;
+    var invites = currentForm.invites || [];
+    var rows = invites.map(function (iv) {
+      var meta = [
+        iv.revoked ? "отозвано" : (iv.usedAt ? "открыто " + shortDate(iv.usedAt) : "не открыто"),
+        Number(iv.uses || 0) ? iv.uses + " заход." : "",
+      ].filter(Boolean).join(" · ");
+      return '<div class="row" data-token="' + esc(iv.token) + '">' +
+        '<div><div class="ttl" style="font-size:16px;">' + esc(iv.label || iv.token) + '</div>' +
+        '<div class="prev">' + esc(meta) + '</div></div>' +
+        '<div class="side">' +
+          '<span class="badge" data-act="copyinvite">ссылка</span>' +
+          (ROLE === "admin" && !iv.revoked ? '<span class="badge draft" data-act="revoke">отозвать</span>' : '') +
+        '</div></div>';
+    }).join("");
+    $("formInvites").innerHTML =
+      '<div class="cat" style="margin:18px 0 8px;">Персональные приглашения</div>' +
+      (rows || '<div class="empty" style="padding:14px 0;">Приглашений нет</div>') +
+      (ROLE === "admin" ? '<div class="new-row"><button class="new-btn" id="addInviteBtn">+ Приглашение</button></div>' : '');
+    $("formInvites").querySelectorAll(".row").forEach(function (row) {
+      var token = row.dataset.token;
+      var copyEl = row.querySelector('[data-act="copyinvite"]');
+      if (copyEl) copyEl.onclick = function (ev) { ev.stopPropagation(); copy(publicUrl(f, token), "Персональная ссылка"); };
+      var revokeEl = row.querySelector('[data-act="revoke"]');
+      if (revokeEl) revokeEl.onclick = function (ev) { ev.stopPropagation(); revokeInvite(token); };
+    });
+    var addBtn = $("addInviteBtn");
+    if (addBtn) addBtn.onclick = addInvite;
+  }
+
+  async function addInvite() {
+    var label = window.prompt("Имя человека для персональной ссылки");
+    if (label === null) return;
+    label = String(label).trim();
+    if (!label) return;
+    var res = await fetchJSON(FORMS_API + "/" + encodeURIComponent(currentForm.form.id) + "/invites", {
+      method: "POST",
+      headers: formsHeaders({ "Content-Type": "application/json" }),
+      body: JSON.stringify({ label: label }),
+    });
+    if (!res.data || !res.data.ok) { toast("Не создалось: " + ((res.data && res.data.error) || res.status), true); return; }
+    await loadInvites();
+    var made = (currentForm.invites || []).filter(function (iv) { return iv.label === label; }).pop();
+    if (made) copy(publicUrl(currentForm.form, made.token), "Персональная ссылка");
+  }
+
+  async function revokeInvite(token) {
+    if (!window.confirm("Отозвать это приглашение?")) return;
+    var res = await fetchJSON(FORMS_API + "/" + encodeURIComponent(currentForm.form.id) + "/invites/" + encodeURIComponent(token), {
+      method: "DELETE", headers: formsHeaders(),
+    });
+    if (!res.data || !res.data.ok) { toast("Не вышло: " + ((res.data && res.data.error) || res.status), true); return; }
+    toast("Приглашение отозвано");
+    await loadInvites();
+  }
+
+  function answerPreviewText(form, response) {
+    var fields = (form.fields || []).filter(function (x) { return x.type !== "section"; });
+    for (var i = 0; i < fields.length; i++) {
+      var v = (response.answers || {})[fields[i].id];
+      if (typeof v === "string" && v.trim()) return v.trim().slice(0, 120);
+    }
+    return "без текстовых ответов";
+  }
+
+  function renderResponsesList() {
+    var f = currentForm.form;
+    var responses = currentForm.responses.slice().sort(function (a, b) {
+      return String(b.submittedAt || "").localeCompare(String(a.submittedAt || ""));
+    });
+    var rows = responses.map(function (r) {
+      return '<div class="row" data-respid="' + esc(r.id) + '">' +
+        '<div><div class="cat">' + esc(r.inviteLabel || "по ссылке") + '</div>' +
+        '<div class="ttl" style="font-size:16px;">' + esc(shortDate(r.submittedAt)) + '</div>' +
+        '<div class="prev">' + esc(answerPreviewText(f, r)) + '</div></div></div>';
+    }).join("");
+    $("formResponses").innerHTML =
+      '<div class="cat" style="margin:22px 0 8px;">Ответы</div>' +
+      (rows || '<div class="empty" style="padding:14px 0;">Ответов пока нет</div>');
+    $("formResponses").querySelectorAll(".row").forEach(function (row) {
+      row.onclick = function () {
+        currentResponse = currentForm.responses.find(function (r) { return String(r.id) === row.dataset.respid; }) || null;
+        if (currentResponse) showFormsView("resp-view");
+      };
+    });
+  }
+
+  function isFileList(v) {
+    return Array.isArray(v) && v.length && v[0] && typeof v[0] === "object" && (v[0].id || v[0].name);
+  }
+
+  function humanBytes(n) {
+    n = Number(n || 0);
+    if (n < 1024) return n + " Б";
+    if (n < 1024 * 1024) return Math.round(n / 1024) + " КБ";
+    return (n / 1024 / 1024).toFixed(1) + " МБ";
+  }
+
+  function renderResponse() {
+    if (!currentForm || !currentResponse) return;
+    var f = currentForm.form;
+    var r = currentResponse;
+    var parts = [
+      '<div class="cat">' + esc(r.inviteLabel || "по ссылке") + '</div>',
+      '<div class="title" style="font-size:21px;margin:4px 0 4px;">' + esc(f.title || "") + '</div>',
+      '<div class="prev" style="margin-bottom:16px;">Отправлено ' + esc(shortDate(r.submittedAt)) + '</div>',
+    ];
+    (f.fields || []).forEach(function (field) {
+      if (field.type === "section") {
+        parts.push('<div class="cat" style="margin:22px 0 6px;">' + esc(field.label || "") + '</div>');
+        return;
+      }
+      var v = (r.answers || {})[field.id];
+      var body;
+      if (isFileList(v)) {
+        body = v.map(function (file) {
+          return '<div class="row" style="padding:10px 0;"><div><div class="ttl" style="font-size:15px;">' + esc(file.name || file.id) + '</div>' +
+            '<div class="prev">' + esc(humanBytes(file.size)) + '</div></div>' +
+            '<div class="side"><span class="badge" data-file="' + esc(file.id) + '" data-name="' + esc(file.name || file.id) + '">скачать</span></div></div>';
+        }).join("");
+      } else if (Array.isArray(v)) {
+        body = v.length ? '<div class="prev" style="font-size:15px;color:var(--ink);">' + esc(v.join(", ")) + '</div>' : '<div class="prev">—</div>';
+      } else if (v === undefined || v === null || String(v).trim() === "") {
+        body = '<div class="prev">—</div>';
+      } else {
+        body = String(v).split(/\n\s*\n/).map(function (p) {
+          return '<div style="font-size:15px;line-height:1.55;margin-bottom:8px;white-space:pre-wrap;">' + esc(p) + '</div>';
+        }).join("");
+      }
+      parts.push('<div style="margin-bottom:18px;">' +
+        '<div style="font-size:13px;color:var(--muted);margin-bottom:6px;line-height:1.4;">' + esc(field.label || field.id) + '</div>' +
+        body + '</div>');
+    });
+    parts.push('<div class="new-row" style="margin-top:24px;">' +
+      '<button class="new-btn" data-act="copytext">Скопировать текст</button>' +
+      '<button class="new-btn" data-act="respzip">Файлы zip</button>' +
+      (ROLE === "admin" ? '<button class="new-btn" data-act="delresp">Удалить ответ</button>' : '') +
+      '</div>');
+    $("respBody").innerHTML = parts.join("");
+
+    $("respBody").querySelectorAll("[data-file]").forEach(function (btn) {
+      btn.onclick = function () {
+        downloadProtected(FORMS_API + "/" + encodeURIComponent(f.id) + "/files/" + encodeURIComponent(btn.dataset.file), btn.dataset.name, btn);
+      };
+    });
+    $("respBody").querySelectorAll("[data-act]").forEach(function (btn) {
+      var act = btn.dataset.act;
+      btn.onclick = function () {
+        if (act === "copytext") return copy(responseAsText(f, r), "Ответ");
+        if (act === "respzip") return downloadProtected(FORMS_API + "/" + encodeURIComponent(f.id) + "/files.zip?response=" + encodeURIComponent(r.id), (f.slug || "files") + ".zip", btn);
+        if (act === "delresp") return deleteResponse();
+      };
+    });
+  }
+
+  /* Текст ответа целиком — то, ради чего анкету и заводили: его переносят в
+     материал. Собираем «вопрос — ответ» в один кусок для буфера обмена. */
+  function responseAsText(form, response) {
+    var out = [form.title || "", response.inviteLabel ? "Ответ: " + response.inviteLabel : "", ""];
+    (form.fields || []).forEach(function (field) {
+      if (field.type === "section") { out.push("— " + (field.label || "") + " —", ""); return; }
+      var v = (response.answers || {})[field.id];
+      if (isFileList(v)) v = v.map(function (f2) { return f2.name || f2.id; }).join(", ");
+      if (Array.isArray(v)) v = v.join(", ");
+      out.push(field.label || field.id, String(v == null || v === "" ? "—" : v), "");
+    });
+    return out.join("\n");
+  }
+
+  async function deleteResponse() {
+    if (!window.confirm("Удалить ответ вместе с файлами? Это необратимо.")) return;
+    var f = currentForm.form, r = currentResponse;
+    var res = await fetchJSON(FORMS_API + "/" + encodeURIComponent(f.id) + "/responses/" + encodeURIComponent(r.id), {
+      method: "DELETE", headers: formsHeaders(),
+    });
+    if (!res.data || !res.data.ok) { toast("Не удалилось: " + ((res.data && res.data.error) || res.status), true); return; }
+    currentForm.responses = currentForm.responses.filter(function (x) { return x.id !== r.id; });
+    currentResponse = null;
+    toast("Ответ удалён");
+    formsLoaded = false;
+    showFormsView("form-view");
+  }
+
+  /* Файл лежит за паролем, поэтому обычная ссылка его не откроет: тянем тело
+     с заголовком и отдаём браузеру уже готовый blob. */
+  async function downloadProtected(url, filename, btn) {
+    var label = btn ? btn.textContent : "";
+    if (btn) { btn.textContent = "…"; btn.style.pointerEvents = "none"; }
+    try {
+      var res = await fetch(url, { headers: formsHeaders() });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      var blob = await res.blob();
+      var href = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = href;
+      a.download = filename || "file";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(href); }, 30000);
+      toast("Файл выгружен");
+    } catch (e) {
+      toast("Не скачалось: " + e.message + ". Открой в админке на компьютере", true);
+    } finally {
+      if (btn) { btn.textContent = label; btn.style.pointerEvents = ""; }
+    }
+  }
+
+  $("formsLink").onclick = openForms;
+  $("formsSearch").oninput = renderFormsList;
 
   boot();
 })();
