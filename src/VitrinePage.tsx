@@ -1,6 +1,10 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { getFuturoshock, subscribeContent, type FuturoshockWork } from './data';
+
+/* Собственный чанк: three и fiber весят больше самой страницы, а нужны только
+   на пустой коллекции. Пока объектов нет, зал занимает само здание. */
+const MuseumModel = lazy(() => import('./museum/MuseumModel').then((m) => ({ default: m.MuseumModel })));
 
 const MUSEUM_COPY = {
   EN: {
@@ -10,6 +14,8 @@ const MUSEUM_COPY = {
     emptyDescription: 'The collection is being prepared by the editorial team. Every object will enter with its author, place, material and the context that makes it matter.',
     emptyFoot: 'Collection records are published by the editorial team.',
     imagePending: 'Image archive in preparation',
+    modelLabel: 'Three-dimensional model of the EPRIS Museum building',
+    modelHint: 'Drag to turn the model',
     collectionIntro: 'An evolving museum of Ukrainian practice. Each object belongs to a broader story of making, place and cultural memory.',
     object: 'Object',
     objectDossier: 'Object dossier',
@@ -33,6 +39,8 @@ const MUSEUM_COPY = {
     emptyDescription: 'Коллекцию готовит редакция. Каждый объект войдёт в неё с автором, местом, материалом и контекстом, который делает его важным.',
     emptyFoot: 'Записи коллекции публикует редакция.',
     imagePending: 'Изображение готовится для архива',
+    modelLabel: 'Трёхмерная модель здания EPRIS Museum',
+    modelHint: 'Потяните, чтобы повернуть макет',
     collectionIntro: 'Развивающийся музей украинской практики. Каждый объект связан с историей создания, местом и культурной памятью.',
     object: 'Объект',
     objectDossier: 'Паспорт объекта',
@@ -56,6 +64,8 @@ const MUSEUM_COPY = {
     emptyDescription: 'Колекцію готує редакція. Кожен об’єкт увійде до неї з автором, місцем, матеріалом і контекстом, який робить його важливим.',
     emptyFoot: 'Записи колекції публікує редакція.',
     imagePending: 'Зображення готується для архіву',
+    modelLabel: 'Тривимірна модель будівлі EPRIS Museum',
+    modelHint: 'Потягніть, щоб обернути макет',
     collectionIntro: 'Музей української практики, що розвивається. Кожен об’єкт пов’язаний з історією створення, місцем і культурною пам’яттю.',
     object: 'Об’єкт',
     objectDossier: 'Паспорт об’єкта',
@@ -79,6 +89,8 @@ const MUSEUM_COPY = {
     emptyDescription: 'Die Sammlung wird von der Redaktion vorbereitet. Jedes Objekt erscheint mit Autor, Ort, Material und dem Kontext, der es bedeutsam macht.',
     emptyFoot: 'Sammlungseinträge werden von der Redaktion veröffentlicht.',
     imagePending: 'Bildarchiv wird vorbereitet',
+    modelLabel: 'Dreidimensionales Modell des EPRIS-Museumsgebäudes',
+    modelHint: 'Ziehen, um das Modell zu drehen',
     collectionIntro: 'Ein wachsendes Museum ukrainischer Praxis. Jedes Objekt gehört zu einer Geschichte von Herstellung, Ort und kulturellem Gedächtnis.',
     object: 'Objekt',
     objectDossier: 'Objektdossier',
@@ -135,19 +147,24 @@ function catalogueNumber(work: FuturoshockWork, index: number) {
 }
 
 function EmptyVitrine({ copy }: { copy: MuseumCopy }) {
+  /* Пустая коллекция больше не объясняется абзацами о том, что её готовят.
+     Вместо описания стоит здание: макет крутится сам и поворачивается мышью,
+     а заголовок лежит поверх него, как подпись на архитектурном планшете. */
   return (
     <section aria-labelledby="vitrine-title" className="grid lg:grid-cols-[minmax(0,1.18fr)_minmax(22rem,.82fr)]">
-      <div className="flex min-h-[28rem] items-end border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] p-5 sm:min-h-[34rem] sm:p-8 lg:min-h-[42rem] lg:border-b-0 lg:border-r lg:p-12">
-        <div>
+      <div className="relative min-h-[28rem] overflow-hidden border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] sm:min-h-[34rem] lg:min-h-[42rem] lg:border-b-0 lg:border-r">
+        <Suspense fallback={<div className="absolute inset-0 bg-[#f6f4f1]" />}>
+          <MuseumModel label={copy.modelLabel} />
+        </Suspense>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 p-5 sm:p-8 lg:p-12">
           <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">{copy.firstSelection}</p>
           <h1 id="vitrine-title" className="mt-5 max-w-[7ch] font-display text-[clamp(4rem,9vw,8.5rem)] leading-[0.83] tracking-[-0.05em]">Museum</h1>
         </div>
       </div>
       <div className="flex flex-col justify-between">
-        <div className="p-5 sm:p-8 lg:p-12">
+        <div className="flex items-start justify-between gap-4 p-5 sm:p-8 lg:p-12">
           <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">{copy.museumLabel}</p>
-          <p className="mt-7 max-w-[34rem] text-[16px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.8)]">{copy.intro}</p>
-          <p className="mt-5 max-w-[34rem] text-[15px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.66)]">{copy.emptyDescription}</p>
+          <p className="shrink-0 font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.4)]">{copy.modelHint}</p>
         </div>
         <p className="border-t border-[rgb(var(--c-accent-rgb)_/_0.9)] px-5 py-5 font-mono text-[9px] uppercase tracking-[0.15em] text-[rgb(var(--c-accent-rgb)_/_0.56)] sm:px-8 lg:px-12">{copy.emptyFoot}</p>
       </div>
@@ -224,7 +241,7 @@ export function VitrinePage({ lang = 'EN' }: { lang?: string }) {
   useEffect(() => {
     document.title = 'EPRIS Museum | EPRIS Journal';
     const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonical) canonical.href = 'https://eprisjournal.com/vitrine';
+    if (canonical) canonical.href = 'https://eprisjournal.com/museum';
   }, []);
 
   return <main className="min-h-screen bg-[var(--c-bg)] pt-16 text-[var(--c-accent)]"><div className="mx-auto max-w-[1600px] border-x border-[rgb(var(--c-accent-rgb)_/_0.9)]"><header className="flex items-center justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] px-5 py-3 sm:px-8 lg:px-12"><p className="font-mono text-[9px] uppercase tracking-[0.18em] sm:text-[10px]">{copy.museumLabel}</p><span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{String(works.length).padStart(2, '0')} {copy.objects}</span></header>{works.length === 0 ? <EmptyVitrine copy={copy} /> : <VitrineCollection works={works} selectedId={selectedId} onSelect={setSelectedId} copy={copy} />}</div></main>;
