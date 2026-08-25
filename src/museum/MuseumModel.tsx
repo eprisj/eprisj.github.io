@@ -1,60 +1,77 @@
 import { Suspense, useMemo, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { ContactShadows, OrbitControls } from '@react-three/drei';
-import { BufferAttribute, BufferGeometry, CatmullRomCurve3, DoubleSide, Vector2, Vector3 } from 'three';
+import { BufferAttribute, BufferGeometry, CatmullRomCurve3, DoubleSide, ExtrudeGeometry, Shape, Vector2, Vector3 } from 'three';
 import type { Group } from 'three';
 
 /* ЗДАНИЕ МУЗЕЯ, СОБРАННОЕ КОДОМ, А НЕ ЗАГРУЖЕННОЕ ФАЙЛОМ.
  *
  * Коллекция пока пуста, и страница музея не должна быть пустым местом с
- * подписью «скоро». Здесь стоит сам музей: макет здания органической
- * архитектуры — форма, которая растёт снизу вверх одним объёмом, с талией,
- * наружным пандусом и окулюсом наверху, вместо коробки с фасадом.
+ * подписью «скоро». Здесь стоит сам музей — макет в духе органической
+ * архитектуры, собранный из четырёх ходов:
+ *
+ *   1. низкое крыло со свободным планом — залы, лежащие по земле;
+ *   2. второе крыло поменьше, повёрнутое относительно первого;
+ *   3. ротонда с ленточным окном и окулюсом наверху;
+ *   4. наружный пандус, который дважды обходит ротонду.
+ *
+ * Форма собрана из объёмов, а не из одного тела вращения: одиночный лате
+ * читается как сосуд, а здание узнаётся по тому, что у него есть основание,
+ * вертикаль и вход. Опоры под консолью крыла дают масштаб — без них макет
+ * может быть чем угодно, от пепельницы до башни.
  *
  * Геометрия параметрическая: ни одного .glb, ни одной текстуры, ни одного
- * внешнего запроса. Это несколько килобайт кода вместо мегабайтов модели, и
- * форму можно править числами, а не пересобирать в редакторе.
- *
- * three и fiber уже стоят в проекте ради /stage, а VitrinePage грузится через
- * lazy(), поэтому вес остаётся в чанке музея и на главную не попадает.
+ * внешнего запроса. Несколько килобайт кода вместо мегабайтов модели, и форму
+ * правят числами, а не пересобирают в редакторе. three и fiber уже стоят в
+ * проекте ради /stage, а страница грузится через lazy(), поэтому вес остаётся
+ * в чанке музея и на главную не попадает.
  */
 
-const PLASTER = '#f1eee9';   // гипс: чуть теплее белого фона, иначе объём пропадает
-const PLASTER_DEEP = '#e6e1da';
-const INK = '#111111';
+const PLASTER = '#f4f1ec';        // гипс: теплее фона страницы, иначе объём пропадает
+const PLASTER_DEEP = '#e8e3db';   // плиты и пандус — на полтона глубже тела
+const PLASTER_SHADE = '#ddd7cd';
+const GLASS = '#2b2a28';
 const GOLD = '#c9a690';
 
-/* Силуэт башни: пары «радиус, высота». Между узлами идёт кривая, а не прямая,
-   поэтому переходы получаются перетекающими — это и отличает органическую
-   форму от конуса, набранного отрезками. */
-const SILHOUETTE: [number, number][] = [
-  [7.70, 0.00],
-  [7.62, 0.55],
-  [7.10, 2.20],
-  [6.40, 4.10],
-  [5.86, 6.30],
-  [5.74, 7.60],
-  [6.02, 9.40],
-  [5.86, 11.00],
-  [5.10, 12.90],
-  [4.00, 14.60],
-  [2.86, 15.80],
-  [2.10, 16.40],
-  [1.72, 16.66],
-];
+const WING_TOP = 5.0;             // верх нижнего крыла — на нём стоит всё остальное
+const UPPER_TOP = 8.6;            // верх второго крыла
+const DRUM_TOP = 19.4;
 
-function useSilhouette() {
-  return useMemo(() => {
-    const curve = new CatmullRomCurve3(SILHOUETTE.map(([r, y]) => new Vector3(r, y, 0)), false, 'catmullrom', 0.4);
-    const sampled = curve.getSpacedPoints(72);
-    const points = sampled.map((p) => new Vector2(Math.max(p.x, 0.02), p.y));
-    const radiusAt = (y: number) => {
-      let closest = points[0];
-      for (const p of points) if (Math.abs(p.y - y) < Math.abs(closest.y - y)) closest = p;
-      return closest.x;
-    };
-    return { points, radiusAt, top: points[points.length - 1].y };
-  }, []);
+/* Свободный план: радиусы по кругу, между ними — сглаживание. Именно неровный
+   контур отличает органическую архитектуру от цилиндра: план ведёт рельеф и
+   маршрут, а не циркуль. */
+function organicShape(radii: number[], steps = 128) {
+  const points: Vector2[] = [];
+  const n = radii.length;
+  for (let i = 0; i < steps; i += 1) {
+    const t = i / steps;
+    const position = t * n;
+    const i0 = Math.floor(position) % n;
+    const i1 = (i0 + 1) % n;
+    const k = position - Math.floor(position);
+    const smooth = (1 - Math.cos(k * Math.PI)) / 2;
+    const radius = radii[i0] * (1 - smooth) + radii[i1] * smooth;
+    const angle = t * Math.PI * 2;
+    points.push(new Vector2(Math.cos(angle) * radius, Math.sin(angle) * radius));
+  }
+  const shape = new Shape(points);
+  shape.closePath();
+  return shape;
+}
+
+function slabGeometry(radii: number[], height: number, bevel = 0.34) {
+  const geometry = new ExtrudeGeometry(organicShape(radii), {
+    depth: height - bevel * 2,
+    bevelEnabled: true,
+    bevelSize: bevel,
+    bevelThickness: bevel,
+    bevelSegments: 4,
+    curveSegments: 24,
+  });
+  // ExtrudeGeometry растёт по Z; кладём плиту на землю и поднимаем на толщину фаски
+  geometry.rotateX(-Math.PI / 2);
+  geometry.translate(0, height - bevel, 0);
+  return geometry;
 }
 
 /* Лента постоянной ширины вдоль кривой: пандус, а не труба. TubeGeometry даёт
@@ -98,78 +115,131 @@ function ribbonGeometry(curve: CatmullRomCurve3, samples: number, width: number,
   return geometry;
 }
 
+/* Профиль ротонды: слегка утянут в поясе и раскрыт кверху. Радиус нужен и
+   пандусу, поэтому считается функцией, а не рисуется на глаз. */
+const DRUM_BASE = 3.55;
+function drumRadius(y: number) {
+  const t = Math.min(Math.max((y - WING_TOP) / (DRUM_TOP - WING_TOP), 0), 1);
+  return DRUM_BASE - Math.sin(t * Math.PI) * 0.42 + t * 0.55;
+}
+
+function drumProfile() {
+  const points: Vector2[] = [];
+  const steps = 48;
+  for (let i = 0; i <= steps; i += 1) {
+    const y = WING_TOP + ((DRUM_TOP - WING_TOP) * i) / steps;
+    points.push(new Vector2(drumRadius(y), y));
+  }
+  // мягкий завал кровли к окулюсу
+  points.push(new Vector2(drumRadius(DRUM_TOP) - 0.5, DRUM_TOP + 0.5));
+  points.push(new Vector2(drumRadius(DRUM_TOP) - 1.25, DRUM_TOP + 0.82));
+  return points;
+}
+
+function spiralAroundDrum(fromY: number, toY: number, turns: number, offset: number, steps = 220) {
+  const samples: Vector3[] = [];
+  for (let i = 0; i <= steps; i += 1) {
+    const t = i / steps;
+    const y = fromY + (toY - fromY) * t;
+    const angle = -0.4 + t * turns * Math.PI * 2;
+    const radius = drumRadius(y) + offset;
+    samples.push(new Vector3(Math.cos(angle) * radius, y, Math.sin(angle) * radius));
+  }
+  return new CatmullRomCurve3(samples);
+}
+
 function Building() {
-  const { points, radiusAt, top } = useSilhouette();
+  const lowerWing = useMemo(() => slabGeometry([13.8, 10.1, 12.7, 8.3, 11.5, 13.4, 9.4, 11.9], WING_TOP), []);
+  const upperWing = useMemo(() => slabGeometry([8.6, 6.2, 7.9, 5.6, 7.4, 8.3, 6.0, 7.1], UPPER_TOP - WING_TOP + 0.6, 0.3), []);
+  const drum = useMemo(() => drumProfile(), []);
 
-  /* Наружный пандус: поднимается на два с четвертью оборота и по дороге
-     подбирается ближе к телу здания — так он выглядит выросшим из объёма,
-     а не надетым на него кольцом. */
-  const ramp = useMemo(() => {
-    const samples: Vector3[] = [];
-    const steps = 180;
-    for (let i = 0; i <= steps; i += 1) {
-      const t = i / steps;
-      const angle = t * 2.25 * Math.PI * 2;
-      const radius = 8.55 - t * 2.35;
-      const y = 0.55 + t * 12.4;
-      samples.push(new Vector3(Math.cos(angle) * radius, y, Math.sin(angle) * radius));
-    }
-    return ribbonGeometry(new CatmullRomCurve3(samples), 190, 1.45, 0.2);
-  }, []);
+  // Пандус: два обхода ротонды с парапетом, вынесенным за плоскость стены
+  const ramp = useMemo(() => ribbonGeometry(spiralAroundDrum(UPPER_TOP - 1.4, DRUM_TOP - 1.6, 1.95, 0.95), 240, 2.0, 0.3), []);
+  const rampRail = useMemo(() => ribbonGeometry(spiralAroundDrum(UPPER_TOP - 0.45, DRUM_TOP - 0.65, 1.95, 1.85), 240, 0.16, 0.72), []);
 
-  /* Козырёк входа: короткая дуга у земли, вынесенная от стены. */
+  // Ленточное окно ротонды идёт следом за пандусом, ниже его плиты
+  const drumWindow = useMemo(() => ribbonGeometry(spiralAroundDrum(UPPER_TOP - 2.3, DRUM_TOP - 2.5, 1.95, 0.03), 240, 0.5, 0.62), []);
+
+  /* Козырёк входа: плита, вынесенная от крыла и опирающаяся на две стойки.
+     Он и опоры дают человеческий масштаб — без них макет читается предметом. */
   const canopy = useMemo(() => {
     const samples: Vector3[] = [];
-    const steps = 48;
+    const steps = 36;
     for (let i = 0; i <= steps; i += 1) {
       const t = i / steps;
-      const angle = -0.62 + t * 1.24;
-      const radius = 8.9 + Math.sin(t * Math.PI) * 1.5;
-      samples.push(new Vector3(Math.cos(angle) * radius, 3.35 + Math.sin(t * Math.PI) * 0.28, Math.sin(angle) * radius));
+      const angle = 0.42 + t * 0.92;
+      const radius = 10.4 + Math.sin(t * Math.PI) * 3.1;
+      samples.push(new Vector3(Math.cos(angle) * radius, 3.6, Math.sin(angle) * radius));
     }
-    return ribbonGeometry(new CatmullRomCurve3(samples), 60, 2.6, 0.16);
+    return ribbonGeometry(new CatmullRomCurve3(samples), 60, 3.4, 0.2);
   }, []);
 
-  /* Ленты остекления идут по самому силуэту: радиус каждой берётся из профиля
-     на её высоте, поэтому щели лежат на поверхности, а не висят рядом. */
-  const glazing = useMemo(() => [3.1, 5.4, 7.8, 10.2, 12.4].map((y) => ({ y, radius: radiusAt(y) + 0.03 })), [radiusAt]);
+  const pilotis = useMemo(
+    () => [0.55, 0.78, 1.0, 1.22].map((angle) => [Math.cos(angle) * 12.1, Math.sin(angle) * 12.1] as const),
+    [],
+  );
 
   return (
-    <group position={[0, -7.5, 0]}>
-      <mesh castShadow receiveShadow>
-        <latheGeometry args={[points, 128]} />
-        <meshStandardMaterial color={PLASTER} roughness={0.86} metalness={0.02} side={DoubleSide} />
+    <group position={[0, -9.2, 0]}>
+      {/* Нижнее крыло: залы, лежащие по земле */}
+      <mesh geometry={lowerWing} castShadow receiveShadow>
+        <meshStandardMaterial color={PLASTER} roughness={0.92} metalness={0.02} />
       </mesh>
 
-      {/* Окулюс: тёмный диск в устье башни — свет, который здание берёт сверху */}
-      <mesh position={[0, top - 0.35, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <circleGeometry args={[1.72, 64]} />
-        <meshStandardMaterial color={INK} roughness={0.35} metalness={0.1} opacity={0.82} transparent />
-      </mesh>
-      <mesh position={[0, top, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <ringGeometry args={[1.7, 2.06, 64]} />
-        <meshStandardMaterial color={PLASTER_DEEP} roughness={0.8} side={DoubleSide} />
+      {/* Ленточное остекление крыла — горизонталь, по которой читается этаж */}
+      <mesh position={[0, 2.5, 0]}>
+        <cylinderGeometry args={[11.35, 11.35, 0.62, 128, 1, true]} />
+        <meshStandardMaterial color={GLASS} roughness={0.34} metalness={0.14} opacity={0.72} transparent side={DoubleSide} />
       </mesh>
 
-      <mesh geometry={ramp} castShadow receiveShadow>
-        <meshStandardMaterial color={PLASTER_DEEP} roughness={0.8} metalness={0.02} />
+      {/* Второе крыло, повёрнутое к первому: слоистость вместо одного объёма */}
+      <group position={[2.6, WING_TOP - 0.6, -1.9]} rotation={[0, 0.62, 0]}>
+        <mesh geometry={upperWing} castShadow receiveShadow>
+          <meshStandardMaterial color={PLASTER_DEEP} roughness={0.9} metalness={0.02} />
+        </mesh>
+      </group>
+
+      {/* Ротонда со всем, что к ней относится. Смещена с оси стилобата:
+          вертикаль, поставленная ровно в центр, складывает композицию в торт. */}
+      <group position={[-2.9, 0, 2.1]}>
+        <mesh castShadow receiveShadow>
+          <latheGeometry args={[drum, 128]} />
+          <meshStandardMaterial color={PLASTER} roughness={0.9} metalness={0.02} side={DoubleSide} />
+        </mesh>
+
+        <mesh geometry={drumWindow}>
+          <meshStandardMaterial color={GLASS} roughness={0.32} metalness={0.14} opacity={0.88} transparent />
+        </mesh>
+
+        <mesh geometry={ramp} castShadow receiveShadow>
+          <meshStandardMaterial color={PLASTER_DEEP} roughness={0.88} metalness={0.02} side={DoubleSide} />
+        </mesh>
+        <mesh geometry={rampRail} castShadow>
+          <meshStandardMaterial color={PLASTER_SHADE} roughness={0.86} />
+        </mesh>
+
+        {/* Окулюс: свет ротонда берёт сверху */}
+        <mesh position={[0, DRUM_TOP + 0.78, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+          <circleGeometry args={[drumRadius(DRUM_TOP) - 1.25, 48]} />
+          <meshStandardMaterial color={GLASS} roughness={0.26} metalness={0.12} opacity={0.7} transparent />
+        </mesh>
+      </group>
+
+      <mesh geometry={canopy} castShadow receiveShadow>
+        <meshStandardMaterial color={PLASTER_DEEP} roughness={0.88} metalness={0.02} side={DoubleSide} />
       </mesh>
 
-      <mesh geometry={canopy} castShadow>
-        <meshStandardMaterial color={PLASTER_DEEP} roughness={0.8} metalness={0.02} />
-      </mesh>
-
-      {glazing.map(({ y, radius }) => (
-        <mesh key={y} position={[0, y, 0]} rotation={[Math.PI / 2, 0, 0]}>
-          <torusGeometry args={[radius, 0.085, 8, 96]} />
-          <meshStandardMaterial color={INK} roughness={0.4} metalness={0.08} opacity={0.5} transparent />
+      {pilotis.map(([x, z]) => (
+        <mesh key={`${x}-${z}`} position={[x, 1.8, z]} castShadow>
+          <cylinderGeometry args={[0.17, 0.17, 3.6, 16]} />
+          <meshStandardMaterial color={PLASTER_SHADE} roughness={0.85} />
         </mesh>
       ))}
 
-      {/* Стилобат: здание стоит не на пустоте, а на своей площадке */}
-      <mesh position={[0, -0.22, 0]} receiveShadow castShadow>
-        <cylinderGeometry args={[10.4, 10.8, 0.44, 96]} />
-        <meshStandardMaterial color={PLASTER_DEEP} roughness={0.9} />
+      {/* Стилобат: здание стоит на своей площадке, а не висит над белым полем */}
+      <mesh position={[0, -0.24, 0]} receiveShadow castShadow>
+        <cylinderGeometry args={[15.4, 15.8, 0.48, 96]} />
+        <meshStandardMaterial color={PLASTER_DEEP} roughness={0.95} />
       </mesh>
     </group>
   );
@@ -178,13 +248,13 @@ function Building() {
 /* Горизонтали участка — как на разрезе местности в проекте. Дают земле масштаб,
    не превращая её в текстуру. */
 function SiteContours() {
-  const rings = useMemo(() => [13.4, 16.2, 19.4, 23.2], []);
+  const rings = useMemo(() => [18.4, 22.6, 27.4, 33.0], []);
   return (
-    <group position={[0, -7.72, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+    <group position={[0, -9.46, 0]} rotation={[-Math.PI / 2, 0, 0]}>
       {rings.map((radius, index) => (
-        <mesh key={radius} position={[0, 0, 0.001 * index]}>
-          <ringGeometry args={[radius, radius + 0.045, 128]} />
-          <meshBasicMaterial color={GOLD} transparent opacity={0.42 - index * 0.08} side={DoubleSide} />
+        <mesh key={radius} position={[0, 0, index * 0.002]}>
+          <ringGeometry args={[radius, radius + 0.06, 128]} />
+          <meshBasicMaterial color={GOLD} transparent opacity={0.4 - index * 0.075} side={DoubleSide} />
         </mesh>
       ))}
     </group>
@@ -195,7 +265,7 @@ function Turntable({ still, children }: { still: boolean; children: React.ReactN
   const group = useRef<Group>(null);
   useFrame((_, delta) => {
     if (still || !group.current) return;
-    group.current.rotation.y += delta * 0.085;
+    group.current.rotation.y += delta * 0.075;
   });
   return <group ref={group}>{children}</group>;
 }
@@ -220,30 +290,35 @@ export function MuseumModel({ label }: { label: string }) {
 
   return (
     <div className="h-full w-full cursor-grab active:cursor-grabbing" role="img" aria-label={label}>
+      {/* flat — это NoToneMapping. По умолчанию fiber ставит ACES, и белый гипс
+          уезжает в ровный серый: тонмаппинг для фотореализма, а здесь макет. */}
       <Canvas
+        flat
         shadows
-        camera={{ position: [17, 9.5, 20], fov: 34 }}
+        camera={{ position: [42, 13, 37], fov: 30 }}
         dpr={[1, 1.6]}
         gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
       >
-        <hemisphereLight args={['#ffffff', '#dcd6ce', 0.72]} />
+        <hemisphereLight args={['#ffffff', '#d8d2c9', 0.95]} />
         <directionalLight
-          position={[12, 18, 9]}
-          intensity={1.55}
+          position={[18, 26, 14]}
+          intensity={1.25}
           castShadow
-          shadow-mapSize={[1024, 1024]}
-          shadow-camera-left={-22}
-          shadow-camera-right={22}
-          shadow-camera-top={22}
-          shadow-camera-bottom={-22}
+          shadow-mapSize={[2048, 2048]}
+          shadow-bias={-0.0006}
+          shadow-normalBias={0.035}
+          shadow-camera-left={-32}
+          shadow-camera-right={32}
+          shadow-camera-top={32}
+          shadow-camera-bottom={-32}
         />
-        <directionalLight position={[-14, 7, -10]} intensity={0.42} />
+        <directionalLight position={[-20, 10, -16]} intensity={0.34} />
 
         <Suspense fallback={null}>
           <Turntable still={still}>
             <Building />
             <SiteContours />
-            <ContactShadows position={[0, -7.74, 0]} opacity={0.36} scale={44} blur={2.6} far={16} resolution={512} color="#6f6a63" />
+            <ContactShadows position={[0, -9.48, 0]} opacity={0.32} scale={64} blur={2.8} far={20} resolution={512} color="#6f6a63" />
           </Turntable>
         </Suspense>
 
@@ -253,7 +328,7 @@ export function MuseumModel({ label }: { label: string }) {
           enableZoom={false}
           enablePan={false}
           minPolarAngle={Math.PI / 5}
-          maxPolarAngle={Math.PI / 2.12}
+          maxPolarAngle={Math.PI / 2.15}
           rotateSpeed={0.55}
         />
       </Canvas>
