@@ -151,7 +151,7 @@ function EmptyVitrine({ copy }: { copy: MuseumCopy }) {
      Вместо описания стоит здание: макет крутится сам и поворачивается мышью,
      а заголовок лежит поверх него, как подпись на архитектурном планшете. */
   return (
-    <section aria-labelledby="vitrine-title" className="grid lg:grid-cols-[minmax(0,1.18fr)_minmax(22rem,.82fr)]">
+    <section aria-labelledby="vitrine-title" className="grid flex-1 lg:grid-cols-[minmax(0,1.18fr)_minmax(22rem,.82fr)]">
       <div className="relative min-h-[28rem] overflow-hidden border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] sm:min-h-[34rem] lg:min-h-[42rem] lg:border-b-0 lg:border-r">
         <Suspense fallback={<div className="absolute inset-0 bg-[#f6f4f1]" />}>
           <MuseumModel label={copy.modelLabel} />
@@ -244,5 +244,8 @@ export function VitrinePage({ lang = 'EN' }: { lang?: string }) {
     if (canonical) canonical.href = 'https://eprisjournal.com/museum';
   }, []);
 
-  return <main className="min-h-screen bg-[var(--c-bg)] pt-16 text-[var(--c-accent)]"><div className="mx-auto max-w-[1600px] border-x border-[rgb(var(--c-accent-rgb)_/_0.9)]"><header className="flex items-center justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] px-5 py-3 sm:px-8 lg:px-12"><p className="font-mono text-[9px] uppercase tracking-[0.18em] sm:text-[10px]">{copy.museumLabel}</p><span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{String(works.length).padStart(2, '0')} {copy.objects}</span></header>{works.length === 0 ? <EmptyVitrine copy={copy} /> : <VitrineCollection works={works} selectedId={selectedId} onSelect={setSelectedId} copy={copy} />}</div></main>;
+  /* Контейнер тянется на всю высоту экрана: иначе на большом мониторе разворот
+     обрывается посреди страницы, боковые линейки заканчиваются в никуда, и под
+     ними остаётся белое поле, которое читается как недогруженная страница. */
+  return <main className="flex min-h-screen flex-col bg-[var(--c-bg)] pt-16 text-[var(--c-accent)]"><div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col border-x border-[rgb(var(--c-accent-rgb)_/_0.9)]"><header className="flex items-center justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] px-5 py-3 sm:px-8 lg:px-12"><p className="font-mono text-[9px] uppercase tracking-[0.18em] sm:text-[10px]">{copy.museumLabel}</p><span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{String(works.length).padStart(2, '0')} {copy.objects}</span></header>{works.length === 0 ? <EmptyVitrine copy={copy} /> : <VitrineCollection works={works} selectedId={selectedId} onSelect={setSelectedId} copy={copy} />}</div></main>;
 }
