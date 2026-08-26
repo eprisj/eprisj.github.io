@@ -4987,13 +4987,13 @@
           "credit": "Courtesy of Keisuke Azuma"
         },
         {
+          "type": "text",
+          "content": "Epris met Azuma over a video call from his studio in Vilnius, where he lives with his wife and their dog and cat. Below you can find our conversation on the Japanese aesthetics of deduction that shaped his method and why he thinks art has no right to be exclusive. "
+        },
+        {
           "type": "header",
           "level": 2,
           "content": "<span>01 · </span>Becoming a painter"
-        },
-        {
-          "type": "text",
-          "content": "Epris met Azuma over a video call from his studio in Vilnius, where he lives with his wife and their dog and cat. Below you can find our conversation on the Japanese aesthetics of deduction that shaped his method and why he thinks art has no right to be exclusive. "
         },
         {
           "type": "text",
@@ -5328,7 +5328,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-26T05:51:21.958Z",
+      "updatedAt": "2026-08-26T05:51:50.331Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8wh6owj2qa80.jpg",
       "previewToken": "7050d8a93e5a216872f5399c"
     },
