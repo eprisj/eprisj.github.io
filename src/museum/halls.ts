@@ -19,11 +19,11 @@ export type Hall = {
 };
 
 export const HALLS: Hall[] = [
-  { id: 'court',      focus: [0, -0.6, 13.4],     access: 'open' },
-  { id: 'collection', focus: [0, 4.0, 0],         access: 'open' },
-  { id: 'practice',   focus: [0, 9.4, 0],         access: 'open' },
-  { id: 'archive',    focus: [0, 15.0, 0],        access: 'passport' },
-  { id: 'study',      focus: [-12.6, 11.0, -4.6], access: 'passport' },
+  { id: 'court',      focus: [0, 0.8, 18.0],     access: 'open' },
+  { id: 'collection', focus: [-8.6, 6.2, 6.0],   access: 'open' },
+  { id: 'practice',   focus: [-6.0, 13.6, 2.0],  access: 'open' },
+  { id: 'archive',    focus: [9.4, 6.2, 6.0],    access: 'passport' },
+  { id: 'study',      focus: [11.6, 15.4, -2.4], access: 'passport' },
 ];
 
 export function findHall(id: string | null | undefined): Hall | null {
