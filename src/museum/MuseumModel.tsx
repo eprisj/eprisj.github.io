@@ -1,12 +1,16 @@
-import { Component, lazy, Suspense, useCallback, useMemo, useRef, useState } from 'react';
+import { Component, lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { ContactShadows, Environment, Html, Lightformer, MeshReflectorMaterial, OrbitControls, RoundedBox } from '@react-three/drei';
 import { ACESFilmicToneMapping, DoubleSide, ExtrudeGeometry, Shape, Spherical, Vector2, Vector3 } from 'three';
 import type { Group, PerspectiveCamera } from 'three';
 import { HALLS, type HallId } from './halls';
+import { Interior, interiorEye } from './Interior';
 
 /* Эффекты — свой чанк на 155 КБ, и телефон его не скачивает: см. Effects.tsx */
 const Effects = lazy(() => import('./Effects'));
+/* Интерьеры лежат в том же чанке, что и макет: точка глаза нужна модели
+   сразу, а сами комнаты — это полторы сотни строк геометрии, ради которых
+   отдельный запрос не окупается. */
 import { concreteMaps, concreteRepeat } from './concrete';
 
 export type MuseumLabels = Record<HallId, string>;
@@ -539,6 +543,37 @@ function SiteContours() {
   );
 }
 
+/* Внутри камера не облетает макет, а стоит в зале: точка глаза на высоте
+   человека, разворот мышью вокруг себя. Тот же OrbitControls, но цель — не
+   центр модели, а точка перед зрителем. */
+function InteriorRig({ hall }: { hall: HallId }) {
+  const { camera, controls } = useThree();
+  const settled = useRef<HallId | null>(null);
+
+  useFrame(() => {
+    if (settled.current === hall) return;
+    /* Ставить камеру мимо OrbitControls нельзя: контролы держат собственную
+       цель и на следующем кадре возвращают камеру туда, где она была, — то
+       есть наружу. Снаружи стены комнаты вывернуты внутрь и не рисуются
+       вовсе, поэтому экран оставался пустым. Двигаем камеру и цель вместе. */
+    const orbit = controls as unknown as { target?: { set: (x: number, y: number, z: number) => void }; update?: () => void } | null;
+    if (!orbit || !orbit.target) return;    // ждём, пока контролы объявятся
+
+    const perspective = camera as PerspectiveCamera;
+    const [x, y, z] = interiorEye(hall);
+    camera.position.set(x, y, z);
+    perspective.fov = 62;          // в комнате нужен широкий угол, иначе упираешься в стену
+    perspective.near = 0.1;
+    perspective.far = 120;
+    perspective.updateProjectionMatrix();
+    orbit.target.set(0, 1.5, -2);
+    orbit.update?.();
+    settled.current = hall;
+  });
+
+  return null;
+}
+
 function CameraRig({ open, radius, focusY }: { open: boolean; radius: number; focusY: number }) {
   const { camera, size } = useThree();
   const distance = useRef(0);
@@ -624,6 +659,9 @@ export function MuseumModel({
   lockedHint,
   selectedHall,
   onSelectHall,
+  entered = false,
+  onEnter,
+  onLeave,
 }: {
   label: string;
   openLabel: string;
@@ -633,6 +671,11 @@ export function MuseumModel({
   lockedHint: string;
   selectedHall: HallId | null;
   onSelectHall: (id: HallId | null) => void;
+  /* Внутри зала макет уступает место самому залу: снаружи и внутри — две
+     разные сцены в одном холсте, а не два состояния одной. */
+  entered?: boolean;
+  onEnter?: () => void;
+  onLeave?: () => void;
 }) {
   const still = useMemo(() => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches, []);
   /* Пришли по ссылке на зал — здание уже раскрыто: смотреть на выбранный зал
@@ -641,9 +684,16 @@ export function MuseumModel({
   const [hovered, setHovered] = useState<HallId | null>(null);
 
   const select = useCallback((id: HallId) => {
-    onSelectHall(id === selectedHall ? null : id);
-    if (id !== selectedHall) setOpen(true);
-  }, [onSelectHall, selectedHall]);
+    /* Повторное нажатие по уже выбранному объёму — это вход, а не отмена:
+       раз объём назван дверью, второй клик должен вести внутрь, а не
+       снимать выбор. Отменяет выбор клик по пустому месту. */
+    if (id === selectedHall) {
+      onEnter?.();
+      return;
+    }
+    onSelectHall(id);
+    setOpen(true);
+  }, [onEnter, onSelectHall, selectedHall]);
 
   const focusY = useMemo(() => {
     const hall = HALLS.find((item) => item.id === selectedHall);
@@ -672,7 +722,7 @@ export function MuseumModel({
             toneMappingExposure: 1.08,
           }}
         >
-          <CameraRig open={open} radius={22.5} focusY={focusY} />
+          {entered && selectedHall ? <InteriorRig hall={selectedHall} /> : <CameraRig open={open} radius={22.5} focusY={focusY} />}
 
           {/* Свет как в полдень над макетом: одно жёсткое солнце даёт тень,
               холодное небо сверху вынимает верхние грани, тёплый отражённый
@@ -681,13 +731,13 @@ export function MuseumModel({
               никакой HDRI-файл не грузится, но у бетона появляется небо, от
               которого он берёт цвет, и земля, от которой берёт отсвет. Без
               этого теневые грани были одинаково мёртвыми. */}
-          <Environment frames={1} resolution={128} background={false}>
+          {!entered && <Environment frames={1} resolution={128} background={false}>
             <Lightformer form="rect" intensity={1.5} color="#eaf1f8" position={[0, 22, 6]} scale={[38, 16, 1]} rotation={[-Math.PI / 2, 0, 0]} />
             <Lightformer form="rect" intensity={0.7} color="#b79a78" position={[0, -14, 0]} scale={[40, 40, 1]} rotation={[Math.PI / 2, 0, 0]} />
             <Lightformer form="rect" intensity={0.9} color="#dfe6ef" position={[-24, 6, -12]} scale={[16, 14, 1]} rotation={[0, Math.PI / 2.4, 0]} />
-          </Environment>
-          <hemisphereLight args={['#eef2f6', '#9c8f80', 0.44]} />
-          <directionalLight
+          </Environment>}
+          {!entered && <hemisphereLight args={['#eef2f6', '#9c8f80', 0.44]} />}
+          {!entered && <directionalLight
             position={[24, 21, 17]}
             intensity={2.35}
             color="#fff5e6"
@@ -699,11 +749,14 @@ export function MuseumModel({
             shadow-camera-right={44}
             shadow-camera-top={44}
             shadow-camera-bottom={-44}
-          />
-          <directionalLight position={[-28, 14, -22]} intensity={0.4} color="#cfd8e6" />
-          <pointLight position={[0, 4, 0]} intensity={open ? 40 : 0} distance={34} decay={2} color="#fff3e2" />
+          />}
+          {!entered && <directionalLight position={[-28, 14, -22]} intensity={0.4} color="#cfd8e6" />}
+          {!entered && <pointLight position={[0, 4, 0]} intensity={open ? 40 : 0} distance={34} decay={2} color="#fff3e2" />}
 
           <Suspense fallback={null}>
+            {entered && selectedHall ? (
+              <Interior hall={selectedHall} />
+            ) : (
             <Turntable still={still} slow={open || selectedHall !== null}>
               <Building open={open} selected={selectedHall} hovered={hovered} onSelect={select} onHover={setHovered} />
               {(open || selectedHall) && (
@@ -712,6 +765,7 @@ export function MuseumModel({
               <SiteContours />
               <ContactShadows position={[0, -6.74, 0]} opacity={0.45} scale={96} blur={2.4} far={26} resolution={512} color="#4f4a43" />
             </Turntable>
+            )}
           </Suspense>
 
           <EffectsBoundary>
@@ -720,17 +774,30 @@ export function MuseumModel({
             </Suspense>
           </EffectsBoundary>
 
-          <OrbitControls enableZoom={false} enablePan={false} minPolarAngle={0.55} maxPolarAngle={Math.PI / 2.12} rotateSpeed={0.55} />
+          {entered ? (
+            /* Внутри цель стоит перед зрителем: так разворот читается как
+               поворот головы, а не как облёт комнаты снаружи. */
+            <OrbitControls
+              makeDefault
+              enableZoom={false}
+              enablePan={false}
+              minPolarAngle={0.7}
+              maxPolarAngle={Math.PI / 1.9}
+              rotateSpeed={-0.35}
+            />
+          ) : (
+            <OrbitControls enableZoom={false} enablePan={false} minPolarAngle={0.55} maxPolarAngle={Math.PI / 2.12} rotateSpeed={0.55} />
+          )}
         </Canvas>
       </div>
 
       <button
         type="button"
-        onClick={() => setOpen((value) => !value)}
-        aria-pressed={open}
+        onClick={() => (entered ? onLeave?.() : setOpen((value) => !value))}
+        aria-pressed={entered ? true : open}
         className="absolute right-4 top-4 z-10 min-h-11 border border-[rgb(var(--c-accent-rgb)_/_0.35)] bg-[var(--c-bg)]/85 px-4 py-2 font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--c-accent)] backdrop-blur-sm transition hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--c-accent)] sm:right-6 sm:top-6"
       >
-        {open ? closeLabel : openLabel}
+        {entered || open ? closeLabel : openLabel}
       </button>
     </div>
   );

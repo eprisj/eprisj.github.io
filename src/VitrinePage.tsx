@@ -21,6 +21,9 @@ const MUSEUM_COPY = {
     closeLabel: 'Close the space',
     insideLabel: 'Inside the EPRIS Museum building: atrium, balconies and the ramp',
     legend: { court: 'Court', collection: 'Collection', practice: 'Practice', archive: 'Archive', study: 'Study' },
+    enterHall: 'Enter the hall',
+    leaveHall: 'Step outside',
+    insideHall: 'You are inside',
     hallsLabel: 'Halls',
     hallsHint: 'Choose a volume to enter',
     allHalls: 'All halls',
@@ -65,6 +68,9 @@ const MUSEUM_COPY = {
     closeLabel: 'Закрыть пространство',
     insideLabel: 'Внутри здания EPRIS Museum: атриум, балконы и пандус',
     legend: { court: 'Двор', collection: 'Коллекция', practice: 'Практика', archive: 'Архив', study: 'Кабинет' },
+    enterHall: 'Войти в зал',
+    leaveHall: 'Выйти наружу',
+    insideHall: 'Вы внутри',
     hallsLabel: 'Залы',
     hallsHint: 'Выберите объём, чтобы войти',
     allHalls: 'Все залы',
@@ -109,6 +115,9 @@ const MUSEUM_COPY = {
     closeLabel: 'Закрити простір',
     insideLabel: 'Усередині будівлі EPRIS Museum: атріум, балкони та пандус',
     legend: { court: 'Двір', collection: 'Колекція', practice: 'Практика', archive: 'Архів', study: 'Кабінет' },
+    enterHall: 'Увійти до залу',
+    leaveHall: 'Вийти назовні',
+    insideHall: 'Ви всередині',
     hallsLabel: 'Зали',
     hallsHint: 'Оберіть об’єм, щоб увійти',
     allHalls: 'Усі зали',
@@ -153,6 +162,9 @@ const MUSEUM_COPY = {
     closeLabel: 'Raum schließen',
     insideLabel: 'Im Inneren des EPRIS-Museums: Atrium, Galerien und Rampe',
     legend: { court: 'Hof', collection: 'Sammlung', practice: 'Praxis', archive: 'Archiv', study: 'Lesesaal' },
+    enterHall: 'Den Saal betreten',
+    leaveHall: 'Nach draußen',
+    insideHall: 'Sie sind drinnen',
     hallsLabel: 'Säle',
     hallsHint: 'Ein Volumen wählen, um einzutreten',
     allHalls: 'Alle Säle',
@@ -223,7 +235,14 @@ function catalogueNumber(work: FuturoshockWork, index: number) {
   return `EPRIS ${year}.${position}`;
 }
 
-function HallPanel({ copy, hall, onClear }: { copy: MuseumCopy; hall: HallId; onClear: () => void }) {
+function HallPanel({ copy, hall, onClear, entered, onEnter, onLeave }: {
+  copy: MuseumCopy;
+  hall: HallId;
+  onClear: () => void;
+  entered: boolean;
+  onEnter: () => void;
+  onLeave: () => void;
+}) {
   const meta = HALLS.find((item) => item.id === hall);
   const locked = meta?.access === 'passport';
   return (
@@ -248,11 +267,23 @@ function HallPanel({ copy, hall, onClear }: { copy: MuseumCopy; hall: HallId; on
       <p className="border-t border-[rgb(var(--c-accent-rgb)_/_0.28)] pt-4 text-[14px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.62)]">
         {locked ? copy.lockedNote : copy.emptyHall}
       </p>
+      {/* Зал — это место, а не абзац: отсюда в него входят. */}
+      <button
+        type="button"
+        onClick={entered ? onLeave : onEnter}
+        className="inline-flex min-h-12 items-center justify-center self-start border border-[var(--c-accent)] px-6 font-mono text-[10px] uppercase tracking-[0.16em] transition hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]"
+      >
+        {entered ? copy.leaveHall : copy.enterHall}
+      </button>
     </div>
   );
 }
 
 function EmptyVitrine({ copy, hall, onHall }: { copy: MuseumCopy; hall: HallId | null; onHall: (id: HallId | null) => void }) {
+  const [entered, setEntered] = useState(false);
+  /* Вышли из зала — вышли и из комнаты: состояние не должно пережить смену
+     зала, иначе следующий зал открывается уже изнутри чужой комнаты. */
+  useEffect(() => { setEntered(false); }, [hall]);
   /* Пустая коллекция больше не объясняется абзацами о том, что её готовят.
      Вместо описания стоит здание: макет крутится сам и поворачивается мышью,
      а заголовок лежит поверх него, как подпись на архитектурном планшете.
@@ -272,16 +303,33 @@ function EmptyVitrine({ copy, hall, onHall }: { copy: MuseumCopy; hall: HallId |
             lockedHint={copy.lockedHint}
             selectedHall={hall}
             onSelectHall={onHall}
+            entered={entered}
+            onEnter={() => setEntered(true)}
+            onLeave={() => setEntered(false)}
           />
         </Suspense>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 p-5 sm:p-8 lg:p-12">
+        {/* Внутри зала заголовок во всю ширину лежит поперёк комнаты: снаружи
+            это подпись на планшете, изнутри — надпись на стене. */}
+        <div className={`pointer-events-none absolute inset-x-0 bottom-0 p-5 transition-opacity duration-500 sm:p-8 lg:p-12 ${entered ? 'opacity-0' : 'opacity-100'}`}>
           <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">{copy.firstSelection}</p>
           <h1 id="vitrine-title" className="mt-5 max-w-[7ch] font-display text-[clamp(4rem,9vw,8.5rem)] leading-[0.83] tracking-[-0.05em]">Museum</h1>
         </div>
+        {entered && (
+          <p className="pointer-events-none absolute left-5 top-5 font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--c-bg)] sm:left-8 sm:top-8">
+            {copy.insideHall}
+          </p>
+        )}
       </div>
       <div className="flex flex-col justify-between">
         {hall ? (
-          <HallPanel copy={copy} hall={hall} onClear={() => onHall(null)} />
+          <HallPanel
+            copy={copy}
+            hall={hall}
+            onClear={() => { setEntered(false); onHall(null); }}
+            entered={entered}
+            onEnter={() => setEntered(true)}
+            onLeave={() => setEntered(false)}
+          />
         ) : (
           <div className="flex flex-col gap-6 p-5 sm:p-8 lg:p-12">
             <div className="flex items-start justify-between gap-4">
