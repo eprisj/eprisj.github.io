@@ -40,7 +40,19 @@ const ROOMS: Record<HallId, Room> = {
   archive:    { w: 10.4, h: 5.6, d: 10.4, light: 'slit', furniture: 'shelves' },
   study:      { w: 7.4, h: 8.4, d: 7.4, light: 'top', furniture: 'desk' },
   court:      { w: 26, h: 0, d: 12, light: 'sky', furniture: 'benches' },
+  auditorium: { w: 15.0, h: 8.0, d: 15.0, light: 'top', furniture: 'benches' },
+  workshop:   { w: 18.0, h: 4.6, d: 6.2, light: 'top', furniture: 'plinths' },
+  terrace:    { w: 10.4, h: 0, d: 9.4, light: 'sky', furniture: 'benches' },
 };
+
+/* Куда смотрит глаз. Для прямоугольных залов это точка чуть впереди на
+   высоте роста, но в круглом зале главное лежит НИЖЕ линии взгляда: если
+   смотреть горизонтально, кадр занимает пустая стена, а амфитеатр остаётся
+   под ним. */
+export function interiorTarget(hall: HallId): [number, number, number] {
+  if (hall === 'auditorium') return [0, 0.5, -1.4];
+  return [0, 1.5, -2];
+}
 
 export function interiorEye(hall: HallId): [number, number, number] {
   const room = ROOMS[hall];
@@ -49,6 +61,15 @@ export function interiorEye(hall: HallId): [number, number, number] {
   /* Во дворе глаз стоит у воды и смотрит на фасад: спиной к зданию двор
      выглядит пустой площадкой. */
   if (hall === 'court') return [room.w * 0.12, 1.7, room.d * 0.42];
+  /* На террасе и во дворе одинаково нет потолка, но смотрят с них в разные
+     стороны: во дворе на фасад, с террасы вдоль перголы. */
+  if (hall === 'terrace') return [room.w * 0.3, 1.66, room.d * 0.4];
+  /* В лектории стоят на верхней ступени у стены: оттуда видно, как места
+     сходятся к кафедре. С пола круглого зала виден только подступенок. */
+  if (hall === 'auditorium') return [0.6, 4.25, room.w / 2 - 1.4];
+  /* Цех длинный и низкий: глаз ставим у торца, чтобы читалась длина, а не
+     ближайший верстак. */
+  if (hall === 'workshop') return [-room.w * 0.34, 1.62, room.d * 0.3];
   /* В архиве стеллажи стоят посреди комнаты: глаз ставим в проход у стены,
      иначе первый кадр — торец полки в тридцати сантиметрах от лица. */
   if (hall === 'archive') return [room.w * 0.40, 1.65, room.d * 0.40];
@@ -183,7 +204,66 @@ export function Interior({ hall }: { hall: HallId }) {
         />
       </mesh>
 
-      {room.h > 0 && (
+      {/* Лекторий круглый и снаружи, и внутри: коробка с рядами скамей внутри
+          барабана — это разные здания. Оболочка цилиндрическая, места идут
+          ступенями к центру, свет падает кольцом по краю потолка. */}
+      {hall === 'auditorium' && (
+        <group>
+          <mesh position={[0, room.h / 2 - 0.2, 0]} receiveShadow>
+            <cylinderGeometry args={[room.w / 2, room.w / 2, room.h + 0.4, 48, 1, true]} />
+            <meshStandardMaterial color={WALL} roughness={0.94} side={BackSide} />
+          </mesh>
+          <mesh position={[0, room.h - 0.2, 0]} rotation={[Math.PI / 2, 0, 0]}>
+            <circleGeometry args={[room.w / 2, 48]} />
+            <meshStandardMaterial color={WALL} roughness={0.95} side={BackSide} />
+          </mesh>
+          {/* Кольцевой фонарь по краю потолка */}
+          <mesh position={[0, room.h - 0.26, 0]} rotation={[Math.PI / 2, 0, 0]}>
+            <ringGeometry args={[room.w / 2 - 1.5, room.w / 2 - 0.45, 48]} />
+            <meshBasicMaterial color={LIGHT} side={DoubleSide} />
+          </mesh>
+          {/* Ступени мест — КОЛЬЦА, а не диски. Сплошные диски, вложенные
+             друг в друга, прячут внутренние ярусы внутри наружного, и зал
+             читался одной гладкой чашей без единой ступени. */}
+          {[0, 1, 2, 3].map((tier) => {
+            const outer = room.w / 2 - 0.8 - tier * 1.35;
+            const inner = outer - 1.35;
+            const top = 2.6 - tier * 0.7;
+            return (
+              <group key={tier}>
+                {/* проступь */}
+                <mesh position={[0, top, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+                  <ringGeometry args={[inner, outer, 48]} />
+                  <meshStandardMaterial color={PLINTH} roughness={0.9} side={DoubleSide} />
+                </mesh>
+                {/* подступенок темнее проступи, иначе ступень не видно */}
+                <mesh position={[0, top - 0.35, 0]} receiveShadow castShadow>
+                  <cylinderGeometry args={[outer, outer, 0.7, 48, 1, true]} />
+                  <meshStandardMaterial color={FLOOR} roughness={0.95} side={DoubleSide} />
+                </mesh>
+              </group>
+            );
+          })}
+
+          {/* Кафедра в центре: без неё круг не читается залом */}
+          <mesh position={[0, 0.52, 0]} castShadow receiveShadow>
+            <boxGeometry args={[0.8, 1.04, 0.55]} />
+            <meshStandardMaterial color="#6f6a62" roughness={0.9} />
+          </mesh>
+          {Array.from({ length: 6 }, (_, i) => (i / 6) * Math.PI * 2).map((angle) => (
+            <pointLight
+              key={angle}
+              position={[Math.sin(angle) * (room.w / 2 - 1.1), room.h - 0.8, Math.cos(angle) * (room.w / 2 - 1.1)]}
+              intensity={7}
+              distance={room.w * 1.6}
+              decay={2}
+              color={LIGHT}
+            />
+          ))}
+        </group>
+      )}
+
+      {room.h > 0 && hall !== 'auditorium' && (
         <>
           {/* Оболочка комнаты: одна коробка, вывернутая внутрь. Отдельные стены
               дают щели по углам ровно там, куда смотрит глаз. */}
@@ -221,7 +301,7 @@ export function Interior({ hall }: { hall: HallId }) {
       )}
 
       {/* Свет от проёмов, а не от абстрактной лампы над сценой */}
-      {room.light === 'top' && openings.map((z) => (
+      {room.light === 'top' && hall !== 'auditorium' && openings.map((z) => (
         <pointLight
           key={`l-${z}`}
           position={[0, room.h - 0.6, z]}
@@ -243,17 +323,44 @@ export function Interior({ hall }: { hall: HallId }) {
       )}
       {/* В архиве света и должно быть мало, но не настолько, чтобы не видеть,
           где стоишь. */}
-      <hemisphereLight args={['#f6f2ec', '#6f6a62', room.light === 'sky' ? 1.15 : room.light === 'slit' ? 0.5 : 0.66]} />
+      {/* В мастерской свет рабочий, а не музейный: под пилой фонарей весь день
+          ровно светло, и полумрак читался бы не цехом, а подвалом. */}
+      <hemisphereLight args={['#f6f2ec', '#6f6a62', room.light === 'sky' ? 1.15 : hall === 'workshop' ? 1.0 : room.light === 'slit' ? 0.5 : 0.66]} />
+
+      {/* Терраса — тоже под небом, но вокруг неё не двор, а пергола: тени от
+          балок и есть всё, что делает эту площадку залом. */}
+      {hall === 'terrace' && (
+        <group>
+          {Array.from({ length: 10 }, (_, i) => (i - 4.5) * (room.d / 11)).map((z) => (
+            <mesh key={z} position={[0, 3.05, z]} castShadow>
+              <boxGeometry args={[room.w * 0.72, 0.2, 0.24]} />
+              <meshStandardMaterial color="#cdc8bf" roughness={0.9} />
+            </mesh>
+          ))}
+          {[-1, 1].map((side) => (
+            <mesh key={side} position={[side * room.w * 0.34, 1.5, 0]} castShadow>
+              <boxGeometry args={[0.28, 3.0, room.d * 0.8]} />
+              <meshStandardMaterial color="#cdc8bf" roughness={0.9} />
+            </mesh>
+          ))}
+          {/* Парапет по краю: без него площадка висит в воздухе без границы. */}
+          <mesh position={[0, 0.55, -room.d / 2 + 0.3]} castShadow receiveShadow>
+            <boxGeometry args={[room.w, 1.1, 0.6]} />
+            <meshStandardMaterial color={WALL} roughness={0.94} />
+          </mesh>
+          <directionalLight position={[10, 16, 10]} intensity={1.5} color="#fff4e4" castShadow shadow-mapSize={[1024, 1024]} />
+        </group>
+      )}
 
       {room.furniture === 'plinths' && <Plinths room={room} />}
       {room.furniture === 'shelves' && <Shelves room={room} />}
       {room.furniture === 'desk' && <Desk />}
-      {room.furniture === 'benches' && <Benches room={room} />}
+      {room.furniture === 'benches' && hall !== 'auditorium' && <Benches room={room} />}
 
       {/* Двор — не комната: у него нет потолка, но есть то, ради чего в нём
           стоят. Без массы над головой это была пустая плоскость с водой,
           то есть ничего. Здесь фасад напротив и консоль, нависающая слева. */}
-      {room.light === 'sky' && (
+      {hall === 'court' && (
         <group>
           <mesh position={[0, 4.2, -room.d * 0.52]} receiveShadow castShadow>
             <boxGeometry args={[room.w, 8.4, 1.2]} />

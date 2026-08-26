@@ -20,7 +20,7 @@ import {
 } from 'three';
 import type { Group, PerspectiveCamera, Texture } from 'three';
 import { HALLS, type HallId } from './halls';
-import { Interior, interiorEye } from './Interior';
+import { Interior, interiorEye, interiorTarget } from './Interior';
 
 /* Эффекты — свой чанк на 155 КБ, и телефон его не скачивает: см. Effects.tsx */
 const Effects = lazy(() => import('./Effects'));
@@ -160,6 +160,12 @@ const BAR_RIGHT = { x: 9.4, w: 11.0 };            // archive: дальняя т�
 const CROSS = { w: 11.0, h: 6.6, d: 24.0, x: -6.0, y: 9.5, z: 2.0 };  // practice
 const TOWER = { w: 6.0, d: 6.0, h: 13.4, x: 11.6, z: -2.4 };          // study
 const POOL = { w: 26, d: 11, z: 17.0, y: -1.2 };                       // court
+/* Три объёма пристроены позже и намеренно другой природы: крест из двух
+   коробок держит силуэт, но здание из одних коробок читается схемой. Барабан
+   даёт кривую, пила — ритм, терраса — пустоту наверху. */
+const DRUM = { r: 4.8, h: 8.2, x: -11.8, z: 12.2, base: 0.9 };         // auditorium: стоит в воде двора
+const SHED = { w: 9.6, h: 4.4, d: 7.6, x: 18.6, z: 2.6 };              // workshop: низкое крыло справа
+const TERRACE_Y = 1.5 + 1.1 + 7.4;                                      // terrace: кровля правой трети
 
 /* Скруглённая коробка вместо box: идеальное ребро выдаёт компьютер, а фаска в
    пару сантиметров ловит свет и делает бетон бетоном. */
@@ -761,6 +767,229 @@ function Plinth() {
   );
 }
 
+/* БАРАБАН ЛЕКТОРИЯ.
+ *
+ * Единственная кривая во всём здании и потому главный контрапункт: рядом с
+ * ней прямые углы галерей читаются выбором, а не единственным умением
+ * автора. Стоит отдельно, на своём подиуме, и держится за корпус мостом на
+ * уровне второго этажа: зал, в который входят по воздуху.
+ */
+function Drum({ tone, onSelect, onHover }: { tone: string; onSelect: (id: HallId) => void; onHover: (id: HallId | null) => void }) {
+  const ribs = useMemo(() => Array.from({ length: 34 }, (_, i) => (i / 34) * Math.PI * 2), []);
+
+  return (
+    <group position={[DRUM.x, 0, DRUM.z]}>
+      {/* Подиум шире барабана: цилиндр, поставленный прямо на землю, выглядит
+          трубой, воткнутой в газон. */}
+      <mesh position={[0, DRUM.base / 2, 0]} receiveShadow castShadow>
+        <cylinderGeometry args={[DRUM.r + 1.7, DRUM.r + 1.9, DRUM.base, 56]} />
+        <meshStandardMaterial color={PLINTH_TONE} roughness={0.95} />
+      </mesh>
+
+      <mesh
+        position={[0, DRUM.base + DRUM.h / 2, 0]}
+        castShadow
+        receiveShadow
+        onPointerOver={(event) => { event.stopPropagation(); onHover('auditorium'); }}
+        onPointerOut={() => onHover(null)}
+        onClick={(event) => { event.stopPropagation(); onSelect('auditorium'); }}
+      >
+        <cylinderGeometry args={[DRUM.r, DRUM.r, DRUM.h, 56]} />
+        <meshStandardMaterial color={tone} roughness={0.86} metalness={0.03} envMapIntensity={0.6} />
+      </mesh>
+
+      {/* Лопатки по кругу: на цилиндре они дают не узор, а светотень, которая
+          ходит по обходу и объясняет кривизну. */}
+      {ribs.map((angle) => (
+        <mesh
+          key={angle}
+          position={[Math.sin(angle) * (DRUM.r + 0.16), DRUM.base + DRUM.h / 2, Math.cos(angle) * (DRUM.r + 0.16)]}
+          rotation={[0, angle, 0]}
+          castShadow
+        >
+          <boxGeometry args={[0.3, DRUM.h - 1.2, 0.44]} />
+          <meshStandardMaterial color={CONCRETE_LIT} roughness={0.9} />
+        </mesh>
+      ))}
+
+      {/* Разрез на всю высоту: барабан не глухой, у него есть вход и свет. */}
+      <mesh position={[0, DRUM.base + DRUM.h / 2 - 0.4, DRUM.r - 0.08]}>
+        <boxGeometry args={[2.3, DRUM.h - 2.6, 0.5]} />
+        <meshStandardMaterial color={GLASS} roughness={0.18} metalness={0.4} />
+      </mesh>
+
+      {/* Венец: у объёма должен быть верх, а не срез трубы. Тёмное стекло во
+          всю крышку делало из барабана урну с крышкой, поэтому свет приходит
+          кольцевой щелью по краю, а середина остаётся бетонной. */}
+      <mesh position={[0, DRUM.base + DRUM.h + 0.28, 0]} castShadow>
+        <cylinderGeometry args={[DRUM.r + 0.55, DRUM.r + 0.55, 0.56, 56]} />
+        <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.92} />
+      </mesh>
+      <mesh position={[0, DRUM.base + DRUM.h + 0.6, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <ringGeometry args={[DRUM.r - 1.5, DRUM.r - 0.5, 48]} />
+        <meshBasicMaterial color="#f4ead9" />
+      </mesh>
+      <mesh position={[0, DRUM.base + DRUM.h + 0.66, 0]} castShadow>
+        <cylinderGeometry args={[DRUM.r - 1.7, DRUM.r - 1.7, 0.34, 40]} />
+        <meshStandardMaterial color={CONCRETE_LIT} roughness={0.9} />
+      </mesh>
+    </group>
+  );
+}
+
+/* МОСТ. Барабан не приставлен к корпусу, а связан с ним: под мостом остаётся
+   проход, и между двумя массами появляется просвет, который их и разделяет. */
+function Bridge() {
+  /* Мостки от цоколя к барабану: короткая горизонталь над водой. Барабан,
+     приставленный к берегу, читался бы вторым зданием; связанный мостом, он
+     часть одного дома. */
+  const from = 10.0;                       // край цоколя
+  const to = DRUM.z + DRUM.r * 0.2;
+  const length = to - from;
+
+  return (
+    <group position={[DRUM.x, 0.55, from + length / 2]}>
+      <mesh castShadow receiveShadow>
+        <boxGeometry args={[3.4, 0.34, length]} />
+        <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.9} />
+      </mesh>
+      {[-1, 1].map((side) => (
+        <mesh key={side} position={[side * 1.62, 0.42, 0]} castShadow>
+          <boxGeometry args={[0.12, 0.5, length]} />
+          <meshStandardMaterial color={CONCRETE_DARK} roughness={0.94} />
+        </mesh>
+      ))}
+      <mesh position={[0, -0.75, 0]}>
+        <boxGeometry args={[0.7, 1.5, 0.7]} />
+        <meshStandardMaterial color={CONCRETE_DARK} roughness={0.94} />
+      </mesh>
+    </group>
+  );
+}
+
+/* МАСТЕРСКИЕ ПОД ПИЛОЙ.
+ *
+ * Низкий корпус позади галереи: сюда уходит всё, что в музее делают руками.
+ * Пила — не украшение, а причина: наклонные фонари смотрят на север, и в
+ * мастерской весь день ровный свет без солнца в глазах. */
+function Sawtooth({ count = 6 }: { count?: number }) {
+  const teeth = useMemo(() => Array.from({ length: count }, (_, i) => (i - (count - 1) / 2) * (SHED.w / count)), [count]);
+  const width = SHED.w / count;
+
+  return (
+    <group>
+      {teeth.map((x) => (
+        <group key={x} position={[x, SHED.h, 0]}>
+          {/* глухой скат */}
+          <mesh position={[0, 0.72, -SHED.d / 4]} rotation={[-0.62, 0, 0]} castShadow receiveShadow>
+            <boxGeometry args={[width - 0.12, 0.26, SHED.d / 1.7]} />
+            <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.93} />
+          </mesh>
+          {/* фонарь: почти вертикальное стекло на север */}
+          <mesh position={[0, 0.86, SHED.d / 4.6]} rotation={[0.24, 0, 0]}>
+            <boxGeometry args={[width - 0.5, 1.5, 0.12]} />
+            <meshStandardMaterial color={GLASS} roughness={0.16} metalness={0.42} />
+          </mesh>
+        </group>
+      ))}
+    </group>
+  );
+}
+
+function Workshop({ tone, onSelect, onHover }: { tone: string; onSelect: (id: HallId) => void; onHover: (id: HallId | null) => void }) {
+  return (
+    <group position={[SHED.x, 0, SHED.z]}>
+      <mesh position={[0, 0.3, 0]} receiveShadow>
+        <boxGeometry args={[SHED.w + 2.2, 0.6, SHED.d + 2.0]} />
+        <meshStandardMaterial color={PLINTH_TONE} roughness={0.95} />
+      </mesh>
+      <Mass
+        size={[SHED.w, SHED.h, SHED.d]}
+        position={[0, 0.6 + SHED.h / 2, 0]}
+        color={tone}
+        hallId="workshop"
+        onSelect={onSelect}
+        onHover={onHover}
+      />
+      <group position={[0, 0.6, 0]}>
+        <Sawtooth />
+      </group>
+      {/* Ворота цеха: одна большая створка вместо ряда окон. */}
+      <mesh position={[SHED.w * 0.22, 0.6 + 1.7, SHED.d / 2 + 0.06]}>
+        <boxGeometry args={[4.6, 3.0, 0.16]} />
+        <meshStandardMaterial color={CONCRETE_DARK} roughness={0.7} metalness={0.15} />
+      </mesh>
+    </group>
+  );
+}
+
+/* ТЕРРАСА НА КРОВЛЕ.
+ *
+ * Единственный зал без потолка и стен: пергола, кадки и парапет. Нужна не
+ * ради вида сверху, а ради паузы в маршруте — между двумя закрытыми залами
+ * должно быть место, где выходят на воздух. */
+function Terrace({ x, w, d, active, onSelect, onHover }: { x: number; w: number; d: number; active: boolean; onSelect: (id: HallId) => void; onHover: (id: HallId | null) => void }) {
+  const beams = useMemo(() => Array.from({ length: 9 }, (_, i) => (i - 4) * (d * 0.72 / 9)), [d]);
+  const planters = useMemo(() => [-w * 0.3, 0, w * 0.3], [w]);
+
+  return (
+    <group position={[x, TERRACE_Y, 0]}>
+      {/* Настил: тёплая плитка вместо серой кровли, чтобы сверху читалось
+          «сюда выходят», а не «здесь оборудование». */}
+      <mesh position={[0, 0.09, 0]} receiveShadow>
+        <boxGeometry args={[w - 1.2, 0.18, d - 1.2]} />
+        <meshStandardMaterial color={active ? '#ded5c6' : '#cfc6b7'} roughness={0.94} />
+      </mesh>
+
+      {/* Пергола: стойки по краю и балки поперёк. Тень от неё и есть весь
+          интерьер этого зала. */}
+      {[-1, 1].map((side) => (
+        <mesh key={side} position={[side * (w * 0.3), 1.6, 0]} castShadow>
+          <boxGeometry args={[0.3, 3.0, d - 2.4]} />
+          <meshStandardMaterial color={CONCRETE_LIT} roughness={0.9} />
+        </mesh>
+      ))}
+      {beams.map((z) => (
+        <mesh key={z} position={[0, 3.14, z]} castShadow>
+          <boxGeometry args={[w * 0.66, 0.22, 0.26]} />
+          <meshStandardMaterial color={CONCRETE_LIT} roughness={0.9} />
+        </mesh>
+      ))}
+
+      {planters.map((z) => (
+        <group key={z} position={[-w * 0.14, 0.5, z]}>
+          <mesh castShadow receiveShadow>
+            <boxGeometry args={[1.5, 0.8, 1.5]} />
+            <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.94} />
+          </mesh>
+          <mesh position={[0, 0.62, 0]} castShadow>
+            <sphereGeometry args={[0.82, 12, 10]} />
+            <meshStandardMaterial color="#8fa07a" roughness={0.95} flatShading />
+          </mesh>
+        </group>
+      ))}
+
+      {/* Скамья вдоль парапета */}
+      <mesh position={[w * 0.2, 0.44, 0]} castShadow receiveShadow>
+        <boxGeometry args={[0.9, 0.36, d * 0.5]} />
+        <meshStandardMaterial color={GOLD} roughness={0.85} />
+      </mesh>
+
+      {/* Кликается сама плоскость: у террасы нет массы, по которой попасть. */}
+      <mesh
+        position={[0, 0.3, 0]}
+        rotation={[-Math.PI / 2, 0, 0]}
+        onPointerOver={(event) => { event.stopPropagation(); onHover('terrace'); }}
+        onPointerOut={() => onHover(null)}
+        onClick={(event) => { event.stopPropagation(); onSelect('terrace'); }}
+      >
+        <planeGeometry args={[w - 1.2, d - 1.2]} />
+        <meshBasicMaterial transparent opacity={0} depthWrite={false} />
+      </mesh>
+    </group>
+  );
+}
+
 function Building({
   open,
   selected,
@@ -895,6 +1124,21 @@ function Building({
         <Mass size={[TOWER.w + 0.5, 0.5, TOWER.d + 0.5]} position={[TOWER.x, PLINTH.h + TOWER.h + 0.72, TOWER.z]} color={CONCRETE_DEEP} radius={0.06} />
       </group>
 
+      {/* ЛЕКТОРИЙ, МАСТЕРСКИЕ И ТЕРРАСА. Крест из двух галерей остаётся
+          главным, но композиция перестала быть симметричной: слева круглый
+          объём на отлёте, сзади низкая пила, сверху пустая площадка. */}
+      <Drum tone={tone('auditorium', CONCRETE)} onSelect={onSelect} onHover={onHover} />
+      <Bridge />
+      <Workshop tone={tone('workshop', CONCRETE_DEEP)} onSelect={onSelect} onHover={onHover} />
+      <Terrace
+        x={BAR_RIGHT.x}
+        w={BAR_RIGHT.w}
+        d={BAR.d}
+        active={selected === 'terrace' || hovered === 'terrace'}
+        onSelect={onSelect}
+        onHover={onHover}
+      />
+
       <Parapet x={BAR.x} z={0} w={BAR.w} d={BAR.d} y={BAR.y + 1.1 + BAR.h} />
       <Figures />
       <Trees />
@@ -936,9 +1180,15 @@ function HallPins({
   const { size } = useThree();
   if (size.width < 520) return null;
 
+  /* Залов стало восемь, и в выбранном состоянии камера подходит вплотную:
+     подписи наезжали друг на друга и на само здание. Пока зал не выбран,
+     подписи работают картой; как только зал выбран, его имя уже стоит
+     заголовком в колонке, и на макете остаётся один пин. */
+  const shown = selected ? HALLS.filter((hall) => hall.id === selected) : HALLS;
+
   return (
     <>
-      {HALLS.map((hall) => {
+      {shown.map((hall) => {
         const active = selected === hall.id || hovered === hall.id;
         return (
           <Html key={hall.id} position={[hall.focus[0], hall.focus[1] - 6.4, hall.focus[2]]} center zIndexRange={[8, 0]}>
@@ -993,7 +1243,8 @@ function InteriorRig({ hall }: { hall: HallId }) {
     perspective.near = 0.1;
     perspective.far = 120;
     perspective.updateProjectionMatrix();
-    orbit.target.set(0, 1.5, -2);
+    const [tx, ty, tz] = interiorTarget(hall);
+    orbit.target.set(tx, ty, tz);
     orbit.update?.();
     settled.current = hall;
   });
@@ -1322,7 +1573,7 @@ export function MuseumModel({
           <ContextGuard onLost={handleLost} onRestored={() => { setContextLost(false); setCanvasKey((n) => n + 1); }} />
           <HeavyProbe onChange={setHeavy} />
           <ReflectionContext.Provider value={reflection}>
-          {entered && selectedHall ? <InteriorRig hall={selectedHall} /> : <CameraRig open={open} radius={21} focusY={focusY} />}
+          {entered && selectedHall ? <InteriorRig hall={selectedHall} /> : <CameraRig open={open} radius={25.5} focusY={focusY} />}
 
           {/* Свет как в полдень над макетом: одно жёсткое солнце даёт тень,
               холодное небо сверху вынимает верхние грани, тёплый отражённый
