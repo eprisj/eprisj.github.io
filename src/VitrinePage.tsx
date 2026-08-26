@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { getFuturoshock, subscribeContent, type FuturoshockWork } from './data';
 import { HALLS, type HallId } from './museum/halls';
@@ -271,7 +271,7 @@ function HallPanel({ copy, hall, onClear, entered, onEnter, onLeave }: {
       <button
         type="button"
         onClick={entered ? onLeave : onEnter}
-        className="inline-flex min-h-12 items-center justify-center self-start border border-[var(--c-accent)] px-6 font-mono text-[10px] uppercase tracking-[0.16em] transition hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]"
+        className="inline-flex min-h-11 items-center justify-center self-start border border-[var(--c-accent)] px-5 font-mono text-[9px] uppercase tracking-[0.16em] transition hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]"
       >
         {entered ? copy.leaveHall : copy.enterHall}
       </button>
@@ -281,6 +281,16 @@ function HallPanel({ copy, hall, onClear, entered, onEnter, onLeave }: {
 
 function EmptyVitrine({ copy, hall, onHall }: { copy: MuseumCopy; hall: HallId | null; onHall: (id: HallId | null) => void }) {
   const [entered, setEntered] = useState(false);
+  const stageRef = useRef<HTMLDivElement>(null);
+
+  /* Нажать «войти» и остаться смотреть на абзац — это и есть «нажимаю, а где
+     комната». После входа страница подводит к самому залу. */
+  const enterHall = () => {
+    setEntered(true);
+    requestAnimationFrame(() => {
+      stageRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  };
   /* Вышли из зала — вышли и из комнаты: состояние не должно пережить смену
      зала, иначе следующий зал открывается уже изнутри чужой комнаты. */
   useEffect(() => { setEntered(false); }, [hall]);
@@ -296,6 +306,7 @@ function EmptyVitrine({ copy, hall, onHall }: { copy: MuseumCopy; hall: HallId |
           выглядел не композицией, а вырезом. Мягкий радиальный переход даёт
           свет за зданием и уводит углы в тень. */}
       <div
+        ref={stageRef}
         className="relative min-h-[28rem] overflow-hidden border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] sm:min-h-[34rem] lg:min-h-[42rem] lg:border-b-0 lg:border-r"
         style={{
           background:
@@ -307,13 +318,14 @@ function EmptyVitrine({ copy, hall, onHall }: { copy: MuseumCopy; hall: HallId |
             label={copy.modelLabel}
             openLabel={copy.openLabel}
             closeLabel={copy.closeLabel}
+            leaveLabel={copy.leaveHall}
             insideLabel={copy.insideLabel}
             labels={copy.legend}
             lockedHint={copy.lockedHint}
             selectedHall={hall}
             onSelectHall={onHall}
             entered={entered}
-            onEnter={() => setEntered(true)}
+            onEnter={enterHall}
             onLeave={() => setEntered(false)}
           />
         </Suspense>
@@ -332,7 +344,7 @@ function EmptyVitrine({ copy, hall, onHall }: { copy: MuseumCopy; hall: HallId |
         {entered && (
           /* Светлый текст поверх светлой стены зала не читался: подпись
              получает свою плашку, как и остальные надписи над холстом. */
-          <p className="pointer-events-none absolute left-5 top-5 border border-[var(--c-accent)] bg-[var(--c-bg)] px-2 py-1 font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--c-accent)] shadow-[0_1px_6px_rgb(0_0_0_/_0.2)] sm:left-8 sm:top-8">
+          <p className="pointer-events-none absolute left-4 top-4 flex min-h-9 items-center border border-[rgb(var(--c-accent-rgb)_/_0.45)] bg-[rgb(var(--c-bg-rgb)_/_0.92)] px-3 font-mono text-[8px] uppercase tracking-[0.16em] text-[var(--c-accent)] backdrop-blur-[2px] sm:left-6 sm:top-6">
             {copy.insideHall}
           </p>
         )}
@@ -344,7 +356,7 @@ function EmptyVitrine({ copy, hall, onHall }: { copy: MuseumCopy; hall: HallId |
             hall={hall}
             onClear={() => { setEntered(false); onHall(null); }}
             entered={entered}
-            onEnter={() => setEntered(true)}
+            onEnter={enterHall}
             onLeave={() => setEntered(false)}
           />
         ) : (
