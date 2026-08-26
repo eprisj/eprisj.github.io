@@ -1670,7 +1670,26 @@ export function MuseumModel({
               никакой HDRI-файл не грузится, но у бетона появляется небо, от
               которого он берёт цвет, и земля, от которой берёт отсвет. Без
               этого теневые грани были одинаково мёртвыми. */}
-          {!entered && <Environment frames={1} resolution={128} background={false}>
+          {/* ОКРУЖЕНИЕ ОДНО НА ОБА СОСТОЯНИЯ.
+           *
+           * Внутри зала оно было своим, объявленным в Interior, и не работало:
+           * при входе наружное окружение размонтировалось ПОСЛЕ того, как
+           * внутреннее встало, и своей уборкой стирало сцене environment. У
+           * металла не оставалось ничего для отражения, и бронза с кольцом
+           * выходили чёрными. Теперь окружение одно, а состав светящихся
+           * плоскостей меняется по ключу: снятие карты происходит один раз на
+           * каждое состояние. */}
+          <Environment key={entered ? 'inside' : 'outside'} frames={1} resolution={entered ? 64 : 128} background={false}>
+          {entered ? (
+            <>
+              {/* В зале отражать нечему, кроме самого зала: потолок со светом,
+                  светлая стена сбоку и тёмный пол под ногами. */}
+              <Lightformer form="rect" intensity={3.4} color="#fff4e6" position={[0, 6, 0]} scale={[16, 16, 1]} rotation={[Math.PI / 2, 0, 0]} />
+              <Lightformer form="rect" intensity={1.3} color="#d8dde4" position={[-9, 2.6, 0]} scale={[16, 6, 1]} rotation={[0, Math.PI / 2, 0]} />
+              <Lightformer form="rect" intensity={0.3} color="#8d857a" position={[0, -2, 0]} scale={[16, 16, 1]} rotation={[-Math.PI / 2, 0, 0]} />
+            </>
+          ) : (
+          <>
             <Lightformer form="rect" intensity={1.5} color="#eaf1f8" position={[0, 22, 6]} scale={[38, 16, 1]} rotation={[-Math.PI / 2, 0, 0]} />
             <Lightformer form="rect" intensity={0.7} color="#b79a78" position={[0, -14, 0]} scale={[40, 40, 1]} rotation={[Math.PI / 2, 0, 0]} />
             <Lightformer form="rect" intensity={0.9} color="#dfe6ef" position={[-24, 6, -12]} scale={[16, 14, 1]} rotation={[0, Math.PI / 2.4, 0]} />
@@ -1681,7 +1700,9 @@ export function MuseumModel({
             {/* Диск солнца там же, где ключевой свет: в стекле и в воде должно
                 быть видно, ОТКУДА светит, иначе блики берутся ниоткуда. */}
             <Lightformer form="circle" intensity={5} color="#fff0d8" position={[26, 12, 15]} scale={[7, 7, 1]} />
-          </Environment>}
+          </>
+          )}
+          </Environment>
           {/* СВЕТ.
            *
            * Солнце стояло почти за камерой: свет падал в лоб, все грани
