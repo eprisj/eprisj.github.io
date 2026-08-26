@@ -150,8 +150,8 @@ function Fins({ w, h, y, z, x = 0, step = 1.75, depth = 0.62 }: { w: number; h: 
         </mesh>
       ))}
       {/* тёмная ниша за лопатками: без неё рёбра лежат на стене, а не стоят перед ней */}
-      <mesh position={[0, 0, -depth / 2 - 0.06]}>
-        <boxGeometry args={[w - 0.4, h - 0.9, 0.12]} />
+      <mesh position={[0, 0, -depth / 2 - 0.22]}>
+        <boxGeometry args={[w - 0.4, h - 0.9, 0.3]} />
         <meshStandardMaterial color={CONCRETE_DARK} roughness={0.95} />
       </mesh>
     </group>
@@ -196,7 +196,10 @@ function BoardMarks({ w, d, h, y, x = 0, z = 0, step = 0.9 }: { w: number; d: nu
     <group position={[x, 0, z]}>
       {rows.map((level) => (
         <mesh key={level} position={[0, level, 0]}>
-          <boxGeometry args={[w + 0.03, 0.035, d + 0.03]} />
+          {/* Выступ в полтора сантиметра давал мерцание: грани борозды и
+              стены оказывались на неразличимой для буфера глубине. Восемь
+              сантиметров читаются тем же швом и уже не спорят. */}
+          <boxGeometry args={[w + 0.16, 0.05, d + 0.16]} />
           <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.98} />
         </mesh>
       ))}
@@ -262,6 +265,120 @@ function RoofMonitors({ x, y, z, w, d }: { x: number; y: number; z: number; w: n
   );
 }
 
+/* ОСТЕКЛЁННЫЙ НИЗ.
+ *
+ * Коробка перестаёт быть коробкой, когда встаёт не на землю, а на стекло:
+ * низ уходит в тень, масса повисает, и появляется то, чего не было совсем —
+ * глубина за плоскостью фасада. Витраж отодвинут вглубь, перед ним остаются
+ * колонны, и между ними видно, что внутри есть пространство.
+ */
+function GlazedBase({ x, w, d, y, h }: { x: number; w: number; d: number; y: number; h: number }) {
+  const columns = useMemo(() => {
+    const out: number[] = [];
+    const count = Math.max(3, Math.round(w / 4.6));
+    for (let i = 0; i < count; i += 1) out.push((i - (count - 1) / 2) * (w / count));
+    return out;
+  }, [w]);
+
+  return (
+    <group position={[x, y, 0]}>
+      {/* Витраж по периметру, отодвинутый вглубь на полметра */}
+      <mesh position={[0, h / 2, 0]}>
+        <boxGeometry args={[w - 1.0, h, d - 1.0]} />
+        <meshStandardMaterial color={GLASS} roughness={0.14} metalness={0.55} envMapIntensity={1.4} />
+      </mesh>
+      {/* Тёплый свет изнутри: вечером именно он делает низ живым */}
+      <mesh position={[0, h * 0.42, (d - 1.0) / 2 - 0.12]}>
+        <planeGeometry args={[w - 3.0, h * 0.34]} />
+        <meshBasicMaterial color="#f6e6cc" transparent opacity={0.5} />
+      </mesh>
+      {columns.map((offset) => (
+        <mesh key={offset} position={[offset, h / 2, d / 2 - 0.45]} castShadow receiveShadow>
+          <boxGeometry args={[0.62, h, 0.62]} />
+          <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.9} />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+/* Парапет: у кровли должен быть край. Без него плита обрывается ножом и
+   читается срезом в редакторе, а не зданием. */
+function Parapet({ x, z, w, d, y }: { x: number; z: number; w: number; d: number; y: number }) {
+  return (
+    <group position={[x, y, z]}>
+      {[[0, d / 2], [0, -d / 2]].map(([ox, oz], index) => (
+        <mesh key={`h${index}`} position={[ox, 0.32, oz]} castShadow>
+          <boxGeometry args={[w + 0.3, 0.64, 0.3]} />
+          <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.94} />
+        </mesh>
+      ))}
+      {[[w / 2, 0], [-w / 2, 0]].map(([ox, oz], index) => (
+        <mesh key={`v${index}`} position={[ox, 0.32, oz]} castShadow>
+          <boxGeometry args={[0.3, 0.64, d + 0.3]} />
+          <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.94} />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+/* ЛЮДИ И ДЕРЕВЬЯ.
+ *
+ * Ничто не превращает объём в здание так, как человек рядом с ним: без
+ * фигуры макет остаётся предметом без размера, и три метра от тридцати
+ * отличить нечем. Фигуры условные — вертикаль и голова, — потому что
+ * подробная модель человека в этой сцене будет спорить с бетоном.
+ */
+function Figures() {
+  const people = useMemo<[number, number, number][]>(() => [
+    [-6.2, 0, 14.6], [-4.4, 0, 15.4], [3.6, 0, 13.2],
+    [8.4, 0, 12.4], [-12.0, 0, 12.8], [1.2, 0, 11.4],
+  ], []);
+
+  return (
+    <group>
+      {people.map(([x, , z], index) => (
+        <group key={index} position={[x, PLINTH.h, z]} rotation={[0, index * 1.1, 0]}>
+          <mesh position={[0, 0.78, 0]} castShadow>
+            <capsuleGeometry args={[0.16, 0.92, 4, 8]} />
+            <meshStandardMaterial color={index % 2 ? '#4a4640' : '#5e594f'} roughness={0.9} />
+          </mesh>
+          <mesh position={[0, 1.5, 0]} castShadow>
+            <sphereGeometry args={[0.13, 12, 10]} />
+            <meshStandardMaterial color="#6b665c" roughness={0.9} />
+          </mesh>
+        </group>
+      ))}
+    </group>
+  );
+}
+
+function Trees() {
+  const trees = useMemo<[number, number, number][]>(() => [
+    [-17.5, 12.6, 1.0], [-17.0, 4.4, 0.9], [16.4, 11.4, 1.05], [17.2, 3.2, 0.95],
+  ], []);
+
+  return (
+    <group>
+      {trees.map(([x, z, scale], index) => (
+        <group key={index} position={[x, PLINTH.h, z]} scale={scale}>
+          <mesh position={[0, 1.6, 0]} castShadow>
+            <cylinderGeometry args={[0.12, 0.18, 3.2, 7]} />
+            <meshStandardMaterial color="#6a6055" roughness={0.95} />
+          </mesh>
+          {[0, 1, 2].map((level) => (
+            <mesh key={level} position={[(level - 1) * 0.32, 3.4 + level * 0.62, (index % 2 ? 1 : -1) * level * 0.28]} castShadow>
+              <icosahedronGeometry args={[1.25 - level * 0.22, 0]} />
+              <meshStandardMaterial color={level % 2 ? '#7d8168' : '#888c72'} roughness={0.95} flatShading />
+            </mesh>
+          ))}
+        </group>
+      ))}
+    </group>
+  );
+}
+
 /* Наружная лестница с настоящими ступенями: единственная вещь в макете,
    у которой есть человеческий размер. */
 function Steps({ x, z, width = 9, count = 7 }: { x: number; z: number; width?: number; count?: number }) {
@@ -300,14 +417,16 @@ function Court({ tone }: { tone: number }) {
         />
       </mesh>
       {/* борт чаши */}
-      <mesh position={[0, POOL.y - 0.36, POOL.z]}>
-        <boxGeometry args={[POOL.w + 0.6, 0.7, POOL.d + 0.6]} />
+      <mesh position={[0, POOL.y - 0.55, POOL.z]}>
+        <boxGeometry args={[POOL.w + 0.8, 0.9, POOL.d + 0.8]} />
         <meshStandardMaterial color={CONCRETE_DARK} roughness={0.96} />
       </mesh>
       {/* подсветка выбранного зала: двор нельзя подсветить материалом воды */}
-      <mesh position={[0, POOL.y + 0.02, POOL.z]} rotation={[-Math.PI / 2, 0, 0]}>
-        <planeGeometry args={[POOL.w, POOL.d]} />
-        <meshBasicMaterial color={GOLD} transparent opacity={tone} />
+      <mesh position={[0, POOL.y + 0.12, POOL.z]} rotation={[-Math.PI / 2, 0, 0]} renderOrder={2}>
+        <planeGeometry args={[POOL.w - 0.4, POOL.d - 0.4]} />
+        {/* Подсветка выбранного зала лежит над водой и не участвует в споре
+            за глубину: depthWrite выключен, порядок задан явно. */}
+        <meshBasicMaterial color={GOLD} transparent opacity={tone} depthWrite={false} />
       </mesh>
     </group>
   );
@@ -406,6 +525,9 @@ function Building({
         {/* Рёбра только на ближнем фасаде и только светлые: тёмные лопатки
             превращали объём в решётку и спорили с окнами. */}
         <Fins w={BAR_LEFT.w - 1.8} h={BAR.h - 1.6} y={BAR.y + 1.9} z={BAR.d / 2 + 0.18} x={BAR_LEFT.x} />
+        {/* Низ ближней трети остеклён: масса встаёт на стекло, а не на землю */}
+        <GlazedBase x={BAR_LEFT.x} w={BAR_LEFT.w} d={BAR.d} y={BAR.y + 0.1} h={1.0} />
+
         {/* Архив глухой: одна щель на всю высоту вместо рёбер */}
         <mesh position={[BAR_RIGHT.x + 2.4, BAR.y + 1.1 + BAR.h / 2, BAR.d / 2 + 0.06]}>
           <boxGeometry args={[0.5, BAR.h - 2.8, 0.2]} />
@@ -463,6 +585,10 @@ function Building({
         </mesh>
         <Mass size={[TOWER.w + 0.5, 0.5, TOWER.d + 0.5]} position={[TOWER.x, PLINTH.h + TOWER.h + 0.72, TOWER.z]} color={CONCRETE_DEEP} radius={0.06} />
       </group>
+
+      <Parapet x={BAR.x} z={0} w={BAR.w} d={BAR.d} y={BAR.y + 1.1 + BAR.h} />
+      <Figures />
+      <Trees />
 
       {/* Перекрытия видно только в раскрытом состоянии */}
       {open && (
@@ -534,9 +660,12 @@ function SiteContours() {
   return (
     <group position={[0, -6.72, 0]} rotation={[-Math.PI / 2, 0, 0]}>
       {rings.map((radius, index) => (
-        <mesh key={radius} position={[0, 0, index * 0.002]}>
+        <mesh key={radius} position={[0, 0, index * 0.02]} renderOrder={1}>
           <ringGeometry args={[radius, radius + 0.05, 128]} />
-          <meshBasicMaterial color={GOLD} transparent opacity={0.3 - index * 0.06} side={DoubleSide} />
+          {/* Кольца лежали в двух миллиметрах друг от друга и от земли —
+              буфер глубины такую разницу не различает. Разносим и снимаем
+              их с записи глубины: это разметка, а не поверхность. */}
+          <meshBasicMaterial color={GOLD} transparent opacity={0.3 - index * 0.06} side={DoubleSide} depthWrite={false} />
         </mesh>
       ))}
     </group>
