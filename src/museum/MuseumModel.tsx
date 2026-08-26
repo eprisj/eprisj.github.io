@@ -611,25 +611,140 @@ function Parapet({ x, z, w, d, y }: { x: number; z: number; w: number; d: number
  * отличить нечем. Фигуры условные — вертикаль и голова, — потому что
  * подробная модель человека в этой сцене будет спорить с бетоном.
  */
-function Figures() {
-  const people = useMemo<[number, number, number][]>(() => [
-    [-6.2, 0, 14.6], [-4.4, 0, 15.4], [3.6, 0, 13.2],
-    [8.4, 0, 12.4], [-12.0, 0, 12.8], [1.2, 0, 11.4],
-  ], []);
+/* ЛЮДИ.
+ *
+ * Капсула с шаром на макушке — это не человек, а снеговик, и рядом с ним
+ * здание теряет масштаб: глаз не верит фигуре и перестаёт верить размеру.
+ * Силуэт собирается из четырёх масс: ноги, корпус с плечами, голова. Позы
+ * заданы числами, а не случайностью: кто-то идёт, кто-то стоит, и шаг у
+ * идущих разный. Полигонов по-прежнему считанные десятки.
+ */
+function Figure({ walk, tint }: { walk: number; tint: string }) {
+  const stride = walk * 0.26;
 
   return (
     <group>
-      {people.map(([x, , z], index) => (
-        <group key={index} position={[x, PLINTH.h, z]} rotation={[0, index * 1.1, 0]}>
-          <mesh position={[0, 0.78, 0]} castShadow>
-            <capsuleGeometry args={[0.16, 0.92, 4, 8]} />
-            <meshStandardMaterial color={index % 2 ? '#4a4640' : '#5e594f'} roughness={0.9} />
-          </mesh>
-          <mesh position={[0, 1.5, 0]} castShadow>
-            <sphereGeometry args={[0.13, 12, 10]} />
-            <meshStandardMaterial color="#6b665c" roughness={0.9} />
-          </mesh>
+      {/* ноги: у идущего разведены, у стоящего почти вместе */}
+      {[-1, 1].map((side) => (
+        <mesh
+          key={side}
+          position={[side * 0.075, 0.4, side * stride]}
+          rotation={[side * walk * 0.32, 0, 0]}
+          castShadow
+        >
+          <boxGeometry args={[0.135, 0.82, 0.16]} />
+          <meshStandardMaterial color={tint} roughness={0.92} />
+        </mesh>
+      ))}
+      {/* корпус сужается к поясу, плечи шире бёдер */}
+      <mesh position={[0, 1.09, 0]} castShadow>
+        <cylinderGeometry args={[0.19, 0.145, 0.62, 10]} />
+        <meshStandardMaterial color={tint} roughness={0.9} />
+      </mesh>
+      <mesh position={[0, 1.36, 0]} castShadow>
+        <boxGeometry args={[0.42, 0.1, 0.19]} />
+        <meshStandardMaterial color={tint} roughness={0.9} />
+      </mesh>
+      {/* руки вдоль корпуса: без них плечи заканчиваются обрывом */}
+      {[-1, 1].map((side) => (
+        <mesh
+          key={`a${side}`}
+          position={[side * 0.235, 1.06, -side * stride * 0.5]}
+          rotation={[-side * walk * 0.3, 0, side * 0.06]}
+          castShadow
+        >
+          <boxGeometry args={[0.095, 0.6, 0.115]} />
+          <meshStandardMaterial color={tint} roughness={0.92} />
+        </mesh>
+      ))}
+      <mesh position={[0, 1.52, 0]} castShadow>
+        <capsuleGeometry args={[0.098, 0.1, 3, 8]} />
+        <meshStandardMaterial color="#6b665c" roughness={0.9} />
+      </mesh>
+    </group>
+  );
+}
+
+function Figures() {
+  const people = useMemo(
+    () => [
+      { x: -6.2, z: 14.6, turn: 0.4, walk: 1, scale: 1.0 },
+      { x: -4.4, z: 15.4, turn: 2.3, walk: 0, scale: 0.94 },
+      { x: 3.6, z: 13.2, turn: 4.1, walk: 1, scale: 1.04 },
+      { x: 8.4, z: 12.4, turn: 1.1, walk: 0, scale: 0.98 },
+      { x: -12.0, z: 12.8, turn: 5.2, walk: 1, scale: 1.02 },
+      { x: 1.2, z: 11.4, turn: 3.0, walk: 0, scale: 0.9 },
+      /* Двое у входа и один на ступенях: люди собираются там, где вход, а не
+         стоят ровным полем по двору. */
+      { x: -4.6, z: 10.4, turn: 2.0, walk: 0, scale: 1.0 },
+      { x: -3.4, z: 10.9, turn: 3.6, walk: 0, scale: 0.96 },
+      { x: -5.8, z: 9.2, turn: 0.8, walk: 1, scale: 1.01 },
+    ],
+    [],
+  );
+
+  return (
+    <group>
+      {people.map((person, index) => (
+        <group
+          key={index}
+          position={[person.x, PLINTH.h, person.z]}
+          rotation={[0, person.turn, 0]}
+          scale={person.scale}
+        >
+          <Figure walk={person.walk} tint={index % 3 === 0 ? '#4a4640' : index % 3 === 1 ? '#5e594f' : '#565248'} />
         </group>
+      ))}
+    </group>
+  );
+}
+
+/* Крона одной массой: три икосаэдра со смещением. Используется и деревом, и
+   кадками на террасе — кустик из одной сферы читался мячом. */
+function Canopy({ size, tint = 0 }: { size: number; tint?: number }) {
+  const lobes = useMemo(
+    () =>
+      [
+        [0, 0, 0, 1],
+        [0.52, -0.28, 0.2, 0.72],
+        [-0.44, -0.22, -0.3, 0.66],
+      ] as [number, number, number, number][],
+    [],
+  );
+  const tones = ['#7f8a6a', '#8c9576', '#74805f'];
+
+  return (
+    <group>
+      {lobes.map(([lx, ly, lz, factor], index) => (
+        <mesh
+          key={index}
+          position={[lx * size, ly * size, lz * size]}
+          scale={[1, 0.82, 1]}
+          castShadow
+          receiveShadow
+        >
+          <icosahedronGeometry args={[size * factor, 1]} />
+          <meshStandardMaterial color={tones[(index + tint) % 3]} roughness={0.95} flatShading />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+/* СКАМЬЯ ВО ДВОРЕ. Двор был площадкой с водой, на которой негде сесть, а
+   значит и незачем стоять. */
+function Bench({ position, turn = 0 }: { position: [number, number, number]; turn?: number }) {
+  return (
+    <group position={position} rotation={[0, turn, 0]}>
+      <mesh position={[0, 0.42, 0]} castShadow receiveShadow>
+        <boxGeometry args={[2.6, 0.14, 0.62]} />
+        <meshStandardMaterial color={GOLD} roughness={0.86} />
+      </mesh>
+      {[-1, 1].map((side) => (
+        <mesh key={side} position={[side * 1.05, 0.2, 0]} castShadow>
+          <boxGeometry args={[0.22, 0.4, 0.52]} />
+          <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.94} />
+        </mesh>
       ))}
     </group>
   );
@@ -692,14 +807,9 @@ function Trees() {
             </mesh>
           ))}
           {canopy.map(([cx, cy, cz, size], leaf) => (
-            <mesh key={leaf} position={[cx, cy, cz]} scale={[1, 0.82, 1]} castShadow receiveShadow>
-              <icosahedronGeometry args={[size, 1]} />
-              <meshStandardMaterial
-                color={leaf % 3 === 0 ? '#7f8a6a' : leaf % 3 === 1 ? '#8c9576' : '#74805f'}
-                roughness={0.95}
-                flatShading
-              />
-            </mesh>
+            <group key={leaf} position={[cx, cy, cz]}>
+              <Canopy size={size} tint={leaf} />
+            </group>
           ))}
         </group>
       ))}
@@ -717,6 +827,20 @@ function Steps({ x, z, width = 9, count = 7 }: { x: number; z: number; width?: n
         <mesh key={index} position={[0, PLINTH.h - 0.24 - index * 0.32, index * 0.62]} receiveShadow castShadow>
           <boxGeometry args={[width, 0.32, 0.62]} />
           <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.94} />
+        </mesh>
+      ))}
+      {/* Щёки лестницы: марш без них висит стопкой плит в воздухе, и с любой
+          точки видно, что это не лестница, а гребёнка. */}
+      {[-1, 1].map((side) => (
+        <mesh
+          key={side}
+          position={[side * (width / 2 + 0.16), PLINTH.h - 0.24 - ((count - 1) * 0.32) / 2, ((count - 1) * 0.62) / 2]}
+          rotation={[Math.atan2(count * 0.32, count * 0.62), 0, 0]}
+          castShadow
+          receiveShadow
+        >
+          <boxGeometry args={[0.3, 0.52, Math.hypot(count * 0.62, count * 0.32)]} />
+          <meshStandardMaterial color={CONCRETE_DARK} roughness={0.95} />
         </mesh>
       ))}
     </group>
@@ -981,10 +1105,9 @@ function Terrace({ x, w, d, active, onSelect, onHover }: { x: number; w: number;
             <boxGeometry args={[1.5, 0.8, 1.5]} />
             <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.94} />
           </mesh>
-          <mesh position={[0, 0.62, 0]} castShadow>
-            <sphereGeometry args={[0.82, 12, 10]} />
-            <meshStandardMaterial color="#8fa07a" roughness={0.95} flatShading />
-          </mesh>
+          <group position={[0, 1.05, 0]}>
+            <Canopy size={0.62} />
+          </group>
         </group>
       ))}
 
@@ -1236,6 +1359,26 @@ function Building({
       />
 
       <Parapet x={BAR.x} z={0} w={BAR.w} d={BAR.d} y={BAR.y + 1.1 + BAR.h} />
+      {/* Скамьи по кромке двора: площадка, на которой негде сесть, — площадка,
+          на которой незачем стоять. */}
+      {/* Столбики по кромке цоколя и блоки вентиляции на кровле архива. На
+          дальнем плане именно такая мелочь отличает здание от макета: у
+          здания есть край площадки и есть техника наверху. */}
+      {Array.from({ length: 9 }, (_, i) => -14 + i * 3.6).map((bx) => (
+        <mesh key={bx} position={[bx, PLINTH.h + 0.34, PLINTH.d / 2 - 0.5]} castShadow>
+          <cylinderGeometry args={[0.11, 0.13, 0.68, 8]} />
+          <meshStandardMaterial color={CONCRETE_DARK} roughness={0.9} metalness={0.12} />
+        </mesh>
+      ))}
+      {[[13.4, -3.4, 2.2, 1.5], [15.8, -1.0, 1.3, 1.1], [12.2, -6.2, 1.6, 0.9]].map(([bx, bz, bw, bd]) => (
+        <mesh key={`${bx}-${bz}`} position={[bx, 1.5 + 1.1 + 7.4 + 0.55, bz]} castShadow receiveShadow>
+          <boxGeometry args={[bw, 1.1, bd]} />
+          <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.93} />
+        </mesh>
+      ))}
+
+      <Bench position={[-9.4, PLINTH.h - 1.5, 13.6]} turn={0.18} />
+      <Bench position={[4.8, PLINTH.h - 1.5, 14.4]} turn={-0.32} />
       <Figures />
       <Trees />
 
