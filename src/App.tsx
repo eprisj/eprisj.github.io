@@ -49,6 +49,7 @@ import {
 } from './data';
 import { DEFAULT_HOMEPAGE_PICS_CATEGORIES } from './data';
 import { SupportJournal } from './components/SupportJournal';
+import { useLockedPageScroll } from './hooks/useLockedPageScroll';
 import type { HomepageArchiveEntry, HomepagePicsCategory, HomepageSectionKey, SiteSettings, SiteTheme, VisibilitySectionKey } from './data';
 import { Search, ArrowUpRight, FileText, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, ArrowRight, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
 
@@ -133,6 +134,8 @@ function GalleryItemView({ item, onClose, articles, onReadArticle }: { item: Ite
     ? item.images
     : [{ url: resolveMediaSource(item.imageUrl || item.imageSeed, 1000, 750) }];
   const matchedArticle = findMatchingArticle(item, articles);
+
+  useLockedPageScroll();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -2383,6 +2386,9 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   // перебивает подпись автора, а стоит отдельной карточкой под ней.
   const contributor = article.contributorId ? resolveAuthor({ authorId: article.contributorId }) : null;
 
+  // The overlay is the only scroller while it is open — see the hook.
+  useLockedPageScroll();
+
   // Jumping to a related article swaps content inside the same overlay — snap
   // the scroll back to the top so the reader starts at the new article's hero.
   useEffect(() => {
@@ -3307,6 +3313,8 @@ function ReviewView({ review, t, onClose, currentLang }: { review: Review; t: (k
   const authorProfile = isMatchingProfile ? resolvedAuthor : null;
   const authorRole = translateRole(review.role || authorProfile?.role, currentLang);
   const authorPhoto = authorProfile?.photoUrl;
+
+  useLockedPageScroll();
 
   return <motion.article initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} className="fixed inset-0 z-[90] overflow-y-auto bg-[var(--c-bg)]">
     <div className="mx-auto max-w-5xl px-5 py-6 sm:px-10 sm:py-10"><button onClick={onClose} className="mb-12 inline-flex min-h-11 items-center gap-2 font-mono text-[10px] uppercase tracking-widest"><ArrowLeft size={15} /> {t('nav.reviews')}</button>

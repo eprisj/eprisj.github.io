@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect, useRef } from 'react'
 import { Play, Pause, X, ChevronRight, Mic2 } from 'lucide-react'
+import { useLockedPageScroll } from '../hooks/useLockedPageScroll'
 
 const API = 'https://eprisradio.munister.com.ua'
 
@@ -100,6 +101,8 @@ function EpisodeCard({ ep, onClick, t }: { ep: Podcast; onClick: () => void; t: 
 function EpisodeDetail({ ep, onClose, t }: { ep: Podcast; onClose: () => void; t: (k: string) => string }) {
   const { playing, progress, duration, toggle, seek, fmtTime } = useAudioPlayer(ep.audio_url)
   const cover = ep.cover_url ?? `https://picsum.photos/seed/epris-ep-${ep.id}/800/800?grayscale`
+
+  useLockedPageScroll()
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
