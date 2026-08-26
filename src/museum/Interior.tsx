@@ -47,6 +47,9 @@ export function interiorEye(hall: HallId): [number, number, number] {
   /* Глаз стоит внутри у дальней стены и смотрит вдоль зала: длинную галерею
      нужно видеть в длину, а не упираться в стену. */
   if (hall === 'court') return [0, 2.2, room.d * 0.62];
+  /* В архиве стеллажи стоят посреди комнаты: глаз ставим в проход у стены,
+     иначе первый кадр — торец полки в тридцати сантиметрах от лица. */
+  if (hall === 'archive') return [room.w * 0.40, 1.65, room.d * 0.40];
   return [room.w * 0.24, 1.65, room.d * 0.42];
 }
 
@@ -211,9 +214,11 @@ export function Interior({ hall }: { hall: HallId }) {
         <pointLight key={`s-${z}`} position={[-room.w / 2 + 1.4, room.h * 0.58, z]} intensity={9} distance={room.w * 2.2} decay={2} color={LIGHT} />
       ))}
       {room.light === 'slit' && (
-        <pointLight position={[0, room.h * 0.5, room.d / 2 - 1]} intensity={16} distance={room.d * 1.6} decay={2} color={LIGHT} />
+        <pointLight position={[0, room.h * 0.5, room.d / 2 - 1]} intensity={30} distance={room.d * 2.2} decay={2} color={LIGHT} />
       )}
-      <hemisphereLight args={['#f6f2ec', '#6f6a62', room.light === 'sky' ? 1.15 : 0.66]} />
+      {/* В архиве света и должно быть мало, но не настолько, чтобы не видеть,
+          где стоишь. */}
+      <hemisphereLight args={['#f6f2ec', '#6f6a62', room.light === 'sky' ? 1.15 : room.light === 'slit' ? 0.5 : 0.66]} />
 
       {room.furniture === 'plinths' && <Plinths room={room} />}
       {room.furniture === 'shelves' && <Shelves room={room} />}
