@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { BackSide, DoubleSide, Object3D } from 'three';
 import type { HallId } from './halls';
+import type { MuseumObject } from '../data';
 
 /* ИНТЕРЬЕР ЗАЛА.
  *
@@ -268,6 +269,82 @@ function WorkLight({ x, z, height, sharp }: { x: number; z: number; height: numb
   );
 }
 
+/* РАССТАНОВКА ИЗ АДМИНКИ.
+ *
+ * Пока редакция ничего не расставила, зал показывает свою заготовку: пустой
+ * зал читается недоделанным, а не «ещё не открытым». Как только для зала
+ * появился хоть один предмет, заготовка уходит целиком — иначе редактор
+ * двигает вещи, а рядом стоят чужие, которые он не может ни убрать, ни
+ * подвинуть.
+ */
+function PlacedWork({ item, room }: { item: MuseumObject; room: Room }) {
+  const scale = item.scale && item.scale > 0 ? item.scale : 1;
+  const stand = item.stand || 'plinth';
+  const rot = item.rot || 0;
+
+  if (item.kind === 'canvas') {
+    const w = (item.width || 1.2) * scale;
+    const h = (item.height || 0.9) * scale;
+    const wall = item.wall || 'left';
+    const facing = wall === 'right' ? -1 : 1;
+    const position: [number, number, number] =
+      wall === 'back'
+        ? [item.x, room.h * 0.52, -room.d / 2 + 0.1]
+        : [(wall === 'right' ? room.w / 2 - 0.06 : -room.w / 2 + 0.06) + facing * 0.1, room.h * 0.52, item.z];
+    const rotation: [number, number, number] = wall === 'back' ? [0, 0, 0] : [0, (facing * Math.PI) / 2, 0];
+
+    return (
+      <group position={position} rotation={rotation}>
+        <mesh castShadow receiveShadow>
+          <boxGeometry args={[w, h, 0.09]} />
+          <meshStandardMaterial color="#e6e0d4" roughness={0.92} />
+        </mesh>
+        <mesh position={[0, 0, 0.05]}>
+          <planeGeometry args={[Math.max(0.1, w - 0.14), Math.max(0.1, h - 0.14)]} />
+          <meshStandardMaterial color={item.tone || CANVAS_TONES[0]} roughness={0.86} />
+        </mesh>
+      </group>
+    );
+  }
+
+  /* Подиум — часть расстановки, а не декорация зала: предмет «на полу» и
+     предмет «на подиуме» это разные высказывания, и решает их редактор. */
+  const plinthHeight = stand === 'plinth' ? 0.45 : 0;
+  const top = plinthHeight;
+
+  return (
+    <group position={[item.x, 0, item.z]} rotation={[0, rot, 0]}>
+      {stand === 'plinth' && (
+        <mesh position={[0, plinthHeight / 2, 0]} castShadow receiveShadow>
+          <boxGeometry args={[1.15 * scale, plinthHeight, 1.15 * scale]} />
+          <meshStandardMaterial color={PLINTH} roughness={0.9} />
+        </mesh>
+      )}
+      <group scale={scale}>
+        {item.kind === 'bronze' && <BronzeSheet position={[0, (top + 0.85) / scale, 0]} />}
+        {item.kind === 'stone' && <StoneBlock position={[0, (top + 0.63) / scale, 0]} />}
+        {item.kind === 'steel' && <SteelRing position={[0, (top + 0.67) / scale, 0]} />}
+        {item.kind === 'vitrine' && <Vitrine position={[0, (top + 0.5) / scale, 0]} />}
+      </group>
+    </group>
+  );
+}
+
+function PlacedWorks({ items, room, height }: { items: MuseumObject[]; room: Room; height: number }) {
+  return (
+    <group>
+      {items.map((item) => (
+        <PlacedWork key={item.id} item={item} room={room} />
+      ))}
+      {items
+        .filter((item) => item.kind !== 'canvas')
+        .map((item) => (
+          <WorkLight key={`l-${item.id}`} x={item.x} z={item.z} height={height} sharp />
+        ))}
+    </group>
+  );
+}
+
 function Works({ room, hall }: { room: Room; hall: HallId }) {
   /* Работы стоят на тех же подиумах, что уже расставлены по залу: сначала
      подиум, потом вещь на нём, а не вещь, парящая рядом.
@@ -399,8 +476,9 @@ function Benches({ room }: { room: Room }) {
   );
 }
 
-export function Interior({ hall }: { hall: HallId }) {
+export function Interior({ hall, objects = [] }: { hall: HallId; objects?: MuseumObject[] }) {
   const room = ROOMS[hall];
+  const placed = useMemo(() => objects.filter((item) => item.hall === hall), [objects, hall]);
   const tone = HALL_TONE[hall] ?? { wall: WALL, floor: FLOOR };
 
   /* Свет входит там же, где в наружном объёме есть проём: иначе интерьер
@@ -585,9 +663,11 @@ export function Interior({ hall }: { hall: HallId }) {
       )}
 
       {room.furniture === 'plinths' && <Plinths room={room} hall={hall} />}
-      {/* Коллекция и практика — единственные залы, где уже что-то стоит:
-          архив и кабинет по смыслу пустые, мастерская пока рабочая. */}
-      {(hall === 'collection' || hall === 'practice') && <Works room={room} hall={hall} />}
+      {/* Расставленное редакцией важнее заготовки: как только в зале есть
+          хоть один предмет из админки, показываем только его. */}
+      {placed.length > 0
+        ? <PlacedWorks items={placed} room={room} height={room.h || 4} />
+        : (hall === 'collection' || hall === 'practice') && <Works room={room} hall={hall} />}
       {room.furniture === 'shelves' && <Shelves room={room} />}
       {room.furniture === 'desk' && <Desk />}
       {room.furniture === 'benches' && hall !== 'auditorium' && <Benches room={room} />}

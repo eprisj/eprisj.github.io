@@ -1449,6 +1449,45 @@ export function getStudio(): Studio {
   };
 }
 
+/* ПРЕДМЕТЫ В ЗАЛАХ МУЗЕЯ.
+ *
+ * До этого работы в залах были нарисованы кодом и одинаковы для всех: макет
+ * умел показать зал, но не умел показать ЭТУ выставку. Теперь расстановку
+ * задаёт редакция в /admin/museum.html, а сцена только читает список.
+ *
+ * Координаты в метрах от центра зала: x поперёк, z вдоль. Высота не
+ * хранится — её задаёт `stand`: пол, подиум или стена. Так расстановка
+ * переживает изменение габаритов зала, чего абсолютная высота не умеет.
+ */
+export type MuseumObject = {
+  id: string;
+  hall: string;
+  kind: 'bronze' | 'stone' | 'steel' | 'vitrine' | 'canvas';
+  x: number;
+  z: number;
+  rot?: number;
+  scale?: number;
+  stand?: 'floor' | 'plinth' | 'wall';
+  wall?: 'left' | 'right' | 'back';
+  tone?: string;
+  width?: number;
+  height?: number;
+  title?: string;
+  author?: string;
+  year?: string;
+  material?: string;
+  dimensions?: string;
+  note?: string;
+  draft?: boolean;
+  publishAt?: string;
+};
+
+export function getMuseumObjects(hall?: string): MuseumObject[] {
+  const all = ((src() as { museum?: { objects?: MuseumObject[] } }).museum?.objects || [])
+    .filter((item) => item && item.id && isEntityLive(item));
+  return hall ? all.filter((item) => item.hall === hall) : all;
+}
+
 export function getFuturoshock(): FuturoshockWork[] {
   return (src().futuroshock || []).filter((work) => isEntityLive(work));
 }

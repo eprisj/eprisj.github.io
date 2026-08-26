@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Музей · расстановка · EPRIS</title>
+<style>
+  :root{--ink:#1b1b1a;--muted:#7d766e;--line:#d8d2c8;--paper:#f7f4ef;--card:#fff;--accent:#1b1b1a}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.5 system-ui,-apple-system,sans-serif}
+  main{max-width:1340px;margin:auto;padding:28px 20px 64px}
+  a{color:inherit}
+  .top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .eyebrow{font:10px/1 ui-monospace,monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+  h1{font:400 40px/1 Georgia,serif;margin:0}
+  .lede{color:var(--muted);max-width:640px;margin:10px 0 0}
+  .layout{display:grid;grid-template-columns:210px minmax(0,1fr) 330px;gap:20px;margin-top:26px;align-items:start}
+  .panel{background:var(--card);border:1px solid var(--line)}
+  .panel h2{font:10px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0;padding:14px 14px 10px}
+  /* Цвет задаётся явно: общее правило для button делает текст белым, а
+     эти кнопки стоят на белом. */
+  .hall{display:block;width:100%;text-align:left;border:0;border-top:1px solid var(--line);background:transparent;color:var(--ink);padding:11px 14px;cursor:pointer;font:inherit;letter-spacing:0;text-transform:none}
+  .hall:hover{background:#f1ece5}
+  .hall.on{background:var(--ink);color:#fff}
+  .hall small{display:block;font:10px/1.4 ui-monospace,monospace;letter-spacing:.1em;opacity:.62;margin-top:4px}
+  .plan{padding:14px}
+  .planhint{font:10px/1.5 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+  svg{width:100%;height:auto;display:block;touch-action:none;background:#efeae3;border:1px solid var(--line)}
+  .item{cursor:grab}
+  .item.sel .shape{stroke:#b8472a;stroke-width:.09}
+  .fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px}
+  label{display:grid;gap:5px;font:10px/1 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  label.wide{grid-column:1/-1}
+  input,select,textarea{font:13px/1.4 system-ui,sans-serif;letter-spacing:0;text-transform:none;color:var(--ink);border:1px solid var(--line);background:#fff;padding:8px}
+  textarea{resize:vertical}
+  input[type=range]{padding:0;border:0;background:transparent}
+  .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:0 14px 14px}
+  button{font:11px/1 ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--ink);background:var(--ink);color:#fff;padding:10px 13px;cursor:pointer}
+  button.ghost{background:transparent;color:var(--ink)}
+  button.danger{background:transparent;color:#b8472a;border-color:#b8472a}
+  button:disabled{opacity:.4;cursor:default}
+  .note{font:11px/1.5 ui-monospace,monospace;letter-spacing:.08em;color:var(--muted);padding:0 14px 14px}
+  .list{max-height:250px;overflow:auto;border-top:1px solid var(--line)}
+  .obj{display:flex;justify-content:space-between;gap:8px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);padding:9px 14px;cursor:pointer;font:inherit;letter-spacing:0;text-transform:none}
+  .obj:hover{background:#f1ece5}
+  .obj.on{background:#efe7dc}
+  .obj em{font-style:normal;color:var(--muted);font:10px/1.4 ui-monospace,monospace}
+  .bar{position:sticky;bottom:0;background:var(--paper);border-top:1px solid var(--line);padding:12px 0;margin-top:22px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .status{font:11px/1.4 ui-monospace,monospace;letter-spacing:.08em;color:var(--muted)}
+  .status.bad{color:#b8472a}
+  @media(max-width:1080px){.layout{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <div>
+      <p class="eyebrow">EPRIS Museum</p>
+      <h1>Расстановка</h1>
+      <p class="lede">План зала сверху. Предмет ставится перетаскиванием, паспорт заполняется справа. Пока в зале нет ни одного предмета, сайт показывает заготовку зала; первый сохранённый предмет её заменяет.</p>
+    </div>
+    <a href="/admin/">← Админка</a>
+  </div>
+
+  <div class="layout">
+    <div class="panel">
+      <h2>Залы</h2>
+      <div id="halls"></div>
+    </div>
+
+    <div class="panel">
+      <div class="plan">
+        <p class="planhint" id="planhint">План зала</p>
+        <svg id="plan" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
+      <div class="row">
+        <button id="add">Поставить предмет</button>
+        <button id="dup" class="ghost">Дублировать</button>
+        <button id="del" class="danger">Убрать</button>
+      </div>
+      <div class="list" id="list"></div>
+    </div>
+
+    <div class="panel">
+      <h2>Паспорт предмета</h2>
+      <div class="fields" id="form">
+        <label>Тип
+          <select id="kind">
+            <option value="bronze">Бронзовый лист</option>
+            <option value="stone">Каменный блок</option>
+            <option value="steel">Стальное кольцо</option>
+            <option value="vitrine">Витрина</option>
+            <option value="canvas">Холст на стене</option>
+          </select>
+        </label>
+        <label>Основание
+          <select id="stand">
+            <option value="plinth">Подиум</option>
+            <option value="floor">Пол</option>
+          </select>
+        </label>
+        <label id="wallWrap">Стена
+          <select id="wall">
+            <option value="left">Левая</option>
+            <option value="right">Правая</option>
+            <option value="back">Дальняя</option>
+          </select>
+        </label>
+        <label>Цвет холста<input id="tone" type="color" value="#b84b2e"></label>
+        <label>Поворот <span id="rotVal"></span><input id="rot" type="range" min="0" max="360" step="5"></label>
+        <label>Размер <span id="scaleVal"></span><input id="scale" type="range" min="50" max="200" step="5"></label>
+        <label>Ширина холста, м<input id="width" type="number" step="0.1" min="0.3"></label>
+        <label>Высота холста, м<input id="height" type="number" step="0.1" min="0.3"></label>
+        <label class="wide">Название<input id="title"></label>
+        <label>Автор<input id="author"></label>
+        <label>Год<input id="year"></label>
+        <label>Материал<input id="material"></label>
+        <label>Габариты<input id="dimensions"></label>
+        <label class="wide">Заметка<textarea id="note" rows="4"></textarea></label>
+        <label class="wide"><span><input id="draft" type="checkbox"> Черновик (не показывать на сайте)</span></label>
+      </div>
+      <p class="note" id="coords"></p>
+    </div>
+  </div>
+
+  <div class="bar">
+    <button id="save">Сохранить в контент</button>
+    <button id="reload" class="ghost">Перечитать</button>
+    <span class="status" id="status">Загрузка…</span>
+  </div>
+</main>
+
+<script>
+const API = 'https://api.eprisjournal.com/content';
+
+/* Габариты залов ДУБЛИРУЮТ ROOMS из src/museum/Interior.tsx. Дублируют
+   намеренно: админка — статическая страница, она не собирается вместе с
+   сайтом и импортировать оттуда ничего не может. Если размер зала меняется
+   в коде, его нужно поменять и здесь, иначе план соврёт про границы. */
+const HALLS = [
+  { id: 'court',      name: 'Двор',       w: 26,   d: 12   },
+  { id: 'auditorium', name: 'Лекторий',   w: 15,   d: 15   },
+  { id: 'collection', name: 'Коллекция',  w: 14.5, d: 10.4 },
+  { id: 'practice',   name: 'Практика',   w: 10.4, d: 22   },
+  { id: 'terrace',    name: 'Терраса',    w: 10.4, d: 9.4  },
+  { id: 'archive',    name: 'Архив',      w: 10.4, d: 10.4 },
+  { id: 'workshop',   name: 'Мастерские', w: 18,   d: 6.2  },
+  { id: 'study',      name: 'Кабинет',    w: 7.4,  d: 7.4  },
+];
+
+const KIND_LABEL = { bronze: 'Бронза', stone: 'Камень', steel: 'Кольцо', vitrine: 'Витрина', canvas: 'Холст' };
+
+const $ = (id) => document.getElementById(id);
+let data = null;
+let hall = 'collection';
+let sel = null;
+let dirty = false;
+
+const room = () => HALLS.find((h) => h.id === hall);
+const objects = () => (data && data.museum && Array.isArray(data.museum.objects)) ? data.museum.objects : [];
+const inHall = () => objects().filter((o) => o.hall === hall);
+const current = () => objects().find((o) => o.id === sel) || null;
+
+function pw() { try { return atob(localStorage.getItem('epris_admin_pw_saved') || ''); } catch { return ''; } }
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+function say(text, bad) { $('status').textContent = text; $('status').className = 'status' + (bad ? ' bad' : ''); }
+function mark() { dirty = true; say('Есть несохранённые правки'); }
+
+/* ПЛАН.
+ *
+ * Координаты предмета — метры от центра зала, как в сцене. План рисуется в
+ * тех же метрах (viewBox по габаритам зала), поэтому перетаскивание не
+ * требует ни одного коэффициента: сдвиг мыши в единицах плана И ЕСТЬ сдвиг
+ * в метрах. Ось Z на плане идёт вниз — так же, как смотрит камера в зале. */
+function renderPlan() {
+  const r = room();
+  const svg = $('plan');
+  const pad = 1.2;
+  svg.setAttribute('viewBox', `${-r.w / 2 - pad} ${-r.d / 2 - pad} ${r.w + pad * 2} ${r.d + pad * 2}`);
+  $('planhint').textContent = `${r.name} · ${r.w} × ${r.d} м · перетащите предмет`;
+
+  const grid = [];
+  for (let x = Math.ceil(-r.w / 2); x <= r.w / 2; x += 1) {
+    grid.push(`<line x1="${x}" y1="${-r.d / 2}" x2="${x}" y2="${r.d / 2}" stroke="#ddd6cc" stroke-width="${x === 0 ? 0.04 : 0.015}"/>`);
+  }
+  for (let z = Math.ceil(-r.d / 2); z <= r.d / 2; z += 1) {
+    grid.push(`<line x1="${-r.w / 2}" y1="${z}" x2="${r.w / 2}" y2="${z}" stroke="#ddd6cc" stroke-width="${z === 0 ? 0.04 : 0.015}"/>`);
+  }
+
+  const items = inHall().map((o) => {
+    const on = o.id === sel ? ' sel' : '';
+    const dim = o.draft ? ' opacity="0.45"' : '';
+    if (o.kind === 'canvas') {
+      const wall = o.wall || 'left';
+      const w = (o.width || 1.2) * (o.scale || 1);
+      const x = wall === 'back' ? o.x : (wall === 'right' ? r.w / 2 - 0.25 : -r.w / 2 + 0.25);
+      const z = wall === 'back' ? -r.d / 2 + 0.25 : o.z;
+      const horizontal = wall === 'back';
+      return `<g class="item${on}" data-id="${esc(o.id)}"${dim}>
+        <rect class="shape" x="${(horizontal ? x - w / 2 : x - 0.12)}" y="${(horizontal ? z - 0.12 : z - w / 2)}"
+              width="${horizontal ? w : 0.24}" height="${horizontal ? 0.24 : w}" fill="${esc(o.tone || '#b84b2e')}"/>
+      </g>`;
+    }
+    const s = 0.58 * (o.scale || 1);
+    const body = o.kind === 'steel'
+      ? `<circle class="shape" cx="0" cy="0" r="${s}" fill="none" stroke="#6f6a62" stroke-width="0.16"/>`
+      : o.kind === 'vitrine'
+        ? `<rect class="shape" x="${-s}" y="${-s}" width="${s * 2}" height="${s * 2}" fill="#cfd8da" stroke="#8f979a" stroke-width="0.05"/>`
+        : o.kind === 'bronze'
+          ? `<path class="shape" d="M ${-s} ${s * 0.6} A ${s} ${s} 0 0 1 ${s} ${s * 0.6}" fill="none" stroke="#a9763f" stroke-width="0.3"/>`
+          : `<rect class="shape" x="${-s * 0.62}" y="${-s * 0.55}" width="${s * 1.24}" height="${s * 1.1}" fill="#6f6a62"/>`;
+    const plinth = (o.stand || 'plinth') === 'plinth'
+      ? `<rect x="${-0.62 * (o.scale || 1)}" y="${-0.62 * (o.scale || 1)}" width="${1.24 * (o.scale || 1)}" height="${1.24 * (o.scale || 1)}" fill="#e2dcd2" stroke="#c9c2b6" stroke-width="0.04"/>`
+      : '';
+    return `<g class="item${on}" data-id="${esc(o.id)}" transform="translate(${o.x} ${o.z}) rotate(${(o.rot || 0) * 180 / Math.PI})"${dim}>${plinth}${body}</g>`;
+  });
+
+  svg.innerHTML = `
+    ${grid.join('')}
+    <rect x="${-r.w / 2}" y="${-r.d / 2}" width="${r.w}" height="${r.d}" fill="none" stroke="#8d867c" stroke-width="0.09"/>
+    <text x="${-r.w / 2 + 0.3}" y="${-r.d / 2 + 0.9}" font-size="0.62" fill="#8d867c" font-family="ui-monospace,monospace">дальняя стена</text>
+    ${items.join('')}
+  `;
+}
+
+function renderHalls() {
+  $('halls').innerHTML = HALLS.map((h) => {
+    const count = objects().filter((o) => o.hall === h.id).length;
+    return `<button class="hall${h.id === hall ? ' on' : ''}" data-hall="${h.id}">${esc(h.name)}<small>${count ? count + ' предмет(ов)' : 'заготовка зала'}</small></button>`;
+  }).join('');
+}
+
+function renderList() {
+  $('list').innerHTML = inHall().map((o) => `
+    <button class="obj${o.id === sel ? ' on' : ''}" data-id="${esc(o.id)}">
+      <span>${esc(o.title || 'Без названия')}<br><em>${KIND_LABEL[o.kind] || o.kind} · ${o.x.toFixed(1)} / ${o.z.toFixed(1)}${o.draft ? ' · черновик' : ''}</em></span>
+    </button>`).join('') || '<div class="note">В этом зале пока пусто. Сайт показывает заготовку.</div>';
+}
+
+function renderForm() {
+  const o = current();
+  const on = !!o;
+  ['kind', 'stand', 'wall', 'tone', 'rot', 'scale', 'width', 'height', 'title', 'author', 'year', 'material', 'dimensions', 'note', 'draft'].forEach((id) => { $(id).disabled = !on; });
+  $('dup').disabled = !on;
+  $('del').disabled = !on;
+  if (!o) { $('coords').textContent = 'Предмет не выбран.'; return; }
+
+  $('kind').value = o.kind;
+  $('stand').value = o.stand || 'plinth';
+  $('wall').value = o.wall || 'left';
+  $('tone').value = o.tone || '#b84b2e';
+  $('rot').value = Math.round(((o.rot || 0) * 180) / Math.PI);
+  $('rotVal').textContent = $('rot').value + '°';
+  $('scale').value = Math.round((o.scale || 1) * 100);
+  $('scaleVal').textContent = $('scale').value + '%';
+  $('width').value = o.width || 1.2;
+  $('height').value = o.height || 0.9;
+  ['title', 'author', 'year', 'material', 'dimensions', 'note'].forEach((k) => { $(k).value = o[k] || ''; });
+  $('draft').checked = !!o.draft;
+
+  const canvas = o.kind === 'canvas';
+  $('wallWrap').style.opacity = canvas ? 1 : 0.35;
+  $('coords').textContent = `${o.x.toFixed(2)} / ${o.z.toFixed(2)} м от центра зала · id ${o.id}`;
+}
+
+function renderAll() { renderHalls(); renderPlan(); renderList(); renderForm(); }
+
+/* ПЕРЕТАСКИВАНИЕ. Точка мыши переводится в координаты плана матрицей самого
+   SVG: считать по ширине элемента нельзя — она меняется на любом экране. */
+function planPoint(event) {
+  const svg = $('plan');
+  const pt = svg.createSVGPoint();
+  pt.x = event.clientX;
+  pt.y = event.clientY;
+  const p = pt.matrixTransform(svg.getScreenCTM().inverse());
+  return { x: p.x, z: p.y };
+}
+
+let drag = null;
+
+$('plan').addEventListener('pointerdown', (event) => {
+  const g = event.target.closest('.item');
+  if (!g) return;
+  sel = g.dataset.id;
+  const o = current();
+  if (!o) return;
+  const p = planPoint(event);
+  drag = { dx: o.x - p.x, dz: o.z - p.z };
+  $('plan').setPointerCapture(event.pointerId);
+  renderAll();
+});
+
+$('plan').addEventListener('pointermove', (event) => {
+  if (!drag) return;
+  const o = current();
+  if (!o) return;
+  const r = room();
+  const p = planPoint(event);
+  const snap = (v) => Math.round(v * 4) / 4;                    // шаг 25 см
+  const clamp = (v, limit) => Math.max(-limit, Math.min(limit, v));
+  o.x = clamp(snap(p.x + drag.dx), r.w / 2 - 0.4);
+  o.z = clamp(snap(p.z + drag.dz), r.d / 2 - 0.4);
+  mark();
+  renderPlan();
+  $('coords').textContent = `${o.x.toFixed(2)} / ${o.z.toFixed(2)} м от центра зала · id ${o.id}`;
+});
+
+const endDrag = () => { if (drag) { drag = null; renderList(); } };
+$('plan').addEventListener('pointerup', endDrag);
+$('plan').addEventListener('pointercancel', endDrag);
+
+$('halls').addEventListener('click', (event) => {
+  const b = event.target.closest('[data-hall]');
+  if (!b) return;
+  hall = b.dataset.hall;
+  sel = null;
+  renderAll();
+});
+
+$('list').addEventListener('click', (event) => {
+  const b = event.target.closest('[data-id]');
+  if (!b) return;
+  sel = b.dataset.id;
+  renderAll();
+});
+
+function ensureBucket() {
+  if (!data.museum || typeof data.museum !== 'object') data.museum = {};
+  if (!Array.isArray(data.museum.objects)) data.museum.objects = [];
+  return data.museum.objects;
+}
+
+$('add').onclick = () => {
+  const list = ensureBucket();
+  const item = {
+    id: 'mo-' + Date.now().toString(36),
+    hall,
+    kind: 'stone',
+    x: 0,
+    z: 0,
+    rot: 0,
+    scale: 1,
+    stand: 'plinth',
+    draft: true,
+  };
+  list.push(item);
+  sel = item.id;
+  mark();
+  renderAll();
+};
+
+$('dup').onclick = () => {
+  const o = current();
+  if (!o) return;
+  const copy = Object.assign({}, o, { id: 'mo-' + Date.now().toString(36), x: o.x + 1.5 });
+  ensureBucket().push(copy);
+  sel = copy.id;
+  mark();
+  renderAll();
+};
+
+$('del').onclick = () => {
+  const o = current();
+  if (!o || !confirm('Убрать предмет из зала?')) return;
+  data.museum.objects = objects().filter((x) => x.id !== o.id);
+  sel = null;
+  mark();
+  renderAll();
+};
+
+function bind(id, apply) {
+  $(id).addEventListener('input', () => {
+    const o = current();
+    if (!o) return;
+    apply(o, $(id));
+    mark();
+    renderPlan();
+    renderList();
+    if (id === 'kind') renderForm();
+    if (id === 'rot') $('rotVal').textContent = $('rot').value + '°';
+    if (id === 'scale') $('scaleVal').textContent = $('scale').value + '%';
+  });
+}
+
+bind('kind', (o, el) => { o.kind = el.value; if (o.kind === 'canvas' && !o.wall) o.wall = 'left'; });
+bind('stand', (o, el) => { o.stand = el.value; });
+bind('wall', (o, el) => { o.wall = el.value; });
+bind('tone', (o, el) => { o.tone = el.value; });
+bind('rot', (o, el) => { o.rot = (Number(el.value) * Math.PI) / 180; });
+bind('scale', (o, el) => { o.scale = Number(el.value) / 100; });
+bind('width', (o, el) => { o.width = Number(el.value) || 1.2; });
+bind('height', (o, el) => { o.height = Number(el.value) || 0.9; });
+['title', 'author', 'year', 'material', 'dimensions', 'note'].forEach((k) => bind(k, (o, el) => { o[k] = el.value; }));
+$('draft').addEventListener('change', () => { const o = current(); if (!o) return; o.draft = $('draft').checked; mark(); renderAll(); });
+
+async function load() {
+  say('Загрузка…');
+  const response = await fetch(API, { cache: 'no-store' });
+  data = await response.json();
+  ensureBucket();
+  dirty = false;
+  renderAll();
+  say(`Загружено · предметов всего: ${objects().length}`);
+}
+
+$('reload').onclick = () => {
+  if (dirty && !confirm('Несохранённые правки пропадут. Перечитать?')) return;
+  load().catch((error) => say('Не удалось перечитать: ' + error.message, true));
+};
+
+/* СОХРАНЕНИЕ ЧЕРЕЗ ПЕРЕЧИТЫВАНИЕ.
+ *
+ * POST /content принимает документ целиком, поэтому отправить свою копию,
+ * пролежавшую в браузере полчаса, значит откатить всё, что за это время
+ * сохранили в основной админке. Перед записью документ читается заново, и
+ * в свежую копию переносится ТОЛЬКО ветка museum. */
+$('save').onclick = async () => {
+  const password = pw();
+  if (!password) { say('Нет пароля: войдите в основную админку и включите «запомнить»', true); return; }
+  $('save').disabled = true;
+  say('Сохранение…');
+  try {
+    const fresh = await (await fetch(API, { cache: 'no-store' })).json();
+    fresh.museum = Object.assign({}, fresh.museum, { objects: objects() });
+    const response = await fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Admin-Password': password },
+      body: JSON.stringify(fresh),
+    });
+    const result = await response.json();
+    if (!result.ok) throw new Error(result.error || ('HTTP ' + response.status));
+    data = result.data || fresh;
+    ensureBucket();
+    dirty = false;
+    renderAll();
+    say('Сохранено. Сайт обновится в течение минуты.');
+  } catch (error) {
+    say('Ошибка: ' + error.message, true);
+  } finally {
+    $('save').disabled = false;
+  }
+};
+
+window.addEventListener('beforeunload', (event) => { if (dirty) { event.preventDefault(); event.returnValue = ''; } });
+
+load().catch((error) => say('Не удалось загрузить контент: ' + error.message, true));
+</script>
+</body>
+</html>
