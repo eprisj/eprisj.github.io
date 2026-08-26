@@ -14,7 +14,12 @@ import { EffectComposer, N8AO, SMAA } from '@react-three/postprocessing';
 export default function Effects() {
   return (
     <EffectComposer multisampling={0} enableNormalPass>
-      <N8AO aoRadius={1.9} intensity={2.1} distanceFalloff={0.85} quality="performance" color="#2f2b25" />
+      {/* На «performance» затенение считается по восьми лучам в половинном
+          разрешении: в кессонах и между рёбрами оно шло крупным зерном, и
+          вблизи это читалось грязью, а не тенью. Средняя ступень даёт втрое
+          больше выборок и полное разрешение — на макете из сотен тонких
+          рёбер разница видна сразу. */}
+      <N8AO aoRadius={1.6} intensity={2.4} distanceFalloff={0.75} quality="medium" halfRes={false} color="#2f2b25" />
       <SMAA />
     </EffectComposer>
   );
