@@ -30,6 +30,18 @@ const Effects = lazy(() => import('./Effects'));
 
 export type MuseumLabels = Record<HallId, string>;
 
+/* НАКЛАДКИ НАД ХОЛСТОМ.
+ *
+ * Кнопка, подписи залов и метка «вы внутри» жили каждая своим размером и
+ * своим весом, и вместе выглядели наклеенными. Один класс на все: та же
+ * микротипографика, что в служебных строках страницы, тонкая рамка вместо
+ * жирной и лёгкая подложка вместо тени — читается и на светлом фасаде, и на
+ * тёмной стене зала, но не спорит с макетом.
+ */
+const CHIP =
+  'border border-[rgb(var(--c-accent-rgb)_/_0.45)] bg-[rgb(var(--c-bg-rgb)_/_0.92)] ' +
+  'font-mono text-[8px] uppercase tracking-[0.16em] text-[var(--c-accent)] backdrop-blur-[2px]';
+
 /* Куб-карта отражений раздаётся через контекст: стекло разбросано по всему
    зданию, и тянуть проп через шесть уровней ради него незачем. */
 const ReflectionContext = createContext<Texture | null>(null);
@@ -921,10 +933,10 @@ function HallPins({
               onPointerOver={() => onHover(hall.id)}
               onPointerOut={() => onHover(null)}
               title={hall.access === 'passport' ? lockedHint : undefined}
-              className={`whitespace-nowrap border px-2 py-1 font-mono text-[8px] uppercase tracking-[0.14em] shadow-[0_1px_6px_rgb(0_0_0_/_0.2)] transition ${
+              className={`whitespace-nowrap px-[7px] py-[3px] transition ${
                 active
-                  ? 'border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)]'
-                  : 'border-[var(--c-accent)] bg-[var(--c-bg)] text-[var(--c-accent)]'
+                  ? 'border border-[var(--c-accent)] bg-[var(--c-accent)] font-mono text-[8px] uppercase tracking-[0.16em] text-[var(--c-bg)]'
+                  : CHIP
               }`}
             >
               {labels[hall.id]}
@@ -1080,6 +1092,7 @@ export function MuseumModel({
   label,
   openLabel,
   closeLabel,
+  leaveLabel,
   insideLabel,
   labels,
   lockedHint,
@@ -1092,6 +1105,9 @@ export function MuseumModel({
   label: string;
   openLabel: string;
   closeLabel: string;
+  /* Внутри зала «закрыть пространство» звучит про другое действие: выход из
+     комнаты — это выход, и подпись должна совпадать с кнопкой в колонке. */
+  leaveLabel: string;
   insideLabel: string;
   labels: MuseumLabels;
   lockedHint: string;
@@ -1233,12 +1249,9 @@ export function MuseumModel({
         type="button"
         onClick={() => (entered ? onLeave?.() : setOpen((value) => !value))}
         aria-pressed={entered ? true : open}
-        /* Полупрозрачная плашка пропадала и на светлом фасаде, и на тёмной
-           стене зала. Фон сплошной, рамка контрастная, тень отделяет её от
-           того, что под ней. */
-        className="absolute right-4 top-4 z-10 min-h-11 border border-[var(--c-accent)] bg-[var(--c-bg)] px-4 py-2 font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--c-accent)] shadow-[0_2px_10px_rgb(0_0_0_/_0.22)] transition hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--c-accent)] sm:right-6 sm:top-6"
+        className={`absolute right-4 top-4 z-10 flex min-h-9 items-center px-3 transition hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--c-accent)] sm:right-6 sm:top-6 ${CHIP}`}
       >
-        {entered || open ? closeLabel : openLabel}
+        {entered ? leaveLabel : open ? closeLabel : openLabel}
       </button>
     </div>
   );
