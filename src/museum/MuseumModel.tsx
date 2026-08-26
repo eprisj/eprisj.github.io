@@ -1,4 +1,4 @@
-import { lazy, Suspense, useCallback, useMemo, useRef, useState } from 'react';
+import { Component, lazy, Suspense, useCallback, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { ContactShadows, Environment, Html, Lightformer, MeshReflectorMaterial, OrbitControls, RoundedBox } from '@react-three/drei';
 import { ACESFilmicToneMapping, DoubleSide, ExtrudeGeometry, Shape, Spherical, Vector2, Vector3 } from 'three';
@@ -577,6 +577,19 @@ function CameraRig({ open, radius, focusY }: { open: boolean; radius: number; fo
 /* Ворота для постобработки: на узком холсте макет размером с ладонь, разница
    почти не видна, а чанк тянуть пришлось бы целиком. Ширину холста берём у
    рендерера, а не у окна: колонка бывает узкой и на десктопе. */
+/* Постобработка — единственная часть сцены с внешней зависимостью и отдельным
+   чанком, то есть единственная, которая может не доехать: 404 после деплоя,
+   старый драйвер, отключённый WebGL2. Здание из-за этого падать не должно,
+   поэтому эффекты живут за собственной границей ошибок: не вышло — сцена
+   рисуется без них, а не заменяется экраном «раздел не загрузился». */
+class EffectsBoundary extends Component<{ children: React.ReactNode }, { failed: boolean }> {
+  state = { failed: false };
+  static getDerivedStateFromError() { return { failed: true }; }
+  render() {
+    return this.state.failed ? null : this.props.children;
+  }
+}
+
 function EffectsGate() {
   const { size, gl } = useThree();
   const heavyEnough = size.width >= 640 && gl.capabilities.isWebGL2;
@@ -701,9 +714,11 @@ export function MuseumModel({
             </Turntable>
           </Suspense>
 
-          <Suspense fallback={null}>
-            <EffectsGate />
-          </Suspense>
+          <EffectsBoundary>
+            <Suspense fallback={null}>
+              <EffectsGate />
+            </Suspense>
+          </EffectsBoundary>
 
           <OrbitControls enableZoom={false} enablePan={false} minPolarAngle={0.55} maxPolarAngle={Math.PI / 2.12} rotateSpeed={0.55} />
         </Canvas>
