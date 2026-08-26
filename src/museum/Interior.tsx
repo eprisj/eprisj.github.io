@@ -38,7 +38,7 @@ const ROOMS: Record<HallId, Room> = {
   collection: { w: 14.5, h: 5.6, d: 10.4, light: 'side', furniture: 'plinths' },
   practice:   { w: 10.4, h: 5.2, d: 22.0, light: 'top', furniture: 'plinths' },
   archive:    { w: 10.4, h: 5.6, d: 10.4, light: 'slit', furniture: 'shelves' },
-  study:      { w: 5.2, h: 9.0, d: 5.2, light: 'top', furniture: 'desk' },
+  study:      { w: 7.4, h: 8.4, d: 7.4, light: 'top', furniture: 'desk' },
   court:      { w: 26, h: 0, d: 12, light: 'sky', furniture: 'benches' },
 };
 
@@ -52,6 +52,9 @@ export function interiorEye(hall: HallId): [number, number, number] {
   /* В архиве стеллажи стоят посреди комнаты: глаз ставим в проход у стены,
      иначе первый кадр — торец полки в тридцати сантиметрах от лица. */
   if (hall === 'archive') return [room.w * 0.40, 1.65, room.d * 0.40];
+  /* В кабинете стол стоит под фонарём, а глаз — в углу: так видно и стол,
+     и высоту шахты, ради которой этот зал вертикальный. */
+  if (hall === 'study') return [room.w * 0.34, 1.62, room.d * 0.36];
   return [room.w * 0.24, 1.65, room.d * 0.42];
 }
 
@@ -111,7 +114,7 @@ function Shelves({ room }: { room: Room }) {
 
 function Desk() {
   return (
-    <group position={[0, 0, -0.6]}>
+    <group position={[0, 0, -0.2]}>
       <mesh position={[0, 0.74, 0]} castShadow receiveShadow>
         <boxGeometry args={[2.2, 0.08, 1.1]} />
         <meshStandardMaterial color={PLINTH} roughness={0.75} />
@@ -141,7 +144,7 @@ function Benches({ room }: { room: Room }) {
         </mesh>
       ))}
       {/* вода: во дворе она и есть пол */}
-      <mesh position={[0, 0.01, room.d * 0.16]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+      <mesh position={[0, 0.06, room.d * 0.16]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[room.w * 0.8, room.d * 0.5]} />
         <meshStandardMaterial color="#8e9aa0" roughness={0.35} metalness={0.35} />
       </mesh>
@@ -171,15 +174,26 @@ export function Interior({ hall }: { hall: HallId }) {
       {/* Пол общий для всех залов, включая двор */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[room.w, room.d]} />
-        <meshStandardMaterial color={FLOOR} roughness={0.95} />
+        <meshStandardMaterial
+          color={FLOOR}
+          roughness={0.95}
+          polygonOffset
+          polygonOffsetFactor={-1}
+          polygonOffsetUnits={-1}
+        />
       </mesh>
 
       {room.h > 0 && (
         <>
           {/* Оболочка комнаты: одна коробка, вывернутая внутрь. Отдельные стены
               дают щели по углам ровно там, куда смотрит глаз. */}
-          <mesh position={[0, room.h / 2, 0]} receiveShadow>
-            <boxGeometry args={[room.w, room.h, room.d]} />
+          {/* Оболочка опущена ниже пола на сорок сантиметров. Раньше её нижняя
+              грань лежала ровно на полу, и две поверхности в одной плоскости
+              спорили за глубину: пол мерцал при каждом повороте камеры.
+              Оболочка удлинена ВНИЗ: потолок остаётся на своей высоте, а
+              лишние сорок сантиметров прячутся под полом. */}
+          <mesh position={[0, room.h / 2 - 0.2, 0]} receiveShadow>
+            <boxGeometry args={[room.w, room.h + 0.4, room.d]} />
             <meshStandardMaterial color={WALL} roughness={0.94} side={BackSide} />
           </mesh>
 
@@ -208,7 +222,16 @@ export function Interior({ hall }: { hall: HallId }) {
 
       {/* Свет от проёмов, а не от абстрактной лампы над сценой */}
       {room.light === 'top' && openings.map((z) => (
-        <pointLight key={`l-${z}`} position={[0, room.h - 0.6, z]} intensity={16} distance={room.h * 2.6} decay={2} color={LIGHT} />
+        <pointLight
+          key={`l-${z}`}
+          position={[0, room.h - 0.6, z]}
+          /* В шахте фонарь один и высоко: та же сила, что в низком зале,
+             до пола просто не доходит. */
+          intensity={hall === 'study' ? 46 : 16}
+          distance={room.h * 2.6}
+          decay={2}
+          color={LIGHT}
+        />
       ))}
       {/* Свет идёт от каждого проёма, а не от одной лампы у стены: иначе
           дальний конец галереи тонет, хотя в фасаде там такие же щели. */}
