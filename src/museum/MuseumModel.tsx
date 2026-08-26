@@ -131,6 +131,50 @@ function Mass({
   );
 }
 
+/* ПРОЁМ С ОТКОСОМ.
+ *
+ * Плоское стекло, приклеенное к стене, выдаёт макет: в бетоне окно — это
+ * дыра в тридцать сантиметров толщиной, и первое, что видно, не стекло, а
+ * тень откоса. Вырезать отверстие нечем — CSG в проекте нет, — но проём это
+ * и не отверстие: это ниша, у которой есть щёки, дно и стекло в глубине.
+ */
+function Opening({
+  w,
+  h,
+  depth = 0.34,
+  position,
+  rotation = [0, 0, 0],
+}: {
+  w: number;
+  h: number;
+  depth?: number;
+  position: [number, number, number];
+  rotation?: [number, number, number];
+}) {
+  return (
+    <group position={position} rotation={rotation}>
+      {/* Щёки и дно ниши: светлый бетон, чтобы тень на них читалась */}
+      <mesh position={[0, 0, -depth / 2 + 0.03]} castShadow receiveShadow>
+        <boxGeometry args={[w, h, depth]} />
+        <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.92} side={DoubleSide} />
+      </mesh>
+      {/* Стекло на дне ниши: тёмное, гладкое, с отражением окружения */}
+      <mesh position={[0, 0, -depth + 0.08]}>
+        <planeGeometry args={[Math.max(0.1, w - 0.14), Math.max(0.1, h - 0.14)]} />
+        <meshPhysicalMaterial
+          color={GLASS}
+          roughness={0.06}
+          metalness={0.1}
+          reflectivity={0.9}
+          clearcoat={1}
+          clearcoatRoughness={0.08}
+          envMapIntensity={2.6}
+        />
+      </mesh>
+    </group>
+  );
+}
+
 /* Вертикальные лопатки: главный источник фактуры. Шаг крупный — это бетон,
    а не жалюзи, и каждая лопатка отбрасывает собственную тень. */
 function Fins({ w, h, y, z, x = 0, step = 1.75, depth = 0.62 }: { w: number; h: number; y: number; z: number; x?: number; step?: number; depth?: number }) {
@@ -149,11 +193,9 @@ function Fins({ w, h, y, z, x = 0, step = 1.75, depth = 0.62 }: { w: number; h: 
           <meshStandardMaterial color={CONCRETE_LIT} roughness={0.9} />
         </mesh>
       ))}
-      {/* тёмная ниша за лопатками: без неё рёбра лежат на стене, а не стоят перед ней */}
-      <mesh position={[0, 0, -depth / 2 - 0.22]}>
-        <boxGeometry args={[w - 0.4, h - 0.9, 0.3]} />
-        <meshStandardMaterial color={CONCRETE_DARK} roughness={0.95} />
-      </mesh>
+      {/* За лопатками остеклённая стена с откосом, а не тёмная плита: рёбра
+          должны что-то затенять, иначе они узор на глухом фасаде. */}
+      <Opening w={w - 0.6} h={h - 1.0} depth={0.44} position={[0, 0, -depth / 2 - 0.06]} />
     </group>
   );
 }
@@ -224,9 +266,18 @@ function TrapezoidEye({ position }: { position: [number, number, number] }) {
       <mesh geometry={geometry} castShadow>
         <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.92} />
       </mesh>
-      <mesh position={[0, 0, 0.94]}>
-        <planeGeometry args={[4.2, 2.5]} />
-        <meshStandardMaterial color={GLASS} roughness={0.18} metalness={0.35} />
+      {/* Стекло уходит вглубь коробки, а не лежит на её лице */}
+      <mesh position={[0, 0, 0.42]}>
+        <planeGeometry args={[4.0, 2.3]} />
+        <meshPhysicalMaterial
+          color={GLASS}
+          roughness={0.05}
+          metalness={0.1}
+          reflectivity={0.95}
+          clearcoat={1}
+          clearcoatRoughness={0.06}
+          envMapIntensity={2.8}
+        />
       </mesh>
     </group>
   );
@@ -285,8 +336,24 @@ function GlazedBase({ x, w, d, y, h }: { x: number; w: number; d: number; y: num
       {/* Витраж по периметру, отодвинутый вглубь на полметра */}
       <mesh position={[0, h / 2, 0]}>
         <boxGeometry args={[w - 1.0, h, d - 1.0]} />
-        <meshStandardMaterial color={GLASS} roughness={0.14} metalness={0.55} envMapIntensity={1.4} />
+        <meshPhysicalMaterial
+          color={GLASS}
+          roughness={0.05}
+          metalness={0.12}
+          reflectivity={0.95}
+          clearcoat={1}
+          clearcoatRoughness={0.06}
+          envMapIntensity={3.0}
+        />
       </mesh>
+      {/* Импосты: сплошного стекла на пятнадцать метров не бывает, а членение
+          заодно даёт масштаб низу. */}
+      {columns.map((offset) => (
+        <mesh key={`m-${offset}`} position={[offset + w / (columns.length * 2), h / 2, (d - 1.0) / 2 + 0.03]}>
+          <boxGeometry args={[0.09, h - 0.08, 0.09]} />
+          <meshStandardMaterial color={CONCRETE_DARK} roughness={0.85} metalness={0.3} />
+        </mesh>
+      ))}
       {/* Тёплый свет изнутри: вечером именно он делает низ живым */}
       <mesh position={[0, h * 0.42, (d - 1.0) / 2 - 0.12]}>
         <planeGeometry args={[w - 3.0, h * 0.34]} />
@@ -529,10 +596,7 @@ function Building({
         <GlazedBase x={BAR_LEFT.x} w={BAR_LEFT.w} d={BAR.d} y={BAR.y + 0.1} h={1.0} />
 
         {/* Архив глухой: одна щель на всю высоту вместо рёбер */}
-        <mesh position={[BAR_RIGHT.x + 2.4, BAR.y + 1.1 + BAR.h / 2, BAR.d / 2 + 0.06]}>
-          <boxGeometry args={[0.5, BAR.h - 2.8, 0.2]} />
-          <meshStandardMaterial color={GLASS} roughness={0.22} metalness={0.32} />
-        </mesh>
+        <Opening w={0.66} h={BAR.h - 2.8} depth={0.55} position={[BAR_RIGHT.x + 2.4, BAR.y + 1.1 + BAR.h / 2, BAR.d / 2 + 0.02]} />
 
         {/* ВХОД: вырез в массе прямо под консолью. Единственная дверь музея
             стоит в тени того, что над ней нависает. */}
@@ -540,10 +604,7 @@ function Building({
           <boxGeometry args={[6.2, 4.4, 2.4]} />
           <meshStandardMaterial color={SHADOW} roughness={0.95} />
         </mesh>
-        <mesh position={[CROSS.x + 1.6, BAR.y + 1.1 + 1.7, BAR.d / 2 - 1.9]}>
-          <boxGeometry args={[4.6, 3.4, 0.2]} />
-          <meshStandardMaterial color={GLASS} roughness={0.2} metalness={0.34} />
-        </mesh>
+        <Opening w={4.6} h={3.4} depth={0.5} position={[CROSS.x + 1.6, BAR.y + 1.1 + 1.7, BAR.d / 2 - 1.6]} />
       </group>
 
       {/* ВЕРХНЯЯ ГАЛЕРЕЯ — поперёк нижней, с консолью на обе стороны */}
@@ -864,6 +925,10 @@ export function MuseumModel({
             <Lightformer form="rect" intensity={1.5} color="#eaf1f8" position={[0, 22, 6]} scale={[38, 16, 1]} rotation={[-Math.PI / 2, 0, 0]} />
             <Lightformer form="rect" intensity={0.7} color="#b79a78" position={[0, -14, 0]} scale={[40, 40, 1]} rotation={[Math.PI / 2, 0, 0]} />
             <Lightformer form="rect" intensity={0.9} color="#dfe6ef" position={[-24, 6, -12]} scale={[16, 14, 1]} rotation={[0, Math.PI / 2.4, 0]} />
+            {/* Полоса горизонта: именно она отражается в стекле, без неё окно
+                остаётся ровным тёмным пятном. */}
+            <Lightformer form="rect" intensity={2.2} color="#ffffff" position={[16, 3.2, 22]} scale={[26, 2.2, 1]} />
+            <Lightformer form="rect" intensity={1.1} color="#cddbe8" position={[-18, 9, 20]} scale={[14, 6, 1]} />
           </Environment>}
           {!entered && <hemisphereLight args={['#eef2f6', '#9c8f80', 0.44]} />}
           {!entered && <directionalLight
