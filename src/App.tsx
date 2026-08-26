@@ -3741,6 +3741,10 @@ function SearchResults({
   );
 }
 
+/* Имена залов музея известны маршрутизатору: он должен отличать поправку
+   адреса от настоящего перехода. */
+const HALL_IDS = new Set(['court', 'collection', 'practice', 'archive', 'study']);
+
 const VALID_TABS = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'studio', 'radio', 'podcasts', 'design', 'museum', 'passport'];
 const VISIBILITY_TABS: VisibilitySectionKey[] = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'design', 'studio', 'radio', 'podcasts'];
 
@@ -4590,9 +4594,16 @@ export default function App() {
               lang={currentLang}
               hall={museumHall}
               onHallChange={(next) => {
+                const previous = museumHall;
                 setMuseumHall(next ?? undefined);
                 const path = next ? `/museum/${next}` : '/museum';
-                if (window.location.pathname !== path) window.history.pushState(null, '', path);
+                if (window.location.pathname === path) return;
+                /* Возврат к разделу с несуществующего адреса — это поправка, а
+                   не переход: она не должна оставлять запись в истории, иначе
+                   «назад» возвращает на ту же битую ссылку. */
+                const known = HALL_IDS.has(previous || '');
+                if (!next && previous && !known) window.history.replaceState(null, '', path);
+                else window.history.pushState(null, '', path);
               }}
             />
           </LazyTab>
