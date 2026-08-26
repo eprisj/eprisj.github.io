@@ -4590,7 +4590,7 @@ export default function App() {
               lang={currentLang}
               hall={museumHall}
               onHallChange={(next) => {
-                setMuseumHall(next);
+                setMuseumHall(next ?? undefined);
                 const path = next ? `/museum/${next}` : '/museum';
                 if (window.location.pathname !== path) window.history.pushState(null, '', path);
               }}
