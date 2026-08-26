@@ -161,6 +161,9 @@ const CROSS = { w: 11.0, h: 6.6, d: 24.0, x: -6.0, y: 9.5, z: 2.0 };  // practic
 /* Верхняя галерея расщеплена на две плиты: западная во всю длину, восточная
    короче, между ними световая щель. Числа вынесены наружу, потому что по ним
    считаются и опалубка, и кессоны, и фонари. */
+/* Середина застройки относительно начала координат. Слева край подиума
+   лектория (-18.5), справа край мастерских (+23.4). */
+const SITE_OFFSET_X = -2.45;
 const CROSS_SLOT = 1.9;
 const CROSS_W_SLAB = (11.0 - CROSS_SLOT) / 2;                          // 4.55
 const CROSS_WEST_X = -6.0 - (CROSS_SLOT + CROSS_W_SLAB) / 2;
@@ -1506,12 +1509,28 @@ function hasWebGL() {
 
 const DEGRADE_KEY = 'epris-museum-degrade';
 
+/* Телефон начинает не с полной сцены, а со второй ступени. Не из
+   осторожности: полная сцена собирается на нём заметно дольше, тратит
+   вдвое больше пикселей на тот же кадр, и первое, что видит зритель, —
+   пустая плашка. Отражения и постобработка на узком холсте и так
+   выключены, а разрешение выше единицы на макете размером с ладонь не
+   даёт ничего. */
+function isHandheld() {
+  try {
+    return window.matchMedia('(max-width: 767px), (pointer: coarse)').matches;
+  } catch {
+    return false;
+  }
+}
+
 function readDegrade() {
+  const floor = typeof window !== 'undefined' && isHandheld() ? 1 : 0;
   try {
     const raw = Number(sessionStorage.getItem(DEGRADE_KEY));
-    return Number.isFinite(raw) ? Math.min(Math.max(raw, 0), 2) : 0;
+    const stored = Number.isFinite(raw) ? Math.min(Math.max(raw, 0), 2) : 0;
+    return Math.max(stored, floor);
   } catch {
-    return 0;
+    return floor;
   }
 }
 
@@ -1752,12 +1771,20 @@ export function MuseumModel({
               <Interior hall={selectedHall} />
             ) : (
             <Turntable still={still} slow={open || selectedHall !== null}>
-              <Building open={open} selected={selectedHall} hovered={hovered} onSelect={select} onHover={setHovered} mirror={heavy} />
-              {(open || selectedHall) && (
-                <HallPins labels={labels} selected={selectedHall} hovered={hovered} onSelect={select} onHover={setHovered} lockedHint={lockedHint} />
-              )}
+              {/* Застройка выросла вправо (мастерские) сильнее, чем влево
+                  (лекторий), и её середина уехала от начала координат, вокруг
+                  которого ходит камера. На широком экране это незаметно, на
+                  телефоне правое крыло уходило за край. Сдвиг ставит середину
+                  застройки на ось вращения; подписи едут вместе со зданием,
+                  иначе они повиснут рядом со своими объёмами. */}
+              <group position={[SITE_OFFSET_X, 0, 0]}>
+                <Building open={open} selected={selectedHall} hovered={hovered} onSelect={select} onHover={setHovered} mirror={heavy} />
+                {(open || selectedHall) && (
+                  <HallPins labels={labels} selected={selectedHall} hovered={hovered} onSelect={select} onHover={setHovered} lockedHint={lockedHint} />
+                )}
+              </group>
               <Ground />
-              <ContactShadows position={[0, -6.72, 0]} opacity={0.42} scale={110} blur={1.9} far={28} resolution={512} color="#4a453e" />
+              <ContactShadows position={[0, -6.72, 0]} opacity={0.42} scale={110} blur={1.9} far={28} resolution={degrade > 0 ? 256 : 512} color="#4a453e" />
             </Turntable>
             )}
           </Suspense>

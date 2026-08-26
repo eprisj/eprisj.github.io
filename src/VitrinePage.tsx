@@ -9,7 +9,7 @@ const MuseumModel = lazy(() => import('./museum/MuseumModel').then((m) => ({ def
 
 const MUSEUM_COPY = {
   EN: {
-    museumLabel: 'EPRIS MUSEUM / UKRAINIAN PRACTICE',
+    museumLabel: 'EPRIS MUSEUM',
     firstSelection: 'Collection opening',
     intro: 'A living collection of works by Ukrainian artists, designers and architects, in Ukraine and across the diaspora.',
     emptyDescription: 'The collection is being prepared by the editorial team. Every object will enter with its author, place, material and the context that makes it matter.',
@@ -62,7 +62,7 @@ const MUSEUM_COPY = {
     openObject: 'Open object',
   },
   RU: {
-    museumLabel: 'EPRIS MUSEUM / УКРАИНСКАЯ ПРАКТИКА',
+    museumLabel: 'EPRIS MUSEUM',
     firstSelection: 'Открытие коллекции',
     intro: 'Живая коллекция работ украинских художников, дизайнеров и архитекторов в Украине и в диаспоре.',
     emptyDescription: 'Коллекцию готовит редакция. Каждый объект войдёт в неё с автором, местом, материалом и контекстом, который делает его важным.',
@@ -115,7 +115,7 @@ const MUSEUM_COPY = {
     openObject: 'Открыть объект',
   },
   UA: {
-    museumLabel: 'EPRIS MUSEUM / УКРАЇНСЬКА ПРАКТИКА',
+    museumLabel: 'EPRIS MUSEUM',
     firstSelection: 'Відкриття колекції',
     intro: 'Жива колекція робіт українських митців, дизайнерів і архітекторів в Україні та діаспорі.',
     emptyDescription: 'Колекцію готує редакція. Кожен об’єкт увійде до неї з автором, місцем, матеріалом і контекстом, який робить його важливим.',
@@ -168,7 +168,7 @@ const MUSEUM_COPY = {
     openObject: 'Відкрити об’єкт',
   },
   TR: {
-    museumLabel: 'EPRIS MÜZESİ / UKRAYNA PRATİĞİ',
+    museumLabel: 'EPRIS MÜZESİ',
     firstSelection: 'Koleksiyonun açılışı',
     intro: 'Ukraynalı sanatçıların, tasarımcıların ve mimarların yapıtlarından oluşan yaşayan bir koleksiyon: hem Ukrayna’da hem diasporada.',
     emptyDescription: 'Koleksiyonu yayın kurulu hazırlıyor. Her nesne yazarı, yeri, malzemesi ve onu önemli kılan bağlamıyla birlikte girecek.',
@@ -221,7 +221,7 @@ const MUSEUM_COPY = {
     openObject: 'Nesneyi aç',
   },
   IT: {
-    museumLabel: 'MUSEO EPRIS / PRATICA UCRAINA',
+    museumLabel: 'MUSEO EPRIS',
     firstSelection: 'Apertura della collezione',
     intro: 'Una collezione viva di opere di artisti, designer e architetti ucraini, in Ucraina e nella diaspora.',
     emptyDescription: 'La collezione è in preparazione a cura della redazione. Ogni oggetto entrerà con il suo autore, il luogo, il materiale e il contesto che lo rende importante.',
@@ -274,7 +274,7 @@ const MUSEUM_COPY = {
     openObject: 'Aprire l’oggetto',
   },
   ES: {
-    museumLabel: 'MUSEO EPRIS / PRÁCTICA UCRANIANA',
+    museumLabel: 'MUSEO EPRIS',
     firstSelection: 'Apertura de la colección',
     intro: 'Una colección viva de obras de artistas, diseñadores y arquitectos ucranianos, en Ucrania y en la diáspora.',
     emptyDescription: 'La redacción está preparando la colección. Cada objeto entrará con su autor, su lugar, su material y el contexto que lo hace importante.',
@@ -327,7 +327,7 @@ const MUSEUM_COPY = {
     openObject: 'Abrir el objeto',
   },
   DE: {
-    museumLabel: 'EPRIS MUSEUM / UKRAINISCHE PRAXIS',
+    museumLabel: 'EPRIS MUSEUM',
     firstSelection: 'Eröffnung der Sammlung',
     intro: 'Eine lebendige Sammlung von Arbeiten ukrainischer Künstler, Designer und Architekten in der Ukraine und in der Diaspora.',
     emptyDescription: 'Die Sammlung wird von der Redaktion vorbereitet. Jedes Objekt erscheint mit Autor, Ort, Material und dem Kontext, der es bedeutsam macht.',
@@ -557,7 +557,9 @@ function EmptyVitrine({ copy, hall, onHall }: { copy: MuseumCopy; hall: HallId |
         ) : (
           <div className="flex flex-col gap-6 p-5 sm:p-8 lg:p-12">
             <div className="flex items-start justify-between gap-4">
-              <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">{copy.museumLabel}</p>
+              {/* На телефоне та же подпись стоит строкой выше, в шапке раздела:
+                  две одинаковые строки подряд — не заголовок, а сбой. */}
+              <p className="hidden font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)] sm:block">{copy.museumLabel}</p>
               <p className="shrink-0 font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.4)]">{copy.modelHint}</p>
             </div>
             {/* Список залов дублирует клик по зданию: макет — не единственный

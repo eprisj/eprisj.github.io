@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { BackSide, DoubleSide } from 'three';
+import { BackSide, DoubleSide, Object3D } from 'three';
 import type { HallId } from './halls';
 
 /* ИНТЕРЬЕР ЗАЛА.
@@ -106,17 +106,25 @@ export function interiorEye(hall: HallId): [number, number, number] {
   return [room.w * 0.24, 1.65, room.d * 0.42];
 }
 
-function Plinths({ room }: { room: Room }) {
+/* Точка, где стоит зритель, — не место для экспозиции. Подиум, оказавшийся
+   в полутора метрах от глаза, занимает пол-кадра тёмной стеной, и первое
+   впечатление от зала — что во что-то упёрся. */
+function clearOfViewer(hall: HallId, x: number, z: number) {
+  const [ex, , ez] = interiorEye(hall);
+  return Math.hypot(x - ex, z - ez) > 2.8;
+}
+
+function Plinths({ room, hall }: { room: Room; hall: HallId }) {
   const items = useMemo(() => {
     const out: [number, number, number][] = [];
     const along = Math.max(2, Math.floor(room.d / 4.4));
     for (let i = 0; i < along; i += 1) {
       const z = (i - (along - 1) / 2) * (room.d / (along + 0.4));
-      out.push([-room.w * 0.18, 0.45, z]);
-      out.push([room.w * 0.2, 0.32, z + 1.4]);
+      if (clearOfViewer(hall, -room.w * 0.18, z)) out.push([-room.w * 0.18, 0.45, z]);
+      if (clearOfViewer(hall, room.w * 0.2, z + 1.4)) out.push([room.w * 0.2, 0.32, z + 1.4]);
     }
     return out;
-  }, [room]);
+  }, [room, hall]);
 
   return (
     <group>
@@ -233,36 +241,89 @@ function Canvases({ room, wallX }: { room: Room; wallX: number }) {
   );
 }
 
+/* СВЕТ НА ВЕЩЬ.
+ *
+ * Лампочка над подиумом светит во все стороны и заодно засвечивает потолок,
+ * поэтому зал получался равномерно-светлым, а работа в нём — просто предметом.
+ * Прожектор с мягким краем даёт пятно на полу и вокруг него полутьму: ровно
+ * то, чем экспозиция отличается от освещённой комнаты. Цель прожектора —
+ * отдельный объект под самой работой, иначе луч смотрит в начало координат. */
+function WorkLight({ x, z, height, sharp }: { x: number; z: number; height: number; sharp: boolean }) {
+  const target = useMemo(() => new Object3D(), []);
+
+  return (
+    <group>
+      <primitive object={target} position={[x, 0.4, z]} />
+      <spotLight
+        position={[x, height - 0.35, z]}
+        target={target}
+        angle={sharp ? 0.42 : 0.6}
+        penumbra={0.85}
+        intensity={sharp ? 42 : 26}
+        distance={height * 2.4}
+        decay={2}
+        color={LIGHT}
+      />
+    </group>
+  );
+}
+
 function Works({ room, hall }: { room: Room; hall: HallId }) {
   /* Работы стоят на тех же подиумах, что уже расставлены по залу: сначала
-     подиум, потом вещь на нём, а не вещь, парящая рядом. */
+     подиум, потом вещь на нём, а не вещь, парящая рядом.
+     Порядок типов раньше был просто остатком от деления, и вещи шли по кругу
+     одна за другой: бронза, камень, кольцо, витрина, бронза... Зал читался
+     каталогом образцов. Теперь ряд задан руками, часть подиумов ОСТАЁТСЯ
+     ПУСТОЙ, и в проходе появляется пауза. */
   const spots = useMemo(() => {
-    const out: { x: number; y: number; z: number; kind: number }[] = [];
+    const order = [0, 2, -1, 1, 3, 0, -1, 2];
+    const out: { x: number; y: number; z: number; kind: number; turn: number }[] = [];
     const along = Math.max(2, Math.floor(room.d / 4.4));
     for (let i = 0; i < along; i += 1) {
       const z = (i - (along - 1) / 2) * (room.d / (along + 0.4));
-      out.push({ x: -room.w * 0.18, y: 0.45, z, kind: i % 4 });
-      out.push({ x: room.w * 0.2, y: 0.32, z: z + 1.4, kind: (i + 2) % 4 });
+      if (clearOfViewer(hall, -room.w * 0.18, z)) {
+        out.push({ x: -room.w * 0.18, y: 0.45, z, kind: order[(i * 2) % order.length], turn: (i % 3) * 0.4 });
+      }
+      if (clearOfViewer(hall, room.w * 0.2, z + 1.4)) {
+        out.push({ x: room.w * 0.2, y: 0.32, z: z + 1.4, kind: order[(i * 2 + 1) % order.length], turn: (i % 2) * 0.7 - 0.3 });
+      }
     }
     return out;
-  }, [room]);
+  }, [room, hall]);
 
   return (
     <group>
       {spots.map((spot, index) => {
         const base: [number, number, number] = [spot.x, spot.y, spot.z];
+        if (spot.kind < 0) return null;
         return (
-          <group key={index}>
-            {spot.kind === 0 && <BronzeSheet position={[base[0], base[1] + 0.85, base[2]]} />}
-            {spot.kind === 1 && <StoneBlock position={[base[0], base[1] + 0.63, base[2]]} />}
-            {spot.kind === 2 && <SteelRing position={[base[0], base[1] + 0.67, base[2]]} />}
-            {spot.kind === 3 && <Vitrine position={[base[0], base[1] + 0.5, base[2]]} />}
-            {/* Направленный свет на вещь: в музее светят на работу, а не на
-                зал. Дальность короткая, чтобы не спорить с фонарями. */}
-            <pointLight position={[base[0], room.h - 0.8, base[2]]} intensity={11} distance={6.2} decay={2} color={LIGHT} />
+          <group key={index} position={[base[0], 0, base[2]]} rotation={[0, spot.turn, 0]}>
+            {spot.kind === 0 && <BronzeSheet position={[0, base[1] + 0.85, 0]} />}
+            {spot.kind === 1 && <StoneBlock position={[0, base[1] + 0.63, 0]} />}
+            {spot.kind === 2 && <SteelRing position={[0, base[1] + 0.67, 0]} />}
+            {spot.kind === 3 && <Vitrine position={[0, base[1] + 0.5, 0]} />}
           </group>
         );
       })}
+      {spots.map((spot, index) => (
+        spot.kind < 0 ? null : (
+          <WorkLight key={`l-${index}`} x={spot.x} z={spot.z} height={room.h} sharp={index % 2 === 0} />
+        )
+      ))}
+      {/* Скамья посреди зала: масштаб человека и место, откуда смотрят. Без
+          неё зал — коридор с вещами по краям. */}
+      <group position={[room.w * 0.04, 0, -room.d * 0.16]}>
+        <mesh position={[0, 0.42, 0]} castShadow receiveShadow>
+          <boxGeometry args={[0.7, 0.12, 2.4]} />
+          <meshStandardMaterial color={PLINTH} roughness={0.72} />
+        </mesh>
+        {[-0.9, 0.9].map((oz) => (
+          <mesh key={oz} position={[0, 0.19, oz]} castShadow>
+            <boxGeometry args={[0.56, 0.36, 0.12]} />
+            <meshStandardMaterial color={DARK} roughness={0.8} metalness={0.2} />
+          </mesh>
+        ))}
+      </group>
       <Canvases room={room} wallX={hall === 'practice' ? room.w / 2 - 0.06 : -room.w / 2 + 0.06} />
     </group>
   );
@@ -523,7 +584,7 @@ export function Interior({ hall }: { hall: HallId }) {
         </group>
       )}
 
-      {room.furniture === 'plinths' && <Plinths room={room} />}
+      {room.furniture === 'plinths' && <Plinths room={room} hall={hall} />}
       {/* Коллекция и практика — единственные залы, где уже что-то стоит:
           архив и кабинет по смыслу пустые, мастерская пока рабочая. */}
       {(hall === 'collection' || hall === 'practice') && <Works room={room} hall={hall} />}
