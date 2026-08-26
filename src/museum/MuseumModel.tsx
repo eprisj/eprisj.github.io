@@ -125,7 +125,7 @@ function useConcrete(): Concrete {
         [normalMap, roughnessMap, map].forEach((texture) => {
           texture.wrapS = RepeatWrapping;
           texture.wrapT = RepeatWrapping;
-          texture.anisotropy = 8;
+          texture.anisotropy = 16;
         });
         /* Цвет — в sRGB, рельеф и шероховатость — числа, а не цвет. */
         map.colorSpace = SRGBColorSpace;
@@ -1596,11 +1596,14 @@ function HeavyProbe({ onChange }: { onChange: (heavy: boolean) => void }) {
   return null;
 }
 
-function EffectsGate({ ready }: { ready: boolean }) {
+function EffectsGate({ ready, entered }: { ready: boolean; entered: boolean }) {
   const heavy = useHeavyScene();
   /* Эффекты включаются ПОСЛЕ съёмки куб-карты: композитор перехватывает
-     рендер, и делать шесть проходов куба одновременно с ним незачем. */
-  if (!heavy || !ready) return null;
+     рендер, и делать шесть проходов куба одновременно с ним незачем.
+     Внутри зала куб-карта не снимается вовсе, и раньше это значило, что зал
+     оставался БЕЗ затенения: углы комнаты, стыки подиумов и низ стен были
+     нарисованы одним тоном. Ждать нечего — включаем сразу. */
+  if (!heavy || (!entered && !ready)) return null;
   return <Effects />;
 }
 
@@ -1813,7 +1816,7 @@ export function MuseumModel({
         <Canvas
           shadows={degrade < 2}
           camera={{ position: [38, 16, 30], fov: 26 }}
-          dpr={degrade > 0 ? 1 : [1, 1.75]}
+          dpr={degrade > 0 ? 1 : [1, 2]}
           gl={{
             antialias: degrade < 2,
             alpha: true,
@@ -1894,7 +1897,7 @@ export function MuseumModel({
                в сцене нет: тень от лопатки размазывалась в полосу. Рамка
                сжата до реального пятна застройки, и на той же карте у тени
                появился край. */
-            shadow-mapSize={degrade > 0 ? [1024, 1024] : [2048, 2048]}
+            shadow-mapSize={degrade > 0 ? [1024, 1024] : [3072, 3072]}
             /* Солнце опустилось, и на большой плоскости земли тень начала
                ложиться на саму землю рябью: при скользящем свете глубина в
                карте теней и глубина сцены расходятся почти на всей площади.
@@ -1946,7 +1949,7 @@ export function MuseumModel({
 
           <EffectsBoundary>
             <Suspense fallback={null}>
-              <EffectsGate ready={reflection !== null} />
+              <EffectsGate ready={reflection !== null} entered={entered} />
             </Suspense>
           </EffectsBoundary>
 
