@@ -1,5 +1,6 @@
-import { useMemo } from 'react';
-import { BackSide, DoubleSide, Object3D } from 'three';
+import { useEffect, useMemo, useState } from 'react';
+import { BackSide, DoubleSide, Object3D, SRGBColorSpace, TextureLoader } from 'three';
+import type { Texture } from 'three';
 import type { HallId } from './halls';
 import type { MuseumObject } from '../data';
 
@@ -277,10 +278,41 @@ function WorkLight({ x, z, height, sharp }: { x: number; z: number; height: numb
  * двигает вещи, а рядом стоят чужие, которые он не может ни убрать, ни
  * подвинуть.
  */
-function PlacedWork({ item, room }: { item: MuseumObject; room: Room }) {
+/* Изображение работы грузится императивно, а не через useLoader: тот
+   подвешивает всё поддерево до готовности файла, и зал стоял бы пустым,
+   пока едет картинка. Холст появляется сразу залитым цветом и получает
+   изображение, когда оно доедет. */
+function useArtwork(url?: string): Texture | null {
+  const [texture, setTexture] = useState<Texture | null>(null);
+
+  useEffect(() => {
+    if (!url) { setTexture(null); return; }
+    let alive = true;
+    new TextureLoader().load(
+      url,
+      (loaded) => {
+        if (!alive) { loaded.dispose(); return; }
+        loaded.colorSpace = SRGBColorSpace;
+        loaded.anisotropy = 8;
+        setTexture(loaded);
+      },
+      undefined,
+      () => { if (alive) setTexture(null); },
+    );
+    return () => { alive = false; };
+  }, [url]);
+
+  return texture;
+}
+
+function PlacedWork({ item, room, onSelect }: { item: MuseumObject; room: Room; onSelect?: (id: string) => void }) {
   const scale = item.scale && item.scale > 0 ? item.scale : 1;
   const stand = item.stand || 'plinth';
   const rot = item.rot || 0;
+  const artwork = useArtwork(item.imageUrl);
+  const pick = onSelect
+    ? (event: { stopPropagation: () => void }) => { event.stopPropagation(); onSelect(item.id); }
+    : undefined;
 
   if (item.kind === 'canvas') {
     const w = (item.width || 1.2) * scale;
@@ -294,14 +326,18 @@ function PlacedWork({ item, room }: { item: MuseumObject; room: Room }) {
     const rotation: [number, number, number] = wall === 'back' ? [0, 0, 0] : [0, (facing * Math.PI) / 2, 0];
 
     return (
-      <group position={position} rotation={rotation}>
+      <group position={position} rotation={rotation} onClick={pick}>
         <mesh castShadow receiveShadow>
           <boxGeometry args={[w, h, 0.09]} />
           <meshStandardMaterial color="#e6e0d4" roughness={0.92} />
         </mesh>
         <mesh position={[0, 0, 0.05]}>
           <planeGeometry args={[Math.max(0.1, w - 0.14), Math.max(0.1, h - 0.14)]} />
-          <meshStandardMaterial color={item.tone || CANVAS_TONES[0]} roughness={0.86} />
+          <meshStandardMaterial
+            color={artwork ? '#ffffff' : (item.tone || CANVAS_TONES[0])}
+            map={artwork}
+            roughness={0.86}
+          />
         </mesh>
       </group>
     );
@@ -313,7 +349,7 @@ function PlacedWork({ item, room }: { item: MuseumObject; room: Room }) {
   const top = plinthHeight;
 
   return (
-    <group position={[item.x, 0, item.z]} rotation={[0, rot, 0]}>
+    <group position={[item.x, 0, item.z]} rotation={[0, rot, 0]} onClick={pick}>
       {stand === 'plinth' && (
         <mesh position={[0, plinthHeight / 2, 0]} castShadow receiveShadow>
           <boxGeometry args={[1.15 * scale, plinthHeight, 1.15 * scale]} />
@@ -330,11 +366,11 @@ function PlacedWork({ item, room }: { item: MuseumObject; room: Room }) {
   );
 }
 
-function PlacedWorks({ items, room, height }: { items: MuseumObject[]; room: Room; height: number }) {
+function PlacedWorks({ items, room, height, onSelect }: { items: MuseumObject[]; room: Room; height: number; onSelect?: (id: string) => void }) {
   return (
     <group>
       {items.map((item) => (
-        <PlacedWork key={item.id} item={item} room={room} />
+        <PlacedWork key={item.id} item={item} room={room} onSelect={onSelect} />
       ))}
       {items
         .filter((item) => item.kind !== 'canvas')
@@ -476,7 +512,7 @@ function Benches({ room }: { room: Room }) {
   );
 }
 
-export function Interior({ hall, objects = [] }: { hall: HallId; objects?: MuseumObject[] }) {
+export function Interior({ hall, objects = [], onSelectObject }: { hall: HallId; objects?: MuseumObject[]; onSelectObject?: (id: string) => void }) {
   const room = ROOMS[hall];
   const placed = useMemo(() => objects.filter((item) => item.hall === hall), [objects, hall]);
   const tone = HALL_TONE[hall] ?? { wall: WALL, floor: FLOOR };
@@ -666,7 +702,7 @@ export function Interior({ hall, objects = [] }: { hall: HallId; objects?: Museu
       {/* Расставленное редакцией важнее заготовки: как только в зале есть
           хоть один предмет из админки, показываем только его. */}
       {placed.length > 0
-        ? <PlacedWorks items={placed} room={room} height={room.h || 4} />
+        ? <PlacedWorks items={placed} room={room} height={room.h || 4} onSelect={onSelectObject} />
         : (hall === 'collection' || hall === 'practice') && <Works room={room} hall={hall} />}
       {room.furniture === 'shelves' && <Shelves room={room} />}
       {room.furniture === 'desk' && <Desk />}

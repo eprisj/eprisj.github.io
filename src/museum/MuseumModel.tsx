@@ -1732,6 +1732,7 @@ function writeDegrade(level: number) {
 export function MuseumModel({
   label,
   objects,
+  onSelectObject,
   fallbackLabel,
   retryLabel,
   openLabel,
@@ -1749,6 +1750,7 @@ export function MuseumModel({
   label: string;
   /* Расстановка предметов по залам: приходит из контента, а не из кода. */
   objects: MuseumObject[];
+  onSelectObject?: (id: string) => void;
   fallbackLabel: string;
   retryLabel: string;
   openLabel: string;
@@ -1969,7 +1971,7 @@ export function MuseumModel({
           <Suspense fallback={null}>
             {!entered && heavy && <SceneReflection onReady={setReflection} />}
             {entered && selectedHall ? (
-              <Interior hall={selectedHall} objects={objects} />
+              <Interior hall={selectedHall} objects={objects} onSelectObject={onSelectObject} />
             ) : (
             <Turntable still={still} slow={open || selectedHall !== null}>
               {/* Застройка выросла вправо (мастерские) сильнее, чем влево

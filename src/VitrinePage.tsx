@@ -468,9 +468,56 @@ function HallPanel({ copy, hall, onClear, entered, onEnter, onLeave }: {
    залов с работами задан в Interior.tsx. */
 const WORKS_INSTALLED = new Set<HallId>(['collection', 'practice']);
 
+/* КАРТОЧКА ПРЕДМЕТА В ЗАЛЕ.
+ *
+ * Ровно те поля, что заполняет редакция, и ни одного придуманного: пустое
+ * поле не показывается вовсе, потому что «Автор: —» в музее читается как
+ * утверждение, что автор неизвестен, а не что паспорт ещё не дописан. */
+function ObjectPanel({ copy, item, onClose }: { copy: MuseumCopy; item: MuseumObject; onClose: () => void }) {
+  const rows: [string, string | undefined][] = [
+    [copy.creator, item.author],
+    [copy.date, item.year],
+    [copy.material, item.material],
+    [copy.dimensions, item.dimensions],
+  ];
+
+  return (
+    <div className="flex flex-col gap-6 p-5 sm:p-8 lg:p-12">
+      <div className="flex items-start justify-between gap-4">
+        <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">{copy.objectDossier}</p>
+        <button
+          type="button"
+          onClick={onClose}
+          className="shrink-0 font-mono text-[9px] uppercase tracking-[0.16em] underline underline-offset-4 transition hover:opacity-60"
+        >
+          {copy.allHalls}
+        </button>
+      </div>
+      <h2 className="font-display text-[clamp(2rem,4vw,3rem)] leading-[0.95] tracking-[-0.03em]">{item.title || copy.object}</h2>
+      {item.imageUrl && (
+        <img src={item.imageUrl} alt={item.title || copy.object} className="max-h-64 w-full object-cover" loading="lazy" />
+      )}
+      <dl className="border-t border-[rgb(var(--c-accent-rgb)_/_0.28)]">
+        {rows.filter(([, value]) => value).map(([label, value]) => (
+          <div key={label} className="flex justify-between gap-6 border-b border-[rgb(var(--c-accent-rgb)_/_0.18)] py-3">
+            <dt className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{label}</dt>
+            <dd className="text-right text-[14px]">{value}</dd>
+          </div>
+        ))}
+      </dl>
+      {item.note && <p className="max-w-[34rem] text-[15px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)]">{item.note}</p>}
+    </div>
+  );
+}
+
 function EmptyVitrine({ copy, hall, onHall, objects }: { copy: MuseumCopy; hall: HallId | null; onHall: (id: HallId | null) => void; objects: MuseumObject[] }) {
   const [entered, setEntered] = useState(false);
+  /* Паспорт предмета редакция уже заполняла, но прочитать его было негде:
+     вещь стояла в зале молча. Клик по вещи открывает её карточку в колонке
+     справа — там же, где стоит описание самого зала. */
+  const [selectedObject, setSelectedObject] = useState<string | null>(null);
   const stageRef = useRef<HTMLDivElement>(null);
+  const shown = objects.find((item) => item.id === selectedObject) || null;
 
   /* Нажать «войти» и остаться смотреть на абзац — это и есть «нажимаю, а где
      комната». После входа страница подводит к самому залу. */
@@ -482,7 +529,7 @@ function EmptyVitrine({ copy, hall, onHall, objects }: { copy: MuseumCopy; hall:
   };
   /* Вышли из зала — вышли и из комнаты: состояние не должно пережить смену
      зала, иначе следующий зал открывается уже изнутри чужой комнаты. */
-  useEffect(() => { setEntered(false); }, [hall]);
+  useEffect(() => { setEntered(false); setSelectedObject(null); }, [hall]);
   /* Пустая коллекция больше не объясняется абзацами о том, что её готовят.
      Вместо описания стоит здание: макет крутится сам и поворачивается мышью,
      а заголовок лежит поверх него, как подпись на архитектурном планшете.
@@ -506,6 +553,7 @@ function EmptyVitrine({ copy, hall, onHall, objects }: { copy: MuseumCopy; hall:
           <MuseumModel
             label={copy.modelLabel}
             objects={objects}
+            onSelectObject={setSelectedObject}
             fallbackLabel={copy.modelFallback}
             retryLabel={copy.modelRetry}
             openLabel={copy.openLabel}
@@ -546,7 +594,9 @@ function EmptyVitrine({ copy, hall, onHall, objects }: { copy: MuseumCopy; hall:
         )}
       </div>
       <div className="flex flex-col justify-between">
-        {hall ? (
+        {hall && shown && entered ? (
+          <ObjectPanel copy={copy} item={shown} onClose={() => setSelectedObject(null)} />
+        ) : hall ? (
           <HallPanel
             copy={copy}
             hall={hall}
