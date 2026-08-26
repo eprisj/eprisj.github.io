@@ -1,8 +1,23 @@
-import { Component, lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Component, createContext, lazy, Suspense, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber';
 import { ContactShadows, Environment, Html, Lightformer, MeshReflectorMaterial, OrbitControls, RoundedBox } from '@react-three/drei';
-import { ACESFilmicToneMapping, DoubleSide, ExtrudeGeometry, Shape, Spherical, Vector2, Vector3 } from 'three';
-import type { Group, PerspectiveCamera } from 'three';
+import {
+  ACESFilmicToneMapping,
+  Color,
+  CubeCamera,
+  DoubleSide,
+  ExtrudeGeometry,
+  LinearMipmapLinearFilter,
+  RepeatWrapping,
+  SRGBColorSpace,
+  Shape,
+  Spherical,
+  TextureLoader,
+  Vector2,
+  Vector3,
+  WebGLCubeRenderTarget,
+} from 'three';
+import type { Group, PerspectiveCamera, Texture } from 'three';
 import { HALLS, type HallId } from './halls';
 import { Interior, interiorEye } from './Interior';
 
@@ -11,9 +26,13 @@ const Effects = lazy(() => import('./Effects'));
 /* Интерьеры лежат в том же чанке, что и макет: точка глаза нужна модели
    сразу, а сами комнаты — это полторы сотни строк геометрии, ради которых
    отдельный запрос не окупается. */
-import { concreteMaps, concreteRepeat } from './concrete';
 
 export type MuseumLabels = Record<HallId, string>;
+
+/* Куб-карта отражений раздаётся через контекст: стекло разбросано по всему
+   зданию, и тянуть проп через шесть уровней ради него незачем. */
+const ReflectionContext = createContext<Texture | null>(null);
+const useReflection = () => useContext(ReflectionContext);
 
 /* ЗДАНИЕ МУЗЕЯ, СОБРАННОЕ КОДОМ, А НЕ ЗАГРУЖЕННОЕ ФАЙЛОМ.
  *
@@ -53,7 +72,42 @@ const GOLD = '#c9a690';
 
 /* Рельеф заметный, но не штукатурка: на большем значении бетон начинает
    выглядеть отлитым из творога. */
-const NORMAL_SCALE = new Vector2(0.34, 0.34);
+const NORMAL_SCALE = new Vector2(0.7, 0.7);
+
+/* Сколько метров стены покрывает одна плитка текстуры. Плитка квадратная,
+   значит и на длинной стене, и на парапете зерно одинаковое только если
+   повтор считать от габарита. */
+const TILE_METRES = 7;
+
+/* КАРТЫ БЕТОНА ЛЕЖАТ ФАЙЛАМИ.
+ *
+ * Раньше они считались на canvas при первом показе: это ничего не весило, но
+ * и уметь могло немного. Здесь щиты опалубки со смещением рисунка, отверстия
+ * от стяжных болтов регулярной сеткой, потёки от швов, сколы кромок и
+ * раковины — то, что офлайн считается за секунды, а в браузере за минуты.
+ * Триста шестьдесят килобайт на три карты, и только в чанке музея. */
+function useConcrete() {
+  const [normalMap, roughnessMap, map] = useLoader(TextureLoader, [
+    '/museum/concrete-normal.webp',
+    '/museum/concrete-rough.webp',
+    '/museum/concrete-albedo.webp',
+  ]);
+  useMemo(() => {
+    [normalMap, roughnessMap, map].forEach((texture) => {
+      texture.wrapS = RepeatWrapping;
+      texture.wrapT = RepeatWrapping;
+      texture.anisotropy = 8;
+    });
+    /* Цвет — в sRGB, рельеф и шероховатость — числа, а не цвет: перевод
+       испортил бы и то и другое. */
+    map.colorSpace = SRGBColorSpace;
+  }, [map, normalMap, roughnessMap]);
+  return { normalMap, roughnessMap, map };
+}
+
+function concreteRepeat(width: number, height: number) {
+  return new Vector2(Math.max(1, width / TILE_METRES), Math.max(1, height / TILE_METRES));
+}
 
 /* ── ГАБАРИТЫ ─────────────────────────────────────────────────────────
    Здание собрано из четырёх масс. Числа держатся здесь, а не разбросаны по
@@ -90,20 +144,19 @@ function Mass({
   onHover?: (id: HallId | null) => void;
   hallId?: HallId;
 }) {
-  /* Карты считаются один раз на всю сцену, а повтор — свой у каждой массы:
-     зерно должно быть одинаковым и на парапете, и на тридцатиметровой стене,
-     поэтому текстура клонируется, а картинка остаётся общей. */
-  const maps = concreteMaps();
+  /* Картинка одна на всю сцену, повтор — свой у каждой массы: текстура
+     клонируется, изображение остаётся общим. */
+  const maps = useConcrete();
   const surface = useMemo(() => {
-    if (!maps) return null;
     const normalMap = maps.normalMap.clone();
     const roughnessMap = maps.roughnessMap.clone();
+    const map = maps.map.clone();
     const repeat = concreteRepeat(size[0], size[1]);
-    normalMap.repeat.copy(repeat);
-    roughnessMap.repeat.copy(repeat);
-    normalMap.needsUpdate = true;
-    roughnessMap.needsUpdate = true;
-    return { normalMap, roughnessMap };
+    [normalMap, roughnessMap, map].forEach((texture) => {
+      texture.repeat.copy(repeat);
+      texture.needsUpdate = true;
+    });
+    return { normalMap, roughnessMap, map };
   }, [maps, size[0], size[1]]);
 
   return (
@@ -123,12 +176,60 @@ function Mass({
         roughness={0.82}
         metalness={0.03}
         envMapIntensity={0.6}
-        normalMap={surface?.normalMap ?? null}
+        map={surface.map}
+        normalMap={surface.normalMap}
         normalScale={NORMAL_SCALE}
-        roughnessMap={surface?.roughnessMap ?? null}
+        roughnessMap={surface.roughnessMap}
       />
     </RoundedBox>
   );
+}
+
+/* ОТРАЖЕНИЕ СНИМАЕТСЯ С САМОЙ СЦЕНЫ.
+ *
+ * До этого в стекле отражались только светящиеся плоскости окружения, то
+ * есть ровное пятно. Настоящее отражение требует куб-карты, снятой изнутри
+ * сцены: тогда в окне видно дерево, соседний объём и небо, а не абстрактный
+ * свет.
+ *
+ * Снимается она ОДИН раз: сцена почти неподвижна, а шесть проходов рендера
+ * на каждый кадр — это ровно тот расход, ради которого отражения обычно и
+ * выключают. На время съёмки сцене выдаётся фон: без него небо в отражении
+ * было бы дырой, потому что холст прозрачный.
+ */
+function SceneReflection({ onReady }: { onReady: (texture: Texture) => void }) {
+  const { gl, scene } = useThree();
+  const frame = useRef(0);
+  const done = useRef(false);
+
+  const rig = useMemo(() => {
+    const target = new WebGLCubeRenderTarget(256, {
+      generateMipmaps: true,
+      minFilter: LinearMipmapLinearFilter,
+    });
+    return { target, camera: new CubeCamera(0.5, 400, target) };
+  }, []);
+
+  useEffect(() => () => rig.target.dispose(), [rig]);
+
+  useFrame(() => {
+    if (done.current) return;
+    /* Пара кадров форы: на первом сцена ещё собирается, и в куб попала бы
+       половина здания. */
+    frame.current += 1;
+    if (frame.current < 3) return;
+
+    const previousBackground = scene.background;
+    scene.background = new Color('#dfe3e6');
+    rig.camera.position.set(0, 4, 4);
+    rig.camera.update(gl, scene);
+    scene.background = previousBackground;
+
+    done.current = true;
+    onReady(rig.target.texture);
+  });
+
+  return null;
 }
 
 /* ПРОЁМ С ОТКОСОМ.
@@ -151,6 +252,8 @@ function Opening({
   position: [number, number, number];
   rotation?: [number, number, number];
 }) {
+  const reflection = useReflection();
+
   return (
     <group position={position} rotation={rotation}>
       {/* Щёки и дно ниши: светлый бетон, чтобы тень на них читалась */}
@@ -168,7 +271,8 @@ function Opening({
           reflectivity={0.9}
           clearcoat={1}
           clearcoatRoughness={0.08}
-          envMapIntensity={2.6}
+          envMap={reflection}
+          envMapIntensity={reflection ? 1.35 : 2.6}
         />
       </mesh>
     </group>
@@ -251,6 +355,7 @@ function BoardMarks({ w, d, h, y, x = 0, z = 0, step = 0.9 }: { w: number; d: nu
 
 /* Трапеция: единственный большой глаз на глухой торцевой стене. */
 function TrapezoidEye({ position }: { position: [number, number, number] }) {
+  const reflection = useReflection();
   const geometry = useMemo(() => {
     const shape = new Shape();
     shape.moveTo(-2.4, -1.4);
@@ -276,7 +381,8 @@ function TrapezoidEye({ position }: { position: [number, number, number] }) {
           reflectivity={0.95}
           clearcoat={1}
           clearcoatRoughness={0.06}
-          envMapIntensity={2.8}
+          envMap={reflection}
+          envMapIntensity={reflection ? 1.45 : 2.8}
         />
       </mesh>
     </group>
@@ -324,6 +430,7 @@ function RoofMonitors({ x, y, z, w, d }: { x: number; y: number; z: number; w: n
  * колонны, и между ними видно, что внутри есть пространство.
  */
 function GlazedBase({ x, w, d, y, h }: { x: number; w: number; d: number; y: number; h: number }) {
+  const reflection = useReflection();
   const columns = useMemo(() => {
     const out: number[] = [];
     const count = Math.max(3, Math.round(w / 4.6));
@@ -343,7 +450,8 @@ function GlazedBase({ x, w, d, y, h }: { x: number; w: number; d: number; y: num
           reflectivity={0.95}
           clearcoat={1}
           clearcoatRoughness={0.06}
-          envMapIntensity={3.0}
+          envMap={reflection}
+          envMapIntensity={reflection ? 1.5 : 3.0}
         />
       </mesh>
       {/* Импосты: сплошного стекла на пятнадцать метров не бывает, а членение
@@ -872,6 +980,7 @@ export function MuseumModel({
      сквозь глухой бетон и жать вторую кнопку никто не должен. */
   const [open, setOpen] = useState(() => selectedHall !== null);
   const [hovered, setHovered] = useState<HallId | null>(null);
+  const [reflection, setReflection] = useState<Texture | null>(null);
 
   const select = useCallback((id: HallId) => {
     /* Повторное нажатие по уже выбранному объёму — это вход, а не отмена:
@@ -912,6 +1021,7 @@ export function MuseumModel({
             toneMappingExposure: 1.08,
           }}
         >
+          <ReflectionContext.Provider value={reflection}>
           {entered && selectedHall ? <InteriorRig hall={selectedHall} /> : <CameraRig open={open} radius={22.5} focusY={focusY} />}
 
           {/* Свет как в полдень над макетом: одно жёсткое солнце даёт тень,
@@ -948,6 +1058,7 @@ export function MuseumModel({
           {!entered && <pointLight position={[0, 4, 0]} intensity={open ? 40 : 0} distance={34} decay={2} color="#fff3e2" />}
 
           <Suspense fallback={null}>
+            {!entered && <SceneReflection onReady={setReflection} />}
             {entered && selectedHall ? (
               <Interior hall={selectedHall} />
             ) : (
@@ -967,6 +1078,8 @@ export function MuseumModel({
               <EffectsGate />
             </Suspense>
           </EffectsBoundary>
+
+          </ReflectionContext.Provider>
 
           {entered ? (
             /* Внутри цель стоит перед зрителем: так разворот читается как
