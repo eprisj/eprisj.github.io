@@ -580,7 +580,9 @@ export function MuseumModel({
   onSelectHall: (id: HallId | null) => void;
 }) {
   const still = useMemo(() => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches, []);
-  const [open, setOpen] = useState(false);
+  /* Пришли по ссылке на зал — здание уже раскрыто: смотреть на выбранный зал
+     сквозь глухой бетон и жать вторую кнопку никто не должен. */
+  const [open, setOpen] = useState(() => selectedHall !== null);
   const [hovered, setHovered] = useState<HallId | null>(null);
 
   const select = useCallback((id: HallId) => {
