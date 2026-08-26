@@ -418,13 +418,15 @@ function catalogueNumber(work: FuturoshockWork, index: number) {
   return `EPRIS ${year}.${position}`;
 }
 
-function HallPanel({ copy, hall, onClear, entered, onEnter, onLeave }: {
+function HallPanel({ copy, hall, onClear, entered, onEnter, onLeave, items, onOpenObject }: {
   copy: MuseumCopy;
   hall: HallId;
   onClear: () => void;
   entered: boolean;
   onEnter: () => void;
   onLeave: () => void;
+  items: MuseumObject[];
+  onOpenObject: (id: string) => void;
 }) {
   const meta = HALLS.find((item) => item.id === hall);
   const locked = meta?.access === 'passport';
@@ -450,6 +452,29 @@ function HallPanel({ copy, hall, onClear, entered, onEnter, onLeave }: {
       <p className="border-t border-[rgb(var(--c-accent-rgb)_/_0.28)] pt-4 text-[14px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.62)]">
         {locked ? copy.lockedNote : WORKS_INSTALLED.has(hall) ? copy.partialHall : copy.emptyHall}
       </p>
+      {/* Список того, что стоит в зале. По самим вещам кликают в комнате, но
+          мышью попасть в предмет в глубине зала трудно, а с клавиатуры —
+          никак. Список делает то же самое и заодно говорит, что здесь есть,
+          не заходя внутрь. */}
+      {items.length > 0 && (
+        <ul className="border-t border-[rgb(var(--c-accent-rgb)_/_0.28)]">
+          {items.map((item) => (
+            <li key={item.id} className="border-b border-[rgb(var(--c-accent-rgb)_/_0.18)]">
+              <button
+                type="button"
+                onClick={() => onOpenObject(item.id)}
+                className="flex min-h-12 w-full items-baseline justify-between gap-4 py-2 text-left transition hover:opacity-60"
+              >
+                <span className="text-[15px]">{item.title || copy.object}</span>
+                <span className="shrink-0 font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.45)]">
+                  {[item.author, item.year].filter(Boolean).join(' · ')}
+                </span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+
       {/* Зал — это место, а не абзац: отсюда в него входят. */}
       <button
         type="button"
@@ -506,6 +531,15 @@ function ObjectPanel({ copy, item, onClose }: { copy: MuseumCopy; item: MuseumOb
         ))}
       </dl>
       {item.note && <p className="max-w-[34rem] text-[15px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)]">{item.note}</p>}
+      {item.link && (
+        <a
+          href={item.link}
+          className="inline-flex min-h-11 items-center gap-2 self-start border border-[var(--c-accent)] px-5 font-mono text-[9px] uppercase tracking-[0.16em] transition hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]"
+        >
+          {copy.readContext}
+          <ArrowUpRight className="h-3 w-3" strokeWidth={1.5} />
+        </a>
+      )}
     </div>
   );
 }
@@ -604,6 +638,8 @@ function EmptyVitrine({ copy, hall, onHall, objects }: { copy: MuseumCopy; hall:
             entered={entered}
             onEnter={enterHall}
             onLeave={() => setEntered(false)}
+            items={objects.filter((item) => item.hall === hall)}
+            onOpenObject={(id) => { setSelectedObject(id); if (!entered) enterHall(); }}
           />
         ) : (
           <div className="flex flex-col gap-6 p-5 sm:p-8 lg:p-12">
@@ -734,5 +770,5 @@ export function VitrinePage({ lang = 'EN', hall, onHallChange }: { lang?: string
   /* Контейнер тянется на всю высоту экрана: иначе на большом мониторе разворот
      обрывается посреди страницы, боковые линейки заканчиваются в никуда, и под
      ними остаётся белое поле, которое читается как недогруженная страница. */
-  return <main className="flex min-h-screen flex-col bg-[var(--c-bg)] pt-16 text-[var(--c-accent)]"><div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col border-x border-[rgb(var(--c-accent-rgb)_/_0.9)]"><header className="flex items-center justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] px-5 py-3 sm:px-8 lg:px-12"><p className="font-mono text-[9px] uppercase tracking-[0.18em] sm:text-[10px]">{copy.museumLabel}</p><span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{String(works.length).padStart(2, '0')} {copy.objects}</span></header>{works.length === 0 ? <EmptyVitrine copy={copy} hall={activeHall} onHall={setHall} objects={museumObjects} /> : <VitrineCollection works={works} selectedId={selectedId} onSelect={setSelectedId} copy={copy} />}</div></main>;
+  return <main className="flex min-h-screen flex-col bg-[var(--c-bg)] pt-16 text-[var(--c-accent)]"><div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col border-x border-[rgb(var(--c-accent-rgb)_/_0.9)]"><header className="flex items-center justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] px-5 py-3 sm:px-8 lg:px-12"><p className="font-mono text-[9px] uppercase tracking-[0.18em] sm:text-[10px]">{copy.museumLabel}</p><span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{String(works.length || museumObjects.length).padStart(2, '0')} {copy.objects}</span></header>{works.length === 0 ? <EmptyVitrine copy={copy} hall={activeHall} onHall={setHall} objects={museumObjects} /> : <VitrineCollection works={works} selectedId={selectedId} onSelect={setSelectedId} copy={copy} />}</div></main>;
 }
