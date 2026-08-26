@@ -1072,6 +1072,19 @@ class EffectsBoundary extends Component<{ children: React.ReactNode }, { failed:
   }
 }
 
+/* Умерший контекст роняет не только картинку: r3f продолжает рендерить холст
+   поверх мёртвого рендерера и бросает исключение, а его ловит уже страничная
+   граница — и вместо здания пропадает весь музей. Своя граница удерживает
+   падение внутри холста и переводит его в ту же честную заглушку. */
+class CanvasBoundary extends Component<{ onError: () => void; children: React.ReactNode }, { failed: boolean }> {
+  state = { failed: false };
+  static getDerivedStateFromError() { return { failed: true }; }
+  componentDidCatch() { this.props.onError(); }
+  render() {
+    return this.state.failed ? null : this.props.children;
+  }
+}
+
 /* Одно правило на все тяжёлые проходы: широкий холст и WebGL2. Раньше
    каждое решение принималось само по себе, и на среднем экране совпадали
    отражение воды, куб-карта, AO и тени — а это уже тот набор, на котором
@@ -1113,7 +1126,7 @@ function Turntable({ still, slow, children }: { still: boolean; slow: boolean; c
  *
  * Отменяем событие по умолчанию (иначе контекст не восстановят) и сообщаем
  * наружу, чтобы страница показала честную заглушку вместо пустоты. */
-function ContextGuard({ onLost }: { onLost: () => void }) {
+function ContextGuard({ onLost, onRestored }: { onLost: () => void; onRestored: () => void }) {
   const { gl } = useThree();
 
   useEffect(() => {
@@ -1122,9 +1135,17 @@ function ContextGuard({ onLost }: { onLost: () => void }) {
       event.preventDefault();
       onLost();
     };
+    /* Контекст отменённого события браузер обычно возвращает сам. Раньше это
+       событие никто не слушал, и после разового провала здание не появлялось
+       уже никогда. */
+    const restored = () => onRestored();
     canvas.addEventListener('webglcontextlost', lost);
-    return () => canvas.removeEventListener('webglcontextlost', lost);
-  }, [gl, onLost]);
+    canvas.addEventListener('webglcontextrestored', restored);
+    return () => {
+      canvas.removeEventListener('webglcontextlost', lost);
+      canvas.removeEventListener('webglcontextrestored', restored);
+    };
+  }, [gl, onLost, onRestored]);
 
   return null;
 }
@@ -1140,6 +1161,8 @@ function hasWebGL() {
 
 export function MuseumModel({
   label,
+  fallbackLabel,
+  retryLabel,
   openLabel,
   closeLabel,
   leaveLabel,
@@ -1153,6 +1176,8 @@ export function MuseumModel({
   onLeave,
 }: {
   label: string;
+  fallbackLabel: string;
+  retryLabel: string;
   openLabel: string;
   closeLabel: string;
   /* Внутри зала «закрыть пространство» звучит про другое действие: выход из
@@ -1176,6 +1201,10 @@ export function MuseumModel({
   const [hovered, setHovered] = useState<HallId | null>(null);
   const [reflection, setReflection] = useState<Texture | null>(null);
   const [contextLost, setContextLost] = useState(false);
+  /* Смена ключа пересобирает холст с нуля: после потери контекста старый
+     рендерер уже мёртв, и оживить его нечем. */
+  const [canvasKey, setCanvasKey] = useState(0);
+  const noWebGL = useMemo(() => typeof window !== 'undefined' && !hasWebGL(), []);
   /* Ширина холста известна только внутри Canvas, поэтому решение приходит
      оттуда через состояние: снаружи оно нужно и воде, и эффектам. */
   const [heavy, setHeavy] = useState(false);
@@ -1197,10 +1226,24 @@ export function MuseumModel({
     return hall ? hall.focus[1] - 6.4 : 0;
   }, [selectedHall]);
 
-  if ((typeof window !== 'undefined' && !hasWebGL()) || contextLost) {
+  /* Одна строчка мелким шрифтом посреди пустой плашки читалась как сломанная
+     страница: понять, что макет не нарисовался и что с этим делать, было
+     неоткуда. Заглушка называет причину и даёт вернуть здание. */
+  if (noWebGL || contextLost) {
     return (
-      <div className="flex h-full w-full items-center justify-center px-6 text-center" role="img" aria-label={label}>
-        <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{label}</p>
+      <div className="flex h-full w-full flex-col items-center justify-center gap-4 px-6 text-center" role="img" aria-label={label}>
+        <p className="max-w-[26rem] font-mono text-[10px] uppercase leading-relaxed tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.6)]">
+          {noWebGL ? label : fallbackLabel}
+        </p>
+        {contextLost && (
+          <button
+            type="button"
+            onClick={() => { setContextLost(false); setCanvasKey((n) => n + 1); }}
+            className="inline-flex min-h-11 items-center justify-center border border-[rgb(var(--c-accent-rgb)_/_0.5)] px-5 font-mono text-[9px] uppercase tracking-[0.16em] transition hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]"
+          >
+            {retryLabel}
+          </button>
+        )}
       </div>
     );
   }
@@ -1208,6 +1251,7 @@ export function MuseumModel({
   return (
     <div className="relative h-full w-full">
       <div className="h-full w-full cursor-grab active:cursor-grabbing" role="img" aria-label={open ? insideLabel : label}>
+        <CanvasBoundary key={canvasKey} onError={() => setContextLost(true)}>
         <Canvas
           shadows
           camera={{ position: [38, 16, 30], fov: 26 }}
@@ -1223,7 +1267,7 @@ export function MuseumModel({
             toneMappingExposure: 1.08,
           }}
         >
-          <ContextGuard onLost={() => setContextLost(true)} />
+          <ContextGuard onLost={() => setContextLost(true)} onRestored={() => { setContextLost(false); setCanvasKey((n) => n + 1); }} />
           <HeavyProbe onChange={setHeavy} />
           <ReflectionContext.Provider value={reflection}>
           {entered && selectedHall ? <InteriorRig hall={selectedHall} /> : <CameraRig open={open} radius={21} focusY={focusY} />}
@@ -1303,6 +1347,7 @@ export function MuseumModel({
             <OrbitControls enableZoom={false} enablePan={false} minPolarAngle={0.5} maxPolarAngle={1.16} rotateSpeed={0.55} />
           )}
         </Canvas>
+        </CanvasBoundary>
       </div>
 
       <button

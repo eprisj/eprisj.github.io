@@ -782,7 +782,7 @@ class TabErrorBoundary extends Component<{ children: ReactNode }, { hasError: bo
       return (
         <div className="min-h-[60vh] flex flex-col items-center justify-center gap-4 px-6 text-center">
           <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)]">
-            This section couldn't load — likely a new version just went live.
+            This section couldn't load. A new version has probably just gone live.
           </p>
           <button
             type="button"

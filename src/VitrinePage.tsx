@@ -17,6 +17,8 @@ const MUSEUM_COPY = {
     imagePending: 'Image archive in preparation',
     modelLabel: 'Three-dimensional model of the EPRIS Museum building',
     modelHint: 'Drag to turn the model',
+    modelFallback: 'The browser stopped drawing the model. The building is still here.',
+    modelRetry: 'Show the model again',
     openLabel: 'Open the space',
     closeLabel: 'Close the space',
     insideLabel: 'Inside the EPRIS Museum building: atrium, balconies and the ramp',
@@ -64,6 +66,8 @@ const MUSEUM_COPY = {
     imagePending: 'Изображение готовится для архива',
     modelLabel: 'Трёхмерная модель здания EPRIS Museum',
     modelHint: 'Потяните, чтобы повернуть макет',
+    modelFallback: 'Браузер перестал рисовать макет. Здание никуда не делось.',
+    modelRetry: 'Показать макет снова',
     openLabel: 'Открыть пространство',
     closeLabel: 'Закрыть пространство',
     insideLabel: 'Внутри здания EPRIS Museum: атриум, балконы и пандус',
@@ -111,6 +115,8 @@ const MUSEUM_COPY = {
     imagePending: 'Зображення готується для архіву',
     modelLabel: 'Тривимірна модель будівлі EPRIS Museum',
     modelHint: 'Потягніть, щоб обернути макет',
+    modelFallback: 'Браузер перестав малювати макет. Будівля нікуди не поділася.',
+    modelRetry: 'Показати макет знову',
     openLabel: 'Відкрити простір',
     closeLabel: 'Закрити простір',
     insideLabel: 'Усередині будівлі EPRIS Museum: атріум, балкони та пандус',
@@ -158,6 +164,8 @@ const MUSEUM_COPY = {
     imagePending: 'Görsel arşivi hazırlanıyor',
     modelLabel: 'EPRIS Müzesi binasının üç boyutlu maketi',
     modelHint: 'Maketi çevirmek için sürükleyin',
+    modelFallback: 'Tarayıcı maketi çizmeyi bıraktı. Bina hâlâ burada.',
+    modelRetry: 'Maketi yeniden göster',
     openLabel: 'Mekânı aç',
     closeLabel: 'Mekânı kapat',
     insideLabel: 'EPRIS Müzesi binasının içi: salonlar, galeriler ve merdiven kovası',
@@ -205,6 +213,8 @@ const MUSEUM_COPY = {
     imagePending: 'Archivio delle immagini in preparazione',
     modelLabel: 'Modello tridimensionale dell’edificio del Museo EPRIS',
     modelHint: 'Trascinare per girare il modello',
+    modelFallback: 'Il browser ha smesso di disegnare il modello. L\'edificio è ancora qui.',
+    modelRetry: 'Mostra di nuovo il modello',
     openLabel: 'Aprire lo spazio',
     closeLabel: 'Chiudere lo spazio',
     insideLabel: 'Dentro l’edificio del Museo EPRIS: sale, gallerie e il vano scala',
@@ -252,6 +262,8 @@ const MUSEUM_COPY = {
     imagePending: 'Archivo de imágenes en preparación',
     modelLabel: 'Maqueta tridimensional del edificio del Museo EPRIS',
     modelHint: 'Arrastre para girar la maqueta',
+    modelFallback: 'El navegador dejó de dibujar la maqueta. El edificio sigue aquí.',
+    modelRetry: 'Mostrar la maqueta de nuevo',
     openLabel: 'Abrir el espacio',
     closeLabel: 'Cerrar el espacio',
     insideLabel: 'Dentro del edificio del Museo EPRIS: salas, galerías y la caja de escaleras',
@@ -299,6 +311,8 @@ const MUSEUM_COPY = {
     imagePending: 'Bildarchiv wird vorbereitet',
     modelLabel: 'Dreidimensionales Modell des EPRIS-Museumsgebäudes',
     modelHint: 'Ziehen, um das Modell zu drehen',
+    modelFallback: 'Der Browser zeichnet das Modell nicht mehr. Das Gebäude ist weiterhin da.',
+    modelRetry: 'Modell erneut anzeigen',
     openLabel: 'Raum öffnen',
     closeLabel: 'Raum schließen',
     insideLabel: 'Im Inneren des EPRIS-Museums: Atrium, Galerien und Rampe',
@@ -457,6 +471,8 @@ function EmptyVitrine({ copy, hall, onHall }: { copy: MuseumCopy; hall: HallId |
         <Suspense fallback={<div className="absolute inset-0 bg-[#e9e6e1]" />}>
           <MuseumModel
             label={copy.modelLabel}
+            fallbackLabel={copy.modelFallback}
+            retryLabel={copy.modelRetry}
             openLabel={copy.openLabel}
             closeLabel={copy.closeLabel}
             leaveLabel={copy.leaveHall}
