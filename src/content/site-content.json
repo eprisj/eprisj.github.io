@@ -5305,7 +5305,11 @@
         },
         {
           "type": "text",
-          "content": "<b>KA:</b> I believe anyone can be an artist, in principle – sustaining yourself entirely on it is a different, harder question. But it takes real guts and commitment, especially now, when the economics of it are unstable and art isn't something society treats as essential. <i><u>Nobody hands you the opportunity – you make your own</u></i>. From my first year at university I was applying to every open call I could find, because I was terrified of graduating with no show history. That network, built early, is what let me keep practicing once I moved abroad. If art feels optional to you, it might not be the right path – it has to be closer to the centre of things than that. It doesn't matter if you're rich or poor going in. You just have to keep the spirit."
+          "content": "<b>KA:</b> I believe anyone can be an artist, in principle – sustaining yourself entirely on it is a different, harder question. But it takes real guts and commitment, especially now, when the economics of it are unstable and art isn't something society treats as essential. <i><u>Nobody hands you the opportunity – you make your own</u></i>. From my first year at university I was applying to every open call I could find, because I was terrified of graduating with no show history. That network, built early, is what let me keep practicing once I moved abroad. "
+        },
+        {
+          "type": "text",
+          "content": "If art feels optional to you, it might not be the right path – it has to be closer to the centre of things than that. It doesn't matter if you're rich or poor going in. You just have to keep the spirit."
         },
         {
           "type": "quote",
@@ -5328,7 +5332,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-26T06:06:00.599Z",
+      "updatedAt": "2026-08-26T06:06:12.612Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8wh6owj2qa80.jpg",
       "previewToken": "7050d8a93e5a216872f5399c"
     },
