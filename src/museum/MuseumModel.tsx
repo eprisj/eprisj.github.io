@@ -554,22 +554,69 @@ function Figures() {
 }
 
 function Trees() {
-  const trees = useMemo<[number, number, number][]>(() => [
-    [-17.5, 12.6, 1.0], [-17.0, 4.4, 0.9], [16.4, 11.4, 1.05], [17.2, 3.2, 0.95],
-  ], []);
+  /* Три икосаэдра в ряд читались гусеницей. Дерево — это ствол, который
+     делится, и крона из нескольких масс, собранных вокруг одной точки, с
+     разной высотой и разным зелёным. Случайности нет: смещения заданы
+     числами, иначе при каждом рендере дерево было бы другим. */
+  const trees = useMemo(
+    () => [
+      { x: -17.6, z: 12.4, scale: 1.05, turn: 0.4 },
+      { x: -17.0, z: 4.2, scale: 0.88, turn: 1.9 },
+      { x: 16.6, z: 11.2, scale: 1.0, turn: 2.7 },
+      { x: 17.4, z: 3.0, scale: 0.92, turn: 0.9 },
+    ],
+    [],
+  );
+
+  /* Крона: восемь масс по сфере, приплюснутой сверху, с уменьшением к краю */
+  const canopy = useMemo(
+    () =>
+      [
+        [0, 4.9, 0, 1.5],
+        [0.85, 4.45, 0.5, 1.15],
+        [-0.9, 4.5, -0.35, 1.1],
+        [0.35, 4.3, -0.95, 1.05],
+        [-0.45, 4.25, 0.95, 1.0],
+        [0.15, 5.5, 0.15, 1.05],
+        [1.15, 5.05, -0.5, 0.8],
+        [-1.1, 5.0, 0.45, 0.78],
+      ] as [number, number, number, number][],
+    [],
+  );
 
   return (
     <group>
-      {trees.map(([x, z, scale], index) => (
-        <group key={index} position={[x, PLINTH.h, z]} scale={scale}>
-          <mesh position={[0, 1.6, 0]} castShadow>
-            <cylinderGeometry args={[0.12, 0.18, 3.2, 7]} />
-            <meshStandardMaterial color="#6a6055" roughness={0.95} />
+      {trees.map((tree, index) => (
+        <group key={index} position={[tree.x, PLINTH.h, tree.z]} scale={tree.scale} rotation={[0, tree.turn, 0]}>
+          {/* Ствол сужается кверху и стоит в приствольной лунке */}
+          <mesh position={[0, 1.9, 0]} castShadow receiveShadow>
+            <cylinderGeometry args={[0.14, 0.26, 3.8, 8]} />
+            <meshStandardMaterial color="#6d6357" roughness={0.96} />
           </mesh>
-          {[0, 1, 2].map((level) => (
-            <mesh key={level} position={[(level - 1) * 0.32, 3.4 + level * 0.62, (index % 2 ? 1 : -1) * level * 0.28]} castShadow>
-              <icosahedronGeometry args={[1.25 - level * 0.22, 0]} />
-              <meshStandardMaterial color={level % 2 ? '#7d8168' : '#888c72'} roughness={0.95} flatShading />
+          <mesh position={[0, 0.05, 0]} receiveShadow>
+            <cylinderGeometry args={[0.95, 0.95, 0.1, 16]} />
+            <meshStandardMaterial color="#7c7568" roughness={0.98} />
+          </mesh>
+          {/* Две ветви: без них ствол упирается в крону палкой */}
+          {[0.6, -0.7].map((lean, branch) => (
+            <mesh
+              key={branch}
+              position={[lean * 0.5, 3.5, branch ? -0.3 : 0.3]}
+              rotation={[branch ? 0.4 : -0.35, 0, lean * 0.5]}
+              castShadow
+            >
+              <cylinderGeometry args={[0.07, 0.12, 1.5, 6]} />
+              <meshStandardMaterial color="#6d6357" roughness={0.96} />
+            </mesh>
+          ))}
+          {canopy.map(([cx, cy, cz, size], leaf) => (
+            <mesh key={leaf} position={[cx, cy, cz]} scale={[1, 0.82, 1]} castShadow receiveShadow>
+              <icosahedronGeometry args={[size, 1]} />
+              <meshStandardMaterial
+                color={leaf % 3 === 0 ? '#7f8a6a' : leaf % 3 === 1 ? '#8c9576' : '#74805f'}
+                roughness={0.95}
+                flatShading
+              />
             </mesh>
           ))}
         </group>
@@ -832,10 +879,10 @@ function HallPins({
               onPointerOver={() => onHover(hall.id)}
               onPointerOut={() => onHover(null)}
               title={hall.access === 'passport' ? lockedHint : undefined}
-              className={`whitespace-nowrap border px-2 py-1 font-mono text-[8px] uppercase tracking-[0.14em] transition ${
+              className={`whitespace-nowrap border px-2 py-1 font-mono text-[8px] uppercase tracking-[0.14em] shadow-[0_1px_6px_rgb(0_0_0_/_0.2)] transition ${
                 active
                   ? 'border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)]'
-                  : 'border-[rgb(var(--c-accent-rgb)_/_0.28)] bg-[var(--c-bg)]/88 text-[var(--c-accent)]'
+                  : 'border-[var(--c-accent)] bg-[var(--c-bg)] text-[var(--c-accent)]'
               }`}
             >
               {labels[hall.id]}
@@ -885,13 +932,26 @@ function InteriorRig({ hall }: { hall: HallId }) {
   return null;
 }
 
+const EXTERIOR_FOV = 26;
+
 function CameraRig({ open, radius, focusY }: { open: boolean; radius: number; focusY: number }) {
   const { camera, size } = useThree();
   const distance = useRef(0);
   const target = useRef(0);
 
+  /* Выход из зала — это новая посадка: прежняя дистанция считалась под
+     объектив комнаты и снаружи ставит камеру вплотную. */
+  useEffect(() => {
+    distance.current = 0;
+    target.current = 0;
+  }, [camera]);
+
   const fitted = useMemo(() => {
     const perspective = camera as PerspectiveCamera;
+    /* Объектив возвращается ЗДЕСЬ, а не в эффекте: посадка кадра считается
+       в этом же расчёте, и если сначала посчитать по широкому углу зала, а
+       поменять его после, камера встанет по чужому числу — вплотную. */
+    perspective.fov = EXTERIOR_FOV;
     const aspect = size.width / Math.max(size.height, 1);
     const verticalFov = (perspective.fov * Math.PI) / 180;
     const horizontalFov = 2 * Math.atan(Math.tan(verticalFov / 2) * aspect);
@@ -1114,7 +1174,10 @@ export function MuseumModel({
         type="button"
         onClick={() => (entered ? onLeave?.() : setOpen((value) => !value))}
         aria-pressed={entered ? true : open}
-        className="absolute right-4 top-4 z-10 min-h-11 border border-[rgb(var(--c-accent-rgb)_/_0.35)] bg-[var(--c-bg)]/85 px-4 py-2 font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--c-accent)] backdrop-blur-sm transition hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--c-accent)] sm:right-6 sm:top-6"
+        /* Полупрозрачная плашка пропадала и на светлом фасаде, и на тёмной
+           стене зала. Фон сплошной, рамка контрастная, тень отделяет её от
+           того, что под ней. */
+        className="absolute right-4 top-4 z-10 min-h-11 border border-[var(--c-accent)] bg-[var(--c-bg)] px-4 py-2 font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--c-accent)] shadow-[0_2px_10px_rgb(0_0_0_/_0.22)] transition hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--c-accent)] sm:right-6 sm:top-6"
       >
         {entered || open ? closeLabel : openLabel}
       </button>
