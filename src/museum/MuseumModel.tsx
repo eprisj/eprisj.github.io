@@ -1,9 +1,13 @@
-import { Suspense, useCallback, useMemo, useRef, useState } from 'react';
+import { lazy, Suspense, useCallback, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { ContactShadows, Environment, Html, Lightformer, MeshReflectorMaterial, OrbitControls, RoundedBox } from '@react-three/drei';
-import { ACESFilmicToneMapping, DoubleSide, ExtrudeGeometry, Shape, Spherical, Vector3 } from 'three';
+import { ACESFilmicToneMapping, DoubleSide, ExtrudeGeometry, Shape, Spherical, Vector2, Vector3 } from 'three';
 import type { Group, PerspectiveCamera } from 'three';
 import { HALLS, type HallId } from './halls';
+
+/* Эффекты — свой чанк на 155 КБ, и телефон его не скачивает: см. Effects.tsx */
+const Effects = lazy(() => import('./Effects'));
+import { concreteMaps, concreteRepeat } from './concrete';
 
 export type MuseumLabels = Record<HallId, string>;
 
@@ -43,6 +47,10 @@ const GLASS = '#26262a';
 const WATER = '#8e9aa0';
 const GOLD = '#c9a690';
 
+/* Рельеф заметный, но не штукатурка: на большем значении бетон начинает
+   выглядеть отлитым из творога. */
+const NORMAL_SCALE = new Vector2(0.34, 0.34);
+
 /* ── ГАБАРИТЫ ─────────────────────────────────────────────────────────
    Здание собрано из четырёх масс. Числа держатся здесь, а не разбросаны по
    компонентам: пропорции правятся в одном месте. */
@@ -78,6 +86,22 @@ function Mass({
   onHover?: (id: HallId | null) => void;
   hallId?: HallId;
 }) {
+  /* Карты считаются один раз на всю сцену, а повтор — свой у каждой массы:
+     зерно должно быть одинаковым и на парапете, и на тридцатиметровой стене,
+     поэтому текстура клонируется, а картинка остаётся общей. */
+  const maps = concreteMaps();
+  const surface = useMemo(() => {
+    if (!maps) return null;
+    const normalMap = maps.normalMap.clone();
+    const roughnessMap = maps.roughnessMap.clone();
+    const repeat = concreteRepeat(size[0], size[1]);
+    normalMap.repeat.copy(repeat);
+    roughnessMap.repeat.copy(repeat);
+    normalMap.needsUpdate = true;
+    roughnessMap.needsUpdate = true;
+    return { normalMap, roughnessMap };
+  }, [maps, size[0], size[1]]);
+
   return (
     <RoundedBox
       args={size}
@@ -90,7 +114,15 @@ function Mass({
       onPointerOut={hallId ? () => onHover?.(null) : undefined}
       onClick={hallId ? (event) => { event.stopPropagation(); onSelect?.(hallId); } : undefined}
     >
-      <meshStandardMaterial color={color} roughness={0.85} metalness={0.03} envMapIntensity={0.55} />
+      <meshStandardMaterial
+        color={color}
+        roughness={0.82}
+        metalness={0.03}
+        envMapIntensity={0.6}
+        normalMap={surface?.normalMap ?? null}
+        normalScale={NORMAL_SCALE}
+        roughnessMap={surface?.roughnessMap ?? null}
+      />
     </RoundedBox>
   );
 }
@@ -116,7 +148,7 @@ function Fins({ w, h, y, z, x = 0, step = 1.75, depth = 0.62 }: { w: number; h: 
       {/* тёмная ниша за лопатками: без неё рёбра лежат на стене, а не стоят перед ней */}
       <mesh position={[0, 0, -depth / 2 - 0.06]}>
         <boxGeometry args={[w - 0.4, h - 0.9, 0.12]} />
-        <meshStandardMaterial color={SHADOW} roughness={0.95} />
+        <meshStandardMaterial color={CONCRETE_DARK} roughness={0.95} />
       </mesh>
     </group>
   );
@@ -542,6 +574,16 @@ function CameraRig({ open, radius, focusY }: { open: boolean; radius: number; fo
   return null;
 }
 
+/* Ворота для постобработки: на узком холсте макет размером с ладонь, разница
+   почти не видна, а чанк тянуть пришлось бы целиком. Ширину холста берём у
+   рендерера, а не у окна: колонка бывает узкой и на десктопе. */
+function EffectsGate() {
+  const { size, gl } = useThree();
+  const heavyEnough = size.width >= 640 && gl.capabilities.isWebGL2;
+  if (!heavyEnough) return null;
+  return <Effects />;
+}
+
 function Turntable({ still, slow, children }: { still: boolean; slow: boolean; children: React.ReactNode }) {
   const group = useRef<Group>(null);
   useFrame((_, delta) => {
@@ -657,6 +699,10 @@ export function MuseumModel({
               <SiteContours />
               <ContactShadows position={[0, -6.74, 0]} opacity={0.45} scale={96} blur={2.4} far={26} resolution={512} color="#4f4a43" />
             </Turntable>
+          </Suspense>
+
+          <Suspense fallback={null}>
+            <EffectsGate />
           </Suspense>
 
           <OrbitControls enableZoom={false} enablePan={false} minPolarAngle={0.55} maxPolarAngle={Math.PI / 2.12} rotateSpeed={0.55} />

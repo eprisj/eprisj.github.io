@@ -18,6 +18,10 @@ export default defineConfig({
           // OOM-ing/hanging: one huge chunk means one huge minify pass held in
           // memory at once. Splitting it out shrinks the peak, independent of
           // whatever heap ceiling the build is given.
+          /* Постпроцессинг нужен только музею: в three-vendor он добавлял
+             триста килобайт всем, кто открывает /stage. Отдельный чанк
+             грузится вместе с макетом музея и только с ним. */
+          if (id.includes('postprocessing') || id.includes('/n8ao')) return 'postfx';
           if (id.includes('/three/') || id.includes('three-stdlib') || id.includes('@react-three')) return 'three-vendor';
           if (id.includes('framer-motion')) return 'motion';
           if (id.includes('lucide-react')) return 'icons';
