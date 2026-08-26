@@ -283,22 +283,28 @@ function SceneReflection({ onReady }: { onReady: (texture: Texture) => void }) {
 function Ground() {
   const alpha = useMemo(() => {
     if (typeof document === 'undefined') return null;
+    /* Край земли попадает в кадр, как только выбран зал: камера подходит к
+       зданию и опускается к горизонту. Гасить его надо не резче, а раньше:
+       на 128 пикселях градиент шёл полосами, а круг из 64 сегментов давал
+       гранёный силуэт — вместе это читалось рваной кромкой поперёк неба. */
     const canvas = document.createElement('canvas');
-    canvas.width = canvas.height = 128;
+    canvas.width = canvas.height = 512;
     const ctx = canvas.getContext('2d');
     if (!ctx) return null;
-    const gradient = ctx.createRadialGradient(64, 64, 6, 64, 64, 64);
+    const gradient = ctx.createRadialGradient(256, 256, 24, 256, 256, 256);
     gradient.addColorStop(0, 'rgba(255,255,255,1)');
-    gradient.addColorStop(0.55, 'rgba(255,255,255,0.85)');
+    gradient.addColorStop(0.4, 'rgba(255,255,255,0.86)');
+    gradient.addColorStop(0.7, 'rgba(255,255,255,0.34)');
+    gradient.addColorStop(0.88, 'rgba(255,255,255,0.06)');
     gradient.addColorStop(1, 'rgba(255,255,255,0)');
     ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, 128, 128);
+    ctx.fillRect(0, 0, 512, 512);
     return new CanvasTexture(canvas);
   }, []);
 
   return (
     <mesh position={[0, -6.76, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
-      <circleGeometry args={[96, 64]} />
+      <circleGeometry args={[96, 128]} />
       <meshStandardMaterial
         color="#d8d1c7"
         roughness={1}
