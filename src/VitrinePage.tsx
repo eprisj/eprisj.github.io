@@ -310,12 +310,20 @@ function EmptyVitrine({ copy, hall, onHall }: { copy: MuseumCopy; hall: HallId |
         </Suspense>
         {/* Внутри зала заголовок во всю ширину лежит поперёк комнаты: снаружи
             это подпись на планшете, изнутри — надпись на стене. */}
+        {/* Подложка под заголовком: он лежит поверх макета, а макет бывает
+            и светлым, и тёмным в одном и том же месте кадра. */}
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[var(--c-bg)] via-[rgb(var(--c-bg-rgb)_/_0.55)] to-transparent transition-opacity duration-500 sm:h-48 ${entered ? 'opacity-0' : 'opacity-100'}`}
+        />
         <div className={`pointer-events-none absolute inset-x-0 bottom-0 p-5 transition-opacity duration-500 sm:p-8 lg:p-12 ${entered ? 'opacity-0' : 'opacity-100'}`}>
           <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">{copy.firstSelection}</p>
           <h1 id="vitrine-title" className="mt-5 max-w-[7ch] font-display text-[clamp(4rem,9vw,8.5rem)] leading-[0.83] tracking-[-0.05em]">Museum</h1>
         </div>
         {entered && (
-          <p className="pointer-events-none absolute left-5 top-5 font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--c-bg)] sm:left-8 sm:top-8">
+          /* Светлый текст поверх светлой стены зала не читался: подпись
+             получает свою плашку, как и остальные надписи над холстом. */
+          <p className="pointer-events-none absolute left-5 top-5 border border-[var(--c-accent)] bg-[var(--c-bg)] px-2 py-1 font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--c-accent)] shadow-[0_1px_6px_rgb(0_0_0_/_0.2)] sm:left-8 sm:top-8">
             {copy.insideHall}
           </p>
         )}
