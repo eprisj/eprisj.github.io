@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
-import { getFuturoshock, subscribeContent, type FuturoshockWork } from './data';
+import { getFuturoshock, getMuseumObjects, subscribeContent, type FuturoshockWork, type MuseumObject } from './data';
 import { HALLS, type HallId } from './museum/halls';
 
 /* Собственный чанк: three и fiber весят больше самой страницы, а нужны только
@@ -468,7 +468,7 @@ function HallPanel({ copy, hall, onClear, entered, onEnter, onLeave }: {
    залов с работами задан в Interior.tsx. */
 const WORKS_INSTALLED = new Set<HallId>(['collection', 'practice']);
 
-function EmptyVitrine({ copy, hall, onHall }: { copy: MuseumCopy; hall: HallId | null; onHall: (id: HallId | null) => void }) {
+function EmptyVitrine({ copy, hall, onHall, objects }: { copy: MuseumCopy; hall: HallId | null; onHall: (id: HallId | null) => void; objects: MuseumObject[] }) {
   const [entered, setEntered] = useState(false);
   const stageRef = useRef<HTMLDivElement>(null);
 
@@ -505,6 +505,7 @@ function EmptyVitrine({ copy, hall, onHall }: { copy: MuseumCopy; hall: HallId |
         <Suspense fallback={<div className="absolute inset-0 bg-[#e9e6e1]" />}>
           <MuseumModel
             label={copy.modelLabel}
+            objects={objects}
             fallbackLabel={copy.modelFallback}
             retryLabel={copy.modelRetry}
             openLabel={copy.openLabel}
@@ -650,6 +651,9 @@ function VitrineCollection({ works, selectedId, onSelect, copy }: { works: Futur
 
 export function VitrinePage({ lang = 'EN', hall, onHallChange }: { lang?: string; hall?: string; onHallChange?: (hall: string | null) => void }) {
   const [works, setWorks] = useState<FuturoshockWork[]>(() => orderWorks(getFuturoshock()));
+  /* Расстановка предметов приходит из того же контента, что и всё остальное:
+     редакция двигает вещи в админке, страница подхватывает без сборки. */
+  const [museumObjects, setMuseumObjects] = useState<MuseumObject[]>(() => getMuseumObjects());
   const [selectedId, setSelectedId] = useState<string | null>(() => works[0]?.id || null);
   const copy = getMuseumCopy(lang);
   /* Зал живёт в адресе, а не в состоянии страницы: неизвестное имя в ссылке
@@ -664,7 +668,10 @@ export function VitrinePage({ lang = 'EN', hall, onHallChange }: { lang?: string
     if (hall && !activeHall) onHallChange?.(null);
   }, [activeHall, hall, onHallChange]);
 
-  useEffect(() => subscribeContent(() => setWorks(orderWorks(getFuturoshock()))), []);
+  useEffect(() => subscribeContent(() => {
+    setWorks(orderWorks(getFuturoshock()));
+    setMuseumObjects(getMuseumObjects());
+  }), []);
   useEffect(() => {
     if (!works.some((work) => work.id === selectedId)) setSelectedId(works[0]?.id || null);
   }, [selectedId, works]);
@@ -677,5 +684,5 @@ export function VitrinePage({ lang = 'EN', hall, onHallChange }: { lang?: string
   /* Контейнер тянется на всю высоту экрана: иначе на большом мониторе разворот
      обрывается посреди страницы, боковые линейки заканчиваются в никуда, и под
      ними остаётся белое поле, которое читается как недогруженная страница. */
-  return <main className="flex min-h-screen flex-col bg-[var(--c-bg)] pt-16 text-[var(--c-accent)]"><div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col border-x border-[rgb(var(--c-accent-rgb)_/_0.9)]"><header className="flex items-center justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] px-5 py-3 sm:px-8 lg:px-12"><p className="font-mono text-[9px] uppercase tracking-[0.18em] sm:text-[10px]">{copy.museumLabel}</p><span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{String(works.length).padStart(2, '0')} {copy.objects}</span></header>{works.length === 0 ? <EmptyVitrine copy={copy} hall={activeHall} onHall={setHall} /> : <VitrineCollection works={works} selectedId={selectedId} onSelect={setSelectedId} copy={copy} />}</div></main>;
+  return <main className="flex min-h-screen flex-col bg-[var(--c-bg)] pt-16 text-[var(--c-accent)]"><div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col border-x border-[rgb(var(--c-accent-rgb)_/_0.9)]"><header className="flex items-center justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] px-5 py-3 sm:px-8 lg:px-12"><p className="font-mono text-[9px] uppercase tracking-[0.18em] sm:text-[10px]">{copy.museumLabel}</p><span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{String(works.length).padStart(2, '0')} {copy.objects}</span></header>{works.length === 0 ? <EmptyVitrine copy={copy} hall={activeHall} onHall={setHall} objects={museumObjects} /> : <VitrineCollection works={works} selectedId={selectedId} onSelect={setSelectedId} copy={copy} />}</div></main>;
 }
