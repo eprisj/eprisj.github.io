@@ -46,7 +46,9 @@ export function interiorEye(hall: HallId): [number, number, number] {
   const room = ROOMS[hall];
   /* Глаз стоит внутри у дальней стены и смотрит вдоль зала: длинную галерею
      нужно видеть в длину, а не упираться в стену. */
-  if (hall === 'court') return [0, 2.2, room.d * 0.62];
+  /* Во дворе глаз стоит у воды и смотрит на фасад: спиной к зданию двор
+     выглядит пустой площадкой. */
+  if (hall === 'court') return [room.w * 0.12, 1.7, room.d * 0.42];
   /* В архиве стеллажи стоят посреди комнаты: глаз ставим в проход у стены,
      иначе первый кадр — торец полки в тридцати сантиметрах от лица. */
   if (hall === 'archive') return [room.w * 0.40, 1.65, room.d * 0.40];
@@ -224,6 +226,31 @@ export function Interior({ hall }: { hall: HallId }) {
       {room.furniture === 'shelves' && <Shelves room={room} />}
       {room.furniture === 'desk' && <Desk />}
       {room.furniture === 'benches' && <Benches room={room} />}
+
+      {/* Двор — не комната: у него нет потолка, но есть то, ради чего в нём
+          стоят. Без массы над головой это была пустая плоскость с водой,
+          то есть ничего. Здесь фасад напротив и консоль, нависающая слева. */}
+      {room.light === 'sky' && (
+        <group>
+          <mesh position={[0, 4.2, -room.d * 0.52]} receiveShadow castShadow>
+            <boxGeometry args={[room.w, 8.4, 1.2]} />
+            <meshStandardMaterial color={WALL} roughness={0.94} />
+          </mesh>
+          {/* рёбра фасада: тот же ритм, что снаружи */}
+          {Array.from({ length: 9 }, (_, i) => (i - 4) * (room.w / 10)).map((x) => (
+            <mesh key={x} position={[x, 4.6, -room.d * 0.52 + 0.8]} castShadow>
+              <boxGeometry args={[0.36, 6.2, 0.5]} />
+              <meshStandardMaterial color={PLINTH} roughness={0.92} />
+            </mesh>
+          ))}
+          {/* консоль над головой: во дворе она главное впечатление */}
+          <mesh position={[-room.w * 0.22, 8.6, -room.d * 0.1]} castShadow receiveShadow>
+            <boxGeometry args={[10.5, 6.4, room.d * 1.1]} />
+            <meshStandardMaterial color="#c8c3ba" roughness={0.9} />
+          </mesh>
+          <directionalLight position={[14, 18, 12]} intensity={1.6} color="#fff4e4" castShadow shadow-mapSize={[1024, 1024]} />
+        </group>
+      )}
     </group>
   );
 }
